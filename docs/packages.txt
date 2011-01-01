@@ -1,0 +1,250 @@
+-----------------------------
+MANA PACKAGE SYSTEM
+-----------------------------
+
+1. INTRODUCTION
+2. LOCATION OF DATA
+3. CONTENTS OF DATA PACKAGE
+4. TYPES OF DATA
+5. INITIALIZING PACKAGE MANAGEMENT
+6. LOADING A REQUESTED RESOURCE
+7. RESOURCE MANAGEMENT DETAILS
+
+
+1. INTRODUCTION
+
+Mana is expected to grow continuously with updates to the game world
+occurring relatively frequently. More often so than for example new releases
+of the game client. To make sure players don't have to update their data
+manually all the time, by for example downloading the latest from the website,
+the Mana client should be able to automatically obtain new data packages from
+the server.
+
+ Note: To reduce the load on the server (which isn't expected to have huge
+ free uploading resources), the idea is that the server will only send a
+ torrent file to the client and that the file is subsequently downloaded from
+ several locations that have volunteered to spread Mana data files. Ultimately
+ a simple option on the client will even allow players to contribute their
+ excess bandwidth to help other players get the updates faster.
+
+
+2. LOCATION OF DATA
+
+There are two locations where Mana can look for game data. The install data
+directory and the data directory in the user's home directory. The latter one
+doesn't have to be used for Windows users, but is required for dynamic updates
+for UNIX users, who generally won't have write permissions to the install
+data directory. So for UNIX the two locations are:
+
+ /usr/local/share/manaworld/data/*
+
+ ~/.manaworld/data/*
+
+While for Windows all the data will be located at:
+
+ C:\Program Files\Mana\data\*
+
+In the UNIX case it doesn't matter in which order the data directories are
+examined.
+
+
+3. CONTENTS OF DATA PACKAGE
+
+The contents of the data packages are strictly categorized and all packages
+share a single root, similar to the paths on a UNIX system. The name of the
+package is irrelevant. An example of the contents is given by:
+
+ /graphics/sprites/forest/pinetree.png
+ /graphics/sprites/furniture/bed.png
+ /graphics/tiles/dark_forest.png
+ /graphics/tiles/city.png
+ /music/eagles_are_watching.xm
+ /music/silent_rose.xm
+ /sound/battle/sword1.ogg
+ /sound/battle/sword2.ogg
+ /maps/deep_desert.tmx
+ /maps/desert_town.tmx
+ /tilesets/dark_forest.tsx
+ /tilesets/city.tsx
+ /scripts/Portal.rb
+ /scripts/PawnShop.rb
+ /scripts/Fountain.rb
+
+
+4. TYPES OF DATA
+
+ png - The preferred format for images
+ xm  - The preferred format for music (or other kinds of module formats)
+ ogg - The preferred format for sound effects
+ tmx - The map format (to be implemented)
+ tsx - The tile set format (to be implemented)
+ rb  - A Ruby script file (application to be discussed)
+
+
+5. INITIALIZING PACKAGE MANAGEMENT
+
+When Mana starts it will scan its data directories for both packages (archives)
+and directories. When a directory is found with the same name as a package, the
+directory is the preferred location to load data from as it is assumed to be
+more up to date.
+
+Each package will have an ID and a file listing associated with it. Having made
+a list of all packages they are processed in the order of their IDs. A mapping
+is made from file to package, as follows:
+
+ /music/eagles_are_watching.xm  -> /usr/local/share/manaworld/data/musicpack
+ /music/silent_rose.xm          -> /usr/local/share/manaworld/data/musicpack
+ /sound/battle/sword1.ogg       -> ~/.manaworld/data/patch1
+ /sound/battle/sword2.ogg       -> ~/.manaworld/data/patch1
+ ...
+
+Because the packages are loaded in the order of their IDs, it is made sure that
+each file will always point to the package in which is was last updated. The
+package IDs make sure that there is an absolute ordering of the packages.
+
+To allow the client to get rid of old packages, a package can declare an
+arbitrary amount of packages with a lower ID than itself as obsolete. These
+packages will then be ignored by the client, and optionally they can be
+automatically deleted.
+
+
+6. LOADING A REQUESTED RESOURCE
+
+When the game starts and during the game, resources will continuously be asked
+for. A resource manager will take care that each resource is only loaded once.
+It also makes sure that the resources are loaded from the right package using
+the constructed mapping.
+
+As noted above, the resource manager makes sure directories are preferred
+to package files when resources are loaded. The presence of directories is
+only expected in the case of developers that will relatively frequently update
+the data while working on the next package to be released.
+
+
+7. RESOURCE MANAGEMENT DETAILS
+
+The resource management technique is critical to the overall success of the
+package management system as a whole.  Resources are loaded at runtime as they
+are needed, and unloaded as they become unused.  In order to ensure the
+autonomous functioning of this process reference counting is the agreed upon
+technique for managing loaded resources in Mana.
+
+For those unfamiliar with the practice of reference counting, it involves
+every resource object having a variable containing the number of references to
+the object. When a reference is added the function addRef() is called and when
+it is removed the function release() is called. When the reference count
+reaches zero the object will automatically delete itself, thus handling the
+cleanup of resources.
+
+Reference counting will form the core of the resource management system.  Each
+resource object will have the functionality of a reference counted object. The
+resource manager will hold ResourceEntry objects.  The resource entry object
+contains a pointer to the resource as well as the location of the path of the
+file the resource was loaded from.  This would look something like:
+
+  /**
+   * A generic reference counted resource object.
+   */
+  class Resource {
+      public:
+          /**
+           * Loads the resource from the specified path.
+           * @param filePath The path to the file to be loaded.
+           * @return <code>true</code> if loaded <code>false</code> otherwise.
+           */
+          virtual bool Load(std::string filePath) = 0;
+          ...
+          /**
+           * Increments the reference counted of this object.
+           */
+          void addRef() { ++referenceCount; }
+
+          /**
+           * Decrements the reference count and deletes the object
+           * if no references are left.
+           * @return <code>true</code> if the object was deleted
+           * <code>false</code> otherwise.
+           */
+          void release() {
+              --referenceCount;
+
+              if (!referenceCount)
+              {
+                  delete this;
+                  return true;
+              }
+
+              return false;
+          }
+      private:
+          unsigned int referenceCount;
+  };
+  ...
+  /**
+   * A resource entry descriptor.
+   */
+  struct ResourceEntry {
+      Resource*   resource;
+      std::string filePath;
+  };
+  ...
+
+The resource manager would then hold a mapping containing the resource entry as
+well as the string defining its resource identification path. The resource
+manager would thus look something like this:
+
+  /**
+   * A class for loading and managing resources.
+   */
+  class ResourceManager {
+      public:
+          ...
+      private:
+          std::map<std::string, ResourceEntry> resources;
+  };
+  ...
+
+This will allow the game to load resources with little awareness of the actual
+path from which they were loaded.  The resource manager will also act as a
+resource object factory.  A factory object is an object that creates an
+instance of an object derived from a common base class.  In this case it will
+create Resource objects. This would make the ResourceManager object look like
+this:
+
+  /**
+   * A class for loading and managing resources.
+   */
+  class ResourceManager {
+      public:
+          enum E_RESOURCE_TYPE
+          {
+             MAP,
+             MUSIC,
+             IMAGE,
+             SCRIPT,
+             TILESET,
+             SOUND_EFFECT
+          };
+
+          /**
+           * Creates a resource and adds it to the resource map.
+           * The idPath is converted into the appropriate path
+           * for the current operating system and the resource
+           * is loaded.
+           * @param type The type of resource to load.
+           * @param idPath The resource identifier path.
+           * @return A valid resource or <code>NULL</code> if
+           * the resource could not be loaded.
+           */
+          Resource* Create(const E_RESOURCE_TYPE& type,
+                                            std::string idPath);
+          ...
+      private:
+          std::map<std::string, ResourceEntry> resources;
+  };
+  ...
+
+Loading a resource would then look something like:
+
+  Image* img = (Image*) ResourceManager.Create(ResourceManager::IMAGE,
+                                         "/graphics/tiles/dark_forest.png");

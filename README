@@ -1,0 +1,110 @@
+THE MANA CLIENT
+===============
+
+ Version: 1.0.0       Date: 2010-03-31
+
+ Development team:
+  - See AUTHORS file for a list
+
+ Powered by:
+
+  - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework)
+  - Guichan (GUI framework)
+  - libxml2 (XML parsing and writing)
+  - PhysFS (Data files)
+  - ENet (UDP networking library)
+  - libcurl (HTTP downloads)
+  - zlib (Archives)
+
+
+0. Index
+--------
+
+1. Account
+2. Commands
+3. Skills
+4. Support
+
+1. Account
+----------
+
+To create an account you can usually press the "Register" button after
+choosing your server. When this doesn't work, visit the website of the server
+you'd like to register on, since they may be using an online registration
+form instead.
+
+2. Commands
+-----------
+
+KEYBOARD:
+
+Use arrow keys to move around. Other keys:
+
+- Ctrl               attack
+- F1                 toggle the online help
+- F2                 toggle profile window
+- F3                 toggle inventory window
+- F4                 toggle equipment window
+- F5                 toggle skills window
+- F6                 toggle minimap
+- F7                 toggle chat window
+- F8                 toggle shortcut window
+- F9                 show setup window
+- F10                toggle debug window
+- Alt + 0-9          show emotions / usuable at skill level 2.
+- Alt + S            sit down / stand up / usuable at skill level 3.
+- Alt + F            toggle debug pathfinding feature
+- Alt + P            take screenshot
+- Alt + T            turns on anti-trade function / usuable at skill level 1.
+- A                  target nearest monster
+- H                  hide all non-sticky windows
+- G or Z             pick up item
+- Enter              focus chat window / send message
+
+MOUSE:
+
+Left click to execute default action: walk, pick up an item, attack a monster
+and talk to NPCs (be sure to click on their feet). Right click to show up a
+context menu. Holding [Left Shift] prevents from walking when attacking.
+
+/Commands:
+
+- /help              Displays the list of commands
+- /announce          broadcasts a global msg(Gm Cammand only)
+- /clear             clears the chat window
+- /who               shows how many players are online
+- /where             displays the map name your currently on
+- /whisper           send a private msg to another player
+                        (format: /whisper <charname> <message>)
+                     If the <nick> has spaces in it, enclose it in double
+                        quotes e.g. /whisper "char name" <message>
+- /record            Records the Chat output
+                     (format: /record <filename to write to> starts the record
+                        session /record again
+                      stops the session)
+- /party             <command> <params>: Party commands
+ - /party new         creates a new party /party new <party name>
+ - /party create      creates a new party /party create <party name>
+ - /party prefix      This commands sets the party prefix character
+                         /party prefix <prefix-char>
+                      "/party prefix" reports the current party prefix
+                         character
+ - /party leave       This command causes the player to leave the party.
+Type /help party <option> for further help.
+- /present           This command gets a list of players within hearing
+- /toggle            make the chatlog lose focus on a blank line or after
+                       message. (format: /toggle <option>, where option can be
+                       '1', 'y' or 't' to make the chatlog lose focus on a
+                       blank line, and '0', 'n' or 'f' to make the chatlog lose
+                       focus after every message.  /toggle displays the status)
+For more information, type /help <command>
+
+4. Support
+----------
+
+If you're having issues with this client, feel free to report them to us.
+There is a bug tracker at http://bugs.manasource.org/ and you can find us on
+IRC on irc.freenode.net in the #mana channel.
+
+If you have feedback about a specific game that uses the Mana client, be sure
+to contact the developers of the game instead.

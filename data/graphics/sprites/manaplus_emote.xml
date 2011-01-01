@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sprite variants="20" variant_offset="1">
+    <imageset name="base" src="graphics/sprites/manaplus_emotions.png" width="30" height="32" />
+
+    <action name="stand" imageset="base">
+        <animation direction="default">
+            <frame index="0" />
+        </animation>
+    </action>
+</sprite>

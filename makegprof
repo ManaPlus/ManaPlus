@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mv run/gmon.out .
+gprof run/bin/manaplus >gprof.txt
+cat gprof.txt | gprof2dot.py | dot -Tpng -o gprof.png

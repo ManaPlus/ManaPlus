@@ -1,0 +1,2009 @@
+/*
+ *  The Mana Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *
+ *  This file is part of The Mana Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "being.h"
+
+#include "actorspritemanager.h"
+#include "animatedsprite.h"
+#include "client.h"
+#include "configuration.h"
+#include "effectmanager.h"
+#include "graphics.h"
+#include "guild.h"
+#include "localplayer.h"
+#include "log.h"
+#include "map.h"
+#include "particle.h"
+#include "party.h"
+#include "playerrelations.h"
+#include "simpleanimation.h"
+#include "sound.h"
+#include "sprite.h"
+#include "text.h"
+#include "statuseffect.h"
+
+#include "gui/buy.h"
+#include "gui/buysell.h"
+#include "gui/gui.h"
+#include "gui/npcdialog.h"
+#include "gui/npcpostdialog.h"
+#include "gui/sell.h"
+#include "gui/socialwindow.h"
+#include "gui/speechbubble.h"
+#include "gui/theme.h"
+#include "gui/truetypefont.h"
+#include "gui/userpalette.h"
+
+#include "net/charhandler.h"
+#include "net/gamehandler.h"
+#include "net/net.h"
+#include "net/npchandler.h"
+#include "net/playerhandler.h"
+
+#include "resources/beinginfo.h"
+#include "resources/colordb.h"
+#include "resources/emotedb.h"
+#include "resources/image.h"
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
+#include "resources/monsterdb.h"
+#include "resources/npcdb.h"
+#include "resources/resourcemanager.h"
+
+#include "gui/widgets/chattab.h"
+
+#include "utils/dtor.h"
+#include "utils/stringutils.h"
+#include "utils/xml.h"
+
+#include <cassert>
+#include <cmath>
+
+#define CACHE_SIZE 50
+#define HAIR_FILE "hair.xml"
+
+static const int DEFAULT_BEING_WIDTH = 32;
+static const int DEFAULT_BEING_HEIGHT = 32;
+
+class BeingCacheEntry
+{
+    public:
+        BeingCacheEntry(int id):
+            mId(id),
+            mName(""),
+            mPartyName(""),
+            mLevel(0),
+            mPvpRank(0),
+            mTime(0)
+        {
+        }
+
+        int getId() const
+        { return mId; }
+
+        /**
+         * Returns the name of the being.
+         */
+        const std::string &getName() const
+        { return mName; }
+
+        /**
+         * Sets the name for the being.
+         *
+         * @param name The name that should appear.
+         */
+        void setName(const std::string &name)
+        { mName = name; }
+
+        /**
+         * Following are set from the server (mainly for players)
+         */
+        void setPartyName(const std::string &name)
+        { mPartyName = name; }
+
+        const std::string &getPartyName() const
+        { return mPartyName; }
+
+        void setLevel(int n)
+        { mLevel = n; }
+
+        int getLevel() const
+        { return mLevel; }
+
+        void setTime(int n)
+        { mTime = n; }
+
+        int getTime() const
+        { return mTime; }
+
+        unsigned getPvpRank() const
+        { return mPvpRank; }
+
+        void setPvpRank(int r)
+        { mPvpRank = r; }
+
+        std::string getIp() const
+        { return mIp; }
+
+        void setIp(std::string ip)
+        { mIp = ip; }
+
+    protected:
+        int mId;                        /**< Unique sprite id */
+        std::string mName;              /**< Name of character */
+        std::string mPartyName;
+        int mLevel;
+        unsigned int mPvpRank;
+        int mTime;
+        std::string mIp;
+};
+
+
+int Being::mNumberOfHairstyles = 1;
+
+int Being::mUpdateConfigTime = 0;
+unsigned int Being::mConfLineLim = 0;
+int Being::mSpeechType = 0;
+bool Being::mHighlightMapPortals = false;
+bool Being::mHighlightMonsterAttackRange = false;
+bool Being::mLowTraffic = true;
+bool Being::mDrawHotKeys = true;
+bool Being::mShowBattleEvents = false;
+bool Being::mShowMobHP = false;
+
+std::list<BeingCacheEntry*> beingInfoCache;
+
+
+// TODO: mWalkTime used by eAthena only
+Being::Being(int id, Type type, Uint16 subtype, Map *map):
+    ActorSprite(id),
+    mInfo(BeingInfo::Unknown),
+    mActionTime(0),
+    mEmotion(0), mEmotionTime(0),
+    mSpeechTime(0),
+    mAttackType(1),
+    mAttackSpeed(350),
+    mAction(STAND),
+    mSubType(0xFFFF),
+    mDirection(DOWN),
+    mSpriteDirection(DIRECTION_DOWN),
+    mDispName(0),
+    mShowName(false),
+    mEquippedWeapon(NULL),
+    mText(0),
+    mLevel(0),
+    mGender(GENDER_UNSPECIFIED),
+    mParty(0),
+    mIsGM(false),
+    mType(type),
+    mX(0), mY(0),
+    mDamageTaken(0),
+    mHP(0), mMaxHP(0),
+    mDistance(0),
+    mIsReachable(REACH_UNKNOWN),
+    mErased(false),
+    mEnemy(false),
+    mIp(""),
+    mPvpRank(0)
+{
+    mSpriteRemap = new int[20];
+
+    for (int f = 0; f < 20; f ++)
+        mSpriteRemap[f] = f;
+
+    setMap(map);
+    setSubtype(subtype);
+
+    mSpeechBubble = new SpeechBubble;
+
+    mWalkSpeed = Net::getPlayerHandler()->getDefaultWalkSpeed();
+
+    if (getType() == PLAYER)
+        mShowName = config.getBoolValue("visiblenames");
+
+    config.addListener("visiblenames", this);
+
+    if (getType() == NPC)
+        setShowName(true);
+    else
+        setShowName(mShowName);
+
+    updateColors();
+    resetCounters();
+}
+
+Being::~Being()
+{
+    config.removeListener("visiblenames", this);
+
+    delete[] mSpriteRemap;
+    mSpriteRemap = 0;
+
+    delete mSpeechBubble;
+    mSpeechBubble = 0;
+    delete mDispName;
+    mDispName = 0;
+    delete mText;
+    mText = 0;
+}
+
+void Being::setSubtype(Uint16 subtype)
+{
+    if (!mInfo)
+        return;
+
+    if (subtype == mSubType)
+        return;
+
+    mSubType = subtype;
+
+    if (getType() == MONSTER)
+    {
+        mInfo = MonsterDB::get(mSubType);
+        if (mInfo)
+        {
+            setName(mInfo->getName());
+            setupSpriteDisplay(mInfo->getDisplay());
+        }
+    }
+    else if (getType() == NPC)
+    {
+        mInfo = NPCDB::get(mSubType);
+        if (mInfo)
+            setupSpriteDisplay(mInfo->getDisplay(), false);
+    }
+    else if (getType() == PLAYER)
+    {
+        int id = -100 - subtype;
+
+        // Prevent showing errors when sprite doesn't exist
+        if (!ItemDB::exists(id))
+            id = -100;
+
+        setSprite(Net::getCharHandler()->baseSprite(), id);
+    }
+}
+
+ActorSprite::TargetCursorSize Being::getTargetCursorSize() const
+{
+    if (!mInfo)
+        return ActorSprite::TC_SMALL;
+
+    return mInfo->getTargetCursorSize();
+}
+
+int Being::getTargetOffsetX() const
+{
+    if (!mInfo)
+        return 0;
+
+    return mInfo->getTargetOffsetX();
+}
+
+int Being::getTargetOffsetY() const
+{
+    if (!mInfo)
+        return 0;
+
+    return mInfo->getTargetOffsetY();
+}
+
+unsigned char Being::getWalkMask() const
+{
+    if (!mInfo)
+        return 0;
+
+    return mInfo->getWalkMask();
+}
+
+Map::BlockType Being::getBlockType() const
+{
+    if (!mInfo)
+        return Map::BLOCKTYPE_NONE;
+
+    return mInfo->getBlockType();
+}
+
+void Being::setPosition(const Vector &pos)
+{
+    Actor::setPosition(pos);
+
+    updateCoords();
+
+    if (mText)
+    {
+        mText->adviseXY((int)pos.x,
+                        (int)pos.y - getHeight() - mText->getHeight() - 6);
+    }
+}
+
+void Being::setDestination(int dstX, int dstY)
+{
+    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    {
+        if (mMap)
+            setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
+        return;
+    }
+
+    // Manaserv's part:
+
+    // We can't calculate anything without a map anyway.
+    if (!mMap)
+        return;
+
+    // Don't handle flawed destinations from server...
+    if (dstX == 0 || dstY == 0)
+        return;
+
+    // If the destination is unwalkable, don't bother trying to get there
+    if (!mMap->getWalk(dstX / 32, dstY / 32))
+        return;
+
+    Position dest = mMap->checkNodeOffsets(getCollisionRadius(), getWalkMask(),
+                                           dstX, dstY);
+    Path thisPath = mMap->findPixelPath(static_cast<int>(mPos.x),
+        static_cast<int>(mPos.y), dest.x, dest.y,
+        static_cast<int>(getCollisionRadius()),
+        static_cast<int>(getWalkMask()));
+
+    if (thisPath.empty())
+    {
+        // If there is no path but the destination is on the same walkable tile,
+        // we accept it.
+        if ((int)mPos.x / 32 == dest.x / 32
+            && (int)mPos.y / 32 == dest.y / 32)
+        {
+            mDest.x = static_cast<float>(dest.x);
+            mDest.y = static_cast<float>(dest.y);
+        }
+        setPath(Path());
+        return;
+    }
+
+    // The destination is valid, so we set it.
+    mDest.x = static_cast<float>(dest.x);
+    mDest.y = static_cast<float>(dest.y);
+
+    setPath(thisPath);
+}
+
+void Being::clearPath()
+{
+    mPath.clear();
+}
+
+void Being::setPath(const Path &path)
+{
+    mPath = path;
+
+    if ((Net::getNetworkType() == ServerInfo::TMWATHENA) &&
+        mAction != MOVE && mAction != DEAD)
+    {
+        nextTile();
+        mActionTime = tick_time;
+    }
+}
+
+void Being::setSpeech(const std::string &text, int time)
+{
+    if (!userPalette)
+        return;
+
+    // Remove colors
+    mSpeech = removeColors(text);
+
+    // Trim whitespace
+    trim(mSpeech);
+
+    unsigned int lineLim = mConfLineLim;
+    if (lineLim > 0 && mSpeech.length() > lineLim)
+        mSpeech = mSpeech.substr(0, lineLim);
+
+    trim(mSpeech);
+    if (mSpeech.length() < 1)
+        return;
+
+    // Check for links
+    std::string::size_type start = mSpeech.find('[');
+    std::string::size_type end = mSpeech.find(']', start);
+
+    while (start != std::string::npos && end != std::string::npos)
+    {
+        // Catch multiple embeds and ignore them so it doesn't crash the client.
+        while ((mSpeech.find('[', start + 1) != std::string::npos) &&
+               (mSpeech.find('[', start + 1) < end))
+        {
+            start = mSpeech.find('[', start + 1);
+        }
+
+        std::string::size_type position = mSpeech.find('|');
+        if (mSpeech[start + 1] == '@' && mSpeech[start + 2] == '@')
+        {
+            mSpeech.erase(end, 1);
+            mSpeech.erase(start, (position - start) + 1);
+        }
+        position = mSpeech.find('@');
+
+        while (position != std::string::npos)
+        {
+            mSpeech.erase(position, 2);
+            position = mSpeech.find('@');
+        }
+
+        start = mSpeech.find('[', start + 1);
+        end = mSpeech.find(']', start);
+    }
+
+    if (!mSpeech.empty())
+        mSpeechTime = time <= SPEECH_MAX_TIME ? time : SPEECH_MAX_TIME;
+
+    const int speech = mSpeechType;
+    if (speech == TEXT_OVERHEAD && userPalette)
+    {
+        delete mText;
+
+        mText = new Text(mSpeech,
+                         getPixelX(), getPixelY() - getHeight(),
+                         gcn::Graphics::CENTER,
+                         &userPalette->getColor(UserPalette::PARTICLE),
+                         true);
+    }
+}
+
+void Being::takeDamage(Being *attacker, int amount, AttackType type)
+{
+    if (!userPalette || !attacker)
+        return;
+
+    gcn::Font *font = 0;
+    std::string damage = amount ? toString(amount) : type == FLEE ?
+            "dodge" : "miss";
+    const gcn::Color *color;
+
+    if (gui)
+        font = gui->getInfoParticleFont();
+
+    // Selecting the right color
+    if (type == CRITICAL || type == FLEE)
+    {
+        if (attacker == player_node)
+        {
+            color = &userPalette->getColor(
+                UserPalette::HIT_LOCAL_PLAYER_CRITICAL);
+        }
+        else
+        {
+            color = &userPalette->getColor(UserPalette::HIT_CRITICAL);
+        }
+    }
+    else if (!amount)
+    {
+        if (attacker == player_node)
+        {
+            // This is intended to be the wrong direction to visually
+            // differentiate between hits and misses
+            color = &userPalette->getColor(UserPalette::HIT_LOCAL_PLAYER_MISS);
+        }
+        else
+        {
+            color = &userPalette->getColor(UserPalette::MISS);
+        }
+    }
+    else if (getType() == MONSTER)
+    {
+        if (attacker == player_node)
+        {
+            color = &userPalette->getColor(
+                UserPalette::HIT_LOCAL_PLAYER_MONSTER);
+        }
+        else
+        {
+            color = &userPalette->getColor(
+                UserPalette::HIT_PLAYER_MONSTER);
+        }
+    }
+    else if (getType() == PLAYER && attacker != player_node
+             && this == player_node)
+    {
+        // here player was attacked by other player. mark him as enemy.
+        color = &userPalette->getColor(UserPalette::HIT_PLAYER_PLAYER);
+        attacker->setEnemy(true);
+        attacker->updateColors();
+    }
+    else
+    {
+        color = &userPalette->getColor(UserPalette::HIT_MONSTER_PLAYER);
+    }
+
+    if (chatWindow && mShowBattleEvents)
+    {
+        if (this == player_node)
+        {
+            if (attacker->getType() == PLAYER || amount)
+            {
+                chatWindow->battleChatLog(attacker->getName() + " : Hit you  -"
+                    + toString(amount), BY_OTHER);
+            }
+        }
+        else if (attacker == player_node && amount)
+        {
+            chatWindow->battleChatLog(attacker->getName() + " : You hit "
+                + getName() + " -" + toString(amount), BY_PLAYER);
+        }
+    }
+    if (font && particleEngine)
+    {
+        // Show damage number
+        particleEngine->addTextSplashEffect(damage,
+                                            getPixelX(), getPixelY() - 16,
+                                            color, font, true);
+    }
+
+    if (amount > 0)
+    {
+        if (player_node && player_node == this)
+            player_node->setLastHitFrom(attacker->getName());
+
+        mDamageTaken += amount;
+        if (mInfo)
+        {
+            sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT));
+            if (!mInfo->isStaticMaxHP())
+            {
+                if (!mHP && mInfo->getMaxHP() < mDamageTaken)
+                    mInfo->setMaxHP(mDamageTaken);
+            }
+        }
+        if (mHP && isAlive())
+        {
+            mHP -= amount;
+            if (mHP < 0)
+                mHP = 0;
+        }
+
+        if (getType() == MONSTER)
+            updateName();
+        else if (getType() == PLAYER && socialWindow && getName() != "")
+            socialWindow->updateAvatar(getName());
+
+        if (effectManager)
+        {
+            if (type != CRITICAL)
+                effectManager->trigger(26, this);
+            else
+                effectManager->trigger(28, this);
+        }
+    }
+}
+
+void Being::handleAttack(Being *victim, int damage,
+                         AttackType type _UNUSED_)
+{
+    if (!victim || !mInfo)
+        return;
+
+    if (this != player_node)
+        setAction(Being::ATTACK, 1);
+
+    if (getType() == PLAYER && mEquippedWeapon)
+        fireMissile(victim, mEquippedWeapon->getMissileParticle());
+    else if (mInfo->getAttack(mAttackType))
+        fireMissile(victim, mInfo->getAttack(mAttackType)->missileParticle);
+
+    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    {
+        reset();
+        mActionTime = tick_time;
+    }
+
+    sound.playSfx(mInfo->getSound((damage > 0) ?
+                  SOUND_EVENT_HIT : SOUND_EVENT_MISS));
+}
+
+void Being::setName(const std::string &name)
+{
+    if (getType() == NPC)
+    {
+        mName = name.substr(0, name.find('#', 0));
+        showName();
+    }
+    else
+    {
+        mName = name;
+
+        if (getType() == PLAYER && getShowName())
+            showName();
+    }
+}
+
+void Being::setShowName(bool doShowName)
+{
+    if (mShowName == doShowName)
+        return;
+
+    mShowName = doShowName;
+
+    if (doShowName)
+    {
+        showName();
+    }
+    else
+    {
+        delete mDispName;
+        mDispName = 0;
+    }
+}
+
+void Being::setGuildName(const std::string &name)
+{
+    mGuildName = name;
+}
+
+
+void Being::setGuildPos(const std::string &pos _UNUSED_)
+{
+//    logger->log("Got guild position \"%s\" for being %s(%i)", pos.c_str(), mName.c_str(), mId);
+}
+
+void Being::addGuild(Guild *guild)
+{
+    if (!guild)
+        return;
+
+    mGuilds[guild->getId()] = guild;
+//    guild->addMember(mId, 0, mName);
+
+    if (this == player_node && socialWindow)
+        socialWindow->addTab(guild);
+}
+
+void Being::removeGuild(int id)
+{
+    if (this == player_node && socialWindow)
+        socialWindow->removeTab(mGuilds[id]);
+
+    if (mGuilds[id])
+        mGuilds[id]->removeMember(getName());
+    mGuilds.erase(id);
+}
+
+Guild *Being::getGuild(const std::string &guildName) const
+{
+    std::map<int, Guild*>::const_iterator itr, itr_end = mGuilds.end();
+    for (itr = mGuilds.begin(); itr != itr_end; ++itr)
+    {
+        Guild *guild = itr->second;
+        if (guild && guild->getName() == guildName)
+            return guild;
+    }
+
+    return 0;
+}
+
+Guild *Being::getGuild(int id) const
+{
+    std::map<int, Guild*>::const_iterator itr;
+    itr = mGuilds.find(id);
+    if (itr != mGuilds.end())
+        return itr->second;
+
+    return 0;
+}
+
+Guild *Being::getGuild() const
+{
+    std::map<int, Guild*>::const_iterator itr;
+    itr = mGuilds.begin();
+    if (itr != mGuilds.end())
+        return itr->second;
+
+    return 0;
+}
+
+void Being::clearGuilds()
+{
+    std::map<int, Guild*>::const_iterator itr, itr_end = mGuilds.end();
+    for (itr = mGuilds.begin(); itr != itr_end; ++itr)
+    {
+        Guild *guild = itr->second;
+
+        if (guild)
+        {
+            if (this == player_node && socialWindow)
+                socialWindow->removeTab(guild);
+
+            guild->removeMember(mId);
+        }
+    }
+
+    mGuilds.clear();
+}
+
+void Being::setParty(Party *party)
+{
+    if (party == mParty)
+        return;
+
+    Party *old = mParty;
+    mParty = party;
+
+    if (old)
+        old->removeMember(mId);
+
+    if (party)
+        party->addMember(mId, mName);
+
+    updateColors();
+
+    if (this == player_node && socialWindow)
+    {
+        if (old)
+            socialWindow->removeTab(old);
+
+        if (party)
+            socialWindow->addTab(party);
+    }
+}
+
+void Being::updateGuild()
+{
+    if (!player_node)
+        return;
+
+    Guild *guild = player_node->getGuild();
+    if (!guild)
+    {
+        clearGuilds();
+        updateColors();
+        return;
+    }
+    if (guild->getMember(getName()))
+        setGuild(guild);
+    updateColors();
+}
+
+void Being::setGuild(Guild *guild)
+{
+    if (guild == getGuild())
+        return;
+
+    Guild *old = getGuild();
+    clearGuilds();
+    addGuild(guild);
+
+    if (old)
+        old->removeMember(mName);
+
+//    if (guild)
+//        guild->addMember(mId, mName);
+
+    updateColors();
+
+    if (this == player_node && socialWindow)
+    {
+        if (old)
+            socialWindow->removeTab(old);
+
+        if (guild)
+            socialWindow->addTab(guild);
+    }
+}
+
+void Being::fireMissile(Being *victim, const std::string &particle)
+{
+    if (!victim || particle.empty() || !particleEngine)
+        return;
+
+    Particle *target = particleEngine->createChild();
+
+    if (!target)
+        return;
+
+    Particle *missile = target->addEffect(particle, getPixelX(), getPixelY());
+
+    if (missile)
+    {
+        target->moveBy(Vector(0.0f, 0.0f, 32.0f));
+        target->setLifetime(1000);
+        victim->controlParticle(target);
+
+        missile->setDestination(target, 7, 0);
+        missile->setDieDistance(8);
+        missile->setLifetime(900);
+    }
+
+}
+
+void Being::setAction(Action action, int attackType _UNUSED_)
+{
+    std::string currentAction = SpriteAction::INVALID;
+
+    switch (action)
+    {
+        case MOVE:
+            currentAction = SpriteAction::MOVE;
+            // Note: When adding a run action,
+            // Differentiate walk and run with action name,
+            // while using only the ACTION_MOVE.
+            break;
+        case SIT:
+            currentAction = SpriteAction::SIT;
+            break;
+        case ATTACK:
+            if (mEquippedWeapon)
+            {
+                currentAction = mEquippedWeapon->getAttackAction();
+                reset();
+            }
+            else
+            {
+                mAttackType = attackType;
+                if (!mInfo || !mInfo->getAttack(attackType))
+                    break;
+
+                currentAction = mInfo->getAttack(attackType)->action;
+                reset();
+
+                if (Net::getNetworkType() == ServerInfo::MANASERV
+                    && mInfo->getAttack(attackType))
+                {
+                    //attack particle effect
+                    std::string particleEffect = mInfo->getAttack(attackType)
+                                                 ->particleEffect;
+                    if (!particleEffect.empty() && Particle::enabled)
+                    {
+                        int rotation = 0;
+                        switch (mSpriteDirection)
+                        {
+                            case DIRECTION_DOWN: rotation = 0; break;
+                            case DIRECTION_LEFT: rotation = 90; break;
+                            case DIRECTION_UP: rotation = 180; break;
+                            case DIRECTION_RIGHT: rotation = 270; break;
+                            default: break;
+                        }
+                        ;
+                        if (particleEngine)
+                        {
+                            Particle *p = particleEngine->addEffect(
+                                particleEffect, 0, 0, rotation);
+                            if (p)
+                                controlParticle(p);
+                        }
+                    }
+                }
+            }
+
+            break;
+        case HURT:
+            //currentAction = SpriteAction::HURT;// Buggy: makes the player stop
+                                            // attacking and unable to attack
+                                            // again until he moves.
+                                            // TODO: fix this!
+            break;
+        case DEAD:
+            currentAction = SpriteAction::DEAD;
+            if (mInfo)
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE));
+            break;
+        case STAND:
+            currentAction = SpriteAction::STAND;
+            break;
+        default:
+            logger->log("Being::setAction unknown action: "
+                + toString(static_cast<unsigned>(action)));
+            break;
+    }
+
+    if (currentAction != SpriteAction::INVALID)
+    {
+        play(currentAction);
+        mAction = action;
+    }
+
+    if (currentAction != SpriteAction::MOVE)
+        mActionTime = tick_time;
+}
+
+void Being::setDirection(Uint8 direction)
+{
+    if (mDirection == direction)
+        return;
+
+    mDirection = direction;
+
+    // if the direction does not change much, keep the common component
+    int mFaceDirection = mDirection & direction;
+    if (!mFaceDirection)
+        mFaceDirection = direction;
+
+    SpriteDirection dir;
+    if (mFaceDirection & UP)
+        dir = DIRECTION_UP;
+    else if (mFaceDirection & DOWN)
+        dir = DIRECTION_DOWN;
+    else if (mFaceDirection & RIGHT)
+        dir = DIRECTION_RIGHT;
+    else
+        dir = DIRECTION_LEFT;
+    mSpriteDirection = dir;
+
+    CompoundSprite::setDirection(dir);
+}
+
+/** TODO: Used by eAthena only */
+void Being::nextTile()
+{
+    if (mPath.empty())
+    {
+        setAction(STAND);
+        return;
+    }
+
+    Position pos = mPath.front();
+    mPath.pop_front();
+
+    int dir = 0;
+    if (pos.x > mX)
+        dir |= RIGHT;
+    else if (pos.x < mX)
+        dir |= LEFT;
+    if (pos.y > mY)
+        dir |= DOWN;
+    else if (pos.y < mY)
+        dir |= UP;
+
+    setDirection(static_cast<Uint8>(dir));
+
+    if (!mMap->getWalk(pos.x, pos.y, getWalkMask()))
+    {
+        setAction(STAND);
+        return;
+    }
+
+    mX = pos.x;
+    mY = pos.y;
+    setAction(MOVE);
+    mActionTime += (int)(mWalkSpeed.x / 10);
+}
+
+int Being::getCollisionRadius() const
+{
+    // FIXME: Get this from XML file
+    return 16;
+}
+
+void Being::logic()
+{
+    // Reduce the time that speech is still displayed
+    if (mSpeechTime > 0)
+        mSpeechTime--;
+
+    // Remove text and speechbubbles if speech boxes aren't being used
+    if (mSpeechTime == 0 && mText)
+    {
+        delete mText;
+        mText = 0;
+    }
+
+    int frameCount = static_cast<int>(getFrameCount());
+    if ((Net::getNetworkType() == ServerInfo::MANASERV) && (mAction != DEAD))
+    {
+        const Vector dest = (mPath.empty()) ?
+            mDest : Vector(static_cast<float>(mPath.front().x),
+                           static_cast<float>(mPath.front().y));
+
+        // This is a hack that stops NPCs from running off the map...
+        if (mDest.x <= 0 && mDest.y <= 0)
+            return;
+
+        // The Vector representing the difference between current position
+        // and the next destination path node.
+        Vector dir = dest - mPos;
+
+        const float nominalLength = dir.length();
+
+        // When we've not reached our destination, move to it.
+        if (nominalLength > 0.0f && !mWalkSpeed.isNull())
+        {
+            // The deplacement of a point along a vector is calculated
+            // using the Unit Vector (â) multiplied by the point speed.
+            // â = a / ||a|| (||a|| is the a length.)
+            // Then, diff = (dir/||dir||) * speed.
+            const Vector normalizedDir = dir.normalized();
+            Vector diff(normalizedDir.x * mWalkSpeed.x,
+                        normalizedDir.y * mWalkSpeed.y);
+
+            // Test if we don't miss the destination by a move too far:
+            if (diff.length() > nominalLength)
+            {
+                setPosition(mPos + dir);
+
+                // Also, if the destination is reached, try to get the next
+                // path point, if existing.
+                if (!mPath.empty())
+                    mPath.pop_front();
+            }
+            // Otherwise, go to it using the nominal speed.
+            else
+            {
+                setPosition(mPos + diff);
+            }
+
+            if (mAction != MOVE)
+                setAction(MOVE);
+
+            // Update the player sprite direction.
+            // N.B.: We only change this if the distance is more than one pixel.
+            if (nominalLength > 1.0f)
+            {
+                int direction = 0;
+                const float dx = std::abs(dir.x);
+                float dy = std::abs(dir.y);
+
+                // When not using mouse for the player, we slightly prefer
+                // UP and DOWN position, especially when walking diagonally.
+                if (player_node && this == player_node &&
+                    !player_node->isPathSetByMouse())
+                {
+                    dy = dy + 2;
+                }
+
+                if (dx > dy)
+                     direction |= (dir.x > 0) ? RIGHT : LEFT;
+                else
+                     direction |= (dir.y > 0) ? DOWN : UP;
+
+                setDirection(static_cast<Uint8>(direction));
+            }
+        }
+        else if (!mPath.empty())
+        {
+            // If the current path node has been reached,
+            // remove it and go to the next one.
+            mPath.pop_front();
+        }
+        else if (mAction == MOVE)
+        {
+            setAction(STAND);
+        }
+    }
+    else if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    {
+
+        switch (mAction)
+        {
+            case STAND:
+            case SIT:
+            case DEAD:
+            case HURT:
+            default:
+               break;
+
+            case MOVE:
+            {
+                if (getWalkSpeed().x
+                    && (int) ((get_elapsed_time(mActionTime) * frameCount)
+                    / getWalkSpeed().x) >= frameCount)
+                {
+                    nextTile();
+                }
+                break;
+            }
+
+            case ATTACK:
+            {
+                std::string particleEffect = "";
+
+                if (!mActionTime)
+                    break;
+
+                int curFrame = 0;
+                if (mAttackSpeed)
+                {
+                    curFrame = (get_elapsed_time(mActionTime) * frameCount)
+                        / mAttackSpeed;
+                }
+
+                //attack particle effect
+                if (mEquippedWeapon)
+                {
+                    particleEffect = mEquippedWeapon->getParticleEffect();
+
+                    if (!particleEffect.empty() &&
+                        findSameSubstring(particleEffect,
+                        paths.getStringValue("particles")).empty())
+                    {
+                        particleEffect = paths.getStringValue("particles")
+                                         + particleEffect;
+                    }
+                }
+                else if (mInfo && mInfo->getAttack(mAttackType))
+                {
+                    particleEffect = mInfo->getAttack(mAttackType)
+                        ->particleEffect;
+                }
+
+                if (particleEngine && !particleEffect.empty()
+                    && Particle::enabled && curFrame == 1)
+                {
+                    int rotation = 0;
+
+                    switch (mDirection)
+                    {
+                        case DOWN: rotation = 0; break;
+                        case LEFT: rotation = 90; break;
+                        case UP: rotation = 180; break;
+                        case RIGHT: rotation = 270; break;
+                        default: break;
+                    }
+                    Particle *p = particleEngine->addEffect(particleEffect,
+                        0, 0, rotation);
+                        controlParticle(p);
+                }
+
+                if (curFrame >= frameCount)
+                    nextTile();
+
+                break;
+            }
+        }
+
+        // Update pixel coordinates
+        setPosition(static_cast<float>(mX * 32 + 16 + getXOffset()),
+                    static_cast<float>(mY * 32 + 32 + getYOffset()));
+    }
+
+    if (mEmotion != 0)
+    {
+        mEmotionTime--;
+        if (mEmotionTime == 0)
+            mEmotion = 0;
+    }
+
+    ActorSprite::logic();
+
+//    int frameCount = static_cast<int>(getFrameCount());
+    if (frameCount < 10)
+        frameCount = 10;
+
+    if (!isAlive() && getWalkSpeed().x
+        && Net::getGameHandler()->removeDeadBeings()
+        && (int) ((get_elapsed_time(mActionTime)
+        / getWalkSpeed().x) >= static_cast<float>(frameCount)))
+    {
+        if (getType() != PLAYER && actorSpriteManager)
+            actorSpriteManager->destroy(this);
+    }
+}
+
+void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
+{
+    if (!mEmotion)
+        return;
+
+    const int px = getPixelX() - offsetX - 16;
+    const int py = getPixelY() - offsetY - 64 - 32;
+    const int emotionIndex = mEmotion - 1;
+
+    if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
+        EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+}
+
+void Being::drawSpeech(int offsetX, int offsetY)
+{
+    if (!mSpeechBubble)
+        return;
+
+    const int px = getPixelX() - offsetX;
+    const int py = getPixelY() - offsetY;
+    const int speech = mSpeechType;
+
+    // Draw speech above this being
+    if (mSpeechTime == 0)
+    {
+        if (mSpeechBubble->isVisible())
+            mSpeechBubble->setVisible(false);
+    }
+    else if (mSpeechTime > 0 && (speech == NAME_IN_BUBBLE ||
+             speech == NO_NAME_IN_BUBBLE))
+    {
+        const bool showName = (speech == NAME_IN_BUBBLE);
+
+        delete mText;
+        mText = 0;
+
+        mSpeechBubble->setCaption(showName ? mName : "", mTextColor);
+
+        mSpeechBubble->setText(mSpeech, showName);
+        mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
+                                   py - getHeight()
+                                   - (mSpeechBubble->getHeight()));
+        mSpeechBubble->setVisible(true);
+    }
+    else if (mSpeechTime > 0 && speech == TEXT_OVERHEAD)
+    {
+        mSpeechBubble->setVisible(false);
+
+        if (!mText && userPalette)
+        {
+            mText = new Text(mSpeech,
+                             getPixelX(), getPixelY() - getHeight(),
+                             gcn::Graphics::CENTER,
+                             &userPalette->getColor(UserPalette::PARTICLE),
+                             true);
+        }
+    }
+    else if (speech == NO_SPEECH)
+    {
+        mSpeechBubble->setVisible(false);
+
+        delete mText;
+        mText = 0;
+    }
+}
+
+/** TODO: eAthena only */
+int Being::getOffset(char pos, char neg) const
+{
+    // Check whether we're walking in the requested direction
+    if (mAction != MOVE ||  !(mDirection & (pos | neg)))
+        return 0;
+
+    int offset = 0;
+
+    if (mMap)
+    {
+        offset = (pos == LEFT && neg == RIGHT) ?
+            (int)((static_cast<float>(get_elapsed_time(mActionTime))
+             * static_cast<float>(mMap->getTileWidth()))
+             / static_cast<float>(mWalkSpeed.x)) :
+            (int)((static_cast<float>(get_elapsed_time(mActionTime))
+            * static_cast<float>(mMap->getTileHeight()))
+            / static_cast<float>(mWalkSpeed.y));
+    }
+
+    // We calculate the offset _from_ the _target_ location
+    offset -= 32;
+    if (offset > 0)
+        offset = 0;
+
+    // Going into negative direction? Invert the offset.
+    if (mDirection & pos)
+        offset = -offset;
+
+    return offset;
+}
+
+int Being::getWidth() const
+{
+    return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH);
+}
+
+int Being::getHeight() const
+{
+    return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT);
+}
+
+void Being::updateCoords()
+{
+    if (!mDispName)
+        return;
+
+    // Monster names show above the sprite instead of below it
+    if (getType() == MONSTER)
+    {
+        mDispName->adviseXY(getPixelX(),
+            getPixelY() - getHeight() - mDispName->getHeight());
+    }
+    else
+    {
+        mDispName->adviseXY(getPixelX(), getPixelY());
+    }
+}
+
+void Being::optionChanged(const std::string &value)
+{
+    if (getType() == PLAYER && value == "visiblenames")
+        setShowName(config.getBoolValue("visiblenames"));
+}
+
+void Being::flashName(int time)
+{
+    if (mDispName)
+        mDispName->flash(time);
+}
+
+void Being::showName()
+{
+    delete mDispName;
+    mDispName = 0;
+    std::string mDisplayName(mName);
+
+    if (getType() != MONSTER
+        && (config.getBoolValue("showgender")
+        || config.getBoolValue("showlevel")))
+    {
+        mDisplayName += " ";
+        if (config.getBoolValue("showlevel") && getLevel() != 0)
+            mDisplayName += toString(getLevel());
+
+        if (config.getBoolValue("showgender"))
+        {
+            if (getGender() == GENDER_FEMALE)
+                mDisplayName += "\u2640";
+            else if (getGender() == GENDER_MALE)
+                mDisplayName += "\u2642";
+        }
+    }
+
+    if (getType() == MONSTER)
+    {
+        if (config.getBoolValue("showMonstersTakedDamage"))
+            mDisplayName += ", " + toString(getDamageTaken());
+    }
+
+    gcn::Font *font = 0;
+    if (player_node && player_node->getTarget() == this
+        && getType() != MONSTER)
+    {
+        font = boldFont;
+    }
+
+    mDispName = new FlashText(mDisplayName, getPixelX(), getPixelY(),
+                              gcn::Graphics::CENTER, mNameColor, font);
+
+    updateCoords();
+}
+
+void Being::updateColors()
+{
+    if (userPalette)
+    {
+        if (getType() == MONSTER)
+        {
+            mNameColor = &userPalette->getColor(UserPalette::MONSTER);
+            mTextColor = &userPalette->getColor(UserPalette::MONSTER);
+        }
+        else if (getType() == NPC)
+        {
+            mNameColor = &userPalette->getColor(UserPalette::NPC);
+            mTextColor = &userPalette->getColor(UserPalette::NPC);
+        }
+        else if (this == player_node)
+        {
+            mNameColor = &userPalette->getColor(UserPalette::SELF);
+            mTextColor = &Theme::getThemeColor(Theme::PLAYER);
+        }
+        else
+        {
+            mTextColor = &userPalette->getColor(Theme::PLAYER);
+
+            mErased = false;
+
+            if (mIsGM)
+            {
+                mTextColor = &userPalette->getColor(UserPalette::GM);
+                mNameColor = &userPalette->getColor(UserPalette::GM);
+            }
+            else if (mEnemy)
+            {
+                mNameColor = &userPalette->getColor(UserPalette::MONSTER);
+            }
+            else if (mParty && mParty == player_node->getParty())
+            {
+                mNameColor = &userPalette->getColor(UserPalette::PARTY);
+            }
+            else if (getGuild() && getGuild() == player_node->getGuild())
+            {
+                mNameColor = &userPalette->getColor(UserPalette::GUILD);
+            }
+            else if (player_relations.getRelation(mName) ==
+                     PlayerRelation::FRIEND)
+            {
+                mNameColor = &userPalette->getColor(UserPalette::FRIEND);
+            }
+            else if (player_relations.getRelation(mName) ==
+                     PlayerRelation::DISREGARDED)
+            {
+                mNameColor = &userPalette->getColor(UserPalette::DISREGARDED);
+            }
+            else if (player_relations.getRelation(mName) ==
+                     PlayerRelation::IGNORED)
+            {
+                mNameColor = &userPalette->getColor(UserPalette::IGNORED);
+            }
+            else if (player_relations.getRelation(mName) ==
+                     PlayerRelation::ERASED)
+            {
+                mNameColor = &userPalette->getColor(UserPalette::ERASED);
+                mErased = true;
+            }
+            else
+            {
+                mNameColor = &userPalette->getColor(UserPalette::PC);
+            }
+        }
+
+        if (mDispName)
+            mDispName->setColor(mNameColor);
+    }
+}
+
+void Being::setSprite(unsigned int slot, int id, const std::string &color,
+                      bool isWeapon)
+{
+    if (slot >= Net::getCharHandler()->maxSprite())
+        return;
+
+    if (slot >= size())
+        ensureSize(slot + 1);
+
+    if (slot >= mSpriteIDs.size())
+        mSpriteIDs.resize(slot + 1, 0);
+
+    if (slot >= mSpriteColors.size())
+        mSpriteColors.resize(slot + 1, "");
+
+    // id = 0 means unequip
+    if (id == 0)
+    {
+        removeSprite(slot);
+
+        if (isWeapon)
+            mEquippedWeapon = NULL;
+    }
+    else
+    {
+        std::string filename = ItemDB::get(id).getSprite(mGender);
+        AnimatedSprite *equipmentSprite = NULL;
+
+        if (!filename.empty())
+        {
+            if (!color.empty())
+                filename += "|" + color;
+
+            equipmentSprite = AnimatedSprite::load(
+                paths.getStringValue("sprites") + filename);
+        }
+
+        if (equipmentSprite)
+            equipmentSprite->setDirection(getSpriteDirection());
+
+        CompoundSprite::setSprite(slot, equipmentSprite);
+
+        if (isWeapon)
+            mEquippedWeapon = &ItemDB::get(id);
+
+        setAction(mAction);
+    }
+
+    mSpriteIDs[slot] = id;
+    mSpriteColors[slot] = color;
+    recalcSpritesOrder();
+}
+
+void Being::setSpriteID(unsigned int slot, int id)
+{
+    setSprite(slot, id, mSpriteColors[slot]);
+}
+
+void Being::setSpriteColor(unsigned int slot, const std::string &color)
+{
+    setSprite(slot, mSpriteIDs[slot], color);
+}
+
+int Being::getNumberOfLayers() const
+{
+    return CompoundSprite::getNumberOfLayers();
+}
+
+void Being::load()
+{
+    // Hairstyles are encoded as negative numbers. Count how far negative
+    // we can go.
+    int hairstyles = 1;
+
+    while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE) !=
+           paths.getStringValue("spriteErrorFile"))
+    {
+        hairstyles++;
+    }
+
+    mNumberOfHairstyles = hairstyles;
+}
+
+void Being::updateName()
+{
+    if (mShowName)
+        showName();
+}
+
+void Being::reReadConfig()
+{
+    if (mUpdateConfigTime + 1 < cur_time)
+    {
+        mHighlightMapPortals = config.getBoolValue("highlightMapPortals");
+        mConfLineLim = config.getIntValue("chatMaxCharLimit");
+        mSpeechType = config.getIntValue("speech");
+        mHighlightMonsterAttackRange =
+            config.getBoolValue("highlightMonsterAttackRange");
+        mLowTraffic = config.getBoolValue("lowTraffic");
+        mDrawHotKeys = config.getBoolValue("drawHotKeys");
+        mShowBattleEvents = config.getBoolValue("showBattleEvents");
+        mShowMobHP = config.getBoolValue("showMobHP");
+
+        mUpdateConfigTime = cur_time;
+    }
+}
+
+bool Being::updateFromCache()
+{
+    BeingCacheEntry *entry = Being::getCacheEntry(getId());
+    if (entry && !entry->getName().empty()
+        && entry->getTime() + 120 < cur_time)
+    {
+        setName(entry->getName());
+        setPartyName(entry->getPartyName());
+        setLevel(entry->getLevel());
+        setPvpRank(entry->getPvpRank());
+        setIp(entry->getIp());
+        if (getType() == PLAYER)
+            updateColors();
+        return true;
+    }
+    return false;
+}
+
+void Being::addToCache()
+{
+    BeingCacheEntry *entry = Being::getCacheEntry(getId());
+    if (!entry)
+    {
+        entry = new BeingCacheEntry(getId());
+        beingInfoCache.push_front(entry);
+
+        if (beingInfoCache.size() >= CACHE_SIZE)
+            beingInfoCache.pop_back();
+    }
+    entry->setName(getName());
+    entry->setLevel(getLevel());
+    entry->setPartyName(getPartyName());
+    entry->setTime(cur_time);
+    entry->setPvpRank(getPvpRank());
+    entry->setIp(getIp());
+}
+
+BeingCacheEntry* Being::getCacheEntry(int id)
+{
+    for (std::list<BeingCacheEntry*>::iterator i = beingInfoCache.begin();
+         i != beingInfoCache.end(); ++i)
+    {
+        if (id == (*i)->getId())
+        {
+            // Raise priority: move it to front
+            if ((*i)->getTime() + 120 < cur_time)
+            {
+                beingInfoCache.splice(beingInfoCache.begin(),
+                                      beingInfoCache, i);
+            }
+            return *i;
+        }
+    }
+    return 0;
+}
+
+
+void Being::setGender(Gender gender)
+{
+    if (gender != mGender)
+    {
+        mGender = gender;
+
+        // Reload all subsprites
+        for (unsigned int i = 0; i < mSpriteIDs.size(); i++)
+        {
+            if (mSpriteIDs.at(i) != 0)
+                setSprite(i, mSpriteIDs.at(i), mSpriteColors.at(i));
+        }
+
+        updateName();
+    }
+}
+
+void Being::setGM(bool gm)
+{
+    mIsGM = gm;
+
+    updateColors();
+}
+
+bool Being::canTalk()
+{
+    return mType == NPC;
+}
+
+void Being::talkTo()
+{
+    if (!Client::limitPackets(PACKET_NPC_TALK))
+        return;
+
+    Net::getNpcHandler()->talk(mId);
+}
+
+bool Being::isTalking()
+{
+    return NpcDialog::isActive() || BuyDialog::isActive() ||
+           SellDialog::isActive() || BuySellDialog::isActive() ||
+           NpcPostDialog::isActive();
+}
+
+bool Being::draw(Graphics *graphics, int offsetX, int offsetY) const
+{
+    bool res = true;
+    if (!mErased)
+        res = ActorSprite::draw(graphics, offsetX, offsetY);
+
+    return res;
+}
+
+void Being::drawSprites(Graphics* graphics, int posX, int posY) const
+{
+//    CompoundSprite::drawSprites(graphics, posX, posY);
+    for (int f = 0; f < getNumberOfLayers(); f ++)
+    {
+        Sprite *sprite = getSprite(mSpriteRemap[f]);
+        if (sprite)
+        {
+            sprite->setAlpha(mAlpha);
+            sprite->draw(graphics, posX, posY);
+        }
+    }
+}
+
+void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
+{
+//    CompoundSprite::drawSprites(graphics, posX, posY);
+
+//    logger->log("getNumberOfLayers: %d", getNumberOfLayers());
+
+    for (unsigned f = 0; f < size(); f ++)
+    {
+        Sprite *sprite = getSprite(mSpriteRemap[f]);
+        if (sprite)
+            sprite->draw(graphics, posX, posY);
+    }
+}
+
+bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
+{
+    bool res = true;
+
+    if (!mErased)
+        res = ActorSprite::drawSpriteAt(graphics, x, y);
+
+    if (mHighlightMapPortals && mMap && mSubType == 45 && !mMap->getHasWarps())
+    {
+        graphics->setColor(userPalette->
+                getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
+
+        graphics->fillRectangle(gcn::Rectangle(
+                                x, y, 32, 32));
+
+/*
+        int num = socialWindow->getPortalIndex(getTileX(), getTileY());
+        if (num >= 0)
+        {
+            std::string str = outfitWindow->keyName(num);
+            if (str.length() > 4)
+                str = str.substr(0, 4);
+            gcn::Font *font = gui->getFont();
+            graphics->setColor(userPalette->getColor(UserPalette::BEING));
+            font->drawString(graphics, str, x, y);
+        }
+*/
+        if (mDrawHotKeys && !mName.empty())
+        {
+            gcn::Font *font = gui->getFont();
+            if (font)
+            {
+                graphics->setColor(userPalette->getColor(UserPalette::BEING));
+                font->drawString(graphics, mName, x, y);
+            }
+        }
+    }
+
+    if (mHighlightMonsterAttackRange && getType() == ActorSprite::MONSTER
+        && isAlive())
+    {
+        const int attackRange = 32;
+
+        graphics->setColor(userPalette->getColorWithAlpha(
+            UserPalette::MONSTER_ATTACK_RANGE));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x - attackRange, y - attackRange,
+            2 * attackRange + 32, 2 * attackRange + 32));
+    }
+
+    if (mShowMobHP && player_node && player_node->getTarget() == this
+        && getType() == MONSTER)
+    {
+        // show hp bar here
+        drawHpBar(graphics, x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+    }
+    return res;
+}
+
+void Being::drawHpBar(Graphics *graphics, int x, int y,
+                      int width, int height) const
+{
+    if (!mInfo)
+        return;
+
+    int maxHP = mMaxHP;
+
+    if (!maxHP)
+        maxHP = mInfo->getMaxHP();
+
+    if (maxHP <= 0)
+        return;
+
+    if (!mHP && maxHP < mHP)
+        return;
+
+    float p;
+
+    if (mHP)
+    {
+        p = static_cast<float>(maxHP) / static_cast<float>(mHP);
+    }
+    else if (maxHP != mDamageTaken)
+    {
+        p = static_cast<float>(maxHP)
+            / static_cast<float>(maxHP - mDamageTaken);
+    }
+    else
+    {
+        p = 1;
+    }
+
+    if (p <= 0 || p > width)
+        return;
+
+    int dx = width / p;
+
+    graphics->setColor(userPalette->getColorWithAlpha(
+        UserPalette::MONSTER_HP));
+
+    graphics->fillRectangle(gcn::Rectangle(
+        x, y, dx, height));
+
+    if (width - dx <= 0)
+        return;
+
+    graphics->setColor(userPalette->getColorWithAlpha(
+        UserPalette::MONSTER_HP2));
+
+    graphics->fillRectangle(gcn::Rectangle(
+        x + dx, y, width - dx, height));
+}
+
+void Being::setHP(int hp)
+{
+    mHP = hp;
+    if (mMaxHP < mHP)
+        mMaxHP = mHP;
+}
+
+void Being::setMaxHP(int hp)
+{
+    mMaxHP = hp;
+    if (mMaxHP < mHP)
+        mMaxHP = mHP;
+}
+
+void Being::resetCounters()
+{
+    mMoveTime = 0;
+    mAttackTime = 0;
+    mTalkTime = 0;
+    mOtherTime = 0;
+    mTestTime = cur_time;
+}
+
+void Being::recalcSpritesOrder()
+{
+//    logger->log("recalcSpritesOrder");
+    unsigned sz = size();
+    if (sz < 1)
+        return;
+
+    std::vector<int> slotRemap;
+    std::map<int, int> itemSlotRemap;
+
+//    logger->log("preparation start");
+    std::vector<int>::iterator it;
+    for (unsigned slot = 0; slot < sz; slot ++)
+    {
+        slotRemap.push_back(slot);
+
+        int id = mSpriteIDs[slot];
+        if (!id)
+            continue;
+
+        const ItemInfo &info = ItemDB::get(id);
+        if (info.getDrawBefore() > 0)
+        {
+            int id2 = mSpriteIDs[info.getDrawBefore()];
+            std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
+            if (orderIt != itemSlotRemap.end())
+            {
+//                logger->log("found duplicate (before)");
+                const ItemInfo &info2 = ItemDB::get(id2);
+                if (info.getDrawPriority() < info2.getDrawPriority())
+                {
+//                    logger->log("old more priority");
+                    continue;
+                }
+                else
+                {
+//                    logger->log("new more priority");
+                    itemSlotRemap.erase(id2);
+                }
+            }
+
+            itemSlotRemap[id] = -info.getDrawBefore();
+//            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
+        }
+        else if (info.getDrawAfter() > 0)
+        {
+            int id2 = mSpriteIDs[info.getDrawAfter()];
+            std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
+            if (orderIt != itemSlotRemap.end())
+            {
+//                logger->log("found duplicate (after)");
+                const ItemInfo &info2 = ItemDB::get(id2);
+                if (info.getDrawPriority() < info2.getDrawPriority())
+                {
+//                    logger->log("old more priority");
+                    continue;
+                }
+                else
+                {
+//                    logger->log("new more priority");
+                    itemSlotRemap.erase(id2);
+                }
+            }
+
+            itemSlotRemap[id] = info.getDrawAfter();
+//            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
+        }
+    }
+//    logger->log("preparation end");
+
+    int lastRemap = 0;
+    int cnt = 0;
+
+    while (cnt < 15 && lastRemap >= 0)
+    {
+        int lastRemap = -1;
+        cnt ++;
+//        logger->log("iteration");
+
+        for (unsigned slot0 = 0; slot0 < sz; slot0 ++)
+        {
+            int slot = searchSlotValue(slotRemap, slot0);
+            int val = slotRemap.at(slot);
+            int id = mSpriteIDs[val];
+            int idx = -1;
+            int idx1 = -1;
+//            logger->log("item %d, id=%d", slot, id);
+            int reorder = 0;
+            std::map<int, int>::iterator orderIt = itemSlotRemap.find(id);
+            if (orderIt != itemSlotRemap.end())
+                reorder = orderIt->second;
+
+            if (reorder < 0)
+            {
+//                logger->log("move item %d before %d", slot, -reorder);
+                searchSlotValueItr(it, idx, slotRemap, -reorder);
+                if (it == slotRemap.end())
+                    return;
+                searchSlotValueItr(it, idx1, slotRemap, val);
+                if (it == slotRemap.end())
+                    return;
+                lastRemap = idx1;
+                if (idx1 + 1 != idx)
+                {
+                    slotRemap.erase(it);
+                    searchSlotValueItr(it, idx, slotRemap, -reorder);
+                    slotRemap.insert(it, val);
+                }
+            }
+            else if (reorder > 0)
+            {
+//                logger->log("move item %d after %d", slot, reorder);
+                searchSlotValueItr(it, idx, slotRemap, reorder);
+                searchSlotValueItr(it, idx1, slotRemap, val);
+                if (it == slotRemap.end())
+                    return;
+                lastRemap = idx1;
+                if (idx1 != idx + 1)
+                {
+                    slotRemap.erase(it);
+                    searchSlotValueItr(it, idx, slotRemap, reorder);
+                    if (it != slotRemap.end())
+                    {
+                        it ++;
+                        if (it != slotRemap.end())
+                            slotRemap.insert(it, val);
+                        else
+                            slotRemap.push_back(val);
+                    }
+                    else
+                    {
+                        slotRemap.push_back(val);
+                    }
+                }
+            }
+        }
+    }
+
+//    logger->log("after remap");
+    for (unsigned slot = 0; slot < sz; slot ++)
+    {
+        mSpriteRemap[slot] = slotRemap[slot];
+//        logger->log("slot %d = %d", slot, mSpriteRemap[slot]);
+    }
+}
+
+int Being::searchSlotValue(std::vector<int> &slotRemap, int val)
+{
+    for (unsigned slot = 0; slot < size(); slot ++)
+    {
+        if (slotRemap[slot] == val)
+            return slot;
+    }
+    return getNumberOfLayers() - 1;
+}
+
+void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
+                               std::vector<int> &slotRemap, int val)
+{
+//    logger->log("searching %d", val);
+    it = slotRemap.begin();
+    idx = 0;
+    while(it != slotRemap.end())
+    {
+//        logger->log("testing %d", *it);
+        if (*it == val)
+        {
+//            logger->log("found at %d", idx);
+            return;
+        }
+        it ++;
+        idx ++;
+    }
+//    logger->log("not found");
+    idx = -1;
+    return;
+}

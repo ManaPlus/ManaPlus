@@ -1,0 +1,48 @@
+#!/bin/sh
+
+#may be
+#-Wshadow -Waggregate-return -Winline 
+
+#for feature
+#-Wstrict-overflow=4 -Wfloat-equal
+#-Wunsafe-loop-optimizations
+#-Wnon-virtual-dtor
+#-Woverloaded-virtual
+#-Wformat=2
+#-Wswitch-enum
+
+#for better code
+# -Weffc++
+
+#need fix: -Wold-style-cast -Wconversion
+#prof -pg
+
+dir=`pwd`
+
+export CC=gcc-4.5
+export CXX=g++-4.5
+
+export LANG=C
+export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
+-Wabi -Wdisabled-optimization -Wuninitialized \
+-Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
+-Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
+-Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
+-Wctor-dtor-privacy -Wstrict-null-sentinel \
+-Wunused-parameter -Wlogical-op \
+-Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
+-Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe"
+
+autoreconf -i
+./configure --prefix=$dir/run \
+            --datadir=$dir/run/share/games \
+            --bindir=$dir/run/bin \
+            --mandir=$dir/run/share/man
+
+cd po
+#make -j5 update-po 2>../make1.log
+make -j5 update-gmo 2>../make1.log
+cd ..
+make -j5 2>make2.log
+

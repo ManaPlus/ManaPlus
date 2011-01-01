@@ -1,0 +1,285 @@
+/*
+ *  The Mana Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *
+ *  This file is part of The Mana Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "gui/windowmenu.h"
+
+#include "emoteshortcut.h"
+#include "graphics.h"
+#include "keyboardconfig.h"
+
+#include "gui/emotepopup.h"
+#include "gui/skilldialog.h"
+#include "gui/specialswindow.h"
+#include "gui/textpopup.h"
+#include "gui/viewport.h"
+
+#include "gui/widgets/window.h"
+#include "gui/widgets/windowcontainer.h"
+
+#include "net/net.h"
+#include "net/playerhandler.h"
+
+#include "utils/gettext.h"
+
+#include <string>
+
+extern Window *equipmentWindow;
+extern Window *inventoryWindow;
+extern Window *itemShortcutWindow;
+extern Window *dropShortcutWindow;
+extern Window *setupWindow;
+extern Window *statusWindow;
+extern Window *whoIsOnline;
+extern Window *killStats;
+extern Window *spellShortcutWindow;
+extern Window *botCheckerWindow;
+extern Window *socialWindow;
+
+WindowMenu::WindowMenu():
+    mEmotePopup(0)
+{
+    int x = 0, h = 0;
+
+    addButton(N_("BC"), _("Bot checker"), x, h,
+              KeyboardConfig::KEY_WINDOW_BOT_CHECKER);
+    addButton(N_("ONL"), _("Who is online"), x, h,
+              KeyboardConfig::KEY_NO_VALUE);
+    addButton(N_("KS"), _("Kill stats"), x, h,
+              KeyboardConfig::KEY_WINDOW_KILLS);
+    addButton(":-)", _("Smiles"), x, h,
+              KeyboardConfig::KEY_WINDOW_EMOTE_SHORTCUT);
+    addButton(N_("STA"), _("Status"), x, h, KeyboardConfig::KEY_WINDOW_STATUS);
+    addButton(N_("EQU"), _("Equipment"), x, h,
+              KeyboardConfig::KEY_WINDOW_EQUIPMENT);
+    addButton(N_("INV"), _("Inventory"), x, h,
+              KeyboardConfig::KEY_WINDOW_INVENTORY);
+
+    if (skillDialog->hasSkills())
+    {
+        addButton(N_("SKI"), _("Skills"), x, h,
+                  KeyboardConfig::KEY_WINDOW_SKILL);
+    }
+
+    if (Net::getNetworkType() == ServerInfo::MANASERV)
+    {
+        addButton(N_("SPE"), _("Specials"), x, h,
+                  KeyboardConfig::KEY_NO_VALUE);
+    }
+
+    addButton(N_("SOC"), _("Social"), x, h, KeyboardConfig::KEY_WINDOW_SOCIAL);
+    addButton(N_("SH"), _("Shortcuts"), x, h,
+              KeyboardConfig::KEY_WINDOW_SHORTCUT);
+    addButton(N_("SP"), _("Spells"), x, h, KeyboardConfig::KEY_WINDOW_SPELLS);
+    addButton(N_("DR"), _("Drop"), x, h, KeyboardConfig::KEY_WINDOW_DROP);
+    addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
+
+    mTextPopup = new TextPopup;
+    setDimension(gcn::Rectangle(graphics->getWidth() - x - 3, 3,
+                                x - 3, h));
+
+    addMouseListener(this);
+    setVisible(true);
+}
+
+WindowMenu::~WindowMenu()
+{
+    delete mTextPopup;
+    mTextPopup = 0;
+    mButtonNames.clear();
+}
+
+void WindowMenu::action(const gcn::ActionEvent &event)
+{
+    Window *window = 0;
+
+    if (event.getId() == ":-)")
+    {
+        if (!mEmotePopup)
+        {
+            const gcn::Widget *s = event.getSource();
+            if (s)
+            {
+                const gcn::Rectangle &r = s->getDimension();
+                const int parentX = s->getParent()->getX();
+
+                mEmotePopup = new EmotePopup;
+                const int offset = (r.width - mEmotePopup->getWidth()) / 2;
+                mEmotePopup->setPosition(parentX + r.x + offset,
+                                     r.y + r.height + 5);
+
+                mEmotePopup->addSelectionListener(this);
+            }
+            else
+            {
+                mEmotePopup = 0;
+            }
+        }
+        else
+        {
+            if (windowContainer)
+                windowContainer->scheduleDelete(mEmotePopup);
+            mEmotePopup = 0;
+        }
+    }
+    else if (event.getId() == "STA")
+    {
+        window = statusWindow;
+    }
+    else if (event.getId() == "EQU")
+    {
+        window = equipmentWindow;
+    }
+    else if (event.getId() == "INV")
+    {
+        window = inventoryWindow;
+    }
+    else if (event.getId() == "SKI")
+    {
+        window = skillDialog;
+    }
+    else if (event.getId() == "SPE")
+    {
+        window = specialsWindow;
+    }
+    else if (event.getId() == "SH")
+    {
+        window = itemShortcutWindow;
+    }
+    else if (event.getId() == "SOC")
+    {
+        window = socialWindow;
+    }
+    else if (event.getId() == "DR")
+    {
+        window = dropShortcutWindow;
+    }
+    else if (event.getId() == "SET")
+    {
+        window = setupWindow;
+    }
+    else if (event.getId() == "ONL")
+    {
+        window = whoIsOnline;
+    }
+    else if (event.getId() == "KS")
+    {
+        window = killStats;
+    }
+    else if (event.getId() == "BC")
+    {
+        window = botCheckerWindow;
+    }
+    else if (event.getId() == "SP")
+    {
+        window = spellShortcutWindow;
+    }
+
+    if (window)
+    {
+        window->setVisible(!window->isVisible());
+        if (window->isVisible())
+            window->requestMoveToTop();
+    }
+}
+
+void WindowMenu::valueChanged(const gcn::SelectionEvent &event)
+{
+    if (event.getSource() == mEmotePopup)
+    {
+        int emote = mEmotePopup->getSelectedEmote();
+        if (emote && emoteShortcut)
+            emoteShortcut->useEmote(emote);
+
+        if (windowContainer)
+            windowContainer->scheduleDelete(mEmotePopup);
+        mEmotePopup = 0;
+    }
+}
+
+void WindowMenu::addButton(const char* text, std::string description,
+                           int &x, int &h, int key)
+{
+    Button *btn = new Button(gettext(text), text, this);
+    btn->setPosition(x, 0);
+    btn->setDescription(description);
+    btn->setTag(key);
+    add(btn);
+    mButtons.push_back(btn);
+    x += btn->getWidth() + 3;
+    h = btn->getHeight();
+    mButtonNames[text] = btn;
+}
+
+void WindowMenu::mousePressed(gcn::MouseEvent &event)
+{
+    if (!viewport)
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    {
+        Button *btn = dynamic_cast<Button*>(event.getSource());
+        if (!btn)
+            return;
+        if (viewport)
+            viewport->showPopup(event.getX(), event.getY(), btn);
+    }
+}
+
+void WindowMenu::mouseMoved(gcn::MouseEvent &event)
+{
+    if (!mTextPopup)
+        return;
+
+    if (event.getSource() == this)
+    {
+        mTextPopup->hide();
+        return;
+    }
+
+    Button *btn = dynamic_cast<Button*>(event.getSource());
+
+    if (!btn)
+    {
+        mTextPopup->hide();
+        return;
+    }
+
+    const int x = event.getX();
+    const int y = event.getY();
+    int key = btn->getTag();
+    if (key != KeyboardConfig::KEY_NO_VALUE)
+    {
+        mTextPopup->show(x + getX(), y + getY(), btn->getDescription(),
+                         "Key: " + keyboard.getKeyValueString(key));
+    }
+    else
+    {
+        mTextPopup->show(x + getX(), y + getY(), btn->getDescription());
+    }
+}
+
+void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent _UNUSED_)
+{
+    if (!mTextPopup)
+        return;
+
+    mTextPopup->hide();
+}

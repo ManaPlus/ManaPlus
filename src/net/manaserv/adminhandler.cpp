@@ -1,0 +1,93 @@
+/*
+ *  The Mana Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *
+ *  This file is part of The Mana Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "net/manaserv/adminhandler.h"
+
+#include "net/manaserv/connection.h"
+#include "net/manaserv/messageout.h"
+#include "net/manaserv/protocol.h"
+
+extern Net::AdminHandler *adminHandler;
+
+namespace ManaServ
+{
+
+extern Connection *chatServerConnection;
+
+AdminHandler::AdminHandler()
+{
+    adminHandler = this;
+}
+
+void AdminHandler::announce(const std::string &text)
+{
+    MessageOut msg(PCMSG_ANNOUNCE);
+    msg.writeString(text);
+    chatServerConnection->send(msg);
+}
+
+void AdminHandler::localAnnounce(const std::string &text _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::hide(bool hide _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::kick(int playerId _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::kick(const std::string &name _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::ban(int playerId _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::ban(const std::string &name _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::unban(int playerId _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::unban(const std::string &name _UNUSED_)
+{
+    // TODO
+}
+
+void AdminHandler::mute(int playerId _UNUSED_, int type _UNUSED_,
+                        int limit _UNUSED_)
+{
+    // TODO
+}
+
+} // namespace ManaServ

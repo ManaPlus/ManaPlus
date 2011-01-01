@@ -1,0 +1,137 @@
+----------------------------
+Mana Hacking Guide
+----------------------------
+
+This guide is also available at http://gitorious.org/mana/pages/Hacking
+including more tips about C++ programming in general.
+
+With multiple coders working on the same source files, there needs to be a
+standard specifying how code is written down. Not doing so can cause quite some
+annoyance for certain coders and easily creates more version conflicts than
+necessary.
+
+* Indentation:
+  Code is indented using 4 spaces, no tabs.
+
+* Line length:
+  Should not exceed 79 characters.
+
+  One reason for this is to keep code readable. In such cases it would often be
+  better to spread the line over multiple lines or use some extra temporary
+  variables. Another reason is that some of us are using editors that default
+  to an 80 character wide screen, and often put two instances next to
+  eachother. 79 character wide lines leave just a spot for the cursor at the
+  end of the line.
+
+* Control constructs like this:
+
+  Good:
+
+  if (condition)
+  {
+  }
+  else
+  {
+  }
+
+  for (init; condition; step)
+  {
+  }
+
+  while (condition)
+  {
+  }
+
+  /**
+   * Documentation about behaviour
+   * ...
+   *
+   * @param param1 the first argument
+   * @param param2 the second argument
+   */
+  void function(param1, param2)
+  {
+  }
+
+  class TheClass : public TheSubclass
+  {
+  };
+
+  When there is only one statement you may leave out the braces, but don't
+  place the statement on the same line as the condition:
+
+  Good:
+
+  if (condition)
+      statement;
+
+  Bad:
+
+  if (condition) statement;
+
+* Includes:
+  Source files should include their header first, to make sure the headers are
+  self-contained. After that follow other project includes, grouped by
+  directory and alphabetically ordered. System includes come last. All project
+  includes are done relative from the 'src' directory.
+
+  Good (subdirectory/source.cpp):
+
+  #include "subdirectory/header.h"
+
+  #include "somesub/bar.h"
+  #include "somesub/zaro.h"
+
+  #include <systemlib.h>
+
+* Comments:
+  Single line C++ style comments are indented the same as the previous line.
+
+  Good:
+  // comment
+
+  Multiple line C style comments are initially indented like previous line
+  except every new line of the comment begins with a asterisk ('*') which lines
+  up with the initial asterisk of the comment opening (1 space indent). The
+  comment is closed also with the asterisk lining up. Comment text is only
+  placed on a line starting with a asterisk.
+
+  Good:
+  /*
+   * Some comment
+   * additional comment material
+   */
+
+  Bad:
+  /* text
+  comment
+  */
+
+  Note that for documenting functions, methods and other things that can use
+  documentation, you should use Doxygen style as in the function example above.
+  For details see the manual at http://www.doxygen.org/.
+
+* Whitespace examples:
+
+  Good:
+  x = ((5 + 4) * 3) / 1.5;
+  afunction(12, 3, (1 + 1));
+
+  Bad:
+  x = ( ( 5 + 4 ) * 3 ) / 1.5;
+  afunction(12,3,(1+1));
+
+* Method, class, member and constant naming is based on the
+  generally accepted way Java code is written.
+
+  Class:            CapitalizedWords
+  Method:           camelCase
+  Member:           mCamelCase
+  Constant/enum:    UPPERCASE_UNDERSCORES
+
+  To denote global variables and functions the lowercase_underscores style may
+  be used. Hungarian style should be avoided.
+
+* Whenever you add a new source file somewhere in ./src do not forget to add
+  them in ./src/Makefile.am as well!
+

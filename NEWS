@@ -1,0 +1,552 @@
+1.0.0 (...)
+- The Mana World client is now called the Mana client
+- Added support for branding the client differently via command line parameter
+- Added support for ManaServ and eAthena (TMW version) from the same binary
+- Added support for switching character or server without restart
+- Added downloading of server list
+- Added the ability to define multiple outfits to quickly switch between
+- Added /ignore, /unignore and /createparty commands
+- Added support for showing particle effects when monsters attack
+- Added highlights on hovering over buttons, tabs, sliders and scrollbars
+- Added --screenshot-dir command line parameter to set the screenshot directory
+- Added handling of player revival after dying
+- Added handling of damage dealt using skills
+- Added support for showing map background images
+- Added nick autocompletion in chat when pressing Tab
+- Added ability to only change player direction by holding "emote" key
+- Added option to show the amount of damage dealt to target monster
+- Added automatic loading of minimap based on file name
+- Added support for pasting text from the clipboard in text fields
+- Added rudimentary support for GUI themes
+- Added additional mouse cursors to indicate attack and talk actions
+- Added option to show gender next to player names
+- Added ability to unassign keyboard shortcuts
+- Combined Party and Guild (ManaServ) support in one Social window
+- Display the first key binding conflict in keyboard setup
+- The login wallpaper is now scaled when it doesn't exactly fit the screen
+- Ambient image layers can now be scaled to fit the screen
+- Automatically show inventory window when starting a trade
+- Display the party name of other players on mouseover
+- The party tab will now only show when you're in a party
+- Allow displaying warp portals using particle effects
+- Hide color codes from speech text
+- Improved keyboard control of the quit dialog
+- Quickly move items into your store by "emote"-clicking them
+- Allow redirects when downloading updates
+- Fixed windows to stay on screen when resolution is lowered
+- Fixed some slowness due to chat window
+- Changed the default locations for configuration, updates and screenshots
+- Many additional fixes and cleanups
+
+0.0.29.1 (9 June 2009)
+- Added the ability to change your password after logging in
+- The leader of a party is now displayed in bold
+- Status window was reorganized to allow larger numbers to be displayed
+- The client no longer quits when it can't find the current map
+- Fixed position of floating text for damage, pickup and experience
+- Fixed a possible crash on logging in to the map server
+- Fixed the crash when shift-clicking an item in the inventory
+- Fixed a crash related to item links in the chat window
+- Fixed a crash on whispering somebody again after closing their tab
+- Fixed lightspeed bug when stopping to attack
+- Fixed the -S/--home-dir command line option
+- Fixed Reset Windows to also reset the party window
+- Fixed problems with the context menu in the Brazilian translation
+- Fixed resetting the height of the chat on /clear
+- Fixed playing of login song and the music after login
+- Fixed a problem with the player skipping corners, desyncing from the server
+- Small optimizations to OpenGL mode when drawing certain GUI widgets
+- Updated Spanish, Polish, Portugese, Swedish, French and German translations
+
+0.0.29 (13 May 2009)
+- Added support for dynamic emotes and a new way to select them
+- Added speech balloons that wrap the text
+- Added item popup for showing detailed information
+- Added ability to refer to items in chat
+- Added the ability to see your own name in game
+- Added the option to hide player names
+- Added support for dynamically defined weight unit and currency
+- Added support for NPC item storage
+- Added compile-time support for tmwserv, as an alternative to eAthena
+- Added support for entering the port of the login server
+- Added support for creating parties and inviting other players to them
+- Added tabs to the chat window for party and private chats
+- Added ability to set initial player attributes when creating a new character
+- Added command line option to temporarily disable OpenGL (--no-opengl)
+- Added support for showing arrows flying through the air
+- Added option to show pickup as text particle instead of in the chat
+- Added ability to change the font size
+- Added support for the /me command to do actions
+- Added a /present command to show players present in the area
+- Added ability to record the chatlog to a file
+- Made emote shortcuts customizable in more detail
+- Made it possible to change resolution
+- Made many colors used by the game configurable
+- Made setup window available during login
+- Dynamically generate the item effects description
+- Minimap can now be told to stay on the screen
+- Minimap now adapts to the scale and size of the minimap image
+- Non-stackable items can now be sold more easily
+- Login dialog now remembers the list of recently used servers
+- Completely rewritten NPC interaction
+- GUI opacity now effects the whole user interface
+- Redesigned the trade window
+- Redesigned equipment window and allow unequip from there
+- Next level percentage is now displayed in hundredths
+- The player will no longer walk away when clicking the map while sitting
+- Keep the login screen from taking 100% CPU
+- No longer prompt for character server when there is only one
+- Fixed compilation with GCC 4.4
+- Fixed scroll wheel handling and dragging glitches in lists
+- Many more bug fixes, small improvements and code cleanups
+- Updated German, Finnish, Croatian, French, Spanish, Swedish and Polish
+  translations
+
+0.0.28.1 (12 February 2009)
+- Enabled translations on Windows
+- Added command line option to set home directory path
+- Tweaked green chat color to be a bit more readable
+- Made font size configurable in the config file
+- Fixed restoring of punching animation after weapon removal
+- Fixed inability to chat while talking to NPCs
+- Updated German, Spanish, Finnish, Swedish and Polish translations
+
+0.0.28 (25 January 2009)
+- Added support for animated map tiles
+- Added support for internationalization, plus many translations
+- Added support for TrueType fonts
+- Trade window is now resizable
+- Obscure precise home directory name when making screenshots
+- Fixed follow-parent of nested and being-following particle emitters
+
+0.0.27 (9 December 2008)
+- Added support for showing map name above minimap
+- Added showing how long the ban is when banned
+- Added --data parameter for developers
+- Added particle effect for critical hits
+- Added support for dynamic skill names and hair colors
+- Added support for status effects
+- Added ability to add equipment to the shortcut bar
+- Added ability to change configuration during login phase (from Aethyra)
+- Mouse cursor will now hide when not used for some time
+- Inventory window now displays amount of slots used
+- Center minimap on player when it is larger than the minimap window
+- Extended particle emitters with properties that can change over time
+- Extended the GUI font to support more characters
+- Only require a restart to switch to full screen with OpenGL on Windows
+- Make sure news and update file list aren't cached (from Aethyra)
+- Made NPC dialogs resizable (from Aethyra)
+- Made window shortcuts configurable
+- Fixed visibility of trade window on startup
+- Fixed a client input freeze when closing NPC script from server
+- Fixed dead players to lie on the ground instead of standing around
+- Fixed shortcuts being activated when trade window was visible
+- Fixed a crash when equipment window is open
+- Fixed money value on failing to buy (from Aethyra)
+- Fixed crash in right-click menu when used after a being disappeared
+
+0.0.26 (29 August 2008)
+- Added support for a newer version of eAthena server
+- Added support for showing custom being effects
+- Added new features to the particle engine
+- Position names and chat such that there is no overlap, when possible
+- Fixed a crash when loading a corrupt map that has too much layer data
+
+0.0.25 (27 July 2008)
+- Added support for whispering to other players
+- Added ability to ignore other players
+- Added command line argument for specifying the update host (-H)
+- Added support for receiving the update host from the server
+- Added support for displaying a shield sprite
+- Added shortcut window, allowing you to quickly access inventory items
+- Added message when gaining money from trade or quest
+- Added support for an arbitrary number of map layers
+- Added support for basing one sprite definition on another
+- Added the possibility to assign particle effects to NPCs
+- Added remembering whether windows are visible or not
+- Updated to work with Guichan 0.8.x
+- Improved accuracy of monster targeting with the mouse
+- Page up and page down will now scroll the chat window
+- Item icons are now loaded on demand and unloaded when no longer used
+- Fixed display of critical hits
+- Fixed multi-channel image dyeing
+- Fixed updating of money display after buying
+
+0.0.24.1 (7 April 2008)
+- Added /clear command to clear chat window
+- Added ability to close quit dialog by pressing ESC
+- Added key for targetting nearest player
+- Added the possibility to assign particle effects to monsters
+- Added possibility to pass through players with key controls
+- Fixed crash on exit after connection to server was lost
+- Fixed initialization of some variables
+- Fixed an error with chat messages without a sender that include a colon
+- Fixed minimap to not keep reappearing when hidden
+- Fixed a GCC 4.3 compile error
+- Fixed music loading from non-default location
+- Fixed crash on trying to show out of range emoticon
+- Updated Dev-C++ and Code::Blocks project files
+
+0.0.24 (24 December 2007)
+- Added female specific hair styles
+- Added user-definable key settings
+- Added XP gaining notification
+- Added close button to most windows
+- Added support for dynamic sprite recoloring
+- Added notification when the connection to the server is lost
+- Updated to work with Guichan 0.7.x
+- Mouse cursor now indicates when resize is possible
+- Changed amount slider in buy and sell dialogs to start at 1
+- Made weapon sprites and sounds customizable
+- Made buy and sell dialogs resizable
+- Merged equipment database with items database
+- Chat window log no longer goes back forever
+- Chat messages are trimmed (spaces are removed on both sides)
+- Fixed segmentation fault with some OpenGL drivers
+- Fixed updating of defense when increasing vitality
+- Fixed a bug that prevented being-controlled particles from being deleted
+- Fixed a crash in the particle engine related to child emitters
+- Fixed encoding issues with user home directory
+- Fixed a crash in equipment window on failure to load an item icon
+- Fixed a crash on filling up your inventory
+- Fixed item list in shops not to scroll back when selling
+
+0.0.23 (3 June 2007)
+- Added a particle engine along with some particle effects
+- Added a cursor to indicate targeted enemy
+- Added new program icon
+- Added a man page for UNIX like systems
+- Added the --version command line parameter
+- Improved MacOS X release
+- Screenshots are now saved in the .tmw directory on UNIX like systems
+- Magic pink is no longer used for transparency (fixes issues with that on Mac)
+- Fixed difficulties with resizing windows
+- Fixed misleading error message when connecting fails
+- Fixed wrong error message when account name already exists
+- Fixed crash when deleting a character
+- Fixed error message when creating a new character fails
+- Fixed updating problem when using scrollwheel to change shop selection
+
+0.0.22.2 (17 February 2007)
+- Updated to work with Guichan 0.6.1
+- Changed to new default server (server.themanaworld.org)
+- Changed custom mouse cursor
+- Fixed the issue where _M or _F is appended to the username
+- Fixed problem with Cancel button in update dialog
+
+0.0.22.1 (15 January 2007)
+- Updated to work with Guichan 0.6.0 (older versions no longer supported)
+- Fixed mouse coordinates in debug window
+- Fixed clicking on GUI to cause the player to start walking sometimes
+
+0.0.22 (24 December 2006)
+- Added support for female-specific equipment graphics
+- Added support for monster sounds
+- Added item icons to buy/sell dialogs
+- Enhanced character select dialog to show equipment
+- Changed to new update host (http://updates.themanaworld.org)
+- Worked around a Guichan exception thrown for mice with many buttons
+- Changed mouse walk to keep following mouse while button is held down
+- Extended font support for å and Å
+- Disabled RLE compression on all surfaces in software mode
+- Fixed joystick setting not to show disabled when it's actually enabled
+- Fixed money field to no longer hide below the bottom of the window
+- Fixed pathfinding to allow walking through beings when they block your path
+- Fixed an issue with NPC dialogs staying open after player respawn
+
+0.0.21.1 (30 October 2006)
+- Reload wallpaper after loading updates
+- Added support for gzip compressed map layer data
+- Added support for building with CMake
+- Added slider to setup dialog for configuring overlay effect
+- Fixed excessive unnecessary reloading of sprites
+- Fixed problem with OpenGL related redefinition
+- Fixed problems with hiding windows using h
+- Fixed trade window positioning
+
+0.0.21 (17 September 2006)
+- Added item pickup messages to the chat dialog
+- Added XP bar to ministatus in the top left
+- Added configurable smooth and lazy scrolling
+- Added option to turn off the joystick
+- Added --playername option for automatic character picking
+- Added --configfile option for specifying which configuration file to use
+- Added shortcut and middle mouse button for targetting nearest monster
+- Added support for map effect overlays
+- Fixed FPS limiter
+- Fixed updating system on Windows
+- Fixed player animations going out of sync on changing equipment or hairstyle
+- Fixed SDL_image configure check on some systems by first checking for libpng
+- Fixed big memory leak when using OpenGL
+- Updated to work with Guichan 0.5.0 (older versions no longer supported)
+
+0.0.20 (24 July 2006)
+- Added new hairstyle, and some fixes to the old ones
+- Added slider to set FPS limit
+- Added visible equipments
+- Added new maps and monsters
+- Added female characters
+- Implemented a new animation system
+- Updated the updating system
+- Reduced size of textures to stay within the limits of some OpenGL drivers
+- Fixed connection not being shut down completely in case of an error
+- Fixed min size of a window when resizing
+- Fixed some maps issues
+- Some fixes to monsters and player graphics
+- Minor bug fixes and lots of code cleanups
+
+0.0.19 (6 March 2006)
+- Added new playerset
+- Added --username, --password and --defaults command line options
+- Made the player walk to items prior to picking them up
+- Improved login sequence
+- Improved setup window and added a joystick calibration tool
+- Enabled 3 slots to create players
+- Reorganized and improved network code
+- Some maps fixes
+- Fixed some bugs
+- Lots of cleanups and code re-organization
+
+0.0.18.1 (30 December 2005)
+- Fixed a drawing glitch with high tiles at the bottom of the screen
+- Fixed glitches caused by fading out the damage display
+
+0.0.18 (20 December 2005)
+- Added new items, npcs, tilesets, maps and monsters
+- Non blocking connection at startup
+- Enabled monster emotions
+- Client version is now displayed during login
+- Fixed setup window behaviour
+- Fixed a Windows crash issue
+- Fixed ScrollArea and BrowserBox behaviour
+- Code cleanups
+
+0.0.17 (10 October 2005)
+- Added remembering of window position and sizes
+- Added taking screenshot with Alt+P
+- Added notice about the player being overweight
+- Added time to chat messages
+- Added messagebox on error for MacOS X
+- Added new network layer based on SDL_net
+- Added proper error message for when the map server goes offline
+- Added more international characters to fixed and rpg fonts
+- Improved damage text font, shadow is now translucent
+- Improved GUI layout, new profile window
+- Improved support for building on FreeBSD and MacOS X
+- Improved tile engine to fix graphics glitches and make mapping easier
+- Rearanged keyboard shortcuts
+- Fixed items on map to be removed on map switch
+- Fixed OpenGL checkbox in the setup window to be usable
+- Cleaned up a lot of code
+
+0.0.16 (04 September 2005)
+- Added inn and casino
+- Improved status window
+- Improved OpenGL support
+- Removed lot of bugs
+- Code cleanups
+
+0.0.15 (31 July 2005)
+- Added dynamic updating of client data
+- Added much better font for chat and names
+- Added option not to use the custom mouse cursor
+- Added joystick support
+- Improved mouse attack by not walking while pressing shift
+- Now one executable that has both SDL and OpenGL support
+- Fixed items being shown as equipped in inventory although they are not
+- Fixed position of right click menu
+- Fixed empty right click menu appearing sometimes
+
+0.0.14.1 (7 July 2005)
+- Fixed two map files not included in the source release
+
+0.0.14  (3 July 2005)
+- Added action menu (moved trading to action menu)
+- Added support for map properties
+- Added background image to minimap
+- Added background music to maps
+- Attempt to improve mouse control by left click auto-targetting
+- Fixed window resizing and also made chat window resizable
+- Fixed inventory item display not to be cut off
+- Fixed ghosts bug
+- Fixed fullscreen switch bug (OpenGL, win32)
+- Fixed unequip of weapon
+- Fixed equipping of picked up items
+- Fixed players to be able to see eachother attacking
+- Fixed maps to be loaded through resource manager
+
+0.0.13  (5 June 2005)
+- Added ability to trade items and money
+- Added server field to login dialog
+- Added item descriptions to inventory and buy/sell dialogs
+- Added confirmation dialog before quitting
+- Added button to show/hide equipment window
+- Added framerate limiter to config options
+- Added ability to auto attack
+- Added in-game help window
+- Added new hair style (mohawk)
+- Upgraded to Guichan 0.4.0
+- Dialogs are now modal when appropriate
+- Maximum item icon size changed to 32x32
+- Fixed a crash in OpenGL mode
+- Fixed rendering of minimap, progress bars and player sprite in OpenGL mode
+- Fixed 100% CPU usage when minimized
+- Fixed players not always appearing to sit when they are in fact sitting
+
+0.0.12  (1 May 2005)
+- Added new map (a cave), tiles, monsters and items
+- Added volume sliders in setup window
+- Added attack and level up samples
+- Added icon to application window
+- Added player names below players
+- Added register button in login screen
+- Added warning message to use at least 4 characters as user name
+- Added scrollbar and command history to chat window
+- Added proper support for installation of the game on *nix systems
+- Improved skin on scrollbars, arrows and slider
+- Improved sound engine and added fade in and out option for music
+- Now you can use right mouse button to attack (enables also ranged attacks)
+- Sound samples are now loaded through resource manager
+- Item information is now stored in an XML file
+- Monstersets are now loaded dynamically
+- Fixed crash when map server is down
+- Fixed NPC lists not to show garbage
+- Fixed attack animation to be synced with attack speed
+- Fixed speech and emoticons position
+- Fixed speech, damage and emoticon display to be framerate independent
+- Fixed rendering of certain monsters, items and NPCs in OpenGL mode
+- Fixed skipping with mouse walk and made interruptable with keyboard
+- Fixed mouse walk when dead or talking with NPC
+- Fixed log files to be created in ~/.tmw on Linux systems
+
+0.0.11.2  (8 April 2005)
+- Damage text now floats upwards
+- Mouse walk now only works with left mouse button
+- Fixed frequent crash on startup and exit that crept into 0.0.11.1
+
+0.0.11.1  (7 April 2005)
+- Buttons are now disabled when appropriate
+- Fixed players standing on top of NPCs
+- Fixed getting stuck when trying to sell with nothing to sell
+- Fixed setup dialog windowed/fullscreen switching behaviour
+- Fixed gui opacity slider (win32)
+- Fixed building up false inventory when warping
+- Fixed crash on startup with sound enabled (win32)
+
+0.0.11  (3 April 2005)
+- Added new maps, tiles and monsters
+- Added walking with mouse by clicking where you want to go
+- Added diagonal walking with keyboard
+- Added a choice dialog of how many items to drop
+- Added handling of window close button
+- Added config option for GUI opacity (guialpha)
+- Added warp between two maps
+- Changed chat entry behaviour to focus on enter and defocus on send message
+- Upgraded to Guichan 0.3.0
+- Chat now appears in a window
+- Beings now walk a lot smoother
+- Completed support for new map format (collision, compression)
+- Fixed problem where players would often turn up with black hair
+- Fixed not showing other players dead when they die
+- Fixed multiple crashes in being path handling
+- Fixed initial starting position for new player characters
+
+0.0.10  (5 March 2005)
+- Added using and dropping of items
+- Added experimental support for OpenGL rendering
+- Added support for new map format in client
+- Added ability to load resources from zip files
+- Added start of a minimap
+- Added new GUI skin, wallpaper and mouse cursor
+- Fixed and reintroduced cancel button for NPC choice dialog
+- Fixed character creation and deletion error handling
+- Fixed crash in fullscreen with hardware acceleration enabled (win32)
+- Fixed talking to NPCs and walking while NPC window is still open
+- Reimplemented A* pathfinding, more flexible and stable now
+- Removed background music that wasn't ours
+
+0.0.9  (30 Jan 2005)
+- Replaced Allegro library with SDL, SDL_image and SDL_mixer
+- A huge amount of small GUI improvements
+- Lots of internal changes including a resource manager
+
+0.0.8a  (27 Dec 2004)
+- Added controlling player with arrow keys
+- Rewrote gui with Guichan
+- Added scripts for easy autotools
+
+0.0.8  (30 Oct 2004)
+- Added sound support for macosx
+- Added primitive inventory
+- Added action failed messages for all skills and known reasons (R 0x0110)
+- Added sit capability with the right level
+- Added "dead" message and restart packet
+- Added skill dialog
+- Added skill update (R 0x0141)
+- Added colored text for damage
+- Added monster death animation
+- Added icon to win32 executable
+- Added 'enter' key support in login screen
+- Added RLE sprites for tiles
+- Added collision detection with beings
+- Fix for mapserver segfault-bug in chatsystem (broken pipe for all users on
+  screen)
+- Partially added TMW GUI to inventory
+- Added soundpool that can preload, play and remove items to/from ram
+- Added tmw_bar_proc
+- Added tmw_plus_proc && possibility to increase stats point, at each new level
+- Added increase skill level dialog
+- Added 2xSaI engine
+- Added patch client v0.1 to Win32 version
+
+0.0.7e  (31 Aug 2004)
+- Tons of bugfixes & improvements (again)
+- MacOS X support
+- Confirmed support for GNU/Linux on ppc
+- Added soundsystem (plays a MOD as BGM)
+- Added a 2nd Map
+- Added NPCs with simple dialogs
+- Added warps
+- Changed makefile for GCC to optimize more
+
+0.0.7d  (18 Aug 2004)
+- Tons of bugfixes
+- Added a bit of prediction to player walking
+- Added Ultramichy's server to client
+- Added a walking monster
+- Added a* system (still not applied to player, but only to monster walking)
+- Started rewriting of chat system
+
+0.0.7c  (22 Jul 2004)
+- Started rewriting of graphic engine
+- Fixed walking problems
+- Server: features a custom map
+
+0.0.7b  (10 Jul 2004)
+- Completely rewrited network functions
+  - Removed listening thread
+  - Replaced blocking calls to socket
+  - Removed #pragma pack directives
+- Replaced MASkinG with own made GUI system
+- Finite state machine dialog system
+- Greatly reduced memory usage
+- Added a lot of comments to the code
+- Decreased the number of files in source code
+- The code is now a little more organized and easy to understand
+
+0.0.7a  (30 Jun 2004)
+- Win32 binaries come with an installer
+- Renew login GUI:
+  - Change from dialogs to windows
+  - Add option to remember last login infos
+  - Add player creation dialog
+- Add NPC GUI
+
+0.0.7  (26 Jun 2004)
+- Some kind of multiplayer
+- Cross-compiler source code
+- Added setup utility
+- Minor changes
+- Bugfixes
+
+0.0.6a  (13 Jun 2004)

@@ -1,0 +1,375 @@
+/*
+ *  The Mana Client
+ *  Copyright (C) 2007-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *
+ *  This file is part of The Mana Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "gui/widgets/itemshortcutcontainer.h"
+
+#include "configuration.h"
+#include "graphics.h"
+#include "inventory.h"
+#include "item.h"
+#include "itemshortcut.h"
+#include "spellshortcut.h"
+#include "keyboardconfig.h"
+#include "localplayer.h"
+#include "playerinfo.h"
+#include "spellmanager.h"
+#include "textcommand.h"
+
+#include "gui/inventorywindow.h"
+#include "gui/itempopup.h"
+#include "gui/palette.h"
+#include "gui/spellpopup.h"
+#include "gui/theme.h"
+#include "gui/viewport.h"
+
+#include "resources/image.h"
+#include "resources/iteminfo.h"
+
+#include "utils/stringutils.h"
+
+ItemShortcutContainer::ItemShortcutContainer(unsigned number):
+    ShortcutContainer(),
+    mItemClicked(false),
+    mItemMoved(NULL),
+    mNumber(number)
+{
+    addMouseListener(this);
+    addWidgetListener(this);
+
+    mItemPopup = new ItemPopup;
+    mSpellPopup = new SpellPopup;
+
+    mBackgroundImg = Theme::getImageFromTheme("item_shortcut_bgr.png");
+    if (itemShortcut[mNumber])
+        mMaxItems = itemShortcut[mNumber]->getItemCount();
+    else
+        mMaxItems = 0;
+
+    if (mBackgroundImg)
+    {
+        mBackgroundImg->setAlpha(Client::getGuiAlpha());
+        mBoxHeight = mBackgroundImg->getHeight();
+        mBoxWidth = mBackgroundImg->getWidth();
+    }
+    else
+    {
+        mBoxHeight = 1;
+        mBoxWidth = 1;
+    }
+}
+
+ItemShortcutContainer::~ItemShortcutContainer()
+{
+    if (mBackgroundImg)
+    {
+        mBackgroundImg->decRef();
+        mBackgroundImg = 0;
+    }
+    delete mItemPopup;
+    mItemPopup = 0;
+    delete mSpellPopup;
+    mSpellPopup = 0;
+}
+
+void ItemShortcutContainer::draw(gcn::Graphics *graphics)
+{
+    if (!itemShortcut[mNumber])
+        return;
+
+    mAlpha = Client::getGuiAlpha();
+    if (Client::getGuiAlpha() != mAlpha)
+    {
+        if (mBackgroundImg)
+            mBackgroundImg->setAlpha(mAlpha);
+    }
+
+    Graphics *g = static_cast<Graphics*>(graphics);
+
+    graphics->setFont(getFont());
+
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
+        const int itemX = (i % mGridWidth) * mBoxWidth;
+        const int itemY = (i / mGridWidth) * mBoxHeight;
+
+        if (mBackgroundImg)
+            g->drawImage(mBackgroundImg, itemX, itemY);
+
+        // Draw item keyboard shortcut.
+        std::string key = keyboard.getKeyValueString(
+            keyboard.KEY_SHORTCUT_1 + i);
+        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+
+        g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
+
+        int itemId = itemShortcut[mNumber]->getItem(i);
+
+        if (itemId < 0)
+            continue;
+
+        // this is item
+        if (itemId < SPELL_MIN_ID)
+        {
+            if (!PlayerInfo::getInventory())
+                continue;
+
+            Item *item = PlayerInfo::getInventory()->findItem(itemId);
+
+            if (item)
+            {
+                // Draw item icon.
+                Image* image = item->getImage();
+
+                if (image)
+                {
+                    std::string caption;
+                    if (item->getQuantity() > 1)
+                        caption = toString(item->getQuantity());
+                    else if (item->isEquipped())
+                    caption = "Eq.";
+
+                    image->setAlpha(1.0f);
+                    g->drawImage(image, itemX, itemY);
+                    if (item->isEquipped())
+                    {
+                        g->setColor(Theme::getThemeColor(
+                            Theme::ITEM_EQUIPPED));
+                    }
+                    else
+                    {
+                        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+                    }
+                    g->drawText(caption, itemX + mBoxWidth / 2,
+                        itemY + mBoxHeight - 14, gcn::Graphics::CENTER);
+                }
+            }
+        }
+        else if (spellManager)   // this is magic shortcut
+        {
+            TextCommand *spell = spellManager->getSpellByItem(itemId);
+            if (spell)
+            {
+                if (!spell->isEmpty())
+                {
+                    Image* image = spell->getImage();
+
+                    if (image)
+                    {
+                        image->setAlpha(1.0f);
+                        g->drawImage(image, itemX, itemY);
+                    }
+                }
+
+                g->drawText(spell->getSymbol(), itemX + 2,
+                            itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
+            }
+        }
+
+    }
+
+    if (mItemMoved)
+    {
+        // Draw the item image being dragged by the cursor.
+        Image* image = mItemMoved->getImage();
+        if (image)
+        {
+            const int tPosX = mCursorPosX - (image->getWidth() / 2);
+            const int tPosY = mCursorPosY - (image->getHeight() / 2);
+
+            g->drawImage(image, tPosX, tPosY);
+            g->drawText(toString(mItemMoved->getQuantity()),
+                        tPosX + mBoxWidth / 2, tPosY + mBoxHeight - 14,
+                        gcn::Graphics::CENTER);
+        }
+    }
+}
+
+void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
+{
+    if (!itemShortcut[mNumber])
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        if (!mItemMoved && mItemClicked)
+        {
+            const int index = getIndexFromGrid(event.getX(), event.getY());
+
+            if (index == -1)
+                return;
+
+            const int itemId = itemShortcut[mNumber]->getItem(index);
+
+            if (itemId < 0)
+                return;
+
+            if (itemId < SPELL_MIN_ID)
+            {
+                if (!PlayerInfo::getInventory())
+                    return;
+
+                Item *item = PlayerInfo::getInventory()->findItem(itemId);
+
+                if (item)
+                {
+                    mItemMoved = item;
+                    itemShortcut[mNumber]->removeItem(index);
+                }
+            }
+            else if (spellManager)
+            {
+                TextCommand *spell = spellManager->getSpellByItem(itemId);
+                if (spell)
+                    itemShortcut[mNumber]->removeItem(index);
+            }
+        }
+        if (mItemMoved)
+        {
+            mCursorPosX = event.getX();
+            mCursorPosY = event.getY();
+        }
+    }
+}
+
+void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
+{
+    if (!itemShortcut[mNumber])
+        return;
+
+    const int index = getIndexFromGrid(event.getX(), event.getY());
+
+    if (index == -1)
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        // Stores the selected item if theirs one.
+        if (itemShortcut[mNumber]->isItemSelected() &&
+            (inventoryWindow && (inventoryWindow->isVisible() ||
+            itemShortcut[mNumber]->getSelectedItem() >= SPELL_MIN_ID)))
+        {
+            itemShortcut[mNumber]->setItem(index);
+            itemShortcut[mNumber]->setItemSelected(-1);
+            if (spellShortcut)
+                spellShortcut->setItemSelected(-1);
+        }
+        else if (itemShortcut[mNumber]->getItem(index))
+        {
+            mItemClicked = true;
+        }
+    }
+    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    {
+//        Item *item = PlayerInfo::getInventory()->findItem(id);
+
+        if (viewport && itemShortcut[mNumber])
+            viewport->showItemPopup(itemShortcut[mNumber]->getItem(index));
+    }
+}
+
+void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
+{
+    if (!itemShortcut[mNumber])
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        if (itemShortcut[mNumber]->isItemSelected())
+            itemShortcut[mNumber]->setItemSelected(-1);
+
+        const int index = getIndexFromGrid(event.getX(), event.getY());
+        if (index == -1)
+        {
+            mItemMoved = NULL;
+            return;
+        }
+        if (mItemMoved)
+        {
+            itemShortcut[mNumber]->setItems(index, mItemMoved->getId());
+            mItemMoved = NULL;
+        }
+        else if (itemShortcut[mNumber]->getItem(index) && mItemClicked)
+        {
+            itemShortcut[mNumber]->useItem(index);
+        }
+
+        if (mItemClicked)
+            mItemClicked = false;
+    }
+}
+
+// Show ItemTooltip
+void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
+{
+    if (!itemShortcut[mNumber])
+        return;
+
+    const int index = getIndexFromGrid(event.getX(), event.getY());
+
+    if (index == -1)
+        return;
+
+    const int itemId = itemShortcut[mNumber]->getItem(index);
+
+    if (itemId < 0)
+        return;
+
+    if (itemId < SPELL_MIN_ID)
+    {
+        mSpellPopup->setVisible(false);
+
+        if (!PlayerInfo::getInventory())
+            return;
+
+        Item *item = PlayerInfo::getInventory()->findItem(itemId);
+
+        if (item && viewport)
+        {
+            mItemPopup->setItem(item);
+            mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        }
+        else
+        {
+            mItemPopup->setVisible(false);
+        }
+    }
+    else if (spellManager)
+    {
+        mItemPopup->setVisible(false);
+        TextCommand *spell = spellManager->getSpellByItem(itemId);
+        if (spell && viewport)
+        {
+            mSpellPopup->setItem(spell);
+            mSpellPopup->view(viewport->getMouseX(), viewport->getMouseY());
+        }
+        else
+        {
+            mSpellPopup->setVisible(false);
+        }
+    }
+}
+
+// Hide ItemTooltip
+void ItemShortcutContainer::mouseExited(gcn::MouseEvent &event _UNUSED_)
+{
+    mItemPopup->setVisible(false);
+    mSpellPopup->setVisible(false);
+}

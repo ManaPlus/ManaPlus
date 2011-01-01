@@ -1,0 +1,317 @@
+/*
+ *  The Mana Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *
+ *  This file is part of The Mana Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef CLIENT_H
+#define CLIENT_H
+
+#include "configlistener.h"
+
+#include "net/serverinfo.h"
+
+#include <guichan/actionlistener.hpp>
+
+#include <SDL.h>
+#include <SDL_framerate.h>
+
+#include <string>
+
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
+class Button;
+class Desktop;
+class LoginData;
+class Window;
+class QuitDialog;
+
+/**
+ * Set the milliseconds value of a tick time.
+ */
+static const int MILLISECONDS_IN_A_TICK = 10;
+
+//manaserv uses 9601
+//static const short DEFAULT_PORT = 9601;
+static const short DEFAULT_PORT = 6901;
+
+extern volatile int fps;
+extern volatile int tick_time;
+extern volatile int cur_time;
+extern bool isSafeMode;
+
+class ErrorListener : public gcn::ActionListener
+{
+    public:
+        void action(const gcn::ActionEvent &event);
+};
+
+extern std::string errorMessage;
+extern ErrorListener errorListener;
+extern LoginData loginData;
+
+/**
+ * Returns elapsed time. (Warning: supposes the delay is always < 100 seconds)
+ */
+int get_elapsed_time(int start_time);
+
+/**
+ * All client states.
+ */
+enum State
+{
+    STATE_ERROR = -1,
+    STATE_START = 0,
+    STATE_CHOOSE_SERVER,
+    STATE_CONNECT_SERVER,
+    STATE_LOGIN,
+    STATE_LOGIN_ATTEMPT,
+    STATE_WORLD_SELECT,           // 5
+    STATE_WORLD_SELECT_ATTEMPT,
+    STATE_UPDATE,
+    STATE_LOAD_DATA,
+    STATE_GET_CHARACTERS,
+    STATE_CHAR_SELECT,            // 10
+    STATE_CONNECT_GAME,
+    STATE_GAME,
+    STATE_CHANGE_MAP,             // Switch map-server/gameserver
+    STATE_LOGIN_ERROR,
+    STATE_ACCOUNTCHANGE_ERROR,    // 15
+    STATE_REGISTER_PREP,
+    STATE_REGISTER,
+    STATE_REGISTER_ATTEMPT,
+    STATE_CHANGEPASSWORD,
+    STATE_CHANGEPASSWORD_ATTEMPT, // 20
+    STATE_CHANGEPASSWORD_SUCCESS,
+    STATE_CHANGEEMAIL,
+    STATE_CHANGEEMAIL_ATTEMPT,
+    STATE_CHANGEEMAIL_SUCCESS,
+    STATE_UNREGISTER,             // 25
+    STATE_UNREGISTER_ATTEMPT,
+    STATE_UNREGISTER_SUCCESS,
+    STATE_SWITCH_SERVER,
+    STATE_SWITCH_LOGIN,
+    STATE_SWITCH_CHARACTER,       // 30
+    STATE_LOGOUT_ATTEMPT,
+    STATE_WAIT,
+    STATE_EXIT,
+    STATE_FORCE_QUIT,
+    STATE_AUTORECONNECT_SERVER = 1000
+};
+
+enum PacketTypes
+{
+    PACKET_CHAT = 0,
+    PACKET_PICKUP = 1,
+    PACKET_DROP = 2,
+    PACKET_NPC_NEXT = 3,
+    PACKET_NPC_TALK = 4,
+    PACKET_NPC_INPUT = 5,
+    PACKET_EMOTE = 6,
+    PACKET_SIT = 7,
+    PACKET_DIRECTION = 8,
+    PACKET_ATTACK = 9,
+    PACKET_SIZE
+};
+
+struct PacketLimit
+{
+    int lastTime;
+    int timeLimit;
+    int cnt;
+    int cntLimit;
+};
+
+/**
+ * The core part of the client. This class initializes all subsystems, runs
+ * the event loop, and shuts everything down again.
+ */
+class Client : public ConfigListener, public gcn::ActionListener
+{
+public:
+    /**
+     * A structure holding the values of various options that can be passed
+     * from the command line.
+     */
+    struct Options
+    {
+        Options():
+            printHelp(false),
+            printVersion(false),
+            skipUpdate(false),
+            chooseDefault(false),
+            noOpenGL(false),
+            safeMode(false),
+            serverPort(0)
+        {}
+
+        bool printHelp;
+        bool printVersion;
+        bool skipUpdate;
+        bool chooseDefault;
+        bool noOpenGL;
+        std::string username;
+        std::string password;
+        std::string character;
+        std::string brandingPath;
+        std::string updateHost;
+        std::string dataPath;
+        std::string homeDir;
+        std::string logFileName;
+        std::string chatLogDir;
+        std::string configDir;
+        std::string localDataDir;
+        std::string screenshotDir;
+        bool safeMode;
+
+        std::string serverName;
+        short serverPort;
+    };
+
+    Client(const Options &options);
+    ~Client();
+
+    /**
+     * Provides access to the client instance.
+     */
+    static Client *instance()
+    { return mInstance; }
+
+    int exec();
+
+    static void setState(State state)
+    { instance()->mState = state; }
+
+    static State getState()
+    { return instance()->mState; }
+
+    static const std::string &getPackageDirectory()
+    { return instance()->mPackageDir; }
+
+    static const std::string &getConfigDirectory()
+    { return instance()->mConfigDir; }
+
+    static const std::string &getLocalDataDirectory()
+    { return instance()->mLocalDataDir; }
+
+    static const std::string &getScreenshotDirectory()
+    { return instance()->mScreenshotDir; }
+
+    static const std::string getServerConfigDirectory();
+
+    static bool getIsMinimized()
+    { return instance()->mIsMinimized; }
+
+    static void setIsMinimized(bool n)
+    { instance()->mIsMinimized = n; }
+
+    static bool getInputFocused()
+    { return instance()->mInputFocused; }
+
+    static void setInputFocused(bool n)
+    { instance()->mInputFocused = n; }
+
+    static bool getMouseFocused()
+    { return instance()->mMouseFocused; }
+
+    static void setMouseFocused(bool n)
+    { instance()->mMouseFocused = n; }
+
+    static std::string getUpdatesDir()
+    { return instance()->mUpdatesDir; }
+
+    static std::string getServerName()
+    { return instance()->mServerName; }
+
+    static void setGuiAlpha(float n);
+
+    static float getGuiAlpha();
+
+    static void setFramerate(int fpsLimit);
+    void optionChanged(const std::string &name);
+    void action(const gcn::ActionEvent &event);
+    void initTradeFilter();
+
+    void initPacketLimiter();
+
+    void writePacketLimits(std::string packetLimitsName);
+
+    static bool limitPackets(int type);
+
+    static bool checkPackets(int type);
+
+    PacketLimit mPacketLimits[PACKET_SIZE + 1];
+
+private:
+    void initRootDir();
+    void initHomeDir();
+    void initConfiguration();
+    void initUpdatesDir();
+    void initScreenshotDir();
+    void initServerConfig(std::string serverName);
+
+    bool copyFile(std::string &configPath, std::string &oldConfigPath);
+    bool createConfig(std::string &configPath);
+
+    void accountLogin(LoginData *loginData);
+
+    void storeSafeParameters();
+
+    static Client *mInstance;
+
+    Options mOptions;
+
+    std::string mPackageDir;
+    std::string mConfigDir;
+    std::string mLocalDataDir;
+    std::string mUpdateHost;
+    std::string mUpdatesDir;
+    std::string mScreenshotDir;
+    std::string mServerConfigDir;
+    std::string mRootDir;
+    std::string mServerName;
+
+    ServerInfo mCurrentServer;
+
+    Window *mCurrentDialog;
+    QuitDialog *mQuitDialog;
+    Desktop *mDesktop;
+    Button *mSetupButton;
+
+    State mState;
+    State mOldState;
+
+    SDL_Surface *mIcon;
+
+    SDL_TimerID mLogicCounterId;
+    SDL_TimerID mSecondsCounterId;
+
+    bool mLimitFps;
+    bool mConfigAutoSaved;
+    bool mIsMinimized;
+    bool mInputFocused;
+    bool mMouseFocused;
+    float mGuiAlpha;
+    FPSmanager mFpsManager;
+};
+
+#endif // CLIENT_H

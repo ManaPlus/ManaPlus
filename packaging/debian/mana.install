@@ -1,0 +1,5 @@
+debian/manaplus.desktop usr/share/applications
+debian/manaplus.xpm usr/share/pixmaps
+data/icons/manaplus.png usr/share/icons
+docs/manaplus.6 usr/share/man/man6
+src/manaplus usr/games

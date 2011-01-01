@@ -1,0 +1,4 @@
+?package(manaplus):needs="X11" section="Games/Adventure"\
+ title="ManaPlus"\
+ description="ManaPlus is a 2D MMORPG client."\
+ command="/usr/games/manaplus" icon="/usr/share/pixmaps/manaplus.xpm"
