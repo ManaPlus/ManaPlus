@@ -49,10 +49,14 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/emoteshortcutcontainer.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
+	      gui/widgets/horizontcontainer.cpp \
+	      gui/widgets/horizontcontainer.h \
 	      gui/widgets/icon.cpp \
 	      gui/widgets/icon.h \
 	      gui/widgets/inttextfield.cpp \
 	      gui/widgets/inttextfield.h \
+	      gui/widgets/inventoryfilter.cpp \
+	      gui/widgets/inventoryfilter.h \
 	      gui/widgets/itemcontainer.cpp \
 	      gui/widgets/itemcontainer.h \
 	      gui/widgets/itemlinkhandler.cpp \

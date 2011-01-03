@@ -35,10 +35,13 @@
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/container.h"
+#include "gui/widgets/inventoryfilter.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/progressbar.h"
+#include "gui/widgets/radiobutton.h"
 #include "gui/widgets/scrollarea.h"
 
 #include "net/inventoryhandler.h"
@@ -89,6 +92,12 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsLabel = new Label(_("Slots:"));
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
+    mFilter = new InventoryFilter(getWindowName(), 20, 10);
+
+    mFilterLabel = new Label(_("Filter:"));
+
+    mFilter->add("All");
+
     if (isMainInventory())
     {
         std::string equip = _("Equip");
@@ -114,17 +123,21 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         mWeightLabel = new Label(_("Weight:"));
         mWeightBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_WEIGHT);
 
-        place(0, 0, mWeightLabel).setPadding(3);
+        place(0, 0, mWeightLabel, 1).setPadding(3);
         place(1, 0, mWeightBar, 3);
-        place(4, 0, mSlotsLabel).setPadding(3);
+        place(4, 0, mSlotsLabel, 1).setPadding(3);
         place(5, 0, mSlotsBar, 2);
-        place(0, 1, invenScroll, 7).setPadding(3);
-        place(0, 2, mUseButton);
-        place(1, 2, mUseButton2);
-        place(2, 2, mDropButton);
-        place(4, 2, mSplitButton);
-        place(5, 2, mShopButton);
-        place(6, 2, mOutfitButton);
+
+        place(0, 1, mFilterLabel, 1).setPadding(3);
+        place(1, 1, mFilter, 6).setPadding(3);
+
+        place(0, 2, invenScroll, 7).setPadding(3);
+        place(0, 3, mUseButton);
+        place(1, 3, mUseButton2);
+        place(2, 3, mDropButton);
+        place(4, 3, mSplitButton);
+        place(5, 3, mShopButton);
+        place(6, 3, mOutfitButton);
 
         updateWeight();
     }
@@ -136,14 +149,18 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
 
         place(0, 0, mSlotsLabel).setPadding(3);
         place(1, 0, mSlotsBar, 3);
-        place(0, 1, invenScroll, 4, 4);
-        place(0, 5, mStoreButton);
-        place(1, 5, mRetrieveButton);
-        place(3, 5, mCloseButton);
+
+        place(0, 1, mFilterLabel, 1).setPadding(3);
+        place(1, 1, mFilter, 3).setPadding(3);
+
+        place(0, 2, invenScroll, 4, 4);
+        place(0, 6, mStoreButton);
+        place(1, 6, mRetrieveButton);
+        place(3, 6, mCloseButton);
     }
 
     Layout &layout = getLayout();
-    layout.setRowHeight(1, Layout::AUTO_SET);
+    layout.setRowHeight(2, Layout::AUTO_SET);
 
     mInventory->addInventoyListener(this);
 

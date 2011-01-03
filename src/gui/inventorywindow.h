@@ -42,6 +42,7 @@
 
 class Item;
 class ItemContainer;
+class InventoryFilter;
 class ProgressBar;
 class TextBox;
 
@@ -143,9 +144,10 @@ class InventoryWindow : public Window,
                     *mSplitButton, *mOutfitButton, *mShopButton,
                     *mStoreButton, *mRetrieveButton, *mCloseButton;
 
-        gcn::Label *mWeightLabel, *mSlotsLabel;
+        gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel;
 
         ProgressBar *mWeightBar, *mSlotsBar;
+        InventoryFilter *mFilter;
 
         bool mSplit;
 };
