@@ -265,6 +265,8 @@ class KeyboardConfig
             KEY_EMOTE_40,
             KEY_EMOTE_41,
             KEY_EMOTE_42,
+            KEY_EMOTE_43,
+            KEY_EMOTE_44,
             KEY_WEAR_OUTFIT,
             KEY_COPY_OUTFIT,
             KEY_COPY_EQUIPED_OUTFIT,

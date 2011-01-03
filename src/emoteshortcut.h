@@ -21,7 +21,7 @@
 #ifndef EMOTESHORTCUT_H
 #define EMOTESHORTCUT_H
 
-#define SHORTCUT_EMOTES 42
+#define SHORTCUT_EMOTES 44
 
 /**
  * The class which keeps track of the emote shortcuts.

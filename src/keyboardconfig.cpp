@@ -243,6 +243,10 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_EMOTION},
     {"keyEmoteShortcut42", SDLK_c, strprintf(_("Emote Shortcut %d"), 42),
         KeyboardConfig::GRP_EMOTION},
+    {"keyEmoteShortcut43", SDLK_v, strprintf(_("Emote Shortcut %d"), 43),
+        KeyboardConfig::GRP_EMOTION},
+    {"keyEmoteShortcut44", SDLK_b, strprintf(_("Emote Shortcut %d"), 44),
+        KeyboardConfig::GRP_EMOTION},
     {"keyWearOutfit", SDLK_RCTRL, _("Wear Outfit"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyCopyOutfit", SDLK_RALT, _("Copy Outfit"),
@@ -411,7 +415,7 @@ int KeyboardConfig::getKeyIndex(int keyValue, int grp) const
 
 int KeyboardConfig::getKeyEmoteOffset(int keyValue) const
 {
-    for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_42; i++)
+    for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_44; i++)
     {
         if (keyValue == mKey[i].value)
             return 1 + i - KEY_EMOTE_1;

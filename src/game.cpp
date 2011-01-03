@@ -1146,47 +1146,50 @@ void Game::handleInput()
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_UP))
+        else if (!keyboard.isKeyActive(keyboard.KEY_EMOTE))
         {
-            if (player_node->getDirection() != Being::UP)
+            if (keyboard.isKeyActive(keyboard.KEY_DIRECT_UP))
             {
-                if (Client::limitPackets(PACKET_DIRECTION))
+                if (player_node->getDirection() != Being::UP)
                 {
-                    player_node->setDirection(Being::UP);
-                    Net::getPlayerHandler()->setDirection(Being::UP);
+                    if (Client::limitPackets(PACKET_DIRECTION))
+                    {
+                        player_node->setDirection(Being::UP);
+                        Net::getPlayerHandler()->setDirection(Being::UP);
+                    }
                 }
             }
-        }
-        else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_DOWN))
-        {
-            if (player_node->getDirection() != Being::DOWN)
+            else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_DOWN))
             {
-                if (Client::limitPackets(PACKET_DIRECTION))
+                if (player_node->getDirection() != Being::DOWN)
                 {
-                    player_node->setDirection(Being::DOWN);
-                    Net::getPlayerHandler()->setDirection(Being::DOWN);
+                    if (Client::limitPackets(PACKET_DIRECTION))
+                    {
+                        player_node->setDirection(Being::DOWN);
+                        Net::getPlayerHandler()->setDirection(Being::DOWN);
+                    }
                 }
             }
-        }
-        else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_LEFT))
-        {
-            if (player_node->getDirection() != Being::LEFT)
+            else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_LEFT))
             {
-                if (Client::limitPackets(PACKET_DIRECTION))
+                if (player_node->getDirection() != Being::LEFT)
                 {
-                    player_node->setDirection(Being::LEFT);
-                    Net::getPlayerHandler()->setDirection(Being::LEFT);
+                    if (Client::limitPackets(PACKET_DIRECTION))
+                    {
+                        player_node->setDirection(Being::LEFT);
+                        Net::getPlayerHandler()->setDirection(Being::LEFT);
+                    }
                 }
             }
-        }
-        else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_RIGHT))
-        {
-            if (player_node->getDirection() != Being::RIGHT)
+            else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_RIGHT))
             {
-                if (Client::limitPackets(PACKET_DIRECTION))
+                if (player_node->getDirection() != Being::RIGHT)
                 {
-                    player_node->setDirection(Being::RIGHT);
-                    Net::getPlayerHandler()->setDirection(Being::RIGHT);
+                    if (Client::limitPackets(PACKET_DIRECTION))
+                    {
+                        player_node->setDirection(Being::RIGHT);
+                        Net::getPlayerHandler()->setDirection(Being::RIGHT);
+                    }
                 }
             }
         }

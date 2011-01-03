@@ -41,7 +41,7 @@
 
 #include "utils/dtor.h"
 
-static const int MAX_ITEMS = 42;
+static const int MAX_ITEMS = 44;
 
 EmoteShortcutContainer::EmoteShortcutContainer():
     ShortcutContainer(),
