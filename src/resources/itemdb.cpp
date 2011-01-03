@@ -42,6 +42,8 @@ namespace
     ItemDB::NamedItemInfos mNamedItemInfos;
     ItemInfo *mUnknown;
     bool mLoaded = false;
+    std::vector<std::string> mTagNames;
+    std::map<std::string, int> mTags;
 }
 
 // Forward declarations
@@ -149,6 +151,7 @@ void ItemDB::load()
     if (mLoaded)
         unload();
 
+    int tagNum = 0;
     logger->log1("Initializing item database...");
 
     mUnknown = new ItemInfo;
@@ -167,6 +170,17 @@ void ItemDB::load()
         mLoaded = true;
         return;
     }
+
+    mTags.clear();
+    mTagNames.clear();
+    mTagNames.push_back("All");
+    mTagNames.push_back("Usable");
+    mTagNames.push_back("Unusable");
+    mTagNames.push_back("Equipment");
+    mTags["All"] = tagNum ++;
+    mTags["Usable"] = tagNum ++;
+    mTags["Unusable"] = tagNum ++;
+    mTags["Equipment"] = tagNum ++;
 
     for_each_xml_child_node(node, rootNode)
     {
@@ -210,6 +224,20 @@ void ItemDB::load()
         itemInfo->setName(name.empty() ? _("unnamed") : name);
         itemInfo->setDescription(description);
         itemInfo->setType(itemTypeFromString(typeStr));
+        itemInfo->addTag(mTags["All"]);
+        switch (itemInfo->getType())
+        {
+            case ITEM_USABLE:
+                itemInfo->addTag(mTags["Usable"]);
+                break;
+            case ITEM_UNUSABLE:
+                itemInfo->addTag(mTags["Unusable"]);
+                break;
+            default:
+                itemInfo->addTag(mTags["Equipment"]);
+                break;
+        }
+
         itemInfo->setView(view);
         itemInfo->setWeight(weight);
         itemInfo->setAttackAction(attackAction);
@@ -315,6 +343,11 @@ void ItemDB::load()
     mLoaded = true;
 }
 
+std::vector<std::string> &ItemDB::getTags()
+{
+    return mTagNames;
+}
+
 void ItemDB::unload()
 {
     logger->log1("Unloading item database...");
@@ -325,6 +358,8 @@ void ItemDB::unload()
     delete_all(mItemInfos);
     mItemInfos.clear();
     mNamedItemInfos.clear();
+    mTags.clear();
+    mTagNames.clear();
     mLoaded = false;
 }
 

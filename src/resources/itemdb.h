@@ -23,6 +23,7 @@
 #define ITEM_MANAGER_H
 
 #include <list>
+#include <vector>
 #include <map>
 #include <string>
 
@@ -48,6 +49,8 @@ namespace ItemDB
      * Frees item data.
      */
     void unload();
+
+    std::vector<std::string> &getTags();
 
     bool exists(int id);
 

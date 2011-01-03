@@ -207,6 +207,12 @@ class ItemInfo
         void setDrawPriority(int n)
         { mDrawPriority = n; }
 
+        std::set<int> &getTags()
+        { return mTags; }
+
+        void addTag(int tag)
+        { mTags.insert(tag); }
+
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         std::string mName;
@@ -233,10 +239,11 @@ class ItemInfo
         std::string mMissileParticle;
 
         /** Maps gender to sprite filenames. */
-        std::map<int, std::string> mAnimationFiles;
+        std::map <int, std::string> mAnimationFiles;
 
         /** Stores the names of sounds to be played at certain event. */
-        std::map< EquipmentSoundEvent, std::vector<std::string> > mSounds;
+        std::map < EquipmentSoundEvent, std::vector<std::string> > mSounds;
+        std::set <int> mTags;
 };
 
 #endif

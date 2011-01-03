@@ -96,7 +96,11 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
 
     mFilterLabel = new Label(_("Filter:"));
 
-    mFilter->add("All");
+    std::vector<std::string> tags = ItemDB::getTags();
+    for (int f = 0; f < tags.size(); f ++)
+        mFilter->add(tags[f]);
+
+//    mFilter->add("All");
 
     if (isMainInventory())
     {
