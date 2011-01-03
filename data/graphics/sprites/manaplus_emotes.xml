@@ -19,4 +19,8 @@
     <emote id="117"><sprite name="Heart" variant="17">manaplus_emote.xml</sprite></emote>
     <emote id="118"><sprite name="Emote" variant="18">manaplus_emote.xml</sprite></emote>
     <emote id="119"><sprite name="Pumpkin" variant="19">manaplus_emote.xml</sprite></emote>
+    <emote id="120"><sprite name="Evil" variant="20">manaplus_emote.xml</sprite></emote>
+    <emote id="121"><sprite name="Epic" variant="21">manaplus_emote.xml</sprite></emote>
+    <emote id="122"><sprite name="Bad geek" variant="22">manaplus_emote.xml</sprite></emote>
+    <emote id="123"><sprite name="Mimi" variant="23">manaplus_emote.xml</sprite></emote>
 </emotes>
