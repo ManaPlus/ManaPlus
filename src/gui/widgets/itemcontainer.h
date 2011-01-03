@@ -119,6 +119,8 @@ class ItemContainer : public gcn::Widget,
         void removeSelectionListener(gcn::SelectionListener *listener)
         { mSelectionListeners.remove(listener); }
 
+        void setFilter (int tag);
+
     private:
         enum Direction
         {
@@ -173,6 +175,8 @@ class ItemContainer : public gcn::Widget,
          */
         int getSlotIndex(int x, int y) const;
 
+        void updateMatrix();
+
         Inventory *mInventory;
         int mGridColumns, mGridRows;
         Image *mSelImg;
@@ -183,8 +187,10 @@ class ItemContainer : public gcn::Widget,
         bool mSwapItems;
         bool mDescItems;
         int mDragPosX, mDragPosY;
+        int mTag;
 
         ItemPopup *mItemPopup;
+        int *mShowMatrix;
 
         typedef std::list<gcn::SelectionListener*> SelectionListenerList;
         typedef SelectionListenerList::iterator SelectionListenerIterator;

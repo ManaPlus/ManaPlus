@@ -207,11 +207,11 @@ class ItemInfo
         void setDrawPriority(int n)
         { mDrawPriority = n; }
 
-        std::set<int> &getTags()
+        std::map<int, int> getTags()
         { return mTags; }
 
         void addTag(int tag)
-        { mTags.insert(tag); }
+        { mTags[tag] = 1; }
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
@@ -243,7 +243,7 @@ class ItemInfo
 
         /** Stores the names of sounds to be played at certain event. */
         std::map < EquipmentSoundEvent, std::vector<std::string> > mSounds;
-        std::set <int> mTags;
+        std::map <int,int> mTags;
 };
 
 #endif

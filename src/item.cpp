@@ -62,7 +62,14 @@ void Item::setId(int id)
         mDrawImage->decRef();
 
     ResourceManager *resman = ResourceManager::getInstance();
-    SpriteDisplay display = getInfo().getDisplay();
+    ItemInfo info = getInfo();
+    mTags = info.getTags();
+    logger->log("tag0=" + toString(mTags[1]));
+
+//    for (int f = 0; f < mTags->size(); f ++)
+//        logger->log("tag: %d", (*mTags)[f]);
+
+    SpriteDisplay display = info.getDisplay();
     std::string imagePath = paths.getStringValue("itemIcons")
                             + display.image;
     mImage = resman->getImage(imagePath);
@@ -79,6 +86,13 @@ void Item::setId(int id)
         mDrawImage = Theme::getImageFromTheme(
             paths.getValue("unknownItemFile", "unknown-item.png"));
     }
+}
+
+bool Item::isHaveTag(int tagId)
+{
+    if (mTags.find(tagId) == mTags.end())
+        return false;
+    return mTags[tagId] > 0;
 }
 
 Image *Item::getImage(int id)

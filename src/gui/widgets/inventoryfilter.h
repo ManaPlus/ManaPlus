@@ -22,6 +22,7 @@
 #ifndef GUI_INVENTORYFILTER_H
 #define GUI_INVENTORYFILTER_H
 
+#include <guichan/actionlistener.hpp>
 #include <guichan/widgetlistener.hpp>
 
 #include "gui/widgets/horizontcontainer.h"
@@ -39,11 +40,14 @@
  *
  * This container places it's contents veritcally.
  */
-class InventoryFilter : public HorizontContainer
+class InventoryFilter : public HorizontContainer, public gcn::ActionListener
 {
     public:
         InventoryFilter(std::string group, int height, int spacing);
+
         void add(std::string tag);
+
+        void action(const gcn::ActionEvent &event);
 
     private:
         std::string mGroup;

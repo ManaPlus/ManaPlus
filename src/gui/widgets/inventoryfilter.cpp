@@ -23,6 +23,7 @@
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/radiobutton.h"
 
+#include "log.h"
 
 InventoryFilter::InventoryFilter(std::string group, int height, int spacing):
         HorizontContainer(height, spacing),
@@ -37,5 +38,17 @@ void InventoryFilter::add(std::string tag)
 
     RadioButton *radio = new RadioButton(tag, mGroup, mCount == 0);
     radio->adjustSize();
+    radio->setActionEventId("tag_" + tag);
+    radio->addActionListener(this);
     HorizontContainer::add(radio);
+}
+
+void InventoryFilter::action(const gcn::ActionEvent &event)
+{
+    ActionListenerIterator iter;
+    for (iter = mActionListeners.begin();
+         iter != mActionListeners.end(); ++iter)
+    {
+        (*iter)->action(event);
+    }
 }

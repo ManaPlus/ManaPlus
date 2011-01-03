@@ -24,6 +24,8 @@
 
 #include "resources/itemdb.h"
 
+#include <map>
+
 class Image;
 
 /**
@@ -152,6 +154,8 @@ class Item
 
         static Image *getImage(int id);
 
+        bool isHaveTag(int tagId);
+
     protected:
         int mId;              /**< Item type id. */
         Image *mImage;        /**< Item image. */
@@ -162,6 +166,7 @@ class Item
         bool mInEquipment;    /**< Item is in equipment */
         int mRefine;          /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
+        std::map <int, int> mTags;
 };
 
 #endif

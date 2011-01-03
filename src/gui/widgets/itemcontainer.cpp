@@ -65,7 +65,9 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
     mSwapItems(false),
-    mDescItems(false)
+    mDescItems(false),
+    mTag(0),
+    mShowMatrix(0)
 {
     mItemPopup = new ItemPopup;
     setFocusable(true);
@@ -108,21 +110,29 @@ void ItemContainer::logic()
 
 void ItemContainer::draw(gcn::Graphics *graphics)
 {
-    if (!mInventory)
+    if (!mInventory || !mShowMatrix)
         return;
 
     Graphics *g = static_cast<Graphics*>(graphics);
 
     g->setFont(getFont());
 
-    for (int i = 0; i < mGridColumns; i++)
+    int i = 0;
+    int j = 0;
+
+//    int idx = 0;
+
+    for (int j = 0; j < mGridRows; j++)
     {
-        for (int j = 0; j < mGridRows; j++)
+        for (int i = 0; i < mGridColumns; i++)
         {
             int itemX = i * BOX_WIDTH;
             int itemY = j * BOX_HEIGHT;
-            int itemIndex = (j * mGridColumns) + i;
-            Item *item = mInventory->getItem(itemIndex);
+            int itemIndex = j * mGridColumns + i;
+            if (mShowMatrix[itemIndex] < 0)
+                continue;
+
+            Item *item = mInventory->getItem(mShowMatrix[itemIndex]);
 
             if (!item || item->getId() == 0)
                 continue;
@@ -385,6 +395,40 @@ void ItemContainer::adjustHeight()
         ++mGridRows;
 
     setHeight(mGridRows * BOX_HEIGHT);
+
+    updateMatrix();
+}
+
+void ItemContainer::updateMatrix()
+{
+    delete mShowMatrix;
+    mShowMatrix = new int[mGridRows * mGridColumns];
+    memset(mShowMatrix, -1, mGridRows * mGridColumns);
+
+    int i = 0;
+    int j = 0;
+
+    for (int idx = 0; idx < mInventory->getSize(); idx ++)
+    {
+//        int itemX = i * BOX_WIDTH;
+//        int itemY = j * BOX_HEIGHT;
+        int itemIndex = idx;
+        Item *item = mInventory->getItem(itemIndex);
+
+        if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
+            continue;
+
+        mShowMatrix[j * mGridColumns + i] = itemIndex;
+
+        i ++;
+        if (i >= mGridColumns)
+        {
+            i = 0;
+            j ++;
+        }
+        if (j >= mGridRows)
+            break;
+    }
 }
 
 int ItemContainer::getSlotIndex(int x, int y) const
@@ -472,4 +516,10 @@ void ItemContainer::moveHighlight(Direction direction)
                         + toString(static_cast<unsigned>(direction)));
             break;
     }
+}
+
+void ItemContainer::setFilter (int tag)
+{
+    mTag = tag;
+    updateMatrix();
 }

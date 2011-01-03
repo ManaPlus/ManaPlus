@@ -93,14 +93,14 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
     mFilter = new InventoryFilter(getWindowName(), 20, 10);
+    mFilter->addActionListener(this);
+    mFilter->setActionEventId("tags");
 
     mFilterLabel = new Label(_("Filter:"));
 
     std::vector<std::string> tags = ItemDB::getTags();
-    for (int f = 0; f < tags.size(); f ++)
+    for (unsigned f = 0; f < tags.size(); f ++)
         mFilter->add(tags[f]);
-
-//    mFilter->add("All");
 
     if (isMainInventory())
     {
@@ -207,8 +207,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
                 outfitWindow->requestMoveToTop();
         }
     }
-
-    if (event.getId() == "shop")
+    else if (event.getId() == "shop")
     {
         if (shopWindow)
         {
@@ -232,6 +231,12 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             return;
 
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd, this, item);
+    }
+    else if (!event.getId().find("tag_") && mItems)
+    {
+        std::string tagName = event.getId().substr(4);
+        mItems->setFilter(ItemDB::getTagId(tagName));
+//        logger->log("eventid: %s", tagName.c_str());
     }
 
     Item *item = mItems->getSelectedItem();

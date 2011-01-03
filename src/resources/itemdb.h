@@ -50,7 +50,7 @@ namespace ItemDB
      */
     void unload();
 
-    std::vector<std::string> &getTags();
+    const std::vector<std::string> &getTags();
 
     bool exists(int id);
 
@@ -63,6 +63,7 @@ namespace ItemDB
 
     const std::map<int, ItemInfo*> &getItemInfos();
 
+    int getTagId(std::string tagName);
     struct Stat
     {
         Stat(const std::string &tag,

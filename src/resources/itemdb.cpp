@@ -343,9 +343,14 @@ void ItemDB::load()
     mLoaded = true;
 }
 
-std::vector<std::string> &ItemDB::getTags()
+const std::vector<std::string> &ItemDB::getTags()
 {
     return mTagNames;
+}
+
+int ItemDB::getTagId(std::string tagName)
+{
+    return mTags[tagName];
 }
 
 void ItemDB::unload()
