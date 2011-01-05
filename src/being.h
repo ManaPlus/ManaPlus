@@ -520,6 +520,7 @@ class Being : public ActorSprite, public ConfigListener
                                     int posX, int posY) const;
 
         void drawHpBar(Graphics *graphics, int x, int y,
+                       int maxHP, int hp, int damage, int color1, int color2,
                        int width, int height) const;
 
         static void load();
@@ -751,7 +752,7 @@ class Being : public ActorSprite, public ConfigListener
         static bool mDrawHotKeys;
         static bool mShowBattleEvents;
         static bool mShowMobHP;
-//        std::string mDisplayName;
+        static bool mShowOwnHP;
 
         unsigned int mMoveTime;
         unsigned int mAttackTime;

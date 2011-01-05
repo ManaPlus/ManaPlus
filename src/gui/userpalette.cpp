@@ -52,6 +52,8 @@ const std::string ColorTypeNames[] =
     "ColorParticle",
     "ColorPickupInfo",
     "ColorExpInfo",
+    "ColorPlayerHp",
+    "ColorPlayerHp2",
     "ColorHitPlayerMonster",
     "ColorHitMonsterPlayer",
     "ColorHitPlayerPlayer",
@@ -124,6 +126,9 @@ UserPalette::UserPalette():
     addColor(PARTICLE, 0xffffff, STATIC, _("Particle Effects"));
     addColor(PICKUP_INFO, 0x28dc28, STATIC, _("Pickup Notification"));
     addColor(EXP_INFO, 0xffff00, STATIC, _("Exp Notification"));
+    addColor(PLAYER_HP, 0x00ff00, STATIC, _("Player HP bar"), 50);
+    addColor(PLAYER_HP2, 0xff0000, STATIC,
+        _("Player HP bar (second color)"), 50);
     addColor(HIT_PLAYER_MONSTER, 0x0064ff, STATIC, _("Player Hits Monster"));
     addColor(HIT_MONSTER_PLAYER, 0xff3232, STATIC, _("Monster Hits Player"));
     addColor(HIT_PLAYER_PLAYER, 0xff5050, STATIC,

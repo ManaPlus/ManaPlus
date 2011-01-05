@@ -189,6 +189,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableBattleTab", false);
     AddDEF(configData, "showBattleEvents", false);
     AddDEF(configData, "showMobHP", true);
+    AddDEF(configData, "showOwnHP", true);
     return configData;
 }
 

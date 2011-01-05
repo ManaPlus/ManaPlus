@@ -169,6 +169,7 @@ bool Being::mLowTraffic = true;
 bool Being::mDrawHotKeys = true;
 bool Being::mShowBattleEvents = false;
 bool Being::mShowMobHP = false;
+bool Being::mShowOwnHP = false;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 
@@ -1551,6 +1552,7 @@ void Being::reReadConfig()
         mDrawHotKeys = config.getBoolValue("drawHotKeys");
         mShowBattleEvents = config.getBoolValue("showBattleEvents");
         mShowMobHP = config.getBoolValue("showMobHP");
+        mShowOwnHP = config.getBoolValue("showOwnHP");
 
         mUpdateConfigTime = cur_time;
     }
@@ -1745,42 +1747,48 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
             2 * attackRange + 32, 2 * attackRange + 32));
     }
 
-    if (mShowMobHP && player_node && player_node->getTarget() == this
+    if (mShowMobHP && mInfo && player_node && player_node->getTarget() == this
         && getType() == MONSTER)
     {
         // show hp bar here
-        drawHpBar(graphics, x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+        int maxHP = mMaxHP;
+        if (!maxHP)
+            maxHP = mInfo->getMaxHP();
+
+        drawHpBar(graphics, maxHP, mHP, mDamageTaken,
+                  UserPalette::MONSTER_HP, UserPalette::MONSTER_HP2,
+                  x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+    }
+    if (mShowOwnHP && player_node == this)
+    {
+        drawHpBar(graphics, PlayerInfo::getAttribute(MAX_HP),
+                  PlayerInfo::getAttribute(HP), 0,
+                  UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
+                  x - 50 + 16, y + 32 - 6, 2 * 50, 4);
     }
     return res;
 }
 
-void Being::drawHpBar(Graphics *graphics, int x, int y,
+void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
+                      int color1, int color2, int x, int y,
                       int width, int height) const
 {
-    if (!mInfo)
-        return;
-
-    int maxHP = mMaxHP;
-
-    if (!maxHP)
-        maxHP = mInfo->getMaxHP();
-
     if (maxHP <= 0)
         return;
 
-    if (!mHP && maxHP < mHP)
+    if (!hp && maxHP < hp)
         return;
 
     float p;
 
-    if (mHP)
+    if (hp)
     {
-        p = static_cast<float>(maxHP) / static_cast<float>(mHP);
+        p = static_cast<float>(maxHP) / static_cast<float>(hp);
     }
-    else if (maxHP != mDamageTaken)
+    else if (maxHP != damage)
     {
         p = static_cast<float>(maxHP)
-            / static_cast<float>(maxHP - mDamageTaken);
+            / static_cast<float>(maxHP - damage);
     }
     else
     {
@@ -1792,8 +1800,7 @@ void Being::drawHpBar(Graphics *graphics, int x, int y,
 
     int dx = width / p;
 
-    graphics->setColor(userPalette->getColorWithAlpha(
-        UserPalette::MONSTER_HP));
+    graphics->setColor(userPalette->getColorWithAlpha(color1));
 
     graphics->fillRectangle(gcn::Rectangle(
         x, y, dx, height));
@@ -1801,8 +1808,7 @@ void Being::drawHpBar(Graphics *graphics, int x, int y,
     if (width - dx <= 0)
         return;
 
-    graphics->setColor(userPalette->getColorWithAlpha(
-        UserPalette::MONSTER_HP2));
+    graphics->setColor(userPalette->getColorWithAlpha(color2));
 
     graphics->fillRectangle(gcn::Rectangle(
         x + dx, y, width - dx, height));
