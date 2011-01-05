@@ -219,6 +219,8 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "guiPath", "graphics/gui/");
     AddDEF(brandingData, "guiThemePath", "themes/");
     AddDEF(brandingData, "fontsPath", "fonts/");
+
+    AddDEF(brandingData, "wallpaperFile", "");
     return brandingData;
 }
 
