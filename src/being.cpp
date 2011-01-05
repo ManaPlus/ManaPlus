@@ -71,6 +71,7 @@
 #include "gui/widgets/chattab.h"
 
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
@@ -476,7 +477,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
 
     gcn::Font *font = 0;
     std::string damage = amount ? toString(amount) : type == FLEE ?
-            "dodge" : "miss";
+            _("dodge") : _("miss");
     const gcn::Color *color;
 
     if (gui)

@@ -53,9 +53,9 @@ std::string LoginDialog::savedPasswordKey = "";
 
 const char *UPDATE_TYPE_TEXT[3] =
 {
-    _("Normal"),
-    _("Auto Close"),
-    _("Skip"),
+    N_("Normal"),
+    N_("Auto Close"),
+    N_("Skip"),
 };
 
 class UpdateTypeModel : public gcn::ListModel
@@ -74,7 +74,7 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return UPDATE_TYPE_TEXT[i];
+        return gettext(UPDATE_TYPE_TEXT[i]);
     }
 };
 
