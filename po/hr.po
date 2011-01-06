@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-05 04:50+0200\n"
+"POT-Creation-Date: 2011-01-06 03:06+0200\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-03-05 19:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/being.cpp:480
+#: src/being.cpp:481
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:480
+#: src/being.cpp:481
 msgid "miss"
 msgstr ""
 
@@ -2007,7 +2007,7 @@ msgid "Show chat colors list"
 msgstr ""
 
 #: src/gui/setup_chat.cpp:111 src/gui/setup_chat.cpp:119
-#: src/gui/setup_other.cpp:135 src/gui/setup_other.cpp:139
+#: src/gui/setup_other.cpp:137 src/gui/setup_other.cpp:141
 msgid "Edit"
 msgstr ""
 
@@ -2032,26 +2032,26 @@ msgstr "Boje"
 msgid "Type:"
 msgstr "Tip: "
 
-#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:398
+#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:400
 msgid "Static"
 msgstr "Statično"
 
 #: src/gui/setup_colors.cpp:85 src/gui/setup_colors.cpp:86
-#: src/gui/setup_colors.cpp:399
+#: src/gui/setup_colors.cpp:401
 msgid "Pulse"
 msgstr "Pulsiranje"
 
 #: src/gui/setup_colors.cpp:87 src/gui/setup_colors.cpp:88
-#: src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:402
 msgid "Rainbow"
 msgstr "Duga"
 
 #: src/gui/setup_colors.cpp:89 src/gui/setup_colors.cpp:90
-#: src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:402
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:310
+#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:312
 #, fuzzy
 msgid "Delay:"
 msgstr "Odgoda: "
@@ -2071,7 +2071,7 @@ msgstr "Zelena: "
 msgid "Blue:"
 msgstr "Plava: "
 
-#: src/gui/setup_colors.cpp:305
+#: src/gui/setup_colors.cpp:307
 msgid "Alpha:"
 msgstr ""
 
@@ -2128,98 +2128,103 @@ msgstr "Zadano"
 msgid "Key Conflict(s) Detected."
 msgstr "Otkriven je Konflikt(i) Tipki."
 
-#: src/gui/setup_other.cpp:92
+#: src/gui/setup_other.cpp:94
 msgid "Misc"
 msgstr ""
 
-#: src/gui/setup_other.cpp:95
+#: src/gui/setup_other.cpp:97
 msgid "Show damage inflicted to monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:100
+#: src/gui/setup_other.cpp:102
 msgid "Auto target only reachable monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:104
+#: src/gui/setup_other.cpp:106
 #, fuzzy
 msgid "Highlight map portals"
 msgstr "Istakni"
 
-#: src/gui/setup_other.cpp:109
+#: src/gui/setup_other.cpp:111
 msgid "Highlight player attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:116
 msgid "Highlight monster attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:118
+#: src/gui/setup_other.cpp:120
 msgid "Cycle player targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:121
+#: src/gui/setup_other.cpp:123
 #, fuzzy
 msgid "Cycle monster targets"
 msgstr "Prikaži ime"
 
-#: src/gui/setup_other.cpp:124
+#: src/gui/setup_other.cpp:126
 #, fuzzy
 msgid "Enable bot checker"
 msgstr "Omogući igraću palicu"
 
-#: src/gui/setup_other.cpp:127
+#: src/gui/setup_other.cpp:129
 #, fuzzy
 msgid "Highlight floor items"
 msgstr "Istakni"
 
-#: src/gui/setup_other.cpp:130
+#: src/gui/setup_other.cpp:132
 msgid "Crazy move A program"
 msgstr ""
 
-#: src/gui/setup_other.cpp:141
+#: src/gui/setup_other.cpp:143
 #, fuzzy
 msgid "Enable shop mode"
 msgstr "Omogući/Onemogući Trgovanje"
 
-#: src/gui/setup_other.cpp:145
+#: src/gui/setup_other.cpp:147
 msgid "Enable buggy servers protection"
 msgstr ""
 
-#: src/gui/setup_other.cpp:149
+#: src/gui/setup_other.cpp:151
 #, fuzzy
 msgid "Enable debug log"
 msgstr "Ne može se kupiti"
 
-#: src/gui/setup_other.cpp:153
+#: src/gui/setup_other.cpp:155
 #, fuzzy
 msgid "Enable server side attack"
 msgstr "Ne može se kupiti"
 
-#: src/gui/setup_other.cpp:157
+#: src/gui/setup_other.cpp:159
 msgid "Auto fix position"
 msgstr ""
 
-#: src/gui/setup_other.cpp:161
+#: src/gui/setup_other.cpp:163
 msgid "Attack while moving"
 msgstr ""
 
-#: src/gui/setup_other.cpp:165
+#: src/gui/setup_other.cpp:167
 #, fuzzy
 msgid "Enable quick stats"
 msgstr "Omogući igraću palicu"
 
-#: src/gui/setup_other.cpp:169
+#: src/gui/setup_other.cpp:171
 #, fuzzy
 msgid "Show warps particles"
 msgstr "kao čestica"
 
-#: src/gui/setup_other.cpp:173
+#: src/gui/setup_other.cpp:175
 msgid "Accept sell/buy requests"
 msgstr ""
 
-#: src/gui/setup_other.cpp:177
+#: src/gui/setup_other.cpp:179
 msgid "Show monster hp bar"
 msgstr ""
+
+#: src/gui/setup_other.cpp:183
+#, fuzzy
+msgid "Show own hp bar"
+msgstr "Prikaži ime"
 
 #: src/gui/setup_players.cpp:60
 msgid "Relation"
@@ -3059,155 +3064,164 @@ msgstr "##1  pokušate ponovno kasnije"
 msgid "Completed"
 msgstr "Dovršeno"
 
-#: src/gui/userpalette.cpp:109
+#: src/gui/userpalette.cpp:111
 msgid "Being"
 msgstr "Biće"
 
-#: src/gui/userpalette.cpp:110
+#: src/gui/userpalette.cpp:112
 #, fuzzy
 msgid "Friend Names"
 msgstr "Prijatelj"
 
-#: src/gui/userpalette.cpp:111
+#: src/gui/userpalette.cpp:113
 #, fuzzy
 msgid "Disregarded Names"
 msgstr "Zanemareno"
 
-#: src/gui/userpalette.cpp:112
+#: src/gui/userpalette.cpp:114
 #, fuzzy
 msgid "Ignored Names"
 msgstr "Ignorirano"
 
-#: src/gui/userpalette.cpp:113
+#: src/gui/userpalette.cpp:115
 #, fuzzy
 msgid "Erased Names"
 msgstr "GM Imena"
 
-#: src/gui/userpalette.cpp:114
+#: src/gui/userpalette.cpp:116
 msgid "Other Players' Names"
 msgstr "Imena Drugih Igrača"
 
-#: src/gui/userpalette.cpp:115
+#: src/gui/userpalette.cpp:117
 msgid "Own Name"
 msgstr "Vlastito Ime"
 
-#: src/gui/userpalette.cpp:116
+#: src/gui/userpalette.cpp:118
 msgid "GM Names"
 msgstr "GM Imena"
 
-#: src/gui/userpalette.cpp:117
+#: src/gui/userpalette.cpp:119
 msgid "NPCs"
 msgstr "NPCs"
 
-#: src/gui/userpalette.cpp:118
+#: src/gui/userpalette.cpp:120
 msgid "Monsters"
 msgstr "Čudovišta"
 
-#: src/gui/userpalette.cpp:119
+#: src/gui/userpalette.cpp:121
 #, fuzzy
 msgid "Monster HP bar"
 msgstr "Čudovište pogađa Igrača"
 
-#: src/gui/userpalette.cpp:121
+#: src/gui/userpalette.cpp:123
 msgid "Monster HP bar (second color)"
 msgstr ""
 
-#: src/gui/userpalette.cpp:122
+#: src/gui/userpalette.cpp:124
 #, fuzzy
 msgid "Party Members"
 msgstr "Partija"
 
-#: src/gui/userpalette.cpp:123
+#: src/gui/userpalette.cpp:125
 #, fuzzy
 msgid "Guild Members"
 msgstr "Ceh"
 
-#: src/gui/userpalette.cpp:124
+#: src/gui/userpalette.cpp:126
 msgid "Particle Effects"
 msgstr "Efekti Čestica"
 
-#: src/gui/userpalette.cpp:125
+#: src/gui/userpalette.cpp:127
 msgid "Pickup Notification"
 msgstr "Obavijest Sakupljanja"
 
-#: src/gui/userpalette.cpp:126
+#: src/gui/userpalette.cpp:128
 msgid "Exp Notification"
 msgstr "Exp Obavijest"
 
-#: src/gui/userpalette.cpp:127
+#: src/gui/userpalette.cpp:129
+#, fuzzy
+msgid "Player HP bar"
+msgstr "Čudovište pogađa Igrača"
+
+#: src/gui/userpalette.cpp:131
+msgid "Player HP bar (second color)"
+msgstr ""
+
+#: src/gui/userpalette.cpp:132
 #, fuzzy
 msgid "Player Hits Monster"
 msgstr "Igrač pogađa Čudovište"
 
-#: src/gui/userpalette.cpp:128
+#: src/gui/userpalette.cpp:133
 #, fuzzy
 msgid "Monster Hits Player"
 msgstr "Čudovište pogađa Igrača"
 
-#: src/gui/userpalette.cpp:130
+#: src/gui/userpalette.cpp:135
 #, fuzzy
 msgid "Other Player Hits Local Player"
 msgstr "Imena Drugih Igrača"
 
-#: src/gui/userpalette.cpp:131
+#: src/gui/userpalette.cpp:136
 msgid "Critical Hit"
 msgstr "Kritični Udarac"
 
-#: src/gui/userpalette.cpp:133
+#: src/gui/userpalette.cpp:138
 #, fuzzy
 msgid "Local Player Hits Monster"
 msgstr "Igrač pogađa Čudovište"
 
-#: src/gui/userpalette.cpp:135
+#: src/gui/userpalette.cpp:140
 #, fuzzy
 msgid "Local Player Critical Hit"
 msgstr "Igrač pogađa Čudovište"
 
-#: src/gui/userpalette.cpp:137
+#: src/gui/userpalette.cpp:142
 msgid "Local Player Miss"
 msgstr ""
 
-#: src/gui/userpalette.cpp:138
+#: src/gui/userpalette.cpp:143
 msgid "Misses"
 msgstr "Promašaji"
 
-#: src/gui/userpalette.cpp:139
+#: src/gui/userpalette.cpp:144
 #, fuzzy
 msgid "Portal Highlight"
 msgstr "Istakni Karticu"
 
-#: src/gui/userpalette.cpp:141
+#: src/gui/userpalette.cpp:146
 #, fuzzy
 msgid "Collision Highlight"
 msgstr "Istakni"
 
-#: src/gui/userpalette.cpp:143
+#: src/gui/userpalette.cpp:148
 #, fuzzy
 msgid "Walkable Highlight"
 msgstr "Istakni Karticu"
 
-#: src/gui/userpalette.cpp:145
+#: src/gui/userpalette.cpp:150
 msgid "Local Player Attack Range"
 msgstr ""
 
-#: src/gui/userpalette.cpp:147
+#: src/gui/userpalette.cpp:152
 msgid "Local Player Attack Range Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:149
+#: src/gui/userpalette.cpp:154
 #, fuzzy
 msgid "Monster Attack Range"
 msgstr "Čudovište pogađa Igrača"
 
-#: src/gui/userpalette.cpp:151
+#: src/gui/userpalette.cpp:156
 msgid "Home Place"
 msgstr ""
 
-#: src/gui/userpalette.cpp:153
+#: src/gui/userpalette.cpp:158
 msgid "Home Place Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:155
+#: src/gui/userpalette.cpp:160
 msgid "Road Point"
 msgstr ""
 

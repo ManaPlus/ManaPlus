@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-05 04:50+0200\n"
+"POT-Creation-Date: 2011-01-06 03:06+0200\n"
 "PO-Revision-Date: 2010-01-02 15:26+0000\n"
 "Last-Translator: Jonathan Raphael Joachim Kolberg\n"
 "Language-Team: Deutsch <kde-i18n-de@kde.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: src/being.cpp:480
+#: src/being.cpp:481
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:480
+#: src/being.cpp:481
 msgid "miss"
 msgstr "verfehlt"
 
@@ -2004,7 +2004,7 @@ msgid "Show chat colors list"
 msgstr ""
 
 #: src/gui/setup_chat.cpp:111 src/gui/setup_chat.cpp:119
-#: src/gui/setup_other.cpp:135 src/gui/setup_other.cpp:139
+#: src/gui/setup_other.cpp:137 src/gui/setup_other.cpp:141
 msgid "Edit"
 msgstr ""
 
@@ -2028,26 +2028,26 @@ msgstr "Farben"
 msgid "Type:"
 msgstr "Typ: "
 
-#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:398
+#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:400
 msgid "Static"
 msgstr "Statisch"
 
 #: src/gui/setup_colors.cpp:85 src/gui/setup_colors.cpp:86
-#: src/gui/setup_colors.cpp:399
+#: src/gui/setup_colors.cpp:401
 msgid "Pulse"
 msgstr "Pulsierend"
 
 #: src/gui/setup_colors.cpp:87 src/gui/setup_colors.cpp:88
-#: src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:402
 msgid "Rainbow"
 msgstr "Regenbogen"
 
 #: src/gui/setup_colors.cpp:89 src/gui/setup_colors.cpp:90
-#: src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:402
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:310
+#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:312
 msgid "Delay:"
 msgstr "Verzögerung: "
 
@@ -2063,7 +2063,7 @@ msgstr "Grün: "
 msgid "Blue:"
 msgstr "Blau: "
 
-#: src/gui/setup_colors.cpp:305
+#: src/gui/setup_colors.cpp:307
 msgid "Alpha:"
 msgstr ""
 
@@ -2121,98 +2121,103 @@ msgstr "Standard"
 msgid "Key Conflict(s) Detected."
 msgstr "Tastenkonflikte entdeckt."
 
-#: src/gui/setup_other.cpp:92
+#: src/gui/setup_other.cpp:94
 msgid "Misc"
 msgstr ""
 
-#: src/gui/setup_other.cpp:95
+#: src/gui/setup_other.cpp:97
 msgid "Show damage inflicted to monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:100
+#: src/gui/setup_other.cpp:102
 msgid "Auto target only reachable monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:104
+#: src/gui/setup_other.cpp:106
 #, fuzzy
 msgid "Highlight map portals"
 msgstr "Hervorgehoben"
 
-#: src/gui/setup_other.cpp:109
+#: src/gui/setup_other.cpp:111
 msgid "Highlight player attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:116
 msgid "Highlight monster attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:118
+#: src/gui/setup_other.cpp:120
 msgid "Cycle player targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:121
+#: src/gui/setup_other.cpp:123
 #, fuzzy
 msgid "Cycle monster targets"
 msgstr "Eigener Name"
 
-#: src/gui/setup_other.cpp:124
+#: src/gui/setup_other.cpp:126
 #, fuzzy
 msgid "Enable bot checker"
 msgstr "Joystick aktivieren"
 
-#: src/gui/setup_other.cpp:127
+#: src/gui/setup_other.cpp:129
 #, fuzzy
 msgid "Highlight floor items"
 msgstr "Hervorgehoben"
 
-#: src/gui/setup_other.cpp:130
+#: src/gui/setup_other.cpp:132
 msgid "Crazy move A program"
 msgstr ""
 
-#: src/gui/setup_other.cpp:141
+#: src/gui/setup_other.cpp:143
 #, fuzzy
 msgid "Enable shop mode"
 msgstr "Handeln erlauben/verbieten"
 
-#: src/gui/setup_other.cpp:145
+#: src/gui/setup_other.cpp:147
 msgid "Enable buggy servers protection"
 msgstr ""
 
-#: src/gui/setup_other.cpp:149
+#: src/gui/setup_other.cpp:151
 #, fuzzy
 msgid "Enable debug log"
 msgstr "Kauf fehlgeschlagen."
 
-#: src/gui/setup_other.cpp:153
+#: src/gui/setup_other.cpp:155
 #, fuzzy
 msgid "Enable server side attack"
 msgstr "Kauf fehlgeschlagen."
 
-#: src/gui/setup_other.cpp:157
+#: src/gui/setup_other.cpp:159
 msgid "Auto fix position"
 msgstr ""
 
-#: src/gui/setup_other.cpp:161
+#: src/gui/setup_other.cpp:163
 msgid "Attack while moving"
 msgstr ""
 
-#: src/gui/setup_other.cpp:165
+#: src/gui/setup_other.cpp:167
 #, fuzzy
 msgid "Enable quick stats"
 msgstr "Joystick aktivieren"
 
-#: src/gui/setup_other.cpp:169
+#: src/gui/setup_other.cpp:171
 #, fuzzy
 msgid "Show warps particles"
 msgstr "als Partikeleffekt"
 
-#: src/gui/setup_other.cpp:173
+#: src/gui/setup_other.cpp:175
 msgid "Accept sell/buy requests"
 msgstr ""
 
-#: src/gui/setup_other.cpp:177
+#: src/gui/setup_other.cpp:179
 msgid "Show monster hp bar"
 msgstr ""
+
+#: src/gui/setup_other.cpp:183
+#, fuzzy
+msgid "Show own hp bar"
+msgstr "Eigener Name"
 
 #: src/gui/setup_players.cpp:60
 msgid "Relation"
@@ -3060,154 +3065,163 @@ msgstr "##1 es später erneut zu versuchen."
 msgid "Completed"
 msgstr "Fertig"
 
-#: src/gui/userpalette.cpp:109
+#: src/gui/userpalette.cpp:111
 msgid "Being"
 msgstr "Aktionen"
 
-#: src/gui/userpalette.cpp:110
+#: src/gui/userpalette.cpp:112
 #, fuzzy
 msgid "Friend Names"
 msgstr "Freund"
 
-#: src/gui/userpalette.cpp:111
+#: src/gui/userpalette.cpp:113
 #, fuzzy
 msgid "Disregarded Names"
 msgstr "Unbeachtet"
 
-#: src/gui/userpalette.cpp:112
+#: src/gui/userpalette.cpp:114
 #, fuzzy
 msgid "Ignored Names"
 msgstr "Ignoriere %s"
 
-#: src/gui/userpalette.cpp:113
+#: src/gui/userpalette.cpp:115
 #, fuzzy
 msgid "Erased Names"
 msgstr "Senden"
 
-#: src/gui/userpalette.cpp:114
+#: src/gui/userpalette.cpp:116
 msgid "Other Players' Names"
 msgstr "Namen anderer Spieler"
 
-#: src/gui/userpalette.cpp:115
+#: src/gui/userpalette.cpp:117
 msgid "Own Name"
 msgstr "Eigener Name"
 
-#: src/gui/userpalette.cpp:116
+#: src/gui/userpalette.cpp:118
 msgid "GM Names"
 msgstr "Namen von GM"
 
-#: src/gui/userpalette.cpp:117
+#: src/gui/userpalette.cpp:119
 msgid "NPCs"
 msgstr "NPCs"
 
-#: src/gui/userpalette.cpp:118
+#: src/gui/userpalette.cpp:120
 msgid "Monsters"
 msgstr "Monster"
 
-#: src/gui/userpalette.cpp:119
+#: src/gui/userpalette.cpp:121
 #, fuzzy
 msgid "Monster HP bar"
 msgstr "Monster trifft Spieler"
 
-#: src/gui/userpalette.cpp:121
+#: src/gui/userpalette.cpp:123
 msgid "Monster HP bar (second color)"
 msgstr ""
 
-#: src/gui/userpalette.cpp:122
+#: src/gui/userpalette.cpp:124
 #, fuzzy
 msgid "Party Members"
 msgstr "Party"
 
-#: src/gui/userpalette.cpp:123
+#: src/gui/userpalette.cpp:125
 #, fuzzy
 msgid "Guild Members"
 msgstr "Gildenname"
 
-#: src/gui/userpalette.cpp:124
+#: src/gui/userpalette.cpp:126
 msgid "Particle Effects"
 msgstr "Partikeleffekte"
 
-#: src/gui/userpalette.cpp:125
+#: src/gui/userpalette.cpp:127
 msgid "Pickup Notification"
 msgstr "aufgehobene Gegenstände"
 
-#: src/gui/userpalette.cpp:126
+#: src/gui/userpalette.cpp:128
 msgid "Exp Notification"
 msgstr "Anzeige der Erfahrungspunkte"
 
-#: src/gui/userpalette.cpp:127
+#: src/gui/userpalette.cpp:129
+#, fuzzy
+msgid "Player HP bar"
+msgstr "Monster trifft Spieler"
+
+#: src/gui/userpalette.cpp:131
+msgid "Player HP bar (second color)"
+msgstr ""
+
+#: src/gui/userpalette.cpp:132
 msgid "Player Hits Monster"
 msgstr "Spieler trifft Monster"
 
-#: src/gui/userpalette.cpp:128
+#: src/gui/userpalette.cpp:133
 msgid "Monster Hits Player"
 msgstr "Monster trifft Spieler"
 
-#: src/gui/userpalette.cpp:130
+#: src/gui/userpalette.cpp:135
 #, fuzzy
 msgid "Other Player Hits Local Player"
 msgstr "Namen anderer Spieler"
 
-#: src/gui/userpalette.cpp:131
+#: src/gui/userpalette.cpp:136
 msgid "Critical Hit"
 msgstr "Kritischer Treffer"
 
-#: src/gui/userpalette.cpp:133
+#: src/gui/userpalette.cpp:138
 #, fuzzy
 msgid "Local Player Hits Monster"
 msgstr "Spieler trifft Monster"
 
-#: src/gui/userpalette.cpp:135
+#: src/gui/userpalette.cpp:140
 #, fuzzy
 msgid "Local Player Critical Hit"
 msgstr "Spieler trifft Monster"
 
-#: src/gui/userpalette.cpp:137
+#: src/gui/userpalette.cpp:142
 #, fuzzy
 msgid "Local Player Miss"
 msgstr "Spielerliste sichern"
 
-#: src/gui/userpalette.cpp:138
+#: src/gui/userpalette.cpp:143
 msgid "Misses"
 msgstr "Verfehlt"
 
-#: src/gui/userpalette.cpp:139
+#: src/gui/userpalette.cpp:144
 #, fuzzy
 msgid "Portal Highlight"
 msgstr "Hervorgehobener Tab"
 
-#: src/gui/userpalette.cpp:141
+#: src/gui/userpalette.cpp:146
 #, fuzzy
 msgid "Collision Highlight"
 msgstr "Hervorgehoben"
 
-#: src/gui/userpalette.cpp:143
+#: src/gui/userpalette.cpp:148
 #, fuzzy
 msgid "Walkable Highlight"
 msgstr "Hervorgehobener Tab"
 
-#: src/gui/userpalette.cpp:145
+#: src/gui/userpalette.cpp:150
 msgid "Local Player Attack Range"
 msgstr ""
 
-#: src/gui/userpalette.cpp:147
+#: src/gui/userpalette.cpp:152
 msgid "Local Player Attack Range Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:149
+#: src/gui/userpalette.cpp:154
 #, fuzzy
 msgid "Monster Attack Range"
 msgstr "Monster trifft Spieler"
 
-#: src/gui/userpalette.cpp:151
+#: src/gui/userpalette.cpp:156
 msgid "Home Place"
 msgstr ""
 
-#: src/gui/userpalette.cpp:153
+#: src/gui/userpalette.cpp:158
 msgid "Home Place Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:155
+#: src/gui/userpalette.cpp:160
 msgid "Road Point"
 msgstr ""
 
