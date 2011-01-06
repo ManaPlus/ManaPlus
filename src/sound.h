@@ -93,6 +93,8 @@ class Sound : public ConfigListener
          */
         void playSfx(const std::string &path);
 
+        void playSfx(const std::string &path, int x, int y);
+
         /**
          * Plays an item for gui.
          *

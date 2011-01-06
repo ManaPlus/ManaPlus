@@ -568,7 +568,15 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
         mDamageTaken += amount;
         if (mInfo)
         {
-            sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT));
+            if (attacker)
+            {
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
+                    attacker->getTileX(), attacker->getTileY());
+            }
+            else
+            {
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT));
+            }
             if (!mInfo->isStaticMaxHP())
             {
                 if (!mHP && mInfo->getMaxHP() < mDamageTaken)
@@ -618,7 +626,7 @@ void Being::handleAttack(Being *victim, int damage,
     }
 
     sound.playSfx(mInfo->getSound((damage > 0) ?
-                  SOUND_EVENT_HIT : SOUND_EVENT_MISS));
+                  SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
 }
 
 void Being::setName(const std::string &name)
@@ -904,7 +912,7 @@ void Being::setAction(Action action, int attackType _UNUSED_)
         case DEAD:
             currentAction = SpriteAction::DEAD;
             if (mInfo)
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE));
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
             break;
         case STAND:
             currentAction = SpriteAction::STAND;
