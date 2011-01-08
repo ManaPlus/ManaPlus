@@ -3344,6 +3344,7 @@ void LocalPlayer::imitateOutfit(Being *player, int sprite)
     if (mImitationMode == 1 && !player_imitated.empty()
         && player->getName() == player_imitated)
     {
+//        logger->log("have equip %d", sprite);
 //        std::string filename = ItemDB::get(
 //                player->getId()).getSprite(mGender);
 //        logger->log("LocalPlayer::imitateOutfit sprite: " + toString(sprite));
@@ -3383,7 +3384,7 @@ void LocalPlayer::imitateOutfit(Being *player, int sprite)
         }
         else
         {
-//            logger->log("have unequip");
+//            logger->log("have unequip %d", sprite);
 
             int equipmentSlot = Net::getInventoryHandler()
                 ->convertFromServerSlot(sprite);

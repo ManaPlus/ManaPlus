@@ -674,6 +674,14 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     dstBeing->setSprite(SPRITE_MISC2, id);
                     player_node->imitateOutfit(dstBeing, SPRITE_MISC2);
                     break;
+                case 14:
+                    dstBeing->setSprite(SPRITE_EVOL1, id);
+                    player_node->imitateOutfit(dstBeing, SPRITE_EVOL1);
+                    break;
+                case 15:
+                    dstBeing->setSprite(SPRITE_EVOL2, id);
+                    player_node->imitateOutfit(dstBeing, SPRITE_EVOL2);
+                    break;
                 default:
                     logger->log("QQQ3 CHANGE_LOOKS: unsupported type: "
                             "%d, id: %d", type, id);
