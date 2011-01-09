@@ -2104,9 +2104,8 @@ msgid "Show monster hp bar"
 msgstr "Показывать жизнь мобов"
 
 #: src/gui/setup_other.cpp:183
-#, fuzzy
 msgid "Show own hp bar"
-msgstr "Показывать жизнь мобов"
+msgstr "Показывать свою жизнь"
 
 #: src/gui/setup_players.cpp:60
 msgid "Relation"
