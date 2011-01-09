@@ -160,7 +160,15 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             PlayerInfo::setCharId(msg.readInt32());
             GameHandler *gh = static_cast<GameHandler*>(Net::getGameHandler());
             gh->setMap(msg.readString(16));
-            mapServer.hostname = ipToString(msg.readInt32());
+            if (config.getBoolValue("usePersistentIP"))
+            {
+                msg.readInt32();
+                mapServer.hostname = Client::getServerName();
+            }
+            else
+            {
+                mapServer.hostname = ipToString(msg.readInt32());
+            }
             mapServer.port = msg.readInt16();
 
             // Prevent the selected local player from being deleted

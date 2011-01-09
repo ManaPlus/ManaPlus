@@ -190,6 +190,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showBattleEvents", false);
     AddDEF(configData, "showMobHP", true);
     AddDEF(configData, "showOwnHP", true);
+    AddDEF(configData, "usePersistentIP", false);
     return configData;
 }
 

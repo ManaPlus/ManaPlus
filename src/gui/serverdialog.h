@@ -23,6 +23,7 @@
 #define SERVERDIALOG_H
 
 #include "gui/widgets/window.h"
+#include "gui/widgets/checkbox.h"
 
 #include "net/download.h"
 #include "net/serverinfo.h"
@@ -199,6 +200,7 @@ class ServerDialog : public Window,
 
         ServerInfos mServers;
         ServerInfo *mServerInfo;
+        CheckBox *mPersistentIPCheckBox;
 };
 
 #endif
