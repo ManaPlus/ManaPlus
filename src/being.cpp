@@ -1767,7 +1767,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
                   UserPalette::MONSTER_HP, UserPalette::MONSTER_HP2,
                   x - 50 + 16, y + 32 - 6, 2 * 50, 4);
     }
-    if (mShowOwnHP && player_node == this)
+    if (mShowOwnHP && player_node == this && mAction != DEAD)
     {
         drawHpBar(graphics, PlayerInfo::getAttribute(MAX_HP),
                   PlayerInfo::getAttribute(HP), 0,
