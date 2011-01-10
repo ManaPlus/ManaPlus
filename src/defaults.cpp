@@ -189,6 +189,8 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableBattleTab", false);
     AddDEF(configData, "showBattleEvents", false);
     AddDEF(configData, "showMobHP", true);
+    AddDEF(configData, "showOwnHP", true);
+    AddDEF(configData, "usePersistentIP", false);
     return configData;
 }
 
@@ -219,6 +221,8 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "guiPath", "graphics/gui/");
     AddDEF(brandingData, "guiThemePath", "themes/");
     AddDEF(brandingData, "fontsPath", "fonts/");
+
+    AddDEF(brandingData, "wallpaperFile", "");
     return brandingData;
 }
 

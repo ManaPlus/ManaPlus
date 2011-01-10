@@ -77,8 +77,8 @@ const Equipment::Slot EQUIP_CONVERT[] =
     Equipment::EQUIP_GLOVES_SLOT,   // SPRITE_GLOVES
     Equipment::EQUIP_FIGHT1_SLOT,   // SPRITE_WEAPON
     Equipment::EQUIP_FIGHT2_SLOT,   // SPRITE_SHIELD
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0
-    Equipment::EQUIP_PROJECTILE_SLOT,    // 0
+    Equipment::EQUIP_EVOL_RING1_SLOT,    // SPRITE_EVOL1
+    Equipment::EQUIP_EVOL_RING2_SLOT,    // SPRITE_EVOL2
     Equipment::EQUIP_PROJECTILE_SLOT,    // 0
 };
 

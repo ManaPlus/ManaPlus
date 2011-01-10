@@ -35,6 +35,7 @@
 #include "gui/npcdialog.h"
 #include "gui/okdialog.h"
 #include "gui/sell.h"
+#include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
 #include "gui/viewport.h"
 
@@ -314,6 +315,8 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
                         break;
                     case 0x000c:
                         PlayerInfo::setAttribute(SKILL_POINTS, value);
+                        if (skillDialog)
+                            skillDialog->update();
                         break;
                     case 0x0018:
                         if (!weightNotice)

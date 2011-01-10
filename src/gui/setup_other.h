@@ -119,6 +119,9 @@ class Setup_Other : public SetupTab, public gcn::ActionListener
         gcn::CheckBox *mShowMobHPCheckBox;
         bool mShowMobHP;
 
+        gcn::CheckBox *mShowOwnHPCheckBox;
+        bool mShowOwnHP;
+
         EditDialog *mEditDialog;
 };
 

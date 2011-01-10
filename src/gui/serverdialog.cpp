@@ -211,7 +211,8 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     mDownload(0),
     mDownloadProgress(-1.0f),
     mServers(ServerInfos()),
-    mServerInfo(serverInfo)
+    mServerInfo(serverInfo),
+    mPersistentIPCheckBox(false)
 {
     if (isSafeMode)
         setCaption("Choose Your Server  *** SAFE MODE ***");
@@ -223,6 +224,9 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     Label *typeLabel = new Label(_("Server type:"));
     mServerNameField = new TextField(mServerInfo->hostname);
     mPortField = new TextField(toString(mServerInfo->port));
+    mPersistentIPCheckBox = new CheckBox(_("Use same ip for game sub servers"),
+                                       config.getBoolValue("usePersistentIP"),
+                                       this, "persitent ip");
 
     loadCustomServers();
 
@@ -264,11 +268,12 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     place(1, 2, mTypeField, 5).setPadding(3);
     place(0, 3, usedScroll, 6, 5).setPadding(3);
     place(0, 8, mDescription, 6);
-    place(0, 9, mManualEntryButton);
-    place(1, 9, mDeleteButton);
-    place(2, 9, mLoadButton);
-    place(4, 9, mQuitButton);
-    place(5, 9, mConnectButton);
+    place(0, 9, mPersistentIPCheckBox, 6);
+    place(0, 10, mManualEntryButton);
+    place(1, 10, mDeleteButton);
+    place(2, 10, mLoadButton);
+    place(4, 10, mQuitButton);
+    place(5, 10, mConnectButton);
 
     // Make sure the list has enough height
     getLayout().setRowHeight(3, 80);
@@ -390,6 +395,7 @@ void ServerDialog::action(const gcn::ActionEvent &event)
                     LoginDialog::savedPassword = "";
             }
 
+            config.setValue("usePersistentIP", mPersistentIPCheckBox->isSelected());
             Client::setState(STATE_CONNECT_SERVER);
         }
     }

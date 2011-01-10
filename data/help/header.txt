@@ -2,7 +2,7 @@
 ##1               M   A   N   A      P   L   U   S
 ##1               ================================
  
-           ##2Version:##6 1.0.12.26        ##2Date:##3 26 December 2010
+           ##2Version:##6 1.1.1.9          ##2Date:##3 09 January 2011
  
 ##2                    Website: http://tmw.cetki.com/
 ##2                             http://mana.cetki.com/

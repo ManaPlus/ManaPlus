@@ -71,6 +71,7 @@
 #include "gui/widgets/chattab.h"
 
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
@@ -168,6 +169,7 @@ bool Being::mLowTraffic = true;
 bool Being::mDrawHotKeys = true;
 bool Being::mShowBattleEvents = false;
 bool Being::mShowMobHP = false;
+bool Being::mShowOwnHP = false;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 
@@ -476,7 +478,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
 
     gcn::Font *font = 0;
     std::string damage = amount ? toString(amount) : type == FLEE ?
-            "dodge" : "miss";
+            _("dodge") : _("miss");
     const gcn::Color *color;
 
     if (gui)
@@ -566,7 +568,15 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
         mDamageTaken += amount;
         if (mInfo)
         {
-            sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT));
+            if (attacker)
+            {
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
+                    attacker->getTileX(), attacker->getTileY());
+            }
+            else
+            {
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT));
+            }
             if (!mInfo->isStaticMaxHP())
             {
                 if (!mHP && mInfo->getMaxHP() < mDamageTaken)
@@ -616,7 +626,7 @@ void Being::handleAttack(Being *victim, int damage,
     }
 
     sound.playSfx(mInfo->getSound((damage > 0) ?
-                  SOUND_EVENT_HIT : SOUND_EVENT_MISS));
+                  SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
 }
 
 void Being::setName(const std::string &name)
@@ -902,7 +912,7 @@ void Being::setAction(Action action, int attackType _UNUSED_)
         case DEAD:
             currentAction = SpriteAction::DEAD;
             if (mInfo)
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE));
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
             break;
         case STAND:
             currentAction = SpriteAction::STAND;
@@ -1550,6 +1560,7 @@ void Being::reReadConfig()
         mDrawHotKeys = config.getBoolValue("drawHotKeys");
         mShowBattleEvents = config.getBoolValue("showBattleEvents");
         mShowMobHP = config.getBoolValue("showMobHP");
+        mShowOwnHP = config.getBoolValue("showOwnHP");
 
         mUpdateConfigTime = cur_time;
     }
@@ -1744,42 +1755,48 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
             2 * attackRange + 32, 2 * attackRange + 32));
     }
 
-    if (mShowMobHP && player_node && player_node->getTarget() == this
+    if (mShowMobHP && mInfo && player_node && player_node->getTarget() == this
         && getType() == MONSTER)
     {
         // show hp bar here
-        drawHpBar(graphics, x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+        int maxHP = mMaxHP;
+        if (!maxHP)
+            maxHP = mInfo->getMaxHP();
+
+        drawHpBar(graphics, maxHP, mHP, mDamageTaken,
+                  UserPalette::MONSTER_HP, UserPalette::MONSTER_HP2,
+                  x - 50 + 16, y + 32 - 6, 2 * 50, 4);
+    }
+    if (mShowOwnHP && player_node == this && mAction != DEAD)
+    {
+        drawHpBar(graphics, PlayerInfo::getAttribute(MAX_HP),
+                  PlayerInfo::getAttribute(HP), 0,
+                  UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
+                  x - 50 + 16, y + 32 - 6, 2 * 50, 4);
     }
     return res;
 }
 
-void Being::drawHpBar(Graphics *graphics, int x, int y,
+void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
+                      int color1, int color2, int x, int y,
                       int width, int height) const
 {
-    if (!mInfo)
-        return;
-
-    int maxHP = mMaxHP;
-
-    if (!maxHP)
-        maxHP = mInfo->getMaxHP();
-
     if (maxHP <= 0)
         return;
 
-    if (!mHP && maxHP < mHP)
+    if (!hp && maxHP < hp)
         return;
 
     float p;
 
-    if (mHP)
+    if (hp)
     {
-        p = static_cast<float>(maxHP) / static_cast<float>(mHP);
+        p = static_cast<float>(maxHP) / static_cast<float>(hp);
     }
-    else if (maxHP != mDamageTaken)
+    else if (maxHP != damage)
     {
         p = static_cast<float>(maxHP)
-            / static_cast<float>(maxHP - mDamageTaken);
+            / static_cast<float>(maxHP - damage);
     }
     else
     {
@@ -1791,8 +1808,7 @@ void Being::drawHpBar(Graphics *graphics, int x, int y,
 
     int dx = width / p;
 
-    graphics->setColor(userPalette->getColorWithAlpha(
-        UserPalette::MONSTER_HP));
+    graphics->setColor(userPalette->getColorWithAlpha(color1));
 
     graphics->fillRectangle(gcn::Rectangle(
         x, y, dx, height));
@@ -1800,8 +1816,7 @@ void Being::drawHpBar(Graphics *graphics, int x, int y,
     if (width - dx <= 0)
         return;
 
-    graphics->setColor(userPalette->getColorWithAlpha(
-        UserPalette::MONSTER_HP2));
+    graphics->setColor(userPalette->getColorWithAlpha(color2));
 
     graphics->fillRectangle(gcn::Rectangle(
         x + dx, y, width - dx, height));

@@ -139,12 +139,22 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_SELL_RESPONSE:
-            if (msg.readInt8() == 0)
-                SERVER_NOTICE(_("Thanks for selling."))
-            else
-                SERVER_NOTICE(_("Unable to sell."))
-
-            break;
+            switch (msg.readInt8())
+            {
+                case 0:
+                    SERVER_NOTICE(_("Thanks for selling."))
+                    break;
+                case 1:
+                default:
+                    SERVER_NOTICE(_("Unable to sell."))
+                    break;
+                case 2:
+                    SERVER_NOTICE(_("Unable to sell while trading."))
+                    break;
+                case 3:
+                    SERVER_NOTICE(_("Unable to sell unsellable item."))
+                    break;
+            }
         default:
             break;
     }

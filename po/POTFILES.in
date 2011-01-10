@@ -1,6 +1,7 @@
 # List of source files which contain translatable strings.
 # Generated using: grep "_(" -Irl src | sort
 
+src/being.cpp
 src/client.cpp
 src/commandhandler.cpp
 src/commandhandler.h
@@ -60,6 +61,7 @@ src/gui/unregisterdialog.cpp
 src/gui/updatewindow.cpp
 src/gui/userpalette.cpp
 src/gui/whoisonline.cpp
+src/gui/widgets/battletab.cpp
 src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
 src/gui/widgets/tradetab.cpp
@@ -96,7 +98,9 @@ src/net/tmwa/playerhandler.cpp
 src/net/tmwa/specialhandler.cpp
 src/net/tmwa/tradehandler.cpp
 src/playerrelations.cpp
+src/resources/beinginfo.cpp
 src/resources/itemdb.cpp
+src/resources/mapreader.cpp
 src/resources/monsterdb.cpp
 src/utils/gettext.h
 src/utils/stringutils.h

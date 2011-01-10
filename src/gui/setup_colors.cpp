@@ -302,6 +302,8 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event _UNUSED_)
         case UserPalette::ROAD_POINT:
         case UserPalette::MONSTER_HP:
         case UserPalette::MONSTER_HP2:
+        case UserPalette::PLAYER_HP:
+        case UserPalette::PLAYER_HP2:
             mGradDelayLabel->setCaption(_("Alpha:"));
             mGradDelayText->setRange(0, 255);
             mGradDelaySlider->setScale(0, 255);

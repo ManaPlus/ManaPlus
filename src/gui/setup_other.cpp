@@ -63,6 +63,7 @@
 #define ACTION_WARP_PARTICLE "warp particle"
 #define ACTION_AUTO_SHOP "auto shop"
 #define ACTION_SHOW_MOB_HP "show mob hp"
+#define ACTION_SHOW_OWN_HP "show own hp"
 
 Setup_Other::Setup_Other():
     mShowMonstersTakedDamage(config.getBoolValue("showMonstersTakedDamage")),
@@ -87,7 +88,8 @@ Setup_Other::Setup_Other():
     mQuickStats(config.getBoolValue("quickStats")),
     mWarpParticle(config.getBoolValue("warpParticle")),
     mAutoShop(config.getBoolValue("autoShop")),
-    mShowMobHP(config.getBoolValue("showMobHP"))
+    mShowMobHP(config.getBoolValue("showMobHP")),
+    mShowOwnHP(config.getBoolValue("showOwnHP"))
 {
     setName(_("Misc"));
 
@@ -178,6 +180,10 @@ Setup_Other::Setup_Other():
                                        mShowMobHP,
                                        this, ACTION_SHOW_MOB_HP);
 
+    mShowOwnHPCheckBox = new CheckBox(_("Show own hp bar"),
+                                       mShowOwnHP,
+                                       this, ACTION_SHOW_OWN_HP);
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -192,6 +198,7 @@ Setup_Other::Setup_Other():
     place(12, 4, mWarpParticleCheckBox, 10);
     place(12, 5, mAutoShopCheckBox, 10);
     place(12, 6, mShowMobHPCheckBox, 10);
+    place(12, 7, mShowOwnHPCheckBox, 10);
     place(0, 3, mFloorItemsHighlightCheckBox, 12);
     place(0, 4, mHighlightAttackRangeCheckBox, 12);
     place(0, 5, mHighlightMonsterAttackRangeCheckBox, 12);
@@ -320,6 +327,10 @@ void Setup_Other::action(const gcn::ActionEvent &event)
     {
         mShowMobHP = mShowMobHPCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_SHOW_OWN_HP)
+    {
+        mShowOwnHP = mShowOwnHPCheckBox->isSelected();
+    }
 }
 
 void Setup_Other::cancel()
@@ -389,6 +400,9 @@ void Setup_Other::cancel()
 
     mShowMobHP = config.getBoolValue("showMobHP");
     mShowMobHPCheckBox->setSelected(mShowMobHP);
+
+    mShowOwnHP = config.getBoolValue("showOwnHP");
+    mShowOwnHPCheckBox->setSelected(mShowOwnHP);
 }
 
 void Setup_Other::apply()
@@ -416,6 +430,7 @@ void Setup_Other::apply()
     config.setValue("warpParticle", mWarpParticle);
     config.setValue("autoShop", mAutoShop);
     config.setValue("showMobHP", mShowMobHP);
+    config.setValue("showOwnHP", mShowOwnHP);
     logger->setDebugLog(mDebugLog);
 }
 

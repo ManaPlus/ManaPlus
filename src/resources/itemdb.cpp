@@ -69,7 +69,7 @@ void ItemDB::setStatsList(const std::list<ItemDB::Stat> &stats)
 
 static ItemType itemTypeFromString(const std::string &name)
 {
-    if (name == "generic")
+    if (name == "generic" || name == "other")
     {
         return ITEM_UNUSABLE;
     }
@@ -326,7 +326,7 @@ void ItemDB::load()
             logger->log("ItemDB: Missing " #param " attribute for item %i!", \
                         id)
 
-        if (id >= 0)
+        if (id >= 0 && typeStr != "other")
         {
             CHECK_PARAM(name, "");
             CHECK_PARAM(description, "");
