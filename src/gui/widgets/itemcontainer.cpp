@@ -140,7 +140,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
             Image *image = item->getImage();
             if (image)
             {
-                if (itemIndex == mSelectedIndex)
+                if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
                     if (mSelectionStatus == SEL_DRAGGING)
                     {
@@ -401,18 +401,18 @@ void ItemContainer::adjustHeight()
 
 void ItemContainer::updateMatrix()
 {
-    delete mShowMatrix;
+    delete []mShowMatrix;
     mShowMatrix = new int[mGridRows * mGridColumns];
-    memset(mShowMatrix, -1, mGridRows * mGridColumns);
 
     int i = 0;
     int j = 0;
 
     for (int idx = 0; idx < mInventory->getSize(); idx ++)
     {
-//        int itemX = i * BOX_WIDTH;
-//        int itemY = j * BOX_HEIGHT;
         int itemIndex = idx;
+        if (j >= mGridRows)
+            break;
+
         Item *item = mInventory->getItem(itemIndex);
 
         if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
@@ -426,15 +426,20 @@ void ItemContainer::updateMatrix()
             i = 0;
             j ++;
         }
-        if (j >= mGridRows)
-            break;
     }
+
+    for (int idx = j * mGridColumns + i; idx < mGridRows * mGridColumns; idx ++)
+        mShowMatrix[idx] = -1;
 }
 
 int ItemContainer::getSlotIndex(int x, int y) const
 {
     if (x < getWidth() && y < getHeight())
-        return (y / BOX_HEIGHT) * mGridColumns + (x / BOX_WIDTH);
+    {
+        int idx = (y / BOX_HEIGHT) * mGridColumns + (x / BOX_WIDTH);
+        if (idx < mGridRows * mGridColumns && mShowMatrix[idx] >= 0)
+            return mShowMatrix[idx];
+    }
 
     return Inventory::NO_SLOT_INDEX;
 }
