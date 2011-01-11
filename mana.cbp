@@ -303,10 +303,14 @@
 		<Unit filename="src\gui\widgets\emoteshortcutcontainer.h" />
 		<Unit filename="src\gui\widgets\flowcontainer.cpp" />
 		<Unit filename="src\gui\widgets\flowcontainer.h" />
+		<Unit filename="src\gui\widgets\horizontcontainer.cpp" />
+		<Unit filename="src\gui\widgets\horizontcontainer.h" />
 		<Unit filename="src\gui\widgets\icon.cpp" />
 		<Unit filename="src\gui\widgets\icon.h" />
 		<Unit filename="src\gui\widgets\inttextfield.cpp" />
 		<Unit filename="src\gui\widgets\inttextfield.h" />
+		<Unit filename="src\gui\widgets\inventoryfilter.cpp" />
+		<Unit filename="src\gui\widgets\inventoryfilter.h" />
 		<Unit filename="src\gui\widgets\itemcontainer.cpp" />
 		<Unit filename="src\gui\widgets\itemcontainer.h" />
 		<Unit filename="src\gui\widgets\itemlinkhandler.cpp" />
