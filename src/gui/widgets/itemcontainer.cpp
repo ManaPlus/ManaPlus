@@ -434,6 +434,9 @@ void ItemContainer::updateMatrix()
 
 int ItemContainer::getSlotIndex(int x, int y) const
 {
+    if (!mShowMatrix)
+        return Inventory::NO_SLOT_INDEX;
+
     if (x < getWidth() && y < getHeight())
     {
         int idx = (y / BOX_HEIGHT) * mGridColumns + (x / BOX_WIDTH);
