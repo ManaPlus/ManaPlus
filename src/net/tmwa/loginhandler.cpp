@@ -183,6 +183,9 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
                 case 9:
                     errorMessage = _("This user name is already taken.");
                     break;
+                case 10:
+                    errorMessage = _("Wrong name.");
+                    break;
                 default:
                     errorMessage = _("Unknown error.");
                     break;
