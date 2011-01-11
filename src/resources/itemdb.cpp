@@ -210,6 +210,11 @@ void ItemDB::load()
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
 
+        std::string tags[3];
+        tags[0] = XML::getProperty(node, "tag", XML::getProperty(node, "tag1", ""));
+        tags[1] = XML::getProperty(node, "tag2", "");
+        tags[2] = XML::getProperty(node, "tag3", "");
+
         int drawPriority = XML::getProperty(node, "drawPriority", 0);
 
         int attackRange = XML::getProperty(node, "attack-range", 0);
@@ -236,6 +241,18 @@ void ItemDB::load()
             default:
                 itemInfo->addTag(mTags["Equipment"]);
                 break;
+        }
+        for (int f = 0; f < 3; f++)
+        {
+            if (tags[f] != "")
+            {
+                if (mTags.find(tags[f]) == mTags.end())
+                {
+                    mTagNames.push_back(tags[f]);
+                    mTags[tags[f]] = tagNum ++;
+                }
+                itemInfo->addTag(mTags[tags[f]]);
+            }
         }
 
         itemInfo->setView(view);
