@@ -134,8 +134,28 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_CHAR_CREATE_FAILED:
-            new OkDialog(_("Error"), _("Failed to create character. Most "
-                                       "likely the name is already taken."));
+            switch (msg.readInt8())
+            {
+                case 1:
+                case 0:
+                default:
+                    errorMessage = _("Failed to create character. Most "
+                                       "likely the name is already taken.");
+                    break;
+                case 2:
+                    errorMessage = _("Wrong name.");
+                    break;
+                case 3:
+                    errorMessage = _("Incorrect stats.");
+                    break;
+                case 4:
+                    errorMessage = _("Incorrect hair.");
+                    break;
+                case 5:
+                    errorMessage = _("Incorrect slot.");
+                    break;
+            }
+            new OkDialog(_("Error"), errorMessage);
             if (mCharCreateDialog)
                 mCharCreateDialog->unlock();
             break;
