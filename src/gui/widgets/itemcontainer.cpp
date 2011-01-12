@@ -55,6 +55,44 @@
 static const int BOX_WIDTH = 35;
 static const int BOX_HEIGHT = 43;
 
+class ItemIdPair
+{
+    public:
+        ItemIdPair(int id, Item* item)
+        {
+            mId = id;
+            mItem = item;
+        }
+
+        int mId;
+        Item* mItem;
+};
+
+class SortItemAlphaFunctor
+{
+    public:
+        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        {
+            if (!pair1 || !pair2)
+                return false;
+
+            return (pair1->mItem->getInfo().getName()
+                    < pair2->mItem->getInfo().getName());
+        }
+} itemAlphaSorter;
+
+class SortItemIdFunctor
+{
+    public:
+        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        {
+            if (!pair1 || !pair2)
+                return false;
+
+            return pair1->mItem->getId() < pair2->mItem->getId();
+        }
+} itemIdSorter;
+
 ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mInventory(inventory),
     mGridColumns(1),
@@ -67,6 +105,7 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mSwapItems(false),
     mDescItems(false),
     mTag(0),
+    mSortType(0),
     mShowMatrix(0)
 {
     mItemPopup = new ItemPopup;
@@ -116,11 +155,6 @@ void ItemContainer::draw(gcn::Graphics *graphics)
     Graphics *g = static_cast<Graphics*>(graphics);
 
     g->setFont(getFont());
-
-    int i = 0;
-    int j = 0;
-
-//    int idx = 0;
 
     for (int j = 0; j < mGridRows; j++)
     {
@@ -401,24 +435,46 @@ void ItemContainer::adjustHeight()
 
 void ItemContainer::updateMatrix()
 {
+    if (!mInventory)
+        return;
+
     delete []mShowMatrix;
     mShowMatrix = new int[mGridRows * mGridColumns];
 
+    std::vector<ItemIdPair*> sortedItems;
     int i = 0;
     int j = 0;
 
-    for (int idx = 0; idx < mInventory->getSize(); idx ++)
+    for (unsigned idx = 0; idx < mInventory->getSize(); idx ++)
+    {
+        Item *item = mInventory->getItem(idx);
+
+        if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
+            continue;
+
+        sortedItems.push_back(new ItemIdPair(idx, item));
+    }
+
+    switch (mSortType)
+    {
+        case 0:
+        default:
+            break;
+        case 1:
+            sort(sortedItems.begin(), sortedItems.end(), itemAlphaSorter);
+            break;
+        case 2:
+            sort(sortedItems.begin(), sortedItems.end(), itemIdSorter);
+            break;
+    }
+
+    for (unsigned idx = 0; idx < sortedItems.size(); idx ++)
     {
         int itemIndex = idx;
         if (j >= mGridRows)
             break;
 
-        Item *item = mInventory->getItem(itemIndex);
-
-        if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
-            continue;
-
-        mShowMatrix[j * mGridColumns + i] = itemIndex;
+        mShowMatrix[j * mGridColumns + i] = sortedItems[itemIndex]->mId;
 
         i ++;
         if (i >= mGridColumns)
@@ -430,6 +486,9 @@ void ItemContainer::updateMatrix()
 
     for (int idx = j * mGridColumns + i; idx < mGridRows * mGridColumns; idx ++)
         mShowMatrix[idx] = -1;
+
+    for (unsigned idx = 0; idx < sortedItems.size(); idx ++)
+        delete sortedItems[idx];
 }
 
 int ItemContainer::getSlotIndex(int x, int y) const
@@ -529,5 +588,12 @@ void ItemContainer::moveHighlight(Direction direction)
 void ItemContainer::setFilter (int tag)
 {
     mTag = tag;
+    updateMatrix();
+}
+
+void ItemContainer::setSortType (int sortType)
+{
+    mSortType = sortType;
+    logger->log("setSortType: %d", sortType);
     updateMatrix();
 }

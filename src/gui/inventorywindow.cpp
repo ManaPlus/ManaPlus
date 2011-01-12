@@ -92,15 +92,24 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsLabel = new Label(_("Slots:"));
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
-    mFilter = new InventoryFilter(getWindowName(), 20, 10);
+    mFilter = new InventoryFilter("filter_" + getWindowName(), 20, 5);
     mFilter->addActionListener(this);
-    mFilter->setActionEventId("tags");
+    mFilter->setActionEventId("tag_");
+
+    mSorter = new InventoryFilter("sorter_" + getWindowName(), 20, 0);
+    mSorter->addActionListener(this);
+    mSorter->setActionEventId("sort_");
 
     mFilterLabel = new Label(_("Filter:"));
+    mSorterLabel = new Label(_("Sort:"));
 
     std::vector<std::string> tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)
         mFilter->add(tags[f]);
+
+    mSorter->add("na");
+    mSorter->add("az");
+    mSorter->add("id");
 
     if (isMainInventory())
     {
@@ -131,17 +140,19 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(1, 0, mWeightBar, 3);
         place(4, 0, mSlotsLabel, 1).setPadding(3);
         place(5, 0, mSlotsBar, 2);
+        place(7, 0, mSorterLabel, 1);
+        place(8, 0, mSorter, 3);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 6).setPadding(3);
+        place(1, 1, mFilter, 10).setPadding(3);
 
-        place(0, 2, invenScroll, 7).setPadding(3);
+        place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
         place(1, 3, mUseButton2);
         place(2, 3, mDropButton);
-        place(4, 3, mSplitButton);
-        place(5, 3, mShopButton);
-        place(6, 3, mOutfitButton);
+        place(8, 3, mSplitButton);
+        place(9, 3, mShopButton);
+        place(10, 3, mOutfitButton);
 
         updateWeight();
     }
@@ -153,14 +164,16 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
 
         place(0, 0, mSlotsLabel).setPadding(3);
         place(1, 0, mSlotsBar, 3);
+        place(4, 0, mSorterLabel, 1);
+        place(5, 0, mSorter, 2);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 3).setPadding(3);
+        place(1, 1, mFilter, 6).setPadding(3);
 
-        place(0, 2, invenScroll, 4, 4);
+        place(0, 2, invenScroll, 7, 4);
         place(0, 6, mStoreButton);
         place(1, 6, mRetrieveButton);
-        place(3, 6, mCloseButton);
+        place(6, 6, mCloseButton);
     }
 
     Layout &layout = getLayout();
@@ -236,7 +249,18 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));
-//        logger->log("eventid: %s", tagName.c_str());
+    }
+    else if (!event.getId().find("sort_") && mItems)
+    {
+        int sortType = 0;
+        std::string str = event.getId().substr(5).c_str();
+        if (str == "na")
+            sortType = 0;
+        else if (str == "az")
+            sortType = 1;
+        else if (str == "id")
+            sortType = 2;
+        mItems->setSortType(sortType);
     }
 
     Item *item = mItems->getSelectedItem();

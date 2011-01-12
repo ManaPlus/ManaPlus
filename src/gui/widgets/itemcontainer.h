@@ -28,6 +28,7 @@
 #include <guichan/widgetlistener.hpp>
 
 #include <list>
+#include <algorithm>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
@@ -121,6 +122,8 @@ class ItemContainer : public gcn::Widget,
 
         void setFilter (int tag);
 
+        void setSortType (int sortType);
+
     private:
         enum Direction
         {
@@ -188,6 +191,7 @@ class ItemContainer : public gcn::Widget,
         bool mDescItems;
         int mDragPosX, mDragPosY;
         int mTag;
+        int mSortType;
 
         ItemPopup *mItemPopup;
         int *mShowMatrix;

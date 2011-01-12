@@ -148,7 +148,8 @@ void RadioButton::draw(gcn::Graphics* graphics)
     graphics->setColor(getForegroundColor());
 
     int h = getHeight() + getHeight() / 2;
-    graphics->drawText(getCaption(), h - 2, 0);
+//    graphics->drawText(getCaption(), h - 2, 0);
+    graphics->drawText(getCaption(), 16, 0);
 }
 
 void RadioButton::mouseEntered(gcn::MouseEvent& event _UNUSED_)

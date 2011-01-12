@@ -33,13 +33,6 @@
 #define _UNUSED_
 #endif
 
-//class HorizontContainer;
-
-/**
- * A widget container.
- *
- * This container places it's contents veritcally.
- */
 class InventoryFilter : public HorizontContainer, public gcn::ActionListener
 {
     public:

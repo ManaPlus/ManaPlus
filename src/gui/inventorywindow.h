@@ -144,10 +144,11 @@ class InventoryWindow : public Window,
                     *mSplitButton, *mOutfitButton, *mShopButton,
                     *mStoreButton, *mRetrieveButton, *mCloseButton;
 
-        gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel;
+        gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel, *mSorterLabel;
 
         ProgressBar *mWeightBar, *mSlotsBar;
         InventoryFilter *mFilter;
+        InventoryFilter *mSorter;
 
         bool mSplit;
 };

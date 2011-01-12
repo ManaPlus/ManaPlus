@@ -38,7 +38,7 @@ void InventoryFilter::add(std::string tag)
 
     RadioButton *radio = new RadioButton(tag, mGroup, mCount == 0);
     radio->adjustSize();
-    radio->setActionEventId("tag_" + tag);
+    radio->setActionEventId(mActionEventId + tag);
     radio->addActionListener(this);
     HorizontContainer::add(radio);
 }
