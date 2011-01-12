@@ -78,7 +78,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             case SMSG_CHAR_LOGIN:
             {
                 msg.skip(2);  // Length word
-                msg.skip(20); // Unused
+                int slots = msg.readInt16();
+                if (slots > 0 && slots < 30)
+                    loginData.characterSlots = slots;
+                msg.skip(18); // Unused
 
                 delete_all(mCharacters);
                 mCharacters.clear();

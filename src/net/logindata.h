@@ -88,7 +88,7 @@ class LoginData
          */
         void resetCharacterSlots()
         {
-            characterSlots = 3; // Default value, used for TmwAthena.
+            characterSlots = 9; // Default value, used for TmwAthena.
         }
 };
 
