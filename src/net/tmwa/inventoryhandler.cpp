@@ -166,9 +166,12 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_PLAYER_STORAGE_ITEMS:
             if (msg.getId() == SMSG_PLAYER_INVENTORY)
             {
-                // Clear inventory - this will be a complete refresh
-                mEquips.clear();
-                PlayerInfo::getEquipment()->setBackend(&mEquips);
+                if (PlayerInfo::getEquipment())
+                {
+                    // Clear inventory - this will be a complete refresh
+                    mEquips.clear();
+                    PlayerInfo::getEquipment()->setBackend(&mEquips);
+                }
 
                 if (inventory)
                     inventory->clear();
@@ -255,6 +258,12 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_PLAYER_INVENTORY_ADD:
+            if (PlayerInfo::getEquipment()
+                && !PlayerInfo::getEquipment()->getBackend())
+            {   // look like SMSG_PLAYER_INVENTORY was not received
+                mEquips.clear();
+                PlayerInfo::getEquipment()->setBackend(&mEquips);
+            }
             index = msg.readInt16() - INVENTORY_OFFSET;
             amount = msg.readInt16();
             itemId = msg.readInt16();
@@ -426,7 +435,8 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_EQUIPMENT:
             msg.readInt16(); // length
-            if (!PlayerInfo::getEquipment()->getBackend())
+            if (PlayerInfo::getEquipment()
+                && !PlayerInfo::getEquipment()->getBackend())
             {   // look like SMSG_PLAYER_INVENTORY was not received
                 mEquips.clear();
                 PlayerInfo::getEquipment()->setBackend(&mEquips);
