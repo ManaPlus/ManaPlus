@@ -147,7 +147,7 @@ void RadioButton::draw(gcn::Graphics* graphics)
     graphics->setFont(getFont());
     graphics->setColor(getForegroundColor());
 
-    int h = getHeight() + getHeight() / 2;
+//    int h = getHeight() + getHeight() / 2;
 //    graphics->drawText(getCaption(), h - 2, 0);
     graphics->drawText(getCaption(), 16, 0);
 }
