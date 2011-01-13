@@ -140,12 +140,6 @@ static ItemType itemTypeFromString(const std::string &name)
     }
 }
 
-static std::string normalized(const std::string &name)
-{
-    std::string normalized = name;
-    return toLower(trim(normalized));
-}
-
 void ItemDB::load()
 {
     if (mLoaded)
@@ -315,7 +309,7 @@ void ItemDB::load()
         mItemInfos[id] = itemInfo;
         if (!name.empty())
         {
-            std::string temp = normalized(name);
+            std::string temp = normalize(name);
 
             NamedItemInfos::const_iterator itr = mNamedItemInfos.find(temp);
             if (itr == mNamedItemInfos.end())
@@ -413,7 +407,7 @@ const ItemInfo &ItemDB::get(const std::string &name)
 {
     assert(mLoaded);
 
-    NamedItemInfos::const_iterator i = mNamedItemInfos.find(normalized(name));
+    NamedItemInfos::const_iterator i = mNamedItemInfos.find(normalize(name));
 
     if (i == mNamedItemInfos.end())
     {

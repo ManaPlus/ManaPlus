@@ -358,3 +358,9 @@ void replaceSpecialChars(std::string &text)
         pos1 = text.find("&", pos1);
     }
 }
+
+std::string normalize(const std::string &name)
+{
+    std::string normalized = name;
+    return toLower(trim(normalized));;
+}

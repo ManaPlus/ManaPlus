@@ -110,8 +110,6 @@ std::string &removeBadChars(std::string &str);
  */
 std::string removeColors(std::string msg);
 
-bool isWordSeparator(char chr);
-
 const std::string findSameSubstring(const std::string &str1,
                                     const std::string &str2);
 
@@ -124,6 +122,11 @@ const std::string findSameSubstring(const std::string &str1,
  *           negative if the second is greater
  */
 int compareStrI(const std::string &a, const std::string &b);
+
+/**
+ * Tells wether the character is a word separator.
+ */
+bool isWordSeparator(char chr);
 
 unsigned long findI(std::string str, std::string subStr);
 
@@ -155,5 +158,10 @@ std::string& replaceAll(std::string& context, const std::string& from,
 bool getBoolFromString(const std::string &text);
 
 void replaceSpecialChars(std::string &text);
+
+/**
+ * Normalize a string, which means lowercase and trim it.
+ */
+std::string normalize(const std::string &name);
 
 #endif // UTILS_STRINGUTILS_H
