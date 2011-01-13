@@ -28,6 +28,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "utils/gettext.h"
+
 #include <algorithm>
 #include <string>
 
@@ -222,4 +224,18 @@ Item *Inventory::findItemBySprite(std::string spritePath, Gender gender)
         return mItems[partialIndex];
 
     return 0;
+}
+
+std::string Inventory::getName()
+{
+    switch (mType)
+    {
+        case INVENTORY:
+        default:
+            return N_("Inventory");
+        case STORAGE:
+            return N_("Storage");
+        case CART:
+            return N_("Cart");
+    }
 }

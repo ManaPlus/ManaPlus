@@ -61,15 +61,23 @@
 InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *inventory):
-    Window(inventory ? (inventory->isMainInventory()
-                        ? _("Inventory") : _("Storage")) : _("Inventory")),
+    Window(),
     mInventory(inventory),
     mDropButton(0),
     mSplit(false)
 {
-    listen(CHANNEL_ATTRIBUTES);
+    if (inventory)
+    {
+        setCaption(gettext(inventory->getName().c_str()));
+        setWindowName(inventory->getName());
+    }
+    else
+    {
+        setCaption(_("Inventory"));
+        setWindowName("Inventory");
+    }
 
-    setWindowName(isMainInventory() ? "Inventory" : "Storage");
+    listen(CHANNEL_ATTRIBUTES);
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);

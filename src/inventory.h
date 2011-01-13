@@ -50,6 +50,7 @@ class Inventory
         {
             INVENTORY = 0,
             STORAGE,
+            CART,
             TRADE,
             TYPE_END
         };
@@ -144,6 +145,8 @@ class Inventory
         { return mType == INVENTORY; }
 
         Item *findItemBySprite(std::string spritePath, Gender gender);
+
+        std::string getName();
 
     protected:
         typedef std::list<InventoryListener*> InventoryListenerList;
