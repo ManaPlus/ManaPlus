@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2010-12-23 12:08+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: Spanish Translator <natsuki.sumon@gmail.com>\n"
@@ -1185,6 +1185,20 @@ msgstr ""
 #, fuzzy
 msgid "Sort:"
 msgstr "Puerto:"
+
+#: src/gui/inventorywindow.cpp:110
+#, fuzzy
+msgid "na"
+msgstr "una(o)"
+
+#: src/gui/inventorywindow.cpp:111
+#, fuzzy
+msgid "az"
+msgstr "una(o)"
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -5634,9 +5648,6 @@ msgstr "Objeto desconocido"
 
 #~ msgid "Command: /new <party-name>"
 #~ msgstr "Comando: /new <nombre-del-grupo>"
-
-#~ msgid "a"
-#~ msgstr "una(o)"
 
 #~ msgid "Unnamed"
 #~ msgstr "Sin nombre"

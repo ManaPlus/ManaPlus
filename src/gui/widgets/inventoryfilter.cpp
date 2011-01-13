@@ -33,10 +33,15 @@ InventoryFilter::InventoryFilter(std::string group, int height, int spacing):
 
 void InventoryFilter::add(std::string tag)
 {
-    if (tag.empty())
+    add(tag, tag);
+}
+
+void InventoryFilter::add(std::string text, std::string tag)
+{
+    if (text.empty() || tag.empty())
         return;
 
-    RadioButton *radio = new RadioButton(tag, mGroup, mCount == 0);
+    RadioButton *radio = new RadioButton(text, mGroup, mCount == 0);
     radio->adjustSize();
     radio->setActionEventId(mActionEventId + tag);
     radio->addActionListener(this);

@@ -107,9 +107,9 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     for (unsigned f = 0; f < tags.size(); f ++)
         mFilter->add(tags[f]);
 
-    mSorter->add("na");
-    mSorter->add("az");
-    mSorter->add("id");
+    mSorter->add(_("na"), "na");
+    mSorter->add(_("az"), "az");
+    mSorter->add(_("id"), "id");
 
     if (isMainInventory())
     {

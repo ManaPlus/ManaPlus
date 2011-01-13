@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2009-07-25 17:33+0000\n"
 "Last-Translator: Niels L Ellegaard <niels.ellegaard@gmail.com>\n"
 "Language-Team: Danish <none@none.none>\n"
@@ -1211,6 +1211,20 @@ msgstr ""
 #, fuzzy
 msgid "Sort:"
 msgstr "Port:"
+
+#: src/gui/inventorywindow.cpp:110
+#, fuzzy
+msgid "na"
+msgstr "en/et"
+
+#: src/gui/inventorywindow.cpp:111
+#, fuzzy
+msgid "az"
+msgstr "en/et"
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -5768,9 +5782,6 @@ msgstr "Ukendt genstand"
 
 #~ msgid "Command: /new <party-name>"
 #~ msgstr "Kommando: /new <gruppe>"
-
-#~ msgid "a"
-#~ msgstr "en/et"
 
 #~ msgid "Unnamed"
 #~ msgstr "Unavngivet"

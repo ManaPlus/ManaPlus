@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2009-09-14 06:59+0000\n"
 "Last-Translator: Maciej Benke <syngress_stc@vp.pl>\n"
 "Language-Team: <pl@li.org>\n"
@@ -1215,6 +1215,19 @@ msgstr ""
 #, fuzzy
 msgid "Sort:"
 msgstr "Port:"
+
+#: src/gui/inventorywindow.cpp:110
+#, fuzzy
+msgid "na"
+msgstr "mana"
+
+#: src/gui/inventorywindow.cpp:111
+msgid "az"
+msgstr ""
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -5767,9 +5780,6 @@ msgstr "Nieznany przedmiot"
 
 #~ msgid " video mode: "
 #~ msgstr " tryb wideo: "
-
-#~ msgid "mana"
-#~ msgstr "mana"
 
 #~ msgid "Connecting to character server..."
 #~ msgstr "Łączenie z serwerem postaci..."

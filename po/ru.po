@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2010-11-13 17:01+0300\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1146,12 +1146,23 @@ msgstr "Вместимость:"
 
 #: src/gui/inventorywindow.cpp:103
 msgid "Filter:"
-msgstr ""
+msgstr "Фильтр:"
 
 #: src/gui/inventorywindow.cpp:104
-#, fuzzy
 msgid "Sort:"
-msgstr "Порт:"
+msgstr "Сорт.:"
+
+#: src/gui/inventorywindow.cpp:110
+msgid "na"
+msgstr "нет"
+
+#: src/gui/inventorywindow.cpp:111
+msgid "az"
+msgstr "ая"
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr "ид"
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -2984,14 +2995,12 @@ msgid "Exp Notification"
 msgstr "Сообщение об изменении опыта"
 
 #: src/gui/userpalette.cpp:129
-#, fuzzy
 msgid "Player HP bar"
-msgstr "Полоса жизни монстров"
+msgstr "Полоса жизни игрока"
 
 #: src/gui/userpalette.cpp:131
-#, fuzzy
 msgid "Player HP bar (second color)"
-msgstr "Полоса жизни монстров (второй цвет)"
+msgstr "Полоса жизни игрока (второй цвет)"
 
 #: src/gui/userpalette.cpp:132
 msgid "Player Hits Monster"
@@ -3083,7 +3092,7 @@ msgstr "Кто онлайн - обновление"
 
 #: src/gui/widgets/battletab.cpp:41
 msgid "Battle"
-msgstr ""
+msgstr "Битва"
 
 #: src/gui/widgets/channeltab.cpp:49
 msgid "/users > Lists the users in the current channel"

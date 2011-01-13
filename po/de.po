@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2010-01-02 15:26+0000\n"
 "Last-Translator: Jonathan Raphael Joachim Kolberg\n"
 "Language-Team: Deutsch <kde-i18n-de@kde.org>\n"
@@ -1231,6 +1231,20 @@ msgstr ""
 #, fuzzy
 msgid "Sort:"
 msgstr "Port:"
+
+#: src/gui/inventorywindow.cpp:110
+#, fuzzy
+msgid "na"
+msgstr "Nein"
+
+#: src/gui/inventorywindow.cpp:111
+#, fuzzy
+msgid "az"
+msgstr "ein"
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -4628,17 +4642,14 @@ msgid "M.Defense"
 msgstr "M.Verteidigung:"
 
 #: src/net/tmwa/generalhandler.cpp:258
-#, c-format
 msgid "% Accuracy"
 msgstr "% Accuracy"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, c-format
 msgid "% Evade"
 msgstr "% Evade"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, c-format
 msgid "% Critical"
 msgstr "% Critical"
 
@@ -5661,9 +5672,6 @@ msgstr "Unbekannter Gegenstand"
 #~ msgid "present"
 #~ msgstr "Anwesend: "
 
-#~ msgid "n"
-#~ msgstr "Nein"
-
 #~ msgid "N"
 #~ msgstr "Nein"
 
@@ -6665,9 +6673,6 @@ msgstr "Unbekannter Gegenstand"
 
 #~ msgid "Couldn't set "
 #~ msgstr "Konnte Einstellung nicht setzen: "
-
-#~ msgid "a"
-#~ msgstr "ein"
 
 #~ msgid "Scroll radius"
 #~ msgstr "Scroll-Radius"

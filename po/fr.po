@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2011-01-11 22:42+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: French <Yohann Ferreira <yohann ferreira orange efer>>\n"
@@ -1221,6 +1221,20 @@ msgstr ""
 #, fuzzy
 msgid "Sort:"
 msgstr "Port :"
+
+#: src/gui/inventorywindow.cpp:110
+#, fuzzy
+msgid "na"
+msgstr "un(e)"
+
+#: src/gui/inventorywindow.cpp:111
+#, fuzzy
+msgid "az"
+msgstr "un(e)"
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -4633,17 +4647,14 @@ msgid "M.Defense"
 msgstr "Défense M."
 
 #: src/net/tmwa/generalhandler.cpp:258
-#, fuzzy, c-format
 msgid "% Accuracy"
 msgstr "% Précision"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, c-format
 msgid "% Evade"
 msgstr "% Esquive"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, c-format
 msgid "% Critical"
 msgstr "% Coup critique"
 
@@ -5785,9 +5796,6 @@ msgstr "Objet inconnu"
 
 #~ msgid "Command: /new <party-name>"
 #~ msgstr "Commande : /new <party-name>"
-
-#~ msgid "a"
-#~ msgstr "un(e)"
 
 #~ msgid "Unnamed"
 #~ msgstr "Aonyme"

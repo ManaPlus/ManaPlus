@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"POT-Creation-Date: 2011-01-13 22:24+0200\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -1201,6 +1201,20 @@ msgstr ""
 #, fuzzy
 msgid "Sort:"
 msgstr "Port:"
+
+#: src/gui/inventorywindow.cpp:110
+#, fuzzy
+msgid "na"
+msgstr "jedan"
+
+#: src/gui/inventorywindow.cpp:111
+#, fuzzy
+msgid "az"
+msgstr "jedan"
+
+#: src/gui/inventorywindow.cpp:112
+msgid "id"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
 #: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
@@ -5733,9 +5747,6 @@ msgstr "Nepoznati predmet"
 
 #~ msgid "Command: /new <party-name>"
 #~ msgstr "Naredba: /new <ime-partije>"
-
-#~ msgid "a"
-#~ msgstr "jedan"
 
 #~ msgid "Unnamed"
 #~ msgstr "Neimenovano"

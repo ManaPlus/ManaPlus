@@ -40,6 +40,8 @@ class InventoryFilter : public HorizontContainer, public gcn::ActionListener
 
         void add(std::string tag);
 
+        void add(std::string text, std::string tag);
+
         void action(const gcn::ActionEvent &event);
 
     private:
