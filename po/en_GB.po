@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-06 03:06+0200\n"
+"POT-Creation-Date: 2011-01-13 21:49+0200\n"
 "PO-Revision-Date: 2010-03-04 21:01+0000\n"
 "Last-Translator: issyl0 <isabell121@gmail.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
@@ -63,10 +63,10 @@ msgstr "Server"
 #: src/client.cpp:1029 src/client.cpp:1036 src/client.cpp:1171
 #: src/gui/changeemaildialog.cpp:154 src/gui/changepassworddialog.cpp:144
 #: src/gui/charcreatedialog.cpp:185 src/gui/register.cpp:225
-#: src/gui/serverdialog.cpp:350 src/gui/unregisterdialog.cpp:134
+#: src/gui/serverdialog.cpp:355 src/gui/unregisterdialog.cpp:134
 #: src/net/manaserv/charhandler.cpp:183 src/net/manaserv/charhandler.cpp:226
-#: src/net/tmwa/charserverhandler.cpp:137
-#: src/net/tmwa/charserverhandler.cpp:154
+#: src/net/tmwa/charserverhandler.cpp:161
+#: src/net/tmwa/charserverhandler.cpp:177
 msgid "Error"
 msgstr "Error"
 
@@ -738,7 +738,7 @@ msgid "-"
 msgstr ""
 
 #: src/gui/buy.cpp:95 src/gui/quitdialog.cpp:43 src/gui/quitdialog.cpp:48
-#: src/gui/quitdialog.cpp:49 src/gui/sell.cpp:90 src/gui/serverdialog.cpp:244
+#: src/gui/quitdialog.cpp:49 src/gui/sell.cpp:90 src/gui/serverdialog.cpp:248
 #: src/keyboardconfig.cpp:275
 msgid "Quit"
 msgstr "Exit"
@@ -749,7 +749,7 @@ msgid "Max"
 msgstr "Max"
 
 #: src/gui/buysell.cpp:37 src/gui/buysell.cpp:46
-#: src/gui/inventorywindow.cpp:112
+#: src/gui/inventorywindow.cpp:134
 msgid "Shop"
 msgstr "Shop"
 
@@ -922,7 +922,7 @@ msgstr "Unregister"
 msgid "Change Email"
 msgstr "Change Email Address"
 
-#: src/gui/charselectdialog.cpp:375 src/gui/serverdialog.cpp:248
+#: src/gui/charselectdialog.cpp:375 src/gui/serverdialog.cpp:252
 #: src/gui/setup_players.cpp:242 src/gui/shopwindow.cpp:117
 #: src/gui/shopwindow.cpp:120 src/gui/textcommandeditor.cpp:234
 msgid "Delete"
@@ -1170,8 +1170,8 @@ msgstr "OK"
 msgid "Equipment"
 msgstr "Equipment"
 
-#: src/gui/equipmentwindow.cpp:91 src/gui/inventorywindow.cpp:96
-#: src/gui/inventorywindow.cpp:393 src/gui/inventorywindow.cpp:402
+#: src/gui/equipmentwindow.cpp:91 src/gui/inventorywindow.cpp:118
+#: src/gui/inventorywindow.cpp:443 src/gui/inventorywindow.cpp:452
 #: src/gui/popupmenu.cpp:1070 src/gui/popupmenu.cpp:1169
 #: src/gui/popupmenu.cpp:1209
 msgid "Unequip"
@@ -1181,68 +1181,77 @@ msgstr "Unequip"
 msgid "Help"
 msgstr "Help"
 
-#: src/gui/help.cpp:52 src/gui/inventorywindow.cpp:135
+#: src/gui/help.cpp:52 src/gui/inventorywindow.cpp:163
 #: src/gui/npcdialog.cpp:48 src/gui/shopwindow.cpp:108
 msgid "Close"
 msgstr "Close"
 
-#: src/gui/inventorywindow.cpp:62 src/gui/windowmenu.cpp:72
+#: src/gui/inventorywindow.cpp:65 src/gui/windowmenu.cpp:72
 msgid "Inventory"
 msgstr "Inventory"
 
-#: src/gui/inventorywindow.cpp:62
+#: src/gui/inventorywindow.cpp:65
 msgid "Storage"
 msgstr "Storage"
 
-#: src/gui/inventorywindow.cpp:89
+#: src/gui/inventorywindow.cpp:92
 msgid "Slots:"
 msgstr "Slots:"
 
-#: src/gui/inventorywindow.cpp:94 src/gui/inventorywindow.cpp:395
-#: src/gui/inventorywindow.cpp:404 src/gui/popupmenu.cpp:1072
+#: src/gui/inventorywindow.cpp:103
+msgid "Filter:"
+msgstr ""
+
+#: src/gui/inventorywindow.cpp:104
+#, fuzzy
+msgid "Sort:"
+msgstr "Port:"
+
+#: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
+#: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
 #: src/gui/popupmenu.cpp:1171 src/gui/popupmenu.cpp:1211
 msgid "Equip"
 msgstr "Equip"
 
-#: src/gui/inventorywindow.cpp:95 src/gui/inventorywindow.cpp:396
-#: src/gui/inventorywindow.cpp:400 src/gui/popupmenu.cpp:1075
+#: src/gui/inventorywindow.cpp:117 src/gui/inventorywindow.cpp:446
+#: src/gui/inventorywindow.cpp:450 src/gui/popupmenu.cpp:1075
 #: src/gui/popupmenu.cpp:1144 src/gui/popupmenu.cpp:1175
 #: src/gui/popupmenu.cpp:1214
 msgid "Use"
 msgstr "Use"
 
-#: src/gui/inventorywindow.cpp:109 src/gui/inventorywindow.cpp:499
+#: src/gui/inventorywindow.cpp:131 src/gui/inventorywindow.cpp:549
 #: src/gui/popupmenu.cpp:1078 src/gui/popupmenu.cpp:1179
 #: src/gui/popupmenu.cpp:1217
 #, fuzzy
 msgid "Drop..."
 msgstr "Drop"
 
-#: src/gui/inventorywindow.cpp:110 src/gui/popupmenu.cpp:1083
+#: src/gui/inventorywindow.cpp:132 src/gui/popupmenu.cpp:1083
 #: src/gui/popupmenu.cpp:1184 src/gui/popupmenu.cpp:1222
 msgid "Split"
 msgstr "Split"
 
-#: src/gui/inventorywindow.cpp:111 src/gui/outfitwindow.cpp:56
+#: src/gui/inventorywindow.cpp:133 src/gui/outfitwindow.cpp:56
 #: src/gui/popupmenu.cpp:409
 msgid "Outfits"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:114
+#: src/gui/inventorywindow.cpp:136
 msgid "Weight:"
 msgstr "Weight:"
 
-#: src/gui/inventorywindow.cpp:133 src/gui/inventorywindow.cpp:490
+#: src/gui/inventorywindow.cpp:161 src/gui/inventorywindow.cpp:540
 #: src/gui/popupmenu.cpp:1087 src/gui/popupmenu.cpp:1187
 #: src/gui/popupmenu.cpp:1225 src/gui/setup.cpp:65
 msgid "Store"
 msgstr "Store"
 
-#: src/gui/inventorywindow.cpp:134 src/gui/popupmenu.cpp:1106
+#: src/gui/inventorywindow.cpp:162 src/gui/popupmenu.cpp:1106
 msgid "Retrieve"
 msgstr "Retrieve"
 
-#: src/gui/inventorywindow.cpp:501 src/gui/popupmenu.cpp:1080
+#: src/gui/inventorywindow.cpp:551 src/gui/popupmenu.cpp:1080
 #: src/gui/popupmenu.cpp:1181 src/gui/popupmenu.cpp:1219
 #: src/gui/windowmenu.cpp:91
 msgid "Drop"
@@ -1431,7 +1440,7 @@ msgstr ""
 msgid "Login"
 msgstr "Login"
 
-#: src/gui/login.cpp:87 src/gui/serverdialog.cpp:221
+#: src/gui/login.cpp:87 src/gui/serverdialog.cpp:222
 #: src/gui/widgets/chattab.cpp:166
 msgid "Server:"
 msgstr "Server:"
@@ -1859,56 +1868,60 @@ msgstr "Passwords do not match."
 msgid "Choose Your Server"
 msgstr "Choose your server"
 
-#: src/gui/serverdialog.cpp:222
+#: src/gui/serverdialog.cpp:223
 msgid "Port:"
 msgstr "Port:"
 
-#: src/gui/serverdialog.cpp:223
+#: src/gui/serverdialog.cpp:224
 #, fuzzy
 msgid "Server type:"
 msgstr "Server:"
 
-#: src/gui/serverdialog.cpp:245
+#: src/gui/serverdialog.cpp:227
+msgid "Use same ip for game sub servers"
+msgstr ""
+
+#: src/gui/serverdialog.cpp:249
 msgid "Load"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:246
+#: src/gui/serverdialog.cpp:250
 #, fuzzy
 msgid "Connect"
 msgstr "Connecting..."
 
-#: src/gui/serverdialog.cpp:247
+#: src/gui/serverdialog.cpp:251
 #, fuzzy
 msgid "Custom Server"
 msgstr "Custom cursor"
 
-#: src/gui/serverdialog.cpp:351
+#: src/gui/serverdialog.cpp:356
 msgid "Please type both the address and the port of a server."
 msgstr "Please type both the address and the port of a server."
 
-#: src/gui/serverdialog.cpp:482
+#: src/gui/serverdialog.cpp:488
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:488
+#: src/gui/serverdialog.cpp:494
 #, fuzzy
 msgid "Waiting for server..."
 msgstr "Waiting for server"
 
-#: src/gui/serverdialog.cpp:492
+#: src/gui/serverdialog.cpp:498
 msgid "Preparing download"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:496
+#: src/gui/serverdialog.cpp:502
 msgid "Error retreiving server list!"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:593
+#: src/gui/serverdialog.cpp:599
 msgid "requires a newer version"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:595
+#: src/gui/serverdialog.cpp:601
 #, c-format
 msgid "requires v%s"
 msgstr ""
@@ -3892,7 +3905,7 @@ msgstr[1] "You picked up %s [@@%d|%s@@]."
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3617
+#: src/localplayer.cpp:3618
 #, fuzzy
 msgid "You see "
 msgstr "You get %s."
@@ -4061,27 +4074,27 @@ msgstr "Willpower:"
 msgid "Willpower %+.1f"
 msgstr "Willpower %+d"
 
-#: src/net/manaserv/beinghandler.cpp:314 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:314 src/net/tmwa/playerhandler.cpp:105
 msgid "You are dead."
 msgstr "You are dead."
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:105
+#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:106
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "We regret to inform you that your character was killed in battle."
 
-#: src/net/manaserv/beinghandler.cpp:317 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:317 src/net/tmwa/playerhandler.cpp:108
 msgid "You are not that alive anymore."
 msgstr "You are not that alive anymore."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:108
+#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:109
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "The cold hands of the grim reaper are grasping for your soul."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:109
+#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:110
 msgid "Game Over!"
 msgstr "Game Over!"
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:111
+#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:112
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4089,7 +4102,7 @@ msgstr ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 
-#: src/net/manaserv/beinghandler.cpp:322 src/net/tmwa/playerhandler.cpp:113
+#: src/net/manaserv/beinghandler.cpp:322 src/net/tmwa/playerhandler.cpp:114
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
@@ -4097,27 +4110,27 @@ msgstr ""
 "Your plan of breaking your enemy's weapon by bashing it with your throat "
 "failed."
 
-#: src/net/manaserv/beinghandler.cpp:324 src/net/tmwa/playerhandler.cpp:115
+#: src/net/manaserv/beinghandler.cpp:324 src/net/tmwa/playerhandler.cpp:116
 msgid "I guess this did not run too well."
 msgstr "I guess this did not run too well."
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:117
+#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:118
 msgid "Do you want your possessions identified?"
 msgstr "Do you want your possessions identified?"
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:119
+#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:120
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Sadly, no trace of you was ever found..."
 
-#: src/net/manaserv/beinghandler.cpp:328 src/net/tmwa/playerhandler.cpp:121
+#: src/net/manaserv/beinghandler.cpp:328 src/net/tmwa/playerhandler.cpp:122
 msgid "Annihilated."
 msgstr "Annihilated."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:123
+#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:124
 msgid "Looks like you got your head handed to you."
 msgstr "Looks like you got your head handed to you."
 
-#: src/net/manaserv/beinghandler.cpp:331 src/net/tmwa/playerhandler.cpp:125
+#: src/net/manaserv/beinghandler.cpp:331 src/net/tmwa/playerhandler.cpp:126
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -4186,12 +4199,12 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:180 src/net/manaserv/loginhandler.cpp:98
 #: src/net/manaserv/loginhandler.cpp:130 src/net/manaserv/loginhandler.cpp:166
 #: src/net/manaserv/loginhandler.cpp:286 src/net/manaserv/loginhandler.cpp:323
-#: src/net/tmwa/loginhandler.cpp:99 src/net/tmwa/loginhandler.cpp:187
+#: src/net/tmwa/loginhandler.cpp:99 src/net/tmwa/loginhandler.cpp:190
 #, fuzzy
 msgid "Unknown error."
 msgstr "Unknown error"
 
-#: src/net/manaserv/charhandler.cpp:209 src/net/tmwa/charserverhandler.cpp:149
+#: src/net/manaserv/charhandler.cpp:209 src/net/tmwa/charserverhandler.cpp:172
 msgid "Info"
 msgstr "Info"
 
@@ -4431,61 +4444,88 @@ msgstr "Thanks for buying."
 msgid "Unable to buy."
 msgstr "Unable to buy."
 
-#: src/net/tmwa/buysellhandler.cpp:143
+#: src/net/tmwa/buysellhandler.cpp:145
 msgid "Thanks for selling."
 msgstr "Thanks for selling."
 
-#: src/net/tmwa/buysellhandler.cpp:145
+#: src/net/tmwa/buysellhandler.cpp:149
 msgid "Unable to sell."
 msgstr "Unable to sell."
 
-#: src/net/tmwa/charserverhandler.cpp:106
+#: src/net/tmwa/buysellhandler.cpp:152
+#, fuzzy
+msgid "Unable to sell while trading."
+msgstr "Unable to sell."
+
+#: src/net/tmwa/buysellhandler.cpp:155
+#, fuzzy
+msgid "Unable to sell unsellable item."
+msgstr "Unable to pick up item."
+
+#: src/net/tmwa/charserverhandler.cpp:109
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:110
+#: src/net/tmwa/charserverhandler.cpp:113
 #, fuzzy
 msgid "Cannot use this ID."
 msgstr "Cannot use this ID"
 
-#: src/net/tmwa/charserverhandler.cpp:113
+#: src/net/tmwa/charserverhandler.cpp:116
 #, fuzzy
 msgid "Unknown char-server failure."
 msgstr "Unknown error"
 
-#: src/net/tmwa/charserverhandler.cpp:137
+#: src/net/tmwa/charserverhandler.cpp:145
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Failed to create character. Most likely the name is already taken."
 
-#: src/net/tmwa/charserverhandler.cpp:149
+#: src/net/tmwa/charserverhandler.cpp:149 src/net/tmwa/loginhandler.cpp:187
+#, fuzzy
+msgid "Wrong name."
+msgstr "Wrong magic_token"
+
+#: src/net/tmwa/charserverhandler.cpp:152
+msgid "Incorrect stats."
+msgstr ""
+
+#: src/net/tmwa/charserverhandler.cpp:155
+msgid "Incorrect hair."
+msgstr ""
+
+#: src/net/tmwa/charserverhandler.cpp:158
+msgid "Incorrect slot."
+msgstr ""
+
+#: src/net/tmwa/charserverhandler.cpp:172
 msgid "Character deleted."
 msgstr "Character deleted."
 
-#: src/net/tmwa/charserverhandler.cpp:154
+#: src/net/tmwa/charserverhandler.cpp:177
 msgid "Failed to delete character."
 msgstr "Failed to delete character."
 
-#: src/net/tmwa/charserverhandler.cpp:286
+#: src/net/tmwa/charserverhandler.cpp:317
 msgid "Strength:"
 msgstr "Strength:"
 
-#: src/net/tmwa/charserverhandler.cpp:287
+#: src/net/tmwa/charserverhandler.cpp:318
 msgid "Agility:"
 msgstr "Agility:"
 
-#: src/net/tmwa/charserverhandler.cpp:288
+#: src/net/tmwa/charserverhandler.cpp:319
 msgid "Vitality:"
 msgstr "Vitality:"
 
-#: src/net/tmwa/charserverhandler.cpp:289
+#: src/net/tmwa/charserverhandler.cpp:320
 msgid "Intelligence:"
 msgstr "Intelligence:"
 
-#: src/net/tmwa/charserverhandler.cpp:290
+#: src/net/tmwa/charserverhandler.cpp:321
 msgid "Dexterity:"
 msgstr "Dexterity:"
 
-#: src/net/tmwa/charserverhandler.cpp:291
+#: src/net/tmwa/charserverhandler.cpp:322
 msgid "Luck:"
 msgstr "Luck:"
 
@@ -4892,11 +4932,11 @@ msgstr "Experience sharing not possible."
 msgid "Experience sharing unknown."
 msgstr "Experience sharing enabled."
 
-#: src/net/tmwa/inventoryhandler.cpp:334
+#: src/net/tmwa/inventoryhandler.cpp:343
 msgid "Failed to use item."
 msgstr "Failed to use item."
 
-#: src/net/tmwa/inventoryhandler.cpp:457
+#: src/net/tmwa/inventoryhandler.cpp:472
 msgid "Unable to equip."
 msgstr "Unable to equip."
 
@@ -5016,51 +5056,51 @@ msgstr "An unknown member tried to say: %s"
 msgid "%s is not in your party!"
 msgstr "%s is not in your party!"
 
-#: src/net/tmwa/playerhandler.cpp:110
+#: src/net/tmwa/playerhandler.cpp:111
 msgid "Insert coin to continue."
 msgstr "Insert coin to continue."
 
-#: src/net/tmwa/playerhandler.cpp:128
+#: src/net/tmwa/playerhandler.cpp:129
 msgid "You're not dead yet. You're just resting."
 msgstr "You're not dead yet. You're just resting."
 
-#: src/net/tmwa/playerhandler.cpp:129
+#: src/net/tmwa/playerhandler.cpp:130
 msgid "You are no more."
 msgstr "You are no more."
 
-#: src/net/tmwa/playerhandler.cpp:130
+#: src/net/tmwa/playerhandler.cpp:131
 msgid "You have ceased to be."
 msgstr "You have ceased to be."
 
-#: src/net/tmwa/playerhandler.cpp:131
+#: src/net/tmwa/playerhandler.cpp:132
 msgid "You've expired and gone to meet your maker."
 msgstr "You've expired and gone to meet your maker."
 
-#: src/net/tmwa/playerhandler.cpp:132
+#: src/net/tmwa/playerhandler.cpp:133
 msgid "You're a stiff."
 msgstr "You're a stiff."
 
-#: src/net/tmwa/playerhandler.cpp:133
+#: src/net/tmwa/playerhandler.cpp:134
 msgid "Bereft of life, you rest in peace."
 msgstr "Bereft of life, you rest in peace."
 
-#: src/net/tmwa/playerhandler.cpp:134
+#: src/net/tmwa/playerhandler.cpp:135
 msgid "If you weren't so animated, you'd be pushing up the daisies."
 msgstr "If you weren't so animated, you'd be pushing up the daisies."
 
-#: src/net/tmwa/playerhandler.cpp:135
+#: src/net/tmwa/playerhandler.cpp:136
 msgid "Your metabolic processes are now history."
 msgstr "Your metabolic processes are now history."
 
-#: src/net/tmwa/playerhandler.cpp:136
+#: src/net/tmwa/playerhandler.cpp:137
 msgid "You're off the twig."
 msgstr "You're off the twig."
 
-#: src/net/tmwa/playerhandler.cpp:137
+#: src/net/tmwa/playerhandler.cpp:138
 msgid "You've kicked the bucket."
 msgstr "You've kicked the bucket."
 
-#: src/net/tmwa/playerhandler.cpp:138
+#: src/net/tmwa/playerhandler.cpp:139
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
@@ -5068,48 +5108,48 @@ msgstr ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
 
-#: src/net/tmwa/playerhandler.cpp:140
+#: src/net/tmwa/playerhandler.cpp:141
 msgid "You are an ex-player."
 msgstr "You are an ex-player."
 
-#: src/net/tmwa/playerhandler.cpp:141
+#: src/net/tmwa/playerhandler.cpp:142
 msgid "You're pining for the fjords."
 msgstr "You're pining for the fjords."
 
-#: src/net/tmwa/playerhandler.cpp:327 src/net/tmwa/playerhandler.cpp:336
-#: src/net/tmwa/playerhandler.cpp:415
+#: src/net/tmwa/playerhandler.cpp:330 src/net/tmwa/playerhandler.cpp:339
+#: src/net/tmwa/playerhandler.cpp:418
 msgid "Message"
 msgstr "Message"
 
-#: src/net/tmwa/playerhandler.cpp:328
+#: src/net/tmwa/playerhandler.cpp:331
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "You are carrying more than half your maximum load. You are unable to "
 "automatically regain health."
 
-#: src/net/tmwa/playerhandler.cpp:337
+#: src/net/tmwa/playerhandler.cpp:340
 #, fuzzy
 msgid "You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "You are carrying more than half your maximum load. You are unable to "
 "automatically regain health."
 
-#: src/net/tmwa/playerhandler.cpp:442
+#: src/net/tmwa/playerhandler.cpp:445
 #, fuzzy, c-format
 msgid "You picked up %s."
 msgstr "You picked up "
 
-#: src/net/tmwa/playerhandler.cpp:448
+#: src/net/tmwa/playerhandler.cpp:451
 #, fuzzy, c-format
 msgid "You spent %s."
 msgstr "You get %s."
 
-#: src/net/tmwa/playerhandler.cpp:493
+#: src/net/tmwa/playerhandler.cpp:496
 msgid "Cannot raise skill!"
 msgstr ""
 
-#: src/net/tmwa/playerhandler.cpp:613
+#: src/net/tmwa/playerhandler.cpp:616
 msgid "Equip arrows first."
 msgstr "Equip arrows first."
 
@@ -5259,32 +5299,32 @@ msgstr ""
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:32 src/resources/itemdb.cpp:210
+#: src/resources/beinginfo.cpp:32 src/resources/itemdb.cpp:223
 #: src/resources/monsterdb.cpp:78
 msgid "unnamed"
 msgstr "unnamed"
 
-#: src/resources/itemdb.cpp:55
+#: src/resources/itemdb.cpp:57
 #, c-format
 msgid "Attack %+d"
 msgstr "Attack %+d"
 
-#: src/resources/itemdb.cpp:56
+#: src/resources/itemdb.cpp:58
 #, c-format
 msgid "Defense %+d"
 msgstr "Defense %+d"
 
-#: src/resources/itemdb.cpp:57
+#: src/resources/itemdb.cpp:59
 #, c-format
 msgid "HP %+d"
 msgstr "HP %+d"
 
-#: src/resources/itemdb.cpp:58
+#: src/resources/itemdb.cpp:60
 #, c-format
 msgid "MP %+d"
 msgstr "MP %+d"
 
-#: src/resources/itemdb.cpp:155
+#: src/resources/itemdb.cpp:152
 msgid "Unknown item"
 msgstr "Unknown item"
 

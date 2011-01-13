@@ -4,18 +4,26 @@
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2007.
 #
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-01-06 03:06+0200\n"
-"PO-Revision-Date: 2010-12-29 00:51+0100\n"
+"POT-Creation-Date: 2011-01-13 21:49+0200\n"
+"PO-Revision-Date: 2011-01-11 22:42+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: French <Yohann Ferreira <yohann ferreira orange efer>>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Launchpad-Export-Date: 2010-03-05 19:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Launchpad-Export-Date: 2010-03-05 19:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
@@ -61,10 +69,10 @@ msgstr "Changement de serveur de jeu"
 #: src/client.cpp:1029 src/client.cpp:1036 src/client.cpp:1171
 #: src/gui/changeemaildialog.cpp:154 src/gui/changepassworddialog.cpp:144
 #: src/gui/charcreatedialog.cpp:185 src/gui/register.cpp:225
-#: src/gui/serverdialog.cpp:350 src/gui/unregisterdialog.cpp:134
+#: src/gui/serverdialog.cpp:355 src/gui/unregisterdialog.cpp:134
 #: src/net/manaserv/charhandler.cpp:183 src/net/manaserv/charhandler.cpp:226
-#: src/net/tmwa/charserverhandler.cpp:137
-#: src/net/tmwa/charserverhandler.cpp:154
+#: src/net/tmwa/charserverhandler.cpp:161
+#: src/net/tmwa/charserverhandler.cpp:177
 msgid "Error"
 msgstr "Erreur"
 
@@ -462,11 +470,17 @@ msgid "Command: /toggle <state>"
 msgstr "Command: /toggle <state>"
 
 #: src/commandhandler.cpp:449
+#, fuzzy
 msgid ""
 "This command sets whether the return key should toggle the chat log, or "
 "whether the chat log turns off automatically."
 msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
 "Cette commande définie si la touche entrée doit fermer le fichier "
+"d'enregistrement de la conversation ou si celui-ci se fermera "
+"automatiquement.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Cette commande définit si la touche entrée doit fermer le fichier "
 "d'enregistrement de la conversation ou si celui-ci se fermera "
 "automatiquement."
 
@@ -530,9 +544,13 @@ msgstr ""
 "existe déjà ou il s'agit de vous même."
 
 #: src/commandhandler.cpp:574
-#, c-format
+#, fuzzy, c-format
 msgid "Requesting to join channel %s."
-msgstr "Il vous est demandé de rejoindre le chan %s."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Il vous est demandé de rejoindre le chan %s.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Il vous est demandé de rejoindre le salon %s."
 
 #: src/commandhandler.cpp:590 src/net/tmwa/gui/partytab.cpp:122
 msgid "Party name is missing."
@@ -740,7 +758,7 @@ msgid "-"
 msgstr "-"
 
 #: src/gui/buy.cpp:95 src/gui/quitdialog.cpp:43 src/gui/quitdialog.cpp:48
-#: src/gui/quitdialog.cpp:49 src/gui/sell.cpp:90 src/gui/serverdialog.cpp:244
+#: src/gui/quitdialog.cpp:49 src/gui/sell.cpp:90 src/gui/serverdialog.cpp:248
 #: src/keyboardconfig.cpp:275
 msgid "Quit"
 msgstr "Quitter"
@@ -751,7 +769,7 @@ msgid "Max"
 msgstr "Max."
 
 #: src/gui/buysell.cpp:37 src/gui/buysell.cpp:46
-#: src/gui/inventorywindow.cpp:112
+#: src/gui/inventorywindow.cpp:134
 msgid "Shop"
 msgstr "Magasin"
 
@@ -828,8 +846,13 @@ msgid "The new password needs to be less than %d characters long."
 msgstr "Le mot de passe ne doit pas être plus long que %d caractères."
 
 #: src/gui/changepassworddialog.cpp:131
+#, fuzzy
 msgid "The new password entries mismatch."
-msgstr "Les anciens mots de passe ne correspondent pas."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Les anciens mots de passe ne correspondent pas.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Les nouveaux mots de passe ne correspondent pas."
 
 #: src/gui/charcreatedialog.cpp:53
 msgid "Create Character"
@@ -918,7 +941,7 @@ msgstr "Se désinscrire"
 msgid "Change Email"
 msgstr "Modifier l'adresse email"
 
-#: src/gui/charselectdialog.cpp:375 src/gui/serverdialog.cpp:248
+#: src/gui/charselectdialog.cpp:375 src/gui/serverdialog.cpp:252
 #: src/gui/setup_players.cpp:242 src/gui/shopwindow.cpp:117
 #: src/gui/shopwindow.cpp:120 src/gui/textcommandeditor.cpp:234
 msgid "Delete"
@@ -1162,8 +1185,8 @@ msgstr "Ok"
 msgid "Equipment"
 msgstr "Équipement"
 
-#: src/gui/equipmentwindow.cpp:91 src/gui/inventorywindow.cpp:96
-#: src/gui/inventorywindow.cpp:393 src/gui/inventorywindow.cpp:402
+#: src/gui/equipmentwindow.cpp:91 src/gui/inventorywindow.cpp:118
+#: src/gui/inventorywindow.cpp:443 src/gui/inventorywindow.cpp:452
 #: src/gui/popupmenu.cpp:1070 src/gui/popupmenu.cpp:1169
 #: src/gui/popupmenu.cpp:1209
 msgid "Unequip"
@@ -1173,67 +1196,76 @@ msgstr "Retirer"
 msgid "Help"
 msgstr "Aide"
 
-#: src/gui/help.cpp:52 src/gui/inventorywindow.cpp:135
+#: src/gui/help.cpp:52 src/gui/inventorywindow.cpp:163
 #: src/gui/npcdialog.cpp:48 src/gui/shopwindow.cpp:108
 msgid "Close"
 msgstr "Fermer"
 
-#: src/gui/inventorywindow.cpp:62 src/gui/windowmenu.cpp:72
+#: src/gui/inventorywindow.cpp:65 src/gui/windowmenu.cpp:72
 msgid "Inventory"
 msgstr "Inventaire"
 
-#: src/gui/inventorywindow.cpp:62
+#: src/gui/inventorywindow.cpp:65
 msgid "Storage"
 msgstr "Stockage"
 
-#: src/gui/inventorywindow.cpp:89
+#: src/gui/inventorywindow.cpp:92
 msgid "Slots:"
 msgstr "Cases :"
 
-#: src/gui/inventorywindow.cpp:94 src/gui/inventorywindow.cpp:395
-#: src/gui/inventorywindow.cpp:404 src/gui/popupmenu.cpp:1072
+#: src/gui/inventorywindow.cpp:103
+msgid "Filter:"
+msgstr ""
+
+#: src/gui/inventorywindow.cpp:104
+#, fuzzy
+msgid "Sort:"
+msgstr "Port :"
+
+#: src/gui/inventorywindow.cpp:116 src/gui/inventorywindow.cpp:445
+#: src/gui/inventorywindow.cpp:454 src/gui/popupmenu.cpp:1072
 #: src/gui/popupmenu.cpp:1171 src/gui/popupmenu.cpp:1211
 msgid "Equip"
 msgstr "Équiper"
 
-#: src/gui/inventorywindow.cpp:95 src/gui/inventorywindow.cpp:396
-#: src/gui/inventorywindow.cpp:400 src/gui/popupmenu.cpp:1075
+#: src/gui/inventorywindow.cpp:117 src/gui/inventorywindow.cpp:446
+#: src/gui/inventorywindow.cpp:450 src/gui/popupmenu.cpp:1075
 #: src/gui/popupmenu.cpp:1144 src/gui/popupmenu.cpp:1175
 #: src/gui/popupmenu.cpp:1214
 msgid "Use"
 msgstr "Utiliser"
 
-#: src/gui/inventorywindow.cpp:109 src/gui/inventorywindow.cpp:499
+#: src/gui/inventorywindow.cpp:131 src/gui/inventorywindow.cpp:549
 #: src/gui/popupmenu.cpp:1078 src/gui/popupmenu.cpp:1179
 #: src/gui/popupmenu.cpp:1217
 msgid "Drop..."
 msgstr "Jeter..."
 
-#: src/gui/inventorywindow.cpp:110 src/gui/popupmenu.cpp:1083
+#: src/gui/inventorywindow.cpp:132 src/gui/popupmenu.cpp:1083
 #: src/gui/popupmenu.cpp:1184 src/gui/popupmenu.cpp:1222
 msgid "Split"
 msgstr "Partager"
 
-#: src/gui/inventorywindow.cpp:111 src/gui/outfitwindow.cpp:56
+#: src/gui/inventorywindow.cpp:133 src/gui/outfitwindow.cpp:56
 #: src/gui/popupmenu.cpp:409
 msgid "Outfits"
 msgstr "Tenues"
 
-#: src/gui/inventorywindow.cpp:114
+#: src/gui/inventorywindow.cpp:136
 msgid "Weight:"
 msgstr "Poids :"
 
-#: src/gui/inventorywindow.cpp:133 src/gui/inventorywindow.cpp:490
+#: src/gui/inventorywindow.cpp:161 src/gui/inventorywindow.cpp:540
 #: src/gui/popupmenu.cpp:1087 src/gui/popupmenu.cpp:1187
 #: src/gui/popupmenu.cpp:1225 src/gui/setup.cpp:65
 msgid "Store"
 msgstr "Entreposer"
 
-#: src/gui/inventorywindow.cpp:134 src/gui/popupmenu.cpp:1106
+#: src/gui/inventorywindow.cpp:162 src/gui/popupmenu.cpp:1106
 msgid "Retrieve"
 msgstr "Récupérer"
 
-#: src/gui/inventorywindow.cpp:501 src/gui/popupmenu.cpp:1080
+#: src/gui/inventorywindow.cpp:551 src/gui/popupmenu.cpp:1080
 #: src/gui/popupmenu.cpp:1181 src/gui/popupmenu.cpp:1219
 #: src/gui/windowmenu.cpp:91
 msgid "Drop"
@@ -1421,7 +1453,7 @@ msgstr ""
 msgid "Login"
 msgstr "Connexion"
 
-#: src/gui/login.cpp:87 src/gui/serverdialog.cpp:221
+#: src/gui/login.cpp:87 src/gui/serverdialog.cpp:222
 #: src/gui/widgets/chattab.cpp:166
 msgid "Server:"
 msgstr "Serveur :"
@@ -1840,52 +1872,56 @@ msgstr "Les deux mots de passe sont différents"
 msgid "Choose Your Server"
 msgstr "Choisissez le serveur"
 
-#: src/gui/serverdialog.cpp:222
+#: src/gui/serverdialog.cpp:223
 msgid "Port:"
 msgstr "Port :"
 
-#: src/gui/serverdialog.cpp:223
+#: src/gui/serverdialog.cpp:224
 msgid "Server type:"
 msgstr "Type de Serveur :"
 
-#: src/gui/serverdialog.cpp:245
+#: src/gui/serverdialog.cpp:227
+msgid "Use same ip for game sub servers"
+msgstr ""
+
+#: src/gui/serverdialog.cpp:249
 msgid "Load"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:246
+#: src/gui/serverdialog.cpp:250
 msgid "Connect"
 msgstr "Connexion..."
 
-#: src/gui/serverdialog.cpp:247
+#: src/gui/serverdialog.cpp:251
 msgid "Custom Server"
 msgstr "Serveur personnalisé"
 
-#: src/gui/serverdialog.cpp:351
+#: src/gui/serverdialog.cpp:356
 msgid "Please type both the address and the port of a server."
 msgstr "Veuillez entrer l'adresse et le port du serveur."
 
-#: src/gui/serverdialog.cpp:482
+#: src/gui/serverdialog.cpp:488
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Téléchargement de la liste des serveurs...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:488
+#: src/gui/serverdialog.cpp:494
 msgid "Waiting for server..."
 msgstr "En attente du serveur..."
 
-#: src/gui/serverdialog.cpp:492
+#: src/gui/serverdialog.cpp:498
 msgid "Preparing download"
 msgstr "Préparation du téléchargement"
 
-#: src/gui/serverdialog.cpp:496
+#: src/gui/serverdialog.cpp:502
 msgid "Error retreiving server list!"
 msgstr "Erreur lors du téléchargement de la liste !"
 
-#: src/gui/serverdialog.cpp:593
+#: src/gui/serverdialog.cpp:599
 msgid "requires a newer version"
 msgstr "requiert une nouvelle version"
 
-#: src/gui/serverdialog.cpp:595
+#: src/gui/serverdialog.cpp:601
 #, c-format
 msgid "requires v%s"
 msgstr "requiert la v%s"
@@ -2301,7 +2337,11 @@ msgstr "Redémarrez le jeu pour que les changements soient appliqués."
 #: src/gui/setup_video.cpp:143
 #, fuzzy
 msgid "Tiny (10)"
-msgstr "fin"
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"fin\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Fin"
 
 #: src/gui/setup_video.cpp:144
 #, fuzzy
@@ -2533,9 +2573,14 @@ msgid "Screen Resolution Changed"
 msgstr "Résolution de l'écran modifiée"
 
 #: src/gui/setup_video.cpp:716
+#, fuzzy
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
 "Certaines fenêtre pourraient avoir été recentrée pour correspondre à la "
+"nouvelle résolution.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Certaines fenêtre pourraient avoir été recentrées pour correspondre à la "
 "nouvelle résolution."
 
 #: src/gui/setup_video.cpp:750
@@ -2740,10 +2785,15 @@ msgid "Choose your guild's name."
 msgstr "Choisissez le nom de la guilde."
 
 #: src/gui/socialwindow.cpp:1108
+#, fuzzy
 msgid "Received guild request, but one already exists."
 msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
 "Vous avez reçu une demande pour rejoindre une guilde, mais il en existe déjà "
-"une autre."
+"une autre.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Vous avez reçu une demande pour rejoindre une guilde, mais il en existe déjà "
+"une."
 
 #: src/gui/socialwindow.cpp:1114
 #, c-format
@@ -3548,8 +3598,13 @@ msgid "Skill Window"
 msgstr "Fenêtre de compétences"
 
 #: src/keyboardconfig.cpp:127
+#, fuzzy
 msgid "Minimap Window"
-msgstr "Fenêtre du plan"
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Fenêtre du plan\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Fenêtre du miniplan"
 
 #: src/keyboardconfig.cpp:129
 msgid "Chat Window"
@@ -3838,7 +3893,7 @@ msgstr[1] "Vous avez ramassé %d [@@%d|%s@@]."
 msgid "Away"
 msgstr "Inactif"
 
-#: src/localplayer.cpp:3617
+#: src/localplayer.cpp:3618
 #, fuzzy
 msgid "You see "
 msgstr "Vous recevez %s"
@@ -3997,29 +4052,29 @@ msgstr "Volonté"
 msgid "Willpower %+.1f"
 msgstr "Volonté %+d"
 
-#: src/net/manaserv/beinghandler.cpp:314 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:314 src/net/tmwa/playerhandler.cpp:105
 msgid "You are dead."
 msgstr "Vous êtes mort."
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:105
+#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:106
 msgid "We regret to inform you that your character was killed in battle."
 msgstr ""
 "Nous avons le regret de vous informer que votre personnage est mort sur le "
 "champ de bataille."
 
-#: src/net/manaserv/beinghandler.cpp:317 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:317 src/net/tmwa/playerhandler.cpp:108
 msgid "You are not that alive anymore."
 msgstr "Vous n'êtes plus vraiment en vie."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:108
+#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:109
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "Les mains gelées de la faucheuse viennent réclamer votre âme."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:109
+#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:110
 msgid "Game Over!"
 msgstr "Fin de la partie !"
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:111
+#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:112
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4027,7 +4082,7 @@ msgstr ""
 "Non, les  enfants. Ton personnage n'est pas vraiment mort... Il... enfin,.. "
 "il... est parti dans un monde meilleur."
 
-#: src/net/manaserv/beinghandler.cpp:322 src/net/tmwa/playerhandler.cpp:113
+#: src/net/manaserv/beinghandler.cpp:322 src/net/tmwa/playerhandler.cpp:114
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
@@ -4035,27 +4090,27 @@ msgstr ""
 "Votre tentative de casser l'arme de votre ennemi en la frappant avec votre "
 "gorge a échoué."
 
-#: src/net/manaserv/beinghandler.cpp:324 src/net/tmwa/playerhandler.cpp:115
+#: src/net/manaserv/beinghandler.cpp:324 src/net/tmwa/playerhandler.cpp:116
 msgid "I guess this did not run too well."
 msgstr "J'ai la sensation que cela ne s'est pas aussi bien passé que prévu."
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:117
+#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:118
 msgid "Do you want your possessions identified?"
 msgstr "Voulez-vous que vos biens soient identifiés ?"
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:119
+#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:120
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Tristement, aucune trace de vous ne fut jamais retrouvée..."
 
-#: src/net/manaserv/beinghandler.cpp:328 src/net/tmwa/playerhandler.cpp:121
+#: src/net/manaserv/beinghandler.cpp:328 src/net/tmwa/playerhandler.cpp:122
 msgid "Annihilated."
 msgstr "Vaporisé."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:123
+#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:124
 msgid "Looks like you got your head handed to you."
 msgstr "Il semble que l'on vous ait rendu votre tête."
 
-#: src/net/manaserv/beinghandler.cpp:331 src/net/tmwa/playerhandler.cpp:125
+#: src/net/manaserv/beinghandler.cpp:331 src/net/tmwa/playerhandler.cpp:126
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -4063,8 +4118,13 @@ msgstr ""
 "autre."
 
 #: src/net/manaserv/beinghandler.cpp:336
+#, fuzzy
 msgid "Press OK to respawn."
-msgstr " Cliquer sur OK pour ressusciter"
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+" Cliquer sur OK pour ressusciter\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Cliquer sur OK pour ressusciter"
 
 #: src/net/manaserv/beinghandler.cpp:337
 msgid "You Died"
@@ -4119,11 +4179,11 @@ msgstr "Nom invalide."
 #: src/net/manaserv/charhandler.cpp:180 src/net/manaserv/loginhandler.cpp:98
 #: src/net/manaserv/loginhandler.cpp:130 src/net/manaserv/loginhandler.cpp:166
 #: src/net/manaserv/loginhandler.cpp:286 src/net/manaserv/loginhandler.cpp:323
-#: src/net/tmwa/loginhandler.cpp:99 src/net/tmwa/loginhandler.cpp:187
+#: src/net/tmwa/loginhandler.cpp:99 src/net/tmwa/loginhandler.cpp:190
 msgid "Unknown error."
 msgstr "Erreur inconnue."
 
-#: src/net/manaserv/charhandler.cpp:209 src/net/tmwa/charserverhandler.cpp:149
+#: src/net/manaserv/charhandler.cpp:209 src/net/tmwa/charserverhandler.cpp:172
 msgid "Info"
 msgstr "Informations"
 
@@ -4290,13 +4350,22 @@ msgstr ""
 "incorrecte."
 
 #: src/net/manaserv/partyhandler.cpp:89
+#, fuzzy
 msgid "Joined party."
-msgstr "Groupe rejoind."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Groupe rejoind.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Groupe rejoint."
 
 #: src/net/manaserv/partyhandler.cpp:107
-#, c-format
+#, fuzzy, c-format
 msgid "%s joined the party."
-msgstr "%s a rejoind le groupe."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"%s a rejoind le groupe.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"%s a rejoint le groupe."
 
 #: src/net/manaserv/partyhandler.cpp:125
 #, c-format
@@ -4349,61 +4418,99 @@ msgstr "Merci pour votre achat."
 msgid "Unable to buy."
 msgstr "Impossible d'acheter."
 
-#: src/net/tmwa/buysellhandler.cpp:143
+#: src/net/tmwa/buysellhandler.cpp:145
 msgid "Thanks for selling."
 msgstr "Merci pour votre vente."
 
-#: src/net/tmwa/buysellhandler.cpp:145
+#: src/net/tmwa/buysellhandler.cpp:149
 msgid "Unable to sell."
 msgstr "Impossible de vendre."
 
-#: src/net/tmwa/charserverhandler.cpp:106
+#: src/net/tmwa/buysellhandler.cpp:152
+#, fuzzy
+msgid "Unable to sell while trading."
+msgstr "Impossible de vendre."
+
+#: src/net/tmwa/buysellhandler.cpp:155
+#, fuzzy
+msgid "Unable to sell unsellable item."
+msgstr "Impossible de ramasser l'objet."
+
+#: src/net/tmwa/charserverhandler.cpp:109
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr "Accès refusé. Il y a probablement trop de joueurs sur le serveur."
 
-#: src/net/tmwa/charserverhandler.cpp:110
-msgid "Cannot use this ID."
-msgstr "Impossible d'utiliser cet Id."
-
 #: src/net/tmwa/charserverhandler.cpp:113
-msgid "Unknown char-server failure."
-msgstr "Erreur inconnue provenant du serveur de personnages"
+#, fuzzy
+msgid "Cannot use this ID."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Impossible d'utiliser cet Id.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Impossible d'utiliser cette Id."
 
-#: src/net/tmwa/charserverhandler.cpp:137
+#: src/net/tmwa/charserverhandler.cpp:116
+#, fuzzy
+msgid "Unknown char-server failure."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Erreur inconnue provenant du serveur de personnages\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Erreur inconnue provenant du serveur de personnages."
+
+#: src/net/tmwa/charserverhandler.cpp:145
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
 "Impossible de créer ce personnage. Il est probable que ce nom soit déjà "
 "utilisé."
 
-#: src/net/tmwa/charserverhandler.cpp:149
+#: src/net/tmwa/charserverhandler.cpp:149 src/net/tmwa/loginhandler.cpp:187
+#, fuzzy
+msgid "Wrong name."
+msgstr "Mauvais jeton de sécurité."
+
+#: src/net/tmwa/charserverhandler.cpp:152
+msgid "Incorrect stats."
+msgstr ""
+
+#: src/net/tmwa/charserverhandler.cpp:155
+msgid "Incorrect hair."
+msgstr ""
+
+#: src/net/tmwa/charserverhandler.cpp:158
+#, fuzzy
+msgid "Incorrect slot."
+msgstr "Pas d'emplacement vide."
+
+#: src/net/tmwa/charserverhandler.cpp:172
 msgid "Character deleted."
 msgstr "Personnage supprimé."
 
-#: src/net/tmwa/charserverhandler.cpp:154
+#: src/net/tmwa/charserverhandler.cpp:177
 msgid "Failed to delete character."
 msgstr "La suppresion du personnage n'a pu s\"effectuer."
 
-#: src/net/tmwa/charserverhandler.cpp:286
+#: src/net/tmwa/charserverhandler.cpp:317
 msgid "Strength:"
 msgstr "Force :"
 
-#: src/net/tmwa/charserverhandler.cpp:287
+#: src/net/tmwa/charserverhandler.cpp:318
 msgid "Agility:"
 msgstr "Agilité :"
 
-#: src/net/tmwa/charserverhandler.cpp:288
+#: src/net/tmwa/charserverhandler.cpp:319
 msgid "Vitality:"
 msgstr "Vitalité :"
 
-#: src/net/tmwa/charserverhandler.cpp:289
+#: src/net/tmwa/charserverhandler.cpp:320
 msgid "Intelligence:"
 msgstr "Intelligence :"
 
-#: src/net/tmwa/charserverhandler.cpp:290
+#: src/net/tmwa/charserverhandler.cpp:321
 msgid "Dexterity:"
 msgstr "Dextérité :"
 
-#: src/net/tmwa/charserverhandler.cpp:291
+#: src/net/tmwa/charserverhandler.cpp:322
 msgid "Luck:"
 msgstr "Chance :"
 
@@ -4669,7 +4776,11 @@ msgstr "Réponse d'invitation à la guilde inconnue."
 #: src/net/tmwa/guildhandler.cpp:475
 #, fuzzy
 msgid "You have left the guild."
-msgstr "vous avez quitté le groupe."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"vous avez quitté le groupe.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Vous avez quitté le groupe."
 
 #: src/net/tmwa/guildhandler.cpp:489
 #, fuzzy, c-format
@@ -4794,11 +4905,11 @@ msgstr "Partage d'expérience impossible."
 msgid "Experience sharing unknown."
 msgstr "Paramètre de partage d'expérience inconnu."
 
-#: src/net/tmwa/inventoryhandler.cpp:334
+#: src/net/tmwa/inventoryhandler.cpp:343
 msgid "Failed to use item."
 msgstr "Impossible d'utiliser l'objet."
 
-#: src/net/tmwa/inventoryhandler.cpp:457
+#: src/net/tmwa/inventoryhandler.cpp:472
 msgid "Unable to equip."
 msgstr "Impossible d'équiper cet objet."
 
@@ -4834,13 +4945,17 @@ msgstr ""
 "contact avec l'équipe des GM."
 
 #: src/net/tmwa/loginhandler.cpp:177
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
 msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
 "Vous avez été banni temporairement du jeu depuis %s.\n"
-"Merci de contacter un MJ par le forum."
+"Merci de contacter un MJ par le forum.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Vous avez été banni temporairement du jeu depuis %s.\n"
+"Merci de contacter un GM par le forum."
 
 #: src/net/tmwa/loginhandler.cpp:184
 msgid "This user name is already taken."
@@ -4892,8 +5007,13 @@ msgid "QQQ Unknown invite response for %s."
 msgstr "Réponse d'invitation de %s inconnue."
 
 #: src/net/tmwa/partyhandler.cpp:333
+#, fuzzy
 msgid "You have left the party."
-msgstr "vous avez quitté le groupe."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"vous avez quitté le groupe.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Vous avez quitté le groupe."
 
 #: src/net/tmwa/partyhandler.cpp:345
 #, c-format
@@ -4910,53 +5030,58 @@ msgstr "Un membre inconnu a essayé de dire : %s"
 msgid "%s is not in your party!"
 msgstr "%s n'est pas membre de votre groupe !"
 
-#: src/net/tmwa/playerhandler.cpp:110
+#: src/net/tmwa/playerhandler.cpp:111
+#, fuzzy
 msgid "Insert coin to continue."
-msgstr "veuillez insérer une pièce pour continuer."
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"veuillez insérer une pièce pour continuer.\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Veuillez insérer une pièce pour continuer."
 
-#: src/net/tmwa/playerhandler.cpp:128
+#: src/net/tmwa/playerhandler.cpp:129
 msgid "You're not dead yet. You're just resting."
 msgstr "Vous n'êtes pas encore mort. Vous vous reposez seulement."
 
-#: src/net/tmwa/playerhandler.cpp:129
+#: src/net/tmwa/playerhandler.cpp:130
 msgid "You are no more."
 msgstr "Vous n'existez plus."
 
-#: src/net/tmwa/playerhandler.cpp:130
+#: src/net/tmwa/playerhandler.cpp:131
 msgid "You have ceased to be."
 msgstr "Vous avez cessez d'exister."
 
-#: src/net/tmwa/playerhandler.cpp:131
+#: src/net/tmwa/playerhandler.cpp:132
 msgid "You've expired and gone to meet your maker."
 msgstr "Tu es fini. Tu es parti retrouver ton créateur."
 
-#: src/net/tmwa/playerhandler.cpp:132
+#: src/net/tmwa/playerhandler.cpp:133
 msgid "You're a stiff."
 msgstr "Tu es un dur."
 
-#: src/net/tmwa/playerhandler.cpp:133
+#: src/net/tmwa/playerhandler.cpp:134
 msgid "Bereft of life, you rest in peace."
 msgstr "Privé de toute essence de vie, vous reposez en paix."
 
-#: src/net/tmwa/playerhandler.cpp:134
+#: src/net/tmwa/playerhandler.cpp:135
 msgid "If you weren't so animated, you'd be pushing up the daisies."
 msgstr ""
 "Si tu n'étais pas autant en forme, tu serais en train de manger les "
 "pissenlits par la racine."
 
-#: src/net/tmwa/playerhandler.cpp:135
+#: src/net/tmwa/playerhandler.cpp:136
 msgid "Your metabolic processes are now history."
 msgstr "Vos processus métaboliques appartiennent au passé maintenant."
 
-#: src/net/tmwa/playerhandler.cpp:136
+#: src/net/tmwa/playerhandler.cpp:137
 msgid "You're off the twig."
 msgstr "Tu es en dehors des clous"
 
-#: src/net/tmwa/playerhandler.cpp:137
+#: src/net/tmwa/playerhandler.cpp:138
 msgid "You've kicked the bucket."
 msgstr "Tu viens de toucher le fond."
 
-#: src/net/tmwa/playerhandler.cpp:138
+#: src/net/tmwa/playerhandler.cpp:139
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
@@ -4964,48 +5089,48 @@ msgstr ""
 "Vous êtes sorti de votre enveloppe charnelle et mortelle. Vous avez rejoint "
 "l'armée de l'ombre."
 
-#: src/net/tmwa/playerhandler.cpp:140
+#: src/net/tmwa/playerhandler.cpp:141
 msgid "You are an ex-player."
 msgstr "Tu n'es plus qu'un ancien joueur sans intérêt."
 
-#: src/net/tmwa/playerhandler.cpp:141
+#: src/net/tmwa/playerhandler.cpp:142
 msgid "You're pining for the fjords."
 msgstr "Tu reposes au fond de l'eau."
 
-#: src/net/tmwa/playerhandler.cpp:327 src/net/tmwa/playerhandler.cpp:336
-#: src/net/tmwa/playerhandler.cpp:415
+#: src/net/tmwa/playerhandler.cpp:330 src/net/tmwa/playerhandler.cpp:339
+#: src/net/tmwa/playerhandler.cpp:418
 msgid "Message"
 msgstr "Message"
 
-#: src/net/tmwa/playerhandler.cpp:328
+#: src/net/tmwa/playerhandler.cpp:331
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
 "en mesure de regagner vos points de vie."
 
-#: src/net/tmwa/playerhandler.cpp:337
+#: src/net/tmwa/playerhandler.cpp:340
 #, fuzzy
 msgid "You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
 "en mesure de regagner vos points de vie."
 
-#: src/net/tmwa/playerhandler.cpp:442
+#: src/net/tmwa/playerhandler.cpp:445
 #, c-format
 msgid "You picked up %s."
 msgstr "Vous avez ramassé  %s."
 
-#: src/net/tmwa/playerhandler.cpp:448
+#: src/net/tmwa/playerhandler.cpp:451
 #, fuzzy, c-format
 msgid "You spent %s."
 msgstr "Vous recevez %s"
 
-#: src/net/tmwa/playerhandler.cpp:493
+#: src/net/tmwa/playerhandler.cpp:496
 msgid "Cannot raise skill!"
 msgstr "Ne peut pas augmenter la capacité !"
 
-#: src/net/tmwa/playerhandler.cpp:613
+#: src/net/tmwa/playerhandler.cpp:616
 msgid "Equip arrows first."
 msgstr "Equiper en premier les flèches"
 
@@ -5034,8 +5159,13 @@ msgid "Cannot shout!"
 msgstr "Vous ne pouvez pas crier !"
 
 #: src/net/tmwa/specialhandler.cpp:177
+#, fuzzy
 msgid "You have not yet reached a high enough lvl!"
-msgstr "Vous n'avez pas encore atteind le niveau requis !"
+msgstr ""
+"#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Vous n'avez pas encore atteind le niveau requis !\n"
+"#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+"Vous n'avez pas encore atteint le niveau requis !"
 
 #: src/net/tmwa/specialhandler.cpp:181
 msgid "Insufficient HP!"
@@ -5158,32 +5288,32 @@ msgstr "Bulle flottante '...'"
 msgid "Floating bubble"
 msgstr "Bulle flottante"
 
-#: src/resources/beinginfo.cpp:32 src/resources/itemdb.cpp:210
+#: src/resources/beinginfo.cpp:32 src/resources/itemdb.cpp:223
 #: src/resources/monsterdb.cpp:78
 msgid "unnamed"
 msgstr "anonyme"
 
-#: src/resources/itemdb.cpp:55
+#: src/resources/itemdb.cpp:57
 #, c-format
 msgid "Attack %+d"
 msgstr "Attaque %+d"
 
-#: src/resources/itemdb.cpp:56
+#: src/resources/itemdb.cpp:58
 #, c-format
 msgid "Defense %+d"
 msgstr "Défense %+d"
 
-#: src/resources/itemdb.cpp:57
+#: src/resources/itemdb.cpp:59
 #, c-format
 msgid "HP %+d"
 msgstr "PV %+d"
 
-#: src/resources/itemdb.cpp:58
+#: src/resources/itemdb.cpp:60
 #, c-format
 msgid "MP %+d"
 msgstr "PM %+d"
 
-#: src/resources/itemdb.cpp:155
+#: src/resources/itemdb.cpp:152
 msgid "Unknown item"
 msgstr "Objet inconnu"
 
@@ -5360,8 +5490,13 @@ msgstr "Objet inconnu"
 #~ msgid "Unable to unequip."
 #~ msgstr "Impossible de deséquiper cet objet."
 
+#, fuzzy
 #~ msgid "Inviting failed, because you can't see a player called %s."
-#~ msgstr "L'invitation à échouée, le joueur %s n'est pas à portée de vue."
+#~ msgstr ""
+#~ "#-#-#-#-#  fr.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+#~ "L'invitation à échouée, le joueur %s n'est pas à portée de vue.\n"
+#~ "#-#-#-#-#  po_fr rewiew1.po (The Mana World 0.1.0)  #-#-#-#-#\n"
+#~ "L'invitation a échouée, le joueur %s n'est pas à portée de vue."
 
 #~ msgid "You can only inivte when you are in a party!"
 #~ msgstr "Vous ne pouvez inviter que lorsque vous faites partie d'un groupe."
