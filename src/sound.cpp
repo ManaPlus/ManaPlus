@@ -262,25 +262,6 @@ void Sound::fadeOutMusic(int ms)
     }
 }
 
-void Sound::playSfx(const std::string &path)
-{
-    if (!mInstalled || path.empty() || !mPlayBattle)
-        return;
-
-    std::string tmpPath;
-    if (!path.find("sfx/"))
-        tmpPath = path;
-    else
-        tmpPath = paths.getValue("sfx", "sfx/") + path;
-    ResourceManager *resman = ResourceManager::getInstance();
-    SoundEffect *sample = resman->getSoundEffect(tmpPath);
-    if (sample)
-    {
-        logger->log("Sound::playSfx() Playing: %s", path.c_str());
-        sample->play(0, 120);
-    }
-}
-
 void Sound::playSfx(const std::string &path, int x, int y)
 {
     if (!mInstalled || path.empty() || !mPlayBattle)
@@ -297,7 +278,7 @@ void Sound::playSfx(const std::string &path, int x, int y)
     {
         logger->log("Sound::playSfx() Playing: %s", path.c_str());
         int vol = 120;
-        if (player_node)
+        if (player_node && (x > 0 || y > 0))
         {
             int dx = player_node->getTileX() - x;
             int dy = player_node->getTileY() - y;
@@ -306,6 +287,9 @@ void Sound::playSfx(const std::string &path, int x, int y)
             if (dy < 0)
                 dy = -dy;
             int dist = dx > dy ? dx : dy;
+            if (dist * 8 > vol)
+                return;
+
             vol -= dist * 8;
         }
         sample->play(0, vol);

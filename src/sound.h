@@ -91,9 +91,7 @@ class Sound : public ConfigListener
          *
          * @param path The resource path to the sound file.
          */
-        void playSfx(const std::string &path);
-
-        void playSfx(const std::string &path, int x, int y);
+        void playSfx(const std::string &path, int x = 0, int y = 0);
 
         /**
          * Plays an item for gui.
