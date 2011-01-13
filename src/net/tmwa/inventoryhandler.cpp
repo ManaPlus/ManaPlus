@@ -426,6 +426,11 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_EQUIPMENT:
             msg.readInt16(); // length
+            if (!PlayerInfo::getEquipment()->getBackend())
+            {   // look like SMSG_PLAYER_INVENTORY was not received
+                mEquips.clear();
+                PlayerInfo::getEquipment()->setBackend(&mEquips);
+            }
             number = (msg.getLength() - 4) / 20;
 
             for (int loop = 0; loop < number; loop++)
