@@ -468,13 +468,13 @@ void ItemContainer::updateMatrix()
             break;
     }
 
-    for (unsigned idx = 0; idx < sortedItems.size(); idx ++)
+    std::vector<ItemIdPair*>::iterator iter;
+    for (iter = sortedItems.begin(); iter != sortedItems.end(); ++iter)
     {
-        int itemIndex = idx;
         if (j >= mGridRows)
             break;
 
-        mShowMatrix[j * mGridColumns + i] = sortedItems[itemIndex]->mId;
+        mShowMatrix[j * mGridColumns + i] = (*iter)->mId;
 
         i ++;
         if (i >= mGridColumns)
