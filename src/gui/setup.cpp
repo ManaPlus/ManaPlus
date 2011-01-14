@@ -149,7 +149,7 @@ void Setup::action(const gcn::ActionEvent &event)
             return;
 
         for (std::list<Window*>::iterator it = mWindowsToReset.begin();
-             it != mWindowsToReset.end(); it++)
+             it != mWindowsToReset.end(); ++it)
         {
             (*it)->resetToDefaultSize();
         }
@@ -164,7 +164,7 @@ void Setup::setInGame(bool inGame)
 void Setup::externalUpdate()
 {
     for (std::list<SetupTab*>::iterator it = mTabs.begin();
-         it != mTabs.end(); it++)
+         it != mTabs.end(); ++it)
     {
         (*it)->externalUpdated();
     }

@@ -107,7 +107,7 @@ TrueTypeFont::TrueTypeFont(const std::string &filename, int size, int style) :
     if (!fontCounter)
     {
         strBuf = new char[65535];
-        memset(strBuf, 65535, 0);
+        memset(strBuf, 0, 65535);
     }
 
     ++fontCounter;
@@ -280,7 +280,7 @@ int TrueTypeFont::getWidth(const std::string &text) const
     int cnt = 0;
 #endif
 
-    for (CacheIterator i = cache->begin(); i != cache->end(); i++)
+    for (CacheIterator i = cache->begin(); i != cache->end(); ++i)
     {
         if (i->text == text)
         {

@@ -65,7 +65,7 @@ void FlowContainer::widgetResized(const gcn::Event &event _UNUSED_)
     int i = 0;
     height = 0;
     for (WidgetList::iterator it = mWidgets.begin();
-         it != mWidgets.end(); it++)
+         it != mWidgets.end(); ++it)
     {
         int x = i % mGridWidth * mBoxWidth;
         (*it)->setPosition(x, height);

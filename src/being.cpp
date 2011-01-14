@@ -1915,12 +1915,12 @@ void Being::recalcSpritesOrder()
     }
 //    logger->log("preparation end");
 
-    int lastRemap = 0;
+    int lastRemap = -1;
     int cnt = 0;
 
     while (cnt < 15 && lastRemap >= 0)
     {
-        int lastRemap = -1;
+        lastRemap = -1;
         cnt ++;
 //        logger->log("iteration");
 
@@ -1968,7 +1968,7 @@ void Being::recalcSpritesOrder()
                     searchSlotValueItr(it, idx, slotRemap, reorder);
                     if (it != slotRemap.end())
                     {
-                        it ++;
+                        ++ it;
                         if (it != slotRemap.end())
                             slotRemap.insert(it, val);
                         else

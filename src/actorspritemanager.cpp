@@ -44,7 +44,7 @@
 #include <vector>
 
 #define for_actors ActorSpritesConstIterator it, it_end; \
-for (it = mActors.begin(), it_end = mActors.end() ; it != it_end; it++)
+for (it = mActors.begin(), it_end = mActors.end() ; it != it_end; ++it)
 
 class FindBeingFunctor
 {
@@ -268,6 +268,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
         return NULL;
 
     bool targetDead = mTargetDeadPlayers;
+    const int xtol = 16;
+    const int uptol = 32;
+
     for_actors
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
@@ -277,9 +280,6 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
         }
 
         Being *being = static_cast<Being*>(*it);
-
-        int xtol = 16;
-        int uptol = 32;
 
         if ((being->isAlive()
             || (targetDead && being->getType() == Being::PLAYER))
@@ -306,6 +306,9 @@ void ActorSpriteManager::findBeingsByPixel(std::list<Being*> &beings,
         return;
 
     bool targetDead = mTargetDeadPlayers;
+    const int xtol = 16;
+    const int uptol = 32;
+
     for_actors
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
@@ -315,9 +318,6 @@ void ActorSpriteManager::findBeingsByPixel(std::list<Being*> &beings,
         }
 
         Being *being = static_cast<Being*>(*it);
-
-        int xtol = 16;
-        int uptol = 32;
 
         if ((being->isAlive()
             || (targetDead && being->getType() == Being::PLAYER))
@@ -649,7 +649,6 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         return 0;
 
     Being *closestBeing = 0;
-    int dist = 0;
 
     maxDist = maxDist * maxDist;
 
@@ -708,6 +707,8 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
     }
     else
     {
+        int dist = 0;
+
         for (ActorSprites::const_iterator i = mActors.begin(),
              i_end = mActors.end();
              i != i_end; ++i)
@@ -859,7 +860,7 @@ bool ActorSpriteManager::hasActorSprite(ActorSprite *actor) const
 void ActorSpriteManager::addBlock(Uint32 id)
 {
     bool alreadyBlocked(false);
-    for (int i = 0; i < (int)blockedBeings.size(); i++)
+    for (int i = 0; i < (int)blockedBeings.size(); ++i)
     {
         if (id == blockedBeings.at(i))
         {
@@ -887,7 +888,7 @@ void ActorSpriteManager::deleteBlock(Uint32 id)
 bool ActorSpriteManager::isBlocked(Uint32 id)
 {
     bool blocked(false);
-    for (int i = 0; i < (int)blockedBeings.size(); i++)
+    for (int i = 0; i < (int)blockedBeings.size(); ++i)
     {
         if (id == blockedBeings.at(i))
         {

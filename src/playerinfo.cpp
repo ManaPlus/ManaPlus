@@ -249,7 +249,7 @@ void logic()
     {
         mSpecialRechargeUpdateNeeded = 0;
         for (SpecialsMap::iterator it = mSpecials.begin(),
-             it_end = mSpecials.end(); it != it_end; it++)
+             it_end = mSpecials.end(); it != it_end; ++it)
         {
             it->second.currentMana += it->second.recharge;
             if (it->second.currentMana > it->second.neededMana)

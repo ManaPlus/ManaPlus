@@ -158,7 +158,7 @@ void EmoteDB::unload()
 {
     for (EmoteInfos::const_iterator i = mEmoteInfos.begin();
          i != mEmoteInfos.end();
-         i++)
+         ++i)
     {
         while (!i->second->sprites.empty())
         {

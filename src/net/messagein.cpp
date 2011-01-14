@@ -37,6 +37,7 @@ namespace Net
 MessageIn::MessageIn(const char *data, unsigned int length):
     mData(data),
     mLength(length),
+    mId(0),
     mPos(0)
 {
     PacketCounters::incInPackets();

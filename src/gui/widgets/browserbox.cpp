@@ -178,7 +178,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         int hyphenWidth = font->getWidth(hyphen);
         int x = 0;
 
-        for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); i++)
+        for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); ++i)
         {
             std::string row = *i;
             for (unsigned int j = 0; j < row.size(); j++)
@@ -316,7 +316,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
     for (LinePartIterator i = mLineParts.begin();
         i != mLineParts.end();
-        i ++)
+        ++i)
     {
         const LinePart &part = *i;
         if (part.mY + 50 < mYStart)
@@ -347,7 +347,7 @@ int BrowserBox::calcHeight()
 
     mLineParts.clear();
 
-    for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); i++)
+    for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); ++i)
     {
         const std::string row = *(i);
         bool wrapped = false;

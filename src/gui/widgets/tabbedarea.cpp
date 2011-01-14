@@ -121,7 +121,7 @@ void TabbedArea::removeTab(Tab *tab)
     }
 
     TabContainer::iterator iter;
-    for (iter = mTabs.begin(); iter != mTabs.end(); iter++)
+    for (iter = mTabs.begin(); iter != mTabs.end(); ++iter)
     {
         if (iter->first == tab)
         {
@@ -132,7 +132,7 @@ void TabbedArea::removeTab(Tab *tab)
     }
 
     std::vector<gcn::Tab*>::iterator iter2;
-    for (iter2 = mTabsToDelete.begin(); iter2 != mTabsToDelete.end(); iter2++)
+    for (iter2 = mTabsToDelete.begin(); iter2 != mTabsToDelete.end(); ++iter2)
     {
         if (*iter2 == tab)
         {

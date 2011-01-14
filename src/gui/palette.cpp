@@ -80,7 +80,7 @@ void Palette::advanceGradients()
     Palettes::iterator it = mInstances.begin();
     Palettes::iterator it_end = mInstances.end();
 
-    for (; it != it_end; it++)
+    for (; it != it_end; ++it)
         (*it)->advanceGradient();
 }
 

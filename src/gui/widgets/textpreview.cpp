@@ -34,7 +34,9 @@
 float TextPreview::mAlpha = 1.0;
 
 TextPreview::TextPreview(const std::string &text):
-    mText(text)
+    mText(text),
+    mShadow(false),
+    mOutline(false)
 {
     mTextAlpha = false;
     mFont = gui->getFont();

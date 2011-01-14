@@ -59,6 +59,7 @@ GameHandler::GameHandler()
     };
     handledMessages = _messages;
     gameHandler = this;
+    mCharID = 0;
 
     listen(CHANNEL_GAME);
 }

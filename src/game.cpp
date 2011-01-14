@@ -531,7 +531,7 @@ void Game::handleInput()
                 {
                     guiInput->pushInput(event);
                 }
-                catch (gcn::Exception e)
+                catch (const gcn::Exception &e)
                 {
                     const char* err = e.getMessage().c_str();
                     logger->log("Warning: guichan input exception: %s", err);
@@ -1076,7 +1076,7 @@ void Game::handleInput()
             {
                 guiInput->pushInput(event);
             }
-            catch (gcn::Exception e)
+            catch (const gcn::Exception &e)
             {
                 const char *err = e.getMessage().c_str();
                 logger->log("Warning: guichan input exception: %s", err);

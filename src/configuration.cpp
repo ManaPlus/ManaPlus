@@ -55,7 +55,7 @@ void Configuration::setValue(const std::string &key, const std::string &value)
     if (list != mListenerMap.end())
     {
         Listeners listeners = list->second;
-        for (ListenerIterator i = listeners.begin(); i != listeners.end(); i++)
+        for (ListenerIterator i = listeners.begin(); i != listeners.end(); ++i)
             (*i)->optionChanged(key);
     }
 }
@@ -114,7 +114,7 @@ void ConfigurationObject::deleteList(const std::string &name)
 {
     for (ConfigurationList::const_iterator
          it = mContainerOptions[name].begin();
-         it != mContainerOptions[name].end(); it++)
+         it != mContainerOptions[name].end(); ++it)
     {
         delete *it;
     }
@@ -126,7 +126,7 @@ void ConfigurationObject::clear()
 {
     for (std::map<std::string, ConfigurationList>::const_iterator
          it = mContainerOptions.begin();
-         it != mContainerOptions.end(); it++)
+         it != mContainerOptions.end(); ++it)
     {
         deleteList(it->first);
     }
@@ -143,7 +143,7 @@ void Configuration::cleanDefaults()
     if (mDefaultsData)
     {
         for (DefaultsData::const_iterator iter = mDefaultsData->begin();
-             iter != mDefaultsData->end(); iter++)
+             iter != mDefaultsData->end(); ++iter)
         {
             delete(iter->second);
         }
@@ -369,7 +369,7 @@ void ConfigurationObject::writeToXML(xmlTextWriterPtr writer)
 
     for (std::map<std::string, ConfigurationList>::const_iterator
          it = mContainerOptions.begin();
-         it != mContainerOptions.end(); it++)
+         it != mContainerOptions.end(); ++it)
     {
         const char *name = it->first.c_str();
 
@@ -378,7 +378,7 @@ void ConfigurationObject::writeToXML(xmlTextWriterPtr writer)
 
         // recurse on all elements
         for (ConfigurationList::const_iterator elt_it = it->second.begin();
-             elt_it != it->second.end(); elt_it++)
+             elt_it != it->second.end(); ++elt_it)
         {
             xmlTextWriterStartElement(writer, BAD_CAST name);
             (*elt_it)->writeToXML(writer);

@@ -85,7 +85,7 @@ void ParticleList::removeLocally(Particle *particle)
         }
         else
         {
-            it++;
+            ++it;
         }
     }
 }
@@ -93,7 +93,7 @@ void ParticleList::removeLocally(Particle *particle)
 void ParticleList::clearLocally()
 {
     for (std::list<Particle *>::iterator it = mElements.begin();
-         it != mElements.end(); it++)
+         it != mElements.end(); ++it)
     {
         (*it)->kill();
     }
@@ -116,7 +116,7 @@ void ParticleList::moveTo(float x, float y)
         }
         else
         {
-            it++;
+            ++it;
         }
     }
 }
@@ -172,7 +172,7 @@ void ParticleVector::moveTo(float x, float y)
     ParticleContainer::moveTo(x, y);
 
     for (std::vector<Particle *>::iterator it = mIndexedElements.begin();
-         it != mIndexedElements.end(); it++)
+         it != mIndexedElements.end(); ++it)
     {
         if (*it)
         {

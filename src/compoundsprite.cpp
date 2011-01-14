@@ -49,7 +49,7 @@ CompoundSprite::CompoundSprite():
 CompoundSprite::~CompoundSprite()
 {
     SpriteIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
         delete (*it);
 
     clear();
@@ -65,7 +65,7 @@ bool CompoundSprite::reset()
     bool ret = false;
 
     SpriteIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             ret |= (*it)->reset();
@@ -80,7 +80,7 @@ bool CompoundSprite::play(std::string action)
     bool ret = false;
 
     SpriteIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             ret |= (*it)->play(action);
@@ -95,7 +95,7 @@ bool CompoundSprite::update(int time)
     bool ret = false;
 
     SpriteIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             ret |= (*it)->update(time);
@@ -132,7 +132,7 @@ bool CompoundSprite::draw(Graphics* graphics, int posX, int posY) const
 void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
 {
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
         {
@@ -146,7 +146,7 @@ void CompoundSprite::drawSpritesSDL(Graphics* graphics,
                                     int posX, int posY) const
 {
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             (*it)->draw(graphics, posX, posY);
@@ -158,7 +158,7 @@ int CompoundSprite::getWidth() const
     Sprite *base = NULL;
 
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if ((base = (*it)))
             break;
@@ -175,7 +175,7 @@ int CompoundSprite::getHeight() const
     Sprite *base = NULL;
 
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if ((base = (*it)))
             break;
@@ -197,7 +197,7 @@ bool CompoundSprite::setDirection(SpriteDirection direction)
     bool ret = false;
 
     SpriteIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             ret |= (*it)->setDirection(direction);
@@ -218,7 +218,7 @@ int CompoundSprite::getNumberOfLayers() const
 unsigned int CompoundSprite::getCurrentFrame() const
 {
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             return (*it)->getCurrentFrame();
@@ -230,7 +230,7 @@ unsigned int CompoundSprite::getCurrentFrame() const
 unsigned int CompoundSprite::getFrameCount() const
 {
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             return (*it)->getFrameCount();
@@ -379,7 +379,7 @@ void CompoundSprite::redraw() const
 
 /*
     SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; it++)
+    for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
             (*it)->draw(graphics, posX, posY);

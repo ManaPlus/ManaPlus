@@ -46,7 +46,9 @@ ImageRect TextField::skin;
 TextField::TextField(const std::string &text, bool loseFocusOnTab,
                      gcn::ActionListener* listener, std::string eventId):
     gcn::TextField(text),
-    mNumeric(false)
+    mNumeric(false),
+    mMinimum(0),
+    mMaximum(0)
 {
     setFrameSize(2);
 

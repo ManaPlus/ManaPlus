@@ -183,7 +183,7 @@ unsigned long findI(std::string str, std::list<std::string> &list)
     str = toLower(str);
     unsigned long idx;
     for (std::list<std::string>::iterator i = list.begin();
-         i != list.end(); i++)
+         i != list.end(); ++i)
     {
         std::string subStr = toLower(*i);
         idx = str.find(subStr);
@@ -362,5 +362,5 @@ void replaceSpecialChars(std::string &text)
 std::string normalize(const std::string &name)
 {
     std::string normalized = name;
-    return toLower(trim(normalized));;
+    return toLower(trim(normalized));
 }

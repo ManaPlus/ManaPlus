@@ -540,7 +540,7 @@ void ChatWindow::doPresent()
     int playercount = 0;
 
     for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; it++)
+         it != it_end; ++it)
     {
         if ((*it)->getType() == ActorSprite::PLAYER)
         {
@@ -654,7 +654,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
              mCurHist != mHistory.begin() && !mHistory.empty())
     {
         // Move backward through the history
-        mCurHist--;
+        --mCurHist;
         mChatInput->setText(*mCurHist);
         mChatInput->setCaretPosition(static_cast<unsigned>(
                 mChatInput->getText().length()));

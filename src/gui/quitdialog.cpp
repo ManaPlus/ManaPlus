@@ -179,7 +179,7 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
     {
         std::vector<gcn::RadioButton*>::iterator it = mOptions.begin();
 
-        for (; it < mOptions.end(); it++)
+        for (; it < mOptions.end(); ++it)
         {
             if ((*it)->isSelected())
                 break;

@@ -372,9 +372,11 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
                 InventoryItems::iterator it = mInventoryItems.begin();
                 InventoryItems::iterator it_end = mInventoryItems.end();
-                for (; it != it_end; it++)
+                for (; it != it_end; ++it)
+                {
                     mStorage->setItem((*it).slot, (*it).id, (*it).quantity,
                                       (*it).equip);
+                }
                 mInventoryItems.clear();
 
                 if (!mStorageWindow)

@@ -395,7 +395,8 @@ void ServerDialog::action(const gcn::ActionEvent &event)
                     LoginDialog::savedPassword = "";
             }
 
-            config.setValue("usePersistentIP", mPersistentIPCheckBox->isSelected());
+            config.setValue("usePersistentIP",
+                mPersistentIPCheckBox->isSelected());
             Client::setState(STATE_CONNECT_SERVER);
         }
     }

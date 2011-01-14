@@ -36,7 +36,6 @@
 #include "utils/gettext.h"
 
 #define ACTION_SHOW_TAKEDDAMAGE "taked damage"
-#define ACTION_NO_RAIN "no rain"
 #define ACTION_ONLY_REACHABLE "only reachable"
 #define ACTION_ERRORS_IN_DEBUG "errors in debug"
 #define ACTION_HIGHLIGHT_PORTALS "highlight portals"
@@ -68,7 +67,6 @@
 Setup_Other::Setup_Other():
     mShowMonstersTakedDamage(config.getBoolValue("showMonstersTakedDamage")),
     mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
-    mErrorsInDebug(config.getBoolValue("errorsInDebug")),
     mHighlightPortals(config.getBoolValue("highlightMapPortals")),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
     mHighlightMonsterAttackRange(
@@ -89,7 +87,8 @@ Setup_Other::Setup_Other():
     mWarpParticle(config.getBoolValue("warpParticle")),
     mAutoShop(config.getBoolValue("autoShop")),
     mShowMobHP(config.getBoolValue("showMobHP")),
-    mShowOwnHP(config.getBoolValue("showOwnHP"))
+    mShowOwnHP(config.getBoolValue("showOwnHP")),
+    mEditDialog(0)
 {
     setName(_("Misc"));
 
@@ -409,7 +408,6 @@ void Setup_Other::apply()
 {
     config.setValue("showMonstersTakedDamage", mShowMonstersTakedDamage);
     config.setValue("targetOnlyReachable", mTargetOnlyReachable);
-    config.setValue("errorsInDebug", mErrorsInDebug);
     config.setValue("highlightMapPortals", mHighlightPortals);
     config.setValue("highlightAttackRange", mHighlightAttackRange);
     config.setValue("highlightMonsterAttackRange",

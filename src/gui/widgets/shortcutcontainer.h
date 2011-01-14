@@ -102,7 +102,6 @@ class ShortcutContainer : public gcn::Widget,
         int getIndexFromGrid(int pointX, int pointY) const;
 
         Image *mBackgroundImg;
-
         static float mAlpha;
 
         unsigned mMaxItems;

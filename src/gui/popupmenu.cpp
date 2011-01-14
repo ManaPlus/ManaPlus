@@ -260,7 +260,7 @@ void PopupMenu::showPopup(int x, int y, std::list<Being*> &beings)
     mBrowserBox->clearRows();
     mBrowserBox->addRow("Players");
     std::list<Being*>::iterator it, it_end;
-    for (it = beings.begin(), it_end = beings.end(); it != it_end; it++)
+    for (it = beings.begin(), it_end = beings.end(); it != it_end; ++it)
     {
         Being *being = *it;
         if (!being->getName().empty())

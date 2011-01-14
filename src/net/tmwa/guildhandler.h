@@ -76,7 +76,7 @@ class GuildHandler : public Net::GuildHandler, public MessageHandler
 
     private:
         // TmwAthena (and eAthena) only supports one guild per player
-        Guild *mGuild;
+//        Guild *mGuild;
 };
 
 }

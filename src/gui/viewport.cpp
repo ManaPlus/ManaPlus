@@ -230,7 +230,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
     // Draw player names, speech, and emotion sprite as needed
     const ActorSprites &actors = actorSpriteManager->getAll();
     for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; it++)
+         it != it_end; ++it)
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;

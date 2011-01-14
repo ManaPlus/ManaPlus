@@ -100,7 +100,7 @@ void TileAnimation::update(int ticks)
     if (img != mLastImage)
     {
         for (std::list<std::pair<MapLayer*, int> >::iterator i =
-             mAffected.begin(); i != mAffected.end(); i++)
+             mAffected.begin(); i != mAffected.end(); ++i)
         {
             i->first->setTile(i->second, img);
         }
@@ -200,7 +200,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
             while (ai != actors.end() && (*ai)->getPixelY() <= y32)
             {
                 (*ai)->draw(graphics, -scrollX, -scrollY);
-                ai++;
+                ++ai;
             }
         }
 
@@ -302,7 +302,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
         while (ai != actors.end())
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
-            ai++;
+            ++ai;
         }
         if (mHighlightAttackRange && player_node)
         {
@@ -608,7 +608,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                     || actor->getTileX() > endX || actor->getTileY() < startY
                     || actor->getTileY() > endY))
                 {
-                    ai++;
+                    ++ai;
                     continue;
                 }
                 // For now, just draw actors with only one layer.
@@ -619,7 +619,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                     actor->setAlpha(1.0f);
                 }
             }
-            ai++;
+            ++ai;
         }
     }
 
@@ -754,7 +754,7 @@ Tileset *Map::getTilesetWithGid(int gid) const
     Tileset *s = NULL;
     for (Tilesets::const_iterator it = mTilesets.begin(),
          it_end = mTilesets.end(); it < it_end && (*it)->getFirstGid() <= gid;
-         it++)
+         ++it)
     {
         s = *it;
     }
@@ -803,7 +803,7 @@ bool Map::occupied(int x, int y) const
 {
     const ActorSprites &actors = actorSpriteManager->getAll();
     ActorSpritesConstIterator it, it_end;
-    for (it = actors.begin(), it_end = actors.end(); it != it_end; it++)
+    for (it = actors.begin(), it_end = actors.end(); it != it_end; ++it)
     {
         const ActorSprite *actor = *it;
 

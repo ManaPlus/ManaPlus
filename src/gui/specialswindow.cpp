@@ -134,7 +134,7 @@ void SpecialsWindow::draw(gcn::Graphics *graphics)
                             // which match mEntries
 
     for (std::map<int, Special>::iterator i = specialData.begin();
-         i != specialData.end(); i++)
+         i != specialData.end(); ++i)
     {
         std::map<int, SpecialEntry *>::iterator e = mEntries.find(i->first);
         if (e == mEntries.end())
@@ -167,7 +167,7 @@ void SpecialsWindow::rebuild(const std::map<int, Special> &specialData)
 
     for (std::map<int, Special>::const_iterator i = specialData.begin();
          i != specialData.end();
-         i++)
+         ++i)
     {
         logger->log("Updating special GUI for %d", i->first);
 

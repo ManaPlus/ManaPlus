@@ -321,7 +321,7 @@ void CharHandler::newCharacter(const std::string &name,
     msg.writeInt8(slot);
 
     std::vector<int>::const_iterator it, it_end;
-    for (it = stats.begin(), it_end = stats.end(); it != it_end; it++)
+    for (it = stats.begin(), it_end = stats.end(); it != it_end; ++it)
         msg.writeInt16((*it));
 
     accountServerConnection->send(msg);
@@ -382,7 +382,7 @@ void CharHandler::updateCharacters()
         character->data.mAttributes[CORR_POINTS] = info.correctionPoints;
 
         for (CachedAttributes::const_iterator it = info.attribute.begin(),
-             it_end = info.attribute.end(); it != it_end; it++)
+             it_end = info.attribute.end(); it != it_end; ++it)
         {
             character->data.mStats[i].base = it->second.base;
             character->data.mStats[i].mod = it->second.mod;

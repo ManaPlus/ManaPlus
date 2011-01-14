@@ -198,7 +198,7 @@ void Minimap::draw(gcn::Graphics *graphics)
     const ActorSprites &actors = actorSpriteManager->getAll();
 
     for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
-         it != it_end; it++)
+         it != it_end; ++it)
     {
         if (!(*it) || (*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;

@@ -484,8 +484,11 @@ void ItemContainer::updateMatrix()
         }
     }
 
-    for (int idx = j * mGridColumns + i; idx < mGridRows * mGridColumns; idx ++)
+    for (int idx = j * mGridColumns + i;
+         idx < mGridRows * mGridColumns; idx ++)
+    {
         mShowMatrix[idx] = -1;
+    }
 
     for (unsigned idx = 0; idx < sortedItems.size(); idx ++)
         delete sortedItems[idx];

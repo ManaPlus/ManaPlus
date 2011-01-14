@@ -107,7 +107,7 @@ void ActorSprite::logic()
     {
         mMustResetParticles = false;
         for (std::set<int>::iterator it = mStatusEffects.begin();
-             it != mStatusEffects.end(); it++)
+             it != mStatusEffects.end(); ++it)
         {
             const StatusEffect *effect
                 = StatusEffect::getStatusEffect(*it, true);
@@ -307,7 +307,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     SpriteRefs it, it_end;
 
     for (it = display.sprites.begin(), it_end = display.sprites.end();
-         it != it_end; it++)
+         it != it_end; ++it)
     {
         std::string file = "graphics/sprites/" + (*it)->sprite;
         int variant = (*it)->variant;
@@ -341,7 +341,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         std::list<std::string>::const_iterator it, it_end;
         for (it = display.particles.begin(), it_end = display.particles.end();
-             it != it_end; it++)
+             it != it_end; ++it)
         {
             Particle *p = particleEngine->addEffect(*it, 0, 0);
             controlParticle(p);

@@ -93,7 +93,7 @@ namespace Attributes
         attributeLabels.clear();
         AttributeMap::const_iterator it, it_end;
         for (it = attributes.begin(), it_end = attributes.end();
-             it != it_end; it++)
+             it != it_end; ++it)
         {
             if (it->second.modifiable && (it->second.scope == "character"
                 || it->second.scope == "being"))
@@ -288,7 +288,7 @@ namespace Attributes
 
                 unsigned int count = 0;
                 for_each_xml_child_node(effectNode, node)
-                 {
+                {
                     if (!xmlStrEqual(effectNode->name, BAD_CAST "modifier"))
                          continue;
                     ++count;
@@ -307,7 +307,7 @@ namespace Attributes
                         tag = name.substr(0, name.size() > 3
                                           ? 3 : name.size());
                         tag = toLower(tag) + toString(count);
-                     }
+                    }
 
                     std::string effect = XML::getProperty(
                         effectNode, "effect", "");
@@ -395,7 +395,7 @@ namespace Attributes
 
         AttributeMap::const_iterator it, it_end;
         for (it = attributes.begin(), it_end = attributes.end();
-             it != it_end; it++)
+             it != it_end; ++it)
         {
             if (it->second.playerInfoId == -1
                 && (it->second.scope == "character"

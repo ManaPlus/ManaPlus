@@ -2184,17 +2184,15 @@ void LocalPlayer::crazyMoveA()
     if (mCrazyMoveState >= mMoveProgram.length())
         mCrazyMoveState = 0;
 
-    Uint8 dir = 0;
-
     // move command
     if (mMoveProgram[mCrazyMoveState] == 'm')
     {
-        int dx = 0;
-        int dy = 0;
-
         mCrazyMoveState ++;
         if (mCrazyMoveState < mMoveProgram.length())
         {
+            int dx = 0;
+            int dy = 0;
+
             char param = mMoveProgram[mCrazyMoveState++];
             if (param == '?')
             {
@@ -2246,6 +2244,8 @@ void LocalPlayer::crazyMoveA()
     // direction command
     else if (mMoveProgram[mCrazyMoveState] == 'd')
     {
+        Uint8 dir = 0;
+
         mCrazyMoveState ++;
 
         if (mCrazyMoveState < mMoveProgram.length())

@@ -47,17 +47,8 @@ class Setup_Other : public SetupTab, public gcn::ActionListener
         gcn::CheckBox *mShowMonstersTakedDamageCheckBox;
         bool mShowMonstersTakedDamage;
 
-        gcn::CheckBox *mNoRainCheckBox;
-        bool mNoRain;
-
         gcn::CheckBox *mTargetOnlyReachableCheckBox;
         bool mTargetOnlyReachable;
-
-        int mOverlayDetail;
-        gcn::DropDown *mFontSizeDropDown;
-
-        gcn::CheckBox *mErrorsInDebugCheckBox;
-        bool mErrorsInDebug;
 
         gcn::CheckBox *mHighlightPortalsCheckBox;
         bool mHighlightPortals;

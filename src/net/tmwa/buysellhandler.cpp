@@ -65,6 +65,7 @@ BuySellHandler::BuySellHandler()
     mNpcId = 0;
     handledMessages = _messages;
     buySellHandler = this;
+    mBuyDialog = 0;
 }
 
 void BuySellHandler::handleMessage(Net::MessageIn &msg)

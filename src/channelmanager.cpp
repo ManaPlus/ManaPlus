@@ -41,7 +41,7 @@ Channel *ChannelManager::findById(int id) const
     for (std::list<Channel*>::const_iterator itr = mChannels.begin(),
                                              end = mChannels.end();
          itr != end;
-         itr++)
+         ++itr)
     {
         Channel *c = (*itr);
         if (!c)
@@ -63,7 +63,7 @@ Channel *ChannelManager::findByName(const std::string &name) const
         for (std::list<Channel*>::const_iterator itr = mChannels.begin(),
                                                  end = mChannels.end();
              itr != end;
-             itr++)
+             ++itr)
         {
             Channel *c = (*itr);
             if (!c)

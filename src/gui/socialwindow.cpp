@@ -597,7 +597,7 @@ public:
                 }
             }
 
-            i++;
+            ++i;
             idx ++;
         }
         if (socialWindow)

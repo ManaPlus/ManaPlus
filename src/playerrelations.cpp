@@ -107,7 +107,7 @@ PlayerRelationsManager::~PlayerRelationsManager()
 
     for (std::map<std::string,
          PlayerRelation *>::const_iterator it = mRelations.begin();
-         it != mRelations.end(); it++)
+         it != mRelations.end(); ++it)
     {
         delete it->second;
     }
@@ -117,7 +117,7 @@ void PlayerRelationsManager::clear()
 {
     std::vector<std::string> *names = getPlayers();
     for (std::vector<std::string>::const_iterator
-             it = names->begin(); it != names->end(); it++)
+             it = names->begin(); it != names->end(); ++it)
     {
         removePlayer(*it);
     }
@@ -185,7 +185,7 @@ void PlayerRelationsManager::init()
     }
 
     for (std::list<PlayerRelationsListener *>::const_iterator
-         it = mListeners.begin(); it != mListeners.end(); it++)
+         it = mListeners.begin(); it != mListeners.end(); ++it)
     {
         (*it)->updateAll();
     }
@@ -215,7 +215,7 @@ void PlayerRelationsManager::signalUpdate(const std::string &name)
 //    store();
 
     for (std::list<PlayerRelationsListener *>::const_iterator
-         it = mListeners.begin(); it != mListeners.end(); it++)
+         it = mListeners.begin(); it != mListeners.end(); ++it)
     {
         (*it)->updatedPlayer(name);
     }
@@ -325,7 +325,7 @@ std::vector<std::string> * PlayerRelationsManager::getPlayers()
 
     for (std::map<std::string,
          PlayerRelation *>::const_iterator it = mRelations.begin();
-         it != mRelations.end(); it++)
+         it != mRelations.end(); ++it)
     {
         if (it->second)
             retval->push_back(it->first);

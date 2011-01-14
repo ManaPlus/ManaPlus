@@ -186,7 +186,7 @@ void Inventory::distributeSlotsChangedEvent()
 {
     InventoryListenerList::const_iterator i = mInventoryListeners.begin();
     InventoryListenerList::const_iterator i_end = mInventoryListeners.end();
-    for (; i != i_end; i++)
+    for (; i != i_end; ++i)
         (*i)->slotsChanged(this);
 }
 

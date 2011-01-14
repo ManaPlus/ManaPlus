@@ -113,7 +113,7 @@ Gui::Gui(Graphics *graphics):
     {
         mGuiFont = new TrueTypeFont(fontFile, fontSize);
     }
-    catch (gcn::Exception e)
+    catch (const gcn::Exception &e)
     {
         logger->error(std::string("Unable to load '") + fontFile +
                       std::string("': ") + e.getMessage());
@@ -129,7 +129,7 @@ Gui::Gui(Graphics *graphics):
         mInfoParticleFont = new TrueTypeFont(
             fontFile, fontSize, TTF_STYLE_BOLD);
     }
-    catch (gcn::Exception e)
+    catch (const gcn::Exception &e)
     {
         logger->error(std::string("Unable to load '") + fontFile +
                       std::string("': ") + e.getMessage());
@@ -144,7 +144,7 @@ Gui::Gui(Graphics *graphics):
     {
         boldFont = new TrueTypeFont(fontFile, fontSize);
     }
-    catch (gcn::Exception e)
+    catch (const gcn::Exception &e)
     {
         logger->error(std::string("Unable to load '") + fontFile +
                       std::string("': ") + e.getMessage());
@@ -159,7 +159,7 @@ Gui::Gui(Graphics *graphics):
     {
         mHelpFont = new TrueTypeFont(fontFile, fontSize);
     }
-    catch (gcn::Exception e)
+    catch (const gcn::Exception &e)
     {
         logger->error(std::string("Unable to load '") + fontFile +
                       std::string("': ") + e.getMessage());

@@ -106,7 +106,7 @@ public:
             std::set<ActorSprite*> beings = actorSpriteManager->getAll();
             ActorSprites::iterator i = beings.begin();
             for (ActorSprites::const_iterator i = beings.begin();
-                 i != beings.end(); i++)
+                 i != beings.end(); ++i)
             {
                 Being *being = dynamic_cast<Being*>(*i);
 
@@ -246,7 +246,7 @@ public:
     virtual void freeWidgets()
     {
         for (std::vector<gcn::Widget *>::const_iterator it = mWidgets.begin();
-             it != mWidgets.end(); it++)
+             it != mWidgets.end(); ++it)
         {
             delete *it;
         }
@@ -393,7 +393,7 @@ void BotCheckerWindow::reset()
         std::set<ActorSprite*> beings = actorSpriteManager->getAll();
         ActorSprites::iterator i = beings.begin();
         for (ActorSprites::const_iterator i = beings.begin();
-             i != beings.end(); i++)
+             i != beings.end(); ++i)
         {
             Being *being = dynamic_cast<Being*>(*i);
 

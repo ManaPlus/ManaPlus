@@ -35,7 +35,7 @@ Event::~Event()
     {
         delete it->second;
         it->second = 0;
-        it++;
+        ++it;
     }
 }
 
@@ -115,7 +115,7 @@ void Event::trigger(Channels channel, const Event &event)
     while (lit != it->second.end())
     {
         (*lit)->event(channel, event);
-        lit++;
+        ++lit;
     }
 }
 
@@ -125,7 +125,7 @@ void Event::remove(Listener *listener)
     while (it != mBindings.end())
     {
         it->second.erase(listener);
-        it++;
+        ++it;
     }
 }
 

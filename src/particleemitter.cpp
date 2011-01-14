@@ -401,6 +401,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mParticleRotation = o.mParticleRotation;
     mParticleChildEmitters = o.mParticleChildEmitters;
     mDeathEffectConditions = o.mDeathEffectConditions;
+    mDeathEffect = o.mDeathEffect;
 
     mOutputPauseLeft = 0;
 
@@ -523,7 +524,7 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
 
         for (std::list<ParticleEmitter>::iterator
              i = mParticleChildEmitters.begin();
-             i != mParticleChildEmitters.end(); i++)
+             i != mParticleChildEmitters.end(); ++i)
         {
             newParticle->addEmitter(new ParticleEmitter(*i));
         }

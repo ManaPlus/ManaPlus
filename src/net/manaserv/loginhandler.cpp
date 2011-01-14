@@ -58,6 +58,8 @@ LoginHandler::LoginHandler()
     };
     handledMessages = _messages;
     loginHandler = this;
+    mMinUserNameLength = 4;
+    mMaxUserNameLength = 10;
 }
 
 void LoginHandler::handleMessage(Net::MessageIn &msg)
@@ -232,7 +234,8 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
                 std::string captchaURL = msg.readString();
                 std::string captchaInstructions = msg.readString();
 
-                printf("%s: %s\n", captchaURL.c_str(), captchaInstructions.c_str());
+                printf("%s: %s\n", captchaURL.c_str(),
+                       captchaInstructions.c_str());
 
                 Client::setState(STATE_REGISTER);
             }

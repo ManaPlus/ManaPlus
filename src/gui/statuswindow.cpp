@@ -287,7 +287,7 @@ void StatusWindow::event(Channels channel _UNUSED_,
                 mCharacterPointsLabel->adjustSize();
                 // Update all attributes
                 for (Attrs::iterator it = mAttrs.begin();
-                     it != mAttrs.end(); it++)
+                     it != mAttrs.end(); ++it)
                 {
                     if (it->second)
                         it->second->update();
@@ -300,7 +300,7 @@ void StatusWindow::event(Channels channel _UNUSED_,
                 mCorrectionPointsLabel->adjustSize();
                 // Update all attributes
                 for (Attrs::iterator it = mAttrs.begin();
-                     it != mAttrs.end(); it++)
+                     it != mAttrs.end(); ++it)
                 {
                     if (it->second)
                         it->second->update();

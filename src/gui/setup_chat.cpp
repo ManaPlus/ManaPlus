@@ -55,7 +55,8 @@
 #define ACTION_ENABLE_BATTLE_TAB "show battle tab"
 #define ACTION_SHOW_BATTLE_EVENTS "show battle events"
 
-Setup_Chat::Setup_Chat()
+Setup_Chat::Setup_Chat() :
+    mEditDialog(0)
 {
     setName(_("Chat"));
 

@@ -290,12 +290,12 @@ void Network::skip(int len)
 
 bool Network::messageReady()
 {
-    int len = -1, msgId;
+    int len = -1;
 
     SDL_mutexP(mMutex);
     if (mInSize >= 2)
     {
-        msgId = readWord(0);
+        int msgId = readWord(0);
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
             len = 10;
         else

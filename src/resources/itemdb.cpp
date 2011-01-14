@@ -205,7 +205,8 @@ void ItemDB::load()
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
 
         std::string tags[3];
-        tags[0] = XML::getProperty(node, "tag", XML::getProperty(node, "tag1", ""));
+        tags[0] = XML::getProperty(node, "tag",
+            XML::getProperty(node, "tag1", ""));
         tags[1] = XML::getProperty(node, "tag2", "");
         tags[2] = XML::getProperty(node, "tag3", "");
 
@@ -269,7 +270,7 @@ void ItemDB::load()
             effect += strprintf(gettext(fields[i][1]), value);
         }
         for (std::list<Stat>::iterator it = extraStats.begin();
-                it != extraStats.end(); it++)
+             it != extraStats.end(); ++it)
         {
             int value = XML::getProperty(node, it->tag.c_str(), 0);
             if (!value)

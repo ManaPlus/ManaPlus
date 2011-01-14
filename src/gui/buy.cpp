@@ -315,7 +315,7 @@ void BuyDialog::closeAll()
     DialogList::iterator it = instances.begin();
     DialogList::iterator it_end = instances.end();
 
-    for (; it != it_end; it++)
+    for (; it != it_end; ++it)
     {
         if (*it)
             (*it)->close();
