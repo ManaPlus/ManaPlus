@@ -120,7 +120,7 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return COLOR_NAME[i];
+        return gettext(COLOR_NAME[i]);
     }
 };
 
