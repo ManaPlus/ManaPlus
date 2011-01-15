@@ -64,7 +64,7 @@ void Item::setId(int id)
     ResourceManager *resman = ResourceManager::getInstance();
     ItemInfo info = getInfo();
     mTags = info.getTags();
-    logger->log("tag0=" + toString(mTags[1]));
+//    logger->log("tag0=" + toString(mTags[1]));
 
 //    for (int f = 0; f < mTags->size(); f ++)
 //        logger->log("tag: %d", (*mTags)[f]);
