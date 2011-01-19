@@ -67,22 +67,50 @@ MiniStatusWindow::MiniStatusWindow():
         mMpBar = 0;
     }
 
+    int job = Net::getPlayerHandler()->getJobLocation()
+              && serverConfig.getValueBool("showJob", false);
+
     mXpBar = new ProgressBar(0, 100, 20, Theme::PROG_EXP);
     StatusWindow::updateXPBar(mXpBar);
+
+    if (job)
+    {
+        mJobBar = new ProgressBar(0, 100, 20, Theme::PROG_JOB);
+        StatusWindow::updateJobBar(mJobBar);
+    }
+    else
+    {
+        mJobBar = 0;
+    }
 
     mStatusBar = new ProgressBar(100, 150, 20, Theme::PROG_EXP);
 
     mHpBar->setPosition(0, 3);
     if (mMpBar)
+    {
         mMpBar->setPosition(mHpBar->getWidth() + 3, 3);
-    mXpBar->setPosition(mMpBar ? mMpBar->getX() + mMpBar->getWidth() + 3 :
-                                 mHpBar->getX() + mHpBar->getWidth() + 3, 3);
-    mStatusBar->setPosition(mXpBar->getX() + mXpBar->getWidth() + 3, 3);
+        mXpBar->setPosition(mMpBar->getX() + mMpBar->getWidth() + 3, 3);
+    }
+    else
+    {
+        mXpBar->setPosition(mHpBar->getX() + mHpBar->getWidth() + 3, 3);
+    }
+    if (mJobBar)
+    {
+        mJobBar->setPosition(mXpBar->getX() + mXpBar->getWidth() + 3, 3);
+        mStatusBar->setPosition(mJobBar->getX() + mJobBar->getWidth() + 3, 3);
+    }
+    else
+    {
+        mStatusBar->setPosition(mXpBar->getX() + mXpBar->getWidth() + 3, 3);
+    }
 
     add(mHpBar);
     if (mMpBar)
         add(mMpBar);
     add(mXpBar);
+    if (mJobBar)
+        add(mJobBar);
     add(mStatusBar);
 
     setContentSize(mStatusBar->getX() + mStatusBar->getWidth(),
@@ -150,6 +178,7 @@ void MiniStatusWindow::event(Channels channel _UNUSED_,
     else if (event.getName() == EVENT_UPDATESTAT)
     {
         StatusWindow::updateMPBar(mMpBar);
+        StatusWindow::updateJobBar(mJobBar);
     }
 }
 
@@ -210,6 +239,19 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         mTextPopup->show(x + getX(), y + getY(),
                          strprintf("%u/%u", PlayerInfo::getAttribute(MP),
                                    PlayerInfo::getAttribute(MAX_MP)));
+        mStatusPopup->hide();
+    }
+    else if (event.getSource() == mJobBar)
+    {
+        std::pair<int, int> exp =  PlayerInfo::getStatExperience(
+            Net::getPlayerHandler()->getJobLocation());
+
+        mTextPopup->show(x + getX(), y + getY(),
+                         strprintf("%u/%u", exp.first,
+                                   exp.second),
+                         strprintf("%s: %u", _("Need"),
+                                   exp.second
+                                   - exp.first));
         mStatusPopup->hide();
     }
     else

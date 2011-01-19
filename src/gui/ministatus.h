@@ -82,6 +82,7 @@ class MiniStatusWindow : public Popup, public Mana::Listener
         ProgressBar *mHpBar;
         ProgressBar *mMpBar;
         ProgressBar *mXpBar;
+        ProgressBar *mJobBar;
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;

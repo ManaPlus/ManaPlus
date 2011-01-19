@@ -469,6 +469,16 @@ void StatusWindow::updateXPBar(ProgressBar *bar, bool percent)
                       PlayerInfo::getAttribute(EXP_NEEDED), percent);
 }
 
+void StatusWindow::updateJobBar(ProgressBar *bar, bool percent)
+{
+    if (!bar)
+        return;
+
+    std::pair<int, int> exp =  PlayerInfo::getStatExperience(
+        Net::getPlayerHandler()->getJobLocation());
+    updateProgressBar(bar, exp.first, exp.second, percent);
+}
+
 void StatusWindow::updateProgressBar(ProgressBar *bar, int id, bool percent)
 {
     std::pair<int, int> exp =  PlayerInfo::getStatExperience(id);
