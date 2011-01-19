@@ -37,6 +37,7 @@ class Button;
 //class Image;
 class Label;
 class ScrollArea;
+class SkillModel;
 class Tab;
 class TabbedArea;
 
@@ -71,7 +72,9 @@ class SkillDialog : public Window, public gcn::ActionListener
 
         void loadSkills(const std::string &file);
 
-        void setModifiable(int id, bool modifiable);
+        bool setModifiable(int id, bool modifiable);
+
+        void addSkill(int id, int level, bool modifiable);
 
         SkillInfo* getSkill(int id);
 
@@ -84,6 +87,7 @@ class SkillDialog : public Window, public gcn::ActionListener
         TabbedArea *mTabs;
         Label *mPointsLabel;
         Button *mIncreaseButton;
+        SkillModel *mDefaultModel;
 };
 
 extern SkillDialog *skillDialog;

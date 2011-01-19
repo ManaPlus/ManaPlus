@@ -236,6 +236,7 @@ SkillDialog::SkillDialog():
     mTabs = new TabbedArea();
     mPointsLabel = new Label("0");
     mIncreaseButton = new Button(_("Up"), "inc", this);
+    mDefaultModel = 0;
 
     place(0, 0, mTabs, 5, 5);
     place(0, 5, mPointsLabel, 4);
@@ -336,6 +337,9 @@ void SkillDialog::loadSkills(const std::string &file)
         if (Net::getNetworkType() == ServerInfo::TMWATHENA)
         {
             SkillModel *model = new SkillModel();
+            if (!mDefaultModel)
+                mDefaultModel = model;
+
             SkillInfo *skill = new SkillInfo;
             skill->id = 1;
             skill->name = "basic";
@@ -374,6 +378,8 @@ void SkillDialog::loadSkills(const std::string &file)
                 strprintf(_("Skill Set %d"), setCount));
 
             SkillModel *model = new SkillModel();
+            if (!mDefaultModel)
+                mDefaultModel = model;
 
             for_each_xml_child_node(node, set)
             {
@@ -416,7 +422,7 @@ void SkillDialog::loadSkills(const std::string &file)
     update();
 }
 
-void SkillDialog::setModifiable(int id, bool modifiable)
+bool SkillDialog::setModifiable(int id, bool modifiable)
 {
     SkillMap::iterator it = mSkills.find(id);
 
@@ -428,6 +434,29 @@ void SkillDialog::setModifiable(int id, bool modifiable)
             info->modifiable = modifiable;
             info->update();
         }
+        return true;
+    }
+    return false;
+}
+
+void SkillDialog::addSkill(int id, int level, bool modifiable)
+{
+    if (mDefaultModel)
+    {
+        SkillInfo *skill = new SkillInfo;
+        skill->id = static_cast<short unsigned>(id);
+        skill->name = "Unknown skill Id: " + toString(id);
+        skill->setIcon("");
+        skill->modifiable = modifiable;
+        skill->visible = false;
+        skill->model = mDefaultModel;
+        skill->skillLevel = level;
+        skill->update();
+
+        mDefaultModel->addSkill(skill);
+
+        mSkills[id] = skill;
+        mDefaultModel->updateVisibilities();
     }
 }
 

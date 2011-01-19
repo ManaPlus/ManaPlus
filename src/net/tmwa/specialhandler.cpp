@@ -110,7 +110,10 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
 
                 PlayerInfo::setStatBase(skillId, level);
                 if (skillDialog)
-                    skillDialog->setModifiable(skillId, up);
+                {
+                    if (!skillDialog->setModifiable(skillId, up))
+                        skillDialog->addSkill(skillId, level, up);
+                }
             }
             break;
         }
@@ -124,7 +127,10 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
 
                 PlayerInfo::setStatBase(skillId, level);
                 if (skillDialog)
-                    skillDialog->setModifiable(skillId, up);
+                {
+                    if (!skillDialog->setModifiable(skillId, up))
+                        skillDialog->addSkill(skillId, level, up);
+                }
             }
             break;
 
