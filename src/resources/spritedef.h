@@ -51,6 +51,7 @@ struct SpriteReference
 struct SpriteDisplay
 {
     std::string image;
+    std::string floor;
     std::list<SpriteReference*> sprites;
     std::list<std::string> particles;
 };

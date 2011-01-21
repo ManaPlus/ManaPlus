@@ -199,6 +199,7 @@ void ItemDB::load()
 
         std::string name = XML::getProperty(node, "name", "");
         std::string image = XML::getProperty(node, "image", "");
+        std::string floor = XML::getProperty(node, "floor", "");
         std::string description = XML::getProperty(node, "description", "");
         std::string attackAction = XML::getProperty(node, "attack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
@@ -218,6 +219,10 @@ void ItemDB::load()
 
         SpriteDisplay display;
         display.image = image;
+        if (floor != "")
+            display.floor = floor;
+        else
+            display.floor = image;
 
         ItemInfo *itemInfo = new ItemInfo;
         itemInfo->setId(id);

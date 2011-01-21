@@ -300,7 +300,7 @@ void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
 }
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
-                                     bool forceDisplay)
+                                     bool forceDisplay, int imageType)
 {
     clear();
 
@@ -324,7 +324,17 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         else
         {
             ResourceManager *resman = ResourceManager::getInstance();
-            std::string imagePath = "graphics/items/" + display.image;
+            std::string imagePath;
+            switch (imageType)
+            {
+                case 0:
+                default:
+                    imagePath = "graphics/items/" + display.image;
+                    break;
+                case 1:
+                    imagePath = "graphics/items/" + display.floor;
+                    break;
+            }
             Image *img = resman->getImage(imagePath);
 
             if (!img)

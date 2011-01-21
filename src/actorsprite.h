@@ -210,7 +210,7 @@ protected:
     virtual void handleStatusEffect(StatusEffect *effect, int effectId);
 
     void setupSpriteDisplay(const SpriteDisplay &display,
-                            bool forceDisplay = true);
+                            bool forceDisplay = true, int imageType = 0);
 
     int mId;
     Uint16 mStunMode;               /**< Stun mode; zero if not stunned */

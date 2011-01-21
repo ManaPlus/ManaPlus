@@ -68,7 +68,7 @@ FloorItem::FloorItem(int id,
         mPos.y = 0;
     }
 
-    setupSpriteDisplay(ItemDB::get(itemId).getDisplay());
+    setupSpriteDisplay(ItemDB::get(itemId).getDisplay(), true, 1);
 }
 
 const ItemInfo &FloorItem::getInfo() const
