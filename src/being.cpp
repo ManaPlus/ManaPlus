@@ -947,13 +947,31 @@ void Being::setDirection(Uint8 direction)
 
     SpriteDirection dir;
     if (mFaceDirection & UP)
-        dir = DIRECTION_UP;
+    {
+        if (mFaceDirection & LEFT)
+            dir = DIRECTION_UPLEFT;
+        else if (mFaceDirection & RIGHT)
+            dir = DIRECTION_UPRIGHT;
+        else
+            dir = DIRECTION_UP;
+    }
     else if (mFaceDirection & DOWN)
-        dir = DIRECTION_DOWN;
+    {
+        if (mFaceDirection & LEFT)
+            dir = DIRECTION_DOWNLEFT;
+        else if (mFaceDirection & RIGHT)
+            dir = DIRECTION_DOWNRIGHT;
+        else
+            dir = DIRECTION_DOWN;
+    }
     else if (mFaceDirection & RIGHT)
+    {
         dir = DIRECTION_RIGHT;
+    }
     else
+    {
         dir = DIRECTION_LEFT;
+    }
     mSpriteDirection = dir;
 
     CompoundSprite::setDirection(dir);

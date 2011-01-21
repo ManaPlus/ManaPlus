@@ -334,6 +334,14 @@ SpriteDirection SpriteDef::makeSpriteDirection(const std::string &direction)
         return DIRECTION_RIGHT;
     else if (direction == "down")
         return DIRECTION_DOWN;
+    else if (direction == "upleft")
+        return DIRECTION_UPLEFT;
+    else if (direction == "upright")
+        return DIRECTION_UPRIGHT;
+    else if (direction == "downleft")
+        return DIRECTION_DOWNLEFT;
+    else if (direction == "downright")
+        return DIRECTION_DOWNRIGHT;
     else
         return DIRECTION_INVALID;
 }

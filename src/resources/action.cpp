@@ -22,6 +22,7 @@
 #include "resources/action.h"
 
 #include "resources/animation.h"
+#include "resources/spritedef.h"
 
 #include "utils/dtor.h"
 
@@ -38,10 +39,19 @@ Animation *Action::getAnimation(int direction) const
 {
     Animations::const_iterator i = mAnimations.find(direction);
 
-    // When the given direction is not available, return the first one.
-    // (either DEFAULT, or more usually DOWN).
     if (i == mAnimations.end())
-        i = mAnimations.begin();
+    {
+        if (direction == DIRECTION_UPLEFT || direction == DIRECTION_UPRIGHT)
+            direction = DIRECTION_UP;
+        else if (direction == DIRECTION_DOWNLEFT || direction == DIRECTION_DOWNRIGHT)
+            direction = DIRECTION_DOWN;
+        i = mAnimations.find(direction);
+
+        // When the given direction is not available, return the first one.
+        // (either DEFAULT, or more usually DOWN).
+        if (i == mAnimations.end())
+            i = mAnimations.begin();
+    }
 
     return (i == mAnimations.end()) ? NULL : i->second;
 }
