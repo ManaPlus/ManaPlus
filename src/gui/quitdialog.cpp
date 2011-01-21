@@ -33,6 +33,7 @@
 #include "gui/widgets/radiobutton.h"
 
 #include "net/charhandler.h"
+#include "net/gamehandler.h"
 #include "net/net.h"
 
 #include "utils/gettext.h"
@@ -138,7 +139,8 @@ void QuitDialog::action(const gcn::ActionEvent &event)
         {
             Client::setState(STATE_EXIT);
         }
-        else if (mSwitchAccountServer->isSelected())
+        else if (Net::getGameHandler()->isConnected()
+            && mSwitchAccountServer->isSelected())
         {
             Client::setState(STATE_SWITCH_SERVER);
         }

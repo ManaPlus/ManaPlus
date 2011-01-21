@@ -485,7 +485,7 @@ void Game::logic()
         if (!disconnectedDialog)
         {
             disconnectedDialog = new OkDialog(_("Network Error"),
-                                              errorMessage);
+                                              errorMessage, false);
             disconnectedDialog->addActionListener(&errorListener);
             disconnectedDialog->requestMoveToTop();
         }
