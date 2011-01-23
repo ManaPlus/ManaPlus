@@ -331,8 +331,15 @@ void StatusWindow::event(Channels channel _UNUSED_,
                     // then we fixing it :)
                     std::pair<int, int> exp
                         = PlayerInfo::getStatExperience(id);
-                    lvl = (exp.second - 20000) / 150;
-                    PlayerInfo::setStatBase(id, lvl);
+                    if (exp.second < 20000)
+                    {
+                        lvl = 0;
+                    }
+                    else
+                    {
+                        lvl = (exp.second - 20000) / 150;
+                        PlayerInfo::setStatBase(id, lvl);
+                    }
                 }
 
                 mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
