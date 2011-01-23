@@ -324,8 +324,18 @@ void StatusWindow::event(Channels channel _UNUSED_,
         {
             if (mJobLvlLabel)
             {
-                mJobLvlLabel->setCaption(strprintf(_("Job: %d"),
-                                         PlayerInfo::getStatBase(id)));
+                int lvl = PlayerInfo::getStatBase(id);
+                if (!lvl)
+                {
+                    // possible server corrupted and dont send job level,
+                    // then we fixing it :)
+                    std::pair<int, int> exp
+                        = PlayerInfo::getStatExperience(id);
+                    lvl = (exp.second - 20000) / 150;
+                    PlayerInfo::setStatBase(id, lvl);
+                }
+
+                mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
                 mJobLvlLabel->adjustSize();
 
                 updateProgressBar(mJobBar, id, false);
