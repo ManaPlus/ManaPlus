@@ -376,7 +376,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, ptr);
             curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
             curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 7);
-            curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10);
+            curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30);
 
             struct curl_slist *pHeaders = 0;
             // Make sure the resources2.txt and news.txt aren't cached,
