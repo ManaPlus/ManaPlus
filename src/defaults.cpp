@@ -172,7 +172,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "chatMaxLinesLimit", 20);
     AddDEF(configData, "chatColor", 0);
     AddDEF(configData, "hideShield", true);
-    AddDEF(configData, "showJob", false);
+    AddDEF(configData, "showJob", true);
     AddDEF(configData, "updateOnlineList", true);
     AddDEF(configData, "targetOnlyReachable", true);
     AddDEF(configData, "errorsInDebug", true);
