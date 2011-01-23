@@ -258,6 +258,10 @@ StatusWindow::StatusWindow():
 void StatusWindow::event(Channels channel _UNUSED_,
                          const Mana::Event &event)
 {
+    static bool blocked = false;
+    if (blocked)
+        return;
+
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         switch(event.getInt("id"))
@@ -341,7 +345,9 @@ void StatusWindow::event(Channels channel _UNUSED_,
                     else
                     {
                         lvl = (exp.second - 20000) / 150;
+                        blocked = true;
                         PlayerInfo::setStatBase(id, lvl);
+                        blocked = false;
                     }
                 }
 
@@ -349,8 +355,10 @@ void StatusWindow::event(Channels channel _UNUSED_,
                 {   // possible job level up. but server broken and dont send
                     // new job exp limit, we fixing it
                     lvl ++;
+                    blocked = true;
                     PlayerInfo::setStatExperience(id, exp.first, 20000 + lvl * 150);
-                    PlayerInfo::setStatBase(id, lvl);
+                    blocked = false;
+//                    PlayerInfo::setStatBase(id, lvl);
                 }
 
                 mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));

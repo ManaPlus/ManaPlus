@@ -219,12 +219,22 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mXpBar)
     {
-        mTextPopup->show(x + getX(), y + getY(),
-                         strprintf("%u/%u", PlayerInfo::getAttribute(EXP),
-                                   PlayerInfo::getAttribute(EXP_NEEDED)),
-                         strprintf("%s: %u", _("Need"),
-                                   PlayerInfo::getAttribute(EXP_NEEDED)
-                                   - PlayerInfo::getAttribute(EXP)));
+        if (PlayerInfo::getAttribute(EXP)
+            > PlayerInfo::getAttribute(EXP_NEEDED))
+        {
+            mTextPopup->show(x + getX(), y + getY(),
+                             strprintf("%u/%u", PlayerInfo::getAttribute(EXP),
+                                       PlayerInfo::getAttribute(EXP_NEEDED)));
+        }
+        else
+        {
+            mTextPopup->show(x + getX(), y + getY(),
+                             strprintf("%u/%u", PlayerInfo::getAttribute(EXP),
+                                       PlayerInfo::getAttribute(EXP_NEEDED)),
+                             strprintf("%s: %u", _("Need"),
+                                       PlayerInfo::getAttribute(EXP_NEEDED)
+                                       - PlayerInfo::getAttribute(EXP)));
+        }
         mStatusPopup->hide();
     }
     else if (event.getSource() == mHpBar)
@@ -246,12 +256,21 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         std::pair<int, int> exp =  PlayerInfo::getStatExperience(
             Net::getPlayerHandler()->getJobLocation());
 
-        mTextPopup->show(x + getX(), y + getY(),
-                         strprintf("%u/%u", exp.first,
-                                   exp.second),
-                         strprintf("%s: %u", _("Need"),
-                                   exp.second
-                                   - exp.first));
+        if (exp.first > exp.second)
+        {
+            mTextPopup->show(x + getX(), y + getY(),
+                             strprintf("%u/%u", exp.first,
+                                       exp.second));
+        }
+        else
+        {
+            mTextPopup->show(x + getX(), y + getY(),
+                             strprintf("%u/%u", exp.first,
+                                       exp.second),
+                             strprintf("%s: %u", _("Need"),
+                                       exp.second
+                                       - exp.first));
+        }
         mStatusPopup->hide();
     }
     else
