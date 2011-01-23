@@ -325,12 +325,15 @@ void StatusWindow::event(Channels channel _UNUSED_,
             if (mJobLvlLabel)
             {
                 int lvl = PlayerInfo::getStatBase(id);
+
+                int oldExp = event.getInt("oldValue1");
+                std::pair<int, int> exp
+                    = PlayerInfo::getStatExperience(id);
+
                 if (!lvl)
                 {
-                    // possible server corrupted and dont send job level,
+                    // possible server broken and dont send job level,
                     // then we fixing it :)
-                    std::pair<int, int> exp
-                        = PlayerInfo::getStatExperience(id);
                     if (exp.second < 20000)
                     {
                         lvl = 0;
@@ -340,6 +343,14 @@ void StatusWindow::event(Channels channel _UNUSED_,
                         lvl = (exp.second - 20000) / 150;
                         PlayerInfo::setStatBase(id, lvl);
                     }
+                }
+
+                if (exp.first < oldExp && exp.second >= 20000)
+                {   // possible job level up. but server broken and dont send
+                    // new job exp limit, we fixing it
+                    lvl ++;
+                    PlayerInfo::setStatExperience(id, exp.first, 20000 + lvl * 150);
+                    PlayerInfo::setStatBase(id, lvl);
                 }
 
                 mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
