@@ -1778,6 +1778,9 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
             item = PlayerInfo::getInventory()->findItem(570);
 
         if (!item)
+            item = PlayerInfo::getInventory()->findItem(579);
+
+        if (!item)
             item = PlayerInfo::getInventory()->findItem(536);
 
         //no swords
