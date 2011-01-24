@@ -357,8 +357,8 @@ void StatusWindow::event(Channels channel _UNUSED_,
                     lvl ++;
                     blocked = true;
                     PlayerInfo::setStatExperience(id, exp.first, 20000 + lvl * 150);
+                    PlayerInfo::setStatBase(id, lvl);
                     blocked = false;
-//                    PlayerInfo::setStatBase(id, lvl);
                 }
 
                 mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
