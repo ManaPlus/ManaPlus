@@ -1505,6 +1505,43 @@ void LocalPlayer::event(Channels channel, const Mana::Event &event)
                     break;
             };
         }
+        else if (event.getName() == EVENT_UPDATESTAT)
+        {
+            int id = event.getInt("id");
+            if (id == Net::getPlayerHandler()->getJobLocation())
+            {
+                std::pair<int, int> exp
+                    = PlayerInfo::getStatExperience(id);
+                if (event.getInt("oldValue1") > exp.first
+                    || !event.getInt("oldValue2"))
+                {
+                    return;
+                }
+
+                int change = exp.first - event.getInt("oldValue1");
+                if (change != 0 && mMessages.size() < 20)
+                {
+                    if (mMessages.size() > 0)
+                    {
+                        MessagePair pair = mMessages.back();
+                        if (pair.first.find(" xp") == pair.first.size() - 3)
+                        {
+                            mMessages.pop_back();
+                            pair.first += ", " + toString(change) + " job";
+                            mMessages.push_back(pair);
+                        }
+                        else
+                        {
+                            addMessageToQueue(toString(change) + " job");
+                        }
+                    }
+                    else
+                    {
+                        addMessageToQueue(toString(change) + " job");
+                    }
+                }
+            }
+        }
     }
 }
 
