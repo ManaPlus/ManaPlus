@@ -1,1 +1,863 @@
-=== ChangeLog discontinued ===
+2011-01-16 New release 1.1.1.16.
+ManaPlus:
+fix: hide own hp bar if dead.
+fix: equipment window.
+add: inventory filter and sorter.
+add: increased char slots number from 3 to 9 per each account.
+Also add support for configurable char slots number in exended servers.
+add: option to force connection to only one ip for all three servers (char, login, map).
+Usefull for port mapping connections.
+add: updated russian translation.
+
+Mana:
+add: updated german and french translation.
+
+
+2011-01-09 New release 1.1.1.9.
+ManaPlus:
+fix: some strings translation support.
+add: increase items slots support from 11 to 13.
+add: new 4 emotes (Nina O'Reilly).
+add: increased max emotes count to 44.
+add: sound volume depend on distance to sound source point.
+add: update russian translation.
+
+Mana:
+add: update french and spain translation.
+
+
+2010-12-26 New release 1.0.12.26.
+ManaPlus:
+fix: manaserv a bit working now.
+tested on woa server.
+fix: spawned mobs with already taken damage.
+fix: some chat crashes.
+add: walk delay parameter in status window.
+add: mob hp bar in selected mob.
+add: tabs in shortcuts bar.
+add: updated russian translation.
+
+Mana:
+
+
+2010-12-12 New release 1.0.12.12.
+ManaPlus:
+add: variables <TARGET> and <TARGETID> and <TARGETORSELF> in spells / text commands.
+add: show weight message if weight was more then half and now less then half.
+add: show attack range in status window.
+add: offset of target cursor in monster and npc.
+add: ability to dinamically change drawing player sprites order.
+
+Mana:
+add: support for tiles with aligment.
+
+
+2010-11-28 New release 1.0.11.28.
+ManaPlus:
+fix: enter space in npc dialogs.
+fix: popup xp messages flood.
+fix: move all server messages if need to debug tab.
+fix: visibility of moved npc.
+add: show pvp rank in pvp maps.
+add: show is pvp enabled on map or not.
+add: shortcut keys to switch between social window tabs.
+by default unassigned.
+add: store/retreive 10, half, all.
+
+Mana:
+
+
+2010-11-14 New release 1.0.11.14.
+ManaPlus:
+fix: level percent in kill stats window.
+fix: setting walkable tile alpha setting.
+fix: freze with incorrect image set.
+add: tooltips for emote shortcuts.
+add: show short keys on map signs and warps.
+add: distance 2 in move to distance.
+add: improve speed in SDL (Software) mode.
+add: safe opengl support, like in old tmw versions.
+add: small speed improvements.
+add: actors count in debug window.
+add: move "show own name" from video to players tab.
+add: battle chat tab and battle event.
+Disable by default.
+add: color hightlight if trade partner lower money.
+add: custom update host.
+Can be usefull if normal update server is dead.
+To enable in login dialog select custom update type and put new update host url in text field. (custom host for tmw server is http://manaplus.jonklo.net/updates/)
+
+Mana:
+
+
+2010-10-31 New release 1.0.10.31.
+ManaPlus:
+fix: who is online list if used --server parameter.
+fix: reenable portable mode for all platforms.
+fix: update visible player levels.
+fix: equip type for some items in TAW server.
+fix: attack animation in TMW server and some clones.
+add: option to hide warps particles.
+SET / misc / Show warp particles.
+by default warp particles disabled.
+add: option to allow start buy/sell trade without asking player.
+SET / misc / Accept sell/buy requests.
+add: sorting player in party and guild tabs.
+add: extended context menu to many players in one tile.
+show submenus for each player in tile.
+add: shortucts option in windows installer.
+add: auto remove very old font cache items.
+add: update russian translation.
+add: new pumpkin smile. (Nina O'Reilly)
+
+Mana:
+
+
+2010-10-19 New release 1.0.10.19.
+ManaPlus:
+fix: command line switch -u now working like in mana client.
+fix: crash on drawing incorrect strings.
+fix: possible crash on exit.
+add: disabled special chars by char codes for platinum server (because on this server players using many ugly clients).
+
+Mana:
+
+
+2010-10-17 New release 1.0.10.17.
+ManaPlus:
+fix: disable portable mode in non windows systems.
+fix: improve speed in disabled opengl mode and opacity = 1. (based on idea from mana client)
+add: /wait chat command. It play sound if find being with requested name.
+add: chat autocomplete for mob names.
+add: hot key for who is online window. (unassigned)
+add: show players ip in social window. (only for GM's)
+add: special chars by char codes &xxx;.
+Example: &33; is !.
+add: option in settings to disable quick stats assign.
+
+Mana:
+
+
+2010-10-05 New release 1.0.10.5.
+ManaPlus:
+fix: possible client stuck.
+add: show killer name in debug tab.
+add: enable/disable sound hightlight per tab.
+can be enabled/disable from chat tab context menu.
+
+Mana:
+
+
+2010-10-04 New release 1.0.10.4.
+ManaPlus:
+fix: emote key + cursor keys to change direction.
+fix: emotes in popup window.
+fix: possible crashes.
+
+Mana:
+
+
+2010-10-03 New release 1.0.10.3.
+ManaPlus:
+fix: opacity cache.
+add: quick increase stats.
+now not working on windows.
+add: portable mode.
+In windows installer need select portable option.
+add: add basic guild support.
+guild chat commands:
+/createguild name - create new guild.
+/invite nick - invite player to guild.
+/kick nick - kick player from uild.
+/notice text - change guild notice.
+/info - show info about guild.
+/leave - leave guild.
+Note: to create guild you should have snake egg in inventory.
+add: increase item shortcuts count to 20.
+add: increase emote shortcuts count to 40.
+add: 19 server independent smiles. (Nina O'Reilly)
+new smiles supported only by manaplus clients.
+add: updated help. (Mihail Barer).
+
+Mana:
+
+
+2010-09-19 New release 1.0.9.19.
+ManaPlus:
+fix: improve chat resize speed.
+fix: invisible objects with disabled opengl, like pinkies.
+fix: resize windows from top corners.
+add: opacity cache to improve game speed with disabled opengl.
+Warning: some times it may crash client.
+To enable SET \ Video \ Enable opacity cache.
+add: increase outfits count from 80 to 100.
+add: increase outfit slots from 9 to 12.
+add: support zip archives in per server local updates dir.
+add: support update patches zips.
+in this dir local resources can have bigger priority over resources from update server.
+Example dir in linux: ~/.local/share/mana/updates/updates.themanaworld.org/fix/
+In this directory you can place http://tmw.cetki.com/other/update-96b7ecd..eeac43f.zip to fix moggun issue.
+add: moving windows by dragging window from any empty space.
+add: option to disable/enable attack while moving.
+add: context menu in who is online window.
+add: updated russian translation.
+
+Mana:
+
+
+2010-09-12 New release 1.0.9.12.
+ManaPlus:
+fix: set map arrows.
+fix: draw map arrows.
+fix: improved chat draw speed.
+fix: improved game speed.
+add: /undress chat command and popup menu item.
+This command remove all clothes from selected player. This changes only local.
+add: /attack chat command.
+add: icons to spells / text commands.
+add: /outfit next, /outfit prev commands.
+add: /dirs chat command to show game dirs.
+
+Mana:
+
+
+2010-09-04 New release 1.0.9.4.
+ManaPlus:
+fix: updating servers list.
+fix: warp removing from map.
+fix: in away mode drop fps only if game inactive.
+fix: crash on exit on tmw server.
+add: server side attack mode.
+add: free camera mode ([+]).
+In this mode camera can be moved by cursor keys.
+add: draw screen border in minimap.
+add: play sound if you receive global message and game inactive.
+add: dont highlight party tab if got server message on it.
+add: change color on players, who attacking local player.
+add: place away dialog on top of screen.
+add: option to disable auto fix position.
+
+Mana:
+fix: focus on char select dialog.
+
+
+2010-08-29 New release 1.0.8.29.
+ManaPlus:
+fix: walk between maps in e map modes.
+fix: funny symbols and item links.
+fix: visible names option.
+fix: trying avoid server packets bug also in default attack mode.
+fix: changed attack time limit to avoid new server bugs.
+fix: disable hot keys in npc input dialogs.
+fix: crash if client have some corrupted images.
+fix: compilation for gcc 4.5.
+fix: compilation with flag --without-opengl.
+add: new map mode. symbol b. (f)
+add: removed length limit in build walk path.
+add: play whisper sound if new message in active whisper and game not active.
+add: navigation tab in social window.
+left click go to selected target.
+add: key to move to location from navigation tab in social window (RSHIFT + 0-9)
+Key like outfits but only mod key is right shift.
+add: show items refine level.
+add: continue attack if player moved.
+add: attack target after moving to it by attack key (x).
+add: switching to already opened whisper tab.
+add: per server local updates dir.
+in this dir can be placed local resources.
+Example dir in linux: ~/.local/share/mana/updates/updates.themanaworld.org/local/
+
+Mana:
+
+
+2010-08-15 New release 1.0.8.15.
+ManaPlus:
+fix: battle sfx sound.
+fix: gui sound in deb packages.
+fix: show own player level.
+fix: colors in black wood theme (lien).
+fix: crash with -p command line option.
+add: /disconnect chat command.
+add: tooltips for control buttons (right top corner).
+add: /me command in whisper and party tabs.
+add: show level if possible in online list.
+
+Mana:
+
+
+2010-08-03 New release 1.0.8.3.
+ManaPlus:
+fix: money display bug.
+
+Mana:
+
+
+2010-08-01 New release 1.0.8.1.
+ManaPlus:
+fix: improve speed.
+fix: adjust money field size in trade dialog.
+add: show GM level near level in status window.
+add: attribute Attack Delay in status window.
+To open this windows, press F2.
+add: increased number of servers from 6 to 15 in server dialog.
+add: restore whispers between client restarts.
+add: set fps limit to alternate value in away mode or if game minimized.
+add: disable any sound and music in away mode.
+add: antispoof chat protection.
+add: option to auto close or skip updates in login window.
+add: server name in login window.
+add: theme black wood (lien).
+
+Mana:
+fix: fps limiter on windows.
+
+
+2010-07-18 New release 1.0.7.18.
+ManaPlus:
+fix: moved mumble from recommended to suggested in deb packages.
+fix: allow set more then 99 stat points, max 120.
+Work only on servers with this ability, like UFB server.
+fix: show player level.
+fix: improve speed in openGL mode.
+fix: crash on exit.
+fix: dont fix player position in default attack mode.
+add: updated russian translation (Schekoldin Ivan).
+add: context menu to players in online list.
+add: chat commands /befriend, /disregard, /neutral.
+add: allow set fps from 2 to 160.
+add: allow set gui opacity from 2 to 100 %.
+
+Mana:
+
+
+2010-07-04 New release 1.0.7.4.
+ManaPlus:
+fix: problems with font selection.
+fix: crashes.
+fix: -U command option.
+fix: setup window size.
+add: help font.
+add: updated help.
+add: show history in whispers.
+add: per server player relations.
+add: whisper and dialog ame sfx, gui sfx.
+add: experimental support for mumble voice chat.
+First start mumble, then start client with enabled mumble option.
+add: updated russian translation.
+add: safe mode shortcut for windows.
+
+Mana:
+fix: chat messages about user offline now showing in player tab.
+
+
+2010-06-21 New release 1.0.6.21.
+ManaPlus:
+fix: crash on some servers.
+
+Mana:
+
+
+2010-06-20 New release 1.0.6.20.
+ManaPlus:
+fix: avoid server direction bug.
+right direction server send as unknown direction.
+fix: restore main line attack automation.
+add: some russian translation.
+add: show popups for players without party.
+add: font changes.
+To change open SET \ Theme.
+add: per server configs.
+Moved many server related options to per server configs, like magic spells.
+Old values for bars can be restored from context menu.
+add: attack mode 'd'.
+Attack without auto target next monster.
+
+Mana:
+
+
+2010-05-31 New release 1.0.5.30.
+Patch:
+fix: crash from incorrect utf8 chars.
+fix: allow registration.
+add: moved to master mana branch.
+
+Mana:
+fix: improve game speed.
+
+
+2010-05-23 New release 1.0.5.23.
+Patch:
+fix: follow modes and navigate.
+fix: try avoid new server side bugs with packet limiter.
+fix: --skip-update now working.
+add: pickup mode A.
+Allow pickup items in max distance.
+add: allow add any items to buy list in personal shops.
+add: improve text draw speed.
+add: new imitation mode for imitating outfits.
+Switch initation mode by key ([4])
+add: allow mark any map positions with arrow sign and comment.
+To mark current position while you standing press Set Home Location key ([5]).
+To add comment press right button on map arrow.
+To add home location, sit and press Set Home Location key ([5]).
+add: custom resolution.
+To change resolution, click on "custom" resolution.
+add: auto change position if cant attack closed being.
+add: option to hide move path.
+add: change resolution in safe mode to 640x480.
+
+Mana:
+fix: crash with disabled opengl.
+
+
+2010-05-1 New release 1.0.5.1.
+Patch:
+fix: allow start client if update server is down.
+add: show floor item amount, if more then one.
+add: improved command /navigate.
+add: improved move to target.
+add: improved targeting nearest beings.
+
+Mana:
+
+New keys:
+
+
+2010-04-25 New release 1.0.4.25.
+Patch:
+fix: dont show shop requests if shop mode disabled.
+fix: draw items in outfits even if no this item in inventory.
+fix: invite command.
+add: option to hide whisper shop messages.
+Enabled by default.
+add: change color in whisper tab if player go offline.
+add: open buy sell window on selected player.
+Select player, then press talk key.
+add: new follow modes: relative, mirror, pet. ([1])
+add: show server side player position.
+add: manual mode to fix desync position. (D)
+add: add missing help for chat commands.
+add: new commands /loadprice, /saveprice.
+For load and save prices.
+add: new command /trade NICK.
+Open trade window.
+add: option to send shop announce with or without links to items.
+add: partialy right click emulation from keyboard (TAB).
+add: translated some string to russian.
+
+Mana:
+fix: crashes.
+add: clear butotn in npc dialogs.
+
+New keys:
+
+switch follow modes. ([1])
+right click emulation (TAB)
+
+
+2010-04-14 New release 1.0.4.14.
+Patch:
+fix: item amout window size.
+fix: gender display.
+add: trade chat tab.
+Most trade messages now moving to this tab.
+Also players can speak in this tab about trades.
+add: speed improvement.
+add: button store in config window.
+Save configuration file to disk.
+add: simplify context menus.
+add: personal shop.
+To this shop player can add items for buy/sale.
+Other players can use it by ser away outfit, and after away it restore old outfit.
+
+Mana:
+add: classic skin update.
+
+
+2010-02-28 New release 1.0.2.28.
+Patch:
+fix: allow enter in NPC dialogs letters, assigned to prev\next chat tab keys.
+fix: dont redirect server messages from party tab.
+fix: npc flood with small dialogs.
+fix: fixed some crashes.
+add: show target player level, nick, party in debug window.
+add: command /navigate x y.
+add: heal players by click in social window.
+add: get player levels from parsing #inwilt result.
+add: visible players tab in social window (P tab).
+add: actions in social window.
+left click - heal
+right click - context menu
+middle click - whisper
+add: damage counter for players.
+You can see it in social window in P tab.
+
+Mana:
+fix: crash in TAW maps.
+add: party windows replaced to social window.
+add: party tooltips for players.
+add: paste from clipboard.
+CTRL+V
+
+
+2010-02-07 New release 1.0.2.7.
+add: health bars in party window.
+add: own health in party window.
+add: build on latest mana git client.
+fix: allow enter numbers in input fields.
+fix: segfault in follow.
+fix: other small fixes.
+
+
+2010-01-17 New release 1.0.1.17.
+fix: D.o.S. in chat.
+fix: D.o.S. in trade.
+add: ignore button in trade request.
+add: themes (classic, wood, red).
+change : SET / theme / gui theme
+add: buy/sell in npc context menu.
+add: /follow command.
+add: /heal command.
+
+
+2010-01-02 New release 0.12.
+fix: random generator in crazy move A.
+fix: improved draw chat speed.
+fix: fixed /closeall crush.
+fix: use workaround to fix clover/towel and some other feature inventory bugs.
+Two buttons, one for equip and second for use item.
+fix: default Who is online size and position.
+add: e? command in crazy move A.
+e? show random emotion in crazy move A.
+add: limit lines in chat.
+change: SET / chat / Limit max lines in chat.
+add: clear command in chat context menu.
+add: highlight target being by bold font.
+add: afk mode. ([2])
+change : SET / other / Enable afk message
+use: key 2 on numeric keuboard or chat command /away TEXT. (or /away)
+add: draw item in item popups.
+
+New keys:
+Enable away mode ([2]).
+
+
+2009-12-13 New release 0.11.
+add: highlight player and monsters attack range.
+change: set / Other
+Highlight Player Attack Range
+Highlight Monster Attack Range
+add: colors in setup colors for attack range and portals.
+change: set / Colors
+Local Player Attack Range
+Local Player Attack Range Border
+Monster Attack Range
+Portal Highlight
+add: colors in setup for home location, collisions.
+change: set / Colors
+Home Place
+Home Place Border
+Collision Highlight
+add: key to copy equiped items to outfit (]).
+add: key to disable game modifiers ([8]).
+add: ping field in debug window.
+add: target id in debug window.
+add: chat logger.
+change: set / chat / Enable Chat Logger
+add: /outfit N command.
+Wear outfit N.
+add: /emote N command.
+Show emote N.
+add: auto complete party members in party tab.
+add: key switching on/off sound ([3]).
+add: highlight inactive tab if player name is writed.
+change: set / Color / Tab With Player Name Highlight
+
+New keys:
+key to copy equiped items to outfit (]).
+key to disable game modifiers ([8]).
+key switching on/off sound ([3]).
+
+
+2009-11-29 New release 0.10.
+fix: possible crush in update window.
+fix: localisation resources in deb packages.
+fix: added edit button to crazy move A.
+fix: allow using other update servers.
+add: auto complete chat key in settings. (TAB)
+add: hide input chat key. (ESC)
+add: manual update button in online users list and online list resize.
+add: set log file name from command line.
+add: limit chat messages size.
+Change: set / chat / Limit max chars in chat line.
+
+New keys:
+Hide input chat key (ESC)
+
+add: manual update button in online users list and online list resize.
+add: set log file name from command line.
+add: limit chat messages size.
+Change: set / chat / Limit max chars in chat line.
+
+New keys:
+
+Hide input chat key. (ESC)
+
+Download
+
+
+
+2009-11-15 New release 0.9.
+Download  Install in Ubuntu
+
+New features:
+
+fix: remove spaces and (GM) label from GM nicks in onlile list.
+new: moved to git sources.
+new: popup windows for hp, mp, xp bars.
+new: more font sizes in setup.
+new: context menu in chat tabs.
+new: keys to wear next/previous outfit.
+new: Increased outfits count to 40.
+Keys for outfits 1 - 0, -, =, backspace, insert, home, q - p, [, ], \, a - l, ;, ', z
+new: Increased drop slots to 16.
+new: Increased spell shortcuts to 49.
+new: New pick up modes g ang G. go and pick up in 4 and 8 cell distance.
+new: programmed crazy move type A.
+For this crazy move type you can write simple program in set / Other / Crazy move A program.
+Allowed commands:
+du, dd, dl, dr, d? change direction to up, down, left, right or random.
+mu, md, ml, mr, m?, mf, mb move to up, down, left, right, random, forward, backward.
+s sit.
+on, op wear next outfit, wear previous outfit.
+d0, da drop from first slot, drop from all slots.
+p pick up.
+e0 - e9, ea - ed emotions.
+new: /target command.
+
+New keys:
+
+Wear next outfit. (right alt + right)
+Wear previous outfit. (right alt + left)
+
+Download
+
+
+
+2009-10-25 New release 0.8.
+Download
+
+New features:
+
+new: Setting to disable higlighting floor items.
+new: Auto complete in chat.
+To use press TAB key.
+Auto complete visible nicks, commands from Commands Window and from chat history.
+new: Show patch update information in update window.
+
+Download
+
+
+
+2009-10-18 New release 0.7.
+New features:
+
+new: Spells Window renamed to Commands Window.
+new: Command (spells) editor.
+To use editor, open Commands Window (j), then to open editor, press by right mouse button on spell.
+new: Text or GM commands in Commands Window.
+Now you can add or edit in Commands Window spells, simple text or GM commands.
+new: Command /closeall for close all whisper tabs.
+new: Command /ignoreall for ignore all current whispers.
+new: highlight drops by time.
+remove: no rain.
+fix: disable keyboard shortcuts in drop/select item window.
+
+
+
+2009-10-11 New release 0.6.
+New features:
+
+fix: fixed remove colors.
+fix: fixed "Allow magic and GM command in all chat tabs".
+new: bot checker. ([)
+Warning: may conflict with other key bindings.
+Check bindings in set / Keyboard / Bot Checker Window .
+By default disabled. To enable, use set / other / enable bot checker
+new: in colors picker color numbers replaced to color names.
+new: display selected target in debug window.
+new: spell shortcuts. (j)
+Allow add spell shortcurs to shortcuts window.
+To use, select spell in spells window by mouse click, then click on free slot in shortcuts window.
+In this versions only predefined spells.
+
+New keys:
+
+Bot checker window. ([)
+Spells window. (j)
+
+
+
+2009-10-04 New release 0.5.
+New features:
+
+fix: possible crush if open emote window.
+fix: now work 14 slots in emote window.
+fix: some fix for jacko counter.
+new: cycle select palyers.
+Change: set / other / cycle player targets.
+new: cycle select monsters or palyers.
+Change: set / other / cycle monster targets.
+new: cycle rainbow colors.
+new: target name and position in debug window.
+new: magic spells and GM commands work in all chat tabs.
+Change: set / chat / All magic and GM commands in all chat tabs.
+new: move player spell messages to debug window.
+Change: set / chat / Log magic messages in debug tab.
+new: move server messages to debug window.
+Change: set / chat / Show server messages in debug tab.
+new: outfits wear and copy keys in settings.
+Change: set / keyboard / Wear Outfit.
+set / keyboard / Copy Outfit.
+new: move to target modifer.
+Allow move to target in given distance
+Move to target. (v)
+Change distance. (.)
+new: hide or show chat colors picker.
+Change: set / chat / Chow chat colors list.
+new: allow set home position.
+Set home locaton to current position. ([5])
+Go to home location. (d)
+new: home locations now highligted.
+
+New keys:
+
+Change distance in move to target. (.)
+Set home locaton to current position. ([5])
+
+
+
+2009-09-29 New release 0.4.
+New features:
+
+Remove colors on overhead text.
+Setting to hide or show portals higlighting.
+Change: set / other / Highlight map portals.
+Whisper command in popup menu.
+Magic attack.
+Attack key (b).
+Switch attack spell (,).
+Ability to change default text color in sended text messages.
+Ability to remove colors from other users messages.
+Change: set / chat / Remove colors from received chat messages.
+Fix: Allow select dead player by mouse, if enabled seleting dead players.
+Fix: Joystick pick up now work like pick up from keyboard.
+Fix: Fixed negative jacko spawn counter.
+Fix: Fixed some default colors.
+Fix: Fixed crazy move 9.
+
+New keys:
+
+Magic attack (b).
+Switch magic attack spell (,).
+
+
+2009-09-26 First patch version.
+New features:
+Show damage inflicted near monster's name.
+Change: set / other / Show damage inflicted to monsters.
+Select text colors for local player damage and local player misses.
+Change: set / colors. Items: Local player hit monster, Local player critical hit, Local player miss.
+Highlighting map portals with color.
+Allow target only reachable monsters.
+Change: set / other / Auto target only reachable monsters.
+Allow target dead players.
+Change: set / players / Target dead players.
+Quick heal feature.
+Heal targeted player or self.
+Quick pick up feature.
+Pick up modes: small (1x1), default (2x1), forward (2x3), full (3x3)
+For pick up use standard pickup key. (z)
+For change use Change pickup type key. (o)
+Nuke player (ported from qoal patch).
+Debug chat tab for some information.
+Print all visible object to debug chat window.
+In chat type /all.
+Anti rain.
+Change: set / other / No rain.
+/ignore, /unignore, /quit command in chat (ported from git version)
+/move X Y command for move to location.
+Quick Drops Window with 9 drop slots.
+To open use drop window key. (w)
+Quick drop.
+Drop N items at once from 0 slot. (y)
+Drop N items at once from all slots. (u)
+Use drop counter for drops. To change counter use (i)
+Who is online (ported from qoal patch).
+Outfit window (ported from git version).
+To open use outfits window key. (`)
+To wear outfit use Right-CTRL+outfit key. (1-9,0,-,=,backspace,insert,home)
+Outfit addons.
+15 different outfits.
+To Copy different outfit to current use left CTRL+outfit key. (1-9,0,-,=,backspace,insert,home)
+Check box unequip first work independently for each outfit.
+Kill stats (ported from qoal patch).
+To open use Kill stats window key. (e)
+Changing direction (rotate player) without moves.
+To rotate use Direct up/left/down/right keys. (|,;,k,')
+or ALT+move keys
+Crazy moves.
+For programmed moves use crazy moves key. (/)
+To change current move type use Change crazy move type. (\)
+Insert unicode chars in chat (ported from qoal patch).
+Player position in debug window.
+Id in item popups.
+Experience per 1,5,15 minutes in kill stats.
+Jack O counter in kill stats.
+Different statuses in top left window corner.
+To change statuses use designated keys.
+To see detailed information, move mouse to statuses bar.
+Unassign key binding in keyboard setup.
+You can unassign any key in key bindings window.
+After changing key bindings show first conflicting key binding.
+New setup page "Other".
+New settings in setup player tab.
+New parameters in stats window.
+Added Flee bonus and target time.
+New map view mode. (without big objects, for example without trees).
+To switch mode use Find path to mouse key. (f)
+Allow player to speak after death (ported from qoal patch).
+Smaller window buttons in top right corner.
+More shortcuts (15).
+Game modifiers.
+Allow player to change some game behaviours from keyboard.
+Can view in top left corner.
+Allow sit without pauses.
+Allow attack from sitting (quick stand).
+Allow move to last target.
+To move use Move to target key. (v)
+Allow player to move to home position.
+To move use Move to home key. (d)
+Show player gender.
+To change open set / player / show gender.
+Allow automatically switch from bow to sword and backward.
+Allow switch weapon depend on distance to target.
+To change current switch mode use Change attack weapon type key. (g)
+
+New keys:
+Move to target. (v)
+Move to home. (d)
+Change pick up type. (o)
+Changing player facing direction. (k,l,;,')
+Crazy moves. (/)
+Change crazy move type. (\)
+Quick drop. (u)
+Quick drop from first slot only. (y)
+Switch quick drop counter. (i)
+Heal. (c)
+Itenplz. (m)
+Invert move direction. ([.])
+Change attack weapon type. (g)
+
+New mouse actions:
+Heal (Attack Key + left mouse button)
