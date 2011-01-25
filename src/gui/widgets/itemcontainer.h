@@ -124,6 +124,8 @@ class ItemContainer : public gcn::Widget,
 
         void setSortType (int sortType);
 
+        void updateMatrix();
+
     private:
         enum Direction
         {
@@ -178,7 +180,6 @@ class ItemContainer : public gcn::Widget,
          */
         int getSlotIndex(int x, int y) const;
 
-        void updateMatrix();
 
         Inventory *mInventory;
         int mGridColumns, mGridRows;

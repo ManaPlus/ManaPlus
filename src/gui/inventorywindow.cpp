@@ -535,6 +535,8 @@ void InventoryWindow::slotsChanged(Inventory* inventory)
         }
 
         mSlotsBar->setText(strprintf("%d/%d", usedSlots, maxSlots));
+        if (mItems)
+            mItems->updateMatrix();
     }
 }
 
