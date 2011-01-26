@@ -154,6 +154,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mDrawPath = config.getBoolValue("drawPath");
     mServerAttack = config.getBoolValue("serverAttack");
     mAttackMoving = config.getBoolValue("attackMoving");
+    mShowJobExp = config.getBoolValue("showJobExp");
 
     mPingSendTick = 0;
     mWaitPing = false;
@@ -172,6 +173,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("drawPath", this);
     config.addListener("serverAttack", this);
     config.addListener("attackMoving", this);
+    config.addListener("showJobExp", this);
     setShowName(config.getBoolValue("showownname"));
     beingInfoCache.clear();
 }
@@ -187,6 +189,7 @@ LocalPlayer::~LocalPlayer()
     config.removeListener("drawPath", this);
     config.removeListener("serverAttack", this);
     config.removeListener("attackMoving", this);
+    config.removeListener("showJobExp", this);
 
     delete mAwayDialog;
     mAwayDialog = 0;
@@ -1476,6 +1479,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mServerAttack = config.getBoolValue("serverAttack");
     else if (value == "attackMoving")
         mAttackMoving = config.getBoolValue("attackMoving");
+    else if (value == "showJobExp")
+        mShowJobExp = config.getBoolValue("showJobExp");
 }
 
 void LocalPlayer::event(Channels channel, const Mana::Event &event)
@@ -1507,6 +1512,9 @@ void LocalPlayer::event(Channels channel, const Mana::Event &event)
         }
         else if (event.getName() == EVENT_UPDATESTAT)
         {
+            if (!mShowJobExp)
+                return;
+
             int id = event.getInt("id");
             if (id == Net::getPlayerHandler()->getJobLocation())
             {

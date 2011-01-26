@@ -554,6 +554,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mSyncPlayerMove;
         bool mDrawPath;
         bool mAttackMoving;
+        bool mShowJobExp;
         int mActivityTime;
         int mNavigateX;
         int mNavigateY;
