@@ -1,8 +1,8 @@
-How to compile and run Mana on your GNU/Linux Box
+How to compile and run ManaPlus on your GNU/Linux Box
 =================================================
 
-Homepage:  http://manasource.org/
-IRC:       irc.freenode.net / #manasource
+Homepage:  http://tmw.cetki.com/
+IRC:       irc.freenode.net / #manaplus
 
 1) Requirements
 2) Compiling And Installing Mana
@@ -67,11 +67,3 @@ different prefix to configure as usual.
 
   Rebuild the executable from scratch using "make clean" and then "make".
 
-
-3. Notes
-========
-
-If you have any problems, you are welcome to post your questions on our forums,
-or talk about them in our IRC channel.
-
-- Mana Dev Team
