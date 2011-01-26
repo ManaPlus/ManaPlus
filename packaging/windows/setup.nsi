@@ -43,8 +43,8 @@ SetCompressor /SOLID lzma
 !ifndef PRODUCT_VERSION
   !define PRODUCT_VERSION "0.0.29.1"
 !endif
-!define PRODUCT_PUBLISHER "Mana Development Team"
-!define PRODUCT_WEB_SITE "http://manasource.org"
+!define PRODUCT_PUBLISHER "ManaPlus Development Team"
+!define PRODUCT_WEB_SITE "http://tmw.cetki.com/4144/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\manaplus.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
