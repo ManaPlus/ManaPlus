@@ -50,6 +50,7 @@
 #include "gui/widgets/whispertab.h"
 
 #include "net/chathandler.h"
+#include "net/playerhandler.h"
 #include "net/net.h"
 
 #include "utils/dtor.h"
@@ -802,6 +803,27 @@ void ChatWindow::event(Channels channel, const Mana::Event &event)
                 default:
                     break;
             };
+        }
+        else if (event.getName() == EVENT_UPDATESTAT)
+        {
+            if (!config.getBoolValue("showJobExp"))
+                return;
+
+            int id = event.getInt("id");
+            if (id == Net::getPlayerHandler()->getJobLocation())
+            {
+                std::pair<int, int> exp
+                    = PlayerInfo::getStatExperience(id);
+                if (event.getInt("oldValue1") > exp.first
+                    || !event.getInt("oldValue2"))
+                {
+                    return;
+                }
+
+                int change = exp.first - event.getInt("oldValue1");
+                if (change != 0)
+                    battleChatLog("+" + toString(change) + " job");
+            }
         }
     }
 }
