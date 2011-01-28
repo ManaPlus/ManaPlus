@@ -170,7 +170,10 @@ class LayoutCell
             FILL
         };
 
-        LayoutCell(): mType(NONE) {}
+        LayoutCell():
+            mWidget(0),
+            mType(NONE)
+        { }
 
         ~LayoutCell();
 

@@ -42,9 +42,14 @@ Animation *Action::getAnimation(int direction) const
     if (i == mAnimations.end())
     {
         if (direction == DIRECTION_UPLEFT || direction == DIRECTION_UPRIGHT)
+        {
             direction = DIRECTION_UP;
-        else if (direction == DIRECTION_DOWNLEFT || direction == DIRECTION_DOWNRIGHT)
+        }
+        else if (direction == DIRECTION_DOWNLEFT
+                 || direction == DIRECTION_DOWNRIGHT)
+        {
             direction = DIRECTION_DOWN;
+        }
         i = mAnimations.find(direction);
 
         // When the given direction is not available, return the first one.

@@ -55,7 +55,6 @@ class ConnectionDialog : public Window, gcn::ActionListener
         void draw(gcn::Graphics *graphics);
 
     private:
-        gcn::Label *mLabel;
         State mCancelState;
 };
 

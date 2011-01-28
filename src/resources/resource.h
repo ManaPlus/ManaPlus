@@ -62,7 +62,7 @@ class Resource
         /**
          * Return refCount for this resource.
          */
-        unsigned getRefCount()
+        unsigned getRefCount() const
         { return mRefCount; }
 
     protected:

@@ -356,7 +356,8 @@ void StatusWindow::event(Channels channel _UNUSED_,
                     // new job exp limit, we fixing it
                     lvl ++;
                     blocked = true;
-                    PlayerInfo::setStatExperience(id, exp.first, 20000 + lvl * 150);
+                    PlayerInfo::setStatExperience(
+                        id, exp.first, 20000 + lvl * 150);
                     PlayerInfo::setStatBase(id, lvl);
                     blocked = false;
                 }

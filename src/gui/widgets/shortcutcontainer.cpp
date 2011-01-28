@@ -30,14 +30,14 @@
 float ShortcutContainer::mAlpha = 1.0;
 
 ShortcutContainer::ShortcutContainer():
-    mGridWidth(1),
-    mGridHeight(1),
     mBackgroundImg(0),
     mMaxItems(0),
     mBoxWidth(1),
     mBoxHeight(1),
     mCursorPosX(0),
-    mCursorPosY(0)
+    mCursorPosY(0),
+    mGridWidth(1),
+    mGridHeight(1)
 {
 }
 

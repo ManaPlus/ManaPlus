@@ -92,6 +92,9 @@ PopupMenu::PopupMenu():
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
+    mRenameListener.setMapItem(0);
+    mRenameListener.setDialog(0);
+
     add(mBrowserBox);
 }
 

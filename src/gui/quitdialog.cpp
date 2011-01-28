@@ -140,7 +140,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             Client::setState(STATE_EXIT);
         }
         else if (Net::getGameHandler()->isConnected()
-            && mSwitchAccountServer->isSelected())
+                 && mSwitchAccountServer->isSelected())
         {
             Client::setState(STATE_SWITCH_SERVER);
         }

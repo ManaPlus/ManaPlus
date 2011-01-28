@@ -29,5 +29,5 @@
  * @return <code>true</code> when successful or <code>false</code> when there
  *         was a problem retrieving the clipboard buffer.
  */
-bool RetrieveBuffer(std::string& text, std::string::size_type& pos);
+bool retrieveBuffer(std::string& text, std::string::size_type& pos);
 

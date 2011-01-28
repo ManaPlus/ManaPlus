@@ -300,7 +300,7 @@ void TextField::handlePaste()
     std::string text = getText();
     std::string::size_type caretPos = getCaretPosition();
 
-    if (RetrieveBuffer(text, caretPos))
+    if (retrieveBuffer(text, caretPos))
     {
         setText(text);
         setCaretPosition(static_cast<unsigned>(caretPos));
