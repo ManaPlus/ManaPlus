@@ -1,3 +1,18 @@
+2011-01-30 New release 1.1.1.30.
+ManaPlus:
+fix: stuck on disconnections while opened modal window.
+fix: allow use rock knife in auto switching weapons.
+fix: issue with invisible items in inventory after moving to and from storage.
+add: show job bar in ministatus window.
+add: diagonal move animation (need support in client data).
+add: recovery on broken server job level and job level max experience.
+add: floor item icon different from normal item icon (need support in client data).
+add: show unknown skills in skills window.
+add: show job xp after mob kill.
+add: support for zlib map compression.
+add: updated russian translation.
+
+
 2011-01-16 New release 1.1.1.16.
 ManaPlus:
 fix: hide own hp bar if dead.
