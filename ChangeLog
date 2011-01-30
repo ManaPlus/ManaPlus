@@ -3,6 +3,7 @@ ManaPlus:
 fix: stuck on disconnections while opened modal window.
 fix: allow use rock knife in auto switching weapons.
 fix: issue with invisible items in inventory after moving to and from storage.
+fix: mouse cursors in wood and blackandwhite themes. (Nina O'Reilly)
 add: show job bar in ministatus window.
 add: diagonal move animation (need support in client data).
 add: recovery on broken server job level and job level max experience.
