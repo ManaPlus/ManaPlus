@@ -1962,7 +1962,7 @@ msgstr "Загрузить"
 
 #: src/gui/serverdialog.cpp:250
 msgid "Connect"
-msgstr "Соединится"
+msgstr "Соединиться"
 
 #: src/gui/serverdialog.cpp:251
 msgid "Custom Server"
