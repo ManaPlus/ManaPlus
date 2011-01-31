@@ -308,3 +308,111 @@ void Gui::updateFonts()
 
     static_cast<TrueTypeFont*>(boldFont)->loadFont(fontFile, fontSize);
 }
+
+void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
+                               int x, int y, bool force,
+                               bool toSourceOnly)
+{
+    if (!source || !mFocusHandler)
+        return;
+
+    gcn::Widget* parent = source;
+    gcn::Widget* widget = source;
+
+    if (!force && mFocusHandler->getModalFocused() != NULL
+        && !widget->isModalFocused())
+    {
+        return;
+    }
+
+    if (!force && mFocusHandler->getModalMouseInputFocused() != NULL
+        && !widget->isModalMouseInputFocused())
+    {
+        return;
+    }
+
+    while (parent != NULL)
+    {
+        // If the widget has been removed due to input
+        // cancel the distribution.
+        if (!gcn::Widget::widgetExists(widget))
+            break;
+
+        parent = (gcn::Widget*)widget->getParent();
+
+        if (widget->isEnabled() || force)
+        {
+            int widgetX, widgetY;
+            widget->getAbsolutePosition(widgetX, widgetY);
+
+            gcn::MouseEvent mouseEvent(source, mShiftPressed, mControlPressed,
+                mAltPressed, mMetaPressed, type, button,
+                x - widgetX, y - widgetY, mClickCount);
+
+            std::list<gcn::MouseListener*> mouseListeners
+                = widget->_getMouseListeners();
+
+            // Send the event to all mouse listeners of the widget.
+            for (std::list<gcn::MouseListener*>::iterator
+                 it = mouseListeners.begin();
+                 it != mouseListeners.end(); ++ it)
+            {
+                switch (mouseEvent.getType())
+                {
+                    case gcn::MouseEvent::ENTERED:
+                        (*it)->mouseEntered(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::EXITED:
+                        (*it)->mouseExited(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::MOVED:
+                        (*it)->mouseMoved(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::PRESSED:
+                        (*it)->mousePressed(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::RELEASED:
+                        (*it)->mouseReleased(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::WHEEL_MOVED_UP:
+                        (*it)->mouseWheelMovedUp(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::WHEEL_MOVED_DOWN:
+                        (*it)->mouseWheelMovedDown(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::DRAGGED:
+                        (*it)->mouseDragged(mouseEvent);
+                        break;
+                    case gcn::MouseEvent::CLICKED:
+                        (*it)->mouseClicked(mouseEvent);
+                        break;
+                    default:
+                        throw GCN_EXCEPTION("Unknown mouse event type.");
+                }
+            }
+
+            if (toSourceOnly)
+                break;
+        }
+
+        gcn::Widget* swap = widget;
+        widget = parent;
+        parent = (gcn::Widget*)swap->getParent();
+
+        // If a non modal focused widget has been reach
+        // and we have modal focus cancel the distribution.
+        if (mFocusHandler->getModalFocused() != NULL
+            && !widget->isModalFocused())
+        {
+            break;
+        }
+
+        // If a non modal mouse input focused widget has been reach
+        // and we have modal mouse input focus cancel the distribution.
+        if (mFocusHandler->getModalMouseInputFocused() != NULL
+            && !widget->isModalMouseInputFocused())
+        {
+            break;
+        }
+    }
+}

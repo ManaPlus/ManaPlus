@@ -125,6 +125,10 @@ class Gui : public gcn::Gui
     protected:
         void handleMouseMoved(const gcn::MouseInput &mouseInput);
 
+        void distributeMouseEvent(gcn::Widget* source, int type, int button,
+                                  int x, int y, bool force = false,
+                                  bool toSourceOnly = false);
+
     private:
         GuiConfigListener *mConfigListener;
         gcn::Font *mGuiFont;                  /**< The global GUI font */
