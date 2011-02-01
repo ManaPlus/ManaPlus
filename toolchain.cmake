@@ -19,7 +19,7 @@ SET(SDLMIXER_INCLUDE_DIR ../mana_win/libs/include/SDL)
 SET(SDLNET_INCLUDE_DIR ../mana_win/libs/include/SDL)
 SET(SDLTTF_INCLUDE_DIR ../mana_win/libs/include/SDL)
 SET(SDL_INCLUDE_DIR ../mana_win/libs/include/SDL)
-
+SET(ENABLE_MANASERV ON)
 
 # here is the target environment located
 SET(CMAKE_FIND_ROOT_PATH  /usr/i586-mingw32msvc /../mana_win/libs )

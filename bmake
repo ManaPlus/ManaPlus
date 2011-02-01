@@ -38,7 +38,8 @@ autoreconf -i
 ./configure --prefix=$dir/run \
             --datadir=$dir/run/share/games \
             --bindir=$dir/run/bin \
-            --mandir=$dir/run/share/man
+            --mandir=$dir/run/share/man \
+            --enable-manaserv=yes
 
 cd po
 #make -j5 update-po 2>../make1.log

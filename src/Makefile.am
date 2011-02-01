@@ -6,26 +6,7 @@ manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
 
-manaplus_SOURCES = enet/callbacks.c \
-	      enet/compress.c \
-	      enet/host.c \
-	      enet/list.c \
-	      enet/packet.c \
-	      enet/peer.c \
-	      enet/protocol.c \
-	      enet/unix.c \
-	      enet/win32.c \
-	      enet/callbacks.h \
-	      enet/enet.h \
-	      enet/list.h \
-	      enet/protocol.h \
-	      enet/time.h \
-	      enet/types.h \
-	      enet/unix.h \
-	      enet/utility.h \
-	      enet/win32.h
-
-manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
+manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
 	      gui/widgets/battletab.cpp \
 	      gui/widgets/battletab.h \
@@ -482,7 +463,26 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      vector.h \
 	      winver.h
 
-manaplus_SOURCES += \
+if ENABLE_MANASERV
+manaplus_CXXFLAGS += -DMANASERV_SUPPORT
+manaplus_SOURCES += enet/callbacks.c \
+	      enet/compress.c \
+	      enet/host.c \
+	      enet/list.c \
+	      enet/packet.c \
+	      enet/peer.c \
+	      enet/protocol.c \
+	      enet/unix.c \
+	      enet/win32.c \
+	      enet/callbacks.h \
+	      enet/enet.h \
+	      enet/list.h \
+	      enet/protocol.h \
+	      enet/time.h \
+	      enet/types.h \
+	      enet/unix.h \
+	      enet/utility.h \
+	      enet/win32.h \
 	      net/manaserv/attributes.cpp \
 	      net/manaserv/attributes.h \
 	      net/manaserv/adminhandler.cpp \
@@ -533,6 +533,7 @@ manaplus_SOURCES += \
 	      net/manaserv/specialhandler.h \
 	      net/manaserv/tradehandler.cpp \
 	      net/manaserv/tradehandler.h
+endif
 
 manaplus_SOURCES += \
 	      net/tmwa/gui/guildtab.cpp \

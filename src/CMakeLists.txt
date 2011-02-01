@@ -33,6 +33,10 @@ IF (ENABLE_NLS)
     SET(FLAGS "${FLAGS} -DENABLE_NLS=1")
 ENDIF()
 
+IF (ENABLE_MANASERV)
+    SET(FLAGS "${FLAGS} -DMANASERV_SUPPORT=1")
+ENDIF()
+
 IF (CMAKE_BUILD_TYPE)
     STRING(TOLOWER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_TOLOWER)
     IF(CMAKE_BUILD_TYPE_TOLOWER MATCHES debug OR
@@ -111,24 +115,6 @@ MARK_AS_ADVANCED(SDL_INCLUDE_DIR)
 MARK_AS_ADVANCED(SDL_LIBRARY)
 
 SET(SRCS
-    enet/callbacks.c
-    enet/callbacks.h
-    enet/compress.c
-    enet/enet.h
-    enet/host.c
-    enet/list.c
-    enet/list.h
-    enet/packet.c
-    enet/peer.c
-    enet/protocol.c
-    enet/protocol.h
-    enet/time.h
-    enet/types.h
-    enet/unix.c
-    enet/unix.h
-    enet/utility.h
-    enet/win32.c
-    enet/win32.h
     gui/widgets/avatarlistbox.cpp
     gui/widgets/avatarlistbox.h
     gui/widgets/battletab.cpp
@@ -635,7 +621,25 @@ SET(SRCS_TMWA
     net/tmwa/tradehandler.h
     )
 
-SET(SRCS_MANAPLUS
+SET(SRCS_MANASERV
+    enet/callbacks.c
+    enet/callbacks.h
+    enet/compress.c
+    enet/enet.h
+    enet/host.c
+    enet/list.c
+    enet/list.h
+    enet/packet.c
+    enet/peer.c
+    enet/protocol.c
+    enet/protocol.h
+    enet/time.h
+    enet/types.h
+    enet/unix.c
+    enet/unix.h
+    enet/utility.h
+    enet/win32.c
+    enet/win32.h
     net/manaserv/attributes.cpp
     net/manaserv/attributes.h
     net/manaserv/adminhandler.cpp
@@ -689,8 +693,8 @@ SET(SRCS_MANAPLUS
     )
 
 IF (WIN32)
-    SET(SRCS_MANAPLUS
-        ${SRCS_MANAPLUS}
+    SET(SRCS
+        ${SRCS}
         utils/specialfolder.cpp
         utils/specialfolder.h
         mana.rc
@@ -699,7 +703,11 @@ ENDIF ()
 
 SET (PROGRAMS manaplus)
 
-ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_MANAPLUS} ${SRCS_TMWA})
+IF (ENABLE_MANASERV)
+    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA})
+ELSE(ENABLE_MANASERV)
+    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_TMWA})
+ENDIF(ENABLE_MANASERV)
 
 TARGET_LINK_LIBRARIES(manaplus
     ${SDLGFX_LIBRARIES}

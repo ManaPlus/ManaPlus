@@ -105,9 +105,10 @@ public:
         // Used for backward compatibility
         else if (compareStrI(type, "eathena") == 0)
             return TMWATHENA;
+#ifdef MANASERV_SUPPORT
         else if (compareStrI(type, "manaserv") == 0)
             return MANASERV;
-
+#endif
         return UNKNOWN;
     }
 };

@@ -134,6 +134,17 @@ AC_MSG_ERROR([ *** Unable to find SDL_net library]))
 AC_CHECK_LIB(rt, shm_open, ,
 AC_MSG_ERROR([ *** Unable to find librt library]))
 
+# Enable manaserv
+AC_ARG_ENABLE(manaserv,
+[  --enable-manaserv    Turn on manaserv],
+[case "${enableval}" in
+  yes) with_manaserv=true ;;
+  no)  with_manaserv=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-manaserv) ;;
+esac],[with_manaserv=false])
+
+AM_CONDITIONAL(ENABLE_MANASERV, test x$with_manaserv = xtrue)
+
 AC_CONFIG_FILES([
 Makefile
 src/Makefile

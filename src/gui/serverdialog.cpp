@@ -122,8 +122,10 @@ std::string TypeListModel::getElementAt(int elementIndex)
 {
     if (elementIndex == 0)
         return "TmwAthena";
+#ifdef MANASERV_SUPPORT
     else if (elementIndex == 1)
         return "ManaServ";
+#endif
     else
         return "Unknown";
 }

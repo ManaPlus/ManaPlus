@@ -41,7 +41,9 @@
 
 #include "net/tmwa/generalhandler.h"
 
+#ifdef MANASERV_SUPPORT
 #include "net/manaserv/generalhandler.h"
+#endif
 
 Net::AdminHandler *adminHandler = NULL;
 Net::CharHandler *charHandler = NULL;
@@ -157,10 +159,11 @@ void connectToServer(const ServerInfo &server)
 
         switch (server.type)
         {
+#ifdef MANASERV_SUPPORT
             case ServerInfo::MANASERV:
                 new ManaServ::GeneralHandler;
                 break;
-
+#endif
             case ServerInfo::TMWATHENA:
                 new TmwAthena::GeneralHandler;
                 break;
