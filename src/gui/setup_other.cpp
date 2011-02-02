@@ -64,6 +64,7 @@
 #define ACTION_SHOW_MOB_HP "show mob hp"
 #define ACTION_SHOW_OWN_HP "show own hp"
 #define ACTION_SHOW_JOB_EXP "show job exp"
+#define ACTION_SHOW_BEING_POPUP "show being popup"
 
 Setup_Other::Setup_Other():
     mShowMonstersTakedDamage(config.getBoolValue("showMonstersTakedDamage")),
@@ -90,6 +91,7 @@ Setup_Other::Setup_Other():
     mShowMobHP(config.getBoolValue("showMobHP")),
     mShowOwnHP(config.getBoolValue("showOwnHP")),
     mShowJobExp(config.getBoolValue("showJobExp")),
+    mShowBeingPopup(config.getBoolValue("showBeingPopup")),
     mEditDialog(0)
 {
     setName(_("Misc"));
@@ -189,6 +191,10 @@ Setup_Other::Setup_Other():
                                        mShowJobExp,
                                        this, ACTION_SHOW_JOB_EXP);
 
+    mShowBeingPopupCheckBox = new CheckBox(_("Show players popups"),
+                                       mShowBeingPopup,
+                                       this, ACTION_SHOW_BEING_POPUP);
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -205,6 +211,7 @@ Setup_Other::Setup_Other():
     place(12, 6, mShowMobHPCheckBox, 10);
     place(12, 7, mShowOwnHPCheckBox, 10);
     place(12, 8, mShowJobExpCheckBox, 10);
+    place(12, 9, mShowBeingPopupCheckBox, 10);
     place(0, 3, mFloorItemsHighlightCheckBox, 12);
     place(0, 4, mHighlightAttackRangeCheckBox, 12);
     place(0, 5, mHighlightMonsterAttackRangeCheckBox, 12);
@@ -341,6 +348,10 @@ void Setup_Other::action(const gcn::ActionEvent &event)
     {
         mShowJobExp = mShowJobExpCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_SHOW_BEING_POPUP)
+    {
+        mShowBeingPopup = mShowBeingPopupCheckBox->isSelected();
+    }
 }
 
 void Setup_Other::cancel()
@@ -416,6 +427,9 @@ void Setup_Other::cancel()
 
     mShowJobExp = config.getBoolValue("showJobExp");
     mShowJobExpCheckBox->setSelected(mShowJobExp);
+
+    mShowBeingPopup = config.getBoolValue("showBeingPopup");
+    mShowBeingPopupCheckBox->setSelected(mShowBeingPopup);
 }
 
 void Setup_Other::apply()
@@ -444,6 +458,7 @@ void Setup_Other::apply()
     config.setValue("showMobHP", mShowMobHP);
     config.setValue("showOwnHP", mShowOwnHP);
     config.setValue("showJobExp", mShowJobExp);
+    config.setValue("showBeingPopup", mShowBeingPopup);
     logger->setDebugLog(mDebugLog);
 }
 

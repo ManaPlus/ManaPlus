@@ -269,6 +269,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
 
         int mScrollRadius;
         int mScrollLaziness;
+        bool mShowBeingPopup;
         int mScrollCenterOffsetX;
         int mScrollCenterOffsetY;
         int mMouseX;                /**< Current mouse position in pixels. */

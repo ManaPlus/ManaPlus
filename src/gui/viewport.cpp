@@ -57,8 +57,6 @@ Viewport::Viewport():
     mMouseY(0),
     mPixelViewX(0.0f),
     mPixelViewY(0.0f),
-//    mTileViewX(0),
-//    mTileViewY(0),
     mShowDebugPath(false),
     mCameraMode(0),
     mPlayerFollowMouse(false),
@@ -76,9 +74,11 @@ Viewport::Viewport():
     mScrollRadius = config.getIntValue("ScrollRadius");
     mScrollCenterOffsetX = config.getIntValue("ScrollCenterOffsetX");
     mScrollCenterOffsetY = config.getIntValue("ScrollCenterOffsetY");
+    mShowBeingPopup = config.getBoolValue("showBeingPopup");
 
     config.addListener("ScrollLaziness", this);
     config.addListener("ScrollRadius", this);
+    config.addListener("showBeingPopup", this);
 
     mPopupMenu = new PopupMenu;
     mBeingPopup = new BeingPopup;
@@ -91,6 +91,7 @@ Viewport::~Viewport()
 {
     config.removeListener("ScrollLaziness", this);
     config.removeListener("ScrollRadius", this);
+    config.removeListener("showBeingPopup", this);
 
     delete mPopupMenu;
     mPopupMenu = 0;
@@ -620,6 +621,7 @@ void Viewport::optionChanged(const std::string &name _UNUSED_)
 {
     mScrollLaziness = config.getIntValue("ScrollLaziness");
     mScrollRadius = config.getIntValue("ScrollRadius");
+    mShowBeingPopup = config.getBoolValue("showBeingPopup");
 }
 
 void Viewport::mouseMoved(gcn::MouseEvent &event _UNUSED_)
@@ -635,7 +637,8 @@ void Viewport::mouseMoved(gcn::MouseEvent &event _UNUSED_)
     if (mHoverBeing && mHoverBeing->getType() == Being::PLAYER)
     {
         mTextPopup->setVisible(false);
-        mBeingPopup->show(getMouseX(), getMouseY(), mHoverBeing);
+        if (mShowBeingPopup)
+            mBeingPopup->show(getMouseX(), getMouseY(), mHoverBeing);
     }
     else
     {
