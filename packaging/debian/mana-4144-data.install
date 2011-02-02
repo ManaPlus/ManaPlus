@@ -1,0 +1,7 @@
+debian/tmp/usr/share/locale usr/share/
+debian/tmp/usr/share/games/manaplus/data/graphics usr/share/games/manaplus/data/
+debian/tmp/usr/share/games/manaplus/data/help usr/share/games/manaplus/data/
+debian/tmp/usr/share/games/manaplus/data/icons usr/share/games/manaplus/data/
+debian/tmp/usr/share/games/manaplus/data/themes usr/share/games/manaplus/data/
+debian/tmp/usr/share/games/manaplus/data/sfx usr/share/games/manaplus/data/
+debian/tmp/usr/share/games/manaplus/data/sfx/system usr/share/games/manaplus/data/sfx/

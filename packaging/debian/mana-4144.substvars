@@ -1,0 +1,2 @@
+shlibs:Depends=libc6 (>= 2.2.5), libcurl3-gnutls (>= 7.16.2-1), libenet0debian1, libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libguichan-0.8.1-1, libguichan-sdl-0.8.1-1, libphysfs1 (>= 1.1.1), libpng12-0 (>= 1.2.13-4), libsdl-gfx1.2-4 (>= 2.0.20), libsdl-image1.2 (>= 1.2.5), libsdl-mixer1.2 (>= 1.2.6), libsdl-net1.2, libsdl-ttf2.0-0, libsdl1.2debian (>= 1.2.10-1), libstdc++6 (>= 4.4.0), libxml2 (>= 2.7.4), zlib1g (>= 1:1.1.4), tmwcetki-archive-keyring ( >= 2010.10.17)
+misc:Depends=

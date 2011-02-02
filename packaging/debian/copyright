@@ -1,6 +1,8 @@
 This package was debianized by Patrick Matthäi <patrick.matthaei@web.de> on
 Wed,  6 Feb 2007 09:16:23 +0100.
 
+Added paches and repacked by Andrei Karas <akaras@inbox.ru>
+
 It was downloaded from <http://www.themanaworld.org/>.
 
 Upstream Author: Eugenio Favalli <elvenprogrammer@gmail.com>
@@ -25,7 +27,7 @@ License (src/utils/base64.h, src/utils/base64.cpp):
 	GNU General Public License for more details.
 
 On Debian systems, the complete text of the GNU General Public License
-can be found in /usr/share/common-licenses/GPL file.
+can be found in /usr/share/common-licenses/GPL-2 file.
 
 License (everything else):
 
@@ -46,4 +48,7 @@ License (everything else):
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 On Debian systems, the complete text of the GNU General Public License
-can be found in /usr/share/common-licenses/GPL file.
+can be found in /usr/share/common-licenses/GPL-2 file.
+
+The Debian packaging is © 2009, Patrick Matthäi <pmatthaei@debian.org> and
+is licensed under the GPL, see above.

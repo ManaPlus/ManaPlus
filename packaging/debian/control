@@ -1,27 +1,49 @@
-Source: mana
+Source: mana-4144
 Section: games
 Priority: optional
 Homepage: http://manasource.org/
-Maintainer: Patrick Matthäi <patrick.matthaei@web.de>
-Build-Depends: debhelper (>= 5), dpkg-dev (>= 1.13.19), dpatch, autotools-dev, libcurl4-gnutls-dev, libgl1-mesa-dev, libguichan2-dev (>= 0.7.1), libsdl1.2-dev, libsdl-image1.2-dev, libsdl-net1.2-dev, libsdl-mixer1.2-dev, libphysfs-dev, libpng12-dev, libxml2-dev, zlib1g-dev
-Standards-Version: 3.7.3
+Maintainer: Andrei Karas <akaras@inbox.ru>
+Build-Depends: debhelper (>= 7), libcurl4-gnutls-dev, libgl1-mesa-dev, libguichan-dev (>= 0.8.1), libsdl1.2-dev, libsdl-image1.2-dev, libsdl-net1.2-dev, libsdl-mixer1.2-dev, libphysfs-dev, libpng12-dev, libxml2-dev, zlib1g-dev, libsdl-ttf2.0-dev, libsdl-gfx1.2-dev
+Standards-Version: 3.8.3
 
-Package: mana
+Package: mana-4144
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, mana-data (= ${source:Version})
-Description: Mana is a 2D MMORPG client
+Depends: ${shlibs:Depends}, ${misc:Depends}, mana-4144-data (= ${source:Version}), tmwcetki-archive-keyring (>= 2010.10.17)
+Recommends: mana-music
+Suggests: mumble
+Description: The Mana World is a 2D MMORPG
+ The Mana World (rebranded to Mana) is a serious effort to create an
+ innovative free and open source MMORPG. The Mana World uses 2D graphics and
+ aims to create a large and diverse interactive world.
+ The player's story is built with quests, interaction and fighting against
+ monsters and in PvP mode against other players, too. Or you join other partys,
+ clans or groups and will contribute them.
 
-Package: mana-dbg
+Package: mana-4144-dbg
+Section: debug
 Architecture: any
 Priority: extra
-Depends: mana (= ${binary:Version})
-Description: Mana is a 2D MMORPG client (debugging symbols)
+Depends: ${misc:Depends}, mana-4144 (= ${binary:Version})
+Description: The Mana World is a 2D MMORPG (debugging symbols)
+ The Mana World (rebranded to Mana) is a serious effort to create an
+ innovative free and open source MMORPG. The Mana World uses 2D graphics and
+ aims to create a large and diverse interactive world.
+ The player's story is built with quests, interaction and fighting against
+ monsters and in PvP mode against other players, too. Or you join other partys,
+ clans or groups and will contribute them.
  .
- This package provides debugging symbols for the mana package.
+ This package provides debugging symbols for the mana-4144 package.
 
-Package: mana-data
+Package: mana-4144-data
 Architecture: all
-Recommends: mana
-Description: Mana is a 2D MMORPG client
+Depends: ${misc:Depends}, ttf-dejavu-core, ttf-liberation
+Recommends: mana-4144, ttf-mplus
+Description: The Mana World is a 2D MMORPG (data files)
+ The Mana World (rebranded to Mana) is a serious effort to create an
+ innovative free and open source MMORPG. The Mana World uses 2D graphics and
+ aims to create a large and diverse interactive world.
+ The player's story is built with quests, interaction and fighting against
+ monsters and in PvP mode against other players, too. Or you join other partys,
+ clans or groups and will contribute them.
  .
  This package contains the data files.
