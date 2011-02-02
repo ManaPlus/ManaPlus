@@ -2810,21 +2810,6 @@ void LocalPlayer::setMap(Map *map)
 {
     if (map)
     {
-        std::map<std::string, Vector>::iterator iter =
-                mHomes.find(map->getProperty("_filename"));
-
-        if (iter != mHomes.end())
-        {
-            Vector pos = mHomes[(*iter).first];
-            SpecialLayer *specialLayer = map->getSpecialLayer();
-            if (specialLayer)
-            {
-//                specialLayer->clean();
-                specialLayer->setTile(static_cast<int>(pos.x),
-                                      static_cast<int>(pos.y),
-                                      MapItem::HOME);
-            }
-        }
         if (socialWindow)
             socialWindow->updateActiveList();
     }
@@ -3621,7 +3606,8 @@ void LocalPlayer::updateNavigateList()
         if (iter != mHomes.end())
         {
             Vector pos = mHomes[(*iter).first];
-            mMap->addPortalTile("home", MapItem::HOME, pos.x, pos.y);
+            if (pos.x && pos.y)
+                mMap->addPortalTile("home", MapItem::HOME, pos.x, pos.y);
         }
     }
 }

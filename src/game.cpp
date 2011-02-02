@@ -1392,6 +1392,9 @@ void Game::changeMap(const std::string &mapPath)
                      strprintf(_("Error while loading %s"), fullMap.c_str()));
     }
 
+    if (mCurrentMap)
+        mCurrentMap->saveExtraLayer();
+
     if (newMap)
         newMap->addExtraLayer();
 
