@@ -8,7 +8,9 @@ fonts_DATA =				\
 	liberationsans.ttf		\
 	liberationsans-bold.ttf	\
 	liberationsansmono.ttf		\
-	liberationsansmono-bold.ttf
+	liberationsansmono-bold.ttf	\
+	mplus-1p-bold.ttf	\
+	mplus-1p-regular.ttf
 
 EXTRA_DIST =				\
 	$(fonts_DATA) \

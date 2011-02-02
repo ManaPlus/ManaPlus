@@ -7,6 +7,8 @@ SET (FILES
     liberationsans-bold.ttf
     liberationsansmono.ttf
     liberationsansmono-bold.ttf
+    mplus-1p-bold.ttf
+    mplus-1p-regular.ttf
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/fonts)
