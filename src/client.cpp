@@ -352,7 +352,7 @@ Client::Client(const Options &options):
 
     //resman->selectSkin();
 
-    std::string iconFile = branding.getValue("appIcon", "icons/mana");
+    std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
     iconFile += ".ico";
 #else
