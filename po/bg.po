@@ -2700,12 +2700,10 @@ msgid "% Accuracy"
 msgstr ""
 
 #: src/net/ea/generalhandler.cpp:228
-#, c-format
 msgid "% Evade"
 msgstr ""
 
 #: src/net/ea/generalhandler.cpp:229
-#, c-format
 msgid "% Critical"
 msgstr ""
 
