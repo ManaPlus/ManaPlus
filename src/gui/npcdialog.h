@@ -171,6 +171,11 @@ class NpcDialog : public Window, public gcn::ActionListener,
          */
         static void closeAll();
 
+        /**
+         * Closes all instances and destroy also net handler dialogs.
+         */
+        static void destroyAll();
+
     private:
         typedef std::list<NpcDialog*> DialogList;
         static DialogList instances;

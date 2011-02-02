@@ -24,6 +24,7 @@
 #include "client.h"
 
 #include "gui/chat.h"
+#include "gui/npcdialog.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"
 
@@ -34,6 +35,7 @@
 
 #include "net/charhandler.h"
 #include "net/gamehandler.h"
+#include "net/npchandler.h"
 #include "net/net.h"
 
 #include "utils/gettext.h"
@@ -137,11 +139,13 @@ void QuitDialog::action(const gcn::ActionEvent &event)
         }
         else if (mLogoutQuit->isSelected())
         {
+            Client::closeDialogs();
             Client::setState(STATE_EXIT);
         }
         else if (Net::getGameHandler()->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
+            Client::closeDialogs();
             Client::setState(STATE_SWITCH_SERVER);
         }
         else if (mSwitchCharacter->isSelected())
@@ -149,6 +153,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             assert(Client::getState() == STATE_GAME);
 
             Net::getCharHandler()->switchCharacter();
+            Client::closeDialogs();
         }
     }
     scheduleDelete();

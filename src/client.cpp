@@ -39,6 +39,8 @@
 #include "statuseffect.h"
 #include "units.h"
 
+#include "gui/buy.h"
+#include "gui/buysell.h"
 #include "gui/changeemaildialog.h"
 #include "gui/changepassworddialog.h"
 #include "gui/charselectdialog.h"
@@ -48,6 +50,8 @@
 #include "gui/okdialog.h"
 #include "gui/quitdialog.h"
 #include "gui/register.h"
+#include "gui/npcdialog.h"
+#include "gui/sell.h"
 #include "gui/sdlinput.h"
 #include "gui/serverdialog.h"
 #include "gui/setup.h"
@@ -67,6 +71,7 @@
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
+#include "net/npchandler.h"
 #include "net/packetcounters.h"
 #include "net/worldinfo.h"
 
@@ -1998,4 +2003,13 @@ void Client::setFramerate(int fpsLimit)
         return;
 
     SDL_setFramerate(&instance()->mFpsManager, fpsLimit);
+}
+
+void Client::closeDialogs()
+{
+    Net::getNpcHandler()->clearDialogs();
+    BuyDialog::closeAll();
+    BuySellDialog::closeAll();
+    NpcDialog::closeAll();
+    SellDialog::closeAll();
 }

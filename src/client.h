@@ -246,9 +246,14 @@ public:
 
     static float getGuiAlpha();
 
+    static void closeDialogs();
+
     static void setFramerate(int fpsLimit);
+
     void optionChanged(const std::string &name);
+
     void action(const gcn::ActionEvent &event);
+
     void initTradeFilter();
 
     void initPacketLimiter();

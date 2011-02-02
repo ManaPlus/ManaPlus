@@ -29,12 +29,8 @@
 #include "playerinfo.h"
 #include "units.h"
 
-#include "gui/buy.h"
-#include "gui/buysell.h"
 #include "gui/gui.h"
-#include "gui/npcdialog.h"
 #include "gui/okdialog.h"
-#include "gui/sell.h"
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
 #include "gui/viewport.h"
@@ -79,10 +75,7 @@ namespace
             Net::getPlayerHandler()->respawn();
             deathNotice = NULL;
 
-            BuyDialog::closeAll();
-            BuySellDialog::closeAll();
-            NpcDialog::closeAll();
-            SellDialog::closeAll();
+            Client::closeDialogs();
 
             if (viewport)
                 viewport->closePopupMenu();

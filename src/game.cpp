@@ -484,10 +484,25 @@ void Game::logic()
 
         if (!disconnectedDialog)
         {
+            if (viewport)
+            {
+                Map *map = viewport->getCurrentMap();
+                if (map)
+                    map->saveExtraLayer();
+            }
+            Client::closeDialogs();
             disconnectedDialog = new OkDialog(_("Network Error"),
                                               errorMessage, false);
             disconnectedDialog->addActionListener(&errorListener);
             disconnectedDialog->requestMoveToTop();
+        }
+    }
+    else
+    {
+        if (disconnectedDialog)
+        {
+            disconnectedDialog->scheduleDelete();
+            disconnectedDialog = 0;
         }
     }
 }

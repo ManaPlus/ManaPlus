@@ -59,6 +59,8 @@ class NpcHandler
         virtual void sellItem(int beingId, int itemId, int amount) = 0;
 
         virtual void endShopping(int beingId) = 0;
+
+        virtual void clearDialogs() = 0;
 };
 
 } // namespace Net

@@ -112,7 +112,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
                 msg.readString(msg.getLength() - 8);
             break;
 
-         case SMSG_NPC_CLOSE:
+        case SMSG_NPC_CLOSE:
             // Show the close button
             if (dialog)
                 dialog->showCloseButton();

@@ -149,7 +149,6 @@ NpcDialog::~NpcDialog()
     mMinusButton = 0;
 
     instances.remove(this);
-
 }
 
 void NpcDialog::setText(const std::string &text)
@@ -418,7 +417,10 @@ void NpcDialog::closeAll()
     DialogList::iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
-        (*it)->close();
+    {
+        if (*it)
+            (*it)->close();
+    }
 }
 
 void NpcDialog::buildLayout()
