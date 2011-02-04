@@ -234,7 +234,11 @@ void SellDialog::action(const gcn::ActionEvent &event)
             mAmountItems = 1;
             mSlider->setValue(0);
 
-            if (!mMaxItems)
+            if (mMaxItems)
+            {
+                updateButtonsAndLabels();
+            }
+            else
             {
                 // All were sold
                 mShopItemList->setSelected(-1);
@@ -280,14 +284,23 @@ void SellDialog::updateButtonsAndLabels()
 {
     int selectedItem = mShopItemList->getSelected();
     int income = 0;
+    ShopItem *item = 0;
 
     if (selectedItem > -1 && mShopItems->at(selectedItem))
     {
-        mMaxItems = mShopItems->at(selectedItem)->getQuantity();
-        if (mAmountItems > mMaxItems)
-            mAmountItems = mMaxItems;
-
-        income = mAmountItems * mShopItems->at(selectedItem)->getPrice();
+        item = mShopItems->at(selectedItem);
+        if (item)
+        {
+            mMaxItems = item->getQuantity();
+            if (mAmountItems > mMaxItems)
+                mAmountItems = mMaxItems;
+            income = mAmountItems * mShopItems->at(selectedItem)->getPrice();
+        }
+        else
+        {
+            mMaxItems = 0;
+            mAmountItems = 0;
+        }
     }
     else
     {
@@ -306,6 +319,8 @@ void SellDialog::updateButtonsAndLabels()
     mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
                     Units::formatCurrency(income).c_str(),
                     Units::formatCurrency(mPlayerMoney + income).c_str()));
+    if (item)
+        item->update();
 }
 
 void SellDialog::setVisible(bool visible)

@@ -72,6 +72,8 @@ class ShopItem : public Item
          */
         void addDuplicate();
 
+        void update();
+
         /**
          * Gets the quantity of the currently topmost duplicate.
          *
@@ -125,6 +127,7 @@ class ShopItem : public Item
     protected:
         int mPrice;
         std::string mDisplayName;
+        bool mShowQuantity;
 
         /**
          * Struct to keep track of duplicates.

@@ -30,7 +30,8 @@
 ShopItem::ShopItem(int inventoryIndex, int id,
                    int quantity, int price) :
     Item(id, 0),
-    mPrice(price)
+    mPrice(price),
+    mShowQuantity(true)
 {
     mDisplayName = getInfo().getName() + " ("
                    + Units::formatCurrency(mPrice).c_str() + ") ";
@@ -41,7 +42,10 @@ ShopItem::ShopItem(int inventoryIndex, int id,
     addDuplicate(inventoryIndex, quantity);
 }
 
-ShopItem::ShopItem (int id, int price) : Item (id, 0), mPrice(price)
+ShopItem::ShopItem (int id, int price) :
+    Item (id, 0),
+    mPrice(price),
+    mShowQuantity(false)
 {
     mDisplayName = getInfo().getName() +
         " (" + Units::formatCurrency(mPrice).c_str() + ")";
@@ -56,6 +60,17 @@ ShopItem::~ShopItem()
     {
         delete mDuplicates.top();
         mDuplicates.pop();
+    }
+}
+
+void ShopItem::update()
+{
+    if (mShowQuantity)
+    {
+        mDisplayName = getInfo().getName() + " ("
+            + Units::formatCurrency(mPrice).c_str() + ") ";
+        if (mQuantity > 0)
+            mDisplayName += "[" + toString(mQuantity) + "]";
     }
 }
 
