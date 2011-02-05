@@ -1,3 +1,13 @@
+2011-02-06 New release 1.1.2.6.
+ManaPlus:
+fix: crashes.
+fix: close npc dialogs in different actions like change character/server or network error.
+fix: dont show random navigation point with coord 0,0.
+fix: update item amount in sell dialog.
+add: japanese fonts mplus 1p regular and mplus 1p bold.
+add: option to enable/disable players popups.
+
+
 2011-01-30 New release 1.1.1.30.
 ManaPlus:
 fix: stuck on disconnections while opened modal window.
