@@ -60,6 +60,7 @@ LoginHandler::LoginHandler()
     loginHandler = this;
     mMinUserNameLength = 4;
     mMaxUserNameLength = 10;
+    mLoginData = 0;
 }
 
 void LoginHandler::handleMessage(Net::MessageIn &msg)
