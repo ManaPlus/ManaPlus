@@ -22,6 +22,7 @@
 #ifndef GUI_CONTAINER_H
 #define GUI_CONTAINER_H
 
+#include <guichan/widget.hpp>
 #include <guichan/widgets/container.hpp>
 
 /**
@@ -37,7 +38,10 @@ class Container : public gcn::Container
 {
     public:
         Container();
+
         ~Container();
+
+        bool safeRemove(gcn::Widget* widget);
 };
 
 #endif

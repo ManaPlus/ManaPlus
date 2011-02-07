@@ -48,6 +48,7 @@
 #include "gui/textdialog.h"
 #include "gui/trade.h"
 #include "gui/viewport.h"
+#include "gui/windowmenu.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -85,6 +86,7 @@ PopupMenu::PopupMenu():
     mTab(0),
     mSpell(0),
     mDialog(0),
+    mButton(0),
     mNick("")
 {
     mBrowserBox = new BrowserBox;
@@ -1037,6 +1039,16 @@ void PopupMenu::handleLink(const std::string &link,
             return;
         }
     }
+    else if (!link.find("hide button_"))
+    {
+        if (windowMenu)
+            windowMenu->showButton(link.substr(12), false);
+    }
+    else if (!link.find("show button_"))
+    {
+        if (windowMenu)
+            windowMenu->showButton(link.substr(12), true);
+    }
     // Unknown actions
     else if (link != "cancel")
     {
@@ -1237,11 +1249,37 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x _UNUSED_, int y _UNUSED_, Button *button)
+void PopupMenu::showPopup(int x, int y, Button *button)
 {
-    if (!button)
+    if (!button || !windowMenu)
         return;
 
+    mButton = button;
+
+    mBrowserBox->clearRows();
+    std::list <gcn::Button*> names = windowMenu->getButtons();
+    std::list <gcn::Button*>::iterator it, it_end;
+    for (it = names.begin(), it_end = names.end(); it != it_end; ++it)
+    {
+        Button *btn = dynamic_cast<Button*>(*it);
+        if (!btn || btn->getActionEventId() == "SET")
+            continue;
+
+        if (btn->isVisible())
+        {
+            mBrowserBox->addRow(strprintf("@@hide button_%s|Hide %s@@",
+                btn->getActionEventId().c_str(), btn->getCaption().c_str()));
+        }
+        else
+        {
+            mBrowserBox->addRow(strprintf("@@show button_%s|Show %s@@",
+                btn->getActionEventId().c_str(), btn->getCaption().c_str()));
+        }
+    }
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
+
+    showPopup(x, y);
 }
 
 void PopupMenu::showPopup(int x, int y)

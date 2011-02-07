@@ -91,9 +91,8 @@ WindowMenu::WindowMenu():
     addButton(N_("DR"), _("Drop"), x, h, KeyboardConfig::KEY_WINDOW_DROP);
     addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
 
+    loadButtons();
     mTextPopup = new TextPopup;
-    setDimension(gcn::Rectangle(graphics->getWidth() - x - 3, 3,
-                                x - 3, h));
 
     addMouseListener(this);
     setVisible(true);
@@ -239,7 +238,10 @@ void WindowMenu::mousePressed(gcn::MouseEvent &event)
         if (!btn)
             return;
         if (viewport)
-            viewport->showPopup(event.getX(), event.getY(), btn);
+        {
+            viewport->showPopup(getX() + event.getX(),
+                getY() + event.getY(), btn);
+        }
     }
 }
 
@@ -282,4 +284,76 @@ void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent _UNUSED_)
         return;
 
     mTextPopup->hide();
+}
+
+void WindowMenu::showButton(std::string name, bool isVisible)
+{
+    Button *btn = dynamic_cast<Button*>(mButtonNames[name]);
+    if (!btn)
+        return;
+
+    btn->setVisible(isVisible);
+    updateButtons();
+    saveButtons();
+}
+
+void WindowMenu::updateButtons()
+{
+    int x = 0, h = 0;
+    std::list <gcn::Button*>::iterator it, it_end;
+    for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
+        safeRemove(*it);
+    for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
+    {
+        Button *btn = dynamic_cast<Button*>(*it);
+        if (!btn)
+            continue;
+        if (btn->isVisible())
+        {
+            btn->setPosition(x, 0);
+            add(btn);
+            x += btn->getWidth() + 3;
+            h = btn->getHeight();
+        }
+    }
+    if (graphics)
+    {
+        setDimension(gcn::Rectangle(graphics->getWidth() - x - 3,
+            3, x - 3, h));
+    }
+}
+
+void WindowMenu::loadButtons()
+{
+    if (config.getValue("windowmenu0", "") == "")
+        return;
+
+    for (int f = 0; f < 15; f ++)
+    {
+        std::string str = config.getValue("windowmenu" + toString(f), "");
+        if (str == "" || str == "SET")
+            continue;
+        Button *btn = dynamic_cast<Button*>(mButtonNames[str]);
+        if (!btn)
+            continue;
+        btn->setVisible(false);
+    }
+    updateButtons();
+}
+
+void WindowMenu::saveButtons()
+{
+    std::list <gcn::Button*>::iterator it, it_end;
+    int i = 0;
+    for (it = mButtons.begin(), it_end = mButtons.end();
+         it != it_end; ++it)
+    {
+        Button *btn = dynamic_cast<Button*>(*it);
+        if (!btn->isVisible())
+        {
+            config.setValue("windowmenu" + toString(i),
+                btn->getActionEventId());
+            i ++;
+        }
+    }
 }

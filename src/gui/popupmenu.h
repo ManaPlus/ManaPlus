@@ -138,6 +138,7 @@ class PopupMenu : public Popup, public LinkHandler
         Window *mWindow;
         RenameListener mRenameListener;
         TextDialog *mDialog;
+        Button *mButton;
         std::string mNick;
 
         /**

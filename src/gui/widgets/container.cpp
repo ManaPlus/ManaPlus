@@ -31,3 +31,17 @@ Container::~Container()
     while (!mWidgets.empty())
         delete mWidgets.front();
 }
+
+bool Container::safeRemove(gcn::Widget* widget)
+{
+    WidgetListIterator iter;
+    for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
+    {
+        if (*iter == widget)
+        {
+            remove(widget);
+            return true;
+        }
+    }
+    return false;
+}

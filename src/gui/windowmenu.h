@@ -67,9 +67,20 @@ class WindowMenu : public Container,
         std::map <std::string, gcn::Button*> &getButtonNames()
         { return mButtonNames; }
 
+        std::list <gcn::Button*> &getButtons()
+        { return mButtons; }
+
+        void showButton(std::string name, bool isVisible);
+
+        void loadButtons();
+
+        void saveButtons();
+
     private:
         inline void addButton(const char* text, std::string description,
                               int &x, int &h, int key);
+
+        void updateButtons();
 
         EmotePopup *mEmotePopup;
         TextPopup *mTextPopup;
