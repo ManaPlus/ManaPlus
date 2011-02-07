@@ -94,7 +94,20 @@ void Minimap::setMap(Map *map)
         mMapImage = 0;
     }
 
-    if (map)
+    if (true/* TODO replace this with an option*/) {
+       // should this optionally happen only if there is no resourcemanager option? i.e. a tristate always, fallback, never?
+       SDL_Surface* surface = SDL_CreateRGBSurface(SDL_SWSURFACE, map->getWidth(), map->getHeight(), 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0x00000000);
+       // I'm not sure if the locks are necessary since it's a SWSURFACE
+       SDL_LockSurface(surface);
+       int* data = (int*)surface->pixels;
+       for (int y = 0; y < surface->h; y++)
+           for (int x = 0; x < surface->w; x++)
+               *(data++) = -map->getWalk(x,y);
+        SDL_UnlockSurface(surface);
+        mMapImage = Image::load(surface);
+        SDL_FreeSurface(surface);
+    }
+    else if (map)
     {
         std::string tempname =
             "graphics/minimaps/" + map->getFilename() + ".png";
