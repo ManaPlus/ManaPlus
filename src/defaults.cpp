@@ -193,6 +193,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "usePersistentIP", false);
     AddDEF(configData, "showJobExp", true);
     AddDEF(configData, "showBeingPopup", true);
+    AddDEF(configData, "showExtMinimaps", false);
     return configData;
 }
 

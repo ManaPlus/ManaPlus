@@ -65,6 +65,7 @@
 #define ACTION_SHOW_OWN_HP "show own hp"
 #define ACTION_SHOW_JOB_EXP "show job exp"
 #define ACTION_SHOW_BEING_POPUP "show being popup"
+#define ACTION_SHOW_EXTENDED_MINIMAPS "show extended minimaps"
 
 Setup_Other::Setup_Other():
     mShowMonstersTakedDamage(config.getBoolValue("showMonstersTakedDamage")),
@@ -92,6 +93,7 @@ Setup_Other::Setup_Other():
     mShowOwnHP(config.getBoolValue("showOwnHP")),
     mShowJobExp(config.getBoolValue("showJobExp")),
     mShowBeingPopup(config.getBoolValue("showBeingPopup")),
+    mShowExtMinimaps(config.getBoolValue("showExtMinimaps")),
     mEditDialog(0)
 {
     setName(_("Misc"));
@@ -192,8 +194,12 @@ Setup_Other::Setup_Other():
                                        this, ACTION_SHOW_JOB_EXP);
 
     mShowBeingPopupCheckBox = new CheckBox(_("Show players popups"),
-                                       mShowBeingPopup,
-                                       this, ACTION_SHOW_BEING_POPUP);
+                                           mShowBeingPopup,
+                                           this, ACTION_SHOW_BEING_POPUP);
+
+    mShowExtMinimapsCheckBox = new CheckBox(_("Show extended minimaps"),
+                                            mShowExtMinimaps,
+                                            this, ACTION_SHOW_EXTENDED_MINIMAPS);
 
     // Do the layout
     LayoutHelper h(this);
@@ -212,6 +218,7 @@ Setup_Other::Setup_Other():
     place(12, 7, mShowOwnHPCheckBox, 10);
     place(12, 8, mShowJobExpCheckBox, 10);
     place(12, 9, mShowBeingPopupCheckBox, 10);
+    place(12, 10, mShowExtMinimapsCheckBox, 10);
     place(0, 3, mFloorItemsHighlightCheckBox, 12);
     place(0, 4, mHighlightAttackRangeCheckBox, 12);
     place(0, 5, mHighlightMonsterAttackRangeCheckBox, 12);
@@ -352,6 +359,10 @@ void Setup_Other::action(const gcn::ActionEvent &event)
     {
         mShowBeingPopup = mShowBeingPopupCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_SHOW_EXTENDED_MINIMAPS)
+    {
+        mShowExtMinimaps = mShowExtMinimapsCheckBox->isSelected();
+    }
 }
 
 void Setup_Other::cancel()
@@ -430,6 +441,9 @@ void Setup_Other::cancel()
 
     mShowBeingPopup = config.getBoolValue("showBeingPopup");
     mShowBeingPopupCheckBox->setSelected(mShowBeingPopup);
+
+    mShowExtMinimaps = config.getBoolValue("showExtMinimaps");
+    mShowExtMinimapsCheckBox->setSelected(mShowExtMinimaps);
 }
 
 void Setup_Other::apply()
@@ -459,6 +473,7 @@ void Setup_Other::apply()
     config.setValue("showOwnHP", mShowOwnHP);
     config.setValue("showJobExp", mShowJobExp);
     config.setValue("showBeingPopup", mShowBeingPopup);
+    config.setValue("showExtMinimaps", mShowExtMinimaps);
     logger->setDebugLog(mDebugLog);
 }
 
