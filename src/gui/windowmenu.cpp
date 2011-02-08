@@ -91,6 +91,12 @@ WindowMenu::WindowMenu():
     addButton(N_("DR"), _("Drop"), x, h, KeyboardConfig::KEY_WINDOW_DROP);
     addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
 
+    if (graphics)
+    {
+        setDimension(gcn::Rectangle(graphics->getWidth() - x - 3,
+            3, x - 3, h));
+    }
+
     loadButtons();
     mTextPopup = new TextPopup;
 
