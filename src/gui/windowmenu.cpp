@@ -362,4 +362,6 @@ void WindowMenu::saveButtons()
             i ++;
         }
     }
+    for (int f = i; f < 15; f ++)
+        config.deleteKey("windowmenu" + toString(f));
 }
