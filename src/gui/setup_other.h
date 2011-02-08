@@ -119,6 +119,9 @@ class Setup_Other : public SetupTab, public gcn::ActionListener
         gcn::CheckBox *mShowBeingPopupCheckBox;
         bool mShowBeingPopup;
 
+        gcn::CheckBox *mShowExtMinimapsCheckBox;
+        bool mShowExtMinimaps;
+
         EditDialog *mEditDialog;
 };
 

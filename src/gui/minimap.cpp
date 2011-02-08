@@ -96,16 +96,50 @@ void Minimap::setMap(Map *map)
 
     if (map)
     {
-        std::string tempname =
-            "graphics/minimaps/" + map->getFilename() + ".png";
-        ResourceManager *resman = ResourceManager::getInstance();
+        if (config.getBoolValue("showExtMinimaps"))
+        {
+            SDL_Surface* surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
+                map->getWidth(), map->getHeight(), 32,
+                0x00ff0000, 0x0000ff00, 0x000000ff, 0x00000000);
+            if (!surface)
+            {
+                if (!isSticky())
+                    setVisible(false);
+                return;
+            }
 
-        minimapName = map->getProperty("minimap");
+            // I'm not sure if the locks are necessary since it's a SWSURFACE
+            SDL_LockSurface(surface);
+            int* data = (int*)surface->pixels;
+            if (!data)
+            {
+                if (!isSticky())
+                    setVisible(false);
+                return;
+            }
+            for (int y = 0; y < surface->h; y ++)
+            {
+                for (int x = 0; x < surface->w; x ++)
+                    *(data ++) = -map->getWalk(x,y);
+            }
+            SDL_UnlockSurface(surface);
 
-        if (minimapName.empty() && resman->exists(tempname))
-            minimapName = tempname;
+            mMapImage = Image::load(surface);
+            SDL_FreeSurface(surface);
+        }
+        else
+        {
+            std::string tempname =
+                "graphics/minimaps/" + map->getFilename() + ".png";
+            ResourceManager *resman = ResourceManager::getInstance();
 
-        mMapImage = resman->getImage(minimapName);
+            minimapName = map->getProperty("minimap");
+
+            if (minimapName.empty() && resman->exists(tempname))
+                minimapName = tempname;
+
+            mMapImage = resman->getImage(minimapName);
+        }
     }
 
     if (mMapImage && map)
