@@ -297,6 +297,21 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 if (!config.getBoolValue("hideShield"))
                     dstBeing->setSprite(SPRITE_SHIELD, shield);
             }
+            else if (dstBeing->getType() == ActorSprite::NPC)
+            {
+                switch (gender)
+                {
+                    case 2:
+                        dstBeing->setGender(GENDER_FEMALE);
+                        break;
+                    case 3:
+                        dstBeing->setGender(GENDER_MALE);
+                        break;
+                    default:
+                        dstBeing->setGender(GENDER_UNSPECIFIED);
+                        break;
+                }
+            }
 
             if (msg.getId() == SMSG_BEING_MOVE)
             {
