@@ -46,8 +46,12 @@ TextPopup::TextPopup():
     mText2 = new gcn::Label;
     mText2->setPosition(getPadding(), fontHeight + 2 * getPadding());
 
+    mText3 = new gcn::Label;
+    mText3->setPosition(getPadding(), (2 * fontHeight) + 2 * getPadding());
+
     add(mText1);
     add(mText2);
+    add(mText3);
     addMouseListener(this);
 }
 
@@ -56,24 +60,31 @@ TextPopup::~TextPopup()
 }
 
 void TextPopup::show(int x, int y, const std::string &str1,
-                     const std::string &str2)
+                     const std::string &str2, const std::string &str3)
 {
     mText1->setCaption(str1);
     mText1->adjustSize();
     mText2->setCaption(str2);
     mText2->adjustSize();
+    mText3->setCaption(str3);
+    mText3->adjustSize();
 
     int minWidth = mText1->getWidth();
     if (mText2->getWidth() > minWidth)
         minWidth = mText2->getWidth();
+    if (mText3->getWidth() > minWidth)
+        minWidth = mText3->getWidth();
 
     minWidth += 4 * getPadding();
     setWidth(minWidth);
 
+    int cnt = 1;
     if (!str2.empty())
-        setHeight((2 * getPadding() + mText1->getFont()->getHeight()) * 2);
-    else
-        setHeight(2 * getPadding() + mText1->getFont()->getHeight());
+        cnt ++;
+    if (!str3.empty())
+        cnt ++;
+
+    setHeight((2 * getPadding() + mText1->getFont()->getHeight()) * cnt);
 
     const int distance = 20;
 

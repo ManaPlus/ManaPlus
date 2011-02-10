@@ -50,19 +50,28 @@ class TextPopup : public Popup
          * Sets the text to be displayed.
          */
         void show(int x, int y, const std::string &str1)
-        { show(x, y, str1, static_cast<const char*>("")); };
+        { show(x, y, str1, static_cast<const char*>(""),
+          static_cast<const char*>("")); };
 
         /**
          * Sets the text to be displayed.
          */
         void show(int x, int y, const std::string &str1,
-                  const std::string &str2);
+                  const std::string &str2)
+        { show(x, y, str1, str2, static_cast<const char*>("")); }
+
+        /**
+         * Sets the text to be displayed.
+         */
+        void show(int x, int y, const std::string &str1,
+                  const std::string &str2, const std::string &str3);
 
         void mouseMoved(gcn::MouseEvent &mouseEvent);
 
     private:
         gcn::Label *mText1;
         gcn::Label *mText2;
+        gcn::Label *mText3;
 };
 
 #endif // TEXTPOPUP_H
