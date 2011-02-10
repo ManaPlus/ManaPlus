@@ -109,6 +109,17 @@ WindowMenu::~WindowMenu()
     delete mTextPopup;
     mTextPopup = 0;
     mButtonNames.clear();
+    std::list <gcn::Button*>::iterator it, it_end;
+    for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
+    {
+        Button *btn = dynamic_cast<Button*>(*it);
+        if (!btn)
+            continue;
+        if (!btn->isVisible())
+        {
+            delete btn;
+        }
+    }
 }
 
 void WindowMenu::action(const gcn::ActionEvent &event)
