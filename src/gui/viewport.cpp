@@ -42,6 +42,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
+#include "gui/widgets/progressbar.h"
 
 #include "net/net.h"
 
@@ -609,6 +610,11 @@ void Viewport::showPlayerPopup(std::string nick)
 void Viewport::showPopup(int x, int y, Button *button)
 {
     mPopupMenu->showPopup(x, y, button);
+}
+
+void Viewport::showPopup(int x, int y, ProgressBar *bar)
+{
+    mPopupMenu->showPopup(x, y, bar);
 }
 
 void Viewport::closePopupMenu()

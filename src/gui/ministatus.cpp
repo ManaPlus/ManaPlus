@@ -32,6 +32,7 @@
 #include "gui/statuspopup.h"
 #include "gui/textpopup.h"
 #include "gui/theme.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/label.h"
@@ -51,15 +52,13 @@ MiniStatusWindow::MiniStatusWindow():
 {
     listen(CHANNEL_ATTRIBUTES);
 
-    mHpBar = new ProgressBar(0, 100, 20, Theme::PROG_HP);
+    mHpBar = createBar(0, 100, 20, Theme::PROG_HP, "hp bar", _("health bar"));
     StatusWindow::updateHPBar(mHpBar);
 
     if (Net::getGameHandler()->canUseMagicBar())
     {
-        mMpBar = new ProgressBar(0, 100, 20,
-                        Net::getPlayerHandler()->canUseMagic()
-                        ? Theme::PROG_MP : Theme::PROG_NO_MP);
-
+        mMpBar = createBar(0, 100, 20, Net::getPlayerHandler()->canUseMagic()
+            ? Theme::PROG_MP : Theme::PROG_NO_MP, "mp bar", _("mana bar"));
         StatusWindow::updateMPBar(mMpBar);
     }
     else
@@ -70,12 +69,14 @@ MiniStatusWindow::MiniStatusWindow():
     int job = Net::getPlayerHandler()->getJobLocation()
               && serverConfig.getValueBool("showJob", false);
 
-    mXpBar = new ProgressBar(0, 100, 20, Theme::PROG_EXP);
+    mXpBar = createBar(0, 100, 20, Theme::PROG_EXP,
+                       "xp bar", _("experience bar"));
     StatusWindow::updateXPBar(mXpBar);
 
     if (job)
     {
-        mJobBar = new ProgressBar(0, 100, 20, Theme::PROG_JOB);
+        mJobBar = createBar(0, 100, 20, Theme::PROG_JOB, "job bar",
+                            _("job bar"));
         StatusWindow::updateJobBar(mJobBar);
     }
     else
@@ -83,38 +84,11 @@ MiniStatusWindow::MiniStatusWindow():
         mJobBar = 0;
     }
 
-    mStatusBar = new ProgressBar(100, 150, 20, Theme::PROG_EXP);
+    mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
+                           "status bar", _("status bar"));
 
-    mHpBar->setPosition(0, 3);
-    if (mMpBar)
-    {
-        mMpBar->setPosition(mHpBar->getWidth() + 3, 3);
-        mXpBar->setPosition(mMpBar->getX() + mMpBar->getWidth() + 3, 3);
-    }
-    else
-    {
-        mXpBar->setPosition(mHpBar->getX() + mHpBar->getWidth() + 3, 3);
-    }
-    if (mJobBar)
-    {
-        mJobBar->setPosition(mXpBar->getX() + mXpBar->getWidth() + 3, 3);
-        mStatusBar->setPosition(mJobBar->getX() + mJobBar->getWidth() + 3, 3);
-    }
-    else
-    {
-        mStatusBar->setPosition(mXpBar->getX() + mXpBar->getWidth() + 3, 3);
-    }
-
-    add(mHpBar);
-    if (mMpBar)
-        add(mMpBar);
-    add(mXpBar);
-    if (mJobBar)
-        add(mJobBar);
-    add(mStatusBar);
-
-    setContentSize(mStatusBar->getX() + mStatusBar->getWidth(),
-                   mXpBar->getY() + mXpBar->getHeight());
+    loadBars();
+    updateBars();
 
     setVisible(config.getValueBool(getPopupName() + "Visible", true));
 
@@ -131,6 +105,57 @@ MiniStatusWindow::~MiniStatusWindow()
     mTextPopup = 0;
     delete mStatusPopup;
     mStatusPopup = 0;
+
+    std::list <ProgressBar*>::iterator it, it_end;
+    for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
+    {
+        ProgressBar *bar = *it;
+        if (!bar)
+            continue;
+        if (!bar->isVisible())
+            delete bar;
+    }
+}
+
+ProgressBar *MiniStatusWindow::createBar(float progress, int width, int height,
+                                         int color, std::string name,
+                                         std::string description)
+{
+    ProgressBar *bar = new ProgressBar(progress, width, height, color);
+    bar->setActionEventId(name);
+    bar->setId(description);
+    mBars.push_back(bar);
+    mBarNames[name] = bar;
+    return bar;
+}
+
+void MiniStatusWindow::updateBars()
+{
+    int x = 0, h = 0;
+    std::list <ProgressBar*>::iterator it, it_end;
+    ProgressBar* lastBar = 0;
+    for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
+        safeRemove(*it);
+    for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
+    {
+        ProgressBar *bar = *it;
+        if (!bar)
+            continue;
+        if (bar->isVisible())
+        {
+            bar->setPosition(x, 3);
+            add(bar);
+            x += bar->getWidth() + 3;
+            h = bar->getHeight();
+            lastBar = bar;
+        }
+    }
+
+    if (lastBar)
+    {
+        setContentSize(lastBar->getX() + lastBar->getWidth(),
+            lastBar->getY() + lastBar->getHeight());
+    }
 }
 
 void MiniStatusWindow::setIcon(int index, AnimatedSprite *sprite)
@@ -280,10 +305,76 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
+void MiniStatusWindow::mousePressed(gcn::MouseEvent &event)
+{
+    if (!viewport)
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    {
+        ProgressBar *bar = dynamic_cast<ProgressBar*>(event.getSource());
+        if (!bar)
+            return;
+        if (viewport)
+        {
+            viewport->showPopup(getX() + event.getX(),
+                getY() + event.getY(), bar);
+        }
+    }
+}
+
 void MiniStatusWindow::mouseExited(gcn::MouseEvent &event)
 {
     Popup::mouseExited(event);
 
     mTextPopup->hide();
     mStatusPopup->hide();
+}
+
+void MiniStatusWindow::showBar(std::string name, bool isVisible)
+{
+    ProgressBar *bar = mBarNames[name];
+    if (!bar)
+        return;
+    bar->setVisible(isVisible);
+    updateBars();
+    saveBars();
+}
+
+void MiniStatusWindow::loadBars()
+{
+    if (!config.getValue("ministatussaved", false))
+        return;
+
+    for (int f = 0; f < 10; f ++)
+    {
+        std::string str = config.getValue("ministatus" + toString(f), "");
+        if (str == "" || str == "status bar")
+            continue;
+        ProgressBar *bar = mBarNames[str];
+        if (!bar)
+            continue;
+        bar->setVisible(false);
+    }
+}
+
+void MiniStatusWindow::saveBars()
+{
+    std::list <ProgressBar*>::iterator it, it_end;
+    int i = 0;
+    for (it = mBars.begin(), it_end = mBars.end();
+         it != it_end; ++it)
+    {
+        ProgressBar *bar = *it;
+        if (!bar->isVisible())
+        {
+            config.setValue("ministatus" + toString(i),
+                bar->getActionEventId());
+            i ++;
+        }
+    }
+    for (int f = i; f < 10; f ++)
+        config.deleteKey("ministatus" + toString(f));
+
+    config.setValue("ministatussaved", true);
 }

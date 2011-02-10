@@ -43,6 +43,7 @@ class ItemShortcut;
 class MapItem;
 class TextCommand;
 class TextDialog;
+class ProgressBar;
 class Window;
 
 class RenameListener : public gcn::ActionListener
@@ -98,6 +99,8 @@ class PopupMenu : public Popup, public LinkHandler
                        bool isInventory);
 
         void showPopup(int x, int y, Button *button);
+
+        void showPopup(int x, int y, ProgressBar *bar);
 
         void showPopup(int x, int y, MapItem *mapItem);
 

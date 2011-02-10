@@ -71,10 +71,28 @@ class MiniStatusWindow : public Popup, public Mana::Listener
         void draw(gcn::Graphics *graphics);
 
         void mouseMoved(gcn::MouseEvent &mouseEvent);
+
+        void mousePressed(gcn::MouseEvent &event);
+
         void mouseExited(gcn::MouseEvent &event);
+
+        void showBar(std::string name, bool isVisible);
+
+        void updateBars();
+
+        std::list <ProgressBar*> &getBars()
+        { return mBars; }
 
     private:
         bool isInBar(ProgressBar *bar, int x, int y) const;
+
+        ProgressBar *createBar(float progress, int width, int height,
+                               int color, std::string name,
+                               std::string description);
+
+        void loadBars();
+
+        void saveBars();
 
         /*
          * Mini Status Bars
@@ -86,6 +104,8 @@ class MiniStatusWindow : public Popup, public Mana::Listener
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;
+        std::list <ProgressBar*> mBars;
+        std::map <std::string, ProgressBar*> mBarNames;
 
         std::vector<AnimatedSprite *> mIcons;
 };

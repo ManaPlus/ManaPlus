@@ -41,6 +41,7 @@
 #include "gui/chat.h"
 #include "gui/inventorywindow.h"
 #include "gui/itemamount.h"
+#include "gui/ministatus.h"
 #include "gui/outfitwindow.h"
 #include "gui/sell.h"
 #include "gui/socialwindow.h"
@@ -53,6 +54,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
+#include "gui/widgets/progressbar.h"
 #include "gui/widgets/whispertab.h"
 
 #include "net/adminhandler.h"
@@ -1049,6 +1051,16 @@ void PopupMenu::handleLink(const std::string &link,
         if (windowMenu)
             windowMenu->showButton(link.substr(12), true);
     }
+    else if (!link.find("hide bar_"))
+    {
+        if (miniStatusWindow)
+            miniStatusWindow->showBar(link.substr(9), false);
+    }
+    else if (!link.find("show bar_"))
+    {
+        if (miniStatusWindow)
+            miniStatusWindow->showBar(link.substr(9), true);
+    }
     // Unknown actions
     else if (link != "cancel")
     {
@@ -1276,6 +1288,38 @@ void PopupMenu::showPopup(int x, int y, Button *button)
                 btn->getActionEventId().c_str(), btn->getCaption().c_str()));
         }
     }
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::showPopup(int x, int y, ProgressBar *b)
+{
+    if (!b || !miniStatusWindow)
+        return;
+
+    mBrowserBox->clearRows();
+    std::list <ProgressBar*> bars = miniStatusWindow->getBars();
+    std::list <ProgressBar*>::iterator it, it_end;
+    for (it = bars.begin(), it_end = bars.end(); it != it_end; ++it)
+    {
+        ProgressBar *bar = *it;
+        if (!bar || bar->getActionEventId() == "status bar")
+            continue;
+
+        if (bar->isVisible())
+        {
+            mBrowserBox->addRow(strprintf("@@hide bar_%s|Hide %s@@",
+                bar->getActionEventId().c_str(), bar->getId().c_str()));
+        }
+        else
+        {
+            mBrowserBox->addRow(strprintf("@@show bar_%s|Show %s@@",
+                bar->getActionEventId().c_str(), bar->getId().c_str()));
+        }
+    }
+
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 

@@ -48,8 +48,9 @@ class Item;
 class ItemShortcut;
 class Map;
 class PopupMenu;
-class TextCommand;
+class ProgressBar;
 class StatusPopup;
+class TextCommand;
 class TextPopup;
 class Window;
 
@@ -134,6 +135,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         void showPopup(Window *parent, Item *item, bool isInventory = true);
 
         void showPopup(int x, int y, Button *button);
+
+        void showPopup(int x, int y, ProgressBar *bar);
 
         void showPopup(MapItem *item);
 
