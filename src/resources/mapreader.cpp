@@ -455,6 +455,9 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
                 (const char*)dataChild->content) + 1);
             unsigned char *charData = new unsigned char[len + 1];
             const char *charStart = (const char*) xmlNodeGetContent(dataChild);
+            if (!charStart)
+                return;
+
             unsigned char *charIndex = charData;
 
             while (*charStart)
@@ -528,6 +531,9 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
                 continue;
 
             const char *data = (const char*) xmlNodeGetContent(dataChild);
+            if (!data)
+                return;
+
             std::string csv(data);
 
             size_t pos = 0;
@@ -536,6 +542,8 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
             while (oldPos != csv.npos)
             {
                 pos = csv.find_first_of(",", oldPos);
+                if (pos == csv.npos)
+                    return;
 
                 const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
 
@@ -584,55 +592,6 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
         break;
     }
 
-/*
-    if (!layer)
-        return;
-
-    for (int y = 0; y < layer->getHeight(); y ++)
-    {
-        for (int x = 0 ; x < layer->getWidth() ; x ++)
-        {
-            int width;
-            int c = layer->getTileDrawWidth(x, y, layer->getWidth(), width);
-            layer->setTileInfo(x, y, width, c);
-        }
-    }
-*/
-
-/*
-    Image *img1 = 0;
-    for (int y = 0; y < layer->getHeight(); y ++)
-    {
-        int skipWidth = 0;
-        int skipCount = 0;
-        img1 = layer->getTile(0, y);
-        layer->setTileInfo(layer->getWidth() - 1, y, skipWidth, skipCount);
-        for (int x = layer->getWidth() - 1 ; x > 0 ; x --)
-        {
-            Image *img = layer->getTile(x, y);
-            if (img)
-            {
-                if (img != img1)
-                { // different tile
-                    skipWidth = 0;
-                    skipCount = 0;
-                }
-                else
-                { // same tile
-                    skipWidth += img1->getWidth();
-                    skipCount ++;
-                }
-            }
-            else
-            {
-                skipWidth = 0;
-                skipCount = 0;
-            }
-            layer->setTileInfo(x, y, skipWidth, skipCount);
-            img1 = img;
-        }
-    }
-*/
 }
 
 Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
