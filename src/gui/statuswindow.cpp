@@ -522,6 +522,31 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int id, bool percent)
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
+void StatusWindow::updateWeightBar(ProgressBar *bar, bool percent)
+{
+    if (!bar)
+        return;
+
+    if (PlayerInfo::getAttribute(MAX_WEIGHT) == 0)
+    {
+        bar->setText(_("Max"));
+        bar->setProgress(1.0);
+    }
+    else
+    {
+        float progress = static_cast<float>(
+            PlayerInfo::getAttribute(TOTAL_WEIGHT))
+            / static_cast<float>(PlayerInfo::getAttribute(MAX_WEIGHT));
+
+        bar->setText(strprintf("%s/%s", Units::formatWeight(
+            PlayerInfo::getAttribute(TOTAL_WEIGHT)).c_str(),
+            Units::formatWeight(PlayerInfo::getAttribute(
+            MAX_WEIGHT)).c_str()));
+
+        bar->setProgress(progress);
+    }
+}
+
 void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
 {
     if (!player_node || !viewport)

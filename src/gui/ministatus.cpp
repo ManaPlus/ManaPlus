@@ -84,6 +84,9 @@ MiniStatusWindow::MiniStatusWindow():
         mJobBar = 0;
     }
 
+    mWeightBar = createBar(0, 140, 20, Theme::PROG_WEIGHT,
+                           "weight bar", _("weight bar"));
+
     mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
                            "status bar", _("status bar"));
 
@@ -199,6 +202,8 @@ void MiniStatusWindow::event(Channels channel _UNUSED_,
             StatusWindow::updateMPBar(mMpBar);
         else if (id == EXP || id == EXP_NEEDED)
             StatusWindow::updateXPBar(mXpBar);
+        else if (id == TOTAL_WEIGHT || id == MAX_WEIGHT)
+            StatusWindow::updateWeightBar(mWeightBar, false);
     }
     else if (event.getName() == EVENT_UPDATESTAT)
     {
@@ -344,7 +349,11 @@ void MiniStatusWindow::showBar(std::string name, bool isVisible)
 void MiniStatusWindow::loadBars()
 {
     if (!config.getValue("ministatussaved", false))
+    {
+        if (mWeightBar)
+            mWeightBar->setVisible(false);
         return;
+    }
 
     for (int f = 0; f < 10; f ++)
     {
