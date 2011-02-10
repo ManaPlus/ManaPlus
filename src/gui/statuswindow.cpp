@@ -23,6 +23,7 @@
 
 #include "configuration.h"
 #include "event.h"
+#include "inventory.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 #include "units.h"
@@ -522,7 +523,7 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int id, bool percent)
     updateProgressBar(bar, exp.first, exp.second, percent);
 }
 
-void StatusWindow::updateWeightBar(ProgressBar *bar, bool percent)
+void StatusWindow::updateWeightBar(ProgressBar *bar)
 {
     if (!bar)
         return;
@@ -545,6 +546,24 @@ void StatusWindow::updateWeightBar(ProgressBar *bar, bool percent)
 
         bar->setProgress(progress);
     }
+}
+
+void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
+{
+    Inventory *inv = PlayerInfo::getInventory();
+    if (!inv)
+        return;
+
+    const int usedSlots = inv->getNumberOfSlotsUsed();
+    const int maxSlots = inv->getSize();
+
+    if (maxSlots)
+    {
+        bar->setProgress(static_cast<float>(usedSlots)
+            / static_cast<float>(maxSlots));
+    }
+
+    bar->setText(strprintf("%d", usedSlots));
 }
 
 void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)

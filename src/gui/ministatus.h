@@ -22,6 +22,7 @@
 #ifndef MINISTATUS_H
 #define MINISTATUS_H
 
+#include "inventory.h"
 #include "listener.h"
 
 #include "gui/widgets/popup.h"
@@ -46,7 +47,9 @@ class TextPopup;
  *
  * \ingroup Interface
  */
-class MiniStatusWindow : public Popup, public Mana::Listener
+class MiniStatusWindow : public Popup,
+                         public InventoryListener,
+                         public Mana::Listener
 {
     public:
         MiniStatusWindow();
@@ -80,6 +83,8 @@ class MiniStatusWindow : public Popup, public Mana::Listener
 
         void updateBars();
 
+        void slotsChanged(Inventory* inventory);
+
         std::list <ProgressBar*> &getBars()
         { return mBars; }
 
@@ -102,6 +107,7 @@ class MiniStatusWindow : public Popup, public Mana::Listener
         ProgressBar *mXpBar;
         ProgressBar *mJobBar;
         ProgressBar *mWeightBar;
+        ProgressBar *mInvSlotsBar;
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;

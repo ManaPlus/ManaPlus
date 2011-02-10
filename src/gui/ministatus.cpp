@@ -87,6 +87,9 @@ MiniStatusWindow::MiniStatusWindow():
     mWeightBar = createBar(0, 140, 20, Theme::PROG_WEIGHT,
                            "weight bar", _("weight bar"));
 
+    mInvSlotsBar = createBar(0, 45, 20, Theme::PROG_INVY_SLOTS,
+                             "inventory slots bar", _("inventory slots bar"));
+
     mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
                            "status bar", _("status bar"));
 
@@ -99,6 +102,9 @@ MiniStatusWindow::MiniStatusWindow():
     mTextPopup = new TextPopup();
 
     addMouseListener(this);
+    Inventory *inv = PlayerInfo::getInventory();
+    if (inv)
+        inv->addInventoyListener(this);
     updateStatus();
 }
 
@@ -108,6 +114,10 @@ MiniStatusWindow::~MiniStatusWindow()
     mTextPopup = 0;
     delete mStatusPopup;
     mStatusPopup = 0;
+
+    Inventory *inv = PlayerInfo::getInventory();
+    if (inv)
+        inv->removeInventoyListener(this);
 
     std::list <ProgressBar*>::iterator it, it_end;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
@@ -203,7 +213,7 @@ void MiniStatusWindow::event(Channels channel _UNUSED_,
         else if (id == EXP || id == EXP_NEEDED)
             StatusWindow::updateXPBar(mXpBar);
         else if (id == TOTAL_WEIGHT || id == MAX_WEIGHT)
-            StatusWindow::updateWeightBar(mWeightBar, false);
+            StatusWindow::updateWeightBar(mWeightBar);
     }
     else if (event.getName() == EVENT_UPDATESTAT)
     {
@@ -348,10 +358,12 @@ void MiniStatusWindow::showBar(std::string name, bool isVisible)
 
 void MiniStatusWindow::loadBars()
 {
-    if (!config.getValue("ministatussaved", false))
+    if (!config.getValue("ministatussaved", 0))
     {
         if (mWeightBar)
             mWeightBar->setVisible(false);
+        if (mInvSlotsBar)
+            mInvSlotsBar->setVisible(false);
         return;
     }
 
@@ -386,4 +398,13 @@ void MiniStatusWindow::saveBars()
         config.deleteKey("ministatus" + toString(f));
 
     config.setValue("ministatussaved", true);
+}
+
+void MiniStatusWindow::slotsChanged(Inventory* inventory)
+{
+    if (!inventory)
+        return;
+
+    if (inventory->getType() == Inventory::INVENTORY)
+        StatusWindow::updateInvSlotsBar(mInvSlotsBar);
 }
