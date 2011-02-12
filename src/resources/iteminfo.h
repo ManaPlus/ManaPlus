@@ -207,6 +207,12 @@ class ItemInfo
         void setDrawPriority(int n)
         { mDrawPriority = n; }
 
+        int getRemoveSprite() const
+        { return mRemoveSprite; }
+
+        void setRemoveSprite(int n)
+        { mRemoveSprite = n; }
+
         std::map<int, int> getTags() const
         { return mTags; }
 
@@ -226,6 +232,7 @@ class ItemInfo
         int mDrawBefore;
         int mDrawAfter;
         int mDrawPriority;
+        int mRemoveSprite;
 
         // Equipment related members.
         /** Attack type, in case of weapon.

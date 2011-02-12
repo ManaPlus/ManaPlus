@@ -764,6 +764,7 @@ class Being : public ActorSprite, public ConfigListener
         std::string mIp;
         unsigned int mPvpRank;
         int *mSpriteRemap;
+        int *mSpriteHide;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

@@ -207,9 +207,13 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mPvpRank(0)
 {
     mSpriteRemap = new int[20];
+    mSpriteHide = new int[20];
 
     for (int f = 0; f < 20; f ++)
+    {
         mSpriteRemap[f] = f;
+        mSpriteHide[f] = 0;
+    }
 
     setMap(map);
     setSubtype(subtype);
@@ -238,6 +242,8 @@ Being::~Being()
 
     delete[] mSpriteRemap;
     mSpriteRemap = 0;
+    delete[] mSpriteHide;
+    mSpriteHide = 0;
 
     delete mSpeechBubble;
     mSpeechBubble = 0;
@@ -1699,6 +1705,9 @@ void Being::drawSprites(Graphics* graphics, int posX, int posY) const
 //    CompoundSprite::drawSprites(graphics, posX, posY);
     for (int f = 0; f < getNumberOfLayers(); f ++)
     {
+        if (mSpriteHide[mSpriteRemap[f]])
+            continue;
+
         Sprite *sprite = getSprite(mSpriteRemap[f]);
         if (sprite)
         {
@@ -1716,6 +1725,9 @@ void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
 
     for (unsigned f = 0; f < size(); f ++)
     {
+        if (mSpriteHide[mSpriteRemap[f]])
+            continue;
+
         Sprite *sprite = getSprite(mSpriteRemap[f]);
         if (sprite)
             sprite->draw(graphics, posX, posY);
@@ -1875,6 +1887,10 @@ void Being::recalcSpritesOrder()
 
 //    logger->log("preparation start");
     std::vector<int>::iterator it;
+
+    for (unsigned slot = 0; slot < sz; slot ++)
+        mSpriteHide[slot] = 0;
+
     for (unsigned slot = 0; slot < sz; slot ++)
     {
         slotRemap.push_back(slot);
@@ -1884,6 +1900,9 @@ void Being::recalcSpritesOrder()
             continue;
 
         const ItemInfo &info = ItemDB::get(id);
+        if (info.getRemoveSprite() > 0)
+            mSpriteHide[info.getRemoveSprite()] = 1;
+
         if (info.getDrawBefore() > 0)
         {
             int id2 = mSpriteIDs[info.getDrawBefore()];
