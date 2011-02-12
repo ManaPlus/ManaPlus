@@ -364,3 +364,14 @@ std::string normalize(const std::string &name)
     std::string normalized = name;
     return toLower(trim(normalized));
 }
+
+std::set<int> splitToIntSet(const std::string &text, char separator)
+{
+    std::set<int> tokens;
+    std::stringstream ss(text);
+    std::string item;
+    while(std::getline(ss, item, separator))
+        tokens.insert(atoi(item.c_str()));
+
+    return tokens;
+}

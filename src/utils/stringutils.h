@@ -25,6 +25,7 @@
 #include <string>
 #include <sstream>
 #include <list>
+#include <set>
 
 /**
  * Trims spaces off the end and the beginning of the given string.
@@ -163,5 +164,7 @@ void replaceSpecialChars(std::string &text);
  * Normalize a string, which means lowercase and trim it.
  */
 std::string normalize(const std::string &name);
+
+std::set<int> splitToIntSet(const std::string &text, char separator);
 
 #endif // UTILS_STRINGUTILS_H

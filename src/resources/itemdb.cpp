@@ -205,6 +205,8 @@ void ItemDB::load()
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
         std::string removeSprite = XML::getProperty(node, "removeSprite", "");
+        std::string removeSpriteIds = XML::getProperty(node, "removeSpriteIds", "");
+        std::set<int> rSprites = splitToIntSet(removeSpriteIds, ',');
 
         std::string tags[3];
         tags[0] = XML::getProperty(node, "tag",
@@ -265,6 +267,7 @@ void ItemDB::load()
         itemInfo->setDrawAfter(parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(drawPriority);
         itemInfo->setRemoveSprite(parseSpriteName(removeSprite));
+        itemInfo->setRemoveSpriteIds(rSprites);
 
         std::string effect;
         for (int i = 0; i < int(sizeof(fields) / sizeof(fields[0])); ++i)

@@ -29,6 +29,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <set>
 
 enum EquipmentSoundEvent
 {
@@ -220,6 +221,11 @@ class ItemInfo
         void addTag(int tag)
         { mTags[tag] = 1; }
 
+        void setRemoveSpriteIds(std::set<int> ids)
+        { mRemoveSpriteIds = ids; }
+
+        bool isRemoveSpriteId(int id) const;
+
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         std::string mName;
@@ -234,6 +240,7 @@ class ItemInfo
         int mDrawAfter;
         int mDrawPriority;
         int mRemoveSprite;
+        std::set<int> mRemoveSpriteIds;
 
         // Equipment related members.
         /** Attack type, in case of weapon.

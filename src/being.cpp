@@ -1901,7 +1901,10 @@ void Being::recalcSpritesOrder()
 
         const ItemInfo &info = ItemDB::get(id);
         if (info.getRemoveSprite() > 0)
-            mSpriteHide[info.getRemoveSprite()] = 1;
+        {
+            if (info.isRemoveSpriteId(mSpriteIDs[info.getRemoveSprite()]))
+                mSpriteHide[info.getRemoveSprite()] = 1;
+        }
 
         if (info.getDrawBefore() > 0)
         {

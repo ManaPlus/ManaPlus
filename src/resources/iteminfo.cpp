@@ -24,6 +24,8 @@
 #include "resources/itemdb.h"
 #include "configuration.h"
 
+#include <set>
+
 const std::string &ItemInfo::getSprite(Gender gender) const
 {
     if (mView)
@@ -63,4 +65,15 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
     i = mSounds.find(event);
 
     return i == mSounds.end() ? empty : i->second[rand() % i->second.size()];
+}
+
+bool ItemInfo::isRemoveSpriteId(int id) const
+{
+    if (!mRemoveSpriteIds.size()
+        || mRemoveSpriteIds.find(id) != mRemoveSpriteIds.end())
+    {
+        return true;
+    }
+
+    return false;
 }
