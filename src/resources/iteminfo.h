@@ -107,6 +107,7 @@ class ItemInfo
             mDrawBefore(-1),
             mDrawAfter(-1),
             mDrawPriority(0),
+            mRemoveSprite(0),
             mAttackAction(SpriteAction::INVALID),
             mAttackRange(0)
         {
