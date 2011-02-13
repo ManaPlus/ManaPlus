@@ -1428,8 +1428,10 @@ void Client::initConfiguration()
 {
     // Fill configuration with defaults
     config.setValue("hwaccel", false);
-#if (defined __APPLE__ || defined WIN32) && defined USE_OPENGL
+#if (defined __APPLE__) && defined USE_OPENGL
     config.setValue("opengl", 1);
+#elif (defined WIN32) && defined USE_OPENGL
+    config.setValue("opengl", 2);
 #else
     config.setValue("opengl", 0);
 #endif
