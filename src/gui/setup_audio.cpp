@@ -26,6 +26,7 @@
 #include "sound.h"
 
 #include "gui/okdialog.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
@@ -106,7 +107,6 @@ void Setup_Audio::apply()
     config.setValue("sound", mAudioEnabled);
     config.setValue("playBattleSound", mGameSoundEnabled);
     config.setValue("playGuiSound", mGuiSoundEnabled);
-    config.setValue("playMusic", mMusicEnabled);
 
     config.setValue("enableMumble", mMumbleEnabled);
 
@@ -130,11 +130,30 @@ void Setup_Audio::apply()
             new OkDialog(_("Sound Engine"), err);
             logger->log("Warning: %s", err);
         }
+        if (mMusicEnabled)
+        {
+            if (viewport && !config.getBoolValue("playMusic"))
+            {
+                Map *map = viewport->getMap();
+                if (map)
+                {
+                    config.setValue("playMusic", mMusicEnabled);
+                    sound.playMusic(map->getMusicFile());
+                }
+            }
+        }
+        else if (config.getBoolValue("playMusic"))
+        {
+            sound.stopMusic();
+        }
+
     }
     else
     {
         sound.close();
     }
+
+    config.setValue("playMusic", mMusicEnabled);
 }
 
 void Setup_Audio::cancel()
@@ -155,11 +174,11 @@ void Setup_Audio::cancel()
     config.setValue("sound", mAudioEnabled);
     config.setValue("playBattleSound", mGameSoundEnabled);
     config.setValue("playGuiSound", mGuiSoundEnabled);
-    config.setValue("playMusic", mMusicEnabled);
     config.setValue("enableMumble", mMumbleEnabled);
     config.setValue("download-music", mDownloadEnabled);
     config.setValue("sfxVolume", mSfxVolume);
     config.setValue("musicVolume", mMusicVolume);
+    config.setValue("playMusic", mMusicEnabled);
 }
 
 void Setup_Audio::action(const gcn::ActionEvent &event)
