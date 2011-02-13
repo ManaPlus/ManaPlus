@@ -1333,7 +1333,16 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount)
         if (mMap && config.getBoolValue("showpickupparticle"))
         {
             // Show pickup notification
-            addMessageToQueue(itemInfo.getName(), UserPalette::PICKUP_INFO);
+            if (amount > 1)
+            {
+                addMessageToQueue(strprintf("%d x %s", amount,
+                    itemInfo.getName().c_str()), UserPalette::PICKUP_INFO);
+            }
+            else
+            {
+                addMessageToQueue(itemInfo.getName(),
+                    UserPalette::PICKUP_INFO);
+            }
         }
     }
 }
