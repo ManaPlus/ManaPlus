@@ -46,6 +46,7 @@
 
 extern OkDialog *weightNotice;
 extern OkDialog *deathNotice;
+extern int weightNoticeTime;
 
 // Max. distance we are willing to scroll after a teleport;
 // everything beyond will reset the port hard.
@@ -320,19 +321,21 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
                                 = PlayerInfo::getAttribute(TOTAL_WEIGHT);
                             if (value >= max && total < max)
                             {
+                                weightNoticeTime = cur_time + 10;
                                 weightNotice = new OkDialog(_("Message"),
                                     _("You are carrying more than "
                                     "half your weight. You are "
-                                    "unable to regain health."));
+                                    "unable to regain health."), false);
                                 weightNotice->addActionListener(
                                     &weightListener);
                             }
                             else if (value < max && total >= max)
                             {
+                                weightNoticeTime = cur_time + 10;
                                 weightNotice = new OkDialog(_("Message"),
                                     _("You are carrying less than "
                                     "half your weight. You are "
-                                    "can regain health."));
+                                    "can regain health."), false);
                                 weightNotice->addActionListener(
                                     &weightListener);
                             }

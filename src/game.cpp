@@ -111,6 +111,7 @@
 Joystick *joystick = NULL;
 
 OkDialog *weightNotice = NULL;
+int weightNoticeTime = 0;
 OkDialog *deathNotice = NULL;
 QuitDialog *quitDialog = NULL;
 OkDialog *disconnectedDialog = NULL;

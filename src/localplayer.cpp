@@ -89,6 +89,8 @@ const short awayLimitTimer = 60;
 LocalPlayer *player_node = NULL;
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
+extern OkDialog *weightNotice;
+extern int weightNoticeTime;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, 0),
@@ -233,6 +235,13 @@ void LocalPlayer::logic()
                 break;
             }
         }
+    }
+
+    if (weightNotice && weightNoticeTime < cur_time)
+    {
+        weightNotice->scheduleDelete();
+        weightNotice = 0;
+        weightNoticeTime = 0;
     }
 
     // Show XP messages
