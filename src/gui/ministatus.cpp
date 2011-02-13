@@ -90,6 +90,9 @@ MiniStatusWindow::MiniStatusWindow():
     mInvSlotsBar = createBar(0, 45, 20, Theme::PROG_INVY_SLOTS,
                              "inventory slots bar", _("inventory slots bar"));
 
+    mMoneyBar = createBar(0, 130, 20, Theme::PROG_INVY_SLOTS,
+                             "money bar", _("money bar"));
+
     mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
                            "status bar", _("status bar"));
 
@@ -105,6 +108,8 @@ MiniStatusWindow::MiniStatusWindow():
     Inventory *inv = PlayerInfo::getInventory();
     if (inv)
         inv->addInventoyListener(this);
+
+    StatusWindow::updateMoneyBar(mMoneyBar);
     updateStatus();
 }
 
@@ -214,6 +219,8 @@ void MiniStatusWindow::event(Channels channel _UNUSED_,
             StatusWindow::updateXPBar(mXpBar);
         else if (id == TOTAL_WEIGHT || id == MAX_WEIGHT)
             StatusWindow::updateWeightBar(mWeightBar);
+        else if (id == MONEY)
+            StatusWindow::updateMoneyBar(mMoneyBar);
     }
     else if (event.getName() == EVENT_UPDATESTAT)
     {
@@ -341,6 +348,12 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         }
         mStatusPopup->hide();
     }
+    else if (event.getSource() == mMoneyBar)
+    {
+        mTextPopup->show(x + getX(), y + getY(),
+            event.getSource()->getId(),
+            toString(PlayerInfo::getAttribute(MONEY)));
+    }
     else
     {
         mTextPopup->hide();
@@ -392,6 +405,8 @@ void MiniStatusWindow::loadBars()
             mWeightBar->setVisible(false);
         if (mInvSlotsBar)
             mInvSlotsBar->setVisible(false);
+        if (mMoneyBar)
+            mMoneyBar->setVisible(false);
         return;
     }
 

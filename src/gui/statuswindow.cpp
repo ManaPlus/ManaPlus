@@ -548,6 +548,25 @@ void StatusWindow::updateWeightBar(ProgressBar *bar)
     }
 }
 
+void StatusWindow::updateMoneyBar(ProgressBar *bar)
+{
+    if (!bar)
+        return;
+
+    int money = PlayerInfo::getAttribute(MONEY);
+    bar->setText(Units::formatCurrency(money).c_str());
+    if (money > 0)
+    {
+        float progress = static_cast<float>(money)
+            / static_cast<float>(1000000000);
+        bar->setProgress(progress);
+    }
+    else
+    {
+        bar->setProgress(1.0);
+    }
+}
+
 void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
 {
     Inventory *inv = PlayerInfo::getInventory();

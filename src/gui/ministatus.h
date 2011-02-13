@@ -108,6 +108,7 @@ class MiniStatusWindow : public Popup,
         ProgressBar *mJobBar;
         ProgressBar *mWeightBar;
         ProgressBar *mInvSlotsBar;
+        ProgressBar *mMoneyBar;
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;
