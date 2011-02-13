@@ -66,6 +66,9 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void mousePressed(gcn::MouseEvent& mouseEvent);
 
+        Item* getEquipment(int i)
+        { return mEquipment ? mEquipment->getEquipment(i) : 0; }
+
     private:
         void mouseExited(gcn::MouseEvent &event);
         void mouseMoved(gcn::MouseEvent &event);

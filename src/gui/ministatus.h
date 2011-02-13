@@ -83,6 +83,8 @@ class MiniStatusWindow : public Popup,
 
         void updateBars();
 
+        void updateArrows();
+
         void slotsChanged(Inventory* inventory);
 
         std::list <ProgressBar*> &getBars()
@@ -109,6 +111,7 @@ class MiniStatusWindow : public Popup,
         ProgressBar *mWeightBar;
         ProgressBar *mInvSlotsBar;
         ProgressBar *mMoneyBar;
+        ProgressBar *mArrowsBar;
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;

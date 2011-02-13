@@ -91,7 +91,10 @@ MiniStatusWindow::MiniStatusWindow():
                              "inventory slots bar", _("inventory slots bar"));
 
     mMoneyBar = createBar(0, 130, 20, Theme::PROG_INVY_SLOTS,
-                             "money bar", _("money bar"));
+                          "money bar", _("money bar"));
+
+    mArrowsBar = createBar(0, 50, 20, Theme::PROG_INVY_SLOTS,
+                           "arrows bar", _("arrows bar"));
 
     mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
                            "status bar", _("status bar"));
@@ -110,6 +113,7 @@ MiniStatusWindow::MiniStatusWindow():
         inv->addInventoyListener(this);
 
     StatusWindow::updateMoneyBar(mMoneyBar);
+    StatusWindow::updateArrowsBar(mArrowsBar);
     updateStatus();
 }
 
@@ -407,6 +411,8 @@ void MiniStatusWindow::loadBars()
             mInvSlotsBar->setVisible(false);
         if (mMoneyBar)
             mMoneyBar->setVisible(false);
+        if (mArrowsBar)
+            mArrowsBar->setVisible(false);
         return;
     }
 
@@ -450,4 +456,9 @@ void MiniStatusWindow::slotsChanged(Inventory* inventory)
 
     if (inventory->getType() == Inventory::INVENTORY)
         StatusWindow::updateInvSlotsBar(mInvSlotsBar);
+}
+
+void MiniStatusWindow::updateArrows()
+{
+    StatusWindow::updateArrowsBar(mArrowsBar);
 }

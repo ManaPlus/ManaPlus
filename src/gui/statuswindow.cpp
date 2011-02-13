@@ -23,12 +23,15 @@
 
 #include "configuration.h"
 #include "event.h"
+#include "equipment.h"
 #include "inventory.h"
+#include "item.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 #include "units.h"
 #include "viewport.h"
 
+#include "gui/equipmentwindow.h"
 #include "gui/setup.h"
 #include "gui/theme.h"
 
@@ -567,8 +570,25 @@ void StatusWindow::updateMoneyBar(ProgressBar *bar)
     }
 }
 
+void StatusWindow::updateArrowsBar(ProgressBar *bar)
+{
+    if (!bar || !equipmentWindow)
+        return;
+
+    Item *item = equipmentWindow->getEquipment(
+        Equipment::EQUIP_PROJECTILE_SLOT);
+
+    if (item && item->getQuantity() > 0)
+        bar->setText(toString(item->getQuantity()));
+    else
+        bar->setText("0");
+}
+
 void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
 {
+    if (!bar)
+        return;
+
     Inventory *inv = PlayerInfo::getInventory();
     if (!inv)
         return;

@@ -69,6 +69,7 @@ class StatusWindow : public Window, public Mana::Listener
         static void updateWeightBar(ProgressBar *bar);
         static void updateInvSlotsBar(ProgressBar *bar);
         static void updateMoneyBar(ProgressBar *bar);
+        static void updateArrowsBar(ProgressBar *bar);
         static void updateStatusBar(ProgressBar *bar, bool percent = true);
         static void updateProgressBar(ProgressBar *bar, int value, int max,
                                       bool percent);

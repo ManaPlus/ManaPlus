@@ -30,6 +30,8 @@
 #include "localplayer.h"
 #include "log.h"
 
+#include "gui/ministatus.h"
+
 #include "gui/widgets/chattab.h"
 
 #include "net/messagein.h"
@@ -311,6 +313,8 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                     item->increaseQuantity(-amount);
                     if (item->getQuantity() == 0)
                         inventory->removeItemAt(index);
+                    if (miniStatusWindow)
+                        miniStatusWindow->updateArrows();
                 }
             }
             break;
@@ -483,6 +487,9 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
             if (flag)
                 mEquips.setEquipment(getSlot(equipType), -1);
+            if (miniStatusWindow && equipType & 0x8000)
+                miniStatusWindow->updateArrows();
+
             break;
 
         case SMSG_PLAYER_ATTACK_RANGE:
@@ -503,8 +510,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
             index -= INVENTORY_OFFSET;
 
-            logger->log("Arrows equipped: %i", index);
             mEquips.setEquipment(Equipment::EQUIP_PROJECTILE_SLOT, index);
+
+            if (miniStatusWindow)
+                miniStatusWindow->updateArrows();
             break;
 
         default:
