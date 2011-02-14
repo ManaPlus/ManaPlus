@@ -441,28 +441,59 @@ const std::map<int, ItemInfo*> &ItemDB::getItemInfos()
 int parseSpriteName(std::string &name)
 {
     int id = -1;
-    if (name == "shoes")
+    if (name == "shoes" || name == "boot" || name == "boots")
+    {
         id = 1;
+    }
     else if (name == "bottomclothes" || name == "bottom" || name == "pants")
+    {
         id = 2;
-    else if (name == "topclothes" || name == "top" || name == "torso")
+    }
+    else if (name == "topclothes" || name == "top"
+             || name == "torso" || name == "body")
+    {
         id = 3;
+    }
     else if (name == "misc1")
+    {
         id = 4;
-    else if (name == "misc2")
+    }
+    else if (name == "misc2" || name == "scarf" || name == "scarfs")
+    {
         id = 5;
+    }
     else if (name == "hair")
+    {
         id = 6;
-    else if (name == "hat")
+    }
+    else if (name == "hat" || name == "hats")
+    {
         id = 7;
-    else if (name == "cap")
+    }
+    else if (name == "wings")
+    {
         id = 8;
-    else if (name == "gloves")
+    }
+    else if (name == "glove" || name == "gloves")
+    {
         id = 9;
-    else if (name == "weapon")
+    }
+    else if (name == "weapon" || name == "weapons")
+    {
         id = 10;
-    else if (name == "shield")
+    }
+    else if (name == "shield" || name == "shields")
+    {
         id = 11;
+    }
+    else if (name == "amulet" || name == "amulets")
+    {
+        id = 12;
+    }
+    else if (name == "ring" || name == "rings")
+    {
+        id = 13;
+    }
 
     return id;
 }
