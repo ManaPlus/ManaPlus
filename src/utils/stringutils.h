@@ -167,4 +167,6 @@ std::string normalize(const std::string &name);
 
 std::set<int> splitToIntSet(const std::string &text, char separator);
 
+std::list<int> splitToIntList(const std::string &text, char separator);
+
 #endif // UTILS_STRINGUTILS_H

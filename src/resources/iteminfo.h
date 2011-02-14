@@ -108,7 +108,7 @@ class ItemInfo
             mDrawBefore(-1),
             mDrawAfter(-1),
             mDrawPriority(0),
-            mRemoveSprite(0),
+            mIsRemoveSprites(false),
             mAttackAction(SpriteAction::INVALID),
             mAttackRange(0)
         {
@@ -209,22 +209,26 @@ class ItemInfo
         void setDrawPriority(int n)
         { mDrawPriority = n; }
 
-        int getRemoveSprite() const
-        { return mRemoveSprite; }
-
-        void setRemoveSprite(int n)
-        { mRemoveSprite = n; }
-
         std::map<int, int> getTags() const
         { return mTags; }
 
         void addTag(int tag)
         { mTags[tag] = 1; }
 
-        void setRemoveSpriteIds(std::set<int> ids)
-        { mRemoveSpriteIds = ids; }
+        void setRemoveSprites()
+        { mIsRemoveSprites = true; }
 
-        bool isRemoveSpriteId(int id) const;
+        bool isRemoveSprites() const
+        { return mIsRemoveSprites; }
+
+        bool isRemoveItemId(int id) const;
+
+        int getReplaceToSpriteId(int id) const;
+
+        std::map<int,int> &addReplaceSprite(int sprite);
+
+        std::map<int, std::map<int, int> > getSpriteToItemReplaceMap() const
+        { return mSpriteToItemReplaceMap; }
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
@@ -239,8 +243,9 @@ class ItemInfo
         int mDrawBefore;
         int mDrawAfter;
         int mDrawPriority;
-        int mRemoveSprite;
-        std::set<int> mRemoveSpriteIds;
+        bool mIsRemoveSprites;
+        // sprite, <itemfrom, itemto>
+        std::map<int, std::map<int, int> > mSpriteToItemReplaceMap;
 
         // Equipment related members.
         /** Attack type, in case of weapon.

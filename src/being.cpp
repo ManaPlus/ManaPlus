@@ -1483,7 +1483,7 @@ void Being::updateColors()
 }
 
 void Being::setSprite(unsigned int slot, int id, const std::string &color,
-                      bool isWeapon)
+                      bool isWeapon, bool isTempSprite)
 {
     if (slot >= Net::getCharHandler()->maxSprite())
         return;
@@ -1530,9 +1530,12 @@ void Being::setSprite(unsigned int slot, int id, const std::string &color,
         setAction(mAction);
     }
 
-    mSpriteIDs[slot] = id;
-    mSpriteColors[slot] = color;
-    recalcSpritesOrder();
+    if (!isTempSprite)
+    {
+        mSpriteIDs[slot] = id;
+        mSpriteColors[slot] = color;
+        recalcSpritesOrder();
+    }
 }
 
 void Being::setSpriteID(unsigned int slot, int id)
@@ -1702,10 +1705,10 @@ bool Being::draw(Graphics *graphics, int offsetX, int offsetY) const
 
 void Being::drawSprites(Graphics* graphics, int posX, int posY) const
 {
-//    CompoundSprite::drawSprites(graphics, posX, posY);
     for (int f = 0; f < getNumberOfLayers(); f ++)
     {
-        if (mSpriteHide[mSpriteRemap[f]])
+        const int rSprite = mSpriteHide[mSpriteRemap[f]];
+        if (rSprite == 1)
             continue;
 
         Sprite *sprite = getSprite(mSpriteRemap[f]);
@@ -1719,13 +1722,10 @@ void Being::drawSprites(Graphics* graphics, int posX, int posY) const
 
 void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
 {
-//    CompoundSprite::drawSprites(graphics, posX, posY);
-
-//    logger->log("getNumberOfLayers: %d", getNumberOfLayers());
-
     for (unsigned f = 0; f < size(); f ++)
     {
-        if (mSpriteHide[mSpriteRemap[f]])
+        const int rSprite = mSpriteHide[mSpriteRemap[f]];
+        if (rSprite == 1)
             continue;
 
         Sprite *sprite = getSprite(mSpriteRemap[f]);
@@ -1887,9 +1887,13 @@ void Being::recalcSpritesOrder()
 
 //    logger->log("preparation start");
     std::vector<int>::iterator it;
+    int *oldHide = new int[20];
 
     for (unsigned slot = 0; slot < sz; slot ++)
+    {
+        oldHide[slot] = mSpriteHide[slot];
         mSpriteHide[slot] = 0;
+    }
 
     for (unsigned slot = 0; slot < sz; slot ++)
     {
@@ -1900,10 +1904,37 @@ void Being::recalcSpritesOrder()
             continue;
 
         const ItemInfo &info = ItemDB::get(id);
-        if (info.getRemoveSprite() > 0)
+        bool isRemove = false;
+        bool isRemoved = mSpriteHide[slot] != 0 && mSpriteHide[slot] != 1;
+
+        if (info.isRemoveSprites())
         {
-            if (info.isRemoveSpriteId(mSpriteIDs[info.getRemoveSprite()]))
-                mSpriteHide[info.getRemoveSprite()] = 1;
+            std::map<int, std::map<int, int> > spriteToItems
+                = info.getSpriteToItemReplaceMap();
+
+            std::map<int, std::map<int, int> >::iterator it;
+
+            for (it = spriteToItems.begin(); it != spriteToItems.end(); ++it)
+            {
+                int removeSprite = it->first;
+                std::map<int, int> &itemReplacer = it->second;
+                if (itemReplacer.size() == 0)
+                {
+                    mSpriteHide[removeSprite] = 1;
+                }
+                else
+                {
+                    std::map<int, int>::iterator repIt
+                        = itemReplacer.find(mSpriteIDs[removeSprite]);
+                    if (repIt != itemReplacer.end())
+                    {
+                        mSpriteHide[removeSprite] = repIt->second;
+                        setSprite(removeSprite, repIt->second,
+                            mSpriteColors[removeSprite], false, true);
+                    }
+                }
+            }
+
         }
 
         if (info.getDrawBefore() > 0)
@@ -2027,6 +2058,14 @@ void Being::recalcSpritesOrder()
     for (unsigned slot = 0; slot < sz; slot ++)
     {
         mSpriteRemap[slot] = slotRemap[slot];
+        if (oldHide[slot] != 0 && oldHide[slot] != 1 && mSpriteHide[slot] == 0)
+        {
+            int id = mSpriteIDs[slot];
+            if (!id)
+                continue;
+
+            setSprite(slot, id, mSpriteColors[slot], false, true);
+        }
 //        logger->log("slot %d = %d", slot, mSpriteRemap[slot]);
     }
 }

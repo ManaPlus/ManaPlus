@@ -25,6 +25,7 @@
 #include "configuration.h"
 
 #include <set>
+#include <map>
 
 const std::string &ItemInfo::getSprite(Gender gender) const
 {
@@ -67,13 +68,15 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
     return i == mSounds.end() ? empty : i->second[rand() % i->second.size()];
 }
 
-bool ItemInfo::isRemoveSpriteId(int id) const
+std::map<int,int> &ItemInfo::addReplaceSprite(int sprite)
 {
-    if (!mRemoveSpriteIds.size()
-        || mRemoveSpriteIds.find(id) != mRemoveSpriteIds.end())
+    std::map<int, std::map<int, int> >::iterator it
+        = mSpriteToItemReplaceMap.find(sprite);
+    if (it == mSpriteToItemReplaceMap.end())
     {
-        return true;
+        std::map<int, int> tmp;
+        mSpriteToItemReplaceMap[sprite] = tmp;
+        it = mSpriteToItemReplaceMap.find(sprite);
     }
-
-    return false;
+    return it->second;
 }

@@ -50,6 +50,7 @@ namespace
 static void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node);
 static void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node);
 static void loadFloorSprite(SpriteDisplay *display, xmlNodePtr node);
+static void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode);
 static int parseSpriteName(std::string &name);
 
 static char const *const fields[][2] =
@@ -205,8 +206,6 @@ void ItemDB::load()
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
         std::string removeSprite = XML::getProperty(node, "removeSprite", "");
-        std::string removeSpriteIds = XML::getProperty(node, "removeSpriteIds", "");
-        std::set<int> rSprites = splitToIntSet(removeSpriteIds, ',');
 
         std::string tags[3];
         tags[0] = XML::getProperty(node, "tag",
@@ -266,8 +265,6 @@ void ItemDB::load()
         itemInfo->setDrawBefore(parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(drawPriority);
-        itemInfo->setRemoveSprite(parseSpriteName(removeSprite));
-        itemInfo->setRemoveSpriteIds(rSprites);
 
         std::string effect;
         for (int i = 0; i < int(sizeof(fields) / sizeof(fields[0])); ++i)
@@ -312,6 +309,10 @@ void ItemDB::load()
             else if (xmlStrEqual(itemChild->name, BAD_CAST "floor"))
             {
                 loadFloorSprite(&display, itemChild);
+            }
+            else if (xmlStrEqual(itemChild->name, BAD_CAST "replace"))
+            {
+                loadReplaceSprite(itemInfo, itemChild);
             }
         }
 
@@ -551,6 +552,23 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
             std::string particlefx
                 = (const char*)spriteNode->xmlChildrenNode->content;
             display->particles.push_back(particlefx);
+        }
+    }
+}
+
+void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
+{
+    std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
+    std::map<int,int> &mapList = itemInfo->addReplaceSprite(parseSpriteName(removeSprite));
+    itemInfo->setRemoveSprites();
+
+    for_each_xml_child_node(itemNode, replaceNode)
+    {
+        if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+        {
+            int from = XML::getProperty(itemNode, "from", 0);
+            int to = XML::getProperty(itemNode, "to", 1);
+            mapList[from] = to;
         }
     }
 }

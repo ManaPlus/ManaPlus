@@ -375,3 +375,14 @@ std::set<int> splitToIntSet(const std::string &text, char separator)
 
     return tokens;
 }
+
+std::list<int> splitToIntList(const std::string &text, char separator)
+{
+    std::list<int> tokens;
+    std::stringstream ss(text);
+    std::string item;
+    while(std::getline(ss, item, separator))
+        tokens.push_back(atoi(item.c_str()));
+
+    return tokens;
+}

@@ -50,6 +50,7 @@
 #define SPEECH_TIME 500
 #define SPEECH_MAX_TIME 1000
 
+class AnimatedSprite;
 class BeingCacheEntry;
 class BeingInfo;
 class FlashText;
@@ -331,7 +332,8 @@ class Being : public ActorSprite, public ConfigListener
          * Sets visible equipments for this being.
          */
         void setSprite(unsigned int slot, int id,
-                       const std::string &color = "", bool isWeapon = false);
+                       const std::string &color = "", bool isWeapon = false,
+                       bool isTempSprite = false);
 
         void setSpriteID(unsigned int slot, int id);
 
