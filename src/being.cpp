@@ -1904,8 +1904,6 @@ void Being::recalcSpritesOrder()
             continue;
 
         const ItemInfo &info = ItemDB::get(id);
-        bool isRemove = false;
-        bool isRemoved = mSpriteHide[slot] != 0 && mSpriteHide[slot] != 1;
 
         if (info.isRemoveSprites())
         {
