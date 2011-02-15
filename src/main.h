@@ -70,6 +70,8 @@
 #define PACKAGE_OS "Linux"
 #elif defined __GNU__
 #define PACKAGE_OS "GNU Hurd"
+#elif defined __HAIKU__
+#define PACKAGE_OS "Haiku"
 #elif defined WIN32 || defined _WIN32 || defined __WIN32__ || defined __NT__ \
     || defined WIN64 || defined _WIN64 || defined __WIN64__ \
     || defined __MINGW32__ || defined _MSC_VER
