@@ -33,10 +33,12 @@
 #include <string>
 #include <vector>
 
-class TextBox;
-class ListBox;
-class TextField;
+class BrowserBox;
+class ItemLinkHandler;
 class IntTextField;
+class ListBox;
+class TextBox;
+class TextField;
 class Button;
 
 /**
@@ -67,7 +69,7 @@ class NpcDialog : public Window, public gcn::ActionListener,
         *
         * @param string The new text.
         */
-        void setText(const std::string &string);
+//        void setText(const std::string &string);
 
         /**
          * Adds the text to the text shows in the dialog. Also adds a newline
@@ -190,7 +192,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
 
         // Used for the main input area
         gcn::ScrollArea *mScrollArea;
-        TextBox *mTextBox;
+        BrowserBox *mTextBox;
+        //TextBox *mTextBox;
         std::string mText;
         std::string mNewText;
 
@@ -198,6 +201,7 @@ class NpcDialog : public Window, public gcn::ActionListener,
         ListBox *mItemList;
         gcn::ScrollArea *mListScrollArea;
         std::vector<std::string> mItems;
+        ItemLinkHandler *mItemLinkHandler;
 
         // Used for string and integer input
         TextField *mTextField;

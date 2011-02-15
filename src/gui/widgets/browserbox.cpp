@@ -40,6 +40,7 @@
 
 BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     gcn::Widget(),
+    mLinkHandler(0),
     mMode(mode), mHighMode(UNDERLINE | BACKGROUND),
     mOpaque(opaque),
     mUseLinksAndUserColors(true),

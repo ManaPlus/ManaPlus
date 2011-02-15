@@ -26,9 +26,11 @@
 
 #include "gui/setup.h"
 
+#include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/inttextfield.h"
+#include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -70,10 +72,11 @@ NpcDialog::NpcDialog(int npcId)
 
     setDefaultSize(260, 200, ImageRect::CENTER);
 
+    mItemLinkHandler = new ItemLinkHandler;
     // Setup output text box
-    mTextBox = new TextBox;
-    mTextBox->setEditable(false);
+    mTextBox = new BrowserBox;
     mTextBox->setOpaque(false);
+    mTextBox->setLinkHandler(mItemLinkHandler);
 
     mScrollArea = new ScrollArea(mTextBox);
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
@@ -147,16 +150,20 @@ NpcDialog::~NpcDialog()
     mPlusButton = 0;
     delete mMinusButton;
     mMinusButton = 0;
+    delete mItemLinkHandler;
+    mItemLinkHandler = 0;
 
     instances.remove(this);
 }
 
+/*
 void NpcDialog::setText(const std::string &text)
 {
     mText = text;
 
     mTextBox->setTextWrapped(mText, mScrollArea->getWidth() - 15);
 }
+*/
 
 void NpcDialog::addText(const std::string &text, bool save)
 {
@@ -165,8 +172,9 @@ void NpcDialog::addText(const std::string &text, bool save)
         if (mText.size() > 5000)
             mText = "";
 
-        mNewText += text + "\n";
-        setText(mText + text + "\n");
+        mNewText += text;
+        mTextBox->addRow(text);
+//        setText(mText + text + "\n");
     }
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
     mActionState = NPC_ACTION_WAIT;
@@ -196,7 +204,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
 
             nextDialog();
             // TRANSLATORS: Please leave the \n sequences intact.
-            addText(_("\n> Next\n"), false);
+            addText(_("> Next"), false);
         }
         else if (mActionState == NPC_ACTION_CLOSE)
         {
@@ -239,13 +247,13 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                     mNpcId, mIntField->getValue());
             }
             // addText will auto remove the input layout
-            addText(strprintf("\n> \"%s\"\n", printText.c_str()), false);
+            addText(strprintf("> \"%s\"", printText.c_str()), false);
 
             mNewText.clear();
         }
 
         if (!mLogInteraction)
-            setText("");
+            mTextBox->clearRows();
     }
     else if (event.getId() == "reset")
     {
@@ -264,7 +272,9 @@ void NpcDialog::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "clear")
     {
-        setText(mNewText);
+        mTextBox->clearRows();
+//        mTextBox->addRow(mNewText);
+//        setText(mNewText);
     }
 }
 
@@ -377,7 +387,7 @@ void NpcDialog::widgetResized(const gcn::Event &event)
 {
     Window::widgetResized(event);
 
-    setText(mText);
+//    setText(mText);
 }
 
 void NpcDialog::setVisible(bool visible)
@@ -441,8 +451,8 @@ void NpcDialog::buildLayout()
     }
     else if (mInputState != NPC_INPUT_NONE)
     {
-        if (!mLogInteraction)
-            setText(mNewText);
+//        if (!mLogInteraction)
+//            setText(mNewText);
 
         mButton->setCaption(CAPTION_SUBMIT);
         if (mInputState == NPC_INPUT_LIST)
