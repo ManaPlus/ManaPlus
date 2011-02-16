@@ -1927,8 +1927,11 @@ void Being::recalcSpritesOrder()
                     if (repIt != itemReplacer.end())
                     {
                         mSpriteHide[removeSprite] = repIt->second;
-                        setSprite(removeSprite, repIt->second,
-                            mSpriteColors[removeSprite], false, true);
+                        if (repIt->second != 1)
+                        {
+                            setSprite(removeSprite, repIt->second,
+                                mSpriteColors[removeSprite], false, true);
+                        }
                     }
                 }
             }
