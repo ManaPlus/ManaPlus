@@ -75,6 +75,7 @@ BeingHandler::BeingHandler(bool enableSync):
         SMSG_BEING_CHANGE_LOOKS,
         SMSG_BEING_CHANGE_LOOKS2,
         SMSG_BEING_NAME_RESPONSE,
+        SMSG_BEING_NAME_RESPONSE2,
         SMSG_PLAYER_GUILD_PARTY_INFO,
         SMSG_BEING_CHANGE_DIRECTION,
         SMSG_PLAYER_UPDATE_1,
@@ -722,6 +723,46 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     else
                     {
                         dstBeing->setName(msg.readString(24));
+                        dstBeing->updateGuild();
+                        dstBeing->addToCache();
+
+                        if (dstBeing->getType() == Being::PLAYER)
+                            dstBeing->updateColors();
+
+                        if (player_node)
+                        {
+                            Party *party = player_node->getParty();
+                            if (party && party->isMember(dstBeing->getId()))
+                            {
+                                PartyMember *member = party->getMember(
+                                    dstBeing->getId());
+
+                                if (member)
+                                    member->setName(dstBeing->getName());
+                            }
+                            player_node->checkNewName(dstBeing);
+                        }
+                    }
+                }
+            }
+            break;
+        case SMSG_BEING_NAME_RESPONSE2:
+            {
+                int len = msg.readInt16();
+                logger->log("len: %d", len);
+                int beingId = msg.readInt32();
+                logger->log("id: %d", beingId);
+                std::string str = msg.readString(len - 8);
+                logger->log("str: %s", str.c_str());
+                if ((dstBeing = actorSpriteManager->findBeing(beingId)))
+                {
+                    if (beingId == player_node->getId())
+                    {
+                        player_node->pingResponse();
+                    }
+                    else
+                    {
+                        dstBeing->setName(str);
                         dstBeing->updateGuild();
                         dstBeing->addToCache();
 
