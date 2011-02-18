@@ -27,6 +27,7 @@
 #include "gui/theme.h"
 #include "gui/truetypefont.h"
 
+#include "gui/widgets/mouseevent.h"
 #include "gui/widgets/window.h"
 #include "gui/widgets/windowcontainer.h"
 
@@ -331,6 +332,10 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         return;
     }
 
+    MouseEvent mouseEvent(source, mShiftPressed, mControlPressed,
+        mAltPressed, mMetaPressed, type, button,
+        x, y, mClickCount);
+
     while (parent != NULL)
     {
         // If the widget has been removed due to input
@@ -340,14 +345,14 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
 
         parent = (gcn::Widget*)widget->getParent();
 
+
         if (widget->isEnabled() || force)
         {
             int widgetX, widgetY;
             widget->getAbsolutePosition(widgetX, widgetY);
 
-            gcn::MouseEvent mouseEvent(source, mShiftPressed, mControlPressed,
-                mAltPressed, mMetaPressed, type, button,
-                x - widgetX, y - widgetY, mClickCount);
+            mouseEvent.setX(x - widgetX);
+            mouseEvent.setY(y - widgetY);
 
             std::list<gcn::MouseListener*> mouseListeners
                 = widget->_getMouseListeners();

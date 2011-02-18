@@ -57,6 +57,7 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/linkhandler.h \
 	      gui/widgets/listbox.cpp \
 	      gui/widgets/listbox.h \
+	      gui/widgets/mouseevent.h \
 	      gui/widgets/passwordfield.cpp \
 	      gui/widgets/passwordfield.h \
 	      gui/widgets/playerbox.cpp \
