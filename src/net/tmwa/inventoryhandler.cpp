@@ -280,15 +280,16 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             {
                 const ItemInfo &itemInfo = ItemDB::get(itemId);
 
-                if (msg.readInt8() > 0)
+                unsigned char err = msg.readInt8();
+                if (err)
                 {
                     if (player_node)
-                        player_node->pickedUp(itemInfo, 0);
+                        player_node->pickedUp(itemInfo, 0, err);
                 }
                 else
                 {
                     if (player_node)
-                        player_node->pickedUp(itemInfo, amount);
+                        player_node->pickedUp(itemInfo, amount, PICKUP_OKAY);
 
                     if (inventory)
                     {

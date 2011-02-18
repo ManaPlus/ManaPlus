@@ -1308,20 +1308,39 @@ void LocalPlayer::stopAttack()
     mLastTarget = -1;
 }
 
-void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount)
+void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
+                           unsigned char fail)
 {
-    if (!amount)
+    if (fail)
     {
-        if (config.getBoolValue("showpickupchat"))
+        const char* msg;
+        switch (fail)
         {
-            localChatTab->chatLog(_("Unable to pick up item."),
-                                  BY_SERVER);
+            case PICKUP_BAD_ITEM:
+                msg = N_("Tried to pick up nonexistent item.");
+                break;
+            case PICKUP_TOO_HEAVY: msg = N_("Item is too heavy.");
+                break;
+            case PICKUP_TOO_FAR: msg = N_("Item is too far away");
+                break;
+            case PICKUP_INV_FULL: msg = N_("Inventory is full.");
+                break;
+            case PICKUP_STACK_FULL: msg = N_("Stack is too big.");
+                break;
+            case PICKUP_DROP_STEAL:
+                msg = N_("Item belongs to someone else.");
+                break;
+            default:
+                msg = N_("Unknown problem picking up item.");
+                break;
         }
-        if (mMap && config.getValue("showpickupparticle", 0))
+        if (config.getBoolValue("showpickupchat"))
+            localChatTab->chatLog(_(msg), BY_SERVER);
+
+        if (mMap && config.getBoolValue("showpickupparticle"))
         {
             // Show pickup notification
-            addMessageToQueue(_("Unable to pick up item."),
-                              UserPalette::PICKUP_INFO);
+            addMessageToQueue(_(msg), UserPalette::PICKUP_INFO);
         }
     }
     else
