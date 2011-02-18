@@ -1,9 +1,10 @@
 /*
- *  The Mana Client
+ *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
- *  This file is part of The Mana Client.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

@@ -2,7 +2,7 @@
  *  Retrieve string pasted depending on OS mechanisms.
  *  Copyright (C) 2001-2010  Wormux Team
  *
- *  This file is part of The Mana Client.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
