@@ -1092,6 +1092,24 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
 
     if (isInventory)
     {
+        if (InventoryWindow::isStorageActive())
+        {
+            mBrowserBox->addRow(strprintf("@@store|%s@@", _("Store")));
+            if (cnt > 1)
+            {
+                if (cnt > 10)
+                {
+                    mBrowserBox->addRow(strprintf("@@store 10|%s@@",
+                                        _("Store 10")));
+                }
+                mBrowserBox->addRow(strprintf("@@store half|%s@@",
+                                    _("Store half")));
+                mBrowserBox->addRow(strprintf("@@store all|%s@@",
+                                    _("Store all")));
+            }
+            mBrowserBox->addRow("##3---");
+        }
+
         if (item->isEquipment())
         {
             if (item->isEquipped())
@@ -1110,22 +1128,6 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
         if (Net::getInventoryHandler()->canSplit(item))
             mBrowserBox->addRow(strprintf("@@split|%s@@", _("Split")));
 
-        if (InventoryWindow::isStorageActive())
-        {
-            mBrowserBox->addRow(strprintf("@@store|%s@@", _("Store")));
-            if (cnt > 1)
-            {
-                if (cnt > 10)
-                {
-                    mBrowserBox->addRow(strprintf("@@store 10|%s@@",
-                                        _("Store 10")));
-                }
-                mBrowserBox->addRow(strprintf("@@store half|%s@@",
-                                    _("Store half")));
-                mBrowserBox->addRow(strprintf("@@store all|%s@@",
-                                    _("Store all")));
-            }
-        }
     }
     // Assume in storage for now
     // TODO: make this whole system more flexible, if needed
