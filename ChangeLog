@@ -1,3 +1,18 @@
+2011-02-20 New release 1.1.2.20
+ManaPlus:
+fix: stop/start playung music after changing option.
+add: show/hide buttons in top right corner.
+right click on buttons open menu.
+add: show/hide bars in top right corner.
+right click on bars open menu.
+add: extended minimaps (Ben Longbons).
+add: npc gender. (only for extended servers)
+add: hiding equipment sprites by attributes (need support in client data).
+add: weight notice dialogs not modal and auto hiding after 10 seconds.
+add: show amount in pickup particles.
+add: new bars Weight bar, Inventory slots bar, Money bar, Arrows bar.
+
+
 2011-02-06 New release 1.1.2.6.
 ManaPlus:
 fix: crashes.
