@@ -69,7 +69,7 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
     return i == mSounds.end() ? empty : i->second[rand() % i->second.size()];
 }
 
-std::map<int,int> &ItemInfo::addReplaceSprite(int sprite)
+std::map<int, int> &ItemInfo::addReplaceSprite(int sprite)
 {
     std::map<int, std::map<int, int> >::iterator it
         = mSpriteToItemReplaceMap.find(sprite);

@@ -1888,7 +1888,7 @@ void Being::recalcSpritesOrder()
 
 //    logger->log("preparation start");
     std::vector<int>::iterator it;
-    int *oldHide = new int[20];
+    int oldHide[20];
 
     for (unsigned slot = 0; slot < sz; slot ++)
     {

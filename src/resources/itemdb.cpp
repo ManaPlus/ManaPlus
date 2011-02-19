@@ -560,7 +560,9 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
 void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
 {
     std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
-    std::map<int,int> &mapList = itemInfo->addReplaceSprite(parseSpriteName(removeSprite));
+    std::map<int, int> &mapList = itemInfo->addReplaceSprite(
+        parseSpriteName(removeSprite));
+
     itemInfo->setRemoveSprites();
 
     for_each_xml_child_node(itemNode, replaceNode)

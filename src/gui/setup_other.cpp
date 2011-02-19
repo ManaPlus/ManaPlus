@@ -146,60 +146,46 @@ Setup_Other::Setup_Other():
     mAfkButton = new Button(_("Edit"), ACTION_EDIT_AFK, this);
 
     mTradeBotCheckBox = new CheckBox(_("Enable shop mode"),
-                                                mTradeBot,
-                                                this, ACTION_TRADEBOT);
+        mTradeBot, this, ACTION_TRADEBOT);
 
     mBuggyServersCheckBox = new CheckBox(_("Enable buggy servers protection"),
-                                                mBuggyServers,
-                                                this, ACTION_BUGGY_SERVERS);
+        mBuggyServers, this, ACTION_BUGGY_SERVERS);
 
     mDebugLogCheckBox = new CheckBox(_("Enable debug log"),
-                                     mDebugLog,
-                                     this, ACTION_DEBUG_LOG);
+        mDebugLog, this, ACTION_DEBUG_LOG);
 
     mServerAttackCheckBox = new CheckBox(_("Enable server side attack"),
-                                         mServerAttack,
-                                         this, ACTION_SERVER_ATTACK);
+        mServerAttack, this, ACTION_SERVER_ATTACK);
 
     mAutofixPosCheckBox = new CheckBox(_("Auto fix position"),
-                                       mAutofixPos,
-                                       this, ACTION_FIX_POS);
+        mAutofixPos, this, ACTION_FIX_POS);
 
     mAttackMovingCheckBox = new CheckBox(_("Attack while moving"),
-                                         mAttackMoving,
-                                         this, ACTION_ATTACK_MOVING);
+        mAttackMoving, this, ACTION_ATTACK_MOVING);
 
     mQuickStatsCheckBox = new CheckBox(_("Enable quick stats"),
-                                       mQuickStats,
-                                       this, ACTION_QUICK_STATS);
+        mQuickStats, this, ACTION_QUICK_STATS);
 
     mWarpParticleCheckBox = new CheckBox(_("Show warps particles"),
-                                       mWarpParticle,
-                                       this, ACTION_WARP_PARTICLE);
+        mWarpParticle, this, ACTION_WARP_PARTICLE);
 
     mAutoShopCheckBox = new CheckBox(_("Accept sell/buy requests"),
-                                       mAutoShop,
-                                       this, ACTION_AUTO_SHOP);
+        mAutoShop, this, ACTION_AUTO_SHOP);
 
     mShowMobHPCheckBox = new CheckBox(_("Show monster hp bar"),
-                                       mShowMobHP,
-                                       this, ACTION_SHOW_MOB_HP);
+        mShowMobHP, this, ACTION_SHOW_MOB_HP);
 
     mShowOwnHPCheckBox = new CheckBox(_("Show own hp bar"),
-                                       mShowOwnHP,
-                                       this, ACTION_SHOW_OWN_HP);
+        mShowOwnHP, this, ACTION_SHOW_OWN_HP);
 
     mShowJobExpCheckBox = new CheckBox(_("Show job exp messages"),
-                                       mShowJobExp,
-                                       this, ACTION_SHOW_JOB_EXP);
+        mShowJobExp, this, ACTION_SHOW_JOB_EXP);
 
     mShowBeingPopupCheckBox = new CheckBox(_("Show players popups"),
-                                           mShowBeingPopup,
-                                           this, ACTION_SHOW_BEING_POPUP);
+        mShowBeingPopup, this, ACTION_SHOW_BEING_POPUP);
 
     mShowExtMinimapsCheckBox = new CheckBox(_("Show extended minimaps"),
-                                            mShowExtMinimaps,
-                                            this, ACTION_SHOW_EXTENDED_MINIMAPS);
+        mShowExtMinimaps, this, ACTION_SHOW_EXTENDED_MINIMAPS);
 
     // Do the layout
     LayoutHelper h(this);

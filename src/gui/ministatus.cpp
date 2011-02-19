@@ -154,7 +154,7 @@ ProgressBar *MiniStatusWindow::createBar(float progress, int width, int height,
 
 void MiniStatusWindow::updateBars()
 {
-    int x = 0, h = 0;
+    int x = 0;
     std::list <ProgressBar*>::iterator it, it_end;
     ProgressBar* lastBar = 0;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
@@ -169,7 +169,6 @@ void MiniStatusWindow::updateBars()
             bar->setPosition(x, 3);
             add(bar);
             x += bar->getWidth() + 3;
-            h = bar->getHeight();
             lastBar = bar;
         }
     }

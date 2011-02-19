@@ -457,7 +457,10 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
             unsigned char *charData = new unsigned char[len + 1];
             const char *charStart = (const char*) xmlNodeGetContent(dataChild);
             if (!charStart)
+            {
+                delete charData;
                 return;
+            }
 
             unsigned char *charIndex = charData;
 

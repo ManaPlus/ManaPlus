@@ -121,7 +121,7 @@ void Minimap::setMap(Map *map)
             for (int y = 0; y < surface->h; y ++)
             {
                 for (int x = 0; x < surface->w; x ++)
-                    *(data ++) = -map->getWalk(x,y);
+                    *(data ++) = -map->getWalk(x, y);
             }
             SDL_UnlockSurface(surface);
 

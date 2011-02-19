@@ -51,8 +51,10 @@ class TextPopup : public Popup
          * Sets the text to be displayed.
          */
         void show(int x, int y, const std::string &str1)
-        { show(x, y, str1, static_cast<const char*>(""),
-          static_cast<const char*>("")); };
+        {
+            show(x, y, str1, static_cast<const char*>(""),
+                static_cast<const char*>(""));
+        };
 
         /**
          * Sets the text to be displayed.

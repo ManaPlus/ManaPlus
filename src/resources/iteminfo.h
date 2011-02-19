@@ -226,7 +226,7 @@ class ItemInfo
 
         int getReplaceToSpriteId(int id) const;
 
-        std::map<int,int> &addReplaceSprite(int sprite);
+        std::map<int, int> &addReplaceSprite(int sprite);
 
         std::map<int, std::map<int, int> > getSpriteToItemReplaceMap() const
         { return mSpriteToItemReplaceMap; }

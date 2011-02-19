@@ -55,7 +55,7 @@ class AwayListener : public gcn::ActionListener
  */
 enum
 {
-    PICKUP_OKAY,
+    PICKUP_OKAY = 0,
     PICKUP_BAD_ITEM,
     PICKUP_TOO_HEAVY,
     PICKUP_TOO_FAR,

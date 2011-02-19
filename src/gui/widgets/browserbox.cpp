@@ -244,7 +244,7 @@ struct MouseOverLink
     MouseOverLink(int x, int y) : mX(x), mY(y)
     { }
 
-    bool operator() (BROWSER_LINK &link)
+    bool operator() (BROWSER_LINK &link) const
     {
         return (mX >= link.x1 && mX < link.x2 &&
                 mY >= link.y1 && mY < link.y2);
