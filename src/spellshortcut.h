@@ -81,7 +81,7 @@ class SpellShortcut
         { return mItems[index]; }
 
     private:
-        int mItems[SPELL_SHORTCUT_ITEMS];     /**< The items stored. */
+        int mItems[SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS];
         int mItemSelected;              /**< The item held by cursor. */
 };
 

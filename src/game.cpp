@@ -210,9 +210,15 @@ static void createGuiWindows()
     specialsWindow = new SpecialsWindow();
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
                                             new DropShortcutContainer);
+
     spellShortcutWindow = new ShortcutWindow("SpellShortcut",
-                                             new SpellShortcutContainer,
-                                             265, 310);
+                                             265, 328);
+    for (int f = 0; f < SPELL_SHORTCUT_TABS; f ++)
+    {
+        spellShortcutWindow->addTab(toString(f + 1),
+            new SpellShortcutContainer(f));
+    }
+
     botCheckerWindow = new BotCheckerWindow();
     whoIsOnline = new WhoIsOnline();
     killStats = new KillStats;

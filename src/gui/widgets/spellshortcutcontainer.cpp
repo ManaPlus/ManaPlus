@@ -48,10 +48,11 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-SpellShortcutContainer::SpellShortcutContainer():
+SpellShortcutContainer::SpellShortcutContainer(unsigned number):
     ShortcutContainer(),
     mSpellClicked(false),
-    mSpellMoved(NULL)
+    mSpellMoved(NULL),
+    mNumber(number)
 {
     mBoxWidth = mBoxWidth;
 
@@ -115,7 +116,7 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
         g->drawImage(mBackgroundImg, itemX, itemY);
 
-        int itemId = spellShortcut->getItem(i);
+        int itemId = spellShortcut->getItem((mNumber * SPELL_SHORTCUT_ITEMS) + i);
         if (selectedId >= 0 && itemId == selectedId)
         {
             g->drawRectangle(gcn::Rectangle(
@@ -163,7 +164,8 @@ void SpellShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             if (index == -1)
                 return;
 
-            const int itemId = spellShortcut->getItem(index);
+            const int itemId = spellShortcut->getItem(
+                (mNumber * SPELL_SHORTCUT_ITEMS) + index);
 
             if (itemId < 0)
                 return;
@@ -195,7 +197,8 @@ void SpellShortcutContainer::mousePressed(gcn::MouseEvent &event)
         if (!spellShortcut || !spellManager)
             return;
 
-        const int itemId = spellShortcut->getItem(index);
+        const int itemId = spellShortcut->getItem(
+            (mNumber * SPELL_SHORTCUT_ITEMS) + index);
         spellManager->invoke(itemId);
     }
 }
@@ -210,7 +213,8 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    const int itemId = spellShortcut->getItem(index);
+    const int itemId = spellShortcut->getItem(
+        (mNumber * SPELL_SHORTCUT_ITEMS) + index);
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
@@ -263,7 +267,8 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     if (index == -1)
         return;
 
-    const int itemId = spellShortcut->getItem(index);
+    const int itemId = spellShortcut->getItem(
+        (mNumber * SPELL_SHORTCUT_ITEMS) + index);
 
     mSpellPopup->setVisible(false);
     TextCommand *spell = spellManager->getSpell(itemId);

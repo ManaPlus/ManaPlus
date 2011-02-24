@@ -31,6 +31,7 @@
 
 #define SPELL_MIN_ID 100000
 #define SPELL_SHORTCUT_ITEMS 49
+#define SPELL_SHORTCUT_TABS 5
 
 class SpellManager
 {

@@ -92,7 +92,7 @@ void SpellManager::fillSpells()
     addSpell(new TextCommand(11, "hi", "hi", NOTARGET, ""));
     addSpell(new TextCommand(12, "hea", "heal", NOTARGET, ""));
     addSpell(new TextCommand(13, "@sp", "@spawn maggot 10", NOTARGET, ""));
-    for (int f = 12; f < SPELL_SHORTCUT_ITEMS; f++)
+    for (int f = 12; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f++)
         addSpell(new TextCommand(f));
 }
 
@@ -254,7 +254,7 @@ void SpellManager::load(bool oldConfig)
     unsigned int mana;
     unsigned int commandType;
 
-    for (int i = 0; i < SPELL_SHORTCUT_ITEMS; i++)
+    for (int i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
         std::string flags =
             cfg->getValue("commandShortcutFlags" + toString(i), "");
@@ -288,21 +288,49 @@ void SpellManager::load(bool oldConfig)
 
 void SpellManager::save()
 {
-    for (int i = 0; i < SPELL_SHORTCUT_ITEMS; i++)
+    for (int i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
         TextCommand *spell = mSpellsVector[i];
         if (spell)
         {
-            serverConfig.setValue("commandShortcutCmd" + toString(i),
-                                  spell->getCommand());
-            serverConfig.setValue("commandShortcutSymbol" + toString(i),
-                                  spell->getSymbol());
-            serverConfig.setValue("commandShortcutIcon" + toString(i),
-                                  spell->getIcon());
-            serverConfig.setValue("commandShortcutFlags" + toString(i),
-                strprintf("%u %u %u %u %u %u", spell->getCommandType(),
-                spell->getTargetType(), spell->getBaseLvl(),
-                spell->getSchool(), spell->getSchoolLvl(), spell->getMana()));
+            if (spell->getCommand() != "")
+            {
+                serverConfig.setValue("commandShortcutCmd" + toString(i),
+                                      spell->getCommand());
+            }
+            else
+            {
+                serverConfig.deleteKey("commandShortcutCmd" + toString(i));
+            }
+            if (spell->getSymbol() != "")
+            {
+                serverConfig.setValue("commandShortcutSymbol" + toString(i),
+                                      spell->getSymbol());
+            }
+            else
+            {
+                serverConfig.deleteKey("commandShortcutSymbol" + toString(i));
+            }
+            if (spell->getIcon() != "")
+            {
+                serverConfig.setValue("commandShortcutIcon" + toString(i),
+                                      spell->getIcon());
+            }
+            else
+            {
+                serverConfig.deleteKey("commandShortcutIcon" + toString(i));
+            }
+            if (spell->getCommand() != "" && spell->getSymbol() != "")
+            {
+                serverConfig.setValue("commandShortcutFlags" + toString(i),
+                    strprintf("%u %u %u %u %u %u", spell->getCommandType(),
+                    spell->getTargetType(), spell->getBaseLvl(),
+                    spell->getSchool(), spell->getSchoolLvl(), spell->getMana()));
+            }
+            else
+            {
+                serverConfig.deleteKey("commandShortcutFlags" + toString(i));
+            }
         }
     }
 }

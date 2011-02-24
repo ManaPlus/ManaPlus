@@ -75,7 +75,10 @@ void DropShortcut::save()
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
-        serverConfig.setValue("drop" + toString(i), itemId);
+        if (itemId != -1)
+            serverConfig.setValue("drop" + toString(i), itemId);
+        else
+            serverConfig.deleteKey("drop" + toString(i));
     }
 }
 

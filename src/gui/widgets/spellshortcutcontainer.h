@@ -49,7 +49,7 @@ class SpellShortcutContainer : public ShortcutContainer
         /**
          * Constructor. Initializes the graphic.
          */
-        SpellShortcutContainer();
+        SpellShortcutContainer(unsigned number);
 
         /**
          * Destructor.
@@ -83,6 +83,7 @@ class SpellShortcutContainer : public ShortcutContainer
         bool mSpellClicked;
         TextCommand *mSpellMoved;
         SpellPopup *mSpellPopup;
+        unsigned mNumber;
 };
 
 #endif

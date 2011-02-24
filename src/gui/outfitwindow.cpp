@@ -157,14 +157,25 @@ void OutfitWindow::save()
     std::string outfitStr;
     for (int o = 0; o < OUTFITS_COUNT; o++)
     {
+        bool good = false;
         for (int i = 0; i < OUTFIT_ITEM_COUNT; i++)
         {
-            outfitStr += mItems[o][i] ? toString(mItems[o][i]) : toString(-1);
+            int res = mItems[o][i] ? mItems[o][i] : -1;
+            if (res != -1)
+                good = true;
+            outfitStr += toString(res);
             if (i < OUTFIT_ITEM_COUNT - 1)
                 outfitStr += " ";
         }
-        serverConfig.setValue("Outfit" + toString(o), outfitStr);
-        serverConfig.setValue("OutfitUnequip" + toString(o), mItemsUnequip[o]);
+        if (good)
+            serverConfig.setValue("Outfit" + toString(o), outfitStr);
+        else
+            serverConfig.deleteKey("Outfit" + toString(o));
+
+        if (mItemsUnequip[o])
+            serverConfig.deleteKey("OutfitUnequip" + toString(o));
+        else
+            serverConfig.setValue("OutfitUnequip" + toString(o), mItemsUnequip[o]);
         outfitStr = "";
     }
     serverConfig.setValue("OutfitAwayIndex", mAwayOutfit);

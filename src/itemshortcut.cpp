@@ -81,7 +81,10 @@ void ItemShortcut::save()
     for (int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
-        serverConfig.setValue(name + toString(i), itemId);
+        if (itemId != -1)
+            serverConfig.setValue(name + toString(i), itemId);
+        else
+            serverConfig.deleteKey(name + toString(i));
     }
 }
 
