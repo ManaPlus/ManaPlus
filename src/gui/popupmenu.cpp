@@ -866,6 +866,31 @@ void PopupMenu::handleLink(const std::string &link,
             mItem->getInvIndex(), mItem->getQuantity(),
             Inventory::STORAGE);
     }
+    else if (link == "addtrade" && mItem)
+    {
+        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+                             tradeWindow, mItem);
+    }
+    else if (link == "addtrade 10" && mItem)
+    {
+        if (tradeWindow)
+        {
+            int cnt = 10;
+            if (cnt > mItem->getQuantity())
+                cnt = mItem->getQuantity();
+            tradeWindow->tradeItem(mItem, cnt);
+        }
+    }
+    else if (link == "addtrade half" && mItem)
+    {
+        if (tradeWindow)
+            tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2);
+    }
+    else if (link == "addtrade all" && mItem)
+    {
+        if (tradeWindow)
+            tradeWindow->tradeItem(mItem, mItem->getQuantity());
+    }
     else if (link == "retrieve" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove, mWindow,
@@ -1092,6 +1117,23 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
 
     if (isInventory)
     {
+        if (tradeWindow)
+        {
+            mBrowserBox->addRow(strprintf("@@addtrade|%s@@", _("Add to trade")));
+            if (cnt > 1)
+            {
+                if (cnt > 10)
+                {
+                    mBrowserBox->addRow(strprintf("@@addtrade 10|%s@@",
+                                        _("Add to trade 10")));
+                }
+                mBrowserBox->addRow(strprintf("@@addtrade half|%s@@",
+                                    _("Add to trade half")));
+                mBrowserBox->addRow(strprintf("@@addtrade all|%s@@",
+                                    _("Add to trade all")));
+            }
+            mBrowserBox->addRow("##3---");
+        }
         if (InventoryWindow::isStorageActive())
         {
             mBrowserBox->addRow(strprintf("@@store|%s@@", _("Store")));
