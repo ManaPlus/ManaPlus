@@ -72,6 +72,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
     std::string args(command, pos == std::string::npos
                      ? command.size() : pos + 1);
 
+    args = trim(args);
+
     if (command == "closeall")
     {
         handleCloseAll(args, tab);
