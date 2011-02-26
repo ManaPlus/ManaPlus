@@ -338,6 +338,17 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mBrowserBox->addRow(_("@@follow|Follow@@"));
     mBrowserBox->addRow(_("@@imitation|Imitation@@"));
 
+
+    if (player_node->isInParty() && player_node->getParty())
+    {
+        PartyMember *member = player_node->getParty()->getMember(mNick);
+        if (member)
+        {
+            mBrowserBox->addRow(_("@@kick party|Kick from party@@"));
+            mBrowserBox->addRow("##3---");
+        }
+    }
+
     Guild *guild2 = player_node->getGuild();
     if (guild2)
     {
@@ -926,6 +937,15 @@ void PopupMenu::handleLink(const std::string &link,
              && being->getType() == Being::PLAYER)
     {
         Net::getPartyHandler()->kick(being);
+    }
+    else if (link == "kick party" && !mNick.empty())
+    {
+        if (player_node && player_node->getParty())
+        {
+            PartyMember *member = player_node->getParty()->getMember(mNick);
+            if (member)
+                Net::getPartyHandler()->kick(mNick);
+        }
     }
     else if (link == "name" && !mNick.empty())
     {
