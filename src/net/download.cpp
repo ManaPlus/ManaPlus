@@ -37,25 +37,6 @@
 const char *DOWNLOAD_ERROR_MESSAGE_THREAD
     = "Could not create download thread!";
 
-/**
- * Calculates the Alder-32 checksum for the given file.
- */
-static unsigned long fadler32(FILE *file)
-{
-    // Obtain file size
-    fseek(file, 0, SEEK_END);
-    long fileSize = ftell(file);
-    rewind(file);
-
-    // Calculate Adler-32 checksum
-    char *buffer = static_cast<char*>(malloc(fileSize));
-    const size_t read = fread(buffer, 1, fileSize, file);
-    unsigned long adler = adler32(0L, Z_NULL, 0);
-    adler = adler32(static_cast<uInt>(adler), (Bytef*)buffer, read);
-    free(buffer);
-
-    return adler;
-}
 
 enum
 {
@@ -95,6 +76,26 @@ Download::~Download()
         SDL_WaitThread(mThread, &status);
     mThread = 0;
     free(mError);
+}
+
+/**
+ * Calculates the Alder-32 checksum for the given file.
+ */
+unsigned long Download::fadler32(FILE *file)
+{
+    // Obtain file size
+    fseek(file, 0, SEEK_END);
+    long fileSize = ftell(file);
+    rewind(file);
+
+    // Calculate Adler-32 checksum
+    char *buffer = static_cast<char*>(malloc(fileSize));
+    const size_t read = fread(buffer, 1, fileSize, file);
+    unsigned long adler = adler32(0L, Z_NULL, 0);
+    adler = adler32(static_cast<uInt>(adler), (Bytef*)buffer, read);
+    free(buffer);
+
+    return adler;
 }
 
 void Download::addHeader(const std::string &header)

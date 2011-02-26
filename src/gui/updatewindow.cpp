@@ -635,7 +635,8 @@ void UpdaterWindow::logic()
                     std::ifstream temp(
                             (mUpdatesDir + "/" + mCurrentFile).c_str());
 
-                    if (!temp.is_open())
+                    if (!temp.is_open() || !validateFile(mUpdatesDir + "/"
+                        + mCurrentFile, mCurrentChecksum))
                     {
                         temp.close();
                         download();
@@ -670,4 +671,15 @@ void UpdaterWindow::logic()
                         + toString(static_cast<unsigned>(mDownloadStatus)));
             break;
     }
+}
+
+bool UpdaterWindow::validateFile(std::string filePath, long hash)
+{
+    FILE *file = fopen(filePath.c_str(), "rb");
+    if (!file)
+        return false;
+
+    unsigned long adler = Net::Download::fadler32(file);
+    fclose(file);
+    return adler == hash;
 }

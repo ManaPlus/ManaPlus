@@ -95,6 +95,8 @@ class Download
         void setIgnoreError(bool n)
         { mIgnoreError = n; }
 
+        static unsigned long fadler32(FILE *file);
+
     private:
         static int downloadThread(void *ptr);
         static int downloadProgress(void *clientp, double dltotal,
