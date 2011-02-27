@@ -136,7 +136,7 @@ private:
     static size_t memoryWrite(void *ptr, size_t size, size_t nmemb,
                               void *stream);
 
-    bool validateFile(std::string filePath, long hash);
+    bool validateFile(std::string filePath, unsigned long hash);
 
     enum UpdateDownloadStatus
     {

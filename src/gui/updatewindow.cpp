@@ -673,7 +673,7 @@ void UpdaterWindow::logic()
     }
 }
 
-bool UpdaterWindow::validateFile(std::string filePath, long hash)
+bool UpdaterWindow::validateFile(std::string filePath, unsigned long hash)
 {
     FILE *file = fopen(filePath.c_str(), "rb");
     if (!file)
