@@ -96,7 +96,7 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
                 int itemId = msg.readInt16();
                 int amount = msg.readInt16();
                 int value = msg.readInt16();
-                dialog->addItem(new Item(itemId, amount, false), value);
+                dialog->addItem(new Item(itemId, amount, 1, false), value);
             }
             break;
         }

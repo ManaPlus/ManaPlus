@@ -41,7 +41,8 @@ FloorItem::FloorItem(int id,
                      int x,
                      int y,
                      Map *map,
-                     int amount):
+                     int amount,
+                     unsigned char color):
     ActorSprite(id),
     mItemId(itemId),
     mX(x),
@@ -49,7 +50,8 @@ FloorItem::FloorItem(int id,
     mMap(map),
 //    mAlpha(1.0f),
     mAmount(amount),
-    mPickupCount(0)
+    mPickupCount(0),
+    mColor(color)
 {
     mDropTime = cur_time;
 
@@ -69,7 +71,8 @@ FloorItem::FloorItem(int id,
         mPos.y = 0;
     }
 
-    setupSpriteDisplay(ItemDB::get(itemId).getDisplay(), true, 1);
+    ItemInfo info = ItemDB::get(itemId);
+    setupSpriteDisplay(info.getDisplay(), true, 1, info.getDyeString(mColor));
 }
 
 const ItemInfo &FloorItem::getInfo() const

@@ -81,3 +81,31 @@ std::map<int, int> &ItemInfo::addReplaceSprite(int sprite)
     }
     return it->second;
 }
+
+std::string ItemInfo::getDyeString(int color) const
+{
+    if (mId == 1172)
+    {
+        if (color == 1)
+            return "W:#115511,22aa22,99dd99;R:#547000,a5dc00,d1ff46";
+        if (color == 0)
+            return "W:#547000,a5dc00,d1ff46;R:#115511,22aa22,99dd99";
+        if (color == 3)
+            return "W:#ffffff,000000,000000;R:#333333,333333,333333";
+    }
+    return "";
+}
+
+std::string ItemInfo::getDyeColorsString(int color) const
+{
+    if (mId == 1172)
+    {
+        if (color == 1)
+            return "#115511,22aa22,99dd99;#547000,a5dc00,d1ff46";
+        if (color == 0)
+            return "#547000,a5dc00,d1ff46;#115511,22aa22,99dd99";
+        if (color == 3)
+            return "#ffffff,000000,000000;#333333,333333,333333";
+    }
+    return "";
+}

@@ -387,3 +387,13 @@ std::list<int> splitToIntList(const std::string &text, char separator)
 
     return tokens;
 }
+
+std::string combineDye(std::string file, std::string dye)
+{
+    if (dye.empty())
+        return file;
+    size_t pos = file.find_last_of("|");
+    if (pos != std::string::npos)
+        return file.substr(0, pos) + "|" + dye;
+    return file + "|" + dye;
+}

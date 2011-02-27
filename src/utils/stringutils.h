@@ -170,4 +170,6 @@ std::set<int> splitToIntSet(const std::string &text, char separator);
 
 std::list<int> splitToIntList(const std::string &text, char separator);
 
+std::string combineDye(std::string file, std::string dye);
+
 #endif // UTILS_STRINGUTILS_H

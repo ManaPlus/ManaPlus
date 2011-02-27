@@ -292,7 +292,8 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
         }
         if (!foundItem)
         {
-            Image *image = Item::getImage(mItems[mCurrentOutfit][i]);
+            //+++ need use colors in outfits
+            Image *image = Item::getImage(mItems[mCurrentOutfit][i], 1);
             if (image)
                 g->drawImage(image, itemX, itemY);
         }

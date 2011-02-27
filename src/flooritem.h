@@ -48,7 +48,8 @@ class FloorItem : public ActorSprite
                   int x,
                   int y,
                   Map *map,
-                  int amount);
+                  int amount,
+                  unsigned char color);
 
         Type getType() const
         { return FLOOR_ITEM; }
@@ -88,6 +89,7 @@ class FloorItem : public ActorSprite
         int mDropTime;
         int mAmount;
         unsigned mPickupCount;
+        unsigned char mColor;
 };
 
 #endif

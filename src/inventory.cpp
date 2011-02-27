@@ -100,7 +100,7 @@ void Inventory::setItem(int index, int id, int quantity,
 
     if (!mItems[index] && id > 0)
     {
-        Item *item = new Item(id, quantity, refine, equipment);
+        Item *item = new Item(id, quantity, refine, color, equipment);
         item->setInvIndex(index);
         mItems[index] = item;
         mUsed++;

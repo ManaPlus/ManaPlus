@@ -620,15 +620,18 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             int type = msg.readInt8();
             int id = 0;
             int id2 = 0;
+            std::string color;
 
             if (msg.getId() == SMSG_BEING_CHANGE_LOOKS)
             {
                 id = msg.readInt8();
+                id2 = 1;    // default color
             }
             else
             {        // SMSG_BEING_CHANGE_LOOKS2
                 id = msg.readInt16();
                 id2 = msg.readInt16();
+                color = "";
             }
 
             if (dstBeing->getType() == Being::PLAYER)
@@ -646,21 +649,21 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     dstBeing->setSpriteID(SPRITE_HAIR, id *-1);
                     break;
                 case 2:     // Weapon ID in id, Shield ID in id2
-                    dstBeing->setSprite(SPRITE_WEAPON, id, "", true);
+                    dstBeing->setSprite(SPRITE_WEAPON, id, "", 1, true);
                     if (!config.getBoolValue("hideShield"))
                         dstBeing->setSprite(SPRITE_SHIELD, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
                     break;
                 case 3:     // Change lower headgear for eAthena, pants for us
-                    dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, id);
+                    dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_BOTTOMCLOTHES);
                     break;
                 case 4:     // Change upper headgear for eAthena, hat for us
-                    dstBeing->setSprite(SPRITE_HAT, id);
+                    dstBeing->setSprite(SPRITE_HAT, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_HAT);
                     break;
                 case 5:     // Change middle headgear for eathena, armor for us
-                    dstBeing->setSprite(SPRITE_TOPCLOTHES, id);
+                    dstBeing->setSprite(SPRITE_TOPCLOTHES, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
                     break;
                 case 6:     // eAthena LOOK_HAIR_COLOR
@@ -668,35 +671,35 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     break;
                 case 8:     // eAthena LOOK_SHIELD
                     if (!config.getBoolValue("hideShield"))
-                        dstBeing->setSprite(SPRITE_SHIELD, id);
+                        dstBeing->setSprite(SPRITE_SHIELD, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
                     break;
                 case 9:     // eAthena LOOK_SHOES
-                    dstBeing->setSprite(SPRITE_SHOE, id);
+                    dstBeing->setSprite(SPRITE_SHOE, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_SHOE);
                     break;
                 case 10:   // LOOK_GLOVES
-                    dstBeing->setSprite(SPRITE_GLOVES, id);
+                    dstBeing->setSprite(SPRITE_GLOVES, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_GLOVES);
                     break;
                 case 11:  // LOOK_CAPE
-                    dstBeing->setSprite(SPRITE_CAPE, id);
+                    dstBeing->setSprite(SPRITE_CAPE, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_CAPE);
                     break;
                 case 12:
-                    dstBeing->setSprite(SPRITE_MISC1, id);
+                    dstBeing->setSprite(SPRITE_MISC1, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_MISC1);
                     break;
                 case 13:
-                    dstBeing->setSprite(SPRITE_MISC2, id);
+                    dstBeing->setSprite(SPRITE_MISC2, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_MISC2);
                     break;
                 case 14:
-                    dstBeing->setSprite(SPRITE_EVOL1, id);
+                    dstBeing->setSprite(SPRITE_EVOL1, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_EVOL1);
                     break;
                 case 15:
-                    dstBeing->setSprite(SPRITE_EVOL2, id);
+                    dstBeing->setSprite(SPRITE_EVOL2, id, color, id2);
                     player_node->imitateOutfit(dstBeing, SPRITE_EVOL2);
                     break;
                 default:
@@ -890,7 +893,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                               ? GENDER_FEMALE : GENDER_MALE);
 
             // Set these after the gender, as the sprites may be gender-specific
-            dstBeing->setSprite(SPRITE_WEAPON, weapon, "", true);
+            dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
             if (!config.getBoolValue("hideShield"))
                 dstBeing->setSprite(SPRITE_SHIELD, shield);
             //dstBeing->setSprite(SPRITE_SHOE, shoes);

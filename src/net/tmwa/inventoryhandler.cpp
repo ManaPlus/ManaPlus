@@ -217,7 +217,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                     if (inventory)
                     {
                         inventory->setItem(index, itemId, amount,
-                                           0, isEquipment);
+                                           0, identified, isEquipment);
                     }
                 }
                 else
@@ -300,7 +300,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                             amount += inventory->getItem(index)->getQuantity();
 
                         inventory->setItem(index, itemId, amount, refine,
-                                           equipType != 0);
+                                           identified, equipType != 0);
                     }
                 }
             } break;
@@ -458,19 +458,29 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             {
                 index = msg.readInt16() - INVENTORY_OFFSET;
                 itemId = msg.readInt16();
-                msg.readInt8();  // type
-                msg.readInt8();  // identify flag
+                if (itemId == 1172)
+                    logger->log("step1");
+                int itemType = msg.readInt8();  // type
+                identified = msg.readInt8();  // identify flag
                 msg.readInt16(); // equip type
                 equipType = msg.readInt16();
                 msg.readInt8();  // attribute
                 refine = msg.readInt8();
                 msg.skip(8);     // card
+                if (itemId == 1172)
+                    logger->log("step2");
 
                 if (inventory)
-                    inventory->setItem(index, itemId, 1, refine, true);
+                    inventory->setItem(index, itemId, 1, refine, identified, true);
 
                 if (equipType)
                     mEquips.setEquipment(getSlot(equipType), index);
+
+                if (debugInventory)
+                {
+                    logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
+                                index, itemId, itemType, identified);
+                }
             }
             break;
 

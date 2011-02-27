@@ -231,6 +231,10 @@ class ItemInfo
         std::map<int, std::map<int, int> > getSpriteToItemReplaceMap() const
         { return mSpriteToItemReplaceMap; }
 
+        std::string getDyeString(int color) const;
+
+        std::string getDyeColorsString(int color) const;
+
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         std::string mName;

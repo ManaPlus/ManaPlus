@@ -75,8 +75,9 @@ void Item::setId(int id, unsigned char color)
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = paths.getStringValue("itemIcons")
                             + display.image;
-    mImage = resman->getImage(imagePath);
-    mDrawImage = resman->getImage(imagePath);
+    std::string dye = combineDye(imagePath, info.getDyeString(color));
+    mImage = resman->getImage(dye);
+    mDrawImage = resman->getImage(dye);
 
     if (!mImage)
     {
@@ -98,12 +99,14 @@ bool Item::isHaveTag(int tagId)
     return mTags[tagId] > 0;
 }
 
-Image *Item::getImage(int id)
+Image *Item::getImage(int id, unsigned char color)
 {
     ResourceManager *resman = ResourceManager::getInstance();
-    SpriteDisplay display = ItemDB::get(id).getDisplay();
+    ItemInfo info = ItemDB::get(id);
+    SpriteDisplay display = info.getDisplay();
     std::string imagePath = "graphics/items/" + display.image;
-    Image *image = resman->getImage(imagePath);
+    Image *image;
+    image = resman->getImage(combineDye(imagePath, info.getDyeString(color)));
 
     if (!image)
         image = Theme::getImageFromTheme("unknown-item.png");

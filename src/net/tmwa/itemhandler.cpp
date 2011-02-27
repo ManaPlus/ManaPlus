@@ -52,7 +52,7 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
         {
             int id = msg.readInt32();
             int itemId = msg.readInt16();
-            msg.readInt8();  // identify flag
+            unsigned char identify = msg.readInt8();  // identify flag
             int x = msg.readInt16();
             int y = msg.readInt16();
 //            msg.skip(4);     // amount,subX,subY / subX,subY,amount
@@ -64,12 +64,12 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
                 if (msg.getId() == SMSG_ITEM_VISIBLE)
                 {
                     actorSpriteManager->createItem(id, itemId,
-                        x, y, amount1);
+                        x, y, amount1, identify);
                 }
                 else
                 {
                     actorSpriteManager->createItem(id, itemId,
-                        x, y, amount2);
+                        x, y, amount2, identify);
                 }
             }
         }
