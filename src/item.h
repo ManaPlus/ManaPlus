@@ -39,7 +39,8 @@ class Item
          * Constructor.
          */
         Item(int id = -1, int quantity = 0, int refine = 0,
-             bool equipment = false, bool equipped = false);
+             unsigned char color = 1, bool equipment = false,
+             bool equipped = false);
 
         /**
          * Destructor.
@@ -49,7 +50,7 @@ class Item
         /**
          * Sets the item id, identifying the item type.
          */
-        void setId(int id);
+        void setId(int id, unsigned char color);
 
         /**
          * Returns the item id.
@@ -157,6 +158,9 @@ class Item
 
         bool isHaveTag(int tagId);
 
+        unsigned char getColor()
+        { return mColor; }
+
     protected:
         int mId;              /**< Item type id. */
         Image *mImage;        /**< Item image. */
@@ -167,6 +171,7 @@ class Item
         bool mInEquipment;    /**< Item is in equipment */
         int mRefine;          /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
+        unsigned char mColor;
         std::map <int, int> mTags;
 };
 

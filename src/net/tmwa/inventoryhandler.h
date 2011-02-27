@@ -109,15 +109,18 @@ class InventoryItem
         int slot;
         int id;
         int quantity;
+        unsigned char color;
         int refine;
         bool equip;
 
-        InventoryItem(int slot, int id, int quantity, int refine, bool equip)
+        InventoryItem(int slot, int id, int quantity, int refine,
+                      unsigned char color, bool equip)
         {
             this->slot = slot;
             this->id = id;
             this->quantity = quantity;
             this->refine = refine;
+            this->color = color;
             this->equip = equip;
         }
 };

@@ -29,7 +29,8 @@
 #include "resources/resourcemanager.h"
 #include "configuration.h"
 
-Item::Item(int id, int quantity, int refine, bool equipment, bool equipped):
+Item::Item(int id, int quantity, int refine, unsigned char color,
+           bool equipment, bool equipped):
     mImage(0),
     mDrawImage(0),
     mQuantity(quantity),
@@ -39,7 +40,7 @@ Item::Item(int id, int quantity, int refine, bool equipment, bool equipped):
     mRefine(refine),
     mInvIndex(0)
 {
-    setId(id);
+    setId(id, color);
 }
 
 Item::~Item()
@@ -48,9 +49,10 @@ Item::~Item()
         mImage->decRef();
 }
 
-void Item::setId(int id)
+void Item::setId(int id, unsigned char color)
 {
     mId = id;
+    mColor = color;
 
     // Types 0 and 1 are not equippable items.
     mEquipment = id && getInfo().getType() >= 2;

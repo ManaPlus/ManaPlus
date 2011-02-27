@@ -223,7 +223,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 else
                 {
                     mInventoryItems.push_back(InventoryItem(index, itemId,
-                                              amount, 0, false));
+                        amount, 0, identified, false));
                 }
             }
             break;
@@ -256,7 +256,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 }
 
                 mInventoryItems.push_back(InventoryItem(index, itemId, amount,
-                                                        refine, false));
+                    refine, identified, false));
             }
             break;
 
@@ -381,7 +381,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 for (; it != it_end; ++it)
                 {
                     mStorage->setItem((*it).slot, (*it).id, (*it).quantity,
-                                      (*it).equip);
+                        (*it).refine, (*it).color, (*it).equip);
                 }
                 mInventoryItems.clear();
 
@@ -403,13 +403,16 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
             if (Item *item = mStorage->getItem(index))
             {
-                item->setId(itemId);
+                item->setId(itemId, identified);
                 item->increaseQuantity(amount);
             }
             else
             {
                 if (mStorage)
-                    mStorage->setItem(index, itemId, amount, false);
+                {
+                    mStorage->setItem(index, itemId, amount, refine,
+                                      identified, false);
+                }
             }
             break;
 

@@ -91,13 +91,14 @@ class Inventory
         /**
          * Adds a new item in a free slot.
          */
-        void addItem(int id, int quantity, int refine, bool equipment = false);
+        void addItem(int id, int quantity, int refine, unsigned char color,
+                     bool equipment = false);
 
         /**
          * Sets the item at the given position.
          */
         void setItem(int index, int id, int quantity, int refine,
-                     bool equipment = false);
+                     unsigned char color, bool equipment = false);
 
         /**
          * Remove a item from the inventory.

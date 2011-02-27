@@ -151,21 +151,22 @@ void TradeWindow::setMoney(int amount)
     mMoneyLabel->adjustSize();
 }
 
-void TradeWindow::addItem(int id, bool own, int quantity, int refine)
+void TradeWindow::addItem(int id, bool own, int quantity,
+                          int refine, unsigned char color)
 {
     if (own)
-        mMyInventory->addItem(id, quantity, refine);
+        mMyInventory->addItem(id, quantity, refine, color);
     else
-        mPartnerInventory->addItem(id, quantity, refine);
+        mPartnerInventory->addItem(id, quantity, refine, color);
 }
 
 void TradeWindow::addItem(int id, bool own, int quantity,
-                          int refine, bool equipment)
+                          int refine, unsigned char color, bool equipment)
 {
     if (own)
-        mMyInventory->addItem(id, quantity, refine, equipment);
+        mMyInventory->addItem(id, quantity, refine, color, equipment);
     else
-        mPartnerInventory->addItem(id, quantity, refine, equipment);
+        mPartnerInventory->addItem(id, quantity, refine, color, equipment);
 }
 
 void TradeWindow::changeQuantity(int index, bool own, int quantity)
