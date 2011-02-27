@@ -750,11 +750,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_BEING_NAME_RESPONSE2:
             {
                 int len = msg.readInt16();
-                logger->log("len: %d", len);
                 int beingId = msg.readInt32();
-                logger->log("id: %d", beingId);
                 std::string str = msg.readString(len - 8);
-                logger->log("str: %s", str.c_str());
                 if ((dstBeing = actorSpriteManager->findBeing(beingId)))
                 {
                     if (beingId == player_node->getId())
