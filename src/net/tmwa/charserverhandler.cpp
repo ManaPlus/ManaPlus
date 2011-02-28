@@ -61,6 +61,7 @@ CharServerHandler::CharServerHandler()
         SMSG_CHAR_LOGIN,
         SMSG_CHAR_LOGIN_ERROR,
         SMSG_CHAR_CREATE_SUCCEEDED,
+        SMSG_CHAR_CREATE_SUCCEEDED2,
         SMSG_CHAR_CREATE_FAILED,
         SMSG_CHAR_DELETE_SUCCEEDED,
         SMSG_CHAR_DELETE_FAILED,
@@ -82,7 +83,8 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
                 int slots = msg.readInt16();
                 if (slots > 0 && slots < 30)
                     loginData.characterSlots = slots;
-                msg.skip(18); // Unused
+                bool version = msg.readInt8() == 1;
+                msg.skip(17); // Unused
 
                 delete_all(mCharacters);
                 mCharacters.clear();
@@ -93,7 +95,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
                 for (int i = 0; i < count; ++i)
                 {
                     Net::Character *character = new Net::Character;
-                    readPlayerData(msg, character);
+                    readPlayerData(msg, character, version);
                     mCharacters.push_back(character);
                     logger->log("CharServer: Player: %s (%d)",
                         character->dummy->getName().c_str(), character->slot);
@@ -123,7 +125,24 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_CHAR_CREATE_SUCCEEDED:
             {
                 Net::Character *character = new Net::Character;
-                readPlayerData(msg, character);
+                readPlayerData(msg, character, false);
+                mCharacters.push_back(character);
+
+                updateCharSelectDialog();
+
+                // Close the character create dialog
+                if (mCharCreateDialog)
+                {
+                    mCharCreateDialog->scheduleDelete();
+                    mCharCreateDialog = 0;
+                }
+            }
+            break;
+
+        case SMSG_CHAR_CREATE_SUCCEEDED2:
+            {
+                Net::Character *character = new Net::Character;
+                readPlayerData(msg, character, true);
                 mCharacters.push_back(character);
 
                 updateCharSelectDialog();
@@ -238,7 +257,8 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void CharServerHandler::readPlayerData(Net::MessageIn &msg,
-                                       Net::Character *character)
+                                       Net::Character *character,
+                                       bool withColors)
 {
     const Token &token =
             static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
@@ -254,10 +274,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     character->data.mStats[JOB].base = temp;
     character->data.mStats[JOB].mod = temp;
 
-    tempPlayer->setSprite(SPRITE_SHOE, msg.readInt16());
-    tempPlayer->setSprite(SPRITE_GLOVES, msg.readInt16());
-    tempPlayer->setSprite(SPRITE_CAPE, msg.readInt16());
-    tempPlayer->setSprite(SPRITE_MISC1, msg.readInt16());
+    int shoes = msg.readInt16();
+    int gloves = msg.readInt16();
+    int cape = msg.readInt16();
+    int misc1 = msg.readInt16();
 
     msg.readInt32();                       // option
     msg.readInt32();                       // karma
@@ -272,24 +292,22 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt16();                       // speed
     tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
     int hairStyle = msg.readInt16();
-    Uint16 weapon = msg.readInt16();
+    Uint16 weapon = msg.readInt16();    // server not used it. may be need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     character->data.mAttributes[LEVEL] = msg.readInt16();
 
     msg.readInt16();                       // skill point
-    tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, msg.readInt16());
-    //to avoid show error (error.xml) need remove this sprite
-    if (!config.getBoolValue("hideShield"))
-        tempPlayer->setSprite(SPRITE_SHIELD, msg.readInt16());
-    else
-        msg.readInt16();
+    int bottomClothes = msg.readInt16();
+    int shield = msg.readInt16();
 
-    tempPlayer->setSprite(SPRITE_HAT, msg.readInt16()); // head option top
-    tempPlayer->setSprite(SPRITE_TOPCLOTHES, msg.readInt16());
+    int hat = msg.readInt16(); // head option top
+    int topClothes = msg.readInt16();
+
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
         ColorDB::get(msg.readInt16()));
-    tempPlayer->setSprite(SPRITE_MISC2, msg.readInt16());
+
+    int misc2 = msg.readInt16();
     tempPlayer->setName(msg.readString(24));
 
     character->dummy = tempPlayer;
@@ -297,7 +315,42 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     for (int i = 0; i < 6; i++)
         character->data.mStats[i + STR].base = msg.readInt8();
 
-    character->slot = msg.readInt8(); // character slot
+    if (withColors)
+    {
+        tempPlayer->setSprite(SPRITE_SHOE, shoes, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_CAPE, cape, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes, "", msg.readInt8());
+        //to avoid show error (error.xml) need remove this sprite
+        if (!config.getBoolValue("hideShield"))
+            tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readInt8());
+        else
+            msg.readInt8();
+
+        tempPlayer->setSprite(SPRITE_HAT, hat, "", msg.readInt8()); // head option top
+        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readInt8());
+        msg.skip(5);
+        character->slot = msg.readInt8(); // character slot
+    }
+    else
+    {
+        tempPlayer->setSprite(SPRITE_SHOE, shoes);
+        tempPlayer->setSprite(SPRITE_GLOVES, gloves);
+        tempPlayer->setSprite(SPRITE_CAPE, cape);
+        tempPlayer->setSprite(SPRITE_MISC1, misc1);
+        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
+        //to avoid show error (error.xml) need remove this sprite
+        if (!config.getBoolValue("hideShield"))
+            tempPlayer->setSprite(SPRITE_SHIELD, shield);
+
+        tempPlayer->setSprite(SPRITE_HAT, hat); // head option top
+        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
+        tempPlayer->setSprite(SPRITE_MISC2, misc2);
+        character->slot = msg.readInt8(); // character slot
+    }
+
     msg.readInt8();                        // unknown
 }
 

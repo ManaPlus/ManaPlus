@@ -80,7 +80,8 @@ class CharServerHandler : public MessageHandler, public Net::CharHandler
         void connect();
 
     private:
-        void readPlayerData(Net::MessageIn &msg, Net::Character *character);
+        void readPlayerData(Net::MessageIn &msg, Net::Character *character,
+                            bool withColors);
 };
 
 } // namespace TmwAthena
