@@ -198,15 +198,23 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
             {
                 // TODO: verify these!
 
-                msg.readInt8(); // -1
-                msg.readInt8(); // T
-                msg.readInt8(); // M
-                msg.readInt8(); // W
-
-                unsigned int options = msg.readInt32();
-
-                mRegistrationEnabled = options;
-//                mRegistrationEnabled = (options & 1);
+                char b1 = msg.readInt8(); // -1
+                char b2 = msg.readInt8(); // T
+                char b3 = msg.readInt8(); // M
+                char b4 = msg.readInt8(); // W
+                if (b1 == -1 && b2 == 'E' && b3 == 'V' && b4 == 'L')
+                {
+                    unsigned int options = msg.readInt8();
+                    mRegistrationEnabled = options;
+                    msg.skip(2);
+                    serverVersion = msg.readInt8();
+                }
+                else
+                {
+                    unsigned int options = msg.readInt32();
+                    mRegistrationEnabled = options;
+                    serverVersion = 0;
+                }
 
                 // Leave this last
                 mVersionResponse = true;

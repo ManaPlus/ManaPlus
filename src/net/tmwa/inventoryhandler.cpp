@@ -209,6 +209,9 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                                 cards[0], cards[1], cards[2], cards[3]);
                 }
 
+                if (serverVersion < 1 && identified > 1)
+                    identified = 1;
+
                 if (msg.getId() == SMSG_PLAYER_INVENTORY)
                 {
                     // Trick because arrows are not considered equipment
@@ -255,6 +258,9 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                                 refine);
                 }
 
+                if (serverVersion < 1 && identified > 1)
+                    identified = 1;
+
                 mInventoryItems.push_back(InventoryItem(index, itemId, amount,
                     refine, identified, false));
             }
@@ -298,6 +304,9 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
                         if  (item && item->getId() == itemId)
                             amount += inventory->getItem(index)->getQuantity();
+
+                        if (serverVersion < 1 && identified > 1)
+                            identified = 1;
 
                         inventory->setItem(index, itemId, amount, refine,
                                            identified, equipType != 0);
@@ -410,6 +419,9 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             {
                 if (mStorage)
                 {
+                    if (serverVersion < 1 && identified > 1)
+                        identified = 1;
+
                     mStorage->setItem(index, itemId, amount, refine,
                                       identified, false);
                 }
@@ -458,17 +470,24 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             {
                 index = msg.readInt16() - INVENTORY_OFFSET;
                 itemId = msg.readInt16();
-                if (itemId == 1172)
-                    logger->log("step1");
                 int itemType = msg.readInt8();  // type
                 identified = msg.readInt8();  // identify flag
+
                 msg.readInt16(); // equip type
                 equipType = msg.readInt16();
                 msg.readInt8();  // attribute
                 refine = msg.readInt8();
                 msg.skip(8);     // card
-                if (itemId == 1172)
-                    logger->log("step2");
+
+
+                if (debugInventory)
+                {
+                    logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
+                                index, itemId, itemType, identified);
+                }
+
+                if (serverVersion < 1 && identified > 1)
+                    identified = 1;
 
                 if (inventory)
                     inventory->setItem(index, itemId, 1, refine, identified, true);
@@ -476,11 +495,6 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 if (equipType)
                     mEquips.setEquipment(getSlot(equipType), index);
 
-                if (debugInventory)
-                {
-                    logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
-                                index, itemId, itemType, identified);
-                }
             }
             break;
 

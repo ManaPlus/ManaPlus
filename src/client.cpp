@@ -151,6 +151,7 @@ volatile int frame_count = 0; /**< Counts the frames during one second */
 volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
+int serverVersion;
 
 /**
  * Advances game logic counter.

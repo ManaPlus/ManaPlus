@@ -83,7 +83,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
                 int slots = msg.readInt16();
                 if (slots > 0 && slots < 30)
                     loginData.characterSlots = slots;
-                bool version = msg.readInt8() == 1;
+                bool version = msg.readInt8() == 1 && serverVersion > 0;
                 msg.skip(17); // Unused
 
                 delete_all(mCharacters);

@@ -631,7 +631,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             else
             {        // SMSG_BEING_CHANGE_LOOKS2
                 id = msg.readInt16();
-                id2 = msg.readInt16();
+                if (type == 2 || serverVersion > 0)
+                    id2 = msg.readInt16();
+                else
+                    id2 = 1;
                 color = "";
             }
 
@@ -907,10 +910,18 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             if (!config.getBoolValue("hideShield"))
                 dstBeing->setSprite(SPRITE_SHIELD, shield);
             //dstBeing->setSprite(SPRITE_SHOE, shoes);
-            logger->log("bmt: %d, %d, %d", colors[0], colors[2], colors[1]);
-            dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom, "", colors[0]);
-            dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
-            dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
+            if (serverVersion > 0)
+            {
+                dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom, "", colors[0]);
+                dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
+                dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
+            }
+            else
+            {
+                dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
+                dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
+                dstBeing->setSprite(SPRITE_HAT, headTop);
+            }
             //dstBeing->setSprite(SPRITE_GLOVES, gloves);
             //dstBeing->setSprite(SPRITE_CAPE, cape);
             //dstBeing->setSprite(SPRITE_MISC1, misc1);
