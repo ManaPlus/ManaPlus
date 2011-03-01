@@ -90,7 +90,11 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
                 mCharacters.clear();
 
                 // Derive number of characters from message length
-                const int count = (msg.getLength() - 24) / 106;
+                int count = (msg.getLength() - 24);
+                if (version)
+                    count /= 120;
+                else
+                    count /= 106;
 
                 for (int i = 0; i < count; ++i)
                 {
