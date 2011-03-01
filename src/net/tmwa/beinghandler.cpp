@@ -167,6 +167,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     Being *srcBeing, *dstBeing;
     int hairStyle, hairColor, flag;
     int hp, maxHP, oldHP;
+    unsigned char colors[9];
 
     switch (msg.getId())
     {
@@ -876,8 +877,17 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             headTop = msg.readInt16();
             headMid = msg.readInt16();
             hairColor = msg.readInt16();
-            shoes = msg.readInt16();
-            gloves = msg.readInt16();       //sd->head_dir
+
+            colors[0] = msg.readInt8();
+            colors[1] = msg.readInt8();
+            colors[2] = msg.readInt8();
+            logger->log("msg: %x", msg.getId());
+            logger->log("colors: %d, %d, %d", colors[0], colors[1], colors[2]);
+
+            msg.readInt8();     //unused
+//            shoes = msg.readInt16();
+//            gloves = msg.readInt16();       //sd->head_dir
+
             guild = msg.readInt32();  // guild
 
             if (guild == 0)
@@ -897,9 +907,10 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             if (!config.getBoolValue("hideShield"))
                 dstBeing->setSprite(SPRITE_SHIELD, shield);
             //dstBeing->setSprite(SPRITE_SHOE, shoes);
-            dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
-            dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
-            dstBeing->setSprite(SPRITE_HAT, headTop);
+            logger->log("bmt: %d, %d, %d", colors[0], colors[2], colors[1]);
+            dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom, "", colors[0]);
+            dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
+            dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
             //dstBeing->setSprite(SPRITE_GLOVES, gloves);
             //dstBeing->setSprite(SPRITE_CAPE, cape);
             //dstBeing->setSprite(SPRITE_MISC1, misc1);
