@@ -28,9 +28,10 @@
 
 namespace
 {
-    ColorDB::Colors mColors;
+    ColorDB::Colors mHairColors;
     bool mLoaded = false;
     std::string mFail = "#ffffff";
+    ColorDB::ColorLists mColorLists;
 }
 
 void ColorDB::load()
@@ -38,6 +39,12 @@ void ColorDB::load()
     if (mLoaded)
         unload();
 
+    loadHair();
+    loadColorLists();
+}
+
+void ColorDB::loadHair()
+{
     XML::Document *doc = new XML::Document("hair.xml");
     xmlNodePtr root = doc->rootNode();
     bool hairXml = true;
@@ -55,7 +62,7 @@ void ColorDB::load()
         if (!root || !xmlStrEqual(root->name, BAD_CAST "colors"))
         {
             logger->log1("ColorDB: Failed to find any color files.");
-            mColors[0] = mFail;
+            mHairColors[0] = mFail;
             mLoaded = true;
 
             delete doc;
@@ -69,10 +76,10 @@ void ColorDB::load()
         {
             int id = XML::getProperty(node, "id", 0);
 
-            if (mColors.find(id) != mColors.end())
+            if (mHairColors.find(id) != mHairColors.end())
                 logger->log("ColorDB: Redefinition of dye ID %d", id);
 
-            mColors[id] = hairXml ?
+            mHairColors[id] = hairXml ?
                 XML::getProperty(node, "value", "#FFFFFF") :
                 XML::getProperty(node, "dye", "#FFFFFF");
         }
@@ -83,22 +90,59 @@ void ColorDB::load()
     mLoaded = true;
 }
 
+void ColorDB::loadColorLists()
+{
+    XML::Document *doc = new XML::Document("itemcolors.xml");
+    xmlNodePtr root = doc->rootNode();
+    if (!root)
+        return;
+
+    for_each_xml_child_node(node, root)
+    {
+        if (xmlStrEqual(node->name, BAD_CAST "list"))
+        {
+            std::string name = XML::getProperty(node, "name", "");
+            if (name.empty())
+                continue;
+
+            std::map <int, ItemColor> colors;
+            ColorListsIterator it = mColorLists.find(name);
+
+            if (it != mColorLists.end())
+                colors = it->second;
+
+            for_each_xml_child_node(colorNode, node)
+            {
+                if (xmlStrEqual(colorNode->name, BAD_CAST "color"))
+                {
+                    ItemColor c(XML::getProperty(colorNode, "id", -1),
+                        XML::getProperty(colorNode, "name", ""),
+                        XML::getProperty(colorNode, "value", ""));
+                    if (c.id > -1)
+                        colors[c.id] = c;
+                }
+            }
+            mColorLists[name] = colors;
+        }
+    }
+}
+
 void ColorDB::unload()
 {
     logger->log1("Unloading color database...");
 
-    mColors.clear();
+    mHairColors.clear();
     mLoaded = false;
 }
 
-std::string &ColorDB::get(int id)
+std::string &ColorDB::getHairColor(int id)
 {
     if (!mLoaded)
         load();
 
-    ColorIterator i = mColors.find(id);
+    ColorIterator i = mHairColors.find(id);
 
-    if (i == mColors.end())
+    if (i == mHairColors.end())
     {
         logger->log("ColorDB: Error, unknown dye ID# %d", id);
         return mFail;
@@ -109,7 +153,17 @@ std::string &ColorDB::get(int id)
     }
 }
 
-int ColorDB::size()
+int ColorDB::getHairSize()
 {
-    return static_cast<int>(mColors.size());
+    return static_cast<int>(mHairColors.size());
+}
+
+std::map <int, ColorDB::ItemColor> *ColorDB::getColorsList(std::string name)
+{
+    std::map <int, ItemColor> colors;
+    ColorListsIterator it = mColorLists.find(name);
+
+    if (it != mColorLists.end())
+        return &it->second;
+    return 0;
 }

@@ -312,7 +312,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
          it != it_end; ++it)
     {
         std::string file = "graphics/sprites/"
-            + combineDye((*it)->sprite, color);
+            + combineDye2((*it)->sprite, color);
 
         int variant = (*it)->variant;
         addSprite(AnimatedSprite::load(file, variant));
@@ -339,7 +339,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                     imagePath = "graphics/items/" + display.floor;
                     break;
             }
-            imagePath = combineDye(imagePath, color);
+            imagePath = combineDye2(imagePath, color);
 
             Image *img = resman->getImage(imagePath);
 

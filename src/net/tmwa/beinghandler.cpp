@@ -290,7 +290,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                                     ? GENDER_FEMALE : GENDER_MALE);
                 // Set these after the gender, as the sprites may be gender-specific
                 dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
-                                    ColorDB::get(hairColor));
+                                    ColorDB::getHairColor(hairColor));
                 dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
                 dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
                 dstBeing->setSprite(SPRITE_HAT, headTop);
@@ -671,7 +671,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
                     break;
                 case 6:     // eAthena LOOK_HAIR_COLOR
-                    dstBeing->setSpriteColor(SPRITE_HAIR, ColorDB::get(id));
+                    dstBeing->setSpriteColor(SPRITE_HAIR, ColorDB::getHairColor(id));
                     break;
                 case 8:     // eAthena LOOK_SHIELD
                     if (!config.getBoolValue("hideShield"))
@@ -927,7 +927,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             //dstBeing->setSprite(SPRITE_MISC1, misc1);
             //dstBeing->setSprite(SPRITE_MISC2, misc2);
             dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
-                                ColorDB::get(hairColor));
+                                ColorDB::getHairColor(hairColor));
 
             player_node->imitateOutfit(dstBeing);
 

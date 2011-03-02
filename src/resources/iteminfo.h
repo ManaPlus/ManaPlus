@@ -25,6 +25,7 @@
 
 #include "being.h"
 
+#include "resources/colordb.h"
 #include "resources/spritedef.h"
 
 #include <map>
@@ -111,7 +112,9 @@ class ItemInfo
             mDrawPriority(0),
             mIsRemoveSprites(false),
             mAttackAction(SpriteAction::INVALID),
-            mAttackRange(0)
+            mAttackRange(0),
+            mColors(0),
+            mColorList("")
         {
         }
 
@@ -235,6 +238,11 @@ class ItemInfo
 
         std::string getDyeColorsString(int color) const;
 
+        void setColorsList(std::string name);
+
+        bool isHaveColors()
+        { return !mColorList.empty(); }
+
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         std::string mName;
@@ -269,6 +277,8 @@ class ItemInfo
         /** Stores the names of sounds to be played at certain event. */
         std::map < EquipmentSoundEvent, std::vector<std::string> > mSounds;
         std::map <int, int> mTags;
+        std::map <int, ColorDB::ItemColor> *mColors;
+        std::string mColorList;
 };
 
 #endif

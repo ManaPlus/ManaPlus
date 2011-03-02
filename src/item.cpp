@@ -75,7 +75,7 @@ void Item::setId(int id, unsigned char color)
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = paths.getStringValue("itemIcons")
                             + display.image;
-    std::string dye = combineDye(imagePath, info.getDyeString(color));
+    std::string dye = combineDye2(imagePath, info.getDyeColorsString(color));
     mImage = resman->getImage(dye);
     mDrawImage = resman->getImage(dye);
 
@@ -106,7 +106,7 @@ Image *Item::getImage(int id, unsigned char color)
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = "graphics/items/" + display.image;
     Image *image;
-    image = resman->getImage(combineDye(imagePath, info.getDyeString(color)));
+    image = resman->getImage(combineDye2(imagePath, info.getDyeColorsString(color)));
 
     if (!image)
         image = Theme::getImageFromTheme("unknown-item.png");

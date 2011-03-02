@@ -388,6 +388,19 @@ std::list<int> splitToIntList(const std::string &text, char separator)
     return tokens;
 }
 
+
+std::list<std::string> splitToStringList(const std::string &text,
+                                         char separator)
+{
+    std::list<std::string> tokens;
+    std::stringstream ss(text);
+    std::string item;
+    while(std::getline(ss, item, separator))
+        tokens.push_back(item);
+
+    return tokens;
+}
+
 std::string combineDye(std::string file, std::string dye)
 {
     if (dye.empty())
@@ -396,4 +409,32 @@ std::string combineDye(std::string file, std::string dye)
     if (pos != std::string::npos)
         return file.substr(0, pos) + "|" + dye;
     return file + "|" + dye;
+}
+
+std::string combineDye2(std::string file, std::string dye)
+{
+    if (dye.empty())
+        return file;
+
+    size_t pos = file.find_last_of("|");
+    if (pos != std::string::npos)
+    {
+        std::string dye1 = file.substr(pos + 1);
+        std::string str = "";
+        file = file.substr(0, pos);
+        std::list<std::string> list1 = splitToStringList(dye1, ';');
+        std::list<std::string> list2 = splitToStringList(dye, ';');
+        std::list<std::string>::iterator it1, it1_end = list1.end();
+        std::list<std::string>::iterator it2, it2_end = list2.end();
+        for (it1 = list1.begin(), it2 = list2.begin();
+             it1 != it1_end && it2 != it2_end; ++it1, ++it2)
+        {
+            str += (*it1) + ":" + (*it2) + ";";
+        }
+        return file + "|" + str;
+    }
+    else
+    {
+        return file;
+    }
 }

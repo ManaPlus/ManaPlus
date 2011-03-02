@@ -58,7 +58,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mPlayer = new Being(0, ActorSprite::PLAYER, 0, NULL);
     mPlayer->setGender(GENDER_MALE);
 
-    int numberOfHairColors = ColorDB::size();
+    int numberOfHairColors = ColorDB::getHairSize();
 
     mHairStyle = rand() % mPlayer->getNumOfHairstyles();
     mHairColor = rand() % numberOfHairColors;
@@ -364,10 +364,10 @@ void CharCreateDialog::updateHair()
     if (mHairStyle < 0)
         mHairStyle += Being::getNumOfHairstyles();
 
-    mHairColor %= ColorDB::size();
+    mHairColor %= ColorDB::getHairSize();
     if (mHairColor < 0)
-        mHairColor += ColorDB::size();
+        mHairColor += ColorDB::getHairSize();
 
     mPlayer->setSprite(Net::getCharHandler()->hairSprite(),
-                       mHairStyle * -1, ColorDB::get(mHairColor));
+                       mHairStyle * -1, ColorDB::getHairColor(mHairColor));
 }
