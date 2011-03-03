@@ -42,7 +42,8 @@ class ShopItem : public Item
          * @param quantity number of available copies of the item
          * @param price price of the item
          */
-        ShopItem(int inventoryIndex, int id, int quantity, int price);
+        ShopItem(int inventoryIndex, int id, unsigned char color,
+                 int quantity, int price);
 
         /**
          * Constructor. Creates a new ShopItem. Inventory index will be set to
@@ -51,7 +52,7 @@ class ShopItem : public Item
          * @param id the id of the item
          * @param price price of the item
          */
-        ShopItem(int id, int price);
+        ShopItem(int id, unsigned char color, int price);
 
         /**
          * Destructor.

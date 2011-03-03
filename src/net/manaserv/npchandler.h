@@ -68,7 +68,7 @@ class NpcHandler : public MessageHandler, public Net::NpcHandler
 
         void sell(int beingId);
 
-        void buyItem(int beingId, int itemId, int amount);
+        void buyItem(int beingId, int itemId, unsigned char color, int amount);
 
         void sellItem(int beingId, int itemId, int amount);
 

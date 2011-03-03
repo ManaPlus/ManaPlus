@@ -28,9 +28,9 @@
 
 #include "resources/iteminfo.h"
 
-ShopItem::ShopItem(int inventoryIndex, int id,
+ShopItem::ShopItem(int inventoryIndex, int id, unsigned char color,
                    int quantity, int price) :
-    Item(id, 0),
+    Item(id, 0, 0, color),
     mPrice(price),
     mShowQuantity(true)
 {
@@ -43,8 +43,8 @@ ShopItem::ShopItem(int inventoryIndex, int id,
     addDuplicate(inventoryIndex, quantity);
 }
 
-ShopItem::ShopItem (int id, int price) :
-    Item (id, 0),
+ShopItem::ShopItem (int id, unsigned char color, int price) :
+    Item (id, 0, 0, color),
     mPrice(price),
     mShowQuantity(false)
 {

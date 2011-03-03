@@ -79,7 +79,8 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
                 int itemId = msg.readInt16();
                 int amount = msg.readInt16();
                 int value = msg.readInt16();
-                dialog->addItem(itemId, amount, value);
+                // colors not supported, using 1.
+                dialog->addItem(itemId, 1, amount, value);
             }
             break;
         }

@@ -102,8 +102,7 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
                 unsigned char color = 1;
                 if (serverVersion > 0)
                     color = msg.readInt8();
-                mBuyDialog->addItem(itemId, 0, value);
-//                mBuyDialog->addItem(itemId, color, 0, value);
+                mBuyDialog->addItem(itemId, color, 0, value);
             }
             break;
         }

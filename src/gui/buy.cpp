@@ -159,9 +159,9 @@ void BuyDialog::reset()
     setMoney(0);
 }
 
-void BuyDialog::addItem(int id, int amount, int price)
+void BuyDialog::addItem(int id, unsigned char color, int amount, int price)
 {
-    mShopItems->addItem(id, amount, price);
+    mShopItems->addItem(id, color, amount, price);
     mShopItemList->adjustSize();
 }
 
@@ -213,8 +213,9 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     {
         if (mNpcId != -1)
         {
-            Net::getNpcHandler()->buyItem(mNpcId,
-                mShopItems->at(selectedItem)->getId(), mAmountItems);
+            ShopItem *item = mShopItems->at(selectedItem);
+            Net::getNpcHandler()->buyItem(mNpcId, item->getId(),
+                item->getColor(), mAmountItems);
 
             // Update money and adjust the max number of items that can be bought
             mMaxItems -= mAmountItems;

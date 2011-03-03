@@ -55,7 +55,7 @@ class ShopItems : public gcn::ListModel
         /**
          * Adds an item to the list.
          */
-        void addItem(int id, int amount, int price);
+        void addItem(int id, unsigned char color, int amount, int price);
 
         /**
          * Adds an item to the list (used by sell dialog). Looks for
@@ -66,9 +66,10 @@ class ShopItems : public gcn::ListModel
          * @param quantity number of available copies of the item
          * @param price price of the item
          */
-        void addItem2(int inventoryIndex, int id, int amount, int price);
+        void addItem2(int inventoryIndex, int id, unsigned char color,
+                      int amount, int price);
 
-        void addItemNoDup(int id, int amount, int price);
+        void addItemNoDup(int id, unsigned char color, int amount, int price);
 
         /**
          * Returns the number of items in the shop.
@@ -109,7 +110,7 @@ class ShopItems : public gcn::ListModel
          * 
          * @return the item found or 0
          */
-        ShopItem *findItem(int id);
+        ShopItem *findItem(int id, unsigned char color);
 
         /** The list of items in the shop. */
         std::vector<ShopItem*> mShopItems;

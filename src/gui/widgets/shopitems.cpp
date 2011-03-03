@@ -49,23 +49,24 @@ std::string ShopItems::getElementAt(int i)
     return mShopItems.at(i)->getDisplayName();
 }
 
-void ShopItems::addItem(int id, int amount, int price)
+void ShopItems::addItem(int id, unsigned char color, int amount, int price)
 {
-    mShopItems.push_back(new ShopItem(-1, id, amount, price));
+    mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
 }
 
-void ShopItems::addItemNoDup(int id, int amount, int price)
+void ShopItems::addItemNoDup(int id, unsigned char color, int amount, int price)
 {
-    ShopItem *item = findItem(id);
+    ShopItem *item = findItem(id, color);
     if (!item)
-        mShopItems.push_back(new ShopItem(-1, id, amount, price));
+        mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
 }
 
-void ShopItems::addItem2(int inventoryIndex, int id, int quantity, int price)
+void ShopItems::addItem2(int inventoryIndex, int id, unsigned char color,
+                         int quantity, int price)
 {
     ShopItem *item = 0;
     if (mMergeDuplicates)
-        item = findItem(id);
+        item = findItem(id, color);
 
     if (item)
     {
@@ -73,7 +74,7 @@ void ShopItems::addItem2(int inventoryIndex, int id, int quantity, int price)
     }
     else
     {
-        item = new ShopItem(inventoryIndex, id, quantity, price);
+        item = new ShopItem(inventoryIndex, id, color, quantity, price);
         mShopItems.push_back(item);
     }
 }
@@ -100,7 +101,7 @@ void ShopItems::clear()
     mShopItems.clear();
 }
 
-ShopItem *ShopItems::findItem(int id)
+ShopItem *ShopItems::findItem(int id, unsigned char color)
 {
     ShopItem *item;
 
@@ -109,7 +110,7 @@ ShopItem *ShopItems::findItem(int id)
     while (it != e)
     {
         item = *(it);
-        if (item->getId() == id)
+        if (item->getId() == id && item->getColor() == color)
             return item;
 
         ++it;

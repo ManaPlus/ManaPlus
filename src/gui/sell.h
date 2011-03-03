@@ -99,7 +99,7 @@ class SellDialog : public Window, gcn::ActionListener, gcn::SelectionListener
          */
         void setVisible(bool visible);
 
-        void addItem(int id, int amount, int price);
+        void addItem(int id, unsigned char color, int amount, int price);
 
         /**
          * Returns true if any instances exist.

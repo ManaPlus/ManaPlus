@@ -152,14 +152,14 @@ void SellDialog::addItem(const Item *item, int price)
         return;
 
     mShopItems->addItem2(item->getInvIndex(), item->getId(),
-                        item->getQuantity(), price);
+        item->getColor(), item->getQuantity(), price);
 
     mShopItemList->adjustSize();
 }
 
-void SellDialog::addItem(int id, int amount, int price)
+void SellDialog::addItem(int id, unsigned char color, int amount, int price)
 {
-    mShopItems->addItem(id, amount, price);
+    mShopItems->addItem(id, color, amount, price);
     mShopItemList->adjustSize();
 }
 

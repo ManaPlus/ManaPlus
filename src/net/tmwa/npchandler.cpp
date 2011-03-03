@@ -221,12 +221,23 @@ void NpcHandler::sell(int beingId)
     outMsg.writeInt8(1); // Sell
 }
 
-void NpcHandler::buyItem(int beingId _UNUSED_, int itemId, int amount)
+void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
+                         unsigned char color, int amount)
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
-    outMsg.writeInt16(8); // One item (length of packet)
-    outMsg.writeInt16(amount);
-    outMsg.writeInt16(itemId);
+    if (serverVersion > 0)
+    {
+        outMsg.writeInt16(9); // One item (length of packet)
+        outMsg.writeInt16(amount);
+        outMsg.writeInt16(itemId);
+        outMsg.writeInt8(color);
+    }
+    else
+    {
+        outMsg.writeInt16(8); // One item (length of packet)
+        outMsg.writeInt16(amount);
+        outMsg.writeInt16(itemId);
+    }
 }
 
 void NpcHandler::sellItem(int beingId _UNUSED_, int itemId, int amount)

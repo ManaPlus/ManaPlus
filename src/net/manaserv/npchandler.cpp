@@ -209,7 +209,8 @@ void NpcHandler::sell(int beingId _UNUSED_)
     // TODO
 }
 
-void NpcHandler::buyItem(int beingId _UNUSED_, int itemId, int amount)
+void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
+                         unsigned char color _UNUSED_, int amount)
 {
     MessageOut msg(PGMSG_NPC_BUYSELL);
     msg.writeInt16(itemId);
