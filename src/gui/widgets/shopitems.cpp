@@ -61,7 +61,7 @@ void ShopItems::addItemNoDup(int id, int amount, int price)
         mShopItems.push_back(new ShopItem(-1, id, amount, price));
 }
 
-void ShopItems::addItem(int inventoryIndex, int id, int quantity, int price)
+void ShopItems::addItem2(int inventoryIndex, int id, int quantity, int price)
 {
     ShopItem *item = 0;
     if (mMergeDuplicates)

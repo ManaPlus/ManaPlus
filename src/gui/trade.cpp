@@ -160,7 +160,7 @@ void TradeWindow::addItem(int id, bool own, int quantity,
         mPartnerInventory->addItem(id, quantity, refine, color);
 }
 
-void TradeWindow::addItem(int id, bool own, int quantity,
+void TradeWindow::addItem2(int id, bool own, int quantity,
                           int refine, unsigned char color, bool equipment)
 {
     if (own)

@@ -207,7 +207,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
                     }
                     else
                     {
-                        tradeWindow->addItem(type, false, amount, refine,
+                        tradeWindow->addItem2(type, false, amount, refine,
                             identify, false);
                     }
                 }
@@ -237,7 +237,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
 
                         if (tradeWindow)
                         {
-                            tradeWindow->addItem(item->getId(), true, quantity,
+                            tradeWindow->addItem2(item->getId(), true, quantity,
                                 item->getRefine(), item->getColor(),
                                 item->isEquipment());
                         }

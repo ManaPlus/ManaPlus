@@ -66,7 +66,7 @@ class ShopItems : public gcn::ListModel
          * @param quantity number of available copies of the item
          * @param price price of the item
          */
-        void addItem(int inventoryIndex, int id, int amount, int price);
+        void addItem2(int inventoryIndex, int id, int amount, int price);
 
         void addItemNoDup(int id, int amount, int price);
 

@@ -151,7 +151,7 @@ void SellDialog::addItem(const Item *item, int price)
     if (!item)
         return;
 
-    mShopItems->addItem(item->getInvIndex(), item->getId(),
+    mShopItems->addItem2(item->getInvIndex(), item->getId(),
                         item->getQuantity(), price);
 
     mShopItemList->adjustSize();
