@@ -158,7 +158,7 @@ class Item
 
         bool isHaveTag(int tagId);
 
-        unsigned char getColor()
+        unsigned char getColor() const
         { return mColor; }
 
     protected:

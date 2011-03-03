@@ -84,8 +84,12 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_BUY:
+        {
             msg.readInt16();  // length
-            n_items = (msg.getLength() - 4) / 11;
+            int sz = 11;
+            if (serverVersion > 0)
+                sz += 1;
+            n_items = (msg.getLength() - 4) / sz;
             mBuyDialog = new BuyDialog(mNpcId);
             mBuyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
 
@@ -95,9 +99,14 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
                 msg.readInt32();  // DCvalue
                 msg.readInt8();  // type
                 int itemId = msg.readInt16();
+                unsigned char color = 1;
+                if (serverVersion > 0)
+                    color = msg.readInt8();
                 mBuyDialog->addItem(itemId, 0, value);
+//                mBuyDialog->addItem(itemId, color, 0, value);
             }
             break;
+        }
 
         case SMSG_NPC_SELL:
             msg.readInt16();  // length
