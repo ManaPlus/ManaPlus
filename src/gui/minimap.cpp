@@ -126,6 +126,7 @@ void Minimap::setMap(Map *map)
             SDL_UnlockSurface(surface);
 
             mMapImage = Image::load(surface);
+            mMapImage->setAlpha(Client::getGuiAlpha());
             SDL_FreeSurface(surface);
         }
         else
