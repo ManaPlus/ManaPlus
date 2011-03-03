@@ -209,6 +209,9 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                                 cards[0], cards[1], cards[2], cards[3]);
                 }
 
+                if (serverVersion < 1 && identified > 1)
+                    identified = 1;
+
                 if (msg.getId() == SMSG_PLAYER_INVENTORY)
                 {
                     // Trick because arrows are not considered equipment
@@ -217,13 +220,13 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                     if (inventory)
                     {
                         inventory->setItem(index, itemId, amount,
-                                           0, isEquipment);
+                                           0, identified, isEquipment);
                     }
                 }
                 else
                 {
                     mInventoryItems.push_back(InventoryItem(index, itemId,
-                                              amount, 0, false));
+                        amount, 0, identified, false));
                 }
             }
             break;
@@ -255,8 +258,11 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                                 refine);
                 }
 
+                if (serverVersion < 1 && identified > 1)
+                    identified = 1;
+
                 mInventoryItems.push_back(InventoryItem(index, itemId, amount,
-                                                        refine, false));
+                    refine, identified, false));
             }
             break;
 
@@ -299,8 +305,11 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                         if  (item && item->getId() == itemId)
                             amount += inventory->getItem(index)->getQuantity();
 
+                        if (serverVersion < 1 && identified > 1)
+                            identified = 1;
+
                         inventory->setItem(index, itemId, amount, refine,
-                                           equipType != 0);
+                                           identified, equipType != 0);
                     }
                 }
             } break;
@@ -381,7 +390,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 for (; it != it_end; ++it)
                 {
                     mStorage->setItem((*it).slot, (*it).id, (*it).quantity,
-                                      (*it).equip);
+                        (*it).refine, (*it).color, (*it).equip);
                 }
                 mInventoryItems.clear();
 
@@ -403,13 +412,19 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 
             if (Item *item = mStorage->getItem(index))
             {
-                item->setId(itemId);
+                item->setId(itemId, identified);
                 item->increaseQuantity(amount);
             }
             else
             {
                 if (mStorage)
-                    mStorage->setItem(index, itemId, amount, false);
+                {
+                    if (serverVersion < 1 && identified > 1)
+                        identified = 1;
+
+                    mStorage->setItem(index, itemId, amount, refine,
+                                      identified, false);
+                }
             }
             break;
 
@@ -455,19 +470,31 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
             {
                 index = msg.readInt16() - INVENTORY_OFFSET;
                 itemId = msg.readInt16();
-                msg.readInt8();  // type
-                msg.readInt8();  // identify flag
+                int itemType = msg.readInt8();  // type
+                identified = msg.readInt8();  // identify flag
+
                 msg.readInt16(); // equip type
                 equipType = msg.readInt16();
                 msg.readInt8();  // attribute
                 refine = msg.readInt8();
                 msg.skip(8);     // card
 
+
+                if (debugInventory)
+                {
+                    logger->log("Index: %d, ID: %d, Type: %d, Identified: %d",
+                                index, itemId, itemType, identified);
+                }
+
+                if (serverVersion < 1 && identified > 1)
+                    identified = 1;
+
                 if (inventory)
-                    inventory->setItem(index, itemId, 1, refine, true);
+                    inventory->setItem(index, itemId, 1, refine, identified, true);
 
                 if (equipType)
                     mEquips.setEquipment(getSlot(equipType), index);
+
             }
             break;
 

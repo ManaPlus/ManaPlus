@@ -301,7 +301,8 @@ void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
 }
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
-                                     bool forceDisplay, int imageType)
+                                     bool forceDisplay, int imageType,
+                                     std::string color)
 {
     clear();
 
@@ -310,7 +311,9 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     for (it = display.sprites.begin(), it_end = display.sprites.end();
          it != it_end; ++it)
     {
-        std::string file = "graphics/sprites/" + (*it)->sprite;
+        std::string file = "graphics/sprites/"
+            + combineDye2((*it)->sprite, color);
+
         int variant = (*it)->variant;
         addSprite(AnimatedSprite::load(file, variant));
     }
@@ -336,6 +339,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                     imagePath = "graphics/items/" + display.floor;
                     break;
             }
+            imagePath = combineDye2(imagePath, color);
+
             Image *img = resman->getImage(imagePath);
 
             if (!img)

@@ -193,18 +193,23 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
             {
                 int amount = msg.readInt32();
                 int type = msg.readInt16();
-                msg.readInt8();  // identified flag
+                int identify = msg.readInt8();  // identified flag
                 msg.readInt8();  // attribute
-                msg.readInt8();  // refine
+                int refine = msg.readInt8();  // refine
                 msg.skip(8);     // card (4 shorts)
 
                 // TODO: handle also identified, etc
                 if (tradeWindow)
                 {
                     if (type == 0)
+                    {
                         tradeWindow->setMoney(amount);
+                    }
                     else
-                        tradeWindow->addItem(type, false, amount, false);
+                    {
+                        tradeWindow->addItem(type, false, amount, refine,
+                            identify, false);
+                    }
                 }
             }
             break;
@@ -233,7 +238,8 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
                         if (tradeWindow)
                         {
                             tradeWindow->addItem(item->getId(), true, quantity,
-                                                 item->isEquipment());
+                                item->getRefine(), item->getColor(),
+                                item->isEquipment());
                         }
                         item->increaseQuantity(-quantity);
                         break;

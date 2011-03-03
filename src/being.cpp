@@ -1483,8 +1483,8 @@ void Being::updateColors()
     }
 }
 
-void Being::setSprite(unsigned int slot, int id, const std::string &color,
-                      bool isWeapon, bool isTempSprite)
+void Being::setSprite(unsigned int slot, int id, std::string color,
+                      unsigned char colorId, bool isWeapon, bool isTempSprite)
 {
     if (slot >= Net::getCharHandler()->maxSprite())
         return;
@@ -1508,13 +1508,15 @@ void Being::setSprite(unsigned int slot, int id, const std::string &color,
     }
     else
     {
-        std::string filename = ItemDB::get(id).getSprite(mGender);
+        ItemInfo info = ItemDB::get(id);
+        std::string filename = info.getSprite(mGender);
         AnimatedSprite *equipmentSprite = NULL;
 
         if (!filename.empty())
         {
-            if (!color.empty())
-                filename += "|" + color;
+            if (color.empty())
+                color = info.getDyeColorsString(colorId);
+            filename = combineDye(filename, color);
 
             equipmentSprite = AnimatedSprite::load(
                 paths.getStringValue("sprites") + filename);
@@ -1931,7 +1933,7 @@ void Being::recalcSpritesOrder()
                         if (repIt->second != 1)
                         {
                             setSprite(removeSprite, repIt->second,
-                                mSpriteColors[removeSprite], false, true);
+                                mSpriteColors[removeSprite], 1, false, true);
                         }
                     }
                 }
@@ -2066,7 +2068,7 @@ void Being::recalcSpritesOrder()
             if (!id)
                 continue;
 
-            setSprite(slot, id, mSpriteColors[slot], false, true);
+            setSprite(slot, id, mSpriteColors[slot], 1, false, true);
         }
 //        logger->log("slot %d = %d", slot, mSpriteRemap[slot]);
     }

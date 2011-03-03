@@ -377,7 +377,7 @@ void CharHandler::updateCharacters()
         player->setName(info.name);
         player->setGender(info.gender);
         player->setSprite(SPRITE_HAIR, info.hairStyle * -1,
-                          ColorDB::get(info.hairColor));
+                          ColorDB::getHairColor(info.hairColor));
         character->data.mAttributes[LEVEL] = info.level;
         character->data.mAttributes[CHAR_POINTS] = info.characterPoints;
         character->data.mAttributes[CORR_POINTS] = info.correctionPoints;

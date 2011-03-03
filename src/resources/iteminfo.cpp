@@ -81,3 +81,29 @@ std::map<int, int> &ItemInfo::addReplaceSprite(int sprite)
     }
     return it->second;
 }
+
+void ItemInfo::setColorsList(std::string name)
+{
+    if (name.empty())
+    {
+        mColors = 0;
+        mColorList = "";
+    }
+    else
+    {
+        mColors = ColorDB::getColorsList(name);
+        mColorList = name;
+    }
+}
+
+std::string ItemInfo::getDyeColorsString(int color) const
+{
+    if (!mColors || mColorList.empty())
+        return "";
+
+    std::map <int, ColorDB::ItemColor>::iterator it = mColors->find(color);
+    if (it == mColors->end())
+        return "";
+
+    return it->second.color;
+}

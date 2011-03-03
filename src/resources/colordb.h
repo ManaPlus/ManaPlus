@@ -29,23 +29,51 @@
  */
 namespace ColorDB
 {
+    class ItemColor
+    {
+        public:
+            ItemColor()
+            { }
+            ItemColor(int id, std::string name, std::string color)
+            {
+                this->id = id;
+                this->name = name;
+                this->color = color;
+            }
+
+            int id;
+            std::string name;
+            std::string color;
+    };
+
     /**
      * Loads the color data from <code>colors.xml</code>.
      */
     void load();
 
     /**
+     * Loads the color data from <code>colors.xml</code>.
+     */
+    void loadHair();
+
+    void loadColorLists();
+
+    /**
      * Clear the color data
      */
     void unload();
 
-    std::string &get(int id);
+    std::string &getHairColor(int id);
 
-    int size();
+    int getHairSize();
+
+    std::map <int, ItemColor> *getColorsList(std::string name);
 
     // Color DB
     typedef std::map<int, std::string> Colors;
     typedef Colors::iterator ColorIterator;
+    typedef std::map <std::string, std::map <int, ItemColor> > ColorLists;
+    typedef ColorLists::iterator ColorListsIterator;
 }
 
 #endif

@@ -22,6 +22,7 @@
 
 #include "resources/itemdb.h"
 
+#include "client.h"
 #include "log.h"
 
 #include "resources/iteminfo.h"
@@ -207,6 +208,11 @@ void ItemDB::load()
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
         std::string removeSprite = XML::getProperty(node, "removeSprite", "");
+        std::string colors;
+        if (serverVersion >= 1)
+            colors = XML::getProperty(node, "colors", "");
+        else
+            colors = "";
 
         std::string tags[3];
         tags[0] = XML::getProperty(node, "tag",
@@ -266,6 +272,7 @@ void ItemDB::load()
         itemInfo->setDrawBefore(parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(drawPriority);
+        itemInfo->setColorsList(colors);
 
         std::string effect;
         for (int i = 0; i < int(sizeof(fields) / sizeof(fields[0])); ++i)

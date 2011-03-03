@@ -29,7 +29,8 @@
 #include "resources/resourcemanager.h"
 #include "configuration.h"
 
-Item::Item(int id, int quantity, int refine, bool equipment, bool equipped):
+Item::Item(int id, int quantity, int refine, unsigned char color,
+           bool equipment, bool equipped):
     mImage(0),
     mDrawImage(0),
     mQuantity(quantity),
@@ -39,7 +40,7 @@ Item::Item(int id, int quantity, int refine, bool equipment, bool equipped):
     mRefine(refine),
     mInvIndex(0)
 {
-    setId(id);
+    setId(id, color);
 }
 
 Item::~Item()
@@ -48,9 +49,10 @@ Item::~Item()
         mImage->decRef();
 }
 
-void Item::setId(int id)
+void Item::setId(int id, unsigned char color)
 {
     mId = id;
+    mColor = color;
 
     // Types 0 and 1 are not equippable items.
     mEquipment = id && getInfo().getType() >= 2;
@@ -73,8 +75,9 @@ void Item::setId(int id)
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = paths.getStringValue("itemIcons")
                             + display.image;
-    mImage = resman->getImage(imagePath);
-    mDrawImage = resman->getImage(imagePath);
+    std::string dye = combineDye2(imagePath, info.getDyeColorsString(color));
+    mImage = resman->getImage(dye);
+    mDrawImage = resman->getImage(dye);
 
     if (!mImage)
     {
@@ -96,12 +99,14 @@ bool Item::isHaveTag(int tagId)
     return mTags[tagId] > 0;
 }
 
-Image *Item::getImage(int id)
+Image *Item::getImage(int id, unsigned char color)
 {
     ResourceManager *resman = ResourceManager::getInstance();
-    SpriteDisplay display = ItemDB::get(id).getDisplay();
+    ItemInfo info = ItemDB::get(id);
+    SpriteDisplay display = info.getDisplay();
     std::string imagePath = "graphics/items/" + display.image;
-    Image *image = resman->getImage(imagePath);
+    Image *image;
+    image = resman->getImage(combineDye2(imagePath, info.getDyeColorsString(color)));
 
     if (!image)
         image = Theme::getImageFromTheme("unknown-item.png");

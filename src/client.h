@@ -59,6 +59,7 @@ extern volatile int fps;
 extern volatile int tick_time;
 extern volatile int cur_time;
 extern bool isSafeMode;
+extern int serverVersion;
 
 class ErrorListener : public gcn::ActionListener
 {

@@ -134,7 +134,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
         {
             int type = msg.readInt16();
             int amount = msg.readInt8();
-            tradeWindow->addItem(type, false, amount, 0);
+            tradeWindow->addItem(type, false, amount, 0, 1);
         }   break;
 
         case GPMSG_TRADE_SET_MONEY:
@@ -201,7 +201,7 @@ void TradeHandler::addItem(Item *item, int amount)
     msg.writeInt8(amount);
     gameServerConnection->send(msg);
 
-    tradeWindow->addItem(item->getId(), true, amount, 0);
+    tradeWindow->addItem(item->getId(), true, amount, 0, 1);
     item->increaseQuantity(-amount);
 }
 
