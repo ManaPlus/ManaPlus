@@ -20,6 +20,7 @@
 
 #include "resources/colordb.h"
 
+#include "client.h"
 #include "log.h"
 
 #include "utils/xml.h"
@@ -40,7 +41,8 @@ void ColorDB::load()
         unload();
 
     loadHair();
-    loadColorLists();
+    if (serverVersion >= 1)
+        loadColorLists();
 }
 
 void ColorDB::loadHair()
@@ -132,6 +134,7 @@ void ColorDB::unload()
     logger->log1("Unloading color database...");
 
     mHairColors.clear();
+    mColorLists.clear();
     mLoaded = false;
 }
 
