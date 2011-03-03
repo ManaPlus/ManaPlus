@@ -1,26 +1,21 @@
-# Russian translation for mana
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
-# This file is distributed under the same license as the mana package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
-# jmb_kz <jmb_kz@mail.ru>, 2010.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Mana Developers
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: mana\n"
+"Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
 "POT-Creation-Date: 2011-02-27 23:27+0200\n"
-"PO-Revision-Date: 2011-01-28 03:10+0300\n"
-"Last-Translator: Necromonger <Necromong@inbox.ru>\n"
-"Language-Team: Russian <ru@li.org>\n"
-"Language: ru\n"
+"PO-Revision-Date: 2011-03-03 21:40+0000\n"
+"Last-Translator: akaras <akaras@inbox.ru>\n"
+"Language-Team: Russian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Launchpad-Export-Date: 2010-03-05 19:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
-"X-Language: ru_RU\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/being.cpp:488
 msgid "dodge"
@@ -55,9 +50,8 @@ msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
 #: src/client.cpp:1015
-#, fuzzy
 msgid "Changing game servers"
-msgstr "Сервер"
+msgstr "Смена игрового сервера"
 
 #: src/client.cpp:1050 src/client.cpp:1057 src/client.cpp:1192
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
@@ -219,7 +213,8 @@ msgstr "/party > Пригласить пользователя в группу"
 #: src/commandhandler.cpp:331
 msgid "/toggle > Determine whether <return> toggles the chat log"
 msgstr ""
-"/toggle -> Определяет появление строки ввода текста в чат по нажатию <return>"
+"/toggle -> Определяет появление строки ввода текста в чат по нажатию "
+"<return>"
 
 #: src/commandhandler.cpp:333
 msgid "/present > Get list of players present (sent to chat log, if logging)"
@@ -433,12 +428,9 @@ msgid "Command: /present"
 msgstr "Команда: /present"
 
 #: src/commandhandler.cpp:446
-#, fuzzy
 msgid ""
 "This command gets a list of players within hearing and sends it to chat log."
-msgstr ""
-"Команда получает список всех игроков, которых вы слышите и посылает его либо "
-"в лог-файл (если включена такая опция), либо в окно чата."
+msgstr "Эта команда выводит список видимых игроков в чат."
 
 #: src/commandhandler.cpp:451
 msgid "Command: /toggle <state>"
@@ -503,11 +495,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:557
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:577
 #, c-format
@@ -597,9 +589,7 @@ msgstr "Игрок не может быть удален!"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
 #: src/game.cpp:227 src/gui/widgets/chattab.cpp:391
 msgid "General"
@@ -980,9 +970,9 @@ msgid "Chat"
 msgstr "Чат"
 
 #: src/gui/chat.cpp:556
-#, fuzzy, c-format
+#, c-format
 msgid "Present: %s; %d players are present."
-msgstr "%d игроков он-лайн."
+msgstr "Присутствуют: %s; Всего %d игроков."
 
 #: src/gui/chat.cpp:913
 #, c-format
@@ -1417,42 +1407,39 @@ msgstr "Карта"
 
 #: src/gui/ministatus.cpp:56
 msgid "health bar"
-msgstr ""
+msgstr "здоровье"
 
 #: src/gui/ministatus.cpp:62
 msgid "mana bar"
-msgstr ""
+msgstr "мана"
 
 #: src/gui/ministatus.cpp:74
 msgid "experience bar"
-msgstr ""
+msgstr "опыт"
 
 #: src/gui/ministatus.cpp:80
 msgid "job bar"
-msgstr ""
+msgstr "работа"
 
 #: src/gui/ministatus.cpp:89
-#, fuzzy
 msgid "weight bar"
-msgstr "Вес: %s"
+msgstr "вес"
 
 #: src/gui/ministatus.cpp:92
 msgid "inventory slots bar"
-msgstr ""
+msgstr "слоты интвентаря"
 
 #: src/gui/ministatus.cpp:95
-#, fuzzy
 msgid "money bar"
-msgstr "Полоса жизни монстров"
+msgstr "деньги"
 
 #: src/gui/ministatus.cpp:98
 msgid "arrows bar"
-msgstr ""
+msgstr "стрелы"
 
 #: src/gui/ministatus.cpp:101
-#, fuzzy
 msgid "status bar"
-msgstr "Состояние"
+msgstr "статус"
 
 #: src/gui/ministatus.cpp:287 src/gui/ministatus.cpp:327
 msgid "Need"
@@ -1480,11 +1467,8 @@ msgstr "Очистить"
 
 #. TRANSLATORS: Please leave the \n sequences intact.
 #: src/gui/npcdialog.cpp:209
-#, fuzzy
 msgid "> Next"
-msgstr ""
-"\n"
-"> Следующий\n"
+msgstr "> Далее"
 
 #: src/gui/npcpostdialog.cpp:46
 msgid "To:"
@@ -1733,24 +1717,20 @@ msgid "Name:                    "
 msgstr "Имя:                    "
 
 #: src/gui/popupmenu.cpp:1142
-#, fuzzy
 msgid "Add to trade"
-msgstr "Добавить в чат"
+msgstr "Добавить к торговли"
 
 #: src/gui/popupmenu.cpp:1148
-#, fuzzy
 msgid "Add to trade 10"
-msgstr "Добавить в чат"
+msgstr "Добавить к торговле 10"
 
 #: src/gui/popupmenu.cpp:1151
-#, fuzzy
 msgid "Add to trade half"
-msgstr "Сохранить половину"
+msgstr "Добавить к торговле половину"
 
 #: src/gui/popupmenu.cpp:1153
-#, fuzzy
 msgid "Add to trade all"
-msgstr "Сохранить все"
+msgstr "Добавить к торговле все"
 
 #: src/gui/popupmenu.cpp:1165
 msgid "Store 10"
@@ -2189,17 +2169,16 @@ msgid "Show own hp bar"
 msgstr "Показывать свою жизнь"
 
 #: src/gui/setup_other.cpp:181
-#, fuzzy
 msgid "Show job exp messages"
-msgstr "Скрыть сообщения магазина"
+msgstr "Показывать опыт работы."
 
 #: src/gui/setup_other.cpp:184
 msgid "Show players popups"
-msgstr ""
+msgstr "Показ. всплыв. сообщения игроков"
 
 #: src/gui/setup_other.cpp:187
 msgid "Show extended minimaps"
-msgstr ""
+msgstr "Показывать расширенные миникарты"
 
 #: src/gui/setup_players.cpp:61
 msgid "Relation"
@@ -2483,8 +2462,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
 #: src/gui/setup_video.cpp:535
 msgid ""
@@ -2583,9 +2562,9 @@ msgid "Skill points available: %d"
 msgstr "Очков навыков осталось: %d"
 
 #: src/gui/skilldialog.cpp:379
-#, fuzzy, c-format
+#, c-format
 msgid "Skill Set %d"
-msgstr "Очков навыков: %d"
+msgstr "Умение %d"
 
 #: src/gui/skilldialog.cpp:391
 #, c-format
@@ -2954,7 +2933,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/trade.cpp:313
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3284,11 +3264,12 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:123
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:62
@@ -3301,7 +3282,7 @@ msgstr "Окно детектора ботов"
 
 #: src/gui/windowmenu.cpp:64
 msgid "ONL"
-msgstr ""
+msgstr "КО"
 
 #: src/gui/windowmenu.cpp:64
 msgid "Who is online"
@@ -3309,7 +3290,7 @@ msgstr "Кто онлайн"
 
 #: src/gui/windowmenu.cpp:66
 msgid "KS"
-msgstr ""
+msgstr "СА"
 
 #: src/gui/windowmenu.cpp:68
 msgid "Smiles"
@@ -3317,7 +3298,7 @@ msgstr "Смайлы"
 
 #: src/gui/windowmenu.cpp:70
 msgid "STA"
-msgstr ""
+msgstr "СО"
 
 #: src/gui/windowmenu.cpp:70
 msgid "Status"
@@ -3325,27 +3306,27 @@ msgstr "Состояние"
 
 #: src/gui/windowmenu.cpp:71
 msgid "EQU"
-msgstr ""
+msgstr "СН"
 
 #: src/gui/windowmenu.cpp:73
 msgid "INV"
-msgstr ""
+msgstr "ИНВ"
 
 #: src/gui/windowmenu.cpp:78
 msgid "SKI"
-msgstr ""
+msgstr "УМ"
 
 #: src/gui/windowmenu.cpp:84
 msgid "SPE"
-msgstr ""
+msgstr "СПЕ"
 
 #: src/gui/windowmenu.cpp:88
 msgid "SOC"
-msgstr ""
+msgstr "ОБЩ"
 
 #: src/gui/windowmenu.cpp:89
 msgid "SH"
-msgstr ""
+msgstr "ГК"
 
 #: src/gui/windowmenu.cpp:89
 msgid "Shortcuts"
@@ -3353,15 +3334,15 @@ msgstr "Горячие клавиши"
 
 #: src/gui/windowmenu.cpp:91
 msgid "SP"
-msgstr ""
+msgstr "ЗАК"
 
 #: src/gui/windowmenu.cpp:92
 msgid "DR"
-msgstr ""
+msgstr "БР"
 
 #: src/gui/windowmenu.cpp:93
 msgid "SET"
-msgstr ""
+msgstr "SET"
 
 #: src/gui/worldselectdialog.cpp:75
 msgid "Select World"
@@ -3759,35 +3740,32 @@ msgid "You were killed by "
 msgstr "Вы были убиты "
 
 #: src/localplayer.cpp:1321
-#, fuzzy
 msgid "Tried to pick up nonexistent item."
-msgstr "Невозможно подобрать предмет"
+msgstr "Попытка поднять несуществующий предмет."
 
 #: src/localplayer.cpp:1323
 msgid "Item is too heavy."
-msgstr ""
+msgstr "Предмет слишком тяжелый"
 
 #: src/localplayer.cpp:1325
 msgid "Item is too far away"
-msgstr ""
+msgstr "Предмет слишком далеко"
 
 #: src/localplayer.cpp:1327
-#, fuzzy
 msgid "Inventory is full."
-msgstr "Сервер переполнен"
+msgstr "Инвентарь переполнен."
 
 #: src/localplayer.cpp:1329
 msgid "Stack is too big."
-msgstr ""
+msgstr "Слишком много предметов."
 
 #: src/localplayer.cpp:1332
 msgid "Item belongs to someone else."
-msgstr ""
+msgstr "Предмет принадлежит кому-то еще."
 
 #: src/localplayer.cpp:1335
-#, fuzzy
 msgid "Unknown problem picking up item."
-msgstr "Невозможно подобрать предмет"
+msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: This sentence may be translated differently
 #. for different grammatical numbers (singular, plural, ...)
@@ -3798,6 +3776,7 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Вы подняли %d [@@%d|%s@@]."
 msgstr[1] "Вы подняли %d [@@%d|%s@@]."
 msgstr[2] "Вы подняли %d [@@%d|%s@@]."
+msgstr[3] "Вы подняли %d [@@%d|%s@@]."
 
 #: src/localplayer.cpp:3056
 msgid "Away"
@@ -3820,9 +3799,8 @@ msgid "              used to set custom parameters"
 msgstr "используется для назначения своих параметров"
 
 #: src/main.cpp:48
-#, fuzzy
 msgid "              to the manaplus client."
-msgstr "         клиента"
+msgstr "              в клиенте manaplus."
 
 #: src/main.cpp:50
 msgid "Options:"
@@ -4066,9 +4044,8 @@ msgstr ""
 "(%u - %u)."
 
 #: src/net/manaserv/charhandler.cpp:178
-#, fuzzy
 msgid "Invalid slot number."
-msgstr "Имя задано неверно"
+msgstr "Некорректный номер слота."
 
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
@@ -4310,14 +4287,12 @@ msgid "Unable to sell."
 msgstr "Нельзя продать."
 
 #: src/net/tmwa/buysellhandler.cpp:154
-#, fuzzy
 msgid "Unable to sell while trading."
-msgstr "Нельзя продать."
+msgstr "Невозможно продавать в режиме обмена."
 
 #: src/net/tmwa/buysellhandler.cpp:157
-#, fuzzy
 msgid "Unable to sell unsellable item."
-msgstr "Невозможно подобрать предмет"
+msgstr "Невозможно продать непродаваемый предмет."
 
 #: src/net/tmwa/charserverhandler.cpp:110
 msgid "Access denied. Most likely, there are too many players on this server."
@@ -4334,12 +4309,12 @@ msgstr "Неизвестная ошибка сервера чата."
 
 #: src/net/tmwa/charserverhandler.cpp:146
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
 #: src/net/tmwa/charserverhandler.cpp:150 src/net/tmwa/loginhandler.cpp:188
-#, fuzzy
 msgid "Wrong name."
-msgstr "Ошибочный magic_token."
+msgstr "Некорректное имя."
 
 #: src/net/tmwa/charserverhandler.cpp:153
 msgid "Incorrect stats."
@@ -4350,9 +4325,8 @@ msgid "Incorrect hair."
 msgstr "Некорректный тип волос."
 
 #: src/net/tmwa/charserverhandler.cpp:159
-#, fuzzy
 msgid "Incorrect slot."
-msgstr "Нет свободного места."
+msgstr "Некорректный слот."
 
 #: src/net/tmwa/charserverhandler.cpp:173
 msgid "Character deleted."
@@ -4392,19 +4366,17 @@ msgid "Whisper could not be sent, %s is offline."
 msgstr "Сообщение не может быть отправлено, %s оффлайн"
 
 #: src/net/tmwa/chathandler.cpp:112
-#, fuzzy, c-format
+#, c-format
 msgid "Whisper could not be sent, ignored by %s."
-msgstr "Низзя прошептать: пользователь игнорирует шептание..."
+msgstr "Приватное сообщение не может быть послано, %s  игнорирует его."
 
 #: src/net/tmwa/chathandler.cpp:334
-#, fuzzy
 msgid "MVP player."
-msgstr "Игрок."
+msgstr "Игрок MVP."
 
 #: src/net/tmwa/chathandler.cpp:338
-#, fuzzy
 msgid "MVP player: "
-msgstr "Игрок."
+msgstr "Игрок MVP: "
 
 #: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
 #: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
@@ -4692,8 +4664,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:99
 msgid "Command: /item"
@@ -4716,8 +4687,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:111
 msgid "Command: /exp"
@@ -4939,13 +4910,15 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:327
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
 
 #: src/net/tmwa/playerhandler.cpp:337
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Вы несете груз меньше, чем половина вашей грузоподъемности. Вы можете "
 "восстановить здоровье."
@@ -5083,9 +5056,8 @@ msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Не удалось добавить предмет. У партнера по торговле кончилось место."
 
 #: src/net/tmwa/tradehandler.cpp:252
-#, fuzzy
 msgid "Failed adding item. You cant trade this item."
-msgstr "Не удалось добавить предмет. Партнер по торговле перегружен."
+msgstr "Ошибка добавления предмета. Вы не можете торговать этим предметом."
 
 #: src/net/tmwa/tradehandler.cpp:256
 msgid "Failed adding item for unknown reason."
@@ -5139,377 +5111,3 @@ msgstr "Мана %+d"
 #: src/resources/itemdb.cpp:154
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
-
-#~ msgid "Storage"
-#~ msgstr "Хранение"
-
-#~ msgid "One stat is zero."
-#~ msgstr "Одна из характеристик равна нулю."
-
-#~ msgid "Particle detail: %s"
-#~ msgstr "Детализация частиц: %s"
-
-#~ msgid "Ambient FX: %s"
-#~ msgstr "Эффекты окружающей среды: %s"
-
-#~ msgid "Emote Shortcut  %d"
-#~ msgstr "Горячая клавиша емоции %d"
-
-#~ msgid "Guild creation isn't supported yet."
-#~ msgstr "Создание гильдий пока не поддерживается."
-
-#, fuzzy
-#~ msgid "%s (?, ?)"
-#~ msgstr "Курсор: (?, ?)"
-
-#~ msgid "Player position:"
-#~ msgstr "Позиция игрока:"
-
-#~ msgid "Music: %s"
-#~ msgstr "Музыка: %s"
-
-#~ msgid "Map: %s"
-#~ msgstr "Карта: %s"
-
-#~ msgid "Minimap: %s"
-#~ msgstr "МиниКарта: %s"
-
-#~ msgid "/record > Start recording the chat to an external file"
-#~ msgstr "/record > Записывать чат во внешний файл"
-
-#~ msgid "Command: /record <filename>"
-#~ msgstr "Команда: /record <имя файла>"
-
-#~ msgid "This command starts recording the chat log to the file <filename>."
-#~ msgstr "Эта команда начнет протоколирование окна чата в файл <имя файла>."
-
-#~ msgid "Command: /record"
-#~ msgstr "Команда: /record"
-
-#~ msgid "This command finishes a recording session."
-#~ msgstr "Эта команда завершает запись."
-
-#~ msgid "Finishing recording."
-#~ msgstr "Запись завершена."
-
-#~ msgid "Not currently recording."
-#~ msgstr "Запись не ведётся."
-
-#~ msgid "Already recording."
-#~ msgstr "Запись уже ведётся."
-
-#~ msgid "Starting to record..."
-#~ msgstr "Начало записи..."
-
-#~ msgid "Failed to start recording."
-#~ msgstr "Не удалось начать запись."
-
-#~ msgid "Recording..."
-#~ msgstr "Запись..."
-
-#~ msgid "Stop recording"
-#~ msgstr "Остановить записи..."
-
-#~ msgid "Find Path to Mouse"
-#~ msgstr "Идти за курсором мыши"
-
-#~ msgid "HP"
-#~ msgstr "ОЖ"
-
-#~ msgid "MP"
-#~ msgstr "Мана:"
-
-#~ msgid "Exp"
-#~ msgstr "Опыт:"
-
-#~ msgid "Money"
-#~ msgstr "Деньги"
-
-#~ msgid "Job"
-#~ msgstr "Профессия"
-
-#~ msgid "Level"
-#~ msgstr "Уровень"
-
-#~ msgid "Player already ignored!"
-#~ msgstr "Игрок уже в спике игнорирования"
-
-#~ msgid "Player successfully ignored!"
-#~ msgstr "Игрок добавлен в список игнорирования!"
-
-#~ msgid "Player could not be ignored!"
-#~ msgstr "Игрок не может быть добавлен в список игнорирования"
-
-#~ msgid "  -C --config-file    : Configuration file to use"
-#~ msgstr ""
-#~ " -С --config-file    : Использовать указанный конфигурационный файл "
-
-#~ msgid "  -l --chat-log-dir   : Chat log dir to use"
-#~ msgstr "  -l --chat-log-dir  : Каталог для журнала чата"
-
-#~ msgid "Sound"
-#~ msgstr "Звук"
-
-#~ msgid "You now away from keyboard"
-#~ msgstr "Сейчас вы в режиме отошел"
-
-#~ msgid "Access denied."
-#~ msgstr "Доступ запрещен"
-
-#~ msgid "Unknown failure to select character."
-#~ msgstr "Неизвестный Глюк при выборе персонажа"
-
-#~ msgid "Inviting like this isn't supported at the moment."
-#~ msgstr "Такое приглашение в данный момент не поддерживается."
-
-#~ msgid "You can only invite when you are in a party!"
-#~ msgstr "%s приглашает вас к себе в группу."
-
-#~ msgid "Willpower:"
-#~ msgstr "Воля:"
-
-#~ msgid "Trade with %s..."
-#~ msgstr "@@trade|Торговать с %s@@"
-
-#~ msgid "Whisper %s"
-#~ msgstr "Шептать"
-
-#~ msgid "Completely ignore %s"
-#~ msgstr "@@ignore|Полностью игнорировать %s@@"
-
-#~ msgid "Invite %s to join your guild"
-#~ msgstr "@@guild|Пригласить %s в вашу гильдию@@"
-
-#~ msgid "Invite %s to join your party"
-#~ msgstr "@@party|Пригласить %s в вашу группу@@"
-
-#~ msgid "Talk to %s"
-#~ msgstr "@@talk|Говорить с %s@@"
-
-#~ msgid "Kick monster"
-#~ msgstr "@@admin-kick|Вышвырнуть монстра@@"
-
-#~ msgid "Pick up %s"
-#~ msgstr "Поднять"
-
-#~ msgid "Cannot send empty chat!"
-#~ msgstr "Низзя послать пустое сообщение!"
-
-#~ msgid "Unable to unequip."
-#~ msgstr "Нельзя разекипировать"
-
-#~ msgid "Text Shadow"
-#~ msgstr "Тень от текста"
-
-#~ msgid "Progress Bar Labels"
-#~ msgstr "Подписи Progress Bar'ов"
-
-#~ msgid "Item Too Expensive"
-#~ msgstr "Предмет слишком дорогой для вас"
-
-#~ msgid "Item Is Equipped"
-#~ msgstr "Предмет экипирован"
-
-#~ msgid "GM"
-#~ msgstr "ГМ"
-
-#~ msgid "Player"
-#~ msgstr "Игрок"
-
-#~ msgid "Whisper"
-#~ msgstr "Шептать"
-
-#~ msgid "Is"
-#~ msgstr "Есть"
-
-#~ msgid "Server"
-#~ msgstr "Сервер"
-
-#~ msgid "Unknown Item Type"
-#~ msgstr "Вещь неизвестного типа"
-
-#~ msgid "Generics"
-#~ msgstr "Общие"
-
-#~ msgid "Hats"
-#~ msgstr "Шляпы"
-
-#~ msgid "Usables"
-#~ msgstr "используемый"
-
-#~ msgid "Shirts"
-#~ msgstr "Рубашки"
-
-#~ msgid "One Handed Weapons"
-#~ msgstr "Одноручное оружие"
-
-#~ msgid "Pants"
-#~ msgstr "Штаны"
-
-#~ msgid "Shoes"
-#~ msgstr "Обувь"
-
-#~ msgid "Two Handed Weapons"
-#~ msgstr "Двуручное оружие"
-
-#~ msgid "Shields"
-#~ msgstr "Щиты"
-
-#~ msgid "Rings"
-#~ msgstr "Кольца"
-
-#~ msgid "Necklaces"
-#~ msgstr "Ожерелья"
-
-#~ msgid "Ammo"
-#~ msgstr "Боеприпасы"
-
-#~ msgid "HP Bar"
-#~ msgstr "Строка очков жизни (ОЖ)"
-
-#~ msgid "3/4 HP Bar"
-#~ msgstr "3/4 строки ОЖ"
-
-#~ msgid "1/2 HP Bar"
-#~ msgstr "Половина строки ОЖ"
-
-#~ msgid "1/4 HP Bar"
-#~ msgstr "1/4 строки ОЖ"
-
-#~ msgid "no"
-#~ msgstr "Нет"
-
-#~ msgid "Buddy"
-#~ msgstr "Друг"
-
-#~ msgid "Buddy List"
-#~ msgstr "Список друзей"
-
-#~ msgid "Description: %s"
-#~ msgstr "Описание: %s"
-
-#~ msgid "Effect: %s"
-#~ msgstr "Эффект: %s"
-
-#~ msgid "Previous"
-#~ msgstr "Предыдущий"
-
-#~ msgid "New"
-#~ msgstr "Новый"
-
-#~ msgid "Job Level: %d"
-#~ msgstr "Уровень профессии: %d"
-
-#~ msgid "Quit Guild"
-#~ msgstr "Распустить гильдию"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Cast Test Spell 1"
-#~ msgstr "Прочитать Тестовое Заклинание №1"
-
-#~ msgid "Cast Test Spell 2"
-#~ msgstr "Прочитать Тестовое Заклинание №2"
-
-#~ msgid "Cast Test Spell 3"
-#~ msgstr "Прочитать Тестовое Заклинание №3"
-
-#~ msgid "2 Handed Weapons"
-#~ msgstr "Двуручное оружие"
-
-#~ msgid "@@use|Unequip@@"
-#~ msgstr "@@use|Разекипировать@@"
-
-#~ msgid "@@use|Equip@@"
-#~ msgstr "@@use|Надеть@@"
-
-#~ msgid "@@drop|Drop@@"
-#~ msgstr "@@drop|Сбросить@@"
-
-#~ msgid "@@split|Split@@"
-#~ msgstr "@@split|Разделить@@"
-
-#~ msgid "Select Server"
-#~ msgstr "Выберите сервер"
-
-#~ msgid "Mystery Skill"
-#~ msgstr "Мистичный Навык"
-
-#~ msgid "Weapons"
-#~ msgstr "Оружие"
-
-#~ msgid "Stats"
-#~ msgstr "Статистика"
-
-#~ msgid "Total"
-#~ msgstr "Всего"
-
-#~ msgid "Cost"
-#~ msgstr "Стоимость"
-
-#~ msgid "Attack:"
-#~ msgstr "Атака:"
-
-#~ msgid "% Reflex:"
-#~ msgstr "% Рефлекс"
-
-#~ msgid "Remaining Status Points: %d"
-#~ msgstr "Осталось очков статуса: %d"
-
-#~ msgid " host: "
-#~ msgstr " хост: "
-
-#~ msgid "Buddys"
-#~ msgstr "Приятели"
-
-#~ msgid "Party Window"
-#~ msgstr "Окно группы"
-
-#~ msgid "Unarmed"
-#~ msgstr "Обезоруженный"
-
-#~ msgid "Knife"
-#~ msgstr "Нож"
-
-#~ msgid "Sword"
-#~ msgstr "Меч"
-
-#~ msgid "Bow"
-#~ msgstr "Лук"
-
-#~ msgid "Shooting"
-#~ msgstr "Стрельба"
-
-#~ msgid "Mace"
-#~ msgstr "Булава"
-
-#~ msgid "Axe"
-#~ msgstr "Топор"
-
-#~ msgid "Craft"
-#~ msgstr "Сотворить"
-
-#~ msgid "Unknown Skill"
-#~ msgstr "Неизвестный Навык"
-
-#~ msgid "Connecting to character server..."
-#~ msgstr "Подключение к серверу персонажей..."
-
-#~ msgid "Connecting to account server..."
-#~ msgstr "Соединение с сервером авторизации..."
-
-#~ msgid "/new > Alias of create"
-#~ msgstr "/new > Имя для создания"
-
-#~ msgid "Unnamed"
-#~ msgstr "Без имени"
-
-#~ msgid "@@pickup|Pick Up %s@@"
-#~ msgstr "@@pickup|Подобрать %s@@"
-
-#~ msgid "Scroll radius"
-#~ msgstr "Радиус прокрутки"
-
-#~ msgid "Scroll laziness"
-#~ msgstr "Заторможенность прокрутки"
