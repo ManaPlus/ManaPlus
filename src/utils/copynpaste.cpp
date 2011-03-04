@@ -242,7 +242,8 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
 }
 
 #elif USE_X11
-static char* getSelection2(Display *dpy, Window us, Atom selection, Atom request_target)
+static char* getSelection2(Display *dpy, Window us, Atom selection,
+                           Atom request_target)
 {
     int max_events = 50;
     Window owner = XGetSelectionOwner(dpy, selection);
@@ -254,7 +255,8 @@ static char* getSelection2(Display *dpy, Window us, Atom selection, Atom request
         //printf("No owner\n");
         return NULL;
     }
-    XConvertSelection(dpy, selection, request_target, XA_PRIMARY, us, CurrentTime);
+    XConvertSelection(dpy, selection, request_target,
+        XA_PRIMARY, us, CurrentTime);
     XFlush(dpy);
 
     while (max_events --)
@@ -264,8 +266,9 @@ static char* getSelection2(Display *dpy, Window us, Atom selection, Atom request
         XNextEvent(dpy, &e);
         if (e.type == SelectionNotify)
         {
-            printf("Received %s, %s, %s\n", XGetAtomName(dpy, selection),
-                XGetAtomName(dpy, e.xselection.selection), XGetAtomName(dpy, request_target));
+//            printf("Received %s, %s, %s\n", XGetAtomName(dpy, selection),
+//                XGetAtomName(dpy, e.xselection.selection),
+//                XGetAtomName(dpy, request_target));
             if (e.xselection.property == None)
             {
                 //printf("Couldn't convert\n");

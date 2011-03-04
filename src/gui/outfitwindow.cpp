@@ -173,9 +173,14 @@ void OutfitWindow::save()
             serverConfig.deleteKey("Outfit" + toString(o));
 
         if (mItemsUnequip[o])
+        {
             serverConfig.deleteKey("OutfitUnequip" + toString(o));
+        }
         else
-            serverConfig.setValue("OutfitUnequip" + toString(o), mItemsUnequip[o]);
+        {
+            serverConfig.setValue("OutfitUnequip" + toString(o),
+                mItemsUnequip[o]);
+        }
         outfitStr = "";
     }
     serverConfig.setValue("OutfitAwayIndex", mAwayOutfit);

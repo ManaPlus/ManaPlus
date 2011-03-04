@@ -32,8 +32,12 @@ namespace ColorDB
     class ItemColor
     {
         public:
-            ItemColor()
+            ItemColor():
+                id(0),
+                name(""),
+                color("")
             { }
+
             ItemColor(int id, std::string name, std::string color)
             {
                 this->id = id;

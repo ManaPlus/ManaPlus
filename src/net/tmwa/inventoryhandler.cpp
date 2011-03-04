@@ -490,7 +490,10 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                     identified = 1;
 
                 if (inventory)
-                    inventory->setItem(index, itemId, 1, refine, identified, true);
+                {
+                    inventory->setItem(index, itemId, 1, refine,
+                        identified, true);
+                }
 
                 if (equipType)
                     mEquips.setEquipment(getSlot(equipType), index);

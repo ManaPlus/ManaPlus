@@ -116,7 +116,8 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
         g->drawImage(mBackgroundImg, itemX, itemY);
 
-        int itemId = spellShortcut->getItem((mNumber * SPELL_SHORTCUT_ITEMS) + i);
+        int itemId = spellShortcut->getItem(
+            (mNumber * SPELL_SHORTCUT_ITEMS) + i);
         if (selectedId >= 0 && itemId == selectedId)
         {
             g->drawRectangle(gcn::Rectangle(

@@ -325,7 +325,8 @@ void SpellManager::save()
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
                     strprintf("%u %u %u %u %u %u", spell->getCommandType(),
                     spell->getTargetType(), spell->getBaseLvl(),
-                    spell->getSchool(), spell->getSchoolLvl(), spell->getMana()));
+                    spell->getSchool(), spell->getSchoolLvl(),
+                    spell->getMana()));
             }
             else
             {

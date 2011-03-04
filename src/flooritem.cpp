@@ -72,7 +72,8 @@ FloorItem::FloorItem(int id,
     }
 
     ItemInfo info = ItemDB::get(itemId);
-    setupSpriteDisplay(info.getDisplay(), true, 1, info.getDyeColorsString(mColor));
+    setupSpriteDisplay(info.getDisplay(), true, 1,
+        info.getDyeColorsString(mColor));
 }
 
 const ItemInfo &FloorItem::getInfo() const

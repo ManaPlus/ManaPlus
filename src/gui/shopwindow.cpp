@@ -278,7 +278,8 @@ void ShopWindow::addBuyItem(Item *item, int amount, int price)
 {
     if (!mBuyShopItems || !item)
         return;
-    mBuyShopItems->addItemNoDup(item->getId(), item->getColor(), amount, price);
+    mBuyShopItems->addItemNoDup(item->getId(),
+        item->getColor(), amount, price);
     updateButtonsAndLabels();
 }
 
@@ -286,7 +287,8 @@ void ShopWindow::addSellItem(Item *item, int amount, int price)
 {
     if (!mBuyShopItems || !item)
         return;
-    mSellShopItems->addItemNoDup(item->getId(), item->getColor(), amount, price);
+    mSellShopItems->addItemNoDup(item->getId(),
+        item->getColor(), amount, price);
     updateButtonsAndLabels();
 }
 

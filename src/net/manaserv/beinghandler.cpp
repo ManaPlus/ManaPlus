@@ -350,7 +350,8 @@ void BeingHandler::handleBeingLooksChangeMessage(Net::MessageIn &msg)
     {
         int style = msg.readInt16();
         int color = msg.readInt16();
-        being->setSprite(SPRITE_HAIR, style * -1, ColorDB::getHairColor(color));
+        being->setSprite(SPRITE_HAIR, style * -1,
+            ColorDB::getHairColor(color));
     }
 }
 

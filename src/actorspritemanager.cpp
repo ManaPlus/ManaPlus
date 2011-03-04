@@ -193,7 +193,8 @@ Being *ActorSpriteManager::createBeing(int id, ActorSprite::Type type,
 FloorItem *ActorSpriteManager::createItem(int id, int itemId, int x, int y,
                                           int amount, unsigned char color)
 {
-    FloorItem *floorItem = new FloorItem(id, itemId, x, y, mMap, amount, color);
+    FloorItem *floorItem = new FloorItem(id, itemId, x, y,
+        mMap, amount, color);
 
     mActors.insert(floorItem);
     return floorItem;

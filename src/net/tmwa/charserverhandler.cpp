@@ -325,15 +325,18 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
         tempPlayer->setSprite(SPRITE_GLOVES, gloves, "", msg.readInt8());
         tempPlayer->setSprite(SPRITE_CAPE, cape, "", msg.readInt8());
         tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes,
+            "", msg.readInt8());
         //to avoid show error (error.xml) need remove this sprite
         if (!config.getBoolValue("hideShield"))
             tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readInt8());
         else
             msg.readInt8();
 
-        tempPlayer->setSprite(SPRITE_HAT, hat, "", msg.readInt8()); // head option top
-        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "", msg.readInt8());
+        tempPlayer->setSprite(SPRITE_HAT, hat, "",
+            msg.readInt8()); // head option top
+        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "",
+            msg.readInt8());
         tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readInt8());
         msg.skip(5);
         character->slot = msg.readInt8(); // character slot

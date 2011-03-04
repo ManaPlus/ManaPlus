@@ -1139,7 +1139,8 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
     {
         if (tradeWindow && tradeWindow->isVisible())
         {
-            mBrowserBox->addRow(strprintf("@@addtrade|%s@@", _("Add to trade")));
+            mBrowserBox->addRow(strprintf("@@addtrade|%s@@",
+                _("Add to trade")));
             if (cnt > 1)
             {
                 if (cnt > 10)

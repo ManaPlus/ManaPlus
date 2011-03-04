@@ -106,7 +106,8 @@ Image *Item::getImage(int id, unsigned char color)
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = "graphics/items/" + display.image;
     Image *image;
-    image = resman->getImage(combineDye2(imagePath, info.getDyeColorsString(color)));
+    image = resman->getImage(combineDye2(imagePath,
+        info.getDyeColorsString(color)));
 
     if (!image)
         image = Theme::getImageFromTheme("unknown-item.png");

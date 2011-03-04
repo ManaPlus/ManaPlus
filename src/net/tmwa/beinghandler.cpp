@@ -671,7 +671,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
                     break;
                 case 6:     // eAthena LOOK_HAIR_COLOR
-                    dstBeing->setSpriteColor(SPRITE_HAIR, ColorDB::getHairColor(id));
+                    dstBeing->setSpriteColor(SPRITE_HAIR,
+                        ColorDB::getHairColor(id));
                     break;
                 case 8:     // eAthena LOOK_SHIELD
                     if (!config.getBoolValue("hideShield"))
@@ -909,7 +910,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             //dstBeing->setSprite(SPRITE_SHOE, shoes);
             if (serverVersion > 0)
             {
-                dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom, "", colors[0]);
+                dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom,
+                    "", colors[0]);
                 dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
                 dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
             }

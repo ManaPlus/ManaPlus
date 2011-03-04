@@ -54,7 +54,8 @@ void ShopItems::addItem(int id, unsigned char color, int amount, int price)
     mShopItems.push_back(new ShopItem(-1, id, color, amount, price));
 }
 
-void ShopItems::addItemNoDup(int id, unsigned char color, int amount, int price)
+void ShopItems::addItemNoDup(int id, unsigned char color,
+                             int amount, int price)
 {
     ShopItem *item = findItem(id, color);
     if (!item)
