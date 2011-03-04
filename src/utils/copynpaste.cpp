@@ -242,7 +242,7 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
 }
 
 #elif USE_X11
-static char* getSelection(Display *dpy, Window us, Atom selection)
+static char* getSelection2(Display *dpy, Window us, Atom selection, Atom request_target)
 {
     int max_events = 50;
     Window owner = XGetSelectionOwner(dpy, selection);
@@ -254,7 +254,7 @@ static char* getSelection(Display *dpy, Window us, Atom selection)
         //printf("No owner\n");
         return NULL;
     }
-    XConvertSelection(dpy, selection, XA_STRING, XA_PRIMARY, us, CurrentTime);
+    XConvertSelection(dpy, selection, request_target, XA_PRIMARY, us, CurrentTime);
     XFlush(dpy);
 
     while (max_events --)
@@ -264,7 +264,8 @@ static char* getSelection(Display *dpy, Window us, Atom selection)
         XNextEvent(dpy, &e);
         if (e.type == SelectionNotify)
         {
-            //printf("Received %s\n", XGetAtomName(dpy, e.xselection.selection));
+            printf("Received %s, %s, %s\n", XGetAtomName(dpy, selection),
+                XGetAtomName(dpy, e.xselection.selection), XGetAtomName(dpy, request_target));
             if (e.xselection.property == None)
             {
                 //printf("Couldn't convert\n");
@@ -303,6 +304,18 @@ static char* getSelection(Display *dpy, Window us, Atom selection)
     return NULL;
 }
 
+static Atom requestAtom;
+
+static char* getSelection(Display *dpy, Window us, Atom selection)
+{
+    char *data = NULL;
+    if (requestAtom != None)
+        data = getSelection2(dpy, us, selection, requestAtom);
+    if (!data)
+        data = getSelection2(dpy, us, selection, XA_STRING);
+    return data;
+}
+
 bool retrieveBuffer(std::string& text, std::string::size_type& pos)
 {
     SDL_SysWMinfo info;
@@ -315,19 +328,20 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
         Window us = info.info.x11.window;
         char *data = NULL;
 
+        requestAtom = XInternAtom (dpy, "UTF8_STRING", true);
+
         if (!data)
-        {
             data = getSelection(dpy, us, XA_PRIMARY);
-        }
+
         if (!data)
-        {
             data = getSelection(dpy, us, XA_SECONDARY);
-        }
         if (!data)
         {
             Atom XA_CLIPBOARD = XInternAtom(dpy, "CLIPBOARD", 0);
-            data = getSelection(dpy, us, XA_CLIPBOARD);
+            if (XA_CLIPBOARD != None)
+                data = getSelection(dpy, us, XA_CLIPBOARD);
         }
+
         if (data)
         {
             // check cursor position
