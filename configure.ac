@@ -160,6 +160,7 @@ data/themes/Makefile
 data/themes/blackwood/Makefile
 data/themes/classic/Makefile
 data/themes/enchilado/Makefile
+data/themes/pink/Makefile
 data/themes/redandblack/Makefile
 data/themes/wood/Makefile
 data/help/Makefile
