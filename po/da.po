@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-02-27 23:27+0200\n"
+"POT-Creation-Date: 2011-03-06 00:49+0200\n"
 "PO-Revision-Date: 2009-07-25 17:33+0000\n"
 "Last-Translator: Niels L Ellegaard <niels.ellegaard@gmail.com>\n"
 "Language-Team: Danish <none@none.none>\n"
@@ -27,95 +27,95 @@ msgstr ""
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:745 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
+#: src/client.cpp:746 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
 msgid "Setup"
 msgstr "Opsætning"
 
-#: src/client.cpp:819
+#: src/client.cpp:820
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Opretter forbindelse til kort-serveren..."
 
-#: src/client.cpp:850
+#: src/client.cpp:851
 #, fuzzy
 msgid "Logging in"
 msgstr "Log Ind"
 
-#: src/client.cpp:883
+#: src/client.cpp:884
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:974
+#: src/client.cpp:975
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Vælg Karakter"
 
-#: src/client.cpp:1005
+#: src/client.cpp:1006
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Opretter forbindelse til kort-serveren..."
 
-#: src/client.cpp:1015
+#: src/client.cpp:1016
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Server"
 
-#: src/client.cpp:1050 src/client.cpp:1057 src/client.cpp:1192
+#: src/client.cpp:1051 src/client.cpp:1058 src/client.cpp:1193
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:358 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
-#: src/net/tmwa/charserverhandler.cpp:162
-#: src/net/tmwa/charserverhandler.cpp:178
+#: src/net/tmwa/charserverhandler.cpp:185
+#: src/net/tmwa/charserverhandler.cpp:201
 msgid "Error"
 msgstr "Fejl"
 
-#: src/client.cpp:1066
+#: src/client.cpp:1067
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1093
+#: src/client.cpp:1094
 #, fuzzy
 msgid "Password Change"
 msgstr "Adgangskode:"
 
-#: src/client.cpp:1094
+#: src/client.cpp:1095
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1113
+#: src/client.cpp:1114
 #, fuzzy
 msgid "Email Change"
 msgstr "Ændre"
 
-#: src/client.cpp:1114
+#: src/client.cpp:1115
 msgid "Email changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1134
+#: src/client.cpp:1135
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Frameld"
 
-#: src/client.cpp:1135
+#: src/client.cpp:1136
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1321 src/client.cpp:1351 src/client.cpp:1395
+#: src/client.cpp:1322 src/client.cpp:1352 src/client.cpp:1396
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1524
+#: src/client.cpp:1525
 #, fuzzy, c-format
 msgid "Invalid update host: %s"
 msgstr "Ugyldig opdaterings host: "
 
-#: src/client.cpp:1558 src/client.cpp:1564
+#: src/client.cpp:1559 src/client.cpp:1565
 msgid "Error creating updates directory!"
 msgstr "Fejl under oprettelsen af opdateringen mappen!"
 
-#: src/client.cpp:1585
+#: src/client.cpp:1586
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -722,7 +722,7 @@ msgstr "Nulstil"
 msgid "Buy"
 msgstr "Køb"
 
-#: src/gui/buy.cpp:86 src/gui/buy.cpp:299 src/gui/sell.cpp:85
+#: src/gui/buy.cpp:86 src/gui/buy.cpp:300 src/gui/sell.cpp:85
 #: src/gui/sell.cpp:320
 #, c-format
 msgid "Price: %s / Total: %s"
@@ -767,10 +767,10 @@ msgstr "Sælg"
 #: src/gui/buysell.cpp:63 src/gui/changeemaildialog.cpp:57
 #: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:80
 #: src/gui/connectiondialog.cpp:45 src/gui/itemamount.cpp:207
-#: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1214
-#: src/gui/popupmenu.cpp:1241 src/gui/popupmenu.cpp:1286
-#: src/gui/popupmenu.cpp:1324 src/gui/popupmenu.cpp:1357
-#: src/gui/popupmenu.cpp:1389 src/gui/quitdialog.cpp:58
+#: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1215
+#: src/gui/popupmenu.cpp:1242 src/gui/popupmenu.cpp:1287
+#: src/gui/popupmenu.cpp:1325 src/gui/popupmenu.cpp:1360
+#: src/gui/popupmenu.cpp:1394 src/gui/quitdialog.cpp:58
 #: src/gui/register.cpp:80 src/gui/setup.cpp:65 src/gui/socialwindow.cpp:787
 #: src/gui/textcommandeditor.cpp:231 src/gui/textdialog.cpp:45
 #: src/gui/unregisterdialog.cpp:57 src/gui/updatewindow.cpp:154
@@ -1179,8 +1179,8 @@ msgstr "Udstyr"
 
 #: src/gui/equipmentwindow.cpp:92 src/gui/inventorywindow.cpp:127
 #: src/gui/inventorywindow.cpp:452 src/gui/inventorywindow.cpp:461
-#: src/gui/popupmenu.cpp:1178 src/gui/popupmenu.cpp:1261
-#: src/gui/popupmenu.cpp:1301
+#: src/gui/popupmenu.cpp:1179 src/gui/popupmenu.cpp:1262
+#: src/gui/popupmenu.cpp:1302
 msgid "Unequip"
 msgstr "Tag af"
 
@@ -1225,27 +1225,27 @@ msgid "id"
 msgstr ""
 
 #: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:454
-#: src/gui/inventorywindow.cpp:463 src/gui/popupmenu.cpp:1180
-#: src/gui/popupmenu.cpp:1263 src/gui/popupmenu.cpp:1303
+#: src/gui/inventorywindow.cpp:463 src/gui/popupmenu.cpp:1181
+#: src/gui/popupmenu.cpp:1264 src/gui/popupmenu.cpp:1304
 msgid "Equip"
 msgstr "Tag på"
 
 #: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:455
-#: src/gui/inventorywindow.cpp:459 src/gui/popupmenu.cpp:1183
-#: src/gui/popupmenu.cpp:1236 src/gui/popupmenu.cpp:1267
-#: src/gui/popupmenu.cpp:1306
+#: src/gui/inventorywindow.cpp:459 src/gui/popupmenu.cpp:1184
+#: src/gui/popupmenu.cpp:1237 src/gui/popupmenu.cpp:1268
+#: src/gui/popupmenu.cpp:1307
 msgid "Use"
 msgstr "Brug"
 
 #: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:560
-#: src/gui/popupmenu.cpp:1186 src/gui/popupmenu.cpp:1271
-#: src/gui/popupmenu.cpp:1309
+#: src/gui/popupmenu.cpp:1187 src/gui/popupmenu.cpp:1272
+#: src/gui/popupmenu.cpp:1310
 #, fuzzy
 msgid "Drop..."
 msgstr "Smid"
 
-#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1191
-#: src/gui/popupmenu.cpp:1276 src/gui/popupmenu.cpp:1314
+#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1192
+#: src/gui/popupmenu.cpp:1277 src/gui/popupmenu.cpp:1315
 msgid "Split"
 msgstr "Opdel"
 
@@ -1259,17 +1259,17 @@ msgid "Weight:"
 msgstr "Vægt:"
 
 #: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:551
-#: src/gui/popupmenu.cpp:1159 src/gui/popupmenu.cpp:1279
-#: src/gui/popupmenu.cpp:1317 src/gui/setup.cpp:66
+#: src/gui/popupmenu.cpp:1160 src/gui/popupmenu.cpp:1280
+#: src/gui/popupmenu.cpp:1318 src/gui/setup.cpp:66
 msgid "Store"
 msgstr "Gem på lager"
 
-#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1198
+#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1199
 msgid "Retrieve"
 msgstr "Hent fra lager"
 
-#: src/gui/inventorywindow.cpp:562 src/gui/popupmenu.cpp:1188
-#: src/gui/popupmenu.cpp:1273 src/gui/popupmenu.cpp:1311
+#: src/gui/inventorywindow.cpp:562 src/gui/popupmenu.cpp:1189
+#: src/gui/popupmenu.cpp:1274 src/gui/popupmenu.cpp:1312
 #: src/gui/windowmenu.cpp:92
 msgid "Drop"
 msgstr "Smid"
@@ -1571,12 +1571,12 @@ msgstr "Send"
 msgid "Failed to send as sender or letter invalid."
 msgstr "Kunne ikke sende brevet. Afsender eller brev er ugyldigt."
 
-#: src/gui/outfitwindow.cpp:79 src/gui/outfitwindow.cpp:844
+#: src/gui/outfitwindow.cpp:79 src/gui/outfitwindow.cpp:850
 #, c-format
 msgid "Outfit: %d"
 msgstr ""
 
-#: src/gui/outfitwindow.cpp:81 src/gui/outfitwindow.cpp:846
+#: src/gui/outfitwindow.cpp:81 src/gui/outfitwindow.cpp:852
 #, fuzzy, c-format
 msgid "Key: %s"
 msgstr "Penge: %s"
@@ -1830,68 +1830,76 @@ msgstr ""
 msgid "Name:                    "
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1142
+#: src/gui/popupmenu.cpp:1143
 #, fuzzy
 msgid "Add to trade"
 msgstr "@@chat|Tilføj til chat@@"
 
-#: src/gui/popupmenu.cpp:1148
+#: src/gui/popupmenu.cpp:1149
 #, fuzzy
 msgid "Add to trade 10"
 msgstr "@@chat|Tilføj til chat@@"
 
-#: src/gui/popupmenu.cpp:1151
+#: src/gui/popupmenu.cpp:1152
 #, fuzzy
 msgid "Add to trade half"
 msgstr "Gem på lager"
 
-#: src/gui/popupmenu.cpp:1153
+#: src/gui/popupmenu.cpp:1154
 #, fuzzy
 msgid "Add to trade all"
 msgstr "Gem på lager"
 
-#: src/gui/popupmenu.cpp:1165
+#: src/gui/popupmenu.cpp:1166
 #, fuzzy
 msgid "Store 10"
 msgstr "Gem på lager"
 
-#: src/gui/popupmenu.cpp:1168
+#: src/gui/popupmenu.cpp:1169
 #, fuzzy
 msgid "Store half"
 msgstr "Gem på lager"
 
-#: src/gui/popupmenu.cpp:1170
+#: src/gui/popupmenu.cpp:1171
 #, fuzzy
 msgid "Store all"
 msgstr "Gem på lager"
 
-#: src/gui/popupmenu.cpp:1204
+#: src/gui/popupmenu.cpp:1205
 #, fuzzy
 msgid "Retrieve 10"
 msgstr "Hent fra lager"
 
-#: src/gui/popupmenu.cpp:1207
+#: src/gui/popupmenu.cpp:1208
 #, fuzzy
 msgid "Retrieve half"
 msgstr "Hent fra lager"
 
-#: src/gui/popupmenu.cpp:1209
+#: src/gui/popupmenu.cpp:1210
 #, fuzzy
 msgid "Retrieve all"
 msgstr "Hent fra lager"
 
-#: src/gui/popupmenu.cpp:1212 src/gui/popupmenu.cpp:1280
-#: src/gui/popupmenu.cpp:1318
+#: src/gui/popupmenu.cpp:1213 src/gui/popupmenu.cpp:1281
+#: src/gui/popupmenu.cpp:1319
 #, fuzzy
 msgid "Add to chat"
 msgstr "@@chat|Tilføj til chat@@"
 
-#: src/gui/popupmenu.cpp:1239 src/gui/popupmenu.cpp:1284
+#: src/gui/popupmenu.cpp:1240 src/gui/popupmenu.cpp:1285
 msgid "Load old item shortcuts"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1322
+#: src/gui/popupmenu.cpp:1323
 msgid "Load old drop shortcuts"
+msgstr ""
+
+#: src/gui/popupmenu.cpp:1349 src/gui/popupmenu.cpp:1382
+msgid "Hide"
+msgstr ""
+
+#: src/gui/popupmenu.cpp:1355 src/gui/popupmenu.cpp:1388
+msgid "Show"
 msgstr ""
 
 #: src/gui/quitdialog.cpp:54
@@ -2709,12 +2717,12 @@ msgstr ""
 msgid "Show links in announce"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:707 src/net/manaserv/tradehandler.cpp:127
+#: src/gui/shopwindow.cpp:712 src/net/manaserv/tradehandler.cpp:127
 #: src/net/tmwa/tradehandler.cpp:122
 msgid "Request for Trade"
 msgstr "Anmodning om byttehandel."
 
-#: src/gui/shopwindow.cpp:708
+#: src/gui/shopwindow.cpp:713
 #, fuzzy, c-format
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s vil gerne handle med dig. Accepterer du?"
@@ -3128,13 +3136,13 @@ msgstr "Du giver:"
 msgid "Change"
 msgstr "Ændre"
 
-#: src/gui/trade.cpp:313
+#: src/gui/trade.cpp:314
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Fejlede i at tilføje genstand. Du kan ikke overlappe en slags genstand på "
 "vinduet."
 
-#: src/gui/trade.cpp:358
+#: src/gui/trade.cpp:359
 msgid "You don't have enough money."
 msgstr "Du har ikke penge nok."
 
@@ -4325,7 +4333,7 @@ msgstr ""
 msgid "Unknown error."
 msgstr "Ukendt fejl"
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:173
+#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:196
 msgid "Info"
 msgstr "Info"
 
@@ -4536,11 +4544,11 @@ msgstr "%s vil gerne handle med dig. Accepterer du?"
 msgid "Trading with %s"
 msgstr "Handler med %s"
 
-#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:274
+#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:280
 msgid "Trade canceled."
 msgstr "Handel annulleret."
 
-#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:284
+#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:290
 msgid "Trade completed."
 msgstr "Handel er komplet."
 
@@ -4552,100 +4560,100 @@ msgstr "Du kunne ikke sparke denne bruger af kanalen"
 msgid "Kick succeeded!"
 msgstr "Brugeren er sparket ud af kanalen"
 
-#: src/net/tmwa/buysellhandler.cpp:124
+#: src/net/tmwa/buysellhandler.cpp:132
 msgid "Nothing to sell."
 msgstr "Du har intet at sælge."
 
-#: src/net/tmwa/buysellhandler.cpp:131
+#: src/net/tmwa/buysellhandler.cpp:139
 msgid "Thanks for buying."
 msgstr "Tak for købet."
 
-#: src/net/tmwa/buysellhandler.cpp:139
+#: src/net/tmwa/buysellhandler.cpp:147
 msgid "Unable to buy."
 msgstr "Du kan ikke købe."
 
-#: src/net/tmwa/buysellhandler.cpp:147
+#: src/net/tmwa/buysellhandler.cpp:155
 msgid "Thanks for selling."
 msgstr "Tak for en god handel."
 
-#: src/net/tmwa/buysellhandler.cpp:151
+#: src/net/tmwa/buysellhandler.cpp:159
 msgid "Unable to sell."
 msgstr "Kunne ikke sælge."
 
-#: src/net/tmwa/buysellhandler.cpp:154
+#: src/net/tmwa/buysellhandler.cpp:162
 #, fuzzy
 msgid "Unable to sell while trading."
 msgstr "Kunne ikke sælge."
 
-#: src/net/tmwa/buysellhandler.cpp:157
+#: src/net/tmwa/buysellhandler.cpp:165
 #, fuzzy
 msgid "Unable to sell unsellable item."
 msgstr "Kunne ikke sælge."
 
-#: src/net/tmwa/charserverhandler.cpp:110
+#: src/net/tmwa/charserverhandler.cpp:116
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:114
+#: src/net/tmwa/charserverhandler.cpp:120
 #, fuzzy
 msgid "Cannot use this ID."
 msgstr "Kan ikke bruge denne ID"
 
-#: src/net/tmwa/charserverhandler.cpp:117
+#: src/net/tmwa/charserverhandler.cpp:123
 #, fuzzy
 msgid "Unknown char-server failure."
 msgstr "Ukendt fejl"
 
-#: src/net/tmwa/charserverhandler.cpp:146
+#: src/net/tmwa/charserverhandler.cpp:169
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Karakteren kunne ikke oprettes. Måske er navnet allerede brug."
 
-#: src/net/tmwa/charserverhandler.cpp:150 src/net/tmwa/loginhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:173 src/net/tmwa/loginhandler.cpp:188
 #, fuzzy
 msgid "Wrong name."
 msgstr "Forkert magic_token"
 
-#: src/net/tmwa/charserverhandler.cpp:153
+#: src/net/tmwa/charserverhandler.cpp:176
 msgid "Incorrect stats."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:156
+#: src/net/tmwa/charserverhandler.cpp:179
 msgid "Incorrect hair."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:159
+#: src/net/tmwa/charserverhandler.cpp:182
 msgid "Incorrect slot."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:173
+#: src/net/tmwa/charserverhandler.cpp:196
 msgid "Character deleted."
 msgstr "Karakteren er slettet"
 
-#: src/net/tmwa/charserverhandler.cpp:178
+#: src/net/tmwa/charserverhandler.cpp:201
 msgid "Failed to delete character."
 msgstr "Kunne ikke slette karakteren."
 
-#: src/net/tmwa/charserverhandler.cpp:318
+#: src/net/tmwa/charserverhandler.cpp:378
 msgid "Strength:"
 msgstr "Styrke:"
 
-#: src/net/tmwa/charserverhandler.cpp:319
+#: src/net/tmwa/charserverhandler.cpp:379
 msgid "Agility:"
 msgstr "Adræthed:"
 
-#: src/net/tmwa/charserverhandler.cpp:320
+#: src/net/tmwa/charserverhandler.cpp:380
 msgid "Vitality:"
 msgstr "Helbred:"
 
-#: src/net/tmwa/charserverhandler.cpp:321
+#: src/net/tmwa/charserverhandler.cpp:381
 msgid "Intelligence:"
 msgstr "Intelligens:"
 
-#: src/net/tmwa/charserverhandler.cpp:322
+#: src/net/tmwa/charserverhandler.cpp:382
 msgid "Dexterity:"
 msgstr "Behændighed:"
 
-#: src/net/tmwa/charserverhandler.cpp:323
+#: src/net/tmwa/charserverhandler.cpp:383
 msgid "Luck:"
 msgstr "Held:"
 
@@ -5052,11 +5060,11 @@ msgstr "Deling af exp kunne ikke slås til."
 msgid "Experience sharing unknown."
 msgstr "Fra nu af deler partyet experience points."
 
-#: src/net/tmwa/inventoryhandler.cpp:349
+#: src/net/tmwa/inventoryhandler.cpp:358
 msgid "Failed to use item."
 msgstr "Du kunne ikke bruge denne genstand."
 
-#: src/net/tmwa/inventoryhandler.cpp:480
+#: src/net/tmwa/inventoryhandler.cpp:510
 msgid "Unable to equip."
 msgstr ""
 
@@ -5374,23 +5382,23 @@ msgstr "Byttehandel med %s blev afbrudt."
 msgid "Unhandled trade cancel packet."
 msgstr "En besked om at afbryde byttehandlen blev ikke opfattet."
 
-#: src/net/tmwa/tradehandler.cpp:242
+#: src/net/tmwa/tradehandler.cpp:248
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "Fejlede i at tilføje genstand. Handels partneren bære på for meget."
 
-#: src/net/tmwa/tradehandler.cpp:247
+#: src/net/tmwa/tradehandler.cpp:253
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr ""
 "Fejlede i at tilføje genstand. Handels partneren har ikke flere frie pladser."
 
-#: src/net/tmwa/tradehandler.cpp:252
+#: src/net/tmwa/tradehandler.cpp:258
 #, fuzzy
 msgid "Failed adding item. You cant trade this item."
 msgstr ""
 "Fejlede i at tilføje genstand. Du kan ikke overlappe en slags genstand på "
 "vinduet."
 
-#: src/net/tmwa/tradehandler.cpp:256
+#: src/net/tmwa/tradehandler.cpp:262
 msgid "Failed adding item for unknown reason."
 msgstr "Fejlede i at tilføje genstand af en ukendt grund."
 
@@ -5415,32 +5423,32 @@ msgstr ""
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:232
+#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:238
 #: src/resources/monsterdb.cpp:79
 msgid "unnamed"
 msgstr "unavngivet"
 
-#: src/resources/itemdb.cpp:59
+#: src/resources/itemdb.cpp:60
 #, c-format
 msgid "Attack %+d"
 msgstr "Angreb %+d"
 
-#: src/resources/itemdb.cpp:60
+#: src/resources/itemdb.cpp:61
 #, c-format
 msgid "Defense %+d"
 msgstr "Forsvar %+d"
 
-#: src/resources/itemdb.cpp:61
+#: src/resources/itemdb.cpp:62
 #, c-format
 msgid "HP %+d"
 msgstr "HP %+d"
 
-#: src/resources/itemdb.cpp:62
+#: src/resources/itemdb.cpp:63
 #, c-format
 msgid "MP %+d"
 msgstr "MP %+d"
 
-#: src/resources/itemdb.cpp:154
+#: src/resources/itemdb.cpp:155
 msgid "Unknown item"
 msgstr "Ukendt genstand"
 

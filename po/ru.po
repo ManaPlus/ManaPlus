@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-02-27 23:27+0200\n"
-"PO-Revision-Date: 2011-03-03 21:40+0000\n"
+"POT-Creation-Date: 2011-03-06 00:49+0200\n"
+"PO-Revision-Date: 2011-03-05 22:54+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian <>\n"
 "MIME-Version: 1.0\n"
@@ -19,93 +19,93 @@ msgstr ""
 
 #: src/being.cpp:488
 msgid "dodge"
-msgstr "крит"
+msgstr "уворот"
 
 #: src/being.cpp:488
 msgid "miss"
 msgstr "промах"
 
-#: src/client.cpp:745 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
+#: src/client.cpp:746 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
 msgid "Setup"
 msgstr "Настройка"
 
-#: src/client.cpp:819
+#: src/client.cpp:820
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
-#: src/client.cpp:850
+#: src/client.cpp:851
 msgid "Logging in"
 msgstr "Авторизация"
 
-#: src/client.cpp:883
+#: src/client.cpp:884
 msgid "Entering game world"
-msgstr "Вход в игровой мир"
+msgstr "Входим в игровой мир"
 
-#: src/client.cpp:974
+#: src/client.cpp:975
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
-#: src/client.cpp:1005
+#: src/client.cpp:1006
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
-#: src/client.cpp:1015
+#: src/client.cpp:1016
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
-#: src/client.cpp:1050 src/client.cpp:1057 src/client.cpp:1192
+#: src/client.cpp:1051 src/client.cpp:1058 src/client.cpp:1193
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:358 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
-#: src/net/tmwa/charserverhandler.cpp:162
-#: src/net/tmwa/charserverhandler.cpp:178
+#: src/net/tmwa/charserverhandler.cpp:185
+#: src/net/tmwa/charserverhandler.cpp:201
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/client.cpp:1066
+#: src/client.cpp:1067
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
-#: src/client.cpp:1093
+#: src/client.cpp:1094
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
-#: src/client.cpp:1094
+#: src/client.cpp:1095
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
-#: src/client.cpp:1113
+#: src/client.cpp:1114
 msgid "Email Change"
 msgstr "Сменить Email"
 
-#: src/client.cpp:1114
+#: src/client.cpp:1115
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
-#: src/client.cpp:1134
+#: src/client.cpp:1135
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
-#: src/client.cpp:1135
+#: src/client.cpp:1136
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
-#: src/client.cpp:1321 src/client.cpp:1351 src/client.cpp:1395
+#: src/client.cpp:1322 src/client.cpp:1352 src/client.cpp:1396
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
-#: src/client.cpp:1524
+#: src/client.cpp:1525
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Некорректный сервер обновлений: %s"
 
-#: src/client.cpp:1558 src/client.cpp:1564
+#: src/client.cpp:1559 src/client.cpp:1565
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:1585
+#: src/client.cpp:1586
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -188,7 +188,7 @@ msgstr "/desregard > не придавать значения"
 
 #: src/commandhandler.cpp:322
 msgid "/neutral > Neutral a player"
-msgstr "/neutral > Относится нейтрально"
+msgstr "/neutral > Относиться нейтрально"
 
 #: src/commandhandler.cpp:324
 msgid "/list > Display all public channels"
@@ -681,7 +681,7 @@ msgstr "Сбросить"
 msgid "Buy"
 msgstr "Купить"
 
-#: src/gui/buy.cpp:86 src/gui/buy.cpp:299 src/gui/sell.cpp:85
+#: src/gui/buy.cpp:86 src/gui/buy.cpp:300 src/gui/sell.cpp:85
 #: src/gui/sell.cpp:320
 #, c-format
 msgid "Price: %s / Total: %s"
@@ -726,10 +726,10 @@ msgstr "Продать"
 #: src/gui/buysell.cpp:63 src/gui/changeemaildialog.cpp:57
 #: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:80
 #: src/gui/connectiondialog.cpp:45 src/gui/itemamount.cpp:207
-#: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1214
-#: src/gui/popupmenu.cpp:1241 src/gui/popupmenu.cpp:1286
-#: src/gui/popupmenu.cpp:1324 src/gui/popupmenu.cpp:1357
-#: src/gui/popupmenu.cpp:1389 src/gui/quitdialog.cpp:58
+#: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1215
+#: src/gui/popupmenu.cpp:1242 src/gui/popupmenu.cpp:1287
+#: src/gui/popupmenu.cpp:1325 src/gui/popupmenu.cpp:1360
+#: src/gui/popupmenu.cpp:1394 src/gui/quitdialog.cpp:58
 #: src/gui/register.cpp:80 src/gui/setup.cpp:65 src/gui/socialwindow.cpp:787
 #: src/gui/textcommandeditor.cpp:231 src/gui/textdialog.cpp:45
 #: src/gui/unregisterdialog.cpp:57 src/gui/updatewindow.cpp:154
@@ -1110,8 +1110,8 @@ msgstr "Снаряжение"
 
 #: src/gui/equipmentwindow.cpp:92 src/gui/inventorywindow.cpp:127
 #: src/gui/inventorywindow.cpp:452 src/gui/inventorywindow.cpp:461
-#: src/gui/popupmenu.cpp:1178 src/gui/popupmenu.cpp:1261
-#: src/gui/popupmenu.cpp:1301
+#: src/gui/popupmenu.cpp:1179 src/gui/popupmenu.cpp:1262
+#: src/gui/popupmenu.cpp:1302
 msgid "Unequip"
 msgstr "Снять"
 
@@ -1153,26 +1153,26 @@ msgid "id"
 msgstr "ид"
 
 #: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:454
-#: src/gui/inventorywindow.cpp:463 src/gui/popupmenu.cpp:1180
-#: src/gui/popupmenu.cpp:1263 src/gui/popupmenu.cpp:1303
+#: src/gui/inventorywindow.cpp:463 src/gui/popupmenu.cpp:1181
+#: src/gui/popupmenu.cpp:1264 src/gui/popupmenu.cpp:1304
 msgid "Equip"
 msgstr "Надеть"
 
 #: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:455
-#: src/gui/inventorywindow.cpp:459 src/gui/popupmenu.cpp:1183
-#: src/gui/popupmenu.cpp:1236 src/gui/popupmenu.cpp:1267
-#: src/gui/popupmenu.cpp:1306
+#: src/gui/inventorywindow.cpp:459 src/gui/popupmenu.cpp:1184
+#: src/gui/popupmenu.cpp:1237 src/gui/popupmenu.cpp:1268
+#: src/gui/popupmenu.cpp:1307
 msgid "Use"
 msgstr "Использовать"
 
 #: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:560
-#: src/gui/popupmenu.cpp:1186 src/gui/popupmenu.cpp:1271
-#: src/gui/popupmenu.cpp:1309
+#: src/gui/popupmenu.cpp:1187 src/gui/popupmenu.cpp:1272
+#: src/gui/popupmenu.cpp:1310
 msgid "Drop..."
 msgstr "Бросить"
 
-#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1191
-#: src/gui/popupmenu.cpp:1276 src/gui/popupmenu.cpp:1314
+#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1192
+#: src/gui/popupmenu.cpp:1277 src/gui/popupmenu.cpp:1315
 msgid "Split"
 msgstr "Разделить"
 
@@ -1186,17 +1186,17 @@ msgid "Weight:"
 msgstr "Вес:"
 
 #: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:551
-#: src/gui/popupmenu.cpp:1159 src/gui/popupmenu.cpp:1279
-#: src/gui/popupmenu.cpp:1317 src/gui/setup.cpp:66
+#: src/gui/popupmenu.cpp:1160 src/gui/popupmenu.cpp:1280
+#: src/gui/popupmenu.cpp:1318 src/gui/setup.cpp:66
 msgid "Store"
 msgstr "Сохранить"
 
-#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1198
+#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1199
 msgid "Retrieve"
 msgstr "Получить"
 
-#: src/gui/inventorywindow.cpp:562 src/gui/popupmenu.cpp:1188
-#: src/gui/popupmenu.cpp:1273 src/gui/popupmenu.cpp:1311
+#: src/gui/inventorywindow.cpp:562 src/gui/popupmenu.cpp:1189
+#: src/gui/popupmenu.cpp:1274 src/gui/popupmenu.cpp:1312
 #: src/gui/windowmenu.cpp:92
 msgid "Drop"
 msgstr "Бросить"
@@ -1482,12 +1482,12 @@ msgstr "Отправить"
 msgid "Failed to send as sender or letter invalid."
 msgstr "Невозможно послать ибо отправитель либо сообщение неверны."
 
-#: src/gui/outfitwindow.cpp:79 src/gui/outfitwindow.cpp:844
+#: src/gui/outfitwindow.cpp:79 src/gui/outfitwindow.cpp:850
 #, c-format
 msgid "Outfit: %d"
 msgstr "Наряд: %d"
 
-#: src/gui/outfitwindow.cpp:81 src/gui/outfitwindow.cpp:846
+#: src/gui/outfitwindow.cpp:81 src/gui/outfitwindow.cpp:852
 #, c-format
 msgid "Key: %s"
 msgstr "Клавиша: %s"
@@ -1716,58 +1716,66 @@ msgstr "Переименовать знак на карте"
 msgid "Name:                    "
 msgstr "Имя:                    "
 
-#: src/gui/popupmenu.cpp:1142
+#: src/gui/popupmenu.cpp:1143
 msgid "Add to trade"
 msgstr "Добавить к торговли"
 
-#: src/gui/popupmenu.cpp:1148
+#: src/gui/popupmenu.cpp:1149
 msgid "Add to trade 10"
 msgstr "Добавить к торговле 10"
 
-#: src/gui/popupmenu.cpp:1151
+#: src/gui/popupmenu.cpp:1152
 msgid "Add to trade half"
 msgstr "Добавить к торговле половину"
 
-#: src/gui/popupmenu.cpp:1153
+#: src/gui/popupmenu.cpp:1154
 msgid "Add to trade all"
 msgstr "Добавить к торговле все"
 
-#: src/gui/popupmenu.cpp:1165
+#: src/gui/popupmenu.cpp:1166
 msgid "Store 10"
 msgstr "Сохранить 10"
 
-#: src/gui/popupmenu.cpp:1168
+#: src/gui/popupmenu.cpp:1169
 msgid "Store half"
 msgstr "Сохранить половину"
 
-#: src/gui/popupmenu.cpp:1170
+#: src/gui/popupmenu.cpp:1171
 msgid "Store all"
 msgstr "Сохранить все"
 
-#: src/gui/popupmenu.cpp:1204
+#: src/gui/popupmenu.cpp:1205
 msgid "Retrieve 10"
 msgstr "Получить 10"
 
-#: src/gui/popupmenu.cpp:1207
+#: src/gui/popupmenu.cpp:1208
 msgid "Retrieve half"
 msgstr "Получить половину"
 
-#: src/gui/popupmenu.cpp:1209
+#: src/gui/popupmenu.cpp:1210
 msgid "Retrieve all"
 msgstr "Получить все"
 
-#: src/gui/popupmenu.cpp:1212 src/gui/popupmenu.cpp:1280
-#: src/gui/popupmenu.cpp:1318
+#: src/gui/popupmenu.cpp:1213 src/gui/popupmenu.cpp:1281
+#: src/gui/popupmenu.cpp:1319
 msgid "Add to chat"
 msgstr "Добавить в чат"
 
-#: src/gui/popupmenu.cpp:1239 src/gui/popupmenu.cpp:1284
+#: src/gui/popupmenu.cpp:1240 src/gui/popupmenu.cpp:1285
 msgid "Load old item shortcuts"
 msgstr "Загрузить старые горячие клавиши предметов"
 
-#: src/gui/popupmenu.cpp:1322
+#: src/gui/popupmenu.cpp:1323
 msgid "Load old drop shortcuts"
 msgstr "Загрузить старые данные"
+
+#: src/gui/popupmenu.cpp:1349 src/gui/popupmenu.cpp:1382
+msgid "Hide"
+msgstr "Спрятать"
+
+#: src/gui/popupmenu.cpp:1355 src/gui/popupmenu.cpp:1388
+msgid "Show"
+msgstr "Показать"
 
 #: src/gui/quitdialog.cpp:54
 msgid "Save state"
@@ -2538,12 +2546,12 @@ msgstr "Анонс"
 msgid "Show links in announce"
 msgstr "Показывать ссылки"
 
-#: src/gui/shopwindow.cpp:707 src/net/manaserv/tradehandler.cpp:127
+#: src/gui/shopwindow.cpp:712 src/net/manaserv/tradehandler.cpp:127
 #: src/net/tmwa/tradehandler.cpp:122
 msgid "Request for Trade"
 msgstr "Запрос на Торговлю"
 
-#: src/gui/shopwindow.cpp:708
+#: src/gui/shopwindow.cpp:713
 #, c-format
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s хочет %s %s, вы принимаете предложение?"
@@ -2932,14 +2940,14 @@ msgstr "Вы отдаете:"
 msgid "Change"
 msgstr "Сменить"
 
-#: src/gui/trade.cpp:313
+#: src/gui/trade.cpp:314
 msgid ""
 "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
 
-#: src/gui/trade.cpp:358
+#: src/gui/trade.cpp:359
 msgid "You don't have enough money."
 msgstr "У вас недостаточно денег"
 
@@ -4054,7 +4062,7 @@ msgstr "Некорректный номер слота."
 msgid "Unknown error."
 msgstr "Неизвестная ошибка."
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:173
+#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:196
 msgid "Info"
 msgstr "Сведения"
 
@@ -4250,11 +4258,11 @@ msgstr "%s хочет торговать с вами, вы принимаете 
 msgid "Trading with %s"
 msgstr "Торговля с %s"
 
-#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:274
+#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:280
 msgid "Trade canceled."
 msgstr "Торговля отменена."
 
-#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:284
+#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:290
 msgid "Trade completed."
 msgstr "Торговля завершена."
 
@@ -4266,97 +4274,97 @@ msgstr "Не удалось вышвырнуть!"
 msgid "Kick succeeded!"
 msgstr "Игрок вышвырнут!"
 
-#: src/net/tmwa/buysellhandler.cpp:124
+#: src/net/tmwa/buysellhandler.cpp:132
 msgid "Nothing to sell."
 msgstr "Нечего продавать..."
 
-#: src/net/tmwa/buysellhandler.cpp:131
+#: src/net/tmwa/buysellhandler.cpp:139
 msgid "Thanks for buying."
 msgstr "Спасибо за покупку!"
 
-#: src/net/tmwa/buysellhandler.cpp:139
+#: src/net/tmwa/buysellhandler.cpp:147
 msgid "Unable to buy."
 msgstr "Низзя купить!"
 
-#: src/net/tmwa/buysellhandler.cpp:147
+#: src/net/tmwa/buysellhandler.cpp:155
 msgid "Thanks for selling."
 msgstr "Спасибо за продажу!"
 
-#: src/net/tmwa/buysellhandler.cpp:151
+#: src/net/tmwa/buysellhandler.cpp:159
 msgid "Unable to sell."
 msgstr "Нельзя продать."
 
-#: src/net/tmwa/buysellhandler.cpp:154
+#: src/net/tmwa/buysellhandler.cpp:162
 msgid "Unable to sell while trading."
 msgstr "Невозможно продавать в режиме обмена."
 
-#: src/net/tmwa/buysellhandler.cpp:157
+#: src/net/tmwa/buysellhandler.cpp:165
 msgid "Unable to sell unsellable item."
 msgstr "Невозможно продать непродаваемый предмет."
 
-#: src/net/tmwa/charserverhandler.cpp:110
+#: src/net/tmwa/charserverhandler.cpp:116
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
 "В доступе отказано. Скорее всего на этом сервере слишком много игроков."
 
-#: src/net/tmwa/charserverhandler.cpp:114
+#: src/net/tmwa/charserverhandler.cpp:120
 msgid "Cannot use this ID."
 msgstr "Нельзя использовать данный ID"
 
-#: src/net/tmwa/charserverhandler.cpp:117
+#: src/net/tmwa/charserverhandler.cpp:123
 msgid "Unknown char-server failure."
 msgstr "Неизвестная ошибка сервера чата."
 
-#: src/net/tmwa/charserverhandler.cpp:146
+#: src/net/tmwa/charserverhandler.cpp:169
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
 "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
-#: src/net/tmwa/charserverhandler.cpp:150 src/net/tmwa/loginhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:173 src/net/tmwa/loginhandler.cpp:188
 msgid "Wrong name."
 msgstr "Некорректное имя."
 
-#: src/net/tmwa/charserverhandler.cpp:153
+#: src/net/tmwa/charserverhandler.cpp:176
 msgid "Incorrect stats."
 msgstr "Некорректные статы."
 
-#: src/net/tmwa/charserverhandler.cpp:156
+#: src/net/tmwa/charserverhandler.cpp:179
 msgid "Incorrect hair."
 msgstr "Некорректный тип волос."
 
-#: src/net/tmwa/charserverhandler.cpp:159
+#: src/net/tmwa/charserverhandler.cpp:182
 msgid "Incorrect slot."
 msgstr "Некорректный слот."
 
-#: src/net/tmwa/charserverhandler.cpp:173
+#: src/net/tmwa/charserverhandler.cpp:196
 msgid "Character deleted."
 msgstr "Персонаж удален"
 
-#: src/net/tmwa/charserverhandler.cpp:178
+#: src/net/tmwa/charserverhandler.cpp:201
 msgid "Failed to delete character."
 msgstr "Невозможно удалить персонажа."
 
-#: src/net/tmwa/charserverhandler.cpp:318
+#: src/net/tmwa/charserverhandler.cpp:378
 msgid "Strength:"
 msgstr "Сила (str):"
 
-#: src/net/tmwa/charserverhandler.cpp:319
+#: src/net/tmwa/charserverhandler.cpp:379
 msgid "Agility:"
 msgstr "Выносливость (agi):"
 
-#: src/net/tmwa/charserverhandler.cpp:320
+#: src/net/tmwa/charserverhandler.cpp:380
 msgid "Vitality:"
 msgstr "Живучесть (vit):"
 
-#: src/net/tmwa/charserverhandler.cpp:321
+#: src/net/tmwa/charserverhandler.cpp:381
 msgid "Intelligence:"
 msgstr "Интеллект (int):"
 
-#: src/net/tmwa/charserverhandler.cpp:322
+#: src/net/tmwa/charserverhandler.cpp:382
 msgid "Dexterity:"
 msgstr "Ловкость (dex):"
 
-#: src/net/tmwa/charserverhandler.cpp:323
+#: src/net/tmwa/charserverhandler.cpp:383
 msgid "Luck:"
 msgstr "Удача (luk):"
 
@@ -4730,11 +4738,11 @@ msgstr "Обмен опытом невозможен."
 msgid "Experience sharing unknown."
 msgstr "Политика распределения опыта неизвестна."
 
-#: src/net/tmwa/inventoryhandler.cpp:349
+#: src/net/tmwa/inventoryhandler.cpp:358
 msgid "Failed to use item."
 msgstr "Не удалось использовать предмет."
 
-#: src/net/tmwa/inventoryhandler.cpp:480
+#: src/net/tmwa/inventoryhandler.cpp:510
 msgid "Unable to equip."
 msgstr "Нельза экипировать!"
 
@@ -5047,19 +5055,19 @@ msgstr "Торговля с %s отменена."
 msgid "Unhandled trade cancel packet."
 msgstr "Неизвестный сигнал завершения торговли"
 
-#: src/net/tmwa/tradehandler.cpp:242
+#: src/net/tmwa/tradehandler.cpp:248
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "Не удалось добавить предмет. Партнер по торговле перегружен."
 
-#: src/net/tmwa/tradehandler.cpp:247
+#: src/net/tmwa/tradehandler.cpp:253
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Не удалось добавить предмет. У партнера по торговле кончилось место."
 
-#: src/net/tmwa/tradehandler.cpp:252
+#: src/net/tmwa/tradehandler.cpp:258
 msgid "Failed adding item. You cant trade this item."
 msgstr "Ошибка добавления предмета. Вы не можете торговать этим предметом."
 
-#: src/net/tmwa/tradehandler.cpp:256
+#: src/net/tmwa/tradehandler.cpp:262
 msgid "Failed adding item for unknown reason."
 msgstr "Не удалось добавить предмет по неизвестной причине."
 
@@ -5083,31 +5091,31 @@ msgstr "Плавающий '...' пузырек"
 msgid "Floating bubble"
 msgstr "Плавающий пузырек"
 
-#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:232
+#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:238
 #: src/resources/monsterdb.cpp:79
 msgid "unnamed"
 msgstr "безымянный"
 
-#: src/resources/itemdb.cpp:59
+#: src/resources/itemdb.cpp:60
 #, c-format
 msgid "Attack %+d"
 msgstr "Атака %+d"
 
-#: src/resources/itemdb.cpp:60
+#: src/resources/itemdb.cpp:61
 #, c-format
 msgid "Defense %+d"
 msgstr "Защита %+d"
 
-#: src/resources/itemdb.cpp:61
+#: src/resources/itemdb.cpp:62
 #, c-format
 msgid "HP %+d"
 msgstr "HP %+d"
 
-#: src/resources/itemdb.cpp:62
+#: src/resources/itemdb.cpp:63
 #, c-format
 msgid "MP %+d"
 msgstr "Мана %+d"
 
-#: src/resources/itemdb.cpp:154
+#: src/resources/itemdb.cpp:155
 msgid "Unknown item"
 msgstr "Неизвестный предмет"

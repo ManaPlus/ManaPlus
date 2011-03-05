@@ -1345,13 +1345,15 @@ void PopupMenu::showPopup(int x, int y, Button *button)
 
         if (btn->isVisible())
         {
-            mBrowserBox->addRow(strprintf("@@hide button_%s|Hide %s@@",
-                btn->getActionEventId().c_str(), btn->getCaption().c_str()));
+            mBrowserBox->addRow(strprintf("@@hide button_%s|%s %s@@",
+                btn->getActionEventId().c_str(), _("Hide"),
+                btn->getCaption().c_str()));
         }
         else
         {
-            mBrowserBox->addRow(strprintf("@@show button_%s|Show %s@@",
-                btn->getActionEventId().c_str(), btn->getCaption().c_str()));
+            mBrowserBox->addRow(strprintf("@@show button_%s|%s %s@@",
+                btn->getActionEventId().c_str(), _("Show"),
+                btn->getCaption().c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
@@ -1376,13 +1378,15 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
 
         if (bar->isVisible())
         {
-            mBrowserBox->addRow(strprintf("@@hide bar_%s|Hide %s@@",
-                bar->getActionEventId().c_str(), bar->getId().c_str()));
+            mBrowserBox->addRow(strprintf("@@hide bar_%s|%s %s@@",
+                bar->getActionEventId().c_str(), _("Hide"),
+                bar->getId().c_str()));
         }
         else
         {
-            mBrowserBox->addRow(strprintf("@@show bar_%s|Show %s@@",
-                bar->getActionEventId().c_str(), bar->getId().c_str()));
+            mBrowserBox->addRow(strprintf("@@show bar_%s|%s %s@@",
+                bar->getActionEventId().c_str(), _("Show"),
+                bar->getId().c_str()));
         }
     }
 
