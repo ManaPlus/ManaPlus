@@ -1,3 +1,17 @@
+2011-03-06 New release 1.1.3.6
+ManaPlus:
+fix: remove extra spaces from chat commands.
+fix: possible fix for pasting from clipboard in X system.
+fix: partially opacity in extended minimaps.
+add: add to trade items in item context menu.
+add: tabs to spells window.
+add: check already downloaded files intergrity.
+add: pink theme (Freya).
+add: updated pt_BR translation some lines from mana client (Freya).
+add: updated tussian translation.
+add: update dejavu fonts.
+
+
 2011-02-20 New release 1.1.2.20
 ManaPlus:
 fix: stop/start playung music after changing option.
