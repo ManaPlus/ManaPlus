@@ -3,9 +3,7 @@ Wed,  6 Feb 2007 09:16:23 +0100.
 
 Added paches and repacked by Andrei Karas <akaras@inbox.ru>
 
-It was downloaded from <http://www.themanaworld.org/>.
-
-Upstream Author: Eugenio Favalli <elvenprogrammer@gmail.com>
+Upstream Author: Andrei Karas <akaras@inbox.ru>
 
 License (src/utils/base64.h, src/utils/base64.cpp):
 
@@ -32,6 +30,8 @@ can be found in /usr/share/common-licenses/GPL-2 file.
 License (everything else):
 
 	Copyright (C) 2004-2007 The The Mana World Development Team
+	Copyright (C) 2010  The Mana Developers
+	Copyright (C) 2011  The ManaPlus Developers
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -47,8 +47,12 @@ License (everything else):
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
+License (src/mumblemanager.h, src/mumblemanager.cpp):
+
+	In public domain
+
 On Debian systems, the complete text of the GNU General Public License
 can be found in /usr/share/common-licenses/GPL-2 file.
 
-The Debian packaging is © 2009, Patrick Matthäi <pmatthaei@debian.org> and
+The Debian packaging is © 2011, Andrei Karas <akaras@inbox.ru> and
 is licensed under the GPL, see above.

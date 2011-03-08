@@ -13,8 +13,7 @@ config.status:
 	CFLAGS="$(CFLAGS) -Wall" ./configure --host=$(DEB_HOST_GNU_TYPE) \
 	--build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr \
 	--datadir=/usr/share/games --bindir=/usr/games --mandir=/usr/share/man \
-	--with-server=eathena
-# --without-opengl
+	--enable-manaserv=yes
 
 build: build-stamp
 build-stamp: config.status
@@ -41,7 +40,7 @@ install: build
 binary-indep: build install
 	dh_testdir -i
 	dh_testroot -i
-	dh_installchangelogs -i NEWS
+	dh_installchangelogs -i ChangeLog
 	dh_installdocs -i
 	dh_install -i
 	dh_link -i
@@ -55,7 +54,7 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir -a
 	dh_testroot -a
-	dh_installchangelogs -a NEWS
+	dh_installchangelogs -a ChangeLog
 	dh_installdocs -a
 	dh_install -a
 	dh_installmenu -a

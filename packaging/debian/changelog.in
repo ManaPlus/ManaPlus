@@ -1,3 +1,48 @@
+mana-4144 (1.1.git-1.1.3.6-1%DIST%) unstable; urgency=low
+
+  * New upstream release.
+  * fix: remove extra spaces from chat commands.
+  * fix: possible fix for pasting from clipboard in X system.
+  * fix: partially opacity in extended minimaps.
+  * add: add to trade items in item context menu.
+  * add: tabs to spells window.
+  * add: check already downloaded files intergrity.
+  * add: pink theme (Freya).
+  * add: updated pt_BR translation some lines from mana client (Freya).
+  * add: updated russian translation.
+  * add: update dejavu fonts.
+
+ -- Andrei Karas <akaras@inbox.ru>  Sat, 05 Mar 2011 22:16:57 +0200
+
+mana-4144 (1.1.git-1.1.2.20-1%DIST%) unstable; urgency=low
+
+  * New upstream release.
+  * fix: stop/start playung music after changing option.
+  * add: show/hide buttons in top right corner.
+  * right click on buttons open menu.
+  * add: show/hide bars in top right corner.
+  * right click on bars open menu.
+  * add: extended minimaps (Ben Longbons).
+  * add: npc gender. (only for extended servers)
+  * add: hiding equipment sprites by attributes (need support in client data).
+  * add: weight notice dialogs not modal and auto hiding after 10 seconds.
+  * add: show amount in pickup particles.
+  * add: new bars Weight bar, Inventory slots bar, Money bar, Arrows bar.
+
+ -- Andrei Karas <akaras@inbox.ru>  Sun, 20 Feb 2011 05:40:33 +0200
+
+mana-4144 (1.1.git-1.1.2.6-1%DIST%) unstable; urgency=low
+
+  * New upstream release.
+  * fix: crashes.
+  * fix: close npc dialogs in different actions like change character/server or network error.
+  * fix: dont show random navigation point with coord 0,0.
+  * fix: update item amount in sell dialog.
+  * add: japanese fonts mplus 1p regular and mplus 1p bold.
+  * add: option to enable/disable players popups.
+
+ -- Andrei Karas <akaras@inbox.ru>  Sat, 05 Feb 2011 21:58:18 +0200
+
 mana-4144 (1.1.git-1.1.1.30-1%DIST%) unstable; urgency=low
 
   * New upstream release.

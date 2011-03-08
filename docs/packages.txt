@@ -1,5 +1,5 @@
 -----------------------------
-MANA PACKAGE SYSTEM
+MANAPLUS PACKAGE SYSTEM
 -----------------------------
 
 1. INTRODUCTION

@@ -1,9 +1,6 @@
 ----------------------------
-Mana Hacking Guide
+ManaPlus Hacking Guide
 ----------------------------
-
-This guide is also available at http://gitorious.org/mana/pages/Hacking
-including more tips about C++ programming in general.
 
 With multiple coders working on the same source files, there needs to be a
 standard specifying how code is written down. Not doing so can cause quite some
