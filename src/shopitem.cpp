@@ -22,6 +22,7 @@
 
 #include "shopitem.h"
 
+#include "client.h"
 #include "units.h"
 
 #include "utils/stringutils.h"
@@ -34,8 +35,16 @@ ShopItem::ShopItem(int inventoryIndex, int id, unsigned char color,
     mPrice(price),
     mShowQuantity(true)
 {
-    mDisplayName = getInfo().getName() + " ("
-                   + Units::formatCurrency(mPrice).c_str() + ") ";
+    if (serverVersion > 0)
+    {
+        mDisplayName = getInfo().getName(color) + " ("
+                       + Units::formatCurrency(mPrice).c_str() + ") ";
+    }
+    else
+    {
+        mDisplayName = getInfo().getName() + " ("
+                       + Units::formatCurrency(mPrice).c_str() + ") ";
+    }
     if (quantity > 0)
         mDisplayName += "[" + toString(quantity) + "]";
 
@@ -48,8 +57,16 @@ ShopItem::ShopItem (int id, unsigned char color, int price) :
     mPrice(price),
     mShowQuantity(false)
 {
-    mDisplayName = getInfo().getName() +
-        " (" + Units::formatCurrency(mPrice).c_str() + ")";
+    if (serverVersion > 0)
+    {
+        mDisplayName = getInfo().getName(color) +
+            " (" + Units::formatCurrency(mPrice).c_str() + ")";
+    }
+    else
+    {
+        mDisplayName = getInfo().getName() +
+            " (" + Units::formatCurrency(mPrice).c_str() + ")";
+    }
     setInvIndex(-1);
     addDuplicate(-1, 0);
 }
@@ -68,8 +85,16 @@ void ShopItem::update()
 {
     if (mShowQuantity)
     {
-        mDisplayName = getInfo().getName() + " ("
-            + Units::formatCurrency(mPrice).c_str() + ") ";
+        if (serverVersion > 0)
+        {
+            mDisplayName = getInfo().getName(mColor) + " ("
+                + Units::formatCurrency(mPrice).c_str() + ") ";
+        }
+        else
+        {
+            mDisplayName = getInfo().getName() + " ("
+                + Units::formatCurrency(mPrice).c_str() + ") ";
+        }
         if (mQuantity > 0)
             mDisplayName += "[" + toString(mQuantity) + "]";
     }
