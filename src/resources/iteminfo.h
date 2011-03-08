@@ -130,10 +130,13 @@ class ItemInfo
         const std::string &getName() const
         { return mName; }
 
+        const std::string getName(unsigned char color) const;
+
         void setParticleEffect(const std::string &particleEffect)
         { mParticle = particleEffect; }
 
-        std::string getParticleEffect() const { return mParticle; }
+        std::string getParticleEffect() const
+        { return mParticle; }
 
         void setDisplay(SpriteDisplay display)
         { mDisplay = display; }
@@ -146,6 +149,8 @@ class ItemInfo
 
         const std::string &getDescription() const
         { return mDescription; }
+
+        const std::string getDescription(unsigned char color) const;
 
         void setEffect(const std::string &effect)
         { mEffect = effect; }
@@ -242,6 +247,9 @@ class ItemInfo
 
         bool isHaveColors()
         { return !mColorList.empty(); }
+
+        const std::string replaceColors(std::string str,
+                                        unsigned char color) const;
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */

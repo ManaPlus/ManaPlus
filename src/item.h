@@ -161,6 +161,9 @@ class Item
         unsigned char getColor() const
         { return mColor; }
 
+        std::string &getDescription()
+        { return mDescription; }
+
     protected:
         int mId;              /**< Item type id. */
         Image *mImage;        /**< Item image. */
@@ -171,6 +174,7 @@ class Item
         bool mInEquipment;    /**< Item is in equipment */
         int mRefine;          /**< Item refine level. */
         int mInvIndex;        /**< Inventory index. */
+        std::string mDescription;
         unsigned char mColor;
         std::map <int, int> mTags;
 };

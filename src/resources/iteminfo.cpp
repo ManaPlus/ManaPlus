@@ -107,3 +107,37 @@ std::string ItemInfo::getDyeColorsString(int color) const
 
     return it->second.color;
 }
+
+const std::string ItemInfo::getDescription(unsigned char color) const
+{
+    return replaceColors(mDescription, color);
+}
+
+const std::string ItemInfo::getName(unsigned char color) const
+{
+    return replaceColors(mName, color);
+}
+
+const std::string ItemInfo::replaceColors(std::string str,
+                                          unsigned char color) const
+{
+    std::string name;
+    if (mColors && !mColorList.empty())
+    {
+        std::map <int, ColorDB::ItemColor>::iterator it = mColors->find(color);
+        if (it == mColors->end())
+            name = "unknown";
+        else
+            name = it->second.name;
+    }
+    else
+    {
+        name = "unknown";
+    }
+
+    str = replaceAll(str, "%color%", name);
+    if (name.size() > 0)
+        name[0] = toupper(name[0]);
+
+    return replaceAll(str, "%Color%", name);
+}

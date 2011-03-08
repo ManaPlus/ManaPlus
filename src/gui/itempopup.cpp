@@ -23,6 +23,7 @@
 
 #include "gui/itempopup.h"
 
+#include "client.h"
 #include "graphics.h"
 #include "item.h"
 #include "units.h"
@@ -46,7 +47,9 @@
 
 ItemPopup::ItemPopup():
     Popup("ItemPopup"),
-    mIcon(0)
+    mIcon(0),
+    mLastName(""),
+    mLastColor(1)
 {
     // Item Name
     mItemName = new gcn::Label;
@@ -100,8 +103,18 @@ void ItemPopup::setItem(const Item *item, bool showImage)
     setItem(ii, item->getColor(), showImage);
     if (item->getRefine() > 0)
     {
-        mItemName->setCaption(strprintf("%s (+%d), %d", ii.getName().c_str(),
-                              item->getRefine(), ii.getId()));
+        mLastName = item->getId();
+        mLastColor = item->getColor();
+        if (serverVersion > 0)
+        {
+            mItemName->setCaption(strprintf("%s (+%d), %d", ii.getName(
+                item->getColor()).c_str(), item->getRefine(), ii.getId()));
+        }
+        else
+        {
+            mItemName->setCaption(strprintf("%s (+%d), %d",
+                ii.getName().c_str(), item->getRefine(), ii.getId()));
+        }
         mItemName->adjustSize();
         int minWidth = mItemName->getWidth() + 8;
         if (getWidth() < minWidth)
@@ -112,7 +125,7 @@ void ItemPopup::setItem(const Item *item, bool showImage)
 void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
                         bool showImage)
 {
-    if (!mIcon || item.getName() == mItemName->getCaption())
+    if (!mIcon || (item.getName() == mLastName && color == mLastColor))
         return;
 
     int space = 0;
@@ -147,12 +160,26 @@ void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
 
     mItemType = item.getType();
 
-    mItemName->setCaption(item.getName() + _(", ") + toString(item.getId()));
+    mLastName = item.getName();
+    mLastColor = color;
+
+    if (serverVersion > 0)
+    {
+        mItemName->setCaption(item.getName(color) + _(", ")
+            + toString(item.getId()));
+        mItemDesc->setTextWrapped(item.getDescription(color), 196);
+    }
+    else
+    {
+        mItemName->setCaption(item.getName() + _(", ")
+            + toString(item.getId()));
+        mItemDesc->setTextWrapped(item.getDescription(), 196);
+    }
+
     mItemName->adjustSize();
     mItemName->setForegroundColor(getColor(mItemType));
     mItemName->setPosition(getPadding() + space, getPadding());
 
-    mItemDesc->setTextWrapped(item.getDescription(), 196);
     mItemEffect->setTextWrapped(item.getEffect(), 196);
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
                                 Units::formatWeight(item.getWeight()).c_str()),
@@ -240,4 +267,6 @@ void ItemPopup::mouseMoved(gcn::MouseEvent &event)
 
     // When the mouse moved on top of the popup, hide it
     setVisible(false);
+    mLastName = "";
+    mLastColor = 1;
 }
