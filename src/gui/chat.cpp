@@ -175,7 +175,7 @@ ChatWindow::ChatWindow():
     loadWindowState();
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
-                              - 2*getPadding() - 8, getPadding());
+                              - 2*getPadding() - 8 - 16, getPadding());
 
     // Add key listener to chat input to be able to respond to up/down
     mChatInput->addKeyListener(this);
@@ -297,7 +297,7 @@ void ChatWindow::adjustTabSize()
     }
 
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
-        - 2*getPadding() - 8, getPadding());
+        - 2*getPadding() - 8 - 16, getPadding());
 
 }
 
