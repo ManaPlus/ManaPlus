@@ -97,7 +97,7 @@ void ItemPopup::setItem(const Item *item, bool showImage)
         return;
 
     const ItemInfo &ii = item->getInfo();
-    setItem(ii, showImage);
+    setItem(ii, item->getColor(), showImage);
     if (item->getRefine() > 0)
     {
         mItemName->setCaption(strprintf("%s (+%d), %d", ii.getName().c_str(),
@@ -109,7 +109,8 @@ void ItemPopup::setItem(const Item *item, bool showImage)
     }
 }
 
-void ItemPopup::setItem(const ItemInfo &item, bool showImage)
+void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
+                        bool showImage)
 {
     if (!mIcon || item.getName() == mItemName->getCaption())
         return;
@@ -123,9 +124,12 @@ void ItemPopup::setItem(const ItemInfo &item, bool showImage)
     if (showImage)
     {
         ResourceManager *resman = ResourceManager::getInstance();
-        Image *image = resman->getImage(
+        logger->log("img: " + combineDye2(
             paths.getStringValue("itemIcons")
-            + item.getDisplay().image);
+            + item.getDisplay().image, item.getDyeColorsString(color)));
+        Image *image = resman->getImage(combineDye2(
+            paths.getStringValue("itemIcons")
+            + item.getDisplay().image, item.getDyeColorsString(color)));
 
         mIcon->setImage(image);
         if (image)
