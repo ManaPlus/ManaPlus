@@ -291,12 +291,15 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 if (err)
                 {
                     if (player_node)
-                        player_node->pickedUp(itemInfo, 0, err);
+                        player_node->pickedUp(itemInfo, 0, identified, err);
                 }
                 else
                 {
                     if (player_node)
-                        player_node->pickedUp(itemInfo, amount, PICKUP_OKAY);
+                    {
+                        player_node->pickedUp(itemInfo, amount,
+                            identified, PICKUP_OKAY);
+                    }
 
                     if (inventory)
                     {

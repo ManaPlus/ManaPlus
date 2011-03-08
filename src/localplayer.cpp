@@ -1310,7 +1310,7 @@ void LocalPlayer::stopAttack()
 }
 
 void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
-                           unsigned char fail)
+                           unsigned char color, unsigned char fail)
 {
     if (fail)
     {
@@ -1346,13 +1346,20 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
     }
     else
     {
+        std::string str;
+        if (serverVersion > 0)
+            str = itemInfo.getName(color);
+        else
+            str = itemInfo.getName();
+
         if (config.getBoolValue("showpickupchat") && localChatTab)
         {
             // TRANSLATORS: This sentence may be translated differently
             // for different grammatical numbers (singular, plural, ...)
+
             localChatTab->chatLog(strprintf(ngettext("You picked up %d "
                     "[@@%d|%s@@].", "You picked up %d [@@%d|%s@@].", amount),
-                    amount, itemInfo.getId(), itemInfo.getName().c_str()),
+                    amount, itemInfo.getId(), str.c_str()),
                     BY_SERVER);
         }
 
@@ -1362,12 +1369,11 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
             if (amount > 1)
             {
                 addMessageToQueue(strprintf("%d x %s", amount,
-                    itemInfo.getName().c_str()), UserPalette::PICKUP_INFO);
+                    str.c_str()), UserPalette::PICKUP_INFO);
             }
             else
             {
-                addMessageToQueue(itemInfo.getName(),
-                    UserPalette::PICKUP_INFO);
+                addMessageToQueue(str, UserPalette::PICKUP_INFO);
             }
         }
     }

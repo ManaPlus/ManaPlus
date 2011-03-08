@@ -388,9 +388,14 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     mFloorItem = floorItem;
     ItemInfo info = floorItem->getInfo();
     mBrowserBox->clearRows();
+    std::string name;
 
     // Floor item can be picked up (single option, candidate for removal)
-    std::string name = info.getName();
+    if (serverVersion > 0)
+        name = info.getName(floorItem->getColor());
+    else
+        name = info.getName();
+
     mBrowserBox->addRow(name);
     mBrowserBox->addRow(_("@@pickup|Pick up@@"));
     mBrowserBox->addRow(_("@@chat|Add to chat@@"));
@@ -821,9 +826,29 @@ void PopupMenu::handleLink(const std::string &link,
         if (chatWindow)
         {
             if (mItem)
-                chatWindow->addItemText(mItem->getInfo().getName());
+            {
+                if (serverVersion > 0)
+                {
+                    chatWindow->addItemText(mItem->getInfo().getName(
+                        mItem->getColor()));
+                }
+                else
+                {
+                    chatWindow->addItemText(mItem->getInfo().getName());
+                }
+            }
             else if (mFloorItem)
-                chatWindow->addItemText(mFloorItem->getInfo().getName());
+            {
+                if (serverVersion > 0)
+                {
+                    chatWindow->addItemText(mFloorItem->getInfo().getName(
+                        mFloorItem->getColor()));
+                }
+                else
+                {
+                    chatWindow->addItemText(mFloorItem->getInfo().getName());
+                }
+            }
         }
     }
     else if (link == "whisper" && !mNick.empty() && chatWindow)

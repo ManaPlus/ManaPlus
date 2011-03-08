@@ -80,6 +80,9 @@ class FloorItem : public ActorSprite
         unsigned getPickupCount() const
         { return mPickupCount; }
 
+        unsigned char getColor() const
+        { return mColor; }
+
     private:
         int mItemId;
         int mX, mY;
