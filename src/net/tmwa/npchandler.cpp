@@ -227,10 +227,11 @@ void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
     if (serverVersion > 0)
     {
-        outMsg.writeInt16(9); // One item (length of packet)
+        outMsg.writeInt16(10); // One item (length of packet)
         outMsg.writeInt16(amount);
         outMsg.writeInt16(itemId);
         outMsg.writeInt8(color);
+        outMsg.writeInt8(0);
     }
     else
     {
