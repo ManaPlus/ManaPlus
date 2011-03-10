@@ -882,8 +882,6 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             colors[0] = msg.readInt8();
             colors[1] = msg.readInt8();
             colors[2] = msg.readInt8();
-            logger->log("msg: %x", msg.getId());
-            logger->log("colors: %d, %d, %d", colors[0], colors[1], colors[2]);
 
             msg.readInt8();     //unused
 //            shoes = msg.readInt16();
