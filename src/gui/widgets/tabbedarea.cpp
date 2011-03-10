@@ -244,10 +244,11 @@ void TabbedArea::widgetResized(const gcn::Event &event _UNUSED_)
 void TabbedArea::updateTabsWidth()
 {
     mTabsWidth = 0;
-    for (TabContainer::const_iterator itr = mTabs.begin(), itr_end = mTabs.end();
-         itr != itr_end; ++itr)
+    for (TabContainer::const_iterator itr = mTabs.begin(),
+         itr_end = mTabs.end(); itr != itr_end; ++itr)
     {
-        mTabsWidth += (*itr).first->getWidth();
+        if ((*itr).first)
+            mTabsWidth += (*itr).first->getWidth();
     }
     updateVisibleTabsWidth();
 }
@@ -257,7 +258,8 @@ void TabbedArea::updateVisibleTabsWidth()
     mVisibleTabsWidth = 0;
     for (unsigned int i = mTabScrollIndex; i < mTabs.size(); ++i)
     {
-        mVisibleTabsWidth += mTabs[i].first->getWidth();
+        if (mTabs[i].first)
+            mVisibleTabsWidth += mTabs[i].first->getWidth();
     }
 }
 
@@ -266,16 +268,16 @@ void TabbedArea::adjustTabPositions()
     int maxTabHeight = 0;
     for (unsigned i = 0; i < mTabs.size(); ++i)
     {
-        if (mTabs[i].first->getHeight() > maxTabHeight)
-        {
+        if (mTabs[i].first && mTabs[i].first->getHeight() > maxTabHeight)
             maxTabHeight = mTabs[i].first->getHeight();
-        }
     }
 
     int x = mArrowButton[0]->isVisible() ? mArrowButton[0]->getWidth() : 0;
     for (unsigned i = mTabScrollIndex; i < mTabs.size(); ++i)
     {
         gcn::Tab* tab = mTabs[i].first;
+        if (!tab)
+            continue;
         tab->setPosition(x, maxTabHeight - tab->getHeight());
         x += tab->getWidth();
     }
@@ -287,8 +289,11 @@ void TabbedArea::adjustTabPositions()
         for (unsigned i = 0; i < mTabScrollIndex; ++i)
         {
             gcn::Tab* tab = mTabs[i].first;
-            x -= tab->getWidth();
-            tab->setPosition(x, maxTabHeight - tab->getHeight());
+            if (tab)
+            {
+                x -= tab->getWidth();
+                tab->setPosition(x, maxTabHeight - tab->getHeight());
+            }
         }
     }
 }
