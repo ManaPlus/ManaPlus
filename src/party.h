@@ -29,6 +29,7 @@
 #include "utils/dtor.h"
 
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -143,6 +144,8 @@ public:
     bool isMember(const std::string &name) const;
 
     void getNames(std::vector<std::string> &names) const;
+
+    void getNamesSet(std::set<std::string> &names) const;
 
     void sort();
 

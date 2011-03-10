@@ -87,11 +87,23 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             break;
         case SMSG_PARTY_INFO:
             {
+                bool oldParty = false;
+                std::set<std::string> names;
                 if (!taParty)
                 {
                     logger->log1("error: party empty in SMSG_PARTY_INFO");
                     taParty = Party::getParty(1);
                 }
+                if (taParty)
+                {
+                    if (taParty->getNumberOfElements() > 1)
+                    {
+                        oldParty = true;
+
+                        taParty->getNamesSet(names);
+                    }
+                }
+
                 if (!player_node)
                     logger->log1("error: player_node==0 in SMSG_PARTY_INFO");
 
@@ -119,7 +131,19 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
 
                     if (taParty)
                     {
-                        PartyMember *member = taParty->addMember(id, nick);
+                        PartyMember *member = 0;
+                        if (oldParty)
+                        {
+                            //member = taParty->getMember(id);
+                            if (partyTab && names.find(nick) == names.end())
+                            {
+                                partyTab->chatLog(strprintf(
+                                    _("%s has join your party."),
+                                    nick.c_str()), BY_SERVER);
+                            }
+                        }
+                        member = taParty->addMember(id, nick);
+
                         if (member)
                         {
                             member->setLeader(leader);

@@ -244,6 +244,18 @@ void Party::getNames(std::vector<std::string> &names) const
     }
 }
 
+void Party::getNamesSet(std::set<std::string> &names) const
+{
+    names.clear();
+    MemberList::const_iterator it = mMembers.begin(),
+                                     it_end = mMembers.end();
+    while (it != it_end)
+    {
+        names.insert((*it)->getName());
+        ++it;
+    }
+}
+
 Party *Party::getParty(short id)
 {
     PartyMap::iterator it = parties.find(id);
