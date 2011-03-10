@@ -69,7 +69,7 @@ struct MetaTile
     int Fcost;               /**< Estimation of total path cost */
     int Gcost;               /**< Cost from start to this location */
     int Hcost;               /**< Estimated cost to goal */
-    int whichList;           /**< No list, open list or closed list */
+    unsigned whichList;      /**< No list, open list or closed list */
     int parentX;             /**< X coordinate of parent tile */
     int parentY;             /**< Y coordinate of parent tile */
     unsigned char blockmask; /**< Blocking properties of this tile */
@@ -463,7 +463,7 @@ class Map : public Properties, public ConfigListener
         /**
          * Blockmasks for different entities
          */
-        int *mOccupation[NB_BLOCKTYPES];
+        unsigned *mOccupation[NB_BLOCKTYPES];
 
         int mWidth, mHeight;
         int mTileWidth, mTileHeight;
@@ -478,7 +478,7 @@ class Map : public Properties, public ConfigListener
         int mDebugFlags;
 
         // Pathfinding members
-        int mOnClosedList, mOnOpenList;
+        unsigned mOnClosedList, mOnOpenList;
 
         // Overlay data
         std::list<AmbientLayer*> mBackgrounds;

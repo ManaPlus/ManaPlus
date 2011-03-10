@@ -47,6 +47,7 @@
 #include "utils/stringutils.h"
 
 #include <queue>
+#include <limits.h>
 
 #include <sys/stat.h>
 
@@ -385,8 +386,8 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mMetaTiles = new MetaTile[size];
     for (int i = 0; i < NB_BLOCKTYPES; i++)
     {
-        mOccupation[i] = new int[size];
-        memset(mOccupation[i], 0, size * sizeof(int));
+        mOccupation[i] = new unsigned[size];
+        memset(mOccupation[i], 0, size * sizeof(unsigned));
     }
     mSpecialLayer = new SpecialLayer(width, height);
     mTempLayer = new SpecialLayer(width, height, true);
@@ -770,7 +771,8 @@ void Map::blockTile(int x, int y, BlockType type)
 
     const int tileNum = x + y * mWidth;
 
-    if ((++mOccupation[type][tileNum]) > 0)
+    if (mOccupation[type][tileNum] < UINT_MAX &&
+        (++mOccupation[type][tileNum]) > 0)
     {
         switch (type)
         {
@@ -983,6 +985,7 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
 Path Map::findPath(int startX, int startY, int destX, int destY,
                    unsigned char walkmask, int maxCost)
 {
+    // The basic walking cost of a tile.
     static int const basicCost = 100;
 
     // Path to be built up (empty by default)
@@ -1142,8 +1145,22 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
 
     // Two new values to indicate whether a tile is on the open or closed list,
     // this way we don't have to clear all the values between each pathfinding.
-    mOnClosedList += 2;
-    mOnOpenList += 2;
+    if (mOnOpenList > UINT_MAX - 2)
+    {
+        // We reset the list memebers value.
+        mOnClosedList = 1;
+        mOnOpenList = 2;
+
+        // Clean up the metaTiles
+        const int size = mWidth * mHeight;
+        for (int i = 0; i < size; ++i)
+            mMetaTiles[i].whichList = 0;
+    }
+    else
+    {
+        mOnClosedList += 2;
+        mOnOpenList += 2;
+    }
 
     // If a path has been found, iterate backwards using the parent locations
     // to extract it.
