@@ -2,19 +2,19 @@
 # Copyright (C) YEAR The Mana Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
 "POT-Creation-Date: 2011-03-12 22:00+0200\n"
-"PO-Revision-Date: 2011-03-06 00:43+0000\n"
+"PO-Revision-Date: 2011-03-12 20:43+0000\n"
 "Last-Translator: freya <freya.df@gmail.com>\n"
 "Language-Team: Portuguese (Brazilian) <>\n"
-"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/being.cpp:488
@@ -380,7 +380,8 @@ msgstr "Comando: /q <nick>"
 
 #: src/commandhandler.cpp:419
 msgid "This command tries to make a tab for whispers betweenyou and <nick>."
-msgstr "Este comando cria uma aba para mensagens privadas entre você e <nick>."
+msgstr ""
+"Este comando cria uma aba para mensagens privadas entre você e <nick>."
 
 #: src/commandhandler.cpp:424
 msgid "Command: /away <afk reason>"
@@ -467,7 +468,8 @@ msgstr "Comando: /unignore <jogador>"
 #: src/commandhandler.cpp:468
 msgid "This command stops ignoring the given player if they are being ignored"
 msgstr ""
-"Este comando para de ignorar o jogador indicado se ele estiver sendo ignorado"
+"Este comando para de ignorar o jogador indicado se ele estiver sendo "
+"ignorado"
 
 #: src/commandhandler.cpp:473
 msgid "Command: /where"
@@ -496,11 +498,11 @@ msgstr "Não é possível enviar mensagens privadas vazias!"
 #: src/commandhandler.cpp:561
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
-"já existe ou é você mesmo."
+"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela"
+" já existe ou é você mesmo."
 
 #: src/commandhandler.cpp:581
 #, c-format
@@ -590,48 +592,47 @@ msgstr "Jogador não pode ser apagado!"
 #: src/commandhandler.cpp:1112 src/commandhandler.cpp:1149
 #, c-format
 msgid "Client uptime: %s"
-msgstr ""
+msgstr "Uptime do cliente: %s"
 
 #: src/commandhandler.cpp:1124
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "um: %d semana"
+msgstr[1] "outro: %d semanas"
 
 #: src/commandhandler.cpp:1130
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "um: %d dia"
+msgstr[1] "outro: %d dias"
 
 #: src/commandhandler.cpp:1136
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "um: %d hora"
+msgstr[1] "outro: %d horas"
 
 #: src/commandhandler.cpp:1142
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "um: %d minuto"
+msgstr[1] "outro: %d minutos"
 
 #: src/commandhandler.cpp:1146
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "um: %d segundo"
+msgstr[1] "outro: %d segundos"
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:227 src/gui/widgets/chattab.cpp:391
 msgid "General"
@@ -1408,7 +1409,7 @@ msgstr "Normal"
 
 #: src/gui/login.cpp:58
 msgid "Auto Close"
-msgstr "Fechar automaticamente"
+msgstr "Fechar auto."
 
 #: src/gui/login.cpp:59
 msgid "Skip"
@@ -2981,7 +2982,8 @@ msgid "Change"
 msgstr "Mudar"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
@@ -3312,7 +3314,8 @@ msgid "This command ignores the other player regardless of current relations."
 msgstr "Este comando ignora o outro jogador."
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Este comando para de ignorar o outro jogador se ele estiver sendo ignorado."
 
@@ -4723,7 +4726,8 @@ msgstr "Comando: /exp <policy>"
 
 #: src/net/tmwa/gui/partytab.cpp:106
 msgid "This command changes the party's experience sharing policy."
-msgstr "Este comando muda a opção de compartilhamento de experiência do grupo."
+msgstr ""
+"Este comando muda a opção de compartilhamento de experiência do grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:108
 msgid ""
@@ -4740,7 +4744,8 @@ msgstr "Comando: /exp"
 #: src/net/tmwa/gui/partytab.cpp:112
 msgid "This command displays the party's current experience sharing policy."
 msgstr ""
-"Este comando exibe a atual opção de compartilhamento de experiência do grupo."
+"Este comando exibe a atual opção de compartilhamento de experiência do "
+"grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:146 src/net/tmwa/partyhandler.cpp:287
 msgid "Item sharing enabled."
@@ -4847,9 +4852,9 @@ msgid "Party successfully created."
 msgstr "Grupo criado."
 
 #: src/net/tmwa/partyhandler.cpp:141
-#, fuzzy, c-format
+#, c-format
 msgid "%s has join your party."
-msgstr "%s saiu do seu grupo."
+msgstr "%s entrou em seu grupo"
 
 #: src/net/tmwa/partyhandler.cpp:177
 #, c-format
@@ -4962,13 +4967,15 @@ msgstr "Mensagem"
 
 #: src/net/tmwa/playerhandler.cpp:327
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
 
 #: src/net/tmwa/playerhandler.cpp:337
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
@@ -4981,7 +4988,7 @@ msgstr "Você pegou %s."
 #: src/net/tmwa/playerhandler.cpp:448
 #, c-format
 msgid "You spent %s."
-msgstr "Você obteve %s"
+msgstr "Você gastou %s"
 
 #: src/net/tmwa/playerhandler.cpp:493
 msgid "Cannot raise skill!"
