@@ -322,7 +322,7 @@ void CommandHandler::handleHelp(const std::string &args, ChatTab *tab)
         tab->chatLog(_("/ignoreall > Ignore all opened whisper tabs"));
         tab->chatLog(_("/erase > Erase a player"));
         tab->chatLog(_("/befriend > Be friend a player"));
-        tab->chatLog(_("/desregard > Disregard a player"));
+        tab->chatLog(_("/disregard > Disregard a player"));
         tab->chatLog(_("/neutral > Neutral a player"));
 
         tab->chatLog(_("/list > Display all public channels"));
