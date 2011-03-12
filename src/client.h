@@ -34,6 +34,8 @@
 
 #include <string>
 
+#include <sys/time.h>
+
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
 #else
@@ -60,6 +62,7 @@ extern volatile int tick_time;
 extern volatile int cur_time;
 extern bool isSafeMode;
 extern int serverVersion;
+extern int start_time;
 
 class ErrorListener : public gcn::ActionListener
 {

@@ -262,6 +262,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/dirs");
     mCommands.push_back("/info");
     mCommands.push_back("/wait");
+    mCommands.push_back("/uptime");
 }
 
 void ChatWindow::resetToDefaultSize()

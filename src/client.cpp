@@ -152,6 +152,7 @@ volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion;
+int start_time;
 
 /**
  * Advances game logic counter.
@@ -534,6 +535,8 @@ Client::Client(const Options &options):
     setGuiAlpha(config.getFloatValue("guialpha"));
 
     optionChanged("fpslimit");
+
+    start_time = time(NULL);
 
     // Initialize PlayerInfo
     PlayerInfo::init();

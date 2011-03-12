@@ -254,6 +254,10 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
     {
         handleWait(args, tab);
     }
+    else if (type == "uptime")
+    {
+        handleUptime(args, tab);
+    }
     else if (tab->handleCommand(type, args))
     {
         // Nothing to do
@@ -1095,6 +1099,55 @@ void CommandHandler::handleWait(const std::string &args,
 {
     if (player_node)
         player_node->waitFor(args);
+}
+
+void CommandHandler::handleUptime(const std::string &args,
+                                  ChatTab *tab _UNUSED_)
+{
+    if (!debugChatTab)
+        return;
+
+    if (cur_time < start_time)
+    {
+        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), "unknown"));
+    }
+    else
+    {
+        std::string str;
+        const int timeDiff = cur_time - start_time;
+        const int min = timeDiff / 60;
+        const int hours = min / 60;
+        const int days = hours / 24;
+        const int weeks = days / 7;
+        if (weeks > 0)
+        {
+            str = strprintf(ngettext("%d week", "%d weeks", weeks), weeks);
+        }
+        if (days > 0)
+        {
+            if (!str.empty())
+                str += ", ";
+            str += strprintf(ngettext("%d day", "%d days", days), days);
+        }
+        if (hours > 0)
+        {
+            if (!str.empty())
+                str += ", ";
+            str += strprintf(ngettext("%d hour", "%d hours", hours), hours);
+        }
+        if (min > 0)
+        {
+            if (!str.empty())
+                str += ", ";
+            str += strprintf(ngettext("%d minute", "%d minutes", min), min);
+        }
+        if (str.empty())
+        {
+            str += strprintf(ngettext("%d second", "%d seconds",
+                timeDiff), timeDiff);
+        }
+        debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
+    }
 }
 
 void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,

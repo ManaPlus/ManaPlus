@@ -272,6 +272,8 @@ class CommandHandler
 
         void handleWait(const std::string &args, ChatTab *tab);
 
+        void handleUptime(const std::string &args, ChatTab *tab);
+
         void handleCacheInfo(const std::string &args, ChatTab *tab _UNUSED_);
 
         bool parse2Int(const std::string &args, int *x, int *y);
