@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-12 22:00+0200\n"
+"POT-Creation-Date: 2011-03-13 16:50+0200\n"
 "PO-Revision-Date: 2011-02-09 22:51+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: French <Yohann Ferreira <yohann ferreira orange efer>>\n"
@@ -195,7 +195,7 @@ msgstr "/ignore > Ignore un joueur"
 
 #: src/commandhandler.cpp:325
 #, fuzzy
-msgid "/desregard > Disregard a player"
+msgid "/disregard > Disregard a player"
 msgstr "/ignore > Ignore un joueur"
 
 #: src/commandhandler.cpp:326
@@ -1655,7 +1655,8 @@ msgstr "@@heal|Soigner@@"
 
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
-msgid "@@friend|Befriend@@"
+#, fuzzy
+msgid "@@friend|Be friend@@"
 msgstr "@@friend|Devenir ami@@"
 
 #: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:145

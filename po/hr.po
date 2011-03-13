@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-12 22:00+0200\n"
+"POT-Creation-Date: 2011-03-13 16:50+0200\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -197,7 +197,7 @@ msgstr ""
 
 #: src/commandhandler.cpp:325
 #, fuzzy
-msgid "/desregard > Disregard a player"
+msgid "/disregard > Disregard a player"
 msgstr "@@disregard|Zanemari %s@@"
 
 #: src/commandhandler.cpp:326
@@ -1651,7 +1651,7 @@ msgstr "@@cancel|Otkaži@@"
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
 #, fuzzy
-msgid "@@friend|Befriend@@"
+msgid "@@friend|Be friend@@"
 msgstr "@@retrieve|Preuzmi@@"
 
 #: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:145

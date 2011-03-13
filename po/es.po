@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-12 22:00+0200\n"
+"POT-Creation-Date: 2011-03-13 16:50+0200\n"
 "PO-Revision-Date: 2010-12-23 12:08+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: Spanish Translator <natsuki.sumon@gmail.com>\n"
@@ -191,7 +191,7 @@ msgstr "/ignore > Ignora un jugador (no se muestran susurros y/o mensajes)"
 
 #: src/commandhandler.cpp:325
 #, fuzzy
-msgid "/desregard > Disregard a player"
+msgid "/disregard > Disregard a player"
 msgstr "/ignore > Ignora un jugador (no se muestran susurros y/o mensajes)"
 
 #: src/commandhandler.cpp:326
@@ -1625,8 +1625,9 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
-msgid "@@friend|Befriend@@"
-msgstr ""
+#, fuzzy
+msgid "@@friend|Be friend@@"
+msgstr "/ignore > Ignora un jugador (no se muestran susurros y/o mensajes)"
 
 #: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:145
 #: src/gui/popupmenu.cpp:163 src/gui/popupmenu.cpp:305

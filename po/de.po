@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-12 22:00+0200\n"
+"POT-Creation-Date: 2011-03-13 16:50+0200\n"
 "PO-Revision-Date: 2010-01-02 15:26+0000\n"
 "Last-Translator: Jonathan Raphael Joachim Kolberg\n"
 "Language-Team: Deutsch <kde-i18n-de@kde.org>\n"
@@ -218,7 +218,7 @@ msgstr "/ignore > Ignoriere einen Spieler"
 
 #: src/commandhandler.cpp:325
 #, fuzzy
-msgid "/desregard > Disregard a player"
+msgid "/disregard > Disregard a player"
 msgstr "/ignore > Ignoriere einen Spieler"
 
 #: src/commandhandler.cpp:326
@@ -1671,8 +1671,9 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
-msgid "@@friend|Befriend@@"
-msgstr ""
+#, fuzzy
+msgid "@@friend|Be friend@@"
+msgstr "/ignore > Ignoriere einen Spieler"
 
 #: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:145
 #: src/gui/popupmenu.cpp:163 src/gui/popupmenu.cpp:305

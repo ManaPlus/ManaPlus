@@ -2,19 +2,19 @@
 # Copyright (C) YEAR The Mana Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-12 22:00+0200\n"
+"POT-Creation-Date: 2011-03-13 16:50+0200\n"
 "PO-Revision-Date: 2011-03-12 20:43+0000\n"
 "Last-Translator: freya <freya.df@gmail.com>\n"
 "Language-Team: Portuguese (Brazilian) <>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/being.cpp:488
@@ -185,7 +185,8 @@ msgid "/befriend > Be friend a player"
 msgstr "/befriend > Ser amigo de um jogador"
 
 #: src/commandhandler.cpp:325
-msgid "/desregard > Disregard a player"
+#, fuzzy
+msgid "/disregard > Disregard a player"
 msgstr "/desregard > Desconsidere um jogador"
 
 #: src/commandhandler.cpp:326
@@ -380,8 +381,7 @@ msgstr "Comando: /q <nick>"
 
 #: src/commandhandler.cpp:419
 msgid "This command tries to make a tab for whispers betweenyou and <nick>."
-msgstr ""
-"Este comando cria uma aba para mensagens privadas entre você e <nick>."
+msgstr "Este comando cria uma aba para mensagens privadas entre você e <nick>."
 
 #: src/commandhandler.cpp:424
 msgid "Command: /away <afk reason>"
@@ -468,8 +468,7 @@ msgstr "Comando: /unignore <jogador>"
 #: src/commandhandler.cpp:468
 msgid "This command stops ignoring the given player if they are being ignored"
 msgstr ""
-"Este comando para de ignorar o jogador indicado se ele estiver sendo "
-"ignorado"
+"Este comando para de ignorar o jogador indicado se ele estiver sendo ignorado"
 
 #: src/commandhandler.cpp:473
 msgid "Command: /where"
@@ -498,11 +497,11 @@ msgstr "Não é possível enviar mensagens privadas vazias!"
 #: src/commandhandler.cpp:561
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela"
-" já existe ou é você mesmo."
+"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
+"já existe ou é você mesmo."
 
 #: src/commandhandler.cpp:581
 #, c-format
@@ -632,7 +631,8 @@ msgstr[1] "outro: %d segundos"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr ""
+"Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:227 src/gui/widgets/chattab.cpp:391
 msgid "General"
@@ -1564,7 +1564,8 @@ msgstr "@@heal|Curar@@"
 
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
-msgid "@@friend|Befriend@@"
+#, fuzzy
+msgid "@@friend|Be friend@@"
 msgstr "@@friend|Amizade@@"
 
 #: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:145
@@ -2982,8 +2983,7 @@ msgid "Change"
 msgstr "Mudar"
 
 #: src/gui/trade.cpp:314
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
@@ -3314,8 +3314,7 @@ msgid "This command ignores the other player regardless of current relations."
 msgstr "Este comando ignora o outro jogador."
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Este comando para de ignorar o outro jogador se ele estiver sendo ignorado."
 
@@ -4726,8 +4725,7 @@ msgstr "Comando: /exp <policy>"
 
 #: src/net/tmwa/gui/partytab.cpp:106
 msgid "This command changes the party's experience sharing policy."
-msgstr ""
-"Este comando muda a opção de compartilhamento de experiência do grupo."
+msgstr "Este comando muda a opção de compartilhamento de experiência do grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:108
 msgid ""
@@ -4744,8 +4742,7 @@ msgstr "Comando: /exp"
 #: src/net/tmwa/gui/partytab.cpp:112
 msgid "This command displays the party's current experience sharing policy."
 msgstr ""
-"Este comando exibe a atual opção de compartilhamento de experiência do "
-"grupo."
+"Este comando exibe a atual opção de compartilhamento de experiência do grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:146 src/net/tmwa/partyhandler.cpp:287
 msgid "Item sharing enabled."
@@ -4967,15 +4964,13 @@ msgstr "Mensagem"
 
 #: src/net/tmwa/playerhandler.cpp:327
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
 
 #: src/net/tmwa/playerhandler.cpp:337
-msgid ""
-"You are carrying less than half your weight. You are can regain health."
+msgid "You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."

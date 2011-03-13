@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-12 22:00+0200\n"
+"POT-Creation-Date: 2011-03-13 16:50+0200\n"
 "PO-Revision-Date: 2010-03-04 21:01+0000\n"
 "Last-Translator: issyl0 <isabell121@gmail.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: src/commandhandler.cpp:325
 #, fuzzy
-msgid "/desregard > Disregard a player"
+msgid "/disregard > Disregard a player"
 msgstr "@@disregard|Disregard %s@@"
 
 #: src/commandhandler.cpp:326
@@ -1651,7 +1651,7 @@ msgstr "@@cancel|Cancel@@"
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
 #, fuzzy
-msgid "@@friend|Befriend@@"
+msgid "@@friend|Be friend@@"
 msgstr "@@retrieve|Retrieve@@"
 
 #: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:145
