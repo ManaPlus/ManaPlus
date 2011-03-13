@@ -314,7 +314,7 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
     {"keyChangeImitationMode", SDLK_KP4, N_("Change Imitation mode"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyDisableGameModifiers", SDLK_KP8,
-        _("Disbale / Enable Game modifier keys"), KeyboardConfig::GRP_DEFAULT},
+        _("Disable / Enable Game modifier keys"), KeyboardConfig::GRP_DEFAULT},
     {"keyChangeAudio", SDLK_KP3, N_("On / Off audio"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyAway", SDLK_KP2, N_("Enable / Disable away mode"),
