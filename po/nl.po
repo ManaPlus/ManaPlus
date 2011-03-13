@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-13 16:50+0200\n"
+"POT-Creation-Date: 2011-03-13 22:13+0200\n"
 "PO-Revision-Date: 2009-07-15 12:21+0000\n"
 "Last-Translator: Yentl <y.v.t@scarlet.be>\n"
 "Language-Team: Dutch\n"
@@ -27,40 +27,40 @@ msgstr ""
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:749 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
+#: src/client.cpp:750 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
 msgid "Setup"
 msgstr "Configureren"
 
-#: src/client.cpp:823
+#: src/client.cpp:824
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Verbinden met de map server..."
 
-#: src/client.cpp:854
+#: src/client.cpp:855
 #, fuzzy
 msgid "Logging in"
 msgstr "Inloggen"
 
-#: src/client.cpp:887
+#: src/client.cpp:888
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:978
+#: src/client.cpp:980
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Kies Personage"
 
-#: src/client.cpp:1009
+#: src/client.cpp:1011
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Verbinden met de map server..."
 
-#: src/client.cpp:1019
+#: src/client.cpp:1021
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Server"
 
-#: src/client.cpp:1054 src/client.cpp:1061 src/client.cpp:1196
+#: src/client.cpp:1056 src/client.cpp:1063 src/client.cpp:1198
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:358 src/gui/unregisterdialog.cpp:135
@@ -70,53 +70,53 @@ msgstr "Server"
 msgid "Error"
 msgstr "Fout"
 
-#: src/client.cpp:1070
+#: src/client.cpp:1072
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1097
+#: src/client.cpp:1099
 #, fuzzy
 msgid "Password Change"
 msgstr "Wachtwoord:"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1100
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1117
+#: src/client.cpp:1119
 #, fuzzy
 msgid "Email Change"
 msgstr "Veranderen"
 
-#: src/client.cpp:1118
+#: src/client.cpp:1120
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "Lid is succesvol gepromoveerd."
 
-#: src/client.cpp:1138
+#: src/client.cpp:1140
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Registreren"
 
-#: src/client.cpp:1139
+#: src/client.cpp:1141
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1325 src/client.cpp:1355 src/client.cpp:1399
+#: src/client.cpp:1327 src/client.cpp:1357 src/client.cpp:1401
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1528
+#: src/client.cpp:1530
 #, fuzzy, c-format
 msgid "Invalid update host: %s"
 msgstr "Ongeldige updatahost: "
 
-#: src/client.cpp:1562 src/client.cpp:1568
+#: src/client.cpp:1564 src/client.cpp:1570
 msgid "Error creating updates directory!"
 msgstr "Fout bij het creëren van de update map!"
 
-#: src/client.cpp:1589
+#: src/client.cpp:1591
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -618,40 +618,40 @@ msgstr "Groep succesvol aangemaakt."
 msgid "Player could not be erased!"
 msgstr "Fluisterbericht kon niet verzonden worden, genegeerd door gebruiker."
 
-#: src/commandhandler.cpp:1112 src/commandhandler.cpp:1149
+#: src/commandhandler.cpp:1112 src/commandhandler.cpp:1158
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:1124
+#: src/commandhandler.cpp:1122
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1130
+#: src/commandhandler.cpp:1131
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1136
+#: src/commandhandler.cpp:1139
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1142
+#: src/commandhandler.cpp:1147
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1146
+#: src/commandhandler.cpp:1155
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -664,48 +664,48 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Opties voor /%s zijn \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
-#: src/game.cpp:227 src/gui/widgets/chattab.cpp:391
+#: src/game.cpp:228 src/gui/widgets/chattab.cpp:391
 msgid "General"
 msgstr "Algemeen"
 
-#: src/game.cpp:231 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:393
+#: src/game.cpp:232 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:393
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:443
+#: src/game.cpp:444
 #, fuzzy
 msgid "Screenshot saved as "
 msgstr "Screenshot opgeslagen naar ~/"
 
-#: src/game.cpp:451
+#: src/game.cpp:452
 msgid "Saving screenshot failed!"
 msgstr "Opslaan van screenshot mislukt!"
 
-#: src/game.cpp:490
+#: src/game.cpp:491
 #, fuzzy
 msgid "The connection to the server was lost."
 msgstr ""
 "De verbinding met de server is verloren gegaan, het programma zal nu "
 "afsluiten"
 
-#: src/game.cpp:502
+#: src/game.cpp:503
 msgid "Network Error"
 msgstr "Netwerkfout"
 
-#: src/game.cpp:1020
+#: src/game.cpp:1021
 msgid "Ignoring incoming trade requests"
 msgstr "Inkomende handelsaanvragen negeren"
 
-#: src/game.cpp:1027
+#: src/game.cpp:1028
 msgid "Accepting incoming trade requests"
 msgstr "Inkomende handelsaanvragen accepteren"
 
-#: src/game.cpp:1399
+#: src/game.cpp:1403
 #, fuzzy
 msgid "Could Not Load Map"
 msgstr "Kan de map niet laden"
 
-#: src/game.cpp:1400
+#: src/game.cpp:1404
 #, c-format
 msgid "Error while loading %s"
 msgstr "Fout bij het laden van %s"
@@ -3988,7 +3988,7 @@ msgid "Change Imitation mode"
 msgstr "Emailadres wijzigen"
 
 #: src/keyboardconfig.cpp:317
-msgid "Disbale / Enable Game modifier keys"
+msgid "Disable / Enable Game modifier keys"
 msgstr ""
 
 #: src/keyboardconfig.cpp:318

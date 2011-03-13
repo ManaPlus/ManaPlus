@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-13 16:50+0200\n"
+"POT-Creation-Date: 2011-03-13 22:13+0200\n"
 "PO-Revision-Date: 2011-02-09 22:51+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: French <Yohann Ferreira <yohann ferreira orange efer>>\n"
@@ -30,35 +30,35 @@ msgstr "esquiver"
 msgid "miss"
 msgstr "raté"
 
-#: src/client.cpp:749 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
+#: src/client.cpp:750 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:93
 msgid "Setup"
 msgstr "Configuration"
 
-#: src/client.cpp:823
+#: src/client.cpp:824
 msgid "Connecting to server"
 msgstr "Connexion au serveur"
 
-#: src/client.cpp:854
+#: src/client.cpp:855
 msgid "Logging in"
 msgstr "Connexion"
 
-#: src/client.cpp:887
+#: src/client.cpp:888
 msgid "Entering game world"
 msgstr "Connexion au monde de jeu"
 
-#: src/client.cpp:978
+#: src/client.cpp:980
 msgid "Requesting characters"
 msgstr "Téléchargement des personnnages"
 
-#: src/client.cpp:1009
+#: src/client.cpp:1011
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
-#: src/client.cpp:1019
+#: src/client.cpp:1021
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
-#: src/client.cpp:1054 src/client.cpp:1061 src/client.cpp:1196
+#: src/client.cpp:1056 src/client.cpp:1063 src/client.cpp:1198
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:358 src/gui/unregisterdialog.cpp:135
@@ -68,49 +68,49 @@ msgstr "Changement de serveur de jeu"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/client.cpp:1070
+#: src/client.cpp:1072
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'enregistrement"
 
-#: src/client.cpp:1097
+#: src/client.cpp:1099
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1100
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
-#: src/client.cpp:1117
+#: src/client.cpp:1119
 msgid "Email Change"
 msgstr "Changer d'email"
 
-#: src/client.cpp:1118
+#: src/client.cpp:1120
 msgid "Email changed successfully!"
 msgstr "L'adresse email a été changé avec succès !"
 
-#: src/client.cpp:1138
+#: src/client.cpp:1140
 msgid "Unregister Successful"
 msgstr "Désincription réussie"
 
-#: src/client.cpp:1139
+#: src/client.cpp:1141
 msgid "Farewell, come back any time..."
 msgstr "Adieu, revenez dès que vous le souhaitez..."
 
-#: src/client.cpp:1325 src/client.cpp:1355 src/client.cpp:1399
+#: src/client.cpp:1327 src/client.cpp:1357 src/client.cpp:1401
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fin du programme."
 
-#: src/client.cpp:1528
+#: src/client.cpp:1530
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Hôte de mise à jour incorrect : %s"
 
-#: src/client.cpp:1562 src/client.cpp:1568
+#: src/client.cpp:1564 src/client.cpp:1570
 msgid "Error creating updates directory!"
 msgstr "Impossible de créer le dossier de mise à jour !"
 
-#: src/client.cpp:1589
+#: src/client.cpp:1591
 #, fuzzy, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fin du programme."
@@ -630,40 +630,40 @@ msgstr "Le joueur est désormais ignoré !"
 msgid "Player could not be erased!"
 msgstr "Le joueur n'a pas pu être ignoré !"
 
-#: src/commandhandler.cpp:1112 src/commandhandler.cpp:1149
+#: src/commandhandler.cpp:1112 src/commandhandler.cpp:1158
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:1124
+#: src/commandhandler.cpp:1122
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1130
+#: src/commandhandler.cpp:1131
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1136
+#: src/commandhandler.cpp:1139
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1142
+#: src/commandhandler.cpp:1147
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1146
+#: src/commandhandler.cpp:1155
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -677,44 +677,44 @@ msgstr ""
 "Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", \"true"
 "\", \"false\", \"1\", \"0\"."
 
-#: src/game.cpp:227 src/gui/widgets/chattab.cpp:391
+#: src/game.cpp:228 src/gui/widgets/chattab.cpp:391
 msgid "General"
 msgstr "Général"
 
-#: src/game.cpp:231 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:393
+#: src/game.cpp:232 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:393
 msgid "Debug"
 msgstr "Debug"
 
-#: src/game.cpp:443
+#: src/game.cpp:444
 msgid "Screenshot saved as "
 msgstr "Capture d'écran sauvegardée en tant que"
 
-#: src/game.cpp:451
+#: src/game.cpp:452
 msgid "Saving screenshot failed!"
 msgstr "Impossible de sauvegarder la capture d'écran !"
 
-#: src/game.cpp:490
+#: src/game.cpp:491
 msgid "The connection to the server was lost."
 msgstr ""
 "La connexion au serveur a été coupée, le programme va maintenant se fermer."
 
-#: src/game.cpp:502
+#: src/game.cpp:503
 msgid "Network Error"
 msgstr "Erreur Réseau"
 
-#: src/game.cpp:1020
+#: src/game.cpp:1021
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorer les requêtes d'échanges entrantes"
 
-#: src/game.cpp:1027
+#: src/game.cpp:1028
 msgid "Accepting incoming trade requests"
 msgstr "Accepter les requêtes d'échanges entrantes"
 
-#: src/game.cpp:1399
+#: src/game.cpp:1403
 msgid "Could Not Load Map"
 msgstr "La carte n'a pu être chargé"
 
-#: src/game.cpp:1400
+#: src/game.cpp:1404
 #, c-format
 msgid "Error while loading %s"
 msgstr "Erreur durant le chargement %s"
@@ -4000,7 +4000,8 @@ msgid "Change Imitation mode"
 msgstr "Modifier l'adresse mail"
 
 #: src/keyboardconfig.cpp:317
-msgid "Disbale / Enable Game modifier keys"
+#, fuzzy
+msgid "Disable / Enable Game modifier keys"
 msgstr "Dés/Activer les touches de modification du jeu"
 
 #: src/keyboardconfig.cpp:318
