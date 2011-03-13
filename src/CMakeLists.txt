@@ -409,6 +409,8 @@ SET(SRCS
     resources/itemdb.h
     resources/iteminfo.h
     resources/iteminfo.cpp
+    resources/mapdb.cpp
+    resources/mapdb.h
     resources/mapreader.cpp
     resources/mapreader.h
     resources/monsterdb.cpp

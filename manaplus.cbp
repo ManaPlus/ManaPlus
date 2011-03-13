@@ -586,6 +586,8 @@
 		<Unit filename="src\resources\itemdb.h" />
 		<Unit filename="src\resources\iteminfo.cpp" />
 		<Unit filename="src\resources\iteminfo.h" />
+		<Unit filename="src\resources\mapdb.cpp" />
+		<Unit filename="src\resources\mapdb.h" />
 		<Unit filename="src\resources\mapreader.cpp" />
 		<Unit filename="src\resources\mapreader.h" />
 		<Unit filename="src\resources\monsterdb.cpp" />

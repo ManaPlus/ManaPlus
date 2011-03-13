@@ -385,8 +385,8 @@ void KillStats::validateJacko()
     Map *currentMap = Game::instance()->getCurrentMap();
     if (currentMap)
     {
-        if (currentMap->getProperty("_filename") == "018-1"
-            || currentMap->getProperty("_filename") == "maps/018-1.tmx")
+        if (currentMap->getProperty("_realfilename") == "018-1"
+            || currentMap->getProperty("_realfilename") == "maps/018-1.tmx")
         {
             if (player_node->getTileX() >= 167
                 && player_node->getTileX() <= 175

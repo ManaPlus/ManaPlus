@@ -80,6 +80,7 @@
 #include "resources/emotedb.h"
 #include "resources/image.h"
 #include "resources/itemdb.h"
+#include "resources/mapdb.h"
 #include "resources/monsterdb.h"
 #include "resources/specialdb.h"
 #include "resources/npcdb.h"
@@ -954,6 +955,7 @@ int Client::exec()
 
                     // Load XML databases
                     ColorDB::load();
+                    MapDB::load();
                     ItemDB::load();
                     Being::load(); // Hairstyles
                     MonsterDB::load();

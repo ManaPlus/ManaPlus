@@ -46,7 +46,8 @@ class MapReader
         /**
          * Read an XML map from a file.
          */
-        static Map *readMap(const std::string &filename);
+        static Map *readMap(const std::string &filename,
+                            const std::string &realFilename);
 
         /**
          * Read an XML map from a parsed XML tree. The path is used to find the

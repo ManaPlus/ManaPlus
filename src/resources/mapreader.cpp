@@ -29,6 +29,7 @@
 
 #include "resources/animation.h"
 #include "resources/image.h"
+#include "resources/mapdb.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/base64.h"
@@ -177,25 +178,26 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
     return outLength;
 }
 
-Map *MapReader::readMap(const std::string &filename)
+Map *MapReader::readMap(const std::string &filename,
+                        const std::string &realFilename)
 {
-    logger->log("Attempting to read map %s", filename.c_str());
+    logger->log("Attempting to read map %s", realFilename.c_str());
     // Load the file through resource manager
     ResourceManager *resman = ResourceManager::getInstance();
     int fileSize;
-    void *buffer = resman->loadFile(filename, fileSize);
+    void *buffer = resman->loadFile(realFilename, fileSize);
     Map *map = NULL;
 
     if (buffer == NULL)
     {
-        logger->log("Map file not found (%s)", filename.c_str());
+        logger->log("Map file not found (%s)", realFilename.c_str());
         return NULL;
     }
 
     unsigned char *inflated;
     unsigned int inflatedSize;
 
-    if (filename.find(".gz", filename.length() - 3) != std::string::npos)
+    if (realFilename.find(".gz", realFilename.length() - 3) != std::string::npos)
     {
         // Inflate the gzipped map data
         inflatedSize =
@@ -205,7 +207,7 @@ Map *MapReader::readMap(const std::string &filename)
         if (inflated == NULL)
         {
             logger->log("Could not decompress map file (%s)",
-                        filename.c_str());
+                        realFilename.c_str());
             return NULL;
         }
     }
@@ -224,20 +226,20 @@ Map *MapReader::readMap(const std::string &filename)
     if (node)
     {
         if (!xmlStrEqual(node->name, BAD_CAST "map"))
-        {
-            logger->log("Error: Not a map file (%s)!", filename.c_str());
-        }
+            logger->log("Error: Not a map file (%s)!", realFilename.c_str());
         else
-        {
-            map = readMap(node, filename);
-        }
+            map = readMap(node, realFilename);
     }
     else
     {
-        logger->log("Error while parsing map file (%s)!", filename.c_str());
+        logger->log("Error while parsing map file (%s)!", realFilename.c_str());
     }
 
-    if (map) map->setProperty("_filename", filename);
+    if (map)
+    {
+        map->setProperty("_filename", realFilename);
+        map->setProperty("_realfilename", filename);
+    }
 
     return map;
 }

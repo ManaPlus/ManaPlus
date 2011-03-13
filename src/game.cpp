@@ -92,6 +92,7 @@
 #include "net/playerhandler.h"
 
 #include "resources/imagewriter.h"
+#include "resources/mapdb.h"
 #include "resources/mapreader.h"
 #include "resources/resourcemanager.h"
 
@@ -1386,12 +1387,15 @@ void Game::changeMap(const std::string &mapPath)
 
     std::string fullMap = paths.getValue("maps", "maps/")
                           + mMapName + ".tmx";
+    std::string realFullMap = paths.getValue("maps", "maps/")
+                              + MapDB::getMapName(mMapName) + ".tmx";
+
     ResourceManager *resman = ResourceManager::getInstance();
-    if (!resman->exists(fullMap))
-        fullMap += ".gz";
+    if (!resman->exists(realFullMap))
+        realFullMap += ".gz";
 
     // Attempt to load the new map
-    Map *newMap = MapReader::readMap(fullMap);
+    Map *newMap = MapReader::readMap(fullMap, realFullMap);
 
     if (!newMap)
     {

@@ -1333,7 +1333,8 @@ void Map::saveExtraLayer()
 
 std::string Map::getUserMapDirectory() const
 {
-    return Client::getServerConfigDirectory() + "/" + getProperty("_filename");
+    return Client::getServerConfigDirectory() + "/"
+        + getProperty("_realfilename");
 }
 
 void Map::addPortal(const std::string &name, int type,

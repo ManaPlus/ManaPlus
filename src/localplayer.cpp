@@ -1712,7 +1712,7 @@ void LocalPlayer::moveToHome()
     else
     {
         std::map<std::string, Vector>::iterator iter =
-            mHomes.find(mMap->getProperty("_filename"));
+            mHomes.find(mMap->getProperty("_realfilename"));
 
         if (iter != mHomes.end())
         {
@@ -2882,7 +2882,7 @@ void LocalPlayer::setHome()
     if (!specialLayer)
         return;
 
-    std::string key = mMap->getProperty("_filename");
+    std::string key = mMap->getProperty("_realfilename");
     Vector pos = mHomes[key];
 
     if (mAction == SIT)
@@ -3651,7 +3651,7 @@ void LocalPlayer::updateNavigateList()
     if (mMap)
     {
         std::map<std::string, Vector>::iterator iter =
-                mHomes.find(mMap->getProperty("_filename"));
+                mHomes.find(mMap->getProperty("_realfilename"));
 
         if (iter != mHomes.end())
         {

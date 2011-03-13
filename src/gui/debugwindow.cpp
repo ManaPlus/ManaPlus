@@ -184,7 +184,7 @@ void DebugWindow::logic()
         mMinimapLabel->setCaption(strprintf("%s %s", _("Minimap:"),
             map->getProperty("minimap").c_str()));
         mMapLabel->setCaption(strprintf("%s %s", _("Map:"),
-            map->getProperty("_filename").c_str()));
+            map->getProperty("_realfilename").c_str()));
 
 
         if (mUpdateTime != cur_time)
