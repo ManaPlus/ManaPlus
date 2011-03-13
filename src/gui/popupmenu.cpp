@@ -135,7 +135,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 switch (player_relations.getRelation(name))
                 {
                     case PlayerRelation::NEUTRAL:
-                        mBrowserBox->addRow(_("@@friend|Befriend@@"));
+                        mBrowserBox->addRow(_("@@friend|Be friend@@"));
                         mBrowserBox->addRow(_("@@disregard|Disregard@@"));
                         mBrowserBox->addRow(_("@@ignore|Ignore@@"));
                         mBrowserBox->addRow(_("@@erase|Erase@@"));
@@ -301,7 +301,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     switch (player_relations.getRelation(name))
     {
         case PlayerRelation::NEUTRAL:
-            mBrowserBox->addRow(_("@@friend|Befriend@@"));
+            mBrowserBox->addRow(_("@@friend|Be friend@@"));
             mBrowserBox->addRow(_("@@disregard|Disregard@@"));
             mBrowserBox->addRow(_("@@ignore|Ignore@@"));
             mBrowserBox->addRow(_("@@erase|Erase@@"));
@@ -515,7 +515,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             switch (player_relations.getRelation(name))
             {
                 case PlayerRelation::NEUTRAL:
-                    mBrowserBox->addRow(_("@@friend|Befriend@@"));
+                    mBrowserBox->addRow(_("@@friend|Be friend@@"));
                     mBrowserBox->addRow(_("@@disregard|Disregard@@"));
                     mBrowserBox->addRow(_("@@ignore|Ignore@@"));
                     mBrowserBox->addRow(_("@@erase|Erase@@"));
