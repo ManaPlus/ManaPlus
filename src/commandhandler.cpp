@@ -1114,35 +1114,44 @@ void CommandHandler::handleUptime(const std::string &args,
     else
     {
         std::string str;
-        const int timeDiff = cur_time - start_time;
-        const int min = timeDiff / 60;
-        const int hours = min / 60;
-        const int days = hours / 24;
-        const int weeks = days / 7;
+        int timeDiff = cur_time - start_time;
+
+        const int weeks = timeDiff / 60 / 60 / 24 / 7;
         if (weeks > 0)
         {
             str = strprintf(ngettext("%d week", "%d weeks", weeks), weeks);
+            timeDiff -= weeks * 60 * 60 * 24 * 7;
         }
+
+        const int days = timeDiff / 60 / 60 / 24;
         if (days > 0)
         {
             if (!str.empty())
                 str += ", ";
             str += strprintf(ngettext("%d day", "%d days", days), days);
+            timeDiff -= days * 60 * 60 * 24;
         }
+        const int hours = timeDiff / 60 / 60;
         if (hours > 0)
         {
             if (!str.empty())
                 str += ", ";
             str += strprintf(ngettext("%d hour", "%d hours", hours), hours);
+            timeDiff -= hours * 60 * 60;
         }
+        const int min = timeDiff / 60;
         if (min > 0)
         {
             if (!str.empty())
                 str += ", ";
             str += strprintf(ngettext("%d minute", "%d minutes", min), min);
+            timeDiff -= min * 60;
         }
-        if (str.empty())
+
+        if (timeDiff > 0)
         {
+            if (!str.empty())
+                str += ", ";
             str += strprintf(ngettext("%d second", "%d seconds",
                 timeDiff), timeDiff);
         }
