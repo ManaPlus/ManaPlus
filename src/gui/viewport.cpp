@@ -510,6 +510,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
             if (get_elapsed_time(mLocalWalkTime) >= walkingMouseDelay)
             {
                 mLocalWalkTime = tick_time;
+                player_node->unSetPickUpTarget();
                 player_node->setDestination(event.getX()
                     + static_cast<int>(mPixelViewX),
                     event.getY()
@@ -528,6 +529,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
                 int destY = static_cast<int>((static_cast<float>(event.getY())
                     + mPixelViewY)
                     / static_cast<float>(mMap->getTileHeight()));
+                player_node->unSetPickUpTarget();
                 player_node->setDestination(destX, destY);
             }
         }

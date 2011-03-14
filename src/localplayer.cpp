@@ -789,6 +789,11 @@ void LocalPlayer::nextTile(unsigned char dir = 0)
             if (mWalkingDir)
                 startWalking(mWalkingDir);
         }
+        else if (mPath.size() == 1)
+        {
+            if (mPickUpTarget)
+                pickUp(mPickUpTarget);
+        }
 
         // TODO: Fix automatically walking within range of target, when wanted
         if (mGoingToTarget && mTarget && withinAttackRange(mTarget))
@@ -804,7 +809,6 @@ void LocalPlayer::nextTile(unsigned char dir = 0)
             mGoingToTarget = false;
             mPath.clear();
         }
-
 
         Being::nextTile();
     }
@@ -972,7 +976,6 @@ void LocalPlayer::setDestination(int x, int y)
 {
     mActivityTime = cur_time;
 
-    mPickUpTarget = NULL;
     if (getAttackType() == 0 || !mAttackMoving)
         mKeepAttacking = false;
 
@@ -1072,6 +1075,7 @@ void LocalPlayer::startWalking(unsigned char dir)
     if (!mMap || !dir)
         return;
 
+    mPickUpTarget = 0;
     if (mAction == MOVE && !mPath.empty())
     {
         // Just finish the current action, otherwise we get out of sync
@@ -1142,6 +1146,7 @@ void LocalPlayer::stopWalking(bool sendToServer)
     {
         mWalkingDir = 0;
         mLocalWalkTime = 0;
+        mPickUpTarget = 0;
 
         setDestination(static_cast<int>(getPosition().x),
                        static_cast<int>(getPosition().y));
@@ -1434,6 +1439,7 @@ void LocalPlayer::setGotoTarget(Being *target)
     if (!target)
         return;
 
+    mPickUpTarget = 0;
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         mTarget = target;
@@ -1610,6 +1616,7 @@ void LocalPlayer::moveTo(int x, int y)
 
 void LocalPlayer::move(int dX, int dY)
 {
+    mPickUpTarget = 0;
     moveTo(getTileX() + dX, getTileY() + dY);
 }
 
@@ -1705,6 +1712,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
 
 void LocalPlayer::moveToHome()
 {
+    mPickUpTarget = 0;
     if ((getTileX() != mCrossX || getTileY() != mCrossY) && mCrossX && mCrossY)
     {
         moveTo(mCrossX, mCrossY);
@@ -3488,7 +3496,10 @@ void LocalPlayer::imitateOutfit(Being *player, int sprite)
 void LocalPlayer::followMoveTo(Being *being, int x, int y)
 {
     if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
+    {
+        mPickUpTarget = 0;
         setDestination(x, y);
+    }
 }
 
 void LocalPlayer::followMoveTo(Being *being, int x1, int y1, int x2, int y2)
@@ -3496,6 +3507,7 @@ void LocalPlayer::followMoveTo(Being *being, int x1, int y1, int x2, int y2)
     if (!being)
         return;
 
+    mPickUpTarget = 0;
     if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
     {
         switch (mFollowMode)
