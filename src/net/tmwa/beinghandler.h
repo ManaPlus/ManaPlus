@@ -42,8 +42,6 @@ class BeingHandler : public MessageHandler, public Net::BeingHandler
 
         virtual void undress(Being *being);
 
-        Uint8 getDirection(Uint8 dir);
-
     private:
         // Should we honor server "Stop Walking" packets
         bool mSync;

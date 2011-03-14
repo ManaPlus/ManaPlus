@@ -25,6 +25,7 @@
 #include "net/packetcounters.h"
 
 #include "log.h"
+#include "net.h"
 
 #include "utils/stringutils.h"
 
@@ -113,7 +114,14 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
             case 7:
                 direction = 9;
                 break;
+            case 8:
+                if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+                {
+                    direction = 8;
+                    break;
+                }
             default:
+                logger->log("incorrect direction: %d", (int)direction);
                 // OOPSIE! Impossible or unknown
                 direction = 0;
         }

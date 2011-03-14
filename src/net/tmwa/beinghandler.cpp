@@ -348,7 +348,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     }
                 }
 
-                dstBeing->setDirection(getDirection(dir));
+                dstBeing->setDirection(dir);
             }
 
             msg.readInt8();   // unknown
@@ -825,7 +825,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
             msg.readInt16(); // unused
 
-            unsigned char dir = getDirection(msg.readInt8());
+            unsigned char dir = msg.readInt8();
             dstBeing->setDirection(dir);
             if (player_node)
                 player_node->imitateDirection(dstBeing, dir);
@@ -938,6 +938,22 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 dstBeing->setTileCoords(srcX, srcY);
                 dstBeing->setDestination(dstX, dstY);
 
+                // because server dont send direction in move packet,
+                // we fixing it
+
+                int dir = 0;
+                if (dstX > srcX)
+                    dir |= Being::RIGHT;
+                else if (dstX < srcX)
+                    dir |= Being::LEFT;
+                if (dstY > srcY)
+                    dir |= Being::DOWN;
+                else if (dstY < srcY)
+                    dir |= Being::UP;
+
+                if (dir)
+                    dstBeing->setDirection(dir);
+
                 if (player_node->getCurrentAction() != Being::STAND)
                     player_node->imitateAction(dstBeing, Being::STAND);
                 if (player_node->getDirection() != dstBeing->getDirection())
@@ -952,7 +968,6 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 Uint16 x, y;
                 msg.readCoordinates(x, y, dir);
                 dstBeing->setTileCoords(x, y);
-                dir = getDirection(dir);
                 dstBeing->setDirection(dir);
 
                 player_node->imitateDirection(dstBeing, dir);
@@ -1140,13 +1155,6 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
         default:
             break;
     }
-}
-
-Uint8 BeingHandler::getDirection(Uint8 dir)
-{
-    if (dir == 0)
-        dir = 8;
-    return dir;
 }
 
 void BeingHandler::undress(Being *being)
