@@ -322,31 +322,30 @@ void Image::setAlpha(float alpha)
                 SDL_LockSurface(mSDLSurface);
 
             // Precompute as much as possible
-            int maxHeight = std::min((mBounds.y + mBounds.h), mSDLSurface->h);
-            int maxWidth = std::min((mBounds.x + mBounds.w), mSDLSurface->w);
-            int i = 0;
+            const int maxHeight = std::min((mBounds.y + mBounds.h),
+                mSDLSurface->h);
+            const int maxWidth = std::min((mBounds.x + mBounds.w),
+                mSDLSurface->w);
+            const int i1 = mBounds.y * mSDLSurface->w + mBounds.x;
+            const int i2 = (maxHeight - 1) * mSDLSurface->w + maxWidth - 1;
 
-            for (int y = mBounds.y; y < maxHeight; y++)
+            for (int i = i1; i <= i2; i++)
             {
-                for (int x = mBounds.x; x < maxWidth; x++)
+                // Only change the pixel if it was visible at load time...
+                Uint8 sourceAlpha = mAlphaChannel[i];
+                if (sourceAlpha > 0)
                 {
-                    i = y * mSDLSurface->w + x;
-                    // Only change the pixel if it was visible at load time...
-                    Uint8 sourceAlpha = mAlphaChannel[i];
-                    if (sourceAlpha > 0)
-                    {
-                        Uint8 r, g, b, a;
-                        SDL_GetRGBA((static_cast<Uint32*>
-                            (mSDLSurface->pixels))[i],
-                            mSDLSurface->format,
-                            &r, &g, &b, &a);
+                    Uint8 r, g, b, a;
+                    SDL_GetRGBA((static_cast<Uint32*>
+                        (mSDLSurface->pixels))[i],
+                        mSDLSurface->format,
+                        &r, &g, &b, &a);
 
-                        a = (Uint8) (static_cast<float>(sourceAlpha) * mAlpha);
+                    a = (Uint8) (static_cast<float>(sourceAlpha) * mAlpha);
 
-                        // Here is the pixel we want to set
-                        (static_cast<Uint32 *>(mSDLSurface->pixels))[i] =
-                                SDL_MapRGBA(mSDLSurface->format, r, g, b, a);
-                    }
+                    // Here is the pixel we want to set
+                    (static_cast<Uint32 *>(mSDLSurface->pixels))[i] =
+                        SDL_MapRGBA(mSDLSurface->format, r, g, b, a);
                 }
             }
 
@@ -377,15 +376,19 @@ Image* Image::SDLmerge(Image *image, int x, int y)
 
     SDL_LockSurface(surface);
     SDL_LockSurface(mSDLSurface);
+
+    const int x0 = (y * getWidth()) + x;
+    const int maxX = std::min(image->getWidth(), getWidth() - x);
+    const int maxY = std::min(image->getHeight(), getHeight() - y);
+
     // for each pixel lines of a source image
-    for (offset_x = (x > 0 ? 0 : -x); offset_x < image->getWidth() &&
-                     x + offset_x < getWidth(); offset_x++)
+    for (offset_x = (x > 0 ? 0 : -x); offset_x < maxX; offset_x++)
     {
-        for (offset_y = (y > 0 ? 0 : -y); offset_y < image->getHeight()
-                        && y + offset_y < getHeight(); offset_y++)
+        const int x1 = x0 + offset_x;
+        for (offset_y = (y > 0 ? 0 : -y); offset_y < maxY; offset_y++)
         {
             // Computing offset on both images
-            current_offset = (y + offset_y) * getWidth() + x + offset_x;
+            current_offset = (offset_y * getWidth()) + x1;
             surface_offset = offset_y * surface->w + offset_x;
 
             // Retrieving a pixel to merge
@@ -408,8 +411,10 @@ Image* Image::SDLmerge(Image *image, int x, int y)
 
             // new pixel with no alpha or nothing on previous pixel
             if (a == SDL_ALPHA_OPAQUE || (p_a == 0 && a > 0))
+            {
                 ((Uint32 *)(surface->pixels))[current_offset] =
                     SDL_MapRGBA(current_fmt, r, g, b, a);
+            }
             else if (a > 0)
             { // alpha is lower => merge color with previous value
                 f_a = static_cast<double>(a) / 255.0;
