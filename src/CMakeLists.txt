@@ -385,8 +385,6 @@ SET(SRCS
     resources/action.h
     resources/ambientlayer.cpp
     resources/ambientlayer.h
-    resources/ambientoverlay.cpp
-    resources/ambientoverlay.h
     resources/animation.cpp
     resources/animation.h
     resources/beinginfo.cpp
