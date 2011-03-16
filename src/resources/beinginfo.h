@@ -75,7 +75,8 @@ class BeingInfo
 
         ~BeingInfo();
 
-        void setName(const std::string &name) { mName = name; }
+        void setName(const std::string &name)
+        { mName = name; }
 
         const std::string &getName() const
         { return mName; }

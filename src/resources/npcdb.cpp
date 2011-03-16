@@ -79,6 +79,9 @@ void NPCDB::load()
         SpriteDisplay display;
         for_each_xml_child_node(spriteNode, npcNode)
         {
+            if (!spriteNode->xmlChildrenNode)
+                continue;
+
             if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
             {
                 SpriteReference *currentSprite = new SpriteReference;

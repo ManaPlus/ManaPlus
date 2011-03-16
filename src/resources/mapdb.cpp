@@ -80,7 +80,6 @@ void MapDB::unload()
 std::string MapDB::getMapName(std::string name)
 {
     MapIterator it = mMaps.find(name);
-    logger->log("map: " + name);
 
     if (it != mMaps.end())
         return it->second;

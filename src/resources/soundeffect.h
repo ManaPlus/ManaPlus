@@ -68,7 +68,8 @@ class SoundEffect : public Resource
         /**
          * Constructor.
          */
-        SoundEffect(Mix_Chunk *soundEffect): mChunk(soundEffect) {}
+        SoundEffect(Mix_Chunk *soundEffect): mChunk(soundEffect)
+        { }
 
         Mix_Chunk *mChunk;
 };

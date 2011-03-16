@@ -246,6 +246,9 @@ Map *MapReader::readMap(const std::string &filename,
 
 Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
 {
+    if (!node)
+        return 0;
+
     // Take the filename off the path
     const std::string pathDir = path.substr(0, path.rfind("/") + 1);
 
@@ -274,9 +277,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
         {
             Tileset *tileset = readTileset(childNode, pathDir, map);
             if (tileset)
-            {
                 map->addTileset(tileset);
-            }
         }
         else if (xmlStrEqual(childNode->name, BAD_CAST "layer"))
         {
@@ -368,7 +369,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
 
 void MapReader::readProperties(xmlNodePtr node, Properties *props)
 {
-    if (!props)
+    if (!node || !props)
         return;
 
     for_each_xml_child_node(childNode, node)
@@ -620,6 +621,8 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
 
         doc = new XML::Document(filename);
         node = doc->rootNode();
+        if (!node)
+            return 0;
 
         // Reset path to be realtive to the tsx file
         pathDir = filename.substr(0, filename.rfind("/") + 1);

@@ -30,6 +30,9 @@
 
 bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
 {
+    if (!surface)
+        return false;
+
     // TODO Maybe someone can make this look nice?
 
     png_structp png_ptr;

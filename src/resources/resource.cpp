@@ -45,7 +45,6 @@ void Resource::decRef()
     {
         logger->log("Warning: mRefCount already zero for %s", mIdPath.c_str());
         return;
-//        assert(false);
     }
 
     mRefCount--;

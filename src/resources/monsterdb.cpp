@@ -98,6 +98,9 @@ void MonsterDB::load()
         //iterate <sprite>s and <sound>s
         for_each_xml_child_node(spriteNode, monsterNode)
         {
+            if (!spriteNode->xmlChildrenNode)
+                continue;
+
             if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
             {
                 SpriteReference *currentSprite = new SpriteReference;

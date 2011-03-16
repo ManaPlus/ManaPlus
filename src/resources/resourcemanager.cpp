@@ -372,6 +372,8 @@ struct ResourceLoader
     ResourceManager::loader fun;
     static Resource *load(void *v)
     {
+        if (!v)
+            return NULL;
         ResourceLoader *l = static_cast< ResourceLoader * >(v);
         int fileSize;
         if (!l->manager)
@@ -527,7 +529,8 @@ void ResourceManager::release(Resource *res)
     time_t timestamp = tv.tv_sec;
 
     res->mTimeStamp = timestamp;
-    if (mOrphanedResources.empty()) mOldestOrphan = timestamp;
+    if (mOrphanedResources.empty())
+        mOldestOrphan = timestamp;
 
     mOrphanedResources.insert(*resIter);
     mResources.erase(resIter);

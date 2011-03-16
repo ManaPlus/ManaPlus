@@ -92,8 +92,8 @@ const std::string &BeingInfo::getSound(SoundEvent event) const
     static std::string empty("");
 
     SoundEvents::const_iterator i = mSounds.find(event);
-    return (i == mSounds.end()) ? empty :
-                                  i->second->at(rand() % i->second->size());
+    return (i == mSounds.end() || !i->second) ? empty :
+            i->second->at(rand() % i->second->size());
 }
 
 const Attack *BeingInfo::getAttack(int type) const

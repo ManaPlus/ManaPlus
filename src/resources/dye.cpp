@@ -118,7 +118,8 @@ void DyePalette::getColor(int intensity, int color[3]) const
     }
 
     int last = static_cast<int>(mColors.size());
-    if (last == 0) return;
+    if (last == 0)
+        return;
 
     int i = intensity * last / 255;
     int t = intensity * last % 255;
@@ -144,7 +145,7 @@ void DyePalette::getColor(int intensity, int color[3]) const
 
     // Get the previous color. First color is implicitly black.
     int r1 = 0, g1 = 0, b1 = 0;
-    if (i > 0)
+    if (i > 0 && i < last + 1)
     {
         r1 = mColors[i - 1].value[0];
         g1 = mColors[i - 1].value[1];

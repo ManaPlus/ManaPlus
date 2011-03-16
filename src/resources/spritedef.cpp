@@ -319,7 +319,8 @@ SpriteDef::~SpriteDef()
     for (ImageSetIterator i = mImageSets.begin();
             i != mImageSets.end(); ++i)
     {
-        i->second->decRef();
+        if (i->second)
+            i->second->decRef();
     }
 }
 

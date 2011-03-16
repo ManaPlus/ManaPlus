@@ -76,6 +76,9 @@ void EmoteDB::load()
 
         for_each_xml_child_node(spriteNode, emoteNode)
         {
+            if (!spriteNode->xmlChildrenNode)
+                continue;
+
             if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
             {
                 EmoteSprite *currentSprite = new EmoteSprite;
@@ -128,6 +131,9 @@ void EmoteDB::load()
 
         for_each_xml_child_node(spriteNode, emoteNode)
         {
+            if (!spriteNode->xmlChildrenNode)
+                continue;
+
             if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
             {
                 EmoteSprite *currentSprite = new EmoteSprite;
@@ -160,13 +166,16 @@ void EmoteDB::unload()
          i != mEmoteInfos.end();
          ++i)
     {
-        while (!i->second->sprites.empty())
+        if (i->second)
         {
-            delete i->second->sprites.front()->sprite;
-            delete i->second->sprites.front();
-            i->second->sprites.pop_front();
+            while (!i->second->sprites.empty())
+            {
+                delete i->second->sprites.front()->sprite;
+                delete i->second->sprites.front();
+                i->second->sprites.pop_front();
+            }
+            delete i->second;
         }
-        delete i->second;
     }
 
     mEmoteInfos.clear();

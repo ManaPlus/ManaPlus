@@ -72,6 +72,7 @@ void ColorDB::loadHair()
             return;
         }
     }
+
     for_each_xml_child_node(node, root)
     {
         if (xmlStrEqual(node->name, BAD_CAST "color"))

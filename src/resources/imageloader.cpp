@@ -63,7 +63,6 @@ int ProxyImage::getWidth() const
         return mImage->getWidth();
     else
         return 0;
-//    return mSDLImage ? mSDLImage->w : mImage->getWidth();
 }
 
 int ProxyImage::getHeight() const
