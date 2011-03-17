@@ -1101,7 +1101,7 @@ void CommandHandler::handleWait(const std::string &args,
         player_node->waitFor(args);
 }
 
-void CommandHandler::handleUptime(const std::string &args,
+void CommandHandler::handleUptime(const std::string &args _UNUSED_,
                                   ChatTab *tab _UNUSED_)
 {
     if (!debugChatTab)
