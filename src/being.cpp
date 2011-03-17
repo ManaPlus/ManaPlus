@@ -633,6 +633,10 @@ void Being::handleAttack(Being *victim, int damage,
         mActionTime = tick_time;
     }
 
+    Uint8 dir = calcDirection(victim->getTileX(), victim->getTileY());
+    if (dir)
+        setDirection(dir);
+
     sound.playSfx(mInfo->getSound((damage > 0) ?
                   SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
 }
