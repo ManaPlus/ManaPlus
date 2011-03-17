@@ -168,6 +168,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     int hairStyle, hairColor, flag;
     int hp, maxHP, oldHP;
     unsigned char colors[9];
+    Uint8 dir;
 
     switch (msg.getId())
     {
@@ -859,6 +860,13 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     break;
             }
 
+            dir = dstBeing->getDirectionDelayed();
+            if (dir)
+            {
+                if (dir != dstBeing->getDirection())
+                    dstBeing->setDirection(dir);
+            }
+
             if (Party *party = player_node->getParty())
             {
                 if (party->isMember(id))
@@ -941,18 +949,26 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 // because server dont send direction in move packet,
                 // we fixing it
 
-                int dir = 0;
-                if (dstX > srcX)
-                    dir |= Being::RIGHT;
-                else if (dstX < srcX)
-                    dir |= Being::LEFT;
-                if (dstY > srcY)
-                    dir |= Being::DOWN;
-                else if (dstY < srcY)
-                    dir |= Being::UP;
+                if (srcX != dstX || srcY != dstY)
+                {
+                    int dir = 0;
+                    if (dstX > srcX)
+                        dir |= Being::RIGHT;
+                    else if (dstX < srcX)
+                        dir |= Being::LEFT;
+                    if (dstY > srcY)
+                        dir |= Being::DOWN;
+                    else if (dstY < srcY)
+                        dir |= Being::UP;
 
-                if (dir)
-                    dstBeing->setDirection(dir);
+                    if (dir && dstBeing->getDirection() != dir)
+                    {
+                        dstBeing->setDirectionDelayed(dir);
+//                        dstBeing->clearPath();
+//                        dstBeing->reset();
+                    }
+                }
+
 
                 if (player_node->getCurrentAction() != Being::STAND)
                     player_node->imitateAction(dstBeing, Being::STAND);
@@ -1023,8 +1039,12 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
             msg.readInt8();   // unknown
 
-            dstBeing->setActionTime(tick_time);
-            dstBeing->reset();
+            if (dstBeing->getType() != Being::PLAYER
+                || msg.getId() != SMSG_PLAYER_MOVE)
+            {
+                dstBeing->setActionTime(tick_time);
+//                dstBeing->reset();
+            }
 
             dstBeing->setStunMode(stunMode);
             dstBeing->setStatusEffectBlock(0, (statusEffects >> 16) & 0xffff);

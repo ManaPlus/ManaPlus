@@ -187,6 +187,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mAction(STAND),
     mSubType(0xFFFF),
     mDirection(DOWN),
+    mDirectionDelayed(0),
     mSpriteDirection(DIRECTION_DOWN),
     mDispName(0),
     mShowName(false),
@@ -946,6 +947,8 @@ void Being::setDirection(Uint8 direction)
         return;
 
     mDirection = direction;
+
+    mDirectionDelayed = 0;
 
     // if the direction does not change much, keep the common component
     int mFaceDirection = mDirection & direction;

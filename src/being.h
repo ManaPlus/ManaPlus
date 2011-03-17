@@ -452,6 +452,12 @@ class Being : public ActorSprite, public ConfigListener
          */
         virtual void setDirection(Uint8 direction);
 
+        virtual void setDirectionDelayed(Uint8 direction)
+        { mDirectionDelayed = direction; }
+
+        Uint8 getDirectionDelayed()
+        { return mDirectionDelayed; }
+
         /**
          * Returns the direction the being is facing.
          */
@@ -677,6 +683,8 @@ class Being : public ActorSprite, public ConfigListener
         Uint16 mSubType;      /**< Subtype (graphical view, basically) */
 
         Uint8 mDirection;               /**< Facing direction */
+        Uint8 mDirectionDelayed;        /**< Facing direction */
+
         Uint8 mSpriteDirection;         /**< Facing direction */
         std::string mName;              /**< Name of character */
         std::string mPartyName;
