@@ -951,15 +951,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
                 if (srcX != dstX || srcY != dstY)
                 {
-                    int dir = 0;
-                    if (dstX > srcX)
-                        dir |= Being::RIGHT;
-                    else if (dstX < srcX)
-                        dir |= Being::LEFT;
-                    if (dstY > srcY)
-                        dir |= Being::DOWN;
-                    else if (dstY < srcY)
-                        dir |= Being::UP;
+                    int dir = dstBeing->calcDirection(dstX, dstY);
 
                     if (dir && dstBeing->getDirection() != dir)
                     {

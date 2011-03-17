@@ -987,6 +987,34 @@ void Being::setDirection(Uint8 direction)
     CompoundSprite::setDirection(dir);
 }
 
+Uint8 Being::calcDirection() const
+{
+    int dir = 0;
+    if (mDest.x > mX)
+        dir |= RIGHT;
+    else if (mDest.x < mX)
+        dir |= LEFT;
+    if (mDest.y > mY)
+        dir |= DOWN;
+    else if (mDest.y < mY)
+        dir |= UP;
+    return dir;
+}
+
+Uint8 Being::calcDirection(int dstX, int dstY) const
+{
+    int dir = 0;
+    if (dstX > mX)
+        dir |= RIGHT;
+    else if (dstX < mX)
+        dir |= LEFT;
+    if (dstY > mY)
+        dir |= DOWN;
+    else if (dstY < mY)
+        dir |= UP;
+    return dir;
+}
+
 /** TODO: Used by eAthena only */
 void Being::nextTile()
 {
@@ -999,17 +1027,9 @@ void Being::nextTile()
     Position pos = mPath.front();
     mPath.pop_front();
 
-    int dir = 0;
-    if (pos.x > mX)
-        dir |= RIGHT;
-    else if (pos.x < mX)
-        dir |= LEFT;
-    if (pos.y > mY)
-        dir |= DOWN;
-    else if (pos.y < mY)
-        dir |= UP;
-
-    setDirection(static_cast<Uint8>(dir));
+    Uint8 dir = calcDirection(pos.x, pos.y);
+    if (dir)
+        setDirection(static_cast<Uint8>(dir));
 
     if (!mMap->getWalk(pos.x, pos.y, getWalkMask()))
     {

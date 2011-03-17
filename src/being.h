@@ -652,6 +652,10 @@ class Being : public ActorSprite, public ConfigListener
         int getHP()
         { return mHP; }
 
+        Uint8 calcDirection(int dstX, int dstY) const;
+
+        Uint8 calcDirection() const;
+
     protected:
         /**
          * Sets the new path for this being.
