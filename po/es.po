@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
-"Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-13 22:13+0200\n"
+"Report-Msgid-Bugs-To: akaras@inbox.ru\n"
+"POT-Creation-Date: 2011-03-19 01:21+0200\n"
 "PO-Revision-Date: 2010-12-23 12:08+0100\n"
 "Last-Translator: Yohann Ferreira <yohann ferreira orange fr>\n"
 "Language-Team: Spanish Translator <natsuki.sumon@gmail.com>\n"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: SPAIN\n"
 
-#: src/being.cpp:488
+#: src/being.cpp:489
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:488
+#: src/being.cpp:489
 msgid "miss"
 msgstr ""
 
@@ -62,8 +62,8 @@ msgstr "Cambiando el servidor del juego"
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:358 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
-#: src/net/tmwa/charserverhandler.cpp:185
-#: src/net/tmwa/charserverhandler.cpp:201
+#: src/net/tmwa/charserverhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:204
 msgid "Error"
 msgstr "Error"
 
@@ -655,11 +655,11 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Opciones para /%s son \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
-#: src/game.cpp:228 src/gui/widgets/chattab.cpp:391
+#: src/game.cpp:228 src/gui/widgets/chattab.cpp:392
 msgid "General"
 msgstr "General"
 
-#: src/game.cpp:232 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:393
+#: src/game.cpp:232 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:394
 msgid "Debug"
 msgstr "Depurador"
 
@@ -891,7 +891,7 @@ msgstr "Color del pelo:"
 msgid "Hair style:"
 msgstr "Estilo de pelo:"
 
-#: src/gui/charcreatedialog.cpp:79 src/gui/charselectdialog.cpp:446
+#: src/gui/charcreatedialog.cpp:79 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
 msgid "Create"
 msgstr "Crear"
@@ -947,22 +947,22 @@ msgstr "Cancelar Registro"
 msgid "Change Email"
 msgstr "Cambiar e-mail"
 
-#: src/gui/charselectdialog.cpp:376 src/gui/serverdialog.cpp:255
+#: src/gui/charselectdialog.cpp:377 src/gui/serverdialog.cpp:255
 #: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:234
 msgid "Delete"
 msgstr "Borrar"
 
-#: src/gui/charselectdialog.cpp:434
+#: src/gui/charselectdialog.cpp:435
 msgid "Choose"
 msgstr "Seleccionar"
 
-#: src/gui/charselectdialog.cpp:437
+#: src/gui/charselectdialog.cpp:438
 #, fuzzy, c-format
 msgid "Level %d"
 msgstr "Nivel: %d"
 
-#: src/gui/charselectdialog.cpp:448 src/gui/charselectdialog.cpp:449
+#: src/gui/charselectdialog.cpp:449 src/gui/charselectdialog.cpp:450
 msgid "(empty)"
 msgstr "(vacío)"
 
@@ -1208,6 +1208,7 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: src/gui/inventorywindow.cpp:77 src/gui/windowmenu.cpp:73
+#: src/inventory.cpp:238
 msgid "Inventory"
 msgstr "Inventario"
 
@@ -1470,7 +1471,7 @@ msgid "Login"
 msgstr "Login"
 
 #: src/gui/login.cpp:88 src/gui/serverdialog.cpp:225
-#: src/gui/widgets/chattab.cpp:167
+#: src/gui/widgets/chattab.cpp:168
 msgid "Server:"
 msgstr "Servidor:"
 
@@ -2731,15 +2732,15 @@ msgstr "Habilidades %d"
 msgid "Skill %d"
 msgstr "Habilidad %d"
 
+#: src/gui/skilldialog.cpp:454 src/gui/skilldialog.cpp:507
+#, c-format
+msgid "Lvl: %d"
+msgstr "Nivel: %d"
+
 #: src/gui/skilldialog.cpp:499
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr "Nivel: %d (%+d)"
-
-#: src/gui/skilldialog.cpp:507
-#, c-format
-msgid "Lvl: %d"
-msgstr "Nivel: %d"
 
 #: src/gui/socialwindow.cpp:115 src/net/tmwa/gui/guildtab.cpp:48
 msgid "Guild"
@@ -3407,16 +3408,16 @@ msgstr "Se necesita un usuario para ser operador!"
 msgid "Need a user to kick!"
 msgstr "Se necesita un usuario a expulsar!"
 
-#: src/gui/widgets/chattab.cpp:146
+#: src/gui/widgets/chattab.cpp:147
 msgid "Global announcement:"
 msgstr "Anuncio global:"
 
-#: src/gui/widgets/chattab.cpp:152
+#: src/gui/widgets/chattab.cpp:153
 #, c-format
 msgid "Global announcement from %s:"
 msgstr "Anuncio global de  %s:"
 
-#: src/gui/widgets/chattab.cpp:178
+#: src/gui/widgets/chattab.cpp:179
 #, c-format
 msgid "%s whispers: %s"
 msgstr "%s envía mensaje privado: %s"
@@ -3540,6 +3541,14 @@ msgstr "Cambiar de Login"
 #: src/gui/worldselectdialog.cpp:81
 msgid "Choose World"
 msgstr "Escojer Mundo"
+
+#: src/inventory.cpp:240
+msgid "Storage"
+msgstr "Almacén"
+
+#: src/inventory.cpp:242
+msgid "Cart"
+msgstr ""
 
 #: src/keyboardconfig.cpp:41
 msgid "Move Up"
@@ -3947,51 +3956,51 @@ msgstr ""
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1321
+#: src/localplayer.cpp:1326
 #, fuzzy
 msgid "Tried to pick up nonexistent item."
 msgstr "Imposible coger el objeto."
 
-#: src/localplayer.cpp:1323
+#: src/localplayer.cpp:1328
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1325
+#: src/localplayer.cpp:1330
 msgid "Item is too far away"
 msgstr ""
 
-#: src/localplayer.cpp:1327
+#: src/localplayer.cpp:1332
 #, fuzzy
 msgid "Inventory is full."
 msgstr "Servidor lleno."
 
-#: src/localplayer.cpp:1329
+#: src/localplayer.cpp:1334
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1332
+#: src/localplayer.cpp:1337
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1335
+#: src/localplayer.cpp:1340
 #, fuzzy
 msgid "Unknown problem picking up item."
 msgstr "Imposible coger el objeto."
 
 #. TRANSLATORS: This sentence may be translated differently
 #. for different grammatical numbers (singular, plural, ...)
-#: src/localplayer.cpp:1360
+#: src/localplayer.cpp:1365
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Usted cogió un/a %d [@@%d|%s@@]."
 msgstr[1] "Usted Cogió %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3062
+#: src/localplayer.cpp:3081
 msgid "Away"
 msgstr "Fuera del Teclado"
 
-#: src/localplayer.cpp:3702
+#: src/localplayer.cpp:3733
 #, fuzzy
 msgid "You see "
 msgstr "Tú recibes %s"
@@ -4266,7 +4275,7 @@ msgstr "Nombre no válido."
 msgid "Unknown error."
 msgstr "Error desconocido."
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:196
+#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:199
 msgid "Info"
 msgstr "Información"
 
@@ -4506,69 +4515,69 @@ msgstr "Imposible vender."
 msgid "Unable to sell unsellable item."
 msgstr "Imposible coger el objeto."
 
-#: src/net/tmwa/charserverhandler.cpp:116
+#: src/net/tmwa/charserverhandler.cpp:119
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr "Acesso denegado.Probablemente es que alla muchos jugadores."
 
-#: src/net/tmwa/charserverhandler.cpp:120
+#: src/net/tmwa/charserverhandler.cpp:123
 msgid "Cannot use this ID."
 msgstr "Imposible usar esta ID."
 
-#: src/net/tmwa/charserverhandler.cpp:123
+#: src/net/tmwa/charserverhandler.cpp:126
 msgid "Unknown char-server failure."
 msgstr "Error desconocido del char-server."
 
-#: src/net/tmwa/charserverhandler.cpp:169
+#: src/net/tmwa/charserverhandler.cpp:172
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Error al crear personaje. Probablemente ya esté en uso."
 
-#: src/net/tmwa/charserverhandler.cpp:173 src/net/tmwa/loginhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:188
 #, fuzzy
 msgid "Wrong name."
 msgstr "Error de Token-mágico ."
 
-#: src/net/tmwa/charserverhandler.cpp:176
+#: src/net/tmwa/charserverhandler.cpp:179
 msgid "Incorrect stats."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:179
+#: src/net/tmwa/charserverhandler.cpp:182
 msgid "Incorrect hair."
 msgstr ""
 
-#: src/net/tmwa/charserverhandler.cpp:182
+#: src/net/tmwa/charserverhandler.cpp:185
 #, fuzzy
 msgid "Incorrect slot."
 msgstr "Sin espacios"
 
-#: src/net/tmwa/charserverhandler.cpp:196
+#: src/net/tmwa/charserverhandler.cpp:199
 msgid "Character deleted."
 msgstr "Personaje Borrado."
 
-#: src/net/tmwa/charserverhandler.cpp:201
+#: src/net/tmwa/charserverhandler.cpp:204
 msgid "Failed to delete character."
 msgstr "Fallo al borrar el personaje."
 
-#: src/net/tmwa/charserverhandler.cpp:378
+#: src/net/tmwa/charserverhandler.cpp:381
 msgid "Strength:"
 msgstr "Fuerza:"
 
-#: src/net/tmwa/charserverhandler.cpp:379
+#: src/net/tmwa/charserverhandler.cpp:382
 msgid "Agility:"
 msgstr "Agilidad:"
 
-#: src/net/tmwa/charserverhandler.cpp:380
+#: src/net/tmwa/charserverhandler.cpp:383
 msgid "Vitality:"
 msgstr "Vitalidad:"
 
-#: src/net/tmwa/charserverhandler.cpp:381
+#: src/net/tmwa/charserverhandler.cpp:384
 msgid "Intelligence:"
 msgstr "Inteligencia:"
 
-#: src/net/tmwa/charserverhandler.cpp:382
+#: src/net/tmwa/charserverhandler.cpp:385
 msgid "Dexterity:"
 msgstr "Destreza:"
 
-#: src/net/tmwa/charserverhandler.cpp:383
+#: src/net/tmwa/charserverhandler.cpp:386
 msgid "Luck:"
 msgstr "Suerte:"
 
@@ -4952,11 +4961,11 @@ msgstr "Imposible compartir experiencia."
 msgid "Experience sharing unknown."
 msgstr "Compartir experiencia desconocido."
 
-#: src/net/tmwa/inventoryhandler.cpp:361
+#: src/net/tmwa/inventoryhandler.cpp:362
 msgid "Failed to use item."
 msgstr "Fallo al usar el objeto."
 
-#: src/net/tmwa/inventoryhandler.cpp:513
+#: src/net/tmwa/inventoryhandler.cpp:514
 msgid "Unable to equip."
 msgstr "Imposible equipar."
 
@@ -5133,36 +5142,36 @@ msgstr "Eres un ex-jugador."
 msgid "You're pining for the fjords."
 msgstr "Estas avanzando... hacia el barranco."
 
-#: src/net/tmwa/playerhandler.cpp:326 src/net/tmwa/playerhandler.cpp:336
-#: src/net/tmwa/playerhandler.cpp:415
+#: src/net/tmwa/playerhandler.cpp:331 src/net/tmwa/playerhandler.cpp:341
+#: src/net/tmwa/playerhandler.cpp:420
 msgid "Message"
 msgstr "Mensaje"
 
-#: src/net/tmwa/playerhandler.cpp:327
+#: src/net/tmwa/playerhandler.cpp:332
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
-#: src/net/tmwa/playerhandler.cpp:337
+#: src/net/tmwa/playerhandler.cpp:342
 #, fuzzy
 msgid "You are carrying less than half your weight. You are can regain health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
-#: src/net/tmwa/playerhandler.cpp:442
+#: src/net/tmwa/playerhandler.cpp:447
 #, c-format
 msgid "You picked up %s."
 msgstr "Has cogido %s."
 
-#: src/net/tmwa/playerhandler.cpp:448
+#: src/net/tmwa/playerhandler.cpp:453
 #, fuzzy, c-format
 msgid "You spent %s."
 msgstr "Tú recibes %s"
 
-#: src/net/tmwa/playerhandler.cpp:493
+#: src/net/tmwa/playerhandler.cpp:498
 msgid "Cannot raise skill!"
 msgstr "Imposible incrementar!"
 
-#: src/net/tmwa/playerhandler.cpp:613
+#: src/net/tmwa/playerhandler.cpp:618
 msgid "Equip arrows first."
 msgstr "Equipar las flechas primero."
 
@@ -5339,9 +5348,6 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:155
 msgid "Unknown item"
 msgstr "Objeto desconocido"
-
-#~ msgid "Storage"
-#~ msgstr "Almacén"
 
 #~ msgid "/record > Start recording the chat to an external file"
 #~ msgstr "/record > Comenzar a guardar el chat en un archivo externo"

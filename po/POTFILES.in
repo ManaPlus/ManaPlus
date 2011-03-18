@@ -68,6 +68,7 @@ src/gui/widgets/tradetab.cpp
 src/gui/widgets/whispertab.cpp
 src/gui/windowmenu.cpp
 src/gui/worldselectdialog.cpp
+src/inventory.cpp
 src/keyboardconfig.cpp
 src/localplayer.cpp
 src/log.h

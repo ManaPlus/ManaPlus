@@ -1,28 +1,27 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Mana Developers
-# This file is distributed under the same license as the PACKAGE package.
+# Translation for ManaPlus.
+# Copyright (C) 2010-2011 The ManaPlus Developers
+# This file is distributed under the same license as the manaplus package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
-"Report-Msgid-Bugs-To: dev@manasource.org\n"
-"POT-Creation-Date: 2011-03-13 22:13+0200\n"
-"PO-Revision-Date: 2011-03-12 20:14+0000\n"
+"Report-Msgid-Bugs-To: akaras@inbox.ru\n"
+"POT-Creation-Date: 2011-03-19 01:21+0200\n"
+"PO-Revision-Date: 2011-03-18 23:28+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian <>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: src/being.cpp:488
+#: src/being.cpp:489
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being.cpp:488
+#: src/being.cpp:489
 msgid "miss"
 msgstr "промах"
 
@@ -59,8 +58,8 @@ msgstr "Смена игрового сервера"
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:358 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
-#: src/net/tmwa/charserverhandler.cpp:185
-#: src/net/tmwa/charserverhandler.cpp:201
+#: src/net/tmwa/charserverhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:204
 msgid "Error"
 msgstr "Ошибка"
 
@@ -184,9 +183,8 @@ msgid "/befriend > Be friend a player"
 msgstr "/befriend > Подружиться"
 
 #: src/commandhandler.cpp:325
-#, fuzzy
 msgid "/disregard > Disregard a player"
-msgstr "/desregard > не придавать значения"
+msgstr "/disregard > не придавать значения"
 
 #: src/commandhandler.cpp:326
 msgid "/neutral > Neutral a player"
@@ -215,7 +213,8 @@ msgstr "/party > Пригласить пользователя в группу"
 #: src/commandhandler.cpp:335
 msgid "/toggle > Determine whether <return> toggles the chat log"
 msgstr ""
-"/toggle -> Определяет появление строки ввода текста в чат по нажатию <return>"
+"/toggle -> Определяет появление строки ввода текста в чат по нажатию "
+"<return>"
 
 #: src/commandhandler.cpp:337
 msgid "/present > Get list of players present (sent to chat log, if logging)"
@@ -496,11 +495,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:561
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:581
 #, c-format
@@ -640,15 +639,13 @@ msgstr[3] "%d секунд"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
-#: src/game.cpp:228 src/gui/widgets/chattab.cpp:391
+#: src/game.cpp:228 src/gui/widgets/chattab.cpp:392
 msgid "General"
 msgstr "Общие"
 
-#: src/game.cpp:232 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:393
+#: src/game.cpp:232 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:394
 msgid "Debug"
 msgstr "Отладка"
 
@@ -879,7 +876,7 @@ msgstr "Цвет волос:"
 msgid "Hair style:"
 msgstr "Стрижка:"
 
-#: src/gui/charcreatedialog.cpp:79 src/gui/charselectdialog.cpp:446
+#: src/gui/charcreatedialog.cpp:79 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
 msgid "Create"
 msgstr "Создать"
@@ -935,22 +932,22 @@ msgstr "Удалить регистрацию"
 msgid "Change Email"
 msgstr "Сменить адрес E-mail"
 
-#: src/gui/charselectdialog.cpp:376 src/gui/serverdialog.cpp:255
+#: src/gui/charselectdialog.cpp:377 src/gui/serverdialog.cpp:255
 #: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:234
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/gui/charselectdialog.cpp:434
+#: src/gui/charselectdialog.cpp:435
 msgid "Choose"
 msgstr "Выбрать"
 
-#: src/gui/charselectdialog.cpp:437
+#: src/gui/charselectdialog.cpp:438
 #, c-format
 msgid "Level %d"
 msgstr "Уровень: %d"
 
-#: src/gui/charselectdialog.cpp:448 src/gui/charselectdialog.cpp:449
+#: src/gui/charselectdialog.cpp:449 src/gui/charselectdialog.cpp:450
 msgid "(empty)"
 msgstr "(пусто)"
 
@@ -1178,6 +1175,7 @@ msgid "Close"
 msgstr "Закрыть"
 
 #: src/gui/inventorywindow.cpp:77 src/gui/windowmenu.cpp:73
+#: src/inventory.cpp:238
 msgid "Inventory"
 msgstr "Инвентарь"
 
@@ -1430,7 +1428,7 @@ msgid "Login"
 msgstr "Вход"
 
 #: src/gui/login.cpp:88 src/gui/serverdialog.cpp:225
-#: src/gui/widgets/chattab.cpp:167
+#: src/gui/widgets/chattab.cpp:168
 msgid "Server:"
 msgstr "Сервер:"
 
@@ -1574,7 +1572,6 @@ msgstr "@@heal|Лечить@@"
 
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:304
 #: src/gui/popupmenu.cpp:518
-#, fuzzy
 msgid "@@friend|Be friend@@"
 msgstr "@@friend|Подружиться@@"
 
@@ -2524,8 +2521,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
 #: src/gui/setup_video.cpp:535
 msgid ""
@@ -2633,15 +2630,15 @@ msgstr "Умение %d"
 msgid "Skill %d"
 msgstr "Умение %d"
 
+#: src/gui/skilldialog.cpp:454 src/gui/skilldialog.cpp:507
+#, c-format
+msgid "Lvl: %d"
+msgstr "Уровень: %d"
+
 #: src/gui/skilldialog.cpp:499
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr "Уровень: %d (%+d)"
-
-#: src/gui/skilldialog.cpp:507
-#, c-format
-msgid "Lvl: %d"
-msgstr "Уровень: %d"
 
 #: src/gui/socialwindow.cpp:115 src/net/tmwa/gui/guildtab.cpp:48
 msgid "Guild"
@@ -2995,7 +2992,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3284,16 +3282,16 @@ msgstr "Нужен пользователь, чтобы сделать его о
 msgid "Need a user to kick!"
 msgstr "Нужно выбрать пользователя!"
 
-#: src/gui/widgets/chattab.cpp:146
+#: src/gui/widgets/chattab.cpp:147
 msgid "Global announcement:"
 msgstr "Глобальное объявление:"
 
-#: src/gui/widgets/chattab.cpp:152
+#: src/gui/widgets/chattab.cpp:153
 #, c-format
 msgid "Global announcement from %s:"
 msgstr "Глобальное объявление от %s:"
 
-#: src/gui/widgets/chattab.cpp:178
+#: src/gui/widgets/chattab.cpp:179
 #, c-format
 msgid "%s whispers: %s"
 msgstr "%s шепчет: %s"
@@ -3325,11 +3323,12 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:123
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:62
@@ -3415,6 +3414,14 @@ msgstr "Сменить логин"
 #: src/gui/worldselectdialog.cpp:81
 msgid "Choose World"
 msgstr "Выберите сервер"
+
+#: src/inventory.cpp:240
+msgid "Storage"
+msgstr "Хранилище"
+
+#: src/inventory.cpp:242
+msgid "Cart"
+msgstr "Телега"
 
 #: src/keyboardconfig.cpp:41
 msgid "Move Up"
@@ -3767,7 +3774,6 @@ msgid "Change Imitation mode"
 msgstr "Изменение режима имитации"
 
 #: src/keyboardconfig.cpp:317
-#, fuzzy
 msgid "Disable / Enable Game modifier keys"
 msgstr "Включение / Выключение специальных модификаторов"
 
@@ -3800,37 +3806,37 @@ msgstr ""
 msgid "You were killed by "
 msgstr "Вы были убиты "
 
-#: src/localplayer.cpp:1321
+#: src/localplayer.cpp:1326
 msgid "Tried to pick up nonexistent item."
 msgstr "Попытка поднять несуществующий предмет."
 
-#: src/localplayer.cpp:1323
+#: src/localplayer.cpp:1328
 msgid "Item is too heavy."
 msgstr "Предмет слишком тяжелый"
 
-#: src/localplayer.cpp:1325
+#: src/localplayer.cpp:1330
 msgid "Item is too far away"
 msgstr "Предмет слишком далеко"
 
-#: src/localplayer.cpp:1327
+#: src/localplayer.cpp:1332
 msgid "Inventory is full."
 msgstr "Инвентарь переполнен."
 
-#: src/localplayer.cpp:1329
+#: src/localplayer.cpp:1334
 msgid "Stack is too big."
 msgstr "Слишком много предметов."
 
-#: src/localplayer.cpp:1332
+#: src/localplayer.cpp:1337
 msgid "Item belongs to someone else."
 msgstr "Предмет принадлежит кому-то еще."
 
-#: src/localplayer.cpp:1335
+#: src/localplayer.cpp:1340
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: This sentence may be translated differently
 #. for different grammatical numbers (singular, plural, ...)
-#: src/localplayer.cpp:1360
+#: src/localplayer.cpp:1365
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -3839,11 +3845,11 @@ msgstr[1] "Вы подняли %d [@@%d|%s@@]."
 msgstr[2] "Вы подняли %d [@@%d|%s@@]."
 msgstr[3] "Вы подняли %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3062
+#: src/localplayer.cpp:3081
 msgid "Away"
 msgstr "Отошел"
 
-#: src/localplayer.cpp:3702
+#: src/localplayer.cpp:3733
 msgid "You see "
 msgstr "Вы видите "
 
@@ -4115,7 +4121,7 @@ msgstr "Некорректный номер слота."
 msgid "Unknown error."
 msgstr "Неизвестная ошибка."
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:196
+#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:199
 msgid "Info"
 msgstr "Сведения"
 
@@ -4355,68 +4361,69 @@ msgstr "Невозможно продавать в режиме обмена."
 msgid "Unable to sell unsellable item."
 msgstr "Невозможно продать непродаваемый предмет."
 
-#: src/net/tmwa/charserverhandler.cpp:116
+#: src/net/tmwa/charserverhandler.cpp:119
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
 "В доступе отказано. Скорее всего на этом сервере слишком много игроков."
 
-#: src/net/tmwa/charserverhandler.cpp:120
+#: src/net/tmwa/charserverhandler.cpp:123
 msgid "Cannot use this ID."
 msgstr "Нельзя использовать данный ID"
 
-#: src/net/tmwa/charserverhandler.cpp:123
+#: src/net/tmwa/charserverhandler.cpp:126
 msgid "Unknown char-server failure."
 msgstr "Неизвестная ошибка сервера чата."
 
-#: src/net/tmwa/charserverhandler.cpp:169
+#: src/net/tmwa/charserverhandler.cpp:172
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
-#: src/net/tmwa/charserverhandler.cpp:173 src/net/tmwa/loginhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:188
 msgid "Wrong name."
 msgstr "Некорректное имя."
 
-#: src/net/tmwa/charserverhandler.cpp:176
+#: src/net/tmwa/charserverhandler.cpp:179
 msgid "Incorrect stats."
 msgstr "Некорректные статы."
 
-#: src/net/tmwa/charserverhandler.cpp:179
+#: src/net/tmwa/charserverhandler.cpp:182
 msgid "Incorrect hair."
 msgstr "Некорректный тип волос."
 
-#: src/net/tmwa/charserverhandler.cpp:182
+#: src/net/tmwa/charserverhandler.cpp:185
 msgid "Incorrect slot."
 msgstr "Некорректный слот."
 
-#: src/net/tmwa/charserverhandler.cpp:196
+#: src/net/tmwa/charserverhandler.cpp:199
 msgid "Character deleted."
 msgstr "Персонаж удален"
 
-#: src/net/tmwa/charserverhandler.cpp:201
+#: src/net/tmwa/charserverhandler.cpp:204
 msgid "Failed to delete character."
 msgstr "Невозможно удалить персонажа."
 
-#: src/net/tmwa/charserverhandler.cpp:378
+#: src/net/tmwa/charserverhandler.cpp:381
 msgid "Strength:"
 msgstr "Сила (str):"
 
-#: src/net/tmwa/charserverhandler.cpp:379
+#: src/net/tmwa/charserverhandler.cpp:382
 msgid "Agility:"
 msgstr "Выносливость (agi):"
 
-#: src/net/tmwa/charserverhandler.cpp:380
+#: src/net/tmwa/charserverhandler.cpp:383
 msgid "Vitality:"
 msgstr "Живучесть (vit):"
 
-#: src/net/tmwa/charserverhandler.cpp:381
+#: src/net/tmwa/charserverhandler.cpp:384
 msgid "Intelligence:"
 msgstr "Интеллект (int):"
 
-#: src/net/tmwa/charserverhandler.cpp:382
+#: src/net/tmwa/charserverhandler.cpp:385
 msgid "Dexterity:"
 msgstr "Ловкость (dex):"
 
-#: src/net/tmwa/charserverhandler.cpp:383
+#: src/net/tmwa/charserverhandler.cpp:386
 msgid "Luck:"
 msgstr "Удача (luk):"
 
@@ -4724,8 +4731,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:99
 msgid "Command: /item"
@@ -4748,8 +4754,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:111
 msgid "Command: /exp"
@@ -4791,11 +4797,11 @@ msgstr "Обмен опытом невозможен."
 msgid "Experience sharing unknown."
 msgstr "Политика распределения опыта неизвестна."
 
-#: src/net/tmwa/inventoryhandler.cpp:361
+#: src/net/tmwa/inventoryhandler.cpp:362
 msgid "Failed to use item."
 msgstr "Не удалось использовать предмет."
 
-#: src/net/tmwa/inventoryhandler.cpp:513
+#: src/net/tmwa/inventoryhandler.cpp:514
 msgid "Unable to equip."
 msgstr "Нельза экипировать!"
 
@@ -4969,39 +4975,41 @@ msgstr "Вы не жилец"
 msgid "You're pining for the fjords."
 msgstr "Вас пришпиливают к фьёрдам."
 
-#: src/net/tmwa/playerhandler.cpp:326 src/net/tmwa/playerhandler.cpp:336
-#: src/net/tmwa/playerhandler.cpp:415
+#: src/net/tmwa/playerhandler.cpp:331 src/net/tmwa/playerhandler.cpp:341
+#: src/net/tmwa/playerhandler.cpp:420
 msgid "Message"
 msgstr "Сообщение"
 
-#: src/net/tmwa/playerhandler.cpp:327
+#: src/net/tmwa/playerhandler.cpp:332
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
 
-#: src/net/tmwa/playerhandler.cpp:337
-msgid "You are carrying less than half your weight. You are can regain health."
+#: src/net/tmwa/playerhandler.cpp:342
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Вы несете груз меньше, чем половина вашей грузоподъемности. Вы можете "
 "восстановить здоровье."
 
-#: src/net/tmwa/playerhandler.cpp:442
+#: src/net/tmwa/playerhandler.cpp:447
 #, c-format
 msgid "You picked up %s."
 msgstr "Вы получили %s."
 
-#: src/net/tmwa/playerhandler.cpp:448
+#: src/net/tmwa/playerhandler.cpp:453
 #, c-format
 msgid "You spent %s."
 msgstr "Вы потратили %s."
 
-#: src/net/tmwa/playerhandler.cpp:493
+#: src/net/tmwa/playerhandler.cpp:498
 msgid "Cannot raise skill!"
 msgstr "Не удалось увеличить навык!"
 
-#: src/net/tmwa/playerhandler.cpp:613
+#: src/net/tmwa/playerhandler.cpp:618
 msgid "Equip arrows first."
 msgstr "Для начала экипируйтесь стрелами!"
 
