@@ -1586,7 +1586,7 @@ void LocalPlayer::event(Channels channel, const Mana::Event &event)
                 int change = exp.first - event.getInt("oldValue1");
                 if (change != 0 && mMessages.size() < 20)
                 {
-                    if (mMessages.size() > 0)
+                    if (!mMessages.empty())
                     {
                         MessagePair pair = mMessages.back();
                         if (pair.first.find(" xp") == pair.first.size() - 3)

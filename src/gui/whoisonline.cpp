@@ -480,7 +480,7 @@ void WhoIsOnline::logic()
                 mUpdateButton->setEnabled(true);
                 mUpdateTimer = 0;
                 updateSize();
-                if (mOnlinePlayers.size() > 0 && chatWindow)
+                if (!mOnlinePlayers.empty() && chatWindow)
                     chatWindow->updateOnline(mOnlinePlayers);
             }
             break;

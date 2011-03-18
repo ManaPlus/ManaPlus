@@ -91,12 +91,16 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
 
     reflowLayout(0, 0);
 
-    if (worlds.size() == 0)
+    if (worlds.empty())
+    {
         // Disable Ok button
         mChooseWorld->setEnabled(false);
+    }
     else
+    {
         // Select first server
         mWorldList->setSelected(0);
+    }
 
     addKeyListener(this);
 

@@ -477,7 +477,7 @@ public:
 std::vector<PlayerIgnoreStrategy *> *
 PlayerRelationsManager::getPlayerIgnoreStrategies()
 {
-    if (mIgnoreStrategies.size() == 0)
+    if (mIgnoreStrategies.empty())
     {
         // not initialised yet?
         mIgnoreStrategies.push_back(new PIS_emote(FIRST_IGNORE_EMOTE,

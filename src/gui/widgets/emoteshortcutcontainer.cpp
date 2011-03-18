@@ -131,8 +131,8 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
             mEmoteImg[i]->sprite->draw(g, emoteX + 2, emoteY + 10);
     }
 
-    if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(mEmoteImg.size()) + 1
-        && mEmoteMoved > 0)
+    if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(
+        mEmoteImg.size()) + 1 && mEmoteMoved > 0)
     {
         // Draw the emote image being dragged by the cursor.
         const EmoteSprite* sprite = mEmoteImg[mEmoteMoved - 1];

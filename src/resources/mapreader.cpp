@@ -197,7 +197,8 @@ Map *MapReader::readMap(const std::string &filename,
     unsigned char *inflated;
     unsigned int inflatedSize;
 
-    if (realFilename.find(".gz", realFilename.length() - 3) != std::string::npos)
+    if (realFilename.find(".gz", realFilename.length() - 3)
+        != std::string::npos)
     {
         // Inflate the gzipped map data
         inflatedSize = inflateMemory(static_cast<unsigned char*>(buffer),
@@ -232,7 +233,8 @@ Map *MapReader::readMap(const std::string &filename,
     }
     else
     {
-        logger->log("Error while parsing map file (%s)!", realFilename.c_str());
+        logger->log("Error while parsing map file (%s)!",
+                    realFilename.c_str());
     }
 
     if (map)

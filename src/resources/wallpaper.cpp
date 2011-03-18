@@ -154,7 +154,7 @@ std::string Wallpaper::getWallpaper(int width, int height)
     if (!wallPaperVector.empty())
     {
         // If we've got more than one occurence of a valid wallpaper...
-        if (wallPaperVector.size() > 0)
+        if (!wallPaperVector.empty())
         {
           // Return randomly a wallpaper between vector[0] and
           // vector[vector.size() - 1]

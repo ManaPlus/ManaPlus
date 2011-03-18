@@ -516,7 +516,7 @@ void Map::update(int ticks)
     // Update animated tiles
     for (std::map<int, TileAnimation*>::iterator
          iAni = mTileAnimations.begin();
-         iAni != mTileAnimations.end(); iAni++)
+         iAni != mTileAnimations.end(); ++iAni)
     {
         iAni->second->update(ticks);
     }
@@ -704,10 +704,10 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     int timePassed = get_elapsed_time(lastTick);
 
     std::list<AmbientLayer*>::iterator i;
-    for (i = mBackgrounds.begin(); i != mBackgrounds.end(); i++)
+    for (i = mBackgrounds.begin(); i != mBackgrounds.end(); ++i)
         (*i)->update(timePassed, dx, dy);
 
-    for (i = mForegrounds.begin(); i != mForegrounds.end(); i++)
+    for (i = mForegrounds.begin(); i != mForegrounds.end(); ++i)
         (*i)->update(timePassed, dx, dy);
 
     mLastScrollX = scrollX;
@@ -741,7 +741,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
 
     // Draw overlays
     for (std::list<AmbientLayer*>::iterator i = layers->begin();
-         i != layers->end(); i++)
+         i != layers->end(); ++i)
     {
         (*i)->draw(graphics, graphics->getWidth(), graphics->getHeight());
 
@@ -968,7 +968,7 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
             it->x * 32 + startOffsetX + static_cast<float>(changeX * i),
             it->y * 32 + startOffsetY + static_cast<float>(changeY * i));
         i++;
-        it++;
+        ++it;
     }
 
     // Remove the last path node, as it's more clever to go to the destination.
@@ -1207,7 +1207,7 @@ void Map::initializeParticleEffects(Particle *particleEngine)
     {
         for (std::list<ParticleEffectData>::iterator
              i = particleEffects.begin();
-             i != particleEffects.end(); i++)
+             i != particleEffects.end(); ++i)
         {
             p = particleEngine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)
@@ -1382,7 +1382,7 @@ MapItem *Map::findPortalXY(int x, int y)
     std::list<MapItem*>::iterator it_end;
 
     for (it = mMapPortals.begin(), it_end = mMapPortals.end();
-         it != it_end; it++)
+         it != it_end; ++it)
     {
         MapItem *item = *it;
         if (item->mX == x && item->mY == y)

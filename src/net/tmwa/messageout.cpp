@@ -82,7 +82,8 @@ void MessageOut::writeInt32(Sint32 value)
 }
 
 #define LOBYTE(w)  (static_cast<unsigned char>(w))
-#define HIBYTE(w)  (static_cast<unsigned char>((static_cast<unsigned short>(w)) >> 8))
+#define HIBYTE(w)  (static_cast<unsigned char>(( \
+static_cast<unsigned short>(w)) >> 8))
 
 void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
                                   unsigned char direction)

@@ -450,7 +450,7 @@ void UpdaterWindow::loadUpdates()
     if (mUpdateFiles.empty())
     {   // updates not downloaded
         mUpdateFiles = loadXMLFile(mUpdatesDir + "/" + xmlUpdateFile);
-        if (!mUpdateFiles.size())
+        if (mUpdateFiles.empty())
         {
             logger->log("Warning this server does not have a"
                         " %s file falling back to %s", xmlUpdateFile.c_str(),
@@ -579,7 +579,7 @@ void UpdaterWindow::logic()
                     mUpdateFiles = loadXMLFile(
                         mUpdatesDir + "/" + xmlUpdateFile);
 
-                    if (mUpdateFiles.size() == 0)
+                    if (mUpdateFiles.empty())
                     {
                         logger->log("Warning this server does not have a %s"
                                     " file falling back to %s",
