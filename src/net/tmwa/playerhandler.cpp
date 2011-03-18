@@ -241,8 +241,9 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 //                    player_node->updateNavigateList();
                 }
 
-                logger->log("Adjust scrolling by %d:%d", (int) scrollOffsetX,
-                           (int) scrollOffsetY);
+                logger->log("Adjust scrolling by %d:%d",
+                    static_cast<int>(scrollOffsetX),
+                    static_cast<int>(scrollOffsetY));
 
                 if (viewport)
                     viewport->scrollBy(scrollOffsetX, scrollOffsetY);

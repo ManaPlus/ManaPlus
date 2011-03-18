@@ -93,7 +93,8 @@ bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp,
     logger->log("Using OpenGL %s double buffering.",
             (gotDoubleBuffer ? "with" : "without"));
 
-    char const *glExtensions = (char const *)glGetString(GL_EXTENSIONS);
+    char const *glExtensions = reinterpret_cast<char const *>(
+        glGetString(GL_EXTENSIONS));
     GLint texSize;
     bool rectTex = strstr(glExtensions, "GL_ARB_texture_rectangle");
     if (rectTex)
@@ -120,10 +121,12 @@ static inline void drawQuad(Image *image,
     if (image->getTextureType() == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
-        float texX1 = srcX / (float) image->getTextureWidth();
-        float texY1 = srcY / (float) image->getTextureHeight();
-        float texX2 = (srcX + width) / (float) image->getTextureWidth();
-        float texY2 = (srcY + height) / (float) image->getTextureHeight();
+        float texX1 = srcX / static_cast<float>(image->getTextureWidth());
+        float texY1 = srcY / static_cast<float>(image->getTextureHeight());
+        float texX2 = (srcX + width) / static_cast<float>(
+            image->getTextureWidth());
+        float texY2 = (srcY + height) / static_cast<float>(
+            image->getTextureHeight());
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -154,10 +157,12 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
     if (image->getTextureType() == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
-        float texX1 = srcX / (float) image->getTextureWidth();
-        float texY1 = srcY / (float) image->getTextureHeight();
-        float texX2 = (srcX + width) / (float) image->getTextureWidth();
-        float texY2 = (srcY + height) / (float) image->getTextureHeight();
+        float texX1 = srcX / static_cast<float>(image->getTextureWidth());
+        float texY1 = srcY / static_cast<float>(image->getTextureHeight());
+        float texX2 = (srcX + width) / static_cast<float>(
+            image->getTextureWidth());
+        float texY2 = (srcY + height) / static_cast<float>(
+            image->getTextureHeight());
 
         glTexCoord2f(texX1, texY1);
         glVertex2i(dstX, dstY);
@@ -396,7 +401,8 @@ void OpenGL1Graphics::_beginDraw()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    glOrtho(0.0, (double)mTarget->w, (double)mTarget->h, 0.0, -1.0, 1.0);
+    glOrtho(0.0, static_cast<double>(mTarget->w),
+        static_cast<double>(mTarget->h), 0.0, -1.0, 1.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -431,12 +437,14 @@ SDL_Surface* OpenGL1Graphics::getScreenshot()
 
     // Flip the screenshot, as OpenGL has 0,0 in bottom left
     unsigned int lineSize = 3 * w;
-    GLubyte* buf = (GLubyte*)malloc(lineSize);
+    GLubyte* buf = static_cast<GLubyte*>(malloc(lineSize));
 
     for (int i = 0; i < (h / 2); i++)
     {
-        GLubyte *top = (GLubyte*)screenshot->pixels + lineSize * i;
-        GLubyte *bot = (GLubyte*)screenshot->pixels + lineSize * (h - 1 - i);
+        GLubyte *top = static_cast<GLubyte*>(
+            screenshot->pixels) + lineSize * i;
+        GLubyte *bot = static_cast<GLubyte*>(
+            screenshot->pixels) + lineSize * (h - 1 - i);
 
         memcpy(buf, top, lineSize);
         memcpy(top, bot, lineSize);

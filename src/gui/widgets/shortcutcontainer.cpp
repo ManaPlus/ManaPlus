@@ -65,7 +65,7 @@ int ShortcutContainer::getIndexFromGrid(int pointX, int pointY) const
     int index = ((pointY / mBoxHeight) * mGridWidth) + pointX / mBoxWidth;
 
     if (!tRect.isPointInRect(pointX, pointY) ||
-        index >= (int)mMaxItems || index < 0)
+        index >= static_cast<int>(mMaxItems) || index < 0)
     {
         index = -1;
     }

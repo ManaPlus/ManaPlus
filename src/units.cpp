@@ -186,7 +186,7 @@ std::string formatUnit(int value, int type)
             std::string output;
             struct UnitLevel pl = ud.levels[0];
             ul = ud.levels[1];
-            int levelAmount = (int) amount;
+            int levelAmount = static_cast<int>(amount);
             int nextAmount = 0;
 
             if (ul.count)

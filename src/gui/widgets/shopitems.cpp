@@ -43,8 +43,11 @@ int ShopItems::getNumberOfElements()
 
 std::string ShopItems::getElementAt(int i)
 {
-    if (i < 0 || (unsigned)i >= mShopItems.size() || !mShopItems.at(i))
+    if (i < 0 || static_cast<unsigned>(i) >= mShopItems.size()
+        || !mShopItems.at(i))
+    {
         return "";
+    }
 
     return mShopItems.at(i)->getDisplayName();
 }

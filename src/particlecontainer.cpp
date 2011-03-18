@@ -138,7 +138,7 @@ void ParticleVector::setLocally(int index, Particle *particle)
 
     delLocally(index);
 
-    if (mIndexedElements.size() <= (unsigned) index)
+    if (mIndexedElements.size() <= static_cast<unsigned>(index))
         mIndexedElements.resize(index + 1, NULL);
 
     if (particle)
@@ -151,7 +151,7 @@ void ParticleVector::delLocally(int index)
     if (index < 0)
         return;
 
-    if (mIndexedElements.size() <= (unsigned) index)
+    if (mIndexedElements.size() <= static_cast<unsigned>(index))
         return;
 
     Particle *p = mIndexedElements[index];

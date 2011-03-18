@@ -40,7 +40,8 @@ namespace XML
         if (useResman)
         {
             ResourceManager *resman = ResourceManager::getInstance();
-            data = (char*) resman->loadFile(filename.c_str(), size);
+            data = static_cast<char*>(resman->loadFile(
+                filename.c_str(), size));
         }
         else
         {
@@ -54,7 +55,7 @@ namespace XML
                 size = static_cast<int>(file.tellg());
                 file.seekg(0, std::ios::beg);
 
-                data = (char*) malloc(size);
+                data = static_cast<char*>(malloc(size));
 
                 file.read(data, size);
                 file.close();
@@ -105,7 +106,7 @@ namespace XML
         xmlChar *prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
-            ret = atoi((char*)prop);
+            ret = atoi(reinterpret_cast<char*>(prop));
             xmlFree(prop);
         }
 
@@ -119,7 +120,7 @@ namespace XML
         xmlChar *prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
-            ret = atof((char*)prop);
+            ret = atof(reinterpret_cast<char*>(prop));
             xmlFree(prop);
         }
 
@@ -132,7 +133,7 @@ namespace XML
         xmlChar *prop = xmlGetProp(node, BAD_CAST name);
         if (prop)
         {
-            std::string val = (char*)prop;
+            std::string val = reinterpret_cast<char*>(prop);
             xmlFree(prop);
             return val;
         }

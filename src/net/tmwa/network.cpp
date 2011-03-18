@@ -257,7 +257,7 @@ void Network::flush()
 
     SDL_mutexP(mMutex);
     ret = SDLNet_TCP_Send(mSocket, mOutBuffer, mOutSize);
-    if (ret < (int)mOutSize)
+    if (ret < static_cast<int>(mOutSize))
     {
         setError("Error in SDLNet_TCP_Send(): " +
                  std::string(SDLNet_GetError()));
@@ -396,7 +396,7 @@ void Network::receive()
     {
         // TODO Try to get this to block all the time while still being able
         // to escape the loop
-        int numReady = SDLNet_CheckSockets(set, ((Uint32)500));
+        int numReady = SDLNet_CheckSockets(set, (static_cast<Uint32>(500)));
         int ret;
         switch (numReady)
         {
@@ -476,9 +476,9 @@ void Network::setError(const std::string &error)
 Uint16 Network::readWord(int pos)
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    return SDL_Swap16((*(Uint16*)(mInBuffer + (pos))));
+    return SDL_Swap16((*static_cast<Uint16*>(mInBuffer + (pos))));
 #else
-    return (*(Uint16*)(mInBuffer + (pos)));
+    return (*reinterpret_cast<Uint16*>(mInBuffer + (pos)));
 #endif
 }
 

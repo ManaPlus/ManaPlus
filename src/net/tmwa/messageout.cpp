@@ -55,7 +55,7 @@ void MessageOut::expand(size_t bytes)
 
 void MessageOut::writeInt16(Sint16 value)
 {
-    DEBUGLOG("writeInt16: " + toString((int)value));
+    DEBUGLOG("writeInt16: " + toString(static_cast<int>(value)));
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     Sint16 swap = SDL_Swap16(value);
@@ -81,8 +81,8 @@ void MessageOut::writeInt32(Sint32 value)
     PacketCounters::incOutBytes(4);
 }
 
-#define LOBYTE(w)  ((unsigned char)(w))
-#define HIBYTE(w)  ((unsigned char)(((unsigned short)(w)) >> 8))
+#define LOBYTE(w)  (static_cast<unsigned char>(w))
+#define HIBYTE(w)  (static_cast<unsigned char>((static_cast<unsigned short>(w)) >> 8))
 
 void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
                                   unsigned char direction)
@@ -99,7 +99,7 @@ void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
     data[1] = 1;
     data[2] = 2;
     data[0] = HIBYTE(temp);
-    data[1] = (unsigned char) temp;
+    data[1] = static_cast<unsigned char>(temp);
     temp = y;
     temp <<= 4;
     data[1] |= HIBYTE(temp);
@@ -134,7 +134,7 @@ void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
             break;
         default:
             // OOPSIE! Impossible or unknown
-            direction = (unsigned char) -1;
+            direction = static_cast<unsigned char>(-1);
     }
     data[2] |= direction;
     PacketCounters::incOutBytes(3);

@@ -60,7 +60,7 @@ Sint16 MessageIn::readInt16()
     }
     mPos += 2;
     PacketCounters::incInBytes(2);
-    DEBUGLOG("readInt16: " + toString((int)value));
+    DEBUGLOG("readInt16: " + toString(static_cast<int>(value)));
     return value;
 }
 

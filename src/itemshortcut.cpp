@@ -62,7 +62,7 @@ void ItemShortcut::load(bool oldConfig)
         name = "shortcut";
     for (int i = 0; i < SHORTCUT_ITEMS; i++)
     {
-        int itemId = (int) cfg->getValue(name + toString(i), -1);
+        int itemId = static_cast<int>(cfg->getValue(name + toString(i), -1));
 
         mItems[i] = itemId;
     }

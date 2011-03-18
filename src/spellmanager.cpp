@@ -52,7 +52,7 @@ SpellManager::~SpellManager()
 
 TextCommand* SpellManager::getSpell(int spellId)
 {
-    if (spellId < 0 || (unsigned int)spellId >= mSpells.size())
+    if (spellId < 0 || static_cast<unsigned int>(spellId) >= mSpells.size())
         return NULL;
 
     return mSpells[spellId];
@@ -273,15 +273,16 @@ void SpellManager::load(bool oldConfig)
         std::string icon = cfg->getValue("commandShortcutIcon"
                                          + toString(i), "");
 
-        if ((TextCommandType)commandType == TEXT_COMMAND_MAGIC)
+        if (static_cast<TextCommandType>(commandType) == TEXT_COMMAND_MAGIC)
         {
-            addSpell(new TextCommand(i, symbol, cmd, (SpellTarget)targetType,
-                     icon, basicLvl, (MagicSchool)school, schoolLvl, mana));
+            addSpell(new TextCommand(i, symbol, cmd,
+                static_cast<SpellTarget>(targetType), icon, basicLvl,
+                static_cast<MagicSchool>(school), schoolLvl, mana));
         }
         else
         {
-            addSpell(new TextCommand(i, symbol, cmd, (SpellTarget)targetType,
-                     icon));
+            addSpell(new TextCommand(i, symbol, cmd,
+                static_cast<SpellTarget>(targetType), icon));
         }
     }
 }

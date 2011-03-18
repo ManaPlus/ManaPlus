@@ -83,7 +83,7 @@ void SimpleAnimation::setFrame(int frame)
 
     if (frame < 0)
         frame = 0;
-    if ((unsigned)frame >= mAnimation->getLength())
+    if (static_cast<unsigned>(frame) >= mAnimation->getLength())
         frame = mAnimation->getLength() - 1;
     mAnimationPhase = frame;
     mCurrentFrame = mAnimation->getFrame(mAnimationPhase);
@@ -104,8 +104,11 @@ void SimpleAnimation::update(int timePassed)
             mAnimationTime -= mCurrentFrame->delay;
             mAnimationPhase++;
 
-            if ((unsigned)mAnimationPhase >= mAnimation->getLength())
+            if (static_cast<unsigned>(mAnimationPhase)
+                >= mAnimation->getLength())
+            {
                 mAnimationPhase = 0;
+            }
 
             mCurrentFrame = mAnimation->getFrame(mAnimationPhase);
         }

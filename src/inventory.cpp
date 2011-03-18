@@ -49,7 +49,7 @@ Inventory::Inventory(int type, int size):
     mUsed(0)
 {
     mItems = new Item*[mSize];
-    std::fill_n(mItems, mSize, (Item*) 0);
+    std::fill_n(mItems, mSize, static_cast<Item*>(0));
 }
 
 Inventory::~Inventory()

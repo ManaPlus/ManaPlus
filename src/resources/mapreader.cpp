@@ -84,7 +84,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
     int ret;
     z_stream strm;
 
-    out = (unsigned char*) malloc(bufferSize);
+    out = static_cast<unsigned char*>(malloc(bufferSize));
 
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
@@ -124,7 +124,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
 
         if (ret != Z_STREAM_END)
         {
-            out = (unsigned char*) realloc(out, bufferSize * 2);
+            out = static_cast<unsigned char*>(realloc(out, bufferSize * 2));
 
             if (out == NULL)
             {
@@ -200,8 +200,8 @@ Map *MapReader::readMap(const std::string &filename,
     if (realFilename.find(".gz", realFilename.length() - 3) != std::string::npos)
     {
         // Inflate the gzipped map data
-        inflatedSize =
-            inflateMemory((unsigned char*) buffer, fileSize, inflated);
+        inflatedSize = inflateMemory(static_cast<unsigned char*>(buffer),
+            fileSize, inflated);
         free(buffer);
 
         if (inflated == NULL)
@@ -213,11 +213,11 @@ Map *MapReader::readMap(const std::string &filename,
     }
     else
     {
-        inflated = (unsigned char*) buffer;
+        inflated = static_cast<unsigned char*>(buffer);
         inflatedSize = fileSize;
     }
 
-    XML::Document doc((char*) inflated, inflatedSize);
+    XML::Document doc(reinterpret_cast<char*>(inflated), inflatedSize);
     free(inflated);
 
     xmlNodePtr node = doc.rootNode();
@@ -456,9 +456,10 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
                 continue;
 
             int len = static_cast<int>(strlen(
-                (const char*)dataChild->content) + 1);
+                reinterpret_cast<const char*>(dataChild->content)) + 1);
             unsigned char *charData = new unsigned char[len + 1];
-            const char *charStart = (const char*) xmlNodeGetContent(dataChild);
+            const char *charStart = reinterpret_cast<const char*>(
+                xmlNodeGetContent(dataChild));
             if (!charStart)
             {
                 delete charData;
@@ -481,7 +482,8 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
 
             int binLen;
             unsigned char *binData = php3_base64_decode(charData,
-                    static_cast<int>(strlen((char*)charData)), &binLen);
+                static_cast<int>(strlen(reinterpret_cast<char*>(
+                charData))), &binLen);
 
             delete[] charData;
 
@@ -537,7 +539,8 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
             if (!dataChild)
                 continue;
 
-            const char *data = (const char*) xmlNodeGetContent(dataChild);
+            const char *data = reinterpret_cast<const char*>(
+                xmlNodeGetContent(dataChild));
             if (!data)
                 return;
 

@@ -341,7 +341,8 @@ void Image::setAlpha(float alpha)
                         mSDLSurface->format,
                         &r, &g, &b, &a);
 
-                    a = (Uint8) (static_cast<float>(sourceAlpha) * mAlpha);
+                    a = static_cast<Uint8>(static_cast<float>(
+                        sourceAlpha) * mAlpha);
 
                     // Here is the pixel we want to set
                     (static_cast<Uint32 *>(mSDLSurface->pixels))[i] =
@@ -392,27 +393,29 @@ Image* Image::SDLmerge(Image *image, int x, int y)
             surface_offset = offset_y * surface->w + offset_x;
 
             // Retrieving a pixel to merge
-            surface_pix = ((Uint32*) surface->pixels)[surface_offset];
-            cur_pix = ((Uint32*) mSDLSurface->pixels)[current_offset];
+            surface_pix = (static_cast<Uint32*>(
+                surface->pixels))[surface_offset];
+            cur_pix = (static_cast<Uint32*>(
+                mSDLSurface->pixels))[current_offset];
 
             // Retreiving each channel of the pixel using pixel format
-            r = (Uint8)(((surface_pix & surface_fmt->Rmask) >>
+            r = static_cast<Uint8>(((surface_pix & surface_fmt->Rmask) >>
                           surface_fmt->Rshift) << surface_fmt->Rloss);
-            g = (Uint8)(((surface_pix & surface_fmt->Gmask) >>
+            g = static_cast<Uint8>(((surface_pix & surface_fmt->Gmask) >>
                           surface_fmt->Gshift) << surface_fmt->Gloss);
-            b = (Uint8)(((surface_pix & surface_fmt->Bmask) >>
+            b = static_cast<Uint8>(((surface_pix & surface_fmt->Bmask) >>
                           surface_fmt->Bshift) << surface_fmt->Bloss);
-            a = (Uint8)(((surface_pix & surface_fmt->Amask) >>
+            a = static_cast<Uint8>(((surface_pix & surface_fmt->Amask) >>
                           surface_fmt->Ashift) << surface_fmt->Aloss);
 
             // Retreiving previous alpha value
-            p_a = (Uint8)(((cur_pix & current_fmt->Amask) >>
+            p_a = static_cast<Uint8>(((cur_pix & current_fmt->Amask) >>
                             current_fmt->Ashift) << current_fmt->Aloss);
 
             // new pixel with no alpha or nothing on previous pixel
             if (a == SDL_ALPHA_OPAQUE || (p_a == 0 && a > 0))
             {
-                ((Uint32 *)(surface->pixels))[current_offset] =
+                (static_cast<Uint32 *>(surface->pixels))[current_offset] =
                     SDL_MapRGBA(current_fmt, r, g, b, a);
             }
             else if (a > 0)
@@ -420,17 +423,20 @@ Image* Image::SDLmerge(Image *image, int x, int y)
                 f_a = static_cast<double>(a) / 255.0;
                 f_ca = 1.0 - f_a;
                 f_pa = static_cast<double>(p_a) / 255.0;
-                p_r = (Uint8)(((cur_pix & current_fmt->Rmask) >>
+                p_r = static_cast<Uint8>(((cur_pix & current_fmt->Rmask) >>
                                 current_fmt->Rshift) << current_fmt->Rloss);
-                p_g = (Uint8)(((cur_pix & current_fmt->Gmask) >>
+                p_g = static_cast<Uint8>(((cur_pix & current_fmt->Gmask) >>
                                 current_fmt->Gshift) << current_fmt->Gloss);
-                p_b = (Uint8)(((cur_pix & current_fmt->Bmask) >>
+                p_b = static_cast<Uint8>(((cur_pix & current_fmt->Bmask) >>
                                 current_fmt->Bshift) << current_fmt->Bloss);
-                r = (Uint8)((double) p_r * f_ca * f_pa + (double)r * f_a);
-                g = (Uint8)((double) p_g * f_ca * f_pa + (double)g * f_a);
-                b = (Uint8)((double) p_b * f_ca * f_pa + (double)b * f_a);
+                r = static_cast<Uint8>(static_cast<double>(p_r) * f_ca
+                    * f_pa + static_cast<double>(r) * f_a);
+                g = static_cast<Uint8>(static_cast<double>(p_g) * f_ca
+                    * f_pa + static_cast<double>(g) * f_a);
+                b = static_cast<Uint8>(static_cast<double>(p_b) * f_ca
+                    * f_pa + static_cast<double>(b) * f_a);
                 a = (a > p_a ? a : p_a);
-               ((Uint32 *)(surface->pixels))[current_offset] =
+               (static_cast<Uint32 *>(surface->pixels))[current_offset] =
                    SDL_MapRGBA(current_fmt, r, g, b, a);
             }
         }
@@ -459,8 +465,8 @@ Image* Image::SDLgetScaledImage(int width, int height)
     if (mSDLSurface)
     {
         scaledSurface = zoomSurface(mSDLSurface,
-                    (double) width / getWidth(),
-                    (double) height / getHeight(),
+                    static_cast<double>(width) / getWidth(),
+                    static_cast<double>(height) / getHeight(),
                     1);
 
         // The load function takes care of the SDL<->OpenGL implementation
@@ -546,7 +552,7 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
     for (int i = 0; i < tmpImage->w * tmpImage->h; ++i)
     {
         Uint8 r, g, b, a;
-        SDL_GetRGBA(((Uint32*) tmpImage->pixels)[i],
+        SDL_GetRGBA((static_cast<Uint32*>(tmpImage->pixels))[i],
             tmpImage->format, &r, &g, &b, &a);
 
         if (a != 255)

@@ -315,8 +315,8 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         // Image
         else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
         {
-            Image *img = resman->getImage((const char*)
-                node->xmlChildrenNode->content);
+            Image *img = resman->getImage(reinterpret_cast<const char*>(
+                node->xmlChildrenNode->content));
 
             newParticle = new ImageParticle(mMap, img);
         }
@@ -333,8 +333,8 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             effectChildNode, "position-y", 0);
         float offsetZ = XML::getFloatProperty(
             effectChildNode, "position-z", 0);
-        Vector position (mPos.x + (float)pixelX + offsetX,
-                         mPos.y + (float)pixelY + offsetY,
+        Vector position (mPos.x + static_cast<float>(pixelX) + offsetX,
+                         mPos.y + static_cast<float>(pixelY) + offsetY,
                          mPos.z + offsetZ);
         newParticle->moveTo(position);
 
@@ -357,8 +357,8 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             }
             else if (xmlStrEqual(emitterNode->name, BAD_CAST "deatheffect"))
             {
-                std::string deathEffect = (const char*)emitterNode
-                    ->xmlChildrenNode->content;
+                std::string deathEffect = reinterpret_cast<const char*>(
+                    emitterNode->xmlChildrenNode->content);
 
                 char deathEffectConditions = 0x00;
                 if (XML::getBoolProperty(emitterNode, "on-floor", true))

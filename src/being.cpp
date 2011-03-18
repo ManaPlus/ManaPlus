@@ -340,8 +340,8 @@ void Being::setPosition(const Vector &pos)
 
     if (mText)
     {
-        mText->adviseXY((int)pos.x,
-                        (int)pos.y - getHeight() - mText->getHeight() - 6);
+        mText->adviseXY(static_cast<int>(pos.x), static_cast<int>(pos.y)
+            - getHeight() - mText->getHeight() - 6);
     }
 }
 
@@ -379,8 +379,8 @@ void Being::setDestination(int dstX, int dstY)
     {
         // If there is no path but the destination is on the same walkable tile,
         // we accept it.
-        if ((int)mPos.x / 32 == dest.x / 32
-            && (int)mPos.y / 32 == dest.y / 32)
+        if (static_cast<int>(mPos.x) / 32 == dest.x / 32
+            && static_cast<int>(mPos.y) / 32 == dest.y / 32)
         {
             mDest.x = static_cast<float>(dest.x);
             mDest.y = static_cast<float>(dest.y);
@@ -1044,7 +1044,7 @@ void Being::nextTile()
     mX = pos.x;
     mY = pos.y;
     setAction(MOVE);
-    mActionTime += (int)(mWalkSpeed.x / 10);
+    mActionTime += static_cast<int>(mWalkSpeed.x / 10);
 }
 
 int Being::getCollisionRadius() const
@@ -1162,9 +1162,9 @@ void Being::logic()
 
             case MOVE:
             {
-                if (getWalkSpeed().x
-                    && (int) ((get_elapsed_time(mActionTime) * frameCount)
-                    / getWalkSpeed().x) >= frameCount)
+                if (getWalkSpeed().x && static_cast<int> ((get_elapsed_time(
+                    mActionTime) * frameCount) / getWalkSpeed().x)
+                    >= frameCount)
                 {
                     nextTile();
                 }
@@ -1249,7 +1249,7 @@ void Being::logic()
 
     if (!isAlive() && getWalkSpeed().x
         && Net::getGameHandler()->removeDeadBeings()
-        && (int) ((get_elapsed_time(mActionTime)
+        && static_cast<int> ((get_elapsed_time(mActionTime)
         / getWalkSpeed().x) >= static_cast<float>(frameCount)))
     {
         if (getType() != PLAYER && actorSpriteManager)
@@ -1335,10 +1335,10 @@ int Being::getOffset(char pos, char neg) const
     if (mMap)
     {
         offset = (pos == LEFT && neg == RIGHT) ?
-            (int)((static_cast<float>(get_elapsed_time(mActionTime))
+            static_cast<int>((static_cast<float>(get_elapsed_time(mActionTime))
              * static_cast<float>(mMap->getTileWidth()))
              / static_cast<float>(mWalkSpeed.x)) :
-            (int)((static_cast<float>(get_elapsed_time(mActionTime))
+            static_cast<int>((static_cast<float>(get_elapsed_time(mActionTime))
             * static_cast<float>(mMap->getTileHeight()))
             / static_cast<float>(mWalkSpeed.y));
     }

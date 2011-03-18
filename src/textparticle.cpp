@@ -42,8 +42,9 @@ bool TextParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!isAlive())
         return false;
 
-    int screenX = (int) mPos.x + offsetX;
-    int screenY = (int) mPos.y - (int) mPos.z + offsetY;
+    int screenX = static_cast<int>(mPos.x) + offsetX;
+    int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
+        + offsetY;
 
     float alpha = mAlpha * 255.0f;
 

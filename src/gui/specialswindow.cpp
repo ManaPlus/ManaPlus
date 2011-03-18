@@ -237,8 +237,8 @@ SpecialEntry::SpecialEntry(SpecialInfo *info) :
         float progress = 0;
         if (info->rechargeNeeded)
         {
-            progress = (float)info->rechargeCurrent
-                        / (float)info->rechargeNeeded;
+            progress = static_cast<float>(info->rechargeCurrent)
+                / static_cast<float>(info->rechargeNeeded);
         }
         mRechargeBar = new ProgressBar(progress, 100, 10, Theme::PROG_MP);
         mRechargeBar->setSmoothProgress(false);
@@ -252,7 +252,8 @@ void SpecialEntry::update(int current, int needed)
 {
     if (mRechargeBar && needed)
     {
-        float progress = (float)current / (float)needed;
+        float progress = static_cast<float>(current)
+            / static_cast<float>(needed);
         mRechargeBar->setProgress(progress);
     }
 }

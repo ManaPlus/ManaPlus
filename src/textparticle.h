@@ -43,7 +43,7 @@ class TextParticle : public Particle
 
         // hack to improve text visibility
         virtual int getPixelY() const
-        { return (int) (mPos.y + mPos.z); }
+        { return static_cast<int>(mPos.y + mPos.z); }
 
     private:
         std::string mText;             /**< Text of the particle. */

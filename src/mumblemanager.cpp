@@ -111,10 +111,10 @@ void MumbleManager::init()
         return;
     }
 
-    mLinkedMem = (LinkedMem *)(mmap(NULL, sizeof(struct LinkedMem),
+    mLinkedMem = static_cast<LinkedMem *>(mmap(NULL, sizeof(struct LinkedMem),
         PROT_READ | PROT_WRITE, MAP_SHARED, shmfd, 0));
 
-    if (mLinkedMem == (void *)(-1))
+    if (mLinkedMem == reinterpret_cast<void *>(-1))
     {
         mLinkedMem = NULL;
         logger->log1("MumbleManager::init cant map MumbleLink");

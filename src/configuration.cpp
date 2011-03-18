@@ -179,7 +179,8 @@ int Configuration::getIntValue(const std::string &key) const
             if (itdef != mDefaultsData->end() && itdef->second
                 && itdef->second->getType() == Mana::VariableData::DATA_INT)
             {
-                defaultValue = ((Mana::IntData*)itdef->second)->getData();
+                defaultValue = (static_cast<Mana::IntData*>(
+                    itdef->second))->getData();
             }
             else
             {
@@ -209,7 +210,8 @@ std::string Configuration::getStringValue(const std::string &key) const
             if (itdef != mDefaultsData->end() && itdef->second
                 && itdef->second->getType() == Mana::VariableData::DATA_STRING)
             {
-                defaultValue = ((Mana::StringData*)itdef->second)->getData();
+                defaultValue = (static_cast<Mana::StringData*>(
+                    itdef->second))->getData();
             }
             else
             {
@@ -241,7 +243,7 @@ float Configuration::getFloatValue(const std::string &key) const
                 && itdef->second->getType() == Mana::VariableData::DATA_FLOAT)
             {
                 defaultValue = static_cast<float>(
-                    ((Mana::FloatData*)itdef->second)->getData());
+                    (static_cast<Mana::FloatData*>(itdef->second))->getData());
             }
             else
             {
@@ -271,7 +273,8 @@ bool Configuration::getBoolValue(const std::string &key) const
             if (itdef != mDefaultsData->end() && itdef->second
                 && itdef->second->getType() == Mana::VariableData::DATA_BOOL)
             {
-                defaultValue = ((Mana::BoolData*)itdef->second)->getData();
+                defaultValue = (static_cast<Mana::BoolData*>(
+                    itdef->second))->getData();
             }
             else
             {

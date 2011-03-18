@@ -77,7 +77,7 @@ NpcDialog::NpcDialog(int npcId)
     // Setup output text box
     mTextBox = new BrowserBox(BrowserBox::AUTO_WRAP);
     mTextBox->setOpaque(false);
-    mTextBox->setMaxRow((int) config.getIntValue("ChatLogLength"));
+    mTextBox->setMaxRow(static_cast<int>(config.getIntValue("ChatLogLength")));
     mTextBox->setLinkHandler(mItemLinkHandler);
 
     mScrollArea = new ScrollArea(mTextBox);

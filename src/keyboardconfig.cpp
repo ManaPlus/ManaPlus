@@ -356,8 +356,8 @@ void KeyboardConfig::retrieve()
 {
     for (int i = 0; i < KEY_TOTAL; i++)
     {
-        mKey[i].value = (int) config.getValue(
-            mKey[i].configField, mKey[i].defaultValue);
+        mKey[i].value = static_cast<int>(config.getValue(
+            mKey[i].configField, mKey[i].defaultValue));
     }
 }
 
@@ -451,7 +451,7 @@ void KeyboardConfig::refreshActiveKeys()
 std::string KeyboardConfig::getKeyValueString(int index) const
 {
     std::string key = SDL_GetKeyName(
-        (SDLKey) getKeyValue(index));
+        static_cast<SDLKey>(getKeyValue(index)));
 
     return getKeyShortString(key);
 }

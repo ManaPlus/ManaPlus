@@ -301,7 +301,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
 
             //printf(">>>  Got %s: len=%lu left=%lu (event %i)\n", data,
             //    len, left, 50-max_events);
-            return (char*)data;
+            return reinterpret_cast<char*>(data);
         }
     }
     return NULL;

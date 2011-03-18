@@ -353,7 +353,8 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
         }
         else if (xmlStrEqual(propertyNode->name, BAD_CAST "deatheffect"))
         {
-            mDeathEffect = (const char*)propertyNode->xmlChildrenNode->content;
+            mDeathEffect = reinterpret_cast<const char*>(
+                propertyNode->xmlChildrenNode->content);
             mDeathEffectConditions = 0x00;
             if (XML::getBoolProperty(propertyNode, "on-floor", true))
                 mDeathEffectConditions += Particle::DEAD_FLOOR;
@@ -425,13 +426,16 @@ ParticleEmitter::readParticleEmitterProp(xmlNodePtr propertyNode, T def)
 {
     ParticleEmitterProp<T> retval;
 
-    def = (T) XML::getFloatProperty(propertyNode, "value", (double) def);
-    retval.set((T) XML::getFloatProperty(propertyNode, "min", (double) def),
-               (T) XML::getFloatProperty(propertyNode, "max", (double) def));
+    def = static_cast<T>(XML::getFloatProperty(propertyNode, "value",
+        static_cast<double>(def)));
+    retval.set(static_cast<T>(XML::getFloatProperty(propertyNode, "min",
+        static_cast<double>(def))), static_cast<T>(XML::getFloatProperty(
+        propertyNode, "max", static_cast<double>(def))));
 
     std::string change = XML::getProperty(propertyNode, "change-func", "none");
-    T amplitude = (T) XML::getFloatProperty(propertyNode,
-                                            "change-amplitude", 0.0);
+    T amplitude = static_cast<T>(XML::getFloatProperty(propertyNode,
+        "change-amplitude", 0.0));
+
     int period = XML::getProperty(propertyNode, "change-period", 0);
     int phase = XML::getProperty(propertyNode, "change-phase", 0);
     if (change == "saw" || change == "sawtooth")
@@ -564,7 +568,8 @@ void ParticleEmitter::adjustSize(int w, int h)
     mParticlePosY.set(0, static_cast<float>(h));
     int newArea = w * h;
     // adjust the output so that the particle density stays the same
-    float outputFactor = (float)newArea / (float)oldArea;
+    float outputFactor = static_cast<float>(newArea)
+        / static_cast<float>(oldArea);
     mOutput.minVal *= static_cast<float>(outputFactor);
     mOutput.maxVal *= static_cast<float>(outputFactor);
 }

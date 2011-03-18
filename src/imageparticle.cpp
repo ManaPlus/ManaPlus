@@ -66,8 +66,8 @@ bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!isAlive() || !mImage)
         return false;
 
-    int screenX = (int) mPos.x + offsetX - mImage->getWidth() / 2;
-    int screenY = (int) mPos.y - (int)mPos.z
+    int screenX = static_cast<int>(mPos.x) + offsetX - mImage->getWidth() / 2;
+    int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
         + offsetY - mImage->getHeight() / 2;
 
     // Check if on screen
@@ -82,10 +82,16 @@ bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     float alphafactor = mAlpha;
 
     if (mFadeOut && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
-        alphafactor *= (float) mLifetimeLeft / (float) mFadeOut;
+    {
+        alphafactor *= static_cast<float>(mLifetimeLeft)
+            / static_cast<float>(mFadeOut);
+    }
 
     if (mFadeIn && mLifetimePast < mFadeIn)
-        alphafactor *= (float) mLifetimePast / (float) mFadeIn;
+    {
+        alphafactor *= static_cast<float>(mLifetimePast)
+        / static_cast<float>(mFadeIn);
+    }
 
     mImage->setAlpha(alphafactor);
     return graphics->drawImage(mImage, screenX, screenY);

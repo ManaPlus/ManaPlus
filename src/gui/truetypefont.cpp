@@ -173,8 +173,11 @@ void TrueTypeFont::loadFont(const std::string &filename, int size, int style)
 
 void TrueTypeFont::clear()
 {
-    for (unsigned short f = 0; f < (unsigned short)CACHES_NUMBER; f ++)
+    for (unsigned short f = 0; f < static_cast<unsigned short>(
+        CACHES_NUMBER); f ++)
+    {
         mCache[static_cast<unsigned short>(f)].clear();
+    }
 }
 
 void TrueTypeFont::drawString(gcn::Graphics *graphics,

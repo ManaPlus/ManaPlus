@@ -1178,7 +1178,10 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
     for (int f = 0; f < 256; f ++)
     {
         if (!cache[f].empty())
-            str += strprintf("%d: %u, ", f, (unsigned int)cache[f].size());
+        {
+            str += strprintf("%d: %u, ", f,
+                static_cast<unsigned int>(cache[f].size()));
+        }
     }
     debugChatTab->chatLog(str);
 #ifdef DEBUG_FONT_COUNTERS

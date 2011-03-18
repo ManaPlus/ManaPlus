@@ -199,7 +199,7 @@ void ResourceManager::cleanOrphans()
 
 bool ResourceManager::setWriteDir(const std::string &path)
 {
-    return (bool) PHYSFS_setWriteDir(path.c_str());
+    return static_cast<bool>(PHYSFS_setWriteDir(path.c_str()));
 }
 
 bool ResourceManager::addToSearchPath(const std::string &path, bool append)
@@ -278,7 +278,7 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
 
 bool ResourceManager::mkdir(const std::string &path)
 {
-    return (bool) PHYSFS_mkdir(path.c_str());
+    return static_cast<bool>(PHYSFS_mkdir(path.c_str()));
 }
 
 bool ResourceManager::exists(const std::string &path)
@@ -611,7 +611,8 @@ std::vector<std::string> ResourceManager::loadTextFile(
         const std::string &fileName)
 {
     int contentsLength;
-    char *fileContents = (char*)loadFile(fileName, contentsLength);
+    char *fileContents = static_cast<char*>(
+        loadFile(fileName, contentsLength));
     std::vector<std::string> lines;
 
     if (!fileContents)

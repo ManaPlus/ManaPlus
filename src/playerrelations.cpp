@@ -155,8 +155,8 @@ void PlayerRelationsManager::load(bool oldConfig)
     clear();
 
     mPersistIgnores = cfg->getValue(PERSIST_IGNORE_LIST, 1);
-    mDefaultPermissions = (int) cfg->getValue(DEFAULT_PERMISSIONS,
-                                              mDefaultPermissions);
+    mDefaultPermissions = static_cast<int>(cfg->getValue(DEFAULT_PERMISSIONS,
+                                           mDefaultPermissions));
 
     std::string ignore_strategy_name = cfg->getValue(PLAYER_IGNORE_STRATEGY,
                                                      DEFAULT_IGNORE_STRATEGY);

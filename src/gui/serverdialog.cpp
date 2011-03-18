@@ -620,8 +620,8 @@ void ServerDialog::loadServers(bool addNew)
             }
             else if (xmlStrEqual(subNode->name, BAD_CAST "description"))
             {
-                server.description =
-                    (const char*)subNode->xmlChildrenNode->content;
+                server.description = reinterpret_cast<const char*>(
+                    subNode->xmlChildrenNode->content);
             }
         }
 

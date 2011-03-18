@@ -110,7 +110,7 @@ ModeListModel::ModeListModel()
     {
         logger->log1("No modes available");
     }
-    else if (modes == (SDL_Rect **)-1)
+    else if (modes == reinterpret_cast<SDL_Rect **>(-1))
     {
         logger->log1("All resolutions available");
     }
@@ -767,7 +767,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             mSpeechSlider->getValue());
         mSpeechLabel->setCaption(speechModeToString(val));
         mSpeechSlider->setValue(val);
-        config.setValue("speech", (int)val);
+        config.setValue("speech", static_cast<int>(val));
     }
     else if (id == "lognpc")
     {

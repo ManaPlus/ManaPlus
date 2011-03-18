@@ -66,29 +66,33 @@ template <typename T> struct ParticleEmitterProp
     T value(int tick)
     {
         tick += changePhase;
-        T val = (T) (minVal + (maxVal - minVal)
-            * (rand() / ((double) RAND_MAX + 1)));
+        T val = static_cast<T>(minVal + (maxVal - minVal)
+            * (rand() / (static_cast<double>(RAND_MAX) + 1)));
 
         switch (changeFunc)
         {
             case FUNC_SINE:
-                val += (T) std::sin(M_PI * 2 * ((double)(tick % changePeriod)
-                    / (double)changePeriod)) * changeAmplitude;
+                val += static_cast<T>(std::sin(M_PI * 2 * (static_cast<double>(
+                    tick % changePeriod) / static_cast<double>(
+                    changePeriod)))) * changeAmplitude;
                 break;
             case FUNC_SAW:
-                val += (T) (changeAmplitude * ((double)(tick % changePeriod)
-                    / (double)changePeriod)) * 2 - changeAmplitude;
+                val += static_cast<T>(changeAmplitude * (static_cast<double>(
+                    tick % changePeriod) / static_cast<double>(
+                    changePeriod))) * 2 - changeAmplitude;
                 break;
             case FUNC_TRIANGLE:
                 if ((tick % changePeriod) * 2 < changePeriod)
                 {
-                    val += changeAmplitude - (T)((tick % changePeriod)
-                        / (double)changePeriod) * changeAmplitude * 4;
+                    val += changeAmplitude - static_cast<T>((
+                        tick % changePeriod) / static_cast<double>(
+                        changePeriod)) * changeAmplitude * 4;
                 }
                 else
                 {
-                    val += changeAmplitude * -3 + (T)((tick % changePeriod)
-                        / (double)changePeriod) * changeAmplitude * 4;
+                    val += changeAmplitude * -3 + static_cast<T>((
+                        tick % changePeriod) / static_cast<double>(
+                        changePeriod)) * changeAmplitude * 4;
                     // I have no idea why this works but it does
                 }
                 break;

@@ -83,17 +83,17 @@ void EmoteDB::load()
             {
                 EmoteSprite *currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
-                                   + (std::string) (const char*)
-                                   spriteNode->xmlChildrenNode->content;
+                    + (std::string) reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content);
                 currentSprite->sprite = AnimatedSprite::load(file,
-                                XML::getProperty(spriteNode, "variant", 0));
+                    XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::getProperty(spriteNode, "name", "");
                 currentInfo->sprites.push_back(currentSprite);
             }
             else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
             {
-                std::string particlefx = (const char*)(
-                        spriteNode->xmlChildrenNode->content);
+                std::string particlefx = reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content);
                 currentInfo->particles.push_back(particlefx);
             }
         }
@@ -138,8 +138,8 @@ void EmoteDB::load()
             {
                 EmoteSprite *currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
-                                   + (std::string) (const char*)
-                                   spriteNode->xmlChildrenNode->content;
+                    + (std::string) reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content);
                 currentSprite->sprite = AnimatedSprite::load(file,
                                 XML::getProperty(spriteNode, "variant", 0));
                 currentSprite->name = XML::getProperty(spriteNode, "name", "");
@@ -147,8 +147,8 @@ void EmoteDB::load()
             }
             else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
             {
-                std::string particlefx = (const char*)(
-                        spriteNode->xmlChildrenNode->content);
+                std::string particlefx = reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content);
                 currentInfo->particles.push_back(particlefx);
             }
         }

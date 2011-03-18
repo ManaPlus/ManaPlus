@@ -496,8 +496,8 @@ Client::Client(const Options &options):
 
     if (mCurrentServer.port == 0)
     {
-        mCurrentServer.port = (short) branding.getValue("defaultPort",
-                                                        DEFAULT_PORT);
+        mCurrentServer.port = static_cast<short>(branding.getValue(
+            "defaultPort", DEFAULT_PORT));
         mCurrentServer.type = ServerInfo::parseType(
             branding.getValue("defaultServerType", "tmwathena"));
     }
@@ -516,7 +516,7 @@ Client::Client(const Options &options):
     mLogicCounterId = SDL_AddTimer(MILLISECONDS_IN_A_TICK, nextTick, NULL);
     mSecondsCounterId = SDL_AddTimer(1000, nextSecond, NULL);
 
-    const int fpsLimit = (int) config.getIntValue("fpslimit");
+    const int fpsLimit = config.getIntValue("fpslimit");
     mLimitFps = fpsLimit > 0;
 
     // Initialize frame limiting

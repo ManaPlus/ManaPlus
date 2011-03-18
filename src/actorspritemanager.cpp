@@ -101,9 +101,11 @@ class SortBeingFunctor
             if (Net::getNetworkType() == ServerInfo::MANASERV)
             {
                 const Vector &pos1 = being1->getPosition();
-                d1 = abs(((int) pos1.x) - x) + abs(((int) pos1.y) - y);
+                d1 = abs((static_cast<int>(pos1.x)) - x)
+                    + abs((static_cast<int>(pos1.y)) - y);
                 const Vector &pos2 = being2->getPosition();
-                d2 = abs(((int) pos2.x) - x) + abs(((int) pos2.y) - y);
+                d2 = abs((static_cast<int>(pos2.x)) - x)
+                    + abs((static_cast<int>(pos2.y)) - y);
             }
             else
             {
@@ -862,7 +864,7 @@ bool ActorSpriteManager::hasActorSprite(ActorSprite *actor) const
 void ActorSpriteManager::addBlock(Uint32 id)
 {
     bool alreadyBlocked(false);
-    for (int i = 0; i < (int)blockedBeings.size(); ++i)
+    for (int i = 0; i < static_cast<int>(blockedBeings.size()); ++i)
     {
         if (id == blockedBeings.at(i))
         {
@@ -890,7 +892,7 @@ void ActorSpriteManager::deleteBlock(Uint32 id)
 bool ActorSpriteManager::isBlocked(Uint32 id)
 {
     bool blocked(false);
-    for (int i = 0; i < (int)blockedBeings.size(); ++i)
+    for (int i = 0; i < static_cast<int>(blockedBeings.size()); ++i)
     {
         if (id == blockedBeings.at(i))
         {

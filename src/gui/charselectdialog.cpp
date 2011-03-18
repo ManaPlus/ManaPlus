@@ -160,10 +160,11 @@ CharSelectDialog::CharSelectDialog(LoginData *loginData):
 
     place = getPlacer(0, 1);
 
-    for (int i = 0; i < (int)mLoginData->characterSlots; i++)
+    for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
     {
         mCharacterEntries.push_back(new CharacterDisplay(this));
-        place(i % SLOTS_PER_ROW, (int)i / SLOTS_PER_ROW, mCharacterEntries[i]);
+        place(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
+            mCharacterEntries[i]);
     }
 
     reflowLayout();
@@ -187,7 +188,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     // Check if a button of a character was pressed
     const gcn::Widget *sourceParent = event.getSource()->getParent();
     int selected = -1;
-    for (int i = 0; i < (int)mCharacterEntries.size(); ++i)
+    for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
     {
         if (mCharacterEntries[i] == sourceParent)
         {
@@ -297,7 +298,7 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
         if (Net::getNetworkType() == ServerInfo::MANASERV && characterSlot > 0)
             --characterSlot;
 
-        if (characterSlot >= (int)mCharacterEntries.size())
+        if (characterSlot >= static_cast<int>(mCharacterEntries.size()))
         {
             logger->log("Warning: slot out of range: %d", character->slot);
             continue;
@@ -331,7 +332,7 @@ void CharSelectDialog::setLocked(bool locked)
     if (mChangeEmailButton)
         mChangeEmailButton->setEnabled(!locked);
 
-    for (int i = 0; i < (int)mCharacterEntries.size(); ++i)
+    for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
     {
         if (mCharacterEntries[i])
             mCharacterEntries[i]->setActive(!mLocked);
@@ -344,7 +345,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
     if (mLocked)
         return false;
 
-    for (int i = 0; i < (int)mCharacterEntries.size(); ++i)
+    for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
     {
         Net::Character *character = mCharacterEntries[i]->getCharacter();
         if (mCharacterEntries[i] && character)

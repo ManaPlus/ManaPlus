@@ -131,7 +131,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
             mEmoteImg[i]->sprite->draw(g, emoteX + 2, emoteY + 10);
     }
 
-    if (mEmoteMoved && mEmoteMoved <  (unsigned)mEmoteImg.size() + 1
+    if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(mEmoteImg.size()) + 1
         && mEmoteMoved > 0)
     {
         // Draw the emote image being dragged by the cursor.
@@ -245,7 +245,7 @@ void EmoteShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 
     mEmotePopup->setVisible(false);
 
-    if ((unsigned)index < mEmoteImg.size() && mEmoteImg[index])
+    if (static_cast<unsigned>(index) < mEmoteImg.size() && mEmoteImg[index])
     {
         mEmotePopup->show(viewport->getMouseX(), viewport->getMouseY(),
                           mEmoteImg[index]->name);

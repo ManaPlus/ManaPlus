@@ -142,9 +142,10 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
 
     mFrameTime += time;
 
-    while (mFrameTime > (unsigned)mFrame->delay && mFrame->delay > 0)
+    while (mFrameTime > static_cast<unsigned>(mFrame->delay)
+           && mFrame->delay > 0)
     {
-        mFrameTime -= (unsigned)mFrame->delay;
+        mFrameTime -= static_cast<unsigned>(mFrame->delay);
         mFrameIndex++;
 
         if (mFrameIndex == mAnimation->getLength())

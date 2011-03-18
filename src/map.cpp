@@ -119,7 +119,7 @@ MapLayer::MapLayer(int x, int y, int width, int height, bool isFringeLayer):
     const int size = mWidth * mHeight;
     mTiles = new Image*[size];
 
-    std::fill_n(mTiles, size, (Image*) 0);
+    std::fill_n(mTiles, size, static_cast<Image*>(0));
 
     config.addListener("highlightAttackRange", this);
 }
@@ -951,9 +951,9 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
     float endOffsetY = static_cast<float>(endPixelY % 32);
 
     // Find the distance, and divide it by the number of steps
-    int changeX = (int)((endOffsetX - startOffsetX)
+    int changeX = static_cast<int>((endOffsetX - startOffsetX)
                   / static_cast<float>(myPath.size()));
-    int changeY = (int)((endOffsetY - startOffsetY)
+    int changeY = static_cast<int>((endOffsetY - startOffsetY)
                   / static_cast<float>(myPath.size()));
 
     // Convert the map path to pixels over tiles
@@ -1323,8 +1323,9 @@ void Map::saveExtraLayer()
             if (item && item->mType != MapItem::EMPTY
                 && item->mType != MapItem::HOME)
             {
-                mapFile << x << " " << y << " " << (int)item->mType
-                        << " " << item->mComment << std::endl;
+                mapFile << x << " " << y << " "
+                    << static_cast<int>(item->mType) << " "
+                    << item->mComment << std::endl;
             }
         }
     }
@@ -1434,7 +1435,7 @@ SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):
 {
     const int size = mWidth * mHeight;
     mTiles = new MapItem*[size];
-    std::fill_n(mTiles, size, (MapItem*) 0);
+    std::fill_n(mTiles, size, static_cast<MapItem*>(0));
     mDrawSprites = drawSprites;
 }
 

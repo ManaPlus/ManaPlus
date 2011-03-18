@@ -74,10 +74,10 @@ const char *ipToString(int address)
     static char asciiIP[18];
 
     sprintf(asciiIP, "%i.%i.%i.%i",
-            (unsigned char)(address),
-            (unsigned char)(address >> 8),
-            (unsigned char)(address >> 16),
-            (unsigned char)(address >> 24));
+            static_cast<unsigned char>(address),
+            static_cast<unsigned char>(address >> 8),
+            static_cast<unsigned char>(address >> 16),
+            static_cast<unsigned char>(address >> 24));
 
     return asciiIP;
 }
@@ -209,7 +209,7 @@ const std::string encodeStr(unsigned int value, unsigned int size)
     while (value);
 
     while (buf.length() < size)
-        buf += (char)start;
+        buf += static_cast<char>(start);
     return buf;
 }
 
@@ -325,7 +325,7 @@ bool getBoolFromString(const std::string &text)
     else if (txt == "false" || txt == "no" || txt == "off" || txt == "0")
         return false;
     else
-        return (bool) atoi(txt.c_str());
+        return static_cast<bool>(atoi(txt.c_str()));
 }
 
 void replaceSpecialChars(std::string &text)
@@ -347,7 +347,8 @@ void replaceSpecialChars(std::string &text)
         if (idx + 1 < f && text[f] == ';')
         {
             std::string str = " ";
-            str[0] = (char)atoi(text.substr(idx, f - idx).c_str());
+            str[0] = static_cast<char>(atoi(text.substr(
+                idx, f - idx).c_str()));
             text = text.substr(0, pos1) + str + text.substr(f + 1);
             pos1 += 1;
         }

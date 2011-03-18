@@ -541,7 +541,7 @@ void Game::handleInput()
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
             {
-                keyboard.setNewKey((int) event.key.keysym.sym);
+                keyboard.setNewKey(static_cast<int>(event.key.keysym.sym));
                 keyboard.callbackNewKey();
                 keyboard.setNewKeyIndex(keyboard.KEY_NO_VALUE);
                 return;

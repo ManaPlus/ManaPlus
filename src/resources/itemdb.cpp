@@ -510,22 +510,20 @@ int parseSpriteName(std::string &name)
 void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node)
 {
     std::string gender = XML::getProperty(node, "gender", "unisex");
-    std::string filename = (const char*) node->xmlChildrenNode->content;
+    std::string filename = reinterpret_cast<const char*>(
+        node->xmlChildrenNode->content);
 
     if (gender == "male" || gender == "unisex")
-    {
         itemInfo->setSprite(filename, GENDER_MALE);
-    }
     if (gender == "female" || gender == "unisex")
-    {
         itemInfo->setSprite(filename, GENDER_FEMALE);
-    }
 }
 
 void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node)
 {
     std::string event = XML::getProperty(node, "event", "");
-    std::string filename = (const char*) node->xmlChildrenNode->content;
+    std::string filename = reinterpret_cast<const char*>(
+        node->xmlChildrenNode->content);
 
     if (event == "hit")
     {
@@ -549,16 +547,16 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
         if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
         {
             SpriteReference *currentSprite = new SpriteReference;
-            currentSprite->sprite
-                = (const char*)spriteNode->xmlChildrenNode->content;
+            currentSprite->sprite = reinterpret_cast<const char*>(
+                spriteNode->xmlChildrenNode->content);
             currentSprite->variant
                 = XML::getProperty(spriteNode, "variant", 0);
             display->sprites.push_back(currentSprite);
         }
         else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
         {
-            std::string particlefx
-                = (const char*)spriteNode->xmlChildrenNode->content;
+            std::string particlefx = reinterpret_cast<const char*>(
+                spriteNode->xmlChildrenNode->content);
             display->particles.push_back(particlefx);
         }
     }

@@ -85,16 +85,16 @@ void NPCDB::load()
             if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
             {
                 SpriteReference *currentSprite = new SpriteReference;
-                currentSprite->sprite =
-                    (const char*)spriteNode->xmlChildrenNode->content;
+                currentSprite->sprite = reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content);
                 currentSprite->variant =
                     XML::getProperty(spriteNode, "variant", 0);
                 display.sprites.push_back(currentSprite);
             }
             else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
             {
-                std::string particlefx =
-                    (const char*)spriteNode->xmlChildrenNode->content;
+                std::string particlefx = reinterpret_cast<const char*>(
+                    spriteNode->xmlChildrenNode->content);
                 display.particles.push_back(particlefx);
             }
         }

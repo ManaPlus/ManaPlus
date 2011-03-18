@@ -748,7 +748,8 @@ int Window::getResizeHandles(gcn::MouseEvent &event)
     const int y = event.getY();
 
     if (mGrip && (y > static_cast<int>(mTitleBarHeight)
-        || (y < (int)getPadding() && mTitleBarHeight > getPadding())))
+        || (y < static_cast<int>(getPadding()) && mTitleBarHeight
+        > getPadding())))
     {
         const int x = event.getX();
 
@@ -776,7 +777,7 @@ bool Window::isResizeAllowed(gcn::MouseEvent &event)
     const int y = event.getY();
 
     if (mGrip && (y > static_cast<int>(mTitleBarHeight)
-        || y < (int)getPadding()))
+        || y < static_cast<int>(getPadding())))
     {
         const int x = event.getX();
 

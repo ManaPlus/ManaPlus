@@ -30,8 +30,8 @@
 #include "utils/stringutils.h"
 
 #define MAKEWORD(low, high) \
-    ((unsigned short)(((unsigned char)(low)) | \
-    ((unsigned short)((unsigned char)(high))) << 8))
+    (static_cast<unsigned short>((static_cast<unsigned char>(low)) | \
+    (static_cast<unsigned short>(static_cast<unsigned char>(high))) << 8))
 
 namespace Net
 {
@@ -121,14 +121,16 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
                     break;
                 }
             default:
-                logger->log("incorrect direction: %d", (int)direction);
+                logger->log("incorrect direction: %d",
+                    static_cast<int>(direction));
                 // OOPSIE! Impossible or unknown
                 direction = 0;
         }
     }
     mPos += 3;
     PacketCounters::incInBytes(3);
-    DEBUGLOG("readCoordinates: " + toString((int)x) + "," + toString((int)y));
+    DEBUGLOG("readCoordinates: " + toString(static_cast<int>(x))
+        + "," + toString(static_cast<int>(y)));
 }
 
 void MessageIn::readCoordinatePair(Uint16 &srcX, Uint16 &srcY,
@@ -151,9 +153,10 @@ void MessageIn::readCoordinatePair(Uint16 &srcX, Uint16 &srcY,
         srcY = static_cast<unsigned short>(temp >> 4);
     }
     mPos += 5;
-    DEBUGLOG("readCoordinatePair: " + toString((int)srcX) + ","
-             + toString((int)srcY) + " " + toString((int)dstX) + ","
-             + toString((int)dstY));
+    DEBUGLOG("readCoordinatePair: " + toString(static_cast<int>(srcX)) + ","
+        + toString(static_cast<int>(srcY)) + " "
+        + toString(static_cast<int>(dstX)) + ","
+        + toString(static_cast<int>(dstY)));
     PacketCounters::incInBytes(5);
 }
 
@@ -161,7 +164,7 @@ void MessageIn::skip(unsigned int length)
 {
     mPos += length;
     PacketCounters::incInBytes(length);
-    DEBUGLOG("skip: " + toString((int)length));
+    DEBUGLOG("skip: " + toString(static_cast<int>(length)));
 }
 
 std::string MessageIn::readString(int length)

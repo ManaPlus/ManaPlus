@@ -179,7 +179,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             speed = msg.readInt16();
             stunMode = msg.readInt16();  // opt1
             statusEffects = msg.readInt16();  // opt2
-            statusEffects |= ((Uint32)msg.readInt16()) << 16;  // option
+            statusEffects |= (static_cast<Uint32>(
+                msg.readInt16())) << 16;  // option
             job = msg.readInt16();  // class
 
             dstBeing = actorSpriteManager->findBeing(id);
@@ -500,12 +501,12 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     if (dstBeing)
                     {
                         dstBeing->takeDamage(srcBeing, param1,
-                            (Being::AttackType)type);
+                            static_cast<Being::AttackType>(type));
                     }
                     if (srcBeing)
                     {
                         srcBeing->handleAttack(dstBeing, param1,
-                            (Being::AttackType)type);
+                            static_cast<Being::AttackType>(type));
                         if (srcBeing->getType() == Being::PLAYER)
                             srcBeing->setAttackTime();
                     }
@@ -560,7 +561,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             if (!effectManager)
                 return;
 
-            id = (Uint32)msg.readInt32();
+            id = static_cast<Uint32>(msg.readInt32());
             Being* being = actorSpriteManager->findBeing(id);
             if (!being)
                 break;
@@ -843,7 +844,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             speed = msg.readInt16();
             stunMode = msg.readInt16(); // opt1; Aethyra use this as cape
             statusEffects = msg.readInt16(); // opt2; Aethyra use this as misc1
-            statusEffects |= ((Uint32) msg.readInt16())
+            statusEffects |= (static_cast<Uint32>(msg.readInt16()))
                 << 16; // status.options; Aethyra uses this as misc2
             job = msg.readInt16();
 
@@ -1100,7 +1101,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
             stunMode = msg.readInt16();
             statusEffects = msg.readInt16();
-            statusEffects |= ((Uint32) msg.readInt16()) << 16;
+            statusEffects |= (static_cast<Uint32>(msg.readInt16())) << 16;
             msg.readInt8(); // Unused?
 
             dstBeing->setStunMode(stunMode);

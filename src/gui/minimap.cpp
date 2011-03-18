@@ -111,7 +111,7 @@ void Minimap::setMap(Map *map)
 
             // I'm not sure if the locks are necessary since it's a SWSURFACE
             SDL_LockSurface(surface);
-            int* data = (int*)surface->pixels;
+            int* data = static_cast<int*>(surface->pixels);
             if (!data)
             {
                 if (!isSticky())

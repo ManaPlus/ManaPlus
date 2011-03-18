@@ -86,16 +86,16 @@ void Logger::dlog(std::string str)
     std::stringstream timeStr;
     timeStr << "["
         << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "")
-        << (int)(((tv.tv_sec / 60) / 60) % 24)
+        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24)
         << ":"
         << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "")
-        << (int)((tv.tv_sec / 60) % 60)
+        << static_cast<int>((tv.tv_sec / 60) % 60)
         << ":"
         << ((tv.tv_sec % 60 < 10) ? "0" : "")
-        << (int)(tv.tv_sec % 60)
+        << static_cast<int>(tv.tv_sec % 60)
         << "."
         << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
-        << (int)((tv.tv_usec / 10000) % 100)
+        << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
 
     if (mLogFile.is_open())
@@ -118,16 +118,16 @@ void Logger::log1(const char *buf)
     std::stringstream timeStr;
     timeStr << "["
         << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "")
-        << (int)(((tv.tv_sec / 60) / 60) % 24)
+        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24)
         << ":"
         << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "")
-        << (int)((tv.tv_sec / 60) % 60)
+        << static_cast<int>((tv.tv_sec / 60) % 60)
         << ":"
         << ((tv.tv_sec % 60 < 10) ? "0" : "")
-        << (int)(tv.tv_sec % 60)
+        << static_cast<int>(tv.tv_sec % 60)
         << "."
         << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
-        << (int)((tv.tv_usec / 10000) % 100)
+        << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
 
     if (mLogFile.is_open())
@@ -142,10 +142,10 @@ void Logger::log1(const char *buf)
 
 void Logger::log(const char *log_text, ...)
 {
-    unsigned int size = 1024;
+    unsigned size = 1024;
     char* buf = 0;
     if (strlen(log_text) * 3 > size)
-        size = (unsigned)strlen(log_text) * 3;
+        size = static_cast<unsigned>(strlen(log_text) * 3);
 
     buf = new char[size];
     va_list ap;
@@ -163,16 +163,16 @@ void Logger::log(const char *log_text, ...)
     std::stringstream timeStr;
     timeStr << "["
         << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "")
-        << (int)(((tv.tv_sec / 60) / 60) % 24)
+        << static_cast<int>(((tv.tv_sec / 60) / 60) % 24)
         << ":"
         << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "")
-        << (int)((tv.tv_sec / 60) % 60)
+        << static_cast<int>((tv.tv_sec / 60) % 60)
         << ":"
         << ((tv.tv_sec % 60 < 10) ? "0" : "")
-        << (int)(tv.tv_sec % 60)
+        << static_cast<int>(tv.tv_sec % 60)
         << "."
         << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "")
-        << (int)((tv.tv_usec / 10000) % 100)
+        << static_cast<int>((tv.tv_usec / 10000) % 100)
         << "] ";
 
     if (mLogFile.is_open())

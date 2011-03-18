@@ -56,7 +56,8 @@ ChatTab::ChatTab(const std::string &name) :
 
     mTextOutput = new BrowserBox(BrowserBox::AUTO_WRAP);
     mTextOutput->setOpaque(false);
-    mTextOutput->setMaxRow((int) config.getIntValue("ChatLogLength"));
+    mTextOutput->setMaxRow(static_cast<int>(
+        config.getIntValue("ChatLogLength")));
     if (chatWindow)
         mTextOutput->setLinkHandler(chatWindow->mItemLinkHandler);
     mTextOutput->setAlwaysUpdate(false);

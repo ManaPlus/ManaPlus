@@ -63,7 +63,7 @@ void DropShortcut::load(bool oldConfig)
 
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
-        int itemId = (int) cfg->getValue("drop" + toString(i), -1);
+        int itemId = static_cast<int>(cfg->getValue("drop" + toString(i), -1));
 
         if (itemId != -1)
             mItems[i] = itemId;

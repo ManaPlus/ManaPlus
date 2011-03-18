@@ -92,7 +92,8 @@ unsigned long Download::fadler32(FILE *file)
     char *buffer = static_cast<char*>(malloc(fileSize));
     const size_t read = fread(buffer, 1, fileSize, file);
     unsigned long adler = adler32(0L, Z_NULL, 0);
-    adler = adler32(static_cast<uInt>(adler), (Bytef*)buffer, read);
+    adler = adler32(static_cast<uInt>(adler),
+        reinterpret_cast<Bytef*>(buffer), read);
     free(buffer);
 
     return adler;

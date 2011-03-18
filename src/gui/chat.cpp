@@ -367,7 +367,7 @@ void ChatWindow::nextTab()
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
-        mChatTabs->setSelectedTab((unsigned)0);
+        mChatTabs->setSelectedTab(static_cast<unsigned>(0));
 }
 
 void ChatWindow::action(const gcn::ActionEvent &event)

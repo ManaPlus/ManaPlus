@@ -2534,9 +2534,9 @@ bool LocalPlayer::isReachable(int x, int y, int maxCost)
     const Vector &playerPos = getPosition();
 
     Path debugPath = mMap->findPath(
-            (int) (playerPos.x - 16) / 32,
-            (int) (playerPos.y - 32) / 32,
-            x, y, 0x00, maxCost);
+        static_cast<int>(playerPos.x - 16) / 32,
+        static_cast<int>(playerPos.y - 32) / 32,
+        x, y, 0x00, maxCost);
 
     return !debugPath.empty();
 }
@@ -2562,9 +2562,9 @@ bool LocalPlayer::isReachable(Being *being, int maxCost)
     const Vector &playerPos = getPosition();
 
     Path debugPath = mMap->findPath(
-            (int) (playerPos.x - 16) / 32,
-            (int) (playerPos.y - 32) / 32,
-            being->getTileX(), being->getTileY(), 0x00, maxCost);
+        static_cast<int>(playerPos.x - 16) / 32,
+        static_cast<int>(playerPos.y - 32) / 32,
+        being->getTileX(), being->getTileY(), 0x00, maxCost);
 
     being->setDistance(static_cast<int>(debugPath.size()));
     if (!debugPath.empty())
@@ -3134,9 +3134,10 @@ void LocalPlayer::navigateTo(int x, int y)
     mNavigateY = y;
     mNavigateId = 0;
 
-    mNavigatePath = mMap->findPath((int) (playerPos.x - 16) / 32,
-                                    (int) (playerPos.y - 32) / 32,
-                                    x, y, 0x00, 0);
+    mNavigatePath = mMap->findPath(
+        static_cast<int>(playerPos.x - 16) / 32,
+        static_cast<int>(playerPos.y - 32) / 32,
+        x, y, 0x00, 0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -3160,10 +3161,11 @@ void LocalPlayer::navigateTo(Being *being)
     mNavigateX = being->getTileX();
     mNavigateY = being->getTileY();
 
-    mNavigatePath = mMap->findPath((int) (playerPos.x - 16) / 32,
-                                   (int) (playerPos.y - 32) / 32,
-                                   being->getTileX(), being->getTileY(),
-                                   0x00, 0);
+    mNavigatePath = mMap->findPath(
+        static_cast<int>(playerPos.x - 16) / 32,
+        static_cast<int>(playerPos.y - 32) / 32,
+        being->getTileX(), being->getTileY(),
+        0x00, 0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -3215,8 +3217,8 @@ void LocalPlayer::updateCoords()
             if (!tmpLayer)
                 return;
 
-            int x = (int) (playerPos.x - 16) / 32;
-            int y = (int) (playerPos.y - 32) / 32;
+            int x = static_cast<int>(playerPos.x - 16) / 32;
+            int y = static_cast<int>(playerPos.y - 32) / 32;
             if (mNavigateId)
             {
                 if (!actorSpriteManager)
@@ -3291,10 +3293,11 @@ int LocalPlayer::getPathLength(Being* being)
 
     const Vector &playerPos = getPosition();
 
-    Path debugPath = mMap->findPath((int) (playerPos.x - 16) / 32,
-                                    (int) (playerPos.y - 32) / 32,
-                                    being->getTileX(), being->getTileY(),
-                                    0x00, 0);
+    Path debugPath = mMap->findPath(
+        static_cast<int>(playerPos.x - 16) / 32,
+        static_cast<int>(playerPos.y - 32) / 32,
+        being->getTileX(), being->getTileY(),
+        0x00, 0);
     return static_cast<int>(debugPath.size());
 }
 
@@ -3629,10 +3632,12 @@ void LocalPlayer::fixAttackTarget()
         return;
 
     const Vector &playerPos = getPosition();
-    Path debugPath = mMap->findPath((int) (playerPos.x - 16) / 32,
-                               (int) (playerPos.y - 32) / 32,
-                               mTarget->getTileX(), mTarget->getTileY(),
-                               0x00, 0);
+    Path debugPath = mMap->findPath(
+        static_cast<int>(playerPos.x - 16) / 32,
+        static_cast<int>(playerPos.y - 32) / 32,
+        mTarget->getTileX(), mTarget->getTileY(),
+        0x00, 0);
+
     if (!debugPath.empty())
     {
         Path::const_iterator i = debugPath.begin();

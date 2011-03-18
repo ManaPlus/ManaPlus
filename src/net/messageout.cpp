@@ -45,7 +45,7 @@ MessageOut::MessageOut(short id _UNUSED_):
 
 void MessageOut::writeInt8(Sint8 value)
 {
-    DEBUGLOG("writeInt8: " + toString((int)value));
+    DEBUGLOG("writeInt8: " + toString(static_cast<int>(value)));
     expand(1);
     mData[mPos] = value;
     mPos += 1;

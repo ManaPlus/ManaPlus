@@ -143,7 +143,7 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
                 options.serverName = optarg;
                 break;
             case 'p':
-                options.serverPort = (short) atoi(optarg);
+                options.serverPort = static_cast<short>(atoi(optarg));
                 break;
             case 'u':
                 options.skipUpdate = true;
