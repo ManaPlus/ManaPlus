@@ -359,7 +359,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             msg.readInt16();
 
             dstBeing->setStunMode(stunMode);
-            dstBeing->setStatusEffectBlock(0, (statusEffects >> 16) & 0xffff);
+            dstBeing->setStatusEffectBlock(0, static_cast<Uint16>(
+                (statusEffects >> 16) & 0xffff));
             dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
             break;
 
@@ -649,7 +650,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             switch (type)
             {
                 case 0:     // change race
-                    dstBeing->setSubtype(id);
+                    dstBeing->setSubtype(static_cast<Uint16>(id));
                     break;
                 case 1:     // eAthena LOOK_HAIR
                     dstBeing->setSpriteID(SPRITE_HAIR, id *-1);
@@ -661,15 +662,18 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
                     break;
                 case 3:     // Change lower headgear for eAthena, pants for us
-                    dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, id, color, id2);
+                    dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_BOTTOMCLOTHES);
                     break;
                 case 4:     // Change upper headgear for eAthena, hat for us
-                    dstBeing->setSprite(SPRITE_HAT, id, color, id2);
+                    dstBeing->setSprite(SPRITE_HAT, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_HAT);
                     break;
                 case 5:     // Change middle headgear for eathena, armor for us
-                    dstBeing->setSprite(SPRITE_TOPCLOTHES, id, color, id2);
+                    dstBeing->setSprite(SPRITE_TOPCLOTHES, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
                     break;
                 case 6:     // eAthena LOOK_HAIR_COLOR
@@ -678,35 +682,45 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     break;
                 case 8:     // eAthena LOOK_SHIELD
                     if (!config.getBoolValue("hideShield"))
-                        dstBeing->setSprite(SPRITE_SHIELD, id, color, id2);
+                    {
+                        dstBeing->setSprite(SPRITE_SHIELD, id, color,
+                            static_cast<unsigned char>(id2));
+                    }
                     player_node->imitateOutfit(dstBeing, SPRITE_SHIELD);
                     break;
                 case 9:     // eAthena LOOK_SHOES
-                    dstBeing->setSprite(SPRITE_SHOE, id, color, id2);
+                    dstBeing->setSprite(SPRITE_SHOE, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_SHOE);
                     break;
                 case 10:   // LOOK_GLOVES
-                    dstBeing->setSprite(SPRITE_GLOVES, id, color, id2);
+                    dstBeing->setSprite(SPRITE_GLOVES, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_GLOVES);
                     break;
                 case 11:  // LOOK_CAPE
-                    dstBeing->setSprite(SPRITE_CAPE, id, color, id2);
+                    dstBeing->setSprite(SPRITE_CAPE, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_CAPE);
                     break;
                 case 12:
-                    dstBeing->setSprite(SPRITE_MISC1, id, color, id2);
+                    dstBeing->setSprite(SPRITE_MISC1, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_MISC1);
                     break;
                 case 13:
-                    dstBeing->setSprite(SPRITE_MISC2, id, color, id2);
+                    dstBeing->setSprite(SPRITE_MISC2, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_MISC2);
                     break;
                 case 14:
-                    dstBeing->setSprite(SPRITE_EVOL1, id, color, id2);
+                    dstBeing->setSprite(SPRITE_EVOL1, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_EVOL1);
                     break;
                 case 15:
-                    dstBeing->setSprite(SPRITE_EVOL2, id, color, id2);
+                    dstBeing->setSprite(SPRITE_EVOL2, id, color,
+                        static_cast<unsigned char>(id2));
                     player_node->imitateOutfit(dstBeing, SPRITE_EVOL2);
                     break;
                 default:
@@ -955,13 +969,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                     int dir = dstBeing->calcDirection(dstX, dstY);
 
                     if (dir && dstBeing->getDirection() != dir)
-                    {
-                        dstBeing->setDirectionDelayed(dir);
-//                        dstBeing->clearPath();
-//                        dstBeing->reset();
-                    }
+                        dstBeing->setDirectionDelayed(static_cast<Uint8>(dir));
                 }
-
 
                 if (player_node->getCurrentAction() != Being::STAND)
                     player_node->imitateAction(dstBeing, Being::STAND);
@@ -1040,7 +1049,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             }
 
             dstBeing->setStunMode(stunMode);
-            dstBeing->setStatusEffectBlock(0, (statusEffects >> 16) & 0xffff);
+            dstBeing->setStatusEffectBlock(0, static_cast<Uint16>(
+                (statusEffects >> 16) & 0xffff));
             dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
 
             if (msg.getId() == SMSG_PLAYER_MOVE
@@ -1105,7 +1115,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             msg.readInt8(); // Unused?
 
             dstBeing->setStunMode(stunMode);
-            dstBeing->setStatusEffectBlock(0, (statusEffects >> 16) & 0xffff);
+            dstBeing->setStatusEffectBlock(0, static_cast<Uint16>(
+                (statusEffects >> 16) & 0xffff));
             dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
             break;
 

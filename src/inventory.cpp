@@ -160,7 +160,8 @@ int Inventory::getFreeSlot() const
 {
     Item **i = std::find_if(mItems, mItems + mSize,
         std::not1(SlotUsed()));
-    return (i == mItems + static_cast<int>(mSize)) ? -1 : (i - mItems);
+    return (i == mItems + static_cast<int>(mSize)) ? -1
+        : static_cast<int>(i - mItems);
 }
 
 int Inventory::getLastUsedSlot() const

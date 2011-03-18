@@ -82,7 +82,10 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
                 msg.skip(2);  // Length word
                 int slots = msg.readInt16();
                 if (slots > 0 && slots < 30)
-                    loginData.characterSlots = slots;
+                {
+                    loginData.characterSlots
+                        = static_cast<short unsigned int>(slots);
+                }
                 bool version = msg.readInt8() == 1 && serverVersion > 0;
                 msg.skip(17); // Unused
 

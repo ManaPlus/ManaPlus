@@ -121,11 +121,13 @@ static inline void drawQuad(Image *image,
     if (image->getTextureType() == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
-        float texX1 = srcX / static_cast<float>(image->getTextureWidth());
-        float texY1 = srcY / static_cast<float>(image->getTextureHeight());
-        float texX2 = (srcX + width) / static_cast<float>(
+        float texX1 = static_cast<float>(srcX)
+            / static_cast<float>(image->getTextureWidth());
+        float texY1 = static_cast<float>(srcY)
+            / static_cast<float>(image->getTextureHeight());
+        float texX2 = static_cast<float>(srcX + width) / static_cast<float>(
             image->getTextureWidth());
-        float texY2 = (srcY + height) / static_cast<float>(
+        float texY2 = static_cast<float>(srcY + height) / static_cast<float>(
             image->getTextureHeight());
 
         glTexCoord2f(texX1, texY1);
@@ -157,11 +159,13 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
     if (image->getTextureType() == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
-        float texX1 = srcX / static_cast<float>(image->getTextureWidth());
-        float texY1 = srcY / static_cast<float>(image->getTextureHeight());
-        float texX2 = (srcX + width) / static_cast<float>(
+        float texX1 = static_cast<float>(srcX)
+            / static_cast<float>(image->getTextureWidth());
+        float texY1 = static_cast<float>(srcY)
+            / static_cast<float>(image->getTextureHeight());
+        float texX2 = static_cast<float>(srcX + width) / static_cast<float>(
             image->getTextureWidth());
-        float texY2 = (srcY + height) / static_cast<float>(
+        float texY2 = static_cast<float>(srcY + height) / static_cast<float>(
             image->getTextureHeight());
 
         glTexCoord2f(texX1, texY1);
@@ -383,7 +387,8 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
 
     glEnd();
 
-    glColor4ub(mColor.r, mColor.g, mColor.b, mColor.a);
+    glColor4ub(static_cast<GLubyte>(mColor.r), static_cast<GLubyte>(mColor.g),
+        static_cast<GLubyte>(mColor.b), static_cast<GLubyte>(mColor.a));
 }
 
 void OpenGL1Graphics::updateScreen()
@@ -525,12 +530,12 @@ void OpenGL1Graphics::drawLine(int x1, int y1, int x2, int y2)
     setTexturingAndBlending(false);
 
     glBegin(GL_LINES);
-    glVertex2f(x1 + 0.5f, y1 + 0.5f);
-    glVertex2f(x2 + 0.5f, y2 + 0.5f);
+    glVertex2f(static_cast<float>(x1) + 0.5f, static_cast<float>(y1) + 0.5f);
+    glVertex2f(static_cast<float>(x2) + 0.5f, static_cast<float>(y2) + 0.5f);
     glEnd();
 
     glBegin(GL_POINTS);
-    glVertex2f(x2 + 0.5f, y2 + 0.5f);
+    glVertex2f(static_cast<float>(x2) + 0.5f, static_cast<float>(y2) + 0.5f);
     glEnd();
 }
 
@@ -593,10 +598,14 @@ void OpenGL1Graphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
     setTexturingAndBlending(false);
 
     glBegin(filled ? GL_QUADS : GL_LINE_LOOP);
-    glVertex2f(rect.x + offset, rect.y + offset);
-    glVertex2f(rect.x + rect.width - offset, rect.y + offset);
-    glVertex2f(rect.x + rect.width - offset, rect.y + rect.height - offset);
-    glVertex2f(rect.x + offset, rect.y + rect.height - offset);
+    glVertex2f(static_cast<float>(rect.x) + offset,
+        static_cast<float>(rect.y) + offset);
+    glVertex2f(static_cast<float>(rect.x + rect.width) - offset,
+        static_cast<float>(rect.y) + offset);
+    glVertex2f(static_cast<float>(rect.x + rect.width) - offset,
+        static_cast<float>(rect.y + rect.height) - offset);
+    glVertex2f(static_cast<float>(rect.x) + offset,
+        static_cast<float>(rect.y + rect.height) - offset);
     glEnd();
 }
 

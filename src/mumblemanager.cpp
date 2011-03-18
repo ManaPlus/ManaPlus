@@ -55,18 +55,18 @@ uint16_t MumbleManager::getMapId(std::string mapName)
     else
     {
         mapName = mapName.substr(0, 3) + mapName[4];
-        res = atoi(mapName.c_str());
+        res = static_cast<uint16_t>(atoi(mapName.c_str()));
     }
     return res;
 }
 
 void MumbleManager::setMapBase(uint16_t mapid)
 {
-    mMapBase[0] = 10000. * (mapid & 0x1f);
+    mMapBase[0] = 10000.0f * (mapid & 0x1f);
     mapid >>= 5;
-    mMapBase[1] = 1000. * (mapid & 0x3f);
+    mMapBase[1] = 1000.0f * (mapid & 0x3f);
     mapid >>= 6;
-    mMapBase[2] = 10000. * (mapid & 0x1f);
+    mMapBase[2] = 10000.0f * (mapid & 0x1f);
 }
 
 void MumbleManager::init()
@@ -204,8 +204,10 @@ void MumbleManager::setPos(int tileX, int tileY, int direction)
     // lm->fAvatarPosition
 
     /* tmw coordinates work exactly the other way round */
-    mLinkedMemCache.fAvatarPosition[0] = tileX + mMapBase[0];
-    mLinkedMemCache.fAvatarPosition[2] = tileY + mMapBase[2];
+    mLinkedMemCache.fAvatarPosition[0] = static_cast<float>(tileX)
+        + mMapBase[0];
+    mLinkedMemCache.fAvatarPosition[2] = static_cast<float>(tileY)
+        + mMapBase[2];
 
     // Same as avatar but for the camera.
     // lm->fCameraPosition, fCameraFront, fCameraTop
@@ -260,7 +262,7 @@ void MumbleManager::setServer(const std::string &serverName)
     if (!mLinkedMem)
         return;
 
-    unsigned size = serverName.size();
+    unsigned size = static_cast<unsigned>(serverName.size());
     if (size > sizeof(mLinkedMemCache.context) - 1)
         size = sizeof(mLinkedMemCache.context) - 1;
 

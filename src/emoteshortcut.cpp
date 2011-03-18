@@ -44,12 +44,14 @@ EmoteShortcut::~EmoteShortcut()
 
 void EmoteShortcut::load()
 {
-    for (int i = 0, j = 0; i <= EmoteDB::getLast() && j < SHORTCUT_EMOTES; i++)
+    for (unsigned char i = 0, j = 0;
+         i <= EmoteDB::getLast() && j < SHORTCUT_EMOTES;
+         i++)
     {
         const AnimatedSprite* sprite = EmoteDB::getAnimation(i, true);
         if (sprite)
         {
-            mEmotes[j] = i + 1;
+            mEmotes[j] = static_cast<unsigned char>(i + 1);
             j ++;
         }
     }

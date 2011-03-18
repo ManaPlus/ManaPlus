@@ -419,7 +419,7 @@ class Map : public Properties, public ConfigListener
         MapItem *findPortalXY(int x, int y);
 
         int getActorsCount() const
-        { return mActors.size(); }
+        { return static_cast<int>(mActors.size()); }
 
         void setPvpMode(int mode);
 

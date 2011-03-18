@@ -119,7 +119,7 @@ unsigned char *php3_base64_decode(const unsigned char *string,
         chp = strchr(base64_table, ch);
         if (!chp)
             continue;
-        ch = chp - base64_table;
+        ch = static_cast<int>(chp - base64_table);
 
         switch(i % 4)
         {

@@ -48,7 +48,7 @@ int mkdir_r(const char *pathname)
     strncpy(tmp, pathname, sizeof(tmp) - 1);
     tmp[PATH_MAX - 1] = '\0';
 
-    int len = strlen(tmp);
+    int len = static_cast<int>(strlen(tmp));
 
     // terminate the pathname with '/'
     if (tmp[len - 1] != '/')

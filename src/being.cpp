@@ -993,7 +993,7 @@ void Being::setDirection(Uint8 direction)
 
 Uint8 Being::calcDirection() const
 {
-    int dir = 0;
+    Uint8 dir = 0;
     if (mDest.x > mX)
         dir |= RIGHT;
     else if (mDest.x < mX)
@@ -1007,7 +1007,7 @@ Uint8 Being::calcDirection() const
 
 Uint8 Being::calcDirection(int dstX, int dstY) const
 {
-    int dir = 0;
+    Uint8 dir = 0;
     if (dstX > mX)
         dir |= RIGHT;
     else if (dstX < mX)
@@ -1162,8 +1162,9 @@ void Being::logic()
 
             case MOVE:
             {
-                if (getWalkSpeed().x && static_cast<int> ((get_elapsed_time(
-                    mActionTime) * frameCount) / getWalkSpeed().x)
+                if (getWalkSpeed().x && static_cast<int> ((static_cast<float>(
+                    get_elapsed_time(mActionTime)) * static_cast<float>(
+                    frameCount)) / static_cast<float>(getWalkSpeed().x))
                     >= frameCount)
                 {
                     nextTile();
@@ -1249,8 +1250,9 @@ void Being::logic()
 
     if (!isAlive() && getWalkSpeed().x
         && Net::getGameHandler()->removeDeadBeings()
-        && static_cast<int> ((get_elapsed_time(mActionTime)
-        / getWalkSpeed().x) >= static_cast<float>(frameCount)))
+        && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
+        / static_cast<float>(getWalkSpeed().x)))
+        >= static_cast<int>(frameCount))
     {
         if (getType() != PLAYER && actorSpriteManager)
             actorSpriteManager->destroy(this);
@@ -1866,7 +1868,7 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
     if (p <= 0 || p > width)
         return;
 
-    int dx = width / p;
+    int dx = static_cast<int>(static_cast<float>(width) / p);
 
     graphics->setColor(userPalette->getColorWithAlpha(color1));
 
@@ -1908,7 +1910,7 @@ void Being::resetCounters()
 void Being::recalcSpritesOrder()
 {
 //    logger->log("recalcSpritesOrder");
-    unsigned sz = size();
+    unsigned sz = static_cast<unsigned>(size());
     if (sz < 1)
         return;
 

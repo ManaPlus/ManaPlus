@@ -136,7 +136,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
             msg.readInt8(); // Unused
             std::string guildName = msg.readString(24);
 
-            Guild *g = Guild::getGuild(guildId);
+            Guild *g = Guild::getGuild(static_cast<short int>(guildId));
             if (!g)
                 break;
 
@@ -219,7 +219,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
                     _("Guild castle: %s"), castle.c_str()), BY_SERVER);
             }
 
-            Guild *g = Guild::getGuild(guildId);
+            Guild *g = Guild::getGuild(static_cast<short int>(guildId));
             if (!g)
                 break;
             g->setName(name);
@@ -703,8 +703,8 @@ void GuildHandler::chat(int guildId _UNUSED_, const std::string &text)
 
     std::string str = player_node->getName() + " : " + text;
     MessageOut msg(CMSG_GUILD_MESSAGE);
-    msg.writeInt16(str.size() + 4);
-    msg.writeString(str, str.length());
+    msg.writeInt16(static_cast<Uint16>(str.size() + 4));
+    msg.writeString(str, static_cast<int>(str.length()));
 }
 
 void GuildHandler::memberList(int guildId _UNUSED_)

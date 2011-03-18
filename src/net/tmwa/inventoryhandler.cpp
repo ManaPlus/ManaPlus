@@ -158,7 +158,8 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
 {
     int number, flag;
     int index, amount, itemId, equipType, arrow, refine;
-    int identified, cards[4], itemType;
+    int cards[4], itemType;
+    unsigned char identified;
     Inventory *inventory = 0;
     if (player_node)
         inventory = PlayerInfo::getInventory();
@@ -632,14 +633,14 @@ void InventoryHandler::moveItem(int source, int slot, int amount,
     if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
     {
         MessageOut outMsg(CMSG_MOVE_TO_STORAGE);
-        outMsg.writeInt16(slot + INVENTORY_OFFSET);
+        outMsg.writeInt16(static_cast<Sint16>(slot + INVENTORY_OFFSET));
         outMsg.writeInt32(amount);
     }
     else if (source == Inventory::STORAGE
              && destination == Inventory::INVENTORY)
     {
         MessageOut outMsg(CSMG_MOVE_FROM_STORAGE);
-        outMsg.writeInt16(slot + STORAGE_OFFSET);
+        outMsg.writeInt16(static_cast<Sint16>(slot + STORAGE_OFFSET));
         outMsg.writeInt32(amount);
     }
 }

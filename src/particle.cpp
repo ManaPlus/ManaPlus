@@ -140,8 +140,8 @@ bool Particle::update()
                                     + static_cast<float>(fabs(dist.z));
                     break;
                 default:
-                    invHypotenuse = 1.0f / sqrt(
-                        dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
+                    invHypotenuse = 1.0f / static_cast<float>(sqrt(
+                        dist.x * dist.x + dist.y * dist.y + dist.z * dist.z));
                     break;
             }
 
@@ -156,12 +156,12 @@ bool Particle::update()
 
         if (mRandomness > 0)
         {
-            mVelocity.x += (rand() % mRandomness - rand()
-                           % mRandomness) / 1000.0f;
-            mVelocity.y += (rand() % mRandomness - rand()
-                           % mRandomness) / 1000.0f;
-            mVelocity.z += (rand() % mRandomness - rand()
-                           % mRandomness) / 1000.0f;
+            mVelocity.x += static_cast<float>((rand() % mRandomness - rand()
+                           % mRandomness)) / 1000.0f;
+            mVelocity.y += static_cast<float>((rand() % mRandomness - rand()
+                           % mRandomness)) / 1000.0f;
+            mVelocity.z += static_cast<float>((rand() % mRandomness - rand()
+                           % mRandomness)) / 1000.0f;
         }
 
         mVelocity.z -= mGravity;
@@ -327,12 +327,12 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         }
 
         // Read and set the basic properties of the particle
-        float offsetX = XML::getFloatProperty(
-            effectChildNode, "position-x", 0);
-        float offsetY = XML::getFloatProperty(
-            effectChildNode, "position-y", 0);
-        float offsetZ = XML::getFloatProperty(
-            effectChildNode, "position-z", 0);
+        float offsetX = static_cast<float>(XML::getFloatProperty(
+            effectChildNode, "position-x", 0));
+        float offsetY = static_cast<float>(XML::getFloatProperty(
+            effectChildNode, "position-y", 0));
+        float offsetZ = static_cast<float>(XML::getFloatProperty(
+            effectChildNode, "position-z", 0));
         Vector position (mPos.x + static_cast<float>(pixelX) + offsetX,
                          mPos.y + static_cast<float>(pixelY) + offsetY,
                          mPos.z + offsetZ);
@@ -363,23 +363,28 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
                 char deathEffectConditions = 0x00;
                 if (XML::getBoolProperty(emitterNode, "on-floor", true))
                 {
-                    deathEffectConditions += Particle::DEAD_FLOOR;
+                    deathEffectConditions += static_cast<char>(
+                        Particle::DEAD_FLOOR);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-sky", true))
                 {
-                    deathEffectConditions += Particle::DEAD_SKY;
+                    deathEffectConditions += static_cast<char>(
+                        Particle::DEAD_SKY);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-other", false))
                 {
-                    deathEffectConditions += Particle::DEAD_OTHER;
+                    deathEffectConditions += static_cast<char>(
+                        Particle::DEAD_OTHER);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-impact", true))
                 {
-                    deathEffectConditions += Particle::DEAD_IMPACT;
+                    deathEffectConditions += static_cast<char>(
+                        Particle::DEAD_IMPACT);
                 }
                 if (XML::getBoolProperty(emitterNode, "on-timeout", true))
                 {
-                    deathEffectConditions += Particle::DEAD_TIMEOUT;
+                    deathEffectConditions += static_cast<char>(
+                        Particle::DEAD_TIMEOUT);
                 }
                 newParticle->setDeathEffect(
                     deathEffect, deathEffectConditions);
@@ -398,9 +403,11 @@ Particle *Particle::addTextSplashEffect(const std::string &text, int x, int y,
 {
     Particle *newParticle = new TextParticle(mMap, text, color, font, outline);
     newParticle->moveTo(static_cast<float>(x), static_cast<float>(y));
-    newParticle->setVelocity(((rand() % 100) - 50) / 200.0f,    // X
-                             ((rand() % 100) - 50) / 200.0f,    // Y
-                             ((rand() % 100) / 200.0f) + 4.0f); // Z
+    newParticle->setVelocity(
+        static_cast<float>((rand() % 100) - 50) / 200.0f,    // X
+        static_cast<float>((rand() % 100) - 50) / 200.0f,    // Y
+        (static_cast<float>((rand() % 100)) / 200.0f) + 4.0f); // Z
+
     newParticle->setGravity(0.1f);
     newParticle->setBounce(0.5f);
     newParticle->setLifetime(200);

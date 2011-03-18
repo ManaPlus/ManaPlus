@@ -357,15 +357,30 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 propertyNode->xmlChildrenNode->content);
             mDeathEffectConditions = 0x00;
             if (XML::getBoolProperty(propertyNode, "on-floor", true))
-                mDeathEffectConditions += Particle::DEAD_FLOOR;
+            {
+                mDeathEffectConditions += static_cast<char>(
+                    Particle::DEAD_FLOOR);
+            }
             if (XML::getBoolProperty(propertyNode, "on-sky", true))
-                mDeathEffectConditions += Particle::DEAD_SKY;
+            {
+                mDeathEffectConditions += static_cast<char>(
+                    Particle::DEAD_SKY);
+            }
             if (XML::getBoolProperty(propertyNode, "on-other", false))
-                mDeathEffectConditions += Particle::DEAD_OTHER;
+            {
+                mDeathEffectConditions += static_cast<char>(
+                    Particle::DEAD_OTHER);
+            }
             if (XML::getBoolProperty(propertyNode, "on-impact", true))
-                mDeathEffectConditions += Particle::DEAD_IMPACT;
+            {
+                mDeathEffectConditions += static_cast<char>(
+                    Particle::DEAD_IMPACT);
+            }
             if (XML::getBoolProperty(propertyNode, "on-timeout", true))
-                mDeathEffectConditions += Particle::DEAD_TIMEOUT;
+            {
+                mDeathEffectConditions += static_cast<char>(
+                    Particle::DEAD_TIMEOUT);
+            }
         }
     }
 }
@@ -570,6 +585,8 @@ void ParticleEmitter::adjustSize(int w, int h)
     // adjust the output so that the particle density stays the same
     float outputFactor = static_cast<float>(newArea)
         / static_cast<float>(oldArea);
-    mOutput.minVal *= static_cast<float>(outputFactor);
-    mOutput.maxVal *= static_cast<float>(outputFactor);
+    mOutput.minVal = static_cast<int>(static_cast<float>(
+        mOutput.minVal) * outputFactor);
+    mOutput.maxVal = static_cast<int>(static_cast<float>(
+        mOutput.maxVal) * outputFactor);
 }

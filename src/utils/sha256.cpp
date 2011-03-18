@@ -290,5 +290,5 @@ std::string SHA256Hash(const char *src, int len)
 
 std::string sha256(const std::string &string)
 {
-    return SHA256Hash(string.c_str(), string.length());
+    return SHA256Hash(string.c_str(), static_cast<int>(string.length()));
 }

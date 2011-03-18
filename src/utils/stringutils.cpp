@@ -338,7 +338,7 @@ void replaceSpecialChars(std::string &text)
         if (idx >= text.size())
             break;
 
-        unsigned f;
+        size_t f;
         for (f = idx; f < text.size(); f ++)
         {
             if (text[f] < '0' || text[f] > '9')

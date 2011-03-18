@@ -254,7 +254,7 @@ float Configuration::getFloatValue(const std::string &key) const
     }
     else
     {
-        defaultValue = atof(iter->second.c_str());
+        defaultValue = static_cast<float>(atof(iter->second.c_str()));
     }
     return defaultValue;
 }

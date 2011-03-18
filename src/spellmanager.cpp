@@ -198,19 +198,19 @@ std::string SpellManager::parseCommand(std::string command,
 
     bool found = false;
 
-    int idx = command.find("<TARGET>");
+    int idx = static_cast<int>(command.find("<TARGET>"));
     if (idx >= 0)
     {
         found = true;
         command = replaceAll(command, "<TARGET>", name);
     }
-    idx = command.find("<TARGETID>");
+    idx = static_cast<int>(command.find("<TARGETID>"));
     if (idx >= 0)
     {
         found = true;
         command = replaceAll(command, "<TARGETID>", id);
     }
-    idx = command.find("<TARGETORSELF>");
+    idx = static_cast<int>(command.find("<TARGETORSELF>"));
     if (idx >= 0)
     {
         found = true;

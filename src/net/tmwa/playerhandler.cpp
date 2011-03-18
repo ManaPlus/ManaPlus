@@ -137,7 +137,8 @@ static const char *randomDeathMessage()
         N_("You're pining for the fjords.")
     };
 
-    const int random = rand() % (sizeof(deadMsg) / sizeof(deadMsg[0]));
+    const int random = static_cast<int>(rand() % (sizeof(deadMsg)
+        / sizeof(deadMsg[0])));
     return gettext(deadMsg[random]);
 }
 
@@ -228,10 +229,12 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
                         Map *map = game->getCurrentMap();
                         if (map)
                         {
-                            scrollOffsetX = (x - player_node->getTileX())
-                                            * map->getTileWidth();
-                            scrollOffsetY = (y - player_node->getTileY())
-                                            * map->getTileHeight();
+                            scrollOffsetX = static_cast<float>((x
+                                - player_node->getTileX())
+                                * map->getTileWidth());
+                            scrollOffsetY = static_cast<float>((y
+                                - player_node->getTileY())
+                                * map->getTileHeight());
                         }
                     }
 
@@ -260,7 +263,8 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
                 switch (type)
                 {
                     case 0x0000:
-                        player_node->setWalkSpeed(Vector(value, value, 0));
+                        player_node->setWalkSpeed(Vector(static_cast<float>(
+                            value), static_cast<float>(value), 0));
                         PlayerInfo::setStatBase(WALK_SPEED, value);
                         PlayerInfo::setStatMod(WALK_SPEED, 0);
                     break;
@@ -644,7 +648,7 @@ void PlayerHandler::stopAttack()
     MessageOut outMsg(CMSG_PLAYER_STOP_ATTACK);
 }
 
-void PlayerHandler::emote(int emoteId)
+void PlayerHandler::emote(Uint8 emoteId)
 {
     MessageOut outMsg(CMSG_PLAYER_EMOTE);
     outMsg.writeInt8(emoteId);
@@ -655,7 +659,7 @@ void PlayerHandler::increaseAttribute(int attr)
     if (attr >= STR && attr <= LUK)
     {
         MessageOut outMsg(CMSG_STAT_UPDATE_REQUEST);
-        outMsg.writeInt16(attr);
+        outMsg.writeInt16(static_cast<Sint16>(attr));
         outMsg.writeInt8(1);
     }
 }
@@ -665,7 +669,7 @@ void PlayerHandler::decreaseAttribute(int attr _UNUSED_)
     // Supported by eA?
 }
 
-void PlayerHandler::increaseSkill(int skillId)
+void PlayerHandler::increaseSkill(unsigned short skillId)
 {
     if (PlayerInfo::getAttribute(SKILL_POINTS) <= 0)
         return;
@@ -693,7 +697,9 @@ void PlayerHandler::setDirection(char direction)
 void PlayerHandler::setDestination(int x, int y, int direction)
 {
     MessageOut outMsg(CMSG_PLAYER_CHANGE_DEST);
-    outMsg.writeCoordinates(x, y, direction);
+    outMsg.writeCoordinates(static_cast<short unsigned int>(x),
+        static_cast<short unsigned int>(y),
+        static_cast<unsigned char>(direction));
 }
 
 void PlayerHandler::changeAction(Being::Action action)

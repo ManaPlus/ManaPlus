@@ -162,7 +162,8 @@ void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 return;
 
 //            const unsigned char emoteId = emoteShortcut->getEmote(index);
-            const unsigned char emoteId = index + 1;
+            const unsigned char emoteId
+                = static_cast<unsigned char>(index + 1);
 
             if (emoteId)
             {

@@ -163,7 +163,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mWaitPing = false;
     mPingTime = 0;
 
-    PlayerInfo::setStatBase(WALK_SPEED, getWalkSpeed().x);
+    PlayerInfo::setStatBase(WALK_SPEED, static_cast<int>(getWalkSpeed().x));
     PlayerInfo::setStatMod(WALK_SPEED, 0);
 
     loadHomes();
@@ -299,13 +299,13 @@ void LocalPlayer::logic()
             // TODO: Make this nicer, probably using getPosition() only
             const int rangeX =
                 (Net::getNetworkType() == ServerInfo::MANASERV) ?
-                static_cast<int>(abs(mTarget->getPosition().x
-                - getPosition().x)) :
+                static_cast<int>(abs(static_cast<int>(mTarget->getPosition().x
+                - getPosition().x))) :
                 static_cast<int>(abs(mTarget->getTileX() - getTileX()));
             const int rangeY =
                 (Net::getNetworkType() == ServerInfo::MANASERV) ?
-                static_cast<int>(abs(mTarget->getPosition().y
-                - getPosition().y)) :
+                static_cast<int>(abs(static_cast<int>(mTarget->getPosition().y
+                - getPosition().y))) :
                 static_cast<int>(abs(mTarget->getTileY() - getTileY()));
 
             const int attackRange = getAttackRange();
@@ -1420,8 +1420,8 @@ bool LocalPlayer::withinAttackRange(Being *target, bool fixDistance,
     {
         const Vector &targetPos = target->getPosition();
         const Vector &pos = getPosition();
-        dx = static_cast<int>(abs(targetPos.x - pos.x));
-        dy = static_cast<int>(abs(targetPos.y - pos.y));
+        dx = static_cast<int>(abs(static_cast<int>(targetPos.x - pos.x)));
+        dy = static_cast<int>(abs(static_cast<int>(targetPos.y - pos.y)));
 
     }
     else
@@ -1445,7 +1445,8 @@ void LocalPlayer::setGotoTarget(Being *target)
         mTarget = target;
         mGoingToTarget = true;
         const Vector &targetPos = target->getPosition();
-        setDestination(targetPos.x, targetPos.y);
+        setDestination(static_cast<int>(targetPos.x),
+            static_cast<int>(targetPos.y));
     }
     else
     {
@@ -1734,7 +1735,7 @@ void LocalPlayer::moveToHome()
             }
             else
             {
-                navigateTo(pos.x, pos.y);
+                navigateTo(static_cast<int>(pos.x), static_cast<int>(pos.y));
             }
         }
     }
@@ -2898,23 +2899,33 @@ void LocalPlayer::setHome()
         std::map<std::string, Vector>::iterator iter = mHomes.find(key);
 
         if (iter != mHomes.end())
-            socialWindow->removePortal(pos.x, pos.y);
-
-        if (iter != mHomes.end() && getTileX() == pos.x && getTileY() == pos.y)
         {
-            mMap->updatePortalTile("", MapItem::EMPTY, pos.x, pos.y);
+            socialWindow->removePortal(static_cast<int>(pos.x),
+                static_cast<int>(pos.y));
+        }
+
+        if (iter != mHomes.end() && getTileX() == static_cast<int>(pos.x)
+            && getTileY() == static_cast<int>(pos.y))
+        {
+            mMap->updatePortalTile("", MapItem::EMPTY,
+                static_cast<int>(pos.x), static_cast<int>(pos.y));
+
 //            if (specialLayer)
 //                specialLayer->setTile(pos.x, pos.y, MapItem::EMPTY);
             mHomes.erase(key);
-            socialWindow->removePortal(pos.x, pos.y);
+            socialWindow->removePortal(static_cast<int>(pos.x),
+                static_cast<int>(pos.y));
         }
         else
         {
             if (specialLayer && iter != mHomes.end())
-                specialLayer->setTile(pos.x, pos.y, MapItem::EMPTY);
+            {
+                specialLayer->setTile(static_cast<int>(pos.x),
+                    static_cast<int>(pos.y), MapItem::EMPTY);
+            }
 
-            pos.x = getTileX();
-            pos.y = getTileY();
+            pos.x = static_cast<float>(getTileX());
+            pos.y = static_cast<float>(getTileY());
             mHomes[key] = pos;
             mMap->updatePortalTile("home", MapItem::HOME,
                                    getTileX(), getTileY());
@@ -3126,8 +3137,8 @@ void LocalPlayer::navigateTo(int x, int y)
 
     const Vector &playerPos = getPosition();
     mShowNavigePath = true;
-    mOldX = playerPos.x;
-    mOldY = playerPos.y;
+    mOldX = static_cast<int>(playerPos.x);
+    mOldY = static_cast<int>(playerPos.y);
     mOldTileX = getTileX();
     mOldTileY = getTileY();
     mNavigateX = x;
@@ -3154,8 +3165,8 @@ void LocalPlayer::navigateTo(Being *being)
 
     const Vector &playerPos = getPosition();
     mShowNavigePath = true;
-    mOldX = playerPos.x;
-    mOldY = playerPos.y;
+    mOldX = static_cast<int>(playerPos.x);
+    mOldY = static_cast<int>(playerPos.y);
     mOldTileX = getTileX();
     mOldTileY = getTileY();
     mNavigateX = being->getTileX();
@@ -3263,8 +3274,8 @@ void LocalPlayer::updateCoords()
             }
         }
     }
-    mOldX = playerPos.x;
-    mOldY = playerPos.y;
+    mOldX = static_cast<int>(playerPos.x);
+    mOldY = static_cast<int>(playerPos.y);
     mOldTileX = getTileX();
     mOldTileY = getTileY();
 }
@@ -3674,7 +3685,10 @@ void LocalPlayer::updateNavigateList()
         {
             Vector pos = mHomes[(*iter).first];
             if (pos.x && pos.y)
-                mMap->addPortalTile("home", MapItem::HOME, pos.x, pos.y);
+            {
+                mMap->addPortalTile("home", MapItem::HOME,
+                    static_cast<int>(pos.x), static_cast<int>(pos.y));
+            }
         }
     }
 }

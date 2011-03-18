@@ -208,7 +208,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
                     else
                     {
                         tradeWindow->addItem2(type, false, amount, refine,
-                            identify, false);
+                            static_cast<unsigned char>(identify), false);
                     }
                 }
             }
@@ -325,7 +325,8 @@ void TradeHandler::addItem(Item *item, int amount)
         return;
 
     MessageOut outMsg(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(item->getInvIndex() + INVENTORY_OFFSET);
+    outMsg.writeInt16(static_cast<Sint16>(
+        item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt32(amount);
 }
 

@@ -451,7 +451,7 @@ void SkillDialog::addSkill(int id, int level, bool modifiable)
         skill->modifiable = modifiable;
         skill->visible = false;
         skill->model = mDefaultModel;
-        skill->skillLevel = level;
+        skill->skillLevel = strprintf(_("Lvl: %d"), level);
         skill->update();
 
         mDefaultModel->addSkill(skill);

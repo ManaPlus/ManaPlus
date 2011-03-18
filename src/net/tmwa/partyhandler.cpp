@@ -538,8 +538,8 @@ void PartyHandler::kick(const std::string &name)
 void PartyHandler::chat(const std::string &text)
 {
     MessageOut outMsg(CMSG_PARTY_MESSAGE);
-    outMsg.writeInt16(text.length() + 4);
-    outMsg.writeString(text, text.length());
+    outMsg.writeInt16(static_cast<Sint16>(text.length() + 4));
+    outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
 void PartyHandler::requestPartyMembers()

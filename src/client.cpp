@@ -537,7 +537,7 @@ Client::Client(const Options &options):
 
     optionChanged("fpslimit");
 
-    start_time = time(NULL);
+    start_time = static_cast<int>(time(NULL));
 
     // Initialize PlayerInfo
     PlayerInfo::init();

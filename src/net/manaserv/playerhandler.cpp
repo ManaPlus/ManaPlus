@@ -340,7 +340,7 @@ void PlayerHandler::stopAttack()
 
 }
 
-void PlayerHandler::emote(int emoteId _UNUSED_)
+void PlayerHandler::emote(Uint8 emoteId _UNUSED_)
 {
     // TODO
 }
@@ -359,7 +359,7 @@ void PlayerHandler::decreaseAttribute(int attr)
     gameServerConnection->send(msg);
 }
 
-void PlayerHandler::increaseSkill(int skillId _UNUSED_)
+void PlayerHandler::increaseSkill(unsigned short skillId _UNUSED_)
 {
     // Not used atm
 }

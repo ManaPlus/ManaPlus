@@ -156,7 +156,7 @@ void TabbedArea::removeTab(Tab *tab)
     }
 
     if (tabIndexToBeSelected >= static_cast<signed>(mTabs.size()))
-        tabIndexToBeSelected = mTabs.size() - 1;
+        tabIndexToBeSelected = static_cast<int>(mTabs.size()) - 1;
     if (tabIndexToBeSelected < -1)
         tabIndexToBeSelected = -1;
 

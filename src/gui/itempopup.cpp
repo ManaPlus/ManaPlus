@@ -103,7 +103,7 @@ void ItemPopup::setItem(const Item *item, bool showImage)
     setItem(ii, item->getColor(), showImage);
     if (item->getRefine() > 0)
     {
-        mLastName = item->getId();
+        mLastName = ii.getName();
         mLastColor = item->getColor();
         if (serverVersion > 0)
         {

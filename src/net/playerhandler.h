@@ -40,13 +40,13 @@ class PlayerHandler
 
         virtual void stopAttack() = 0;
 
-        virtual void emote(int emoteId) = 0;
+        virtual void emote(Uint8 emoteId) = 0;
 
         virtual void increaseAttribute(int attr) = 0;
 
         virtual void decreaseAttribute(int attr) = 0;
 
-        virtual void increaseSkill(int skillId) = 0;
+        virtual void increaseSkill(unsigned short skillId) = 0;
 
         virtual void pickUp(FloorItem *floorItem) = 0;
 

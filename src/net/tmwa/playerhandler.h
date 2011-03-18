@@ -46,11 +46,11 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
 
         void attack(int id, bool keep = false);
         void stopAttack();
-        void emote(int emoteId);
+        void emote(Uint8 emoteId);
 
         void increaseAttribute(int attr);
         void decreaseAttribute(int attr);
-        void increaseSkill(int skillId);
+        void increaseSkill(unsigned short skillId);
 
         void pickUp(FloorItem *floorItem);
         void setDirection(char direction);
