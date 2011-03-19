@@ -31,7 +31,9 @@
 TabbedArea::TabbedArea() : gcn::TabbedArea(),
                            mTabsWidth(0),
                            mVisibleTabsWidth(0),
-                           mTabScrollIndex(0)
+                           mTabScrollIndex(0),
+                           mEnableScrollButtons(false),
+                           mRightMargin(0)
 {
     mWidgetContainer->setOpaque(false);
     addWidgetListener(this);
@@ -39,10 +41,36 @@ TabbedArea::TabbedArea() : gcn::TabbedArea(),
     mArrowButton[0] = new Button("<", "shift_left", this);
     mArrowButton[1] = new Button(">", "shift_right", this);
 
-    add(mArrowButton[0]);
-    add(mArrowButton[1]);
-
     widgetResized(NULL);
+}
+
+TabbedArea::~TabbedArea()
+{
+    if (!mEnableScrollButtons)
+    {
+        delete mArrowButton[0];
+        mArrowButton[0] = 0;
+        delete mArrowButton[1];
+        mArrowButton[1] = 0;
+    }
+}
+
+void TabbedArea::enableScrollButtons(bool enable)
+{
+    if (mEnableScrollButtons && !enable)
+    {
+        if (mArrowButton[0])
+            add(mArrowButton[0]);
+        if (mArrowButton[1])
+            add(mArrowButton[1]);
+    }
+    else if (!mEnableScrollButtons && enable)
+    {
+        if (mArrowButton[0])
+            add(mArrowButton[0]);
+        if (mArrowButton[1])
+            add(mArrowButton[1]);
+    }
 }
 
 int TabbedArea::getNumberOfTabs() const
@@ -223,19 +251,31 @@ void TabbedArea::widgetResized(const gcn::Event &event _UNUSED_)
     if (w)
         w->setSize(width, height);
 
-    // Check whether there is room to show more tabs now.
-    int innerWidth = getWidth() - 4 - mArrowButton[0]->getWidth()
-        - mArrowButton[1]->getWidth();
-    int newWidth = mVisibleTabsWidth;
-    while (mTabScrollIndex && newWidth < innerWidth)
+    if (mArrowButton[1])
     {
-        newWidth += mTabs[mTabScrollIndex - 1].first->getWidth();
-        if (newWidth < innerWidth)
-            --mTabScrollIndex;
-    }
+        // Check whether there is room to show more tabs now.
+        int innerWidth = getWidth() - 4 - mArrowButton[0]->getWidth()
+            - mArrowButton[1]->getWidth() - mRightMargin;
+        if (innerWidth < 0)
+            innerWidth = 0;
 
-    // Move the right arrow to fit the windows content.
-    mArrowButton[1]->setPosition(width - mArrowButton[1]->getWidth(), 0);
+        int newWidth = mVisibleTabsWidth;
+        while (mTabScrollIndex && newWidth < innerWidth)
+        {
+            newWidth += mTabs[mTabScrollIndex - 1].first->getWidth();
+            if (newWidth < innerWidth)
+                --mTabScrollIndex;
+        }
+
+        if (mArrowButton[1])
+        {
+            // Move the right arrow to fit the windows content.
+            newWidth = width - mArrowButton[1]->getWidth() - mRightMargin;
+            if (newWidth < 0)
+                newWidth = 0;
+            mArrowButton[1]->setPosition(newWidth, 0);
+        }
+    }
 
     updateArrowEnableState();
     adjustTabPositions();
@@ -328,9 +368,12 @@ void TabbedArea::action(const gcn::ActionEvent& actionEvent)
 void TabbedArea::updateArrowEnableState()
 {
     updateTabsWidth();
+    if (!mArrowButton[0] || !mArrowButton[1])
+        return;
+
     if (mTabsWidth > getWidth() - 4
         - mArrowButton[0]->getWidth()
-        - mArrowButton[1]->getWidth())
+        - mArrowButton[1]->getWidth() - mRightMargin)
     {
         mArrowButton[0]->setVisible(true);
         mArrowButton[1]->setVisible(true);
@@ -351,7 +394,7 @@ void TabbedArea::updateArrowEnableState()
     // Right arrow consistency check
     if (mVisibleTabsWidth < getWidth() - 4
         - mArrowButton[0]->getWidth()
-        - mArrowButton[1]->getWidth())
+        - mArrowButton[1]->getWidth() - mRightMargin)
     {
         mArrowButton[1]->setEnabled(false);
     }

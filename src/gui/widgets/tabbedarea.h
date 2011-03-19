@@ -51,6 +51,8 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          */
         TabbedArea();
 
+        ~TabbedArea();
+
         /**
          * Draw the tabbed area.
          */
@@ -129,6 +131,14 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
 
         void mousePressed(gcn::MouseEvent &mouseEvent);
 
+        void enableScrollButtons(bool enable);
+
+        void setRightMargin(int n)
+        { mRightMargin = n; }
+
+        int getRightMargin()
+        { return mRightMargin; }
+
     private:
         typedef std::vector< std::pair<gcn::Tab*, gcn::Widget*> > TabContainer;
 
@@ -168,6 +178,9 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          * @note the index must start at 0.
          */
         unsigned mTabScrollIndex;
+
+        bool mEnableScrollButtons;
+        int mRightMargin;
 };
 
 #endif

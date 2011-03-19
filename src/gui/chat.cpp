@@ -159,6 +159,7 @@ ChatWindow::ChatWindow():
     mChatInput->addActionListener(this);
 
     mChatTabs = new TabbedArea;
+    mChatTabs->enableScrollButtons(true);
 
     mChatColor = config.getIntValue("chatColor");
     mColorListModel = new ColorListModel;
@@ -300,6 +301,8 @@ void ChatWindow::adjustTabSize()
     mColorPicker->setPosition(this->getWidth() - mColorPicker->getWidth()
         - 2*getPadding() - 8 - 16, getPadding());
 
+//    if (mColorPicker->isVisible())
+//        mChatTabs->setRightMargin(mColorPicker->getWidth() - 8);
 }
 
 void ChatWindow::widgetResized(const gcn::Event &event)
