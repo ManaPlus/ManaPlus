@@ -58,6 +58,7 @@
     /all - show visible beings list in debug tab.
     /where - print current player position to chat.
     /cacheinfo - show text cache info.
+    /uptime - show client uptime.
 
 
 ##PWhispers commands
