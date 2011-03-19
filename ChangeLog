@@ -1,3 +1,17 @@
+2011-03-20 New release 1.1.3.20
+ManaPlus:
+fix: other players directions while moving.
+fix: being direction while attacking.
+fix: other players animation while moving.
+fix: mouse pickup from big distance.
+add: show message in party tab if some on join party.
+add: /uptime chat command to show current client update.
+add: small optimisation in software drawing mode (SDL).
+
+Mana:
+add: scroll buttons in chat tabs.
+
+
 2011-03-06 New release 1.1.3.6
 ManaPlus:
 fix: remove extra spaces from chat commands.
