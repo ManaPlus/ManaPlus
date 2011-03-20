@@ -1,3 +1,10 @@
+manaplus (1:1.1.3.30-1%DIST%) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed license, authors, news and different package info.
+
+ -- Andrei Karas <akaras@inbox.ru>  Sat, 19 Mar 2011 04:38:59 +0200
+
 mana-4144 (1.1.git-1.1.3.6-1%DIST%) unstable; urgency=low
 
   * New upstream release.

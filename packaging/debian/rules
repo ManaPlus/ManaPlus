@@ -59,7 +59,7 @@ binary-arch: build install
 	dh_install -a
 	dh_installmenu -a
 	dh_installman -a
-	dh_strip -a --dbg-package=mana-4144-dbg
+	dh_strip -a --dbg-package=manaplus-dbg
 	dh_compress -a
 	dh_fixperms -a
 	dh_installdeb -a
