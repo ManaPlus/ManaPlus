@@ -107,8 +107,6 @@ ShortcutWindow::ShortcutWindow(const std::string &title, int width, int height)
     setupWindow->registerWindowForReset(this);
 
     mTabs = new TabbedArea;
-    mTabs->enableScrollButtons(true);
-    mTabs->setRightMargin(40);
 
     mItems = 0;
 
