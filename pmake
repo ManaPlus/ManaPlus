@@ -5,6 +5,8 @@ dir=`pwd`
 export CC=gcc-4.5
 export CXX=g++-4.5
 
+#-D_GLIBCXX_PROFILE
+
 export LANG=C
 export CXXFLAGS="-pg -fno-inline -Wunreachable-code -Wmissing-field-initializers \
 -Wabi -Wdisabled-optimization -Wuninitialized \
