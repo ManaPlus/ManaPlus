@@ -412,7 +412,8 @@ bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
     return true;
 }
 
-void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
+void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert,
+                                     const ImageRect &imgRect)
 {
     if (!vert)
         return;

@@ -191,8 +191,8 @@ void Tab::draw(gcn::Graphics *graphics)
     {
         mMode = mode;
         mRedraw = false;
-        static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0, getWidth(),
-            getHeight(), tabImg[mode]);
+        static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
+            getWidth(), getHeight(), tabImg[mode]);
     }
 
     static_cast<Graphics*>(graphics)->drawImageRect2(mVertexes, tabImg[mode]);
