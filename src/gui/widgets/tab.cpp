@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "log.h"
 
 #include "gui/palette.h"
@@ -68,7 +69,10 @@ static TabData const data[TAB_COUNT] =
 ImageRect Tab::tabImg[TAB_COUNT];
 
 Tab::Tab() : gcn::Tab(),
-    mTabColor(&Theme::getThemeColor(Theme::TAB))
+    mTabColor(&Theme::getThemeColor(Theme::TAB)),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true),
+    mMode(0)
 {
     init();
 }
@@ -82,6 +86,8 @@ Tab::~Tab()
         for (int mode = 0; mode < TAB_COUNT; mode++)
             for_each(tabImg[mode].grid, tabImg[mode].grid + 9, dtor<Image*>());
     }
+    delete mVertexes;
+    mVertexes = 0;
 }
 
 void Tab::init()
@@ -89,6 +95,8 @@ void Tab::init()
     setFocusable(false);
     setFrameSize(0);
     mFlash = 0;
+
+    addWidgetListener(this);
 
     if (mInstances == 0)
     {
@@ -179,8 +187,18 @@ void Tab::draw(gcn::Graphics *graphics)
     updateAlpha();
 
     // draw tab
-    static_cast<Graphics*>(graphics)->
-        drawImageRect(0, 0, getWidth(), getHeight(), tabImg[mode]);
+    if (mRedraw || mode != mMode)
+    {
+        mMode = mode;
+        mRedraw = false;
+        static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0, getWidth(),
+            getHeight(), tabImg[mode]);
+    }
+
+    static_cast<Graphics*>(graphics)->drawImageRect2(mVertexes, tabImg[mode]);
+
+//    static_cast<Graphics*>(graphics)->
+//        drawImageRect(0, 0, getWidth(), getHeight(), tabImg[mode]);
 
     // draw label
     drawChildren(graphics);
@@ -194,4 +212,14 @@ void Tab::setTabColor(const gcn::Color *color)
 void Tab::setFlash(int flash)
 {
     mFlash = flash;
+}
+
+void Tab::widgetResized(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
+}
+
+void Tab::widgetMoved(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
 }

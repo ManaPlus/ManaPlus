@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "textrenderer.h"
 
 #include "gui/gui.h"
@@ -47,7 +48,9 @@ ProgressBar::ProgressBar(float progress,
     gcn::Widget(),
     mSmoothProgress(true),
     mProgressPalette(color),
-    mSmoothColorChange(true)
+    mSmoothColorChange(true),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true)
 {
     // The progress value is directly set at load time:
     if (progress > 1.0f || progress < 0.0f)
@@ -58,6 +61,8 @@ ProgressBar::ProgressBar(float progress,
 
     mColor = Theme::getProgressColor(color >= 0 ? color : 0, mProgress);
     mColorToGo = mColor;
+
+    addWidgetListener(this);
 
     setSize(width, height);
 
@@ -98,6 +103,8 @@ ProgressBar::~ProgressBar()
 
     if (mInstances == 0)
         for_each(mBorder.grid, mBorder.grid + 9, dtor<Image*>());
+    delete mVertexes;
+    mVertexes = 0;
 }
 
 void ProgressBar::logic()
@@ -157,7 +164,7 @@ void ProgressBar::draw(gcn::Graphics *graphics)
     rect.y = 0;
 
     render(static_cast<Graphics*>(graphics), rect, mColor,
-           mProgress, mText);
+           mProgress, mText, mVertexes, &mRedraw);
 }
 
 void ProgressBar::setProgress(float progress)
@@ -187,6 +194,53 @@ void ProgressBar::setColor(const gcn::Color &color)
 
     if (!mSmoothColorChange)
         mColor = color;
+}
+
+void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
+                         const gcn::Color &color, float progress,
+                         const std::string &text, GraphicsVertexes *vert,
+                         bool *redraw)
+{
+    gcn::Font *oldFont = graphics->getFont();
+    gcn::Color oldColor = graphics->getColor();
+
+    if (*redraw)
+    {
+        *redraw = false;
+        static_cast<Graphics*>(graphics)->calcWindow(vert,
+            area.x, area.y, area.width, area.height, mBorder);
+    }
+
+    static_cast<Graphics*>(graphics)->drawImageRect2(vert, mBorder);
+
+//    graphics->drawImageRect(area.x, area.y, area.width, area.height, mBorder);
+//    graphics->drawImageRect(area, mBorder);
+
+    // The bar
+    if (progress > 0)
+    {
+        graphics->setColor(color);
+        graphics->fillRectangle(gcn::Rectangle(static_cast<int>(area.x + 4),
+            static_cast<int>(area.y + 4),
+            static_cast<int>(static_cast<float>(progress)
+            * static_cast<float>(area.width - 8)),
+            static_cast<int>(area.height - 8)));
+    }
+
+    // The label
+    if (!text.empty())
+    {
+        const int textX = area.x + area.width / 2;
+        const int textY = area.y + (area.height - boldFont->getHeight()) / 2;
+
+        TextRenderer::renderText(graphics, text, textX, textY,
+                                 gcn::Graphics::CENTER,
+                                 Theme::getThemeColor(Theme::PROGRESS_BAR),
+                                 gui->getFont(), true, false);
+    }
+
+    graphics->setFont(oldFont);
+    graphics->setColor(oldColor);
 }
 
 void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
@@ -223,4 +277,14 @@ void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
 
     graphics->setFont(oldFont);
     graphics->setColor(oldColor);
+}
+
+void ProgressBar::widgetResized(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
+}
+
+void ProgressBar::widgetMoved(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
 }

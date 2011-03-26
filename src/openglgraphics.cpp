@@ -24,8 +24,8 @@
 
 #ifdef USE_OPENGL
 
+#include "graphicsvertexes.h"
 #include "openglgraphics.h"
-
 #include "log.h"
 
 #include "resources/image.h"
@@ -617,6 +617,198 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image, int x, int y,
                static_cast<GLubyte>(mColor.a));
 }
 
+void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
+{
+    if (!image)
+        return;
+
+    OpenGLGraphicsVertexes *ogl = vert->getOGL();
+
+    glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+    bindTexture(Image::mTextureType, image->mGLImage);
+    setTexturingAndBlending(true);
+
+    std::vector<GLint*> &intVertPool = ogl->getIntVertPool();
+    std::vector<GLint*>::iterator iv;
+    std::vector<int> &vp = ogl->getVp();
+    std::vector<int>::iterator ivp;
+
+    // Draw a set of textured rectangles
+    if (image->getTextureType() == GL_TEXTURE_2D)
+    {
+        std::vector<GLfloat*> &floatTexPool = ogl->getFloatTexPool();
+        std::vector<GLfloat*>::iterator ft;
+
+        for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
+             ivp = vp.begin();
+             iv != intVertPool.end(), ft != floatTexPool.end(),
+             ivp != vp.end();
+             ++ iv, ++ ft, ++ ivp)
+        {
+            drawQuadArrayfi(*iv, *ft, *ivp);
+        }
+    }
+    else
+    {
+        std::vector<GLint*> &intTexPool = ogl->getIntTexPool();
+        std::vector<GLint*>::iterator it;
+
+        for (iv = intVertPool.begin(), it = intTexPool.begin(),
+             ivp = vp.begin();
+             iv != intVertPool.end(), it != intTexPool.end(),
+             ivp != vp.end();
+             ++ iv, ++ it, ++ ivp)
+        {
+            drawQuadArrayii(*iv, *it, *ivp);
+        }
+    }
+
+    glColor4ub(static_cast<GLubyte>(mColor.r),
+               static_cast<GLubyte>(mColor.g),
+               static_cast<GLubyte>(mColor.b),
+               static_cast<GLubyte>(mColor.a));
+
+}
+
+void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
+                                      int x, int y, int w, int h)
+{
+    if (!image)
+    {
+        vert->incPtr(1);
+        return;
+    }
+
+    const int srcX = image->mBounds.x;
+    const int srcY = image->mBounds.y;
+
+    const int iw = image->getWidth();
+    const int ih = image->getHeight();
+
+    if (iw == 0 || ih == 0)
+    {
+        vert->incPtr(1);
+        return;
+    }
+
+    const float tw = static_cast<float>(image->getTextureWidth());
+    const float th = static_cast<float>(image->getTextureHeight());
+
+    unsigned int vp = 0;
+    const unsigned int vLimit = vertexBufSize * 4;
+
+    OpenGLGraphicsVertexes *ogl = vert->getOGL();
+    ogl->init();
+
+    // Draw a set of textured rectangles
+    if (image->getTextureType() == GL_TEXTURE_2D)
+    {
+        float texX1 = static_cast<float>(srcX) / tw;
+        float texY1 = static_cast<float>(srcY) / th;
+
+        GLfloat *floatTexArray = ogl->switchFloatTexArray();
+        GLint *intVertArray = ogl->switchIntVertArray();
+
+        for (int py = 0; py < h; py += ih)
+        {
+            const int height = (py + ih >= h) ? h - py : ih;
+            const int dstY = y + py;
+            for (int px = 0; px < w; px += iw)
+            {
+                int width = (px + iw >= w) ? w - px : iw;
+                int dstX = x + px;
+
+                float texX2 = static_cast<float>(srcX + width) / tw;
+                float texY2 = static_cast<float>(srcY + height) / th;
+
+                floatTexArray[vp + 0] = texX1;
+                floatTexArray[vp + 1] = texY1;
+
+                floatTexArray[vp + 2] = texX2;
+                floatTexArray[vp + 3] = texY1;
+
+                floatTexArray[vp + 4] = texX2;
+                floatTexArray[vp + 5] = texY2;
+
+                floatTexArray[vp + 6] = texX1;
+                floatTexArray[vp + 7] = texY2;
+
+                intVertArray[vp + 0] = dstX;
+                intVertArray[vp + 1] = dstY;
+
+                intVertArray[vp + 2] = dstX + width;
+                intVertArray[vp + 3] = dstY;
+
+                intVertArray[vp + 4] = dstX + width;
+                intVertArray[vp + 5] = dstY + height;
+
+                intVertArray[vp + 6] = dstX;
+                intVertArray[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    floatTexArray = ogl->switchFloatTexArray();
+                    intVertArray = ogl->switchIntVertArray();
+                    ogl->switchVp(vp);
+                    vp = 0;
+                }
+            }
+        }
+    }
+    else
+    {
+        GLint *intTexArray = ogl->switchIntTexArray();
+        GLint *intVertArray = ogl->switchIntVertArray();
+
+        for (int py = 0; py < h; py += ih)
+        {
+            const int height = (py + ih >= h) ? h - py : ih;
+            const int dstY = y + py;
+            for (int px = 0; px < w; px += iw)
+            {
+                int width = (px + iw >= w) ? w - px : iw;
+                int dstX = x + px;
+
+                intTexArray[vp + 0] = srcX;
+                intTexArray[vp + 1] = srcY;
+
+                intTexArray[vp + 2] = srcX + width;
+                intTexArray[vp + 3] = srcY;
+
+                intTexArray[vp + 4] = srcX + width;
+                intTexArray[vp + 5] = srcY + height;
+
+                intTexArray[vp + 6] = srcX;
+                intTexArray[vp + 7] = srcY + height;
+
+                intVertArray[vp + 0] = dstX;
+                intVertArray[vp + 1] = dstY;
+
+                intVertArray[vp + 2] = dstX + width;
+                intVertArray[vp + 3] = dstY;
+
+                intVertArray[vp + 4] = dstX + width;
+                intVertArray[vp + 5] = dstY + height;
+
+                intVertArray[vp + 6] = dstX;
+                intVertArray[vp + 7] = dstY + height;
+
+                vp += 8;
+                if (vp >= vLimit)
+                {
+                    intTexArray = ogl->switchIntTexArray();
+                    intVertArray = ogl->switchIntVertArray();
+                    ogl->switchVp(vp);
+                    vp = 0;
+                }
+            }
+        }
+    }
+    ogl->switchVp(vp);
+    vert->incPtr(1);
+}
+
 void OpenGLGraphics::updateScreen()
 {
     glFlush();
@@ -930,10 +1122,28 @@ inline void OpenGLGraphics::drawQuadArrayfi(int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
+inline void OpenGLGraphics::drawQuadArrayfi(GLint *intVertArray,
+                                            GLfloat *floatTexArray, int size)
+{
+    glVertexPointer(2, GL_INT, 0, intVertArray);
+    glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
+
+    glDrawArrays(GL_QUADS, 0, size / 2);
+}
+
 inline void OpenGLGraphics::drawQuadArrayii(int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_INT, 0, mIntTexArray);
+
+    glDrawArrays(GL_QUADS, 0, size / 2);
+}
+
+inline void OpenGLGraphics::drawQuadArrayii(GLint *intVertArray,
+                                            GLint *intTexArray, int size)
+{
+    glVertexPointer(2, GL_INT, 0, intVertArray);
+    glTexCoordPointer(2, GL_INT, 0, intTexArray);
 
     glDrawArrays(GL_QUADS, 0, size / 2);
 }

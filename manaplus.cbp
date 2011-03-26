@@ -145,6 +145,8 @@
 		<Unit filename="src\game.h" />
 		<Unit filename="src\graphics.cpp" />
 		<Unit filename="src\graphics.h" />
+		<Unit filename="src\graphicsvertexes.cpp" />
+		<Unit filename="src\graphicsvertexes.h" />
 		<Unit filename="src\gui\beingpopup.cpp" />
 		<Unit filename="src\gui\beingpopup.h" />
 		<Unit filename="src\gui\botcheckerwindow.cpp" />

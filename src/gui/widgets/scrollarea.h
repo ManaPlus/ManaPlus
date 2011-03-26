@@ -32,6 +32,7 @@
 #define _UNUSED_
 #endif
 
+class GraphicsVertexes;
 class Image;
 class ImageRect;
 
@@ -113,6 +114,8 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
 
         void widgetResized(const gcn::Event &event);
 
+        void widgetMoved(const gcn::Event &event);
+
     protected:
         enum BUTTON_DIR
         {
@@ -147,6 +150,10 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
         int mX, mY;
         bool mHasMouse;
         bool mOpaque;
+        GraphicsVertexes *mVertexes;
+        bool mRedraw;
+        int mXOffset;
+        int mYOffset;
 };
 
 #endif

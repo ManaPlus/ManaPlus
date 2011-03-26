@@ -23,6 +23,8 @@
 #include <cassert>
 
 #include "graphics.h"
+
+#include "graphicsvertexes.h"
 #include "log.h"
 
 #include "resources/image.h"
@@ -152,8 +154,6 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
         return false;
 
     Image *tmpImage = image->SDLgetScaledImage(desiredWidth, desiredHeight);
-//    logger->log("SDLgetScaledImage " + tmpImage->getIdPath()
-//        + toString(desiredWidth) + "," + toString(desiredHeight));
 
     bool returnValue = false;
 
@@ -269,6 +269,53 @@ void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     }
 }
 
+void Graphics::drawImagePatternDebug(GraphicsVertexes* vert, Image *image, int x, int y, int w, int h)
+{
+    // Check that preconditions for blitting are met.
+    if (!mTarget || !image)
+        return;
+    if (!image->mSDLSurface)
+        return;
+
+    const int iw = image->getWidth();
+    const int ih = image->getHeight();
+
+    if (iw == 0 || ih == 0)
+        return;
+
+    std::list<DoubleRect*> *arr = vert->getRectsSDL();
+    std::list<DoubleRect*>::iterator it;
+    it = arr->begin();
+
+    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
+    {
+        int dh = (py + ih >= h) ? h - py : ih;
+        int srcY = image->mBounds.y;
+        int dstY = y + py + mClipStack.top().yOffset;
+
+        for (int px = 0; px < w; px += iw) // X position on pattern plane
+        {
+            int dw = (px + iw >= w) ? w - px : iw;
+            int srcX = image->mBounds.x;
+            int dstX = x + px + mClipStack.top().xOffset;
+
+            SDL_Rect dstRect;
+            SDL_Rect srcRect;
+            dstRect.x = static_cast<short>(dstX);
+            dstRect.y = static_cast<short>(dstY);
+            srcRect.x = static_cast<short>(srcX);
+            srcRect.y = static_cast<short>(srcY);
+            srcRect.w = static_cast<Uint16>(dw);
+            srcRect.h = static_cast<Uint16>(dh);
+
+            SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
+
+            ++it;
+        }
+    }
+}
+
+
 void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
                                         int w, int h, int scaledWidth,
                                         int scaledHeight)
@@ -285,9 +332,6 @@ void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
     Image *tmpImage = image->SDLgetScaledImage(scaledWidth, scaledHeight);
     if (!tmpImage)
         return;
-
-//    logger->log("SDLgetScaledImageS " + tmpImage->getIdPath()
-//        + toString(scaledWidth) + "," + toString(scaledHeight));
 
     const int iw = tmpImage->getWidth();
     const int ih = tmpImage->getHeight();
@@ -388,6 +432,159 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
             imgRect.grid[4]);
 }
 
+void Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
+{
+    vert->setPtr(0);
+
+    const bool drawMain = imgRect.grid[4] && imgRect.grid[0] && imgRect.grid[2]
+        && imgRect.grid[6] && imgRect.grid[8];
+
+    if (drawMain)
+    {
+        // center
+        drawImagePattern2(vert, imgRect.grid[4]);
+    }
+    vert->incPtr();
+
+    // top
+    drawImagePattern2(vert, imgRect.grid[1]);
+    vert->incPtr();
+
+    // bottom
+    drawImagePattern2(vert, imgRect.grid[7]);
+    vert->incPtr();
+
+    // left
+    drawImagePattern2(vert, imgRect.grid[3]);
+    vert->incPtr();
+
+    // right
+    drawImagePattern2(vert, imgRect.grid[5]);
+    vert->incPtr();
+
+    // Draw the corners
+    if (drawMain)
+    {
+        drawImage(imgRect.grid[0], 0, 0);
+        drawImage(imgRect.grid[2], vert->mW - imgRect.grid[2]->getWidth(), 0);
+        drawImage(imgRect.grid[6], 0, vert->mH - imgRect.grid[6]->getHeight());
+        drawImage(imgRect.grid[8],
+            vert->mW - imgRect.grid[8]->getWidth(),
+            vert->mH - imgRect.grid[8]->getHeight());
+    }
+}
+
+void Graphics::drawImagePattern2(GraphicsVertexes *vert, Image *img)
+{
+    std::list<DoubleRect*> *arr = vert->getRectsSDL();
+    std::list<DoubleRect*>::iterator it;
+
+    for (it = arr->begin(); it != arr->end(); ++it)
+        SDL_BlitSurface(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
+}
+
+bool Graphics::calcImageRect(GraphicsVertexes* vert,
+                             int x, int y, int w, int h,
+                             Image *topLeft, Image *topRight,
+                             Image *bottomLeft, Image *bottomRight,
+                             Image *top, Image *right,
+                             Image *bottom, Image *left,
+                             Image *center)
+{
+    const bool drawMain = center && topLeft && topRight
+        && bottomLeft && bottomRight;
+
+    vert->init(x, y, w, h);
+    pushClipArea(gcn::Rectangle(vert->mX, vert->mY, vert->mW, vert->mH));
+
+    // Draw the center area
+    if (center && drawMain)
+    {
+        calcImagePattern(vert, center,
+            topLeft->getWidth(), topLeft->getHeight(),
+            w - topLeft->getWidth() - topRight->getWidth(),
+            h - topLeft->getHeight() - bottomLeft->getHeight());
+    }
+    else
+    {
+        vert->incPtr(1);
+    }
+
+    // Draw the sides
+    if (top && left && bottom && right)
+    {
+        calcImagePattern(vert, top,
+            left->getWidth(), 0,
+            w - left->getWidth() - right->getWidth(), top->getHeight());
+        calcImagePattern(vert, bottom,
+            left->getWidth(), h - bottom->getHeight(),
+            w - left->getWidth() - right->getWidth(),
+            bottom->getHeight());
+        calcImagePattern(vert, left,
+            0, top->getHeight(),
+            left->getWidth(),
+            h - top->getHeight() - bottom->getHeight());
+        calcImagePattern(vert, right,
+            w - right->getWidth(), top->getHeight(),
+            right->getWidth(),
+            h - top->getHeight() - bottom->getHeight());
+    }
+    else
+    {
+        vert->incPtr(4);
+    }
+
+    popClipArea();
+    return 0;
+}
+
+void Graphics::calcImagePattern(GraphicsVertexes* vert,
+                                Image *image, int x, int y, int w, int h)
+{
+    // Check that preconditions for blitting are met.
+    if (!vert || !mTarget || !image || !image->mSDLSurface || !vert->sdl)
+    {
+        vert->incPtr(1);
+        return;
+    }
+    vert->clearSDL();
+
+    const int iw = image->getWidth();
+    const int ih = image->getHeight();
+
+    if (iw == 0 || ih == 0)
+    {
+        vert->incPtr(1);
+        return;
+    }
+
+    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
+    {
+        int dh = (py + ih >= h) ? h - py : ih;
+        int srcY = image->mBounds.y;
+        int dstY = y + py + mClipStack.top().yOffset;
+
+        for (int px = 0; px < w; px += iw) // X position on pattern plane
+        {
+            int dw = (px + iw >= w) ? w - px : iw;
+            int srcX = image->mBounds.x;
+            int dstX = x + px + mClipStack.top().xOffset;
+
+            SDL_Rect dstRect;
+            SDL_Rect srcRect;
+            dstRect.x = static_cast<short>(dstX);
+            dstRect.y = static_cast<short>(dstY);
+            srcRect.x = static_cast<short>(srcX);
+            srcRect.y = static_cast<short>(srcY);
+            srcRect.w = static_cast<Uint16>(dw);
+            srcRect.h = static_cast<Uint16>(dh);
+
+            vert->pushSDL(srcRect, dstRect);
+        }
+    }
+    vert->incPtr(1);
+}
+
 void Graphics::updateScreen()
 {
     SDL_Flip(mTarget);
@@ -424,4 +621,14 @@ bool Graphics::drawNet(int x1, int y1, int x2, int y2, int width, int height)
         drawLine(x, y1, x, y2);
 
     return true;
+}
+
+bool Graphics::calcWindow(GraphicsVertexes* vert,
+                          int x, int y, int w, int h,
+                          const ImageRect &imgRect)
+{
+    return calcImageRect(vert, x, y, w, h,
+        imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
+        imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
+        imgRect.grid[4]);
 }

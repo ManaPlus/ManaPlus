@@ -24,7 +24,9 @@
 #define TAB_H
 
 #include <guichan/widgets/tab.hpp>
+#include <guichan/widgetlistener.hpp>
 
+class GraphicsVertexes;
 class ImageRect;
 class TabbedArea;
 
@@ -32,7 +34,7 @@ class TabbedArea;
  * A tab, the same as the Guichan tab in 0.8, but extended to allow
  * transparency.
  */
-class Tab : public gcn::Tab
+class Tab : public gcn::Tab, public gcn::WidgetListener
 {
     public:
         Tab();
@@ -61,6 +63,10 @@ class Tab : public gcn::Tab
         int getFlash()
         { return mFlash; }
 
+        void widgetResized(const gcn::Event &event);
+
+        void widgetMoved(const gcn::Event &event);
+
     protected:
         friend class TabbedArea;
         virtual void setCurrent()
@@ -76,6 +82,9 @@ class Tab : public gcn::Tab
 
         const gcn::Color *mTabColor;
         int mFlash;
+        GraphicsVertexes *mVertexes;
+        bool mRedraw;
+        int mMode;
 };
 
 #endif

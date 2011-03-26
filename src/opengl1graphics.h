@@ -91,6 +91,16 @@ class OpenGL1Graphics : public Graphics
                                       int x, int y, int w, int h,
                                       int scaledWidth, int scaledHeight);
 
+        bool calcImageRect(GraphicsVertexes* vert,
+                           int x, int y, int w, int h,
+                           Image *topLeft, Image *topRight,
+                           Image *bottomLeft, Image *bottomRight,
+                           Image *top, Image *right,
+                           Image *bottom, Image *left,
+                           Image *center);
+
+        void drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect);
+
         void updateScreen();
 
         void _beginDraw();

@@ -25,12 +25,15 @@
 
 #include <guichan/sdl/sdlgraphics.hpp>
 
+//include "graphicsvertexes.h"
+
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
 #else
 #define _UNUSED_
 #endif
 
+class GraphicsVertexes;
 class Image;
 class ImageRect;
 
@@ -161,6 +164,8 @@ class Graphics : public gcn::SDLGraphics
                                       int x, int y,
                                       int w, int h);
 
+        void drawImagePatternDebug(GraphicsVertexes* vert, Image *image, int x, int y, int w, int h);
+
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
@@ -186,6 +191,27 @@ class Graphics : public gcn::SDLGraphics
          */
         void drawImageRect(int x, int y, int w, int h,
                            const ImageRect &imgRect);
+
+        virtual bool calcImageRect(GraphicsVertexes* vert,
+                                   int x, int y, int w, int h,
+                                   Image *topLeft, Image *topRight,
+                                   Image *bottomLeft, Image *bottomRight,
+                                   Image *top, Image *right,
+                                   Image *bottom, Image *left,
+                                   Image *center);
+
+        virtual void calcImagePattern(GraphicsVertexes* vert, Image *image,
+                                      int x, int y,
+                                      int w, int h);
+
+        virtual void drawImageRect2(GraphicsVertexes* vert,
+                                    const ImageRect &imgRect);
+
+        virtual void drawImagePattern2(GraphicsVertexes *vert, Image *img);
+
+        bool calcWindow(GraphicsVertexes* vert,
+                        int x, int y, int w, int h,
+                        const ImageRect &imgRect);
 
         /**
          * Draws a rectangle using images. 4 corner images, 4 side images and 1
@@ -227,6 +253,9 @@ class Graphics : public gcn::SDLGraphics
 
         gcn::Font *getFont() const
         { return mFont; }
+
+        gcn::ClipRectangle &getTopClip()
+        { return mClipStack.top(); }
 
     protected:
         int mWidth;

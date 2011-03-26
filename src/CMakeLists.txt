@@ -492,6 +492,8 @@ SET(SRCS
     game.h
     graphics.cpp
     graphics.h
+    graphicsvertexes.cpp
+    graphicsvertexes.h
     guichanfwd.h
     guild.cpp
     guild.h

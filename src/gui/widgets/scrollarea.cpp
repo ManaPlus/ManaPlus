@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "log.h"
 
 #include "gui/theme.h"
@@ -45,7 +46,11 @@ ScrollArea::ScrollArea():
     mX(0),
     mY(0),
     mHasMouse(false),
-    mOpaque(true)
+    mOpaque(true),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true),
+    mXOffset(0),
+    mYOffset(0)
 {
     addWidgetListener(this);
     init();
@@ -56,8 +61,13 @@ ScrollArea::ScrollArea(gcn::Widget *widget):
     mX(0),
     mY(0),
     mHasMouse(false),
-    mOpaque(true)
+    mOpaque(true),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true),
+    mXOffset(0),
+    mYOffset(0)
 {
+    addWidgetListener(this);
     init();
 }
 
@@ -91,6 +101,8 @@ ScrollArea::~ScrollArea()
         if (buttons[RIGHT][1])
             buttons[RIGHT][1]->decRef();
     }
+    delete mVertexes;
+    mVertexes = 0;
 }
 
 void ScrollArea::init()
@@ -286,6 +298,7 @@ void ScrollArea::draw(gcn::Graphics *graphics)
         drawHMarker(graphics);
     }
 
+
     if (mHBarVisible && mVBarVisible)
     {
         graphics->setColor(getBaseColor());
@@ -300,6 +313,7 @@ void ScrollArea::draw(gcn::Graphics *graphics)
     drawChildren(graphics);
 }
 
+//void ScrollArea::drawFrame(gcn::Graphics *graphics _UNUSED_)
 void ScrollArea::drawFrame(gcn::Graphics *graphics)
 {
     if (mOpaque)
@@ -308,8 +322,38 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
         const int w = getWidth() + bs * 2;
         const int h = getHeight() + bs * 2;
 
+        bool recalc = false;
+        if (mRedraw)
+        {
+            recalc = true;
+        }
+        else
+        {
+            // because we dont know where parent windows was moved,
+            // need recalc vertexes
+            gcn::ClipRectangle &rect = static_cast<Graphics*>(
+                graphics)->getTopClip();
+            if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
+            {
+                recalc = true;
+                mXOffset = rect.xOffset;
+                mYOffset = rect.yOffset;
+            }
+        }
+
+        if (recalc)
+        {
+            mRedraw = false;
+            static_cast<Graphics*>(graphics)->calcWindow(
+                mVertexes, 0, 0, w, h, background);
+        }
+
+
         static_cast<Graphics*>(graphics)->
-            drawImageRect(0, 0, w, h, background);
+            drawImageRect2(mVertexes, background);
+
+//        static_cast<Graphics*>(graphics)->
+//            drawImageRect(0, 0, w, h, background);
     }
 }
 
@@ -441,6 +485,12 @@ void ScrollArea::mouseExited(gcn::MouseEvent& event _UNUSED_)
 
 void ScrollArea::widgetResized(const gcn::Event &event _UNUSED_)
 {
+    mRedraw = true;
     getContent()->setSize(getWidth() - 2 * getFrameSize(),
                           getHeight() - 2 * getFrameSize());
+}
+
+void ScrollArea::widgetMoved(const gcn::Event& event _UNUSED_)
+{
+    mRedraw = true;
 }

@@ -20,8 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "log.h"
 #include "opengl1graphics.h"
+
+#include "graphicsvertexes.h"
+#include "log.h"
 
 #include "resources/image.h"
 
@@ -389,6 +391,29 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
 
     glColor4ub(static_cast<GLubyte>(mColor.r), static_cast<GLubyte>(mColor.g),
         static_cast<GLubyte>(mColor.b), static_cast<GLubyte>(mColor.a));
+}
+
+bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
+                                    int x, int y, int w, int h,
+                                    Image *topLeft _UNUSED_,
+                                    Image *topRight _UNUSED_,
+                                    Image *bottomLeft _UNUSED_,
+                                    Image *bottomRight _UNUSED_,
+                                    Image *top _UNUSED_, Image *right _UNUSED_,
+                                    Image *bottom _UNUSED_,
+                                    Image *left _UNUSED_,
+                                    Image *center _UNUSED_)
+{
+    vert->init(x, y, w, h);
+    return true;
+}
+
+void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
+{
+    drawImageRect(vert->getX(), vert->getY(), vert->getW(), vert->getH(),
+            imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
+            imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
+            imgRect.grid[4]);
 }
 
 void OpenGL1Graphics::updateScreen()

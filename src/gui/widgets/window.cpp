@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "graphicsvertexes.h"
 #include "log.h"
 
 #include "gui/gui.h"
@@ -60,7 +61,9 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     mMinWinWidth(100),
     mMinWinHeight(40),
     mMaxWinWidth(graphics->getWidth()),
-    mMaxWinHeight(graphics->getHeight())
+    mMaxWinHeight(graphics->getHeight()),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
 
@@ -106,6 +109,8 @@ Window::~Window()
 // need mWidgets.clean ?
 
     removeWidgetListener(this);
+    delete mVertexes;
+    mVertexes = 0;
 
     instances--;
 
@@ -125,7 +130,19 @@ void Window::draw(gcn::Graphics *graphics)
 
     Graphics *g = static_cast<Graphics*>(graphics);
 
-    g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
+    if (mRedraw)
+    {
+        mRedraw = false;
+        g->calcWindow(mVertexes, 0, 0, getWidth(),
+            getHeight(), mSkin->getBorder());
+    }
+
+    g->drawImageRect2(mVertexes, mSkin->getBorder());
+
+/*
+    g->drawImageRect(0, 0, getWidth(),
+            getHeight(), mSkin->getBorder());
+*/
 
     // Draw title
     if (mShowTitle)
@@ -303,12 +320,19 @@ void Window::widgetResized(const gcn::Event &event _UNUSED_)
                            getHeight() - mGrip->getHeight() - area.y);
     }
 
+
     if (mLayout)
     {
         int w = area.width;
         int h = area.height;
         mLayout->reflow(w, h);
     }
+    mRedraw = true;
+}
+
+void Window::widgetMoved(const gcn::Event& event _UNUSED_)
+{
+    mRedraw = true;
 }
 
 void Window::widgetHidden(const gcn::Event &event _UNUSED_)

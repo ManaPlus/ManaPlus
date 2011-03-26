@@ -37,6 +37,7 @@
 #endif
 
 class ContainerPlacer;
+class GraphicsVertexes;
 class Layout;
 class LayoutCell;
 class ResizeGrip;
@@ -113,6 +114,8 @@ class Window : public gcn::Window, gcn::WidgetListener
          * Called whenever the widget changes size.
          */
         void widgetResized(const gcn::Event &event);
+
+        virtual void widgetMoved(const gcn::Event& event);
 
         /**
          * Called whenever the widget is hidden.
@@ -437,6 +440,8 @@ class Window : public gcn::Window, gcn::WidgetListener
          * where two borders are moved at the same time.
          */
         static const int resizeBorderWidth = 10;
+        GraphicsVertexes *mVertexes;
+        bool mRedraw;
 };
 
 #endif

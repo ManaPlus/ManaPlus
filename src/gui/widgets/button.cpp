@@ -25,6 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "log.h"
 
 #include "gui/palette.h"
@@ -67,7 +68,12 @@ static ButtonData const data[BUTTON_COUNT] =
 ImageRect Button::button[BUTTON_COUNT];
 
 Button::Button():
-    mDescription(""), mClickCount(0)
+    mDescription(""), mClickCount(0),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true),
+    mMode(0),
+    mXOffset(0),
+    mYOffset(0)
 {
     init();
 }
@@ -75,7 +81,9 @@ Button::Button():
 Button::Button(const std::string &caption, const std::string &actionEventId,
                gcn::ActionListener *listener):
     gcn::Button(caption),
-    mDescription(""), mClickCount(0)
+    mDescription(""), mClickCount(0),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true)
 {
     init();
     setActionEventId(actionEventId);
@@ -87,6 +95,8 @@ Button::Button(const std::string &caption, const std::string &actionEventId,
 void Button::init()
 {
     setFrameSize(0);
+
+    addWidgetListener(this);
 
     if (mInstances == 0)
     {
@@ -175,8 +185,44 @@ void Button::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
-    static_cast<Graphics*>(graphics)->
-        drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
+
+    bool recalc = false;
+    if (mRedraw)
+    {
+        recalc = true;
+    }
+    else
+    {
+        // because we dont know where parent windows was moved,
+        // need recalc vertexes
+        gcn::ClipRectangle &rect = static_cast<Graphics*>(
+            graphics)->getTopClip();
+        if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
+        {
+            recalc = true;
+            mXOffset = rect.xOffset;
+            mYOffset = rect.yOffset;
+        }
+        else if (mMode != mode)
+        {
+            recalc = true;
+            mMode = mode;
+        }
+    }
+
+    if (recalc)
+    {
+        mRedraw = false;
+        mMode = mode;
+        static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
+            getWidth(), getHeight(), button[mode]);
+    }
+
+    static_cast<Graphics*>(graphics)->drawImageRect2(
+        mVertexes, button[mode]);
+
+//    static_cast<Graphics*>(graphics)->
+//        drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
 
     if (mode == BUTTON_DISABLED)
         graphics->setColor(Theme::getThemeColor(Theme::BUTTON_DISABLED));
@@ -225,4 +271,14 @@ void Button::mouseReleased(gcn::MouseEvent& mouseEvent)
         mClickCount = 0;
         mouseEvent.consume();
     }
+}
+
+void Button::widgetResized(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
+}
+
+void Button::widgetMoved(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
 }

@@ -28,6 +28,7 @@
 #include "emoteshortcut.h"
 #include "event.h"
 #include "game.h"
+#include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "dropshortcut.h"
 #include "keyboardconfig.h"
@@ -399,6 +400,7 @@ Client::Client(const Options &options):
 
     // Setup image loading for the right image format
     Image::setLoadAsOpenGL(useOpenGL);
+    GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
 
     // Create the graphics context
     switch(useOpenGL)

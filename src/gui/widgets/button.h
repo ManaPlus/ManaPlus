@@ -25,7 +25,9 @@
 
 #include <guichan/widgets/button.hpp>
 #include <guichan/mouseevent.hpp>
+#include <guichan/widgetlistener.hpp>
 
+class GraphicsVertexes;
 class ImageRect;
 
 /**
@@ -33,7 +35,7 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class Button : public gcn::Button
+class Button : public gcn::Button, public gcn::WidgetListener
 {
     public:
         /**
@@ -80,6 +82,10 @@ class Button : public gcn::Button
         int getTag()
         { return mTag; }
 
+        void widgetResized(const gcn::Event &event);
+
+        void widgetMoved(const gcn::Event &event);
+
     private:
         void init();
 
@@ -90,6 +96,11 @@ class Button : public gcn::Button
         std::string mDescription;
         unsigned mClickCount;
         int mTag;
+        GraphicsVertexes *mVertexes;
+        bool mRedraw;
+        int mMode;
+        int mXOffset;
+        int mYOffset;
 };
 
 #endif

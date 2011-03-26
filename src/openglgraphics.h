@@ -91,6 +91,11 @@ class OpenGLGraphics : public Graphics
                                       int x, int y, int w, int h,
                                       int scaledWidth, int scaledHeight);
 
+        void calcImagePattern(GraphicsVertexes* vert, Image *image,
+                              int x, int y, int w, int h);
+
+        void drawImagePattern2(GraphicsVertexes *vert, Image *image);
+
         void updateScreen();
 
         void _beginDraw();
@@ -115,7 +120,13 @@ class OpenGLGraphics : public Graphics
 
         void drawQuadArrayfi(int size);
 
+        void drawQuadArrayfi(GLint *intVertArray, GLfloat *floatTexArray,
+                             int size);
+
         void drawQuadArrayii(int size);
+
+        void drawQuadArrayii(GLint *intVertArray, GLint *intTexArray,
+                             int size);
 
         void drawLineArrayi(int size);
 

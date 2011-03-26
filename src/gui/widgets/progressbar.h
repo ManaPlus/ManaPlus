@@ -27,7 +27,10 @@
 
 #include <string>
 
+#include <guichan/widgetlistener.hpp>
+
 class Graphics;
+class GraphicsVertexes;
 class ImageRect;
 
 /**
@@ -35,7 +38,7 @@ class ImageRect;
  *
  * \ingroup GUI
  */
-class ProgressBar : public gcn::Widget
+class ProgressBar : public gcn::Widget, public gcn::WidgetListener
 {
     public:
         /**
@@ -117,7 +120,19 @@ class ProgressBar : public gcn::Widget
          */
         static void render(Graphics *graphics, const gcn::Rectangle &area,
                            const gcn::Color &color, float progress,
+                           const std::string &text,
+                           GraphicsVertexes *vert, bool *redraw);
+
+        /**
+         * Renders a progressbar with the given properties.
+         */
+        static void render(Graphics *graphics, const gcn::Rectangle &area,
+                           const gcn::Color &color, float progress,
                            const std::string &text = "");
+
+        void widgetResized(const gcn::Event &event);
+
+        void widgetMoved(const gcn::Event &event);
 
     private:
         float mProgress, mProgressToGo;
@@ -129,6 +144,8 @@ class ProgressBar : public gcn::Widget
         bool mSmoothColorChange;
 
         std::string mText;
+        GraphicsVertexes *mVertexes;
+        bool mRedraw;
 
         static ImageRect mBorder;
         static int mInstances;

@@ -25,12 +25,14 @@
 
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "log.h"
 
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/windowcontainer.h"
+#include "gui/widgets/window.h"
 
 #include "resources/image.h"
 
@@ -41,12 +43,16 @@ Popup::Popup(const std::string &name, const std::string &skin):
     mMinWidth(100),
     mMinHeight(40),
     mMaxWidth(graphics->getWidth()),
-    mMaxHeight(graphics->getHeight())
+    mMaxHeight(graphics->getHeight()),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true)
 {
     logger->log("Popup::Popup(\"%s\")", name.c_str());
 
     if (!windowContainer)
         throw GCN_EXCEPTION("Popup::Popup(): no windowContainer set");
+
+    addWidgetListener(this);
 
     setPadding(3);
 
@@ -64,6 +70,9 @@ Popup::~Popup()
 {
     logger->log("Popup::~Popup(\"%s\")", mPopupName.c_str());
 
+    delete mVertexes;
+    mVertexes = 0;
+
     if (mSkin)
         mSkin->instances--;
 }
@@ -77,7 +86,16 @@ void Popup::draw(gcn::Graphics *graphics)
 {
     Graphics *g = static_cast<Graphics*>(graphics);
 
-    g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
+    if (mRedraw)
+    {
+        mRedraw = false;
+        g->calcWindow(mVertexes, 0, 0, getWidth(),
+            getHeight(), mSkin->getBorder());
+    }
+
+    g->drawImageRect2(mVertexes, mSkin->getBorder());
+
+//    g->drawImageRect(0, 0, getWidth(), getHeight(), mSkin->getBorder());
 
     drawChildren(graphics);
 }
@@ -103,6 +121,7 @@ void Popup::setContentSize(int width, int height)
         height = getMaxHeight();
 
     setSize(width, height);
+    mRedraw = true;
 }
 
 void Popup::setLocationRelativeTo(gcn::Widget *widget)
@@ -118,6 +137,7 @@ void Popup::setLocationRelativeTo(gcn::Widget *widget)
 
     setPosition(getX() + (wx + (widget->getWidth() - getWidth()) / 2 - x),
                 getY() + (wy + (widget->getHeight() - getHeight()) / 2 - y));
+    mRedraw = true;
 }
 
 void Popup::setMinWidth(int width)
@@ -161,15 +181,28 @@ void Popup::position(int x, int y)
     setPosition(posX, posY);
     setVisible(true);
     requestMoveToTop();
+    mRedraw = true;
 }
 
 void Popup::mouseMoved(gcn::MouseEvent &event _UNUSED_)
 {
     if (viewport)
         viewport->hideBeingPopup();
+    mRedraw = true;
 }
 
 void Popup::hide()
 {
     setVisible(false);
+    mRedraw = true;
+}
+
+void Popup::widgetResized(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
+}
+
+void Popup::widgetMoved(const gcn::Event &event _UNUSED_)
+{
+    mRedraw = true;
 }

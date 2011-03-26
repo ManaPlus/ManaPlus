@@ -30,6 +30,7 @@
 #include "gui/widgets/container.h"
 
 #include <guichan/mouselistener.hpp>
+#include <guichan/widgetlistener.hpp>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
@@ -37,6 +38,7 @@
 #define _UNUSED_
 #endif
 
+class GraphicsVertexes;
 class Skin;
 class WindowContainer;
 
@@ -52,7 +54,8 @@ class WindowContainer;
  *
  * \ingroup GUI
  */
-class Popup : public Container, public gcn::MouseListener
+class Popup : public Container, public gcn::MouseListener,
+              public gcn::WidgetListener
 {
     public:
         /**
@@ -161,6 +164,10 @@ class Popup : public Container, public gcn::MouseListener
 
         void hide();
 
+        void widgetResized(const gcn::Event &event);
+
+        void widgetMoved(const gcn::Event &event);
+
     private:
         std::string mPopupName;       /**< Name of the popup */
         int mMinWidth;                /**< Minimum popup width */
@@ -170,6 +177,8 @@ class Popup : public Container, public gcn::MouseListener
         int mPadding;                 /**< Holds the padding of the popup. */
 
         Skin *mSkin;                  /**< Skin in use by this popup */
+        GraphicsVertexes *mVertexes;
+        bool mRedraw;
 };
 
 #endif
