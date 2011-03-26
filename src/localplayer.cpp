@@ -3119,6 +3119,8 @@ void LocalPlayer::afkRespond(ChatTab *tab, const std::string &nick)
             }
             else
             {
+                if (tab->getNoAway())
+                    return;
                 tab->chatLog(getName(), msg);
             }
             mAfkTime = cur_time;

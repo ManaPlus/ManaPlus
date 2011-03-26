@@ -1353,6 +1353,7 @@ void ChatWindow::loadState()
         {
             tab->setAllowHighlight(flags & 1);
             tab->setRemoveNames((flags & 2) / 2);
+            tab->setNoAway((flags & 4) / 4);
         }
         serverConfig.deleteKey("chatWhisper" + toString(num));
         serverConfig.deleteKey("chatWhisperFlags" + toString(num));
@@ -1386,7 +1387,8 @@ void ChatWindow::saveState()
 
         serverConfig.setValue("chatWhisperFlags" + toString(num),
             static_cast<int>(tab->getAllowHighlight())
-            + (2 * static_cast<int>(tab->getRemoveNames())));
+            + (2 * static_cast<int>(tab->getRemoveNames()))
+            + (4 * static_cast<int>(tab->getNoAway())));
 
         num ++;
     }

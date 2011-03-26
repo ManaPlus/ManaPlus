@@ -153,6 +153,12 @@ class ChatTab : public Tab
         void setRemoveNames(bool n)
         { mRemoveNames = n; }
 
+        bool getNoAway()
+        { return mNoAway; }
+
+        void setNoAway(bool n)
+        { mNoAway = n; }
+
     protected:
         friend class ChatWindow;
         friend class WhisperWindow;
@@ -173,6 +179,7 @@ class ChatTab : public Tab
         BrowserBox *mTextOutput;
         bool mAllowHightlight;
         bool mRemoveNames;
+        bool mNoAway;
 };
 
 extern ChatTab *localChatTab;

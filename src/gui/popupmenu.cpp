@@ -492,6 +492,16 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         mBrowserBox->addRow(strprintf("@@remove name|%s@@",
                             _("Remove name")));
     }
+    if (tab->getNoAway())
+    {
+        mBrowserBox->addRow(strprintf("@@enable away|%s@@",
+                            _("Enable away")));
+    }
+    else
+    {
+        mBrowserBox->addRow(strprintf("@@disable away|%s@@",
+                            _("Disable away")));
+    }
     mBrowserBox->addRow("##3---");
 
     if (tab->getType() == ChatTab::TAB_PARTY)
@@ -1100,6 +1110,14 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "remove name" && mTab)
     {
         mTab->setRemoveNames(true);
+    }
+    else if (link == "disable away" && mTab)
+    {
+        mTab->setNoAway(true);
+    }
+    else if (link == "enable away" && mTab)
+    {
+        mTab->setNoAway(false);
     }
     else if (link == "guild-pos" && !mNick.empty())
     {
