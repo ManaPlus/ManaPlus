@@ -1344,14 +1344,24 @@ void ChatWindow::loadState()
 
         if (nick.empty())
             break;
-        addWhisperTab(nick);
+        int flags = serverConfig.getValue(
+            "chatWhisperFlags" + toString(num), 1);
+
+        ChatTab *tab = addWhisperTab(nick);
+        if (tab)
+        {
+            tab->setAllowHighlight(flags & 1);
+            tab->setRemoveNames((flags & 2) / 2);
+        }
         serverConfig.deleteKey("chatWhisper" + toString(num));
+        serverConfig.deleteKey("chatWhisperFlags" + toString(num));
         num ++;
     }
 
     while (num < 50)
     {
         serverConfig.deleteKey("chatWhisper" + toString(num));
+        serverConfig.deleteKey("chatWhisperFlags" + toString(num));
         num ++;
     }
 }
@@ -1371,7 +1381,11 @@ void ChatWindow::saveState()
             continue;
 
         serverConfig.setValue("chatWhisper" + toString(num),
-                                     tab->getNick());
+            tab->getNick());
+
+        serverConfig.setValue("chatWhisperFlags" + toString(num),
+            static_cast<int>(tab->getAllowHighlight())
+            + (2 * static_cast<int>(tab->getRemoveNames())));
 
         num ++;
     }
@@ -1379,6 +1393,7 @@ void ChatWindow::saveState()
     while (num < 50)
     {
         serverConfig.deleteKey("chatWhisper" + toString(num));
+        serverConfig.deleteKey("chatWhisperFlags" + toString(num));
         num ++;
     }
 }
