@@ -154,6 +154,8 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
         bool mRedraw;
         int mXOffset;
         int mYOffset;
+        int mDrawWidth;
+        int mDrawHeight;
 };
 
 #endif

@@ -50,7 +50,9 @@ ScrollArea::ScrollArea():
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mXOffset(0),
-    mYOffset(0)
+    mYOffset(0),
+    mDrawWidth(0),
+    mDrawHeight(0)
 {
     addWidgetListener(this);
     init();
@@ -65,9 +67,11 @@ ScrollArea::ScrollArea(gcn::Widget *widget):
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mXOffset(0),
-    mYOffset(0)
+    mYOffset(0),
+    mDrawWidth(0),
+    mDrawHeight(0)
 {
-    addWidgetListener(this);
+//    addWidgetListener(this);
     init();
 }
 
@@ -338,6 +342,12 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
                 recalc = true;
                 mXOffset = rect.xOffset;
                 mYOffset = rect.yOffset;
+            }
+            else if (rect.width != mDrawWidth || rect.height != mDrawHeight)
+            {
+                recalc = true;
+                mDrawWidth = rect.width;
+                mDrawHeight = rect.height;
             }
         }
 
