@@ -913,8 +913,9 @@ void ChatWindow::whisper(const std::string &nick,
                 {
                     nick2 = msg.substr(0, idx);
                     msg = msg.substr(idx + 1);
-                    trim(nick2);
-                    trim(msg);
+                    nick2 = removeColors(nick2);
+                    nick2 = trim(nick2);
+                    msg = trim(msg);
                     tab->chatLog(nick2, msg);
                 }
                 else
