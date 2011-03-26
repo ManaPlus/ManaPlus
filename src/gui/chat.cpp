@@ -904,7 +904,28 @@ void ChatWindow::whisper(const std::string &nick,
         }
         else
         {
-            tab->chatLog(nick, mes);
+            if (tab->getRemoveNames())
+            {
+                std::string msg = mes;
+                std::string nick2;
+                int idx = mes.find(":");
+                if (idx > 0)
+                {
+                    nick2 = msg.substr(0, idx);
+                    msg = msg.substr(idx + 1);
+                    trim(nick2);
+                    trim(msg);
+                    tab->chatLog(nick2, msg);
+                }
+                else
+                {
+                    tab->chatLog(nick, mes);
+                }
+            }
+            else
+            {
+                tab->chatLog(nick, mes);
+            }
             player_node->afkRespond(tab, nick);
         }
     }

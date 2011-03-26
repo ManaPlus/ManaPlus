@@ -476,14 +476,23 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     {
         mBrowserBox->addRow(strprintf("@@disable highlight|%s@@",
                             _("Disable highlight")));
-        mBrowserBox->addRow("##3---");
     }
     else
     {
         mBrowserBox->addRow(strprintf("@@enable highlight|%s@@",
                             _("Enable highlight")));
-        mBrowserBox->addRow("##3---");
     }
+    if (tab->getRemoveNames())
+    {
+        mBrowserBox->addRow(strprintf("@@dont remove name|%s@@",
+                            _("Dont remove name")));
+    }
+    else
+    {
+        mBrowserBox->addRow(strprintf("@@remove name|%s@@",
+                            _("Remove name")));
+    }
+    mBrowserBox->addRow("##3---");
 
     if (tab->getType() == ChatTab::TAB_PARTY)
     {
@@ -1083,6 +1092,14 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "disable highlight" && mTab)
     {
         mTab->setAllowHighlight(false);
+    }
+    else if (link == "dont remove name" && mTab)
+    {
+        mTab->setRemoveNames(false);
+    }
+    else if (link == "remove name" && mTab)
+    {
+        mTab->setRemoveNames(true);
     }
     else if (link == "guild-pos" && !mNick.empty())
     {

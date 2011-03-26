@@ -147,6 +147,12 @@ class ChatTab : public Tab
         void setAllowHighlight(bool n)
         { mAllowHightlight = n; }
 
+        bool getRemoveNames()
+        { return mRemoveNames; }
+
+        void setRemoveNames(bool n)
+        { mRemoveNames = n; }
+
     protected:
         friend class ChatWindow;
         friend class WhisperWindow;
@@ -166,6 +172,7 @@ class ChatTab : public Tab
         ScrollArea *mScrollArea;
         BrowserBox *mTextOutput;
         bool mAllowHightlight;
+        bool mRemoveNames;
 };
 
 extern ChatTab *localChatTab;

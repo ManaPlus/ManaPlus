@@ -50,7 +50,8 @@
 
 ChatTab::ChatTab(const std::string &name) :
     Tab(),
-    mAllowHightlight(true)
+    mAllowHightlight(true),
+    mRemoveNames(false)
 {
     setCaption(name);
 
