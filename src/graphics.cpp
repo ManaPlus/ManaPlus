@@ -269,53 +269,6 @@ void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     }
 }
 
-void Graphics::drawImagePatternDebug(GraphicsVertexes* vert, Image *image, int x, int y, int w, int h)
-{
-    // Check that preconditions for blitting are met.
-    if (!mTarget || !image)
-        return;
-    if (!image->mSDLSurface)
-        return;
-
-    const int iw = image->getWidth();
-    const int ih = image->getHeight();
-
-    if (iw == 0 || ih == 0)
-        return;
-
-    std::list<DoubleRect*> *arr = vert->getRectsSDL();
-    std::list<DoubleRect*>::iterator it;
-    it = arr->begin();
-
-    for (int py = 0; py < h; py += ih)     // Y position on pattern plane
-    {
-        int dh = (py + ih >= h) ? h - py : ih;
-        int srcY = image->mBounds.y;
-        int dstY = y + py + mClipStack.top().yOffset;
-
-        for (int px = 0; px < w; px += iw) // X position on pattern plane
-        {
-            int dw = (px + iw >= w) ? w - px : iw;
-            int srcX = image->mBounds.x;
-            int dstX = x + px + mClipStack.top().xOffset;
-
-            SDL_Rect dstRect;
-            SDL_Rect srcRect;
-            dstRect.x = static_cast<short>(dstX);
-            dstRect.y = static_cast<short>(dstY);
-            srcRect.x = static_cast<short>(srcX);
-            srcRect.y = static_cast<short>(srcY);
-            srcRect.w = static_cast<Uint16>(dw);
-            srcRect.h = static_cast<Uint16>(dh);
-
-            SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
-
-            ++it;
-        }
-    }
-}
-
-
 void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
                                         int w, int h, int scaledWidth,
                                         int scaledHeight)
@@ -434,6 +387,9 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
 
 void Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
 {
+    if (!vert)
+        return;
+
     vert->setPtr(0);
 
     const bool drawMain = imgRect.grid[4] && imgRect.grid[0] && imgRect.grid[2]
@@ -476,6 +432,8 @@ void Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
 
 void Graphics::drawImagePattern2(GraphicsVertexes *vert, Image *img)
 {
+    // here not checking input parameters
+
     std::list<DoubleRect*> *arr = vert->getRectsSDL();
     std::list<DoubleRect*>::iterator it;
 
@@ -491,6 +449,9 @@ bool Graphics::calcImageRect(GraphicsVertexes* vert,
                              Image *bottom, Image *left,
                              Image *center)
 {
+    if (!vert)
+        return false;
+
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 

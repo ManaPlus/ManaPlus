@@ -404,12 +404,18 @@ bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
                                     Image *left _UNUSED_,
                                     Image *center _UNUSED_)
 {
+    if (!vert)
+        return false;
+
     vert->init(x, y, w, h);
     return true;
 }
 
 void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
 {
+    if (!vert)
+        return;
+
     drawImageRect(vert->getX(), vert->getY(), vert->getW(), vert->getH(),
             imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
             imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],

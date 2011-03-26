@@ -164,8 +164,6 @@ class Graphics : public gcn::SDLGraphics
                                       int x, int y,
                                       int w, int h);
 
-        void drawImagePatternDebug(GraphicsVertexes* vert, Image *image, int x, int y, int w, int h);
-
         /**
          * Draw a pattern based on a rescaled version of the given image...
          */
