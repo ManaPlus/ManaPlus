@@ -29,7 +29,6 @@ int GraphicsVertexes::mUseOpenGL = 0;
 const unsigned int vertexBufSize = 500;
 #endif
 
-
 SDLGraphicsVertexes::SDLGraphicsVertexes()
 {
 
@@ -40,7 +39,7 @@ SDLGraphicsVertexes::~SDLGraphicsVertexes()
     delete_all(mList);
 }
 
-
+#ifdef USE_OPENGL
 OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     mFloatTexArray(0),
     mIntTexArray(0),
@@ -94,6 +93,7 @@ void OpenGLGraphicsVertexes::switchVp(int n)
 {
     mVp.push_back(n);
 }
+#endif
 
 GraphicsVertexes::GraphicsVertexes() :
     mX(0), mY(0),
@@ -116,14 +116,18 @@ void GraphicsVertexes::init(int x, int y, int w, int h)
     for (int f = 0; f < 10; f ++)
     {
         sdl[mPtr].mList.clear();
+#ifdef USE_OPENGL
         ogl[mPtr].init();
+#endif
     }
 }
 
+#ifdef USE_OPENGL
 void GraphicsVertexes::setLoadAsOpenGL(int useOpenGL)
 {
     mUseOpenGL = useOpenGL;
 }
+#endif
 
 void GraphicsVertexes::pushSDL(SDL_Rect r1, SDL_Rect r2)
 {

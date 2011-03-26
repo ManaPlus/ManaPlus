@@ -55,7 +55,7 @@ class SDLGraphicsVertexes
         std::list<DoubleRect*> mList;
 };
 
-
+#ifdef USE_OPENGL
 class OpenGL1GraphicsVertexes
 {
 };
@@ -73,10 +73,6 @@ class OpenGLGraphicsVertexes
 
         GLint *switchIntTexArray();
 
-        void init();
-
-        void clear();
-
         std::vector<GLfloat*> &getFloatTexPool()
         { return mFloatTexPool; }
 
@@ -91,6 +87,10 @@ class OpenGLGraphicsVertexes
         std::vector<int> &getVp()
         { return mVp; }
 
+        void init();
+
+        void clear();
+
     private:
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
@@ -100,6 +100,7 @@ class OpenGLGraphicsVertexes
         std::vector<GLint*> mIntTexPool;
         std::vector<int> mVp;
 };
+#endif
 
 class GraphicsVertexes
 {
@@ -112,9 +113,11 @@ class GraphicsVertexes
 
         SDLGraphicsVertexes sdl[5];
 
+#ifdef USE_OPENGL
         OpenGL1GraphicsVertexes ogl1[5];
 
         OpenGLGraphicsVertexes ogl[5];
+#endif
 
         void init(int x, int y, int w, int h);
 
@@ -130,8 +133,10 @@ class GraphicsVertexes
         void setPtr(int num)
         { mPtr = num; }
 
+#ifdef USE_OPENGL
         OpenGLGraphicsVertexes* getOGL()
         { return &ogl[mPtr]; }
+#endif
 
         int getX()
         { return mX; }
@@ -149,7 +154,9 @@ class GraphicsVertexes
         int mPtr;
 
     private:
+#ifdef USE_OPENGL
         static int mUseOpenGL;
+#endif
 };
 
 #endif // GRAPHICSVERTEXES_H

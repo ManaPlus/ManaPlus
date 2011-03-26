@@ -20,14 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "main.h"
+
+#ifdef USE_OPENGL
 #include "opengl1graphics.h"
 
 #include "graphicsvertexes.h"
 #include "log.h"
 
 #include "resources/image.h"
-
-#ifdef USE_OPENGL
 
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
