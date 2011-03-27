@@ -193,7 +193,7 @@ void KillStats::gainXp(int xp)
     mLine2->setCaption("Exp: " + toString(PlayerInfo::getAttribute(EXP)) + "/"
         + toString(xpNextLevel) + " Left: "
         + toString(xpNextLevel - PlayerInfo::getAttribute(EXP)));
-    if (AvgExp >= 0.001 && AvgExp <= 0.001)
+    if (AvgExp >= 0.001f && AvgExp <= 0.001f)
     {
         mLine3->setCaption("1% = " + toString(xpNextLevel / 100)
             + " exp, Avg Mob for 1%: ?");

@@ -768,14 +768,17 @@ void Window::resetToDefaultSize()
 
 int Window::getResizeHandles(gcn::MouseEvent &event)
 {
+    if (event.getX() < 0 || event.getY() < 0)
+        return 0;
+
     int resizeHandles = 0;
-    const int y = event.getY();
+    const unsigned y = event.getY();
 
     if (mGrip && (y > static_cast<int>(mTitleBarHeight)
         || (y < static_cast<int>(getPadding()) && mTitleBarHeight
         > getPadding())))
     {
-        const int x = event.getX();
+        const unsigned x = event.getX();
 
         if (!getWindowArea().isPointInRect(x, y) && event.getSource() == this)
         {

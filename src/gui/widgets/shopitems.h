@@ -110,7 +110,7 @@ class ShopItems : public gcn::ListModel
          * 
          * @return the item found or 0
          */
-        ShopItem *findItem(int id, unsigned char color);
+        ShopItem *findItem(int id, unsigned char color) const;
 
         /** The list of items in the shop. */
         std::vector<ShopItem*> mShopItems;

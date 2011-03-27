@@ -38,15 +38,15 @@ class Vector
          * Constructor.
          */
         Vector():
-            x(0.0f),
-            y(0.0f),
-            z(0.0f)
+            x(0),
+            y(0),
+            z(0)
         {}
 
         /**
          * Constructor.
          */
-        Vector(float x, float y, float z = 0.0f):
+        Vector(int x, int y, int z = 0.0f):
             x(x),
             y(y),
             z(z)
@@ -67,13 +67,13 @@ class Vector
          */
         bool isNull() const
         {
-            return x == 0.0f && y == 0.0f && z == 0.0f;
+            return x == 0 && y == 0 && z == 0;
         }
 
         /**
          * Scale vector operator.
          */
-        Vector operator*(float c) const
+        Vector operator*(int c) const
         {
             return Vector(x * c,
                           y * c,
@@ -83,7 +83,7 @@ class Vector
         /**
          * In-place scale vector operator.
          */
-        Vector &operator*=(float c)
+        Vector &operator*=(int c)
         {
             x *= c;
             y *= c;
@@ -94,7 +94,7 @@ class Vector
         /**
          * Scale vector operator.
          */
-        Vector operator/(float c) const
+        Vector operator/(int c) const
         {
             return Vector(x / c,
                           y / c,
@@ -104,7 +104,7 @@ class Vector
         /**
          * In-place scale vector operator.
          */
-        Vector &operator/=(float c)
+        Vector &operator/=(int c)
         {
             x /= c;
             y /= c;
@@ -189,7 +189,7 @@ class Vector
             return Vector(x / l, y / l, z / l);
         }
 
-        float x, y, z;
+        int x, y, z;
 };
 
 /**

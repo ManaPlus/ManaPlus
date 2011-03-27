@@ -66,6 +66,7 @@ static std::string serverTypeToString(ServerInfo::Type type)
         case ServerInfo::MANASERV:
             return "ManaServ";
         default:
+        case ServerInfo::UNKNOWN:
             return "";
     }
 }
@@ -75,6 +76,7 @@ static unsigned short defaultPortForServerType(ServerInfo::Type type)
     switch (type)
     {
         default:
+        case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
             return 6901;
         case ServerInfo::MANASERV:
@@ -490,8 +492,7 @@ void ServerDialog::logic()
         else if (mDownloadStatus == DOWNLOADING_IN_PROGRESS)
         {
             mDescription->setCaption(strprintf(_("Downloading server list..."
-                                                 "%2.2f%%"),
-                                     mDownloadProgress * 100));
+                "%2.2f%%"), mDownloadProgress * 100));
         }
         else if (mDownloadStatus == DOWNLOADING_IDLE)
         {

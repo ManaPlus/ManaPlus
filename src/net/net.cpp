@@ -166,11 +166,9 @@ void connectToServer(const ServerInfo &server)
                 break;
 #endif
             case ServerInfo::TMWATHENA:
-                new TmwAthena::GeneralHandler;
-                break;
-
+            case ServerInfo::UNKNOWN:
             default:
-                // Shouldn't happen...
+                new TmwAthena::GeneralHandler;
                 break;
         }
 

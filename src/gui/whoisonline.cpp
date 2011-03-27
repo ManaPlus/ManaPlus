@@ -484,6 +484,7 @@ void WhoIsOnline::logic()
                     chatWindow->updateOnline(mOnlinePlayers);
             }
             break;
+        case UPDATE_COMPLETE:
         default:
             break;
     }

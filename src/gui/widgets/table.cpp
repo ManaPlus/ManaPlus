@@ -301,27 +301,31 @@ void GuiTable::draw(gcn::Graphics* graphics)
     if (first_row < 0)
         first_row = 0;
 
-    int rows_nr = 1 + (getHeight() / getRowHeight()); // May overestimate
+    unsigned rows_nr = 1 + (getHeight() / getRowHeight()); // May overestimate
                                                       // by one.
 
-    int max_rows_nr = mModel->getRows() - first_row; // clip if neccessary:
+    unsigned max_rows_nr;
+    if (mModel->getRows() < first_row)
+        max_rows_nr = 0;
+    else
+        max_rows_nr = mModel->getRows() - first_row; // clip if neccessary:
     if (max_rows_nr < rows_nr)
         rows_nr = max_rows_nr;
 
     // Now determine the first and last column
     // Take the easy way out; these are usually bounded and all visible.
-    int first_column = 0;
-    int last_column1 = mModel->getColumns();
+    unsigned first_column = 0;
+    unsigned last_column1 = mModel->getColumns();
 
     // Set up everything for drawing
     int height = getRowHeight();
     int y_offset = first_row * height;
 
-    for (int r = first_row; r < first_row + rows_nr; ++r)
+    for (unsigned r = first_row; r < first_row + rows_nr; ++r)
     {
         int x_offset = 0;
 
-        for (int c = first_column; c + 1 <= last_column1; ++c)
+        for (unsigned c = first_column; c + 1 <= last_column1; ++c)
         {
             gcn::Widget *widget = mModel->getElementAt(r, c);
             int width = getColumnWidth(c);
@@ -340,18 +344,21 @@ void GuiTable::draw(gcn::Graphics* graphics)
                 graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
                         static_cast<int>(mAlpha * 255.0f)));
 
-                if (mLinewiseMode && r == mSelectedRow && c == 0)
+                if (mSelectedRow > 0)
                 {
-                    graphics->fillRectangle(gcn::Rectangle(0, y_offset,
-                                            getWidth(), height));
+                    if (mLinewiseMode && r == (unsigned)mSelectedRow && c == 0)
+                    {
+                        graphics->fillRectangle(gcn::Rectangle(0, y_offset,
+                                                getWidth(), height));
+                    }
+                    else if (!mLinewiseMode && mSelectedColumn > 0
+                             && c == (unsigned)mSelectedColumn
+                             && r == (unsigned)mSelectedRow)
+                    {
+                        graphics->fillRectangle(gcn::Rectangle(x_offset, y_offset,
+                                                               width, height));
+                    }
                 }
-                else if (!mLinewiseMode &&
-                         c == mSelectedColumn && r == mSelectedRow)
-                {
-                    graphics->fillRectangle(gcn::Rectangle(x_offset, y_offset,
-                                                           width, height));
-                }
-
                 graphics->pushClipArea(bounds);
                 widget->draw(graphics);
                 graphics->popClipArea();

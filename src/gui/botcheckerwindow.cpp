@@ -104,7 +104,6 @@ public:
             && botCheckerWindow->mEnabled)
         {
             std::set<ActorSprite*> beings = actorSpriteManager->getAll();
-            ActorSprites::iterator i = beings.begin();
             for (ActorSprites::const_iterator i = beings.begin();
                  i != beings.end(); ++i)
             {
@@ -391,7 +390,6 @@ void BotCheckerWindow::reset()
     if (actorSpriteManager)
     {
         std::set<ActorSprite*> beings = actorSpriteManager->getAll();
-        ActorSprites::iterator i = beings.begin();
         for (ActorSprites::const_iterator i = beings.begin();
              i != beings.end(); ++i)
         {

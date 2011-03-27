@@ -248,6 +248,20 @@ void ItemDB::load()
                 itemInfo->addTag(mTags["Unusable"]);
                 break;
             default:
+            case ITEM_EQUIPMENT_ONE_HAND_WEAPON:
+            case ITEM_EQUIPMENT_TWO_HANDS_WEAPON:
+            case ITEM_EQUIPMENT_TORSO:
+            case ITEM_EQUIPMENT_ARMS:
+            case ITEM_EQUIPMENT_HEAD:
+            case ITEM_EQUIPMENT_LEGS:
+            case ITEM_EQUIPMENT_SHIELD:
+            case ITEM_EQUIPMENT_RING:
+            case ITEM_EQUIPMENT_NECKLACE:
+            case ITEM_EQUIPMENT_FEET:
+            case ITEM_EQUIPMENT_AMMO:
+            case ITEM_EQUIPMENT_CHARM:
+            case ITEM_SPRITE_RACE:
+            case ITEM_SPRITE_HAIR:
                 itemInfo->addTag(mTags["Equipment"]);
                 break;
         }

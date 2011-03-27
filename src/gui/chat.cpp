@@ -689,7 +689,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
              mChatInput->isVisible())
     {
         ChatTab *tab = getFocused();
-        if (tab && tab->getRows().size() > 0)
+        if (tab && (unsigned)tab->getRows().size() > 0)
         {
             if (!mChatHistoryIndex)
             {

@@ -439,7 +439,7 @@ class Window : public gcn::Window, gcn::WidgetListener
          * border width, and determines mostly the size of the corner area
          * where two borders are moved at the same time.
          */
-        static const int resizeBorderWidth = 10;
+        static const unsigned resizeBorderWidth = 10;
         GraphicsVertexes *mVertexes;
         bool mRedraw;
 };

@@ -199,7 +199,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
     const std::string &eventId = event.getId();
 
-    if (selected != -1)
+    if (selected >= 0)
     {
         if (eventId == "use")
         {

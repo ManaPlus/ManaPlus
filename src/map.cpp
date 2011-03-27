@@ -786,6 +786,8 @@ void Map::blockTile(int x, int y, BlockType type)
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_MONSTER;
                 break;
             default:
+            case BLOCKTYPE_NONE:
+            case NB_BLOCKTYPES:
                 // Do nothing.
                 break;
         }

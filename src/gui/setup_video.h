@@ -64,7 +64,7 @@ class Setup_Video : public SetupTab, public gcn::ActionListener,
         bool mNPCLogEnabled;
         bool mPickupChatEnabled;
         bool mPickupParticleEnabled;
-        double mOpacity;
+        float mOpacity;
         int mFps;
         int mAltFps;
         bool mHideShieldSprite;

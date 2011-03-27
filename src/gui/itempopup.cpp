@@ -116,8 +116,8 @@ void ItemPopup::setItem(const Item *item, bool showImage)
                 ii.getName().c_str(), item->getRefine(), ii.getId()));
         }
         mItemName->adjustSize();
-        int minWidth = mItemName->getWidth() + 8;
-        if (getWidth() < minWidth)
+        unsigned minWidth = mItemName->getWidth() + 8;
+        if ((unsigned)getWidth() < minWidth)
             setWidth(minWidth);
     }
 }
@@ -256,6 +256,10 @@ gcn::Color ItemPopup::getColor(ItemType type)
             return Theme::getThemeColor(Theme::FEET);
         case ITEM_EQUIPMENT_AMMO:
             return Theme::getThemeColor(Theme::AMMO);
+        case ITEM_EQUIPMENT_CHARM:
+            return Theme::getThemeColor(Theme::CHARM);
+        case ITEM_SPRITE_RACE:
+        case ITEM_SPRITE_HAIR:
         default:
             return Theme::getThemeColor(Theme::UNKNOWN_ITEM);
     }

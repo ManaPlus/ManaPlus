@@ -105,12 +105,12 @@ void ShopItems::clear()
     mShopItems.clear();
 }
 
-ShopItem *ShopItems::findItem(int id, unsigned char color)
+ShopItem *ShopItems::findItem(int id, unsigned char color) const
 {
     ShopItem *item;
 
-    std::vector<ShopItem*>::iterator it = mShopItems.begin();
-    std::vector<ShopItem*>::iterator e = mShopItems.end();
+    std::vector<ShopItem*>::const_iterator it = mShopItems.begin();
+    std::vector<ShopItem*>::const_iterator e = mShopItems.end();
     while (it != e)
     {
         item = *(it);

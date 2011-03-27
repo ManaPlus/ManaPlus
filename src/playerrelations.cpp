@@ -259,6 +259,9 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
                 permissions |= mDefaultPermissions; // widen
                 break;
 
+            case PlayerRelation::DISREGARDED:
+            case PlayerRelation::IGNORED:
+            case PlayerRelation::ERASED:
             default:
                 permissions &= mDefaultPermissions; // narrow
         }

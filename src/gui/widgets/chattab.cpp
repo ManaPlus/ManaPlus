@@ -162,6 +162,7 @@ void ChatTab::chatLog(std::string line, Own own,
             lineColor = "##Y";
             break;
         case BY_OTHER:
+        case BY_UNKNOWN:
             tmp.nick += ": ";
             lineColor = "##C";
             break;

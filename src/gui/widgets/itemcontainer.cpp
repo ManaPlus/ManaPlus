@@ -375,6 +375,8 @@ void ItemContainer::mouseReleased(gcn::MouseEvent &event)
         case SEL_DRAGGING:
             mSelectionStatus = SEL_SELECTED;
             break;
+        case SEL_NONE:
+        case SEL_SELECTED:
         default:
             return;
     };

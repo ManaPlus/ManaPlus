@@ -178,7 +178,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         unsigned int nextChar;
         const char *hyphen = "~";
         int hyphenWidth = font->getWidth(hyphen);
-        int x = 0;
+        unsigned x = 0;
 
         for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); ++i)
         {
@@ -197,7 +197,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
                     if (nextSpacePos <= 0)
                         nextSpacePos = static_cast<int>(row.size()) - 1;
 
-                    int nextWordWidth = font->getWidth(
+                    unsigned nextWordWidth = font->getWidth(
                         row.substr(nextChar,
                         (nextSpacePos - nextChar)));
 
@@ -335,7 +335,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
 int BrowserBox::calcHeight()
 {
-    int x = 0, y = 0;
+    unsigned x = 0, y = 0;
     int wrappedLines = 0;
     int link = 0;
     gcn::Font *font = getFont();
@@ -360,7 +360,7 @@ int BrowserBox::calcHeight()
         if (row.find("---", 0) == 0)
         {
             const int dashWidth = fontWidthMinus;
-            for (x = 0; x < getWidth(); x++)
+            for (x = 0; x < (unsigned)getWidth(); x++)
             {
                 mLineParts.push_back(LinePart(x, y, selColor, "-"));
                 x += dashWidth - 2;

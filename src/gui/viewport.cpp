@@ -705,6 +705,11 @@ void Viewport::mouseMoved(gcn::MouseEvent &event _UNUSED_)
             case ActorSprite::MONSTER:
                 gui->setCursorType(Gui::CURSOR_FIGHT);
                 break;
+
+            case ActorSprite::UNKNOWN:
+            case ActorSprite::PLAYER:
+            case ActorSprite::FLOOR_ITEM:
+            case ActorSprite::PORTAL:
             default:
                 gui->setCursorType(Gui::CURSOR_POINTER);
                 break;

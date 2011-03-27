@@ -182,6 +182,7 @@ class Theme : public Palette, public ConfigListener
             AMMO,
             SERVER_VERSION_NOT_SUPPORTED,
             WARNING,
+            CHARM,
             THEME_COLORS_END
         };
 

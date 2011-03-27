@@ -1207,6 +1207,7 @@ int Client::exec()
                     //++++++
                     break;
 
+                case STATE_START:
                 default:
                     mState = STATE_FORCE_QUIT;
                     break;

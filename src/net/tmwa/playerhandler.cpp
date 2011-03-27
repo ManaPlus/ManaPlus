@@ -707,9 +707,18 @@ void PlayerHandler::changeAction(Being::Action action)
     char type;
     switch (action)
     {
-        case Being::SIT: type = 2; break;
-        case Being::STAND: type = 3; break;
-        default: return;
+        case Being::SIT:
+            type = 2;
+            break;
+        case Being::STAND:
+            type = 3;
+            break;
+        default:
+        case Being::MOVE:
+        case Being::ATTACK:
+        case Being::DEAD:
+        case Being::HURT:
+            return;
     }
 
     MessageOut outMsg(CMSG_PLAYER_CHANGE_ACT);

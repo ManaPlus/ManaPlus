@@ -1173,9 +1173,16 @@ bool LocalPlayer::toggleSit()
     Being::Action newAction;
     switch (mAction)
     {
-        case STAND: newAction = SIT; break;
-        case SIT: newAction = STAND; break;
-        default: return true;
+        case STAND: newAction = SIT;
+            break;
+        case SIT: newAction = STAND;
+            break;
+        case MOVE:
+        case ATTACK:
+        case DEAD:
+        case HURT:
+        default:
+            return true;
     }
 
     Net::getPlayerHandler()->changeAction(newAction);

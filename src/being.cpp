@@ -2023,7 +2023,7 @@ void Being::recalcSpritesOrder()
 //    logger->log("preparation end");
 
     int lastRemap = 0;
-    int cnt = 0;
+    unsigned cnt = 0;
 
     while (cnt < 15 && lastRemap >= 0)
     {

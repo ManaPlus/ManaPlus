@@ -250,6 +250,9 @@ void PopupMenu::showPopup(int x, int y, Being *being)
             }
             break;
 
+        case ActorSprite::UNKNOWN:
+        case ActorSprite::FLOOR_ITEM:
+        case ActorSprite::PORTAL:
         default:
             /* Other beings aren't interesting... */
             return;
