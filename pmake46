@@ -1,0 +1,29 @@
+#!/bin/sh
+
+dir=`pwd`
+
+export CC=gcc-4.6
+export CXX=g++-4.6
+
+#-D_GLIBCXX_PROFILE
+
+export LANG=C
+export CXXFLAGS="-pg -fno-inline -Wunreachable-code -Wmissing-field-initializers \
+-Wabi -Wdisabled-optimization -Wuninitialized \
+-Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
+-Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
+-Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
+-Wctor-dtor-privacy -Wstrict-null-sentinel \
+-Wunused-parameter -Wredundant-decls -Wlogical-op \
+-Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
+-Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe"
+
+autoreconf -i
+./configure --prefix=$dir/run \
+            --datadir=$dir/run/share/games \
+            --bindir=$dir/run/bin \
+            --mandir=$dir/run/share/man
+
+make -j5 2>make.log
+
