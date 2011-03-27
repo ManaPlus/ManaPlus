@@ -1,0 +1,64 @@
+#!/bin/sh
+
+#may be
+#-Wshadow -Waggregate-return -Winline 
+
+#for feature
+#-Wstrict-overflow=4 -Wfloat-equal
+#-Wunsafe-loop-optimizations
+#-Wnon-virtual-dtor
+#-Woverloaded-virtual
+#-Wformat=2
+#-Wswitch-enum
+#-Werror 
+
+#for better code
+# -Weffc++
+
+#from time to time fix: -Wold-style-cast -Wconversion -Wswitch-enum -Waggregate-return
+#from time to time fix: -Winline
+#need fix: -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn \
+#need fix: -Wstrict-overflow=5 -fstrict-overflow
+#need fix: -Wdouble-promotion
+#need fix: -Wfloat-equal
+#need fix: -Wunsafe-loop-optimizations
+#need fix: -Wpadded
+#prof -pg
+
+#add after elemination enet: -Wpacked
+
+dir=`pwd`
+
+export CC=gcc-4.6
+export CXX=g++-4.6
+
+export LANG=C
+
+export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls -Wpacked-bitfield-compat \
+-Wcast-qual -Wtrampolines -Wsuggest-attribute=noreturn \
+-Wunused -Wstrict-aliasing=2 -fstrict-aliasing \
+-Wunused-but-set-parameter \
+-Wunreachable-code -Wmissing-field-initializers \
+-Wabi -Wdisabled-optimization -Wuninitialized \
+-Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
+-Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
+-Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
+-Wctor-dtor-privacy -Wstrict-null-sentinel \
+-Wunused-parameter -Wlogical-op \
+-Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
+-Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe"
+
+autoreconf -i
+./configure --prefix=$dir/run \
+            --datadir=$dir/run/share/games \
+            --bindir=$dir/run/bin \
+            --mandir=$dir/run/share/man \
+            --enable-manaserv=yes
+
+cd po
+#make -j5 update-po 2>../make1.log
+make -j5 update-gmo 2>../make1.log
+cd ..
+make -j5 2>make2.log
+
