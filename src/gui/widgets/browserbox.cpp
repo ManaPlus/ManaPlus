@@ -83,6 +83,9 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     std::string::size_type idx1, idx2, idx3;
     gcn::Font *font = getFont();
 
+    if (getWidth() < 0)
+        return;
+
     // Use links and user defined colors
     if (mUseLinksAndUserColors)
     {
@@ -201,7 +204,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
                         row.substr(nextChar,
                         (nextSpacePos - nextChar)));
 
-                    if ((x + nextWordWidth + 10) > getWidth())
+                    if ((x + nextWordWidth + 10) > (unsigned)getWidth())
                     {
                         x = 15; // Ident in new line
                         y += 1;
@@ -209,7 +212,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
                     }
                 }
                 // Wrapping looong lines (brutal force)
-                else if ((x + 2 * hyphenWidth) > getWidth())
+                else if ((x + 2 * hyphenWidth) > (unsigned)getWidth())
                 {
                     x = 15; // Ident in new line
                     y += 1;
@@ -338,6 +341,9 @@ int BrowserBox::calcHeight()
     unsigned x = 0, y = 0;
     int wrappedLines = 0;
     int link = 0;
+    if (getWidth() < 0)
+        return 1;
+
     gcn::Font *font = getFont();
 
     int fontHeight = font->getHeight();
@@ -464,7 +470,7 @@ int BrowserBox::calcHeight()
             // Auto wrap mode
             if (mMode == AUTO_WRAP && getWidth() > 0
                 && font->getWidth(part) > 0
-                && (x + font->getWidth(part) + 10) > getWidth())
+                && (x + font->getWidth(part) + 10) > (unsigned)getWidth())
             {
                 bool forced = false;
 
@@ -494,7 +500,8 @@ int BrowserBox::calcHeight()
                     part = row.substr(start, end - start + 1);
                 }
                 while (end > start && font->getWidth(part) > 0
-                       && (x + font->getWidth(part) + 10) > getWidth());
+                       && (x + font->getWidth(part) + 10)
+                       > (unsigned)getWidth());
 
                 if (forced)
                 {

@@ -774,9 +774,8 @@ int Window::getResizeHandles(gcn::MouseEvent &event)
     int resizeHandles = 0;
     const unsigned y = event.getY();
 
-    if (mGrip && (y > static_cast<int>(mTitleBarHeight)
-        || (y < static_cast<int>(getPadding()) && mTitleBarHeight
-        > getPadding())))
+    if (mGrip && (y > mTitleBarHeight || (y < getPadding()
+        && mTitleBarHeight > getPadding())))
     {
         const unsigned x = event.getX();
 
