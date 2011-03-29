@@ -196,7 +196,12 @@ static void initInternationalization()
     // mingw doesn't like LOCALEDIR to be defined for some reason
     bindtextdomain("manaplus", "translations/");
 #else
+#if ENABLE_PORTABLE
+    bindtextdomain("manaplus", (std::string(PHYSFS_getBaseDir())
+        + "../locale/").c_str());
+#else
     bindtextdomain("manaplus", LOCALEDIR);
+#endif
 #endif
     setlocale(LC_MESSAGES, "");
     bind_textdomain_codeset("manaplus", "UTF-8");
@@ -244,8 +249,6 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    initInternationalization();
-
     // Initialize PhysicsFS
     if (!PHYSFS_init(argv[0]))
     {
@@ -253,6 +256,9 @@ int main(int argc, char *argv[])
                   << PHYSFS_getLastError() << std::endl;
         return 1;
     }
+
+    initInternationalization();
+
     atexit((void(*)()) PHYSFS_deinit);
 
     initXML();

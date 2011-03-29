@@ -6,6 +6,10 @@ manaplus_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
 		-Wall
 
+if ENABLE_PORTABLE
+manaplus_CXXFLAGS += -DENABLE_PORTABLE
+endif
+
 manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
 	      gui/widgets/battletab.cpp \

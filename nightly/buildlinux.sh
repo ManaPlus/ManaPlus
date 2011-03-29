@@ -2,13 +2,21 @@
 
 cd ..
 
-DIR=`pwd`
 DSTDIR=packaging/build/linux
 
 autoreconf -i
 #make clean
-./configure --datadir=. localedir=locale
+./configure --enable-portable=yes
+result=$?
+if [ "$result" != 0 ]; then
+    exit $result
+fi
+
 make
+result=$?
+if [ "$result" != 0 ]; then
+    exit $result
+fi
 
 if [ -e src/manaplus ];
 then

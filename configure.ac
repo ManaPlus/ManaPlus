@@ -145,6 +145,17 @@ esac],[with_manaserv=false])
 
 AM_CONDITIONAL(ENABLE_MANASERV, test x$with_manaserv = xtrue)
 
+# Enable portable
+AC_ARG_ENABLE(portable,
+[  --enable-portable    Turn on portable mode for linux],
+[case "${enableval}" in
+  yes) portable_enabled=true ;;
+  no)  portable_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-portable) ;;
+esac],[portable_enabled=false])
+
+AM_CONDITIONAL(ENABLE_PORTABLE, test x$portable_enabled = xtrue)
+
 AC_CONFIG_FILES([
 Makefile
 src/Makefile
