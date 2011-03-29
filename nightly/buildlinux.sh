@@ -7,7 +7,7 @@ DSTDIR=packaging/build/linux
 
 autoreconf -i
 #make clean
-./configure
+./configure --datadir=. localedir=locale
 make
 
 if [ -e src/manaplus ];
