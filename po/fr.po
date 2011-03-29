@@ -2,19 +2,19 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-03-28 01:33+0300\n"
+"POT-Creation-Date: 2011-03-29 05:47+0300\n"
 "PO-Revision-Date: 2011-03-28 00:13+0000\n"
 "Last-Translator: Jumpy <antoinebcn@hotmail.com>\n"
 "Language-Team: French <>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/being.cpp:489
@@ -236,8 +236,8 @@ msgstr "/closeall > Fermer tous les onglets ouverts"
 #: src/commandhandler.cpp:344
 msgid "/all > Show all visible beings in debug tab"
 msgstr ""
-"/all > Montrer tous les personnages visibles dans la fenêtre de 'debug' "
-"(informations)"
+"/all > Montrer tous les personnages visibles dans la fenêtre de "
+"'debug' (informations)"
 
 #: src/commandhandler.cpp:346
 msgid "/move > Move to given position"
@@ -368,8 +368,7 @@ msgstr "Commande : /w <nom du personnage> <message>"
 
 #: src/commandhandler.cpp:411
 msgid "This command sends the text <message> to <nick>."
-msgstr ""
-"Cette commande envoie le texte <message> au joueur <nom du personnage>"
+msgstr "Cette commande envoie le texte <message> au joueur <nom du personnage>"
 
 #: src/commandhandler.cpp:412 src/commandhandler.cpp:444
 #: src/gui/widgets/channeltab.cpp:83 src/gui/widgets/channeltab.cpp:92
@@ -390,8 +389,8 @@ msgstr "Commande : /q <nom du personnage>"
 #: src/commandhandler.cpp:419
 msgid "This command tries to make a tab for whispers betweenyou and <nick>."
 msgstr ""
-"Cette commande essaye de créer une fenêtre de dialogue entre vous et <nom du"
-" personnage>"
+"Cette commande essaye de créer une fenêtre de dialogue entre vous et <nom du "
+"personnage>"
 
 #: src/commandhandler.cpp:424
 msgid "Command: /away <afk reason>"
@@ -455,16 +454,17 @@ msgid ""
 "This command sets whether the return key should toggle the chat log, or "
 "whether the chat log turns off automatically."
 msgstr ""
-"Cette commande bascule la fonction de la touche \"retour\" entre \"ouverture"
-" / fermeture\" et \"fermeture automatique\" de la ligne de discussion."
+"Cette commande bascule la fonction de la touche \"retour\" entre "
+"\"ouverture / fermeture\" et \"fermeture automatique\" de la ligne de "
+"discussion."
 
 #: src/commandhandler.cpp:459
 msgid ""
 "<state> can be one of \"1\", \"yes\", \"true\" to turn the toggle on, or "
 "\"0\", \"no\", \"false\" to turn the toggle off."
 msgstr ""
-"<état> peut être en position \"1\", \"yes\", \"true\" pour activer le bouton"
-" sur marche, ou \"0\", \"no\", \"false\" pour désactiver le bouton."
+"<état> peut être en position \"1\", \"yes\", \"true\" pour activer le bouton "
+"sur marche, ou \"0\", \"no\", \"false\" pour désactiver le bouton."
 
 #: src/commandhandler.cpp:462
 msgid "Command: /toggle"
@@ -511,11 +511,11 @@ msgstr "Vous ne pouvez pas envoyer des messages privés vides !"
 #: src/commandhandler.cpp:561
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Il ne peut être créer une fenêtre de conversation avec le personnage \"%s\" "
-"! Elle existe déjà ou il s'agit de vous même."
+"Il ne peut être créer une fenêtre de conversation avec le personnage \"%s"
+"\" ! Elle existe déjà ou il s'agit de vous même."
 
 #: src/commandhandler.cpp:581
 #, c-format
@@ -646,8 +646,8 @@ msgstr[1] "%d secondes"
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", "
-"\"true\", \"false\", \"1\", \"0\"."
+"Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", \"true"
+"\", \"false\", \"1\", \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:395
 msgid "General"
@@ -2811,8 +2811,7 @@ msgstr "Accepter l'invitation dans cette guilde"
 #: src/gui/socialwindow.cpp:1136
 msgid "Received party request, but one already exists."
 msgstr ""
-"Vous avez reçu une demande de rejoindre un groupe, mais il en existe déjà "
-"un."
+"Vous avez reçu une demande de rejoindre un groupe, mais il en existe déjà un."
 
 #: src/gui/socialwindow.cpp:1147
 msgid "You have been invited you to join a party."
@@ -2852,6 +2851,260 @@ msgstr "Choisissez le nom du groupe."
 #: src/gui/specialswindow.cpp:80 src/gui/windowmenu.cpp:84
 msgid "Specials"
 msgstr "Cpt. spéciales"
+
+#: src/gui/statuspopup.cpp:194
+msgid "(D) default moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:199
+msgid "(I) invert moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:204
+msgid "(c) moves with some crazy moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:209
+msgid "(C) moves with crazy moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:214
+msgid "d) double normal + crazy"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:219
+msgid "(?) move"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:237
+msgid "(a) custom crazy move"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:241
+#, fuzzy
+msgid "(?) crazy move"
+msgstr "Mouvements de dingue"
+
+#: src/gui/statuspopup.cpp:251
+msgid "(0) default moves to target"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:256
+msgid "(1) moves to target in distance 1"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:261
+msgid "(2) moves to target in distance 3"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:266
+msgid "(3) moves to target in distance 3"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:271
+msgid "(5) moves to target in distance 5"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:276
+msgid "(7) moves to target in distance 7"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:281
+msgid "(A) moves to target in attack range"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:286
+#, fuzzy
+msgid "(?) move to target"
+msgstr "Se déplacer vers la cible"
+
+#: src/gui/statuspopup.cpp:294
+msgid "(D) default follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:298
+msgid "(R) relative follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:302
+msgid "(M) mirror follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:306
+msgid "(P) pet follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:310
+msgid "(?) unknown follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:319 src/gui/statuspopup.cpp:342
+msgid "(D) default attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:324
+msgid "(s) switch attack without shield"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:329
+msgid "(S) switch attack with shield"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:333 src/gui/statuspopup.cpp:358
+#, fuzzy
+msgid "(?) attack"
+msgstr "Attaquer"
+
+#: src/gui/statuspopup.cpp:346
+msgid "(G) go and attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:350
+msgid "(A) go, attack, pickup"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:354
+#, fuzzy
+msgid "(d) without auto attack"
+msgstr "Changer l'attaque magique"
+
+#: src/gui/statuspopup.cpp:372
+msgid "(S) small pick up 1x1 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:376
+msgid "(D) default pick up 2x1 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:380
+msgid "(F) forward pick up 2x3 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:384
+msgid "(3) pick up 3x3 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:388
+msgid "(g) go and pick up in distance 4"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:392
+msgid "(G) go and pick up in distance 8"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:396
+msgid "(A) go and pick up in max distance"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:400
+msgid "(?) pick up"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:409
+msgid "(N) normal map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:413
+msgid "(D) debug map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:417
+msgid "(u) ultra map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:421
+msgid "(U) ultra map view 2"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:425
+msgid "(e) empty map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:429
+msgid "(b) black & white map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:433
+msgid "(?) map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:441
+#, fuzzy
+msgid "(f) use #flar for magic attack"
+msgstr "Utiliser l'attaque magique"
+
+#: src/gui/statuspopup.cpp:446
+#, fuzzy
+msgid "(c) use #chiza for magic attack"
+msgstr "Utiliser l'attaque magique"
+
+#: src/gui/statuspopup.cpp:451
+#, fuzzy
+msgid "(I) use #ingrav for magic attack"
+msgstr "Utiliser l'attaque magique"
+
+#: src/gui/statuspopup.cpp:456
+#, fuzzy
+msgid "(F) use #frillyar for magic attack"
+msgstr "Utiliser l'attaque magique"
+
+#: src/gui/statuspopup.cpp:461
+#, fuzzy
+msgid "(U) use #upmarmu for magic attack"
+msgstr "Utiliser l'attaque magique"
+
+#: src/gui/statuspopup.cpp:465
+#, fuzzy
+msgid "(?) magic attack"
+msgstr "Utiliser l'attaque magique"
+
+#: src/gui/statuspopup.cpp:474
+msgid "(D) default imitation"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:478
+msgid "(O) outfits imitation"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:482
+msgid "(?) imitation"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:491
+#, fuzzy
+msgid "(O) on keyboard"
+msgstr "Clavier"
+
+#: src/gui/statuspopup.cpp:494
+msgid "(A) away"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:497 src/gui/statuspopup.cpp:517
+msgid "(?) away"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:505
+#, fuzzy
+msgid "(G) game camera mode"
+msgstr "Changer le mode de caméra"
+
+#: src/gui/statuspopup.cpp:509
+#, fuzzy
+msgid "(F) free camera mode"
+msgstr "Changer le mode de caméra"
+
+#: src/gui/statuspopup.cpp:513
+#, fuzzy
+msgid "(D) design camera mode"
+msgstr "Changer le mode de caméra"
+
+#: src/gui/statuspopup.cpp:524
+msgid "Game modifiers are disabled"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:529
+msgid "Game modifiers are enabled"
+msgstr ""
 
 #: src/gui/statuswindow.cpp:131 src/gui/statuswindow.cpp:257
 #: src/gui/statuswindow.cpp:320
@@ -3023,8 +3276,7 @@ msgid "Change"
 msgstr "Changer"
 
 #: src/gui/trade.cpp:314
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "L'objet ne peux être ajouté. Vous ne pouvez ajouter deux fois le même objet "
 "dans cette fenêtre."
@@ -3262,8 +3514,7 @@ msgstr "Commande : /users"
 
 #: src/gui/widgets/channeltab.cpp:65
 msgid "This command shows the users in this channel."
-msgstr ""
-"Cette commande affiche la liste d'utilisateurs présents dans ce salon."
+msgstr "Cette commande affiche la liste d'utilisateurs présents dans ce salon."
 
 #: src/gui/widgets/channeltab.cpp:69
 msgid "Command: /topic <message>"
@@ -3362,10 +3613,8 @@ msgstr ""
 "non."
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
-msgstr ""
-"Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
+msgid "This command stops ignoring the other player if they are being ignored."
+msgstr "Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
 
 #: src/gui/windowmenu.cpp:62
 msgid "BC"
@@ -3835,8 +4084,8 @@ msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
 msgstr ""
-"Conflit entre les touches \"%s\" and \"%s\". Veuillez changer au moins l'une"
-" des touches ou attendez vous à un possible comportement étrange du jeu."
+"Conflit entre les touches \"%s\" and \"%s\". Veuillez changer au moins l'une "
+"des touches ou attendez vous à un possible comportement étrange du jeu."
 
 #: src/localplayer.cpp:338
 msgid "You were killed by "
@@ -3976,8 +4225,7 @@ msgstr ""
 
 #: src/main.cpp:69
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr ""
-"      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
+msgstr "      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
 
 #: src/main.cpp:70
 msgid "     --safemode       : Start game in safe mode"
@@ -5040,18 +5288,16 @@ msgstr "Message"
 
 #: src/net/tmwa/playerhandler.cpp:332
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
-"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus"
-" en mesure de regagner vos points de vie."
+"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
+"en mesure de regagner vos points de vie."
 
 #: src/net/tmwa/playerhandler.cpp:342
-msgid ""
-"You are carrying less than half your weight. You are can regain health."
+msgid "You are carrying less than half your weight. You are can regain health."
 msgstr ""
-"Vous portez moins de la moitié du poids de votre inventaire.Vous pouvez vous"
-" régénérez de nouveau."
+"Vous portez moins de la moitié du poids de votre inventaire.Vous pouvez vous "
+"régénérez de nouveau."
 
 #: src/net/tmwa/playerhandler.cpp:447
 #, c-format

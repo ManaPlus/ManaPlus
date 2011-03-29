@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-03-28 01:33+0300\n"
+"POT-Creation-Date: 2011-03-29 05:47+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -3008,6 +3008,252 @@ msgstr "Izaberite vaš server"
 msgid "Specials"
 msgstr ""
 
+#: src/gui/statuspopup.cpp:194
+msgid "(D) default moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:199
+msgid "(I) invert moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:204
+msgid "(c) moves with some crazy moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:209
+msgid "(C) moves with crazy moves"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:214
+msgid "d) double normal + crazy"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:219
+msgid "(?) move"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:237
+msgid "(a) custom crazy move"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:241
+msgid "(?) crazy move"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:251
+msgid "(0) default moves to target"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:256
+msgid "(1) moves to target in distance 1"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:261
+msgid "(2) moves to target in distance 3"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:266
+msgid "(3) moves to target in distance 3"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:271
+msgid "(5) moves to target in distance 5"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:276
+msgid "(7) moves to target in distance 7"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:281
+msgid "(A) moves to target in attack range"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:286
+#, fuzzy
+msgid "(?) move to target"
+msgstr "Pomakni Ulijevo"
+
+#: src/gui/statuspopup.cpp:294
+msgid "(D) default follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:298
+msgid "(R) relative follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:302
+msgid "(M) mirror follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:306
+msgid "(P) pet follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:310
+msgid "(?) unknown follow"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:319 src/gui/statuspopup.cpp:342
+msgid "(D) default attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:324
+msgid "(s) switch attack without shield"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:329
+msgid "(S) switch attack with shield"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:333 src/gui/statuspopup.cpp:358
+#, fuzzy
+msgid "(?) attack"
+msgstr "Napad"
+
+#: src/gui/statuspopup.cpp:346
+msgid "(G) go and attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:350
+msgid "(A) go, attack, pickup"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:354
+#, fuzzy
+msgid "(d) without auto attack"
+msgstr "Promijeni lika"
+
+#: src/gui/statuspopup.cpp:372
+msgid "(S) small pick up 1x1 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:376
+msgid "(D) default pick up 2x1 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:380
+msgid "(F) forward pick up 2x3 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:384
+msgid "(3) pick up 3x3 cells"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:388
+msgid "(g) go and pick up in distance 4"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:392
+msgid "(G) go and pick up in distance 8"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:396
+msgid "(A) go and pick up in max distance"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:400
+msgid "(?) pick up"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:409
+msgid "(N) normal map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:413
+msgid "(D) debug map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:417
+msgid "(u) ultra map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:421
+msgid "(U) ultra map view 2"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:425
+msgid "(e) empty map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:429
+msgid "(b) black & white map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:433
+msgid "(?) map view"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:441
+msgid "(f) use #flar for magic attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:446
+#, fuzzy
+msgid "(c) use #chiza for magic attack"
+msgstr "Promijeni lika"
+
+#: src/gui/statuspopup.cpp:451
+msgid "(I) use #ingrav for magic attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:456
+msgid "(F) use #frillyar for magic attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:461
+msgid "(U) use #upmarmu for magic attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:465
+#, fuzzy
+msgid "(?) magic attack"
+msgstr "Promijeni lika"
+
+#: src/gui/statuspopup.cpp:474
+msgid "(D) default imitation"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:478
+msgid "(O) outfits imitation"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:482
+msgid "(?) imitation"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:491
+#, fuzzy
+msgid "(O) on keyboard"
+msgstr "Tipkovnica"
+
+#: src/gui/statuspopup.cpp:494
+msgid "(A) away"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:497 src/gui/statuspopup.cpp:517
+msgid "(?) away"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:505
+msgid "(G) game camera mode"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:509
+msgid "(F) free camera mode"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:513
+msgid "(D) design camera mode"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:524
+msgid "Game modifiers are disabled"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:529
+msgid "Game modifiers are enabled"
+msgstr ""
+
 #: src/gui/statuswindow.cpp:131 src/gui/statuswindow.cpp:257
 #: src/gui/statuswindow.cpp:320
 #, c-format
@@ -4838,17 +5084,17 @@ msgid "M.Defense"
 msgstr "M.Obrana:"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, fuzzy
+#, fuzzy, c-format
 msgid "% Accuracy"
 msgstr "% Preciznost:"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, fuzzy
+#, fuzzy, c-format
 msgid "% Evade"
 msgstr "% Izbjegavanje:"
 
 #: src/net/tmwa/generalhandler.cpp:261
-#, fuzzy
+#, fuzzy, c-format
 msgid "% Critical"
 msgstr "Kritični Udarac"
 
