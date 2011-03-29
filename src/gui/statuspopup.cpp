@@ -258,7 +258,7 @@ void StatusPopup::updateLabels()
             break;
         case 2:
             setLabelText(mMoveToTargetType,
-                _("(2) moves to target in distance 3"),
+                _("(2) moves to target in distance 2"),
                 keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 3:
