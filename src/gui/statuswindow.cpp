@@ -606,6 +606,18 @@ void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
     bar->setText(strprintf("%d", usedSlots));
 }
 
+std::string StatusWindow::translateLetter(char* letters)
+{
+    char buf[2];
+    char *str = gettext(letters);
+    if (strlen(str) != 3)
+        return letters;
+
+    buf[0] = str[1];
+    buf[1] = 0;
+    return std::string(buf);
+}
+
 void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
 {
     if (!player_node || !viewport)
@@ -616,22 +628,22 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
     switch (player_node->getInvertDirection())
     {
         case 0:
-            str = "D";
+            str = translateLetter(N_("(D)"));
             break;
         case 1:
-            str = "I";
+            str = translateLetter(N_("(I)"));
             break;
         case 2:
-            str = "c";
+            str = translateLetter(N_("(c)"));
             break;
         case 3:
-            str = "C";
+            str = translateLetter(N_("(C)"));
             break;
         case 4:
-            str = "d";
+            str = translateLetter(N_("(d)"));
             break;
         default:
-            str = "?";
+            str = translateLetter(N_("(?)"));
             break;
     }
 
@@ -642,10 +654,10 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
         switch (player_node->getCrazyMoveType())
         {
             case 10:
-                str += "a";
+                str += translateLetter(N_("(a)"));
                 break;
             default:
-                str += "?";
+                str += translateLetter(N_("(?)"));
                 break;
         }
     }
@@ -653,47 +665,47 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
     switch (player_node->getMoveToTargetType())
     {
         case 0:
-            str += "0";
+            str += translateLetter(N_("(0)"));
             break;
         case 1:
-            str += "1";
+            str += translateLetter(N_("(1)"));
             break;
         case 2:
-            str += "2";
+            str += translateLetter(N_("(2)"));
             break;
         case 3:
-            str += "3";
+            str += translateLetter(N_("(3)"));
             break;
         case 4:
-            str += "5";
+            str += translateLetter(N_("(5)"));
             break;
         case 5:
-            str += "7";
+            str += translateLetter(N_("(7)"));
             break;
         case 6:
-            str += "A";
+            str += translateLetter(N_("(A)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
     switch (player_node->getFollowMode())
     {
         case 0:
-            str += "D";
+            str += translateLetter(N_("(D)"));
             break;
         case 1:
-            str += "R";
+            str += translateLetter(N_("(R)"));
             break;
         case 2:
-            str += "M";
+            str += translateLetter(N_("(M)"));
             break;
         case 3:
-            str += "P";
+            str += translateLetter(N_("(P)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
@@ -701,57 +713,57 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
     switch (player_node->getAttackWeaponType())
     {
         case 1:
-            str += "D";
+            str += translateLetter(N_("(D)"));
             break;
         case 2:
-            str += "s";
+            str += translateLetter(N_("(s)"));
             break;
         case 3:
-            str += "S";
+            str += translateLetter(N_("(S)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
     switch (player_node->getAttackType())
     {
         case 0:
-            str += "D";
+            str += translateLetter(N_("(D)"));
             break;
         case 1:
-            str += "G";
+            str += translateLetter(N_("(G)"));
             break;
         case 2:
-            str += "A";
+            str += translateLetter(N_("(A)"));
             break;
         case 3:
-            str += "d";
+            str += translateLetter(N_("(d)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
     switch (player_node->getMagicAttackType())
     {
         case 0:
-            str += "f";
+            str += translateLetter(N_("(f)"));
             break;
         case 1:
-            str += "c";
+            str += translateLetter(N_("(c)"));
             break;
         case 2:
-            str += "I";
+            str += translateLetter(N_("(I)"));
             break;
         case 3:
-            str += "F";
+            str += translateLetter(N_("(F)"));
             break;
         case 4:
-            str += "U";
+            str += translateLetter(N_("(U)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
@@ -760,95 +772,97 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
     switch (player_node->getPickUpType())
     {
         case 0:
-            str += "S";
+            str += translateLetter(N_("(S)"));
             break;
         case 1:
-            str += "D";
+            str += translateLetter(N_("(D)"));
             break;
         case 2:
-            str += "F";
+            str += translateLetter(N_("(F)"));
             break;
         case 3:
-            str += "3";
+            str += translateLetter(N_("(3)"));
             break;
         case 4:
-            str += "g";
+            str += translateLetter(N_("(g)"));
             break;
         case 5:
-            str += "G";
+            str += translateLetter(N_("(G)"));
             break;
         case 6:
-            str += "A";
+            str += translateLetter(N_("(A)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
+    str += " ";
     switch (viewport->getDebugPath())
     {
         case 0:
-            str += " N";
+            str += translateLetter(N_("(N)"));
             break;
         case 1:
-            str += " D";
+            str += translateLetter(N_("(D)"));
             break;
         case 2:
-            str += " u";
+            str += translateLetter(N_("(u)"));
             break;
         case 3:
-            str += " U";
+            str += translateLetter(N_("(U)"));
             break;
         case 4:
-            str += " e";
+            str += translateLetter(N_("(e)"));
             break;
         case 5:
-            str += " b";
+            str += translateLetter(N_("(b)"));
             break;
         default:
-            str += " ?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
+    str += " ";
     switch (player_node->getImitationMode())
     {
         case 0:
-            str += " D";
+            str += translateLetter(N_("(D)"));
             break;
         case 1:
-            str += " O";
+            str += translateLetter(N_("(O)"));
             break;
         default:
-            str += " ?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
     switch (viewport->getCameraMode())
     {
         case 0:
-            str += "G";
+            str += translateLetter(N_("(G)"));
             break;
         case 1:
-            str += "F";
+            str += translateLetter(N_("(F)"));
             break;
         case 2:
-            str += "D";
+            str += translateLetter(N_("(D)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 
     switch (player_node->getAwayMode())
     {
         case 0:
-            str += "O";
+            str += translateLetter(N_("(O)"));
             break;
         case 1:
-            str += "A";
+            str += translateLetter(N_("(A)"));
             break;
         default:
-            str += "?";
+            str += translateLetter(N_("(?)"));
             break;
     }
 

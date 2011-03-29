@@ -211,7 +211,7 @@ void StatusPopup::updateLabels()
             break;
 
         case 4:
-            setLabelText(mMoveType, _("d) double normal + crazy"),
+            setLabelText(mMoveType, _("(d) double normal + crazy"),
                 keyboard.KEY_INVERT_DIRECTION);
             break;
 

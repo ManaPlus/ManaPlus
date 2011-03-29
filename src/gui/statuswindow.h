@@ -78,6 +78,8 @@ class StatusWindow : public Window, public Mana::Listener
                                bool percent = true);
 
     private:
+        static std::string translateLetter(char* letters);
+
         /**
          * Status Part
          */

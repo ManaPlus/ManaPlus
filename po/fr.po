@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-03-29 05:47+0300\n"
+"POT-Creation-Date: 2011-03-29 21:45+0300\n"
 "PO-Revision-Date: 2011-03-28 00:13+0000\n"
 "Last-Translator: Jumpy <antoinebcn@hotmail.com>\n"
 "Language-Team: French <>\n"
@@ -670,23 +670,23 @@ msgid "The connection to the server was lost."
 msgstr ""
 "La connexion au serveur a été coupée, le programme va maintenant se fermer."
 
-#: src/game.cpp:503
+#: src/game.cpp:505
 msgid "Network Error"
 msgstr "Erreur Réseau"
 
-#: src/game.cpp:1021
+#: src/game.cpp:1023
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorer les requêtes d'échanges entrantes"
 
-#: src/game.cpp:1028
+#: src/game.cpp:1030
 msgid "Accepting incoming trade requests"
 msgstr "Accepter les requêtes d'échanges entrantes"
 
-#: src/game.cpp:1403
+#: src/game.cpp:1405
 msgid "Could Not Load Map"
 msgstr "La carte n'a pu être chargé"
 
-#: src/game.cpp:1404
+#: src/game.cpp:1406
 #, c-format
 msgid "Error while loading %s"
 msgstr "Erreur durant le chargement %s"
@@ -749,14 +749,14 @@ msgstr "Prix : %s / Total : %s"
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buy.cpp:91 src/gui/itemamount.cpp:205 src/gui/itemamount.cpp:233
-#: src/gui/npcdialog.cpp:111 src/gui/sell.cpp:88 src/gui/statuswindow.cpp:924
+#: src/gui/npcdialog.cpp:111 src/gui/sell.cpp:88 src/gui/statuswindow.cpp:938
 msgid "+"
 msgstr "+"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buy.cpp:94 src/gui/itemamount.cpp:204 src/gui/itemamount.cpp:232
-#: src/gui/npcdialog.cpp:112 src/gui/sell.cpp:89 src/gui/statuswindow.cpp:936
+#: src/gui/npcdialog.cpp:112 src/gui/sell.cpp:89 src/gui/statuswindow.cpp:950
 msgid "-"
 msgstr "-"
 
@@ -767,8 +767,8 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/gui/buy.cpp:97 src/gui/sell.cpp:92 src/gui/statuswindow.cpp:488
-#: src/gui/statuswindow.cpp:537 src/gui/statuswindow.cpp:923
-#: src/gui/statuswindow.cpp:954
+#: src/gui/statuswindow.cpp:537 src/gui/statuswindow.cpp:937
+#: src/gui/statuswindow.cpp:968
 msgid "Max"
 msgstr "Max."
 
@@ -2869,7 +2869,7 @@ msgid "(C) moves with crazy moves"
 msgstr ""
 
 #: src/gui/statuspopup.cpp:214
-msgid "d) double normal + crazy"
+msgid "(d) double normal + crazy"
 msgstr ""
 
 #: src/gui/statuspopup.cpp:219
@@ -2894,8 +2894,9 @@ msgid "(1) moves to target in distance 1"
 msgstr ""
 
 #: src/gui/statuspopup.cpp:261
-msgid "(2) moves to target in distance 3"
-msgstr ""
+#, fuzzy
+msgid "(2) moves to target in distance 2"
+msgstr "Se déplacer vers la cible"
 
 #: src/gui/statuspopup.cpp:266
 msgid "(3) moves to target in distance 3"
@@ -3153,6 +3154,134 @@ msgstr "Niveau : %d (GM %d)"
 #, c-format
 msgid "Correction points: %d"
 msgstr "Points de correction : %d"
+
+#: src/gui/statuswindow.cpp:631 src/gui/statuswindow.cpp:696
+#: src/gui/statuswindow.cpp:716 src/gui/statuswindow.cpp:732
+#: src/gui/statuswindow.cpp:778 src/gui/statuswindow.cpp:807
+#: src/gui/statuswindow.cpp:830 src/gui/statuswindow.cpp:849
+msgid "(D)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:634 src/gui/statuswindow.cpp:757
+msgid "(I)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:637 src/gui/statuswindow.cpp:754
+msgid "(c)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:640
+msgid "(C)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:643 src/gui/statuswindow.cpp:741
+msgid "(d)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:646 src/gui/statuswindow.cpp:660
+#: src/gui/statuswindow.cpp:689 src/gui/statuswindow.cpp:708
+#: src/gui/statuswindow.cpp:725 src/gui/statuswindow.cpp:744
+#: src/gui/statuswindow.cpp:766 src/gui/statuswindow.cpp:796
+#: src/gui/statuswindow.cpp:822 src/gui/statuswindow.cpp:836
+#: src/gui/statuswindow.cpp:852 src/gui/statuswindow.cpp:865
+msgid "(?)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:657
+msgid "(a)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:668
+msgid "(0)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:671
+msgid "(1)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:674
+msgid "(2)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:677 src/gui/statuswindow.cpp:784
+msgid "(3)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:680
+msgid "(5)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:683
+msgid "(7)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:686 src/gui/statuswindow.cpp:738
+#: src/gui/statuswindow.cpp:793 src/gui/statuswindow.cpp:862
+msgid "(A)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:699
+msgid "(R)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:702
+msgid "(M)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:705
+msgid "(P)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:719
+msgid "(s)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:722 src/gui/statuswindow.cpp:775
+msgid "(S)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:735 src/gui/statuswindow.cpp:790
+#: src/gui/statuswindow.cpp:843
+msgid "(G)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:751
+msgid "(f)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:760 src/gui/statuswindow.cpp:781
+#: src/gui/statuswindow.cpp:846
+msgid "(F)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:763 src/gui/statuswindow.cpp:813
+msgid "(U)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:787
+msgid "(g)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:804
+msgid "(N)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:810
+msgid "(u)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:816
+#, fuzzy
+msgid "(e)"
+msgstr "(vide)"
+
+#: src/gui/statuswindow.cpp:819
+msgid "(b)"
+msgstr ""
+
+#: src/gui/statuswindow.cpp:833 src/gui/statuswindow.cpp:859
+msgid "(O)"
+msgstr ""
 
 #: src/gui/textcommandeditor.cpp:109
 msgid "No Target"
@@ -4843,10 +4972,12 @@ msgid "% Accuracy"
 msgstr "% Précision"
 
 #: src/net/tmwa/generalhandler.cpp:260
+#, c-format
 msgid "% Evade"
 msgstr "% Esquive"
 
 #: src/net/tmwa/generalhandler.cpp:261
+#, c-format
 msgid "% Critical"
 msgstr "% Coup critique"
 
