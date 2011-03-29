@@ -177,6 +177,12 @@ void StatusPopup::view(int x, int y)
     requestMoveToTop();
 }
 
+void StatusPopup::setLabelText(gcn::Label *label, char *text, int key)
+{
+    label->setCaption(strprintf("%s  %s", text,
+        keyboard.getKeyValueString(key).c_str()));
+}
+
 void StatusPopup::updateLabels()
 {
     if (!player_node || !viewport)
@@ -185,56 +191,55 @@ void StatusPopup::updateLabels()
     switch (player_node->getInvertDirection())
     {
         case 0:
-            mMoveType->setCaption("(D) default moves  "
-                + keyboard.getKeyValueString(keyboard.KEY_INVERT_DIRECTION));
+            setLabelText(mMoveType, _("(D) default moves"),
+                keyboard.KEY_INVERT_DIRECTION);
             break;
 
         case 1:
-            mMoveType->setCaption("(I) invert moves  "
-                + keyboard.getKeyValueString(keyboard.KEY_INVERT_DIRECTION));
+            setLabelText(mMoveType, _("(I) invert moves"),
+                keyboard.KEY_INVERT_DIRECTION);
             break;
 
         case 2:
-            mMoveType->setCaption("(c) moves with some crazy moves  "
-                + keyboard.getKeyValueString(keyboard.KEY_INVERT_DIRECTION));
+            setLabelText(mMoveType, _("(c) moves with some crazy moves"),
+                keyboard.KEY_INVERT_DIRECTION);
+            break;
 
         case 3:
-            mMoveType->setCaption("(C) moves with crazy moves  "
-                + keyboard.getKeyValueString(keyboard.KEY_INVERT_DIRECTION));
+            setLabelText(mMoveType, _("(C) moves with crazy moves"),
+                keyboard.KEY_INVERT_DIRECTION);
             break;
 
         case 4:
-            mMoveType->setCaption("(d) double normal + crazy  "
-                + keyboard.getKeyValueString(keyboard.KEY_INVERT_DIRECTION));
+            setLabelText(mMoveType, _("d) double normal + crazy"),
+                keyboard.KEY_INVERT_DIRECTION);
             break;
 
         default:
-            mMoveType->setCaption("(?) move  "
-                + keyboard.getKeyValueString(keyboard.KEY_INVERT_DIRECTION));
+            setLabelText(mMoveType, _("(?) move"),
+                keyboard.KEY_INVERT_DIRECTION);
             break;
     }
     mMoveType->adjustSize();
 
     if (player_node->getCrazyMoveType() < 10)
     {
-        mCrazyMoveType->setCaption(strprintf("(%d) crazy move number %d  ",
-            player_node->getCrazyMoveType(), player_node->getCrazyMoveType())
-            + keyboard.getKeyValueString(
-            keyboard.KEY_CHANGE_CRAZY_MOVES_TYPE));
+        mCrazyMoveType->setCaption(strprintf("(%d) crazy move number %d  %s",
+            player_node->getCrazyMoveType(), player_node->getCrazyMoveType(),
+            keyboard.getKeyValueString(
+            keyboard.KEY_CHANGE_CRAZY_MOVES_TYPE).c_str()));
     }
     else
     {
         switch (player_node->getCrazyMoveType())
         {
             case 10:
-                mCrazyMoveType->setCaption("(a) custom crazy move  "
-                    + keyboard.getKeyValueString(
-                    keyboard.KEY_CHANGE_CRAZY_MOVES_TYPE));
+                setLabelText(mCrazyMoveType, _("(a) custom crazy move"),
+                    keyboard.KEY_CHANGE_CRAZY_MOVES_TYPE);
                 break;
             default:
-                mCrazyMoveType->setCaption("(?) crazy move  "
-                    + keyboard.getKeyValueString(
-                    keyboard.KEY_CHANGE_CRAZY_MOVES_TYPE));
+                setLabelText(mCrazyMoveType, _("(?) crazy move"),
+                    keyboard.KEY_CHANGE_CRAZY_MOVES_TYPE);
                 break;
         }
     }
@@ -243,45 +248,42 @@ void StatusPopup::updateLabels()
     switch (player_node->getMoveToTargetType())
     {
         case 0:
-            mMoveToTargetType->setCaption("(0) default moves to target  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType, _("(0) default moves to target"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 1:
-            mMoveToTargetType->setCaption("(1) moves to target in distance 1  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(1) moves to target in distance 1"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 2:
-            mMoveToTargetType->setCaption("(2) moves to target in distance 3  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(2) moves to target in distance 3"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 3:
-            mMoveToTargetType->setCaption("(3) moves to target in distance 3  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(3) moves to target in distance 3"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 4:
-            mMoveToTargetType->setCaption("(5) moves to target in distance 5  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(5) moves to target in distance 5"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 5:
-            mMoveToTargetType->setCaption("(7) moves to target in distance 7  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(7) moves to target in distance 7"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         case 6:
-            mMoveToTargetType->setCaption(
-                "(A) moves to target in attack range  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(A) moves to target in attack range"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
         default:
-            mMoveToTargetType->setCaption("(?) move to target  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_MOVE_TO_TARGET));
+            setLabelText(mMoveToTargetType,
+                _("(?) move to target"), keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
     }
     mMoveToTargetType->adjustSize();
@@ -289,24 +291,24 @@ void StatusPopup::updateLabels()
     switch (player_node->getFollowMode())
     {
         case 0:
-            mFollowMode->setCaption("(D) default follow  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_FOLLOW_MODE));
+            setLabelText(mFollowMode, _("(D) default follow"),
+                keyboard.KEY_CHANGE_FOLLOW_MODE);
             break;
         case 1:
-            mFollowMode->setCaption("(R) relative follow  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_FOLLOW_MODE));
+            setLabelText(mFollowMode, _("(R) relative follow"),
+                keyboard.KEY_CHANGE_FOLLOW_MODE);
             break;
         case 2:
-            mFollowMode->setCaption("(M) mirror follow  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_FOLLOW_MODE));
+            setLabelText(mFollowMode, _("(M) mirror follow"),
+                keyboard.KEY_CHANGE_FOLLOW_MODE);
             break;
         case 3:
-            mFollowMode->setCaption("(P) pet follow  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_FOLLOW_MODE));
+            setLabelText(mFollowMode, _("(P) pet follow"),
+                keyboard.KEY_CHANGE_FOLLOW_MODE);
             break;
         default:
-            mFollowMode->setCaption("(?) unknown follow  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_FOLLOW_MODE));
+            setLabelText(mFollowMode, _("(?) unknown follow"),
+                keyboard.KEY_CHANGE_FOLLOW_MODE);
             break;
     }
     mFollowMode->adjustSize();
@@ -314,24 +316,22 @@ void StatusPopup::updateLabels()
     switch (player_node->getAttackWeaponType())
     {
         case 1:
-            mAttackWeaponType->setCaption("(D) default attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE));
+            setLabelText(mAttackWeaponType, _("(D) default attack"),
+                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE);
             break;
         case 2:
-            mAttackWeaponType->setCaption("(s) switch attack without shield  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE));
+            setLabelText(mAttackWeaponType,
+                _("(s) switch attack without shield"),
+                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE);
             break;
         case 3:
-            mAttackWeaponType->setCaption("(S) switch attack with shield  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE));
+            setLabelText(mAttackWeaponType,
+                _("(S) switch attack with shield"),
+                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE);
             break;
         default:
-            mAttackWeaponType->setCaption("(?) attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE));
+            setLabelText(mAttackWeaponType, _("(?) attack"),
+                keyboard.KEY_CHANGE_ATTACK_WEAPON_TYPE);
             break;
     }
     mAttackWeaponType->adjustSize();
@@ -339,66 +339,66 @@ void StatusPopup::updateLabels()
     switch (player_node->getAttackType())
     {
         case 0:
-            mAttackType->setCaption("(D) default attack  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_ATTACK_TYPE));
+            setLabelText(mAttackType, _("(D) default attack"),
+                keyboard.KEY_CHANGE_ATTACK_TYPE);
             break;
         case 1:
-            mAttackType->setCaption("(G) go and attack  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_ATTACK_TYPE));
+            setLabelText(mAttackType, _("(G) go and attack"),
+                keyboard.KEY_CHANGE_ATTACK_TYPE);
             break;
         case 2:
-            mAttackType->setCaption("(A) go, attack, pickup  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_ATTACK_TYPE));
+            setLabelText(mAttackType, _("(A) go, attack, pickup"),
+                keyboard.KEY_CHANGE_ATTACK_TYPE);
             break;
         case 3:
-            mAttackType->setCaption("(d) without auto attack  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_ATTACK_TYPE));
+            setLabelText(mAttackType, _("(d) without auto attack"),
+                keyboard.KEY_CHANGE_ATTACK_TYPE);
             break;
         default:
-            mAttackType->setCaption("(?) attack  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_ATTACK_TYPE));
+            setLabelText(mAttackType, _("(?) attack"),
+                keyboard.KEY_CHANGE_ATTACK_TYPE);
             break;
     }
     mAttackType->adjustSize();
 
-    mDropCounter->setCaption(strprintf("(%d) drop counter %d  ",
-        player_node->getQuickDropCounter(), player_node->getQuickDropCounter())
-        + keyboard.getKeyValueString(keyboard.KEY_SWITCH_QUICK_DROP));
+    mDropCounter->setCaption(strprintf("(%d) drop counter %d  %s",
+        player_node->getQuickDropCounter(), player_node->getQuickDropCounter(),
+        keyboard.getKeyValueString(keyboard.KEY_SWITCH_QUICK_DROP).c_str()));
     mDropCounter->adjustSize();
 
     switch (player_node->getPickUpType())
     {
         case 0:
-            mPickUpType->setCaption("(S) small pick up 1x1 cells  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(S) small pick up 1x1 cells"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         case 1:
-            mPickUpType->setCaption("(D) default pick up 2x1 cells  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(D) default pick up 2x1 cells"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         case 2:
-            mPickUpType->setCaption("(F) forward pick up 2x3 cells  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(F) forward pick up 2x3 cells"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         case 3:
-            mPickUpType->setCaption("(3) pick up 3x3 cells  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(3) pick up 3x3 cells"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         case 4:
-            mPickUpType->setCaption("(g) go and pick up in distance 4  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(g) go and pick up in distance 4"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         case 5:
-            mPickUpType->setCaption("(G) go and pick up in distance 8  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(G) go and pick up in distance 8"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         case 6:
-            mPickUpType->setCaption("(A) go and pick up in max distance  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(A) go and pick up in max distance"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
         default:
-            mPickUpType->setCaption("(?) pick up  "
-                + keyboard.getKeyValueString(keyboard.KEY_CHANGE_PICKUP_TYPE));
+            setLabelText(mPickUpType, _("(?) pick up"),
+                keyboard.KEY_CHANGE_PICKUP_TYPE);
             break;
     }
     mPickUpType->adjustSize();
@@ -406,32 +406,31 @@ void StatusPopup::updateLabels()
     switch (viewport->getDebugPath())
     {
         case 0:
-            mMapType->setCaption("(N) normal map view  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(N) normal map view"),
+                keyboard.KEY_PATHFIND);
             break;
         case 1:
-            mMapType->setCaption("(D) debug map view  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(D) debug map view"),
+                keyboard.KEY_PATHFIND);
             break;
         case 2:
-            mMapType->setCaption("(u) ultra map view  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(u) ultra map view"),
+                keyboard.KEY_PATHFIND);
             break;
         case 3:
-            mMapType->setCaption("(U) ultra map view 2  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(U) ultra map view 2"),
+                keyboard.KEY_PATHFIND);
             break;
         case 4:
-            mMapType->setCaption("(e) empty map view  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(e) empty map view"),
+                keyboard.KEY_PATHFIND);
             break;
         case 5:
-            mMapType->setCaption("(b) black & white map view  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(b) black & white map view"),
+                keyboard.KEY_PATHFIND);
             break;
         default:
-            mMapType->setCaption("(?) map view  "
-                    + keyboard.getKeyValueString(keyboard.KEY_PATHFIND));
+            setLabelText(mMapType, _("(?) map view"), keyboard.KEY_PATHFIND);
             break;
     }
     mMapType->adjustSize();
@@ -439,34 +438,32 @@ void StatusPopup::updateLabels()
     switch (player_node->getMagicAttackType())
     {
         case 0:
-            mMagicAttackType->setCaption("(f) use #flar for magic attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_SWITCH_MAGIC_ATTACK));
+            setLabelText(mMagicAttackType, _("(f) use #flar for magic attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
             break;
         case 1:
-            mMagicAttackType->setCaption("(c) use #chiza for magic attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_SWITCH_MAGIC_ATTACK));
+            setLabelText(mMagicAttackType,
+                 _("(c) use #chiza for magic attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
             break;
         case 2:
-            mMagicAttackType->setCaption("(I) use #ingrav for magic attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_SWITCH_MAGIC_ATTACK));
+            setLabelText(mMagicAttackType,
+                _("(I) use #ingrav for magic attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
             break;
         case 3:
-            mMagicAttackType->setCaption("(F) use #frillyar for magic attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_SWITCH_MAGIC_ATTACK));
+            setLabelText(mMagicAttackType,
+                _("(F) use #frillyar for magic attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
             break;
         case 4:
-            mMagicAttackType->setCaption("(U) use #upmarmu for magic attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_SWITCH_MAGIC_ATTACK));
+            setLabelText(mMagicAttackType,
+                _("(U) use #upmarmu for magic attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
             break;
         default:
-            mMagicAttackType->setCaption("(?) magic attack  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_SWITCH_MAGIC_ATTACK));
+            setLabelText(mMagicAttackType, _("(?) magic attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
             break;
     }
     mMagicAttackType->adjustSize();
@@ -474,19 +471,16 @@ void StatusPopup::updateLabels()
     switch (player_node->getImitationMode())
     {
         case 0:
-            mImitationMode->setCaption("(D) default imitation  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_IMITATION_MODE));
+            setLabelText(mImitationMode, _("(D) default imitation"),
+                keyboard.KEY_CHANGE_IMITATION_MODE);
             break;
         case 1:
-            mImitationMode->setCaption("(O) outfits imitation  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_IMITATION_MODE));
+            setLabelText(mImitationMode, _("(O) outfits imitation"),
+                keyboard.KEY_CHANGE_IMITATION_MODE);
             break;
         default:
-            mImitationMode->setCaption("(?) imitation  "
-                + keyboard.getKeyValueString(
-                keyboard.KEY_CHANGE_IMITATION_MODE));
+            setLabelText(mImitationMode, _("(?) imitation"),
+                keyboard.KEY_CHANGE_IMITATION_MODE);
             break;
     }
     mImitationMode->adjustSize();
@@ -494,16 +488,13 @@ void StatusPopup::updateLabels()
     switch (player_node->getAwayMode())
     {
         case 0:
-            mAwayMode->setCaption("(O) on keyboard  "
-                + keyboard.getKeyValueString(keyboard.KEY_AWAY));
+            setLabelText(mAwayMode, _("(O) on keyboard"), keyboard.KEY_AWAY);
             break;
         case 1:
-            mAwayMode->setCaption("(A) away  "
-                + keyboard.getKeyValueString(keyboard.KEY_AWAY));
+            setLabelText(mAwayMode, _("(A) away"), keyboard.KEY_AWAY);
             break;
         default:
-            mAwayMode->setCaption("(?) away  "
-                + keyboard.getKeyValueString(keyboard.KEY_AWAY));
+            setLabelText(mAwayMode, _("(?) away"), keyboard.KEY_AWAY);
             break;
     }
     mAwayMode->adjustSize();
@@ -511,33 +502,32 @@ void StatusPopup::updateLabels()
     switch (viewport->getCameraMode())
     {
         case 0:
-            mCameraMode->setCaption("(G) game camera mode  "
-                + keyboard.getKeyValueString(keyboard.KEY_CAMERA));
+            setLabelText(mCameraMode, _("(G) game camera mode"),
+                keyboard.KEY_CAMERA);
             break;
         case 1:
-            mCameraMode->setCaption("(F) free camera mode  "
-                + keyboard.getKeyValueString(keyboard.KEY_CAMERA));
+            setLabelText(mCameraMode, _("(F) free camera mode"),
+                keyboard.KEY_CAMERA);
             break;
         case 2:
-            mCameraMode->setCaption("(D) design camera mode  "
-                + keyboard.getKeyValueString(keyboard.KEY_CAMERA));
+            setLabelText(mCameraMode, _("(D) design camera mode"),
+                keyboard.KEY_CAMERA);
             break;
         default:
-            mCameraMode->setCaption("(?) away  "
-                + keyboard.getKeyValueString(keyboard.KEY_CAMERA));
+            setLabelText(mCameraMode, _("(?) away"), keyboard.KEY_CAMERA);
             break;
     }
     mCameraMode->adjustSize();
 
     if (player_node->getDisableGameModifiers())
     {
-        mDisableGameModifiers->setCaption("Game modifiers are disabled  "
-            + keyboard.getKeyValueString(keyboard.KEY_DISABLE_GAME_MODIFIERS));
+        setLabelText(mDisableGameModifiers, _("Game modifiers are disabled"),
+            keyboard.KEY_DISABLE_GAME_MODIFIERS);
     }
     else
     {
-        mDisableGameModifiers->setCaption("Game modifiers are enabled  "
-            + keyboard.getKeyValueString(keyboard.KEY_DISABLE_GAME_MODIFIERS));
+        setLabelText(mDisableGameModifiers, _("Game modifiers are enabled"),
+            keyboard.KEY_DISABLE_GAME_MODIFIERS);
     }
     mDisableGameModifiers->adjustSize();
 }

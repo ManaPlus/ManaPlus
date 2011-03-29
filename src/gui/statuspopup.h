@@ -59,6 +59,8 @@ class StatusPopup : public Popup
 
     private:
         void updateLabels();
+        void setLabelText(gcn::Label *label, char *text, int key);
+
         gcn::Label *mMoveType;
         gcn::Label *mCrazyMoveType;
         gcn::Label *mMoveToTargetType;
