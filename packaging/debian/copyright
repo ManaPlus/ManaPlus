@@ -27,6 +27,10 @@ License (src/utils/base64.h, src/utils/base64.cpp):
 On Debian systems, the complete text of the GNU General Public License
 can be found in /usr/share/common-licenses/GPL-2 file.
 
+License (src/mumblemanager.h, src/mumblemanager.cpp):
+
+	In public domain
+
 License (everything else):
 
 	Copyright (C) 2004-2007 The The Mana World Development Team
@@ -46,10 +50,6 @@ License (everything else):
 	You should have received a copy of the GNU General Public License
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-License (src/mumblemanager.h, src/mumblemanager.cpp):
-
-	In public domain
 
 On Debian systems, the complete text of the GNU General Public License
 can be found in /usr/share/common-licenses/GPL-2 file.
