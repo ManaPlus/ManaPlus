@@ -500,6 +500,8 @@ void Game::logic()
                     map->saveExtraLayer();
             }
             Client::closeDialogs();
+            if (chatWindow)
+                chatWindow->saveState();
             disconnectedDialog = new OkDialog(_("Network Error"),
                                               errorMessage, false);
             disconnectedDialog->addActionListener(&errorListener);
