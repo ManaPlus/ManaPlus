@@ -163,7 +163,7 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return SIZE_NAME[i];
+        return gettext(SIZE_NAME[i]);
     }
 };
 
@@ -188,7 +188,7 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return OPENGL_NAME[i];
+        return gettext(OPENGL_NAME[i]);
     }
 };
 
