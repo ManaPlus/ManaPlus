@@ -1,22 +1,21 @@
-# Translation for ManaPlus.
-# Copyright (C) 2010-2011 The ManaPlus Developers
-# This file is distributed under the same license as the manaplus package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The ManaPlus Developers
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-03-28 01:33+0300\n"
-"PO-Revision-Date: 2011-03-18 23:28+0000\n"
+"PO-Revision-Date: 2011-03-29 00:43+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian <>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/being.cpp:489
 msgid "dodge"
@@ -214,7 +213,8 @@ msgstr "/party > Пригласить пользователя в группу"
 #: src/commandhandler.cpp:335
 msgid "/toggle > Determine whether <return> toggles the chat log"
 msgstr ""
-"/toggle -> Определяет появление строки ввода текста в чат по нажатию <return>"
+"/toggle -> Определяет появление строки ввода текста в чат по нажатию "
+"<return>"
 
 #: src/commandhandler.cpp:337
 msgid "/present > Get list of players present (sent to chat log, if logging)"
@@ -495,11 +495,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:561
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:581
 #, c-format
@@ -598,7 +598,6 @@ msgid_plural "%d weeks"
 msgstr[0] "%d неделя"
 msgstr[1] "%d недели"
 msgstr[2] "%d недель"
-msgstr[3] "%d недель"
 
 #: src/commandhandler.cpp:1131
 #, c-format
@@ -607,7 +606,6 @@ msgid_plural "%d days"
 msgstr[0] "%d день"
 msgstr[1] "%d дня"
 msgstr[2] "%d дней"
-msgstr[3] "%d дней"
 
 #: src/commandhandler.cpp:1139
 #, c-format
@@ -616,7 +614,6 @@ msgid_plural "%d hours"
 msgstr[0] "%d час"
 msgstr[1] "%d часа"
 msgstr[2] "%d часов"
-msgstr[3] "%d часов"
 
 #: src/commandhandler.cpp:1147
 #, c-format
@@ -625,7 +622,6 @@ msgid_plural "%d minutes"
 msgstr[0] "%d минута"
 msgstr[1] "%d минуты"
 msgstr[2] "%d минут"
-msgstr[3] "%d минут"
 
 #: src/commandhandler.cpp:1155
 #, c-format
@@ -634,14 +630,11 @@ msgid_plural "%d seconds"
 msgstr[0] "%d секунда"
 msgstr[1] "%d секунды"
 msgstr[2] "%d секунд"
-msgstr[3] "%d секунд"
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:395
 msgid "General"
@@ -1051,12 +1044,12 @@ msgstr "%d FPS (Программно)"
 #: src/gui/debugwindow.cpp:68
 #, c-format
 msgid "%d FPS (fast OpenGL)"
-msgstr "%d FPS (быстрая OpenGL)"
+msgstr "%d FPS (быстрый OpenGL)"
 
 #: src/gui/debugwindow.cpp:71
 #, c-format
 msgid "%d FPS (old OpenGL)"
-msgstr "%d FPS (старая OpenGL)"
+msgstr "%d FPS (старый OpenGL)"
 
 #: src/gui/debugwindow.cpp:78
 #, c-format
@@ -1750,22 +1743,19 @@ msgstr "Включить уведомление"
 
 #: src/gui/popupmenu.cpp:491
 msgid "Dont remove name"
-msgstr ""
+msgstr "Не скрывать имя"
 
 #: src/gui/popupmenu.cpp:496
-#, fuzzy
 msgid "Remove name"
-msgstr "Запомнить логин"
+msgstr "Скрывать имя"
 
 #: src/gui/popupmenu.cpp:501
-#, fuzzy
 msgid "Enable away"
-msgstr "Включить вкладки торговли"
+msgstr "Рарешить режим отошел"
 
 #: src/gui/popupmenu.cpp:506
-#, fuzzy
 msgid "Disable away"
-msgstr "Включение / Выключение режима отошел"
+msgstr "Запретить режим отошел"
 
 #: src/gui/popupmenu.cpp:512
 msgid "@@leave party|Leave@@"
@@ -2387,11 +2377,11 @@ msgstr "Программно"
 
 #: src/gui/setup_video.cpp:173
 msgid "Fast OpenGL"
-msgstr "Быстрая OpenGL"
+msgstr "Быстрый OpenGL"
 
 #: src/gui/setup_video.cpp:174
 msgid "Safe OpenGL"
-msgstr "Бозпасная OpenGL"
+msgstr "Бозопасный OpenGL"
 
 #: src/gui/setup_video.cpp:201
 msgid "No text"
@@ -2542,8 +2532,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
 #: src/gui/setup_video.cpp:535
 msgid ""
@@ -2566,7 +2556,7 @@ msgstr "Переключение на OpenGL"
 
 #: src/gui/setup_video.cpp:560
 msgid "Applying change to OpenGL requires restart."
-msgstr "Переход к OpenGL требует перезагрузки игры."
+msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
 #: src/gui/setup_video.cpp:698
 msgid "Custom resolution (example: 1024x768)"
@@ -3013,7 +3003,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3343,11 +3334,12 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:123
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:62
@@ -3862,7 +3854,6 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Вы подняли %d [@@%d|%s@@]."
 msgstr[1] "Вы подняли %d [@@%d|%s@@]."
 msgstr[2] "Вы подняли %d [@@%d|%s@@]."
-msgstr[3] "Вы подняли %d [@@%d|%s@@]."
 
 #: src/localplayer.cpp:3088
 msgid "Away"
@@ -4395,7 +4386,8 @@ msgstr "Неизвестная ошибка сервера чата."
 
 #: src/net/tmwa/charserverhandler.cpp:172
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
 #: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:188
 msgid "Wrong name."
@@ -4749,8 +4741,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:99
 msgid "Command: /item"
@@ -4773,8 +4764,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:111
 msgid "Command: /exp"
@@ -5001,13 +4992,15 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:332
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
 
 #: src/net/tmwa/playerhandler.cpp:342
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Вы несете груз меньше, чем половина вашей грузоподъемности. Вы можете "
 "восстановить здоровье."
