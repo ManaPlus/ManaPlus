@@ -5101,17 +5101,17 @@ msgid "M.Defense"
 msgstr "M.Forsvar:"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Accuracy"
 msgstr "% præcission:"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Evade"
 msgstr "% Undgå angreb."
 
 #: src/net/tmwa/generalhandler.cpp:261
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Critical"
 msgstr "Kritisk sår"
 
