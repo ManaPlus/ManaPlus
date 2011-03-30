@@ -106,6 +106,8 @@ Window::~Window()
     while (!mWidgets.empty())
         delete mWidgets.front();
 
+    mWidgets.clear();
+
 // need mWidgets.clean ?
 
     removeWidgetListener(this);

@@ -130,6 +130,7 @@ ItemContainer::~ItemContainer()
     }
     delete mItemPopup;
     mItemPopup = 0;
+    delete []mShowMatrix;
 }
 
 void ItemContainer::logic()

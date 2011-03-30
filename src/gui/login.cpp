@@ -106,7 +106,8 @@ LoginDialog::LoginDialog(LoginData *loginData, std::string serverName,
 
     mKeepCheck = new CheckBox(_("Remember username"), mLoginData->remember);
     mUpdateTypeLabel = new Label(_("Update:"));
-    mUpdateTypeDropDown = new DropDown(new UpdateTypeModel());
+    mUpdateTypeModel = new UpdateTypeModel();
+    mUpdateTypeDropDown = new DropDown(mUpdateTypeModel);
     mUpdateTypeDropDown->setActionEventId("updatetype");
     mUpdateTypeDropDown->setSelected((loginData->updateType
         | LoginData::Upd_Custom) ^ LoginData::Upd_Custom);
@@ -161,6 +162,8 @@ LoginDialog::LoginDialog(LoginData *loginData, std::string serverName,
 
 LoginDialog::~LoginDialog()
 {
+    delete mUpdateTypeModel;
+    mUpdateTypeModel = 0;
 }
 
 void LoginDialog::action(const gcn::ActionEvent &event)

@@ -98,7 +98,10 @@ void ColorDB::loadColorLists()
     XML::Document *doc = new XML::Document("itemcolors.xml");
     xmlNodePtr root = doc->rootNode();
     if (!root)
+    {
+        delete doc;
         return;
+    }
 
     for_each_xml_child_node(node, root)
     {

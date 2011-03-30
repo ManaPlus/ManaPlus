@@ -46,13 +46,10 @@ TabbedArea::TabbedArea() : gcn::TabbedArea(),
 
 TabbedArea::~TabbedArea()
 {
-    if (!mEnableScrollButtons)
-    {
-        delete mArrowButton[0];
-        mArrowButton[0] = 0;
-        delete mArrowButton[1];
-        mArrowButton[1] = 0;
-    }
+    delete mArrowButton[0];
+    mArrowButton[0] = 0;
+    delete mArrowButton[1];
+    mArrowButton[1] = 0;
 }
 
 void TabbedArea::enableScrollButtons(bool enable)

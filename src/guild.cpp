@@ -150,6 +150,7 @@ void Guild::removeMember(GuildMember *member)
         {
             mMembers.erase(itr);
             delete *itr;
+            return;
         }
         ++itr;
     }
@@ -157,25 +158,42 @@ void Guild::removeMember(GuildMember *member)
 
 void Guild::removeMember(int id)
 {
+    bool deleted = true;
     MemberList::iterator itr = mMembers.begin(),
                                itr_end = mMembers.end();
-    while (itr != itr_end)
+    while (deleted)
     {
-        if ((*itr)->mId == id)
-            mMembers.erase(itr);
-        ++itr;
+        deleted = false;
+        while (itr != itr_end)
+        {
+            if ((*itr)->mId == id)
+            {
+                mMembers.erase(itr);
+                deleted = true;
+                break;
+            }
+            ++itr;
+        }
     }
 }
 
 void Guild::removeMember(const std::string &name)
 {
+    bool deleted = true;
     MemberList::iterator itr = mMembers.begin(),
                                itr_end = mMembers.end();
-    while (itr != itr_end)
+    while (deleted)
     {
-        if ((*itr)->getName() == name)
-            mMembers.erase(itr);
-        ++itr;
+        while (itr != itr_end)
+        {
+            if ((*itr)->getName() == name)
+            {
+                mMembers.erase(itr);
+                deleted = true;
+                break;
+            }
+            ++itr;
+        }
     }
 }
 

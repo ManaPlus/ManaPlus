@@ -33,6 +33,7 @@
 #include <vector>
 
 class LoginData;
+class UpdateTypeModel;
 
 /**
  * The login dialog.
@@ -86,6 +87,7 @@ class LoginDialog : public Window, public gcn::ActionListener,
 
         LoginData *mLoginData;
         std::string *mUpdateHost;
+        UpdateTypeModel *mUpdateTypeModel;
 };
 
 #endif

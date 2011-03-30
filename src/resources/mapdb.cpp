@@ -45,7 +45,10 @@ void MapDB::load()
 
     xmlNodePtr root = doc->rootNode();
     if (!root)
+    {
+        delete doc;
         return;
+    }
 
     for_each_xml_child_node(node, root)
     {

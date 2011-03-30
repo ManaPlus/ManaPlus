@@ -1716,7 +1716,7 @@ ObjectsLayer::ObjectsLayer(unsigned width, unsigned height) :
 
 ObjectsLayer::~ObjectsLayer()
 {
-    delete mTiles;
+    delete [] mTiles;
     mTiles = 0;
 }
 

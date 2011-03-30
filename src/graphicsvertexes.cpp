@@ -54,12 +54,27 @@ OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()
 
 void OpenGLGraphicsVertexes::clear()
 {
-    delete_all(mFloatTexPool);
+    for(std::vector<GLfloat*>::iterator it = mFloatTexPool.begin();
+        it != mFloatTexPool.end(); ++ it)
+    {
+        delete [] (*it);
+    }
     mFloatTexPool.clear();
-    delete_all(mIntVertPool);
+
+    for(std::vector<GLint*>::iterator it = mIntVertPool.begin();
+        it != mIntVertPool.end(); ++ it)
+    {
+        delete [] (*it);
+    }
     mIntVertPool.clear();
-    delete_all(mIntTexPool);
+
+    for(std::vector<GLint*>::iterator it = mIntTexPool.begin();
+        it != mIntTexPool.end(); ++ it)
+    {
+        delete [] (*it);
+    }
     mIntTexPool.clear();
+
     mVp.clear();
 }
 
