@@ -3226,6 +3226,15 @@ void LocalPlayer::updateCoords()
             socialWindow->updatePortals();
         if (viewport)
             viewport->hideBeingPopup();
+        if (mMap)
+        {
+            std::string str = mMap->getObjectData(getTileX(), getTileY(),
+                MapItem::MUSIC);
+            if (str.empty())
+                str = mMap->getMusicFile();
+            if (str != sound.getCurrentMusicFile())
+                sound.playMusic(str);
+        }
     }
 
     if (mShowNavigePath)

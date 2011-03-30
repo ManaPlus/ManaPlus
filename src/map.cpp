@@ -391,6 +391,8 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     }
     mSpecialLayer = new SpecialLayer(width, height);
     mTempLayer = new SpecialLayer(width, height, true);
+    mObjects = new ObjectsLayer(width, height);
+
     config.addListener("OverlayDetail", this);
     config.addListener("guialpha", this);
 
@@ -420,6 +422,8 @@ Map::~Map()
     mSpecialLayer = 0;
     delete mTempLayer;
     mTempLayer = 0;
+    delete mObjects;
+    mObjects = 0;
     delete_all(mMapPortals);
 }
 
@@ -1340,6 +1344,15 @@ std::string Map::getUserMapDirectory() const
         + getProperty("_realfilename");
 }
 
+void Map::addRange(const std::string &name, int type,
+                   int x, int y, int dx, int dy)
+{
+    if (!mObjects)
+        return;
+
+    mObjects->addObject(name, type, x / 32, y / 32, dx / 32, dy / 32);
+}
+
 void Map::addPortal(const std::string &name, int type,
                     int x, int y, int dx, int dy)
 {
@@ -1430,6 +1443,25 @@ void Map::setPvpMode(int mode)
                 break;
         }
     }
+}
+
+std::string Map::getObjectData(unsigned x, unsigned y, int type)
+{
+    if (!mObjects)
+        return "";
+
+    MapObjectList *list = mObjects->getAt(x, y);
+    if (!list)
+        return "";
+
+    std::list<MapObject>::iterator it = list->objects.begin();
+    while (it != list->objects.end())
+    {
+        if ((*it).type == type)
+            return (*it).data;
+    }
+
+    return "";
 }
 
 SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):
@@ -1674,3 +1706,49 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
     }
 }
 
+ObjectsLayer::ObjectsLayer(unsigned width, unsigned height) :
+    mWidth(width), mHeight(height)
+{
+    const unsigned size = width * height;
+    mTiles = new MapObjectList*[size];
+    std::fill_n(mTiles, size, static_cast<MapObjectList*>(0));
+}
+
+ObjectsLayer::~ObjectsLayer()
+{
+    delete mTiles;
+    mTiles = 0;
+}
+
+void ObjectsLayer::addObject(std::string name, int type,
+                             unsigned x, unsigned y,
+                             unsigned dx, unsigned dy)
+{
+    if (!mTiles)
+        return;
+
+    if (x + dx > mWidth)
+        dx = mWidth - x;
+    if (y + dy > mHeight)
+        dy = mHeight - y;
+
+    for (unsigned y1 = y; y1 < y + dy; y1 ++)
+    {
+        unsigned idx1 = x + y1 * mWidth;
+        unsigned idx2 = idx1 + dx;
+
+        for (unsigned i = idx1; i < idx2; i ++)
+        {
+            if (!mTiles[i])
+                mTiles[i] = new MapObjectList();
+            mTiles[i]->objects.push_back(MapObject(type, name));
+        }
+    }
+}
+
+MapObjectList *ObjectsLayer::getAt(unsigned x, unsigned y)
+{
+    if (x >= mWidth || y >= mHeight)
+        return 0;
+    return mTiles[x + y * mWidth];
+}

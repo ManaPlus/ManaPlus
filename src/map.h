@@ -47,6 +47,7 @@ class SimpleAnimation;
 class Tileset;
 class SpecialLayer;
 class MapItem;
+class ObjectsLayer;
 
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;
@@ -75,23 +76,24 @@ struct MetaTile
     unsigned char blockmask; /**< Blocking properties of this tile */
 };
 
-/*
-struct MapBox
+class MapObject
 {
-    MapBox() : name(""), x(0), y(0)
-    {
-    }
+    public:
+        MapObject(int type, std::string data)
+        {
+            this->type = type;
+            this->data = data;
+        }
 
-    MapBox(std::string name1, int x1, int y1):
-        name(name1), x(x1), y(y1)
-    {
-    }
-
-    std::string name;
-    int x;
-    int y;
+        int type;
+        std::string data;
 };
-*/
+
+class MapObjectList
+{
+    public:
+        std::list<MapObject> objects;
+};
 
 /**
  * Animation cycle of a tile image which changes the map accordingly.
@@ -401,6 +403,9 @@ class Map : public Properties, public ConfigListener
         void addPortal(const std::string &name, int type,
                        int x, int y, int dx, int dy);
 
+        void addRange(const std::string &name, int type,
+                      int x, int y, int dx, int dy);
+
         void addPortalTile(const std::string &name, int type, int x, int y);
 
         void updatePortalTile(const std::string &name, int type,
@@ -422,6 +427,11 @@ class Map : public Properties, public ConfigListener
         { return static_cast<int>(mActors.size()); }
 
         void setPvpMode(int mode);
+
+        ObjectsLayer* getObjectsLayer()
+        { return mObjects; }
+
+        std::string getObjectData(unsigned x, unsigned y, int type);
 
     protected:
         friend class Actor;
@@ -509,6 +519,7 @@ class Map : public Properties, public ConfigListener
 
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;
+        ObjectsLayer *mObjects;
 };
 
 
@@ -560,7 +571,8 @@ class MapItem
             ARROW_DOWN = 5,
             ARROW_LEFT = 6,
             ARROW_RIGHT = 7,
-            PORTAL = 8
+            PORTAL = 8,
+            MUSIC = 9
         };
 
         MapItem();
@@ -607,6 +619,22 @@ class MapItem
         std::string mName;
         int mX;
         int mY;
+};
+
+class ObjectsLayer
+{
+    public:
+        ObjectsLayer(unsigned width, unsigned height);
+        ~ObjectsLayer();
+
+        void addObject(std::string name, int type, unsigned x, unsigned y,
+                       unsigned dx, unsigned dy);
+
+        MapObjectList *getAt(unsigned x, unsigned y);
+    private:
+        MapObjectList **mTiles;
+        unsigned mWidth;
+        unsigned mHeight;
 };
 
 #endif

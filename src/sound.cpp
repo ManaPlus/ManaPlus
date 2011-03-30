@@ -214,7 +214,7 @@ void Sound::playMusic(const std::string &filename)
 
     haltMusic();
 
-    if ((mMusic = loadMusic(filename)))
+    if (!filename.empty() && (mMusic = loadMusic(filename)))
         Mix_PlayMusic(mMusic, -1); // Loop forever
 }
 

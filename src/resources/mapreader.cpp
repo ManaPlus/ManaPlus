@@ -355,6 +355,11 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
 //                        map->addPortal(_("Spawn: ") + objName, MapItem::PORTAL,
 //                                       objX, objY, objW, objH);
                     }
+                    else if (objType == "MUSIC")
+                    {
+                        map->addRange(objName, MapItem::MUSIC,
+                            objX, objY, objW, objH);
+                    }
                     else
                     {
                         logger->log1("   Warning: Unknown object type");

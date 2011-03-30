@@ -107,6 +107,9 @@ class Sound : public ConfigListener
 
         void volumeRestore();
 
+        std::string getCurrentMusicFile()
+        { return mCurrentMusicFile; }
+
     private:
         /** Logs various info about sound device. */
         void info();
