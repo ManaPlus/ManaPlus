@@ -196,7 +196,7 @@ static void initInternationalization()
     // mingw doesn't like LOCALEDIR to be defined for some reason
     bindtextdomain("manaplus", "translations/");
 #else
-#if ENABLE_PORTABLE
+#ifdef ENABLE_PORTABLE
     bindtextdomain("manaplus", (std::string(PHYSFS_getBaseDir())
         + "../locale/").c_str());
 #else

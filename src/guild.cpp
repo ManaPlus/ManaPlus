@@ -184,6 +184,7 @@ void Guild::removeMember(const std::string &name)
                                itr_end = mMembers.end();
     while (deleted)
     {
+        deleted = false;
         while (itr != itr_end)
         {
             if ((*itr)->getName() == name)
