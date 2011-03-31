@@ -811,9 +811,11 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
 
 void OpenGLGraphics::updateScreen()
 {
-    glFlush();
-    glFinish();
+//    glFlush();
+//    glFinish();
     SDL_GL_SwapBuffers();
+// may be need clear?
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
 void OpenGLGraphics::_beginDraw()
