@@ -241,13 +241,14 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
 
             for (int x = startX; x < endX; x++)
             {
-                const int px1 = x * 32 - scrollX;
+                const int x32 = x * 32;
+                const int px1 = x32 - scrollX;
                 const int tilePtr = x + yWidth;
                 int c = 0;
                 Image *img = mTiles[tilePtr];
                 if (img)
                 {
-                    const int px = (x * 32) + dx;
+                    const int px = x32 + dx;
                     const int py = py0 - img->getHeight();
                     if ((debugFlags != Map::MAP_SPECIAL
                         && debugFlags != Map::MAP_SPECIAL2)
