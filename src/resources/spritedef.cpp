@@ -245,7 +245,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
         {
-            int start = XML::getProperty(frameNode, "start", -1);
+            const int start = XML::getProperty(frameNode, "start", -1);
             const int end = XML::getProperty(frameNode, "end", -1);
 
             if (start < 0 || end < 0)
@@ -254,20 +254,33 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
                 continue;
             }
 
-            while (end >= start)
+            int repeat = XML::getProperty(frameNode, "repeat", 1);
+
+            if (repeat < 1)
             {
-                Image *img = imageSet->get(start + variant_offset);
+                logger->log1("No valid value for 'repeat'");
+                continue;
+            }
 
-                if (!img)
+            while (repeat > 0)
+            {
+                int pos = start;
+                while (end >= pos)
                 {
-                    logger->log("No image at index %d",
-                                start + variant_offset);
-                    start++;
-                    continue;
-                }
+                    Image *img = imageSet->get(pos + variant_offset);
 
-                animation->addFrame(img, delay, offsetX, offsetY);
-                start++;
+                    if (!img)
+                    {
+                        logger->log("No image at index %d",
+                                    pos + variant_offset);
+                        pos ++;
+                        continue;
+                    }
+
+                    animation->addFrame(img, delay, offsetX, offsetY);
+                    pos ++;
+                }
+                repeat --;
             }
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
