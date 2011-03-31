@@ -57,7 +57,8 @@ LayoutArray &LayoutCell::getArray()
     mType = ARRAY;
     mExtent[0] = 1;
     mExtent[1] = 1;
-    mPadding = 0;
+    mHPadding = 0;
+    mVPadding = 0;
     mAlign[0] = FILL;
     mAlign[1] = FILL;
     return *mArray;
@@ -66,10 +67,10 @@ LayoutArray &LayoutCell::getArray()
 void LayoutCell::reflow(int nx, int ny, int nw, int nh)
 {
     assert(mType != NONE);
-    nx += mPadding;
-    ny += mPadding;
-    nw -= 2 * mPadding;
-    nh -= 2 * mPadding;
+    nx += mHPadding;
+    ny += mVPadding;
+    nw -= 2 * mHPadding;
+    nh -= 2 * mVPadding;
     if (mType == ARRAY)
         mArray->reflow(nx, ny, nw, nh);
     else
@@ -202,7 +203,8 @@ LayoutCell &LayoutArray::place(gcn::Widget *widget, int x, int y, int w, int h)
     }
     cell.mExtent[0] = w;
     cell.mExtent[1] = h;
-    cell.mPadding = 0;
+    cell.mHPadding = 0;
+    cell.mVPadding = 0;
     cell.mAlign[0] = LayoutCell::FILL;
     cell.mAlign[1] = LayoutCell::FILL;
     int &cs = mSizes[0][x], &rs = mSizes[1][y];
@@ -258,8 +260,9 @@ std::vector<int> LayoutArray::getSizes(int dim, int upp) const
             if (cell->mExtent[dim] == 1)
             {
                 int n = (dim == 0 ? gridX : gridY);
-                int s = cell->mSize[dim] + cell->mPadding * 2;
-                if (s > sizes[n]) sizes[n] = s;
+                int s = cell->mSize[dim] + cell->mVPadding * 2;
+                if (s > sizes[n])
+                    sizes[n] = s;
             }
         }
     }
@@ -357,7 +360,7 @@ void Layout::reflow(int &nw, int &nh)
         mComputed = true;
     }
 
-    nw = (nw == 0 ? mSize[0] + 2 * mPadding : nw);
-    nh = (nh == 0 ? mSize[1] + 2 * mPadding : nh);
+    nw = (nw == 0 ? mSize[0] + 2 * mHPadding : nw);
+    nh = (nh == 0 ? mSize[1] + 2 * mVPadding : nh);
     LayoutCell::reflow(0, 0, nw, nh);
 }

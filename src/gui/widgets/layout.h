@@ -182,7 +182,19 @@ class LayoutCell
          * Sets the padding around the cell content.
          */
         LayoutCell &setPadding(int p)
-        { mPadding = p; return *this; }
+        { mHPadding = p; mVPadding = p; return *this; }
+
+        /**
+         * Sets the vertical padding around the cell content.
+         */
+        LayoutCell &setVPadding(int p)
+        { mVPadding = p; return *this; }
+
+        /**
+         * Sets the horisontal padding around the cell content.
+         */
+        LayoutCell &setHPadding(int p)
+        { mHPadding = p; return *this; }
 
         /**
          * Sets the horizontal alignment of the cell content.
@@ -268,7 +280,8 @@ class LayoutCell
         void reflow(int nx, int ny, int nw, int nh);
 
         int mSize[2];
-        int mPadding;
+        int mHPadding;
+        int mVPadding;
         int mExtent[2];
         int mAlign[2];
         int mNbFill[2];
