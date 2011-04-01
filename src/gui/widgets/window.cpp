@@ -273,13 +273,28 @@ void Window::setLocationRelativeTo(ImageRect::ImagePosition position,
 
 void Window::setMinWidth(int width)
 {
-    mMinWinWidth = width > mSkin->getMinWidth() ? width : mSkin->getMinWidth();
+    if (mSkin)
+    {
+        mMinWinWidth = width > mSkin->getMinWidth()
+            ? width : mSkin->getMinWidth();
+    }
+    else
+    {
+        mMinWinWidth = width;
+    }
 }
 
 void Window::setMinHeight(int height)
 {
-    mMinWinHeight = height > mSkin->getMinHeight() ?
-                    height : mSkin->getMinHeight();
+    if (mSkin)
+    {
+        mMinWinHeight = height > mSkin->getMinHeight() ?
+                        height : mSkin->getMinHeight();
+    }
+    else
+    {
+        mMinWinHeight = height;
+    }
 }
 
 void Window::setMaxWidth(int width)

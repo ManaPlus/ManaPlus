@@ -99,8 +99,11 @@ void Skin::updateAlpha(float minimumOpacityAllowed)
         std::max(static_cast<double>(minimumOpacityAllowed),
         static_cast<double>(Client::getGuiAlpha())));
 
-    for_each(mBorder.grid, mBorder.grid + 9,
-             std::bind2nd(std::mem_fun(&Image::setAlpha), alpha));
+    for (int i = 0; i < 9; i++)
+    {
+        if (mBorder.grid[i])
+            mBorder.grid[i]->setAlpha(alpha);
+    }
 
     if (mCloseImage)
         mCloseImage->setAlpha(alpha);

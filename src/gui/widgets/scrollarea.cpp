@@ -148,7 +148,8 @@ void ScrollArea::init()
             }
         }
 
-        textbox->decRef();
+        if (textbox)
+            textbox->decRef();
 
         // Load vertical scrollbar skin
         Image *vscroll = Theme::getImageFromTheme("vscroll_grey.png");

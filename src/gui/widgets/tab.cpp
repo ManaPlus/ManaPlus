@@ -108,6 +108,9 @@ void Tab::init()
         for (mode = 0; mode < TAB_COUNT; mode++)
         {
             tab[mode] = Theme::getImageFromTheme(data[mode].file);
+            if (!tab[mode])
+                continue;
+
             a = 0;
             for (y = 0; y < 3; y++)
             {

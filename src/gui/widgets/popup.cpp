@@ -142,13 +142,28 @@ void Popup::setLocationRelativeTo(gcn::Widget *widget)
 
 void Popup::setMinWidth(int width)
 {
-    mMinWidth = width > mSkin->getMinWidth() ? width : mSkin->getMinWidth();
+    if (mSkin)
+    {
+        mMinWidth = width > mSkin->getMinWidth()
+            ? width : mSkin->getMinWidth();
+    }
+    else
+    {
+        mMinWidth = width;
+    }
 }
 
 void Popup::setMinHeight(int height)
 {
-    mMinHeight = height > mSkin->getMinHeight() ?
-        height : mSkin->getMinHeight();
+    if (mSkin)
+    {
+        mMinHeight = height > mSkin->getMinHeight() ?
+            height : mSkin->getMinHeight();
+    }
+    else
+    {
+        mMinHeight = height;
+    }
 }
 
 void Popup::setMaxWidth(int width)
