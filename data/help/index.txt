@@ -1,8 +1,8 @@
 ##3                             === INDEX ===
 
  ##1-> @@about|About The Mana World@@
- -> @@team|Development Team (TMW)@@
- -> @@changes|Recent Changes@@
+ -> @@team|Manaplus developers@@
+ -> @@teamtmw|TMW Development Team@@
 
  -> @@commands|Commands@@
  -> @@chatcommands|Chat commands@@
