@@ -134,6 +134,8 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
                 break;
 
             chatMsg = msg.readString(chatMsgLength);
+            if (chatMsg.find("\302\202!") == 0)
+                chatMsg = chatMsg.substr(2);
 
             if (nick != "Server")
             {
