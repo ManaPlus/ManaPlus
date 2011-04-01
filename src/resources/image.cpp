@@ -588,6 +588,7 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
     if (converted)
         SDL_FreeSurface(tmpImage);
 
+//    SDL_SetColorKey(image, SDL_SRCCOLORKEY | SDL_RLEACCEL, 0);
     return new Image(image, hasAlpha, alphaChannel);
 }
 
@@ -651,6 +652,7 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
     if (SDL_MUSTLOCK(tmpImage))
         SDL_LockSurface(tmpImage);
 
+//    glTexImage2D(mTextureType, 0, GL_COMPRESSED_RGBA_ARB, tmpImage->w, tmpImage->h,
     glTexImage2D(mTextureType, 0, 4, tmpImage->w, tmpImage->h,
                 0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
 
