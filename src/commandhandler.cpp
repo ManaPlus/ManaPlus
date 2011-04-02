@@ -31,6 +31,7 @@
 #include "main.h"
 
 #include "gui/chat.h"
+#include "gui/help.h"
 #include "gui/gui.h"
 #include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"
@@ -294,195 +295,13 @@ void CommandHandler::handleAnnounce(const std::string &args,
     Net::getAdminHandler()->announce(args);
 }
 
-void CommandHandler::handleHelp(const std::string &args, ChatTab *tab)
+void CommandHandler::handleHelp(const std::string &args _UNUSED_,
+                                ChatTab *tab _UNUSED_)
 {
-    if (args == "")
+    if (helpWindow)
     {
-        tab->chatLog(_("-- Help --"));
-        tab->chatLog(_("/help > Display this help"));
-
-        tab->chatLog(_("/where > Display map name"));
-        tab->chatLog(_("/who > Display number of online users"));
-        tab->chatLog(_("/me > Tell something about yourself"));
-
-        tab->chatLog(_("/clear > Clears this window"));
-
-        tab->chatLog(_("/msg > Send a private message to a user"));
-        tab->chatLog(_("/whisper > Alias of msg"));
-        tab->chatLog(_("/w > Alias of msg"));
-        tab->chatLog(_("/query > Makes a tab for private messages "
-                       "with another user"));
-        tab->chatLog(_("/q > Alias of query"));
-
-        tab->chatLog(_("/away > Tell the other whispering players "
-                       "you're away from keyboard."));
-
-        tab->chatLog(_("/ignore > ignore a player"));
-        tab->chatLog(_("/unignore > stop ignoring a player"));
-        tab->chatLog(_("/ignoreall > Ignore all opened whisper tabs"));
-        tab->chatLog(_("/erase > Erase a player"));
-        tab->chatLog(_("/befriend > Be friend a player"));
-        tab->chatLog(_("/disregard > Disregard a player"));
-        tab->chatLog(_("/neutral > Neutral a player"));
-
-        tab->chatLog(_("/list > Display all public channels"));
-        tab->chatLog(_("/join > Join or create a channel"));
-
-        tab->chatLog(_("/createparty > Create a new party"));
-        tab->chatLog(_("/createguild > Create a new guild"));
-        tab->chatLog(_("/party > Invite a user to party"));
-
-        tab->chatLog(_("/toggle > Determine whether <return> "
-                       "toggles the chat log"));
-        tab->chatLog(_("/present > Get list of players present "
-                       "(sent to chat log, if logging)"));
-
-        tab->chatLog(_("/announce > Global announcement (GM only)"));
-
-        tab->chatLog(_("/closeall > Close all opened whisper tabs"));
-
-        tab->chatLog(_("/all > Show all visible beings in debug tab"));
-
-        tab->chatLog(_("/move > Move to given position"));
-        tab->chatLog(_("/navigate > Draw path to given position"));
-        tab->chatLog(_("/target > Set target to being"));
-        tab->chatLog(_("/outfit > Wear outfit by index"));
-        tab->chatLog(_("/emote > Show emote by index"));
-        tab->chatLog(_("/follow > Follow player"));
-        tab->chatLog(_("/imitation > Imitate player"));
-        tab->chatLog(_("/heal > Heal player"));
-        tab->chatLog(_("/mail > Send offline message to player"));
-
-        tab->showHelp(); // Allow the tab to show it's help
-
-        tab->chatLog(_("For more information, type /help <command>."));
-    }
-    else if (args == "help") // Do this before tabs so they can't change it
-    {
-        tab->chatLog(_("Command: /help"));
-        tab->chatLog(_("This command displays a list "
-                       "of all commands available."));
-        tab->chatLog(_("Command: /help <command>"));
-        tab->chatLog(_("This command displays help on <command>."));
-    }
-    else if (tab->handleCommand("help", args))
-    {
-        // Nothing to do
-    }
-    else if (args == "announce")
-    {
-        tab->chatLog(_("Command: /announce <msg>"));
-        tab->chatLog(_("*** only available to a GM ***"));
-        tab->chatLog(_("This command sends the message <msg> to "
-                            "all players currently online."));
-    }
-    else if (args == "clear")
-    {
-        tab->chatLog(_("Command: /clear"));
-        tab->chatLog(_("This command clears the chat log of previous chat."));
-    }
-    else if (args == "ignore")
-    {
-        tab->chatLog(_("Command: /ignore <player>"));
-        tab->chatLog(_("This command ignores the given player regardless of "
-                       "current relations."));
-    }
-    else if (args == "join")
-    {
-        tab->chatLog(_("Command: /join <channel>"));
-        tab->chatLog(_("This command makes you enter <channel>."));
-        tab->chatLog(_("If <channel> doesn't exist, it's created."));
-    }
-    else if (args == "list")
-    {
-        tab->chatLog(_("Command: /list"));
-        tab->chatLog(_("This command shows a list of all channels."));
-    }
-    else if (args == "me")
-    {
-        tab->chatLog(_("Command: /me <message>"));
-        tab->chatLog(_("This command tell others you are (doing) <msg>."));
-    }
-    else if (args == "msg" || args == "whisper" || args == "w")
-    {
-        tab->chatLog(_("Command: /msg <nick> <message>"));
-        tab->chatLog(_("Command: /whisper <nick> <message>"));
-        tab->chatLog(_("Command: /w <nick> <message>"));
-        tab->chatLog(_("This command sends the text <message> to <nick>."));
-        tab->chatLog(_("If the <nick> has spaces in it, enclose it in "
-                            "double quotes (\")."));
-    }
-    else if (args == "query" || args == "q")
-    {
-        tab->chatLog(_("Command: /query <nick>"));
-        tab->chatLog(_("Command: /q <nick>"));
-        tab->chatLog(_("This command tries to make a tab for whispers between"
-                       "you and <nick>."));
-    }
-    else if (args == "away")
-    {
-        tab->chatLog(_("Command: /away <afk reason>"));
-        tab->chatLog(_("This command tells "
-                       "you're away from keyboard with the given reason."));
-        tab->chatLog(_("Command: /away"));
-        tab->chatLog(_("This command clears the away status and message."));
-    }
-    else if (args == "createparty")
-    {
-        tab->chatLog(_("Command: /createparty <name>"));
-        tab->chatLog(_("This command creates a new party called <name>."));
-    }
-    else if (args == "createguild")
-    {
-        tab->chatLog(_("Command: /createguild <name>"));
-        tab->chatLog(_("This command creates a new guild called <name>."));
-    }
-    else if (args == "party")
-    {
-        tab->chatLog(_("Command: /party <nick>"));
-        tab->chatLog(_("This command invites <nick> to party with you."));
-        tab->chatLog(_("If the <nick> has spaces in it, enclose it in "
-                       "double quotes (\")."));
-    }
-    else if (args == "present")
-    {
-        tab->chatLog(_("Command: /present"));
-        tab->chatLog(_("This command gets a list of players within hearing "
-            "and sends it to chat log."));
-    }
-    else if (args == "toggle")
-    {
-        tab->chatLog(_("Command: /toggle <state>"));
-        tab->chatLog(_("This command sets whether the return key should "
-            "toggle the chat log, or whether the chat log turns off "
-            "automatically."));
-        tab->chatLog(_("<state> can be one of \"1\", \"yes\", \"true\" to "
-            "turn the toggle on, or \"0\", \"no\", \"false\" to turn the "
-            "toggle off."));
-        tab->chatLog(_("Command: /toggle"));
-        tab->chatLog(_("This command displays the return toggle status."));
-    }
-    else if (args == "unignore")
-    {
-        tab->chatLog(_("Command: /unignore <player>"));
-        tab->chatLog(_("This command stops ignoring the given player if they "
-                      "are being ignored"));
-    }
-    else if (args == "where")
-    {
-        tab->chatLog(_("Command: /where"));
-        tab->chatLog(_("This command displays the name of the current map."));
-    }
-    else if (args == "who")
-    {
-        tab->chatLog(_("Command: /who"));
-        tab->chatLog(_("This command displays the number of players currently "
-                     "online."));
-    }
-    else
-    {
-        tab->chatLog(_("Unknown command."));
-        tab->chatLog(_("Type /help for a list of commands."));
+        helpWindow->loadHelp("chatcommands");
+        helpWindow->requestMoveToTop();
     }
 }
 
