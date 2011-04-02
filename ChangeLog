@@ -1,6 +1,10 @@
 2011-04-03 New release 1.1.4.3
 ManaPlus:
-
+fix: improve opengl speed.
+fix: update ru, pt, pt_BR, fr, es translations.
+add: remove nicks in whisper. Usefull for bots like guild bot.
+add: no away option in whisper context menu.
+add: save chat tabs options between client restarts.
 
 2011-03-20 New release 1.1.3.20
 ManaPlus:
