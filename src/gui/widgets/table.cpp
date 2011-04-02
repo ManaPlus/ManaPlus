@@ -355,8 +355,8 @@ void GuiTable::draw(gcn::Graphics* graphics)
                              && c == (unsigned)mSelectedColumn
                              && r == (unsigned)mSelectedRow)
                     {
-                        graphics->fillRectangle(gcn::Rectangle(x_offset, y_offset,
-                                                               width, height));
+                        graphics->fillRectangle(gcn::Rectangle(
+                            x_offset, y_offset, width, height));
                     }
                 }
                 graphics->pushClipArea(bounds);

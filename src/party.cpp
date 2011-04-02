@@ -106,50 +106,71 @@ void Party::removeMember(PartyMember *member)
     if (!member)
         return;
 
-    MemberList::iterator itr = mMembers.begin(),
-                               itr_end = mMembers.end();
-    while (itr != itr_end)
+    bool deleted = true;
+    while (deleted)
     {
-        if ((*itr)->mId == member->mId &&
-            (*itr)->getName() == member->getName())
+        deleted = false;
+        MemberList::iterator itr = mMembers.begin(),
+            itr_end = mMembers.end();
+        while (itr != itr_end)
         {
-            PartyMember *member = (*itr);
-            mMembers.erase(itr);
-            delete member;
+            if ((*itr)->mId == member->mId &&
+                (*itr)->getName() == member->getName())
+            {
+                PartyMember *member = (*itr);
+                mMembers.erase(itr);
+                delete member;
+                deleted = true;
+                break;
+            }
+            ++itr;
         }
-        ++itr;
     }
 }
 
 void Party::removeMember(int id)
 {
-    MemberList::iterator itr = mMembers.begin(),
-                               itr_end = mMembers.end();
-    while (itr != itr_end)
+    bool deleted = true;
+    while (deleted)
     {
-        if ((*itr)->mId == id)
+        deleted = false;
+        MemberList::iterator itr = mMembers.begin(),
+            itr_end = mMembers.end();
+        while (itr != itr_end)
         {
-            PartyMember *member = (*itr);
-            mMembers.erase(itr);
-            delete member;
+            if ((*itr)->mId == id)
+            {
+                PartyMember *member = (*itr);
+                mMembers.erase(itr);
+                delete member;
+                deleted = true;
+                break;
+            }
+            ++itr;
         }
-        ++itr;
     }
 }
 
 void Party::removeMember(const std::string &name)
 {
-    MemberList::iterator itr = mMembers.begin(),
-                               itr_end = mMembers.end();
-    while (itr != itr_end)
+    bool deleted = true;
+    while (deleted)
     {
-        if ((*itr)->getName() == name)
+        deleted = false;
+        MemberList::iterator itr = mMembers.begin(),
+            itr_end = mMembers.end();
+        while (itr != itr_end)
         {
-            PartyMember *member = (*itr);
-            mMembers.erase(itr);
-            delete member;
+            if ((*itr)->getName() == name)
+            {
+                PartyMember *member = (*itr);
+                mMembers.erase(itr);
+                delete member;
+                deleted = true;
+                break;
+            }
+            ++itr;
         }
-        ++itr;
     }
 }
 

@@ -181,7 +181,7 @@ std::string formatUnit(int value, int type)
         double amount = ud.conversion * value;
 
         // If only the first level is needed, act like mix if false
-        if (ud.mix && ud.levels.size() > 0 && ud.levels[1].count < amount)
+        if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)
         {
             std::string output;
             struct UnitLevel pl = ud.levels[0];

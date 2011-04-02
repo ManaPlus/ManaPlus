@@ -173,8 +173,17 @@ class LayoutCell
 
         LayoutCell():
             mWidget(0),
+            mHPadding(0),
+            mVPadding(0),
             mType(NONE)
-        { }
+        {
+            mExtent[0] = 0;
+            mExtent[1] = 0;
+            mAlign[0] = 0;
+            mAlign[1] = 0;
+            mNbFill[0] = 0;
+            mNbFill[1] = 0;
+        }
 
         ~LayoutCell();
 
