@@ -524,6 +524,15 @@ void UpdaterWindow::logic()
         }
 
         mProgressBar->setProgress(mDownloadProgress);
+        if (mUpdateFiles.size() && mUpdateIndex <= mUpdateFiles.size())
+        {
+            mProgressBar->setText(strprintf("%d/%d",
+                mUpdateIndex + 1, (int)mUpdateFiles.size() + 1));
+        }
+        else
+        {
+            mProgressBar->setText("");
+        }
     }
 
     std::string filename = mUpdatesDir + "/" + mCurrentFile;
