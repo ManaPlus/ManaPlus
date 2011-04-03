@@ -335,7 +335,7 @@ void LayoutArray::reflow(int nx, int ny, int nw, int nh)
             LayoutCell *cell = mCells[gridY][gridX];
             if (cell && cell->mType != LayoutCell::NONE)
             {
-                int dx = x, dy = y, dw, dh;
+                int dx = x, dy = y, dw = 0, dh = 0;
                 align(dx, dw, 0, *cell, &widths[gridX]);
                 align(dy, dh, 1, *cell, &heights[gridY]);
                 cell->reflow(dx, dy, dw, dh);
