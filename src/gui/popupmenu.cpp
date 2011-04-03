@@ -926,7 +926,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "addtrade" && mItem)
     {
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+        ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
                              tradeWindow, mItem);
     }
     else if (link == "addtrade 10" && mItem)
