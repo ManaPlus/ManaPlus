@@ -865,6 +865,8 @@ void Being::setAction(Action action, int attackType _UNUSED_)
     switch (action)
     {
         case MOVE:
+            if (mInfo)
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_MOVE), mX, mY);
             currentAction = SpriteAction::MOVE;
             // Note: When adding a run action,
             // Differentiate walk and run with action name,
@@ -872,6 +874,8 @@ void Being::setAction(Action action, int attackType _UNUSED_)
             break;
         case SIT:
             currentAction = SpriteAction::SIT;
+            if (mInfo)
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_SIT), mX, mY);
             break;
         case ATTACK:
             if (mEquippedWeapon)
@@ -919,6 +923,8 @@ void Being::setAction(Action action, int attackType _UNUSED_)
 
             break;
         case HURT:
+            if (mInfo)
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT), mX, mY);
             //currentAction = SpriteAction::HURT;// Buggy: makes the player stop
                                             // attacking and unable to attack
                                             // again until he moves.
@@ -931,6 +937,11 @@ void Being::setAction(Action action, int attackType _UNUSED_)
             break;
         case STAND:
             currentAction = SpriteAction::STAND;
+            break;
+        case SPAWN:
+            if (mInfo)
+                sound.playSfx(mInfo->getSound(SOUND_EVENT_SPAWN), mX, mY);
+            currentAction = SpriteAction::SPAWN;
             break;
         default:
             logger->log("Being::setAction unknown action: "

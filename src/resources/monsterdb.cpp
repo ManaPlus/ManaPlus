@@ -134,6 +134,18 @@ void MonsterDB::load()
                 {
                     currentInfo->addSound(SOUND_EVENT_DIE, filename);
                 }
+                else if (event == "move")
+                {
+                    currentInfo->addSound(SOUND_EVENT_MOVE, filename);
+                }
+                else if (event == "sit")
+                {
+                    currentInfo->addSound(SOUND_EVENT_SIT, filename);
+                }
+                else if (event == "spawn")
+                {
+                    currentInfo->addSound(SOUND_EVENT_SPAWN, filename);
+                }
                 else
                 {
                     logger->log("MonsterDB: Warning, sound effect %s for "

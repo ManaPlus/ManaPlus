@@ -54,7 +54,10 @@ enum SoundEvent
     SOUND_EVENT_HIT = 0,
     SOUND_EVENT_MISS,
     SOUND_EVENT_HURT,
-    SOUND_EVENT_DIE
+    SOUND_EVENT_DIE,
+    SOUND_EVENT_MOVE,
+    SOUND_EVENT_SIT,
+    SOUND_EVENT_SPAWN
 };
 
 typedef std::map<SoundEvent, std::vector<std::string>* > SoundEvents;

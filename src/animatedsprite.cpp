@@ -159,6 +159,11 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
             mFrame = 0;
             return false;
         }
+        if (!mFrame->nextAction.empty())
+        {
+            play(mFrame->nextAction);
+            return true;
+        }
     }
 
     return true;

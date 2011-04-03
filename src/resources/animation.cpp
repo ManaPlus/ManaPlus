@@ -31,7 +31,7 @@ Animation::Animation():
 
 void Animation::addFrame(Image *image, int delay, int offsetX, int offsetY)
 {
-    Frame frame = { image, delay, offsetX, offsetY };
+    Frame frame = { image, delay, offsetX, offsetY, "" };
     mFrames.push_back(frame);
     mDuration += delay;
 }
@@ -44,4 +44,10 @@ void Animation::addTerminator()
 bool Animation::isTerminator(const Frame &candidate)
 {
     return (candidate.image == NULL);
+}
+
+void Animation::addJump(std::string name)
+{
+    Frame frame = { 0, 0, 0, 0, name };
+    mFrames.push_back(frame);
 }

@@ -61,7 +61,8 @@ const int EMOTION_TIME = 500;    /**< Duration of emotion icon */
 Being *createBeing(int id, short job);
 
 BeingHandler::BeingHandler(bool enableSync):
-   mSync(enableSync)
+    mSync(enableSync),
+    mSpawnId(0)
 {
     static const Uint16 _messages[] =
     {
@@ -169,6 +170,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
     int hp, maxHP, oldHP;
     unsigned char colors[9];
     Uint8 dir;
+    int spawnId;
 
     switch (msg.getId())
     {
@@ -176,6 +178,11 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_BEING_MOVE:
             // Information about a being in range
             id = msg.readInt32();
+            if (id == mSpawnId)
+                spawnId = mSpawnId;
+            else
+                spawnId = 0;
+            mSpawnId = 0;
             speed = msg.readInt16();
             stunMode = msg.readInt16();  // opt1
             statusEffects = msg.readInt16();  // opt2
@@ -208,6 +215,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 if (!dstBeing)
                     break;
 
+
                 if (job == 1022 && killStats)
                     killStats->jackoAlive(dstBeing->getId());
             }
@@ -223,13 +231,16 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             if (dstBeing->getType() == Being::PLAYER)
                 dstBeing->setMoveTime();
 
-            if (msg.getId() == SMSG_BEING_VISIBLE)
+            if (spawnId)
+            {
+                dstBeing->setAction(Being::SPAWN);
+            }
+            else if (msg.getId() == SMSG_BEING_VISIBLE)
             {
                 dstBeing->clearPath();
                 dstBeing->setActionTime(tick_time);
                 dstBeing->setAction(Being::STAND);
             }
-
 
             // Prevent division by 0 when calculating frame
             if (speed == 0)
@@ -401,7 +412,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_BEING_SPAWN:
             // skipping this packet
-            msg.readInt32();    // id
+            mSpawnId = msg.readInt32();    // id
             msg.readInt16();    // speed
             msg.readInt16();  // opt1
             msg.readInt16();  // opt2

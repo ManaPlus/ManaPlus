@@ -88,7 +88,8 @@ class Being : public ActorSprite, public ConfigListener
             ATTACK,
             SIT,
             DEAD,
-            HURT
+            HURT,
+            SPAWN,
         };
 
         enum Speech

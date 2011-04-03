@@ -45,6 +45,7 @@ class BeingHandler : public MessageHandler, public Net::BeingHandler
     private:
         // Should we honor server "Stop Walking" packets
         bool mSync;
+        int mSpawnId;
 };
 
 } // namespace TmwAthena

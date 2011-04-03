@@ -26,6 +26,7 @@
 #include <libxml/tree.h>
 
 #include <vector>
+#include <string>
 
 class Image;
 
@@ -38,6 +39,7 @@ struct Frame
     int delay;
     int offsetX;
     int offsetY;
+    std::string nextAction;
 };
 
 /**
@@ -77,6 +79,8 @@ class Animation
          */
         int getDuration() const
         { return mDuration; }
+
+        void addJump(std::string name);
 
         /**
          * Determines whether the given animation frame is a terminator.

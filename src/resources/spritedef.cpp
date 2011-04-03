@@ -102,6 +102,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::SLEEP, SpriteAction::SIT);
     substituteAction(SpriteAction::HURT, SpriteAction::STAND);
     substituteAction(SpriteAction::DEAD, SpriteAction::HURT);
+    substituteAction(SpriteAction::SPAWN, SpriteAction::STAND);
 }
 
 void SpriteDef::loadSprite(xmlNodePtr spriteNode, int variant,
@@ -286,6 +287,10 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
         else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
         {
             animation->addTerminator();
+        }
+        else if (xmlStrEqual(frameNode->name, BAD_CAST "jump"))
+        {
+            animation->addJump(XML::getProperty(frameNode, "action", ""));
         }
     } // for frameNode
 }
