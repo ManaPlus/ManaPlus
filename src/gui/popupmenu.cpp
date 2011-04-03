@@ -1471,6 +1471,11 @@ void PopupMenu::showPopup(int x, int y)
     requestMoveToTop();
 }
 
+RenameListener::RenameListener() :
+    mMapItem(0),
+    mDialog(0)
+{
+}
 
 void RenameListener::action(const gcn::ActionEvent &event)
 {

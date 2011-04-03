@@ -50,6 +50,8 @@ class Window;
 class RenameListener : public gcn::ActionListener
 {
     public:
+        RenameListener();
+
         void action(const gcn::ActionEvent &event);
 
         void setMapItem(MapItem* mapItem)
