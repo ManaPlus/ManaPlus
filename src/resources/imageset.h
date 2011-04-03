@@ -63,11 +63,25 @@ class ImageSet : public Resource
         size_type size() const
         { return mImages.size(); }
 
+        int getOffsetX()
+        { return mOffsetX; }
+
+        void setOffsetX(int n)
+        { mOffsetX = n; }
+
+        int getOffsetY()
+        { return mOffsetY; }
+
+        void setOffsetY(int n)
+        { mOffsetY = n; }
+
     private:
         std::vector<Image*> mImages;
 
         int mHeight; /**< Height of the images in the image set. */
         int mWidth;  /**< Width of the images in the image set. */
+        int mOffsetX;
+        int mOffsetY;
 };
 
 #endif

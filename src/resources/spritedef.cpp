@@ -152,6 +152,8 @@ void SpriteDef::loadImageSet(xmlNodePtr node, const std::string &palettes)
         return;
     }
 
+    imageSet->setOffsetX(XML::getProperty(node, "offsetX", 0));
+    imageSet->setOffsetY(XML::getProperty(node, "offsetY", 0));
     mImageSets[name] = imageSet;
 }
 
@@ -219,8 +221,10 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
     for_each_xml_child_node(frameNode, animationNode)
     {
         const int delay = XML::getProperty(frameNode, "delay", 0);
-        int offsetX = XML::getProperty(frameNode, "offsetX", 0);
-        int offsetY = XML::getProperty(frameNode, "offsetY", 0);
+        int offsetX = XML::getProperty(frameNode, "offsetX",
+            imageSet->getOffsetX());
+        int offsetY = XML::getProperty(frameNode, "offsetY",
+            imageSet->getOffsetY());
         offsetY -= imageSet->getHeight() - 32;
         offsetX -= imageSet->getWidth() / 2 - 16;
 
