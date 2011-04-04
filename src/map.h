@@ -506,7 +506,7 @@ class Map : public Properties, public ConfigListener
             int w;
             int h;
         };
-        std::list<ParticleEffectData> particleEffects;
+        std::vector<ParticleEffectData> particleEffects;
 
         std::list<MapItem*> mMapPortals;
 

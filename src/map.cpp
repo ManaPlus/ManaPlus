@@ -1212,7 +1212,7 @@ void Map::initializeParticleEffects(Particle *particleEngine)
 
     if (config.getBoolValue("particleeffects"))
     {
-        for (std::list<ParticleEffectData>::iterator
+        for (std::vector<ParticleEffectData>::iterator
              i = particleEffects.begin();
              i != particleEffects.end(); ++i)
         {
