@@ -38,7 +38,7 @@
 
 #include "gui/gui.h"
 #include "gui/palette.h"
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 
 #include "gui/widgets/chattab.h"
 

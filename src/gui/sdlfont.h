@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TRUETYPEFONT_H
-#define TRUETYPEFONT_H
+#ifndef SDLFONT_H
+#define SDLFONT_H
 
 #include <guichan/font.hpp>
 
@@ -41,14 +41,14 @@
 
 #define CACHES_NUMBER 256
 
-class TextChunk;
+class SDLTextChunk;
 
 /**
  * A wrapper around SDL_ttf for allowing the use of TrueType fonts.
  *
  * <b>NOTE:</b> This class initializes SDL_ttf as necessary.
  */
-class TrueTypeFont : public gcn::Font
+class SDLFont : public gcn::Font
 {
     public:
         /**
@@ -57,22 +57,22 @@ class TrueTypeFont : public gcn::Font
          * @param filename  Font filename.
          * @param size      Font size.
          */
-        TrueTypeFont(const std::string &filename, int size, int style = 0);
+        SDLFont(const std::string &filename, int size, int style = 0);
 
         /**
          * Destructor.
          */
-        ~TrueTypeFont();
+        ~SDLFont();
 
         void loadFont(const std::string &filename, int size, int style = 0);
 
-        void createTextChunk(TextChunk *chunk);
+        void createSDLTextChunk(SDLTextChunk *chunk);
 
         virtual int getWidth(const std::string &text) const;
 
         virtual int getHeight() const;
 
-        std::list<TextChunk> *getCache()
+        std::list<SDLTextChunk> *getCache()
         { return mCache; }
 
         /**
@@ -98,7 +98,7 @@ class TrueTypeFont : public gcn::Font
         unsigned mDeleteCounter;
 
         // Word surfaces cache
-        mutable std::list<TextChunk> mCache[CACHES_NUMBER];
+        mutable std::list<SDLTextChunk> mCache[CACHES_NUMBER];
         int mCleanTime;
 };
 

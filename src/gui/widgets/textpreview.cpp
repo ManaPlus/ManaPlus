@@ -28,7 +28,7 @@
 
 #include "gui/gui.h"
 #include "gui/palette.h"
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 
 #include <typeinfo>
 
@@ -66,9 +66,9 @@ void TextPreview::draw(gcn::Graphics* graphics)
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
-    if (mTextBGColor && typeid(*mFont) == typeid(TrueTypeFont))
+    if (mTextBGColor && typeid(*mFont) == typeid(SDLFont))
     {
-        TrueTypeFont *font = static_cast<TrueTypeFont*>(mFont);
+        SDLFont *font = static_cast<SDLFont*>(mFont);
         int x = font->getWidth(mText) + 1 + 2 * ((mOutline || mShadow) ? 1 :0);
         int y = font->getHeight() + 1 + 2 * ((mOutline || mShadow) ? 1 : 0);
         graphics->setColor(gcn::Color(static_cast<int>(mTextBGColor->r),

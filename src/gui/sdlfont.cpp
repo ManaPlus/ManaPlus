@@ -2,8 +2,8 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
  *  Copyright (C) 2009  Aethyra Development Team
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 
 #include "client.h"
 #include "graphics.h"
@@ -41,21 +41,21 @@ const unsigned int CACHE_SIZE_SMALL2 = 150;
 
 char *strBuf;
 
-class TextChunk
+class SDLTextChunk
 {
     public:
-        TextChunk(const std::string &text, const gcn::Color &color) :
+        SDLTextChunk(const std::string &text, const gcn::Color &color) :
             img(0), text(text), color(color)
         {
         }
 
-        ~TextChunk()
+        ~SDLTextChunk()
         {
             delete img;
             img = 0;
         }
 
-        bool operator==(const TextChunk &chunk) const
+        bool operator==(const SDLTextChunk &chunk) const
         {
             return (chunk.text == text && chunk.color == color);
         }
@@ -89,11 +89,11 @@ class TextChunk
         gcn::Color color;
 };
 
-typedef std::list<TextChunk>::iterator CacheIterator;
+typedef std::list<SDLTextChunk>::iterator CacheIterator;
 
 static int fontCounter;
 
-TrueTypeFont::TrueTypeFont(const std::string &filename, int size, int style) :
+SDLFont::SDLFont(const std::string &filename, int size, int style) :
     mCreateCounter(0),
     mDeleteCounter(0)
 {
@@ -121,7 +121,7 @@ TrueTypeFont::TrueTypeFont(const std::string &filename, int size, int style) :
             "fonts/dejavusans.ttf").c_str(), size);
         if (!mFont)
         {
-            throw GCN_EXCEPTION("SDLTrueTypeFont::SDLTrueTypeFont: " +
+            throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
                                 std::string(TTF_GetError()));
         }
     }
@@ -130,7 +130,7 @@ TrueTypeFont::TrueTypeFont(const std::string &filename, int size, int style) :
     mCleanTime = cur_time + 120;
 }
 
-TrueTypeFont::~TrueTypeFont()
+SDLFont::~SDLFont()
 {
     TTF_CloseFont(mFont);
     mFont = 0;
@@ -143,7 +143,7 @@ TrueTypeFont::~TrueTypeFont()
     }
 }
 
-void TrueTypeFont::loadFont(const std::string &filename, int size, int style)
+void SDLFont::loadFont(const std::string &filename, int size, int style)
 {
     ResourceManager *resman = ResourceManager::getInstance();
 
@@ -158,7 +158,7 @@ void TrueTypeFont::loadFont(const std::string &filename, int size, int style)
 
     if (!font)
     {
-        logger->log("SDLTrueTypeFont::SDLTrueTypeFont: " +
+        logger->log("SDLSDLFont::SDLSDLFont: " +
                     std::string(TTF_GetError()));
         return;
     }
@@ -171,7 +171,7 @@ void TrueTypeFont::loadFont(const std::string &filename, int size, int style)
     clear();
 }
 
-void TrueTypeFont::clear()
+void SDLFont::clear()
 {
     for (unsigned short f = 0; f < static_cast<unsigned short>(
         CACHES_NUMBER); f ++)
@@ -180,7 +180,7 @@ void TrueTypeFont::clear()
     }
 }
 
-void TrueTypeFont::drawString(gcn::Graphics *graphics,
+void SDLFont::drawString(gcn::Graphics *graphics,
                               const std::string &text,
                               int x, int y)
 {
@@ -197,10 +197,10 @@ void TrueTypeFont::drawString(gcn::Graphics *graphics,
      */
     col.a = 255;
 
-    TextChunk chunk(text, col);
+    SDLTextChunk chunk(text, col);
 
     unsigned char chr = text[0];
-    std::list<TextChunk> *cache = &mCache[chr];
+    std::list<SDLTextChunk> *cache = &mCache[chr];
 
     bool found = false;
 
@@ -260,7 +260,7 @@ void TrueTypeFont::drawString(gcn::Graphics *graphics,
 
 }
 
-void TrueTypeFont::createTextChunk(TextChunk *chunk)
+void SDLFont::createSDLTextChunk(SDLTextChunk *chunk)
 {
     if (!chunk || chunk->text.empty())
         return;
@@ -272,13 +272,13 @@ void TrueTypeFont::createTextChunk(TextChunk *chunk)
         chunk->img->setAlpha(alpha);
 }
 
-int TrueTypeFont::getWidth(const std::string &text) const
+int SDLFont::getWidth(const std::string &text) const
 {
     if (text.empty())
         return 0;
 
     unsigned char chr = text[0];
-    std::list<TextChunk> *cache = &mCache[chr];
+    std::list<SDLTextChunk> *cache = &mCache[chr];
 
 #ifdef DEBUG_FONT
     int cnt = 0;
@@ -311,16 +311,16 @@ int TrueTypeFont::getWidth(const std::string &text) const
     return w;
 }
 
-int TrueTypeFont::getHeight() const
+int SDLFont::getHeight() const
 {
     return TTF_FontHeight(mFont);
 }
 
-void TrueTypeFont::doClean()
+void SDLFont::doClean()
 {
     for (int f = 0; f < CACHES_NUMBER; f ++)
     {
-        std::list<TextChunk> *cache = &mCache[f];
+        std::list<SDLTextChunk> *cache = &mCache[f];
         if (cache->size() > CACHE_SIZE_SMALL2)
         {
 #ifdef DEBUG_FONT_COUNTERS

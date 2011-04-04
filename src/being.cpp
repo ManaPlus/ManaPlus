@@ -50,7 +50,7 @@
 #include "gui/socialwindow.h"
 #include "gui/speechbubble.h"
 #include "gui/theme.h"
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 #include "gui/userpalette.h"
 
 #include "net/charhandler.h"

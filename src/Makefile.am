@@ -210,6 +210,8 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/setup_players.h \
 	      gui/setup_video.cpp \
 	      gui/setup_video.h \
+	      gui/sdlfont.cpp \
+	      gui/sdlfont.h \
 	      gui/shopwindow.cpp \
 	      gui/shopwindow.h \
 	      gui/shortcutwindow.cpp \
@@ -232,8 +234,6 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/theme.h \
 	      gui/trade.cpp \
 	      gui/trade.h \
-	      gui/truetypefont.cpp \
-	      gui/truetypefont.h \
 	      gui/unregisterdialog.cpp \
 	      gui/unregisterdialog.h \
 	      gui/updatewindow.cpp \

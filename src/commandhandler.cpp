@@ -36,7 +36,7 @@
 #include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"
 #include "gui/trade.h"
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 
 #include "gui/widgets/channeltab.h"
 #include "gui/widgets/chattab.h"
@@ -984,11 +984,11 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
     if (!chatWindow || !debugChatTab)
         return;
 
-    TrueTypeFont *font = dynamic_cast<TrueTypeFont *>(chatWindow->getFont());
+    SDLFont *font = dynamic_cast<SDLFont *>(chatWindow->getFont());
     if (!font)
         return;
 
-    std::list<TextChunk> *cache = font->getCache();
+    std::list<SDLTextChunk> *cache = font->getCache();
     if (!cache)
         return;
 

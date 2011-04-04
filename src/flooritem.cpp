@@ -29,7 +29,7 @@
 #include "configuration.h"
 
 #include "gui/gui.h"
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 
 #include "net/net.h"
 

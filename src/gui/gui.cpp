@@ -26,7 +26,7 @@
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
-#include "gui/truetypefont.h"
+#include "gui/sdlfont.h"
 
 #include "gui/widgets/mouseevent.h"
 #include "gui/widgets/window.h"
@@ -113,7 +113,7 @@ Gui::Gui(Graphics *graphics):
 
     try
     {
-        mGuiFont = new TrueTypeFont(fontFile, fontSize);
+        mGuiFont = new SDLFont(fontFile, fontSize);
     }
     catch (const gcn::Exception &e)
     {
@@ -128,7 +128,7 @@ Gui::Gui(Graphics *graphics):
 
     try
     {
-        mInfoParticleFont = new TrueTypeFont(
+        mInfoParticleFont = new SDLFont(
             fontFile, fontSize, TTF_STYLE_BOLD);
     }
     catch (const gcn::Exception &e)
@@ -144,7 +144,7 @@ Gui::Gui(Graphics *graphics):
 
     try
     {
-        boldFont = new TrueTypeFont(fontFile, fontSize);
+        boldFont = new SDLFont(fontFile, fontSize);
     }
     catch (const gcn::Exception &e)
     {
@@ -159,7 +159,7 @@ Gui::Gui(Graphics *graphics):
 
     try
     {
-        mHelpFont = new TrueTypeFont(fontFile, fontSize);
+        mHelpFont = new SDLFont(fontFile, fontSize);
     }
     catch (const gcn::Exception &e)
     {
@@ -295,20 +295,20 @@ void Gui::updateFonts()
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
-    static_cast<TrueTypeFont*>(mGuiFont)->loadFont(fontFile, fontSize);
+    static_cast<SDLFont*>(mGuiFont)->loadFont(fontFile, fontSize);
 
     fontFile = config.getValue("particleFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 
-    static_cast<TrueTypeFont*>(mInfoParticleFont)->loadFont(
+    static_cast<SDLFont*>(mInfoParticleFont)->loadFont(
         fontFile, fontSize, TTF_STYLE_BOLD);
 
     fontFile = config.getValue("boldFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("boldFont");
 
-    static_cast<TrueTypeFont*>(boldFont)->loadFont(fontFile, fontSize);
+    static_cast<SDLFont*>(boldFont)->loadFont(fontFile, fontSize);
 }
 
 void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
