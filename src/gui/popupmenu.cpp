@@ -1127,7 +1127,7 @@ void PopupMenu::handleLink(const std::string &link,
         showChangePos(getX(), getY());
         return;
     }
-    else if (!link.find("guild-pos-"))
+    else if (!link.compare(0, 10, "guild-pos-"))
     {
         if (player_node)
         {
@@ -1140,7 +1140,7 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (!link.find("player_"))
+    else if (!link.compare(0, 7, "player_"))
     {
         mBeingId = atoi(link.substr(7).c_str());
         Being *being = actorSpriteManager->findBeing(mBeingId);
@@ -1150,22 +1150,22 @@ void PopupMenu::handleLink(const std::string &link,
             return;
         }
     }
-    else if (!link.find("hide button_"))
+    else if (!link.compare(0, 12, "hide button_"))
     {
         if (windowMenu)
             windowMenu->showButton(link.substr(12), false);
     }
-    else if (!link.find("show button_"))
+    else if (!link.compare(0, 12, "show button_"))
     {
         if (windowMenu)
             windowMenu->showButton(link.substr(12), true);
     }
-    else if (!link.find("hide bar_"))
+    else if (!link.compare(0, 9, "hide bar_"))
     {
         if (miniStatusWindow)
             miniStatusWindow->showBar(link.substr(9), false);
     }
-    else if (!link.find("show bar_"))
+    else if (!link.compare(0, 9, "show bar_"))
     {
         if (miniStatusWindow)
             miniStatusWindow->showBar(link.substr(9), true);
