@@ -226,7 +226,6 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     Label *serverLabel = new Label(_("Server:"));
     Label *portLabel = new Label(_("Port:"));
-    Label *typeLabel = new Label(_("Server type:"));
     mServerNameField = new TextField(mServerInfo->hostname);
     mPortField = new TextField(toString(mServerInfo->port));
     mPersistentIPCheckBox = new CheckBox(_("Use same ip for game sub servers"),
@@ -243,10 +242,18 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     ScrollArea *usedScroll = new ScrollArea(mServersList);
     usedScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
+#ifdef MANASERV_SUPPORT
+    Label *typeLabel = new Label(_("Server type:"));
     mTypeListModel = new TypeListModel();
     mTypeField = new DropDown(mTypeListModel);
     mTypeField->setSelected((serverInfo->type == ServerInfo::MANASERV) ?
                             1 : 0);
+    int n = 1;
+#else
+    mTypeListModel = 0;
+    mTypeField = 0;
+    int n = 0;
+#endif
 
     mDescription = new Label(std::string());
 
@@ -269,16 +276,18 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     place(1, 0, mServerNameField, 5).setPadding(3);
     place(0, 1, portLabel);
     place(1, 1, mPortField, 5).setPadding(3);
+#ifdef MANASERV_SUPPORT
     place(0, 2, typeLabel);
     place(1, 2, mTypeField, 5).setPadding(3);
-    place(0, 3, usedScroll, 6, 5).setPadding(3);
-    place(0, 8, mDescription, 6);
-    place(0, 9, mPersistentIPCheckBox, 6);
-    place(0, 10, mManualEntryButton);
-    place(1, 10, mDeleteButton);
-    place(2, 10, mLoadButton);
-    place(4, 10, mQuitButton);
-    place(5, 10, mConnectButton);
+#endif
+    place(0, 2 + n, usedScroll, 6, 5).setPadding(3);
+    place(0, 7 + n, mDescription, 6);
+    place(0, 8 + n, mPersistentIPCheckBox, 6);
+    place(0, 9 + n, mManualEntryButton);
+    place(1, 9 + n, mDeleteButton);
+    place(2, 9 + n, mLoadButton);
+    place(4, 9 + n, mQuitButton);
+    place(5, 9 + n, mConnectButton);
 
     // Make sure the list has enough height
     getLayout().setRowHeight(3, 80);
@@ -374,16 +383,23 @@ void ServerDialog::action(const gcn::ActionEvent &event)
             mServerInfo->port = static_cast<short>(
                     atoi(mPortField->getText().c_str()));
 
-            switch (mTypeField->getSelected())
+            if (mTypeField)
             {
-                case 0:
-                    mServerInfo->type = ServerInfo::TMWATHENA;
-                    break;
-                case 1:
-                    mServerInfo->type = ServerInfo::MANASERV;
-                    break;
-                default:
-                    mServerInfo->type = ServerInfo::UNKNOWN;
+                switch (mTypeField->getSelected())
+                {
+                    case 0:
+                        mServerInfo->type = ServerInfo::TMWATHENA;
+                        break;
+                    case 1:
+                        mServerInfo->type = ServerInfo::MANASERV;
+                        break;
+                    default:
+                        mServerInfo->type = ServerInfo::UNKNOWN;
+                }
+            }
+            else
+            {
+                mServerInfo->type = ServerInfo::TMWATHENA;
             }
 
             // Save the selected server
@@ -453,16 +469,19 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
     mDescription->setCaption(myServer.description);
     mServerNameField->setText(myServer.hostname);
     mPortField->setText(toString(myServer.port));
-    switch (myServer.type)
+    if (mTypeField)
     {
-        case ServerInfo::TMWATHENA:
-        case ServerInfo::UNKNOWN:
-        default:
-            mTypeField->setSelected(0);
-            break;
-        case ServerInfo::MANASERV:
-            mTypeField->setSelected(1);
-            break;
+        switch (myServer.type)
+        {
+            case ServerInfo::TMWATHENA:
+            case ServerInfo::UNKNOWN:
+            default:
+                mTypeField->setSelected(0);
+                break;
+            case ServerInfo::MANASERV:
+                mTypeField->setSelected(1);
+                break;
+        }
     }
     setFieldsReadOnly(true);
 
@@ -531,7 +550,8 @@ void ServerDialog::setFieldsReadOnly(bool readOnly)
 
     mServerNameField->setEnabled(!readOnly);
     mPortField->setEnabled(!readOnly);
-    mTypeField->setEnabled(!readOnly);
+    if (mTypeField)
+        mTypeField->setEnabled(!readOnly);
 }
 
 void ServerDialog::downloadServerList()
