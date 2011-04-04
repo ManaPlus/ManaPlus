@@ -12,8 +12,7 @@ config.status:
 	dh_testdir
 	CFLAGS="$(CFLAGS) -Wall" ./configure --host=$(DEB_HOST_GNU_TYPE) \
 	--build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr \
-	--datadir=/usr/share/games --bindir=/usr/games --mandir=/usr/share/man \
-	--enable-manaserv=yes
+	--datadir=/usr/share/games --bindir=/usr/games --mandir=/usr/share/man
 
 build: build-stamp
 build-stamp: config.status
