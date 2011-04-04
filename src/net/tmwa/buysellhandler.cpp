@@ -31,8 +31,8 @@
 #include "playerinfo.h"
 #include "shopitem.h"
 
-#include "gui/buy.h"
-#include "gui/buysell.h"
+#include "gui/buydialog.h"
+#include "gui/buyselldialog.h"
 #include "gui/sell.h"
 #include "gui/shopwindow.h"
 

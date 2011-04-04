@@ -24,7 +24,7 @@
 
 #include "client.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/npcdialog.h"
 #include "gui/sdlinput.h"
 #include "gui/viewport.h"

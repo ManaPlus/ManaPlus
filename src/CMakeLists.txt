@@ -219,10 +219,10 @@ SET(SRCS
     gui/widgets/windowcontainer.h
     gui/beingpopup.cpp
     gui/beingpopup.h
-    gui/buy.cpp
-    gui/buy.h
-    gui/buysell.cpp
-    gui/buysell.h
+    gui/buydialog.cpp
+    gui/buydialog.h
+    gui/buyselldialog.cpp
+    gui/buyselldialog.h
     gui/changeemaildialog.cpp
     gui/changeemaildialog.h
     gui/changepassworddialog.cpp
@@ -231,8 +231,8 @@ SET(SRCS
     gui/charselectdialog.h
     gui/charcreatedialog.cpp
     gui/charcreatedialog.h
-    gui/chat.cpp
-    gui/chat.h
+    gui/chatwindow.cpp
+    gui/chatwindow.h
     gui/confirmdialog.cpp
     gui/confirmdialog.h
     gui/connectiondialog.cpp
@@ -247,8 +247,8 @@ SET(SRCS
     gui/focushandler.h
     gui/gui.cpp
     gui/gui.h
-    gui/help.cpp
-    gui/help.h
+    gui/helpwindow.cpp
+    gui/helpwindow.h
     gui/inventorywindow.cpp
     gui/inventorywindow.h
     gui/itempopup.cpp
@@ -259,8 +259,8 @@ SET(SRCS
     gui/statuspopup.h
     gui/killstats.cpp
     gui/killstats.h
-    gui/itemamount.cpp
-    gui/itemamount.h
+    gui/itemamountwindow.cpp
+    gui/itemamountwindow.h
     gui/login.cpp
     gui/login.h
     gui/minimap.cpp

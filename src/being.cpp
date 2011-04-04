@@ -41,8 +41,8 @@
 #include "text.h"
 #include "statuseffect.h"
 
-#include "gui/buy.h"
-#include "gui/buysell.h"
+#include "gui/buydialog.h"
+#include "gui/buyselldialog.h"
 #include "gui/gui.h"
 #include "gui/npcdialog.h"
 #include "gui/npcpostdialog.h"

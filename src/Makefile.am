@@ -114,10 +114,10 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/windowcontainer.h \
 	      gui/beingpopup.cpp \
 	      gui/beingpopup.h \
-	      gui/buy.cpp \
-	      gui/buy.h \
-	      gui/buysell.cpp \
-	      gui/buysell.h \
+	      gui/buydialog.cpp \
+	      gui/buydialog.h \
+	      gui/buyselldialog.cpp \
+	      gui/buyselldialog.h \
 	      gui/changeemaildialog.cpp \
 	      gui/changeemaildialog.h \
 	      gui/changepassworddialog.cpp \
@@ -126,8 +126,8 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/charselectdialog.h \
 	      gui/charcreatedialog.cpp \
 	      gui/charcreatedialog.h \
-	      gui/chat.cpp \
-	      gui/chat.h \
+	      gui/chatwindow.cpp \
+	      gui/chatwindow.h \
 	      gui/confirmdialog.cpp \
 	      gui/confirmdialog.h \
 	      gui/connectiondialog.cpp \
@@ -142,12 +142,12 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/focushandler.h \
 	      gui/gui.cpp \
 	      gui/gui.h \
-	      gui/help.cpp \
-	      gui/help.h \
+	      gui/helpwindow.cpp \
+	      gui/helpwindow.h \
 	      gui/inventorywindow.cpp \
 	      gui/inventorywindow.h \
-	      gui/itemamount.cpp \
-	      gui/itemamount.h \
+	      gui/itemamountwindow.cpp \
+	      gui/itemamountwindow.h \
 	      gui/itempopup.cpp \
 	      gui/itempopup.h \
 	      gui/spellpopup.cpp \

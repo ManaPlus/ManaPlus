@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUY_H
-#define BUY_H
+#ifndef BUYDIALOG_H
+#define BUYDIALOG_H
 
 #include "guichanfwd.h"
 

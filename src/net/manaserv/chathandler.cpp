@@ -28,7 +28,7 @@
 #include "channel.h"
 #include "channelmanager.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 
 #include "gui/widgets/channeltab.h"
 

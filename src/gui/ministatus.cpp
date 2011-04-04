@@ -27,7 +27,7 @@
 #include "graphics.h"
 #include "playerinfo.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/statuswindow.h"
 #include "gui/statuspopup.h"

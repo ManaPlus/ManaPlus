@@ -38,7 +38,7 @@
 #include "gui/widgets/table.h"
 #include "gui/widgets/textfield.h"
 
-#include "chat.h"
+#include "chatwindow.h"
 #include "configuration.h"
 #include "item.h"
 #include "localplayer.h"

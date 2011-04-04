@@ -20,36 +20,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUYSELL_H
-#define BUYSELL_H
+#ifndef HELPWINDOW_H
+#define HELPWINDOW_H
 
+#include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
+class BrowserBox;
+class LinkHandler;
+
 /**
- * A dialog to choose between buying or selling at a shop.
- *
- * \ingroup Interface
+ * The help dialog.
  */
-class BuySellDialog : public Window, public gcn::ActionListener
+class HelpWindow : public Window, public LinkHandler,
+                   public gcn::ActionListener
 {
     public:
         /**
-         * Constructor. The action listener passed will receive "sell", "buy"
-         * or "cancel" events when the respective buttons are pressed.
-         *
-         * @see Window::Window
+         * Constructor.
          */
-        BuySellDialog(int npcId);
-
-        BuySellDialog(std::string nick);
-
-        virtual ~BuySellDialog();
-
-        void init();
-
-        void setVisible(bool visible);
+        HelpWindow();
 
         /**
          * Called when receiving actions from the widgets.
@@ -57,23 +55,23 @@ class BuySellDialog : public Window, public gcn::ActionListener
         void action(const gcn::ActionEvent &event);
 
         /**
-         * Returns true if any instances exist.
+         * Handles link action.
          */
-        static bool isActive()
-        { return !instances.empty(); }
+        void handleLink(const std::string &link,
+                        gcn::MouseEvent *event _UNUSED_);
 
         /**
-         * Closes all instances.
+         * Loads help in the dialog.
          */
-        static void closeAll();
+        void loadHelp(const std::string &helpFile);
 
     private:
-        typedef std::list<BuySellDialog*> DialogList;
-        static DialogList instances;
+        void loadFile(const std::string &file);
 
-        int mNpcId;
-        std::string mNick;
-        gcn::Button *mBuyButton;
+        BrowserBox *mBrowserBox;
+        gcn::ScrollArea *mScrollArea;
 };
+
+extern HelpWindow *helpWindow;
 
 #endif

@@ -36,7 +36,7 @@
 #include "gui/widgets/table.h"
 
 #include "actorspritemanager.h"
-#include "chat.h"
+#include "chatwindow.h"
 #include "configuration.h"
 #include "localplayer.h"
 #include "main.h"

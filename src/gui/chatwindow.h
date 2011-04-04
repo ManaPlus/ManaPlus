@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CHAT_H
-#define CHAT_H
+#ifndef CHATWINDOW_H
+#define CHATWINDOW_H
 
 #include "listener.h"
 

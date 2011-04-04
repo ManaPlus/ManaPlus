@@ -31,7 +31,7 @@
 #include "playerrelations.h"
 #include "log.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/shopwindow.h"
 
 #include "gui/widgets/chattab.h"

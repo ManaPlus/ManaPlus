@@ -22,8 +22,8 @@
 
 #include "gui/shopwindow.h"
 
-#include "gui/buy.h"
-#include "gui/itemamount.h"
+#include "gui/buydialog.h"
+#include "gui/itemamountwindow.h"
 #include "gui/sell.h"
 #include "gui/setup.h"
 #include "gui/trade.h"

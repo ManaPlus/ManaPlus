@@ -30,7 +30,7 @@
 
 #include "gui/widgets/chattab.h"
 #include "gui/killstats.h"
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/skilldialog.h"
 #include "gui/viewport.h"
 

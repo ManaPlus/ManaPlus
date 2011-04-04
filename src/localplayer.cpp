@@ -42,7 +42,7 @@
 #include "text.h"
 #include "dropshortcut.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/killstats.h"

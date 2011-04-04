@@ -31,7 +31,7 @@
 #include "log.h"
 #include "playerinfo.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"

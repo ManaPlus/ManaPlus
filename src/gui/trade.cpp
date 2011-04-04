@@ -29,7 +29,7 @@
 #include "units.h"
 
 #include "gui/inventorywindow.h"
-#include "gui/itemamount.h"
+#include "gui/itemamountwindow.h"
 #include "gui/setup.h"
 #include "gui/theme.h"
 

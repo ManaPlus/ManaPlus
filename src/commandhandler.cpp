@@ -30,8 +30,8 @@
 #include "log.h"
 #include "main.h"
 
-#include "gui/chat.h"
-#include "gui/help.h"
+#include "gui/chatwindow.h"
+#include "gui/helpwindow.h"
 #include "gui/gui.h"
 #include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"

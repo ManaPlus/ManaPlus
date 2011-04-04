@@ -29,7 +29,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/chattab.h"
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 
 #include "actorspritemanager.h"
 #include "event.h"

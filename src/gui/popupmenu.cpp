@@ -38,10 +38,10 @@
 #include "playerrelations.h"
 #include "spellmanager.h"
 
-#include "gui/buy.h"
-#include "gui/chat.h"
+#include "gui/buydialog.h"
+#include "gui/chatwindow.h"
 #include "gui/inventorywindow.h"
-#include "gui/itemamount.h"
+#include "gui/itemamountwindow.h"
 #include "gui/ministatus.h"
 #include "gui/outfitwindow.h"
 #include "gui/sell.h"

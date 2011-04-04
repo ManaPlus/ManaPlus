@@ -28,8 +28,8 @@
 #include "playerinfo.h"
 #include "shopitem.h"
 
-#include "gui/buy.h"
-#include "gui/chat.h"
+#include "gui/buydialog.h"
+#include "gui/chatwindow.h"
 #include "gui/sell.h"
 
 #include "net/messagein.h"

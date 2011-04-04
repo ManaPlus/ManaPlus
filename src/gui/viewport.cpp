@@ -34,7 +34,7 @@
 #include "textmanager.h"
 
 #include "gui/beingpopup.h"
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/gui.h"
 #include "gui/ministatus.h"
 #include "gui/popupmenu.h"

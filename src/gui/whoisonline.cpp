@@ -40,7 +40,7 @@
 #include "playerrelations.h"
 #include "main.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"

@@ -28,7 +28,7 @@
 #include "localplayer.h"
 #include "playerinfo.h"
 
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 
 #include "net/net.h"
 #include "net/playerhandler.h"

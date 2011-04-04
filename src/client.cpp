@@ -41,8 +41,8 @@
 #include "statuseffect.h"
 #include "units.h"
 
-#include "gui/buy.h"
-#include "gui/buysell.h"
+#include "gui/buydialog.h"
+#include "gui/buyselldialog.h"
 #include "gui/changeemaildialog.h"
 #include "gui/changepassworddialog.h"
 #include "gui/charselectdialog.h"

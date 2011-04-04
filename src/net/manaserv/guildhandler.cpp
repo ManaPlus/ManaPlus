@@ -30,7 +30,7 @@
 #include "channelmanager.h"
 
 #include "gui/widgets/channeltab.h"
-#include "gui/chat.h"
+#include "gui/chatwindow.h"
 #include "gui/socialwindow.h"
 
 #include "net/messagein.h"
