@@ -242,12 +242,16 @@ class ChatWindow : public Window,
 
         void saveState();
 
+        void loadCustomList();
+
         std::string doReplace(const std::string &msg);
 
     protected:
         friend class ChatTab;
         friend class WhisperTab;
         friend class PopupMenu;
+
+        typedef std::list<std::string> History;
 
         /** Remove the given tab from the window */
         void removeTab(ChatTab *tab);
@@ -265,7 +269,7 @@ class ChatWindow : public Window,
 
         std::string autoCompleteHistory(std::string partName);
 
-        std::string autoCompleteCommands(std::string partName);
+        std::string autoComplete(std::string partName, History *words);
 
         std::string autoComplete(std::vector<std::string> &names,
                                  std::string partName) const;
@@ -294,7 +298,6 @@ class ChatWindow : public Window,
         /** Manage whisper tabs */
         TabMap mWhispers;
 
-        typedef std::list<std::string> History;
         typedef History::iterator HistoryIterator;
         History mHistory;           /**< Command history. */
         HistoryIterator mCurHist;   /**< History iterator. */
@@ -302,6 +305,7 @@ class ChatWindow : public Window,
         typedef std::list<std::string> Commands;
         typedef Commands::iterator CommandsIterator;
         History mCommands;           /**< Command list. */
+        History mCustomWords;
 
         bool mReturnToggles; /**< Marks whether <Return> toggles the chat log
                                 or not */

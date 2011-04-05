@@ -190,6 +190,7 @@ ChatWindow::ChatWindow():
 
     fillCommands();
     initTradeFilter();
+    loadCustomList();
 }
 
 ChatWindow::~ChatWindow()
@@ -1093,12 +1094,14 @@ void ChatWindow::autoComplete()
     if (newName == "" && spellManager)
         newName = spellManager->autoComplete(name);
     if (newName == "")
-        newName = autoCompleteCommands(name);
+        newName = autoComplete(name, &mCommands);
     if (newName == "" && actorSpriteManager)
     {
         actorSpriteManager->getMobNames(nameList);
         newName = autoComplete(nameList, name);
     }
+    if (newName == "")
+        newName = autoComplete(name, &mCustomWords);
 
     if (newName != "")
     {
@@ -1149,12 +1152,15 @@ std::string ChatWindow::autoComplete(std::vector<std::string> &names,
     return newName;
 }
 
-std::string ChatWindow::autoCompleteCommands(std::string partName)
+std::string ChatWindow::autoComplete(std::string partName, History *words)
 {
-    Commands::iterator i = mCommands.begin();
+    if (!words)
+        return "";
+
+    Commands::iterator i = words->begin();
     std::vector<std::string> nameList;
 
-    while (i != mCommands.end())
+    while (i != words->end())
     {
         std::string line = *i;
         std::string::size_type pos = line.find(partName, 0);
@@ -1413,4 +1419,26 @@ std::string ChatWindow::doReplace(const std::string &msg)
     std::string str = msg;
     replaceSpecialChars(str);
     return str;
+}
+
+void ChatWindow::loadCustomList()
+{
+    std::ifstream listFile;
+    struct stat statbuf;
+
+    std::string listName = Client::getServerConfigDirectory()
+        + "/customwords.txt";
+
+    if (!stat(listName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
+    {
+        listFile.open(listName.c_str(), std::ios::in);
+        char line[101];
+        while (listFile.getline(line, 100))
+        {
+            std::string str = line;
+            if (!str.empty())
+                mCustomWords.push_back(str);
+        }
+        listFile.close();
+    }
 }
