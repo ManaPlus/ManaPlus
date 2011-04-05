@@ -2,6 +2,7 @@
  *  The Mana World
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The Mana World.
  *
@@ -21,482 +22,113 @@
  */
 
 #include "gui/setup_other.h"
-#include "gui/editdialog.h"
 
-#include "gui/widgets/button.h"
-#include "gui/widgets/checkbox.h"
-#include "gui/widgets/horizontcontainer.h"
-#include "gui/widgets/label.h"
+#include "gui/setupitem.h"
+
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/textfield.h"
-#include "gui/widgets/vertcontainer.h"
 
 #include "configuration.h"
-#include "localplayer.h"
 #include "log.h"
 
 #include "utils/gettext.h"
 
 #include "debug.h"
 
-#define ACTION_SHOW_TAKEDDAMAGE "taked damage"
-#define ACTION_ONLY_REACHABLE "only reachable"
-#define ACTION_ERRORS_IN_DEBUG "errors in debug"
-#define ACTION_HIGHLIGHT_PORTALS "highlight portals"
-#define ACTION_HIGHLIGHT_ATTACK_RANGE "highlight attack"
-#define ACTION_HIGHLIGHT_MONSTER_ATTACK_RANGE "highlight monster attack"
-#define ACTION_CYCLE_PLAYERS "cycle players"
-#define ACTION_CYCLE_MONSTERS "cycle monsters"
-#define ACTION_ENABLE_BOTCHECKER "bot checker"
-#define ACTION_FLOORITEMS_HIGHLIGHT "floor items"
-#define ACTION_MOVE_PROGRAM "move program"
-#define ACTION_EDIT_PROGRAM "edit program"
-#define ACTION_EDIT_PROGRAM_OK "edit program ok"
-#define ACTION_AFK "move afk"
-#define ACTION_EDIT_AFK "edit afk"
-#define ACTION_EDIT_AFK_OK "edit afk ok"
-#define ACTION_ENABLE_AFK "enable afk"
-#define ACTION_TRADEBOT "trade bot"
-#define ACTION_BUGGY_SERVERS "buggy servers"
-#define ACTION_DEBUG_LOG "debug log"
-#define ACTION_SERVER_ATTACK "server attack"
-#define ACTION_FIX_POS "fix pos"
-#define ACTION_ATTACK_MOVING "attack moving"
-#define ACTION_QUICK_STATS "quick stats"
-#define ACTION_WARP_PARTICLE "warp particle"
-#define ACTION_AUTO_SHOP "auto shop"
-#define ACTION_SHOW_MOB_HP "show mob hp"
-#define ACTION_SHOW_OWN_HP "show own hp"
-#define ACTION_SHOW_JOB_EXP "show job exp"
-#define ACTION_SHOW_BEING_POPUP "show being popup"
-#define ACTION_SHOW_EXTENDED_MINIMAPS "show extended minimaps"
-#define ACTION_ENABLE_ATTACK_FILTER "attack filter"
-
-Setup_Other::Setup_Other():
-    mShowMonstersTakedDamage(config.getBoolValue("showMonstersTakedDamage")),
-    mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
-    mHighlightPortals(config.getBoolValue("highlightMapPortals")),
-    mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
-    mHighlightMonsterAttackRange(
-        config.getBoolValue("highlightMonsterAttackRange")),
-    mCyclePlayers(config.getBoolValue("cyclePlayers")),
-    mCycleMonsters(config.getBoolValue("cycleMonsters")),
-    mEnableBotChecker(config.getBoolValue("enableBotCheker")),
-    mFloorItemsHighlight(config.getBoolValue("floorItemsHighlight")),
-    mMoveProgram(config.getStringValue("crazyMoveProgram")),
-    mAfk(config.getStringValue("afkMessage")),
-    mTradeBot(config.getBoolValue("tradebot")),
-    mBuggyServers(serverConfig.getValueBool("enableBuggyServers", true)),
-    mDebugLog(config.getBoolValue("debugLog")),
-    mServerAttack(config.getBoolValue("serverAttack")),
-    mAutofixPos(config.getBoolValue("autofixPos")),
-    mAttackMoving(config.getBoolValue("attackMoving")),
-    mQuickStats(config.getBoolValue("quickStats")),
-    mWarpParticle(config.getBoolValue("warpParticle")),
-    mAutoShop(config.getBoolValue("autoShop")),
-    mShowMobHP(config.getBoolValue("showMobHP")),
-    mShowOwnHP(config.getBoolValue("showOwnHP")),
-    mShowJobExp(config.getBoolValue("showJobExp")),
-    mShowBeingPopup(config.getBoolValue("showBeingPopup")),
-    mShowExtMinimaps(config.getBoolValue("showExtMinimaps")),
-    mEnableAttackFilter(config.getBoolValue("enableAttackFilter")),
-    mEditDialog(0)
+Setup_Other::Setup_Other()
 {
     setName(_("Misc"));
-
-    mShowMonstersTakedDamageCheckBox = new CheckBox(
-        _("Show damage inflicted to monsters"),
-        mShowMonstersTakedDamage,
-        this, ACTION_SHOW_TAKEDDAMAGE);
-
-    mTargetOnlyReachableCheckBox = new CheckBox(
-        _("Auto target only reachable monsters"),
-        mTargetOnlyReachable,
-        this, ACTION_ONLY_REACHABLE);
-
-    mHighlightPortalsCheckBox = new CheckBox(_("Highlight map portals"),
-        mHighlightPortals,
-        this, ACTION_HIGHLIGHT_PORTALS);
-
-    mHighlightAttackRangeCheckBox = new CheckBox(
-        _("Highlight player attack range"),
-        mHighlightAttackRange,
-        this, ACTION_HIGHLIGHT_ATTACK_RANGE);
-
-    mHighlightMonsterAttackRangeCheckBox = new CheckBox(
-        _("Highlight monster attack range"),
-        mHighlightMonsterAttackRange,
-        this, ACTION_HIGHLIGHT_MONSTER_ATTACK_RANGE);
-
-    mCyclePlayersCheckBox = new CheckBox(_("Cycle player targets"),
-        mCyclePlayers, this, ACTION_CYCLE_PLAYERS);
-
-    mCycleMonstersCheckBox = new CheckBox(_("Cycle monster targets"),
-        mCycleMonsters, this, ACTION_CYCLE_MONSTERS);
-
-    mEnableBotCheckerCheckBox = new CheckBox(_("Enable bot checker"),
-        mEnableBotChecker, this, ACTION_ENABLE_BOTCHECKER);
-
-    mFloorItemsHighlightCheckBox = new CheckBox(_("Highlight floor items"),
-        mFloorItemsHighlight, this, ACTION_FLOORITEMS_HIGHLIGHT);
-
-    mMoveProgramLabel = new Label(_("Crazy move A program"));
-
-    mMoveProgramField = new TextField(mMoveProgram, true,
-                                      this, ACTION_MOVE_PROGRAM);
-
-    mMoveProgramButton = new Button(_("Edit"), ACTION_EDIT_PROGRAM, this);
-
-    mAfkField = new TextField(mAfk, true, this, ACTION_AFK);
-
-    mAfkButton = new Button(_("Edit"), ACTION_EDIT_AFK, this);
-
-    mTradeBotCheckBox = new CheckBox(_("Enable shop mode"),
-        mTradeBot, this, ACTION_TRADEBOT);
-
-    mBuggyServersCheckBox = new CheckBox(_("Enable buggy servers protection"),
-        mBuggyServers, this, ACTION_BUGGY_SERVERS);
-
-    mDebugLogCheckBox = new CheckBox(_("Enable debug log"),
-        mDebugLog, this, ACTION_DEBUG_LOG);
-
-    mServerAttackCheckBox = new CheckBox(_("Enable server side attack"),
-        mServerAttack, this, ACTION_SERVER_ATTACK);
-
-    mAutofixPosCheckBox = new CheckBox(_("Auto fix position"),
-        mAutofixPos, this, ACTION_FIX_POS);
-
-    mAttackMovingCheckBox = new CheckBox(_("Attack while moving"),
-        mAttackMoving, this, ACTION_ATTACK_MOVING);
-
-    mQuickStatsCheckBox = new CheckBox(_("Enable quick stats"),
-        mQuickStats, this, ACTION_QUICK_STATS);
-
-    mWarpParticleCheckBox = new CheckBox(_("Show warps particles"),
-        mWarpParticle, this, ACTION_WARP_PARTICLE);
-
-    mAutoShopCheckBox = new CheckBox(_("Accept sell/buy requests"),
-        mAutoShop, this, ACTION_AUTO_SHOP);
-
-    mShowMobHPCheckBox = new CheckBox(_("Show monster hp bar"),
-        mShowMobHP, this, ACTION_SHOW_MOB_HP);
-
-    mShowOwnHPCheckBox = new CheckBox(_("Show own hp bar"),
-        mShowOwnHP, this, ACTION_SHOW_OWN_HP);
-
-    mShowJobExpCheckBox = new CheckBox(_("Show job exp messages"),
-        mShowJobExp, this, ACTION_SHOW_JOB_EXP);
-
-    mShowBeingPopupCheckBox = new CheckBox(_("Show players popups"),
-        mShowBeingPopup, this, ACTION_SHOW_BEING_POPUP);
-
-    mShowExtMinimapsCheckBox = new CheckBox(_("Show extended minimaps"),
-        mShowExtMinimaps, this, ACTION_SHOW_EXTENDED_MINIMAPS);
-
-    mEnableAttackFilterCheckBox = new CheckBox(_("Enable attack filter"),
-        mEnableAttackFilter, this, ACTION_ENABLE_ATTACK_FILTER);
 
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    new SetupItemCheckBox(_("Show damage inflicted to monsters"), "",
+        "showMonstersTakedDamage", this, "showMonstersTakedDamageEvent");
 
-    mContainer->add(mShowMonstersTakedDamageCheckBox);
-    mContainer->add(mServerAttackCheckBox);
-    mContainer->add(mTargetOnlyReachableCheckBox);
-    mContainer->add(mAutofixPosCheckBox);
-    mContainer->add(mHighlightPortalsCheckBox);
-    mContainer->add(mAttackMovingCheckBox);
-    mContainer->add(mFloorItemsHighlightCheckBox);
-    mContainer->add(mQuickStatsCheckBox);
-    mContainer->add(mHighlightAttackRangeCheckBox);
-    mContainer->add(mWarpParticleCheckBox);
-    mContainer->add(mHighlightMonsterAttackRangeCheckBox);
-    mContainer->add(mAutoShopCheckBox);
-    mContainer->add(mCyclePlayersCheckBox);
-    mContainer->add(mShowMobHPCheckBox);
-    mContainer->add(mCycleMonstersCheckBox);
-    mContainer->add(mShowOwnHPCheckBox);
-    mContainer->add(mEnableBotCheckerCheckBox);
-    mContainer->add(mShowJobExpCheckBox);
+    new SetupItemCheckBox(_("Enable server side attack"), "",
+        "serverAttack", this, "serverAttackEvent");
 
-    HorizontContainer *hc1 = new HorizontContainer(32, 2);
-    mDeleteWidgets.push_back(hc1);
-    mMoveProgramField->setWidth(200);
-    hc1->add(mMoveProgramLabel);
-    hc1->add(mMoveProgramField);
-    hc1->add(mMoveProgramButton);
+    new SetupItemCheckBox(_("Auto target only reachable monsters"), "",
+        "targetOnlyReachable", this, "targetOnlyReachableEvent");
 
-    mContainer->add(hc1, true, 4);
+    new SetupItemCheckBox(_("Auto fix position"), "",
+        "autofixPos", this, "autofixPosEvent");
 
-    mContainer->add(mShowBeingPopupCheckBox);
-    mContainer->add(mShowExtMinimapsCheckBox);
+    new SetupItemCheckBox(_("Highlight map portals"), "",
+        "highlightMapPortals", this, "highlightMapPortalsEvent");
 
-    HorizontContainer *hc2 = new HorizontContainer(32, 2);
-    mDeleteWidgets.push_back(hc2);
-    mAfkField->setWidth(200);
-    hc2->add(mAfkField);
-    hc2->add(mAfkButton);
+    new SetupItemCheckBox(_("Attack while moving"), "",
+        "attackMoving", this, "attackMovingEvent");
 
-    mContainer->add(hc2, true, 4);
+    new SetupItemCheckBox(_("Highlight floor items"), "",
+        "floorItemsHighlight", this, "floorItemsHighlightEvent");
 
-    mContainer->add(mEnableAttackFilterCheckBox);
-    mContainer->add(mTradeBotCheckBox);
-    mContainer->add(mBuggyServersCheckBox);
-    mContainer->add(mDebugLogCheckBox);
+    new SetupItemCheckBox(_("Enable quick stats"), "",
+        "quickStats", this, "quickStatsEvent");
+
+    new SetupItemCheckBox(_("Highlight player attack range"), "",
+        "highlightAttackRange", this, "highlightAttackRangeEvent");
+
+    new SetupItemCheckBox(_("Show warps particles"), "",
+        "warpParticle", this, "warpParticleEvent");
+
+    new SetupItemCheckBox(_("Highlight monster attack range"), "",
+        "highlightMonsterAttackRange", this,
+        "highlightMonsterAttackRangeEvent");
+
+    new SetupItemCheckBox(_("Accept sell/buy requests"), "",
+        "autoShop", this, "autoShopEvent");
+
+    new SetupItemCheckBox(_("Cycle player targets"), "",
+        "cyclePlayers", this, "cyclePlayersEvent");
+
+    new SetupItemCheckBox(_("Show monster hp bar"), "",
+        "showMobHP", this, "showMobHPEvent");
+
+    new SetupItemCheckBox(_("Cycle monster targets"), "",
+        "cycleMonsters", this, "cycleMonstersEvent");
+
+    new SetupItemCheckBox(_("Show own hp bar"), "",
+        "showOwnHP", this, "showOwnHPEvent");
+
+    new SetupItemCheckBox(_("Enable bot checker"), "",
+        "enableBotCheker", this, "enableBotChekerEvent");
+
+    new SetupItemCheckBox(_("Show job exp messages"), "",
+        "showJobExp", this, "showJobExpEvent");
+
+
+    new SetupItemTextField(_("Crazy move A program"), "",
+        "crazyMoveProgram", this, "crazyMoveProgramEvent");
+
+    new SetupItemCheckBox(_("Show players popups"), "",
+        "showBeingPopup", this, "showBeingPopupEvent");
+
+    new SetupItemCheckBox(_("Show extended minimaps"), "",
+        "showExtMinimaps", this, "showExtMinimapsEvent");
+
+    new SetupItemTextField(_("Afk message"), "",
+        "afkMessage", this, "afkMessageEvent");
+
+    new SetupItemCheckBox(_("Enable attack filter"), "",
+        "enableAttackFilter", this, "enableAttackFilterEvent");
+
+    new SetupItemCheckBox(_("Enable shop mode"), "",
+        "tradebot", this, "tradebotEvent");
+
+    new SetupItemCheckBox(_("Enable buggy servers protection"), "",
+        "enableBuggyServers", this, "enableBuggyServersEvent", false);
+
+    new SetupItemCheckBox(_("Enable debug log"), "",
+        "debugLog", this, "debugLogEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
-void Setup_Other::action(const gcn::ActionEvent &event)
-{
-    if (event.getId() == ACTION_SHOW_TAKEDDAMAGE)
-    {
-        mShowMonstersTakedDamage = mShowMonstersTakedDamageCheckBox
-            ->isSelected();
-    }
-    else if (event.getId() == ACTION_ONLY_REACHABLE)
-    {
-        mTargetOnlyReachable = mTargetOnlyReachableCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_HIGHLIGHT_PORTALS)
-    {
-        mHighlightPortals = mHighlightPortalsCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_HIGHLIGHT_ATTACK_RANGE)
-    {
-        mHighlightAttackRange = mHighlightAttackRangeCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_HIGHLIGHT_MONSTER_ATTACK_RANGE)
-    {
-        mHighlightMonsterAttackRange = mHighlightMonsterAttackRangeCheckBox
-            ->isSelected();
-    }
-    else if (event.getId() == ACTION_CYCLE_PLAYERS)
-    {
-        mCyclePlayers = mCyclePlayersCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_CYCLE_MONSTERS)
-    {
-        mCycleMonsters = mCycleMonstersCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_ENABLE_BOTCHECKER)
-    {
-        mEnableBotChecker = mEnableBotCheckerCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_FLOORITEMS_HIGHLIGHT)
-    {
-        mFloorItemsHighlight = mFloorItemsHighlightCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_MOVE_PROGRAM)
-    {
-        mMoveProgram = mMoveProgramField->getText();
-    }
-    else if (event.getId() == ACTION_EDIT_PROGRAM)
-    {
-        mEditDialog =  new EditDialog(_("Crazy Move A"),
-            mMoveProgramField->getText(), ACTION_EDIT_PROGRAM_OK);
-        mEditDialog->addActionListener(this);
-    }
-    else if (event.getId() == ACTION_EDIT_PROGRAM_OK)
-    {
-        mMoveProgramField->setText(mEditDialog->getMsg());
-    }
-    else if (event.getId() == ACTION_AFK)
-    {
-       mAfk = mAfkField->getText();
-    }
-    else if (event.getId() == ACTION_EDIT_AFK)
-    {
-        mEditDialog =  new EditDialog(_("Afk message"), mAfkField->getText(),
-                                      ACTION_EDIT_AFK_OK);
-        mEditDialog->addActionListener(this);
-    }
-    else if (event.getId() == ACTION_EDIT_AFK_OK)
-    {
-        mAfkField->setText(mEditDialog->getMsg());
-    }
-    else if (event.getId() == ACTION_TRADEBOT)
-    {
-        mTradeBot = mTradeBotCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_BUGGY_SERVERS)
-    {
-        mBuggyServers = mBuggyServersCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_DEBUG_LOG)
-    {
-        mDebugLog = mDebugLogCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SERVER_ATTACK)
-    {
-        mServerAttack = mServerAttackCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_FIX_POS)
-    {
-        mAutofixPos = mAutofixPosCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_ATTACK_MOVING)
-    {
-        mAttackMoving = mAttackMovingCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_QUICK_STATS)
-    {
-        mQuickStats = mQuickStatsCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_WARP_PARTICLE)
-    {
-        mWarpParticle = mWarpParticleCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_AUTO_SHOP)
-    {
-        mAutoShop = mAutoShopCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_MOB_HP)
-    {
-        mShowMobHP = mShowMobHPCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_OWN_HP)
-    {
-        mShowOwnHP = mShowOwnHPCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_JOB_EXP)
-    {
-        mShowJobExp = mShowJobExpCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_BEING_POPUP)
-    {
-        mShowBeingPopup = mShowBeingPopupCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_EXTENDED_MINIMAPS)
-    {
-        mShowExtMinimaps = mShowExtMinimapsCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_ENABLE_ATTACK_FILTER)
-    {
-        mEnableAttackFilter = mEnableAttackFilterCheckBox->isSelected();
-    }
-}
-
-void Setup_Other::cancel()
-{
-    mShowMonstersTakedDamage = config.getBoolValue(
-        "showMonstersTakedDamage");
-    mShowMonstersTakedDamageCheckBox->setSelected(mShowMonstersTakedDamage);
-
-    mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
-    mTargetOnlyReachableCheckBox->setSelected(mTargetOnlyReachable);
-
-    mHighlightPortals = config.getBoolValue("highlightMapPortals");
-    mHighlightPortalsCheckBox->setSelected(mHighlightPortals);
-
-    mHighlightAttackRange = config.getBoolValue("highlightAttackRange");
-    mHighlightAttackRangeCheckBox->setSelected(mHighlightAttackRange);
-
-    mHighlightMonsterAttackRange = config.getBoolValue(
-        "highlightMonsterAttackRange");
-    mHighlightMonsterAttackRangeCheckBox->setSelected(
-        mHighlightMonsterAttackRange);
-
-    mCyclePlayers = config.getBoolValue("cyclePlayers");
-    mCyclePlayersCheckBox->setSelected(mCyclePlayers);
-
-    mCycleMonsters = config.getBoolValue("cycleMonsters");
-    mCycleMonstersCheckBox->setSelected(mCycleMonsters);
-
-    mEnableBotChecker = config.getBoolValue("enableBotCheker");
-    mEnableBotCheckerCheckBox->setSelected(mEnableBotChecker);
-
-    mFloorItemsHighlight = config.getBoolValue("floorItemsHighlight");
-    mFloorItemsHighlightCheckBox->setSelected(mFloorItemsHighlight);
-
-    mMoveProgram = config.getStringValue("crazyMoveProgram");
-    mMoveProgramField->setText(mMoveProgram);
-
-    mAfk = config.getStringValue("afkMessage");
-    mAfkField->setText(mAfk);
-
-    mTradeBot = config.getBoolValue("tradebot");
-    mTradeBotCheckBox->setSelected(mTradeBot);
-
-    mBuggyServers = serverConfig.getValueBool("enableBuggyServers", true);
-    mBuggyServersCheckBox->setSelected(mBuggyServers);
-
-    mDebugLog = config.getBoolValue("debugLog");
-    mDebugLogCheckBox->setSelected(mDebugLog);
-
-    mServerAttack = config.getBoolValue("serverAttack");
-    mServerAttackCheckBox->setSelected(mServerAttack);
-
-    mAutofixPos = config.getBoolValue("autofixPos");
-    mAutofixPosCheckBox->setSelected(mAutofixPos);
-
-    mAttackMoving = config.getBoolValue("attackMoving");
-    mAttackMovingCheckBox->setSelected(mAttackMoving);
-
-    mQuickStats = config.getBoolValue("quickStats");
-    mQuickStatsCheckBox->setSelected(mQuickStats);
-
-    mWarpParticle = config.getBoolValue("warpParticle");
-    mWarpParticleCheckBox->setSelected(mWarpParticle);
-
-    mAutoShop = config.getBoolValue("autoShop");
-    mAutoShopCheckBox->setSelected(mAutoShop);
-
-    mShowMobHP = config.getBoolValue("showMobHP");
-    mShowMobHPCheckBox->setSelected(mShowMobHP);
-
-    mShowOwnHP = config.getBoolValue("showOwnHP");
-    mShowOwnHPCheckBox->setSelected(mShowOwnHP);
-
-    mShowJobExp = config.getBoolValue("showJobExp");
-    mShowJobExpCheckBox->setSelected(mShowJobExp);
-
-    mShowBeingPopup = config.getBoolValue("showBeingPopup");
-    mShowBeingPopupCheckBox->setSelected(mShowBeingPopup);
-
-    mShowExtMinimaps = config.getBoolValue("showExtMinimaps");
-    mShowExtMinimapsCheckBox->setSelected(mShowExtMinimaps);
-
-    mEnableAttackFilter = config.getBoolValue("enableAttackFilter");
-    mEnableAttackFilterCheckBox->setSelected(mEnableAttackFilter);
-}
-
 void Setup_Other::apply()
 {
-    config.setValue("showMonstersTakedDamage", mShowMonstersTakedDamage);
-    config.setValue("targetOnlyReachable", mTargetOnlyReachable);
-    config.setValue("highlightMapPortals", mHighlightPortals);
-    config.setValue("highlightAttackRange", mHighlightAttackRange);
-    config.setValue("highlightMonsterAttackRange",
-                    mHighlightMonsterAttackRange);
-    config.setValue("cyclePlayers", mCyclePlayers);
-    config.setValue("cycleMonsters", mCycleMonsters);
-    config.setValue("enableBotCheker", mEnableBotChecker);
-    config.setValue("floorItemsHighlight", mFloorItemsHighlight);
-    config.setValue("crazyMoveProgram", mMoveProgramField->getText());
-    config.setValue("afkMessage", mAfkField->getText());
-    config.setValue("tradebot", mTradeBot);
-    serverConfig.setValue("enableBuggyServers", mBuggyServers);
-    config.setValue("debugLog", mDebugLog);
-    config.setValue("serverAttack", mServerAttack);
-    config.setValue("autofixPos", mAutofixPos);
-    config.setValue("attackMoving", mAttackMoving);
-    config.setValue("quickStats", mQuickStats);
-    config.setValue("warpParticle", mWarpParticle);
-    config.setValue("autoShop", mAutoShop);
-    config.setValue("showMobHP", mShowMobHP);
-    config.setValue("showOwnHP", mShowOwnHP);
-    config.setValue("showJobExp", mShowJobExp);
-    config.setValue("showBeingPopup", mShowBeingPopup);
-    config.setValue("showExtMinimaps", mShowExtMinimaps);
-    config.setValue("enableAttackFilter", mEnableAttackFilter);
-    logger->setDebugLog(mDebugLog);
-}
+    SetupTabScroll::apply();
 
-void Setup_Other::externalUpdated()
-{
-    mBuggyServers = serverConfig.getValueBool("enableBuggyServers", true);
-    mBuggyServersCheckBox->setSelected(mBuggyServers);
+    logger->setDebugLog(config.getBoolValue("debugLog"));
 }

@@ -29,7 +29,7 @@
 
 #include <string>
 
-class Setup_Keyboard : public SetupTab, public gcn::ActionListener
+class Setup_Keyboard : public SetupTab
 {
     public:
         /**

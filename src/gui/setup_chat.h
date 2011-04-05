@@ -32,7 +32,7 @@
 class IntTextField;
 class EditDialog;
 
-class Setup_Chat : public SetupTab, public gcn::ActionListener
+class Setup_Chat : public SetupTab
 {
     public:
         Setup_Chat();

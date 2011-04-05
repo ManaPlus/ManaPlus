@@ -23,6 +23,16 @@
 
 #include "gui/widgets/setuptab.h"
 
+#include <map>
+#include <set>
+
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
+class SetupItem;
 class ScrollArea;
 class VertContainer;
 
@@ -33,9 +43,27 @@ class SetupTabScroll : public SetupTab
 
         ~SetupTabScroll();
 
+        void addControl(SetupItem *widget);
+
+        void addControl(SetupItem *widget, std::string event);
+
+        VertContainer *getContainer()
+        { return mContainer; }
+
+        virtual void apply();
+
+        virtual void cancel();
+
+        virtual void externalUpdated();
+
+        virtual void action(const gcn::ActionEvent &event _UNUSED_)
+        { }
+
     protected:
         VertContainer *mContainer;
         ScrollArea *mScroll;
+        std::map<std::string,SetupItem*> mItems;
+        std::set<SetupItem*> mAllItems;
 };
 
 #endif

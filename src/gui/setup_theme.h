@@ -34,7 +34,7 @@ class EditDialog;
 class DropDown;
 class ThemesModel;
 
-class Setup_Theme : public SetupTab, public gcn::ActionListener
+class Setup_Theme : public SetupTab
 {
     public:
         Setup_Theme();

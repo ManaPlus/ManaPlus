@@ -20,6 +20,8 @@
 
 #include "gui/widgets/setuptabscroll.h"
 
+#include "gui/setupitem.h"
+
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/vertcontainer.h"
@@ -42,8 +44,68 @@ SetupTabScroll::SetupTabScroll() :
 
 SetupTabScroll::~SetupTabScroll()
 {
-//    delete mScroll;
     mScroll = 0;
+
     delete mContainer;
     mContainer = 0;
+
+    std::set<SetupItem*>::iterator it = mAllItems.begin();
+    std::set<SetupItem*>::iterator it_end = mAllItems.end();
+    while (it != it_end)
+    {
+        delete *it;
+        ++ it;
+    }
+    mAllItems.clear();
+}
+
+void SetupTabScroll::addControl(SetupItem *widget)
+{
+    std::map<std::string,SetupItem*>::iterator iter
+        = mItems.find(widget->getActionEventId());
+    if (iter != mItems.end())
+    {
+        delete (*iter).second;
+        mItems.erase(iter);
+    }
+    mItems[widget->getActionEventId()] = widget;
+    mAllItems.insert(widget);
+}
+
+void SetupTabScroll::addControl(SetupItem *widget, std::string event)
+{
+    std::map<std::string,SetupItem*>::iterator iter
+        = mItems.find(event);
+    if (iter != mItems.end())
+    {
+        delete (*iter).second;
+        mItems.erase(iter);
+    }
+    mItems[event] = widget;
+    mAllItems.insert(widget);
+}
+
+void SetupTabScroll::apply()
+{
+    std::map<std::string,SetupItem*>::iterator iter;
+    for (iter = mItems.begin(); iter != mItems.end(); ++ iter)
+        (*iter).second->apply((*iter).first);
+}
+
+void SetupTabScroll::cancel()
+{
+    std::map<std::string,SetupItem*>::iterator iter;
+    for (iter = mItems.begin(); iter != mItems.end(); ++ iter)
+        (*iter).second->cancel((*iter).first);
+}
+
+void SetupTabScroll::externalUpdated()
+{
+    std::map<std::string,SetupItem*>::iterator iter;
+    for (iter = mItems.begin(); iter != mItems.end(); ++ iter)
+    {
+        SetupItem *widget = (*iter).second;
+        if (!widget->isMainConfig())
+            (*iter).second->externalUpdated((*iter).first);
+    }
 }

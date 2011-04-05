@@ -25,12 +25,14 @@
 
 #include "gui/widgets/container.h"
 
+#include <guichan/actionlistener.hpp>
+
 #include <string>
 
 /**
  * A container for the contents of a tab in the setup window.
  */
-class SetupTab : public Container
+class SetupTab : public Container, public gcn::ActionListener
 {
 public:
     SetupTab();

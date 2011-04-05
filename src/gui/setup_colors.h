@@ -41,7 +41,6 @@ class TextField;
 class TextPreview;
 
 class Setup_Colors : public SetupTab,
-                     public gcn::ActionListener,
                      public gcn::SelectionListener
 {
     public:

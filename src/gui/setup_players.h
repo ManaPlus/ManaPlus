@@ -42,7 +42,6 @@ class PlayerTableModel;
 class StaticTableModel;
 
 class Setup_Players : public SetupTab,
-                      public gcn::ActionListener,
                       public PlayerRelationsListener
 {
 public:

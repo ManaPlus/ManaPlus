@@ -29,7 +29,7 @@
 
 #include <guichan/actionlistener.hpp>
 
-class Setup_Joystick : public SetupTab, public gcn::ActionListener
+class Setup_Joystick : public SetupTab
 {
     public:
         Setup_Joystick();

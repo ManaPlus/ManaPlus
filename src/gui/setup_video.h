@@ -36,8 +36,7 @@ class ModeListModel;
 class OpenGLListModel;
 class TextDialog;
 
-class Setup_Video : public SetupTab, public gcn::ActionListener,
-                    public gcn::KeyListener
+class Setup_Video : public SetupTab, public gcn::KeyListener
 {
     public:
         Setup_Video();

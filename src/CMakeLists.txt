@@ -299,6 +299,8 @@ SET(SRCS
     gui/serverdialog.h
     gui/setup.cpp
     gui/setup.h
+    gui/setupitem.cpp
+    gui/setupitem.h
     gui/setup_audio.cpp
     gui/setup_audio.h
     gui/setup_colors.cpp

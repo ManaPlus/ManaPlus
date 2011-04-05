@@ -2,6 +2,7 @@
  *  The Mana World
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The Mana World.
  *
@@ -32,103 +33,12 @@
 class EditDialog;
 class TextField;
 
-class Setup_Other : public SetupTabScroll, public gcn::ActionListener
+class Setup_Other : public SetupTabScroll
 {
     public:
         Setup_Other();
 
         void apply();
-        void cancel();
-
-        void action(const gcn::ActionEvent &event);
-
-        virtual void externalUpdated();
-
-    private:
-        gcn::CheckBox *mShowMonstersTakedDamageCheckBox;
-        bool mShowMonstersTakedDamage;
-
-        gcn::CheckBox *mTargetOnlyReachableCheckBox;
-        bool mTargetOnlyReachable;
-
-        gcn::CheckBox *mHighlightPortalsCheckBox;
-        bool mHighlightPortals;
-
-        gcn::CheckBox *mHighlightAttackRangeCheckBox;
-        bool mHighlightAttackRange;
-
-        gcn::CheckBox *mHighlightMonsterAttackRangeCheckBox;
-        bool mHighlightMonsterAttackRange;
-
-        gcn::CheckBox *mCyclePlayersCheckBox;
-        bool mCyclePlayers;
-
-        gcn::CheckBox *mCycleMonstersCheckBox;
-        bool mCycleMonsters;
-
-        gcn::CheckBox *mEnableBotCheckerCheckBox;
-        bool mEnableBotChecker;
-
-        gcn::CheckBox *mFloorItemsHighlightCheckBox;
-        bool mFloorItemsHighlight;
-
-        gcn::Label *mMoveProgramLabel;
-        TextField *mMoveProgramField;
-        gcn::Button *mMoveProgramButton;
-        std::string mMoveProgram;
-
-        gcn::TextField *mAfkField;
-        gcn::Button *mAfkButton;
-        std::string mAfk;
-
-        gcn::CheckBox *mTradeBotCheckBox;
-        bool mTradeBot;
-
-        gcn::CheckBox *mBuggyServersCheckBox;
-        bool mBuggyServers;
-
-        gcn::CheckBox *mDebugLogCheckBox;
-        bool mDebugLog;
-
-        gcn::CheckBox *mServerAttackCheckBox;
-        bool mServerAttack;
-
-        gcn::CheckBox *mAutofixPosCheckBox;
-        bool mAutofixPos;
-
-        gcn::CheckBox *mAttackMovingCheckBox;
-        bool mAttackMoving;
-
-        gcn::CheckBox *mQuickStatsCheckBox;
-        bool mQuickStats;
-
-        gcn::CheckBox *mWarpParticleCheckBox;
-        bool mWarpParticle;
-
-        gcn::CheckBox *mAutoShopCheckBox;
-        bool mAutoShop;
-
-        gcn::CheckBox *mShowMobHPCheckBox;
-        bool mShowMobHP;
-
-        gcn::CheckBox *mShowOwnHPCheckBox;
-        bool mShowOwnHP;
-
-        gcn::CheckBox *mShowJobExpCheckBox;
-        bool mShowJobExp;
-
-        gcn::CheckBox *mShowBeingPopupCheckBox;
-        bool mShowBeingPopup;
-
-        gcn::CheckBox *mShowExtMinimapsCheckBox;
-        bool mShowExtMinimaps;
-
-        gcn::CheckBox *mEnableAttackFilterCheckBox;
-        bool mEnableAttackFilter;
-
-        EditDialog *mEditDialog;
-
-        std::list<gcn::Widget*> mDeleteWidgets;
 };
 
 #endif
