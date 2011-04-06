@@ -283,9 +283,9 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "The core program files."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcuts} "Create game shortcuts."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecMusic} "Background music. (If selected the music will be downloaded from the internet.)"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecMusic} "Background tmw music. (If selected the tmw music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface into 23 different languages. Uncheck this component to leave it in English."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 

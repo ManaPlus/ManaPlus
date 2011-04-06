@@ -4,6 +4,7 @@ cd ..
 
 DSTDIR=packaging/build/linux
 
+export CXXFLAGS="-Wall -g0 -O3"
 autoreconf -i
 #make clean
 ./configure --enable-portable=yes
