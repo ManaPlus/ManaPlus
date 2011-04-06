@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-03-29 21:45+0300\n"
+"POT-Creation-Date: 2011-04-06 20:33+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -61,10 +61,10 @@ msgstr "Spajanje na poslužitelja karti..."
 msgid "Changing game servers"
 msgstr "Server"
 
-#: src/client.cpp:1058 src/client.cpp:1065 src/client.cpp:1200
+#: src/client.cpp:1058 src/client.cpp:1065 src/client.cpp:1202
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
-#: src/gui/serverdialog.cpp:360 src/gui/unregisterdialog.cpp:135
+#: src/gui/serverdialog.cpp:369 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
 #: src/net/tmwa/charserverhandler.cpp:188
 #: src/net/tmwa/charserverhandler.cpp:204
@@ -103,415 +103,34 @@ msgstr "Odjavi"
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1330 src/client.cpp:1360 src/client.cpp:1404
+#: src/client.cpp:1332 src/client.cpp:1362 src/client.cpp:1406
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1533
+#: src/client.cpp:1535
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:1567 src/client.cpp:1573
+#: src/client.cpp:1569 src/client.cpp:1575
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:1594
+#: src/client.cpp:1596
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/commandhandler.cpp:271 src/commandhandler.cpp:484
+#: src/commandhandler.cpp:272
 msgid "Unknown command."
 msgstr "Nepoznata naredba."
 
-#: src/commandhandler.cpp:301
-msgid "-- Help --"
-msgstr "-- Pomoć --"
-
-#: src/commandhandler.cpp:302
-msgid "/help > Display this help"
-msgstr "/help > Prikaži ovu pomoć"
-
-#: src/commandhandler.cpp:304
-msgid "/where > Display map name"
-msgstr "/where > Prikaži ime karte"
-
-#: src/commandhandler.cpp:305
-msgid "/who > Display number of online users"
-msgstr "/who > Prikaži broj trenutno prijavljenih korisnika"
-
-#: src/commandhandler.cpp:306
-msgid "/me > Tell something about yourself"
-msgstr "/me > Recite nešto o sebi"
-
-#: src/commandhandler.cpp:308
-msgid "/clear > Clears this window"
-msgstr "/clear > Očisti ovaj prozor"
-
-#: src/commandhandler.cpp:310
-msgid "/msg > Send a private message to a user"
-msgstr "/msg > Pošaljite privatnu poruku korisniku"
-
-#: src/commandhandler.cpp:311
-msgid "/whisper > Alias of msg"
-msgstr "/whisper > Alias za msg"
-
-#: src/commandhandler.cpp:312
-msgid "/w > Alias of msg"
-msgstr "/w > Alias za msg"
-
-#: src/commandhandler.cpp:313
-msgid "/query > Makes a tab for private messages with another user"
-msgstr "/query > Čini karticu za privatne poruke s drugim korisnikom"
-
-#: src/commandhandler.cpp:315
-msgid "/q > Alias of query"
-msgstr "/q > Alias od query"
-
-#: src/commandhandler.cpp:317
-msgid "/away > Tell the other whispering players you're away from keyboard."
-msgstr ""
-
-#: src/commandhandler.cpp:320
-msgid "/ignore > ignore a player"
-msgstr ""
-
-#: src/commandhandler.cpp:321
-msgid "/unignore > stop ignoring a player"
-msgstr ""
-
-#: src/commandhandler.cpp:322
-#, fuzzy
-msgid "/ignoreall > Ignore all opened whisper tabs"
-msgstr "/close > Zatvara karticu za šaptaje"
-
-#: src/commandhandler.cpp:323
-msgid "/erase > Erase a player"
-msgstr ""
-
-#: src/commandhandler.cpp:324
-msgid "/befriend > Be friend a player"
-msgstr ""
-
-#: src/commandhandler.cpp:325
-#, fuzzy
-msgid "/disregard > Disregard a player"
-msgstr "@@disregard|Zanemari %s@@"
-
-#: src/commandhandler.cpp:326
-msgid "/neutral > Neutral a player"
-msgstr ""
-
-#: src/commandhandler.cpp:328
-msgid "/list > Display all public channels"
-msgstr "/list > Prikaži sve javne kanale"
-
-#: src/commandhandler.cpp:329
-msgid "/join > Join or create a channel"
-msgstr "/join > Pridruži se ili napravi kanal"
-
-#: src/commandhandler.cpp:331
-#, fuzzy
-msgid "/createparty > Create a new party"
-msgstr "/create > Napravi novu partiju"
-
-#: src/commandhandler.cpp:332
-#, fuzzy
-msgid "/createguild > Create a new guild"
-msgstr "/create > Napravi novu partiju"
-
-#: src/commandhandler.cpp:333
-msgid "/party > Invite a user to party"
-msgstr "/party > Pozovite korisnike na partiju"
-
-#: src/commandhandler.cpp:335
-msgid "/toggle > Determine whether <return> toggles the chat log"
-msgstr ""
-
-#: src/commandhandler.cpp:337
-msgid "/present > Get list of players present (sent to chat log, if logging)"
-msgstr ""
-
-#: src/commandhandler.cpp:340
-msgid "/announce > Global announcement (GM only)"
-msgstr "/announce > Globalna obavijest (samo GM)"
-
-#: src/commandhandler.cpp:342
-#, fuzzy
-msgid "/closeall > Close all opened whisper tabs"
-msgstr "/close > Zatvara karticu za šaptaje"
-
-#: src/commandhandler.cpp:344
-msgid "/all > Show all visible beings in debug tab"
-msgstr ""
-
-#: src/commandhandler.cpp:346
-msgid "/move > Move to given position"
-msgstr ""
-
-#: src/commandhandler.cpp:347
-msgid "/navigate > Draw path to given position"
-msgstr ""
-
-#: src/commandhandler.cpp:348
-msgid "/target > Set target to being"
-msgstr ""
-
-#: src/commandhandler.cpp:349
-msgid "/outfit > Wear outfit by index"
-msgstr ""
-
-#: src/commandhandler.cpp:350
-msgid "/emote > Show emote by index"
-msgstr ""
-
-#: src/commandhandler.cpp:351
-msgid "/follow > Follow player"
-msgstr ""
-
-#: src/commandhandler.cpp:352
-msgid "/imitation > Imitate player"
-msgstr ""
-
-#: src/commandhandler.cpp:353
-msgid "/heal > Heal player"
-msgstr ""
-
-#: src/commandhandler.cpp:354
-#, fuzzy
-msgid "/mail > Send offline message to player"
-msgstr "/msg > Pošaljite privatnu poruku korisniku"
-
-#: src/commandhandler.cpp:358
-msgid "For more information, type /help <command>."
-msgstr "Za više informacija, utipkajte /pomoć <naredba>."
-
-#: src/commandhandler.cpp:362
-msgid "Command: /help"
-msgstr "Naredba: /pomoć"
-
-#: src/commandhandler.cpp:363
-msgid "This command displays a list of all commands available."
-msgstr "Ova naredba prikazuje listu svih raspoloživih naredbi."
-
-#: src/commandhandler.cpp:365
-msgid "Command: /help <command>"
-msgstr "Naredba: /pomoć <naredba>"
-
-#: src/commandhandler.cpp:366
-msgid "This command displays help on <command>."
-msgstr "Ova naredba prikazuje pomoć pri <naredba>."
-
-#: src/commandhandler.cpp:374
-msgid "Command: /announce <msg>"
-msgstr "Command: /announce <msg>"
-
-#: src/commandhandler.cpp:375
-msgid "*** only available to a GM ***"
-msgstr "*** dostupno samo za GM ***"
-
-#: src/commandhandler.cpp:376
-msgid "This command sends the message <msg> to all players currently online."
-msgstr "Ova naredba šalje poruku <msg> svim igračima trenutno online."
-
-#: src/commandhandler.cpp:381
-msgid "Command: /clear"
-msgstr "Naredba: /clear"
-
-#: src/commandhandler.cpp:382
-msgid "This command clears the chat log of previous chat."
-msgstr "Ova naredba briše chat log prethodnog chata."
-
-#: src/commandhandler.cpp:386
-#, fuzzy
-msgid "Command: /ignore <player>"
-msgstr "Naredba: /item <policy>"
-
-#: src/commandhandler.cpp:387
-#, fuzzy
-msgid "This command ignores the given player regardless of current relations."
-msgstr "Ova naredba prikazuje broj igrača trenutno online."
-
-#: src/commandhandler.cpp:392
-msgid "Command: /join <channel>"
-msgstr "Naredba: /join <channel>"
-
-#: src/commandhandler.cpp:393
-msgid "This command makes you enter <channel>."
-msgstr "Ova naredba vas unaša u <channel>."
-
-#: src/commandhandler.cpp:394
-msgid "If <channel> doesn't exist, it's created."
-msgstr "Ako <channel> ne postoji, onda je napravljen."
-
-#: src/commandhandler.cpp:398
-msgid "Command: /list"
-msgstr "Naredba: /list"
-
-#: src/commandhandler.cpp:399
-msgid "This command shows a list of all channels."
-msgstr "Ova naredba prikazuje listu svih kanala."
-
-#: src/commandhandler.cpp:403
-msgid "Command: /me <message>"
-msgstr "Naredba: /me <message>"
-
-#: src/commandhandler.cpp:404
-msgid "This command tell others you are (doing) <msg>."
-msgstr "Ova naredba govori drugima da vi (radite) <msg>."
-
-#: src/commandhandler.cpp:408
-msgid "Command: /msg <nick> <message>"
-msgstr "Naredba: /msg <nick> <message>"
-
-#: src/commandhandler.cpp:409
-msgid "Command: /whisper <nick> <message>"
-msgstr "Naredba: /whisper <nick> <message>"
-
-#: src/commandhandler.cpp:410
-msgid "Command: /w <nick> <message>"
-msgstr "Naredba: /w <nick> <message>"
-
-#: src/commandhandler.cpp:411
-msgid "This command sends the text <message> to <nick>."
-msgstr "Ova naredba šalje tekst <message> za <nick>."
-
-#: src/commandhandler.cpp:412 src/commandhandler.cpp:444
-#: src/gui/widgets/channeltab.cpp:83 src/gui/widgets/channeltab.cpp:92
-#: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
-msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
-msgstr ""
-"Ako <nick> ima razmake u sebi, zatvoriti ga u dvostrukim navodnicima (\")."
-
-#: src/commandhandler.cpp:417
-msgid "Command: /query <nick>"
-msgstr "Naredba: /query <nick>"
-
-#: src/commandhandler.cpp:418
-msgid "Command: /q <nick>"
-msgstr "Naredba: /q <nick>"
-
-#: src/commandhandler.cpp:419
-msgid "This command tries to make a tab for whispers betweenyou and <nick>."
-msgstr ""
-"Ova naredba pokušava napraviti karticu za šaptanje između vas i <nick>."
-
-#: src/commandhandler.cpp:424
-#, fuzzy
-msgid "Command: /away <afk reason>"
-msgstr "Naredba: /w <nick> <message>"
-
-#: src/commandhandler.cpp:425
-msgid "This command tells you're away from keyboard with the given reason."
-msgstr ""
-
-#: src/commandhandler.cpp:427
-#, fuzzy
-msgid "Command: /away"
-msgstr "Naredba: /who"
-
-#: src/commandhandler.cpp:428
-#, fuzzy
-msgid "This command clears the away status and message."
-msgstr "Ova naredba postavlja temu za <message>."
-
-#: src/commandhandler.cpp:432
-#, fuzzy
-msgid "Command: /createparty <name>"
-msgstr "Naredba: /create <ime-partije>"
-
-#: src/commandhandler.cpp:433
-#, fuzzy
-msgid "This command creates a new party called <name>."
-msgstr "Ove naredbe kreira novu partiju zvanu <party-name>."
-
-#: src/commandhandler.cpp:437
-#, fuzzy
-msgid "Command: /createguild <name>"
-msgstr "Naredba: /create <ime-partije>"
-
-#: src/commandhandler.cpp:438
-#, fuzzy
-msgid "This command creates a new guild called <name>."
-msgstr "Ove naredbe kreira novu partiju zvanu <party-name>."
-
-#: src/commandhandler.cpp:442
-msgid "Command: /party <nick>"
-msgstr "Naredba: /party <nick>"
-
-#: src/commandhandler.cpp:443 src/net/tmwa/gui/partytab.cpp:82
-msgid "This command invites <nick> to party with you."
-msgstr "Ova naredba poziva <nick> na partiju sa vama."
-
-#: src/commandhandler.cpp:449
-msgid "Command: /present"
-msgstr "Naredba: /present"
-
-#: src/commandhandler.cpp:450
-msgid ""
-"This command gets a list of players within hearing and sends it to chat log."
-msgstr ""
-
-#: src/commandhandler.cpp:455
-msgid "Command: /toggle <state>"
-msgstr "Naredba: /toggle <state>"
-
-#: src/commandhandler.cpp:456
-msgid ""
-"This command sets whether the return key should toggle the chat log, or "
-"whether the chat log turns off automatically."
-msgstr ""
-
-#: src/commandhandler.cpp:459
-msgid ""
-"<state> can be one of \"1\", \"yes\", \"true\" to turn the toggle on, or "
-"\"0\", \"no\", \"false\" to turn the toggle off."
-msgstr ""
-
-#: src/commandhandler.cpp:462
-msgid "Command: /toggle"
-msgstr "Naredba: /toggle"
-
-#: src/commandhandler.cpp:463
-msgid "This command displays the return toggle status."
-msgstr ""
-
-#: src/commandhandler.cpp:467 src/gui/widgets/whispertab.cpp:128
-#, fuzzy
-msgid "Command: /unignore <player>"
-msgstr "Naredba: /item <policy>"
-
-#: src/commandhandler.cpp:468
-msgid "This command stops ignoring the given player if they are being ignored"
-msgstr ""
-
-#: src/commandhandler.cpp:473
-msgid "Command: /where"
-msgstr "Naredba: /where"
-
-#: src/commandhandler.cpp:474
-msgid "This command displays the name of the current map."
-msgstr "Ova naredba prikazuje naziv trenutne karte."
-
-#: src/commandhandler.cpp:478
-msgid "Command: /who"
-msgstr "Naredba: /who"
-
-#: src/commandhandler.cpp:479
-msgid "This command displays the number of players currently online."
-msgstr "Ova naredba prikazuje broj igrača trenutno online."
-
-#: src/commandhandler.cpp:485
-msgid "Type /help for a list of commands."
-msgstr "Upišite /help za listu svih naredbi."
-
-#: src/commandhandler.cpp:553
+#: src/commandhandler.cpp:372
 msgid "Cannot send empty whispers!"
 msgstr "Ne mogu poslati prazan šapate!"
 
-#: src/commandhandler.cpp:561
+#: src/commandhandler.cpp:380
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -520,105 +139,105 @@ msgstr ""
 "Ne mogu stvoriti šapat karticu za nadimak \"%s\"! To već postoji ili ste to "
 "vi."
 
-#: src/commandhandler.cpp:581
+#: src/commandhandler.cpp:400
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Zahtjev za pridruživanje kanalu %s."
 
-#: src/commandhandler.cpp:597 src/net/tmwa/gui/partytab.cpp:123
+#: src/commandhandler.cpp:416 src/net/tmwa/gui/partytab.cpp:123
 msgid "Party name is missing."
 msgstr "Ime partije nedostaje."
 
-#: src/commandhandler.cpp:608
+#: src/commandhandler.cpp:427
 #, fuzzy
 msgid "Guild name is missing."
 msgstr "Ime partije nedostaje."
 
-#: src/commandhandler.cpp:621 src/commandhandler.cpp:728
-#: src/commandhandler.cpp:769 src/commandhandler.cpp:799
+#: src/commandhandler.cpp:440 src/commandhandler.cpp:547
+#: src/commandhandler.cpp:588 src/commandhandler.cpp:618
 msgid "Please specify a name."
 msgstr ""
 
-#: src/commandhandler.cpp:662
+#: src/commandhandler.cpp:481
 msgid "Return toggles chat."
 msgstr ""
 
-#: src/commandhandler.cpp:662
+#: src/commandhandler.cpp:481
 msgid "Message closes chat."
 msgstr "Poruka zatvara chat."
 
-#: src/commandhandler.cpp:673
+#: src/commandhandler.cpp:492
 msgid "Return now toggles chat."
 msgstr ""
 
-#: src/commandhandler.cpp:679
+#: src/commandhandler.cpp:498
 msgid "Message now closes chat."
 msgstr "Poruka sada zatvara chat."
 
-#: src/commandhandler.cpp:707
+#: src/commandhandler.cpp:526
 #, fuzzy
 msgid "friend"
 msgstr "Prijatelj"
 
-#: src/commandhandler.cpp:712
+#: src/commandhandler.cpp:531
 #, fuzzy
 msgid "disregarded"
 msgstr "Zanemareno"
 
-#: src/commandhandler.cpp:717
+#: src/commandhandler.cpp:536
 #, fuzzy
 msgid "neutral"
 msgstr "Neutralno"
 
-#: src/commandhandler.cpp:736
+#: src/commandhandler.cpp:555
 #, fuzzy, c-format
 msgid "Player already %s!"
 msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
 
-#: src/commandhandler.cpp:750
+#: src/commandhandler.cpp:569
 #, fuzzy, c-format
 msgid "Player successfully %s!"
 msgstr "Partija je uspješno kreirana."
 
-#: src/commandhandler.cpp:758
+#: src/commandhandler.cpp:577
 #, fuzzy, c-format
 msgid "Player could not be %s!"
 msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
 
-#: src/commandhandler.cpp:780
+#: src/commandhandler.cpp:599
 msgid "Player wasn't ignored!"
 msgstr ""
 
-#: src/commandhandler.cpp:787
+#: src/commandhandler.cpp:606
 msgid "Player no longer ignored!"
 msgstr ""
 
-#: src/commandhandler.cpp:789
+#: src/commandhandler.cpp:608
 #, fuzzy
 msgid "Player could not be unignored!"
 msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
 
-#: src/commandhandler.cpp:806
+#: src/commandhandler.cpp:625
 #, fuzzy
 msgid "Player already erased!"
 msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
 
-#: src/commandhandler.cpp:817
+#: src/commandhandler.cpp:636
 #, fuzzy
 msgid "Player successfully erased!"
 msgstr "Partija je uspješno kreirana."
 
-#: src/commandhandler.cpp:819
+#: src/commandhandler.cpp:638
 #, fuzzy
 msgid "Player could not be erased!"
 msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
 
-#: src/commandhandler.cpp:1112 src/commandhandler.cpp:1158
+#: src/commandhandler.cpp:931 src/commandhandler.cpp:977
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:1122
+#: src/commandhandler.cpp:941
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
@@ -626,7 +245,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:1131
+#: src/commandhandler.cpp:950
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -634,7 +253,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:1139
+#: src/commandhandler.cpp:958
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -642,7 +261,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:1147
+#: src/commandhandler.cpp:966
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -650,7 +269,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:1155
+#: src/commandhandler.cpp:974
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -753,12 +372,12 @@ msgstr ""
 msgid "Reset"
 msgstr "Poništi"
 
-#: src/gui/buy.cpp:54 src/gui/buy.cpp:61 src/gui/buy.cpp:95
-#: src/gui/buysell.cpp:63
+#: src/gui/buydialog.cpp:54 src/gui/buydialog.cpp:61 src/gui/buydialog.cpp:95
+#: src/gui/buyselldialog.cpp:63
 msgid "Buy"
 msgstr "Kupi"
 
-#: src/gui/buy.cpp:86 src/gui/buy.cpp:300 src/gui/sell.cpp:85
+#: src/gui/buydialog.cpp:86 src/gui/buydialog.cpp:300 src/gui/sell.cpp:85
 #: src/gui/sell.cpp:320
 #, c-format
 msgid "Price: %s / Total: %s"
@@ -766,50 +385,52 @@ msgstr "Cijena: %s / Ukupno: %s"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
-#: src/gui/buy.cpp:91 src/gui/itemamount.cpp:205 src/gui/itemamount.cpp:233
-#: src/gui/npcdialog.cpp:111 src/gui/sell.cpp:88 src/gui/statuswindow.cpp:938
+#: src/gui/buydialog.cpp:91 src/gui/itemamountwindow.cpp:205
+#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:111
+#: src/gui/sell.cpp:88 src/gui/statuswindow.cpp:938
 msgid "+"
 msgstr ""
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
-#: src/gui/buy.cpp:94 src/gui/itemamount.cpp:204 src/gui/itemamount.cpp:232
-#: src/gui/npcdialog.cpp:112 src/gui/sell.cpp:89 src/gui/statuswindow.cpp:950
+#: src/gui/buydialog.cpp:94 src/gui/itemamountwindow.cpp:204
+#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:112
+#: src/gui/sell.cpp:89 src/gui/statuswindow.cpp:950
 msgid "-"
 msgstr ""
 
-#: src/gui/buy.cpp:96 src/gui/quitdialog.cpp:47 src/gui/quitdialog.cpp:52
-#: src/gui/quitdialog.cpp:53 src/gui/sell.cpp:91 src/gui/serverdialog.cpp:253
-#: src/keyboardconfig.cpp:277
+#: src/gui/buydialog.cpp:96 src/gui/quitdialog.cpp:47
+#: src/gui/quitdialog.cpp:52 src/gui/quitdialog.cpp:53 src/gui/sell.cpp:91
+#: src/gui/serverdialog.cpp:260 src/keyboardconfig.cpp:277
 msgid "Quit"
 msgstr "Izlaz"
 
-#: src/gui/buy.cpp:97 src/gui/sell.cpp:92 src/gui/statuswindow.cpp:488
+#: src/gui/buydialog.cpp:97 src/gui/sell.cpp:92 src/gui/statuswindow.cpp:488
 #: src/gui/statuswindow.cpp:537 src/gui/statuswindow.cpp:937
 #: src/gui/statuswindow.cpp:968
 msgid "Max"
 msgstr "Max"
 
-#: src/gui/buysell.cpp:38 src/gui/buysell.cpp:47
+#: src/gui/buyselldialog.cpp:38 src/gui/buyselldialog.cpp:47
 #: src/gui/inventorywindow.cpp:143
 msgid "Shop"
 msgstr "Trgovina"
 
-#: src/gui/buysell.cpp:63 src/gui/sell.cpp:51 src/gui/sell.cpp:58
+#: src/gui/buyselldialog.cpp:63 src/gui/sell.cpp:51 src/gui/sell.cpp:58
 #: src/gui/sell.cpp:90
 msgid "Sell"
 msgstr "Prodaj"
 
-#: src/gui/buysell.cpp:63 src/gui/changeemaildialog.cpp:57
+#: src/gui/buyselldialog.cpp:63 src/gui/changeemaildialog.cpp:57
 #: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:80
-#: src/gui/connectiondialog.cpp:45 src/gui/itemamount.cpp:207
+#: src/gui/connectiondialog.cpp:45 src/gui/itemamountwindow.cpp:207
 #: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1278
 #: src/gui/popupmenu.cpp:1305 src/gui/popupmenu.cpp:1350
 #: src/gui/popupmenu.cpp:1388 src/gui/popupmenu.cpp:1423
 #: src/gui/popupmenu.cpp:1457 src/gui/quitdialog.cpp:58
 #: src/gui/register.cpp:80 src/gui/setup.cpp:65 src/gui/socialwindow.cpp:787
 #: src/gui/textcommandeditor.cpp:231 src/gui/textdialog.cpp:45
-#: src/gui/unregisterdialog.cpp:57 src/gui/updatewindow.cpp:154
+#: src/gui/unregisterdialog.cpp:57 src/gui/updatewindow.cpp:155
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -965,7 +586,7 @@ msgstr "Odjavi"
 msgid "Change Email"
 msgstr "Promijeni Email Adresu"
 
-#: src/gui/charselectdialog.cpp:377 src/gui/serverdialog.cpp:257
+#: src/gui/charselectdialog.cpp:377 src/gui/serverdialog.cpp:264
 #: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:234
 msgid "Delete"
@@ -985,89 +606,89 @@ msgstr "Nivo: %d"
 msgid "(empty)"
 msgstr ""
 
-#: src/gui/chat.cpp:93
+#: src/gui/chatwindow.cpp:93
 #, fuzzy
 msgid "default"
 msgstr "Zadano"
 
-#: src/gui/chat.cpp:94
+#: src/gui/chatwindow.cpp:94
 msgid "black"
 msgstr ""
 
-#: src/gui/chat.cpp:95
+#: src/gui/chatwindow.cpp:95
 #, fuzzy
 msgid "red"
 msgstr "Prijatelj"
 
-#: src/gui/chat.cpp:96
+#: src/gui/chatwindow.cpp:96
 #, fuzzy
 msgid "green"
 msgstr "Zelena: "
 
-#: src/gui/chat.cpp:97
+#: src/gui/chatwindow.cpp:97
 #, fuzzy
 msgid "blue"
 msgstr "Plava: "
 
-#: src/gui/chat.cpp:98
+#: src/gui/chatwindow.cpp:98
 msgid "gold"
 msgstr ""
 
-#: src/gui/chat.cpp:99
+#: src/gui/chatwindow.cpp:99
 #, fuzzy
 msgid "yellow"
 msgstr "nisko"
 
-#: src/gui/chat.cpp:100
+#: src/gui/chatwindow.cpp:100
 #, fuzzy
 msgid "pink"
 msgstr "Hiperveza"
 
-#: src/gui/chat.cpp:101
+#: src/gui/chatwindow.cpp:101
 msgid "purple"
 msgstr ""
 
-#: src/gui/chat.cpp:102
+#: src/gui/chatwindow.cpp:102
 msgid "grey"
 msgstr ""
 
-#: src/gui/chat.cpp:103
+#: src/gui/chatwindow.cpp:103
 msgid "brown"
 msgstr ""
 
-#: src/gui/chat.cpp:104
+#: src/gui/chatwindow.cpp:104
 #, fuzzy
 msgid "rainbow 1"
 msgstr "Duga"
 
-#: src/gui/chat.cpp:105
+#: src/gui/chatwindow.cpp:105
 #, fuzzy
 msgid "rainbow 2"
 msgstr "Duga"
 
-#: src/gui/chat.cpp:106
+#: src/gui/chatwindow.cpp:106
 #, fuzzy
 msgid "rainbow 3"
 msgstr "Duga"
 
-#: src/gui/chat.cpp:123 src/gui/itemamount.cpp:91 src/gui/login.cpp:76
-#: src/gui/setup_players.cpp:216 src/gui/setup_theme.cpp:68
-#: src/gui/setup_video.cpp:164 src/gui/setup_video.cpp:189
-#: src/gui/textcommandeditor.cpp:98 src/gui/textcommandeditor.cpp:137
-#: src/gui/textcommandeditor.cpp:156
+#: src/gui/chatwindow.cpp:123 src/gui/itemamountwindow.cpp:91
+#: src/gui/login.cpp:76 src/gui/setup_players.cpp:216
+#: src/gui/setup_theme.cpp:68 src/gui/setup_video.cpp:164
+#: src/gui/setup_video.cpp:189 src/gui/textcommandeditor.cpp:98
+#: src/gui/textcommandeditor.cpp:137 src/gui/textcommandeditor.cpp:156
 msgid "???"
 msgstr "???"
 
-#: src/gui/chat.cpp:133 src/gui/setup_chat.cpp:61
+#: src/gui/chatwindow.cpp:133 src/gui/setup_chat.cpp:61
 msgid "Chat"
 msgstr "Chat"
 
-#: src/gui/chat.cpp:560
+#: src/gui/chatwindow.cpp:561
 #, fuzzy, c-format
 msgid "Present: %s; %d players are present."
 msgstr "%d igrača je prisutno."
 
-#: src/gui/chat.cpp:939
+#: src/gui/chatwindow.cpp:940
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Šaptaj prema %s: %s"
@@ -1202,7 +823,7 @@ msgstr ""
 msgid "Out: %d bytes/s"
 msgstr ""
 
-#: src/gui/editdialog.cpp:44 src/gui/itemamount.cpp:206
+#: src/gui/editdialog.cpp:44 src/gui/itemamountwindow.cpp:206
 #: src/gui/okdialog.cpp:43 src/gui/quitdialog.cpp:57 src/gui/textdialog.cpp:44
 #: src/gui/trade.cpp:82 src/gui/trade.cpp:84
 msgid "OK"
@@ -1219,11 +840,11 @@ msgstr "Oprema"
 msgid "Unequip"
 msgstr "Skini opremu"
 
-#: src/gui/help.cpp:39
+#: src/gui/helpwindow.cpp:39
 msgid "Help"
 msgstr "Pomoć"
 
-#: src/gui/help.cpp:53 src/gui/inventorywindow.cpp:172
+#: src/gui/helpwindow.cpp:53 src/gui/inventorywindow.cpp:172
 #: src/gui/npcdialog.cpp:51 src/gui/shopwindow.cpp:109
 msgid "Close"
 msgstr "Zatvori"
@@ -1310,39 +931,39 @@ msgstr "Preuzmi"
 msgid "Drop"
 msgstr "Ispusti"
 
-#: src/gui/itemamount.cpp:208
+#: src/gui/itemamountwindow.cpp:208
 msgid "All"
 msgstr "Sve"
 
-#: src/gui/itemamount.cpp:259
+#: src/gui/itemamountwindow.cpp:259
 msgid "Select amount of items to trade."
 msgstr "Odaberi količinu predmeta za razmjenu."
 
-#: src/gui/itemamount.cpp:262
+#: src/gui/itemamountwindow.cpp:262
 msgid "Select amount of items to drop."
 msgstr "Odaberi količinu predmeta za ispuštanje."
 
-#: src/gui/itemamount.cpp:265
+#: src/gui/itemamountwindow.cpp:265
 msgid "Select amount of items to store."
 msgstr "Odaberite količinu predmeta za spremanje."
 
-#: src/gui/itemamount.cpp:268
+#: src/gui/itemamountwindow.cpp:268
 msgid "Select amount of items to retrieve."
 msgstr "Odaberite iznos predmeta za preuzimanje."
 
-#: src/gui/itemamount.cpp:271
+#: src/gui/itemamountwindow.cpp:271
 msgid "Select amount of items to split."
 msgstr "Odaberi količinu predmeta za razdvajanje."
 
-#: src/gui/itemamount.cpp:274
+#: src/gui/itemamountwindow.cpp:274
 msgid "Add to buy shop."
 msgstr ""
 
-#: src/gui/itemamount.cpp:277
+#: src/gui/itemamountwindow.cpp:277
 msgid "Add to sell shop."
 msgstr ""
 
-#: src/gui/itemamount.cpp:280
+#: src/gui/itemamountwindow.cpp:280
 #, fuzzy
 msgid "Unknown."
 msgstr "Nepoznata greška"
@@ -1489,7 +1110,7 @@ msgstr "Zatvori"
 msgid "Skip"
 msgstr ""
 
-#: src/gui/login.cpp:84 src/gui/login.cpp:119
+#: src/gui/login.cpp:84 src/gui/login.cpp:120
 msgid "Login"
 msgstr "Korisničko ime"
 
@@ -1511,11 +1132,11 @@ msgstr "Zapamti korisničko ime"
 msgid "Update:"
 msgstr ""
 
-#: src/gui/login.cpp:117 src/gui/register.cpp:64 src/gui/register.cpp:79
+#: src/gui/login.cpp:118 src/gui/register.cpp:64 src/gui/register.cpp:79
 msgid "Register"
 msgstr "Registriraj se"
 
-#: src/gui/login.cpp:118
+#: src/gui/login.cpp:119
 #, fuzzy
 msgid "Change Server"
 msgstr "Server"
@@ -2011,56 +1632,56 @@ msgstr "Izaberite vaš server"
 msgid "Port:"
 msgstr "Port:"
 
-#: src/gui/serverdialog.cpp:229
+#: src/gui/serverdialog.cpp:231
+msgid "Use same ip for game sub servers"
+msgstr ""
+
+#: src/gui/serverdialog.cpp:246
 #, fuzzy
 msgid "Server type:"
 msgstr "Poslužitelj:"
 
-#: src/gui/serverdialog.cpp:232
-msgid "Use same ip for game sub servers"
-msgstr ""
-
-#: src/gui/serverdialog.cpp:254
+#: src/gui/serverdialog.cpp:261
 msgid "Load"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:255
+#: src/gui/serverdialog.cpp:262
 #, fuzzy
 msgid "Connect"
 msgstr "Spajanje..."
 
-#: src/gui/serverdialog.cpp:256
+#: src/gui/serverdialog.cpp:263
 #, fuzzy
 msgid "Custom Server"
 msgstr "Vlastiti kursor"
 
-#: src/gui/serverdialog.cpp:361
+#: src/gui/serverdialog.cpp:370
 msgid "Please type both the address and the port of a server."
 msgstr "Molimo upišite adresu poslužitelja i port poslužitelja."
 
-#: src/gui/serverdialog.cpp:494
+#: src/gui/serverdialog.cpp:513
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:499
+#: src/gui/serverdialog.cpp:518
 #, fuzzy
 msgid "Waiting for server..."
 msgstr "Čekanje servera"
 
-#: src/gui/serverdialog.cpp:503
+#: src/gui/serverdialog.cpp:522
 msgid "Preparing download"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:507
+#: src/gui/serverdialog.cpp:526
 msgid "Error retreiving server list!"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:604
+#: src/gui/serverdialog.cpp:624
 msgid "requires a newer version"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:606
+#: src/gui/serverdialog.cpp:626
 #, c-format
 msgid "requires v%s"
 msgstr ""
@@ -3576,34 +3197,34 @@ msgstr "Nemate dovoljno novca."
 msgid "Name: %s"
 msgstr "Ime: %s"
 
-#: src/gui/updatewindow.cpp:133
+#: src/gui/updatewindow.cpp:134
 msgid "Updating..."
 msgstr "Ažuriranje"
 
-#: src/gui/updatewindow.cpp:152
+#: src/gui/updatewindow.cpp:153
 msgid "Connecting..."
 msgstr "Spajanje..."
 
-#: src/gui/updatewindow.cpp:155
+#: src/gui/updatewindow.cpp:156
 msgid "Play"
 msgstr "Igraj"
 
-#: src/gui/updatewindow.cpp:535
+#: src/gui/updatewindow.cpp:545
 msgid "##1  The update process is incomplete."
 msgstr "##1  Proces ažuriranja je nepotpun."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:537
+#: src/gui/updatewindow.cpp:547
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Vrlo je preporučljivo da"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:539
+#: src/gui/updatewindow.cpp:549
 #, fuzzy
 msgid "##1  you try again later."
 msgstr "##1  pokušate ponovno kasnije"
 
-#: src/gui/updatewindow.cpp:665
+#: src/gui/updatewindow.cpp:675
 msgid "Completed"
 msgstr "Dovršeno"
 
@@ -3848,6 +3469,12 @@ msgstr "Naredba: /op <nadimak>"
 msgid "This command makes <nick> a channel operator."
 msgstr "Ova naredba čini <nadimak> operatorom kanala."
 
+#: src/gui/widgets/channeltab.cpp:83 src/gui/widgets/channeltab.cpp:92
+#: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
+msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
+msgstr ""
+"Ako <nick> ima razmake u sebi, zatvoriti ga u dvostrukim navodnicima (\")."
+
 #: src/gui/widgets/channeltab.cpp:85
 msgid "Channel operators can kick and op other users from the channel."
 msgstr "Kanal operatori mogu kick i op ostale korisnike iz kanala."
@@ -3911,6 +3538,11 @@ msgstr "Naredba: /item"
 #, fuzzy
 msgid "This command ignores the other player regardless of current relations."
 msgstr "Ova naredba prikazuje broj igrača trenutno online."
+
+#: src/gui/widgets/whispertab.cpp:128
+#, fuzzy
+msgid "Command: /unignore <player>"
+msgstr "Naredba: /item <policy>"
 
 #: src/gui/widgets/whispertab.cpp:129
 #, fuzzy
@@ -4463,7 +4095,7 @@ msgstr[1] "Pokupili ste %s [@@%d|%s@@]."
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3742
+#: src/localplayer.cpp:3752
 #, fuzzy
 msgid "You see "
 msgstr "Vi dobijete %s."
@@ -5091,20 +4723,20 @@ msgstr "Šapat nije mogao biti poslan, korisnik je offline."
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
 
-#: src/net/tmwa/chathandler.cpp:334
+#: src/net/tmwa/chathandler.cpp:336
 #, fuzzy
 msgid "MVP player."
 msgstr "Igrač"
 
-#: src/net/tmwa/chathandler.cpp:338
+#: src/net/tmwa/chathandler.cpp:340
 #, fuzzy
 msgid "MVP player: "
 msgstr "Igrač"
 
-#: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
-#: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
-#: src/net/tmwa/chathandler.cpp:413 src/net/tmwa/chathandler.cpp:419
-#: src/net/tmwa/chathandler.cpp:426 src/net/tmwa/chathandler.cpp:432
+#: src/net/tmwa/chathandler.cpp:393 src/net/tmwa/chathandler.cpp:399
+#: src/net/tmwa/chathandler.cpp:404 src/net/tmwa/chathandler.cpp:410
+#: src/net/tmwa/chathandler.cpp:415 src/net/tmwa/chathandler.cpp:421
+#: src/net/tmwa/chathandler.cpp:428 src/net/tmwa/chathandler.cpp:434
 msgid "Channels are not supported!"
 msgstr "Kanali nisu podržani!"
 
@@ -5396,6 +5028,10 @@ msgstr ""
 #: src/net/tmwa/gui/partytab.cpp:72
 msgid "/exp > Show/change party experience sharing options"
 msgstr ""
+
+#: src/net/tmwa/gui/partytab.cpp:82
+msgid "This command invites <nick> to party with you."
+msgstr "Ova naredba poziva <nick> na partiju sa vama."
 
 #: src/net/tmwa/gui/partytab.cpp:89
 msgid "This command causes the player to leave the party."
@@ -5872,6 +5508,213 @@ msgstr "Mana %+d"
 #: src/resources/itemdb.cpp:155
 msgid "Unknown item"
 msgstr "Nepoznati predmet"
+
+#~ msgid "-- Help --"
+#~ msgstr "-- Pomoć --"
+
+#~ msgid "/help > Display this help"
+#~ msgstr "/help > Prikaži ovu pomoć"
+
+#~ msgid "/where > Display map name"
+#~ msgstr "/where > Prikaži ime karte"
+
+#~ msgid "/who > Display number of online users"
+#~ msgstr "/who > Prikaži broj trenutno prijavljenih korisnika"
+
+#~ msgid "/me > Tell something about yourself"
+#~ msgstr "/me > Recite nešto o sebi"
+
+#~ msgid "/clear > Clears this window"
+#~ msgstr "/clear > Očisti ovaj prozor"
+
+#~ msgid "/msg > Send a private message to a user"
+#~ msgstr "/msg > Pošaljite privatnu poruku korisniku"
+
+#~ msgid "/whisper > Alias of msg"
+#~ msgstr "/whisper > Alias za msg"
+
+#~ msgid "/w > Alias of msg"
+#~ msgstr "/w > Alias za msg"
+
+#~ msgid "/query > Makes a tab for private messages with another user"
+#~ msgstr "/query > Čini karticu za privatne poruke s drugim korisnikom"
+
+#~ msgid "/q > Alias of query"
+#~ msgstr "/q > Alias od query"
+
+#, fuzzy
+#~ msgid "/ignoreall > Ignore all opened whisper tabs"
+#~ msgstr "/close > Zatvara karticu za šaptaje"
+
+#, fuzzy
+#~ msgid "/disregard > Disregard a player"
+#~ msgstr "@@disregard|Zanemari %s@@"
+
+#~ msgid "/list > Display all public channels"
+#~ msgstr "/list > Prikaži sve javne kanale"
+
+#~ msgid "/join > Join or create a channel"
+#~ msgstr "/join > Pridruži se ili napravi kanal"
+
+#, fuzzy
+#~ msgid "/createparty > Create a new party"
+#~ msgstr "/create > Napravi novu partiju"
+
+#, fuzzy
+#~ msgid "/createguild > Create a new guild"
+#~ msgstr "/create > Napravi novu partiju"
+
+#~ msgid "/party > Invite a user to party"
+#~ msgstr "/party > Pozovite korisnike na partiju"
+
+#~ msgid "/announce > Global announcement (GM only)"
+#~ msgstr "/announce > Globalna obavijest (samo GM)"
+
+#, fuzzy
+#~ msgid "/closeall > Close all opened whisper tabs"
+#~ msgstr "/close > Zatvara karticu za šaptaje"
+
+#, fuzzy
+#~ msgid "/mail > Send offline message to player"
+#~ msgstr "/msg > Pošaljite privatnu poruku korisniku"
+
+#~ msgid "For more information, type /help <command>."
+#~ msgstr "Za više informacija, utipkajte /pomoć <naredba>."
+
+#~ msgid "Command: /help"
+#~ msgstr "Naredba: /pomoć"
+
+#~ msgid "This command displays a list of all commands available."
+#~ msgstr "Ova naredba prikazuje listu svih raspoloživih naredbi."
+
+#~ msgid "Command: /help <command>"
+#~ msgstr "Naredba: /pomoć <naredba>"
+
+#~ msgid "This command displays help on <command>."
+#~ msgstr "Ova naredba prikazuje pomoć pri <naredba>."
+
+#~ msgid "Command: /announce <msg>"
+#~ msgstr "Command: /announce <msg>"
+
+#~ msgid "*** only available to a GM ***"
+#~ msgstr "*** dostupno samo za GM ***"
+
+#~ msgid ""
+#~ "This command sends the message <msg> to all players currently online."
+#~ msgstr "Ova naredba šalje poruku <msg> svim igračima trenutno online."
+
+#~ msgid "Command: /clear"
+#~ msgstr "Naredba: /clear"
+
+#~ msgid "This command clears the chat log of previous chat."
+#~ msgstr "Ova naredba briše chat log prethodnog chata."
+
+#, fuzzy
+#~ msgid "Command: /ignore <player>"
+#~ msgstr "Naredba: /item <policy>"
+
+#, fuzzy
+#~ msgid ""
+#~ "This command ignores the given player regardless of current relations."
+#~ msgstr "Ova naredba prikazuje broj igrača trenutno online."
+
+#~ msgid "Command: /join <channel>"
+#~ msgstr "Naredba: /join <channel>"
+
+#~ msgid "This command makes you enter <channel>."
+#~ msgstr "Ova naredba vas unaša u <channel>."
+
+#~ msgid "If <channel> doesn't exist, it's created."
+#~ msgstr "Ako <channel> ne postoji, onda je napravljen."
+
+#~ msgid "Command: /list"
+#~ msgstr "Naredba: /list"
+
+#~ msgid "This command shows a list of all channels."
+#~ msgstr "Ova naredba prikazuje listu svih kanala."
+
+#~ msgid "Command: /me <message>"
+#~ msgstr "Naredba: /me <message>"
+
+#~ msgid "This command tell others you are (doing) <msg>."
+#~ msgstr "Ova naredba govori drugima da vi (radite) <msg>."
+
+#~ msgid "Command: /msg <nick> <message>"
+#~ msgstr "Naredba: /msg <nick> <message>"
+
+#~ msgid "Command: /whisper <nick> <message>"
+#~ msgstr "Naredba: /whisper <nick> <message>"
+
+#~ msgid "Command: /w <nick> <message>"
+#~ msgstr "Naredba: /w <nick> <message>"
+
+#~ msgid "This command sends the text <message> to <nick>."
+#~ msgstr "Ova naredba šalje tekst <message> za <nick>."
+
+#~ msgid "Command: /query <nick>"
+#~ msgstr "Naredba: /query <nick>"
+
+#~ msgid "Command: /q <nick>"
+#~ msgstr "Naredba: /q <nick>"
+
+#~ msgid "This command tries to make a tab for whispers betweenyou and <nick>."
+#~ msgstr ""
+#~ "Ova naredba pokušava napraviti karticu za šaptanje između vas i <nick>."
+
+#, fuzzy
+#~ msgid "Command: /away <afk reason>"
+#~ msgstr "Naredba: /w <nick> <message>"
+
+#, fuzzy
+#~ msgid "Command: /away"
+#~ msgstr "Naredba: /who"
+
+#, fuzzy
+#~ msgid "This command clears the away status and message."
+#~ msgstr "Ova naredba postavlja temu za <message>."
+
+#, fuzzy
+#~ msgid "Command: /createparty <name>"
+#~ msgstr "Naredba: /create <ime-partije>"
+
+#, fuzzy
+#~ msgid "This command creates a new party called <name>."
+#~ msgstr "Ove naredbe kreira novu partiju zvanu <party-name>."
+
+#, fuzzy
+#~ msgid "Command: /createguild <name>"
+#~ msgstr "Naredba: /create <ime-partije>"
+
+#, fuzzy
+#~ msgid "This command creates a new guild called <name>."
+#~ msgstr "Ove naredbe kreira novu partiju zvanu <party-name>."
+
+#~ msgid "Command: /party <nick>"
+#~ msgstr "Naredba: /party <nick>"
+
+#~ msgid "Command: /present"
+#~ msgstr "Naredba: /present"
+
+#~ msgid "Command: /toggle <state>"
+#~ msgstr "Naredba: /toggle <state>"
+
+#~ msgid "Command: /toggle"
+#~ msgstr "Naredba: /toggle"
+
+#~ msgid "Command: /where"
+#~ msgstr "Naredba: /where"
+
+#~ msgid "This command displays the name of the current map."
+#~ msgstr "Ova naredba prikazuje naziv trenutne karte."
+
+#~ msgid "Command: /who"
+#~ msgstr "Naredba: /who"
+
+#~ msgid "This command displays the number of players currently online."
+#~ msgstr "Ova naredba prikazuje broj igrača trenutno online."
+
+#~ msgid "Type /help for a list of commands."
+#~ msgstr "Upišite /help za listu svih naredbi."
 
 #, fuzzy
 #~ msgid "Particle detail: %s"
