@@ -26,6 +26,7 @@
 #include "commandhandler.h"
 #include "localplayer.h"
 #include "log.h"
+#include "main.h"
 
 #include "gui/theme.h"
 

@@ -61,6 +61,7 @@ HelpWindow::HelpWindow():
 
     mBrowserBox->setLinkHandler(this);
     mBrowserBox->setFont(gui->getHelpFont());
+    mBrowserBox->setProcessVersion(true);
 
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
     place(4, 3, okButton);

@@ -51,7 +51,8 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mWidth(0),
     mYStart(0),
     mUpdateTime(-1),
-    mAlwaysUpdate(true)
+    mAlwaysUpdate(true),
+    mProcessVersion(false)
 {
     setFocusable(true);
     addMouseListener(this);
@@ -135,6 +136,9 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     {
         newRow = row;
     }
+
+    if (mProcessVersion)
+        newRow = replaceAll(newRow, "%VER%", SMALL_VERSION);
 
     if (atTop)
         mTextRows.push_front(newRow);

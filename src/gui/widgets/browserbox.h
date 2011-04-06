@@ -175,6 +175,9 @@ class BrowserBox : public gcn::Widget,
         void setAlwaysUpdate(bool n)
         { mAlwaysUpdate = n; }
 
+        void setProcessVersion(bool n)
+        { mProcessVersion = n; }
+
     private:
         int calcHeight();
 
@@ -201,6 +204,7 @@ class BrowserBox : public gcn::Widget,
         int mYStart;
         int mUpdateTime;
         bool mAlwaysUpdate;
+        bool mProcessVersion;
 };
 
 #endif
