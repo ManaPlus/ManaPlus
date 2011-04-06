@@ -22,6 +22,8 @@
 
 #include "gui/helpwindow.h"
 
+#include "log.h"
+
 #include "gui/gui.h"
 #include "gui/setup.h"
 
@@ -95,12 +97,22 @@ void HelpWindow::loadHelp(const std::string &helpFile)
 
 void HelpWindow::loadFile(const std::string &file)
 {
+    const std::string lang = getLang();
     ResourceManager *resman = ResourceManager::getInstance();
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
-    std::vector<std::string> lines =
-        resman->loadTextFile(helpPath + file + ".txt");
+
+    std::vector<std::string> lines;
+    if (!lang.empty())
+    {
+        const std::string name = helpPath + lang + "/" + file + ".txt";
+        if (resman->exists(name))
+            lines = resman->loadTextFile(name);
+    }
+
+    if (lines.empty())
+        lines = resman->loadTextFile(helpPath + file + ".txt");
 
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);

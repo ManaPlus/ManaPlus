@@ -439,3 +439,17 @@ std::string combineDye2(std::string file, std::string dye)
         return file;
     }
 }
+
+std::string getLang()
+{
+    char *lng = getenv("LANG");
+    if (!lng)
+        return "";
+
+    std::string lang(lng);
+    int dot = lang.find(".");
+    if (dot == std::string::npos && dot > 0)
+        return lang;
+
+    return lang.substr(0, dot);
+}

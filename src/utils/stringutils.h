@@ -177,4 +177,6 @@ std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);
 
+std::string getLang();
+
 #endif // UTILS_STRINGUTILS_H
