@@ -1,7 +1,9 @@
  <- @@index|Back to Index@@
  
  
-##3                      === ABOUT MANA ===
+##3                      === ABOUT MANAPLUS ===
+ ##2ManaPlus##P is extended client based on code from ##2Mana##P client.
+ Added many features, improved perfomance, stability, security and more.
  
  ##2Mana##P is a serious effort to create an innovative free and open
  source MMORPG Client. Mana uses 2D graphics and aims to create a large
@@ -13,4 +15,3 @@
  is the originator of the Mana project. Mana was split off to further
  facilitate development of other worlds.
  
- ##2ManaPlus##P is extended client.
