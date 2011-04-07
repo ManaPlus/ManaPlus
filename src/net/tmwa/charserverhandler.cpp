@@ -471,7 +471,10 @@ void CharServerHandler::connect()
     outMsg.writeInt32(token.session_ID2);
     // [Fate] The next word is unused by the old char server, so we squeeze in
     //        mana client version information
-    outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
+    if (serverVersion > 0)
+        outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
+    else
+        outMsg.writeInt16(CLIENT_TMW_PROTOCOL_VERSION);
     outMsg.writeInt8((token.sex == GENDER_MALE) ? 1 : 0);
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
