@@ -86,6 +86,9 @@ class Setup_Chat : public SetupTab, public gcn::ActionListener
         gcn::CheckBox *mShowBattleEventsCheckBox;
         bool mShowBattleEvents;
 
+        gcn::CheckBox *mHideChatInputCheckBox;
+        bool mHideChatInput;
+
         EditDialog *mEditDialog;
 };
 

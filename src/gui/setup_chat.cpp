@@ -54,6 +54,7 @@
 #define ACTION_SHOW_CHAT_HISTORY "show chat history"
 #define ACTION_ENABLE_BATTLE_TAB "show battle tab"
 #define ACTION_SHOW_BATTLE_EVENTS "show battle events"
+#define ACTION_RESIZE_CHAT "resize chat"
 
 Setup_Chat::Setup_Chat() :
     mEditDialog(0)
@@ -127,6 +128,10 @@ Setup_Chat::Setup_Chat() :
 
     mMaxLinesField = new IntTextField(maxLinesLimit, 0, 500, mMaxLines, 20);
 
+    mHideChatInput = config.getBoolValue("hideChatInput");
+    mHideChatInputCheckBox = new CheckBox(_("Resize chat tabs if need"),
+        mHideChatInput, this, ACTION_RESIZE_CHAT);
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -148,6 +153,7 @@ Setup_Chat::Setup_Chat() :
     place(0, 10, mShowChatHistoryCheckBox, 10);
     place(0, 11, mEnableBattleTabCheckBox, 10);
     place(0, 12, mShowBattleEventsCheckBox, 10);
+    place(0, 13, mHideChatInputCheckBox, 10);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -232,6 +238,10 @@ void Setup_Chat::action(const gcn::ActionEvent &event)
     {
         mShowBattleEvents = mShowBattleEventsCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_RESIZE_CHAT)
+    {
+        mHideChatInput = mHideChatInputCheckBox->isSelected();
+    }
 }
 
 void Setup_Chat::cancel()
@@ -281,6 +291,9 @@ void Setup_Chat::cancel()
 
     mShowBattleEvents = config.getBoolValue("showBattleEvents");
     mShowBattleEventsCheckBox->setSelected(mShowBattleEvents);
+
+    mHideChatInput = config.getBoolValue("hideChatInput");
+    mHideChatInputCheckBox->setSelected(mHideChatInput);
 }
 
 void Setup_Chat::apply()
@@ -304,4 +317,8 @@ void Setup_Chat::apply()
     config.setValue("showChatHistory", mShowChatHistory);
     config.setValue("enableBattleTab", mEnableBattleTab);
     config.setValue("showBattleEvents", mShowBattleEvents);
+
+    config.setValue("hideChatInput", mHideChatInput);
+    if (chatWindow)
+        chatWindow->adjustTabSize();
 }

@@ -71,8 +71,9 @@
 class ChatInput : public TextField, public gcn::FocusListener
 {
     public:
-        ChatInput():
-            TextField("", false)
+        ChatInput(TabbedArea *tabs):
+            TextField("", false),
+            mChatTabs(tabs)
         {
             setVisible(false);
             addFocusListener(this);
@@ -84,8 +85,26 @@ class ChatInput : public TextField, public gcn::FocusListener
          */
         void focusLost(const gcn::Event &event _UNUSED_)
         {
-            setVisible(false);
+            processVisible(false);
         }
+
+        void processVisible(bool n)
+        {
+            if (!mChatTabs || isVisible() == n)
+                return;
+
+            if (config.getBoolValue("hideChatInput"))
+            {
+                if (n)
+                    mChatTabs->setHeight(mChatTabs->getHeight() - getHeight());
+                else
+                    mChatTabs->setHeight(mChatTabs->getHeight() + getHeight());
+            }
+            setVisible(n);
+        }
+
+    private:
+        TabbedArea *mChatTabs;
 };
 
 const char *COLOR_NAME[14] =
@@ -154,12 +173,12 @@ ChatWindow::ChatWindow():
 
     mItemLinkHandler = new ItemLinkHandler;
 
-    mChatInput = new ChatInput;
-    mChatInput->setActionEventId("chatinput");
-    mChatInput->addActionListener(this);
-
     mChatTabs = new TabbedArea;
     mChatTabs->enableScrollButtons(true);
+
+    mChatInput = new ChatInput(mChatTabs);
+    mChatInput->setActionEventId("chatinput");
+    mChatInput->addActionListener(this);
 
     mChatColor = config.getIntValue("chatColor");
     mColorListModel = new ColorListModel;
@@ -282,8 +301,12 @@ void ChatWindow::adjustTabSize()
     mChatInput->setWidth(area.width - 2 * mChatInput->getFrameSize());
 
     mChatTabs->setWidth(area.width - 2 * mChatTabs->getFrameSize());
-    mChatTabs->setHeight(area.height - 2 * mChatTabs->getFrameSize() -
-        (mChatInput->getHeight() + mChatInput->getFrameSize() * 2));
+    int height = area.height - 2 * mChatTabs->getFrameSize() -
+        (mChatInput->getHeight() + mChatInput->getFrameSize() * 2);
+    if (mChatInput->isVisible() || !config.getBoolValue("hideChatInput"))
+        mChatTabs->setHeight(height);
+    else
+        mChatTabs->setHeight(height + mChatInput->getHeight());
 
     ChatTab *tab = getFocused();
     if (tab)
@@ -442,7 +465,7 @@ bool ChatWindow::requestChatFocus()
         return false;
 
     // Give focus to the chat input
-    mChatInput->setVisible(true);
+    mChatInput->processVisible(true);
     mChatInput->requestFocus();
     return true;
 }
@@ -684,7 +707,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
     else if (keyboard.isKeyActive(keyboard.KEY_DEACTIVATE_CHAT) &&
              mChatInput->isVisible())
     {
-        mChatInput->setVisible(false);
+        mChatInput->processVisible(false);
     }
     else if (keyboard.isKeyActive(keyboard.KEY_CHAT_PREV_HISTORY) &&
              mChatInput->isVisible())

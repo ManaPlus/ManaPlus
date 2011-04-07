@@ -246,6 +246,8 @@ class ChatWindow : public Window,
 
         std::string doReplace(const std::string &msg);
 
+        void adjustTabSize();
+
     protected:
         friend class ChatTab;
         friend class WhisperTab;
@@ -260,8 +262,6 @@ class ChatWindow : public Window,
         void addTab(ChatTab *tab);
 
         void removeWhisper(const std::string &nick);
-
-        void adjustTabSize();
 
         void autoComplete();
 

@@ -195,6 +195,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showJobExp", true);
     AddDEF(configData, "showBeingPopup", true);
     AddDEF(configData, "showExtMinimaps", false);
+    AddDEF(configData, "hideChatInput", true);
     return configData;
 }
 
