@@ -175,6 +175,7 @@ data/themes/pink/Makefile
 data/themes/redandblack/Makefile
 data/themes/wood/Makefile
 data/help/Makefile
+data/help/ru_RU/Makefile
 data/icons/Makefile
 docs/Makefile
 po/Makefile.in

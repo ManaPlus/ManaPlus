@@ -1,6 +1,6 @@
 ##3                             === INDEX ===
 
- ##1-> @@about|About The Mana World@@
+ ##1-> @@about|About@@
  -> @@team|Manaplus developers@@
  -> @@teamtmw|TMW Development Team@@
 
