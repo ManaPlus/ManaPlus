@@ -175,6 +175,7 @@ ChatWindow::ChatWindow():
 
     mChatTabs = new TabbedArea;
     mChatTabs->enableScrollButtons(true);
+    mChatTabs->setFollowDownScroll(true);
 
     mChatInput = new ChatInput(mChatTabs);
     mChatInput->setActionEventId("chatinput");

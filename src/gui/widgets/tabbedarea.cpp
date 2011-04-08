@@ -22,18 +22,21 @@
 
 #include "gui/widgets/tabbedarea.h"
 
+#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"
 
 #include "log.h"
 
 #include <guichan/widgets/container.hpp>
 
-TabbedArea::TabbedArea() : gcn::TabbedArea(),
-                           mTabsWidth(0),
-                           mVisibleTabsWidth(0),
-                           mTabScrollIndex(0),
-                           mEnableScrollButtons(false),
-                           mRightMargin(0)
+TabbedArea::TabbedArea()
+    : gcn::TabbedArea(),
+      mTabsWidth(0),
+      mVisibleTabsWidth(0),
+      mTabScrollIndex(0),
+      mEnableScrollButtons(false),
+      mRightMargin(0),
+      mFollowDownScroll(false)
 {
     mWidgetContainer->setOpaque(false);
     addWidgetListener(this);
@@ -246,7 +249,27 @@ void TabbedArea::widgetResized(const gcn::Event &event _UNUSED_)
 
     gcn::Widget *w = getCurrentWidget();
     if (w)
+    {
+        int newScroll = 0;
+        ScrollArea* scr = 0;
+        if (mFollowDownScroll && height != 0)
+        {
+            gcn::Rectangle rect = w->getDimension();
+            if (rect.height != 0 && rect.height > height)
+            {
+                scr = dynamic_cast<ScrollArea*>(w);
+                if (scr && scr->getVerticalScrollAmount()
+                    == scr->getVerticalMaxScroll())
+                {
+                    newScroll = scr->getVerticalScrollAmount()
+                        + rect.height - height;
+                }
+            }
+        }
         w->setSize(width, height);
+        if (scr && newScroll)
+            scr->setVerticalScrollAmount(newScroll);
+    }
 
     if (mArrowButton[1])
     {

@@ -139,6 +139,12 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         int getRightMargin()
         { return mRightMargin; }
 
+        void setFollowDownScroll(bool n)
+        { mFollowDownScroll = n; }
+
+        bool getFollowDownScroll()
+        { return mFollowDownScroll; }
+
     private:
         typedef std::vector< std::pair<gcn::Tab*, gcn::Widget*> > TabContainer;
 
@@ -181,6 +187,7 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
 
         bool mEnableScrollButtons;
         int mRightMargin;
+        bool mFollowDownScroll;
 };
 
 #endif
