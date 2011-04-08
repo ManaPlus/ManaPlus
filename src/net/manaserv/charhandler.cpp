@@ -310,7 +310,7 @@ void CharHandler::newCharacter(const std::string &name,
                                int slot,
                                bool gender,
                                int hairstyle,
-                               int hairColor,
+                               int hairColor, unsigned char race,
                                const std::vector<int> &stats)
 {
     MessageOut msg(PAMSG_CHAR_CREATE);

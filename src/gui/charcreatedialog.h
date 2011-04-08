@@ -86,6 +86,8 @@ class CharCreateDialog : public Window, public gcn::ActionListener
 
         void updateHair();
 
+        void updateRace();
+
         CharSelectDialog *mCharSelectDialog;
 
         gcn::TextField *mNameField;
@@ -96,6 +98,9 @@ class CharCreateDialog : public Window, public gcn::ActionListener
         gcn::Button *mNextHairStyleButton;
         gcn::Button *mPrevHairStyleButton;
         gcn::Label *mHairStyleLabel;
+        gcn::Button *mNextRaceButton;
+        gcn::Button *mPrevRaceButton;
+        gcn::Label *mRaceLabel;
 
         gcn::RadioButton *mMale;
         gcn::RadioButton *mFemale;
@@ -116,6 +121,7 @@ class CharCreateDialog : public Window, public gcn::ActionListener
 
         int mHairStyle;
         int mHairColor;
+        int mRace;
 
         int mSlot;
 };

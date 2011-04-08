@@ -63,6 +63,7 @@ class CharHandler : public MessageHandler, public Net::CharHandler
 
         void newCharacter(const std::string &name, int slot,
                           bool gender, int hairstyle, int hairColor,
+                          unsigned char race,
                           const std::vector<int> &stats);
 
         void deleteCharacter(Net::Character *character);

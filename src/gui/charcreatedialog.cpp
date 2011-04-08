@@ -22,6 +22,7 @@
 
 #include "gui/charcreatedialog.h"
 
+#include "client.h"
 #include "game.h"
 #include "localplayer.h"
 #include "main.h"
@@ -44,6 +45,7 @@
 #include "net/net.h"
 
 #include "resources/colordb.h"
+#include "resources/itemdb.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -53,9 +55,10 @@
 CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     Window(_("Create Character"), true, parent),
     mCharSelectDialog(parent),
+    mRace(0),
     mSlot(slot)
 {
-    mPlayer = new Being(0, ActorSprite::PLAYER, 0, NULL);
+    mPlayer = new Being(0, ActorSprite::PLAYER, mRace, NULL);
     mPlayer->setGender(GENDER_MALE);
 
     int numberOfHairColors = ColorDB::getHairSize();
@@ -76,6 +79,14 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mNextHairStyleButton = new Button(_(">"), "nextstyle", this);
     mPrevHairStyleButton = new Button(_("<"), "prevstyle", this);
     mHairStyleLabel = new Label(_("Hair style:"));
+
+    if (serverVersion >= 2)
+    {
+        mNextRaceButton = new Button(_(">"), "nextrace", this);
+        mPrevRaceButton = new Button(_("<"), "prevrace", this);
+        mRaceLabel = new Label(_("Race:"));
+    }
+
     mCreateButton = new Button(_("Create"), "create", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
     mMale = new RadioButton(_("Male"), "gender");
@@ -112,6 +123,14 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mPrevHairStyleButton->setPosition(90, 64);
     mNextHairStyleButton->setPosition(165, 64);
     mHairStyleLabel->setPosition(5, 70);
+
+    if (serverVersion >= 2)
+    {
+        mPrevRaceButton->setPosition(90, 93);
+        mNextRaceButton->setPosition(165, 93);
+        mRaceLabel->setPosition(5, 100);
+    }
+
     mAttributesLeft->setPosition(15, 280);
     updateSliders();
     mCancelButton->setPosition(
@@ -133,6 +152,14 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     add(mNextHairStyleButton);
     add(mPrevHairStyleButton);
     add(mHairStyleLabel);
+
+    if (serverVersion >= 2)
+    {
+        add(mNextRaceButton);
+        add(mPrevRaceButton);
+        add(mRaceLabel);
+    }
+
     add(mAttributesLeft);
     add(mCreateButton);
     add(mCancelButton);
@@ -177,9 +204,7 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
                 ++characterSlot;
 
             Net::getCharHandler()->newCharacter(getName(), characterSlot,
-                                                mFemale->isSelected(),
-                                                mHairStyle,
-                                                mHairColor, atts);
+                mFemale->isSelected(), mHairStyle, mHairColor, mRace, atts);
         }
         else
         {
@@ -211,6 +236,16 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
     {
         mHairStyle--;
         updateHair();
+    }
+    else if (event.getId() == "nextrace")
+    {
+        mRace++;
+        updateRace();
+    }
+    else if (event.getId() == "prevrace")
+    {
+        mRace--;
+        updateRace();
     }
     else if (event.getId() == "statslider")
     {
@@ -353,8 +388,8 @@ void CharCreateDialog::setFixedGender(bool fixed, Gender gender)
 
     if (fixed)
     {
-        mMale->setEnabled(false);
-        mFemale->setEnabled(false);
+        mMale->setVisible(false);
+        mFemale->setVisible(false);
     }
 }
 
@@ -370,4 +405,23 @@ void CharCreateDialog::updateHair()
 
     mPlayer->setSprite(Net::getCharHandler()->hairSprite(),
                        mHairStyle * -1, ColorDB::getHairColor(mHairColor));
+}
+
+void CharCreateDialog::updateRace()
+{
+    int id;
+    if (mRace < 0)
+    {
+        mRace = 0;
+        id = -100;
+    }
+    else
+    {
+        id = -100 - mRace;
+        while (id < -100 && !ItemDB::exists(id))
+            id ++;
+        mRace = -100 - id;
+    }
+
+    mPlayer->setSubtype(mRace);
 }

@@ -76,6 +76,7 @@ class CharHandler
 
         virtual void newCharacter(const std::string &name, int slot,
                                   bool gender, int hairstyle, int hairColor,
+                                  unsigned char race,
                                   const std::vector<int> &stats) = 0;
 
         virtual void deleteCharacter(Net::Character *character) = 0;

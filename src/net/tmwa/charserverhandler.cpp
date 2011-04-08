@@ -408,7 +408,7 @@ void CharServerHandler::chooseCharacter(Net::Character *character)
 
 void CharServerHandler::newCharacter(const std::string &name, int slot,
                                      bool gender _UNUSED_, int hairstyle,
-                                     int hairColor,
+                                     int hairColor, unsigned char race,
                                      const std::vector<int> &stats)
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
@@ -419,6 +419,8 @@ void CharServerHandler::newCharacter(const std::string &name, int slot,
     outMsg.writeInt8(static_cast<unsigned char>(slot));
     outMsg.writeInt16(static_cast<short>(hairColor));
     outMsg.writeInt16(static_cast<short>(hairstyle));
+    if (serverVersion >= 2)
+        outMsg.writeInt8(race);
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *character)
