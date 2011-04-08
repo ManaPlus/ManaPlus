@@ -940,12 +940,16 @@ void ChatWindow::whisper(const std::string &nick,
                     msg = msg.substr(idx + 1);
                     nick2 = removeColors(nick2);
                     nick2 = trim(nick2);
+                    if (config.getBoolValue("removeColors"))
+                        msg = removeColors(msg);
                     msg = trim(msg);
                     tab->chatLog(nick2, msg);
                 }
                 else
                 {
-                    tab->chatLog(nick, mes);
+                    if (config.getBoolValue("removeColors"))
+                        msg = removeColors(msg);
+                    tab->chatLog(msg, BY_SERVER);
                 }
             }
             else
