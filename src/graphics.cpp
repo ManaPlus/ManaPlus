@@ -438,7 +438,8 @@ void Graphics::drawImagePattern2(GraphicsVertexes *vert, Image *img)
     std::list<DoubleRect*>::iterator it;
 
     for (it = arr->begin(); it != arr->end(); ++it)
-        SDL_BlitSurface(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
+        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
+//        SDL_BlitSurface(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
 }
 
 bool Graphics::calcImageRect(GraphicsVertexes* vert,
@@ -540,7 +541,11 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
             srcRect.w = static_cast<Uint16>(dw);
             srcRect.h = static_cast<Uint16>(dh);
 
-            vert->pushSDL(srcRect, dstRect);
+            if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
+                mTarget, &dstRect) == 1)
+            {
+                vert->pushSDL(srcRect, dstRect);
+            }
         }
     }
     vert->incPtr(1);
@@ -592,4 +597,102 @@ bool Graphics::calcWindow(GraphicsVertexes* vert,
         imgRect.grid[0], imgRect.grid[2], imgRect.grid[6], imgRect.grid[8],
         imgRect.grid[1], imgRect.grid[5], imgRect.grid[7], imgRect.grid[3],
         imgRect.grid[4]);
+}
+
+int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
+                                 SDL_Surface *dst, SDL_Rect *dstrect)
+{
+    SDL_Rect fulldst;
+    int srcx, srcy, w, h;
+
+    /* Make sure the surfaces aren't locked */
+    if (!src || !dst)
+        return(-1);
+
+    if (src->locked || dst->locked)
+        return(-1);
+
+    /* If the destination rectangle is NULL, use the entire dest surface */
+    if (dstrect == NULL)
+    {
+        fulldst.x = fulldst.y = 0;
+        dstrect = &fulldst;
+    }
+
+    /* clip the source rectangle to the source surface */
+    if(srcrect)
+    {
+        int maxw, maxh;
+
+        srcx = srcrect->x;
+        w = srcrect->w;
+        if (srcx < 0)
+        {
+            w += srcx;
+            dstrect->x -= srcx;
+            srcx = 0;
+        }
+        maxw = src->w - srcx;
+        if (maxw < w)
+            w = maxw;
+
+        srcy = srcrect->y;
+        h = srcrect->h;
+        if (srcy < 0)
+        {
+            h += srcy;
+            dstrect->y -= srcy;
+            srcy = 0;
+        }
+        maxh = src->h - srcy;
+        if (maxh < h)
+            h = maxh;
+    }
+    else
+    {
+        srcx = srcy = 0;
+        w = src->w;
+        h = src->h;
+    }
+
+    /* clip the destination rectangle against the clip rectangle */
+    {
+        SDL_Rect *clip = &dst->clip_rect;
+        int dx, dy;
+
+        dx = clip->x - dstrect->x;
+        if(dx > 0)
+        {
+            w -= dx;
+            dstrect->x += dx;
+            srcx += dx;
+        }
+        dx = dstrect->x + w - clip->x - clip->w;
+        if(dx > 0)
+            w -= dx;
+
+        dy = clip->y - dstrect->y;
+        if(dy > 0)
+        {
+            h -= dy;
+            dstrect->y += dy;
+            srcy += dy;
+        }
+        dy = dstrect->y + h - clip->y - clip->h;
+        if(dy > 0)
+            h -= dy;
+    }
+
+    if(w > 0 && h > 0)
+    {
+        srcrect->x = srcx;
+        srcrect->y = srcy;
+        srcrect->w = dstrect->w = w;
+        srcrect->h = dstrect->h = h;
+
+        return 1;
+//        return SDL_LowerBlit(src, &sr, dst, dstrect);
+    }
+    dstrect->w = dstrect->h = 0;
+    return 0;
 }
