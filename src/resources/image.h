@@ -209,6 +209,8 @@ class Image : public Resource
 
         static int getTextureType()
         { return mTextureType; }
+
+        static int mTextureType;
 #endif
 
     protected:
@@ -268,7 +270,6 @@ class Image : public Resource
         int mTexWidth, mTexHeight;
 
         static int mUseOpenGL;
-        static int mTextureType;
         static int mTextureSize;
 #endif
 };

@@ -378,7 +378,10 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mLastScrollX(0.0f), mLastScrollY(0.0f),
     mOverlayDetail(config.getIntValue("OverlayDetail")),
     mOpacity(config.getFloatValue("guialpha")),
-    mPvp(0)
+    mPvp(0),
+    mTilesetsIndexed(false),
+    mIndexedTilesets(0),
+    mIndexedTilesetsSize(0)
 //    mSpritesUpdated(true)
 {
     const int size = mWidth * mHeight;
@@ -758,15 +761,10 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
 
 Tileset *Map::getTilesetWithGid(int gid) const
 {
-    Tileset *s = NULL;
-    for (Tilesets::const_iterator it = mTilesets.begin(),
-         it_end = mTilesets.end(); it < it_end && (*it)->getFirstGid() <= gid;
-         ++it)
-    {
-        s = *it;
-    }
-
-    return s;
+    if (gid < mIndexedTilesetsSize)
+        return mIndexedTilesets[gid];
+    else
+        return 0;
 }
 
 void Map::blockTile(int x, int y, BlockType type)
@@ -1409,6 +1407,9 @@ MapItem *Map::findPortalXY(int x, int y)
 
 TileAnimation *Map::getAnimationForGid(int gid) const
 {
+    if (mTileAnimations.empty())
+        return 0;
+
     std::map<int, TileAnimation*>::const_iterator
         i = mTileAnimations.find(gid);
     return (i == mTileAnimations.end()) ? NULL : i->second;
@@ -1463,6 +1464,50 @@ std::string Map::getObjectData(unsigned x, unsigned y, int type)
     }
 
     return "";
+}
+
+void Map::indexTilesets()
+{
+    if (mTilesetsIndexed)
+        return;
+
+    mTilesetsIndexed = true;
+
+    Tileset *s = 0;
+    for (Tilesets::const_iterator it = mTilesets.begin(),
+         it_end = mTilesets.end(); it < it_end;
+         ++it)
+    {
+        if (!s || s->getFirstGid() < (*it)->getFirstGid())
+            s = *it;
+    }
+    if (!s)
+        return;
+
+    const int size = s->getFirstGid() + s->size();
+    mIndexedTilesetsSize = size;
+    mIndexedTilesets = new Tileset*[size];
+    std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(0));
+    for (Tilesets::const_iterator it = mTilesets.begin(),
+         it_end = mTilesets.end(); it < it_end;
+         ++it)
+    {
+        s = *it;
+        const int start = s->getFirstGid();
+        const int end = start + s->size();
+        for (int f = start; f < end; f ++)
+            mIndexedTilesets[f] = s;
+    }
+}
+
+void Map::clearIndexedTilesets()
+{
+    if (!mTilesetsIndexed)
+        return;
+
+    mTilesetsIndexed = false;
+    delete[] mIndexedTilesets;
+    mIndexedTilesetsSize = 0;
 }
 
 SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):

@@ -370,7 +370,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
     }
 
     map->initializeAmbientLayers();
-
+    map->clearIndexedTilesets();
     return map;
 }
 
@@ -423,6 +423,8 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
 
     const bool isFringeLayer = (name.substr(0, 6) == "fringe");
     const bool isCollisionLayer = (name.substr(0, 9) == "collision");
+
+    map->indexTilesets();
 
     MapLayer *layer = 0;
 

@@ -433,6 +433,10 @@ class Map : public Properties, public ConfigListener
 
         std::string getObjectData(unsigned x, unsigned y, int type);
 
+        void indexTilesets();
+
+        void clearIndexedTilesets();
+
     protected:
         friend class Actor;
 
@@ -516,6 +520,9 @@ class Map : public Properties, public ConfigListener
         float mOpacity;
         int mOpenGL;
         int mPvp;
+        bool mTilesetsIndexed;
+        Tileset** mIndexedTilesets;
+        int mIndexedTilesetsSize;
 
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;

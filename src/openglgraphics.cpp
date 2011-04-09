@@ -130,7 +130,7 @@ static inline void drawQuad(Image *image,
                             int srcX, int srcY, int dstX, int dstY,
                             int width, int height)
 {
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         const float texX1 = static_cast<float>(srcX) /
@@ -192,7 +192,7 @@ static inline void drawRescaledQuad(Image *image,
                                     int width, int height,
                                     int desiredWidth, int desiredHeight)
 {
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         const float texX1 = static_cast<float>(srcX) /
@@ -379,7 +379,7 @@ void OpenGLGraphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     unsigned int vp = 0;
     const unsigned int vLimit = vertexBufSize * 4;
     // Draw a set of textured rectangles
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
@@ -515,7 +515,7 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image, int x, int y,
     float texY1 = static_cast<float>(srcY) / th;
 
     // Draw a set of textured rectangles
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         for (int py = 0; py < h; py += ih)
         {
@@ -634,7 +634,7 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
     std::vector<int>::iterator ivp;
 
     // Draw a set of textured rectangles
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         std::vector<GLfloat*> &floatTexPool = ogl->getFloatTexPool();
         std::vector<GLfloat*>::iterator ft;
@@ -701,7 +701,7 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
     ogl->init();
 
     // Draw a set of textured rectangles
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;

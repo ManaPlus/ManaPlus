@@ -121,7 +121,7 @@ static inline void drawQuad(Image *image,
                             int srcX, int srcY, int dstX, int dstY,
                             int width, int height)
 {
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         float texX1 = static_cast<float>(srcX)
@@ -159,7 +159,7 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
                                     int dstX, int dstY, int width, int height,
                                     int desiredWidth, int desiredHeight)
 {
-    if (image->getTextureType() == GL_TEXTURE_2D)
+    if (image->mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         float texX1 = static_cast<float>(srcX)
