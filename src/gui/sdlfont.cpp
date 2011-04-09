@@ -181,8 +181,8 @@ void SDLFont::clear()
 }
 
 void SDLFont::drawString(gcn::Graphics *graphics,
-                              const std::string &text,
-                              int x, int y)
+                         const std::string &text,
+                         int x, int y)
 {
     if (text.empty())
         return;

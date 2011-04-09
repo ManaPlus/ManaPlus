@@ -620,7 +620,7 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
     }
 
     /* clip the source rectangle to the source surface */
-    if(srcrect)
+    if (srcrect)
     {
         int maxw, maxh;
 
@@ -650,7 +650,8 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
     }
     else
     {
-        srcx = srcy = 0;
+        srcx = 0;
+        srcy = 0;
         w = src->w;
         h = src->h;
     }
@@ -661,29 +662,29 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
         int dx, dy;
 
         dx = clip->x - dstrect->x;
-        if(dx > 0)
+        if (dx > 0)
         {
             w -= dx;
             dstrect->x += dx;
             srcx += dx;
         }
         dx = dstrect->x + w - clip->x - clip->w;
-        if(dx > 0)
+        if (dx > 0)
             w -= dx;
 
         dy = clip->y - dstrect->y;
-        if(dy > 0)
+        if (dy > 0)
         {
             h -= dy;
             dstrect->y += dy;
             srcy += dy;
         }
         dy = dstrect->y + h - clip->y - clip->h;
-        if(dy > 0)
+        if (dy > 0)
             h -= dy;
     }
 
-    if(w > 0 && h > 0)
+    if (w > 0 && h > 0)
     {
         srcrect->x = srcx;
         srcrect->y = srcy;

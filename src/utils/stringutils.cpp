@@ -448,7 +448,7 @@ std::string getLang()
 
     std::string lang(lng);
     int dot = lang.find(".");
-    if (dot == std::string::npos && dot > 0)
+    if (dot == (signed)std::string::npos)
         return lang;
 
     return lang.substr(0, dot);
