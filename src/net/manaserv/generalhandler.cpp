@@ -93,8 +93,8 @@ GeneralHandler::GeneralHandler():
 
     generalHandler = this;
 
-    listen(CHANNEL_CLIENT);
-    listen(CHANNEL_GAME);
+    listen(Mana::CHANNEL_CLIENT);
+    listen(Mana::CHANNEL_GAME);
 }
 
 void GeneralHandler::load()
@@ -183,13 +183,13 @@ void GeneralHandler::event(Mana::Channels channel,
     {
         int newState = event.getInt("newState");
 
-        if (newState == Mana::STATE_GAME)
+        if (newState == STATE_GAME)
         {
             GameHandler *game = static_cast<GameHandler*>(
                 Net::getGameHandler());
             game->gameLoading();
         }
-        else if (newState == Mana::STATE_LOAD_DATA)
+        else if (newState == STATE_LOAD_DATA)
         {
             Attributes::load();
             Attributes::informItemDB();
