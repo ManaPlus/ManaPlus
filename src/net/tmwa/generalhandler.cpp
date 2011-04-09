@@ -230,12 +230,12 @@ void GeneralHandler::clearHandlers()
         mNetwork->clearHandlers();
 }
 
-void GeneralHandler::event(Channels channel,
+void GeneralHandler::event(Mana::Channels channel,
                            const Mana::Event &event)
 {
-    if (channel == CHANNEL_GAME)
+    if (channel == Mana::CHANNEL_GAME)
     {
-        if (event.getName() == EVENT_GUIWINDOWSLOADED)
+        if (event.getName() == Mana::EVENT_GUIWINDOWSLOADED)
         {
             if (inventoryWindow)
                 inventoryWindow->setSplitAllowed(false);
@@ -266,7 +266,7 @@ void GeneralHandler::event(Channels channel,
             statusWindow->addAttribute(ATTACK_RANGE, _("Attack Range"),
                                        false, "");
         }
-        else if (event.getName() == EVENT_GUIWINDOWSUNLOADING)
+        else if (event.getName() == Mana::EVENT_GUIWINDOWSUNLOADING)
         {
             if (socialWindow)
             {

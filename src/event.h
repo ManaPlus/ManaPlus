@@ -26,6 +26,10 @@
 #include <set>
 #include <string>
 
+
+namespace Mana
+{
+
 enum Channels
 {
     CHANNEL_ACTORSPRITE = 0,
@@ -95,9 +99,6 @@ enum Events
     EVENT_WHISPERERROR
 };
 
-namespace Mana
-{
-
 // Possible exception that can be thrown
 enum BadEvent
 {
@@ -114,9 +115,9 @@ typedef std::set<Listener *> ListenerSet;
 typedef std::map<Channels, ListenerSet > ListenMap;
 
 #define SERVER_NOTICE(message) { \
-Mana::Event event(EVENT_SERVERNOTICE); \
+Mana::Event event(Mana::EVENT_SERVERNOTICE); \
 event.setString("message", message); \
-Mana::Event::trigger(CHANNEL_NOTICES, event); }
+Mana::Event::trigger(Mana::CHANNEL_NOTICES, event); }
 
 class Event
 {

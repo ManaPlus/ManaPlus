@@ -154,7 +154,7 @@ ChatWindow::ChatWindow():
     mChatHistoryIndex(0)
 {
     listen(CHANNEL_NOTICES);
-    listen(CHANNEL_ATTRIBUTES);
+    listen(Mana::CHANNEL_ATTRIBUTES);
 
     setWindowName("Chat");
 
@@ -798,19 +798,19 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         addInputText(Temp, false);
 }
 
-void ChatWindow::event(Channels channel, const Mana::Event &event)
+void ChatWindow::event(Mana::Channels channel, const Mana::Event &event)
 {
-    if (channel == CHANNEL_NOTICES)
+    if (channel == Mana::CHANNEL_NOTICES)
     {
-        if (event.getName() == EVENT_SERVERNOTICE && localChatTab)
+        if (event.getName() == Mana::EVENT_SERVERNOTICE && localChatTab)
             localChatTab->chatLog(event.getString("message"), BY_SERVER);
     }
-    else if (channel == CHANNEL_ATTRIBUTES)
+    else if (channel == Mana::CHANNEL_ATTRIBUTES)
     {
         if (!config.getBoolValue("showBattleEvents"))
             return;
 
-        if (event.getName() == EVENT_UPDATEATTRIBUTE)
+        if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
         {
             switch (event.getInt("id"))
             {
@@ -834,7 +834,7 @@ void ChatWindow::event(Channels channel, const Mana::Event &event)
                     break;
             };
         }
-        else if (event.getName() == EVENT_UPDATESTAT)
+        else if (event.getName() == Mana::EVENT_UPDATESTAT)
         {
             if (!config.getBoolValue("showJobExp"))
                 return;

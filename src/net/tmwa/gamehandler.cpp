@@ -62,7 +62,7 @@ GameHandler::GameHandler()
     gameHandler = this;
     mCharID = 0;
 
-    listen(CHANNEL_GAME);
+    listen(Mana::CHANNEL_GAME);
 }
 
 void GameHandler::handleMessage(Net::MessageIn &msg)
@@ -109,13 +109,13 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void GameHandler::event(Channels channel, const Mana::Event &event)
+void GameHandler::event(Mana::Channels channel, const Mana::Event &event)
 {
-    if (channel == CHANNEL_GAME)
+    if (channel == Mana::CHANNEL_GAME)
     {
-        if (event.getName() == EVENT_ENGINESINITALIZED)
+        if (event.getName() == Mana::EVENT_ENGINESINITALIZED)
             Game::instance()->changeMap(mMap);
-        else if (event.getName() == EVENT_MAPLOADED)
+        else if (event.getName() == Mana::EVENT_MAPLOADED)
             MessageOut outMsg(CMSG_MAP_LOADED);
     }
 }

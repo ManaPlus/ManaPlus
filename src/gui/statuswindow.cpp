@@ -114,7 +114,7 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 StatusWindow::StatusWindow():
     Window(player_node ? player_node->getName() : "?")
 {
-    listen(CHANNEL_ATTRIBUTES);
+    listen(Mana::CHANNEL_ATTRIBUTES);
 
     setWindowName("Status");
     setupWindow->registerWindowForReset(this);
@@ -260,14 +260,14 @@ StatusWindow::StatusWindow():
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::event(Channels channel _UNUSED_,
+void StatusWindow::event(Mana::Channels channel _UNUSED_,
                          const Mana::Event &event)
 {
     static bool blocked = false;
     if (blocked)
         return;
 
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {
         switch(event.getInt("id"))
         {
@@ -326,7 +326,7 @@ void StatusWindow::event(Channels channel _UNUSED_,
                 break;
         }
     }
-    else if (event.getName() == EVENT_UPDATESTAT)
+    else if (event.getName() == Mana::EVENT_UPDATESTAT)
     {
         int id = event.getInt("id");
         if (id == Net::getPlayerHandler()->getJobLocation())

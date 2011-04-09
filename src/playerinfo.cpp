@@ -54,17 +54,17 @@ int mLevelProgress = 0;
 
 void triggerAttr(int id, int old)
 {
-    Mana::Event event(EVENT_UPDATEATTRIBUTE);
+    Mana::Event event(Mana::EVENT_UPDATEATTRIBUTE);
     event.setInt("id", id);
     event.setInt("oldValue", old);
     event.setInt("newValue", mData.mAttributes.find(id)->second);
-    Mana::Event::trigger(CHANNEL_ATTRIBUTES, event);
+    Mana::Event::trigger(Mana::CHANNEL_ATTRIBUTES, event);
 }
 
 void triggerStat(int id, const std::string &changed, int old1, int old2)
 {
     StatMap::iterator it = mData.mStats.find(id);
-    Mana::Event event(EVENT_UPDATESTAT);
+    Mana::Event event(Mana::EVENT_UPDATESTAT);
     event.setInt("id", id);
     event.setInt("base", it->second.base);
     event.setInt("mod", it->second.mod);
@@ -73,7 +73,7 @@ void triggerStat(int id, const std::string &changed, int old1, int old2)
     event.setString("changed", changed);
     event.setInt("oldValue1", old1);
     event.setInt("oldValue2", old2);
-    Mana::Event::trigger(CHANNEL_ATTRIBUTES, event);
+    Mana::Event::trigger(Mana::CHANNEL_ATTRIBUTES, event);
 }
 
 // --- Attributes -------------------------------------------------------------
@@ -272,9 +272,9 @@ void setTrading(bool trading)
 
     if (notify)
     {
-        Mana::Event event(EVENT_TRADING);
+        Mana::Event event(Mana::EVENT_TRADING);
         event.setInt("trading", trading);
-        Mana::Event::trigger(CHANNEL_STATUS, event);
+        Mana::Event::trigger(Mana::CHANNEL_STATUS, event);
     }
 }
 
@@ -283,15 +283,15 @@ class PlayerInfoListener : Mana::Listener
 public:
     PlayerInfoListener()
     {
-        listen(CHANNEL_CLIENT);
-        listen(CHANNEL_GAME);
+        listen(Mana::CHANNEL_CLIENT);
+        listen(Mana::CHANNEL_GAME);
     }
 
-    void event(Channels channel, const Mana::Event &event)
+    void event(Mana::Channels channel, const Mana::Event &event)
     {
-        if (channel == CHANNEL_CLIENT)
+        if (channel == Mana::CHANNEL_CLIENT)
         {
-            if (event.getName() == EVENT_STATECHANGE)
+            if (event.getName() == Mana::EVENT_STATECHANGE)
             {
                 int newState = event.getInt("newState");
 
@@ -305,9 +305,9 @@ public:
                 }
             }
         }
-        else if (channel == CHANNEL_GAME)
+        else if (channel == Mana::CHANNEL_GAME)
         {
-            if (event.getName() == EVENT_DESTRUCTED)
+            if (event.getName() == Mana::EVENT_DESTRUCTED)
             {
                 delete mInventory;
                 delete mEquipment;

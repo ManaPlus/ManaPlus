@@ -66,7 +66,7 @@ class MiniStatusWindow : public Popup,
 
         void drawIcons(Graphics *graphics);
 
-        void event(Channels channel, const Mana::Event &event);
+        void event(Mana::Channels channel, const Mana::Event &event);
 
         void updateStatus();
 

@@ -124,7 +124,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
-    listen(CHANNEL_ATTRIBUTES);
+    listen(Mana::CHANNEL_ATTRIBUTES);
     mLevel = 1;
 
     mAwayListener = new AwayListener();
@@ -1547,11 +1547,11 @@ void LocalPlayer::optionChanged(const std::string &value)
         mShowJobExp = config.getBoolValue("showJobExp");
 }
 
-void LocalPlayer::event(Channels channel, const Mana::Event &event)
+void LocalPlayer::event(Mana::Channels channel, const Mana::Event &event)
 {
-    if (channel == CHANNEL_ATTRIBUTES)
+    if (channel == Mana::CHANNEL_ATTRIBUTES)
     {
-        if (event.getName() == EVENT_UPDATEATTRIBUTE)
+        if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
         {
             switch (event.getInt("id"))
             {
@@ -1574,7 +1574,7 @@ void LocalPlayer::event(Channels channel, const Mana::Event &event)
                     break;
             };
         }
-        else if (event.getName() == EVENT_UPDATESTAT)
+        else if (event.getName() == Mana::EVENT_UPDATESTAT)
         {
             if (!mShowJobExp)
                 return;

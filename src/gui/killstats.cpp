@@ -54,7 +54,7 @@ KillStats::KillStats():
     setResizable(true);
     setDefaultSize(250, 250, 350, 300);
 
-    listen(CHANNEL_ATTRIBUTES);
+    listen(Mana::CHANNEL_ATTRIBUTES);
     int xp(PlayerInfo::getAttribute(EXP));
     int xpNextLevel(PlayerInfo::getAttribute(EXP_NEEDED));
 
@@ -409,10 +409,10 @@ void KillStats::validateJacko()
     }
 }
 
-void KillStats::event(Channels channel _UNUSED_,
+void KillStats::event(Mana::Channels channel _UNUSED_,
                       const Mana::Event &event)
 {
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
         if (id == EXP || id == EXP_NEEDED)

@@ -51,7 +51,7 @@ extern volatile int tick_time;
 MiniStatusWindow::MiniStatusWindow():
     Popup("MiniStatus")
 {
-    listen(CHANNEL_ATTRIBUTES);
+    listen(Mana::CHANNEL_ATTRIBUTES);
 
     mHpBar = createBar(0, 100, 20, Theme::PROG_HP, "hp bar", _("health bar"));
     StatusWindow::updateHPBar(mHpBar);
@@ -209,10 +209,10 @@ void MiniStatusWindow::drawIcons(Graphics *graphics)
     }
 }
 
-void MiniStatusWindow::event(Channels channel _UNUSED_,
+void MiniStatusWindow::event(Mana::Channels channel _UNUSED_,
                              const Mana::Event &event)
 {
-    if (event.getName() == EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
         if (id == HP || id == MAX_HP)
@@ -226,7 +226,7 @@ void MiniStatusWindow::event(Channels channel _UNUSED_,
         else if (id == MONEY)
             StatusWindow::updateMoneyBar(mMoneyBar);
     }
-    else if (event.getName() == EVENT_UPDATESTAT)
+    else if (event.getName() == Mana::EVENT_UPDATESTAT)
     {
         StatusWindow::updateMPBar(mMpBar);
         StatusWindow::updateJobBar(mJobBar);
