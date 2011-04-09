@@ -35,10 +35,17 @@ class Image;
  */
 struct Frame
 {
+    enum FrameType
+    {
+        ANIMATION = 0,
+        JUMP,
+        LABEL
+    };
     Image *image;
     int delay;
     int offsetX;
     int offsetY;
+    FrameType type;
     std::string nextAction;
 };
 

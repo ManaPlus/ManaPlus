@@ -159,7 +159,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
             mFrame = 0;
             return false;
         }
-        if (!mFrame->nextAction.empty())
+        if (mFrame->type == Frame::JUMP && !mFrame->nextAction.empty())
         {
             play(mFrame->nextAction);
             return true;
