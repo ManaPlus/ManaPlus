@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-04-06 20:33+0300\n"
+"POT-Creation-Date: 2011-04-10 21:31+0300\n"
 "PO-Revision-Date: 2011-03-29 18:51+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium/Flemish) <>\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: src/actorspritemanager.cpp:909
+#, fuzzy
+msgid "Visible on map"
+msgstr "Zichtbare namen"
 
 #: src/being.cpp:489
 msgid "dodge"
@@ -55,7 +60,7 @@ msgstr "Wijzigen spelservers"
 
 #: src/client.cpp:1058 src/client.cpp:1065 src/client.cpp:1202
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
-#: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
+#: src/gui/charcreatedialog.cpp:211 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:369 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
 #: src/net/tmwa/charserverhandler.cpp:188
@@ -250,6 +255,21 @@ msgid_plural "%d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
+#: src/commandhandler.cpp:995
+#, fuzzy
+msgid "font cache size"
+msgstr "Lettergrootte"
+
+#: src/commandhandler.cpp:1008
+#, fuzzy
+msgid "Created: "
+msgstr "Aanmaken"
+
+#: src/commandhandler.cpp:1009
+#, fuzzy
+msgid "Deleted: "
+msgstr "Verwijderen"
+
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
@@ -391,7 +411,7 @@ msgid "Sell"
 msgstr "Verkopen"
 
 #: src/gui/buyselldialog.cpp:63 src/gui/changeemaildialog.cpp:57
-#: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:80
+#: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:91
 #: src/gui/connectiondialog.cpp:45 src/gui/itemamountwindow.cpp:207
 #: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1278
 #: src/gui/popupmenu.cpp:1305 src/gui/popupmenu.cpp:1350
@@ -462,64 +482,68 @@ msgstr "Het nieuw paswoord mag niet meer dan %d karakters bevatten."
 msgid "The new password entries mismatch."
 msgstr "De nieuwe paswoord ingaven zijn niet gelijk."
 
-#: src/gui/charcreatedialog.cpp:54
+#: src/gui/charcreatedialog.cpp:56
 msgid "Create Character"
 msgstr "Personage Aanmaken"
 
-#: src/gui/charcreatedialog.cpp:68 src/gui/login.cpp:91
+#: src/gui/charcreatedialog.cpp:71 src/gui/login.cpp:91
 #: src/gui/register.cpp:73
 msgid "Name:"
 msgstr "Naam:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:71 src/gui/charcreatedialog.cpp:76
-#: src/gui/outfitwindow.cpp:78
+#: src/gui/charcreatedialog.cpp:74 src/gui/charcreatedialog.cpp:79
+#: src/gui/charcreatedialog.cpp:85 src/gui/outfitwindow.cpp:78
 msgid ">"
 msgstr ">"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:74 src/gui/charcreatedialog.cpp:77
-#: src/gui/outfitwindow.cpp:77
+#: src/gui/charcreatedialog.cpp:77 src/gui/charcreatedialog.cpp:80
+#: src/gui/charcreatedialog.cpp:86 src/gui/outfitwindow.cpp:77
 msgid "<"
 msgstr "<"
 
-#: src/gui/charcreatedialog.cpp:75
+#: src/gui/charcreatedialog.cpp:78
 msgid "Hair color:"
 msgstr "Haarkleur:"
 
-#: src/gui/charcreatedialog.cpp:78
+#: src/gui/charcreatedialog.cpp:81
 msgid "Hair style:"
 msgstr "Haarstijl:"
 
-#: src/gui/charcreatedialog.cpp:79 src/gui/charselectdialog.cpp:447
+#: src/gui/charcreatedialog.cpp:87
+msgid "Race:"
+msgstr ""
+
+#: src/gui/charcreatedialog.cpp:90 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
 msgid "Create"
 msgstr "Aanmaken"
 
-#: src/gui/charcreatedialog.cpp:81 src/gui/register.cpp:96
+#: src/gui/charcreatedialog.cpp:92 src/gui/register.cpp:96
 msgid "Male"
 msgstr "Mannelijk"
 
-#: src/gui/charcreatedialog.cpp:82 src/gui/register.cpp:97
+#: src/gui/charcreatedialog.cpp:93 src/gui/register.cpp:97
 msgid "Female"
 msgstr "Vrouwelijk"
 
-#: src/gui/charcreatedialog.cpp:100 src/gui/charcreatedialog.cpp:258
+#: src/gui/charcreatedialog.cpp:111 src/gui/charcreatedialog.cpp:293
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Nog %d punten te verdelen"
 
-#: src/gui/charcreatedialog.cpp:187
+#: src/gui/charcreatedialog.cpp:212
 msgid "Your name needs to be at least 4 characters."
 msgstr "Je naam moet uit tenminste 4 tekens bestaan"
 
-#: src/gui/charcreatedialog.cpp:249
+#: src/gui/charcreatedialog.cpp:284
 msgid "Character stats OK"
 msgstr "Attributen van personage OK"
 
-#: src/gui/charcreatedialog.cpp:263
+#: src/gui/charcreatedialog.cpp:298
 #, c-format
 msgid "Please remove %d points"
 msgstr "Verwijder alstublieft %d punten"
@@ -568,63 +592,63 @@ msgstr "Niveau %d"
 msgid "(empty)"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:93
+#: src/gui/chatwindow.cpp:112
 msgid "default"
 msgstr "standaard"
 
-#: src/gui/chatwindow.cpp:94
+#: src/gui/chatwindow.cpp:113
 msgid "black"
 msgstr "zwart"
 
-#: src/gui/chatwindow.cpp:95
+#: src/gui/chatwindow.cpp:114
 msgid "red"
 msgstr "rood"
 
-#: src/gui/chatwindow.cpp:96
+#: src/gui/chatwindow.cpp:115
 msgid "green"
 msgstr "groen"
 
-#: src/gui/chatwindow.cpp:97
+#: src/gui/chatwindow.cpp:116
 msgid "blue"
 msgstr "blauw"
 
-#: src/gui/chatwindow.cpp:98
+#: src/gui/chatwindow.cpp:117
 msgid "gold"
 msgstr "goud"
 
-#: src/gui/chatwindow.cpp:99
+#: src/gui/chatwindow.cpp:118
 msgid "yellow"
 msgstr "geel"
 
-#: src/gui/chatwindow.cpp:100
+#: src/gui/chatwindow.cpp:119
 msgid "pink"
 msgstr "roze"
 
-#: src/gui/chatwindow.cpp:101
+#: src/gui/chatwindow.cpp:120
 msgid "purple"
 msgstr "paars"
 
-#: src/gui/chatwindow.cpp:102
+#: src/gui/chatwindow.cpp:121
 msgid "grey"
 msgstr "grijs"
 
-#: src/gui/chatwindow.cpp:103
+#: src/gui/chatwindow.cpp:122
 msgid "brown"
 msgstr "bruin"
 
-#: src/gui/chatwindow.cpp:104
+#: src/gui/chatwindow.cpp:123
 msgid "rainbow 1"
 msgstr "regenboog 1"
 
-#: src/gui/chatwindow.cpp:105
+#: src/gui/chatwindow.cpp:124
 msgid "rainbow 2"
 msgstr "regenboog 2"
 
-#: src/gui/chatwindow.cpp:106
+#: src/gui/chatwindow.cpp:125
 msgid "rainbow 3"
 msgstr "regenboog 3"
 
-#: src/gui/chatwindow.cpp:123 src/gui/itemamountwindow.cpp:91
+#: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:91
 #: src/gui/login.cpp:76 src/gui/setup_players.cpp:216
 #: src/gui/setup_theme.cpp:68 src/gui/setup_video.cpp:164
 #: src/gui/setup_video.cpp:189 src/gui/textcommandeditor.cpp:98
@@ -632,16 +656,16 @@ msgstr "regenboog 3"
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:133 src/gui/setup_chat.cpp:61
+#: src/gui/chatwindow.cpp:152 src/gui/setup_chat.cpp:62
 msgid "Chat"
 msgstr "Chat"
 
-#: src/gui/chatwindow.cpp:561
+#: src/gui/chatwindow.cpp:585
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:940
+#: src/gui/chatwindow.cpp:968
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Fluisteren naar %s: %s"
@@ -782,11 +806,11 @@ msgstr "Uitrusting"
 msgid "Unequip"
 msgstr "Afdoen"
 
-#: src/gui/helpwindow.cpp:39
+#: src/gui/helpwindow.cpp:41
 msgid "Help"
 msgstr "Help"
 
-#: src/gui/helpwindow.cpp:53 src/gui/inventorywindow.cpp:172
+#: src/gui/helpwindow.cpp:55 src/gui/inventorywindow.cpp:172
 #: src/gui/npcdialog.cpp:51 src/gui/shopwindow.cpp:109
 msgid "Close"
 msgstr "Sluiten"
@@ -1613,61 +1637,65 @@ msgstr ""
 msgid "Sound Engine"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:65
+#: src/gui/setup_chat.cpp:66
 msgid "Remove colors from received chat messages"
 msgstr "Verwijder kleuren van ontvangen chat berichten"
 
-#: src/gui/setup_chat.cpp:69
+#: src/gui/setup_chat.cpp:70
 msgid "Log magic messages in debug tab"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:76
+#: src/gui/setup_chat.cpp:77
 msgid "Allow magic and GM commands in all chat tabs"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:81
+#: src/gui/setup_chat.cpp:82
 msgid "Show server messages in debug tab"
 msgstr "Toon server berichten in de debug tab"
 
-#: src/gui/setup_chat.cpp:85
+#: src/gui/setup_chat.cpp:86
 msgid "Enable chat Log"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:89
+#: src/gui/setup_chat.cpp:90
 msgid "Enable trade tab"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:93
+#: src/gui/setup_chat.cpp:94
 msgid "Hide shop messages"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:97
+#: src/gui/setup_chat.cpp:98
 msgid "Show chat history"
 msgstr "Toon chat geschiedenis"
 
-#: src/gui/setup_chat.cpp:101
+#: src/gui/setup_chat.cpp:102
 msgid "Enable battle tab"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:105
+#: src/gui/setup_chat.cpp:106
 msgid "Show battle events"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:109
+#: src/gui/setup_chat.cpp:110
 msgid "Show chat colors list"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:112 src/gui/setup_chat.cpp:120
+#: src/gui/setup_chat.cpp:113 src/gui/setup_chat.cpp:121
 #: src/gui/setup_other.cpp:142 src/gui/setup_other.cpp:146
 msgid "Edit"
 msgstr "Wijzig"
 
-#: src/gui/setup_chat.cpp:115
+#: src/gui/setup_chat.cpp:116
 msgid "Limit max chars in chat line"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:124
+#: src/gui/setup_chat.cpp:125
 msgid "Limit max lines in chat"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:132
+msgid "Resize chat tabs if need"
 msgstr ""
 
 #: src/gui/setup_colors.cpp:46
@@ -3197,7 +3225,7 @@ msgstr ""
 msgid "Who Is Online - Update"
 msgstr ""
 
-#: src/gui/widgets/battletab.cpp:42
+#: src/gui/widgets/battletab.cpp:43
 msgid "Battle"
 msgstr ""
 
@@ -3851,6 +3879,24 @@ msgstr[1] ""
 #: src/localplayer.cpp:3088
 msgid "Away"
 msgstr ""
+
+#: src/localplayer.cpp:3381
+msgid "Follow: "
+msgstr ""
+
+#: src/localplayer.cpp:3383 src/localplayer.cpp:3398
+#, fuzzy
+msgid "Follow canceled"
+msgstr "Handel geannuleerd."
+
+#: src/localplayer.cpp:3390
+msgid "Imitation: "
+msgstr ""
+
+#: src/localplayer.cpp:3392 src/localplayer.cpp:3400
+#, fuzzy
+msgid "Imitation canceled"
+msgstr "Handel geannuleerd."
 
 #: src/localplayer.cpp:3752
 msgid "You see "
@@ -5138,23 +5184,23 @@ msgstr ""
 msgid "Failed adding item for unknown reason."
 msgstr "Kan voorwerp niet toevoegen voor een onbekende reden."
 
-#: src/playerrelations.cpp:408
+#: src/playerrelations.cpp:404
 msgid "Completely ignore"
 msgstr ""
 
-#: src/playerrelations.cpp:422
+#: src/playerrelations.cpp:418
 msgid "Print '...'"
 msgstr ""
 
-#: src/playerrelations.cpp:442
+#: src/playerrelations.cpp:438
 msgid "Blink name"
 msgstr ""
 
-#: src/playerrelations.cpp:487
+#: src/playerrelations.cpp:483
 msgid "Floating '...' bubble"
 msgstr ""
 
-#: src/playerrelations.cpp:490
+#: src/playerrelations.cpp:486
 msgid "Floating bubble"
 msgstr ""
 

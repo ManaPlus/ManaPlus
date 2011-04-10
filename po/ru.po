@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-04-06 20:33+0300\n"
+"POT-Creation-Date: 2011-04-10 21:31+0300\n"
 "PO-Revision-Date: 2011-03-29 19:15+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian <>\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: src/actorspritemanager.cpp:909
+#, fuzzy
+msgid "Visible on map"
+msgstr "Видимые имена"
 
 #: src/being.cpp:489
 msgid "dodge"
@@ -56,7 +61,7 @@ msgstr "Смена игрового сервера"
 
 #: src/client.cpp:1058 src/client.cpp:1065 src/client.cpp:1202
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
-#: src/gui/charcreatedialog.cpp:186 src/gui/register.cpp:226
+#: src/gui/charcreatedialog.cpp:211 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:369 src/gui/unregisterdialog.cpp:135
 #: src/net/manaserv/charhandler.cpp:184 src/net/manaserv/charhandler.cpp:227
 #: src/net/tmwa/charserverhandler.cpp:188
@@ -258,6 +263,21 @@ msgstr[0] "%d секунда"
 msgstr[1] "%d секунды"
 msgstr[2] "%d секунд"
 
+#: src/commandhandler.cpp:995
+#, fuzzy
+msgid "font cache size"
+msgstr "Размер шрифта"
+
+#: src/commandhandler.cpp:1008
+#, fuzzy
+msgid "Created: "
+msgstr "Создать"
+
+#: src/commandhandler.cpp:1009
+#, fuzzy
+msgid "Deleted: "
+msgstr "Удалить"
+
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
@@ -400,7 +420,7 @@ msgid "Sell"
 msgstr "Продать"
 
 #: src/gui/buyselldialog.cpp:63 src/gui/changeemaildialog.cpp:57
-#: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:80
+#: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:91
 #: src/gui/connectiondialog.cpp:45 src/gui/itemamountwindow.cpp:207
 #: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1278
 #: src/gui/popupmenu.cpp:1305 src/gui/popupmenu.cpp:1350
@@ -471,64 +491,68 @@ msgstr "Пароль должен содержать менее %d символ�
 msgid "The new password entries mismatch."
 msgstr "Новый пароль не совпадает."
 
-#: src/gui/charcreatedialog.cpp:54
+#: src/gui/charcreatedialog.cpp:56
 msgid "Create Character"
 msgstr "Создать персонажа"
 
-#: src/gui/charcreatedialog.cpp:68 src/gui/login.cpp:91
+#: src/gui/charcreatedialog.cpp:71 src/gui/login.cpp:91
 #: src/gui/register.cpp:73
 msgid "Name:"
 msgstr "Имя:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:71 src/gui/charcreatedialog.cpp:76
-#: src/gui/outfitwindow.cpp:78
+#: src/gui/charcreatedialog.cpp:74 src/gui/charcreatedialog.cpp:79
+#: src/gui/charcreatedialog.cpp:85 src/gui/outfitwindow.cpp:78
 msgid ">"
 msgstr ">"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:74 src/gui/charcreatedialog.cpp:77
-#: src/gui/outfitwindow.cpp:77
+#: src/gui/charcreatedialog.cpp:77 src/gui/charcreatedialog.cpp:80
+#: src/gui/charcreatedialog.cpp:86 src/gui/outfitwindow.cpp:77
 msgid "<"
 msgstr "<"
 
-#: src/gui/charcreatedialog.cpp:75
+#: src/gui/charcreatedialog.cpp:78
 msgid "Hair color:"
 msgstr "Цвет волос:"
 
-#: src/gui/charcreatedialog.cpp:78
+#: src/gui/charcreatedialog.cpp:81
 msgid "Hair style:"
 msgstr "Стрижка:"
 
-#: src/gui/charcreatedialog.cpp:79 src/gui/charselectdialog.cpp:447
+#: src/gui/charcreatedialog.cpp:87
+msgid "Race:"
+msgstr ""
+
+#: src/gui/charcreatedialog.cpp:90 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
 msgid "Create"
 msgstr "Создать"
 
-#: src/gui/charcreatedialog.cpp:81 src/gui/register.cpp:96
+#: src/gui/charcreatedialog.cpp:92 src/gui/register.cpp:96
 msgid "Male"
 msgstr "Мужчина"
 
-#: src/gui/charcreatedialog.cpp:82 src/gui/register.cpp:97
+#: src/gui/charcreatedialog.cpp:93 src/gui/register.cpp:97
 msgid "Female"
 msgstr "Женщина"
 
-#: src/gui/charcreatedialog.cpp:100 src/gui/charcreatedialog.cpp:258
+#: src/gui/charcreatedialog.cpp:111 src/gui/charcreatedialog.cpp:293
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Распределите очки (%d)"
 
-#: src/gui/charcreatedialog.cpp:187
+#: src/gui/charcreatedialog.cpp:212
 msgid "Your name needs to be at least 4 characters."
 msgstr "Имя должно содержать не менее четырех символов."
 
-#: src/gui/charcreatedialog.cpp:249
+#: src/gui/charcreatedialog.cpp:284
 msgid "Character stats OK"
 msgstr "Данные персонажа в порядке"
 
-#: src/gui/charcreatedialog.cpp:263
+#: src/gui/charcreatedialog.cpp:298
 #, c-format
 msgid "Please remove %d points"
 msgstr "Снимите очки (%d)"
@@ -577,63 +601,63 @@ msgstr "Уровень: %d"
 msgid "(empty)"
 msgstr "(пусто)"
 
-#: src/gui/chatwindow.cpp:93
+#: src/gui/chatwindow.cpp:112
 msgid "default"
 msgstr "По умолчанию"
 
-#: src/gui/chatwindow.cpp:94
+#: src/gui/chatwindow.cpp:113
 msgid "black"
 msgstr "черный"
 
-#: src/gui/chatwindow.cpp:95
+#: src/gui/chatwindow.cpp:114
 msgid "red"
 msgstr "красный"
 
-#: src/gui/chatwindow.cpp:96
+#: src/gui/chatwindow.cpp:115
 msgid "green"
 msgstr "зеленый"
 
-#: src/gui/chatwindow.cpp:97
+#: src/gui/chatwindow.cpp:116
 msgid "blue"
 msgstr "синий"
 
-#: src/gui/chatwindow.cpp:98
+#: src/gui/chatwindow.cpp:117
 msgid "gold"
 msgstr "золотой"
 
-#: src/gui/chatwindow.cpp:99
+#: src/gui/chatwindow.cpp:118
 msgid "yellow"
 msgstr "желтый"
 
-#: src/gui/chatwindow.cpp:100
+#: src/gui/chatwindow.cpp:119
 msgid "pink"
 msgstr "розовый"
 
-#: src/gui/chatwindow.cpp:101
+#: src/gui/chatwindow.cpp:120
 msgid "purple"
 msgstr "фиолетовый"
 
-#: src/gui/chatwindow.cpp:102
+#: src/gui/chatwindow.cpp:121
 msgid "grey"
 msgstr "серый"
 
-#: src/gui/chatwindow.cpp:103
+#: src/gui/chatwindow.cpp:122
 msgid "brown"
 msgstr "коричневый"
 
-#: src/gui/chatwindow.cpp:104
+#: src/gui/chatwindow.cpp:123
 msgid "rainbow 1"
 msgstr "радуга 1"
 
-#: src/gui/chatwindow.cpp:105
+#: src/gui/chatwindow.cpp:124
 msgid "rainbow 2"
 msgstr "радуга 2"
 
-#: src/gui/chatwindow.cpp:106
+#: src/gui/chatwindow.cpp:125
 msgid "rainbow 3"
 msgstr "радуга 3"
 
-#: src/gui/chatwindow.cpp:123 src/gui/itemamountwindow.cpp:91
+#: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:91
 #: src/gui/login.cpp:76 src/gui/setup_players.cpp:216
 #: src/gui/setup_theme.cpp:68 src/gui/setup_video.cpp:164
 #: src/gui/setup_video.cpp:189 src/gui/textcommandeditor.cpp:98
@@ -641,16 +665,16 @@ msgstr "радуга 3"
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:133 src/gui/setup_chat.cpp:61
+#: src/gui/chatwindow.cpp:152 src/gui/setup_chat.cpp:62
 msgid "Chat"
 msgstr "Чат"
 
-#: src/gui/chatwindow.cpp:561
+#: src/gui/chatwindow.cpp:585
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
-#: src/gui/chatwindow.cpp:940
+#: src/gui/chatwindow.cpp:968
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
@@ -791,11 +815,11 @@ msgstr "Снаряжение"
 msgid "Unequip"
 msgstr "Снять"
 
-#: src/gui/helpwindow.cpp:39
+#: src/gui/helpwindow.cpp:41
 msgid "Help"
 msgstr "Помощь"
 
-#: src/gui/helpwindow.cpp:53 src/gui/inventorywindow.cpp:172
+#: src/gui/helpwindow.cpp:55 src/gui/inventorywindow.cpp:172
 #: src/gui/npcdialog.cpp:51 src/gui/shopwindow.cpp:109
 msgid "Close"
 msgstr "Закрыть"
@@ -1621,62 +1645,67 @@ msgstr ""
 msgid "Sound Engine"
 msgstr "Звуковой движок"
 
-#: src/gui/setup_chat.cpp:65
+#: src/gui/setup_chat.cpp:66
 msgid "Remove colors from received chat messages"
 msgstr "Удалить цвета из полученных сообщений в чате"
 
-#: src/gui/setup_chat.cpp:69
+#: src/gui/setup_chat.cpp:70
 msgid "Log magic messages in debug tab"
 msgstr "Оставлять сообщения магии на вкладке отладки"
 
-#: src/gui/setup_chat.cpp:76
+#: src/gui/setup_chat.cpp:77
 msgid "Allow magic and GM commands in all chat tabs"
 msgstr "Разрешить магические и администраторские команды на всех вкладках"
 
-#: src/gui/setup_chat.cpp:81
+#: src/gui/setup_chat.cpp:82
 msgid "Show server messages in debug tab"
 msgstr "Показывать сообщения сервера на вкладке отладки"
 
-#: src/gui/setup_chat.cpp:85
+#: src/gui/setup_chat.cpp:86
 msgid "Enable chat Log"
 msgstr "Включить лог чата"
 
-#: src/gui/setup_chat.cpp:89
+#: src/gui/setup_chat.cpp:90
 msgid "Enable trade tab"
 msgstr "Включить вкладки торговли"
 
-#: src/gui/setup_chat.cpp:93
+#: src/gui/setup_chat.cpp:94
 msgid "Hide shop messages"
 msgstr "Скрыть сообщения магазина"
 
-#: src/gui/setup_chat.cpp:97
+#: src/gui/setup_chat.cpp:98
 msgid "Show chat history"
 msgstr "Показать историю чата"
 
-#: src/gui/setup_chat.cpp:101
+#: src/gui/setup_chat.cpp:102
 msgid "Enable battle tab"
 msgstr "Включить вкладку боя"
 
-#: src/gui/setup_chat.cpp:105
+#: src/gui/setup_chat.cpp:106
 msgid "Show battle events"
 msgstr "Показать сообщения боя"
 
-#: src/gui/setup_chat.cpp:109
+#: src/gui/setup_chat.cpp:110
 msgid "Show chat colors list"
 msgstr "Показать список цветов чата"
 
-#: src/gui/setup_chat.cpp:112 src/gui/setup_chat.cpp:120
+#: src/gui/setup_chat.cpp:113 src/gui/setup_chat.cpp:121
 #: src/gui/setup_other.cpp:142 src/gui/setup_other.cpp:146
 msgid "Edit"
 msgstr "Изменить"
 
-#: src/gui/setup_chat.cpp:115
+#: src/gui/setup_chat.cpp:116
 msgid "Limit max chars in chat line"
 msgstr "Ограничить число символов в строке чата"
 
-#: src/gui/setup_chat.cpp:124
+#: src/gui/setup_chat.cpp:125
 msgid "Limit max lines in chat"
 msgstr "Ограничить число строк в чате"
+
+#: src/gui/setup_chat.cpp:132
+#, fuzzy
+msgid "Resize chat tabs if need"
+msgstr "Следующая строка вкладки"
 
 #: src/gui/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -3209,7 +3238,7 @@ msgstr "Кто онлайн - ошибка"
 msgid "Who Is Online - Update"
 msgstr "Кто онлайн - обновление"
 
-#: src/gui/widgets/battletab.cpp:42
+#: src/gui/widgets/battletab.cpp:43
 msgid "Battle"
 msgstr "Битва"
 
@@ -3863,6 +3892,25 @@ msgstr[2] "Вы подняли %d [@@%d|%s@@]."
 #: src/localplayer.cpp:3088
 msgid "Away"
 msgstr "Отошел"
+
+#: src/localplayer.cpp:3381
+msgid "Follow: "
+msgstr ""
+
+#: src/localplayer.cpp:3383 src/localplayer.cpp:3398
+#, fuzzy
+msgid "Follow canceled"
+msgstr "Торговля отменена."
+
+#: src/localplayer.cpp:3390
+#, fuzzy
+msgid "Imitation: "
+msgstr "(?) неизвестная имитация"
+
+#: src/localplayer.cpp:3392 src/localplayer.cpp:3400
+#, fuzzy
+msgid "Imitation canceled"
+msgstr "Торговля отменена."
 
 #: src/localplayer.cpp:3752
 msgid "You see "
@@ -5152,23 +5200,23 @@ msgstr "Ошибка добавления предмета. Вы не может
 msgid "Failed adding item for unknown reason."
 msgstr "Не удалось добавить предмет по неизвестной причине."
 
-#: src/playerrelations.cpp:408
+#: src/playerrelations.cpp:404
 msgid "Completely ignore"
 msgstr "@@ignore|Полностью игнорировать@@"
 
-#: src/playerrelations.cpp:422
+#: src/playerrelations.cpp:418
 msgid "Print '...'"
 msgstr "Печатать '...'"
 
-#: src/playerrelations.cpp:442
+#: src/playerrelations.cpp:438
 msgid "Blink name"
 msgstr "Мигать именем"
 
-#: src/playerrelations.cpp:487
+#: src/playerrelations.cpp:483
 msgid "Floating '...' bubble"
 msgstr "Плавающий '...' пузырек"
 
-#: src/playerrelations.cpp:490
+#: src/playerrelations.cpp:486
 msgid "Floating bubble"
 msgstr "Плавающий пузырек"
 
