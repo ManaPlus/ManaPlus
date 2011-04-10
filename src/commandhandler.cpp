@@ -992,7 +992,7 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
     if (!cache)
         return;
 
-    debugChatTab->chatLog("font cache size");
+    debugChatTab->chatLog(_("font cache size"));
     std::string str;
     for (int f = 0; f < 256; f ++)
     {
@@ -1005,7 +1005,7 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
     debugChatTab->chatLog(str);
 #ifdef DEBUG_FONT_COUNTERS
     debugChatTab->chatLog("");
-    debugChatTab->chatLog("Created: " + toString(font->getCreateCounter()));
-    debugChatTab->chatLog("Deleted: " + toString(font->getDeleteCounter()));
+    debugChatTab->chatLog(_("Created: ") + toString(font->getCreateCounter()));
+    debugChatTab->chatLog(_("Deleted: ") + toString(font->getDeleteCounter()));
 #endif
 }

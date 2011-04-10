@@ -1229,7 +1229,7 @@ void Map::addExtraLayer()
         return;
     }
     std::string mapFileName = getUserMapDirectory() + "/extralayer.txt";
-    logger->log("try load extra layer: " + mapFileName);
+    logger->log("loading extra layer: " + mapFileName);
     struct stat statbuf;
     if (!stat(mapFileName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
     {
@@ -1300,7 +1300,7 @@ void Map::saveExtraLayer()
         return;
     }
     std::string mapFileName = getUserMapDirectory() + "/extralayer.txt";
-    logger->log("try save extra layer: " + mapFileName);
+    logger->log("saving extra layer: " + mapFileName);
 
     if (mkdir_r(getUserMapDirectory().c_str()))
     {

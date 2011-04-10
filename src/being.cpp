@@ -550,14 +550,15 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
         {
             if (attacker->getType() == PLAYER || amount)
             {
-                chatWindow->battleChatLog(attacker->getName() + " : Hit you  -"
-                    + toString(amount), BY_OTHER);
+                chatWindow->battleChatLog(strprintf("%s : Hit you  -%d",
+                    attacker->getName().c_str(), amount), BY_OTHER);
             }
         }
         else if (attacker == player_node && amount)
         {
-            chatWindow->battleChatLog(attacker->getName() + " : You hit "
-                + getName() + " -" + toString(amount), BY_PLAYER);
+            chatWindow->battleChatLog(strprintf("%s : You hit %s -%d",
+                attacker->getName().c_str(), getName().c_str(), amount),
+                BY_PLAYER);
         }
     }
     if (font && particleEngine)
@@ -1795,18 +1796,6 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
         graphics->fillRectangle(gcn::Rectangle(
                                 x, y, 32, 32));
 
-/*
-        int num = socialWindow->getPortalIndex(getTileX(), getTileY());
-        if (num >= 0)
-        {
-            std::string str = outfitWindow->keyName(num);
-            if (str.length() > 4)
-                str = str.substr(0, 4);
-            gcn::Font *font = gui->getFont();
-            graphics->setColor(userPalette->getColor(UserPalette::BEING));
-            font->drawString(graphics, str, x, y);
-        }
-*/
         if (mDrawHotKeys && !mName.empty())
         {
             gcn::Font *font = gui->getFont();

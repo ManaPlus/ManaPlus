@@ -3378,26 +3378,26 @@ void LocalPlayer::setFollow(std::string player)
 {
     mPlayerFollowed = player;
     if (!mPlayerFollowed.empty())
-        debugMsg("Follow: " + player);
+        debugMsg(_("Follow: ") + player);
     else
-        debugMsg("Follow canceled");
+        debugMsg(_("Follow canceled"));
 }
 
 void LocalPlayer::setImitate(std::string player)
 {
     mPlayerImitated = player;
     if (!mPlayerImitated.empty())
-        debugMsg("Imitation: " + player);
+        debugMsg(_("Imitation: ") + player);
     else
-        debugMsg("Imitation canceled");
+        debugMsg(_("Imitation canceled"));
 }
 
 void LocalPlayer::cancelFollow()
 {
     if (!mPlayerFollowed.empty())
-        debugMsg("Follow canceled");
+        debugMsg(_("Follow canceled"));
     if (!mPlayerImitated.empty())
-        debugMsg("Imitation canceled");
+        debugMsg(_("Imitation canceled"));
     mPlayerFollowed = "";
     mPlayerImitated = "";
 }

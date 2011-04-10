@@ -289,10 +289,6 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
         return false;
 
     unsigned int rejections = flags & ~checkPermissionSilently(name, flags);
-    logger->log1("PlayerRelationsManager::hasPermission");
-    logger->log("name: " + name);
-    logger->log("flags: " + toString(flags));
-    logger->log("rejections: " + toString(rejections));
     bool permitted = (rejections == 0);
 
     if (!permitted)

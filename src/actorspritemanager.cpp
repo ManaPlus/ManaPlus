@@ -35,6 +35,7 @@
 #include "gui/viewport.h"
 
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include "net/net.h"
@@ -905,7 +906,7 @@ bool ActorSpriteManager::isBlocked(Uint32 id)
 
 void ActorSpriteManager::printAllToChat() const
 {
-    printBeingsToChat(getAll(), "Visible on map");
+    printBeingsToChat(getAll(), _("Visible on map"));
 }
 
 void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
