@@ -217,6 +217,7 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\libintl-8.dll"
   File "${DLLDIR}\libpng12-0.dll"
   File "${DLLDIR}\libxml2-2.dll"
+  File "${DLLDIR}\zlib1.dll"
   File "${SRCDIR}\AUTHORS"
   File "${SRCDIR}\COPYING"
   File "${SRCDIR}\NEWS"
