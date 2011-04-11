@@ -30,7 +30,20 @@
 #include "resources/resourcemanager.h"
 #include "resources/soundeffect.h"
 
-#include "configuration.h"
+/**
+ * This will be set to true, when a music can be freed after a fade out
+ * Currently used by fadeOutCallBack()
+ */
+static bool sFadingOutEnded = false;
+
+/**
+ * Callback used at end of fadeout.
+ * It is called by Mix_MusicFadeFinished().
+ */
+static void fadeOutCallBack()
+{
+    sFadingOutEnded = true;
+}
 
 Sound::Sound():
     mInstalled(false),
@@ -41,6 +54,10 @@ Sound::Sound():
     mPlayGui(false),
     mPlayMusic(false)
 {
+    // This set up our callback function used to
+    // handle fade outs endings.
+    sFadingOutEnded = false;
+    Mix_HookMusicFinished(fadeOutCallBack);
 }
 
 Sound::~Sound()
@@ -58,6 +75,8 @@ void Sound::optionChanged(const std::string &value)
         mPlayGui = config.getBoolValue("playGuiSound");
     else if (value == "playMusic")
         mPlayMusic = config.getBoolValue("playMusic");
+    // Unlink the callback function.
+    Mix_HookMusicFinished(NULL);
 }
 
 void Sound::init()
@@ -143,11 +162,6 @@ void Sound::info()
     logger->log("Sound::info() Format: %s", format);
     logger->log("Sound::info() Rate: %i", rate);
     logger->log("Sound::info() Channels: %i", channels);
-}
-
-int Sound::getMaxVolume() const
-{
-    return MIX_MAX_VOLUME;
 }
 
 void Sound::setMusicVolume(int volume)
@@ -258,8 +272,37 @@ void Sound::fadeOutMusic(int ms)
     if (mMusic)
     {
         Mix_FadeOutMusic(ms);
-        Mix_FreeMusic(mMusic);
-        mMusic = NULL;
+        // Note: The fadeOutCallBack handler will take care about freeing
+        // the music file at fade out ending.
+    }
+    else
+    {
+        sFadingOutEnded = true;
+    }
+}
+
+void Sound::fadeOutAndPlayMusic(const std::string &path, int ms)
+{
+    mNextMusicPath = path;
+    fadeOutMusic(ms);
+}
+
+void Sound::logic()
+{
+    if (sFadingOutEnded)
+    {
+        if (mMusic)
+        {
+            Mix_FreeMusic(mMusic);
+            mMusic = NULL;
+        }
+        sFadingOutEnded = false;
+
+        if (!mNextMusicPath.empty())
+        {
+            playMusic(mNextMusicPath);
+            mNextMusicPath.clear();
+        }
     }
 }
 
