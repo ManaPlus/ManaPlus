@@ -126,6 +126,8 @@ class InventoryWindow : public Window,
 
         void event(Mana::Channels channel, const Mana::Event &event);
 
+        void updateButtons(Item *item = 0);
+
     private:
         /**
          * Updates the weight bar.

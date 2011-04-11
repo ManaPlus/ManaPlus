@@ -427,6 +427,20 @@ void InventoryWindow::valueChanged(const gcn::SelectionEvent &event _UNUSED_)
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit, this, item,
                                      (item->getQuantity() - 1));
     }
+    updateButtons(item);
+}
+
+void InventoryWindow::updateButtons(Item *item)
+{
+    if (!mInventory || !mInventory->isMainInventory())
+        return;
+
+    Item *selectedItem = mItems->getSelectedItem();
+    if (item && selectedItem != item)
+        return;
+
+    if (!item)
+        item = selectedItem;
 
     if (!item || item->getQuantity() == 0)
     {
@@ -472,8 +486,8 @@ void InventoryWindow::valueChanged(const gcn::SelectionEvent &event _UNUSED_)
         else
             mSplitButton->setEnabled(false);
     }
-}
 
+}
 
 void InventoryWindow::setSplitAllowed(bool allowed)
 {

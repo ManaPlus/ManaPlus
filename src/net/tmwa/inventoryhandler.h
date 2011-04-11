@@ -94,6 +94,9 @@ class EquipBackend : public Equipment::Backend
             item = PlayerInfo::getInventory()->getItem(inventoryIndex);
             if (item)
                 item->setEquipped(true);
+
+            if (inventoryWindow)
+                inventoryWindow->updateButtons();
         }
 
     private:
