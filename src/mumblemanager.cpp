@@ -122,8 +122,8 @@ void MumbleManager::init()
     }
 
 #endif
-    wcsncpy(mLinkedMemCache.name, L"Mana", 256);
-    wcsncpy(mLinkedMemCache.description, L"TheManaWorld Plugin", 2048);
+    wcsncpy(mLinkedMemCache.name, L"ManaPlus", 256);
+    wcsncpy(mLinkedMemCache.description, L"ManaPlus Plugin", 2048);
     mLinkedMemCache.uiVersion = 2;
 
     // Left handed coordinate system.
