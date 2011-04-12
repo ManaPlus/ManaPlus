@@ -665,6 +665,22 @@ void Window::loadWindowState()
 
     // Check if the window is off screen...
     checkIfIsOffScreen();
+
+    if (viewport)
+    {
+        int width = getWidth();
+        int height = getHeight();
+
+        if (getX() + width >= viewport->getWidth())
+            width = viewport->getWidth() - getX() - 1;
+        if (getY() + height >= viewport->getHeight())
+            height = viewport->getHeight() - getY() - 1;
+        if (width < 0)
+            width = 0;
+        if (height < 0)
+            height = 0;
+        setSize(width, height);
+    }
 }
 
 void Window::saveWindowState()
