@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+dir=`pwd`
+
+export LANG=C
+export CC=clang
+export CXX=clang++
+
+./configure --prefix=$dir/run \
+--datadir=$dir/run/share/games \
+--bindir=$dir/run/bin \
+--mandir=$dir/run/share/man
+
+make -j5 2>make2.log
+
