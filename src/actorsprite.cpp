@@ -488,8 +488,9 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
     {
 //        anim->addFrame(currentImageSet->get(i), 0,
         anim->addFrame(currentImageSet->get(i), 75,
-                       (16 - (currentImageSet->getWidth() / 2)),
-                       (16 - (currentImageSet->getHeight() / 2)));
+            (16 - (currentImageSet->getWidth() / 2)),
+            (16 - (currentImageSet->getHeight() / 2)),
+            100);
     }
 
     SimpleAnimation *currentCursor = new SimpleAnimation(anim);

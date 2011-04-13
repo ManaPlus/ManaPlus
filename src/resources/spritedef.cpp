@@ -225,6 +225,8 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
             imageSet->getOffsetX();
         int offsetY = XML::getProperty(frameNode, "offsetY", 0) +
             imageSet->getOffsetY();
+        int rand = XML::getProperty(frameNode, "rand", 100);
+
         offsetY -= imageSet->getHeight() - 32;
         offsetX -= imageSet->getWidth() / 2 - 16;
 
@@ -246,7 +248,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
                 continue;
             }
 
-            animation->addFrame(img, delay, offsetX, offsetY);
+            animation->addFrame(img, delay, offsetX, offsetY, rand);
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
         {
@@ -282,7 +284,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
                         continue;
                     }
 
-                    animation->addFrame(img, delay, offsetX, offsetY);
+                    animation->addFrame(img, delay, offsetX, offsetY, rand);
                     pos ++;
                 }
                 repeat --;
@@ -290,11 +292,24 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
         {
-            animation->addTerminator();
+            animation->addTerminator(rand);
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "jump"))
         {
-            animation->addJump(XML::getProperty(frameNode, "action", ""));
+            animation->addJump(XML::getProperty(
+                frameNode, "action", ""), rand);
+        }
+        else if (xmlStrEqual(frameNode->name, BAD_CAST "label"))
+        {
+            std::string name = XML::getProperty(frameNode, "name", "");
+            if (!name.empty())
+                animation->addLabel(name);
+        }
+        else if (xmlStrEqual(frameNode->name, BAD_CAST "goto"))
+        {
+            std::string name = XML::getProperty(frameNode, "label", "");
+            if (!name.empty())
+                animation->addGoto(name, rand);
         }
     } // for frameNode
 }

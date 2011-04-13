@@ -215,6 +215,7 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 int delay = XML::getProperty(frameNode, "delay", 0);
                 int offsetX = XML::getProperty(frameNode, "offsetX", 0);
                 int offsetY = XML::getProperty(frameNode, "offsetY", 0);
+                int rand = XML::getProperty(frameNode, "rand", 100);
                 if (!imageset)
                 {
                     logger->log1("Error: no valid imageset");
@@ -242,7 +243,8 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                         continue;
                     }
 
-                    mParticleRotation.addFrame(img, delay, offsetX, offsetY);
+                    mParticleRotation.addFrame(img, delay,
+                        offsetX, offsetY, rand);
                 }
                 else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
                 {
@@ -266,13 +268,13 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                         }
 
                         mParticleRotation.addFrame(img, delay,
-                                                   offsetX, offsetY);
+                            offsetX, offsetY, rand);
                         start++;
                     }
                 }
                 else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
                 {
-                    mParticleRotation.addTerminator();
+                    mParticleRotation.addTerminator(rand);
                 }
             } // for frameNode
         }
@@ -296,6 +298,7 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 int delay = XML::getProperty(frameNode, "delay", 0);
                 int offsetX = XML::getProperty(frameNode, "offsetX", 0);
                 int offsetY = XML::getProperty(frameNode, "offsetY", 0);
+                int rand = XML::getProperty(frameNode, "rand", 100);
                 offsetY -= imageset->getHeight() - 32;
                 offsetX -= imageset->getWidth() / 2 - 16;
 
@@ -317,7 +320,8 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                         continue;
                     }
 
-                    mParticleAnimation.addFrame(img, delay, offsetX, offsetY);
+                    mParticleAnimation.addFrame(img, delay,
+                        offsetX, offsetY, rand);
                 }
                 else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
                 {
@@ -341,13 +345,13 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                         }
 
                         mParticleAnimation.addFrame(img, delay,
-                                                    offsetX, offsetY);
+                            offsetX, offsetY, rand);
                         start++;
                     }
                 }
                 else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
                 {
-                    mParticleAnimation.addTerminator();
+                    mParticleAnimation.addTerminator(rand);
                 }
             } // for frameNode
         }

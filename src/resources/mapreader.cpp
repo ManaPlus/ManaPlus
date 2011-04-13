@@ -705,11 +705,12 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
                         "animation-frame" + toString(i));
                     iDelay = tileProperties.find(
                         "animation-delay" + toString(i));
+                    // possible need add random attribute?
                     if (iFrame != tileProperties.end()
                         && iDelay != tileProperties.end())
                     {
                         ani->addFrame(set->get(iFrame->second),
-                                      iDelay->second, 0, 0);
+                            iDelay->second, 0, 0, 100);
                     }
                     else
                     {

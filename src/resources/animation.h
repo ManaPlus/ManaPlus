@@ -39,12 +39,14 @@ struct Frame
     {
         ANIMATION = 0,
         JUMP,
+        GOTO,
         LABEL
     };
     Image *image;
     int delay;
     int offsetX;
     int offsetY;
+    int rand;
     FrameType type;
     std::string nextAction;
 };
@@ -61,13 +63,14 @@ class Animation
         /**
          * Appends a new animation at the end of the sequence.
          */
-        void addFrame(Image *image, int delay, int offsetX, int offsetY);
+        void addFrame(Image *image, int delay, int offsetX, int offsetY,
+                      int rand);
 
         /**
          * Appends an animation terminator that states that the animation
          * should not loop.
          */
-        void addTerminator();
+        void addTerminator(int rand);
 
         /**
          * Returns the frame at the specified index.
@@ -87,7 +90,11 @@ class Animation
         int getDuration() const
         { return mDuration; }
 
-        void addJump(std::string name);
+        void addJump(std::string name, int rand);
+
+        void addLabel(std::string name);
+
+        void addGoto(std::string name, int rand);
 
         /**
          * Determines whether the given animation frame is a terminator.

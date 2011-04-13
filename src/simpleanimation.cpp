@@ -155,6 +155,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode)
         int delay = XML::getProperty(frameNode, "delay", 0);
         int offsetX = XML::getProperty(frameNode, "offsetX", 0);
         int offsetY = XML::getProperty(frameNode, "offsetY", 0);
+        int rand = XML::getProperty(frameNode, "rand", 100);
         offsetY -= imageset->getHeight() - 32;
         offsetX -= imageset->getWidth() / 2 - 16;
 
@@ -177,7 +178,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode)
             }
 
             if (mAnimation)
-                mAnimation->addFrame(img, delay, offsetX, offsetY);
+                mAnimation->addFrame(img, delay, offsetX, offsetY, rand);
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
         {
@@ -201,14 +202,14 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode)
                 }
 
                 if (mAnimation)
-                    mAnimation->addFrame(img, delay, offsetX, offsetY);
+                    mAnimation->addFrame(img, delay, offsetX, offsetY, rand);
                 start++;
             }
         }
         else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
         {
             if (mAnimation)
-                mAnimation->addTerminator();
+                mAnimation->addTerminator(rand);
         }
     }
 

@@ -142,30 +142,77 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
 
     mFrameTime += time;
 
-    while (mFrameTime > static_cast<unsigned>(mFrame->delay)
-           && mFrame->delay > 0)
+    while ((mFrameTime > static_cast<unsigned>(mFrame->delay)
+           && mFrame->delay > 0) || mFrame->type != Frame::ANIMATION)
     {
+        bool fail(true);
         mFrameTime -= static_cast<unsigned>(mFrame->delay);
         mFrameIndex++;
 
-        if (mFrameIndex == mAnimation->getLength())
+        if (mFrameIndex >= mAnimation->getLength())
             mFrameIndex = 0;
 
         mFrame = mAnimation->getFrame(mFrameIndex);
 
-        if (Animation::isTerminator(*mFrame))
+        if (mFrame->type == Frame::LABEL && !mFrame->nextAction.empty())
         {
-            mAnimation = 0;
-            mFrame = 0;
-            return false;
+            fail = true;
         }
-        if (mFrame->type == Frame::JUMP && !mFrame->nextAction.empty())
+        else if (mFrame->type == Frame::GOTO && !mFrame->nextAction.empty())
         {
-            play(mFrame->nextAction);
-            return true;
-        }
-    }
+            if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
+            {
+                for (int i = 0; i < mAnimation->getLength(); i ++)
+                {
+                    Frame *frame = mAnimation->getFrame(i);
+                    if (frame->type == Frame::LABEL
+                        && mFrame->nextAction == frame->nextAction)
+                    {
+                        mFrameTime = 0;
+                        mFrameIndex = i;
+                        if (mFrameIndex >= mAnimation->getLength())
+                            mFrameIndex = 0;
 
+                        mFrame = mAnimation->getFrame(mFrameIndex);
+
+                        fail = true;
+                        break;
+                    }
+                }
+            }
+        }
+        else if (mFrame->type == Frame::JUMP && !mFrame->nextAction.empty())
+        {
+            if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
+            {
+                play(mFrame->nextAction);
+                return true;
+            }
+        }
+        else if (Animation::isTerminator(*mFrame))
+        {
+            if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
+            {
+                mAnimation = 0;
+                mFrame = 0;
+                return false;
+            }
+        }
+        else
+        {
+            if (mFrame->rand == 100 || mFrameIndex >= mAnimation->getLength())
+            {
+                fail = false;
+            }
+            else
+            {
+                if (rand() % 100 <= mFrame->rand)
+                    fail = false;
+            }
+        }
+        if (fail)
+            mFrameTime = mFrame->delay + 1;
+    }
     return true;
 }
 
