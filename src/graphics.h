@@ -35,7 +35,6 @@
 
 class GraphicsVertexes;
 class Image;
-class ImageRect;
 
 struct SDL_Surface;
 
@@ -59,22 +58,23 @@ static const int defaultScreenHeight = 600;
  * Sections 0, 2, 6 and 8 will remain as is. 1, 3, 4, 5 and 7 will be
  * repeated to fit the size of the widget.
  */
-struct ImageRect
+class ImageRect
 {
-    enum ImagePosition
-    {
-        UPPER_LEFT = 0,
-        UPPER_CENTER = 1,
-        UPPER_RIGHT = 2,
-        LEFT = 3,
-        CENTER = 4,
-        RIGHT = 5,
-        LOWER_LEFT = 6,
-        LOWER_CENTER = 7,
-        LOWER_RIGHT = 8
-    };
+    public:
+        enum ImagePosition
+        {
+            UPPER_LEFT = 0,
+            UPPER_CENTER = 1,
+            UPPER_RIGHT = 2,
+            LEFT = 3,
+            CENTER = 4,
+            RIGHT = 5,
+            LOWER_LEFT = 6,
+            LOWER_CENTER = 7,
+            LOWER_RIGHT = 8
+        };
 
-    Image *grid[9];
+        Image *grid[9];
 };
 
 /**

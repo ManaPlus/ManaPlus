@@ -43,7 +43,8 @@
 #include <map>
 
 class Dye;
-class Position;
+
+struct Position;
 
 /**
  * Defines a class for loading and storing images.

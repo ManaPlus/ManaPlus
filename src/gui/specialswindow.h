@@ -45,7 +45,7 @@ class ScrollArea;
 class Tab;
 class TabbedArea;
 
-struct SpecialEntry;
+class SpecialEntry;
 
 class SpecialsWindow : public Window, public gcn::ActionListener
 {

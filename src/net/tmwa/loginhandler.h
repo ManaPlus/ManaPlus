@@ -36,7 +36,7 @@
 #define _UNUSED_
 #endif
 
-struct LoginData;
+class LoginData;
 
 namespace TmwAthena
 {

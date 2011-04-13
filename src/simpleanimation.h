@@ -26,9 +26,10 @@
 #include "utils/xml.h"
 
 class Animation;
-class Frame;
 class Graphics;
 class Image;
+
+struct Frame;
 
 /**
  * This class is a leightweight alternative to the AnimatedSprite class.

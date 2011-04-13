@@ -54,9 +54,6 @@
 #define SPECIALS_WIDTH 200
 #define SPECIALS_HEIGHT 32
 
-class SpecialEntry;
-
-
 class SpecialEntry : public Container
 {
     public:

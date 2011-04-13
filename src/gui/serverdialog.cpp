@@ -217,7 +217,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     mDownloadProgress(-1.0f),
     mServers(ServerInfos()),
     mServerInfo(serverInfo),
-    mPersistentIPCheckBox(false)
+    mPersistentIPCheckBox(0)
 {
     if (isSafeMode)
         setCaption("Choose Your Server  *** SAFE MODE ***");

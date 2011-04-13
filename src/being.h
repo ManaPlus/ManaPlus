@@ -60,9 +60,10 @@ class ItemInfo;
 class Item;
 class Particle;
 class Party;
-class Position;
 class SpeechBubble;
 class Text;
+
+struct Position;
 
 extern volatile int cur_time;
 

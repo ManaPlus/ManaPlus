@@ -485,7 +485,7 @@ void StatusPopup::updateLabels()
     }
     mImitationMode->adjustSize();
 
-    switch (player_node->getAwayMode())
+    switch ((int)player_node->getAwayMode())
     {
         case 0:
             setLabelText(mAwayMode, _("(O) on keyboard"), keyboard.KEY_AWAY);
