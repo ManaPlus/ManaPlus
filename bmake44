@@ -36,9 +36,9 @@ export CXXFLAGS="-Wmissing-field-initializers \
 
 autoreconf -i
 ./configure --prefix=$dir/run \
-            --datadir=$dir/run/share/games \
-            --bindir=$dir/run/bin \
-            --mandir=$dir/run/share/man
+--datadir=$dir/run/share/games \
+--bindir=$dir/run/bin \
+--mandir=$dir/run/share/man
 
 cd po
 #make -j5 update-po 2>../make1.log
