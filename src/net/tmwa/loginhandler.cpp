@@ -174,6 +174,9 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
                     errorMessage = _("You have been permanently banned from "
                                      "the game. Please contact the GM team.");
                     break;
+                case 5:
+                    errorMessage = _("Client too old.");
+                    break;
                 case 6:
                     errorMessage = strprintf(_("You have been temporarily "
                                                "banned from the game until "
@@ -181,11 +184,17 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
                                                "team via the forums."),
                                                msg.readString(20).c_str());
                     break;
+                case 7:
+                    errorMessage = _("Server overpopulated.");
+                    break;
                 case 9:
                     errorMessage = _("This user name is already taken.");
                     break;
                 case 10:
                     errorMessage = _("Wrong name.");
+                    break;
+                case 99:
+                    errorMessage = _("Username permanently erased.");
                     break;
                 default:
                     errorMessage = _("Unknown error.");
