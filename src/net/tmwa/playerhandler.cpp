@@ -41,6 +41,7 @@
 
 #include "net/tmwa/protocol.h"
 #include "net/tmwa/npchandler.h"
+#include "net/tmwa/inventoryhandler.h"
 
 #include "utils/stringutils.h"
 #include "utils/gettext.h"
@@ -685,6 +686,10 @@ void PlayerHandler::pickUp(FloorItem *floorItem)
 
     MessageOut outMsg(CMSG_ITEM_PICKUP);
     outMsg.writeInt32(floorItem->getId());
+    TmwAthena::InventoryHandler *handler =
+        static_cast<TmwAthena::InventoryHandler*>(Net::getInventoryHandler());
+    if (handler)
+        handler->pushPickup(floorItem->getId());
 }
 
 void PlayerHandler::setDirection(char direction)

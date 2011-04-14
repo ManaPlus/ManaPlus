@@ -51,7 +51,8 @@ FloorItem::FloorItem(int id,
 //    mAlpha(1.0f),
     mAmount(amount),
     mPickupCount(0),
-    mColor(color)
+    mColor(color),
+    mShowMsg(true)
 {
     mDropTime = cur_time;
 

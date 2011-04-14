@@ -1322,10 +1322,21 @@ void LocalPlayer::stopAttack()
 }
 
 void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
-                           unsigned char color, unsigned char fail)
+                           unsigned char color, int floorItemId,
+                           unsigned char fail)
 {
     if (fail)
     {
+        if (actorSpriteManager && floorItemId)
+        {
+            FloorItem *item = actorSpriteManager->findItem(floorItemId);
+            if (item)
+            {
+                if (!item->getShowMsg())
+                    return;
+                item->setShowMsg(false);
+            }
+        }
         const char* msg;
         switch (fail)
         {

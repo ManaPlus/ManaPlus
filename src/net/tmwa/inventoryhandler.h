@@ -35,6 +35,7 @@
 #include "net/tmwa/messagehandler.h"
 
 #include <list>
+#include <queue>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
@@ -170,11 +171,17 @@ class InventoryHandler : public MessageHandler, public Net::InventoryHandler
 
         int convertFromServerSlot(int serverSlot);
 
+        void pushPickup(int floorId)
+        { mSentPickups.push(floorId); }
+
     private:
         EquipBackend mEquips;
         InventoryItems mInventoryItems;
         Inventory *mStorage;
         InventoryWindow *mStorageWindow;
+
+        typedef std::queue<int> PickupQueue;
+        PickupQueue mSentPickups;
 };
 
 } // namespace TmwAthena

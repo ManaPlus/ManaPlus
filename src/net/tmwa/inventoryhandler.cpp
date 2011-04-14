@@ -159,6 +159,7 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
     int number, flag;
     int index, amount, itemId, equipType, arrow, refine;
     int cards[4], itemType;
+    int floorId;
     unsigned char identified;
     Inventory *inventory = 0;
     if (player_node)
@@ -289,17 +290,30 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 const ItemInfo &itemInfo = ItemDB::get(itemId);
 
                 unsigned char err = msg.readInt8();
+                if (mSentPickups.empty())
+                {
+                    floorId = 0;
+                }
+                else
+                {
+                    floorId = mSentPickups.front();
+                    mSentPickups.pop();
+                }
+
                 if (err)
                 {
                     if (player_node)
-                        player_node->pickedUp(itemInfo, 0, identified, err);
+                    {
+                        player_node->pickedUp(itemInfo, 0, identified,
+                            floorId, err);
+                    }
                 }
                 else
                 {
                     if (player_node)
                     {
                         player_node->pickedUp(itemInfo, amount,
-                            identified, PICKUP_OKAY);
+                            identified, floorId, PICKUP_OKAY);
                     }
 
                     if (inventory)

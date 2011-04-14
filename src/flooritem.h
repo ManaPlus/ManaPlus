@@ -83,6 +83,12 @@ class FloorItem : public ActorSprite
         unsigned char getColor() const
         { return mColor; }
 
+        bool getShowMsg()
+        { return mShowMsg; }
+
+        void setShowMsg(bool n)
+        { mShowMsg = n; }
+
     private:
         int mItemId;
         int mX, mY;
@@ -93,6 +99,7 @@ class FloorItem : public ActorSprite
         int mAmount;
         unsigned mPickupCount;
         unsigned char mColor;
+        bool mShowMsg;
 };
 
 #endif

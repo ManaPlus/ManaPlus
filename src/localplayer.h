@@ -211,7 +211,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          * Shows item pickup notifications.
          */
         void pickedUp(const ItemInfo &itemInfo, int amount,
-                      unsigned char color, unsigned char fail);
+                      unsigned char color, int floorItemId,
+                      unsigned char fail);
 
         int getLevel() const;
 
