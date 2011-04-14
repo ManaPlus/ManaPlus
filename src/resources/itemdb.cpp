@@ -151,23 +151,6 @@ void ItemDB::load()
     int tagNum = 0;
     logger->log1("Initializing item database...");
 
-    mUnknown = new ItemInfo;
-    mUnknown->setName(_("Unknown item"));
-    mUnknown->setDisplay(SpriteDisplay());
-    std::string errFile = paths.getStringValue("spriteErrorFile");
-    mUnknown->setSprite(errFile, GENDER_MALE);
-    mUnknown->setSprite(errFile, GENDER_FEMALE);
-
-    XML::Document doc("items.xml");
-    xmlNodePtr rootNode = doc.rootNode();
-
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "items"))
-    {
-        logger->log("ItemDB: Error while loading items.xml!");
-        mLoaded = true;
-        return;
-    }
-
     mTags.clear();
     mTagNames.clear();
     mTagNames.push_back("All");
@@ -178,6 +161,24 @@ void ItemDB::load()
     mTags["Usable"] = tagNum ++;
     mTags["Unusable"] = tagNum ++;
     mTags["Equipment"] = tagNum ++;
+
+    mUnknown = new ItemInfo;
+    mUnknown->setName(_("Unknown item"));
+    mUnknown->setDisplay(SpriteDisplay());
+    std::string errFile = paths.getStringValue("spriteErrorFile");
+    mUnknown->setSprite(errFile, GENDER_MALE);
+    mUnknown->setSprite(errFile, GENDER_FEMALE);
+    mUnknown->addTag(mTags["All"]);
+
+    XML::Document doc("items.xml");
+    xmlNodePtr rootNode = doc.rootNode();
+
+    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "items"))
+    {
+        logger->log("ItemDB: Error while loading items.xml!");
+        mLoaded = true;
+        return;
+    }
 
     for_each_xml_child_node(node, rootNode)
     {
