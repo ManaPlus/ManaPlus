@@ -53,7 +53,7 @@ class ItemPopup : public Popup
          * Sets the info to be displayed given a particular item.
          */
         void setItem(const ItemInfo &item, unsigned char color,
-                     bool showImage = false);
+                     bool showImage = false, int id = -1);
 
         void setItem(const Item *item, bool showImage = false);
 

@@ -100,7 +100,7 @@ void ItemPopup::setItem(const Item *item, bool showImage)
         return;
 
     const ItemInfo &ii = item->getInfo();
-    setItem(ii, item->getColor(), showImage);
+    setItem(ii, item->getColor(), showImage, item->getId());
     if (item->getRefine() > 0)
     {
         mLastName = ii.getName();
@@ -123,10 +123,13 @@ void ItemPopup::setItem(const Item *item, bool showImage)
 }
 
 void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
-                        bool showImage)
+                        bool showImage, int id)
 {
     if (!mIcon || (item.getName() == mLastName && color == mLastColor))
         return;
+
+    if (id == -1)
+        id = item.getId();
 
     int space = 0;
 
@@ -166,13 +169,13 @@ void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
     if (serverVersion > 0)
     {
         mItemName->setCaption(item.getName(color) + _(", ")
-            + toString(item.getId()));
+            + toString(id));
         mItemDesc->setTextWrapped(item.getDescription(color), 196);
     }
     else
     {
         mItemName->setCaption(item.getName() + _(", ")
-            + toString(item.getId()));
+            + toString(id));
         mItemDesc->setTextWrapped(item.getDescription(), 196);
     }
 
