@@ -1181,9 +1181,12 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             int id = msg.readInt32();    // id
             int rank = msg.readInt32();  // rank
             msg.readInt32();             // num
-            dstBeing = actorSpriteManager->findBeing(id);
-            if (dstBeing)
-                dstBeing->setPvpRank(rank);
+            if (actorSpriteManager)
+            {
+                dstBeing = actorSpriteManager->findBeing(id);
+                if (dstBeing)
+                    dstBeing->setPvpRank(rank);
+            }
             break;
         }
 
