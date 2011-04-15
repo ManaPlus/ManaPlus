@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manaplus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-04-10 21:31+0300\n"
+"POT-Creation-Date: 2011-04-15 20:28+0300\n"
 "PO-Revision-Date: 2011-03-31 21:00+0000\n"
 "Last-Translator: Jumpy <antoinebcn@hotmail.com>\n"
 "Language-Team: Spanish (Castilian) <>\n"
@@ -802,7 +802,7 @@ msgid "Equipment"
 msgstr "Equipamento"
 
 #: src/gui/equipmentwindow.cpp:92 src/gui/inventorywindow.cpp:127
-#: src/gui/inventorywindow.cpp:452 src/gui/inventorywindow.cpp:461
+#: src/gui/inventorywindow.cpp:466 src/gui/inventorywindow.cpp:475
 #: src/gui/popupmenu.cpp:1242 src/gui/popupmenu.cpp:1325
 #: src/gui/popupmenu.cpp:1365
 msgid "Unequip"
@@ -846,20 +846,20 @@ msgstr "az"
 msgid "id"
 msgstr "id"
 
-#: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:454
-#: src/gui/inventorywindow.cpp:463 src/gui/popupmenu.cpp:1244
+#: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:468
+#: src/gui/inventorywindow.cpp:477 src/gui/popupmenu.cpp:1244
 #: src/gui/popupmenu.cpp:1327 src/gui/popupmenu.cpp:1367
 msgid "Equip"
 msgstr "Equipar"
 
-#: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:455
-#: src/gui/inventorywindow.cpp:459 src/gui/popupmenu.cpp:1247
+#: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:469
+#: src/gui/inventorywindow.cpp:473 src/gui/popupmenu.cpp:1247
 #: src/gui/popupmenu.cpp:1300 src/gui/popupmenu.cpp:1331
 #: src/gui/popupmenu.cpp:1370
 msgid "Use"
 msgstr "Usar"
 
-#: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:560
+#: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:574
 #: src/gui/popupmenu.cpp:1250 src/gui/popupmenu.cpp:1335
 #: src/gui/popupmenu.cpp:1373
 msgid "Drop..."
@@ -879,7 +879,7 @@ msgstr "Conjuntos"
 msgid "Weight:"
 msgstr "Peso:"
 
-#: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:551
+#: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:565
 #: src/gui/popupmenu.cpp:1223 src/gui/popupmenu.cpp:1343
 #: src/gui/popupmenu.cpp:1381 src/gui/setup.cpp:66
 msgid "Store"
@@ -889,7 +889,7 @@ msgstr "Almacenar"
 msgid "Retrieve"
 msgstr "Retirar"
 
-#: src/gui/inventorywindow.cpp:562 src/gui/popupmenu.cpp:1252
+#: src/gui/inventorywindow.cpp:576 src/gui/popupmenu.cpp:1252
 #: src/gui/popupmenu.cpp:1337 src/gui/popupmenu.cpp:1375
 #: src/gui/windowmenu.cpp:92
 msgid "Drop"
@@ -931,11 +931,11 @@ msgstr "Agregar a tienda de venta."
 msgid "Unknown."
 msgstr "Desconocido."
 
-#: src/gui/itempopup.cpp:168 src/gui/itempopup.cpp:174
+#: src/gui/itempopup.cpp:171 src/gui/itempopup.cpp:177
 msgid ", "
 msgstr ", "
 
-#: src/gui/itempopup.cpp:184
+#: src/gui/itempopup.cpp:187
 #, c-format
 msgid "Weight: %s"
 msgstr "Peso: %s"
@@ -2481,7 +2481,7 @@ msgstr "Nombre del grupo"
 msgid "Choose your party's name."
 msgstr "Escoja el nombre del grupo."
 
-#: src/gui/specialswindow.cpp:80 src/gui/windowmenu.cpp:84
+#: src/gui/specialswindow.cpp:77 src/gui/windowmenu.cpp:84
 msgid "Specials"
 msgstr "Especiales"
 
@@ -3844,67 +3844,67 @@ msgstr ""
 msgid "You were killed by "
 msgstr "Fuiste eliminado por "
 
-#: src/localplayer.cpp:1333
+#: src/localplayer.cpp:1344
 msgid "Tried to pick up nonexistent item."
 msgstr "Intenaste recoger un objeto inexistante."
 
-#: src/localplayer.cpp:1335
+#: src/localplayer.cpp:1346
 msgid "Item is too heavy."
 msgstr "El artículo es muy pesado."
 
-#: src/localplayer.cpp:1337
+#: src/localplayer.cpp:1348
 msgid "Item is too far away"
 msgstr "El artículo está muy lejos"
 
-#: src/localplayer.cpp:1339
+#: src/localplayer.cpp:1350
 msgid "Inventory is full."
 msgstr "El inventario está lleno."
 
-#: src/localplayer.cpp:1341
+#: src/localplayer.cpp:1352
 msgid "Stack is too big."
 msgstr "El agrupamiento es demasiado grande."
 
-#: src/localplayer.cpp:1344
+#: src/localplayer.cpp:1355
 msgid "Item belongs to someone else."
 msgstr "El artículo pertenece a alguien más."
 
-#: src/localplayer.cpp:1347
+#: src/localplayer.cpp:1358
 msgid "Unknown problem picking up item."
 msgstr "Problema desconocido al intentar recoger el artículo."
 
 #. TRANSLATORS: This sentence may be translated differently
 #. for different grammatical numbers (singular, plural, ...)
-#: src/localplayer.cpp:1372
+#: src/localplayer.cpp:1383
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Usted cogió un/a %d [@@%d|%s@@]."
 msgstr[1] "Usted Cogió %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3088
+#: src/localplayer.cpp:3099
 msgid "Away"
 msgstr "Fuera del Teclado"
 
-#: src/localplayer.cpp:3381
+#: src/localplayer.cpp:3392
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3383 src/localplayer.cpp:3398
+#: src/localplayer.cpp:3394 src/localplayer.cpp:3409
 #, fuzzy
 msgid "Follow canceled"
 msgstr "Intercambio Cancelado."
 
-#: src/localplayer.cpp:3390
+#: src/localplayer.cpp:3401
 #, fuzzy
 msgid "Imitation: "
 msgstr "(?) imitación"
 
-#: src/localplayer.cpp:3392 src/localplayer.cpp:3400
+#: src/localplayer.cpp:3403 src/localplayer.cpp:3411
 #, fuzzy
 msgid "Imitation canceled"
 msgstr "Intercambio Cancelado."
 
-#: src/localplayer.cpp:3752
+#: src/localplayer.cpp:3763
 msgid "You see "
 msgstr "Vez "
 
@@ -4054,27 +4054,27 @@ msgstr "Fuerza de voluntad"
 msgid "Willpower %+.1f"
 msgstr "Voluntad %+.1f"
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:100
+#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:101
 msgid "You are dead."
 msgstr "Estás muerto"
 
-#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:101
+#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:102
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "Lamentamos informarte de que tu personaje fue aniquilado en combate."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:103
+#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:104
 msgid "You are not that alive anymore."
 msgstr "Ya no estás tan vivo..."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:105
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "Las frías manos de la muerte se llevaron tu alma su reino."
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:105
+#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:106
 msgid "Game Over!"
 msgstr "Fin Del Juego!"
 
-#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:108
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4082,34 +4082,34 @@ msgstr ""
 "No, niños. Tu jugador no murió realmente. Solo... eeeh... fue a un lugar "
 "mejor ."
 
-#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:109
+#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:110
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr ""
 "Parece que tu plan de romper las armas de tus enemigos con tu garganta falló!"
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:111
+#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:112
 msgid "I guess this did not run too well."
 msgstr "Creo que esto no fue muy bien."
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:113
+#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:114
 msgid "Do you want your possessions identified?"
 msgstr "Deseas que tus posesiones sean identificadas?"
 
-#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:115
+#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:116
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Desgraciadamente, nada de ti fue encontrado..."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:117
+#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:118
 msgid "Annihilated."
 msgstr "Aniquilado."
 
-#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:119
+#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:120
 msgid "Looks like you got your head handed to you."
 msgstr "Parece que te tiraron tu cabeza a tus manos."
 
-#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:121
+#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:122
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr "Parece que te asustaste , revive en otro cuerpo y sigue tu aventura ."
@@ -4171,7 +4171,7 @@ msgstr "Número de ranura equivocado."
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:100 src/net/tmwa/loginhandler.cpp:191
+#: src/net/tmwa/loginhandler.cpp:100 src/net/tmwa/loginhandler.cpp:200
 msgid "Unknown error."
 msgstr "Error desconocido."
 
@@ -4429,7 +4429,7 @@ msgstr "Error desconocido del char-server."
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Error al crear personaje. Probablemente ya esté en uso."
 
-#: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:194
 msgid "Wrong name."
 msgstr "Nombre equivocado."
 
@@ -4854,11 +4854,11 @@ msgstr "Imposible compartir experiencia."
 msgid "Experience sharing unknown."
 msgstr "Compartir experiencia desconocido."
 
-#: src/net/tmwa/inventoryhandler.cpp:362
+#: src/net/tmwa/inventoryhandler.cpp:376
 msgid "Failed to use item."
 msgstr "Fallo al usar el objeto."
 
-#: src/net/tmwa/inventoryhandler.cpp:514
+#: src/net/tmwa/inventoryhandler.cpp:528
 msgid "Unable to equip."
 msgstr "Imposible equipar."
 
@@ -4894,6 +4894,11 @@ msgstr ""
 "GM."
 
 #: src/net/tmwa/loginhandler.cpp:178
+#, fuzzy
+msgid "Client too old."
+msgstr "La version del cliente es demasiado antigua."
+
+#: src/net/tmwa/loginhandler.cpp:181
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -4902,9 +4907,18 @@ msgstr ""
 "Has sido baneado temporalmente del juego %s.\n"
 "Por favor contacta un GM de nuestro equipo via el foro."
 
-#: src/net/tmwa/loginhandler.cpp:185
+#: src/net/tmwa/loginhandler.cpp:188
+msgid "Server overpopulated."
+msgstr ""
+
+#: src/net/tmwa/loginhandler.cpp:191
 msgid "This user name is already taken."
 msgstr "Este nombre de usuario ya está escogido."
+
+#: src/net/tmwa/loginhandler.cpp:197
+#, fuzzy
+msgid "Username permanently erased."
+msgstr "Usuario ya existe."
 
 #: src/net/tmwa/network.cpp:149
 msgid "Empty address given to Network::connect()!"
@@ -4975,51 +4989,51 @@ msgstr "Un miembro desconocido intentó decir: %s"
 msgid "%s is not in your party!"
 msgstr "%s no está en tu grupo!"
 
-#: src/net/tmwa/playerhandler.cpp:106
+#: src/net/tmwa/playerhandler.cpp:107
 msgid "Insert coin to continue."
 msgstr "Inserta moneda para continuar."
 
-#: src/net/tmwa/playerhandler.cpp:124
+#: src/net/tmwa/playerhandler.cpp:125
 msgid "You're not dead yet. You're just resting."
 msgstr "Tu no estás muerto. Sólo estás descansando."
 
-#: src/net/tmwa/playerhandler.cpp:125
+#: src/net/tmwa/playerhandler.cpp:126
 msgid "You are no more."
 msgstr "Tu ya no existes más."
 
-#: src/net/tmwa/playerhandler.cpp:126
+#: src/net/tmwa/playerhandler.cpp:127
 msgid "You have ceased to be."
 msgstr "Parece que dejaste de existir."
 
-#: src/net/tmwa/playerhandler.cpp:127
+#: src/net/tmwa/playerhandler.cpp:128
 msgid "You've expired and gone to meet your maker."
 msgstr "Has expirado e ido a ver al tu creador."
 
-#: src/net/tmwa/playerhandler.cpp:128
+#: src/net/tmwa/playerhandler.cpp:129
 msgid "You're a stiff."
 msgstr "Eres un cadáver."
 
-#: src/net/tmwa/playerhandler.cpp:129
+#: src/net/tmwa/playerhandler.cpp:130
 msgid "Bereft of life, you rest in peace."
 msgstr "Sin vida, descansa en paz."
 
-#: src/net/tmwa/playerhandler.cpp:130
+#: src/net/tmwa/playerhandler.cpp:131
 msgid "If you weren't so animated, you'd be pushing up the daisies."
 msgstr "Si no estuvieras tan animado, diría que estás muerto."
 
-#: src/net/tmwa/playerhandler.cpp:131
+#: src/net/tmwa/playerhandler.cpp:132
 msgid "Your metabolic processes are now history."
 msgstr "Tus procesos metabólicos son ya historia."
 
-#: src/net/tmwa/playerhandler.cpp:132
+#: src/net/tmwa/playerhandler.cpp:133
 msgid "You're off the twig."
 msgstr "Estás fuera de tus botas."
 
-#: src/net/tmwa/playerhandler.cpp:133
+#: src/net/tmwa/playerhandler.cpp:134
 msgid "You've kicked the bucket."
 msgstr "Te han echado a patadas."
 
-#: src/net/tmwa/playerhandler.cpp:134
+#: src/net/tmwa/playerhandler.cpp:135
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
@@ -5027,44 +5041,44 @@ msgstr ""
 "Has dejado tu cuerpo mortal, bajado las cortinas y unido al sangriento coro "
 "de los invisibles."
 
-#: src/net/tmwa/playerhandler.cpp:136
+#: src/net/tmwa/playerhandler.cpp:137
 msgid "You are an ex-player."
 msgstr "Eres un ex-jugador."
 
-#: src/net/tmwa/playerhandler.cpp:137
+#: src/net/tmwa/playerhandler.cpp:138
 msgid "You're pining for the fjords."
 msgstr "Estas avanzando... hacia el barranco."
 
-#: src/net/tmwa/playerhandler.cpp:331 src/net/tmwa/playerhandler.cpp:341
-#: src/net/tmwa/playerhandler.cpp:420
+#: src/net/tmwa/playerhandler.cpp:332 src/net/tmwa/playerhandler.cpp:342
+#: src/net/tmwa/playerhandler.cpp:421
 msgid "Message"
 msgstr "Mensaje"
 
-#: src/net/tmwa/playerhandler.cpp:332
+#: src/net/tmwa/playerhandler.cpp:333
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
-#: src/net/tmwa/playerhandler.cpp:342
+#: src/net/tmwa/playerhandler.cpp:343
 msgid "You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Estás cargando menos de la mitad de tu peso. Ahora puedes recobrar la salud."
 
-#: src/net/tmwa/playerhandler.cpp:447
+#: src/net/tmwa/playerhandler.cpp:448
 #, c-format
 msgid "You picked up %s."
 msgstr "Has cogido %s."
 
-#: src/net/tmwa/playerhandler.cpp:453
+#: src/net/tmwa/playerhandler.cpp:454
 #, c-format
 msgid "You spent %s."
 msgstr "Has gastado %s."
 
-#: src/net/tmwa/playerhandler.cpp:498
+#: src/net/tmwa/playerhandler.cpp:499
 msgid "Cannot raise skill!"
 msgstr "¡Imposible incrementar!"
 
-#: src/net/tmwa/playerhandler.cpp:618
+#: src/net/tmwa/playerhandler.cpp:619
 msgid "Equip arrows first."
 msgstr "Equipar las flechas primero."
 
@@ -5210,7 +5224,7 @@ msgstr "Burbuja '...' flotante"
 msgid "Floating bubble"
 msgstr "Burbuja Flotante"
 
-#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:238
+#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:239
 #: src/resources/monsterdb.cpp:79
 msgid "unnamed"
 msgstr "anónimo"
@@ -5235,7 +5249,7 @@ msgstr "PV %+d"
 msgid "MP %+d"
 msgstr "PM %+d"
 
-#: src/resources/itemdb.cpp:155
+#: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Objeto desconocido"
 

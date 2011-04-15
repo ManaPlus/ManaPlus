@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-04-10 21:31+0300\n"
+"POT-Creation-Date: 2011-04-15 20:28+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -858,7 +858,7 @@ msgid "Equipment"
 msgstr "Oprema"
 
 #: src/gui/equipmentwindow.cpp:92 src/gui/inventorywindow.cpp:127
-#: src/gui/inventorywindow.cpp:452 src/gui/inventorywindow.cpp:461
+#: src/gui/inventorywindow.cpp:466 src/gui/inventorywindow.cpp:475
 #: src/gui/popupmenu.cpp:1242 src/gui/popupmenu.cpp:1325
 #: src/gui/popupmenu.cpp:1365
 msgid "Unequip"
@@ -905,20 +905,20 @@ msgstr "jedan"
 msgid "id"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:454
-#: src/gui/inventorywindow.cpp:463 src/gui/popupmenu.cpp:1244
+#: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:468
+#: src/gui/inventorywindow.cpp:477 src/gui/popupmenu.cpp:1244
 #: src/gui/popupmenu.cpp:1327 src/gui/popupmenu.cpp:1367
 msgid "Equip"
 msgstr "Opremi"
 
-#: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:455
-#: src/gui/inventorywindow.cpp:459 src/gui/popupmenu.cpp:1247
+#: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:469
+#: src/gui/inventorywindow.cpp:473 src/gui/popupmenu.cpp:1247
 #: src/gui/popupmenu.cpp:1300 src/gui/popupmenu.cpp:1331
 #: src/gui/popupmenu.cpp:1370
 msgid "Use"
 msgstr "Upotrijebi"
 
-#: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:560
+#: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:574
 #: src/gui/popupmenu.cpp:1250 src/gui/popupmenu.cpp:1335
 #: src/gui/popupmenu.cpp:1373
 #, fuzzy
@@ -939,7 +939,7 @@ msgstr ""
 msgid "Weight:"
 msgstr "Težina:"
 
-#: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:551
+#: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:565
 #: src/gui/popupmenu.cpp:1223 src/gui/popupmenu.cpp:1343
 #: src/gui/popupmenu.cpp:1381 src/gui/setup.cpp:66
 msgid "Store"
@@ -949,7 +949,7 @@ msgstr "Pohrani"
 msgid "Retrieve"
 msgstr "Preuzmi"
 
-#: src/gui/inventorywindow.cpp:562 src/gui/popupmenu.cpp:1252
+#: src/gui/inventorywindow.cpp:576 src/gui/popupmenu.cpp:1252
 #: src/gui/popupmenu.cpp:1337 src/gui/popupmenu.cpp:1375
 #: src/gui/windowmenu.cpp:92
 msgid "Drop"
@@ -992,11 +992,11 @@ msgstr ""
 msgid "Unknown."
 msgstr "Nepoznata greška"
 
-#: src/gui/itempopup.cpp:168 src/gui/itempopup.cpp:174
+#: src/gui/itempopup.cpp:171 src/gui/itempopup.cpp:177
 msgid ", "
 msgstr ""
 
-#: src/gui/itempopup.cpp:184
+#: src/gui/itempopup.cpp:187
 #, fuzzy, c-format
 msgid "Weight: %s"
 msgstr "Težina: "
@@ -2654,7 +2654,7 @@ msgstr "Partija"
 msgid "Choose your party's name."
 msgstr "Izaberite vaš server"
 
-#: src/gui/specialswindow.cpp:80 src/gui/windowmenu.cpp:84
+#: src/gui/specialswindow.cpp:77 src/gui/windowmenu.cpp:84
 msgid "Specials"
 msgstr ""
 
@@ -4081,69 +4081,69 @@ msgstr ""
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1333
+#: src/localplayer.cpp:1344
 #, fuzzy
 msgid "Tried to pick up nonexistent item."
 msgstr "Neuspješno korištenje predmeta."
 
-#: src/localplayer.cpp:1335
+#: src/localplayer.cpp:1346
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1337
+#: src/localplayer.cpp:1348
 msgid "Item is too far away"
 msgstr ""
 
-#: src/localplayer.cpp:1339
+#: src/localplayer.cpp:1350
 #, fuzzy
 msgid "Inventory is full."
 msgstr "Server je pun"
 
-#: src/localplayer.cpp:1341
+#: src/localplayer.cpp:1352
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1344
+#: src/localplayer.cpp:1355
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1347
+#: src/localplayer.cpp:1358
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: This sentence may be translated differently
 #. for different grammatical numbers (singular, plural, ...)
-#: src/localplayer.cpp:1372
+#: src/localplayer.cpp:1383
 #, fuzzy, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Pokupili ste %s [@@%d|%s@@]."
 msgstr[1] "Pokupili ste %s [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3088
+#: src/localplayer.cpp:3099
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3381
+#: src/localplayer.cpp:3392
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3383 src/localplayer.cpp:3398
+#: src/localplayer.cpp:3394 src/localplayer.cpp:3409
 #, fuzzy
 msgid "Follow canceled"
 msgstr "Otkazano trgovanje."
 
-#: src/localplayer.cpp:3390
+#: src/localplayer.cpp:3401
 #, fuzzy
 msgid "Imitation: "
 msgstr "Promijeni Email Adresu"
 
-#: src/localplayer.cpp:3392 src/localplayer.cpp:3400
+#: src/localplayer.cpp:3403 src/localplayer.cpp:3411
 #, fuzzy
 msgid "Imitation canceled"
 msgstr "Otkazano trgovanje."
 
-#: src/localplayer.cpp:3752
+#: src/localplayer.cpp:3763
 #, fuzzy
 msgid "You see "
 msgstr "Vi dobijete %s."
@@ -4311,60 +4311,60 @@ msgstr "Snaga volje:"
 msgid "Willpower %+.1f"
 msgstr "Snaga Volje %+d"
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:100
+#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:101
 msgid "You are dead."
 msgstr "Vi ste mrtvi."
 
-#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:101
+#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:102
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "Žao nam je obavijestiti vas da je vaš lik je bio ubijen u borbi."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:103
+#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:104
 msgid "You are not that alive anymore."
 msgstr "Niste više tako živi."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:105
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr ""
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:105
+#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:106
 msgid "Game Over!"
 msgstr "Kraj Igre!"
 
-#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:108
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr ""
 "Ne, djeco. Vaš lik zapravo nije umro. On... err... je otišao na bolje mjesto."
 
-#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:109
+#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:110
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr ""
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:111
+#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:112
 msgid "I guess this did not run too well."
 msgstr "Predpostavljam da ovo nije išlo previše dobro."
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:113
+#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:114
 msgid "Do you want your possessions identified?"
 msgstr "Želite li svoju imovinu identificirati?"
 
-#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:115
+#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:116
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Nažalost, ni traga od vas nije nikada pronađeno ..."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:117
+#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:118
 msgid "Annihilated."
 msgstr "Uništen."
 
-#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:119
+#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:120
 msgid "Looks like you got your head handed to you."
 msgstr "Izgleda da su vam predali vašu glavu."
 
-#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:121
+#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:122
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -4431,7 +4431,7 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:100 src/net/tmwa/loginhandler.cpp:191
+#: src/net/tmwa/loginhandler.cpp:100 src/net/tmwa/loginhandler.cpp:200
 #, fuzzy
 msgid "Unknown error."
 msgstr "Nepoznata greška"
@@ -4712,7 +4712,7 @@ msgstr "Nepoznata greška"
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Ne mogu stvoriti lik. Najvjerojatnije je ime već zauzeto."
 
-#: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:188
+#: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:194
 #, fuzzy
 msgid "Wrong name."
 msgstr "Pogrešan magični_simbol"
@@ -5163,11 +5163,11 @@ msgstr ""
 msgid "Experience sharing unknown."
 msgstr ""
 
-#: src/net/tmwa/inventoryhandler.cpp:362
+#: src/net/tmwa/inventoryhandler.cpp:376
 msgid "Failed to use item."
 msgstr "Neuspješno korištenje predmeta."
 
-#: src/net/tmwa/inventoryhandler.cpp:514
+#: src/net/tmwa/inventoryhandler.cpp:528
 msgid "Unable to equip."
 msgstr "Nije moguće opremiti."
 
@@ -5206,16 +5206,30 @@ msgid ""
 msgstr ""
 
 #: src/net/tmwa/loginhandler.cpp:178
+#, fuzzy
+msgid "Client too old."
+msgstr "Verzija klijenta je prestara"
+
+#: src/net/tmwa/loginhandler.cpp:181
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:185
+#: src/net/tmwa/loginhandler.cpp:188
+msgid "Server overpopulated."
+msgstr ""
+
+#: src/net/tmwa/loginhandler.cpp:191
 #, fuzzy
 msgid "This user name is already taken."
 msgstr "Ovo korisničko ime je već zauzeto"
+
+#: src/net/tmwa/loginhandler.cpp:197
+#, fuzzy
+msgid "Username permanently erased."
+msgstr "Korisničko ime već postoji"
 
 #: src/net/tmwa/network.cpp:149
 msgid "Empty address given to Network::connect()!"
@@ -5288,98 +5302,98 @@ msgstr "Nepoznati član pokušava reći: %s"
 msgid "%s is not in your party!"
 msgstr "%s nije u vašoj partiji!"
 
-#: src/net/tmwa/playerhandler.cpp:106
+#: src/net/tmwa/playerhandler.cpp:107
 msgid "Insert coin to continue."
 msgstr "Ubacite žeton za nastavak."
 
-#: src/net/tmwa/playerhandler.cpp:124
+#: src/net/tmwa/playerhandler.cpp:125
 msgid "You're not dead yet. You're just resting."
 msgstr "Niste još mrtvi. Samo se odmarate."
 
-#: src/net/tmwa/playerhandler.cpp:125
+#: src/net/tmwa/playerhandler.cpp:126
 msgid "You are no more."
 msgstr "Nema vas više."
 
-#: src/net/tmwa/playerhandler.cpp:126
+#: src/net/tmwa/playerhandler.cpp:127
 msgid "You have ceased to be."
 msgstr "Prestali ste postojati."
 
-#: src/net/tmwa/playerhandler.cpp:127
+#: src/net/tmwa/playerhandler.cpp:128
 msgid "You've expired and gone to meet your maker."
 msgstr "Istekao vam je rok i otišli ste upoznati svog stvoritelja."
 
-#: src/net/tmwa/playerhandler.cpp:128
+#: src/net/tmwa/playerhandler.cpp:129
 msgid "You're a stiff."
 msgstr "Ukočili ste se."
 
-#: src/net/tmwa/playerhandler.cpp:129
+#: src/net/tmwa/playerhandler.cpp:130
 msgid "Bereft of life, you rest in peace."
 msgstr "Lišeni života, počivate u miru."
 
-#: src/net/tmwa/playerhandler.cpp:130
+#: src/net/tmwa/playerhandler.cpp:131
 msgid "If you weren't so animated, you'd be pushing up the daisies."
 msgstr "Da niste bili toliko animirani sad bi podizali tratinčice."
 
-#: src/net/tmwa/playerhandler.cpp:131
+#: src/net/tmwa/playerhandler.cpp:132
 msgid "Your metabolic processes are now history."
 msgstr "Vaši metabolički procesi su sad povijest."
 
-#: src/net/tmwa/playerhandler.cpp:132
+#: src/net/tmwa/playerhandler.cpp:133
 msgid "You're off the twig."
 msgstr "Pali ste s grančice."
 
-#: src/net/tmwa/playerhandler.cpp:133
+#: src/net/tmwa/playerhandler.cpp:134
 msgid "You've kicked the bucket."
 msgstr "Vi ste šutirali sić."
 
-#: src/net/tmwa/playerhandler.cpp:134
+#: src/net/tmwa/playerhandler.cpp:135
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
 msgstr ""
 
-#: src/net/tmwa/playerhandler.cpp:136
+#: src/net/tmwa/playerhandler.cpp:137
 msgid "You are an ex-player."
 msgstr "Vi ste bivši igrač."
 
-#: src/net/tmwa/playerhandler.cpp:137
+#: src/net/tmwa/playerhandler.cpp:138
 msgid "You're pining for the fjords."
 msgstr ""
 
-#: src/net/tmwa/playerhandler.cpp:331 src/net/tmwa/playerhandler.cpp:341
-#: src/net/tmwa/playerhandler.cpp:420
+#: src/net/tmwa/playerhandler.cpp:332 src/net/tmwa/playerhandler.cpp:342
+#: src/net/tmwa/playerhandler.cpp:421
 msgid "Message"
 msgstr "Poruka"
 
-#: src/net/tmwa/playerhandler.cpp:332
+#: src/net/tmwa/playerhandler.cpp:333
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Nosite više od pola svoje težine. Niste u mogućnosti kako bi povratili "
 "zdravlje."
 
-#: src/net/tmwa/playerhandler.cpp:342
+#: src/net/tmwa/playerhandler.cpp:343
 #, fuzzy
 msgid "You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Nosite više od pola svoje težine. Niste u mogućnosti kako bi povratili "
 "zdravlje."
 
-#: src/net/tmwa/playerhandler.cpp:447
+#: src/net/tmwa/playerhandler.cpp:448
 #, fuzzy, c-format
 msgid "You picked up %s."
 msgstr "Pokupili ste "
 
-#: src/net/tmwa/playerhandler.cpp:453
+#: src/net/tmwa/playerhandler.cpp:454
 #, fuzzy, c-format
 msgid "You spent %s."
 msgstr "Vi dobijete %s."
 
-#: src/net/tmwa/playerhandler.cpp:498
+#: src/net/tmwa/playerhandler.cpp:499
 msgid "Cannot raise skill!"
 msgstr ""
 
-#: src/net/tmwa/playerhandler.cpp:618
+#: src/net/tmwa/playerhandler.cpp:619
 msgid "Equip arrows first."
 msgstr "Prvo se opremite strijelama."
 
@@ -5528,7 +5542,7 @@ msgstr ""
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:238
+#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:239
 #: src/resources/monsterdb.cpp:79
 msgid "unnamed"
 msgstr "neimenovano"
@@ -5553,7 +5567,7 @@ msgstr "Zdravlje %+d"
 msgid "MP %+d"
 msgstr "Mana %+d"
 
-#: src/resources/itemdb.cpp:155
+#: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Nepoznati predmet"
 
