@@ -2,26 +2,24 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: manaplus\n"
+"Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-04-15 20:28+0300\n"
-"PO-Revision-Date: 2011-03-29 19:15+0000\n"
+"PO-Revision-Date: 2011-04-15 17:35+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian <>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:909
-#, fuzzy
 msgid "Visible on map"
-msgstr "Видимые имена"
+msgstr "Видимые на карте"
 
 #: src/being.cpp:489
 msgid "dodge"
@@ -127,11 +125,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:380
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:400
 #, c-format
@@ -264,26 +262,21 @@ msgstr[1] "%d секунды"
 msgstr[2] "%d секунд"
 
 #: src/commandhandler.cpp:995
-#, fuzzy
 msgid "font cache size"
-msgstr "Размер шрифта"
+msgstr "размер кеша шрифта"
 
 #: src/commandhandler.cpp:1008
-#, fuzzy
 msgid "Created: "
-msgstr "Создать"
+msgstr "Создано: "
 
 #: src/commandhandler.cpp:1009
-#, fuzzy
 msgid "Deleted: "
-msgstr "Удалить"
+msgstr "Удалено: "
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:395
 msgid "General"
@@ -524,7 +517,7 @@ msgstr "Стрижка:"
 
 #: src/gui/charcreatedialog.cpp:87
 msgid "Race:"
-msgstr ""
+msgstr "Расса:"
 
 #: src/gui/charcreatedialog.cpp:90 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
@@ -1703,9 +1696,8 @@ msgid "Limit max lines in chat"
 msgstr "Ограничить число строк в чате"
 
 #: src/gui/setup_chat.cpp:132
-#, fuzzy
 msgid "Resize chat tabs if need"
-msgstr "Следующая строка вкладки"
+msgstr "Подгонять размер чата"
 
 #: src/gui/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -2192,8 +2184,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
 #: src/gui/setup_video.cpp:535
 msgid ""
@@ -3030,7 +3022,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3365,15 +3358,16 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:123
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:128
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:62
@@ -3895,22 +3889,19 @@ msgstr "Отошел"
 
 #: src/localplayer.cpp:3392
 msgid "Follow: "
-msgstr ""
+msgstr "Следование: "
 
 #: src/localplayer.cpp:3394 src/localplayer.cpp:3409
-#, fuzzy
 msgid "Follow canceled"
-msgstr "Торговля отменена."
+msgstr "Следование отменено"
 
 #: src/localplayer.cpp:3401
-#, fuzzy
 msgid "Imitation: "
-msgstr "(?) неизвестная имитация"
+msgstr "Имитация: "
 
 #: src/localplayer.cpp:3403 src/localplayer.cpp:3411
-#, fuzzy
 msgid "Imitation canceled"
-msgstr "Торговля отменена."
+msgstr "Имитация отменена"
 
 #: src/localplayer.cpp:3763
 msgid "You see "
@@ -4107,7 +4098,7 @@ msgstr "Хочешь предскажу твою судьбу?"
 
 #: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:116
 msgid "Sadly, no trace of you was ever found..."
-msgstr "Грустно, вас врятли когда-нибудь найдут..."
+msgstr "Грустно, вас врядли когда-нибудь найдут..."
 
 #: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:118
 msgid "Annihilated."
@@ -4439,7 +4430,8 @@ msgstr "Неизвестная ошибка сервера чата."
 
 #: src/net/tmwa/charserverhandler.cpp:172
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
 #: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:194
 msgid "Wrong name."
@@ -4797,8 +4789,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:99
 msgid "Command: /item"
@@ -4821,8 +4812,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:111
 msgid "Command: /exp"
@@ -4902,9 +4893,8 @@ msgid ""
 msgstr "Вас навсегда забанили. Пожалуйста, свяжитесь с командой ГМ-ов."
 
 #: src/net/tmwa/loginhandler.cpp:178
-#, fuzzy
 msgid "Client too old."
-msgstr "Версия клиент-программы устарела."
+msgstr "Клиент устарел"
 
 #: src/net/tmwa/loginhandler.cpp:181
 #, c-format
@@ -4916,16 +4906,15 @@ msgstr ""
 
 #: src/net/tmwa/loginhandler.cpp:188
 msgid "Server overpopulated."
-msgstr ""
+msgstr "Сервер переполнен"
 
 #: src/net/tmwa/loginhandler.cpp:191
 msgid "This user name is already taken."
 msgstr "Это имя пользователя уже занято."
 
 #: src/net/tmwa/loginhandler.cpp:197
-#, fuzzy
 msgid "Username permanently erased."
-msgstr "Пользователь с таким именем уже существует."
+msgstr "Пользователь удален"
 
 #: src/net/tmwa/network.cpp:149
 msgid "Empty address given to Network::connect()!"
@@ -5063,13 +5052,15 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:333
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
 
 #: src/net/tmwa/playerhandler.cpp:343
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Вы несете груз меньше, чем половина вашей грузоподъемности. Вы можете "
 "восстановить здоровье."
@@ -5262,283 +5253,3 @@ msgstr "Мана %+d"
 #: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
-
-#~ msgid "-- Help --"
-#~ msgstr "-- Помощь --"
-
-#~ msgid "/help > Display this help"
-#~ msgstr "/help > Отображает этот текст"
-
-#~ msgid "/where > Display map name"
-#~ msgstr "/where > Отображает имя карты"
-
-#~ msgid "/who > Display number of online users"
-#~ msgstr "/who > Отображает количество пользователей он-лайн"
-
-#~ msgid "/me > Tell something about yourself"
-#~ msgstr "/me > Расскажите что-нибудь о себе"
-
-#~ msgid "/clear > Clears this window"
-#~ msgstr "/clear > Очищает это окно"
-
-#~ msgid "/msg > Send a private message to a user"
-#~ msgstr "/msg > Послать личное сообщение пользователю"
-
-#~ msgid "/whisper > Alias of msg"
-#~ msgstr "/whisper > Аналог команды msg"
-
-#~ msgid "/w > Alias of msg"
-#~ msgstr "/w > Аналог команды msg"
-
-#~ msgid "/query > Makes a tab for private messages with another user"
-#~ msgstr "/query> Создает вкладку для чата с пользователем."
-
-#~ msgid "/q > Alias of query"
-#~ msgstr "/q> Аналог query"
-
-#~ msgid "/away > Tell the other whispering players you're away from keyboard."
-#~ msgstr "/away > Сообщить тем, с кем вы перешептываетесь, что вы отошли."
-
-#~ msgid "/ignore > ignore a player"
-#~ msgstr "/ignore > Игнорировать игрока"
-
-#~ msgid "/unignore > stop ignoring a player"
-#~ msgstr "/unignore > Убрать пользователя из игнора"
-
-#~ msgid "/ignoreall > Ignore all opened whisper tabs"
-#~ msgstr "/ignoreall > Игнорировать все вкладки с перешептыванием"
-
-#~ msgid "/erase > Erase a player"
-#~ msgstr "/erase > Удалить игрока"
-
-#~ msgid "/befriend > Be friend a player"
-#~ msgstr "/befriend > Подружиться"
-
-#~ msgid "/disregard > Disregard a player"
-#~ msgstr "/disregard > не придавать значения"
-
-#~ msgid "/neutral > Neutral a player"
-#~ msgstr "/neutral > Относиться нейтрально"
-
-#~ msgid "/list > Display all public channels"
-#~ msgstr "/list > Показать список каналов"
-
-#~ msgid "/join > Join or create a channel"
-#~ msgstr "/join > Создать или присоединиться к каналу"
-
-#~ msgid "/createparty > Create a new party"
-#~ msgstr "/createparty > Создать группу"
-
-#~ msgid "/createguild > Create a new guild"
-#~ msgstr "/createguild > Создать гильдию"
-
-#~ msgid "/party > Invite a user to party"
-#~ msgstr "/party > Пригласить пользователя в группу"
-
-#~ msgid "/toggle > Determine whether <return> toggles the chat log"
-#~ msgstr ""
-#~ "/toggle -> Определяет появление строки ввода текста в чат по нажатию "
-#~ "<return>"
-
-#~ msgid ""
-#~ "/present > Get list of players present (sent to chat log, if logging)"
-#~ msgstr ""
-#~ "/present > Показывает список игроков он-лайн (также извещает в окне чата, "
-#~ "если включен лог)"
-
-#~ msgid "/announce > Global announcement (GM only)"
-#~ msgstr "/announce > Глобальное извещение (доступно только ГМ)"
-
-#~ msgid "/closeall > Close all opened whisper tabs"
-#~ msgstr "/closeall > Закрыть все вкладки перешептывания"
-
-#~ msgid "/all > Show all visible beings in debug tab"
-#~ msgstr "/all > Показать всех видимых существ на вкладке отладки"
-
-#~ msgid "/move > Move to given position"
-#~ msgstr "/move > Идти к заданной позиции"
-
-#~ msgid "/navigate > Draw path to given position"
-#~ msgstr "/navigate > Нарисовать путь к заданной позиции"
-
-#~ msgid "/target > Set target to being"
-#~ msgstr "/target > Прицелиться в существо"
-
-#~ msgid "/outfit > Wear outfit by index"
-#~ msgstr "/outfit > Одеть наряд под указанным номером"
-
-#~ msgid "/emote > Show emote by index"
-#~ msgstr "/emote > Показать смайлик под указанным номером"
-
-#~ msgid "/follow > Follow player"
-#~ msgstr "/follow > Следовать за игроком"
-
-#~ msgid "/imitation > Imitate player"
-#~ msgstr "/imitation > Имитировать игрока"
-
-#~ msgid "/heal > Heal player"
-#~ msgstr "/heal > Лечить игрока"
-
-#~ msgid "/mail > Send offline message to player"
-#~ msgstr "/mail > Послать оффлайн сообщение пользователю"
-
-#~ msgid "For more information, type /help <command>."
-#~ msgstr "Для более детальной информации введите: /help <команда>"
-
-#~ msgid "Command: /help"
-#~ msgstr "Команда: /help"
-
-#~ msgid "This command displays a list of all commands available."
-#~ msgstr "Эта команда показывает список доступных команд"
-
-#~ msgid "Command: /help <command>"
-#~ msgstr "Команда: /help <команда>"
-
-#~ msgid "This command displays help on <command>."
-#~ msgstr "Эта команда показывает помощь по <команде>."
-
-#~ msgid "Command: /announce <msg>"
-#~ msgstr "Команда: /announce <сообщение>"
-
-#~ msgid "*** only available to a GM ***"
-#~ msgstr "*** доступно только для GM ***"
-
-#~ msgid ""
-#~ "This command sends the message <msg> to all players currently online."
-#~ msgstr "Эта команда посылает <сообщение> всем игрокам в сети."
-
-#~ msgid "Command: /clear"
-#~ msgstr "Команда: /clear"
-
-#~ msgid "This command clears the chat log of previous chat."
-#~ msgstr "Эта команда очищает лог чата."
-
-#~ msgid "Command: /ignore <player>"
-#~ msgstr "Команда: /ignore <игрок>"
-
-#~ msgid ""
-#~ "This command ignores the given player regardless of current relations."
-#~ msgstr ""
-#~ "Эта команда игнорирует указанного игрока независимо от текущего статуса "
-#~ "взаимоотношений"
-
-#~ msgid "Command: /join <channel>"
-#~ msgstr "Команда: /join <канал>"
-
-#~ msgid "This command makes you enter <channel>."
-#~ msgstr "Команда для входа на <канал>."
-
-#~ msgid "If <channel> doesn't exist, it's created."
-#~ msgstr "Если <канал> не существует, он будет создан."
-
-#~ msgid "Command: /list"
-#~ msgstr "Команда: /list"
-
-#~ msgid "This command shows a list of all channels."
-#~ msgstr "Эта команда показывает список всех каналов."
-
-#~ msgid "Command: /me <message>"
-#~ msgstr "Команда: /me <сообщение>"
-
-#~ msgid "This command tell others you are (doing) <msg>."
-#~ msgstr "Эта команда покажет другим игрокам, что вы (делаете) <сообщение>."
-
-#~ msgid "Command: /msg <nick> <message>"
-#~ msgstr "Команда: /msg <имя персонажа> <сообщение>"
-
-#~ msgid "Command: /whisper <nick> <message>"
-#~ msgstr "Команда: /whisper <имя персонажа> <сообщение>"
-
-#~ msgid "Command: /w <nick> <message>"
-#~ msgstr "Команда: /w <ник> <сообщение>"
-
-#~ msgid "This command sends the text <message> to <nick>."
-#~ msgstr "Эта команда посылает текст <сообщение> пользователю <nick>."
-
-#~ msgid "Command: /query <nick>"
-#~ msgstr "Команда: /query <имя персонажа>"
-
-#~ msgid "Command: /q <nick>"
-#~ msgstr "Команда: /q <имя персонажа>"
-
-#~ msgid "This command tries to make a tab for whispers betweenyou and <nick>."
-#~ msgstr ""
-#~ "Эта команда создаст закладку для личного общения между вами и <имя "
-#~ "игрока>."
-
-#~ msgid "Command: /away <afk reason>"
-#~ msgstr "Команда: /away <причина отсутствия у компьютера>"
-
-#~ msgid "This command tells you're away from keyboard with the given reason."
-#~ msgstr "Команда сообщает, что вы отошли по указанной причине."
-
-#~ msgid "Command: /away"
-#~ msgstr "Команда: /away"
-
-#~ msgid "This command clears the away status and message."
-#~ msgstr "Эта команда очищает статус и сообщение отсутствия."
-
-#~ msgid "Command: /createparty <name>"
-#~ msgstr "Command: /createparty <имя_группы>"
-
-#~ msgid "This command creates a new party called <name>."
-#~ msgstr "Эта Команда создает группу под названием <имя_группы>."
-
-#~ msgid "Command: /createguild <name>"
-#~ msgstr "Команда: /createparty <имя_гильдии>"
-
-#~ msgid "This command creates a new guild called <name>."
-#~ msgstr "Эта Команда создает гильдию под названием <имя_гильдии>."
-
-#~ msgid "Command: /party <nick>"
-#~ msgstr "Команда: /party <имя>"
-
-#~ msgid "Command: /present"
-#~ msgstr "Команда: /present"
-
-#~ msgid ""
-#~ "This command gets a list of players within hearing and sends it to chat "
-#~ "log."
-#~ msgstr "Эта команда выводит список видимых игроков в чат."
-
-#~ msgid "Command: /toggle <state>"
-#~ msgstr "Команда: /toggle <режим>"
-
-#~ msgid ""
-#~ "This command sets whether the return key should toggle the chat log, or "
-#~ "whether the chat log turns off automatically."
-#~ msgstr ""
-#~ "Эта Команда устанавливает, будет ли нажатие клавиши Enter переключать лог "
-#~ "чата или же он (лог) будет выключен автоматически."
-
-#~ msgid ""
-#~ "<state> can be one of \"1\", \"yes\", \"true\" to turn the toggle on, or "
-#~ "\"0\", \"no\", \"false\" to turn the toggle off."
-#~ msgstr ""
-#~ "<режим> может быть \"1\", \"yes\", \"true\" дабы включить опцию или "
-#~ "\"0\", \"no\", \"false\" чтобы выключить."
-
-#~ msgid "Command: /toggle"
-#~ msgstr "Команда: /toggle"
-
-#~ msgid "This command displays the return toggle status."
-#~ msgstr "Эта команда показывает статус переключения строки ввода в чат"
-
-#~ msgid ""
-#~ "This command stops ignoring the given player if they are being ignored"
-#~ msgstr "Эта команда улаляет игрока из списка игнорирования"
-
-#~ msgid "Command: /where"
-#~ msgstr "Команда: /where"
-
-#~ msgid "This command displays the name of the current map."
-#~ msgstr "Эта команда показывает имя текущей карты."
-
-#~ msgid "Command: /who"
-#~ msgstr "Команда: /who"
-
-#~ msgid "This command displays the number of players currently online."
-#~ msgstr "Эта команда показывает число пользователей в сети на данный момент."
-
-#~ msgid "Type /help for a list of commands."
-#~ msgstr "Введите /help для получения списка команд."

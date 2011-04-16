@@ -2,25 +2,24 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: manaplus\n"
+"Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-04-15 20:28+0300\n"
-"PO-Revision-Date: 2011-03-29 23:07+0000\n"
-"Last-Translator: freya <freya.df@gmail.com>\n"
+"PO-Revision-Date: 2011-04-15 17:33+0000\n"
+"Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Portuguese <>\n"
-"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:909
-#, fuzzy
 msgid "Visible on map"
-msgstr "Nomes visíveis"
+msgstr "Visivel no mapa"
 
 #: src/being.cpp:489
 msgid "dodge"
@@ -126,11 +125,11 @@ msgstr "Não é possível enviar mensagens privadas vazias!"
 #: src/commandhandler.cpp:380
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
-"já existe ou é você mesmo."
+"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela"
+" já existe ou é você mesmo."
 
 #: src/commandhandler.cpp:400
 #, c-format
@@ -258,25 +257,21 @@ msgstr[0] "%d segundo"
 msgstr[1] "%d segundos"
 
 #: src/commandhandler.cpp:995
-#, fuzzy
 msgid "font cache size"
-msgstr "Tamanho da fonte"
+msgstr "Tamanho do cache de fonte"
 
 #: src/commandhandler.cpp:1008
-#, fuzzy
 msgid "Created: "
-msgstr "Criar"
+msgstr "Criado:"
 
 #: src/commandhandler.cpp:1009
-#, fuzzy
 msgid "Deleted: "
-msgstr "Excluir"
+msgstr "Deletado:"
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:395
 msgid "General"
@@ -517,7 +512,7 @@ msgstr "Estilo do Cabelo:"
 
 #: src/gui/charcreatedialog.cpp:87
 msgid "Race:"
-msgstr ""
+msgstr "Corrida:"
 
 #: src/gui/charcreatedialog.cpp:90 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
@@ -1696,9 +1691,8 @@ msgid "Limit max lines in chat"
 msgstr "Limite de linhas máximas no chat"
 
 #: src/gui/setup_chat.cpp:132
-#, fuzzy
 msgid "Resize chat tabs if need"
-msgstr "Passa aba de chat"
+msgstr "Redimensionar as abas de chat caso precisar"
 
 #: src/gui/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -3021,7 +3015,8 @@ msgid "Change"
 msgstr "Mudar"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
@@ -3361,7 +3356,8 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jogador>"
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Este comando para de ignorar o outro jogador se ele estiver sendo ignorado."
 
@@ -3883,22 +3879,19 @@ msgstr "Indisponivel "
 
 #: src/localplayer.cpp:3392
 msgid "Follow: "
-msgstr ""
+msgstr "Seguindo:"
 
 #: src/localplayer.cpp:3394 src/localplayer.cpp:3409
-#, fuzzy
 msgid "Follow canceled"
-msgstr "Negociação cancelada."
+msgstr "Seguir cancelado"
 
 #: src/localplayer.cpp:3401
-#, fuzzy
 msgid "Imitation: "
-msgstr "(?) Mímica"
+msgstr "Imitando:"
 
 #: src/localplayer.cpp:3403 src/localplayer.cpp:3411
-#, fuzzy
 msgid "Imitation canceled"
-msgstr "Negociação cancelada."
+msgstr "Imitação cancelada"
 
 #: src/localplayer.cpp:3763
 msgid "You see "
@@ -4803,7 +4796,8 @@ msgstr "Comando: /exp <policy>"
 
 #: src/net/tmwa/gui/partytab.cpp:106
 msgid "This command changes the party's experience sharing policy."
-msgstr "Este comando muda a opção de compartilhamento de experiência do grupo."
+msgstr ""
+"Este comando muda a opção de compartilhamento de experiência do grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:108
 msgid ""
@@ -4820,7 +4814,8 @@ msgstr "Comando: /exp"
 #: src/net/tmwa/gui/partytab.cpp:112
 msgid "This command displays the party's current experience sharing policy."
 msgstr ""
-"Este comando exibe a atual opção de compartilhamento de experiência do grupo."
+"Este comando exibe a atual opção de compartilhamento de experiência do "
+"grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:146 src/net/tmwa/partyhandler.cpp:287
 msgid "Item sharing enabled."
@@ -4894,9 +4889,8 @@ msgstr ""
 "algum GM."
 
 #: src/net/tmwa/loginhandler.cpp:178
-#, fuzzy
 msgid "Client too old."
-msgstr "Versão do cliente é muito antiga."
+msgstr ""
 
 #: src/net/tmwa/loginhandler.cpp:181
 #, c-format
@@ -4916,9 +4910,8 @@ msgid "This user name is already taken."
 msgstr "Este nome de usuário já está em uso."
 
 #: src/net/tmwa/loginhandler.cpp:197
-#, fuzzy
 msgid "Username permanently erased."
-msgstr "Nome de usuário já existe."
+msgstr ""
 
 #: src/net/tmwa/network.cpp:149
 msgid "Empty address given to Network::connect()!"
@@ -5056,13 +5049,15 @@ msgstr "Mensagem"
 
 #: src/net/tmwa/playerhandler.cpp:333
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
 
 #: src/net/tmwa/playerhandler.cpp:343
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
@@ -5255,287 +5250,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Item desconhecido"
-
-#~ msgid "-- Help --"
-#~ msgstr "--Ajuda--"
-
-#~ msgid "/help > Display this help"
-#~ msgstr "/help > Exibe esta ajuda"
-
-#~ msgid "/where > Display map name"
-#~ msgstr "/where > Exibe o nome do mapa"
-
-#~ msgid "/who > Display number of online users"
-#~ msgstr "/who > Exibe o número de usuários online"
-
-#~ msgid "/me > Tell something about yourself"
-#~ msgstr "/me > Diz alguma coisa sobre você"
-
-#~ msgid "/clear > Clears this window"
-#~ msgstr "/clear > Limpa janela atual"
-
-#~ msgid "/msg > Send a private message to a user"
-#~ msgstr "/msg > Envia uma messagem privada a um usuário"
-
-#~ msgid "/whisper > Alias of msg"
-#~ msgstr "/whisper > O mesmo que /msg"
-
-#~ msgid "/w > Alias of msg"
-#~ msgstr "/w > O mesmo que /msg"
-
-#~ msgid "/query > Makes a tab for private messages with another user"
-#~ msgstr "/query > Abre uma aba de chat com outro usuário"
-
-#~ msgid "/q > Alias of query"
-#~ msgstr "/q > O mesmo que /query"
-
-#~ msgid "/away > Tell the other whispering players you're away from keyboard."
-#~ msgstr ""
-#~ "/away > Diz que você está longe do teclado para quem te enviar uma "
-#~ "mensagem privada ."
-
-#~ msgid "/ignore > ignore a player"
-#~ msgstr "/ignore > Ignora um jogador"
-
-#~ msgid "/unignore > stop ignoring a player"
-#~ msgstr "/unignore > Deixa de ignorar um jogador"
-
-#~ msgid "/ignoreall > Ignore all opened whisper tabs"
-#~ msgstr "/ignoreall > Ignorar todas abas abertas"
-
-#~ msgid "/erase > Erase a player"
-#~ msgstr "/erase > Apaga um jogador"
-
-#~ msgid "/befriend > Be friend a player"
-#~ msgstr "/befriend > Ser amigo de um jogador"
-
-#~ msgid "/disregard > Disregard a player"
-#~ msgstr "/disregard > Desconsiderar um jogador"
-
-#~ msgid "/neutral > Neutral a player"
-#~ msgstr "/neutral > Deixar jogador neutro"
-
-#~ msgid "/list > Display all public channels"
-#~ msgstr "/list > Exibir todos os canais públicos"
-
-#~ msgid "/join > Join or create a channel"
-#~ msgstr "/join > Criar ou entrar em um canal"
-
-#~ msgid "/createparty > Create a new party"
-#~ msgstr "/createparty > Cria um novo grupo"
-
-#~ msgid "/createguild > Create a new guild"
-#~ msgstr "/createguild > Cria uma nova guilda"
-
-#~ msgid "/party > Invite a user to party"
-#~ msgstr "/party > Convidar um usuário para o grupo"
-
-#~ msgid "/toggle > Determine whether <return> toggles the chat log"
-#~ msgstr "/toggle > Determina se <enter> exibe a janela de chat"
-
-#~ msgid ""
-#~ "/present > Get list of players present (sent to chat log, if logging)"
-#~ msgstr ""
-#~ "/present > Mostra a lista de jogadores presentes (envia para o log de "
-#~ "chat, se estiver gravando)"
-
-#~ msgid "/announce > Global announcement (GM only)"
-#~ msgstr "/announce > Anúncio Global (Somente GM)"
-
-#~ msgid "/closeall > Close all opened whisper tabs"
-#~ msgstr "/closeall > Fecha todas as abas abertas"
-
-#~ msgid "/all > Show all visible beings in debug tab"
-#~ msgstr "/all > Mostrar todos os seres visíveis na aba do Depurador"
-
-#~ msgid "/move > Move to given position"
-#~ msgstr "/move > Mover para a posição marcada"
-
-#~ msgid "/navigate > Draw path to given position"
-#~ msgstr "/navigate > Marcar um caminho para uma posição determinada"
-
-#~ msgid "/target > Set target to being"
-#~ msgstr "/target > Definir um alvo"
-
-#~ msgid "/outfit > Wear outfit by index"
-#~ msgstr "/outfit > Usar roupa por índice"
-
-#~ msgid "/emote > Show emote by index"
-#~ msgstr "/emote > Mostrar emoticons por índice"
-
-#~ msgid "/follow > Follow player"
-#~ msgstr "/follow > Seguir jogador"
-
-#~ msgid "/imitation > Imitate player"
-#~ msgstr "/imitation > Imitar jogador"
-
-#~ msgid "/heal > Heal player"
-#~ msgstr "/heal > Curar jogador"
-
-#~ msgid "/mail > Send offline message to player"
-#~ msgstr "/mail > Enviar menssagem a um jogador offline"
-
-#~ msgid "For more information, type /help <command>."
-#~ msgstr "Para mais informações, digite /help <comando>."
-
-#~ msgid "Command: /help"
-#~ msgstr "Comando: /help"
-
-#~ msgid "This command displays a list of all commands available."
-#~ msgstr "Exibe uma lista de todos os comandos disponíveis."
-
-#~ msgid "Command: /help <command>"
-#~ msgstr "Comando: /help <comando>"
-
-#~ msgid "This command displays help on <command>."
-#~ msgstr "Exibe o conteúdo de ajuda do <comando>"
-
-#~ msgid "Command: /announce <msg>"
-#~ msgstr "Comando: /announce <msg>"
-
-#~ msgid "*** only available to a GM ***"
-#~ msgstr "*** Disponivel apenas a GM's ***"
-
-#~ msgid ""
-#~ "This command sends the message <msg> to all players currently online."
-#~ msgstr "Este comando envia a mensagem <msg> para todos os jogadores online."
-
-#~ msgid "Command: /clear"
-#~ msgstr "Comando: /clear"
-
-#~ msgid "This command clears the chat log of previous chat."
-#~ msgstr "Este comando limpa a janela de chat."
-
-#~ msgid "Command: /ignore <player>"
-#~ msgstr "Comando: /ignore <nome do jogador>"
-
-#~ msgid ""
-#~ "This command ignores the given player regardless of current relations."
-#~ msgstr ""
-#~ "Este comando ignora o jogador indicado, independente de sua relação com o "
-#~ "mesmo."
-
-#~ msgid "Command: /join <channel>"
-#~ msgstr "Comando: /join <canal>"
-
-#~ msgid "This command makes you enter <channel>."
-#~ msgstr "Este comando faz você entrar em <canal>."
-
-#~ msgid "If <channel> doesn't exist, it's created."
-#~ msgstr "Se o <canal> não existe, ele será criado."
-
-#~ msgid "Command: /list"
-#~ msgstr "Comando: /list"
-
-#~ msgid "This command shows a list of all channels."
-#~ msgstr "Este comando exibe uma lista com todos os canais."
-
-#~ msgid "Command: /me <message>"
-#~ msgstr "Comando: /me <mensagem>"
-
-#~ msgid "This command tell others you are (doing) <msg>."
-#~ msgstr "Este comando diz aos outros o que eu estou (a fazer) <msg>."
-
-#~ msgid "Command: /msg <nick> <message>"
-#~ msgstr "Comando: /msg <nick> <mensagem>"
-
-#~ msgid "Command: /whisper <nick> <message>"
-#~ msgstr "Comando: /whisper <nick> <mensagem>"
-
-#~ msgid "Command: /w <nick> <message>"
-#~ msgstr "Comando: /w <nick> <mensagem>"
-
-#~ msgid "This command sends the text <message> to <nick>."
-#~ msgstr "Este comando envia o texto <mensagem> para <nick>."
-
-#~ msgid "Command: /query <nick>"
-#~ msgstr "Comando: /query <nick>"
-
-#~ msgid "Command: /q <nick>"
-#~ msgstr "Comando: /q <nick>"
-
-#~ msgid "This command tries to make a tab for whispers betweenyou and <nick>."
-#~ msgstr ""
-#~ "Este comando cria uma aba para mensagens privadas entre você e <nick>."
-
-#~ msgid "Command: /away <afk reason>"
-#~ msgstr "Comando: /away <motivo>"
-
-#~ msgid "This command tells you're away from keyboard with the given reason."
-#~ msgstr ""
-#~ "Este comando mostra que você está longe do teclado, indicando a razão "
-#~ "dada."
-
-#~ msgid "Command: /away"
-#~ msgstr "Comando: /away"
-
-#~ msgid "This command clears the away status and message."
-#~ msgstr "Este comando limpa o status e a mensagem \"away\"."
-
-#~ msgid "Command: /createparty <name>"
-#~ msgstr "Comando: /createparty <nome>"
-
-#~ msgid "This command creates a new party called <name>."
-#~ msgstr "Este comando cria um novo grupo chamado <nome>."
-
-#~ msgid "Command: /createguild <name>"
-#~ msgstr "Comando: /createguild <nome>"
-
-#~ msgid "This command creates a new guild called <name>."
-#~ msgstr "Este comando cria uma nova guilda chamada <nome>"
-
-#~ msgid "Command: /party <nick>"
-#~ msgstr "Comando: /party <nick>"
-
-#~ msgid "Command: /present"
-#~ msgstr "Comando: /present"
-
-#~ msgid ""
-#~ "This command gets a list of players within hearing and sends it to chat "
-#~ "log."
-#~ msgstr ""
-#~ "Este comando busca uma lista de jogadores por perto e envia para o chat."
-
-#~ msgid "Command: /toggle <state>"
-#~ msgstr "Comando: /toggle <estado>"
-
-#~ msgid ""
-#~ "This command sets whether the return key should toggle the chat log, or "
-#~ "whether the chat log turns off automatically."
-#~ msgstr ""
-#~ "Este comando define se a tecla enter deve alternar para o log do chat ou "
-#~ "se o log do chat fica oculto automaticamente."
-
-#~ msgid ""
-#~ "<state> can be one of \"1\", \"yes\", \"true\" to turn the toggle on, or "
-#~ "\"0\", \"no\", \"false\" to turn the toggle off."
-#~ msgstr ""
-#~ "<estado> pode ser \"1\", \"yes\" e \"true\" para ativar ou \"0\", \"no\" "
-#~ "e \"false\" para desativar."
-
-#~ msgid "Command: /toggle"
-#~ msgstr "Comando: /toggle"
-
-#~ msgid "This command displays the return toggle status."
-#~ msgstr "Este comando mostra o status da tecla enter."
-
-#~ msgid ""
-#~ "This command stops ignoring the given player if they are being ignored"
-#~ msgstr ""
-#~ "Este comando para de ignorar o jogador indicado se ele estiver sendo "
-#~ "ignorado"
-
-#~ msgid "Command: /where"
-#~ msgstr "Comando: /where"
-
-#~ msgid "This command displays the name of the current map."
-#~ msgstr "Mostra o nome do mapa atual."
-
-#~ msgid "Command: /who"
-#~ msgstr "Comando: /who"
-
-#~ msgid "This command displays the number of players currently online."
-#~ msgstr "Exibe o número total de jogadores online."
-
-#~ msgid "Type /help for a list of commands."
-#~ msgstr "Digite /help para uma lista de todos os comandos."

@@ -2,25 +2,24 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: manaplus\n"
+"Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-04-15 20:28+0300\n"
-"PO-Revision-Date: 2011-03-31 19:28+0000\n"
+"PO-Revision-Date: 2011-04-16 09:17+0000\n"
 "Last-Translator: Jumpy <antoinebcn@hotmail.com>\n"
 "Language-Team: French <>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/actorspritemanager.cpp:909
-#, fuzzy
 msgid "Visible on map"
-msgstr "Afficher les noms"
+msgstr "Visible sur la carte"
 
 #: src/being.cpp:489
 msgid "dodge"
@@ -94,7 +93,7 @@ msgstr "Désinscription réussie"
 
 #: src/client.cpp:1143
 msgid "Farewell, come back any time..."
-msgstr "Adieu, revenez dès que vous le souhaitez..."
+msgstr "Adieu, revenez quand vous voudrez..."
 
 #: src/client.cpp:1332 src/client.cpp:1362 src/client.cpp:1406
 #, c-format
@@ -113,7 +112,7 @@ msgstr "Impossible de créer le dossier de mise à jour !"
 #: src/client.cpp:1596
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
-msgstr "Erreur : %s n'existe pas et ne peut pas être créer ! Fin et sortie."
+msgstr "Erreur : %s n'existe pas et ne peut pas être créé ! Déconnection"
 
 #: src/commandhandler.cpp:272
 msgid "Unknown command."
@@ -126,11 +125,11 @@ msgstr "Vous ne pouvez pas envoyer des messages privés vides !"
 #: src/commandhandler.cpp:380
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Il ne peut être créer une fenêtre de conversation avec le personnage \"%s"
-"\" ! Elle existe déjà ou il s'agit de vous même."
+"Il ne peut être créer une fenêtre de conversation avec le personnage \"%s\" "
+"! Elle existe déjà ou il s'agit de vous même."
 
 #: src/commandhandler.cpp:400
 #, c-format
@@ -139,7 +138,7 @@ msgstr "Demande  de rejoindre le canal %s."
 
 #: src/commandhandler.cpp:416 src/net/tmwa/gui/partytab.cpp:123
 msgid "Party name is missing."
-msgstr "Indiquez un nom de groupe."
+msgstr "Le nom du groupe est manquant."
 
 #: src/commandhandler.cpp:427
 msgid "Guild name is missing."
@@ -186,7 +185,7 @@ msgstr "Joueur déjà %s !"
 #: src/commandhandler.cpp:569
 #, c-format
 msgid "Player successfully %s!"
-msgstr "Joueur victorieux %s !"
+msgstr "Joueur  %s avec succès!"
 
 #: src/commandhandler.cpp:577
 #, c-format
@@ -258,26 +257,23 @@ msgstr[0] "%d segondes"
 msgstr[1] "%d secondes"
 
 #: src/commandhandler.cpp:995
-#, fuzzy
 msgid "font cache size"
-msgstr "Taille de police"
+msgstr "Cache de polices"
 
 #: src/commandhandler.cpp:1008
-#, fuzzy
 msgid "Created: "
-msgstr "Créer"
+msgstr "Créé : "
 
 #: src/commandhandler.cpp:1009
-#, fuzzy
 msgid "Deleted: "
-msgstr "Supprimer"
+msgstr "Effacé : "
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", \"true"
-"\", \"false\", \"1\", \"0\"."
+"Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", "
+"\"true\", \"false\", \"1\", \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:395
 msgid "General"
@@ -519,7 +515,7 @@ msgstr "Coupe de cheveux :"
 
 #: src/gui/charcreatedialog.cpp:87
 msgid "Race:"
-msgstr ""
+msgstr "Race:"
 
 #: src/gui/charcreatedialog.cpp:90 src/gui/charselectdialog.cpp:447
 #: src/gui/socialwindow.cpp:847
@@ -838,7 +834,7 @@ msgstr "Sortilège :"
 
 #: src/gui/inventorywindow.cpp:119
 msgid "na"
-msgstr "na"
+msgstr "indisponible"
 
 #: src/gui/inventorywindow.cpp:120
 msgid "az"
@@ -903,31 +899,31 @@ msgstr "Tout"
 
 #: src/gui/itemamountwindow.cpp:259
 msgid "Select amount of items to trade."
-msgstr "Choisissez le nombre d'objets à troquer."
+msgstr "Choisir le nombre d'objets à troquer."
 
 #: src/gui/itemamountwindow.cpp:262
 msgid "Select amount of items to drop."
-msgstr "Choisissez le nombre d'objets à jeter."
+msgstr "Choisir le nombre d'objets à jeter."
 
 #: src/gui/itemamountwindow.cpp:265
 msgid "Select amount of items to store."
-msgstr "Sélectionnez le nombre d'objets à stocker."
+msgstr "Choisir le nombre d'objets à stocker."
 
 #: src/gui/itemamountwindow.cpp:268
 msgid "Select amount of items to retrieve."
-msgstr "Sélectionnez le nombre d'objet à reprendre"
+msgstr "Choisir le nombre d'objet à reprendre"
 
 #: src/gui/itemamountwindow.cpp:271
 msgid "Select amount of items to split."
-msgstr "Choisissez le nombre d'objets à séparer."
+msgstr "Choisir le nombre d'objets à séparer."
 
 #: src/gui/itemamountwindow.cpp:274
 msgid "Add to buy shop."
-msgstr "Ajouter au magasin pour l'achat."
+msgstr "Ajouter au magasin d'achat."
 
 #: src/gui/itemamountwindow.cpp:277
 msgid "Add to sell shop."
-msgstr "Ajouter au magasin pour la vente."
+msgstr "Ajouter au magasin de vente."
 
 #: src/gui/itemamountwindow.cpp:280
 msgid "Unknown."
@@ -972,11 +968,11 @@ msgstr " exp, Mob moyen pour 1% : ?"
 
 #: src/gui/killstats.cpp:75 src/gui/killstats.cpp:128
 msgid "Kills: ?, Total Exp: ?"
-msgstr "Tués : ?, Exp. Total : ?"
+msgstr "Tués : ?, Exp. Totale : ?"
 
 #: src/gui/killstats.cpp:76 src/gui/killstats.cpp:129
 msgid "Avg Exp: ?, No. of Avg mob to next level: ?"
-msgstr "Exp moyenne : ?, Nb de monstres moyens avant prochain niveau : ?"
+msgstr "Exp moyenne : ?, Nb moyens de monstres  avant prochain niveau : ?"
 
 #: src/gui/killstats.cpp:77 src/gui/killstats.cpp:146
 msgid "Kills/Min: ?, Exp/Min: ?"
@@ -984,11 +980,11 @@ msgstr "Tués/min : ?, Exp/min : ?"
 
 #: src/gui/killstats.cpp:79
 msgid "Exp speed per 1 min: ?"
-msgstr "Exp obtenue en 1 min : ?"
+msgstr "Exp. obtenue en 1 min : ?"
 
 #: src/gui/killstats.cpp:80
 msgid "Time for next level per 1 min: ?"
-msgstr "Temps avant prochain niveau pour 1 min : ?"
+msgstr "Temps avant prochain niveau sur 1 min : ?"
 
 #: src/gui/killstats.cpp:81
 msgid "Exp speed per 5 min: ?"
@@ -996,7 +992,7 @@ msgstr "Exp obtenue en 5 min : ?"
 
 #: src/gui/killstats.cpp:82
 msgid "Time for next level per 5 min: ?"
-msgstr "Temps avant prochain niveau pour 5 min : ?"
+msgstr "Temps avant prochain niveau sur 5 min : ?"
 
 #: src/gui/killstats.cpp:83
 msgid "Exp speed per 15 min: ?"
@@ -1004,7 +1000,7 @@ msgstr "Exp obtenue en 15 min : ?"
 
 #: src/gui/killstats.cpp:84
 msgid "Time for Next level per 15 min: ?"
-msgstr "Temps avant prochain niveau pour 15 min : ?"
+msgstr "Temps avant prochain niveau sur 15 min : ?"
 
 #: src/gui/killstats.cpp:86
 msgid "Last kill exp: ?"
@@ -1012,7 +1008,7 @@ msgstr "Exp du dernier Tué : ?"
 
 #: src/gui/killstats.cpp:87
 msgid "Time before jacko spawn: ?"
-msgstr "Temps avant l'apparition d'un JackO : ?"
+msgstr "Temps avant l'apparition d'un Jack'O : ?"
 
 #: src/gui/killstats.cpp:270
 #, c-format
@@ -1274,12 +1270,12 @@ msgstr "@@party|Inviter dans le groupe@@"
 #: src/gui/popupmenu.cpp:188 src/gui/popupmenu.cpp:350
 #: src/gui/popupmenu.cpp:599
 msgid "@@kick party|Kick from party@@"
-msgstr "@@kick party|Sortir du groupe@@"
+msgstr "@@kick party|renvoyer du groupe@@"
 
 #: src/gui/popupmenu.cpp:203 src/gui/popupmenu.cpp:360
 #: src/gui/popupmenu.cpp:613
 msgid "@@guild-kick|Kick from guild@@"
-msgstr "@@guild-kick|Sortir de la guilde@@"
+msgstr "@@guild-kick|renvoyer de la guilde@@"
 
 #: src/gui/popupmenu.cpp:205 src/gui/popupmenu.cpp:361
 #: src/gui/popupmenu.cpp:615
@@ -1293,7 +1289,7 @@ msgstr "@@guild|Inviter dans la guilde@@"
 
 #: src/gui/popupmenu.cpp:217
 msgid "@@admin-kick|Kick player@@"
-msgstr "@@admin-kick|Sortir un joueur@@"
+msgstr "@@admin-kick|Renvoyer un joueur@@"
 
 #: src/gui/popupmenu.cpp:219
 msgid "@@nuke|Nuke@@"
@@ -1324,7 +1320,7 @@ msgstr "@@talk|Parler@@"
 
 #: src/gui/popupmenu.cpp:249
 msgid "@@admin-kick|Kick@@"
-msgstr "@@admin-kick|Sortir@@"
+msgstr "@@admin-kick|Renvoyer@@"
 
 #: src/gui/popupmenu.cpp:260 src/gui/popupmenu.cpp:376
 msgid "@@name|Add name to chat@@"
@@ -1349,7 +1345,7 @@ msgstr "@@pickup|Ramasser@@"
 
 #: src/gui/popupmenu.cpp:404
 msgid "@@chat|Add to chat@@"
-msgstr "@@chat|Ajouter à la boite de dialogue@@"
+msgstr "@@chat|Ajouter au dialogue@@"
 
 #: src/gui/popupmenu.cpp:422
 msgid "Map Item"
@@ -1385,11 +1381,11 @@ msgstr "@@chat close|Fermer le dialogue@@"
 
 #: src/gui/popupmenu.cpp:481
 msgid "Disable highlight"
-msgstr "Désactiver les surbrillances"
+msgstr "Désactiver l'éclairage"
 
 #: src/gui/popupmenu.cpp:486
 msgid "Enable highlight"
-msgstr "Activer les surbrillances"
+msgstr "Activer l'éclairage"
 
 #: src/gui/popupmenu.cpp:491
 msgid "Dont remove name"
@@ -1507,7 +1503,7 @@ msgstr "Vérification :"
 
 #: src/gui/register.cpp:106
 msgid "Email:"
-msgstr "E-mail :"
+msgstr "Email :"
 
 #: src/gui/register.cpp:174
 #, c-format
@@ -1597,11 +1593,11 @@ msgstr "Activer le son"
 
 #: src/gui/setup_audio.cpp:49
 msgid "Enable game sfx"
-msgstr "Activer les bruitages de jeu"
+msgstr "Activer les effets sonores du jeu"
 
 #: src/gui/setup_audio.cpp:50
 msgid "Enable gui sfx"
-msgstr "Activer les bruitages d'interfaces"
+msgstr "Activer les effets sonores de l'interface"
 
 #: src/gui/setup_audio.cpp:51
 msgid "Enable music"
@@ -1675,7 +1671,7 @@ msgstr "Montrer l'historique de discussion"
 
 #: src/gui/setup_chat.cpp:102
 msgid "Enable battle tab"
-msgstr "Activer le tab de combat"
+msgstr "Activer l'onglet de combat"
 
 #: src/gui/setup_chat.cpp:106
 msgid "Show battle events"
@@ -1692,16 +1688,15 @@ msgstr "Editer"
 
 #: src/gui/setup_chat.cpp:116
 msgid "Limit max chars in chat line"
-msgstr "Limiter le nombre maximum de caractères en une ligne de discussion"
+msgstr "Limiter le nombre maximum de caractères d'une ligne de discussion"
 
 #: src/gui/setup_chat.cpp:125
 msgid "Limit max lines in chat"
 msgstr "Limiter le nombre maximum de lignes dans le chat"
 
 #: src/gui/setup_chat.cpp:132
-#, fuzzy
 msgid "Resize chat tabs if need"
-msgstr "Boite de dialogue : ligne suivante"
+msgstr "Si besoin est, changer la taille des fenêtre de dialogue"
 
 #: src/gui/setup_colors.cpp:46
 msgid "This is what the color looks like"
@@ -1816,19 +1811,19 @@ msgstr "Montrer les dégâts infligés aux monstres"
 
 #: src/gui/setup_other.cpp:107
 msgid "Auto target only reachable monsters"
-msgstr "Prendre automatiquement pour cible les monstres à portée uniquement"
+msgstr "Viser automatiquement  uniquement les monstres à portée de tir "
 
 #: src/gui/setup_other.cpp:111
 msgid "Highlight map portals"
-msgstr "Mettre en évidence les portes d'entrées et les sorties de la carte"
+msgstr "Afficher les portails de changement de carte"
 
 #: src/gui/setup_other.cpp:116
 msgid "Highlight player attack range"
-msgstr "Mettre en surbrillance la portée d'attaque du joueur"
+msgstr "Afficher la portée d'attaque du joueur"
 
 #: src/gui/setup_other.cpp:121
 msgid "Highlight monster attack range"
-msgstr "Mettre en surbrillance la portée d'attaque des monstres"
+msgstr "Afficher la portée d'attaque des monstres"
 
 #: src/gui/setup_other.cpp:125
 msgid "Cycle player targets"
@@ -2452,7 +2447,8 @@ msgstr "Accepter l'invitation dans cette guilde"
 #: src/gui/socialwindow.cpp:1136
 msgid "Received party request, but one already exists."
 msgstr ""
-"Vous avez reçu une demande de rejoindre un groupe, mais il en existe déjà un."
+"Vous avez reçu une demande de rejoindre un groupe, mais il en existe déjà "
+"un."
 
 #: src/gui/socialwindow.cpp:1147
 msgid "You have been invited you to join a party."
@@ -3030,7 +3026,8 @@ msgid "Change"
 msgstr "Changer"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "L'objet ne peux être ajouté. Vous ne pouvez ajouter deux fois le même objet "
 "dans cette fenêtre."
@@ -3268,7 +3265,8 @@ msgstr "Commande : /users"
 
 #: src/gui/widgets/channeltab.cpp:65
 msgid "This command shows the users in this channel."
-msgstr "Cette commande affiche la liste d'utilisateurs présents dans ce salon."
+msgstr ""
+"Cette commande affiche la liste d'utilisateurs présents dans ce salon."
 
 #: src/gui/widgets/channeltab.cpp:69
 msgid "Command: /topic <message>"
@@ -3378,8 +3376,10 @@ msgid "Command: /unignore <player>"
 msgstr "Commande : /unignore <joueur>"
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
-msgstr "Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
+msgstr ""
+"Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
 
 #: src/gui/windowmenu.cpp:62
 msgid "BC"
@@ -3849,8 +3849,8 @@ msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
 msgstr ""
-"Conflit entre les touches \"%s\" and \"%s\". Veuillez changer au moins l'une "
-"des touches ou attendez vous à un possible comportement étrange du jeu."
+"Conflit entre les touches \"%s\" and \"%s\". Veuillez changer au moins l'une"
+" des touches ou attendez vous à un possible comportement étrange du jeu."
 
 #: src/localplayer.cpp:338
 msgid "You were killed by "
@@ -3899,22 +3899,19 @@ msgstr "Inactif"
 
 #: src/localplayer.cpp:3392
 msgid "Follow: "
-msgstr ""
+msgstr "Suivre : "
 
 #: src/localplayer.cpp:3394 src/localplayer.cpp:3409
-#, fuzzy
 msgid "Follow canceled"
-msgstr "Échange annulé."
+msgstr "Suivi annulé"
 
 #: src/localplayer.cpp:3401
-#, fuzzy
 msgid "Imitation: "
-msgstr "(?) Imitation"
+msgstr "Imitation: "
 
 #: src/localplayer.cpp:3403 src/localplayer.cpp:3411
-#, fuzzy
 msgid "Imitation canceled"
-msgstr "Échange annulé."
+msgstr "Imitation annulée"
 
 #: src/localplayer.cpp:3763
 msgid "You see "
@@ -4009,7 +4006,8 @@ msgstr ""
 
 #: src/main.cpp:69
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
+msgstr ""
+"      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
 
 #: src/main.cpp:70
 msgid "     --safemode       : Start game in safe mode"
@@ -4926,9 +4924,8 @@ msgstr ""
 "contact avec l'équipe des GM."
 
 #: src/net/tmwa/loginhandler.cpp:178
-#, fuzzy
 msgid "Client too old."
-msgstr "La version de votre client est trop ancienne."
+msgstr "Interface trop ancienne."
 
 #: src/net/tmwa/loginhandler.cpp:181
 #, c-format
@@ -4941,16 +4938,15 @@ msgstr ""
 
 #: src/net/tmwa/loginhandler.cpp:188
 msgid "Server overpopulated."
-msgstr ""
+msgstr "Serveur surpeuplé."
 
 #: src/net/tmwa/loginhandler.cpp:191
 msgid "This user name is already taken."
 msgstr "Ce nom d'utilisateur est déjà utilisé."
 
 #: src/net/tmwa/loginhandler.cpp:197
-#, fuzzy
 msgid "Username permanently erased."
-msgstr "Ce nom d'utilisateur existe déjà."
+msgstr "Le nom de l'utilisateur a été eliminé de façon permanente."
 
 #: src/net/tmwa/network.cpp:149
 msgid "Empty address given to Network::connect()!"
@@ -5090,16 +5086,18 @@ msgstr "Message"
 
 #: src/net/tmwa/playerhandler.cpp:333
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
-"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
-"en mesure de regagner vos points de vie."
+"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus"
+" en mesure de regagner vos points de vie."
 
 #: src/net/tmwa/playerhandler.cpp:343
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
-"Vous portez moins de la moitié du poids de votre inventaire.Vous pouvez vous "
-"régénérez de nouveau."
+"Vous portez moins de la moitié du poids de votre inventaire.Vous pouvez vous"
+" régénérez de nouveau."
 
 #: src/net/tmwa/playerhandler.cpp:448
 #, c-format
@@ -5293,300 +5291,3 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Objet inconnu"
-
-#~ msgid "-- Help --"
-#~ msgstr "-- Aide --"
-
-#~ msgid "/help > Display this help"
-#~ msgstr "/help > Montre l'aide"
-
-#~ msgid "/where > Display map name"
-#~ msgstr "/where > Affiche le nom de la carte et votre localisation"
-
-#~ msgid "/who > Display number of online users"
-#~ msgstr "/who > Affiche le nombre d'utilisateurs en ligne"
-
-#~ msgid "/me > Tell something about yourself"
-#~ msgstr "/me > Dire quelque chose à votre propos"
-
-#~ msgid "/clear > Clears this window"
-#~ msgstr "/clear > Efface le contenu de cette fenêtre"
-
-#~ msgid "/msg > Send a private message to a user"
-#~ msgstr "/msg > Envoie un message privé à un utilisateur"
-
-#~ msgid "/whisper > Alias of msg"
-#~ msgstr "/whisper > Alias de message"
-
-#~ msgid "/w > Alias of msg"
-#~ msgstr "/w > Alias de message"
-
-#~ msgid "/query > Makes a tab for private messages with another user"
-#~ msgstr ""
-#~ "/query > Créé un nouvel onglet pour vos messages privés avec un autre "
-#~ "utilisateur"
-
-#~ msgid "/q > Alias of query"
-#~ msgstr "/q > Alias de query"
-
-#~ msgid "/away > Tell the other whispering players you're away from keyboard."
-#~ msgstr ""
-#~ "/away > Indique aux autres joueurs que vous n'êtes actuellement pas "
-#~ "devant votre écran."
-
-#~ msgid "/ignore > ignore a player"
-#~ msgstr "/ignore > Ignorer un joueur"
-
-#~ msgid "/unignore > stop ignoring a player"
-#~ msgstr "/unignore > Cesser d'ignorer un joueur"
-
-#~ msgid "/ignoreall > Ignore all opened whisper tabs"
-#~ msgstr "/ignoreall > Ignore tous les joueurs dont les onglets sont ouverts"
-
-#~ msgid "/erase > Erase a player"
-#~ msgstr "/erase > Eliminer un joueur"
-
-#~ msgid "/befriend > Be friend a player"
-#~ msgstr "/befriend > Être ami avec un joueur"
-
-#~ msgid "/disregard > Disregard a player"
-#~ msgstr "/disregard > Écarter un joueur"
-
-#~ msgid "/neutral > Neutral a player"
-#~ msgstr "/neutral > Ramener un joueur à l'état par défaut"
-
-#~ msgid "/list > Display all public channels"
-#~ msgstr "/list > Affiche une liste de tous les salons publics"
-
-#~ msgid "/join > Join or create a channel"
-#~ msgstr "/join > Rejoindre ou créer un salon."
-
-#~ msgid "/createparty > Create a new party"
-#~ msgstr "/createparty > Créer un nouveau groupe"
-
-#~ msgid "/createguild > Create a new guild"
-#~ msgstr "/createguild > créer une guilde"
-
-#~ msgid "/party > Invite a user to party"
-#~ msgstr "/party > Invite un utilisateur dans un groupe"
-
-#~ msgid "/toggle > Determine whether <return> toggles the chat log"
-#~ msgstr ""
-#~ "/toggle > Détermine si la touche <entrée> bascule l'historique du tchat"
-
-#~ msgid ""
-#~ "/present > Get list of players present (sent to chat log, if logging)"
-#~ msgstr ""
-#~ "/present > Obtiens la liste des joueurs présents (envoyée dans "
-#~ "l'historique du tchat s'il a été activé)"
-
-#~ msgid "/announce > Global announcement (GM only)"
-#~ msgstr "/announce > Annonce globale (GM uniquement)"
-
-#~ msgid "/closeall > Close all opened whisper tabs"
-#~ msgstr "/closeall > Fermer tous les onglets ouverts"
-
-#~ msgid "/all > Show all visible beings in debug tab"
-#~ msgstr ""
-#~ "/all > Montrer tous les personnages visibles dans la fenêtre de "
-#~ "'debug' (informations)"
-
-#~ msgid "/move > Move to given position"
-#~ msgstr "/move > Se déplacer jusqu'à la position donnée"
-
-#~ msgid "/navigate > Draw path to given position"
-#~ msgstr "/navigate > Afficher le chemin jusqu'à la position donnée"
-
-#~ msgid "/target > Set target to being"
-#~ msgstr "/target > Prendre le joueur désigné pour cible"
-
-#~ msgid "/outfit > Wear outfit by index"
-#~ msgstr "/outfit > Revêtir une tenue selon l'index choisi"
-
-#~ msgid "/emote > Show emote by index"
-#~ msgstr "/emote > Afficher l'émoticône selon l'index donné"
-
-#~ msgid "/follow > Follow player"
-#~ msgstr "/follow > Suivre le joueur"
-
-#~ msgid "/imitation > Imitate player"
-#~ msgstr "/imitation > Imiter le joueur"
-
-#~ msgid "/heal > Heal player"
-#~ msgstr "/heal > Soigner un Joueur"
-
-#~ msgid "/mail > Send offline message to player"
-#~ msgstr "/mail > Envoyer un message à un joueur hors ligne"
-
-#~ msgid "For more information, type /help <command>."
-#~ msgstr "Pour plus d'informations, taper /help <commande>"
-
-#~ msgid "Command: /help"
-#~ msgstr "Commande : /help"
-
-#~ msgid "This command displays a list of all commands available."
-#~ msgstr ""
-#~ "Cette commande affiche une liste de toutes les commandes disponibles."
-
-#~ msgid "Command: /help <command>"
-#~ msgstr "Commande : /help <commande>"
-
-#~ msgid "This command displays help on <command>."
-#~ msgstr "Cette commande affiche une aide sur la commande <command>."
-
-#~ msgid "Command: /announce <msg>"
-#~ msgstr "Commande : /announce <message>"
-
-#~ msgid "*** only available to a GM ***"
-#~ msgstr "*** uniquement disponible pour les GM ***"
-
-#~ msgid ""
-#~ "This command sends the message <msg> to all players currently online."
-#~ msgstr ""
-#~ "Cette commande envoie le message <message> à tous les joueurs en ligne."
-
-#~ msgid "Command: /clear"
-#~ msgstr "Commande : /clear"
-
-#~ msgid "This command clears the chat log of previous chat."
-#~ msgstr ""
-#~ "Cette commande vide l'historique de conversation de la conversation "
-#~ "précédente."
-
-#~ msgid "Command: /ignore <player>"
-#~ msgstr "Commande : /ignore <joueur>"
-
-#~ msgid ""
-#~ "This command ignores the given player regardless of current relations."
-#~ msgstr ""
-#~ "Cette commande ignore le joueur qu'il soit indiqué comme ami ou non."
-
-#~ msgid "Command: /join <channel>"
-#~ msgstr "Commande : /join <channel>"
-
-#~ msgid "This command makes you enter <channel>."
-#~ msgstr "Cette commande vous fait rentrer dans le salon <channel>."
-
-#~ msgid "If <channel> doesn't exist, it's created."
-#~ msgstr "Si <channel> n'existe pas, il sera créé."
-
-#~ msgid "Command: /list"
-#~ msgstr "Commande : /list"
-
-#~ msgid "This command shows a list of all channels."
-#~ msgstr "Cette commande affiche une liste de tous les salons publics."
-
-#~ msgid "Command: /me <message>"
-#~ msgstr "Commande : /me <message>"
-
-#~ msgid "This command tell others you are (doing) <msg>."
-#~ msgstr ""
-#~ "Cette commande informe les autres joueurs que vous faites <message>."
-
-#~ msgid "Command: /msg <nick> <message>"
-#~ msgstr "Commande : /msg <nom du personnage> <message>"
-
-#~ msgid "Command: /whisper <nick> <message>"
-#~ msgstr "Commande : /whisper <nom du personnage> <message>"
-
-#~ msgid "Command: /w <nick> <message>"
-#~ msgstr "Commande : /w <nom du personnage> <message>"
-
-#~ msgid "This command sends the text <message> to <nick>."
-#~ msgstr ""
-#~ "Cette commande envoie le texte <message> au joueur <nom du personnage>"
-
-#~ msgid "Command: /query <nick>"
-#~ msgstr "Commande : /query <nom du personnage>"
-
-#~ msgid "Command: /q <nick>"
-#~ msgstr "Commande : /q <nom du personnage>"
-
-#~ msgid "This command tries to make a tab for whispers betweenyou and <nick>."
-#~ msgstr ""
-#~ "Cette commande essaye de créer une fenêtre de dialogue entre vous et <nom "
-#~ "du personnage>"
-
-#~ msgid "Command: /away <afk reason>"
-#~ msgstr "Commande : /away <message d'absence>"
-
-#~ msgid "This command tells you're away from keyboard with the given reason."
-#~ msgstr ""
-#~ "Cette commande indique que vous n'êtes pas devant votre écran en "
-#~ "indiquant la raison."
-
-#~ msgid "Command: /away"
-#~ msgstr "Commande : /away"
-
-#~ msgid "This command clears the away status and message."
-#~ msgstr "Cette commande retire le statut absent."
-
-#~ msgid "Command: /createparty <name>"
-#~ msgstr "Commande : /createparty <nom du groupe>"
-
-#~ msgid "This command creates a new party called <name>."
-#~ msgstr "Cette commande crée un nouveau groupe appelé <nom>"
-
-#~ msgid "Command: /createguild <name>"
-#~ msgstr "Commande: /createguild <nom>"
-
-#~ msgid "This command creates a new guild called <name>."
-#~ msgstr "Cette commande crée une nouvelle guilde appelée <nom>."
-
-#~ msgid "Command: /party <nick>"
-#~ msgstr "Commande : /party <nom du personnage>"
-
-#~ msgid "Command: /present"
-#~ msgstr "Commande : /present"
-
-#~ msgid ""
-#~ "This command gets a list of players within hearing and sends it to chat "
-#~ "log."
-#~ msgstr ""
-#~ "Cette commande renvoie la liste des joueurs présents qui peuvent vous "
-#~ "entendre, dans la fenêtre de discussion."
-
-#~ msgid "Command: /toggle <state>"
-#~ msgstr "Commande : /toggle <état>"
-
-#~ msgid ""
-#~ "This command sets whether the return key should toggle the chat log, or "
-#~ "whether the chat log turns off automatically."
-#~ msgstr ""
-#~ "Cette commande bascule la fonction de la touche \"retour\" entre "
-#~ "\"ouverture / fermeture\" et \"fermeture automatique\" de la ligne de "
-#~ "discussion."
-
-#~ msgid ""
-#~ "<state> can be one of \"1\", \"yes\", \"true\" to turn the toggle on, or "
-#~ "\"0\", \"no\", \"false\" to turn the toggle off."
-#~ msgstr ""
-#~ "<état> peut être en position \"1\", \"yes\", \"true\" pour activer le "
-#~ "bouton sur marche, ou \"0\", \"no\", \"false\" pour désactiver le bouton."
-
-#~ msgid "Command: /toggle"
-#~ msgstr "Commande : /toggle"
-
-#~ msgid "This command displays the return toggle status."
-#~ msgstr "Cette commande vous affiche le statut du toggle courant."
-
-#~ msgid ""
-#~ "This command stops ignoring the given player if they are being ignored"
-#~ msgstr ""
-#~ "Cette commande fait cesser d'ignorer le joueur donné s'il l'était "
-#~ "précédemment."
-
-#~ msgid "Command: /where"
-#~ msgstr "Commande : /where"
-
-#~ msgid "This command displays the name of the current map."
-#~ msgstr "Cette commande affiche le nom de la carte où vous vous trouvez."
-
-#~ msgid "Command: /who"
-#~ msgstr "Commande : /who"
-
-#~ msgid "This command displays the number of players currently online."
-#~ msgstr "Cette commande affiche le nombre de joueurs actuellement connectés."
-
-#~ msgid "Type /help for a list of commands."
-#~ msgstr "Entrer /help pour obtenir une liste des commandes disponibles."
