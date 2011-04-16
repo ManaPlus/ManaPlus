@@ -1,17 +1,17 @@
-.<- @@index|Back to Index@@
+.<- @@index|Назад@@
  
  
 ##3---------------------------
-##3-- ManaPlus Contributors --
+##3-- Разработчики ManaPlus --
 ##3---------------------------
-##3== Contributors to client development ==
+##3== Разработчики клиента ==
  
 ##9Andrei Karas (4144) <akaras inbox ru>
 ##9Ben Longbons <b.r.longbons gmail com>
 ##9Helmut Grohne (gnurfk) <helmut subdivi de>
 ##9Mihail Barer (Necromonger) <>
  
-##3== Translators ==
+##3== Переводчики ==
 ##9Aline Ferraz de Souza (Freya) <freya.df gmail com>
 ##9Bernard Hugonnet (Nard) <>
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
@@ -22,7 +22,7 @@
 ##9GonzoDark
 ##9nelson6e65
  
-##3== Art or images contributors ==
+##3== Художники ==
 ##9Aline Ferraz de Souza (Freya) <freya.df gmail com>
 ##9Nina O'Reilly (Reid) <reidyaro gmail com>
  
@@ -30,13 +30,13 @@
  
  
 ##3-----------------------
-##3-- Mana Contributors --
+##3-- Разработчики Mana --
 ##3-----------------------
  
 ##P This file lists all contributors up to the current release. Check the wiki
 ##P for the currently active development team.
  
-##3== Contributors to client/server development ==
+##3== Разработчики клиента или сервера ==
  
 ##9Aaron Marks  <nymacro gmail.com>
 ##9Alexander Baldeck (Shura)  <alexander archlinux.org>
@@ -82,7 +82,7 @@
 ##9Maximilian Philipps  <Turmfalke2007 web.de>
 ##9Yohann Ferreira  <bertram cegetel.net>
  
-##3== Translators ==
+##3== Переводчики ==
  
 ##9Alexander Breidenbroich (German)  <metast gmx.de>
 ##9Blue Sans Douze (French) <bluesansdouze gmail.com>
@@ -94,7 +94,7 @@
 ##9Matthias Hartmann (German)  <hartmann.matthias gmail.com>
 ##9Thorbj�rn Lindeijer (Dutch)  <thorbjorn lindeijer.nl>
  
-##3== Other contributors ==
+##3== Другие разработчики ==
  
 ##9Jean-Francois Lampron  <sull.kf gmail.com>
 ##9Rodney Dawes  <dobey novell.com>
