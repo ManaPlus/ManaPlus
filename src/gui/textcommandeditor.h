@@ -29,15 +29,18 @@
 
 #include <guichan/actionlistener.hpp>
 
-class RadioButton;
-class Label;
-class TextBox;
-class TextField;
-class DropDown;
-class ListModel;
 class Button;
-class TextCommand;
+class DropDown;
+class IconsModal;
 class IntTextField;
+class Label;
+class ListModel;
+class MagicSchoolModel;
+class RadioButton;
+class TargetTypeModel;
+class TextBox;
+class TextCommand;
+class TextField;
 
 class TextCommandEditor : public Window, public gcn::ActionListener
 {
@@ -92,6 +95,9 @@ class TextCommandEditor : public Window, public gcn::ActionListener
         DropDown *mSchoolDropDown;
         Label *mSchoolLvlLabel;
         IntTextField *mSchoolLvlField;
+        IconsModal *mIconsModal;
+        TargetTypeModel *mTargetTypeModel;
+        MagicSchoolModel *mMagicSchoolModel;
 
         //Button *mAdvancedButton;
         Button *mCancelButton;

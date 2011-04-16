@@ -198,13 +198,15 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
     mManaField->setRange(0, 500);
     mManaField->setWidth(20);
 
+    mTargetTypeModel = new TargetTypeModel;
     mTypeLabel = new Label(_("Target Type:"));
-    mTypeDropDown = new DropDown(new TargetTypeModel);
+    mTypeDropDown = new DropDown(mTargetTypeModel);
     mTypeDropDown->setActionEventId("type");
     mTypeDropDown->addActionListener(this);
 
+    mIconsModal = new IconsModal;
     mIconLabel = new Label(_("Icon:"));
-    mIconDropDown = new DropDown(new IconsModal);
+    mIconDropDown = new DropDown(mIconsModal);
     mIconDropDown->setActionEventId("icon");
     mIconDropDown->addActionListener(this);
     mIconDropDown->setSelectedString(mCommand->getIcon());
@@ -214,8 +216,9 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
     mMagicLvlField->setRange(0, 5);
     mMagicLvlField->setWidth(20);
 
+    mMagicSchoolModel = new MagicSchoolModel;
     mSchoolLabel = new Label(_("Magic School:"));
-    mSchoolDropDown = new DropDown(new MagicSchoolModel);
+    mSchoolDropDown = new DropDown(mMagicSchoolModel);
     mSchoolDropDown->setActionEventId("school");
     mSchoolDropDown->addActionListener(this);
     mSchoolDropDown->setSelected(0);
@@ -286,6 +289,12 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
 
 TextCommandEditor::~TextCommandEditor()
 {
+    delete mIconsModal;
+    mIconsModal = 0;
+    delete mTargetTypeModel;
+    mTargetTypeModel = 0;
+    delete mMagicSchoolModel;
+    mMagicSchoolModel = 0;
 }
 
 void TextCommandEditor::action(const gcn::ActionEvent &event)
