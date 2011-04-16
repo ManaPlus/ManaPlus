@@ -1,3 +1,16 @@
+2011-04-17 New release 1.1.4.17
+ManaPlus:
+fix: add to trade menu item in inventory context menu.
+fix: update error if update file list have empty lines (like in aethyra).
+fix: manaserv support deprecated. By default all compilation scripts ignoring manaserv.
+fix: inventory equip/unequip buttons.
+fix: protected pickups spam.
+fix: show unknown items in inventory.
+add: moved help from chat to help window.
+add: update progress files counter.
+add: custom autocomplete words list. Place in customwords.txt.
+add: dont waste chat space if input box is hidden.
+
 2011-04-03 New release 1.1.4.3
 ManaPlus:
 fix: improve opengl speed.
