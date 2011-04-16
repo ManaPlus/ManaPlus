@@ -144,15 +144,16 @@ void Logger::log(const char *log_text, ...)
 {
     unsigned size = 1024;
     char* buf = 0;
-    if (strlen(log_text) * 3 > size)
+    if (strlen(log_text) * 3> size)
         size = static_cast<unsigned>(strlen(log_text) * 3);
 
-    buf = new char[size];
+    buf = new char[size + 1];
     va_list ap;
 
     // Use a temporary buffer to fill in the variables
     va_start(ap, log_text);
-    vsprintf(buf, log_text, ap);
+    vsnprintf(buf, size, log_text, ap);
+    buf[size] = 0;
     va_end(ap);
 
     // Get the current system time
