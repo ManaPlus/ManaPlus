@@ -1,0 +1,80 @@
+﻿ <- @@index|Retour au plan@@
+
+
+##3                            Commande de fenêtre de dialogue
+
+
+##PNote
+##2
+    si NOM est en un seul mot l'écrire ainsi.
+    si NOM s'écrit en plusieurs mots l'écrire ainsi : "n o m"
+
+##PMessage Privé
+##2
+    /closeall - ferme tous les messages privés.
+    /ignoreall - positionne tous les messages privés en liste "ignoré.
+    /msg NOM texte, /whisper NOM texte, /w NOM texte - envoie un message privé au personnage nomdupersonnage.
+    /query NOM, /q NOM - ouvre un message privé avec nomdupersonnage.
+
+
+##PActions
+##2
+    /help - montre une aide succinte sur les commandes de chat. 
+    /target NOM - choisi nomdupersonnage comme cible. S'applique aussi aux monstres nomdumonstre.
+    /outfit N - s'habiller avec la tenue numéro N.
+    /outfit next - s'habiller avec la tenue suivante.
+    /outfit prev - s'habiller avec la tenue précédente.
+    /emote N - utiliser l'émote numéro N.
+    /away, /away MESSAGE - met en place le mode absence.
+    /follow NOM - lance le mode "suivre".
+    /imitation NOM - lance le mode "imiter".
+    /heal NOM - soigne nomdupersonnage.
+    /move X Y - avancer a la position X,Y sur une courte distance.
+    /navigate x y - avancer a la position X,Y sur la même carte à n'importe quelle distance.
+    /mail NOM MESSAGE - envoie un message hors ligne à NOM. Ne fonctionne que sur le serveur tmw.
+    /disconnect - se déconneter rapidement du serveur.
+    /attack - attaquer la cible.
+    /undress NOM - enlève tous les vêtements de nomdupersonnage. UNiquement sur votre interface.
+
+
+##PEchange
+##2
+    /trade NOM - commencer un échange avec nomdupersonnage.
+    /priceload - charger les prix de votre disque.
+    /pricesave - sauvegarder les prix sur votre disque.
+
+
+##PInteractions entre joueurs
+##2
+    /ignore NOM - ajouter nomdupersonnage à la liste des joueurs ignorés.
+    /unignore NOM - enlever nomdupersonnage à la liste des joueurs ignorés.
+    /friend NOM, /befriend nomdupersonnage - ajouter nomdupersonnage à la liste des joueurs amis.
+    /disregard NOM - ajouter nomdupersonnage à la liste des joueurs à mettre de côté.
+    /neutral NOM - ajouter nomdupersonnage à la liste des joueurs en position neutre.
+    /erase NOM - ajouter nomdupersonnage à la liste des joueurs éliminés.
+    /clear - vide la fenêtre de dialogue ouverte de tout texte.
+    /createparty NOM - créer un groupe portant le nom nomdugroupe.
+    /me text - envoie le texte dans la boite de dialogue comme le fait la commande /me sur irc.
+
+
+##PInformation 
+##2
+    /who - Indique le nombre de joueurs.
+    /all - montre le nombre de joueur sur la carte.
+    /where - indique la position occupée sur la carte nom de la carte et coordonnées.
+    /cacheinfo - montre les infos du cache texte.
+    /uptime - montre le temps connecté au serveur.
+
+
+##PCommande de messages privés
+##2
+la plupart des commandes fonctionnent dans les messages privés. 
+par exemple la commande /imitation nomdupersonnage1 dans un whisper de nomdupersonnage,
+sera identique à /imitation nomdupersonnage1 dans la fenêtre de dialogue générale.
+
+
+
+
+
+
+

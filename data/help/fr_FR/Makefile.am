@@ -1,8 +1,7 @@
-SUBDIRS = ru_RU fr_FR
 
-helpdir = $(pkgdatadir)/data/help
+helpfrFRdir = $(pkgdatadir)/data/help/fr_FR
 
-help_DATA =				\
+helpfrFR_DATA =				\
 	about.txt			\
 	chatcommands.txt	\
 	commands.txt		\
@@ -15,5 +14,5 @@ help_DATA =				\
 	windows.txt
 
 EXTRA_DIST =			\
-	$(help_DATA) \
+	$(helpfrFR_DATA) \
 	CMakeLists.txt

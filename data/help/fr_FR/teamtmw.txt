@@ -1,0 +1,132 @@
+﻿ <- @@index|Retour au plan@@
+ 
+ 
+##3                        === EQUIPE DE DEVELOPPEMENT ===
+ 
+##2 Leader du projet :
+ 
+     ##9Eugenio Favalli (aka ElvenProgrammer)
+         elvenprogrammer@gmail.com
+ 
+ 
+##2 Programmeurs:
+ 
+     ##9Bjorn Lindeijer (aka Hammerbear)
+         b_lindeijer@users.sourceforge.net
+             (plusieurs parties, GUI, graphiques, A* et réécriture des cartes)
+ 
+     ##9Björn Steinbrink  (aka Doener)
+         der_doener@users.sourceforge.net
+             (plusieurs parties)
+ 
+     ##9Eric Scrivner (aka zenogais)
+         bitshift2002@users.sourceforge.net
+             (resource manager)
+ 
+     ##9J. Avila (aka Javila)
+         javila@users.sourceforge.net
+             (plusieurs parties, GUI)
+ 
+     ##9Jan-Fabian Humann (aka Mra)
+         malastare@users.sourceforge.net
+             (certaines parties du GUI)
+ 
+     ##9Kiyoshi Kyokai (aka Kiokay)
+         kyokai@users.sourceforge.net
+             (design du system de jeu)
+ 
+     ##9Mateusz Kaduk (aka Usiu)
+         usiu@users.sourceforge.net
+             (certaines parties du GUI)
+ 
+     ##9Aaron Marks (aka nym)
+         nymacro@users.sourceforge.net
+             (certaines parties du GUI)
+ 
+     ##9Shura
+         kth5@users.sourceforge.net
+             (configuration, sons, divers ports)
+ 
+     ##9Yohann Ferreira (aka Bertram)
+         bertram25@users.sourceforge.net
+             (entrée SDL, dessin des barres de progresion, Pack Debian)
+ 
+ 
+##2 Artistes:
+ 
+     ##9Clef
+             (tiles, concepts)
+ 
+     ##9Frode Lindeijer (aka Modanung)
+         f.lindeijer@xs4all.nl
+             (arts)
+ 
+     ##9Gnulia 
+             (conception de design artistique)
+ 
+     ##9Magick
+             (musique et effets sonores)
+ 
+     ##9Neko-mon
+             (sprites du joueur, plusieurs choses)
+    
+     ##9Neorice
+             (sprites des monstres, tiles)
+ 
+     ##9Pajarico
+         pajarico@users.sourceforge.net
+             (conception de design artistique)
+ 
+     ##9Romulo Fernandes
+         razor85@users.sourceforge.net
+             (arts)
+ 
+     ##9Rotonen
+         rotonen@users.sourceforge.net
+             (histoire, art directeur, musique, sons)
+ 
+     ##9Talaroc
+         talaroc@users.sourceforge.net
+             (sprites)
+ 
+     ##9Ti Sing Hao
+             (musique)
+ 
+ 
+##2 Divers remerciements :
+ 
+     ##9David Smith (aka catfish_man)
+         catfish_man@users.sourceforge.net
+             (Mac package)
+ 
+     ##9Igor Morgado (aka imorgado)
+         imorgado@users.sourceforge.net
+             (testeur)
+ 
+     ##9maci
+         maci321@users.sourceforge.net
+             (support technique)
+ 
+     ##9Rodney Dawes (aka dobey)
+         dobey@users.sourceforge.net
+             (Mac package)
+ 
+     ##9Ultramichy
+             (accueil du serveur de test)
+ 
+ 
+##2 Inactifs/retiré :
+ 
+     ##9Chetic
+         chetic@users.sourceforge.net
+             (cartes)
+ 
+     ##9Simon Edwardsson (aka SimEdw)
+         simonedw@users.sourceforge.net
+             (network code, Mac package)
+ 
+     ##9Sull 
+             (Accueil CVS et divers services)
+ 
+     ##9Vlady
+             (plusieurs objets)

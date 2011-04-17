@@ -1,0 +1,169 @@
+﻿ <- @@index|Back to Index@@
+ 
+ 
+##3                            === COMMANDES ===
+ 
+##2CLAVIER :
+
+     ##2UP##P                       "Aller vers le haut"
+     ##2DOWN##P                     "Aller vers le bas"
+     ##2LEFT##P                     "Aller à gauche"
+     ##2RIGHT##P                    "Aller à droite"
+     ##2LeftControl##P              "Attaquer"
+     ##2x##P                        "Cibler et Attaquer"
+     ##2v##P                        "Avancer jusqu'à la cible"
+     ##2Period(.)##P                "Changer la façon de se déplacer jusqu'à la cible"
+     ##2d##P                        "Avancer jusqu'à la position principale"
+     ##2KeyPad[5]##P                "Définir la position principale/Set arrow"
+     ##2RightShift + key##P         "Se déplacer jusqu'au point de navigation"
+     ##2LeftAlt + EmoteKey##P       "eMote"
+     ##2t##P                        "Parler"
+     ##2LeftShift##P                "Arrêter l'attaque" 
+     ##2a##P                        "Cibler le monstre le plus proche"
+     ##2n##P                        "Cibler NPC"
+     ##2q##P                        "Cibler le joueur"
+     ##2z##P                        "Ramasser"
+     ##2o##P                        "Changer le type de rammassage"
+     ##2h##P                        "Masquer la fenêtre"
+     ##2s##P                        "S'assoir"
+     ##2p##P                        "Impression écran"
+     ##2r##P                        "Activer/Désactiver les échanges"
+     ##2f##P                        "Changer le type d'affichage écran"
+     ##2MenuKey##P                  "Touches de raccourcis objet"
+     ##21##P                        "Raccourcis objet 1"
+     ##22##P                        "Raccourcis objet 2"
+     ##23##P                        "Raccourcis objet 3"
+     ##24##P                        "Raccourcis objet 4"
+     ##25##P                        "Raccourcis objet 5"
+     ##26##P                        "Raccourcis objet 6"
+     ##27##P                        "Raccourcis objet 7"
+     ##28##P                        "Raccourcis objet 8"
+     ##29##P                        "Raccourcis objet 9"
+     ##20##P                        "Raccourcis objet 10"
+     ##2Minus(-)##P                 "Raccourcis objet 11"
+     ##2Equals(=)##P                "Raccourcis objet 12"
+     ##2Backspace##P                "Raccourcis objet 13"
+     ##2Insert##P                   "Raccourcis objet 14"
+     ##2Home##P                     "Raccourcis objet 15"
+     ##2F1##P                       "Fenêtre d'aide"
+     ##2F2##P                       "Fenêtre de caractéristiques"
+     ##2F3##P                       "Fenêtre d'inventaire"
+     ##2F4##P                       "Fenêtre de tenue équipée"
+     ##2F5##P                       "Fenêtre de compétences"
+     ##2F6##P                       "Fenêtre de minicarte"
+     ##2F7##P                       "Fenêtre de dialogue"
+     ##2F8##P                       "Fenêtre de raccourcis objets"
+     ##2F9##P                       "Fenêtre de configuration"
+     ##2F10##P                      "Fenêtre d'informations"
+     ##2F11##P                      "Fenêtre de relation sociale"
+     ##2F12##P                      "Fenêtre d'eMote"
+     ##2BackQuote(`)##P             "Fenêtre de tenues"
+     ##2w##P                        "Fenêtre de lancer rapide d'objet"
+     ##2e##P                        "Fenêtre de statistiques de jeu"
+     ##2j##P                        "Fenêtre de commandes"
+     ##2LeftBracket([)##P           "Fenêtre de contrôle de bot"
+     ##2LeftAlt + 1##P              "Raccourcis d'eMote 1"
+     ##2LeftAlt + 2##P              "Raccourcis d'eMote 2"
+     ##2LeftAlt + 3##P              "Raccourcis d'eMote 3"
+     ##2LeftAlt + 4##P              "Raccourcis d'eMote 4"
+     ##2LeftAlt + 5##P              "Raccourcis d'eMote 5"
+     ##2LeftAlt + 6##P              "Raccourcis d'eMote 6"
+     ##2LeftAlt + 7##P              "Raccourcis d'eMote 7"
+     ##2LeftAlt + 8##P              "Raccourcis d'eMote 8"
+     ##2LeftAlt + 9##P              "Raccourcis d'eMote 9"
+     ##2LeftAlt + 0##P              "Raccourcis d'eMote 10"
+     ##2LeftAlt + Minus(-)##P       "Raccourcis d'eMote 11"
+     ##2LeftAlt + Equals(=)##P      "Raccourcis d'eMote 12"
+     ##2LeftAlt + Backspace##P      "Raccourcis d'eMote 13"
+     ##2LeftAlt + Insert##P         "Raccourcis d'eMote 14"
+     ##2RightControl##P             "Equper la tenue"
+     ##2RightAlt##P                 "Copier la tenue"
+     ##2RightBracket(])##P          "copier la tenue équipée dans les tenues programmées"
+     ##2Enter##P                    "Interupteur de dialogue"
+     ##2PageUP##P                   "Remonter dans les lignes de dialogue"
+     ##2PageDOWN##P                 "Descendre dans les lignes de dialogue"
+     ##2KeyPad[7]##P                "Fenêtre de dialogue suivante"
+     ##2KeyPad[9]##P                "Fenêtre de dialogue Précédente"
+     ##2KeyPad[7]##P                "Ligne de dialogue précédente"
+     ##2KeyPad[9]##P                "Ligne de dialogue suivante"
+     ##2Tab##P                      "Auto remplissage dans le dialogue"
+     ##2Esc##P                      "Désactiver les entrée dans le dialogue"
+     ##2SpaceBar##P                 "Selectionner OK"
+     ##2Esc##P                      "Quitter"
+     ##2LeftWinKey##P               "Ignorer entrée 1"
+     ##2RightWinKey##P              "Ignorer entrée 2"
+     ##2l##P                        "Sélectionner la direction vers le haut"
+     ##2Semicolon(;)##P             "Sélectionner la direction vers le bas"
+     ##2k##P                        "Sélectionner la direction vers la gauche"
+     ##2Quote(')##P                 "Sélectionner la direction vers la droite"
+     ##2Slash(\)##P                 "Mouvements fous"
+     ##2Backslash(/)##P             "Changer le type de mouvements fous"
+     ##2y##P                        "Lancement rapide de N objets de 0 emplacements"
+     ##2u##P                        "Lancement rapide de N objets"
+     ##2i##P                        "Basculer le comptage d'objets lancé"
+     ##2c##P                        "Soigner rapidement la cible ou soi-même"
+     ##2m##P                        "Utiliser le sort #itenplz"
+     ##2b##P                        "Utiliser les sorts d'attaque magique"
+     ##2Comma(,)##P                 "Changer d'attaque magique"
+     ##2KeyPad0##P                  "Changer le type de mouvements"
+     ##2g##P                        "Changer le type d'arme d'attaque"
+     ##2End##P                      "Changer le type d'attaque"
+     ##2KeyPad[1]##P                "Changer le type de suivi"
+     ##2KeyPad[4]##P                "Changer le type d'imitation"
+     ##2KeyPad[8]##P                "Activer/Désactiver les touches de modification de jeu"
+     ##2KeyPad[3]##P                "On / Off audio"
+     ##2KeyPad[2]##P                "Activer/Désactiver le mode absence"
+     ##2Tab##P                      "stimuler le clic droit depuis le clavier"
+     ##2KeyPad[+]##P                "Basculer en mode caméra"
+
+
+##2SOURIE :
+
+ Clic gauche pour exécuter les actions basiques : marcher, ramasser un objet, attaquer un monstre
+ et parler aux NPCs (assurer vous de bien clicquer sur leurs pieds. Le clic droit montre le menu contextuel.
+ Maintenir enfoncée la touche [Majuscule Gauche] permet d'attaquer sans se déplacer.
+
+
+##2COMMUNICATION :
+
+ La communication est souvent un élément essentiel dans ce jeu. Vous pouvez communiquez de divers manières :
+ par chat et en montrant vos émotions (voir ci-dessus), en réalisant des échanges (voir clic droit dans le menu
+ contextuel) et aussi en messages privés.
+
+ Pour en savoir plus sur les messages privés voir ici : @@chatcommands|Commandes de dialogue@@
+
+
+##2IGNORER LES COMMUNICATIONS :
+
+ Vous pouvez ne pas souhaiter communiquer de toutes les façons ocmmentées précédemment.  Si la plupart
+ des personnes sont sympathiques, certaines pourraient vous offenser ou vous rendre la vie difficiel 
+ -- vous évoluez dans un jeu ouvert il n'y a donc rien que les développeurs puissent faire à l'encontre de cela.
+
+ Néanmoins, vous pouvez vous protéger de ce genre de joueurs en les ignorant.
+ Clic droit sur eux pour ouovrir le menu contextuel puis sélectionnez "Ignorer"
+ ou "Ecarter" (voir ci dessous), Vous pouvez affiner et contrôler vos relations avec les joueurs
+ dans le menu de configuration qui liste les joueurs que vous avez rentré dans la liste.
+ Pour ouvrir ce menu, sélectionnez "configuration" CFG dans les boutons en haut à droite puis joueurs.
+
+ Vous y trouverez une liste des joueurs avec qui vous avez joué et vous pourrez sélectionner des options :
+
+ - ##2sauvegarder la liste des joueurs##P : en activant cette option vous pourrez retrouver votre liste
+   apprès chaque déconnection.
+ - ##2authoriser les échanges##P : Voulez-vous authorisez tous les joueurs à faire des échanges avec vous ?
+ - ##2authorisez les messages privés##P : Voulez-vous authorisez tous les joueurs à entrer en message privé avec vous ?
+
+##2LA LISTE DES JOUEURS
+
+ La liste des joueurs regroupe toutes vos selections.  Elles sont articulées de la façon suivante:
+
+ - ##2neutre##P :  De la façon dont le jeu est conçu cela revient au même que de ne rien faire :
+   Le joueur pourra parler avec vous, mais ne pourra que faire des échanges si cette option est 
+   sélectionnée pour tous les joueurs.
+ - ##2amis##P :  Vous considérez ce joueur comme un ami.  Ce joueur pourra dialoguer avec vous, 
+   vous envoyer des messages privés et réaliser des échanges avec vous.
+ - ##2écarté##P :  Vous décidez d'écarter ce joueur ce qui signifie que vous ne verrez pas apparaitre 
+   ses messages dans la boite de dialogue et qu'il ne pourra réaliser d'échange avec vous.
+ - ##2ignoré##P :  vous décidez d'ignorer complètement ce joueur. Ceci implique que vou ne verrez aucun de ses messages,
+   ni en boite de dialogue, ni en bulle flotante sur l'écran de jeu et qu'aucun échange ne sera possible.
+
+
