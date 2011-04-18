@@ -15,9 +15,9 @@
      
    ##4 Compétences magiques : 
  
-     Elles sont acquises au travers de quètes et de missions à remplir.
-
+     ##PElles sont acquises au travers de quètes et de missions à remplir.
+ 
    ##4 Compétences autres :
-
-     Elles sont acquises au travers de quètes et de missions à remplir.
+ 
+     ##PElles sont acquises au travers de quètes et de missions à remplir.
        
