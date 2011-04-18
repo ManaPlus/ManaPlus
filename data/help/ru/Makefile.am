@@ -1,12 +1,12 @@
 
-helpruRUdir = $(pkgdatadir)/data/help/ru_RU
+helprudir = $(pkgdatadir)/data/help/ru
 
-helpruRU_DATA =				\
+helpru_DATA =				\
 	chatcommands.txt	\
 	header.txt			\
 	index.txt			\
 	team.txt
 
 EXTRA_DIST =			\
-	$(helpruRU_DATA) \
+	$(helpru_DATA) \
 	CMakeLists.txt
