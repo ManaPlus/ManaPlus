@@ -94,7 +94,7 @@ public:
     void setWrappingEnabled(bool wrappingEnabled)
     { mWrappingEnabled = wrappingEnabled; }
 
-    gcn::Rectangle getChildrenArea() const;
+    gcn::Rectangle getChildrenArea();
 
     /**
      * Toggle whether to use linewise selection mode, in which the table selects
@@ -112,7 +112,7 @@ public:
     // Inherited from Widget
     virtual void draw(gcn::Graphics* graphics);
 
-    virtual gcn::Widget *getWidgetAt(int x, int y) const;
+    virtual gcn::Widget *getWidgetAt(int x, int y);
 
     virtual void moveToTop(gcn::Widget *child);
 

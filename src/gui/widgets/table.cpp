@@ -392,7 +392,7 @@ void GuiTable::moveToBottom(gcn::Widget *widget)
         mTopWidget = NULL;
 }
 
-gcn::Rectangle GuiTable::getChildrenArea() const
+gcn::Rectangle GuiTable::getChildrenArea()
 {
     return gcn::Rectangle(0, 0, getWidth(), getHeight());
 }
@@ -515,7 +515,7 @@ void GuiTable::modelUpdated(bool completed)
     }
 }
 
-gcn::Widget *GuiTable::getWidgetAt(int x, int y) const
+gcn::Widget *GuiTable::getWidgetAt(int x, int y)
 {
     int row = getRowForY(y);
     int column = getColumnForX(x);
