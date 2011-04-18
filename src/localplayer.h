@@ -148,19 +148,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void stopAttack();
 
         /**
-         * Overridden to do nothing. The attacks of the local player are
-         * displayed as soon as the player attacks, not when the server says
-         * the player does.
-         *
-         * @param victim the victim being
-         * @param damage the amount of damage dealt (0 means miss)
-         * @param type the attack type
-         */
-        //virtual void handleAttack(Being *victim, int damage, AttackType type) {}
-        virtual void handleAttack()
-        { }
-
-        /**
          * Returns the current target of the player. Returns 0 if no being is
          * currently targeted.
          */
