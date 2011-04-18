@@ -345,6 +345,7 @@ Setup_Video::Setup_Video():
 
     mAlphaSlider->setValue(mOpacity);
     mAlphaSlider->setWidth(90);
+    mAlphaCacheCheckBox->setEnabled(!mOpenGLDropDown->getSelected());
 
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
@@ -385,6 +386,7 @@ Setup_Video::Setup_Video():
     mDrawPathCheckBox->setActionEventId("drawPath1");
     mShowJobCheckBox->setActionEventId("showJob");
     mAlphaCacheCheckBox->setActionEventId("alphaCache");
+    mOpenGLDropDown->setActionEventId("opengl");
 
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
@@ -810,6 +812,11 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);
         mAltFpsSlider->setValue(mAltFps);
         mAltFpsSlider->setEnabled(mAltFps > 0);
+    }
+    else if (id == "opengl")
+    {
+        bool isSoftware = mOpenGLDropDown->getSelected();
+        mAlphaCacheCheckBox->setEnabled(isSoftware);
     }
 }
 
