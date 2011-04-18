@@ -80,7 +80,7 @@ class Sprite
          *
          * @returns true if the sprite changed, false otherwise
          */
-        virtual bool setDirection(SpriteDirection direction) = 0;
+        virtual bool setSpriteDirection(SpriteDirection direction) = 0;
 
         /**
          * Sets the alpha value of the animated sprite

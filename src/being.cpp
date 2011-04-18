@@ -1003,7 +1003,7 @@ void Being::setDirection(Uint8 direction)
     }
     mSpriteDirection = dir;
 
-    CompoundSprite::setDirection(dir);
+    CompoundSprite::setSpriteDirection(dir);
 }
 
 Uint8 Being::calcDirection() const
@@ -1567,7 +1567,7 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
         }
 
         if (equipmentSprite)
-            equipmentSprite->setDirection(getSpriteDirection());
+            equipmentSprite->setSpriteDirection(getSpriteDirection());
 
         CompoundSprite::setSprite(slot, equipmentSprite);
 

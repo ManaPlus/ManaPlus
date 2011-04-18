@@ -193,7 +193,7 @@ const Image* CompoundSprite::getImage() const
     return mImage;
 }
 
-bool CompoundSprite::setDirection(SpriteDirection direction)
+bool CompoundSprite::setSpriteDirection(SpriteDirection direction)
 {
     bool ret = false;
 
@@ -201,7 +201,7 @@ bool CompoundSprite::setDirection(SpriteDirection direction)
     for (it = begin(), it_end = end(); it != it_end; ++it)
     {
         if (*it)
-            ret |= (*it)->setDirection(direction);
+            ret |= (*it)->setSpriteDirection(direction);
     }
 
     mNeedsRedraw |= ret;
