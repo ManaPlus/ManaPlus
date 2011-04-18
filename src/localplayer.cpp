@@ -3092,6 +3092,9 @@ void LocalPlayer::changeAwayMode()
         miniStatusWindow->updateStatus();
     if (mAwayMode)
     {
+        if (chatWindow)
+            chatWindow->clearAwayLog();
+
         cancelFollow();
         naviageClean();
         if (outfitWindow)
@@ -3105,6 +3108,11 @@ void LocalPlayer::changeAwayMode()
     {
         mAwayDialog = 0;
         sound.volumeRestore();
+        if (chatWindow)
+        {
+            chatWindow->displayAwayLog();
+            chatWindow->clearAwayLog();
+        }
     }
 }
 

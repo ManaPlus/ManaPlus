@@ -248,6 +248,13 @@ class ChatWindow : public Window,
 
         void adjustTabSize();
 
+        void addToAwayLog(std::string line);
+
+        void displayAwayLog();
+
+        void clearAwayLog()
+        { mAwayLog.clear(); }
+
     protected:
         friend class ChatTab;
         friend class WhisperTab;
@@ -316,6 +323,7 @@ class ChatWindow : public Window,
         ColorListModel *mColorListModel;
         int mChatColor;
         unsigned int mChatHistoryIndex;
+        std::list<std::string> mAwayLog;
 };
 
 extern ChatWindow *chatWindow;

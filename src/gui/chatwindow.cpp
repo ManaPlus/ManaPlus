@@ -1470,3 +1470,29 @@ void ChatWindow::loadCustomList()
         listFile.close();
     }
 }
+
+void ChatWindow::addToAwayLog(std::string line)
+{
+    if (!player_node || !player_node->getAwayMode())
+        return;
+
+    if (mAwayLog.size() > 20)
+        mAwayLog.pop_front();
+
+    if (line.find(player_node->getName()) != std::string::npos)
+        mAwayLog.push_back("##9away:" + line);
+}
+
+void ChatWindow::displayAwayLog()
+{
+    if (!localChatTab)
+        return;
+
+    std::list<std::string>::iterator i = mAwayLog.begin();
+
+    while (i != mAwayLog.end())
+    {
+        localChatTab->addNewRow(*i);
+        ++i;
+    }
+}

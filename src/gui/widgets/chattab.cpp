@@ -249,6 +249,9 @@ void ChatTab::chatLog(std::string line, Own own,
         addRow(line);
     }
 
+    if (chatWindow && this == localChatTab)
+        chatWindow->addToAwayLog(line);
+
     mScrollArea->logic();
     if (own != BY_PLAYER)
     {
@@ -433,4 +436,20 @@ void ChatTab::loadFromLogFile(std::string name)
             ++i;
         }
     }
+}
+
+void ChatTab::addNewRow(std::string &line)
+{
+    if (mScrollArea->getVerticalScrollAmount() >=
+        mScrollArea->getVerticalMaxScroll())
+    {
+        addRow(line);
+        mScrollArea->setVerticalScrollAmount(
+            mScrollArea->getVerticalMaxScroll());
+    }
+    else
+    {
+        addRow(line);
+    }
+    mScrollArea->logic();
 }

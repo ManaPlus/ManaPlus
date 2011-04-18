@@ -159,6 +159,8 @@ class ChatTab : public Tab
         void setNoAway(bool n)
         { mNoAway = n; }
 
+        void addNewRow(std::string &line);
+
     protected:
         friend class ChatWindow;
         friend class WhisperWindow;
