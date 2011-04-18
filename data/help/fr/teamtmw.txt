@@ -1,4 +1,4 @@
-﻿ <- @@index|Retour au plan@@
+ <- @@index|Retour au plan@@
  
  
 ##3                        === EQUIPE DE DEVELOPPEMENT ===

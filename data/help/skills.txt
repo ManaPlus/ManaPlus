@@ -13,4 +13,11 @@
      ##2Party Level1:##P enables a char to join a party.
      ##2Party level2:##P enables a char to create a party
      Other skills are still not implemented.
- 
+  
+   ##4 Magic skills:  
+
+     Magic skills can be obtain by doing quests and missions in game.
+
+   ##4 Other skills: 
+
+     Other skills can be obtain by doing quests and missions in game.

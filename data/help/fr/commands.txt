@@ -1,4 +1,4 @@
-﻿ <- @@index|Back to Index@@
+ <- @@index|Back to Index@@
  
  
 ##3                            === COMMANDES ===

@@ -1,4 +1,4 @@
-﻿##3                             === INDEX ===
+##3                             === INDEX ===
 
  ##1-> @@about|A propos de@@
  -> @@team|Développeurs Manaplus@@
