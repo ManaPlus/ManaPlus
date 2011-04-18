@@ -440,16 +440,20 @@ std::string combineDye2(std::string file, std::string dye)
     }
 }
 
-std::string getLang()
+std::vector<std::string> getLang()
 {
+    std::vector<std::string> langs;
     char *lng = getenv("LANG");
     if (!lng)
-        return "";
+        return langs;
 
     std::string lang(lng);
     int dot = lang.find(".");
-    if (dot == (signed)std::string::npos)
-        return lang;
-
-    return lang.substr(0, dot);
+    if (dot != (signed)std::string::npos)
+        lang = lang.substr(0, dot);
+    langs.push_back(lang);
+    dot = lang.find("_");
+    if (dot != (signed)std::string::npos)
+        langs.push_back(lang.substr(0, dot));
+    return langs;
 }

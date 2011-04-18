@@ -98,18 +98,23 @@ void HelpWindow::loadHelp(const std::string &helpFile)
 
 void HelpWindow::loadFile(const std::string &file)
 {
-    const std::string lang = getLang();
+    const std::vector<std::string> langs = getLang();
     ResourceManager *resman = ResourceManager::getInstance();
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
 
     std::vector<std::string> lines;
-    if (!lang.empty())
+    if (!langs.empty())
     {
-        const std::string name = helpPath + lang + "/" + file + ".txt";
+        std::string name = helpPath + langs[0] + "/" + file + ".txt";
         if (resman->exists(name))
             lines = resman->loadTextFile(name);
+        if (lines.empty() && langs.size() > 1)
+        {
+            name = helpPath + langs[1] + "/" + file + ".txt";
+            lines = resman->loadTextFile(name);
+        }
     }
 
     if (lines.empty())

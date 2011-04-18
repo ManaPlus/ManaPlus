@@ -27,6 +27,7 @@
 #include <sstream>
 #include <list>
 #include <set>
+#include <vector>
 
 /**
  * Trims spaces off the end and the beginning of the given string.
@@ -177,6 +178,6 @@ std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);
 
-std::string getLang();
+std::vector<std::string> getLang();
 
 #endif // UTILS_STRINGUTILS_H
