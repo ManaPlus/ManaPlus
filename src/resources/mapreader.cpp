@@ -393,7 +393,7 @@ void MapReader::readProperties(xmlNodePtr node, Properties *props)
     }
 }
 
-static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
+inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
 {
     const Tileset * const set = map->getTilesetWithGid(gid);
     if (layer)
