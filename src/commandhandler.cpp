@@ -35,6 +35,7 @@
 #include "gui/gui.h"
 #include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"
+#include "gui/socialwindow.h"
 #include "gui/trade.h"
 #include "gui/sdlfont.h"
 
@@ -258,6 +259,18 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
     else if (type == "uptime")
     {
         handleUptime(args, tab);
+    }
+    else if (type == "addattack")
+    {
+        handleAddAttack(args, tab);
+    }
+    else if (type == "removeattack" || type == "removeignoreattack")
+    {
+        handleRemoveAttack(args, tab);
+    }
+    else if (type == "addignoreattack")
+    {
+        handleAddIgnoreAttack(args, tab);
     }
     else if (tab->handleCommand(type, args))
     {
@@ -976,6 +989,44 @@ void CommandHandler::handleUptime(const std::string &args _UNUSED_,
         }
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
     }
+}
+
+void CommandHandler::handleAddAttack(const std::string &args,
+                                     ChatTab *tab _UNUSED_)
+{
+    if (!player_node || player_node->isInAttackList(args))
+        return;
+
+    player_node->removeAttackMob(args);
+    player_node->addAttackMob(args);
+
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
+}
+
+void CommandHandler::handleRemoveAttack(const std::string &args,
+                                        ChatTab *tab _UNUSED_)
+{
+    if (!player_node || args.empty() || !player_node->isInAttackList(args))
+        return;
+
+    player_node->removeAttackMob(args);
+
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
+}
+
+void CommandHandler::handleAddIgnoreAttack(const std::string &args,
+                                           ChatTab *tab _UNUSED_)
+{
+    if (!player_node || player_node->isInIgnoreAttackList(args))
+        return;
+
+    player_node->removeAttackMob(args);
+    player_node->addIgnoreAttackMob(args);
+
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
 }
 
 void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,

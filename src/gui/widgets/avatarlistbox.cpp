@@ -258,7 +258,10 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         graphics->setColor(Theme::getThemeColor(Theme::TEXT));
 
         // Draw Name
-        graphics->drawText(text, 15, y);
+        if (a->getType() == MapItem::SEPARATOR)
+            graphics->drawText(text, 2, y);
+        else
+            graphics->drawText(text, 15, y);
 
         if (a->getDisplayBold())
             graphics->setFont(getFont());
