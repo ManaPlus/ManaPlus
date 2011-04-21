@@ -350,6 +350,10 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
                 mDrawWidth = rect.width;
                 mDrawHeight = rect.height;
             }
+            else if (static_cast<Graphics*>(graphics)->getRedraw())
+            {
+                recalc = true;
+            }
         }
 
         if (recalc)

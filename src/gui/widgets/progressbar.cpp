@@ -204,7 +204,7 @@ void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
     gcn::Font *oldFont = graphics->getFont();
     gcn::Color oldColor = graphics->getColor();
 
-    if (*redraw)
+    if (*redraw || graphics->getRedraw())
     {
         *redraw = false;
         static_cast<Graphics*>(graphics)->calcWindow(vert,

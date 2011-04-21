@@ -131,10 +131,12 @@ void Window::draw(gcn::Graphics *graphics)
         return;
 
     Graphics *g = static_cast<Graphics*>(graphics);
+    bool update = false;
 
     if (mRedraw)
     {
         mRedraw = false;
+        update = true;
         g->calcWindow(mVertexes, 0, 0, getWidth(),
             getHeight(), mSkin->getBorder());
     }
@@ -176,7 +178,16 @@ void Window::draw(gcn::Graphics *graphics)
         }
     }
 
-    drawChildren(graphics);
+    if (update)
+    {
+        g->setRedraw(update);
+        drawChildren(graphics);
+        g->setRedraw(false);
+    }
+    else
+    {
+        drawChildren(graphics);
+    }
 }
 
 void Window::setContentSize(int width, int height)

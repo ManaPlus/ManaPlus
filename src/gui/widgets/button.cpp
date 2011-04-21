@@ -210,6 +210,10 @@ void Button::draw(gcn::Graphics *graphics)
             recalc = true;
             mMode = mode;
         }
+        else if (static_cast<Graphics*>(graphics)->getRedraw())
+        {
+            recalc = true;
+        }
     }
 
     if (recalc)

@@ -255,6 +255,12 @@ class Graphics : public gcn::SDLGraphics
         gcn::ClipRectangle &getTopClip()
         { return mClipStack.top(); }
 
+        void setRedraw(bool n)
+        { mRedraw = n; }
+
+        bool getRedraw()
+        { return mRedraw; }
+
     protected:
         int SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
                                SDL_Surface *dst, SDL_Rect *dstrect);
@@ -265,6 +271,7 @@ class Graphics : public gcn::SDLGraphics
         bool mFullscreen;
         bool mHWAccel;
         BlitMode mBlitMode;
+        bool mRedraw;
 };
 
 extern Graphics *graphics;

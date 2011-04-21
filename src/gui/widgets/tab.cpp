@@ -190,7 +190,8 @@ void Tab::draw(gcn::Graphics *graphics)
     updateAlpha();
 
     // draw tab
-    if (mRedraw || mode != mMode)
+    if (mRedraw || mode != mMode
+        || static_cast<Graphics*>(graphics)->getRedraw())
     {
         mMode = mode;
         mRedraw = false;
