@@ -500,7 +500,6 @@ private:
 
 class NavigationTab : public SocialTab
 {
-
 public:
     NavigationTab()
     {
@@ -768,6 +767,141 @@ protected:
 };
 
 
+class AttackTab : public SocialTab
+{
+public:
+    AttackTab()
+    {
+        mBeings = new BeingsListModal();
+
+        mList = new AvatarListBox(mBeings);
+        mScroll = new ScrollArea(mList);
+
+        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+
+        setCaption(_("Atk"));
+    }
+
+    ~AttackTab()
+    {
+        delete mList;
+        mList = 0;
+        delete mScroll;
+        mScroll = 0;
+        delete mBeings;
+        mBeings = 0;
+    }
+
+    void invite()
+    {
+    }
+
+    void leave()
+    {
+    }
+
+    void updateList()
+    {
+        if (!socialWindow || !player_node)
+            return;
+
+        std::vector<Avatar*> *avatars = mBeings->getMembers();
+
+        std::list<std::string> mobs = player_node->getAttackMobs();
+        std::list<std::string>::iterator i = mobs.begin();
+
+        std::vector<Avatar*>::iterator ia = avatars->begin();
+
+        while (ia != avatars->end())
+        {
+            delete *ia;
+            ++ ia;
+        }
+
+        avatars->clear();
+        Avatar *ava = new Avatar(_("Selected mobs"));
+        ava->setOnline(false);
+        ava->setLevel(-1);
+        ava->setType(MapItem::SEPARATOR);
+        ava->setX(0);
+        ava->setY(0);
+        avatars->push_back(ava);
+
+        while (i != mobs.end())
+        {
+            std::string name;
+            int level = -1;
+            if (*i == "")
+            {
+                name = _("(default)");
+                level = 0;
+            }
+            else
+            {
+                name = *i;
+            }
+            Avatar *ava = new Avatar(name);
+            ava->setOnline(true);
+            ava->setLevel(level);
+            ava->setType(MapItem::MONSTER);
+            ava->setX(0);
+            ava->setY(0);
+            avatars->push_back(ava);
+
+            ++ i;
+        }
+
+        ava = new Avatar(_("Ignore mobs"));
+        ava->setOnline(false);
+        ava->setLevel(-1);
+        ava->setType(MapItem::SEPARATOR);
+        ava->setX(0);
+        ava->setY(0);
+        avatars->push_back(ava);
+
+        mobs = player_node->getIgnoreAttackMobs();
+        i = mobs.begin();
+
+        while (i != mobs.end())
+        {
+            std::string name;
+            int level = -1;
+            if (*i == "")
+            {
+                name = _("(default)");
+                level = 0;
+            }
+            else
+            {
+                name = *i;
+            }
+            Avatar *ava = new Avatar(name);
+            ava->setOnline(false);
+            ava->setLevel(level);
+            ava->setType(MapItem::MONSTER);
+            ava->setX(0);
+            ava->setY(0);
+            avatars->push_back(ava);
+
+            ++ i;
+        }
+
+    }
+
+    void updateAvatar(std::string name _UNUSED_)
+    {
+    }
+
+    void resetDamage(std::string name _UNUSED_)
+    {
+    }
+
+private:
+    BeingsListModal *mBeings;
+
+};
+
 class CreatePopup : public Popup, public LinkHandler
 {
 public:
@@ -866,6 +1000,16 @@ SocialWindow::SocialWindow() :
     mNavigation = new NavigationTab();
     mTabs->addTab(mNavigation, mNavigation->mScroll);
 
+    if (config.getBoolValue("enableAttackFilter"))
+    {
+        mAttackFilter = new AttackTab();
+        mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
+    }
+    else
+    {
+        mAttackFilter = 0;
+    }
+
     if (player_node && player_node->getParty())
         addTab(player_node->getParty());
 
@@ -899,6 +1043,10 @@ SocialWindow::~SocialWindow()
     mCreatePopup = 0;
     delete mPlayers;
     mPlayers = 0;
+    delete mNavigation;
+    mNavigation = 0;
+    delete mAttackFilter;
+    mAttackFilter = 0;
 }
 
 bool SocialWindow::addTab(Guild *guild)
@@ -1204,7 +1352,7 @@ void SocialWindow::updateActiveList()
 void SocialWindow::logic()
 {
     unsigned int nowTime = cur_time;
-    if (nowTime - mLastUpdateTime > 1 && mNeedUpdate)
+    if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
         mPlayers->updateList();
         mNeedUpdate = false;
@@ -1304,4 +1452,10 @@ void SocialWindow::prevTab()
     tab--;
 
     mTabs->setSelectedTab(tab);
+}
+
+void SocialWindow::updateAttackFilter()
+{
+    if (mAttackFilter)
+        mAttackFilter->updateList();
 }

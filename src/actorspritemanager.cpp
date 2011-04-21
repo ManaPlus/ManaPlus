@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "localplayer.h"
 #include "log.h"
+#include "main.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
 
@@ -99,6 +100,7 @@ class SortBeingFunctor
                 return being1->getDistance() < being2->getDistance();
 
             int d1, d2;
+#ifdef MANASERV_SUPPORT
             if (Net::getNetworkType() == ServerInfo::MANASERV)
             {
                 const Vector &pos1 = being1->getPosition();
@@ -109,6 +111,7 @@ class SortBeingFunctor
                     + abs((static_cast<int>(pos2.y)) - y);
             }
             else
+#endif
             {
                 d1 = abs(being1->getTileX() - x) + abs(being1->getTileY() - y);
                 d2 = abs(being2->getTileX() - x) + abs(being2->getTileY() - y);
@@ -116,9 +119,28 @@ class SortBeingFunctor
 
             if (d1 != d2)
                 return d1 < d2;
+            if (beings)
+            {
+                int w1 = defaultIndex;
+                int w2 = defaultIndex;
+                std::map<std::string, int>::iterator it1
+                    = beings->find(being1->getName());
+                std::map<std::string, int>::iterator it2
+                    = beings->find(being2->getName());
+                if (it1 != beings->end())
+                    w1 = (*it1).second;
+                if (it2 != beings->end())
+                    w2 = (*it2).second;
+
+                if (w1 != w2)
+                    return w1 < w2;
+            }
+
             return (being1->getName() < being2->getName());
         }
         int x, y;
+        std::map<std::string, int> *beings;
+        int defaultIndex;
 
 } beingSorter;
 
@@ -654,11 +676,30 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         return 0;
 
     Being *closestBeing = 0;
+    std::set<std::string> attackMobs;
+    std::set<std::string> ignoreAttackMobs;
+    std::map<std::string, int> mobsMap;
+    int defaultIndex = 10000;
 
     maxDist = maxDist * maxDist;
 
     bool cycleSelect = (mCyclePlayers && type == Being::PLAYER)
         || (mCycleMonsters && type == Being::MONSTER);
+
+    bool filtered = config.getBoolValue("enableAttackFilter");
+    bool ignoreDefault = false;
+    if (filtered)
+    {
+        attackMobs = player_node->getAttackMobsSet();
+        ignoreAttackMobs = player_node->getIgnoreAttackMobsSet();
+        mobsMap = player_node->getAttackMobsMap();
+        beingSorter.beings = &mobsMap;
+        if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
+            ignoreDefault = true;
+        std::map<std::string, int>::iterator itr = mobsMap.find("");
+        if (itr != mobsMap.end())
+            defaultIndex = (*itr).second;
+    }
 
     if (cycleSelect)
     {
@@ -676,6 +717,19 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 
             Being *being = static_cast<Being*>(*i);
 
+            if (filtered)
+            {
+                if (ignoreAttackMobs.find(being->getName())
+                    != ignoreAttackMobs.end())
+                {
+                    continue;
+                }
+                if (ignoreDefault && attackMobs.find(being->getName())
+                    == attackMobs.end())
+                {
+                    continue;
+                }
+            }
             if (validateBeing(aroundBeing, being, type, 0, maxDist))
             {
                 if (being != excluded)
@@ -689,7 +743,18 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 
         beingSorter.x = x;
         beingSorter.y = y;
+        if (filtered)
+        {
+            beingSorter.beings = &mobsMap;
+            beingSorter.defaultIndex = defaultIndex;
+        }
+        else
+        {
+            beingSorter.beings = 0;
+        }
         sort(sortedBeings.begin(), sortedBeings.end(), beingSorter);
+        if (filtered)
+            beingSorter.beings = 0;
 
         if (player_node->getTarget() == NULL)
         {
@@ -725,10 +790,26 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
             }
             Being *being = static_cast<Being*>(*i);
 
+            if (filtered)
+            {
+                if (ignoreAttackMobs.find(being->getName())
+                    != ignoreAttackMobs.end())
+                {
+                    continue;
+                }
+                if (ignoreDefault && attackMobs.find(being->getName())
+                    == attackMobs.end())
+                {
+                    continue;
+                }
+            }
+
 //            Being *being = (*i);
 
             bool valid = validateBeing(aroundBeing, being, type, excluded, 50);
             int d = being->getDistance();
+//            logger->log("dist: %d", dist);
+//            logger->log("name: %s, %d, %d", being->getName().c_str(), (int)valid, d);
             if (being->getType() != Being::MONSTER
                 || !mTargetOnlyReachable)
             {   // if distance not calculated, use old distance
@@ -738,16 +819,31 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 
 //            logger->log("being name:" + being->getName());
 //            logger->log("d:" + toString(d));
-//            logger->log("valid:" + toString(valid));
+//            logger->log("valid:" + toString(valid))
 
-            if (valid && (d < dist || closestBeing == 0))
+            if (valid && (d <= dist || closestBeing == 0))
             {
-//            if ((being->getType() == type || type == Being::UNKNOWN)
-//                    && (d < dist || closestBeing == NULL)   // it is closer
-//                    && (being->mAction != Being::DEAD       // no dead beings
-//                    || (config.getValue("targetDeadPlayers", false) && type == Being::PLAYER))
-//                    && being != aroundBeing)
-//            {
+                if (closestBeing && filtered && d == dist)
+                {
+                    int w1 = defaultIndex;
+                    int w2 = defaultIndex;
+                    std::map<std::string, int>::iterator it1
+                        = mobsMap.find(closestBeing->getName());
+                    std::map<std::string, int>::iterator it2
+                        = mobsMap.find(being->getName());
+                    if (it1 != mobsMap.end())
+                        w1 = (*it1).second;
+                    if (it2 != mobsMap.end())
+                        w2 = (*it2).second;
+
+                    if (w2 < w1)
+                    {
+                        dist = d;
+                        closestBeing = being;
+                    }
+                    continue;
+                }
+
                 dist = d;
                 closestBeing = being;
             }

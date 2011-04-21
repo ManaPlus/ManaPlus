@@ -114,10 +114,13 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
         if (!a)
             continue;
 
-        // Draw online status
-        Image *icon = a->getOnline() ? onlineIcon : offlineIcon;
-        if (icon)
-            graphics->drawImage(icon, 2, y + 1);
+        if (a->getType() != MapItem::SEPARATOR)
+        {
+            // Draw online status
+            Image *icon = a->getOnline() ? onlineIcon : offlineIcon;
+            if (icon)
+                graphics->drawImage(icon, 2, y + 1);
+        }
 
         if (a->getDisplayBold())
             graphics->setFont(boldFont);
@@ -314,6 +317,20 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             {
                 viewport->showPlayerPopup(
                     model->getAvatarAt(selected)->getName());
+            }
+        }
+        else if (ava->getType() == MapItem::MONSTER)
+        {
+            if (model->getAvatarAt(selected)->getLevel() == 0)
+            {
+                viewport->showAttackMonsterPopup("",
+                    model->getAvatarAt(selected)->getOnline());
+            }
+            else
+            {
+                viewport->showAttackMonsterPopup(
+                    model->getAvatarAt(selected)->getName(),
+                    model->getAvatarAt(selected)->getOnline());
             }
         }
         else

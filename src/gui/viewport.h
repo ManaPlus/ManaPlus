@@ -160,6 +160,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
 
         void showSpellPopup(TextCommand *cmd);
 
+        void showAttackMonsterPopup(std::string name, bool isAttack);
+
         /**
          * Shows the related popup menu when right click on the chat
          * at the specified mouse coordinates.

@@ -246,7 +246,32 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 mBrowserBox->addRow(_("@@attack|Attack@@"));
 
                 if (player_node->isGM())
+                {
+                    mBrowserBox->addRow("##3---");
                     mBrowserBox->addRow(_("@@admin-kick|Kick@@"));
+                }
+
+                if (config.getBoolValue("enableAttackFilter"))
+                {
+                    mBrowserBox->addRow("##3---");
+                    if (player_node->isInAttackList(name))
+                    {
+                        mBrowserBox->addRow(
+                            _("@@remove attack|Remove from attack list@@"));
+                    }
+                    else if (player_node->isInIgnoreAttackList(name))
+                    {
+                        mBrowserBox->addRow(
+                            _("@@remove attack|Remove from ignore list@@"));
+                    }
+                    else
+                    {
+                        mBrowserBox->addRow(
+                            _("@@add attack|Add to attack list@@"));
+                        mBrowserBox->addRow(
+                            _("@@add attack ignore|Add to ignore list@@"));
+                    }
+                }
             }
             break;
 
@@ -1122,6 +1147,120 @@ void PopupMenu::handleLink(const std::string &link,
     {
         mTab->setNoAway(false);
     }
+    else if (link == "remove attack" && being)
+    {
+        if (player_node && being->getType() == Being::MONSTER)
+        {
+            player_node->removeAttackMob(being->getName());
+            if (socialWindow)
+                socialWindow->updateAttackFilter();
+        }
+    }
+    else if (link == "add attack" && being)
+    {
+        if (player_node && being->getType() == Being::MONSTER)
+        {
+            player_node->addAttackMob(being->getName());
+            if (socialWindow)
+                socialWindow->updateAttackFilter();
+        }
+    }
+    else if (link == "add attack ignore" && being)
+    {
+        if (player_node && being->getType() == Being::MONSTER)
+        {
+            player_node->addIgnoreAttackMob(being->getName());
+            if (socialWindow)
+                socialWindow->updateAttackFilter();
+        }
+    }
+    else if (link == "attack moveup")
+    {
+        if (player_node)
+        {
+            int idx = player_node->getAttackMobIndex(mNick);
+            if (idx > 0)
+            {
+                std::list<std::string> mobs = player_node->getAttackMobs();
+                std::list<std::string>::iterator it = mobs.begin();
+                std::list<std::string>::iterator it2 = mobs.begin();
+                while (it != mobs.end())
+                {
+                    if (*it == mNick)
+                    {
+                        -- it2;
+                        mobs.splice(it2, mobs, it);
+                        player_node->setAttackMobs(mobs);
+                        player_node->rebuildAttackMobs();
+                        break;
+                    }
+                    ++ it;
+                    ++ it2;
+                }
+
+                if (socialWindow)
+                    socialWindow->updateAttackFilter();
+            }
+        }
+    }
+    else if (link == "attack movedown")
+    {
+        if (player_node)
+        {
+            int idx = player_node->getAttackMobIndex(mNick);
+            int size = player_node->getAttackMobsSize();
+            if (idx + 1 < size)
+            {
+                std::list<std::string> mobs = player_node->getAttackMobs();
+                std::list<std::string>::iterator it = mobs.begin();
+                std::list<std::string>::iterator it2 = mobs.begin();
+                while (it != mobs.end())
+                {
+                    if (*it == mNick)
+                    {
+                        ++ it2;
+                        if (it2 == mobs.end())
+                            break;
+
+                        mobs.splice(it, mobs, it2);
+                        player_node->setAttackMobs(mobs);
+                        player_node->rebuildAttackMobs();
+                        break;
+                    }
+                    ++ it;
+                    ++ it2;
+                }
+
+                if (socialWindow)
+                    socialWindow->updateAttackFilter();
+            }
+        }
+    }
+    else if (link == "attack remove")
+    {
+        if (player_node)
+        {
+            if (mNick.empty())
+            {
+                if (player_node->isInAttackList(mNick))
+                {
+                    player_node->removeAttackMob(mNick);
+                    player_node->addIgnoreAttackMob(mNick);
+                }
+                else
+                {
+                    player_node->removeAttackMob(mNick);
+                    player_node->addAttackMob(mNick);
+                }
+            }
+            else
+            {
+                player_node->removeAttackMob(mNick);
+            }
+            if (socialWindow)
+                socialWindow->updateAttackFilter();
+        }
+    }
     else if (link == "guild-pos" && !mNick.empty())
     {
         showChangePos(getX(), getY());
@@ -1451,6 +1590,49 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
                 bar->getActionEventId().c_str(), _("Show"),
                 bar->getId().c_str()));
         }
+    }
+
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
+                                       bool isAttack)
+{
+    if (!player_node)
+        return;
+
+    mNick = name;
+
+    mBrowserBox->clearRows();
+
+    if (name.empty())
+        mBrowserBox->addRow(_("(default)"));
+    else
+        mBrowserBox->addRow(name);
+    if (isAttack)
+    {
+        int idx = player_node->getAttackMobIndex(name);
+        int size = player_node->getAttackMobsSize();
+        if (idx > 0)
+        {
+            mBrowserBox->addRow(strprintf(
+                "@@attack moveup|%s@@", _("Move up")));
+        }
+        if (idx + 1 < size)
+        {
+            mBrowserBox->addRow(strprintf(
+                "@@attack movedown|%s@@", _("Move down")));
+        }
+        mBrowserBox->addRow(strprintf(
+            "@@attack remove|%s@@", _("Remove")));
+    }
+    else
+    {
+        mBrowserBox->addRow(strprintf(
+            "@@attack remove|%s@@", _("Remove")));
     }
 
     mBrowserBox->addRow("##3---");

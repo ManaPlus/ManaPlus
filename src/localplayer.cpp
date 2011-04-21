@@ -179,6 +179,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("showJobExp", this);
     setShowName(config.getBoolValue("showownname"));
     beingInfoCache.clear();
+    addAttackMob("");
 }
 
 LocalPlayer::~LocalPlayer()
@@ -2568,12 +2569,19 @@ bool LocalPlayer::isReachable(Being *being, int maxCost)
     if (being->isReachable() == Being::REACH_NO)
         return false;
 
-    if (being->getTileX() - 1 <= getTileX()
+    if (being->getTileX() == getTileX()
+        && being->getTileY() == getTileY())
+    {
+        being->setDistance(0);
+        being->setIsReachable(Being::REACH_YES);
+        return true;
+    }
+    else if (being->getTileX() - 1 <= getTileX()
         && being->getTileX() + 1 >= getTileX()
         && being->getTileY() - 1 <= getTileY()
         && being->getTileY() + 1 >= getTileY())
     {
-        being->setDistance(0);
+        being->setDistance(1);
         being->setIsReachable(Being::REACH_YES);
         return true;
     }
@@ -3772,6 +3780,69 @@ void LocalPlayer::checkNewName(Being *being)
         sound.playGuiSfx("system/newmessage.ogg");
         mWaitFor = "";
     }
+}
+
+void LocalPlayer::removeAttackMob(const std::string &name)
+{
+    mAttackMobs.remove(name);
+    mIgnoreAttackMobs.remove(name);
+    mAttackMobsSet.erase(name);
+    mIgnoreAttackMobsSet.erase(name);
+    rebuildAttackMobs();
+}
+
+void LocalPlayer::addAttackMob(std::string name)
+{
+    int size = getAttackMobsSize();
+    if (size > 0)
+    {
+        int idx = getAttackMobIndex("");
+        if (idx + 1 == size)
+        {
+            std::list<std::string>::iterator itr = mAttackMobs.end();
+            -- itr;
+            mAttackMobs.insert(itr, name);
+        }
+        else
+        {
+            mAttackMobs.push_back(name);
+        }
+    }
+    else
+    {
+        mAttackMobs.push_back(name);
+    }
+    mAttackMobsSet.insert(name);
+    rebuildAttackMobs();
+}
+
+void LocalPlayer::addIgnoreAttackMob(std::string name)
+{
+    mIgnoreAttackMobs.push_back(name);
+    mIgnoreAttackMobsSet.insert(name);
+    rebuildAttackMobs();
+}
+
+void LocalPlayer::rebuildAttackMobs()
+{
+    mAttackMobsMap.clear();
+    std::list<std::string>::iterator i = mAttackMobs.begin();
+    int cnt = 0;
+    while (i != mAttackMobs.end())
+    {
+        mAttackMobsMap[*i] = cnt;
+        ++ i;
+        ++ cnt;
+    }
+}
+
+int LocalPlayer::getAttackMobIndex(std::string name)
+{
+    std::map<std::string, int>::iterator i = mAttackMobsMap.find(name);
+    if (i == mAttackMobsMap.end())
+        return -1;
+
+    return (*i).second;
 }
 
 void AwayListener::action(const gcn::ActionEvent &event)

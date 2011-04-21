@@ -579,7 +579,9 @@ class MapItem
             ARROW_LEFT = 6,
             ARROW_RIGHT = 7,
             PORTAL = 8,
-            MUSIC = 9
+            MUSIC = 9,
+            MONSTER = 10,
+            SEPARATOR = 11
         };
 
         MapItem();

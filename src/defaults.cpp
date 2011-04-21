@@ -196,6 +196,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showBeingPopup", true);
     AddDEF(configData, "showExtMinimaps", false);
     AddDEF(configData, "hideChatInput", true);
+    AddDEF(configData, "enableAttackFilter", true);
     return configData;
 }
 

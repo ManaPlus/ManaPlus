@@ -66,6 +66,7 @@
 #define ACTION_SHOW_JOB_EXP "show job exp"
 #define ACTION_SHOW_BEING_POPUP "show being popup"
 #define ACTION_SHOW_EXTENDED_MINIMAPS "show extended minimaps"
+#define ACTION_ENABLE_ATTACK_FILTER "attack filter"
 
 Setup_Other::Setup_Other():
     mShowMonstersTakedDamage(config.getBoolValue("showMonstersTakedDamage")),
@@ -94,6 +95,7 @@ Setup_Other::Setup_Other():
     mShowJobExp(config.getBoolValue("showJobExp")),
     mShowBeingPopup(config.getBoolValue("showBeingPopup")),
     mShowExtMinimaps(config.getBoolValue("showExtMinimaps")),
+    mEnableAttackFilter(config.getBoolValue("enableAttackFilter")),
     mEditDialog(0)
 {
     setName(_("Misc"));
@@ -187,6 +189,9 @@ Setup_Other::Setup_Other():
     mShowExtMinimapsCheckBox = new CheckBox(_("Show extended minimaps"),
         mShowExtMinimaps, this, ACTION_SHOW_EXTENDED_MINIMAPS);
 
+    mEnableAttackFilterCheckBox = new CheckBox(_("Enable attack filter"),
+        mEnableAttackFilter, this, ACTION_ENABLE_ATTACK_FILTER);
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -205,6 +210,7 @@ Setup_Other::Setup_Other():
     place(12, 8, mShowJobExpCheckBox, 10);
     place(12, 9, mShowBeingPopupCheckBox, 10);
     place(12, 10, mShowExtMinimapsCheckBox, 10);
+    place(12, 11, mEnableAttackFilterCheckBox, 10);
     place(0, 3, mFloorItemsHighlightCheckBox, 12);
     place(0, 4, mHighlightAttackRangeCheckBox, 12);
     place(0, 5, mHighlightMonsterAttackRangeCheckBox, 12);
@@ -349,6 +355,10 @@ void Setup_Other::action(const gcn::ActionEvent &event)
     {
         mShowExtMinimaps = mShowExtMinimapsCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_ENABLE_ATTACK_FILTER)
+    {
+        mEnableAttackFilter = mEnableAttackFilterCheckBox->isSelected();
+    }
 }
 
 void Setup_Other::cancel()
@@ -430,6 +440,9 @@ void Setup_Other::cancel()
 
     mShowExtMinimaps = config.getBoolValue("showExtMinimaps");
     mShowExtMinimapsCheckBox->setSelected(mShowExtMinimaps);
+
+    mEnableAttackFilter = config.getBoolValue("enableAttackFilter");
+    mEnableAttackFilterCheckBox->setSelected(mEnableAttackFilter);
 }
 
 void Setup_Other::apply()
@@ -460,6 +473,7 @@ void Setup_Other::apply()
     config.setValue("showJobExp", mShowJobExp);
     config.setValue("showBeingPopup", mShowBeingPopup);
     config.setValue("showExtMinimaps", mShowExtMinimaps);
+    config.setValue("enableAttackFilter", mEnableAttackFilter);
     logger->setDebugLog(mDebugLog);
 }
 

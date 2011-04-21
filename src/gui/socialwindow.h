@@ -36,6 +36,7 @@
 #define _UNUSED_
 #endif
 
+class AttackTab;
 class Button;
 class ConfirmDialog;
 class CreatePopup;
@@ -120,6 +121,8 @@ public:
 
     void selectPortal(unsigned num);
 
+    void updateAttackFilter();
+
 protected:
     friend class SocialTab;
 
@@ -139,6 +142,7 @@ protected:
     typedef std::map<Party*, SocialTab*> PartyMap;
     PartyMap mParties;
 
+    SocialTab *mAttackFilter;
     SocialTab *mPlayers;
     SocialTab *mNavigation;
 

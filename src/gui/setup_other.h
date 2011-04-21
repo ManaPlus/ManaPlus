@@ -122,6 +122,9 @@ class Setup_Other : public SetupTab, public gcn::ActionListener
         gcn::CheckBox *mShowExtMinimapsCheckBox;
         bool mShowExtMinimaps;
 
+        gcn::CheckBox *mEnableAttackFilterCheckBox;
+        bool mEnableAttackFilter;
+
         EditDialog *mEditDialog;
 };
 

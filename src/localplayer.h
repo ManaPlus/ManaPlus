@@ -450,6 +450,48 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void checkNewName(Being *being);
 
+        bool isInAttackList(const std::string &name)
+        { return mAttackMobsSet.find(name) != mAttackMobsSet.end(); }
+
+        bool isInIgnoreAttackList(const std::string &name)
+        { return mIgnoreAttackMobsSet.find(name)
+              != mIgnoreAttackMobsSet.end(); }
+
+        bool isInAttackOrIgnoreList(const std::string &name)
+        { return mAttackMobsSet.find(name) != mAttackMobsSet.end() ||
+              mIgnoreAttackMobsSet.find(name) != mIgnoreAttackMobsSet.end(); }
+
+        void removeAttackMob(const std::string &name);
+
+        void addAttackMob(std::string name);
+
+        void addIgnoreAttackMob(std::string name);
+
+        std::list<std::string> getAttackMobs()
+        { return mAttackMobs; }
+
+        void setAttackMobs(std::list<std::string> mobs)
+        { mAttackMobs = mobs; }
+
+        int getAttackMobsSize()
+        { return mAttackMobs.size(); }
+
+        std::list<std::string> getIgnoreAttackMobs()
+        { return mIgnoreAttackMobs; }
+
+        std::set<std::string> getAttackMobsSet()
+        { return mAttackMobsSet; }
+
+        std::set<std::string> getIgnoreAttackMobsSet()
+        { return mIgnoreAttackMobsSet; }
+
+        void rebuildAttackMobs();
+
+        std::map<std::string, int> getAttackMobsMap()
+        { return mAttackMobsMap; }
+
+        int getAttackMobIndex(std::string name);
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -576,6 +618,11 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mServerAttack;
         std::string mLastHitFrom;
         std::string mWaitFor;
+        std::list<std::string> mAttackMobs;
+        std::list<std::string> mIgnoreAttackMobs;
+        std::set<std::string> mAttackMobsSet;
+        std::set<std::string> mIgnoreAttackMobsSet;
+        std::map<std::string, int> mAttackMobsMap;
 };
 
 extern LocalPlayer *player_node;
