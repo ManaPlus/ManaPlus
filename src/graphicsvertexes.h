@@ -73,19 +73,19 @@ class OpenGLGraphicsVertexes
 
         GLint *switchIntTexArray();
 
-        std::vector<GLfloat*> &getFloatTexPool()
-        { return mFloatTexPool; }
+        std::vector<GLfloat*> *getFloatTexPool()
+        { return &mFloatTexPool; }
 
-        std::vector<GLint*> &getIntVertPool()
-        { return mIntVertPool; }
+        std::vector<GLint*> *getIntVertPool()
+        { return &mIntVertPool; }
 
-        std::vector<GLint*> &getIntTexPool()
-        { return mIntTexPool; }
+        std::vector<GLint*> *getIntTexPool()
+        { return &mIntTexPool; }
 
         void switchVp(int n);
 
-        std::vector<int> &getVp()
-        { return mVp; }
+        std::vector<int> *getVp()
+        { return &mVp; }
 
         void init();
 

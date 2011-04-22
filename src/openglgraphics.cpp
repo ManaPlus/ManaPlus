@@ -628,21 +628,21 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
     bindTexture(Image::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
-    std::vector<GLint*> &intVertPool = ogl->getIntVertPool();
+    std::vector<GLint*> *intVertPool = ogl->getIntVertPool();
     std::vector<GLint*>::iterator iv;
-    std::vector<int> &vp = ogl->getVp();
+    std::vector<int> *vp = ogl->getVp();
     std::vector<int>::iterator ivp;
 
     // Draw a set of textured rectangles
     if (image->mTextureType == GL_TEXTURE_2D)
     {
-        std::vector<GLfloat*> &floatTexPool = ogl->getFloatTexPool();
+        std::vector<GLfloat*> *floatTexPool = ogl->getFloatTexPool();
         std::vector<GLfloat*>::iterator ft;
 
-        for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
-             ivp = vp.begin();
-             iv != intVertPool.end(), ft != floatTexPool.end(),
-             ivp != vp.end();
+        for (iv = intVertPool->begin(), ft = floatTexPool->begin(),
+             ivp = vp->begin();
+             iv != intVertPool->end(), ft != floatTexPool->end(),
+             ivp != vp->end();
              ++ iv, ++ ft, ++ ivp)
         {
             drawQuadArrayfi(*iv, *ft, *ivp);
@@ -650,13 +650,13 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
     }
     else
     {
-        std::vector<GLint*> &intTexPool = ogl->getIntTexPool();
+        std::vector<GLint*> *intTexPool = ogl->getIntTexPool();
         std::vector<GLint*>::iterator it;
 
-        for (iv = intVertPool.begin(), it = intTexPool.begin(),
-             ivp = vp.begin();
-             iv != intVertPool.end(), it != intTexPool.end(),
-             ivp != vp.end();
+        for (iv = intVertPool->begin(), it = intTexPool->begin(),
+             ivp = vp->begin();
+             iv != intVertPool->end(), it != intTexPool->end(),
+             ivp != vp->end();
              ++ iv, ++ it, ++ ivp)
         {
             drawQuadArrayii(*iv, *it, *ivp);
