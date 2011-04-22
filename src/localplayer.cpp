@@ -2577,9 +2577,9 @@ bool LocalPlayer::isReachable(Being *being, int maxCost)
         return true;
     }
     else if (being->getTileX() - 1 <= getTileX()
-        && being->getTileX() + 1 >= getTileX()
-        && being->getTileY() - 1 <= getTileY()
-        && being->getTileY() + 1 >= getTileY())
+             && being->getTileX() + 1 >= getTileX()
+             && being->getTileY() - 1 <= getTileY()
+             && being->getTileY() + 1 >= getTileY())
     {
         being->setDistance(1);
         being->setIsReachable(Being::REACH_YES);

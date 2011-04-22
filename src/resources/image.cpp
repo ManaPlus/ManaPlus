@@ -555,7 +555,7 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
         for (int i = 0; i < tmpImage->w * tmpImage->h; ++ i)
         {
             Uint8 a;
-            if(fmt->Amask)
+            if (fmt->Amask)
             {
                 unsigned v = ((static_cast<Uint32*>(tmpImage->pixels))[i]
                     & fmt->Amask) >> fmt->Ashift;

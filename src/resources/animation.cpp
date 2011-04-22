@@ -32,8 +32,8 @@ Animation::Animation():
 void Animation::addFrame(Image *image, int delay, int offsetX, int offsetY,
                          int rand)
 {
-    Frame frame = { image, delay, offsetX, offsetY,
-        rand, Frame::ANIMATION, "" };
+    Frame frame
+        = { image, delay, offsetX, offsetY, rand, Frame::ANIMATION, "" };
     mFrames.push_back(frame);
     mDuration += delay;
 }
