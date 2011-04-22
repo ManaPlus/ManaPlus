@@ -41,7 +41,8 @@ Graphics::Graphics():
     mBpp(0),
     mFullscreen(false),
     mHWAccel(false),
-    mBlitMode(BLIT_NORMAL)
+    mBlitMode(BLIT_NORMAL),
+    mRedraw(false)
 {
 }
 
