@@ -151,7 +151,7 @@ Image* MapLayer::getTile(int x, int y) const
 
 void MapLayer::draw(Graphics *graphics, int startX, int startY,
                     int endX, int endY, int scrollX, int scrollY,
-                    const Actors &actors, int debugFlags) const
+                    const Actors &actors, int debugFlags, int yFix) const
 {
     if (!player_node)
         return;
@@ -193,16 +193,17 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
     for (int y = startY; y < endY; y++)
     {
         const int y32 = y * 32;
+        const int y32s = (y + yFix) * 32;
         const int yWidth = y * mWidth;
 
         // If drawing the fringe layer, make sure all actors above this row of
         // tiles have been drawn
         if (mIsFringeLayer)
         {
-            while (ai != actors.end() && (*ai)->getPixelY() <= y32)
+            while (ai != actors.end() && (*ai)->getPixelY() <= y32s)
             {
                 (*ai)->draw(graphics, -scrollX, -scrollY);
-                ++ai;
+                ++ ai;
             }
         }
 
@@ -242,6 +243,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
             for (int x = startX; x < endX; x++)
             {
                 const int x32 = x * 32;
+
                 const int px1 = x32 - scrollX;
                 const int tilePtr = x + yWidth;
                 int c = 0;
@@ -255,6 +257,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
                         || img->getHeight() <= 32)
                     {
                         int width = 0;
+                        // here need not draw over player position
                         c = getTileDrawWidth(tilePtr, endX - x, width);
 
                         if (!c)
@@ -381,7 +384,9 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mPvp(0),
     mTilesetsIndexed(false),
     mIndexedTilesets(0),
-    mIndexedTilesetsSize(0)
+    mIndexedTilesetsSize(0),
+    mActorFixX(0),
+    mActorFixY(0)
 //    mSpritesUpdated(true)
 {
     const int size = mWidth * mHeight;
@@ -580,7 +585,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                 (*layeri)->draw(graphics,
                                 startX, startY, endX, endY,
                                 scrollX, scrollY,
-                                mActors, mDebugFlags);
+                                mActors, mDebugFlags, mActorFixY);
                 break;
             }
         }
@@ -600,7 +605,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             (*layeri)->draw(graphics,
                             startX, startY, endX, endY,
                             scrollX, scrollY,
-                            mActors, mDebugFlags);
+                            mActors, mDebugFlags, mActorFixY);
         }
     }
 

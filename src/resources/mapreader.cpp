@@ -360,6 +360,10 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
                         map->addRange(objName, MapItem::MUSIC,
                             objX, objY, objW, objH);
                     }
+                    else if (objType == "ACTORSFIX")
+                    {
+                        map->setActorsFix(objX, objY);
+                    }
                     else
                     {
                         logger->log1("   Warning: Unknown object type");

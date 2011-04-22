@@ -159,7 +159,7 @@ class MapLayer: public ConfigListener
                   int endX, int endY,
                   int scrollX, int scrollY,
                   const Actors &actors,
-                  int mDebugFlags) const;
+                  int mDebugFlags, int yFix) const;
 
         bool isFringeLayer()
         { return mIsFringeLayer; }
@@ -437,6 +437,9 @@ class Map : public Properties, public ConfigListener
 
         void clearIndexedTilesets();
 
+        void setActorsFix(int x, int y)
+        { mActorFixX = x; mActorFixY = y; }
+
     protected:
         friend class Actor;
 
@@ -523,6 +526,8 @@ class Map : public Properties, public ConfigListener
         bool mTilesetsIndexed;
         Tileset** mIndexedTilesets;
         int mIndexedTilesetsSize;
+        int mActorFixX;
+        int mActorFixY;
 
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;
