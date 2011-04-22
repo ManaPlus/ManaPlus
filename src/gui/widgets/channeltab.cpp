@@ -103,10 +103,6 @@ bool ChannelTab::handleCommand(const std::string &type,
     {
         Net::getChatHandler()->setChannelTopic(mChannel->getId(), args);
     }
-    else if (type == "topic")
-    {
-        Net::getChatHandler()->setChannelTopic(mChannel->getId(), args);
-    }
     else if (type == "quit")
     {
         Net::getChatHandler()->quitChannel(mChannel->getId());
