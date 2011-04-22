@@ -549,16 +549,35 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
     }
 
     // Figure out whether the image uses its alpha layer
-    for (int i = 0; i < tmpImage->w * tmpImage->h; ++i)
+    if (tmpImage->format->palette == NULL)
     {
-        Uint8 r, g, b, a;
-        SDL_GetRGBA((static_cast<Uint32*>(tmpImage->pixels))[i],
-            tmpImage->format, &r, &g, &b, &a);
+        const SDL_PixelFormat * const fmt = tmpImage->format;
+        for (int i = 0; i < tmpImage->w * tmpImage->h; ++ i)
+        {
+            Uint8 a;
+            if(fmt->Amask)
+            {
+                unsigned v = ((static_cast<Uint32*>(tmpImage->pixels))[i]
+                    & fmt->Amask) >> fmt->Ashift;
+                a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
+            }
+            else
+            {
+                a = SDL_ALPHA_OPAQUE;
+            }
 
-        if (a != 255)
+            if (a != 255)
+                hasAlpha = true;
+
+            alphaChannel[i] = a;
+        }
+    }
+    else
+    {
+        if (SDL_ALPHA_OPAQUE != 255)
             hasAlpha = true;
-
-        alphaChannel[i] = a;
+        for (int i = 0; i < tmpImage->w * tmpImage->h; ++ i)
+            alphaChannel[i] = SDL_ALPHA_OPAQUE;
     }
 
     SDL_Surface *image;
