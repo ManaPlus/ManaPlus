@@ -223,6 +223,9 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int getDebugPath()
         { return mShowDebugPath; }
 
+        void setDebugPath(int n)
+        { mShowDebugPath = n; }
+
         int getCameraMode()
         { return mCameraMode; }
 

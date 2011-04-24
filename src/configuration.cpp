@@ -196,6 +196,30 @@ int Configuration::getIntValue(const std::string &key) const
     return defaultValue;
 }
 
+int Configuration::resetIntValue(const std::string &key)
+{
+    GETLOG();
+    int defaultValue = 0;
+    if (mDefaultsData)
+    {
+        DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+
+        if (itdef != mDefaultsData->end() && itdef->second
+            && itdef->second->getType() == Mana::VariableData::DATA_INT)
+        {
+            defaultValue = (static_cast<Mana::IntData*>(
+            itdef->second))->getData();
+        }
+        else
+        {
+            logger->log("%s: No integer value in registry for key %s",
+                        mConfigPath.c_str(), key.c_str());
+        }
+    }
+    setValue(key, defaultValue);
+    return defaultValue;
+}
+
 std::string Configuration::getStringValue(const std::string &key) const
 {
     GETLOG();
@@ -288,6 +312,31 @@ bool Configuration::getBoolValue(const std::string &key) const
         defaultValue = getBoolFromString(iter->second);
     }
 
+    return defaultValue;
+}
+
+bool Configuration::resetBoolValue(const std::string &key)
+{
+    GETLOG();
+    bool defaultValue = false;
+    if (mDefaultsData)
+    {
+        DefaultsData::const_iterator itdef = mDefaultsData->find(key);
+
+        if (itdef != mDefaultsData->end() && itdef->second
+            && itdef->second->getType() == Mana::VariableData::DATA_BOOL)
+        {
+            defaultValue = (static_cast<Mana::BoolData*>(
+                itdef->second))->getData();
+        }
+        else
+        {
+            logger->log("%s: No boolean value in registry for key %s",
+                        mConfigPath.c_str(), key.c_str());
+        }
+    }
+
+    setValue(key, defaultValue);
     return defaultValue;
 }
 

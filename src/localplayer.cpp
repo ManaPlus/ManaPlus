@@ -3845,6 +3845,32 @@ int LocalPlayer::getAttackMobIndex(std::string name)
     return (*i).second;
 }
 
+void LocalPlayer::resetYellowBar()
+{
+    mInvertDirection = config.resetIntValue("invertMoveDirection");
+    mCrazyMoveType = config.resetIntValue("crazyMoveType");
+    mMoveToTargetType = config.resetIntValue("moveToTargetType");
+    mFollowMode = config.resetIntValue("followMode");
+    mAttackWeaponType = config.resetIntValue("attackWeaponType");
+    mAttackType = config.resetIntValue("attackType");
+    mMagicAttackType = config.resetIntValue("magicAttackType");
+    mQuickDropCounter = config.resetIntValue("quickDropCounter");
+    mPickUpType = config.resetIntValue("pickUpType");
+    if (viewport)
+    {
+        viewport->setDebugPath(0);
+        if (viewport->getCameraMode())
+            viewport->toggleCameraMode();
+    }
+    if (mMap)
+        mMap->setDebugFlags(0);
+    mImitationMode = config.resetIntValue("imitationMode");
+    mDisableGameModifiers = config.resetBoolValue("disableGameModifiers");
+
+    if (miniStatusWindow)
+        miniStatusWindow->updateStatus();
+}
+
 void AwayListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "ok" && player_node && player_node->getAwayMode())

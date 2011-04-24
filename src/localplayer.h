@@ -492,6 +492,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         int getAttackMobIndex(std::string name);
 
+        void resetYellowBar();
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;

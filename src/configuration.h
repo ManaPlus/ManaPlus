@@ -265,6 +265,10 @@ class Configuration : public ConfigurationObject
         inline void setValue(const std::string &key, bool value)
         { setValue(key, value ? "1" : "0"); }
 
+        int resetIntValue(const std::string &key);
+
+        bool resetBoolValue(const std::string &key);
+
         const std::string getConfigPath() const
         { return mConfigPath; }
 

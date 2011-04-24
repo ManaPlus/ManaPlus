@@ -1261,6 +1261,10 @@ void PopupMenu::handleLink(const std::string &link,
                 socialWindow->updateAttackFilter();
         }
     }
+    else if (link == "reset yellow")
+    {
+        player_node->resetYellowBar();
+    }
     else if (link == "guild-pos" && !mNick.empty())
     {
         showChangePos(getX(), getY());
@@ -1539,7 +1543,7 @@ void PopupMenu::showPopup(int x, int y, Button *button)
     mBrowserBox->clearRows();
     std::list <gcn::Button*> names = windowMenu->getButtons();
     std::list <gcn::Button*>::iterator it, it_end;
-    for (it = names.begin(), it_end = names.end(); it != it_end; ++it)
+    for (it = names.begin(), it_end = names.end(); it != it_end; ++ it)
     {
         Button *btn = dynamic_cast<Button*>(*it);
         if (!btn || btn->getActionEventId() == "SET")
@@ -1592,6 +1596,9 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
         }
     }
 
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow(strprintf("@@reset yellow|%s@@",
+        _("Reset yellow bar")));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 

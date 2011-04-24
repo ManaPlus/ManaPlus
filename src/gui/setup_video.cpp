@@ -410,6 +410,8 @@ Setup_Video::Setup_Video():
     mDrawHotKeysCheckBox->addKeyListener(this);
     mDrawPathCheckBox->addKeyListener(this);
     mShowJobCheckBox->addKeyListener(this);
+    mOpenGLDropDown->addActionListener(this);
+
     mAlphaCacheCheckBox->addKeyListener(this);
 
     mSpeechLabel->setCaption(speechModeToString(mSpeechMode));
@@ -815,7 +817,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "opengl")
     {
-        bool isSoftware = mOpenGLDropDown->getSelected();
+        bool isSoftware = (mOpenGLDropDown->getSelected() == 0);
         mAlphaCacheCheckBox->setEnabled(isSoftware);
     }
 }
