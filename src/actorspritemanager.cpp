@@ -686,7 +686,9 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
     bool cycleSelect = (mCyclePlayers && type == Being::PLAYER)
         || (mCycleMonsters && type == Being::MONSTER);
 
-    bool filtered = config.getBoolValue("enableAttackFilter");
+    bool filtered = config.getBoolValue("enableAttackFilter")
+        && type != Being::PLAYER;
+
     bool ignoreDefault = false;
     if (filtered)
     {
