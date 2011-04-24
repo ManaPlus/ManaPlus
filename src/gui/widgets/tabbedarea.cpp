@@ -255,11 +255,13 @@ void TabbedArea::widgetResized(const gcn::Event &event _UNUSED_)
         if (mFollowDownScroll && height != 0)
         {
             gcn::Rectangle rect = w->getDimension();
-            if (rect.height != 0 && rect.height > height)
+            if (rect.height != 0 && rect.height > height + 2)
             {
                 scr = dynamic_cast<ScrollArea*>(w);
                 if (scr && scr->getVerticalScrollAmount()
-                    == scr->getVerticalMaxScroll())
+                    >= scr->getVerticalMaxScroll() - 2
+                    && scr->getVerticalScrollAmount()
+                    <= scr->getVerticalMaxScroll() + 2)
                 {
                     newScroll = scr->getVerticalScrollAmount()
                         + rect.height - height;
