@@ -220,15 +220,23 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
                 if (player_node)
                 {
-                    /* Scroll if neccessary */
-                    if (!sameMap
-                        || (abs(x - player_node->getTileX())
-                        > MAP_TELEPORT_SCROLL_DISTANCE)
-                        || (abs(y - player_node->getTileY())
-                        > MAP_TELEPORT_SCROLL_DISTANCE))
+                    Map *map = game->getCurrentMap();
+                    if (map)
                     {
-                        Map *map = game->getCurrentMap();
-                        if (map)
+                        if (x >= map->getWidth())
+                            x = map->getWidth() - 1;
+                        if (y >= map->getHeight())
+                            y = map->getHeight() - 1;
+                        if (x < 0)
+                            x = 0;
+                        if (y < 0)
+                            y = 0;
+                        /* Scroll if neccessary */
+                        if (!sameMap
+                            || (abs(x - player_node->getTileX())
+                            > MAP_TELEPORT_SCROLL_DISTANCE)
+                            || (abs(y - player_node->getTileY())
+                            > MAP_TELEPORT_SCROLL_DISTANCE))
                         {
                             scrollOffsetX = static_cast<float>((x
                                 - player_node->getTileX())
