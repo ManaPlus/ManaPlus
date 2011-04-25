@@ -63,8 +63,12 @@ FloorItem::FloorItem(int id,
         //       these translations aren't necessary anymore. The sprites know
         //       best where their base point should be.
         mPos.x = static_cast<float>(x * map->getTileWidth() + 16);
+#ifdef MANASERV_SUPPORT
         mPos.y = static_cast<float>(y * map->getTileHeight() +
                  ((Net::getNetworkType() == ServerInfo::MANASERV) ? 15 : 32));
+#else
+        mPos.y = static_cast<float>(y * map->getTileHeight() + 32);
+#endif
     }
     else
     {

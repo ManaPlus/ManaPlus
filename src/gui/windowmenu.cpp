@@ -79,11 +79,13 @@ WindowMenu::WindowMenu():
                   KeyboardConfig::KEY_WINDOW_SKILL);
     }
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         addButton(N_("SPE"), _("Specials"), x, h,
                   KeyboardConfig::KEY_NO_VALUE);
     }
+#endif
 
     addButton(N_("SOC"), _("Social"), x, h, KeyboardConfig::KEY_WINDOW_SOCIAL);
     addButton(N_("SH"), _("Shortcuts"), x, h,

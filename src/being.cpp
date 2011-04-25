@@ -893,6 +893,7 @@ void Being::setAction(Action action, int attackType _UNUSED_)
                 currentAction = mInfo->getAttack(attackType)->action;
                 reset();
 
+#ifdef MANASERV_SUPPORT
                 if (Net::getNetworkType() == ServerInfo::MANASERV
                     && mInfo->getAttack(attackType))
                 {
@@ -920,6 +921,7 @@ void Being::setAction(Action action, int attackType _UNUSED_)
                         }
                     }
                 }
+#endif
             }
 
             break;
@@ -1082,6 +1084,7 @@ void Being::logic()
     }
 
     int frameCount = static_cast<int>(getFrameCount());
+#ifdef MANASERV_SUPPORT
     if ((Net::getNetworkType() == ServerInfo::MANASERV) && (mAction != DEAD))
     {
         const Vector dest = (mPath.empty()) ?
@@ -1163,9 +1166,10 @@ void Being::logic()
             setAction(STAND);
         }
     }
-    else if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    else
+#endif
+    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
     {
-
         switch (mAction)
         {
             case STAND:

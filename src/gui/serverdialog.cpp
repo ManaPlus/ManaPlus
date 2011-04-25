@@ -63,8 +63,10 @@ static std::string serverTypeToString(ServerInfo::Type type)
     {
         case ServerInfo::TMWATHENA:
             return "TmwAthena";
+#ifdef MANASERV_SUPPORT
         case ServerInfo::MANASERV:
             return "ManaServ";
+#endif
         default:
         case ServerInfo::UNKNOWN:
             return "";
@@ -79,8 +81,10 @@ static unsigned short defaultPortForServerType(ServerInfo::Type type)
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
             return 6901;
+#ifdef MANASERV_SUPPORT
         case ServerInfo::MANASERV:
             return 9601;
+#endif
     }
 }
 
@@ -390,9 +394,11 @@ void ServerDialog::action(const gcn::ActionEvent &event)
                     case 0:
                         mServerInfo->type = ServerInfo::TMWATHENA;
                         break;
+#ifdef MANASERV_SUPPORT
                     case 1:
                         mServerInfo->type = ServerInfo::MANASERV;
                         break;
+#endif
                     default:
                         mServerInfo->type = ServerInfo::UNKNOWN;
                 }
@@ -478,9 +484,11 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
             default:
                 mTypeField->setSelected(0);
                 break;
+#ifdef MANASERV_SUPPORT
             case ServerInfo::MANASERV:
                 mTypeField->setSelected(1);
                 break;
+#endif
         }
     }
     setFieldsReadOnly(true);

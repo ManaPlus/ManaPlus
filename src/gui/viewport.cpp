@@ -304,6 +304,7 @@ void Viewport::_drawDebugPath(Graphics *graphics)
 
         _drawPath(graphics, debugPath);
     }
+#ifdef MANASERV_SUPPORT
     else if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         const Vector &playerPos = player_node->getPosition();
@@ -330,6 +331,7 @@ void Viewport::_drawDebugPath(Graphics *graphics)
         // But also the one currently walked on.
         _drawPath(graphics, player_node->getPath(), gcn::Color(0, 0, 255));
     }
+#endif
 }
 
 void Viewport::_drawPath(Graphics *graphics, const Path &path,
@@ -353,6 +355,7 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
             }
         }
     }
+#ifdef MANASERV_SUPPORT
     else if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         for (Path::const_iterator i = path.begin(); i != path.end(); ++i)
@@ -369,8 +372,8 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
                     squareX + 4, squareY + 12, gcn::Graphics::CENTER);
             }
         }
-
     }
+#endif
 }
 
 void Viewport::mousePressed(gcn::MouseEvent &event)
@@ -505,6 +508,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
 
     if (mPlayerFollowMouse && !event.isShiftPressed())
     {
+#ifdef MANASERV_SUPPORT
         if (Net::getNetworkType() == ServerInfo::MANASERV)
         {
             if (get_elapsed_time(mLocalWalkTime) >= walkingMouseDelay)
@@ -519,6 +523,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
             }
         }
         else
+#endif
         {
             if (mLocalWalkTime != player_node->getActionTime())
             {

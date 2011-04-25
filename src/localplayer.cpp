@@ -298,6 +298,7 @@ void LocalPlayer::logic()
         {
             // Find whether target is in range
             // TODO: Make this nicer, probably using getPosition() only
+#ifdef MANASERV_SUPPORT
             const int rangeX =
                 (Net::getNetworkType() == ServerInfo::MANASERV) ?
                 static_cast<int>(abs(static_cast<int>(mTarget->getPosition().x
@@ -308,7 +309,12 @@ void LocalPlayer::logic()
                 static_cast<int>(abs(static_cast<int>(mTarget->getPosition().y
                 - getPosition().y))) :
                 static_cast<int>(abs(mTarget->getTileY() - getTileY()));
-
+#else
+            const int rangeX = static_cast<int>(
+                abs(mTarget->getTileX() - getTileX()));
+            const int rangeY = static_cast<int>(
+                abs(mTarget->getTileY() - getTileY()));
+#endif
             const int attackRange = getAttackRange();
             const TargetCursorType targetType = rangeX > attackRange ||
                                                 rangeY > attackRange ?
@@ -889,6 +895,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
     }
     else if (mPickUpType >= 4 && mPickUpType <= 6)
     {
+#ifdef MANASERV_SUPPORT
         if (Net::getNetworkType() == ServerInfo::MANASERV)
         {
             setDestination(item->getPixelX() + 16, item->getPixelY() + 16);
@@ -896,6 +903,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
             mPickUpTarget->addActorSpriteListener(this);
         }
         else
+#endif
         {
             const Vector &playerPos = getPosition();
             Path debugPath = mMap->findPath(
@@ -1028,6 +1036,7 @@ void LocalPlayer::setWalkingDir(unsigned char dir)
 {
     // This function is called by Game::handleInput()
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         // First if player is pressing key for the direction he is already
@@ -1054,6 +1063,7 @@ void LocalPlayer::setWalkingDir(unsigned char dir)
         if (get_elapsed_time(mLocalWalkTime) < walkingKeyboardDelay)
             return;
     }
+#endif
 
     mWalkingDir = dir;
 
@@ -1062,11 +1072,13 @@ void LocalPlayer::setWalkingDir(unsigned char dir)
     {
         startWalking(dir);
     }
+#ifdef MANASERV_SUPPORT
     else if (mAction == MOVE
              && (Net::getNetworkType() == ServerInfo::MANASERV))
     {
         nextTile(dir);
     }
+#endif
 }
 
 void LocalPlayer::startWalking(unsigned char dir)
@@ -1080,6 +1092,7 @@ void LocalPlayer::startWalking(unsigned char dir)
     if (mAction == MOVE && !mPath.empty())
     {
         // Just finish the current action, otherwise we get out of sync
+#ifdef MANASERV_SUPPORT
         if (Net::getNetworkType() == ServerInfo::MANASERV)
         {
             const Vector &pos = getPosition();
@@ -1087,6 +1100,7 @@ void LocalPlayer::startWalking(unsigned char dir)
                                   static_cast<int>(pos.y));
         }
         else
+#endif
         {
             Being::setDestination(getTileX(), getTileY());
         }
@@ -1210,6 +1224,7 @@ bool LocalPlayer::emote(Uint8 emotion)
 
 void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
 {
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         if (mLastAction != -1)
@@ -1219,6 +1234,7 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         if (mAction != STAND && mAction != ATTACK)
             return;
     }
+#endif
 
     mKeepAttacking = keep;
 
@@ -1231,6 +1247,7 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         setTarget(target);
     }
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         Vector plaPos = this->getPosition();
@@ -1256,6 +1273,7 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         mLastAction = tick_time;
     }
     else
+#endif
     {
         int dist_x = target->getTileX() - getTileX();
         int dist_y = target->getTileY() - getTileY();
@@ -1435,6 +1453,7 @@ bool LocalPlayer::withinAttackRange(Being *target, bool fixDistance,
     if (fixDistance && range == 1)
         range = 2;
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         const Vector &targetPos = target->getPosition();
@@ -1444,6 +1463,7 @@ bool LocalPlayer::withinAttackRange(Being *target, bool fixDistance,
 
     }
     else
+#endif
     {
         dx = static_cast<int>(abs(target->getTileX() - getTileX()));
         dy = static_cast<int>(abs(target->getTileY() - getTileY()));
@@ -1459,6 +1479,7 @@ void LocalPlayer::setGotoTarget(Being *target)
         return;
 
     mPickUpTarget = 0;
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         mTarget = target;
@@ -1468,6 +1489,7 @@ void LocalPlayer::setGotoTarget(Being *target)
             static_cast<int>(targetPos.y));
     }
     else
+#endif
     {
         setTarget(target);
         mGoingToTarget = true;
