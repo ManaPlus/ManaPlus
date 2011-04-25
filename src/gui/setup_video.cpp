@@ -345,7 +345,7 @@ Setup_Video::Setup_Video():
 
     mAlphaSlider->setValue(mOpacity);
     mAlphaSlider->setWidth(90);
-    mAlphaCacheCheckBox->setEnabled(!mOpenGLDropDown->getSelected());
+    mAlphaCacheCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
 
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
@@ -678,6 +678,7 @@ void Setup_Video::cancel()
     config.setValue("hwaccel", mHwAccelEnabled);
     config.setValue("showpickupchat", mPickupChatEnabled);
     config.setValue("showpickupparticle", mPickupParticleEnabled);
+    mAlphaCacheCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
 }
 
 void Setup_Video::action(const gcn::ActionEvent &event)
