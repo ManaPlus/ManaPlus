@@ -80,7 +80,7 @@ int mkdir_r(const char *pathname)
                 }
                 else
                 {
-                    delete tmp;
+                    delete []tmp;
                     return -1;
                 }
             }
@@ -97,7 +97,7 @@ int mkdir_r(const char *pathname)
                 if (!(strlen(tmp) == 2 &&
                     !strcmp(tmp + 1, ":")))
 #endif
-                delete tmp;
+                delete []tmp;
                 return -1;
             }
 
@@ -107,7 +107,7 @@ int mkdir_r(const char *pathname)
             *p = '/';
         }
     }
-    delete tmp;
+    delete []tmp;
     return 0;
 }
 

@@ -1001,6 +1001,9 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
     // Path to be built up (empty by default)
     Path path;
 
+    if (startX >= mWidth || startY >= mHeight)
+        return path;
+
     // Declare open list, a list with open tiles sorted on F cost
     std::priority_queue<Location> openList;
 
@@ -1601,6 +1604,9 @@ void SpecialLayer::addRoad(Path road)
 
 void SpecialLayer::clean()
 {
+    if (!mTiles)
+        return;
+
     for (int f = 0; f < mWidth * mHeight; f ++)
     {
         MapItem *item = mTiles[f];
