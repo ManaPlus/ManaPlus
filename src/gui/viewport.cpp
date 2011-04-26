@@ -625,10 +625,10 @@ void Viewport::showPopup(int x, int y, ProgressBar *bar)
     mPopupMenu->showPopup(x, y, bar);
 }
 
-void Viewport::showAttackMonsterPopup(std::string name, bool isAttack)
+void Viewport::showAttackMonsterPopup(std::string name, int type)
 {
     mPopupMenu->showAttackMonsterPopup(getMouseX(), getMouseY(),
-        name, isAttack);
+        name, type);
 }
 
 void Viewport::closePopupMenu()

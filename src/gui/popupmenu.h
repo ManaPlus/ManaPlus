@@ -118,7 +118,7 @@ class PopupMenu : public Popup, public LinkHandler
         void showSpellPopup(int x, int y, TextCommand *cmd);
 
         void showAttackMonsterPopup(int x, int y, std::string name,
-                                    bool isAttack);
+                                    int type);
 
         /**
          * Shows the related popup menu when right click on the chat

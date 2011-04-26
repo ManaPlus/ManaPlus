@@ -254,18 +254,18 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 if (config.getBoolValue("enableAttackFilter"))
                 {
                     mBrowserBox->addRow("##3---");
-                    if (player_node->isInAttackList(name))
+                    if (player_node->isInAttackList(name)
+                        || player_node->isInIgnoreAttackList(name)
+                        || player_node->isInPriorityAttackList(name))
                     {
                         mBrowserBox->addRow(
                             _("@@remove attack|Remove from attack list@@"));
                     }
-                    else if (player_node->isInIgnoreAttackList(name))
-                    {
-                        mBrowserBox->addRow(
-                            _("@@remove attack|Remove from ignore list@@"));
-                    }
                     else
                     {
+                        mBrowserBox->addRow(
+                            _("@@add attack priority|Add "
+                            "to priority attack list@@"));
                         mBrowserBox->addRow(
                             _("@@add attack|Add to attack list@@"));
                         mBrowserBox->addRow(
@@ -1165,6 +1165,15 @@ void PopupMenu::handleLink(const std::string &link,
                 socialWindow->updateAttackFilter();
         }
     }
+    else if (link == "add attack priority" && being)
+    {
+        if (player_node && being->getType() == Being::MONSTER)
+        {
+            player_node->addPriorityAttackMob(being->getName());
+            if (socialWindow)
+                socialWindow->updateAttackFilter();
+        }
+    }
     else if (link == "add attack ignore" && being)
     {
         if (player_node && being->getType() == Being::MONSTER)
@@ -1203,6 +1212,36 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
+    else if (link == "priority moveup")
+    {
+        if (player_node)
+        {
+            int idx = player_node->getPriorityAttackMobIndex(mNick);
+            if (idx > 0)
+            {
+                std::list<std::string> mobs
+                    = player_node->getPriorityAttackMobs();
+                std::list<std::string>::iterator it = mobs.begin();
+                std::list<std::string>::iterator it2 = mobs.begin();
+                while (it != mobs.end())
+                {
+                    if (*it == mNick)
+                    {
+                        -- it2;
+                        mobs.splice(it2, mobs, it);
+                        player_node->setPriorityAttackMobs(mobs);
+                        player_node->rebuildPriorityAttackMobs();
+                        break;
+                    }
+                    ++ it;
+                    ++ it2;
+                }
+
+                if (socialWindow)
+                    socialWindow->updateAttackFilter();
+            }
+        }
+    }
     else if (link == "attack movedown")
     {
         if (player_node)
@@ -1225,6 +1264,40 @@ void PopupMenu::handleLink(const std::string &link,
                         mobs.splice(it, mobs, it2);
                         player_node->setAttackMobs(mobs);
                         player_node->rebuildAttackMobs();
+                        break;
+                    }
+                    ++ it;
+                    ++ it2;
+                }
+
+                if (socialWindow)
+                    socialWindow->updateAttackFilter();
+            }
+        }
+    }
+    else if (link == "priority movedown")
+    {
+        if (player_node)
+        {
+            int idx = player_node->getPriorityAttackMobIndex(mNick);
+            int size = player_node->getPriorityAttackMobsSize();
+            if (idx + 1 < size)
+            {
+                std::list<std::string> mobs
+                    = player_node->getPriorityAttackMobs();
+                std::list<std::string>::iterator it = mobs.begin();
+                std::list<std::string>::iterator it2 = mobs.begin();
+                while (it != mobs.end())
+                {
+                    if (*it == mNick)
+                    {
+                        ++ it2;
+                        if (it2 == mobs.end())
+                            break;
+
+                        mobs.splice(it, mobs, it2);
+                        player_node->setPriorityAttackMobs(mobs);
+                        player_node->rebuildPriorityAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1606,7 +1679,7 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
 }
 
 void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
-                                       bool isAttack)
+                                       int type)
 {
     if (!player_node)
         return;
@@ -1619,27 +1692,48 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
         mBrowserBox->addRow(_("(default)"));
     else
         mBrowserBox->addRow(name);
-    if (isAttack)
+    switch (type)
     {
-        int idx = player_node->getAttackMobIndex(name);
-        int size = player_node->getAttackMobsSize();
-        if (idx > 0)
+        case MapItem::ATTACK:
         {
+            int idx = player_node->getAttackMobIndex(name);
+            int size = player_node->getAttackMobsSize();
+            if (idx > 0)
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@attack moveup|%s@@", _("Move up")));
+            }
+            if (idx + 1 < size)
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@attack movedown|%s@@", _("Move down")));
+            }
             mBrowserBox->addRow(strprintf(
-                "@@attack moveup|%s@@", _("Move up")));
+                "@@attack remove|%s@@", _("Remove")));
+            break;
         }
-        if (idx + 1 < size)
+        case MapItem::PRIORITY:
         {
+            int idx = player_node->getPriorityAttackMobIndex(name);
+            int size = player_node->getPriorityAttackMobsSize();
+            if (idx > 0)
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@priority moveup|%s@@", _("Move up")));
+            }
+            if (idx + 1 < size)
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@priority movedown|%s@@", _("Move down")));
+            }
             mBrowserBox->addRow(strprintf(
-                "@@attack movedown|%s@@", _("Move down")));
+                "@@attack remove|%s@@", _("Remove")));
+            break;
         }
-        mBrowserBox->addRow(strprintf(
-            "@@attack remove|%s@@", _("Remove")));
-    }
-    else
-    {
-        mBrowserBox->addRow(strprintf(
-            "@@attack remove|%s@@", _("Remove")));
+        case MapItem::IGNORE:
+            mBrowserBox->addRow(strprintf(
+                "@@attack remove|%s@@", _("Remove")));
+            break;
     }
 
     mBrowserBox->addRow("##3---");

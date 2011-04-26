@@ -808,7 +808,7 @@ public:
 
         std::vector<Avatar*> *avatars = mBeings->getMembers();
 
-        std::list<std::string> mobs = player_node->getAttackMobs();
+        std::list<std::string> mobs = player_node->getPriorityAttackMobs();
         std::list<std::string>::iterator i = mobs.begin();
 
         std::vector<Avatar*>::iterator ia = avatars->begin();
@@ -820,7 +820,7 @@ public:
         }
 
         avatars->clear();
-        Avatar *ava = new Avatar(_("Selected mobs"));
+        Avatar *ava = new Avatar(_("Priority mobs"));
         ava->setOnline(false);
         ava->setLevel(-1);
         ava->setType(MapItem::SEPARATOR);
@@ -844,7 +844,42 @@ public:
             Avatar *ava = new Avatar(name);
             ava->setOnline(true);
             ava->setLevel(level);
-            ava->setType(MapItem::MONSTER);
+            ava->setType(MapItem::PRIORITY);
+            ava->setX(0);
+            ava->setY(0);
+            avatars->push_back(ava);
+
+            ++ i;
+        }
+
+        ava = new Avatar(_("Attack mobs"));
+        ava->setOnline(false);
+        ava->setLevel(-1);
+        ava->setType(MapItem::SEPARATOR);
+        ava->setX(0);
+        ava->setY(0);
+        avatars->push_back(ava);
+
+        mobs = player_node->getAttackMobs();
+        i = mobs.begin();
+
+        while (i != mobs.end())
+        {
+            std::string name;
+            int level = -1;
+            if (*i == "")
+            {
+                name = _("(default)");
+                level = 0;
+            }
+            else
+            {
+                name = *i;
+            }
+            Avatar *ava = new Avatar(name);
+            ava->setOnline(true);
+            ava->setLevel(level);
+            ava->setType(MapItem::ATTACK);
             ava->setX(0);
             ava->setY(0);
             avatars->push_back(ava);
@@ -879,7 +914,7 @@ public:
             Avatar *ava = new Avatar(name);
             ava->setOnline(false);
             ava->setLevel(level);
-            ava->setType(MapItem::MONSTER);
+            ava->setType(MapItem::IGNORE);
             ava->setX(0);
             ava->setY(0);
             avatars->push_back(ava);

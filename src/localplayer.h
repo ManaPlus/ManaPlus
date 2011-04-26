@@ -64,7 +64,6 @@ enum
     PICKUP_DROP_STEAL
 };
 
-
 /**
  * The local player character.
  */
@@ -453,25 +452,42 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool isInAttackList(const std::string &name)
         { return mAttackMobsSet.find(name) != mAttackMobsSet.end(); }
 
+        bool isInPriorityAttackList(const std::string &name)
+        { return mPriorityAttackMobsSet.find(name)
+              != mPriorityAttackMobsSet.end(); }
+
         bool isInIgnoreAttackList(const std::string &name)
         { return mIgnoreAttackMobsSet.find(name)
               != mIgnoreAttackMobsSet.end(); }
 
+/*
         bool isInAttackOrIgnoreList(const std::string &name)
         { return mAttackMobsSet.find(name) != mAttackMobsSet.end() ||
               mIgnoreAttackMobsSet.find(name) != mIgnoreAttackMobsSet.end(); }
+*/
 
         void removeAttackMob(const std::string &name);
+
+        void addPriorityAttackMob(std::string name);
 
         void addAttackMob(std::string name);
 
         void addIgnoreAttackMob(std::string name);
 
+        std::list<std::string> getPriorityAttackMobs()
+        { return mPriorityAttackMobs; }
+
         std::list<std::string> getAttackMobs()
         { return mAttackMobs; }
 
+        void setPriorityAttackMobs(std::list<std::string> mobs)
+        { mPriorityAttackMobs = mobs; }
+
         void setAttackMobs(std::list<std::string> mobs)
         { mAttackMobs = mobs; }
+
+        int getPriorityAttackMobsSize()
+        { return mPriorityAttackMobs.size(); }
 
         int getAttackMobsSize()
         { return mAttackMobs.size(); }
@@ -482,15 +498,25 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         std::set<std::string> getAttackMobsSet()
         { return mAttackMobsSet; }
 
+        std::set<std::string> getPriorityAttackMobsSet()
+        { return mPriorityAttackMobsSet; }
+
         std::set<std::string> getIgnoreAttackMobsSet()
         { return mIgnoreAttackMobsSet; }
+
+        void rebuildPriorityAttackMobs();
 
         void rebuildAttackMobs();
 
         std::map<std::string, int> getAttackMobsMap()
         { return mAttackMobsMap; }
 
+        std::map<std::string, int> getPriorityAttackMobsMap()
+        { return mPriorityAttackMobsMap; }
+
         int getAttackMobIndex(std::string name);
+
+        int getPriorityAttackMobIndex(std::string name);
 
         void resetYellowBar();
 
@@ -620,10 +646,13 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mServerAttack;
         std::string mLastHitFrom;
         std::string mWaitFor;
+        std::list<std::string> mPriorityAttackMobs;
         std::list<std::string> mAttackMobs;
         std::list<std::string> mIgnoreAttackMobs;
+        std::set<std::string> mPriorityAttackMobsSet;
         std::set<std::string> mAttackMobsSet;
         std::set<std::string> mIgnoreAttackMobsSet;
+        std::map<std::string, int> mPriorityAttackMobsMap;
         std::map<std::string, int> mAttackMobsMap;
 };
 

@@ -28,7 +28,6 @@
 enum AvatarType
 {
     AVATAR_PLAYER = 0
-//    AVATAR_PORTAL
 };
 
 class Avatar

@@ -585,8 +585,10 @@ class MapItem
             ARROW_RIGHT = 7,
             PORTAL = 8,
             MUSIC = 9,
-            MONSTER = 10,
-            SEPARATOR = 11
+            ATTACK = 10,
+            PRIORITY = 11,
+            IGNORE = 12,
+            SEPARATOR = 13
         };
 
         MapItem();

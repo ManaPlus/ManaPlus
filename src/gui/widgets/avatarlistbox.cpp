@@ -308,42 +308,47 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        if (ava->getType() == AVATAR_PLAYER)
+        switch (ava->getType())
         {
-            Being* being = actorSpriteManager->findBeingByName(
-                model->getAvatarAt(selected)->getName(), Being::PLAYER);
-            if (being)
+            case AVATAR_PLAYER:
             {
-                viewport->showPopup(event.getX(), event.getY(), being);
+                Being* being = actorSpriteManager->findBeingByName(
+                    model->getAvatarAt(selected)->getName(), Being::PLAYER);
+                if (being)
+                {
+                    viewport->showPopup(event.getX(), event.getY(), being);
+                }
+                else
+                {
+                    viewport->showPlayerPopup(
+                        model->getAvatarAt(selected)->getName());
+                }
+                break;
             }
-            else
+            case MapItem::ATTACK:
+            case MapItem::PRIORITY:
+            case MapItem::IGNORE:
             {
-                viewport->showPlayerPopup(
-                    model->getAvatarAt(selected)->getName());
+                std::string name;
+                if (model->getAvatarAt(selected)->getLevel() == 0)
+                    name = "";
+                else
+                    name = model->getAvatarAt(selected)->getName();
+
+                viewport->showAttackMonsterPopup(name,
+                    model->getAvatarAt(selected)->getType());
+                break;
             }
-        }
-        else if (ava->getType() == MapItem::MONSTER)
-        {
-            if (model->getAvatarAt(selected)->getLevel() == 0)
+            default:
             {
-                viewport->showAttackMonsterPopup("",
-                    model->getAvatarAt(selected)->getOnline());
-            }
-            else
-            {
-                viewport->showAttackMonsterPopup(
-                    model->getAvatarAt(selected)->getName(),
-                    model->getAvatarAt(selected)->getOnline());
-            }
-        }
-        else
-        {
-            Map *map = viewport->getMap();
-            Avatar *ava = model->getAvatarAt(selected);
-            if (map && ava)
-            {
-                MapItem *mapItem = map->findPortalXY(ava->getX(), ava->getY());
-                viewport->showPopup(mapItem);
+                Map *map = viewport->getMap();
+                Avatar *ava = model->getAvatarAt(selected);
+                if (map && ava)
+                {
+                    MapItem *mapItem = map->findPortalXY(ava->getX(), ava->getY());
+                    viewport->showPopup(mapItem);
+                }
+                break;
             }
         }
     }
