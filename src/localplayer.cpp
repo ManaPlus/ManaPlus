@@ -3283,7 +3283,12 @@ void LocalPlayer::updateCoords()
             if (str.empty())
                 str = mMap->getMusicFile();
             if (str != sound.getCurrentMusicFile())
-                sound.playMusic(str);
+            {
+                if (str.empty())
+                    sound.fadeOutMusic();
+                else
+                    sound.fadeOutAndPlayMusic(str);
+            }
         }
     }
 
