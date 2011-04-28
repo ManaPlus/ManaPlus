@@ -472,7 +472,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
                 xmlNodeGetContent(dataChild));
             if (!charStart)
             {
-                delete charData;
+                delete[] charData;
                 return;
             }
 

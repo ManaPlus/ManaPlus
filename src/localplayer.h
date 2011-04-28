@@ -453,12 +453,16 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         { return mAttackMobsSet.find(name) != mAttackMobsSet.end(); }
 
         bool isInPriorityAttackList(const std::string &name)
-        { return mPriorityAttackMobsSet.find(name)
-              != mPriorityAttackMobsSet.end(); }
+        {
+            return mPriorityAttackMobsSet.find(name)
+                != mPriorityAttackMobsSet.end();
+        }
 
         bool isInIgnoreAttackList(const std::string &name)
-        { return mIgnoreAttackMobsSet.find(name)
-              != mIgnoreAttackMobsSet.end(); }
+        {
+            return mIgnoreAttackMobsSet.find(name)
+                != mIgnoreAttackMobsSet.end();
+        }
 
 /*
         bool isInAttackOrIgnoreList(const std::string &name)

@@ -345,7 +345,8 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
                 Avatar *ava = model->getAvatarAt(selected);
                 if (map && ava)
                 {
-                    MapItem *mapItem = map->findPortalXY(ava->getX(), ava->getY());
+                    MapItem *mapItem = map->findPortalXY(
+                        ava->getX(), ava->getY());
                     viewport->showPopup(mapItem);
                 }
                 break;
