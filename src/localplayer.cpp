@@ -1018,17 +1018,19 @@ void LocalPlayer::setDestination(int x, int y)
 
             Being::setDestination(x, y);
         }
-
-        // Manaserv:
-        // If the destination given to being class is accepted,
-        // we inform the Server.
-        if ((x == mDest.x && y == mDest.y)
-            || Net::getNetworkType() == ServerInfo::TMWATHENA)
+        else
         {
-            Net::getPlayerHandler()->setDestination(x, y, mDirection);
+#ifdef MANASERV_SUPPORT
+            // Manaserv:
+            // If the destination given to being class is accepted,
+            // we inform the Server.
+            if ((x == mDest.x && y == mDest.y)
+                || Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
+            {
+                Net::getPlayerHandler()->setDestination(x, y, mDirection);
+            }
         }
-
-        return;
     }
 }
 
