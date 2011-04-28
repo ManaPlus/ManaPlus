@@ -226,6 +226,10 @@ void ItemDB::load()
         int attackRange = XML::getProperty(node, "attack-range", 0);
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
+        int hitEffectId = XML::getProperty(node, "hit-effect-id",
+                                           paths.getIntValue("hitEffectId"));
+        int criticalEffectId = XML::getProperty(node, "critical-hit-effect-id",
+                                      paths.getIntValue("criticalHitEffectId"));
 
         SpriteDisplay display;
         display.image = image;
@@ -283,7 +287,9 @@ void ItemDB::load()
         itemInfo->setWeight(weight);
         itemInfo->setAttackAction(attackAction);
         itemInfo->setAttackRange(attackRange);
-        itemInfo->setMissileParticle(missileParticle);
+        itemInfo->setMissileParticleFile(missileParticle);
+        itemInfo->setHitEffectId(hitEffectId);
+        itemInfo->setCriticalHitEffectId(criticalEffectId);
         itemInfo->setDrawBefore(parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(drawPriority);

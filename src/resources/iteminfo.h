@@ -183,11 +183,25 @@ class ItemInfo
         void setAttackAction(std::string attackAction);
 
         // Handlers for seting and getting the string used for particles when attacking
-        void setMissileParticle(std::string s) { mMissileParticle = s; }
+        void setMissileParticleFile(const std::string &s)
+        { mMissileParticleFile = s; }
 
-        std::string getMissileParticle() const { return mMissileParticle; }
+        const std::string &getMissileParticleFile() const
+        { return mMissileParticleFile; }
 
-        std::string getAttackAction() const
+        void setHitEffectId(int s)
+        { mHitEffectId = s; }
+
+        int getHitEffectId() const
+        { return mHitEffectId; }
+
+        void setCriticalHitEffectId(int s)
+        { mCriticalHitEffectId = s; }
+
+        int getCriticalHitEffectId() const
+        { return mCriticalHitEffectId; }
+
+        const std::string &getAttackAction() const
         { return mAttackAction; }
 
         int getAttackRange() const
@@ -232,6 +246,9 @@ class ItemInfo
 
         bool isRemoveItemId(int id) const;
 
+        /** Effects to be shown when weapon attacks - see also effects.xml */
+        std::string mMissileParticleFile;
+
         int getReplaceToSpriteId(int id) const;
 
         std::map<int, int> &addReplaceSprite(int sprite);
@@ -250,6 +267,9 @@ class ItemInfo
 
         const std::string replaceColors(std::string str,
                                         unsigned char color) const;
+
+        int mHitEffectId;
+        int mCriticalHitEffectId;
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
