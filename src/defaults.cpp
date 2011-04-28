@@ -88,7 +88,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "crazyMoveType", 1);
     AddDEF(configData, "attackWeaponType", 1);
     AddDEF(configData, "quickDropCounter", 1);
-    AddDEF(configData, "pickUpType", 2);
+    AddDEF(configData, "pickUpType", 3);
     AddDEF(configData, "magicAttackType", 0);
     AddDEF(configData, "attackType", 1);
     AddDEF(configData, "followMode", 0);
@@ -160,7 +160,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableTradeTab", true);
     AddDEF(configData, "logToChat", false);
     AddDEF(configData, "cyclePlayers", true);
-    AddDEF(configData, "cycleMonsters", false);
+    AddDEF(configData, "cycleMonsters", true);
     AddDEF(configData, "floorItemsHighlight", true);
     AddDEF(configData, "enableBotCheker", true);
     AddDEF(configData, "removeColors", true);
@@ -182,7 +182,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "drawHotKeys", true);
     AddDEF(configData, "serverAttack", true);
     AddDEF(configData, "autofixPos", true);
-    AddDEF(configData, "alphaCache", false);
+    AddDEF(configData, "alphaCache", true);
     AddDEF(configData, "attackMoving", true);
     AddDEF(configData, "quickStats", true);
     AddDEF(configData, "warpParticle", false);
