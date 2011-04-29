@@ -260,6 +260,10 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
     {
         handleUptime(args, tab);
     }
+    else if (type == "addpriorityattack")
+    {
+        handleAddPriorityAttack(args, tab);
+    }
     else if (type == "addattack")
     {
         handleAddAttack(args, tab);
@@ -989,6 +993,19 @@ void CommandHandler::handleUptime(const std::string &args _UNUSED_,
         }
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), str.c_str()));
     }
+}
+
+void CommandHandler::handleAddPriorityAttack(const std::string &args,
+                                             ChatTab *tab _UNUSED_)
+{
+    if (!player_node || player_node->isInPriorityAttackList(args))
+        return;
+
+    player_node->removeAttackMob(args);
+    player_node->addPriorityAttackMob(args);
+
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
 }
 
 void CommandHandler::handleAddAttack(const std::string &args,

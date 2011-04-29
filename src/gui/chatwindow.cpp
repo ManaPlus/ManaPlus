@@ -286,6 +286,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/wait");
     mCommands.push_back("/uptime");
     mCommands.push_back("/addattack ");
+    mCommands.push_back("/addpriorityattack ");
     mCommands.push_back("/removeattack ");
     mCommands.push_back("/addignoreattack ");
 }

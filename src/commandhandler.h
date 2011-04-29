@@ -276,6 +276,9 @@ class CommandHandler
 
         void handleAddAttack(const std::string &args, ChatTab *tab _UNUSED_);
 
+        void handleAddPriorityAttack(const std::string &args,
+                                     ChatTab *tab _UNUSED_);
+
         void handleRemoveAttack(const std::string &args,
                                 ChatTab *tab _UNUSED_);
 
