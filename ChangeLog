@@ -1,3 +1,18 @@
+2011-05-01 New release 1.1.5.1
+ManaPlus:
+fix: some controls draw issue in SDL software mode.
+fix: map objects drawing. (incompotable with tmw maps).
+fix: default values for new configurations.
+add: away log.
+add: attack filter.
+new tab in social window.
+new chat commands /addattack, /removeattack, /addignoreattack, /addpriorityattack
+add: reset yellow bar context menu item.
+add: spec file for rpm distros (mageia).
+
+Mana:
+add: music fadeout.
+
 2011-04-17 New release 1.1.4.17
 ManaPlus:
 fix: add to trade menu item in inventory context menu.
