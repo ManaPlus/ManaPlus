@@ -3,6 +3,7 @@ ManaPlus:
 fix: some controls draw issue in SDL software mode.
 fix: map objects drawing. (incompotable with tmw maps).
 fix: default values for new configurations.
+fix: crash with incorrect maps.
 add: away log.
 add: attack filter.
 new tab in social window.
