@@ -1486,25 +1486,39 @@ void Map::indexTilesets()
          it_end = mTilesets.end(); it < it_end;
          ++it)
     {
-        if (!s || s->getFirstGid() < (*it)->getFirstGid())
+        if (!s || s->getFirstGid() + s->size()
+            < (*it)->getFirstGid() + (*it)->size())
+        {
             s = *it;
+        }
     }
     if (!s)
+    {
+        mIndexedTilesetsSize = 0;
+        mIndexedTilesets = 0;
         return;
+    }
 
     const int size = s->getFirstGid() + s->size();
     mIndexedTilesetsSize = size;
     mIndexedTilesets = new Tileset*[size];
     std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(0));
+
     for (Tilesets::const_iterator it = mTilesets.begin(),
          it_end = mTilesets.end(); it < it_end;
          ++it)
     {
         s = *it;
-        const int start = s->getFirstGid();
-        const int end = start + s->size();
-        for (int f = start; f < end; f ++)
-            mIndexedTilesets[f] = s;
+        if (s)
+        {
+            const int start = s->getFirstGid();
+            const int end = start + s->size();
+            for (int f = start; f < end; f ++)
+            {
+                if (f < size)
+                    mIndexedTilesets[f] = s;
+            }
+        }
     }
 }
 
