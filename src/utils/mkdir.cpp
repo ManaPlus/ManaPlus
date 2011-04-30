@@ -37,6 +37,70 @@
 
 #include "mkdir.h"
 
+#if defined WIN32
+int mkdir_r(const char *pathname)
+{
+    char tmp[PATH_MAX];
+    char *p;
+
+    if (strlen(pathname) >= PATH_MAX - 2)
+        return -1;
+
+    strncpy(tmp, pathname, sizeof(tmp) - 1);
+    tmp[PATH_MAX - 1] = '\0';
+
+    int len = static_cast<int>(strlen(tmp));
+
+    // terminate the pathname with '/'
+    if (tmp[len - 1] != '/')
+    {
+        tmp[len] = '/';
+        tmp[len + 1] = '\0';
+    }
+
+    for (p = tmp; *p; p++)
+    {
+        if (*p == '/' || *p == '\\')
+        {
+            *p = '\0';
+            // ignore a slash at the beginning of a path
+            if (strlen(tmp) == 0)
+            {
+                *p = '/';
+                continue;
+            }
+
+            // check if the name already exists, but not as directory
+            struct stat statbuf;
+            if (!stat(tmp, &statbuf))
+            {
+                if (S_ISDIR(statbuf.st_mode))
+                {
+                    *p = '/';
+                    continue;
+                }
+                else
+                    return -1;
+            }
+
+            if (!CreateDirectory(tmp, 0))
+            {
+                // hack, hack. just assume that x: might be a drive
+                // letter, and try again
+                if (!(strlen(tmp) == 2 &&
+                    !strcmp(tmp + 1, ":")))
+                return -1;
+            }
+
+#ifdef _MKDIR_TEST_
+            printf("%s\n", tmp);
+#endif
+            *p = '/';
+        }
+    }
+    return 0;
+}
+#else
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *pathname)
 {
@@ -55,11 +119,7 @@ int mkdir_r(const char *pathname)
 
     for (p = tmp; *p; p++)
     {
-#if defined WIN32
-        if (*p == '/' || *p == '\\')
-#else
         if (*p == '/')
-#endif
         {
             *p = '\0';
             // ignore a slash at the beginning of a path
@@ -85,18 +145,8 @@ int mkdir_r(const char *pathname)
                 }
             }
 
-#if defined WIN32
-            if (!CreateDirectory(tmp, 0))
-#else
             if (mkdir(tmp, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
-#endif
             {
-#if defined WIN32
-                // hack, hack. just assume that x: might be a drive
-                // letter, and try again
-                if (!(strlen(tmp) == 2 &&
-                    !strcmp(tmp + 1, ":")))
-#endif
                 delete []tmp;
                 return -1;
             }
@@ -110,6 +160,7 @@ int mkdir_r(const char *pathname)
     delete []tmp;
     return 0;
 }
+#endif
 
 #ifdef _MKDIR_TEST_
 int main(int argc, char** argv)
