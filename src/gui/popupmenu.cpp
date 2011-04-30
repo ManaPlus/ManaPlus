@@ -1734,6 +1734,8 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
             mBrowserBox->addRow(strprintf(
                 "@@attack remove|%s@@", _("Remove")));
             break;
+        default:
+            break;
     }
 
     mBrowserBox->addRow("##3---");
