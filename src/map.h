@@ -587,7 +587,7 @@ class MapItem
             MUSIC = 9,
             ATTACK = 10,
             PRIORITY = 11,
-            IGNORE = 12,
+            IGNORE_ = 12,
             SEPARATOR = 13
         };
 

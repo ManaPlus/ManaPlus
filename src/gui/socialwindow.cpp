@@ -914,7 +914,7 @@ public:
             Avatar *ava = new Avatar(name);
             ava->setOnline(false);
             ava->setLevel(level);
-            ava->setType(MapItem::IGNORE);
+            ava->setType(MapItem::IGNORE_);
             ava->setX(0);
             ava->setY(0);
             avatars->push_back(ava);

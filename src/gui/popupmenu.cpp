@@ -1730,7 +1730,7 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
                 "@@attack remove|%s@@", _("Remove")));
             break;
         }
-        case MapItem::IGNORE:
+        case MapItem::IGNORE_:
             mBrowserBox->addRow(strprintf(
                 "@@attack remove|%s@@", _("Remove")));
             break;

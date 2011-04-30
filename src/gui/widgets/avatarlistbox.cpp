@@ -327,7 +327,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             }
             case MapItem::ATTACK:
             case MapItem::PRIORITY:
-            case MapItem::IGNORE:
+            case MapItem::IGNORE_:
             {
                 std::string name;
                 if (model->getAvatarAt(selected)->getLevel() == 0)
