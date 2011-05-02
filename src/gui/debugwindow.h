@@ -23,9 +23,83 @@
 #ifndef DEBUGWINDOW_H
 #define DEBUGWINDOW_H
 
+#include "gui/widgets/container.h"
 #include "gui/widgets/window.h"
 
+class Container;
+class DebugWindow;
 class Label;
+class Tab;
+class TabbedArea;
+
+class DebugTab : public Container
+{
+    friend class DebugWindow;
+
+    public:
+        DebugTab()
+        { }
+
+        void logic() = 0;
+
+        void resize(int x, int y)
+        { setDimension(gcn::Rectangle(0, 0, x, y)); }
+
+    private:
+};
+
+class MapDebugTab : public DebugTab
+{
+    friend class DebugWindow;
+
+    public:
+        MapDebugTab();
+
+        void logic();
+
+    private:
+        Label *mMusicFileLabel, *mMapLabel, *mMinimapLabel;
+        Label *mTileMouseLabel;
+        Label *mParticleCountLabel;
+        Label *mMapActorCountLabel;
+        Label *mXYLabel;
+        int mUpdateTime;
+        Label *mFPSLabel;
+        std::string mFPSText;
+};
+
+class TargetDebugTab : public DebugTab
+{
+    friend class DebugWindow;
+
+    public:
+        TargetDebugTab();
+
+        void logic();
+
+    private:
+        Label *mTargetLabel;
+        Label *mTargetIdLabel;
+        Label *mTargetLevelLabel;
+        Label *mTargetPartyLabel;
+        Label *mTargetGuildLabel;
+        Label *mAttackDelayLabel;
+};
+
+class NetDebugTab : public DebugTab
+{
+    friend class DebugWindow;
+
+    public:
+        NetDebugTab();
+
+        void logic();
+
+    private:
+        Label *mPingLabel;
+        Label *mInPackets1Label;
+        Label *mOutPackets1Label;
+};
 
 /**
  * The debug window.
@@ -49,23 +123,13 @@ class DebugWindow : public Window
 
         void setPing(int pingTime);
 
-    private:
-        Label *mMusicFileLabel, *mMapLabel, *mMinimapLabel;
-        Label *mTileMouseLabel, *mFPSLabel;
-        Label *mParticleCountLabel;
-        Label *mMapActorCountLabel;
-        Label *mXYLabel;
-        Label *mTargetLabel;
-        Label *mTargetIdLabel;
-        Label *mTargetLevelLabel;
-        Label *mTargetPartyLabel;
-        Label *mTargetGuildLabel;
-        Label *mPingLabel;
-        Label *mInPackets1Label;
-        Label *mOutPackets1Label;
+        void widgetResized(const gcn::Event &event);
 
-        std::string mFPSText;
-        int mUpdateTime;
+    private:
+        TabbedArea *mTabs;
+        MapDebugTab *mMapWidget;
+        TargetDebugTab *mTargetWidget;
+        NetDebugTab *mNetWidget;
 };
 
 extern DebugWindow *debugWindow;

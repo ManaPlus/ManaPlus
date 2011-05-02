@@ -33,9 +33,13 @@
 #include "gui/setup_video.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/chattab.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/chattab.h"
+#include "gui/widgets/layouthelper.h"
+#include "gui/widgets/scrollarea.h"
+#include "gui/widgets/tab.h"
+#include "gui/widgets/tabbedarea.h"
 
 #include "resources/image.h"
 
@@ -51,11 +55,91 @@ DebugWindow::DebugWindow():
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    mUpdateTime = 0;
     setResizable(true);
     setCloseButton(true);
     setSaveVisible(true);
-    setDefaultSize(500, 150, ImageRect::CENTER);
+    setDefaultSize(400, 150, ImageRect::CENTER);
+
+    mTabs = new TabbedArea;
+    mMapWidget = new MapDebugTab;
+    mTargetWidget = new TargetDebugTab;
+    mNetWidget = new NetDebugTab;
+
+    mTabs->addTab(std::string(_("Map")), mMapWidget);
+    mTabs->addTab(std::string(_("Target")), mTargetWidget);
+    mTabs->addTab(std::string(_("Net")), mNetWidget);
+
+    mTabs->setDimension(gcn::Rectangle(0, 0, 600, 300));
+    add(mTabs);
+
+    mMapWidget->resize(getWidth(), getHeight());
+    mTargetWidget->resize(getWidth(), getHeight());
+    mNetWidget->resize(getWidth(), getHeight());
+    loadWindowState();
+}
+
+void DebugWindow::logic()
+{
+    if (!isVisible() || !mTabs)
+        return;
+
+    switch (mTabs->getSelectedTabIndex())
+    {
+        default:
+        case 0:
+            mMapWidget->logic();
+            break;
+        case 1:
+            mTargetWidget->logic();
+            break;
+        case 2:
+            mNetWidget->logic();
+            break;
+    }
+
+    if (player_node)
+        player_node->tryPingRequest();
+}
+
+void DebugWindow::draw(gcn::Graphics *g)
+{
+    Window::draw(g);
+
+    if (player_node)
+    {
+        Being *target = player_node->getTarget();
+        if (target)
+        {
+            Graphics *g2 = static_cast<Graphics*>(g);
+            target->draw(g2, -target->getPixelX() + 16 + getWidth() / 2,
+                         -target->getPixelY() + 32 + getHeight() / 2);
+        }
+    }
+}
+
+void DebugWindow::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+
+    mTabs->setDimension(gcn::Rectangle(0, 0, getWidth(), getHeight()));
+}
+
+MapDebugTab::MapDebugTab()
+{
+    LayoutHelper h(this);
+    ContainerPlacer place = h.getPlacer(0, 0);
+
+    mMusicFileLabel = new Label(strprintf(_("Music:")));
+    mMapLabel = new Label(strprintf(_("Map:")));
+    mMinimapLabel = new Label(strprintf(_("Minimap:")));
+    mTileMouseLabel = new Label(strprintf(_("Cursor: (%d, %d)"), 0, 0));
+    mXYLabel = new Label(strprintf("%s (?,?)", _("Player Position:")));
+
+    mParticleCountLabel = new Label(strprintf(_("Particle count: %d"), 88888));
+    mMapActorCountLabel = new Label(strprintf(
+        _("Map actors count: %d"), 88888));
+
+    mUpdateTime = 0;
 
 #ifdef USE_OPENGL
     switch (Image::getLoadAsOpenGL())
@@ -76,52 +160,23 @@ DebugWindow::DebugWindow():
 #endif
 
     mFPSLabel = new Label(strprintf(_("%d FPS"), 0));
-    mMusicFileLabel = new Label(strprintf(_("Music:")));
-    mMapLabel = new Label(strprintf(_("Map:")));
-    mMinimapLabel = new Label(strprintf(_("Minimap:")));
-    mTileMouseLabel = new Label(strprintf(_("Cursor: (%d, %d)"), 0, 0));
-    mParticleCountLabel = new Label(strprintf(_("Particle count: %d"), 88888));
-    mMapActorCountLabel = new Label(strprintf(
-        _("Map actors count: %d"), 88888));
 
-    mPingLabel = new Label("                ");
-    mInPackets1Label = new Label("                ");
-    mOutPackets1Label = new Label("                ");
+    place(0, 0, mFPSLabel, 2);
+    place(0, 1, mMusicFileLabel, 2);
+    place(0, 2, mMapLabel, 2);
+    place(0, 3, mMinimapLabel, 2);
+    place(0, 4, mXYLabel, 2);
+    place(0, 5, mTileMouseLabel, 2);
+    place(0, 6, mParticleCountLabel, 2);
+    place(0, 7, mMapActorCountLabel, 2);
 
-    mXYLabel = new Label(strprintf("%s (?,?)", _("Player Position:")));
-    mTargetLabel = new Label(strprintf("%s ?", _("Target:")));
-    mTargetIdLabel = new Label(strprintf("%s ?     ", _("Target Id:")));
-    mTargetLevelLabel = new Label(strprintf("%s ?", _("Target Level:")));
-    mTargetPartyLabel = new Label(strprintf("%s ?", _("Target Party:")));
-    mTargetGuildLabel = new Label(strprintf("%s ?", _("Target Guild:")));
-
-    place(0, 0, mFPSLabel, 3);
-    place(4, 0, mTileMouseLabel, 2);
-    place(0, 1, mMusicFileLabel, 3);
-    place(4, 1, mParticleCountLabel, 2);
-    place(4, 2, mMapActorCountLabel, 2);
-    place(0, 2, mMapLabel, 4);
-    place(0, 3, mMinimapLabel, 4);
-    place(0, 4, mXYLabel, 4);
-    place(4, 3, mPingLabel, 2);
-    place(4, 4, mInPackets1Label, 2);
-    place(4, 5, mOutPackets1Label, 2);
-    place(0, 5, mTargetLabel, 4);
-    place(0, 6, mTargetIdLabel, 4);
-    place(0, 7, mTargetLevelLabel, 4);
-    place(0, 8, mTargetPartyLabel, 4);
-    place(0, 9, mTargetGuildLabel, 4);
-
-    loadWindowState();
+    place.getCell().matchColWidth(0, 0);
+    place = h.getPlacer(0, 1);
+    setDimension(gcn::Rectangle(0, 0, 600, 300));
 }
 
-void DebugWindow::logic()
+void MapDebugTab::logic()
 {
-    if (!isVisible())
-        return;
-
-    mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
-
     if (player_node)
     {
         mXYLabel->setCaption(strprintf("%s (%d, %d)", _("Player Position:"),
@@ -130,42 +185,6 @@ void DebugWindow::logic()
     else
     {
         mXYLabel->setCaption(strprintf("%s (?, ?)", _("Player Position:")));
-    }
-
-    if (player_node && player_node->getTarget())
-    {
-        Being *target = player_node->getTarget();
-
-        mTargetLabel->setCaption(strprintf("%s %s (%d, %d)", _("Target:"),
-            target->getName().c_str(), target->getTileX(),
-            target->getTileY()));
-
-        mTargetIdLabel->setCaption(strprintf("%s %d",
-            _("Target Id:"), target->getId()));
-        if (target->getLevel())
-        {
-            mTargetLevelLabel->setCaption(strprintf("%s %d",
-                _("Target Level:"), target->getLevel()));
-        }
-        else
-        {
-            mTargetLevelLabel->setCaption(strprintf("%s ?",
-                _("Target Level:")));
-        }
-
-        mTargetPartyLabel->setCaption(strprintf("%s %s", _("Target Party:"),
-            target->getPartyName().c_str()));
-
-        mTargetGuildLabel->setCaption(strprintf("%s %s", _("Target Guild:"),
-            target->getGuildName().c_str()));
-    }
-    else
-    {
-        mTargetLabel->setCaption(strprintf("%s ?", _("Target:")));
-        mTargetIdLabel->setCaption(strprintf("%s ?", _("Target Id:")));
-        mTargetLevelLabel->setCaption(strprintf("%s ?", _("Target Level:")));
-        mTargetPartyLabel->setCaption(strprintf("%s ?", _("Target Party:")));
-        mTargetGuildLabel->setCaption(strprintf("%s ?", _("Target Guild:")));
     }
 
     const Map *map = Game::instance()->getCurrentMap();
@@ -213,6 +232,113 @@ void DebugWindow::logic()
     mMapActorCountLabel->adjustSize();
     mParticleCountLabel->adjustSize();
 
+    mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
+}
+
+TargetDebugTab::TargetDebugTab()
+{
+    LayoutHelper h(this);
+    ContainerPlacer place = h.getPlacer(0, 0);
+
+    mTargetLabel = new Label(strprintf("%s ?", _("Target:")));
+    mTargetIdLabel = new Label(strprintf("%s ?     ", _("Target Id:")));
+    mTargetLevelLabel = new Label(strprintf("%s ?", _("Target Level:")));
+    mTargetPartyLabel = new Label(strprintf("%s ?", _("Target Party:")));
+    mTargetGuildLabel = new Label(strprintf("%s ?", _("Target Guild:")));
+    mAttackDelayLabel = new Label(strprintf("%s ?", _("Attack delay:")));
+
+    place(0, 0, mTargetLabel, 2);
+    place(0, 1, mTargetIdLabel, 2);
+    place(0, 2, mTargetLevelLabel, 2);
+    place(0, 3, mAttackDelayLabel, 2);
+    place(0, 4, mTargetPartyLabel, 2);
+    place(0, 5, mTargetGuildLabel, 2);
+
+    place.getCell().matchColWidth(0, 0);
+    place = h.getPlacer(0, 1);
+    setDimension(gcn::Rectangle(0, 0, 600, 300));
+}
+
+void TargetDebugTab::logic()
+{
+    if (player_node && player_node->getTarget())
+    {
+        Being *target = player_node->getTarget();
+
+        mTargetLabel->setCaption(strprintf("%s %s (%d, %d)", _("Target:"),
+            target->getName().c_str(), target->getTileX(),
+            target->getTileY()));
+
+        mTargetIdLabel->setCaption(strprintf("%s %d",
+            _("Target Id:"), target->getId()));
+        if (target->getLevel())
+        {
+            mTargetLevelLabel->setCaption(strprintf("%s %d",
+                _("Target Level:"), target->getLevel()));
+        }
+        else
+        {
+            mTargetLevelLabel->setCaption(strprintf("%s ?",
+                _("Target Level:")));
+        }
+
+        mTargetPartyLabel->setCaption(strprintf("%s %s", _("Target Party:"),
+            target->getPartyName().c_str()));
+
+        mTargetGuildLabel->setCaption(strprintf("%s %s", _("Target Guild:"),
+            target->getGuildName().c_str()));
+
+        const int delay = target->getAttackDelay();
+        if (delay)
+        {
+            mAttackDelayLabel = new Label(strprintf("%s %d",
+                _("Attack delay:"), delay));
+        }
+        else
+        {
+            mAttackDelayLabel->setCaption(strprintf(
+                "%s ?", _("Attack delay:")));
+        }
+    }
+    else
+    {
+        mTargetLabel->setCaption(strprintf("%s ?", _("Target:")));
+        mTargetIdLabel->setCaption(strprintf("%s ?", _("Target Id:")));
+        mTargetLevelLabel->setCaption(strprintf("%s ?", _("Target Level:")));
+        mTargetPartyLabel->setCaption(strprintf("%s ?", _("Target Party:")));
+        mTargetGuildLabel->setCaption(strprintf("%s ?", _("Target Guild:")));
+        mAttackDelayLabel->setCaption(strprintf("%s ?", _("Attack delay:")));
+    }
+
+    mTargetLabel->adjustSize();
+    mTargetIdLabel->adjustSize();
+    mTargetLevelLabel->adjustSize();
+    mTargetPartyLabel->adjustSize();
+    mTargetGuildLabel->adjustSize();
+    mAttackDelayLabel->adjustSize();
+}
+
+NetDebugTab::NetDebugTab()
+{
+    LayoutHelper h(this);
+    ContainerPlacer place = h.getPlacer(0, 0);
+
+    mPingLabel = new Label("                ");
+    mInPackets1Label = new Label("                ");
+    mOutPackets1Label = new Label("                ");
+
+    place(0, 0, mPingLabel, 2);
+    place(0, 1, mInPackets1Label, 2);
+    place(0, 2, mOutPackets1Label, 2);
+
+    place.getCell().matchColWidth(0, 0);
+    place = h.getPlacer(0, 1);
+    setDimension(gcn::Rectangle(0, 0, 600, 300));
+}
+
+
+void NetDebugTab::logic()
+{
     if (player_node && player_node->getPingTime() != 0)
     {
         mPingLabel->setCaption(strprintf(_("Ping: %d ms"),
@@ -227,23 +353,4 @@ void DebugWindow::logic()
         PacketCounters::getInBytes()));
     mOutPackets1Label->setCaption(strprintf(_("Out: %d bytes/s"),
         PacketCounters::getOutBytes()));
-
-    if (player_node)
-        player_node->tryPingRequest();
-}
-
-void DebugWindow::draw(gcn::Graphics *g)
-{
-    Window::draw(g);
-
-    if (player_node)
-    {
-        Being *target = player_node->getTarget();
-        if (target)
-        {
-            Graphics *g2 = static_cast<Graphics*>(g);
-            target->draw(g2, -target->getPixelX() + 16 + getWidth() / 2,
-                         -target->getPixelY() + 32 + getHeight() / 2);
-        }
-    }
 }
