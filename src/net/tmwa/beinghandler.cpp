@@ -486,14 +486,14 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             if (dstBeing)
             {
                 // Perhaps a new skill attack type should be created and used?
-                if (dstSpeed)
-                    dstBeing->setAttackDelay(dstSpeed);
+//                if (dstSpeed)
+//                    dstBeing->setAttackDelay(dstSpeed);
                 dstBeing->takeDamage(srcBeing, param1, Being::HIT);
             }
             if (srcBeing)
             {
-                if (srcSpeed)
-                    srcBeing->setAttackDelay(srcSpeed);
+//                if (srcSpeed)
+//                    srcBeing->setAttackDelay(srcSpeed);
                 srcBeing->handleAttack(dstBeing, param1, Being::HIT);
             }
             break;
@@ -520,14 +520,14 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 case Being::FLEE: // Lucky Dodge
                     if (dstBeing)
                     {
-                        if (dstSpeed)
-                            dstBeing->setAttackDelay(dstSpeed);
+//                        if (dstSpeed)
+//                            dstBeing->setAttackDelay(dstSpeed);
                         dstBeing->takeDamage(srcBeing, param1,
                             static_cast<Being::AttackType>(type));
                     }
                     if (srcBeing)
                     {
-                        if (srcSpeed)
+                        if (srcSpeed && srcBeing->getType() == Being::PLAYER)
                             srcBeing->setAttackDelay(srcSpeed);
                         srcBeing->handleAttack(dstBeing, param1,
                             static_cast<Being::AttackType>(type));

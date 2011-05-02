@@ -291,7 +291,7 @@ void TargetDebugTab::logic()
         const int delay = target->getAttackDelay();
         if (delay)
         {
-            mAttackDelayLabel = new Label(strprintf("%s %d",
+            mAttackDelayLabel->setCaption(strprintf("%s %d",
                 _("Attack delay:"), delay));
         }
         else

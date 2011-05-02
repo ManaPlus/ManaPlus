@@ -206,6 +206,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mErased(false),
     mEnemy(false),
     mIp(""),
+    mAttackDelay(0),
     mPvpRank(0)
 {
     mSpriteRemap = new int[20];
