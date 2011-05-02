@@ -84,6 +84,9 @@ class TargetDebugTab : public DebugTab
         Label *mTargetPartyLabel;
         Label *mTargetGuildLabel;
         Label *mAttackDelayLabel;
+        Label *mMinHitLabel;
+        Label *mMaxHitLabel;
+        Label *mCriticalHitLabel;
 };
 
 class NetDebugTab : public DebugTab

@@ -667,6 +667,26 @@ class Being : public ActorSprite, public ConfigListener
         int getAttackDelay()
         { return mAttackDelay; }
 
+        int getMinHit()
+        { return mMinHit; }
+
+        void setMinHit(int n)
+        { mMinHit = n; }
+
+        int getMaxHit()
+        { return mMaxHit; }
+
+        void setMaxHit(int n)
+        { mMaxHit = n; }
+
+        int getCriticalHit()
+        { return mCriticalHit; }
+
+        void setCriticalHit(int n)
+        { mCriticalHit = n; }
+
+        void updateHit(int amount);
+
     protected:
         /**
          * Sets the new path for this being.
@@ -790,6 +810,9 @@ class Being : public ActorSprite, public ConfigListener
         bool mEnemy;
         std::string mIp;
         int mAttackDelay;
+        int mMinHit;
+        int mMaxHit;
+        int mCriticalHit;
         unsigned int mPvpRank;
         int *mSpriteRemap;
         int *mSpriteHide;

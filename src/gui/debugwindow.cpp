@@ -246,6 +246,9 @@ TargetDebugTab::TargetDebugTab()
     mTargetPartyLabel = new Label(strprintf("%s ?", _("Target Party:")));
     mTargetGuildLabel = new Label(strprintf("%s ?", _("Target Guild:")));
     mAttackDelayLabel = new Label(strprintf("%s ?", _("Attack delay:")));
+    mMinHitLabel = new Label(strprintf("%s ?", _("Minimal hit:")));
+    mMaxHitLabel = new Label(strprintf("%s ?", _("Maximum hit:")));
+    mCriticalHitLabel = new Label(strprintf("%s ?", _("Critical hit:")));
 
     place(0, 0, mTargetLabel, 2);
     place(0, 1, mTargetIdLabel, 2);
@@ -253,6 +256,9 @@ TargetDebugTab::TargetDebugTab()
     place(0, 3, mAttackDelayLabel, 2);
     place(0, 4, mTargetPartyLabel, 2);
     place(0, 5, mTargetGuildLabel, 2);
+    place(0, 6, mMinHitLabel, 2);
+    place(0, 7, mMaxHitLabel, 2);
+    place(0, 8, mCriticalHitLabel, 2);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -288,6 +294,13 @@ void TargetDebugTab::logic()
         mTargetGuildLabel->setCaption(strprintf("%s %s", _("Target Guild:"),
             target->getGuildName().c_str()));
 
+        mMinHitLabel->setCaption(strprintf("%s %d",
+            _("Minimal hit:"), target->getMinHit()));
+        mMaxHitLabel->setCaption(strprintf("%s %d",
+            _("Maximum hit:"), target->getMaxHit()));
+        mCriticalHitLabel->setCaption(strprintf("%s %d",
+            _("Critical hit:"), target->getCriticalHit()));
+
         const int delay = target->getAttackDelay();
         if (delay)
         {
@@ -308,6 +321,9 @@ void TargetDebugTab::logic()
         mTargetPartyLabel->setCaption(strprintf("%s ?", _("Target Party:")));
         mTargetGuildLabel->setCaption(strprintf("%s ?", _("Target Guild:")));
         mAttackDelayLabel->setCaption(strprintf("%s ?", _("Attack delay:")));
+        mMinHitLabel->setCaption(strprintf("%s ?", _("Minimal hit:")));
+        mMaxHitLabel->setCaption(strprintf("%s ?", _("Maximum hit:")));
+        mCriticalHitLabel->setCaption(strprintf("%s ?", _("Critical hit:")));
     }
 
     mTargetLabel->adjustSize();

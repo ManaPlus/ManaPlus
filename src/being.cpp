@@ -207,6 +207,9 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mEnemy(false),
     mIp(""),
     mAttackDelay(0),
+    mMinHit(0),
+    mMaxHit(0),
+    mCriticalHit(0),
     mPvpRank(0)
 {
     mSpriteRemap = new int[20];
@@ -496,6 +499,9 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
     // Selecting the right color
     if (type == CRITICAL || type == FLEE)
     {
+        if (type == CRITICAL)
+            attacker->setCriticalHit(amount);
+
         if (attacker == player_node)
         {
             color = &userPalette->getColor(
@@ -508,6 +514,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
     }
     else if (!amount)
     {
+
         if (attacker == player_node)
         {
             // This is intended to be the wrong direction to visually
@@ -569,6 +576,8 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
                                             getPixelX(), getPixelY() - 16,
                                             color, font, true);
     }
+
+    attacker->updateHit(amount);
 
     if (amount > 0)
     {
@@ -2156,4 +2165,15 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
 //    logger->log("not found");
     idx = -1;
     return;
+}
+
+void Being::updateHit(int amount)
+{
+    if (amount > 0)
+    {
+        if (!mMinHit || amount < mMinHit)
+            mMinHit = amount;
+        if (amount != mCriticalHit && (!mMaxHit || amount > mMaxHit))
+            mMaxHit = amount;
+    }
 }
