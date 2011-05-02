@@ -661,6 +661,12 @@ class Being : public ActorSprite, public ConfigListener
 
         Uint8 calcDirection() const;
 
+        void setAttackDelay(int n)
+        { mAttackDelay = n; }
+
+        int getAttackDelay()
+        { return mAttackDelay; }
+
     protected:
         /**
          * Sets the new path for this being.
@@ -783,6 +789,7 @@ class Being : public ActorSprite, public ConfigListener
         bool mErased;
         bool mEnemy;
         std::string mIp;
+        int mAttackDelay;
         unsigned int mPvpRank;
         int *mSpriteRemap;
         int *mSpriteHide;

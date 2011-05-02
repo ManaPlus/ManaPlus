@@ -472,12 +472,13 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_DAMAGE:
+        {
             msg.readInt16(); // Skill Id
             srcBeing = actorSpriteManager->findBeing(msg.readInt32());
             dstBeing = actorSpriteManager->findBeing(msg.readInt32());
             msg.readInt32(); // Server tick
-            msg.readInt32(); // src speed
-            msg.readInt32(); // dst speed
+            int srcSpeed = msg.readInt32(); // src speed
+            int dstSpeed = msg.readInt32(); // dst speed
             param1 = msg.readInt32(); // Damage
             msg.readInt16(); // Skill level
             msg.readInt16(); // Div
@@ -485,19 +486,26 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             if (dstBeing)
             {
                 // Perhaps a new skill attack type should be created and used?
+                if (dstSpeed)
+                    dstBeing->setAttackDelay(dstSpeed);
                 dstBeing->takeDamage(srcBeing, param1, Being::HIT);
             }
             if (srcBeing)
+            {
+                if (srcSpeed)
+                    srcBeing->setAttackDelay(srcSpeed);
                 srcBeing->handleAttack(dstBeing, param1, Being::HIT);
+            }
             break;
-
+        }
         case SMSG_BEING_ACTION:
+        {
             srcBeing = actorSpriteManager->findBeing(msg.readInt32());
             dstBeing = actorSpriteManager->findBeing(msg.readInt32());
 
             msg.readInt32();   // server tick
-            msg.readInt32();   // src speed
-            msg.readInt32();   // dst speed
+            int srcSpeed = msg.readInt32();   // src speed
+            int dstSpeed = msg.readInt32();   // dst speed
             param1 = msg.readInt16();
             msg.readInt16();  // param 2
             type = msg.readInt8();
@@ -512,11 +520,15 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
                 case Being::FLEE: // Lucky Dodge
                     if (dstBeing)
                     {
+                        if (dstSpeed)
+                            dstBeing->setAttackDelay(dstSpeed);
                         dstBeing->takeDamage(srcBeing, param1,
                             static_cast<Being::AttackType>(type));
                     }
                     if (srcBeing)
                     {
+                        if (srcSpeed)
+                            srcBeing->setAttackDelay(srcSpeed);
                         srcBeing->handleAttack(dstBeing, param1,
                             static_cast<Being::AttackType>(type));
                         if (srcBeing->getType() == Being::PLAYER)
@@ -567,7 +579,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 */
             }
             break;
-
+        }
         case SMSG_BEING_SELFEFFECT:
         {
             if (!effectManager)
