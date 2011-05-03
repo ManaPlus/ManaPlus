@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-04-27 22:33+0300\n"
+"POT-Creation-Date: 2011-05-03 03:42+0300\n"
 "PO-Revision-Date: 2009-07-17 05:36+0000\n"
 "Last-Translator: Kess Vargavind <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -24,48 +24,48 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Synliga namn"
 
-#: src/being.cpp:489
+#: src/being.cpp:493
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:489
+#: src/being.cpp:493
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:748 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:95
+#: src/client.cpp:750 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:95
 msgid "Setup"
 msgstr "Inställningar"
 
-#: src/client.cpp:822
+#: src/client.cpp:824
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Ansluter till kartservern..."
 
-#: src/client.cpp:853
+#: src/client.cpp:855
 #, fuzzy
 msgid "Logging in"
 msgstr "Användarnamn"
 
-#: src/client.cpp:886
+#: src/client.cpp:888
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:978
+#: src/client.cpp:980
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Välj karaktär"
 
-#: src/client.cpp:1009
+#: src/client.cpp:1011
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Ansluter till kartservern..."
 
-#: src/client.cpp:1019
+#: src/client.cpp:1021
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Server"
 
-#: src/client.cpp:1054 src/client.cpp:1061 src/client.cpp:1198
+#: src/client.cpp:1056 src/client.cpp:1063 src/client.cpp:1200
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:216 src/gui/register.cpp:226
 #: src/gui/serverdialog.cpp:373 src/gui/unregisterdialog.cpp:135
@@ -75,66 +75,66 @@ msgstr "Server"
 msgid "Error"
 msgstr "Fel"
 
-#: src/client.cpp:1070
+#: src/client.cpp:1072
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1097
+#: src/client.cpp:1099
 #, fuzzy
 msgid "Password Change"
 msgstr "Lösenord:"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1100
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1117
+#: src/client.cpp:1119
 #, fuzzy
 msgid "Email Change"
 msgstr "Ändra"
 
-#: src/client.cpp:1118
+#: src/client.cpp:1120
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "Medlem befordrad."
 
-#: src/client.cpp:1138
+#: src/client.cpp:1140
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Avregistrera"
 
-#: src/client.cpp:1139
+#: src/client.cpp:1141
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1328 src/client.cpp:1358 src/client.cpp:1402
+#: src/client.cpp:1330 src/client.cpp:1360 src/client.cpp:1404
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1531
+#: src/client.cpp:1533
 #, fuzzy, c-format
 msgid "Invalid update host: %s"
 msgstr "Ogiltig uppdateringsvärd: "
 
-#: src/client.cpp:1565 src/client.cpp:1571
+#: src/client.cpp:1567 src/client.cpp:1573
 msgid "Error creating updates directory!"
 msgstr "Kunde inte skapa katalog för uppdateringar!"
 
-#: src/client.cpp:1592
+#: src/client.cpp:1594
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/commandhandler.cpp:285
+#: src/commandhandler.cpp:289
 msgid "Unknown command."
 msgstr "Okänt kommando."
 
-#: src/commandhandler.cpp:385
+#: src/commandhandler.cpp:389
 msgid "Cannot send empty whispers!"
 msgstr "Behöver en text att viska!"
 
-#: src/commandhandler.cpp:393
+#: src/commandhandler.cpp:397
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -143,150 +143,150 @@ msgstr ""
 "Kan inte skapa viskningsflik för smeknamnet \"%s\"! Antingen existerar "
 "fliken redan eller så försöker du viska till dig själv."
 
-#: src/commandhandler.cpp:413
+#: src/commandhandler.cpp:417
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Skickar förfrågan att gå in i chattkanalen %s."
 
-#: src/commandhandler.cpp:429 src/net/tmwa/gui/partytab.cpp:123
+#: src/commandhandler.cpp:433 src/net/tmwa/gui/partytab.cpp:123
 msgid "Party name is missing."
 msgstr "Du måste ange gruppens namn."
 
-#: src/commandhandler.cpp:440
+#: src/commandhandler.cpp:444
 #, fuzzy
 msgid "Guild name is missing."
 msgstr "Du måste ange gruppens namn."
 
-#: src/commandhandler.cpp:453 src/commandhandler.cpp:560
-#: src/commandhandler.cpp:601 src/commandhandler.cpp:631
+#: src/commandhandler.cpp:457 src/commandhandler.cpp:564
+#: src/commandhandler.cpp:605 src/commandhandler.cpp:635
 msgid "Please specify a name."
 msgstr ""
 
-#: src/commandhandler.cpp:494
+#: src/commandhandler.cpp:498
 msgid "Return toggles chat."
 msgstr "Retur visar/döljer chattfönstret."
 
-#: src/commandhandler.cpp:494
+#: src/commandhandler.cpp:498
 msgid "Message closes chat."
 msgstr "Meddelande stänger chattfönstret."
 
-#: src/commandhandler.cpp:505
+#: src/commandhandler.cpp:509
 msgid "Return now toggles chat."
 msgstr "Retur växlar nu chattfönstrets synlighet."
 
-#: src/commandhandler.cpp:511
+#: src/commandhandler.cpp:515
 msgid "Message now closes chat."
 msgstr "Meddelanden stänger nu chattfönstret."
 
-#: src/commandhandler.cpp:539
+#: src/commandhandler.cpp:543
 #, fuzzy
 msgid "friend"
 msgstr "Vän"
 
-#: src/commandhandler.cpp:544
+#: src/commandhandler.cpp:548
 #, fuzzy
 msgid "disregarded"
 msgstr "Förbisedd"
 
-#: src/commandhandler.cpp:549
+#: src/commandhandler.cpp:553
 #, fuzzy
 msgid "neutral"
 msgstr "Neutral"
 
-#: src/commandhandler.cpp:568
+#: src/commandhandler.cpp:572
 #, fuzzy, c-format
 msgid "Player already %s!"
 msgstr "Kunde inte viska eftersom ignorerad av spelaren."
 
-#: src/commandhandler.cpp:582
+#: src/commandhandler.cpp:586
 #, fuzzy, c-format
 msgid "Player successfully %s!"
 msgstr "Grupp skapad."
 
-#: src/commandhandler.cpp:590
+#: src/commandhandler.cpp:594
 #, fuzzy, c-format
 msgid "Player could not be %s!"
 msgstr "Kunde inte viska eftersom ignorerad av spelaren."
 
-#: src/commandhandler.cpp:612
+#: src/commandhandler.cpp:616
 msgid "Player wasn't ignored!"
 msgstr ""
 
-#: src/commandhandler.cpp:619
+#: src/commandhandler.cpp:623
 msgid "Player no longer ignored!"
 msgstr ""
 
-#: src/commandhandler.cpp:621
+#: src/commandhandler.cpp:625
 #, fuzzy
 msgid "Player could not be unignored!"
 msgstr "Kunde inte viska eftersom ignorerad av spelaren."
 
-#: src/commandhandler.cpp:638
+#: src/commandhandler.cpp:642
 #, fuzzy
 msgid "Player already erased!"
 msgstr "Kunde inte viska eftersom ignorerad av spelaren."
 
-#: src/commandhandler.cpp:649
+#: src/commandhandler.cpp:653
 #, fuzzy
 msgid "Player successfully erased!"
 msgstr "Grupp skapad."
 
-#: src/commandhandler.cpp:651
+#: src/commandhandler.cpp:655
 #, fuzzy
 msgid "Player could not be erased!"
 msgstr "Kunde inte viska eftersom ignorerad av spelaren."
 
-#: src/commandhandler.cpp:944 src/commandhandler.cpp:990
+#: src/commandhandler.cpp:948 src/commandhandler.cpp:994
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:954
+#: src/commandhandler.cpp:958
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:963
+#: src/commandhandler.cpp:967
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:971
+#: src/commandhandler.cpp:975
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:979
+#: src/commandhandler.cpp:983
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:987
+#: src/commandhandler.cpp:991
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1046
+#: src/commandhandler.cpp:1063
 #, fuzzy
 msgid "font cache size"
 msgstr "Typsnittsgrad"
 
-#: src/commandhandler.cpp:1059
+#: src/commandhandler.cpp:1076
 #, fuzzy
 msgid "Created: "
 msgstr "Skapa"
 
-#: src/commandhandler.cpp:1060
+#: src/commandhandler.cpp:1077
 #, fuzzy
 msgid "Deleted: "
 msgstr "Ta bort"
@@ -300,7 +300,7 @@ msgstr "Alternativ till /%s är ”yes”, ”no”, ”true”, ”false”, �
 msgid "General"
 msgstr "Allmänt"
 
-#: src/game.cpp:233 src/gui/debugwindow.cpp:48 src/gui/widgets/chattab.cpp:400
+#: src/game.cpp:233 src/gui/debugwindow.cpp:52 src/gui/widgets/chattab.cpp:400
 msgid "Debug"
 msgstr ""
 
@@ -442,7 +442,7 @@ msgstr "Sälj"
 #: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:1494
 #: src/gui/popupmenu.cpp:1521 src/gui/popupmenu.cpp:1566
 #: src/gui/popupmenu.cpp:1604 src/gui/popupmenu.cpp:1639
-#: src/gui/popupmenu.cpp:1676 src/gui/popupmenu.cpp:1740
+#: src/gui/popupmenu.cpp:1676 src/gui/popupmenu.cpp:1742
 #: src/gui/quitdialog.cpp:58 src/gui/register.cpp:80 src/gui/setup.cpp:65
 #: src/gui/socialwindow.cpp:956 src/gui/textcommandeditor.cpp:234
 #: src/gui/textdialog.cpp:45 src/gui/unregisterdialog.cpp:57
@@ -704,12 +704,12 @@ msgstr "???"
 msgid "Chat"
 msgstr "Chatt"
 
-#: src/gui/chatwindow.cpp:588
+#: src/gui/chatwindow.cpp:589
 #, fuzzy, c-format
 msgid "Present: %s; %d players are present."
 msgstr "%d spelare är närvarande."
 
-#: src/gui/chatwindow.cpp:971
+#: src/gui/chatwindow.cpp:972
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Viskar till %s: %s"
@@ -727,119 +727,156 @@ msgstr "Nej"
 msgid "Ignore"
 msgstr "Ignorerad"
 
-#: src/gui/debugwindow.cpp:64 src/gui/debugwindow.cpp:75
-#, c-format
-msgid "%d FPS (Software)"
-msgstr ""
+#: src/gui/debugwindow.cpp:68 src/gui/minimap.cpp:47 src/gui/minimap.cpp:87
+msgid "Map"
+msgstr "Karta"
 
-#: src/gui/debugwindow.cpp:68
-#, c-format
-msgid "%d FPS (fast OpenGL)"
-msgstr ""
+#: src/gui/debugwindow.cpp:69
+#, fuzzy
+msgid "Target"
+msgstr "Gå åt vänster"
 
-#: src/gui/debugwindow.cpp:71
-#, c-format
-msgid "%d FPS (old OpenGL)"
-msgstr ""
+#: src/gui/debugwindow.cpp:70
+#, fuzzy
+msgid "Net"
+msgstr "Nästa"
 
-#: src/gui/debugwindow.cpp:78
-#, c-format
-msgid "%d FPS"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:79 src/gui/debugwindow.cpp:182
-#: src/gui/debugwindow.cpp:205
+#: src/gui/debugwindow.cpp:132 src/gui/debugwindow.cpp:201
+#: src/gui/debugwindow.cpp:224
 #, fuzzy
 msgid "Music:"
 msgstr "Ämne: %s"
 
-#: src/gui/debugwindow.cpp:80 src/gui/debugwindow.cpp:186
-#: src/gui/debugwindow.cpp:207
+#: src/gui/debugwindow.cpp:133 src/gui/debugwindow.cpp:205
+#: src/gui/debugwindow.cpp:226
 #, fuzzy
 msgid "Map:"
 msgstr "Namn: %s"
 
-#: src/gui/debugwindow.cpp:81 src/gui/debugwindow.cpp:184
-#: src/gui/debugwindow.cpp:206
+#: src/gui/debugwindow.cpp:134 src/gui/debugwindow.cpp:203
+#: src/gui/debugwindow.cpp:225
 #, fuzzy
 msgid "Minimap:"
 msgstr "Minikarta"
 
-#: src/gui/debugwindow.cpp:82
+#: src/gui/debugwindow.cpp:135
 #, c-format
 msgid "Cursor: (%d, %d)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:83 src/gui/debugwindow.cpp:193
-#, fuzzy, c-format
-msgid "Particle count: %d"
-msgstr "Partikeleffekter"
-
-#: src/gui/debugwindow.cpp:85
-#, fuzzy, c-format
-msgid "Map actors count: %d"
-msgstr "Karaktärens värden okej"
-
-#: src/gui/debugwindow.cpp:91 src/gui/debugwindow.cpp:127
-#: src/gui/debugwindow.cpp:132
+#: src/gui/debugwindow.cpp:136 src/gui/debugwindow.cpp:182
+#: src/gui/debugwindow.cpp:187
 #, fuzzy
 msgid "Player Position:"
 msgstr "Spelare slår monster"
 
-#: src/gui/debugwindow.cpp:92 src/gui/debugwindow.cpp:139
-#: src/gui/debugwindow.cpp:164
-#, fuzzy
-msgid "Target:"
-msgstr "Gå åt vänster"
+#: src/gui/debugwindow.cpp:138 src/gui/debugwindow.cpp:212
+#, fuzzy, c-format
+msgid "Particle count: %d"
+msgstr "Partikeleffekter"
 
-#: src/gui/debugwindow.cpp:93 src/gui/debugwindow.cpp:144
-#: src/gui/debugwindow.cpp:165
-#, fuzzy
-msgid "Target Id:"
-msgstr "Välj spelare"
+#: src/gui/debugwindow.cpp:140
+#, fuzzy, c-format
+msgid "Map actors count: %d"
+msgstr "Karaktärens värden okej"
 
-#: src/gui/debugwindow.cpp:94 src/gui/debugwindow.cpp:148
-#: src/gui/debugwindow.cpp:153 src/gui/debugwindow.cpp:166
-#, fuzzy
-msgid "Target Level:"
-msgstr "Välj spelare"
+#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:159
+#, c-format
+msgid "%d FPS (Software)"
+msgstr ""
 
-#: src/gui/debugwindow.cpp:95 src/gui/debugwindow.cpp:156
-#: src/gui/debugwindow.cpp:167
-#, fuzzy
-msgid "Target Party:"
-msgstr "Välj spelare"
+#: src/gui/debugwindow.cpp:152
+#, c-format
+msgid "%d FPS (fast OpenGL)"
+msgstr ""
 
-#: src/gui/debugwindow.cpp:96 src/gui/debugwindow.cpp:159
-#: src/gui/debugwindow.cpp:168
-#, fuzzy
-msgid "Target Guild:"
-msgstr "Välj spelare"
+#: src/gui/debugwindow.cpp:155
+#, c-format
+msgid "%d FPS (old OpenGL)"
+msgstr ""
 
-#: src/gui/debugwindow.cpp:180 src/gui/debugwindow.cpp:203
+#: src/gui/debugwindow.cpp:162
+#, c-format
+msgid "%d FPS"
+msgstr ""
+
+#: src/gui/debugwindow.cpp:199 src/gui/debugwindow.cpp:222
 #, fuzzy
 msgid "Cursor:"
 msgstr "Särskild muspekare"
 
-#: src/gui/debugwindow.cpp:197 src/gui/debugwindow.cpp:210
+#: src/gui/debugwindow.cpp:216 src/gui/debugwindow.cpp:229
 msgid "Map actors count:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:218
+#: src/gui/debugwindow.cpp:243 src/gui/debugwindow.cpp:274
+#: src/gui/debugwindow.cpp:318
+#, fuzzy
+msgid "Target:"
+msgstr "Gå åt vänster"
+
+#: src/gui/debugwindow.cpp:244 src/gui/debugwindow.cpp:279
+#: src/gui/debugwindow.cpp:319
+#, fuzzy
+msgid "Target Id:"
+msgstr "Välj spelare"
+
+#: src/gui/debugwindow.cpp:245 src/gui/debugwindow.cpp:283
+#: src/gui/debugwindow.cpp:288 src/gui/debugwindow.cpp:320
+#, fuzzy
+msgid "Target Level:"
+msgstr "Välj spelare"
+
+#: src/gui/debugwindow.cpp:246 src/gui/debugwindow.cpp:291
+#: src/gui/debugwindow.cpp:321
+#, fuzzy
+msgid "Target Party:"
+msgstr "Välj spelare"
+
+#: src/gui/debugwindow.cpp:247 src/gui/debugwindow.cpp:294
+#: src/gui/debugwindow.cpp:322
+#, fuzzy
+msgid "Target Guild:"
+msgstr "Välj spelare"
+
+#: src/gui/debugwindow.cpp:248 src/gui/debugwindow.cpp:308
+#: src/gui/debugwindow.cpp:313 src/gui/debugwindow.cpp:323
+#, fuzzy
+msgid "Attack delay:"
+msgstr "Attack %+d"
+
+#: src/gui/debugwindow.cpp:249 src/gui/debugwindow.cpp:298
+#: src/gui/debugwindow.cpp:324
+#, fuzzy
+msgid "Minimal hit:"
+msgstr "Minikarta"
+
+#: src/gui/debugwindow.cpp:250 src/gui/debugwindow.cpp:300
+#: src/gui/debugwindow.cpp:325
+msgid "Maximum hit:"
+msgstr ""
+
+#: src/gui/debugwindow.cpp:251 src/gui/debugwindow.cpp:302
+#: src/gui/debugwindow.cpp:326
+#, fuzzy
+msgid "Critical hit:"
+msgstr "Kritisk träff"
+
+#: src/gui/debugwindow.cpp:360
 #, c-format
 msgid "Ping: %d ms"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:223
+#: src/gui/debugwindow.cpp:365
 msgid "Ping: ? ms"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:226
+#: src/gui/debugwindow.cpp:368
 #, c-format
 msgid "In: %d bytes/s"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:228
+#: src/gui/debugwindow.cpp:370
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr ""
@@ -1161,10 +1198,6 @@ msgstr "Registrera"
 #, fuzzy
 msgid "Change Server"
 msgstr "Server"
-
-#: src/gui/minimap.cpp:47 src/gui/minimap.cpp:87
-msgid "Map"
-msgstr "Karta"
 
 #: src/gui/ministatus.cpp:56
 msgid "health bar"
@@ -4156,70 +4189,70 @@ msgstr "Se till att använda olika tangenter, annars kan det bli konstigheter."
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1363
+#: src/localplayer.cpp:1365
 #, fuzzy
 msgid "Tried to pick up nonexistent item."
 msgstr "Kunde inte plocka upp."
 
-#: src/localplayer.cpp:1365
+#: src/localplayer.cpp:1367
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1367
+#: src/localplayer.cpp:1369
 msgid "Item is too far away"
 msgstr ""
 
-#: src/localplayer.cpp:1369
+#: src/localplayer.cpp:1371
 #, fuzzy
 msgid "Inventory is full."
 msgstr "Servern är full"
 
-#: src/localplayer.cpp:1371
+#: src/localplayer.cpp:1373
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1374
+#: src/localplayer.cpp:1376
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1377
+#: src/localplayer.cpp:1379
 #, fuzzy
 msgid "Unknown problem picking up item."
 msgstr "Kunde inte plocka upp."
 
 #. TRANSLATORS: This sentence may be translated differently
 #. for different grammatical numbers (singular, plural, ...)
-#: src/localplayer.cpp:1402
+#: src/localplayer.cpp:1404
 #, fuzzy, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Du plockade upp %s [@@%d|%s@@]."
 msgstr[1] "Du plockade upp %s [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3132
+#: src/localplayer.cpp:3134
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3430
+#: src/localplayer.cpp:3437
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3432 src/localplayer.cpp:3447
+#: src/localplayer.cpp:3439 src/localplayer.cpp:3454
 #, fuzzy
 msgid "Follow canceled"
 msgstr " avbruten"
 
-#: src/localplayer.cpp:3439
+#: src/localplayer.cpp:3446
 #, fuzzy
 msgid "Imitation: "
 msgstr "Ändra epostadress"
 
-#: src/localplayer.cpp:3441 src/localplayer.cpp:3449
+#: src/localplayer.cpp:3448 src/localplayer.cpp:3456
 #, fuzzy
 msgid "Imitation canceled"
 msgstr " avbruten"
 
-#: src/localplayer.cpp:3801
+#: src/localplayer.cpp:3808
 #, fuzzy
 msgid "You see "
 msgstr "Du får %s."
@@ -5636,7 +5669,7 @@ msgstr ""
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:239
+#: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:243
 #: src/resources/monsterdb.cpp:79
 msgid "unnamed"
 msgstr "namnlös"
