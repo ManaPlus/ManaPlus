@@ -286,42 +286,37 @@ void Viewport::_followMouse()
 
 void Viewport::_drawDebugPath(Graphics *graphics)
 {
+    if (!player_node || !userPalette || !actorSpriteManager)
+        return;
+
     // Get the current mouse position
     SDL_GetMouseState(&mMouseX, &mMouseY);
 
     // Prepare the walkmask corresponding to the protocol
-    unsigned char walkMask = 0;
-    switch (Net::getNetworkType())
-    {
-        case ServerInfo::TMWATHENA:
-            walkMask = Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER;
-            break;
-        case ServerInfo::MANASERV:
-        default:
-            walkMask = Map::BLOCKMASK_WALL;
-            break;
-    }
+    unsigned char walkMask = Map::BLOCKMASK_WALL;
     static Path debugPath;
     static Vector lastMouseDestination = Vector(0.0f, 0.0f);
-    Vector mouseDestination(mMouseX + (int) mPixelViewX,
-                            mMouseY + (int) mPixelViewY);
+    const int mousePosX = mMouseX + static_cast<int>(mPixelViewX);
+    const int mousePosY = mMouseY + static_cast<int>(mPixelViewY);
+    Vector mouseDestination(mousePosX, mousePosY);
 
     if (mouseDestination.x != lastMouseDestination.x
         || mouseDestination.y != lastMouseDestination.y)
     {
         const Vector &playerPos = player_node->getPosition();
 
-        debugPath = mMap->findPath((int) playerPos.x,
-                                   (int) playerPos.y,
-                                   mouseDestination.x,
-                                   mouseDestination.y,
-                                   walkMask);
+        debugPath = mMap->findPath(
+            static_cast<int>(playerPos.x - 16) / 32,
+            static_cast<int>(playerPos.y - 32) / 32,
+            mousePosX / 32, mousePosY / 32, 0, 500);
+
 
         lastMouseDestination = mouseDestination;
     }
+    _drawPath(graphics, debugPath, userPalette->getColorWithAlpha(
+        UserPalette::ROAD_POINT));
 
     // We draw the path proposed by mouse
-    _drawPath(graphics, debugPath, gcn::Color(128, 0, 128, 150));
 
     // Draw the path debug information for every beings.
     ActorSpritesConstIterator it, it_end;
@@ -329,36 +324,14 @@ void Viewport::_drawDebugPath(Graphics *graphics)
     for (it = actors.begin(), it_end = actors.end() ; it != it_end; it++)
     {
         Being *being = dynamic_cast<Being*>(*it);
-        if (being)
+        if (being && being != player_node)
         {
             const Vector &beingPos = being->getPosition();
             int radius = being->getCollisionRadius();
             Path beingPath = being->getPath();
 
-            // Draw being collision rectangle
-            graphics->setColor(gcn::Color(128, 128, 0, 150));
-            graphics->fillRectangle(gcn::Rectangle(
-                                        (int) beingPos.x
-                                        - (int) mPixelViewX - radius,
-                                        (int) beingPos.y - (int) mPixelViewY
-                                        - radius,
-                                        radius * 2, radius * 2));
-
-            _drawPath(graphics,
-                      beingPath,
-                      gcn::Color(0, 0, 255, 150));
-
-            // Draw also the absolute x, y position using a cross.
-            graphics->setColor(gcn::Color(0, 0, 255, 255));
-            graphics->drawLine((int) beingPos.x - (int) mPixelViewX - 4,
-                               (int) beingPos.y - (int) mPixelViewY - 4,
-                               (int) beingPos.x - (int) mPixelViewX + 4,
-                               (int) beingPos.y - (int) mPixelViewY + 4);
-            graphics->drawLine((int) beingPos.x - (int) mPixelViewX + 4,
-                               (int) beingPos.y - (int) mPixelViewY - 4,
-                               (int) beingPos.x - (int) mPixelViewX - 4,
-                               (int) beingPos.y - (int) mPixelViewY + 4);
-
+            _drawPath(graphics, beingPath, userPalette->getColorWithAlpha(
+                UserPalette::ROAD_POINT));
         }
     }
 }
@@ -368,7 +341,9 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
 {
     graphics->setColor(color);
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
     {
         for (Path::const_iterator i = path.begin(); i != path.end(); ++i)
         {
