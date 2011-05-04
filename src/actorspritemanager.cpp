@@ -766,6 +766,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
     else
     {
         int dist = 0;
+        int index = defaultPriorityIndex;
 
         for (ActorSprites::const_iterator i = mActors.begin(),
              i_end = mActors.end();
@@ -797,7 +798,6 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 
             bool valid = validateBeing(aroundBeing, being, type, excluded, 50);
             int d = being->getDistance();
-            int index = defaultPriorityIndex;
 //            logger->log("dist: %d", dist);
 //            logger->log("name: %s, %d, %d", being->getName().c_str(), (int)valid, d);
             if (being->getType() != Being::MONSTER
@@ -807,9 +807,12 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                     + (being->getTileY() - y) * (being->getTileY() - y);
             }
 
+            if (!valid)
+                continue;
+
 //            logger->log("being name:" + being->getName());
+//            logger->log("index:" + toString(index));
 //            logger->log("d:" + toString(d));
-//            logger->log("valid:" + toString(valid))
 
             if (valid && !filtered && (d <= dist || closestBeing == 0))
             {
