@@ -289,49 +289,78 @@ void Viewport::_drawDebugPath(Graphics *graphics)
     // Get the current mouse position
     SDL_GetMouseState(&mMouseX, &mMouseY);
 
-    Path debugPath;
-
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    // Prepare the walkmask corresponding to the protocol
+    unsigned char walkMask = 0;
+    switch (Net::getNetworkType())
     {
-        const int mouseTileX = (mMouseX + static_cast<int>(mPixelViewX)) / 32;
-        const int mouseTileY = (mMouseY + static_cast<int>(mPixelViewY)) / 32;
+        case ServerInfo::TMWATHENA:
+            walkMask = Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER;
+            break;
+        case ServerInfo::MANASERV:
+        default:
+            walkMask = Map::BLOCKMASK_WALL;
+            break;
+    }
+    static Path debugPath;
+    static Vector lastMouseDestination = Vector(0.0f, 0.0f);
+    Vector mouseDestination(mMouseX + (int) mPixelViewX,
+                            mMouseY + (int) mPixelViewY);
+
+    if (mouseDestination.x != lastMouseDestination.x
+        || mouseDestination.y != lastMouseDestination.y)
+    {
         const Vector &playerPos = player_node->getPosition();
 
-        debugPath = mMap->findPath(
-            static_cast<int>(playerPos.x - 16) / 32,
-            static_cast<int>(playerPos.y - 32) / 32,
-            mouseTileX, mouseTileY, 0, 500);
+        debugPath = mMap->findPath((int) playerPos.x,
+                                   (int) playerPos.y,
+                                   mouseDestination.x,
+                                   mouseDestination.y,
+                                   walkMask);
 
-        _drawPath(graphics, debugPath);
+        lastMouseDestination = mouseDestination;
     }
-#ifdef MANASERV_SUPPORT
-    else if (Net::getNetworkType() == ServerInfo::MANASERV)
+
+    // We draw the path proposed by mouse
+    _drawPath(graphics, debugPath, gcn::Color(128, 0, 128, 150));
+
+    // Draw the path debug information for every beings.
+    ActorSpritesConstIterator it, it_end;
+    const ActorSprites &actors = actorSpriteManager->getAll();
+    for (it = actors.begin(), it_end = actors.end() ; it != it_end; it++)
     {
-        const Vector &playerPos = player_node->getPosition();
-        const int playerRadius = player_node->getCollisionRadius();
-        // Draw player collision rectangle
-        graphics->setColor(gcn::Color(128, 128, 0, 120));
-        graphics->fillRectangle(
-            gcn::Rectangle(static_cast<int>(playerPos.x)
-                           - static_cast<int>(mPixelViewX) - playerRadius,
-                           static_cast<int>(playerPos.y)
-                           - static_cast<int>(mPixelViewY) - playerRadius,
-                           playerRadius * 2, playerRadius * 2));
+        Being *being = dynamic_cast<Being*>(*it);
+        if (being)
+        {
+            const Vector &beingPos = being->getPosition();
+            int radius = being->getCollisionRadius();
+            Path beingPath = being->getPath();
 
-        debugPath = mMap->findPixelPath(
-            static_cast<int>(playerPos.x),
-            static_cast<int>(playerPos.y),
-            mMouseX + static_cast<int>(mPixelViewX),
-            mMouseY + static_cast<int>(mPixelViewY),
-            playerRadius, 0xFF);
+            // Draw being collision rectangle
+            graphics->setColor(gcn::Color(128, 128, 0, 150));
+            graphics->fillRectangle(gcn::Rectangle(
+                                        (int) beingPos.x
+                                        - (int) mPixelViewX - radius,
+                                        (int) beingPos.y - (int) mPixelViewY
+                                        - radius,
+                                        radius * 2, radius * 2));
 
-        // We draw the path proposed by mouse
-        _drawPath(graphics, debugPath, gcn::Color(128, 0, 128));
+            _drawPath(graphics,
+                      beingPath,
+                      gcn::Color(0, 0, 255, 150));
 
-        // But also the one currently walked on.
-        _drawPath(graphics, player_node->getPath(), gcn::Color(0, 0, 255));
+            // Draw also the absolute x, y position using a cross.
+            graphics->setColor(gcn::Color(0, 0, 255, 255));
+            graphics->drawLine((int) beingPos.x - (int) mPixelViewX - 4,
+                               (int) beingPos.y - (int) mPixelViewY - 4,
+                               (int) beingPos.x - (int) mPixelViewX + 4,
+                               (int) beingPos.y - (int) mPixelViewY + 4);
+            graphics->drawLine((int) beingPos.x - (int) mPixelViewX + 4,
+                               (int) beingPos.y - (int) mPixelViewY - 4,
+                               (int) beingPos.x - (int) mPixelViewX - 4,
+                               (int) beingPos.y - (int) mPixelViewY + 4);
+
+        }
     }
-#endif
 }
 
 void Viewport::_drawPath(Graphics *graphics, const Path &path,
