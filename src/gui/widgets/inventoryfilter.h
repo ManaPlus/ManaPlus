@@ -38,9 +38,9 @@ class InventoryFilter : public HorizontContainer, public gcn::ActionListener
     public:
         InventoryFilter(std::string group, int height, int spacing);
 
-        void add(std::string tag);
+        void addButton(std::string tag);
 
-        void add(std::string text, std::string tag);
+        void addButton(std::string text, std::string tag);
 
         void action(const gcn::ActionEvent &event);
 

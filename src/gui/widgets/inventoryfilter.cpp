@@ -31,12 +31,12 @@ InventoryFilter::InventoryFilter(std::string group, int height, int spacing):
 {
 }
 
-void InventoryFilter::add(std::string tag)
+void InventoryFilter::addButton(std::string tag)
 {
-    add(tag, tag);
+    addButton(tag, tag);
 }
 
-void InventoryFilter::add(std::string text, std::string tag)
+void InventoryFilter::addButton(std::string text, std::string tag)
 {
     if (text.empty() || tag.empty())
         return;

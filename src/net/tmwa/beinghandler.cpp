@@ -477,8 +477,8 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             srcBeing = actorSpriteManager->findBeing(msg.readInt32());
             dstBeing = actorSpriteManager->findBeing(msg.readInt32());
             msg.readInt32(); // Server tick
-            int srcSpeed = msg.readInt32(); // src speed
-            int dstSpeed = msg.readInt32(); // dst speed
+            msg.readInt32(); // src speed
+            msg.readInt32(); // dst speed
             param1 = msg.readInt32(); // Damage
             msg.readInt16(); // Skill level
             msg.readInt16(); // Div
@@ -505,7 +505,7 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
 
             msg.readInt32();   // server tick
             int srcSpeed = msg.readInt32();   // src speed
-            int dstSpeed = msg.readInt32();   // dst speed
+            msg.readInt32();   // dst speed
             param1 = msg.readInt16();
             msg.readInt16();  // param 2
             type = msg.readInt8();

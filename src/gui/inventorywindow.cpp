@@ -114,11 +114,11 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
 
     std::vector<std::string> tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)
-        mFilter->add(tags[f]);
+        mFilter->addButton(tags[f]);
 
-    mSorter->add(_("na"), "na");
-    mSorter->add(_("az"), "az");
-    mSorter->add(_("id"), "id");
+    mSorter->addButton(_("na"), "na");
+    mSorter->addButton(_("az"), "az");
+    mSorter->addButton(_("id"), "id");
 
     if (isMainInventory())
     {
