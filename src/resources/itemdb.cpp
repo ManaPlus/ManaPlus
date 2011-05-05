@@ -227,9 +227,9 @@ void ItemDB::load()
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
         int hitEffectId = XML::getProperty(node, "hit-effect-id",
-                                           paths.getIntValue("hitEffectId"));
+            paths.getIntValue("hitEffectId"));
         int criticalEffectId = XML::getProperty(node, "critical-hit-effect-id",
-                                      paths.getIntValue("criticalHitEffectId"));
+            paths.getIntValue("criticalHitEffectId"));
 
         SpriteDisplay display;
         display.image = image;
