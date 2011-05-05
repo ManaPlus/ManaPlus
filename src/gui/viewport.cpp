@@ -292,8 +292,6 @@ void Viewport::_drawDebugPath(Graphics *graphics)
     // Get the current mouse position
     SDL_GetMouseState(&mMouseX, &mMouseY);
 
-    // Prepare the walkmask corresponding to the protocol
-    unsigned char walkMask = Map::BLOCKMASK_WALL;
     static Path debugPath;
     static Vector lastMouseDestination = Vector(0.0f, 0.0f);
     const int mousePosX = mMouseX + static_cast<int>(mPixelViewX);
@@ -310,7 +308,6 @@ void Viewport::_drawDebugPath(Graphics *graphics)
             static_cast<int>(playerPos.y - 32) / 32,
             mousePosX / 32, mousePosY / 32, 0, 500);
 
-
         lastMouseDestination = mouseDestination;
     }
     _drawPath(graphics, debugPath, userPalette->getColorWithAlpha(
@@ -326,8 +323,6 @@ void Viewport::_drawDebugPath(Graphics *graphics)
         Being *being = dynamic_cast<Being*>(*it);
         if (being && being != player_node)
         {
-            const Vector &beingPos = being->getPosition();
-            int radius = being->getCollisionRadius();
             Path beingPath = being->getPath();
 
             _drawPath(graphics, beingPath, userPalette->getColorWithAlpha(
