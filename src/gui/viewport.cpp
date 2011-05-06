@@ -390,7 +390,6 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     if (Being::isTalking())
         return;
 
-    mPlayerFollowMouse = false;
 
     const int pixelX = event.getX() + static_cast<int>(mPixelViewX);
     const int pixelY = event.getY() + static_cast<int>(mPixelViewY);
@@ -398,6 +397,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     // Right click might open a popup
     if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
+        mPlayerFollowMouse = false;
         if (mHoverBeing)
         {
             if (actorSpriteManager)
@@ -434,6 +434,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     // If a popup is active, just remove it
     if (mPopupMenu->isVisible())
     {
+        mPlayerFollowMouse = false;
         mPopupMenu->setVisible(false);
         return;
     }
@@ -488,6 +489,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     }
     else if (event.getButton() == gcn::MouseEvent::MIDDLE)
     {
+        mPlayerFollowMouse = false;
         // Find the being nearest to the clicked position
         if (actorSpriteManager)
         {
@@ -526,7 +528,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
         {
             if (mLocalWalkTime != player_node->getActionTime())
             {
-                mLocalWalkTime = player_node->getActionTime();
+                mLocalWalkTime = cur_time;
                 int destX = static_cast<int>((static_cast<float>(event.getX())
                     + mPixelViewX)
                     / static_cast<float>(mMap->getTileWidth()));
@@ -534,7 +536,24 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
                     + mPixelViewY)
                     / static_cast<float>(mMap->getTileHeight()));
                 player_node->unSetPickUpTarget();
-                player_node->setDestination(destX, destY);
+                if (!player_node->navigateTo(destX, destY))
+                {
+                    int playerX = player_node->getTileX();
+                    int playerY = player_node->getTileY();
+                    if (playerX != destX && playerY != destY)
+                    {
+                        if (playerX > destX)
+                            playerX --;
+                        else if (playerX < destX)
+                            playerX ++;
+                        if (playerY > destY)
+                            playerY --;
+                        else if (playerY < destY)
+                            playerY ++;
+                        if (mMap->getWalk(playerX, playerY, 0))
+                            player_node->navigateTo(playerX, playerY);
+                    }
+                }
             }
         }
     }
@@ -544,6 +563,7 @@ void Viewport::mouseReleased(gcn::MouseEvent &event _UNUSED_)
 {
     mPlayerFollowMouse = false;
 
+    player_node->navigateClean();
     // Only useful for eAthena but doesn't hurt under ManaServ
     mLocalWalkTime = -1;
 }

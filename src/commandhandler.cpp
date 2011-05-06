@@ -690,7 +690,7 @@ void CommandHandler::handleNavigate(const std::string &args,
     if (parse2Int(args, &x, &y))
         player_node->navigateTo(x, y);
     else
-        player_node->naviageClean();
+        player_node->navigateClean();
 }
 
 bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)

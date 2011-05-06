@@ -327,11 +327,11 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void afkRespond(ChatTab *tab, const std::string &nick);
 
-        void navigateTo(int x, int y);
+        bool navigateTo(int x, int y);
 
         void navigateTo(Being *being);
 
-        void naviageClean();
+        void navigateClean();
 
         void updateCoords();
 

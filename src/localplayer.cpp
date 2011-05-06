@@ -2771,7 +2771,7 @@ void LocalPlayer::moveByDirection(unsigned char dir)
 void LocalPlayer::specialMove(unsigned char direction)
 {
     if (direction && (mNavigateX || mNavigateY))
-        naviageClean();
+        navigateClean();
 
     if (direction && (getInvertDirection() >= 2
         && getInvertDirection() <= 4)
@@ -2922,7 +2922,7 @@ void LocalPlayer::setMap(Map *map)
         if (socialWindow)
             socialWindow->updateActiveList();
     }
-    naviageClean();
+    navigateClean();
     mCrossX = 0;
     mCrossY = 0;
 
@@ -3128,7 +3128,7 @@ void LocalPlayer::changeAwayMode()
             chatWindow->clearAwayLog();
 
         cancelFollow();
-        naviageClean();
+        navigateClean();
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
         mAwayDialog = new OkDialog(_("Away"),
@@ -3187,14 +3187,14 @@ void LocalPlayer::afkRespond(ChatTab *tab, const std::string &nick)
     }
 }
 
-void LocalPlayer::navigateTo(int x, int y)
+bool LocalPlayer::navigateTo(int x, int y)
 {
     if (!mMap)
-        return;
+        return false;
 
     SpecialLayer *tmpLayer = mMap->getTempLayer();
     if (!tmpLayer)
-        return;
+        return false;
 
     const Vector &playerPos = getPosition();
     mShowNavigePath = true;
@@ -3213,6 +3213,7 @@ void LocalPlayer::navigateTo(int x, int y)
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
+    return !mNavigatePath.empty();
 }
 
 void LocalPlayer::navigateTo(Being *being)
@@ -3243,7 +3244,7 @@ void LocalPlayer::navigateTo(Being *being)
         tmpLayer->addRoad(mNavigatePath);
 }
 
-void LocalPlayer::naviageClean()
+void LocalPlayer::navigateClean()
 {
     if (!mMap)
         return;
@@ -3309,14 +3310,14 @@ void LocalPlayer::updateCoords()
             {
                 if (!actorSpriteManager)
                 {
-                    naviageClean();
+                    navigateClean();
                     return;
                 }
 
                 Being* being = actorSpriteManager->findBeing(mNavigateId);
                 if (!being)
                 {
-                    naviageClean();
+                    navigateClean();
                     return;
                 }
                 mNavigateX = being->getTileX();
@@ -3325,7 +3326,7 @@ void LocalPlayer::updateCoords()
 
             if (mNavigateX == x && mNavigateY == y)
             {
-                naviageClean();
+                navigateClean();
                 return;
             }
             else
@@ -3733,7 +3734,7 @@ void LocalPlayer::fixAttackTarget()
 
 void LocalPlayer::respawn()
 {
-    naviageClean();
+    navigateClean();
 }
 
 int LocalPlayer::getTargetTime()

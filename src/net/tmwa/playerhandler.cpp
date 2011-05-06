@@ -249,7 +249,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
                     player_node->setAction(Being::STAND);
                     player_node->setTileCoords(x, y);
-                    player_node->naviageClean();
+                    player_node->navigateClean();
 //                    player_node->updateNavigateList();
                 }
 
