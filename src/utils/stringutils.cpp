@@ -457,3 +457,22 @@ std::vector<std::string> getLang()
         langs.push_back(lang.substr(0, dot));
     return langs;
 }
+
+std::string packList(std::list<std::string> &list)
+{
+    std::list<std::string>::iterator i = list.begin();
+    std::string str = "";
+    while (i != list.end())
+    {
+        str = str + (*i) + "|";
+        ++ i;
+    }
+    if (str.size() > 1)
+        str = str.substr(0, str.size() - 1);
+    return str;
+}
+
+std::list<std::string> unpackList(const std::string str)
+{
+    return splitToStringList(str, '|');
+}

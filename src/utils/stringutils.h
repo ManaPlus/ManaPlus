@@ -180,4 +180,8 @@ std::string combineDye2(std::string file, std::string dye);
 
 std::vector<std::string> getLang();
 
+std::string packList(std::list<std::string> &list);
+
+std::list<std::string> unpackList(const std::string str);
+
 #endif // UTILS_STRINGUTILS_H

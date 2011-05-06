@@ -180,7 +180,7 @@ ActorSpriteManager::ActorSpriteManager() :
     config.addListener("cyclePlayers", this);
     config.addListener("cycleMonsters", this);
 
-    addAttackMob("");
+    loadAttackList();
 }
 
 ActorSpriteManager::~ActorSpriteManager()
@@ -189,6 +189,7 @@ ActorSpriteManager::~ActorSpriteManager()
     config.removeListener("targetOnlyReachable", this);
     config.removeListener("cyclePlayers", this);
     config.removeListener("cycleMonsters", this);
+    storeAttackList();
     clear();
 }
 
@@ -1311,4 +1312,58 @@ int ActorSpriteManager::getAttackMobIndex(std::string name)
         return -1;
 
     return (*i).second;
+}
+
+void ActorSpriteManager::loadAttackList()
+{
+    bool empty = false;
+    std::list<std::string> list = unpackList(
+        serverConfig.getValue("attackPriorityMobs", ""));
+    std::list<std::string>::iterator i = list.begin();
+    while (i != list.end())
+    {
+        if (*i == "")
+            empty = true;
+        mPriorityAttackMobs.push_back(*i);
+        mPriorityAttackMobsSet.insert(*i);
+        ++ i;
+    }
+
+    list = unpackList(serverConfig.getValue("attackMobs", ""));
+    i = list.begin();
+    while (i != list.end())
+    {
+        if (*i == "")
+            empty = true;
+        mAttackMobs.push_back(*i);
+        mAttackMobsSet.insert(*i);
+        ++ i;
+    }
+
+    list = unpackList(serverConfig.getValue("ignoreAttackMobs", ""));
+    i = list.begin();
+    while (i != list.end())
+    {
+        if (*i == "")
+            empty = true;
+        mIgnoreAttackMobs.push_back(*i);
+        mIgnoreAttackMobsSet.insert(*i);
+        ++ i;
+    }
+
+    if (!empty)
+    {
+        mAttackMobs.push_back("");
+        mAttackMobsSet.insert("");
+    }
+
+    rebuildAttackMobs();
+    rebuildPriorityAttackMobs();
+}
+
+void ActorSpriteManager::storeAttackList()
+{
+    serverConfig.setValue("attackPriorityMobs", packList(mPriorityAttackMobs));
+    serverConfig.setValue("attackMobs", packList(mAttackMobs));
+    serverConfig.setValue("ignoreAttackMobs", packList(mIgnoreAttackMobs));
 }

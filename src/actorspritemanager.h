@@ -305,6 +305,9 @@ class ActorSpriteManager: public ConfigListener
                                       Being::Type type, int x, int y,
                                       Being *excluded = 0) const;
 
+        void loadAttackList();
+        void storeAttackList();
+
         ActorSprites mActors;
         ActorSprites mDeleteActors;
         Map *mMap;
