@@ -563,7 +563,6 @@ void Viewport::mouseReleased(gcn::MouseEvent &event _UNUSED_)
 {
     mPlayerFollowMouse = false;
 
-    player_node->navigateClean();
     // Only useful for eAthena but doesn't hurt under ManaServ
     mLocalWalkTime = -1;
 }
