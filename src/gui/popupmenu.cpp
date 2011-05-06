@@ -105,7 +105,7 @@ PopupMenu::PopupMenu():
 
 void PopupMenu::showPopup(int x, int y, Being *being)
 {
-    if (!being || !player_node)
+    if (!being || !player_node || !actorSpriteManager)
         return;
 
     mBeingId = being->getId();
@@ -254,9 +254,9 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 if (config.getBoolValue("enableAttackFilter"))
                 {
                     mBrowserBox->addRow("##3---");
-                    if (player_node->isInAttackList(name)
-                        || player_node->isInIgnoreAttackList(name)
-                        || player_node->isInPriorityAttackList(name))
+                    if (actorSpriteManager->isInAttackList(name)
+                        || actorSpriteManager->isInIgnoreAttackList(name)
+                        || actorSpriteManager->isInPriorityAttackList(name))
                     {
                         mBrowserBox->addRow(
                             _("@@remove attack|Remove from attack list@@"));
@@ -1149,48 +1149,49 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "remove attack" && being)
     {
-        if (player_node && being->getType() == Being::MONSTER)
+        if (actorSpriteManager && being->getType() == Being::MONSTER)
         {
-            player_node->removeAttackMob(being->getName());
+            actorSpriteManager->removeAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "add attack" && being)
     {
-        if (player_node && being->getType() == Being::MONSTER)
+        if (actorSpriteManager && being->getType() == Being::MONSTER)
         {
-            player_node->addAttackMob(being->getName());
+            actorSpriteManager->addAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "add attack priority" && being)
     {
-        if (player_node && being->getType() == Being::MONSTER)
+        if (actorSpriteManager && being->getType() == Being::MONSTER)
         {
-            player_node->addPriorityAttackMob(being->getName());
+            actorSpriteManager->addPriorityAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "add attack ignore" && being)
     {
-        if (player_node && being->getType() == Being::MONSTER)
+        if (actorSpriteManager && being->getType() == Being::MONSTER)
         {
-            player_node->addIgnoreAttackMob(being->getName());
+            actorSpriteManager->addIgnoreAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
         }
     }
     else if (link == "attack moveup")
     {
-        if (player_node)
+        if (actorSpriteManager)
         {
-            int idx = player_node->getAttackMobIndex(mNick);
+            int idx = actorSpriteManager->getAttackMobIndex(mNick);
             if (idx > 0)
             {
-                std::list<std::string> mobs = player_node->getAttackMobs();
+                std::list<std::string> mobs
+                    = actorSpriteManager->getAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1199,8 +1200,8 @@ void PopupMenu::handleLink(const std::string &link,
                     {
                         -- it2;
                         mobs.splice(it2, mobs, it);
-                        player_node->setAttackMobs(mobs);
-                        player_node->rebuildAttackMobs();
+                        actorSpriteManager->setAttackMobs(mobs);
+                        actorSpriteManager->rebuildAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1214,13 +1215,13 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "priority moveup")
     {
-        if (player_node)
+        if (actorSpriteManager)
         {
-            int idx = player_node->getPriorityAttackMobIndex(mNick);
+            int idx = actorSpriteManager->getPriorityAttackMobIndex(mNick);
             if (idx > 0)
             {
                 std::list<std::string> mobs
-                    = player_node->getPriorityAttackMobs();
+                    = actorSpriteManager->getPriorityAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1229,8 +1230,8 @@ void PopupMenu::handleLink(const std::string &link,
                     {
                         -- it2;
                         mobs.splice(it2, mobs, it);
-                        player_node->setPriorityAttackMobs(mobs);
-                        player_node->rebuildPriorityAttackMobs();
+                        actorSpriteManager->setPriorityAttackMobs(mobs);
+                        actorSpriteManager->rebuildPriorityAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1244,13 +1245,14 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "attack movedown")
     {
-        if (player_node)
+        if (actorSpriteManager)
         {
-            int idx = player_node->getAttackMobIndex(mNick);
-            int size = player_node->getAttackMobsSize();
+            int idx = actorSpriteManager->getAttackMobIndex(mNick);
+            int size = actorSpriteManager->getAttackMobsSize();
             if (idx + 1 < size)
             {
-                std::list<std::string> mobs = player_node->getAttackMobs();
+                std::list<std::string> mobs
+                    = actorSpriteManager->getAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1262,8 +1264,8 @@ void PopupMenu::handleLink(const std::string &link,
                             break;
 
                         mobs.splice(it, mobs, it2);
-                        player_node->setAttackMobs(mobs);
-                        player_node->rebuildAttackMobs();
+                        actorSpriteManager->setAttackMobs(mobs);
+                        actorSpriteManager->rebuildAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1279,12 +1281,12 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (player_node)
         {
-            int idx = player_node->getPriorityAttackMobIndex(mNick);
-            int size = player_node->getPriorityAttackMobsSize();
+            int idx = actorSpriteManager->getPriorityAttackMobIndex(mNick);
+            int size = actorSpriteManager->getPriorityAttackMobsSize();
             if (idx + 1 < size)
             {
                 std::list<std::string> mobs
-                    = player_node->getPriorityAttackMobs();
+                    = actorSpriteManager->getPriorityAttackMobs();
                 std::list<std::string>::iterator it = mobs.begin();
                 std::list<std::string>::iterator it2 = mobs.begin();
                 while (it != mobs.end())
@@ -1296,8 +1298,8 @@ void PopupMenu::handleLink(const std::string &link,
                             break;
 
                         mobs.splice(it, mobs, it2);
-                        player_node->setPriorityAttackMobs(mobs);
-                        player_node->rebuildPriorityAttackMobs();
+                        actorSpriteManager->setPriorityAttackMobs(mobs);
+                        actorSpriteManager->rebuildPriorityAttackMobs();
                         break;
                     }
                     ++ it;
@@ -1311,24 +1313,24 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "attack remove")
     {
-        if (player_node)
+        if (actorSpriteManager)
         {
             if (mNick.empty())
             {
-                if (player_node->isInAttackList(mNick))
+                if (actorSpriteManager->isInAttackList(mNick))
                 {
-                    player_node->removeAttackMob(mNick);
-                    player_node->addIgnoreAttackMob(mNick);
+                    actorSpriteManager->removeAttackMob(mNick);
+                    actorSpriteManager->addIgnoreAttackMob(mNick);
                 }
                 else
                 {
-                    player_node->removeAttackMob(mNick);
-                    player_node->addAttackMob(mNick);
+                    actorSpriteManager->removeAttackMob(mNick);
+                    actorSpriteManager->addAttackMob(mNick);
                 }
             }
             else
             {
-                player_node->removeAttackMob(mNick);
+                actorSpriteManager->removeAttackMob(mNick);
             }
             if (socialWindow)
                 socialWindow->updateAttackFilter();
@@ -1696,8 +1698,8 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
     {
         case MapItem::ATTACK:
         {
-            int idx = player_node->getAttackMobIndex(name);
-            int size = player_node->getAttackMobsSize();
+            int idx = actorSpriteManager->getAttackMobIndex(name);
+            int size = actorSpriteManager->getAttackMobsSize();
             if (idx > 0)
             {
                 mBrowserBox->addRow(strprintf(
@@ -1714,8 +1716,8 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
         }
         case MapItem::PRIORITY:
         {
-            int idx = player_node->getPriorityAttackMobIndex(name);
-            int size = player_node->getPriorityAttackMobsSize();
+            int idx = actorSpriteManager->getPriorityAttackMobIndex(name);
+            int size = actorSpriteManager->getPriorityAttackMobsSize();
             if (idx > 0)
             {
                 mBrowserBox->addRow(strprintf(

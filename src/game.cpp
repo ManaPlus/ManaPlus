@@ -224,7 +224,6 @@ static void createGuiWindows()
     whoIsOnline = new WhoIsOnline();
     killStats = new KillStats;
     socialWindow = new SocialWindow();
-    socialWindow->updateAttackFilter();
 
     localChatTab = new ChatTab(_("General"));
     localChatTab->setAllowHighlight(false);

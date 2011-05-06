@@ -803,12 +803,13 @@ public:
 
     void updateList()
     {
-        if (!socialWindow || !player_node)
+        if (!socialWindow || !player_node || !actorSpriteManager)
             return;
 
         std::vector<Avatar*> *avatars = mBeings->getMembers();
 
-        std::list<std::string> mobs = player_node->getPriorityAttackMobs();
+        std::list<std::string> mobs
+            = actorSpriteManager->getPriorityAttackMobs();
         std::list<std::string>::iterator i = mobs.begin();
 
         std::vector<Avatar*>::iterator ia = avatars->begin();
@@ -860,7 +861,7 @@ public:
         ava->setY(0);
         avatars->push_back(ava);
 
-        mobs = player_node->getAttackMobs();
+        mobs = actorSpriteManager->getAttackMobs();
         i = mobs.begin();
 
         while (i != mobs.end())
@@ -895,7 +896,7 @@ public:
         ava->setY(0);
         avatars->push_back(ava);
 
-        mobs = player_node->getIgnoreAttackMobs();
+        mobs = actorSpriteManager->getIgnoreAttackMobs();
         i = mobs.begin();
 
         while (i != mobs.end())

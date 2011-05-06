@@ -998,11 +998,14 @@ void CommandHandler::handleUptime(const std::string &args _UNUSED_,
 void CommandHandler::handleAddPriorityAttack(const std::string &args,
                                              ChatTab *tab _UNUSED_)
 {
-    if (!player_node || player_node->isInPriorityAttackList(args))
+    if (!actorSpriteManager
+        || actorSpriteManager->isInPriorityAttackList(args))
+    {
         return;
+    }
 
-    player_node->removeAttackMob(args);
-    player_node->addPriorityAttackMob(args);
+    actorSpriteManager->removeAttackMob(args);
+    actorSpriteManager->addPriorityAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -1011,11 +1014,11 @@ void CommandHandler::handleAddPriorityAttack(const std::string &args,
 void CommandHandler::handleAddAttack(const std::string &args,
                                      ChatTab *tab _UNUSED_)
 {
-    if (!player_node || player_node->isInAttackList(args))
+    if (!actorSpriteManager || actorSpriteManager->isInAttackList(args))
         return;
 
-    player_node->removeAttackMob(args);
-    player_node->addAttackMob(args);
+    actorSpriteManager->removeAttackMob(args);
+    actorSpriteManager->addAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -1024,10 +1027,13 @@ void CommandHandler::handleAddAttack(const std::string &args,
 void CommandHandler::handleRemoveAttack(const std::string &args,
                                         ChatTab *tab _UNUSED_)
 {
-    if (!player_node || args.empty() || !player_node->isInAttackList(args))
+    if (!actorSpriteManager || args.empty()
+        || !actorSpriteManager->isInAttackList(args))
+    {
         return;
+    }
 
-    player_node->removeAttackMob(args);
+    actorSpriteManager->removeAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();
@@ -1036,11 +1042,11 @@ void CommandHandler::handleRemoveAttack(const std::string &args,
 void CommandHandler::handleAddIgnoreAttack(const std::string &args,
                                            ChatTab *tab _UNUSED_)
 {
-    if (!player_node || player_node->isInIgnoreAttackList(args))
+    if (!actorSpriteManager || actorSpriteManager->isInIgnoreAttackList(args))
         return;
 
-    player_node->removeAttackMob(args);
-    player_node->addIgnoreAttackMob(args);
+    actorSpriteManager->removeAttackMob(args);
+    actorSpriteManager->addIgnoreAttackMob(args);
 
     if (socialWindow)
         socialWindow->updateAttackFilter();

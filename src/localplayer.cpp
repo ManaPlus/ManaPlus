@@ -179,7 +179,6 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("showJobExp", this);
     setShowName(config.getBoolValue("showownname"));
     beingInfoCache.clear();
-    addAttackMob("");
 }
 
 LocalPlayer::~LocalPlayer()
@@ -3810,121 +3809,6 @@ void LocalPlayer::checkNewName(Being *being)
         sound.playGuiSfx("system/newmessage.ogg");
         mWaitFor = "";
     }
-}
-
-void LocalPlayer::removeAttackMob(const std::string &name)
-{
-    mPriorityAttackMobs.remove(name);
-    mAttackMobs.remove(name);
-    mIgnoreAttackMobs.remove(name);
-    mPriorityAttackMobsSet.erase(name);
-    mAttackMobsSet.erase(name);
-    mIgnoreAttackMobsSet.erase(name);
-    rebuildAttackMobs();
-    rebuildPriorityAttackMobs();
-}
-
-void LocalPlayer::addAttackMob(std::string name)
-{
-    int size = getAttackMobsSize();
-    if (size > 0)
-    {
-        int idx = getAttackMobIndex("");
-        if (idx + 1 == size)
-        {
-            std::list<std::string>::iterator itr = mAttackMobs.end();
-            -- itr;
-            mAttackMobs.insert(itr, name);
-        }
-        else
-        {
-            mAttackMobs.push_back(name);
-        }
-    }
-    else
-    {
-        mAttackMobs.push_back(name);
-    }
-    mAttackMobsSet.insert(name);
-    rebuildAttackMobs();
-    rebuildPriorityAttackMobs();
-}
-
-void LocalPlayer::addPriorityAttackMob(std::string name)
-{
-    int size = getPriorityAttackMobsSize();
-    if (size > 0)
-    {
-        int idx = getPriorityAttackMobIndex("");
-        if (idx + 1 == size)
-        {
-            std::list<std::string>::iterator itr = mPriorityAttackMobs.end();
-            -- itr;
-            mPriorityAttackMobs.insert(itr, name);
-        }
-        else
-        {
-            mPriorityAttackMobs.push_back(name);
-        }
-    }
-    else
-    {
-        mPriorityAttackMobs.push_back(name);
-    }
-    mPriorityAttackMobsSet.insert(name);
-    rebuildPriorityAttackMobs();
-}
-
-void LocalPlayer::addIgnoreAttackMob(std::string name)
-{
-    mIgnoreAttackMobs.push_back(name);
-    mIgnoreAttackMobsSet.insert(name);
-    rebuildAttackMobs();
-    rebuildPriorityAttackMobs();
-}
-
-void LocalPlayer::rebuildPriorityAttackMobs()
-{
-    mPriorityAttackMobsMap.clear();
-    std::list<std::string>::iterator i = mPriorityAttackMobs.begin();
-    int cnt = 0;
-    while (i != mPriorityAttackMobs.end())
-    {
-        mPriorityAttackMobsMap[*i] = cnt;
-        ++ i;
-        ++ cnt;
-    }
-}
-
-void LocalPlayer::rebuildAttackMobs()
-{
-    mAttackMobsMap.clear();
-    std::list<std::string>::iterator i = mAttackMobs.begin();
-    int cnt = 0;
-    while (i != mAttackMobs.end())
-    {
-        mAttackMobsMap[*i] = cnt;
-        ++ i;
-        ++ cnt;
-    }
-}
-
-int LocalPlayer::getPriorityAttackMobIndex(std::string name)
-{
-    std::map<std::string, int>::iterator i = mPriorityAttackMobsMap.find(name);
-    if (i == mPriorityAttackMobsMap.end())
-        return -1;
-
-    return (*i).second;
-}
-
-int LocalPlayer::getAttackMobIndex(std::string name)
-{
-    std::map<std::string, int>::iterator i = mAttackMobsMap.find(name);
-    if (i == mAttackMobsMap.end())
-        return -1;
-
-    return (*i).second;
 }
 
 void LocalPlayer::resetYellowBar()

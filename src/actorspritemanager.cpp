@@ -29,11 +29,13 @@
 #include "playerinfo.h"
 #include "playerrelations.h"
 
-#include "gui/widgets/chattab.h"
-#include "gui/killstats.h"
 #include "gui/chatwindow.h"
+#include "gui/killstats.h"
 #include "gui/skilldialog.h"
+#include "gui/socialwindow.h"
 #include "gui/viewport.h"
+
+#include "gui/widgets/chattab.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -177,6 +179,8 @@ ActorSpriteManager::ActorSpriteManager() :
     config.addListener("targetOnlyReachable", this);
     config.addListener("cyclePlayers", this);
     config.addListener("cycleMonsters", this);
+
+    addAttackMob("");
 }
 
 ActorSpriteManager::~ActorSpriteManager()
@@ -200,6 +204,8 @@ void ActorSpriteManager::setPlayer(LocalPlayer *player)
 {
     player_node = player;
     mActors.insert(player);
+    if (socialWindow)
+        socialWindow->updateAttackFilter();
 }
 
 Being *ActorSpriteManager::createBeing(int id, ActorSprite::Type type,
@@ -665,11 +671,11 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
     bool ignoreDefault = false;
     if (filtered)
     {
-        attackMobs = player_node->getAttackMobsSet();
-        priorityMobs = player_node->getPriorityAttackMobsSet();
-        ignoreAttackMobs = player_node->getIgnoreAttackMobsSet();
-        attackMobsMap = player_node->getAttackMobsMap();
-        priorityMobsMap = player_node->getPriorityAttackMobsMap();
+        attackMobs = mAttackMobsSet;
+        priorityMobs = mPriorityAttackMobsSet;
+        ignoreAttackMobs = mIgnoreAttackMobsSet;
+        attackMobsMap = mAttackMobsMap;
+        priorityMobsMap = mPriorityAttackMobsMap;
         beingSorter.attackBeings = &attackMobsMap;
         beingSorter.priorityBeings = &priorityMobsMap;
         if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
@@ -1190,4 +1196,119 @@ void ActorSpriteManager::optionChanged(const std::string &name)
         mCyclePlayers = config.getBoolValue("cyclePlayers");
     else if (name == "cycleMonsters")
         mCycleMonsters = config.getBoolValue("cycleMonsters");
+}
+
+void ActorSpriteManager::removeAttackMob(const std::string &name)
+{
+    mPriorityAttackMobs.remove(name);
+    mAttackMobs.remove(name);
+    mIgnoreAttackMobs.remove(name);
+    mPriorityAttackMobsSet.erase(name);
+    mAttackMobsSet.erase(name);
+    mIgnoreAttackMobsSet.erase(name);
+    rebuildAttackMobs();
+    rebuildPriorityAttackMobs();
+}
+
+void ActorSpriteManager::addAttackMob(std::string name)
+{
+    int size = getAttackMobsSize();
+    if (size > 0)
+    {
+        int idx = getAttackMobIndex("");
+        if (idx + 1 == size)
+        {
+            std::list<std::string>::iterator itr = mAttackMobs.end();
+            -- itr;
+            mAttackMobs.insert(itr, name);
+        }
+        else
+        {
+            mAttackMobs.push_back(name);
+        }
+    }
+    else
+    {
+        mAttackMobs.push_back(name);
+    }
+    mAttackMobsSet.insert(name);
+    rebuildAttackMobs();
+    rebuildPriorityAttackMobs();
+}
+
+void ActorSpriteManager::addPriorityAttackMob(std::string name)
+{
+    int size = getPriorityAttackMobsSize();
+    if (size > 0)
+    {
+        int idx = getPriorityAttackMobIndex("");
+        if (idx + 1 == size)
+        {
+            std::list<std::string>::iterator itr = mPriorityAttackMobs.end();
+            -- itr;
+            mPriorityAttackMobs.insert(itr, name);
+        }
+        else
+        {
+            mPriorityAttackMobs.push_back(name);
+        }
+    }
+    else
+    {
+        mPriorityAttackMobs.push_back(name);
+    }
+    mPriorityAttackMobsSet.insert(name);
+    rebuildPriorityAttackMobs();
+}
+
+void ActorSpriteManager::addIgnoreAttackMob(std::string name)
+{
+    mIgnoreAttackMobs.push_back(name);
+    mIgnoreAttackMobsSet.insert(name);
+    rebuildAttackMobs();
+    rebuildPriorityAttackMobs();
+}
+
+void ActorSpriteManager::rebuildPriorityAttackMobs()
+{
+    mPriorityAttackMobsMap.clear();
+    std::list<std::string>::iterator i = mPriorityAttackMobs.begin();
+    int cnt = 0;
+    while (i != mPriorityAttackMobs.end())
+    {
+        mPriorityAttackMobsMap[*i] = cnt;
+        ++ i;
+        ++ cnt;
+    }
+}
+
+void ActorSpriteManager::rebuildAttackMobs()
+{
+    mAttackMobsMap.clear();
+    std::list<std::string>::iterator i = mAttackMobs.begin();
+    int cnt = 0;
+    while (i != mAttackMobs.end())
+    {
+        mAttackMobsMap[*i] = cnt;
+        ++ i;
+        ++ cnt;
+    }
+}
+
+int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
+{
+    std::map<std::string, int>::iterator i = mPriorityAttackMobsMap.find(name);
+    if (i == mPriorityAttackMobsMap.end())
+        return -1;
+
+    return (*i).second;
+}
+
+int ActorSpriteManager::getAttackMobIndex(std::string name)
+{
+    std::map<std::string, int>::iterator i = mAttackMobsMap.find(name);
+    if (i == mAttackMobsMap.end())
+        return -1;
+
+    return (*i).second;
 }

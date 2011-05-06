@@ -229,6 +229,73 @@ class ActorSpriteManager: public ConfigListener
 
         void optionChanged(const std::string &name);
 
+        void removeAttackMob(const std::string &name);
+
+        void addPriorityAttackMob(std::string name);
+
+        void addAttackMob(std::string name);
+
+        void addIgnoreAttackMob(std::string name);
+
+        std::list<std::string> getPriorityAttackMobs()
+        { return mPriorityAttackMobs; }
+
+        std::list<std::string> getAttackMobs()
+        { return mAttackMobs; }
+
+        void setPriorityAttackMobs(std::list<std::string> mobs)
+        { mPriorityAttackMobs = mobs; }
+
+        void setAttackMobs(std::list<std::string> mobs)
+        { mAttackMobs = mobs; }
+
+        int getPriorityAttackMobsSize()
+        { return mPriorityAttackMobs.size(); }
+
+        int getAttackMobsSize()
+        { return mAttackMobs.size(); }
+
+        std::list<std::string> getIgnoreAttackMobs()
+        { return mIgnoreAttackMobs; }
+
+        std::set<std::string> getAttackMobsSet()
+        { return mAttackMobsSet; }
+
+        std::set<std::string> getPriorityAttackMobsSet()
+        { return mPriorityAttackMobsSet; }
+
+        std::set<std::string> getIgnoreAttackMobsSet()
+        { return mIgnoreAttackMobsSet; }
+
+        void rebuildPriorityAttackMobs();
+
+        void rebuildAttackMobs();
+
+        bool isInAttackList(const std::string &name)
+        { return mAttackMobsSet.find(name) != mAttackMobsSet.end(); }
+
+        bool isInPriorityAttackList(const std::string &name)
+        {
+            return mPriorityAttackMobsSet.find(name)
+                != mPriorityAttackMobsSet.end();
+        }
+
+        bool isInIgnoreAttackList(const std::string &name)
+        {
+            return mIgnoreAttackMobsSet.find(name)
+                != mIgnoreAttackMobsSet.end();
+        }
+
+        std::map<std::string, int> getAttackMobsMap()
+        { return mAttackMobsMap; }
+
+        std::map<std::string, int> getPriorityAttackMobsMap()
+        { return mPriorityAttackMobsMap; }
+
+        int getAttackMobIndex(std::string name);
+
+        int getPriorityAttackMobIndex(std::string name);
+
     protected:
         bool validateBeing(Being *aroundBeing, Being* being,
                            Being::Type type, Being* excluded = 0,
@@ -248,6 +315,15 @@ class ActorSpriteManager: public ConfigListener
         bool mTargetOnlyReachable;
         bool mCyclePlayers;
         bool mCycleMonsters;
+
+        std::list<std::string> mPriorityAttackMobs;
+        std::list<std::string> mAttackMobs;
+        std::list<std::string> mIgnoreAttackMobs;
+        std::set<std::string> mPriorityAttackMobsSet;
+        std::set<std::string> mAttackMobsSet;
+        std::set<std::string> mIgnoreAttackMobsSet;
+        std::map<std::string, int> mPriorityAttackMobsMap;
+        std::map<std::string, int> mAttackMobsMap;
 };
 
 extern ActorSpriteManager *actorSpriteManager;
