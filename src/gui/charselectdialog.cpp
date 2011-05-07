@@ -32,8 +32,10 @@
 #include "gui/changepassworddialog.h"
 #include "gui/charcreatedialog.h"
 #include "gui/confirmdialog.h"
+#include "gui/login.h"
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"
+#include "gui/textdialog.h"
 #include "gui/unregisterdialog.h"
 
 #include "gui/widgets/button.h"
@@ -81,7 +83,7 @@ class CharDeleteConfirm : public ConfirmDialog
         void action(const gcn::ActionEvent &event)
         {
             if (event.getId() == "yes" && mMaster)
-                mMaster->attemptCharacterDelete(mIndex);
+                mMaster->askPasswordForDeletion(mIndex);
 
             ConfirmDialog::action(event);
         }
@@ -125,7 +127,9 @@ CharSelectDialog::CharSelectDialog(LoginData *loginData):
     mChangeEmailButton(0),
     mCharacterEntries(0),
     mLoginData(loginData),
-    mCharHandler(Net::getCharHandler())
+    mCharHandler(Net::getCharHandler()),
+    mDeleteDialog(0),
+    mDeleteIndex(-1)
 {
     setCloseButton(false);
 
@@ -235,6 +239,20 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
     {
         Client::setState(STATE_UNREGISTER);
     }
+    else if (eventId == "try delete character")
+    {
+        if (mDeleteDialog && mDeleteIndex != -1 && mDeleteDialog->getText()
+            == LoginDialog::savedPassword)
+        {
+            attemptCharacterDelete(mDeleteIndex);
+            mDeleteDialog = 0;
+        }
+        else
+        {
+            new OkDialog(_("Error"), _("Incorrect password"));
+        }
+        mDeleteIndex = -1;
+    }
 }
 
 void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
@@ -258,6 +276,16 @@ void CharSelectDialog::attemptCharacterDelete(int index)
 
     mCharHandler->deleteCharacter(mCharacterEntries[index]->getCharacter());
     lock();
+}
+
+void CharSelectDialog::askPasswordForDeletion(int index)
+{
+    mDeleteIndex = index;
+    mDeleteDialog = new TextDialog(
+        _("Enter password for deleting character"), _("Enter password:"),
+        this, true);
+    mDeleteDialog->setActionEventId("try delete character");
+    mDeleteDialog->addActionListener(this);
 }
 
 /**

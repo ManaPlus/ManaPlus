@@ -27,6 +27,7 @@
 
 #include <guichan/actionlistener.hpp>
 
+class PasswordField;
 class TextField;
 
 /**
@@ -43,7 +44,7 @@ public:
      * @see Window::Window
      */
     TextDialog(const std::string &title, const std::string &msg,
-               Window *parent = 0);
+               Window *parent = 0, bool isPassword = false);
 
     ~TextDialog();
 
@@ -68,6 +69,7 @@ private:
     static int instances;
 
     TextField *mTextField;
+    PasswordField *mPasswordField;
     gcn::Button *mOkButton;
     bool mEnabledKeyboard;
 };

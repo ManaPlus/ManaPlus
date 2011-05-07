@@ -38,6 +38,7 @@ class CharacterDisplay;
 class LocalPlayer;
 class LoginData;
 class PlayerBox;
+class TextDialog;
 
 namespace Net
 {
@@ -84,6 +85,8 @@ class CharSelectDialog : public Window, public gcn::ActionListener,
         bool selectByName(const std::string &name,
                           SelectAction action = Focus);
 
+        void askPasswordForDeletion(int index);
+
     private:
         void attemptCharacterDelete(int index);
         void attemptCharacterSelect(int index);
@@ -109,6 +112,8 @@ class CharSelectDialog : public Window, public gcn::ActionListener,
         LoginData *mLoginData;
 
         Net::CharHandler *mCharHandler;
+        TextDialog *mDeleteDialog;
+        int mDeleteIndex;
 };
 
 #endif

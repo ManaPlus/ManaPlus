@@ -26,16 +26,20 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
+#include "gui/widgets/passwordfield.h"
 #include "gui/widgets/textfield.h"
 
 #include "utils/gettext.h"
 
+#include <guichan/font.hpp>
+
 int TextDialog::instances = 0;
 
 TextDialog::TextDialog(const std::string &title, const std::string &msg,
-                       Window *parent):
+                       Window *parent, bool isPassword):
     Window(title, true, parent),
-    mTextField(new TextField)
+    mTextField(0),
+    mPasswordField(0)
 {
     mEnabledKeyboard = keyboard.isEnabled();
     keyboard.setEnabled(false);
@@ -45,11 +49,31 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     gcn::Button *cancelButton = new Button(_("Cancel"), "CANCEL", this);
 
     place(0, 0, textLabel, 4);
-    place(0, 1, mTextField, 4);
+    if (isPassword)
+    {
+        mPasswordField = new PasswordField;
+        place(0, 1, mPasswordField, 4);
+    }
+    else
+    {
+        mTextField = new TextField;
+        place(0, 1, mTextField, 4);
+    }
     place(2, 2, mOkButton);
     place(3, 2, cancelButton);
 
-    reflowLayout(static_cast<short>(textLabel->getWidth() + 20));
+    gcn::Font *font = getFont();
+    if (font)
+    {
+        int width = font->getWidth(title);
+        if (width < textLabel->getWidth())
+            width = textLabel->getWidth();
+        reflowLayout(static_cast<short>(width + 20));
+    }
+    else
+    {
+        reflowLayout(static_cast<short>(textLabel->getWidth() + 20));
+    }
 
     if (getParent())
     {
@@ -58,7 +82,10 @@ TextDialog::TextDialog(const std::string &title, const std::string &msg,
     }
     setVisible(true);
     requestModalFocus();
-    mTextField->requestFocus();
+    if (isPassword)
+        mPasswordField->requestFocus();
+    else
+        mTextField->requestFocus();
 
     instances++;
 }
@@ -79,13 +106,18 @@ void TextDialog::action(const gcn::ActionEvent &event)
 
 const std::string &TextDialog::getText() const
 {
-    return mTextField->getText();
+    if (mTextField)
+        return mTextField->getText();
+    else
+        return mPasswordField->getText();
 }
 
 void TextDialog::setText(std::string text)
 {
     if (mTextField)
         mTextField->setText(text);
+    else
+        mPasswordField->setText(text);
 }
 
 void TextDialog::close()
