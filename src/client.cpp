@@ -156,6 +156,8 @@ bool isSafeMode = false;
 int serverVersion;
 int start_time;
 
+int textures_count = 0;
+
 /**
  * Advances game logic counter.
  * Called every 10 milliseconds by SDL_AddTimer()

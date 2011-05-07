@@ -30,6 +30,7 @@
 #include "opengl1graphics.h"
 #endif
 
+#include "client.h"
 #include "log.h"
 #include "main.h"
 
@@ -217,6 +218,10 @@ void Image::unload()
     {
         glDeleteTextures(1, &mGLImage);
         mGLImage = 0;
+#ifdef DEBUG_OPENGL_LEAKS
+        if (textures_count > 0)
+            textures_count --;
+#endif
     }
 #endif
 }
@@ -675,6 +680,9 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
     glTexImage2D(mTextureType, 0, 4, tmpImage->w, tmpImage->h,
                 0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
 
+#ifdef DEBUG_OPENGL_LEAKS
+    textures_count ++;
+#endif
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

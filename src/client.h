@@ -63,6 +63,7 @@ extern volatile int cur_time;
 extern bool isSafeMode;
 extern int serverVersion;
 extern int start_time;
+extern int textures_count;
 
 class ErrorListener : public gcn::ActionListener
 {

@@ -63,6 +63,7 @@ class MapDebugTab : public DebugTab
         Label *mParticleCountLabel;
         Label *mMapActorCountLabel;
         Label *mXYLabel;
+        Label *mTexturesLabel;
         int mUpdateTime;
         Label *mFPSLabel;
         std::string mFPSText;

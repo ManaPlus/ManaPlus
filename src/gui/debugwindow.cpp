@@ -124,7 +124,8 @@ void DebugWindow::widgetResized(const gcn::Event &event)
     mTabs->setDimension(gcn::Rectangle(0, 0, getWidth(), getHeight()));
 }
 
-MapDebugTab::MapDebugTab()
+MapDebugTab::MapDebugTab() :
+    mTexturesLabel(0)
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -169,7 +170,12 @@ MapDebugTab::MapDebugTab()
     place(0, 5, mTileMouseLabel, 2);
     place(0, 6, mParticleCountLabel, 2);
     place(0, 7, mMapActorCountLabel, 2);
-
+#ifdef USE_OPENGL
+#ifdef DEBUG_OPENGL_LEAKS
+    mTexturesLabel = new Label(strprintf("%s %s", _("Textures count:"), "?"));
+    place(0, 8, mTexturesLabel, 2);
+#endif
+#endif
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
     setDimension(gcn::Rectangle(0, 0, 600, 300));
@@ -215,6 +221,12 @@ void MapDebugTab::logic()
             mMapActorCountLabel->setCaption(
                 strprintf("%s %d", _("Map actors count:"),
                 map->getActorsCount()));
+#ifdef USE_OPENGL
+#ifdef DEBUG_OPENGL_LEAKS
+            mTexturesLabel->setCaption(strprintf("%s %d",
+                _("Textures count:"), textures_count));
+#endif
+#endif
         }
     }
     else
