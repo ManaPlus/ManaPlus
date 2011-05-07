@@ -200,8 +200,8 @@ void InventoryHandler::handleMessage(Net::MessageIn &msg)
                 for (int i = 0; i < 4; i++)
                     cards[i] = msg.readInt16();
 
-                index -= (msg.getId() == SMSG_PLAYER_INVENTORY) ?
-                         INVENTORY_OFFSET : STORAGE_OFFSET;
+                index -= ((msg.getId() == SMSG_PLAYER_INVENTORY) ?
+                         INVENTORY_OFFSET : STORAGE_OFFSET);
 
                 if (debugInventory)
                 {

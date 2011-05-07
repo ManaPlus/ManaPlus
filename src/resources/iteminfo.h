@@ -114,7 +114,9 @@ class ItemInfo
             mAttackAction(SpriteAction::INVALID),
             mAttackRange(0),
             mColors(0),
-            mColorList("")
+            mColorList(""),
+            mHitEffectId(0),
+            mCriticalHitEffectId(0)
         {
         }
 
@@ -268,8 +270,6 @@ class ItemInfo
         const std::string replaceColors(std::string str,
                                         unsigned char color) const;
 
-        int mHitEffectId;
-        int mCriticalHitEffectId;
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
@@ -307,6 +307,8 @@ class ItemInfo
         std::map <int, int> mTags;
         std::map <int, ColorDB::ItemColor> *mColors;
         std::string mColorList;
+        int mHitEffectId;
+        int mCriticalHitEffectId;
 };
 
 #endif
