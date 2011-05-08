@@ -36,8 +36,10 @@
 #include <guichan/exception.hpp>
 
 const unsigned int CACHE_SIZE = 256;
-const unsigned int CACHE_SIZE_SMALL1 = 90;
-const unsigned int CACHE_SIZE_SMALL2 = 150;
+const unsigned int CACHE_SIZE_SMALL1 = 2;
+const unsigned int CACHE_SIZE_SMALL2 = 50;
+const unsigned int CACHE_SIZE_SMALL3 = 170;
+const unsigned int CLEAN_TIME = 5;
 
 char *strBuf;
 
@@ -127,7 +129,7 @@ SDLFont::SDLFont(const std::string &filename, int size, int style) :
     }
 
     TTF_SetFontStyle(mFont, style);
-    mCleanTime = cur_time + 120;
+    mCleanTime = cur_time + CLEAN_TIME;
 }
 
 SDLFont::~SDLFont()
@@ -243,12 +245,12 @@ void SDLFont::drawString(gcn::Graphics *graphics,
 
         if (!mCleanTime)
         {
-            mCleanTime = cur_time + 120;
+            mCleanTime = cur_time + CLEAN_TIME;
         }
         else if (mCleanTime < cur_time)
         {
             doClean();
-            mCleanTime = cur_time + 120;
+            mCleanTime = cur_time + CLEAN_TIME;
         }
     }
 
@@ -321,20 +323,41 @@ void SDLFont::doClean()
     for (int f = 0; f < CACHES_NUMBER; f ++)
     {
         std::list<SDLTextChunk> *cache = &mCache[f];
-        if (cache->size() > CACHE_SIZE_SMALL2)
+        const unsigned size = cache->size();
+#ifdef DEBUG_FONT_COUNTERS
+        logger->log("ptr: %d, size: %d", f, size);
+#endif
+        if (size > CACHE_SIZE_SMALL3)
         {
 #ifdef DEBUG_FONT_COUNTERS
-            mDeleteCounter += 10;
+            mDeleteCounter += 100;
 #endif
-            for (int d = 0; d < 10; d ++)
+            for (int d = 0; d < 100; d ++)
                 cache->pop_back();
+#ifdef DEBUG_FONT_COUNTERS
+            logger->log("delete3");
+#endif
         }
-        else if (cache->size() > CACHE_SIZE_SMALL1)
+        else if (size > CACHE_SIZE_SMALL2)
+        {
+#ifdef DEBUG_FONT_COUNTERS
+            mDeleteCounter += 20;
+#endif
+            for (int d = 0; d < 20; d ++)
+                cache->pop_back();
+#ifdef DEBUG_FONT_COUNTERS
+            logger->log("delete2");
+#endif
+        }
+        else if (size > CACHE_SIZE_SMALL1)
         {
 #ifdef DEBUG_FONT_COUNTERS
             mDeleteCounter ++;
 #endif
             cache->pop_back();
+#ifdef DEBUG_FONT_COUNTERS
+            logger->log("delete1");
+#endif
         }
     }
 }
