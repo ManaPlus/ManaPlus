@@ -30,11 +30,11 @@
 #include "localplayer.h"
 #include "playerinfo.h"
 #include "units.h"
-#include "viewport.h"
 
 #include "gui/equipmentwindow.h"
 #include "gui/setup.h"
 #include "gui/theme.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"

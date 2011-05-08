@@ -27,6 +27,8 @@
 #include <vector>
 #include <algorithm>
 
+#include "gui/chatwindow.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/scrollarea.h"
@@ -36,7 +38,6 @@
 #include "gui/widgets/table.h"
 
 #include "actorspritemanager.h"
-#include "chatwindow.h"
 #include "configuration.h"
 #include "localplayer.h"
 #include "main.h"

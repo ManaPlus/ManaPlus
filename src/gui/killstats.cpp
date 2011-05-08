@@ -20,7 +20,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "killstats.h"
+#include "gui/killstats.h"
 
 #include <math.h>
 #include <guichan/widgets/label.hpp>

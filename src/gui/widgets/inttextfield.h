@@ -23,7 +23,7 @@
 #ifndef INTTEXTFIELD_H
 #define INTTEXTFIELD_H
 
-#include "textfield.h"
+#include "gui/widgets/textfield.h"
 
 /**
  * TextBox which only accepts numbers as input.

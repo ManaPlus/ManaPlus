@@ -23,7 +23,7 @@
 #ifndef MAPHANDLER_H
 #define MAPHANDLER_H
 
-#include "logindata.h"
+#include "net/logindata.h"
 
 #include <iosfwd>
 

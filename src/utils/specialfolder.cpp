@@ -20,7 +20,7 @@
  */
 
 #ifdef WIN32
-#include "specialfolder.h"
+#include "utils/specialfolder.h"
 #include <windows.h>
 
 #ifdef _SPECIALFOLDERLOCATION_TEST_

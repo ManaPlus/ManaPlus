@@ -23,7 +23,7 @@
 #ifndef PASSWORDFIELD_H
 #define PASSWORDFIELD_H
 
-#include "textfield.h"
+#include "gui/widgets/textfield.h"
 
 /**
  * A password field.

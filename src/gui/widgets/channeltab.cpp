@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "channeltab.h"
+#include "gui/widgets/channeltab.h"
 
 #include "channel.h"
 

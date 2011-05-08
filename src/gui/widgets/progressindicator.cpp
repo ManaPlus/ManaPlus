@@ -19,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "progressindicator.h"
+#include "gui/widgets/progressindicator.h"
 
 #include "graphics.h"
 #include "simpleanimation.h"

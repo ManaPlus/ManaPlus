@@ -24,8 +24,9 @@
 #define CHARHANDLER_H
 
 #include "localplayer.h"
-#include "logindata.h"
 #include "playerinfo.h"
+
+#include "net/logindata.h"
 
 #include <iosfwd>
 #include <vector>

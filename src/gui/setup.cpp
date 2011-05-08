@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "setup.h"
+#include "gui/setup.h"
 
 #include "configuration.h"
 #include "main.h"

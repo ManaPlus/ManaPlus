@@ -27,6 +27,8 @@
 #include <vector>
 #include <algorithm>
 
+#include "gui/chatwindow.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
 #include "gui/widgets/dropdown.h"
@@ -38,7 +40,6 @@
 #include "gui/widgets/table.h"
 #include "gui/widgets/textfield.h"
 
-#include "chatwindow.h"
 #include "configuration.h"
 #include "item.h"
 #include "localplayer.h"

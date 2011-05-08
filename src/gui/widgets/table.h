@@ -23,7 +23,7 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include "tablemodel.h"
+#include "gui/widgets/tablemodel.h"
 
 #include <guichan/keylistener.hpp>
 #include <guichan/mouselistener.hpp>

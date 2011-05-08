@@ -25,10 +25,10 @@
 #include "chatlog.h"
 #include "client.h"
 #include "configuration.h"
-#include "gui.h"
 #include "log.h"
 #include "main.h"
 
+#include "gui/gui.h"
 #include "gui/login.h"
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"

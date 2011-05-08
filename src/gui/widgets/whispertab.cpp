@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "whispertab.h"
+#include "gui/widgets/whispertab.h"
 
 #include "chatlog.h"
 #include "commandhandler.h"

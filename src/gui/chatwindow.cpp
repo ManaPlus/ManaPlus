@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "chatwindow.h"
+#include "gui/chatwindow.h"
 
 #include "actorspritemanager.h"
 #include "client.h"

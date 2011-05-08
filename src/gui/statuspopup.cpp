@@ -25,6 +25,7 @@
 
 #include "gui/gui.h"
 #include "gui/palette.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/layout.h"
 #include "gui/widgets/textbox.h"
@@ -32,7 +33,6 @@
 #include "graphics.h"
 #include "localplayer.h"
 #include "units.h"
-#include "viewport.h"
 #include "keyboardconfig.h"
 
 #include "utils/gettext.h"

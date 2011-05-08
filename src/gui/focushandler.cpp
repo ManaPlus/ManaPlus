@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "focushandler.h"
+#include "gui/focushandler.h"
 
 #include "gui/widgets/window.h"
 
