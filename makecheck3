@@ -2,4 +2,5 @@
 
 cd src
 #../../cppcheck/cppcheck --enable=all --force -j 5 -v -I /usr/include -I /usr/include/c++/4.5 -I /usr/include/libxml2 -I /usr/include/SDL . 1>../makecheck.txt 2>../makecheck_err.txt
-../../cppcheck/cppcheck --enable=style --enable=information --enable=unusedFunction --force -j 5 -v . 1>../makecheck.txt 2>../makecheck_err.txt
+#../../cppcheck/cppcheck --enable=style --enable=information --enable=unusedFunction --force -j 5 -v . 1>../makecheck.txt 2>../makecheck_err.txt
+../../cppcheck/cppcheck --enable=all --enable=information --enable=unusedFunction --force -j 5 -v . 1>../makecheck.txt 2>../makecheck_err.txt
