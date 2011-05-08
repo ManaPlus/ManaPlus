@@ -66,10 +66,3 @@
 Most commands working in whispers. 
 For example command /imitation in whisper nick nick1,
  similar to command /imitation nick1.
-
-
-
-
-
-
-

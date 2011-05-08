@@ -6,59 +6,59 @@
 
 ##PSusurros
 ##2
-	/closeall - Cerrar todas las pestañas de susurro abiertas.
-	/ignoreall -  Ignorar todas las pestañas de susurros abiertas.
-	/msg NICK texto, /whisper NICK texto, /w NICK texto - Susurrar a nick.
-	/query NICK, /q NICK - Abrir una pestaña de susurro para nick.
+    /closeall - Cerrar todas las pestañas de susurro abiertas.
+    /ignoreall -  Ignorar todas las pestañas de susurros abiertas.
+    /msg NICK texto, /whisper NICK texto, /w NICK texto - Susurrar a nick.
+    /query NICK, /q NICK - Abrir una pestaña de susurro para nick.
 
 
 ##PAcciones
 ##2
-	/help - Muestra una pequeña ayuda acerca de comandos del chat. 
-	/target NICK - Seleccionar nick como objetivo, sea un monstruo o un jugador.
-	/outfit N - Equipar conjunto número N.
-	/outfit next - Equipar siguiente conjunto.
-	/outfit prev - Equipar conjunto anterior.
-	/emote N - Usar emoticon número N.
-	/away, /away MSG - Establecer modo lejos de teclado.
-	/follow NICK - Seguir a nick.
-	/imitation NICK - Imitar a nick.
-	/heal NICK - Curar a nick.
-	/move X Y - Moverse a la posición X,Y (distancias cortas).
-	/navigate x y - Moverse a la posición x,y en el mapa actual.
-	/mail NICK MSG - Enviar mensaje sin conexión a NICK (sólo funciona en el servidor tmw).
-	/disconnect - Desconectarse rápidamente del servidor.
-	/attack - Atacar objetivo seleccionado.
-	/undress NICK - Remover toda la ropa de nick (efecto local, sólamente).
+    /help - Muestra una pequeña ayuda acerca de comandos del chat. 
+    /target NICK - Seleccionar nick como objetivo, sea un monstruo o un jugador.
+    /outfit N - Equipar conjunto número N.
+    /outfit next - Equipar siguiente conjunto.
+    /outfit prev - Equipar conjunto anterior.
+    /emote N - Usar emoticon número N.
+    /away, /away MSG - Establecer modo lejos de teclado.
+    /follow NICK - Seguir a nick.
+    /imitation NICK - Imitar a nick.
+    /heal NICK - Curar a nick.
+    /move X Y - Moverse a la posición X,Y (distancias cortas).
+    /navigate x y - Moverse a la posición x,y en el mapa actual.
+    /mail NICK MSG - Enviar mensaje sin conexión a NICK (sólo funciona en el servidor tmw).
+    /disconnect - Desconectarse rápidamente del servidor.
+    /attack - Atacar objetivo seleccionado.
+    /undress NICK - Remover toda la ropa de nick (efecto local, sólamente).
 
 
 ##PIntercambio
 ##2
-	/trade NICK - Iniciar intercambio con nick.
-	/priceload - Cargar precio de tienda desde el disco.
+    /trade NICK - Iniciar intercambio con nick.
+    /priceload - Cargar precio de tienda desde el disco.
     /pricesave - Guardar precio de tienda al disco.
 
 
 ##PRelaciones con jugadores
 ##2
-	/ignore NICK - Agregar nick a la lista de ignorados.
-	/unignore NICK - Quitar nick de la lista de ignorados.
-	/friend NICK, /befriend NICK - Agregar nick a la lista de amigos.
-	/disregard NICK - Agregar nick a la lista de desatendidos.
-	/neutral NICK - Agregar nick a la lista de relación neutral.
-	/erase NICK - Agregar nick lista de borrados.
-	/clear - Limpia la charla de la pestaña actual.
-	/createparty NOMBRE - Crear grupo con el nombre indicado.
-	/me texto - Enviar texto al chat como el comando /me en el irc.
+    /ignore NICK - Agregar nick a la lista de ignorados.
+    /unignore NICK - Quitar nick de la lista de ignorados.
+    /friend NICK, /befriend NICK - Agregar nick a la lista de amigos.
+    /disregard NICK - Agregar nick a la lista de desatendidos.
+    /neutral NICK - Agregar nick a la lista de relación neutral.
+    /erase NICK - Agregar nick lista de borrados.
+    /clear - Limpia la charla de la pestaña actual.
+    /createparty NOMBRE - Crear grupo con el nombre indicado.
+    /me texto - Enviar texto al chat como el comando /me en el irc.
 
 
 ##PDebug 
 ##2
-	/who - Escribir el número de jugadores conectados al chat.
-        /all - Mostrar todos los seres visibles en la pestaña de depuración.
-	/where - Escribir la posición actual del jugador en el chat.
-        /cacheinfo - Muestra texto cache info.
-	/uptime - Muestra el tiempo de actividad del cliente.
+    /who - Escribir el número de jugadores conectados al chat.
+    /all - Mostrar todos los seres visibles en la pestaña de depuración.
+    /where - Escribir la posición actual del jugador en el chat.
+    /cacheinfo - Muestra texto cache info.
+    /uptime - Muestra el tiempo de actividad del cliente.
 
 
 ##PComandos en pestañas
@@ -66,10 +66,3 @@
 La mayoría de los comandos funcionan en las pestañas se susurro. 
 Por ejemplo, el comando /imitation en la pestaña de susurro de NICK1,
 es equivalente al comando /imitation NICK1
-
-
-
-
-
-
-

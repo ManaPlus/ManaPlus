@@ -71,10 +71,3 @@
 la plupart des commandes fonctionnent dans les messages privés. 
 par exemple la commande /imitation nomdupersonnage1 dans un whisper de nomdupersonnage,
 sera identique à /imitation nomdupersonnage1 dans la fenêtre de dialogue générale.
-
-
-
-
-
-
-
