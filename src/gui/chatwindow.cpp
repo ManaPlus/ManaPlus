@@ -71,8 +71,9 @@
 class ChatInput : public TextField, public gcn::FocusListener
 {
     public:
-        ChatInput(TabbedArea *tabs):
+        ChatInput(ChatWindow *window, TabbedArea *tabs):
             TextField("", false),
+            mWindow(window),
             mChatTabs(tabs)
         {
             setVisible(false);
@@ -90,20 +91,16 @@ class ChatInput : public TextField, public gcn::FocusListener
 
         void processVisible(bool n)
         {
-            if (!mChatTabs || isVisible() == n)
+            if (!mWindow || isVisible() == n)
                 return;
 
-            if (config.getBoolValue("hideChatInput"))
-            {
-                if (n)
-                    mChatTabs->setHeight(mChatTabs->getHeight() - getHeight());
-                else
-                    mChatTabs->setHeight(mChatTabs->getHeight() + getHeight());
-            }
             setVisible(n);
+            if (config.getBoolValue("hideChatInput"))
+                mWindow->adjustTabSize();
         }
 
     private:
+        ChatWindow *mWindow;
         TabbedArea *mChatTabs;
 };
 
@@ -177,7 +174,7 @@ ChatWindow::ChatWindow():
     mChatTabs->enableScrollButtons(true);
     mChatTabs->setFollowDownScroll(true);
 
-    mChatInput = new ChatInput(mChatTabs);
+    mChatInput = new ChatInput(this, mChatTabs);
     mChatInput->setActionEventId("chatinput");
     mChatInput->addActionListener(this);
 
