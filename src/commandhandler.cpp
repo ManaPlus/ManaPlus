@@ -1066,20 +1066,23 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
     if (!cache)
         return;
 
+    int all = 0;
     debugChatTab->chatLog(_("font cache size"));
     std::string str;
     for (int f = 0; f < 256; f ++)
     {
         if (!cache[f].empty())
         {
+            all += cache[f].size();
             str += strprintf("%d: %u, ", f,
                 static_cast<unsigned int>(cache[f].size()));
         }
     }
     debugChatTab->chatLog(str);
+    debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all));
 #ifdef DEBUG_FONT_COUNTERS
     debugChatTab->chatLog("");
-    debugChatTab->chatLog(_("Created: ") + toString(font->getCreateCounter()));
-    debugChatTab->chatLog(_("Deleted: ") + toString(font->getDeleteCounter()));
+    debugChatTab->chatLog(strprintf("%s %d", _("Created:"), font->getCreateCounter()));
+    debugChatTab->chatLog(strprintf("%s %d", _("Deleted:"), font->getDeleteCounter()));
 #endif
 }
