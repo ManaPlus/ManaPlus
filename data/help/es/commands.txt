@@ -1,0 +1,180 @@
+ <- @@index|Volver al Índice@@
+ 
+ 
+##3                            === COMANDOS ===
+ 
+##2TECLADO:
+
+     ##2UP##P                       "Moverse hacia arriba"
+     ##2DOWN##P                     "Moverse hacia abajo"
+     ##2LEFT##P                     "Moverse hacia la izquierda"
+     ##2RIGHT##P                    "Moverse hacia la izquierda"
+     ##2LeftControl##P              "Atacar al seleccionado"
+     ##2x##P                        "Seleccionar y atacar"
+     ##2v##P                        "Moverse al seleccionado"
+     ##2Period(.)##P                "Change Move to Target type"
+     ##2d##P                        "Moverse al Lugar de Inicio elegido"
+     ##2KeyPad[5]##P                "Establecer Lugar de Inicio/Flecha"
+     ##2RightShift + key##P         "Moverse al punto de navegación"
+     ##2LeftAlt + EmoteKey##P       "Mostrar emoticon"
+     ##2t##P                        "Hablar"
+     ##2LeftShift##P                "Detener el ataque" 
+     ##2a##P                        "Seleccionar al más cercano"
+     ##2n##P                        "Seleccionar NPC"
+     ##2q##P                        "Seleccionar Jugador"
+     ##2z##P                        "Recojer"
+     ##2o##P                        "Change Pickup Type"
+     ##2h##P                        "Ocultar ventanas"
+     ##2s##P                        "Sentarse"
+     ##2p##P                        "Imprimir pantalla"
+     ##2r##P                        "Habilitar/Deshabilitar Intercambio"
+     ##2f##P                        "Cambiar modo de vista del mapa"
+     ##2MenuKey##P                  "Tecla de acceso rápido a artículo"
+     ##21##P                        "Acceso rápido a artículo 1"
+     ##22##P                        "Acceso rápido a artículo 2"
+     ##23##P                        "Acceso rápido a artículo 3"
+     ##24##P                        "Acceso rápido a artículo 4"
+     ##25##P                        "Acceso rápido a artículo 5"
+     ##26##P                        "Acceso rápido a artículo 6"
+     ##27##P                        "Acceso rápido a artículo 7"
+     ##28##P                        "Acceso rápido a artículo 8"
+     ##29##P                        "Acceso rápido a artículo 9"
+     ##20##P                        "Acceso rápido a artículo 10"
+     ##2Minus(-)##P                 "Acceso rápido a artículo 11"
+     ##2Equals(=)##P                "Acceso rápido a artículo 12"
+     ##2Backspace##P                "Acceso rápido a artículo 13"
+     ##2Insert##P                   "Acceso rápido a artículo 14"
+     ##2Home##P                     "Acceso rápido a artículo 15"
+     ##2F1##P                       "Ventana de Ayuda"
+     ##2F2##P                       "Ventana de Estado"
+     ##2F3##P                       "Ventana de Inventario"
+     ##2F4##P                       "Ventana de Equipamiento"
+     ##2F5##P                       "Ventana de Habilidades"
+     ##2F6##P                       "Ventana de Mini-Mapa"
+     ##2F7##P                       "Ventana de Chat"
+     ##2F8##P                       "Ventana de Accesos rápidos a artículos"
+     ##2F9##P                       "Ventana de Configuración"
+     ##2F10##P                      "Ventana de Depuración"
+     ##2F11##P                      "Ventana Social"
+     ##2F12##P                      "Ventana de emoticones"
+     ##2BackQuote(`)##P             "Ventana de Conjuntos"
+     ##2w##P                        "Ventana de Artículos para tirar"
+     ##2e##P                        "Ventana de Estadísticas de actividades"
+     ##2j##P                        "Ventana de Comandos"
+     ##2LeftBracket([)##P           "Ventana del Bot Checker"
+     ##2LeftAlt + 1##P              "Acceso rápido a emoticon 1"
+     ##2LeftAlt + 2##P              "Acceso rápido a emoticon 2"
+     ##2LeftAlt + 3##P              "Acceso rápido a emoticon 3"
+     ##2LeftAlt + 4##P              "Acceso rápido a emoticon 4"
+     ##2LeftAlt + 5##P              "Acceso rápido a emoticon 5"
+     ##2LeftAlt + 6##P              "Acceso rápido a emoticon 6"
+     ##2LeftAlt + 7##P              "Acceso rápido a emoticon 7"
+     ##2LeftAlt + 8##P              "Acceso rápido a emoticon 8"
+     ##2LeftAlt + 9##P              "Acceso rápido a emoticon 9"
+     ##2LeftAlt + 0##P              "Acceso rápido a emoticon 10"
+     ##2LeftAlt + Minus(-)##P       "Acceso rápido a emoticon 11"
+     ##2LeftAlt + Equals(=)##P      "Acceso rápido a emoticon 12"
+     ##2LeftAlt + Backspace##P      "Acceso rápido a emoticon 13"
+     ##2LeftAlt + Insert##P         "Acceso rápido a emoticon 14"
+     ##2RightControl##P             "Equipar Conjunto"
+     ##2RightAlt##P                 "Copiar Conjunto"
+     ##2RightBracket(])##P          "Copiar Equipado al Conjunto"
+     ##2Enter##P                    "Entrar al Chat"
+     ##2PageUP##P                   "Deslizarse hacia arriba en el Chat"
+     ##2PageDOWN##P                 "Deslizarse hacia abajo en el Chat"
+     ##2KeyPad[7]##P                "Pestaña anterior del Chat"
+     ##2KeyPad[9]##P                "Siguiente pestaña del Chat"
+     ##2KeyPad[7]##P                "Previous chat tab line"
+     ##2KeyPad[9]##P                "Next chat tab line"
+     ##2Tab##P                      "Autocompletar en en el Chat"
+     ##2Esc##P                      "Cancelar entrada al Chat"
+     ##2SpaceBar##P                 "Seleccionar OK"
+     ##2Esc##P                      "Salir"
+     ##2LeftWinKey##P               "Ignorar entrada 1"
+     ##2RightWinKey##P              "Ignorar entrada 2"
+     ##2l##P                        "Voltear hacia Arriba"
+     ##2Semicolon(;)##P             "Voltear hacia Abajo"
+     ##2k##P                        "Voltear hacia la Izquierda"
+     ##2Quote(')##P                 "Voltear hacia la Derecha"
+     ##2Slash(\)##P                 "Movimientos locos"
+     ##2Backslash(/)##P             "Cambiar modo de movimiento loco"
+     ##2y##P                        "Tirar rápidamente N artículos de ranura 0"
+     ##2u##P                        "Tirar rápidamente N artículos"
+     ##2i##P                        "Cambiar contador de Tirar rápido"
+     ##2c##P                        "Curar rápidamente a jugador o a ti mismo"
+     ##2m##P                        "Usar hechizo #itenplz"
+     ##2b##P                        "Usar ataque Mágico"
+     ##2Comma(,)##P                 "Cambiar ataque mágico"
+     ##2KeyPad0##P                  "Cambiar tipo de movimiento"
+     ##2g##P                        "Cambiar tipo de arma para atacar"
+     ##2End##P                      "Cambiar tipo de Ataque"
+     ##2KeyPad[1]##P                "Cambiar modo de Seguir"
+     ##2KeyPad[4]##P                "Cambiar modo de Imitación"
+     ##2KeyPad[8]##P                "Activar/Des teclas modificadoras del juego"
+     ##2KeyPad[3]##P                "Habilitar/Deshabilitar audio"
+     ##2KeyPad[2]##P                "Habilitar/Deshabilitar modo away"
+     ##2Tab##P                      "Emular clic derecho con el ratón"
+     ##2KeyPad[+]##P                "Intercambiar modo de cámara"
+
+
+##2RATÓN:
+
+ Clic izquierdo para ejecutar la acción predeterminada: caminar, recojer un 
+ artículo, atacar a un monstruo y hablar con los NPCs (asegúrate de cliquear 
+ en sus pies). Clic derecho para mostrar un menú ontextual. Mantener presionado
+ el botón [Izquierdo | Derecho] se previene que camine mientras ataca.
+
+
+##2COMUNICACIÓN:
+
+ A menudo, la comunicación es esencial para tener éxito en este juego. Puedes
+ comunicarte de muchas maneras:  Charlando y mostrando emociones (ver arriba), 
+ haciendo intercambios (con el menú contextual al hacer clic secundario con el
+ ratón), y susurrando (charla provada).
+
+ Para leer más de comandos del chat, mira: @@chatcommands|Comandos del chat@@
+
+
+##2IGNORAR COMUNICACIONES
+ 
+ Te puedes encontrar con que no todas las comunicaciones son de tu agrado.
+ Mientras que la mayoría de la gente es agradable, algunos podrían ofenderte
+ o intentar hacerte la vida más difícil-- Ya que éste es un juego abierto,
+ no hay nada que los desarrolladores puedan hacer para prevenirlo.
+
+ Sin embargo, puedes protegerte a tí mismo de tales jugadores ignorándolos. 
+ Esto se hace haciendo clic derecho sobre el jugador para abrir el menú 
+ contextual, y entonces seleccionar 'Ignorar' o 'Desatender' (ver debajo).
+ Puedes afinar tur relaciones con los jugadores en el menú 'Configuración',
+ la cual lista todos los jugadores que hayas agregado a ésta. Para abrir este
+ menú, selecciona 'Configuración' en la esquina superior derecha y luego en la
+ pestaña 'Jugadores'.
+
+ Allí encontrarás una lista de todos los jugadores que conoces, así como 
+ varias opciones de configuración:
+
+ - ##2Guardar lista de jugadores##P: ¿Debería ser guardada tu lista de 
+   conocidos cuando quites el juego? Si activas esta opción, tu lista se 
+   mantendrá aún cuando cierres y reinicies el juego.
+ - ##2Permitir intercambios##P: ¿Deseas que cualquier jugador te proponga 
+   intercambios?
+ - ##2Permitir susurros##P: ¿Deseas que cualquier jugador te envíe mensajes 
+   privados en el juego?
+
+##2LA LISTA DEL JUGADOR
+
+ La lista del jugador muestra todos tus conocidos. Ellos son categorizados como 
+ una de las siguiente:
+
+ - ##2neutral##P:  En lo que concierne al juego, es lo mismo que si no estuviese
+   listado: el jugador puede charlar contigo, pero sólo intercambia o susurra
+   si tienes estas opciones activadas para todos.
+ - ##2amigo##P:  Consideras a este jugador como un amigo.  Puede charlar, 
+   escribirte en privado o intercambiar contigo en cualquier momento.
+ - ##2desatendido##P:  No deseas prestar atención a este jugador, lo que 
+   significa que sus mensajes en la charla no son registrados. Además, sus 
+   peticiones de intercambio o susurros no son mostrados.
+ - ##2ignorado##P:  Deseas ignorar completamente a este jugador. No verás ni 
+   siquiera el texto flotante de él o ella núnca más, y tampoco sus emociones.
+
+

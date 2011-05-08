@@ -1,0 +1,16 @@
+ <- @@index|Volver al Índice@@
+ 
+ 
+##3                            === VENTANAS ===
+ 
+##2ACCESOS RÁPIDOS
+
+ Para agregar un artículo a la barra de acceso rápido, haz clic sobre él en la
+ ventana del inventario. Luego haz clic sobre la casilla de la ventana de 
+ acceso rápido que deseas asociar con el artículo. 
+ Para reordenar artículos dentro de la ventana de acceso rápido, simplemente 
+ dale clic y arrástralo entre las casillas. Para quitar artículos, simplemente
+ arrastralo fuera de la ventana y suéltalo.
+ 
+ Actualmente sólo se pueden agregar artículos apilables como comida, pero no
+ armas ni ropa.

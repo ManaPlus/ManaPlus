@@ -1,0 +1,104 @@
+.<- @@index|Volver al Índice@@
+ 
+ 
+##3----------------------------
+##3-- Colaboradores ManaPlus --
+##3----------------------------
+##3== Colboradores para el desarrollo del cliente ==
+ 
+##9Andrei Karas (4144) <akaras inbox ru>
+##9Ben Longbons <b.r.longbons gmail com>
+##9Helmut Grohne (gnurfk) <helmut subdivi de>
+##9Mihail Barer (Necromonger) <>
+ 
+##3== Traductores ==
+##9alastrim
+##9Aline Ferraz de Souza (Freya) <freya.df gmail com>
+##9Antoine Ruck (Jumpy) <antoinebcn hotmail com>
+##9Bernard Hugonnet (Nard) <>
+##9Leif Kildelund (GonzoDark) <gonzo.dark gmail.com>
+##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
+##9Mihail Barer (Necromonger) <>
+##9Nelson Martell (nelson6e65) <nelson6eeduardo65 gmail com>
+##9Yohann Ferreira (Bertram) <bertram cegetel net>
+
+ 
+##3== Colaboradores con Artes o Imágenes ==
+##9Aline Ferraz de Souza (Freya) <freya.df gmail com>
+##9Nina O'Reilly (Reid) <reidyaro gmail com>
+ 
+ 
+ 
+ 
+##3------------------------
+##3-- Colaboradores Mana --
+##3------------------------
+ 
+##P Este archivo lista a todos los colaboradores para el lanzamiento actual.
+##P Chequea la Wiki para el equipo de desarrollo activo actualmente. 
+ 
+##3== Colaboradores para el desarrollo de cliente/servidor ==
+ 
+##9Aaron Marks  <nymacro gmail.com>
+##9Alexander Baldeck (Shura)  <alexander archlinux.org>
+##9Andreas Habel  <mail exceptionfault.de>
+##9Andrei Karas (4144)  <akaras inbox.ru>
+##9Andrej Sinicyn  <andrej4000 gmail.com>
+##9Bernd Wachter (Aard)  <bwachter-tmw lart.info>
+##9Blue Sans Douze (Blue112) <bluesansdouze gmail.com>
+##9Björn Steinbrink (Doener)  <b.steinbrink gmx.de>
+##9Cedric Borgese (moi1392)  <cedric.borgese gmail.com>
+##9Chuck Miller (Kage)  <shadowmil gmail.com>
+##9Daniel Bradshaw  <daniel+commits the-cell.co.uk>
+##9David Athay (trapdoor)  <ko2fan gmail.com>
+##9Dennis Friis  <peavey placid.dk>
+##9Douglas Boffey  <dougaboffey netscape.net>
+##9Duane Bailey  <nayryeliab gmail.com>
+##9Eugenio Favalli  <elvenprogrammer gmail.com>
+##9Eric Scrivner  <zenogais gmail.com>
+##9Fate  <fate.tmw googlemail.com>
+##9Fredrik Reveny  <chetic gmail.com>
+##9Freeyorp  <Freeyorp101 NOSPAM hotmail.com>
+##9Guillaume Melquiond (Silene)  <guillaume.melquiond gmail.com>
+##9Ira Rice (Tametomo)  <irarice gmail.com>
+##9Jan-Fabian Humann (Mra)  <malastare gmx.net>
+##9Jared Adams  <jaxad0127 gmail.com>
+##9José Ávila  <linux javila.net>
+##9Joshua Langley <joshlangley optusnet.com.au>
+##9Kess Vargavind  <vargavind gmail.com>
+##9Kiyoshi Kyokai  <kiyoshi.kyokai gmail.com>
+##9Krzysztof Daszuta  <irukard gmail.com>
+##9Lloyd Bryant  <lloyd_bryant netzero.net>
+##9Marcel W. Wysocki  <maci satgnu.org>
+##9Mateusz Kaduk (Usiu)  <mateusz.kaduk gmail.com>
+##9Matthias Hartmann  <hartmann.matthias gmail.com>
+##9Philipp Sehmisch (Crush)  <tmw crushnet.org>
+##9Roderic Morris (rodge)  <roderic ccs.neu.edu>
+##9Rogier Polak  <rogier.l.a.polak gmail.com>
+##9Scott Ellis  <quiche_on_a_leash hotmail.co.uk>
+##9Simon Edwardsson  <simon crossnet.se>
+##9Stefan Dombrowski  <stefan uni-bonn.de>
+##9Steve Cotton  <steve s.cotton.clara.co.uk>
+##9Thorbjørn Lindeijer  <thorbjorn lindeijer.nl>
+##9Maximilian Philipps  <Turmfalke2007 web.de>
+##9Yohann Ferreira  <bertram cegetel.net>
+ 
+##3== Traductores ==
+ 
+##9Alexander Breidenbroich (German)  <metast gmx.de>
+##9Blue Sans Douze (French) <bluesansdouze gmail.com>
+##9Eugenio Favalli (Italian)  <elvenprogrammer gmail.com>
+##9Jonathan Kolberg (German)  <bulldog98 freenet.de>
+##9Antoine Ruck (Jumpy) (French)  <antoinebcn@hotmail.com>
+##9Kess Vargavind  (Swedish)  <vargavind gmail.com>
+##9Leif Kildelund (Danish)  <gonzo.dark gmail.com>
+##9Matthias Hartmann (German)  <hartmann.matthias gmail.com>
+##9Thorbjørn Lindeijer (Dutch)  <thorbjorn lindeijer.nl>
+ 
+##3== Otros colaboradores ==
+ 
+##9Jean-Francois Lampron  <sull.kf gmail.com>
+##9Rodney Dawes  <dobey novell.com>
+##9Ultramichy
+##9Zuzanna K. Filutowska  <platyna users.sourceforge.net>
+ 

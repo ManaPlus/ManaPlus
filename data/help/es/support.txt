@@ -1,0 +1,22 @@
+ <- @@index|Volver al Índice@@
+ 
+ 
+##3                            === SOPORTE ===
+ 
+ Si estás teniendo dificultades, primero que nada, lee el FAQ. Si no puedes
+ encontrar una solución a tu problema, siéntete libre de chequear la sección
+ Bugs/Support de nuestro foro:
+ 
+ Soporte para TMW:
+ 
+##2     http://forums.themanaworld.org/viewforum.php?f=3
+ 
+ ...o visítanos en nuestro canal IRC:
+ 
+##2     #themanaworld ##P@##2 irc.freenode.net
+ 
+ Si no, ve a la sección @@team|Equipo de desarrollo@@ para tener una lista de
+ los desarrolladores y cómo contactarlos.
+ 
+ Para otro servidor ve las páginas de los servidores para soporte.
+

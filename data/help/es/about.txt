@@ -1,0 +1,18 @@
+ <- @@index|Volver al Índice@@
+ 
+ 
+##3                      === ACERCA DE MANAPLUS ===
+ ##2ManaPlus##P es un cliente extendido basado en el cliente de ##2Mana##P.
+ Se han agregado muchas funciones, mejorado rendimiento, estabilidad, 
+ seguridad y más.
+ 
+ ##2Mana##P es un arduo esfuerzo crear un Cliente MMORPG innovador, libre
+ y de código abierto. Mana usa gráficos 2D y apunta a crear un gran mundo 
+ diverso e interactivo. Está licenciado bajo la GPL, asegurando que este
+ juego nunca no puede escapar de tu alcance.
+ 
+ El proyecto incluye el desarrollo en conjunto de un cliente y un servidor.
+ Otros están haciendo mundos usando software de Mana. El proyecto The Mana 
+ World es el originador del proyecto Mana. Mana fue partido para promover
+ facilitar el desarrollo de otros mundos.
+ 

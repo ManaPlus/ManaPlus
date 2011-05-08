@@ -1,0 +1,23 @@
+ <- @@index|Volver al Índice@@
+ 
+ 
+##3                             === HABILIDADES ===
+ 
+ Puedes mejorar tus habilidades incrementando tu nivel de trabajo (job level). 
+ Cada nivel de Trabajo te dará 1 punto para gastarlos en habilidades básicas.
+ 
+   ##4 Habilidades Básicas: 
+ 
+     ##2Emote:##P habilita la habilidad de expresar emociones
+     ##2Trade:##P habilita la habilidad de hacer intercambios con otros
+     ##2Party Level1:##P habilita [a char] para unirse a un grupo.
+     ##2Party level2:##P habilita [a char] para crear un grupo
+     Otras habilidades aún no están implementadas.
+  
+   ##4 Habilidades Mágicas:  
+
+     Las habilidades mágicas pueden ser obtenidas al hacer búsquedas y misiones en el juego.
+
+   ##4 Other skills: 
+
+     Otras habilidades pueden ser obtenidas al hacer búsquedas y misiones en el juego.
