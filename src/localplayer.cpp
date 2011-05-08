@@ -1397,13 +1397,11 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
 
         if (config.getBoolValue("showpickupchat") && localChatTab)
         {
-            // TRANSLATORS: This sentence may be translated differently
-            // for different grammatical numbers (singular, plural, ...)
-
+            // TRANSLATORS: %d is number,
+            // [@@%d|%s@@] - here player can see link to item
             localChatTab->chatLog(strprintf(ngettext("You picked up %d "
-                    "[@@%d|%s@@].", "You picked up %d [@@%d|%s@@].", amount),
-                    amount, itemInfo.getId(), str.c_str()),
-                    BY_SERVER);
+                "[@@%d|%s@@].", "You picked up %d [@@%d|%s@@].", amount),
+                amount, itemInfo.getId(), str.c_str()), BY_SERVER);
         }
 
         if (mMap && config.getBoolValue("showpickupparticle"))

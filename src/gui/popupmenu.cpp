@@ -120,48 +120,60 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     {
         case ActorSprite::PLAYER:
             {
-                // Players can be traded with.
-                mBrowserBox->addRow(_("@@trade|Trade@@"));
-                // TRANSLATORS: Attacking a player.
-                mBrowserBox->addRow(_("@@attack|Attack@@"));
-                // TRANSLATORS: Whispering a player.
-                mBrowserBox->addRow(_("@@whisper|Whisper@@"));
+                mBrowserBox->addRow(strprintf("@@trade|%s@@", _("Trade")));
+                mBrowserBox->addRow(strprintf("@@attack|%s@@", _("Attack")));
+                mBrowserBox->addRow(strprintf("@@whisper|%s@@", _("Whisper")));
 
                 mBrowserBox->addRow("##3---");
 
-                mBrowserBox->addRow(_("@@heal|Heal@@"));
+                mBrowserBox->addRow(strprintf("@@heal|%s@@", _("Heal")));
                 mBrowserBox->addRow("##3---");
 
                 switch (player_relations.getRelation(name))
                 {
                     case PlayerRelation::NEUTRAL:
-                        mBrowserBox->addRow(_("@@friend|Be friend@@"));
-                        mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-                        mBrowserBox->addRow(_("@@ignore|Ignore@@"));
-                        mBrowserBox->addRow(_("@@erase|Erase@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@friend|%s@@", _("Be friend")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@disregard|%s@@", _("Disregard")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@ignore|%s@@", _("Ignore")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@erase|%s@@", _("Erase")));
                         break;
 
                     case PlayerRelation::FRIEND:
-                        mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-                        mBrowserBox->addRow(_("@@ignore|Ignore@@"));
-                        mBrowserBox->addRow(_("@@erase|Erase@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@disregard|%s@@", _("Disregard")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@ignore|%s@@", _("Ignore")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@erase|%s@@", _("Erase")));
                         break;
 
                     case PlayerRelation::DISREGARDED:
-                        mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-                        mBrowserBox->addRow(_("@@ignore|Completely ignore@@"));
-                        mBrowserBox->addRow(_("@@erase|Erase@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@unignore|%s@@", _("Unignore")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@ignore|%s@@", _("Completely ignore")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@erase|%s@@", _("Erase")));
                         break;
 
                     case PlayerRelation::IGNORED:
-                        mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-                        mBrowserBox->addRow(_("@@erase|Erase@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@unignore|%s@@", _("Unignore")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@erase|%s@@", _("Erase")));
                         break;
 
                     case PlayerRelation::ERASED:
-                        mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-                        mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-                        mBrowserBox->addRow(_("@@ignore|Completely ignore@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@unignore|%s@@", _("Unignore")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@disregard|%s@@", _("Disregard")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@ignore|%s@@", _("Completely ignore")));
                         break;
 
                     default:
@@ -169,8 +181,9 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 }
 
                 mBrowserBox->addRow("##3---");
-                mBrowserBox->addRow(_("@@follow|Follow@@"));
-                mBrowserBox->addRow(_("@@imitation|Imitation@@"));
+                mBrowserBox->addRow(strprintf("@@follow|%s@@", _("Follow")));
+                mBrowserBox->addRow(strprintf(
+                    "@@imitation|%s@@", _("Imitation")));
 
                 if (player_node->isInParty())
                 {
@@ -179,13 +192,13 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         if (player_node->getParty()->getName()
                             != being->getPartyName())
                         {
-                            mBrowserBox->addRow(
-                                _("@@party|Invite to party@@"));
+                            mBrowserBox->addRow(strprintf(
+                                "@@party|%s@@", _("Invite to party")));
                         }
                         else
                         {
-                            mBrowserBox->addRow(
-                                _("@@kick party|Kick from party@@"));
+                            mBrowserBox->addRow(strprintf(
+                                "@@kick party|%s@@", _("Kick from party")));
                         }
                         mBrowserBox->addRow("##3---");
                     }
@@ -199,32 +212,34 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                     {
                         if (guild1->getId() == guild2->getId())
                         {
-                            mBrowserBox->addRow(
-                                _("@@guild-kick|Kick from guild@@"));
-                            mBrowserBox->addRow(
-                                _("@@guild-pos|Change pos in guild >@@"));
+                            mBrowserBox->addRow(strprintf(
+                                "@@guild-kick|%s@@", _("Kick from guild")));
+                            mBrowserBox->addRow(strprintf("@@guild-pos|%s >@@",
+                                _("Change pos in guild")));
                         }
                     }
                     else
                     {
-                        mBrowserBox->addRow(_("@@guild|Invite to guild@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild|%s@@", _("Invite to guild")));
                     }
                 }
 
                 if (player_node->isGM())
                 {
                     mBrowserBox->addRow("##3---");
-                    mBrowserBox->addRow(_("@@admin-kick|Kick player@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@admin-kick|%s@@", _("Kick player")));
                 }
-                mBrowserBox->addRow(_("@@nuke|Nuke@@"));
-                mBrowserBox->addRow(_("@@move|Move@@"));
-                mBrowserBox->addRow(_("@@undress|Undress@@"));
+                mBrowserBox->addRow(strprintf("@@nuke|%s@@", _("Nuke")));
+                mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
+                mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
 
                 if (player_relations.getDefault() & PlayerRelation::TRADE)
                 {
                     mBrowserBox->addRow("##3---");
-                    mBrowserBox->addRow(_("@@buy|Buy@@"));
-                    mBrowserBox->addRow(_("@@sell|Sell@@"));
+                    mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
+                    mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
                 }
             }
             break;
@@ -232,23 +247,24 @@ void PopupMenu::showPopup(int x, int y, Being *being)
         case ActorSprite::NPC:
             // NPCs can be talked to (single option, candidate for removal
             // unless more options would be added)
-            mBrowserBox->addRow(_("@@talk|Talk@@"));
+            mBrowserBox->addRow(strprintf("@@talk|%s@@", _("Talk")));
 
-            mBrowserBox->addRow(_("@@buy|Buy@@"));
-            mBrowserBox->addRow(_("@@sell|Sell@@"));
+            mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
+            mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
             mBrowserBox->addRow("##3---");
-            mBrowserBox->addRow(_("@@move|Move@@"));
+            mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
             break;
 
         case ActorSprite::MONSTER:
             {
                 // Monsters can be attacked
-                mBrowserBox->addRow(_("@@attack|Attack@@"));
+                mBrowserBox->addRow(strprintf("@@attack|%s@@", _("Attack")));
 
                 if (player_node->isGM())
                 {
                     mBrowserBox->addRow("##3---");
-                    mBrowserBox->addRow(_("@@admin-kick|Kick@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@admin-kick|%s@@", _("Kick")));
                 }
 
                 if (config.getBoolValue("enableAttackFilter"))
@@ -258,18 +274,19 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         || actorSpriteManager->isInIgnoreAttackList(name)
                         || actorSpriteManager->isInPriorityAttackList(name))
                     {
-                        mBrowserBox->addRow(
-                            _("@@remove attack|Remove from attack list@@"));
+                        mBrowserBox->addRow(strprintf("@@remove attack|%s@@",
+                            _("Remove from attack list")));
                     }
                     else
                     {
-                        mBrowserBox->addRow(
-                            _("@@add attack priority|Add "
-                            "to priority attack list@@"));
-                        mBrowserBox->addRow(
-                            _("@@add attack|Add to attack list@@"));
-                        mBrowserBox->addRow(
-                            _("@@add attack ignore|Add to ignore list@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@add attack priority|%s@@",
+                            _("Add to priority attack list")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@add attack|%s@@", _("Add to attack list")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@add attack ignore|%s@@",
+                            _("Add to ignore list")));
                     }
                 }
             }
@@ -282,11 +299,10 @@ void PopupMenu::showPopup(int x, int y, Being *being)
             /* Other beings aren't interesting... */
             return;
     }
-    mBrowserBox->addRow(_("@@name|Add name to chat@@"));
+    mBrowserBox->addRow(strprintf("@@name|%s@@", _("Add name to chat")));
 
-    //mBrowserBox->addRow(strprintf("@@look|%s@@", _("Look To")));
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 }
@@ -301,12 +317,12 @@ void PopupMenu::showPopup(int x, int y, std::list<Being*> &beings)
         Being *being = *it;
         if (!being->getName().empty())
         {
-            mBrowserBox->addRow(strprintf(_("@@player_%u|%s >@@"),
+            mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
                 being->getId(), being->getName().c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
     showPopup(x, y);
 }
 
@@ -323,39 +339,42 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
 
     mBrowserBox->addRow(name);
 
-    mBrowserBox->addRow(_("@@whisper|Whisper@@"));
+    mBrowserBox->addRow(strprintf("@@whisper|%s@@", _("Whisper")));
     mBrowserBox->addRow("##3---");
 
     switch (player_relations.getRelation(name))
     {
         case PlayerRelation::NEUTRAL:
-            mBrowserBox->addRow(_("@@friend|Be friend@@"));
-            mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-            mBrowserBox->addRow(_("@@ignore|Ignore@@"));
-            mBrowserBox->addRow(_("@@erase|Erase@@"));
+            mBrowserBox->addRow(strprintf("@@friend|%s@@", _("Be friend")));
+            mBrowserBox->addRow(strprintf(
+                "@@disregard|%s@@", _("Disregard")));
+            mBrowserBox->addRow(strprintf("@@ignore|%s@@", _("Ignore")));
+            mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
             break;
 
         case PlayerRelation::FRIEND:
-            mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-            mBrowserBox->addRow(_("@@ignore|Ignore@@"));
-            mBrowserBox->addRow(_("@@erase|Erase@@"));
+            mBrowserBox->addRow(strprintf("@@disregard|%s@@", _("Disregard")));
+            mBrowserBox->addRow(strprintf("@@ignore|%s@@", _("Ignore")));
+            mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
             break;
 
         case PlayerRelation::DISREGARDED:
-            mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-            mBrowserBox->addRow(_("@@ignore|Completely ignore@@"));
-            mBrowserBox->addRow(_("@@erase|Erase@@"));
+            mBrowserBox->addRow(strprintf("@@unignore|%s@@", _("Unignore")));
+            mBrowserBox->addRow(strprintf(
+                "@@ignore|%s@@", _("Completely ignore")));
+            mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
             break;
 
         case PlayerRelation::IGNORED:
-            mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-            mBrowserBox->addRow(_("@@erase|Erase@@"));
+            mBrowserBox->addRow(strprintf("@@unignore|%s@@", _("Unignore")));
+            mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
             break;
 
         case PlayerRelation::ERASED:
-            mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-            mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-            mBrowserBox->addRow(_("@@ignore|Completely ignore@@"));
+            mBrowserBox->addRow(strprintf("@@unignore|%s@@", _("Unignore")));
+            mBrowserBox->addRow(strprintf("@@disregard|%s@@", _("Disregard")));
+            mBrowserBox->addRow(strprintf(
+                "@@ignore|%s@@", _("Completely ignore")));
             break;
 
         default:
@@ -363,8 +382,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     }
 
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@follow|Follow@@"));
-    mBrowserBox->addRow(_("@@imitation|Imitation@@"));
+    mBrowserBox->addRow(strprintf("@@follow|%s@@", _("Follow")));
+    mBrowserBox->addRow(strprintf("@@imitation|%s@@", _("Imitation")));
 
 
     if (player_node->isInParty() && player_node->getParty())
@@ -372,7 +391,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
         PartyMember *member = player_node->getParty()->getMember(mNick);
         if (member)
         {
-            mBrowserBox->addRow(_("@@kick party|Kick from party@@"));
+            mBrowserBox->addRow(strprintf(
+                "@@kick party|%s@@", _("Kick from party")));
             mBrowserBox->addRow("##3---");
         }
     }
@@ -382,27 +402,29 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     {
         if (guild2->getMember(mNick))
         {
-            mBrowserBox->addRow(_("@@guild-kick|Kick from guild@@"));
-            mBrowserBox->addRow(_("@@guild-pos|Change pos in guild >@@"));
+            mBrowserBox->addRow(strprintf(
+                "@@guild-kick|%s@@", _("Kick from guild")));
+            mBrowserBox->addRow(strprintf(
+                "@@guild-pos|%s >@@", _("Change pos in guild")));
         }
         else
         {
-            mBrowserBox->addRow(_("@@guild|Invite to guild@@"));
+            mBrowserBox->addRow(strprintf(
+                "@@guild|%s@@", _("Invite to guild")));
         }
     }
 
     mBrowserBox->addRow("##3---");
     if (player_relations.getDefault() & PlayerRelation::TRADE)
     {
-        mBrowserBox->addRow(_("@@buy|Buy@@"));
-        mBrowserBox->addRow(_("@@sell|Sell@@"));
+        mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
+        mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
     }
 
-    mBrowserBox->addRow(_("@@name|Add name to chat@@"));
+    mBrowserBox->addRow(strprintf("@@name|%s@@", _("Add name to chat")));
 
-    //mBrowserBox->addRow(strprintf("@@look|%s@@", _("Look To")));
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 
@@ -425,12 +447,11 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
         name = info.getName();
 
     mBrowserBox->addRow(name);
-    mBrowserBox->addRow(_("@@pickup|Pick up@@"));
-    mBrowserBox->addRow(_("@@chat|Add to chat@@"));
+    mBrowserBox->addRow(strprintf("@@pickup|%s@@", _("Pick up")));
+    mBrowserBox->addRow(strprintf("@@chat|%s@@", _("Add to chat")));
 
-    //mBrowserBox->addRow(strprintf("@@look|%s@@", _("Look To")));
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 }
@@ -445,11 +466,11 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
     mBrowserBox->clearRows();
 
     mBrowserBox->addRow(_("Map Item"));
-    mBrowserBox->addRow(_("@@rename map|Rename@@"));
-    mBrowserBox->addRow(_("@@remove map|Remove@@"));
+    mBrowserBox->addRow(strprintf("@@rename map|%s@@", _("Rename")));
+    mBrowserBox->addRow(strprintf("@@remove map|%s@@", _("Remove")));
 
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 }
@@ -459,10 +480,11 @@ void PopupMenu::showOutfitsPopup(int x, int y)
     mBrowserBox->clearRows();
 
     mBrowserBox->addRow(_("Outfits"));
-    mBrowserBox->addRow(_("@@load old outfits|Load old outfits@@"));
+    mBrowserBox->addRow(strprintf(
+        "@@load old outfits|%s@@", _("Load old outfits")));
 
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 }
@@ -476,11 +498,12 @@ void PopupMenu::showSpellPopup(int x, int y, TextCommand *cmd)
 
     mSpell = cmd;
     mBrowserBox->addRow(_("Spells"));
-    mBrowserBox->addRow(_("@@load old spells|Load old spells@@"));
-    mBrowserBox->addRow(_("@@edit spell|Edit spell@@"));
+    mBrowserBox->addRow(strprintf(
+        "@@load old spells|%s@@", _("Load old spells")));
+    mBrowserBox->addRow(strprintf("@@edit spell|%s@@", _("Edit spell")));
 
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow(_("@@cancel|Cancel@@"));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 }
@@ -495,7 +518,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     mBrowserBox->clearRows();
 
     if (tab->getType() == ChatTab::TAB_WHISPER)
-        mBrowserBox->addRow(_("@@chat close|Close@@"));
+        mBrowserBox->addRow(strprintf("@@chat close|%s@@", _("Close")));
 
     mBrowserBox->addRow(strprintf("@@chat clear|%s@@", _("Clear")));
     mBrowserBox->addRow("##3---");
@@ -534,7 +557,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
 
     if (tab->getType() == ChatTab::TAB_PARTY)
     {
-        mBrowserBox->addRow(_("@@leave party|Leave@@"));
+        mBrowserBox->addRow(strprintf("@@leave party|%s@@", _("Leave")));
         mBrowserBox->addRow("##3---");
     }
 
@@ -551,44 +574,55 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             mBeingId = being->getId();
             mNick = being->getName();
 
-            mBrowserBox->addRow(_("@@trade|Trade@@"));
-            mBrowserBox->addRow(_("@@attack|Attack@@"));
+            mBrowserBox->addRow(strprintf("@@trade|%s@@", _("Trade")));
+            mBrowserBox->addRow(strprintf("@@attack|%s@@", _("Attack")));
 
             mBrowserBox->addRow("##3---");
 
-            mBrowserBox->addRow(_("@@heal|Heal@@"));
+            mBrowserBox->addRow(strprintf("@@heal|%s@@", _("Heal")));
             mBrowserBox->addRow("##3---");
 
             switch (player_relations.getRelation(name))
             {
                 case PlayerRelation::NEUTRAL:
-                    mBrowserBox->addRow(_("@@friend|Be friend@@"));
-                    mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-                    mBrowserBox->addRow(_("@@ignore|Ignore@@"));
-                    mBrowserBox->addRow(_("@@erase|Erase@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@friend|%s@@", _("Be friend")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@disregard|%s@@", _("Disregard")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@ignore|%s@@", _("Ignore")));
+                    mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
                     break;
 
                 case PlayerRelation::FRIEND:
-                    mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-                    mBrowserBox->addRow(_("@@ignore|Ignore@@"));
-                    mBrowserBox->addRow(_("@@erase|Erase@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@disregard|%s@@", _("Disregard")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@ignore|%s@@", _("Ignore")));
+                    mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
                     break;
 
                 case PlayerRelation::DISREGARDED:
-                    mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-                    mBrowserBox->addRow(_("@@ignore|Completely ignore@@"));
-                    mBrowserBox->addRow(_("@@erase|Erase@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@unignore|%s@@", _("Unignore")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@ignore|%s@@", _("Completely ignore")));
+                    mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
                     break;
 
                 case PlayerRelation::IGNORED:
-                    mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-                    mBrowserBox->addRow(_("@@erase|Erase@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@unignore|%s@@", _("Unignore")));
+                    mBrowserBox->addRow(strprintf("@@erase|%s@@", _("Erase")));
                     break;
 
                 case PlayerRelation::ERASED:
-                    mBrowserBox->addRow(_("@@unignore|Unignore@@"));
-                    mBrowserBox->addRow(_("@@disregard|Disregard@@"));
-                    mBrowserBox->addRow(_("@@ignore|Completely ignore@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@unignore|%s@@", _("Unignore")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@disregard|%s@@", _("Disregard")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@ignore|%s@@", _("Completely ignore")));
                     break;
 
                 default:
@@ -596,16 +630,16 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             }
 
             mBrowserBox->addRow("##3---");
-            mBrowserBox->addRow(_("@@follow|Follow@@"));
-            mBrowserBox->addRow(_("@@imitation|Imitation@@"));
-            mBrowserBox->addRow(_("@@move|Move@@"));
-            mBrowserBox->addRow(_("@@undress|Undress@@"));
+            mBrowserBox->addRow(strprintf("@@follow|%s@@", _("Follow")));
+            mBrowserBox->addRow(strprintf("@@imitation|%s@@", _("Imitation")));
+            mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
+            mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
 
             if (player_relations.getDefault() & PlayerRelation::TRADE)
             {
                 mBrowserBox->addRow("##3---");
-                mBrowserBox->addRow(_("@@buy|Buy@@"));
-                mBrowserBox->addRow(_("@@sell|Sell@@"));
+                mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
+                mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
             }
 
             mBrowserBox->addRow("##3---");
@@ -616,12 +650,13 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                 {
                     if (!player_node->getParty()->isMember(wTab->getNick()))
                     {
-                        mBrowserBox->addRow(_("@@party|Invite to party@@"));
+                        mBrowserBox->addRow(
+                            strprintf("@@party|%s@@", _("Invite to party")));
                     }
                     else
                     {
-                        mBrowserBox->addRow(
-                            _("@@kick party|Kick from party@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@kick party|%s@@", _("Kick from party")));
                     }
                     mBrowserBox->addRow("##3---");
                 }
@@ -634,20 +669,21 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                 {
                     if (guild1->getId() == guild2->getId())
                     {
-                        mBrowserBox->addRow(
-                            _("@@guild-kick|Kick from guild@@"));
-                        mBrowserBox->addRow(
-                            _("@@guild-pos|Change pos in guild >@@"));
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild-kick|%s@@", _("Kick from guild")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild-pos|%s >@@", _("Change pos in guild")));
                     }
                 }
                 else
                 {
-                    mBrowserBox->addRow(_("@@guild|Invite to guild@@"));
+                    mBrowserBox->addRow(strprintf(
+                        "@@guild|%s@@", _("Invite to guild")));
                 }
             }
         }
     }
-    mBrowserBox->addRow(strprintf(_("@@cancel|Cancel@@")));
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
 }
@@ -668,10 +704,10 @@ void PopupMenu::showChangePos(int x, int y)
         PositionsMap::iterator itr_end = map.end();
         for (; itr != itr_end; ++itr)
         {
-            mBrowserBox->addRow(strprintf(_("@@guild-pos-%d|%s@@"),
-                                itr->first, itr->second.c_str()));
+            mBrowserBox->addRow(strprintf("@@guild-pos-%d|%s@@",
+                itr->first, itr->second.c_str()));
         }
-        mBrowserBox->addRow(strprintf(_("@@cancel|Cancel@@")));
+        mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
         showPopup(x, y);
     }
