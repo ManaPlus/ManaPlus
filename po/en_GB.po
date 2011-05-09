@@ -4963,17 +4963,17 @@ msgid "M.Defense"
 msgstr "M.Defense:"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Accuracy"
 msgstr "% Accuracy:"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Evade"
 msgstr "% Evade:"
 
 #: src/net/tmwa/generalhandler.cpp:261
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Critical"
 msgstr "Critical Hit"
 

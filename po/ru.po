@@ -2,21 +2,20 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-05-09 01:25+0300\n"
-"PO-Revision-Date: 2011-04-27 21:03+0000\n"
+"PO-Revision-Date: 2011-05-09 02:30+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Russian <>\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1022
 msgid "Visible on map"
@@ -126,11 +125,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:397
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:417
 #, c-format
@@ -267,26 +266,21 @@ msgid "font cache size"
 msgstr "размер кеша шрифта"
 
 #: src/commandhandler.cpp:1082
-#, fuzzy
 msgid "Cache size:"
-msgstr "размер кеша шрифта"
+msgstr "Размер кеша:"
 
 #: src/commandhandler.cpp:1085
-#, fuzzy
 msgid "Created:"
-msgstr "Создано: "
+msgstr "Создано:"
 
 #: src/commandhandler.cpp:1086
-#, fuzzy
 msgid "Deleted:"
-msgstr "Удалено: "
+msgstr "Удалено:"
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:398
 msgid "General"
@@ -598,19 +592,16 @@ msgid "Change Email"
 msgstr "Сменить адрес E-mail"
 
 #: src/gui/charselectdialog.cpp:252
-#, fuzzy
 msgid "Incorrect password"
-msgstr "Некорректный тип волос."
+msgstr "Нправильный пароль"
 
 #: src/gui/charselectdialog.cpp:285
-#, fuzzy
 msgid "Enter password for deleting character"
-msgstr "Невозможно удалить персонажа."
+msgstr "Введите пароль для удаления персонажа"
 
 #: src/gui/charselectdialog.cpp:285
-#, fuzzy
 msgid "Enter password:"
-msgstr "Неверный пароль"
+msgstr "Введите пароль:"
 
 #: src/gui/charselectdialog.cpp:407 src/gui/serverdialog.cpp:268
 #: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
@@ -729,14 +720,12 @@ msgid "Map"
 msgstr "Карта"
 
 #: src/gui/debugwindow.cpp:69
-#, fuzzy
 msgid "Target"
-msgstr "Цель:"
+msgstr "Цель"
 
 #: src/gui/debugwindow.cpp:70
-#, fuzzy
 msgid "Net"
-msgstr "Следующий"
+msgstr "Сеть"
 
 #: src/gui/debugwindow.cpp:133 src/gui/debugwindow.cpp:207
 #: src/gui/debugwindow.cpp:236
@@ -794,9 +783,8 @@ msgid "%d FPS"
 msgstr "%d FPS"
 
 #: src/gui/debugwindow.cpp:175 src/gui/debugwindow.cpp:227
-#, fuzzy
 msgid "Textures count:"
-msgstr "Кол-во. объектов:"
+msgstr "Количество текстур:"
 
 #: src/gui/debugwindow.cpp:205 src/gui/debugwindow.cpp:234
 msgid "Cursor:"
@@ -833,26 +821,23 @@ msgstr "Гильдия цели:"
 
 #: src/gui/debugwindow.cpp:260 src/gui/debugwindow.cpp:320
 #: src/gui/debugwindow.cpp:325 src/gui/debugwindow.cpp:335
-#, fuzzy
 msgid "Attack delay:"
-msgstr "Задержка атаки"
+msgstr "Задержка атаки:"
 
 #: src/gui/debugwindow.cpp:261 src/gui/debugwindow.cpp:310
 #: src/gui/debugwindow.cpp:336
-#, fuzzy
 msgid "Minimal hit:"
-msgstr "МиниКарта:"
+msgstr "Минимальный удар:"
 
 #: src/gui/debugwindow.cpp:262 src/gui/debugwindow.cpp:312
 #: src/gui/debugwindow.cpp:337
 msgid "Maximum hit:"
-msgstr ""
+msgstr "Максимальный удар:"
 
 #: src/gui/debugwindow.cpp:263 src/gui/debugwindow.cpp:314
 #: src/gui/debugwindow.cpp:338
-#, fuzzy
 msgid "Critical hit:"
-msgstr "Критический удар"
+msgstr "Критический удар:"
 
 #: src/gui/debugwindow.cpp:372
 #, c-format
@@ -1280,26 +1265,24 @@ msgstr "Торговать"
 
 #: src/gui/popupmenu.cpp:125 src/gui/popupmenu.cpp:342
 msgid "Whisper"
-msgstr ""
+msgstr "Приват"
 
 #: src/gui/popupmenu.cpp:129 src/gui/popupmenu.cpp:582
 msgid "Heal"
-msgstr ""
+msgstr "Лечить"
 
 #: src/gui/popupmenu.cpp:136 src/gui/popupmenu.cpp:348
 #: src/gui/popupmenu.cpp:589
-#, fuzzy
 msgid "Be friend"
-msgstr "друг"
+msgstr "Подружиться"
 
 #: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:147
 #: src/gui/popupmenu.cpp:174 src/gui/popupmenu.cpp:350
 #: src/gui/popupmenu.cpp:356 src/gui/popupmenu.cpp:375
 #: src/gui/popupmenu.cpp:591 src/gui/popupmenu.cpp:599
 #: src/gui/popupmenu.cpp:623
-#, fuzzy
 msgid "Disregard"
-msgstr "Пренебрегаемый"
+msgstr "Пренебреч"
 
 #: src/gui/popupmenu.cpp:142 src/gui/popupmenu.cpp:151
 #: src/gui/popupmenu.cpp:160 src/gui/popupmenu.cpp:167
@@ -1307,18 +1290,16 @@ msgstr "Пренебрегаемый"
 #: src/gui/popupmenu.cpp:365 src/gui/popupmenu.cpp:370
 #: src/gui/popupmenu.cpp:594 src/gui/popupmenu.cpp:602
 #: src/gui/popupmenu.cpp:610 src/gui/popupmenu.cpp:616
-#, fuzzy
 msgid "Erase"
-msgstr "Стерт"
+msgstr "Стереть"
 
 #: src/gui/popupmenu.cpp:156 src/gui/popupmenu.cpp:165
 #: src/gui/popupmenu.cpp:172 src/gui/popupmenu.cpp:362
 #: src/gui/popupmenu.cpp:369 src/gui/popupmenu.cpp:374
 #: src/gui/popupmenu.cpp:607 src/gui/popupmenu.cpp:615
 #: src/gui/popupmenu.cpp:621
-#, fuzzy
 msgid "Unignore"
-msgstr "Игнорировать"
+msgstr "Не игнорировать"
 
 #: src/gui/popupmenu.cpp:158 src/gui/popupmenu.cpp:176
 #: src/gui/popupmenu.cpp:364 src/gui/popupmenu.cpp:377
@@ -1329,91 +1310,77 @@ msgstr "@@ignore|Полностью игнорировать@@"
 
 #: src/gui/popupmenu.cpp:184 src/gui/popupmenu.cpp:385
 #: src/gui/popupmenu.cpp:633
-#, fuzzy
 msgid "Follow"
-msgstr "Следование: "
+msgstr "Следовать"
 
 #: src/gui/popupmenu.cpp:186 src/gui/popupmenu.cpp:386
 #: src/gui/popupmenu.cpp:634
-#, fuzzy
 msgid "Imitation"
-msgstr "Имитация: "
+msgstr "Имитировать"
 
 #: src/gui/popupmenu.cpp:196 src/gui/popupmenu.cpp:654
-#, fuzzy
 msgid "Invite to party"
-msgstr "Пригласить пользователя в группу"
+msgstr "Пригласить в группу"
 
 #: src/gui/popupmenu.cpp:201 src/gui/popupmenu.cpp:395
 #: src/gui/popupmenu.cpp:659
-#, fuzzy
 msgid "Kick from party"
-msgstr "@@kick party|Вышвырнуть из группы@@"
+msgstr "Выкинуть из группы"
 
 #: src/gui/popupmenu.cpp:216 src/gui/popupmenu.cpp:406
 #: src/gui/popupmenu.cpp:673
-#, fuzzy
 msgid "Kick from guild"
-msgstr "Вы были кикнуты из гильдии."
+msgstr "Выкинуть из гильдии"
 
 #: src/gui/popupmenu.cpp:218 src/gui/popupmenu.cpp:408
 #: src/gui/popupmenu.cpp:675
-#, fuzzy
 msgid "Change pos in guild"
-msgstr "@@guild-pos|Сменить статус в гильдии >@@"
+msgstr "Сменить позицию в гильдии"
 
 #: src/gui/popupmenu.cpp:224 src/gui/popupmenu.cpp:413
 #: src/gui/popupmenu.cpp:681
-#, fuzzy
 msgid "Invite to guild"
-msgstr "Приглашение игрока в Гильдию"
+msgstr "Пригласить в гильдию"
 
 #: src/gui/popupmenu.cpp:232
-#, fuzzy
 msgid "Kick player"
-msgstr "Игрок MVP."
+msgstr "Кикнуть игрока"
 
 #: src/gui/popupmenu.cpp:234
 msgid "Nuke"
-msgstr ""
+msgstr "Уничтожить"
 
 #: src/gui/popupmenu.cpp:236 src/gui/popupmenu.cpp:636
 msgid "Undress"
-msgstr ""
+msgstr "Раздеть"
 
 #: src/gui/popupmenu.cpp:267
 msgid "Kick"
-msgstr ""
+msgstr "Кикнуть"
 
 #: src/gui/popupmenu.cpp:278
-#, fuzzy
 msgid "Remove from attack list"
-msgstr "@@remove attack|Удалить из списка атак@@"
+msgstr "Удалить из списка атаки"
 
 #: src/gui/popupmenu.cpp:284
-#, fuzzy
 msgid "Add to priority attack list"
-msgstr "@@add attack priority|Добавить в список приортетных атак@@"
+msgstr "Добавить в приоритетный список"
 
 #: src/gui/popupmenu.cpp:286
-#, fuzzy
 msgid "Add to attack list"
-msgstr "@@add attack|Добавить к списку атак@@"
+msgstr "Добавить в список атаки"
 
 #: src/gui/popupmenu.cpp:289
-#, fuzzy
 msgid "Add to ignore list"
-msgstr "Добавить к торговле все"
+msgstr "Добавить в список игнорирования"
 
 #: src/gui/popupmenu.cpp:302 src/gui/popupmenu.cpp:424
-#, fuzzy
 msgid "Add name to chat"
-msgstr "Добавить в чат"
+msgstr "Добавить имя в чат"
 
 #: src/gui/popupmenu.cpp:450
-#, fuzzy
 msgid "Pick up"
-msgstr "Поднятие предметов"
+msgstr "Поднять"
 
 #: src/gui/popupmenu.cpp:451 src/gui/popupmenu.cpp:1530
 #: src/gui/popupmenu.cpp:1598 src/gui/popupmenu.cpp:1636
@@ -1425,9 +1392,8 @@ msgid "Map Item"
 msgstr "Элмент карты"
 
 #: src/gui/popupmenu.cpp:469
-#, fuzzy
 msgid "Rename"
-msgstr "Скрывать имя"
+msgstr "Переименовать"
 
 #: src/gui/popupmenu.cpp:470 src/gui/popupmenu.cpp:1750
 #: src/gui/popupmenu.cpp:1768 src/gui/popupmenu.cpp:1773
@@ -1435,22 +1401,20 @@ msgid "Remove"
 msgstr "Удалить"
 
 #: src/gui/popupmenu.cpp:484
-#, fuzzy
 msgid "Load old outfits"
-msgstr "Загрузить старые горячие клавиши предметов"
+msgstr "Загрузить старые наряды"
 
 #: src/gui/popupmenu.cpp:500 src/gui/windowmenu.cpp:93
 msgid "Spells"
 msgstr "Заклинания"
 
 #: src/gui/popupmenu.cpp:502
-#, fuzzy
 msgid "Load old spells"
-msgstr "@@load old spells|Загрузить старые заклинания@@"
+msgstr "Загрузить старые заклинания"
 
 #: src/gui/popupmenu.cpp:503
 msgid "Edit spell"
-msgstr ""
+msgstr "Изменить заклинание"
 
 #: src/gui/popupmenu.cpp:529
 msgid "Disable highlight"
@@ -2266,8 +2230,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
 #: src/gui/setup_video.cpp:539
 msgid ""
@@ -3112,7 +3076,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3447,15 +3412,16 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:123
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:128
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:62
@@ -4518,7 +4484,8 @@ msgstr "Неизвестная ошибка сервера чата."
 
 #: src/net/tmwa/charserverhandler.cpp:172
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
 #: src/net/tmwa/charserverhandler.cpp:176 src/net/tmwa/loginhandler.cpp:194
 msgid "Wrong name."
@@ -4876,8 +4843,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:99
 msgid "Command: /item"
@@ -4900,8 +4866,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:111
 msgid "Command: /exp"
@@ -5140,13 +5106,15 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:341
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
 
 #: src/net/tmwa/playerhandler.cpp:351
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
 "Вы несете груз меньше, чем половина вашей грузоподъемности. Вы можете "
 "восстановить здоровье."
@@ -5335,111 +5303,3 @@ msgstr "Мана %+d"
 #: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
-
-#~ msgid "@@trade|Trade@@"
-#~ msgstr "@@trade|Торговать@@"
-
-#~ msgid "@@attack|Attack@@"
-#~ msgstr "@@attack|Атаковать@@"
-
-#~ msgid "@@whisper|Whisper@@"
-#~ msgstr "@@whisper|Шептать@@"
-
-#~ msgid "@@heal|Heal@@"
-#~ msgstr "@@heal|Лечить@@"
-
-#~ msgid "@@friend|Be friend@@"
-#~ msgstr "@@friend|Подружиться@@"
-
-#~ msgid "@@disregard|Disregard@@"
-#~ msgstr "@@disregard|Пренебреч@@"
-
-#~ msgid "@@ignore|Ignore@@"
-#~ msgstr "@@unignore|Игнорировать@@"
-
-#~ msgid "@@erase|Erase@@"
-#~ msgstr "@@erase|Стереть@@"
-
-#~ msgid "@@unignore|Unignore@@"
-#~ msgstr "@@unignore|Не игнорировать@@"
-
-#~ msgid "@@ignore|Completely ignore@@"
-#~ msgstr "@@ignore|Полностью игнорировать@@"
-
-#~ msgid "@@follow|Follow@@"
-#~ msgstr "@@follow|Следовать@@"
-
-#~ msgid "@@imitation|Imitation@@"
-#~ msgstr "@@imitation|Имитация@@"
-
-#~ msgid "@@party|Invite to party@@"
-#~ msgstr "@@party|Пригласить в группу@@"
-
-#~ msgid "@@guild-kick|Kick from guild@@"
-#~ msgstr "@@guild-kick|Выкинуть из гильдии@@"
-
-#~ msgid "@@guild|Invite to guild@@"
-#~ msgstr "@@guild|Пригласить в гильдию@@"
-
-#~ msgid "@@admin-kick|Kick player@@"
-#~ msgstr "@@admin-kick|Вышвырнуть игрока@@"
-
-#~ msgid "@@nuke|Nuke@@"
-#~ msgstr "@@nuke|Уничтожить@@"
-
-#~ msgid "@@move|Move@@"
-#~ msgstr "@@move|Двигаться@@"
-
-#~ msgid "@@undress|Undress@@"
-#~ msgstr "@@undress|Раздеть@@"
-
-#~ msgid "@@buy|Buy@@"
-#~ msgstr "@@buy|Купить@@"
-
-#~ msgid "@@sell|Sell@@"
-#~ msgstr "@@sell|Продать@@"
-
-#~ msgid "@@talk|Talk@@"
-#~ msgstr "@@talk|Говорить@@"
-
-#~ msgid "@@admin-kick|Kick@@"
-#~ msgstr "@@admin-kick|Вышвырнуть игрока@@"
-
-#~ msgid "@@add attack ignore|Add to ignore list@@"
-#~ msgstr "@@add attack ignore|Добавить в список игнорирования@@"
-
-#~ msgid "@@name|Add name to chat@@"
-#~ msgstr "@@name|Добавить имя в чат@@"
-
-#~ msgid "@@cancel|Cancel@@"
-#~ msgstr "@@cancel|Отмена@@"
-
-#~ msgid "@@player_%u|%s >@@"
-#~ msgstr "@@player_%u|%s >@@"
-
-#~ msgid "@@pickup|Pick up@@"
-#~ msgstr "@@pickup|Поднять@@"
-
-#~ msgid "@@chat|Add to chat@@"
-#~ msgstr "@@chat|Добавить в чат@@"
-
-#~ msgid "@@rename map|Rename@@"
-#~ msgstr "@@rename map|Переименовать@@"
-
-#~ msgid "@@remove map|Remove@@"
-#~ msgstr "@@remove map|Удалить@@"
-
-#~ msgid "@@load old outfits|Load old outfits@@"
-#~ msgstr "@@load old outfits|Загрузить старые наряды@@"
-
-#~ msgid "@@edit spell|Edit spell@@"
-#~ msgstr "@@edit spell|Изменить заклинание@@"
-
-#~ msgid "@@chat close|Close@@"
-#~ msgstr "@@chat close|Закрыть@@"
-
-#~ msgid "@@leave party|Leave@@"
-#~ msgstr "@@leave party|Покинуть@@"
-
-#~ msgid "@@guild-pos-%d|%s@@"
-#~ msgstr "@@guild-pos-%d|%s@@"

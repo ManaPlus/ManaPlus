@@ -4968,17 +4968,17 @@ msgid "M.Defense"
 msgstr "Magische Verdediging:"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Accuracy"
 msgstr "% Nauwkeurigheid:"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Evade"
 msgstr "% Ontwijking:"
 
 #: src/net/tmwa/generalhandler.cpp:261
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Critical"
 msgstr "Kritieke aanval"
 

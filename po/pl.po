@@ -4971,17 +4971,17 @@ msgid "M.Defense"
 msgstr "Obrona M.:"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Accuracy"
 msgstr "% Celność:"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Evade"
 msgstr "% Unik:"
 
 #: src/net/tmwa/generalhandler.cpp:261
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Critical"
 msgstr "Uderzenie Krytyczne"
 

@@ -4973,17 +4973,17 @@ msgid "M.Defense"
 msgstr "M. försvar:"
 
 #: src/net/tmwa/generalhandler.cpp:259
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Accuracy"
 msgstr "% Träffsäkerhet:"
 
 #: src/net/tmwa/generalhandler.cpp:260
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Evade"
 msgstr "% Kringgå:"
 
 #: src/net/tmwa/generalhandler.cpp:261
-#, fuzzy, c-format
+#, fuzzy
 msgid "% Critical"
 msgstr "Kritisk träff"
 
