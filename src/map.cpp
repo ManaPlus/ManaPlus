@@ -684,17 +684,60 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                     width += 32;
                     x ++;
                 }
+                if (width && userPalette)
+                {
+                    graphics->setColor(userPalette->getColorWithAlpha(
+                        UserPalette::COLLISION_HIGHLIGHT));
+
+                    graphics->fillRectangle(gcn::Rectangle(
+                        x0 * mTileWidth - scrollX,
+                        y * mTileHeight - scrollY,
+                        width, 32));
+                }
             }
 
-            if (width && userPalette)
+            if (!getWalk(x, y, BLOCKMASK_AIR))
             {
-                graphics->setColor(userPalette->getColorWithAlpha(
-                    UserPalette::COLLISION_HIGHLIGHT));
+                width = 32;
+                for (int x2 = x + 1; x < endX; x2 ++)
+                {
+                    if (getWalk(x2, y, BLOCKMASK_AIR))
+                        break;
+                    width += 32;
+                    x ++;
+                }
+                if (width && userPalette)
+                {
+                    graphics->setColor(userPalette->getColorWithAlpha(
+                        UserPalette::AIR_COLLISION_HIGHLIGHT));
 
-                graphics->fillRectangle(gcn::Rectangle(
-                    x0 * mTileWidth - scrollX,
-                    y * mTileHeight - scrollY,
-                    width, 32));
+                    graphics->fillRectangle(gcn::Rectangle(
+                        x0 * mTileWidth - scrollX,
+                        y * mTileHeight - scrollY,
+                        width, 32));
+                }
+            }
+
+            if (!getWalk(x, y, BLOCKMASK_WATER))
+            {
+                width = 32;
+                for (int x2 = x + 1; x < endX; x2 ++)
+                {
+                    if (getWalk(x2, y, BLOCKMASK_WATER))
+                        break;
+                    width += 32;
+                    x ++;
+                }
+                if (width && userPalette)
+                {
+                    graphics->setColor(userPalette->getColorWithAlpha(
+                        UserPalette::WATER_COLLISION_HIGHLIGHT));
+
+                    graphics->fillRectangle(gcn::Rectangle(
+                        x0 * mTileWidth - scrollX,
+                        y * mTileHeight - scrollY,
+                        width, 32));
+                }
             }
         }
     }

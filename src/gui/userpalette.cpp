@@ -65,6 +65,8 @@ const std::string ColorTypeNames[] =
     "ColorMiss",
     "ColorPortalHighlight",
     "ColorCollisionHighlight",
+    "ColorCollisionAirHighlight",
+    "ColorCollisionWaterHighlight",
     "ColorWalkableTileHighlight",
     "ColorAttackRange",
     "ColorAttackRangeBorder",
@@ -144,7 +146,11 @@ UserPalette::UserPalette():
     addColor(MISS, 0xffff00, STATIC, _("Misses"));
     addColor(PORTAL_HIGHLIGHT, 0xC80000, STATIC, _("Portal Highlight"));
     addColor(COLLISION_HIGHLIGHT, 0x0000C8, STATIC,
-             _("Collision Highlight"), 64);
+             _("Default collision Highlight"), 64);
+    addColor(AIR_COLLISION_HIGHLIGHT, 0xe0e0ff, STATIC,
+             _("Air collision Highlight"), 64);
+    addColor(WATER_COLLISION_HIGHLIGHT, 0x2050e0, STATIC,
+             _("Water collision Highlight"), 64);
     addColor(WALKABLE_HIGHLIGHT, 0x00D000, STATIC,
              _("Walkable Highlight"), 255);
     addColor(ATTACK_RANGE, 0xffffff, STATIC,
