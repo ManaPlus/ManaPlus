@@ -1082,7 +1082,9 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
     debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all));
 #ifdef DEBUG_FONT_COUNTERS
     debugChatTab->chatLog("");
-    debugChatTab->chatLog(strprintf("%s %d", _("Created:"), font->getCreateCounter()));
-    debugChatTab->chatLog(strprintf("%s %d", _("Deleted:"), font->getDeleteCounter()));
+    debugChatTab->chatLog(strprintf("%s %d",
+        _("Created:"), font->getCreateCounter()));
+    debugChatTab->chatLog(strprintf("%s %d",
+        _("Deleted:"), font->getDeleteCounter()));
 #endif
 }

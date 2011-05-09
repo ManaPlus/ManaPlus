@@ -230,7 +230,7 @@ class Map : public Properties, public ConfigListener
             BLOCKMASK_CHARACTER = 0x01, // 0000 0001
             BLOCKMASK_MONSTER   = 0x02, // 0000 0010
             BLOCKMASK_AIR       = 0x04, // 0000 0100
-            BLOCKMASK_WATER     = 0x08, // 0000 1000
+            BLOCKMASK_WATER     = 0x08  // 0000 1000
         };
 
         enum DebugType
