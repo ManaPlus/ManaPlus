@@ -392,7 +392,7 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Gets the way the object is blocked by other objects.
          */
-        unsigned char getWalkMask() const;
+        virtual unsigned char getWalkMask() const;
 
         /**
          * Gets the way the monster blocks pathfinding for other objects

@@ -793,6 +793,12 @@ void Map::blockTile(int x, int y, BlockType type)
             case BLOCKTYPE_MONSTER:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_MONSTER;
                 break;
+            case BLOCKTYPE_AIR:
+                mMetaTiles[tileNum].blockmask |= BLOCKMASK_AIR;
+                break;
+            case BLOCKTYPE_WATER:
+                mMetaTiles[tileNum].blockmask |= BLOCKMASK_WATER;
+                break;
             default:
             case BLOCKTYPE_NONE:
             case NB_BLOCKTYPES:
@@ -1053,6 +1059,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
 
                 // Skip if the tile is on the closed list or is not walkable
                 // unless its the destination tile
+                //+++ here need check block must depend on player abilities.
                 if (!newTile || newTile->whichList == mOnClosedList ||
                     ((newTile->blockmask & walkmask)
                     && !(x == destX && y == destY))
@@ -1068,6 +1075,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                     MetaTile *t1 = getMetaTile(curr.x, curr.y + dy);
                     MetaTile *t2 = getMetaTile(curr.x + dx, curr.y);
 
+                    //+++ here need check block must depend on player abilities.
                     if (!t1 || !t2 || ((t1->blockmask | t2->blockmask)
                         & BLOCKMASK_WALL))
                     {

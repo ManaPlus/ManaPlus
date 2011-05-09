@@ -408,6 +408,8 @@ void Being::clearPath()
 void Being::setPath(const Path &path)
 {
     mPath = path;
+    if (mPath.empty())
+        return;
 
     if ((Net::getNetworkType() == ServerInfo::TMWATHENA) &&
         mAction != MOVE && mAction != DEAD)

@@ -288,6 +288,8 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
         else if (xmlStrEqual(childNode->name, BAD_CAST "properties"))
         {
             readProperties(childNode, map);
+            map->setVersion(atoi(map->getProperty(
+                "manaplus version").c_str()));
         }
         else if (xmlStrEqual(childNode->name, BAD_CAST "objectgroup"))
         {
@@ -407,8 +409,33 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
     {
         // Set collision tile
 //        if (set && (gid - set->getFirstGid() == 1))   buggy update
-        if (set && (gid - set->getFirstGid() != 0))
-            map->blockTile(x, y, Map::BLOCKTYPE_WALL);
+        if (set)
+        {
+            if (map->getVersion() >= 1)
+            {
+                switch (gid - set->getFirstGid())
+                {
+                    case Map::COLLISION_WALL:
+                        map->blockTile(x, y, Map::BLOCKTYPE_WALL);
+                        break;
+                    case Map::COLLISION_AIR:
+                        logger->log("air: %d, %d", x, y);
+                        map->blockTile(x, y, Map::BLOCKTYPE_AIR);
+                        break;
+                    case Map::COLLISION_WATER:
+                        logger->log("water: %d, %d", x, y);
+                        map->blockTile(x, y, Map::BLOCKTYPE_WATER);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                if (gid - set->getFirstGid() != 0)
+                    map->blockTile(x, y, Map::BLOCKTYPE_WALL);
+            }
+        }
     }
 }
 

@@ -210,14 +210,27 @@ class Map : public Properties, public ConfigListener
             BLOCKTYPE_WALL,
             BLOCKTYPE_CHARACTER,
             BLOCKTYPE_MONSTER,
+            BLOCKTYPE_AIR,
+            BLOCKTYPE_WATER,
             NB_BLOCKTYPES
+        };
+
+        enum CollisionTypes
+        {
+            COLLISION_EMPTY = 0,
+            COLLISION_WALL = 1,
+            COLLISION_AIR = 2,
+            COLLISION_WATER = 3,
+            COLLISION_MAX = 4
         };
 
         enum BlockMask
         {
-            BLOCKMASK_WALL      = 0x80, // = bin 1000 0000
-            BLOCKMASK_CHARACTER = 0x01, // = bin 0000 0001
-            BLOCKMASK_MONSTER   = 0x02  // = bin 0000 0010
+            BLOCKMASK_WALL      = 0x80, // 1000 0000
+            BLOCKMASK_CHARACTER = 0x01, // 0000 0001
+            BLOCKMASK_MONSTER   = 0x02, // 0000 0010
+            BLOCKMASK_AIR       = 0x04, // 0000 0100
+            BLOCKMASK_WATER     = 0x08, // 0000 1000
         };
 
         enum DebugType
@@ -297,7 +310,8 @@ class Map : public Properties, public ConfigListener
          * without walkmask, only blocks against colliding tiles.
          */
         bool getWalk(int x, int y,
-                     unsigned char walkmask = BLOCKMASK_WALL) const;
+                     unsigned char walkmask = BLOCKMASK_WALL | BLOCKMASK_AIR
+                     | BLOCKMASK_WATER) const;
 
         /**
          * Tells whether a tile is occupied by a being.
@@ -440,6 +454,12 @@ class Map : public Properties, public ConfigListener
         void setActorsFix(int x, int y)
         { mActorFixX = x; mActorFixY = y; }
 
+        int getVersion()
+        { return mVersion; }
+
+        void setVersion(int n)
+        { mVersion = n; }
+
     protected:
         friend class Actor;
 
@@ -528,6 +548,7 @@ class Map : public Properties, public ConfigListener
         int mIndexedTilesetsSize;
         int mActorFixX;
         int mActorFixY;
+        int mVersion;
 
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;

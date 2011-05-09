@@ -451,6 +451,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void resetYellowBar();
 
+        virtual unsigned char getWalkMask() const;
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;

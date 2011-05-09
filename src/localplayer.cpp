@@ -3835,6 +3835,12 @@ void LocalPlayer::resetYellowBar()
         miniStatusWindow->updateStatus();
 }
 
+unsigned char LocalPlayer::getWalkMask() const
+{
+    // for now blocking all types of collisions
+    return Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR | Map::BLOCKMASK_WATER;
+}
+
 void AwayListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "ok" && player_node && player_node->getAwayMode())
