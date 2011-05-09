@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-09 01:25+0300\n"
-"PO-Revision-Date: 2011-05-09 02:30+0000\n"
+"POT-Creation-Date: 2011-05-09 23:29+0300\n"
+"PO-Revision-Date: 2011-05-09 20:33+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
-#: src/being.cpp:493
+#: src/being.cpp:495
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being.cpp:493
+#: src/being.cpp:495
 msgid "miss"
 msgstr "промах"
 
@@ -269,11 +269,11 @@ msgstr "размер кеша шрифта"
 msgid "Cache size:"
 msgstr "Размер кеша:"
 
-#: src/commandhandler.cpp:1085
+#: src/commandhandler.cpp:1086
 msgid "Created:"
 msgstr "Создано:"
 
-#: src/commandhandler.cpp:1086
+#: src/commandhandler.cpp:1088
 msgid "Deleted:"
 msgstr "Удалено:"
 
@@ -1753,26 +1753,26 @@ msgstr "Цвета"
 msgid "Type:"
 msgstr "Введите: "
 
-#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:404
 msgid "Static"
 msgstr "Статичный"
 
 #: src/gui/setup_colors.cpp:85 src/gui/setup_colors.cpp:86
-#: src/gui/setup_colors.cpp:401
+#: src/gui/setup_colors.cpp:405
 msgid "Pulse"
 msgstr "Пульсирующий"
 
 #: src/gui/setup_colors.cpp:87 src/gui/setup_colors.cpp:88
-#: src/gui/setup_colors.cpp:402
+#: src/gui/setup_colors.cpp:406
 msgid "Rainbow"
 msgstr "Радуга"
 
 #: src/gui/setup_colors.cpp:89 src/gui/setup_colors.cpp:90
-#: src/gui/setup_colors.cpp:402
+#: src/gui/setup_colors.cpp:406
 msgid "Spectrum"
 msgstr "Спектр"
 
-#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:312
+#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:316
 msgid "Delay:"
 msgstr "Задержка:"
 
@@ -1788,7 +1788,7 @@ msgstr "Зеленый:"
 msgid "Blue:"
 msgstr "Синий:"
 
-#: src/gui/setup_colors.cpp:307
+#: src/gui/setup_colors.cpp:311
 msgid "Alpha:"
 msgstr "Прозрачность:"
 
@@ -3121,147 +3121,155 @@ msgstr "##1  попытаться еще раз немного погодя."
 msgid "Completed"
 msgstr "Завершено"
 
-#: src/gui/userpalette.cpp:112
+#: src/gui/userpalette.cpp:114
 msgid "Being"
 msgstr "Существо"
 
-#: src/gui/userpalette.cpp:113
+#: src/gui/userpalette.cpp:115
 msgid "Friend Names"
 msgstr "Имена Друзей"
 
-#: src/gui/userpalette.cpp:114
+#: src/gui/userpalette.cpp:116
 msgid "Disregarded Names"
 msgstr "Имена пренебрегаемых"
 
-#: src/gui/userpalette.cpp:115
+#: src/gui/userpalette.cpp:117
 msgid "Ignored Names"
 msgstr "Игнорируемые имена"
 
-#: src/gui/userpalette.cpp:116
+#: src/gui/userpalette.cpp:118
 msgid "Erased Names"
 msgstr "Стертые имена"
 
-#: src/gui/userpalette.cpp:117
+#: src/gui/userpalette.cpp:119
 msgid "Other Players' Names"
 msgstr "Имена других игроков"
 
-#: src/gui/userpalette.cpp:118
+#: src/gui/userpalette.cpp:120
 msgid "Own Name"
 msgstr "Собственное имя"
 
-#: src/gui/userpalette.cpp:119
+#: src/gui/userpalette.cpp:121
 msgid "GM Names"
 msgstr "Имена ГМ"
 
-#: src/gui/userpalette.cpp:120
+#: src/gui/userpalette.cpp:122
 msgid "NPCs"
 msgstr "Боты"
 
-#: src/gui/userpalette.cpp:121
+#: src/gui/userpalette.cpp:123
 msgid "Monsters"
 msgstr "Монстры"
 
-#: src/gui/userpalette.cpp:122
+#: src/gui/userpalette.cpp:124
 msgid "Monster HP bar"
 msgstr "Полоса жизни монстров"
 
-#: src/gui/userpalette.cpp:124
+#: src/gui/userpalette.cpp:126
 msgid "Monster HP bar (second color)"
 msgstr "Полоса жизни монстров (второй цвет)"
 
-#: src/gui/userpalette.cpp:125
+#: src/gui/userpalette.cpp:127
 msgid "Party Members"
 msgstr "Члены группы"
 
-#: src/gui/userpalette.cpp:126
+#: src/gui/userpalette.cpp:128
 msgid "Guild Members"
 msgstr "Члены гильдии"
 
-#: src/gui/userpalette.cpp:127
+#: src/gui/userpalette.cpp:129
 msgid "Particle Effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/userpalette.cpp:128
+#: src/gui/userpalette.cpp:130
 msgid "Pickup Notification"
 msgstr "Сообщение о подборе предмета"
 
-#: src/gui/userpalette.cpp:129
+#: src/gui/userpalette.cpp:131
 msgid "Exp Notification"
 msgstr "Сообщение об изменении опыта"
 
-#: src/gui/userpalette.cpp:130
+#: src/gui/userpalette.cpp:132
 msgid "Player HP bar"
 msgstr "Полоса жизни игрока"
 
-#: src/gui/userpalette.cpp:132
+#: src/gui/userpalette.cpp:134
 msgid "Player HP bar (second color)"
 msgstr "Полоса жизни игрока (второй цвет)"
 
-#: src/gui/userpalette.cpp:133
+#: src/gui/userpalette.cpp:135
 msgid "Player Hits Monster"
 msgstr "Удары игрока по монстру"
 
-#: src/gui/userpalette.cpp:134
+#: src/gui/userpalette.cpp:136
 msgid "Monster Hits Player"
 msgstr "Удары монстра по игроку"
 
-#: src/gui/userpalette.cpp:136
+#: src/gui/userpalette.cpp:138
 msgid "Other Player Hits Local Player"
 msgstr "Другой игрок бъет локального игрока"
 
-#: src/gui/userpalette.cpp:137
+#: src/gui/userpalette.cpp:139
 msgid "Critical Hit"
 msgstr "Критический удар"
 
-#: src/gui/userpalette.cpp:139
+#: src/gui/userpalette.cpp:141
 msgid "Local Player Hits Monster"
 msgstr "Удары игроков вокруг по монстру"
 
-#: src/gui/userpalette.cpp:141
+#: src/gui/userpalette.cpp:143
 msgid "Local Player Critical Hit"
 msgstr "Критический удар игрока"
 
-#: src/gui/userpalette.cpp:143
+#: src/gui/userpalette.cpp:145
 msgid "Local Player Miss"
 msgstr "Промах соседнего игрока"
 
-#: src/gui/userpalette.cpp:144
+#: src/gui/userpalette.cpp:146
 msgid "Misses"
 msgstr "Промахи"
 
-#: src/gui/userpalette.cpp:145
+#: src/gui/userpalette.cpp:147
 msgid "Portal Highlight"
 msgstr "Подсветка переходов"
 
-#: src/gui/userpalette.cpp:147
-msgid "Collision Highlight"
-msgstr "Подсветка столкновений"
-
 #: src/gui/userpalette.cpp:149
+msgid "Default collision Highlight"
+msgstr "Подсветка нпроходимых клеток"
+
+#: src/gui/userpalette.cpp:151
+msgid "Air collision Highlight"
+msgstr "Подстветка только воздушных клетов"
+
+#: src/gui/userpalette.cpp:153
+msgid "Water collision Highlight"
+msgstr "Подсветка клеток с водой"
+
+#: src/gui/userpalette.cpp:155
 msgid "Walkable Highlight"
 msgstr "Подсветка доступных участков карты"
 
-#: src/gui/userpalette.cpp:151
+#: src/gui/userpalette.cpp:157
 msgid "Local Player Attack Range"
 msgstr "Зона атаки соседнего игрока"
 
-#: src/gui/userpalette.cpp:153
+#: src/gui/userpalette.cpp:159
 msgid "Local Player Attack Range Border"
 msgstr "Граница зоны атаки соседнего игрока"
 
-#: src/gui/userpalette.cpp:155
+#: src/gui/userpalette.cpp:161
 msgid "Monster Attack Range"
 msgstr "Зона атаки монстра"
 
-#: src/gui/userpalette.cpp:157
+#: src/gui/userpalette.cpp:163
 msgid "Home Place"
 msgstr "Домашняя позиция"
 
-#: src/gui/userpalette.cpp:159
+#: src/gui/userpalette.cpp:165
 msgid "Home Place Border"
 msgstr "Бордюр домашней позиции"
 
-#: src/gui/userpalette.cpp:161
+#: src/gui/userpalette.cpp:167
 msgid "Road Point"
 msgstr "Точка дороги"
 

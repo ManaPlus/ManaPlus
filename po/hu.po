@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-09 01:25+0300\n"
+"POT-Creation-Date: 2011-05-09 23:29+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Látható nevek"
 
-#: src/being.cpp:493
+#: src/being.cpp:495
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:493
+#: src/being.cpp:495
 msgid "miss"
 msgstr ""
 
@@ -285,12 +285,12 @@ msgstr "Betűméret"
 msgid "Cache size:"
 msgstr "Betűméret"
 
-#: src/commandhandler.cpp:1085
+#: src/commandhandler.cpp:1086
 #, fuzzy
 msgid "Created:"
 msgstr "Létrehozás"
 
-#: src/commandhandler.cpp:1086
+#: src/commandhandler.cpp:1088
 #, fuzzy
 msgid "Deleted:"
 msgstr "Törlés"
@@ -1887,26 +1887,26 @@ msgstr "Színek"
 msgid "Type:"
 msgstr "Típus: "
 
-#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:404
 msgid "Static"
 msgstr "Statikus"
 
 #: src/gui/setup_colors.cpp:85 src/gui/setup_colors.cpp:86
-#: src/gui/setup_colors.cpp:401
+#: src/gui/setup_colors.cpp:405
 msgid "Pulse"
 msgstr "Pulzáló"
 
 #: src/gui/setup_colors.cpp:87 src/gui/setup_colors.cpp:88
-#: src/gui/setup_colors.cpp:402
+#: src/gui/setup_colors.cpp:406
 msgid "Rainbow"
 msgstr "Szivárvány"
 
 #: src/gui/setup_colors.cpp:89 src/gui/setup_colors.cpp:90
-#: src/gui/setup_colors.cpp:402
+#: src/gui/setup_colors.cpp:406
 msgid "Spectrum"
 msgstr "Színkép"
 
-#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:312
+#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:316
 #, fuzzy
 msgid "Delay:"
 msgstr "Várakozás "
@@ -1926,7 +1926,7 @@ msgstr "Zöld: "
 msgid "Blue:"
 msgstr "Kék: "
 
-#: src/gui/setup_colors.cpp:307
+#: src/gui/setup_colors.cpp:311
 msgid "Alpha:"
 msgstr ""
 
@@ -3323,164 +3323,174 @@ msgstr "##1 próbáld meg később"
 msgid "Completed"
 msgstr "Kész"
 
-#: src/gui/userpalette.cpp:112
+#: src/gui/userpalette.cpp:114
 msgid "Being"
 msgstr "Nevek"
 
-#: src/gui/userpalette.cpp:113
+#: src/gui/userpalette.cpp:115
 #, fuzzy
 msgid "Friend Names"
 msgstr "Barát"
 
-#: src/gui/userpalette.cpp:114
+#: src/gui/userpalette.cpp:116
 #, fuzzy
 msgid "Disregarded Names"
 msgstr "Semmibevett"
 
-#: src/gui/userpalette.cpp:115
+#: src/gui/userpalette.cpp:117
 #, fuzzy
 msgid "Ignored Names"
 msgstr "Tiltott"
 
-#: src/gui/userpalette.cpp:116
+#: src/gui/userpalette.cpp:118
 #, fuzzy
 msgid "Erased Names"
 msgstr "GM név"
 
-#: src/gui/userpalette.cpp:117
+#: src/gui/userpalette.cpp:119
 msgid "Other Players' Names"
 msgstr "Ismeretlen játékos neve"
 
-#: src/gui/userpalette.cpp:118
+#: src/gui/userpalette.cpp:120
 msgid "Own Name"
 msgstr "Saját név"
 
-#: src/gui/userpalette.cpp:119
+#: src/gui/userpalette.cpp:121
 msgid "GM Names"
 msgstr "GM név"
 
-#: src/gui/userpalette.cpp:120
+#: src/gui/userpalette.cpp:122
 msgid "NPCs"
 msgstr "Gépjátékos neve"
 
-#: src/gui/userpalette.cpp:121
+#: src/gui/userpalette.cpp:123
 msgid "Monsters"
 msgstr "Szörny neve"
 
-#: src/gui/userpalette.cpp:122
+#: src/gui/userpalette.cpp:124
 #, fuzzy
 msgid "Monster HP bar"
 msgstr "Sérüléskor"
 
-#: src/gui/userpalette.cpp:124
+#: src/gui/userpalette.cpp:126
 msgid "Monster HP bar (second color)"
 msgstr ""
 
-#: src/gui/userpalette.cpp:125
+#: src/gui/userpalette.cpp:127
 #, fuzzy
 msgid "Party Members"
 msgstr "Csapat"
 
-#: src/gui/userpalette.cpp:126
+#: src/gui/userpalette.cpp:128
 #, fuzzy
 msgid "Guild Members"
 msgstr "Klán"
 
-#: src/gui/userpalette.cpp:127
+#: src/gui/userpalette.cpp:129
 msgid "Particle Effects"
 msgstr "Effektek"
 
-#: src/gui/userpalette.cpp:128
+#: src/gui/userpalette.cpp:130
 msgid "Pickup Notification"
 msgstr "Tárgy felvételekor"
 
-#: src/gui/userpalette.cpp:129
+#: src/gui/userpalette.cpp:131
 msgid "Exp Notification"
 msgstr "Tapasztalat szerzésekor"
 
-#: src/gui/userpalette.cpp:130
+#: src/gui/userpalette.cpp:132
 #, fuzzy
 msgid "Player HP bar"
 msgstr "Sérüléskor"
 
-#: src/gui/userpalette.cpp:132
+#: src/gui/userpalette.cpp:134
 msgid "Player HP bar (second color)"
 msgstr ""
 
-#: src/gui/userpalette.cpp:133
+#: src/gui/userpalette.cpp:135
 #, fuzzy
 msgid "Player Hits Monster"
 msgstr "Sebzéskor"
 
-#: src/gui/userpalette.cpp:134
+#: src/gui/userpalette.cpp:136
 #, fuzzy
 msgid "Monster Hits Player"
 msgstr "Sérüléskor"
 
-#: src/gui/userpalette.cpp:136
+#: src/gui/userpalette.cpp:138
 #, fuzzy
 msgid "Other Player Hits Local Player"
 msgstr "Ismeretlen játékos neve"
 
-#: src/gui/userpalette.cpp:137
+#: src/gui/userpalette.cpp:139
 msgid "Critical Hit"
 msgstr "Kritikális ütéskor"
 
-#: src/gui/userpalette.cpp:139
+#: src/gui/userpalette.cpp:141
 #, fuzzy
 msgid "Local Player Hits Monster"
 msgstr "Sebzéskor"
 
-#: src/gui/userpalette.cpp:141
+#: src/gui/userpalette.cpp:143
 #, fuzzy
 msgid "Local Player Critical Hit"
 msgstr "Sebzéskor"
 
-#: src/gui/userpalette.cpp:143
+#: src/gui/userpalette.cpp:145
 msgid "Local Player Miss"
 msgstr ""
 
-#: src/gui/userpalette.cpp:144
+#: src/gui/userpalette.cpp:146
 msgid "Misses"
 msgstr "Ha nincs találat."
 
-#: src/gui/userpalette.cpp:145
+#: src/gui/userpalette.cpp:147
 #, fuzzy
 msgid "Portal Highlight"
 msgstr "Kijelölt fül"
 
-#: src/gui/userpalette.cpp:147
+#: src/gui/userpalette.cpp:149
 #, fuzzy
-msgid "Collision Highlight"
+msgid "Default collision Highlight"
 msgstr "Kijelölt"
 
-#: src/gui/userpalette.cpp:149
+#: src/gui/userpalette.cpp:151
+#, fuzzy
+msgid "Air collision Highlight"
+msgstr "Kijelölt"
+
+#: src/gui/userpalette.cpp:153
+#, fuzzy
+msgid "Water collision Highlight"
+msgstr "Kijelölt"
+
+#: src/gui/userpalette.cpp:155
 #, fuzzy
 msgid "Walkable Highlight"
 msgstr "Kijelölt fül"
 
-#: src/gui/userpalette.cpp:151
+#: src/gui/userpalette.cpp:157
 msgid "Local Player Attack Range"
 msgstr ""
 
-#: src/gui/userpalette.cpp:153
+#: src/gui/userpalette.cpp:159
 msgid "Local Player Attack Range Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:155
+#: src/gui/userpalette.cpp:161
 #, fuzzy
 msgid "Monster Attack Range"
 msgstr "Sérüléskor"
 
-#: src/gui/userpalette.cpp:157
+#: src/gui/userpalette.cpp:163
 msgid "Home Place"
 msgstr ""
 
-#: src/gui/userpalette.cpp:159
+#: src/gui/userpalette.cpp:165
 msgid "Home Place Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:161
+#: src/gui/userpalette.cpp:167
 msgid "Road Point"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-09 01:25+0300\n"
+"POT-Creation-Date: 2011-05-09 23:29+0300\n"
 "PO-Revision-Date: 2009-09-14 06:59+0000\n"
 "Last-Translator: Maciej Benke <syngress_stc@vp.pl>\n"
 "Language-Team: <pl@li.org>\n"
@@ -27,11 +27,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Widoczne imiona"
 
-#: src/being.cpp:493
+#: src/being.cpp:495
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:493
+#: src/being.cpp:495
 msgid "miss"
 msgstr ""
 
@@ -294,12 +294,12 @@ msgstr "Rozmiar czcionki"
 msgid "Cache size:"
 msgstr "Rozmiar czcionki"
 
-#: src/commandhandler.cpp:1085
+#: src/commandhandler.cpp:1086
 #, fuzzy
 msgid "Created:"
 msgstr "Utwórz"
 
-#: src/commandhandler.cpp:1086
+#: src/commandhandler.cpp:1088
 #, fuzzy
 msgid "Deleted:"
 msgstr "Usuń"
@@ -1892,26 +1892,26 @@ msgstr "Kolory"
 msgid "Type:"
 msgstr "Typ: "
 
-#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:400
+#: src/gui/setup_colors.cpp:83 src/gui/setup_colors.cpp:404
 msgid "Static"
 msgstr "Statyczny"
 
 #: src/gui/setup_colors.cpp:85 src/gui/setup_colors.cpp:86
-#: src/gui/setup_colors.cpp:401
+#: src/gui/setup_colors.cpp:405
 msgid "Pulse"
 msgstr "Puls"
 
 #: src/gui/setup_colors.cpp:87 src/gui/setup_colors.cpp:88
-#: src/gui/setup_colors.cpp:402
+#: src/gui/setup_colors.cpp:406
 msgid "Rainbow"
 msgstr "Tęcza"
 
 #: src/gui/setup_colors.cpp:89 src/gui/setup_colors.cpp:90
-#: src/gui/setup_colors.cpp:402
+#: src/gui/setup_colors.cpp:406
 msgid "Spectrum"
 msgstr "Widmo"
 
-#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:312
+#: src/gui/setup_colors.cpp:94 src/gui/setup_colors.cpp:316
 #, fuzzy
 msgid "Delay:"
 msgstr "Opóźnienie: "
@@ -1931,7 +1931,7 @@ msgstr "Zielony: "
 msgid "Blue:"
 msgstr "Niebieski: "
 
-#: src/gui/setup_colors.cpp:307
+#: src/gui/setup_colors.cpp:311
 msgid "Alpha:"
 msgstr ""
 
@@ -3329,165 +3329,175 @@ msgstr "##1 spróbował później"
 msgid "Completed"
 msgstr "Zakończono"
 
-#: src/gui/userpalette.cpp:112
+#: src/gui/userpalette.cpp:114
 msgid "Being"
 msgstr "Byty"
 
-#: src/gui/userpalette.cpp:113
+#: src/gui/userpalette.cpp:115
 #, fuzzy
 msgid "Friend Names"
 msgstr "Przyjaciel"
 
-#: src/gui/userpalette.cpp:114
+#: src/gui/userpalette.cpp:116
 #, fuzzy
 msgid "Disregarded Names"
 msgstr "Nielubiany"
 
-#: src/gui/userpalette.cpp:115
+#: src/gui/userpalette.cpp:117
 #, fuzzy
 msgid "Ignored Names"
 msgstr "Ignorowany"
 
-#: src/gui/userpalette.cpp:116
+#: src/gui/userpalette.cpp:118
 #, fuzzy
 msgid "Erased Names"
 msgstr "Imiona GM"
 
-#: src/gui/userpalette.cpp:117
+#: src/gui/userpalette.cpp:119
 msgid "Other Players' Names"
 msgstr "Imiona Innych Graczy"
 
-#: src/gui/userpalette.cpp:118
+#: src/gui/userpalette.cpp:120
 msgid "Own Name"
 msgstr "Własne Imię"
 
-#: src/gui/userpalette.cpp:119
+#: src/gui/userpalette.cpp:121
 msgid "GM Names"
 msgstr "Imiona GM"
 
-#: src/gui/userpalette.cpp:120
+#: src/gui/userpalette.cpp:122
 msgid "NPCs"
 msgstr "NPC"
 
-#: src/gui/userpalette.cpp:121
+#: src/gui/userpalette.cpp:123
 msgid "Monsters"
 msgstr "Potwory"
 
-#: src/gui/userpalette.cpp:122
+#: src/gui/userpalette.cpp:124
 #, fuzzy
 msgid "Monster HP bar"
 msgstr "Potwór uderza Gracza"
 
-#: src/gui/userpalette.cpp:124
+#: src/gui/userpalette.cpp:126
 msgid "Monster HP bar (second color)"
 msgstr ""
 
-#: src/gui/userpalette.cpp:125
+#: src/gui/userpalette.cpp:127
 #, fuzzy
 msgid "Party Members"
 msgstr "Grupa"
 
-#: src/gui/userpalette.cpp:126
+#: src/gui/userpalette.cpp:128
 #, fuzzy
 msgid "Guild Members"
 msgstr "Gildia"
 
-#: src/gui/userpalette.cpp:127
+#: src/gui/userpalette.cpp:129
 msgid "Particle Effects"
 msgstr "Efekty Cząsteczkowe"
 
-#: src/gui/userpalette.cpp:128
+#: src/gui/userpalette.cpp:130
 msgid "Pickup Notification"
 msgstr "Powiadomienie o podniesieniu"
 
-#: src/gui/userpalette.cpp:129
+#: src/gui/userpalette.cpp:131
 msgid "Exp Notification"
 msgstr "Powiadomienie o Exp"
 
-#: src/gui/userpalette.cpp:130
+#: src/gui/userpalette.cpp:132
 #, fuzzy
 msgid "Player HP bar"
 msgstr "Potwór uderza Gracza"
 
-#: src/gui/userpalette.cpp:132
+#: src/gui/userpalette.cpp:134
 msgid "Player HP bar (second color)"
 msgstr ""
 
-#: src/gui/userpalette.cpp:133
+#: src/gui/userpalette.cpp:135
 #, fuzzy
 msgid "Player Hits Monster"
 msgstr "Gracz uderza Potwora"
 
-#: src/gui/userpalette.cpp:134
+#: src/gui/userpalette.cpp:136
 #, fuzzy
 msgid "Monster Hits Player"
 msgstr "Potwór uderza Gracza"
 
-#: src/gui/userpalette.cpp:136
+#: src/gui/userpalette.cpp:138
 #, fuzzy
 msgid "Other Player Hits Local Player"
 msgstr "Imiona Innych Graczy"
 
-#: src/gui/userpalette.cpp:137
+#: src/gui/userpalette.cpp:139
 msgid "Critical Hit"
 msgstr "Uderzenie Krytyczne"
 
-#: src/gui/userpalette.cpp:139
+#: src/gui/userpalette.cpp:141
 #, fuzzy
 msgid "Local Player Hits Monster"
 msgstr "Gracz uderza Potwora"
 
-#: src/gui/userpalette.cpp:141
+#: src/gui/userpalette.cpp:143
 #, fuzzy
 msgid "Local Player Critical Hit"
 msgstr "Gracz uderza Potwora"
 
-#: src/gui/userpalette.cpp:143
+#: src/gui/userpalette.cpp:145
 #, fuzzy
 msgid "Local Player Miss"
 msgstr "Zapisz listę graczy"
 
-#: src/gui/userpalette.cpp:144
+#: src/gui/userpalette.cpp:146
 msgid "Misses"
 msgstr "Pudła"
 
-#: src/gui/userpalette.cpp:145
+#: src/gui/userpalette.cpp:147
 #, fuzzy
 msgid "Portal Highlight"
 msgstr "Podświetlenie zakładki"
 
-#: src/gui/userpalette.cpp:147
+#: src/gui/userpalette.cpp:149
 #, fuzzy
-msgid "Collision Highlight"
+msgid "Default collision Highlight"
 msgstr "Podświetlenie"
 
-#: src/gui/userpalette.cpp:149
+#: src/gui/userpalette.cpp:151
+#, fuzzy
+msgid "Air collision Highlight"
+msgstr "Podświetlenie"
+
+#: src/gui/userpalette.cpp:153
+#, fuzzy
+msgid "Water collision Highlight"
+msgstr "Podświetlenie"
+
+#: src/gui/userpalette.cpp:155
 #, fuzzy
 msgid "Walkable Highlight"
 msgstr "Podświetlenie zakładki"
 
-#: src/gui/userpalette.cpp:151
+#: src/gui/userpalette.cpp:157
 msgid "Local Player Attack Range"
 msgstr ""
 
-#: src/gui/userpalette.cpp:153
+#: src/gui/userpalette.cpp:159
 msgid "Local Player Attack Range Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:155
+#: src/gui/userpalette.cpp:161
 #, fuzzy
 msgid "Monster Attack Range"
 msgstr "Potwór uderza Gracza"
 
-#: src/gui/userpalette.cpp:157
+#: src/gui/userpalette.cpp:163
 msgid "Home Place"
 msgstr ""
 
-#: src/gui/userpalette.cpp:159
+#: src/gui/userpalette.cpp:165
 msgid "Home Place Border"
 msgstr ""
 
-#: src/gui/userpalette.cpp:161
+#: src/gui/userpalette.cpp:167
 msgid "Road Point"
 msgstr ""
 
