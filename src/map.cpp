@@ -696,7 +696,7 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (!getWalk(x, y, BLOCKMASK_AIR))
+            if (x < endX && !getWalk(x, y, BLOCKMASK_AIR))
             {
                 width = 32;
                 for (int x2 = x + 1; x < endX; x2 ++)
@@ -718,7 +718,7 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (!getWalk(x, y, BLOCKMASK_WATER))
+            if (x < endX && !getWalk(x, y, BLOCKMASK_WATER))
             {
                 width = 32;
                 for (int x2 = x + 1; x < endX; x2 ++)
