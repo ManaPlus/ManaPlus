@@ -2,20 +2,19 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-05-09 23:29+0300\n"
-"PO-Revision-Date: 2011-05-09 04:21+0000\n"
+"PO-Revision-Date: 2011-05-09 22:37+0000\n"
 "Last-Translator: Jumpy <antoinebcn@hotmail.com>\n"
-"Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/actorspritemanager.cpp:1022
@@ -127,11 +126,11 @@ msgstr "Vous ne pouvez pas envoyer des messages privés vides."
 #: src/commandhandler.cpp:397
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Vous ne pouvez créer une nouvelle fenêtre de message privé avec le nom \"%s"
-"\". Soit elle existe déjà, soit il s'agit de vous même."
+"Vous ne pouvez créer une nouvelle fenêtre de message privé avec le nom "
+"\"%s\". Soit elle existe déjà, soit il s'agit de vous même."
 
 #: src/commandhandler.cpp:417
 #, c-format
@@ -279,8 +278,8 @@ msgstr "Effacé :"
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", \"true"
-"\", \"false\", \"1\", \"0\"."
+"Les options qui peuvent être transmises à /%s sont \"yes\", \"no\", "
+"\"true\", \"false\", \"1\", \"0\"."
 
 #: src/game.cpp:228 src/gui/widgets/chattab.cpp:398
 msgid "General"
@@ -2494,8 +2493,8 @@ msgstr "Choisissez le nom de la guilde."
 #: src/gui/socialwindow.cpp:1293
 msgid "Received guild request, but one already exists."
 msgstr ""
-"Vous avez reçu une invitation pour rejoindre une guilde, mais vous êtes déjà "
-"dans une."
+"Vous avez reçu une invitation pour rejoindre une guilde, mais vous êtes déjà"
+" dans une."
 
 #: src/gui/socialwindow.cpp:1299
 #, c-format
@@ -3084,7 +3083,8 @@ msgid "Change"
 msgstr "Changer"
 
 #: src/gui/trade.cpp:314
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "L'objet ne peux être ajouté. Vous ne pouvez ajouter deux fois le même objet "
 "dans cette fenêtre."
@@ -3241,19 +3241,16 @@ msgid "Portal Highlight"
 msgstr "Surbrillance des portes d'entrée et de sortie"
 
 #: src/gui/userpalette.cpp:149
-#, fuzzy
 msgid "Default collision Highlight"
-msgstr "Surbrillance des points de collisions"
+msgstr "Mise an avant des emplacements de collision : Défaut"
 
 #: src/gui/userpalette.cpp:151
-#, fuzzy
 msgid "Air collision Highlight"
-msgstr "Surbrillance des points de collisions"
+msgstr "Mise an avant des emplacements de collision : Air"
 
 #: src/gui/userpalette.cpp:153
-#, fuzzy
 msgid "Water collision Highlight"
-msgstr "Surbrillance des points de collisions"
+msgstr "Mise an avant des emplacements de collision : Eau"
 
 #: src/gui/userpalette.cpp:155
 msgid "Walkable Highlight"
@@ -3333,7 +3330,8 @@ msgstr "Commande : /users"
 
 #: src/gui/widgets/channeltab.cpp:65
 msgid "This command shows the users in this channel."
-msgstr "Cette commande affiche la liste d'utilisateurs présents dans ce salon."
+msgstr ""
+"Cette commande affiche la liste d'utilisateurs présents dans ce salon."
 
 #: src/gui/widgets/channeltab.cpp:69
 msgid "Command: /topic <message>"
@@ -3443,8 +3441,10 @@ msgid "Command: /unignore <player>"
 msgstr "Commande : /unignore <joueur>"
 
 #: src/gui/widgets/whispertab.cpp:129
-msgid "This command stops ignoring the other player if they are being ignored."
-msgstr "Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
+msgstr ""
+"Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
 
 #: src/gui/windowmenu.cpp:62
 msgid "BC"
@@ -3914,8 +3914,8 @@ msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
 msgstr ""
-"Conflit entre les touches \"%s\" and \"%s\". Veuillez changer au moins l'une "
-"des touches ou attendez vous à un possible comportement étrange du jeu."
+"Conflit entre les touches \"%s\" and \"%s\". Veuillez changer au moins l'une"
+" des touches ou attendez vous à un possible comportement étrange du jeu."
 
 #: src/localplayer.cpp:344
 msgid "You were killed by "
@@ -4071,7 +4071,8 @@ msgstr ""
 
 #: src/main.cpp:69
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
+msgstr ""
+"      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
 
 #: src/main.cpp:70
 msgid "     --safemode       : Start game in safe mode"
@@ -5150,16 +5151,18 @@ msgstr "Message"
 
 #: src/net/tmwa/playerhandler.cpp:341
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
-"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
-"en mesure de regagner vos points de vie."
+"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus"
+" en mesure de regagner vos points de vie."
 
 #: src/net/tmwa/playerhandler.cpp:351
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid ""
+"You are carrying less than half your weight. You are can regain health."
 msgstr ""
-"Vous portez moins de la moitié du poids de votre inventaire.Vous pouvez vous "
-"régénérez de nouveau."
+"Vous portez moins de la moitié du poids de votre inventaire.Vous pouvez vous"
+" régénérez de nouveau."
 
 #: src/net/tmwa/playerhandler.cpp:456
 #, c-format
