@@ -33,8 +33,7 @@ BeingInfo::BeingInfo():
         mName(_("unnamed")),
         mTargetCursorSize(ActorSprite::TC_MEDIUM),
         mWalkMask(Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER
-            | Map::BLOCKMASK_MONSTER | Map::BLOCKMASK_AIR
-            | Map::BLOCKMASK_WATER),
+            | Map::BLOCKMASK_MONSTER),
         mBlockType(Map::BLOCKTYPE_CHARACTER),
         mTargetOffsetX(0), mTargetOffsetY(0),
         mMaxHP(0), mStaticMaxHP(false)

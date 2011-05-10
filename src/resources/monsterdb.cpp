@@ -71,8 +71,7 @@ void MonsterDB::load()
         BeingInfo *currentInfo = new BeingInfo;
 
         currentInfo->setWalkMask(Map::BLOCKMASK_WALL
-            | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER
-            | Map::BLOCKMASK_AIR | Map::BLOCKMASK_WATER);
+            | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER);
         currentInfo->setBlockType(Map::BLOCKTYPE_MONSTER);
 
         currentInfo->setName(XML::getProperty(
