@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SELL_H
-#define SELL_H
+#ifndef SELLDIALOG_H
+#define SELLDIALOG_H
 
 #include "gui/widgets/window.h"
 

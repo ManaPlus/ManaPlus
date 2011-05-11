@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TRADE_H
-#define TRADE_H
+#ifndef TRADEWINDOW_H
+#define TRADEWINDOW_H
 
 #include "guichanfwd.h"
 

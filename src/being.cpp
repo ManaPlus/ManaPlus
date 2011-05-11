@@ -46,7 +46,7 @@
 #include "gui/gui.h"
 #include "gui/npcdialog.h"
 #include "gui/npcpostdialog.h"
-#include "gui/sell.h"
+#include "gui/selldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/speechbubble.h"
 #include "gui/theme.h"

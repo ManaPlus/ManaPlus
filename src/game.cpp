@@ -72,7 +72,7 @@
 #include "gui/statuswindow.h"
 #include "gui/quitdialog.h"
 #include "gui/textdialog.h"
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 #include "gui/viewport.h"
 #include "gui/windowmenu.h"
 #include "gui/whoisonline.h"

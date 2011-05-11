@@ -261,8 +261,8 @@ SET(SRCS
     gui/killstats.h
     gui/itemamountwindow.cpp
     gui/itemamountwindow.h
-    gui/login.cpp
-    gui/login.h
+    gui/logindialog.cpp
+    gui/logindialog.h
     gui/minimap.cpp
     gui/minimap.h
     gui/ministatus.cpp
@@ -291,8 +291,8 @@ SET(SRCS
     gui/register.h
     gui/sdlinput.cpp
     gui/sdlinput.h
-    gui/sell.cpp
-    gui/sell.h
+    gui/selldialog.cpp
+    gui/selldialog.h
     gui/serverdialog.cpp
     gui/serverdialog.h
     gui/setup.cpp
@@ -337,8 +337,8 @@ SET(SRCS
     gui/textpopup.h
     gui/theme.cpp
     gui/theme.h
-    gui/trade.cpp
-    gui/trade.h
+    gui/tradewindow.cpp
+    gui/tradewindow.h
     gui/unregisterdialog.cpp
     gui/unregisterdialog.h
     gui/updatewindow.cpp

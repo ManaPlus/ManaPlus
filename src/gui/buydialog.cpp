@@ -26,7 +26,7 @@
 #include "units.h"
 
 #include "gui/setup.h"
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"

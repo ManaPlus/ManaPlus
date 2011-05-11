@@ -44,11 +44,11 @@
 #include "gui/itemamountwindow.h"
 #include "gui/ministatus.h"
 #include "gui/outfitwindow.h"
-#include "gui/sell.h"
+#include "gui/selldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/textcommandeditor.h"
 #include "gui/textdialog.h"
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 #include "gui/viewport.h"
 #include "gui/windowmenu.h"
 

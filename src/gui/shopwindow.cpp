@@ -24,9 +24,9 @@
 
 #include "gui/buydialog.h"
 #include "gui/itemamountwindow.h"
-#include "gui/sell.h"
+#include "gui/selldialog.h"
 #include "gui/setup.h"
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"

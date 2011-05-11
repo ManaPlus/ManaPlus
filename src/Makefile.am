@@ -156,8 +156,8 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/statuspopup.h \
 	      gui/killstats.cpp \
 	      gui/killstats.h \
-	      gui/login.cpp \
-	      gui/login.h \
+	      gui/logindialog.cpp \
+	      gui/logindialog.h \
 	      gui/minimap.cpp \
 	      gui/minimap.h \
 	      gui/ministatus.cpp \
@@ -186,8 +186,8 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/register.h \
 	      gui/sdlinput.cpp \
 	      gui/sdlinput.h \
-	      gui/sell.cpp \
-	      gui/sell.h \
+	      gui/selldialog.cpp \
+	      gui/selldialog.h \
 	      gui/serverdialog.cpp \
 	      gui/serverdialog.h \
 	      gui/setup.cpp \
@@ -232,8 +232,8 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/textpopup.h \
 	      gui/theme.cpp \
 	      gui/theme.h \
-	      gui/trade.cpp \
-	      gui/trade.h \
+	      gui/tradewindow.cpp \
+	      gui/tradewindow.h \
 	      gui/unregisterdialog.cpp \
 	      gui/unregisterdialog.h \
 	      gui/updatewindow.cpp \

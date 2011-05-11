@@ -33,7 +33,7 @@
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"
-#include "gui/sell.h"
+#include "gui/selldialog.h"
 #include "gui/shopwindow.h"
 
 #include "gui/widgets/chattab.h"

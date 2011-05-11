@@ -25,7 +25,7 @@
 #include "item.h"
 #include "keyboardconfig.h"
 
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 #include "net/inventoryhandler.h"
 #include "gui/itempopup.h"
 #include "net/net.h"

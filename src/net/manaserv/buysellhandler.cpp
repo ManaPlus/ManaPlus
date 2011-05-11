@@ -30,7 +30,7 @@
 
 #include "gui/buydialog.h"
 #include "gui/chatwindow.h"
-#include "gui/sell.h"
+#include "gui/selldialog.h"
 
 #include "net/messagein.h"
 #include "net/net.h"

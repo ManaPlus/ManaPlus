@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LOGIN_H
-#define LOGIN_H
+#ifndef LOGINDIALOG_H
+#define LOGINDIALOG_H
 
 #include "gui/widgets/window.h"
 

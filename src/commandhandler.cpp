@@ -36,7 +36,7 @@
 #include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"
 #include "gui/socialwindow.h"
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 #include "gui/sdlfont.h"
 
 #include "gui/widgets/channeltab.h"

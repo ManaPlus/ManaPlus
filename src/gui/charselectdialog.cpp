@@ -32,7 +32,7 @@
 #include "gui/changepassworddialog.h"
 #include "gui/charcreatedialog.h"
 #include "gui/confirmdialog.h"
-#include "gui/login.h"
+#include "gui/logindialog.h"
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"
 #include "gui/textdialog.h"

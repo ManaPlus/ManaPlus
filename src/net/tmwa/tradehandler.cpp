@@ -31,7 +31,7 @@
 #include "playerrelations.h"
 
 #include "gui/confirmdialog.h"
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 
 #include "net/inventoryhandler.h"
 #include "net/messagein.h"

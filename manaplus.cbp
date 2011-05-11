@@ -191,8 +191,8 @@
 		<Unit filename="src\gui\itempopup.h" />
 		<Unit filename="src\gui\killstats.cpp" />
 		<Unit filename="src\gui\killstats.h" />
-		<Unit filename="src\gui\login.cpp" />
-		<Unit filename="src\gui\login.h" />
+		<Unit filename="src\gui\logindialog.cpp" />
+		<Unit filename="src\gui\logindialog.h" />
 		<Unit filename="src\gui\minimap.cpp" />
 		<Unit filename="src\gui\minimap.h" />
 		<Unit filename="src\gui\ministatus.cpp" />
@@ -215,8 +215,8 @@
 		<Unit filename="src\gui\register.h" />
 		<Unit filename="src\gui\sdlinput.cpp" />
 		<Unit filename="src\gui\sdlinput.h" />
-		<Unit filename="src\gui\sell.cpp" />
-		<Unit filename="src\gui\sell.h" />
+		<Unit filename="src\gui\selldialog.cpp" />
+		<Unit filename="src\gui\selldialog.h" />
 		<Unit filename="src\gui\serverdialog.cpp" />
 		<Unit filename="src\gui\serverdialog.h" />
 		<Unit filename="src\gui\setup.cpp" />

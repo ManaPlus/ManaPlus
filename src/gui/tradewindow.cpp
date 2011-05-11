@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/trade.h"
+#include "gui/tradewindow.h"
 
 #include "inventory.h"
 #include "item.h"

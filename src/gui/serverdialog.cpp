@@ -29,7 +29,7 @@
 #include "main.h"
 
 #include "gui/gui.h"
-#include "gui/login.h"
+#include "gui/logindialog.h"
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
