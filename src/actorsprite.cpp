@@ -242,6 +242,9 @@ void ActorSprite::setStatusEffectBlock(int offset, Uint16 newEffects)
 
 void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
 {
+    if (!particleEngine)
+        return;
+
     if (player_node)
     {
         logger->log("Special effect #%d on %s", effectId,
@@ -315,6 +318,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     for (it = display.sprites.begin(), it_end = display.sprites.end();
          it != it_end; ++it)
     {
+        if (!*it)
+            continue;
         std::string file = "graphics/sprites/"
             + combineDye2((*it)->sprite, color);
 
