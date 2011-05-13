@@ -731,6 +731,7 @@ void PlayerHandler::changeAction(Being::Action action)
         case Being::ATTACK:
         case Being::DEAD:
         case Being::HURT:
+        case Being::SPAWN:
             return;
     }
 

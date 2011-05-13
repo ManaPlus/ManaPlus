@@ -769,9 +769,11 @@ Position LocalPlayer::getNextWalkPosition(unsigned char dir)
     return Position(static_cast<int>(pos.x), static_cast<int>(pos.y));
 }
 
-void LocalPlayer::nextTile(unsigned char dir = 0)
+void LocalPlayer::nextTile(unsigned char dir _UNUSED_ = 0)
 {
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
     {
 //        updatePos();
 
@@ -818,6 +820,7 @@ void LocalPlayer::nextTile(unsigned char dir = 0)
 
         Being::nextTile();
     }
+#ifdef MANASERV_SUPPORT
     else
     {
         if (!mMap || !dir)
@@ -842,6 +845,7 @@ void LocalPlayer::nextTile(unsigned char dir = 0)
             setDirection(dir);
         }
     }
+#endif
 }
 
 bool LocalPlayer::checkInviteRights(const std::string &guildName)
@@ -1118,7 +1122,9 @@ void LocalPlayer::startWalking(unsigned char dir)
     if (dir & RIGHT)
         dx++;
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
     {
         // Prevent skipping corners over colliding tiles
         if (dx && !mMap->getWalk(getTileX() + dx, getTileY(), getWalkMask()))
@@ -1150,10 +1156,12 @@ void LocalPlayer::startWalking(unsigned char dir)
             }
         }
     }
+#ifdef MANASERV_SUPPORT
     else
     {
         nextTile(dir);
     }
+#endif
 }
 
 void LocalPlayer::stopWalking(bool sendToServer)
@@ -1189,9 +1197,12 @@ bool LocalPlayer::toggleSit()
     Being::Action newAction;
     switch (mAction)
     {
-        case STAND: newAction = SIT;
+        case STAND:
+        case SPAWN:
+            newAction = SIT;
             break;
-        case SIT: newAction = STAND;
+        case SIT:
+            newAction = STAND;
             break;
         case MOVE:
         case ATTACK:

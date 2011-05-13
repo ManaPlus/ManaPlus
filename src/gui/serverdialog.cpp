@@ -66,6 +66,8 @@ static std::string serverTypeToString(ServerInfo::Type type)
 #ifdef MANASERV_SUPPORT
         case ServerInfo::MANASERV:
             return "ManaServ";
+#else
+        case ServerInfo::MANASERV:
 #endif
         default:
         case ServerInfo::UNKNOWN:
@@ -80,10 +82,13 @@ static unsigned short defaultPortForServerType(ServerInfo::Type type)
         default:
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
-            return 6901;
 #ifdef MANASERV_SUPPORT
+            return 6901;
         case ServerInfo::MANASERV:
             return 9601;
+#else
+        case ServerInfo::MANASERV:
+            return 6901;
 #endif
     }
 }
@@ -481,12 +486,17 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
         {
             case ServerInfo::TMWATHENA:
             case ServerInfo::UNKNOWN:
+#ifdef MANASERV_SUPPORT
             default:
                 mTypeField->setSelected(0);
                 break;
-#ifdef MANASERV_SUPPORT
             case ServerInfo::MANASERV:
                 mTypeField->setSelected(1);
+                break;
+#else
+            case ServerInfo::MANASERV:
+            default:
+                mTypeField->setSelected(0);
                 break;
 #endif
         }

@@ -36,6 +36,12 @@
 #include <memory>
 #include <vector>
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 class ChatTab;
 class FloorItem;
 class ImageSet;

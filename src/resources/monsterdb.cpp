@@ -59,8 +59,12 @@ void MonsterDB::load()
         return;
     }
 
+#ifdef MANASERV_SUPPORT
     int offset = XML::getProperty(rootNode, "offset", Net::getNetworkType() ==
         ServerInfo::TMWATHENA ? OLD_TMWATHENA_OFFSET : 0);
+#else
+    int offset = XML::getProperty(rootNode, "offset", OLD_TMWATHENA_OFFSET);
+#endif
 
     //iterate <monster>s
     for_each_xml_child_node(monsterNode, rootNode)

@@ -351,7 +351,9 @@ void Being::setPosition(const Vector &pos)
 
 void Being::setDestination(int dstX, int dstY)
 {
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
     {
         if (mMap)
             setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
@@ -411,8 +413,12 @@ void Being::setPath(const Path &path)
     if (mPath.empty())
         return;
 
+#ifdef MANASERV_SUPPORT
     if ((Net::getNetworkType() == ServerInfo::TMWATHENA) &&
         mAction != MOVE && mAction != DEAD)
+#else
+    if (mAction != MOVE && mAction != DEAD)
+#endif
     {
         nextTile();
         mActionTime = tick_time;
@@ -655,7 +661,9 @@ void Being::handleAttack(Being *victim, int damage,
     else if (mInfo->getAttack(mAttackType))
         fireMissile(victim, mInfo->getAttack(mAttackType)->missileParticle);
 
+#ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
     {
         reset();
         mActionTime = tick_time;
@@ -1194,8 +1202,8 @@ void Being::logic()
         }
     }
     else
-#endif
     if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+#endif
     {
         switch (mAction)
         {
@@ -1203,6 +1211,7 @@ void Being::logic()
             case SIT:
             case DEAD:
             case HURT:
+            case SPAWN:
             default:
                break;
 

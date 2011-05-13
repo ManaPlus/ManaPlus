@@ -160,8 +160,8 @@ void connectToServer(const ServerInfo &server)
 
         switch (server.type)
         {
-#ifdef MANASERV_SUPPORT
             case ServerInfo::MANASERV:
+#ifdef MANASERV_SUPPORT
                 new ManaServ::GeneralHandler;
                 break;
 #endif
