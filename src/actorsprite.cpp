@@ -66,7 +66,7 @@ ActorSprite::~ActorSprite()
 
     // Notify listeners of the destruction.
     for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
-            end = mActorSpriteListeners.end(); iter != end; ++iter)
+         end = mActorSpriteListeners.end(); iter != end; ++iter)
     {
         (*iter)->actorSpriteDestroyed(*this);
     }
@@ -414,8 +414,6 @@ static const char *cursorType(int type)
         default:
         case ActorSprite::TCT_NORMAL:
             return "normal";
-//        default:
-//            assert(false);
     }
 }
 
@@ -430,8 +428,6 @@ static const char *cursorSize(int size)
         default:
         case ActorSprite::TC_SMALL:
             return "s";
-//        default:
-//            assert(false);
     }
 }
 

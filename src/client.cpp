@@ -673,7 +673,8 @@ int Client::exec()
 
         while (get_elapsed_time(lastTickTime) > 0)
         {
-            gui->logic();
+            if (gui)
+                gui->logic();
             if (game)
                 game->logic();
 
@@ -689,7 +690,8 @@ int Client::exec()
         if (SDL_GetAppState() & SDL_APPACTIVE)
         {
             frame_count++;
-            gui->draw();
+            if (gui)
+                gui->draw();
             graphics->updateScreen();
 //            logger->log("active");
         }
@@ -745,7 +747,13 @@ int Client::exec()
         else if (mOldState == STATE_START ||
                  (mOldState == STATE_GAME && mState != STATE_GAME))
         {
+            if (!gui)
+                break;
+
             gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
+
+            if (!top)
+                break;
 
             mDesktop = new Desktop;
             top->add(mDesktop);
@@ -1635,6 +1643,9 @@ void Client::initScreenshotDir()
 
 void Client::accountLogin(LoginData *loginData)
 {
+    if (!loginData)
+        return;
+
     logger->log("Username is %s", loginData->username.c_str());
 
     // Send login infos

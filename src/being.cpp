@@ -522,7 +522,6 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
     }
     else if (!amount)
     {
-
         if (attacker == player_node)
         {
             // This is intended to be the wrong direction to visually
@@ -581,8 +580,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
     {
         // Show damage number
         particleEngine->addTextSplashEffect(damage,
-                                            getPixelX(), getPixelY() - 16,
-                                            color, font, true);
+            getPixelX(), getPixelY() - 16, color, font, true);
     }
 
     attacker->updateHit(amount);
@@ -595,15 +593,9 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
         mDamageTaken += amount;
         if (mInfo)
         {
-            if (attacker)
-            {
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
-                    attacker->getTileX(), attacker->getTileY());
-            }
-            else
-            {
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT));
-            }
+            sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT),
+                attacker->getTileX(), attacker->getTileY());
+
             if (!mInfo->isStaticMaxHP())
             {
                 if (!mHP && mInfo->getMaxHP() < mDamageTaken)

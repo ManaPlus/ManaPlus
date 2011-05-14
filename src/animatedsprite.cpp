@@ -268,16 +268,16 @@ unsigned int AnimatedSprite::getFrameCount() const
 
 int AnimatedSprite::getWidth() const
 {
-    if (mFrame)
-        return mFrame->image ? mFrame->image->getWidth() : 0;
+    if (mFrame && mFrame->image)
+        return mFrame->image->getWidth();
     else
         return 0;
 }
 
 int AnimatedSprite::getHeight() const
 {
-    if (mFrame)
-        return mFrame->image ? mFrame->image->getHeight() : 0;
+    if (mFrame && mFrame->image)
+        return mFrame->image->getHeight();
     else
         return 0;
 }
