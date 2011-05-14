@@ -1,3 +1,16 @@
+2011-05-15 New release 1.1.5.15
+ManaPlus:
+fix: targeting monster if monster added to priority attack list and "cycle mobs select" disabled.
+fix: improved text cache cleaning.
+fix: chat tab incorrect size if enabled hiding chat input line.
+add: ask password before deleting char.
+add: save attack filter.
+add: updated japan fonts.
+add: improved moving with mouse.
+add: spanish help translation.
+add: air and water collisions (incompotable with tmw).
+
+
 2011-05-01 New release 1.1.5.1
 ManaPlus:
 fix: some controls draw issue in SDL software mode.
@@ -13,6 +26,7 @@ add: spec file for rpm distros (mageia).
 
 Mana:
 add: music fadeout.
+
 
 2011-04-17 New release 1.1.4.17
 ManaPlus:
