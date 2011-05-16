@@ -1,2 +1,2 @@
 
-SUBDIRS = blackwood classic enchilado pink redandblack wood
+SUBDIRS = blackwood classic enchilado mana pink redandblack wood
