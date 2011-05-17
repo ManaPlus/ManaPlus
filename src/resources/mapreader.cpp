@@ -419,11 +419,9 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
                         map->blockTile(x, y, Map::BLOCKTYPE_WALL);
                         break;
                     case Map::COLLISION_AIR:
-                        logger->log("air: %d, %d", x, y);
                         map->blockTile(x, y, Map::BLOCKTYPE_AIR);
                         break;
                     case Map::COLLISION_WATER:
-                        logger->log("water: %d, %d", x, y);
                         map->blockTile(x, y, Map::BLOCKTYPE_WATER);
                         break;
                     default:

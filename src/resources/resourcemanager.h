@@ -23,6 +23,8 @@
 #ifndef RESOURCE_MANAGER_H
 #define RESOURCE_MANAGER_H
 
+#include "main.h"
+
 #include <ctime>
 #include <map>
 #include <string>
@@ -232,17 +234,19 @@ class ResourceManager
          */
         static void deleteInstance();
 
-/*
-        void selectSkin();
+        int size()
+        { return mResources.size(); }
 
-        Image *getSkinImage(const std::string &idPath);
+        typedef std::map<std::string, Resource*> Resources;
+        typedef Resources::iterator ResourceIterator;
 
-        std::string mapPathToSkin(const std::string &file);
+#ifdef DEBUG_DUMP_LEAKS
+        Resources* getResources()
+        { return &mResources; }
 
-        void fillSkinsList(std::vector<std::string> &list) const;
-
-        std::string getSkinName() const { return mSkinName; }
-*/
+        Resources* getOrphanedResources()
+        { return &mOrphanedResources; }
+#endif
 
     private:
         /**
@@ -253,8 +257,6 @@ class ResourceManager
         void cleanOrphans();
 
         static ResourceManager *instance;
-        typedef std::map<std::string, Resource*> Resources;
-        typedef Resources::iterator ResourceIterator;
         std::set<SDL_Surface*> deletedSurfaces;
         Resources mResources;
         Resources mOrphanedResources;

@@ -285,6 +285,8 @@ class CommandHandler
         void handleAddIgnoreAttack(const std::string &args,
                                    ChatTab *tab _UNUSED_);
 
+        void handleDump(const std::string &args, ChatTab *tab);
+
         void handleCacheInfo(const std::string &args, ChatTab *tab _UNUSED_);
 
         bool parse2Int(const std::string &args, int *x, int *y);

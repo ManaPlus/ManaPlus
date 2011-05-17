@@ -83,7 +83,8 @@
 
 
 #define ENABLEDEBUGLOG 1
-//define DEBUG_LEAKS
+//define DEBUG_LEAKS 1
+//define DEBUG_DUMP_LEAKS 1
 //define DEBUG_CONFIG 1
 //define DEBUG_FONT 1
 //define DEBUG_FONT_COUNTERS 1

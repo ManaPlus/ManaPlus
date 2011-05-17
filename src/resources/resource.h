@@ -23,6 +23,8 @@
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
+#include "main.h"
+
 #include <ctime>
 #include <string>
 
@@ -38,7 +40,11 @@ class Resource
          * Constructor
          */
         Resource(): mRefCount(0)
-        { }
+        {
+#ifdef DEBUG_DUMP_LEAKS
+            mDumped = false;
+#endif
+        }
 
         /**
          * Increments the internal reference count.
@@ -66,6 +72,14 @@ class Resource
         unsigned getRefCount() const
         { return mRefCount; }
 
+#ifdef DEBUG_DUMP_LEAKS
+        bool getDumped()
+        { return mDumped; }
+
+        void setDumped(bool n)
+        { mDumped = n; }
+#endif
+
     protected:
         /**
          * Destructor.
@@ -77,6 +91,9 @@ class Resource
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
         unsigned mRefCount;  /**< Reference count. */
         std::string mName;
+#ifdef DEBUG_DUMP_LEAKS
+        bool mDumped;
+#endif
 };
 
 #endif

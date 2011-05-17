@@ -52,6 +52,12 @@
 #include "net/partyhandler.h"
 #include "net/tradehandler.h"
 
+#ifdef DEBUG_DUMP_LEAKS
+#include "resources/image.h"
+#include "resources/resource.h"
+#include "resources/resourcemanager.h"
+#endif
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -275,6 +281,10 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
     else if (type == "addignoreattack")
     {
         handleAddIgnoreAttack(args, tab);
+    }
+    else if (type == "dump")
+    {
+        handleDump(args, tab);
     }
     else if (tab->handleCommand(type, args))
     {
@@ -1088,3 +1098,66 @@ void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
         _("Deleted:"), font->getDeleteCounter()));
 #endif
 }
+
+#ifdef DEBUG_DUMP_LEAKS
+void showRes(std::string str, ResourceManager::Resources *res);
+
+void showRes(std::string str, ResourceManager::Resources *res)
+{
+    if (debugChatTab)
+        debugChatTab->chatLog(str + toString(res->size()));
+    logger->log(str + toString(res->size()));
+    ResourceManager::ResourceIterator iter = res->begin();
+    while (iter != res->end())
+    {
+        if (iter->second && iter->second->getRefCount())
+        {
+            std::string type = " ";
+            std::string isNew = "N";
+            if (iter->second->getDumped())
+                isNew = "O";
+            else
+                iter->second->setDumped(true);
+
+            if (dynamic_cast<SubImage*>(iter->second))
+                type = "S";
+            else if (dynamic_cast<Image*>(iter->second))
+                type = "I";
+            logger->log("Resource %s%s: %s (%d)", type.c_str(),
+                isNew.c_str(), iter->second->getIdPath().c_str(),
+                iter->second->getRefCount());
+        }
+        ++ iter;
+    }
+}
+
+void CommandHandler::handleDump(const std::string &args,
+                                ChatTab *tab _UNUSED_)
+{
+    if (!debugChatTab)
+        return;
+
+    ResourceManager *resman = ResourceManager::getInstance();
+
+    if (!args.empty())
+    {
+        ResourceManager::Resources *res = resman->getResources();
+        showRes(_("Resource images:"), res);
+        res = resman->getOrphanedResources();
+        showRes(_("Resource orphaned images:"), res);
+    }
+    else
+    {
+        ResourceManager::Resources *res = resman->getResources();
+        debugChatTab->chatLog(_("Resource images:") + toString(res->size()));
+        res = resman->getOrphanedResources();
+        debugChatTab->chatLog(_("Resource orphaned images:")
+            + toString(res->size()));
+    }
+}
+#else
+void CommandHandler::handleDump(const std::string &args _UNUSED_,
+                                ChatTab *tab _UNUSED_)
+{
+}
+#endif
