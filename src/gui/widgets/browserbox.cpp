@@ -24,6 +24,7 @@
 #include "gui/widgets/browserbox.h"
 
 #include "client.h"
+#include "graphics.h"
 #include "log.h"
 
 #include "utils/stringutils.h"
@@ -32,6 +33,10 @@
 #include "gui/theme.h"
 
 #include "gui/widgets/linkhandler.h"
+
+#include "resources/image.h"
+#include "resources/resource.h"
+#include "resources/resourcemanager.h"
 
 #include <guichan/graphics.hpp>
 #include <guichan/font.hpp>
@@ -52,7 +57,8 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mYStart(0),
     mUpdateTime(-1),
     mAlwaysUpdate(true),
-    mProcessVersion(false)
+    mProcessVersion(false),
+    mEnableImages(false)
 {
     setFocusable(true);
     addMouseListener(this);
@@ -235,6 +241,14 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     updateHeight();
 }
 
+void BrowserBox::addImage(const std::string &path)
+{
+    if (!mEnableImages)
+        return;
+
+    mTextRows.push_back("~~~" + path);
+}
+
 void BrowserBox::clearRows()
 {
     mTextRows.clear();
@@ -283,6 +297,7 @@ void BrowserBox::mouseMoved(gcn::MouseEvent &event)
 void BrowserBox::draw(gcn::Graphics *graphics)
 {
     gcn::ClipRectangle cr = graphics->getCurrentClipArea();
+    Graphics *graphics2 = static_cast<Graphics*>(graphics);
     mYStart = cr.y - cr.yOffset;
     int yEnd = mYStart + cr.height;
     if (mYStart < 0)
@@ -333,8 +348,15 @@ void BrowserBox::draw(gcn::Graphics *graphics)
             continue;
         if (part.mY > yEnd)
             break;
-        graphics->setColor(part.mColor);
-        font->drawString(graphics, part.mText, part.mX, part.mY);
+        if (!part.mType)
+        {
+            graphics->setColor(part.mColor);
+            font->drawString(graphics, part.mText, part.mX, part.mY);
+        }
+        else if (part.mImage)
+        {
+            graphics2->drawImage(part.mImage, part.mX, part.mY);
+        }
     }
 
     return;
@@ -357,6 +379,7 @@ int BrowserBox::calcHeight()
 
     gcn::Color selColor = Theme::getThemeColor(Theme::TEXT);
     const gcn::Color textColor = Theme::getThemeColor(Theme::TEXT);
+    ResourceManager *resman = ResourceManager::getInstance();
 
     mLineParts.clear();
 
@@ -377,6 +400,19 @@ int BrowserBox::calcHeight()
             }
 
             y += fontHeight;
+            continue;
+        }
+        else if (mEnableImages && row.find("~~~", 0) == 0)
+        {
+            std::string str = row.substr(3);
+            if (str.size() > 2 && str.substr(str.size() - 1) == "~")
+                str = str.substr(0, str.size() - 1);
+            Image *img = resman->getImage(str);
+            if (img)
+            {
+                mLineParts.push_back(LinePart(x, y, selColor, img));
+                y += img->getHeight();
+            }
             continue;
         }
 
@@ -545,4 +581,11 @@ void BrowserBox::updateHeight()
         setHeight(mHeight);
         mUpdateTime = cur_time;
     }
+}
+
+LinePart::~LinePart()
+{
+    if (mImage)
+        mImage->decRef();
+    mImage = 0;
 }

@@ -30,6 +30,8 @@
 #include <list>
 #include <vector>
 
+class Image;
+class Resource;
 class LinkHandler;
 
 struct BROWSER_LINK
@@ -43,13 +45,22 @@ class LinePart
 {
     public:
         LinePart(int x, int y, gcn::Color color, std::string text) :
-            mX(x), mY(y), mColor(color), mText(text)
+            mX(x), mY(y), mColor(color), mText(text), mType(0), mImage(0)
         {
         }
+
+        LinePart(int x, int y, gcn::Color color, Image *image) :
+            mX(x), mY(y), mColor(color), mText(""), mType(1), mImage(image)
+        {
+        }
+
+        ~LinePart();
 
         int mX, mY;
         gcn::Color mColor;
         std::string mText;
+        unsigned char mType;
+        Image *mImage;
 };
 
 /**
@@ -100,6 +111,8 @@ class BrowserBox : public gcn::Widget,
          * Adds a text row to the browser.
          */
         void addRow(const std::string &row, bool atTop = false);
+
+        void addImage(const std::string &path);
 
         /**
          * Remove all rows.
@@ -178,6 +191,9 @@ class BrowserBox : public gcn::Widget,
         void setProcessVersion(bool n)
         { mProcessVersion = n; }
 
+        void setEnableImages(bool n)
+        { mEnableImages = n; }
+
     private:
         int calcHeight();
 
@@ -205,6 +221,7 @@ class BrowserBox : public gcn::Widget,
         int mUpdateTime;
         bool mAlwaysUpdate;
         bool mProcessVersion;
+        bool mEnableImages;
 };
 
 #endif
