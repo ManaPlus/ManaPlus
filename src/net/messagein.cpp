@@ -116,7 +116,7 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
                 break;
             case 8:
 #ifdef MANASERV_SUPPORT
-                if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+                if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
                 {
                     direction = 8;

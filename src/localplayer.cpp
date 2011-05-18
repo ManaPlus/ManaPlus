@@ -772,7 +772,7 @@ Position LocalPlayer::getNextWalkPosition(unsigned char dir)
 void LocalPlayer::nextTile(unsigned char dir _UNUSED_ = 0)
 {
 #ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
 //        updatePos();
@@ -1028,7 +1028,7 @@ void LocalPlayer::setDestination(int x, int y)
             // If the destination given to being class is accepted,
             // we inform the Server.
             if ((x == mDest.x && y == mDest.y)
-                || Net::getNetworkType() == ServerInfo::TMWATHENA)
+                || Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
             {
                 Net::getPlayerHandler()->setDestination(x, y, mDirection);
@@ -1123,7 +1123,7 @@ void LocalPlayer::startWalking(unsigned char dir)
         dx++;
 
 #ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
         // Prevent skipping corners over colliding tiles
@@ -1333,7 +1333,11 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         changeEquipmentBeforeAttack(target);
 
     Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
-    if ((Net::getNetworkType() == ServerInfo::TMWATHENA) && !keep)
+#ifdef MANASERV_SUPPORT
+    if ((Net::getNetworkType() != ServerInfo::MANASERV) && !keep)
+#else
+    if (!keep)
+#endif
         stopAttack();
 }
 

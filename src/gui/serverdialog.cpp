@@ -63,6 +63,8 @@ static std::string serverTypeToString(ServerInfo::Type type)
     {
         case ServerInfo::TMWATHENA:
             return "TmwAthena";
+        case ServerInfo::EVOL:
+            return "Evol";
 #ifdef MANASERV_SUPPORT
         case ServerInfo::MANASERV:
             return "ManaServ";
@@ -82,6 +84,7 @@ static unsigned short defaultPortForServerType(ServerInfo::Type type)
         default:
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
+        case ServerInfo::EVOL:
 #ifdef MANASERV_SUPPORT
             return 6901;
         case ServerInfo::MANASERV:
@@ -134,8 +137,10 @@ std::string TypeListModel::getElementAt(int elementIndex)
 {
     if (elementIndex == 0)
         return "TmwAthena";
-#ifdef MANASERV_SUPPORT
     else if (elementIndex == 1)
+        return "Evol";
+#ifdef MANASERV_SUPPORT
+    else if (elementIndex == 2)
         return "ManaServ";
 #endif
     else
@@ -251,18 +256,26 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     ScrollArea *usedScroll = new ScrollArea(mServersList);
     usedScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
-#ifdef MANASERV_SUPPORT
     Label *typeLabel = new Label(_("Server type:"));
     mTypeListModel = new TypeListModel();
     mTypeField = new DropDown(mTypeListModel);
-    mTypeField->setSelected((serverInfo->type == ServerInfo::MANASERV) ?
-                            1 : 0);
-    int n = 1;
-#else
-    mTypeListModel = 0;
-    mTypeField = 0;
-    int n = 0;
+    switch (serverInfo->type)
+    {
+        case ServerInfo::MANASERV:
+#ifdef MANASERV_SUPPORT
+            mTypeField->setSelected(2);
+            break;
 #endif
+        default:
+        case ServerInfo::UNKNOWN:
+        case ServerInfo::TMWATHENA:
+            mTypeField->setSelected(0);
+            break;
+        case ServerInfo::EVOL:
+            mTypeField->setSelected(1);
+            break;
+    }
+    int n = 1;
 
     mDescription = new Label(std::string());
 
@@ -285,10 +298,8 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     place(1, 0, mServerNameField, 5).setPadding(3);
     place(0, 1, portLabel);
     place(1, 1, mPortField, 5).setPadding(3);
-#ifdef MANASERV_SUPPORT
     place(0, 2, typeLabel);
     place(1, 2, mTypeField, 5).setPadding(3);
-#endif
     place(0, 2 + n, usedScroll, 6, 5).setPadding(3);
     place(0, 7 + n, mDescription, 6);
     place(0, 8 + n, mPersistentIPCheckBox, 6);
@@ -399,8 +410,11 @@ void ServerDialog::action(const gcn::ActionEvent &event)
                     case 0:
                         mServerInfo->type = ServerInfo::TMWATHENA;
                         break;
-#ifdef MANASERV_SUPPORT
                     case 1:
+                        mServerInfo->type = ServerInfo::EVOL;
+                        break;
+#ifdef MANASERV_SUPPORT
+                    case 2:
                         mServerInfo->type = ServerInfo::MANASERV;
                         break;
 #endif
@@ -491,7 +505,7 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
                 mTypeField->setSelected(0);
                 break;
             case ServerInfo::MANASERV:
-                mTypeField->setSelected(1);
+                mTypeField->setSelected(2);
                 break;
 #else
             case ServerInfo::MANASERV:
@@ -499,6 +513,9 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
                 mTypeField->setSelected(0);
                 break;
 #endif
+            case ServerInfo::EVOL:
+                mTypeField->setSelected(1);
+                break;
         }
     }
     setFieldsReadOnly(true);

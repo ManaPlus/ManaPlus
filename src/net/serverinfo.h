@@ -35,7 +35,8 @@ public:
     {
         UNKNOWN = 0,
         MANASERV,
-        TMWATHENA
+        TMWATHENA,
+        EVOL
     };
 
     typedef std::pair<int, std::string> VersionString;
@@ -103,6 +104,8 @@ public:
     {
         if (compareStrI(type, "tmwathena") == 0)
             return TMWATHENA;
+        if (compareStrI(type, "evol") == 0)
+            return EVOL;
         // Used for backward compatibility
         else if (compareStrI(type, "eathena") == 0)
             return TMWATHENA;

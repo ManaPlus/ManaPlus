@@ -337,7 +337,7 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
     graphics->setColor(color);
 
 #ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
         for (Path::const_iterator i = path.begin(); i != path.end(); ++i)

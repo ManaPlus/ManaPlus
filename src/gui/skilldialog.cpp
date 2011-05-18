@@ -335,7 +335,7 @@ void SkillDialog::loadSkills(const std::string &file)
     {
         logger->log("Error loading skills file: %s", file.c_str());
 
-        if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+        if (Net::getNetworkType() != ServerInfo::MANASERV)
         {
             SkillModel *model = new SkillModel();
             if (!mDefaultModel)

@@ -160,6 +160,9 @@ void connectToServer(const ServerInfo &server)
 
         switch (server.type)
         {
+            case ServerInfo::EVOL:
+                new TmwAthena::GeneralHandler;
+                break;
             case ServerInfo::MANASERV:
 #ifdef MANASERV_SUPPORT
                 new ManaServ::GeneralHandler;

@@ -352,7 +352,7 @@ void Being::setPosition(const Vector &pos)
 void Being::setDestination(int dstX, int dstY)
 {
 #ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
         if (mMap)
@@ -414,7 +414,7 @@ void Being::setPath(const Path &path)
         return;
 
 #ifdef MANASERV_SUPPORT
-    if ((Net::getNetworkType() == ServerInfo::TMWATHENA) &&
+    if ((Net::getNetworkType() != ServerInfo::MANASERV) &&
         mAction != MOVE && mAction != DEAD)
 #else
     if (mAction != MOVE && mAction != DEAD)
@@ -654,7 +654,7 @@ void Being::handleAttack(Being *victim, int damage,
         fireMissile(victim, mInfo->getAttack(mAttackType)->missileParticle);
 
 #ifdef MANASERV_SUPPORT
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
         reset();
@@ -1194,7 +1194,7 @@ void Being::logic()
         }
     }
     else
-    if (Net::getNetworkType() == ServerInfo::TMWATHENA)
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
         switch (mAction)

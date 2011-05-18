@@ -1019,7 +1019,7 @@ int Client::exec()
                     Net::getGameHandler()->connect();
                     mCurrentDialog = new ConnectionDialog(
                             _("Connecting to the game server"),
-                            Net::getNetworkType() == ServerInfo::TMWATHENA ?
+                            Net::getNetworkType() != ServerInfo::MANASERV ?
                             STATE_CHOOSE_SERVER : STATE_SWITCH_CHARACTER);
                     break;
 
