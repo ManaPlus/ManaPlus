@@ -722,9 +722,9 @@ void ServerDialog::loadCustomServers()
         server.port = static_cast<unsigned short>(
             config.getValue(portKey, defaultPort));
 
-        // Stop on the first invalid server
+        // skip invalid server
         if (!server.isValid())
-            break;
+            continue;
 
         server.save = true;
         mServers.push_back(server);
