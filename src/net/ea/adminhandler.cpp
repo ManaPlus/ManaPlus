@@ -20,38 +20,45 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_BEINGHANDLER_H
-#define NET_TA_BEINGHANDLER_H
+#include "net/ea/adminhandler.h"
 
-#include "net/beinghandler.h"
+#include "net/chathandler.h"
 #include "net/net.h"
 
-#include "net/ea/beinghandler.h"
+#include <string>
 
-#include "net/tmwa/messagehandler.h"
-
-namespace TmwAthena
+namespace Ea
 {
 
-class BeingHandler : public MessageHandler, public Ea::BeingHandler
+void AdminHandler::kick(const std::string &name)
 {
-    public:
-        BeingHandler(bool enableSync);
+    Net::getChatHandler()->talk("@kick " + name);
+}
 
-        virtual void handleMessage(Net::MessageIn &msg);
+void AdminHandler::ban(int playerId _UNUSED_)
+{
+    // Not supported
+}
 
-        virtual void requestNameById(int id);
+void AdminHandler::ban(const std::string &name)
+{
+    Net::getChatHandler()->talk("@ban " + name);
+}
 
-        virtual void undress(Being *being);
+void AdminHandler::unban(int playerId _UNUSED_)
+{
+    // Not supported
+}
 
-    protected:
-        virtual void processBeingChangeLook(Net::MessageIn &msg, bool look2);
+void AdminHandler::unban(const std::string &name)
+{
+    Net::getChatHandler()->talk("@unban " + name);
+}
 
-        void processNameResponse2(Net::MessageIn &msg);
+void AdminHandler::mute(int playerId _UNUSED_, int type _UNUSED_,
+                        int limit _UNUSED_)
+{
+    return; // Still looking into this
+}
 
-        virtual void processPlayerMoveUpdate(Net::MessageIn &msg, int type);
-};
-
-} // namespace TmwAthena
-
-#endif // NET_TA_BEINGHANDLER_H
+} // namespace Ea

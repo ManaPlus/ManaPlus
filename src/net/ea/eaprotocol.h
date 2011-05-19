@@ -20,38 +20,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_BEINGHANDLER_H
-#define NET_TA_BEINGHANDLER_H
+#ifndef EA_EA_PROTOCOL_H
+#define EA_EA_PROTOCOL_H
 
-#include "net/beinghandler.h"
-#include "net/net.h"
-
-#include "net/ea/beinghandler.h"
-
-#include "net/tmwa/messagehandler.h"
-
-namespace TmwAthena
+enum
 {
-
-class BeingHandler : public MessageHandler, public Ea::BeingHandler
-{
-    public:
-        BeingHandler(bool enableSync);
-
-        virtual void handleMessage(Net::MessageIn &msg);
-
-        virtual void requestNameById(int id);
-
-        virtual void undress(Being *being);
-
-    protected:
-        virtual void processBeingChangeLook(Net::MessageIn &msg, bool look2);
-
-        void processNameResponse2(Net::MessageIn &msg);
-
-        virtual void processPlayerMoveUpdate(Net::MessageIn &msg, int type);
+    EA_SPRITE_BASE = 0,
+    EA_SPRITE_SHOE,
+    EA_SPRITE_BOTTOMCLOTHES,
+    EA_SPRITE_TOPCLOTHES,
+    EA_SPRITE_MISC1,
+    EA_SPRITE_MISC2,
+    EA_SPRITE_HAIR,
+    EA_SPRITE_HAT,
+    EA_SPRITE_CAPE,
+    EA_SPRITE_GLOVES,
+    EA_SPRITE_WEAPON,
+    EA_SPRITE_SHIELD
 };
 
-} // namespace TmwAthena
-
-#endif // NET_TA_BEINGHANDLER_H
+#endif

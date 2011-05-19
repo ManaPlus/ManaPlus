@@ -20,34 +20,47 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_BUYSELLHANDLER_H
-#define NET_TA_BUYSELLHANDLER_H
+#ifndef NET_EA_BUYSELLHANDLER_H
+#define NET_EA_BUYSELLHANDLER_H
 
 #include "net/buysellhandler.h"
-
-#include "net/ea/buysellhandler.h"
 
 #include "being.h"
 
 #include "net/net.h"
 
-#include "net/tmwa/messagehandler.h"
+class BuyDialog;
 
-namespace TmwAthena
+namespace Ea
 {
 
-class BuySellHandler : public MessageHandler, public Ea::BuySellHandler
+class BuySellHandler : public Net::BuySellHandler
 {
     public:
         BuySellHandler();
 
-        virtual void handleMessage(Net::MessageIn &msg);
+        virtual void requestSellList(std::string nick);
+        virtual void requestBuyList(std::string nick);
+        virtual void sendBuyRequest(std::string nick, ShopItem* item,
+                                    int amount);
+        virtual void sendSellRequest(std::string nick, ShopItem* item,
+                                     int amount);
 
-        virtual void processNpcBuy(Net::MessageIn &msg);
+        virtual void processNpcBuySellChoice(Net::MessageIn &msg);
 
-        virtual void processNpcSellResponse(Net::MessageIn &msg);
+        virtual void processNpcBuy(Net::MessageIn &msg) = 0;
+
+        virtual void processNpcSell(Net::MessageIn &msg, int offset);
+
+        virtual void processNpcBuyResponse(Net::MessageIn &msg);
+
+        virtual void processNpcSellResponse(Net::MessageIn &msg) = 0;
+
+    protected:
+        int mNpcId;
+        BuyDialog *mBuyDialog;
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_BUYSELLHANDLER_H
+#endif // NET_EA_BUYSELLHANDLER_H

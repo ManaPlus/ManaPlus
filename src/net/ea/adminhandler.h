@@ -20,38 +20,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_BEINGHANDLER_H
-#define NET_TA_BEINGHANDLER_H
+#ifndef NET_EA_ADMINHANDLER_H
+#define NET_EA_ADMINHANDLER_H
 
-#include "net/beinghandler.h"
+#include "net/adminhandler.h"
 #include "net/net.h"
 
-#include "net/ea/beinghandler.h"
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
 
-#include "net/tmwa/messagehandler.h"
-
-namespace TmwAthena
+namespace Ea
 {
 
-class BeingHandler : public MessageHandler, public Ea::BeingHandler
+class AdminHandler : public Net::AdminHandler
 {
     public:
-        BeingHandler(bool enableSync);
+        virtual ~AdminHandler() { }
 
-        virtual void handleMessage(Net::MessageIn &msg);
+        virtual void kick(const std::string &name);
 
-        virtual void requestNameById(int id);
+        virtual void ban(int playerId);
 
-        virtual void undress(Being *being);
+        virtual void ban(const std::string &name);
 
-    protected:
-        virtual void processBeingChangeLook(Net::MessageIn &msg, bool look2);
+        virtual void unban(int playerId);
 
-        void processNameResponse2(Net::MessageIn &msg);
+        virtual void unban(const std::string &name);
 
-        virtual void processPlayerMoveUpdate(Net::MessageIn &msg, int type);
+        virtual void mute(int playerId, int type, int limit);
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_BEINGHANDLER_H
+#endif // NET_EA_ADMINHANDLER_H

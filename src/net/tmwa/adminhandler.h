@@ -26,6 +26,8 @@
 #include "net/adminhandler.h"
 #include "net/net.h"
 
+#include "net/ea/adminhandler.h"
+
 #include "net/tmwa/messagehandler.h"
 
 #ifdef __GNUC__
@@ -37,7 +39,7 @@
 namespace TmwAthena
 {
 
-class AdminHandler : public MessageHandler, public Net::AdminHandler
+class AdminHandler : public MessageHandler, public Ea::AdminHandler
 {
     public:
         AdminHandler();
@@ -51,18 +53,6 @@ class AdminHandler : public MessageHandler, public Net::AdminHandler
         void hide(bool hide);
 
         void kick(int playerId);
-
-        void kick(const std::string &name);
-
-        void ban(int playerId);
-
-        void ban(const std::string &name);
-
-        void unban(int playerId);
-
-        void unban(const std::string &name);
-
-        void mute(int playerId, int type, int limit);
 };
 
 } // namespace TmwAthena

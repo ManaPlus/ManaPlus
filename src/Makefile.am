@@ -543,6 +543,13 @@ manaplus_SOURCES += enet/callbacks.c \
 endif
 
 manaplus_SOURCES += \
+	      net/ea/adminhandler.cpp \
+	      net/ea/adminhandler.h \
+	      net/ea/beinghandler.cpp \
+	      net/ea/beinghandler.h \
+	      net/ea/buysellhandler.cpp \
+	      net/ea/buysellhandler.h \
+	      net/ea/eaprotocol.h \
 	      net/tmwa/gui/guildtab.cpp \
 	      net/tmwa/gui/guildtab.h \
 	      net/tmwa/gui/partytab.cpp \

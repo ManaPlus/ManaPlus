@@ -63,7 +63,6 @@ BuySellHandler::BuySellHandler()
         SMSG_NPC_SELL_RESPONSE,
         0
     };
-    mNpcId = 0;
     handledMessages = _messages;
     buySellHandler = this;
     mBuyDialog = 0;
@@ -71,181 +70,75 @@ BuySellHandler::BuySellHandler()
 
 void BuySellHandler::handleMessage(Net::MessageIn &msg)
 {
-    int n_items;
-
     switch (msg.getId())
     {
         case SMSG_NPC_BUY_SELL_CHOICE:
-            if (!BuySellDialog::isActive())
-            {
-                mNpcId = msg.readInt32();
-                new BuySellDialog(mNpcId);
-            }
+            processNpcBuySellChoice(msg);
             break;
 
         case SMSG_NPC_BUY:
-        {
-            msg.readInt16();  // length
-            int sz = 11;
-            if (serverVersion > 0)
-                sz += 1;
-            n_items = (msg.getLength() - 4) / sz;
-            mBuyDialog = new BuyDialog(mNpcId);
-            mBuyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
-
-            for (int k = 0; k < n_items; k++)
-            {
-                int value = msg.readInt32();
-                msg.readInt32();  // DCvalue
-                msg.readInt8();  // type
-                int itemId = msg.readInt16();
-                unsigned char color = 1;
-                if (serverVersion > 0)
-                    color = msg.readInt8();
-                mBuyDialog->addItem(itemId, color, 0, value);
-            }
+            processNpcBuy(msg);
             break;
-        }
 
         case SMSG_NPC_SELL:
-            msg.readInt16();  // length
-            n_items = (msg.getLength() - 4) / 10;
-            if (n_items > 0)
-            {
-                SellDialog *dialog = new SellDialog(mNpcId);
-                dialog->setMoney(PlayerInfo::getAttribute(MONEY));
-
-                for (int k = 0; k < n_items; k++)
-                {
-                    int index = msg.readInt16() - INVENTORY_OFFSET;
-                    int value = msg.readInt32();
-                    msg.readInt32();  // OCvalue
-
-                    Item *item = PlayerInfo::getInventory()->getItem(index);
-
-                    if (item && !(item->isEquipped()))
-                        dialog->addItem(item, value);
-                }
-            }
-            else
-            {
-                SERVER_NOTICE(_("Nothing to sell."))
-            }
+            processNpcSell(msg, INVENTORY_OFFSET);
             break;
 
         case SMSG_NPC_BUY_RESPONSE:
-            if (msg.readInt8() == 0)
-            {
-                SERVER_NOTICE(_("Thanks for buying."))
-            }
-            else
-            {
-                // Reset player money since buy dialog already assumed purchase
-                // would go fine
-                if (mBuyDialog)
-                    mBuyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
-                SERVER_NOTICE(_("Unable to buy."))
-            }
+            processNpcBuyResponse(msg);
             break;
 
         case SMSG_NPC_SELL_RESPONSE:
-            switch (msg.readInt8())
-            {
-                case 0:
-                    SERVER_NOTICE(_("Thanks for selling."))
-                    break;
-                case 1:
-                default:
-                    SERVER_NOTICE(_("Unable to sell."))
-                    break;
-                case 2:
-                    SERVER_NOTICE(_("Unable to sell while trading."))
-                    break;
-                case 3:
-                    SERVER_NOTICE(_("Unable to sell unsellable item."))
-                    break;
-            }
+            processNpcSellResponse(msg);
+            break;
+
         default:
             break;
     }
 
 }
 
-void BuySellHandler::requestSellList(std::string nick)
+void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
-    if (nick.empty() != 0 || !shopWindow)
-        return;
+    msg.readInt16();  // length
+    int sz = 11;
+    if (serverVersion > 0)
+        sz += 1;
+    int n_items = (msg.getLength() - 4) / sz;
+    mBuyDialog = new BuyDialog(mNpcId);
+    mBuyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
 
-    std::string data = "!selllist " + toString(tick_time);
-    shopWindow->setAcceptPlayer(nick);
-
-    if (config.getBoolValue("hideShopMessages"))
+    for (int k = 0; k < n_items; k++)
     {
-        Net::getChatHandler()->privateMessage(nick, data);
+        int value = msg.readInt32();
+        msg.readInt32();  // DCvalue
+        msg.readInt8();  // type
+        int itemId = msg.readInt16();
+        unsigned char color = 1;
+        if (serverVersion > 0)
+            color = msg.readInt8();
+        mBuyDialog->addItem(itemId, color, 0, value);
     }
-    else
-    {
-        if (chatWindow)
-            chatWindow->whisper(nick, data, BY_PLAYER);
-    }
-//was true
 }
 
-void BuySellHandler::requestBuyList(std::string nick)
+void BuySellHandler::processNpcSellResponse(Net::MessageIn &msg)
 {
-    if (nick.empty() || !shopWindow)
-        return;
-
-    std::string data = "!buylist " + toString(tick_time);
-    shopWindow->setAcceptPlayer(nick);
-
-    if (config.getBoolValue("hideShopMessages"))
+    switch (msg.readInt8())
     {
-        Net::getChatHandler()->privateMessage(nick, data);
+        case 0:
+            SERVER_NOTICE(_("Thanks for selling."))
+            break;
+        case 1:
+        default:
+            SERVER_NOTICE(_("Unable to sell."))
+            break;
+        case 2:
+            SERVER_NOTICE(_("Unable to sell while trading."))
+            break;
+        case 3:
+            SERVER_NOTICE(_("Unable to sell unsellable item."))
+            break;
     }
-    else
-    {
-        if (chatWindow)
-            chatWindow->whisper(nick, data, BY_PLAYER);
-    }
-//was true
-}
-
-void BuySellHandler::sendBuyRequest(std::string nick, ShopItem* item,
-                                    int amount)
-{
-    if (!chatWindow || nick.empty() || !item ||
-        amount < 1 || amount > item->getQuantity())
-    {
-        return;
-    }
-    std::string data = strprintf("!buyitem %d %d %d",
-                        item->getId(), item->getPrice(), amount);
-
-    if (config.getBoolValue("hideShopMessages"))
-        Net::getChatHandler()->privateMessage(nick, data);
-    else
-        chatWindow->whisper(nick, data, BY_PLAYER);
-//was true
-}
-
-void BuySellHandler::sendSellRequest(std::string nick, ShopItem* item,
-                                     int amount)
-{
-    if (!chatWindow || nick.empty() || !item ||
-        amount < 1 || amount > item->getQuantity())
-    {
-        return;
-    }
-
-    std::string data = strprintf("!sellitem %d %d %d",
-                       item->getId(), item->getPrice(), amount);
-
-    if (config.getBoolValue("hideShopMessages"))
-        Net::getChatHandler()->privateMessage(nick, data);
-    else
-        chatWindow->whisper(nick, data, BY_PLAYER);
-//was true
 }
 
 } // namespace TmwAthena

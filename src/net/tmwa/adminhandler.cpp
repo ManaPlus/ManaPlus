@@ -22,10 +22,13 @@
 
 #include "net/tmwa/adminhandler.h"
 
+#include "net/ea/adminhandler.h"
+
 #include "actorspritemanager.h"
 #include "being.h"
 #include "event.h"
 #include "game.h"
+#include "log.h"
 #include "playerrelations.h"
 
 #include "net/chathandler.h"
@@ -94,43 +97,6 @@ void AdminHandler::kick(int playerId)
 {
     MessageOut outMsg(CMSG_ADMIN_KICK);
     outMsg.writeInt32(playerId);
-}
-
-void AdminHandler::kick(const std::string &name)
-{
-    Net::getChatHandler()->talk("@kick " + name);
-}
-
-void AdminHandler::ban(int playerId _UNUSED_)
-{
-    // Not supported
-}
-
-void AdminHandler::ban(const std::string &name)
-{
-    Net::getChatHandler()->talk("@ban " + name);
-}
-
-void AdminHandler::unban(int playerId _UNUSED_)
-{
-    // Not supported
-}
-
-void AdminHandler::unban(const std::string &name)
-{
-    Net::getChatHandler()->talk("@unban " + name);
-}
-
-void AdminHandler::mute(int playerId _UNUSED_, int type _UNUSED_,
-                        int limit _UNUSED_)
-{
-    return; // Still looking into this
-/*
-    MessageOut outMsg(CMSG_ADMIN_MUTE);
-    outMsg.writeInt32(playerId);
-    outMsg.writeInt8(type);
-    outMsg.writeInt16(limit);
-*/
 }
 
 } // namespace TmwAthena

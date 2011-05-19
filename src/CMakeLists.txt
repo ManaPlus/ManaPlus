@@ -575,6 +575,16 @@ SET(SRCS
     mumblemanager.h
     )
 
+SET(SRCS_EVOL
+    net/ea/adminhandler.cpp
+    net/ea/adminhandler.h
+    net/ea/beinghandler.cpp
+    net/ea/beinghandler.h
+    net/ea/buysellhandler.cpp
+    net/ea/buysellhandler.h
+    net/ea/eaprotocol.h
+    )
+
 SET(SRCS_TMWA
     net/tmwa/gui/guildtab.cpp
     net/tmwa/gui/guildtab.h
@@ -707,9 +717,9 @@ ENDIF ()
 SET (PROGRAMS manaplus)
 
 IF (ENABLE_MANASERV)
-    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA})
+    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA} ${SRCS_EVOL})
 ELSE(ENABLE_MANASERV)
-    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_TMWA})
+    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_TMWA} ${SRCS_EVOL})
 ENDIF(ENABLE_MANASERV)
 
 TARGET_LINK_LIBRARIES(manaplus
