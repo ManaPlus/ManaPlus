@@ -121,10 +121,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     Uint16 weapon, shield;
     Uint16 stunMode;
     Uint32 statusEffects;
-    int guild;
     Being *dstBeing;
     int hairStyle, hairColor;
-    int hp, maxHP, oldHP;
     int spawnId;
 
     // Information about a being in range
@@ -214,22 +212,21 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     if (dstBeing->getType() == ActorSprite::MONSTER)
     {
-        hp = msg.readInt32();
-        maxHP = msg.readInt32();
+        int hp = msg.readInt32();
+        int maxHP = msg.readInt32();
         if (hp && maxHP)
         {
-            oldHP = dstBeing->getHP();
+            int oldHP = dstBeing->getHP();
             if (!oldHP || oldHP > hp)
                 dstBeing->setHP(hp);
             dstBeing->setMaxHP(maxHP);
         }
         gloves = 0;
-        guild = 0;
     }
     else
     {
         gloves = msg.readInt16();  // head dir - "abused" as gloves
-        guild = msg.readInt32();  // guild
+        msg.readInt32();  // guild
         msg.readInt16();  // guild emblem
     }
 //            logger->log("being guild: " + toString(guild));

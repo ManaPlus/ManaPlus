@@ -47,9 +47,10 @@
 namespace Ea
 {
 
-BuySellHandler::BuySellHandler()
+BuySellHandler::BuySellHandler() :
+    mNpcId(0),
+    mBuyDialog(0)
 {
-    mNpcId = 0;
 }
 
 void BuySellHandler::requestSellList(std::string nick)

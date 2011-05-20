@@ -183,6 +183,8 @@ class LayoutCell
             mAlign[1] = 0;
             mNbFill[0] = 0;
             mNbFill[1] = 0;
+            mSize[0] = 0;
+            mSize[1] = 0;
         }
 
         ~LayoutCell();
