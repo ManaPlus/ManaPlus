@@ -106,6 +106,7 @@ class TextField : public gcn::TextField
         int mMinimum;
         int mMaximum;
         bool mLoseFocusOnTab;
+        int mLastEventPaste;
 };
 
 #endif

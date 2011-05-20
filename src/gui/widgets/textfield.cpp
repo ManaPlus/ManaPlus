@@ -49,7 +49,8 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
     gcn::TextField(text),
     mNumeric(false),
     mMinimum(0),
-    mMaximum(0)
+    mMaximum(0),
+    mLastEventPaste(false)
 {
     setFrameSize(2);
 
@@ -215,6 +216,10 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
     /* In UTF-8, 10xxxxxx is only used for inner parts of characters. So skip
        them when processing key presses. */
 
+    // unblock past key
+    if (val != 22)
+        mLastEventPaste = 0;
+
     switch (val)
     {
         case Key::LEFT:
@@ -286,7 +291,11 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             break;
 
         case 22: // Control code 22, SYNCHRONOUS IDLE, sent on Ctrl+v
+            // hack to prevent paste key sticking
+            if (mLastEventPaste && mLastEventPaste > cur_time)
+                break;
             handlePaste();
+            mLastEventPaste = cur_time + 1;
             break;
         default:
             break;
