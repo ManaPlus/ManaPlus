@@ -1090,11 +1090,17 @@ void PopupMenu::handleLink(const std::string &link,
                 SpecialLayer *specialLayer = map->getSpecialLayer();
                 if (specialLayer)
                 {
+                    bool isHome = (mMapItem->getType() == MapItem::HOME);
                     const int x = mMapItem->getX();
                     const int y = mMapItem->getY();
                     specialLayer->setTile(x, y, MapItem::EMPTY);
                     if (socialWindow)
                         socialWindow->removePortal(x, y);
+                    if (isHome && player_node)
+                    {
+                        player_node->removeHome();
+                        player_node->saveHomes();
+                    }
                 }
             }
         }

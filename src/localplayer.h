@@ -459,6 +459,10 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         virtual unsigned char getWalkMask() const;
 
+        void saveHomes();
+
+        void removeHome();
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -485,8 +489,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void loadHomes();
 
-        void saveHomes();
-
         bool mInStorage;      /**< Whether storage is currently accessible */
 
         int mAttackRange;
@@ -494,7 +496,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int mTargetTime;      /** How long the being has been targeted **/
         int mLastTarget;      /** Time stamp of last targeting action,
                                   -1 if none. */
-
         int mGMLevel;
 
         //move type

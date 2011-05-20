@@ -3856,6 +3856,18 @@ unsigned char LocalPlayer::getWalkMask() const
     return Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR | Map::BLOCKMASK_WATER;
 }
 
+void LocalPlayer::removeHome()
+{
+    if (!mMap)
+        return;
+
+    std::string key = mMap->getProperty("_realfilename");
+    std::map<std::string, Vector>::iterator iter = mHomes.find(key);
+
+    if (iter != mHomes.end())
+        mHomes.erase(key);
+}
+
 void AwayListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "ok" && player_node && player_node->getAwayMode())
