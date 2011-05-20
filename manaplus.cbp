@@ -492,6 +492,13 @@
 		<Unit filename="src\net\playerhandler.h" />
 		<Unit filename="src\net\serverinfo.h" />
 		<Unit filename="src\net\specialhandler.h" />
+		<Unit filename="src\net\ea\adminhandler.cpp" />
+		<Unit filename="src\net\ea\adminhandler.h" />
+		<Unit filename="src\net\ea\beinghandler.cpp" />
+		<Unit filename="src\net\ea\beinghandler.h" />
+		<Unit filename="src\net\ea\buysellhandler.cpp" />
+		<Unit filename="src\net\ea\buysellhandler.h" />
+		<Unit filename="src\net\ea\eaprotocol.h" />
 		<Unit filename="src\net\tmwa\adminhandler.cpp" />
 		<Unit filename="src\net\tmwa\adminhandler.h" />
 		<Unit filename="src\net\tmwa\beinghandler.cpp" />
