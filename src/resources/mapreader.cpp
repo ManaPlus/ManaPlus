@@ -415,6 +415,9 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
             {
                 switch (gid - set->getFirstGid())
                 {
+                    case Map::COLLISION_EMPTY:
+                        map->blockTile(x, y, Map::BLOCKTYPE_GROUND);
+                        break;
                     case Map::COLLISION_WALL:
                         map->blockTile(x, y, Map::BLOCKTYPE_WALL);
                         break;

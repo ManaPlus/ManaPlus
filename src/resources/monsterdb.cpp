@@ -82,16 +82,29 @@ void MonsterDB::load()
             monsterNode, "name", _("unnamed")));
 
         currentInfo->setTargetCursorSize(XML::getProperty(monsterNode,
-                                         "targetCursor", "medium"));
+            "targetCursor", "medium"));
 
         currentInfo->setTargetOffsetX(XML::getProperty(monsterNode,
-                                         "targetOffsetX", 0));
+            "targetOffsetX", 0));
 
         currentInfo->setTargetOffsetY(XML::getProperty(monsterNode,
-                                         "targetOffsetY", 0));
+            "targetOffsetY", 0));
 
-        currentInfo->setMaxHP(XML::getProperty(monsterNode,
-                                         "maxHP", 0));
+        currentInfo->setMaxHP(XML::getProperty(monsterNode, "maxHP", 0));
+
+        unsigned char block = 0;
+        std::string walkStr = XML::getProperty(
+            monsterNode, "walkType", "walk");
+        if (walkStr == "walk")
+            block = Map::BLOCKMASK_WATER | Map::BLOCKMASK_AIR;
+        else if (walkStr == "fly")
+            block = 0;
+        else if (walkStr == "swim")
+            block = Map::BLOCKMASK_GROUND | Map::BLOCKMASK_AIR;
+        else if (walkStr == "walkswim" || walkStr == "swimwalk")
+            block = Map::BLOCKMASK_AIR;
+
+        currentInfo->setWalkMask(Map::BLOCKMASK_WALL | block);
 
         if (currentInfo->getMaxHP())
             currentInfo->setStaticMaxHP(true);

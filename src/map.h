@@ -212,6 +212,7 @@ class Map : public Properties, public ConfigListener
             BLOCKTYPE_MONSTER,
             BLOCKTYPE_AIR,
             BLOCKTYPE_WATER,
+            BLOCKTYPE_GROUND,
             NB_BLOCKTYPES
         };
 
@@ -230,7 +231,8 @@ class Map : public Properties, public ConfigListener
             BLOCKMASK_CHARACTER = 0x01, // 0000 0001
             BLOCKMASK_MONSTER   = 0x02, // 0000 0010
             BLOCKMASK_AIR       = 0x04, // 0000 0100
-            BLOCKMASK_WATER     = 0x08  // 0000 1000
+            BLOCKMASK_WATER     = 0x08, // 0000 1000
+            BLOCKMASK_GROUND    = 0x16  // 0001 0000
         };
 
         enum DebugType
