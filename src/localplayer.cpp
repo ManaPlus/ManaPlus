@@ -912,7 +912,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
             Path debugPath = mMap->findPath(
                     static_cast<int>(playerPos.x - 16) / 32,
                     static_cast<int>(playerPos.y - 32) / 32,
-                    item->getTileX(), item->getTileY(), 0x00, 0);
+                    item->getTileX(), item->getTileY(), getWalkMask(), 0);
             if (!debugPath.empty())
                 navigateTo(item->getTileX(), item->getTileY());
             else
@@ -1725,7 +1725,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
     {
         debugPath = mMap->findPath(static_cast<int>(playerPos.x - 16) / 32,
                 static_cast<int>(playerPos.y - 32) / 32,
-                mTarget->getTileX(), mTarget->getTileY(), 0x00, 0);
+                mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
 
         if (debugPath.size() < dist)
             return;
@@ -2592,7 +2592,7 @@ bool LocalPlayer::isReachable(int x, int y, int maxCost)
     Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
-        x, y, 0x00, maxCost);
+        x, y, getWalkMask(), maxCost);
 
     return !debugPath.empty();
 }
@@ -2627,7 +2627,7 @@ bool LocalPlayer::isReachable(Being *being, int maxCost)
     Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
-        being->getTileX(), being->getTileY(), 0x00, maxCost);
+        being->getTileX(), being->getTileY(), getWalkMask(), maxCost);
 
     being->setDistance(static_cast<int>(debugPath.size()));
     if (!debugPath.empty())
@@ -3221,7 +3221,7 @@ bool LocalPlayer::navigateTo(int x, int y)
     mNavigatePath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
-        x, y, 0x00, 0);
+        x, y, getWalkMask(), 0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -3250,7 +3250,7 @@ void LocalPlayer::navigateTo(Being *being)
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
         being->getTileX(), being->getTileY(),
-        0x00, 0);
+        getWalkMask(), 0);
 
     if (mDrawPath)
         tmpLayer->addRoad(mNavigatePath);
@@ -3396,7 +3396,7 @@ int LocalPlayer::getPathLength(Being* being)
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
         being->getTileX(), being->getTileY(),
-        0x00, 0);
+        getWalkMask(), 0);
     return static_cast<int>(debugPath.size());
 }
 
@@ -3735,7 +3735,7 @@ void LocalPlayer::fixAttackTarget()
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
         mTarget->getTileX(), mTarget->getTileY(),
-        0x00, 0);
+        getWalkMask(), 0);
 
     if (!debugPath.empty())
     {

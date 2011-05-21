@@ -306,7 +306,7 @@ void Viewport::_drawDebugPath(Graphics *graphics)
         debugPath = mMap->findPath(
             static_cast<int>(playerPos.x - 16) / 32,
             static_cast<int>(playerPos.y - 32) / 32,
-            mousePosX / 32, mousePosY / 32, 0, 500);
+            mousePosX / 32, mousePosY / 32, player_node->getWalkMask(), 500);
 
         lastMouseDestination = mouseDestination;
     }
