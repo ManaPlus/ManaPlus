@@ -36,9 +36,11 @@
 #define _UNUSED_
 #endif
 
+class Being;
 class Inventory;
 class Item;
 class ItemPopup;
+class PlayerBox;
 
 /**
  * Equipment dialog.
@@ -51,7 +53,8 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         /**
          * Constructor.
          */
-        EquipmentWindow(Equipment *equipment);
+        EquipmentWindow(Equipment *equipment, Being *being,
+                        bool mCloseOnHide = false);
 
         /**
          * Destructor.
@@ -69,6 +72,12 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         Item* getEquipment(int i)
         { return mEquipment ? mEquipment->getEquipment(i) : 0; }
+
+        void setBeing(Being *being);
+
+        void updateBeing(Being *being);
+
+        void resetBeing(Being *being);
 
     private:
         void mouseExited(gcn::MouseEvent &event);
@@ -92,11 +101,15 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         EquipBox mEquipBox[Equipment::EQUIP_VECTOREND]; /**<Equipment Boxes. */
 
         ItemPopup *mItemPopup;
+        PlayerBox *mPlayerBox;
         gcn::Button *mUnequip;
 
         int mSelected; /**< Index of selected item. */
+        bool mForing;
+        Being *mBeing;
 };
 
 extern EquipmentWindow *equipmentWindow;
+extern EquipmentWindow *beingEquipmentWindow;
 
 #endif

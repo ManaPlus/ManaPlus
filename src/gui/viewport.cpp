@@ -649,6 +649,11 @@ void Viewport::showAttackMonsterPopup(std::string name, int type)
         name, type);
 }
 
+void Viewport::showUndressPopup(int x, int y, Being *being, Item *item)
+{
+    mPopupMenu->showUndressPopup(x, y, being, item);
+}
+
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)

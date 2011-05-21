@@ -29,6 +29,7 @@
 #include "effectmanager.h"
 #include "graphics.h"
 #include "guild.h"
+#include "item.h"
 #include "localplayer.h"
 #include "log.h"
 #include "map.h"
@@ -43,6 +44,7 @@
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"
+#include "gui/equipmentwindow.h"
 #include "gui/gui.h"
 #include "gui/npcdialog.h"
 #include "gui/npcpostdialog.h"
@@ -55,6 +57,7 @@
 
 #include "net/charhandler.h"
 #include "net/gamehandler.h"
+#include "net/inventoryhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
@@ -1574,6 +1577,9 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
     if (slot >= mSpriteColors.size())
         mSpriteColors.resize(slot + 1, "");
 
+    if (slot >= mSpriteColorsIds.size())
+        mSpriteColorsIds.resize(slot + 1, 1);
+
     // id = 0 means unequip
     if (id == 0)
     {
@@ -1613,7 +1619,10 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
     {
         mSpriteIDs[slot] = id;
         mSpriteColors[slot] = color;
+        mSpriteColorsIds[slot] = colorId;
         recalcSpritesOrder();
+        if (beingEquipmentWindow)
+            beingEquipmentWindow->updateBeing(this);
     }
 }
 
@@ -2179,4 +2188,73 @@ void Being::updateHit(int amount)
         if (amount != mCriticalHit && (!mMaxHit || amount > mMaxHit))
             mMaxHit = amount;
     }
+}
+
+Equipment *Being::getEquipment()
+{
+    Equipment *eq = new Equipment();
+    Equipment::Backend *bk = new BeingEquipBackend(this);
+    eq->setBackend(bk);
+    return eq;
+}
+
+void Being::undressItemById(int id)
+{
+    int sz = mSpriteIDs.size();
+
+    for (int f = 0; f < sz; f ++)
+    {
+        if (id == mSpriteIDs[f])
+        {
+            setSprite(f, 0);
+            break;
+        }
+    }
+}
+
+BeingEquipBackend::BeingEquipBackend(Being *being):
+    mBeing(being)
+{
+    memset(mEquipment, 0, sizeof(mEquipment));
+    if (being)
+    {
+        int sz = being->mSpriteIDs.size();
+
+        for (int f = 0; f < sz; f ++)
+        {
+            int idx = Net::getInventoryHandler()->convertFromServerSlot(f);
+            int id = being->mSpriteIDs[f];
+            if (id > 0 && idx >= 0 && idx < EQUIPMENT_SIZE)
+            {
+                mEquipment[idx] = new Item(id, 1, 0,
+                    being->mSpriteColorsIds[f], true, true);
+            }
+        }
+    }
+}
+
+BeingEquipBackend::~BeingEquipBackend()
+{
+    clear();
+}
+
+void BeingEquipBackend::clear()
+{
+    for (int i = 0; i < EQUIPMENT_SIZE; i++)
+    {
+        delete mEquipment[i];
+        mEquipment[i] = 0;
+    }
+}
+
+void BeingEquipBackend::setEquipment(int index, Item *item)
+{
+    mEquipment[index] = item;
+}
+
+Item *BeingEquipBackend::getEquipment(int index) const
+{
+    if (index < 0 || index >= EQUIPMENT_SIZE)
+        return 0;
+    return mEquipment[index];
 }

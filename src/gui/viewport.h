@@ -173,6 +173,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          */
         void showChatPopup(ChatTab *tab);
 
+        void showUndressPopup(int x, int y, Being *being, Item *item);
+
         /**
          * Closes the popup menu. Needed for when the player dies or switching
          * maps.

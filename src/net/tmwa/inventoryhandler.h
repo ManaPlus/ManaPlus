@@ -25,6 +25,7 @@
 
 #include "equipment.h"
 #include "inventory.h"
+#include "log.h"
 #include "playerinfo.h"
 
 #include "gui/inventorywindow.h"
@@ -58,9 +59,8 @@ class EquipBackend : public Equipment::Backend
         {
             int invyIndex = mEquipment[index];
             if (invyIndex == -1)
-            {
                 return NULL;
-            }
+
             return PlayerInfo::getInventory()->getItem(invyIndex);
         }
 
@@ -72,9 +72,7 @@ class EquipBackend : public Equipment::Backend
                 {
                     Item* item = PlayerInfo::getInventory()->getItem(i);
                     if (item)
-                    {
                         item->setEquipped(false);
-                    }
                 }
 
                 mEquipment[i] = -1;

@@ -31,6 +31,7 @@
 
 #include "actorsprite.h"
 #include "configlistener.h"
+#include "equipment.h"
 #include "map.h"
 #include "particlecontainer.h"
 #include "position.h"
@@ -53,9 +54,11 @@
 
 class AnimatedSprite;
 class BeingCacheEntry;
+class Being;
 class BeingInfo;
 class FlashText;
 class Guild;
+class Inventory;
 class ItemInfo;
 class Item;
 class Particle;
@@ -74,9 +77,29 @@ enum Gender
     GENDER_UNSPECIFIED = 2
 };
 
+class BeingEquipBackend : public Equipment::Backend
+{
+    public:
+        BeingEquipBackend(Being *being);
+
+        virtual ~BeingEquipBackend();
+
+        Item *getEquipment(int index) const;
+
+        void clear();
+
+        void setEquipment(int index, Item *item);
+
+    private:
+        Item *mEquipment[EQUIPMENT_SIZE];
+        Being *mBeing;
+};
+
 class Being : public ActorSprite, public ConfigListener
 {
     public:
+        friend class BeingEquipBackend;
+
         /**
          * Action the being is currently performing
          * WARNING: Has to be in sync with the same enum in the Being class
@@ -687,6 +710,10 @@ class Being : public ActorSprite, public ConfigListener
 
         void updateHit(int amount);
 
+        Equipment *getEquipment();
+
+        void undressItemById(int id);
+
     protected:
         /**
          * Sets the new path for this being.
@@ -747,6 +774,7 @@ class Being : public ActorSprite, public ConfigListener
 
         std::vector<int> mSpriteIDs;
         std::vector<std::string> mSpriteColors;
+        std::vector<int> mSpriteColorsIds;
         Gender mGender;
 
         // Character guild information

@@ -20,15 +20,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gui/equipmentwindow.h"
+
 #include "gui/widgets/button.h"
 
+#include "being.h"
 #include "equipment.h"
 #include "graphics.h"
 #include "inventory.h"
 #include "item.h"
 #include "localplayer.h"
 
-#include "gui/equipmentwindow.h"
 #include "gui/itempopup.h"
 #include "gui/theme.h"
 #include "gui/setup.h"
@@ -69,21 +71,28 @@ static const int boxPosition[][2] =
     { 129, 123 },   // EQUIP_EVOL_RING2_SLOT
 };
 
-EquipmentWindow::EquipmentWindow(Equipment *equipment):
+EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
+                                 bool foring):
     Window(_("Equipment")),
     mEquipment(equipment),
-    mSelected(-1)
+    mSelected(-1),
+    mForing(foring)
 {
+    mBeing = being;
     mItemPopup = new ItemPopup;
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
     // Control that shows the Player
-    PlayerBox *playerBox = new PlayerBox;
-    playerBox->setDimension(gcn::Rectangle(50, 80, 74, 168));
-    playerBox->setPlayer(player_node);
+    mPlayerBox = new PlayerBox;
+    mPlayerBox->setDimension(gcn::Rectangle(50, 80, 74, 168));
+    mPlayerBox->setPlayer(being);
 
-    setWindowName("Equipment");
+    if (foring)
+        setWindowName("Being equipment");
+    else
+        setWindowName("Equipment");
+
     setCloseButton(true);
     setSaveVisible(true);
     setDefaultSize(180, 345, ImageRect::CENTER);
@@ -95,7 +104,7 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment):
                           area.height - mUnequip->getHeight() - 5);
     mUnequip->setEnabled(false);
 
-    add(playerBox);
+    add(mPlayerBox);
     add(mUnequip);
 
     for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
@@ -138,6 +147,9 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
         g->drawRectangle(gcn::Rectangle(mEquipBox[i].posX, mEquipBox[i].posY,
                                         BOX_WIDTH, BOX_HEIGHT));
 
+        if (!mEquipment)
+            continue;
+
         Item *item = mEquipment->getEquipment(i);
         if (item)
         {
@@ -165,6 +177,9 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
 
 void EquipmentWindow::action(const gcn::ActionEvent &event)
 {
+    if (!mEquipment)
+        return;
+
     if (event.getId() == "unequip" && mSelected > -1)
     {
         Item *item = mEquipment->getEquipment(mSelected);
@@ -175,6 +190,9 @@ void EquipmentWindow::action(const gcn::ActionEvent &event)
 
 Item *EquipmentWindow::getItem(int x, int y) const
 {
+    if (!mEquipment)
+        return 0;
+
     for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
     {
         gcn::Rectangle tRect(mEquipBox[i].posX, mEquipBox[i].posY,
@@ -190,11 +208,16 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
 {
     Window::mousePressed(mouseEvent);
 
+    if (!mEquipment)
+        return;
+
     const int x = mouseEvent.getX();
     const int y = mouseEvent.getY();
 
     if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {
+        if (mForing)
+            return;
         // Checks if any of the presses were in the equip boxes.
         for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
         {
@@ -216,7 +239,12 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
             const int mx = x + getX();
             const int my = y + getY();
             if (viewport)
-                viewport->showPopup(this, mx, my, item, true);
+            {
+                if (mForing)
+                    viewport->showUndressPopup(mx, my, mBeing, item);
+                else
+                    viewport->showPopup(this, mx, my, item, true);
+            }
         }
     }
 }
@@ -258,4 +286,31 @@ void EquipmentWindow::setSelected(int index)
     mSelected = index;
     if (mUnequip)
         mUnequip->setEnabled(mSelected != -1);
+}
+
+void EquipmentWindow::setBeing(Being *being)
+{
+    mPlayerBox->setPlayer(being);
+    mBeing = being;
+    if (!being)
+    {
+        delete mEquipment;
+        mEquipment = 0;
+        return;
+    }
+    mEquipment = being->getEquipment();
+    if (!mEquipment)
+        return;
+}
+
+void EquipmentWindow::updateBeing(Being *being)
+{
+    if (being == mBeing)
+        setBeing(being);
+}
+
+void EquipmentWindow::resetBeing(Being *being)
+{
+    if (being == mBeing)
+        setBeing(0);
 }

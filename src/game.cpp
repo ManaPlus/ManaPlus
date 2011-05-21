@@ -126,6 +126,7 @@ ShopWindow *shopWindow = NULL;
 SkillDialog *skillDialog = NULL;
 Minimap *minimap = NULL;
 EquipmentWindow *equipmentWindow = NULL;
+EquipmentWindow *beingEquipmentWindow = NULL;
 TradeWindow *tradeWindow = NULL;
 HelpWindow *helpWindow = NULL;
 DebugWindow *debugWindow = NULL;
@@ -189,7 +190,10 @@ static void createGuiWindows()
     // Create dialogs
     chatWindow = new ChatWindow;
     tradeWindow = new TradeWindow;
-    equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment());
+    equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
+        player_node);
+    beingEquipmentWindow = new EquipmentWindow(0, 0, true);
+    beingEquipmentWindow->setVisible(false);
     statusWindow = new StatusWindow;
     miniStatusWindow = new MiniStatusWindow;
     inventoryWindow = new InventoryWindow(PlayerInfo::getInventory());
@@ -292,6 +296,7 @@ static void destroyGuiWindows()
     del_0(skillDialog)
     del_0(minimap)
     del_0(equipmentWindow)
+    del_0(beingEquipmentWindow)
     del_0(tradeWindow)
     del_0(helpWindow)
     del_0(debugWindow)

@@ -30,6 +30,7 @@
 #include "playerrelations.h"
 
 #include "gui/chatwindow.h"
+#include "gui/equipmentwindow.h"
 #include "gui/killstats.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
@@ -578,7 +579,12 @@ void ActorSpriteManager::logic()
          it != it_end; ++it)
     {
         if ((*it) && (*it)->getType() == Being::PLAYER)
-            static_cast<Being*>(*it)->addToCache();
+        {
+            Being *being = static_cast<Being*>(*it);
+            being->addToCache();
+            if (beingEquipmentWindow)
+                beingEquipmentWindow->resetBeing(being);
+        }
         if (player_node)
         {
             if (player_node->getTarget() == *it)

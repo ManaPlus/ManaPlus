@@ -40,6 +40,7 @@
 
 #include "gui/buydialog.h"
 #include "gui/chatwindow.h"
+#include "gui/equipmentwindow.h"
 #include "gui/inventorywindow.h"
 #include "gui/itemamountwindow.h"
 #include "gui/ministatus.h"
@@ -233,6 +234,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 }
                 mBrowserBox->addRow(strprintf("@@nuke|%s@@", _("Nuke")));
                 mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
+                mBrowserBox->addRow(strprintf("@@items|%s@@",
+                    _("Show Items")));
                 mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
 
                 if (player_relations.getDefault() & PlayerRelation::TRADE)
@@ -633,6 +636,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             mBrowserBox->addRow(strprintf("@@follow|%s@@", _("Follow")));
             mBrowserBox->addRow(strprintf("@@imitation|%s@@", _("Imitation")));
             mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
+            mBrowserBox->addRow(strprintf("@@items|%s@@", _("Show Items")));
             mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
 
             if (player_relations.getDefault() & PlayerRelation::TRADE)
@@ -1380,7 +1384,29 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "reset yellow")
     {
-        player_node->resetYellowBar();
+        if (player_node)
+            player_node->resetYellowBar();
+    }
+    else if (link == "items" && being)
+    {
+        if (being == player_node)
+        {
+            if (equipmentWindow && !equipmentWindow->isVisible())
+                equipmentWindow->setVisible(true);
+        }
+        else
+        {
+            Equipment *eq = being->getEquipment();
+            if (eq && beingEquipmentWindow)
+            {
+                beingEquipmentWindow->setBeing(being);
+                beingEquipmentWindow->setVisible(true);
+            }
+        }
+    }
+    else if (link == "undress item" && being && mItemId)
+    {
+        being->undressItemById(mItemId);
     }
     else if (link == "guild-pos" && !mNick.empty())
     {
@@ -1786,6 +1812,26 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
+}
+
+void PopupMenu::showUndressPopup(int x, int y, Being *being, Item *item)
+{
+    if (!being || !item)
+        return;
+
+    mBeingId = being->getId();
+    mItem = item;
+    mItemId = item->getId();
+
+    mBrowserBox->clearRows();
+
+    mBrowserBox->addRow(strprintf("@@undress item|%s@@", _("Undress")));
+
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
+
+    showPopup(x, y);
+
 }
 
 void PopupMenu::showPopup(int x, int y)

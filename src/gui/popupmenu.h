@@ -120,6 +120,8 @@ class PopupMenu : public Popup, public LinkHandler
         void showAttackMonsterPopup(int x, int y, std::string name,
                                     int type);
 
+        void showUndressPopup(int x, int y, Being *being, Item *item);
+
         /**
          * Shows the related popup menu when right click on the chat
          * at the specified mouse coordinates.
