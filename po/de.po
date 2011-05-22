@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-22 04:22+0300\n"
+"POT-Creation-Date: 2011-05-22 16:57+0300\n"
 "PO-Revision-Date: 2010-01-02 15:26+0000\n"
 "Last-Translator: Jonathan Raphael Joachim Kolberg\n"
 "Language-Team: Deutsch <kde-i18n-de@kde.org>\n"
@@ -484,10 +484,10 @@ msgstr "Verkaufen"
 #: src/gui/popupmenu.cpp:457 src/gui/popupmenu.cpp:476
 #: src/gui/popupmenu.cpp:490 src/gui/popupmenu.cpp:509
 #: src/gui/popupmenu.cpp:690 src/gui/popupmenu.cpp:714
-#: src/gui/popupmenu.cpp:1564 src/gui/popupmenu.cpp:1591
-#: src/gui/popupmenu.cpp:1636 src/gui/popupmenu.cpp:1674
-#: src/gui/popupmenu.cpp:1709 src/gui/popupmenu.cpp:1746
-#: src/gui/popupmenu.cpp:1812 src/gui/popupmenu.cpp:1831
+#: src/gui/popupmenu.cpp:1566 src/gui/popupmenu.cpp:1593
+#: src/gui/popupmenu.cpp:1638 src/gui/popupmenu.cpp:1676
+#: src/gui/popupmenu.cpp:1711 src/gui/popupmenu.cpp:1748
+#: src/gui/popupmenu.cpp:1814 src/gui/popupmenu.cpp:1833
 #: src/gui/quitdialog.cpp:58 src/gui/register.cpp:80 src/gui/setup.cpp:65
 #: src/gui/socialwindow.cpp:957 src/gui/textcommandeditor.cpp:235
 #: src/gui/textdialog.cpp:49 src/gui/unregisterdialog.cpp:57
@@ -793,146 +793,143 @@ msgstr "NPC anvisieren"
 msgid "Net"
 msgstr "Weiter"
 
-#: src/gui/debugwindow.cpp:133 src/gui/debugwindow.cpp:207
-#: src/gui/debugwindow.cpp:236
+#: src/gui/debugwindow.cpp:133 src/gui/debugwindow.cpp:208
+#: src/gui/debugwindow.cpp:237
 #, fuzzy
 msgid "Music:"
 msgstr "Lautstärke der Musik: "
 
-#: src/gui/debugwindow.cpp:134 src/gui/debugwindow.cpp:211
-#: src/gui/debugwindow.cpp:238
+#: src/gui/debugwindow.cpp:134 src/gui/debugwindow.cpp:212
+#: src/gui/debugwindow.cpp:239
 #, fuzzy
 msgid "Map:"
 msgstr "Karte: "
 
-#: src/gui/debugwindow.cpp:135 src/gui/debugwindow.cpp:209
-#: src/gui/debugwindow.cpp:237
+#: src/gui/debugwindow.cpp:135 src/gui/debugwindow.cpp:210
+#: src/gui/debugwindow.cpp:238
 #, fuzzy
 msgid "Minimap:"
 msgstr "Übersichtskarte: "
 
-#: src/gui/debugwindow.cpp:136
-#, c-format
-msgid "Cursor: (%d, %d)"
-msgstr "Cursor: (%d, %d)"
-
-#: src/gui/debugwindow.cpp:137 src/gui/debugwindow.cpp:188
-#: src/gui/debugwindow.cpp:193
-#, fuzzy
-msgid "Player Position:"
-msgstr "Spieler"
-
-#: src/gui/debugwindow.cpp:139 src/gui/debugwindow.cpp:218
-#, c-format
-msgid "Particle count: %d"
-msgstr "Partikelzählung: %d"
-
-#: src/gui/debugwindow.cpp:141
-#, fuzzy, c-format
-msgid "Map actors count: %d"
-msgstr "Spielfigurattribute OK"
-
-#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:160
-#, fuzzy, c-format
-msgid "%d FPS (Software)"
-msgstr "%d FPS (OpenGL)"
-
-#: src/gui/debugwindow.cpp:153
-#, fuzzy, c-format
-msgid "%d FPS (fast OpenGL)"
-msgstr "%d FPS (OpenGL)"
-
-#: src/gui/debugwindow.cpp:156
-#, fuzzy, c-format
-msgid "%d FPS (old OpenGL)"
-msgstr "%d FPS (OpenGL)"
-
-#: src/gui/debugwindow.cpp:163
-#, c-format
-msgid "%d FPS"
-msgstr "%d FPS"
-
-#: src/gui/debugwindow.cpp:175 src/gui/debugwindow.cpp:227
-msgid "Textures count:"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:205 src/gui/debugwindow.cpp:234
+#: src/gui/debugwindow.cpp:136 src/gui/debugwindow.cpp:206
+#: src/gui/debugwindow.cpp:235
 #, fuzzy
 msgid "Cursor:"
 msgstr "Cursor: (%d, %d)"
 
-#: src/gui/debugwindow.cpp:222 src/gui/debugwindow.cpp:241
+#: src/gui/debugwindow.cpp:137 src/gui/debugwindow.cpp:189
+#: src/gui/debugwindow.cpp:194
+#, fuzzy
+msgid "Player Position:"
+msgstr "Spieler"
+
+#: src/gui/debugwindow.cpp:140
+#, fuzzy
+msgid "Particle count:"
+msgstr "Partikelzählung: %d"
+
+#: src/gui/debugwindow.cpp:142 src/gui/debugwindow.cpp:223
+#: src/gui/debugwindow.cpp:242
 msgid "Map actors count:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:255 src/gui/debugwindow.cpp:286
-#: src/gui/debugwindow.cpp:330
+#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:161
+#, fuzzy, c-format
+msgid "%d FPS (Software)"
+msgstr "%d FPS (OpenGL)"
+
+#: src/gui/debugwindow.cpp:154
+#, fuzzy, c-format
+msgid "%d FPS (fast OpenGL)"
+msgstr "%d FPS (OpenGL)"
+
+#: src/gui/debugwindow.cpp:157
+#, fuzzy, c-format
+msgid "%d FPS (old OpenGL)"
+msgstr "%d FPS (OpenGL)"
+
+#: src/gui/debugwindow.cpp:164
+#, c-format
+msgid "%d FPS"
+msgstr "%d FPS"
+
+#: src/gui/debugwindow.cpp:176 src/gui/debugwindow.cpp:228
+msgid "Textures count:"
+msgstr ""
+
+#: src/gui/debugwindow.cpp:219
+#, c-format
+msgid "Particle count: %d"
+msgstr "Partikelzählung: %d"
+
+#: src/gui/debugwindow.cpp:256 src/gui/debugwindow.cpp:287
+#: src/gui/debugwindow.cpp:331
 #, fuzzy
 msgid "Target:"
 msgstr "NPC anvisieren"
 
-#: src/gui/debugwindow.cpp:256 src/gui/debugwindow.cpp:291
-#: src/gui/debugwindow.cpp:331
+#: src/gui/debugwindow.cpp:257 src/gui/debugwindow.cpp:292
+#: src/gui/debugwindow.cpp:332
 #, fuzzy
 msgid "Target Id:"
 msgstr "NPC anvisieren"
 
-#: src/gui/debugwindow.cpp:257 src/gui/debugwindow.cpp:295
-#: src/gui/debugwindow.cpp:300 src/gui/debugwindow.cpp:332
+#: src/gui/debugwindow.cpp:258 src/gui/debugwindow.cpp:296
+#: src/gui/debugwindow.cpp:301 src/gui/debugwindow.cpp:333
 #, fuzzy
 msgid "Target Level:"
 msgstr "Spieler anvisieren"
 
-#: src/gui/debugwindow.cpp:258 src/gui/debugwindow.cpp:303
-#: src/gui/debugwindow.cpp:333
+#: src/gui/debugwindow.cpp:259 src/gui/debugwindow.cpp:304
+#: src/gui/debugwindow.cpp:334
 #, fuzzy
 msgid "Target Party:"
 msgstr "Spieler anvisieren"
 
-#: src/gui/debugwindow.cpp:259 src/gui/debugwindow.cpp:306
-#: src/gui/debugwindow.cpp:334
+#: src/gui/debugwindow.cpp:260 src/gui/debugwindow.cpp:307
+#: src/gui/debugwindow.cpp:335
 #, fuzzy
 msgid "Target Guild:"
 msgstr "Gilde erstellen"
 
-#: src/gui/debugwindow.cpp:260 src/gui/debugwindow.cpp:320
-#: src/gui/debugwindow.cpp:325 src/gui/debugwindow.cpp:335
+#: src/gui/debugwindow.cpp:261 src/gui/debugwindow.cpp:321
+#: src/gui/debugwindow.cpp:326 src/gui/debugwindow.cpp:336
 #, fuzzy
 msgid "Attack delay:"
 msgstr "Angriff %+d"
 
-#: src/gui/debugwindow.cpp:261 src/gui/debugwindow.cpp:310
-#: src/gui/debugwindow.cpp:336
+#: src/gui/debugwindow.cpp:262 src/gui/debugwindow.cpp:311
+#: src/gui/debugwindow.cpp:337
 #, fuzzy
 msgid "Minimal hit:"
 msgstr "Übersichtskarte: "
 
-#: src/gui/debugwindow.cpp:262 src/gui/debugwindow.cpp:312
-#: src/gui/debugwindow.cpp:337
+#: src/gui/debugwindow.cpp:263 src/gui/debugwindow.cpp:313
+#: src/gui/debugwindow.cpp:338
 msgid "Maximum hit:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:263 src/gui/debugwindow.cpp:314
-#: src/gui/debugwindow.cpp:338
+#: src/gui/debugwindow.cpp:264 src/gui/debugwindow.cpp:315
+#: src/gui/debugwindow.cpp:339
 #, fuzzy
 msgid "Critical hit:"
 msgstr "Kritischer Treffer"
 
-#: src/gui/debugwindow.cpp:372
+#: src/gui/debugwindow.cpp:373
 #, c-format
 msgid "Ping: %d ms"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:377
+#: src/gui/debugwindow.cpp:378
 msgid "Ping: ? ms"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:380
+#: src/gui/debugwindow.cpp:381
 #, c-format
 msgid "In: %d bytes/s"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:382
+#: src/gui/debugwindow.cpp:383
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr ""
@@ -949,8 +946,8 @@ msgstr "Ausrüstung"
 
 #: src/gui/equipmentwindow.cpp:101 src/gui/inventorywindow.cpp:127
 #: src/gui/inventorywindow.cpp:466 src/gui/inventorywindow.cpp:475
-#: src/gui/popupmenu.cpp:1528 src/gui/popupmenu.cpp:1611
-#: src/gui/popupmenu.cpp:1651
+#: src/gui/popupmenu.cpp:1530 src/gui/popupmenu.cpp:1613
+#: src/gui/popupmenu.cpp:1653
 msgid "Unequip"
 msgstr "Ablegen"
 
@@ -997,26 +994,26 @@ msgid "id"
 msgstr ""
 
 #: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:468
-#: src/gui/inventorywindow.cpp:477 src/gui/popupmenu.cpp:1530
-#: src/gui/popupmenu.cpp:1613 src/gui/popupmenu.cpp:1653
+#: src/gui/inventorywindow.cpp:477 src/gui/popupmenu.cpp:1532
+#: src/gui/popupmenu.cpp:1615 src/gui/popupmenu.cpp:1655
 msgid "Equip"
 msgstr "Ausrüsten"
 
 #: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:469
-#: src/gui/inventorywindow.cpp:473 src/gui/popupmenu.cpp:1533
-#: src/gui/popupmenu.cpp:1586 src/gui/popupmenu.cpp:1617
-#: src/gui/popupmenu.cpp:1656
+#: src/gui/inventorywindow.cpp:473 src/gui/popupmenu.cpp:1535
+#: src/gui/popupmenu.cpp:1588 src/gui/popupmenu.cpp:1619
+#: src/gui/popupmenu.cpp:1658
 msgid "Use"
 msgstr "Benutzen"
 
 #: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:574
-#: src/gui/popupmenu.cpp:1536 src/gui/popupmenu.cpp:1621
-#: src/gui/popupmenu.cpp:1659
+#: src/gui/popupmenu.cpp:1538 src/gui/popupmenu.cpp:1623
+#: src/gui/popupmenu.cpp:1661
 msgid "Drop..."
 msgstr "Wegwerfen"
 
-#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1541
-#: src/gui/popupmenu.cpp:1626 src/gui/popupmenu.cpp:1664
+#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1543
+#: src/gui/popupmenu.cpp:1628 src/gui/popupmenu.cpp:1666
 msgid "Split"
 msgstr "Aufteilen"
 
@@ -1030,17 +1027,17 @@ msgid "Weight:"
 msgstr "Gewicht:"
 
 #: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:565
-#: src/gui/popupmenu.cpp:1509 src/gui/popupmenu.cpp:1629
-#: src/gui/popupmenu.cpp:1667 src/gui/setup.cpp:66
+#: src/gui/popupmenu.cpp:1511 src/gui/popupmenu.cpp:1631
+#: src/gui/popupmenu.cpp:1669 src/gui/setup.cpp:66
 msgid "Store"
 msgstr "Einlagern"
 
-#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1548
+#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1550
 msgid "Retrieve"
 msgstr "Abholen"
 
-#: src/gui/inventorywindow.cpp:576 src/gui/popupmenu.cpp:1538
-#: src/gui/popupmenu.cpp:1623 src/gui/popupmenu.cpp:1661
+#: src/gui/inventorywindow.cpp:576 src/gui/popupmenu.cpp:1540
+#: src/gui/popupmenu.cpp:1625 src/gui/popupmenu.cpp:1663
 #: src/gui/windowmenu.cpp:94
 msgid "Drop"
 msgstr "Wegwerfen"
@@ -1319,8 +1316,7 @@ msgstr "NPC"
 msgid "Clear"
 msgstr "Waffenarm"
 
-#. TRANSLATORS: Please leave the \n sequences intact.
-#: src/gui/npcdialog.cpp:209
+#: src/gui/npcdialog.cpp:208
 #, fuzzy
 msgid "> Next"
 msgstr ""
@@ -1466,7 +1462,7 @@ msgid "Show Items"
 msgstr "Geschlecht"
 
 #: src/gui/popupmenu.cpp:239 src/gui/popupmenu.cpp:640
-#: src/gui/popupmenu.cpp:1828
+#: src/gui/popupmenu.cpp:1830
 msgid "Undress"
 msgstr ""
 
@@ -1503,8 +1499,8 @@ msgstr "Zu Chat hinzufügen"
 msgid "Pick up"
 msgstr "Aufheben"
 
-#: src/gui/popupmenu.cpp:454 src/gui/popupmenu.cpp:1562
-#: src/gui/popupmenu.cpp:1630 src/gui/popupmenu.cpp:1668
+#: src/gui/popupmenu.cpp:454 src/gui/popupmenu.cpp:1564
+#: src/gui/popupmenu.cpp:1632 src/gui/popupmenu.cpp:1670
 msgid "Add to chat"
 msgstr "Zu Chat hinzufügen"
 
@@ -1517,8 +1513,8 @@ msgstr ""
 msgid "Rename"
 msgstr "Name"
 
-#: src/gui/popupmenu.cpp:473 src/gui/popupmenu.cpp:1782
-#: src/gui/popupmenu.cpp:1800 src/gui/popupmenu.cpp:1805
+#: src/gui/popupmenu.cpp:473 src/gui/popupmenu.cpp:1784
+#: src/gui/popupmenu.cpp:1802 src/gui/popupmenu.cpp:1807
 #, fuzzy
 msgid "Remove"
 msgstr "Benutzername merken"
@@ -1578,97 +1574,99 @@ msgstr "Stufe: %d"
 msgid "Change guild position"
 msgstr "Ändern"
 
-#: src/gui/popupmenu.cpp:1115
+#. TRANSLATORS: number of chars in string should be near original
+#: src/gui/popupmenu.cpp:1116
 msgid "Rename map sign          "
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1116
+#. TRANSLATORS: number of chars in string should be near original
+#: src/gui/popupmenu.cpp:1118
 msgid "Name:                    "
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1492
+#: src/gui/popupmenu.cpp:1494
 #, fuzzy
 msgid "Add to trade"
 msgstr "Zu Chat hinzufügen"
 
-#: src/gui/popupmenu.cpp:1498
+#: src/gui/popupmenu.cpp:1500
 #, fuzzy
 msgid "Add to trade 10"
 msgstr "Zu Chat hinzufügen"
 
-#: src/gui/popupmenu.cpp:1501
+#: src/gui/popupmenu.cpp:1503
 #, fuzzy
 msgid "Add to trade half"
 msgstr "Einlagern"
 
-#: src/gui/popupmenu.cpp:1503
+#: src/gui/popupmenu.cpp:1505
 #, fuzzy
 msgid "Add to trade all"
 msgstr "Einlagern"
 
-#: src/gui/popupmenu.cpp:1515
+#: src/gui/popupmenu.cpp:1517
 #, fuzzy
 msgid "Store 10"
 msgstr "Einlagern"
 
-#: src/gui/popupmenu.cpp:1518
+#: src/gui/popupmenu.cpp:1520
 #, fuzzy
 msgid "Store half"
 msgstr "Einlagern"
 
-#: src/gui/popupmenu.cpp:1520
+#: src/gui/popupmenu.cpp:1522
 #, fuzzy
 msgid "Store all"
 msgstr "Einlagern"
 
-#: src/gui/popupmenu.cpp:1554
+#: src/gui/popupmenu.cpp:1556
 #, fuzzy
 msgid "Retrieve 10"
 msgstr "Abholen"
 
-#: src/gui/popupmenu.cpp:1557
+#: src/gui/popupmenu.cpp:1559
 #, fuzzy
 msgid "Retrieve half"
 msgstr "Abholen"
 
-#: src/gui/popupmenu.cpp:1559
+#: src/gui/popupmenu.cpp:1561
 #, fuzzy
 msgid "Retrieve all"
 msgstr "Abholen"
 
-#: src/gui/popupmenu.cpp:1589 src/gui/popupmenu.cpp:1634
+#: src/gui/popupmenu.cpp:1591 src/gui/popupmenu.cpp:1636
 msgid "Load old item shortcuts"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1672
+#: src/gui/popupmenu.cpp:1674
 msgid "Load old drop shortcuts"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1698 src/gui/popupmenu.cpp:1731
+#: src/gui/popupmenu.cpp:1700 src/gui/popupmenu.cpp:1733
 msgid "Hide"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1704 src/gui/popupmenu.cpp:1737
+#: src/gui/popupmenu.cpp:1706 src/gui/popupmenu.cpp:1739
 #, fuzzy
 msgid "Show"
 msgstr "Zeigen"
 
-#: src/gui/popupmenu.cpp:1744
+#: src/gui/popupmenu.cpp:1746
 msgid "Reset yellow bar"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1762 src/gui/socialwindow.cpp:838
+#: src/gui/popupmenu.cpp:1764 src/gui/socialwindow.cpp:838
 #: src/gui/socialwindow.cpp:873 src/gui/socialwindow.cpp:908
 #, fuzzy
 msgid "(default)"
 msgstr "Standard"
 
-#: src/gui/popupmenu.cpp:1774 src/gui/popupmenu.cpp:1792
+#: src/gui/popupmenu.cpp:1776 src/gui/popupmenu.cpp:1794
 #, fuzzy
 msgid "Move up"
 msgstr "Laufe Hoch"
 
-#: src/gui/popupmenu.cpp:1779 src/gui/popupmenu.cpp:1797
+#: src/gui/popupmenu.cpp:1781 src/gui/popupmenu.cpp:1799
 #, fuzzy
 msgid "Move down"
 msgstr "Laufe Runter"
@@ -3702,7 +3700,7 @@ msgstr ""
 
 #: src/gui/windowmenu.cpp:68
 #, fuzzy
-msgid "Smiles"
+msgid "Smilies"
 msgstr "Grinsen"
 
 #: src/gui/windowmenu.cpp:70
@@ -5338,7 +5336,7 @@ msgstr "Party erfolgreich erstellt."
 
 #: src/net/tmwa/partyhandler.cpp:141
 #, fuzzy, c-format
-msgid "%s has join your party."
+msgid "%s has joined your party."
 msgstr "%s hat Deine Party verlassen."
 
 #: src/net/tmwa/partyhandler.cpp:177
@@ -5358,7 +5356,7 @@ msgstr "%s ist nun Mitglied Deiner Party."
 
 #: src/net/tmwa/partyhandler.cpp:192
 #, c-format
-msgid "%s cant joid your party because party is full."
+msgid "%s can't join your party because party is full."
 msgstr ""
 
 #: src/net/tmwa/partyhandler.cpp:197
@@ -5461,7 +5459,7 @@ msgstr ""
 
 #: src/net/tmwa/playerhandler.cpp:351
 #, fuzzy
-msgid "You are carrying less than half your weight. You are can regain health."
+msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Du trägst mehr als die Hälfte Deiner Tragkraft. Du kannst Dich nicht mehr "
 "heilen."
@@ -5603,7 +5601,7 @@ msgstr ""
 
 #: src/net/tmwa/tradehandler.cpp:258
 #, fuzzy
-msgid "Failed adding item. You cant trade this item."
+msgid "Failed adding item. You can't trade this item."
 msgstr ""
 "Gegenstand konnte nicht hinzugefügt werden. Du kannst keinen weiteren dieser "
 "Gegenstände hinzufügen."
@@ -5656,6 +5654,17 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:166
 msgid "Unknown item"
 msgstr "Unbekannter Gegenstand"
+
+#~ msgid "Cursor: (%d, %d)"
+#~ msgstr "Cursor: (%d, %d)"
+
+#, fuzzy
+#~ msgid "Map actors count: %d"
+#~ msgstr "Spielfigurattribute OK"
+
+#, fuzzy
+#~ msgid "Smiles"
+#~ msgstr "Grinsen"
 
 #, fuzzy
 #~ msgid "@@friend|Be friend@@"

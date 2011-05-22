@@ -189,7 +189,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
                         break;
                     case 3:
                         partyTab->chatLog(strprintf(
-                            _("%s can't joid your party because party is "
+                            _("%s can't join your party because party is "
                             "full."), nick.c_str()), BY_SERVER);
                         break;
                     default:
