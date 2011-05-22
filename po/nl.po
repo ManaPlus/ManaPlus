@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-22 16:57+0300\n"
+"POT-Creation-Date: 2011-05-22 19:57+0300\n"
 "PO-Revision-Date: 2009-07-15 12:21+0000\n"
 "Last-Translator: Yentl <y.v.t@scarlet.be>\n"
 "Language-Team: Dutch\n"
@@ -647,7 +647,7 @@ msgid "Enter password:"
 msgstr "Onjuist wachtwoord"
 
 #: src/gui/charselectdialog.cpp:407 src/gui/serverdialog.cpp:286
-#: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
+#: src/gui/setup_players.cpp:244 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:238
 msgid "Delete"
 msgstr "Verwijderen"
@@ -927,7 +927,7 @@ msgstr ""
 
 #: src/gui/editdialog.cpp:44 src/gui/itemamountwindow.cpp:206
 #: src/gui/okdialog.cpp:43 src/gui/quitdialog.cpp:57 src/gui/textdialog.cpp:48
-#: src/gui/tradewindow.cpp:82 src/gui/tradewindow.cpp:84
+#: src/gui/tradewindow.cpp:84 src/gui/tradewindow.cpp:86
 msgid "OK"
 msgstr "OK"
 
@@ -1346,7 +1346,7 @@ msgid "Away outfit"
 msgstr ""
 
 #: src/gui/popupmenu.cpp:124 src/gui/popupmenu.cpp:580
-#: src/gui/tradewindow.cpp:83 src/gui/tradewindow.cpp:84
+#: src/gui/tradewindow.cpp:85 src/gui/tradewindow.cpp:86
 #: src/gui/widgets/tradetab.cpp:42
 msgid "Trade"
 msgstr "Handel"
@@ -2133,49 +2133,54 @@ msgstr "Genegeerd"
 msgid "Erased"
 msgstr ""
 
-#: src/gui/setup_players.cpp:239
+#: src/gui/setup_players.cpp:240
 msgid "Allow trading"
 msgstr "Handelen toestaan"
 
-#: src/gui/setup_players.cpp:241
+#: src/gui/setup_players.cpp:242
 msgid "Allow whispers"
 msgstr "Fluisteren toestaan"
 
-#: src/gui/setup_players.cpp:244
+#: src/gui/setup_players.cpp:245
 msgid "Old"
 msgstr ""
 
-#: src/gui/setup_players.cpp:246
+#: src/gui/setup_players.cpp:247
 msgid "Put all whispers in tabs"
 msgstr ""
 
-#: src/gui/setup_players.cpp:249
+#: src/gui/setup_players.cpp:250
 #, fuzzy
 msgid "Show gender"
 msgstr "Naam tonen"
 
-#: src/gui/setup_players.cpp:254
+#: src/gui/setup_players.cpp:256
 msgid "Players"
 msgstr "Spelers"
 
-#: src/gui/setup_players.cpp:279
+#: src/gui/setup_players.cpp:281
 msgid "When ignoring:"
 msgstr "Tijdens negeren:"
 
-#: src/gui/setup_players.cpp:302
+#: src/gui/setup_players.cpp:304
 #, fuzzy
 msgid "Show level"
 msgstr "Naam tonen"
 
-#: src/gui/setup_players.cpp:306
+#: src/gui/setup_players.cpp:308
 #, fuzzy
 msgid "Show own name"
 msgstr "Naam tonen"
 
-#: src/gui/setup_players.cpp:310
+#: src/gui/setup_players.cpp:312
 #, fuzzy
 msgid "Target dead players"
 msgstr "Speler viseren"
+
+#: src/gui/setup_players.cpp:316
+#, fuzzy
+msgid "Secure trades"
+msgstr "Handel goedkeuren"
 
 #: src/gui/setup_theme.cpp:107
 msgid "Theme"
@@ -2476,7 +2481,7 @@ msgid "Sell items"
 msgstr ""
 
 #: src/gui/shopwindow.cpp:117 src/gui/shopwindow.cpp:120
-#: src/gui/tradewindow.cpp:86
+#: src/gui/tradewindow.cpp:88
 msgid "Add"
 msgstr "Toevoegen"
 
@@ -3257,46 +3262,46 @@ msgstr "Naam tonen"
 msgid "Save"
 msgstr ""
 
-#: src/gui/tradewindow.cpp:55
+#: src/gui/tradewindow.cpp:56
 msgid "Propose trade"
 msgstr "Handelen voorstellen"
 
-#: src/gui/tradewindow.cpp:56
+#: src/gui/tradewindow.cpp:57
 msgid "Confirmed. Waiting..."
 msgstr "Bevestigd. Wachten..."
 
-#: src/gui/tradewindow.cpp:57
+#: src/gui/tradewindow.cpp:58
 msgid "Agree trade"
 msgstr "Handel goedkeuren"
 
-#: src/gui/tradewindow.cpp:58
+#: src/gui/tradewindow.cpp:59
 msgid "Agreed. Waiting..."
 msgstr "Goedgekeurd. Wachten..."
 
-#: src/gui/tradewindow.cpp:61
+#: src/gui/tradewindow.cpp:62
 msgid "Trade: You"
 msgstr "Handel: Jij"
 
-#: src/gui/tradewindow.cpp:108 src/gui/tradewindow.cpp:149
+#: src/gui/tradewindow.cpp:110 src/gui/tradewindow.cpp:166
 #, fuzzy, c-format
 msgid "You get %s"
 msgstr "Jij krijgt %s."
 
-#: src/gui/tradewindow.cpp:109
+#: src/gui/tradewindow.cpp:111
 msgid "You give:"
 msgstr "Je geeft:"
 
-#: src/gui/tradewindow.cpp:113
+#: src/gui/tradewindow.cpp:115
 msgid "Change"
 msgstr "Veranderen"
 
-#: src/gui/tradewindow.cpp:314
+#: src/gui/tradewindow.cpp:332
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Kan dat voorwerp niet toevoegen. Je kan één type voorwerp niet overlappen in "
 "het venster."
 
-#: src/gui/tradewindow.cpp:359
+#: src/gui/tradewindow.cpp:377
 msgid "You don't have enough money."
 msgstr "Je hebt niet genoeg geld."
 
@@ -3947,7 +3952,7 @@ msgstr "Vensters verbergen"
 
 #: src/keyboardconfig.cpp:147
 #, fuzzy
-msgid "Kills Stats Window"
+msgid "Kill Stats Window"
 msgstr "Statusvenster"
 
 #: src/keyboardconfig.cpp:149
@@ -4010,7 +4015,7 @@ msgid "Copy Outfit"
 msgstr ""
 
 #: src/keyboardconfig.cpp:256
-msgid "Copy Equiped to Outfit"
+msgid "Copy equipped to Outfit"
 msgstr ""
 
 #: src/keyboardconfig.cpp:258
@@ -4035,12 +4040,12 @@ msgstr "Volgende chattab"
 
 #: src/keyboardconfig.cpp:268
 #, fuzzy
-msgid "Previous chat tab line"
+msgid "Previous chat line"
 msgstr "Vorige chattab"
 
 #: src/keyboardconfig.cpp:270
 #, fuzzy
-msgid "Next chat tab line"
+msgid "Next chat line"
 msgstr "Volgende chattab"
 
 #: src/keyboardconfig.cpp:272
@@ -4185,7 +4190,7 @@ msgid "Item is too heavy."
 msgstr ""
 
 #: src/localplayer.cpp:1383
-msgid "Item is too far away"
+msgid "Item is too far away."
 msgstr ""
 
 #: src/localplayer.cpp:1385
@@ -4535,7 +4540,7 @@ msgstr "Attributen van personage OK"
 
 #: src/net/manaserv/charhandler.cpp:172
 #, c-format
-msgid "At least one statis out of the permitted range: (%u - %u)."
+msgid "At least one stat is out of the permitted range: (%u - %u)."
 msgstr ""
 
 #: src/net/manaserv/charhandler.cpp:178
@@ -5062,7 +5067,7 @@ msgstr "Dit commando zorgt ervoor dat de speler de groep verlaat."
 
 #: src/net/tmwa/guildhandler.cpp:110 src/net/tmwa/guildhandler.cpp:115
 #, fuzzy
-msgid "You already in guild."
+msgid "You are already in guild."
 msgstr "Fout bij het creëren van guild."
 
 #: src/net/tmwa/guildhandler.cpp:120

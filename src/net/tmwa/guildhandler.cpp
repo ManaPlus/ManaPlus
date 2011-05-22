@@ -107,12 +107,12 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
             else if (flag == 1)
             {
                 // Already in a guild
-                SERVER_NOTICE(_("You already in guild."))
+                SERVER_NOTICE(_("You are already in guild."))
             }
             else if (flag == 2)
             {
                 // Unable to make (likely name already in use)
-                SERVER_NOTICE(_("You already in guild."))
+                SERVER_NOTICE(_("You are already in guild."))
             }
             else if (flag == 3)
             {

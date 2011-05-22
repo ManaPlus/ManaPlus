@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-22 16:57+0300\n"
+"POT-Creation-Date: 2011-05-22 19:57+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -653,7 +653,7 @@ msgid "Enter password:"
 msgstr "Pogrešna lozinka"
 
 #: src/gui/charselectdialog.cpp:407 src/gui/serverdialog.cpp:286
-#: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
+#: src/gui/setup_players.cpp:244 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:238
 msgid "Delete"
 msgstr "Obriši"
@@ -932,7 +932,7 @@ msgstr ""
 
 #: src/gui/editdialog.cpp:44 src/gui/itemamountwindow.cpp:206
 #: src/gui/okdialog.cpp:43 src/gui/quitdialog.cpp:57 src/gui/textdialog.cpp:48
-#: src/gui/tradewindow.cpp:82 src/gui/tradewindow.cpp:84
+#: src/gui/tradewindow.cpp:84 src/gui/tradewindow.cpp:86
 msgid "OK"
 msgstr "U redu"
 
@@ -1351,7 +1351,7 @@ msgid "Away outfit"
 msgstr ""
 
 #: src/gui/popupmenu.cpp:124 src/gui/popupmenu.cpp:580
-#: src/gui/tradewindow.cpp:83 src/gui/tradewindow.cpp:84
+#: src/gui/tradewindow.cpp:85 src/gui/tradewindow.cpp:86
 #: src/gui/widgets/tradetab.cpp:42
 msgid "Trade"
 msgstr "Trgovanje"
@@ -2141,49 +2141,54 @@ msgstr "Ignorirano"
 msgid "Erased"
 msgstr ""
 
-#: src/gui/setup_players.cpp:239
+#: src/gui/setup_players.cpp:240
 msgid "Allow trading"
 msgstr "Dozvoli trgovanje"
 
-#: src/gui/setup_players.cpp:241
+#: src/gui/setup_players.cpp:242
 msgid "Allow whispers"
 msgstr "Dozvoli šapate"
 
-#: src/gui/setup_players.cpp:244
+#: src/gui/setup_players.cpp:245
 msgid "Old"
 msgstr ""
 
-#: src/gui/setup_players.cpp:246
+#: src/gui/setup_players.cpp:247
 msgid "Put all whispers in tabs"
 msgstr "Stavi sve šapate u kartice"
 
-#: src/gui/setup_players.cpp:249
+#: src/gui/setup_players.cpp:250
 #, fuzzy
 msgid "Show gender"
 msgstr "Prikaži ime"
 
-#: src/gui/setup_players.cpp:254
+#: src/gui/setup_players.cpp:256
 msgid "Players"
 msgstr "Igrači"
 
-#: src/gui/setup_players.cpp:279
+#: src/gui/setup_players.cpp:281
 msgid "When ignoring:"
 msgstr "Kad ignorira:"
 
-#: src/gui/setup_players.cpp:302
+#: src/gui/setup_players.cpp:304
 #, fuzzy
 msgid "Show level"
 msgstr "Prikaži ime"
 
-#: src/gui/setup_players.cpp:306
+#: src/gui/setup_players.cpp:308
 #, fuzzy
 msgid "Show own name"
 msgstr "Prikaži ime"
 
-#: src/gui/setup_players.cpp:310
+#: src/gui/setup_players.cpp:312
 #, fuzzy
 msgid "Target dead players"
 msgstr "Ciljaj Igrača"
+
+#: src/gui/setup_players.cpp:316
+#, fuzzy
+msgid "Secure trades"
+msgstr "Složi se za trgovanje"
 
 #: src/gui/setup_theme.cpp:107
 msgid "Theme"
@@ -2482,7 +2487,7 @@ msgid "Sell items"
 msgstr ""
 
 #: src/gui/shopwindow.cpp:117 src/gui/shopwindow.cpp:120
-#: src/gui/tradewindow.cpp:86
+#: src/gui/tradewindow.cpp:88
 msgid "Add"
 msgstr "Dodaj"
 
@@ -3263,44 +3268,44 @@ msgstr "Prikaži ime"
 msgid "Save"
 msgstr ""
 
-#: src/gui/tradewindow.cpp:55
+#: src/gui/tradewindow.cpp:56
 msgid "Propose trade"
 msgstr "Predloži razmjenu"
 
-#: src/gui/tradewindow.cpp:56
+#: src/gui/tradewindow.cpp:57
 msgid "Confirmed. Waiting..."
 msgstr "Potvrđeno. Čekanje..."
 
-#: src/gui/tradewindow.cpp:57
+#: src/gui/tradewindow.cpp:58
 msgid "Agree trade"
 msgstr "Složi se za trgovanje"
 
-#: src/gui/tradewindow.cpp:58
+#: src/gui/tradewindow.cpp:59
 msgid "Agreed. Waiting..."
 msgstr "Dogovoreno. Čekanje..."
 
-#: src/gui/tradewindow.cpp:61
+#: src/gui/tradewindow.cpp:62
 msgid "Trade: You"
 msgstr "Trgovanje: Vi"
 
-#: src/gui/tradewindow.cpp:108 src/gui/tradewindow.cpp:149
+#: src/gui/tradewindow.cpp:110 src/gui/tradewindow.cpp:166
 #, fuzzy, c-format
 msgid "You get %s"
 msgstr "Vi dobijete %s."
 
-#: src/gui/tradewindow.cpp:109
+#: src/gui/tradewindow.cpp:111
 msgid "You give:"
 msgstr "Daješ:"
 
-#: src/gui/tradewindow.cpp:113
+#: src/gui/tradewindow.cpp:115
 msgid "Change"
 msgstr "Izmijeni"
 
-#: src/gui/tradewindow.cpp:314
+#: src/gui/tradewindow.cpp:332
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 
-#: src/gui/tradewindow.cpp:359
+#: src/gui/tradewindow.cpp:377
 msgid "You don't have enough money."
 msgstr "Nemate dovoljno novca."
 
@@ -3946,7 +3951,7 @@ msgstr "Skrij Prozore"
 
 #: src/keyboardconfig.cpp:147
 #, fuzzy
-msgid "Kills Stats Window"
+msgid "Kill Stats Window"
 msgstr "Prozor Statusa"
 
 #: src/keyboardconfig.cpp:149
@@ -4009,7 +4014,7 @@ msgid "Copy Outfit"
 msgstr ""
 
 #: src/keyboardconfig.cpp:256
-msgid "Copy Equiped to Outfit"
+msgid "Copy equipped to Outfit"
 msgstr ""
 
 #: src/keyboardconfig.cpp:258
@@ -4034,12 +4039,12 @@ msgstr "Sljedeća Chat Kartica"
 
 #: src/keyboardconfig.cpp:268
 #, fuzzy
-msgid "Previous chat tab line"
+msgid "Previous chat line"
 msgstr "Prethodna Chat Kartica"
 
 #: src/keyboardconfig.cpp:270
 #, fuzzy
-msgid "Next chat tab line"
+msgid "Next chat line"
 msgstr "Sljedeća Chat Kartica"
 
 #: src/keyboardconfig.cpp:272
@@ -4184,7 +4189,7 @@ msgid "Item is too heavy."
 msgstr ""
 
 #: src/localplayer.cpp:1383
-msgid "Item is too far away"
+msgid "Item is too far away."
 msgstr ""
 
 #: src/localplayer.cpp:1385
@@ -4526,7 +4531,7 @@ msgstr "Podaci lika su u redu"
 
 #: src/net/manaserv/charhandler.cpp:172
 #, c-format
-msgid "At least one statis out of the permitted range: (%u - %u)."
+msgid "At least one stat is out of the permitted range: (%u - %u)."
 msgstr ""
 
 #: src/net/manaserv/charhandler.cpp:178
@@ -5053,7 +5058,7 @@ msgstr "Ova naredba postavlja temu za <message>."
 
 #: src/net/tmwa/guildhandler.cpp:110 src/net/tmwa/guildhandler.cpp:115
 #, fuzzy
-msgid "You already in guild."
+msgid "You are already in guild."
 msgstr "Pogreška pri ustanovljavanju ceha."
 
 #: src/net/tmwa/guildhandler.cpp:120

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-22 16:57+0300\n"
-"PO-Revision-Date: 2011-05-22 13:59+0000\n"
+"POT-Creation-Date: 2011-05-22 19:57+0300\n"
+"PO-Revision-Date: 2011-05-22 17:00+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/manaplus/team/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -608,7 +608,7 @@ msgid "Enter password:"
 msgstr ""
 
 #: src/gui/charselectdialog.cpp:407 src/gui/serverdialog.cpp:286
-#: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
+#: src/gui/setup_players.cpp:244 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:238
 msgid "Delete"
 msgstr "Excluir"
@@ -860,7 +860,7 @@ msgstr "Saída: %d bytes/s"
 
 #: src/gui/editdialog.cpp:44 src/gui/itemamountwindow.cpp:206
 #: src/gui/okdialog.cpp:43 src/gui/quitdialog.cpp:57 src/gui/textdialog.cpp:48
-#: src/gui/tradewindow.cpp:82 src/gui/tradewindow.cpp:84
+#: src/gui/tradewindow.cpp:84 src/gui/tradewindow.cpp:86
 msgid "OK"
 msgstr "OK"
 
@@ -1258,7 +1258,7 @@ msgid "Away outfit"
 msgstr "Roupas de ocupado"
 
 #: src/gui/popupmenu.cpp:124 src/gui/popupmenu.cpp:580
-#: src/gui/tradewindow.cpp:83 src/gui/tradewindow.cpp:84
+#: src/gui/tradewindow.cpp:85 src/gui/tradewindow.cpp:86
 #: src/gui/widgets/tradetab.cpp:42
 msgid "Trade"
 msgstr "Negócios"
@@ -1979,45 +1979,49 @@ msgstr "Ignorado"
 msgid "Erased"
 msgstr "Apagado"
 
-#: src/gui/setup_players.cpp:239
+#: src/gui/setup_players.cpp:240
 msgid "Allow trading"
 msgstr "Permitir negociações"
 
-#: src/gui/setup_players.cpp:241
+#: src/gui/setup_players.cpp:242
 msgid "Allow whispers"
 msgstr "Permitir mensagens particulares"
 
-#: src/gui/setup_players.cpp:244
+#: src/gui/setup_players.cpp:245
 msgid "Old"
 msgstr "Antigo"
 
-#: src/gui/setup_players.cpp:246
+#: src/gui/setup_players.cpp:247
 msgid "Put all whispers in tabs"
 msgstr "Deixar as mensagens privadas em abas"
 
-#: src/gui/setup_players.cpp:249
+#: src/gui/setup_players.cpp:250
 msgid "Show gender"
 msgstr "Mostrar gênero"
 
-#: src/gui/setup_players.cpp:254
+#: src/gui/setup_players.cpp:256
 msgid "Players"
 msgstr "Jogadores"
 
-#: src/gui/setup_players.cpp:279
+#: src/gui/setup_players.cpp:281
 msgid "When ignoring:"
 msgstr "Quando ignorar:"
 
-#: src/gui/setup_players.cpp:302
+#: src/gui/setup_players.cpp:304
 msgid "Show level"
 msgstr "Mostrar nível"
 
-#: src/gui/setup_players.cpp:306
+#: src/gui/setup_players.cpp:308
 msgid "Show own name"
 msgstr "Mostrar o próprio nome"
 
-#: src/gui/setup_players.cpp:310
+#: src/gui/setup_players.cpp:312
 msgid "Target dead players"
 msgstr "Jogadores mortos como alvo"
+
+#: src/gui/setup_players.cpp:316
+msgid "Secure trades"
+msgstr ""
 
 #: src/gui/setup_theme.cpp:107
 msgid "Theme"
@@ -2300,7 +2304,7 @@ msgid "Sell items"
 msgstr "Vender itens"
 
 #: src/gui/shopwindow.cpp:117 src/gui/shopwindow.cpp:120
-#: src/gui/tradewindow.cpp:86
+#: src/gui/tradewindow.cpp:88
 msgid "Add"
 msgstr "Adicionar"
 
@@ -3048,46 +3052,46 @@ msgstr "Nível da escola:"
 msgid "Save"
 msgstr "Salvar"
 
-#: src/gui/tradewindow.cpp:55
+#: src/gui/tradewindow.cpp:56
 msgid "Propose trade"
 msgstr "Propor negócio"
 
-#: src/gui/tradewindow.cpp:56
+#: src/gui/tradewindow.cpp:57
 msgid "Confirmed. Waiting..."
 msgstr "Confirmado. Aguardando..."
 
-#: src/gui/tradewindow.cpp:57
+#: src/gui/tradewindow.cpp:58
 msgid "Agree trade"
 msgstr "Aceitar negociação"
 
-#: src/gui/tradewindow.cpp:58
+#: src/gui/tradewindow.cpp:59
 msgid "Agreed. Waiting..."
 msgstr "Aceitou. Aguarde..."
 
-#: src/gui/tradewindow.cpp:61
+#: src/gui/tradewindow.cpp:62
 msgid "Trade: You"
 msgstr "Negócio: você"
 
-#: src/gui/tradewindow.cpp:108 src/gui/tradewindow.cpp:149
+#: src/gui/tradewindow.cpp:110 src/gui/tradewindow.cpp:166
 #, c-format
 msgid "You get %s"
 msgstr "Você pegou %s"
 
-#: src/gui/tradewindow.cpp:109
+#: src/gui/tradewindow.cpp:111
 msgid "You give:"
 msgstr "Você dá:"
 
-#: src/gui/tradewindow.cpp:113
+#: src/gui/tradewindow.cpp:115
 msgid "Change"
 msgstr "Mudar"
 
-#: src/gui/tradewindow.cpp:314
+#: src/gui/tradewindow.cpp:332
 msgid ""
 "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
-#: src/gui/tradewindow.cpp:359
+#: src/gui/tradewindow.cpp:377
 msgid "You don't have enough money."
 msgstr "Você não tem dinheiro suficiente."
 
@@ -3696,8 +3700,8 @@ msgid "Quick drop Window"
 msgstr "Janela Descarte rápido"
 
 #: src/keyboardconfig.cpp:147
-msgid "Kills Stats Window"
-msgstr "Janela de estatísticas"
+msgid "Kill Stats Window"
+msgstr ""
 
 #: src/keyboardconfig.cpp:149
 msgid "Commands Window"
@@ -3755,8 +3759,8 @@ msgid "Copy Outfit"
 msgstr "Copiar roupas"
 
 #: src/keyboardconfig.cpp:256
-msgid "Copy Equiped to Outfit"
-msgstr "Copiar roupas equipadas"
+msgid "Copy equipped to Outfit"
+msgstr ""
 
 #: src/keyboardconfig.cpp:258
 msgid "Toggle Chat"
@@ -3779,12 +3783,12 @@ msgid "Next Chat Tab"
 msgstr "Próxima aba de chat"
 
 #: src/keyboardconfig.cpp:268
-msgid "Previous chat tab line"
-msgstr "Volta aba de chat"
+msgid "Previous chat line"
+msgstr ""
 
 #: src/keyboardconfig.cpp:270
-msgid "Next chat tab line"
-msgstr "Passa aba de chat"
+msgid "Next chat line"
+msgstr ""
 
 #: src/keyboardconfig.cpp:272
 msgid "Chat Auto Complete"
@@ -3920,8 +3924,8 @@ msgid "Item is too heavy."
 msgstr "Este item é muito pesado."
 
 #: src/localplayer.cpp:1383
-msgid "Item is too far away"
-msgstr "Este item está muito longe."
+msgid "Item is too far away."
+msgstr ""
 
 #: src/localplayer.cpp:1385
 msgid "Inventory is full."
@@ -4240,8 +4244,8 @@ msgstr "Atributos do personagem estão muito baixos."
 
 #: src/net/manaserv/charhandler.cpp:172
 #, c-format
-msgid "At least one statis out of the permitted range: (%u - %u)."
-msgstr "Pelo menos um stat fora do alcance permitido: (%u - %u)"
+msgid "At least one stat is out of the permitted range: (%u - %u)."
+msgstr ""
 
 #: src/net/manaserv/charhandler.cpp:178
 msgid "Invalid slot number."
@@ -4717,8 +4721,8 @@ msgid "This command causes the player to leave the guild."
 msgstr "Este comando faz com que o jogador saia da guilda."
 
 #: src/net/tmwa/guildhandler.cpp:110 src/net/tmwa/guildhandler.cpp:115
-msgid "You already in guild."
-msgstr "Você já está em uma guilda."
+msgid "You are already in guild."
+msgstr ""
 
 #: src/net/tmwa/guildhandler.cpp:120
 msgid "Emperium check failed."

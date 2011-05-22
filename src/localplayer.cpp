@@ -1380,7 +1380,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
                 break;
             case PICKUP_TOO_HEAVY: msg = N_("Item is too heavy.");
                 break;
-            case PICKUP_TOO_FAR: msg = N_("Item is too far away");
+            case PICKUP_TOO_FAR: msg = N_("Item is too far away.");
                 break;
             case PICKUP_INV_FULL: msg = N_("Inventory is full.");
                 break;
