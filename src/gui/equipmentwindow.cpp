@@ -233,6 +233,9 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
     {
         if (Item *item = getItem(x, y))
         {
+            if (mItemPopup)
+                mItemPopup->setVisible(false);
+
             /* Convert relative to the window coordinates to absolute screen
              * coordinates.
              */
