@@ -138,7 +138,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
                             if (partyTab && names.find(nick) == names.end())
                             {
                                 partyTab->chatLog(strprintf(
-                                    _("%s has join your party."),
+                                    _("%s has joined your party."),
                                     nick.c_str()), BY_SERVER);
                             }
                         }
@@ -189,7 +189,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
                         break;
                     case 3:
                         partyTab->chatLog(strprintf(
-                            _("%s cant joid your party because party is "
+                            _("%s can't joid your party because party is "
                             "full."), nick.c_str()), BY_SERVER);
                         break;
                     default:

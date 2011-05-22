@@ -84,7 +84,7 @@ void MumbleManager::init()
                                          FALSE, L"MumbleLink");
     if (hMapObject == NULL)
     {
-        logger->log1("MumbleManager::init cant open MumbleLink");
+        logger->log1("MumbleManager::init can't open MumbleLink");
         return;
     }
 
@@ -95,7 +95,7 @@ void MumbleManager::init()
     {
         CloseHandle(hMapObject);
         hMapObject = NULL;
-        logger->log1("MumbleManager::init cant map MumbleLink");
+        logger->log1("MumbleManager::init can't map MumbleLink");
         return;
     }
 #elif defined __FreeBSD__ || defined __DragonFly__
@@ -107,7 +107,7 @@ void MumbleManager::init()
 
     if (shmfd < 0)
     {
-        logger->log1("MumbleManager::init cant open shared memory MumbleLink");
+        logger->log1("MumbleManager::init can't open shared memory MumbleLink");
         return;
     }
 
@@ -117,7 +117,7 @@ void MumbleManager::init()
     if (mLinkedMem == reinterpret_cast<void *>(-1))
     {
         mLinkedMem = NULL;
-        logger->log1("MumbleManager::init cant map MumbleLink");
+        logger->log1("MumbleManager::init can't map MumbleLink");
         return;
     }
 

@@ -133,12 +133,13 @@ MapDebugTab::MapDebugTab() :
     mMusicFileLabel = new Label(strprintf(_("Music:")));
     mMapLabel = new Label(strprintf(_("Map:")));
     mMinimapLabel = new Label(strprintf(_("Minimap:")));
-    mTileMouseLabel = new Label(strprintf(_("Cursor: (%d, %d)"), 0, 0));
+    mTileMouseLabel = new Label(strprintf("%s (%d, %d)", _("Cursor:"), 0, 0));
     mXYLabel = new Label(strprintf("%s (?,?)", _("Player Position:")));
 
-    mParticleCountLabel = new Label(strprintf(_("Particle count: %d"), 88888));
-    mMapActorCountLabel = new Label(strprintf(
-        _("Map actors count: %d"), 88888));
+    mParticleCountLabel = new Label(strprintf("%s %d",
+        _("Particle count:"), 88888));
+    mMapActorCountLabel = new Label(strprintf("%s %d",
+        _("Map actors count:"), 88888));
 
     mUpdateTime = 0;
 

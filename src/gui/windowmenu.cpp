@@ -65,7 +65,7 @@ WindowMenu::WindowMenu():
               KeyboardConfig::KEY_NO_VALUE);
     addButton(N_("KS"), _("Kill stats"), x, h,
               KeyboardConfig::KEY_WINDOW_KILLS);
-    addButton(":-)", _("Smiles"), x, h,
+    addButton(":-)", _("Smilies"), x, h,
               KeyboardConfig::KEY_WINDOW_EMOTE_SHORTCUT);
     addButton(N_("STA"), _("Status"), x, h, KeyboardConfig::KEY_WINDOW_STATUS);
     addButton(N_("EQU"), _("Equipment"), x, h,

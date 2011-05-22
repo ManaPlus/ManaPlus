@@ -683,7 +683,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
         if (!item2 || item2->getQuantity() < amount
             || !findShopItem(mTradeItem, SELL))
         {
-            sendMessage(nick, "error: Cant sell this item ", true);
+            sendMessage(nick, "error: Can't sell this item ", true);
             return;
         }
         msg = "buy";
@@ -693,7 +693,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
     {
         if (!findShopItem(mTradeItem, BUY))
         {
-            sendMessage(nick, "error: Cant buy this item ", true);
+            sendMessage(nick, "error: Can't buy this item ", true);
             return;
         }
         msg = "sell";

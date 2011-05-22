@@ -1112,7 +1112,9 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "rename map" && mMapItem)
     {
         mRenameListener.setMapItem(mMapItem);
+        // TRANSLATORS: number of chars in string should be near original
         mDialog = new TextDialog(_("Rename map sign          "),
+        // TRANSLATORS: number of chars in string should be near original
                                  _("Name:                    "));
         mRenameListener.setDialog(mDialog);
         mDialog->setText(mMapItem->getComment());

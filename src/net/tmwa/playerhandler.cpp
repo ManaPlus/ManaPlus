@@ -349,7 +349,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
                                 weightNoticeTime = cur_time + 10;
                                 weightNotice = new OkDialog(_("Message"),
                                     _("You are carrying less than "
-                                    "half your weight. You are "
+                                    "half your weight. You "
                                     "can regain health."), false);
                                 weightNotice->addActionListener(
                                     &weightListener);

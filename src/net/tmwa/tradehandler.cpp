@@ -256,7 +256,7 @@ void TradeHandler::handleMessage(Net::MessageIn &msg)
                     case 3:
                          // Add item failed - non tradable item
                          SERVER_NOTICE(_("Failed adding item. You "
-                                 "cant trade this item."))
+                                 "can't trade this item."))
                          break;
                     default:
                         SERVER_NOTICE(_("Failed adding item for "
