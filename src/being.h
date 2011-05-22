@@ -50,7 +50,8 @@
 #define STATUS_EFFECTS 32
 
 #define SPEECH_TIME 500
-#define SPEECH_MAX_TIME 1000
+#define SPEECH_MIN_TIME 200
+#define SPEECH_MAX_TIME 800
 
 class AnimatedSprite;
 class BeingCacheEntry;
@@ -239,7 +240,7 @@ class Being : public ActorSprite, public ConfigListener
          * @param text The text that should appear.
          * @param time The amount of time the text should stay in milliseconds.
          */
-        void setSpeech(const std::string &text, int time = 500);
+        void setSpeech(const std::string &text, int time = 0);
 
         /**
          * Puts a damage bubble above this being.

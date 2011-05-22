@@ -1488,19 +1488,19 @@ void Map::setPvpMode(int mode)
         switch (mPvp)
         {
             case 0:
-                player_node->setSpeech("pvp off, gvg off", SPEECH_TIME);
+                player_node->setSpeech("pvp off, gvg off");
                 break;
             case 1:
-                player_node->setSpeech("pvp on", SPEECH_TIME);
+                player_node->setSpeech("pvp on");
                 break;
             case 2:
-                player_node->setSpeech("gvg on", SPEECH_TIME);
+                player_node->setSpeech("gvg on");
                 break;
             case 3:
-                player_node->setSpeech("pvp on, gvg on", SPEECH_TIME);
+                player_node->setSpeech("pvp on, gvg on");
                 break;
             default:
-                player_node->setSpeech("unknown pvp", SPEECH_TIME);
+                player_node->setSpeech("unknown pvp");
                 break;
         }
     }

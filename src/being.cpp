@@ -447,6 +447,12 @@ void Being::setSpeech(const std::string &text, int time)
     if (mSpeech.length() < 1)
         return;
 
+    if (!time && mSpeech.size() < 200)
+        time = SPEECH_TIME - 300 + (3 * mSpeech.size());
+
+    if (time < SPEECH_MIN_TIME)
+        time = SPEECH_MIN_TIME;
+
     // Check for links
     std::string::size_type start = mSpeech.find('[');
     std::string::size_type end = mSpeech.find(']', start);

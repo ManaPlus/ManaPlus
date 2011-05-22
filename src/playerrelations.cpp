@@ -425,7 +425,7 @@ public:
             return;
 
         logger->log("ignoring: " + being->getName());
-        being->setSpeech("...", 500);
+        being->setSpeech("...");
     }
 };
 

@@ -278,7 +278,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             if (player_relations.hasPermission(sender_name,
                 PlayerRelation::SPEECH_FLOAT))
             {
-                being->setSpeech(chatMsg, SPEECH_TIME);
+                being->setSpeech(chatMsg);
             }
             break;
         }
@@ -315,7 +315,7 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
                 trim(chatMsg);
 
                 if (player_node)
-                    player_node->setSpeech(chatMsg, SPEECH_TIME);
+                    player_node->setSpeech(chatMsg);
             }
             else if (localChatTab)
             {

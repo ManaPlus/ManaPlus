@@ -164,7 +164,7 @@ void ChatHandler::handleGameChatMessage(Net::MessageIn &msg)
     if (being)
     {
         mes = being->getName() + " : " + chatMsg;
-        being->setSpeech(chatMsg, SPEECH_TIME);
+        being->setSpeech(chatMsg);
     }
     else
         mes = "Unknown : " + chatMsg;
