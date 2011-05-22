@@ -163,6 +163,7 @@ class TradeWindow : public Window, gcn::ActionListener, gcn::SelectionListener
         Item* mAutoAddItem;
         std::string mAutoAddToNick;
         int mGotMoney;
+        int mGotMaxMoney;
         int mAutoMoney;
         int mAutoAddAmount;
 };

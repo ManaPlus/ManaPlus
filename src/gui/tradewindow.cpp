@@ -65,6 +65,7 @@ TradeWindow::TradeWindow():
     mAutoAddItem(0),
     mAutoAddToNick(""),
     mGotMoney(0),
+    mGotMaxMoney(0),
     mAutoMoney(0)
 {
     logger->log1("TradeWindow::TradeWindow nick");
@@ -141,9 +142,15 @@ TradeWindow::~TradeWindow()
 
 void TradeWindow::setMoney(int amount)
 {
-    if (amount < mGotMoney)
+    if (amount < 0 || amount < mGotMaxMoney)
+    {
         mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::WARNING));
-    mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    }
+    else
+    {
+        mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+        mGotMaxMoney = amount;
+    }
 
     mGotMoney = amount;
     mMoneyLabel->setCaption(strprintf(_("You get %s"),
