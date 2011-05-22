@@ -229,6 +229,7 @@ public:
 #define ACTION_SHOW_LEVEL "show level"
 #define ACTION_TARGET_DEAD "target dead"
 #define ACTION_SHOW_OWN_NAME "show own name"
+#define ACTION_SECURE_TRADES "secure trades"
 
 Setup_Players::Setup_Players():
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
@@ -249,7 +250,8 @@ Setup_Players::Setup_Players():
     mShowGenderCheckBox(new CheckBox(_("Show gender"), mShowGender)),
     mShowLevel(config.getBoolValue("showlevel")),
     mShowOwnName(config.getBoolValue("showownname")),
-    mTargetDead(config.getBoolValue("targetDeadPlayers"))
+    mTargetDead(config.getBoolValue("targetDeadPlayers")),
+    mSecureTrades(config.getBoolValue("securetrades"))
 {
     setName(_("Players"));
 
@@ -311,6 +313,10 @@ Setup_Players::Setup_Players():
     mTargetDeadCheckBox->setActionEventId(ACTION_TARGET_DEAD);
     mTargetDeadCheckBox->addActionListener(this);
 
+    mSecureTradesCheckBox = new CheckBox(_("Secure trades"), mSecureTrades);
+    mSecureTradesCheckBox->setActionEventId(ACTION_SECURE_TRADES);
+    mSecureTradesCheckBox->addActionListener(this);
+
     reset();
 
     // Do the layout
@@ -326,8 +332,9 @@ Setup_Players::Setup_Players():
     place(1, 5, mOldButton, 1);
     place(3, 5, ignore_action_label);
     place(3, 6, mIgnoreActionChoicesBox, 2).setPadding(2);
-    place(3, 7, mDefaultTrading);
-    place(3, 8, mDefaultWhisper);
+    place(3, 7, mDefaultTrading, 2);
+    place(3, 8, mDefaultWhisper, 2);
+    place(3, 9, mSecureTradesCheckBox, 2);
     place(0, 9, mWhisperTabCheckBox, 4).setPadding(4);
     place(0, 10, mTargetDeadCheckBox, 4).setPadding(4);
 
@@ -381,6 +388,7 @@ void Setup_Players::apply()
     config.setValue("showownname", mShowOwnName);
     config.setValue("targetDeadPlayers", mTargetDead);
     config.setValue("showgender", mShowGender);
+    config.setValue("securetrades", mSecureTrades);
 
     if (actorSpriteManager)
         actorSpriteManager->updatePlayerNames();
@@ -401,6 +409,8 @@ void Setup_Players::cancel()
     mShowOwnNameCheckBox->setSelected(mShowOwnName);
     mTargetDead = config.getBoolValue("targetDeadPlayers");
     mTargetDeadCheckBox->setSelected(mTargetDead);
+    mSecureTrades = config.getBoolValue("securetrades");
+    mSecureTradesCheckBox->setSelected(mSecureTrades);
 }
 
 void Setup_Players::action(const gcn::ActionEvent &event)
@@ -463,6 +473,10 @@ void Setup_Players::action(const gcn::ActionEvent &event)
     else if (event.getId() == ACTION_TARGET_DEAD)
     {
         mTargetDead = mTargetDeadCheckBox->isSelected();
+    }
+    else if (event.getId() == ACTION_SECURE_TRADES)
+    {
+        mSecureTrades = mSecureTradesCheckBox->isSelected();
     }
 }
 

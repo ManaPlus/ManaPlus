@@ -22,6 +22,7 @@
 
 #include "gui/tradewindow.h"
 
+#include "configuration.h"
 #include "inventory.h"
 #include "item.h"
 #include "localplayer.h"
@@ -144,7 +145,16 @@ void TradeWindow::setMoney(int amount)
 {
     if (amount < 0 || amount < mGotMaxMoney)
     {
-        mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::WARNING));
+        if (config.getBoolValue("securetrades"))
+        {
+            close();
+            return;
+        }
+        else
+        {
+            mMoneyLabel->setForegroundColor(Theme::getThemeColor(
+                Theme::WARNING));
+        }
     }
     else
     {
@@ -217,6 +227,7 @@ void TradeWindow::reset()
     mAddButton->setEnabled(true);
     mMoneyChangeButton->setEnabled(true);
     mGotMoney = 0;
+    mGotMaxMoney = 0;
     setStatus(PREPARING);
 }
 
@@ -386,6 +397,7 @@ void TradeWindow::clear()
     mAutoMoney = 0;
     mAutoAddAmount = 0;
     mGotMoney = 0;
+    mGotMaxMoney = 0;
     mMoneyLabel->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 

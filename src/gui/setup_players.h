@@ -91,6 +91,9 @@ private:
 
     bool mTargetDead;
     gcn::CheckBox *mTargetDeadCheckBox;
+
+    bool mSecureTrades;
+    gcn::CheckBox *mSecureTradesCheckBox;
 };
 
 #endif

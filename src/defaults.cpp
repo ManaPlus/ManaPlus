@@ -197,6 +197,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showExtMinimaps", false);
     AddDEF(configData, "hideChatInput", true);
     AddDEF(configData, "enableAttackFilter", true);
+    AddDEF(configData, "securetrades", true);
     return configData;
 }
 
