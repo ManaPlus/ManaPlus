@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-05-09 23:29+0300\n"
+"POT-Creation-Date: 2011-05-22 04:22+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -19,122 +19,122 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-03-05 19:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/actorspritemanager.cpp:1022
+#: src/actorspritemanager.cpp:1028
 #, fuzzy
 msgid "Visible on map"
 msgstr "Látható nevek"
 
-#: src/being.cpp:495
+#: src/being.cpp:504
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:495
+#: src/being.cpp:504
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:752 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:95
+#: src/client.cpp:760 src/gui/setup.cpp:48 src/gui/windowmenu.cpp:95
 msgid "Setup"
 msgstr "Beállítások"
 
-#: src/client.cpp:826
+#: src/client.cpp:834
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Csatlakozás a térkép szerverhez...."
 
-#: src/client.cpp:857
+#: src/client.cpp:865
 #, fuzzy
 msgid "Logging in"
 msgstr "Belépés"
 
-#: src/client.cpp:890
+#: src/client.cpp:898
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:982
+#: src/client.cpp:990
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Kapcsolódási kérelem a %s nevű csatornába."
 
-#: src/client.cpp:1013
+#: src/client.cpp:1021
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Csatlakozás a térkép szerverhez...."
 
-#: src/client.cpp:1023
+#: src/client.cpp:1031
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Szerver"
 
-#: src/client.cpp:1058 src/client.cpp:1065 src/client.cpp:1202
+#: src/client.cpp:1066 src/client.cpp:1073 src/client.cpp:1210
 #: src/gui/changeemaildialog.cpp:155 src/gui/changepassworddialog.cpp:145
 #: src/gui/charcreatedialog.cpp:216 src/gui/charselectdialog.cpp:252
-#: src/gui/register.cpp:226 src/gui/serverdialog.cpp:373
+#: src/gui/register.cpp:226 src/gui/serverdialog.cpp:389
 #: src/gui/unregisterdialog.cpp:135 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:188
 #: src/net/tmwa/charserverhandler.cpp:204
 msgid "Error"
 msgstr "Hiba"
 
-#: src/client.cpp:1074
+#: src/client.cpp:1082
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1101
+#: src/client.cpp:1109
 #, fuzzy
 msgid "Password Change"
 msgstr "Jelszó:"
 
-#: src/client.cpp:1102
+#: src/client.cpp:1110
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1121
+#: src/client.cpp:1129
 #, fuzzy
 msgid "Email Change"
 msgstr "Változtatás"
 
-#: src/client.cpp:1122
+#: src/client.cpp:1130
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "A tag előléptetése sikeres."
 
-#: src/client.cpp:1142
+#: src/client.cpp:1150
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Regisztráció megszüntetése"
 
-#: src/client.cpp:1143
+#: src/client.cpp:1151
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1332 src/client.cpp:1362 src/client.cpp:1406
+#: src/client.cpp:1340 src/client.cpp:1370 src/client.cpp:1414
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1535
+#: src/client.cpp:1543
 #, fuzzy, c-format
 msgid "Invalid update host: %s"
 msgstr "Helytelen frissítési kiszolgáló: "
 
-#: src/client.cpp:1569 src/client.cpp:1575
+#: src/client.cpp:1577 src/client.cpp:1583
 msgid "Error creating updates directory!"
 msgstr "Hiba a frissítési könyvtár létrehozása közben!"
 
-#: src/client.cpp:1596
+#: src/client.cpp:1604
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/commandhandler.cpp:289
+#: src/commandhandler.cpp:299
 msgid "Unknown command."
 msgstr "Ismeretlen parancs."
 
-#: src/commandhandler.cpp:389
+#: src/commandhandler.cpp:399
 msgid "Cannot send empty whispers!"
 msgstr "Nem küldhetsz üres üzenetet!"
 
-#: src/commandhandler.cpp:397
+#: src/commandhandler.cpp:407
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -142,158 +142,166 @@ msgid ""
 msgstr ""
 "Nem tudsz fület létrehozni \"%s\" számára! Létre van hozva, vagy te vagy az."
 
-#: src/commandhandler.cpp:417
+#: src/commandhandler.cpp:427
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Kapcsolódási kérelem a %s nevű csatornába."
 
-#: src/commandhandler.cpp:433 src/net/tmwa/gui/partytab.cpp:123
+#: src/commandhandler.cpp:443 src/net/tmwa/gui/partytab.cpp:123
 msgid "Party name is missing."
 msgstr "A csapatnév hiányzik."
 
-#: src/commandhandler.cpp:444
+#: src/commandhandler.cpp:454
 #, fuzzy
 msgid "Guild name is missing."
 msgstr "A csapatnév hiányzik."
 
-#: src/commandhandler.cpp:457 src/commandhandler.cpp:564
-#: src/commandhandler.cpp:605 src/commandhandler.cpp:635
+#: src/commandhandler.cpp:467 src/commandhandler.cpp:574
+#: src/commandhandler.cpp:615 src/commandhandler.cpp:645
 msgid "Please specify a name."
 msgstr ""
 
-#: src/commandhandler.cpp:498
+#: src/commandhandler.cpp:508
 msgid "Return toggles chat."
 msgstr "Az enter megnyitja a bevitelt."
 
-#: src/commandhandler.cpp:498
+#: src/commandhandler.cpp:508
 msgid "Message closes chat."
 msgstr "Az üzenet bezárja a bevitelt."
 
-#: src/commandhandler.cpp:509
+#: src/commandhandler.cpp:519
 msgid "Return now toggles chat."
 msgstr "Az enter mostantól megnyitja a bevitelt."
 
-#: src/commandhandler.cpp:515
+#: src/commandhandler.cpp:525
 msgid "Message now closes chat."
 msgstr "Az üzenet mostantól bezárja a bevitelt."
 
-#: src/commandhandler.cpp:543
+#: src/commandhandler.cpp:553
 #, fuzzy
 msgid "friend"
 msgstr "Barát"
 
-#: src/commandhandler.cpp:548
+#: src/commandhandler.cpp:558
 #, fuzzy
 msgid "disregarded"
 msgstr "Semmibevett"
 
-#: src/commandhandler.cpp:553
+#: src/commandhandler.cpp:563
 #, fuzzy
 msgid "neutral"
 msgstr "Semleges"
 
-#: src/commandhandler.cpp:572
+#: src/commandhandler.cpp:582
 #, fuzzy, c-format
 msgid "Player already %s!"
 msgstr "A privát üzenet nem lett elküldve, mert le lettél tiltva."
 
-#: src/commandhandler.cpp:586
+#: src/commandhandler.cpp:596
 #, fuzzy, c-format
 msgid "Player successfully %s!"
 msgstr "Csapat létrehozása sikeres."
 
-#: src/commandhandler.cpp:594
+#: src/commandhandler.cpp:604
 #, fuzzy, c-format
 msgid "Player could not be %s!"
 msgstr "A privát üzenet nem lett elküldve, mert le lettél tiltva."
 
-#: src/commandhandler.cpp:616
+#: src/commandhandler.cpp:626
 msgid "Player wasn't ignored!"
 msgstr ""
 
-#: src/commandhandler.cpp:623
+#: src/commandhandler.cpp:633
 msgid "Player no longer ignored!"
 msgstr ""
 
-#: src/commandhandler.cpp:625
+#: src/commandhandler.cpp:635
 #, fuzzy
 msgid "Player could not be unignored!"
 msgstr "A privát üzenet nem lett elküldve, mert le lettél tiltva."
 
-#: src/commandhandler.cpp:642
+#: src/commandhandler.cpp:652
 #, fuzzy
 msgid "Player already erased!"
 msgstr "A privát üzenet nem lett elküldve, mert le lettél tiltva."
 
-#: src/commandhandler.cpp:653
+#: src/commandhandler.cpp:663
 #, fuzzy
 msgid "Player successfully erased!"
 msgstr "Csapat létrehozása sikeres."
 
-#: src/commandhandler.cpp:655
+#: src/commandhandler.cpp:665
 #, fuzzy
 msgid "Player could not be erased!"
 msgstr "A privát üzenet nem lett elküldve, mert le lettél tiltva."
 
-#: src/commandhandler.cpp:948 src/commandhandler.cpp:994
+#: src/commandhandler.cpp:958 src/commandhandler.cpp:1004
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:958
+#: src/commandhandler.cpp:968
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:967
+#: src/commandhandler.cpp:977
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:975
+#: src/commandhandler.cpp:985
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:983
+#: src/commandhandler.cpp:993
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:991
+#: src/commandhandler.cpp:1001
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/commandhandler.cpp:1070
+#: src/commandhandler.cpp:1080
 #, fuzzy
 msgid "font cache size"
 msgstr "Betűméret"
 
-#: src/commandhandler.cpp:1082
+#: src/commandhandler.cpp:1092
 #, fuzzy
 msgid "Cache size:"
 msgstr "Betűméret"
 
-#: src/commandhandler.cpp:1086
+#: src/commandhandler.cpp:1096
 #, fuzzy
 msgid "Created:"
 msgstr "Létrehozás"
 
-#: src/commandhandler.cpp:1088
+#: src/commandhandler.cpp:1098
 #, fuzzy
 msgid "Deleted:"
 msgstr "Törlés"
+
+#: src/commandhandler.cpp:1145 src/commandhandler.cpp:1152
+msgid "Resource images:"
+msgstr ""
+
+#: src/commandhandler.cpp:1147 src/commandhandler.cpp:1154
+msgid "Resource orphaned images:"
+msgstr ""
 
 #: src/commandhandler.h:40
 #, c-format
@@ -302,46 +310,46 @@ msgstr ""
 "Lehetőségek a /%s parancshoz: \"yes\", \"no\", \"true\", \"false\", \"1\", "
 "\"0\"."
 
-#: src/game.cpp:228 src/gui/widgets/chattab.cpp:398
+#: src/game.cpp:232 src/gui/widgets/chattab.cpp:398
 msgid "General"
 msgstr "Általános"
 
-#: src/game.cpp:232 src/gui/debugwindow.cpp:52 src/gui/widgets/chattab.cpp:400
+#: src/game.cpp:236 src/gui/debugwindow.cpp:52 src/gui/widgets/chattab.cpp:400
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:444
+#: src/game.cpp:449
 #, fuzzy
 msgid "Screenshot saved as "
 msgstr "Képernyőt mentettük a ~/ helyre"
 
-#: src/game.cpp:452
+#: src/game.cpp:457
 msgid "Saving screenshot failed!"
 msgstr "Hiba a képernyő mentése során!"
 
-#: src/game.cpp:491
+#: src/game.cpp:496
 #, fuzzy
 msgid "The connection to the server was lost."
 msgstr "A kapcsolat megszakadt a szerverrel, a program most kilép."
 
-#: src/game.cpp:505
+#: src/game.cpp:510
 msgid "Network Error"
 msgstr "Hálózati hiba"
 
-#: src/game.cpp:1023
+#: src/game.cpp:1028
 msgid "Ignoring incoming trade requests"
 msgstr "Kereskedési kérelmek elutasítása"
 
-#: src/game.cpp:1030
+#: src/game.cpp:1035
 msgid "Accepting incoming trade requests"
 msgstr "Kereskedési kérelmek elfogadása"
 
-#: src/game.cpp:1405
+#: src/game.cpp:1410
 #, fuzzy
 msgid "Could Not Load Map"
 msgstr "Nem lehet betölteni a térképet"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1411
 #, c-format
 msgid "Error while loading %s"
 msgstr "Hiba %s betöltése közben"
@@ -370,19 +378,19 @@ msgstr "Chat Ablak"
 msgid "Name"
 msgstr "Név"
 
-#: src/gui/botcheckerwindow.cpp:295 src/gui/popupmenu.cpp:124
-#: src/gui/popupmenu.cpp:261 src/gui/popupmenu.cpp:578
+#: src/gui/botcheckerwindow.cpp:295 src/gui/popupmenu.cpp:125
+#: src/gui/popupmenu.cpp:264 src/gui/popupmenu.cpp:581
 #: src/keyboardconfig.cpp:46 src/net/tmwa/generalhandler.cpp:255
 msgid "Attack"
 msgstr "Támadás"
 
-#: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:250
+#: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:253
 #: src/keyboardconfig.cpp:60
 msgid "Talk"
 msgstr "Csevegés"
 
-#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:235
-#: src/gui/popupmenu.cpp:255 src/gui/popupmenu.cpp:635
+#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:236
+#: src/gui/popupmenu.cpp:258 src/gui/popupmenu.cpp:638
 #, fuzzy
 msgid "Move"
 msgstr "Mozgás felfelé"
@@ -396,14 +404,14 @@ msgid "Reset"
 msgstr "Alaphelyzet"
 
 #: src/gui/buydialog.cpp:54 src/gui/buydialog.cpp:61 src/gui/buydialog.cpp:95
-#: src/gui/buyselldialog.cpp:63 src/gui/popupmenu.cpp:241
-#: src/gui/popupmenu.cpp:252 src/gui/popupmenu.cpp:420
-#: src/gui/popupmenu.cpp:641
+#: src/gui/buyselldialog.cpp:63 src/gui/popupmenu.cpp:244
+#: src/gui/popupmenu.cpp:255 src/gui/popupmenu.cpp:423
+#: src/gui/popupmenu.cpp:645
 msgid "Buy"
 msgstr "Vétel"
 
-#: src/gui/buydialog.cpp:86 src/gui/buydialog.cpp:300 src/gui/sell.cpp:85
-#: src/gui/sell.cpp:322
+#: src/gui/buydialog.cpp:86 src/gui/buydialog.cpp:300
+#: src/gui/selldialog.cpp:85 src/gui/selldialog.cpp:322
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Ár: %s / Teljes: %s"
@@ -412,7 +420,7 @@ msgstr "Ár: %s / Teljes: %s"
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:91 src/gui/itemamountwindow.cpp:205
 #: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:111
-#: src/gui/sell.cpp:88 src/gui/statuswindow.cpp:938
+#: src/gui/selldialog.cpp:88 src/gui/statuswindow.cpp:938
 msgid "+"
 msgstr ""
 
@@ -420,19 +428,20 @@ msgstr ""
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:94 src/gui/itemamountwindow.cpp:204
 #: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:112
-#: src/gui/sell.cpp:89 src/gui/statuswindow.cpp:950
+#: src/gui/selldialog.cpp:89 src/gui/statuswindow.cpp:950
 msgid "-"
 msgstr ""
 
 #: src/gui/buydialog.cpp:96 src/gui/quitdialog.cpp:47
-#: src/gui/quitdialog.cpp:52 src/gui/quitdialog.cpp:53 src/gui/sell.cpp:91
-#: src/gui/serverdialog.cpp:264 src/keyboardconfig.cpp:277
+#: src/gui/quitdialog.cpp:52 src/gui/quitdialog.cpp:53
+#: src/gui/selldialog.cpp:91 src/gui/serverdialog.cpp:282
+#: src/keyboardconfig.cpp:277
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/gui/buydialog.cpp:97 src/gui/sell.cpp:92 src/gui/statuswindow.cpp:488
-#: src/gui/statuswindow.cpp:537 src/gui/statuswindow.cpp:937
-#: src/gui/statuswindow.cpp:968
+#: src/gui/buydialog.cpp:97 src/gui/selldialog.cpp:92
+#: src/gui/statuswindow.cpp:488 src/gui/statuswindow.cpp:537
+#: src/gui/statuswindow.cpp:937 src/gui/statuswindow.cpp:968
 msgid "Max"
 msgstr "Max."
 
@@ -441,28 +450,29 @@ msgstr "Max."
 msgid "Shop"
 msgstr "Üzlet"
 
-#: src/gui/buyselldialog.cpp:63 src/gui/popupmenu.cpp:242
-#: src/gui/popupmenu.cpp:253 src/gui/popupmenu.cpp:421
-#: src/gui/popupmenu.cpp:642 src/gui/sell.cpp:51 src/gui/sell.cpp:58
-#: src/gui/sell.cpp:90
+#: src/gui/buyselldialog.cpp:63 src/gui/popupmenu.cpp:245
+#: src/gui/popupmenu.cpp:256 src/gui/popupmenu.cpp:424
+#: src/gui/popupmenu.cpp:646 src/gui/selldialog.cpp:51
+#: src/gui/selldialog.cpp:58 src/gui/selldialog.cpp:90
 msgid "Sell"
 msgstr "Eladás"
 
 #: src/gui/buyselldialog.cpp:63 src/gui/changeemaildialog.cpp:57
 #: src/gui/changepassworddialog.cpp:59 src/gui/charcreatedialog.cpp:91
 #: src/gui/connectiondialog.cpp:45 src/gui/itemamountwindow.cpp:207
-#: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:305
-#: src/gui/popupmenu.cpp:325 src/gui/popupmenu.cpp:427
-#: src/gui/popupmenu.cpp:454 src/gui/popupmenu.cpp:473
-#: src/gui/popupmenu.cpp:487 src/gui/popupmenu.cpp:506
-#: src/gui/popupmenu.cpp:686 src/gui/popupmenu.cpp:710
-#: src/gui/popupmenu.cpp:1532 src/gui/popupmenu.cpp:1559
-#: src/gui/popupmenu.cpp:1604 src/gui/popupmenu.cpp:1642
-#: src/gui/popupmenu.cpp:1677 src/gui/popupmenu.cpp:1714
-#: src/gui/popupmenu.cpp:1780 src/gui/quitdialog.cpp:58
-#: src/gui/register.cpp:80 src/gui/setup.cpp:65 src/gui/socialwindow.cpp:957
-#: src/gui/textcommandeditor.cpp:235 src/gui/textdialog.cpp:49
-#: src/gui/unregisterdialog.cpp:57 src/gui/updatewindow.cpp:155
+#: src/gui/npcpostdialog.cpp:56 src/gui/popupmenu.cpp:308
+#: src/gui/popupmenu.cpp:328 src/gui/popupmenu.cpp:430
+#: src/gui/popupmenu.cpp:457 src/gui/popupmenu.cpp:476
+#: src/gui/popupmenu.cpp:490 src/gui/popupmenu.cpp:509
+#: src/gui/popupmenu.cpp:690 src/gui/popupmenu.cpp:714
+#: src/gui/popupmenu.cpp:1564 src/gui/popupmenu.cpp:1591
+#: src/gui/popupmenu.cpp:1636 src/gui/popupmenu.cpp:1674
+#: src/gui/popupmenu.cpp:1709 src/gui/popupmenu.cpp:1746
+#: src/gui/popupmenu.cpp:1812 src/gui/popupmenu.cpp:1831
+#: src/gui/quitdialog.cpp:58 src/gui/register.cpp:80 src/gui/setup.cpp:65
+#: src/gui/socialwindow.cpp:957 src/gui/textcommandeditor.cpp:235
+#: src/gui/textdialog.cpp:49 src/gui/unregisterdialog.cpp:57
+#: src/gui/updatewindow.cpp:155
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -500,7 +510,7 @@ msgstr "Az új email cím már foglalt."
 msgid "Change Password"
 msgstr "Jelszó módosítása"
 
-#: src/gui/changepassworddialog.cpp:62 src/gui/login.cpp:92
+#: src/gui/changepassworddialog.cpp:62 src/gui/logindialog.cpp:92
 #: src/gui/register.cpp:74 src/gui/unregisterdialog.cpp:54
 msgid "Password:"
 msgstr "Jelszó:"
@@ -532,7 +542,7 @@ msgstr ""
 msgid "Create Character"
 msgstr "Karakter létrehozása"
 
-#: src/gui/charcreatedialog.cpp:71 src/gui/login.cpp:91
+#: src/gui/charcreatedialog.cpp:71 src/gui/logindialog.cpp:91
 #: src/gui/register.cpp:73
 msgid "Name:"
 msgstr "Név:"
@@ -637,7 +647,7 @@ msgstr "Karakter törlése sikertelen."
 msgid "Enter password:"
 msgstr "Hibás jelszó"
 
-#: src/gui/charselectdialog.cpp:407 src/gui/serverdialog.cpp:268
+#: src/gui/charselectdialog.cpp:407 src/gui/serverdialog.cpp:286
 #: src/gui/setup_players.cpp:243 src/gui/shopwindow.cpp:118
 #: src/gui/shopwindow.cpp:121 src/gui/textcommandeditor.cpp:238
 msgid "Delete"
@@ -724,7 +734,7 @@ msgid "rainbow 3"
 msgstr "Szivárvány"
 
 #: src/gui/chatwindow.cpp:139 src/gui/itemamountwindow.cpp:91
-#: src/gui/login.cpp:76 src/gui/setup_players.cpp:216
+#: src/gui/logindialog.cpp:76 src/gui/setup_players.cpp:216
 #: src/gui/setup_theme.cpp:68 src/gui/setup_video.cpp:164
 #: src/gui/setup_video.cpp:189 src/gui/textcommandeditor.cpp:99
 #: src/gui/textcommandeditor.cpp:138 src/gui/textcommandeditor.cpp:157
@@ -753,10 +763,10 @@ msgstr "Igen"
 msgid "No"
 msgstr "Nem"
 
-#: src/gui/confirmdialog.cpp:50 src/gui/popupmenu.cpp:140
-#: src/gui/popupmenu.cpp:149 src/gui/popupmenu.cpp:351
-#: src/gui/popupmenu.cpp:357 src/gui/popupmenu.cpp:593
-#: src/gui/popupmenu.cpp:601
+#: src/gui/confirmdialog.cpp:50 src/gui/popupmenu.cpp:141
+#: src/gui/popupmenu.cpp:150 src/gui/popupmenu.cpp:354
+#: src/gui/popupmenu.cpp:360 src/gui/popupmenu.cpp:596
+#: src/gui/popupmenu.cpp:604
 #, fuzzy
 msgid "Ignore"
 msgstr "Tiltott"
@@ -921,18 +931,18 @@ msgstr ""
 
 #: src/gui/editdialog.cpp:44 src/gui/itemamountwindow.cpp:206
 #: src/gui/okdialog.cpp:43 src/gui/quitdialog.cpp:57 src/gui/textdialog.cpp:48
-#: src/gui/trade.cpp:82 src/gui/trade.cpp:84
+#: src/gui/tradewindow.cpp:82 src/gui/tradewindow.cpp:84
 msgid "OK"
 msgstr "Ok"
 
-#: src/gui/equipmentwindow.cpp:73 src/gui/windowmenu.cpp:71
+#: src/gui/equipmentwindow.cpp:76 src/gui/windowmenu.cpp:71
 msgid "Equipment"
 msgstr "Felszerelés"
 
-#: src/gui/equipmentwindow.cpp:92 src/gui/inventorywindow.cpp:127
+#: src/gui/equipmentwindow.cpp:101 src/gui/inventorywindow.cpp:127
 #: src/gui/inventorywindow.cpp:466 src/gui/inventorywindow.cpp:475
-#: src/gui/popupmenu.cpp:1496 src/gui/popupmenu.cpp:1579
-#: src/gui/popupmenu.cpp:1619
+#: src/gui/popupmenu.cpp:1528 src/gui/popupmenu.cpp:1611
+#: src/gui/popupmenu.cpp:1651
 msgid "Unequip"
 msgstr "Nem használ"
 
@@ -941,7 +951,7 @@ msgid "Help"
 msgstr "Súgó"
 
 #: src/gui/helpwindow.cpp:55 src/gui/inventorywindow.cpp:172
-#: src/gui/npcdialog.cpp:51 src/gui/popupmenu.cpp:521
+#: src/gui/npcdialog.cpp:51 src/gui/popupmenu.cpp:524
 #: src/gui/shopwindow.cpp:109
 msgid "Close"
 msgstr "Bezár"
@@ -979,32 +989,32 @@ msgid "id"
 msgstr ""
 
 #: src/gui/inventorywindow.cpp:125 src/gui/inventorywindow.cpp:468
-#: src/gui/inventorywindow.cpp:477 src/gui/popupmenu.cpp:1498
-#: src/gui/popupmenu.cpp:1581 src/gui/popupmenu.cpp:1621
+#: src/gui/inventorywindow.cpp:477 src/gui/popupmenu.cpp:1530
+#: src/gui/popupmenu.cpp:1613 src/gui/popupmenu.cpp:1653
 msgid "Equip"
 msgstr "Használ"
 
 #: src/gui/inventorywindow.cpp:126 src/gui/inventorywindow.cpp:469
-#: src/gui/inventorywindow.cpp:473 src/gui/popupmenu.cpp:1501
-#: src/gui/popupmenu.cpp:1554 src/gui/popupmenu.cpp:1585
-#: src/gui/popupmenu.cpp:1624
+#: src/gui/inventorywindow.cpp:473 src/gui/popupmenu.cpp:1533
+#: src/gui/popupmenu.cpp:1586 src/gui/popupmenu.cpp:1617
+#: src/gui/popupmenu.cpp:1656
 msgid "Use"
 msgstr "Bevet"
 
 #: src/gui/inventorywindow.cpp:140 src/gui/inventorywindow.cpp:574
-#: src/gui/popupmenu.cpp:1504 src/gui/popupmenu.cpp:1589
-#: src/gui/popupmenu.cpp:1627
+#: src/gui/popupmenu.cpp:1536 src/gui/popupmenu.cpp:1621
+#: src/gui/popupmenu.cpp:1659
 #, fuzzy
 msgid "Drop..."
 msgstr "Eldob"
 
-#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1509
-#: src/gui/popupmenu.cpp:1594 src/gui/popupmenu.cpp:1632
+#: src/gui/inventorywindow.cpp:141 src/gui/popupmenu.cpp:1541
+#: src/gui/popupmenu.cpp:1626 src/gui/popupmenu.cpp:1664
 msgid "Split"
 msgstr "Felosztás"
 
 #: src/gui/inventorywindow.cpp:142 src/gui/outfitwindow.cpp:57
-#: src/gui/popupmenu.cpp:482
+#: src/gui/popupmenu.cpp:485
 msgid "Outfits"
 msgstr ""
 
@@ -1013,17 +1023,17 @@ msgid "Weight:"
 msgstr "Súly:"
 
 #: src/gui/inventorywindow.cpp:170 src/gui/inventorywindow.cpp:565
-#: src/gui/popupmenu.cpp:1477 src/gui/popupmenu.cpp:1597
-#: src/gui/popupmenu.cpp:1635 src/gui/setup.cpp:66
+#: src/gui/popupmenu.cpp:1509 src/gui/popupmenu.cpp:1629
+#: src/gui/popupmenu.cpp:1667 src/gui/setup.cpp:66
 msgid "Store"
 msgstr "Raktároz"
 
-#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1516
+#: src/gui/inventorywindow.cpp:171 src/gui/popupmenu.cpp:1548
 msgid "Retrieve"
 msgstr "Magához vesz"
 
-#: src/gui/inventorywindow.cpp:576 src/gui/popupmenu.cpp:1506
-#: src/gui/popupmenu.cpp:1591 src/gui/popupmenu.cpp:1629
+#: src/gui/inventorywindow.cpp:576 src/gui/popupmenu.cpp:1538
+#: src/gui/popupmenu.cpp:1623 src/gui/popupmenu.cpp:1661
 #: src/gui/windowmenu.cpp:94
 msgid "Drop"
 msgstr "Eldob"
@@ -1194,46 +1204,46 @@ msgstr ""
 msgid "Time before jacko spawn: jacko spawning"
 msgstr ""
 
-#: src/gui/login.cpp:57
+#: src/gui/logindialog.cpp:57
 msgid "Normal"
 msgstr ""
 
-#: src/gui/login.cpp:58
+#: src/gui/logindialog.cpp:58
 #, fuzzy
 msgid "Auto Close"
 msgstr "Bezár"
 
-#: src/gui/login.cpp:59
+#: src/gui/logindialog.cpp:59
 msgid "Skip"
 msgstr ""
 
-#: src/gui/login.cpp:84 src/gui/login.cpp:120
+#: src/gui/logindialog.cpp:84 src/gui/logindialog.cpp:120
 msgid "Login"
 msgstr "Belépés"
 
-#: src/gui/login.cpp:88 src/gui/serverdialog.cpp:231
+#: src/gui/logindialog.cpp:88 src/gui/serverdialog.cpp:241
 #: src/gui/widgets/chattab.cpp:171
 msgid "Server:"
 msgstr "Szerver:"
 
-#: src/gui/login.cpp:93
+#: src/gui/logindialog.cpp:93
 msgid "Custom update host"
 msgstr ""
 
-#: src/gui/login.cpp:107
+#: src/gui/logindialog.cpp:107
 #, fuzzy
 msgid "Remember username"
 msgstr "Felhasználónév megjegyzése"
 
-#: src/gui/login.cpp:108
+#: src/gui/logindialog.cpp:108
 msgid "Update:"
 msgstr ""
 
-#: src/gui/login.cpp:118 src/gui/register.cpp:64 src/gui/register.cpp:79
+#: src/gui/logindialog.cpp:118 src/gui/register.cpp:64 src/gui/register.cpp:79
 msgid "Register"
 msgstr "Regisztráció"
 
-#: src/gui/login.cpp:119
+#: src/gui/logindialog.cpp:119
 #, fuzzy
 msgid "Change Server"
 msgstr "Szerver"
@@ -1298,7 +1308,7 @@ msgstr "Küldés"
 msgid "NPC"
 msgstr "Gépjátékos"
 
-#: src/gui/npcdialog.cpp:105 src/gui/popupmenu.cpp:523
+#: src/gui/npcdialog.cpp:105 src/gui/popupmenu.cpp:526
 #, fuzzy
 msgid "Clear"
 msgstr "Szálfegyver"
@@ -1340,313 +1350,320 @@ msgstr "Nem használ"
 msgid "Away outfit"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:123 src/gui/popupmenu.cpp:577 src/gui/trade.cpp:83
-#: src/gui/trade.cpp:84 src/gui/widgets/tradetab.cpp:42
+#: src/gui/popupmenu.cpp:124 src/gui/popupmenu.cpp:580
+#: src/gui/tradewindow.cpp:83 src/gui/tradewindow.cpp:84
+#: src/gui/widgets/tradetab.cpp:42
 msgid "Trade"
 msgstr "Üzlet"
 
-#: src/gui/popupmenu.cpp:125 src/gui/popupmenu.cpp:342
+#: src/gui/popupmenu.cpp:126 src/gui/popupmenu.cpp:345
 msgid "Whisper"
 msgstr "Privát üzenet"
 
-#: src/gui/popupmenu.cpp:129 src/gui/popupmenu.cpp:582
+#: src/gui/popupmenu.cpp:130 src/gui/popupmenu.cpp:585
 msgid "Heal"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:136 src/gui/popupmenu.cpp:348
-#: src/gui/popupmenu.cpp:589
+#: src/gui/popupmenu.cpp:137 src/gui/popupmenu.cpp:351
+#: src/gui/popupmenu.cpp:592
 #, fuzzy
 msgid "Be friend"
 msgstr "Barát"
 
-#: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:147
-#: src/gui/popupmenu.cpp:174 src/gui/popupmenu.cpp:350
-#: src/gui/popupmenu.cpp:356 src/gui/popupmenu.cpp:375
-#: src/gui/popupmenu.cpp:591 src/gui/popupmenu.cpp:599
-#: src/gui/popupmenu.cpp:623
+#: src/gui/popupmenu.cpp:139 src/gui/popupmenu.cpp:148
+#: src/gui/popupmenu.cpp:175 src/gui/popupmenu.cpp:353
+#: src/gui/popupmenu.cpp:359 src/gui/popupmenu.cpp:378
+#: src/gui/popupmenu.cpp:594 src/gui/popupmenu.cpp:602
+#: src/gui/popupmenu.cpp:626
 #, fuzzy
 msgid "Disregard"
 msgstr "Semmibevett"
 
-#: src/gui/popupmenu.cpp:142 src/gui/popupmenu.cpp:151
-#: src/gui/popupmenu.cpp:160 src/gui/popupmenu.cpp:167
-#: src/gui/popupmenu.cpp:352 src/gui/popupmenu.cpp:358
-#: src/gui/popupmenu.cpp:365 src/gui/popupmenu.cpp:370
-#: src/gui/popupmenu.cpp:594 src/gui/popupmenu.cpp:602
-#: src/gui/popupmenu.cpp:610 src/gui/popupmenu.cpp:616
+#: src/gui/popupmenu.cpp:143 src/gui/popupmenu.cpp:152
+#: src/gui/popupmenu.cpp:161 src/gui/popupmenu.cpp:168
+#: src/gui/popupmenu.cpp:355 src/gui/popupmenu.cpp:361
+#: src/gui/popupmenu.cpp:368 src/gui/popupmenu.cpp:373
+#: src/gui/popupmenu.cpp:597 src/gui/popupmenu.cpp:605
+#: src/gui/popupmenu.cpp:613 src/gui/popupmenu.cpp:619
 msgid "Erase"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:156 src/gui/popupmenu.cpp:165
-#: src/gui/popupmenu.cpp:172 src/gui/popupmenu.cpp:362
-#: src/gui/popupmenu.cpp:369 src/gui/popupmenu.cpp:374
-#: src/gui/popupmenu.cpp:607 src/gui/popupmenu.cpp:615
-#: src/gui/popupmenu.cpp:621
+#: src/gui/popupmenu.cpp:157 src/gui/popupmenu.cpp:166
+#: src/gui/popupmenu.cpp:173 src/gui/popupmenu.cpp:365
+#: src/gui/popupmenu.cpp:372 src/gui/popupmenu.cpp:377
+#: src/gui/popupmenu.cpp:610 src/gui/popupmenu.cpp:618
+#: src/gui/popupmenu.cpp:624
 #, fuzzy
 msgid "Unignore"
 msgstr "Tiltott"
 
-#: src/gui/popupmenu.cpp:158 src/gui/popupmenu.cpp:176
-#: src/gui/popupmenu.cpp:364 src/gui/popupmenu.cpp:377
-#: src/gui/popupmenu.cpp:609 src/gui/popupmenu.cpp:625
+#: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:177
+#: src/gui/popupmenu.cpp:367 src/gui/popupmenu.cpp:380
+#: src/gui/popupmenu.cpp:612 src/gui/popupmenu.cpp:628
 #: src/playerrelations.cpp:404
 #, fuzzy
 msgid "Completely ignore"
 msgstr "@@ignore|Teljesen letiltod %s-t@@"
 
-#: src/gui/popupmenu.cpp:184 src/gui/popupmenu.cpp:385
-#: src/gui/popupmenu.cpp:633
+#: src/gui/popupmenu.cpp:185 src/gui/popupmenu.cpp:388
+#: src/gui/popupmenu.cpp:636
 #, fuzzy
 msgid "Follow"
 msgstr "alacsony"
 
-#: src/gui/popupmenu.cpp:186 src/gui/popupmenu.cpp:386
-#: src/gui/popupmenu.cpp:634
+#: src/gui/popupmenu.cpp:187 src/gui/popupmenu.cpp:389
+#: src/gui/popupmenu.cpp:637
 #, fuzzy
 msgid "Imitation"
 msgstr "Email cím módosírása"
 
-#: src/gui/popupmenu.cpp:196 src/gui/popupmenu.cpp:654
+#: src/gui/popupmenu.cpp:197 src/gui/popupmenu.cpp:658
 #, fuzzy
 msgid "Invite to party"
 msgstr "/party > Felhasználó csapatba hívása"
 
-#: src/gui/popupmenu.cpp:201 src/gui/popupmenu.cpp:395
-#: src/gui/popupmenu.cpp:659
+#: src/gui/popupmenu.cpp:202 src/gui/popupmenu.cpp:398
+#: src/gui/popupmenu.cpp:663
 #, fuzzy
 msgid "Kick from party"
 msgstr "@@admin-kick|Játékos kirúgása@@"
 
-#: src/gui/popupmenu.cpp:216 src/gui/popupmenu.cpp:406
-#: src/gui/popupmenu.cpp:673
+#: src/gui/popupmenu.cpp:217 src/gui/popupmenu.cpp:409
+#: src/gui/popupmenu.cpp:677
 #, fuzzy
 msgid "Kick from guild"
 msgstr "@@admin-kick|Játékos kirúgása@@"
 
-#: src/gui/popupmenu.cpp:218 src/gui/popupmenu.cpp:408
-#: src/gui/popupmenu.cpp:675
+#: src/gui/popupmenu.cpp:219 src/gui/popupmenu.cpp:411
+#: src/gui/popupmenu.cpp:679
 #, fuzzy
 msgid "Change pos in guild"
 msgstr "Változtatás"
 
-#: src/gui/popupmenu.cpp:224 src/gui/popupmenu.cpp:413
-#: src/gui/popupmenu.cpp:681
+#: src/gui/popupmenu.cpp:225 src/gui/popupmenu.cpp:416
+#: src/gui/popupmenu.cpp:685
 #, fuzzy
 msgid "Invite to guild"
 msgstr "/party > Felhasználó csapatba hívása"
 
-#: src/gui/popupmenu.cpp:232
+#: src/gui/popupmenu.cpp:233
 #, fuzzy
 msgid "Kick player"
 msgstr "Kirúgás sikertelen!"
 
-#: src/gui/popupmenu.cpp:234
+#: src/gui/popupmenu.cpp:235
 msgid "Nuke"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:236 src/gui/popupmenu.cpp:636
+#: src/gui/popupmenu.cpp:238 src/gui/popupmenu.cpp:639
+#, fuzzy
+msgid "Show Items"
+msgstr "A név mutatása"
+
+#: src/gui/popupmenu.cpp:239 src/gui/popupmenu.cpp:640
+#: src/gui/popupmenu.cpp:1828
 msgid "Undress"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:267
+#: src/gui/popupmenu.cpp:270
 msgid "Kick"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:278
+#: src/gui/popupmenu.cpp:281
 msgid "Remove from attack list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:284
+#: src/gui/popupmenu.cpp:287
 #, fuzzy
 msgid "Add to priority attack list"
 msgstr "@@attack|%s megtámadása@@"
 
-#: src/gui/popupmenu.cpp:286
+#: src/gui/popupmenu.cpp:289
 #, fuzzy
 msgid "Add to attack list"
 msgstr "@@attack|%s megtámadása@@"
 
-#: src/gui/popupmenu.cpp:289
+#: src/gui/popupmenu.cpp:292
 #, fuzzy
 msgid "Add to ignore list"
 msgstr "Raktároz"
 
-#: src/gui/popupmenu.cpp:302 src/gui/popupmenu.cpp:424
+#: src/gui/popupmenu.cpp:305 src/gui/popupmenu.cpp:427
 #, fuzzy
 msgid "Add name to chat"
 msgstr "@@chat|Hozzáadás a chat-hez@@"
 
-#: src/gui/popupmenu.cpp:450
+#: src/gui/popupmenu.cpp:453
 #, fuzzy
 msgid "Pick up"
 msgstr "Felvesz"
 
-#: src/gui/popupmenu.cpp:451 src/gui/popupmenu.cpp:1530
-#: src/gui/popupmenu.cpp:1598 src/gui/popupmenu.cpp:1636
+#: src/gui/popupmenu.cpp:454 src/gui/popupmenu.cpp:1562
+#: src/gui/popupmenu.cpp:1630 src/gui/popupmenu.cpp:1668
 #, fuzzy
 msgid "Add to chat"
 msgstr "@@chat|Hozzáadás a chat-hez@@"
 
-#: src/gui/popupmenu.cpp:468
+#: src/gui/popupmenu.cpp:471
 msgid "Map Item"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:469
+#: src/gui/popupmenu.cpp:472
 #, fuzzy
 msgid "Rename"
 msgstr "Felhasználónév megjegyzése"
 
-#: src/gui/popupmenu.cpp:470 src/gui/popupmenu.cpp:1750
-#: src/gui/popupmenu.cpp:1768 src/gui/popupmenu.cpp:1773
+#: src/gui/popupmenu.cpp:473 src/gui/popupmenu.cpp:1782
+#: src/gui/popupmenu.cpp:1800 src/gui/popupmenu.cpp:1805
 #, fuzzy
 msgid "Remove"
 msgstr "Felhasználónév megjegyzése"
 
-#: src/gui/popupmenu.cpp:484
+#: src/gui/popupmenu.cpp:487
 msgid "Load old outfits"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:500 src/gui/windowmenu.cpp:93
+#: src/gui/popupmenu.cpp:503 src/gui/windowmenu.cpp:93
 msgid "Spells"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:502
+#: src/gui/popupmenu.cpp:505
 msgid "Load old spells"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:503
+#: src/gui/popupmenu.cpp:506
 msgid "Edit spell"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:529
+#: src/gui/popupmenu.cpp:532
 #, fuzzy
 msgid "Disable highlight"
 msgstr "Kijelölt fül"
 
-#: src/gui/popupmenu.cpp:534
+#: src/gui/popupmenu.cpp:537
 #, fuzzy
 msgid "Enable highlight"
 msgstr "Kijelölt fül"
 
-#: src/gui/popupmenu.cpp:539
+#: src/gui/popupmenu.cpp:542
 msgid "Dont remove name"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:544
+#: src/gui/popupmenu.cpp:547
 #, fuzzy
 msgid "Remove name"
 msgstr "Felhasználónév megjegyzése"
 
-#: src/gui/popupmenu.cpp:549
+#: src/gui/popupmenu.cpp:552
 #, fuzzy
 msgid "Enable away"
 msgstr "Nem tudod megvenni."
 
-#: src/gui/popupmenu.cpp:554
+#: src/gui/popupmenu.cpp:557
 #, fuzzy
 msgid "Disable away"
 msgstr "Üzletelés Engedélyezése/Tiltása"
 
-#: src/gui/popupmenu.cpp:560 src/gui/socialwindow.cpp:1019
+#: src/gui/popupmenu.cpp:563 src/gui/socialwindow.cpp:1019
 #, fuzzy
 msgid "Leave"
 msgstr "Nagy"
 
-#: src/gui/popupmenu.cpp:694
+#: src/gui/popupmenu.cpp:698
 #, fuzzy
 msgid "Change guild position"
 msgstr "Változtatás"
 
-#: src/gui/popupmenu.cpp:1105
+#: src/gui/popupmenu.cpp:1115
 msgid "Rename map sign          "
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1106
+#: src/gui/popupmenu.cpp:1116
 msgid "Name:                    "
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1460
+#: src/gui/popupmenu.cpp:1492
 #, fuzzy
 msgid "Add to trade"
 msgstr "@@chat|Hozzáadás a chat-hez@@"
 
-#: src/gui/popupmenu.cpp:1466
+#: src/gui/popupmenu.cpp:1498
 #, fuzzy
 msgid "Add to trade 10"
 msgstr "@@chat|Hozzáadás a chat-hez@@"
 
-#: src/gui/popupmenu.cpp:1469
+#: src/gui/popupmenu.cpp:1501
 #, fuzzy
 msgid "Add to trade half"
 msgstr "Raktároz"
 
-#: src/gui/popupmenu.cpp:1471
+#: src/gui/popupmenu.cpp:1503
 #, fuzzy
 msgid "Add to trade all"
 msgstr "Raktároz"
 
-#: src/gui/popupmenu.cpp:1483
+#: src/gui/popupmenu.cpp:1515
 #, fuzzy
 msgid "Store 10"
 msgstr "Raktároz"
 
-#: src/gui/popupmenu.cpp:1486
+#: src/gui/popupmenu.cpp:1518
 #, fuzzy
 msgid "Store half"
 msgstr "Raktároz"
 
-#: src/gui/popupmenu.cpp:1488
+#: src/gui/popupmenu.cpp:1520
 #, fuzzy
 msgid "Store all"
 msgstr "Raktároz"
 
-#: src/gui/popupmenu.cpp:1522
+#: src/gui/popupmenu.cpp:1554
 #, fuzzy
 msgid "Retrieve 10"
 msgstr "Magához vesz"
 
-#: src/gui/popupmenu.cpp:1525
+#: src/gui/popupmenu.cpp:1557
 #, fuzzy
 msgid "Retrieve half"
 msgstr "Magához vesz"
 
-#: src/gui/popupmenu.cpp:1527
+#: src/gui/popupmenu.cpp:1559
 #, fuzzy
 msgid "Retrieve all"
 msgstr "Magához vesz"
 
-#: src/gui/popupmenu.cpp:1557 src/gui/popupmenu.cpp:1602
+#: src/gui/popupmenu.cpp:1589 src/gui/popupmenu.cpp:1634
 msgid "Load old item shortcuts"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1640
+#: src/gui/popupmenu.cpp:1672
 msgid "Load old drop shortcuts"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1666 src/gui/popupmenu.cpp:1699
+#: src/gui/popupmenu.cpp:1698 src/gui/popupmenu.cpp:1731
 msgid "Hide"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1672 src/gui/popupmenu.cpp:1705
+#: src/gui/popupmenu.cpp:1704 src/gui/popupmenu.cpp:1737
 msgid "Show"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1712
+#: src/gui/popupmenu.cpp:1744
 msgid "Reset yellow bar"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1730 src/gui/socialwindow.cpp:838
+#: src/gui/popupmenu.cpp:1762 src/gui/socialwindow.cpp:838
 #: src/gui/socialwindow.cpp:873 src/gui/socialwindow.cpp:908
 #, fuzzy
 msgid "(default)"
 msgstr "Alapértelmezett"
 
-#: src/gui/popupmenu.cpp:1742 src/gui/popupmenu.cpp:1760
+#: src/gui/popupmenu.cpp:1774 src/gui/popupmenu.cpp:1792
 #, fuzzy
 msgid "Move up"
 msgstr "Mozgás felfelé"
 
-#: src/gui/popupmenu.cpp:1747 src/gui/popupmenu.cpp:1765
+#: src/gui/popupmenu.cpp:1779 src/gui/popupmenu.cpp:1797
 #, fuzzy
 msgid "Move down"
 msgstr "Mozgás lefelé"
@@ -1695,65 +1712,65 @@ msgstr "A jelszónak legfeljebb %d karakter hosszúnak kell lennie."
 msgid "Passwords do not match."
 msgstr "A jelszavak nem egyeznek."
 
-#: src/gui/serverdialog.cpp:216
+#: src/gui/serverdialog.cpp:226
 #, fuzzy
 msgid "Choose Your Server"
 msgstr "Válassz szervert"
 
-#: src/gui/serverdialog.cpp:232
+#: src/gui/serverdialog.cpp:242
 msgid "Port:"
 msgstr "Port:"
 
-#: src/gui/serverdialog.cpp:235
+#: src/gui/serverdialog.cpp:245
 msgid "Use same ip for game sub servers"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:250
+#: src/gui/serverdialog.cpp:259
 #, fuzzy
 msgid "Server type:"
 msgstr "Szerver:"
 
-#: src/gui/serverdialog.cpp:265
+#: src/gui/serverdialog.cpp:283
 msgid "Load"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:266
+#: src/gui/serverdialog.cpp:284
 #, fuzzy
 msgid "Connect"
 msgstr "Csatlakozás…"
 
-#: src/gui/serverdialog.cpp:267
+#: src/gui/serverdialog.cpp:285
 #, fuzzy
 msgid "Custom Server"
 msgstr "Egyéni kurzor"
 
-#: src/gui/serverdialog.cpp:374
+#: src/gui/serverdialog.cpp:390
 msgid "Please type both the address and the port of a server."
 msgstr "Kérlek írd be a szerver címét és portját egyaránt."
 
-#: src/gui/serverdialog.cpp:521
+#: src/gui/serverdialog.cpp:548
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:526
+#: src/gui/serverdialog.cpp:553
 #, fuzzy
 msgid "Waiting for server..."
 msgstr "Várakozás a szerverre"
 
-#: src/gui/serverdialog.cpp:530
+#: src/gui/serverdialog.cpp:557
 msgid "Preparing download"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:534
+#: src/gui/serverdialog.cpp:561
 msgid "Error retreiving server list!"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:632
+#: src/gui/serverdialog.cpp:659
 msgid "requires a newer version"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:634
+#: src/gui/serverdialog.cpp:661
 #, c-format
 msgid "requires v%s"
 msgstr ""
@@ -2464,7 +2481,8 @@ msgstr ""
 msgid "Sell items"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:117 src/gui/shopwindow.cpp:120 src/gui/trade.cpp:86
+#: src/gui/shopwindow.cpp:117 src/gui/shopwindow.cpp:120
+#: src/gui/tradewindow.cpp:86
 msgid "Add"
 msgstr "Hozzáad"
 
@@ -3245,45 +3263,45 @@ msgstr "A név mutatása"
 msgid "Save"
 msgstr ""
 
-#: src/gui/trade.cpp:55
+#: src/gui/tradewindow.cpp:55
 msgid "Propose trade"
 msgstr "Üzletet javasol"
 
-#: src/gui/trade.cpp:56
+#: src/gui/tradewindow.cpp:56
 msgid "Confirmed. Waiting..."
 msgstr "Megerősítve. Vár..."
 
-#: src/gui/trade.cpp:57
+#: src/gui/tradewindow.cpp:57
 msgid "Agree trade"
 msgstr "Üzlet elfogadása"
 
-#: src/gui/trade.cpp:58
+#: src/gui/tradewindow.cpp:58
 msgid "Agreed. Waiting..."
 msgstr "Elfogadva. Vár..."
 
-#: src/gui/trade.cpp:61
+#: src/gui/tradewindow.cpp:61
 msgid "Trade: You"
 msgstr "Üzlet: Te"
 
-#: src/gui/trade.cpp:108 src/gui/trade.cpp:149
+#: src/gui/tradewindow.cpp:108 src/gui/tradewindow.cpp:149
 #, fuzzy, c-format
 msgid "You get %s"
 msgstr "Kapott tárgy: %s."
 
-#: src/gui/trade.cpp:109
+#: src/gui/tradewindow.cpp:109
 msgid "You give:"
 msgstr "Adott tárgyak:"
 
-#: src/gui/trade.cpp:113
+#: src/gui/tradewindow.cpp:113
 msgid "Change"
 msgstr "Változtatás"
 
-#: src/gui/trade.cpp:314
+#: src/gui/tradewindow.cpp:314
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Hiba a tárgy hozzáadásakor. Nem tudod rárakni az egyik tárgyat a másikra."
 
-#: src/gui/trade.cpp:359
+#: src/gui/tradewindow.cpp:359
 msgid "You don't have enough money."
 msgstr "Nincs elég pénzed."
 
@@ -4160,70 +4178,70 @@ msgstr "Állítsd át, vagy a játék érdekesen fog viselkedni."
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1364
+#: src/localplayer.cpp:1379
 #, fuzzy
 msgid "Tried to pick up nonexistent item."
 msgstr "Nem tudod felvenni a tárgyat."
 
-#: src/localplayer.cpp:1366
+#: src/localplayer.cpp:1381
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1368
+#: src/localplayer.cpp:1383
 msgid "Item is too far away"
 msgstr ""
 
-#: src/localplayer.cpp:1370
+#: src/localplayer.cpp:1385
 #, fuzzy
 msgid "Inventory is full."
 msgstr "A szerver tele van"
 
-#: src/localplayer.cpp:1372
+#: src/localplayer.cpp:1387
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1375
+#: src/localplayer.cpp:1390
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1378
+#: src/localplayer.cpp:1393
 #, fuzzy
 msgid "Unknown problem picking up item."
 msgstr "Nem tudod felvenni a tárgyat."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1402
+#: src/localplayer.cpp:1417
 #, fuzzy, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Zsákmányod%s [@@%d|%s@@]."
 msgstr[1] "Zsákmányod%s [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3131
+#: src/localplayer.cpp:3146
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3435
+#: src/localplayer.cpp:3450
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3437 src/localplayer.cpp:3452
+#: src/localplayer.cpp:3452 src/localplayer.cpp:3467
 #, fuzzy
 msgid "Follow canceled"
 msgstr "Az üzlet megszakadt."
 
-#: src/localplayer.cpp:3444
+#: src/localplayer.cpp:3459
 #, fuzzy
 msgid "Imitation: "
 msgstr "Email cím módosírása"
 
-#: src/localplayer.cpp:3446 src/localplayer.cpp:3454
+#: src/localplayer.cpp:3461 src/localplayer.cpp:3469
 #, fuzzy
 msgid "Imitation canceled"
 msgstr "Az üzlet megszakadt."
 
-#: src/localplayer.cpp:3806
+#: src/localplayer.cpp:3821
 #, fuzzy
 msgid "You see "
 msgstr "Kapott tárgy: %s."
@@ -4336,6 +4354,18 @@ msgstr ""
 #, fuzzy
 msgid "     --no-opengl      : Disable OpenGL for this session"
 msgstr "  -O --no-opengl : OpenGL kikapcsolása erre az időszakra"
+
+#: src/net/ea/buysellhandler.cpp:161
+msgid "Nothing to sell."
+msgstr "Nincs mit eladni."
+
+#: src/net/ea/buysellhandler.cpp:169
+msgid "Thanks for buying."
+msgstr "Öröm volt veled üzletet kötni!"
+
+#: src/net/ea/buysellhandler.cpp:177
+msgid "Unable to buy."
+msgstr "Nem tudod megvenni."
 
 #: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:248
 msgid "Strength"
@@ -4740,40 +4770,28 @@ msgstr "Az üzlet megszakadt."
 msgid "Trade completed."
 msgstr "Sikeres üzlet."
 
-#: src/net/tmwa/adminhandler.cpp:65
+#: src/net/tmwa/adminhandler.cpp:68
 msgid "Kick failed!"
 msgstr "Kirúgás sikertelen!"
 
-#: src/net/tmwa/adminhandler.cpp:67
+#: src/net/tmwa/adminhandler.cpp:70
 msgid "Kick succeeded!"
 msgstr "Kirúgás sikeres!"
 
-#: src/net/tmwa/buysellhandler.cpp:132
-msgid "Nothing to sell."
-msgstr "Nincs mit eladni."
-
-#: src/net/tmwa/buysellhandler.cpp:139
-msgid "Thanks for buying."
-msgstr "Öröm volt veled üzletet kötni!"
-
-#: src/net/tmwa/buysellhandler.cpp:147
-msgid "Unable to buy."
-msgstr "Nem tudod megvenni."
-
-#: src/net/tmwa/buysellhandler.cpp:155
+#: src/net/tmwa/buysellhandler.cpp:129
 msgid "Thanks for selling."
 msgstr "Öröm volt veled üzletet kötni!"
 
-#: src/net/tmwa/buysellhandler.cpp:159
+#: src/net/tmwa/buysellhandler.cpp:133
 msgid "Unable to sell."
 msgstr "Nem tudod eladni."
 
-#: src/net/tmwa/buysellhandler.cpp:162
+#: src/net/tmwa/buysellhandler.cpp:136
 #, fuzzy
 msgid "Unable to sell while trading."
 msgstr "Nem tudod eladni."
 
-#: src/net/tmwa/buysellhandler.cpp:165
+#: src/net/tmwa/buysellhandler.cpp:139
 #, fuzzy
 msgid "Unable to sell unsellable item."
 msgstr "Nem tudod felvenni a tárgyat."
@@ -5630,7 +5648,7 @@ msgid "Floating bubble"
 msgstr ""
 
 #: src/resources/beinginfo.cpp:33 src/resources/itemdb.cpp:243
-#: src/resources/monsterdb.cpp:79
+#: src/resources/monsterdb.cpp:82
 msgid "unnamed"
 msgstr "Névtelen"
 

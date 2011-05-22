@@ -26,7 +26,7 @@ src/gui/inventorywindow.cpp
 src/gui/itemamountwindow.cpp
 src/gui/itempopup.cpp
 src/gui/killstats.cpp
-src/gui/login.cpp
+src/gui/logindialog.cpp
 src/gui/minimap.cpp
 src/gui/ministatus.cpp
 src/gui/npcdialog.cpp
@@ -38,7 +38,7 @@ src/gui/quitdialog.cpp
 src/gui/register.cpp
 src/gui/sdlinput.cpp
 src/gui/sdlinput.h
-src/gui/sell.cpp
+src/gui/selldialog.cpp
 src/gui/serverdialog.cpp
 src/gui/setup_audio.cpp
 src/gui/setup_chat.cpp
@@ -58,7 +58,7 @@ src/gui/statuspopup.cpp
 src/gui/statuswindow.cpp
 src/gui/textcommandeditor.cpp
 src/gui/textdialog.cpp
-src/gui/trade.cpp
+src/gui/tradewindow.cpp
 src/gui/unregisterdialog.cpp
 src/gui/updatewindow.cpp
 src/gui/userpalette.cpp
@@ -75,6 +75,7 @@ src/keyboardconfig.cpp
 src/localplayer.cpp
 src/log.h
 src/main.cpp
+src/net/ea/buysellhandler.cpp
 src/net/manaserv/attributes.cpp
 src/net/manaserv/beinghandler.cpp
 src/net/manaserv/charhandler.cpp
