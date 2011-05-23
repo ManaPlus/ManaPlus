@@ -33,6 +33,8 @@
 
 #include <guichan/actionlistener.hpp>
 
+#include "debug.h"
+
 int CheckBox::instances = 0;
 float CheckBox::mAlpha = 1.0;
 Image *CheckBox::checkBoxNormal;

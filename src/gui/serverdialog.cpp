@@ -55,6 +55,8 @@
 #include <iostream>
 #include <string>
 
+#include "debug.h"
+
 static const int MAX_SERVERLIST = 15;
 
 static std::string serverTypeToString(ServerInfo::Type type)

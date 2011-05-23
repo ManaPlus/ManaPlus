@@ -35,8 +35,7 @@
 #include <time.h>
 #include <vector>
 
-//define WALLPAPER_FOLDER "graphics/images/"
-//define WALLPAPER_BASE   "login_wallpaper.png"
+#include "debug.h"
 
 struct WallpaperData
 {

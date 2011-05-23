@@ -37,6 +37,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 #define ACTION_REMOVE_COLORS "remove colors"
 #define ACTION_MAGIC_IN_DEBUG "magic in debug"
 #define ACTION_ALLOW_COMMANDS_IN_CHATTABS "allow commands"

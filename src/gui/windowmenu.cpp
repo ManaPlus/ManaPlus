@@ -42,6 +42,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 extern Window *equipmentWindow;
 extern Window *inventoryWindow;
 extern Window *itemShortcutWindow;

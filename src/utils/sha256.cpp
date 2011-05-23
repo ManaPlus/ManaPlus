@@ -83,6 +83,8 @@ typedef unsigned char uint8_t;
 typedef unsigned int uint32_t;
 #endif
 
+#include "debug.h"
+
 #define SHA256_BLOCK_SIZE  (512 / 8)
 
 /** An sha 256 context, used by original m_opersha256 */

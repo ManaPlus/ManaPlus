@@ -48,6 +48,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 SpellShortcutContainer::SpellShortcutContainer(unsigned number):
     ShortcutContainer(),
     mSpellClicked(false),

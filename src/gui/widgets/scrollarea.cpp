@@ -34,6 +34,8 @@
 
 #include "utils/dtor.h"
 
+#include "debug.h"
+
 int ScrollArea::instances = 0;
 float ScrollArea::mAlpha = 1.0;
 ImageRect ScrollArea::background;

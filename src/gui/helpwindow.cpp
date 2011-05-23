@@ -37,6 +37,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 HelpWindow::HelpWindow():
     Window(_("Help"))
 {

@@ -81,6 +81,8 @@
 
 #include "mumblemanager.h"
 
+#include "debug.h"
+
 // This is the minimal delay between to permitted
 // setDestination() calls using the keyboard.
 // TODO: This can fine tuned later on when running is added...

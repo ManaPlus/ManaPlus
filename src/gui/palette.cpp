@@ -34,6 +34,8 @@
 
 #include <math.h>
 
+#include "debug.h"
+
 const gcn::Color Palette::BLACK = gcn::Color(0, 0, 0);
 Palette::Palettes Palette::mInstances;
 

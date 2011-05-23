@@ -52,6 +52,8 @@
 #include "utils/mathutils.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 class AttrDisplay : public Container
 {
     public:

@@ -39,6 +39,8 @@
 
 #include <guichan/widgets/label.hpp>
 
+#include "debug.h"
+
 int Tab::mInstances = 0;
 float Tab::mAlpha = 1.0;
 

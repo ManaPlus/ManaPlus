@@ -48,6 +48,16 @@
 // Curl should be included after Guichan to avoid Windows redefinitions
 #include <curl/curl.h>
 
+#include "debug.h"
+
+#ifdef free
+#undef free
+#endif
+
+#ifdef malloc
+#undef malloc
+#endif
+
 bool stringCompare(const std::string &left, const std::string &right);
 
 bool stringCompare(const std::string &left, const std::string &right )

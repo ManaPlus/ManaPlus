@@ -42,6 +42,8 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 extern Window *statusWindow;
 
 Setup::Setup():

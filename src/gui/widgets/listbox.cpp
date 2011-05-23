@@ -34,6 +34,8 @@
 #include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
 
+#include "debug.h"
+
 float ListBox::mAlpha = 1.0;
 
 ListBox::ListBox(gcn::ListModel *listModel):

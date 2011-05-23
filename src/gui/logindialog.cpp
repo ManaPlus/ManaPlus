@@ -43,6 +43,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 static const int MAX_SERVER_LIST_SIZE = 15;
 static const int LOGIN_DIALOG_WIDTH = 300;
 static const int LOGIN_DIALOG_HEIGHT = 140;

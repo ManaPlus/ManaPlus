@@ -30,6 +30,8 @@
 
 #include "resources/image.h"
 
+#include "debug.h"
+
 Image *Slider::hStart, *Slider::hMid, *Slider::hEnd, *Slider::hGrip;
 Image *Slider::vStart, *Slider::vMid, *Slider::vEnd, *Slider::vGrip;
 Image *Slider::hStartHi, *Slider::hMidHi, *Slider::hEndHi, *Slider::hGripHi;

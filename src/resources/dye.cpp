@@ -27,6 +27,8 @@
 #include <math.h>
 #include <sstream>
 
+#include "debug.h"
+
 DyePalette::DyePalette(const std::string &description)
 {
     int size = static_cast<int>(description.length());

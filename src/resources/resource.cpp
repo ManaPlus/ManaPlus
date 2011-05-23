@@ -29,6 +29,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 Resource::~Resource()
 {
 }

@@ -43,6 +43,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 DropShortcutContainer::DropShortcutContainer():
     ShortcutContainer(),
     mItemClicked(false),

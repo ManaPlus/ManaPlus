@@ -22,6 +22,8 @@
 
 #include "gui/widgets/container.h"
 
+#include "debug.h"
+
 Container::Container()
 {
     setOpaque(false);

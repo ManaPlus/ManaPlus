@@ -22,6 +22,8 @@
 
 #include "gui/theme.h"
 
+#include "debug.h"
+
 Label::Label()
 {
 }

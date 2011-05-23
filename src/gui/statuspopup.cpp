@@ -41,6 +41,8 @@
 #include <guichan/font.hpp>
 #include <guichan/widgets/label.hpp>
 
+#include "debug.h"
+
 StatusPopup::StatusPopup():
     Popup("StatusPopup")
 {

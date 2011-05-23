@@ -29,6 +29,8 @@
 #include <iostream>
 #endif
 
+#include "debug.h"
+
 /*
  * Retrieve the pathname of special folders on win32, or an empty string
  * on error / if the folder does not exist.

@@ -22,7 +22,9 @@
 
 #ifndef WIN32
 #include <sys/mman.h>
-#endif 
+#endif
+
+#include "debug.h"
 
 MumbleManager::MumbleManager() :
     mLinkedMem(0)

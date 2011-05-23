@@ -33,6 +33,8 @@
 
 #include <map>
 
+#include "debug.h"
+
 #define STATUS_EFFECTS_FILE "status-effects.xml"
 
 void unloadMap(std::map<int, StatusEffect *> map);

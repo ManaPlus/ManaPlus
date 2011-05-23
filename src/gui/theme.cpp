@@ -42,6 +42,8 @@
 #include <algorithm>
 #include <physfs.h>
 
+#include "debug.h"
+
 static std::string defaultThemePath;
 
 std::string Theme::mThemePath;

@@ -45,6 +45,8 @@
 #include <guichan/widgets/label.hpp>
 #include <guichan/widgets/container.hpp>
 
+#include "debug.h"
+
 ItemPopup::ItemPopup():
     Popup("ItemPopup"),
     mIcon(0),

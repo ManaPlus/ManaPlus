@@ -39,6 +39,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 BattleTab::BattleTab() :
     ChatTab(_("Battle"))
 {

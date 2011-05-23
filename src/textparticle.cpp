@@ -26,6 +26,8 @@
 
 #include <guichan/color.hpp>
 
+#include "debug.h"
+
 TextParticle::TextParticle(Map *map, const std::string &text,
                            const gcn::Color *color,
                            gcn::Font *font, bool outline):

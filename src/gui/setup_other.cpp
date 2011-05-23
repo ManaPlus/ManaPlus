@@ -35,6 +35,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 #define ACTION_SHOW_TAKEDDAMAGE "taked damage"
 #define ACTION_ONLY_REACHABLE "only reachable"
 #define ACTION_ERRORS_IN_DEBUG "errors in debug"

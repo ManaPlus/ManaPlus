@@ -37,6 +37,8 @@
 
 #include "utils/mkdir.h"
 
+#include "debug.h"
+
 #if defined WIN32
 int mkdir_r(const char *pathname)
 {

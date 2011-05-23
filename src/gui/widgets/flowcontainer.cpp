@@ -21,6 +21,8 @@
 
 #include "flowcontainer.h"
 
+#include "debug.h"
+
 FlowContainer::FlowContainer(int boxWidth, int boxHeight):
     mBoxWidth(boxWidth), mBoxHeight(boxHeight),
     mGridWidth(1), mGridHeight(1)

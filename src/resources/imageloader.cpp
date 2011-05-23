@@ -31,6 +31,12 @@
 
 #include <cassert>
 
+#include "debug.h"
+
+#ifdef free
+#undef free
+#endif
+
 ProxyImage::ProxyImage(SDL_Surface *s):
     mImage(NULL), mSDLImage(s)
 {

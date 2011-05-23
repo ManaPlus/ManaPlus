@@ -22,6 +22,8 @@
 
 #include "gui/widgets/layouthelper.h"
 
+#include "debug.h"
+
 LayoutHelper::LayoutHelper(gcn::Container *container):
     mContainer(container)
 {

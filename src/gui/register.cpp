@@ -44,6 +44,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 WrongDataNoticeListener::WrongDataNoticeListener():
     mTarget(0)
 {

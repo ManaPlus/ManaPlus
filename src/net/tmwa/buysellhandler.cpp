@@ -47,6 +47,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 extern Net::BuySellHandler *buySellHandler;
 
 namespace TmwAthena

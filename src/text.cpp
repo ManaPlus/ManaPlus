@@ -36,6 +36,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 int Text::mInstances = 0;
 ImageRect Text::mBubble;
 Image *Text::mBubbleArrow;

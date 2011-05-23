@@ -34,6 +34,8 @@
 
 #include <guichan/widgets/label.hpp>
 
+#include "debug.h"
+
 SpeechBubble::SpeechBubble():
         Popup("Speech", "speechbubble.xml")
 {

@@ -25,6 +25,8 @@
 #include "graphics.h"
 #include "simpleanimation.h"
 
+#include "debug.h"
+
 AnimationParticle::AnimationParticle(Map *map, Animation *animation):
     ImageParticle(map, 0),
     mAnimation(new SimpleAnimation(animation))

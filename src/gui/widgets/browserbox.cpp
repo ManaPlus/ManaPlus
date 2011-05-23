@@ -44,6 +44,8 @@
 
 #include <algorithm>
 
+#include "debug.h"
+
 BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     gcn::Widget(),
     mLinkHandler(0),

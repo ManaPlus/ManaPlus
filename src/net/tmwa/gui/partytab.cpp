@@ -41,6 +41,8 @@
 
 #include "net/chathandler.h"
 
+#include "debug.h"
+
 namespace TmwAthena
 {
 

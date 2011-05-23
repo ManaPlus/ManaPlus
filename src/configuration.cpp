@@ -30,6 +30,8 @@
 
 #include <libxml/encoding.h>
 
+#include "debug.h"
+
 #ifdef DEBUG_CONFIG
 #define GETLOG() if (logger) {logger->log("config get: " + key); }
 #else

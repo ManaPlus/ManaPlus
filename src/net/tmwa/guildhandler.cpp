@@ -37,6 +37,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 extern Net::GuildHandler *guildHandler;
 
 namespace TmwAthena

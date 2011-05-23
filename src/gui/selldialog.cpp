@@ -45,6 +45,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(int npcId):

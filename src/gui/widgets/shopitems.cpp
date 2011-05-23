@@ -26,6 +26,8 @@
 
 #include "utils/dtor.h"
 
+#include "debug.h"
+
 ShopItems::ShopItems(bool mergeDuplicates) :
     mMergeDuplicates(mergeDuplicates)
 {

@@ -30,6 +30,8 @@
 
 #include "resources/image.h"
 
+#include "debug.h"
+
 int RadioButton::instances = 0;
 float RadioButton::mAlpha = 1.0;
 Image *RadioButton::radioNormal;

@@ -37,6 +37,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 #define PARTY_ID 1
 
 extern Net::PartyHandler *partyHandler;

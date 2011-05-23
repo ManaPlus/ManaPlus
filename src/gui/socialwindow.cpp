@@ -57,6 +57,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 class SocialTab : public Tab
 {
 protected:

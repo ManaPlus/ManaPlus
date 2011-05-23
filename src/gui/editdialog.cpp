@@ -31,6 +31,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 EditDialog::EditDialog(const std::string &title, const std::string &msg,
                        std::string eventOk, int width,
                        Window *parent, bool modal):

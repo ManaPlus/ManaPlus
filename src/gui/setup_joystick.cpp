@@ -32,6 +32,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 extern Joystick *joystick;
 
 Setup_Joystick::Setup_Joystick():

@@ -26,6 +26,8 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 AmbientLayer::AmbientLayer(Image *img, float parallax,
                            float speedX, float speedY, bool keepRatio):
     mImage(img), mParallax(parallax),

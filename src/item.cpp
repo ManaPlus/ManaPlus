@@ -29,6 +29,8 @@
 #include "resources/resourcemanager.h"
 #include "configuration.h"
 
+#include "debug.h"
+
 Item::Item(int id, int quantity, int refine, unsigned char color,
            bool equipment, bool equipped):
     mImage(0),

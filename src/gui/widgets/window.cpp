@@ -41,6 +41,8 @@
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
 
+#include "debug.h"
+
 int Window::instances = 0;
 int Window::mouseResize = 0;
 

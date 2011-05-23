@@ -40,6 +40,8 @@
 
 #undef DELETE //Win32 compatibility hack
 
+#include "debug.h"
+
 int TextField::instances = 0;
 float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;

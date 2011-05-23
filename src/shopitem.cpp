@@ -29,6 +29,8 @@
 
 #include "resources/iteminfo.h"
 
+#include "debug.h"
+
 ShopItem::ShopItem(int inventoryIndex, int id, unsigned char color,
                    int quantity, int price) :
     Item(id, 0, 0, color),

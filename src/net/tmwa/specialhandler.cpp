@@ -36,6 +36,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 /** job dependend identifiers (?)  */
 #define SKILL_BASIC       0x0001
 #define SKILL_WARP        0x001b

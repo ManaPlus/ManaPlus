@@ -51,6 +51,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 #define SPECIALS_WIDTH 200
 #define SPECIALS_HEIGHT 32
 

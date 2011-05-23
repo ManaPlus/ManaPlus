@@ -34,9 +34,10 @@
 
 #include <zlib.h>
 
+#include "debug.h"
+
 const char *DOWNLOAD_ERROR_MESSAGE_THREAD
     = "Could not create download thread!";
-
 
 enum
 {

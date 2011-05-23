@@ -24,6 +24,8 @@
 
 #include "utils/dtor.h"
 
+#include "debug.h"
+
 Animation::Animation():
     mDuration(0)
 {

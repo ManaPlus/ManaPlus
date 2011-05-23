@@ -62,6 +62,8 @@
 #include <string>
 #include <cassert>
 
+#include "debug.h"
+
 // Character slots per row in the dialog
 static const int SLOTS_PER_ROW = 5;
 

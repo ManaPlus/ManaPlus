@@ -28,6 +28,8 @@
 #include <cstdio>
 #include <list>
 
+#include "debug.h"
+
 static int UTF8_MAX_SIZE = 10;
 
 std::string &trim(std::string &str)

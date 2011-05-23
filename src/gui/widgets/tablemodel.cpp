@@ -26,6 +26,8 @@
 
 #include <guichan/widget.hpp>
 
+#include "debug.h"
+
 void TableModel::installListener(TableModelListener *listener)
 {
     if (listener)

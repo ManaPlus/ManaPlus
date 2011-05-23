@@ -38,6 +38,8 @@
 
 #include <guichan/exception.hpp>
 
+#include "debug.h"
+
 Popup::Popup(const std::string &name, const std::string &skin):
     mPopupName(name),
     mMinWidth(100),

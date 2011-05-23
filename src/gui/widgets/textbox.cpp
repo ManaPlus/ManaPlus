@@ -28,6 +28,8 @@
 
 #include <sstream>
 
+#include "debug.h"
+
 TextBox::TextBox() :
     mTextColor(&Theme::getThemeColor(Theme::TEXT))
 {

@@ -27,6 +27,8 @@
 
 #include <libxml/tree.h>
 
+#include "debug.h"
+
 namespace
 {
     ColorDB::Colors mHairColors;

@@ -42,6 +42,8 @@
 #include <string>
 #include <cmath>
 
+#include "debug.h"
+
 const std::string Setup_Colors::rawmsg =
     _("This is what the color looks like");
 

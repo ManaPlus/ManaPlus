@@ -24,6 +24,8 @@
 
 #include "gui/widgets/channeltab.h"
 
+#include "debug.h"
+
 Channel::Channel(short id,
                  const std::string &name, 
                  const std::string &announcement) :

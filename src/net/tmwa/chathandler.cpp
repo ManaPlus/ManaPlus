@@ -46,6 +46,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 extern Net::ChatHandler *chatHandler;
 
 namespace TmwAthena

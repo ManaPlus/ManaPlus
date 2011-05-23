@@ -32,6 +32,8 @@
 
 #include <guichan/graphics.hpp>
 
+#include "debug.h"
+
 Image *ResizeGrip::gripImage = 0;
 int ResizeGrip::mInstances = 0;
 float ResizeGrip::mAlpha = 1.0;

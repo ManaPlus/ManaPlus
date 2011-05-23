@@ -24,6 +24,8 @@
 
 #include "log.h"
 
+#include "debug.h"
+
 SoundEffect::~SoundEffect()
 {
     Mix_FreeChunk(mChunk);

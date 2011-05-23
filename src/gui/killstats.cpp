@@ -39,6 +39,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 KillStats::KillStats():
     Window(_("Kill stats")), mKillCounter(0), mExpCounter(0),
     mKillTCounter(0), mExpTCounter(0), mKillTimer(0),

@@ -32,6 +32,8 @@
 
 #include <guichan/widgets/label.hpp>
 
+#include "debug.h"
+
 ProgressIndicator::ProgressIndicator()
 {
     ImageSet *images = Theme::getImageSetFromTheme("progress-indicator.png",

@@ -56,9 +56,10 @@
 #include <set>
 #include <string>
 
+#include "debug.h"
+
 class SkillModel;
 class SkillEntry;
-
 
 struct SkillInfo
 {

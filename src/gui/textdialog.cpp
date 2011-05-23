@@ -33,6 +33,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 int TextDialog::instances = 0;
 
 TextDialog::TextDialog(const std::string &title, const std::string &msg,

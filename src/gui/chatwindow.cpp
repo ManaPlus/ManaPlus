@@ -65,6 +65,8 @@
 
 #include <sys/stat.h>
 
+#include "debug.h"
+
 /**
  * The chat input hides when it loses focus. It is also invisible by default.
  */

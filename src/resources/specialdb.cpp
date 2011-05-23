@@ -26,6 +26,7 @@
 #include "utils/dtor.h"
 #include "utils/xml.h"
 
+#include "debug.h"
 
 namespace
 {

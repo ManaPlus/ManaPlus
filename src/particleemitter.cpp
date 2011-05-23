@@ -33,6 +33,8 @@
 
 #include <cmath>
 
+#include "debug.h"
+
 #define SIN45 0.707106781f
 #define DEG_RAD_FACTOR 0.017453293f
 

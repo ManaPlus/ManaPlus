@@ -38,6 +38,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 TradeTab::TradeTab() :
     ChatTab(_("Trade"))
 {

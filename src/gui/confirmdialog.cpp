@@ -33,6 +33,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
                              bool ignore, bool modal, Window *parent):
     Window(title, modal, parent)

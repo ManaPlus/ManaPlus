@@ -36,6 +36,8 @@
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
+#include "debug.h"
+
 FloorItem::FloorItem(int id,
                      int itemId,
                      int x,

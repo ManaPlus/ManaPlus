@@ -22,6 +22,8 @@
 
 #include "gui/widgets/setuptab.h"
 
+#include "debug.h"
+
 SetupTab::SetupTab()
 {
     setOpaque(false);

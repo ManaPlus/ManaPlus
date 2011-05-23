@@ -39,6 +39,8 @@
 #include <SDL_image.h>
 #include <SDL_rotozoom.h>
 
+#include "debug.h"
+
 #ifdef USE_OPENGL
 int Image::mUseOpenGL = 0;
 int Image::mTextureType = 0;

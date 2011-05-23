@@ -48,6 +48,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 DebugWindow::DebugWindow():
     Window(_("Debug"))
 {

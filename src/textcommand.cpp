@@ -28,6 +28,8 @@
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 TextCommand::TextCommand(unsigned int id, std::string symbol,
                          std::string command, SpellTarget type,
                          std::string icon, unsigned int basicLvl,

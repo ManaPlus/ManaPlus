@@ -31,6 +31,8 @@
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
+#include "debug.h"
+
 namespace PlayerInfo
 {
 

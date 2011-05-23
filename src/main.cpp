@@ -37,6 +37,8 @@
 #include <windows.h>
 #endif
 
+#include "debug.h"
+
 static void printHelp()
 {
     using std::endl;

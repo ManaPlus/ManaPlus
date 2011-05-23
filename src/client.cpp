@@ -113,6 +113,8 @@
 
 #include "mumblemanager.h"
 
+#include "debug.h"
+
 /**
  * Tells the max tick value,
  * setting it back to zero (and start again).

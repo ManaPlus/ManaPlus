@@ -26,6 +26,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 ContainerPlacer ContainerPlacer::at(int x, int y)
 {
     return ContainerPlacer(mContainer, &mCell->at(x, y));

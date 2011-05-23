@@ -44,6 +44,8 @@
 #include <string>
 #include <sstream>
 
+#include "debug.h"
+
 UnRegisterDialog::UnRegisterDialog(LoginData *loginData):
     Window(_("Unregister"), true),
     mWrongDataNoticeListener(new WrongDataNoticeListener),

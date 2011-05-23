@@ -26,6 +26,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 int Joystick::joystickCount = 0;
 
 void Joystick::init()

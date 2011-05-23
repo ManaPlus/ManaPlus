@@ -56,6 +56,8 @@
 #include <string>
 #include <vector>
 
+#include "debug.h"
+
 extern Graphics *graphics;
 
 /**

@@ -32,6 +32,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "debug.h"
+
 static char base64_table[] =
 {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',

@@ -34,6 +34,8 @@
 #include <algorithm>
 #include <string>
 
+#include "debug.h"
+
 struct SlotUsed : public std::unary_function<Item*, bool>
 {
     bool operator()(const Item *item) const

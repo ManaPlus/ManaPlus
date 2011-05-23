@@ -55,6 +55,8 @@
 
 #define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
 
+#include "debug.h"
+
 static const char *table_titles[COLUMNS_NR] =
 {
     N_("Name"),

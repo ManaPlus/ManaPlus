@@ -34,6 +34,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 NpcPostDialog::DialogList NpcPostDialog::instances;
 
 NpcPostDialog::NpcPostDialog(int npcId):

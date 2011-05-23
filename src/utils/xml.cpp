@@ -30,6 +30,8 @@
 #include <fstream>
 #include <cstring>
 
+#include "debug.h"
+
 namespace XML
 {
     Document::Document(const std::string &filename, bool useResman):

@@ -82,6 +82,8 @@
 #include <cassert>
 #include <cmath>
 
+#include "debug.h"
+
 #define CACHE_SIZE 50
 #define HAIR_FILE "hair.xml"
 

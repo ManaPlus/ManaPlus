@@ -26,6 +26,8 @@
 #include "utils/xml.h"
 #include "configuration.h"
 
+#include "debug.h"
+
 namespace
 {
     EmoteInfos mEmoteInfos;

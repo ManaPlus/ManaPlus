@@ -31,6 +31,8 @@
 #include <climits>
 #include <vector>
 
+#include "debug.h"
+
 struct UnitLevel
 {
     std::string symbol;

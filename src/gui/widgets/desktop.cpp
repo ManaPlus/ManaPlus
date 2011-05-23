@@ -36,6 +36,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 Desktop::Desktop()
     : mWallpaper(0)
 {

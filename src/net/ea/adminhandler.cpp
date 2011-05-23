@@ -27,6 +27,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 namespace Ea
 {
 

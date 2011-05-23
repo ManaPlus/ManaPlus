@@ -34,6 +34,8 @@
 #include <guichan/graphics.hpp>
 #include <guichan/key.hpp>
 
+#include "debug.h"
+
 float GuiTable::mAlpha = 1.0;
 
 class GuiTableActionListener : public gcn::ActionListener

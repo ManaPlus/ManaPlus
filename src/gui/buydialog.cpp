@@ -48,6 +48,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 BuyDialog::DialogList BuyDialog::instances;
 
 BuyDialog::BuyDialog(int npcId):

@@ -51,6 +51,8 @@
 
 #include <vector>
 
+#include "debug.h"
+
 float OutfitWindow::mAlpha = 1.0;
 
 OutfitWindow::OutfitWindow():

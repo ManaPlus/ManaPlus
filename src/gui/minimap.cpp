@@ -41,6 +41,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 bool Minimap::mShow = true;
 
 Minimap::Minimap():

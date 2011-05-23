@@ -46,6 +46,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 #define CAPTION_WAITING _("Waiting for server")
 #define CAPTION_NEXT _("Next")
 #define CAPTION_CLOSE _("Close")

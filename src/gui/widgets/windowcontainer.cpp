@@ -24,6 +24,8 @@
 
 #include "utils/dtor.h"
 
+#include "debug.h"
+
 WindowContainer *windowContainer = NULL;
 
 void WindowContainer::logic()

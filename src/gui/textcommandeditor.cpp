@@ -53,6 +53,8 @@
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
+#include "debug.h"
+
 class IconsModal : public gcn::ListModel
 {
 public:

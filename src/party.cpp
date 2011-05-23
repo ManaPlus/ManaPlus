@@ -23,6 +23,8 @@
 
 #include "actorspritemanager.h"
 
+#include "debug.h"
+
 class SortPartyFunctor
 {
     public:

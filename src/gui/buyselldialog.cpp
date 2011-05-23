@@ -32,6 +32,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 BuySellDialog::DialogList BuySellDialog::instances;
 
 BuySellDialog::BuySellDialog(int npcId):

@@ -23,6 +23,8 @@
 
 #include "graphics.h"
 
+#include "debug.h"
+
 ImageSprite::ImageSprite(Image *image):
         mImage(image)
 {

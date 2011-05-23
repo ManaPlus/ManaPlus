@@ -25,6 +25,8 @@
 
 #include "log.h"
 
+#include "debug.h"
+
 InventoryFilter::InventoryFilter(std::string group, int height, int spacing):
         HorizontContainer(height, spacing),
         mGroup(group)

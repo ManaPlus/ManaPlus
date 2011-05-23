@@ -24,6 +24,8 @@
 #include "listener.h"
 #include "variabledata.h"
 
+#include "debug.h"
+
 namespace Mana
 {
 

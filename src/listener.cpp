@@ -23,6 +23,8 @@
 
 #include "event.h"
 
+#include "debug.h"
+
 namespace Mana
 {
 

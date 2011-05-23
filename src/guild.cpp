@@ -24,6 +24,8 @@
 
 #include "actorspritemanager.h"
 
+#include "debug.h"
+
 class SortGuildFunctor
 {
     public:

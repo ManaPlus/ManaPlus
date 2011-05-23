@@ -37,6 +37,8 @@
 
 #include <set>
 
+#include "debug.h"
+
 SpriteReference *SpriteReference::Empty = new SpriteReference(
                 paths.getStringValue("spriteErrorFile"), 0);
 

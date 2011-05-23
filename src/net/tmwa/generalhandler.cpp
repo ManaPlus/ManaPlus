@@ -65,6 +65,8 @@
 #include <assert.h>
 #include <list>
 
+#include "debug.h"
+
 extern Net::GeneralHandler *generalHandler;
 
 namespace TmwAthena

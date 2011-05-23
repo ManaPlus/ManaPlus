@@ -35,6 +35,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 WhisperTab::WhisperTab(const std::string &nick) :
     ChatTab(nick),
     mNick(nick)

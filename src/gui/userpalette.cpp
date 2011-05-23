@@ -34,6 +34,8 @@
 
 #include <math.h>
 
+#include "debug.h"
+
 const std::string ColorTypeNames[] =
 {
     "ColorBeing",

@@ -46,6 +46,8 @@
 #include "utils/stringutils.h"
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 extern OkDialog *weightNotice;
 extern OkDialog *deathNotice;
 extern int weightNoticeTime;

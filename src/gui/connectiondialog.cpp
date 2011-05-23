@@ -31,6 +31,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 ConnectionDialog::ConnectionDialog(const std::string &text,
                                    State cancelState):
     Window(""),

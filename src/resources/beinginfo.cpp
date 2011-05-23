@@ -27,6 +27,8 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 BeingInfo *BeingInfo::Unknown = new BeingInfo;
 
 BeingInfo::BeingInfo():

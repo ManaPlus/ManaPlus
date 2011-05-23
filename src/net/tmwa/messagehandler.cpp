@@ -26,6 +26,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 namespace TmwAthena
 {
 

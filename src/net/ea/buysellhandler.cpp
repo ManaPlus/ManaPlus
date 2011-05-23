@@ -44,6 +44,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 namespace Ea
 {
 

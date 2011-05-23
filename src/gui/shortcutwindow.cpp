@@ -32,6 +32,8 @@
 #include "gui/widgets/tab.h"
 #include "gui/widgets/tabbedarea.h"
 
+#include "debug.h"
+
 static const int SCROLL_PADDING = 0;
 
 int ShortcutWindow::mBoxesWidth = 0;

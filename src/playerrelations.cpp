@@ -31,6 +31,8 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 #define PLAYER_IGNORE_STRATEGY_NOP "nop"
 #define PLAYER_IGNORE_STRATEGY_EMOTE0 "emote0"
 #define DEFAULT_IGNORE_STRATEGY PLAYER_IGNORE_STRATEGY_EMOTE0

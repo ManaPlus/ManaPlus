@@ -35,6 +35,8 @@
 //<SDL_gfxBlitFunc.h>
 #include "SDL_gfxBlitFunc.h"
 
+#include "debug.h"
+
 Graphics::Graphics():
     mWidth(0),
     mHeight(0),

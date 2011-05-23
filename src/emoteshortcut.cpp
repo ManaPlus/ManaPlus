@@ -27,6 +27,8 @@
 
 #include "resources/emotedb.h"
 
+#include "debug.h"
+
 EmoteShortcut *emoteShortcut;
 
 EmoteShortcut::EmoteShortcut():

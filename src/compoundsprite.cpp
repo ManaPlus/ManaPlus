@@ -35,6 +35,8 @@
 
 #include <SDL.h>
 
+#include "debug.h"
+
 #define BUFFER_WIDTH 100
 #define BUFFER_HEIGHT 100
 

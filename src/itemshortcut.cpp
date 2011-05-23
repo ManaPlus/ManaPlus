@@ -33,6 +33,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
 ItemShortcut::ItemShortcut(int number):

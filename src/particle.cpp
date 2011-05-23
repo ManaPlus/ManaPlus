@@ -44,6 +44,8 @@
 #include <algorithm>
 #include <cmath>
 
+#include "debug.h"
+
 #define SIN45 0.707106781f
 
 class Graphics;

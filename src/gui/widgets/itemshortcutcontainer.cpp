@@ -46,6 +46,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 ItemShortcutContainer::ItemShortcutContainer(unsigned number):
     ShortcutContainer(),
     mItemClicked(false),

@@ -28,6 +28,8 @@
 
 #include "net/tmwa/protocol.h"
 
+#include "debug.h"
+
 namespace TmwAthena
 {
 

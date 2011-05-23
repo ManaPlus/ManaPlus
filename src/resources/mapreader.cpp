@@ -41,6 +41,8 @@
 #include <iostream>
 #include <zlib.h>
 
+#include "debug.h"
+
 int inflateMemory(unsigned char *in, unsigned int inLength,
                   unsigned char *&out, unsigned int &outLength);
 

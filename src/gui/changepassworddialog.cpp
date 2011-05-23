@@ -44,6 +44,8 @@
 #include <string>
 #include <sstream>
 
+#include "debug.h"
+
 ChangePasswordDialog::ChangePasswordDialog(LoginData *loginData):
     Window(_("Change Password"), true),
     mWrongDataNoticeListener(new WrongDataNoticeListener),

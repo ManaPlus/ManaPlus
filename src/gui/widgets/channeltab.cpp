@@ -29,6 +29,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 ChannelTab::ChannelTab(Channel *channel) :
     ChatTab(channel->getName()),
     mChannel(channel)

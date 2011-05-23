@@ -50,6 +50,8 @@
 
 #include <sys/stat.h>
 
+#include "debug.h"
+
 const std::string xmlUpdateFile = "resources.xml";
 const std::string txtUpdateFile = "resources2.txt";
 

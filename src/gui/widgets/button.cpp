@@ -38,6 +38,8 @@
 #include <guichan/exception.hpp>
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 int Button::mInstances = 0;
 float Button::mAlpha = 1.0;
 

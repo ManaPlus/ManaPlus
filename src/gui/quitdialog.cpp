@@ -43,6 +43,8 @@
 
 #include <assert.h>
 
+#include "debug.h"
+
 QuitDialog::QuitDialog(QuitDialog** pointerToMe):
     Window(_("Quit"), true, NULL), mMyPointer(pointerToMe)
 {

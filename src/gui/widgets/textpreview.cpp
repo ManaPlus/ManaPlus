@@ -32,6 +32,8 @@
 
 #include <typeinfo>
 
+#include "debug.h"
+
 float TextPreview::mAlpha = 1.0;
 
 TextPreview::TextPreview(const std::string &text):

@@ -51,6 +51,8 @@
 
 #include <sys/stat.h>
 
+#include "debug.h"
+
 bool actorCompare(const Actor *a, const Actor *b);
 
 /**

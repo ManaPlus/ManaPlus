@@ -22,6 +22,8 @@
 
 #include "position.h"
 
+#include "debug.h"
+
 std::ostream& operator <<(std::ostream &os, const Position &p)
 {
     os << "(" << p.x << ", " << p.y << ")";

@@ -29,6 +29,8 @@
 
 #include <guichan/widgets/container.hpp>
 
+#include "debug.h"
+
 TabbedArea::TabbedArea()
     : gcn::TabbedArea(),
       mTabsWidth(0),

@@ -36,6 +36,8 @@
 
 #include "utils/gettext.h"
 
+#include "debug.h"
+
 Setup_Audio::Setup_Audio():
     mMusicVolume(config.getIntValue("musicVolume")),
     mSfxVolume(config.getIntValue("sfxVolume")),

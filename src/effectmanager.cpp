@@ -27,6 +27,8 @@
 
 #include "utils/xml.h"
 
+#include "debug.h"
+
 EffectManager::EffectManager()
 {
     XML::Document doc("effects.xml");

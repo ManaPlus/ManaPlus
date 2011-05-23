@@ -36,6 +36,8 @@
 
 #include <SDL_types.h>
 
+#include "debug.h"
+
 extern Net::NpcHandler *npcHandler;
 
 namespace TmwAthena

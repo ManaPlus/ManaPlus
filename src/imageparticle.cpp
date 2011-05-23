@@ -26,6 +26,8 @@
 
 #include "resources/image.h"
 
+#include "debug.h"
+
 std::map<std::string, int> ImageParticle::imageParticleCountByName;
 
 ImageParticle::ImageParticle(Map *map, Image *image):

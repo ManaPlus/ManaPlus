@@ -28,6 +28,8 @@
 #include <set>
 #include <map>
 
+#include "debug.h"
+
 const std::string &ItemInfo::getSprite(Gender gender) const
 {
     if (mView)

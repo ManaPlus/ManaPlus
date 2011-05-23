@@ -26,6 +26,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 IntTextField::IntTextField(int def, int min, int max,
                            bool enabled, int width):
     TextField(toString(def)),

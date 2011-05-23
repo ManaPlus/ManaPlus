@@ -45,6 +45,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
 
 #define COLUMNS_NR 5 // name plus listbox
 #define NAME_COLUMN 0

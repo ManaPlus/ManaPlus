@@ -51,6 +51,8 @@
 
 #include <iostream>
 
+#include "debug.h"
+
 namespace Ea
 {
 const int EMOTION_TIME = 500;    /**< Duration of emotion icon */

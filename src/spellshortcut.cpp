@@ -34,6 +34,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 SpellShortcut *spellShortcut;
 
 SpellShortcut::SpellShortcut()

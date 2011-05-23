@@ -21,6 +21,8 @@
 
 #include "gui/widgets/vertcontainer.h"
 
+#include "debug.h"
+
 VertContainer::VertContainer(int spacing):
         mSpacing(spacing),
         mCount(0)

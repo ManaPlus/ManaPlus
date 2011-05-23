@@ -29,6 +29,8 @@
 
 #include <libxml/tree.h>
 
+#include "debug.h"
+
 namespace
 {
     bool mLoaded = false;

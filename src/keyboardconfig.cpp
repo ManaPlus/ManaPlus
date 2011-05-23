@@ -28,6 +28,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 struct KeyData
 {
     const char *configField;

@@ -49,6 +49,8 @@
 #include <list>
 #include <vector>
 
+#include "debug.h"
+
 #define for_actors ActorSpritesConstIterator it, it_end; \
 for (it = mActors.begin(), it_end = mActors.end() ; it != it_end; ++it)
 

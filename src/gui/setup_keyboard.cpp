@@ -39,6 +39,8 @@
 
 #include <SDL_keyboard.h>
 
+#include "debug.h"
+
 /**
  * The list model for key function list.
  *

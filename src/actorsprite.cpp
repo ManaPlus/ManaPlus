@@ -39,6 +39,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 #define EFFECTS_FILE "effects.xml"
 
 ImageSet *ActorSprite::targetCursorImages[2][NUM_TC];

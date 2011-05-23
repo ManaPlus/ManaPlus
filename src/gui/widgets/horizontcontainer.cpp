@@ -21,6 +21,8 @@
 
 #include "gui/widgets/horizontcontainer.h"
 
+#include "debug.h"
+
 HorizontContainer::HorizontContainer(int height, int spacing):
         mSpacing(spacing),
         mCount(0),

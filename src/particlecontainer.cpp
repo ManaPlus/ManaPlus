@@ -25,6 +25,8 @@
 #include "particle.h"
 #include "particlecontainer.h"
 
+#include "debug.h"
+
 ParticleContainer::ParticleContainer(ParticleContainer *parent,
                                      bool delParent):
     mDelParent(delParent),

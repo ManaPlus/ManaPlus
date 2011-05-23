@@ -38,6 +38,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 ImageRect ProgressBar::mBorder;
 int ProgressBar::mInstances = 0;
 float ProgressBar::mAlpha = 1.0;

@@ -24,6 +24,8 @@
 
 #include <cstring>
 
+#include "debug.h"
+
 TextManager *textManager = 0;
 
 TextManager::TextManager()

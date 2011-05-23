@@ -42,6 +42,8 @@
 #include <string>
 #include <sstream>
 
+#include "debug.h"
+
 ChangeEmailDialog::ChangeEmailDialog(LoginData *loginData):
     Window(_("Change Email Address"), true),
     mWrongDataNoticeListener(new WrongDataNoticeListener),

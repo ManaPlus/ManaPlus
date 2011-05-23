@@ -156,6 +156,17 @@ esac],[portable_enabled=false])
 
 AM_CONDITIONAL(ENABLE_PORTABLE, test x$portable_enabled = xtrue)
 
+# Enable debug
+AC_ARG_ENABLE(memdebug,
+[  --enable-memdebug    Turn on memory debug mode],
+[case "${enableval}" in
+  yes) memdebug_enabled=true ;;
+  no)  memdebug_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-memdebug) ;;
+esac],[memdebug_enabled=false])
+
+AM_CONDITIONAL(ENABLE_MEM_DEBUG, test x$memdebug_enabled = xtrue)
+
 AC_CONFIG_FILES([
 Makefile
 src/Makefile

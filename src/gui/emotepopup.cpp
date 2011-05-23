@@ -41,6 +41,8 @@
 #include <guichan/mouseinput.hpp>
 #include <guichan/selectionlistener.hpp>
 
+#include "debug.h"
+
 const int EmotePopup::gridWidth = 34;  // emote icon width + 4
 const int EmotePopup::gridHeight = 36; // emote icon height + 4
 

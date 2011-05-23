@@ -36,6 +36,8 @@
 #include <cstring>
 #include <string>
 
+#include "debug.h"
+
 namespace TmwAthena
 {
 

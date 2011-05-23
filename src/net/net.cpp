@@ -46,6 +46,8 @@
 #include "net/manaserv/generalhandler.h"
 #endif
 
+#include "debug.h"
+
 Net::AdminHandler *adminHandler = NULL;
 Net::CharHandler *charHandler = NULL;
 Net::ChatHandler *chatHandler = NULL;

@@ -28,6 +28,8 @@
 
 #include "utils/dtor.h"
 
+#include "debug.h"
+
 ImageSet::ImageSet(Image *img, int width, int height,
                    int margin, int spacing) :
     mOffsetX(0),

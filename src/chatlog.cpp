@@ -42,6 +42,8 @@
 
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 ChatLogger::ChatLogger()
 {
 }

@@ -50,6 +50,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 static const int BOX_WIDTH = 36;
 static const int BOX_HEIGHT = 36;
 

@@ -47,6 +47,8 @@
 
 #include <SDL_types.h>
 
+#include "debug.h"
+
 extern Net::InventoryHandler *inventoryHandler;
 
 const Equipment::Slot EQUIP_POINTS[Equipment::EQUIP_VECTOREND] =

@@ -110,6 +110,8 @@
 
 #include "mumblemanager.h"
 
+#include "debug.h"
+
 Joystick *joystick = NULL;
 
 OkDialog *weightNotice = NULL;

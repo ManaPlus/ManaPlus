@@ -42,6 +42,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 const char* ACTION_THEME = "theme";
 const char* ACTION_FONT = "font";
 const char* ACTION_BOLD_FONT = "bold font";

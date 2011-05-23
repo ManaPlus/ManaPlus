@@ -24,6 +24,8 @@
 
 #include "log.h"
 
+#include "debug.h"
+
 Music::Music(Mix_Chunk *music):
     mChunk(music),
     mChannel(-1)

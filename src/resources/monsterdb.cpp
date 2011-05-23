@@ -34,6 +34,8 @@
 
 #include "configuration.h"
 
+#include "debug.h"
+
 #define OLD_TMWATHENA_OFFSET 1002
 
 namespace

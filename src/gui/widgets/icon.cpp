@@ -27,6 +27,8 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 Icon::Icon(const std::string &file)
     : mImage(0)
 {

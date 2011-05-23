@@ -39,6 +39,8 @@
 
 #include <algorithm>
 
+#include "debug.h"
+
 int DropDown::instances = 0;
 Image *DropDown::buttons[2][2];
 ImageRect DropDown::skin;

@@ -61,6 +61,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 extern std::string tradePartnerName;
 
 CommandHandler::CommandHandler()

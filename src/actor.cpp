@@ -26,6 +26,8 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 Actor::Actor():
         mMap(0)
 {}

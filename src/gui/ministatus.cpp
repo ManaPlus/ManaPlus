@@ -46,6 +46,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 extern volatile int tick_time;
 
 MiniStatusWindow::MiniStatusWindow():

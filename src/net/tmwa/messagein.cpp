@@ -31,6 +31,8 @@
 #include <SDL.h>
 #include <SDL_endian.h>
 
+#include "debug.h"
+
 #define MAKEWORD(low, high) \
     ((unsigned short)(((unsigned char)(low)) | \
     ((unsigned short)((unsigned char)(high))) << 8))

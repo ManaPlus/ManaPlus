@@ -46,6 +46,8 @@
 
 #include <math.h>
 
+#include "debug.h"
+
 class ItemsModal : public gcn::ListModel
 {
 public:

@@ -52,6 +52,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     Window(_("Create Character"), true, parent),
     mCharSelectDialog(parent),

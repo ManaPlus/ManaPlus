@@ -32,6 +32,8 @@
 
 #include "resources/itemdb.h"
 
+#include "debug.h"
+
 ItemLinkHandler::ItemLinkHandler()
 {
     mItemPopup = new ItemPopup;

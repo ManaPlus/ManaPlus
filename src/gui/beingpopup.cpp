@@ -35,6 +35,7 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
 
 BeingPopup::BeingPopup():
     Popup("BeingPopup")

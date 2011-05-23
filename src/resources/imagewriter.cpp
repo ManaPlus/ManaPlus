@@ -28,6 +28,8 @@
 #include <SDL.h>
 #include <string>
 
+#include "debug.h"
+
 bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
 {
     if (!surface)

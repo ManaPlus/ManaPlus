@@ -78,6 +78,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 std::string tradePartnerName("");
 
 PopupMenu::PopupMenu():

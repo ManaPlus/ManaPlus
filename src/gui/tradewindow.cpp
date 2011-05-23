@@ -53,6 +53,8 @@
 
 #include <sstream>
 
+#include "debug.h"
+
 #define CAPTION_PROPOSE _("Propose trade")
 #define CAPTION_CONFIRMED _("Confirmed. Waiting...")
 #define CAPTION_ACCEPT _("Agree trade")

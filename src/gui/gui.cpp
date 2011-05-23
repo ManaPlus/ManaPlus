@@ -45,6 +45,8 @@
 #include <guichan/exception.hpp>
 #include <guichan/image.hpp>
 
+#include "debug.h"
+
 // Guichan stuff
 Gui *gui = 0;
 SDLInput *guiInput = 0;

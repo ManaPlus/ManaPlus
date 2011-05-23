@@ -65,6 +65,8 @@
 
 #include <sys/stat.h>
 
+#include "debug.h"
+
 extern std::string tradePartnerName;
 ShopWindow::DialogList ShopWindow::instances;
 

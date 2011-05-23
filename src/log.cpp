@@ -39,6 +39,8 @@
 
 #include <sys/time.h>
 
+#include "debug.h"
+
 Logger::Logger():
     mLogToStandardOut(true),
     mChatWindow(NULL),

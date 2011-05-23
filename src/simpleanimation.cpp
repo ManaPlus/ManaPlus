@@ -32,6 +32,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "debug.h"
+
 SimpleAnimation::SimpleAnimation(Animation *animation):
     mAnimation(animation),
     mAnimationTime(0),

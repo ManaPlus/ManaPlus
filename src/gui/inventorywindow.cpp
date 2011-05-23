@@ -59,6 +59,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *inventory):

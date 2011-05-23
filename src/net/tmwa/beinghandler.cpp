@@ -51,6 +51,8 @@
 
 #include <iostream>
 
+#include "debug.h"
+
 extern Net::BeingHandler *beingHandler;
 
 namespace TmwAthena

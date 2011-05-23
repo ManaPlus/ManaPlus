@@ -35,6 +35,8 @@
 
 #include <guichan/exception.hpp>
 
+#include "debug.h"
+
 const unsigned int CACHE_SIZE = 256;
 const unsigned int CACHE_SIZE_SMALL1 = 2;
 const unsigned int CACHE_SIZE_SMALL2 = 50;

@@ -23,6 +23,8 @@
 
 #include "gui/charselectdialog.h"
 
+#include "debug.h"
+
 using namespace Net;
 
 void CharHandler::updateCharSelectDialog()

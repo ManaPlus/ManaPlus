@@ -34,6 +34,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
     mDirection(DIRECTION_DOWN),
     mLastTime(0),

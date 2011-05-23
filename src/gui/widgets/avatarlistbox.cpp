@@ -40,6 +40,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 int AvatarListBox::instances = 0;
 Image *AvatarListBox::onlineIcon = 0;
 Image *AvatarListBox::offlineIcon = 0;

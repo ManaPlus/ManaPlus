@@ -10,7 +10,18 @@ if ENABLE_PORTABLE
 manaplus_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
-manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
+if ENABLE_MEM_DEBUG
+manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG
+
+manaplus_SOURCES = debug/debug_new.cpp \
+	      debug/debug_new.h \
+	      debug/fast_mutex.h \
+	      debug/static_assert.h
+else
+manaplus_SOURCES =
+endif
+
+manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
 	      gui/widgets/battletab.cpp \
 	      gui/widgets/battletab.h \
@@ -374,6 +385,7 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      configlistener.h \
 	      configuration.cpp \
 	      configuration.h \
+	      debug.h \
 	      defaults.cpp \
 	      defaults.h \
 	      effectmanager.cpp \
@@ -600,6 +612,7 @@ manaplus_SOURCES += \
 manaplus_SOURCES += \
 	      mumblemanager.cpp \
 	      mumblemanager.h
+
 
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in

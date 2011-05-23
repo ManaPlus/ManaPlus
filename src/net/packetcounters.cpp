@@ -22,6 +22,8 @@
 
 #include "net/packetcounters.h"
 
+#include "debug.h"
+
 extern volatile int cur_time;
 extern volatile bool runCounters;
 

@@ -46,6 +46,8 @@
 
 #include <guichan/widgets/tabbedarea.hpp>
 
+#include "debug.h"
+
 #define MAX_WORD_SIZE 50
 
 ChatTab::ChatTab(const std::string &name) :

@@ -36,6 +36,8 @@
 #include "utils/dtor.h"
 #include "utils/stringutils.h"
 
+#include "debug.h"
+
 SpellManager::SpellManager()
 {
     //fillSpells();

@@ -50,6 +50,8 @@
 #include <guichan/mouseinput.hpp>
 #include <guichan/selectionlistener.hpp>
 
+#include "debug.h"
+
 // TODO: Add support for adding items to the item shortcut window (global
 // itemShortcut).
 

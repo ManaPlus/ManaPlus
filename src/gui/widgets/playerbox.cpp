@@ -34,6 +34,8 @@
 
 #include "utils/dtor.h"
 
+#include "debug.h"
+
 int PlayerBox::instances = 0;
 float PlayerBox::mAlpha = 1.0;
 ImageRect PlayerBox::background;

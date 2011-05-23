@@ -38,6 +38,8 @@
 
 #include <cassert>
 
+#include "debug.h"
+
 namespace
 {
     ItemDB::ItemInfos mItemInfos;
