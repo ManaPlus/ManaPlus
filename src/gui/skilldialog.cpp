@@ -144,8 +144,16 @@ class SkillListBox : public ListBox
 {
 public:
     SkillListBox(SkillModel *model):
-            ListBox(model)
-    {}
+        ListBox(model),
+        mModel(model)
+    {
+    }
+
+    ~SkillListBox()
+    {
+        delete mModel;
+        mModel = 0;
+    }
 
     SkillInfo *getSelectedInfo()
     {
@@ -196,6 +204,9 @@ public:
 
     unsigned int getRowHeight() const
     { return 34; }
+
+private:
+    SkillModel *mModel;
 };
 
 class SkillTab : public Tab
@@ -308,12 +319,14 @@ void SkillDialog::loadSkills(const std::string &file)
     {
         mTabs->setSelectedTab(static_cast<unsigned int>(0));
 
-        while (mTabs->getSelectedTabIndex() != -1)
+        while (mTabs->getNumberOfTabs() > 0)
         {
-            gcn::Tab *tab = mTabs->getSelectedTab();
-            if (tab)
-                mTabs->removeTabWithIndex(mTabs->getSelectedTabIndex());
+            const int idx = mTabs->getNumberOfTabs() - 1;
+            Tab *tab = mTabs->getTabByIndex(idx);
+            Widget *widget = mTabs->getWidgetByIndex(idx);
+            mTabs->removeTab(tab);
             delete tab;
+            delete widget;
         }
     }
 
@@ -363,6 +376,7 @@ void SkillDialog::loadSkills(const std::string &file)
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
             tab = new SkillTab("Skills", listbox);
+            mDeleteTabs.push_back(tab);
 
             mTabs->addTab(tab, scroll);
 
@@ -417,6 +431,7 @@ void SkillDialog::loadSkills(const std::string &file)
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
             tab = new SkillTab(setName, listbox);
+            mDeleteTabs.push_back(tab);
 
             mTabs->addTab(tab, scroll);
         }

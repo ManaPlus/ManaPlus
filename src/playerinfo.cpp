@@ -330,4 +330,10 @@ void init()
     mListener = new PlayerInfoListener();
 }
 
+void deinit()
+{
+    delete mListener;
+    mListener = 0;
+}
+
 } // namespace PlayerInfo

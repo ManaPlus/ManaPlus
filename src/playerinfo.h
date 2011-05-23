@@ -223,6 +223,8 @@ namespace PlayerInfo
      */
     void init();
 
+    void deinit();
+
     void triggerAttr(int id);
 
     void triggerAttr(int id, int old);

@@ -86,6 +86,7 @@ class SkillDialog : public Window, public gcn::ActionListener
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
         TabbedArea *mTabs;
+        std::list<Tab*> mDeleteTabs;
         Label *mPointsLabel;
         Button *mIncreaseButton;
         SkillModel *mDefaultModel;

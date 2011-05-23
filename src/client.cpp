@@ -566,6 +566,11 @@ Client::~Client()
     NPCDB::unload();
     StatusEffect::unload();
 
+    delete mumbleManager;
+    mumbleManager = 0;
+
+    PlayerInfo::deinit();
+
     // Before config.write() since it writes the shortcuts to the config
     for (int f = 0; f < SHORTCUT_TABS; f ++)
     {

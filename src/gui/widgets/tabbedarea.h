@@ -70,6 +70,10 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          */
         Tab *getTab(const std::string &name) const;
 
+        Tab *getTabByIndex(int index) const;
+
+        gcn::Widget *getWidgetByIndex(int index) const;
+
         /**
          * Returns the widget with the tab that has specified caption
          */

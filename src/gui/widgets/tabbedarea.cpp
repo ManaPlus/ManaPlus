@@ -428,6 +428,20 @@ void TabbedArea::updateArrowEnableState()
     }
 }
 
+Tab *TabbedArea::getTabByIndex(int index) const
+{
+    if (index < 0 || index >= static_cast<int>(mTabs.size()))
+        return 0;
+    return static_cast<Tab*>(mTabs[index].first);
+}
+
+gcn::Widget *TabbedArea::getWidgetByIndex(int index) const
+{
+    if (index < 0 || index >= static_cast<int>(mTabs.size()))
+        return 0;
+    return mTabs[index].second;
+}
+
 /*
 void TabbedArea::moveLeft(gcn::Tab *tab)
 {
