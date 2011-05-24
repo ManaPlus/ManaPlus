@@ -52,6 +52,7 @@ BeingInfo::~BeingInfo()
     delete_all(mSounds);
     delete_all(mAttacks);
     mSounds.clear();
+    delete_all(mDisplay.sprites);
 }
 
 void BeingInfo::setDisplay(SpriteDisplay display)

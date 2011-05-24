@@ -133,6 +133,7 @@ void ColorDB::loadColorLists()
             mColorLists[name] = colors;
         }
     }
+    delete doc;
 }
 
 void ColorDB::unload()
