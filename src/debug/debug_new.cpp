@@ -234,7 +234,8 @@ const int ALIGNED_LIST_ITEM_SIZE = align(sizeof(new_ptr_list_t));
 /**
  * List of all new'd pointers.
  */
-static new_ptr_list_t new_ptr_list = {
+static new_ptr_list_t new_ptr_list =
+{
     &new_ptr_list,
     &new_ptr_list,
     0,
@@ -340,9 +341,8 @@ static bool print_position_from_addr(const void* addr)
         strcpy(cmd + sizeof addr2line_cmd - 1, new_progname);
         size_t len = strlen(cmd);
 #if   defined(__CYGWIN__) || defined(_WIN32)
-        if (len <= 4
-                || (strcmp(cmd + len - 4, ".exe") != 0 &&
-                    strcmp(cmd + len - 4, ".EXE") != 0))
+        if (len <= 4 || (strcmp(cmd + len - 4, ".exe") != 0
+            && strcmp(cmd + len - 4, ".EXE") != 0))
         {
             strcpy(cmd + len, ".exe");
             len += 4;
@@ -434,10 +434,12 @@ static void print_position(const void* ptr, int line)
 static bool check_tail(new_ptr_list_t* ptr)
 {
     const unsigned char* const pointer = (unsigned char*)ptr +
-                            ALIGNED_LIST_ITEM_SIZE + ptr->size;
+        ALIGNED_LIST_ITEM_SIZE + ptr->size;
     for (int i = 0; i < _DEBUG_NEW_TAILCHECK; ++i)
+    {
         if (pointer[i] != _DEBUG_NEW_TAILCHECK_CHAR)
             return false;
+    }
     return true;
 }
 #endif
@@ -478,10 +480,14 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
     ptr->file = file;
 #else
     if (line)
+    {
         strncpy(ptr->file, file, _DEBUG_NEW_FILENAME_LEN - 1)
                 [_DEBUG_NEW_FILENAME_LEN - 1] = '\0';
+    }
     else
+    {
         ptr->addr = (void*)file;
+    }
 #endif
     ptr->line = line;
     ptr->is_array = is_array;
@@ -528,7 +534,7 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
     if (pointer == NULL)
         return;
     new_ptr_list_t* ptr =
-            (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
+        (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
     if (ptr->magic != MAGIC)
     {
         {
@@ -651,16 +657,18 @@ int check_mem_corruption()
     fast_mutex_autolock lock_output(new_output_lock);
     fprintf(new_output_fp, "*** Checking for memory corruption: START\n");
     for (new_ptr_list_t* ptr = new_ptr_list.next;
-            ptr != &new_ptr_list;
-            ptr = ptr->next)
+         ptr != &new_ptr_list;
+         ptr = ptr->next)
     {
         const char* const pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
         if (ptr->magic == MAGIC
 #if _DEBUG_NEW_TAILCHECK
-                && check_tail(ptr)
+            && check_tail(ptr)
 #endif
-                )
+        )
+        {
             continue;
+        }
 #if _DEBUG_NEW_TAILCHECK
         if (ptr->magic != MAGIC)
         {
@@ -684,7 +692,7 @@ int check_mem_corruption()
         else
             print_position(ptr->addr, ptr->line);
         fprintf(new_output_fp, ")\n");
-        ++corrupt_cnt;
+        ++ corrupt_cnt;
     }
     fprintf(new_output_fp, "*** Checking for memory corruption: %d FOUND\n",
             corrupt_cnt);
@@ -696,7 +704,7 @@ void __debug_new_recorder::_M_process(void* pointer)
     if (pointer == NULL)
         return;
     new_ptr_list_t* ptr =
-            (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
+        (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
     if (ptr->magic != MAGIC || ptr->line != 0)
     {
         fast_mutex_autolock lock(new_output_lock);

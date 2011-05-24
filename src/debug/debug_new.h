@@ -105,10 +105,10 @@ void operator delete[](void*) throw();
 #endif
 
 /* Control variables */
-extern bool new_autocheck_flag; // default to true: call check_leaks() on exit
-extern bool new_verbose_flag;   // default to false: no verbose information
-extern FILE* new_output_fp;     // default to stderr: output to console
-extern const char* new_progname;// default to NULL; should be assigned argv[0]
+extern bool new_autocheck_flag;  // default to true: call check_leaks() on exit
+extern bool new_verbose_flag;    // default to false: no verbose information
+extern FILE* new_output_fp;      // default to stderr: output to console
+extern const char* new_progname; // default to NULL; should be assigned argv[0]
 
 /**
  * @def DEBUG_NEW

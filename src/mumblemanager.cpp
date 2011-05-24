@@ -109,7 +109,8 @@ void MumbleManager::init()
 
     if (shmfd < 0)
     {
-        logger->log1("MumbleManager::init can't open shared memory MumbleLink");
+        logger->log1("MumbleManager::init can't"
+            " open shared memory MumbleLink");
         return;
     }
 
