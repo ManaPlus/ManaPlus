@@ -477,6 +477,7 @@ SET(SRCS
     configlistener.h
     configuration.cpp
     configuration.h
+    debug.h
     defaults.cpp
     defaults.h
     effectmanager.cpp
