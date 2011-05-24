@@ -108,6 +108,8 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          */
         void removeTab(gcn::Tab *tab);
 
+        void removeAll();
+
         /**
          * Overload the logic function since it's broken in guichan 0.8.
          */

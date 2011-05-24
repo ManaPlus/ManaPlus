@@ -1840,6 +1840,10 @@ ObjectsLayer::ObjectsLayer(unsigned width, unsigned height) :
 
 ObjectsLayer::~ObjectsLayer()
 {
+    const unsigned size = mWidth * mHeight;
+    for (unsigned f = 0; f < size; f ++)
+        delete mTiles[f];
+
     delete [] mTiles;
     mTiles = 0;
 }

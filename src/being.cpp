@@ -2220,6 +2220,12 @@ void Being::undressItemById(int id)
     }
 }
 
+void Being::clearCache()
+{
+    delete_all(beingInfoCache);
+    beingInfoCache.clear();
+}
+
 BeingEquipBackend::BeingEquipBackend(Being *being):
     mBeing(being)
 {

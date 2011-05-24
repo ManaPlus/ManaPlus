@@ -131,6 +131,8 @@ ShortcutWindow::ShortcutWindow(const std::string &title, int width, int height)
 
 ShortcutWindow::~ShortcutWindow()
 {
+    if (mTabs)
+        mTabs->removeAll();
     delete mTabs;
     mTabs = 0;
     delete mItems;

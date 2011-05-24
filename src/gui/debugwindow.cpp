@@ -80,6 +80,16 @@ DebugWindow::DebugWindow():
     loadWindowState();
 }
 
+DebugWindow::~DebugWindow()
+{
+    delete mMapWidget;
+    mMapWidget = 0;
+    delete mTargetWidget;
+    mTargetWidget = 0;
+    delete mNetWidget;
+    mNetWidget = 0;
+}
+
 void DebugWindow::logic()
 {
     if (!isVisible() || !mTabs)

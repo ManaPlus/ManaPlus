@@ -715,6 +715,8 @@ class Being : public ActorSprite, public ConfigListener
 
         void undressItemById(int id);
 
+        static void clearCache();
+
     protected:
         /**
          * Sets the new path for this being.

@@ -118,6 +118,8 @@ class DebugWindow : public Window
          */
         DebugWindow();
 
+        ~DebugWindow();
+
         /**
          * Logic (updates components' size and infos)
          */

@@ -26,6 +26,7 @@
 
 #include "actorspritemanager.h"
 #include "actorsprite.h"
+#include "being.h"
 #include "channelmanager.h"
 #include "client.h"
 #include "commandhandler.h"
@@ -96,6 +97,7 @@
 #include "resources/mapreader.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 
@@ -398,6 +400,8 @@ Game::~Game()
     del_0(spellManager);
     del_0(spellShortcut);
     del_0(mumbleManager);
+
+    Being::clearCache();
 
     mInstance = 0;
 

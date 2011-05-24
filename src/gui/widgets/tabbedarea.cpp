@@ -442,6 +442,24 @@ gcn::Widget *TabbedArea::getWidgetByIndex(int index) const
     return mTabs[index].second;
 }
 
+void TabbedArea::removeAll()
+{
+    if (getSelectedTabIndex() != -1)
+    {
+        setSelectedTab(static_cast<unsigned int>(0));
+
+    }
+    while (getNumberOfTabs() > 0)
+    {
+        const int idx = getNumberOfTabs() - 1;
+        gcn::Tab *tab = mTabs[idx].first;
+        Widget *widget = mTabs[idx].second;
+        removeTab(tab);
+        delete tab;
+        delete widget;
+    }
+}
+
 /*
 void TabbedArea::moveLeft(gcn::Tab *tab)
 {

@@ -314,21 +314,7 @@ void SkillDialog::update()
 
 void SkillDialog::loadSkills(const std::string &file)
 {
-    // Fixes issues with removing tabs
-    if (mTabs->getSelectedTabIndex() != -1)
-    {
-        mTabs->setSelectedTab(static_cast<unsigned int>(0));
-
-        while (mTabs->getNumberOfTabs() > 0)
-        {
-            const int idx = mTabs->getNumberOfTabs() - 1;
-            Tab *tab = mTabs->getTabByIndex(idx);
-            Widget *widget = mTabs->getWidgetByIndex(idx);
-            mTabs->removeTab(tab);
-            delete tab;
-            delete widget;
-        }
-    }
+    mTabs->removeAll();
 
     delete_all(mSkills);
     mSkills.clear();
