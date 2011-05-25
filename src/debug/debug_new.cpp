@@ -112,7 +112,7 @@
  * value makes the size of new_ptr_list_t 64 on 32-bit platforms.
  */
 #ifndef _DEBUG_NEW_FILENAME_LEN
-#define _DEBUG_NEW_FILENAME_LEN 44
+#define _DEBUG_NEW_FILENAME_LEN 100
 #endif
 
 /**
