@@ -210,6 +210,7 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 logger->log1("Error: no valid imageset");
                 continue;
             }
+            mTempSets.push_back(imageset);
 
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
@@ -293,6 +294,7 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 logger->log1("Error: no valid imageset");
                 continue;
             }
+            mTempSets.push_back(imageset);
 
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
@@ -437,6 +439,14 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 
 ParticleEmitter::~ParticleEmitter()
 {
+    for (std::list<ImageSet*>::iterator
+         i = mTempSets.begin();
+         i != mTempSets.end(); ++i)
+    {
+        if (*i)
+            (*i)->decRef();
+    }
+
     if (mParticleImage)
         mParticleImage->decRef();
 }

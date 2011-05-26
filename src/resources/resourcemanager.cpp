@@ -138,8 +138,16 @@ ResourceManager::~ResourceManager()
         }
 #endif
         if (iter->second)
+        {
             cleanUp(iter->second);
-        ++iter;
+            ResourceIterator toErase = iter;
+            ++iter;
+            mResources.erase(toErase);
+        }
+        else
+        {
+            ++iter;
+        }
     }
 }
 
