@@ -32,6 +32,7 @@
 #include <list>
 
 class Image;
+class ImageSet;
 class Map;
 class Particle;
 
@@ -150,5 +151,7 @@ class ParticleEmitter
 
         /** List of emitters the spawned particles are equipped with */
         std::list<ParticleEmitter> mParticleChildEmitters;
+
+        std::list<ImageSet*> mTempSets;
 };
 #endif

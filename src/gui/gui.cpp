@@ -264,6 +264,8 @@ void Gui::setUseCustomCursor(bool customCursor)
             SDL_ShowCursor(SDL_DISABLE);
 
             // Load the mouse cursor
+            if (mMouseCursors)
+                mMouseCursors->decRef();
             mMouseCursors = Theme::getImageSetFromTheme("mouse.png", 40, 40);
 
             if (!mMouseCursors)
