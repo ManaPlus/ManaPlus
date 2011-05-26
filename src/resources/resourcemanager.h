@@ -263,6 +263,7 @@ class ResourceManager
         time_t mOldestOrphan;
         std::string mSelectedSkin;
         std::string mSkinName;
+        bool mDestruction;
 };
 
 #endif
