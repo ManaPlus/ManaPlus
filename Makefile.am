@@ -13,8 +13,13 @@ EXTRA_DIST = $(desktop_DATA) \
 	     CMake/Modules/FindGuichan.cmake \
 	     CMake/Modules/FindLibIntl.cmake \
 	     CMake/Modules/FindSDL_gfx.cmake \
-	     mana.cbp \
-	     manaplus.menu
+	     manaplus.cbp \
+	     manaplus.menu \
+	     manaplus.spec \
+	     AUTHORS \
+	     ChangeLog \
+	     INSTALL \
+	     README
 
 # Autopoint m4 stuff
 ACLOCAL_AMFLAGS = -I m4

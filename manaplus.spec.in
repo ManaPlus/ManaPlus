@@ -1,6 +1,6 @@
 Name:		manaplus
-Version:	1.1.4.17
-Release:	%mkrel 1
+Version:	@PACKAGE_VERSION@
+Release:	1-manaplus
 Summary:	A client for Evol Online and The Mana World: 2D MMORPG
 Group:		Games/Other
 License:	GPLv2+
@@ -38,7 +38,6 @@ diverse interactive world.
 %setup -q -n manaplus
 
 %build
-autoreconf -i
 %configure2_5x	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir} \
 		--disable-rpath

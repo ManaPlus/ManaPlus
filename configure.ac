@@ -6,6 +6,7 @@ AC_LANG_CPLUSPLUS
 
 # Checks for programs.
 AC_PROG_CXX
+AM_PROG_CC_C_O
 AC_PROG_INSTALL
 
 # Checks for typedefs, structures, and compiler characteristics.
@@ -168,6 +169,7 @@ esac],[memdebug_enabled=false])
 AM_CONDITIONAL(ENABLE_MEM_DEBUG, test x$memdebug_enabled = xtrue)
 
 AC_CONFIG_FILES([
+manaplus.spec
 Makefile
 src/Makefile
 data/Makefile

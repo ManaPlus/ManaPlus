@@ -5,5 +5,5 @@ EXTRA_DIST = $(man6_MANS) \
 	     FAQ.txt \
 	     HACKING.txt \
 	     SOURCE/Doxyfile \
-	     items.txt \
-	     progression.txt
+	     sounddev.txt \
+	     clientupdates.txt
