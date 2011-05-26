@@ -9,6 +9,7 @@
 ##9Andrei Karas (4144) <akaras inbox ru>
 ##9Ben Longbons <b.r.longbons gmail com>
 ##9Helmut Grohne (gnurfk) <helmut subdivi de>
+##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>
 ##9Mihail Barer (Necromonger) <>
  
 ##3== Переводчики ==
