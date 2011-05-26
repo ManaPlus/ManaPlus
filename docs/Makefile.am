@@ -6,4 +6,5 @@ EXTRA_DIST = $(man6_MANS) \
 	     HACKING.txt \
 	     SOURCE/Doxyfile \
 	     sounddev.txt \
-	     clientupdates.txt
+	     clientupdates.txt \
+	     example.mana

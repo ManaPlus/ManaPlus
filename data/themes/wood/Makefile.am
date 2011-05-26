@@ -53,4 +53,5 @@ gui_DATA =				\
 	window.png
 
 EXTRA_DIST =				\
-	$(gui_DATA)
+	$(gui_DATA) \
+	CMakeLists.txt

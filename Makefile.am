@@ -9,6 +9,7 @@ desktop_DATA = manaplus.desktop
 EXTRA_DIST = $(desktop_DATA) \
 	     CMakeLists.txt \
 	     po/CMakeLists.txt \
+	     po/*.po \
 	     CMake/Modules/FindENet.cmake \
 	     CMake/Modules/FindGuichan.cmake \
 	     CMake/Modules/FindLibIntl.cmake \
@@ -19,7 +20,8 @@ EXTRA_DIST = $(desktop_DATA) \
 	     AUTHORS \
 	     ChangeLog \
 	     INSTALL \
-	     README
+	     README \
+	     README.cmake
 
 # Autopoint m4 stuff
 ACLOCAL_AMFLAGS = -I m4

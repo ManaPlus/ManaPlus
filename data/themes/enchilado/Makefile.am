@@ -14,4 +14,5 @@ gui_DATA =				\
 	window.xml
 
 EXTRA_DIST =				\
-	$(gui_DATA)
+	$(gui_DATA) \
+	CMakeLists.txt

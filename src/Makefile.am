@@ -615,7 +615,12 @@ manaplus_SOURCES += \
 
 
 EXTRA_DIST = CMakeLists.txt \
-	     winver.h.in
+	     winver.h.in \
+	     enet/ChangeLog \
+	     enet/design.txt \
+	     enet/LICENSE \
+	     enet/README \
+	     mana.rc
 
 # set the include path found by configure
 INCLUDES = $(all_includes)

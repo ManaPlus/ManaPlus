@@ -22,6 +22,7 @@ gui_DATA =				\
 	hscroll_right_pressed.png	\
 	item_shortcut_bgr.png		\
 	mouse.png			\
+	progress-indicator.png		\
 	radioin.png			\
 	radioin_highlight.png		\
 	radioout.png			\
@@ -53,4 +54,5 @@ gui_DATA =				\
 	window.png
 
 EXTRA_DIST =				\
-	$(gui_DATA)
+	$(gui_DATA) \
+	CMakeLists.txt

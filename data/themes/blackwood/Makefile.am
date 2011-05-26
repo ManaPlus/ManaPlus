@@ -29,6 +29,7 @@ gui_DATA =				\
 	slider.png			\
 	slider_hilight.png		\
 	speechbubble.xml		\
+	speech_bubble.png		\
 	sticky_button.png		\
 	tab.png				\
 	tab_hilight.png			\
@@ -50,4 +51,5 @@ gui_DATA =				\
 	window.png
 
 EXTRA_DIST =				\
-	$(gui_DATA)
+	$(gui_DATA) \
+	CMakeLists.txt
