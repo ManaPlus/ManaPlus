@@ -47,16 +47,18 @@
 
 ResourceManager *ResourceManager::instance = NULL;
 
-ResourceManager::ResourceManager()
-  : mOldestOrphan(0),
+ResourceManager::ResourceManager() :
+    mOldestOrphan(0),
     mSelectedSkin(""),
-    mSkinName("")
+    mSkinName(""),
+    mDestruction(0)
 {
     logger->log1("Initializing resource manager...");
 }
 
 ResourceManager::~ResourceManager()
 {
+    mDestruction = true;
     mResources.insert(mOrphanedResources.begin(), mOrphanedResources.end());
 
     // Release any remaining spritedefs first because they depend on image sets
@@ -526,7 +528,7 @@ SpriteDef *ResourceManager::getSprite(const std::string &path, int variant)
 
 void ResourceManager::release(Resource *res)
 {
-    if (!res)
+    if (!res || mDestruction)
         return;
 
     ResourceIterator resIter = mResources.find(res->mIdPath);

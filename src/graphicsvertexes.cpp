@@ -132,6 +132,7 @@ void GraphicsVertexes::init(int x, int y, int w, int h)
     mH = h;
     for (int f = 0; f < 10; f ++)
     {
+        delete_all(sdl[mPtr].mList);
         sdl[mPtr].mList.clear();
 #ifdef USE_OPENGL
         ogl[mPtr].init();
@@ -156,6 +157,7 @@ void GraphicsVertexes::pushSDL(SDL_Rect r1, SDL_Rect r2)
 
 void GraphicsVertexes::clearSDL()
 {
+    delete_all(sdl[mPtr].mList);
     sdl[mPtr].mList.clear();
 }
 
