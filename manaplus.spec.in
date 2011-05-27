@@ -38,11 +38,11 @@ diverse interactive world.
 
 %build
 %configure
-%make
+make
 
 %install
 rm -rf %{buildroot}
-%makeinstall
+make install
 
 %find_lang %{name}
 
