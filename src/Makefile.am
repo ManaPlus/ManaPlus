@@ -260,6 +260,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/worldselectdialog.cpp \
 	      gui/worldselectdialog.h \
 	      net/adminhandler.h \
+	      net/beinghandler.h \
+	      net/buysellhandler.h \
 	      net/charhandler.cpp \
 	      net/charhandler.h \
 	      net/chathandler.h \
@@ -467,6 +469,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      sprite.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
+	      SDL_gfxBlitFunc.h \
 	      text.cpp \
 	      text.h \
 	      textmanager.cpp \
@@ -620,7 +623,9 @@ EXTRA_DIST = CMakeLists.txt \
 	     enet/design.txt \
 	     enet/LICENSE \
 	     enet/README \
-	     mana.rc
+	     mana.rc \
+	     SDLMain.h \
+	     SDLMain.m
 
 # set the include path found by configure
 INCLUDES = $(all_includes)

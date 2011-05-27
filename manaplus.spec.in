@@ -6,6 +6,7 @@ Group:		Games/Other
 License:	GPLv2+
 Url:		http://manaplus.evolonline.org/
 Source0:	http://download.evolonline.org/manaplus/download/%{version}/%{name}-%{version}.tar.bz2
+BuildRoot:	%{_topdir}/%{name}-%{version}-root
 
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_mixer-devel
@@ -35,7 +36,7 @@ open source MMORPG. TMW uses 2D graphics and aims to create a large and
 diverse interactive world.
 
 %prep
-%setup -q -n manaplus
+%setup -q
 
 %build
 %configure2_5x	--bindir=%{_gamesbindir} \
@@ -65,6 +66,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri May 27 2011 Maarten Vanraes <maarten.vanraes@gmail.com> 1.1.5.15
+- Generalise spec file to work for multiple rpm-based distros
+
 * Sun Apr 17 2011 alien <alien> 1.1.4.17-1.mga1
 + Revision: 87336
 - upgrade to 1.1.4.17
