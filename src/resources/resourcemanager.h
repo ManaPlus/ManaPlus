@@ -248,13 +248,14 @@ class ResourceManager
         { return &mOrphanedResources; }
 #endif
 
+        void cleanOrphans(bool always = false);
+
     private:
         /**
          * Deletes the resource after logging a cleanup message.
          */
         static void cleanUp(Resource *resource);
 
-        void cleanOrphans();
 
         static ResourceManager *instance;
         std::set<SDL_Surface*> deletedSurfaces;

@@ -171,14 +171,14 @@ void ResourceManager::cleanUp(Resource *res)
     delete res;
 }
 
-void ResourceManager::cleanOrphans()
+void ResourceManager::cleanOrphans(bool always)
 {
     timeval tv;
     gettimeofday(&tv, NULL);
     // Delete orphaned resources after 30 seconds.
     time_t oldest = tv.tv_sec, threshold = oldest - 30;
 
-    if (mOrphanedResources.empty() || mOldestOrphan >= threshold)
+    if (mOrphanedResources.empty() || (!always && mOldestOrphan >= threshold))
         return;
 
     ResourceIterator iter = mOrphanedResources.begin();
