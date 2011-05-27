@@ -14,7 +14,7 @@ Buildrequires:	SDL_net-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_gfx-devel
 BuildRequires:	physfs-devel
-BuildRequires:	curl-devel
+BuildRequires:	libcurl-devel
 BuildRequires:	guichan-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libpng-devel
@@ -37,14 +37,14 @@ diverse interactive world.
 %setup -q
 
 %build
-%configure2_5x	--bindir=%{_gamesbindir} \
+%configure	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir} \
 		--disable-rpath
 %make
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+%makeinstall
 
 %find_lang %{name}
 
@@ -59,8 +59,6 @@ rm -rf %{buildroot}
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man6/%{name}*
-
-
 
 
 %changelog
