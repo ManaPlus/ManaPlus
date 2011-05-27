@@ -151,6 +151,7 @@ ResourceManager::~ResourceManager()
             ++iter;
         }
     }
+    clearScheduled();
 }
 
 void ResourceManager::cleanUp(Resource *res)
