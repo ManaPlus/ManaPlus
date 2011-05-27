@@ -37,9 +37,7 @@ diverse interactive world.
 %setup -q
 
 %build
-%configure	--bindir=%{_gamesbindir} \
-		--datadir=%{_gamesdatadir} \
-		--disable-rpath
+%configure
 %make
 
 %install
