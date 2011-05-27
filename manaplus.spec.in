@@ -42,7 +42,7 @@ make
 
 %install
 rm -rf %{buildroot}
-make install
+make ROOT="%{buildroot}" install
 
 %find_lang %{name}
 
@@ -52,8 +52,8 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING docs/*.txt NEWS README
-%{_gamesbindir}/%{name}
-%{_gamesdatadir}/%{name}
+%{_bindir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man6/%{name}*
