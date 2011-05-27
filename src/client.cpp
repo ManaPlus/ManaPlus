@@ -606,6 +606,8 @@ Client::~Client()
 
     logger->log1("Quitting6");
 
+    ActorSprite::unload();
+
     ResourceManager::deleteInstance();
 
     logger->log1("Quitting8");
