@@ -51,12 +51,12 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING docs/*.txt NEWS README
-%{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
-%{_mandir}/man6/%{name}*
+%attr(-, root, root) %doc AUTHORS ChangeLog COPYING docs/*.txt NEWS README
+%attr(4755, root, root) %{_bindir}/%{name}
+%attr(-, root, root) %{_datadir}/%{name}
+%attr(-, root, root) %{_datadir}/pixmaps/%{name}.png
+%attr(-, root, root) %{_datadir}/applications/%{name}.desktop
+%attr(-, root, root) %{_mandir}/man6/%{name}*
 
 
 %changelog
