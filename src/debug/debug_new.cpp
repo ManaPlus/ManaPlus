@@ -39,6 +39,7 @@
  *
  */
 
+#ifdef ENABLE_MEM_DEBUG
 #include <new>
 #include <assert.h>
 #include <limits.h>
@@ -850,3 +851,5 @@ __debug_new_counter::~__debug_new_counter()
 #endif
         }
 }
+
+#endif
