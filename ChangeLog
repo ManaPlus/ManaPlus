@@ -1,3 +1,19 @@
+2011-05-29 New release 1.1.5.29
+ManaPlus:
+fix: infinite paste.
+fix: remove home location by mouse.
+fix: walk path in special collision.
+fix: restore color hightlight smaller money in trade window.
+add: moved classic theme to default. Default theme renamed to Mana.
+add: support for images in help window.
+add: evol server type (now it works same as tmw)
+add: show other players equipment by context menu item "show items".
+add: updated translations.
+add: complete Finnish translation (Byakushin).
+add: secure trades option to protect trade from some kind of cheats.
+add: show speach popup variable. time depend on message size.
+
+
 2011-05-15 New release 1.1.5.15
 ManaPlus:
 fix: targeting monster if monster added to priority attack list and "cycle mobs select" disabled.
