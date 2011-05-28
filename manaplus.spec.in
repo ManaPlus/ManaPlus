@@ -50,9 +50,8 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %attr(-, root, root) %doc AUTHORS ChangeLog COPYING docs/*.txt NEWS README
-%attr(4755, root, root) %{_bindir}/%{name}
+%attr(0755, root, root) %{_bindir}/%{name}
 %attr(-, root, root) %{_datadir}/%{name}
 %attr(-, root, root) %{_datadir}/pixmaps/%{name}.png
 %attr(-, root, root) %{_datadir}/applications/%{name}.desktop
