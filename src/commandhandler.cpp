@@ -1157,6 +1157,12 @@ void CommandHandler::handleDump(const std::string &args,
             + toString(res->size()));
     }
 }
+#elif defined ENABLE_MEM_DEBUG
+void CommandHandler::handleDump(const std::string &args _UNUSED_,
+                                ChatTab *tab _UNUSED_)
+{
+    check_leaks();
+}
 #else
 void CommandHandler::handleDump(const std::string &args _UNUSED_,
                                 ChatTab *tab _UNUSED_)

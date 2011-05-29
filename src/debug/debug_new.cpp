@@ -55,6 +55,8 @@
 #include "debug/fast_mutex.h"
 #include "debug/static_assert.h"
 
+//define DUMP_MEM_ADDRESSES 1
+
 #if !_FAST_MUTEX_CHECK_INITIALIZATION && !defined(_NOTHREADS)
 #error "_FAST_MUTEX_CHECK_INITIALIZATION not set: check_leaks may not work"
 #endif
@@ -220,6 +222,7 @@ struct new_ptr_list_t
     unsigned            line      :31;
     unsigned            is_array  :1;
     unsigned            magic;
+    unsigned            dumped;
 };
 
 /**
@@ -249,7 +252,8 @@ static new_ptr_list_t new_ptr_list =
     },
     0,
     0,
-    MAGIC
+    MAGIC,
+    false
 };
 
 /**
@@ -501,6 +505,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
         new_ptr_list.prev->next = ptr;
         new_ptr_list.prev = ptr;
     }
+    ptr->dumped = 0;
 #if _DEBUG_NEW_TAILCHECK
     memset((char*)pointer + size, _DEBUG_NEW_TAILCHECK_CHAR,
                                   _DEBUG_NEW_TAILCHECK);
@@ -608,9 +613,14 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
 int check_leaks()
 {
     int leak_cnt = 0;
+    int dumped_cnt = 0;
+    int new_cnt = 0;
+    unsigned long new_size = 0;
     fast_mutex_autolock lock_ptr(new_ptr_lock);
     fast_mutex_autolock lock_output(new_output_lock);
     new_ptr_list_t* ptr = new_ptr_list.next;
+    fprintf(new_output_fp, "---LEAKS LIST---\n");
+
     while (ptr != &new_ptr_list)
     {
         const char* const pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
@@ -628,20 +638,34 @@ int check_leaks()
                     pointer);
         }
 #endif
-        fprintf(new_output_fp,
-                "Leaked object at %p (size %u, ",
-                pointer,
-                (unsigned)ptr->size);
+#ifndef DUMP_MEM_ADDRESSES
         if (ptr->line != 0)
-            print_position(ptr->file, ptr->line);
-        else
-            print_position(ptr->addr, ptr->line);
-        fprintf(new_output_fp, ")\n");
+#endif
+        {
+            fprintf(new_output_fp,
+                    "Leaked object at %p (size %u, dump %u, ",
+                    pointer, (unsigned)ptr->size, ptr->dumped);
+            if (ptr->line != 0)
+                print_position(ptr->file, ptr->line);
+            else
+                print_position(ptr->addr, ptr->line);
+            fprintf(new_output_fp, ")\n");
+            ++ new_cnt;
+            new_size += (unsigned long)ptr->size;
+        }
+        if (ptr->dumped)
+            ++ dumped_cnt;
+
+        ++ ptr->dumped;
         ptr = ptr->next;
-        ++leak_cnt;
+        ++ leak_cnt;
     }
     if (new_verbose_flag || leak_cnt)
-        fprintf(new_output_fp, "*** %d leaks found\n", leak_cnt);
+    {
+        fprintf(new_output_fp, "*** %d leaks found, new %d "
+            "(size %lu), dumped count %d\n", leak_cnt, new_cnt,
+            new_size, dumped_cnt);
+    }
     return leak_cnt;
 }
 
