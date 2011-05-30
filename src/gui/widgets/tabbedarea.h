@@ -23,10 +23,10 @@
 #ifndef TABBEDAREA_H
 #define TABBEDAREA_H
 
-#include "guichan/widget.hpp"
-#include "guichan/widgetlistener.hpp"
-#include "guichan/widgets/container.hpp"
-#include "guichan/widgets/tabbedarea.hpp"
+#include <guichan/widget.hpp>
+#include <guichan/widgetlistener.hpp>
+#include <guichan/widgets/container.hpp>
+#include <guichan/widgets/tabbedarea.hpp>
 
 #include "gui/widgets/button.h"
 

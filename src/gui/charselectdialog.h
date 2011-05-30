@@ -31,8 +31,8 @@
 
 #include "net/charhandler.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/keylistener.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/keylistener.hpp>
 
 class CharacterDisplay;
 class LocalPlayer;

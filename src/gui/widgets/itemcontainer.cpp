@@ -47,8 +47,8 @@
 
 #include "utils/stringutils.h"
 
-#include "guichan/mouseinput.hpp"
-#include "guichan/selectionlistener.hpp"
+#include <guichan/mouseinput.hpp>
+#include <guichan/selectionlistener.hpp>
 
 #include "debug.h"
 

@@ -48,8 +48,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "guichan/key.hpp"
-#include "guichan/listmodel.hpp"
+#include <guichan/key.hpp>
+#include <guichan/listmodel.hpp>
 
 #include <SDL.h>
 

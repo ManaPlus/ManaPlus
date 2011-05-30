@@ -25,7 +25,7 @@
 
 #include <string>
 
-#include "guichan/mouselistener.hpp"
+#include <guichan/mouselistener.hpp>
 
 /**
  * A simple interface to windows that need to handle links from BrowserBox

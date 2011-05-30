@@ -31,7 +31,7 @@
 
 #include "resources/image.h"
 
-#include "guichan/actionlistener.hpp"
+#include <guichan/actionlistener.hpp>
 
 #include "debug.h"
 

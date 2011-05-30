@@ -23,11 +23,11 @@
 #ifndef PROGRESSBAR_H
 #define PROGRESSBAR_H
 
-#include "guichan/widget.hpp"
+#include <guichan/widget.hpp>
 
 #include <string>
 
-#include "guichan/widgetlistener.hpp"
+#include <guichan/widgetlistener.hpp>
 
 class Graphics;
 class GraphicsVertexes;

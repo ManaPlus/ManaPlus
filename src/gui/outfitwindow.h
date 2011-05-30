@@ -25,8 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/mouselistener.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/mouselistener.hpp>
 
 #define OUTFITS_COUNT 100
 #define OUTFIT_ITEM_COUNT 12

@@ -29,8 +29,8 @@
 
 #include "utils/mutex.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/keylistener.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/keylistener.hpp>
 
 #include <string>
 #include <vector>

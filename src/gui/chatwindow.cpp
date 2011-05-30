@@ -58,8 +58,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "guichan/focushandler.hpp"
-#include "guichan/focuslistener.hpp"
+#include <guichan/focushandler.hpp>
+#include <guichan/focuslistener.hpp>
 
 #include <sstream>
 

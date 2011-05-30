@@ -23,7 +23,7 @@
 #ifndef PLAYERBOX_H
 #define PLAYERBOX_H
 
-#include "guichan/widgets/scrollarea.hpp"
+#include <guichan/widgets/scrollarea.hpp>
 
 class Being;
 class ImageRect;

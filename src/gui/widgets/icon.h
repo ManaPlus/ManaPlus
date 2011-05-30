@@ -23,7 +23,7 @@
 #ifndef ICON_H
 #define ICON_H
 
-#include "guichan/widget.hpp"
+#include <guichan/widget.hpp>
 
 class Image;
 

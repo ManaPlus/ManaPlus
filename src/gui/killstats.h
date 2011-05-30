@@ -23,7 +23,7 @@
 #ifndef KILLSTATS_H
 #define KILLSTATS_H
 
-#include "guichan/actionlistener.hpp"
+#include <guichan/actionlistener.hpp>
 
 #include "listener.h"
 

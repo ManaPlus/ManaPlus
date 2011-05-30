@@ -40,10 +40,10 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
-#include "guichan/font.hpp"
+#include <guichan/font.hpp>
 
-#include "guichan/widgets/label.hpp"
-#include "guichan/widgets/container.hpp"
+#include <guichan/widgets/label.hpp>
+#include <guichan/widgets/container.hpp>
 
 #include "debug.h"
 

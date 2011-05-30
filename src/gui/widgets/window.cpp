@@ -38,8 +38,8 @@
 
 #include "resources/image.h"
 
-#include "guichan/exception.hpp"
-#include "guichan/focushandler.hpp"
+#include <guichan/exception.hpp>
+#include <guichan/focushandler.hpp>
 
 #include "debug.h"
 

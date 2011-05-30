@@ -44,7 +44,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "guichan/widgets/tabbedarea.hpp"
+#include <guichan/widgets/tabbedarea.hpp>
 
 #include "debug.h"
 

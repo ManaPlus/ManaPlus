@@ -23,8 +23,8 @@
 #ifndef TAB_H
 #define TAB_H
 
-#include "guichan/widgets/tab.hpp"
-#include "guichan/widgetlistener.hpp"
+#include <guichan/widgets/tab.hpp>
+#include <guichan/widgetlistener.hpp>
 
 class GraphicsVertexes;
 class ImageRect;

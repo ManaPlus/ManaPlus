@@ -23,7 +23,7 @@
 #ifndef TEXTBOX_H
 #define TEXTBOX_H
 
-#include "guichan/widgets/textbox.hpp"
+#include <guichan/widgets/textbox.hpp>
 
 /**
  * A text box, meant to be used inside a scroll area. Same as the Guichan text

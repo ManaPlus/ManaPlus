@@ -25,9 +25,9 @@
 
 #include "gui/widgets/tablemodel.h"
 
-#include "guichan/keylistener.hpp"
-#include "guichan/mouselistener.hpp"
-#include "guichan/widget.hpp"
+#include <guichan/keylistener.hpp>
+#include <guichan/mouselistener.hpp>
+#include <guichan/widget.hpp>
 
 #include <vector>
 

@@ -34,8 +34,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "guichan/font.hpp"
-#include "guichan/widgets/label.hpp"
+#include <guichan/font.hpp>
+#include <guichan/widgets/label.hpp>
 
 #include "debug.h"
 

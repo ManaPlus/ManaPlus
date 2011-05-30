@@ -27,7 +27,7 @@
 
 #include "log.h"
 
-#include "guichan/widgets/container.hpp"
+#include <guichan/widgets/container.hpp>
 
 #include "debug.h"
 

@@ -23,7 +23,7 @@
 #include "gui/killstats.h"
 
 #include <math.h>
-#include "guichan/widgets/label.hpp"
+#include <guichan/widgets/label.hpp>
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"

@@ -23,7 +23,7 @@
 #ifndef LISTBOX_H
 #define LISTBOX_H
 
-#include "guichan/widgets/listbox.hpp"
+#include <guichan/widgets/listbox.hpp>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

@@ -23,7 +23,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include "guichan/sdl/sdlgraphics.hpp"
+#include <guichan/sdl/sdlgraphics.hpp>
 
 //include "graphicsvertexes.h"
 

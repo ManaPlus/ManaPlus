@@ -31,9 +31,9 @@
 #include "net/inventoryhandler.h"
 #include "net/net.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/keylistener.hpp"
-#include "guichan/selectionlistener.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/keylistener.hpp>
+#include <guichan/selectionlistener.hpp>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

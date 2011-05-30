@@ -25,9 +25,9 @@
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
 
-#include "guichan/color.hpp"
+#include <guichan/color.hpp>
 
-#include "guichan/sdl/sdlpixel.hpp"
+#include <guichan/sdl/sdlpixel.hpp>
 
 #include <cassert>
 

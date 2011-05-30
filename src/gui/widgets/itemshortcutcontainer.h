@@ -27,7 +27,7 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#include "guichan/mouselistener.hpp"
+#include <guichan/mouselistener.hpp>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

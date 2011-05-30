@@ -26,8 +26,8 @@
 #include "gui/widgets/container.h"
 #include "gui/widgets/button.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/selectionlistener.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/selectionlistener.hpp>
 
 #include <map>
 

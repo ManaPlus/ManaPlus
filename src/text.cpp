@@ -34,7 +34,7 @@
 #include "resources/resourcemanager.h"
 #include "resources/image.h"
 
-#include "guichan/font.hpp"
+#include <guichan/font.hpp>
 
 #include "debug.h"
 

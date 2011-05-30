@@ -36,7 +36,7 @@
 #include "utils/copynpaste.h"
 #include "utils/dtor.h"
 
-#include "guichan/font.hpp"
+#include <guichan/font.hpp>
 
 #undef DELETE //Win32 compatibility hack
 

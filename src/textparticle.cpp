@@ -24,7 +24,7 @@
 
 #include "textrenderer.h"
 
-#include "guichan/color.hpp"
+#include <guichan/color.hpp>
 
 #include "debug.h"
 

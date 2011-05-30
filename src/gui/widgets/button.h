@@ -23,9 +23,9 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "guichan/widgets/button.hpp"
-#include "guichan/mouseevent.hpp"
-#include "guichan/widgetlistener.hpp"
+#include <guichan/widgets/button.hpp>
+#include <guichan/mouseevent.hpp>
+#include <guichan/widgetlistener.hpp>
 
 class GraphicsVertexes;
 class ImageRect;

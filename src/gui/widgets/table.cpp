@@ -30,9 +30,9 @@
 
 #include "utils/dtor.h"
 
-#include "guichan/actionlistener.hpp"
-#include "guichan/graphics.hpp"
-#include "guichan/key.hpp"
+#include <guichan/actionlistener.hpp>
+#include <guichan/graphics.hpp>
+#include <guichan/key.hpp>
 
 #include "debug.h"
 

@@ -35,7 +35,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "guichan/listmodel.hpp"
+#include <guichan/listmodel.hpp>
 
 #include <SDL_keyboard.h>
 

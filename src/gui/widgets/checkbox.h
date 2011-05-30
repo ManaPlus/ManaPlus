@@ -23,7 +23,7 @@
 #ifndef CHECKBOX_H
 #define CHECKBOX_H
 
-#include "guichan/widgets/checkbox.hpp"
+#include <guichan/widgets/checkbox.hpp>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

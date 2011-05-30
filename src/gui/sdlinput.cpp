@@ -57,7 +57,7 @@
 
 #include "sdlinput.h"
 
-#include "guichan/exception.hpp"
+#include <guichan/exception.hpp>
 
 SDLInput::SDLInput()
 {

@@ -23,7 +23,7 @@
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
 
-#include "guichan/widgets/dropdown.hpp"
+#include <guichan/widgets/dropdown.hpp>
 
 class Image;
 class ImageRect;

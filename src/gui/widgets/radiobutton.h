@@ -23,7 +23,7 @@
 #ifndef RADIOBUTTON_H
 #define RADIOBUTTON_H
 
-#include "guichan/widgets/radiobutton.hpp"
+#include <guichan/widgets/radiobutton.hpp>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

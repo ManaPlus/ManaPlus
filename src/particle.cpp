@@ -39,7 +39,7 @@
 #include "utils/mathutils.h"
 #include "utils/xml.h"
 
-#include "guichan/color.hpp"
+#include <guichan/color.hpp>
 
 #include <algorithm>
 #include <cmath>

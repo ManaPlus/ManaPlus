@@ -24,7 +24,7 @@
 #ifndef SDLFONT_H
 #define SDLFONT_H
 
-#include "guichan/font.hpp"
+#include <guichan/font.hpp>
 
 #ifdef __APPLE__
 #include <SDL_ttf/SDL_ttf.h>

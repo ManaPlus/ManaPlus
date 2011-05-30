@@ -23,7 +23,7 @@
 #ifndef FOCUSHANDLER_H
 #define FOCUSHANDLER_H
 
-#include "guichan/focushandler.hpp"
+#include <guichan/focushandler.hpp>
 
 #include <list>
 

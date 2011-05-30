@@ -36,7 +36,7 @@
 #include <list>
 #include <vector>
 
-//include "guichan/sdl/sdlgraphics.hpp"
+//include <guichan/sdl/sdlgraphics.hpp>
 
 
 struct DoubleRect

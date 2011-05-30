@@ -30,7 +30,7 @@
 
 #include "resources/image.h"
 
-#include "guichan/graphics.hpp"
+#include <guichan/graphics.hpp>
 
 #include "debug.h"
 

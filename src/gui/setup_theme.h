@@ -27,7 +27,7 @@
 
 #include "gui/widgets/setuptab.h"
 
-#include "guichan/actionlistener.hpp"
+#include <guichan/actionlistener.hpp>
 
 class FontsModel;
 class EditDialog;

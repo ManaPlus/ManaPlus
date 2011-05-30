@@ -62,10 +62,10 @@
 
 #include <SDL/SDL.h>
 
-#include "guichan/input.hpp"
-#include "guichan/keyinput.hpp"
-#include "guichan/mouseinput.hpp"
-#include "guichan/platform.hpp"
+#include <guichan/input.hpp>
+#include <guichan/keyinput.hpp>
+#include <guichan/mouseinput.hpp>
+#include <guichan/platform.hpp>
 
 namespace Key
 {
