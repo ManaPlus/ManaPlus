@@ -26,9 +26,9 @@
 #include "graphics.h"
 #include "guichanfwd.h"
 
-#include <guichan/widgetlistener.hpp>
+#include "guichan/widgetlistener.hpp"
 
-#include <guichan/widgets/window.hpp>
+#include "guichan/widgets/window.hpp"
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

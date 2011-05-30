@@ -33,7 +33,7 @@
 
 #include "utils/stringutils.h"
 
-#include <guichan/exception.hpp>
+#include "guichan/exception.hpp"
 
 #include "debug.h"
 

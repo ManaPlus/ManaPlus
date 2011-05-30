@@ -27,7 +27,7 @@
 
 #include "net/serverinfo.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 #include <SDL.h>
 #include <SDL_framerate.h>

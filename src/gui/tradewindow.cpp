@@ -49,7 +49,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include <guichan/font.hpp>
+#include "guichan/font.hpp"
 
 #include <sstream>
 

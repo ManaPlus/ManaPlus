@@ -23,7 +23,7 @@
 #ifndef RESIZEGRIP_H
 #define RESIZEGRIP_H
 
-#include <guichan/widget.hpp>
+#include "guichan/widget.hpp"
 
 class Image;
 

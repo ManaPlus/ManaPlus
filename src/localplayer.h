@@ -31,7 +31,7 @@
 
 #include "gui/userpalette.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 #include <memory>
 #include <vector>

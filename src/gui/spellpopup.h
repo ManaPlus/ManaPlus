@@ -28,7 +28,7 @@
 
 #include "textcommand.h"
 
-#include <guichan/mouselistener.hpp>
+#include "guichan/mouselistener.hpp"
 
 class TextBox;
 

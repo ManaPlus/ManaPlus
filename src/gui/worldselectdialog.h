@@ -27,9 +27,9 @@
 
 #include "net/worldinfo.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/listmodel.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/keylistener.hpp"
+#include "guichan/listmodel.hpp"
 
 #include <vector>
 

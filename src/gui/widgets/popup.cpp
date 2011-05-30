@@ -36,7 +36,7 @@
 
 #include "resources/image.h"
 
-#include <guichan/exception.hpp>
+#include "guichan/exception.hpp"
 
 #include "debug.h"
 

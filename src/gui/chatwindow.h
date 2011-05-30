@@ -27,10 +27,10 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/widget.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/keylistener.hpp"
+#include "guichan/widget.hpp"
+#include "guichan/widgetlistener.hpp"
 
 #include <list>
 #include <string>

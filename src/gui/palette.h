@@ -27,7 +27,7 @@
 #include "log.h"
 #include "utils/stringutils.h"
 
-#include <guichan/color.hpp>
+#include "guichan/color.hpp"
 
 #include <cstdlib>
 #include <string>

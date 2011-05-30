@@ -27,8 +27,8 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/listmodel.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/listmodel.hpp"
 
 #include <list>
 #include <string>

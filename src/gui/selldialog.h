@@ -25,8 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/selectionlistener.hpp"
 
 #include <SDL_types.h>
 

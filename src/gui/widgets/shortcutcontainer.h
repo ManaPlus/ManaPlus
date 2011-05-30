@@ -23,9 +23,9 @@
 #ifndef SHORTCUTCONTAINER_H
 #define SHORTCUTCONTAINER_H
 
-#include <guichan/mouselistener.hpp>
-#include <guichan/widget.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "guichan/mouselistener.hpp"
+#include "guichan/widget.hpp"
+#include "guichan/widgetlistener.hpp"
 
 #include "gui/widgets/tab.h"
 

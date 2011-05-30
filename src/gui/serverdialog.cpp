@@ -49,7 +49,7 @@
 #include "utils/xml.h"
 #include "widgets/dropdown.h"
 
-#include <guichan/font.hpp>
+#include "guichan/font.hpp"
 
 #include <cstdlib>
 #include <iostream>

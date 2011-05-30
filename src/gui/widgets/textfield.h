@@ -23,7 +23,7 @@
 #ifndef TEXTFIELD_H
 #define TEXTFIELD_H
 
-#include <guichan/widgets/textfield.hpp>
+#include "guichan/widgets/textfield.hpp"
 
 class ImageRect;
 class TextField;

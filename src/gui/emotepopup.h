@@ -26,7 +26,7 @@
 
 #include "gui/widgets/popup.h"
 
-#include <guichan/mouselistener.hpp>
+#include "guichan/mouselistener.hpp"
 
 #include <list>
 #include <vector>

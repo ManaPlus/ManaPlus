@@ -37,7 +37,7 @@
 #include "position.h"
 #include "vector.h"
 
-#include <guichan/color.hpp>
+#include "guichan/color.hpp"
 
 #include <SDL_types.h>
 

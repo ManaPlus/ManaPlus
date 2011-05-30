@@ -27,7 +27,7 @@
 #include "graphics.h"
 #include "guichanfwd.h"
 
-#include <guichan/color.hpp>
+#include "guichan/color.hpp"
 
 class TextManager;
 

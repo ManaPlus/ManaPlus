@@ -27,7 +27,7 @@
 
 #include "textcommand.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 class Button;
 class DropDown;

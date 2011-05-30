@@ -27,7 +27,7 @@
 
 #include "gui/widgets/setuptab.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 class Setup_Joystick : public SetupTab, public gcn::ActionListener
 {

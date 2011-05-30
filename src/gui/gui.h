@@ -25,7 +25,7 @@
 
 #include "guichanfwd.h"
 
-#include <guichan/gui.hpp>
+#include "guichan/gui.hpp"
 
 class Graphics;
 class GuiConfigListener;

@@ -38,8 +38,8 @@
 
 #include "utils/dtor.h"
 
-#include <guichan/mouseinput.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "guichan/mouseinput.hpp"
+#include "guichan/selectionlistener.hpp"
 
 #include "debug.h"
 

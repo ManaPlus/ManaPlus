@@ -29,10 +29,10 @@
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 
-#include <guichan/font.hpp>
-#include <guichan/graphics.hpp>
-#include <guichan/key.hpp>
-#include <guichan/listmodel.hpp>
+#include "guichan/font.hpp"
+#include "guichan/graphics.hpp"
+#include "guichan/key.hpp"
+#include "guichan/listmodel.hpp"
 
 #include "debug.h"
 

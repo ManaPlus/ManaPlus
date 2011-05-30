@@ -23,7 +23,7 @@
 #ifndef SHOPITEMS_H
 #define SHOPITEMS_H
 
-#include <guichan/listmodel.hpp>
+#include "guichan/listmodel.hpp"
 
 #include <string>
 #include <vector>

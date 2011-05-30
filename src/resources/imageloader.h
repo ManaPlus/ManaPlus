@@ -23,8 +23,8 @@
 #ifndef IMAGELOADER_H
 #define IMAGELOADER_H
 
-#include <guichan/image.hpp>
-#include <guichan/imageloader.hpp>
+#include "guichan/image.hpp"
+#include "guichan/imageloader.hpp"
 
 #include <string>
 

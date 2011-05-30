@@ -23,9 +23,9 @@
 #ifndef TEXTPREVIEW_H
 #define TEXTPREVIEW_H
 
-#include <guichan/color.hpp>
-#include <guichan/font.hpp>
-#include <guichan/widget.hpp>
+#include "guichan/color.hpp"
+#include "guichan/font.hpp"
+#include "guichan/widget.hpp"
 
 /**
  * Preview widget for particle colors, etc.

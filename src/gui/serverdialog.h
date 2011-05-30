@@ -31,11 +31,11 @@
 
 #include "utils/mutex.h"
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/keylistener.hpp>
-#include <guichan/listmodel.hpp>
-#include <guichan/mouselistener.hpp>
-#include <guichan/selectionlistener.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/keylistener.hpp"
+#include "guichan/listmodel.hpp"
+#include "guichan/mouselistener.hpp"
+#include "guichan/selectionlistener.hpp"
 
 #include <string>
 #include <vector>

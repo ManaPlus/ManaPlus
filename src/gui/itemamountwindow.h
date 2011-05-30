@@ -25,8 +25,8 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/keylistener.hpp>
-#include <guichan/actionlistener.hpp>
+#include "guichan/keylistener.hpp"
+#include "guichan/actionlistener.hpp"
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

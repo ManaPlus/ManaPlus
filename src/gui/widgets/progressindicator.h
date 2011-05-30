@@ -22,7 +22,7 @@
 #ifndef PROGRESSINDICATOR_H
 #define PROGRESSINDICATOR_H
 
-#include <guichan/widget.hpp>
+#include "guichan/widget.hpp"
 
 class SimpleAnimation;
 

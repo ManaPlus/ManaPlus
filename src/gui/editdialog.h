@@ -26,7 +26,7 @@
 #include "gui/widgets/window.h"
 #include "gui/widgets/textfield.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 #define ACTION_EDIT_OK "edit ok"
 

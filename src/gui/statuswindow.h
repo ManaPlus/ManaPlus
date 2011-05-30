@@ -28,7 +28,7 @@
 
 #include "gui/widgets/window.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 #include <map>
 

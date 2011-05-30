@@ -38,9 +38,9 @@
 #include "resources/resource.h"
 #include "resources/resourcemanager.h"
 
-#include <guichan/graphics.hpp>
-#include <guichan/font.hpp>
-#include <guichan/cliprectangle.hpp>
+#include "guichan/graphics.hpp"
+#include "guichan/font.hpp"
+#include "guichan/cliprectangle.hpp"
 
 #include <algorithm>
 

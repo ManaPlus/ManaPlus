@@ -29,8 +29,8 @@
 
 #include "gui/widgets/container.h"
 
-#include <guichan/mouselistener.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "guichan/mouselistener.hpp"
+#include "guichan/widgetlistener.hpp"
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

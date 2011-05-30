@@ -23,7 +23,7 @@
 #ifndef WIDGET_LAYOUT_H
 #define WIDGET_LAYOUT_H
 
-#include <guichan/widgets/container.hpp>
+#include "guichan/widgets/container.hpp"
 
 #include <vector>
 

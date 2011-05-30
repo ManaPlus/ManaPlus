@@ -25,7 +25,7 @@
 
 #include "gui/widgets/layout.h"
 
-#include <guichan/widgetlistener.hpp>
+#include "guichan/widgetlistener.hpp"
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

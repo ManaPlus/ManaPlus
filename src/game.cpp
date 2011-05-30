@@ -101,8 +101,8 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 
-#include <guichan/exception.hpp>
-#include <guichan/focushandler.hpp>
+#include "guichan/exception.hpp"
+#include "guichan/focushandler.hpp"
 
 #include <physfs.h>
 

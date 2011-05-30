@@ -21,7 +21,7 @@
 #ifndef LABEL_H
 #define LABEL_H
 
-#include <guichan/widgets/label.hpp>
+#include "guichan/widgets/label.hpp"
 
 /**
  * Label widget. Same as the Guichan label but modified to use the palette

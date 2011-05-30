@@ -51,7 +51,7 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
-#include <guichan/font.hpp>
+#include "guichan/font.hpp"
 
 #include <set>
 #include <string>

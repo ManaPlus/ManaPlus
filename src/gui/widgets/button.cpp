@@ -35,8 +35,8 @@
 
 #include "utils/dtor.h"
 
-#include <guichan/exception.hpp>
-#include <guichan/font.hpp>
+#include "guichan/exception.hpp"
+#include "guichan/font.hpp"
 
 #include "debug.h"
 

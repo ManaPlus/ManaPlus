@@ -24,7 +24,7 @@
 
 #include "gui/theme.h"
 
-#include <guichan/font.hpp>
+#include "guichan/font.hpp"
 
 #include <sstream>
 

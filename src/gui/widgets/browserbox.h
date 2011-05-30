@@ -24,8 +24,8 @@
 #ifndef BROWSERBOX_H
 #define BROWSERBOX_H
 
-#include <guichan/mouselistener.hpp>
-#include <guichan/widget.hpp>
+#include "guichan/mouselistener.hpp"
+#include "guichan/widget.hpp"
 
 #include <list>
 #include <vector>

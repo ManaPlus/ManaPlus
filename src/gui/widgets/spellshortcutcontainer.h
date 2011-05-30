@@ -23,7 +23,7 @@
 #ifndef SPELLSHORTCUTCONTAINER_H
 #define SPELLSHORTCUTCONTAINER_H
 
-#include <guichan/mouselistener.hpp>
+#include "guichan/mouselistener.hpp"
 
 #include "gui/widgets/shortcutcontainer.h"
 //#include "textcommand.h"

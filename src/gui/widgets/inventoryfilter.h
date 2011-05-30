@@ -22,8 +22,8 @@
 #ifndef GUI_INVENTORYFILTER_H
 #define GUI_INVENTORYFILTER_H
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "guichan/actionlistener.hpp"
+#include "guichan/widgetlistener.hpp"
 
 #include "gui/widgets/horizontcontainer.h"
 

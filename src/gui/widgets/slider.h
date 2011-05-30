@@ -23,7 +23,7 @@
 #ifndef SLIDER_H
 #define SLIDER_H
 
-#include <guichan/widgets/slider.hpp>
+#include "guichan/widgets/slider.hpp"
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))

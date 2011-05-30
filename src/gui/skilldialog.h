@@ -30,7 +30,7 @@
 //include "resources/image.h"
 //include "resources/resourcemanager.h"
 
-#include <guichan/actionlistener.hpp>
+#include "guichan/actionlistener.hpp"
 
 #include <map>
 

@@ -23,7 +23,7 @@
 #ifndef DROPSHORTCUTCONTAINER_H
 #define DROPSHORTCUTCONTAINER_H
 
-#include <guichan/mouselistener.hpp>
+#include "guichan/mouselistener.hpp"
 
 #include "gui/widgets/shortcutcontainer.h"
 
