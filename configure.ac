@@ -33,14 +33,6 @@ AC_PATH_PROG(CURL_CONFIG, curl-config)
 AC_CHECK_LIB([pthread], [pthread_create], ,
 AC_MSG_ERROR([ *** Unable to find pthread library]))
 
-AC_CHECK_LIB([guichan], [gcnGuichanVersion], ,
-AC_MSG_ERROR([ *** Unable to find Guichan library (http://guichan.sf.net/)]))
-AC_CHECK_HEADERS([guichan.hpp], ,
-AC_MSG_ERROR([ *** Guichan library found but cannot find headers (http://guichan.sf.net/)]))
-
-AC_CHECK_HEADERS([guichan/widgetlistener.hpp], ,
-AC_MSG_ERROR([ *** Guichan library version is found  but version is < 0.8.0 (http://guichan.sf.net/)]))
-
 if test -n "$SDL_CONFIG"; then
     LIBS="$LIBS `$SDL_CONFIG --libs`"
     CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
@@ -88,9 +80,6 @@ AC_MSG_ERROR([ *** Unable to find SDL_ttf library (http://www.libsdl.org/project
 
 AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], ,
 AC_MSG_ERROR([ *** Unable to find SDL_mixer library (http://www.libsdl.org/projects/SDL_mixer/)]))
-
-AC_CHECK_LIB([guichan_sdl], [gcnSDL], ,
-AC_MSG_ERROR([ *** Unable to find Guichan SDL library (http://guichan.sf.net/)]))
 
 AC_CHECK_LIB(SDL_gfx, rotozoomSurfaceXY, ,
 AC_MSG_ERROR([ *** Unable to find SDL_gfx library (http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx)]))
