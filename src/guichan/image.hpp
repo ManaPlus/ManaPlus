@@ -82,9 +82,9 @@ namespace gcn
         virtual ~Image();
 
         /**
-         * Loads an image by using the class' image laoder. All image loaders implemented
-         * in Guichan return a newly instantiated image which must be deleted in
-         * order to avoid a memory leak.
+         * Loads an image by using the class' image loader. All image loaders
+         * implemented in Guichan return a newly instantiated image which must
+         * be deleted in order to avoid a memory leak.
          *
          * NOTE: The functions getPixel and putPixel are only guaranteed to work
          *       before an image has been converted to display format.
@@ -94,7 +94,8 @@ namespace gcn
          *                               to display, false otherwise.
          * @since 0.5.0
          */
-        static Image* load(const std::string& filename, bool convertToDisplayFormat = true);
+        static Image* load(const std::string& filename,
+                           bool convertToDisplayFormat = true);
 
         /**
          * Gets the image loader used for loading images.

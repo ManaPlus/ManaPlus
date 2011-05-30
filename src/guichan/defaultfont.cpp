@@ -72,7 +72,8 @@ namespace gcn
         return 8;
     }
 
-    void DefaultFont::drawString(Graphics* graphics, const std::string& text, int x, int y)
+    void DefaultFont::drawString(Graphics* graphics, const std::string& text,
+                                 int x, int y)
     {
         unsigned int i;
 
@@ -86,9 +87,7 @@ namespace gcn
     int DefaultFont::getStringIndexAt(const std::string& text, int x) const
     {
         if (x > (int)text.size() * 8)
-        {
             return text.size();
-        }
 
         return x / 8;
     }

@@ -78,7 +78,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~ImageLoader() { }
+        virtual ~ImageLoader()
+        { }
 
         /**
          * Loads an image.
@@ -91,7 +92,8 @@ namespace gcn
          * @param convertToDisplayFormat True if the image should be converted
          *                               to display, false otherwise.
          */
-        virtual Image* load(const std::string& filename, bool convertToDisplayFormat = true) = 0;
+        virtual Image* load(const std::string& filename,
+                            bool convertToDisplayFormat = true) = 0;
     };
 }
 

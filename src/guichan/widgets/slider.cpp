@@ -82,7 +82,7 @@ namespace gcn
         setFrameSize(1);
         setOrientation(HORIZONTAL);
         setValue(scaleStart);
-        setStepLength((scaleEnd  - scaleStart)/ 10);
+        setStepLength((scaleEnd  - scaleStart) / 10);
         setMarkerLength(10);
 
         addMouseListener(this);
@@ -122,7 +122,7 @@ namespace gcn
          shadowColor.a = alpha;
 
         graphics->setColor(shadowColor);
-        graphics->fillRectangle(gcn::Rectangle(0,0,getWidth(),getHeight()));
+        graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
 
         drawMarker(graphics);
     }
@@ -142,35 +142,43 @@ namespace gcn
         if (getOrientation() == HORIZONTAL)
         {
             int v = getMarkerPosition();
-            graphics->fillRectangle(gcn::Rectangle(v + 1, 1, getMarkerLength() - 2, getHeight() - 2));
+            graphics->fillRectangle(gcn::Rectangle(v + 1, 1,
+                getMarkerLength() - 2, getHeight() - 2));
             graphics->setColor(highlightColor);
-            graphics->drawLine(v, 0, v + getMarkerLength() - 1,0);
+            graphics->drawLine(v, 0, v + getMarkerLength() - 1, 0);
             graphics->drawLine(v, 0, v, getHeight() - 1);
             graphics->setColor(shadowColor);
-            graphics->drawLine(v + getMarkerLength() - 1, 1, v + getMarkerLength() - 1, getHeight() - 1);
-            graphics->drawLine(v + 1, getHeight() - 1, v + getMarkerLength() - 1, getHeight() - 1);
+            graphics->drawLine(v + getMarkerLength() - 1, 1,
+                v + getMarkerLength() - 1, getHeight() - 1);
+            graphics->drawLine(v + 1, getHeight() - 1,
+                v + getMarkerLength() - 1, getHeight() - 1);
 
             if (isFocused())
             {
                 graphics->setColor(getForegroundColor());
-                graphics->drawRectangle(Rectangle(v + 2, 2, getMarkerLength() - 4, getHeight() - 4));
+                graphics->drawRectangle(Rectangle(v + 2, 2,
+                    getMarkerLength() - 4, getHeight() - 4));
             }
         }
         else
         {
             int v = (getHeight() - getMarkerLength()) - getMarkerPosition();
-            graphics->fillRectangle(gcn::Rectangle(1, v + 1, getWidth() - 2, getMarkerLength() - 2));
+            graphics->fillRectangle(gcn::Rectangle(1, v + 1, getWidth() - 2,
+                getMarkerLength() - 2));
             graphics->setColor(highlightColor);
             graphics->drawLine(0, v, 0, v + getMarkerLength() - 1);
             graphics->drawLine(0, v, getWidth() - 1, v);
             graphics->setColor(shadowColor);
-            graphics->drawLine(1, v + getMarkerLength() - 1, getWidth() - 1, v + getMarkerLength() - 1);
-            graphics->drawLine(getWidth() - 1, v + 1, getWidth() - 1, v + getMarkerLength() - 1);
+            graphics->drawLine(1, v + getMarkerLength() - 1, getWidth() - 1,
+                v + getMarkerLength() - 1);
+            graphics->drawLine(getWidth() - 1, v + 1, getWidth() - 1,
+                v + getMarkerLength() - 1);
 
             if (isFocused())
             {
                 graphics->setColor(getForegroundColor());
-                graphics->drawRectangle(Rectangle(2, v + 2, getWidth() - 4, getMarkerLength() - 4));
+                graphics->drawRectangle(Rectangle(2, v + 2, getWidth() - 4,
+                    getMarkerLength() - 4));
             }
         }
     }
@@ -185,11 +193,13 @@ namespace gcn
         {
             if (getOrientation() == HORIZONTAL)
             {
-                setValue(markerPositionToValue(mouseEvent.getX() - getMarkerLength() / 2));
+                setValue(markerPositionToValue(
+                    mouseEvent.getX() - getMarkerLength() / 2));
             }
             else
             {
-                setValue(markerPositionToValue(getHeight() - mouseEvent.getY() - getMarkerLength() / 2));
+                setValue(markerPositionToValue(getHeight()
+                    - mouseEvent.getY() - getMarkerLength() / 2));
             }
 
             distributeActionEvent();
@@ -200,11 +210,13 @@ namespace gcn
     {
         if (getOrientation() == HORIZONTAL)
         {
-            setValue(markerPositionToValue(mouseEvent.getX() - getMarkerLength() / 2));
+            setValue(markerPositionToValue(mouseEvent.getX()
+                - getMarkerLength() / 2));
         }
         else
         {
-            setValue(markerPositionToValue(getHeight() - mouseEvent.getY() - getMarkerLength() / 2));
+            setValue(markerPositionToValue(getHeight()
+                - mouseEvent.getY() - getMarkerLength() / 2));
         }
 
         distributeActionEvent();
@@ -261,7 +273,7 @@ namespace gcn
                 setValue(getValue() - getStepLength());
                 distributeActionEvent();
                 keyEvent.consume();
-            }            
+            }
         }
         else
         {
@@ -294,44 +306,31 @@ namespace gcn
     {
         int w;
         if (getOrientation() == HORIZONTAL)
-        {
             w = getWidth();
-        }
         else
-        {
             w = getHeight();
-        }
 
         double pos = v / ((double)w - getMarkerLength());
         return (1.0 - pos) * getScaleStart() + pos * getScaleEnd();
-
     }
 
     int Slider::valueToMarkerPosition(double value) const
     {
         int v;
         if (getOrientation() == HORIZONTAL)
-        {
             v = getWidth();
-        }
         else
-        {
             v = getHeight();
-        }
 
-        int w =  (int)((v - getMarkerLength())
-                       * (value  - getScaleStart())
-                       / (getScaleEnd() - getScaleStart()));
+        int w = (int)((v - getMarkerLength())
+                * (value  - getScaleStart())
+                / (getScaleEnd() - getScaleStart()));
 
         if (w < 0)
-        {
             return 0;
-        }
 
         if (w > v - getMarkerLength())
-        {
             return v - getMarkerLength();
-        }
 
         return w;
     }

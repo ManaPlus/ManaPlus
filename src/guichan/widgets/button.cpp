@@ -143,7 +143,8 @@ namespace gcn
         }
 
         graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(1, 1, getDimension().width-1, getHeight() - 1));
+        graphics->fillRectangle(Rectangle(1, 1,
+            getDimension().width - 1, getHeight() - 1));
 
         graphics->setColor(highlightColor);
         graphics->drawLine(0, 0, getWidth() - 1, 0);
@@ -151,7 +152,8 @@ namespace gcn
 
         graphics->setColor(shadowColor);
         graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
-        graphics->drawLine(1, getHeight() - 1, getWidth() - 1, getHeight() - 1);
+        graphics->drawLine(1, getHeight() - 1,
+            getWidth() - 1, getHeight() - 1);
 
         graphics->setColor(getForegroundColor());
 
@@ -177,7 +179,8 @@ namespace gcn
 
         if (isPressed())
         {
-            graphics->drawText(getCaption(), textX + 1, textY + 1, getAlignment());
+            graphics->drawText(getCaption(), textX + 1, textY + 1,
+                getAlignment());
         }
         else
         {
@@ -186,7 +189,7 @@ namespace gcn
             if (isFocused())
             {
                 graphics->drawRectangle(Rectangle(2, 2, getWidth() - 4,
-                                                  getHeight() - 4));
+                    getHeight() - 4));
             }
         }
     }
@@ -267,7 +270,7 @@ namespace gcn
         Key key = keyEvent.getKey();
 
         if ((key.getValue() == Key::ENTER
-             || key.getValue() == Key::SPACE)
+            || key.getValue() == Key::SPACE)
             && mKeyPressed)
         {
             mKeyPressed = false;

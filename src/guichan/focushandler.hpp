@@ -277,10 +277,10 @@ namespace gcn
         /**
          * Sets the last widget with modal focus.
          * 
-         * @param lastWidgetWithModalFocus The last widget with modal focus.
+         * @param widget The last widget with modal focus.
          * @see getLastWidgetWithModalFocus
          */
-        virtual void setLastWidgetWithModalFocus(Widget* lastWidgetWithModalFocus);
+        virtual void setLastWidgetWithModalFocus(Widget* widget);
 
         /**
          * Gets the last widget with modal mouse input focus.
@@ -293,11 +293,10 @@ namespace gcn
         /**
          * Sets the last widget with modal mouse input focus.
          *
-         * @param lastMouseWithModalMouseInputFocus The last widget with 
-         *                                          modal mouse input focus.
+         * @param widget The last widget with modal mouse input focus.
          * @see getLastWidgetWithModalMouseInputFocus
          */
-        virtual void setLastWidgetWithModalMouseInputFocus(Widget* lastWidgetWithModalMouseInputFocus);
+        virtual void setLastWidgetWithModalMouseInputFocus(Widget* widget);
 
         /**
          * Gets the last widget pressed. Used by the Gui class to keep track

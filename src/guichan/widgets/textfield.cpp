@@ -81,10 +81,8 @@ namespace gcn
 
     void TextField::setText(const std::string& text)
     {
-        if(text.size() < mCaretPosition )
-        {
+        if (text.size() < mCaretPosition)
             mCaretPosition = text.size();
-        }
 
         mText = text;
     }
@@ -105,11 +103,13 @@ namespace gcn
         graphics->drawLine(0, 1, 0, getHeight() - 2);
         graphics->setColor(highlightColor);
         graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
-        graphics->drawLine(0, getHeight() - 1, getWidth() - 1, getHeight() - 1);
+        graphics->drawLine(0, getHeight() - 1,
+            getWidth() - 1, getHeight() - 1);
 
         // Push a clip area so the other drawings don't need to worry
         // about the border.
-        graphics->pushClipArea(Rectangle(1, 1, getWidth() - 2, getHeight() - 2));
+        graphics->pushClipArea(Rectangle(1, 1,
+            getWidth() - 2, getHeight() - 2));
 
         graphics->setColor(getBackgroundColor());
         graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
@@ -117,13 +117,16 @@ namespace gcn
         if (isFocused())
         {
             graphics->setColor(getSelectionColor());
-            graphics->drawRectangle(Rectangle(0, 0, getWidth() - 2, getHeight() - 2));
-            graphics->drawRectangle(Rectangle(1, 1, getWidth() - 4, getHeight() - 4));
+            graphics->drawRectangle(Rectangle(0, 0,
+                getWidth() - 2, getHeight() - 2));
+            graphics->drawRectangle(Rectangle(1, 1,
+                getWidth() - 4, getHeight() - 4));
         }
 
         if (isFocused())
         {
-            drawCaret(graphics, getFont()->getWidth(mText.substr(0, mCaretPosition)) - mXScroll);
+            drawCaret(graphics, getFont()->getWidth(
+                mText.substr(0, mCaretPosition)) - mXScroll);
         }
 
         graphics->setColor(getForegroundColor());
@@ -149,7 +152,8 @@ namespace gcn
     {
         if (mouseEvent.getButton() == MouseEvent::LEFT)
         {
-            mCaretPosition = getFont()->getStringIndexAt(mText, mouseEvent.getX() + mXScroll);
+            mCaretPosition = getFont()->getStringIndexAt(
+                mText, mouseEvent.getX() + mXScroll);
             fixScroll();
         }
     }
@@ -167,50 +171,42 @@ namespace gcn
         {
             --mCaretPosition;
         }
-
         else if (key.getValue() == Key::RIGHT && mCaretPosition < mText.size())
         {
             ++mCaretPosition;
         }
-
-        else if (key.getValue() == Key::DELETE && mCaretPosition < mText.size())
+        else if (key.getValue() == Key::DELETE
+                 && mCaretPosition < mText.size())
         {
             mText.erase(mCaretPosition, 1);
         }
-
         else if (key.getValue() == Key::BACKSPACE && mCaretPosition > 0)
         {
             mText.erase(mCaretPosition - 1, 1);
             --mCaretPosition;
         }
-
         else if (key.getValue() == Key::ENTER)
         {
             distributeActionEvent();
         }
-
         else if (key.getValue() == Key::HOME)
         {
             mCaretPosition = 0;
         }
-
         else if (key.getValue() == Key::END)
         {
             mCaretPosition = mText.size();
         }
-
         else if (key.isCharacter()
                  && key.getValue() != Key::TAB)
         {
-            mText.insert(mCaretPosition, std::string(1,(char)key.getValue()));
+            mText.insert(mCaretPosition, std::string(1, (char)key.getValue()));
             ++mCaretPosition;
         }
 
         if (key.getValue() != Key::TAB)
-        {
             keyEvent.consume();
-        }
-        
+
         fixScroll();
     }
 
@@ -242,9 +238,7 @@ namespace gcn
                 mXScroll = caretX - getWidth() / 2;
 
                 if (mXScroll < 0)
-                {
                     mXScroll = 0;
-                }
             }
         }
     }
@@ -252,13 +246,9 @@ namespace gcn
     void TextField::setCaretPosition(unsigned int position)
     {
         if (position > mText.size())
-        {
             mCaretPosition = mText.size();
-        }
         else
-        {
             mCaretPosition = position;
-        }
 
         fixScroll();
     }

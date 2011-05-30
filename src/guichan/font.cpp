@@ -58,12 +58,10 @@ namespace gcn
 
         for (i = 0; i < text.size(); ++i)
         {
-            size = getWidth(text.substr(0,i));
+            size = getWidth(text.substr(0, i));
 
             if (size > x)
-            {
                 return i;
-            }
         }
 
         return text.size();

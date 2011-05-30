@@ -54,8 +54,8 @@
 
 namespace gcn
 {
-    Window::Window()
-            :mMoved(false)
+    Window::Window() :
+        mMoved(false)
     {
         setFrameSize(1);
         setPadding(2);
@@ -66,8 +66,8 @@ namespace gcn
         setOpaque(true);
     }
 
-    Window::Window(const std::string& caption)
-            :mMoved(false)
+    Window::Window(const std::string& caption) :
+        mMoved(false)
     {
         setCaption(caption);
         setFrameSize(1);
@@ -138,24 +138,19 @@ namespace gcn
         // Fill the background around the content
         graphics->setColor(faceColor);
         // Fill top
-        graphics->fillRectangle(Rectangle(0,0,getWidth(),d.y - 1));
+        graphics->fillRectangle(Rectangle(0, 0, getWidth(), d.y - 1));
         // Fill left
-        graphics->fillRectangle(Rectangle(0,d.y - 1, d.x - 1, getHeight() - d.y + 1));
+        graphics->fillRectangle(Rectangle(0, d.y - 1, d.x - 1,
+            getHeight() - d.y + 1));
         // Fill right
-        graphics->fillRectangle(Rectangle(d.x + d.width + 1,
-                                          d.y - 1,
-                                          getWidth() - d.x - d.width - 1,
-                                          getHeight() - d.y + 1));
+        graphics->fillRectangle(Rectangle(d.x + d.width + 1, d.y - 1,
+            getWidth() - d.x - d.width - 1, getHeight() - d.y + 1));
         // Fill bottom
-        graphics->fillRectangle(Rectangle(d.x - 1,
-                                          d.y + d.height + 1,
-                                          d.width + 2,
-                                          getHeight() - d.height - d.y - 1));
+        graphics->fillRectangle(Rectangle(d.x - 1, d.y + d.height + 1,
+            d.width + 2, getHeight() - d.height - d.y - 1));
 
         if (isOpaque())
-        {
             graphics->fillRectangle(d);
-        }
 
         // Construct a rectangle one pixel bigger than the content
         d.x -= 1;
@@ -198,22 +193,23 @@ namespace gcn
 
         switch (getAlignment())
         {
-          case Graphics::LEFT:
-              textX = 4;
-              break;
-          case Graphics::CENTER:
-              textX = getWidth() / 2;
-              break;
-          case Graphics::RIGHT:
-              textX = getWidth() - 4;
-              break;
-          default:
-              throw GCN_EXCEPTION("Unknown alignment.");
+            case Graphics::LEFT:
+                textX = 4;
+                break;
+            case Graphics::CENTER:
+                textX = getWidth() / 2;
+                break;
+            case Graphics::RIGHT:
+                textX = getWidth() - 4;
+                break;
+            default:
+                throw GCN_EXCEPTION("Unknown alignment.");
         }
 
         graphics->setColor(getForegroundColor());
         graphics->setFont(getFont());
-        graphics->pushClipArea(Rectangle(0, 0, getWidth(), getTitleBarHeight() - 1));
+        graphics->pushClipArea(Rectangle(0, 0, getWidth(),
+            getTitleBarHeight() - 1));
         graphics->drawText(getCaption(), textX, textY, getAlignment());
         graphics->popClipArea();
     }
@@ -221,14 +217,10 @@ namespace gcn
     void Window::mousePressed(MouseEvent& mouseEvent)
     {
         if (mouseEvent.getSource() != this)
-        {
             return;
-        }
 
         if (getParent() != NULL)
-        {
             getParent()->moveToTop(this);
-        }
 
         mDragOffsetX = mouseEvent.getX();
         mDragOffsetY = mouseEvent.getY();
@@ -244,9 +236,7 @@ namespace gcn
     void Window::mouseDragged(MouseEvent& mouseEvent)
     {
         if (mouseEvent.isConsumed() || mouseEvent.getSource() != this)
-        {
             return;
-        }
 
         if (isMovable() && mMoved)
         {
@@ -293,14 +283,10 @@ namespace gcn
         for (it = mWidgets.begin(); it != mWidgets.end(); it++)
         {
             if ((*it)->getX() + (*it)->getWidth() > w)
-            {
                 w = (*it)->getX() + (*it)->getWidth();
-            }
 
             if ((*it)->getY() + (*it)->getHeight() > h)
-            {
                 h = (*it)->getY() + (*it)->getHeight();
-            }
         }
 
         setSize(w + 2* getPadding(), h + getPadding() + getTitleBarHeight());

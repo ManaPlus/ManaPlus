@@ -57,10 +57,10 @@
 
 namespace gcn
 {
-    ListBox::ListBox()
-        : mSelected(-1),
-          mListModel(NULL),
-          mWrappingEnabled(false)
+    ListBox::ListBox() :
+        mSelected(-1),
+        mListModel(NULL),
+        mWrappingEnabled(false)
     {
         setWidth(100);
         setFocusable(true);
@@ -69,9 +69,9 @@ namespace gcn
         addKeyListener(this);
     }
 
-    ListBox::ListBox(ListModel *listModel)
-        : mSelected(-1),
-          mWrappingEnabled(false)
+    ListBox::ListBox(ListModel *listModel) :
+        mSelected(-1),
+        mWrappingEnabled(false)
     {
         setWidth(100);
         setListModel(listModel);
@@ -87,67 +87,61 @@ namespace gcn
         graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
 
         if (mListModel == NULL)
-        {
             return;
-        }
 
         graphics->setColor(getForegroundColor());
         graphics->setFont(getFont());
-         
+
         // Check the current clip area so we don't draw unnecessary items
         // that are not visible.
         const ClipRectangle currentClipArea = graphics->getCurrentClipArea();
         int rowHeight = getRowHeight();
-        
-		// Calculate the number of rows to draw by checking the clip area.
-		// The addition of two makes covers a partial visible row at the top
-		// and a partial visible row at the bottom.
-		int numberOfRows = currentClipArea.height / rowHeight + 2;
+
+        // Calculate the number of rows to draw by checking the clip area.
+        // The addition of two makes covers a partial visible row at the top
+        // and a partial visible row at the bottom.
+        int numberOfRows = currentClipArea.height / rowHeight + 2;
 
         if (numberOfRows > mListModel->getNumberOfElements())
-        {
             numberOfRows = mListModel->getNumberOfElements();
-        }
 
-		// Calculate which row to start drawing. If the list box 
-		// has a negative y coordinate value we should check if
-		// we should drop rows in the begining of the list as
-		// they might not be visible. A negative y value is very
-		// common if the list box for instance resides in a scroll
-		// area and the user has scrolled the list box downwards.
-		int startRow;    	
-		if (getY() < 0)
-		{
-			startRow = -1 * (getY() / rowHeight);
-		}
-		else
-		{
-			startRow = 0;
-		}
+        // Calculate which row to start drawing. If the list box 
+        // has a negative y coordinate value we should check if
+        // we should drop rows in the begining of the list as
+        // they might not be visible. A negative y value is very
+        // common if the list box for instance resides in a scroll
+        // area and the user has scrolled the list box downwards.
+        int startRow;
+        if (getY() < 0)
+            startRow = -1 * (getY() / rowHeight);
+        else
+            startRow = 0;
 
-		int i;
-		// The y coordinate where we start to draw the text is
-		// simply the y coordinate multiplied with the font height.
-		int y = rowHeight * startRow;
+        int i;
+        // The y coordinate where we start to draw the text is
+        // simply the y coordinate multiplied with the font height.
+        int y = rowHeight * startRow;
         for (i = startRow; i < startRow + numberOfRows; ++i)
         {
             if (i == mSelected)
             {
                 graphics->setColor(getSelectionColor());
-                graphics->fillRectangle(Rectangle(0, y, getWidth(), rowHeight));
+                graphics->fillRectangle(Rectangle(0, y,
+                    getWidth(), rowHeight));
                 graphics->setColor(getForegroundColor());
             }
-			
-			// If the row height is greater than the font height we
-			// draw the text with a center vertical alignment.
-			if (rowHeight > getFont()->getHeight())
-			{
-				graphics->drawText(mListModel->getElementAt(i), 1, y + rowHeight / 2 - getFont()->getHeight() / 2);
-			}
-			else
-			{
-				graphics->drawText(mListModel->getElementAt(i), 1, y);
-			}
+
+            // If the row height is greater than the font height we
+            // draw the text with a center vertical alignment.
+            if (rowHeight > getFont()->getHeight())
+            {
+                graphics->drawText(mListModel->getElementAt(i), 1,
+                    y + rowHeight / 2 - getFont()->getHeight() / 2);
+            }
+            else
+            {
+                graphics->drawText(mListModel->getElementAt(i), 1, y);
+            }
 
             y += rowHeight;
         }
@@ -172,29 +166,19 @@ namespace gcn
         else
         {
             if (selected < 0)
-            {
                 mSelected = -1;
-            }
             else if (selected >= mListModel->getNumberOfElements())
-            {
                 mSelected = mListModel->getNumberOfElements() - 1;
-            }
             else
-            {
                 mSelected = selected;
-            }
         }
-        
+
         Rectangle scroll;
 
         if (mSelected < 0)
-        {
             scroll.y = 0;
-        }
         else
-        {
             scroll.y = getRowHeight() * mSelected;
-        }
 
         scroll.height = getRowHeight();
         showPart(scroll);
@@ -218,15 +202,11 @@ namespace gcn
             if (mSelected == -1)
             {
                 if (mWrappingEnabled)
-                {
                     setSelected(getListModel()->getNumberOfElements() - 1);
-                }
                 else
-                {
                     setSelected(0);
-                }
             }
-            
+
             keyEvent.consume();
         }
         else if (key.getValue() == Key::DOWN)
@@ -240,7 +220,7 @@ namespace gcn
             {
                 setSelected(getSelected() + 1);
             }
-            
+
             keyEvent.consume();
         }
         else if (key.getValue() == Key::HOME)
@@ -269,9 +249,7 @@ namespace gcn
         if (isFocused())
         {
             if (getSelected() > 0 )
-            {
                 setSelected(getSelected() - 1);
-            }
 
             mouseEvent.consume();
         }
@@ -307,9 +285,7 @@ namespace gcn
     void ListBox::adjustSize()
     {
         if (mListModel != NULL)
-        {
             setHeight(getRowHeight() * mListModel->getNumberOfElements());
-        }
     }
 
     bool ListBox::isWrappingEnabled() const
@@ -336,15 +312,17 @@ namespace gcn
     {
         SelectionListenerIterator iter;
 
-        for (iter = mSelectionListeners.begin(); iter != mSelectionListeners.end(); ++iter)
+        for (iter = mSelectionListeners.begin();
+             iter != mSelectionListeners.end();
+             ++ iter)
         {
             SelectionEvent event(this);
             (*iter)->valueChanged(event);
         }
     }
 
-	unsigned int ListBox::getRowHeight() const
-	{
-		return getFont()->getHeight();
-	}
+    unsigned int ListBox::getRowHeight() const
+    {
+        return getFont()->getHeight();
+    }
 }

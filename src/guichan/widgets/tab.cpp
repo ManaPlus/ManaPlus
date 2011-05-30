@@ -55,9 +55,9 @@
 
 namespace gcn
 {
-    Tab::Tab()
-            :mHasMouse(false),
-            mTabbedArea(NULL)
+    Tab::Tab() :
+        mHasMouse(false),
+        mTabbedArea(NULL)
     {
         mLabel = new Label();
         mLabel->setPosition(4, 4);
@@ -77,9 +77,7 @@ namespace gcn
                 mLabel->getHeight() + 8);
 
         if (mTabbedArea != NULL)
-        {
             mTabbedArea->adjustTabPositions();
-        }
     }
 
     void Tab::setTabbedArea(TabbedArea* tabbedArea)
@@ -124,7 +122,8 @@ namespace gcn
             graphics->drawLine(0, 0, getWidth() - 1, 0);
             graphics->drawLine(0, 1, 0, getHeight() - 1);
             graphics->setColor(shadowColor);
-            graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
+            graphics->drawLine(getWidth() - 1, 1,
+                getWidth() - 1, getHeight() - 1);
 
             borderColor = highlightColor;
             baseColor = getBaseColor();
@@ -135,7 +134,8 @@ namespace gcn
             graphics->setColor(shadowColor);
             graphics->drawLine(0, 0, getWidth() - 1, 0);
             graphics->drawLine(0, 1, 0, getHeight() - 1);
-            graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
+            graphics->drawLine(getWidth() - 1, 1, getWidth() - 1,
+                getHeight() - 1);
 
             baseColor = getBaseColor() - 0x151515;
             baseColor.a = alpha;
@@ -143,14 +143,13 @@ namespace gcn
 
         // Push a clip area so the other drawings don't need to worry
         // about the border.
-        graphics->pushClipArea(Rectangle(1, 1, getWidth() - 2, getHeight() - 1));
+        graphics->pushClipArea(Rectangle(1, 1,
+            getWidth() - 2, getHeight() - 1));
         const Rectangle currentClipArea = graphics->getCurrentClipArea();
 
         graphics->setColor(baseColor);
-        graphics->fillRectangle(Rectangle(0, 
-                                          0, 
-                                          currentClipArea.width, 
-                                          currentClipArea.height));
+        graphics->fillRectangle(Rectangle(0, 0,
+            currentClipArea.width, currentClipArea.height));
 
         drawChildren(graphics);
 
@@ -159,10 +158,8 @@ namespace gcn
             && mTabbedArea->isTabSelected(this))
         {
             graphics->setColor(Color(0x000000));
-            graphics->drawRectangle(Rectangle(2,
-                                              2,
-                                              currentClipArea.width - 4,
-                                              currentClipArea.height - 4));
+            graphics->drawRectangle(Rectangle(2, 2,
+                currentClipArea.width - 4, currentClipArea.height - 4));
         }
 
         graphics->popClipArea();

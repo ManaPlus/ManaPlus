@@ -51,10 +51,16 @@ namespace gcn
 {
     ClipRectangle::ClipRectangle()
     {
-        x = y = width = height = xOffset = yOffset  = 0;
+        x = 0;
+        y = 0;
+        width = 0;
+        height = 0;
+        xOffset = 0;
+        yOffset = 0;
     }
 
-    ClipRectangle::ClipRectangle(int x, int y, int width, int height, int xOffset, int yOffset)
+    ClipRectangle::ClipRectangle(int x, int y, int width, int height,
+                                 int xOffset, int yOffset)
     {
         this->x = x;
         this->y = y;

@@ -49,8 +49,8 @@
 
 namespace gcn
 {
-    Key::Key(int value)
-            :mValue(value)
+    Key::Key(int value) :
+        mValue(value)
     {
     }
 
@@ -69,8 +69,8 @@ namespace gcn
     bool Key::isLetter() const
     {
         return (((mValue >= 65 && mValue <= 90)
-                 || (mValue >= 97 && mValue <= 122)
-                 || (mValue >= 192 && mValue <= 255))
+                || (mValue >= 97 && mValue <= 122)
+                || (mValue >= 192 && mValue <= 255))
                 && (mValue != 215) && (mValue != 247));
     }
 
@@ -78,14 +78,14 @@ namespace gcn
     {
         return mValue;
     }
-		
-	bool Key::operator==(const Key& key) const
-	{
-		return mValue == key.mValue;
-	}
 
-	bool Key::operator!=(const Key& key) const
-	{
-		return (mValue != key.mValue);
-	}
+    bool Key::operator==(const Key& key) const
+    {
+        return mValue == key.mValue;
+    }
+
+    bool Key::operator!=(const Key& key) const
+    {
+        return (mValue != key.mValue);
+    }
 }

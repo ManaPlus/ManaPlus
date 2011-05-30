@@ -65,7 +65,13 @@ namespace gcn
         /**
          * Constructor.
          */
-        MouseInput() { };
+        MouseInput() :
+            mType(0),
+            mButton(0),
+            mTimeStamp(0),
+            mX(0),
+            mY(0)
+        { };
 
         /**
          * Constructor.

@@ -70,22 +70,14 @@ namespace gcn
         mInternalListBox = (listBox == NULL);
 
         if (mInternalScrollArea)
-        {
             mScrollArea = new ScrollArea();
-        }
         else
-        {
             mScrollArea = scrollArea;
-        }
 
         if (mInternalListBox)
-        {
             mListBox = new ListBox();
-        }
         else
-        {
             mListBox = listBox;
-        }
 
         mScrollArea->setContent(mListBox);
         add(mScrollArea);
@@ -96,9 +88,7 @@ namespace gcn
         setListModel(listModel);
 
         if (mListBox->getSelected() < 0)
-        {
             mListBox->setSelected(0);
-        }
 
         addMouseListener(this);
         addKeyListener(this);
@@ -116,14 +106,10 @@ namespace gcn
         }
 
         if (mInternalScrollArea)
-        {
             delete mScrollArea;
-        }
 
         if (mInternalListBox)
-        {
             delete mListBox;
-        }
 
         setInternalFocusHandler(NULL);
     }
@@ -133,13 +119,9 @@ namespace gcn
         int h;
 
         if (mDroppedDown)
-        {
             h = mFoldedUpHeight;
-        }
         else
-        {
             h = getHeight();
-        }
 
         Color faceColor = getBaseColor();
         Color highlightColor, shadowColor;
@@ -163,15 +145,15 @@ namespace gcn
         const Rectangle currentClipArea = graphics->getCurrentClipArea();
 
         graphics->setColor(getBackgroundColor());
-        graphics->fillRectangle(Rectangle(0, 0, currentClipArea.width, currentClipArea.height));
-       
+        graphics->fillRectangle(Rectangle(0, 0,
+            currentClipArea.width, currentClipArea.height));
+
         if (isFocused())
         {
             graphics->setColor(getSelectionColor());
-            graphics->fillRectangle(Rectangle(0, 
-                                              0, 
-                                              currentClipArea.width - currentClipArea.height, 
-                                              currentClipArea.height));
+            graphics->fillRectangle(Rectangle(0, 0,
+                currentClipArea.width - currentClipArea.height,
+                currentClipArea.height));
             graphics->setColor(getForegroundColor());
         }
 
@@ -181,14 +163,14 @@ namespace gcn
             graphics->setColor(getForegroundColor());
             graphics->setFont(getFont());
 
-            graphics->drawText(mListBox->getListModel()->getElementAt(mListBox->getSelected()), 1, 0);
+            graphics->drawText(mListBox->getListModel()->getElementAt(
+                mListBox->getSelected()), 1, 0);
         }
-        
+
         // Push a clip area before drawing the button.
-        graphics->pushClipArea(Rectangle(currentClipArea.width - currentClipArea.height,
-                                         0,
-                                         currentClipArea.height,
-                                         currentClipArea.height));
+        graphics->pushClipArea(Rectangle(
+            currentClipArea.width - currentClipArea.height,
+            0, currentClipArea.height, currentClipArea.height));
         drawButton(graphics);
         graphics->popClipArea();
         graphics->popClipArea();
@@ -197,10 +179,8 @@ namespace gcn
          {
              // Draw a border around the children.
              graphics->setColor(shadowColor);
-             graphics->drawRectangle(Rectangle(0,
-                                               mFoldedUpHeight,
-                                               getWidth(),
-                                               getHeight() - mFoldedUpHeight));
+             graphics->drawRectangle(Rectangle(0, mFoldedUpHeight,
+                 getWidth(), getHeight() - mFoldedUpHeight));
              drawChildren(graphics);
          }
     }
@@ -234,29 +214,17 @@ namespace gcn
 
         const Rectangle currentClipArea = graphics->getCurrentClipArea();
         graphics->setColor(highlightColor);
-        graphics->drawLine(0, 
-                           0, 
-                           currentClipArea.width - 1, 
-                           0);
-        graphics->drawLine(0, 
-                           1, 
-                           0, 
-                           currentClipArea.height - 1);
+        graphics->drawLine(0, 0, currentClipArea.width - 1, 0);
+        graphics->drawLine(0, 1, 0, currentClipArea.height - 1);
         graphics->setColor(shadowColor);
-        graphics->drawLine(currentClipArea.width - 1, 
-                           1, 
-                           currentClipArea.width - 1, 
-                           currentClipArea.height - 1);
-        graphics->drawLine(1, 
-                           currentClipArea.height - 1, 
-                           currentClipArea.width - 2, 
-                           currentClipArea.height - 1);
+        graphics->drawLine(currentClipArea.width - 1, 1,
+            currentClipArea.width - 1, currentClipArea.height - 1);
+        graphics->drawLine(1, currentClipArea.height - 1,
+            currentClipArea.width - 2, currentClipArea.height - 1);
 
         graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(1, 
-                                          1, 
-                                          currentClipArea.width - 2, 
-                                          currentClipArea.height - 2));
+        graphics->fillRectangle(Rectangle(1, 1,
+            currentClipArea.width - 2, currentClipArea.height - 2));
 
         graphics->setColor(getForegroundColor());
 
@@ -266,10 +234,8 @@ namespace gcn
         int dy = (currentClipArea.height * 2) / 3;
         for (i = 0; i < n; i++)
         {
-            graphics->drawLine(dx - i + offset,
-                               dy - i + offset,
-                               dx + i + offset,
-                               dy - i + offset);
+            graphics->drawLine(dx - i + offset, dy - i + offset,
+                dx + i + offset, dy - i + offset);
         }
     }
 
@@ -281,16 +247,14 @@ namespace gcn
     void DropDown::setSelected(int selected)
     {
         if (selected >= 0)
-        {
             mListBox->setSelected(selected);
-        }
     }
 
     void DropDown::keyPressed(KeyEvent& keyEvent)
     {
         if (keyEvent.isConsumed())
             return;
-        
+
         Key key = keyEvent.getKey();
 
         if ((key.getValue() == Key::ENTER || key.getValue() == Key::SPACE)
@@ -312,7 +276,7 @@ namespace gcn
     }
 
     void DropDown::mousePressed(MouseEvent& mouseEvent)
-    {        
+    {
         // If we have a mouse press on the widget.
         if (0 <= mouseEvent.getY()
             && mouseEvent.getY() < getHeight()
@@ -353,11 +317,10 @@ namespace gcn
     void DropDown::mouseReleased(MouseEvent& mouseEvent)
     {
         if (mIsDragged)
-        {
             mPushed = false;
-        }
 
-        // Released outside of widget. Can happen when we have modal input focus.
+        // Released outside of widget. Can happen when we have modal
+        // input focus.
         if ((0 > mouseEvent.getY()
             || mouseEvent.getY() >= getHeight()
             || mouseEvent.getX() < 0
@@ -368,9 +331,7 @@ namespace gcn
             releaseModalMouseInputFocus();
 
             if (mIsDragged)
-            {
                 foldUp();
-            }
         }
         else if (mouseEvent.getButton() == MouseEvent::LEFT)
         {
@@ -392,9 +353,7 @@ namespace gcn
         mListBox->setListModel(listModel);
 
         if (mListBox->getSelected() < 0)
-        {
             mListBox->setSelected(0);
-        }
 
         adjustHeight();
     }
@@ -407,17 +366,13 @@ namespace gcn
     void DropDown::adjustHeight()
     {
         if (mScrollArea == NULL)
-        {
             throw GCN_EXCEPTION("Scroll area has been deleted.");
-        }
 
         if (mListBox == NULL)
-        {
             throw GCN_EXCEPTION("List box has been deleted.");
-        }
 
         int listBoxHeight = mListBox->getHeight();
-        
+
         // We add 2 for the border
         int h2 = getFont()->getHeight() + 2;
 
@@ -457,9 +412,7 @@ namespace gcn
             adjustHeight();
 
             if (getParent())
-            {
                 getParent()->moveToTop(this);
-            }
         }
 
         mListBox->requestFocus();
@@ -483,11 +436,9 @@ namespace gcn
 
 
     void DropDown::death(const Event& event)
-    {        
+    {
         if (event.getSource() == mScrollArea)
-        {
             mScrollArea = NULL;
-        }
 
         BasicContainer::death(event);
     }
@@ -504,10 +455,8 @@ namespace gcn
         if (mDroppedDown)
         {
             // Calculate the children area (with the one pixel border in mind)
-            return Rectangle(1, 
-                             mFoldedUpHeight + 1, 
-                             getWidth() - 2, 
-                             getHeight() - mFoldedUpHeight - 2);
+            return Rectangle(1, mFoldedUpHeight + 1, 
+                getWidth() - 2, getHeight() - mFoldedUpHeight - 2);
         }
 
         return Rectangle();
@@ -516,14 +465,10 @@ namespace gcn
     void DropDown::setBaseColor(const Color& color)
     {
         if (mInternalScrollArea)
-        {
             mScrollArea->setBaseColor(color);
-        }
 
         if (mInternalListBox)
-        {
             mListBox->setBaseColor(color);
-        }
 
         Widget::setBaseColor(color);
     }
@@ -531,14 +476,10 @@ namespace gcn
     void DropDown::setBackgroundColor(const Color& color)
     {
         if (mInternalScrollArea)
-        {
             mScrollArea->setBackgroundColor(color);
-        }
 
         if (mInternalListBox)
-        {
             mListBox->setBackgroundColor(color);
-        }
 
         Widget::setBackgroundColor(color);
     }
@@ -546,50 +487,40 @@ namespace gcn
     void DropDown::setForegroundColor(const Color& color)
     {
         if (mInternalScrollArea)
-        {
             mScrollArea->setForegroundColor(color);
-        }
 
         if (mInternalListBox)
-        {
             mListBox->setForegroundColor(color);
-        }
 
         Widget::setForegroundColor(color);
     }
 
-	void DropDown::setFont(Font *font)
-	{
-		if (mInternalScrollArea)
-        {
+    void DropDown::setFont(Font *font)
+    {
+        if (mInternalScrollArea)
             mScrollArea->setFont(font);
-        }
 
         if (mInternalListBox)
-        {
             mListBox->setFont(font);
-        }
 
         Widget::setFont(font);
-	}
+    }
 
-	void DropDown::mouseWheelMovedUp(MouseEvent& mouseEvent)
-	{
+    void DropDown::mouseWheelMovedUp(MouseEvent& mouseEvent)
+    {
         if (isFocused() && mouseEvent.getSource() == this)
-        {                   
+        {
             mouseEvent.consume();
 
             if (mListBox->getSelected() > 0)
-            {
                 mListBox->setSelected(mListBox->getSelected() - 1);
-            }
         }
     }
 
     void DropDown::mouseWheelMovedDown(MouseEvent& mouseEvent)
     {
         if (isFocused() && mouseEvent.getSource() == this)
-        {            
+        {
             mouseEvent.consume();
 
             mListBox->setSelected(mListBox->getSelected() + 1);
@@ -601,9 +532,7 @@ namespace gcn
         Widget::setSelectionColor(color);
 
         if (mInternalListBox)
-        {
             mListBox->setSelectionColor(color);
-        }
     }
 
     void DropDown::valueChanged(const SelectionEvent& event _UNUSED_)
@@ -615,17 +544,19 @@ namespace gcn
     {
         mSelectionListeners.push_back(selectionListener);
     }
-   
-    void DropDown::removeSelectionListener(SelectionListener* selectionListener)
+
+    void DropDown::removeSelectionListener(SelectionListener* listener)
     {
-        mSelectionListeners.remove(selectionListener);
+        mSelectionListeners.remove(listener);
     }
 
     void DropDown::distributeValueChangedEvent()
     {
         SelectionListenerIterator iter;
 
-        for (iter = mSelectionListeners.begin(); iter != mSelectionListeners.end(); ++iter)
+        for (iter = mSelectionListeners.begin();
+             iter != mSelectionListeners.end(); 
+             ++iter)
         {
             SelectionEvent event(this);
             (*iter)->valueChanged(event);

@@ -63,7 +63,14 @@ namespace gcn
         /**
          * Constructor.
          */
-        KeyInput() { };
+        KeyInput() :
+            mType(0),
+            mShiftPressed(false),
+            mControlPressed(false),
+            mAltPressed(false),
+            mMetaPressed(false),
+            mNumericPad(false)
+        { };
 
         /**
          * Constructor.

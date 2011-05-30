@@ -73,11 +73,13 @@ namespace gcn
         return mImageLoader;
     }
 
-    Image* Image::load(const std::string& filename, bool convertToDisplayFormat)
+    Image* Image::load(const std::string& filename,
+                       bool convertToDisplayFormat)
     {
         if (mImageLoader == NULL)
         {
-            throw GCN_EXCEPTION("Trying to load an image but no image loader is set.");
+            throw GCN_EXCEPTION("Trying to load an image but "
+                "no image loader is set.");
         }
 
         return mImageLoader->load(filename, convertToDisplayFormat);

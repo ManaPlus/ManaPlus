@@ -60,7 +60,8 @@ namespace gcn
      * @see Container
      * @since 0.6.0
      */
-    class GCN_CORE_DECLSPEC BasicContainer : public Widget, public DeathListener
+    class GCN_CORE_DECLSPEC BasicContainer : public Widget,
+                                             public DeathListener
     {
     public:
         /**

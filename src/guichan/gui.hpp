@@ -367,7 +367,8 @@ namespace gcn
          *
          * @since 0.6.0
          */
-        virtual void distributeKeyEventToGlobalKeyListeners(KeyEvent& keyEvent);
+        virtual void distributeKeyEventToGlobalKeyListeners(KeyEvent&
+                                                            keyEvent);
 
         /**
          * Gets the widget at a certain position.

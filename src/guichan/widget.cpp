@@ -68,21 +68,21 @@ namespace gcn
     DefaultFont Widget::mDefaultFont;
     std::list<Widget*> Widget::mWidgets;
 
-    Widget::Widget()
-            : mForegroundColor(0x000000),
-              mBackgroundColor(0xffffff),
-              mBaseColor(0x808090),
-              mSelectionColor(0xc3d9ff),
-              mFocusHandler(NULL),
-              mInternalFocusHandler(NULL),
-              mParent(NULL),
-              mFrameSize(0),
-              mFocusable(false),
-              mVisible(true),
-              mTabIn(true),
-              mTabOut(true),
-              mEnabled(true),
-              mCurrentFont(NULL)
+    Widget::Widget() :
+        mForegroundColor(0x000000),
+        mBackgroundColor(0xffffff),
+        mBaseColor(0x808090),
+        mSelectionColor(0xc3d9ff),
+        mFocusHandler(NULL),
+        mInternalFocusHandler(NULL),
+        mParent(NULL),
+        mFrameSize(0),
+        mFocusable(false),
+        mVisible(true),
+        mTabIn(true),
+        mTabOut(true),
+        mEnabled(true),
+        mCurrentFont(NULL)
     {
         mWidgets.push_back(this);
     }
@@ -91,7 +91,9 @@ namespace gcn
     {
         DeathListenerIterator iter;
 
-        for (iter = mDeathListeners.begin(); iter != mDeathListeners.end(); ++iter)
+        for (iter = mDeathListeners.begin();
+             iter != mDeathListeners.end();
+             ++iter)
         {
             Event event(this);
             (*iter)->death(event);
@@ -118,11 +120,11 @@ namespace gcn
         for (i = 0; i < getFrameSize(); ++i)
         {
             graphics->setColor(shadowColor);
-            graphics->drawLine(i,i, width - i, i);
-            graphics->drawLine(i,i + 1, i, height - i - 1);
+            graphics->drawLine(i, i, width - i, i);
+            graphics->drawLine(i, i + 1, i, height - i - 1);
             graphics->setColor(highlightColor);
-            graphics->drawLine(width - i,i + 1, width - i, height - i);
-            graphics->drawLine(i,height - i, width - i - 1, height - i);
+            graphics->drawLine(width - i, i + 1, width - i, height - i);
+            graphics->drawLine(i, height - i, width - i - 1, height - i);
         }
     }
 
@@ -243,9 +245,7 @@ namespace gcn
     bool Widget::isFocused() const
     {
         if (!mFocusHandler)
-        {
             return false;
-        }
 
         return (mFocusHandler->isFocused(this));
     }
@@ -269,46 +269,35 @@ namespace gcn
     {
         if (mFocusHandler == NULL)
         {
-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
+            throw GCN_EXCEPTION("No focushandler set (did you add "
+                "the widget to the gui?).");
         }
 
         if (isFocusable())
-        {
             mFocusHandler->requestFocus(this);
-        }
     }
 
     void Widget::requestMoveToTop()
     {
         if (mParent)
-        {
             mParent->moveToTop(this);
-        }
     }
 
     void Widget::requestMoveToBottom()
     {
         if (mParent)
-        {
             mParent->moveToBottom(this);
-        }
     }
 
     void Widget::setVisible(bool visible)
     {
         if (!visible && isFocused())
-        {
             mFocusHandler->focusNone();
-        }
-        
+
         if (visible)
-        {
             distributeShownEvent();
-        }
-        else if(!visible)
-        {
+        else if (!visible)
             distributeHiddenEvent();
-        }
 
         mVisible = visible;
     }
@@ -316,13 +305,9 @@ namespace gcn
     bool Widget::isVisible() const
     {
         if (getParent() == NULL)
-        {
             return mVisible;
-        }
         else
-        {
             return mVisible && getParent()->isVisible();
-        }
     }
 
     void Widget::setBaseColor(const Color& color)
@@ -374,9 +359,7 @@ namespace gcn
         }
 
         if (focusHandler)
-        {
             focusHandler->add(this);
-        }
 
         mFocusHandler = focusHandler;
     }
@@ -469,9 +452,7 @@ namespace gcn
         if (mCurrentFont == NULL)
         {
             if (mGlobalFont == NULL)
-            {
                 return &mDefaultFont;
-            }
 
             return mGlobalFont;
         }
@@ -487,9 +468,7 @@ namespace gcn
         for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
         {
             if ((*iter)->mCurrentFont == NULL)
-            {
                 (*iter)->fontChanged();
-            }
         }
     }
 
@@ -507,9 +486,7 @@ namespace gcn
         for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
         {
             if (*iter == widget)
-            {
                 return true;
-            }
         }
 
         return result;
@@ -558,7 +535,8 @@ namespace gcn
     {
         if (mFocusHandler == NULL)
         {
-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
+            throw GCN_EXCEPTION("No focushandler set (did you add "
+                "the widget to the gui?).");
         }
 
         mFocusHandler->requestModalFocus(this);
@@ -568,7 +546,8 @@ namespace gcn
     {
         if (mFocusHandler == NULL)
         {
-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
+            throw GCN_EXCEPTION("No focushandler set (did you add "
+                "the widget to the gui?).");
         }
 
         mFocusHandler->requestModalMouseInputFocus(this);
@@ -577,9 +556,7 @@ namespace gcn
     void Widget::releaseModalFocus()
     {
         if (mFocusHandler == NULL)
-        {
             return;
-        }
 
         mFocusHandler->releaseModalFocus(this);
     }
@@ -587,9 +564,7 @@ namespace gcn
     void Widget::releaseModalMouseInputFocus()
     {
         if (mFocusHandler == NULL)
-        {
             return;
-        }
 
         mFocusHandler->releaseModalMouseInputFocus(this);
     }
@@ -598,7 +573,8 @@ namespace gcn
     {
         if (mFocusHandler == NULL)
         {
-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
+            throw GCN_EXCEPTION("No focushandler set (did you add "
+                "the widget to the gui?).");
         }
 
         if (getParent() != NULL)
@@ -614,7 +590,8 @@ namespace gcn
     {
         if (mFocusHandler == NULL)
         {
-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
+            throw GCN_EXCEPTION("No focushandler set (did you add "
+                "the widget to the gui?).");
         }
 
         if (getParent() != NULL)
@@ -675,7 +652,9 @@ namespace gcn
     {
         WidgetListenerIterator iter;
 
-        for (iter = mWidgetListeners.begin(); iter != mWidgetListeners.end(); ++iter)
+        for (iter = mWidgetListeners.begin();
+             iter != mWidgetListeners.end();
+             ++ iter)
         {
             Event event(this);
             (*iter)->widgetResized(event);
@@ -686,7 +665,9 @@ namespace gcn
     {
         WidgetListenerIterator iter;
 
-        for (iter = mWidgetListeners.begin(); iter != mWidgetListeners.end(); ++iter)
+        for (iter = mWidgetListeners.begin();
+             iter != mWidgetListeners.end();
+             ++ iter)
         {
             Event event(this);
             (*iter)->widgetMoved(event);
@@ -697,7 +678,9 @@ namespace gcn
     {
         WidgetListenerIterator iter;
 
-        for (iter = mWidgetListeners.begin(); iter != mWidgetListeners.end(); ++iter)
+        for (iter = mWidgetListeners.begin();
+             iter != mWidgetListeners.end();
+             ++ iter)
         {
             Event event(this);
             (*iter)->widgetHidden(event);
@@ -707,7 +690,9 @@ namespace gcn
     void Widget::distributeActionEvent()
     {
         ActionListenerIterator iter;
-        for (iter = mActionListeners.begin(); iter != mActionListeners.end(); ++iter)
+        for (iter = mActionListeners.begin();
+             iter != mActionListeners.end();
+             ++iter)
         {
             ActionEvent actionEvent(this, mActionEventId);
             (*iter)->action(actionEvent);
@@ -718,7 +703,9 @@ namespace gcn
     {
         WidgetListenerIterator iter;
 
-        for (iter = mWidgetListeners.begin(); iter != mWidgetListeners.end(); ++iter)
+        for (iter = mWidgetListeners.begin();
+             iter != mWidgetListeners.end();
+             ++iter)
         {
             Event event(this);
             (*iter)->widgetShown(event);
@@ -728,8 +715,6 @@ namespace gcn
     void Widget::showPart(Rectangle rectangle)
     {
         if (mParent != NULL)
-        {
             mParent->showWidgetPart(this, rectangle);
-        }                
     }
 }

@@ -63,7 +63,8 @@
 #define _UNUSED_
 #endif
 
-namespace gcn {
+namespace gcn
+{
     /**
      * An implementation of a drop downable list from which an item can be
      * selected. The drop down consists of an internal ScrollArea and an
@@ -154,10 +155,10 @@ namespace gcn {
          * If you delete your selection listener, be sure to also remove it
          * using removeSelectionListener().
          *
-         * @param selectionListener the selection listener to add.
+         * @param listener the selection listener to add.
          * @since 0.8.0
          */
-        void addSelectionListener(SelectionListener* selectionListener);
+        void addSelectionListener(SelectionListener* listener);
 
         /**
          * Removes a selection listener from the drop down.

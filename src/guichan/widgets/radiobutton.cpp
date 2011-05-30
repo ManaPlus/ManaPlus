@@ -88,38 +88,32 @@ namespace gcn
 
     void RadioButton::draw(Graphics* graphics)
     {
-        graphics->pushClipArea(Rectangle(1,
-                                         1,
-                                         getWidth() - 1,
-                                         getHeight() - 1));
+        graphics->pushClipArea(Rectangle(1, 1,
+            getWidth() - 1, getHeight() - 1));
+
         drawBox(graphics);
         graphics->popClipArea();
 
-        
         graphics->setFont(getFont());
         graphics->setColor(getForegroundColor());
 
         if (isFocused())
         {
             int fh;
-            
-            if (getHeight()%2 == 0)
-            {
+
+            if (getHeight() % 2 == 0)
                 fh = getHeight() - 4;
-            }
             else
-            {
                 fh = getHeight() - 3;
-            }
 
             int hh = (fh + 1) / 2;
-        
+
             graphics->drawLine(0, hh + 1, hh + 1, 0);
             graphics->drawLine(hh + 2, 1, fh + 2, hh + 1);
             graphics->drawLine(fh + 1, hh + 2, hh + 1, fh + 2);
-            graphics->drawLine(hh + 1, fh + 2, 1, hh + 2);            
+            graphics->drawLine(hh + 1, fh + 2, 1, hh + 2);
         }
-        
+
         int h = getHeight() + getHeight() / 2;
 
         graphics->drawText(getCaption(), h - 2, 0);
@@ -129,14 +123,10 @@ namespace gcn
     {
         int h;
 
-        if (getHeight()%2 == 0)
-        {
+        if (getHeight() % 2 == 0)
             h = getHeight() - 4;
-        }
         else
-        {
             h = getHeight() - 3;
-        }
 
         int alpha = getBaseColor().a;
         Color faceColor = getBaseColor();
@@ -152,20 +142,10 @@ namespace gcn
         int hh = (h + 1) / 2;
 
         for (i = 1; i <= hh; ++i)
-        {
-            graphics->drawLine(hh - i + 1,
-                               i,
-                               hh + i - 1,
-                               i);
-        }
+            graphics->drawLine(hh - i + 1, i, hh + i - 1, i);
 
         for (i = 1; i < hh; ++i)
-        {
-            graphics->drawLine(hh - i + 1,
-                               h - i,
-                               hh + i - 1,
-                               h - i);
-        }
+            graphics->drawLine(hh - i + 1, h - i, hh + i - 1, h - i);
 
         graphics->setColor(shadowColor);
         graphics->drawLine(hh, 0, 0, hh);
@@ -181,14 +161,9 @@ namespace gcn
         if (mSelected)
         {
             for (i = 0; i < hhh; ++i)
-            {
                 graphics->drawLine(hh - i, 4 + i, hh + i, 4 + i);
-            }
             for (i = 0; i < hhh; ++i)
-            {
                 graphics->drawLine(hh - i, h - 4 - i, hh + i, h - 4 -  i);
-            }
-
         }
     }
 
@@ -206,12 +181,10 @@ namespace gcn
 
             for (iter = mGroupMap.lower_bound(mGroup);
                  iter != iterEnd;
-                 iter++)
+                 ++ iter)
             {
                 if (iter->second->isSelected())
-                {
                     iter->second->setSelected(false);
-                }
             }
         }
 
@@ -264,7 +237,7 @@ namespace gcn
 
             for (iter = mGroupMap.lower_bound(mGroup);
                  iter != iterEnd;
-                 iter++)
+                 ++ iter)
             {
                 if (iter->second == this)
                 {
@@ -293,6 +266,6 @@ namespace gcn
         int height = getFont()->getHeight();
 
         setHeight(height);
-        setWidth(getFont()->getWidth(getCaption()) + height + height/2);
+        setWidth(getFont()->getWidth(getCaption()) + height + height / 2);
     }
 }
