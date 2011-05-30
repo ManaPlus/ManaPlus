@@ -26,6 +26,7 @@ manaplus_SOURCES += guichan/actionevent.hpp \
 	      guichan/basiccontainer.hpp \
 	      guichan/cliprectangle.hpp \
 	      guichan/color.hpp \
+	      guichan/defaultfont.hpp \
 	      guichan/event.hpp \
 	      guichan/exception.hpp \
 	      guichan/focushandler.hpp \
@@ -36,7 +37,9 @@ manaplus_SOURCES += guichan/actionevent.hpp \
 	      guichan/image.hpp \
 	      guichan/imageloader.hpp \
 	      guichan/input.hpp \
+	      guichan/inputevent.hpp \
 	      guichan/key.hpp \
+	      guichan/keyevent.hpp \
 	      guichan/keyinput.hpp \
 	      guichan/keylistener.hpp \
 	      guichan/listmodel.hpp \
@@ -46,6 +49,9 @@ manaplus_SOURCES += guichan/actionevent.hpp \
 	      guichan/platform.hpp \
 	      guichan/rectangle.hpp \
 	      guichan/selectionevent.hpp \
+	      guichan/sdl/sdlgraphics.hpp \
+	      guichan/sdl/sdlimage.hpp \
+	      guichan/sdl/sdlpixel.hpp \
 	      guichan/widget.hpp \
 	      guichan/widgetlistener.hpp \
 	      guichan/widgets/button.hpp \
@@ -69,6 +75,7 @@ manaplus_SOURCES += guichan/actionevent.cpp \
 	      guichan/basiccontainer.cpp \
 	      guichan/cliprectangle.cpp \
 	      guichan/color.cpp \
+	      guichan/defaultfont.cpp \
 	      guichan/event.cpp \
 	      guichan/exception.cpp \
 	      guichan/focushandler.cpp \
@@ -76,11 +83,17 @@ manaplus_SOURCES += guichan/actionevent.cpp \
 	      guichan/graphics.cpp \
 	      guichan/gui.cpp \
 	      guichan/image.cpp \
+	      guichan/inputevent.cpp \
+	      guichan/key.cpp \
+	      guichan/keyevent.cpp \
+	      guichan/keyinput.cpp \
 	      guichan/mouseevent.cpp \
 	      guichan/mouseinput.cpp \
 	      guichan/rectangle.cpp \
 	      guichan/selectionevent.cpp \
 	      guichan/widget.cpp \
+	      guichan/sdl/sdlgraphics.cpp \
+	      guichan/sdl/sdlimage.cpp \
 	      guichan/widgets/button.cpp \
 	      guichan/widgets/checkbox.cpp \
 	      guichan/widgets/container.cpp \
