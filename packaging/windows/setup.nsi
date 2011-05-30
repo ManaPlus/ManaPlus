@@ -211,8 +211,6 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\SDL_net.dll"
   File "${DLLDIR}\SDL_ttf.dll"
   File "${DLLDIR}\exchndl.dll"
-  File "${DLLDIR}\guichan.dll"
-  File "${DLLDIR}\guichan_sdl.dll"
   File "${DLLDIR}\SDL_gfx.dll"
   File "${DLLDIR}\libcurl-4.dll"
   File "${DLLDIR}\libiconv-2.dll"
