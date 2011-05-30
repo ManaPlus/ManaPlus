@@ -21,6 +21,83 @@ else
 manaplus_SOURCES =
 endif
 
+manaplus_SOURCES += guichan/actionevent.hpp \
+	      guichan/actionlistener.hpp \
+	      guichan/basiccontainer.hpp \
+	      guichan/cliprectangle.hpp \
+	      guichan/color.hpp \
+	      guichan/event.hpp \
+	      guichan/exception.hpp \
+	      guichan/focushandler.hpp \
+	      guichan/focuslistener.hpp \
+	      guichan/font.hpp \
+	      guichan/graphics.hpp \
+	      guichan/gui.hpp \
+	      guichan/image.hpp \
+	      guichan/imageloader.hpp \
+	      guichan/input.hpp \
+	      guichan/key.hpp \
+	      guichan/keyinput.hpp \
+	      guichan/keylistener.hpp \
+	      guichan/listmodel.hpp \
+	      guichan/mouseevent.hpp \
+	      guichan/mouseinput.hpp \
+	      guichan/mouselistener.hpp \
+	      guichan/platform.hpp \
+	      guichan/rectangle.hpp \
+	      guichan/selectionevent.hpp \
+	      guichan/widget.hpp \
+	      guichan/widgetlistener.hpp \
+	      guichan/widgets/button.hpp \
+	      guichan/widgets/checkbox.hpp \
+	      guichan/widgets/container.hpp \
+	      guichan/widgets/dropdown.hpp \
+	      guichan/widgets/icon.hpp \
+	      guichan/widgets/imagebutton.hpp \
+	      guichan/widgets/label.hpp \
+	      guichan/widgets/listbox.hpp \
+	      guichan/widgets/radiobutton.hpp \
+	      guichan/widgets/scrollarea.hpp \
+	      guichan/widgets/slider.hpp \
+	      guichan/widgets/tabbedarea.hpp \
+	      guichan/widgets/tab.hpp \
+	      guichan/widgets/textbox.hpp \
+	      guichan/widgets/textfield.hpp \
+	      guichan/widgets/window.hpp
+
+manaplus_SOURCES += guichan/actionevent.cpp \
+	      guichan/basiccontainer.cpp \
+	      guichan/cliprectangle.cpp \
+	      guichan/color.cpp \
+	      guichan/event.cpp \
+	      guichan/exception.cpp \
+	      guichan/focushandler.cpp \
+	      guichan/font.cpp \
+	      guichan/graphics.cpp \
+	      guichan/gui.cpp \
+	      guichan/image.cpp \
+	      guichan/mouseevent.cpp \
+	      guichan/mouseinput.cpp \
+	      guichan/rectangle.cpp \
+	      guichan/selectionevent.cpp \
+	      guichan/widget.cpp \
+	      guichan/widgets/button.cpp \
+	      guichan/widgets/checkbox.cpp \
+	      guichan/widgets/container.cpp \
+	      guichan/widgets/dropdown.cpp \
+	      guichan/widgets/icon.cpp \
+	      guichan/widgets/imagebutton.cpp \
+	      guichan/widgets/label.cpp \
+	      guichan/widgets/listbox.cpp \
+	      guichan/widgets/radiobutton.cpp \
+	      guichan/widgets/scrollarea.cpp \
+	      guichan/widgets/slider.cpp \
+	      guichan/widgets/tabbedarea.cpp \
+	      guichan/widgets/tab.cpp \
+	      guichan/widgets/textbox.cpp \
+	      guichan/widgets/textfield.cpp \
+	      guichan/widgets/window.cpp
+
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
 	      gui/widgets/battletab.cpp \
