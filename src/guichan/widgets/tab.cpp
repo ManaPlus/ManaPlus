@@ -168,12 +168,12 @@ namespace gcn
         graphics->popClipArea();
     }
 
-    void Tab::mouseEntered(MouseEvent& mouseEvent)
+    void Tab::mouseEntered(MouseEvent& mouseEvent _UNUSED_)
     {
         mHasMouse = true;
     }
 
-    void Tab::mouseExited(MouseEvent& mouseEvent)
+    void Tab::mouseExited(MouseEvent& mouseEvent _UNUSED_)
     {
         mHasMouse = false;
     }

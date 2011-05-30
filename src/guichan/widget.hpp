@@ -50,6 +50,12 @@
 #include "guichan/color.hpp"
 #include "guichan/rectangle.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn
 {
     class ActionListener;
@@ -887,7 +893,7 @@ namespace gcn
          * @see moveToBottom
          * @since 0.1.0
          */
-        virtual void moveToTop(Widget* widget) { };
+        virtual void moveToTop(Widget* widget _UNUSED_) { };
 
         /**
          * Moves a widget in this widget to the bottom of this widget.
@@ -897,7 +903,7 @@ namespace gcn
          * @see moveToTop
          * @since 0.1.0
          */
-        virtual void moveToBottom(Widget* widget) { };
+        virtual void moveToBottom(Widget* widget _UNUSED_) { };
 
         /**
          * Focuses the next widget in the widget.
@@ -923,7 +929,9 @@ namespace gcn
          * @param area The area to show.
          * @since 0.1.0
          */
-        virtual void showWidgetPart(Widget* widget, Rectangle area) { };
+        virtual void showWidgetPart(Widget* widget _UNUSED_,
+                                    Rectangle area _UNUSED_)
+        { };
 
         /**
          * Sets an id of a widget. An id can be useful if a widget needs to be

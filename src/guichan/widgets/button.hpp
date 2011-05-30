@@ -54,6 +54,12 @@
 #include "guichan/platform.hpp"
 #include "guichan/widget.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn
 {
     /**

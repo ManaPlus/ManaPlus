@@ -93,6 +93,9 @@ namespace gcn
               color = *(Uint32 *)p;
               break;
 
+          default:
+              color = *p;
+              break;
         }
 
         unsigned char r,g,b,a;
@@ -147,6 +150,9 @@ namespace gcn
 
           case 4:
               *(Uint32 *)p = pixel;
+              break;
+
+          default:
               break;
         }
 
@@ -250,6 +256,8 @@ namespace gcn
 
           case 4:
               *(Uint32 *)p = SDLAlpha32(pixel, *(Uint32 *)p, color.a);
+              break;
+          default:
               break;
         }
 

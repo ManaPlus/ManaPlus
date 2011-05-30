@@ -57,6 +57,12 @@
 #include "guichan/widgets/listbox.hpp"
 #include "guichan/widgets/scrollarea.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn {
     /**
      * An implementation of a drop downable list from which an item can be

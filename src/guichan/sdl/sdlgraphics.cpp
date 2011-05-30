@@ -353,6 +353,8 @@ namespace gcn
                 }
                 break;
             }
+            default:
+                break;
                 
         } // end switch
 
@@ -413,7 +415,7 @@ namespace gcn
         Uint32 pixel = SDL_MapRGB(mTarget->format, mColor.r, mColor.g, mColor.b);
 
         switch(bpp)
-        {            
+        {
           case 1:
               for (;y1 <= y2; ++y1)
               {
@@ -467,7 +469,9 @@ namespace gcn
                   p += mTarget->pitch;
               }
               break;
-              
+
+          default:
+              break;
         } // end switch
         
         SDL_UnlockSurface(mTarget);

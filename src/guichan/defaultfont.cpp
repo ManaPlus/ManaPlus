@@ -64,7 +64,8 @@ namespace gcn
         return 8*text.size();
     }
 
-    int DefaultFont::drawGlyph(Graphics* graphics, unsigned char glyph, int x, int y)
+    int DefaultFont::drawGlyph(Graphics* graphics,
+                               unsigned char glyph _UNUSED_, int x, int y)
     {
         graphics->drawRectangle( Rectangle(x, y, 8, 8));
 

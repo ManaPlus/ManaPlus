@@ -626,7 +626,7 @@ namespace gcn
         return mFocusHandler->getModalMouseInputFocused() == this;
     }
 
-    Widget *Widget::getWidgetAt(int x, int y)
+    Widget *Widget::getWidgetAt(int x _UNUSED_, int y _UNUSED_)
     {
         return NULL;
     }

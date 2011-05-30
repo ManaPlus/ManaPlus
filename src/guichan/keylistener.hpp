@@ -47,6 +47,12 @@
 #include "guichan/keyevent.hpp"
 #include "guichan/platform.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn
 {
     class Key;
@@ -72,14 +78,14 @@ namespace gcn
          *
          * @param keyEvent Discribes the event.
          */
-        virtual void keyPressed(KeyEvent& keyEvent) { }
+        virtual void keyPressed(KeyEvent& keyEvent _UNUSED_) { }
 
         /**
          * Called if a key is released when the widget has keyboard focus.
          *
          * @param keyEvent Discribes the event.
          */
-        virtual void keyReleased(KeyEvent& keyEvent) { }
+        virtual void keyReleased(KeyEvent& keyEvent _UNUSED_) { }
 
     protected:
         /**

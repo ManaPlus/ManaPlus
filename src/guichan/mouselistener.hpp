@@ -47,6 +47,12 @@
 #include "guichan/mouseevent.hpp"
 #include "guichan/platform.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn
 {
     /**
@@ -70,7 +76,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseEntered(MouseEvent& mouseEvent)
+        virtual void mouseEntered(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -81,7 +87,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseExited(MouseEvent& mouseEvent)
+        virtual void mouseExited(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -95,7 +101,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mousePressed(MouseEvent& mouseEvent)
+        virtual void mousePressed(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -106,7 +112,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseReleased(MouseEvent& mouseEvent)
+        virtual void mouseReleased(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -118,7 +124,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseClicked(MouseEvent& mouseEvent)
+        virtual void mouseClicked(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -129,7 +135,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseWheelMovedUp(MouseEvent& mouseEvent)
+        virtual void mouseWheelMovedUp(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -140,7 +146,7 @@ namespace gcn
          * @param mousEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseWheelMovedDown(MouseEvent& mouseEvent)
+        virtual void mouseWheelMovedDown(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -152,7 +158,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseMoved(MouseEvent& mouseEvent)
+        virtual void mouseMoved(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }
@@ -164,7 +170,7 @@ namespace gcn
          * @param mouseEvent Describes the event.
          * @since 0.6.0
          */
-        virtual void mouseDragged(MouseEvent& mouseEvent)
+        virtual void mouseDragged(MouseEvent& mouseEvent _UNUSED_)
         {
 
         }

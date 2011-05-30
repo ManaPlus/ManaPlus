@@ -47,6 +47,12 @@
 #include "guichan/font.hpp"
 #include "guichan/platform.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn
 {
     /**
