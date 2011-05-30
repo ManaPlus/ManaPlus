@@ -470,9 +470,14 @@ public:
                 }
 
                 if (!finded)
+                {
+                    delete *ai;
                     avatars->erase(ai);
+                }
                 else
+                {
                     ++ai;
+                }
             }
 
             std::vector<std::string>::iterator i = names.begin();
@@ -745,6 +750,7 @@ public:
 
             if (ava && ava->getX() == x && ava->getY() == y)
             {
+                delete ava;
                 avatars->erase(i);
                 return;
             }

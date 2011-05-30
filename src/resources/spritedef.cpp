@@ -353,7 +353,7 @@ SpriteDef::~SpriteDef()
         delete *i;
     }
 
-//need actions.clear?
+    mActions.clear();
 
     for (ImageSetIterator i = mImageSets.begin();
             i != mImageSets.end(); ++i)

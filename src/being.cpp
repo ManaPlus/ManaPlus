@@ -1716,7 +1716,10 @@ void Being::addToCache()
         beingInfoCache.push_front(entry);
 
         if (beingInfoCache.size() >= CACHE_SIZE)
+        {
+            delete beingInfoCache.back();
             beingInfoCache.pop_back();
+        }
     }
     entry->setName(getName());
     entry->setLevel(getLevel());
