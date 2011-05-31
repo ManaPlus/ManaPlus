@@ -68,6 +68,10 @@ class Setup_Theme : public SetupTab, public gcn::ActionListener
         DropDown *mHelpFontDropDown;
         std::string mHelpFont;
 
+        gcn::Label *mSecureFontLabel;
+        DropDown *mSecureFontDropDown;
+        std::string mSecureFont;
+
         EditDialog *mEditDialog;
 };
 

@@ -169,6 +169,21 @@ Gui::Gui(Graphics *graphics):
                       std::string("': ") + e.getMessage());
     }
 
+    // Set secure font
+    fontFile = config.getValue("secureFont", "");
+    if (fontFile.empty())
+        fontFile = branding.getStringValue("secureFont");
+
+    try
+    {
+        mSecureFont = new SDLFont(fontFile, fontSize);
+    }
+    catch (const gcn::Exception &e)
+    {
+        logger->error(std::string("Unable to load '") + fontFile +
+                      std::string("': ") + e.getMessage());
+    }
+
     gcn::Widget::setGlobalFont(mGuiFont);
 
     // Initialize mouse cursor and listen for changes to the option
@@ -195,6 +210,8 @@ Gui::~Gui()
     boldFont = 0;
     delete mHelpFont;
     mHelpFont = 0;
+    delete mSecureFont;
+    mSecureFont = 0;
     delete mInfoParticleFont;
     mInfoParticleFont = 0;
     delete getTop();

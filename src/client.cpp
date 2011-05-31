@@ -1728,6 +1728,7 @@ void Client::storeSafeParameters()
     std::string boldFont;
     std::string particleFont;
     std::string helpFont;
+    std::string secureFont;
     bool showBackground;
     bool enableMumble;
 
@@ -1753,6 +1754,7 @@ void Client::storeSafeParameters()
     boldFont = config.getStringValue("boldFont");
     particleFont = config.getStringValue("particleFont");
     helpFont = config.getStringValue("helpFont");
+    secureFont = config.getStringValue("secureFont");
 
     showBackground = config.getBoolValue("showBackground");
     enableMumble = config.getBoolValue("enableMumble");
@@ -1769,6 +1771,7 @@ void Client::storeSafeParameters()
     config.setValue("boldFont", "fonts/dejavusans-bold.ttf");
     config.setValue("particleFont", "fonts/dejavusans.ttf");
     config.setValue("helpFont", "fonts/dejavusansmono.ttf");
+    config.setValue("secureFont", "fonts/dejavusansmono.ttf");
     config.setValue("showBackground", false);
     config.setValue("enableMumble", false);
 
@@ -1792,6 +1795,7 @@ void Client::storeSafeParameters()
     config.setValue("boldFont", boldFont);
     config.setValue("particleFont", particleFont);
     config.setValue("helpFont", helpFont);
+    config.setValue("secureFont", secureFont);
     config.setValue("showBackground", showBackground);
     config.setValue("enableMumble", enableMumble);
 }

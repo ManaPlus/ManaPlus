@@ -158,6 +158,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "boldFont", "fonts/dejavusans-bold.ttf");
     AddDEF(configData, "particleFont", "fonts/dejavusans.ttf");
     AddDEF(configData, "helpFont", "fonts/dejavusansmono.ttf");
+    AddDEF(configData, "secureFont", "fonts/dejavusansmono.ttf");
     AddDEF(configData, "showBackground", true);
     AddDEF(configData, "enableTradeTab", true);
     AddDEF(configData, "logToChat", false);
@@ -226,6 +227,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "boldFont", "fonts/dejavusans-bold.ttf");
     AddDEF(brandingData, "particleFont", "fonts/dejavusans.ttf");
     AddDEF(brandingData, "helpFont", "fonts/dejavusansmono.ttf");
+    AddDEF(brandingData, "secureFont", "fonts/dejavusansmono.ttf");
 
     AddDEF(brandingData, "guiPath", "graphics/gui/");
     AddDEF(brandingData, "guiThemePath", "themes/");

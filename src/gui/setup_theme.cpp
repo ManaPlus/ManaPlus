@@ -49,6 +49,7 @@ const char* ACTION_FONT = "font";
 const char* ACTION_BOLD_FONT = "bold font";
 const char* ACTION_PARTICLE_FONT = "particle font";
 const char* ACTION_HELP_FONT = "help font";
+const char* ACTION_SECURE_FONT = "secure font";
 
 class NamesModel : public gcn::ListModel
 {
@@ -104,7 +105,8 @@ Setup_Theme::Setup_Theme():
     mFont(config.getStringValue("font")),
     mBoldFont(config.getStringValue("boldFont")),
     mParticleFont(config.getStringValue("particleFont")),
-    mHelpFont(config.getStringValue("helpFont"))
+    mHelpFont(config.getStringValue("helpFont")),
+    mSecureFont(config.getStringValue("secureFont"))
 {
     setName(_("Theme"));
 
@@ -113,6 +115,7 @@ Setup_Theme::Setup_Theme():
     mBoldFontLabel = new Label(_("Bold font"));
     mParticleFontLabel = new Label(_("Particle font"));
     mHelpFontLabel = new Label(_("Help font"));
+    mSecureFontLabel = new Label(_("Secure font"));
     mThemesModel  = new ThemesModel();
     mFontsModel  = new FontsModel();
 
@@ -136,6 +139,10 @@ Setup_Theme::Setup_Theme():
     mHelpFontDropDown->setActionEventId(ACTION_HELP_FONT);
     mHelpFontDropDown->addActionListener(this);
 
+    mSecureFontDropDown = new DropDown(mFontsModel);
+    mSecureFontDropDown->setActionEventId(ACTION_SECURE_FONT);
+    mSecureFontDropDown->addActionListener(this);
+
     std::string skin = Theme::getThemeName();
     if (!skin.empty())
         mThemeDropDown->setSelectedString(skin);
@@ -150,6 +157,8 @@ Setup_Theme::Setup_Theme():
         config.getStringValue("particleFont")));
     mHelpFontDropDown->setSelectedString(getFileName(
         config.getStringValue("helpFont")));
+    mSecureFontDropDown->setSelectedString(getFileName(
+        config.getStringValue("secureFont")));
 
     // Do the layout
     LayoutHelper h(this);
@@ -165,6 +174,8 @@ Setup_Theme::Setup_Theme():
     place(0, 7, mParticleFontDropDown, 6);
     place(0, 8, mHelpFontLabel, 10);
     place(0, 9, mHelpFontDropDown, 6);
+    place(0, 10, mSecureFontLabel, 10);
+    place(0, 11, mSecureFontDropDown, 6);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -206,6 +217,10 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     {
         mHelpFont = mHelpFontDropDown->getSelectedString();
     }
+    else if (event.getId() == ACTION_SECURE_FONT)
+    {
+        mSecureFont = mSecureFontDropDown->getSelectedString();
+    }
 }
 
 void Setup_Theme::cancel()
@@ -215,6 +230,7 @@ void Setup_Theme::cancel()
     mBoldFont = getFileName(config.getStringValue("boldFont"));
     mParticleFont = getFileName(config.getStringValue("particleFont"));
     mHelpFont = getFileName(config.getStringValue("helpFont"));
+    mSecureFont = getFileName(config.getStringValue("secureFont"));
 }
 
 void Setup_Theme::apply()
@@ -230,12 +246,14 @@ void Setup_Theme::apply()
     if (config.getValue("font", "dejavusans.ttf") != mFont
         || config.getValue("boldFont", "dejavusans-bold.ttf") != mBoldFont
         || config.getValue("particleFont", "dejavusans.ttf") != mParticleFont
-        || config.getValue("helpFont", "dejavusansmono.ttf") != mHelpFont)
+        || config.getValue("helpFont", "dejavusansmono.ttf") != mHelpFont
+        || config.getValue("secureFont", "dejavusansmono.ttf") != mSecureFont)
     {
         config.setValue("font", "fonts/" + getFileName(mFont));
         config.setValue("boldFont", "fonts/" + getFileName(mBoldFont));
         config.setValue("particleFont", "fonts/" + getFileName(mParticleFont));
         config.setValue("helpFont", "fonts/" + getFileName(mHelpFont));
+        config.setValue("secureFont", "fonts/" + getFileName(mSecureFont));
         gui->updateFonts();
     }
 }

@@ -86,6 +86,12 @@ class Gui : public gcn::Gui
         { return mHelpFont; }
 
         /**
+         * Return secure font.
+         */
+        gcn::Font *getSecureFont() const
+        { return mSecureFont; }
+
+        /**
          * Return the Font used for "Info Particles", i.e. ones showing, what
          * you picked up, etc.
          */
@@ -135,6 +141,7 @@ class Gui : public gcn::Gui
         gcn::Font *mGuiFont;                  /**< The global GUI font */
         gcn::Font *mInfoParticleFont;         /**< Font for Info Particles*/
         gcn::Font *mHelpFont;                 /**< Font for Help Window*/
+        gcn::Font *mSecureFont;               /**< Font for secure labels*/
         bool mCustomCursor;                   /**< Show custom cursor */
         ImageSet *mMouseCursors;              /**< Mouse cursor images */
         float mMouseCursorAlpha;
