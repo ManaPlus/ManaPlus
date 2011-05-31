@@ -377,7 +377,7 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     if (isItemSelected())
     {
         mItems[mCurrentOutfit][index] = mItemSelected;
-        mItemSelected = -1;
+//        mItemSelected = -1;
     }
     else if (mItems[mCurrentOutfit][index])
     {
@@ -390,8 +390,8 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
 {
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        if (isItemSelected())
-            mItemSelected = -1;
+//        if (isItemSelected())
+//            mItemSelected = -1;
 
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
