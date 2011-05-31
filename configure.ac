@@ -136,7 +136,6 @@ if test "x$with_internalguichan" == "xno"; then
     AC_CHECK_LIB([guichan_sdl], [gcnSDL], ,
     AC_MSG_ERROR([ *** Unable to find Guichan SDL library (http://guichan.sf.net/)]))
 
-#    CPPFLAGS="-I/usr/include -I. -I.. $CPPFLAGS"
 else
     with_internalguichan=yes
 

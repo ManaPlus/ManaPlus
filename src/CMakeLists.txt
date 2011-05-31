@@ -579,6 +579,7 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/basiccontainer.hpp
     guichan/include/guichan/cliprectangle.hpp
     guichan/include/guichan/color.hpp
+    guichan/include/guichan/deathlistener.hpp
     guichan/include/guichan/defaultfont.hpp
     guichan/include/guichan/event.hpp
     guichan/include/guichan/exception.hpp
@@ -602,6 +603,7 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/platform.hpp
     guichan/include/guichan/rectangle.hpp
     guichan/include/guichan/selectionevent.hpp
+    guichan/include/guichan/selectionlistener.hpp
     guichan/include/guichan/sdl/sdlgraphics.hpp
     guichan/include/guichan/sdl/sdlimage.hpp
     guichan/include/guichan/sdl/sdlpixel.hpp
