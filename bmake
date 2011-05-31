@@ -39,7 +39,8 @@ autoreconf -i
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
 --mandir=$dir/run/share/man \
---enable-memdebug=no
+--enable-memdebug=no \
+--with-internalguichan=yes
 
 cd po
 #make -j5 update-po 2>../make1.log

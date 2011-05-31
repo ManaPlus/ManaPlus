@@ -68,6 +68,7 @@ IF (USE_X11)
 ENDIF (USE_X11)
 
 INCLUDE_DIRECTORIES(
+    "guichan/include"
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${SDL_INCLUDE_DIR}
     ${SDLIMAGE_INCLUDE_DIR}
@@ -573,55 +574,55 @@ SET(SRCS
     )
 
 SET(SRCS_GUICHAN
-    guichan/actionevent.hpp
-    guichan/actionlistener.hpp
-    guichan/basiccontainer.hpp
-    guichan/cliprectangle.hpp
-    guichan/color.hpp
-    guichan/defaultfont.hpp
-    guichan/event.hpp
-    guichan/exception.hpp
-    guichan/focushandler.hpp
-    guichan/focuslistener.hpp
-    guichan/font.hpp
-    guichan/graphics.hpp
-    guichan/gui.hpp
-    guichan/image.hpp
-    guichan/imageloader.hpp
-    guichan/input.hpp
-    guichan/inputevent.hpp
-    guichan/key.hpp
-    guichan/keyevent.hpp
-    guichan/keyinput.hpp
-    guichan/keylistener.hpp
-    guichan/listmodel.hpp
-    guichan/mouseevent.hpp
-    guichan/mouseinput.hpp
-    guichan/mouselistener.hpp
-    guichan/platform.hpp
-    guichan/rectangle.hpp
-    guichan/selectionevent.hpp
-    guichan/sdl/sdlgraphics.hpp
-    guichan/sdl/sdlimage.hpp
-    guichan/sdl/sdlpixel.hpp
-    guichan/widget.hpp
-    guichan/widgetlistener.hpp
-    guichan/widgets/button.hpp
-    guichan/widgets/checkbox.hpp
-    guichan/widgets/container.hpp
-    guichan/widgets/dropdown.hpp
-    guichan/widgets/icon.hpp
-    guichan/widgets/imagebutton.hpp
-    guichan/widgets/label.hpp
-    guichan/widgets/listbox.hpp
-    guichan/widgets/radiobutton.hpp
-    guichan/widgets/scrollarea.hpp
-    guichan/widgets/slider.hpp
-    guichan/widgets/tabbedarea.hpp
-    guichan/widgets/tab.hpp
-    guichan/widgets/textbox.hpp
-    guichan/widgets/textfield.hpp
-    guichan/widgets/window.hpp
+    guichan/include/guichan/actionevent.hpp
+    guichan/include/guichan/actionlistener.hpp
+    guichan/include/guichan/basiccontainer.hpp
+    guichan/include/guichan/cliprectangle.hpp
+    guichan/include/guichan/color.hpp
+    guichan/include/guichan/defaultfont.hpp
+    guichan/include/guichan/event.hpp
+    guichan/include/guichan/exception.hpp
+    guichan/include/guichan/focushandler.hpp
+    guichan/include/guichan/focuslistener.hpp
+    guichan/include/guichan/font.hpp
+    guichan/include/guichan/graphics.hpp
+    guichan/include/guichan/gui.hpp
+    guichan/include/guichan/image.hpp
+    guichan/include/guichan/imageloader.hpp
+    guichan/include/guichan/input.hpp
+    guichan/include/guichan/inputevent.hpp
+    guichan/include/guichan/key.hpp
+    guichan/include/guichan/keyevent.hpp
+    guichan/include/guichan/keyinput.hpp
+    guichan/include/guichan/keylistener.hpp
+    guichan/include/guichan/listmodel.hpp
+    guichan/include/guichan/mouseevent.hpp
+    guichan/include/guichan/mouseinput.hpp
+    guichan/include/guichan/mouselistener.hpp
+    guichan/include/guichan/platform.hpp
+    guichan/include/guichan/rectangle.hpp
+    guichan/include/guichan/selectionevent.hpp
+    guichan/include/guichan/sdl/sdlgraphics.hpp
+    guichan/include/guichan/sdl/sdlimage.hpp
+    guichan/include/guichan/sdl/sdlpixel.hpp
+    guichan/include/guichan/widget.hpp
+    guichan/include/guichan/widgetlistener.hpp
+    guichan/include/guichan/widgets/button.hpp
+    guichan/include/guichan/widgets/checkbox.hpp
+    guichan/include/guichan/widgets/container.hpp
+    guichan/include/guichan/widgets/dropdown.hpp
+    guichan/include/guichan/widgets/icon.hpp
+    guichan/include/guichan/widgets/imagebutton.hpp
+    guichan/include/guichan/widgets/label.hpp
+    guichan/include/guichan/widgets/listbox.hpp
+    guichan/include/guichan/widgets/radiobutton.hpp
+    guichan/include/guichan/widgets/scrollarea.hpp
+    guichan/include/guichan/widgets/slider.hpp
+    guichan/include/guichan/widgets/tabbedarea.hpp
+    guichan/include/guichan/widgets/tab.hpp
+    guichan/include/guichan/widgets/textbox.hpp
+    guichan/include/guichan/widgets/textfield.hpp
+    guichan/include/guichan/widgets/window.hpp
     guichan/actionevent.cpp
     guichan/basiccontainer.cpp
     guichan/cliprectangle.cpp
