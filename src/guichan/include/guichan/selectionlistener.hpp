@@ -49,6 +49,12 @@
 #include "guichan/selectionevent.hpp"
 #include "guichan/platform.hpp"
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 namespace gcn
 {
     /**
@@ -68,7 +74,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~SelectionListener() { }
+        virtual ~SelectionListener()
+        { }
 
         /**
          * Called when the value of a selection has been changed in a Widget.
@@ -78,7 +85,8 @@ namespace gcn
          * @param event The event of the value change.
          * @since 0.8.0
          */
-        virtual void valueChanged(const SelectionEvent& event) { };
+        virtual void valueChanged(const SelectionEvent& event _UNUSED_)
+        { };
 
     protected:
         /**
@@ -87,8 +95,8 @@ namespace gcn
          * You should not be able to make an instance of SelectionListener,
          * therefore its constructor is protected.
          */
-        SelectionListener() { }
-
+        SelectionListener()
+        { }
     };
 }
 
