@@ -83,15 +83,14 @@ namespace gcn
         if (mInternalImage)
         {
             delete mImage;
+            mImage = 0;
         }
     }
 
     void Icon::setImage(const Image* image)
     {
         if (mInternalImage)
-        {
             delete mImage;
-        }
 
         mImage = image;
         mInternalImage = false;

@@ -106,10 +106,16 @@ namespace gcn
         }
 
         if (mInternalScrollArea)
+        {
             delete mScrollArea;
+            mScrollArea = 0;
+        }
 
         if (mInternalListBox)
+        {
             delete mListBox;
+            mListBox = 0;
+        }
 
         setInternalFocusHandler(NULL);
     }

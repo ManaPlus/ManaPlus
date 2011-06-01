@@ -85,6 +85,7 @@ namespace gcn
             setTop(NULL);
 
         delete mFocusHandler;
+        mFocusHandler = 0;
     }
 
     void Gui::setTop(Widget* top)

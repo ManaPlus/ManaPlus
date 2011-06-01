@@ -81,13 +81,19 @@ namespace gcn
     ImageButton::~ImageButton()
     {
         if (mInternalImage)
+        {
             delete mImage;
+            mImage = 0;
+        }
     }
 
     void ImageButton::setImage(const Image* image)
     {
         if (mInternalImage)
+        {
             delete mImage;
+            mImage = 0;
+        }
 
         mImage = image;
         mInternalImage = false;

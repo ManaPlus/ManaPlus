@@ -81,10 +81,15 @@ namespace gcn
         remove(mWidgetContainer);
 
         delete mTabContainer;
+        mTabContainer = 0;
         delete mWidgetContainer;
+        mWidgetContainer = 0;
 
         for (unsigned int i = 0; i < mTabsToDelete.size(); i++)
+        {
             delete mTabsToDelete[i];
+            mTabsToDelete[i] = 0;
+        }
     }
 
     void TabbedArea::addTab(const std::string& caption, Widget* widget)
@@ -163,6 +168,7 @@ namespace gcn
             {
                 mTabsToDelete.erase(iter2);
                 delete tab;
+                tab = 0;
                 break;
             }
         }

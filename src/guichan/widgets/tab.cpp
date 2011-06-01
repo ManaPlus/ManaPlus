@@ -69,6 +69,7 @@ namespace gcn
     Tab::~Tab()
     {
         delete mLabel;
+        mLabel = 0;
     }
 
     void Tab::adjustSize()
