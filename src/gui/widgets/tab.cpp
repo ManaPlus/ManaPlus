@@ -236,4 +236,6 @@ void Tab::setLabelFont(gcn::Font *font)
         return;
 
     mLabel->setFont(font);
+    mLabel->adjustSize();
+    adjustSize();
 }
