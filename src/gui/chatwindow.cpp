@@ -34,6 +34,7 @@
 #include "spellshortcut.h"
 #include "sound.h"
 
+#include "gui/gui.h"
 #include "gui/setup.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
@@ -1004,6 +1005,8 @@ ChatTab *ChatWindow::addWhisperTab(const std::string &nick, bool switchTo)
     else
     {
         ret = new WhisperTab(nick);
+        if (gui && !player_relations.isGoodName(nick))
+            ret->setLabelFont(gui->getSecureFont());
         mWhispers[tempNick] = ret;
         if (config.getBoolValue("showChatHistory"))
             ret->loadFromLogFile(nick);

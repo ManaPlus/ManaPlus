@@ -494,6 +494,20 @@ PlayerRelationsManager::getPlayerIgnoreStrategies()
     return &mIgnoreStrategies;
 }
 
+bool PlayerRelationsManager::isGoodName(std::string name)
+{
+    bool status(false);
+
+    const int size = name.size();
+
+    if (size < 3 || mRelations[name])
+        return true;
+
+    status = checkName(name);
+
+    return status;
+}
+
 bool PlayerRelationsManager::isGoodName(Being *being)
 {
     bool status(false);
@@ -505,21 +519,29 @@ bool PlayerRelationsManager::isGoodName(Being *being)
 
     const std::string name = being->getName();
     const int size = name.size();
-    std::string check = config.getStringValue("unsecureChars");
 
     if (size < 3 || mRelations[name])
         return true;
-    else if (name.substr(0, 1) == " " || name.substr(size - 1, 1) == " ")
-        status = false;
-    else if (check.empty())
-        status = true;
-    else if (name.find_first_of(check) != std::string::npos)
-        status = false;
-    else
-        status = true;
+
+    status = checkName(name);
 
     being->setGoodStatus(status ? 1 : 0);
     return status;
+}
+
+bool PlayerRelationsManager::checkName(const std::string &name) const
+{
+    const int size = name.size();
+    std::string check = config.getStringValue("unsecureChars");
+
+    if (name.substr(0, 1) == " " || name.substr(size - 1, 1) == " ")
+        return false;
+    else if (check.empty())
+        return true;
+    else if (name.find_first_of(check) != std::string::npos)
+        return false;
+    else
+        return true;
 }
 
 PlayerRelationsManager player_relations;

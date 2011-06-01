@@ -219,6 +219,8 @@ class PlayerRelationsManager
 
         bool isGoodName(Being *being);
 
+        bool isGoodName(std::string name);
+
         /**
          * Change the `ignore persist' flag.
          *
@@ -233,12 +235,15 @@ class PlayerRelationsManager
         void removeListener(PlayerRelationsListener *listener)
         { mListeners.remove(listener); }
 
+
     private:
         void signalUpdate(const std::string &name);
 
         bool mPersistIgnores; // If NOT set, we delete the
                               // ignored data upon reloading
         unsigned int mDefaultPermissions;
+
+        bool checkName(const std::string &name) const;
 
         PlayerIgnoreStrategy *mIgnoreStrategy;
         std::map<std::string, PlayerRelation *> mRelations;

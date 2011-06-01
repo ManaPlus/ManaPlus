@@ -23,6 +23,7 @@
 #ifndef TAB_H
 #define TAB_H
 
+#include <guichan/widgets/label.hpp>
 #include <guichan/widgets/tab.hpp>
 #include <guichan/widgetlistener.hpp>
 
@@ -66,6 +67,11 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         void widgetResized(const gcn::Event &event);
 
         void widgetMoved(const gcn::Event &event);
+
+        void setLabelFont(gcn::Font *font);
+
+        gcn::Label *getLabel()
+        { return mLabel; }
 
     protected:
         friend class TabbedArea;
