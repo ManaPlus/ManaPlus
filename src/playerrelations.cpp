@@ -494,5 +494,32 @@ PlayerRelationsManager::getPlayerIgnoreStrategies()
     return &mIgnoreStrategies;
 }
 
+bool PlayerRelationsManager::isGoodName(Being *being)
+{
+    bool status(false);
+
+    if (!being)
+        return false;
+    if (being->getGoodStatus() != -1)
+        return (being->getGoodStatus() == 1);
+
+    const std::string name = being->getName();
+    const int size = name.size();
+    std::string check = config.getStringValue("unsecureChars");
+
+    if (size < 3 || mRelations[name])
+        return true;
+    else if (name.substr(0, 1) == " " || name.substr(size - 1, 1) == " ")
+        status = false;
+    else if (check.empty())
+        status = true;
+    else if (name.find_first_of(check) != std::string::npos)
+        status = false;
+    else
+        status = true;
+
+    being->setGoodStatus(status ? 1 : 0);
+    return status;
+}
 
 PlayerRelationsManager player_relations;

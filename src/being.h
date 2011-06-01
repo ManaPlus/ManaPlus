@@ -715,6 +715,12 @@ class Being : public ActorSprite, public ConfigListener
 
         void undressItemById(int id);
 
+        int getGoodStatus()
+        { return mGoodStatus; }
+
+        void setGoodStatus(int n)
+        { mGoodStatus = n; }
+
         static void clearCache();
 
     protected:
@@ -820,6 +826,7 @@ class Being : public ActorSprite, public ConfigListener
         int mMaxHP;
         int mDistance;
         int mIsReachable; /**< 0 - unknown, 1 - reachable, 2 - not reachable*/
+        int mGoodStatus;
 
         static int mUpdateConfigTime;
         static unsigned int mConfLineLim;

@@ -280,7 +280,7 @@ void Setup_Other::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == ACTION_EDIT_PROGRAM)
     {
-        mEditDialog =  new EditDialog("Crazy Move A",
+        mEditDialog =  new EditDialog(_("Crazy Move A"),
             mMoveProgramField->getText(), ACTION_EDIT_PROGRAM_OK);
         mEditDialog->addActionListener(this);
     }
@@ -288,12 +288,13 @@ void Setup_Other::action(const gcn::ActionEvent &event)
     {
         mMoveProgramField->setText(mEditDialog->getMsg());
     }
-
     else if (event.getId() == ACTION_AFK)
-        mAfk = mAfkField->getText();
+    {
+       mAfk = mAfkField->getText();
+    }
     else if (event.getId() == ACTION_EDIT_AFK)
     {
-        mEditDialog =  new EditDialog("Afk message", mAfkField->getText(), 
+        mEditDialog =  new EditDialog(_("Afk message"), mAfkField->getText(),
                                       ACTION_EDIT_AFK_OK);
         mEditDialog->addActionListener(this);
     }

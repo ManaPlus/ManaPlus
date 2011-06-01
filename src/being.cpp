@@ -208,6 +208,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mHP(0), mMaxHP(0),
     mDistance(0),
     mIsReachable(REACH_UNKNOWN),
+    mGoodStatus(-1),
     mErased(false),
     mEnemy(false),
     mIp(""),
@@ -1488,6 +1489,10 @@ void Being::showName()
         && getType() != MONSTER)
     {
         font = boldFont;
+    }
+    else if (getType() == PLAYER && !player_relations.isGoodName(this) && gui)
+    {
+        font = gui->getSecureFont();
     }
 
     mDispName = new FlashText(mDisplayName, getPixelX(), getPixelY(),

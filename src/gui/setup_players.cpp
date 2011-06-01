@@ -27,6 +27,7 @@
 #include "localplayer.h"
 #include "log.h"
 
+#include "gui/editdialog.h"
 #include "gui/okdialog.h"
 
 #include "gui/widgets/button.h"
@@ -36,6 +37,7 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/table.h"
+#include "gui/widgets/textfield.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -232,6 +234,9 @@ public:
 #define ACTION_TARGET_DEAD "target dead"
 #define ACTION_SHOW_OWN_NAME "show own name"
 #define ACTION_SECURE_TRADES "secure trades"
+#define ACTION_UNSECURE "unsecure"
+#define ACTION_EDIT_UNSECURE "edit unsecure"
+#define ACTION_EDIT_UNSECURE_OK "edit unsecure ok"
 
 Setup_Players::Setup_Players():
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
@@ -253,7 +258,9 @@ Setup_Players::Setup_Players():
     mShowLevel(config.getBoolValue("showlevel")),
     mShowOwnName(config.getBoolValue("showownname")),
     mTargetDead(config.getBoolValue("targetDeadPlayers")),
-    mSecureTrades(config.getBoolValue("securetrades"))
+    mSecureTrades(config.getBoolValue("securetrades")),
+    mUnsecureChars(config.getStringValue("unsecureChars")),
+    mEditDialog(0)
 {
     setName(_("Players"));
 
@@ -319,26 +326,34 @@ Setup_Players::Setup_Players():
     mSecureTradesCheckBox->setActionEventId(ACTION_SECURE_TRADES);
     mSecureTradesCheckBox->addActionListener(this);
 
+    mUnsecureCharsLabel = new Label(_("Unsecure chars in names"));
+    mUnsecureCharsField = new TextField(mUnsecureChars,
+        true, this, ACTION_UNSECURE);
+    mUnsecureCharsButton = new Button(_("Edit"), ACTION_EDIT_UNSECURE, this);
+
     reset();
 
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mPlayerTitleTable, 5);
-    place(0, 1, mPlayerScrollArea, 5, 4).setPadding(2);
+    place(0, 0, mPlayerTitleTable, 6);
+    place(0, 1, mPlayerScrollArea, 6, 4).setPadding(2);
     place(0, 5, mDeleteButton);
     place(0, 6, mShowGenderCheckBox, 3).setPadding(2);
     place(0, 7, mShowLevelCheckBox, 3).setPadding(2);
     place(0, 8, mShowOwnNameCheckBox, 3).setPadding(2);
     place(1, 5, mOldButton, 1);
-    place(3, 5, ignore_action_label);
-    place(3, 6, mIgnoreActionChoicesBox, 2).setPadding(2);
-    place(3, 7, mDefaultTrading, 2);
-    place(3, 8, mDefaultWhisper, 2);
-    place(3, 9, mSecureTradesCheckBox, 2);
-    place(0, 9, mWhisperTabCheckBox, 4).setPadding(4);
-    place(0, 10, mTargetDeadCheckBox, 4).setPadding(4);
+    place(3, 5, ignore_action_label, 1);
+    place(4, 5, mIgnoreActionChoicesBox, 2).setPadding(2);
+    place(3, 6, mDefaultTrading, 3);
+    place(3, 7, mDefaultWhisper, 3);
+    place(3, 8, mSecureTradesCheckBox, 3);
+    place(3, 9, mUnsecureCharsLabel, 3);
+    place(3, 10, mUnsecureCharsField, 2);
+    place(5, 10, mUnsecureCharsButton, 1);
+    place(0, 9, mWhisperTabCheckBox, 3).setPadding(4);
+    place(0, 10, mTargetDeadCheckBox, 3).setPadding(4);
 
     player_relations.addListener(this);
 
@@ -391,6 +406,7 @@ void Setup_Players::apply()
     config.setValue("targetDeadPlayers", mTargetDead);
     config.setValue("showgender", mShowGender);
     config.setValue("securetrades", mSecureTrades);
+    config.setValue("unsecureChars", mUnsecureCharsField->getText());
 
     if (actorSpriteManager)
         actorSpriteManager->updatePlayerNames();
@@ -413,6 +429,8 @@ void Setup_Players::cancel()
     mTargetDeadCheckBox->setSelected(mTargetDead);
     mSecureTrades = config.getBoolValue("securetrades");
     mSecureTradesCheckBox->setSelected(mSecureTrades);
+    mUnsecureChars = config.getStringValue("unsecureChars");
+    mUnsecureCharsField->setText(mUnsecureChars);
 }
 
 void Setup_Players::action(const gcn::ActionEvent &event)
@@ -480,8 +498,21 @@ void Setup_Players::action(const gcn::ActionEvent &event)
     {
         mSecureTrades = mSecureTradesCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_EDIT_UNSECURE)
+    {
+        mEditDialog = new EditDialog(_("Unsecure chars in names"),
+            mUnsecureCharsField->getText(), ACTION_EDIT_UNSECURE_OK);
+        mEditDialog->addActionListener(this);
+    }
+    else if (event.getId() == ACTION_EDIT_UNSECURE_OK)
+    {
+        mUnsecureCharsField->setText(mEditDialog->getMsg());
+    }
+    else if (event.getId() == ACTION_UNSECURE)
+    {
+        mUnsecureChars = mUnsecureCharsField->getText();
+    }
 }
-
 
 void Setup_Players::updatedPlayer(const std::string &name _UNUSED_)
 {

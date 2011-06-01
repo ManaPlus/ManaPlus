@@ -1128,6 +1128,7 @@ void ActorSpriteManager::updatePlayerNames()
         }
 
         Being *being = static_cast<Being*>(*it);
+        being->setGoodStatus(-1);
         if (being->getType() == ActorSprite::PLAYER && being->getName() != "")
             being->updateName();
     }

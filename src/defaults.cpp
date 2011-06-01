@@ -201,6 +201,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "hideChatInput", true);
     AddDEF(configData, "enableAttackFilter", true);
     AddDEF(configData, "securetrades", true);
+    AddDEF(configData, "unsecureChars", "IO0@#$");
     return configData;
 }
 

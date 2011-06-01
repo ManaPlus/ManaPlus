@@ -36,6 +36,7 @@
 #define _UNUSED_
 #endif
 
+class EditDialog;
 class GuiTable;
 class PlayerTableModel;
 class StaticTableModel;
@@ -94,6 +95,13 @@ private:
 
     bool mSecureTrades;
     gcn::CheckBox *mSecureTradesCheckBox;
+
+    gcn::Label *mUnsecureCharsLabel;
+    gcn::TextField *mUnsecureCharsField;
+    gcn::Button *mUnsecureCharsButton;
+    std::string mUnsecureChars;
+
+    EditDialog *mEditDialog;
 };
 
 #endif

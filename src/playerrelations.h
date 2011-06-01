@@ -217,6 +217,8 @@ class PlayerRelationsManager
 
         void ignoreTrade(std::string name);
 
+        bool isGoodName(Being *being);
+
         /**
          * Change the `ignore persist' flag.
          *

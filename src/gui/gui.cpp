@@ -330,6 +330,12 @@ void Gui::updateFonts()
         fontFile = branding.getStringValue("boldFont");
 
     static_cast<SDLFont*>(boldFont)->loadFont(fontFile, fontSize);
+
+    fontFile = config.getValue("secureFont", "");
+    if (fontFile.empty())
+        fontFile = branding.getStringValue("secureFont");
+
+    static_cast<SDLFont*>(mSecureFont)->loadFont(fontFile, fontSize);
 }
 
 void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
