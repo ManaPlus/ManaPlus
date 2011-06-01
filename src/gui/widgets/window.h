@@ -384,6 +384,9 @@ class Window : public gcn::Window, gcn::WidgetListener
 
         bool isResizeAllowed(gcn::MouseEvent &event);
 
+        void setCaptionFont(gcn::Font *font)
+        { mCaptionFont = font; }
+
     private:
         enum ResizeHandles
         {
@@ -442,6 +445,7 @@ class Window : public gcn::Window, gcn::WidgetListener
         static const unsigned resizeBorderWidth = 10;
         GraphicsVertexes *mVertexes;
         bool mRedraw;
+        gcn::Font *mCaptionFont;
 };
 
 #endif

@@ -20,13 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "playerrelations.h"
+
 #include <algorithm>
 
 #include "actorspritemanager.h"
 #include "being.h"
 #include "configuration.h"
 #include "graphics.h"
-#include "playerrelations.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"

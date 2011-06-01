@@ -94,6 +94,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     setVisible(false);
 
     addWidgetListener(this);
+    mCaptionFont = getFont();
 }
 
 Window::~Window()
@@ -154,7 +155,7 @@ void Window::draw(gcn::Graphics *graphics)
     if (mShowTitle)
     {
         g->setColor(Theme::getThemeColor(Theme::TEXT));
-        g->setFont(getFont());
+        g->setFont(mCaptionFont);
         g->drawText(getCaption(), 7, 5, gcn::Graphics::LEFT);
     }
 

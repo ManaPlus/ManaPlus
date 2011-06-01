@@ -27,8 +27,10 @@
 #include "item.h"
 #include "localplayer.h"
 #include "playerinfo.h"
+#include "playerrelations.h"
 #include "units.h"
 
+#include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/itemamountwindow.h"
 #include "gui/setup.h"
@@ -440,4 +442,6 @@ void TradeWindow::initTrade(std::string nick)
         }
     }
     clear();
+    if (!player_relations.isGoodName(nick))
+        setCaptionFont(gui->getSecureFont());
 }
