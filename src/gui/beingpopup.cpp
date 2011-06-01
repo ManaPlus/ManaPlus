@@ -23,6 +23,7 @@
 
 #include "being.h"
 #include "graphics.h"
+#include "playerrelations.h"
 #include "units.h"
 
 #include "gui/gui.h"
@@ -81,6 +82,14 @@ void BeingPopup::show(int x, int y, Being *b)
     Label *label3 = mBeingRank;
 
     mBeingName->setCaption(b->getName());
+    if (gui)
+    {
+        if (player_relations.isGoodName(b))
+            mBeingName->setFont(boldFont);
+        else
+            mBeingName->setFont(gui->getSecureFont());
+    }
+
     mBeingName->adjustSize();
     label1->setCaption("");
     label2->setCaption("");
