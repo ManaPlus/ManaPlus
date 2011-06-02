@@ -1,6 +1,3 @@
-# List of source files which contain translatable strings.
-# Generated using: grep "_(" -Irl src | sort
-
 src/actorspritemanager.cpp
 src/being.cpp
 src/client.cpp
