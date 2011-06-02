@@ -47,6 +47,8 @@
 
 #include "guichan/mouseevent.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     MouseEvent::MouseEvent(Widget* source,

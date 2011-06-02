@@ -47,6 +47,8 @@
 
 #include "guichan/event.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Event::Event(Widget* source)

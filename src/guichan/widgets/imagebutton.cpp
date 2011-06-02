@@ -50,6 +50,8 @@
 #include "guichan/graphics.hpp"
 #include "guichan/image.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     ImageButton::ImageButton() :

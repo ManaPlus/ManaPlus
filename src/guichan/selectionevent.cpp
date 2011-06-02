@@ -47,6 +47,8 @@
 
 #include "guichan/selectionevent.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     SelectionEvent::SelectionEvent(Widget* source)

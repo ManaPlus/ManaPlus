@@ -47,6 +47,8 @@
 
 #include "guichan/mouseinput.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     MouseInput::MouseInput(unsigned int button,

@@ -51,6 +51,8 @@
 #include "guichan/font.hpp"
 #include "guichan/graphics.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Label::Label()

@@ -47,6 +47,8 @@
 
 #include "guichan/cliprectangle.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     ClipRectangle::ClipRectangle()

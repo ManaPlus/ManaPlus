@@ -54,6 +54,8 @@
 #include "guichan/mouseevent.hpp"
 #include "guichan/mouseinput.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Button::Button()

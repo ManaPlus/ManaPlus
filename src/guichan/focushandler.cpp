@@ -51,6 +51,8 @@
 #include "guichan/exception.hpp"
 #include "guichan/widget.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     FocusHandler::FocusHandler() :

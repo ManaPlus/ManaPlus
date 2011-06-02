@@ -52,6 +52,8 @@
 #include "guichan/graphics.hpp"
 #include "guichan/rectangle.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     int DefaultFont::getHeight() const

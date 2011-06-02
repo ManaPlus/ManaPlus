@@ -57,6 +57,8 @@
 
 #include <algorithm>
 
+#include "debug.h"
+
 namespace gcn
 {
     TabbedArea::TabbedArea() :

@@ -52,6 +52,8 @@
 #include "guichan/widgets/listbox.hpp"
 #include "guichan/widgets/scrollarea.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     DropDown::DropDown(ListModel *listModel,

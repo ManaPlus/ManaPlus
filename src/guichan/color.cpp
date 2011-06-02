@@ -47,6 +47,8 @@
 
 #include "guichan/color.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Color::Color() :

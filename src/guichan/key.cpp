@@ -47,6 +47,8 @@
 
 #include "guichan/key.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Key::Key(int value) :

@@ -55,6 +55,8 @@
 #include "guichan/mouseinput.hpp"
 #include "guichan/selectionlistener.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     ListBox::ListBox() :

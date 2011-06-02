@@ -47,6 +47,8 @@
 
 #include "guichan/keyinput.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     KeyInput::KeyInput(const Key& key, unsigned int type)

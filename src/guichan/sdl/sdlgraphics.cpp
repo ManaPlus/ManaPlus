@@ -53,6 +53,8 @@
 #include "guichan/sdl/sdlimage.hpp"
 #include "guichan/sdl/sdlpixel.hpp"
 
+#include "debug.h"
+
 // For some reason an old version of MSVC did not like std::abs,
 // so we added this macro.
 #ifndef ABS

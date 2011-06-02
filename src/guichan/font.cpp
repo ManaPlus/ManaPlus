@@ -49,6 +49,8 @@
 
 #include <string>
 
+#include "debug.h"
+
 namespace gcn
 {
     int Font::getStringIndexAt(const std::string& text, int x) const

@@ -52,6 +52,8 @@
 #include "guichan/graphics.hpp"
 #include "guichan/mouseinput.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Window::Window() :

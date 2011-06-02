@@ -47,6 +47,8 @@
 
 #include "guichan/keyevent.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     KeyEvent::KeyEvent(Widget* source,

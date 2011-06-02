@@ -62,6 +62,8 @@
 #include "guichan/mouselistener.hpp"
 #include "guichan/widgetlistener.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Font* Widget::mGlobalFont = NULL;

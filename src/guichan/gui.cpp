@@ -58,6 +58,8 @@
 #include "guichan/mouselistener.hpp"
 #include "guichan/widget.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Gui::Gui() :

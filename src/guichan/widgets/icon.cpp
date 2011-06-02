@@ -51,6 +51,8 @@
 #include "guichan/image.hpp"
 #include "guichan/rectangle.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Icon::Icon()

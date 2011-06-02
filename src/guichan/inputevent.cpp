@@ -47,6 +47,8 @@
 
 #include "guichan/inputevent.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     InputEvent::InputEvent(Widget* source,

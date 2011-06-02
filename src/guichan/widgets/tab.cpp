@@ -53,6 +53,8 @@
 #include "guichan/widgets/label.hpp"
 #include "guichan/widgets/tabbedarea.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Tab::Tab() :

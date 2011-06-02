@@ -47,6 +47,8 @@
 
 #include "guichan/actionevent.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     ActionEvent::ActionEvent(Widget* source, const std::string& id)

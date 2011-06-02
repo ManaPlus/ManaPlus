@@ -51,6 +51,8 @@
 #include "guichan/key.hpp"
 #include "guichan/mouseinput.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Slider::Slider(double scaleEnd)

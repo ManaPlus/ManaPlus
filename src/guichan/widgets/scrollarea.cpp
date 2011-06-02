@@ -50,6 +50,8 @@
 #include "guichan/exception.hpp"
 #include "guichan/graphics.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     ScrollArea::ScrollArea()

@@ -47,6 +47,8 @@
 
 #include "guichan/exception.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     Exception::Exception()

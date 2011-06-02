@@ -50,6 +50,8 @@
 #include "guichan/exception.hpp"
 #include "guichan/imageloader.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
 

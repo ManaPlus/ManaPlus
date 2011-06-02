@@ -51,6 +51,8 @@
 #include "guichan/font.hpp"
 #include "guichan/image.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
 
