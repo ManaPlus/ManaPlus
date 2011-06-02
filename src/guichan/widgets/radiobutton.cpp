@@ -58,7 +58,10 @@ namespace gcn
 {
     RadioButton::GroupMap RadioButton::mGroupMap;
 
-    RadioButton::RadioButton()
+    RadioButton::RadioButton() :
+        mSelected(false),
+        mCaption(""),
+        mGroup("")
     {
         setSelected(false);
 
@@ -69,7 +72,9 @@ namespace gcn
 
     RadioButton::RadioButton(const std::string &caption,
                              const std::string &group,
-                             bool selected)
+                             bool selected) :
+        mSelected(false),
+        mGroup("")
     {
         setCaption(caption);
         setGroup(group);

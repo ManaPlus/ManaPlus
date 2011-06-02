@@ -624,6 +624,9 @@ Client::~Client()
     config.write();
     serverConfig.write();
 
+    config.clear();
+    serverConfig.clear();
+
     logger->log1("Quitting11");
 
     delete chatLogger;

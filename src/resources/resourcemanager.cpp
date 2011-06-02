@@ -584,7 +584,7 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     fileSize = static_cast<int>(PHYSFS_fileLength(file));
 
     // Allocate memory and load the file
-    void *buffer = malloc(fileSize);
+    void *buffer = calloc(fileSize, 1);
     PHYSFS_read(file, buffer, 1, fileSize);
 
     // Close the file and let the user deallocate the memory

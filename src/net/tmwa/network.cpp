@@ -129,6 +129,7 @@ Network::~Network()
         disconnect();
 
     SDL_DestroyMutex(mMutex);
+    mMutex = 0;
     mInstance = 0;
 
     delete[] mInBuffer;

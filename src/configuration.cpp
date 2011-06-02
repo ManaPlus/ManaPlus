@@ -134,6 +134,7 @@ void ConfigurationObject::clear()
         deleteList(it->first);
     }
     mOptions.clear();
+    mContainerOptions.clear();
 }
 
 ConfigurationObject::~ConfigurationObject()

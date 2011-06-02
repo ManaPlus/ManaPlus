@@ -86,7 +86,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
     int ret;
     z_stream strm;
 
-    out = static_cast<unsigned char*>(malloc(bufferSize));
+    out = static_cast<unsigned char*>(calloc(bufferSize, 1));
 
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;

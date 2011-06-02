@@ -49,8 +49,8 @@ unsigned char *php3_base64_encode(const unsigned char *string,
 {
     const unsigned char *current = string;
     int i = 0;
-    unsigned char *result = static_cast<unsigned char *>(malloc(
-        ((length + 3 - length % 3) * 4 / 3 + 1) * sizeof(char)));
+    unsigned char *result = static_cast<unsigned char *>(calloc(
+        ((length + 3 - length % 3) * 4 / 3 + 1) * sizeof(char), 1));
 
     while (length > 2)
     { /* keep going until we have less than 24 bits */
@@ -99,7 +99,8 @@ unsigned char *php3_base64_decode(const unsigned char *string,
     int ch, i = 0, j = 0, k;
     char *chp;
 
-    unsigned char *result = static_cast<unsigned char *>(malloc(length + 1));
+    unsigned char *result = static_cast<unsigned char *>(
+        calloc(length + 1, 1));
 
     if (result == NULL)
         return NULL;

@@ -63,6 +63,7 @@ class Minimap : public Window
         float mWidthProportion;
         float mHeightProportion;
         static bool mShow;
+        bool mCustomMapImage;
 };
 
 extern Minimap *minimap;

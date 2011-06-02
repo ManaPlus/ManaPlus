@@ -61,7 +61,7 @@ Download::Download(void *ptr, const std::string &url,
         mHeaders(NULL),
         mIgnoreError(ignoreError)
 {
-    mError = static_cast<char*>(malloc(CURL_ERROR_SIZE + 1));
+    mError = static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1));
     mError[0] = 0;
 
     mOptions.cancel = false;

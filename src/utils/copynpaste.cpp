@@ -57,7 +57,7 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
             if (len > 0)
             {
                 // Convert from UTF-16 to UTF-8
-                void *temp = malloc(len);
+                void *temp = calloc(len, 1);
                 if (WideCharToMultiByte(CP_UTF8, 0, data, -1,
                     (LPSTR)temp, len, NULL, NULL))
                 {

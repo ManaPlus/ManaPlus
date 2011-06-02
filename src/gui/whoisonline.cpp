@@ -368,6 +368,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             if (!wio->mAllowUpdate)
             {
                 curl_easy_cleanup(curl);
+                curl = 0;
                 break;
             }
             wio->mDownloadedBytes = 0;
@@ -410,11 +411,13 @@ int WhoIsOnline::downloadThread(void *ptr)
                     break;
                 }
                 attempts++;
+                curl_easy_cleanup(curl);
+                curl_slist_free_all(pHeaders);
+                curl = 0;
                 continue;
             }
 
             curl_easy_cleanup(curl);
-
             curl_slist_free_all(pHeaders);
 
             // It's stored in memory, we're done

@@ -49,7 +49,8 @@ Minimap::Minimap():
     Window(_("Map")),
     mMapImage(0),
     mWidthProportion(0.5),
-    mHeightProportion(0.5)
+    mHeightProportion(0.5),
+    mCustomMapImage(false)
 {
     setWindowName("Minimap");
     mShow = config.getValueBool(getWindowName() + "Show", true);
@@ -74,7 +75,13 @@ Minimap::~Minimap()
     config.setValue(getWindowName() + "Show", mShow);
 
     if (mMapImage)
-        mMapImage->decRef();
+    {
+        if (mCustomMapImage)
+            delete mMapImage;
+        else
+            mMapImage->decRef();
+        mMapImage = 0;
+    }
 }
 
 void Minimap::setMap(Map *map)
@@ -93,7 +100,10 @@ void Minimap::setMap(Map *map)
     // Adapt the image
     if (mMapImage)
     {
-        mMapImage->decRef();
+        if (mCustomMapImage)
+            delete mMapImage;
+        else
+            mMapImage->decRef();
         mMapImage = 0;
     }
 
@@ -129,6 +139,7 @@ void Minimap::setMap(Map *map)
 
             mMapImage = Image::load(surface);
             mMapImage->setAlpha(Client::getGuiAlpha());
+            mCustomMapImage = true;
             SDL_FreeSurface(surface);
         }
         else
@@ -143,6 +154,7 @@ void Minimap::setMap(Map *map)
                 minimapName = tempname;
 
             mMapImage = resman->getImage(minimapName);
+            mCustomMapImage = false;
         }
     }
 

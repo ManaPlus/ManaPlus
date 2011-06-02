@@ -71,6 +71,7 @@ ImageRect Button::button[BUTTON_COUNT];
 
 Button::Button():
     mDescription(""), mClickCount(0),
+    mTag(0),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mMode(0),
@@ -84,8 +85,12 @@ Button::Button(const std::string &caption, const std::string &actionEventId,
                gcn::ActionListener *listener):
     gcn::Button(caption),
     mDescription(""), mClickCount(0),
+    mTag(0),
     mVertexes(new GraphicsVertexes()),
-    mRedraw(true)
+    mRedraw(true),
+    mMode(0),
+    mXOffset(0),
+    mYOffset(0)
 {
     init();
     setActionEventId(actionEventId);
