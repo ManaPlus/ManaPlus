@@ -1455,6 +1455,20 @@ void Being::flashName(int time)
         mDispName->flash(time);
 }
 
+std::string Being::getGenderSign() const
+{
+    if (config.getBoolValue("showgender"))
+    {
+        if (getGender() == GENDER_FEMALE)
+            return "\u2640";
+        else if (getGender() == GENDER_MALE)
+            return "\u2642";
+        else
+            return "";
+    }
+    return "";
+}
+
 void Being::showName()
 {
     delete mDispName;
@@ -1469,13 +1483,7 @@ void Being::showName()
         if (config.getBoolValue("showlevel") && getLevel() != 0)
             mDisplayName += toString(getLevel());
 
-        if (config.getBoolValue("showgender"))
-        {
-            if (getGender() == GENDER_FEMALE)
-                mDisplayName += "\u2640";
-            else if (getGender() == GENDER_MALE)
-                mDisplayName += "\u2642";
-        }
+        mDisplayName += getGenderSign();
     }
 
     if (getType() == MONSTER)

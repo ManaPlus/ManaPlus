@@ -721,6 +721,8 @@ class Being : public ActorSprite, public ConfigListener
         void setGoodStatus(int n)
         { mGoodStatus = n; }
 
+        std::string getGenderSign() const;
+
         static void clearCache();
 
     protected:
