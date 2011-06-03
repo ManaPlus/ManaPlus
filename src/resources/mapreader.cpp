@@ -498,8 +498,8 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
             int len = static_cast<int>(strlen(
                 reinterpret_cast<const char*>(dataChild->content)) + 1);
             unsigned char *charData = new unsigned char[len + 1];
-            const char *charStart = reinterpret_cast<const char*>(
-                xmlNodeGetContent(dataChild));
+            xmlChar *xmlChars = xmlNodeGetContent(dataChild);
+            const char *charStart = reinterpret_cast<const char*>(xmlChars);
             if (!charStart)
             {
                 delete[] charData;
@@ -526,6 +526,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
                 charData))), &binLen);
 
             delete[] charData;
+            xmlFree(xmlChars);
 
             if (binData)
             {
@@ -579,8 +580,8 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
             if (!dataChild)
                 continue;
 
-            const char *data = reinterpret_cast<const char*>(
-                xmlNodeGetContent(dataChild));
+            xmlChar *xmlChars = xmlNodeGetContent(dataChild);
+            const char *data = reinterpret_cast<const char*>(xmlChars);
             if (!data)
                 return;
 
@@ -611,6 +612,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
 
                 oldPos = pos + 1;
             }
+            xmlFree(xmlChars);
         }
         else
         {
