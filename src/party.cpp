@@ -284,8 +284,9 @@ Party *Party::getParty(short id)
     PartyMap::iterator it = parties.find(id);
     if (it != parties.end())
         return it->second;
-
-    return new Party(id);
+    Party *party = new Party(id);
+    parties[id] = party;
+    return party;
 }
 
 void Party::sort()
