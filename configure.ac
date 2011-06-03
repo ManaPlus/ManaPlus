@@ -149,8 +149,14 @@ AM_CONDITIONAL(USE_INTERNALGUICHAN, test x$with_internalguichan = xyes)
 AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
 AC_MSG_ERROR([ *** Unable to find SDL_net library]))
 
-AC_CHECK_LIB(rt, shm_open, ,
-AC_MSG_ERROR([ *** Unable to find librt library]))
+AC_ARG_WITH(librt,[  --without-librt        don't link to librt ] )
+if test "x$with_librt" == "xno"; then
+    without_librt=yes
+else
+    AC_CHECK_LIB(rt, shm_open, ,
+    AC_MSG_ERROR([ *** Unable to find librt library]))
+    without_librt=no
+fi
 
 # Enable manaserv
 AC_ARG_ENABLE(manaserv,

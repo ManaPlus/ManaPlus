@@ -42,6 +42,8 @@ autoreconf -i
 --enable-memdebug=no \
 --with-internalguichan=yes
 
+#--without-librt
+
 cd po
 #make -j5 update-po 2>../make1.log
 make -j5 update-gmo 2>../make1.log
