@@ -472,7 +472,7 @@ public:
                 if (!finded)
                 {
                     delete *ai;
-                    avatars->erase(ai);
+                    ai = avatars->erase(ai);
                 }
                 else
                 {
