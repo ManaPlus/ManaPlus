@@ -69,6 +69,7 @@ ENDIF (USE_X11)
 
 INCLUDE_DIRECTORIES(
     "guichan/include"
+    "SDL_gfx"
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${SDL_INCLUDE_DIR}
     ${SDLIMAGE_INCLUDE_DIR}

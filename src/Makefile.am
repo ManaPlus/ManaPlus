@@ -564,7 +564,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      sprite.h \
 	      statuseffect.cpp \
 	      statuseffect.h \
-	      SDL_gfxBlitFunc.h \
 	      text.cpp \
 	      text.h \
 	      textmanager.cpp \
@@ -720,7 +719,8 @@ EXTRA_DIST = CMakeLists.txt \
 	     enet/README \
 	     mana.rc \
 	     SDLMain.h \
-	     SDLMain.m
+	     SDLMain.m \
+	     SDL_gfx/SDL_gfxBlitFunc.h
 
 # set the include path found by configure
 INCLUDES = $(all_includes)
