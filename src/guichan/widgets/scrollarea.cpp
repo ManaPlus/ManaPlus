@@ -60,6 +60,8 @@ namespace gcn
         mHScroll = 0;
         mHPolicy = SHOW_AUTO;
         mVPolicy = SHOW_AUTO;
+        mVBarVisible = false;
+        mHBarVisible = false;
         mScrollbarWidth = 12;
         mUpButtonPressed = false;
         mDownButtonPressed = false;
@@ -71,6 +73,8 @@ namespace gcn
         mRightButtonScrollAmount = 10;
         mIsVerticalMarkerDragged = false;
         mIsHorizontalMarkerDragged = false;
+        mHorizontalMarkerDragOffset = 0;
+        mVerticalMarkerDragOffset = 0;
         mOpaque = true;
 
         addMouseListener(this);
@@ -82,6 +86,8 @@ namespace gcn
         mHScroll = 0;
         mHPolicy = SHOW_AUTO;
         mVPolicy = SHOW_AUTO;
+        mVBarVisible = false;
+        mHBarVisible = false;
         mScrollbarWidth = 12;
         mUpButtonPressed = false;
         mDownButtonPressed = false;
@@ -93,6 +99,8 @@ namespace gcn
         mRightButtonScrollAmount = 10;
         mIsVerticalMarkerDragged = false;
         mIsHorizontalMarkerDragged = false;
+        mHorizontalMarkerDragOffset = 0;
+        mVerticalMarkerDragOffset = 0;
         mOpaque = true;
 
         setContent(content);
@@ -108,6 +116,8 @@ namespace gcn
         mHPolicy = hPolicy;
         mVPolicy = vPolicy;
         mScrollbarWidth = 12;
+        mVBarVisible = false;
+        mHBarVisible = false;
         mUpButtonPressed = false;
         mDownButtonPressed = false;
         mLeftButtonPressed = false;
@@ -118,6 +128,8 @@ namespace gcn
         mRightButtonScrollAmount = 10;
         mIsVerticalMarkerDragged = false;
         mIsHorizontalMarkerDragged = false;
+        mHorizontalMarkerDragOffset = 0;
+        mVerticalMarkerDragOffset = 0;
         mOpaque = true;
 
         setContent(content);
