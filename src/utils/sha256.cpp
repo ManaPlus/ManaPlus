@@ -202,7 +202,8 @@ void SHA256Transform(SHA256Context *ctx,
             wv[j] = ctx->h[j];
         for (j = 0; j < 64; j++)
         {
-            uint32_t t1 = wv[7] + SHA256_F2(wv[4]) + CH(wv[4], wv[5], wv[6]) + sha256_k[j] + w[j];
+            uint32_t t1 = wv[7] + SHA256_F2(wv[4]) + CH(wv[4],
+                wv[5], wv[6]) + sha256_k[j] + w[j];
             uint32_t t2 = SHA256_F1(wv[0]) + MAJ(wv[0], wv[1], wv[2]);
             wv[7] = wv[6];
             wv[6] = wv[5];
@@ -260,7 +261,8 @@ void SHA256Update(SHA256Context *ctx,
 
 void SHA256Final(SHA256Context *ctx, unsigned char *digest)
 {
-    unsigned int block_nb = (1 + ((SHA256_BLOCK_SIZE - 9) < (ctx->len % SHA256_BLOCK_SIZE)));
+    unsigned int block_nb = (1 + ((SHA256_BLOCK_SIZE - 9)
+        < (ctx->len % SHA256_BLOCK_SIZE)));
     unsigned int len_b = (ctx->tot_len + ctx->len) << 3;
     unsigned int pm_len = block_nb << 6;
     memset(ctx->block + ctx->len, 0, pm_len - ctx->len);
