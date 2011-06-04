@@ -143,6 +143,7 @@ class PopupMenu : public Popup, public LinkHandler
         FloorItem* mFloorItem;
         Item *mItem;
         int mItemId;
+        unsigned char mItemColor;
         MapItem *mMapItem;
         ChatTab *mTab;
         TextCommand *mSpell;

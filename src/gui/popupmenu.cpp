@@ -88,6 +88,7 @@ PopupMenu::PopupMenu():
     mFloorItem(0),
     mItem(0),
     mItemId(0),
+    mItemColor(1),
     mMapItem(0),
     mTab(0),
     mSpell(0),
@@ -889,7 +890,7 @@ void PopupMenu::handleLink(const std::string &link,
             Inventory *inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *item = inv->findItem(mItemId);
+                Item *item = inv->findItem(mItemId, mItemColor);
                 if (item)
                 {
                     if (item->isEquipment())
@@ -1473,6 +1474,7 @@ void PopupMenu::handleLink(const std::string &link,
     mFloorItem = 0;
     mItem = 0;
     mItemId = 0;
+    mItemColor = 1;
     mMapItem = 0;
     mNick = "";
 }
@@ -1586,6 +1588,7 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
     {
         mItem = 0;
         mItemId = itemId;
+        mItemColor = color;
         mBrowserBox->clearRows();
 
         mBrowserBox->addRow(strprintf("@@use|%s@@", _("Use")));
@@ -1603,9 +1606,15 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
 {
     mItem = item;
     if (item)
+    {
         mItemId = item->getId();
+        mItemColor = item->getColor();
+    }
     else
+    {
         mItemId = 0;
+        mItemColor = 1;
+    }
     mBrowserBox->clearRows();
 
     if (item)
@@ -1827,6 +1836,7 @@ void PopupMenu::showUndressPopup(int x, int y, Being *being, Item *item)
     mBeingId = being->getId();
     mItem = item;
     mItemId = item->getId();
+    mItemColor = item->getColor();
 
     mBrowserBox->clearRows();
 

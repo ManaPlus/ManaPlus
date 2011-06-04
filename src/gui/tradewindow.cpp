@@ -430,7 +430,8 @@ void TradeWindow::initTrade(std::string nick)
             Inventory *inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *item = inv->findItem(mAutoAddItem->getId());
+                Item *item = inv->findItem(mAutoAddItem->getId(),
+                    mAutoAddItem->getColor());
                 if (item)
                     tradeItem(item, mAutoAddItem->getQuantity());
             }

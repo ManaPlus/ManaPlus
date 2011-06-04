@@ -74,17 +74,6 @@ Item *Inventory::getItem(int index) const
     return mItems[index];
 }
 
-Item *Inventory::findItem(int itemId) const
-{
-    for (unsigned i = 0; i < mSize; i++)
-    {
-        if (mItems[i] && mItems[i]->getId() == itemId)
-            return mItems[i];
-    }
-
-    return 0;
-}
-
 Item *Inventory::findItem(int itemId, unsigned char color) const
 {
     for (unsigned i = 0; i < mSize; i++)

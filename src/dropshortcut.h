@@ -61,6 +61,9 @@ class DropShortcut
         int getItem(int index) const
         { return mItems[index]; }
 
+        int getItemColor(int index) const
+        { return mItemColors[index]; }
+
         /**
          * Returns the amount of shortcut items.
          */
@@ -78,8 +81,7 @@ class DropShortcut
          *
          * @param index Index of the items.
          */
-        void setItem(int index)
-        { mItems[index] = mItemSelected; save(); }
+        void setItem(int index);
 
         /**
          * Adds an item to the items store specified by the index.
@@ -87,8 +89,8 @@ class DropShortcut
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(int index, int itemId)
-        { mItems[index] = itemId; save(); }
+        void setItems(int index, int itemId, unsigned char color)
+        { mItems[index] = itemId; mItemColors[index] = color; save(); }
 
         /**
          * Set the item that is selected.
@@ -97,6 +99,8 @@ class DropShortcut
          */
         void setItemSelected(int itemId)
         { mItemSelected = itemId; }
+
+        void setItemSelected(Item *item);
 
         /**
          * A flag to check if the item is selected.
@@ -144,8 +148,10 @@ class DropShortcut
          */
         bool dropItem(int cnt = 1);
 
-        int mItems[DROP_SHORTCUT_ITEMS];     /**< The items stored. */
-        int mItemSelected;              /**< The item held by cursor. */
+        int mItems[DROP_SHORTCUT_ITEMS];
+        int mItemColors[DROP_SHORTCUT_ITEMS];
+        int mItemSelected;
+        int mItemColorSelected;
 
         int mLastDropIndex;
 };

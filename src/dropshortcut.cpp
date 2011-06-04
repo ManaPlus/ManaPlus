@@ -41,7 +41,8 @@
 DropShortcut *dropShortcut;
 
 DropShortcut::DropShortcut():
-    mItemSelected(-1)
+    mItemSelected(-1),
+    mItemColorSelected(1)
 {
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
         mItems[i] = -1;
@@ -66,9 +67,14 @@ void DropShortcut::load(bool oldConfig)
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
         int itemId = static_cast<int>(cfg->getValue("drop" + toString(i), -1));
+        int itemColor = static_cast<int>(
+            cfg->getValue("dropColor" + toString(i), -1));
 
         if (itemId != -1)
+        {
             mItems[i] = itemId;
+            mItemColors[i] = itemColor;
+        }
     }
 }
 
@@ -77,10 +83,17 @@ void DropShortcut::save()
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
+        const int itemColor = mItemColors[i] ? mItemColors[i] : 1;
         if (itemId != -1)
+        {
             serverConfig.setValue("drop" + toString(i), itemId);
+            serverConfig.setValue("dropColor" + toString(i), itemColor);
+        }
         else
+        {
             serverConfig.deleteKey("drop" + toString(i));
+            serverConfig.deleteKey("dropColor" + toString(i));
+        }
     }
 }
 
@@ -92,12 +105,12 @@ void DropShortcut::dropFirst()
     if (!Client::limitPackets(PACKET_DROP))
         return;
 
-    int itemId;
-    itemId = getItem(0);
+    const int itemId = getItem(0);
+    const int itemColor = getItemColor(0);
 
     if (itemId > 0)
     {
-        Item *item = PlayerInfo::getInventory()->findItem(itemId);
+        Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
         if (item && item->getQuantity())
         {
             if (player_node->isServerBuggy())
@@ -137,14 +150,16 @@ void DropShortcut::dropItems(int cnt)
 bool DropShortcut::dropItem(int cnt)
 {
     int itemId = 0;
+    unsigned char itemColor = 1;
     while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
     {
         itemId = getItem(mLastDropIndex);
-        mLastDropIndex++;
+        itemColor = getItemColor(mLastDropIndex);
+        mLastDropIndex ++;
     }
     if (itemId > 0)
     {
-        Item *item = PlayerInfo::getInventory()->findItem(itemId);
+        Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
         if (item && item->getQuantity() > 0)
         {
             Net::getInventoryHandler()->dropItem(item, cnt);
@@ -159,11 +174,12 @@ bool DropShortcut::dropItem(int cnt)
         while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
         {
             itemId = getItem(mLastDropIndex);
+            itemColor = getItemColor(mLastDropIndex);
             mLastDropIndex++;
         }
         if (itemId > 0)
         {
-            Item *item = PlayerInfo::getInventory()->findItem(itemId);
+            Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
             if (item && item->getQuantity() > 0)
             {
                 Net::getInventoryHandler()->dropItem(item, cnt);
@@ -174,4 +190,25 @@ bool DropShortcut::dropItem(int cnt)
             mLastDropIndex = 0;
     }
     return false;
+}
+
+void DropShortcut::setItemSelected(Item *item)
+{
+    if (item)
+    {
+        mItemSelected = item->getId();
+        mItemColorSelected = item->getColor();
+    }
+    else
+    {
+        mItemSelected = -1;
+        mItemColorSelected = 1;
+    }
+}
+
+void DropShortcut::setItem(int index)
+{
+    mItems[index] = mItemSelected;
+    mItemColors[index] = mItemColorSelected;
+    save();
 }

@@ -84,10 +84,9 @@ class Inventory
          * Searches for the specified item by it's id.
          *
          * @param itemId The id of the item to be searched.
+         * @param color The color of the item to be searched.
          * @return Item found on success, NULL on failure.
          */
-        Item *findItem(int itemId) const;
-
         Item *findItem(int itemId, unsigned char color) const;
 
         /**

@@ -119,7 +119,8 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         if (!inv)
             return;
 
-        Item *item = inv->findItem(dropShortcut->getItem(i));
+        Item *item = inv->findItem(dropShortcut->getItem(i),
+            dropShortcut->getItemColor(i));
 
         if (item)
         {
@@ -178,6 +179,7 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 return;
 
             const int itemId = dropShortcut->getItem(index);
+            const int itemColor = dropShortcut->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -186,7 +188,7 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             if (!inv)
                 return;
 
-            Item *item = inv->findItem(itemId);
+            Item *item = inv->findItem(itemId, itemColor);
 
             if (item)
             {
@@ -231,7 +233,8 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
         if (!inv)
             return;
 
-        Item *item = inv->findItem(dropShortcut->getItem(index));
+        Item *item = inv->findItem(dropShortcut->getItem(index),
+            dropShortcut->getItemColor(index));
 
         if (viewport)
             viewport->showDropPopup(item);
@@ -256,7 +259,8 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         }
         if (mItemMoved)
         {
-            dropShortcut->setItems(index, mItemMoved->getId());
+            dropShortcut->setItems(index, mItemMoved->getId(),
+                mItemMoved->getColor());
             mItemMoved = NULL;
         }
 
@@ -277,6 +281,7 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         return;
 
     const int itemId = dropShortcut->getItem(index);
+    const int itemColor = dropShortcut->getItemColor(index);
 
     if (itemId < 0)
         return;
@@ -285,7 +290,7 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     if (!inv)
         return;
 
-    Item *item = inv->findItem(itemId);
+    Item *item = inv->findItem(itemId, itemColor);
 
     if (item && viewport)
     {
