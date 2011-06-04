@@ -590,9 +590,9 @@ void Viewport::showItemPopup(Item *item)
     mPopupMenu->showItemPopup(getMouseX(), getMouseY(), item);
 }
 
-void Viewport::showItemPopup(int itemId)
+void Viewport::showItemPopup(int itemId, unsigned char color)
 {
-    mPopupMenu->showItemPopup(getMouseX(), getMouseY(), itemId);
+    mPopupMenu->showItemPopup(getMouseX(), getMouseY(), itemId, color);
 }
 
 void Viewport::showDropPopup(Item *item)

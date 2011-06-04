@@ -1571,13 +1571,13 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
     showPopup(x, y);
 }
 
-void PopupMenu::showItemPopup(int x, int y, int itemId)
+void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
 {
     Inventory *inv = PlayerInfo::getInventory();
     if (!inv)
         return;
 
-    Item *item = inv->findItem(itemId);
+    Item *item = inv->findItem(itemId, color);
     if (item)
     {
         showItemPopup(x, y, item);

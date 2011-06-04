@@ -339,7 +339,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             if (num >= 0 && num < SHORTCUT_TABS)
             {
                 if (itemShortcut[num])
-                    itemShortcut[num]->setItemSelected(item->getId());
+                    itemShortcut[num]->setItemSelected(item);
             }
             if (dropShortcut)
                 dropShortcut->setItemSelected(item->getId());

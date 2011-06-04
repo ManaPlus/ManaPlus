@@ -143,7 +143,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
 
         void showItemPopup(Item *item);
 
-        void showItemPopup(int itemId);
+        void showItemPopup(int itemId, unsigned char color = 1);
 
         void showDropPopup(Item *item);
 

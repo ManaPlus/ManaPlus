@@ -123,7 +123,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
         g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
 
-        int itemId = itemShortcut[mNumber]->getItem(i);
+        const int itemId = itemShortcut[mNumber]->getItem(i);
+        const int itemColor = itemShortcut[mNumber]->getItemColor(i);
 
         if (itemId < 0)
             continue;
@@ -134,7 +135,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
             if (!PlayerInfo::getInventory())
                 continue;
 
-            Item *item = PlayerInfo::getInventory()->findItem(itemId);
+            Item *item = PlayerInfo::getInventory()->findItem(
+                itemId, itemColor);
 
             if (item)
             {
@@ -284,7 +286,10 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
 //        Item *item = PlayerInfo::getInventory()->findItem(id);
 
         if (viewport && itemShortcut[mNumber])
-            viewport->showItemPopup(itemShortcut[mNumber]->getItem(index));
+        {
+            viewport->showItemPopup(itemShortcut[mNumber]->getItem(index),
+                itemShortcut[mNumber]->getItemColor(index));
+        }
     }
 }
 
@@ -306,7 +311,8 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         }
         if (mItemMoved)
         {
-            itemShortcut[mNumber]->setItems(index, mItemMoved->getId());
+            itemShortcut[mNumber]->setItems(index,
+                mItemMoved->getId(), mItemMoved->getColor());
             mItemMoved = NULL;
         }
         else if (itemShortcut[mNumber]->getItem(index) && mItemClicked)
@@ -331,6 +337,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         return;
 
     const int itemId = itemShortcut[mNumber]->getItem(index);
+    const int itemColor = itemShortcut[mNumber]->getItemColor(index);
 
     if (itemId < 0)
         return;
@@ -342,7 +349,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         if (!PlayerInfo::getInventory())
             return;
 
-        Item *item = PlayerInfo::getInventory()->findItem(itemId);
+        Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
 
         if (item && viewport)
         {

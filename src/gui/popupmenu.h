@@ -109,7 +109,7 @@ class PopupMenu : public Popup, public LinkHandler
 
         void showItemPopup(int x, int y, Item *item);
 
-        void showItemPopup(int x, int y, int itemId);
+        void showItemPopup(int x, int y, int itemId, unsigned char color);
 
         void showDropPopup(int x, int y, Item *item);
 

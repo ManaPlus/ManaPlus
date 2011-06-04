@@ -63,6 +63,9 @@ class ItemShortcut
         int getItem(int index) const
         { return mItems[index]; }
 
+        unsigned char getItemColor(int index) const
+        { return mItemColors[index]; }
+
         /**
          * Returns the amount of shortcut items.
          */
@@ -80,8 +83,7 @@ class ItemShortcut
          *
          * @param index Index of the items.
          */
-        void setItem(int index)
-        { mItems[index] = mItemSelected; save(); }
+        void setItem(int index);
 
         /**
          * Adds an item to the items store specified by the index.
@@ -89,8 +91,8 @@ class ItemShortcut
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(int index, int itemId)
-        { mItems[index] = itemId; save(); }
+        void setItems(int index, int itemId, unsigned char color)
+        { mItems[index] = itemId; mItemColors[index] = color; save(); }
 
         /**
          * Set the item that is selected.
@@ -99,6 +101,8 @@ class ItemShortcut
          */
         void setItemSelected(int itemId)
         { mItemSelected = itemId; }
+
+        void setItemSelected(Item *item);
 
         /**
          * Returns selected shortcut item ID.
@@ -137,8 +141,10 @@ class ItemShortcut
 
     private:
 
-        int mItems[SHORTCUT_ITEMS];     /**< The items stored. */
-        int mItemSelected;              /**< The item held by cursor. */
+        int mItems[SHORTCUT_ITEMS];                /**< The items. */
+        unsigned char mItemColors[SHORTCUT_ITEMS]; /**< The item colors. */
+        int mItemSelected;
+        int mItemColorSelected;
         int mNumber;
 };
 

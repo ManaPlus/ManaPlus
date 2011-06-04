@@ -39,6 +39,7 @@ ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
 ItemShortcut::ItemShortcut(int number):
     mItemSelected(-1),
+    mItemColorSelected(1),
     mNumber(number)
 {
     load();
@@ -52,6 +53,7 @@ ItemShortcut::~ItemShortcut()
 void ItemShortcut::load(bool oldConfig)
 {
     std::string name;
+    std::string color;
     Configuration *cfg;
     if (oldConfig)
         cfg = &config;
@@ -59,34 +61,57 @@ void ItemShortcut::load(bool oldConfig)
         cfg = &serverConfig;
 
     if (mNumber)
+    {
         name = "shortcut" + toString(mNumber) + "_";
+        color = "shortcutColor" + toString(mNumber) + "_";
+    }
     else
+    {
         name = "shortcut";
+        color = "shortcutColor";
+    }
     for (int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         int itemId = static_cast<int>(cfg->getValue(name + toString(i), -1));
+        int itemColor = static_cast<int>(
+            cfg->getValue(color + toString(i), 1));
 
         mItems[i] = itemId;
+        mItemColors[i] = itemColor;
     }
 }
 
 void ItemShortcut::save()
 {
     std::string name;
+    std::string color;
     if (mNumber)
+    {
         name = "shortcut" + toString(mNumber) + "_";
+        color = "shortcutColor" + toString(mNumber) + "_";
+    }
     else
+    {
         name = "shortcut";
+        color = "shortcutColor";
+    }
 
     logger->log("save %s", name.c_str());
 
     for (int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] ? mItems[i] : -1;
+        const int itemColor = mItemColors[i] ? mItemColors[i] : 1;
         if (itemId != -1)
+        {
             serverConfig.setValue(name + toString(i), itemId);
+            serverConfig.setValue(color + toString(i), itemColor);
+        }
         else
+        {
             serverConfig.deleteKey(name + toString(i));
+            serverConfig.deleteKey(color + toString(i));
+        }
     }
 }
 
@@ -96,11 +121,13 @@ void ItemShortcut::useItem(int index)
         return;
 
     int itemId = mItems[index];
+    int itemColor = mItemColors[index];
     if (itemId >= 0)
     {
         if (itemId < SPELL_MIN_ID)
         {
-            Item *item = PlayerInfo::getInventory()->findItem(itemId);
+            Item *item = PlayerInfo::getInventory()->findItem(
+                itemId, itemColor);
             if (item && item->getQuantity())
             {
                 if (item->isEquipment())
@@ -130,7 +157,8 @@ void ItemShortcut::equipItem(int index)
 
     if (mItems[index])
     {
-        Item *item = PlayerInfo::getInventory()->findItem(mItems[index]);
+        Item *item = PlayerInfo::getInventory()->findItem(
+            mItems[index], mItemColors[index]);
         if (item && item->getQuantity())
         {
             if (item->isEquipment())
@@ -148,7 +176,8 @@ void ItemShortcut::unequipItem(int index)
 
     if (mItems[index])
     {
-        Item *item = PlayerInfo::getInventory()->findItem(mItems[index]);
+        Item *item = PlayerInfo::getInventory()->findItem(
+            mItems[index], mItemColors[index]);
         if (item && item->getQuantity())
         {
             if (item->isEquipment())
@@ -158,4 +187,27 @@ void ItemShortcut::unequipItem(int index)
             }
         }
     }
+}
+
+void ItemShortcut::setItemSelected(Item *item)
+{
+    if (item)
+    {
+        logger->log("set selected id: %d", item->getId());
+        logger->log("set selected color: %d", item->getColor());
+        mItemSelected = item->getId();
+        mItemColorSelected = item->getColor();
+    }
+    else
+    {
+        mItemSelected = -1;
+        mItemColorSelected = 1;
+    }
+}
+
+void ItemShortcut::setItem(int index)
+{
+    mItems[index] = mItemSelected;
+    mItemColors[index] = mItemColorSelected;
+    save();
 }
