@@ -222,6 +222,7 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 return;
 
             const int itemId = itemShortcut[mNumber]->getItem(index);
+            const int itemColor = itemShortcut[mNumber]->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -231,7 +232,8 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 if (!PlayerInfo::getInventory())
                     return;
 
-                Item *item = PlayerInfo::getInventory()->findItem(itemId);
+                Item *item = PlayerInfo::getInventory()->findItem(
+                    itemId, itemColor);
 
                 if (item)
                 {
@@ -283,8 +285,6 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-//        Item *item = PlayerInfo::getInventory()->findItem(id);
-
         if (viewport && itemShortcut[mNumber])
         {
             viewport->showItemPopup(itemShortcut[mNumber]->getItem(index),
