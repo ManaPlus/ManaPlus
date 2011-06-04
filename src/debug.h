@@ -19,6 +19,6 @@
  */
 
 #ifdef ENABLE_MEM_DEBUG
-#define _DEBUG_NEW_EMULATE_MALLOC 1
+//define _DEBUG_NEW_EMULATE_MALLOC 1
 #include "debug/debug_new.h"
 #endif
