@@ -88,6 +88,8 @@ class Inventory
          */
         Item *findItem(int itemId) const;
 
+        Item *findItem(int itemId, unsigned char color) const;
+
         /**
          * Adds a new item in a free slot.
          */

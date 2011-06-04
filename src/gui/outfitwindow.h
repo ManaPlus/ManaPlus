@@ -64,6 +64,8 @@ class OutfitWindow : public Window, gcn::ActionListener
         void setItemSelected(int itemId)
         { mItemSelected = itemId; }
 
+        void setItemSelected(Item *item);
+
         bool isItemSelected()
         { return mItemSelected > 0; }
 
@@ -120,8 +122,10 @@ class OutfitWindow : public Window, gcn::ActionListener
         void save();
 
         int mItems[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
+        unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemsUnequip[OUTFITS_COUNT];
         int mItemSelected;
+        int mItemColorSelected;
 
         int mCurrentOutfit;
         int mAwayOutfit;

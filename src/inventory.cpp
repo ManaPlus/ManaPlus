@@ -85,6 +85,20 @@ Item *Inventory::findItem(int itemId) const
     return 0;
 }
 
+Item *Inventory::findItem(int itemId, unsigned char color) const
+{
+    for (unsigned i = 0; i < mSize; i++)
+    {
+        if (mItems[i] && mItems[i]->getId() == itemId
+            && mItems[i]->getColor() == color)
+        {
+            return mItems[i];
+        }
+    }
+
+    return 0;
+}
+
 void Inventory::addItem(int id, int quantity, int refine,
                         unsigned char color, bool equipment)
 {

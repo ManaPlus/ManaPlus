@@ -344,7 +344,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
             if (dropShortcut)
                 dropShortcut->setItemSelected(item->getId());
             if (item->isEquipment() && outfitWindow)
-                outfitWindow->setItemSelected(item->getId());
+                outfitWindow->setItemSelected(item);
             if (shopWindow)
                 shopWindow->setItemSelected(item->getId());
         }

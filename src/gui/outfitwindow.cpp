@@ -64,6 +64,7 @@ OutfitWindow::OutfitWindow():
     mItemClicked(false),
     mItemMoved(NULL),
     mItemSelected(-1),
+    mItemColorSelected(1),
     mCurrentOutfit(0),
     mAwayOutfit(0)
 {
@@ -125,6 +126,7 @@ void OutfitWindow::load(bool oldConfig)
         cfg = &serverConfig;
 
     memset(mItems, -1, sizeof(mItems));
+    memset(mItemColors, 1, sizeof(mItemColors));
 
     for (int o = 0; o < OUTFITS_COUNT; o++)
     {
@@ -143,6 +145,21 @@ void OutfitWindow::load(bool oldConfig)
             mItems[o][i] = tokens[i];
         }
 
+
+        outfit = cfg->getValue("OutfitColor" + toString(o), "1");
+        std::stringstream ss2(outfit);
+
+        tokens.clear();
+
+        while (ss2 >> buf)
+            tokens.push_back(atoi(buf.c_str()));
+
+        for (int i = 0; i < static_cast<int>(tokens.size())
+                && i < OUTFIT_ITEM_COUNT; i++)
+        {
+            mItemColors[o][i] = tokens[i];
+        }
+
         mItemsUnequip[o] = cfg->getValueBool("OutfitUnequip" + toString(o),
                                              true);
     }
@@ -157,6 +174,7 @@ void OutfitWindow::load(bool oldConfig)
 void OutfitWindow::save()
 {
     std::string outfitStr;
+    std::string outfitColorsStr;
     for (int o = 0; o < OUTFITS_COUNT; o++)
     {
         bool good = false;
@@ -168,11 +186,21 @@ void OutfitWindow::save()
             outfitStr += toString(res);
             if (i < OUTFIT_ITEM_COUNT - 1)
                 outfitStr += " ";
+            outfitColorsStr += toString((int)mItemColors[o][i]);
+            if (i < OUTFIT_ITEM_COUNT - 1)
+                outfitColorsStr += " ";
         }
         if (good)
+        {
             serverConfig.setValue("Outfit" + toString(o), outfitStr);
+            serverConfig.setValue("OutfitColor" + toString(o),
+                outfitColorsStr);
+        }
         else
+        {
             serverConfig.deleteKey("Outfit" + toString(o));
+            serverConfig.deleteKey("OutfitColor" + toString(o));
+        }
 
         if (mItemsUnequip[o])
         {
@@ -184,6 +212,7 @@ void OutfitWindow::save()
                 mItemsUnequip[o]);
         }
         outfitStr = "";
+        outfitColorsStr = "";
     }
     serverConfig.setValue("OutfitAwayIndex", mAwayOutfit);
 }
@@ -221,7 +250,8 @@ void OutfitWindow::wearOutfit(int outfit, bool unwearEmpty, bool select)
 
     for (int i = 0; i < OUTFIT_ITEM_COUNT; i++)
     {
-        item = PlayerInfo::getInventory()->findItem(mItems[outfit][i]);
+        item = PlayerInfo::getInventory()->findItem(
+            mItems[outfit][i], mItemColors[outfit][i]);
         if (item && !item->isEquipped() && item->getQuantity())
         {
             if (item->isEquipment())
@@ -285,7 +315,8 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
         Inventory *inv = PlayerInfo::getInventory();
         if (inv)
         {
-            Item *item = inv->findItem(mItems[mCurrentOutfit][i]);
+            Item *item = inv->findItem(mItems[mCurrentOutfit][i],
+                mItemColors[mCurrentOutfit][i]);
             if (item)
             {
                 // Draw item icon.
@@ -299,8 +330,8 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
         }
         if (!foundItem)
         {
-            //+++ need use colors in outfits
-            Image *image = Item::getImage(mItems[mCurrentOutfit][i], 1);
+            Image *image = Item::getImage(mItems[mCurrentOutfit][i],
+                mItemColors[mCurrentOutfit][i]);
             if (image)
                 g->drawImage(image, itemX, itemY);
         }
@@ -333,6 +364,7 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
                 return;
             }
             const int itemId = mItems[mCurrentOutfit][index];
+            const int itemColor = mItemColors[mCurrentOutfit][index];
             if (itemId < 0)
             {
                 Window::mouseDragged(event);
@@ -343,7 +375,7 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
             Inventory *inv = PlayerInfo::getInventory();
             if (inv)
             {
-                Item *item = inv->findItem(itemId);
+                Item *item = inv->findItem(itemId, itemColor);
                 if (item)
                     mItemMoved = item;
                 else
@@ -377,6 +409,7 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     if (isItemSelected())
     {
         mItems[mCurrentOutfit][index] = mItemSelected;
+        mItemColors[mCurrentOutfit][index] = mItemColorSelected;
 //        mItemSelected = -1;
     }
     else if (mItems[mCurrentOutfit][index])
@@ -405,6 +438,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         if (mItemMoved)
         {
             mItems[mCurrentOutfit][index] = mItemMoved->getId();
+            mItemColors[mCurrentOutfit][index] = mItemMoved->getColor();
             mItemMoved = NULL;
         }
         if (mItemClicked)
@@ -916,6 +950,7 @@ void OutfitWindow::copyFromEquiped(int dst)
         if (inventory->getItem(i) && inventory->getItem(i)->isEquipped())
         {
             mItems[dst][outfitCell++] = inventory->getItem(i)->getId();
+            mItemColors[dst][outfitCell++] = inventory->getItem(i)->getColor();
             if (outfitCell > 8)
                 break;
         }
@@ -931,4 +966,18 @@ void OutfitWindow::wearAwayOutfit()
 void OutfitWindow::unwearAwayOutfit()
 {
     wearOutfit(OUTFITS_COUNT);
+}
+
+void OutfitWindow::setItemSelected(Item *item)
+{
+    if (item)
+    {
+        mItemSelected = item->getId();
+        mItemColorSelected = item->getColor();
+    }
+    else
+    {
+        mItemSelected = -1;
+        mItemColorSelected = 1;
+    }
 }
