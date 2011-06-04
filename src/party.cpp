@@ -293,3 +293,14 @@ void Party::sort()
 {
     std::sort(mMembers.begin(), mMembers.end(), partySorter);
 }
+
+void Party::clearParties()
+{
+    PartyMap::iterator it = parties.begin();
+    while (it != parties.end())
+    {
+        delete (*it).second;
+        ++ it;
+    }
+    parties.clear();
+}

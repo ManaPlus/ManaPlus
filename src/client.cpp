@@ -25,17 +25,18 @@
 
 #include "chatlog.h"
 #include "configuration.h"
+#include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "event.h"
 #include "game.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
-#include "dropshortcut.h"
 #include "keyboardconfig.h"
 #ifdef USE_OPENGL
 #include "openglgraphics.h"
 #include "opengl1graphics.h"
 #endif
+#include "party.h"
 #include "playerrelations.h"
 #include "sound.h"
 #include "statuseffect.h"
@@ -77,6 +78,7 @@
 #include "net/packetcounters.h"
 #include "net/worldinfo.h"
 
+#include "resources/beinginfo.h"
 #include "resources/colordb.h"
 #include "resources/emotedb.h"
 #include "resources/image.h"
@@ -601,6 +603,8 @@ Client::~Client()
 
     logger->log1("Quitting5");
 
+    BeingInfo::clear();
+
     // Shutdown sound
     sound.close();
 
@@ -799,6 +803,7 @@ int Client::exec()
                 ResourceManager *resman = ResourceManager::getInstance();
                 if (resman)
                     resman->cleanOrphans();
+                Party::clearParties();
             }
 
             mOldState = mState;

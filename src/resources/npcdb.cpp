@@ -124,7 +124,7 @@ BeingInfo *NPCDB::get(int id)
     if (i == mNPCInfos.end())
     {
         logger->log("NPCDB: Warning, unknown NPC ID %d requested", id);
-        return BeingInfo::Unknown;
+        return BeingInfo::unknown;
     }
     else
     {

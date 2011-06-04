@@ -151,6 +151,8 @@ public:
 
     static Party *getParty(short id);
 
+    static void clearParties();
+
 private:
     typedef std::map<int, Party*> PartyMap;
     static PartyMap parties;

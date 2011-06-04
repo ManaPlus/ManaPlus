@@ -183,7 +183,7 @@ std::list<BeingCacheEntry*> beingInfoCache;
 // TODO: mWalkTime used by eAthena only
 Being::Being(int id, Type type, Uint16 subtype, Map *map):
     ActorSprite(id),
-    mInfo(BeingInfo::Unknown),
+    mInfo(BeingInfo::unknown),
     mActionTime(0),
     mEmotion(0), mEmotionTime(0),
     mSpeechTime(0),

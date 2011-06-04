@@ -72,7 +72,8 @@ typedef std::map<SoundEvent, std::vector<std::string>* > SoundEvents;
 class BeingInfo
 {
     public:
-        static BeingInfo *Unknown;
+        static BeingInfo *unknown;
+        static Attack *empty;
 
         BeingInfo();
 
@@ -145,6 +146,8 @@ class BeingInfo
 
         void setStaticMaxHP(bool n)
         { mStaticMaxHP = n; }
+
+        static void clear();
 
     private:
         SpriteDisplay mDisplay;

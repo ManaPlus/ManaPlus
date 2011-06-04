@@ -29,7 +29,8 @@
 
 #include "debug.h"
 
-BeingInfo *BeingInfo::Unknown = new BeingInfo;
+BeingInfo *BeingInfo::unknown = new BeingInfo;
+Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, "", "");
 
 BeingInfo::BeingInfo():
         mName(_("unnamed")),
@@ -102,8 +103,6 @@ const std::string &BeingInfo::getSound(SoundEvent event) const
 
 const Attack *BeingInfo::getAttack(int type) const
 {
-    // need remove in destructor?
-    static Attack *empty = new Attack(SpriteAction::ATTACK, "", "");
 
     Attacks::const_iterator i = mAttacks.find(type);
     return (i == mAttacks.end()) ? empty : (*i).second;
@@ -117,4 +116,12 @@ void BeingInfo::addAttack(int id, std::string action,
         delete mAttacks[id];
 
     mAttacks[id] = new Attack(action, particleEffect, missileParticle);
+}
+
+void BeingInfo::clear()
+{
+    delete unknown;
+    unknown = 0;
+    delete empty;
+    empty = 0;
 }
