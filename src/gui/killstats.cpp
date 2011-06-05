@@ -65,28 +65,40 @@ KillStats::KillStats():
     if (!xpNextLevel)
         xpNextLevel = 1;
 
-    mLine1 = new Label(_("Level: ") + toString(player_node->getLevel())
-        + " at " + toString(static_cast<float>(xp)
-        / static_cast<float>(xpNextLevel) * 100.0f) + "%");
+    mLine1 = new Label(strprintf(_("Level: %d at %f%%"),
+        player_node->getLevel(), static_cast<float>(xp)
+        / static_cast<float>(xpNextLevel) * 100.0f));
 
-    mLine2 = new Label(_("Exp: ") + toString(xp) + "/" +
-        toString(xpNextLevel) + _(" Left: ") +
-        toString(xpNextLevel-xp));
-    mLine3 = new Label("1% = " + toString(xpNextLevel / 100) +
-            _(" exp, Avg Mob for 1%: ?"));
-    mLine4 = new Label(_("Kills: ?, Total Exp: ?"));
-    mLine5 = new Label(_("Avg Exp: ?, No. of Avg mob to next level: ?"));
-    mLine6 = new Label(_("Kills/Min: ?, Exp/Min: ?"));
+    mLine2 = new Label(strprintf(_("Exp: %d/%d Left: %d"),
+        xp, xpNextLevel, xpNextLevel - xp));
 
-    mExpSpeed1Label = new Label(_("Exp speed per 1 min: ?"));
-    mExpTime1Label = new Label(_("Time for next level per 1 min: ?"));
-    mExpSpeed5Label = new Label(_("Exp speed per 5 min: ?"));
-    mExpTime5Label = new Label(_("Time for next level per 5 min: ?"));
-    mExpSpeed15Label = new Label(_("Exp speed per 15 min: ?"));
-    mExpTime15Label = new Label(_("Time for Next level per 15 min: ?"));
+    mLine3 = new Label(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
+        xpNextLevel / 100, "?"));
 
-    mLastKillExpLabel = new Label(_("Last kill exp: ?"));
-    mTimeBeforeJackoLabel = new Label(_("Time before jacko spawn: ?"));
+    mLine4 = new Label(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
+    mLine5 = new Label(strprintf(
+        _("Avg Exp: %s, No. of avg mob to next level: %s"), "?", "?"));
+    mLine6 = new Label(strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
+
+    mExpSpeed1Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 1), 1, "?"));
+    mExpTime1Label = new Label(strprintf(ngettext(
+        "Time for next level per %d min: %s",
+        "Time for next level per %d min: %s", 1), 1, "?"));
+    mExpSpeed5Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 5), 5, "?"));
+    mExpTime5Label = new Label(strprintf(ngettext(
+        "Time for next level per %d min: %s",
+        "Time for next level per %d min: %s", 5), 5, "?"));
+    mExpSpeed15Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 15), 15, "?"));
+    mExpTime15Label = new Label(strprintf(ngettext(
+        "Time for next level per %d min: %s",
+        "Time for next level per %d min: %s", 15), 15, "?"));
+
+    mLastKillExpLabel = new Label(strprintf("%s ?", _("Last kill exp:")));
+    mTimeBeforeJackoLabel = new Label(strprintf(
+        "%s ?", _("Time before jacko spawn:")));
 
     place(0, 0, mLine1, 6).setPadding(0);
     place(0, 1, mLine2, 6).setPadding(0);
@@ -124,11 +136,11 @@ void KillStats::action(const gcn::ActionEvent &event)
     {
         mKillCounter = 0;
         mExpCounter = 0;
-        mLine3->setCaption("1% = " + toString(
-            PlayerInfo::getAttribute(EXP_NEEDED) / 100) +
-            " exp, Avg Mob for 1%: ?");
-        mLine4->setCaption(_("Kills: ?, Total Exp: ?"));
-        mLine5->setCaption(_("Avg Exp: ?, No. of Avg mob to next level: ?"));
+        mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
+            PlayerInfo::getAttribute(EXP_NEEDED) / 100, "?"));
+        mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
+        mLine5->setCaption(strprintf(
+            _("Avg Exp: %s, No. of avg mob to next level: %s"), "?", "?"));
 
         m1minExpTime = 0;
         m1minExpNum = 0;
@@ -145,7 +157,8 @@ void KillStats::action(const gcn::ActionEvent &event)
         mKillTimer = 0;
         mKillTCounter = 0;
         mExpTCounter = 0;
-        mLine6->setCaption(_("Kills/Min: ?, Exp/Min: ?"));
+        mLine6->setCaption(strprintf(
+            _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
         m1minExpTime = 0;
         m1minExpNum = 0;
@@ -188,39 +201,43 @@ void KillStats::gainXp(int xp)
     if (timeDiff <= 0.001)
         timeDiff = 1;
 
-    mLine1->setCaption("Level: " + toString(player_node->getLevel()) + " at " +
-        toString(static_cast<float>(PlayerInfo::getAttribute(EXP))
-        / static_cast<float>(xpNextLevel) * 100.0f) + "%");
+    mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
+        player_node->getLevel(), static_cast<float>(
+        PlayerInfo::getAttribute(EXP)) / static_cast<float>(
+        xpNextLevel) * 100.0f));
 
-    mLine2->setCaption("Exp: " + toString(PlayerInfo::getAttribute(EXP)) + "/"
-        + toString(xpNextLevel) + " Left: "
-        + toString(xpNextLevel - PlayerInfo::getAttribute(EXP)));
+    mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"),
+        PlayerInfo::getAttribute(EXP), xpNextLevel,
+        xpNextLevel - PlayerInfo::getAttribute(EXP)));
+
     if (AvgExp >= 0.001f && AvgExp <= 0.001f)
     {
-        mLine3->setCaption("1% = " + toString(xpNextLevel / 100)
-            + " exp, Avg Mob for 1%: ?");
+        mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
+            xpNextLevel / 100, "?"));
 
-        mLine5->setCaption("Avg Exp: " + toString(AvgExp) +
-            ", No. of Avg mob to next level: ?");
+        mLine5->setCaption(strprintf(
+            _("Avg Exp: %s, No. of avg mob to next level: %s"),
+            toString(AvgExp).c_str(), "?"));
     }
     else
     {
-        mLine3->setCaption("1% = " + toString(xpNextLevel / 100)
-            + " exp, Avg Mob for 1%: " +
-            toString((static_cast<float>(xpNextLevel) / 100) / AvgExp));
+        mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
+            xpNextLevel / 100, toString((static_cast<float>(
+            xpNextLevel) / 100) / AvgExp).c_str()));
 
-        mLine5->setCaption("Avg Exp: " + toString(AvgExp) +
-            ", No. of Avg mob to next level: " +
-            toString(static_cast<float>(xpNextLevel -
-            PlayerInfo::getAttribute(EXP)) / AvgExp));
+        mLine5->setCaption(strprintf(
+            _("Avg Exp: %s, No. of avg mob to next level: %s"),
+            toString(AvgExp).c_str(), toString(static_cast<float>(
+            xpNextLevel - PlayerInfo::getAttribute(EXP)) / AvgExp).c_str()));
     }
-    mLine4->setCaption("Kills: " + toString(mKillCounter) +
-        ", Total Exp: " + toString(mExpCounter));
+    mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"),
+        toString(mKillCounter).c_str(), toString(mExpCounter).c_str()));
 
-    mLine6->setCaption("Kills/Min: " + toString(mKillTCounter / timeDiff) +
-        ", Exp/Min: " + toString(mExpTCounter / timeDiff));
+    mLine6->setCaption(strprintf(_("Kills/Min: %s, Exp/Min: %s"),
+        toString(mKillTCounter / timeDiff).c_str(),
+        toString(mExpTCounter / timeDiff).c_str()));
 
-    mLastKillExpLabel->setCaption("Last Kill Exp: " + toString(xp));
+    mLastKillExpLabel->setCaption(strprintf("%s %d", _("Last kill exp:"), xp));
 
     recalcStats();
     update();
@@ -268,51 +285,55 @@ void KillStats::recalcStats()
 
 void KillStats::update()
 {
-    mExpSpeed1Label->setCaption(
-            strprintf(_("Exp Speed per 1 min: %d"), m1minSpeed));
-    mExpSpeed1Label->adjustSize();
+    mExpSpeed1Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 1), 1, toString(m1minSpeed).c_str()));
 
     if (m1minSpeed != 0)
     {
-        mExpTime1Label->setCaption(strprintf(_("  Time For Next Level: %f"),
-            static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
-            - PlayerInfo::getAttribute(EXP)) / m1minSpeed)));
+        mExpTime1Label->setCaption(strprintf(_("  Time for next level: %s"),
+            toString(static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
+            - PlayerInfo::getAttribute(EXP)) / m1minSpeed)).c_str()));
     }
     else
     {
-        mExpTime1Label->setCaption(_("  Time For Next Level: ?"));
+        mExpTime1Label->setCaption(strprintf(
+            _("  Time for next level: %s"), "?"));
     }
     mExpTime1Label->adjustSize();
 
-    mExpSpeed5Label->setCaption(
-    strprintf(_("Exp Speed per 5 min: %d"), m5minSpeed / 5));
+    mExpSpeed5Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 5), 5, toString(m5minSpeed / 5).c_str()));
     mExpSpeed5Label->adjustSize();
 
     if (m5minSpeed != 0)
     {
-        mExpTime5Label->setCaption(strprintf(_("  Time For Next Level: %f"),
-            static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
-            - PlayerInfo::getAttribute(EXP)) / m5minSpeed * 5)));
+        mExpTime5Label->setCaption(strprintf(_("  Time for next level: %s"),
+            toString(static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
+            - PlayerInfo::getAttribute(EXP)) / m5minSpeed * 5)).c_str()));
     }
     else
     {
-        mExpTime5Label->setCaption(_("  Time For Next Level: ?"));
+        mExpTime5Label->setCaption(strprintf(
+            _("  Time for next level: %s"), "?"));
     }
     mExpTime5Label->adjustSize();
 
-    mExpSpeed15Label->setCaption(
-        strprintf(_("Exp Speed per 15 min: %d"), m15minSpeed / 15));
+
+    mExpSpeed15Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
+        "Exp speed per %d min: %s", 15), 15, toString(
+        m15minSpeed / 15).c_str()));
     mExpSpeed15Label->adjustSize();
 
     if (m15minSpeed != 0)
     {
-        mExpTime15Label->setCaption(strprintf(_("  Time For Next Level: %f"),
-            static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
-            - PlayerInfo::getAttribute(EXP)) / m15minSpeed * 15)));
+        mExpTime15Label->setCaption(strprintf(_("  Time for next level: %s"),
+            toString(static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
+            - PlayerInfo::getAttribute(EXP)) / m15minSpeed * 15)).c_str()));
     }
     else
     {
-        mExpTime15Label->setCaption(_("  Time For Next Level: ?"));
+        mExpTime15Label->setCaption(strprintf(
+            _("  Time for next level: %s"), "?"));
     }
 
     validateJacko();
@@ -329,23 +350,25 @@ void KillStats::updateJackoLabel()
 {
     if (mIsJackoAlive)
     {
-        mTimeBeforeJackoLabel->setCaption(
-            _("Time before jacko spawn: jacko alive"));
+        mTimeBeforeJackoLabel->setCaption(strprintf("%s jacko alive",
+            _("Time before jacko spawn:")));
     }
     else if (mIsJackoSpawnTimeUnknown && mJackoSpawnTime != 0)
     {
-        mTimeBeforeJackoLabel->setCaption(_("Time before jacko spawn: ")
-            + toString(mJackoSpawnTime - cur_time) + _("?"));
+        // TRANSLATORS: Example: Time before jacko spawn: 10?
+        mTimeBeforeJackoLabel->setCaption(strprintf(
+            _("%s %d?"), _("Time before jacko spawn:"),
+            mJackoSpawnTime - cur_time));
     }
     else if (mIsJackoMustSpawn)
     {
-        mTimeBeforeJackoLabel->setCaption(
-            _("Time before jacko spawn: jacko spawning"));
+        mTimeBeforeJackoLabel->setCaption(strprintf("%s %s",
+            _("Time before jacko spawn:"), _("jacko spawning")));
     }
     else
     {
-        mTimeBeforeJackoLabel->setCaption(_("Time before jacko spawn: ")
-            + toString(mJackoSpawnTime - cur_time));
+        mTimeBeforeJackoLabel->setCaption(strprintf("%s %d",
+            _("Time before jacko spawn:"), mJackoSpawnTime - cur_time));
     }
 }
 

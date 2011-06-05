@@ -382,12 +382,12 @@ void NetDebugTab::logic()
 {
     if (player_node && player_node->getPingTime() != 0)
     {
-        mPingLabel->setCaption(strprintf(_("Ping: %d ms"),
-            player_node->getPingTime()));
+        mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
+            toString((int)player_node->getPingTime()).c_str()));
     }
     else
     {
-        mPingLabel->setCaption(_("Ping: ? ms"));
+        mPingLabel->setCaption(strprintf(_("Ping: %s ms"), "?"));
     }
 
     mInPackets1Label->setCaption(strprintf(_("In: %d bytes/s"),
