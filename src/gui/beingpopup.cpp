@@ -81,7 +81,7 @@ void BeingPopup::show(int x, int y, Being *b)
     Label *label2 = mBeingGuild;
     Label *label3 = mBeingRank;
 
-    mBeingName->setCaption(b->getName() + b->getGenderSign());
+    mBeingName->setCaption(b->getName() + b->getGenderSignWithSpace());
     if (gui)
     {
         if (player_relations.isGoodName(b))

@@ -118,7 +118,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
 
     const std::string &name = mNick;
 
-    mBrowserBox->addRow(name + being->getGenderSign());
+    mBrowserBox->addRow(name + being->getGenderSignWithSpace());
 
     switch (being->getType())
     {
@@ -325,7 +325,7 @@ void PopupMenu::showPopup(int x, int y, std::list<Being*> &beings)
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
                 being->getId(), (being->getName()
-                + being->getGenderSign()).c_str()));
+                + being->getGenderSignWithSpace()).c_str()));
         }
     }
     mBrowserBox->addRow("##3---");

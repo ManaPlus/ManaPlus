@@ -1455,6 +1455,15 @@ void Being::flashName(int time)
         mDispName->flash(time);
 }
 
+std::string Being::getGenderSignWithSpace() const
+{
+    const std::string &str = getGenderSign();
+    if (str.empty())
+        return str;
+    else
+        return " " + str;
+}
+
 std::string Being::getGenderSign() const
 {
     if (config.getBoolValue("showgender"))

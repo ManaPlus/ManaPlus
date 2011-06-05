@@ -723,6 +723,8 @@ class Being : public ActorSprite, public ConfigListener
 
         std::string getGenderSign() const;
 
+        std::string getGenderSignWithSpace() const;
+
         static void clearCache();
 
     protected:
