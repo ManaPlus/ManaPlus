@@ -43,10 +43,12 @@ bool StatusEffect::mLoaded = false;
 
 StatusEffect::StatusEffect() :
     mPersistentParticleEffect(false)
-{}
+{
+}
 
 StatusEffect::~StatusEffect()
-{}
+{
+}
 
 void StatusEffect::playSFX()
 {
@@ -182,6 +184,7 @@ void StatusEffect::load()
             (*the_map)[0][index] = endEffect;
         }
     }
+    mLoaded = true;
 }
 
 void unloadMap(std::map<int, StatusEffect *> map)
