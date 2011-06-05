@@ -76,6 +76,8 @@ class PartyHandler : public MessageHandler, public Net::PartyHandler
 
         void setShareItems(PartyShare share);
 
+        void reload();
+
     private:
         PartyShare mShareExp, mShareItems;
 };

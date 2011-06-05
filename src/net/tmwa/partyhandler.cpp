@@ -570,4 +570,9 @@ void PartyHandler::setShareItems(PartyShare share)
     outMsg.writeInt16(share);
 }
 
+void PartyHandler::reload()
+{
+    taParty = Party::getParty(1);
+}
+
 } // namespace TmwAthena

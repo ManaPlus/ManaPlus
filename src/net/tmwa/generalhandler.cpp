@@ -199,6 +199,8 @@ void GeneralHandler::reload()
         mCharHandler.get())->setCharCreateDialog(0);
     static_cast<CharServerHandler*>(
         mCharHandler.get())->setCharSelectDialog(0);
+
+    static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }
 
 void GeneralHandler::unload()
