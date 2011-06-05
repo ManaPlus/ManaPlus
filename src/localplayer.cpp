@@ -180,7 +180,6 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("attackMoving", this);
     config.addListener("showJobExp", this);
     setShowName(config.getBoolValue("showownname"));
-    beingInfoCache.clear();
 }
 
 LocalPlayer::~LocalPlayer()
@@ -200,7 +199,6 @@ LocalPlayer::~LocalPlayer()
     mAwayDialog = 0;
     delete mAwayListener;
     mAwayListener = 0;
-    beingInfoCache.clear();
 }
 
 void LocalPlayer::logic()

@@ -304,11 +304,11 @@ void EquipmentWindow::setBeing(Being *being)
 {
     mPlayerBox->setPlayer(being);
     mBeing = being;
+    if (mEquipment)
+        delete mEquipment->getBackend();
+    delete mEquipment;
     if (!being)
     {
-        if (mEquipment)
-            delete mEquipment->getBackend();
-        delete mEquipment;
         mEquipment = 0;
         return;
     }
