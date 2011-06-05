@@ -558,6 +558,14 @@ public:
         std::list<MapItem*>::iterator i = portals.begin();
         SpecialLayer *specialLayer = map->getSpecialLayer();
 
+        std::vector<Avatar*>::iterator ia = avatars->begin();
+
+        while (ia != avatars->end())
+        {
+            delete *ia;
+            ++ ia;
+        }
+
         avatars->clear();
 
         int idx = 0;

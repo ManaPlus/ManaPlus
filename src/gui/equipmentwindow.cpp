@@ -120,6 +120,13 @@ EquipmentWindow::~EquipmentWindow()
 {
     delete mItemPopup;
     mItemPopup = 0;
+    if (this == beingEquipmentWindow)
+    {
+        if (mEquipment)
+            delete mEquipment->getBackend();
+        delete mEquipment;
+        mEquipment = 0;
+    }
 }
 
 void EquipmentWindow::draw(gcn::Graphics *graphics)
@@ -299,13 +306,13 @@ void EquipmentWindow::setBeing(Being *being)
     mBeing = being;
     if (!being)
     {
+        if (mEquipment)
+            delete mEquipment->getBackend();
         delete mEquipment;
         mEquipment = 0;
         return;
     }
     mEquipment = being->getEquipment();
-    if (!mEquipment)
-        return;
 }
 
 void EquipmentWindow::updateBeing(Being *being)

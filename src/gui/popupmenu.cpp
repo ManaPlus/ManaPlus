@@ -1402,8 +1402,7 @@ void PopupMenu::handleLink(const std::string &link,
         }
         else
         {
-            Equipment *eq = being->getEquipment();
-            if (eq && beingEquipmentWindow)
+            if (beingEquipmentWindow)
             {
                 beingEquipmentWindow->setBeing(being);
                 beingEquipmentWindow->setVisible(true);
