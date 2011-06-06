@@ -1397,6 +1397,11 @@ void PopupMenu::handleLink(const std::string &link,
         if (player_node)
             player_node->resetYellowBar();
     }
+    else if (link == "bar to chat" && !mNick.empty())
+    {
+        if (chatWindow)
+            chatWindow->addInputText(mNick);
+    }
     else if (link == "items" && being)
     {
         if (being == player_node)
@@ -1748,6 +1753,8 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
     if (!b || !miniStatusWindow)
         return;
 
+    mNick = b->text();
+
     mBrowserBox->clearRows();
     std::list <ProgressBar*> bars = miniStatusWindow->getBars();
     std::list <ProgressBar*>::iterator it, it_end;
@@ -1775,6 +1782,7 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
     mBrowserBox->addRow(strprintf("@@reset yellow|%s@@",
         _("Reset yellow bar")));
     mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow(strprintf("@@bar to chat|%s@@", _("Copy to chat")));
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
     showPopup(x, y);
