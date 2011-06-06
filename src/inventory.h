@@ -33,13 +33,15 @@ class Item;
 
 class InventoryListener
 {
-public:
-    virtual ~InventoryListener() {}
+    public:
+        virtual ~InventoryListener()
+        { }
 
-    virtual void slotsChanged(Inventory* inventory) = 0;
+        virtual void slotsChanged(Inventory* inventory) = 0;
 
-protected:
-    InventoryListener() {}
+    protected:
+        InventoryListener()
+        { }
 };
 
 class Inventory

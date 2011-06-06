@@ -307,19 +307,22 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         if (isStorageActive())
         {
-            Item *item = mItems->getSelectedItem();
-
-            if (!item)
-                return;
-
             Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
                     item->getInvIndex(), item->getQuantity(),
                     Inventory::STORAGE);
         }
         else
         {
-            ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
-                                         this, item);
+            if (keyboard.isKeyActive(keyboard.KEY_MOD))
+            {
+                Net::getInventoryHandler()->dropItem(
+                    item, item->getQuantity());
+            }
+            else
+            {
+                ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
+                    this, item);
+            }
         }
     }
     else if (event.getId() == "split")
@@ -348,7 +351,9 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 {
     Window::mouseClicked(event);
 
-    if (event.getButton() == gcn::MouseEvent::RIGHT)
+    bool mod = (isStorageActive() && keyboard.isKeyActive(keyboard.KEY_MOD));
+
+    if (!mod && event.getButton() == gcn::MouseEvent::RIGHT)
     {
         Item *item = mItems->getSelectedItem();
 
@@ -365,9 +370,10 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
             viewport->showPopup(this, mx, my, item, isMainInventory());
     }
 
-    if (event.getButton() == gcn::MouseEvent::LEFT)
+    if (event.getButton() == gcn::MouseEvent::LEFT
+        || event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        if (isStorageActive() && keyboard.isKeyActive(keyboard.KEY_EMOTE))
+        if (mod)
         {
             Item *item = mItems->getSelectedItem();
 
@@ -376,15 +382,31 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 
             if (mInventory->isMainInventory())
             {
-                Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
-                    item->getInvIndex(), item->getQuantity(),
-                    Inventory::STORAGE);
+                if (event.getButton() == gcn::MouseEvent::RIGHT)
+                {
+                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+                        inventoryWindow, item);
+                }
+                else
+                {
+                    Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
+                        item->getInvIndex(), item->getQuantity(),
+                        Inventory::STORAGE);
+                }
             }
             else
             {
-                Net::getInventoryHandler()->moveItem(Inventory::STORAGE,
-                    item->getInvIndex(), item->getQuantity(),
-                    Inventory::INVENTORY);
+                if (event.getButton() == gcn::MouseEvent::RIGHT)
+                {
+                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+                        inventoryWindow, item);
+                }
+                else
+                {
+                    Net::getInventoryHandler()->moveItem(Inventory::STORAGE,
+                        item->getInvIndex(), item->getQuantity(),
+                        Inventory::INVENTORY);
+                }
             }
         }
     }

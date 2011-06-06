@@ -967,6 +967,10 @@ void PopupMenu::handleLink(const std::string &link,
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemDrop,
                              inventoryWindow, mItem);
     }
+    else if (link == "drop all" && mItem)
+    {
+        Net::getInventoryHandler()->dropItem(mItem, mItem->getQuantity());
+    }
     else if (link == "store" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
@@ -1539,9 +1543,14 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
             mBrowserBox->addRow(strprintf("@@use|%s@@", _("Use")));
 
         if (cnt > 1)
+        {
             mBrowserBox->addRow(strprintf("@@drop|%s@@", _("Drop...")));
+            mBrowserBox->addRow(strprintf("@@drop all|%s@@", _("Drop all")));
+        }
         else
+        {
             mBrowserBox->addRow(strprintf("@@drop|%s@@", _("Drop")));
+        }
 
         if (Net::getInventoryHandler()->canSplit(item))
             mBrowserBox->addRow(strprintf("@@split|%s@@", _("Split")));
@@ -1631,9 +1640,14 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
         }
 
         if (item->getQuantity() > 1)
+        {
             mBrowserBox->addRow(strprintf("@@drop|%s@@", _("Drop...")));
+            mBrowserBox->addRow(strprintf("@@drop all|%s@@", _("Drop all")));
+        }
         else
+        {
             mBrowserBox->addRow(strprintf("@@drop|%s@@", _("Drop")));
+        }
 
         if (Net::getInventoryHandler()->canSplit(item))
             mBrowserBox->addRow(strprintf("@@split|%s@@", _("Split")));
@@ -1669,9 +1683,14 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
             mBrowserBox->addRow(strprintf("@@use|%s@@", _("Use")));
 
         if (item->getQuantity() > 1)
+        {
             mBrowserBox->addRow(strprintf("@@drop|%s@@", _("Drop...")));
+            mBrowserBox->addRow(strprintf("@@drop all|%s@@", _("Drop all")));
+        }
         else
+        {
             mBrowserBox->addRow(strprintf("@@drop|%s@@", _("Drop")));
+        }
 
         if (Net::getInventoryHandler()->canSplit(item))
             mBrowserBox->addRow(strprintf("@@split|%s@@", _("Split")));

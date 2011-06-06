@@ -306,6 +306,7 @@ class KeyboardConfig
             KEY_AWAY,
             KEY_RIGHT_CLICK,
             KEY_CAMERA,
+            KEY_MOD,
             KEY_TOTAL
         };
 
@@ -314,7 +315,8 @@ class KeyboardConfig
             GRP_DEFAULT = 1,           // default game key
             GRP_CHAT = 2,              // chat key
             GRP_EMOTION = 4,           // emotions key
-            GRP_OUTFIT = 8             // outfit key
+            GRP_OUTFIT = 8,            // outfit key
+            GRP_GUI = 16               // gui key
         };
 
     private:
