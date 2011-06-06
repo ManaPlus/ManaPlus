@@ -179,7 +179,8 @@ bool DropShortcut::dropItem(int cnt)
         }
         if (itemId > 0)
         {
-            Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
+            Item *item = PlayerInfo::getInventory()->findItem(
+                itemId, itemColor);
             if (item && item->getQuantity() > 0)
             {
                 Net::getInventoryHandler()->dropItem(item, cnt);
