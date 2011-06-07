@@ -26,6 +26,7 @@
 #include "graphics.h"
 #include "keyboardconfig.h"
 
+#include "gui/didyouknowwindow.h"
 #include "gui/emotepopup.h"
 #include "gui/skilldialog.h"
 #include "gui/specialswindow.h"
@@ -94,6 +95,7 @@ WindowMenu::WindowMenu():
               KeyboardConfig::KEY_WINDOW_SHORTCUT);
     addButton(N_("SP"), _("Spells"), x, h, KeyboardConfig::KEY_WINDOW_SPELLS);
     addButton(N_("DR"), _("Drop"), x, h, KeyboardConfig::KEY_WINDOW_DROP);
+    addButton(N_("YK"), _("Did you know"), x, h, KeyboardConfig::KEY_WINDOW_DIDYOUKNOW);
     addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
 
     if (graphics)
@@ -211,6 +213,10 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     else if (event.getId() == "SP")
     {
         window = spellShortcutWindow;
+    }
+    else if (event.getId() == "YK")
+    {
+        window = didYouKnowWindow;
     }
 
     if (window)

@@ -221,6 +221,7 @@ class KeyboardConfig
             KEY_WINDOW_SPELLS,
             KEY_WINDOW_BOT_CHECKER,
             KEY_WINDOW_ONLINE,
+            KEY_WINDOW_DIDYOUKNOW,
             KEY_PREV_SOCIAL_TAB,
             KEY_NEXT_SOCIAL_TAB,
             KEY_EMOTE_1,
