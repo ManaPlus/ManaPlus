@@ -804,6 +804,7 @@ int Client::exec()
                 if (resman)
                     resman->cleanOrphans();
                 Party::clearParties();
+                Net::getNpcHandler()->clearDialogs();
             }
 
             mOldState = mState;
