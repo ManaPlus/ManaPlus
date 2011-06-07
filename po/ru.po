@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Necromonger <Necromong@inbox.ru>, 2011
 # Andrei Karas <akaras@inbox.ru>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-05 23:06+0300\n"
-"PO-Revision-Date: 2011-05-22 17:06+0000\n"
+"POT-Creation-Date: 2011-06-07 02:56+0300\n"
+"PO-Revision-Date: 2011-06-07 00:05+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
-"ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1030
 msgid "Visible on map"
@@ -127,11 +126,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -290,9 +289,7 @@ msgstr "Удаленных изображений:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
 #: src/game.cpp:236 src/gui/widgets/chattab.cpp:400
 msgid "General"
@@ -414,7 +411,7 @@ msgstr "-"
 #: src/gui/buydialog.cpp:98 src/gui/quitdialog.cpp:49
 #: src/gui/quitdialog.cpp:54 src/gui/quitdialog.cpp:55
 #: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:284
-#: src/keyboardconfig.cpp:279
+#: src/keyboardconfig.cpp:285
 msgid "Quit"
 msgstr "Выход"
 
@@ -444,10 +441,10 @@ msgstr "Продать"
 #: src/gui/popupmenu.cpp:461 src/gui/popupmenu.cpp:480
 #: src/gui/popupmenu.cpp:494 src/gui/popupmenu.cpp:513
 #: src/gui/popupmenu.cpp:694 src/gui/popupmenu.cpp:718
-#: src/gui/popupmenu.cpp:1570 src/gui/popupmenu.cpp:1598
-#: src/gui/popupmenu.cpp:1649 src/gui/popupmenu.cpp:1687
-#: src/gui/popupmenu.cpp:1722 src/gui/popupmenu.cpp:1759
-#: src/gui/popupmenu.cpp:1825 src/gui/popupmenu.cpp:1845
+#: src/gui/popupmenu.cpp:1584 src/gui/popupmenu.cpp:1612
+#: src/gui/popupmenu.cpp:1668 src/gui/popupmenu.cpp:1711
+#: src/gui/popupmenu.cpp:1746 src/gui/popupmenu.cpp:1786
+#: src/gui/popupmenu.cpp:1852 src/gui/popupmenu.cpp:1872
 #: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
@@ -850,9 +847,9 @@ msgid "Critical hit:"
 msgstr "Критический удар:"
 
 #: src/gui/debugwindow.cpp:385 src/gui/debugwindow.cpp:390
-#, fuzzy, c-format
+#, c-format
 msgid "Ping: %s ms"
-msgstr "Пинг: %d мсек."
+msgstr "Пинг: %s мс."
 
 #: src/gui/debugwindow.cpp:393
 #, c-format
@@ -875,9 +872,9 @@ msgid "Equipment"
 msgstr "Снаряжение"
 
 #: src/gui/equipmentwindow.cpp:103 src/gui/inventorywindow.cpp:129
-#: src/gui/inventorywindow.cpp:468 src/gui/inventorywindow.cpp:477
-#: src/gui/popupmenu.cpp:1534 src/gui/popupmenu.cpp:1624
-#: src/gui/popupmenu.cpp:1664
+#: src/gui/inventorywindow.cpp:490 src/gui/inventorywindow.cpp:499
+#: src/gui/popupmenu.cpp:1543 src/gui/popupmenu.cpp:1638
+#: src/gui/popupmenu.cpp:1683
 msgid "Unequip"
 msgstr "Снять"
 
@@ -920,27 +917,27 @@ msgstr "ая"
 msgid "id"
 msgstr "ид"
 
-#: src/gui/inventorywindow.cpp:127 src/gui/inventorywindow.cpp:470
-#: src/gui/inventorywindow.cpp:479 src/gui/popupmenu.cpp:1536
-#: src/gui/popupmenu.cpp:1626 src/gui/popupmenu.cpp:1666
+#: src/gui/inventorywindow.cpp:127 src/gui/inventorywindow.cpp:492
+#: src/gui/inventorywindow.cpp:501 src/gui/popupmenu.cpp:1545
+#: src/gui/popupmenu.cpp:1640 src/gui/popupmenu.cpp:1685
 msgid "Equip"
 msgstr "Надеть"
 
-#: src/gui/inventorywindow.cpp:128 src/gui/inventorywindow.cpp:471
-#: src/gui/inventorywindow.cpp:475 src/gui/popupmenu.cpp:1539
-#: src/gui/popupmenu.cpp:1593 src/gui/popupmenu.cpp:1630
-#: src/gui/popupmenu.cpp:1669
+#: src/gui/inventorywindow.cpp:128 src/gui/inventorywindow.cpp:493
+#: src/gui/inventorywindow.cpp:497 src/gui/popupmenu.cpp:1548
+#: src/gui/popupmenu.cpp:1607 src/gui/popupmenu.cpp:1644
+#: src/gui/popupmenu.cpp:1688
 msgid "Use"
 msgstr "Использовать"
 
-#: src/gui/inventorywindow.cpp:142 src/gui/inventorywindow.cpp:576
-#: src/gui/popupmenu.cpp:1542 src/gui/popupmenu.cpp:1634
-#: src/gui/popupmenu.cpp:1672
+#: src/gui/inventorywindow.cpp:142 src/gui/inventorywindow.cpp:598
+#: src/gui/popupmenu.cpp:1552 src/gui/popupmenu.cpp:1649
+#: src/gui/popupmenu.cpp:1692
 msgid "Drop..."
 msgstr "Бросить"
 
-#: src/gui/inventorywindow.cpp:143 src/gui/popupmenu.cpp:1547
-#: src/gui/popupmenu.cpp:1639 src/gui/popupmenu.cpp:1677
+#: src/gui/inventorywindow.cpp:143 src/gui/popupmenu.cpp:1561
+#: src/gui/popupmenu.cpp:1658 src/gui/popupmenu.cpp:1701
 msgid "Split"
 msgstr "Разделить"
 
@@ -953,18 +950,18 @@ msgstr "Наряды"
 msgid "Weight:"
 msgstr "Вес:"
 
-#: src/gui/inventorywindow.cpp:172 src/gui/inventorywindow.cpp:567
-#: src/gui/popupmenu.cpp:1515 src/gui/popupmenu.cpp:1642
-#: src/gui/popupmenu.cpp:1680 src/gui/setup.cpp:68
+#: src/gui/inventorywindow.cpp:172 src/gui/inventorywindow.cpp:589
+#: src/gui/popupmenu.cpp:1524 src/gui/popupmenu.cpp:1661
+#: src/gui/popupmenu.cpp:1704 src/gui/setup.cpp:68
 msgid "Store"
 msgstr "Сохранить"
 
-#: src/gui/inventorywindow.cpp:173 src/gui/popupmenu.cpp:1554
+#: src/gui/inventorywindow.cpp:173 src/gui/popupmenu.cpp:1568
 msgid "Retrieve"
 msgstr "Получить"
 
-#: src/gui/inventorywindow.cpp:578 src/gui/popupmenu.cpp:1544
-#: src/gui/popupmenu.cpp:1636 src/gui/popupmenu.cpp:1674
+#: src/gui/inventorywindow.cpp:600 src/gui/popupmenu.cpp:1557
+#: src/gui/popupmenu.cpp:1654 src/gui/popupmenu.cpp:1697
 #: src/gui/windowmenu.cpp:96
 msgid "Drop"
 msgstr "Бросить"
@@ -1027,84 +1024,82 @@ msgid "Reset timer"
 msgstr "Сбросить таймер"
 
 #: src/gui/killstats.cpp:68 src/gui/killstats.cpp:204
-#, fuzzy, c-format
+#, c-format
 msgid "Level: %d at %f%%"
-msgstr "Уровень: %d (GM %d)"
+msgstr "Уровень: %d на %f%%"
 
 #: src/gui/killstats.cpp:72 src/gui/killstats.cpp:209
 #, c-format
 msgid "Exp: %d/%d Left: %d"
-msgstr ""
+msgstr "Опыт: %d/%d Осталось: %d"
 
 #: src/gui/killstats.cpp:75 src/gui/killstats.cpp:215
 #: src/gui/killstats.cpp:224
-#, fuzzy, c-format
+#, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
-msgstr " опыта в сред. для 1%: ?"
+msgstr "1%% = %d опыта, среднее кол-во мобов для 1%%: %s"
 
 #: src/gui/killstats.cpp:78 src/gui/killstats.cpp:141
 #: src/gui/killstats.cpp:233
-#, fuzzy, c-format
+#, c-format
 msgid "Kills: %s, total exp: %s"
-msgstr "Фрагов: ?, Всего опыта: ?"
+msgstr "Убийств: %s, опыта: %s"
 
 #: src/gui/killstats.cpp:80 src/gui/killstats.cpp:143
 #: src/gui/killstats.cpp:219 src/gui/killstats.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "Avg Exp: %s, No. of avg mob to next level: %s"
-msgstr "Средний опыт: ?, кол-во монстров до след. уровня: ?"
+msgstr "Средний опыт: %s, среднее кол-во мобов до след. уровня: %s"
 
 #: src/gui/killstats.cpp:81 src/gui/killstats.cpp:161
 #: src/gui/killstats.cpp:236
-#, fuzzy, c-format
+#, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
-msgstr "Убийств/Мин.: ?, Опыт/Мин.: ?"
+msgstr "Убийств в минуту: %s, Опыта в минуту: %s"
 
 #: src/gui/killstats.cpp:83 src/gui/killstats.cpp:88 src/gui/killstats.cpp:93
 #: src/gui/killstats.cpp:288 src/gui/killstats.cpp:304
 #: src/gui/killstats.cpp:322
-#, fuzzy, c-format
+#, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
-msgstr[0] "Опыт в минуту: ?"
-msgstr[1] "Опыт в минуту: ?"
-msgstr[2] "Опыт в минуту: ?"
+msgstr[0] "Опыт за %d мин.: %s"
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/gui/killstats.cpp:86 src/gui/killstats.cpp:91 src/gui/killstats.cpp:96
-#, fuzzy, c-format
+#, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
-msgstr[0] "Время до след. уровня за одну минуту: ?"
-msgstr[1] "Время до след. уровня за одну минуту: ?"
-msgstr[2] "Время до след. уровня за одну минуту: ?"
+msgstr[0] "Время до следующего уровня в мин. %d: %s"
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/gui/killstats.cpp:99 src/gui/killstats.cpp:240
-#, fuzzy
 msgid "Last kill exp:"
-msgstr "Опыт от последнего монстра: ?"
+msgstr "Опыт за последнее убийство:"
 
 #: src/gui/killstats.cpp:101 src/gui/killstats.cpp:354
 #: src/gui/killstats.cpp:360 src/gui/killstats.cpp:366
 #: src/gui/killstats.cpp:371
-#, fuzzy
 msgid "Time before jacko spawn:"
-msgstr "Время до появляения Jacko: "
+msgstr "Время до появления jacko:"
 
 #: src/gui/killstats.cpp:293 src/gui/killstats.cpp:300
 #: src/gui/killstats.cpp:310 src/gui/killstats.cpp:317
 #: src/gui/killstats.cpp:329 src/gui/killstats.cpp:336
-#, fuzzy, c-format
+#, c-format
 msgid "  Time for next level: %s"
-msgstr "Время до следующего уровня: %f"
+msgstr "  Время до следующего уровня: %s"
 
 #: src/gui/killstats.cpp:360
 #, c-format
 msgid "%s %d?"
-msgstr ""
+msgstr "%s %d?"
 
 #: src/gui/killstats.cpp:366
 msgid "jacko spawning"
-msgstr ""
+msgstr "jacko появляется"
 
 #: src/gui/logindialog.cpp:59
 msgid "Normal"
@@ -1339,7 +1334,7 @@ msgid "Show Items"
 msgstr "Показать предметы"
 
 #: src/gui/popupmenu.cpp:242 src/gui/popupmenu.cpp:644
-#: src/gui/popupmenu.cpp:1842
+#: src/gui/popupmenu.cpp:1869
 msgid "Undress"
 msgstr "Раздеть"
 
@@ -1371,8 +1366,8 @@ msgstr "Добавить имя в чат"
 msgid "Pick up"
 msgstr "Поднять"
 
-#: src/gui/popupmenu.cpp:458 src/gui/popupmenu.cpp:1568
-#: src/gui/popupmenu.cpp:1643 src/gui/popupmenu.cpp:1681
+#: src/gui/popupmenu.cpp:458 src/gui/popupmenu.cpp:1582
+#: src/gui/popupmenu.cpp:1662 src/gui/popupmenu.cpp:1705
 msgid "Add to chat"
 msgstr "Добавить в чат"
 
@@ -1384,8 +1379,8 @@ msgstr "Элмент карты"
 msgid "Rename"
 msgstr "Переименовать"
 
-#: src/gui/popupmenu.cpp:477 src/gui/popupmenu.cpp:1795
-#: src/gui/popupmenu.cpp:1813 src/gui/popupmenu.cpp:1818
+#: src/gui/popupmenu.cpp:477 src/gui/popupmenu.cpp:1822
+#: src/gui/popupmenu.cpp:1840 src/gui/popupmenu.cpp:1845
 msgid "Remove"
 msgstr "Удалить"
 
@@ -1438,85 +1433,94 @@ msgid "Change guild position"
 msgstr "Сменить позицию в гильдии"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1120
+#: src/gui/popupmenu.cpp:1124
 msgid "Rename map sign          "
 msgstr "Переименовать знак на карте"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1122
+#: src/gui/popupmenu.cpp:1126
 msgid "Name:                    "
 msgstr "Имя:                    "
 
-#: src/gui/popupmenu.cpp:1498
+#: src/gui/popupmenu.cpp:1507
 msgid "Add to trade"
 msgstr "Добавить к торговли"
 
-#: src/gui/popupmenu.cpp:1504
+#: src/gui/popupmenu.cpp:1513
 msgid "Add to trade 10"
 msgstr "Добавить к торговле 10"
 
-#: src/gui/popupmenu.cpp:1507
+#: src/gui/popupmenu.cpp:1516
 msgid "Add to trade half"
 msgstr "Добавить к торговле половину"
 
-#: src/gui/popupmenu.cpp:1509
+#: src/gui/popupmenu.cpp:1518
 msgid "Add to trade all"
 msgstr "Добавить к торговле все"
 
-#: src/gui/popupmenu.cpp:1521
+#: src/gui/popupmenu.cpp:1530
 msgid "Store 10"
 msgstr "Сохранить 10"
 
-#: src/gui/popupmenu.cpp:1524
+#: src/gui/popupmenu.cpp:1533
 msgid "Store half"
 msgstr "Сохранить половину"
 
-#: src/gui/popupmenu.cpp:1526
+#: src/gui/popupmenu.cpp:1535
 msgid "Store all"
 msgstr "Сохранить все"
 
-#: src/gui/popupmenu.cpp:1560
+#: src/gui/popupmenu.cpp:1553 src/gui/popupmenu.cpp:1650
+#: src/gui/popupmenu.cpp:1693
+msgid "Drop all"
+msgstr "Бросить все"
+
+#: src/gui/popupmenu.cpp:1574
 msgid "Retrieve 10"
 msgstr "Получить 10"
 
-#: src/gui/popupmenu.cpp:1563
+#: src/gui/popupmenu.cpp:1577
 msgid "Retrieve half"
 msgstr "Получить половину"
 
-#: src/gui/popupmenu.cpp:1565
+#: src/gui/popupmenu.cpp:1579
 msgid "Retrieve all"
 msgstr "Получить все"
 
-#: src/gui/popupmenu.cpp:1596 src/gui/popupmenu.cpp:1647
+#: src/gui/popupmenu.cpp:1610 src/gui/popupmenu.cpp:1666
 msgid "Load old item shortcuts"
 msgstr "Загрузить старые горячие клавиши предметов"
 
-#: src/gui/popupmenu.cpp:1685
+#: src/gui/popupmenu.cpp:1709
 msgid "Load old drop shortcuts"
 msgstr "Загрузить старые данные"
 
-#: src/gui/popupmenu.cpp:1711 src/gui/popupmenu.cpp:1744
+#: src/gui/popupmenu.cpp:1735 src/gui/popupmenu.cpp:1770
 msgid "Hide"
 msgstr "Спрятать"
 
-#: src/gui/popupmenu.cpp:1717 src/gui/popupmenu.cpp:1750
+#: src/gui/popupmenu.cpp:1741 src/gui/popupmenu.cpp:1776
 msgid "Show"
 msgstr "Показать"
 
-#: src/gui/popupmenu.cpp:1757
+#: src/gui/popupmenu.cpp:1783
 msgid "Reset yellow bar"
 msgstr "сбросить настройки"
 
-#: src/gui/popupmenu.cpp:1775 src/gui/socialwindow.cpp:854
+#: src/gui/popupmenu.cpp:1785
+msgid "Copy to chat"
+msgstr "Скопировать в чат"
+
+#: src/gui/popupmenu.cpp:1802 src/gui/socialwindow.cpp:854
 #: src/gui/socialwindow.cpp:889 src/gui/socialwindow.cpp:924
 msgid "(default)"
 msgstr "(поумолчанию)"
 
-#: src/gui/popupmenu.cpp:1787 src/gui/popupmenu.cpp:1805
+#: src/gui/popupmenu.cpp:1814 src/gui/popupmenu.cpp:1832
 msgid "Move up"
 msgstr "Передвинуть выше"
 
-#: src/gui/popupmenu.cpp:1792 src/gui/popupmenu.cpp:1810
+#: src/gui/popupmenu.cpp:1819 src/gui/popupmenu.cpp:1837
 msgid "Move down"
 msgstr "Передвинуть ниже"
 
@@ -1941,14 +1945,12 @@ msgid "Enable attack filter"
 msgstr "ключить фильтр атак"
 
 #: src/gui/setup_other.cpp:283
-#, fuzzy
 msgid "Crazy Move A"
-msgstr "Сумасшедшие движения"
+msgstr "Сумашедшее движение A"
 
 #: src/gui/setup_other.cpp:297
-#, fuzzy
 msgid "Afk message"
-msgstr "Сообщение"
+msgstr "Сообщение для отошел"
 
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
@@ -2020,7 +2022,7 @@ msgstr "Защитить торговлю"
 
 #: src/gui/setup_players.cpp:329 src/gui/setup_players.cpp:503
 msgid "Unsecure chars in names"
-msgstr ""
+msgstr "Небезопасные символы"
 
 #: src/gui/setup_theme.cpp:111
 msgid "Theme"
@@ -2047,9 +2049,8 @@ msgid "Help font"
 msgstr "Шрифт помощи"
 
 #: src/gui/setup_theme.cpp:118
-#, fuzzy
 msgid "Secure font"
-msgstr "Защитить торговлю"
+msgstr "Безопасный шрифт"
 
 #: src/gui/setup_theme.cpp:241
 msgid "Theme Changed"
@@ -2245,8 +2246,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
 #: src/gui/setup_video.cpp:541
 msgid ""
@@ -3092,7 +3093,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3435,15 +3437,16 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:125
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:64
@@ -3640,7 +3643,7 @@ msgstr "Горячие клавиши предметов"
 #: src/keyboardconfig.cpp:110 src/keyboardconfig.cpp:113
 #: src/keyboardconfig.cpp:115 src/keyboardconfig.cpp:117
 #: src/keyboardconfig.cpp:119 src/keyboardconfig.cpp:121
-#: src/keyboardconfig.cpp:348
+#: src/keyboardconfig.cpp:355
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Комбинация клавиш быстрого предмета %d"
@@ -3649,266 +3652,270 @@ msgstr "Комбинация клавиш быстрого предмета %d"
 msgid "Help Window"
 msgstr "Окно помощи"
 
-#: src/keyboardconfig.cpp:123
+#: src/keyboardconfig.cpp:124
 msgid "Status Window"
 msgstr "Окно статуса"
 
-#: src/keyboardconfig.cpp:125
+#: src/keyboardconfig.cpp:126
 msgid "Inventory Window"
 msgstr "Окно инвентаря"
 
-#: src/keyboardconfig.cpp:127
+#: src/keyboardconfig.cpp:128
 msgid "Equipment Window"
 msgstr "Окно екипировки"
 
-#: src/keyboardconfig.cpp:129
+#: src/keyboardconfig.cpp:130
 msgid "Skill Window"
 msgstr "Окно навыков"
 
-#: src/keyboardconfig.cpp:131
+#: src/keyboardconfig.cpp:132
 msgid "Minimap Window"
 msgstr "Окно мини-карты"
 
-#: src/keyboardconfig.cpp:133
+#: src/keyboardconfig.cpp:134
 msgid "Chat Window"
 msgstr "Окно чата"
 
-#: src/keyboardconfig.cpp:134
+#: src/keyboardconfig.cpp:136
 msgid "Item Shortcut Window"
 msgstr "Окно быстрого использования предметов"
 
-#: src/keyboardconfig.cpp:136
+#: src/keyboardconfig.cpp:138
 msgid "Setup Window"
 msgstr "Окно настроек"
 
-#: src/keyboardconfig.cpp:138
+#: src/keyboardconfig.cpp:140
 msgid "Debug Window"
 msgstr "Окно отладки"
 
-#: src/keyboardconfig.cpp:140
+#: src/keyboardconfig.cpp:142
 msgid "Social Window"
 msgstr "Окно общества"
 
-#: src/keyboardconfig.cpp:142
+#: src/keyboardconfig.cpp:144
 msgid "Emote Shortcut Window"
 msgstr "Окно емоций"
 
-#: src/keyboardconfig.cpp:144
+#: src/keyboardconfig.cpp:146
 msgid "Outfits Window"
 msgstr "Окно нарядов"
 
-#: src/keyboardconfig.cpp:146
+#: src/keyboardconfig.cpp:148
 msgid "Shop Window"
 msgstr "Окно магазина"
 
-#: src/keyboardconfig.cpp:147
+#: src/keyboardconfig.cpp:150
 msgid "Quick drop Window"
 msgstr "Окно быстрого бросания предметов"
 
-#: src/keyboardconfig.cpp:149
+#: src/keyboardconfig.cpp:152
 msgid "Kill Stats Window"
 msgstr "Окно статистики атак"
 
-#: src/keyboardconfig.cpp:151
+#: src/keyboardconfig.cpp:154
 msgid "Commands Window"
 msgstr "Окно комманд"
 
-#: src/keyboardconfig.cpp:153
+#: src/keyboardconfig.cpp:156
 msgid "Bot Checker Window"
 msgstr "Окно детектора ботов"
 
-#: src/keyboardconfig.cpp:156
+#: src/keyboardconfig.cpp:159
 msgid "Who Is Online Window"
 msgstr "Окно кто онлайн"
 
-#: src/keyboardconfig.cpp:158
+#: src/keyboardconfig.cpp:162
 msgid "Previous Social Tab"
 msgstr "Предыдущая закладка общества"
 
-#: src/keyboardconfig.cpp:159
+#: src/keyboardconfig.cpp:164
 msgid "Next Social Tab"
 msgstr "Следующая закладка общества"
 
-#: src/keyboardconfig.cpp:161 src/keyboardconfig.cpp:163
-#: src/keyboardconfig.cpp:165 src/keyboardconfig.cpp:167
-#: src/keyboardconfig.cpp:169 src/keyboardconfig.cpp:171
-#: src/keyboardconfig.cpp:173 src/keyboardconfig.cpp:175
-#: src/keyboardconfig.cpp:177 src/keyboardconfig.cpp:179
-#: src/keyboardconfig.cpp:181 src/keyboardconfig.cpp:183
+#: src/keyboardconfig.cpp:166 src/keyboardconfig.cpp:168
+#: src/keyboardconfig.cpp:170 src/keyboardconfig.cpp:172
+#: src/keyboardconfig.cpp:174 src/keyboardconfig.cpp:176
+#: src/keyboardconfig.cpp:178 src/keyboardconfig.cpp:180
+#: src/keyboardconfig.cpp:182 src/keyboardconfig.cpp:184
 #: src/keyboardconfig.cpp:186 src/keyboardconfig.cpp:188
-#: src/keyboardconfig.cpp:190 src/keyboardconfig.cpp:192
-#: src/keyboardconfig.cpp:194 src/keyboardconfig.cpp:196
-#: src/keyboardconfig.cpp:198 src/keyboardconfig.cpp:200
-#: src/keyboardconfig.cpp:202 src/keyboardconfig.cpp:204
-#: src/keyboardconfig.cpp:206 src/keyboardconfig.cpp:208
-#: src/keyboardconfig.cpp:210 src/keyboardconfig.cpp:213
-#: src/keyboardconfig.cpp:216 src/keyboardconfig.cpp:219
-#: src/keyboardconfig.cpp:221 src/keyboardconfig.cpp:223
-#: src/keyboardconfig.cpp:225 src/keyboardconfig.cpp:227
-#: src/keyboardconfig.cpp:229 src/keyboardconfig.cpp:231
-#: src/keyboardconfig.cpp:233 src/keyboardconfig.cpp:235
-#: src/keyboardconfig.cpp:237 src/keyboardconfig.cpp:240
-#: src/keyboardconfig.cpp:242 src/keyboardconfig.cpp:244
-#: src/keyboardconfig.cpp:246 src/keyboardconfig.cpp:248
-#: src/keyboardconfig.cpp:250 src/keyboardconfig.cpp:252
-#: src/keyboardconfig.cpp:343
+#: src/keyboardconfig.cpp:191 src/keyboardconfig.cpp:193
+#: src/keyboardconfig.cpp:195 src/keyboardconfig.cpp:197
+#: src/keyboardconfig.cpp:199 src/keyboardconfig.cpp:201
+#: src/keyboardconfig.cpp:203 src/keyboardconfig.cpp:205
+#: src/keyboardconfig.cpp:207 src/keyboardconfig.cpp:209
+#: src/keyboardconfig.cpp:211 src/keyboardconfig.cpp:213
+#: src/keyboardconfig.cpp:215 src/keyboardconfig.cpp:218
+#: src/keyboardconfig.cpp:221 src/keyboardconfig.cpp:224
+#: src/keyboardconfig.cpp:226 src/keyboardconfig.cpp:228
+#: src/keyboardconfig.cpp:230 src/keyboardconfig.cpp:232
+#: src/keyboardconfig.cpp:234 src/keyboardconfig.cpp:236
+#: src/keyboardconfig.cpp:238 src/keyboardconfig.cpp:240
+#: src/keyboardconfig.cpp:242 src/keyboardconfig.cpp:245
+#: src/keyboardconfig.cpp:247 src/keyboardconfig.cpp:249
+#: src/keyboardconfig.cpp:251 src/keyboardconfig.cpp:253
+#: src/keyboardconfig.cpp:255 src/keyboardconfig.cpp:257
+#: src/keyboardconfig.cpp:350
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Комбинация клавиш для смайла %d"
 
-#: src/keyboardconfig.cpp:254
+#: src/keyboardconfig.cpp:259
 msgid "Wear Outfit"
 msgstr "Одевание наряда"
 
-#: src/keyboardconfig.cpp:256
+#: src/keyboardconfig.cpp:261
 msgid "Copy Outfit"
 msgstr "Копирование наряда"
 
-#: src/keyboardconfig.cpp:258
+#: src/keyboardconfig.cpp:263
 msgid "Copy equipped to Outfit"
 msgstr "Копирование одетого наряда"
 
-#: src/keyboardconfig.cpp:260
+#: src/keyboardconfig.cpp:265
 msgid "Toggle Chat"
 msgstr "Переключение на чат"
 
-#: src/keyboardconfig.cpp:262
+#: src/keyboardconfig.cpp:267
 msgid "Scroll Chat Up"
 msgstr "Прокручивание чата вверх"
 
-#: src/keyboardconfig.cpp:264
+#: src/keyboardconfig.cpp:269
 msgid "Scroll Chat Down"
 msgstr "Прокручивание чата вниз"
 
-#: src/keyboardconfig.cpp:266
+#: src/keyboardconfig.cpp:271
 msgid "Previous Chat Tab"
 msgstr "Предыдущая закладка чата"
 
-#: src/keyboardconfig.cpp:268
+#: src/keyboardconfig.cpp:273
 msgid "Next Chat Tab"
 msgstr "Следующая закладка чата"
 
-#: src/keyboardconfig.cpp:270
+#: src/keyboardconfig.cpp:275
 msgid "Previous chat line"
 msgstr "Предыдущая строка чата"
 
-#: src/keyboardconfig.cpp:272
+#: src/keyboardconfig.cpp:277
 msgid "Next chat line"
 msgstr "Следующая строка чата"
 
-#: src/keyboardconfig.cpp:274
+#: src/keyboardconfig.cpp:279
 msgid "Chat Auto Complete"
 msgstr "Автозавершение в чате"
 
-#: src/keyboardconfig.cpp:276
+#: src/keyboardconfig.cpp:281
 msgid "Deactivate Chat Input"
 msgstr "Отключение фокуса ввода"
 
-#: src/keyboardconfig.cpp:278
+#: src/keyboardconfig.cpp:283
 msgid "Select OK"
 msgstr "Выбор Ok"
 
-#: src/keyboardconfig.cpp:280
+#: src/keyboardconfig.cpp:286
 msgid "Ignore input 1"
 msgstr "Игнорирование ввода 1"
 
-#: src/keyboardconfig.cpp:282
+#: src/keyboardconfig.cpp:288
 msgid "Ignore input 2"
 msgstr "Игнорирование ввода 2"
 
-#: src/keyboardconfig.cpp:284
+#: src/keyboardconfig.cpp:290
 msgid "Direct Up"
 msgstr "Повернуться вверх"
 
-#: src/keyboardconfig.cpp:285
+#: src/keyboardconfig.cpp:291
 msgid "Direct Down"
 msgstr "Повернуться вниз"
 
-#: src/keyboardconfig.cpp:287
+#: src/keyboardconfig.cpp:293
 msgid "Direct Left"
 msgstr "Повернуться влево"
 
-#: src/keyboardconfig.cpp:288
+#: src/keyboardconfig.cpp:294
 msgid "Direct Right"
 msgstr "Повернуться вправо"
 
-#: src/keyboardconfig.cpp:290
+#: src/keyboardconfig.cpp:296
 msgid "Crazy moves"
 msgstr "Сумасшедшие движения"
 
-#: src/keyboardconfig.cpp:292
+#: src/keyboardconfig.cpp:298
 msgid "Change Crazy Move mode"
 msgstr "Поменять режим сумасшедших движений"
 
-#: src/keyboardconfig.cpp:294
+#: src/keyboardconfig.cpp:300
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Быстрый сброс N предметов из 0 слота"
 
-#: src/keyboardconfig.cpp:296
+#: src/keyboardconfig.cpp:302
 msgid "Quick Drop N Items"
 msgstr "Быстрый сброс N предметов"
 
-#: src/keyboardconfig.cpp:298
+#: src/keyboardconfig.cpp:304
 msgid "Switch Quick Drop Counter"
 msgstr "Переключение счётчика быстрого сброса"
 
-#: src/keyboardconfig.cpp:300
+#: src/keyboardconfig.cpp:306
 msgid "Quick heal target or self"
 msgstr "Быстрое лечения себя или цели"
 
-#: src/keyboardconfig.cpp:302
+#: src/keyboardconfig.cpp:308
 msgid "Use #itenplz spell"
 msgstr "Использование заклинания #itenplz"
 
-#: src/keyboardconfig.cpp:304
+#: src/keyboardconfig.cpp:310
 msgid "Use magic attack"
 msgstr "Использование магической атаки"
 
-#: src/keyboardconfig.cpp:306
+#: src/keyboardconfig.cpp:312
 msgid "Switch magic attack"
 msgstr "Переключение маг. атаки"
 
-#: src/keyboardconfig.cpp:308
+#: src/keyboardconfig.cpp:314
 msgid "Change move type"
 msgstr "Изменение типа движения"
 
-#: src/keyboardconfig.cpp:310
+#: src/keyboardconfig.cpp:316
 msgid "Change Attack Weapon Type"
 msgstr "Измение типа атаки оружием"
 
-#: src/keyboardconfig.cpp:312
+#: src/keyboardconfig.cpp:318
 msgid "Change Attack Type"
 msgstr "Изменение типа атаки"
 
-#: src/keyboardconfig.cpp:314
+#: src/keyboardconfig.cpp:320
 msgid "Change Follow mode"
 msgstr "Изменение режима следования"
 
-#: src/keyboardconfig.cpp:316
+#: src/keyboardconfig.cpp:322
 msgid "Change Imitation mode"
 msgstr "Изменение режима имитации"
 
-#: src/keyboardconfig.cpp:319
+#: src/keyboardconfig.cpp:325
 msgid "Disable / Enable Game modifier keys"
 msgstr "Включение / Выключение специальных модификаторов"
 
-#: src/keyboardconfig.cpp:320
+#: src/keyboardconfig.cpp:326
 msgid "On / Off audio"
 msgstr "Вкл. / Выкл. звука"
 
-#: src/keyboardconfig.cpp:322
+#: src/keyboardconfig.cpp:328
 msgid "Enable / Disable away mode"
 msgstr "Включение / Выключение режима отошел"
 
-#: src/keyboardconfig.cpp:324
+#: src/keyboardconfig.cpp:330
 msgid "Emulate right click from keyboard"
 msgstr "Эмуляция правого клика с клавиатуры"
 
-#: src/keyboardconfig.cpp:326
+#: src/keyboardconfig.cpp:332
 msgid "Toggle camera mode"
 msgstr "Изменение режима камеры"
 
-#: src/keyboardconfig.cpp:399
+#: src/keyboardconfig.cpp:334
+msgid "Modifier key"
+msgstr "Кнопка-модификатор"
+
+#: src/keyboardconfig.cpp:406
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -4506,7 +4513,8 @@ msgstr "Неизвестная ошибка сервера чата."
 
 #: src/net/tmwa/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
 #: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:196
 msgid "Wrong name."
@@ -4864,8 +4872,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:101
 msgid "Command: /item"
@@ -4888,8 +4895,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:113
 msgid "Command: /exp"
@@ -5128,7 +5135,8 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
@@ -5324,51 +5332,4 @@ msgstr "Мана %+d"
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
 
-#, fuzzy
-#~ msgid "Time for Next level per %d min: %s"
-#~ msgstr "Время до след. уровня за 15 минут: ?"
 
-#~ msgid "Ping: ? ms"
-#~ msgstr "Пинг: ? мсек."
-
-#~ msgid "Level: "
-#~ msgstr "Уровень: "
-
-#~ msgid "Exp: "
-#~ msgstr "Опыт:"
-
-#~ msgid " Left: "
-#~ msgstr " Осталось: "
-
-#~ msgid "Exp speed per 5 min: ?"
-#~ msgstr "Опыт за 5 минут: ?"
-
-#~ msgid "Time for next level per 5 min: ?"
-#~ msgstr "Время до след. уровня за 5 минут: ?"
-
-#~ msgid "Exp speed per 15 min: ?"
-#~ msgstr "Опыт за 15 минут: ?"
-
-#~ msgid "Time before jacko spawn: ?"
-#~ msgstr "Время до появляения Jacko: ?"
-
-#~ msgid "Exp Speed per 1 min: %d"
-#~ msgstr "Опыт за минуту: %d"
-
-#~ msgid "  Time For Next Level: ?"
-#~ msgstr "Время до следующего уровня: ?"
-
-#~ msgid "Exp Speed per 5 min: %d"
-#~ msgstr "Опыт за 5 минут: %d"
-
-#~ msgid "Exp Speed per 15 min: %d"
-#~ msgstr "Опыт за 15 минут: %d"
-
-#~ msgid "Time before jacko spawn: jacko alive"
-#~ msgstr "Время до появляения Jacko: живой"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Time before jacko spawn: jacko spawning"
-#~ msgstr "Время до появляения Jacko: должен появится"
