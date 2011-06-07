@@ -61,6 +61,7 @@ ImageParticle::~ImageParticle()
 
         mImage->decRef();
     }
+    setMap(0);
 }
 
 bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
