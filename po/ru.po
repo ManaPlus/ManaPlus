@@ -1064,16 +1064,16 @@ msgstr "Убийств в минуту: %s, Опыта в минуту: %s"
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
 msgstr[0] "Опыт за %d мин.: %s"
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "Опыт за %d мин.: %s"
+msgstr[2] "Опыт за %d мин.: %s"
 
 #: src/gui/killstats.cpp:86 src/gui/killstats.cpp:91 src/gui/killstats.cpp:96
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
 msgstr[0] "Время до следующего уровня в мин. %d: %s"
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "Время до следующего уровня в мин. %d: %s"
+msgstr[2] "Время до следующего уровня в мин. %d: %s"
 
 #: src/gui/killstats.cpp:99 src/gui/killstats.cpp:240
 msgid "Last kill exp:"
