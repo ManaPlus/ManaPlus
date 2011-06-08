@@ -39,7 +39,7 @@ MumbleManager::~MumbleManager()
     {
 #ifdef WIN32
         UnmapViewOfFile(mLinkedMem);
-#elif defined __FreeBSD__ || defined __DragonFly__
+#elif defined __FreeBSD__ || defined __DragonFly__ || defined __APPLE__
 #else
         munmap(mLinkedMem, sizeof(struct LinkedMem));
 #endif
@@ -73,7 +73,7 @@ void MumbleManager::setMapBase(uint16_t mapid)
 
 void MumbleManager::init()
 {
-#if defined __FreeBSD__ || defined __DragonFly__
+#if defined __FreeBSD__ || defined __DragonFly__ || defined __APPLE__
     return;
 #endif
 
@@ -100,7 +100,7 @@ void MumbleManager::init()
         logger->log1("MumbleManager::init can't map MumbleLink");
         return;
     }
-#elif defined __FreeBSD__ || defined __DragonFly__
+#elif defined __FreeBSD__ || defined __DragonFly__ || defined __APPLE__
 #else
     char memName[256];
     snprintf(memName, 256, "/MumbleLink.%d", getuid());
