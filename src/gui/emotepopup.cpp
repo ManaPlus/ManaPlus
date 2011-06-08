@@ -77,7 +77,10 @@ EmotePopup::EmotePopup():
 EmotePopup::~EmotePopup()
 {
     if (mSelectionImage)
+    {
         mSelectionImage->decRef();
+        mSelectionImage = 0;
+    }
 }
 
 void EmotePopup::draw(gcn::Graphics *graphics)

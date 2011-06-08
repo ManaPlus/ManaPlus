@@ -828,7 +828,10 @@ SubImage::~SubImage()
     mGLImage = 0;
 #endif
     if (mParent)
+    {
         mParent->decRef();
+        mParent = 0;
+    }
 }
 
 Image *SubImage::getSubImage(int x, int y, int w, int h)

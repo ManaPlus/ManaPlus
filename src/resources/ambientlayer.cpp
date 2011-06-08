@@ -74,7 +74,10 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
 AmbientLayer::~AmbientLayer()
 {
     if (mImage)
+    {
         mImage->decRef();
+        mImage = 0;
+    }
 }
 
 void AmbientLayer::update(int timePassed, float dx, float dy)

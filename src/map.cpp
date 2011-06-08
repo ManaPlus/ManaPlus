@@ -1743,7 +1743,10 @@ MapItem::MapItem(int type, std::string comment, int x, int y):
 MapItem::~MapItem()
 {
     if (mImage)
+    {
         mImage->decRef();
+        mImage = 0;
+    }
 }
 
 void MapItem::setType(int type)

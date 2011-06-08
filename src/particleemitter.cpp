@@ -446,9 +446,13 @@ ParticleEmitter::~ParticleEmitter()
         if (*i)
             (*i)->decRef();
     }
+    mTempSets.clear();
 
     if (mParticleImage)
+    {
         mParticleImage->decRef();
+        mParticleImage = 0;
+    }
 }
 
 

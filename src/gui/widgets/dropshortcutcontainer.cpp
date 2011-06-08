@@ -77,7 +77,10 @@ DropShortcutContainer::DropShortcutContainer():
 DropShortcutContainer::~DropShortcutContainer()
 {
     if (mBackgroundImg)
+    {
         mBackgroundImg->decRef();
+        mBackgroundImg = 0;
+    }
     delete mItemPopup;
     mItemPopup = 0;
 }

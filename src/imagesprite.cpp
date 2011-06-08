@@ -42,7 +42,10 @@ ImageSprite::ImageSprite(Image *image):
 ImageSprite::~ImageSprite()
 {
     if (mImage)
+    {
         mImage->decRef();
+        mImage = 0;
+    }
 }
 
 bool ImageSprite::draw(Graphics* graphics, int posX, int posY) const

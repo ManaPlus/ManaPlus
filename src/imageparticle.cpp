@@ -60,6 +60,7 @@ ImageParticle::~ImageParticle()
             ImageParticle::imageParticleCountByName[name] --;
 
         mImage->decRef();
+        mImage = 0;
     }
     setMap(0);
 }

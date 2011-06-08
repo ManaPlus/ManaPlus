@@ -92,7 +92,10 @@ ItemPopup::~ItemPopup()
     {
         Image *image = mIcon->getImage();
         if (image)
+        {
             image->decRef();
+            image = 0;
+        }
     }
 }
 

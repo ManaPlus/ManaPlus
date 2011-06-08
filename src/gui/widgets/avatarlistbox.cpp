@@ -78,9 +78,15 @@ AvatarListBox::~AvatarListBox()
     if (instances == 0)
     {
         if (onlineIcon)
+        {
             onlineIcon->decRef();
+            onlineIcon = 0;
+        }
         if (offlineIcon)
+        {
             offlineIcon->decRef();
+            offlineIcon = 0;
+        }
     }
 }
 

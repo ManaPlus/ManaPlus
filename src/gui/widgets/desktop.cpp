@@ -60,7 +60,10 @@ Desktop::Desktop()
 Desktop::~Desktop()
 {
     if (mWallpaper)
+    {
         mWallpaper->decRef();
+        mWallpaper = 0;
+    }
 }
 
 void Desktop::reloadWallpaper()

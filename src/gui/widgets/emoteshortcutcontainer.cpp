@@ -87,7 +87,10 @@ EmoteShortcutContainer::~EmoteShortcutContainer()
     delete mEmotePopup;
 
     if (mBackgroundImg)
+    {
         mBackgroundImg->decRef();
+        mBackgroundImg = 0;
+    }
 }
 
 void EmoteShortcutContainer::draw(gcn::Graphics *graphics)

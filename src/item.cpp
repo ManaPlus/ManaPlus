@@ -48,7 +48,10 @@ Item::Item(int id, int quantity, int refine, unsigned char color,
 Item::~Item()
 {
     if (mImage)
+    {
         mImage->decRef();
+        mImage = 0;
+    }
 }
 
 void Item::setId(int id, unsigned char color)

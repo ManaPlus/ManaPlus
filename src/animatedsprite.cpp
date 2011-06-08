@@ -72,7 +72,10 @@ AnimatedSprite *AnimatedSprite::load(const std::string &filename, int variant)
 AnimatedSprite::~AnimatedSprite()
 {
     if (mSprite)
+    {
         mSprite->decRef();
+        mSprite = 0;
+    }
 }
 
 bool AnimatedSprite::reset()

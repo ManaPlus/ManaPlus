@@ -67,7 +67,10 @@ ResizeGrip::~ResizeGrip()
     mInstances--;
 
     if (mInstances == 0 && gripImage)
+    {
         gripImage->decRef();
+        gripImage = 0;
+    }
 }
 
 void ResizeGrip::draw(gcn::Graphics *graphics)

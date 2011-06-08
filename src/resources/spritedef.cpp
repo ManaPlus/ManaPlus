@@ -359,7 +359,10 @@ SpriteDef::~SpriteDef()
             i != mImageSets.end(); ++i)
     {
         if (i->second)
+        {
             i->second->decRef();
+            i->second = 0;
+        }
     }
 }
 

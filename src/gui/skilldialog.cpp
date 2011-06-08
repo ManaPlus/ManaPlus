@@ -87,7 +87,10 @@ struct SkillInfo
     ~SkillInfo()
     {
         if (icon)
+        {
             icon->decRef();
+            icon = 0;
+        }
     }
 
     void setIcon(const std::string &iconPath)
