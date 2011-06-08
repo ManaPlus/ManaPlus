@@ -210,7 +210,7 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 logger->log1("Error: no valid imageset");
                 continue;
             }
-//            mTempSets.push_back(imageset);
+            mTempSets.push_back(imageset);
 
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
@@ -294,7 +294,7 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 logger->log1("Error: no valid imageset");
                 continue;
             }
-//            mTempSets.push_back(imageset);
+            mTempSets.push_back(imageset);
 
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
@@ -427,6 +427,15 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mParticleChildEmitters = o.mParticleChildEmitters;
     mDeathEffectConditions = o.mDeathEffectConditions;
     mDeathEffect = o.mDeathEffect;
+    mTempSets = o.mTempSets;
+
+    for (std::list<ImageSet*>::iterator
+         i = mTempSets.begin();
+         i != mTempSets.end(); ++i)
+    {
+        if (*i)
+            (*i)->incRef();
+    }
 
     mOutputPauseLeft = 0;
 
@@ -436,10 +445,8 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     return *this;
 }
 
-
 ParticleEmitter::~ParticleEmitter()
 {
-/*
     for (std::list<ImageSet*>::iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
@@ -448,7 +455,6 @@ ParticleEmitter::~ParticleEmitter()
             (*i)->decRef();
     }
     mTempSets.clear();
-*/
 
     if (mParticleImage)
     {
