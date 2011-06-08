@@ -43,6 +43,7 @@
 #include "net/playerhandler.h"
 #include "net/gamehandler.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -126,6 +127,8 @@ MiniStatusWindow::~MiniStatusWindow()
     mTextPopup = 0;
     delete mStatusPopup;
     mStatusPopup = 0;
+    delete_all(mIcons);
+    mIcons.clear();
 
     Inventory *inv = PlayerInfo::getInventory();
     if (inv)
@@ -194,7 +197,11 @@ void MiniStatusWindow::setIcon(int index, AnimatedSprite *sprite)
 
 void MiniStatusWindow::eraseIcon(int index)
 {
-    mIcons.erase(mIcons.begin() + index);
+    if (index < static_cast<int>(mIcons.size()))
+    {
+        delete mIcons[index];
+        mIcons.erase(mIcons.begin() + index);
+    }
 }
 
 void MiniStatusWindow::drawIcons(Graphics *graphics)
