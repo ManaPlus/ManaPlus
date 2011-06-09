@@ -555,35 +555,38 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
         converted = true;
     }
 
+    const int sz = tmpImage->w * tmpImage->h;
     // Figure out whether the image uses its alpha layer
     if (tmpImage->format->palette == NULL)
     {
         const SDL_PixelFormat * const fmt = tmpImage->format;
-        for (int i = 0; i < tmpImage->w * tmpImage->h; ++ i)
+        if (fmt->Amask)
         {
-            Uint8 a;
-            if (fmt->Amask)
+            for (int i = 0; i < sz; ++ i)
             {
                 unsigned v = ((static_cast<Uint32*>(tmpImage->pixels))[i]
                     & fmt->Amask) >> fmt->Ashift;
-                a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
-            }
-            else
-            {
-                a = SDL_ALPHA_OPAQUE;
-            }
+                Uint8 a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
 
-            if (a != 255)
+                if (a != 255)
+                    hasAlpha = true;
+
+                alphaChannel[i] = a;
+            }
+        }
+        else
+        {
+            if (SDL_ALPHA_OPAQUE != 255)
                 hasAlpha = true;
-
-            alphaChannel[i] = a;
+            for (int i = 0; i < sz; ++ i)
+                alphaChannel[i] = SDL_ALPHA_OPAQUE;
         }
     }
     else
     {
         if (SDL_ALPHA_OPAQUE != 255)
             hasAlpha = true;
-        for (int i = 0; i < tmpImage->w * tmpImage->h; ++ i)
+        for (int i = 0; i < sz; ++ i)
             alphaChannel[i] = SDL_ALPHA_OPAQUE;
     }
 
