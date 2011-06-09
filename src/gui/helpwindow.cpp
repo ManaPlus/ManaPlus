@@ -123,8 +123,6 @@ void HelpWindow::loadFile(const std::string &file)
     if (lines.empty())
         lines = resman->loadTextFile(helpPath + file + ".txt");
 
-    logger->log("help file: " + helpPath + file + ".txt");
-
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);
 }

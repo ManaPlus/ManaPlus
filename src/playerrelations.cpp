@@ -240,8 +240,6 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
     PlayerRelation *r = mRelations[player_name];
     if (!r)
     {
-        logger->log("checkPermissionSilently1: "
-            + toString(mDefaultPermissions & flags));
         return mDefaultPermissions & flags;
     }
     else
@@ -249,9 +247,6 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
         unsigned int permissions =
             PlayerRelation::RELATION_PERMISSIONS[r->mRelation];
 
-        logger->log("r->mRelation: "
-                    + toString(static_cast<signed>(r->mRelation)));
-        logger->log("permissions: " + toString(permissions));
         switch (r->mRelation)
         {
             case PlayerRelation::NEUTRAL:
@@ -269,8 +264,6 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
                 permissions &= mDefaultPermissions; // narrow
         }
 
-        logger->log("checkPermissionSilently2: "
-            + toString(permissions & flags));
         return permissions & flags;
     }
 }
@@ -468,7 +461,6 @@ public:
         if (!being)
             return;
 
-        logger->log("ignoring: " + being->getName());
         being->setEmote(mEmotion, IGNORE_EMOTE_TIME);
     }
     Uint8 mEmotion;
