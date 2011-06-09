@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-07 02:56+0300\n"
+"POT-Creation-Date: 2011-06-09 20:13+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -32,40 +32,40 @@ msgstr ""
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:97
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
 msgid "Setup"
 msgstr "Beállítások"
 
-#: src/client.cpp:854
+#: src/client.cpp:855
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Csatlakozás a térkép szerverhez...."
 
-#: src/client.cpp:885
+#: src/client.cpp:886
 #, fuzzy
 msgid "Logging in"
 msgstr "Belépés"
 
-#: src/client.cpp:918
+#: src/client.cpp:919
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1010
+#: src/client.cpp:1011
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Kapcsolódási kérelem a %s nevű csatornába."
 
-#: src/client.cpp:1041
+#: src/client.cpp:1042
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Csatlakozás a térkép szerverhez...."
 
-#: src/client.cpp:1051
+#: src/client.cpp:1052
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Szerver"
 
-#: src/client.cpp:1086 src/client.cpp:1093 src/client.cpp:1230
+#: src/client.cpp:1087 src/client.cpp:1094 src/client.cpp:1231
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:391
@@ -75,53 +75,53 @@ msgstr "Szerver"
 msgid "Error"
 msgstr "Hiba"
 
-#: src/client.cpp:1102
+#: src/client.cpp:1103
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1129
+#: src/client.cpp:1130
 #, fuzzy
 msgid "Password Change"
 msgstr "Jelszó:"
 
-#: src/client.cpp:1130
+#: src/client.cpp:1131
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1149
+#: src/client.cpp:1150
 #, fuzzy
 msgid "Email Change"
 msgstr "Változtatás"
 
-#: src/client.cpp:1150
+#: src/client.cpp:1151
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "A tag előléptetése sikeres."
 
-#: src/client.cpp:1170
+#: src/client.cpp:1171
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Regisztráció megszüntetése"
 
-#: src/client.cpp:1171
+#: src/client.cpp:1172
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1360 src/client.cpp:1390 src/client.cpp:1434
+#: src/client.cpp:1361 src/client.cpp:1391 src/client.cpp:1435
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1563
+#: src/client.cpp:1564
 #, fuzzy, c-format
 msgid "Invalid update host: %s"
 msgstr "Helytelen frissítési kiszolgáló: "
 
-#: src/client.cpp:1597 src/client.cpp:1603
+#: src/client.cpp:1598 src/client.cpp:1604
 msgid "Error creating updates directory!"
 msgstr "Hiba a frissítési könyvtár létrehozása közben!"
 
-#: src/client.cpp:1624
+#: src/client.cpp:1625
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -310,46 +310,46 @@ msgstr ""
 "Lehetőségek a /%s parancshoz: \"yes\", \"no\", \"true\", \"false\", \"1\", "
 "\"0\"."
 
-#: src/game.cpp:236 src/gui/widgets/chattab.cpp:400
+#: src/game.cpp:244 src/gui/widgets/chattab.cpp:400
 msgid "General"
 msgstr "Általános"
 
-#: src/game.cpp:240 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:402
+#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:402
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:455
+#: src/game.cpp:464
 #, fuzzy
 msgid "Screenshot saved as "
 msgstr "Képernyőt mentettük a ~/ helyre"
 
-#: src/game.cpp:463
+#: src/game.cpp:472
 msgid "Saving screenshot failed!"
 msgstr "Hiba a képernyő mentése során!"
 
-#: src/game.cpp:502
+#: src/game.cpp:511
 #, fuzzy
 msgid "The connection to the server was lost."
 msgstr "A kapcsolat megszakadt a szerverrel, a program most kilép."
 
-#: src/game.cpp:516
+#: src/game.cpp:525
 msgid "Network Error"
 msgstr "Hálózati hiba"
 
-#: src/game.cpp:1034
+#: src/game.cpp:1043
 msgid "Ignoring incoming trade requests"
 msgstr "Kereskedési kérelmek elutasítása"
 
-#: src/game.cpp:1041
+#: src/game.cpp:1050
 msgid "Accepting incoming trade requests"
 msgstr "Kereskedési kérelmek elfogadása"
 
-#: src/game.cpp:1416
+#: src/game.cpp:1425
 #, fuzzy
 msgid "Could Not Load Map"
 msgstr "Nem lehet betölteni a térképet"
 
-#: src/game.cpp:1417
+#: src/game.cpp:1426
 #, c-format
 msgid "Error while loading %s"
 msgstr "Hiba %s betöltése közben"
@@ -435,7 +435,7 @@ msgstr ""
 #: src/gui/buydialog.cpp:98 src/gui/quitdialog.cpp:49
 #: src/gui/quitdialog.cpp:54 src/gui/quitdialog.cpp:55
 #: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:284
-#: src/keyboardconfig.cpp:285
+#: src/keyboardconfig.cpp:287
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -928,7 +928,7 @@ msgstr ""
 msgid "OK"
 msgstr "Ok"
 
-#: src/gui/equipmentwindow.cpp:78 src/gui/windowmenu.cpp:73
+#: src/gui/equipmentwindow.cpp:78 src/gui/windowmenu.cpp:74
 msgid "Equipment"
 msgstr "Felszerelés"
 
@@ -949,7 +949,7 @@ msgstr "Súgó"
 msgid "Close"
 msgstr "Bezár"
 
-#: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:75
+#: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
 #: src/inventory.cpp:243
 msgid "Inventory"
 msgstr "Táska"
@@ -1027,7 +1027,7 @@ msgstr "Magához vesz"
 
 #: src/gui/inventorywindow.cpp:600 src/gui/popupmenu.cpp:1557
 #: src/gui/popupmenu.cpp:1654 src/gui/popupmenu.cpp:1697
-#: src/gui/windowmenu.cpp:96
+#: src/gui/windowmenu.cpp:97
 msgid "Drop"
 msgstr "Eldob"
 
@@ -1068,16 +1068,16 @@ msgstr ""
 msgid "Unknown."
 msgstr "Ismeretlen hiba"
 
-#: src/gui/itempopup.cpp:173 src/gui/itempopup.cpp:179
+#: src/gui/itempopup.cpp:176 src/gui/itempopup.cpp:182
 msgid ", "
 msgstr ""
 
-#: src/gui/itempopup.cpp:189
+#: src/gui/itempopup.cpp:192
 #, fuzzy, c-format
 msgid "Weight: %s"
 msgstr "Súly: "
 
-#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:68
+#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:69
 #, fuzzy
 msgid "Kill stats"
 msgstr "Sztátusz Ablak"
@@ -1212,47 +1212,47 @@ msgstr "Regisztráció"
 msgid "Change Server"
 msgstr "Szerver"
 
-#: src/gui/ministatus.cpp:58
+#: src/gui/ministatus.cpp:59
 msgid "health bar"
 msgstr ""
 
-#: src/gui/ministatus.cpp:64
+#: src/gui/ministatus.cpp:65
 #, fuzzy
 msgid "mana bar"
 msgstr "mana"
 
-#: src/gui/ministatus.cpp:76
+#: src/gui/ministatus.cpp:77
 msgid "experience bar"
 msgstr ""
 
-#: src/gui/ministatus.cpp:82
+#: src/gui/ministatus.cpp:83
 msgid "job bar"
 msgstr ""
 
-#: src/gui/ministatus.cpp:91
+#: src/gui/ministatus.cpp:92
 #, fuzzy
 msgid "weight bar"
 msgstr "Súly: "
 
-#: src/gui/ministatus.cpp:94
+#: src/gui/ministatus.cpp:95
 msgid "inventory slots bar"
 msgstr ""
 
-#: src/gui/ministatus.cpp:97
+#: src/gui/ministatus.cpp:98
 #, fuzzy
 msgid "money bar"
 msgstr "Sérüléskor"
 
-#: src/gui/ministatus.cpp:100
+#: src/gui/ministatus.cpp:101
 msgid "arrows bar"
 msgstr ""
 
-#: src/gui/ministatus.cpp:103
+#: src/gui/ministatus.cpp:104
 #, fuzzy
 msgid "status bar"
 msgstr "Státusz"
 
-#: src/gui/ministatus.cpp:289 src/gui/ministatus.cpp:329
+#: src/gui/ministatus.cpp:296 src/gui/ministatus.cpp:336
 msgid "Need"
 msgstr ""
 
@@ -1363,7 +1363,7 @@ msgstr "Tiltott"
 #: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:180
 #: src/gui/popupmenu.cpp:371 src/gui/popupmenu.cpp:384
 #: src/gui/popupmenu.cpp:616 src/gui/popupmenu.cpp:632
-#: src/playerrelations.cpp:407
+#: src/playerrelations.cpp:400
 #, fuzzy
 msgid "Completely ignore"
 msgstr "@@ignore|Teljesen letiltod %s-t@@"
@@ -1486,7 +1486,7 @@ msgstr "Felhasználónév megjegyzése"
 msgid "Load old outfits"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:507 src/gui/windowmenu.cpp:95
+#: src/gui/popupmenu.cpp:507 src/gui/windowmenu.cpp:96
 msgid "Spells"
 msgstr ""
 
@@ -2504,35 +2504,35 @@ msgstr "Üzleti ajánlat"
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s üzletelni akar veled. Te akarsz vele?"
 
-#: src/gui/skilldialog.cpp:240 src/gui/windowmenu.cpp:80
+#: src/gui/skilldialog.cpp:243 src/gui/windowmenu.cpp:81
 msgid "Skills"
 msgstr "Képességek"
 
-#: src/gui/skilldialog.cpp:251
+#: src/gui/skilldialog.cpp:254
 msgid "Up"
 msgstr "Fejleszt"
 
-#: src/gui/skilldialog.cpp:304
+#: src/gui/skilldialog.cpp:307
 #, fuzzy, c-format
 msgid "Skill points available: %d"
 msgstr "Képesség pontok: %d"
 
-#: src/gui/skilldialog.cpp:380
+#: src/gui/skilldialog.cpp:383
 #, fuzzy, c-format
 msgid "Skill Set %d"
 msgstr "Képesség pontok: %d"
 
-#: src/gui/skilldialog.cpp:392
+#: src/gui/skilldialog.cpp:395
 #, fuzzy, c-format
 msgid "Skill %d"
 msgstr "Képességek"
 
-#: src/gui/skilldialog.cpp:456 src/gui/skilldialog.cpp:509
+#: src/gui/skilldialog.cpp:459 src/gui/skilldialog.cpp:512
 #, fuzzy, c-format
 msgid "Lvl: %d"
 msgstr "Szint: %d"
 
-#: src/gui/skilldialog.cpp:501
+#: src/gui/skilldialog.cpp:504
 #, fuzzy, c-format
 msgid "Lvl: %d (%+d)"
 msgstr "Szint: %d"
@@ -2635,7 +2635,7 @@ msgstr "Klán létrehozása"
 msgid "Create Party"
 msgstr "Karakter létrehozása"
 
-#: src/gui/socialwindow.cpp:1013 src/gui/windowmenu.cpp:92
+#: src/gui/socialwindow.cpp:1013 src/gui/windowmenu.cpp:93
 msgid "Social"
 msgstr ""
 
@@ -2741,7 +2741,7 @@ msgstr "Csapat"
 msgid "Choose your party's name."
 msgstr "Válassz szervert"
 
-#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:87
+#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:88
 msgid "Specials"
 msgstr ""
 
@@ -3675,78 +3675,86 @@ msgstr ""
 "Ez a parancs elkezdi felvenni a beszélgetést a <fájlnév> alatt megadott "
 "fájlba."
 
-#: src/gui/windowmenu.cpp:64
+#: src/gui/windowmenu.cpp:65
 msgid "BC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:64
+#: src/gui/windowmenu.cpp:65
 #, fuzzy
 msgid "Bot checker"
 msgstr "Chat Ablak"
 
-#: src/gui/windowmenu.cpp:66
+#: src/gui/windowmenu.cpp:67
 msgid "ONL"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:66
+#: src/gui/windowmenu.cpp:67
 msgid "Who is online"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:69
 msgid "KS"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:71
 #, fuzzy
 msgid "Smilies"
 msgstr "Hangulatjel"
 
-#: src/gui/windowmenu.cpp:72
+#: src/gui/windowmenu.cpp:73
 msgid "STA"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:72
+#: src/gui/windowmenu.cpp:73
 msgid "Status"
 msgstr "Státusz"
 
-#: src/gui/windowmenu.cpp:73
+#: src/gui/windowmenu.cpp:74
 msgid "EQU"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:75
+#: src/gui/windowmenu.cpp:76
 msgid "INV"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:80
+#: src/gui/windowmenu.cpp:81
 msgid "SKI"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:87
+#: src/gui/windowmenu.cpp:88
 msgid "SPE"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:92
+#: src/gui/windowmenu.cpp:93
 msgid "SOC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:93
+#: src/gui/windowmenu.cpp:94
 msgid "SH"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:93
+#: src/gui/windowmenu.cpp:94
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Gyorsmenü"
 
-#: src/gui/windowmenu.cpp:95
+#: src/gui/windowmenu.cpp:96
 msgid "SP"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:96
+#: src/gui/windowmenu.cpp:97
 msgid "DR"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:97
+#: src/gui/windowmenu.cpp:98
+msgid "YK"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:98
+msgid "Did you know"
+msgstr ""
+
+#: src/gui/windowmenu.cpp:99
 msgid "SET"
 msgstr ""
 
@@ -3879,7 +3887,7 @@ msgstr "Gyorsmenü %d"
 #: src/keyboardconfig.cpp:110 src/keyboardconfig.cpp:113
 #: src/keyboardconfig.cpp:115 src/keyboardconfig.cpp:117
 #: src/keyboardconfig.cpp:119 src/keyboardconfig.cpp:121
-#: src/keyboardconfig.cpp:355
+#: src/keyboardconfig.cpp:357
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Gyorsmenü %d"
@@ -3967,211 +3975,215 @@ msgstr "Chat Ablak"
 msgid "Who Is Online Window"
 msgstr ""
 
-#: src/keyboardconfig.cpp:162
+#: src/keyboardconfig.cpp:161
+msgid "Did you know Window"
+msgstr ""
+
+#: src/keyboardconfig.cpp:164
 #, fuzzy
 msgid "Previous Social Tab"
 msgstr "Előző Chat Fül"
 
-#: src/keyboardconfig.cpp:164
+#: src/keyboardconfig.cpp:166
 #, fuzzy
 msgid "Next Social Tab"
 msgstr "Következő Chat Fül"
 
-#: src/keyboardconfig.cpp:166 src/keyboardconfig.cpp:168
-#: src/keyboardconfig.cpp:170 src/keyboardconfig.cpp:172
-#: src/keyboardconfig.cpp:174 src/keyboardconfig.cpp:176
-#: src/keyboardconfig.cpp:178 src/keyboardconfig.cpp:180
-#: src/keyboardconfig.cpp:182 src/keyboardconfig.cpp:184
-#: src/keyboardconfig.cpp:186 src/keyboardconfig.cpp:188
-#: src/keyboardconfig.cpp:191 src/keyboardconfig.cpp:193
-#: src/keyboardconfig.cpp:195 src/keyboardconfig.cpp:197
-#: src/keyboardconfig.cpp:199 src/keyboardconfig.cpp:201
-#: src/keyboardconfig.cpp:203 src/keyboardconfig.cpp:205
-#: src/keyboardconfig.cpp:207 src/keyboardconfig.cpp:209
-#: src/keyboardconfig.cpp:211 src/keyboardconfig.cpp:213
-#: src/keyboardconfig.cpp:215 src/keyboardconfig.cpp:218
-#: src/keyboardconfig.cpp:221 src/keyboardconfig.cpp:224
-#: src/keyboardconfig.cpp:226 src/keyboardconfig.cpp:228
-#: src/keyboardconfig.cpp:230 src/keyboardconfig.cpp:232
-#: src/keyboardconfig.cpp:234 src/keyboardconfig.cpp:236
-#: src/keyboardconfig.cpp:238 src/keyboardconfig.cpp:240
-#: src/keyboardconfig.cpp:242 src/keyboardconfig.cpp:245
-#: src/keyboardconfig.cpp:247 src/keyboardconfig.cpp:249
-#: src/keyboardconfig.cpp:251 src/keyboardconfig.cpp:253
-#: src/keyboardconfig.cpp:255 src/keyboardconfig.cpp:257
-#: src/keyboardconfig.cpp:350
+#: src/keyboardconfig.cpp:168 src/keyboardconfig.cpp:170
+#: src/keyboardconfig.cpp:172 src/keyboardconfig.cpp:174
+#: src/keyboardconfig.cpp:176 src/keyboardconfig.cpp:178
+#: src/keyboardconfig.cpp:180 src/keyboardconfig.cpp:182
+#: src/keyboardconfig.cpp:184 src/keyboardconfig.cpp:186
+#: src/keyboardconfig.cpp:188 src/keyboardconfig.cpp:190
+#: src/keyboardconfig.cpp:193 src/keyboardconfig.cpp:195
+#: src/keyboardconfig.cpp:197 src/keyboardconfig.cpp:199
+#: src/keyboardconfig.cpp:201 src/keyboardconfig.cpp:203
+#: src/keyboardconfig.cpp:205 src/keyboardconfig.cpp:207
+#: src/keyboardconfig.cpp:209 src/keyboardconfig.cpp:211
+#: src/keyboardconfig.cpp:213 src/keyboardconfig.cpp:215
+#: src/keyboardconfig.cpp:217 src/keyboardconfig.cpp:220
+#: src/keyboardconfig.cpp:223 src/keyboardconfig.cpp:226
+#: src/keyboardconfig.cpp:228 src/keyboardconfig.cpp:230
+#: src/keyboardconfig.cpp:232 src/keyboardconfig.cpp:234
+#: src/keyboardconfig.cpp:236 src/keyboardconfig.cpp:238
+#: src/keyboardconfig.cpp:240 src/keyboardconfig.cpp:242
+#: src/keyboardconfig.cpp:244 src/keyboardconfig.cpp:247
+#: src/keyboardconfig.cpp:249 src/keyboardconfig.cpp:251
+#: src/keyboardconfig.cpp:253 src/keyboardconfig.cpp:255
+#: src/keyboardconfig.cpp:257 src/keyboardconfig.cpp:259
+#: src/keyboardconfig.cpp:352
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Hangulatjel Gyorsmenü %d"
 
-#: src/keyboardconfig.cpp:259
+#: src/keyboardconfig.cpp:261
 msgid "Wear Outfit"
 msgstr ""
 
-#: src/keyboardconfig.cpp:261
+#: src/keyboardconfig.cpp:263
 msgid "Copy Outfit"
 msgstr ""
 
-#: src/keyboardconfig.cpp:263
+#: src/keyboardconfig.cpp:265
 msgid "Copy equipped to Outfit"
 msgstr ""
 
-#: src/keyboardconfig.cpp:265
+#: src/keyboardconfig.cpp:267
 msgid "Toggle Chat"
 msgstr "Chat Ki/Be Kapcsolása"
 
-#: src/keyboardconfig.cpp:267
+#: src/keyboardconfig.cpp:269
 msgid "Scroll Chat Up"
 msgstr "Csevej Felfele Görgetése"
 
-#: src/keyboardconfig.cpp:269
+#: src/keyboardconfig.cpp:271
 msgid "Scroll Chat Down"
 msgstr "Csevej Lefele Görgetése"
 
-#: src/keyboardconfig.cpp:271
+#: src/keyboardconfig.cpp:273
 msgid "Previous Chat Tab"
 msgstr "Előző Chat Fül"
 
-#: src/keyboardconfig.cpp:273
+#: src/keyboardconfig.cpp:275
 msgid "Next Chat Tab"
 msgstr "Következő Chat Fül"
 
-#: src/keyboardconfig.cpp:275
+#: src/keyboardconfig.cpp:277
 #, fuzzy
 msgid "Previous chat line"
 msgstr "Előző Chat Fül"
 
-#: src/keyboardconfig.cpp:277
+#: src/keyboardconfig.cpp:279
 #, fuzzy
 msgid "Next chat line"
 msgstr "Következő Chat Fül"
 
-#: src/keyboardconfig.cpp:279
+#: src/keyboardconfig.cpp:281
 msgid "Chat Auto Complete"
 msgstr ""
 
-#: src/keyboardconfig.cpp:281
+#: src/keyboardconfig.cpp:283
 msgid "Deactivate Chat Input"
 msgstr ""
 
-#: src/keyboardconfig.cpp:283
+#: src/keyboardconfig.cpp:285
 msgid "Select OK"
 msgstr "Ok Kiválasztása"
 
-#: src/keyboardconfig.cpp:286
+#: src/keyboardconfig.cpp:288
 msgid "Ignore input 1"
 msgstr "Ignore input 1"
 
-#: src/keyboardconfig.cpp:288
+#: src/keyboardconfig.cpp:290
 msgid "Ignore input 2"
 msgstr "Ignore input 2"
 
-#: src/keyboardconfig.cpp:290
+#: src/keyboardconfig.cpp:292
 msgid "Direct Up"
 msgstr ""
 
-#: src/keyboardconfig.cpp:291
+#: src/keyboardconfig.cpp:293
 #, fuzzy
 msgid "Direct Down"
 msgstr "Mozgás lefelé"
 
-#: src/keyboardconfig.cpp:293
+#: src/keyboardconfig.cpp:295
 #, fuzzy
 msgid "Direct Left"
 msgstr "Mozgás balra"
 
-#: src/keyboardconfig.cpp:294
+#: src/keyboardconfig.cpp:296
 #, fuzzy
 msgid "Direct Right"
 msgstr "Mozgás jobbra"
 
-#: src/keyboardconfig.cpp:296
+#: src/keyboardconfig.cpp:298
 msgid "Crazy moves"
 msgstr ""
 
-#: src/keyboardconfig.cpp:298
+#: src/keyboardconfig.cpp:300
 msgid "Change Crazy Move mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:300
+#: src/keyboardconfig.cpp:302
 msgid "Quick Drop N Items from 0 slot"
 msgstr ""
 
-#: src/keyboardconfig.cpp:302
+#: src/keyboardconfig.cpp:304
 msgid "Quick Drop N Items"
 msgstr ""
 
-#: src/keyboardconfig.cpp:304
+#: src/keyboardconfig.cpp:306
 msgid "Switch Quick Drop Counter"
 msgstr ""
 
-#: src/keyboardconfig.cpp:306
+#: src/keyboardconfig.cpp:308
 msgid "Quick heal target or self"
 msgstr ""
 
-#: src/keyboardconfig.cpp:308
+#: src/keyboardconfig.cpp:310
 msgid "Use #itenplz spell"
 msgstr ""
 
-#: src/keyboardconfig.cpp:310
+#: src/keyboardconfig.cpp:312
 msgid "Use magic attack"
 msgstr ""
 
-#: src/keyboardconfig.cpp:312
+#: src/keyboardconfig.cpp:314
 #, fuzzy
 msgid "Switch magic attack"
 msgstr "Karakter változtatása"
 
-#: src/keyboardconfig.cpp:314
+#: src/keyboardconfig.cpp:316
 #, fuzzy
 msgid "Change move type"
 msgstr "Szerver"
 
-#: src/keyboardconfig.cpp:316
+#: src/keyboardconfig.cpp:318
 msgid "Change Attack Weapon Type"
 msgstr ""
 
-#: src/keyboardconfig.cpp:318
+#: src/keyboardconfig.cpp:320
 #, fuzzy
 msgid "Change Attack Type"
 msgstr "Kijelöl és Támad"
 
-#: src/keyboardconfig.cpp:320
+#: src/keyboardconfig.cpp:322
 #, fuzzy
 msgid "Change Follow mode"
 msgstr "Jelszó módosítása"
 
-#: src/keyboardconfig.cpp:322
+#: src/keyboardconfig.cpp:324
 #, fuzzy
 msgid "Change Imitation mode"
 msgstr "Email cím módosírása"
 
-#: src/keyboardconfig.cpp:325
+#: src/keyboardconfig.cpp:327
 msgid "Disable / Enable Game modifier keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:326
+#: src/keyboardconfig.cpp:328
 msgid "On / Off audio"
 msgstr ""
 
-#: src/keyboardconfig.cpp:328
+#: src/keyboardconfig.cpp:330
 #, fuzzy
 msgid "Enable / Disable away mode"
 msgstr "Üzletelés Engedélyezése/Tiltása"
 
-#: src/keyboardconfig.cpp:330
+#: src/keyboardconfig.cpp:332
 msgid "Emulate right click from keyboard"
 msgstr ""
 
-#: src/keyboardconfig.cpp:332
+#: src/keyboardconfig.cpp:334
 msgid "Toggle camera mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:334
+#: src/keyboardconfig.cpp:336
 msgid "Modifier key"
 msgstr ""
 
-#: src/keyboardconfig.cpp:406
+#: src/keyboardconfig.cpp:408
 #, fuzzy, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -5635,19 +5647,19 @@ msgstr ""
 msgid "Failed adding item for unknown reason."
 msgstr "Ismeretlen okból a tárgy hozzáadása sikertelen."
 
-#: src/playerrelations.cpp:421
+#: src/playerrelations.cpp:414
 msgid "Print '...'"
 msgstr ""
 
-#: src/playerrelations.cpp:441
+#: src/playerrelations.cpp:434
 msgid "Blink name"
 msgstr ""
 
-#: src/playerrelations.cpp:486
+#: src/playerrelations.cpp:478
 msgid "Floating '...' bubble"
 msgstr ""
 
-#: src/playerrelations.cpp:489
+#: src/playerrelations.cpp:481
 msgid "Floating bubble"
 msgstr ""
 
