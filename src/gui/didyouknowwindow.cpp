@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/helpwindow.h"
+#include "gui/didyouknowwindow.h"
 
 #include "log.h"
 
@@ -29,6 +29,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
+#include "gui/widgets/checkbox.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
 
@@ -39,13 +40,16 @@
 
 #include "debug.h"
 
-HelpWindow::HelpWindow():
-    Window(_("Help"))
+static const int minTip = 1;
+static const int maxTip = 6;
+
+DidYouKnowWindow::DidYouKnowWindow():
+    Window(_("Did You Know?"))
 {
     setMinWidth(300);
     setMinHeight(250);
     setContentSize(455, 350);
-    setWindowName("Help");
+    setWindowName("DidYouKnow");
     setResizable(true);
     setupWindow->registerWindowForReset(this);
 
@@ -55,9 +59,13 @@ HelpWindow::HelpWindow():
     mBrowserBox->setOpaque(false);
     mScrollArea = new ScrollArea(mBrowserBox);
     Button *okButton = new Button(_("Close"), "close", this);
+    mButtonPrev = new Button(_("< Previous"), "prev", this);
+    mButtonNext = new Button(_("Next >"), "next", this);
+    mOpenAgainCheckBox = new CheckBox(_("Auto open this window"),
+        config.getBoolValue("showDidYouKnow"), this, "openagain");
 
     mScrollArea->setDimension(gcn::Rectangle(5, 5, 445,
-                                             335 - okButton->getHeight()));
+                              335 - okButton->getHeight()));
     okButton->setPosition(450 - okButton->getWidth(),
                           345 - okButton->getHeight());
 
@@ -67,7 +75,10 @@ HelpWindow::HelpWindow():
     mBrowserBox->setEnableImages(true);
 
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
-    place(4, 3, okButton);
+    place(0, 3, mOpenAgainCheckBox);
+    place(1, 4, mButtonPrev, 1);
+    place(2, 4, mButtonNext, 1);
+    place(4, 4, okButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -75,32 +86,45 @@ HelpWindow::HelpWindow():
     loadWindowState();
 }
 
-void HelpWindow::action(const gcn::ActionEvent &event)
+void DidYouKnowWindow::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "close")
         setVisible(false);
+
+    unsigned num = config.getIntValue("currentTip");
+
+    if (event.getId() == "prev")
+        loadData(num - 1);
+    else if (event.getId() == "next")
+        loadData(num + 1);
+    else if (event.getId() == "openagain")
+        config.setValue("showDidYouKnow", mOpenAgainCheckBox->isSelected());
 }
 
-void HelpWindow::handleLink(const std::string &link,
-                            gcn::MouseEvent *event _UNUSED_)
+void DidYouKnowWindow::handleLink(const std::string &link _UNUSED_,
+                                  gcn::MouseEvent *event _UNUSED_)
 {
-    std::string helpFile = link;
-    loadHelp(helpFile);
 }
 
-void HelpWindow::loadHelp(const std::string &helpFile)
+void DidYouKnowWindow::loadData(int num)
 {
     mBrowserBox->clearRows();
+    if (!num)
+        num = config.getIntValue("currentTip") + 1;
 
-    loadFile("header");
-    loadFile(helpFile);
+    if (num < minTip || num > maxTip)
+        num = minTip;
+
+    config.setValue("currentTip", num);
+
+    loadFile(num);
 
     mScrollArea->setVerticalScrollAmount(0);
-    setVisible(true);
 }
 
-void HelpWindow::loadFile(const std::string &file)
+void DidYouKnowWindow::loadFile(int num)
 {
+    const std::string file = strprintf("tips/%d", num);
     const std::vector<std::string> langs = getLang();
     ResourceManager *resman = ResourceManager::getInstance();
     std::string helpPath = branding.getStringValue("helpPath");
@@ -123,8 +147,14 @@ void HelpWindow::loadFile(const std::string &file)
     if (lines.empty())
         lines = resman->loadTextFile(helpPath + file + ".txt");
 
-    logger->log("help file: " + helpPath + file + ".txt");
-
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);
+}
+
+void DidYouKnowWindow::setVisible(bool visible)
+{
+    Window::setVisible(visible);
+
+    if (visible || isVisible())
+        loadData();
 }

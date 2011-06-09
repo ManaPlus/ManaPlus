@@ -158,6 +158,8 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
     {"keyWindowOnline", KeyboardConfig::KEY_NO_VALUE,
         _("Who Is Online Window"), KeyboardConfig::GRP_DEFAULT
         | KeyboardConfig::GRP_GUI},
+    {"keyWindowDidYouKnow", -1, N_("Did you know Window"),
+        KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI},
     {"keySocialPrevTab", KeyboardConfig::KEY_NO_VALUE,
         _("Previous Social Tab"), KeyboardConfig::GRP_DEFAULT
         | KeyboardConfig::GRP_GUI},

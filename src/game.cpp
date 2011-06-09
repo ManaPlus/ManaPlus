@@ -53,6 +53,7 @@
 #include "gui/chatwindow.h"
 #include "gui/confirmdialog.h"
 #include "gui/debugwindow.h"
+#include "gui/didyouknowwindow.h"
 #include "gui/equipmentwindow.h"
 #include "gui/gui.h"
 #include "gui/helpwindow.h"
@@ -141,6 +142,7 @@ SpecialsWindow *specialsWindow = NULL;
 ShortcutWindow *dropShortcutWindow = NULL;
 ShortcutWindow *spellShortcutWindow = NULL;
 WhoIsOnline *whoIsOnline = NULL;
+DidYouKnowWindow *didYouKnowWindow = NULL;
 KillStats *killStats = NULL;
 BotCheckerWindow *botCheckerWindow = NULL;
 SocialWindow *socialWindow = NULL;
@@ -211,6 +213,12 @@ static void createGuiWindows()
     {
         itemShortcutWindow->addTab(toString(f + 1),
             new ItemShortcutContainer(f));
+    }
+    didYouKnowWindow = new DidYouKnowWindow;
+    if (config.getBoolValue("showDidYouKnow"))
+    {
+        didYouKnowWindow->setVisible(true);
+        didYouKnowWindow->loadData();
     }
 
     emoteShortcutWindow = new ShortcutWindow("EmoteShortcut",
@@ -314,6 +322,7 @@ static void destroyGuiWindows()
     del_0(botCheckerWindow);
     del_0(whoIsOnline);
     del_0(killStats);
+    del_0(didYouKnowWindow);
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADED));
 }

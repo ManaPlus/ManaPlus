@@ -368,6 +368,8 @@ int BrowserBox::calcHeight()
 {
     unsigned x = 0, y = 0;
     int wrappedLines = 0;
+    int moreHeight = 0;
+    int maxWidth = getWidth();
     int link = 0;
     if (getWidth() < 0)
         return 1;
@@ -412,8 +414,12 @@ int BrowserBox::calcHeight()
             Image *img = resman->getImage(str);
             if (img)
             {
+                img->incRef();
                 mLineParts.push_back(LinePart(x, y, selColor, img));
-                y += img->getHeight();
+                y += img->getHeight() + 2;
+                moreHeight += img->getHeight();
+                if (img->getWidth() > maxWidth)
+                    maxWidth = img->getWidth() + 2;
             }
             continue;
         }
@@ -570,7 +576,11 @@ int BrowserBox::calcHeight()
         }
         y += fontHeight;
     }
-    return (static_cast<int>(mTextRows.size()) + wrappedLines) * fontHeight;
+    if (getWidth() != maxWidth)
+        setWidth(maxWidth);
+
+    return (static_cast<int>(mTextRows.size()) + wrappedLines)
+        * fontHeight + moreHeight;
 }
 
 void BrowserBox::updateHeight()

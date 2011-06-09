@@ -215,6 +215,7 @@ data/help/Makefile
 data/help/es/Makefile
 data/help/fr/Makefile
 data/help/ru/Makefile
+data/help/tips/Makefile
 data/icons/Makefile
 docs/Makefile
 po/Makefile.in

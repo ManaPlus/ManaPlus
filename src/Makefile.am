@@ -240,6 +240,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/connectiondialog.h \
 	      gui/debugwindow.cpp \
 	      gui/debugwindow.h \
+	      gui/didyouknowwindow.cpp \
+	      gui/didyouknowwindow.h \
 	      gui/emotepopup.cpp \
 	      gui/emotepopup.h \
 	      gui/equipmentwindow.cpp \

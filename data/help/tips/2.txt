@@ -1,0 +1,2 @@
+You can buy or sell items from players shops.
+Right click on player and select "Buy" or "Sell"

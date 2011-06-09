@@ -1,0 +1,2 @@
+You can set away mode,
+by type in chat command /away
