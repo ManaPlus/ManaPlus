@@ -79,7 +79,7 @@ Item *Inventory::findItem(int itemId, unsigned char color) const
     for (unsigned i = 0; i < mSize; i++)
     {
         if (mItems[i] && mItems[i]->getId() == itemId
-            && mItems[i]->getColor() == color)
+            && (color == 0 || mItems[i]->getColor() == color))
         {
             return mItems[i];
         }

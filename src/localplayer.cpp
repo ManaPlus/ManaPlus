@@ -1894,16 +1894,16 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
     if (allowSword)
     {
         //finding sword
-        item = PlayerInfo::getInventory()->findItem(571, 1);
+        item = PlayerInfo::getInventory()->findItem(571, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(570, 1);
+            item = PlayerInfo::getInventory()->findItem(570, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(579, 1);
+            item = PlayerInfo::getInventory()->findItem(579, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(536, 1);
+            item = PlayerInfo::getInventory()->findItem(536, 0);
 
         //no swords
         if (!item)
@@ -1919,9 +1919,9 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
         if (mAttackWeaponType == 3)
         {
             //finding shield
-            item = PlayerInfo::getInventory()->findItem(601, 1);
+            item = PlayerInfo::getInventory()->findItem(601, 0);
             if (!item)
-                item = PlayerInfo::getInventory()->findItem(602, 1);
+                item = PlayerInfo::getInventory()->findItem(602, 0);
             if (item && !item->isEquipped())
             {
                 Net::getInventoryHandler()->equipItem(item);
@@ -1933,10 +1933,10 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
     else
     {
         //finding bow
-        item = PlayerInfo::getInventory()->findItem(545, 1);
+        item = PlayerInfo::getInventory()->findItem(545, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(530, 1);
+            item = PlayerInfo::getInventory()->findItem(530, 0);
 
         //no bow
         if (!item)

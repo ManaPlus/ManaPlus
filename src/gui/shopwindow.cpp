@@ -216,7 +216,7 @@ void ShopWindow::action(const gcn::ActionEvent &event)
         return;
 
     //+++ need support for colors
-    Item *item = inv->findItem(mSelectedItem, 1);
+    Item *item = inv->findItem(mSelectedItem, 0);
     if (item)
     {
         if (event.getId() == "add buy")
@@ -515,7 +515,7 @@ void ShopWindow::giveList(const std::string &nick, int mode)
         if (mode == SELL)
         {
             //+++ need support for colors
-            Item *item2 = inv->findItem(item->getId(), 1);
+            Item *item2 = inv->findItem(item->getId(), 0);
             if (item2)
             {
                 int amount = item->getQuantity();
@@ -612,7 +612,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         if (sellDialog)
         {
             //+++ need support for colors
-            Item *item = inv->findItem(id, 1);
+            Item *item = inv->findItem(id, 0);
             if (item)
             {
                 if (item->getQuantity() < amount)
@@ -685,7 +685,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
     if (mode == BUY)
     {
         //+++ need support for colors
-        Item *item2 = inv->findItem(mTradeItem->getId(), 1);
+        Item *item2 = inv->findItem(mTradeItem->getId(), 0);
         if (!item2 || item2->getQuantity() < amount
             || !findShopItem(mTradeItem, SELL))
         {
