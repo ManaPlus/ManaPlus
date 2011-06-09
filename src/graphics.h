@@ -225,6 +225,8 @@ class Graphics : public gcn::SDLGraphics
         BlitMode getBlitMode()
         { return mBlitMode; }
 
+        void fillRectangle(const gcn::Rectangle& rectangle);
+
         /**
          * Updates the screen. This is done by either copying the buffer to the
          * screen or swapping pages.

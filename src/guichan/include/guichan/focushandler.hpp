@@ -55,8 +55,7 @@ namespace gcn
 
     /**
      * Handles focus for widgets in a Gui. Each Gui has at least one
-     * focus handler. 
-     
+     * focus handler.
      * You will probably not use the focus handler directly as Widget 
      * has functions that automatically uses the active focus handler.
      *

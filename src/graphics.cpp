@@ -32,6 +32,8 @@
 
 #include "utils/stringutils.h"
 
+#include <guichan/sdl/sdlpixel.hpp>
+
 //<SDL_gfxBlitFunc.h>
 #include "SDL_gfxBlitFunc.h"
 
@@ -699,4 +701,129 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
     }
     dstrect->w = dstrect->h = 0;
     return 0;
+}
+
+void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
+{
+    if (mClipStack.empty())
+        return;
+
+    const gcn::ClipRectangle& top = mClipStack.top();
+
+    gcn::Rectangle area = rectangle;
+    area.x += top.xOffset;
+    area.y += top.yOffset;
+
+    if (!area.isIntersecting(top))
+        return;
+
+    if (mAlpha)
+    {
+        int x1 = area.x > top.x ? area.x : top.x;
+        int y1 = area.y > top.y ? area.y : top.y;
+        int x2 = area.x + area.width < top.x + top.width ?
+            area.x + area.width : top.x + top.width;
+        int y2 = area.y + area.height < top.y + top.height ?
+            area.y + area.height : top.y + top.height;
+        int x, y;
+
+        const int bpp = mTarget->format->BytesPerPixel;
+        Uint32 pixel = SDL_MapRGB(mTarget->format, mColor.r, mColor.g, mColor.b);
+
+        SDL_LockSurface(mTarget);
+        switch(bpp)
+        {
+            case 1:
+                for (y = y1; y < y2; y++)
+                {
+                    for (x = x1; x < x2; x++)
+                    {
+                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        *p = pixel;
+                        //SDLputPixelAlpha(mTarget, x, y, mColor);
+                    }
+                }
+                break;
+            case 2:
+                for (y = y1; y < y2; y++)
+                {
+                    for (x = x1; x < x2; x++)
+                    {
+                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        *(Uint16 *)p = gcn::SDLAlpha16(pixel, *(Uint32 *)p,
+                            mColor.a, mTarget->format);
+                        //SDLputPixelAlpha(mTarget, x, y, mColor);
+                    }
+                }
+                break;
+            case 3:
+            {
+                const int ca = 255 - mColor.a;
+                const int cr = mColor.r * mColor.a;
+                const int cg = mColor.g * mColor.a;
+                const int cb = mColor.b * mColor.a;
+
+                for (y = y1; y < y2; y++)
+                {
+                    for (x = x1; x < x2; x++)
+                    {
+                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+                        {
+                            p[2] = (p[2] * ca + cb) >> 8;
+                            p[1] = (p[1] * ca + cg) >> 8;
+                            p[0] = (p[0] * ca + cr) >> 8;
+                        }
+                        else
+                        {
+                            p[0] = (p[0] * ca + cb) >> 8;
+                            p[1] = (p[1] * ca + cg) >> 8;
+                            p[2] = (p[2] * ca + cr) >> 8;
+                        }
+                        //SDLputPixelAlpha(mTarget, x, y, mColor);
+                    }
+                }
+                break;
+            }
+            case 4:
+            {
+                const unsigned pb = (pixel & 0xff) * mColor.a;
+                const unsigned pg = (pixel & 0xff00) * mColor.a;
+                const unsigned pr = (pixel & 0xff0000) * mColor.a;
+                const unsigned a1 = (255 - mColor.a);
+                for (y = y1; y < y2; y++)
+                {
+                    for (x = x1; x < x2; x++)
+                    {
+                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        Uint32 dst = *(Uint32 *)p;
+                        const unsigned int b = (pb + (dst & 0xff) * a1) >> 8;
+                        const unsigned int g = (pg + (dst & 0xff00) * a1) >> 8;
+                        const unsigned int r = (pr + (dst & 0xff0000) * a1) >> 8;
+
+                        *(Uint32 *)p = ((b & 0xff) | (g & 0xff00) | (r & 0xff0000));
+
+//                        *(Uint32 *)p = gcn::SDLAlpha32(pixel, *(Uint32 *)p, mColor.a);
+                    }
+                }
+                break;
+            }
+            default:
+                break;
+        }
+
+        SDL_UnlockSurface(mTarget);
+    }
+    else
+    {
+        SDL_Rect rect;
+        rect.x = area.x;
+        rect.y = area.y;
+        rect.w = area.width;
+        rect.h = area.height;
+
+        Uint32 color = SDL_MapRGBA(mTarget->format,
+            mColor.r, mColor.g, mColor.b, mColor.a);
+        SDL_FillRect(mTarget, &rect, color);
+    }
 }
