@@ -9,7 +9,8 @@ helptips_DATA =				\
 	3.txt			\
 	4.txt			\
 	5.txt			\
-	6.txt
+	6.txt			\
+	7.txt
 
 EXTRA_DIST =			\
 	$(helptips_DATA) \

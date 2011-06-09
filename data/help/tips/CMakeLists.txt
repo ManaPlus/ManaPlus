@@ -7,6 +7,7 @@ SET(FILES
     4.txt
     5.txt
     6.txt
+    7.txt
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/help/tips)

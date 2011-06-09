@@ -41,7 +41,7 @@
 #include "debug.h"
 
 static const int minTip = 1;
-static const int maxTip = 6;
+static const int maxTip = 8;
 
 DidYouKnowWindow::DidYouKnowWindow():
     Window(_("Did You Know?"))

@@ -1,0 +1,2 @@
+You can see other player equiped items,
+by right click on player and select in context menu "Show Items".
