@@ -728,7 +728,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         int x, y;
 
         const int bpp = mTarget->format->BytesPerPixel;
-        Uint32 pixel = SDL_MapRGB(mTarget->format, mColor.r, mColor.g, mColor.b);
+        Uint32 pixel = SDL_MapRGB(mTarget->format,
+            mColor.r, mColor.g, mColor.b);
 
         SDL_LockSurface(mTarget);
         switch(bpp)
@@ -738,7 +739,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 {
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        Uint8 *p = (Uint8 *)mTarget->pixels
+                            + y * mTarget->pitch + x * bpp;
                         *p = pixel;
                         //SDLputPixelAlpha(mTarget, x, y, mColor);
                     }
@@ -749,7 +751,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 {
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        Uint8 *p = (Uint8 *)mTarget->pixels
+                            + y * mTarget->pitch + x * bpp;
                         *(Uint16 *)p = gcn::SDLAlpha16(pixel, *(Uint32 *)p,
                             mColor.a, mTarget->format);
                         //SDLputPixelAlpha(mTarget, x, y, mColor);
@@ -767,7 +770,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 {
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        Uint8 *p = (Uint8 *)mTarget->pixels
+                            + y * mTarget->pitch + x * bpp;
                         if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
                         {
                             p[2] = (p[2] * ca + cb) >> 8;
@@ -795,15 +799,16 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 {
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch + x * bpp;
+                        Uint8 *p = (Uint8 *)mTarget->pixels
+                            + y * mTarget->pitch + x * bpp;
                         Uint32 dst = *(Uint32 *)p;
                         const unsigned int b = (pb + (dst & 0xff) * a1) >> 8;
                         const unsigned int g = (pg + (dst & 0xff00) * a1) >> 8;
-                        const unsigned int r = (pr + (dst & 0xff0000) * a1) >> 8;
+                        const unsigned int r = (pr
+                            + (dst & 0xff0000) * a1) >> 8;
 
-                        *(Uint32 *)p = ((b & 0xff) | (g & 0xff00) | (r & 0xff0000));
-
-//                        *(Uint32 *)p = gcn::SDLAlpha32(pixel, *(Uint32 *)p, mColor.a);
+                        *(Uint32 *)p = ((b & 0xff)
+                            | (g & 0xff00) | (r & 0xff0000));
                     }
                 }
                 break;

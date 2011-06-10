@@ -95,7 +95,8 @@ WindowMenu::WindowMenu():
               KeyboardConfig::KEY_WINDOW_SHORTCUT);
     addButton(N_("SP"), _("Spells"), x, h, KeyboardConfig::KEY_WINDOW_SPELLS);
     addButton(N_("DR"), _("Drop"), x, h, KeyboardConfig::KEY_WINDOW_DROP);
-    addButton(N_("YK"), _("Did you know"), x, h, KeyboardConfig::KEY_WINDOW_DIDYOUKNOW);
+    addButton(N_("YK"), _("Did you know"), x, h,
+        KeyboardConfig::KEY_WINDOW_DIDYOUKNOW);
     addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
 
     if (graphics)
