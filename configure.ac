@@ -191,6 +191,30 @@ esac],[memdebug_enabled=false])
 
 AM_CONDITIONAL(ENABLE_MEM_DEBUG, test x$memdebug_enabled = xtrue)
 
+# Enable tcmalloc
+AC_ARG_ENABLE(tcmalloc,
+[  --enable-tcmalloc    Turn on tcmalloc],
+[case "${enableval}" in
+  yes) tcmalloc_enabled=true
+LIBS="$LIBS -ltcmalloc"
+ ;;
+  no)  tcmalloc_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-tcmalloc) ;;
+esac],[tcmalloc_enabled=false])
+
+# Enable google profiler
+AC_ARG_ENABLE(googleprofiler,
+[  --enable-googleprofiler    Turn on google profiler],
+[case "${enableval}" in
+  yes) googleprofiler_enabled=true
+LIBS="$LIBS -lprofiler"
+ ;;
+  no)  googleprofiler_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-googleprofiler) ;;
+esac],[googleprofiler_enabled=false])
+
+AM_CONDITIONAL(ENABLE_GOOGLE_PROFILER, test x$googleprofiler_enabled = xtrue)
+
 AC_CONFIG_FILES([
 manaplus.spec
 Makefile
