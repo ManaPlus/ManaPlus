@@ -1,0 +1,2 @@
+You can imitate other players by selecting "imitation" in player context menu
+ or type chat command: /imitate playername.

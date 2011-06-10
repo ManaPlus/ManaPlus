@@ -1,0 +1,2 @@
+If client working very slow, you can improve speed
+by reading this: http://manaplus.evolonline.org/slowpc
