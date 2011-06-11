@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Mana World 0.1.0\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
 "PO-Revision-Date: 2009-09-14 06:59+0000\n"
 "Last-Translator: Maciej Benke <syngress_stc@vp.pl>\n"
 "Language-Team: <pl@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Konfiguracja"
 
@@ -929,6 +929,30 @@ msgstr ""
 msgid "Out: %d bytes/s"
 msgstr ""
 
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Zamknij"
+
+#: src/gui/didyouknowwindow.cpp:62
+#, fuzzy
+msgid "< Previous"
+msgstr "Poprzednia"
+
+#: src/gui/didyouknowwindow.cpp:63
+#, fuzzy
+msgid "Next >"
+msgstr "Następna"
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
+
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 #: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
@@ -950,14 +974,8 @@ msgstr "Zdejmij"
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Zamknij"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Inwentarz"
 
@@ -3760,7 +3778,7 @@ msgstr ""
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr ""
 
@@ -3779,11 +3797,11 @@ msgstr "Zmień"
 msgid "Choose World"
 msgstr "Wybierz twój serwer"
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr "Magazyn"
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr ""
 
@@ -6329,9 +6347,6 @@ msgstr "Nieznany przedmiot"
 
 #~ msgid "Effect: %s"
 #~ msgstr "Efekt: %s"
-
-#~ msgid "Previous"
-#~ msgstr "Poprzednia"
 
 #~ msgid "New"
 #~ msgstr "Nowa"

@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Sini Ruohomaa <sini.ruohomaa@iki.fi>, 2011
-# Andrei Karas <akaras@inbox.ru>, 2011
+# 
+# Sini Ruohomaa <sini.ruohomaa@iki.fi>, 2011.
+# Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
-"PO-Revision-Date: 2011-06-07 00:00+0000\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
+"PO-Revision-Date: 2011-06-11 17:16+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1030
@@ -30,7 +30,7 @@ msgstr "väistö"
 msgid "miss"
 msgstr "huti"
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Asetukset"
 
@@ -126,11 +126,11 @@ msgstr "Et voi lähettää tyhjiä kuiskauksia!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai "
-"käytit omaa nimeäsi."
+"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai"
+" käytit omaa nimeäsi."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -285,8 +285,8 @@ msgstr "Orvot resurssikuvat:"
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"Vaihtoehdot komennolle /%s ovat \"yes\" (kyllä), \"no\" (ei) tai vastaavasti "
-"\"true\", \"false\", \"1\" tai \"0\"."
+"Vaihtoehdot komennolle /%s ovat \"yes\" (kyllä), \"no\" (ei) tai vastaavasti"
+" \"true\", \"false\", \"1\" tai \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:400
 msgid "General"
@@ -858,6 +858,28 @@ msgstr "Sisään: %d tavua/s"
 msgid "Out: %d bytes/s"
 msgstr "Ulos: %d tavua/s"
 
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Sulje"
+
+#: src/gui/didyouknowwindow.cpp:62
+msgid "< Previous"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:63
+msgid "Next >"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
+
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 #: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
@@ -879,14 +901,8 @@ msgstr "Poista varuste käytöstä"
 msgid "Help"
 msgstr "Apua"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Sulje"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Tavarat"
 
@@ -1664,8 +1680,8 @@ msgstr "Huomaa"
 #: src/gui/setup_audio.cpp:120
 msgid "You may have to restart your client if you want to download new music"
 msgstr ""
-"Voit joutua uudelleenkäynnistämään asiakasohjelmasi, jos haluat ladata uudet "
-"musiikit"
+"Voit joutua uudelleenkäynnistämään asiakasohjelmasi, jos haluat ladata uudet"
+" musiikit"
 
 #: src/gui/setup_audio.cpp:133
 msgid "Sound Engine"
@@ -2241,7 +2257,8 @@ msgstr "-"
 #: src/gui/setup_video.cpp:535
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
+msgstr ""
+"Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
 #: src/gui/setup_video.cpp:541
 msgid ""
@@ -3084,7 +3101,8 @@ msgid "Change"
 msgstr "Muuta"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Tavaran lisääminen epäonnistui, limittämisongelma."
 
 #: src/gui/tradewindow.cpp:381
@@ -3434,7 +3452,8 @@ msgid "Command: /unignore <player>"
 msgstr "Komento: /unignore <pelaajan nimi>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Tämä komento huomioi pelaajan taas, jos tämä on ensin jätetty huomiotta."
 
@@ -3514,7 +3533,7 @@ msgstr ""
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr "Ase"
 
@@ -3530,11 +3549,11 @@ msgstr "Vaihda kirjautumistietoja"
 msgid "Choose World"
 msgstr "Valitse pelimaailma"
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr "Varasto"
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr "Kärry"
 
@@ -4512,7 +4531,8 @@ msgstr "Tuntematon hahmopalvelinvirhe."
 
 #: src/net/tmwa/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
+msgstr ""
+"Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
 
 #: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:196
 msgid "Wrong name."
@@ -4679,17 +4699,14 @@ msgid "M.Defense"
 msgstr "T.-puolustus"
 
 #: src/net/tmwa/generalhandler.cpp:263
-#, fuzzy
 msgid "% Accuracy"
 msgstr "% Tarkkuus"
 
 #: src/net/tmwa/generalhandler.cpp:264
-#, fuzzy
 msgid "% Evade"
 msgstr "% Välttö"
 
 #: src/net/tmwa/generalhandler.cpp:265
-#, fuzzy
 msgid "% Critical"
 msgstr "% Täysosuma"
 
@@ -5140,8 +5157,10 @@ msgstr "Viesti"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
-msgstr "Kannat roinaa yli puolen elopainoasi. Rasitus estää sinua paranemasta."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
+msgstr ""
+"Kannat roinaa yli puolen elopainoasi. Rasitus estää sinua paranemasta."
 
 #: src/net/tmwa/playerhandler.cpp:353
 msgid "You are carrying less than half your weight. You can regain health."
@@ -5332,3 +5351,5 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Tuntematon tavara"
+
+

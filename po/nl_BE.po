@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Jeroen De Meerleer <jeroen.de.meerleer@telenet.be>, 2011
-# Maarten Vanraes <maarten.vanraes@gmail.com>, 2011
+# 
+# Jeroen De Meerleer <jeroen.de.meerleer@telenet.be>, 2011.
+# Maarten Vanraes <maarten.vanraes@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
-"PO-Revision-Date: 2011-06-07 00:00+0000\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
+"PO-Revision-Date: 2011-06-11 17:16+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Dutch (Belgium/Flemish) (http://www.transifex.net/projects/p/"
-"manaplus/team/nl_BE/)\n"
-"Language: nl_BE\n"
+"Language-Team: Dutch (Belgium/Flemish) (http://www.transifex.net/projects/p/manaplus/team/nl_BE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1030
@@ -31,7 +30,7 @@ msgstr "ontwijkt"
 msgid "miss"
 msgstr "mist"
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configureren"
 
@@ -127,8 +126,8 @@ msgstr "Kan geen lege berichten sturen!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
 "Je kan geen fluister-tab aanmaken voor \"%s\"! Het kan zijn dat hij reeds "
 "bestaat, of het is jezelf."
@@ -285,8 +284,7 @@ msgstr ""
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opties voor /%s zijn \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr "Opties voor /%s zijn \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:400
 msgid "General"
@@ -858,6 +856,28 @@ msgstr "Invoer: %d bytes/sec"
 msgid "Out: %d bytes/s"
 msgstr "Uitvoer: %d bytes/sec"
 
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Sluiten"
+
+#: src/gui/didyouknowwindow.cpp:62
+msgid "< Previous"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:63
+msgid "Next >"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
+
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 #: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
@@ -879,14 +899,8 @@ msgstr "Afdoen"
 msgid "Help"
 msgstr "Help"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Sluiten"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Inventaris"
 
@@ -1421,7 +1435,7 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:567 src/gui/socialwindow.cpp:1035
 msgid "Leave"
-msgstr ""
+msgstr "Verlaat"
 
 #: src/gui/popupmenu.cpp:702
 msgid "Change guild position"
@@ -2266,21 +2280,21 @@ msgstr "Het wisselen van of naar OpenGL wordt pas actief na opnieuw opstarten"
 
 #: src/gui/setup_video.cpp:705
 msgid "Custom resolution (example: 1024x768)"
-msgstr ""
+msgstr "Manuele resolutie (voorbeeld: 1024x768)"
 
 #: src/gui/setup_video.cpp:706
 msgid "Enter new resolution:                "
-msgstr ""
+msgstr "Geef een nieuwe resolutie:                "
 
 #: src/gui/setup_video.cpp:721 src/gui/setup_video.cpp:726
 msgid "Screen Resolution Changed"
-msgstr ""
+msgstr "Scherm Resolutie is gewijzigd"
 
 #: src/gui/setup_video.cpp:724
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
-"Enkele vensters kunnen verplaatst worden om te passen in de omlaag gebrachte "
-"resolutie"
+"Enkele vensters kunnen verplaatst worden om te passen in de omlaag gebrachte"
+" resolutie"
 
 #: src/gui/setup_video.cpp:758
 msgid "Particle Effect Settings Changed."
@@ -2323,7 +2337,7 @@ msgstr "Handel aanvragen"
 #: src/gui/shopwindow.cpp:719
 #, c-format
 msgid "%s wants to %s %s do you accept?"
-msgstr ""
+msgstr "%s wilt %s %s ga je akkoord?"
 
 #: src/gui/skilldialog.cpp:243 src/gui/windowmenu.cpp:81
 msgid "Skills"
@@ -2365,12 +2379,12 @@ msgstr "Guild"
 #: src/gui/socialwindow.cpp:146
 #, c-format
 msgid "Invited user %s to guild %s."
-msgstr ""
+msgstr "gebruiker %s uitgenodigd in guild %s."
 
 #: src/gui/socialwindow.cpp:160
 #, c-format
 msgid "Guild %s quit requested."
-msgstr ""
+msgstr "Guild %s verlating aangevraagd."
 
 #: src/gui/socialwindow.cpp:187
 msgid "Member Invite to Guild"
@@ -2379,16 +2393,16 @@ msgstr ""
 #: src/gui/socialwindow.cpp:188
 #, c-format
 msgid "Who would you like to invite to guild %s?"
-msgstr ""
+msgstr "Wie zou u willen uitnodigen in guild %s?"
 
 #: src/gui/socialwindow.cpp:197
 msgid "Leave Guild?"
-msgstr ""
+msgstr "Verlaten Guild?"
 
 #: src/gui/socialwindow.cpp:198
 #, c-format
 msgid "Are you sure you want to leave guild %s?"
-msgstr ""
+msgstr "Bent u zeker dat u guild %s wilt verlaten?"
 
 #: src/gui/socialwindow.cpp:215 src/net/tmwa/gui/partytab.cpp:50
 msgid "Party"
@@ -2397,7 +2411,7 @@ msgstr "Groep"
 #: src/gui/socialwindow.cpp:243
 #, c-format
 msgid "Invited user %s to party."
-msgstr ""
+msgstr "Gebruiker %s uitgenodigd in groep."
 
 #: src/gui/socialwindow.cpp:257
 #, c-format
@@ -2456,7 +2470,7 @@ msgstr ""
 
 #: src/gui/socialwindow.cpp:1034
 msgid "Invite"
-msgstr ""
+msgstr "Nodig uit"
 
 #: src/gui/socialwindow.cpp:1176
 #, c-format
@@ -2542,11 +2556,11 @@ msgstr ""
 
 #: src/gui/socialwindow.cpp:1393
 msgid "Party Name"
-msgstr ""
+msgstr "Groep Naam"
 
 #: src/gui/socialwindow.cpp:1394
 msgid "Choose your party's name."
-msgstr ""
+msgstr "Kies uw groepsnaam."
 
 #: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:88
 msgid "Specials"
@@ -3085,10 +3099,11 @@ msgid "Change"
 msgstr "Veranderen"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
-"Kan dat voorwerp niet toevoegen. Je kan één type voorwerp niet overlappen in "
-"het venster."
+"Kan dat voorwerp niet toevoegen. Je kan één type voorwerp niet overlappen in"
+" het venster."
 
 #: src/gui/tradewindow.cpp:381
 msgid "You don't have enough money."
@@ -3439,7 +3454,8 @@ msgid "Command: /unignore <player>"
 msgstr "Commando: /unignore <speler>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
 #: src/gui/windowmenu.cpp:65
@@ -3518,7 +3534,7 @@ msgstr ""
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr ""
 
@@ -3528,17 +3544,17 @@ msgstr ""
 
 #: src/gui/worldselectdialog.cpp:82
 msgid "Change Login"
-msgstr ""
+msgstr "Wijzig Login"
 
 #: src/gui/worldselectdialog.cpp:83
 msgid "Choose World"
 msgstr ""
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr ""
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr ""
 
@@ -4871,8 +4887,8 @@ msgid ""
 "\"0\", \"no\", \"false\" to disable item sharing."
 msgstr ""
 "<beleid> kan een van de volgende zijn om voorwerpdeling in te schakelen: "
-"\"1\", \"yes\", \"true\". Of om voorwerpdeling uit te schakelen: \"0\", \"no"
-"\", \"false\"."
+"\"1\", \"yes\", \"true\". Of om voorwerpdeling uit te schakelen: \"0\", "
+"\"no\", \"false\"."
 
 #: src/net/tmwa/gui/partytab.cpp:101
 msgid "Command: /item"
@@ -5137,7 +5153,8 @@ msgstr "Bericht"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Je draagt meer dan de helft van jouw eigen gewicht. Je kan geen leven "
 "herstellen."
@@ -5331,3 +5348,5 @@ msgstr "Magie %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Onbekend voorwerp"
+
+

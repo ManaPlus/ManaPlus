@@ -75,7 +75,7 @@ DidYouKnowWindow::DidYouKnowWindow():
     mBrowserBox->setEnableImages(true);
 
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
-    place(0, 3, mOpenAgainCheckBox);
+    place(0, 3, mOpenAgainCheckBox, 5);
     place(1, 4, mButtonPrev, 1);
     place(2, 4, mButtonNext, 1);
     place(4, 4, okButton);

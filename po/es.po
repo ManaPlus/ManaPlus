@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Nelson Martell <nelson6eeduardo65@gmail.com>, 2011
-# Nelson  <nelson6eeduardo65@gmail.com>, 2011
-# Jumpy <antoinebcn@hotmail.com>, 2011
-# Andrei Karas <akaras@inbox.ru>, 2011
+# 
+# Nelson  <nelson6eeduardo65@gmail.com>, 2011.
+# Nelson Martell <nelson6eeduardo65@gmail.com>, 2011.
+# Jumpy <antoinebcn@hotmail.com>, 2011.
+# Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
-"PO-Revision-Date: 2011-06-07 00:00+0000\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
+"PO-Revision-Date: 2011-06-11 17:16+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"manaplus/team/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/manaplus/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1030
@@ -33,7 +32,7 @@ msgstr "evade"
 msgid "miss"
 msgstr "falla"
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configuración"
 
@@ -129,8 +128,8 @@ msgstr "¡No puedes enviar susurros vacíos!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
 "¡No se puede crear una pestaña de susurro para el nick \"%s\"! O bien ya "
 "existe, o eres tú."
@@ -287,8 +286,7 @@ msgstr "Imágenes de recurso huérfano:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opciones para /%s son \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr "Opciones para /%s son \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:400
 msgid "General"
@@ -848,7 +846,7 @@ msgstr "Golpe crítico:"
 #: src/gui/debugwindow.cpp:385 src/gui/debugwindow.cpp:390
 #, c-format
 msgid "Ping: %s ms"
-msgstr ""
+msgstr "Ping: %s ms"
 
 #: src/gui/debugwindow.cpp:393
 #, c-format
@@ -859,6 +857,28 @@ msgstr "In: %d bytes/s"
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Out: %d bytes/s"
+
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Cerrar"
+
+#: src/gui/didyouknowwindow.cpp:62
+msgid "< Previous"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:63
+msgid "Next >"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
 
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
@@ -881,14 +901,8 @@ msgstr "Quitárselo"
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Cerrar"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Inventario"
 
@@ -1025,36 +1039,36 @@ msgstr "Restablecer cronometrador"
 #: src/gui/killstats.cpp:68 src/gui/killstats.cpp:204
 #, c-format
 msgid "Level: %d at %f%%"
-msgstr ""
+msgstr "Nivel: %d de %f%%"
 
 #: src/gui/killstats.cpp:72 src/gui/killstats.cpp:209
 #, c-format
 msgid "Exp: %d/%d Left: %d"
-msgstr ""
+msgstr "Exp: %d/%d Queda: %d"
 
 #: src/gui/killstats.cpp:75 src/gui/killstats.cpp:215
 #: src/gui/killstats.cpp:224
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
-msgstr ""
+msgstr "1%% = %d exp, prom. pandilla para 1%%: %s"
 
 #: src/gui/killstats.cpp:78 src/gui/killstats.cpp:141
 #: src/gui/killstats.cpp:233
 #, c-format
 msgid "Kills: %s, total exp: %s"
-msgstr ""
+msgstr "Muertes: %s, exp. total: %s"
 
 #: src/gui/killstats.cpp:80 src/gui/killstats.cpp:143
 #: src/gui/killstats.cpp:219 src/gui/killstats.cpp:229
 #, c-format
 msgid "Avg Exp: %s, No. of avg mob to next level: %s"
-msgstr ""
+msgstr "Prom. Exp: %s, Prom. de pandilla para siguiente nivel: %s"
 
 #: src/gui/killstats.cpp:81 src/gui/killstats.cpp:161
 #: src/gui/killstats.cpp:236
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
-msgstr ""
+msgstr "Matanza/Mín: %s, Exp/Mín: %s"
 
 #: src/gui/killstats.cpp:83 src/gui/killstats.cpp:88 src/gui/killstats.cpp:93
 #: src/gui/killstats.cpp:288 src/gui/killstats.cpp:304
@@ -1062,41 +1076,41 @@ msgstr ""
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Rapidez de experiencia por %d minuto: %s"
+msgstr[1] "Rapidez de experiencia por %d minutos: %s"
 
 #: src/gui/killstats.cpp:86 src/gui/killstats.cpp:91 src/gui/killstats.cpp:96
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tiempo para el siguiente nivel por %d minuto: %s"
+msgstr[1] "Tiempo para el siguiente nivel por %d minutos: %s"
 
 #: src/gui/killstats.cpp:99 src/gui/killstats.cpp:240
 msgid "Last kill exp:"
-msgstr ""
+msgstr "Exp de último monstruo eliminado:"
 
 #: src/gui/killstats.cpp:101 src/gui/killstats.cpp:354
 #: src/gui/killstats.cpp:360 src/gui/killstats.cpp:366
 #: src/gui/killstats.cpp:371
 msgid "Time before jacko spawn:"
-msgstr ""
+msgstr "Tiempo antes de que jacko desove:"
 
 #: src/gui/killstats.cpp:293 src/gui/killstats.cpp:300
 #: src/gui/killstats.cpp:310 src/gui/killstats.cpp:317
 #: src/gui/killstats.cpp:329 src/gui/killstats.cpp:336
 #, c-format
 msgid "  Time for next level: %s"
-msgstr ""
+msgstr "  Tiempo para el siguiente nivel: %s"
 
 #: src/gui/killstats.cpp:360
 #, c-format
 msgid "%s %d?"
-msgstr ""
+msgstr "¿%s %d?"
 
 #: src/gui/killstats.cpp:366
 msgid "jacko spawning"
-msgstr ""
+msgstr "desove de jacko"
 
 #: src/gui/logindialog.cpp:59
 msgid "Normal"
@@ -1470,7 +1484,7 @@ msgstr "Almacenar todo"
 #: src/gui/popupmenu.cpp:1553 src/gui/popupmenu.cpp:1650
 #: src/gui/popupmenu.cpp:1693
 msgid "Drop all"
-msgstr ""
+msgstr "Tirar todo"
 
 #: src/gui/popupmenu.cpp:1574
 msgid "Retrieve 10"
@@ -1506,7 +1520,7 @@ msgstr "Restablecer barra amarilla"
 
 #: src/gui/popupmenu.cpp:1785
 msgid "Copy to chat"
-msgstr ""
+msgstr "Copiar al chat"
 
 #: src/gui/popupmenu.cpp:1802 src/gui/socialwindow.cpp:854
 #: src/gui/socialwindow.cpp:889 src/gui/socialwindow.cpp:924
@@ -3088,7 +3102,8 @@ msgid "Change"
 msgstr "Cambiar"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Fallo al añadir objeto. No puedes añadir más de un mismo tipo de objeto en "
 "la ventana."
@@ -3440,7 +3455,8 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jugador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Este comando para de ignorar al jugador si había sido ignorado."
 
 #: src/gui/windowmenu.cpp:65
@@ -3519,7 +3535,7 @@ msgstr ""
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr "SET"
 
@@ -3535,11 +3551,11 @@ msgstr "Cambiar de Login"
 msgid "Choose World"
 msgstr "Escojer Mundo"
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr "Almacenamiento"
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr "Mochila"
 
@@ -3919,7 +3935,7 @@ msgstr "Interruptor de tipo de cámara"
 
 #: src/keyboardconfig.cpp:336
 msgid "Modifier key"
-msgstr ""
+msgstr "Tecla modificadora"
 
 #: src/keyboardconfig.cpp:408
 #, c-format
@@ -4883,7 +4899,8 @@ msgstr "Comando: /item"
 
 #: src/net/tmwa/gui/partytab.cpp:102
 msgid "This command displays the party's current item sharing policy."
-msgstr "Este comando muestra el actual estado de compartir objetos en el grupo"
+msgstr ""
+"Este comando muestra el actual estado de compartir objetos en el grupo"
 
 #: src/net/tmwa/gui/partytab.cpp:107
 msgid "Command: /exp <policy>"
@@ -4978,8 +4995,8 @@ msgstr "Rechazado del servidor."
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
-"Has sido baneado permanentemente del juego. Por favor contacta con el equipo "
-"GM."
+"Has sido baneado permanentemente del juego. Por favor contacta con el equipo"
+" GM."
 
 #: src/net/tmwa/loginhandler.cpp:180
 msgid "Client too old."
@@ -5142,7 +5159,8 @@ msgstr "Mensaje"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
 #: src/net/tmwa/playerhandler.cpp:353
@@ -5334,3 +5352,5 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Objeto desconocido"
+
+
