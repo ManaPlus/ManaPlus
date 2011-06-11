@@ -78,10 +78,13 @@ Item *Inventory::findItem(int itemId, unsigned char color) const
 {
     for (unsigned i = 0; i < mSize; i++)
     {
-        if (mItems[i] && mItems[i]->getId() == itemId
-            && (color == 0 || mItems[i]->getColor() == color))
+        if (mItems[i] && mItems[i]->getId() == itemId)
         {
-            return mItems[i];
+            if (color == 0 || mItems[i]->getColor() == color
+                || (color == 1 && mItems[i]->getColor() <= 1))
+            {
+                return mItems[i];
+            }
         }
     }
 
