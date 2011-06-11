@@ -1,3 +1,21 @@
+2011-06-12 New release 1.1.6.12
+ManaPlus:
+fix: outfits item selection.
+fix: item slots in "show items" menu item.
+fix: memory leaks.
+fix: item colors in different windows.
+add: secure font for highlighting incorrect nicks.
+add: gender sign with any players names.
+add: extend quick move items from inventory and back (LSHIFT)
+modifier key + left click - move all items from/to storage.
+modifier key + right clikc - show window for amount selection for moving.
+modifier key + drop button - drop all items from selected slot.
+add: add "drop all" to context menu.
+add: menu item to copy text from bars to chat.
+add: did you know window.
+add: improve software draw mode (SDL) speed.
+
+
 2011-05-29 New release 1.1.5.29
 ManaPlus:
 fix: infinite paste.
