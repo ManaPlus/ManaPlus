@@ -1,0 +1,2 @@
+Você pode restaurar a configurações da barra amarela.
+Clicando com o botão direito do mouse sobre a barra e selecionar "Zerar barra amarela"

@@ -1,0 +1,3 @@
+Você pode ocultar/mostrar barras e botoes com o clique direito do mouse e selecionar o item do menu.
+~~~help/tips/1-1.jpg~
+~~~help/tips/1-2.jpg~

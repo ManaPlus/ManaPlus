@@ -1,0 +1,2 @@
+Você pode ficar em modo ausente,
+apenas a enviar o comando /away no chat

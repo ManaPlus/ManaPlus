@@ -1,0 +1,2 @@
+Você pode imitar outros jogadores selecionando "Imitar" no menu do jogador
+ ou você envie o comando: /imitate nome_do_jogador

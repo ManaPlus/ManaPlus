@@ -1,0 +1,2 @@
+Você pode comprar e vender itens na loja dos jogadores.
+Clique com o botão direito do mouse sobre o jogador e selecione "Comprar" ou "Vender".

@@ -1,0 +1,2 @@
+Você pode ver os itens equipados em outros jogadores,
+clicando com o botão direito do mouse e selecionar no menu a opção "Mostrar itens"
