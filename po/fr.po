@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
-#   <antoinebcn@hotmail.com>, 2011
-# Jumpy <antoinebcn@hotmail.com>, 2011
-# Bernard  <nard@bh28.net>, 2011
-# Andrei Karas <akaras@inbox.ru>, 2011
+# 
+#   <antoinebcn@hotmail.com>, 2011.
+# Jumpy <antoinebcn@hotmail.com>, 2011.
+# Bernard  <nard@bh28.net>, 2011.
+# Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
-"PO-Revision-Date: 2011-06-07 00:00+0000\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
+"PO-Revision-Date: 2011-06-11 17:16+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/actorspritemanager.cpp:1030
@@ -33,7 +32,7 @@ msgstr "esquivé"
 msgid "miss"
 msgstr "raté"
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configuration"
 
@@ -130,11 +129,11 @@ msgstr "Vous ne pouvez pas envoyer de messages vides."
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Vous ne pouvez créer une nouvelle fenêtre de message privé avec le nom \"%s"
-"\". Soit elle existe déjà, soit il s'agit de vous même."
+"Vous ne pouvez créer une nouvelle fenêtre de message privé avec le nom "
+"\"%s\". Soit elle existe déjà, soit il s'agit de vous même."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -289,8 +288,7 @@ msgstr "Images des ressources non affectées :"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Les options de /%s sont \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr "Les options de /%s sont \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:400
 msgid "General"
@@ -863,6 +861,28 @@ msgstr "Entrée : %d bytes/s"
 msgid "Out: %d bytes/s"
 msgstr "Sortie : %d bytes/s"
 
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Fermer"
+
+#: src/gui/didyouknowwindow.cpp:62
+msgid "< Previous"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:63
+msgid "Next >"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
+
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 #: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
@@ -884,14 +904,8 @@ msgstr "Retirer"
 msgid "Help"
 msgstr "Aide"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Fermer"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Inventaire"
 
@@ -1473,7 +1487,7 @@ msgstr "Entreposer tout"
 #: src/gui/popupmenu.cpp:1553 src/gui/popupmenu.cpp:1650
 #: src/gui/popupmenu.cpp:1693
 msgid "Drop all"
-msgstr ""
+msgstr "Jeter tout"
 
 #: src/gui/popupmenu.cpp:1574
 msgid "Retrieve 10"
@@ -1509,7 +1523,7 @@ msgstr "Remise aux valeurs de défaut de la barre jaune"
 
 #: src/gui/popupmenu.cpp:1785
 msgid "Copy to chat"
-msgstr ""
+msgstr "Copier dans la conversation"
 
 #: src/gui/popupmenu.cpp:1802 src/gui/socialwindow.cpp:854
 #: src/gui/socialwindow.cpp:889 src/gui/socialwindow.cpp:924
@@ -2509,8 +2523,8 @@ msgstr "Choisissez le nom de la guilde."
 #: src/gui/socialwindow.cpp:1309
 msgid "Received guild request, but one already exists."
 msgstr ""
-"Vous avez reçu une invitation pour rejoindre une guilde, mais vous êtes déjà "
-"dans une."
+"Vous avez reçu une invitation pour rejoindre une guilde, mais vous êtes déjà"
+" dans une."
 
 #: src/gui/socialwindow.cpp:1315
 #, c-format
@@ -3099,7 +3113,8 @@ msgid "Change"
 msgstr "Changer"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "L'objet ne peux être ajouté. Vous ne pouvez ajouter deux fois le même objet "
 "dans cette fenêtre."
@@ -3345,7 +3360,8 @@ msgstr "Commande : /users"
 
 #: src/gui/widgets/channeltab.cpp:67
 msgid "This command shows the users in this channel."
-msgstr "Cette commande affiche la liste d'utilisateurs présents dans ce salon."
+msgstr ""
+"Cette commande affiche la liste d'utilisateurs présents dans ce salon."
 
 #: src/gui/widgets/channeltab.cpp:71
 msgid "Command: /topic <message>"
@@ -3455,8 +3471,10 @@ msgid "Command: /unignore <player>"
 msgstr "Commande : /unignore <joueur>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
-msgstr "Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
+msgstr ""
+"Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
 
 #: src/gui/windowmenu.cpp:65
 msgid "BC"
@@ -3528,13 +3546,13 @@ msgstr "Jet"
 
 #: src/gui/windowmenu.cpp:98
 msgid "YK"
-msgstr ""
+msgstr "YK"
 
 #: src/gui/windowmenu.cpp:98
 msgid "Did you know"
-msgstr ""
+msgstr "Le savez-vous ?"
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr "Cfg"
 
@@ -3550,11 +3568,11 @@ msgstr "Changer de Compte"
 msgid "Choose World"
 msgstr "Choix du monde"
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr "Entrepôt"
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr "Sac"
 
@@ -3743,7 +3761,7 @@ msgstr "Fenêtre - Qui est en ligne ?"
 
 #: src/keyboardconfig.cpp:161
 msgid "Did you know Window"
-msgstr ""
+msgstr "Connaissiez-vous la fenêtre ?"
 
 #: src/keyboardconfig.cpp:164
 msgid "Previous Social Tab"
@@ -3934,7 +3952,7 @@ msgstr "Changer le mode caméra"
 
 #: src/keyboardconfig.cpp:336
 msgid "Modifier key"
-msgstr ""
+msgstr "Modifier la touche"
 
 #: src/keyboardconfig.cpp:408
 #, c-format
@@ -4099,7 +4117,8 @@ msgstr ""
 
 #: src/main.cpp:71
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr "      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
+msgstr ""
+"      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
 
 #: src/main.cpp:72
 msgid "     --safemode       : Start game in safe mode"
@@ -5180,10 +5199,11 @@ msgstr "Message"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
-"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
-"en mesure de regagner vos points de vie."
+"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus"
+" en mesure de regagner vos points de vie."
 
 #: src/net/tmwa/playerhandler.cpp:353
 msgid "You are carrying less than half your weight. You can regain health."
@@ -5379,3 +5399,5 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Objet inconnu"
+
+

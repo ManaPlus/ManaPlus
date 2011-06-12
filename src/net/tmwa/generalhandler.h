@@ -61,6 +61,8 @@ class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
 
         void event(Mana::Channels channel, const Mana::Event &event);
 
+        void reloadPartially();
+
     protected:
         MessageHandlerPtr mAdminHandler;
         MessageHandlerPtr mBeingHandler;

@@ -48,6 +48,8 @@ class GeneralHandler : public Net::GeneralHandler, public Mana::Listener
 
         void reload();
 
+        void reloadPartially();
+
         void unload();
 
         void flushNetwork();

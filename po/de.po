@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
-#   <Necromong@inbox.ru>, 2011
-#   <jack@krass.com>, 2011
-# Andrei Karas <akaras@inbox.ru>, 2011
+# 
+#   <Necromong@inbox.ru>, 2011.
+#   <jack@krass.com>, 2011.
+# Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
-"PO-Revision-Date: 2011-06-07 00:00+0000\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
+"PO-Revision-Date: 2011-06-11 17:16+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: German (http://www.transifex.net/projects/p/manaplus/team/"
-"de/)\n"
-"Language: de\n"
+"Language-Team: German (http://www.transifex.net/projects/p/manaplus/team/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1030
@@ -32,7 +31,7 @@ msgstr "ausweichen"
 msgid "miss"
 msgstr "verfehlt"
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Einstellungen"
 
@@ -129,8 +128,8 @@ msgstr "Kann keine leeren Nachrichten versenden!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
 "Kann keinen tab für Spieler \"%s\" erstellen! Entweder existiert bereits "
 "einer, oder der Spieler bist du."
@@ -287,8 +286,7 @@ msgstr ""
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Gültige Optionen für /%s sind \"yes\",\"no\",\"true\",\"false\",\"1\",\"0\"."
+msgstr "Gültige Optionen für /%s sind \"yes\",\"no\",\"true\",\"false\",\"1\",\"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:400
 msgid "General"
@@ -860,6 +858,28 @@ msgstr ""
 msgid "Out: %d bytes/s"
 msgstr ""
 
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Schließen"
+
+#: src/gui/didyouknowwindow.cpp:62
+msgid "< Previous"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:63
+msgid "Next >"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
+
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 #: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
@@ -881,14 +901,8 @@ msgstr "Ablegen"
 msgid "Help"
 msgstr "Hilfe"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Schließen"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Inventar"
 
@@ -3089,10 +3103,11 @@ msgid "Change"
 msgstr "Ändern"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
-"Gegenstand konnte nicht hinzugefügt werden. Du kannst keinen weiteren dieser "
-"Gegenstände hinzufügen."
+"Gegenstand konnte nicht hinzugefügt werden. Du kannst keinen weiteren dieser"
+" Gegenstände hinzufügen."
 
 #: src/gui/tradewindow.cpp:381
 msgid "You don't have enough money."
@@ -3441,7 +3456,8 @@ msgid "Command: /unignore <player>"
 msgstr "Befehl: /unignore <Spieler>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
 #: src/gui/windowmenu.cpp:65
@@ -3520,7 +3536,7 @@ msgstr ""
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr ""
 
@@ -3536,11 +3552,11 @@ msgstr ""
 msgid "Choose World"
 msgstr ""
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr ""
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr ""
 
@@ -4186,8 +4202,8 @@ msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr ""
-"Dein Plan, die Waffe deines Feindes mit Deinem Hals zu zerstören, war leider "
-"nicht ganz so genial, wie Du dachtest..."
+"Dein Plan, die Waffe deines Feindes mit Deinem Hals zu zerstören, war leider"
+" nicht ganz so genial, wie Du dachtest..."
 
 #: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:114
 msgid "I guess this did not run too well."
@@ -4857,8 +4873,8 @@ msgstr ""
 #: src/net/tmwa/gui/partytab.cpp:74
 msgid "/exp > Show/change party experience sharing options"
 msgstr ""
-"/exp > Zeige oder ändere die Optionen zum Teilen der Erfahrungspunkte in der "
-"Party"
+"/exp > Zeige oder ändere die Optionen zum Teilen der Erfahrungspunkte in der"
+" Party"
 
 #: src/net/tmwa/gui/partytab.cpp:84
 msgid "This command invites <nick> to party with you."
@@ -5156,7 +5172,8 @@ msgstr "Nachricht"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Du trägst mehr als die Hälfte Deiner Tragkraft. Du kannst Dich nicht mehr "
 "heilen."
@@ -5297,8 +5314,8 @@ msgstr ""
 #: src/net/tmwa/tradehandler.cpp:255
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr ""
-"Gegenstand konnte nicht hinzugefügt werden. Handelspartner hat keinen freien "
-"Platz mehr."
+"Gegenstand konnte nicht hinzugefügt werden. Handelspartner hat keinen freien"
+" Platz mehr."
 
 #: src/net/tmwa/tradehandler.cpp:260
 msgid "Failed adding item. You can't trade this item."
@@ -5352,3 +5369,5 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Unbekannter Gegenstand"
+
+

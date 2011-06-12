@@ -1079,6 +1079,8 @@ int Client::exec()
                     mCurrentDialog = NULL;
 
                     logger->log1("State: GAME");
+                    if (Net::getGeneralHandler())
+                        Net::getGeneralHandler()->reloadPartially();
                     game = new Game;
                     break;
 

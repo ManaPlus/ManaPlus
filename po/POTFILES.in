@@ -16,6 +16,7 @@ src/gui/chatwindow.cpp
 src/gui/confirmdialog.cpp
 src/gui/connectiondialog.cpp
 src/gui/debugwindow.cpp
+src/gui/didyouknowwindow.cpp
 src/gui/editdialog.cpp
 src/gui/equipmentwindow.cpp
 src/gui/helpwindow.cpp

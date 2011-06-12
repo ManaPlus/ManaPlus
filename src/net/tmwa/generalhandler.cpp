@@ -203,6 +203,11 @@ void GeneralHandler::reload()
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }
 
+void GeneralHandler::reloadPartially()
+{
+    static_cast<PartyHandler*>(mPartyHandler.get())->reload();
+}
+
 void GeneralHandler::unload()
 {
     if (mNetwork)

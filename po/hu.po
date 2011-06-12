@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-09 20:13+0300\n"
+"POT-Creation-Date: 2011-06-11 20:15+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:99
+#: src/client.cpp:776 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Beállítások"
 
@@ -922,6 +922,30 @@ msgstr ""
 msgid "Out: %d bytes/s"
 msgstr ""
 
+#: src/gui/didyouknowwindow.cpp:47
+msgid "Did You Know?"
+msgstr ""
+
+#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
+#: src/gui/inventorywindow.cpp:174 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:528 src/gui/shopwindow.cpp:111
+msgid "Close"
+msgstr "Bezár"
+
+#: src/gui/didyouknowwindow.cpp:62
+#, fuzzy
+msgid "< Previous"
+msgstr "Előző"
+
+#: src/gui/didyouknowwindow.cpp:63
+#, fuzzy
+msgid "Next >"
+msgstr "Következő"
+
+#: src/gui/didyouknowwindow.cpp:64
+msgid "Auto open this window"
+msgstr ""
+
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 #: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
@@ -943,14 +967,8 @@ msgstr "Nem használ"
 msgid "Help"
 msgstr "Súgó"
 
-#: src/gui/helpwindow.cpp:57 src/gui/inventorywindow.cpp:174
-#: src/gui/npcdialog.cpp:53 src/gui/popupmenu.cpp:528
-#: src/gui/shopwindow.cpp:111
-msgid "Close"
-msgstr "Bezár"
-
 #: src/gui/inventorywindow.cpp:79 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:243
+#: src/inventory.cpp:246
 msgid "Inventory"
 msgstr "Táska"
 
@@ -3754,7 +3772,7 @@ msgstr ""
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:100
 msgid "SET"
 msgstr ""
 
@@ -3773,11 +3791,11 @@ msgstr "Változtatás"
 msgid "Choose World"
 msgstr "Válassz szervert"
 
-#: src/inventory.cpp:245
+#: src/inventory.cpp:248
 msgid "Storage"
 msgstr "Raktár"
 
-#: src/inventory.cpp:247
+#: src/inventory.cpp:250
 msgid "Cart"
 msgstr ""
 
@@ -6327,9 +6345,6 @@ msgstr "Ismeretlen tárgy"
 
 #~ msgid "Effect: %s"
 #~ msgstr "Hatás: %s"
-
-#~ msgid "Previous"
-#~ msgstr "Előző"
 
 #~ msgid "New"
 #~ msgstr "Új"
