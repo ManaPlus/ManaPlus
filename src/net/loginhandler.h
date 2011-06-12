@@ -101,6 +101,8 @@ class LoginHandler
 
         virtual Worlds getWorlds() const = 0;
 
+        virtual void clearWorlds() = 0;
+
         virtual ~LoginHandler ()
         { }
 
