@@ -209,4 +209,7 @@ void GeneralHandler::event(Mana::Channels channel,
     }
 }
 
+void GeneralHandler::reloadPartially()
+{
+}
 } // namespace ManaServ
