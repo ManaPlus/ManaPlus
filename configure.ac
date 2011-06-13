@@ -238,6 +238,10 @@ data/themes/wood/Makefile
 data/help/Makefile
 data/help/es/Makefile
 data/help/fr/Makefile
+data/help/pt/Makefile
+data/help/pt/tips/Makefile
+data/help/pt_BR/Makefile
+data/help/pt_BR/tips/Makefile
 data/help/ru/Makefile
 data/help/tips/Makefile
 data/icons/Makefile

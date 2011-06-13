@@ -1,4 +1,4 @@
-SUBDIRS = es fr ru tips
+SUBDIRS = es fr ru tips pt pt_BR
 
 helpdir = $(pkgdatadir)/data/help
 

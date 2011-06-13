@@ -1,10 +1,8 @@
 
-helptipsdir = $(pkgdatadir)/data/help/pt_PT/tips
+helppttipsdir = $(pkgdatadir)/data/help/pt/tips
 
-helptips_DATA =				\
+helppttips_DATA =				\
 	1.txt			\
-	1-1.jpg			\
-	1-2.jpg			\
 	2.txt			\
 	3.txt			\
 	4.txt			\

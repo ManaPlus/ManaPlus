@@ -1,7 +1,5 @@
 SET(FILES
     1.txt
-    1-1.jpg
-    1-2.jpg
     2.txt
     3.txt
     4.txt
@@ -17,4 +15,4 @@ SET(FILES
     14.txt
     )
 
-INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/help/pt_PT/tips)
+INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/help/pt/tips)
