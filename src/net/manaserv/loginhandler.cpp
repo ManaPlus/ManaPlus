@@ -481,4 +481,9 @@ void LoginHandler::reconnect()
     accountServerConnection->send(msg);
 }
 
+void LoginHandler::clearWorlds()
+{
+
+}
+
 } // namespace ManaServ

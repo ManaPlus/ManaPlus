@@ -84,6 +84,8 @@ class LoginHandler : public MessageHandler, public Net::LoginHandler
 
         void reconnect();
 
+        void clearWorlds();
+
     private:
         void handleLoginResponse(Net::MessageIn &msg);
         void handleRegisterResponse(Net::MessageIn &msg);

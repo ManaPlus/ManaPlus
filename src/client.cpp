@@ -568,6 +568,9 @@ Client::~Client()
     NPCDB::unload();
     StatusEffect::unload();
 
+    if (Net::getLoginHandler())
+        Net::getLoginHandler()->clearWorlds();
+
     delete mumbleManager;
     mumbleManager = 0;
 
