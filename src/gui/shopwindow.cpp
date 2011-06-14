@@ -312,6 +312,11 @@ void ShopWindow::loadList()
     if (!stat(shopListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
     {
         shopFile.open(shopListName.c_str(), std::ios::in);
+        if (!shopFile.is_open())
+        {
+            shopFile.close();
+            return;
+        }
         char line[101];
         while (shopFile.getline(line, 100))
         {

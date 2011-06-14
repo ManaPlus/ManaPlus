@@ -1304,12 +1304,15 @@ void ChatWindow::initTradeFilter()
     if (!stat(tradeListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
     {
         tradeFile.open(tradeListName.c_str(), std::ios::in);
-        char line[100];
-        while (tradeFile.getline(line, 100))
+        if (tradeFile.is_open())
         {
-            std::string str = line;
-            if (!str.empty())
-                mTradeFilter.push_back(str);
+            char line[100];
+            while (tradeFile.getline(line, 100))
+            {
+                std::string str = line;
+                if (!str.empty())
+                    mTradeFilter.push_back(str);
+            }
         }
         tradeFile.close();
     }
@@ -1466,12 +1469,15 @@ void ChatWindow::loadCustomList()
     if (!stat(listName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
     {
         listFile.open(listName.c_str(), std::ios::in);
-        char line[101];
-        while (listFile.getline(line, 100))
+        if (listFile.is_open())
         {
-            std::string str = line;
-            if (!str.empty())
-                mCustomWords.push_back(str);
+            char line[101];
+            while (listFile.getline(line, 100))
+            {
+                std::string str = line;
+                if (!str.empty())
+                    mCustomWords.push_back(str);
+            }
         }
         listFile.close();
     }

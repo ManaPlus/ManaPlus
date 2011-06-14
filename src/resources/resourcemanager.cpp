@@ -690,7 +690,8 @@ void ResourceManager::saveTextFile(std::string path, std::string name,
         std::string fileName = path + "/" + name;
 
         file.open(fileName.c_str(), std::ios::out);
-        file << text << std::endl;
+        if (file.is_open())
+            file << text << std::endl;
         file.close();
     }
 }

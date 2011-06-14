@@ -1296,6 +1296,11 @@ void Map::addExtraLayer()
     {
         std::ifstream mapFile;
         mapFile.open(mapFileName.c_str(), std::ios::in);
+        if (!mapFile.is_open())
+        {
+            mapFile.close();
+            return;
+        }
         char line[201];
         std::string buf;
         while (mapFile.getline(line, 200))

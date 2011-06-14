@@ -1827,21 +1827,24 @@ void Client::initTradeFilter()
     if (stat(tradeListName.c_str(), &statbuf) || !S_ISREG(statbuf.st_mode))
     {
         tradeFile.open(tradeListName.c_str(), std::ios::out);
-        tradeFile << ": sell" << std::endl;
-        tradeFile << ": buy" << std::endl;
-        tradeFile << ": trade" << std::endl;
-        tradeFile << "i sell" << std::endl;
-        tradeFile << "i buy" << std::endl;
-        tradeFile << "i trade" << std::endl;
-        tradeFile << "i trading" << std::endl;
-        tradeFile << "i am buy" << std::endl;
-        tradeFile << "i am sell" << std::endl;
-        tradeFile << "i am trade" << std::endl;
-        tradeFile << "i am trading" << std::endl;
-        tradeFile << "i'm buy" << std::endl;
-        tradeFile << "i'm sell" << std::endl;
-        tradeFile << "i'm trade" << std::endl;
-        tradeFile << "i'm trading" << std::endl;
+        if (tradeFile.is_open())
+        {
+            tradeFile << ": sell" << std::endl;
+            tradeFile << ": buy" << std::endl;
+            tradeFile << ": trade" << std::endl;
+            tradeFile << "i sell" << std::endl;
+            tradeFile << "i buy" << std::endl;
+            tradeFile << "i trade" << std::endl;
+            tradeFile << "i trading" << std::endl;
+            tradeFile << "i am buy" << std::endl;
+            tradeFile << "i am sell" << std::endl;
+            tradeFile << "i am trade" << std::endl;
+            tradeFile << "i am trading" << std::endl;
+            tradeFile << "i'm buy" << std::endl;
+            tradeFile << "i'm sell" << std::endl;
+            tradeFile << "i'm trade" << std::endl;
+            tradeFile << "i'm trading" << std::endl;
+        }
         tradeFile.close();
     }
 }
@@ -1938,8 +1941,11 @@ void Client::initPacketLimiter()
             inPacketFile.open(packetLimitsName.c_str(), std::ios::in);
             char line[101];
 
-            if (!inPacketFile.getline(line, 100))
+            if (!inPacketFile.is_open() || !inPacketFile.getline(line, 100))
+            {
+                inPacketFile.close();
                 return;
+            }
 
             int ver = atoi(line);
 
@@ -1962,6 +1968,11 @@ void Client::writePacketLimits(std::string packetLimitsName)
 {
     std::ofstream outPacketFile;
     outPacketFile.open(packetLimitsName.c_str(), std::ios::out);
+    if (!outPacketFile.is_open())
+    {
+        outPacketFile.close();
+        return;
+    }
     outPacketFile << "2" << std::endl;
     for (int f = 0; f < PACKET_SIZE; f ++)
     {
