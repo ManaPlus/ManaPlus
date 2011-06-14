@@ -698,6 +698,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         }
         else
         {
+            mNick = name;
             mBrowserBox->addRow(strprintf(
                 "@@addcomment|%s@@", _("Add comment")));
             mBrowserBox->addRow("##3---");
