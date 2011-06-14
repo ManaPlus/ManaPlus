@@ -55,6 +55,7 @@ class BeingPopup : public Popup
         Label *mBeingParty;
         Label *mBeingGuild;
         Label *mBeingRank;
+        Label *mBeingComment;
 };
 
 #endif // BEINGPOPUP_H

@@ -224,6 +224,8 @@ public:
 
     static const std::string getServerConfigDirectory();
 
+    static const std::string getUsersDirectory();
+
     static bool getIsMinimized()
     { return instance()->mIsMinimized; }
 
@@ -262,6 +264,8 @@ public:
 
     void initTradeFilter();
 
+    void initUsersDir();
+
     void initPacketLimiter();
 
     void writePacketLimits(std::string packetLimitsName);
@@ -298,6 +302,7 @@ private:
     std::string mUpdatesDir;
     std::string mScreenshotDir;
     std::string mServerConfigDir;
+    std::string mUsersDir;
     std::string mRootDir;
     std::string mServerName;
 

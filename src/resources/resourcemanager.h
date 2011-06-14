@@ -103,8 +103,14 @@ class ResourceManager
 
         /**
          * Checks whether the given file or directory exists in the search path
+         * (PhysFS)
          */
         bool exists(const std::string &path);
+
+        /**
+         * Checks whether the given file or directory exists
+         */
+        bool existsLocal(const std::string &path);
 
         /**
          * Checks whether the given path is a directory.
@@ -209,9 +215,18 @@ class ResourceManager
         void *loadFile(const std::string &fileName, int &fileSize);
 
         /**
-         * Retrieves the contents of a text file.
+         * Retrieves the contents of a text file (PhysFS).
          */
         std::vector<std::string> loadTextFile(const std::string &fileName);
+
+        /**
+         * Retrieves the contents of a text file.
+         */
+        std::vector<std::string> loadTextFileLocal(const std::string
+                                                   &fileName);
+
+        void saveTextFile(std::string path, std::string name,
+                          std::string text);
 
         /**
          * Loads the given filename as an SDL surface. The returned surface is

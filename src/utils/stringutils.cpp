@@ -474,7 +474,18 @@ std::string packList(std::list<std::string> &list)
     return str;
 }
 
-std::list<std::string> unpackList(const std::string str)
+std::list<std::string> unpackList(const std::string &str)
 {
     return splitToStringList(str, '|');
+}
+
+std::string stringToHexPath(const std::string &str)
+{
+    if (str.empty())
+        return "";
+
+    std::string hex = strprintf("%%%2x/", (int)str[0]);
+    for (unsigned f = 1; f < str.size(); f ++)
+        hex += strprintf("%%%2x", (int)str[f]);
+    return hex;
 }

@@ -65,6 +65,24 @@ class RenameListener : public gcn::ActionListener
         TextDialog *mDialog;
 };
 
+class PlayerListener : public gcn::ActionListener
+{
+    public:
+        PlayerListener();
+
+        void action(const gcn::ActionEvent &event);
+
+        void setNick(std::string name)
+        { mNick = name; }
+
+        void setDialog(TextDialog *dialog)
+        { mDialog = dialog; }
+
+    private:
+        std::string mNick;
+        TextDialog *mDialog;
+};
+
 /**
  * Window showing popup menu.
  */
@@ -149,6 +167,7 @@ class PopupMenu : public Popup, public LinkHandler
         TextCommand *mSpell;
         Window *mWindow;
         RenameListener mRenameListener;
+        PlayerListener mPlayerListener;
         TextDialog *mDialog;
         Button *mButton;
         std::string mNick;

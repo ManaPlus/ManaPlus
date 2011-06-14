@@ -103,6 +103,8 @@ PopupMenu::PopupMenu():
     mBrowserBox->setLinkHandler(this);
     mRenameListener.setMapItem(0);
     mRenameListener.setDialog(0);
+    mPlayerListener.setNick("");
+    mPlayerListener.setDialog(0);
 
     add(mBrowserBox);
 }
@@ -240,6 +242,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 mBrowserBox->addRow(strprintf("@@items|%s@@",
                     _("Show Items")));
                 mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
+                mBrowserBox->addRow(strprintf(
+                    "@@addcomment|%s@@", _("Add comment")));
 
                 if (player_relations.getDefault() & PlayerRelation::TRADE)
                 {
@@ -391,7 +395,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow(strprintf("@@follow|%s@@", _("Follow")));
     mBrowserBox->addRow(strprintf("@@imitation|%s@@", _("Imitation")));
-
+    mBrowserBox->addRow(strprintf("@@addcomment|%s@@", _("Add comment")));
 
     if (player_node->isInParty() && player_node->getParty())
     {
@@ -642,6 +646,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
             mBrowserBox->addRow(strprintf("@@items|%s@@", _("Show Items")));
             mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
+            mBrowserBox->addRow(strprintf(
+                "@@addcomment|%s@@", _("Add comment")));
 
             if (player_relations.getDefault() & PlayerRelation::TRADE)
             {
@@ -689,6 +695,12 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                         "@@guild|%s@@", _("Invite to guild")));
                 }
             }
+        }
+        else
+        {
+            mBrowserBox->addRow(strprintf(
+                "@@addcomment|%s@@", _("Add comment")));
+            mBrowserBox->addRow("##3---");
         }
     }
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
@@ -1169,6 +1181,27 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "undress" && being)
     {
         Net::getBeingHandler()->undress(being);
+    }
+    else if (link == "addcomment" && !mNick.empty())
+    {
+        // TRANSLATORS: number of chars in string should be near original
+        TextDialog *dialog = new TextDialog(_("Player comment            "),
+        // TRANSLATORS: number of chars in string should be near original
+            _("Comment:                      "));
+        mPlayerListener.setDialog(dialog);
+        mPlayerListener.setNick(mNick);
+
+        if (being)
+        {
+            being->updateComment();
+            dialog->setText(being->getComment());
+        }
+        else
+        {
+            dialog->setText(Being::loadComment(mNick));
+        }
+        dialog->setActionEventId("ok");
+        dialog->addActionListener(&mPlayerListener);
     }
     else if (link == "guild-kick" && !mNick.empty())
     {
@@ -1920,6 +1953,26 @@ void RenameListener::action(const gcn::ActionEvent &event)
 
         if (socialWindow)
             socialWindow->updatePortalNames();
+    }
+    mDialog = 0;
+}
+
+PlayerListener::PlayerListener() :
+    mNick(""),
+    mDialog(0)
+{
+}
+
+void PlayerListener::action(const gcn::ActionEvent &event)
+{
+    if (event.getId() == "ok" && !mNick.empty() && mDialog)
+    {
+        std::string comment = mDialog->getText();
+        Being* being  = actorSpriteManager->findBeingByName(
+            mNick, Being::PLAYER);
+        if (being)
+            being->setComment(comment);
+        Being::saveComment(mNick, comment);
     }
     mDialog = 0;
 }

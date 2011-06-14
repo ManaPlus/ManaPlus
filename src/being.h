@@ -725,7 +725,20 @@ class Being : public ActorSprite, public ConfigListener
 
         std::string getGenderSignWithSpace() const;
 
+        void updateComment();
+
+        std::string getComment()
+        { return mComment; }
+
+        void setComment(std::string n)
+        { mComment = n; }
+
         static void clearCache();
+
+        static std::string loadComment(const std::string &name);
+
+        static void saveComment(const std::string &name,
+                                const std::string &comment);
 
     protected:
         /**
@@ -858,6 +871,8 @@ class Being : public ActorSprite, public ConfigListener
         unsigned int mPvpRank;
         int *mSpriteRemap;
         int *mSpriteHide;
+        std::string mComment;
+        bool mGotComment;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

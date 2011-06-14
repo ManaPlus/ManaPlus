@@ -34,11 +34,16 @@
 #include "resources/soundeffect.h"
 #include "resources/spritedef.h"
 
+#include "utils/mkdir.h"
+
 #include <physfs.h>
 #include <SDL_image.h>
 #include <cassert>
+#include <fstream>
+#include <iostream>
 #include <sstream>
 
+#include <sys/stat.h>
 #include <sys/time.h>
 
 #include "debug.h"
@@ -297,6 +302,17 @@ bool ResourceManager::mkdir(const std::string &path)
 bool ResourceManager::exists(const std::string &path)
 {
     return PHYSFS_exists(path.c_str());
+}
+
+bool ResourceManager::existsLocal(const std::string &path)
+{
+    bool flg(false);
+    std::fstream file;
+    file.open(path.c_str(), std::ios::in);
+    if (file.is_open())
+        flg = true;
+    file.close();
+    return flg;
 }
 
 bool ResourceManager::isDirectory(const std::string &path)
@@ -642,6 +658,41 @@ std::vector<std::string> ResourceManager::loadTextFile(
 
     free(fileContents);
     return lines;
+}
+
+std::vector<std::string> ResourceManager::loadTextFileLocal(
+        const std::string &fileName)
+{
+    std::ifstream file;
+    char line[501];
+    std::vector<std::string> lines;
+
+    file.open(fileName.c_str(), std::ios::in);
+
+    if (!file.is_open())
+    {
+        logger->log("Couldn't load text file: %s", fileName.c_str());
+        return lines;
+    }
+
+    while (file.getline(line, 500))
+        lines.push_back(line);
+
+    return lines;
+}
+
+void ResourceManager::saveTextFile(std::string path, std::string name,
+                                   std::string text)
+{
+    if (!mkdir_r(path.c_str()))
+    {
+        std::ofstream file;
+        std::string fileName = path + "/" + name;
+
+        file.open(fileName.c_str(), std::ios::out);
+        file << text << std::endl;
+        file.close();
+    }
 }
 
 SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename)

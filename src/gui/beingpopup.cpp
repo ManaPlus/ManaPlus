@@ -59,10 +59,14 @@ BeingPopup::BeingPopup():
     mBeingRank = new Label("A");
     mBeingRank->setPosition(getPadding(), 3 * fontHeight);
 
+    mBeingComment = new Label("A");
+    mBeingComment->setPosition(getPadding(), 4 * fontHeight);
+
     add(mBeingName);
     add(mBeingParty);
     add(mBeingGuild);
     add(mBeingRank);
+    add(mBeingComment);
 }
 
 BeingPopup::~BeingPopup()
@@ -80,6 +84,9 @@ void BeingPopup::show(int x, int y, Being *b)
     Label *label1 = mBeingParty;
     Label *label2 = mBeingGuild;
     Label *label3 = mBeingRank;
+    Label *label4 = mBeingComment;
+
+    b->updateComment();
 
     mBeingName->setCaption(b->getName() + b->getGenderSignWithSpace());
     if (gui)
@@ -94,6 +101,7 @@ void BeingPopup::show(int x, int y, Being *b)
     label1->setCaption("");
     label2->setCaption("");
     label3->setCaption("");
+    label4->setCaption("");
 
     if (!(b->getPartyName().empty()))
     {
@@ -103,6 +111,7 @@ void BeingPopup::show(int x, int y, Being *b)
     }
     else
     {
+        label4 = label3;
         label3 = label2;
         label2 = label1;
         label1 = 0;
@@ -116,6 +125,7 @@ void BeingPopup::show(int x, int y, Being *b)
     }
     else
     {
+        label4 = label3;
         label3 = label2;
         label2 = 0;
     }
@@ -127,7 +137,19 @@ void BeingPopup::show(int x, int y, Being *b)
     }
     else
     {
+        label4 = label3;
         label3 = 0;
+    }
+
+    if (!b->getComment().empty())
+    {
+        label4->setCaption(strprintf(_("Comment: %s"),
+            b->getComment().c_str()));
+        label4->adjustSize();
+    }
+    else
+    {
+        label4 = 0;
     }
 
     int minWidth = mBeingName->getWidth();
@@ -137,6 +159,8 @@ void BeingPopup::show(int x, int y, Being *b)
         minWidth = label2->getWidth();
     if (label3 && label3->getWidth() > minWidth)
         minWidth = label3->getWidth();
+    if (label4 && label4->getWidth() > minWidth)
+        minWidth = label4->getWidth();
 
     int height = getFont()->getHeight();
     if (label1)
@@ -144,6 +168,8 @@ void BeingPopup::show(int x, int y, Being *b)
     if (label2)
         height += getFont()->getHeight();
     if (label3)
+        height += getFont()->getHeight();
+    if (label4)
         height += getFont()->getHeight();
 
     setContentSize(minWidth + 10, height + 10);

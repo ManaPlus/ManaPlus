@@ -182,6 +182,8 @@ std::vector<std::string> getLang();
 
 std::string packList(std::list<std::string> &list);
 
-std::list<std::string> unpackList(const std::string str);
+std::list<std::string> unpackList(const std::string &str);
+
+std::string stringToHexPath(const std::string &str);
 
 #endif // UTILS_STRINGUTILS_H

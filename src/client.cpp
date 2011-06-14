@@ -235,6 +235,7 @@ Client *Client::mInstance = 0;
 Client::Client(const Options &options):
     mOptions(options),
     mServerConfigDir(""),
+    mUsersDir(""),
     mRootDir(""),
     mCurrentDialog(0),
     mQuitDialog(0),
@@ -1458,6 +1459,7 @@ void Client::initServerConfig(std::string serverName)
     }
     initPacketLimiter();
     initTradeFilter();
+    initUsersDir();
     player_relations.init();
 
     // Initialize the item and emote shortcuts.
@@ -1844,6 +1846,16 @@ void Client::initTradeFilter()
     }
 }
 
+void Client::initUsersDir()
+{
+    mUsersDir = Client::getServerConfigDirectory() + "/users/";
+    if (mkdir_r(mUsersDir.c_str()))
+    {
+        logger->error(strprintf(_("%s doesn't exist and can't be created! "
+            "Exiting."), mUsersDir.c_str()));
+    }
+}
+
 void Client::initPacketLimiter()
 {
     //here i setting packet limits. but current server is broken,
@@ -2047,6 +2059,11 @@ bool Client::limitPackets(int type)
 const std::string Client::getServerConfigDirectory()
 {
     return instance()->mServerConfigDir;
+}
+
+const std::string Client::getUsersDirectory()
+{
+    return instance()->mUsersDir;
 }
 
 void Client::setGuiAlpha(float n)

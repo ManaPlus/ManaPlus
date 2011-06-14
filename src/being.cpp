@@ -216,7 +216,9 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mMinHit(0),
     mMaxHit(0),
     mCriticalHit(0),
-    mPvpRank(0)
+    mPvpRank(0),
+    mComment(""),
+    mGotComment(false)
 {
     mSpriteRemap = new int[20];
     mSpriteHide = new int[20];
@@ -236,6 +238,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     if (getType() == PLAYER)
         mShowName = config.getBoolValue("visiblenames");
+    else
+        mGotComment = true;
 
     config.addListener("visiblenames", this);
 
@@ -2249,6 +2253,41 @@ void Being::clearCache()
 {
     delete_all(beingInfoCache);
     beingInfoCache.clear();
+}
+
+void Being::updateComment()
+{
+    if (mGotComment || mName.empty())
+        return;
+
+    mGotComment = true;
+    mComment = loadComment(mName);
+}
+
+std::string Being::loadComment(const std::string &name)
+{
+    std::string str = Client::getUsersDirectory()
+        + stringToHexPath(name) + "/comment.txt";
+    std::vector<std::string> lines;
+
+    ResourceManager *resman = ResourceManager::getInstance();
+    if (resman->existsLocal(str))
+    {
+        lines = resman->loadTextFileLocal(str);
+        if (lines.size() >= 2)
+            return lines[1];
+    }
+    return "";
+}
+
+void Being::saveComment(const std::string &name,
+                        const std::string &comment)
+{
+    std::string dir = Client::getUsersDirectory()
+        + stringToHexPath(name);
+    std::string fileName = dir + "/comment.txt";
+    ResourceManager *resman = ResourceManager::getInstance();
+    resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
 
 BeingEquipBackend::BeingEquipBackend(Being *being):
