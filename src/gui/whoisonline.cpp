@@ -164,7 +164,7 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
 
                 if (being && viewport)
                 {
-                    viewport->showPopup(event->getX(), event->getY(), being);
+                    viewport->showPopup(being);
                     return;
                 }
             }

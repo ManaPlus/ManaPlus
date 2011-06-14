@@ -630,6 +630,11 @@ void Viewport::showPopup(int x, int y, Being *being)
     mPopupMenu->showPopup(x, y, being);
 }
 
+void Viewport::showPopup(Being *being)
+{
+    mPopupMenu->showPopup(getMouseX(), getMouseY(), being);
+}
+
 void Viewport::showPlayerPopup(std::string nick)
 {
     mPopupMenu->showPlayerPopup(getMouseX(), getMouseY(), nick);

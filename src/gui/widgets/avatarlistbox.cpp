@@ -324,7 +324,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
                     model->getAvatarAt(selected)->getName(), Being::PLAYER);
                 if (being)
                 {
-                    viewport->showPopup(event.getX(), event.getY(), being);
+                    viewport->showPopup(being);
                 }
                 else
                 {

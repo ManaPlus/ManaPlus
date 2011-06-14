@@ -152,6 +152,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          */
         void showPopup(int x, int y, Being *being);
 
+        void showPopup(Being *being);
+
         void showPlayerPopup(std::string nick);
 
         void showOutfitsPopup(int x, int y);
