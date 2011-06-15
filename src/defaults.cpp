@@ -204,6 +204,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "unsecureChars", "IO0@#$");
     AddDEF(configData, "currentTip", 0);
     AddDEF(configData, "showDidYouKnow", true);
+    AddDEF(configData, "useLocalTime", false);
     return configData;
 }
 

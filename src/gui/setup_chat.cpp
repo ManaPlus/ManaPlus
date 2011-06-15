@@ -57,6 +57,7 @@
 #define ACTION_ENABLE_BATTLE_TAB "show battle tab"
 #define ACTION_SHOW_BATTLE_EVENTS "show battle events"
 #define ACTION_RESIZE_CHAT "resize chat"
+#define ACTION_LOCAL_TIME "local time"
 
 Setup_Chat::Setup_Chat() :
     mEditDialog(0)
@@ -134,6 +135,10 @@ Setup_Chat::Setup_Chat() :
     mHideChatInputCheckBox = new CheckBox(_("Resize chat tabs if need"),
         mHideChatInput, this, ACTION_RESIZE_CHAT);
 
+    mLocalTime = config.getBoolValue("useLocalTime");
+    mLocalTimeCheckBox = new CheckBox(_("Use local time"),
+        mLocalTime, this, ACTION_LOCAL_TIME);
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -156,6 +161,7 @@ Setup_Chat::Setup_Chat() :
     place(0, 11, mEnableBattleTabCheckBox, 10);
     place(0, 12, mShowBattleEventsCheckBox, 10);
     place(0, 13, mHideChatInputCheckBox, 10);
+    place(0, 14, mLocalTimeCheckBox, 10);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -244,6 +250,10 @@ void Setup_Chat::action(const gcn::ActionEvent &event)
     {
         mHideChatInput = mHideChatInputCheckBox->isSelected();
     }
+    else if (event.getId() == ACTION_LOCAL_TIME)
+    {
+        mLocalTime = mLocalTimeCheckBox->isSelected();
+    }
 }
 
 void Setup_Chat::cancel()
@@ -296,6 +306,9 @@ void Setup_Chat::cancel()
 
     mHideChatInput = config.getBoolValue("hideChatInput");
     mHideChatInputCheckBox->setSelected(mHideChatInput);
+
+    mLocalTime = config.getBoolValue("useLocalTime");
+    mLocalTimeCheckBox->setSelected(mLocalTime);
 }
 
 void Setup_Chat::apply()
@@ -319,8 +332,9 @@ void Setup_Chat::apply()
     config.setValue("showChatHistory", mShowChatHistory);
     config.setValue("enableBattleTab", mEnableBattleTab);
     config.setValue("showBattleEvents", mShowBattleEvents);
-
     config.setValue("hideChatInput", mHideChatInput);
+    config.setValue("useLocalTime", mLocalTime);
+
     if (chatWindow)
         chatWindow->adjustTabSize();
 }

@@ -89,6 +89,9 @@ class Setup_Chat : public SetupTab, public gcn::ActionListener
         gcn::CheckBox *mHideChatInputCheckBox;
         bool mHideChatInput;
 
+        gcn::CheckBox *mLocalTimeCheckBox;
+        bool mLocalTime;
+
         EditDialog *mEditDialog;
 };
 

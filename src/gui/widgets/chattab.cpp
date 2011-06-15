@@ -221,15 +221,25 @@ void ChatTab::chatLog(std::string line, Own own,
     time_t t;
     time(&t);
 
-    // Format the time string properly
-    std::stringstream timeStr;
-    timeStr << "[" << ((((t / 60) / 60) % 24 < 10) ? "0" : "")
-        << static_cast<int>(((t / 60) / 60) % 24)
-        << ":" << (((t / 60) % 60 < 10) ? "0" : "")
-        << static_cast<int>((t / 60) % 60)
-        << "] ";
-
-    line = lineColor + timeStr.str() + tmp.nick + tmp.text;
+    if (config.getBoolValue("useLocalTime"))
+    {
+        struct tm *timeInfo;
+        timeInfo = localtime(&t);
+        line = strprintf("%s[%02d:%02d] %s%s", lineColor.c_str(),
+            timeInfo->tm_hour, timeInfo->tm_min, tmp.nick.c_str(),
+            tmp.text.c_str());
+    }
+    else
+    {
+        // Format the time string properly
+        std::stringstream timeStr;
+        timeStr << "[" << ((((t / 60) / 60) % 24 < 10) ? "0" : "")
+            << static_cast<int>(((t / 60) / 60) % 24)
+            << ":" << (((t / 60) % 60 < 10) ? "0" : "")
+            << static_cast<int>((t / 60) % 60)
+            << "] ";
+        line = lineColor + timeStr.str() + tmp.nick + tmp.text;
+    }
 
     if (config.getBoolValue("enableChatLog"))
         saveToLogFile(line);
