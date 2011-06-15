@@ -305,6 +305,16 @@ std::string getFileName(std::string path)
     return path.substr(pos + 1);
 }
 
+std::string getFileDir(std::string path)
+{
+    size_t pos = path.rfind("/");
+    if (pos == std::string::npos)
+        pos = path.rfind("\\");
+    if (pos == std::string::npos)
+        return "";
+    return path.substr(0, pos);
+}
+
 std::string& replaceAll(std::string& context, const std::string& from,
                         const std::string& to)
 {

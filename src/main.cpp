@@ -265,6 +265,9 @@ int main(int argc, char *argv[])
 
     initXML();
 
+#ifdef WIN32
+    SetCurrentDirectory(PHYSFS_getBaseDir());
+#endif
     Client client(options);
     return client.exec();
 }

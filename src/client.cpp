@@ -257,16 +257,16 @@ Client::Client(const Options &options):
     logger = new Logger;
 
     // Load branding information
-    if (!options.brandingPath.empty())
-        branding.init(options.brandingPath);
+    if (!mOptions.brandingPath.empty())
+        branding.init(mOptions.brandingPath);
     branding.setDefaultValues(getBrandingDefaults());
 
     initRootDir();
     initHomeDir();
 
     // Configure logger
-    if (!options.logFileName.empty())
-        logger->setLogFile(options.logFileName);
+    if (!mOptions.logFileName.empty())
+        logger->setLogFile(mOptions.logFileName);
     else
         logger->setLogFile(mLocalDataDir + std::string("/manaplus.log"));
 
@@ -276,10 +276,10 @@ Client::Client(const Options &options):
     storeSafeParameters();
 
     chatLogger = new ChatLogger;
-    if (options.chatLogDir == "")
+    if (mOptions.chatLogDir == "")
         chatLogger->setLogDir(mLocalDataDir + std::string("/logs/"));
     else
-        chatLogger->setLogDir(options.chatLogDir);
+        chatLogger->setLogDir(mOptions.chatLogDir);
 
     logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
 
@@ -344,9 +344,9 @@ Client::Client(const Options &options):
     resman->addToSearchPath("data", false);
 
     // Add branding/data to PhysFS search path
-    if (!options.brandingPath.empty())
+    if (!mOptions.brandingPath.empty())
     {
-        std::string path = options.brandingPath;
+        std::string path = mOptions.brandingPath;
 
         // Strip blah.mana from the path
 #ifdef WIN32
@@ -360,9 +360,17 @@ Client::Client(const Options &options):
             resman->addToSearchPath(path.substr(0, loc + 1) + "data", false);
     }
 
+    if (mOptions.dataPath.empty()
+        && !branding.getStringValue("dataPath").empty())
+    {
+        mOptions.dataPath =  branding.getDirectory() + "/"
+            + branding.getStringValue("dataPath");
+        mOptions.skipUpdate = true;
+    }
+
     // Add the main data directories to our PhysicsFS search path
-    if (!options.dataPath.empty())
-        resman->addToSearchPath(options.dataPath, false);
+    if (!mOptions.dataPath.empty())
+        resman->addToSearchPath(mOptions.dataPath, false);
 
     // Add the local data directory to PhysicsFS search path
     resman->addToSearchPath(mLocalDataDir, false);
@@ -489,11 +497,11 @@ Client::Client(const Options &options):
     sound.playMusic(branding.getValue("loginMusic", "Magick - Real.ogg"));
 
     // Initialize default server
-    mCurrentServer.hostname = options.serverName;
-    mCurrentServer.port = options.serverPort;
+    mCurrentServer.hostname = mOptions.serverName;
+    mCurrentServer.port = mOptions.serverPort;
 
-    loginData.username = options.username;
-    loginData.password = options.password;
+    loginData.username = mOptions.username;
+    loginData.password = mOptions.password;
     loginData.remember = serverConfig.getValue("remember", 0);
     loginData.registerLogin = false;
 

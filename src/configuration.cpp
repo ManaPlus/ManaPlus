@@ -30,6 +30,11 @@
 
 #include <libxml/encoding.h>
 
+#include <stdlib.h>
+#ifdef WIN32
+#define realpath(N,R) _fullpath((R),(N),_MAX_PATH)
+#endif
+
 #include "debug.h"
 
 #ifdef DEBUG_CONFIG
@@ -388,9 +393,17 @@ void Configuration::init(const std::string &filename, bool useResManager)
     XML::Document doc(filename, useResManager);
 
     if (useResManager)
+    {
         mConfigPath = "PhysFS://" + filename;
+        mDirectory = "";
+    }
     else
+    {
         mConfigPath = filename;
+        char *realPath = realpath(getFileDir(filename).c_str(), NULL);
+        mDirectory = realPath;
+        free(realPath);
+    }
 
     if (!doc.rootNode())
     {

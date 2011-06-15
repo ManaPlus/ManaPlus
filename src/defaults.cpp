@@ -238,6 +238,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "fontsPath", "fonts/");
 
     AddDEF(brandingData, "wallpaperFile", "");
+    AddDEF(brandingData, "dataPath", "");
     return brandingData;
 }
 

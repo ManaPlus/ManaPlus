@@ -149,6 +149,8 @@ void getSafeUtf8String(std::string text, char *buf);
 
 std::string getFileName(std::string path);
 
+std::string getFileDir(std::string path);
+
 std::string& replaceAll(std::string& context, const std::string& from,
                         const std::string& to);
 

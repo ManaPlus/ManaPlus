@@ -282,6 +282,9 @@ class Configuration : public ConfigurationObject
         std::string getStringValue(const std::string &key) const;
         bool getBoolValue(const std::string &key) const;
 
+        std::string getDirectory() const
+        { return mDirectory; }
+
     private:
         /**
          * Clean up the default values member.
@@ -297,6 +300,7 @@ class Configuration : public ConfigurationObject
         std::string mConfigPath;       /**< Location of config file */
         DefaultsData *mDefaultsData;   /**< Defaults of value
                                             for a given key */
+        std::string mDirectory;
 };
 
 extern Configuration branding;
