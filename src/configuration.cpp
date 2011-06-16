@@ -25,15 +25,13 @@
 #include "configlistener.h"
 #include "log.h"
 
+#include "utils/paths.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
 #include <libxml/encoding.h>
 
 #include <stdlib.h>
-#ifdef WIN32
-#define realpath(N,R) _fullpath((R),(N),_MAX_PATH)
-#endif
 
 #include "debug.h"
 
@@ -400,9 +398,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
     else
     {
         mConfigPath = filename;
-        char *realPath = realpath(getFileDir(filename).c_str(), NULL);
-        mDirectory = realPath;
-        free(realPath);
+        mDirectory = getRealPath(getFileDir(filename));
     }
 
     if (!doc.rootNode())

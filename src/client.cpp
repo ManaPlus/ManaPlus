@@ -91,6 +91,7 @@
 
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
+#include "utils/paths.h"
 #include "utils/stringutils.h"
 
 #ifdef __APPLE__
@@ -363,8 +364,15 @@ Client::Client(const Options &options):
     if (mOptions.dataPath.empty()
         && !branding.getStringValue("dataPath").empty())
     {
-        mOptions.dataPath =  branding.getDirectory() + "/"
-            + branding.getStringValue("dataPath");
+        if (isRealPath(branding.getStringValue("dataPath")))
+        {
+            mOptions.dataPath = branding.getStringValue("dataPath");
+        }
+        else
+        {
+            mOptions.dataPath = branding.getDirectory() + "/"
+                + branding.getStringValue("dataPath");
+        }
         mOptions.skipUpdate = true;
     }
 

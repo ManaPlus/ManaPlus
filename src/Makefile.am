@@ -443,6 +443,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mathutils.h \
 	      utils/mkdir.cpp \
 	      utils/mkdir.h \
+	      utils/paths.cpp \
+	      utils/paths.h \
 	      utils/sha256.cpp \
 	      utils/sha256.h \
 	      utils/specialfolder.cpp \
