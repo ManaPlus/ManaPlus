@@ -25,9 +25,12 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
+#include "gui/widgets/vertcontainer.h"
 
 #include "configuration.h"
 #include "localplayer.h"
@@ -194,44 +197,56 @@ Setup_Other::Setup_Other():
     mEnableAttackFilterCheckBox = new CheckBox(_("Enable attack filter"),
         mEnableAttackFilter, this, ACTION_ENABLE_ATTACK_FILTER);
 
-    // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
+    place(0, 0, mScroll, 10, 10);
 
-    place(0, 0, mShowMonstersTakedDamageCheckBox, 12);
-    place(12, 0, mServerAttackCheckBox, 10);
-    place(0, 1, mTargetOnlyReachableCheckBox, 12);
-    place(12, 1, mAutofixPosCheckBox, 10);
-    place(0, 2, mHighlightPortalsCheckBox, 12);
-    place(12, 2, mAttackMovingCheckBox, 10);
-    place(12, 3, mQuickStatsCheckBox, 10);
-    place(12, 4, mWarpParticleCheckBox, 10);
-    place(12, 5, mAutoShopCheckBox, 10);
-    place(12, 6, mShowMobHPCheckBox, 10);
-    place(12, 7, mShowOwnHPCheckBox, 10);
-    place(12, 8, mShowJobExpCheckBox, 10);
-    place(12, 9, mShowBeingPopupCheckBox, 10);
-    place(12, 10, mShowExtMinimapsCheckBox, 10);
-    place(12, 11, mEnableAttackFilterCheckBox, 10);
-    place(0, 3, mFloorItemsHighlightCheckBox, 12);
-    place(0, 4, mHighlightAttackRangeCheckBox, 12);
-    place(0, 5, mHighlightMonsterAttackRangeCheckBox, 12);
-    place(0, 6, mCyclePlayersCheckBox, 12);
-    place(0, 7, mCycleMonstersCheckBox, 12);
-    place(0, 8, mEnableBotCheckerCheckBox, 12);
-    place(0, 9, mMoveProgramLabel, 12);
-    place(0, 10, mMoveProgramField, 9);
-    place(9, 10, mMoveProgramButton, 2);
-    place(0, 11, mAfkField, 9);
-    place(9, 11, mAfkButton, 2);
-    place(0, 12, mTradeBotCheckBox, 12);
-    place(0, 13, mBuggyServersCheckBox, 12);
-    place(0, 14, mDebugLogCheckBox, 12);
 
-    place.getCell().matchColWidth(0, 0);
-    place = h.getPlacer(0, 1);
+    mContainer->add(mShowMonstersTakedDamageCheckBox);
+    mContainer->add(mServerAttackCheckBox);
+    mContainer->add(mTargetOnlyReachableCheckBox);
+    mContainer->add(mAutofixPosCheckBox);
+    mContainer->add(mHighlightPortalsCheckBox);
+    mContainer->add(mAttackMovingCheckBox);
+    mContainer->add(mFloorItemsHighlightCheckBox);
+    mContainer->add(mQuickStatsCheckBox);
+    mContainer->add(mHighlightAttackRangeCheckBox);
+    mContainer->add(mWarpParticleCheckBox);
+    mContainer->add(mHighlightMonsterAttackRangeCheckBox);
+    mContainer->add(mAutoShopCheckBox);
+    mContainer->add(mCyclePlayersCheckBox);
+    mContainer->add(mShowMobHPCheckBox);
+    mContainer->add(mCycleMonstersCheckBox);
+    mContainer->add(mShowOwnHPCheckBox);
+    mContainer->add(mEnableBotCheckerCheckBox);
+    mContainer->add(mShowJobExpCheckBox);
 
-    setDimension(gcn::Rectangle(0, 0, 550, 500));
+    HorizontContainer *hc1 = new HorizontContainer(32, 2);
+    mDeleteWidgets.push_back(hc1);
+    mMoveProgramField->setWidth(200);
+    hc1->add(mMoveProgramLabel);
+    hc1->add(mMoveProgramField);
+    hc1->add(mMoveProgramButton);
+
+    mContainer->add(hc1, true, 4);
+
+    mContainer->add(mShowBeingPopupCheckBox);
+    mContainer->add(mShowExtMinimapsCheckBox);
+
+    HorizontContainer *hc2 = new HorizontContainer(32, 2);
+    mDeleteWidgets.push_back(hc2);
+    mAfkField->setWidth(200);
+    hc2->add(mAfkField);
+    hc2->add(mAfkButton);
+
+    mContainer->add(hc2, true, 4);
+
+    mContainer->add(mEnableAttackFilterCheckBox);
+    mContainer->add(mTradeBotCheckBox);
+    mContainer->add(mBuggyServersCheckBox);
+    mContainer->add(mDebugLogCheckBox);
+
+    setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
 void Setup_Other::action(const gcn::ActionEvent &event)

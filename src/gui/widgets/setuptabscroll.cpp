@@ -1,6 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -19,37 +18,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/horizontcontainer.h"
+#include "gui/widgets/setuptabscroll.h"
+
+#include "gui/widgets/layouthelper.h"
+#include "gui/widgets/scrollarea.h"
+#include "gui/widgets/vertcontainer.h"
 
 #include "debug.h"
 
-HorizontContainer::HorizontContainer(int height, int spacing):
-        mSpacing(spacing),
-        mCount(0),
-        mLastX(spacing)
+SetupTabScroll::SetupTabScroll() :
+    SetupTab()
 {
-    setHeight(height);
-    addWidgetListener(this);
+    mContainer = new VertContainer(32, false, 8);
+    mScroll = new ScrollArea(mContainer);
+    mScroll->setOpaque(false);
+    mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
+
+//    LayoutHelper h(this);
+//    ContainerPlacer place = h.getPlacer(0, 0);
+//    place(0, 0, mScroll, 10, 10);
 }
 
-void HorizontContainer::add(gcn::Widget *widget)
+SetupTabScroll::~SetupTabScroll()
 {
-    if (!widget)
-        return;
-
-    Container::add(widget);
-    widget->setPosition(mLastX, mSpacing);
-    mCount++;
-    mLastX += widget->getWidth() + 2 * mSpacing;
-}
-
-void HorizontContainer::clear()
-{
-    Container::clear();
-
-    mCount = 0;
-}
-
-void HorizontContainer::widgetResized(const gcn::Event &event _UNUSED_)
-{
+//    delete mScroll;
+    mScroll = 0;
+    delete mContainer;
+    mContainer = 0;
 }

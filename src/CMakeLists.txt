@@ -183,6 +183,8 @@ SET(SRCS
     gui/widgets/scrollarea.h
     gui/widgets/setuptab.cpp
     gui/widgets/setuptab.h
+    gui/widgets/setuptabscroll.cpp
+    gui/widgets/setuptabscroll.h
     gui/widgets/shopitems.cpp
     gui/widgets/shopitems.h
     gui/widgets/shoplistbox.cpp

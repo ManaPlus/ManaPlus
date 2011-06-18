@@ -40,14 +40,26 @@
 class VertContainer : public Container, public gcn::WidgetListener
 {
     public:
-        VertContainer(int spacing);
-        virtual void add(gcn::Widget *widget);
+        VertContainer(int verticalItemSize, bool resizable = true,
+                      int leftSpacing = 0);
+
+        virtual void add(gcn::Widget *widget, bool resizable,
+                         int spacing = -1);
+
+        virtual void add(gcn::Widget *widget, int spacing = -1);
+
         virtual void clear();
+
         void widgetResized(const gcn::Event &event);
 
     private:
-        int mSpacing;
+        std::list<gcn::Widget*> mResizableWidgets;
+        int mVerticalItemSize;
         int mCount;
+        int mNextY;
+        int mLeftSpacing;
+        int mVerticalSpacing;
+        bool mResizable;
 };
 
 #endif

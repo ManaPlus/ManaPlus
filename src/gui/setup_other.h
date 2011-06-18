@@ -25,13 +25,14 @@
 
 #include "guichanfwd.h"
 
-#include "gui/widgets/setuptab.h"
+#include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 
 class EditDialog;
+class TextField;
 
-class Setup_Other : public SetupTab, public gcn::ActionListener
+class Setup_Other : public SetupTabScroll, public gcn::ActionListener
 {
     public:
         Setup_Other();
@@ -72,7 +73,7 @@ class Setup_Other : public SetupTab, public gcn::ActionListener
         bool mFloorItemsHighlight;
 
         gcn::Label *mMoveProgramLabel;
-        gcn::TextField *mMoveProgramField;
+        TextField *mMoveProgramField;
         gcn::Button *mMoveProgramButton;
         std::string mMoveProgram;
 
@@ -126,6 +127,8 @@ class Setup_Other : public SetupTab, public gcn::ActionListener
         bool mEnableAttackFilter;
 
         EditDialog *mEditDialog;
+
+        std::list<gcn::Widget*> mDeleteWidgets;
 };
 
 #endif
