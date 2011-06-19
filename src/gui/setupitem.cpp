@@ -376,7 +376,7 @@ void SetupItemIntTextField::createControls()
 
     mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
-    mTextField->setWidth(200);
+    mTextField->setWidth(50);
     mHorizont->add(mLabel);
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
