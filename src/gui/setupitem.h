@@ -51,6 +51,13 @@ class TextField;
 class SetupItem : public gcn::ActionListener
 {
     public:
+        enum
+        {
+            VBOOL,
+            VSTR,
+            VINT
+        };
+
         SetupItem(std::string text, std::string description,
                   std::string keyName, SetupTabScroll *parent,
                   std::string eventName, bool mainConfig);
@@ -115,6 +122,8 @@ class SetupItem : public gcn::ActionListener
         gcn::Widget *mWidget;
 
         std::list<gcn::Widget*> mTempWidgets;
+
+        int mValueType;
 };
 
 class SetupItemCheckBox : public SetupItem

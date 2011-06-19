@@ -52,7 +52,8 @@ SetupItem::SetupItem(std::string text, std::string description,
     mUseDefault(false),
     mValue(""),
     mDefault(""),
-    mWidget(0)
+    mWidget(0),
+    mValueType(VBOOL)
 {
 }
 
@@ -68,7 +69,8 @@ SetupItem::SetupItem(std::string text, std::string description,
     mUseDefault(true),
     mValue(""),
     mDefault(def),
-    mWidget(0)
+    mWidget(0),
+    mValueType(VBOOL)
 {
 }
 
@@ -89,9 +91,28 @@ void SetupItem::load()
 {
     Configuration *cfg = getConfig();
     if (mUseDefault)
+    {
         mValue = cfg->getValue(mKeyName, mDefault);
+    }
     else
-        mValue = cfg->getStringValue(mKeyName);
+    {
+        switch (mValueType)
+        {
+            case VBOOL:
+                if (cfg->getBoolValue(mKeyName))
+                    mValue = "1";
+                else
+                    mValue = "0";
+                break;
+            case VSTR:
+            default:
+                mValue = cfg->getStringValue(mKeyName);
+                break;
+            case VINT:
+                mValue = toString(cfg->getIntValue(mKeyName));
+                break;
+        }
+    }
 }
 
 void SetupItem::save()
@@ -207,6 +228,7 @@ SetupItemTextField::SetupItemTextField(std::string text,
     mButton(0),
     mEditDialog(0)
 {
+    mValueType = VSTR;
     createControls();
 }
 
@@ -223,6 +245,7 @@ SetupItemTextField::SetupItemTextField(std::string text,
     mButton(0),
     mEditDialog(0)
 {
+    mValueType = VSTR;
     createControls();
 }
 
@@ -306,16 +329,6 @@ void SetupItemTextField::apply(std::string eventName)
 }
 
 
-
-
-
-
-
-
-
-
-
-
 SetupItemIntTextField::SetupItemIntTextField(std::string text,
                                              std::string description,
                                              std::string keyName,
@@ -332,6 +345,7 @@ SetupItemIntTextField::SetupItemIntTextField(std::string text,
     mMax(max),
     mEditDialog(0)
 {
+    mValueType = VSTR;
     createControls();
 }
 
@@ -352,6 +366,7 @@ SetupItemIntTextField::SetupItemIntTextField(std::string text,
     mMax(max),
     mEditDialog(0)
 {
+    mValueType = VSTR;
     createControls();
 }
 
