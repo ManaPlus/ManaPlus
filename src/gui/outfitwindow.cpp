@@ -949,9 +949,9 @@ void OutfitWindow::copyFromEquiped(int dst)
     {
         if (inventory->getItem(i) && inventory->getItem(i)->isEquipped())
         {
-            mItems[dst][outfitCell++] = inventory->getItem(i)->getId();
+            mItems[dst][outfitCell] = inventory->getItem(i)->getId();
             mItemColors[dst][outfitCell++] = inventory->getItem(i)->getColor();
-            if (outfitCell > 8)
+            if (outfitCell >= OUTFIT_ITEM_COUNT)
                 break;
         }
     }
