@@ -44,6 +44,7 @@ class Configuration;
 class ContainerPlacer;
 class EditDialog;
 class HorizontContainer;
+class IntTextField;
 class Label;
 class TextField;
 
@@ -169,6 +170,41 @@ class SetupItemTextField : public SetupItem
         Label *mLabel;
         TextField *mTextField;
         Button *mButton;
+        EditDialog *mEditDialog;
+};
+
+class SetupItemIntTextField : public SetupItem
+{
+    public:
+        SetupItemIntTextField(std::string text, std::string description,
+                              std::string keyName, SetupTabScroll *parent,
+                              std::string eventName, int min, int max,
+                              bool mainConfig = true);
+
+        SetupItemIntTextField(std::string text, std::string description,
+                              std::string keyName, SetupTabScroll *parent,
+                              std::string eventName, int min, int max,
+                              std::string def, bool mainConfig = true);
+
+        ~SetupItemIntTextField();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        IntTextField *mTextField;
+        Button *mButton;
+        int mMin;
+        int mMax;
         EditDialog *mEditDialog;
 };
 

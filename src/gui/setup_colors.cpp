@@ -1,6 +1,7 @@
 /*
  *  Configurable text colors
  *  Copyright (C) 2008  Douglas Boffey <dougaboffey@netscape.net>
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *

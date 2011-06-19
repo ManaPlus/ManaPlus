@@ -2,6 +2,7 @@
  *  The Mana World
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The Mana World.
  *
@@ -25,74 +26,19 @@
 
 #include "guichanfwd.h"
 
-#include "gui/widgets/setuptab.h"
+#include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 
 class IntTextField;
 class EditDialog;
 
-class Setup_Chat : public SetupTab
+class Setup_Chat : public SetupTabScroll
 {
     public:
         Setup_Chat();
 
         void apply();
-        void cancel();
-
-        void action(const gcn::ActionEvent &event);
-
-    private:
-        gcn::CheckBox *mRemoveColorsCheckBox;
-        bool mRemoveColors;
-
-        gcn::CheckBox *mMagicInDebugCheckBox;
-        bool mMagicInDebug;
-
-        gcn::CheckBox *mAllowCommandsInChatTabsCheckBox;
-        bool mAllowCommandsInChatTabs;
-
-        gcn::CheckBox *mServerMsgInDebugCheckBox;
-        bool mServerMsgInDebug;
-
-        gcn::CheckBox *mShowChatColorsCheckBox;
-        bool mShowChatColors;
-
-        gcn::CheckBox *mMaxCharCheckBox;
-        IntTextField *mMaxCharField;
-        gcn::Button *mMaxCharButton;
-        bool mMaxChar;
-
-        gcn::CheckBox *mMaxLinesCheckBox;
-        IntTextField *mMaxLinesField;
-        gcn::Button *mMaxLinesButton;
-        bool mMaxLines;
-
-        gcn::CheckBox *mEnableChatLoggerCheckBox;
-        bool mEnableChatLogger;
-
-        gcn::CheckBox *mEnableTradeTabCheckBox;
-        bool mEnableTradeTab;
-
-        gcn::CheckBox *mHideShopMessagesCheckBox;
-        bool mHideShopMessages;
-
-        gcn::CheckBox *mShowChatHistoryCheckBox;
-        bool mShowChatHistory;
-
-        gcn::CheckBox *mEnableBattleTabCheckBox;
-        bool mEnableBattleTab;
-
-        gcn::CheckBox *mShowBattleEventsCheckBox;
-        bool mShowBattleEvents;
-
-        gcn::CheckBox *mHideChatInputCheckBox;
-        bool mHideChatInput;
-
-        gcn::CheckBox *mLocalTimeCheckBox;
-        bool mLocalTime;
-
-        EditDialog *mEditDialog;
 };
 
 #endif

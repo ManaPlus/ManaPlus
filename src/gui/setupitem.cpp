@@ -29,6 +29,7 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/horizontcontainer.h"
+#include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/tabbedarea.h"
@@ -296,6 +297,138 @@ void SetupItemTextField::action(const gcn::ActionEvent &event)
 }
 
 void SetupItemTextField::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+SetupItemIntTextField::SetupItemIntTextField(std::string text,
+                                             std::string description,
+                                             std::string keyName,
+                                             SetupTabScroll *parent,
+                                             std::string eventName,
+                                             int min, int max,
+                                             bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(0),
+    mLabel(0),
+    mTextField(0),
+    mButton(0),
+    mMin(min),
+    mMax(max),
+    mEditDialog(0)
+{
+    createControls();
+}
+
+SetupItemIntTextField::SetupItemIntTextField(std::string text,
+                                             std::string description,
+                                             std::string keyName,
+                                             SetupTabScroll *parent,
+                                             std::string eventName,
+                                             int min, int max,
+                                             std::string def,
+                                             bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(0),
+    mLabel(0),
+    mTextField(0),
+    mButton(0),
+    mMin(min),
+    mMax(max),
+    mEditDialog(0)
+{
+    createControls();
+}
+
+SetupItemIntTextField::~SetupItemIntTextField()
+{
+    mHorizont = 0;
+    mWidget = 0;
+    mTextField = 0;
+    mLabel = 0;
+    mButton = 0;
+}
+
+void SetupItemIntTextField::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    mLabel = new Label(mText);
+    mTextField = new IntTextField(atoi(mValue.c_str()), mMin, mMax, true, 30);
+    mTextField->setActionEventId(mEventName);
+    mTextField->addActionListener(mParent);
+
+    mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
+    mWidget = mTextField;
+    mTextField->setWidth(200);
+    mHorizont->add(mLabel);
+    mHorizont->add(mTextField);
+    mHorizont->add(mButton);
+
+    mParent->getContainer()->add(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addControl(this, mEventName + "_EDIT");
+    mParent->addControl(this, mEventName + "_EDIT_OK");
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+    mButton->addActionListener(this);
+}
+
+void SetupItemIntTextField::fromWidget()
+{
+    if (!mTextField)
+        return;
+
+    mValue = mTextField->getText();
+}
+
+void SetupItemIntTextField::toWidget()
+{
+    if (!mTextField)
+        return;
+
+    mTextField->setText(mValue);
+}
+
+void SetupItemIntTextField::action(const gcn::ActionEvent &event)
+{
+    if (!mTextField)
+        return;
+
+    if (event.getId() == mWidget->getActionEventId())
+    {
+        fromWidget();
+    }
+    else if (event.getId() == mEventName + "_EDIT")
+    {
+        mEditDialog =  new EditDialog(mText, mTextField->getText(),
+            mEventName + "_EDIT_OK");
+        mEditDialog->addActionListener(this);
+    }
+    else if (event.getId() == mEventName + "_EDIT_OK")
+    {
+        mTextField->setValue(atoi(mEditDialog->getMsg().c_str()));
+        mEditDialog = 0;
+    }
+}
+
+void SetupItemIntTextField::apply(std::string eventName)
 {
     if (eventName != mEventName)
         return;
