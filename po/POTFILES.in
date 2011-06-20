@@ -42,6 +42,7 @@ src/gui/setup_audio.cpp
 src/gui/setup_chat.cpp
 src/gui/setup_colors.cpp
 src/gui/setup.cpp
+src/gui/setupitem.cpp
 src/gui/setup_joystick.cpp
 src/gui/setup_keyboard.cpp
 src/gui/setup_other.cpp
