@@ -53,6 +53,7 @@
 
 #include <SDL.h>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -99,8 +100,32 @@ class ModeListModel : public gcn::ListModel
         int getIndexOf(const std::string &widthXHeightMode);
 
     private:
+        void addCustomMode(std::string mode);
+
         std::vector<std::string> mVideoModes;
 };
+
+bool modeSorter(std::string mode1, std::string mode2);
+
+bool modeSorter(std::string mode1, std::string mode2)
+{
+    const int width1 = atoi(mode1.substr(0, mode1.find("x")).c_str());
+    const int height1 = atoi(mode1.substr(mode1.find("x") + 1).c_str());
+    if (!width1 || !height1)
+        return false;
+
+    const int width2 = atoi(mode2.substr(0, mode2.find("x")).c_str());
+    const int height2 = atoi(mode2.substr(mode2.find("x") + 1).c_str());
+    if (!width2 || !height2)
+        return false;
+    if (width1 != width2)
+        return width1 < width2;
+
+    if (height1 != height2)
+        return height1 < height2;
+
+    return false;
+}
 
 ModeListModel::ModeListModel()
 {
@@ -126,7 +151,30 @@ ModeListModel::ModeListModel()
             mVideoModes.push_back(modeString);
         }
     }
+    addCustomMode("640x480");
+    addCustomMode("800x600");
+    addCustomMode("1024x768");
+    addCustomMode("1280x1024");
+    addCustomMode("1400x900");
+    addCustomMode("1500x990");
+    addCustomMode(toString(graphics->getWidth()) + "x"
+        + toString(graphics->getHeight()));
+
+    std::sort(mVideoModes.begin(), mVideoModes.end(), modeSorter);
     mVideoModes.push_back("custom");
+}
+
+void ModeListModel::addCustomMode(std::string mode)
+{
+    std::vector<std::string>::iterator it = mVideoModes.begin();
+    std::vector<std::string>::iterator it_end = mVideoModes.end();
+    while (it != it_end)
+    {
+        if (*it == mode)
+            return;
+        ++ it;
+    }
+    mVideoModes.push_back(mode);
 }
 
 int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
