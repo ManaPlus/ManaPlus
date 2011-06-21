@@ -62,7 +62,7 @@ class SetupTabScroll : public SetupTab
     protected:
         VertContainer *mContainer;
         ScrollArea *mScroll;
-        std::map<std::string,SetupItem*> mItems;
+        std::map<std::string, SetupItem*> mItems;
         std::set<SetupItem*> mAllItems;
 };
 

@@ -53,7 +53,7 @@ class SetupItem : public gcn::ActionListener
     public:
         enum
         {
-            VBOOL,
+            VBOOL = 0,
             VSTR,
             VINT
         };

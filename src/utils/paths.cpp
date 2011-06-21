@@ -27,7 +27,7 @@
 #include <stdlib.h>
 
 #ifdef WIN32
-#define realpath(N,R) _fullpath((R),(N),_MAX_PATH)
+#define realpath(N, R) _fullpath((R), (N), _MAX_PATH)
 #endif
 
 #include "debug.h"
