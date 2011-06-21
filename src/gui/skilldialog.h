@@ -27,10 +27,8 @@
 
 #include "gui/widgets/window.h"
 
-//include "resources/image.h"
-//include "resources/resourcemanager.h"
-
 #include <guichan/actionlistener.hpp>
+#include <guichan/mouselistener.hpp>
 
 #include <map>
 

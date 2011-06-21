@@ -27,7 +27,9 @@
 #include "configuration.h"
 
 #include "gui/setup.h"
+#include "gui/textpopup.h"
 #include "gui/theme.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/container.h"
@@ -65,6 +67,7 @@ struct SkillInfo
 {
     unsigned short id;
     std::string name;
+    std::string dispName;
     Image *icon;
     bool modifiable;
     bool visible;
@@ -78,9 +81,9 @@ struct SkillInfo
     gcn::Color color;
 
     SkillInfo() :
-        id(0), name(""), icon(0), modifiable(false), visible(false),
-        model(0), skillLevel(""), skillLevelWidth(0), skillExp(""),
-        progress(0.0f)
+        id(0), name(""), dispName(""), icon(0), modifiable(false),
+        visible(false), model(0), skillLevel(""), skillLevelWidth(0),
+        skillExp(""), progress(0.0f)
     {
     }
 
@@ -143,12 +146,13 @@ private:
     SkillList mVisibleSkills;
 };
 
-class SkillListBox : public ListBox
+class SkillListBox : public ListBox, public gcn::MouseListener
 {
 public:
     SkillListBox(SkillModel *model):
         ListBox(model),
-        mModel(model)
+        mModel(model),
+        mPopup(new TextPopup())
     {
     }
 
@@ -156,6 +160,8 @@ public:
     {
         delete mModel;
         mModel = 0;
+        delete mPopup;
+        mPopup = 0;
     }
 
     SkillInfo *getSelectedInfo()
@@ -208,8 +214,31 @@ public:
     unsigned int getRowHeight() const
     { return 34; }
 
+    void mouseMoved(gcn::MouseEvent &event)
+    {
+        ListBox::mouseMoved(event);
+        if (!viewport)
+            return;
+
+        int y = event.getY() / getRowHeight();
+        if (!mModel || y >= mModel->getNumberOfElements())
+            return;
+        SkillInfo *skill = mModel->getSkillAt(y);
+        if (!skill)
+            return;
+
+        mPopup->show(viewport->getMouseX(), viewport->getMouseY(),
+            skill->dispName);
+    }
+
+    void mouseExited(gcn::MouseEvent &event)
+    {
+        mPopup->hide();
+    }
+
 private:
     SkillModel *mModel;
+    TextPopup *mPopup;
 };
 
 class SkillTab : public Tab
@@ -347,6 +376,7 @@ void SkillDialog::loadSkills(const std::string &file)
             SkillInfo *skill = new SkillInfo;
             skill->id = 1;
             skill->name = "basic";
+            skill->dispName = "Skill: basic, Id: 1";
             skill->setIcon("");
             skill->modifiable = true;
             skill->visible = true;
@@ -398,6 +428,8 @@ void SkillDialog::loadSkills(const std::string &file)
                     SkillInfo *skill = new SkillInfo;
                     skill->id = static_cast<short unsigned>(id);
                     skill->name = name;
+                    skill->dispName = strprintf("Skill: %s, Id: %d",
+                        name.c_str(), skill->id);
                     skill->setIcon(icon);
                     skill->modifiable = false;
                     skill->visible = false;
@@ -452,6 +484,7 @@ void SkillDialog::addSkill(int id, int level, bool modifiable)
         SkillInfo *skill = new SkillInfo;
         skill->id = static_cast<short unsigned>(id);
         skill->name = "Unknown skill Id: " + toString(id);
+        skill->dispName = "Unknown skill Id: " + toString(id);
         skill->setIcon("");
         skill->modifiable = modifiable;
         skill->visible = false;
