@@ -775,6 +775,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
                      _("Restart your client for the change to take effect."));
         }
 
+        config.setValue("oldscreen", config.getBoolValue("screen"));
+        config.setValue("oldscreenwidth", graphics->getWidth());
+        config.setValue("oldscreenheight", graphics->getHeight());
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }

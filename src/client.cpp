@@ -456,8 +456,29 @@ Client::Client(const Options &options):
     // Try to set the desired video mode
     if (!graphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
     {
-        logger->error(strprintf("Couldn't set %dx%dx%d video mode: %s",
+        logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
+
+        const int oldWidth = config.getValueInt("oldscreenwidth", -1);
+        const int oldHeight = config.getValueInt("oldscreenheight", -1);
+        const bool oldFullscreen = config.getValueInt("oldscreen", -1);
+        if (oldWidth != -1 && oldHeight != -1 && oldFullscreen != -1)
+        {
+            config.deleteKey("oldscreenwidth");
+            config.deleteKey("oldscreenheight");
+            config.deleteKey("oldscreen");
+
+            config.setValueInt("screenwidth", oldWidth);
+            config.setValueInt("screenheight", oldHeight);
+            config.setValue("screen", oldFullscreen);
+            if (!graphics->setVideoMode(oldWidth, oldHeight, bpp,
+                oldFullscreen, hwaccel))
+            {
+                logger->error(strprintf("Couldn't restore %dx%dx%d "
+                    "video mode: %s", oldWidth, oldHeight, bpp,
+                    SDL_GetError()));
+            }
+        }
     }
 
     // Initialize for drawing
