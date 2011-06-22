@@ -47,7 +47,8 @@ class SimpleAnimation
         /**
          * Creates a simple animation that creates its animation from XML Data.
          */
-        SimpleAnimation(xmlNodePtr animationNode);
+        SimpleAnimation(xmlNodePtr animationNode,
+                        const std::string& dyePalettes = std::string());
 
         ~SimpleAnimation();
 
@@ -67,7 +68,8 @@ class SimpleAnimation
         Image *getCurrentImage() const;
 
     private:
-        void initializeAnimation(xmlNodePtr animationNode);
+        void initializeAnimation(xmlNodePtr animationNode,
+                                const std::string& dyePalettes = std::string());
 
         /** The hosted animation. */
         Animation *mAnimation;

@@ -27,6 +27,7 @@
 #include "particleemitter.h"
 #include "rotationalparticle.h"
 
+#include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
@@ -39,7 +40,8 @@
 #define DEG_RAD_FACTOR 0.017453293f
 
 ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
-                                 Map *map, int rotation):
+                                 Map *map, int rotation,
+                                 const std::string& dyePalettes):
     mOutputPauseLeft(0),
     mParticleImage(0)
 {
@@ -99,6 +101,9 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 // Don't leak when multiple images are defined
                 if (!image.empty() && !mParticleImage)
                 {
+                    if (!dyePalettes.empty())
+                        Dye::instantiate(image, dyePalettes);
+
                     ResourceManager *resman = ResourceManager::getInstance();
                     mParticleImage = resman->getImage(image);
                 }
@@ -194,7 +199,8 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
         }
         else if (xmlStrEqual(propertyNode->name, BAD_CAST "emitter"))
         {
-            ParticleEmitter newEmitter(propertyNode, mParticleTarget, map);
+            ParticleEmitter newEmitter(propertyNode, mParticleTarget, map,
+                                       rotation, dyePalettes);
             mParticleChildEmitters.push_back(newEmitter);
         }
         else if (xmlStrEqual(propertyNode->name, BAD_CAST "rotation"))

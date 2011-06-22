@@ -28,6 +28,7 @@
 #include "utils/stringutils.h"
 
 #include "resources/animation.h"
+#include "resources/dye.h"
 #include "resources/image.h"
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
@@ -43,13 +44,14 @@ SimpleAnimation::SimpleAnimation(Animation *animation):
 {
 }
 
-SimpleAnimation::SimpleAnimation(xmlNodePtr animationNode):
+SimpleAnimation::SimpleAnimation(xmlNodePtr animationNode,
+                                 const std::string& dyePalettes):
     mAnimation(new Animation),
     mAnimationTime(0),
     mAnimationPhase(0),
     mInitialized(false)
 {
-    initializeAnimation(animationNode);
+    initializeAnimation(animationNode, dyePalettes);
     if (mAnimation)
         mCurrentFrame = mAnimation->getFrame(0);
     else
@@ -134,12 +136,20 @@ Image *SimpleAnimation::getCurrentImage() const
         return NULL;
 }
 
-void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode)
+void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
+                                          const std::string& dyePalettes)
 {
     mInitialized = false;
 
     if (!animationNode)
         return;
+
+    std::string imagePath = XML::getProperty(animationNode,
+                                                   "imageset", "");
+
+    // Instanciate the dye coloration.
+    if (!imagePath.empty() && !dyePalettes.empty())
+        Dye::instantiate(imagePath, dyePalettes);
 
     ImageSet *imageset = ResourceManager::getInstance()->getImageSet(
         XML::getProperty(animationNode, "imageset", ""),

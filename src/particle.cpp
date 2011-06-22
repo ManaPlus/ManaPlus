@@ -25,6 +25,7 @@
 
 #include "animationparticle.h"
 #include "configuration.h"
+#include "resources/dye.h"
 #include "imageparticle.h"
 #include "log.h"
 #include "map.h"
@@ -282,7 +283,12 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
 {
     Particle *newParticle = NULL;
 
-    XML::Document doc(particleEffectFile);
+    std::string::size_type pos = particleEffectFile.find('|');
+    std::string dyePalettes;
+    if (pos != std::string::npos)
+        dyePalettes = particleEffectFile.substr(pos + 1);
+
+    XML::Document doc(particleEffectFile.substr(0, pos));
     xmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "effect"))
@@ -306,19 +312,22 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         // Animation
         if ((node = XML::findFirstChildByName(effectChildNode, "animation")))
         {
-            newParticle = new AnimationParticle(mMap, node);
+            newParticle = new AnimationParticle(mMap, node, dyePalettes);
         }
         // Rotational
         else if ((node = XML::findFirstChildByName(
                  effectChildNode, "rotation")))
         {
-            newParticle = new RotationalParticle(mMap, node);
+            newParticle = new RotationalParticle(mMap, node, dyePalettes);
         }
         // Image
         else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
         {
-            Image *img = resman->getImage(reinterpret_cast<const char*>(
-                node->xmlChildrenNode->content));
+            std::string imageSrc = reinterpret_cast<const char*>(
+                node->xmlChildrenNode->content);
+            if (!imageSrc.empty() && !dyePalettes.empty())
+                Dye::instantiate(imageSrc, dyePalettes);
+            Image *img = resman->getImage(imageSrc);
 
             newParticle = new ImageParticle(mMap, img);
         }
@@ -353,8 +362,8 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             if (xmlStrEqual(emitterNode->name, BAD_CAST "emitter"))
             {
                 ParticleEmitter *newEmitter;
-                newEmitter = new ParticleEmitter(
-                    emitterNode, newParticle, mMap, rotation);
+                newEmitter = new ParticleEmitter(emitterNode, newParticle,
+                    mMap, rotation, dyePalettes);
                 newParticle->addEmitter(newEmitter);
             }
             else if (xmlStrEqual(emitterNode->name, BAD_CAST "deatheffect"))

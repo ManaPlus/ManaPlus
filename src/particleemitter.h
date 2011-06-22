@@ -43,11 +43,9 @@ class Particle;
 class ParticleEmitter
 {
     public:
-        /**
-         * Constructor.
-         */
-        ParticleEmitter(xmlNodePtr emitterNode,  Particle *target,
-                        Map *map, int rotation = 0);
+        ParticleEmitter(xmlNodePtr emitterNode,  Particle *target, Map *map,
+                        int rotation = 0,
+                        const std::string& dyePalettes = std::string());
 
         /**
          * Copy Constructor (necessary for reference counting of particle images)

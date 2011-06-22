@@ -36,7 +36,8 @@ class RotationalParticle : public ImageParticle
     public:
         RotationalParticle(Map *map, Animation *animation);
 
-        RotationalParticle(Map *map, xmlNodePtr animationNode);
+        RotationalParticle(Map *map, xmlNodePtr animationNode,
+                           const std::string& dyePalettes = std::string());
 
         ~RotationalParticle();
 
