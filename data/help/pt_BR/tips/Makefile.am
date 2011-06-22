@@ -18,5 +18,5 @@ helpptbrtips_DATA =				\
 	14.txt
 
 EXTRA_DIST =			\
-	$(helptips_DATA) \
+	$(helpptbrtips_DATA) \
 	CMakeLists.txt

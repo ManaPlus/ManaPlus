@@ -243,6 +243,7 @@ data/help/pt/tips/Makefile
 data/help/pt_BR/Makefile
 data/help/pt_BR/tips/Makefile
 data/help/ru/Makefile
+data/help/ru/tips/Makefile
 data/help/tips/Makefile
 data/icons/Makefile
 docs/Makefile

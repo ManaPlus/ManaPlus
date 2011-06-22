@@ -1,7 +1,7 @@
 
-helppttipsdir = $(pkgdatadir)/data/help/pt/tips
+helprutipsdir = $(pkgdatadir)/data/help/ru/tips
 
-helppttips_DATA =				\
+helprutips_DATA =				\
 	1.txt			\
 	2.txt			\
 	3.txt			\
@@ -18,5 +18,5 @@ helppttips_DATA =				\
 	14.txt
 
 EXTRA_DIST =			\
-	$(helppttips_DATA) \
+	$(helprutips_DATA) \
 	CMakeLists.txt

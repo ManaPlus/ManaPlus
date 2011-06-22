@@ -1,3 +1,4 @@
+SUBDIRS = tips
 
 helprudir = $(pkgdatadir)/data/help/ru
 
