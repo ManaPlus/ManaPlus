@@ -68,8 +68,8 @@ class SimpleAnimation
         Image *getCurrentImage() const;
 
     private:
-        void initializeAnimation(xmlNodePtr animationNode,
-                                const std::string& dyePalettes = std::string());
+        void initializeAnimation(xmlNodePtr animationNode, const std::string&
+                                 dyePalettes = std::string());
 
         /** The hosted animation. */
         Animation *mAnimation;
