@@ -146,7 +146,7 @@ private:
     SkillList mVisibleSkills;
 };
 
-class SkillListBox : public ListBox, public gcn::MouseListener
+class SkillListBox : public ListBox
 {
 public:
     SkillListBox(SkillModel *model):
@@ -231,7 +231,7 @@ public:
             skill->dispName);
     }
 
-    void mouseExited(gcn::MouseEvent &event)
+    void mouseExited(gcn::MouseEvent &event _UNUSED_)
     {
         mPopup->hide();
     }

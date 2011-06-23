@@ -42,6 +42,12 @@ class TabbedArea;
 
 struct SkillInfo;
 
+#ifdef __GNUC__
+#define _UNUSED_  __attribute__ ((unused))
+#else
+#define _UNUSED_
+#endif
+
 /**
  * The skill dialog.
  *
