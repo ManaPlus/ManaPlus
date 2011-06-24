@@ -139,6 +139,15 @@ NpcDialog::~NpcDialog()
 {
     config.removeListener("logNpcInGui", this);
 
+    clearLayout();
+
+    delete mTextBox;
+    mTextBox = 0;
+    delete mClearButton;
+    mClearButton = 0;
+    delete mButton;
+    mButton = 0;
+
     // These might not actually be in the layout, so lets be safe
     delete mScrollArea;
     mScrollArea = 0;
@@ -156,6 +165,9 @@ NpcDialog::~NpcDialog()
     mMinusButton = 0;
     delete mItemLinkHandler;
     mItemLinkHandler = 0;
+
+    delete mListScrollArea;
+    mListScrollArea = 0;
 
     instances.remove(this);
 }

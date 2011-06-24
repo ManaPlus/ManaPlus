@@ -258,6 +258,13 @@ void NpcHandler::endShopping(int beingId _UNUSED_)
 
 void NpcHandler::clearDialogs()
 {
+    NpcDialogs::iterator it = mNpcDialogs.begin();
+    NpcDialogs::iterator it_end = mNpcDialogs.end();
+    while (it != it_end)
+    {
+        delete (*it).second.dialog;
+        ++ it;
+    }
     mNpcDialogs.clear();
 }
 
