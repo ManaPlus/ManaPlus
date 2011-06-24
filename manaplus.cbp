@@ -410,7 +410,7 @@
 		<Unit filename="src\log.h" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.h" />
-		<Unit filename="src\mana.rc">
+		<Unit filename="src\manaplus.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
 		<Unit filename="src\map.cpp" />

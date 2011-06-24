@@ -4,5 +4,5 @@ find -name \*.cpp \
   -o -name \*.am \
   -o -name \*.txt \
   -o -name \*.xml \
-  -o -name \*.mana \
-  | sort > mana.files
+  -o -name \*.manaplus \
+  | sort > manaplus.files

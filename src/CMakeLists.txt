@@ -810,7 +810,7 @@ IF (WIN32)
         ${SRCS}
         utils/specialfolder.cpp
         utils/specialfolder.h
-        mana.rc
+        manaplus.rc
     )
 ENDIF ()
 

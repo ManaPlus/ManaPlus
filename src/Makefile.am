@@ -725,7 +725,7 @@ EXTRA_DIST = CMakeLists.txt \
 	     enet/design.txt \
 	     enet/LICENSE \
 	     enet/README \
-	     mana.rc \
+	     manaplus.rc \
 	     SDLMain.h \
 	     SDLMain.m \
 	     SDL_gfx/SDL_gfxBlitFunc.h
