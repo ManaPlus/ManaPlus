@@ -1,7 +1,7 @@
 # Maintainer: Aline Ferraz <freya.df@gmail.com>
 
 pkgname=manaplus-git
-pkgver=1.1.6.12
+pkgver=@PACKAGE_VERSION@
 pkgrel=1
 pkgdesc="ManaPlus is a 2D MMORPG game advanced client for games based on eAthena fork The Mana World (tAthena) also for other forks like Evol. More info here: http://manaplus.evolonline.org"
 arch=('i686' 'x86_64')

@@ -20,6 +20,7 @@ EXTRA_DIST = $(desktop_DATA) \
 	     AUTHORS \
 	     ChangeLog \
 	     INSTALL \
+	     PKGBUILD \
 	     README \
 	     README.cmake
 

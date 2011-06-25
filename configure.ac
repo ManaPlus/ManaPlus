@@ -218,6 +218,7 @@ AM_CONDITIONAL(ENABLE_GOOGLE_PROFILER, test x$googleprofiler_enabled = xtrue)
 AC_CONFIG_FILES([
 manaplus.spec
 Makefile
+PKGBUILD
 src/Makefile
 data/Makefile
 data/fonts/Makefile

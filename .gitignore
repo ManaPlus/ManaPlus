@@ -35,6 +35,7 @@ po/POTFILES
 .deps
 stamp-h1
 manaplus.spec
+PKGBUILD
 
 # files created by CMake
 CMakeFiles/
