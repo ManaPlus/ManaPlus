@@ -1,7 +1,7 @@
 THE MANA PLUS CLIENT
 ===============
 
- Version: 1.1.6.12        Date: 2011-06-12
+ Version: 1.1.6.26        Date: 2011-06-26
 
  Development team:
   - See AUTHORS file for a list
@@ -9,10 +9,8 @@ THE MANA PLUS CLIENT
  Powered by:
 
   - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
-  - Guichan (GUI framework)
   - libxml2 (XML parsing and writing)
   - PhysFS (Data files)
-  - ENet (UDP networking library)
   - libcurl (HTTP downloads)
   - zlib (Archives)
 

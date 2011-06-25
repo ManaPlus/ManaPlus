@@ -1,3 +1,19 @@
+2011-06-26 New release 1.1.6.26
+ManaPlus:
+fix: context menu positions.
+fix: copy equiped to outfits.
+fix: revert video resolutiion changes if new is fail.
+fix: some more memory leaks.
+add: own comments to players.
+add: option to use local time in chat.
+Can be changed here: SET / Chat / Use local time.
+add: redesigned setup pages.
+add: missing video modes.
+add: updated some windows libs.
+add: tooltips in skills dialog.
+add: archlinux PKGBUILD file.
+
+
 2011-06-12 New release 1.1.6.12
 ManaPlus:
 fix: outfits item selection.
