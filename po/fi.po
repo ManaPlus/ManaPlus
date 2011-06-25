@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Sini Ruohomaa <sini.ruohomaa@iki.fi>, 2011.
 # Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-20 03:19+0300\n"
+"POT-Creation-Date: 2011-06-25 18:01+0300\n"
 "PO-Revision-Date: 2011-06-20 00:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1030
@@ -30,35 +30,35 @@ msgstr "väistö"
 msgid "miss"
 msgstr "huti"
 
-#: src/client.cpp:796 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:817 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Asetukset"
 
-#: src/client.cpp:875
+#: src/client.cpp:896
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
-#: src/client.cpp:906
+#: src/client.cpp:927
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
-#: src/client.cpp:939
+#: src/client.cpp:960
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
-#: src/client.cpp:1031
+#: src/client.cpp:1052
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
-#: src/client.cpp:1062
+#: src/client.cpp:1083
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
-#: src/client.cpp:1072
+#: src/client.cpp:1093
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
-#: src/client.cpp:1109 src/client.cpp:1116 src/client.cpp:1253
+#: src/client.cpp:1130 src/client.cpp:1137 src/client.cpp:1274
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:391
@@ -68,50 +68,50 @@ msgstr "Vaihdan pelipalvelinta"
 msgid "Error"
 msgstr "Virhe"
 
-#: src/client.cpp:1125
+#: src/client.cpp:1146
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
-#: src/client.cpp:1152
+#: src/client.cpp:1173
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
-#: src/client.cpp:1153
+#: src/client.cpp:1174
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1172
+#: src/client.cpp:1193
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
-#: src/client.cpp:1173
+#: src/client.cpp:1194
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1214
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
-#: src/client.cpp:1194
+#: src/client.cpp:1215
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
-#: src/client.cpp:1383 src/client.cpp:1413 src/client.cpp:1457
-#: src/client.cpp:1873
+#: src/client.cpp:1404 src/client.cpp:1434 src/client.cpp:1478
+#: src/client.cpp:1894
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s ei ole olemassa eikä sitä voi luoda! Poistun."
 
-#: src/client.cpp:1587
+#: src/client.cpp:1608
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Epäkelpo päivitysosoite: %s"
 
-#: src/client.cpp:1621 src/client.cpp:1627
+#: src/client.cpp:1642 src/client.cpp:1648
 msgid "Error creating updates directory!"
 msgstr "Päivityshakemistoa luodessa tapahtui virhe!"
 
-#: src/client.cpp:1648
+#: src/client.cpp:1669
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Virhe: %s ei ole olemassa eikä sitä voi luoda! Poistun."
@@ -127,11 +127,11 @@ msgstr "Et voi lähettää tyhjiä kuiskauksia!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai"
-" käytit omaa nimeäsi."
+"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai "
+"käytit omaa nimeäsi."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -286,8 +286,8 @@ msgstr "Orvot resurssikuvat:"
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"Vaihtoehdot komennolle /%s ovat \"yes\" (kyllä), \"no\" (ei) tai vastaavasti"
-" \"true\", \"false\", \"1\" tai \"0\"."
+"Vaihtoehdot komennolle /%s ovat \"yes\" (kyllä), \"no\" (ei) tai vastaavasti "
+"\"true\", \"false\", \"1\" tai \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -694,8 +694,8 @@ msgstr "sateenkaari 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_players.cpp:220
-#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:166
-#: src/gui/setup_video.cpp:191 src/gui/textcommandeditor.cpp:101
+#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:214
+#: src/gui/setup_video.cpp:239 src/gui/textcommandeditor.cpp:101
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:159
 msgid "???"
 msgstr "???"
@@ -1219,7 +1219,7 @@ msgstr "Ei-pelaajahahmo (NPC)"
 msgid "Clear"
 msgstr "Tyhjennä"
 
-#: src/gui/npcdialog.cpp:210
+#: src/gui/npcdialog.cpp:222
 msgid "> Next"
 msgstr "> Seuraava"
 
@@ -1701,8 +1701,8 @@ msgstr "Huomaa"
 #: src/gui/setup_audio.cpp:120
 msgid "You may have to restart your client if you want to download new music"
 msgstr ""
-"Voit joutua uudelleenkäynnistämään asiakasohjelmasi, jos haluat ladata uudet"
-" musiikit"
+"Voit joutua uudelleenkäynnistämään asiakasohjelmasi, jos haluat ladata uudet "
+"musiikit"
 
 #: src/gui/setup_audio.cpp:133
 msgid "Sound Engine"
@@ -2088,241 +2088,240 @@ msgstr ""
 msgid "Theme Changed"
 msgstr "Ulkoasua muutettu"
 
-#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:722
-#: src/gui/setup_video.cpp:727
+#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:770
+#: src/gui/setup_video.cpp:775
 msgid "Restart your client for the change to take effect."
 msgstr "Käynnistä ohjelma uudelleen, jotta muutos astuu voimaan."
 
-#: src/gui/setup_video.cpp:146
+#: src/gui/setup_video.cpp:194
 msgid "Tiny (10)"
 msgstr "Pikkiriikkinen (10)"
 
-#: src/gui/setup_video.cpp:147
+#: src/gui/setup_video.cpp:195
 msgid "Small (11)"
 msgstr "Pieni (11)"
 
-#: src/gui/setup_video.cpp:148
+#: src/gui/setup_video.cpp:196
 msgid "Medium (12)"
 msgstr "Keskikokoinen (12)"
 
-#: src/gui/setup_video.cpp:149
+#: src/gui/setup_video.cpp:197
 msgid "Large (13)"
 msgstr "Kookas (13)"
 
-#: src/gui/setup_video.cpp:150
+#: src/gui/setup_video.cpp:198
 msgid "Big (14)"
 msgstr "Suuri (14)"
 
-#: src/gui/setup_video.cpp:151
+#: src/gui/setup_video.cpp:199
 msgid "Huge (15)"
 msgstr "Jättimäinen (15)"
 
-#: src/gui/setup_video.cpp:174
+#: src/gui/setup_video.cpp:222
 msgid "Software"
 msgstr "Ei kiihdytystä"
 
-#: src/gui/setup_video.cpp:175
+#: src/gui/setup_video.cpp:223
 msgid "Fast OpenGL"
 msgstr "Nopea OpenGL"
 
-#: src/gui/setup_video.cpp:176
+#: src/gui/setup_video.cpp:224
 msgid "Safe OpenGL"
 msgstr "Turvallinen OpenGL"
 
-#: src/gui/setup_video.cpp:203
+#: src/gui/setup_video.cpp:251
 msgid "No text"
 msgstr "Ei tekstiä"
 
-#: src/gui/setup_video.cpp:205
+#: src/gui/setup_video.cpp:253
 msgid "Text"
 msgstr "Teksti"
 
-#: src/gui/setup_video.cpp:207
+#: src/gui/setup_video.cpp:255
 msgid "Bubbles, no names"
 msgstr "Puhekuplat, ei nimiä"
 
-#: src/gui/setup_video.cpp:209
+#: src/gui/setup_video.cpp:257
 msgid "Bubbles with names"
 msgstr "Puhekuplat nimillä"
 
-#: src/gui/setup_video.cpp:222
+#: src/gui/setup_video.cpp:270
 msgid "off"
 msgstr "pois päältä"
 
-#: src/gui/setup_video.cpp:224 src/gui/setup_video.cpp:241
+#: src/gui/setup_video.cpp:272 src/gui/setup_video.cpp:289
 msgid "low"
 msgstr "matala"
 
-#: src/gui/setup_video.cpp:226 src/gui/setup_video.cpp:245
+#: src/gui/setup_video.cpp:274 src/gui/setup_video.cpp:293
 msgid "high"
 msgstr "korkea"
 
-#: src/gui/setup_video.cpp:243
+#: src/gui/setup_video.cpp:291
 msgid "medium"
 msgstr "keskitaso"
 
-#: src/gui/setup_video.cpp:247
+#: src/gui/setup_video.cpp:295
 msgid "max"
 msgstr "maksimi"
 
-#: src/gui/setup_video.cpp:279
+#: src/gui/setup_video.cpp:327
 msgid "Full screen"
 msgstr "Kokoruututila"
 
-#: src/gui/setup_video.cpp:280
+#: src/gui/setup_video.cpp:328
 msgid "Hw acceleration"
 msgstr "Rautakiihdytys"
 
-#: src/gui/setup_video.cpp:281
+#: src/gui/setup_video.cpp:329
 msgid "Custom cursor"
 msgstr "Tyylitelty hiiren osoitin"
 
-#: src/gui/setup_video.cpp:283
+#: src/gui/setup_video.cpp:331
 msgid "Visible names"
 msgstr "Näytä nimet"
 
-#: src/gui/setup_video.cpp:285
+#: src/gui/setup_video.cpp:333
 msgid "Particle effects"
 msgstr "Hiukkastehosteet"
 
-#: src/gui/setup_video.cpp:287
+#: src/gui/setup_video.cpp:335
 msgid "Log NPC dialogue"
 msgstr "Kirjaa keskustelut ei-pelaajahahmojen kanssa lokiin"
 
-#: src/gui/setup_video.cpp:288
+#: src/gui/setup_video.cpp:336
 msgid "Show pickup notification"
 msgstr "Näytä ottoviesti"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:290
+#: src/gui/setup_video.cpp:338
 msgid "in chat"
 msgstr "keskusteluikkunassa"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:340
 msgid "as particle"
 msgstr "leijuvana"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:342
 msgid "Hide shield sprite"
 msgstr "Piilota kilpihahmo"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:344
 msgid "Low traffic mode"
 msgstr "Matalan liikenteen tila"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:346
 msgid "Sync player move"
 msgstr "Synkronoi pelaajan liikkeet"
 
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:348
 msgid "Draw hotkeys on map"
 msgstr "Piirrä siirtymäpikanäppäimet kartalle"
 
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:350
 msgid "Draw path"
 msgstr "Piirrä polku"
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:351
 msgid "Show job"
 msgstr "Näytä työ"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:352
 msgid "Enable opacity cache"
 msgstr "Ota käyttöön läpinäkyvyysvälimuisti"
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:353
 msgid "Show background"
 msgstr "Näytä tausta"
 
-#: src/gui/setup_video.cpp:310
+#: src/gui/setup_video.cpp:358
 msgid "FPS limit:"
 msgstr "Piirtonopeusrajoitin (FPS):"
 
-#: src/gui/setup_video.cpp:314 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:653 src/gui/setup_video.cpp:817
+#: src/gui/setup_video.cpp:362 src/gui/setup_video.cpp:402
+#: src/gui/setup_video.cpp:701 src/gui/setup_video.cpp:868
 msgid "Alt FPS limit: "
 msgstr "Vaihtoehtoinen FPS-rajoitin:"
 
-#: src/gui/setup_video.cpp:324
+#: src/gui/setup_video.cpp:372
 msgid "Video"
 msgstr "Kuva"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:377
 msgid "Overhead text"
 msgstr "Tekstinä yläpuolella"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:378
 msgid "Gui opacity"
 msgstr "Käyttöliittymän läpinäkyvyys"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:379
 msgid "Ambient FX"
 msgstr "Taustaäänet"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:380
 msgid "Particle detail"
 msgstr "Hiukkastehosteiden yksityiskohtaisuus"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:381
 msgid "Font size"
 msgstr "Kirjasimen koko"
 
-#: src/gui/setup_video.cpp:352 src/gui/setup_video.cpp:355
-#: src/gui/setup_video.cpp:652 src/gui/setup_video.cpp:804
-#: src/gui/setup_video.cpp:815
+#: src/gui/setup_video.cpp:400 src/gui/setup_video.cpp:403
+#: src/gui/setup_video.cpp:700 src/gui/setup_video.cpp:855
+#: src/gui/setup_video.cpp:866
 msgid "None"
 msgstr "-"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:583
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr ""
-"Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
+msgstr "Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
-#: src/gui/setup_video.cpp:541
+#: src/gui/setup_video.cpp:589
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "Kokoruututilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
-#: src/gui/setup_video.cpp:552
+#: src/gui/setup_video.cpp:600
 msgid "Switching to Full Screen"
 msgstr "Vaihdan kokoruututilaan"
 
-#: src/gui/setup_video.cpp:553
+#: src/gui/setup_video.cpp:601
 msgid "Restart needed for changes to take effect."
 msgstr "Ohjelma pitää käynnistää uudelleen, jotta muutokset astuvat voimaan."
 
-#: src/gui/setup_video.cpp:565
+#: src/gui/setup_video.cpp:613
 msgid "Changing to OpenGL"
 msgstr "Vaihdetaan käyttämään OpenGL:ää"
 
-#: src/gui/setup_video.cpp:566
+#: src/gui/setup_video.cpp:614
 msgid "Applying change to OpenGL requires restart."
 msgstr "OpenGL -asetuksen muutos vaatii ohjelman uudelleenkäynnistyksen."
 
-#: src/gui/setup_video.cpp:705
+#: src/gui/setup_video.cpp:753
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Oma tarkkuus (esim. 1024x768)"
 
-#: src/gui/setup_video.cpp:706
+#: src/gui/setup_video.cpp:754
 msgid "Enter new resolution:                "
 msgstr "Anna uusi tarkkuus:                  "
 
-#: src/gui/setup_video.cpp:721 src/gui/setup_video.cpp:726
+#: src/gui/setup_video.cpp:769 src/gui/setup_video.cpp:774
 msgid "Screen Resolution Changed"
 msgstr "Ikkunan koko vaihdettu"
 
-#: src/gui/setup_video.cpp:724
+#: src/gui/setup_video.cpp:772
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Joitakin ikkunoita on siirretty, jotta ne mahtuvat pienemmälle ruudulle."
 
-#: src/gui/setup_video.cpp:758
+#: src/gui/setup_video.cpp:809
 msgid "Particle Effect Settings Changed."
 msgstr "Hiukkastehosteiden asetuksia on muutettu."
 
-#: src/gui/setup_video.cpp:759
+#: src/gui/setup_video.cpp:810
 msgid "Changes will take effect on map change."
 msgstr "Muutokset astuvat voimaan kartan vaihtuessa."
 
@@ -2361,35 +2360,35 @@ msgstr "Kaupantekoehdotus"
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s haluaa %s %s - hyväksytkö?"
 
-#: src/gui/skilldialog.cpp:243 src/gui/windowmenu.cpp:81
+#: src/gui/skilldialog.cpp:272 src/gui/windowmenu.cpp:81
 msgid "Skills"
 msgstr "Taidot"
 
-#: src/gui/skilldialog.cpp:254
+#: src/gui/skilldialog.cpp:283
 msgid "Up"
 msgstr "Ylös"
 
-#: src/gui/skilldialog.cpp:307
+#: src/gui/skilldialog.cpp:336
 #, c-format
 msgid "Skill points available: %d"
 msgstr "%d taitopistettä käyttämättä"
 
-#: src/gui/skilldialog.cpp:383
+#: src/gui/skilldialog.cpp:413
 #, c-format
 msgid "Skill Set %d"
 msgstr "Taitojoukko %d"
 
-#: src/gui/skilldialog.cpp:395
+#: src/gui/skilldialog.cpp:425
 #, c-format
 msgid "Skill %d"
 msgstr "Taito %d"
 
-#: src/gui/skilldialog.cpp:459 src/gui/skilldialog.cpp:512
+#: src/gui/skilldialog.cpp:492 src/gui/skilldialog.cpp:545
 #, c-format
 msgid "Lvl: %d"
 msgstr "Taso: %d"
 
-#: src/gui/skilldialog.cpp:504
+#: src/gui/skilldialog.cpp:537
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr "Taso: %d (%+d)"
@@ -3121,8 +3120,7 @@ msgid "Change"
 msgstr "Muuta"
 
 #: src/gui/tradewindow.cpp:336
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Tavaran lisääminen epäonnistui, limittämisongelma."
 
 #: src/gui/tradewindow.cpp:381
@@ -3472,8 +3470,7 @@ msgid "Command: /unignore <player>"
 msgstr "Komento: /unignore <pelaajan nimi>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Tämä komento huomioi pelaajan taas, jos tämä on ensin jätetty huomiotta."
 
@@ -4551,8 +4548,7 @@ msgstr "Tuntematon hahmopalvelinvirhe."
 
 #: src/net/tmwa/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr ""
-"Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
+msgstr "Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
 
 #: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:196
 msgid "Wrong name."
@@ -5177,10 +5173,8 @@ msgstr "Viesti"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
-msgstr ""
-"Kannat roinaa yli puolen elopainoasi. Rasitus estää sinua paranemasta."
+"You are carrying more than half your weight. You are unable to regain health."
+msgstr "Kannat roinaa yli puolen elopainoasi. Rasitus estää sinua paranemasta."
 
 #: src/net/tmwa/playerhandler.cpp:353
 msgid "You are carrying less than half your weight. You can regain health."
@@ -5371,5 +5365,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Tuntematon tavara"
-
-

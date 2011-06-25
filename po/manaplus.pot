@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-20 03:19+0300\n"
+"POT-Creation-Date: 2011-06-25 18:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,35 +30,35 @@ msgstr ""
 msgid "miss"
 msgstr ""
 
-#: src/client.cpp:796 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:817 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr ""
 
-#: src/client.cpp:875
+#: src/client.cpp:896
 msgid "Connecting to server"
 msgstr ""
 
-#: src/client.cpp:906
+#: src/client.cpp:927
 msgid "Logging in"
 msgstr ""
 
-#: src/client.cpp:939
+#: src/client.cpp:960
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1031
+#: src/client.cpp:1052
 msgid "Requesting characters"
 msgstr ""
 
-#: src/client.cpp:1062
+#: src/client.cpp:1083
 msgid "Connecting to the game server"
 msgstr ""
 
-#: src/client.cpp:1072
+#: src/client.cpp:1093
 msgid "Changing game servers"
 msgstr ""
 
-#: src/client.cpp:1109 src/client.cpp:1116 src/client.cpp:1253
+#: src/client.cpp:1130 src/client.cpp:1137 src/client.cpp:1274
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:391
@@ -68,50 +68,50 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: src/client.cpp:1125
+#: src/client.cpp:1146
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1152
+#: src/client.cpp:1173
 msgid "Password Change"
 msgstr ""
 
-#: src/client.cpp:1153
+#: src/client.cpp:1174
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1172
+#: src/client.cpp:1193
 msgid "Email Change"
 msgstr ""
 
-#: src/client.cpp:1173
+#: src/client.cpp:1194
 msgid "Email changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1193
+#: src/client.cpp:1214
 msgid "Unregister Successful"
 msgstr ""
 
-#: src/client.cpp:1194
+#: src/client.cpp:1215
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1383 src/client.cpp:1413 src/client.cpp:1457
-#: src/client.cpp:1873
+#: src/client.cpp:1404 src/client.cpp:1434 src/client.cpp:1478
+#: src/client.cpp:1894
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1587
+#: src/client.cpp:1608
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:1621 src/client.cpp:1627
+#: src/client.cpp:1642 src/client.cpp:1648
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:1648
+#: src/client.cpp:1669
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -690,8 +690,8 @@ msgstr ""
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_players.cpp:220
-#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:166
-#: src/gui/setup_video.cpp:191 src/gui/textcommandeditor.cpp:101
+#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:214
+#: src/gui/setup_video.cpp:239 src/gui/textcommandeditor.cpp:101
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:159
 msgid "???"
 msgstr ""
@@ -1215,7 +1215,7 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: src/gui/npcdialog.cpp:210
+#: src/gui/npcdialog.cpp:222
 msgid "> Next"
 msgstr ""
 
@@ -2082,239 +2082,239 @@ msgstr ""
 msgid "Theme Changed"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:722
-#: src/gui/setup_video.cpp:727
+#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:770
+#: src/gui/setup_video.cpp:775
 msgid "Restart your client for the change to take effect."
 msgstr ""
 
-#: src/gui/setup_video.cpp:146
+#: src/gui/setup_video.cpp:194
 msgid "Tiny (10)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:147
+#: src/gui/setup_video.cpp:195
 msgid "Small (11)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:148
+#: src/gui/setup_video.cpp:196
 msgid "Medium (12)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:149
+#: src/gui/setup_video.cpp:197
 msgid "Large (13)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:150
+#: src/gui/setup_video.cpp:198
 msgid "Big (14)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:151
+#: src/gui/setup_video.cpp:199
 msgid "Huge (15)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:174
+#: src/gui/setup_video.cpp:222
 msgid "Software"
 msgstr ""
 
-#: src/gui/setup_video.cpp:175
+#: src/gui/setup_video.cpp:223
 msgid "Fast OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:176
+#: src/gui/setup_video.cpp:224
 msgid "Safe OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:203
+#: src/gui/setup_video.cpp:251
 msgid "No text"
 msgstr ""
 
-#: src/gui/setup_video.cpp:205
+#: src/gui/setup_video.cpp:253
 msgid "Text"
 msgstr ""
 
-#: src/gui/setup_video.cpp:207
+#: src/gui/setup_video.cpp:255
 msgid "Bubbles, no names"
 msgstr ""
 
-#: src/gui/setup_video.cpp:209
+#: src/gui/setup_video.cpp:257
 msgid "Bubbles with names"
 msgstr ""
 
-#: src/gui/setup_video.cpp:222
+#: src/gui/setup_video.cpp:270
 msgid "off"
 msgstr ""
 
-#: src/gui/setup_video.cpp:224 src/gui/setup_video.cpp:241
+#: src/gui/setup_video.cpp:272 src/gui/setup_video.cpp:289
 msgid "low"
 msgstr ""
 
-#: src/gui/setup_video.cpp:226 src/gui/setup_video.cpp:245
+#: src/gui/setup_video.cpp:274 src/gui/setup_video.cpp:293
 msgid "high"
 msgstr ""
 
-#: src/gui/setup_video.cpp:243
+#: src/gui/setup_video.cpp:291
 msgid "medium"
 msgstr ""
 
-#: src/gui/setup_video.cpp:247
+#: src/gui/setup_video.cpp:295
 msgid "max"
 msgstr ""
 
-#: src/gui/setup_video.cpp:279
+#: src/gui/setup_video.cpp:327
 msgid "Full screen"
 msgstr ""
 
-#: src/gui/setup_video.cpp:280
+#: src/gui/setup_video.cpp:328
 msgid "Hw acceleration"
 msgstr ""
 
-#: src/gui/setup_video.cpp:281
+#: src/gui/setup_video.cpp:329
 msgid "Custom cursor"
 msgstr ""
 
-#: src/gui/setup_video.cpp:283
+#: src/gui/setup_video.cpp:331
 msgid "Visible names"
 msgstr ""
 
-#: src/gui/setup_video.cpp:285
+#: src/gui/setup_video.cpp:333
 msgid "Particle effects"
 msgstr ""
 
-#: src/gui/setup_video.cpp:287
+#: src/gui/setup_video.cpp:335
 msgid "Log NPC dialogue"
 msgstr ""
 
-#: src/gui/setup_video.cpp:288
+#: src/gui/setup_video.cpp:336
 msgid "Show pickup notification"
 msgstr ""
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:290
+#: src/gui/setup_video.cpp:338
 msgid "in chat"
 msgstr ""
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:340
 msgid "as particle"
 msgstr ""
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:342
 msgid "Hide shield sprite"
 msgstr ""
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:344
 msgid "Low traffic mode"
 msgstr ""
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:346
 msgid "Sync player move"
 msgstr ""
 
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:348
 msgid "Draw hotkeys on map"
 msgstr ""
 
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:350
 msgid "Draw path"
 msgstr ""
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:351
 msgid "Show job"
 msgstr ""
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:352
 msgid "Enable opacity cache"
 msgstr ""
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:353
 msgid "Show background"
 msgstr ""
 
-#: src/gui/setup_video.cpp:310
+#: src/gui/setup_video.cpp:358
 msgid "FPS limit:"
 msgstr ""
 
-#: src/gui/setup_video.cpp:314 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:653 src/gui/setup_video.cpp:817
+#: src/gui/setup_video.cpp:362 src/gui/setup_video.cpp:402
+#: src/gui/setup_video.cpp:701 src/gui/setup_video.cpp:868
 msgid "Alt FPS limit: "
 msgstr ""
 
-#: src/gui/setup_video.cpp:324
+#: src/gui/setup_video.cpp:372
 msgid "Video"
 msgstr ""
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:377
 msgid "Overhead text"
 msgstr ""
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:378
 msgid "Gui opacity"
 msgstr ""
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:379
 msgid "Ambient FX"
 msgstr ""
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:380
 msgid "Particle detail"
 msgstr ""
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:381
 msgid "Font size"
 msgstr ""
 
-#: src/gui/setup_video.cpp:352 src/gui/setup_video.cpp:355
-#: src/gui/setup_video.cpp:652 src/gui/setup_video.cpp:804
-#: src/gui/setup_video.cpp:815
+#: src/gui/setup_video.cpp:400 src/gui/setup_video.cpp:403
+#: src/gui/setup_video.cpp:700 src/gui/setup_video.cpp:855
+#: src/gui/setup_video.cpp:866
 msgid "None"
 msgstr ""
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:583
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:541
+#: src/gui/setup_video.cpp:589
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:552
+#: src/gui/setup_video.cpp:600
 msgid "Switching to Full Screen"
 msgstr ""
 
-#: src/gui/setup_video.cpp:553
+#: src/gui/setup_video.cpp:601
 msgid "Restart needed for changes to take effect."
 msgstr ""
 
-#: src/gui/setup_video.cpp:565
+#: src/gui/setup_video.cpp:613
 msgid "Changing to OpenGL"
 msgstr ""
 
-#: src/gui/setup_video.cpp:566
+#: src/gui/setup_video.cpp:614
 msgid "Applying change to OpenGL requires restart."
 msgstr ""
 
-#: src/gui/setup_video.cpp:705
+#: src/gui/setup_video.cpp:753
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:706
+#: src/gui/setup_video.cpp:754
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:721 src/gui/setup_video.cpp:726
+#: src/gui/setup_video.cpp:769 src/gui/setup_video.cpp:774
 msgid "Screen Resolution Changed"
 msgstr ""
 
-#: src/gui/setup_video.cpp:724
+#: src/gui/setup_video.cpp:772
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:758
+#: src/gui/setup_video.cpp:809
 msgid "Particle Effect Settings Changed."
 msgstr ""
 
-#: src/gui/setup_video.cpp:759
+#: src/gui/setup_video.cpp:810
 msgid "Changes will take effect on map change."
 msgstr ""
 
@@ -2353,35 +2353,35 @@ msgstr ""
 msgid "%s wants to %s %s do you accept?"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:243 src/gui/windowmenu.cpp:81
+#: src/gui/skilldialog.cpp:272 src/gui/windowmenu.cpp:81
 msgid "Skills"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:254
+#: src/gui/skilldialog.cpp:283
 msgid "Up"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:307
+#: src/gui/skilldialog.cpp:336
 #, c-format
 msgid "Skill points available: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:383
+#: src/gui/skilldialog.cpp:413
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:395
+#: src/gui/skilldialog.cpp:425
 #, c-format
 msgid "Skill %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:459 src/gui/skilldialog.cpp:512
+#: src/gui/skilldialog.cpp:492 src/gui/skilldialog.cpp:545
 #, c-format
 msgid "Lvl: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:504
+#: src/gui/skilldialog.cpp:537
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr ""
