@@ -11,7 +11,6 @@ EXTRA_DIST = $(desktop_DATA) \
 	     po/CMakeLists.txt \
 	     po/*.po \
 	     CMake/Modules/FindENet.cmake \
-	     CMake/Modules/FindGuichan.cmake \
 	     CMake/Modules/FindLibIntl.cmake \
 	     CMake/Modules/FindSDL_gfx.cmake \
 	     manaplus.cbp \
