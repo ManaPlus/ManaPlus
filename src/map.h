@@ -464,6 +464,7 @@ class Map : public Properties, public ConfigListener
 
     protected:
         friend class Actor;
+        friend class Minimap;
 
         /**
          * Adds an actor to the map.

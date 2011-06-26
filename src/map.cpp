@@ -676,12 +676,14 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
             int width = 0;
             int x0 = x;
 
-            if (!getWalk(x, y, BLOCKMASK_WALL))
+//            if (!getWalk(x, y, BLOCKMASK_WALL))
+            if (mMetaTiles[x + y * mWidth].blockmask & BLOCKMASK_WALL)
             {
                 width = 32;
                 for (int x2 = x + 1; x < endX; x2 ++)
                 {
-                    if (getWalk(x2, y, BLOCKMASK_WALL))
+//                    if (getWalk(x2, y, BLOCKMASK_WALL))
+                    if (!(mMetaTiles[x2 + y * mWidth].blockmask & BLOCKMASK_WALL))
                         break;
                     width += 32;
                     x ++;
@@ -698,12 +700,14 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (x < endX && !getWalk(x, y, BLOCKMASK_AIR))
+//            if (x < endX && !getWalk(x, y, BLOCKMASK_AIR))
+            if (x < endX && mMetaTiles[x + y * mWidth].blockmask & BLOCKMASK_AIR)
             {
                 width = 32;
                 for (int x2 = x + 1; x < endX; x2 ++)
                 {
-                    if (getWalk(x2, y, BLOCKMASK_AIR))
+                    if (!(mMetaTiles[x2 + y * mWidth].blockmask & BLOCKMASK_AIR))
+                    //if (getWalk(x2, y, BLOCKMASK_AIR))
                         break;
                     width += 32;
                     x ++;
@@ -720,12 +724,14 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (x < endX && !getWalk(x, y, BLOCKMASK_WATER))
+            if (x < endX && mMetaTiles[x + y * mWidth].blockmask & BLOCKMASK_WATER)
+//            if (x < endX && !getWalk(x, y, BLOCKMASK_WATER))
             {
                 width = 32;
                 for (int x2 = x + 1; x < endX; x2 ++)
                 {
-                    if (getWalk(x2, y, BLOCKMASK_WATER))
+                    if (!(mMetaTiles[x2 + y * mWidth].blockmask & BLOCKMASK_WATER))
+//                    if (getWalk(x2, y, BLOCKMASK_WATER))
                         break;
                     width += 32;
                     x ++;
@@ -856,7 +862,7 @@ void Map::blockTile(int x, int y, BlockType type)
 bool Map::getWalk(int x, int y, unsigned char walkmask) const
 {
     // You can't walk outside of the map
-    if (!contains(x, y))
+    if (x < 0 || y < 0 || x >= mWidth || y >= mHeight)
         return false;
 
     // Check if the tile is walkable

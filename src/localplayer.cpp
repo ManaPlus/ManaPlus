@@ -1127,23 +1127,19 @@ void LocalPlayer::startWalking(unsigned char dir)
 #endif
     {
         // Prevent skipping corners over colliding tiles
-        if (dx && !mMap->getWalk(getTileX() + dx, getTileY(), getWalkMask()))
+        if (dx && !mMap->getWalk(mX + dx, mY, getWalkMask()))
             dx = 0;
-        if (dy && !mMap->getWalk(getTileX(), getTileY() + dy, getWalkMask()))
+        if (dy && !mMap->getWalk(mX, mY + dy, getWalkMask()))
             dy = 0;
 
         // Choose a straight direction when diagonal target is blocked
-        if (dx && dy && !mMap->getWalk(getTileX() + dx, getTileY() + dy,
-            getWalkMask()))
-        {
+        if (dx && dy && !mMap->getWalk(mX + dx, mY + dy, getWalkMask()))
             dx = 0;
-        }
 
         // Walk to where the player can actually go
-        if ((dx || dy) && mMap->getWalk(getTileX() + dx, getTileY() + dy,
-            getWalkMask()))
+        if ((dx || dy) && mMap->getWalk(mX + dx, mY + dy, getWalkMask()))
         {
-            setDestination(getTileX() + dx, getTileY() + dy);
+            setDestination(mX + dx, mY + dy);
         }
         else if (dir != mDirection)
         {
@@ -2248,44 +2244,44 @@ void LocalPlayer::crazyMove8()
 
 
     int mult = 1;
-    if (mMap->getWalk(getTileX() + movesX[idx][0],
+    if (mMap->getWalk(mX + movesX[idx][0],
         getTileY() + movesY[idx][0], getWalkMask()))
     {
-        while (mMap->getWalk(getTileX() + movesX[idx][0] * mult,
-               getTileY() + movesY[idx][0] * mult,
+        while (mMap->getWalk(mX + movesX[idx][0] * mult,
+               mY + movesY[idx][0] * mult,
                getWalkMask()) && mult <= dist)
         {
             mult ++;
         }
         move(movesX[idx][0] * (mult - 1), movesY[idx][0] * (mult - 1));
     }
-    else if (mMap->getWalk(getTileX() + movesX[idx][1],
-             getTileY() + movesY[idx][1], getWalkMask()))
+    else if (mMap->getWalk(mX + movesX[idx][1],
+             mY + movesY[idx][1], getWalkMask()))
     {
-        while (mMap->getWalk(getTileX() + movesX[idx][1] * mult,
-               getTileY() + movesY[idx][1] * mult,
+        while (mMap->getWalk(mX + movesX[idx][1] * mult,
+               mY + movesY[idx][1] * mult,
                getWalkMask()) && mult <= dist)
         {
             mult ++;
         }
         move(movesX[idx][1] * (mult - 1), movesY[idx][1] * (mult - 1));
     }
-    else if (mMap->getWalk(getTileX() + movesX[idx][2],
-             getTileY() + movesY[idx][2], getWalkMask()))
+    else if (mMap->getWalk(mX + movesX[idx][2],
+             mY + movesY[idx][2], getWalkMask()))
     {
-        while (mMap->getWalk(getTileX() + movesX[idx][2] * mult,
-               getTileY() + movesY[idx][2] * mult,
+        while (mMap->getWalk(mX + movesX[idx][2] * mult,
+               mY + movesY[idx][2] * mult,
                getWalkMask()) && mult <= dist)
         {
             mult ++;
         }
         move(movesX[idx][2] * (mult - 1), movesY[idx][2] * (mult - 1));
     }
-    else if (mMap->getWalk(getTileX() + movesX[idx][3],
-             getTileY() + movesY[idx][3], getWalkMask()))
+    else if (mMap->getWalk(mX + movesX[idx][3],
+             mY + movesY[idx][3], getWalkMask()))
     {
-        while (mMap->getWalk(getTileX() + movesX[idx][3] * mult,
-               getTileY() + movesY[idx][3] * mult,
+        while (mMap->getWalk(mX + movesX[idx][3] * mult,
+               mY + movesY[idx][3] * mult,
                getWalkMask()) && mult <= dist)
         {
             mult ++;

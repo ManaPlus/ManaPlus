@@ -100,6 +100,7 @@ class Being : public ActorSprite, public ConfigListener
 {
     public:
         friend class BeingEquipBackend;
+        friend class LocalPlayer;
 
         /**
          * Action the being is currently performing

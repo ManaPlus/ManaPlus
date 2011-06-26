@@ -130,11 +130,13 @@ void Minimap::setMap(Map *map)
                     setVisible(false);
                 return;
             }
-            for (int y = 0; y < surface->h; y ++)
-            {
-                for (int x = 0; x < surface->w; x ++)
-                    *(data ++) = -map->getWalk(x, y);
-            }
+            const int size = surface->h * surface->w;
+            const int mask = (Map::BLOCKMASK_WALL | Map::BLOCKMASK_AIR
+                | Map::BLOCKMASK_WATER);
+
+            for (int ptr = 0; ptr < size; ptr ++)
+                *(data ++) = -!(map->mMetaTiles[ptr].blockmask & mask);
+
             SDL_UnlockSurface(surface);
 
             mMapImage = Image::load(surface);
