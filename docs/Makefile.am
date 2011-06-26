@@ -7,4 +7,4 @@ EXTRA_DIST = $(man6_MANS) \
 	     SOURCE/Doxyfile \
 	     sounddev.txt \
 	     clientupdates.txt \
-	     example.mana
+	     example.manaplus
