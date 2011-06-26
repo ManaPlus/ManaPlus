@@ -15,7 +15,6 @@ BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_gfx-devel
 BuildRequires:	physfs-devel
 BuildRequires:	libcurl-devel
-BuildRequires:	guichan-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libpng-devel
 BuildRequires:	gettext-devel
