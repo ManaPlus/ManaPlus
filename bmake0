@@ -42,7 +42,7 @@ autoreconf -i
 --mandir=$dir/run/share/man \
 --enable-memdebug=no \
 --with-internalguichan=yes \
---enable-tcmalloc=no \
+--enable-tcmalloc=yes \
 --enable-googleprofiler=yes
 
 #--without-librt
