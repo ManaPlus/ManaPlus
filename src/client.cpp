@@ -336,7 +336,11 @@ Client::Client(const Options &options):
     //possible crash
     strncat(path, "/data", PATH_MAX - 1);
     resman->addToSearchPath(path, false);
-    mPackageDir = path;
+// possible this need for support run client from dmg images.
+//    mPackageDir = path;
+
+    resman->addToSearchPath(PKG_DATADIR "data", false);
+    mPackageDir = PKG_DATADIR "data";
 #else
     resman->addToSearchPath(PKG_DATADIR "data", false);
     mPackageDir = PKG_DATADIR "data";

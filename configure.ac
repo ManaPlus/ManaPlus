@@ -109,15 +109,31 @@ fi
 AC_HEADER_STDC
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h malloc.h netdb.h netinet/in.h stdlib.h string.h sys/socket.h unistd.h])
 
+# Enable mac build
+AC_ARG_ENABLE(applebuild,
+[  --enable-applebuild    Turn on apple building],
+[case "${enableval}" in
+  yes) applebuild_enabled=true
+ ;;
+  no)  applebuild_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-applebuild) ;;
+esac],[applebuild_enabled=false])
+
+
 # Option to enable OpenGL
 AC_ARG_WITH(opengl,[  --without-opengl        don't use OpenGL ] )
 if test "x$with_opengl" == "xno"; then
     with_opengl=no
 else
     with_opengl=yes
-    AC_CHECK_LIB([GL], [glBegin], ,
-    AC_MSG_ERROR([ *** Unable to find OpenGL library]))
-    AC_DEFINE(USE_OPENGL, 1, [Defines if ManaPlus should have OpenGL support])
+    if test "x$applebuild_enabled" == "xfalse"; then
+        AC_CHECK_LIB([GL], [glBegin], ,
+        AC_MSG_ERROR([ *** Unable to find OpenGL library]))
+        AC_DEFINE(USE_OPENGL, 1, [Defines if ManaPlus should have OpenGL support])
+    else
+        LDFLAGS="$LDFLAGS -framework OpenGL"
+    fi
 fi
 
 # Option to enable internal guichan
@@ -153,8 +169,10 @@ AC_ARG_WITH(librt,[  --without-librt        don't link to librt ] )
 if test "x$with_librt" == "xno"; then
     without_librt=yes
 else
-    AC_CHECK_LIB(rt, shm_open, ,
-    AC_MSG_ERROR([ *** Unable to find librt library]))
+    if test "x$applebuild_enabled" == "xfalse"; then
+        AC_CHECK_LIB(rt, shm_open, ,
+        AC_MSG_ERROR([ *** Unable to find librt library]))
+    fi
     without_librt=no
 fi
 

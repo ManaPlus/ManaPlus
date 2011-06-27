@@ -44,6 +44,7 @@ autoreconf -i
 --enable-tcmalloc=no \
 --enable-googleprofiler=no
 
+#--enable-applebuild=yes
 #--without-librt
 
 cd po

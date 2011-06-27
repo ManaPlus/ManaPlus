@@ -39,15 +39,7 @@
 #define gettext(s) (const_cast <char*>(s))
 #define _(s) (const_cast <char*>(s))
 #define N_(s) (const_cast <char*>(s))
-
-char* ngettext(char* msgid, char* msgid_plural, unsigned long int n);
-
-char* ngettext(char* msgid, char* msgid_plural, unsigned long int n)
-{
-    if(n > 1)
-        return msgid_plural;
-    return msgid;
-}
+#define ngettext(s1,s2,i1) (const_cast <char*>(s1))
 
 #endif
 
