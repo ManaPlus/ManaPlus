@@ -40,6 +40,15 @@
 #define _(s) (const_cast <char*>(s))
 #define N_(s) (const_cast <char*>(s))
 
+char* ngettext(char* msgid, char* msgid_plural, unsigned long int n);
+
+char* ngettext(char* msgid, char* msgid_plural, unsigned long int n)
+{
+    if(n > 1)
+        return msgid_plural;
+    return msgid;
+}
+
 #endif
 
 #endif // UTILS_GETTEXT_H

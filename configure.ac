@@ -21,7 +21,7 @@ AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([atexit floor getcwd gethostbyname memset mkdir select socket])
 
 # Checks for internationalization support
-AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.16.1])
 
 # Search for *-config

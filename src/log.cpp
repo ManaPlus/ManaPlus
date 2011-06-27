@@ -197,15 +197,15 @@ void Logger::error(const std::string &error_text)
 #ifdef WIN32
     MessageBox(NULL, error_text.c_str(), "Error", MB_ICONERROR | MB_OK);
 #elif defined __APPLE__
-    Str255 msg;
-    CFStringRef error;
-    error = CFStringCreateWithCString(NULL,
-                                      error_text.c_str(),
-                                      kCFStringEncodingMacRoman);
-    CFStringGetPascalString(error, msg, 255, kCFStringEncodingMacRoman);
-    StandardAlert(kAlertStopAlert,
-                  "\pError",
-                  (ConstStr255Param) msg, NULL, NULL);
+//    Str255 msg;
+//    CFStringRef error;
+//    error = CFStringCreateWithCString(NULL,
+//                                      error_text.c_str(),
+//                                      kCFStringEncodingMacRoman);
+//    CFStringGetPascalString(error, msg, 255, kCFStringEncodingMacRoman);
+//    StandardAlert(kAlertStopAlert,
+//                  (const unsigned char*)"\pError",
+//                  (ConstStr255Param) msg, NULL, NULL);
 #elif defined __linux__ || __linux
     std::cerr << "Error: " << error_text << std::endl;
     std::string msg = "xmessage \"" + error_text + "\"";
