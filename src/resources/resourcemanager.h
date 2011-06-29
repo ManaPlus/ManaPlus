@@ -228,6 +228,8 @@ class ResourceManager
         void saveTextFile(std::string path, std::string name,
                           std::string text);
 
+        Image *getRescaled(Image *image, int width, int height);
+
         /**
          * Loads the given filename as an SDL surface. The returned surface is
          * expected to be freed by the caller using SDL_FreeSurface.

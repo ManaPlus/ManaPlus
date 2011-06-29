@@ -726,3 +726,34 @@ void ResourceManager::clearScheduled()
     }
     deletedSurfaces.clear();
 }
+
+struct RescaledLoader
+{
+    ResourceManager *manager;
+    Image *image;
+    int width;
+    int height;
+    static Resource *load(void *v)
+    {
+        if (!v)
+            return NULL;
+        RescaledLoader *l = static_cast< RescaledLoader * >(v);
+        if (!l->manager)
+            return NULL;
+        Image *rescaled = l->image->SDLgetScaledImage(l->width, l->height);
+        if (!rescaled)
+            return NULL;
+        return rescaled;
+    }
+};
+
+Image *ResourceManager::getRescaled(Image *image, int width, int height)
+{
+    if (!image)
+        return 0;
+
+    std::string idPath = image->getIdPath() + strprintf("_rescaled%dx%d", width, height);
+    RescaledLoader l = { this, image, width, height };
+    Image *img = static_cast<Image*>(get(idPath, RescaledLoader::load, &l));
+    return img;
+}

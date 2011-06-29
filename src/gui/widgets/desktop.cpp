@@ -38,8 +38,8 @@
 
 #include "debug.h"
 
-Desktop::Desktop()
-    : mWallpaper(0)
+Desktop::Desktop() :
+    mWallpaper(0)
 {
     addWidgetListener(this);
 
@@ -132,23 +132,15 @@ void Desktop::setBestFittingWallpaper()
             || nWallPaper->getHeight() != getHeight()))
         {
             // We rescale to obtain a fullscreen wallpaper...
-            Image *newRsclWlPpr = nWallPaper->SDLgetScaledImage(
-                getWidth(), getHeight());
-            std::string idPath = nWallPaper->getIdPath();
+            Image *newRsclWlPpr = ResourceManager::getInstance()->getRescaled(
+                nWallPaper, getWidth(), getHeight());
 
             // We replace the resource in the resource manager
             nWallPaper->decRef();
             if (newRsclWlPpr)
-            {
-                ResourceManager::getInstance()->addResource(
-                    idPath, newRsclWlPpr);
-
                 mWallpaper = newRsclWlPpr;
-            }
             else
-            {
                 mWallpaper = nWallPaper;
-            }
         }
         else
         {

@@ -479,7 +479,10 @@ Image* Image::SDLgetScaledImage(int width, int height)
         // The load function takes care of the SDL<->OpenGL implementation
         // and about freeing the given SDL_surface*.
         if (scaledSurface)
+        {
             scaledImage = load(scaledSurface);
+            SDL_FreeSurface(scaledSurface);
+        }
     }
     return scaledImage;
 }
