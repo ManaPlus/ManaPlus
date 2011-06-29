@@ -85,7 +85,8 @@ LoginDialog::LoginDialog(LoginData *loginData, std::string serverName,
                          std::string *updateHost):
     Window(_("Login")),
     mLoginData(loginData),
-    mUpdateHost(updateHost)
+    mUpdateHost(updateHost),
+    mServerName(serverName)
 {
     gcn::Label *serverLabel1 = new Label(_("Server:"));
     gcn::Label *serverLabel2 = new Label(serverName);
@@ -195,8 +196,11 @@ void LoginDialog::action(const gcn::ActionEvent &event)
         mServerButton->setEnabled(false);
         mLoginButton->setEnabled(false);
 
+        LoginDialog::savedPassword = mPassField->getText();
         if (mLoginData->remember)
-            LoginDialog::savedPassword = mPassField->getText();
+            LoginDialog::savedPasswordKey = mServerName;
+        else
+            LoginDialog::savedPasswordKey = "-";
 
         Client::setState(STATE_LOGIN_ATTEMPT);
     }

@@ -236,12 +236,13 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     mPersistentIPCheckBox(0)
 {
     if (isSafeMode)
-        setCaption("Choose Your Server  *** SAFE MODE ***");
+        setCaption(_("Choose Your Server  *** SAFE MODE ***"));
 
     setWindowName("ServerDialog");
 
     Label *serverLabel = new Label(_("Server:"));
     Label *portLabel = new Label(_("Port:"));
+
     mServerNameField = new TextField(mServerInfo->hostname);
     mPortField = new TextField(toString(mServerInfo->port));
     mPersistentIPCheckBox = new CheckBox(_("Use same ip for game sub servers"),

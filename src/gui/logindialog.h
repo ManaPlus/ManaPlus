@@ -88,6 +88,7 @@ class LoginDialog : public Window, public gcn::ActionListener,
         LoginData *mLoginData;
         std::string *mUpdateHost;
         UpdateTypeModel *mUpdateTypeModel;
+        std::string mServerName;
 };
 
 #endif
