@@ -46,24 +46,16 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
     {
         // Rescale the overlay to keep the ratio as if we were on
         // the default resolution...
-        Image *rescaledOverlay = mImage->SDLgetScaledImage(
-                static_cast<int>(mImage->getWidth()) / defaultScreenWidth
-                * graphics->getWidth(), static_cast<int>(mImage->getHeight())
-                / defaultScreenHeight * graphics->getHeight());
+        Image *rescaledOverlay = ResourceManager::getInstance()->
+            getRescaled(mImage, static_cast<int>(mImage->getWidth())
+            / defaultScreenWidth * graphics->getWidth(),
+            static_cast<int>(mImage->getHeight())
+            / defaultScreenHeight * graphics->getHeight());
 
         if (rescaledOverlay)
-        {
-            // Replace the resource with the new one...
-            std::string idPath = mImage->getIdPath() + "_rescaled";
-            ResourceManager::getInstance()->addResource(
-                idPath, rescaledOverlay);
             mImage = rescaledOverlay;
-            rescaledOverlay->incRef();
-        }
         else
-        {
             mImage->incRef();
-        }
     }
     else
     {
