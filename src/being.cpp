@@ -236,14 +236,14 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     mWalkSpeed = Net::getPlayerHandler()->getDefaultWalkSpeed();
 
-    if (getType() == PLAYER)
+    if (mType == PLAYER)
         mShowName = config.getBoolValue("visiblenames");
     else
         mGotComment = true;
 
     config.addListener("visiblenames", this);
 
-    if (getType() == NPC)
+    if (mType == NPC)
         setShowName(true);
     else
         setShowName(mShowName);
@@ -279,7 +279,7 @@ void Being::setSubtype(Uint16 subtype)
 
     mSubType = subtype;
 
-    if (getType() == MONSTER)
+    if (mType == MONSTER)
     {
         mInfo = MonsterDB::get(mSubType);
         if (mInfo)
@@ -288,13 +288,13 @@ void Being::setSubtype(Uint16 subtype)
             setupSpriteDisplay(mInfo->getDisplay());
         }
     }
-    else if (getType() == NPC)
+    else if (mType == NPC)
     {
         mInfo = NPCDB::get(mSubType);
         if (mInfo)
             setupSpriteDisplay(mInfo->getDisplay(), false);
     }
-    else if (getType() == PLAYER)
+    else if (mType == PLAYER)
     {
         int id = -100 - subtype;
 
@@ -549,7 +549,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
             color = &userPalette->getColor(UserPalette::MISS);
         }
     }
-    else if (getType() == MONSTER)
+    else if (mType == MONSTER)
     {
         if (attacker == player_node)
         {
@@ -562,7 +562,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
                 UserPalette::HIT_PLAYER_MONSTER);
         }
     }
-    else if (getType() == PLAYER && attacker != player_node
+    else if (mType == PLAYER && attacker != player_node
              && this == player_node)
     {
         // here player was attacked by other player. mark him as enemy.
@@ -579,7 +579,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
     {
         if (this == player_node)
         {
-            if (attacker->getType() == PLAYER || amount)
+            if (attacker->mType == PLAYER || amount)
             {
                 chatWindow->battleChatLog(strprintf("%s : Hit you  -%d",
                     attacker->getName().c_str(), amount), BY_OTHER);
@@ -625,9 +625,9 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
                 mHP = 0;
         }
 
-        if (getType() == MONSTER)
+        if (mType == MONSTER)
             updateName();
-        else if (getType() == PLAYER && socialWindow && getName() != "")
+        else if (mType == PLAYER && socialWindow && getName() != "")
             socialWindow->updateAvatar(getName());
 
         if (effectManager)
@@ -636,7 +636,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
             // weapon or default.
             int hitEffectId = 0;
             const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
-            if (attacker->getType() == PLAYER && attackerWeapon)
+            if (attacker->mType == PLAYER && attackerWeapon)
             {
                 if (type != CRITICAL)
                     hitEffectId = attackerWeapon->getHitEffectId();
@@ -664,7 +664,7 @@ void Being::handleAttack(Being *victim, int damage,
     if (this != player_node)
         setAction(Being::ATTACK, 1);
 
-    if (getType() == PLAYER && mEquippedWeapon)
+    if (mType == PLAYER && mEquippedWeapon)
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
     else if (mInfo->getAttack(mAttackType))
         fireMissile(victim, mInfo->getAttack(mAttackType)->missileParticle);
@@ -690,7 +690,7 @@ void Being::handleAttack(Being *victim, int damage,
 
 void Being::setName(const std::string &name)
 {
-    if (getType() == NPC)
+    if (mType == NPC)
     {
         mName = name.substr(0, name.find('#', 0));
         showName();
@@ -699,7 +699,7 @@ void Being::setName(const std::string &name)
     {
         mName = name;
 
-        if (getType() == PLAYER && getShowName())
+        if (mType == PLAYER && getShowName())
             showName();
     }
 }
@@ -1317,7 +1317,7 @@ void Being::logic()
         / static_cast<float>(getWalkSpeed().x)))
         >= static_cast<int>(frameCount))
     {
-        if (getType() != PLAYER && actorSpriteManager)
+        if (mType != PLAYER && actorSpriteManager)
             actorSpriteManager->destroy(this);
     }
 }
@@ -1436,7 +1436,7 @@ void Being::updateCoords()
         return;
 
     // Monster names show above the sprite instead of below it
-    if (getType() == MONSTER)
+    if (mType == MONSTER)
     {
         mDispName->adviseXY(getPixelX(),
             getPixelY() - getHeight() - mDispName->getHeight());
@@ -1449,7 +1449,7 @@ void Being::updateCoords()
 
 void Being::optionChanged(const std::string &value)
 {
-    if (getType() == PLAYER && value == "visiblenames")
+    if (mType == PLAYER && value == "visiblenames")
         setShowName(config.getBoolValue("visiblenames"));
 }
 
@@ -1488,7 +1488,7 @@ void Being::showName()
     mDispName = 0;
     std::string mDisplayName(mName);
 
-    if (getType() != MONSTER
+    if (mType != MONSTER
         && (config.getBoolValue("showgender")
         || config.getBoolValue("showlevel")))
     {
@@ -1499,7 +1499,7 @@ void Being::showName()
         mDisplayName += getGenderSign();
     }
 
-    if (getType() == MONSTER)
+    if (mType == MONSTER)
     {
         if (config.getBoolValue("showMonstersTakedDamage"))
             mDisplayName += ", " + toString(getDamageTaken());
@@ -1507,11 +1507,11 @@ void Being::showName()
 
     gcn::Font *font = 0;
     if (player_node && player_node->getTarget() == this
-        && getType() != MONSTER)
+        && mType != MONSTER)
     {
         font = boldFont;
     }
-    else if (getType() == PLAYER && !player_relations.isGoodName(this) && gui)
+    else if (mType == PLAYER && !player_relations.isGoodName(this) && gui)
     {
         font = gui->getSecureFont();
     }
@@ -1526,12 +1526,12 @@ void Being::updateColors()
 {
     if (userPalette)
     {
-        if (getType() == MONSTER)
+        if (mType == MONSTER)
         {
             mNameColor = &userPalette->getColor(UserPalette::MONSTER);
             mTextColor = &userPalette->getColor(UserPalette::MONSTER);
         }
-        else if (getType() == NPC)
+        else if (mType == NPC)
         {
             mNameColor = &userPalette->getColor(UserPalette::NPC);
             mTextColor = &userPalette->getColor(UserPalette::NPC);
@@ -1726,7 +1726,7 @@ bool Being::updateFromCache()
         setLevel(entry->getLevel());
         setPvpRank(entry->getPvpRank());
         setIp(entry->getIp());
-        if (getType() == PLAYER)
+        if (mType == PLAYER)
             updateColors();
         return true;
     }
@@ -1830,7 +1830,8 @@ bool Being::draw(Graphics *graphics, int offsetX, int offsetY) const
 
 void Being::drawSprites(Graphics* graphics, int posX, int posY) const
 {
-    for (int f = 0; f < getNumberOfLayers(); f ++)
+    const int sz = getNumberOfLayers();
+    for (int f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
         if (rSprite == 1)
@@ -1847,7 +1848,8 @@ void Being::drawSprites(Graphics* graphics, int posX, int posY) const
 
 void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
 {
-    for (unsigned f = 0; f < size(); f ++)
+    const unsigned sz = size();
+    for (unsigned f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
         if (rSprite == 1)
@@ -1885,7 +1887,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
         }
     }
 
-    if (mHighlightMonsterAttackRange && getType() == ActorSprite::MONSTER
+    if (mHighlightMonsterAttackRange && mType == ActorSprite::MONSTER
         && isAlive())
     {
         const int attackRange = 32;
@@ -1899,7 +1901,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     }
 
     if (mShowMobHP && mInfo && player_node && player_node->getTarget() == this
-        && getType() == MONSTER)
+        && mType == MONSTER)
     {
         // show hp bar here
         int maxHP = mMaxHP;

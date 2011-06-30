@@ -108,7 +108,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     const int fontHeight = getFont()->getHeight();
 
-    Widget *parent = getParent();
+    Widget *parent = mParent;
 
     const std::string name = player_node->getName();
 
