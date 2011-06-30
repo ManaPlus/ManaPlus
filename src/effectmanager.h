@@ -53,7 +53,7 @@ class EffectManager
         bool trigger(int id, int x, int y);
 
    private:
-        std::list<EffectDescription> mEffects;
+        std::vector<EffectDescription> mEffects;
 };
 
 extern EffectManager *effectManager;

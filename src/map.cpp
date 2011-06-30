@@ -103,7 +103,7 @@ void TileAnimation::update(int ticks)
     Image *img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
-        for (std::list<std::pair<MapLayer*, int> >::iterator i =
+        for (std::vector<std::pair<MapLayer*, int> >::iterator i =
              mAffected.begin(); i != mAffected.end(); ++i)
         {
             i->first->setTile(i->second, img);
@@ -767,7 +767,7 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     float dy = scrollY - mLastScrollY;
     int timePassed = get_elapsed_time(lastTick);
 
-    std::list<AmbientLayer*>::iterator i;
+    std::vector<AmbientLayer*>::iterator i;
     for (i = mBackgrounds.begin(); i != mBackgrounds.end(); ++i)
         (*i)->update(timePassed, dx, dy);
 
@@ -787,7 +787,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
         return;
 
     // find out which layer list to draw
-    std::list<AmbientLayer*> *layers;
+    std::vector<AmbientLayer*> *layers;
     switch (type)
     {
         case FOREGROUND_LAYERS:
@@ -804,7 +804,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
     }
 
     // Draw overlays
-    for (std::list<AmbientLayer*>::iterator i = layers->begin();
+    for (std::vector<AmbientLayer*>::iterator i = layers->begin();
          i != layers->end(); ++i)
     {
         (*i)->draw(graphics, graphics->getWidth(), graphics->getHeight());
@@ -1464,8 +1464,8 @@ void Map::updatePortalTile(const std::string &name, int type,
 
 MapItem *Map::findPortalXY(int x, int y)
 {
-    std::list<MapItem*>::iterator it;
-    std::list<MapItem*>::iterator it_end;
+    std::vector<MapItem*>::iterator it;
+    std::vector<MapItem*>::iterator it_end;
 
     for (it = mMapPortals.begin(), it_end = mMapPortals.end();
          it != it_end; ++it)
@@ -1528,7 +1528,7 @@ std::string Map::getObjectData(unsigned x, unsigned y, int type)
     if (!list)
         return "";
 
-    std::list<MapObject>::iterator it = list->objects.begin();
+    std::vector<MapObject>::iterator it = list->objects.begin();
     while (it != list->objects.end())
     {
         if ((*it).type == type)

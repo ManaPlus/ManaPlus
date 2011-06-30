@@ -317,11 +317,11 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, std::list<Being*> &beings)
+void PopupMenu::showPopup(int x, int y, std::vector<Being*> &beings)
 {
     mBrowserBox->clearRows();
     mBrowserBox->addRow("Players");
-    std::list<Being*>::iterator it, it_end;
+    std::vector<Being*>::iterator it, it_end;
     for (it = beings.begin(), it_end = beings.end(); it != it_end; ++it)
     {
         Being *being = *it;

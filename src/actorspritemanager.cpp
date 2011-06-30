@@ -332,7 +332,7 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
     return NULL;
 }
 
-void ActorSpriteManager::findBeingsByPixel(std::list<Being*> &beings,
+void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
                                            int x, int y, bool allPlayers) const
 {
     if (!mMap)

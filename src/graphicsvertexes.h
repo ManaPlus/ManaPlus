@@ -52,7 +52,7 @@ class SDLGraphicsVertexes
 
         ~SDLGraphicsVertexes();
 
-        std::list<DoubleRect*> mList;
+        std::vector<DoubleRect*> mList;
 };
 
 #ifdef USE_OPENGL
@@ -125,7 +125,7 @@ class GraphicsVertexes
 
         void clearSDL();
 
-        std::list<DoubleRect*> *getRectsSDL();
+        std::vector<DoubleRect*> *getRectsSDL();
 
         void incPtr(int num = 1)
         { mPtr += num; }

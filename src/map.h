@@ -92,7 +92,7 @@ class MapObject
 class MapObjectList
 {
     public:
-        std::list<MapObject> objects;
+        std::vector<MapObject> objects;
 };
 
 /**
@@ -107,7 +107,7 @@ class TileAnimation
         void addAffectedTile(MapLayer *layer, int index)
         { mAffected.push_back(std::make_pair(layer, index)); }
     private:
-        std::list<std::pair<MapLayer*, int> > mAffected;
+        std::vector<std::pair<MapLayer*, int> > mAffected;
         SimpleAnimation *mAnimation;
         Image *mLastImage;
 };
@@ -427,7 +427,7 @@ class Map : public Properties, public ConfigListener
         void updatePortalTile(const std::string &name, int type,
                               int x, int y, bool addNew = true);
 
-        std::list<MapItem*> &getPortals()
+        std::vector<MapItem*> &getPortals()
         { return mMapPortals; }
 
         /**
@@ -521,8 +521,8 @@ class Map : public Properties, public ConfigListener
         unsigned mOnClosedList, mOnOpenList;
 
         // Overlay data
-        std::list<AmbientLayer*> mBackgrounds;
-        std::list<AmbientLayer*> mForegrounds;
+        std::vector<AmbientLayer*> mBackgrounds;
+        std::vector<AmbientLayer*> mForegrounds;
         float mLastScrollX;
         float mLastScrollY;
 //        bool mSpritesUpdated;
@@ -538,7 +538,7 @@ class Map : public Properties, public ConfigListener
         };
         std::vector<ParticleEffectData> particleEffects;
 
-        std::list<MapItem*> mMapPortals;
+        std::vector<MapItem*> mMapPortals;
 
         std::map<int, TileAnimation*> mTileAnimations;
 

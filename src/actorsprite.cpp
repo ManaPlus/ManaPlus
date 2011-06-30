@@ -366,7 +366,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     //setup particle effects
     if (Particle::enabled && particleEngine)
     {
-        std::list<std::string>::const_iterator it, it_end;
+        std::vector<std::string>::const_iterator it, it_end;
         for (it = display.particles.begin(), it_end = display.particles.end();
              it != it_end; ++it)
         {

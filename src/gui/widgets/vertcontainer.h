@@ -26,6 +26,8 @@
 
 #include <guichan/widgetlistener.hpp>
 
+#include <vector>
+
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
 #else
@@ -53,7 +55,7 @@ class VertContainer : public Container, public gcn::WidgetListener
         void widgetResized(const gcn::Event &event);
 
     private:
-        std::list<gcn::Widget*> mResizableWidgets;
+        std::vector<gcn::Widget*> mResizableWidgets;
         int mVerticalItemSize;
         int mCount;
         int mNextY;

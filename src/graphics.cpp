@@ -439,8 +439,8 @@ void Graphics::drawImagePattern2(GraphicsVertexes *vert, Image *img)
 {
     // here not checking input parameters
 
-    std::list<DoubleRect*> *arr = vert->getRectsSDL();
-    std::list<DoubleRect*>::iterator it;
+    std::vector<DoubleRect*> *arr = vert->getRectsSDL();
+    std::vector<DoubleRect*>::iterator it;
 
     for (it = arr->begin(); it != arr->end(); ++it)
         SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);

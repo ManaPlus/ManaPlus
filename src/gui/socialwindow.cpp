@@ -553,9 +553,9 @@ public:
             return;
 
         std::vector<Avatar*> *avatars = mBeings->getMembers();
-        std::list<MapItem*> portals = map->getPortals();
+        std::vector<MapItem*> portals = map->getPortals();
 
-        std::list<MapItem*>::iterator i = portals.begin();
+        std::vector<MapItem*>::iterator i = portals.begin();
         SpecialLayer *specialLayer = map->getSpecialLayer();
 
         std::vector<Avatar*>::iterator ia = avatars->begin();

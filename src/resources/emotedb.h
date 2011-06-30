@@ -24,6 +24,7 @@
 #include <list>
 #include <map>
 #include <string>
+#include <vector>
 
 class AnimatedSprite;
 
@@ -36,7 +37,7 @@ struct EmoteSprite
 struct EmoteInfo
 {
     std::list<EmoteSprite*> sprites;
-    std::list<std::string> particles;
+    std::vector<std::string> particles;
 };
 
 typedef std::map<int, EmoteInfo*> EmoteInfos;

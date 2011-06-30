@@ -36,6 +36,7 @@
 #include "net/tmwa/messagehandler.h"
 
 #include <list>
+#include <vector>
 #include <queue>
 
 #ifdef __GNUC__
@@ -127,7 +128,7 @@ class InventoryItem
         }
 };
 
-typedef std::list<InventoryItem> InventoryItems;
+typedef std::vector<InventoryItem> InventoryItems;
 
 class InventoryHandler : public MessageHandler, public Net::InventoryHandler
 {

@@ -161,7 +161,7 @@ void GraphicsVertexes::clearSDL()
     sdl[mPtr].mList.clear();
 }
 
-std::list<DoubleRect*> *GraphicsVertexes::getRectsSDL()
+std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDL()
 {
     return &sdl[mPtr].mList;
 }

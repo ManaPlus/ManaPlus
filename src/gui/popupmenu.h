@@ -102,7 +102,7 @@ class PopupMenu : public Popup, public LinkHandler
         /**
          * Shows the beings related popup menu at the specified mouse coords.
          */
-        void showPopup(int x, int y, std::list<Being*> &beings);
+        void showPopup(int x, int y, std::vector<Being*> &beings);
 
         void showPlayerPopup(int x, int y, std::string nick);
 

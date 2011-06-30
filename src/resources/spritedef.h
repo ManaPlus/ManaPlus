@@ -30,6 +30,7 @@
 #include <list>
 #include <map>
 #include <string>
+#include <vector>
 
 class Action;
 class ImageSet;
@@ -56,11 +57,11 @@ struct SpriteDisplay
 {
     std::string image;
     std::string floor;
-    std::list<SpriteReference*> sprites;
-    std::list<std::string> particles;
+    std::vector<SpriteReference*> sprites;
+    std::vector<std::string> particles;
 };
 
-typedef std::list<SpriteReference*>::const_iterator SpriteRefs;
+typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
 
 /*
  * Remember those are the main action.
