@@ -69,6 +69,7 @@ namespace gcn
     Font* Widget::mGlobalFont = NULL;
     DefaultFont Widget::mDefaultFont;
     std::list<Widget*> Widget::mWidgets;
+    std::set<Widget*> Widget::mWidgetsSet;
 
     Widget::Widget() :
         mForegroundColor(0x000000),
@@ -87,6 +88,7 @@ namespace gcn
         mCurrentFont(NULL)
     {
         mWidgets.push_back(this);
+        mWidgetsSet.insert(this);
     }
 
     Widget::~Widget()
@@ -104,6 +106,7 @@ namespace gcn
         _setFocusHandler(NULL);
 
         mWidgets.remove(this);
+        mWidgetsSet.erase(this);
     }
 
     void Widget::drawFrame(Graphics* graphics)
@@ -482,16 +485,8 @@ namespace gcn
 
     bool Widget::widgetExists(const Widget* widget)
     {
-        bool result = false;
-
-        std::list<Widget*>::iterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
-        {
-            if (*iter == widget)
-                return true;
-        }
-
-        return result;
+        return mWidgetsSet.find(const_cast<Widget*>(widget))
+            != mWidgetsSet.end();
     }
 
     bool Widget::isTabInEnabled() const

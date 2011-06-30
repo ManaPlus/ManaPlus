@@ -45,6 +45,7 @@
 #define GCN_WIDGET_HPP
 
 #include <list>
+#include <set>
 #include <string>
 
 #include "guichan/color.hpp"
@@ -1196,6 +1197,8 @@ namespace gcn
          * Holds a list of all instances of widgets.
          */
         static std::list<Widget*> mWidgets;
+
+        static std::set<Widget*> mWidgetsSet;
     };
 }
 
