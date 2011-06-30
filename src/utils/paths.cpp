@@ -28,6 +28,8 @@
 
 #ifdef WIN32
 #define realpath(N, R) _fullpath((R), (N), _MAX_PATH)
+#elif defined __OpenBSD__
+#include <limits.h>
 #endif
 
 #include "debug.h"
@@ -35,7 +37,12 @@
 std::string getRealPath(const std::string &str)
 {
     std::string path;
+#if defined __OpenBSD__
+    char *realPath = (char*)calloc(PATH_MAX, sizeof(char));
+    realpath(str.c_str(), realPath);
+#else
     char *realPath = realpath(str.c_str(), NULL);
+#endif
     path = realPath;
     free(realPath);
     return path;
