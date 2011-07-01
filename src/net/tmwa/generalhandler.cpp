@@ -265,8 +265,11 @@ void GeneralHandler::event(Mana::Channels channel,
             statusWindow->addAttribute(DEF, _("Defense"), false, "");
             statusWindow->addAttribute(MATK, _("M.Attack"), false, "");
             statusWindow->addAttribute(MDEF, _("M.Defense"), false, "");
+            // xgettext:no-c-format
             statusWindow->addAttribute(HIT, _("% Accuracy"), false, "");
+            // xgettext:no-c-format
             statusWindow->addAttribute(FLEE, _("% Evade"), false, "");
+            // xgettext:no-c-format
             statusWindow->addAttribute(CRIT, _("% Critical"), false, "");
             statusWindow->addAttribute(ATTACK_SPEED, _("Attack Delay"),
                                        false, "");

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-25 18:01+0300\n"
+"POT-Creation-Date: 2011-07-02 00:39+0300\n"
 "PO-Revision-Date: 2011-06-20 14:11+0000\n"
 "Last-Translator: nelson6e65 <nelson6eeduardo65@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
@@ -33,88 +33,88 @@ msgstr "evade"
 msgid "miss"
 msgstr "falla"
 
-#: src/client.cpp:817 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:821 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configuración"
 
-#: src/client.cpp:896
+#: src/client.cpp:900
 msgid "Connecting to server"
 msgstr "Conectando al servidor"
 
-#: src/client.cpp:927
+#: src/client.cpp:931
 msgid "Logging in"
 msgstr "Accediendo a la cuenta"
 
-#: src/client.cpp:960
+#: src/client.cpp:964
 msgid "Entering game world"
 msgstr "Entrando al mundo del juego"
 
-#: src/client.cpp:1052
+#: src/client.cpp:1056
 msgid "Requesting characters"
 msgstr "Cargando jugadores"
 
-#: src/client.cpp:1083
+#: src/client.cpp:1087
 msgid "Connecting to the game server"
 msgstr "Conectando al servidor del juego"
 
-#: src/client.cpp:1093
+#: src/client.cpp:1097
 msgid "Changing game servers"
 msgstr "Cambiando el servidor del juego"
 
-#: src/client.cpp:1130 src/client.cpp:1137 src/client.cpp:1274
+#: src/client.cpp:1134 src/client.cpp:1141 src/client.cpp:1278
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
-#: src/gui/register.cpp:228 src/gui/serverdialog.cpp:391
+#: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
 #: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:190
 #: src/net/tmwa/charserverhandler.cpp:206
 msgid "Error"
 msgstr "Error"
 
-#: src/client.cpp:1146
+#: src/client.cpp:1150
 msgid "Requesting registration details"
 msgstr "Solicitando detalles de registro"
 
-#: src/client.cpp:1173
+#: src/client.cpp:1177
 msgid "Password Change"
 msgstr "Cambio de contraseña"
 
-#: src/client.cpp:1174
+#: src/client.cpp:1178
 msgid "Password changed successfully!"
 msgstr "¡La contraseña se cambió correctamente!"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1197
 msgid "Email Change"
 msgstr "Cambio de Email"
 
-#: src/client.cpp:1194
+#: src/client.cpp:1198
 msgid "Email changed successfully!"
 msgstr "¡Email modificado correctamente!"
 
-#: src/client.cpp:1214
+#: src/client.cpp:1218
 msgid "Unregister Successful"
 msgstr "Registro cancelado"
 
-#: src/client.cpp:1215
+#: src/client.cpp:1219
 msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
-#: src/client.cpp:1404 src/client.cpp:1434 src/client.cpp:1478
-#: src/client.cpp:1894
+#: src/client.cpp:1408 src/client.cpp:1438 src/client.cpp:1482
+#: src/client.cpp:1898
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "¡%s no existe y no puede ser creado! Saliendo."
 
-#: src/client.cpp:1608
+#: src/client.cpp:1612
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Host de actualización inválido: %s"
 
-#: src/client.cpp:1642 src/client.cpp:1648
+#: src/client.cpp:1646 src/client.cpp:1652
 msgid "Error creating updates directory!"
 msgstr "¡Error creando la carpeta de actualizaciones!"
 
-#: src/client.cpp:1669
+#: src/client.cpp:1673
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Error: ¡%s no existe y no puede ser creado! Saliendo."
@@ -415,7 +415,7 @@ msgstr "-"
 
 #: src/gui/buydialog.cpp:98 src/gui/quitdialog.cpp:49
 #: src/gui/quitdialog.cpp:54 src/gui/quitdialog.cpp:55
-#: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:284
+#: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:285
 #: src/keyboardconfig.cpp:287
 msgid "Quit"
 msgstr "Salir"
@@ -489,7 +489,7 @@ msgstr "Los e-mail son distintos."
 msgid "Change Password"
 msgstr "Cambiar contraseña"
 
-#: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:94
+#: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:95
 #: src/gui/register.cpp:76 src/gui/unregisterdialog.cpp:56
 msgid "Password:"
 msgstr "Contraseña:"
@@ -520,7 +520,7 @@ msgstr "Las nuevas contraseñas no concuerdan."
 msgid "Create Character"
 msgstr "Crear Personaje"
 
-#: src/gui/charcreatedialog.cpp:73 src/gui/logindialog.cpp:93
+#: src/gui/charcreatedialog.cpp:73 src/gui/logindialog.cpp:94
 #: src/gui/register.cpp:75
 msgid "Name:"
 msgstr "Nombre:"
@@ -619,7 +619,7 @@ msgstr "Ingrese la contraseña para borrar el personaje"
 msgid "Enter password:"
 msgstr "Ingrese contraseña:"
 
-#: src/gui/charselectdialog.cpp:409 src/gui/serverdialog.cpp:288
+#: src/gui/charselectdialog.cpp:409 src/gui/serverdialog.cpp:289
 #: src/gui/setup_players.cpp:251 src/gui/shopwindow.cpp:120
 #: src/gui/shopwindow.cpp:123 src/gui/textcommandeditor.cpp:240
 msgid "Delete"
@@ -1132,32 +1132,32 @@ msgstr "Auto Cerrar"
 msgid "Skip"
 msgstr "Saltar"
 
-#: src/gui/logindialog.cpp:86 src/gui/logindialog.cpp:122
+#: src/gui/logindialog.cpp:86 src/gui/logindialog.cpp:123
 msgid "Login"
 msgstr "Login"
 
-#: src/gui/logindialog.cpp:90 src/gui/serverdialog.cpp:243
+#: src/gui/logindialog.cpp:91 src/gui/serverdialog.cpp:243
 #: src/gui/widgets/chattab.cpp:173
 msgid "Server:"
 msgstr "Servidor:"
 
-#: src/gui/logindialog.cpp:95
+#: src/gui/logindialog.cpp:96
 msgid "Custom update host"
 msgstr "Host de actualización personalizado"
 
-#: src/gui/logindialog.cpp:109
+#: src/gui/logindialog.cpp:110
 msgid "Remember username"
 msgstr "Recordar nombre de usuario"
 
-#: src/gui/logindialog.cpp:110
+#: src/gui/logindialog.cpp:111
 msgid "Update:"
 msgstr "Actualizar:"
 
-#: src/gui/logindialog.cpp:120 src/gui/register.cpp:66 src/gui/register.cpp:81
+#: src/gui/logindialog.cpp:121 src/gui/register.cpp:66 src/gui/register.cpp:81
 msgid "Register"
 msgstr "Registrar"
 
-#: src/gui/logindialog.cpp:121
+#: src/gui/logindialog.cpp:122
 msgid "Change Server"
 msgstr "Cambiar de servidor"
 
@@ -1606,56 +1606,61 @@ msgstr "Las contraseñas no coinciden."
 msgid "Choose Your Server"
 msgstr "Escoja tu servidor"
 
+#: src/gui/serverdialog.cpp:239
+#, fuzzy
+msgid "Choose Your Server  *** SAFE MODE ***"
+msgstr "Escoja tu servidor"
+
 #: src/gui/serverdialog.cpp:244
 msgid "Port:"
 msgstr "Puerto:"
 
-#: src/gui/serverdialog.cpp:247
+#: src/gui/serverdialog.cpp:248
 msgid "Use same ip for game sub servers"
 msgstr "Usar el mismo ip para los subservidores del juego"
 
-#: src/gui/serverdialog.cpp:261
+#: src/gui/serverdialog.cpp:262
 msgid "Server type:"
 msgstr "Tipo de servidor:"
 
-#: src/gui/serverdialog.cpp:285
+#: src/gui/serverdialog.cpp:286
 msgid "Load"
 msgstr "Cargar"
 
-#: src/gui/serverdialog.cpp:286
+#: src/gui/serverdialog.cpp:287
 msgid "Connect"
 msgstr "Conectar"
 
-#: src/gui/serverdialog.cpp:287
+#: src/gui/serverdialog.cpp:288
 msgid "Custom Server"
 msgstr "Servidor propio"
 
-#: src/gui/serverdialog.cpp:392
+#: src/gui/serverdialog.cpp:393
 msgid "Please type both the address and the port of a server."
 msgstr "Por favor especifique el nombre y el puerto del servidor."
 
-#: src/gui/serverdialog.cpp:550
+#: src/gui/serverdialog.cpp:551
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Bajando la lista de servidores...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:555
+#: src/gui/serverdialog.cpp:556
 msgid "Waiting for server..."
 msgstr "Esperando al servidor..."
 
-#: src/gui/serverdialog.cpp:559
+#: src/gui/serverdialog.cpp:560
 msgid "Preparing download"
 msgstr "Preparando la descarga"
 
-#: src/gui/serverdialog.cpp:563
+#: src/gui/serverdialog.cpp:564
 msgid "Error retreiving server list!"
 msgstr "Error al recuperar la lista de servers!"
 
-#: src/gui/serverdialog.cpp:661
+#: src/gui/serverdialog.cpp:662
 msgid "requires a newer version"
 msgstr "requiere una version mas nueva"
 
-#: src/gui/serverdialog.cpp:663
+#: src/gui/serverdialog.cpp:664
 #, c-format
 msgid "requires v%s"
 msgstr "requiere v%s"
@@ -3970,64 +3975,64 @@ msgstr ""
 msgid "You were killed by "
 msgstr "Fuiste eliminado por "
 
-#: src/localplayer.cpp:1379
+#: src/localplayer.cpp:1375
 msgid "Tried to pick up nonexistent item."
 msgstr "Intentaste recoger un objeto inexistante."
 
-#: src/localplayer.cpp:1381
+#: src/localplayer.cpp:1377
 msgid "Item is too heavy."
 msgstr "El artículo es muy pesado."
 
-#: src/localplayer.cpp:1383
+#: src/localplayer.cpp:1379
 msgid "Item is too far away."
 msgstr "El artículo está muy lejos."
 
-#: src/localplayer.cpp:1385
+#: src/localplayer.cpp:1381
 msgid "Inventory is full."
 msgstr "El inventario está lleno."
 
-#: src/localplayer.cpp:1387
+#: src/localplayer.cpp:1383
 msgid "Stack is too big."
 msgstr "El agrupamiento es demasiado grande."
 
-#: src/localplayer.cpp:1390
+#: src/localplayer.cpp:1386
 msgid "Item belongs to someone else."
 msgstr "El artículo pertenece a alguien más."
 
-#: src/localplayer.cpp:1393
+#: src/localplayer.cpp:1389
 msgid "Unknown problem picking up item."
 msgstr "Problema desconocido al intentar recoger el artículo."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1417
+#: src/localplayer.cpp:1413
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Usted cogió un/a %d [@@%d|%s@@]."
 msgstr[1] "Usted Cogió %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3146
+#: src/localplayer.cpp:3142
 msgid "Away"
 msgstr "Fuera del Teclado"
 
-#: src/localplayer.cpp:3450
+#: src/localplayer.cpp:3446
 msgid "Follow: "
 msgstr "Seguir: "
 
-#: src/localplayer.cpp:3452 src/localplayer.cpp:3467
+#: src/localplayer.cpp:3448 src/localplayer.cpp:3463
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3459
+#: src/localplayer.cpp:3455
 msgid "Imitation: "
 msgstr "Imitacion: "
 
-#: src/localplayer.cpp:3461 src/localplayer.cpp:3469
+#: src/localplayer.cpp:3457 src/localplayer.cpp:3465
 msgid "Imitation canceled"
 msgstr "Imitar cancelado"
 
-#: src/localplayer.cpp:3821
+#: src/localplayer.cpp:3817
 msgid "You see "
 msgstr "Ves "
 
@@ -4718,27 +4723,30 @@ msgstr "Ataque M."
 msgid "M.Defense"
 msgstr "Defensa M."
 
-#: src/net/tmwa/generalhandler.cpp:268
+#: src/net/tmwa/generalhandler.cpp:269
+#, no-c-format
 msgid "% Accuracy"
 msgstr "% Precisión"
 
-#: src/net/tmwa/generalhandler.cpp:269
+#: src/net/tmwa/generalhandler.cpp:271
+#, no-c-format
 msgid "% Evade"
 msgstr "% Evasión"
 
-#: src/net/tmwa/generalhandler.cpp:270
+#: src/net/tmwa/generalhandler.cpp:273
+#, no-c-format
 msgid "% Critical"
 msgstr "% Crítico"
 
-#: src/net/tmwa/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:274
 msgid "Attack Delay"
 msgstr "Retardo de Ataque"
 
-#: src/net/tmwa/generalhandler.cpp:273
+#: src/net/tmwa/generalhandler.cpp:276
 msgid "Walk Delay"
 msgstr "Retardo de Marcha"
 
-#: src/net/tmwa/generalhandler.cpp:275
+#: src/net/tmwa/generalhandler.cpp:278
 msgid "Attack Range"
 msgstr "Alcance de Ataque"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-06-25 18:01+0300\n"
+"POT-Creation-Date: 2011-07-02 00:39+0300\n"
 "PO-Revision-Date: 2011-06-20 00:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,88 +30,88 @@ msgstr "väistö"
 msgid "miss"
 msgstr "huti"
 
-#: src/client.cpp:817 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:821 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Asetukset"
 
-#: src/client.cpp:896
+#: src/client.cpp:900
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
-#: src/client.cpp:927
+#: src/client.cpp:931
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
-#: src/client.cpp:960
+#: src/client.cpp:964
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
-#: src/client.cpp:1052
+#: src/client.cpp:1056
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
-#: src/client.cpp:1083
+#: src/client.cpp:1087
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
-#: src/client.cpp:1093
+#: src/client.cpp:1097
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
-#: src/client.cpp:1130 src/client.cpp:1137 src/client.cpp:1274
+#: src/client.cpp:1134 src/client.cpp:1141 src/client.cpp:1278
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
-#: src/gui/register.cpp:228 src/gui/serverdialog.cpp:391
+#: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
 #: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:190
 #: src/net/tmwa/charserverhandler.cpp:206
 msgid "Error"
 msgstr "Virhe"
 
-#: src/client.cpp:1146
+#: src/client.cpp:1150
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
-#: src/client.cpp:1173
+#: src/client.cpp:1177
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
-#: src/client.cpp:1174
+#: src/client.cpp:1178
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1197
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
-#: src/client.cpp:1194
+#: src/client.cpp:1198
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1214
+#: src/client.cpp:1218
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
-#: src/client.cpp:1215
+#: src/client.cpp:1219
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
-#: src/client.cpp:1404 src/client.cpp:1434 src/client.cpp:1478
-#: src/client.cpp:1894
+#: src/client.cpp:1408 src/client.cpp:1438 src/client.cpp:1482
+#: src/client.cpp:1898
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s ei ole olemassa eikä sitä voi luoda! Poistun."
 
-#: src/client.cpp:1608
+#: src/client.cpp:1612
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Epäkelpo päivitysosoite: %s"
 
-#: src/client.cpp:1642 src/client.cpp:1648
+#: src/client.cpp:1646 src/client.cpp:1652
 msgid "Error creating updates directory!"
 msgstr "Päivityshakemistoa luodessa tapahtui virhe!"
 
-#: src/client.cpp:1669
+#: src/client.cpp:1673
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Virhe: %s ei ole olemassa eikä sitä voi luoda! Poistun."
@@ -413,7 +413,7 @@ msgstr "-"
 
 #: src/gui/buydialog.cpp:98 src/gui/quitdialog.cpp:49
 #: src/gui/quitdialog.cpp:54 src/gui/quitdialog.cpp:55
-#: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:284
+#: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:285
 #: src/keyboardconfig.cpp:287
 msgid "Quit"
 msgstr "Sulje"
@@ -487,7 +487,7 @@ msgstr "Annetut sähköpostiosoitteet eivät täsmää."
 msgid "Change Password"
 msgstr "Vaihda salasana"
 
-#: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:94
+#: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:95
 #: src/gui/register.cpp:76 src/gui/unregisterdialog.cpp:56
 msgid "Password:"
 msgstr "Salasana:"
@@ -518,7 +518,7 @@ msgstr "Uuden salasanan kopiot eivät täsmää."
 msgid "Create Character"
 msgstr "Luo hahmo"
 
-#: src/gui/charcreatedialog.cpp:73 src/gui/logindialog.cpp:93
+#: src/gui/charcreatedialog.cpp:73 src/gui/logindialog.cpp:94
 #: src/gui/register.cpp:75
 msgid "Name:"
 msgstr "Nimi:"
@@ -617,7 +617,7 @@ msgstr "Anna salasana hahmon poistamiseksi"
 msgid "Enter password:"
 msgstr "Salasana:"
 
-#: src/gui/charselectdialog.cpp:409 src/gui/serverdialog.cpp:288
+#: src/gui/charselectdialog.cpp:409 src/gui/serverdialog.cpp:289
 #: src/gui/setup_players.cpp:251 src/gui/shopwindow.cpp:120
 #: src/gui/shopwindow.cpp:123 src/gui/textcommandeditor.cpp:240
 msgid "Delete"
@@ -1130,32 +1130,32 @@ msgstr "Sulje kun valmis"
 msgid "Skip"
 msgstr "Ohita"
 
-#: src/gui/logindialog.cpp:86 src/gui/logindialog.cpp:122
+#: src/gui/logindialog.cpp:86 src/gui/logindialog.cpp:123
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
-#: src/gui/logindialog.cpp:90 src/gui/serverdialog.cpp:243
+#: src/gui/logindialog.cpp:91 src/gui/serverdialog.cpp:243
 #: src/gui/widgets/chattab.cpp:173
 msgid "Server:"
 msgstr "Palvelin:"
 
-#: src/gui/logindialog.cpp:95
+#: src/gui/logindialog.cpp:96
 msgid "Custom update host"
 msgstr "Käytä omaa päivityspalvelinta"
 
-#: src/gui/logindialog.cpp:109
+#: src/gui/logindialog.cpp:110
 msgid "Remember username"
 msgstr "Muista käyttäjätunnus"
 
-#: src/gui/logindialog.cpp:110
+#: src/gui/logindialog.cpp:111
 msgid "Update:"
 msgstr "Päivitys:"
 
-#: src/gui/logindialog.cpp:120 src/gui/register.cpp:66 src/gui/register.cpp:81
+#: src/gui/logindialog.cpp:121 src/gui/register.cpp:66 src/gui/register.cpp:81
 msgid "Register"
 msgstr "Rekisteröidy"
 
-#: src/gui/logindialog.cpp:121
+#: src/gui/logindialog.cpp:122
 msgid "Change Server"
 msgstr "Vaihda palvelinta"
 
@@ -1604,56 +1604,61 @@ msgstr "Salasanat eivät täsmää."
 msgid "Choose Your Server"
 msgstr "Valitse palvelimesi"
 
+#: src/gui/serverdialog.cpp:239
+#, fuzzy
+msgid "Choose Your Server  *** SAFE MODE ***"
+msgstr "Valitse palvelimesi"
+
 #: src/gui/serverdialog.cpp:244
 msgid "Port:"
 msgstr "Portti:"
 
-#: src/gui/serverdialog.cpp:247
+#: src/gui/serverdialog.cpp:248
 msgid "Use same ip for game sub servers"
 msgstr "Käytä samaa IP-osoitetta alipalvelimille"
 
-#: src/gui/serverdialog.cpp:261
+#: src/gui/serverdialog.cpp:262
 msgid "Server type:"
 msgstr "Palvelintyyppi:"
 
-#: src/gui/serverdialog.cpp:285
+#: src/gui/serverdialog.cpp:286
 msgid "Load"
 msgstr "Lataa"
 
-#: src/gui/serverdialog.cpp:286
+#: src/gui/serverdialog.cpp:287
 msgid "Connect"
 msgstr "Yhdistä"
 
-#: src/gui/serverdialog.cpp:287
+#: src/gui/serverdialog.cpp:288
 msgid "Custom Server"
 msgstr "Muu palvelin"
 
-#: src/gui/serverdialog.cpp:392
+#: src/gui/serverdialog.cpp:393
 msgid "Please type both the address and the port of a server."
 msgstr "Kirjoita kenttiin sekä palvelimen osoite että portti"
 
-#: src/gui/serverdialog.cpp:550
+#: src/gui/serverdialog.cpp:551
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Lataan palvelinluettelon...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:555
+#: src/gui/serverdialog.cpp:556
 msgid "Waiting for server..."
 msgstr "Odotan palvelinta..."
 
-#: src/gui/serverdialog.cpp:559
+#: src/gui/serverdialog.cpp:560
 msgid "Preparing download"
 msgstr "Valmistelen latausta"
 
-#: src/gui/serverdialog.cpp:563
+#: src/gui/serverdialog.cpp:564
 msgid "Error retreiving server list!"
 msgstr "Palvelinluettelon hakeminen epäonnistui!"
 
-#: src/gui/serverdialog.cpp:661
+#: src/gui/serverdialog.cpp:662
 msgid "requires a newer version"
 msgstr "vaatii uudemman version"
 
-#: src/gui/serverdialog.cpp:663
+#: src/gui/serverdialog.cpp:664
 #, c-format
 msgid "requires v%s"
 msgstr "vaatii version %s"
@@ -3965,64 +3970,64 @@ msgstr ""
 msgid "You were killed by "
 msgstr "Sinut otti hengiltä "
 
-#: src/localplayer.cpp:1379
+#: src/localplayer.cpp:1375
 msgid "Tried to pick up nonexistent item."
 msgstr "Yritit nostaa olemattoman tavaran."
 
-#: src/localplayer.cpp:1381
+#: src/localplayer.cpp:1377
 msgid "Item is too heavy."
 msgstr "Tavara on liian painava."
 
-#: src/localplayer.cpp:1383
+#: src/localplayer.cpp:1379
 msgid "Item is too far away."
 msgstr "Tavara on liian kaukana."
 
-#: src/localplayer.cpp:1385
+#: src/localplayer.cpp:1381
 msgid "Inventory is full."
 msgstr "Sinulla on liikaa tavaraa ennestään."
 
-#: src/localplayer.cpp:1387
+#: src/localplayer.cpp:1383
 msgid "Stack is too big."
 msgstr "Kasa on liian suuri."
 
-#: src/localplayer.cpp:1390
+#: src/localplayer.cpp:1386
 msgid "Item belongs to someone else."
 msgstr "Tavara kuuluu jollekulle muulle."
 
-#: src/localplayer.cpp:1393
+#: src/localplayer.cpp:1389
 msgid "Unknown problem picking up item."
 msgstr "Tuntematon ongelma esti tavaran nostamisen."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1417
+#: src/localplayer.cpp:1413
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
 msgstr[1] "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
 
-#: src/localplayer.cpp:3146
+#: src/localplayer.cpp:3142
 msgid "Away"
 msgstr "Poissa"
 
-#: src/localplayer.cpp:3450
+#: src/localplayer.cpp:3446
 msgid "Follow: "
 msgstr "Seuraa: "
 
-#: src/localplayer.cpp:3452 src/localplayer.cpp:3467
+#: src/localplayer.cpp:3448 src/localplayer.cpp:3463
 msgid "Follow canceled"
 msgstr "Seuraaminen keskeytetty"
 
-#: src/localplayer.cpp:3459
+#: src/localplayer.cpp:3455
 msgid "Imitation: "
 msgstr "Matki: "
 
-#: src/localplayer.cpp:3461 src/localplayer.cpp:3469
+#: src/localplayer.cpp:3457 src/localplayer.cpp:3465
 msgid "Imitation canceled"
 msgstr "Matkiminen keskeytetty"
 
-#: src/localplayer.cpp:3821
+#: src/localplayer.cpp:3817
 msgid "You see "
 msgstr "Näet "
 
@@ -4714,27 +4719,30 @@ msgstr "T.-hyökkäys"
 msgid "M.Defense"
 msgstr "T.-puolustus"
 
-#: src/net/tmwa/generalhandler.cpp:268
+#: src/net/tmwa/generalhandler.cpp:269
+#, no-c-format
 msgid "% Accuracy"
 msgstr "% Tarkkuus"
 
-#: src/net/tmwa/generalhandler.cpp:269
+#: src/net/tmwa/generalhandler.cpp:271
+#, no-c-format
 msgid "% Evade"
 msgstr "% Välttö"
 
-#: src/net/tmwa/generalhandler.cpp:270
+#: src/net/tmwa/generalhandler.cpp:273
+#, no-c-format
 msgid "% Critical"
 msgstr "% Täysosuma"
 
-#: src/net/tmwa/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:274
 msgid "Attack Delay"
 msgstr "Hyökkäysviive"
 
-#: src/net/tmwa/generalhandler.cpp:273
+#: src/net/tmwa/generalhandler.cpp:276
 msgid "Walk Delay"
 msgstr "Kävelyviive"
 
-#: src/net/tmwa/generalhandler.cpp:275
+#: src/net/tmwa/generalhandler.cpp:278
 msgid "Attack Range"
 msgstr "Hyökkäyskantama"
 

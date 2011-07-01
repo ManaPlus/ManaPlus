@@ -3,9 +3,9 @@
 #bg # Not enough translations
 #ca # Not enough translations
 #cs # Not enough translations
-da
+#da # Not enough translations
 de
-en_GB
+#en_GB # Not enough translations
 #eo # Not enough translations
 es
 #et # Not enough translations
@@ -15,21 +15,21 @@ fr
 #he # Disabled because of current client limitations (RTL)
 hr
 hu
-#id # Not enough translations
-it
+id
+#it # Not enough translations
 #ja # Disabled because of current client limitations (font fallbacking)
 #ka # Not enough translations
 #nb # Not enough translations
 #nds # Not enough translations
-nl
+#nl # Not enough translations
 nl_BE
-pl
+#pl # Not enough translations
 pt
 pt_BR
 ru
 #sk # Not enough translations
 #sq # Not enough translations
-sv
+#sv # Not enough translations
 #te # Disabled because of current client limitations (font fallbacking)
 #th # Disabled because of current client limitations (font fallbacking)
 #tr # Not enough translations
