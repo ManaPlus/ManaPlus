@@ -139,6 +139,9 @@ class ChatTab : public Tab
         std::list<std::string> &getRows()
         { return mTextOutput->getRows(); }
 
+        bool hasRows()
+        { return mTextOutput->hasRows(); }
+
         void loadFromLogFile(std::string name);
 
         bool getAllowHighlight()
