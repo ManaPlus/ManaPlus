@@ -14,4 +14,4 @@ StartupNotify=false
 Terminal=false
 Type=Application
 Icon=manaplus
-Categories=Application;Game;
+Categories=Game;AdventureGame;
