@@ -8,7 +8,10 @@ Url:		http://manaplus.evolonline.org/
 Source0:	http://download.evolonline.org/manaplus/download/%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:	%{_topdir}/%{name}-%{version}-root
 
+BuildRequires:	gcc-c++
+BuildRequires:	make
 BuildRequires:	SDL-devel
+BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
 Buildrequires:	SDL_net-devel
 BuildRequires:	SDL_ttf-devel
@@ -58,6 +61,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Jul 02 2011 Andrei Karas <akaras@inbox.ru> 1.1.6.26
+- Add missing dependency SDL_image and compilation tools
+
 * Fri May 27 2011 Maarten Vanraes <maarten.vanraes@gmail.com> 1.1.5.15
 - Generalise spec file to work for multiple rpm-based distros
 
