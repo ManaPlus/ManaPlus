@@ -243,8 +243,8 @@ void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     if (!image->mSDLSurface)
         return;
 
-    const int iw = image->getWidth();
-    const int ih = image->getHeight();
+    const int iw = image->mBounds.w;
+    const int ih = image->mBounds.h;
 
     if (iw == 0 || ih == 0) return;
 
@@ -291,8 +291,8 @@ void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
     if (!tmpImage)
         return;
 
-    const int iw = tmpImage->getWidth();
-    const int ih = tmpImage->getHeight();
+    const int iw = tmpImage->mBounds.w;
+    const int ih = tmpImage->mBounds.h;
 
     if (iw == 0 || ih == 0)
         return;
@@ -516,8 +516,8 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
     }
     vert->clearSDL();
 
-    const int iw = image->getWidth();
-    const int ih = image->getHeight();
+    const int iw = image->mBounds.w;
+    const int ih = image->mBounds.h;
 
     if (iw == 0 || ih == 0)
     {

@@ -386,8 +386,10 @@ Image* Image::SDLmerge(Image *image, int x, int y)
     SDL_LockSurface(mSDLSurface);
 
     const int x0 = (y * getWidth()) + x;
-    const int maxX = std::min(image->getWidth(), getWidth() - x);
-    const int maxY = std::min(image->getHeight(), getHeight() - y);
+    const int maxX = std::min(image->mBounds.w,
+        static_cast<Uint16>(mBounds.w - x));
+    const int maxY = std::min(image->mBounds.w,
+        static_cast<Uint16>(mBounds.h - y));
 
     // for each pixel lines of a source image
     for (offset_x = (x > 0 ? 0 : -x); offset_x < maxX; offset_x++)

@@ -363,8 +363,8 @@ void OpenGLGraphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     const int srcX = image->mBounds.x;
     const int srcY = image->mBounds.y;
 
-    const int iw = image->getWidth();
-    const int ih = image->getHeight();
+    const int iw = image->mBounds.w;
+    const int ih = image->mBounds.h;
 
     if (iw == 0 || ih == 0)
         return;
@@ -684,8 +684,8 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
     const int srcX = image->mBounds.x;
     const int srcY = image->mBounds.y;
 
-    const int iw = image->getWidth();
-    const int ih = image->getHeight();
+    const int iw = image->mBounds.w;
+    const int ih = image->mBounds.h;
 
     if (iw == 0 || ih == 0)
     {

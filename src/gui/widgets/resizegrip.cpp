@@ -52,8 +52,8 @@ ResizeGrip::ResizeGrip(const std::string &image)
 
     if (gripImage)
     {
-        setWidth(gripImage->getWidth() + 2);
-        setHeight(gripImage->getHeight() + 2);
+        setWidth(gripImage->mBounds.w + 2);
+        setHeight(gripImage->mBounds.h + 2);
     }
     else
     {

@@ -70,14 +70,14 @@ bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!isAlive() || !mImage)
         return false;
 
-    int screenX = static_cast<int>(mPos.x) + offsetX - mImage->getWidth() / 2;
+    int screenX = static_cast<int>(mPos.x) + offsetX - mImage->mBounds.w / 2;
     int screenY = static_cast<int>(mPos.y) - static_cast<int>(mPos.z)
-        + offsetY - mImage->getHeight() / 2;
+        + offsetY - mImage->mBounds.h / 2;
 
     // Check if on screen
-    if (screenX + mImage->getWidth() < 0 ||
+    if (screenX + mImage->mBounds.w < 0 ||
         screenX > graphics->getWidth() ||
-        screenY + mImage->getHeight() < 0 ||
+        screenY + mImage->mBounds.h < 0 ||
         screenY > graphics->getHeight())
     {
         return false;

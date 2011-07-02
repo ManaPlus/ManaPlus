@@ -196,8 +196,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         Image* image = mItemMoved->getImage();
         if (image)
         {
-            const int tPosX = mCursorPosX - (image->getWidth() / 2);
-            const int tPosY = mCursorPosY - (image->getHeight() / 2);
+            const int tPosX = mCursorPosX - (image->mBounds.w / 2);
+            const int tPosY = mCursorPosY - (image->mBounds.h / 2);
 
             g->drawImage(image, tPosX, tPosY);
             g->drawText(toString(mItemMoved->getQuantity()),

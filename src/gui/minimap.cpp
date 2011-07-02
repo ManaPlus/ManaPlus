@@ -165,22 +165,22 @@ void Minimap::setMap(Map *map)
         const int offsetX = 2 * getPadding();
         const int offsetY = getTitleBarHeight() + getPadding();
         const int titleWidth = getFont()->getWidth(getCaption()) + 15;
-        const int mapWidth = mMapImage->getWidth() < 100 ?
-                             mMapImage->getWidth() + offsetX : 100;
-        const int mapHeight = mMapImage->getHeight() < 100 ?
-                              mMapImage->getHeight() + offsetY : 100;
+        const int mapWidth = mMapImage->mBounds.w < 100 ?
+                             mMapImage->mBounds.w + offsetX : 100;
+        const int mapHeight = mMapImage->mBounds.h < 100 ?
+                              mMapImage->mBounds.h + offsetY : 100;
 
         setMinWidth(mapWidth > titleWidth ? mapWidth : titleWidth);
         setMinHeight(mapHeight);
 
         mWidthProportion = static_cast<float>(
-                mMapImage->getWidth()) / static_cast<float>(map->getWidth());
+                mMapImage->mBounds.w) / static_cast<float>(map->getWidth());
         mHeightProportion = static_cast<float>(
-                mMapImage->getHeight()) / static_cast<float>(map->getHeight());
+                mMapImage->mBounds.h) / static_cast<float>(map->getHeight());
 
-        setMaxWidth(mMapImage->getWidth() > titleWidth ?
-                    mMapImage->getWidth() + offsetX : titleWidth);
-        setMaxHeight(mMapImage->getHeight() + offsetY);
+        setMaxWidth(mMapImage->mBounds.w > titleWidth ?
+                    mMapImage->mBounds.w + offsetX : titleWidth);
+        setMaxHeight(mMapImage->mBounds.h + offsetY);
 
         setDefaultSize(getX(), getY(), getWidth(), getHeight());
         resetToDefaultSize();
@@ -219,8 +219,8 @@ void Minimap::draw(gcn::Graphics *graphics)
 
     if (mMapImage)
     {
-        if (mMapImage->getWidth() > a.width ||
-            mMapImage->getHeight() > a.height)
+        if (mMapImage->mBounds.w > a.width ||
+            mMapImage->mBounds.h > a.height)
         {
             const Vector &p = player_node->getPosition();
             mapOriginX = ((a.width) / 2) - static_cast<int>((p.x
@@ -231,8 +231,8 @@ void Minimap::draw(gcn::Graphics *graphics)
                 + viewport->getCameraRelativeX()) * static_cast<int>(
                 mHeightProportion)) / 32;
 
-            const int minOriginX = a.width - mMapImage->getWidth();
-            const int minOriginY = a.height - mMapImage->getHeight();
+            const int minOriginX = a.width - mMapImage->mBounds.w;
+            const int minOriginY = a.height - mMapImage->mBounds.h;
 
             if (mapOriginX < minOriginX)
                 mapOriginX = minOriginX;

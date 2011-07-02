@@ -47,9 +47,9 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
         // Rescale the overlay to keep the ratio as if we were on
         // the default resolution...
         Image *rescaledOverlay = ResourceManager::getInstance()->
-            getRescaled(mImage, static_cast<int>(mImage->getWidth())
+            getRescaled(mImage, static_cast<int>(mImage->mBounds.w)
             / defaultScreenWidth * graphics->getWidth(),
-            static_cast<int>(mImage->getHeight())
+            static_cast<int>(mImage->mBounds.h)
             / defaultScreenHeight * graphics->getHeight());
 
         if (rescaledOverlay)
@@ -85,8 +85,8 @@ void AmbientLayer::update(int timePassed, float dx, float dy)
     mPosX += dx * mParallax;
     mPosY += dy * mParallax;
 
-    int imgW = mImage->getWidth();
-    int imgH = mImage->getHeight();
+    int imgW = mImage->mBounds.w;
+    int imgH = mImage->mBounds.h;
 
     // Wrap values
     while (mPosX > imgW)
@@ -116,9 +116,9 @@ void AmbientLayer::draw(Graphics *graphics, int x, int y)
         graphics->drawRescaledImagePattern(mImage, static_cast<int>(-mPosX),
                 static_cast<int>(-mPosY), x + static_cast<int>(mPosX),
                 y + static_cast<int>(mPosY),
-                static_cast<int>(mImage->getWidth())
+                static_cast<int>(mImage->mBounds.w)
                 / defaultScreenWidth * graphics->getWidth(),
-                static_cast<int>(mImage->getHeight()) / defaultScreenHeight
+                static_cast<int>(mImage->mBounds.h) / defaultScreenHeight
                 * graphics->getHeight());
     }
 }

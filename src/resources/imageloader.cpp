@@ -66,7 +66,7 @@ int ProxyImage::getWidth() const
     if (mSDLImage)
         return mSDLImage->w;
     else if (mImage)
-        return mImage->getWidth();
+        return mImage->mBounds.w;
     else
         return 0;
 }
@@ -76,7 +76,7 @@ int ProxyImage::getHeight() const
     if (mSDLImage)
         return mSDLImage->h;
     else if (mImage)
-        return mImage->getHeight();
+        return mImage->mBounds.h;
     else
         return 0;
 //    return mSDLImage ? mSDLImage->h : mImage->getHeight();

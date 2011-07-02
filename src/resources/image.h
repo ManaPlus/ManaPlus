@@ -214,13 +214,14 @@ class Image : public Resource
         static int mTextureType;
 #endif
 
+        SDL_Rect mBounds;
+
     protected:
 
       // -----------------------
       // Generic protected members
       // -----------------------
 
-        SDL_Rect mBounds;
         bool mLoaded;
         float mAlpha;
         bool mHasAlphaChannel;
