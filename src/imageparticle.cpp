@@ -76,9 +76,9 @@ bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const
 
     // Check if on screen
     if (screenX + mImage->mBounds.w < 0 ||
-        screenX > graphics->getWidth() ||
+        screenX > graphics->mWidth ||
         screenY + mImage->mBounds.h < 0 ||
-        screenY > graphics->getHeight())
+        screenY > graphics->mHeight)
     {
         return false;
     }

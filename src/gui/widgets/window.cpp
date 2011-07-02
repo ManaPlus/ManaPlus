@@ -62,8 +62,8 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     mSticky(false),
     mMinWinWidth(100),
     mMinWinHeight(40),
-    mMaxWinWidth(graphics->getWidth()),
-    mMaxWinHeight(graphics->getHeight()),
+    mMaxWinWidth(graphics->mWidth),
+    mMaxWinHeight(graphics->mHeight),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true)
 {
@@ -247,39 +247,39 @@ void Window::setLocationRelativeTo(ImageRect::ImagePosition position,
     }
     else if (position == ImageRect::UPPER_CENTER)
     {
-        offsetX += (graphics->getWidth() - getWidth()) / 2;
+        offsetX += (graphics->mWidth - getWidth()) / 2;
     }
     else if (position == ImageRect::UPPER_RIGHT)
     {
-        offsetX += graphics->getWidth() - getWidth();
+        offsetX += graphics->mWidth - getWidth();
     }
     else if (position == ImageRect::LEFT)
     {
-        offsetY += (graphics->getHeight() - getHeight()) / 2;
+        offsetY += (graphics->mHeight - getHeight()) / 2;
     }
     else if (position == ImageRect::CENTER)
     {
-        offsetX += (graphics->getWidth() - getWidth()) / 2;
-        offsetY += (graphics->getHeight() - getHeight()) / 2;
+        offsetX += (graphics->mWidth - getWidth()) / 2;
+        offsetY += (graphics->mHeight - getHeight()) / 2;
     }
     else if (position == ImageRect::RIGHT)
     {
-        offsetX += graphics->getWidth() - getWidth();
-        offsetY += (graphics->getHeight() - getHeight()) / 2;
+        offsetX += graphics->mWidth - getWidth();
+        offsetY += (graphics->mHeight - getHeight()) / 2;
     }
     else if (position == ImageRect::LOWER_LEFT)
     {
-        offsetY += graphics->getHeight() - getHeight();
+        offsetY += graphics->mHeight - getHeight();
     }
     else if (position == ImageRect::LOWER_CENTER)
     {
-        offsetX += (graphics->getWidth() - getWidth()) / 2;
-        offsetY += graphics->getHeight() - getHeight();
+        offsetX += (graphics->mWidth - getWidth()) / 2;
+        offsetY += graphics->mHeight - getHeight();
     }
     else if (position == ImageRect::LOWER_RIGHT)
     {
-        offsetX += graphics->getWidth() - getWidth();
-        offsetY += graphics->getHeight() - getHeight();
+        offsetX += graphics->mWidth - getWidth();
+        offsetY += graphics->mHeight - getHeight();
     }
 
     setPosition(offsetX, offsetY);
@@ -555,8 +555,8 @@ void Window::mouseDragged(gcn::MouseEvent &event)
     {
         int newX = std::max(0, getX());
         int newY = std::max(0, getY());
-        newX = std::min(graphics->getWidth() - getWidth(), newX);
-        newY = std::min(graphics->getHeight() - getHeight(), newY);
+        newX = std::min(graphics->mWidth - getWidth(), newX);
+        newY = std::min(graphics->mHeight - getHeight(), newY);
         setPosition(newX, newY);
     }
 
@@ -597,13 +597,13 @@ void Window::mouseDragged(gcn::MouseEvent &event)
             newDim.height += newDim.y;
             newDim.y = 0;
         }
-        if (newDim.x + newDim.width > graphics->getWidth())
+        if (newDim.x + newDim.width > graphics->mWidth)
         {
-            newDim.width = graphics->getWidth() - newDim.x;
+            newDim.width = graphics->mWidth - newDim.x;
         }
-        if (newDim.y + newDim.height > graphics->getHeight())
+        if (newDim.y + newDim.height > graphics->mHeight)
         {
-            newDim.height = graphics->getHeight() - newDim.y;
+            newDim.height = graphics->mHeight - newDim.y;
         }
 
         // Update mouse offset when dragging bottom or right border
@@ -765,39 +765,39 @@ void Window::setDefaultSize(int defaultWidth, int defaultHeight,
     }
     else if (position == ImageRect::UPPER_CENTER)
     {
-        x = (graphics->getWidth() - defaultWidth) / 2;
+        x = (graphics->mWidth - defaultWidth) / 2;
     }
     else if (position == ImageRect::UPPER_RIGHT)
     {
-        x = graphics->getWidth() - defaultWidth;
+        x = graphics->mWidth - defaultWidth;
     }
     else if (position == ImageRect::LEFT)
     {
-        y = (graphics->getHeight() - defaultHeight) / 2;
+        y = (graphics->mHeight - defaultHeight) / 2;
     }
     else if (position == ImageRect::CENTER)
     {
-        x = (graphics->getWidth() - defaultWidth) / 2;
-        y = (graphics->getHeight() - defaultHeight) / 2;
+        x = (graphics->mWidth - defaultWidth) / 2;
+        y = (graphics->mHeight - defaultHeight) / 2;
     }
     else if (position == ImageRect::RIGHT)
     {
-        x = graphics->getWidth() - defaultWidth;
-        y = (graphics->getHeight() - defaultHeight) / 2;
+        x = graphics->mWidth - defaultWidth;
+        y = (graphics->mHeight - defaultHeight) / 2;
     }
     else if (position == ImageRect::LOWER_LEFT)
     {
-        y = graphics->getHeight() - defaultHeight;
+        y = graphics->mHeight - defaultHeight;
     }
     else if (position == ImageRect::LOWER_CENTER)
     {
-        x = (graphics->getWidth() - defaultWidth) / 2;
-        y = graphics->getHeight() - defaultHeight;
+        x = (graphics->mWidth - defaultWidth) / 2;
+        y = graphics->mHeight - defaultHeight;
     }
     else if (position == ImageRect::LOWER_RIGHT)
     {
-        x = graphics->getWidth() - defaultWidth;
-        y = graphics->getHeight() - defaultHeight;
+        x = graphics->mWidth - defaultWidth;
+        y = graphics->mHeight - defaultHeight;
     }
 
     mDefaultX = x - offsetX;
@@ -969,11 +969,11 @@ void Window::checkIfIsOffScreen(bool partially, bool entirely)
     // Look if the window is partially off-screen limits...
     if (partially)
     {
-        if (winDimension.x + winDimension.width > graphics->getWidth())
-            winDimension.x = graphics->getWidth() - winDimension.width;
+        if (winDimension.x + winDimension.width > graphics->mWidth)
+            winDimension.x = graphics->mWidth - winDimension.width;
 
-        if (winDimension.y + winDimension.height > graphics->getHeight())
-            winDimension.y = graphics->getHeight() - winDimension.height;
+        if (winDimension.y + winDimension.height > graphics->mHeight)
+            winDimension.y = graphics->mHeight - winDimension.height;
 
         setDimension(winDimension);
         return;
@@ -981,11 +981,11 @@ void Window::checkIfIsOffScreen(bool partially, bool entirely)
 
     if (entirely)
     {
-        if (winDimension.x > graphics->getWidth())
-            winDimension.x = graphics->getWidth() - winDimension.width;
+        if (winDimension.x > graphics->mWidth)
+            winDimension.x = graphics->mWidth - winDimension.width;
 
-        if (winDimension.y > graphics->getHeight())
-            winDimension.y = graphics->getHeight() - winDimension.height;
+        if (winDimension.y > graphics->mHeight)
+            winDimension.y = graphics->mHeight - winDimension.height;
     }
     setDimension(winDimension);
 }

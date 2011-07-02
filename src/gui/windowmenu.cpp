@@ -101,7 +101,7 @@ WindowMenu::WindowMenu():
 
     if (graphics)
     {
-        setDimension(gcn::Rectangle(graphics->getWidth() - x - 3,
+        setDimension(gcn::Rectangle(graphics->mWidth - x - 3,
             3, x - 3, h));
     }
 
@@ -347,7 +347,7 @@ void WindowMenu::updateButtons()
     }
     if (graphics)
     {
-        setDimension(gcn::Rectangle(graphics->getWidth() - x - 3,
+        setDimension(gcn::Rectangle(graphics->mWidth - x - 3,
             3, x - 3, h));
     }
 }

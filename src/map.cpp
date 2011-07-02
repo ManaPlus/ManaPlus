@@ -540,11 +540,11 @@ void Map::update(int ticks)
 void Map::draw(Graphics *graphics, int scrollX, int scrollY)
 {
     // Calculate range of tiles which are on-screen
-    int endPixelY = graphics->getHeight() + scrollY + mTileHeight - 1;
+    int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
     endPixelY += mMaxTileHeight - mTileHeight;
     int startX = scrollX / mTileWidth;
     int startY = scrollY / mTileHeight;
-    int endX = (graphics->getWidth() + scrollX + mTileWidth - 1) / mTileWidth;
+    int endX = (graphics->mWidth + scrollX + mTileWidth - 1) / mTileWidth;
     int endY = endPixelY / mTileHeight;
 
     // Make sure actors are sorted ascending by Y-coordinate
@@ -568,7 +568,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             UserPalette::WALKABLE_HIGHLIGHT));
 
         graphics->fillRectangle(gcn::Rectangle(0, 0,
-            graphics->getWidth(), graphics->getHeight()));
+            graphics->mWidth, graphics->mHeight));
     }
 
     // draw the game world
@@ -649,7 +649,7 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
     int endPixelY = graphics->getHeight() + scrollY + mTileHeight - 1;
     int startX = scrollX / mTileWidth;
     int startY = scrollY / mTileHeight;
-    int endX = (graphics->getWidth() + scrollX + mTileWidth - 1) / mTileWidth;
+    int endX = (graphics->mWidth + scrollX + mTileWidth - 1) / mTileWidth;
     int endY = endPixelY / mTileHeight;
 
     if (startX < 0) startX = 0;
@@ -807,7 +807,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
     for (std::vector<AmbientLayer*>::iterator i = layers->begin();
          i != layers->end(); ++i)
     {
-        (*i)->draw(graphics, graphics->getWidth(), graphics->getHeight());
+        (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
 
         // Detail 1: only one overlay, higher: all overlays
         if (detail == 1)

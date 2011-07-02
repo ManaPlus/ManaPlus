@@ -1912,10 +1912,10 @@ void PopupMenu::showUndressPopup(int x, int y, Being *being, Item *item)
 void PopupMenu::showPopup(int x, int y)
 {
     setContentSize(mBrowserBox->getWidth() + 8, mBrowserBox->getHeight() + 8);
-    if (graphics->getWidth() < (x + getWidth() + 5))
-        x = graphics->getWidth() - getWidth();
-    if (graphics->getHeight() < (y + getHeight() + 5))
-        y = graphics->getHeight() - getHeight();
+    if (graphics->mWidth < (x + getWidth() + 5))
+        x = graphics->mWidth - getWidth();
+    if (graphics->mHeight < (y + getHeight() + 5))
+        y = graphics->mHeight - getHeight();
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();

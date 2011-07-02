@@ -133,8 +133,8 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         lastTick = tick_time;
 
     // Calculate viewpoint
-    int midTileX = (graphics->getWidth() + mScrollCenterOffsetX) / 2;
-    int midTileY = (graphics->getHeight() + mScrollCenterOffsetX) / 2;
+    int midTileX = (graphics->mWidth + mScrollCenterOffsetX) / 2;
+    int midTileY = (graphics->mHeight + mScrollCenterOffsetX) / 2;
 
     const Vector &playerPos = player_node->getPosition();
     const int player_x = static_cast<int>(playerPos.x)
@@ -176,8 +176,8 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
     }
 
     // Auto center when player is off screen
-    if (player_x - static_cast<int>(mPixelViewX) > graphics->getWidth() / 2
-        ||  static_cast<int>(mPixelViewX) - player_x > graphics->getWidth() / 2
+    if (player_x - static_cast<int>(mPixelViewX) > graphics->mWidth / 2
+        ||  static_cast<int>(mPixelViewX) - player_x > graphics->mWidth / 2
         ||  static_cast<int>(mPixelViewY) - player_y
         > graphics->getHeight() / 2
         ||  player_y - static_cast<int>(mPixelViewY)
@@ -189,9 +189,9 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Don't move camera so that the end of the map is on screen
     const int viewXmax =
-        mMap->getWidth() * mMap->getTileWidth() - graphics->getWidth();
+        mMap->getWidth() * mMap->getTileWidth() - graphics->mWidth;
     const int viewYmax =
-        mMap->getHeight() * mMap->getTileHeight() - graphics->getHeight();
+        mMap->getHeight() * mMap->getTileHeight() - graphics->mHeight;
     if (mMap)
     {
         if (mPixelViewX < 0)

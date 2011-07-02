@@ -263,12 +263,13 @@ class Graphics : public gcn::SDLGraphics
         bool getRedraw()
         { return mRedraw; }
 
+        int mWidth;
+        int mHeight;
+
     protected:
         int SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
                                SDL_Surface *dst, SDL_Rect *dstrect);
 
-        int mWidth;
-        int mHeight;
         int mBpp;
         bool mFullscreen;
         bool mHWAccel;

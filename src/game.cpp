@@ -344,8 +344,8 @@ Game::Game():
 
     // Create the viewport
     viewport = new Viewport;
-    viewport->setDimension(gcn::Rectangle(0, 0, graphics->getWidth(),
-                                          graphics->getHeight()));
+    viewport->setDimension(gcn::Rectangle(0, 0, graphics->mWidth,
+                                          graphics->mHeight));
 
     gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
     top->add(viewport);

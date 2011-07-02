@@ -78,14 +78,14 @@ void SpellPopup::view(int x, int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->getWidth())
+    if (posX + getWidth() > graphics->mWidth)
     {
-        if (graphics->getWidth() > getWidth())
-            posX = graphics->getWidth() - getWidth();
+        if (graphics->mWidth > getWidth())
+            posX = graphics->mWidth - getWidth();
         else
             posX = 0;
     }
-    if (posY + getHeight() > graphics->getHeight())
+    if (posY + getHeight() > graphics->mHeight)
     {
         if (y > getHeight() + distance)
             posY = y - getHeight() - distance;

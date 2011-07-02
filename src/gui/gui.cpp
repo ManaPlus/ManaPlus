@@ -100,7 +100,7 @@ Gui::Gui(Graphics *graphics):
     WindowContainer *guiTop = new WindowContainer;
     guiTop->setFocusable(true);
     guiTop->setDimension(gcn::Rectangle(0, 0,
-        graphics->getWidth(), graphics->getHeight()));
+        graphics->mWidth, graphics->mHeight));
     guiTop->setOpaque(false);
     Window::setWindowContainer(guiTop);
     setTop(guiTop);

@@ -167,9 +167,9 @@ void StatusPopup::view(int x, int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->getWidth())
-        posX = graphics->getWidth() - getWidth();
-    if (posY + getHeight() > graphics->getHeight())
+    if (posX + getWidth() > graphics->mWidth)
+        posX = graphics->mWidth - getWidth();
+    if (posY + getHeight() > graphics->mHeight)
         posY = y - getHeight() - distance;
 
     update();
