@@ -189,34 +189,6 @@ int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
     return -1;
 }
 
-const char *SIZE_NAME[6] =
-{
-    N_("Tiny (10)"),
-    N_("Small (11)"),
-    N_("Medium (12)"),
-    N_("Large (13)"),
-    N_("Big (14)"),
-    N_("Huge (15)"),
-};
-
-class FontSizeChoiceListModel : public gcn::ListModel
-{
-public:
-    virtual ~FontSizeChoiceListModel()
-    { }
-
-    virtual int getNumberOfElements()
-    { return 6; }
-
-    virtual std::string getElementAt(int i)
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
-        return gettext(SIZE_NAME[i]);
-    }
-};
-
 const char *OPENGL_NAME[3] =
 {
     N_("Software"),
@@ -304,20 +276,12 @@ Setup_Video::Setup_Video():
     mOpenGLEnabled(config.getIntValue("opengl")),
     mHwAccelEnabled(config.getBoolValue("hwaccel")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
-    mVisibleNamesEnabled(config.getBoolValue("visiblenames")),
     mParticleEffectsEnabled(config.getBoolValue("particleeffects")),
-    mNPCLogEnabled(config.getBoolValue("logNpcInGui")),
     mPickupChatEnabled(config.getBoolValue("showpickupchat")),
     mPickupParticleEnabled(config.getBoolValue("showpickupparticle")),
     mOpacity(config.getFloatValue("guialpha")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
-    mHideShieldSprite(config.getBoolValue("hideShield")),
-    mLowTraffic(config.getBoolValue("lowTraffic")),
-    mSyncPlayerMove(config.getBoolValue("syncPlayerMove")),
-    mDrawHotKeys(config.getBoolValue("drawHotKeys")),
-    mDrawPath(config.getBoolValue("drawPath")),
-    mShowJob(serverConfig.getBoolValue("showJob")),
     mAlphaCache(config.getBoolValue("alphaCache")),
     mShowBackground(config.getBoolValue("showBackground")),
     mSpeechMode(static_cast<Being::Speech>(
@@ -328,27 +292,14 @@ Setup_Video::Setup_Video():
     mHwAccelCheckBox(new CheckBox(_("Hw acceleration"), mHwAccelEnabled)),
     mCustomCursorCheckBox(new CheckBox(_("Custom cursor"),
                           mCustomCursorEnabled)),
-    mVisibleNamesCheckBox(new CheckBox(_("Visible names"),
-                          mVisibleNamesEnabled)),
     mParticleEffectsCheckBox(new CheckBox(_("Particle effects"),
                              mParticleEffectsEnabled)),
-    mNPCLogCheckBox(new CheckBox(_("Log NPC dialogue"), mNPCLogEnabled)),
     mPickupNotifyLabel(new Label(_("Show pickup notification"))),
     // TRANSLATORS: Refers to "Show own name"
     mPickupChatCheckBox(new CheckBox(_("in chat"), mPickupChatEnabled)),
     // TRANSLATORS: Refers to "Show own name"
     mPickupParticleCheckBox(new CheckBox(_("as particle"),
                             mPickupParticleEnabled)),
-    mHideShieldSpriteCheckBox(new CheckBox(_("Hide shield sprite"),
-                              mHideShieldSprite)),
-    mLowTrafficCheckBox(new CheckBox(_("Low traffic mode"),
-                        mLowTraffic)),
-    mSyncPlayerMoveCheckBox(new CheckBox(_("Sync player move"),
-                            mSyncPlayerMove)),
-    mDrawHotKeysCheckBox(new CheckBox(_("Draw hotkeys on map"),
-                         mDrawHotKeys)),
-    mDrawPathCheckBox(new CheckBox(_("Draw path"), mDrawPath)),
-    mShowJobCheckBox(new CheckBox(_("Show job"), mShowJob)),
     mAlphaCacheCheckBox(new CheckBox(_("Enable opacity cache"), mAlphaCache)),
     mShowBackgroundCheckBox(new CheckBox(_("Show background"),
                             mShowBackground)),
@@ -366,26 +317,22 @@ Setup_Video::Setup_Video():
     mParticleDetail(3 - config.getIntValue("particleEmitterSkip")),
     mParticleDetailSlider(new Slider(0, 3)),
     mParticleDetailField(new Label),
-    mFontSize(config.getIntValue("fontSize")),
     mDialog(0)
 {
     setName(_("Video"));
 
     ScrollArea *scrollArea = new ScrollArea(mModeList);
+    scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     speechLabel = new Label(_("Overhead text"));
     alphaLabel = new Label(_("Gui opacity"));
     overlayDetailLabel = new Label(_("Ambient FX"));
     particleDetailLabel = new Label(_("Particle detail"));
-    fontSizeLabel = new Label(_("Font size"));
 
     mOpenGLListModel = new OpenGLListModel;
     mOpenGLDropDown = new DropDown(mOpenGLListModel),
     mOpenGLDropDown->setSelected(mOpenGLEnabled);
-
-    mFontSizeListModel = new FontSizeChoiceListModel;
-    mFontSizeDropDown = new DropDown(mFontSizeListModel);
 
     mModeList->setEnabled(true);
 
@@ -415,11 +362,9 @@ Setup_Video::Setup_Video():
 
     mModeList->setActionEventId("videomode");
     mCustomCursorCheckBox->setActionEventId("customcursor");
-    mVisibleNamesCheckBox->setActionEventId("visiblenames");
     mParticleEffectsCheckBox->setActionEventId("particleeffects");
     mPickupChatCheckBox->setActionEventId("pickupchat");
     mPickupParticleCheckBox->setActionEventId("pickupparticle");
-    mNPCLogCheckBox->setActionEventId("lognpc");
     mAlphaSlider->setActionEventId("guialpha");
     mFpsCheckBox->setActionEventId("fpslimitcheckbox");
     mSpeechSlider->setActionEventId("speech");
@@ -429,22 +374,14 @@ Setup_Video::Setup_Video():
     mOverlayDetailField->setActionEventId("overlaydetailfield");
     mParticleDetailSlider->setActionEventId("particledetailslider");
     mParticleDetailField->setActionEventId("particledetailfield");
-    mHideShieldSpriteCheckBox->setActionEventId("hideshieldsprite1");
-    mLowTrafficCheckBox->setActionEventId("lowTraffic1");
-    mSyncPlayerMoveCheckBox->setActionEventId("syncPlayerMove1");
-    mDrawHotKeysCheckBox->setActionEventId("drawHotKeys");
-    mDrawPathCheckBox->setActionEventId("drawPath1");
-    mShowJobCheckBox->setActionEventId("showJob");
     mAlphaCacheCheckBox->setActionEventId("alphaCache");
     mOpenGLDropDown->setActionEventId("opengl");
 
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
-    mVisibleNamesCheckBox->addActionListener(this);
     mParticleEffectsCheckBox->addActionListener(this);
     mPickupChatCheckBox->addActionListener(this);
     mPickupParticleCheckBox->addActionListener(this);
-    mNPCLogCheckBox->addActionListener(this);
     mAlphaSlider->addActionListener(this);
     mFpsCheckBox->addActionListener(this);
     mSpeechSlider->addActionListener(this);
@@ -454,12 +391,6 @@ Setup_Video::Setup_Video():
     mOverlayDetailField->addKeyListener(this);
     mParticleDetailSlider->addActionListener(this);
     mParticleDetailField->addKeyListener(this);
-    mHideShieldSpriteCheckBox->addKeyListener(this);
-    mLowTrafficCheckBox->addKeyListener(this);
-    mSyncPlayerMoveCheckBox->addKeyListener(this);
-    mDrawHotKeysCheckBox->addKeyListener(this);
-    mDrawPathCheckBox->addKeyListener(this);
-    mShowJobCheckBox->addKeyListener(this);
     mOpenGLDropDown->addActionListener(this);
 
     mAlphaCacheCheckBox->addKeyListener(this);
@@ -473,24 +404,21 @@ Setup_Video::Setup_Video():
     mParticleDetailField->setCaption(particleDetailToString(mParticleDetail));
     mParticleDetailSlider->setValue(mParticleDetail);
 
-    mFontSizeDropDown->setSelected(mFontSize - 10);
-    mFontSizeDropDown->adjustHeight();
-
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
     place(0, 0, scrollArea, 1, 5).setPadding(2);
+    place(0, 5, mOpenGLDropDown, 1);
+
+    place(0, 6, mHwAccelCheckBox, 6);
+    place(0, 7, mAlphaCacheCheckBox, 6);
+
     place(1, 0, mFsCheckBox, 2);
-    place(3, 0, mOpenGLDropDown, 1);
 
     place(1, 1, mCustomCursorCheckBox, 3);
-    place(3, 1, mHwAccelCheckBox, 1);
 
-    place(1, 2, mVisibleNamesCheckBox, 3);
-
-    place(3, 2, mAlphaCacheCheckBox, 4);
-
+    place(1, 2, mShowBackgroundCheckBox);
     place(1, 3, mParticleEffectsCheckBox, 2);
 
     place(1, 4, mPickupNotifyLabel, 4);
@@ -498,39 +426,27 @@ Setup_Video::Setup_Video():
     place(1, 5, mPickupChatCheckBox, 1);
     place(2, 5, mPickupParticleCheckBox, 2);
 
-    place(0, 6, fontSizeLabel, 3);
-    place(1, 6, mFontSizeDropDown, 1);
+    place(0, 8, mAlphaSlider);
+    place(1, 8, alphaLabel, 3);
 
-    place(0, 7, mAlphaSlider);
-    place(1, 7, alphaLabel, 3);
+    place(0, 9, mFpsSlider);
+    place(1, 9, mFpsCheckBox).setPadding(3);
+    place(2, 9, mFpsLabel).setPadding(1);
 
-    place(0, 8, mFpsSlider);
-    place(1, 8, mFpsCheckBox).setPadding(3);
-    place(2, 8, mFpsLabel).setPadding(1);
+    place(0, 10, mAltFpsSlider);
+    place(1, 10, mAltFpsLabel).setPadding(3);
 
-    place(0, 9, mAltFpsSlider);
-    place(1, 9, mAltFpsLabel).setPadding(3);
+    place(0, 11, mSpeechSlider);
+    place(1, 11, speechLabel);
+    place(2, 11, mSpeechLabel, 3).setPadding(2);
 
-    place(0, 10, mSpeechSlider);
-    place(1, 10, speechLabel);
-    place(2, 10, mSpeechLabel, 3).setPadding(2);
+    place(0, 12, mOverlayDetailSlider);
+    place(1, 12, overlayDetailLabel);
+    place(2, 12, mOverlayDetailField, 3).setPadding(2);
 
-    place(0, 11, mOverlayDetailSlider);
-    place(1, 11, overlayDetailLabel);
-    place(2, 11, mOverlayDetailField, 3).setPadding(2);
-
-    place(0, 12, mParticleDetailSlider);
-    place(1, 12, particleDetailLabel);
-    place(2, 12, mParticleDetailField, 3).setPadding(2);
-
-    place(3, 7, mHideShieldSpriteCheckBox);
-    place(3, 8, mLowTrafficCheckBox);
-    place(0, 13, mShowBackgroundCheckBox);
-    place(0, 14, mSyncPlayerMoveCheckBox);
-    place(0, 15, mDrawHotKeysCheckBox);
-    place(2, 13, mDrawPathCheckBox, 2);
-    place(2, 14, mShowJobCheckBox, 2);
-    place(2, 15, mNPCLogCheckBox, 2);
+    place(0, 13, mParticleDetailSlider);
+    place(1, 13, particleDetailLabel);
+    place(2, 13, mParticleDetailField, 3).setPadding(2);
 
     int width = 600;
 
@@ -546,8 +462,6 @@ Setup_Video::~Setup_Video()
     mModeListModel = 0;
     delete mModeList;
     mModeList = 0;
-    delete mFontSizeListModel;
-    mFontSizeListModel = 0;
     delete mOpenGLListModel;
     mOpenGLListModel = 0;
     delete mDialog;
@@ -629,34 +543,13 @@ void Setup_Video::apply()
     config.setValue("fpslimit", mFps);
     config.setValue("altfpslimit", mAltFps);
 
-    if (config.getIntValue("fontSize")
-        != static_cast<int>(mFontSizeDropDown->getSelected()) + 10)
-    {
-        config.setValue("fontSize", mFontSizeDropDown->getSelected() + 10);
-        gui->updateFonts();
-    }
-
-    config.setValue("hideShield", mHideShieldSpriteCheckBox->isSelected());
-    config.setValue("lowTraffic", mLowTrafficCheckBox->isSelected());
-    config.setValue("syncPlayerMove", mSyncPlayerMoveCheckBox->isSelected());
-    config.setValue("drawHotKeys", mDrawHotKeysCheckBox->isSelected());
-    config.setValue("drawPath", mDrawPathCheckBox->isSelected());
-    serverConfig.setValue("showJob", mShowJobCheckBox->isSelected());
     config.setValue("alphaCache", mAlphaCacheCheckBox->isSelected());
     config.setValue("showBackground", mShowBackgroundCheckBox->isSelected());
 
     // We sync old and new values at apply time
     mFullScreenEnabled = config.getBoolValue("screen");
     mCustomCursorEnabled = config.getBoolValue("customcursor");
-    mVisibleNamesEnabled = config.getBoolValue("visiblenames");
     mParticleEffectsEnabled = config.getBoolValue("particleeffects");
-    mNPCLogEnabled = config.getBoolValue("logNpcInGui");
-    mHideShieldSprite = config.getBoolValue("hideShield");
-    mLowTraffic = config.getBoolValue("lowTraffic");
-    mSyncPlayerMove = config.getBoolValue("syncPlayerMove");
-    mDrawHotKeys = config.getBoolValue("drawHotKeys");
-    mDrawPath = config.getBoolValue("drawPath");
-    mShowJob = serverConfig.getBoolValue("showJob");
     mAlphaCache = config.getBoolValue("alphaCache");
     mShowBackground = config.getBoolValue("showBackground");
 
@@ -677,20 +570,12 @@ void Setup_Video::cancel()
     mOpenGLDropDown->setSelected(mOpenGLEnabled);
     mHwAccelCheckBox->setSelected(mHwAccelEnabled);
     mCustomCursorCheckBox->setSelected(mCustomCursorEnabled);
-    mVisibleNamesCheckBox->setSelected(mVisibleNamesEnabled);
     mParticleEffectsCheckBox->setSelected(mParticleEffectsEnabled);
     mFpsSlider->setValue(mFps);
     mFpsSlider->setEnabled(mFps > 0);
     mAltFpsSlider->setValue(mAltFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
     mSpeechSlider->setValue(mSpeechMode);
-    mNPCLogCheckBox->setSelected(mNPCLogEnabled);
-    mHideShieldSpriteCheckBox->setSelected(mHideShieldSprite);
-    mLowTrafficCheckBox->setSelected(mLowTraffic);
-    mSyncPlayerMoveCheckBox->setSelected(mSyncPlayerMove);
-    mDrawHotKeysCheckBox->setSelected(mDrawHotKeys);
-    mDrawPathCheckBox->setSelected(mDrawPath);
-    mShowJobCheckBox->setSelected(mShowJob);
     mAlphaCacheCheckBox->setSelected(mAlphaCache);
     mShowBackgroundCheckBox->setSelected(mShowBackground);
     mAlphaSlider->setValue(mOpacity);
@@ -710,16 +595,8 @@ void Setup_Video::cancel()
     config.setValue("screenheight", graphics->mHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
-    config.setValue("visiblenames", mVisibleNamesEnabled);
     config.setValue("particleeffects", mParticleEffectsEnabled);
     config.setValue("speech", static_cast<int>(mSpeechMode));
-    config.setValue("logNpcInGui", mNPCLogEnabled);
-    config.setValue("hideShield", mHideShieldSprite);
-    config.setValue("lowTraffic", mLowTraffic);
-    config.setValue("syncPlayerMove", mSyncPlayerMove);
-    config.setValue("drawHotKeys", mDrawHotKeys);
-    config.setValue("drawPath", mDrawPath);
-    serverConfig.setValue("showJob", mShowJob);
     config.setValue("alphaCache", mAlphaCache);
     config.setValue("showBackground", mShowBackground);
     config.setValue("guialpha", mOpacity);
@@ -794,10 +671,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         config.setValue("customcursor", mCustomCursorCheckBox->isSelected());
     }
-    else if (id == "visiblenames")
-    {
-        config.setValue("visiblenames", mVisibleNamesCheckBox->isSelected());
-    }
     else if (id == "particleeffects")
     {
         config.setValue("particleeffects",
@@ -826,10 +699,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         mSpeechLabel->setCaption(speechModeToString(val));
         mSpeechSlider->setValue(val);
         config.setValue("speech", static_cast<int>(val));
-    }
-    else if (id == "lognpc")
-    {
-        config.setValue("logNpcInGui", mNPCLogCheckBox->isSelected());
     }
     else if (id == "overlaydetailslider")
     {
@@ -878,6 +747,4 @@ void Setup_Video::action(const gcn::ActionEvent &event)
 
 void Setup_Video::externalUpdated()
 {
-    mShowJob = serverConfig.getBoolValue("showJob");
-    mShowJobCheckBox->setSelected(mShowJob);
 }

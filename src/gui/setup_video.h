@@ -31,7 +31,6 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
-class FontSizeChoiceListModel;
 class ModeListModel;
 class OpenGLListModel;
 class TextDialog;
@@ -58,26 +57,17 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         int mOpenGLEnabled;
         bool mHwAccelEnabled;
         bool mCustomCursorEnabled;
-        bool mVisibleNamesEnabled;
         bool mParticleEffectsEnabled;
-        bool mNPCLogEnabled;
         bool mPickupChatEnabled;
         bool mPickupParticleEnabled;
         float mOpacity;
         int mFps;
         int mAltFps;
-        bool mHideShieldSprite;
-        bool mLowTraffic;
-        bool mSyncPlayerMove;
-        bool mDrawHotKeys;
-        bool mDrawPath;
-        bool mShowJob;
         bool mAlphaCache;
         bool mShowBackground;
         Being::Speech mSpeechMode;
 
         ModeListModel *mModeListModel;
-        FontSizeChoiceListModel *mFontSizeListModel;
 
         OpenGLListModel *mOpenGLListModel;
 
@@ -87,27 +77,18 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::Label *scrollLazinessLabel;
         gcn::Label *overlayDetailLabel;
         gcn::Label *particleDetailLabel;
-        gcn::Label *fontSizeLabel;
 
         gcn::ListBox *mModeList;
         gcn::CheckBox *mFsCheckBox;
         gcn::DropDown *mOpenGLDropDown;
         gcn::CheckBox *mHwAccelCheckBox;
         gcn::CheckBox *mCustomCursorCheckBox;
-        gcn::CheckBox *mVisibleNamesCheckBox;
         gcn::CheckBox *mParticleEffectsCheckBox;
-        gcn::CheckBox *mNPCLogCheckBox;
 
         gcn::Label *mPickupNotifyLabel;
         gcn::CheckBox *mPickupChatCheckBox;
         gcn::CheckBox *mPickupParticleCheckBox;
 
-        gcn::CheckBox *mHideShieldSpriteCheckBox;
-        gcn::CheckBox *mLowTrafficCheckBox;
-        gcn::CheckBox *mSyncPlayerMoveCheckBox;
-        gcn::CheckBox *mDrawHotKeysCheckBox;
-        gcn::CheckBox *mDrawPathCheckBox;
-        gcn::CheckBox *mShowJobCheckBox;
         gcn::CheckBox *mAlphaCacheCheckBox;
         gcn::CheckBox *mShowBackgroundCheckBox;
         gcn::Slider *mSpeechSlider;
@@ -128,8 +109,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::Slider *mParticleDetailSlider;
         gcn::Label *mParticleDetailField;
 
-        int mFontSize;
-        gcn::DropDown *mFontSizeDropDown;
         TextDialog *mDialog;
 };
 

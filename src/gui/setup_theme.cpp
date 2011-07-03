@@ -100,13 +100,42 @@ public:
     { }
 };
 
+const char *SIZE_NAME[6] =
+{
+    N_("Tiny (10)"),
+    N_("Small (11)"),
+    N_("Medium (12)"),
+    N_("Large (13)"),
+    N_("Big (14)"),
+    N_("Huge (15)"),
+};
+
+class FontSizeChoiceListModel : public gcn::ListModel
+{
+public:
+    virtual ~FontSizeChoiceListModel()
+    { }
+
+    virtual int getNumberOfElements()
+    { return 6; }
+
+    virtual std::string getElementAt(int i)
+    {
+        if (i >= getNumberOfElements() || i < 0)
+            return _("???");
+
+        return gettext(SIZE_NAME[i]);
+    }
+};
+
 Setup_Theme::Setup_Theme():
     mTheme(config.getValue("theme", config.getValue("selectedSkin", ""))),
     mFont(config.getStringValue("font")),
     mBoldFont(config.getStringValue("boldFont")),
     mParticleFont(config.getStringValue("particleFont")),
     mHelpFont(config.getStringValue("helpFont")),
-    mSecureFont(config.getStringValue("secureFont"))
+    mSecureFont(config.getStringValue("secureFont")),
+    mFontSize(config.getIntValue("fontSize"))
 {
     setName(_("Theme"));
 
@@ -143,6 +172,12 @@ Setup_Theme::Setup_Theme():
     mSecureFontDropDown->setActionEventId(ACTION_SECURE_FONT);
     mSecureFontDropDown->addActionListener(this);
 
+    fontSizeLabel = new Label(_("Font size"));
+    mFontSizeListModel = new FontSizeChoiceListModel;
+    mFontSizeDropDown = new DropDown(mFontSizeListModel);
+    mFontSizeDropDown->setSelected(mFontSize - 10);
+    mFontSizeDropDown->adjustHeight();
+
     std::string skin = Theme::getThemeName();
     if (!skin.empty())
         mThemeDropDown->setSelectedString(skin);
@@ -166,16 +201,18 @@ Setup_Theme::Setup_Theme():
 
     place(0, 0, mThemeLabel, 10);
     place(0, 1, mThemeDropDown, 6);
-    place(0, 2, mFontLabel, 10);
-    place(0, 3, mFontDropDown, 6);
-    place(0, 4, mBoldFontLabel, 10);
-    place(0, 5, mBoldFontDropDown, 6);
-    place(0, 6, mParticleFontLabel, 10);
-    place(0, 7, mParticleFontDropDown, 6);
-    place(0, 8, mHelpFontLabel, 10);
-    place(0, 9, mHelpFontDropDown, 6);
-    place(0, 10, mSecureFontLabel, 10);
-    place(0, 11, mSecureFontDropDown, 6);
+    place(0, 2, fontSizeLabel, 10);
+    place(0, 3, mFontSizeDropDown, 6);
+    place(0, 4, mFontLabel, 10);
+    place(0, 5, mFontDropDown, 6);
+    place(0, 6, mBoldFontLabel, 10);
+    place(0, 7, mBoldFontDropDown, 6);
+    place(0, 8, mParticleFontLabel, 10);
+    place(0, 9, mParticleFontDropDown, 6);
+    place(0, 10, mHelpFontLabel, 10);
+    place(0, 11, mHelpFontDropDown, 6);
+    place(0, 12, mSecureFontLabel, 10);
+    place(0, 13, mSecureFontDropDown, 6);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -190,6 +227,9 @@ Setup_Theme::~Setup_Theme()
 
     delete mFontsModel;
     mFontsModel = 0;
+
+    delete mFontSizeListModel;
+    mFontSizeListModel = 0;
 }
 
 void Setup_Theme::action(const gcn::ActionEvent &event)
@@ -241,19 +281,23 @@ void Setup_Theme::apply()
         new OkDialog(_("Theme Changed"),
                      _("Restart your client for the change to take effect."));
     }
+
     config.setValue("selectedSkin", "");
     config.setValue("theme", mTheme);
     if (config.getValue("font", "dejavusans.ttf") != mFont
         || config.getValue("boldFont", "dejavusans-bold.ttf") != mBoldFont
         || config.getValue("particleFont", "dejavusans.ttf") != mParticleFont
         || config.getValue("helpFont", "dejavusansmono.ttf") != mHelpFont
-        || config.getValue("secureFont", "dejavusansmono.ttf") != mSecureFont)
+        || config.getValue("secureFont", "dejavusansmono.ttf") != mSecureFont
+        || config.getIntValue("fontSize")
+        != static_cast<int>(mFontSizeDropDown->getSelected()) + 10)
     {
         config.setValue("font", "fonts/" + getFileName(mFont));
         config.setValue("boldFont", "fonts/" + getFileName(mBoldFont));
         config.setValue("particleFont", "fonts/" + getFileName(mParticleFont));
         config.setValue("helpFont", "fonts/" + getFileName(mHelpFont));
         config.setValue("secureFont", "fonts/" + getFileName(mSecureFont));
+        config.setValue("fontSize", mFontSizeDropDown->getSelected() + 10);
         gui->updateFonts();
     }
 }

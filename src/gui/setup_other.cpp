@@ -123,6 +123,27 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Enable debug log"), "",
         "debugLog", this, "debugLogEvent");
 
+    new SetupItemCheckBox(_("Draw path"), "", "drawPath",
+        this, "drawPathEvent");
+
+    new SetupItemCheckBox(_("Show job"), "", "showJob",
+        this, "showJobEvent", false);
+
+    new SetupItemCheckBox(_("Log NPC dialogue"), "", "logNpcInGui",
+        this, "logNpcInGuiEvent");
+
+    new SetupItemCheckBox(_("Draw hotkeys on map"), "", "drawHotKeys",
+        this, "drawHotKeysEvent");
+
+    new SetupItemCheckBox(_("Sync player move"), "", "syncPlayerMove",
+        this, "syncPlayerMoveEvent");
+
+    new SetupItemCheckBox(_("Low traffic mode"), "", "lowTraffic",
+        this, "lowTrafficEvent");
+
+    new SetupItemCheckBox(_("Hide shield sprite"), "", "hideShield",
+        this, "hideShieldEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
