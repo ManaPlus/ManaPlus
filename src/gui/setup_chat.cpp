@@ -52,38 +52,55 @@ Setup_Chat::Setup_Chat()
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    new SetupItemLabel(_("Colors"), "", this);
+
     new SetupItemCheckBox(_("Remove colors from received chat messages"), "",
         "removeColors", this, "removeColorsEvent");
-
-    new SetupItemCheckBox(_("Log magic messages in debug tab"), "",
-        "showMagicInDebug", this, "showMagicInDebugEvent");
-
-    new SetupItemCheckBox(_("Allow magic and GM commands in all chat tabs"),
-        "", "allowCommandsInChatTabs", this, "allowCommandsInChatTabsEvent");
-
-    new SetupItemCheckBox(_("Show server messages in debug tab"), "",
-        "serverMsgInDebug", this, "serverMsgInDebugEvent");
 
     new SetupItemCheckBox(_("Show chat colors list"), "",
         "showChatColorsList", this, "showChatColorsListEvent");
 
+
+    new SetupItemLabel(_("Commands"), "", this);
+
+    new SetupItemCheckBox(_("Allow magic and GM commands in all chat tabs"),
+        "", "allowCommandsInChatTabs", this, "allowCommandsInChatTabsEvent");
+
+
+    new SetupItemLabel(_("Limits"), "", this);
+
     new SetupItemIntTextField(_("Limit max chars in chat line"), "",
         "chatMaxCharLimit", this, "chatMaxCharLimitEvent", 0, 500);
-
-    new SetupItemCheckBox(_("Enable chat Log"), "",
-        "enableChatLog", this, "enableChatLogEvent");
 
     new SetupItemIntTextField(_("Limit max lines in chat"), "",
         "chatMaxLinesLimit", this, "chatMaxLinesLimitEvent", 0, 500);
 
-    new SetupItemCheckBox(_("Enable trade tab"), "",
-        "enableTradeTab", this, "enableTradeTabEvent");
+
+    new SetupItemLabel(_("Logs"), "", this);
+
+    new SetupItemCheckBox(_("Enable chat Log"), "",
+        "enableChatLog", this, "enableChatLogEvent");
+
+    new SetupItemCheckBox(_("Show chat history"), "",
+        "showChatHistory", this, "showChatHistoryEvent");
+
+
+    new SetupItemLabel(_("Messages"), "", this);
 
     new SetupItemCheckBox(_("Hide shop messages"), "",
         "hideShopMessages", this, "hideShopMessagesEvent");
 
-    new SetupItemCheckBox(_("Show chat history"), "",
-        "showChatHistory", this, "showChatHistoryEvent");
+
+    new SetupItemLabel(_("Tabs"), "", this);
+
+    new SetupItemCheckBox(_("Log magic messages in debug tab"), "",
+        "showMagicInDebug", this, "showMagicInDebugEvent");
+
+    new SetupItemCheckBox(_("Show server messages in debug tab"), "",
+        "serverMsgInDebug", this, "serverMsgInDebugEvent");
+
+    new SetupItemCheckBox(_("Enable trade tab"), "",
+        "enableTradeTab", this, "enableTradeTabEvent");
 
     new SetupItemCheckBox(_("Enable battle tab"), "",
         "enableBattleTab", this, "enableBattleTabEvent");
@@ -93,6 +110,9 @@ Setup_Chat::Setup_Chat()
 
     new SetupItemCheckBox(_("Resize chat tabs if need"), "",
         "hideChatInput", this, "hideChatInputEvent");
+
+
+    new SetupItemLabel(_("Time"), "", this);
 
     new SetupItemCheckBox(_("Use local time"), "",
         "useLocalTime", this, "useLocalTimeEvent");

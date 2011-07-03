@@ -61,14 +61,18 @@ SetupTabScroll::~SetupTabScroll()
 
 void SetupTabScroll::addControl(SetupItem *widget)
 {
-    std::map<std::string, SetupItem*>::iterator iter
-        = mItems.find(widget->getActionEventId());
-    if (iter != mItems.end())
+    const std::string actionId = widget->getActionEventId();
+    if (!actionId.empty())
     {
-        delete (*iter).second;
-        mItems.erase(iter);
+        std::map<std::string, SetupItem*>::iterator iter
+            = mItems.find(actionId);
+        if (iter != mItems.end())
+        {
+            delete (*iter).second;
+            mItems.erase(iter);
+        }
+        mItems[widget->getActionEventId()] = widget;
     }
-    mItems[widget->getActionEventId()] = widget;
     mAllItems.insert(widget);
 }
 

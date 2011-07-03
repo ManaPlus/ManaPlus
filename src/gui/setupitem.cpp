@@ -111,6 +111,8 @@ void SetupItem::load()
             case VINT:
                 mValue = toString(cfg->getIntValue(mKeyName));
                 break;
+            case VNONE:
+                break;
         }
     }
 }
@@ -450,4 +452,56 @@ void SetupItemIntTextField::apply(std::string eventName)
 
     fromWidget();
     save();
+}
+
+SetupItemLabel::SetupItemLabel(std::string text, std::string description,
+                               SetupTabScroll *parent, bool separator) :
+    SetupItem(text, description, "", parent, "", "", true),
+    mLabel(0),
+    mIsSeparator(separator)
+{
+    mValueType = VNONE;
+    createControls();
+}
+
+SetupItemLabel::~SetupItemLabel()
+{
+    mWidget = 0;
+    mLabel = 0;
+}
+
+void SetupItemLabel::createControls()
+{
+    if (mIsSeparator)
+    {
+        const std::string str = " \342\200\225\342\200\225\342\200\225"
+            "\342\200\225\342\200\225 ";
+        mLabel = new Label(str + mText + str);
+    }
+    else
+    {
+        mLabel = new Label(mText);
+    }
+
+    mWidget = mLabel;
+    mParent->getContainer()->add(mWidget);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+void SetupItemLabel::fromWidget()
+{
+}
+
+void SetupItemLabel::toWidget()
+{
+}
+
+void SetupItemLabel::action(const gcn::ActionEvent &event)
+{
+}
+
+void SetupItemLabel::apply(std::string eventName)
+{
 }

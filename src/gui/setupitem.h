@@ -55,7 +55,8 @@ class SetupItem : public gcn::ActionListener
         {
             VBOOL = 0,
             VSTR,
-            VINT
+            VINT,
+            VNONE
         };
 
         SetupItem(std::string text, std::string description,
@@ -215,6 +216,29 @@ class SetupItemIntTextField : public SetupItem
         int mMin;
         int mMax;
         EditDialog *mEditDialog;
+};
+
+class SetupItemLabel : public SetupItem
+{
+    public:
+        SetupItemLabel(std::string text, std::string description,
+                       SetupTabScroll *parent, bool separator = true);
+
+        ~SetupItemLabel();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+    protected:
+        Label *mLabel;
+        bool mIsSeparator;
 };
 
 #endif
