@@ -309,10 +309,10 @@ namespace gcn
 
     bool Widget::isVisible() const
     {
-        if (getParent() == NULL)
+        if (!mParent)
             return mVisible;
         else
-            return mVisible && getParent()->isVisible();
+            return mVisible && mParent->isVisible();
     }
 
     void Widget::setBaseColor(const Color& color)
@@ -436,7 +436,7 @@ namespace gcn
 
     void Widget::getAbsolutePosition(int& x, int& y) const
     {
-        if (getParent() == NULL)
+        if (!mParent)
         {
             x = mDimension.x;
             y = mDimension.y;
@@ -446,10 +446,11 @@ namespace gcn
         int parentX;
         int parentY;
 
-        getParent()->getAbsolutePosition(parentX, parentY);
+        mParent->getAbsolutePosition(parentX, parentY);
 
-        x = parentX + mDimension.x + getParent()->getChildrenArea().x;
-        y = parentY + mDimension.y + getParent()->getChildrenArea().y;
+        const Rectangle &rect = mParent->getChildrenArea();
+        x = parentX + mDimension.x + rect.x;
+        y = parentY + mDimension.y + rect.y;
     }
 
     Font* Widget::getFont() const
@@ -574,10 +575,10 @@ namespace gcn
                 "the widget to the gui?).");
         }
 
-        if (getParent() != NULL)
+        if (mParent)
         {
             return (mFocusHandler->getModalFocused() == this) 
-                || getParent()->isModalFocused();
+                || mParent->isModalFocused();
         }
 
         return mFocusHandler->getModalFocused() == this;
@@ -591,10 +592,10 @@ namespace gcn
                 "the widget to the gui?).");
         }
 
-        if (getParent() != NULL)
+        if (mParent)
         {
             return (mFocusHandler->getModalMouseInputFocused() == this) 
-                || getParent()->isModalMouseInputFocused();
+                || mParent->isModalMouseInputFocused();
         }
 
         return mFocusHandler->getModalMouseInputFocused() == this;

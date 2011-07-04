@@ -498,10 +498,10 @@ void SetupItemLabel::toWidget()
 {
 }
 
-void SetupItemLabel::action(const gcn::ActionEvent &event)
+void SetupItemLabel::action(const gcn::ActionEvent &event _UNUSED_)
 {
 }
 
-void SetupItemLabel::apply(std::string eventName)
+void SetupItemLabel::apply(std::string eventName _UNUSED_)
 {
 }
