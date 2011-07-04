@@ -380,7 +380,7 @@ namespace Attributes
 
     void informItemDB()
     {
-        std::list<ItemDB::Stat> dbStats;
+        std::vector<ItemDB::Stat> dbStats;
 
         TagMap::const_iterator it, it_end;
         for (it = tags.begin(), it_end = tags.end(); it != it_end; ++it)

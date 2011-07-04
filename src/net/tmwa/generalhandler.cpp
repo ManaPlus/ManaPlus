@@ -103,7 +103,7 @@ GeneralHandler::GeneralHandler():
     handledMessages = _messages;
     generalHandler = this;
 
-    std::list<ItemDB::Stat> stats;
+    std::vector<ItemDB::Stat> stats;
     stats.push_back(ItemDB::Stat("str", _("Strength %+d")));
     stats.push_back(ItemDB::Stat("agi", _("Agility %+d")));
     stats.push_back(ItemDB::Stat("vit", _("Vitality %+d")));

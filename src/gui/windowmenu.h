@@ -30,6 +30,7 @@
 #include <guichan/selectionlistener.hpp>
 
 #include <map>
+#include <vector>
 
 #ifdef __GNUC__
 #define _UNUSED_  __attribute__ ((unused))
@@ -68,7 +69,7 @@ class WindowMenu : public Container,
         std::map <std::string, gcn::Button*> &getButtonNames()
         { return mButtonNames; }
 
-        std::list <gcn::Button*> &getButtons()
+        std::vector <gcn::Button*> &getButtons()
         { return mButtons; }
 
         void showButton(std::string name, bool isVisible);
@@ -85,7 +86,7 @@ class WindowMenu : public Container,
 
         EmotePopup *mEmotePopup;
         TextPopup *mTextPopup;
-        std::list <gcn::Button*> mButtons;
+        std::vector <gcn::Button*> mButtons;
         std::map <std::string, gcn::Button*> mButtonNames;
 };
 

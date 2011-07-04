@@ -133,7 +133,7 @@ bool isWordSeparator(char chr);
 
 unsigned long findI(std::string str, std::string subStr);
 
-unsigned long findI(std::string str, std::list<std::string> &list);
+unsigned long findI(std::string str, std::vector<std::string> &list);
 
 const std::string encodeStr(unsigned int value, unsigned int size = 0);
 

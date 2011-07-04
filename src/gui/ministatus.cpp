@@ -134,7 +134,7 @@ MiniStatusWindow::~MiniStatusWindow()
     if (inv)
         inv->removeInventoyListener(this);
 
-    std::list <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::iterator it, it_end;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
     {
         ProgressBar *bar = *it;
@@ -160,7 +160,7 @@ ProgressBar *MiniStatusWindow::createBar(float progress, int width, int height,
 void MiniStatusWindow::updateBars()
 {
     int x = 0;
-    std::list <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::iterator it, it_end;
     ProgressBar* lastBar = 0;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
         safeRemove(*it);
@@ -439,7 +439,7 @@ void MiniStatusWindow::loadBars()
 
 void MiniStatusWindow::saveBars()
 {
-    std::list <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::iterator it, it_end;
     int i = 0;
     for (it = mBars.begin(), it_end = mBars.end();
          it != it_end; ++it)

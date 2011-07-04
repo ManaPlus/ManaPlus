@@ -419,7 +419,8 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
                         (*it)->mouseClicked(mouseEvent);
                         break;
                     default:
-                        throw GCN_EXCEPTION("Unknown mouse event type.");
+                        break;
+//                        throw GCN_EXCEPTION("Unknown mouse event type.");
                 }
             }
 

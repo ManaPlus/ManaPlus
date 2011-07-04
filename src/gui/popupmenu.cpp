@@ -1755,8 +1755,8 @@ void PopupMenu::showPopup(int x, int y, Button *button)
     mButton = button;
 
     mBrowserBox->clearRows();
-    std::list <gcn::Button*> names = windowMenu->getButtons();
-    std::list <gcn::Button*>::iterator it, it_end;
+    std::vector <gcn::Button*> names = windowMenu->getButtons();
+    std::vector <gcn::Button*>::iterator it, it_end;
     for (it = names.begin(), it_end = names.end(); it != it_end; ++ it)
     {
         Button *btn = dynamic_cast<Button*>(*it);
@@ -1790,8 +1790,8 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
     mNick = b->text();
 
     mBrowserBox->clearRows();
-    std::list <ProgressBar*> bars = miniStatusWindow->getBars();
-    std::list <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
+    std::vector <ProgressBar*>::iterator it, it_end;
     for (it = bars.begin(), it_end = bars.end(); it != it_end; ++it)
     {
         ProgressBar *bar = *it;

@@ -317,7 +317,7 @@ class ChatWindow : public Window,
         bool mReturnToggles; /**< Marks whether <Return> toggles the chat log
                                 or not */
 
-        std::list<std::string> mTradeFilter;
+        std::vector<std::string> mTradeFilter;
 
         gcn::DropDown *mColorPicker;
         ColorListModel *mColorListModel;

@@ -77,7 +77,7 @@ namespace ItemDB
         std::string format;
     };
 
-    void setStatsList(const std::list<Stat> &stats);
+    void setStatsList(const std::vector<Stat> &stats);
 
 }
 

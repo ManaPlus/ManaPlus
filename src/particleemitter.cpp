@@ -435,7 +435,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mDeathEffect = o.mDeathEffect;
     mTempSets = o.mTempSets;
 
-    for (std::list<ImageSet*>::iterator
+    for (std::vector<ImageSet*>::iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
     {
@@ -453,7 +453,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 
 ParticleEmitter::~ParticleEmitter()
 {
-    for (std::list<ImageSet*>::iterator
+    for (std::vector<ImageSet*>::iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
     {

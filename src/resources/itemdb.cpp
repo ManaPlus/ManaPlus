@@ -65,9 +65,9 @@ static char const *const fields[][2] =
     { "mp",        N_("MP %+d")        }
 };
 
-static std::list<ItemDB::Stat> extraStats;
+static std::vector<ItemDB::Stat> extraStats;
 
-void ItemDB::setStatsList(const std::list<ItemDB::Stat> &stats)
+void ItemDB::setStatsList(const std::vector<ItemDB::Stat> &stats)
 {
     extraStats = stats;
 }
@@ -307,7 +307,7 @@ void ItemDB::load()
                 effect += " / ";
             effect += strprintf(gettext(fields[i][1]), value);
         }
-        for (std::list<Stat>::iterator it = extraStats.begin();
+        for (std::vector<Stat>::iterator it = extraStats.begin();
              it != extraStats.end(); ++it)
         {
             int value = XML::getProperty(node, it->tag.c_str(), 0);

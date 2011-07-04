@@ -88,7 +88,7 @@ class MiniStatusWindow : public Popup,
 
         void slotsChanged(Inventory* inventory);
 
-        std::list <ProgressBar*> &getBars()
+        std::vector <ProgressBar*> &getBars()
         { return mBars; }
 
     private:
@@ -116,7 +116,7 @@ class MiniStatusWindow : public Popup,
         ProgressBar *mStatusBar;
         TextPopup *mTextPopup;
         StatusPopup *mStatusPopup;
-        std::list <ProgressBar*> mBars;
+        std::vector <ProgressBar*> mBars;
         std::map <std::string, ProgressBar*> mBarNames;
 
         std::vector<AnimatedSprite *> mIcons;
