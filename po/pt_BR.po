@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-02 00:39+0300\n"
+"POT-Creation-Date: 2011-07-04 21:26+0300\n"
 "PO-Revision-Date: 2011-06-22 04:16+0000\n"
 "Last-Translator: freya <freya.df@gmail.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://www.transifex.net/projects/p/"
@@ -428,7 +428,7 @@ msgid "Max"
 msgstr "Máximo"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:145
+#: src/gui/inventorywindow.cpp:145 src/gui/setup_other.cpp:131
 msgid "Shop"
 msgstr "Loja"
 
@@ -697,8 +697,8 @@ msgstr "arco-íris 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_players.cpp:220
-#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:214
-#: src/gui/setup_video.cpp:239 src/gui/textcommandeditor.cpp:101
+#: src/gui/setup_theme.cpp:71 src/gui/setup_theme.cpp:125
+#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:101
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:159
 msgid "???"
 msgstr "???"
@@ -733,6 +733,7 @@ msgid "Ignore"
 msgstr "Ignora"
 
 #: src/gui/debugwindow.cpp:70 src/gui/minimap.cpp:49 src/gui/minimap.cpp:96
+#: src/gui/setup_other.cpp:65
 msgid "Map"
 msgstr "Mapa"
 
@@ -1215,6 +1216,7 @@ msgid "Submit"
 msgstr "Enviar"
 
 #: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
+#: src/gui/setup_other.cpp:140
 msgid "NPC"
 msgstr "NPC"
 
@@ -1715,73 +1717,99 @@ msgstr ""
 msgid "Sound Engine"
 msgstr "Mecanismo de som"
 
-#: src/gui/setup_chat.cpp:55
+#: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
+msgid "Colors"
+msgstr "Cores"
+
+#: src/gui/setup_chat.cpp:57
 msgid "Remove colors from received chat messages"
 msgstr "Remover mensagens coloridas do chat"
 
-#: src/gui/setup_chat.cpp:58
-msgid "Log magic messages in debug tab"
-msgstr "Salvar comandos de feitiços na aba do Depurador"
-
-#: src/gui/setup_chat.cpp:61
-msgid "Allow magic and GM commands in all chat tabs"
-msgstr "Permitir feitiços e comandos de GM em todas abas"
-
-#: src/gui/setup_chat.cpp:64
-msgid "Show server messages in debug tab"
-msgstr "Mostrar as mensagens do servidor na aba do Depurador"
-
-#: src/gui/setup_chat.cpp:67
+#: src/gui/setup_chat.cpp:60
 msgid "Show chat colors list"
 msgstr "Mostrar lista de cores do chat"
 
+#: src/gui/setup_chat.cpp:64
+#, fuzzy
+msgid "Commands"
+msgstr "Comando:"
+
+#: src/gui/setup_chat.cpp:66
+msgid "Allow magic and GM commands in all chat tabs"
+msgstr "Permitir feitiços e comandos de GM em todas abas"
+
 #: src/gui/setup_chat.cpp:70
+msgid "Limits"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:72
 msgid "Limit max chars in chat line"
 msgstr "Limite de caracteres na linha de chat"
 
-#: src/gui/setup_chat.cpp:73
-msgid "Enable chat Log"
-msgstr "Salvar conversas"
-
-#: src/gui/setup_chat.cpp:76
+#: src/gui/setup_chat.cpp:75
 msgid "Limit max lines in chat"
 msgstr "Limite de linhas máximas no chat"
 
 #: src/gui/setup_chat.cpp:79
-msgid "Enable trade tab"
-msgstr "Habilitar aba de negociação"
+msgid "Logs"
+msgstr ""
 
-#: src/gui/setup_chat.cpp:82
-msgid "Hide shop messages"
-msgstr "Esconder mensagens de loja"
+#: src/gui/setup_chat.cpp:81
+msgid "Enable chat Log"
+msgstr "Salvar conversas"
 
-#: src/gui/setup_chat.cpp:85
+#: src/gui/setup_chat.cpp:84
 msgid "Show chat history"
 msgstr "Mostrar mensagens antigas"
 
 #: src/gui/setup_chat.cpp:88
+#, fuzzy
+msgid "Messages"
+msgstr "Mensagem"
+
+#: src/gui/setup_chat.cpp:90
+msgid "Hide shop messages"
+msgstr "Esconder mensagens de loja"
+
+#: src/gui/setup_chat.cpp:94
+msgid "Tabs"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:96
+msgid "Log magic messages in debug tab"
+msgstr "Salvar comandos de feitiços na aba do Depurador"
+
+#: src/gui/setup_chat.cpp:99
+msgid "Show server messages in debug tab"
+msgstr "Mostrar as mensagens do servidor na aba do Depurador"
+
+#: src/gui/setup_chat.cpp:102
+msgid "Enable trade tab"
+msgstr "Habilitar aba de negociação"
+
+#: src/gui/setup_chat.cpp:105
 msgid "Enable battle tab"
 msgstr "Habilitar aba de batalha"
 
-#: src/gui/setup_chat.cpp:91
+#: src/gui/setup_chat.cpp:108
 msgid "Show battle events"
 msgstr "Mostrar eventos de batalha"
 
-#: src/gui/setup_chat.cpp:94
+#: src/gui/setup_chat.cpp:111
 msgid "Resize chat tabs if need"
 msgstr "Redimensionar aba de chat caso precisar"
 
-#: src/gui/setup_chat.cpp:97
+#: src/gui/setup_chat.cpp:115
+msgid "Time"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:117
 msgid "Use local time"
 msgstr "Usar tempo local"
 
 #: src/gui/setup_colors.cpp:49
 msgid "This is what the color looks like"
 msgstr "A cor vai ficar assim"
-
-#: src/gui/setup_colors.cpp:54
-msgid "Colors"
-msgstr "Cores"
 
 #: src/gui/setup_colors.cpp:75
 msgid "Type:"
@@ -1834,8 +1862,8 @@ msgstr "Aplicar"
 msgid "Reset Windows"
 msgstr "Restaurar janelas"
 
-#: src/gui/setupitem.cpp:268 src/gui/setupitem.cpp:392
-#: src/gui/setup_players.cpp:332
+#: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
+#: src/gui/setup_players.cpp:333
 msgid "Edit"
 msgstr "Editar"
 
@@ -1887,109 +1915,155 @@ msgstr "Conflitos de teclas detectado."
 msgid "Misc"
 msgstr "Diversos"
 
-#: src/gui/setup_other.cpp:46
+#: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:125
+msgid "Monsters"
+msgstr "Monstros"
+
+#: src/gui/setup_other.cpp:48
 msgid "Show damage inflicted to monsters"
 msgstr "Ver dano causado aos monstros"
 
-#: src/gui/setup_other.cpp:49
-msgid "Enable server side attack"
-msgstr "Habilitar ataque do lado do servidor"
-
-#: src/gui/setup_other.cpp:52
+#: src/gui/setup_other.cpp:51
 msgid "Auto target only reachable monsters"
 msgstr "Auto-alvo apenas em inimigos acessíveis"
 
-#: src/gui/setup_other.cpp:55
-msgid "Auto fix position"
-msgstr "Auto-ajustar posição"
-
-#: src/gui/setup_other.cpp:58
-msgid "Highlight map portals"
-msgstr "Destacar portais do mapa"
-
-#: src/gui/setup_other.cpp:61
-msgid "Attack while moving"
-msgstr "Atacar enquanto se move"
-
-#: src/gui/setup_other.cpp:64
-msgid "Highlight floor items"
-msgstr "Destacar itens no chão"
-
-#: src/gui/setup_other.cpp:67
-msgid "Enable quick stats"
-msgstr "Habilitar stats rápidos"
-
-#: src/gui/setup_other.cpp:70
-msgid "Highlight player attack range"
-msgstr "Destacar alcance de meu ataque"
-
-#: src/gui/setup_other.cpp:73
-msgid "Show warps particles"
-msgstr "Mostrar partículas de warps"
-
-#: src/gui/setup_other.cpp:76
+#: src/gui/setup_other.cpp:54
 msgid "Highlight monster attack range"
 msgstr "Destacar alcance de inimigos"
 
-#: src/gui/setup_other.cpp:80
-msgid "Accept sell/buy requests"
-msgstr "Aceitar convites de compra/venda"
-
-#: src/gui/setup_other.cpp:83
-msgid "Cycle player targets"
-msgstr "Alvo de jogadores em ciclo"
-
-#: src/gui/setup_other.cpp:86
+#: src/gui/setup_other.cpp:58
 msgid "Show monster hp bar"
 msgstr "Mostrar barra de hp dos monstros"
 
-#: src/gui/setup_other.cpp:89
+#: src/gui/setup_other.cpp:61
 msgid "Cycle monster targets"
 msgstr "Alvo de monstros em ciclo"
 
-#: src/gui/setup_other.cpp:92
-msgid "Show own hp bar"
-msgstr "Mostrar minha barra de hp"
+#: src/gui/setup_other.cpp:67
+msgid "Show warps particles"
+msgstr "Mostrar partículas de warps"
 
-#: src/gui/setup_other.cpp:95
-msgid "Enable bot checker"
-msgstr "Habilitar Analisador de bot"
+#: src/gui/setup_other.cpp:70
+msgid "Highlight map portals"
+msgstr "Destacar portais do mapa"
 
-#: src/gui/setup_other.cpp:98
-msgid "Show job exp messages"
-msgstr "Mostrar mensagens de job exp"
+#: src/gui/setup_other.cpp:73
+msgid "Highlight floor items"
+msgstr "Destacar itens no chão"
 
-#: src/gui/setup_other.cpp:102
-msgid "Crazy move A program"
-msgstr "Movimentos loucos"
+#: src/gui/setup_other.cpp:76
+msgid "Highlight player attack range"
+msgstr "Destacar alcance de meu ataque"
 
-#: src/gui/setup_other.cpp:105
-msgid "Show players popups"
-msgstr "Mostrar popups de jogadores"
-
-#: src/gui/setup_other.cpp:108
+#: src/gui/setup_other.cpp:79
 msgid "Show extended minimaps"
 msgstr "Mostrar minimapas grandes"
 
-#: src/gui/setup_other.cpp:111
+#: src/gui/setup_other.cpp:82
+msgid "Draw path"
+msgstr "Desenhar caminho"
+
+#: src/gui/setup_other.cpp:85
+msgid "Draw hotkeys on map"
+msgstr "Desenhar atalhos no mapa"
+
+#: src/gui/setup_other.cpp:89
+msgid "Moving"
+msgstr ""
+
+#: src/gui/setup_other.cpp:91
+msgid "Auto fix position"
+msgstr "Auto-ajustar posição"
+
+#: src/gui/setup_other.cpp:94
+msgid "Attack while moving"
+msgstr "Atacar enquanto se move"
+
+#: src/gui/setup_other.cpp:97
+msgid "Sync player move"
+msgstr "Sincronizar movimento"
+
+#: src/gui/setup_other.cpp:100
+msgid "Crazy move A program"
+msgstr "Movimentos loucos"
+
+#: src/gui/setup_other.cpp:104
+#, fuzzy
+msgid "Player"
+msgstr "Jogadores"
+
+#: src/gui/setup_other.cpp:106
+msgid "Show own hp bar"
+msgstr "Mostrar minha barra de hp"
+
+#: src/gui/setup_other.cpp:109
+msgid "Enable quick stats"
+msgstr "Habilitar stats rápidos"
+
+#: src/gui/setup_other.cpp:112
+msgid "Cycle player targets"
+msgstr "Alvo de jogadores em ciclo"
+
+#: src/gui/setup_other.cpp:115
+msgid "Show job exp messages"
+msgstr "Mostrar mensagens de job exp"
+
+#: src/gui/setup_other.cpp:118
+msgid "Show players popups"
+msgstr "Mostrar popups de jogadores"
+
+#: src/gui/setup_other.cpp:121
 msgid "Afk message"
 msgstr "Mensagem Ausente"
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:124
+msgid "Show job"
+msgstr "Mostrar job"
+
+#: src/gui/setup_other.cpp:127
 msgid "Enable attack filter"
 msgstr "Habilitar filtro de ataque"
 
-#: src/gui/setup_other.cpp:117
+#: src/gui/setup_other.cpp:133
+msgid "Accept sell/buy requests"
+msgstr "Aceitar convites de compra/venda"
+
+#: src/gui/setup_other.cpp:136
 msgid "Enable shop mode"
 msgstr "Habilitar modo loja"
 
-#: src/gui/setup_other.cpp:120
+#: src/gui/setup_other.cpp:142
+msgid "Log NPC dialogue"
+msgstr "Salvar diálogos com NPC"
+
+#: src/gui/setup_other.cpp:146
+#, fuzzy
+msgid "Other"
+msgstr "Outro"
+
+#: src/gui/setup_other.cpp:148
+msgid "Enable server side attack"
+msgstr "Habilitar ataque do lado do servidor"
+
+#: src/gui/setup_other.cpp:151
+msgid "Enable bot checker"
+msgstr "Habilitar Analisador de bot"
+
+#: src/gui/setup_other.cpp:154
 msgid "Enable buggy servers protection"
 msgstr "Habilitar proteção contra servidores com bugs"
 
-#: src/gui/setup_other.cpp:123
+#: src/gui/setup_other.cpp:157
 msgid "Enable debug log"
 msgstr "Habilitar Depurador"
+
+#: src/gui/setup_other.cpp:160
+msgid "Low traffic mode"
+msgstr "Modo de baixo tráfego"
+
+#: src/gui/setup_other.cpp:163
+msgid "Hide shield sprite"
+msgstr "Ocultar sprite de escudo"
 
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
@@ -2035,303 +2109,275 @@ msgstr "Deixar as mensagens privadas em abas"
 msgid "Show gender"
 msgstr "Mostrar gênero"
 
-#: src/gui/setup_players.cpp:265
+#: src/gui/setup_players.cpp:266
 msgid "Players"
 msgstr "Jogadores"
 
-#: src/gui/setup_players.cpp:290
+#: src/gui/setup_players.cpp:291
 msgid "When ignoring:"
 msgstr "Quando ignorar:"
 
-#: src/gui/setup_players.cpp:313
+#: src/gui/setup_players.cpp:314
 msgid "Show level"
 msgstr "Mostrar nível"
 
-#: src/gui/setup_players.cpp:317
+#: src/gui/setup_players.cpp:318
 msgid "Show own name"
 msgstr "Mostrar o próprio nome"
 
-#: src/gui/setup_players.cpp:321
+#: src/gui/setup_players.cpp:322
 msgid "Target dead players"
 msgstr "Jogadores mortos como alvo"
 
-#: src/gui/setup_players.cpp:325
+#: src/gui/setup_players.cpp:326
 msgid "Secure trades"
 msgstr "Trocas seguras"
 
-#: src/gui/setup_players.cpp:329 src/gui/setup_players.cpp:503
+#: src/gui/setup_players.cpp:330 src/gui/setup_players.cpp:513
 msgid "Unsecure chars in names"
 msgstr "Letras inseguras no nome"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_players.cpp:335
+msgid "Visible names"
+msgstr "Nomes visíveis"
+
+#: src/gui/setup_theme.cpp:105
+msgid "Tiny (10)"
+msgstr "Minúsculo (10)"
+
+#: src/gui/setup_theme.cpp:106
+msgid "Small (11)"
+msgstr "Pequeno (11)"
+
+#: src/gui/setup_theme.cpp:107
+msgid "Medium (12)"
+msgstr "Médio (12)"
+
+#: src/gui/setup_theme.cpp:108
+msgid "Large (13)"
+msgstr "Largo (13)"
+
+#: src/gui/setup_theme.cpp:109
+msgid "Big (14)"
+msgstr "Grande (14)"
+
+#: src/gui/setup_theme.cpp:110
+msgid "Huge (15)"
+msgstr "Enorme (15)"
+
+#: src/gui/setup_theme.cpp:140
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/setup_theme.cpp:113
+#: src/gui/setup_theme.cpp:142
 msgid "Gui theme"
 msgstr "Tema"
 
-#: src/gui/setup_theme.cpp:114
+#: src/gui/setup_theme.cpp:143
 msgid "Main Font"
 msgstr "Fonte"
 
-#: src/gui/setup_theme.cpp:115
+#: src/gui/setup_theme.cpp:144
 msgid "Bold font"
 msgstr "Fonte negrito"
 
-#: src/gui/setup_theme.cpp:116
+#: src/gui/setup_theme.cpp:145
 msgid "Particle font"
 msgstr "Fonte de particulas"
 
-#: src/gui/setup_theme.cpp:117
+#: src/gui/setup_theme.cpp:146
 msgid "Help font"
 msgstr "Fonte de ajuda"
 
-#: src/gui/setup_theme.cpp:118
+#: src/gui/setup_theme.cpp:147
 msgid "Secure font"
 msgstr "Fonte segura"
 
-#: src/gui/setup_theme.cpp:241
+#: src/gui/setup_theme.cpp:175
+msgid "Font size"
+msgstr "Tamanho da fonte"
+
+#: src/gui/setup_theme.cpp:281
 msgid "Theme Changed"
 msgstr "Tema alterado"
 
-#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:770
-#: src/gui/setup_video.cpp:775
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
+#: src/gui/setup_video.cpp:652
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie o cliente para que as mudanças surtam efeito."
 
 #: src/gui/setup_video.cpp:194
-msgid "Tiny (10)"
-msgstr "Minúsculo (10)"
-
-#: src/gui/setup_video.cpp:195
-msgid "Small (11)"
-msgstr "Pequeno (11)"
-
-#: src/gui/setup_video.cpp:196
-msgid "Medium (12)"
-msgstr "Médio (12)"
-
-#: src/gui/setup_video.cpp:197
-msgid "Large (13)"
-msgstr "Largo (13)"
-
-#: src/gui/setup_video.cpp:198
-msgid "Big (14)"
-msgstr "Grande (14)"
-
-#: src/gui/setup_video.cpp:199
-msgid "Huge (15)"
-msgstr "Enorme (15)"
-
-#: src/gui/setup_video.cpp:222
 msgid "Software"
 msgstr "Software"
 
-#: src/gui/setup_video.cpp:223
+#: src/gui/setup_video.cpp:195
 msgid "Fast OpenGL"
 msgstr "Rápido OpenGL"
 
-#: src/gui/setup_video.cpp:224
+#: src/gui/setup_video.cpp:196
 msgid "Safe OpenGL"
 msgstr "Seguro OpenGL"
 
-#: src/gui/setup_video.cpp:251
+#: src/gui/setup_video.cpp:223
 msgid "No text"
 msgstr "Sem texto"
 
-#: src/gui/setup_video.cpp:253
+#: src/gui/setup_video.cpp:225
 msgid "Text"
 msgstr "Texto"
 
-#: src/gui/setup_video.cpp:255
+#: src/gui/setup_video.cpp:227
 msgid "Bubbles, no names"
 msgstr "Bolhas, sem nomes"
 
-#: src/gui/setup_video.cpp:257
+#: src/gui/setup_video.cpp:229
 msgid "Bubbles with names"
 msgstr "Bolhas com nomes"
 
-#: src/gui/setup_video.cpp:270
+#: src/gui/setup_video.cpp:242
 msgid "off"
 msgstr "off"
 
-#: src/gui/setup_video.cpp:272 src/gui/setup_video.cpp:289
+#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:261
 msgid "low"
 msgstr "baixo"
 
-#: src/gui/setup_video.cpp:274 src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:246 src/gui/setup_video.cpp:265
 msgid "high"
 msgstr "alto"
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:263
 msgid "medium"
 msgstr "médio"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:267
 msgid "max"
 msgstr "máximo"
 
-#: src/gui/setup_video.cpp:327
+#: src/gui/setup_video.cpp:291
 msgid "Full screen"
 msgstr "Tela cheia"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:292
 msgid "Hw acceleration"
 msgstr "Aceleração por HW"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:293
 msgid "Custom cursor"
 msgstr "Cursor customizado"
 
-#: src/gui/setup_video.cpp:331
-msgid "Visible names"
-msgstr "Nomes visíveis"
-
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:295
 msgid "Particle effects"
 msgstr "Efeitos de partícula"
 
-#: src/gui/setup_video.cpp:335
-msgid "Log NPC dialogue"
-msgstr "Salvar diálogos com NPC"
-
-#: src/gui/setup_video.cpp:336
+#: src/gui/setup_video.cpp:297
 msgid "Show pickup notification"
 msgstr "Mostrar aviso ao pegar algo"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:338
+#: src/gui/setup_video.cpp:299
 msgid "in chat"
 msgstr "em chat"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:340
+#: src/gui/setup_video.cpp:301
 msgid "as particle"
 msgstr "como partícula"
 
-#: src/gui/setup_video.cpp:342
-msgid "Hide shield sprite"
-msgstr "Ocultar sprite de escudo"
-
-#: src/gui/setup_video.cpp:344
-msgid "Low traffic mode"
-msgstr "Modo de baixo tráfego"
-
-#: src/gui/setup_video.cpp:346
-msgid "Sync player move"
-msgstr "Sincronizar movimento"
-
-#: src/gui/setup_video.cpp:348
-msgid "Draw hotkeys on map"
-msgstr "Desenhar atalhos no mapa"
-
-#: src/gui/setup_video.cpp:350
-msgid "Draw path"
-msgstr "Desenhar caminho"
-
-#: src/gui/setup_video.cpp:351
-msgid "Show job"
-msgstr "Mostrar job"
-
-#: src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:303
 msgid "Enable opacity cache"
 msgstr "Habilitar cache de opacidade"
 
-#: src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:304
 msgid "Show background"
 msgstr "Mostrar imagem de fundo"
 
-#: src/gui/setup_video.cpp:358
+#: src/gui/setup_video.cpp:309
 msgid "FPS limit:"
 msgstr "Limite FPS:"
 
-#: src/gui/setup_video.cpp:362 src/gui/setup_video.cpp:402
-#: src/gui/setup_video.cpp:701 src/gui/setup_video.cpp:868
+#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
+#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
 msgid "Alt FPS limit: "
 msgstr "Limite FPS alt: "
 
-#: src/gui/setup_video.cpp:372
+#: src/gui/setup_video.cpp:322
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/gui/setup_video.cpp:377
+#: src/gui/setup_video.cpp:328
 msgid "Overhead text"
 msgstr "Texto sobrescrito como:"
 
-#: src/gui/setup_video.cpp:378
+#: src/gui/setup_video.cpp:329
 msgid "Gui opacity"
 msgstr "Opacidade"
 
-#: src/gui/setup_video.cpp:379
+#: src/gui/setup_video.cpp:330
 msgid "Ambient FX"
 msgstr "Ambiente FX"
 
-#: src/gui/setup_video.cpp:380
+#: src/gui/setup_video.cpp:331
 msgid "Particle detail"
 msgstr "Detalhe de partículas"
 
-#: src/gui/setup_video.cpp:381
-msgid "Font size"
-msgstr "Tamanho da fonte"
-
-#: src/gui/setup_video.cpp:400 src/gui/setup_video.cpp:403
-#: src/gui/setup_video.cpp:700 src/gui/setup_video.cpp:855
-#: src/gui/setup_video.cpp:866
+#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
+#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
+#: src/gui/setup_video.cpp:735
 msgid "None"
 msgstr "Nenhum"
 
-#: src/gui/setup_video.cpp:583
+#: src/gui/setup_video.cpp:497
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo janela e falha na restauração do modo anterior!"
 
-#: src/gui/setup_video.cpp:589
+#: src/gui/setup_video.cpp:503
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo tela cheia e falha na restauração do modo "
 "anterior!"
 
-#: src/gui/setup_video.cpp:600
+#: src/gui/setup_video.cpp:514
 msgid "Switching to Full Screen"
 msgstr "Mudando para tela cheia"
 
-#: src/gui/setup_video.cpp:601
+#: src/gui/setup_video.cpp:515
 msgid "Restart needed for changes to take effect."
 msgstr "É preciso reiniciar para as mudanças terem efeito."
 
-#: src/gui/setup_video.cpp:613
+#: src/gui/setup_video.cpp:527
 msgid "Changing to OpenGL"
 msgstr "Mudando para OpenGL"
 
-#: src/gui/setup_video.cpp:614
+#: src/gui/setup_video.cpp:528
 msgid "Applying change to OpenGL requires restart."
 msgstr "Mudanças no OpenGL requerem o reinício do jogo."
 
-#: src/gui/setup_video.cpp:753
+#: src/gui/setup_video.cpp:630
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Resolução customizada (exemplo 1024x768)"
 
-#: src/gui/setup_video.cpp:754
+#: src/gui/setup_video.cpp:631
 msgid "Enter new resolution:                "
 msgstr "Escolha a nova resolução                "
 
-#: src/gui/setup_video.cpp:769 src/gui/setup_video.cpp:774
+#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
 msgid "Screen Resolution Changed"
 msgstr "Resolução de tela alterada"
 
-#: src/gui/setup_video.cpp:772
+#: src/gui/setup_video.cpp:649
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Algumas janelas podem ser movidas para se adequar à resolução mais baixa."
 
-#: src/gui/setup_video.cpp:809
+#: src/gui/setup_video.cpp:682
 msgid "Particle Effect Settings Changed."
 msgstr "Configurações de efeito de partícula modificadas."
 
-#: src/gui/setup_video.cpp:810
+#: src/gui/setup_video.cpp:683
 msgid "Changes will take effect on map change."
 msgstr "As mudanças terão efeito ao mudar de mapa."
 
@@ -3208,10 +3254,6 @@ msgstr "Nomes dos GMs"
 #: src/gui/userpalette.cpp:124
 msgid "NPCs"
 msgstr "NPCs"
-
-#: src/gui/userpalette.cpp:125
-msgid "Monsters"
-msgstr "Monstros"
 
 #: src/gui/userpalette.cpp:126
 msgid "Monster HP bar"

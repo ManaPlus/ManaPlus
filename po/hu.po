@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-02 00:39+0300\n"
+"POT-Creation-Date: 2011-07-04 21:26+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -452,7 +452,7 @@ msgid "Max"
 msgstr "Max."
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:145
+#: src/gui/inventorywindow.cpp:145 src/gui/setup_other.cpp:131
 msgid "Shop"
 msgstr "Üzlet"
 
@@ -741,8 +741,8 @@ msgstr "Szivárvány"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_players.cpp:220
-#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:214
-#: src/gui/setup_video.cpp:239 src/gui/textcommandeditor.cpp:101
+#: src/gui/setup_theme.cpp:71 src/gui/setup_theme.cpp:125
+#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:101
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:159
 msgid "???"
 msgstr "???"
@@ -778,6 +778,7 @@ msgid "Ignore"
 msgstr "Tiltott"
 
 #: src/gui/debugwindow.cpp:70 src/gui/minimap.cpp:49 src/gui/minimap.cpp:96
+#: src/gui/setup_other.cpp:65
 msgid "Map"
 msgstr "Térkép"
 
@@ -1293,6 +1294,7 @@ msgid "Submit"
 msgstr "Küldés"
 
 #: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
+#: src/gui/setup_other.cpp:140
 msgid "NPC"
 msgstr "Gépjátékos"
 
@@ -1846,77 +1848,103 @@ msgstr ""
 msgid "Sound Engine"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:55
+#: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
+msgid "Colors"
+msgstr "Színek"
+
+#: src/gui/setup_chat.cpp:57
 msgid "Remove colors from received chat messages"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:58
-msgid "Log magic messages in debug tab"
-msgstr ""
-
-#: src/gui/setup_chat.cpp:61
-msgid "Allow magic and GM commands in all chat tabs"
-msgstr ""
-
-#: src/gui/setup_chat.cpp:64
-msgid "Show server messages in debug tab"
-msgstr ""
-
-#: src/gui/setup_chat.cpp:67
+#: src/gui/setup_chat.cpp:60
 msgid "Show chat colors list"
 msgstr ""
 
+#: src/gui/setup_chat.cpp:64
+#, fuzzy
+msgid "Commands"
+msgstr "Parancs: /who"
+
+#: src/gui/setup_chat.cpp:66
+msgid "Allow magic and GM commands in all chat tabs"
+msgstr ""
+
 #: src/gui/setup_chat.cpp:70
+msgid "Limits"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:72
 msgid "Limit max chars in chat line"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:73
-msgid "Enable chat Log"
-msgstr ""
-
-#: src/gui/setup_chat.cpp:76
+#: src/gui/setup_chat.cpp:75
 msgid "Limit max lines in chat"
 msgstr ""
 
 #: src/gui/setup_chat.cpp:79
-#, fuzzy
-msgid "Enable trade tab"
-msgstr "Nem tudod megvenni."
-
-#: src/gui/setup_chat.cpp:82
-msgid "Hide shop messages"
+msgid "Logs"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:85
+#: src/gui/setup_chat.cpp:81
+msgid "Enable chat Log"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:84
 msgid "Show chat history"
 msgstr ""
 
 #: src/gui/setup_chat.cpp:88
 #, fuzzy
+msgid "Messages"
+msgstr "Üzenet"
+
+#: src/gui/setup_chat.cpp:90
+msgid "Hide shop messages"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:94
+msgid "Tabs"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:96
+msgid "Log magic messages in debug tab"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:99
+msgid "Show server messages in debug tab"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:102
+#, fuzzy
+msgid "Enable trade tab"
+msgstr "Nem tudod megvenni."
+
+#: src/gui/setup_chat.cpp:105
+#, fuzzy
 msgid "Enable battle tab"
 msgstr "Nem tudod megvenni."
 
-#: src/gui/setup_chat.cpp:91
+#: src/gui/setup_chat.cpp:108
 #, fuzzy
 msgid "Show battle events"
 msgstr "A név mutatása"
 
-#: src/gui/setup_chat.cpp:94
+#: src/gui/setup_chat.cpp:111
 #, fuzzy
 msgid "Resize chat tabs if need"
 msgstr "Következő Chat Fül"
 
-#: src/gui/setup_chat.cpp:97
+#: src/gui/setup_chat.cpp:115
+msgid "Time"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:117
 msgid "Use local time"
 msgstr ""
 
 #: src/gui/setup_colors.cpp:49
 msgid "This is what the color looks like"
 msgstr "Így fog kinézni a felirat."
-
-#: src/gui/setup_colors.cpp:54
-msgid "Colors"
-msgstr "Színek"
 
 #: src/gui/setup_colors.cpp:75
 #, fuzzy
@@ -1974,8 +2002,8 @@ msgstr "Alkalmaz"
 msgid "Reset Windows"
 msgstr "Ablakok alaphelyzetbe"
 
-#: src/gui/setupitem.cpp:268 src/gui/setupitem.cpp:392
-#: src/gui/setup_players.cpp:332
+#: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
+#: src/gui/setup_players.cpp:333
 msgid "Edit"
 msgstr ""
 
@@ -2028,121 +2056,165 @@ msgstr "Billentyű ütközés van."
 msgid "Misc"
 msgstr ""
 
-#: src/gui/setup_other.cpp:46
+#: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:125
+msgid "Monsters"
+msgstr "Szörny neve"
+
+#: src/gui/setup_other.cpp:48
 msgid "Show damage inflicted to monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:49
-#, fuzzy
-msgid "Enable server side attack"
-msgstr "Nem tudod megvenni."
-
-#: src/gui/setup_other.cpp:52
+#: src/gui/setup_other.cpp:51
 msgid "Auto target only reachable monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:55
-msgid "Auto fix position"
-msgstr ""
-
-#: src/gui/setup_other.cpp:58
-#, fuzzy
-msgid "Highlight map portals"
-msgstr "Kijelölt"
-
-#: src/gui/setup_other.cpp:61
-msgid "Attack while moving"
-msgstr ""
-
-#: src/gui/setup_other.cpp:64
-#, fuzzy
-msgid "Highlight floor items"
-msgstr "Kijelölt"
-
-#: src/gui/setup_other.cpp:67
-#, fuzzy
-msgid "Enable quick stats"
-msgstr "Joystick engedélyezése"
-
-#: src/gui/setup_other.cpp:70
-msgid "Highlight player attack range"
-msgstr ""
-
-#: src/gui/setup_other.cpp:73
-#, fuzzy
-msgid "Show warps particles"
-msgstr "Karakter felett"
-
-#: src/gui/setup_other.cpp:76
+#: src/gui/setup_other.cpp:54
 msgid "Highlight monster attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:80
-msgid "Accept sell/buy requests"
-msgstr ""
-
-#: src/gui/setup_other.cpp:83
-msgid "Cycle player targets"
-msgstr ""
-
-#: src/gui/setup_other.cpp:86
+#: src/gui/setup_other.cpp:58
 msgid "Show monster hp bar"
 msgstr ""
 
-#: src/gui/setup_other.cpp:89
+#: src/gui/setup_other.cpp:61
 #, fuzzy
 msgid "Cycle monster targets"
 msgstr "A név mutatása"
 
-#: src/gui/setup_other.cpp:92
+#: src/gui/setup_other.cpp:67
+#, fuzzy
+msgid "Show warps particles"
+msgstr "Karakter felett"
+
+#: src/gui/setup_other.cpp:70
+#, fuzzy
+msgid "Highlight map portals"
+msgstr "Kijelölt"
+
+#: src/gui/setup_other.cpp:73
+#, fuzzy
+msgid "Highlight floor items"
+msgstr "Kijelölt"
+
+#: src/gui/setup_other.cpp:76
+msgid "Highlight player attack range"
+msgstr ""
+
+#: src/gui/setup_other.cpp:79
+msgid "Show extended minimaps"
+msgstr ""
+
+#: src/gui/setup_other.cpp:82
+msgid "Draw path"
+msgstr ""
+
+#: src/gui/setup_other.cpp:85
+msgid "Draw hotkeys on map"
+msgstr ""
+
+#: src/gui/setup_other.cpp:89
+msgid "Moving"
+msgstr ""
+
+#: src/gui/setup_other.cpp:91
+msgid "Auto fix position"
+msgstr ""
+
+#: src/gui/setup_other.cpp:94
+msgid "Attack while moving"
+msgstr ""
+
+#: src/gui/setup_other.cpp:97
+msgid "Sync player move"
+msgstr ""
+
+#: src/gui/setup_other.cpp:100
+msgid "Crazy move A program"
+msgstr ""
+
+#: src/gui/setup_other.cpp:104
+msgid "Player"
+msgstr "Játékos"
+
+#: src/gui/setup_other.cpp:106
 #, fuzzy
 msgid "Show own hp bar"
 msgstr "A név mutatása"
 
-#: src/gui/setup_other.cpp:95
+#: src/gui/setup_other.cpp:109
 #, fuzzy
-msgid "Enable bot checker"
+msgid "Enable quick stats"
 msgstr "Joystick engedélyezése"
 
-#: src/gui/setup_other.cpp:98
+#: src/gui/setup_other.cpp:112
+msgid "Cycle player targets"
+msgstr ""
+
+#: src/gui/setup_other.cpp:115
 msgid "Show job exp messages"
 msgstr ""
 
-#: src/gui/setup_other.cpp:102
-msgid "Crazy move A program"
-msgstr ""
-
-#: src/gui/setup_other.cpp:105
+#: src/gui/setup_other.cpp:118
 msgid "Show players popups"
 msgstr ""
 
-#: src/gui/setup_other.cpp:108
-msgid "Show extended minimaps"
-msgstr ""
-
-#: src/gui/setup_other.cpp:111
+#: src/gui/setup_other.cpp:121
 #, fuzzy
 msgid "Afk message"
 msgstr "Üzenet"
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:124
+msgid "Show job"
+msgstr ""
+
+#: src/gui/setup_other.cpp:127
 #, fuzzy
 msgid "Enable attack filter"
 msgstr "Nem tudod megvenni."
 
-#: src/gui/setup_other.cpp:117
+#: src/gui/setup_other.cpp:133
+msgid "Accept sell/buy requests"
+msgstr ""
+
+#: src/gui/setup_other.cpp:136
 #, fuzzy
 msgid "Enable shop mode"
 msgstr "Üzletelés Engedélyezése/Tiltása"
 
-#: src/gui/setup_other.cpp:120
+#: src/gui/setup_other.cpp:142
+msgid "Log NPC dialogue"
+msgstr ""
+
+#: src/gui/setup_other.cpp:146
+msgid "Other"
+msgstr ""
+
+#: src/gui/setup_other.cpp:148
+#, fuzzy
+msgid "Enable server side attack"
+msgstr "Nem tudod megvenni."
+
+#: src/gui/setup_other.cpp:151
+#, fuzzy
+msgid "Enable bot checker"
+msgstr "Joystick engedélyezése"
+
+#: src/gui/setup_other.cpp:154
 msgid "Enable buggy servers protection"
 msgstr ""
 
-#: src/gui/setup_other.cpp:123
+#: src/gui/setup_other.cpp:157
 #, fuzzy
 msgid "Enable debug log"
 msgstr "Nem tudod megvenni."
+
+#: src/gui/setup_other.cpp:160
+msgid "Low traffic mode"
+msgstr ""
+
+#: src/gui/setup_other.cpp:163
+msgid "Hide shield sprite"
+msgstr ""
 
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
@@ -2189,326 +2261,298 @@ msgstr "Privátok fülekbe tétele"
 msgid "Show gender"
 msgstr "A név mutatása"
 
-#: src/gui/setup_players.cpp:265
+#: src/gui/setup_players.cpp:266
 msgid "Players"
 msgstr "Játékosok"
 
-#: src/gui/setup_players.cpp:290
+#: src/gui/setup_players.cpp:291
 msgid "When ignoring:"
 msgstr "Ha ignorolva van:"
 
-#: src/gui/setup_players.cpp:313
+#: src/gui/setup_players.cpp:314
 #, fuzzy
 msgid "Show level"
 msgstr "A név mutatása"
 
-#: src/gui/setup_players.cpp:317
+#: src/gui/setup_players.cpp:318
 #, fuzzy
 msgid "Show own name"
 msgstr "A név mutatása"
 
-#: src/gui/setup_players.cpp:321
+#: src/gui/setup_players.cpp:322
 #, fuzzy
 msgid "Target dead players"
 msgstr "Játékost Kijelöl"
 
-#: src/gui/setup_players.cpp:325
+#: src/gui/setup_players.cpp:326
 #, fuzzy
 msgid "Secure trades"
 msgstr "Üzlet elfogadása"
 
-#: src/gui/setup_players.cpp:329 src/gui/setup_players.cpp:503
+#: src/gui/setup_players.cpp:330 src/gui/setup_players.cpp:513
 msgid "Unsecure chars in names"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:111
-msgid "Theme"
-msgstr ""
+#: src/gui/setup_players.cpp:335
+msgid "Visible names"
+msgstr "Látható nevek"
 
-#: src/gui/setup_theme.cpp:113
-msgid "Gui theme"
-msgstr ""
-
-#: src/gui/setup_theme.cpp:114
-msgid "Main Font"
-msgstr ""
-
-#: src/gui/setup_theme.cpp:115
-msgid "Bold font"
-msgstr ""
-
-#: src/gui/setup_theme.cpp:116
-#, fuzzy
-msgid "Particle font"
-msgstr "Effektek"
-
-#: src/gui/setup_theme.cpp:117
-#, fuzzy
-msgid "Help font"
-msgstr "Súgó"
-
-#: src/gui/setup_theme.cpp:118
-#, fuzzy
-msgid "Secure font"
-msgstr "Üzlet elfogadása"
-
-#: src/gui/setup_theme.cpp:241
-#, fuzzy
-msgid "Theme Changed"
-msgstr "Változtatás"
-
-#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:770
-#: src/gui/setup_video.cpp:775
-msgid "Restart your client for the change to take effect."
-msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
-
-#: src/gui/setup_video.cpp:194
+#: src/gui/setup_theme.cpp:105
 #, fuzzy
 msgid "Tiny (10)"
 msgstr "Apró"
 
-#: src/gui/setup_video.cpp:195
+#: src/gui/setup_theme.cpp:106
 #, fuzzy
 msgid "Small (11)"
 msgstr "Kicsi"
 
-#: src/gui/setup_video.cpp:196
+#: src/gui/setup_theme.cpp:107
 #, fuzzy
 msgid "Medium (12)"
 msgstr "Közepes"
 
-#: src/gui/setup_video.cpp:197
+#: src/gui/setup_theme.cpp:108
 #, fuzzy
 msgid "Large (13)"
 msgstr "Nagy"
 
-#: src/gui/setup_video.cpp:198
+#: src/gui/setup_theme.cpp:109
 msgid "Big (14)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:199
+#: src/gui/setup_theme.cpp:110
 msgid "Huge (15)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:222
+#: src/gui/setup_theme.cpp:140
+msgid "Theme"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:142
+msgid "Gui theme"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:143
+msgid "Main Font"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:144
+msgid "Bold font"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:145
+#, fuzzy
+msgid "Particle font"
+msgstr "Effektek"
+
+#: src/gui/setup_theme.cpp:146
+#, fuzzy
+msgid "Help font"
+msgstr "Súgó"
+
+#: src/gui/setup_theme.cpp:147
+#, fuzzy
+msgid "Secure font"
+msgstr "Üzlet elfogadása"
+
+#: src/gui/setup_theme.cpp:175
+msgid "Font size"
+msgstr "Betűméret"
+
+#: src/gui/setup_theme.cpp:281
+#, fuzzy
+msgid "Theme Changed"
+msgstr "Változtatás"
+
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
+#: src/gui/setup_video.cpp:652
+msgid "Restart your client for the change to take effect."
+msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
+
+#: src/gui/setup_video.cpp:194
 msgid "Software"
 msgstr ""
 
-#: src/gui/setup_video.cpp:223
+#: src/gui/setup_video.cpp:195
 #, fuzzy
 msgid "Fast OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/setup_video.cpp:224
+#: src/gui/setup_video.cpp:196
 #, fuzzy
 msgid "Safe OpenGL"
 msgstr "OpenGL"
 
-#: src/gui/setup_video.cpp:251
+#: src/gui/setup_video.cpp:223
 msgid "No text"
 msgstr "Nincs szöveg"
 
-#: src/gui/setup_video.cpp:253
+#: src/gui/setup_video.cpp:225
 msgid "Text"
 msgstr "Szöveg"
 
-#: src/gui/setup_video.cpp:255
+#: src/gui/setup_video.cpp:227
 msgid "Bubbles, no names"
 msgstr "Buborékok, nincs név."
 
-#: src/gui/setup_video.cpp:257
+#: src/gui/setup_video.cpp:229
 msgid "Bubbles with names"
 msgstr "Buborékok nevekkel"
 
-#: src/gui/setup_video.cpp:270
+#: src/gui/setup_video.cpp:242
 msgid "off"
 msgstr "ki"
 
-#: src/gui/setup_video.cpp:272 src/gui/setup_video.cpp:289
+#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:261
 msgid "low"
 msgstr "alacsony"
 
-#: src/gui/setup_video.cpp:274 src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:246 src/gui/setup_video.cpp:265
 msgid "high"
 msgstr "magas"
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:263
 msgid "medium"
 msgstr "közepes"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:267
 msgid "max"
 msgstr "max."
 
-#: src/gui/setup_video.cpp:327
+#: src/gui/setup_video.cpp:291
 msgid "Full screen"
 msgstr "Teljes képernyő"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:292
 #, fuzzy
 msgid "Hw acceleration"
 msgstr "Kapcsolat"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:293
 msgid "Custom cursor"
 msgstr "Egyéni kurzor"
 
-#: src/gui/setup_video.cpp:331
-msgid "Visible names"
-msgstr "Látható nevek"
-
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:295
 msgid "Particle effects"
 msgstr "Játékbéli effektek"
 
-#: src/gui/setup_video.cpp:335
-msgid "Log NPC dialogue"
-msgstr ""
-
-#: src/gui/setup_video.cpp:336
+#: src/gui/setup_video.cpp:297
 msgid "Show pickup notification"
 msgstr "Értesítés tárgy felvételkor"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:338
+#: src/gui/setup_video.cpp:299
 msgid "in chat"
 msgstr "Chat-en belül"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:340
+#: src/gui/setup_video.cpp:301
 msgid "as particle"
 msgstr "Karakter felett"
 
-#: src/gui/setup_video.cpp:342
-msgid "Hide shield sprite"
-msgstr ""
-
-#: src/gui/setup_video.cpp:344
-msgid "Low traffic mode"
-msgstr ""
-
-#: src/gui/setup_video.cpp:346
-msgid "Sync player move"
-msgstr ""
-
-#: src/gui/setup_video.cpp:348
-msgid "Draw hotkeys on map"
-msgstr ""
-
-#: src/gui/setup_video.cpp:350
-msgid "Draw path"
-msgstr ""
-
-#: src/gui/setup_video.cpp:351
-msgid "Show job"
-msgstr ""
-
-#: src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:303
 #, fuzzy
 msgid "Enable opacity cache"
 msgstr "Joystick engedélyezése"
 
-#: src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:304
 #, fuzzy
 msgid "Show background"
 msgstr "Háttér"
 
-#: src/gui/setup_video.cpp:358
+#: src/gui/setup_video.cpp:309
 #, fuzzy
 msgid "FPS limit:"
 msgstr "FPS Limit:"
 
-#: src/gui/setup_video.cpp:362 src/gui/setup_video.cpp:402
-#: src/gui/setup_video.cpp:701 src/gui/setup_video.cpp:868
+#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
+#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
 #, fuzzy
 msgid "Alt FPS limit: "
 msgstr "FPS Limit:"
 
-#: src/gui/setup_video.cpp:372
+#: src/gui/setup_video.cpp:322
 msgid "Video"
 msgstr "Videó"
 
-#: src/gui/setup_video.cpp:377
+#: src/gui/setup_video.cpp:328
 msgid "Overhead text"
 msgstr "Fej feletti szöveg"
 
-#: src/gui/setup_video.cpp:378
+#: src/gui/setup_video.cpp:329
 msgid "Gui opacity"
 msgstr "Menük áttetszősége"
 
-#: src/gui/setup_video.cpp:379
+#: src/gui/setup_video.cpp:330
 msgid "Ambient FX"
 msgstr "Környezeti effektek"
 
-#: src/gui/setup_video.cpp:380
+#: src/gui/setup_video.cpp:331
 #, fuzzy
 msgid "Particle detail"
 msgstr "Effektek részletessége"
 
-#: src/gui/setup_video.cpp:381
-msgid "Font size"
-msgstr "Betűméret"
-
-#: src/gui/setup_video.cpp:400 src/gui/setup_video.cpp:403
-#: src/gui/setup_video.cpp:700 src/gui/setup_video.cpp:855
-#: src/gui/setup_video.cpp:866
+#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
+#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
+#: src/gui/setup_video.cpp:735
 #, fuzzy
 msgid "None"
 msgstr "Nem"
 
-#: src/gui/setup_video.cpp:583
+#: src/gui/setup_video.cpp:497
 #, fuzzy
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr "Ez a mód és az előző mód visszaállítása sikertelen."
 
-#: src/gui/setup_video.cpp:589
+#: src/gui/setup_video.cpp:503
 #, fuzzy
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "Ez a mód és az előző mód visszaállítása sikertelen."
 
-#: src/gui/setup_video.cpp:600
+#: src/gui/setup_video.cpp:514
 #, fuzzy
 msgid "Switching to Full Screen"
 msgstr "Átállás teljes képernyőre"
 
-#: src/gui/setup_video.cpp:601
+#: src/gui/setup_video.cpp:515
 msgid "Restart needed for changes to take effect."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
-#: src/gui/setup_video.cpp:613
+#: src/gui/setup_video.cpp:527
 #, fuzzy
 msgid "Changing to OpenGL"
 msgstr "OpenGL átállítása"
 
-#: src/gui/setup_video.cpp:614
+#: src/gui/setup_video.cpp:528
 msgid "Applying change to OpenGL requires restart."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
-#: src/gui/setup_video.cpp:753
+#: src/gui/setup_video.cpp:630
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:754
+#: src/gui/setup_video.cpp:631
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:769 src/gui/setup_video.cpp:774
+#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
 #, fuzzy
 msgid "Screen Resolution Changed"
 msgstr "A képernyő felbontása megváltozott"
 
-#: src/gui/setup_video.cpp:772
+#: src/gui/setup_video.cpp:649
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:809
+#: src/gui/setup_video.cpp:682
 #, fuzzy
 msgid "Particle Effect Settings Changed."
 msgstr "Effektek beállítása megváltozott."
 
-#: src/gui/setup_video.cpp:810
+#: src/gui/setup_video.cpp:683
 msgid "Changes will take effect on map change."
 msgstr "A változások érvénybe lépéséhez töltsön be egy új térképet."
 
@@ -3423,10 +3467,6 @@ msgstr "GM név"
 #: src/gui/userpalette.cpp:124
 msgid "NPCs"
 msgstr "Gépjátékos neve"
-
-#: src/gui/userpalette.cpp:125
-msgid "Monsters"
-msgstr "Szörny neve"
 
 #: src/gui/userpalette.cpp:126
 #, fuzzy
@@ -6284,9 +6324,6 @@ msgstr "Ismeretlen tárgy"
 
 #~ msgid "GM"
 #~ msgstr "GM"
-
-#~ msgid "Player"
-#~ msgstr "Játékos"
 
 #~ msgid "Is"
 #~ msgstr "Is"

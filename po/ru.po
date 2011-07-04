@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
 # Andrei Karas <akaras@inbox.ru>, 2011.
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-02 00:39+0300\n"
-"PO-Revision-Date: 2011-06-26 00:56+0000\n"
-"Last-Translator: Necromonger <Necromong@inbox.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
-"ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2011-07-04 21:26+0300\n"
+"PO-Revision-Date: 2011-07-04 19:47+0000\n"
+"Last-Translator: akaras <akaras@inbox.ru>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1030
 msgid "Visible on map"
@@ -130,11 +128,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -293,9 +291,7 @@ msgstr "Удаленных изображений:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -433,7 +429,7 @@ msgid "Max"
 msgstr "Макс"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:145
+#: src/gui/inventorywindow.cpp:145 src/gui/setup_other.cpp:131
 msgid "Shop"
 msgstr "Магазин"
 
@@ -702,8 +698,8 @@ msgstr "радуга 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_players.cpp:220
-#: src/gui/setup_theme.cpp:71 src/gui/setup_video.cpp:214
-#: src/gui/setup_video.cpp:239 src/gui/textcommandeditor.cpp:101
+#: src/gui/setup_theme.cpp:71 src/gui/setup_theme.cpp:125
+#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:101
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:159
 msgid "???"
 msgstr "???"
@@ -738,6 +734,7 @@ msgid "Ignore"
 msgstr "Игнорировать"
 
 #: src/gui/debugwindow.cpp:70 src/gui/minimap.cpp:49 src/gui/minimap.cpp:96
+#: src/gui/setup_other.cpp:65
 msgid "Map"
 msgstr "Карта"
 
@@ -1222,6 +1219,7 @@ msgid "Submit"
 msgstr "Применить"
 
 #: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
+#: src/gui/setup_other.cpp:140
 msgid "NPC"
 msgstr "NPC"
 
@@ -1615,9 +1613,8 @@ msgid "Choose Your Server"
 msgstr "Выберите сервер"
 
 #: src/gui/serverdialog.cpp:239
-#, fuzzy
 msgid "Choose Your Server  *** SAFE MODE ***"
-msgstr "Выберите сервер"
+msgstr "Выбор сервера  *** БЕЗОПАСНЫЙ РЕЖИМ ***"
 
 #: src/gui/serverdialog.cpp:244
 msgid "Port:"
@@ -1722,73 +1719,97 @@ msgstr ""
 msgid "Sound Engine"
 msgstr "Звуковой движок"
 
-#: src/gui/setup_chat.cpp:55
+#: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
+msgid "Colors"
+msgstr "Цвета"
+
+#: src/gui/setup_chat.cpp:57
 msgid "Remove colors from received chat messages"
 msgstr "Удалить цвета из полученных сообщений в чате"
 
-#: src/gui/setup_chat.cpp:58
-msgid "Log magic messages in debug tab"
-msgstr "Оставлять сообщения магии на вкладке отладки"
-
-#: src/gui/setup_chat.cpp:61
-msgid "Allow magic and GM commands in all chat tabs"
-msgstr "Разрешить магические и администраторские команды на всех вкладках"
-
-#: src/gui/setup_chat.cpp:64
-msgid "Show server messages in debug tab"
-msgstr "Показывать сообщения сервера на вкладке отладки"
-
-#: src/gui/setup_chat.cpp:67
+#: src/gui/setup_chat.cpp:60
 msgid "Show chat colors list"
 msgstr "Показать список цветов чата"
 
+#: src/gui/setup_chat.cpp:64
+msgid "Commands"
+msgstr "Команды"
+
+#: src/gui/setup_chat.cpp:66
+msgid "Allow magic and GM commands in all chat tabs"
+msgstr "Разрешить магические и администраторские команды на всех вкладках"
+
 #: src/gui/setup_chat.cpp:70
+msgid "Limits"
+msgstr "Ограничения"
+
+#: src/gui/setup_chat.cpp:72
 msgid "Limit max chars in chat line"
 msgstr "Ограничить число символов в строке чата"
 
-#: src/gui/setup_chat.cpp:73
-msgid "Enable chat Log"
-msgstr "Включить лог чата"
-
-#: src/gui/setup_chat.cpp:76
+#: src/gui/setup_chat.cpp:75
 msgid "Limit max lines in chat"
 msgstr "Ограничить число строк в чате"
 
 #: src/gui/setup_chat.cpp:79
-msgid "Enable trade tab"
-msgstr "Включить вкладки торговли"
+msgid "Logs"
+msgstr "Логи"
 
-#: src/gui/setup_chat.cpp:82
-msgid "Hide shop messages"
-msgstr "Скрыть сообщения магазина"
+#: src/gui/setup_chat.cpp:81
+msgid "Enable chat Log"
+msgstr "Включить лог чата"
 
-#: src/gui/setup_chat.cpp:85
+#: src/gui/setup_chat.cpp:84
 msgid "Show chat history"
 msgstr "Показать историю чата"
 
 #: src/gui/setup_chat.cpp:88
+msgid "Messages"
+msgstr "Сообщения"
+
+#: src/gui/setup_chat.cpp:90
+msgid "Hide shop messages"
+msgstr "Скрыть сообщения магазина"
+
+#: src/gui/setup_chat.cpp:94
+msgid "Tabs"
+msgstr "Страницы"
+
+#: src/gui/setup_chat.cpp:96
+msgid "Log magic messages in debug tab"
+msgstr "Оставлять сообщения магии на вкладке отладки"
+
+#: src/gui/setup_chat.cpp:99
+msgid "Show server messages in debug tab"
+msgstr "Показывать сообщения сервера на вкладке отладки"
+
+#: src/gui/setup_chat.cpp:102
+msgid "Enable trade tab"
+msgstr "Включить вкладки торговли"
+
+#: src/gui/setup_chat.cpp:105
 msgid "Enable battle tab"
 msgstr "Включить вкладку боя"
 
-#: src/gui/setup_chat.cpp:91
+#: src/gui/setup_chat.cpp:108
 msgid "Show battle events"
 msgstr "Показать сообщения боя"
 
-#: src/gui/setup_chat.cpp:94
+#: src/gui/setup_chat.cpp:111
 msgid "Resize chat tabs if need"
 msgstr "Подгонять размер чата"
 
-#: src/gui/setup_chat.cpp:97
+#: src/gui/setup_chat.cpp:115
+msgid "Time"
+msgstr "Время"
+
+#: src/gui/setup_chat.cpp:117
 msgid "Use local time"
 msgstr "Использовать местное время"
 
 #: src/gui/setup_colors.cpp:49
 msgid "This is what the color looks like"
 msgstr "Вот, как выглядит сей цвет"
-
-#: src/gui/setup_colors.cpp:54
-msgid "Colors"
-msgstr "Цвета"
 
 #: src/gui/setup_colors.cpp:75
 msgid "Type:"
@@ -1841,8 +1862,8 @@ msgstr "Применить"
 msgid "Reset Windows"
 msgstr "Сбросить расположение окон"
 
-#: src/gui/setupitem.cpp:268 src/gui/setupitem.cpp:392
-#: src/gui/setup_players.cpp:332
+#: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
+#: src/gui/setup_players.cpp:333
 msgid "Edit"
 msgstr "Изменить"
 
@@ -1894,109 +1915,153 @@ msgstr "Обнаружен(ы) конфликт(ы) клавиш!"
 msgid "Misc"
 msgstr "Разное"
 
-#: src/gui/setup_other.cpp:46
+#: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:125
+msgid "Monsters"
+msgstr "Монстры"
+
+#: src/gui/setup_other.cpp:48
 msgid "Show damage inflicted to monsters"
 msgstr "Показ. повр. нанесенные монстрам"
 
-#: src/gui/setup_other.cpp:49
-msgid "Enable server side attack"
-msgstr "Включить серверную атаку"
-
-#: src/gui/setup_other.cpp:52
+#: src/gui/setup_other.cpp:51
 msgid "Auto target only reachable monsters"
 msgstr "Автоприцел по доступным монстрам"
 
-#: src/gui/setup_other.cpp:55
-msgid "Auto fix position"
-msgstr "Авто. исправ. позиции"
-
-#: src/gui/setup_other.cpp:58
-msgid "Highlight map portals"
-msgstr "Подсветка точек перехода на карте"
-
-#: src/gui/setup_other.cpp:61
-msgid "Attack while moving"
-msgstr "Атаковать в движении"
-
-#: src/gui/setup_other.cpp:64
-msgid "Highlight floor items"
-msgstr "Подсветка предметов на полу"
-
-#: src/gui/setup_other.cpp:67
-msgid "Enable quick stats"
-msgstr "Включить быструю смену статов"
-
-#: src/gui/setup_other.cpp:70
-msgid "Highlight player attack range"
-msgstr "Подсветка радиуса атаки игрока"
-
-#: src/gui/setup_other.cpp:73
-msgid "Show warps particles"
-msgstr "Показывать анимацию порталов"
-
-#: src/gui/setup_other.cpp:76
+#: src/gui/setup_other.cpp:54
 msgid "Highlight monster attack range"
 msgstr "Подсветка радиуса атаки монстров"
 
-#: src/gui/setup_other.cpp:80
-msgid "Accept sell/buy requests"
-msgstr "Принимать запросы купить/продать"
-
-#: src/gui/setup_other.cpp:83
-msgid "Cycle player targets"
-msgstr "Прокручивать прицел по игрокам"
-
-#: src/gui/setup_other.cpp:86
+#: src/gui/setup_other.cpp:58
 msgid "Show monster hp bar"
 msgstr "Показывать жизнь мобов"
 
-#: src/gui/setup_other.cpp:89
+#: src/gui/setup_other.cpp:61
 msgid "Cycle monster targets"
 msgstr "Прокручивать прицел по монстрам"
 
-#: src/gui/setup_other.cpp:92
-msgid "Show own hp bar"
-msgstr "Показывать свою жизнь"
+#: src/gui/setup_other.cpp:67
+msgid "Show warps particles"
+msgstr "Показывать анимацию порталов"
 
-#: src/gui/setup_other.cpp:95
-msgid "Enable bot checker"
-msgstr "Включить детектор ботов"
+#: src/gui/setup_other.cpp:70
+msgid "Highlight map portals"
+msgstr "Подсветка точек перехода на карте"
 
-#: src/gui/setup_other.cpp:98
-msgid "Show job exp messages"
-msgstr "Показывать опыт работы."
+#: src/gui/setup_other.cpp:73
+msgid "Highlight floor items"
+msgstr "Подсветка предметов на полу"
 
-#: src/gui/setup_other.cpp:102
-msgid "Crazy move A program"
-msgstr "Программа для сумасшедших движений A"
+#: src/gui/setup_other.cpp:76
+msgid "Highlight player attack range"
+msgstr "Подсветка радиуса атаки игрока"
 
-#: src/gui/setup_other.cpp:105
-msgid "Show players popups"
-msgstr "Показ. всплыв. сообщения игроков"
-
-#: src/gui/setup_other.cpp:108
+#: src/gui/setup_other.cpp:79
 msgid "Show extended minimaps"
 msgstr "Показывать расширенные миникарты"
 
-#: src/gui/setup_other.cpp:111
+#: src/gui/setup_other.cpp:82
+msgid "Draw path"
+msgstr "Рисовать путь"
+
+#: src/gui/setup_other.cpp:85
+msgid "Draw hotkeys on map"
+msgstr "Рисовать клавищи на карте"
+
+#: src/gui/setup_other.cpp:89
+msgid "Moving"
+msgstr "Движения"
+
+#: src/gui/setup_other.cpp:91
+msgid "Auto fix position"
+msgstr "Авто. исправ. позиции"
+
+#: src/gui/setup_other.cpp:94
+msgid "Attack while moving"
+msgstr "Атаковать в движении"
+
+#: src/gui/setup_other.cpp:97
+msgid "Sync player move"
+msgstr "Синх. движение"
+
+#: src/gui/setup_other.cpp:100
+msgid "Crazy move A program"
+msgstr "Программа для сумасшедших движений A"
+
+#: src/gui/setup_other.cpp:104
+msgid "Player"
+msgstr "Игрок"
+
+#: src/gui/setup_other.cpp:106
+msgid "Show own hp bar"
+msgstr "Показывать свою жизнь"
+
+#: src/gui/setup_other.cpp:109
+msgid "Enable quick stats"
+msgstr "Включить быструю смену статов"
+
+#: src/gui/setup_other.cpp:112
+msgid "Cycle player targets"
+msgstr "Прокручивать прицел по игрокам"
+
+#: src/gui/setup_other.cpp:115
+msgid "Show job exp messages"
+msgstr "Показывать опыт работы."
+
+#: src/gui/setup_other.cpp:118
+msgid "Show players popups"
+msgstr "Показ. всплыв. сообщения игроков"
+
+#: src/gui/setup_other.cpp:121
 msgid "Afk message"
 msgstr "Сообщение для отошел"
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:124
+msgid "Show job"
+msgstr "Показывать уровень работы"
+
+#: src/gui/setup_other.cpp:127
 msgid "Enable attack filter"
 msgstr "Включить фильтр атак"
 
-#: src/gui/setup_other.cpp:117
+#: src/gui/setup_other.cpp:133
+msgid "Accept sell/buy requests"
+msgstr "Принимать запросы купить/продать"
+
+#: src/gui/setup_other.cpp:136
 msgid "Enable shop mode"
 msgstr "Включить режим магазина"
 
-#: src/gui/setup_other.cpp:120
+#: src/gui/setup_other.cpp:142
+msgid "Log NPC dialogue"
+msgstr "Сохранять текст NPC"
+
+#: src/gui/setup_other.cpp:146
+msgid "Other"
+msgstr "Другое"
+
+#: src/gui/setup_other.cpp:148
+msgid "Enable server side attack"
+msgstr "Включить серверную атаку"
+
+#: src/gui/setup_other.cpp:151
+msgid "Enable bot checker"
+msgstr "Включить детектор ботов"
+
+#: src/gui/setup_other.cpp:154
 msgid "Enable buggy servers protection"
 msgstr "Включить защиту от сбойных серверов"
 
-#: src/gui/setup_other.cpp:123
+#: src/gui/setup_other.cpp:157
 msgid "Enable debug log"
 msgstr "Включить отлад. лог"
+
+#: src/gui/setup_other.cpp:160
+msgid "Low traffic mode"
+msgstr "Режим экономии"
+
+#: src/gui/setup_other.cpp:163
+msgid "Hide shield sprite"
+msgstr "Спрятать картинку счита"
 
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
@@ -2042,305 +2107,277 @@ msgstr "Личные сообщения во вкладках"
 msgid "Show gender"
 msgstr "Показать пол"
 
-#: src/gui/setup_players.cpp:265
+#: src/gui/setup_players.cpp:266
 msgid "Players"
 msgstr "Игроки"
 
-#: src/gui/setup_players.cpp:290
+#: src/gui/setup_players.cpp:291
 msgid "When ignoring:"
 msgstr "Когда игнорируется:"
 
-#: src/gui/setup_players.cpp:313
+#: src/gui/setup_players.cpp:314
 msgid "Show level"
 msgstr "Показать уровень"
 
-#: src/gui/setup_players.cpp:317
+#: src/gui/setup_players.cpp:318
 msgid "Show own name"
 msgstr "Показать свое имя"
 
-#: src/gui/setup_players.cpp:321
+#: src/gui/setup_players.cpp:322
 msgid "Target dead players"
 msgstr "Наводить фокус на мертвых игроков"
 
-#: src/gui/setup_players.cpp:325
+#: src/gui/setup_players.cpp:326
 msgid "Secure trades"
 msgstr "Защитить торговлю"
 
-#: src/gui/setup_players.cpp:329 src/gui/setup_players.cpp:503
+#: src/gui/setup_players.cpp:330 src/gui/setup_players.cpp:513
 msgid "Unsecure chars in names"
 msgstr "Небезопасные символы"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_players.cpp:335
+msgid "Visible names"
+msgstr "Видимые имена"
+
+#: src/gui/setup_theme.cpp:105
+msgid "Tiny (10)"
+msgstr "Маленький (10)"
+
+#: src/gui/setup_theme.cpp:106
+msgid "Small (11)"
+msgstr "Маленький (11)"
+
+#: src/gui/setup_theme.cpp:107
+msgid "Medium (12)"
+msgstr "Средний (12)"
+
+#: src/gui/setup_theme.cpp:108
+msgid "Large (13)"
+msgstr "Большой (13)"
+
+#: src/gui/setup_theme.cpp:109
+msgid "Big (14)"
+msgstr "Боьшой (14)"
+
+#: src/gui/setup_theme.cpp:110
+msgid "Huge (15)"
+msgstr "Огромный (15)"
+
+#: src/gui/setup_theme.cpp:140
 msgid "Theme"
 msgstr "Тема"
 
-#: src/gui/setup_theme.cpp:113
+#: src/gui/setup_theme.cpp:142
 msgid "Gui theme"
 msgstr "Тема интерфейса"
 
-#: src/gui/setup_theme.cpp:114
+#: src/gui/setup_theme.cpp:143
 msgid "Main Font"
 msgstr "Основной шрифт"
 
-#: src/gui/setup_theme.cpp:115
+#: src/gui/setup_theme.cpp:144
 msgid "Bold font"
 msgstr "Жирный шрифт"
 
-#: src/gui/setup_theme.cpp:116
+#: src/gui/setup_theme.cpp:145
 msgid "Particle font"
 msgstr "Шрифт частиц"
 
-#: src/gui/setup_theme.cpp:117
+#: src/gui/setup_theme.cpp:146
 msgid "Help font"
 msgstr "Шрифт помощи"
 
-#: src/gui/setup_theme.cpp:118
+#: src/gui/setup_theme.cpp:147
 msgid "Secure font"
 msgstr "Безопасный шрифт"
 
-#: src/gui/setup_theme.cpp:241
+#: src/gui/setup_theme.cpp:175
+msgid "Font size"
+msgstr "Размер шрифта"
+
+#: src/gui/setup_theme.cpp:281
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:242 src/gui/setup_video.cpp:770
-#: src/gui/setup_video.cpp:775
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
+#: src/gui/setup_video.cpp:652
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
 #: src/gui/setup_video.cpp:194
-msgid "Tiny (10)"
-msgstr "Маленький (10)"
-
-#: src/gui/setup_video.cpp:195
-msgid "Small (11)"
-msgstr "Маленький (11)"
-
-#: src/gui/setup_video.cpp:196
-msgid "Medium (12)"
-msgstr "Средний (12)"
-
-#: src/gui/setup_video.cpp:197
-msgid "Large (13)"
-msgstr "Большой (13)"
-
-#: src/gui/setup_video.cpp:198
-msgid "Big (14)"
-msgstr "Боьшой (14)"
-
-#: src/gui/setup_video.cpp:199
-msgid "Huge (15)"
-msgstr "Огромный (15)"
-
-#: src/gui/setup_video.cpp:222
 msgid "Software"
 msgstr "Программно"
 
-#: src/gui/setup_video.cpp:223
+#: src/gui/setup_video.cpp:195
 msgid "Fast OpenGL"
 msgstr "Быстрый OpenGL"
 
-#: src/gui/setup_video.cpp:224
+#: src/gui/setup_video.cpp:196
 msgid "Safe OpenGL"
 msgstr "Бозопасный OpenGL"
 
-#: src/gui/setup_video.cpp:251
+#: src/gui/setup_video.cpp:223
 msgid "No text"
 msgstr "Нет текста"
 
-#: src/gui/setup_video.cpp:253
+#: src/gui/setup_video.cpp:225
 msgid "Text"
 msgstr "Текст"
 
-#: src/gui/setup_video.cpp:255
+#: src/gui/setup_video.cpp:227
 msgid "Bubbles, no names"
 msgstr "Пузырьки, без названий"
 
-#: src/gui/setup_video.cpp:257
+#: src/gui/setup_video.cpp:229
 msgid "Bubbles with names"
 msgstr "Пузырьки с названиями"
 
-#: src/gui/setup_video.cpp:270
+#: src/gui/setup_video.cpp:242
 msgid "off"
 msgstr "выкл"
 
-#: src/gui/setup_video.cpp:272 src/gui/setup_video.cpp:289
+#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:261
 msgid "low"
 msgstr "низ."
 
-#: src/gui/setup_video.cpp:274 src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:246 src/gui/setup_video.cpp:265
 msgid "high"
 msgstr "выс."
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:263
 msgid "medium"
 msgstr "средне"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:267
 msgid "max"
 msgstr "макс."
 
-#: src/gui/setup_video.cpp:327
+#: src/gui/setup_video.cpp:291
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:292
 msgid "Hw acceleration"
 msgstr "Аппаратное ускорение"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:293
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:331
-msgid "Visible names"
-msgstr "Видимые имена"
-
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:295
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/setup_video.cpp:335
-msgid "Log NPC dialogue"
-msgstr "Сохранять текст NPC"
-
-#: src/gui/setup_video.cpp:336
+#: src/gui/setup_video.cpp:297
 msgid "Show pickup notification"
 msgstr "Показать уведомление о подборе предмета"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:338
+#: src/gui/setup_video.cpp:299
 msgid "in chat"
 msgstr "в чате"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:340
+#: src/gui/setup_video.cpp:301
 msgid "as particle"
 msgstr "как частицу"
 
-#: src/gui/setup_video.cpp:342
-msgid "Hide shield sprite"
-msgstr "Спрятать картинку счита"
-
-#: src/gui/setup_video.cpp:344
-msgid "Low traffic mode"
-msgstr "Режим экономии"
-
-#: src/gui/setup_video.cpp:346
-msgid "Sync player move"
-msgstr "Синх. движение"
-
-#: src/gui/setup_video.cpp:348
-msgid "Draw hotkeys on map"
-msgstr "Рисовать клавищи на карте"
-
-#: src/gui/setup_video.cpp:350
-msgid "Draw path"
-msgstr "Рисовать путь"
-
-#: src/gui/setup_video.cpp:351
-msgid "Show job"
-msgstr "Показывать уровень работы"
-
-#: src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:303
 msgid "Enable opacity cache"
 msgstr "Включить кеш прозрачности"
 
-#: src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:304
 msgid "Show background"
 msgstr "Показать фон"
 
-#: src/gui/setup_video.cpp:358
+#: src/gui/setup_video.cpp:309
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:362 src/gui/setup_video.cpp:402
-#: src/gui/setup_video.cpp:701 src/gui/setup_video.cpp:868
+#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
+#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:372
+#: src/gui/setup_video.cpp:322
 msgid "Video"
 msgstr "Видео"
 
-#: src/gui/setup_video.cpp:377
+#: src/gui/setup_video.cpp:328
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:378
+#: src/gui/setup_video.cpp:329
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:379
+#: src/gui/setup_video.cpp:330
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:380
+#: src/gui/setup_video.cpp:331
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:381
-msgid "Font size"
-msgstr "Размер шрифта"
-
-#: src/gui/setup_video.cpp:400 src/gui/setup_video.cpp:403
-#: src/gui/setup_video.cpp:700 src/gui/setup_video.cpp:855
-#: src/gui/setup_video.cpp:866
+#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
+#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
+#: src/gui/setup_video.cpp:735
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:583
+#: src/gui/setup_video.cpp:497
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
-#: src/gui/setup_video.cpp:589
+#: src/gui/setup_video.cpp:503
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:600
+#: src/gui/setup_video.cpp:514
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:601
+#: src/gui/setup_video.cpp:515
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:613
+#: src/gui/setup_video.cpp:527
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:614
+#: src/gui/setup_video.cpp:528
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:753
+#: src/gui/setup_video.cpp:630
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:754
+#: src/gui/setup_video.cpp:631
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:769 src/gui/setup_video.cpp:774
+#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:772
+#: src/gui/setup_video.cpp:649
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:809
+#: src/gui/setup_video.cpp:682
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:810
+#: src/gui/setup_video.cpp:683
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 
@@ -3139,7 +3176,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3218,10 +3256,6 @@ msgstr "Имена ГМ"
 #: src/gui/userpalette.cpp:124
 msgid "NPCs"
 msgstr "Боты"
-
-#: src/gui/userpalette.cpp:125
-msgid "Monsters"
-msgstr "Монстры"
 
 #: src/gui/userpalette.cpp:126
 msgid "Monster HP bar"
@@ -3482,15 +3516,16 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:125
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:65
@@ -4569,7 +4604,8 @@ msgstr "Неизвестная ошибка сервера чата."
 
 #: src/net/tmwa/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr ""
+"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
 #: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:196
 msgid "Wrong name."
@@ -4930,8 +4966,7 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
 
 #: src/net/tmwa/gui/partytab.cpp:101
 msgid "Command: /item"
@@ -4954,8 +4989,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий "
-"опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
+" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:113
 msgid "Command: /exp"
@@ -5194,7 +5229,8 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
 "восстановить здоровье."
@@ -5389,3 +5425,5 @@ msgstr "Мана %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
+
+
