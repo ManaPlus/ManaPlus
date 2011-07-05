@@ -752,7 +752,8 @@ Image *ResourceManager::getRescaled(Image *image, int width, int height)
     if (!image)
         return 0;
 
-    std::string idPath = image->getIdPath() + strprintf("_rescaled%dx%d", width, height);
+    std::string idPath = image->getIdPath() + strprintf(
+        "_rescaled%dx%d", width, height);
     RescaledLoader l = { this, image, width, height };
     Image *img = static_cast<Image*>(get(idPath, RescaledLoader::load, &l));
     return img;

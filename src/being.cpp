@@ -99,7 +99,9 @@ class BeingCacheEntry
             mPartyName(""),
             mLevel(0),
             mPvpRank(0),
-            mTime(0)
+            mTime(0),
+            mIp(""),
+            mIsAdvanced(false)
         {
         }
 

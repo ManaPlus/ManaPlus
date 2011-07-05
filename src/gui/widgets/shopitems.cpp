@@ -101,6 +101,16 @@ void ShopItems::erase(unsigned int i)
     mShopItems.erase(mShopItems.begin() + i);
 }
 
+void ShopItems::del(unsigned int i)
+{
+    if (i >= mShopItems.size())
+        return;
+
+    ShopItem *item = *(mShopItems.begin() + i);
+    mShopItems.erase(mShopItems.begin() + i);
+    delete item;
+}
+
 void ShopItems::clear()
 {
     delete_all(mShopItems);

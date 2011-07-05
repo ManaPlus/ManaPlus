@@ -96,6 +96,13 @@ class ShopItems : public gcn::ListModel
         void erase(unsigned int i);
 
         /**
+         * Removes an element from the shop and destroy it.
+         *
+         * @param i index to remove
+         */
+        void del(unsigned int i);
+
+        /**
          * Clears the list of items in the shop.
          */
         void clear();

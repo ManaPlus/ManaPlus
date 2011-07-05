@@ -190,12 +190,12 @@ void ShopWindow::action(const gcn::ActionEvent &event)
     else if (event.getId() == "delete buy" && mBuyShopItemList
              && mBuyShopItemList->getSelected() >= 0)
     {
-        mBuyShopItems->erase(mBuyShopItemList->getSelected());
+        mBuyShopItems->del(mBuyShopItemList->getSelected());
     }
     else if (event.getId() == "delete sell" && mSellShopItemList
              && mSellShopItemList->getSelected() >= 0)
     {
-        mSellShopItems->erase(mSellShopItemList->getSelected());
+        mSellShopItems->del(mSellShopItemList->getSelected());
     }
     else if (event.getId() == "announce buy" && mBuyShopItems
              && mBuyShopItems->getNumberOfElements() > 0)
