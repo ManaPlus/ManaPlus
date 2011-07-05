@@ -153,9 +153,76 @@ Image* MapLayer::getTile(int x, int y) const
 
 void MapLayer::draw(Graphics *graphics, int startX, int startY,
                     int endX, int endY, int scrollX, int scrollY,
-                    const Actors &actors, int debugFlags, int yFix) const
+                    int debugFlags) const
 {
     if (!player_node)
+        return;
+
+    startX -= mX;
+    startY -= mY;
+    endX -= mX;
+    endY -= mY;
+
+    if (startX < 0)
+        startX = 0;
+    if (startY < 0)
+        startY = 0;
+    if (endX > mWidth)
+        endX = mWidth;
+    if (endY > mHeight)
+        endY = mHeight;
+
+    const int dx = (mX * 32) - scrollX;
+    const int dy = (mY * 32) - scrollY + 32;
+    const bool flag = (debugFlags != Map::MAP_SPECIAL
+        && debugFlags != Map::MAP_SPECIAL2);
+
+    for (int y = startY; y < endY; y++)
+    {
+        const int y32 = y * 32;
+        const int yWidth = y * mWidth;
+
+        const int py0 = y32 + dy;
+
+        for (int x = startX; x < endX; x++)
+        {
+            const int x32 = x * 32;
+
+            const int tilePtr = x + yWidth;
+            int c = 0;
+            Image *img = mTiles[tilePtr];
+            if (img)
+            {
+                const int px = x32 + dx;
+                const int py = py0 - img->mBounds.h;
+                if (flag || img->mBounds.h <= 32)
+                {
+                    int width = 0;
+                    // here need not draw over player position
+                    c = getTileDrawWidth(tilePtr, endX - x, width);
+
+                    if (!c)
+                    {
+                        graphics->drawImage(img, px, py);
+                    }
+                    else
+                    {
+                        graphics->drawImagePattern(img, px, py,
+                            width, img->mBounds.h);
+                    }
+                }
+            }
+
+            x += c;
+        }
+    }
+}
+
+void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
+                          int endX, int endY, int scrollX, int scrollY,
+                          const Actors &actors, int debugFlags, int yFix) const
+{
+    if (!player_node || !mSpecialLayer || !mTempLayer)
         return;
 
     startX -= mX;
@@ -177,20 +244,8 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
     const int dx = (mX * 32) - scrollX;
     const int dy = (mY * 32) - scrollY + 32;
 
-    int specialWidth = 0;
-    int specialHeight = 0;
-
-    const bool extraDraw =
-        mIsFringeLayer && mSpecialLayer && mTempLayer;
-
-    if (mIsFringeLayer)
-    {
-        if (mSpecialLayer)
-        {
-            specialWidth = mSpecialLayer->mWidth;
-            specialHeight = mSpecialLayer->mHeight;
-        }
-    }
+    int specialWidth = mSpecialLayer->mWidth;
+    int specialHeight = mSpecialLayer->mHeight;
 
     for (int y = startY; y < endY; y++)
     {
@@ -200,21 +255,17 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
 
         // If drawing the fringe layer, make sure all actors above this row of
         // tiles have been drawn
-        if (mIsFringeLayer)
+        while (ai != actors.end() && (*ai)->getPixelY() <= y32s)
         {
-            while (ai != actors.end() && (*ai)->getPixelY() <= y32s)
-            {
-                (*ai)->draw(graphics, -scrollX, -scrollY);
-                ++ ai;
-            }
+            (*ai)->draw(graphics, -scrollX, -scrollY);
+            ++ ai;
         }
 
         if (debugFlags == Map::MAP_SPECIAL3
             || debugFlags == Map::MAP_BLACKWHITE)
         {
-            if (extraDraw && y < specialHeight)
+            if (y < specialHeight)
             {
-                //x + y * mWidth
                 int ptr = y * specialWidth;
                 const int py1 = y32 - scrollY;
                 int endX1 = endX;
@@ -253,10 +304,10 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
                 if (img)
                 {
                     const int px = x32 + dx;
-                    const int py = py0 - img->getHeight();
+                    const int py = py0 - img->mBounds.h;
                     if ((debugFlags != Map::MAP_SPECIAL
                         && debugFlags != Map::MAP_SPECIAL2)
-                        || img->getHeight() <= 32)
+                        || img->mBounds.h <= 32)
                     {
                         int width = 0;
                         // here need not draw over player position
@@ -269,12 +320,12 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
                         else
                         {
                             graphics->drawImagePattern(img, px, py,
-                                width, img->getHeight());
+                                width, img->mBounds.h);
                         }
                     }
                 }
 
-                if (extraDraw && y < specialHeight)
+                if (y < specialHeight)
                 {
                     int c1 = c;
                     if (c1 + x + 1 > specialWidth)
@@ -305,7 +356,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
     }
 
     // Draw any remaining actors
-    if (mIsFringeLayer && debugFlags != Map::MAP_SPECIAL3)
+    if (debugFlags != Map::MAP_SPECIAL3)
     {
         while (ai != actors.end())
         {
@@ -359,7 +410,7 @@ int MapLayer::getTileDrawWidth(int tilePtr, int endX, int &width) const
         width = 0;
         return c;
     }
-    width = img1->getWidth();
+    width = img1->mBounds.w;
     for (int x = 1; x < endX; x++)
     {
         tilePtr ++;
@@ -368,7 +419,7 @@ int MapLayer::getTileDrawWidth(int tilePtr, int endX, int &width) const
             break;
         c ++;
         if (img)
-            width += img->getWidth();
+            width += img->mBounds.w;
     }
     return c;
 }
@@ -388,8 +439,8 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mIndexedTilesets(0),
     mIndexedTilesetsSize(0),
     mActorFixX(0),
-    mActorFixY(0)
-//    mSpritesUpdated(true)
+    mActorFixY(0),
+    mFringeLayer(0)
 {
     const int size = mWidth * mHeight;
 
@@ -424,6 +475,7 @@ Map::~Map()
     for (int i = 0; i < NB_BLOCKTYPES; i++)
         delete[] mOccupation[i];
 
+    mFringeLayer = 0;
     delete_all(mLayers);
     delete_all(mTilesets);
     delete_all(mForegrounds);
@@ -505,6 +557,8 @@ void Map::initializeAmbientLayers()
 void Map::addLayer(MapLayer *layer)
 {
     mLayers.push_back(layer);
+    if (layer->isFringeLayer() && !mFringeLayer)
+        mFringeLayer = layer;
 }
 
 void Map::addTileset(Tileset *tileset)
@@ -578,18 +632,12 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
 
     if (mDebugFlags == MAP_SPECIAL3 || mDebugFlags == MAP_BLACKWHITE)
     {
-        for (; layeri != mLayers.end(); ++layeri)
+        if (mFringeLayer)
         {
-            if ((*layeri)->isFringeLayer())
-            {
-                (*layeri)->setSpecialLayer(mSpecialLayer);
-                (*layeri)->setTempLayer(mTempLayer);
-                (*layeri)->draw(graphics,
-                                startX, startY, endX, endY,
-                                scrollX, scrollY,
-                                mActors, mDebugFlags, mActorFixY);
-                break;
-            }
+            mFringeLayer->setSpecialLayer(mSpecialLayer);
+            mFringeLayer->setTempLayer(mTempLayer);
+            mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
+                scrollX, scrollY, mActors, mDebugFlags, mActorFixY);
         }
     }
     else
@@ -602,12 +650,15 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                 (*layeri)->setTempLayer(mTempLayer);
                 if (mDebugFlags == MAP_SPECIAL2)
                     overFringe = true;
-            }
 
-            (*layeri)->draw(graphics,
-                            startX, startY, endX, endY,
-                            scrollX, scrollY,
-                            mActors, mDebugFlags, mActorFixY);
+                (*layeri)->drawFringe(graphics, startX, startY, endX, endY,
+                    scrollX, scrollY, mActors, mDebugFlags, mActorFixY);
+            }
+            else
+            {
+                (*layeri)->draw(graphics, startX, startY, endX, endY,
+                    scrollX, scrollY, mDebugFlags);
+            }
         }
     }
 
@@ -646,7 +697,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
 void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                         int debugFlags)
 {
-    int endPixelY = graphics->getHeight() + scrollY + mTileHeight - 1;
+    int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
     int startX = scrollX / mTileWidth;
     int startY = scrollY / mTileHeight;
     int endX = (graphics->mWidth + scrollX + mTileWidth - 1) / mTileWidth;

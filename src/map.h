@@ -158,8 +158,14 @@ class MapLayer: public ConfigListener
                   int startX, int startY,
                   int endX, int endY,
                   int scrollX, int scrollY,
-                  const Actors &actors,
-                  int mDebugFlags, int yFix) const;
+                  int mDebugFlags) const;
+
+        void drawFringe(Graphics *graphics,
+                        int startX, int startY,
+                        int endX, int endY,
+                        int scrollX, int scrollY,
+                        const Actors &actors,
+                        int mDebugFlags, int yFix) const;
 
         bool isFringeLayer()
         { return mIsFringeLayer; }
@@ -556,6 +562,7 @@ class Map : public Properties, public ConfigListener
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;
         ObjectsLayer *mObjects;
+        MapLayer *mFringeLayer;
 };
 
 
