@@ -28,6 +28,7 @@
 
 #include "gui/gui.h"
 #include "gui/palette.h"
+#include "gui/theme.h"
 
 #include "gui/widgets/label.h"
 
@@ -95,6 +96,15 @@ void BeingPopup::show(int x, int y, Being *b)
             mBeingName->setFont(boldFont);
         else
             mBeingName->setFont(gui->getSecureFont());
+    }
+    if (b->isAdvanced())
+    {
+        mBeingName->setForegroundColor(Theme::getThemeColor(
+            Theme::PLAYER_ADVANCED));
+    }
+    else
+    {
+        mBeingName->setForegroundColor(Theme::getThemeColor(Theme::TEXT));
     }
 
     mBeingName->adjustSize();

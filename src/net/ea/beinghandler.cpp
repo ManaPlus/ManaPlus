@@ -82,15 +82,10 @@ Being *BeingHandler::createBeing(int id, short job)
 
     if (type == ActorSprite::PLAYER || type == ActorSprite::NPC)
     {
-        if (!being->updateFromCache())
-        {
-            requestNameById(id);
-        }
-        else
-        {
-            if (player_node)
-                player_node->checkNewName(being);
-        }
+        being->updateFromCache();
+        requestNameById(id);
+        if (player_node)
+            player_node->checkNewName(being);
     }
     if (type == Being::PLAYER)
     {

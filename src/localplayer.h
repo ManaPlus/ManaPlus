@@ -331,6 +331,9 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void setAway(const std::string &message);
 
+        void setHalfAway(bool n)
+        { mHalfAwayMode = n; }
+
         void afkRespond(ChatTab *tab, const std::string &nick);
 
         bool navigateTo(int x, int y);
@@ -463,6 +466,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void removeHome();
 
+        void stopAdvert();
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -563,6 +568,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int mPingTime;
         int mAfkTime;
         bool mAwayMode;
+        bool mHalfAwayMode;
 
         bool mShowNavigePath;
         bool mIsServerBuggy;
@@ -586,6 +592,10 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mServerAttack;
         std::string mLastHitFrom;
         std::string mWaitFor;
+        int mAdvertTime;
+        bool mBlockAdvert;
+        bool mEnableAdvert;
+        bool mTradebot;
 };
 
 extern LocalPlayer *player_node;

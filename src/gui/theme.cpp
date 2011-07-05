@@ -638,7 +638,8 @@ static int readColorType(const std::string &type)
         "AMMO",
         "SERVER_VERSION_NOT_SUPPORTED",
         "WARNING",
-        "CHARM"
+        "CHARM",
+        "PLAYER_ADVANCED"
     };
 
     if (type.empty())

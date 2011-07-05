@@ -113,6 +113,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mAwayDialog(0),
     mAfkTime(0),
     mAwayMode(false),
+    mHalfAwayMode(false),
     mShowNavigePath(false),
     mDrawPath(false),
     mActivityTime(0),
@@ -122,12 +123,16 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mOldX(0), mOldY(0),
     mOldTileX(0), mOldTileY(0),
     mLastHitFrom(""),
-    mWaitFor("")
+    mWaitFor(""),
+    mAdvertTime(0),
+    mBlockAdvert(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
     listen(Mana::CHANNEL_ATTRIBUTES);
     mLevel = 1;
+
+    mAdvanced = true;
 
     mAwayListener = new AwayListener();
 
@@ -160,6 +165,8 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mServerAttack = config.getBoolValue("serverAttack");
     mAttackMoving = config.getBoolValue("attackMoving");
     mShowJobExp = config.getBoolValue("showJobExp");
+    mEnableAdvert = config.getBoolValue("enableAdvert");
+    mTradebot = config.getBoolValue("tradebot");
 
     mPingSendTick = 0;
     mWaitPing = false;
@@ -179,6 +186,8 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("serverAttack", this);
     config.addListener("attackMoving", this);
     config.addListener("showJobExp", this);
+    config.addListener("enableAdvert", this);
+    config.addListener("tradebot", this);
     setShowName(config.getBoolValue("showownname"));
 }
 
@@ -194,6 +203,8 @@ LocalPlayer::~LocalPlayer()
     config.removeListener("serverAttack", this);
     config.removeListener("attackMoving", this);
     config.removeListener("showJobExp", this);
+    config.removeListener("enableAdvert", this);
+    config.removeListener("tradebot", this);
 
     delete mAwayDialog;
     mAwayDialog = 0;
@@ -331,6 +342,23 @@ void LocalPlayer::logic()
         }
     }
 
+    if (mEnableAdvert && !mBlockAdvert && mAdvertTime < cur_time)
+    {
+        Uint8 smile = FLAG_SPECIAL;
+        if (mTradebot)
+            smile += FLAG_SHOP;
+
+        if (mAwayMode)
+            smile += FLAG_AWAY;
+
+        if (mHalfAwayMode)
+            smile += FLAG_INACTIVE;
+
+        if (emote(smile))
+            mAdvertTime = cur_time + 60;
+        else
+            mAdvertTime = cur_time + 30;
+    }
     Being::logic();
 }
 
@@ -1589,6 +1617,10 @@ void LocalPlayer::optionChanged(const std::string &value)
         mAttackMoving = config.getBoolValue("attackMoving");
     else if (value == "showJobExp")
         mShowJobExp = config.getBoolValue("showJobExp");
+    else if (value == "enableAdvert")
+        mEnableAdvert = config.getBoolValue("enableAdvert");
+    else if (value == "tradebot")
+        mTradebot = config.getBoolValue("tradebot");
 }
 
 void LocalPlayer::event(Mana::Channels channel, const Mana::Event &event)
@@ -3128,6 +3160,7 @@ void LocalPlayer::changeAwayMode()
 {
     mAwayMode = !mAwayMode;
     mAfkTime = 0;
+    mHalfAwayMode = false;
     if (miniStatusWindow)
         miniStatusWindow->updateStatus();
     if (mAwayMode)
@@ -3862,6 +3895,11 @@ void LocalPlayer::removeHome()
 
     if (iter != mHomes.end())
         mHomes.erase(key);
+}
+
+void LocalPlayer::stopAdvert()
+{
+    mBlockAdvert = true;
 }
 
 void AwayListener::action(const gcn::ActionEvent &event)

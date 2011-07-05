@@ -153,6 +153,12 @@ class BeingCacheEntry
         void setIp(std::string ip)
         { mIp = ip; }
 
+        bool isAdvanced() const
+        { return mIsAdvanced; }
+
+        void setAdvanced(bool a)
+        { mIsAdvanced = a; }
+
     protected:
         int mId;                        /**< Unique sprite id */
         std::string mName;              /**< Name of character */
@@ -161,6 +167,7 @@ class BeingCacheEntry
         unsigned int mPvpRank;
         int mTime;
         std::string mIp;
+        bool mIsAdvanced;
 };
 
 
@@ -218,7 +225,11 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mCriticalHit(0),
     mPvpRank(0),
     mComment(""),
-    mGotComment(false)
+    mGotComment(false),
+    mAdvanced(false),
+    mShop(false),
+    mAway(false),
+    mInactive(false)
 {
     mSpriteRemap = new int[20];
     mSpriteHide = new int[20];
@@ -1718,14 +1729,17 @@ void Being::reReadConfig()
 bool Being::updateFromCache()
 {
     BeingCacheEntry *entry = Being::getCacheEntry(getId());
-    if (entry && !entry->getName().empty()
-        && entry->getTime() + 120 < cur_time)
+
+    if (entry && entry->getTime() + 120 >= cur_time)
     {
-        setName(entry->getName());
+        if (!entry->getName().empty())
+            setName(entry->getName());
         setPartyName(entry->getPartyName());
         setLevel(entry->getLevel());
         setPvpRank(entry->getPvpRank());
         setIp(entry->getIp());
+
+        setAdvanced(entry->isAdvanced());
         if (mType == PLAYER)
             updateColors();
         return true;
@@ -1747,12 +1761,16 @@ void Being::addToCache()
             beingInfoCache.pop_back();
         }
     }
+    if (!mLowTraffic)
+        return;
+
     entry->setName(getName());
     entry->setLevel(getLevel());
     entry->setPartyName(getPartyName());
     entry->setTime(cur_time);
     entry->setPvpRank(getPvpRank());
     entry->setIp(getIp());
+    entry->setAdvanced(isAdvanced());
 }
 
 BeingCacheEntry* Being::getCacheEntry(int id)
@@ -2290,6 +2308,23 @@ void Being::saveComment(const std::string &name,
     std::string fileName = dir + "/comment.txt";
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
+}
+
+void Being::setEmote(Uint8 emotion, int emote_time)
+{
+    if (emotion & FLAG_SPECIAL)
+    {
+        mAdvanced = true;
+        mShop = (emotion & FLAG_SHOP);
+        mAway = (emotion & FLAG_AWAY);
+        mInactive = (emotion & FLAG_INACTIVE);
+//        logger->log("flags: %d", emotion - FLAG_SPECIAL);
+    }
+    else
+    {
+        mEmotion = emotion;
+        mEmotionTime = emote_time;
+    }
 }
 
 BeingEquipBackend::BeingEquipBackend(Being *being):

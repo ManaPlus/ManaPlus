@@ -205,6 +205,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "currentTip", 0);
     AddDEF(configData, "showDidYouKnow", true);
     AddDEF(configData, "useLocalTime", false);
+    AddDEF(configData, "enableAdvert", true);
     return configData;
 }
 

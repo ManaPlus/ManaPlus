@@ -183,6 +183,7 @@ class Theme : public Palette, public ConfigListener
             SERVER_VERSION_NOT_SUPPORTED,
             WARNING,
             CHARM,
+            PLAYER_ADVANCED,
             THEME_COLORS_END
         };
 

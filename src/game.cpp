@@ -1084,13 +1084,19 @@ void Game::handleInput()
                 {   // window restore
                     Client::setIsMinimized(false);
                     if (player_node && !player_node->getAwayMode())
+                    {
                         fpsLimit = config.getIntValue("fpslimit");
+                        player_node->setHalfAway(false);
+                    }
                 }
                 else
                 {   // window minimisation
                     Client::setIsMinimized(true);
                     if (player_node && !player_node->getAwayMode())
+                    {
                         fpsLimit = config.getIntValue("altfpslimit");
+                        player_node->setHalfAway(true);
+                    }
                 }
                 Client::setFramerate(fpsLimit);
             }

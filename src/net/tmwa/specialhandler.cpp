@@ -23,6 +23,7 @@
 #include "net/tmwa/specialhandler.h"
 
 #include "log.h"
+#include "localplayer.h"
 #include "playerinfo.h"
 
 #include "gui/skilldialog.h"
@@ -152,6 +153,12 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
             std::string msg;
             if (success == SKILL_FAILED && skillId == SKILL_BASIC)
             {
+                if (player_node && bskill == BSKILL_EMOTE
+                    && reason == RFAIL_SKILLDEP)
+                {
+                    player_node->stopAdvert();
+                }
+
                 switch (bskill)
                 {
                     case BSKILL_TRADE:

@@ -78,6 +78,7 @@ enum Gender
     GENDER_UNSPECIFIED = 2
 };
 
+
 class BeingEquipBackend : public Equipment::Backend
 {
     public:
@@ -101,6 +102,14 @@ class Being : public ActorSprite, public ConfigListener
     public:
         friend class BeingEquipBackend;
         friend class LocalPlayer;
+
+        enum FLAGS
+        {
+            FLAG_SHOP = 1,
+            FLAG_AWAY = 2,
+            FLAG_INACTIVE = 4,
+            FLAG_SPECIAL = 128 + 64
+        };
 
         /**
          * Action the being is currently performing
@@ -541,11 +550,7 @@ class Being : public ActorSprite, public ConfigListener
          * Set the Emoticon type and time displayed above
          * the being.
          */
-        void setEmote(Uint8 emotion, int emote_time)
-        {
-            mEmotion = emotion;
-            mEmotionTime = emote_time;
-        }
+        void setEmote(Uint8 emotion, int emote_time);
 
         /**
          * Get the current Emoticon type displayed above
@@ -741,6 +746,15 @@ class Being : public ActorSprite, public ConfigListener
         static void saveComment(const std::string &name,
                                 const std::string &comment);
 
+        bool isAdvanced()
+        { return mAdvanced; }
+
+        void setAdvanced(bool n)
+        { mAdvanced = n; }
+
+        bool isShopEnabled()
+        { return mShop; }
+
     protected:
         /**
          * Sets the new path for this being.
@@ -874,6 +888,10 @@ class Being : public ActorSprite, public ConfigListener
         int *mSpriteHide;
         std::string mComment;
         bool mGotComment;
+        bool mAdvanced;
+        bool mShop;
+        bool mAway;
+        bool mInactive;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

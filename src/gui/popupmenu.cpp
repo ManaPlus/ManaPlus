@@ -248,8 +248,23 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 if (player_relations.getDefault() & PlayerRelation::TRADE)
                 {
                     mBrowserBox->addRow("##3---");
-                    mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
-                    mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
+                    if (being->isAdvanced())
+                    {
+                        if (being->isShopEnabled())
+                        {
+                            mBrowserBox->addRow(strprintf(
+                                "@@buy|%s@@", _("Buy")));
+                            mBrowserBox->addRow(strprintf(
+                                "@@sell|%s@@", _("Sell")));
+                        }
+                    }
+                    else
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@buy|%s@@", _("Buy (?)")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@sell|%s@@", _("Sell (?)")));
+                    }
                 }
             }
             break;
@@ -428,8 +443,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mBrowserBox->addRow("##3---");
     if (player_relations.getDefault() & PlayerRelation::TRADE)
     {
-        mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
-        mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
+        mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy (?)")));
+        mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell (?)")));
     }
 
     mBrowserBox->addRow(strprintf("@@name|%s@@", _("Add name to chat")));
@@ -652,8 +667,22 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             if (player_relations.getDefault() & PlayerRelation::TRADE)
             {
                 mBrowserBox->addRow("##3---");
-                mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy")));
-                mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
+                if (being->isAdvanced())
+                {
+                    if (being->isShopEnabled())
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@buy|%s@@", _("Buy")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@sell|%s@@", _("Sell")));
+                    }
+                }
+                else
+                {
+                    mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy (?)")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@sell|%s@@", _("Sell (?)")));
+                }
             }
 
             mBrowserBox->addRow("##3---");
