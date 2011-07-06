@@ -1652,6 +1652,119 @@ void Map::clearIndexedTilesets()
     mIndexedTilesetsSize = 0;
 }
 
+void Map::reduce()
+{
+    if (!mFringeLayer || mOpenGL > 0 ||
+        !config.getBoolValue("enableMapReduce"))
+    {
+        return;
+    }
+
+    int cnt = 0;
+    for (int x = 0; x < mWidth; x ++)
+    {
+        for (int y = 0; y < mHeight; y ++)
+        {
+            Layers::const_iterator layeri = mLayers.begin();
+            bool correct(true);
+            bool dontHaveAlpha(false);
+
+            for (; layeri != mLayers.end(); ++ layeri)
+            {
+                MapLayer *layer = *layeri;
+                if (x >= layer->mWidth || y >= layer->mHeight)
+                    continue;
+
+                Image *img = layer->mTiles[x + y * layer->mWidth];
+                if (img)
+                {
+                    img->setAlphaVisible(true);
+                    if (img->mBounds.w > 32 || img->mBounds.h > 32)
+                    {
+                        correct = false;
+                        break;
+                    }
+                    else if (!img->isHasAlphaChannel())
+                    {
+                        dontHaveAlpha = true;
+                        img->setAlphaVisible(false);
+                    }
+                    else if (img->hasAlphaChannel())
+                    {
+                        Uint8 *arr = img->SDLgetAlphaChannel();
+                        if (!arr)
+                            continue;
+                        bool bad(false);
+                        bool stop(false);
+                        int width;
+                        SubImage *subImg = dynamic_cast<SubImage*>(img);
+                        if (subImg)
+                            width = subImg->mInternalBounds.w;
+                        else
+                            width = img->mBounds.w;
+
+                        for (int f = img->mBounds.x;
+                             f < img->mBounds.x + img->mBounds.w; f ++)
+                        {
+                            for (int d = img->mBounds.y;
+                                 d < img->mBounds.y + img->mBounds.h; d ++)
+                            {
+                                Uint8 chan = arr[f + d * width];
+                                if (chan != 255)
+                                {
+                                    bad = true;
+                                    stop = true;
+                                    break;
+                                }
+                            }
+                            if (stop)
+                                break;
+                        }
+                        if (!bad)
+                        {
+                            dontHaveAlpha = true;
+                            img->setAlphaVisible(false);
+                        }
+                        else
+                        {
+                            img->setAlphaVisible(true);
+                        }
+                    }
+                }
+            }
+            if (!correct || !dontHaveAlpha)
+                continue;
+
+            Layers::const_reverse_iterator ri = mLayers.rbegin();
+            while (ri != mLayers.rend())
+            {
+                MapLayer *layer = *ri;
+                if (x >= layer->mWidth || y >= layer->mHeight)
+                    continue;
+
+                Image *img = layer->mTiles[x + y * layer->mWidth];
+                if (img && !img->isAlphaVisible())
+                {   // removing all down tiles
+                    ++ ri;
+                    while (ri != mLayers.rend())
+                    {
+                        img = (*ri)->mTiles[x + y * (*ri)->mWidth];
+                        if (img)
+                        {
+                            (*ri)->mTiles[x + y * (*ri)->mWidth] = 0;
+                            cnt ++;
+                        }
+                        ++ ri;
+                    }
+                    break;
+                }
+                ++ ri;
+            }
+        }
+    }
+    logger->log("tiles reduced: %d", cnt);
+}
+
 SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):
     mWidth(width), mHeight(height)
 {

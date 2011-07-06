@@ -64,6 +64,7 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         int mFps;
         int mAltFps;
         bool mAlphaCache;
+        bool mEnableMapReduce;
         bool mShowBackground;
         Being::Speech mSpeechMode;
 
@@ -90,6 +91,7 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::CheckBox *mPickupParticleCheckBox;
 
         gcn::CheckBox *mAlphaCacheCheckBox;
+        gcn::CheckBox *mEnableMapReduceCheckBox;
         gcn::CheckBox *mShowBackgroundCheckBox;
         gcn::Slider *mSpeechSlider;
         gcn::Label *mSpeechLabel;

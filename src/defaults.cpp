@@ -206,6 +206,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showDidYouKnow", true);
     AddDEF(configData, "useLocalTime", false);
     AddDEF(configData, "enableAdvert", true);
+    AddDEF(configData, "enableMapReduce", true);
     return configData;
 }
 

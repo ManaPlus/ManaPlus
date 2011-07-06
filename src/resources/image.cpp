@@ -53,7 +53,8 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel, Uint8 *alphaChannel):
     mAlpha(1.0f),
     mHasAlphaChannel(hasAlphaChannel),
     mSDLSurface(image),
-    mAlphaChannel(alphaChannel)
+    mAlphaChannel(alphaChannel),
+    mIsAlphaVisible(hasAlphaChannel)
 {
 #ifdef USE_OPENGL
     mGLImage = 0;
@@ -88,6 +89,7 @@ Image::Image(GLuint glimage, int width, int height,
     mSDLSurface(0),
     mAlphaChannel(0),
     mUseAlphaCache(false),
+    mIsAlphaVisible(true),
     mGLImage(glimage),
     mTexWidth(texWidth),
     mTexHeight(texHeight)
@@ -792,11 +794,13 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
         mParent->incRef();
         mParent->SDLTerminateAlphaCache();
         mHasAlphaChannel = mParent->hasAlphaChannel();
+        mIsAlphaVisible = mHasAlphaChannel;
         mAlphaChannel = mParent->SDLgetAlphaChannel();
     }
     else
     {
         mHasAlphaChannel = false;
+        mIsAlphaVisible = false;
         mAlphaChannel = 0;
     }
 
@@ -805,6 +809,10 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
     mBounds.y = static_cast<short>(y);
     mBounds.w = static_cast<Uint16>(width);
     mBounds.h = static_cast<Uint16>(height);
+    mInternalBounds.x = mParent->mBounds.x;
+    mInternalBounds.y = mParent->mBounds.y;
+    mInternalBounds.w = mParent->mBounds.w;
+    mInternalBounds.h = mParent->mBounds.h;
     mUseAlphaCache = false;
 }
 
@@ -823,6 +831,11 @@ SubImage::SubImage(Image *parent, GLuint image,
     mBounds.y = static_cast<short>(y);
     mBounds.w = static_cast<Uint16>(width);
     mBounds.h = static_cast<Uint16>(height);
+    mInternalBounds.x = mParent->mBounds.x;
+    mInternalBounds.y = mParent->mBounds.y;
+    mInternalBounds.w = mParent->mBounds.w;
+    mInternalBounds.h = mParent->mBounds.h;
+    mIsAlphaVisible = mHasAlphaChannel;
 }
 #endif
 

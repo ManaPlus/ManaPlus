@@ -119,6 +119,8 @@ class TileAnimation
 class MapLayer: public ConfigListener
 {
     public:
+        friend class Map;
+
         /**
          * Constructor, taking layer origin, size and whether this layer is the
          * fringe layer. The fringe layer is the layer that draws the actors.
@@ -467,6 +469,8 @@ class Map : public Properties, public ConfigListener
 
         void setVersion(int n)
         { mVersion = n; }
+
+        void reduce();
 
     protected:
         friend class Actor;

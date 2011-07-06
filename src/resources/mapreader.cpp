@@ -376,6 +376,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
     map->initializeAmbientLayers();
     map->clearIndexedTilesets();
     map->setActorsFix(0, atoi(map->getProperty("actorsfix").c_str()));
+    map->reduce();
     return map;
 }
 

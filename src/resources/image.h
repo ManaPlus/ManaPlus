@@ -208,6 +208,15 @@ class Image : public Resource
         int getTextureHeight() const
         { return mTexHeight; }
 
+        bool isHasAlphaChannel()
+        { return mHasAlphaChannel; }
+
+        bool isAlphaVisible()
+        { return mIsAlphaVisible; }
+
+        void setAlphaVisible(bool b)
+        { mIsAlphaVisible = b; }
+
         static int getTextureType()
         { return mTextureType; }
 
@@ -247,6 +256,7 @@ class Image : public Resource
         std::map<float, SDL_Surface*> mAlphaCache;
 
         bool mUseAlphaCache;
+        bool mIsAlphaVisible;
 
         static bool mEnableAlphaCache;
         static bool mEnableAlpha;
@@ -304,6 +314,8 @@ class SubImage : public Image
          *         image otherwise.
          */
         Image *getSubImage(int x, int y, int width, int height);
+
+        SDL_Rect mInternalBounds;
 
     private:
         Image *mParent;

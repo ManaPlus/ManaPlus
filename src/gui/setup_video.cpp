@@ -283,6 +283,7 @@ Setup_Video::Setup_Video():
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
     mAlphaCache(config.getBoolValue("alphaCache")),
+    mEnableMapReduce(config.getBoolValue("enableMapReduce")),
     mShowBackground(config.getBoolValue("showBackground")),
     mSpeechMode(static_cast<Being::Speech>(
         config.getIntValue("speech"))),
@@ -301,6 +302,7 @@ Setup_Video::Setup_Video():
     mPickupParticleCheckBox(new CheckBox(_("as particle"),
                             mPickupParticleEnabled)),
     mAlphaCacheCheckBox(new CheckBox(_("Enable opacity cache"), mAlphaCache)),
+    mEnableMapReduceCheckBox(new CheckBox(_("Enable map reduce"), mEnableMapReduce)),
     mShowBackgroundCheckBox(new CheckBox(_("Show background"),
                             mShowBackground)),
     mSpeechSlider(new Slider(0, 3)),
@@ -343,6 +345,7 @@ Setup_Video::Setup_Video():
     mAlphaSlider->setValue(mOpacity);
     mAlphaSlider->setWidth(90);
     mAlphaCacheCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
+    mEnableMapReduceCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
 
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
@@ -375,6 +378,7 @@ Setup_Video::Setup_Video():
     mParticleDetailSlider->setActionEventId("particledetailslider");
     mParticleDetailField->setActionEventId("particledetailfield");
     mAlphaCacheCheckBox->setActionEventId("alphaCache");
+    mEnableMapReduceCheckBox->setActionEventId("enableMapReduce");
     mOpenGLDropDown->setActionEventId("opengl");
 
     mModeList->addActionListener(this);
@@ -394,6 +398,7 @@ Setup_Video::Setup_Video():
     mOpenGLDropDown->addActionListener(this);
 
     mAlphaCacheCheckBox->addKeyListener(this);
+    mEnableMapReduceCheckBox->addKeyListener(this);
 
     mSpeechLabel->setCaption(speechModeToString(mSpeechMode));
     mSpeechSlider->setValue(mSpeechMode);
@@ -413,6 +418,7 @@ Setup_Video::Setup_Video():
 
     place(0, 6, mHwAccelCheckBox, 6);
     place(0, 7, mAlphaCacheCheckBox, 6);
+    place(0, 8, mEnableMapReduceCheckBox, 6);
 
     place(1, 0, mFsCheckBox, 2);
 
@@ -426,27 +432,27 @@ Setup_Video::Setup_Video():
     place(1, 5, mPickupChatCheckBox, 1);
     place(2, 5, mPickupParticleCheckBox, 2);
 
-    place(0, 8, mAlphaSlider);
-    place(1, 8, alphaLabel, 3);
+    place(0, 9, mAlphaSlider);
+    place(1, 9, alphaLabel, 3);
 
-    place(0, 9, mFpsSlider);
-    place(1, 9, mFpsCheckBox).setPadding(3);
-    place(2, 9, mFpsLabel).setPadding(1);
+    place(0, 10, mFpsSlider);
+    place(1, 10, mFpsCheckBox).setPadding(3);
+    place(2, 10, mFpsLabel).setPadding(1);
 
-    place(0, 10, mAltFpsSlider);
-    place(1, 10, mAltFpsLabel).setPadding(3);
+    place(0, 11, mAltFpsSlider);
+    place(1, 11, mAltFpsLabel).setPadding(3);
 
-    place(0, 11, mSpeechSlider);
-    place(1, 11, speechLabel);
-    place(2, 11, mSpeechLabel, 3).setPadding(2);
+    place(0, 12, mSpeechSlider);
+    place(1, 12, speechLabel);
+    place(2, 12, mSpeechLabel, 3).setPadding(2);
 
-    place(0, 12, mOverlayDetailSlider);
-    place(1, 12, overlayDetailLabel);
-    place(2, 12, mOverlayDetailField, 3).setPadding(2);
+    place(0, 13, mOverlayDetailSlider);
+    place(1, 13, overlayDetailLabel);
+    place(2, 13, mOverlayDetailField, 3).setPadding(2);
 
-    place(0, 13, mParticleDetailSlider);
-    place(1, 13, particleDetailLabel);
-    place(2, 13, mParticleDetailField, 3).setPadding(2);
+    place(0, 14, mParticleDetailSlider);
+    place(1, 14, particleDetailLabel);
+    place(2, 14, mParticleDetailField, 3).setPadding(2);
 
     int width = 600;
 
@@ -544,6 +550,7 @@ void Setup_Video::apply()
     config.setValue("altfpslimit", mAltFps);
 
     config.setValue("alphaCache", mAlphaCacheCheckBox->isSelected());
+    config.setValue("enableMapReduce", mEnableMapReduceCheckBox->isSelected());
     config.setValue("showBackground", mShowBackgroundCheckBox->isSelected());
 
     // We sync old and new values at apply time
@@ -551,6 +558,7 @@ void Setup_Video::apply()
     mCustomCursorEnabled = config.getBoolValue("customcursor");
     mParticleEffectsEnabled = config.getBoolValue("particleeffects");
     mAlphaCache = config.getBoolValue("alphaCache");
+    mEnableMapReduce = config.getBoolValue("enableMapReduce");
     mShowBackground = config.getBoolValue("showBackground");
 
     mSpeechMode = static_cast<Being::Speech>(
@@ -577,6 +585,7 @@ void Setup_Video::cancel()
     mAltFpsSlider->setEnabled(mAltFps > 0);
     mSpeechSlider->setValue(mSpeechMode);
     mAlphaCacheCheckBox->setSelected(mAlphaCache);
+    mEnableMapReduceCheckBox->setSelected(mEnableMapReduce);
     mShowBackgroundCheckBox->setSelected(mShowBackground);
     mAlphaSlider->setValue(mOpacity);
     mOverlayDetailSlider->setValue(mOverlayDetail);
@@ -598,6 +607,7 @@ void Setup_Video::cancel()
     config.setValue("particleeffects", mParticleEffectsEnabled);
     config.setValue("speech", static_cast<int>(mSpeechMode));
     config.setValue("alphaCache", mAlphaCache);
+    config.setValue("enableMapReduce", mEnableMapReduce);
     config.setValue("showBackground", mShowBackground);
     config.setValue("guialpha", mOpacity);
     Image::setEnableAlpha(mOpacity != 1.0f);
@@ -742,6 +752,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         bool isSoftware = (mOpenGLDropDown->getSelected() == 0);
         mAlphaCacheCheckBox->setEnabled(isSoftware);
+        mEnableMapReduceCheckBox->setEnabled(isSoftware);
     }
 }
 
