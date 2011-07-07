@@ -2,6 +2,7 @@
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
 # 
+#   <reslayer@mail.ru>, 2011.
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
 # Andrei Karas <akaras@inbox.ru>, 2011.
@@ -9,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-05 03:57+0300\n"
-"PO-Revision-Date: 2011-07-05 01:03+0000\n"
+"POT-Creation-Date: 2011-07-07 03:39+0300\n"
+"PO-Revision-Date: 2011-07-07 00:43+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -23,11 +24,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "miss"
 msgstr "промах"
 
@@ -132,7 +133,7 @@ msgid ""
 " you."
 msgstr ""
 "Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
-" уже создана, или этот игрок вы сами."
+" уже создана, или этот игрок Вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -150,11 +151,11 @@ msgstr "Не задано имя гильдии."
 #: src/commandhandler.cpp:469 src/commandhandler.cpp:576
 #: src/commandhandler.cpp:617 src/commandhandler.cpp:647
 msgid "Please specify a name."
-msgstr "Пожалуйста укажите имя"
+msgstr "Пожалуйста, укажите имя"
 
 #: src/commandhandler.cpp:510
 msgid "Return toggles chat."
-msgstr "Enter переключает вас на окно чата."
+msgstr "Enter переключает Вас на окно чата."
 
 #: src/commandhandler.cpp:510
 msgid "Message closes chat."
@@ -550,7 +551,7 @@ msgstr "Стрижка:"
 
 #: src/gui/charcreatedialog.cpp:89
 msgid "Race:"
-msgstr "Расса:"
+msgstr "Раса:"
 
 #: src/gui/charcreatedialog.cpp:92 src/gui/charselectdialog.cpp:479
 #: src/gui/socialwindow.cpp:1033
@@ -1285,7 +1286,7 @@ msgstr "Подружиться"
 #: src/gui/popupmenu.cpp:617 src/gui/popupmenu.cpp:625
 #: src/gui/popupmenu.cpp:649
 msgid "Disregard"
-msgstr "Пренебреч"
+msgstr "Пренебречь"
 
 #: src/gui/popupmenu.cpp:148 src/gui/popupmenu.cpp:157
 #: src/gui/popupmenu.cpp:166 src/gui/popupmenu.cpp:173
@@ -1493,15 +1494,15 @@ msgstr "Комментарий:                      "
 
 #: src/gui/popupmenu.cpp:1570
 msgid "Add to trade"
-msgstr "Добавить к торговли"
+msgstr "Добавить к сделке"
 
 #: src/gui/popupmenu.cpp:1576
 msgid "Add to trade 10"
-msgstr "Добавить к торговле 10"
+msgstr "Добавить к сделке 10"
 
 #: src/gui/popupmenu.cpp:1579
 msgid "Add to trade half"
-msgstr "Добавить к торговле половину"
+msgstr "Добавить к сделке половину"
 
 #: src/gui/popupmenu.cpp:1581
 msgid "Add to trade all"
@@ -1930,7 +1931,7 @@ msgstr "Монстры"
 
 #: src/gui/setup_other.cpp:48
 msgid "Show damage inflicted to monsters"
-msgstr "Показ. повр. нанесенные монстрам"
+msgstr "Показ. повр., нанесенные монстрам"
 
 #: src/gui/setup_other.cpp:51
 msgid "Auto target only reachable monsters"
@@ -1974,7 +1975,7 @@ msgstr "Рисовать путь"
 
 #: src/gui/setup_other.cpp:85
 msgid "Draw hotkeys on map"
-msgstr "Рисовать клавищи на карте"
+msgstr "Рисовать клавиши на карте"
 
 #: src/gui/setup_other.cpp:89
 msgid "Moving"
@@ -2022,7 +2023,7 @@ msgstr "Показ. всплыв. сообщения игроков"
 
 #: src/gui/setup_other.cpp:121
 msgid "Afk message"
-msgstr "Сообщение для отошел"
+msgstr "Ответ в режиме \"отошел\""
 
 #: src/gui/setup_other.cpp:124
 msgid "Show job"
@@ -2212,8 +2213,8 @@ msgstr "Размер шрифта"
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
-#: src/gui/setup_video.cpp:652
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:657
+#: src/gui/setup_video.cpp:662
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
@@ -2227,7 +2228,7 @@ msgstr "Быстрый OpenGL"
 
 #: src/gui/setup_video.cpp:196
 msgid "Safe OpenGL"
-msgstr "Бозопасный OpenGL"
+msgstr "Безопасный OpenGL"
 
 #: src/gui/setup_video.cpp:223
 msgid "No text"
@@ -2265,132 +2266,136 @@ msgstr "средне"
 msgid "max"
 msgstr "макс."
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:292
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Hw acceleration"
 msgstr "Аппаратное ускорение"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:296
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:298
 msgid "Show pickup notification"
 msgstr "Показать уведомление о подборе предмета"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:300
 msgid "in chat"
 msgstr "в чате"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:302
 msgid "as particle"
 msgstr "как частицу"
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:304
 msgid "Enable opacity cache"
 msgstr "Включить кеш прозрачности"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
+msgid "Enable map reduce"
+msgstr "Включить режим сжатия карты"
+
+#: src/gui/setup_video.cpp:306
 msgid "Show background"
 msgstr "Показать фон"
 
-#: src/gui/setup_video.cpp:309
+#: src/gui/setup_video.cpp:311
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
-#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
+#: src/gui/setup_video.cpp:315 src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:747
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:322
+#: src/gui/setup_video.cpp:324
 msgid "Video"
 msgstr "Видео"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:330
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:331
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:332
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:333
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
-#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
-#: src/gui/setup_video.cpp:735
+#: src/gui/setup_video.cpp:350 src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:594 src/gui/setup_video.cpp:734
+#: src/gui/setup_video.cpp:745
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:497
+#: src/gui/setup_video.cpp:503
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в оконный режим. Восстановить старый режим также не"
 " удалось!"
 
-#: src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:509
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:514
+#: src/gui/setup_video.cpp:520
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:515
+#: src/gui/setup_video.cpp:521
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:527
+#: src/gui/setup_video.cpp:533
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:528
+#: src/gui/setup_video.cpp:534
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:640
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:631
+#: src/gui/setup_video.cpp:641
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
+#: src/gui/setup_video.cpp:656 src/gui/setup_video.cpp:661
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:649
+#: src/gui/setup_video.cpp:659
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:682
+#: src/gui/setup_video.cpp:692
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:683
+#: src/gui/setup_video.cpp:693
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 
@@ -2629,7 +2634,7 @@ msgstr "Вас приглашают присоединиться к группе
 #: src/gui/socialwindow.cpp:1359
 #, c-format
 msgid "%s has invited you to join their party."
-msgstr "%s приглашает вас к себе в группу."
+msgstr "%s приглашает Вас к себе в группу."
 
 #: src/gui/socialwindow.cpp:1364
 #, c-format
@@ -2674,7 +2679,7 @@ msgstr "(C) движение с сумашедшими движениями"
 
 #: src/gui/statuspopup.cpp:216
 msgid "(d) double normal + crazy"
-msgstr "(d) нормальые и сумашедшие движения"
+msgstr "(d) нормальные и сумашедшие движения"
 
 #: src/gui/statuspopup.cpp:221
 msgid "(?) move"
@@ -2718,11 +2723,11 @@ msgstr "(A) движение к цели на расстояние атаки"
 
 #: src/gui/statuspopup.cpp:288
 msgid "(?) move to target"
-msgstr "(?) неизвестное двидение к цели"
+msgstr "(?) неизвестное движение к цели"
 
 #: src/gui/statuspopup.cpp:296
 msgid "(D) default follow"
-msgstr "(D) следование поумолчанию"
+msgstr "(D) следование по умолчанию"
 
 #: src/gui/statuspopup.cpp:300
 msgid "(R) relative follow"
@@ -2750,7 +2755,7 @@ msgstr "(s) переключение атаки без щита"
 
 #: src/gui/statuspopup.cpp:331
 msgid "(S) switch attack with shield"
-msgstr "(S) переключение атаки со считом"
+msgstr "(S) переключение атаки со щитом"
 
 #: src/gui/statuspopup.cpp:335 src/gui/statuspopup.cpp:360
 msgid "(?) attack"
@@ -2766,11 +2771,11 @@ msgstr "(A) идти, атаковать, собирать"
 
 #: src/gui/statuspopup.cpp:356
 msgid "(d) without auto attack"
-msgstr "(d) без авто атаки"
+msgstr "(d) без автоатаки"
 
 #: src/gui/statuspopup.cpp:374
 msgid "(S) small pick up 1x1 cells"
-msgstr "(S) собирание в области 1x1"
+msgstr "(S) поднятие в области 1x1"
 
 #: src/gui/statuspopup.cpp:378
 msgid "(D) default pick up 2x1 cells"
@@ -2798,7 +2803,7 @@ msgstr "(A) движение и поднятие на максимальном �
 
 #: src/gui/statuspopup.cpp:402
 msgid "(?) pick up"
-msgstr "(?) неизвстный режим поднятия"
+msgstr "(?) неизвестный режим поднятия"
 
 #: src/gui/statuspopup.cpp:411
 msgid "(N) normal map view"
@@ -2854,7 +2859,7 @@ msgstr "(?) неизвестная магическая атака"
 
 #: src/gui/statuspopup.cpp:476
 msgid "(D) default imitation"
-msgstr "(D) имитация поумолчанию"
+msgstr "(D) имитация по умолчанию"
 
 #: src/gui/statuspopup.cpp:480
 msgid "(O) outfits imitation"
@@ -2894,7 +2899,7 @@ msgstr "Игровые модификаторы выключены"
 
 #: src/gui/statuspopup.cpp:531
 msgid "Game modifiers are enabled"
-msgstr "Игкровые модификаторы включены"
+msgstr "Игровые модификаторы включены"
 
 #: src/gui/statuswindow.cpp:133 src/gui/statuswindow.cpp:259
 #: src/gui/statuswindow.cpp:322
@@ -3109,7 +3114,7 @@ msgstr "Астральная магия"
 
 #: src/gui/textcommandeditor.cpp:167
 msgid "Command Editor"
-msgstr "Редактор комманд"
+msgstr "Редактор команд"
 
 #: src/gui/textcommandeditor.cpp:184
 msgid "magic"
@@ -3344,7 +3349,7 @@ msgstr "Подсветка переходов"
 
 #: src/gui/userpalette.cpp:151
 msgid "Default collision Highlight"
-msgstr "Подсветка нпроходимых клеток"
+msgstr "Подсветка непроходимых клеток"
 
 #: src/gui/userpalette.cpp:153
 msgid "Air collision Highlight"
@@ -3448,7 +3453,7 @@ msgstr "Команда: /quit"
 
 #: src/gui/widgets/channeltab.cpp:77
 msgid "This command leaves the current channel."
-msgstr "Команда покидает текущий канал"
+msgstr "Команда покинуть текущий канал"
 
 #: src/gui/widgets/channeltab.cpp:78
 msgid "If you're the last person in the channel, it will be deleted."
@@ -3619,7 +3624,7 @@ msgstr "Вы знаете?"
 
 #: src/gui/windowmenu.cpp:100
 msgid "SET"
-msgstr "SET"
+msgstr "ОПЦ"
 
 #: src/gui/worldselectdialog.cpp:77
 msgid "Select World"
@@ -3675,7 +3680,7 @@ msgstr "Переход к Домашней локации"
 
 #: src/keyboardconfig.cpp:57
 msgid "Set home location"
-msgstr "Установка домашней локацию"
+msgstr "Установка Домашней локации"
 
 #: src/keyboardconfig.cpp:59
 msgid "Move to navigation point"
@@ -3699,7 +3704,7 @@ msgstr "Выбор NPC"
 
 #: src/keyboardconfig.cpp:67
 msgid "Target Player"
-msgstr "Быбор игрока"
+msgstr "Выбор игрока"
 
 #: src/keyboardconfig.cpp:69
 msgid "Pickup"
@@ -3762,7 +3767,7 @@ msgstr "Окно инвентаря"
 
 #: src/keyboardconfig.cpp:128
 msgid "Equipment Window"
-msgstr "Окно екипировки"
+msgstr "Окно экипировки"
 
 #: src/keyboardconfig.cpp:130
 msgid "Skill Window"
@@ -3794,7 +3799,7 @@ msgstr "Окно общества"
 
 #: src/keyboardconfig.cpp:144
 msgid "Emote Shortcut Window"
-msgstr "Окно емоций"
+msgstr "Окно эмоций"
 
 #: src/keyboardconfig.cpp:146
 msgid "Outfits Window"
@@ -3814,7 +3819,7 @@ msgstr "Окно статистики атак"
 
 #: src/keyboardconfig.cpp:154
 msgid "Commands Window"
-msgstr "Окно комманд"
+msgstr "Окно команд"
 
 #: src/keyboardconfig.cpp:156
 msgid "Bot Checker Window"
@@ -3865,15 +3870,15 @@ msgstr "Комбинация клавиш для смайла %d"
 
 #: src/keyboardconfig.cpp:261
 msgid "Wear Outfit"
-msgstr "Одевание наряда"
+msgstr "Надеть наряд"
 
 #: src/keyboardconfig.cpp:263
 msgid "Copy Outfit"
-msgstr "Копирование наряда"
+msgstr "Копировать наряд"
 
 #: src/keyboardconfig.cpp:265
 msgid "Copy equipped to Outfit"
-msgstr "Копирование одетого наряда"
+msgstr "Копирование надетого наряда"
 
 #: src/keyboardconfig.cpp:267
 msgid "Toggle Chat"
@@ -4038,7 +4043,7 @@ msgstr "Попытка поднять несуществующий предме�
 
 #: src/localplayer.cpp:1405
 msgid "Item is too heavy."
-msgstr "Предмет слишком тяжелый"
+msgstr "Предмет слишком тяжелый."
 
 #: src/localplayer.cpp:1407
 msgid "Item is too far away."
@@ -4259,15 +4264,15 @@ msgstr "Вы мертвы."
 
 #: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:104
 msgid "We regret to inform you that your character was killed in battle."
-msgstr "С грустью сообщаем вам, что ваш персонаж пал в бою."
+msgstr "С грустью сообщаем вам, что Ваш персонаж пал в бою."
 
 #: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:106
 msgid "You are not that alive anymore."
-msgstr "Вас боьше нет среди живых."
+msgstr "Вас больше нет среди живых."
 
 #: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:107
 msgid "The cold hands of the grim reaper are grabbing for your soul."
-msgstr "Холодные руки Смерти извлекают вашу душу."
+msgstr "Холодные руки Смерти извлекают Вашу душу."
 
 #: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:108
 msgid "Game Over!"
@@ -4285,7 +4290,7 @@ msgstr ""
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
-msgstr "Ваш план сломать оружие врагов об свое горло провалился."
+msgstr "Ваш план сломать оружие врагов о свое горло провалился."
 
 #: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:114
 msgid "I guess this did not run too well."
@@ -4293,11 +4298,11 @@ msgstr "Похоже, это было не слишком хорошо."
 
 #: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:116
 msgid "Do you want your possessions identified?"
-msgstr "Хочешь предскажу твою судьбу?"
+msgstr "Хочешь, предскажу твою судьбу?"
 
 #: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:118
 msgid "Sadly, no trace of you was ever found..."
-msgstr "Грустно, вас врядли когда-нибудь найдут..."
+msgstr "Грустно, Вас вряд ли когда-нибудь найдут..."
 
 #: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:120
 msgid "Annihilated."
@@ -4360,8 +4365,8 @@ msgstr "Характеристики персонажа слишком малы.
 #, c-format
 msgid "At least one stat is out of the permitted range: (%u - %u)."
 msgstr ""
-"Как минимум, один статистический модификатор, вне разрешённого диапазона: "
-"(%u - %u)."
+"Как минимум один статистический модификатор вне разрешённого диапазона: (%u "
+"- %u)."
 
 #: src/net/manaserv/charhandler.cpp:178
 msgid "Invalid slot number."
@@ -4550,7 +4555,7 @@ msgstr "%s теперь в группе."
 #: src/net/manaserv/partyhandler.cpp:126
 #, c-format
 msgid "%s rejected your invite."
-msgstr "%s Отклонил(а) ваше приглашение."
+msgstr "%s Отклоняет Ваше приглашение."
 
 #: src/net/manaserv/tradehandler.cpp:107
 msgid "Accepting incoming trade requests."
@@ -4563,7 +4568,7 @@ msgstr "Игнорировать входящие предложения тор�
 #: src/net/manaserv/tradehandler.cpp:128 src/net/tmwa/tradehandler.cpp:125
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
-msgstr "%s хочет торговать с вами, вы принимаете предложение?"
+msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
 
 #: src/net/manaserv/tradehandler.cpp:146
 #, c-format
@@ -4605,15 +4610,15 @@ msgstr "Невозможно продать непродаваемый пред�
 #: src/net/tmwa/charserverhandler.cpp:121
 msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
-"В доступе отказано. Скорее всего на этом сервере слишком много игроков."
+"В доступе отказано. Скорее всего, на этом сервере слишком много игроков."
 
 #: src/net/tmwa/charserverhandler.cpp:125
 msgid "Cannot use this ID."
-msgstr "Нельзя использовать данный ID"
+msgstr "Нельзя использовать данный ID."
 
 #: src/net/tmwa/charserverhandler.cpp:128
 msgid "Unknown char-server failure."
-msgstr "Неизвестная ошибка сервера чата."
+msgstr "Неизвестная ошибка сервера персонажей."
 
 #: src/net/tmwa/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
@@ -4671,12 +4676,12 @@ msgstr "Удача (luk):"
 #: src/net/tmwa/chathandler.cpp:106
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
-msgstr "Сообщение не может быть отправлено, %s оффлайн"
+msgstr "Сообщение не может быть отправлено, %s оффлайн."
 
 #: src/net/tmwa/chathandler.cpp:114
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
-msgstr "Приватное сообщение не может быть послано, %s  игнорирует его."
+msgstr "Приватное сообщение не может быть послано: %s игнорирует его."
 
 #: src/net/tmwa/chathandler.cpp:338
 msgid "MVP player."
@@ -4696,7 +4701,7 @@ msgstr "Каналы не поддерживаются!"
 #: src/net/tmwa/gamehandler.cpp:96
 #, c-format
 msgid "Online users: %d"
-msgstr "Пользователи Онлайн: %d"
+msgstr "Пользователей онлайн: %d"
 
 #: src/net/tmwa/gamehandler.cpp:106
 msgid "Game"
@@ -4738,7 +4743,7 @@ msgstr "Удача (luk) %+d"
 
 #: src/net/tmwa/generalhandler.cpp:138
 msgid "Authentication failed."
-msgstr "Ошибка авторизации"
+msgstr "Ошибка авторизации."
 
 #: src/net/tmwa/generalhandler.cpp:141
 msgid "No servers available."
@@ -4746,7 +4751,7 @@ msgstr "Нет доступных серверов."
 
 #: src/net/tmwa/generalhandler.cpp:145
 msgid "Someone else is trying to use this account."
-msgstr "Кто-то еще пытается воспользоваться данным аккаунтом"
+msgstr "Кто-то еще пытается воспользоваться данным аккаунтом."
 
 #: src/net/tmwa/generalhandler.cpp:148
 msgid "This account is already logged in."
@@ -4758,7 +4763,7 @@ msgstr "Обнаружен взлом скорости."
 
 #: src/net/tmwa/generalhandler.cpp:154
 msgid "Duplicated login."
-msgstr "Двойная попытка подключения"
+msgstr "Двойная попытка подключения."
 
 #: src/net/tmwa/generalhandler.cpp:157
 msgid "Unknown connection error."
@@ -4817,7 +4822,7 @@ msgstr "/help > Показать эту справку"
 
 #: src/net/tmwa/gui/guildtab.cpp:78
 msgid "/invite > Invite a player to your guild"
-msgstr "/invite > Пригласить игрока в вашу гиьдию"
+msgstr "/invite > Пригласить игрока в Вашу гильдию"
 
 #: src/net/tmwa/gui/guildtab.cpp:79
 msgid "/leave > Leave the guild you are in"
@@ -4825,7 +4830,7 @@ msgstr "/leave > Покинуть текущую гильдию"
 
 #: src/net/tmwa/gui/guildtab.cpp:80
 msgid "/kick > Kick some one from the guild you are in"
-msgstr "/kick > Вышвырнуть кого-либо из вашей текущей группы"
+msgstr "/kick > Вышвырнуть кого-либо из Вашей текущей группы"
 
 #: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
 msgid "Command: /invite <nick>"
@@ -4833,7 +4838,7 @@ msgstr "Команда: /invite <игрок>"
 
 #: src/net/tmwa/gui/guildtab.cpp:90
 msgid "This command invites <nick> to the guild you're in."
-msgstr "Эта команда приглашает <имя персонажа> к вам в группу."
+msgstr "Эта команда приглашает <имя персонажа> к Вам в группу."
 
 #: src/net/tmwa/gui/guildtab.cpp:96 src/net/tmwa/gui/partytab.cpp:90
 msgid "Command: /leave"
@@ -4841,7 +4846,7 @@ msgstr "Команда: /leave"
 
 #: src/net/tmwa/gui/guildtab.cpp:97
 msgid "This command causes the player to leave the guild."
-msgstr "Эта Команда заставляет игрока покинуть гильдию."
+msgstr "Эта команда заставляет игрока покинуть гильдию."
 
 #: src/net/tmwa/guildhandler.cpp:112 src/net/tmwa/guildhandler.cpp:117
 msgid "You are already in guild."
@@ -4873,7 +4878,7 @@ msgstr "Уровень гильдии: %d"
 #: src/net/tmwa/guildhandler.cpp:211
 #, c-format
 msgid "Online members: %d"
-msgstr "Пользователи онлайн: %d"
+msgstr "Пользователей онлайн: %d"
 
 #: src/net/tmwa/guildhandler.cpp:213
 #, c-format
@@ -4902,7 +4907,7 @@ msgstr "Замки: %s"
 
 #: src/net/tmwa/guildhandler.cpp:436
 msgid "Could not inivte user to guild."
-msgstr "Не удаось пригласить пользователя в гиьдию."
+msgstr "Не удалось пригласить пользователя в гиьдию."
 
 #: src/net/tmwa/guildhandler.cpp:441
 msgid "User rejected guild invite."
@@ -4910,7 +4915,7 @@ msgstr "Пользователь отклонил приглашение."
 
 #: src/net/tmwa/guildhandler.cpp:446
 msgid "User is now part of your guild."
-msgstr "Пользователь теперь в вашей гильдии."
+msgstr "Пользователь теперь в Вашей гильдии."
 
 #: src/net/tmwa/guildhandler.cpp:451
 msgid "Your guild is full."
@@ -4927,7 +4932,7 @@ msgstr "Вы покинули гильдию."
 #: src/net/tmwa/guildhandler.cpp:492
 #, c-format
 msgid "%s has left your guild."
-msgstr "%s покинул вашу гильдию."
+msgstr "%s покинул Вашу гильдию."
 
 #: src/net/tmwa/guildhandler.cpp:524
 msgid "You was kicked from guild."
@@ -4936,11 +4941,11 @@ msgstr "Вы были кикнуты из гильдии."
 #: src/net/tmwa/guildhandler.cpp:538
 #, c-format
 msgid "%s has kicked from your guild."
-msgstr "%s был вышвырнут и вашем гильдии."
+msgstr "%s был вышвырнут из Вашей гильдии."
 
 #: src/net/tmwa/gui/partytab.cpp:70
 msgid "/invite > Invite a player to your party"
-msgstr "/invite > Пригласить игрока в вашу группу"
+msgstr "/invite > Пригласить игрока в Вашу группу"
 
 #: src/net/tmwa/gui/partytab.cpp:71
 msgid "/leave > Leave the party you are in"
@@ -4948,7 +4953,7 @@ msgstr "/leave > Покинуть текущую группу"
 
 #: src/net/tmwa/gui/partytab.cpp:72
 msgid "/kick > Kick some one from the party you are in"
-msgstr "/kick > Вышвырнуть кого-либо из вашей текущей группы"
+msgstr "/kick > Вышвырнуть кого-либо из Вашей текущей группы"
 
 #: src/net/tmwa/gui/partytab.cpp:73
 msgid "/item > Show/change party item sharing options"
@@ -4965,7 +4970,7 @@ msgstr "Эта команда приглашает <имя персонажа> �
 
 #: src/net/tmwa/gui/partytab.cpp:91
 msgid "This command causes the player to leave the party."
-msgstr "Эта Команда заставляет игрока покинуть группу"
+msgstr "Эта команда заставляет игрока покинуть группу"
 
 #: src/net/tmwa/gui/partytab.cpp:95
 msgid "Command: /item <policy>"
@@ -4979,7 +4984,9 @@ msgstr "Команда изменяет политику разделения п
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
-msgstr "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
+msgstr ""
+"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения или"
+" \"0\", \"no\", \"false\" -- для выключения."
 
 #: src/net/tmwa/gui/partytab.cpp:101
 msgid "Command: /item"
@@ -4987,7 +4994,8 @@ msgstr "Команда: /item"
 
 #: src/net/tmwa/gui/partytab.cpp:102
 msgid "This command displays the party's current item sharing policy."
-msgstr "Отображает текущую политику раздеения предметов между членами группы."
+msgstr ""
+"Отображает текущую политику разделения предметов между членами группы."
 
 #: src/net/tmwa/gui/partytab.cpp:107
 msgid "Command: /exp <policy>"
@@ -5002,8 +5010,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" -чтобы разрешить общий"
-" опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
+"<policy> может быть одним из \"1\", \"yes\", \"true\" - чтобы разрешить "
+"общий опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
 
 #: src/net/tmwa/gui/partytab.cpp:113
 msgid "Command: /exp"
@@ -5051,7 +5059,7 @@ msgstr "Не удалось использовать предмет."
 
 #: src/net/tmwa/inventoryhandler.cpp:531
 msgid "Unable to equip."
-msgstr "Нельза экипировать!"
+msgstr "Нельзя экипировать!"
 
 #: src/net/tmwa/loginhandler.cpp:93
 msgid "Account was not found. Please re-login."
@@ -5112,7 +5120,7 @@ msgstr "Пустой адрес был передан методу Network::conn
 
 #: src/net/tmwa/network.cpp:356
 msgid "Unable to resolve host \""
-msgstr "Не удолось найти хост \""
+msgstr "Не удалось найти хост \""
 
 #: src/net/tmwa/network.cpp:426
 msgid "Connection to server terminated. "
@@ -5134,22 +5142,22 @@ msgstr "%s присоединился к группе."
 #: src/net/tmwa/partyhandler.cpp:179
 #, c-format
 msgid "%s is already a member of a party."
-msgstr "%s уже в вашей группе."
+msgstr "%s уже в Вашей группе."
 
 #: src/net/tmwa/partyhandler.cpp:184
 #, c-format
 msgid "%s refused your invitation."
-msgstr "%s отверг ваше приглашение."
+msgstr "%s отверг Ваше приглашение."
 
 #: src/net/tmwa/partyhandler.cpp:189
 #, c-format
 msgid "%s is now a member of your party."
-msgstr "%s теперь в вашей группе."
+msgstr "%s теперь в Вашей группе."
 
 #: src/net/tmwa/partyhandler.cpp:194
 #, c-format
 msgid "%s can't join your party because party is full."
-msgstr "%s не может присоединится к вашей группе, т.к. группа переполнена."
+msgstr "%s не может присоединиться к Вашей группе, т.к. группа переполнена."
 
 #: src/net/tmwa/partyhandler.cpp:199
 #, c-format
@@ -5163,7 +5171,7 @@ msgstr "Вы покинули группу."
 #: src/net/tmwa/partyhandler.cpp:371
 #, c-format
 msgid "%s has left your party."
-msgstr "%s покинул вашу группу."
+msgstr "%s покинул Вашу группу."
 
 #: src/net/tmwa/partyhandler.cpp:447
 #, c-format
@@ -5205,7 +5213,7 @@ msgstr "Лишенный жизни, покойся с миром."
 
 #: src/net/tmwa/playerhandler.cpp:133
 msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr "Если бы вы не были нарисованными, вы бы отправлись на тот свет"
+msgstr "Если бы Вы не были нарисованными, Вы бы отправлись на тот свет"
 
 #: src/net/tmwa/playerhandler.cpp:134
 msgid "Your metabolic processes are now history."
@@ -5217,23 +5225,23 @@ msgstr "Вы упали с ветки."
 
 #: src/net/tmwa/playerhandler.cpp:136
 msgid "You've kicked the bucket."
-msgstr "Вы протянули ноги"
+msgstr "Вы протянули ноги."
 
 #: src/net/tmwa/playerhandler.cpp:137
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
 msgstr ""
-"Вы затаскали свою смертную оболочку, сорвали занавес, и незримо "
+"Вы затаскали свою смертную оболочку, сорвали занавес и незримо "
 "присоединились к кровоточащему хору..."
 
 #: src/net/tmwa/playerhandler.cpp:139
 msgid "You are an ex-player."
-msgstr "Вы не жилец"
+msgstr "Вы не жилец."
 
 #: src/net/tmwa/playerhandler.cpp:140
 msgid "You're pining for the fjords."
-msgstr "Вас пришпиливают к фьёрдам."
+msgstr "Вас пришпиливают к фьордам."
 
 #: src/net/tmwa/playerhandler.cpp:342 src/net/tmwa/playerhandler.cpp:352
 #: src/net/tmwa/playerhandler.cpp:431
@@ -5245,14 +5253,14 @@ msgid ""
 "You are carrying more than half your weight. You are unable to regain "
 "health."
 msgstr ""
-"Вы несете груз больший, чем половина вашей грузоподъемности. Не удалось "
-"восстановить здоровье."
+"Вы несете груз больший, чем половина вашей грузоподъемности. Здоровье "
+"восстанавливаться не будет."
 
 #: src/net/tmwa/playerhandler.cpp:353
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
-"Вес предметов составляет менее половины допустимого. Теперь вы можете "
-"восстанавливаться"
+"Вес предметов составляет менее половины допустимого. Теперь Вы можете "
+"восстанавливаться."
 
 #: src/net/tmwa/playerhandler.cpp:458
 #, c-format
@@ -5278,7 +5286,7 @@ msgstr "Не удалось начать торговлю!"
 
 #: src/net/tmwa/specialhandler.cpp:168
 msgid "Emote failed!"
-msgstr "Не удалось испоьзовать смайлик!"
+msgstr "Не удалось использовать смайлик!"
 
 #: src/net/tmwa/specialhandler.cpp:171
 msgid "Sit failed!"
@@ -5290,7 +5298,7 @@ msgstr "Не удалось создать чат!"
 
 #: src/net/tmwa/specialhandler.cpp:177
 msgid "Could not join party!"
-msgstr "Нельзы присоединиться к группе!"
+msgstr "Нельзя присоединиться к группе!"
 
 #: src/net/tmwa/specialhandler.cpp:180
 msgid "Cannot shout!"
@@ -5310,7 +5318,7 @@ msgstr "Недостаточно Маны"
 
 #: src/net/tmwa/specialhandler.cpp:203
 msgid "You have no memos!"
-msgstr "У вас нет записей!"
+msgstr "У Вас нет записей!"
 
 #: src/net/tmwa/specialhandler.cpp:206
 msgid "You cannot do that right now!"
@@ -5318,7 +5326,7 @@ msgstr "Вы не можете сделать это сейчас!"
 
 #: src/net/tmwa/specialhandler.cpp:209
 msgid "Seems you need more money... ;-)"
-msgstr "Похоже вам нужно боьше денег... ;-)"
+msgstr "Похоже, Вам нужно боьше денег... ;-)"
 
 #: src/net/tmwa/specialhandler.cpp:212
 msgid "You cannot use this skill with that kind of weapon!"
@@ -5376,7 +5384,7 @@ msgstr "Торговля с %s отменена."
 
 #: src/net/tmwa/tradehandler.cpp:187
 msgid "Unhandled trade cancel packet."
-msgstr "Неизвестный сигнал завершения торговли"
+msgstr "Неизвестный сигнал завершения торговли."
 
 #: src/net/tmwa/tradehandler.cpp:250
 msgid "Failed adding item. Trade partner is over weighted."

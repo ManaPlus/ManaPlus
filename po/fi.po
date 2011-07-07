@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-05 03:57+0300\n"
+"POT-Creation-Date: 2011-07-07 03:39+0300\n"
 "PO-Revision-Date: 2011-06-20 00:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Näkyvillä kartalla"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "dodge"
 msgstr "väistö"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "miss"
 msgstr "huti"
 
@@ -2214,8 +2214,8 @@ msgstr "Kirjasimen koko"
 msgid "Theme Changed"
 msgstr "Ulkoasua muutettu"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
-#: src/gui/setup_video.cpp:652
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:657
+#: src/gui/setup_video.cpp:662
 msgid "Restart your client for the change to take effect."
 msgstr "Käynnistä ohjelma uudelleen, jotta muutos astuu voimaan."
 
@@ -2267,127 +2267,132 @@ msgstr "keskitaso"
 msgid "max"
 msgstr "maksimi"
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:292
 msgid "Full screen"
 msgstr "Kokoruututila"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Hw acceleration"
 msgstr "Rautakiihdytys"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Custom cursor"
 msgstr "Tyylitelty hiiren osoitin"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:296
 msgid "Particle effects"
 msgstr "Hiukkastehosteet"
 
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:298
 msgid "Show pickup notification"
 msgstr "Näytä ottoviesti"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:300
 msgid "in chat"
 msgstr "keskusteluikkunassa"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:302
 msgid "as particle"
 msgstr "leijuvana"
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:304
 msgid "Enable opacity cache"
 msgstr "Ota käyttöön läpinäkyvyysvälimuisti"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
+#, fuzzy
+msgid "Enable map reduce"
+msgstr "Ota musiikki käyttöön"
+
+#: src/gui/setup_video.cpp:306
 msgid "Show background"
 msgstr "Näytä tausta"
 
-#: src/gui/setup_video.cpp:309
+#: src/gui/setup_video.cpp:311
 msgid "FPS limit:"
 msgstr "Piirtonopeusrajoitin (FPS):"
 
-#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
-#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
+#: src/gui/setup_video.cpp:315 src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:747
 msgid "Alt FPS limit: "
 msgstr "Vaihtoehtoinen FPS-rajoitin:"
 
-#: src/gui/setup_video.cpp:322
+#: src/gui/setup_video.cpp:324
 msgid "Video"
 msgstr "Kuva"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:330
 msgid "Overhead text"
 msgstr "Tekstinä yläpuolella"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:331
 msgid "Gui opacity"
 msgstr "Käyttöliittymän läpinäkyvyys"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:332
 msgid "Ambient FX"
 msgstr "Taustaäänet"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:333
 msgid "Particle detail"
 msgstr "Hiukkastehosteiden yksityiskohtaisuus"
 
-#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
-#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
-#: src/gui/setup_video.cpp:735
+#: src/gui/setup_video.cpp:350 src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:594 src/gui/setup_video.cpp:734
+#: src/gui/setup_video.cpp:745
 msgid "None"
 msgstr "-"
 
-#: src/gui/setup_video.cpp:497
+#: src/gui/setup_video.cpp:503
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr "Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
-#: src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:509
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "Kokoruututilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
-#: src/gui/setup_video.cpp:514
+#: src/gui/setup_video.cpp:520
 msgid "Switching to Full Screen"
 msgstr "Vaihdan kokoruututilaan"
 
-#: src/gui/setup_video.cpp:515
+#: src/gui/setup_video.cpp:521
 msgid "Restart needed for changes to take effect."
 msgstr "Ohjelma pitää käynnistää uudelleen, jotta muutokset astuvat voimaan."
 
-#: src/gui/setup_video.cpp:527
+#: src/gui/setup_video.cpp:533
 msgid "Changing to OpenGL"
 msgstr "Vaihdetaan käyttämään OpenGL:ää"
 
-#: src/gui/setup_video.cpp:528
+#: src/gui/setup_video.cpp:534
 msgid "Applying change to OpenGL requires restart."
 msgstr "OpenGL -asetuksen muutos vaatii ohjelman uudelleenkäynnistyksen."
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:640
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Oma tarkkuus (esim. 1024x768)"
 
-#: src/gui/setup_video.cpp:631
+#: src/gui/setup_video.cpp:641
 msgid "Enter new resolution:                "
 msgstr "Anna uusi tarkkuus:                  "
 
-#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
+#: src/gui/setup_video.cpp:656 src/gui/setup_video.cpp:661
 msgid "Screen Resolution Changed"
 msgstr "Ikkunan koko vaihdettu"
 
-#: src/gui/setup_video.cpp:649
+#: src/gui/setup_video.cpp:659
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Joitakin ikkunoita on siirretty, jotta ne mahtuvat pienemmälle ruudulle."
 
-#: src/gui/setup_video.cpp:682
+#: src/gui/setup_video.cpp:692
 msgid "Particle Effect Settings Changed."
 msgstr "Hiukkastehosteiden asetuksia on muutettu."
 
-#: src/gui/setup_video.cpp:683
+#: src/gui/setup_video.cpp:693
 msgid "Changes will take effect on map change."
 msgstr "Muutokset astuvat voimaan kartan vaihtuessa."
 

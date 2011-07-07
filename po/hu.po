@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-05 03:57+0300\n"
+"POT-Creation-Date: 2011-07-07 03:39+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Látható nevek"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "miss"
 msgstr ""
 
@@ -2380,8 +2380,8 @@ msgstr "Betűméret"
 msgid "Theme Changed"
 msgstr "Változtatás"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
-#: src/gui/setup_video.cpp:652
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:657
+#: src/gui/setup_video.cpp:662
 msgid "Restart your client for the change to take effect."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
@@ -2435,139 +2435,144 @@ msgstr "közepes"
 msgid "max"
 msgstr "max."
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:292
 msgid "Full screen"
 msgstr "Teljes képernyő"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 #, fuzzy
 msgid "Hw acceleration"
 msgstr "Kapcsolat"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Custom cursor"
 msgstr "Egyéni kurzor"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:296
 msgid "Particle effects"
 msgstr "Játékbéli effektek"
 
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:298
 msgid "Show pickup notification"
 msgstr "Értesítés tárgy felvételkor"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:300
 msgid "in chat"
 msgstr "Chat-en belül"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:302
 msgid "as particle"
 msgstr "Karakter felett"
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:304
 #, fuzzy
 msgid "Enable opacity cache"
 msgstr "Joystick engedélyezése"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
+#, fuzzy
+msgid "Enable map reduce"
+msgstr "Joystick engedélyezése"
+
+#: src/gui/setup_video.cpp:306
 #, fuzzy
 msgid "Show background"
 msgstr "Háttér"
 
-#: src/gui/setup_video.cpp:309
+#: src/gui/setup_video.cpp:311
 #, fuzzy
 msgid "FPS limit:"
 msgstr "FPS Limit:"
 
-#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
-#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
+#: src/gui/setup_video.cpp:315 src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:747
 #, fuzzy
 msgid "Alt FPS limit: "
 msgstr "FPS Limit:"
 
-#: src/gui/setup_video.cpp:322
+#: src/gui/setup_video.cpp:324
 msgid "Video"
 msgstr "Videó"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:330
 msgid "Overhead text"
 msgstr "Fej feletti szöveg"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:331
 msgid "Gui opacity"
 msgstr "Menük áttetszősége"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:332
 msgid "Ambient FX"
 msgstr "Környezeti effektek"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:333
 #, fuzzy
 msgid "Particle detail"
 msgstr "Effektek részletessége"
 
-#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
-#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
-#: src/gui/setup_video.cpp:735
+#: src/gui/setup_video.cpp:350 src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:594 src/gui/setup_video.cpp:734
+#: src/gui/setup_video.cpp:745
 #, fuzzy
 msgid "None"
 msgstr "Nem"
 
-#: src/gui/setup_video.cpp:497
+#: src/gui/setup_video.cpp:503
 #, fuzzy
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr "Ez a mód és az előző mód visszaállítása sikertelen."
 
-#: src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:509
 #, fuzzy
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "Ez a mód és az előző mód visszaállítása sikertelen."
 
-#: src/gui/setup_video.cpp:514
+#: src/gui/setup_video.cpp:520
 #, fuzzy
 msgid "Switching to Full Screen"
 msgstr "Átállás teljes képernyőre"
 
-#: src/gui/setup_video.cpp:515
+#: src/gui/setup_video.cpp:521
 msgid "Restart needed for changes to take effect."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
-#: src/gui/setup_video.cpp:527
+#: src/gui/setup_video.cpp:533
 #, fuzzy
 msgid "Changing to OpenGL"
 msgstr "OpenGL átállítása"
 
-#: src/gui/setup_video.cpp:528
+#: src/gui/setup_video.cpp:534
 msgid "Applying change to OpenGL requires restart."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:640
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:631
+#: src/gui/setup_video.cpp:641
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
+#: src/gui/setup_video.cpp:656 src/gui/setup_video.cpp:661
 #, fuzzy
 msgid "Screen Resolution Changed"
 msgstr "A képernyő felbontása megváltozott"
 
-#: src/gui/setup_video.cpp:649
+#: src/gui/setup_video.cpp:659
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:682
+#: src/gui/setup_video.cpp:692
 #, fuzzy
 msgid "Particle Effect Settings Changed."
 msgstr "Effektek beállítása megváltozott."
 
-#: src/gui/setup_video.cpp:683
+#: src/gui/setup_video.cpp:693
 msgid "Changes will take effect on map change."
 msgstr "A változások érvénybe lépéséhez töltsön be egy új térképet."
 

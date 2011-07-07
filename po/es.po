@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Nelson  <nelson6eeduardo65@gmail.com>, 2011.
 # Nelson Martell <nelson6eeduardo65@gmail.com>, 2011.
 # Jumpy <antoinebcn@hotmail.com>, 2011.
@@ -10,26 +10,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-05 03:57+0300\n"
-"PO-Revision-Date: 2011-06-20 14:11+0000\n"
-"Last-Translator: nelson6e65 <nelson6eeduardo65@gmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
-"manaplus/team/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2011-07-07 03:39+0300\n"
+"PO-Revision-Date: 2011-07-07 00:42+0000\n"
+"Last-Translator: akaras <akaras@inbox.ru>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/manaplus/team/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1030
 msgid "Visible on map"
 msgstr "Visible sobre el mapa"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "dodge"
 msgstr "evade"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "miss"
 msgstr "falla"
 
@@ -130,8 +129,8 @@ msgstr "¡No puedes enviar susurros vacíos!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
 "¡No se puede crear una pestaña de susurro para el nick \"%s\"! O bien ya "
 "existe, o eres tú."
@@ -288,8 +287,7 @@ msgstr "Imágenes de recurso huérfano:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opciones para /%s son \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr "Opciones para /%s son \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -1366,13 +1364,12 @@ msgstr "Agregar comentario"
 #: src/gui/popupmenu.cpp:264 src/gui/popupmenu.cpp:446
 #: src/gui/popupmenu.cpp:682
 msgid "Buy (?)"
-msgstr ""
+msgstr "Comprar (?)"
 
 #: src/gui/popupmenu.cpp:266 src/gui/popupmenu.cpp:447
 #: src/gui/popupmenu.cpp:684
-#, fuzzy
 msgid "Sell (?)"
-msgstr "Vender"
+msgstr "Venta (?)"
 
 #: src/gui/popupmenu.cpp:292
 msgid "Kick"
@@ -1619,9 +1616,8 @@ msgid "Choose Your Server"
 msgstr "Escoja tu servidor"
 
 #: src/gui/serverdialog.cpp:239
-#, fuzzy
 msgid "Choose Your Server  *** SAFE MODE ***"
-msgstr "Escoja tu servidor"
+msgstr "Elige tu servidor  *** MODO SEGURO ***"
 
 #: src/gui/serverdialog.cpp:244
 msgid "Port:"
@@ -1738,9 +1734,8 @@ msgid "Show chat colors list"
 msgstr "Mostrar lista de colores del chat"
 
 #: src/gui/setup_chat.cpp:64
-#, fuzzy
 msgid "Commands"
-msgstr "Comando:"
+msgstr "Comandos"
 
 #: src/gui/setup_chat.cpp:66
 msgid "Allow magic and GM commands in all chat tabs"
@@ -1750,7 +1745,7 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:70
 msgid "Limits"
-msgstr ""
+msgstr "Límites"
 
 #: src/gui/setup_chat.cpp:72
 msgid "Limit max chars in chat line"
@@ -1762,7 +1757,7 @@ msgstr "Limitar líneas máx. en chat"
 
 #: src/gui/setup_chat.cpp:79
 msgid "Logs"
-msgstr ""
+msgstr "Registros"
 
 #: src/gui/setup_chat.cpp:81
 msgid "Enable chat Log"
@@ -1773,9 +1768,8 @@ msgid "Show chat history"
 msgstr "Mostrar historial de charla"
 
 #: src/gui/setup_chat.cpp:88
-#, fuzzy
 msgid "Messages"
-msgstr "Mensaje"
+msgstr "Mensajes"
 
 #: src/gui/setup_chat.cpp:90
 msgid "Hide shop messages"
@@ -1783,7 +1777,7 @@ msgstr "Ocultar mensajes de la tienda"
 
 #: src/gui/setup_chat.cpp:94
 msgid "Tabs"
-msgstr ""
+msgstr "Pestañas"
 
 #: src/gui/setup_chat.cpp:96
 msgid "Log magic messages in debug tab"
@@ -1811,7 +1805,7 @@ msgstr "Si hace falta, cambia el tamaño de ventanas de dialogo"
 
 #: src/gui/setup_chat.cpp:115
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"
 
 #: src/gui/setup_chat.cpp:117
 msgid "Use local time"
@@ -1979,7 +1973,7 @@ msgstr "Dibujar teclas de acceso rápido en el mapa"
 
 #: src/gui/setup_other.cpp:89
 msgid "Moving"
-msgstr ""
+msgstr "En movimiento"
 
 #: src/gui/setup_other.cpp:91
 msgid "Auto fix position"
@@ -1998,9 +1992,8 @@ msgid "Crazy move A program"
 msgstr "Programa de movimientos locos A"
 
 #: src/gui/setup_other.cpp:104
-#, fuzzy
 msgid "Player"
-msgstr "Jugadores"
+msgstr "Jugador"
 
 #: src/gui/setup_other.cpp:106
 msgid "Show own hp bar"
@@ -2035,9 +2028,8 @@ msgid "Enable attack filter"
 msgstr "Habilitar filtro de ataque"
 
 #: src/gui/setup_other.cpp:130
-#, fuzzy
 msgid "Enable advert protocol"
-msgstr "Habilitar la proteción contra servidores defectuosos"
+msgstr "Habilitar el protocolo de anuncio"
 
 #: src/gui/setup_other.cpp:136
 msgid "Accept sell/buy requests"
@@ -2052,9 +2044,8 @@ msgid "Log NPC dialogue"
 msgstr "Log dealogos con un NPC"
 
 #: src/gui/setup_other.cpp:149
-#, fuzzy
 msgid "Other"
-msgstr "otro"
+msgstr "Otro"
 
 #: src/gui/setup_other.cpp:151
 msgid "Enable server side attack"
@@ -2216,8 +2207,8 @@ msgstr "Tamaño de fuente"
 msgid "Theme Changed"
 msgstr "Tema cambiado"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
-#: src/gui/setup_video.cpp:652
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:657
+#: src/gui/setup_video.cpp:662
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie el juego para que los cambios tengan efecto."
 
@@ -2269,129 +2260,133 @@ msgstr "medio"
 msgid "max"
 msgstr "máximo"
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:292
 msgid "Full screen"
 msgstr "Pantalla completa"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Hw acceleration"
 msgstr "Aceleración de hardware"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Custom cursor"
 msgstr "Cursor propio"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:296
 msgid "Particle effects"
 msgstr "Efectos de partículas"
 
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:298
 msgid "Show pickup notification"
 msgstr "Mostrar aviso al coger algo"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:300
 msgid "in chat"
 msgstr "en chat"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:302
 msgid "as particle"
 msgstr "como partícula"
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:304
 msgid "Enable opacity cache"
 msgstr "Habilitar caché de opacidad"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
+msgid "Enable map reduce"
+msgstr ""
+
+#: src/gui/setup_video.cpp:306
 msgid "Show background"
 msgstr "Mostrar fondo"
 
-#: src/gui/setup_video.cpp:309
+#: src/gui/setup_video.cpp:311
 msgid "FPS limit:"
 msgstr "Limite FPS:"
 
-#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
-#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
+#: src/gui/setup_video.cpp:315 src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:747
 msgid "Alt FPS limit: "
 msgstr "Limites alternativas FPS: "
 
-#: src/gui/setup_video.cpp:322
+#: src/gui/setup_video.cpp:324
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:330
 msgid "Overhead text"
 msgstr "Sobrecarga de texto"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:331
 msgid "Gui opacity"
 msgstr "Opacidad"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:332
 msgid "Ambient FX"
 msgstr "Ambiente FX"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:333
 msgid "Particle detail"
 msgstr "Detalle de partículas"
 
-#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
-#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
-#: src/gui/setup_video.cpp:735
+#: src/gui/setup_video.cpp:350 src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:594 src/gui/setup_video.cpp:734
+#: src/gui/setup_video.cpp:745
 msgid "None"
 msgstr "Nada"
 
-#: src/gui/setup_video.cpp:497
+#: src/gui/setup_video.cpp:503
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Fallo al cambiar para el modo ventana y fallo al restaurar el modo anterior!"
 
-#: src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:509
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Fallo al cambiar para el modo ventana completa y fallo al restaurar el modo "
 "anterior!"
 
-#: src/gui/setup_video.cpp:514
+#: src/gui/setup_video.cpp:520
 msgid "Switching to Full Screen"
 msgstr "Cambiando a pantalla completa"
 
-#: src/gui/setup_video.cpp:515
+#: src/gui/setup_video.cpp:521
 msgid "Restart needed for changes to take effect."
 msgstr "Reinicio necesario para que los cambios tengan su efecto."
 
-#: src/gui/setup_video.cpp:527
+#: src/gui/setup_video.cpp:533
 msgid "Changing to OpenGL"
 msgstr "Cambiando a OpenGL"
 
-#: src/gui/setup_video.cpp:528
+#: src/gui/setup_video.cpp:534
 msgid "Applying change to OpenGL requires restart."
 msgstr "Aplicar el intercambio a OpenGL requiere reiniciar el juego."
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:640
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Resolución personalizada (ejemplo: 1024x768)"
 
-#: src/gui/setup_video.cpp:631
+#: src/gui/setup_video.cpp:641
 msgid "Enter new resolution:                "
 msgstr "Ingrese la nueva resolución:                "
 
-#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
+#: src/gui/setup_video.cpp:656 src/gui/setup_video.cpp:661
 msgid "Screen Resolution Changed"
 msgstr "Resolución de pantalla cambiada"
 
-#: src/gui/setup_video.cpp:649
+#: src/gui/setup_video.cpp:659
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr "Algunas ventanas deben ser movidas a una resolución más baja."
 
-#: src/gui/setup_video.cpp:682
+#: src/gui/setup_video.cpp:692
 msgid "Particle Effect Settings Changed."
 msgstr "Configuración del efecto de las partículas cambiado."
 
-#: src/gui/setup_video.cpp:683
+#: src/gui/setup_video.cpp:693
 msgid "Changes will take effect on map change."
 msgstr "Los cambios tendran efecto cuando se cambie de mapa."
 
@@ -3190,7 +3185,8 @@ msgid "Change"
 msgstr "Cambiar"
 
 #: src/gui/tradewindow.cpp:336
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Fallo al añadir objeto. No puedes añadir más de un mismo tipo de objeto en "
 "la ventana."
@@ -3538,7 +3534,8 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jugador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Este comando para de ignorar al jugador si había sido ignorado."
 
 #: src/gui/windowmenu.cpp:65
@@ -4984,7 +4981,8 @@ msgstr "Comando: /item"
 
 #: src/net/tmwa/gui/partytab.cpp:102
 msgid "This command displays the party's current item sharing policy."
-msgstr "Este comando muestra el actual estado de compartir objetos en el grupo"
+msgstr ""
+"Este comando muestra el actual estado de compartir objetos en el grupo"
 
 #: src/net/tmwa/gui/partytab.cpp:107
 msgid "Command: /exp <policy>"
@@ -5079,8 +5077,8 @@ msgstr "Rechazado del servidor."
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
-"Has sido baneado permanentemente del juego. Por favor contacta con el equipo "
-"GM."
+"Has sido baneado permanentemente del juego. Por favor contacta con el equipo"
+" GM."
 
 #: src/net/tmwa/loginhandler.cpp:180
 msgid "Client too old."
@@ -5243,7 +5241,8 @@ msgstr "Mensaje"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
 #: src/net/tmwa/playerhandler.cpp:353
@@ -5435,3 +5434,5 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Objeto desconocido"
+
+

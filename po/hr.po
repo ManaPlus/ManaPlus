@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-05 03:57+0300\n"
+"POT-Creation-Date: 2011-07-07 03:39+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Vidljiva imena"
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "dodge"
 msgstr ""
 
-#: src/being.cpp:528
+#: src/being.cpp:530
 msgid "miss"
 msgstr ""
 
@@ -2386,8 +2386,8 @@ msgstr "Veličina fonta"
 msgid "Theme Changed"
 msgstr "Izmijeni"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:647
-#: src/gui/setup_video.cpp:652
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:657
+#: src/gui/setup_video.cpp:662
 msgid "Restart your client for the change to take effect."
 msgstr "Ponovo pokrenite klijent da bi promjene bile efektne."
 
@@ -2441,137 +2441,142 @@ msgstr "srednje"
 msgid "max"
 msgstr "max"
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:292
 msgid "Full screen"
 msgstr "Pregled na čitavom ekranu"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 #, fuzzy
 msgid "Hw acceleration"
 msgstr "Odnos"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Custom cursor"
 msgstr "Vlastiti kursor"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:296
 msgid "Particle effects"
 msgstr "Efekt čestica"
 
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:298
 msgid "Show pickup notification"
 msgstr "Prikaži obavijesti o prikupljanju."
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:300
 msgid "in chat"
 msgstr "u chat-u"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:302
 msgid "as particle"
 msgstr "kao čestica"
 
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:304
 #, fuzzy
 msgid "Enable opacity cache"
 msgstr "Omogući igraću palicu"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
+#, fuzzy
+msgid "Enable map reduce"
+msgstr "Omogući igraću palicu"
+
+#: src/gui/setup_video.cpp:306
 #, fuzzy
 msgid "Show background"
 msgstr "Pozadina"
 
-#: src/gui/setup_video.cpp:309
+#: src/gui/setup_video.cpp:311
 #, fuzzy
 msgid "FPS limit:"
 msgstr "Ograničenje sličica u sekundi"
 
-#: src/gui/setup_video.cpp:313 src/gui/setup_video.cpp:349
-#: src/gui/setup_video.cpp:586 src/gui/setup_video.cpp:737
+#: src/gui/setup_video.cpp:315 src/gui/setup_video.cpp:352
+#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:747
 #, fuzzy
 msgid "Alt FPS limit: "
 msgstr "Ograničenje sličica u sekundi"
 
-#: src/gui/setup_video.cpp:322
+#: src/gui/setup_video.cpp:324
 msgid "Video"
 msgstr "Slika"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:330
 msgid "Overhead text"
 msgstr "Tekst iznad glave"
 
-#: src/gui/setup_video.cpp:329
+#: src/gui/setup_video.cpp:331
 msgid "Gui opacity"
 msgstr "Prozirnost sučelja"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:332
 msgid "Ambient FX"
 msgstr "Efekti okruženja"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:333
 #, fuzzy
 msgid "Particle detail"
 msgstr "Detalji Čestica"
 
-#: src/gui/setup_video.cpp:347 src/gui/setup_video.cpp:350
-#: src/gui/setup_video.cpp:585 src/gui/setup_video.cpp:724
-#: src/gui/setup_video.cpp:735
+#: src/gui/setup_video.cpp:350 src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:594 src/gui/setup_video.cpp:734
+#: src/gui/setup_video.cpp:745
 #, fuzzy
 msgid "None"
 msgstr "Ne"
 
-#: src/gui/setup_video.cpp:497
+#: src/gui/setup_video.cpp:503
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:509
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:514
+#: src/gui/setup_video.cpp:520
 #, fuzzy
 msgid "Switching to Full Screen"
 msgstr "Prebacivanje u pregled na čitavom ekranu"
 
-#: src/gui/setup_video.cpp:515
+#: src/gui/setup_video.cpp:521
 msgid "Restart needed for changes to take effect."
 msgstr "Potrebno je ponovno pokrenuti klijent za izvršavanje promjena."
 
-#: src/gui/setup_video.cpp:527
+#: src/gui/setup_video.cpp:533
 #, fuzzy
 msgid "Changing to OpenGL"
 msgstr "Promjena OpenGL-a"
 
-#: src/gui/setup_video.cpp:528
+#: src/gui/setup_video.cpp:534
 msgid "Applying change to OpenGL requires restart."
 msgstr "Izmjene OpenGL-a zahtjevaju ponovno pokretanje klijenta."
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:640
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:631
+#: src/gui/setup_video.cpp:641
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:646 src/gui/setup_video.cpp:651
+#: src/gui/setup_video.cpp:656 src/gui/setup_video.cpp:661
 #, fuzzy
 msgid "Screen Resolution Changed"
 msgstr "Rezolucija Ekrana promijenjena"
 
-#: src/gui/setup_video.cpp:649
+#: src/gui/setup_video.cpp:659
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:682
+#: src/gui/setup_video.cpp:692
 #, fuzzy
 msgid "Particle Effect Settings Changed."
 msgstr "Postavke efekta čestica su promijenjene."
 
-#: src/gui/setup_video.cpp:683
+#: src/gui/setup_video.cpp:693
 msgid "Changes will take effect on map change."
 msgstr "Promjene će stupiti na snagu na promjeni karte."
 
