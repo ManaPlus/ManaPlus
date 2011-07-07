@@ -209,6 +209,8 @@ class ConfigurationObject
 class Configuration : public ConfigurationObject
 {
     public:
+        Configuration();
+
         ~Configuration();
 
         /**

@@ -2307,7 +2307,6 @@ void Being::saveComment(const std::string &name,
 {
     std::string dir = Client::getUsersDirectory()
         + stringToHexPath(name);
-    std::string fileName = dir + "/comment.txt";
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }

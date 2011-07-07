@@ -145,6 +145,13 @@ ConfigurationObject::~ConfigurationObject()
     clear();
 }
 
+Configuration::Configuration() :
+    mConfigPath(""),
+    mDefaultsData(0),
+    mDirectory("")
+{
+}
+
 void Configuration::cleanDefaults()
 {
     if (mDefaultsData)

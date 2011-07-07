@@ -85,10 +85,6 @@ TradeWindow::TradeWindow():
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
 
-    std::string longestName = getFont()->getWidth(_("OK")) >
-                              getFont()->getWidth(_("Trade")) ?
-                              _("OK") : _("Trade");
-
     mAddButton = new Button(_("Add"), "add", this);
     mOkButton = new Button("", "", this); // Will be filled in later
 

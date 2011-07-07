@@ -95,7 +95,7 @@ class ShopWindow : public Window, public gcn::ActionListener,
          * Returns true if any instances exist.
          */
         static bool isActive()
-        { return instances.size() > 0; }
+        { return !instances.empty(); }
 
         void setItemSelected(int id)
         { mSelectedItem = id; updateButtonsAndLabels(); }

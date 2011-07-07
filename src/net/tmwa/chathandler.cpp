@@ -244,7 +244,6 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             if (!being || chatMsgLength <= 0)
                 break;
 
-            std::string str2;
             chatMsg = msg.readRawString(chatMsgLength);
 
             if (being->getType() == Being::PLAYER)
@@ -293,7 +292,6 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             if (chatMsgLength <= 0)
                 break;
 
-            std::string str2;
             chatMsg = msg.readRawString(chatMsgLength);
             std::string::size_type pos = chatMsg.find(" : ", 0);
 
@@ -301,8 +299,6 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
             {
                 if (chatWindow)
                     chatWindow->resortChatLog(chatMsg, BY_PLAYER);
-//                if (localChatTab)
-//                    localChatTab->chatLog(chatMsg, BY_PLAYER);
 
                 const std::string senseStr = "You sense the following: ";
                 if (actorSpriteManager && !chatMsg.find(senseStr))

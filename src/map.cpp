@@ -906,6 +906,9 @@ void Map::blockTile(int x, int y, BlockType type)
             case BLOCKTYPE_WATER:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_WATER;
                 break;
+            case BLOCKTYPE_GROUND:
+                mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUND;
+                break;
             default:
             case BLOCKTYPE_NONE:
             case NB_BLOCKTYPES:
@@ -1364,7 +1367,7 @@ void Map::addExtraLayer()
             return;
         }
         char line[201];
-        std::string buf;
+
         while (mapFile.getline(line, 200))
         {
             std::string buf;
