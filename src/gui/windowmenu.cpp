@@ -307,7 +307,7 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent _UNUSED_)
+void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
 {
     if (!mTextPopup)
         return;

@@ -223,12 +223,12 @@ namespace gcn
         }
     }
 
-    void Button::mouseExited(MouseEvent& mouseEvent _UNUSED_)
+    void Button::mouseExited(MouseEvent& mouseEvent A_UNUSED)
     {
         mHasMouse = false;
     }
 
-    void Button::mouseEntered(MouseEvent& mouseEvent _UNUSED_)
+    void Button::mouseEntered(MouseEvent& mouseEvent A_UNUSED)
     {
         mHasMouse = true;
     }
@@ -281,7 +281,7 @@ namespace gcn
         }
     }
 
-    void Button::focusLost(const Event& event _UNUSED_)
+    void Button::focusLost(const Event& event A_UNUSED)
     {
         mMousePressed = false;
         mKeyPressed = false;

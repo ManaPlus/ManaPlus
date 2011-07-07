@@ -185,7 +185,7 @@ void NpcHandler::stringInput(int npcId, const std::string &value)
     gameServerConnection->send(msg);
 }
 
-void NpcHandler::sendLetter(int npcId _UNUSED_, const std::string &recipient,
+void NpcHandler::sendLetter(int npcId A_UNUSED, const std::string &recipient,
                             const std::string &text)
 {
     MessageOut msg(PGMSG_NPC_POST_SEND);
@@ -194,23 +194,23 @@ void NpcHandler::sendLetter(int npcId _UNUSED_, const std::string &recipient,
     gameServerConnection->send(msg);
 }
 
-void NpcHandler::startShopping(int beingId _UNUSED_)
+void NpcHandler::startShopping(int beingId A_UNUSED)
 {
     // TODO
 }
 
-void NpcHandler::buy(int beingId _UNUSED_)
+void NpcHandler::buy(int beingId A_UNUSED)
 {
     // TODO
 }
 
-void NpcHandler::sell(int beingId _UNUSED_)
+void NpcHandler::sell(int beingId A_UNUSED)
 {
     // TODO
 }
 
-void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
-                         unsigned char color _UNUSED_, int amount)
+void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
+                         unsigned char color A_UNUSED, int amount)
 {
     MessageOut msg(PGMSG_NPC_BUYSELL);
     msg.writeInt16(itemId);
@@ -218,7 +218,7 @@ void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
     gameServerConnection->send(msg);
 }
 
-void NpcHandler::sellItem(int beingId _UNUSED_, int itemId, int amount)
+void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)
 {
     MessageOut msg(PGMSG_NPC_BUYSELL);
     msg.writeInt16(itemId);
@@ -226,7 +226,7 @@ void NpcHandler::sellItem(int beingId _UNUSED_, int itemId, int amount)
     gameServerConnection->send(msg);
 }
 
-void NpcHandler::endShopping(int beingId _UNUSED_)
+void NpcHandler::endShopping(int beingId A_UNUSED)
 {
     // TODO
 }

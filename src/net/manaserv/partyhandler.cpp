@@ -130,12 +130,12 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void PartyHandler::create(const std::string &name _UNUSED_)
+void PartyHandler::create(const std::string &name A_UNUSED)
 {
     // TODO
 }
 
-void PartyHandler::join(int partyId _UNUSED_)
+void PartyHandler::join(int partyId A_UNUSED)
 {
     // TODO
 }
@@ -171,17 +171,17 @@ void PartyHandler::leave()
     chatServerConnection->send(msg);
 }
 
-void PartyHandler::kick(Being *being _UNUSED_)
+void PartyHandler::kick(Being *being A_UNUSED)
 {
     // TODO
 }
 
-void PartyHandler::kick(const std::string &name _UNUSED_)
+void PartyHandler::kick(const std::string &name A_UNUSED)
 {
     // TODO
 }
 
-void PartyHandler::chat(const std::string &text _UNUSED_)
+void PartyHandler::chat(const std::string &text A_UNUSED)
 {
     // TODO
 }

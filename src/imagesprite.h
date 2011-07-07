@@ -23,9 +23,9 @@
 #define IMAGESPRITE_H
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 #include "sprite.h"
@@ -44,10 +44,10 @@ public:
     bool reset()
     { return false; }
 
-    bool play(std::string action _UNUSED_)
+    bool play(std::string action A_UNUSED)
     { return false; }
 
-    bool update(int time _UNUSED_)
+    bool update(int time A_UNUSED)
     { return false; }
 
     bool draw(Graphics* graphics, int posX, int posY) const;
@@ -61,7 +61,7 @@ public:
     const Image* getImage() const
     { return mImage; }
 
-    virtual bool setSpriteDirection(SpriteDirection direction _UNUSED_)
+    virtual bool setSpriteDirection(SpriteDirection direction A_UNUSED)
     { return false; }
 
     int getNumberOfLayers()

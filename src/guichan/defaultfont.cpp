@@ -67,7 +67,7 @@ namespace gcn
     }
 
     int DefaultFont::drawGlyph(Graphics* graphics,
-                               unsigned char glyph _UNUSED_, int x, int y)
+                               unsigned char glyph A_UNUSED, int x, int y)
     {
         graphics->drawRectangle( Rectangle(x, y, 8, 8));
 

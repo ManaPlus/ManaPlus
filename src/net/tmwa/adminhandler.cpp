@@ -89,7 +89,7 @@ void AdminHandler::localAnnounce(const std::string &text)
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void AdminHandler::hide(bool hide _UNUSED_)
+void AdminHandler::hide(bool hide A_UNUSED)
 {
     MessageOut outMsg(CMSG_ADMIN_HIDE);
     outMsg.writeInt32(0); //unused

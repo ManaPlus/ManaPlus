@@ -34,7 +34,7 @@ FlowContainer::FlowContainer(int boxWidth, int boxHeight):
         mBoxHeight = 1;
 }
 
-void FlowContainer::widgetResized(const gcn::Event &event _UNUSED_)
+void FlowContainer::widgetResized(const gcn::Event &event A_UNUSED)
 {
     if (getWidth() < mBoxWidth)
     {

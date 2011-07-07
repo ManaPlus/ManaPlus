@@ -211,7 +211,7 @@ static void initInternationalization()
 #endif
 }
 
-static void xmlNullLogger(void *ctx _UNUSED_, const char *msg _UNUSED_, ...)
+static void xmlNullLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 {
     // Does nothing, that's the whole point of it
 }

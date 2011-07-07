@@ -220,12 +220,12 @@ void Tab::setFlash(int flash)
     mFlash = flash;
 }
 
-void Tab::widgetResized(const gcn::Event &event _UNUSED_)
+void Tab::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Tab::widgetMoved(const gcn::Event &event _UNUSED_)
+void Tab::widgetMoved(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
 }

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _LOG_H
-#define _LOG_H
+#ifndef M_LOG_H
+#define M_LOG_H
 
 #include "main.h"
 #include <fstream>

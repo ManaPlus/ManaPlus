@@ -32,9 +32,9 @@
 #include <string>
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 namespace ManaServ
@@ -69,11 +69,11 @@ public:
 
     PartyShare getShareExperience() { return PARTY_SHARE_NO; }
 
-    void setShareExperience(PartyShare share _UNUSED_) {}
+    void setShareExperience(PartyShare share A_UNUSED) {}
 
     PartyShare getShareItems() { return PARTY_SHARE_NO; }
 
-    void setShareItems(PartyShare share _UNUSED_) {}
+    void setShareItems(PartyShare share A_UNUSED) {}
 private:
     Party *mParty;
 };

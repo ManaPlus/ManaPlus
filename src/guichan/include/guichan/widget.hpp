@@ -52,9 +52,9 @@
 #include "guichan/rectangle.hpp"
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 namespace gcn
@@ -894,7 +894,7 @@ namespace gcn
          * @see moveToBottom
          * @since 0.1.0
          */
-        virtual void moveToTop(Widget* widget _UNUSED_) { };
+        virtual void moveToTop(Widget* widget A_UNUSED) { };
 
         /**
          * Moves a widget in this widget to the bottom of this widget.
@@ -904,7 +904,7 @@ namespace gcn
          * @see moveToTop
          * @since 0.1.0
          */
-        virtual void moveToBottom(Widget* widget _UNUSED_) { };
+        virtual void moveToBottom(Widget* widget A_UNUSED) { };
 
         /**
          * Focuses the next widget in the widget.
@@ -930,8 +930,8 @@ namespace gcn
          * @param area The area to show.
          * @since 0.1.0
          */
-        virtual void showWidgetPart(Widget* widget _UNUSED_,
-                                    Rectangle area _UNUSED_)
+        virtual void showWidgetPart(Widget* widget A_UNUSED,
+                                    Rectangle area A_UNUSED)
         { };
 
         /**

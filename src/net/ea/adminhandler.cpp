@@ -37,7 +37,7 @@ void AdminHandler::kick(const std::string &name)
     Net::getChatHandler()->talk("@kick " + name);
 }
 
-void AdminHandler::ban(int playerId _UNUSED_)
+void AdminHandler::ban(int playerId A_UNUSED)
 {
     // Not supported
 }
@@ -47,7 +47,7 @@ void AdminHandler::ban(const std::string &name)
     Net::getChatHandler()->talk("@ban " + name);
 }
 
-void AdminHandler::unban(int playerId _UNUSED_)
+void AdminHandler::unban(int playerId A_UNUSED)
 {
     // Not supported
 }
@@ -57,8 +57,8 @@ void AdminHandler::unban(const std::string &name)
     Net::getChatHandler()->talk("@unban " + name);
 }
 
-void AdminHandler::mute(int playerId _UNUSED_, int type _UNUSED_,
-                        int limit _UNUSED_)
+void AdminHandler::mute(int playerId A_UNUSED, int type A_UNUSED,
+                        int limit A_UNUSED)
 {
     return; // Still looking into this
 }

@@ -401,7 +401,7 @@ public:
         mShortName = PLAYER_IGNORE_STRATEGY_NOP;
     }
 
-    virtual void ignore(Being *being _UNUSED_, unsigned int flags _UNUSED_)
+    virtual void ignore(Being *being A_UNUSED, unsigned int flags A_UNUSED)
     {
     }
 };
@@ -415,7 +415,7 @@ public:
         mShortName = "dotdotdot";
     }
 
-    virtual void ignore(Being *being, unsigned int flags _UNUSED_)
+    virtual void ignore(Being *being, unsigned int flags A_UNUSED)
     {
         if (!being)
             return;
@@ -435,7 +435,7 @@ public:
         mShortName = "blinkname";
     }
 
-    virtual void ignore(Being *being, unsigned int flags _UNUSED_)
+    virtual void ignore(Being *being, unsigned int flags A_UNUSED)
     {
         if (!being)
             return;
@@ -456,7 +456,7 @@ public:
         mShortName = shortname;
     }
 
-    virtual void ignore(Being *being, unsigned int flags _UNUSED_)
+    virtual void ignore(Being *being, unsigned int flags A_UNUSED)
     {
         if (!being)
             return;

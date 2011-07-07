@@ -463,7 +463,7 @@ void PartyHandler::create(const std::string &name)
     outMsg.writeString(name.substr(0, 23), 24);
 }
 
-void PartyHandler::join(int partyId _UNUSED_)
+void PartyHandler::join(int partyId A_UNUSED)
 {
     // TODO?
 }
@@ -490,7 +490,7 @@ void PartyHandler::invite(const std::string &name)
     }
 }
 
-void PartyHandler::inviteResponse(const std::string &inviter _UNUSED_,
+void PartyHandler::inviteResponse(const std::string &inviter A_UNUSED,
                                   bool accept)
 {
     if (player_node)

@@ -258,7 +258,7 @@ void EmoteShortcutContainer::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void EmoteShortcutContainer::mouseExited(gcn::MouseEvent &event _UNUSED_)
+void EmoteShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mEmotePopup)
         mEmotePopup->setVisible(false);

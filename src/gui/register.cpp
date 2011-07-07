@@ -247,7 +247,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
     }
 }
 
-void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent _UNUSED_)
+void RegisterDialog::keyPressed(gcn::KeyEvent &keyEvent A_UNUSED)
 {
     mRegisterButton->setEnabled(canSubmit());
 }

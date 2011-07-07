@@ -29,9 +29,9 @@
 #include <guichan/actionlistener.hpp>
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 class BrowserBox;
@@ -58,7 +58,7 @@ class HelpWindow : public Window, public LinkHandler,
          * Handles link action.
          */
         void handleLink(const std::string &link,
-                        gcn::MouseEvent *event _UNUSED_);
+                        gcn::MouseEvent *event A_UNUSED);
 
         /**
          * Loads help in the dialog.

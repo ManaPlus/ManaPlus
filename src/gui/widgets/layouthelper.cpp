@@ -57,7 +57,7 @@ void LayoutHelper::reflowLayout(int w, int h)
     mContainer->setSize(w, h);
 }
 
-void LayoutHelper::widgetResized(const gcn::Event &event _UNUSED_)
+void LayoutHelper::widgetResized(const gcn::Event &event A_UNUSED)
 {
     const gcn::Rectangle area = mContainer->getChildrenArea();
     int w = area.width;

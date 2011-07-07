@@ -262,7 +262,7 @@ StatusWindow::StatusWindow():
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::event(Mana::Channels channel _UNUSED_,
+void StatusWindow::event(Mana::Channels channel A_UNUSED,
                          const Mana::Event &event)
 {
     static bool blocked = false;
@@ -402,7 +402,7 @@ void StatusWindow::setPointsNeeded(int id, int needed)
 
 void StatusWindow::addAttribute(int id, const std::string &name,
                                 bool modifiable,
-                                const std::string &description _UNUSED_)
+                                const std::string &description A_UNUSED)
 {
     AttrDisplay *disp;
 
@@ -620,7 +620,7 @@ std::string StatusWindow::translateLetter(char* letters)
     return std::string(buf);
 }
 
-void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent _UNUSED_)
+void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
 {
     if (!player_node || !viewport)
         return;

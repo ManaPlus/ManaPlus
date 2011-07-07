@@ -205,7 +205,7 @@ void TradeHandler::addItem(Item *item, int amount)
     item->increaseQuantity(-amount);
 }
 
-void TradeHandler::removeItem(int slotNum _UNUSED_, int amount _UNUSED_)
+void TradeHandler::removeItem(int slotNum A_UNUSED, int amount A_UNUSED)
 {
     // TODO
 }

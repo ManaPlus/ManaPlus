@@ -241,7 +241,7 @@ void TabbedArea::setSelectedTab(gcn::Tab *tab)
     widgetResized(NULL);
 }
 
-void TabbedArea::widgetResized(const gcn::Event &event _UNUSED_)
+void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
     int width = getWidth() - 2 * getFrameSize()
                 - 2 * mWidgetContainer->getFrameSize();

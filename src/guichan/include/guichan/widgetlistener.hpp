@@ -50,9 +50,9 @@
 #include "guichan/platform.hpp"
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 namespace gcn
@@ -81,7 +81,7 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetResized(const Event& event _UNUSED_) { }
+        virtual void widgetResized(const Event& event A_UNUSED) { }
 
         /**
          * Invoked when a widget is moved.
@@ -89,7 +89,7 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetMoved(const Event& event _UNUSED_) { }
+        virtual void widgetMoved(const Event& event A_UNUSED) { }
 
         /**
          * Invoked when a widget is hidden, i.e it's set to be
@@ -98,7 +98,7 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetHidden(const Event& event _UNUSED_) { }
+        virtual void widgetHidden(const Event& event A_UNUSED) { }
 
         /**
          * Invoked when a widget is shown, i.e it's set to be
@@ -107,7 +107,7 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetShown(const Event& event _UNUSED_) { }
+        virtual void widgetShown(const Event& event A_UNUSED) { }
 
     protected:
         /**

@@ -395,43 +395,43 @@ void ChatHandler::channelList()
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::enterChannel(const std::string &channel _UNUSED_,
-                               const std::string &password _UNUSED_)
+void ChatHandler::enterChannel(const std::string &channel A_UNUSED,
+                               const std::string &password A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::quitChannel(int channelId _UNUSED_)
+void ChatHandler::quitChannel(int channelId A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::sendToChannel(int channelId _UNUSED_,
-                                const std::string &text _UNUSED_)
+void ChatHandler::sendToChannel(int channelId A_UNUSED,
+                                const std::string &text A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::userList(const std::string &channel _UNUSED_)
+void ChatHandler::userList(const std::string &channel A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::setChannelTopic(int channelId _UNUSED_,
-                                  const std::string &text _UNUSED_)
+void ChatHandler::setChannelTopic(int channelId A_UNUSED,
+                                  const std::string &text A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::setUserMode(int channelId _UNUSED_,
-                              const std::string &name _UNUSED_,
-                              int mode _UNUSED_)
+void ChatHandler::setUserMode(int channelId A_UNUSED,
+                              const std::string &name A_UNUSED,
+                              int mode A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }
 
-void ChatHandler::kickUser(int channelId _UNUSED_,
-                           const std::string &name _UNUSED_)
+void ChatHandler::kickUser(int channelId A_UNUSED,
+                           const std::string &name A_UNUSED)
 {
     SERVER_NOTICE(_("Channels are not supported!"))
 }

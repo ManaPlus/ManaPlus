@@ -287,7 +287,7 @@ void EquipmentWindow::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void EquipmentWindow::mouseExited(gcn::MouseEvent &event _UNUSED_)
+void EquipmentWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);

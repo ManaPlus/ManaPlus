@@ -281,12 +281,12 @@ void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
     graphics->setColor(oldColor);
 }
 
-void ProgressBar::widgetResized(const gcn::Event &event _UNUSED_)
+void ProgressBar::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void ProgressBar::widgetMoved(const gcn::Event &event _UNUSED_)
+void ProgressBar::widgetMoved(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
 }

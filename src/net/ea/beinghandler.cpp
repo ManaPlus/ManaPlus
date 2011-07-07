@@ -717,7 +717,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg _UNUSED_)
+void BeingHandler::processPlayerMoveToAttack(Net::MessageIn &msg A_UNUSED)
 {
     /*
       * This is an *advisory* message, telling the client that

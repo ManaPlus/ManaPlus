@@ -218,7 +218,7 @@ void MiniStatusWindow::drawIcons(Graphics *graphics)
     }
 }
 
-void MiniStatusWindow::event(Mana::Channels channel _UNUSED_,
+void MiniStatusWindow::event(Mana::Channels channel A_UNUSED,
                              const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)

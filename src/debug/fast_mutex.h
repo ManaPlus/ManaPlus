@@ -39,8 +39,8 @@
  *
  */
 
-#ifndef _FAST_MUTEX_H
-#define _FAST_MUTEX_H
+#ifndef M_FAST_MUTEX_H
+#define M_FAST_MUTEX_H
 
 # if !defined(_NOTHREADS)
 #   if !defined(_WIN32THREADS) && \
@@ -311,4 +311,4 @@ private:
     fast_mutex_autolock& operator=(const fast_mutex_autolock&);
 };
 
-#endif // _FAST_MUTEX_H
+#endif // M_FAST_MUTEX_H

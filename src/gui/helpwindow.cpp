@@ -82,7 +82,7 @@ void HelpWindow::action(const gcn::ActionEvent &event)
 }
 
 void HelpWindow::handleLink(const std::string &link,
-                            gcn::MouseEvent *event _UNUSED_)
+                            gcn::MouseEvent *event A_UNUSED)
 {
     std::string helpFile = link;
     loadHelp(helpFile);

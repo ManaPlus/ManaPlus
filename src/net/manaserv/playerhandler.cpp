@@ -60,7 +60,7 @@ extern Net::PlayerHandler *playerHandler;
 namespace ManaServ
 {
 
-void RespawnRequestListener::action(const gcn::ActionEvent &event _UNUSED_)
+void RespawnRequestListener::action(const gcn::ActionEvent &event A_UNUSED)
 {
     Net::getPlayerHandler()->respawn();
 
@@ -328,7 +328,7 @@ void PlayerHandler::handleMapChangeMessage(Net::MessageIn &msg)
     viewport->scrollBy(scrollOffsetX, scrollOffsetY);
 }
 
-void PlayerHandler::attack(int id, bool keep _UNUSED_)
+void PlayerHandler::attack(int id, bool keep A_UNUSED)
 {
     MessageOut msg(PGMSG_ATTACK);
     msg.writeInt16(id);
@@ -340,7 +340,7 @@ void PlayerHandler::stopAttack()
 
 }
 
-void PlayerHandler::emote(Uint8 emoteId _UNUSED_)
+void PlayerHandler::emote(Uint8 emoteId A_UNUSED)
 {
     // TODO
 }
@@ -359,7 +359,7 @@ void PlayerHandler::decreaseAttribute(int attr)
     gameServerConnection->send(msg);
 }
 
-void PlayerHandler::increaseSkill(unsigned short skillId _UNUSED_)
+void PlayerHandler::increaseSkill(unsigned short skillId A_UNUSED)
 {
     // Not used atm
 }
@@ -406,13 +406,13 @@ void PlayerHandler::respawn()
     gameServerConnection->send(msg);
 }
 
-void PlayerHandler::ignorePlayer(const std::string &player _UNUSED_,
-                                 bool ignore _UNUSED_)
+void PlayerHandler::ignorePlayer(const std::string &player A_UNUSED,
+                                 bool ignore A_UNUSED)
 {
     // TODO
 }
 
-void PlayerHandler::ignoreAll(bool ignore _UNUSED_)
+void PlayerHandler::ignoreAll(bool ignore A_UNUSED)
 {
     // TODO
 }

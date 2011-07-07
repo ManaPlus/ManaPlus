@@ -286,7 +286,7 @@ void GuildHandler::invite(int guildId, Being *being)
     invite(guildId, being->getName());
 }
 
-void GuildHandler::inviteResponse(int guildId _UNUSED_, bool response _UNUSED_)
+void GuildHandler::inviteResponse(int guildId A_UNUSED, bool response A_UNUSED)
 {
     /*MessageOut msg(PCMSG_GUILD_ACCEPT);
     msg.writeString(name);
@@ -300,13 +300,13 @@ void GuildHandler::leave(int guildId)
     chatServerConnection->send(msg);
 }
 
-void GuildHandler::kick(GuildMember *member _UNUSED_,
-                        std::string reason _UNUSED_)
+void GuildHandler::kick(GuildMember *member A_UNUSED,
+                        std::string reason A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::chat(int guildId _UNUSED_, const std::string &text _UNUSED_)
+void GuildHandler::chat(int guildId A_UNUSED, const std::string &text A_UNUSED)
 {
     // TODO
 }
@@ -318,13 +318,13 @@ void GuildHandler::memberList(int guildId)
     chatServerConnection->send(msg);
 }
 
-void GuildHandler::info(int guildId _UNUSED_)
+void GuildHandler::info(int guildId A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::changeMemberPostion(GuildMember *member _UNUSED_,
-                                       int level _UNUSED_)
+void GuildHandler::changeMemberPostion(GuildMember *member A_UNUSED,
+                                       int level A_UNUSED)
 {
     /*MessageOut msg(PCMSG_GUILD_PROMOTE_MEMBER);
     msg.writeInt16(guildId);
@@ -333,27 +333,27 @@ void GuildHandler::changeMemberPostion(GuildMember *member _UNUSED_,
     chatServerConnection->send(msg);*/
 }
 
-void GuildHandler::requestAlliance(int guildId _UNUSED_,
-                                   int otherGuildId _UNUSED_)
+void GuildHandler::requestAlliance(int guildId A_UNUSED,
+                                   int otherGuildId A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::requestAllianceResponse(int guildId _UNUSED_,
-                                           int otherGuildId _UNUSED_,
-                                           bool response _UNUSED_)
+void GuildHandler::requestAllianceResponse(int guildId A_UNUSED,
+                                           int otherGuildId A_UNUSED,
+                                           bool response A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::endAlliance(int guildId _UNUSED_, int otherGuildId _UNUSED_)
+void GuildHandler::endAlliance(int guildId A_UNUSED, int otherGuildId A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::changeNotice(int guildId  _UNUSED_,
-                                std::string msg1 _UNUSED_,
-                                std::string msg2 _UNUSED_)
+void GuildHandler::changeNotice(int guildId  A_UNUSED,
+                                std::string msg1 A_UNUSED,
+                                std::string msg2 A_UNUSED)
 {
     // TODO
 }

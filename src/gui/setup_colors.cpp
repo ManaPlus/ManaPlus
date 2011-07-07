@@ -236,7 +236,7 @@ void Setup_Colors::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup_Colors::valueChanged(const gcn::SelectionEvent &event _UNUSED_)
+void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
 {
     if (!userPalette)
         return;

@@ -197,14 +197,14 @@ void NpcHandler::stringInput(int npcId, const std::string &value)
     outMsg.writeInt8(0); // Prevent problems with string reading
 }
 
-void NpcHandler::sendLetter(int npcId _UNUSED_,
-                            const std::string &recipient _UNUSED_,
-                            const std::string &text _UNUSED_)
+void NpcHandler::sendLetter(int npcId A_UNUSED,
+                            const std::string &recipient A_UNUSED,
+                            const std::string &text A_UNUSED)
 {
     // TODO
 }
 
-void NpcHandler::startShopping(int beingId _UNUSED_)
+void NpcHandler::startShopping(int beingId A_UNUSED)
 {
     // TODO
 }
@@ -223,7 +223,7 @@ void NpcHandler::sell(int beingId)
     outMsg.writeInt8(1); // Sell
 }
 
-void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
+void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
                          unsigned char color, int amount)
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
@@ -243,7 +243,7 @@ void NpcHandler::buyItem(int beingId _UNUSED_, int itemId,
     }
 }
 
-void NpcHandler::sellItem(int beingId _UNUSED_, int itemId, int amount)
+void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)
 {
     MessageOut outMsg(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8); // One item (length of packet)
@@ -251,7 +251,7 @@ void NpcHandler::sellItem(int beingId _UNUSED_, int itemId, int amount)
     outMsg.writeInt16(static_cast<Sint16>(amount));
 }
 
-void NpcHandler::endShopping(int beingId _UNUSED_)
+void NpcHandler::endShopping(int beingId A_UNUSED)
 {
     // TODO
 }

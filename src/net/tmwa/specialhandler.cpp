@@ -257,7 +257,7 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void SpecialHandler::use(int id _UNUSED_)
+void SpecialHandler::use(int id A_UNUSED)
 {
     // TODO
 }

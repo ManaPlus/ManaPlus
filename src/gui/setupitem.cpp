@@ -145,18 +145,18 @@ void SetupItem::action()
     fromWidget();
 }
 
-void SetupItem::apply(std::string eventName _UNUSED_)
+void SetupItem::apply(std::string eventName A_UNUSED)
 {
     save();
 }
 
-void SetupItem::cancel(std::string eventName _UNUSED_)
+void SetupItem::cancel(std::string eventName A_UNUSED)
 {
     load();
     toWidget();
 }
 
-void SetupItem::externalUpdated(std::string eventName _UNUSED_)
+void SetupItem::externalUpdated(std::string eventName A_UNUSED)
 {
     load();
     toWidget();
@@ -498,10 +498,10 @@ void SetupItemLabel::toWidget()
 {
 }
 
-void SetupItemLabel::action(const gcn::ActionEvent &event _UNUSED_)
+void SetupItemLabel::action(const gcn::ActionEvent &event A_UNUSED)
 {
 }
 
-void SetupItemLabel::apply(std::string eventName _UNUSED_)
+void SetupItemLabel::apply(std::string eventName A_UNUSED)
 {
 }

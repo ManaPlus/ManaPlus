@@ -64,7 +64,7 @@ namespace
      */
     struct WeightListener : public gcn::ActionListener
     {
-        void action(const gcn::ActionEvent &event _UNUSED_)
+        void action(const gcn::ActionEvent &event A_UNUSED)
         {
             weightNotice = NULL;
         }
@@ -75,7 +75,7 @@ namespace
      */
     struct DeathListener : public gcn::ActionListener
     {
-        void action(const gcn::ActionEvent &event _UNUSED_)
+        void action(const gcn::ActionEvent &event A_UNUSED)
         {
             Net::getPlayerHandler()->respawn();
             deathNotice = NULL;
@@ -675,7 +675,7 @@ void PlayerHandler::increaseAttribute(int attr)
     }
 }
 
-void PlayerHandler::decreaseAttribute(int attr _UNUSED_)
+void PlayerHandler::decreaseAttribute(int attr A_UNUSED)
 {
     // Supported by eA?
 }
@@ -748,13 +748,13 @@ void PlayerHandler::respawn()
     outMsg.writeInt8(0);
 }
 
-void PlayerHandler::ignorePlayer(const std::string &player _UNUSED_,
-                                 bool ignore _UNUSED_)
+void PlayerHandler::ignorePlayer(const std::string &player A_UNUSED,
+                                 bool ignore A_UNUSED)
 {
     // TODO
 }
 
-void PlayerHandler::ignoreAll(bool ignore _UNUSED_)
+void PlayerHandler::ignoreAll(bool ignore A_UNUSED)
 {
     // TODO
 }

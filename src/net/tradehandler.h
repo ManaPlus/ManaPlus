@@ -28,9 +28,9 @@
 #include <iosfwd>
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 namespace Net
@@ -38,20 +38,20 @@ namespace Net
 class TradeHandler
 {
     public:
-        virtual void request(Being *being _UNUSED_)
+        virtual void request(Being *being A_UNUSED)
         { }
 //        virtual ~TradeHandler() {}
 
-        virtual void respond(bool accept _UNUSED_)
+        virtual void respond(bool accept A_UNUSED)
         { }
 
-        virtual void addItem(Item *item _UNUSED_, int amount _UNUSED_)
+        virtual void addItem(Item *item A_UNUSED, int amount A_UNUSED)
         { }
 
-        virtual void removeItem(int slotNum _UNUSED_, int amount _UNUSED_)
+        virtual void removeItem(int slotNum A_UNUSED, int amount A_UNUSED)
         { }
 
-        virtual void setMoney(int amount _UNUSED_)
+        virtual void setMoney(int amount A_UNUSED)
         { }
 
         virtual void confirm()

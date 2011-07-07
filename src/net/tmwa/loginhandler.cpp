@@ -291,12 +291,12 @@ void LoginHandler::logout()
     // TODO
 }
 
-void LoginHandler::changeEmail(const std::string &email _UNUSED_)
+void LoginHandler::changeEmail(const std::string &email A_UNUSED)
 {
     // TODO
 }
 
-void LoginHandler::changePassword(const std::string &username _UNUSED_,
+void LoginHandler::changePassword(const std::string &username A_UNUSED,
                                   const std::string &oldPassword,
                                   const std::string &newPassword)
 {
@@ -331,8 +331,8 @@ void LoginHandler::registerAccount(LoginData *loginData)
     sendLoginRegister(username, loginData->password);
 }
 
-void LoginHandler::unregisterAccount(const std::string &username _UNUSED_,
-                                     const std::string &password _UNUSED_)
+void LoginHandler::unregisterAccount(const std::string &username A_UNUSED,
+                                     const std::string &password A_UNUSED)
 {
     // TODO
 }

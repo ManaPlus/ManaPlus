@@ -72,7 +72,7 @@ void TextManager::draw(gcn::Graphics *graphics, int xOff, int yOff)
 }
 
 void TextManager::place(const Text *textObj, const Text *omit,
-                        int &x _UNUSED_, int &y, int h)
+                        int &x A_UNUSED, int &y, int h)
 {
     int xLeft = textObj->mX;
     int xRight1 = xLeft + textObj->mWidth;

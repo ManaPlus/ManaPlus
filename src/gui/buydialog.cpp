@@ -247,7 +247,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     }
 }
 
-void BuyDialog::valueChanged(const gcn::SelectionEvent &event _UNUSED_)
+void BuyDialog::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
 {
     // Reset amount of items and update labels
     mAmountItems = 1;

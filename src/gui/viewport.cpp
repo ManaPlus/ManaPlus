@@ -561,7 +561,7 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
     }
 }
 
-void Viewport::mouseReleased(gcn::MouseEvent &event _UNUSED_)
+void Viewport::mouseReleased(gcn::MouseEvent &event A_UNUSED)
 {
     mPlayerFollowMouse = false;
 
@@ -667,14 +667,14 @@ void Viewport::closePopupMenu()
         mPopupMenu->handleLink("cancel", 0);
 }
 
-void Viewport::optionChanged(const std::string &name _UNUSED_)
+void Viewport::optionChanged(const std::string &name A_UNUSED)
 {
     mScrollLaziness = config.getIntValue("ScrollLaziness");
     mScrollRadius = config.getIntValue("ScrollRadius");
     mShowBeingPopup = config.getBoolValue("showBeingPopup");
 }
 
-void Viewport::mouseMoved(gcn::MouseEvent &event _UNUSED_)
+void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 {
     // Check if we are on the map
     if (!mMap || !player_node || !actorSpriteManager)

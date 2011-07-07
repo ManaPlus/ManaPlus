@@ -341,7 +341,7 @@ void Window::setResizable(bool r)
     }
 }
 
-void Window::widgetResized(const gcn::Event &event _UNUSED_)
+void Window::widgetResized(const gcn::Event &event A_UNUSED)
 {
     const gcn::Rectangle area = getChildrenArea();
 
@@ -361,12 +361,12 @@ void Window::widgetResized(const gcn::Event &event _UNUSED_)
     mRedraw = true;
 }
 
-void Window::widgetMoved(const gcn::Event& event _UNUSED_)
+void Window::widgetMoved(const gcn::Event& event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Window::widgetHidden(const gcn::Event &event _UNUSED_)
+void Window::widgetHidden(const gcn::Event &event A_UNUSED)
 {
     if (gui)
         gui->setCursorType(Gui::CURSOR_POINTER);
@@ -492,7 +492,7 @@ void Window::close()
     setVisible(false);
 }
 
-void Window::mouseReleased(gcn::MouseEvent &event _UNUSED_)
+void Window::mouseReleased(gcn::MouseEvent &event A_UNUSED)
 {
     if (mGrip && mouseResize)
     {
@@ -505,7 +505,7 @@ void Window::mouseReleased(gcn::MouseEvent &event _UNUSED_)
     mMoved = false;
 }
 
-void Window::mouseExited(gcn::MouseEvent &event _UNUSED_)
+void Window::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mGrip && !mouseResize && gui)
         gui->setCursorType(Gui::CURSOR_POINTER);

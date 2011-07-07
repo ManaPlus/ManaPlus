@@ -234,7 +234,7 @@ public:
         signalAfterUpdate();
     }
 
-    virtual void updateModelInRow(int row _UNUSED_)
+    virtual void updateModelInRow(int row A_UNUSED)
     {
     }
 

@@ -376,11 +376,11 @@ void BeingHandler::handleBeingDirChangeMessage(Net::MessageIn &msg)
     }
 }
 
-void BeingHandler::requestNameById(int id _UNUSED_)
+void BeingHandler::requestNameById(int id A_UNUSED)
 {
 }
 
-void BeingHandler::undress(Being *being _UNUSED_)
+void BeingHandler::undress(Being *being A_UNUSED)
 {
 }
 

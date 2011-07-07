@@ -398,14 +398,14 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
 
 bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
                                     int x, int y, int w, int h,
-                                    Image *topLeft _UNUSED_,
-                                    Image *topRight _UNUSED_,
-                                    Image *bottomLeft _UNUSED_,
-                                    Image *bottomRight _UNUSED_,
-                                    Image *top _UNUSED_, Image *right _UNUSED_,
-                                    Image *bottom _UNUSED_,
-                                    Image *left _UNUSED_,
-                                    Image *center _UNUSED_)
+                                    Image *topLeft A_UNUSED,
+                                    Image *topRight A_UNUSED,
+                                    Image *bottomLeft A_UNUSED,
+                                    Image *bottomRight A_UNUSED,
+                                    Image *top A_UNUSED, Image *right A_UNUSED,
+                                    Image *bottom A_UNUSED,
+                                    Image *left A_UNUSED,
+                                    Image *center A_UNUSED)
 {
     if (!vert)
         return false;
@@ -584,7 +584,7 @@ void OpenGL1Graphics::fillRectangle(const gcn::Rectangle& rect)
     drawRectangle(rect, true);
 }
 
-void OpenGL1Graphics::setTargetPlane(int width _UNUSED_, int height _UNUSED_)
+void OpenGL1Graphics::setTargetPlane(int width A_UNUSED, int height A_UNUSED)
 {
 }
 

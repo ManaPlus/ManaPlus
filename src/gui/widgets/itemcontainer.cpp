@@ -265,7 +265,7 @@ void ItemContainer::distributeValueChangedEvent()
     }
 }
 
-void ItemContainer::keyPressed(gcn::KeyEvent &event _UNUSED_)
+void ItemContainer::keyPressed(gcn::KeyEvent &event A_UNUSED)
 {
     /*switch (event.getKey().getValue())
     {
@@ -294,7 +294,7 @@ void ItemContainer::keyPressed(gcn::KeyEvent &event _UNUSED_)
     }*/
 }
 
-void ItemContainer::keyReleased(gcn::KeyEvent &event _UNUSED_)
+void ItemContainer::keyReleased(gcn::KeyEvent &event A_UNUSED)
 {
     /*switch (event.getKey().getValue())
     {
@@ -414,12 +414,12 @@ void ItemContainer::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void ItemContainer::mouseExited(gcn::MouseEvent &event _UNUSED_)
+void ItemContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     mItemPopup->setVisible(false);
 }
 
-void ItemContainer::widgetResized(const gcn::Event &event _UNUSED_)
+void ItemContainer::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mGridColumns = std::max(1, getWidth() / BOX_WIDTH);
     adjustHeight();

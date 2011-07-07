@@ -230,7 +230,7 @@ namespace gcn
         mMoved = mouseEvent.getY() <= (int)mTitleBarHeight;
     }
 
-    void Window::mouseReleased(MouseEvent& mouseEvent _UNUSED_)
+    void Window::mouseReleased(MouseEvent& mouseEvent A_UNUSED)
     {
         mMoved = false;
     }

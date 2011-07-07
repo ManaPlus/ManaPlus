@@ -319,13 +319,13 @@ char CommandHandler::parseBoolean(const std::string &value)
 }
 
 void CommandHandler::handleAnnounce(const std::string &args,
-                                    ChatTab *tab _UNUSED_)
+                                    ChatTab *tab A_UNUSED)
 {
     Net::getAdminHandler()->announce(args);
 }
 
-void CommandHandler::handleHelp(const std::string &args _UNUSED_,
-                                ChatTab *tab _UNUSED_)
+void CommandHandler::handleHelp(const std::string &args A_UNUSED,
+                                ChatTab *tab A_UNUSED)
 {
     if (helpWindow)
     {
@@ -334,7 +334,7 @@ void CommandHandler::handleHelp(const std::string &args _UNUSED_,
     }
 }
 
-void CommandHandler::handleWhere(const std::string &args _UNUSED_,
+void CommandHandler::handleWhere(const std::string &args A_UNUSED,
                                  ChatTab *tab)
 {
     std::ostringstream where;
@@ -345,8 +345,8 @@ void CommandHandler::handleWhere(const std::string &args _UNUSED_,
     tab->chatLog(where.str(), BY_SERVER);
 }
 
-void CommandHandler::handleWho(const std::string &args _UNUSED_,
-                               ChatTab *tab _UNUSED_)
+void CommandHandler::handleWho(const std::string &args A_UNUSED,
+                               ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->who();
 }
@@ -411,8 +411,8 @@ void CommandHandler::handleQuery(const std::string &args, ChatTab *tab)
         args.c_str()), BY_SERVER);
 }
 
-void CommandHandler::handleClear(const std::string &args _UNUSED_,
-                                 ChatTab *tab _UNUSED_)
+void CommandHandler::handleClear(const std::string &args A_UNUSED,
+                                 ChatTab *tab A_UNUSED)
 {
     if (chatWindow)
         chatWindow->clearTab();
@@ -430,8 +430,8 @@ void CommandHandler::handleJoin(const std::string &args, ChatTab *tab)
     Net::getChatHandler()->enterChannel(name, password);
 }
 
-void CommandHandler::handleListChannels(const std::string &args _UNUSED_,
-                                        ChatTab *tab _UNUSED_)
+void CommandHandler::handleListChannels(const std::string &args A_UNUSED,
+                                        ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->channelList();
 }
@@ -537,15 +537,15 @@ void CommandHandler::handleToggle(const std::string &args, ChatTab *tab)
     }
 }
 
-void CommandHandler::handlePresent(const std::string &args _UNUSED_,
-                                   ChatTab *tab _UNUSED_)
+void CommandHandler::handlePresent(const std::string &args A_UNUSED,
+                                   ChatTab *tab A_UNUSED)
 {
     if (chatWindow)
         chatWindow->doPresent();
 }
 
 void CommandHandler::handleIgnore(const std::string &args,
-                                  ChatTab *tab _UNUSED_)
+                                  ChatTab *tab A_UNUSED)
 {
     changeRelation(args, PlayerRelation::IGNORED, "ignored", tab);
 }
@@ -668,20 +668,20 @@ void CommandHandler::handleErase(const std::string &args, ChatTab *tab)
     }
 }
 
-void CommandHandler::handleQuit(const std::string &args _UNUSED_,
-                                ChatTab *tab _UNUSED_)
+void CommandHandler::handleQuit(const std::string &args A_UNUSED,
+                                ChatTab *tab A_UNUSED)
 {
 //    quit();
 }
 
-void CommandHandler::handleShowAll(const std::string &args _UNUSED_,
-                                   ChatTab *tab _UNUSED_)
+void CommandHandler::handleShowAll(const std::string &args A_UNUSED,
+                                   ChatTab *tab A_UNUSED)
 {
     if (actorSpriteManager)
         actorSpriteManager->printAllToChat();
 }
 
-void CommandHandler::handleMove(const std::string &args, ChatTab *tab _UNUSED_)
+void CommandHandler::handleMove(const std::string &args, ChatTab *tab A_UNUSED)
 {
     int x = 0;
     int y = 0;
@@ -691,7 +691,7 @@ void CommandHandler::handleMove(const std::string &args, ChatTab *tab _UNUSED_)
 }
 
 void CommandHandler::handleNavigate(const std::string &args,
-                                    ChatTab *tab _UNUSED_)
+                                    ChatTab *tab A_UNUSED)
 {
     if (!player_node)
         return;
@@ -722,7 +722,7 @@ bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)
 }
 
 void CommandHandler::handleTarget(const std::string &args,
-                                  ChatTab *tab _UNUSED_)
+                                  ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager || !player_node)
         return;
@@ -732,22 +732,22 @@ void CommandHandler::handleTarget(const std::string &args,
         player_node->setTarget(target);
 }
 
-void CommandHandler::handleCloseAll(const std::string &args _UNUSED_,
-                                    ChatTab *tab _UNUSED_)
+void CommandHandler::handleCloseAll(const std::string &args A_UNUSED,
+                                    ChatTab *tab A_UNUSED)
 {
     if (chatWindow)
         chatWindow->removeAllWhispers();
 }
 
-void CommandHandler::handleIgnoreAll(const std::string &args _UNUSED_,
-                                     ChatTab *tab _UNUSED_)
+void CommandHandler::handleIgnoreAll(const std::string &args A_UNUSED,
+                                     ChatTab *tab A_UNUSED)
 {
     if (chatWindow)
         chatWindow->ignoreAllWhispers();
 }
 
 void CommandHandler::handleOutfit(const std::string &args,
-                                  ChatTab *tab _UNUSED_)
+                                  ChatTab *tab A_UNUSED)
 {
     if (outfitWindow)
     {
@@ -769,13 +769,13 @@ void CommandHandler::handleOutfit(const std::string &args,
 }
 
 void CommandHandler::handleEmote(const std::string &args,
-                                 ChatTab *tab _UNUSED_)
+                                 ChatTab *tab A_UNUSED)
 {
     if (player_node)
         player_node->emote(static_cast<Uint8>(atoi(args.c_str())));
 }
 
-void CommandHandler::handleAway(const std::string &args, ChatTab *tab _UNUSED_)
+void CommandHandler::handleAway(const std::string &args, ChatTab *tab A_UNUSED)
 {
     if (player_node)
         player_node->setAway(args);
@@ -822,7 +822,7 @@ void CommandHandler::handleImitation(const std::string &args, ChatTab *tab)
     }
 }
 
-void CommandHandler::handleHeal(const std::string &args, ChatTab *tab _UNUSED_)
+void CommandHandler::handleHeal(const std::string &args, ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
@@ -840,38 +840,38 @@ void CommandHandler::handleHeal(const std::string &args, ChatTab *tab _UNUSED_)
     }
 }
 
-void CommandHandler::handleHack(const std::string &args, ChatTab *tab _UNUSED_)
+void CommandHandler::handleHack(const std::string &args, ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->sendRaw(args);
 }
 
-void CommandHandler::handleMail(const std::string &args, ChatTab *tab _UNUSED_)
+void CommandHandler::handleMail(const std::string &args, ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->privateMessage("AuctionBot", "!mail " + args);
 }
 
-void CommandHandler::handlePriceLoad(const std::string &args _UNUSED_,
-                                     ChatTab *tab _UNUSED_)
+void CommandHandler::handlePriceLoad(const std::string &args A_UNUSED,
+                                     ChatTab *tab A_UNUSED)
 {
     if (shopWindow)
         shopWindow->loadList();
 }
 
-void CommandHandler::handlePriceSave(const std::string &args _UNUSED_,
-                                     ChatTab *tab _UNUSED_)
+void CommandHandler::handlePriceSave(const std::string &args A_UNUSED,
+                                     ChatTab *tab A_UNUSED)
 {
     if (shopWindow)
         shopWindow->saveList();
 }
 
-void CommandHandler::handleDisconnect(const std::string &args _UNUSED_,
-                                      ChatTab *tab _UNUSED_)
+void CommandHandler::handleDisconnect(const std::string &args A_UNUSED,
+                                      ChatTab *tab A_UNUSED)
 {
     Net::getGameHandler()->disconnect2();
 }
 
 void CommandHandler::handleUndress(const std::string &args,
-                                   ChatTab *tab _UNUSED_)
+                                   ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
@@ -882,7 +882,7 @@ void CommandHandler::handleUndress(const std::string &args,
 }
 
 void CommandHandler::handleAttack(const std::string &args,
-                                  ChatTab *tab _UNUSED_)
+                                  ChatTab *tab A_UNUSED)
 {
     if (!player_node || !actorSpriteManager)
         return;
@@ -894,7 +894,7 @@ void CommandHandler::handleAttack(const std::string &args,
 }
 
 void CommandHandler::handleTrade(const std::string &args,
-                                 ChatTab *tab _UNUSED_)
+                                 ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
@@ -909,8 +909,8 @@ void CommandHandler::handleTrade(const std::string &args,
     }
 }
 
-void CommandHandler::handleDirs(const std::string &args _UNUSED_,
-                                ChatTab *tab _UNUSED_)
+void CommandHandler::handleDirs(const std::string &args A_UNUSED,
+                                ChatTab *tab A_UNUSED)
 {
     if (!player_node || !debugChatTab)
         return;
@@ -923,7 +923,7 @@ void CommandHandler::handleDirs(const std::string &args _UNUSED_,
         + Client::getScreenshotDirectory());
 }
 
-void CommandHandler::handleInfo(const std::string &args _UNUSED_,
+void CommandHandler::handleInfo(const std::string &args A_UNUSED,
                                 ChatTab *tab)
 {
     switch (tab->getType())
@@ -943,14 +943,14 @@ void CommandHandler::handleInfo(const std::string &args _UNUSED_,
 }
 
 void CommandHandler::handleWait(const std::string &args,
-                                ChatTab *tab _UNUSED_)
+                                ChatTab *tab A_UNUSED)
 {
     if (player_node)
         player_node->waitFor(args);
 }
 
-void CommandHandler::handleUptime(const std::string &args _UNUSED_,
-                                  ChatTab *tab _UNUSED_)
+void CommandHandler::handleUptime(const std::string &args A_UNUSED,
+                                  ChatTab *tab A_UNUSED)
 {
     if (!debugChatTab)
         return;
@@ -1008,7 +1008,7 @@ void CommandHandler::handleUptime(const std::string &args _UNUSED_,
 }
 
 void CommandHandler::handleAddPriorityAttack(const std::string &args,
-                                             ChatTab *tab _UNUSED_)
+                                             ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager
         || actorSpriteManager->isInPriorityAttackList(args))
@@ -1024,7 +1024,7 @@ void CommandHandler::handleAddPriorityAttack(const std::string &args,
 }
 
 void CommandHandler::handleAddAttack(const std::string &args,
-                                     ChatTab *tab _UNUSED_)
+                                     ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager || actorSpriteManager->isInAttackList(args))
         return;
@@ -1037,7 +1037,7 @@ void CommandHandler::handleAddAttack(const std::string &args,
 }
 
 void CommandHandler::handleRemoveAttack(const std::string &args,
-                                        ChatTab *tab _UNUSED_)
+                                        ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager || args.empty()
         || !actorSpriteManager->isInAttackList(args))
@@ -1052,7 +1052,7 @@ void CommandHandler::handleRemoveAttack(const std::string &args,
 }
 
 void CommandHandler::handleAddIgnoreAttack(const std::string &args,
-                                           ChatTab *tab _UNUSED_)
+                                           ChatTab *tab A_UNUSED)
 {
     if (!actorSpriteManager || actorSpriteManager->isInIgnoreAttackList(args))
         return;
@@ -1064,8 +1064,8 @@ void CommandHandler::handleAddIgnoreAttack(const std::string &args,
         socialWindow->updateAttackFilter();
 }
 
-void CommandHandler::handleCacheInfo(const std::string &args _UNUSED_,
-                                     ChatTab *tab _UNUSED_)
+void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
+                                     ChatTab *tab A_UNUSED)
 {
     if (!chatWindow || !debugChatTab)
         return;
@@ -1134,7 +1134,7 @@ void showRes(std::string str, ResourceManager::Resources *res)
 }
 
 void CommandHandler::handleDump(const std::string &args,
-                                ChatTab *tab _UNUSED_)
+                                ChatTab *tab A_UNUSED)
 {
     if (!debugChatTab)
         return;
@@ -1158,14 +1158,14 @@ void CommandHandler::handleDump(const std::string &args,
     }
 }
 #elif defined ENABLE_MEM_DEBUG
-void CommandHandler::handleDump(const std::string &args _UNUSED_,
-                                ChatTab *tab _UNUSED_)
+void CommandHandler::handleDump(const std::string &args A_UNUSED,
+                                ChatTab *tab A_UNUSED)
 {
     check_leaks();
 }
 #else
-void CommandHandler::handleDump(const std::string &args _UNUSED_,
-                                ChatTab *tab _UNUSED_)
+void CommandHandler::handleDump(const std::string &args A_UNUSED,
+                                ChatTab *tab A_UNUSED)
 {
 }
 #endif

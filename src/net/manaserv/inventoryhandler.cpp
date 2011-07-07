@@ -182,18 +182,18 @@ void InventoryHandler::moveItem(int oldIndex, int newIndex)
     gameServerConnection->send(msg);
 }
 
-void InventoryHandler::openStorage(int type _UNUSED_)
+void InventoryHandler::openStorage(int type A_UNUSED)
 {
     // TODO
 }
 
-void InventoryHandler::closeStorage(int type _UNUSED_)
+void InventoryHandler::closeStorage(int type A_UNUSED)
 {
     // TODO
 }
 
-void InventoryHandler::moveItem(int source _UNUSED_, int slot _UNUSED_,
-                                int amount _UNUSED_, int destination _UNUSED_)
+void InventoryHandler::moveItem(int source A_UNUSED, int slot A_UNUSED,
+                                int amount A_UNUSED, int destination A_UNUSED)
 {
     // TODO
 }

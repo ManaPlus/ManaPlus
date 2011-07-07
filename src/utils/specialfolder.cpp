@@ -23,7 +23,7 @@
 #include "utils/specialfolder.h"
 #include <windows.h>
 
-#ifdef _SPECIALFOLDERLOCATION_TEST_
+#ifdef M_SPECIALFOLDERLOCATION_TEST_
 // compile with -D_SPECIALFOLDERLOCATION_TEST_ to get a standalone
 // binary for testing
 #include <iostream>
@@ -62,7 +62,7 @@ std::string getSpecialFolderLocation(int folderId)
     return ret;
 }
 
-#ifdef _SPECIALFOLDERLOCATION_TEST_
+#ifdef M_SPECIALFOLDERLOCATION_TEST_
 int main()
 {
     std::cout << "APPDATA " << getSpecialFolderLocation(CSIDL_APPDATA)

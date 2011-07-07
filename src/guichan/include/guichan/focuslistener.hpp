@@ -50,9 +50,9 @@
 #include "guichan/platform.hpp"
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 namespace gcn
@@ -78,14 +78,14 @@ namespace gcn
          *
          * @param event Discribes the event.
          */
-        virtual void focusGained(const Event& event _UNUSED_) { };
+        virtual void focusGained(const Event& event A_UNUSED) { };
 
         /**
          * Called when a widget loses focus. 
          *
          * @param event Discribes the event.
          */
-        virtual void focusLost(const Event& event _UNUSED_) { };
+        virtual void focusLost(const Event& event A_UNUSED) { };
 
     protected:
         /**

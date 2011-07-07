@@ -21,8 +21,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _CHATLOG_H
-#define _CHATLOG_H
+#ifndef M_CHATLOG_H
+#define M_CHATLOG_H
 
 #include <fstream>
 #include <list>

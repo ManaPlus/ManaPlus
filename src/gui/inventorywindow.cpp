@@ -438,7 +438,7 @@ void InventoryWindow::keyReleased(gcn::KeyEvent &event)
     }
 }
 
-void InventoryWindow::valueChanged(const gcn::SelectionEvent &event _UNUSED_)
+void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
 {
     if (!mInventory || !mInventory->isMainInventory())
         return;
@@ -531,7 +531,7 @@ void InventoryWindow::close()
     }
 }
 
-void InventoryWindow::event(Mana::Channels channel _UNUSED_,
+void InventoryWindow::event(Mana::Channels channel A_UNUSED,
                             const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)

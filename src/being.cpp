@@ -669,7 +669,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
 }
 
 void Being::handleAttack(Being *victim, int damage,
-                         AttackType type _UNUSED_)
+                         AttackType type A_UNUSED)
 {
     if (!victim || !mInfo)
         return;
@@ -741,7 +741,7 @@ void Being::setGuildName(const std::string &name)
 }
 
 
-void Being::setGuildPos(const std::string &pos _UNUSED_)
+void Being::setGuildPos(const std::string &pos A_UNUSED)
 {
 //    logger->log("Got guild position \"%s\" for being %s(%i)", pos.c_str(), mName.c_str(), mId);
 }
@@ -915,7 +915,7 @@ void Being::fireMissile(Being *victim, const std::string &particle)
 
 }
 
-void Being::setAction(Action action, int attackType _UNUSED_)
+void Being::setAction(Action action, int attackType A_UNUSED)
 {
     std::string currentAction = SpriteAction::INVALID;
 

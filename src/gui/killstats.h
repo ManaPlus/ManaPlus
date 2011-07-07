@@ -77,7 +77,7 @@ class KillStats : public Window, gcn::ActionListener, public Mana::Listener
 
         void addLog(std::string str);
 
-        void event(Mana::Channels channel _UNUSED_,
+        void event(Mana::Channels channel A_UNUSED,
                    const Mana::Event &event);
 
     private:

@@ -310,7 +310,7 @@ void ItemAmountWindow::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void ItemAmountWindow::mouseExited(gcn::MouseEvent &event _UNUSED_)
+void ItemAmountWindow::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     if (mItemPopup)
         mItemPopup->setVisible(false);
@@ -414,7 +414,7 @@ void ItemAmountWindow::close()
     scheduleDelete();
 }
 
-void ItemAmountWindow::keyReleased(gcn::KeyEvent &keyEvent _UNUSED_)
+void ItemAmountWindow::keyReleased(gcn::KeyEvent &keyEvent A_UNUSED)
 {
     mItemAmountSlide->setValue(mItemAmountTextField->getValue());
 }

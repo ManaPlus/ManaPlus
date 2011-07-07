@@ -168,7 +168,7 @@ char *Download::getError()
 }
 
 int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
-                               double ultotal _UNUSED_, double ulnow _UNUSED_)
+                               double ultotal A_UNUSED, double ulnow A_UNUSED)
 {
     Download *d = reinterpret_cast<Download*>(clientp);
     if (!d)

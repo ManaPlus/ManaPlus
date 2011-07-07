@@ -320,7 +320,7 @@ void ScrollArea::draw(gcn::Graphics *graphics)
     drawChildren(graphics);
 }
 
-//void ScrollArea::drawFrame(gcn::Graphics *graphics _UNUSED_)
+//void ScrollArea::drawFrame(gcn::Graphics *graphics A_UNUSED)
 void ScrollArea::drawFrame(gcn::Graphics *graphics)
 {
     if (mOpaque)
@@ -490,24 +490,24 @@ void ScrollArea::mouseMoved(gcn::MouseEvent& event)
     mY = event.getY();
 }
 
-void ScrollArea::mouseEntered(gcn::MouseEvent& event _UNUSED_)
+void ScrollArea::mouseEntered(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void ScrollArea::mouseExited(gcn::MouseEvent& event _UNUSED_)
+void ScrollArea::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
 
-void ScrollArea::widgetResized(const gcn::Event &event _UNUSED_)
+void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
     getContent()->setSize(getWidth() - 2 * getFrameSize(),
                           getHeight() - 2 * getFrameSize());
 }
 
-void ScrollArea::widgetMoved(const gcn::Event& event _UNUSED_)
+void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
 {
     mRedraw = true;
 }

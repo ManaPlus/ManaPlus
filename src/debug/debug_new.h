@@ -39,8 +39,8 @@
  *
  */
 
-#ifndef _DEBUG_NEW_H
-#define _DEBUG_NEW_H
+#ifndef M_DEBUG_NEW_H
+#define M_DEBUG_NEW_H
 
 #include <new>
 #include <stdio.h>
@@ -180,4 +180,4 @@ public:
 /** Counting object for each file including debug_new.h. */
 static __debug_new_counter __debug_new_count;
 
-#endif // _DEBUG_NEW_H
+#endif // M_DEBUG_NEW_H

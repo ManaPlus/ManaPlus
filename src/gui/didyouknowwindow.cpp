@@ -101,8 +101,8 @@ void DidYouKnowWindow::action(const gcn::ActionEvent &event)
         config.setValue("showDidYouKnow", mOpenAgainCheckBox->isSelected());
 }
 
-void DidYouKnowWindow::handleLink(const std::string &link _UNUSED_,
-                                  gcn::MouseEvent *event _UNUSED_)
+void DidYouKnowWindow::handleLink(const std::string &link A_UNUSED,
+                                  gcn::MouseEvent *event A_UNUSED)
 {
 }
 

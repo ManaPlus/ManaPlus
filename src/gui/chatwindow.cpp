@@ -87,7 +87,7 @@ class ChatInput : public TextField, public gcn::FocusListener
          * Called if the chat input loses focus. It will set itself to
          * invisible as result.
          */
-        void focusLost(const gcn::Event &event _UNUSED_)
+        void focusLost(const gcn::Event &event A_UNUSED)
         {
             processVisible(false);
         }
@@ -653,7 +653,7 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
 }
 
 /*
-void ChatWindow::mouseReleased(gcn::MouseEvent &event _UNUSED_)
+void ChatWindow::mouseReleased(gcn::MouseEvent &event A_UNUSED)
 {
 
 }

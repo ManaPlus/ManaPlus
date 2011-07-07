@@ -201,7 +201,7 @@ void Popup::position(int x, int y)
     mRedraw = true;
 }
 
-void Popup::mouseMoved(gcn::MouseEvent &event _UNUSED_)
+void Popup::mouseMoved(gcn::MouseEvent &event A_UNUSED)
 {
     if (viewport)
         viewport->hideBeingPopup();
@@ -214,12 +214,12 @@ void Popup::hide()
     mRedraw = true;
 }
 
-void Popup::widgetResized(const gcn::Event &event _UNUSED_)
+void Popup::widgetResized(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
 }
 
-void Popup::widgetMoved(const gcn::Event &event _UNUSED_)
+void Popup::widgetMoved(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
 }

@@ -27,9 +27,9 @@
 #include <set>
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 class SetupItem;
@@ -56,7 +56,7 @@ class SetupTabScroll : public SetupTab
 
         virtual void externalUpdated();
 
-        virtual void action(const gcn::ActionEvent &event _UNUSED_)
+        virtual void action(const gcn::ActionEvent &event A_UNUSED)
         { }
 
     protected:

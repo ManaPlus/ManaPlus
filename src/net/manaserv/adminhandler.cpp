@@ -45,48 +45,48 @@ void AdminHandler::announce(const std::string &text)
     chatServerConnection->send(msg);
 }
 
-void AdminHandler::localAnnounce(const std::string &text _UNUSED_)
+void AdminHandler::localAnnounce(const std::string &text A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::hide(bool hide _UNUSED_)
+void AdminHandler::hide(bool hide A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::kick(int playerId _UNUSED_)
+void AdminHandler::kick(int playerId A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::kick(const std::string &name _UNUSED_)
+void AdminHandler::kick(const std::string &name A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::ban(int playerId _UNUSED_)
+void AdminHandler::ban(int playerId A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::ban(const std::string &name _UNUSED_)
+void AdminHandler::ban(const std::string &name A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::unban(int playerId _UNUSED_)
+void AdminHandler::unban(int playerId A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::unban(const std::string &name _UNUSED_)
+void AdminHandler::unban(const std::string &name A_UNUSED)
 {
     // TODO
 }
 
-void AdminHandler::mute(int playerId _UNUSED_, int type _UNUSED_,
-                        int limit _UNUSED_)
+void AdminHandler::mute(int playerId A_UNUSED, int type A_UNUSED,
+                        int limit A_UNUSED)
 {
     // TODO
 }

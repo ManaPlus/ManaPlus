@@ -155,12 +155,12 @@ void RadioButton::draw(gcn::Graphics* graphics)
     graphics->drawText(getCaption(), 16, 0);
 }
 
-void RadioButton::mouseEntered(gcn::MouseEvent& event _UNUSED_)
+void RadioButton::mouseEntered(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void RadioButton::mouseExited(gcn::MouseEvent& event _UNUSED_)
+void RadioButton::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }

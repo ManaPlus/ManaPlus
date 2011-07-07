@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SPECIALFOLDER_H
-#define _SPECIALFOLDER_H
+#ifndef M_SPECIALFOLDER_H
+#define M_SPECIALFOLDER_H
 
 #ifdef WIN32
 #include <shlobj.h>

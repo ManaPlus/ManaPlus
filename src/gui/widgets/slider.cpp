@@ -289,12 +289,12 @@ void Slider::drawMarker(gcn::Graphics *graphics)
        (getHeight() - (mHasMouse?hGripHi:hGrip)->getHeight()) / 2);
 }
 
-void Slider::mouseEntered(gcn::MouseEvent& event _UNUSED_)
+void Slider::mouseEntered(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void Slider::mouseExited(gcn::MouseEvent& event _UNUSED_)
+void Slider::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }

@@ -99,7 +99,7 @@ protected:
 
     virtual void resetDamage(std::string name) = 0;
 
-    virtual void selectIndex(unsigned num _UNUSED_)
+    virtual void selectIndex(unsigned num A_UNUSED)
     { }
 
     TextDialog *mInviteDialog;
@@ -172,11 +172,11 @@ public:
     {
     }
 
-    void updateAvatar(std::string name _UNUSED_)
+    void updateAvatar(std::string name A_UNUSED)
     {
     }
 
-    void resetDamage(std::string name _UNUSED_)
+    void resetDamage(std::string name A_UNUSED)
     {
     }
 
@@ -269,11 +269,11 @@ public:
     {
     }
 
-    void updateAvatar(std::string name _UNUSED_)
+    void updateAvatar(std::string name A_UNUSED)
     {
     }
 
-    void resetDamage(std::string name _UNUSED_)
+    void resetDamage(std::string name A_UNUSED)
     {
     }
 
@@ -941,11 +941,11 @@ public:
 
     }
 
-    void updateAvatar(std::string name _UNUSED_)
+    void updateAvatar(std::string name A_UNUSED)
     {
     }
 
-    void resetDamage(std::string name _UNUSED_)
+    void resetDamage(std::string name A_UNUSED)
     {
     }
 
@@ -978,7 +978,7 @@ public:
                        mBrowserBox->getHeight() + 8);
     }
 
-    void handleLink(const std::string &link, gcn::MouseEvent *event _UNUSED_)
+    void handleLink(const std::string &link, gcn::MouseEvent *event A_UNUSED)
     {
         if (link == "guild" && socialWindow)
         {

@@ -437,7 +437,7 @@ void LoginHandler::changePassword(const std::string &username,
     accountServerConnection->send(msg);
 }
 
-void LoginHandler::chooseServer(unsigned int server _UNUSED_)
+void LoginHandler::chooseServer(unsigned int server A_UNUSED)
 {
     // TODO
 }

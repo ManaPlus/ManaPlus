@@ -144,8 +144,8 @@ Graphics *graphics;
 
 Sound sound;
 
-Uint32 nextTick(Uint32 interval, void *param _UNUSED_);
-Uint32 nextSecond(Uint32 interval, void *param _UNUSED_);
+Uint32 nextTick(Uint32 interval, void *param A_UNUSED);
+Uint32 nextSecond(Uint32 interval, void *param A_UNUSED);
 
 void ErrorListener::action(const gcn::ActionEvent &)
 {
@@ -168,7 +168,7 @@ int textures_count = 0;
  * Called every 10 milliseconds by SDL_AddTimer()
  * @see MILLISECONDS_IN_A_TICK value
  */
-Uint32 nextTick(Uint32 interval, void *param _UNUSED_)
+Uint32 nextTick(Uint32 interval, void *param A_UNUSED)
 {
     tick_time++;
     if (tick_time == MAX_TICK_VALUE)
@@ -180,7 +180,7 @@ Uint32 nextTick(Uint32 interval, void *param _UNUSED_)
  * Updates fps.
  * Called every seconds by SDL_AddTimer()
  */
-Uint32 nextSecond(Uint32 interval, void *param _UNUSED_)
+Uint32 nextSecond(Uint32 interval, void *param A_UNUSED)
 {
     fps = frame_count;
     frame_count = 0;

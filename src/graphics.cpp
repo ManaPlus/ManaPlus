@@ -150,7 +150,7 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
                                  int dstX, int dstY,
                                  int width, int height,
                                  int desiredWidth, int desiredHeight,
-                                 bool useColor _UNUSED_)
+                                 bool useColor A_UNUSED)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)

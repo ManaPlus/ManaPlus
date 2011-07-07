@@ -638,8 +638,8 @@ void GuildHandler::create(const std::string &name)
     msg.writeString(name, 24);
 }
 
-void GuildHandler::invite(int guildId _UNUSED_,
-                          const std::string &name _UNUSED_)
+void GuildHandler::invite(int guildId A_UNUSED,
+                          const std::string &name A_UNUSED)
 {
     if (!actorSpriteManager)
         return;
@@ -654,7 +654,7 @@ void GuildHandler::invite(int guildId _UNUSED_,
     }
 }
 
-void GuildHandler::invite(int guildId _UNUSED_, Being *being)
+void GuildHandler::invite(int guildId A_UNUSED, Being *being)
 {
     if (!being)
         return;
@@ -698,7 +698,7 @@ void GuildHandler::kick(GuildMember *member, std::string reason)
     msg.writeString(reason, 40); // Message
 }
 
-void GuildHandler::chat(int guildId _UNUSED_, const std::string &text)
+void GuildHandler::chat(int guildId A_UNUSED, const std::string &text)
 {
     if (!player_node)
         return;
@@ -709,7 +709,7 @@ void GuildHandler::chat(int guildId _UNUSED_, const std::string &text)
     msg.writeString(str, static_cast<int>(str.length()));
 }
 
-void GuildHandler::memberList(int guildId _UNUSED_)
+void GuildHandler::memberList(int guildId A_UNUSED)
 {
     // TODO four types of info requests:
     // 0 = basic info + alliance info
@@ -722,7 +722,7 @@ void GuildHandler::memberList(int guildId _UNUSED_)
     msg.writeInt32(1); // Request member list
 }
 
-void GuildHandler::info(int guildId _UNUSED_)
+void GuildHandler::info(int guildId A_UNUSED)
 {
     // TODO four types of info requests:
     // 0 = basic info + alliance info
@@ -748,20 +748,20 @@ void GuildHandler::changeMemberPostion(GuildMember *member, int level)
     msg.writeInt32(level); // pos
 }
 
-void GuildHandler::requestAlliance(int guildId _UNUSED_,
-                                   int otherGuildId _UNUSED_)
+void GuildHandler::requestAlliance(int guildId A_UNUSED,
+                                   int otherGuildId A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::requestAllianceResponse(int guildId _UNUSED_,
-                                           int otherGuildId _UNUSED_,
-                                           bool response _UNUSED_)
+void GuildHandler::requestAllianceResponse(int guildId A_UNUSED,
+                                           int otherGuildId A_UNUSED,
+                                           bool response A_UNUSED)
 {
     // TODO
 }
 
-void GuildHandler::endAlliance(int guildId _UNUSED_, int otherGuildId _UNUSED_)
+void GuildHandler::endAlliance(int guildId A_UNUSED, int otherGuildId A_UNUSED)
 {
     // TODO
 }

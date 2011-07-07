@@ -29,9 +29,9 @@
 #include "gui/widgets/tab.h"
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 class ScrollArea;
@@ -115,8 +115,8 @@ class ChatTab : public Tab
          * @returns true  if the command was handled
          *          false if the command was not handled
          */
-        virtual bool handleCommand(const std::string &type _UNUSED_,
-                                   const std::string &args _UNUSED_)
+        virtual bool handleCommand(const std::string &type A_UNUSED,
+                                   const std::string &args A_UNUSED)
         { return false; }
 
         /**

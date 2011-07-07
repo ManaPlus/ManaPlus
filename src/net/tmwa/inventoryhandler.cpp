@@ -618,28 +618,28 @@ void InventoryHandler::dropItem(const Item *item, int amount)
     outMsg.writeInt16(static_cast<Sint16>(amount));
 }
 
-bool InventoryHandler::canSplit(const Item *item _UNUSED_)
+bool InventoryHandler::canSplit(const Item *item A_UNUSED)
 {
     return false;
 }
 
-void InventoryHandler::splitItem(const Item *item _UNUSED_,
-                                 int amount _UNUSED_)
+void InventoryHandler::splitItem(const Item *item A_UNUSED,
+                                 int amount A_UNUSED)
 {
     // Not implemented for eAthena (possible?)
 }
 
-void InventoryHandler::moveItem(int oldIndex _UNUSED_, int newIndex _UNUSED_)
+void InventoryHandler::moveItem(int oldIndex A_UNUSED, int newIndex A_UNUSED)
 {
     // Not implemented for eAthena (possible?)
 }
 
-void InventoryHandler::openStorage(int type _UNUSED_)
+void InventoryHandler::openStorage(int type A_UNUSED)
 {
     // Doesn't apply to eAthena, since opening happens through NPCs?
 }
 
-void InventoryHandler::closeStorage(int type _UNUSED_)
+void InventoryHandler::closeStorage(int type A_UNUSED)
 {
     MessageOut outMsg(CMSG_CLOSE_STORAGE);
 }

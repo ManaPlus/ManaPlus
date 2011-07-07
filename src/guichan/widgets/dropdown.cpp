@@ -436,7 +436,7 @@ namespace gcn
         }
     }
 
-    void DropDown::focusLost(const Event& event _UNUSED_)
+    void DropDown::focusLost(const Event& event A_UNUSED)
     {
         foldUp();
         mInternalFocusHandler.focusNone();
@@ -451,7 +451,7 @@ namespace gcn
         BasicContainer::death(event);
     }
 
-    void DropDown::action(const ActionEvent& actionEvent _UNUSED_)
+    void DropDown::action(const ActionEvent& actionEvent A_UNUSED)
     {
         foldUp();
         releaseModalMouseInputFocus();
@@ -543,7 +543,7 @@ namespace gcn
             mListBox->setSelectionColor(color);
     }
 
-    void DropDown::valueChanged(const SelectionEvent& event _UNUSED_)
+    void DropDown::valueChanged(const SelectionEvent& event A_UNUSED)
     {
         distributeValueChangedEvent();
     }

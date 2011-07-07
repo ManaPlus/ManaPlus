@@ -131,7 +131,7 @@ void GameHandler::quit(bool reconnectAccount)
     gameServerConnection->send(msg);
 }
 
-void GameHandler::ping(int tick _UNUSED_)
+void GameHandler::ping(int tick A_UNUSED)
 {
     // TODO
 }

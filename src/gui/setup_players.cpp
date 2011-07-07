@@ -528,7 +528,7 @@ void Setup_Players::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup_Players::updatedPlayer(const std::string &name _UNUSED_)
+void Setup_Players::updatedPlayer(const std::string &name A_UNUSED)
 {
     mPlayerTableModel->playerRelationsUpdated();
     mDefaultTrading->setSelected(

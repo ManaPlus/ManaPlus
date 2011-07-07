@@ -179,7 +179,7 @@ void ShopListBox::mouseMoved(gcn::MouseEvent &event)
     }
 }
 
-void ShopListBox::mouseExited(gcn::MouseEvent& mouseEvent _UNUSED_)
+void ShopListBox::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
 {
     if (!mItemPopup)
         return;

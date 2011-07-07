@@ -384,7 +384,7 @@ void ChatHandler::talkRaw(const std::string &text)
     gameServerConnection->send(msg);
 }
 
-void ChatHandler::me(const std::string &text _UNUSED_)
+void ChatHandler::me(const std::string &text A_UNUSED)
 {
     // TODO
 }
@@ -466,7 +466,7 @@ void ChatHandler::who()
     chatServerConnection->send(msg);
 }
 
-void ChatHandler::sendRaw(const std::string &args _UNUSED_)
+void ChatHandler::sendRaw(const std::string &args A_UNUSED)
 {
 
 }

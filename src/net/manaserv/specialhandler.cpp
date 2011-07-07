@@ -39,7 +39,7 @@ SpecialHandler::SpecialHandler()
     specialHandler = this;
 }
 
-void SpecialHandler::handleMessage(Net::MessageIn &msg _UNUSED_)
+void SpecialHandler::handleMessage(Net::MessageIn &msg A_UNUSED)
 {
     // TODO
 }
@@ -51,19 +51,19 @@ void SpecialHandler::use(int id)
     gameServerConnection->send(msg);
 }
 
-void SpecialHandler::use(int id _UNUSED_, int level _UNUSED_,
-                         int beingId _UNUSED_)
+void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED,
+                         int beingId A_UNUSED)
 {
     // TODO
 }
 
-void SpecialHandler::use(int id _UNUSED_, int level _UNUSED_, int x _UNUSED_,
-                         int y _UNUSED_)
+void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED, int x _UNUSED_,
+                         int y A_UNUSED)
 {
     // TODO
 }
 
-void SpecialHandler::use(int id _UNUSED_, const std::string &map _UNUSED_)
+void SpecialHandler::use(int id A_UNUSED, const std::string &map A_UNUSED)
 {
     // TODO
 }

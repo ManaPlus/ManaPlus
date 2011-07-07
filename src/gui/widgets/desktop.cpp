@@ -72,7 +72,7 @@ void Desktop::reloadWallpaper()
     setBestFittingWallpaper();
 }
 
-void Desktop::widgetResized(const gcn::Event &event _UNUSED_)
+void Desktop::widgetResized(const gcn::Event &event A_UNUSED)
 {
     setBestFittingWallpaper();
 }

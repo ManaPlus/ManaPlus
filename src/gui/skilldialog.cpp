@@ -231,7 +231,7 @@ public:
             skill->dispName);
     }
 
-    void mouseExited(gcn::MouseEvent &event _UNUSED_)
+    void mouseExited(gcn::MouseEvent &event A_UNUSED)
     {
         mPopup->hide();
     }

@@ -378,7 +378,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 }
 
 // Hide ItemTooltip
-void ItemShortcutContainer::mouseExited(gcn::MouseEvent &event _UNUSED_)
+void ItemShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
     mItemPopup->setVisible(false);
     mSpellPopup->setVisible(false);

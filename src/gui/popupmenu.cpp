@@ -773,7 +773,7 @@ void PopupMenu::showChangePos(int x, int y)
 }
 
 void PopupMenu::handleLink(const std::string &link,
-                           gcn::MouseEvent *event _UNUSED_)
+                           gcn::MouseEvent *event A_UNUSED)
 {
     if (!actorSpriteManager)
         return;

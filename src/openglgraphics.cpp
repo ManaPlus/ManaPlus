@@ -989,7 +989,7 @@ void OpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
     drawRectangle(rect, true);
 }
 
-void OpenGLGraphics::setTargetPlane(int width _UNUSED_, int height _UNUSED_)
+void OpenGLGraphics::setTargetPlane(int width A_UNUSED, int height A_UNUSED)
 {
 }
 

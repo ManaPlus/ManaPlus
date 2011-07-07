@@ -107,26 +107,26 @@ void BuySellHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void BuySellHandler::requestSellList(std::string nick _UNUSED_)
+void BuySellHandler::requestSellList(std::string nick A_UNUSED)
 {
     // TODO
 }
 
-void BuySellHandler::requestBuyList(std::string nick _UNUSED_)
+void BuySellHandler::requestBuyList(std::string nick A_UNUSED)
 {
     // TODO
 }
 
-void BuySellHandler::sendBuyRequest(std::string nick _UNUSED_,
-                                    ShopItem* item _UNUSED_,
-                                    int amount _UNUSED_)
+void BuySellHandler::sendBuyRequest(std::string nick A_UNUSED,
+                                    ShopItem* item A_UNUSED,
+                                    int amount A_UNUSED)
 {
     // TODO
 }
 
-void BuySellHandler::sendSellRequest(std::string nick _UNUSED_,
-                                     ShopItem* item _UNUSED_,
-                                     int amount _UNUSED_)
+void BuySellHandler::sendSellRequest(std::string nick A_UNUSED,
+                                     ShopItem* item A_UNUSED,
+                                     int amount A_UNUSED)
 {
     // TODO
 }

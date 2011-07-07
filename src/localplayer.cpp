@@ -797,7 +797,7 @@ Position LocalPlayer::getNextWalkPosition(unsigned char dir)
     return Position(static_cast<int>(pos.x), static_cast<int>(pos.y));
 }
 
-void LocalPlayer::nextTile(unsigned char dir _UNUSED_ = 0)
+void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 {
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)

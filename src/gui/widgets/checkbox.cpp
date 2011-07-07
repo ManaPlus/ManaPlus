@@ -179,12 +179,12 @@ void CheckBox::drawBox(gcn::Graphics* graphics)
         static_cast<Graphics*>(graphics)->drawImage(box, 2, 2);
 }
 
-void CheckBox::mouseEntered(gcn::MouseEvent& event _UNUSED_)
+void CheckBox::mouseEntered(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = true;
 }
 
-void CheckBox::mouseExited(gcn::MouseEvent& event _UNUSED_)
+void CheckBox::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }

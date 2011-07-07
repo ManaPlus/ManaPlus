@@ -31,9 +31,9 @@
 #include <string>
 
 #ifdef __GNUC__
-#define _UNUSED_  __attribute__ ((unused))
+#define A_UNUSED  __attribute__ ((unused))
 #else
-#define _UNUSED_
+#define A_UNUSED
 #endif
 
 class Map;
@@ -272,7 +272,7 @@ class Particle : public Actor
         virtual float getAlpha() const
         { return 1.0f; }
 
-        virtual void setAlpha(float alpha _UNUSED_) {}
+        virtual void setAlpha(float alpha A_UNUSED) {}
 
         virtual void setDeathEffect(const std::string &effectFile,
                                     char conditions)

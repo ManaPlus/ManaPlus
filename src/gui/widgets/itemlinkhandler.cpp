@@ -46,7 +46,7 @@ ItemLinkHandler::~ItemLinkHandler()
 }
 
 void ItemLinkHandler::handleLink(const std::string &link,
-                                 gcn::MouseEvent *event _UNUSED_)
+                                 gcn::MouseEvent *event A_UNUSED)
 {
     if (!mItemPopup)
         return;
