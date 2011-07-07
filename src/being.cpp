@@ -2314,7 +2314,7 @@ void Being::saveComment(const std::string &name,
 
 void Being::setEmote(Uint8 emotion, int emote_time)
 {
-    if (emotion & FLAG_SPECIAL)
+    if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {
         mAdvanced = true;
         mShop = (emotion & FLAG_SHOP);
