@@ -67,6 +67,9 @@ Sound::~Sound()
     config.removeListener("playBattleSound", this);
     config.removeListener("playGuiSound", this);
     config.removeListener("playMusic", this);
+
+    // Unlink the callback function.
+    Mix_HookMusicFinished(NULL);
 }
 
 void Sound::optionChanged(const std::string &value)
@@ -77,8 +80,6 @@ void Sound::optionChanged(const std::string &value)
         mPlayGui = config.getBoolValue("playGuiSound");
     else if (value == "playMusic")
         mPlayMusic = config.getBoolValue("playMusic");
-    // Unlink the callback function.
-    Mix_HookMusicFinished(NULL);
 }
 
 void Sound::init()
