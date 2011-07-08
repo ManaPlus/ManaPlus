@@ -130,7 +130,8 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
             mToken.account_ID = msg.readInt32();
             mToken.session_ID2 = msg.readInt32();
             msg.skip(30);                           // unknown
-            mToken.sex = msg.readInt8() ? GENDER_MALE : GENDER_FEMALE;
+            // reserve bits for future usage
+            mToken.sex = (msg.readInt8() & 1) ? GENDER_MALE : GENDER_FEMALE;
 
             for (int i = 0; i < worldCount; i++)
             {
