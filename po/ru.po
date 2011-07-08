@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-07 03:39+0300\n"
-"PO-Revision-Date: 2011-07-07 00:43+0000\n"
+"POT-Creation-Date: 2011-07-08 21:33+0300\n"
+"PO-Revision-Date: 2011-07-08 18:41+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -24,13 +24,23 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
-#: src/being.cpp:530
+#: src/being.cpp:541
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being.cpp:530
+#: src/being.cpp:541
 msgid "miss"
 msgstr "промах"
+
+#. TRANSLATORS: this away status writed in player nick
+#: src/being.cpp:1512
+msgid "A"
+msgstr "О"
+
+#. TRANSLATORS: this inactive status writed in player nick
+#: src/being.cpp:1517
+msgid "I"
+msgstr "Б"
 
 #: src/client.cpp:821 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
@@ -99,7 +109,7 @@ msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
 #: src/client.cpp:1408 src/client.cpp:1438 src/client.cpp:1482
-#: src/client.cpp:1898
+#: src/client.cpp:1902
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
@@ -893,7 +903,6 @@ msgstr "Автоматически открывать это окно"
 
 #: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
-#: src/gui/tradewindow.cpp:88 src/gui/tradewindow.cpp:90
 msgid "OK"
 msgstr "ОК"
 
@@ -1262,7 +1271,6 @@ msgid "Away outfit"
 msgstr "наряд отсутствия"
 
 #: src/gui/popupmenu.cpp:129 src/gui/popupmenu.cpp:603
-#: src/gui/tradewindow.cpp:89 src/gui/tradewindow.cpp:90
 #: src/gui/widgets/tradetab.cpp:44
 msgid "Trade"
 msgstr "Торговать"
@@ -1873,7 +1881,7 @@ msgid "Reset Windows"
 msgstr "Сбросить расположение окон"
 
 #: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
-#: src/gui/setup_players.cpp:333
+#: src/gui/setup_players.cpp:334
 msgid "Edit"
 msgstr "Изменить"
 
@@ -2121,37 +2129,41 @@ msgstr "Личные сообщения во вкладках"
 msgid "Show gender"
 msgstr "Показать пол"
 
-#: src/gui/setup_players.cpp:266
+#: src/gui/setup_players.cpp:267
 msgid "Players"
 msgstr "Игроки"
 
-#: src/gui/setup_players.cpp:291
+#: src/gui/setup_players.cpp:292
 msgid "When ignoring:"
 msgstr "Когда игнорируется:"
 
-#: src/gui/setup_players.cpp:314
+#: src/gui/setup_players.cpp:315
 msgid "Show level"
 msgstr "Показать уровень"
 
-#: src/gui/setup_players.cpp:318
+#: src/gui/setup_players.cpp:319
 msgid "Show own name"
 msgstr "Показать свое имя"
 
-#: src/gui/setup_players.cpp:322
+#: src/gui/setup_players.cpp:323
 msgid "Target dead players"
 msgstr "Наводить фокус на мертвых игроков"
 
-#: src/gui/setup_players.cpp:326
+#: src/gui/setup_players.cpp:327
 msgid "Secure trades"
 msgstr "Защитить торговлю"
 
-#: src/gui/setup_players.cpp:330 src/gui/setup_players.cpp:513
+#: src/gui/setup_players.cpp:331 src/gui/setup_players.cpp:523
 msgid "Unsecure chars in names"
 msgstr "Небезопасные символы"
 
-#: src/gui/setup_players.cpp:335
+#: src/gui/setup_players.cpp:336
 msgid "Visible names"
 msgstr "Видимые имена"
+
+#: src/gui/setup_players.cpp:341
+msgid "Show statuses"
+msgstr "Показывать статусы"
 
 #: src/gui/setup_theme.cpp:105
 msgid "Tiny (10)"
@@ -2213,8 +2225,8 @@ msgstr "Размер шрифта"
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:657
-#: src/gui/setup_video.cpp:662
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
+#: src/gui/setup_video.cpp:663
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
@@ -2304,98 +2316,98 @@ msgstr "Включить кеш прозрачности"
 msgid "Enable map reduce"
 msgstr "Включить режим сжатия карты"
 
-#: src/gui/setup_video.cpp:306
+#: src/gui/setup_video.cpp:307
 msgid "Show background"
 msgstr "Показать фон"
 
-#: src/gui/setup_video.cpp:311
+#: src/gui/setup_video.cpp:312
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:315 src/gui/setup_video.cpp:352
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
+#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:324
+#: src/gui/setup_video.cpp:325
 msgid "Video"
 msgstr "Видео"
 
-#: src/gui/setup_video.cpp:330
+#: src/gui/setup_video.cpp:331
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:332
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:333
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:334
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:350 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:594 src/gui/setup_video.cpp:734
-#: src/gui/setup_video.cpp:745
+#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
+#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
+#: src/gui/setup_video.cpp:746
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:504
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в оконный режим. Восстановить старый режим также не"
 " удалось!"
 
-#: src/gui/setup_video.cpp:509
+#: src/gui/setup_video.cpp:510
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:520
+#: src/gui/setup_video.cpp:521
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:522
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:533
+#: src/gui/setup_video.cpp:534
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:535
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:640
+#: src/gui/setup_video.cpp:641
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:642
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:656 src/gui/setup_video.cpp:661
+#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:659
+#: src/gui/setup_video.cpp:660
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:692
+#: src/gui/setup_video.cpp:693
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:694
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 
@@ -2412,7 +2424,7 @@ msgid "Sell items"
 msgstr "Продать"
 
 #: src/gui/shopwindow.cpp:119 src/gui/shopwindow.cpp:122
-#: src/gui/tradewindow.cpp:92
+#: src/gui/tradewindow.cpp:88
 msgid "Add"
 msgstr "Добавить"
 
@@ -3180,27 +3192,27 @@ msgstr "Подтверждено. Ждем-с..."
 msgid "Trade: You"
 msgstr "Торговля: Вы"
 
-#: src/gui/tradewindow.cpp:114 src/gui/tradewindow.cpp:170
+#: src/gui/tradewindow.cpp:110 src/gui/tradewindow.cpp:166
 #, c-format
 msgid "You get %s"
 msgstr "Вы получаете %s."
 
-#: src/gui/tradewindow.cpp:115
+#: src/gui/tradewindow.cpp:111
 msgid "You give:"
 msgstr "Вы отдаете:"
 
-#: src/gui/tradewindow.cpp:119
+#: src/gui/tradewindow.cpp:115
 msgid "Change"
 msgstr "Сменить"
 
-#: src/gui/tradewindow.cpp:336
+#: src/gui/tradewindow.cpp:332
 msgid ""
 "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
 
-#: src/gui/tradewindow.cpp:381
+#: src/gui/tradewindow.cpp:377
 msgid "You don't have enough money."
 msgstr "У вас недостаточно денег"
 
@@ -3221,21 +3233,21 @@ msgstr "Соединение..."
 msgid "Play"
 msgstr "Играть"
 
-#: src/gui/updatewindow.cpp:547
+#: src/gui/updatewindow.cpp:545
 msgid "##1  The update process is incomplete."
 msgstr "##1  Процесс обновления не завершен!"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:549
+#: src/gui/updatewindow.cpp:547
 msgid "##1  It is strongly recommended that"
 msgstr "##1  Настоятельно рекомендуется"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:551
+#: src/gui/updatewindow.cpp:549
 msgid "##1  you try again later."
 msgstr "##1  попытаться еще раз немного погодя."
 
-#: src/gui/updatewindow.cpp:677
+#: src/gui/updatewindow.cpp:675
 msgid "Completed"
 msgstr "Завершено"
 
@@ -4683,18 +4695,18 @@ msgstr "Сообщение не может быть отправлено, %s о�
 msgid "Whisper could not be sent, ignored by %s."
 msgstr "Приватное сообщение не может быть послано: %s игнорирует его."
 
-#: src/net/tmwa/chathandler.cpp:338
+#: src/net/tmwa/chathandler.cpp:334
 msgid "MVP player."
 msgstr "Игрок MVP."
 
-#: src/net/tmwa/chathandler.cpp:342
+#: src/net/tmwa/chathandler.cpp:338
 msgid "MVP player: "
 msgstr "Игрок MVP: "
 
-#: src/net/tmwa/chathandler.cpp:395 src/net/tmwa/chathandler.cpp:401
-#: src/net/tmwa/chathandler.cpp:406 src/net/tmwa/chathandler.cpp:412
-#: src/net/tmwa/chathandler.cpp:417 src/net/tmwa/chathandler.cpp:423
-#: src/net/tmwa/chathandler.cpp:430 src/net/tmwa/chathandler.cpp:436
+#: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
+#: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
+#: src/net/tmwa/chathandler.cpp:413 src/net/tmwa/chathandler.cpp:419
+#: src/net/tmwa/chathandler.cpp:426 src/net/tmwa/chathandler.cpp:432
 msgid "Channels are not supported!"
 msgstr "Каналы не поддерживаются!"
 
