@@ -101,7 +101,8 @@ class BeingCacheEntry
             mPvpRank(0),
             mTime(0),
             mIp(""),
-            mIsAdvanced(false)
+            mIsAdvanced(false),
+            mFlags(0)
         {
         }
 
@@ -161,6 +162,12 @@ class BeingCacheEntry
         void setAdvanced(bool a)
         { mIsAdvanced = a; }
 
+        int getFlags() const
+        { return mFlags; }
+
+        void setFlags(int flags)
+        { mFlags = flags; }
+
     protected:
         int mId;                        /**< Unique sprite id */
         std::string mName;              /**< Name of character */
@@ -170,6 +177,7 @@ class BeingCacheEntry
         int mTime;
         std::string mIp;
         bool mIsAdvanced;
+        int mFlags;
 };
 
 
@@ -1759,7 +1767,23 @@ bool Being::updateFromCache()
         setPvpRank(entry->getPvpRank());
         setIp(entry->getIp());
 
-        setAdvanced(entry->isAdvanced());
+        mAdvanced = entry->isAdvanced();
+        if (entry->isAdvanced())
+        {
+            int flags = entry->getFlags();
+            mShop = (flags & FLAG_SHOP);
+            mAway = (flags & FLAG_AWAY);
+            mInactive = (flags & FLAG_INACTIVE);
+            if (mShop || mAway || mInactive)
+                updateName();
+        }
+        else
+        {
+            mShop = false;
+            mAway = false;
+            mInactive = false;
+        }
+
         if (mType == PLAYER)
             updateColors();
         return true;
@@ -1791,6 +1815,21 @@ void Being::addToCache()
     entry->setPvpRank(getPvpRank());
     entry->setIp(getIp());
     entry->setAdvanced(isAdvanced());
+    if (isAdvanced())
+    {
+        int flags = 0;
+        if (mShop)
+            flags += FLAG_SHOP;
+        if (mAway)
+            flags += FLAG_AWAY;
+        if (mInactive)
+            flags += FLAG_INACTIVE;
+        entry->setFlags(flags);
+    }
+    else
+    {
+        entry->setFlags(0);
+    }
 }
 
 BeingCacheEntry* Being::getCacheEntry(int id)
@@ -2345,7 +2384,10 @@ void Being::setEmote(Uint8 emotion, int emote_time)
         mInactive = inactive;
 
         if (needUpdate)
+        {
             updateName();
+            addToCache();
+        }
 //        logger->log("flags: %d", emotion - FLAG_SPECIAL);
     }
     else
