@@ -99,9 +99,12 @@ private:
     gcn::TextField *mUnsecureCharsField;
     gcn::Button *mUnsecureCharsButton;
     std::string mUnsecureChars;
-    bool mVisibleNamesEnabled;
 
+    bool mVisibleNamesEnabled;
     gcn::CheckBox *mVisibleNamesCheckBox;
+
+    bool mShowPlayersStatus;
+    gcn::CheckBox *mShowPlayersStatusCheckBox;
 
     EditDialog *mEditDialog;
 };

@@ -207,6 +207,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "useLocalTime", false);
     AddDEF(configData, "enableAdvert", true);
     AddDEF(configData, "enableMapReduce", true);
+    AddDEF(configData, "showPlayersStatus", true);
     return configData;
 }
 

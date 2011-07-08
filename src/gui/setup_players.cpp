@@ -261,6 +261,7 @@ Setup_Players::Setup_Players():
     mSecureTrades(config.getBoolValue("securetrades")),
     mUnsecureChars(config.getStringValue("unsecureChars")),
     mVisibleNamesEnabled(config.getBoolValue("visiblenames")),
+    mShowPlayersStatus(config.getBoolValue("showPlayersStatus")),
     mEditDialog(0)
 {
     setName(_("Players"));
@@ -337,6 +338,11 @@ Setup_Players::Setup_Players():
     mVisibleNamesCheckBox->setActionEventId("visiblenames");
     mVisibleNamesCheckBox->addActionListener(this);
 
+    mShowPlayersStatusCheckBox = new CheckBox(_("Show statuses"),
+        mShowPlayersStatus);
+    mShowPlayersStatusCheckBox->setActionEventId("showPlayersStatus");
+    mShowPlayersStatusCheckBox->addActionListener(this);
+
     reset();
 
     // Do the layout
@@ -357,6 +363,7 @@ Setup_Players::Setup_Players():
     place(3, 8, mSecureTradesCheckBox, 3);
     place(3, 9, mUnsecureCharsLabel, 3);
     place(3, 10, mUnsecureCharsField, 2);
+    place(3, 11, mShowPlayersStatusCheckBox, 2);
     place(5, 10, mUnsecureCharsButton, 1);
     place(0, 9, mWhisperTabCheckBox, 3).setPadding(4);
     place(0, 10, mTargetDeadCheckBox, 3).setPadding(4);
@@ -415,6 +422,7 @@ void Setup_Players::apply()
     config.setValue("securetrades", mSecureTrades);
     config.setValue("unsecureChars", mUnsecureCharsField->getText());
     config.setValue("visiblenames", mVisibleNamesEnabled);
+    config.setValue("showPlayersStatus", mShowPlayersStatus);
 
     if (actorSpriteManager)
         actorSpriteManager->updatePlayerNames();
@@ -441,6 +449,8 @@ void Setup_Players::cancel()
     mUnsecureCharsField->setText(mUnsecureChars);
     mVisibleNamesEnabled = config.getBoolValue("visiblenames");
     mVisibleNamesCheckBox->setSelected(mVisibleNamesEnabled);
+    mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
+    mShowPlayersStatusCheckBox->setSelected(mShowPlayersStatus);
 }
 
 void Setup_Players::action(const gcn::ActionEvent &event)
@@ -525,6 +535,10 @@ void Setup_Players::action(const gcn::ActionEvent &event)
     else if (event.getId() == "visiblenames")
     {
         mVisibleNamesEnabled = mVisibleNamesCheckBox->isSelected();
+    }
+    else if (event.getId() == "showPlayersStatus")
+    {
+        mShowPlayersStatus = mShowPlayersStatusCheckBox->isSelected();
     }
 }
 

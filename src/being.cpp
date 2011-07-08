@@ -185,6 +185,9 @@ bool Being::mDrawHotKeys = true;
 bool Being::mShowBattleEvents = false;
 bool Being::mShowMobHP = false;
 bool Being::mShowOwnHP = false;
+bool Being::mShowGender = false;
+bool Being::mShowLevel = false;
+bool Being::mShowPlayersStatus = false;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 
@@ -1483,16 +1486,30 @@ std::string Being::getGenderSignWithSpace() const
 
 std::string Being::getGenderSign() const
 {
-    if (config.getBoolValue("showgender"))
+    std::string str;
+    if (mShowGender)
     {
         if (getGender() == GENDER_FEMALE)
-            return "\u2640";
+            str = "\u2640";
         else if (getGender() == GENDER_MALE)
-            return "\u2642";
-        else
-            return "";
+            str = "\u2642";
     }
-    return "";
+    if (mShowPlayersStatus && mAdvanced)
+    {
+        if (mShop)
+            str += "$";
+        if (mAway)
+        {
+            // TRANSLATORS: this away status writed in player nick
+            str += _("A");
+        }
+        else if (mInactive)
+        {
+            // TRANSLATORS: this inactive status writed in player nick
+            str += _("I");
+        }
+    }
+    return str;
 }
 
 void Being::showName()
@@ -1501,12 +1518,10 @@ void Being::showName()
     mDispName = 0;
     std::string mDisplayName(mName);
 
-    if (mType != MONSTER
-        && (config.getBoolValue("showgender")
-        || config.getBoolValue("showlevel")))
+    if (mType != MONSTER && (mShowGender || mShowLevel))
     {
         mDisplayName += " ";
-        if (config.getBoolValue("showlevel") && getLevel() != 0)
+        if (mShowLevel && getLevel() != 0)
             mDisplayName += toString(getLevel());
 
         mDisplayName += getGenderSign();
@@ -1723,6 +1738,9 @@ void Being::reReadConfig()
         mShowBattleEvents = config.getBoolValue("showBattleEvents");
         mShowMobHP = config.getBoolValue("showMobHP");
         mShowOwnHP = config.getBoolValue("showOwnHP");
+        mShowGender = config.getBoolValue("showgender");
+        mShowLevel = config.getBoolValue("showlevel");
+        mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
 
         mUpdateConfigTime = cur_time;
     }
@@ -2316,9 +2334,18 @@ void Being::setEmote(Uint8 emotion, int emote_time)
     if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {
         mAdvanced = true;
-        mShop = (emotion & FLAG_SHOP);
-        mAway = (emotion & FLAG_AWAY);
-        mInactive = (emotion & FLAG_INACTIVE);
+        bool shop = (emotion & FLAG_SHOP);
+        bool away = (emotion & FLAG_AWAY);
+        bool inactive = (emotion & FLAG_INACTIVE);
+        bool needUpdate = (shop != mShop || away != mAway
+            || inactive != mInactive);
+
+        mShop = shop;
+        mAway = away;
+        mInactive = inactive;
+
+        if (needUpdate)
+            updateName();
 //        logger->log("flags: %d", emotion - FLAG_SPECIAL);
     }
     else
