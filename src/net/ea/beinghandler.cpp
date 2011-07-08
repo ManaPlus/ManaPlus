@@ -239,6 +239,9 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     msg.readInt8();   // karma
     gender = msg.readInt8();
 
+    // reserving bits for future usage
+    gender &= 1;
+
     if (dstBeing->getType() == ActorSprite::PLAYER)
     {
         dstBeing->setGender((gender == 0)

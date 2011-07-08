@@ -273,7 +273,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
             static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
     LocalPlayer *tempPlayer = new LocalPlayer(msg.readInt32(), 0);
-    tempPlayer->setGender(token.sex);
+    // reserving bit for future usage
+    tempPlayer->setGender(token.sex & 1);
 
     character->data.mAttributes[EXP] = msg.readInt32();
     character->data.mAttributes[MONEY] = msg.readInt32();

@@ -511,8 +511,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
     msg.readInt8();   // karma
-    dstBeing->setGender((msg.readInt8() == 0)
-                      ? GENDER_FEMALE : GENDER_MALE);
+    // reserving bit for future usage
+    dstBeing->setGender(((msg.readInt8() & 1) == 0)
+        ? GENDER_FEMALE : GENDER_MALE);
 
     // Set these after the gender, as the sprites may be gender-specific
     dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
