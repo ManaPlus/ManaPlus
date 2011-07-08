@@ -62,13 +62,13 @@ class PlayerHandler
 
         virtual void ignoreAll(bool ignore) = 0;
 
-        virtual bool canUseMagic() = 0;
+        virtual bool canUseMagic() const = 0;
 
-        virtual bool canCorrectAttributes() = 0;
+        virtual bool canCorrectAttributes() const = 0;
 
-        virtual int getJobLocation() = 0;
+        virtual int getJobLocation() const = 0;
 
-        virtual Vector getDefaultWalkSpeed() = 0;
+        virtual Vector getDefaultWalkSpeed() const = 0;
 };
 
 } // namespace Net

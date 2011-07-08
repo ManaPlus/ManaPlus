@@ -84,7 +84,7 @@ class InventoryHandler : public MessageHandler, Net::InventoryHandler
 
         void dropItem(const Item *item, int amount);
 
-        bool canSplit(const Item *item);
+        bool canSplit(const Item *item) const;
 
         void splitItem(const Item *item, int amount);
 
@@ -99,7 +99,7 @@ class InventoryHandler : public MessageHandler, Net::InventoryHandler
 
         size_t getSize(int type) const;
 
-        int convertFromServerSlot(int eAthenaSlot);
+        int convertFromServerSlot(int eAthenaSlot) const;
 
     private:
         EquipBackend mEquips;

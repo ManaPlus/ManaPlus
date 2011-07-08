@@ -65,6 +65,7 @@ namespace ItemDB
     const std::map<int, ItemInfo*> &getItemInfos();
 
     int getTagId(std::string tagName);
+
     struct Stat
     {
         Stat(const std::string &tag,

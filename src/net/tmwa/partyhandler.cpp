@@ -544,7 +544,7 @@ void PartyHandler::chat(const std::string &text)
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
-void PartyHandler::requestPartyMembers()
+void PartyHandler::requestPartyMembers() const
 {
     // Our eAthena doesn't have this message
     // Not needed anyways

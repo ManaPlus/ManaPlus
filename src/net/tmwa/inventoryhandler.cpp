@@ -618,7 +618,7 @@ void InventoryHandler::dropItem(const Item *item, int amount)
     outMsg.writeInt16(static_cast<Sint16>(amount));
 }
 
-bool InventoryHandler::canSplit(const Item *item A_UNUSED)
+bool InventoryHandler::canSplit(const Item *item A_UNUSED) const
 {
     return false;
 }
@@ -678,7 +678,7 @@ size_t InventoryHandler::getSize(int type) const
             return 0;
     }
 }
-int InventoryHandler::convertFromServerSlot(int serverSlot)
+int InventoryHandler::convertFromServerSlot(int serverSlot) const
 {
     if (serverSlot < 0 || serverSlot > 13)
         return 0;

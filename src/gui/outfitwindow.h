@@ -82,9 +82,9 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         void unequipNotInOutfit(int outfit);
 
-        int keyToNumber(SDLKey key);
+        int keyToNumber(SDLKey key) const;
 
-        SDLKey numberToKey(int number);
+        SDLKey numberToKey(int number) const;
 
         void next();
 

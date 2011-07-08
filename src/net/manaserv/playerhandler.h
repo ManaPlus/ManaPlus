@@ -70,12 +70,12 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
         void ignorePlayer(const std::string &player, bool ignore);
         void ignoreAll(bool ignore);
 
-        bool canUseMagic();
-        bool canCorrectAttributes();
+        bool canUseMagic() const;
+        bool canCorrectAttributes() const;
 
-        int getJobLocation();
+        int getJobLocation() const;
 
-        Vector getDefaultWalkSpeed();
+        Vector getDefaultWalkSpeed() const;
 
     private:
         void handleMapChangeMessage(Net::MessageIn &msg);

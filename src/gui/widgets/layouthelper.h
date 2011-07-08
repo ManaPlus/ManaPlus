@@ -54,7 +54,7 @@ class LayoutHelper : public gcn::WidgetListener
         /**
          * Gets the layout handler.
          */
-        Layout &getLayout();
+        const Layout &getLayout() const;
 
         /**
          * Computes the position of the widgets according to the current

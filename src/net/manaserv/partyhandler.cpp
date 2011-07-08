@@ -186,7 +186,7 @@ void PartyHandler::chat(const std::string &text A_UNUSED)
     // TODO
 }
 
-void PartyHandler::requestPartyMembers()
+void PartyHandler::requestPartyMembers() const
 {
     //MessageOut msg(PCMSG_GUILD_GET_MEMBERS);
 

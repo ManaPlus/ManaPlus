@@ -64,14 +64,14 @@ class PartyHandler : public MessageHandler, public Net::PartyHandler
 
         void chat(const std::string &text);
 
-        void requestPartyMembers();
+        void requestPartyMembers() const;
 
-        PartyShare getShareExperience()
+        PartyShare getShareExperience() const
         { return mShareExp; }
 
         void setShareExperience(PartyShare share);
 
-        PartyShare getShareItems()
+        PartyShare getShareItems() const
         { return mShareItems; }
 
         void setShareItems(PartyShare share);

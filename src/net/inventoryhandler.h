@@ -45,7 +45,7 @@ class InventoryHandler
 
         virtual void dropItem(const Item *item, int amount) = 0;
 
-        virtual bool canSplit(const Item *item) = 0;
+        virtual bool canSplit(const Item *item) const = 0;
 
         virtual void splitItem(const Item *item, int amount) = 0;
 
@@ -63,7 +63,7 @@ class InventoryHandler
         // TODO: fix/remove me
         virtual size_t getSize(int type) const = 0;
 
-        virtual int convertFromServerSlot(int eAthenaSlot) = 0;
+        virtual int convertFromServerSlot(int eAthenaSlot) const = 0;
 
 //        virtual ~InventoryHandler() {}
 };

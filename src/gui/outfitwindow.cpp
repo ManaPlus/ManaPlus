@@ -487,7 +487,7 @@ void OutfitWindow::unequipNotInOutfit(int outfit)
     }
 }
 
-int OutfitWindow::keyToNumber(SDLKey key)
+int OutfitWindow::keyToNumber(SDLKey key) const
 {
     int outfitNum = -1;
     switch (key)
@@ -672,7 +672,7 @@ int OutfitWindow::keyToNumber(SDLKey key)
     return outfitNum;
 }
 
-SDLKey OutfitWindow::numberToKey(int number)
+SDLKey OutfitWindow::numberToKey(int number) const
 {
     SDLKey key = SDLK_UNKNOWN;
     switch (number)

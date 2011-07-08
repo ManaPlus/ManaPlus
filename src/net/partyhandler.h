@@ -63,13 +63,13 @@ class PartyHandler
 
         virtual void chat(const std::string &text) = 0;
 
-        virtual void requestPartyMembers() = 0;
+        virtual void requestPartyMembers() const = 0;
 
-        virtual PartyShare getShareExperience() = 0;
+        virtual PartyShare getShareExperience() const = 0;
 
         virtual void setShareExperience(PartyShare share) = 0;
 
-        virtual PartyShare getShareItems() = 0;
+        virtual PartyShare getShareItems() const = 0;
 
         virtual void setShareItems(PartyShare share) = 0;
 

@@ -153,7 +153,7 @@ class InventoryHandler : public MessageHandler, public Net::InventoryHandler
 
         void dropItem(const Item *item, int amount);
 
-        bool canSplit(const Item *item);
+        bool canSplit(const Item *item) const;
 
         void splitItem(const Item *item, int amount);
 
@@ -168,7 +168,7 @@ class InventoryHandler : public MessageHandler, public Net::InventoryHandler
 
         size_t getSize(int type) const;
 
-        int convertFromServerSlot(int serverSlot);
+        int convertFromServerSlot(int serverSlot) const;
 
         void pushPickup(int floorId)
         { mSentPickups.push(floorId); }

@@ -759,22 +759,22 @@ void PlayerHandler::ignoreAll(bool ignore A_UNUSED)
     // TODO
 }
 
-bool PlayerHandler::canUseMagic()
+bool PlayerHandler::canUseMagic() const
 {
     return PlayerInfo::getStatEffective(MATK) > 0;
 }
 
-bool PlayerHandler::canCorrectAttributes()
+bool PlayerHandler::canCorrectAttributes() const
 {
     return false;
 }
 
-int PlayerHandler::getJobLocation()
+int PlayerHandler::getJobLocation() const
 {
     return JOB;
 }
 
-Vector PlayerHandler::getDefaultWalkSpeed()
+Vector PlayerHandler::getDefaultWalkSpeed() const
 {
     // Return an normalized speed for any side
     // as the offset is calculated elsewhere.

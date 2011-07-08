@@ -417,22 +417,22 @@ void PlayerHandler::ignoreAll(bool ignore A_UNUSED)
     // TODO
 }
 
-bool PlayerHandler::canUseMagic()
+bool PlayerHandler::canUseMagic() const
 {
     return true;
 }
 
-bool PlayerHandler::canCorrectAttributes()
+bool PlayerHandler::canCorrectAttributes() const
 {
     return true;
 }
 
-int PlayerHandler::getJobLocation()
+int PlayerHandler::getJobLocation() const
 {
     return -1;
 }
 
-Vector PlayerHandler::getDefaultWalkSpeed()
+Vector PlayerHandler::getDefaultWalkSpeed() const
 {
     // Return translation in pixels per ticks.
     return ManaServ::BeingHandler::giveSpeedInPixelsPerTicks(6.0f);

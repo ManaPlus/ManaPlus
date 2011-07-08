@@ -65,13 +65,16 @@ public:
 
     void chat(const std::string &text);
 
-    void requestPartyMembers();
+    void requestPartyMembers() const;
 
-    PartyShare getShareExperience() { return PARTY_SHARE_NO; }
+    PartyShare getShareExperience() const
+    { return PARTY_SHARE_NO; }
 
-    void setShareExperience(PartyShare share A_UNUSED) {}
+    void setShareExperience(PartyShare share A_UNUSED)
+    { }
 
-    PartyShare getShareItems() { return PARTY_SHARE_NO; }
+    PartyShare getShareItems() const
+    { return PARTY_SHARE_NO; }
 
     void setShareItems(PartyShare share A_UNUSED) {}
 private:

@@ -35,7 +35,7 @@ LayoutHelper::~LayoutHelper()
     mContainer->removeWidgetListener(this);
 }
 
-Layout &LayoutHelper::getLayout()
+const Layout &LayoutHelper::getLayout() const
 {
     return mLayout;
 }

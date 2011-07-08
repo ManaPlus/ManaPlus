@@ -151,7 +151,7 @@ void InventoryHandler::dropItem(const Item *item, int amount)
     gameServerConnection->send(msg);
 }
 
-bool InventoryHandler::canSplit(const Item *item)
+bool InventoryHandler::canSplit(const Item *item) const
 {
     return item && !item->isEquipment() && item->getQuantity() > 1;
 }
@@ -212,7 +212,7 @@ size_t InventoryHandler::getSize(int type) const
     }
 }
 
-int InventoryHandler::convertFromServerSlot(int eAthenaSlot)
+int InventoryHandler::convertFromServerSlot(int eAthenaSlot) const
 {
     return eAthenaSlot;
 }
