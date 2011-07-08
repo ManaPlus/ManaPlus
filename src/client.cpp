@@ -1788,6 +1788,7 @@ void Client::storeSafeParameters()
     std::string secureFont;
     bool showBackground;
     bool enableMumble;
+    bool enableMapReduce;
 
     isSafeMode = config.getBoolValue("safemode");
     if (isSafeMode)
@@ -1815,6 +1816,7 @@ void Client::storeSafeParameters()
 
     showBackground = config.getBoolValue("showBackground");
     enableMumble = config.getBoolValue("enableMumble");
+    enableMapReduce = config.getBoolValue("enableMapReduce");
 
     config.setValue("hwaccel", false);
     config.setValue("opengl", 0);
@@ -1831,6 +1833,7 @@ void Client::storeSafeParameters()
     config.setValue("secureFont", "fonts/dejavusansmono.ttf");
     config.setValue("showBackground", false);
     config.setValue("enableMumble", false);
+    config.setValue("enableMapReduce", false);
 
     config.write();
 
@@ -1855,6 +1858,7 @@ void Client::storeSafeParameters()
     config.setValue("secureFont", secureFont);
     config.setValue("showBackground", showBackground);
     config.setValue("enableMumble", enableMumble);
+    config.setValue("enableMapReduce", enableMapReduce);
 }
 
 void Client::initTradeFilter()
