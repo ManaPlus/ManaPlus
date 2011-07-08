@@ -113,7 +113,6 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mAwayDialog(0),
     mAfkTime(0),
     mAwayMode(false),
-    mHalfAwayMode(false),
     mShowNavigePath(false),
     mDrawPath(false),
     mActivityTime(0),
@@ -351,7 +350,7 @@ void LocalPlayer::logic()
         if (mAwayMode)
             smile += FLAG_AWAY;
 
-        if (mHalfAwayMode)
+        if (mInactive)
             smile += FLAG_INACTIVE;
 
         if (emote(smile))
@@ -3160,7 +3159,8 @@ void LocalPlayer::changeAwayMode()
 {
     mAwayMode = !mAwayMode;
     mAfkTime = 0;
-    mHalfAwayMode = false;
+    mInactive = false;
+    updateName();
     if (miniStatusWindow)
         miniStatusWindow->updateStatus();
     if (mAwayMode)

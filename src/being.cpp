@@ -1793,6 +1793,9 @@ bool Being::updateFromCache()
 
 void Being::addToCache()
 {
+    if (player_node == this)
+        return;
+
     BeingCacheEntry *entry = Being::getCacheEntry(getId());
     if (!entry)
     {

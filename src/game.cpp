@@ -1100,6 +1100,8 @@ void Game::handleInput()
                 }
                 Client::setFramerate(fpsLimit);
             }
+            if (player_node)
+                player_node->updateName();
 
             if (event.active.state & SDL_APPINPUTFOCUS)
                 Client::setInputFocused(event.active.gain);

@@ -332,7 +332,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void setAway(const std::string &message);
 
         void setHalfAway(bool n)
-        { mHalfAwayMode = n; }
+        { mInactive = n;}
 
         void afkRespond(ChatTab *tab, const std::string &nick);
 
@@ -568,7 +568,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int mPingTime;
         int mAfkTime;
         bool mAwayMode;
-        bool mHalfAwayMode;
 
         bool mShowNavigePath;
         bool mIsServerBuggy;
