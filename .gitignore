@@ -34,7 +34,7 @@ config.status.lineno
 po/POTFILES
 .deps
 stamp-h1
-manaplus.spec
+/manaplus.spec
 PKGBUILD
 
 # files created by CMake
