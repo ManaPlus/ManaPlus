@@ -1,3 +1,18 @@
+2011-07-10 New release 1.1.7.10
+ManaPlus:
+fix: char deletion
+fix: improve speed.
+fix: improve speed in software mode.
+fix: some memory leaks.
+fix: music fadeout.
+fix: crash in reconnecting to servers.
+add: make script for MacOS with fink.
+add: updated mplus and libiration fonts.
+add: player statuses: enabled shop, away and inactive mode.
+add: map reduce mode usefull for sftware drawing mode (improving speed).
+add: updated translations.
+add: redesign video tab in settings.
+
 2011-06-26 New release 1.1.6.26
 ManaPlus:
 fix: context menu positions.
