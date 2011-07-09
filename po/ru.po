@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <reslayer@mail.ru>, 2011.
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
@@ -10,15 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-08 21:33+0300\n"
+"POT-Creation-Date: 2011-07-09 20:12+0300\n"
 "PO-Revision-Date: 2011-07-08 18:41+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
+"ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1030
 msgid "Visible on map"
@@ -42,35 +44,35 @@ msgstr "О"
 msgid "I"
 msgstr "Б"
 
-#: src/client.cpp:821 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:822 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Настройка"
 
-#: src/client.cpp:900
+#: src/client.cpp:902
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
-#: src/client.cpp:931
+#: src/client.cpp:933
 msgid "Logging in"
 msgstr "Авторизация"
 
-#: src/client.cpp:964
+#: src/client.cpp:966
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
-#: src/client.cpp:1056
+#: src/client.cpp:1058
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
-#: src/client.cpp:1087
+#: src/client.cpp:1089
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
-#: src/client.cpp:1097
+#: src/client.cpp:1099
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
-#: src/client.cpp:1134 src/client.cpp:1141 src/client.cpp:1278
+#: src/client.cpp:1136 src/client.cpp:1143 src/client.cpp:1280
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
@@ -80,50 +82,50 @@ msgstr "Смена игрового сервера"
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/client.cpp:1150
+#: src/client.cpp:1152
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
-#: src/client.cpp:1177
+#: src/client.cpp:1179
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
-#: src/client.cpp:1178
+#: src/client.cpp:1180
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
-#: src/client.cpp:1197
+#: src/client.cpp:1199
 msgid "Email Change"
 msgstr "Сменить Email"
 
-#: src/client.cpp:1198
+#: src/client.cpp:1200
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
-#: src/client.cpp:1218
+#: src/client.cpp:1220
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
-#: src/client.cpp:1219
+#: src/client.cpp:1221
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
-#: src/client.cpp:1408 src/client.cpp:1438 src/client.cpp:1482
-#: src/client.cpp:1902
+#: src/client.cpp:1410 src/client.cpp:1440 src/client.cpp:1484
+#: src/client.cpp:1904
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
-#: src/client.cpp:1612
+#: src/client.cpp:1614
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Некорректный сервер обновлений: %s"
 
-#: src/client.cpp:1646 src/client.cpp:1652
+#: src/client.cpp:1648 src/client.cpp:1654
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:1673
+#: src/client.cpp:1675
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -139,11 +141,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
-" уже создана, или этот игрок Вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
+"уже создана, или этот игрок Вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -302,7 +304,9 @@ msgstr "Удаленных изображений:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
+msgstr ""
+"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
+"\"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -336,11 +340,11 @@ msgstr "Игнорировать предложения о торговле"
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
-#: src/game.cpp:1431
+#: src/game.cpp:1433
 msgid "Could Not Load Map"
 msgstr "Не удалось загрузить карту"
 
-#: src/game.cpp:1432
+#: src/game.cpp:1434
 #, c-format
 msgid "Error while loading %s"
 msgstr "Ошибка во время загрузки %s"
@@ -2359,8 +2363,8 @@ msgstr "Нет"
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
-" удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
+"удалось!"
 
 #: src/gui/setup_video.cpp:510
 msgid ""
@@ -3206,8 +3210,7 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3546,16 +3549,15 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:125
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
-" отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
+"отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:65
@@ -4045,41 +4047,41 @@ msgstr ""
 "Конфликт клавиш \"%s\" и \"%s\".Исправьте их, или игра может себя странно "
 "вести."
 
-#: src/localplayer.cpp:372
+#: src/localplayer.cpp:371
 msgid "You were killed by "
 msgstr "Вы были убиты "
 
-#: src/localplayer.cpp:1403
+#: src/localplayer.cpp:1402
 msgid "Tried to pick up nonexistent item."
 msgstr "Попытка поднять несуществующий предмет."
 
-#: src/localplayer.cpp:1405
+#: src/localplayer.cpp:1404
 msgid "Item is too heavy."
 msgstr "Предмет слишком тяжелый."
 
-#: src/localplayer.cpp:1407
+#: src/localplayer.cpp:1406
 msgid "Item is too far away."
 msgstr "Предмет слишком далеко"
 
-#: src/localplayer.cpp:1409
+#: src/localplayer.cpp:1408
 msgid "Inventory is full."
 msgstr "Инвентарь переполнен."
 
-#: src/localplayer.cpp:1411
+#: src/localplayer.cpp:1410
 msgid "Stack is too big."
 msgstr "Слишком много предметов."
 
-#: src/localplayer.cpp:1414
+#: src/localplayer.cpp:1413
 msgid "Item belongs to someone else."
 msgstr "Предмет принадлежит кому-то еще."
 
-#: src/localplayer.cpp:1417
+#: src/localplayer.cpp:1416
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1441
+#: src/localplayer.cpp:1440
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -4387,7 +4389,7 @@ msgstr "Некорректный номер слота."
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:202
+#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:203
 msgid "Unknown error."
 msgstr "Неизвестная ошибка."
 
@@ -4634,10 +4636,9 @@ msgstr "Неизвестная ошибка сервера персонажей.
 
 #: src/net/tmwa/charserverhandler.cpp:174
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr ""
-"Невозможно создать персонажа. Скорее всего, таке имя уже используется."
+msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
 
-#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:196
+#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:197
 msgid "Wrong name."
 msgstr "Некорректное имя."
 
@@ -4997,8 +4998,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
 msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения или"
-" \"0\", \"no\", \"false\" -- для выключения."
+"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения или "
+"\"0\", \"no\", \"false\" -- для выключения."
 
 #: src/net/tmwa/gui/partytab.cpp:101
 msgid "Command: /item"
@@ -5006,8 +5007,7 @@ msgstr "Команда: /item"
 
 #: src/net/tmwa/gui/partytab.cpp:102
 msgid "This command displays the party's current item sharing policy."
-msgstr ""
-"Отображает текущую политику разделения предметов между членами группы."
+msgstr "Отображает текущую политику разделения предметов между членами группы."
 
 #: src/net/tmwa/gui/partytab.cpp:107
 msgid "Command: /exp <policy>"
@@ -5081,32 +5081,32 @@ msgstr "Учетная запись не найдена. Попробуйте с
 msgid "New password too short."
 msgstr "Новый пароль слишком короткий."
 
-#: src/net/tmwa/loginhandler.cpp:164
+#: src/net/tmwa/loginhandler.cpp:165
 msgid "Unregistered ID."
 msgstr "Незарегистрированный ID"
 
-#: src/net/tmwa/loginhandler.cpp:167
+#: src/net/tmwa/loginhandler.cpp:168
 msgid "Wrong password."
 msgstr "Неверный пароль"
 
-#: src/net/tmwa/loginhandler.cpp:170
+#: src/net/tmwa/loginhandler.cpp:171
 msgid "Account expired."
 msgstr "Учетная запись просрочена."
 
-#: src/net/tmwa/loginhandler.cpp:173
+#: src/net/tmwa/loginhandler.cpp:174
 msgid "Rejected from server."
 msgstr "Получен отказ от сервера.."
 
-#: src/net/tmwa/loginhandler.cpp:176
+#: src/net/tmwa/loginhandler.cpp:177
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr "Вас навсегда забанили. Пожалуйста, свяжитесь с командой ГМ-ов."
 
-#: src/net/tmwa/loginhandler.cpp:180
+#: src/net/tmwa/loginhandler.cpp:181
 msgid "Client too old."
 msgstr "Клиент устарел"
 
-#: src/net/tmwa/loginhandler.cpp:183
+#: src/net/tmwa/loginhandler.cpp:184
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -5114,15 +5114,15 @@ msgid ""
 msgstr ""
 "Вас забанили до %s. Пожалуйста, свяжитесь с командой ГМ-ов через форум."
 
-#: src/net/tmwa/loginhandler.cpp:190
+#: src/net/tmwa/loginhandler.cpp:191
 msgid "Server overpopulated."
 msgstr "Сервер переполнен"
 
-#: src/net/tmwa/loginhandler.cpp:193
+#: src/net/tmwa/loginhandler.cpp:194
 msgid "This user name is already taken."
 msgstr "Это имя пользователя уже занято."
 
-#: src/net/tmwa/loginhandler.cpp:199
+#: src/net/tmwa/loginhandler.cpp:200
 msgid "Username permanently erased."
 msgstr "Пользователь удален"
 
@@ -5262,8 +5262,7 @@ msgstr "Сообщение"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Вы несете груз больший, чем половина вашей грузоподъемности. Здоровье "
 "восстанавливаться не будет."
@@ -5458,5 +5457,3 @@ msgstr "Мана %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
-
-

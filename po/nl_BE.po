@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-08 21:33+0300\n"
+"POT-Creation-Date: 2011-07-09 20:12+0300\n"
 "PO-Revision-Date: 2011-06-20 00:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium/Flemish) (http://www.transifex.net/projects/p/"
@@ -41,35 +41,35 @@ msgstr ""
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:821 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:822 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configureren"
 
-#: src/client.cpp:900
+#: src/client.cpp:902
 msgid "Connecting to server"
 msgstr "Verbinden met server"
 
-#: src/client.cpp:931
+#: src/client.cpp:933
 msgid "Logging in"
 msgstr "Inloggen"
 
-#: src/client.cpp:964
+#: src/client.cpp:966
 msgid "Entering game world"
 msgstr "Spelwereld binnenkomen"
 
-#: src/client.cpp:1056
+#: src/client.cpp:1058
 msgid "Requesting characters"
 msgstr "Aanvragen personage"
 
-#: src/client.cpp:1087
+#: src/client.cpp:1089
 msgid "Connecting to the game server"
 msgstr "Verbinden met de spelserver"
 
-#: src/client.cpp:1097
+#: src/client.cpp:1099
 msgid "Changing game servers"
 msgstr "Wijzigen spelservers"
 
-#: src/client.cpp:1134 src/client.cpp:1141 src/client.cpp:1278
+#: src/client.cpp:1136 src/client.cpp:1143 src/client.cpp:1280
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
@@ -79,50 +79,50 @@ msgstr "Wijzigen spelservers"
 msgid "Error"
 msgstr "Fout"
 
-#: src/client.cpp:1150
+#: src/client.cpp:1152
 msgid "Requesting registration details"
 msgstr "Aanvragen registratie details"
 
-#: src/client.cpp:1177
+#: src/client.cpp:1179
 msgid "Password Change"
 msgstr "Paswoord Wijziging"
 
-#: src/client.cpp:1178
+#: src/client.cpp:1180
 msgid "Password changed successfully!"
 msgstr "Paswoord is gewijzigd!"
 
-#: src/client.cpp:1197
+#: src/client.cpp:1199
 msgid "Email Change"
 msgstr "Email Wijziging"
 
-#: src/client.cpp:1198
+#: src/client.cpp:1200
 msgid "Email changed successfully!"
 msgstr "Email is gewijzigd!"
 
-#: src/client.cpp:1218
+#: src/client.cpp:1220
 msgid "Unregister Successful"
 msgstr "Registratie ongedaan gemaakt!"
 
-#: src/client.cpp:1219
+#: src/client.cpp:1221
 msgid "Farewell, come back any time..."
 msgstr "Tot ziens..."
 
-#: src/client.cpp:1408 src/client.cpp:1438 src/client.cpp:1482
-#: src/client.cpp:1902
+#: src/client.cpp:1410 src/client.cpp:1440 src/client.cpp:1484
+#: src/client.cpp:1904
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s bestaat niet en kan niet gecreëerd worden! Stoppen."
 
-#: src/client.cpp:1612
+#: src/client.cpp:1614
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Ongeldige update host %s"
 
-#: src/client.cpp:1646 src/client.cpp:1652
+#: src/client.cpp:1648 src/client.cpp:1654
 msgid "Error creating updates directory!"
 msgstr "Fout bij het creëren van de update map!"
 
-#: src/client.cpp:1673
+#: src/client.cpp:1675
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Fout: %s bestaat niet en kan niet gecreëerd worden! Stoppen."
@@ -331,11 +331,11 @@ msgstr "Inkomende handelsaanvragen negeren"
 msgid "Accepting incoming trade requests"
 msgstr "Inkomende handelsaanvragen accepteren"
 
-#: src/game.cpp:1431
+#: src/game.cpp:1433
 msgid "Could Not Load Map"
 msgstr "Kon Map Niet Laden"
 
-#: src/game.cpp:1432
+#: src/game.cpp:1434
 #, c-format
 msgid "Error while loading %s"
 msgstr "Fout bij het laden van %s"
@@ -4042,41 +4042,41 @@ msgid ""
 "strange behaviour."
 msgstr ""
 
-#: src/localplayer.cpp:372
+#: src/localplayer.cpp:371
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1403
+#: src/localplayer.cpp:1402
 msgid "Tried to pick up nonexistent item."
 msgstr "Geprobeerd een nietbestaand voorwerp op te rapen."
 
-#: src/localplayer.cpp:1405
+#: src/localplayer.cpp:1404
 msgid "Item is too heavy."
 msgstr "Voorwerp is te zwaar."
 
-#: src/localplayer.cpp:1407
+#: src/localplayer.cpp:1406
 msgid "Item is too far away."
 msgstr "Voorwerp is te ver weg."
 
-#: src/localplayer.cpp:1409
+#: src/localplayer.cpp:1408
 msgid "Inventory is full."
 msgstr ""
 
-#: src/localplayer.cpp:1411
+#: src/localplayer.cpp:1410
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1414
+#: src/localplayer.cpp:1413
 msgid "Item belongs to someone else."
 msgstr "Voorwerp behoort bij iemand anders."
 
-#: src/localplayer.cpp:1417
+#: src/localplayer.cpp:1416
 msgid "Unknown problem picking up item."
 msgstr "Onbekend probleem bij het oprapen van voorwerp."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1441
+#: src/localplayer.cpp:1440
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -4385,7 +4385,7 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:202
+#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:203
 msgid "Unknown error."
 msgstr ""
 
@@ -4629,7 +4629,7 @@ msgstr ""
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Kan personage niet aanmaken. Waarschijnlijk bestaat de naam al."
 
-#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:196
+#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:197
 msgid "Wrong name."
 msgstr ""
 
@@ -5075,32 +5075,32 @@ msgstr "Account was niet gevonden. Probeer opnieuw in te loggen aub."
 msgid "New password too short."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:164
+#: src/net/tmwa/loginhandler.cpp:165
 msgid "Unregistered ID."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:167
+#: src/net/tmwa/loginhandler.cpp:168
 msgid "Wrong password."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:170
+#: src/net/tmwa/loginhandler.cpp:171
 msgid "Account expired."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:173
+#: src/net/tmwa/loginhandler.cpp:174
 msgid "Rejected from server."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:176
+#: src/net/tmwa/loginhandler.cpp:177
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:180
+#: src/net/tmwa/loginhandler.cpp:181
 msgid "Client too old."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:183
+#: src/net/tmwa/loginhandler.cpp:184
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -5109,15 +5109,15 @@ msgstr ""
 "Je bent tijdelijk geband van het spel tot %s.\n"
 "Neem aub contact op met het GM team via de forums."
 
-#: src/net/tmwa/loginhandler.cpp:190
+#: src/net/tmwa/loginhandler.cpp:191
 msgid "Server overpopulated."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:193
+#: src/net/tmwa/loginhandler.cpp:194
 msgid "This user name is already taken."
 msgstr ""
 
-#: src/net/tmwa/loginhandler.cpp:199
+#: src/net/tmwa/loginhandler.cpp:200
 msgid "Username permanently erased."
 msgstr ""
 
