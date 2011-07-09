@@ -78,6 +78,8 @@ class PartyHandler : public MessageHandler, public Net::PartyHandler
 
         void reload();
 
+        void clear();
+
     private:
         PartyShare mShareExp, mShareItems;
 };

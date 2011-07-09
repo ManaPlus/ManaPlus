@@ -76,7 +76,11 @@ public:
     PartyShare getShareItems() const
     { return PARTY_SHARE_NO; }
 
-    void setShareItems(PartyShare share A_UNUSED) {}
+    void setShareItems(PartyShare share A_UNUSED)
+    { }
+
+    void clear();
+
 private:
     Party *mParty;
 };

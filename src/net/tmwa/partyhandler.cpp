@@ -575,4 +575,9 @@ void PartyHandler::reload()
     taParty = Party::getParty(1);
 }
 
+void PartyHandler::clear()
+{
+    taParty = 0;
+}
+
 } // namespace TmwAthena

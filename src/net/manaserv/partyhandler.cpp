@@ -195,4 +195,8 @@ void PartyHandler::requestPartyMembers() const
     //chatServerConnection->send(msg);
 }
 
+void PartyHandler::clear()
+{
+}
+
 } // namespace ManaServ

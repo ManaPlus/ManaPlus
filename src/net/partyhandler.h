@@ -73,6 +73,8 @@ class PartyHandler
 
         virtual void setShareItems(PartyShare share) = 0;
 
+        virtual void clear() = 0;
+
         // virtual void options() = 0;
 
         // virtual void message() = 0;

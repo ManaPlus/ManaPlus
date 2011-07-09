@@ -76,6 +76,7 @@
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/packetcounters.h"
+#include "net/partyhandler.h"
 #include "net/worldinfo.h"
 
 #include "resources/beinginfo.h"
@@ -850,6 +851,7 @@ int Client::exec()
                     resman->cleanOrphans();
                 Party::clearParties();
                 Net::getNpcHandler()->clearDialogs();
+                Net::getPartyHandler()->clear();
             }
 
             mOldState = mState;
