@@ -10,8 +10,8 @@ export CPP=cpp-${GCCVER}
 export CXXCPP=cpp-${GCCVER}
 export CPPFLAGS="-I/sw/include"
 export LDFLAGS="-framework OpenGL"
-#dir=`pwd`/run
-dir=${FINKDIR}
+dir=`pwd`/run
+#dir=${FINKDIR}
 
 autoreconf -i 2>fink1.log
 
@@ -27,7 +27,7 @@ autoreconf -i 2>fink1.log
 --datarootdir=${dir}/share/games \
 --bindir=${dir}/bin \
 --sbindir=${dir}/bin \
---mandir=${dir}/share/man 2>fink2.log 1>fink2_ok.log
+--mandir=${dir}/share/man 2>fink2.log
 
 # simple
 #./configure --enable-applebuild=yes 2>fink2.log 1>fink2_ok.log
