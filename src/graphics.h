@@ -275,6 +275,8 @@ class Graphics : public gcn::SDLGraphics
         bool mHWAccel;
         BlitMode mBlitMode;
         bool mRedraw;
+        bool mDoubleBuffer;
+        SDL_Rect mRect;
 };
 
 extern Graphics *graphics;

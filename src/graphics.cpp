@@ -46,8 +46,13 @@ Graphics::Graphics():
     mFullscreen(false),
     mHWAccel(false),
     mBlitMode(BLIT_NORMAL),
-    mRedraw(false)
+    mRedraw(false),
+    mDoubleBuffer(false)
 {
+    mRect.x = 0;
+    mRect.y = 0;
+    mRect.w = 0;
+    mRect.h = 0;
 }
 
 Graphics::~Graphics()
@@ -83,12 +88,19 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     if (!mTarget)
         return false;
 
+    mRect.w = mTarget->w;
+    mRect.h = mTarget->h;
+
     char videoDriverName[65];
 
     if (SDL_VideoDriverName(videoDriverName, 64))
         logger->log("Using video driver: %s", videoDriverName);
     else
         logger->log1("Using video driver: unknown");
+
+    mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
+    logger->log("Double buffer mode: %s",
+         mDoubleBuffer ? "yes" : "no");
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
 
@@ -558,7 +570,15 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
 
 void Graphics::updateScreen()
 {
-    SDL_Flip(mTarget);
+    if (mDoubleBuffer)
+    {
+        SDL_Flip(mTarget);
+    }
+    else
+    {
+        SDL_UpdateRects(mTarget, 1, &mRect);
+//        SDL_UpdateRect(mTarget, 0, 0, 0, 0);
+    }
 }
 
 SDL_Surface *Graphics::getScreenshot()
