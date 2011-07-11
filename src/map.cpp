@@ -220,7 +220,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
 
 void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
                           int endX, int endY, int scrollX, int scrollY,
-                          const Actors &actors, int debugFlags, int yFix) const
+                          const Actors *actors, int debugFlags, int yFix) const
 {
     if (!player_node || !mSpecialLayer || !mTempLayer)
         return;
@@ -239,7 +239,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     if (endY > mHeight)
         endY = mHeight;
 
-    Actors::const_iterator ai = actors.begin();
+    Actors::const_iterator ai = actors->begin();
 
     const int dx = (mX * 32) - scrollX;
     const int dy = (mY * 32) - scrollY + 32;
@@ -255,7 +255,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
 
         // If drawing the fringe layer, make sure all actors above this row of
         // tiles have been drawn
-        while (ai != actors.end() && (*ai)->getPixelY() <= y32s)
+        while (ai != actors->end() && (*ai)->getPixelY() <= y32s)
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ ai;
@@ -358,7 +358,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     // Draw any remaining actors
     if (debugFlags != Map::MAP_SPECIAL3)
     {
-        while (ai != actors.end())
+        while (ai != actors->end())
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ai;
@@ -594,12 +594,13 @@ void Map::update(int ticks)
 void Map::draw(Graphics *graphics, int scrollX, int scrollY)
 {
     // Calculate range of tiles which are on-screen
-    int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1;
-    endPixelY += mMaxTileHeight - mTileHeight;
-    int startX = scrollX / mTileWidth;
-    int startY = scrollY / mTileHeight;
-    int endX = (graphics->mWidth + scrollX + mTileWidth - 1) / mTileWidth;
-    int endY = endPixelY / mTileHeight;
+    const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1
+        + mMaxTileHeight - mTileHeight;
+    const int startX = scrollX / mTileWidth;
+    const int startY = scrollY / mTileHeight;
+    const int endX = (graphics->mWidth + scrollX + mTileWidth - 1)
+        / mTileWidth;
+    const int endY = endPixelY / mTileHeight;
 
     // Make sure actors are sorted ascending by Y-coordinate
     // so that they overlap correctly
@@ -637,7 +638,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             mFringeLayer->setSpecialLayer(mSpecialLayer);
             mFringeLayer->setTempLayer(mTempLayer);
             mFringeLayer->drawFringe(graphics, startX, startY, endX, endY,
-                scrollX, scrollY, mActors, mDebugFlags, mActorFixY);
+                scrollX, scrollY, &mActors, mDebugFlags, mActorFixY);
         }
     }
     else
@@ -652,7 +653,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                     overFringe = true;
 
                 (*layeri)->drawFringe(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, mActors, mDebugFlags, mActorFixY);
+                    scrollX, scrollY, &mActors, mDebugFlags, mActorFixY);
             }
             else
             {

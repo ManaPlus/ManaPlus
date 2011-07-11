@@ -166,7 +166,7 @@ class MapLayer: public ConfigListener
                         int startX, int startY,
                         int endX, int endY,
                         int scrollX, int scrollY,
-                        const Actors &actors,
+                        const Actors *actors,
                         int mDebugFlags, int yFix) const;
 
         bool isFringeLayer()
