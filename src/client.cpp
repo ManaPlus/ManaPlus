@@ -273,6 +273,7 @@ Client::Client(const Options &options):
         logger->setLogFile(mLocalDataDir + std::string("/manaplus.log"));
 
     initConfiguration();
+    logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
 
     storeSafeParameters();
@@ -1573,6 +1574,7 @@ void Client::initConfiguration()
     {
         fclose(configFile);
         config.init(configPath);
+        logger->log("init 3");
         config.setDefaultValues(getConfigDefaults());
         logger->log("configPath: " + configPath);
     }

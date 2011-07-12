@@ -405,8 +405,10 @@ void Configuration::init(const std::string &filename, bool useResManager)
     else
     {
         mConfigPath = filename;
+        logger->log("init 1");
         mDirectory = getRealPath(getFileDir(filename));
     }
+    logger->log("init 2");
 
     if (!doc.rootNode())
     {
