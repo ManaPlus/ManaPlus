@@ -26,6 +26,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsvertexes.h"
 #include "log.h"
 #include "particle.h"
 #include "simpleanimation.h"
@@ -130,6 +131,8 @@ MapLayer::~MapLayer()
 {
     config.removeListener("highlightAttackRange", this);
     delete[] mTiles;
+    delete_all(mTempRows);
+    mTempRows.clear();
 }
 
 void MapLayer::optionChanged(const std::string &value)
@@ -151,13 +154,98 @@ Image* MapLayer::getTile(int x, int y) const
     return mTiles[x + y * mWidth];
 }
 
-void MapLayer::draw(Graphics *graphics, int startX, int startY,
-                    int endX, int endY, int scrollX, int scrollY,
-                    int debugFlags) const
+void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
+                         int endX, int endY, int scrollX, int scrollY,
+                         int debugFlags)
 {
-    if (!player_node)
-        return;
+    delete_all(mTempRows);
+    mTempRows.clear();
 
+    startX -= mX;
+    startY -= mY;
+    endX -= mX;
+    endY -= mY;
+
+    if (startX < 0)
+        startX = 0;
+    if (startY < 0)
+        startY = 0;
+    if (endX > mWidth)
+        endX = mWidth;
+    if (endY > mHeight)
+        endY = mHeight;
+
+    const int dx = (mX * 32) - scrollX;
+    const int dy = (mY * 32) - scrollY + 32;
+    const bool flag = (debugFlags != Map::MAP_SPECIAL
+        && debugFlags != Map::MAP_SPECIAL2);
+
+    for (int y = startY; y < endY; y++)
+    {
+        MapRowVertexes *row = new MapRowVertexes();
+        mTempRows.push_back(row);
+
+        Image *lastImage = 0;
+        ImageVertexes *imgVert = 0;
+
+        const int yWidth = y * mWidth;
+        const int py0 = y * 32 + dy;
+
+        for (int x = startX; x < endX; x++)
+        {
+            const int tilePtr = x + yWidth;
+            Image *img = mTiles[tilePtr];
+            if (img)
+            {
+                const int px = x * 32 + dx;
+                const int py = py0 - img->mBounds.h;
+                if (flag || img->mBounds.h <= 32)
+                {
+                    if (lastImage != img)
+                    {
+                        imgVert = new ImageVertexes();
+                        imgVert->image = img;
+                        row->images.push_back(imgVert);
+                        lastImage = img;
+                    }
+                    graphics->calcTile(imgVert, px, py);
+                }
+            }
+        }
+    }
+}
+
+void MapLayer::drawSDL(Graphics *graphics, int startX, int startY,
+                       int endX, int endY, int scrollX, int scrollY,
+                       int debugFlags)
+{
+    MapRows::iterator rit = mTempRows.begin();
+    MapRows::iterator rit_end = mTempRows.end();
+    while (rit != rit_end)
+    {
+        MepRowImages *images = &(*rit)->images;
+        MepRowImages::iterator iit = images->begin();
+        MepRowImages::iterator iit_end = images->end();
+        while (iit != iit_end)
+        {
+            graphics->drawTile(*iit);
+            ++ iit;
+        }
+        ++ rit;
+    }
+}
+
+void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
+                         int endX, int endY, int scrollX, int scrollY,
+                         int debugFlags)
+{
+
+}
+
+void MapLayer::drawOGL(Graphics *graphics, int startX, int startY,
+                       int endX, int endY, int scrollX, int scrollY,
+                       int debugFlags)
+{
     startX -= mX;
     startY -= mY;
     endX -= mX;
@@ -431,7 +519,7 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mHasWarps(false),
     mDebugFlags(MAP_NORMAL),
     mOnClosedList(1), mOnOpenList(2),
-    mLastScrollX(0.0f), mLastScrollY(0.0f),
+    mLastAScrollX(0.0f), mLastAScrollY(0.0f),
     mOverlayDetail(config.getIntValue("OverlayDetail")),
     mOpacity(config.getFloatValue("guialpha")),
     mPvp(0),
@@ -440,7 +528,11 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mIndexedTilesetsSize(0),
     mActorFixX(0),
     mActorFixY(0),
-    mFringeLayer(0)
+    mFringeLayer(0),
+    mLastX(-1),
+    mLastY(-1),
+    mLastScrollX(-1),
+    mLastScrollY(-1)
 {
     const int size = mWidth * mHeight;
 
@@ -593,6 +685,9 @@ void Map::update(int ticks)
 
 void Map::draw(Graphics *graphics, int scrollX, int scrollY)
 {
+    if (!player_node)
+        return;
+
     // Calculate range of tiles which are on-screen
     const int endPixelY = graphics->mHeight + scrollY + mTileHeight - 1
         + mMaxTileHeight - mTileHeight;
@@ -630,6 +725,25 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     Layers::const_iterator layeri = mLayers.begin();
 
     bool overFringe = false;
+    int updateFlag = 0;
+
+    if (mLastX != startX || mLastY != startY)
+    {
+        // fill vectors
+        mLastX = startX;
+        mLastY = startY;
+        mLastScrollX = scrollX;
+        mLastScrollY = scrollY;
+        updateFlag = 1;
+    }
+    else if (mLastScrollX != scrollX || mLastScrollY != scrollY)
+    {
+        // update coords
+        mLastScrollX = scrollX;
+        mLastScrollY = scrollY;
+        updateFlag = 2;
+//        updateMapLayer(this, endX, endY, debugFlags);
+    }
 
     if (mDebugFlags == MAP_SPECIAL3 || mDebugFlags == MAP_BLACKWHITE)
     {
@@ -657,8 +771,28 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             }
             else
             {
-                (*layeri)->draw(graphics, startX, startY, endX, endY,
-                    scrollX, scrollY, mDebugFlags);
+                if (!mOpenGL)
+                {
+                    if (updateFlag)
+                    {
+                        (*layeri)->updateSDL(graphics, startX, startY,
+                            endX, endY, scrollX, scrollY, mDebugFlags);
+                    }
+
+                    (*layeri)->drawSDL(graphics, startX, startY, endX, endY,
+                        scrollX, scrollY, mDebugFlags);
+                }
+                else
+                {
+                    if (updateFlag)
+                    {
+                        (*layeri)->updateOGL(graphics, startX, startY,
+                            endX, endY, scrollX, scrollY, mDebugFlags);
+                    }
+
+                    (*layeri)->drawOGL(graphics, startX, startY, endX, endY,
+                        scrollX, scrollY, mDebugFlags);
+                }
             }
         }
     }
@@ -812,16 +946,16 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
 {
     static int lastTick = tick_time; // static = only initialized at first call
 
-    if (mLastScrollX == 0.0f && mLastScrollY == 0.0f)
+    if (mLastAScrollX == 0.0f && mLastAScrollY == 0.0f)
     {
         // First call - initialisation
-        mLastScrollX = scrollX;
-        mLastScrollY = scrollY;
+        mLastAScrollX = scrollX;
+        mLastAScrollY = scrollY;
     }
 
     // Update Overlays
-    float dx = scrollX - mLastScrollX;
-    float dy = scrollY - mLastScrollY;
+    float dx = scrollX - mLastAScrollX;
+    float dy = scrollY - mLastAScrollY;
     int timePassed = get_elapsed_time(lastTick);
 
     std::vector<AmbientLayer*>::iterator i;
@@ -831,8 +965,8 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     for (i = mForegrounds.begin(); i != mForegrounds.end(); ++i)
         (*i)->update(timePassed, dx, dy);
 
-    mLastScrollX = scrollX;
-    mLastScrollY = scrollY;
+    mLastAScrollX = scrollX;
+    mLastAScrollY = scrollY;
     lastTick = tick_time;
 }
 
@@ -2066,4 +2200,10 @@ MapObjectList *ObjectsLayer::getAt(unsigned x, unsigned y)
     if (x >= mWidth || y >= mHeight)
         return 0;
     return mTiles[x + y * mWidth];
+}
+
+MapRowVertexes::~MapRowVertexes()
+{
+    delete_all(images);
+    images.clear();
 }

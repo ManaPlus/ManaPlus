@@ -26,6 +26,7 @@
 
 #include "graphicsvertexes.h"
 #include "log.h"
+#include "map.h"
 
 #include "resources/image.h"
 #include "resources/imageloader.h"
@@ -569,6 +570,49 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
     vert->incPtr(1);
 }
 
+void Graphics::calcTile(ImageVertexes *vert, int x, int y)
+{
+    // Check that preconditions for blitting are met.
+    if (!vert || !vert->image || !vert->image->mSDLSurface)
+        return;
+
+    const Image *image = vert->image;
+
+    x += mClipStack.top().xOffset;
+    y += mClipStack.top().yOffset;
+
+    DoubleRect *rect = new DoubleRect();
+
+    rect->dst.x = static_cast<short>(x);
+    rect->dst.y = static_cast<short>(y);
+    rect->src.x = static_cast<short>(image->mBounds.x);
+    rect->src.y = static_cast<short>(image->mBounds.y);
+    rect->src.w = static_cast<Uint16>(image->mBounds.w);
+    rect->src.h = static_cast<Uint16>(image->mBounds.h);
+    if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
+        mTarget, &rect->dst) == 1)
+    {
+        vert->sdl.push_back(rect);
+    }
+    else
+    {
+        delete rect;
+    }
+}
+
+void Graphics::drawTile(ImageVertexes *vert)
+{
+    Image *img = vert->image;
+    DoubleRects *rects = &vert->sdl;
+    DoubleRects::iterator it = rects->begin();
+    DoubleRects::iterator it_end = rects->end();
+    while (it != it_end)
+    {
+        SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
+        ++ it;
+    }
+}
+
 void Graphics::updateScreen()
 {
     if (mDoubleBuffer)
@@ -844,4 +888,9 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             mColor.r, mColor.g, mColor.b, mColor.a);
         SDL_FillRect(mTarget, &rect, color);
     }
+}
+
+void Graphics::drawMapLayer(MapLayer *layer)
+{
+
 }

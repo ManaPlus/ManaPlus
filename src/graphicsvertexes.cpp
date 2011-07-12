@@ -165,3 +165,13 @@ std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDL()
 {
     return &sdl[mPtr].mList;
 }
+
+ImageVertexes::~ImageVertexes()
+{
+    delete_all(sdl);
+    sdl.clear();
+#ifdef USE_OPENGL
+    delete_all(ogl);
+    ogl.clear();
+#endif
+}

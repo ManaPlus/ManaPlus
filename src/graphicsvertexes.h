@@ -105,6 +105,24 @@ class OpenGLGraphicsVertexes
 };
 #endif
 
+typedef std::vector<DoubleRect*> DoubleRects;
+
+class ImageVertexes
+{
+    public:
+        ImageVertexes() : image(0)
+        { }
+
+        ~ImageVertexes();
+
+        Image *image;
+        DoubleRects sdl;
+
+#ifdef USE_OPENGL
+        std::vector<OpenGLGraphicsVertexes*> ogl;
+#endif
+};
+
 class GraphicsVertexes
 {
     public:

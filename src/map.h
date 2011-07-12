@@ -41,6 +41,7 @@
 class Animation;
 class AmbientLayer;
 class Graphics;
+class GraphicsVertexes;
 class MapLayer;
 class Particle;
 class SimpleAnimation;
@@ -49,8 +50,22 @@ class SpecialLayer;
 class MapItem;
 class ObjectsLayer;
 
+struct ImageVertexes;
+
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;
+typedef std::vector<ImageVertexes*> MepRowImages;
+
+class MapRowVertexes
+{
+    public:
+        MapRowVertexes()
+        { }
+
+        ~MapRowVertexes();
+
+        MepRowImages images;
+};
 
 /**
  * A meta tile stores additional information about a location on a tile map.
@@ -156,11 +171,29 @@ class MapLayer: public ConfigListener
          * The given actors are only drawn when this layer is the fringe
          * layer.
          */
-        void draw(Graphics *graphics,
-                  int startX, int startY,
-                  int endX, int endY,
-                  int scrollX, int scrollY,
-                  int mDebugFlags) const;
+        void drawOGL(Graphics *graphics,
+                     int startX, int startY,
+                     int endX, int endY,
+                     int scrollX, int scrollY,
+                     int mDebugFlags);
+
+        void drawSDL(Graphics *graphics,
+                     int startX, int startY,
+                     int endX, int endY,
+                     int scrollX, int scrollY,
+                     int mDebugFlags);
+
+        void updateOGL(Graphics *graphics,
+                       int startX, int startY,
+                       int endX, int endY,
+                       int scrollX, int scrollY,
+                       int mDebugFlags);
+
+        void updateSDL(Graphics *graphics,
+                       int startX, int startY,
+                       int endX, int endY,
+                       int scrollX, int scrollY,
+                       int mDebugFlags);
 
         void drawFringe(Graphics *graphics,
                         int startX, int startY,
@@ -204,6 +237,8 @@ class MapLayer: public ConfigListener
 //        int *mTilesCount;
         SpecialLayer *mSpecialLayer;
         SpecialLayer *mTempLayer;
+        typedef std::vector<MapRowVertexes*> MapRows;
+        MapRows mTempRows;
 };
 
 /**
@@ -533,8 +568,8 @@ class Map : public Properties, public ConfigListener
         // Overlay data
         std::vector<AmbientLayer*> mBackgrounds;
         std::vector<AmbientLayer*> mForegrounds;
-        float mLastScrollX;
-        float mLastScrollY;
+        float mLastAScrollX;
+        float mLastAScrollY;
 //        bool mSpritesUpdated;
 
         // Particle effect data
@@ -567,6 +602,11 @@ class Map : public Properties, public ConfigListener
         SpecialLayer *mTempLayer;
         ObjectsLayer *mObjects;
         MapLayer *mFringeLayer;
+
+        int mLastX;
+        int mLastY;
+        int mLastScrollX;
+        int mLastScrollY;
 };
 
 

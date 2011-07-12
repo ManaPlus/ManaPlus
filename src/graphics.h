@@ -35,6 +35,8 @@
 
 class GraphicsVertexes;
 class Image;
+class ImageVertexes;
+class MapLayer;
 
 struct SDL_Surface;
 
@@ -202,6 +204,10 @@ class Graphics : public gcn::SDLGraphics
                                       int x, int y,
                                       int w, int h);
 
+        virtual void calcTile(ImageVertexes *vert, int x, int y);
+
+        virtual void drawTile(ImageVertexes *vert);
+
         virtual void drawImageRect2(GraphicsVertexes* vert,
                                     const ImageRect &imgRect);
 
@@ -262,6 +268,8 @@ class Graphics : public gcn::SDLGraphics
 
         bool getRedraw()
         { return mRedraw; }
+
+        void drawMapLayer(MapLayer *layer);
 
         int mWidth;
         int mHeight;
