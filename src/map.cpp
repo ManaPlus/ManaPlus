@@ -1739,7 +1739,7 @@ void Map::reduce()
             if (!correct || !dontHaveAlpha)
                 continue;
 
-            Layers::const_reverse_iterator ri = mLayers.rbegin();
+            Layers::reverse_iterator ri = mLayers.rbegin();
             while (ri != mLayers.rend())
             {
                 MapLayer *layer = *ri;
