@@ -723,6 +723,7 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
     return 0;
 }
 
+#if !defined(__MINGW32__)
 void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 {
     if (mClipStack.empty())
@@ -842,3 +843,4 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         SDL_FillRect(mTarget, &rect, color);
     }
 }
+#endif

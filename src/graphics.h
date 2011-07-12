@@ -225,7 +225,9 @@ class Graphics : public gcn::SDLGraphics
         BlitMode getBlitMode()
         { return mBlitMode; }
 
+#if !defined(__MINGW32__)
         void fillRectangle(const gcn::Rectangle& rectangle);
+#endif
 
         /**
          * Updates the screen. This is done by either copying the buffer to the
