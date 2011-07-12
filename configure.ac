@@ -130,10 +130,10 @@ else
     if test "x$applebuild_enabled" == "xfalse"; then
         AC_CHECK_LIB([GL], [glBegin], ,
         AC_MSG_ERROR([ *** Unable to find OpenGL library]))
-        AC_DEFINE(USE_OPENGL, 1, [Defines if ManaPlus should have OpenGL support])
     else
         LDFLAGS="$LDFLAGS -framework OpenGL"
     fi
+    AC_DEFINE(USE_OPENGL, 1, [Defines if ManaPlus should have OpenGL support])
 fi
 
 # Option to enable internal guichan
