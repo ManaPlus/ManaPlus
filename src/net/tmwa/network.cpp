@@ -479,7 +479,7 @@ void Network::setError(const std::string &error)
 Uint16 Network::readWord(int pos)
 {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    return SDL_Swap16((Uint16*)(mInBuffer + (pos)));
+    return SDL_Swap16((*(Uint16*)(mInBuffer + (pos))));
 #else
     return (*reinterpret_cast<Uint16*>(mInBuffer + (pos)));
 #endif
