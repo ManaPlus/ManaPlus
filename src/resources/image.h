@@ -208,6 +208,12 @@ class Image : public Resource
         int getTextureHeight() const
         { return mTexHeight; }
 
+        static int getTextureType()
+        { return mTextureType; }
+
+        static int mTextureType;
+#endif
+
         bool isHasAlphaChannel()
         { return mHasAlphaChannel; }
 
@@ -216,12 +222,6 @@ class Image : public Resource
 
         void setAlphaVisible(bool b)
         { mIsAlphaVisible = b; }
-
-        static int getTextureType()
-        { return mTextureType; }
-
-        static int mTextureType;
-#endif
 
         SDL_Rect mBounds;
 
