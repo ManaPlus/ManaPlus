@@ -254,6 +254,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int getCameraRelativeY()
         { return mCameraRelativeY; }
 
+        bool isPopupMenuVisible();
+
     protected:
         friend class ActorSpriteManager;
 

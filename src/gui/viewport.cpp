@@ -819,3 +819,8 @@ void Viewport::moveCamera(int dx, int dy)
     mCameraRelativeX += dx;
     mCameraRelativeY += dy;
 }
+
+bool Viewport::isPopupMenuVisible()
+{
+    return mPopupMenu ? mPopupMenu->isVisible() : false;
+}

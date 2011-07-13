@@ -754,8 +754,15 @@ void Game::handleInput()
                case KeyboardConfig::KEY_QUIT:
                     if (!chatWindow->isInputFocused())
                     {
-                        quitDialog = new QuitDialog(&quitDialog);
-                        quitDialog->requestMoveToTop();
+                        if (viewport && viewport->isPopupMenuVisible())
+                        {
+                            viewport->closePopupMenu();
+                        }
+                        else
+                        {
+                            quitDialog = new QuitDialog(&quitDialog);
+                            quitDialog->requestMoveToTop();
+                        }
                         return;
                     }
                     break;
