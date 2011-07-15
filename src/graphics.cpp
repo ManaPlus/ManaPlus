@@ -65,8 +65,6 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
 
-    logger->log("Bits per pixel: %d", bpp);
-
     int displayFlags = SDL_ANYFORMAT;
 
     mWidth = w;
@@ -101,6 +99,9 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s",
          mDoubleBuffer ? "yes" : "no");
+
+    if (mTarget->format)
+        logger->log("Bits per pixel: %d", mTarget->format->BytesPerPixel);
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
 
@@ -723,7 +724,6 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
     return 0;
 }
 
-#if !defined(__MINGW32__)
 void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 {
     if (mClipStack.empty())
@@ -748,11 +748,12 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             area.y + area.height : top.y + top.height;
         int x, y;
 
+        SDL_LockSurface(mTarget);
+
         const int bpp = mTarget->format->BytesPerPixel;
         Uint32 pixel = SDL_MapRGB(mTarget->format,
             mColor.r, mColor.g, mColor.b);
 
-        SDL_LockSurface(mTarget);
         switch(bpp)
         {
             case 1:
@@ -766,10 +767,11 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 2:
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch;
+                    Uint8 *p0 = (Uint8 *)mTarget->pixels + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
-                        *(Uint16 *)(p + x * 2) = gcn::SDLAlpha16(
+                        Uint8 *p = p0 + x * 2;
+                        *(Uint16 *)p = gcn::SDLAlpha16(
                             pixel, *(Uint32 *)p, mColor.a, mTarget->format);
                     }
                 }
@@ -843,4 +845,3 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         SDL_FillRect(mTarget, &rect, color);
     }
 }
-#endif
