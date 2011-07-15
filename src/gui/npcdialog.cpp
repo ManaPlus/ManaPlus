@@ -333,6 +333,11 @@ void NpcDialog::parseListItems(const std::string &itemString)
     std::string tmp;
     while (getline(iss, tmp, ':'))
         mItems.push_back(tmp);
+
+    if (!mItems.empty())
+        mItemList->setSelected(0);
+    else
+        mItemList->setSelected(-1);
 }
 
 void NpcDialog::textRequest(const std::string &defaultText)
