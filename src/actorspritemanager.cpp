@@ -610,9 +610,13 @@ void ActorSpriteManager::logic()
 
 void ActorSpriteManager::clear()
 {
+    if (beingEquipmentWindow)
+        beingEquipmentWindow->setBeing(0);
+
     if (player_node)
     {
         player_node->setTarget(0);
+        player_node->unSetPickUpTarget();
         mActors.erase(player_node);
     }
 
