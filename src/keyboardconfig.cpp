@@ -274,6 +274,9 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI},
     {"keyChatNextTab", SDLK_KP9, N_("Next Chat Tab"),
         KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI},
+    {"keyChatCloseTab", KeyboardConfig::KEY_NO_VALUE,
+        N_("Close current Chat Tab"), KeyboardConfig::GRP_DEFAULT
+        | KeyboardConfig::GRP_GUI},
     {"keyChatPrevHistory", SDLK_KP7, N_("Previous chat line"),
         KeyboardConfig::GRP_CHAT},
     {"keyChatNextHistory", SDLK_KP9, N_("Next chat line"),

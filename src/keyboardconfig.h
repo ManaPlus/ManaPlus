@@ -276,6 +276,7 @@ class KeyboardConfig
             KEY_SCROLL_CHAT_DOWN,
             KEY_PREV_CHAT_TAB,
             KEY_NEXT_CHAT_TAB,
+            KEY_CLOSE_CHAT_TAB,
             KEY_CHAT_PREV_HISTORY,
             KEY_CHAT_NEXT_HISTORY,
             KEY_AUTOCOMPLETE_CHAT,

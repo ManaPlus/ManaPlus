@@ -130,6 +130,11 @@ class ChatWindow : public Window,
         void nextTab();
 
         /**
+         * Close current chat tab
+         */
+        void closeTab();
+
+        /**
          * Switch to the default tab
          */
         void defaultTab();

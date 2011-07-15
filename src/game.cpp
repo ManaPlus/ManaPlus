@@ -716,6 +716,11 @@ void Game::handleInput()
                     socialWindow->nextTab();
                     return;
                 }
+                else if (keyboard.isKeyActive(keyboard.KEY_CLOSE_CHAT_TAB))
+                {
+                    chatWindow->closeTab();
+                    return;
+                }
             }
 
             const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);

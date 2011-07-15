@@ -396,6 +396,22 @@ void ChatWindow::nextTab()
     mChatTabs->setSelectedTab(tab);
 }
 
+void ChatWindow::closeTab()
+{
+    if (!mChatTabs)
+        return;
+
+    int idx = mChatTabs->getSelectedTabIndex();
+    Tab *tab = mChatTabs->getTabByIndex(idx);
+    if (!tab)
+        return;
+    WhisperTab *whisper = dynamic_cast<WhisperTab*>(tab);
+    if (!whisper)
+        return;
+
+    whisper->handleCommand("close", "");
+}
+
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
