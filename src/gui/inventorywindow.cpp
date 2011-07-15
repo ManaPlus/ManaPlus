@@ -33,6 +33,7 @@
 #include "gui/sdlinput.h"
 #include "gui/shopwindow.h"
 #include "gui/theme.h"
+#include "gui/tradewindow.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
@@ -351,9 +352,13 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 {
     Window::mouseClicked(event);
 
-    bool mod = (isStorageActive() && keyboard.isKeyActive(keyboard.KEY_MOD));
+    const bool mod = (isStorageActive() && keyboard.isKeyActive(
+        keyboard.KEY_MOD));
 
-    if (!mod && event.getButton() == gcn::MouseEvent::RIGHT)
+    const bool mod2 = (tradeWindow && tradeWindow->isVisible()
+        && keyboard.isKeyActive(keyboard.KEY_MOD));
+
+    if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {
         Item *item = mItems->getSelectedItem();
 
@@ -370,16 +375,19 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
             viewport->showPopup(this, mx, my, item, isMainInventory());
     }
 
+    if (!mInventory)
+        return;
+
     if (event.getButton() == gcn::MouseEvent::LEFT
         || event.getButton() == gcn::MouseEvent::RIGHT)
     {
+        Item *item = mItems->getSelectedItem();
+
+        if (!item)
+            return;
+
         if (mod)
         {
-            Item *item = mItems->getSelectedItem();
-
-            if (!item || !mInventory)
-                return;
-
             if (mInventory->isMainInventory())
             {
                 if (event.getButton() == gcn::MouseEvent::RIGHT)
@@ -407,6 +415,19 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::INVENTORY);
                 }
+            }
+        }
+        else if (mod2 && mInventory->isMainInventory())
+        {
+            if (event.getButton() == gcn::MouseEvent::RIGHT)
+            {
+                ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+                    tradeWindow, item);
+            }
+            else
+            {
+                if (tradeWindow)
+                    tradeWindow->tradeItem(item, item->getQuantity());
             }
         }
     }
