@@ -350,6 +350,9 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
                 {
                     if (lastImage != img)
                     {
+                        if (img->mBounds.w > 32)
+                            imgSet.clear();
+
                         imgSet[lastImage] = imgVert;
                         if (imgSet.find(img) != imgSet.end())
                         {
