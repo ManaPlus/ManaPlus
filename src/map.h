@@ -173,6 +173,12 @@ class MapLayer: public ConfigListener
          * The given actors are only drawn when this layer is the fringe
          * layer.
          */
+        void draw(Graphics *graphics,
+                  int startX, int startY,
+                  int endX, int endY,
+                  int scrollX, int scrollY,
+                  int mDebugFlags) const;
+
         void drawOGL(Graphics *graphics,
                      int startX, int startY,
                      int endX, int endY,
@@ -611,6 +617,11 @@ class Map : public Properties, public ConfigListener
         int mLastY;
         int mLastScrollX;
         int mLastScrollY;
+
+        int mDrawX;
+        int mDrawY;
+        int mDrawScrollX;
+        int mDrawScrollY;
         bool mRedrawMap;
 };
 

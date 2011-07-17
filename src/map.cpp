@@ -154,6 +154,73 @@ Image* MapLayer::getTile(int x, int y) const
     return mTiles[x + y * mWidth];
 }
 
+void MapLayer::draw(Graphics *graphics, int startX, int startY,
+                    int endX, int endY, int scrollX, int scrollY,
+                    int debugFlags) const
+{
+    if (!player_node)
+        return;
+
+    startX -= mX;
+    startY -= mY;
+    endX -= mX;
+    endY -= mY;
+
+    if (startX < 0)
+        startX = 0;
+    if (startY < 0)
+        startY = 0;
+    if (endX > mWidth)
+        endX = mWidth;
+    if (endY > mHeight)
+        endY = mHeight;
+
+    const int dx = (mX * 32) - scrollX;
+    const int dy = (mY * 32) - scrollY + 32;
+    const bool flag = (debugFlags != Map::MAP_SPECIAL
+        && debugFlags != Map::MAP_SPECIAL2);
+
+    for (int y = startY; y < endY; y++)
+    {
+        const int y32 = y * 32;
+        const int yWidth = y * mWidth;
+
+        const int py0 = y32 + dy;
+
+        for (int x = startX; x < endX; x++)
+        {
+            const int x32 = x * 32;
+
+            const int tilePtr = x + yWidth;
+            int c = 0;
+            Image *img = mTiles[tilePtr];
+            if (img)
+            {
+                const int px = x32 + dx;
+                const int py = py0 - img->mBounds.h;
+                if (flag || img->mBounds.h <= 32)
+                {
+                    int width = 0;
+                    // here need not draw over player position
+                    c = getTileDrawWidth(tilePtr, endX - x, width);
+
+                    if (!c)
+                    {
+                        graphics->drawImage(img, px, py);
+                    }
+                    else
+                    {
+                        graphics->drawImagePattern(img, px, py,
+                            width, img->mBounds.h);
+                    }
+                }
+            }
+
+            x += c;
+        }
+    }
+}
+
 void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
                          int endX, int endY, int scrollX, int scrollY,
                          int debugFlags)
@@ -551,7 +618,11 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mLastX(-1),
     mLastY(-1),
     mLastScrollX(-1),
-    mLastScrollY(-1)
+    mLastScrollY(-1),
+    mDrawX(-1),
+    mDrawY(-1),
+    mDrawScrollX(-1),
+    mDrawScrollY(-1)
 {
     const int size = mWidth * mHeight;
 
@@ -746,22 +817,27 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     bool overFringe = false;
     int updateFlag = 0;
 
-    if (mRedrawMap || mLastX != startX || mLastY != startY)
+    if (mOpenGL == 1)
     {
-        mRedrawMap = false;
-        // fill vectors
-        mLastX = startX;
-        mLastY = startY;
-        mLastScrollX = scrollX;
-        mLastScrollY = scrollY;
-        updateFlag = 1;
-    }
-    else if (mLastScrollX != scrollX || mLastScrollY != scrollY)
-    {
-        // update coords
-        mLastScrollX = scrollX;
-        mLastScrollY = scrollY;
-        updateFlag = 2;
+        if (mLastX != startX || mLastY != startY || mLastScrollX != scrollX
+            || mLastScrollY != scrollY)
+        {   // player moving
+            mLastX = startX;
+            mLastY = startY;
+            mLastScrollX = scrollX;
+            mLastScrollY = scrollY;
+            updateFlag = 2;
+        }
+        else if (mRedrawMap || startX != mDrawX || startY != mDrawY ||
+            scrollX != mDrawScrollX || scrollY != mDrawScrollY)
+        {   // player mode to new position
+            mRedrawMap = false;
+            mDrawX = startX;
+            mDrawY = startY;
+            mDrawScrollX = scrollX;
+            mDrawScrollY = scrollY;
+            updateFlag = 1;
+        }
     }
 
     if (mDebugFlags == MAP_SPECIAL3 || mDebugFlags == MAP_BLACKWHITE)
@@ -790,18 +866,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             }
             else
             {
-                if (!mOpenGL)
-                {
-                    if (updateFlag)
-                    {
-                        (*layeri)->updateSDL(graphics, startX, startY,
-                            endX, endY, scrollX, scrollY, mDebugFlags);
-                    }
-
-                    (*layeri)->drawSDL(graphics, startX, startY, endX, endY,
-                        scrollX, scrollY, mDebugFlags);
-                }
-                else
+                if (mOpenGL == 1 && updateFlag != 2)
                 {
                     if (updateFlag)
                     {
@@ -810,6 +875,21 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                     }
 
                     (*layeri)->drawOGL(graphics, startX, startY, endX, endY,
+                        scrollX, scrollY, mDebugFlags);
+                }
+                else
+                {
+/*
+                    if (updateFlag)
+                    {
+                        (*layeri)->updateSDL(graphics, startX, startY,
+                            endX, endY, scrollX, scrollY, mDebugFlags);
+                    }
+
+                    (*layeri)->drawSDL(graphics, startX, startY, endX, endY,
+                        scrollX, scrollY, mDebugFlags);
+*/
+                    (*layeri)->draw(graphics, startX, startY, endX, endY,
                         scrollX, scrollY, mDebugFlags);
                 }
             }
