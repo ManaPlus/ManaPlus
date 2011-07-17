@@ -332,7 +332,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void setAway(const std::string &message);
 
         void setHalfAway(bool n)
-        { mInactive = n;}
+        { mInactive = n; }
 
         void afkRespond(ChatTab *tab, const std::string &nick);
 

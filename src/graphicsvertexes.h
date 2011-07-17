@@ -122,10 +122,12 @@ class ImageVertexes
 {
     public:
         ImageVertexes() :
-            image(0),
-            ogl(new OpenGLGraphicsVertexes())
+            image(0)
         {
             sdl.reserve(30);
+#ifdef USE_OPENGL
+            ogl = new OpenGLGraphicsVertexes();
+#endif
         }
 
         ~ImageVertexes();

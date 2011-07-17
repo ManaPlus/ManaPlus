@@ -825,7 +825,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             updateFlag = 2;
         }
         else if (mRedrawMap || startX != mDrawX || startY != mDrawY ||
-            scrollX != mDrawScrollX || scrollY != mDrawScrollY)
+                 scrollX != mDrawScrollX || scrollY != mDrawScrollY)
         {   // player mode to new position
             mRedrawMap = false;
             mDrawX = startX;

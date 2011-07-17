@@ -750,7 +750,7 @@ class Being : public ActorSprite, public ConfigListener
         { return mAdvanced; }
 
         void setAdvanced(bool n)
-        { mAdvanced = n; addToCache();}
+        { mAdvanced = n; addToCache(); }
 
         bool isShopEnabled()
         { return mShop; }
