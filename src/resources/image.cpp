@@ -54,7 +54,8 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel, Uint8 *alphaChannel):
     mHasAlphaChannel(hasAlphaChannel),
     mSDLSurface(image),
     mAlphaChannel(alphaChannel),
-    mIsAlphaVisible(hasAlphaChannel)
+    mIsAlphaVisible(hasAlphaChannel),
+    mIsAlphaCalculated(false)
 {
 #ifdef USE_OPENGL
     mGLImage = 0;
@@ -90,6 +91,7 @@ Image::Image(GLuint glimage, int width, int height,
     mAlphaChannel(0),
     mUseAlphaCache(false),
     mIsAlphaVisible(true),
+    mIsAlphaCalculated(false),
     mGLImage(glimage),
     mTexWidth(texWidth),
     mTexHeight(texHeight)

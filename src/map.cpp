@@ -1816,10 +1816,18 @@ void Map::reduce()
                 Image *img = layer->mTiles[x + y * layer->mWidth];
                 if (img)
                 {
-                    img->setAlphaVisible(true);
-                    if (img->mBounds.w > 32 || img->mBounds.h > 32)
+                    if (img->hasAlphaChannel() && img->isAlphaCalculated())
+                    {
+                        if (!img->isAlphaVisible())
+                        {
+                            dontHaveAlpha = true;
+                            img->setAlphaVisible(false);
+                        }
+                    }
+                    else if (img->mBounds.w > 32 || img->mBounds.h > 32)
                     {
                         correct = false;
+                        img->setAlphaVisible(true);
                         break;
                     }
                     else if (!img->isHasAlphaChannel())
@@ -1832,6 +1840,7 @@ void Map::reduce()
                         Uint8 *arr = img->SDLgetAlphaChannel();
                         if (!arr)
                             continue;
+
                         bool bad(false);
                         bool stop(false);
                         int width;
@@ -1868,6 +1877,7 @@ void Map::reduce()
                             img->setAlphaVisible(true);
                         }
                     }
+                    img->setAlphaCalculated(true);
                 }
             }
             if (!correct || !dontHaveAlpha)

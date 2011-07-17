@@ -223,21 +223,27 @@ class Image : public Resource
         void setAlphaVisible(bool b)
         { mIsAlphaVisible = b; }
 
+        bool isAlphaCalculated()
+        { return mIsAlphaCalculated; }
+
+        void setAlphaCalculated(bool b)
+        { mIsAlphaCalculated = b; }
+
         SDL_Rect mBounds;
 
     protected:
 
-      // -----------------------
-      // Generic protected members
-      // -----------------------
+        // -----------------------
+        // Generic protected members
+        // -----------------------
 
         bool mLoaded;
         float mAlpha;
         bool mHasAlphaChannel;
 
-      // -----------------------
-      // SDL protected members
-      // -----------------------
+        // -----------------------
+        // SDL protected members
+        // -----------------------
 
         /** SDL Constructor */
         Image(SDL_Surface *image, bool hasAlphaChannel = false,
@@ -257,6 +263,7 @@ class Image : public Resource
 
         bool mUseAlphaCache;
         bool mIsAlphaVisible;
+        bool mIsAlphaCalculated;
 
         static bool mEnableAlphaCache;
         static bool mEnableAlpha;
