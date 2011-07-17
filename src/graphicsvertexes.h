@@ -121,7 +121,9 @@ class ImageVertexes
         ImageVertexes() :
             image(0),
             ogl(new OpenGLGraphicsVertexes())
-        { }
+        {
+            sdl.reserve(30);
+        }
 
         ~ImageVertexes();
 

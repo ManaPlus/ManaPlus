@@ -33,7 +33,7 @@ const unsigned int vertexBufSize = 500;
 
 SDLGraphicsVertexes::SDLGraphicsVertexes()
 {
-
+    mList.reserve(30);
 }
 
 SDLGraphicsVertexes::~SDLGraphicsVertexes()
@@ -47,6 +47,10 @@ OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     mIntTexArray(0),
     mIntVertArray(0)
 {
+    mFloatTexPool.reserve(30);
+    mIntVertPool.reserve(30);
+    mIntTexPool.reserve(30);
+    mVp.reserve(30);
 }
 
 OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()

@@ -60,7 +60,9 @@ class MapRowVertexes
 {
     public:
         MapRowVertexes()
-        { }
+        {
+            images.reserve(30);
+        }
 
         ~MapRowVertexes();
 
