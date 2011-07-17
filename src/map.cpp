@@ -271,6 +271,7 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
 
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
+        std::map<Image*, ImageVertexes*> imgSet;
 
         for (int x = startX; x < endX; x++)
         {
@@ -284,9 +285,17 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
                 {
                     if (lastImage != img)
                     {
-                        imgVert = new ImageVertexes();
-                        imgVert->image = img;
-                        row->images.push_back(imgVert);
+                        imgSet[lastImage] = imgVert;
+                        if (imgSet.find(img) != imgSet.end())
+                        {
+                            imgVert = imgSet[img];
+                        }
+                        else
+                        {
+                            imgVert = new ImageVertexes();
+                            imgVert->image = img;
+                            row->images.push_back(imgVert);
+                        }
                         lastImage = img;
                     }
                     graphics->calcTile(imgVert, px, py);

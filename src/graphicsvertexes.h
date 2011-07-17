@@ -102,10 +102,13 @@ class OpenGLGraphicsVertexes
 
         void clear();
 
-    private:
+        int ptr;
+
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
         GLint *mIntVertArray;
+
+    private:
         std::vector<GLfloat*> mFloatTexPool;
         std::vector<GLint*> mIntVertPool;
         std::vector<GLint*> mIntTexPool;

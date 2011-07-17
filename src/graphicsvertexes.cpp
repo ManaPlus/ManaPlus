@@ -43,6 +43,7 @@ SDLGraphicsVertexes::~SDLGraphicsVertexes()
 
 #ifdef USE_OPENGL
 OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
+    ptr(0),
     mFloatTexArray(0),
     mIntTexArray(0),
     mIntVertArray(0)
@@ -82,6 +83,13 @@ void OpenGLGraphicsVertexes::clear()
     mIntTexPool.clear();
 
     mVp.clear();
+    if (ptr)
+    {
+        ptr = 0;
+        delete []mFloatTexArray;
+        delete []mIntTexArray;
+        delete []mIntVertArray;
+    }
 }
 
 void OpenGLGraphicsVertexes::init()

@@ -811,7 +811,7 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
     vert->incPtr(1);
 }
 
-void OpenGLGraphics::calcTile(ImageVertexes *vert, int x, int y)
+void OpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
 {
     if (!vert)
         return;
@@ -820,22 +820,20 @@ void OpenGLGraphics::calcTile(ImageVertexes *vert, int x, int y)
     const int srcX = image->mBounds.x;
     const int srcY = image->mBounds.y;
 
-    const int iw = image->mBounds.w;
-    const int ih = image->mBounds.h;
-    const int w = iw;
-    const int h = ih;
+    const int w = image->mBounds.w;
+    const int h = image->mBounds.h;
 
-    if (iw == 0 || ih == 0)
+    if (w == 0 || h == 0)
         return;
 
-    const float tw = static_cast<float>(image->getTextureWidth());
-    const float th = static_cast<float>(image->getTextureHeight());
+    const float tw = static_cast<float>(image->mTexWidth);
+    const float th = static_cast<float>(image->mTexHeight);
 
     const unsigned int vLimit = vertexBufSize * 4;
 
     OpenGLGraphicsVertexes *ogl = vert->ogl;
 
-    unsigned int vp = ogl->continueVp();
+    unsigned int vp = ogl->ptr;
 
     // Draw a set of textured rectangles
     if (image->mTextureType == GL_TEXTURE_2D)
@@ -843,106 +841,91 @@ void OpenGLGraphics::calcTile(ImageVertexes *vert, int x, int y)
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
 
-        GLfloat *floatTexArray = ogl->continueFloatTexArray();
-        GLint *intVertArray = ogl->continueIntVertArray();
+        if (!ogl->mFloatTexArray)
+            ogl->mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
+        if (!ogl->mIntVertArray)
+            ogl->mIntVertArray = new GLint[vertexBufSize * 4 + 30];
 
-        for (int py = 0; py < h; py += ih)
+        GLfloat *floatTexArray = ogl->mFloatTexArray;
+        GLint *intVertArray = ogl->mIntVertArray;
+
+        float texX2 = static_cast<float>(srcX + w) / tw;
+        float texY2 = static_cast<float>(srcY + h) / th;
+
+        floatTexArray[vp + 0] = texX1;
+        floatTexArray[vp + 1] = texY1;
+
+        floatTexArray[vp + 2] = texX2;
+        floatTexArray[vp + 3] = texY1;
+
+        floatTexArray[vp + 4] = texX2;
+        floatTexArray[vp + 5] = texY2;
+
+        floatTexArray[vp + 6] = texX1;
+        floatTexArray[vp + 7] = texY2;
+
+        intVertArray[vp + 0] = dstX;
+        intVertArray[vp + 1] = dstY;
+
+        intVertArray[vp + 2] = dstX + w;
+        intVertArray[vp + 3] = dstY;
+
+        intVertArray[vp + 4] = dstX + w;
+        intVertArray[vp + 5] = dstY + h;
+
+        intVertArray[vp + 6] = dstX;
+        intVertArray[vp + 7] = dstY + h;
+
+        vp += 8;
+
+        if (vp >= vLimit)
         {
-            const int height = (py + ih >= h) ? h - py : ih;
-            const int dstY = y + py;
-            for (int px = 0; px < w; px += iw)
-            {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
-
-                float texX2 = static_cast<float>(srcX + width) / tw;
-                float texY2 = static_cast<float>(srcY + height) / th;
-
-                floatTexArray[vp + 0] = texX1;
-                floatTexArray[vp + 1] = texY1;
-
-                floatTexArray[vp + 2] = texX2;
-                floatTexArray[vp + 3] = texY1;
-
-                floatTexArray[vp + 4] = texX2;
-                floatTexArray[vp + 5] = texY2;
-
-                floatTexArray[vp + 6] = texX1;
-                floatTexArray[vp + 7] = texY2;
-
-                intVertArray[vp + 0] = dstX;
-                intVertArray[vp + 1] = dstY;
-
-                intVertArray[vp + 2] = dstX + width;
-                intVertArray[vp + 3] = dstY;
-
-                intVertArray[vp + 4] = dstX + width;
-                intVertArray[vp + 5] = dstY + height;
-
-                intVertArray[vp + 6] = dstX;
-                intVertArray[vp + 7] = dstY + height;
-
-                vp += 8;
-                if (vp >= vLimit)
-                {
-                    floatTexArray = ogl->switchFloatTexArray();
-                    intVertArray = ogl->switchIntVertArray();
-                    ogl->switchVp(vp);
-                    vp = 0;
-                }
-            }
+            ogl->ptr = vp;
+            return;
         }
     }
     else
     {
-        GLint *intTexArray = ogl->continueIntTexArray();
-        GLint *intVertArray = ogl->continueIntVertArray();
+        if (!ogl->mIntTexArray)
+            ogl->mIntTexArray = new GLint[vertexBufSize * 4 + 30];
+        if (!ogl->mIntVertArray)
+            ogl->mIntVertArray = new GLint[vertexBufSize * 4 + 30];
 
-        for (int py = 0; py < h; py += ih)
+        GLint *intTexArray = ogl->mIntTexArray;
+        GLint *intVertArray = ogl->mIntVertArray;
+
+        intTexArray[vp + 0] = srcX;
+        intTexArray[vp + 1] = srcY;
+
+        intTexArray[vp + 2] = srcX + w;
+        intTexArray[vp + 3] = srcY;
+
+        intTexArray[vp + 4] = srcX + w;
+        intTexArray[vp + 5] = srcY + h;
+
+        intTexArray[vp + 6] = srcX;
+        intTexArray[vp + 7] = srcY + h;
+
+        intVertArray[vp + 0] = dstX;
+        intVertArray[vp + 1] = dstY;
+
+        intVertArray[vp + 2] = dstX + w;
+        intVertArray[vp + 3] = dstY;
+
+        intVertArray[vp + 4] = dstX + w;
+        intVertArray[vp + 5] = dstY + h;
+
+        intVertArray[vp + 6] = dstX;
+        intVertArray[vp + 7] = dstY + h;
+
+        vp += 8;
+        if (vp >= vLimit)
         {
-            const int height = (py + ih >= h) ? h - py : ih;
-            const int dstY = y + py;
-            for (int px = 0; px < w; px += iw)
-            {
-                int width = (px + iw >= w) ? w - px : iw;
-                int dstX = x + px;
-
-                intTexArray[vp + 0] = srcX;
-                intTexArray[vp + 1] = srcY;
-
-                intTexArray[vp + 2] = srcX + width;
-                intTexArray[vp + 3] = srcY;
-
-                intTexArray[vp + 4] = srcX + width;
-                intTexArray[vp + 5] = srcY + height;
-
-                intTexArray[vp + 6] = srcX;
-                intTexArray[vp + 7] = srcY + height;
-
-                intVertArray[vp + 0] = dstX;
-                intVertArray[vp + 1] = dstY;
-
-                intVertArray[vp + 2] = dstX + width;
-                intVertArray[vp + 3] = dstY;
-
-                intVertArray[vp + 4] = dstX + width;
-                intVertArray[vp + 5] = dstY + height;
-
-                intVertArray[vp + 6] = dstX;
-                intVertArray[vp + 7] = dstY + height;
-
-                vp += 8;
-                if (vp >= vLimit)
-                {
-                    intTexArray = ogl->switchIntTexArray();
-                    intVertArray = ogl->switchIntVertArray();
-                    ogl->switchVp(vp);
-                    vp = 0;
-                }
-            }
+            ogl->ptr = vp;
+            return;
         }
     }
-    ogl->switchVp(vp);
+    ogl->ptr = vp;
 }
 
 void OpenGLGraphics::drawTile(ImageVertexes *vert)
@@ -957,40 +940,10 @@ void OpenGLGraphics::drawTile(ImageVertexes *vert)
     bindTexture(Image::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
-    std::vector<GLint*> *intVertPool = ogl->getIntVertPool();
-    std::vector<GLint*>::iterator iv;
-    std::vector<int> *vp = ogl->getVp();
-    std::vector<int>::iterator ivp;
-
-    // Draw a set of textured rectangles
     if (image->mTextureType == GL_TEXTURE_2D)
-    {
-        std::vector<GLfloat*> *floatTexPool = ogl->getFloatTexPool();
-        std::vector<GLfloat*>::iterator ft;
-
-        for (iv = intVertPool->begin(), ft = floatTexPool->begin(),
-             ivp = vp->begin();
-             iv != intVertPool->end(), ft != floatTexPool->end(),
-             ivp != vp->end();
-             ++ iv, ++ ft, ++ ivp)
-        {
-            drawQuadArrayfi(*iv, *ft, *ivp);
-        }
-    }
+        drawQuadArrayfi(ogl->mIntVertArray, ogl->mFloatTexArray, ogl->ptr);
     else
-    {
-        std::vector<GLint*> *intTexPool = ogl->getIntTexPool();
-        std::vector<GLint*>::iterator it;
-
-        for (iv = intVertPool->begin(), it = intTexPool->begin(),
-             ivp = vp->begin();
-             iv != intVertPool->end(), it != intTexPool->end(),
-             ivp != vp->end();
-             ++ iv, ++ it, ++ ivp)
-        {
-            drawQuadArrayii(*iv, *it, *ivp);
-        }
-    }
+        drawQuadArrayii(ogl->mIntVertArray, ogl->mIntTexArray, ogl->ptr);
 
     glColor4ub(static_cast<GLubyte>(mColor.r),
                static_cast<GLubyte>(mColor.g),
