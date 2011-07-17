@@ -155,6 +155,16 @@ class Palette
 
         struct ColorElem
         {
+            ColorElem()
+            {
+                type = 0;
+                text = "";
+                ch = 0;
+                gradientIndex = 0;
+                delay = 0;
+                committedDelay = 0;
+            }
+
             int type;
             gcn::Color color;
             gcn::Color testColor;

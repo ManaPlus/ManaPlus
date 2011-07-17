@@ -659,6 +659,9 @@ Client::~Client()
 
     ActorSprite::unload();
 
+    delete SpriteReference::Empty;
+    SpriteReference::Empty = 0;
+
     ResourceManager::deleteInstance();
 
     logger->log1("Quitting8");

@@ -621,7 +621,8 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mDrawX(-1),
     mDrawY(-1),
     mDrawScrollX(-1),
-    mDrawScrollY(-1)
+    mDrawScrollY(-1),
+    mRedrawMap(true)
 {
     const int size = mWidth * mHeight;
 

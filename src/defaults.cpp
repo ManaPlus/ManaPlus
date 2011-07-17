@@ -228,7 +228,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "appShort", "mana");
     AddDEF(brandingData, "defaultUpdateHost", "");
     AddDEF(brandingData, "helpPath", "");
-    AddDEF(brandingData, "onlineServerList", "");
+//    AddDEF(brandingData, "onlineServerList", "");
     AddDEF(brandingData, "theme", "");
     AddDEF(brandingData, "font", "fonts/dejavusans.ttf");
     AddDEF(brandingData, "boldFont", "fonts/dejavusans-bold.ttf");
