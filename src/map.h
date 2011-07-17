@@ -507,6 +507,8 @@ class Map : public Properties, public ConfigListener
 
         void reduce();
 
+        void redrawMap();
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -607,6 +609,7 @@ class Map : public Properties, public ConfigListener
         int mLastY;
         int mLastScrollX;
         int mLastScrollY;
+        bool mRedrawMap;
 };
 
 

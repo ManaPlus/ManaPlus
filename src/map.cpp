@@ -727,8 +727,9 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     bool overFringe = false;
     int updateFlag = 0;
 
-    if (mLastX != startX || mLastY != startY)
+    if (mRedrawMap || mLastX != startX || mLastY != startY)
     {
+        mRedrawMap = false;
         // fill vectors
         mLastX = startX;
         mLastY = startY;
@@ -1911,6 +1912,11 @@ void Map::reduce()
         }
     }
     logger->log("tiles reduced: %d", cnt);
+}
+
+void Map::redrawMap()
+{
+    mRedrawMap = true;
 }
 
 SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):

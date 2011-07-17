@@ -1040,8 +1040,12 @@ void Game::handleInput()
                         // Find path to mouse (debug purpose)
                         if (!player_node->getDisableGameModifiers())
                         {
-                            viewport->toggleDebugPath();
-                            miniStatusWindow->updateStatus();
+                            if (viewport)
+                                viewport->toggleDebugPath();
+                            if (miniStatusWindow)
+                                miniStatusWindow->updateStatus();
+                            if (mCurrentMap)
+                                mCurrentMap->redrawMap();
                             used = true;
                         }
                         break;
