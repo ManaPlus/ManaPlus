@@ -179,17 +179,9 @@ class MapLayer: public ConfigListener
                   int scrollX, int scrollY,
                   int mDebugFlags) const;
 
-        void drawOGL(Graphics *graphics,
-                     int startX, int startY,
-                     int endX, int endY,
-                     int scrollX, int scrollY,
-                     int mDebugFlags);
+        void drawOGL(Graphics *graphics);
 
-        void drawSDL(Graphics *graphics,
-                     int startX, int startY,
-                     int endX, int endY,
-                     int scrollX, int scrollY,
-                     int mDebugFlags);
+        void drawSDL(Graphics *graphics);
 
         void updateOGL(Graphics *graphics,
                        int startX, int startY,

@@ -889,8 +889,3 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         SDL_FillRect(mTarget, &rect, color);
     }
 }
-
-void Graphics::drawMapLayer(MapLayer *layer)
-{
-
-}

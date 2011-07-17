@@ -282,9 +282,7 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
     }
 }
 
-void MapLayer::drawSDL(Graphics *graphics, int startX, int startY,
-                       int endX, int endY, int scrollX, int scrollY,
-                       int debugFlags)
+void MapLayer::drawSDL(Graphics *graphics)
 {
     MapRows::iterator rit = mTempRows.begin();
     MapRows::iterator rit_end = mTempRows.end();
@@ -372,9 +370,7 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
     }
 }
 
-void MapLayer::drawOGL(Graphics *graphics, int startX, int startY,
-                       int endX, int endY, int scrollX, int scrollY,
-                       int debugFlags)
+void MapLayer::drawOGL(Graphics *graphics)
 {
     MapRows::iterator rit = mTempRows.begin();
     MapRows::iterator rit_end = mTempRows.end();
@@ -874,8 +870,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                             endX, endY, scrollX, scrollY, mDebugFlags);
                     }
 
-                    (*layeri)->drawOGL(graphics, startX, startY, endX, endY,
-                        scrollX, scrollY, mDebugFlags);
+                    (*layeri)->drawOGL(graphics);
                 }
                 else
                 {
@@ -886,8 +881,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
                             endX, endY, scrollX, scrollY, mDebugFlags);
                     }
 
-                    (*layeri)->drawSDL(graphics, startX, startY, endX, endY,
-                        scrollX, scrollY, mDebugFlags);
+                    (*layeri)->drawSDL(graphics);
 */
                     (*layeri)->draw(graphics, startX, startY, endX, endY,
                         scrollX, scrollY, mDebugFlags);

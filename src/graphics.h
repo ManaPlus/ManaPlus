@@ -269,8 +269,6 @@ class Graphics : public gcn::SDLGraphics
         bool getRedraw()
         { return mRedraw; }
 
-        void drawMapLayer(MapLayer *layer);
-
         int mWidth;
         int mHeight;
 

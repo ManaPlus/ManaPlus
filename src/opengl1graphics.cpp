@@ -414,12 +414,13 @@ bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
     return true;
 }
 
-void OpenGL1Graphics::calcTile(ImageVertexes *vert, int x, int y)
+void OpenGL1Graphics::calcTile(ImageVertexes *vert A_UNUSED,
+                               int x A_UNUSED, int y A_UNUSED)
 {
 
 }
 
-void OpenGL1Graphics::drawTile(ImageVertexes *vert)
+void OpenGL1Graphics::drawTile(ImageVertexes *vert A_UNUSED)
 {
 
 }
