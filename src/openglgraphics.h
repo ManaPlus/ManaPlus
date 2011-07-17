@@ -94,6 +94,10 @@ class OpenGLGraphics : public Graphics
         void calcImagePattern(GraphicsVertexes* vert, Image *image,
                               int x, int y, int w, int h);
 
+        void calcTile(ImageVertexes *vert, int x, int y);
+
+        void drawTile(ImageVertexes *vert);
+
         void drawImagePattern2(GraphicsVertexes *vert, Image *image);
 
         void updateScreen();

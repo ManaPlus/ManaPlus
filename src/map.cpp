@@ -239,13 +239,9 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
                          int endX, int endY, int scrollX, int scrollY,
                          int debugFlags)
 {
+    delete_all(mTempRows);
+    mTempRows.clear();
 
-}
-
-void MapLayer::drawOGL(Graphics *graphics, int startX, int startY,
-                       int endX, int endY, int scrollX, int scrollY,
-                       int debugFlags)
-{
     startX -= mX;
     startY -= mY;
     endX -= mX;
@@ -267,42 +263,56 @@ void MapLayer::drawOGL(Graphics *graphics, int startX, int startY,
 
     for (int y = startY; y < endY; y++)
     {
-        const int y32 = y * 32;
-        const int yWidth = y * mWidth;
+        MapRowVertexes *row = new MapRowVertexes();
+        mTempRows.push_back(row);
 
-        const int py0 = y32 + dy;
+        Image *lastImage = 0;
+        ImageVertexes *imgVert = 0;
+
+        const int yWidth = y * mWidth;
+        const int py0 = y * 32 + dy;
 
         for (int x = startX; x < endX; x++)
         {
-            const int x32 = x * 32;
-
             const int tilePtr = x + yWidth;
-            int c = 0;
             Image *img = mTiles[tilePtr];
             if (img)
             {
-                const int px = x32 + dx;
+                const int px = x * 32 + dx;
                 const int py = py0 - img->mBounds.h;
                 if (flag || img->mBounds.h <= 32)
                 {
-                    int width = 0;
-                    // here need not draw over player position
-                    c = getTileDrawWidth(tilePtr, endX - x, width);
-
-                    if (!c)
+                    if (lastImage != img)
                     {
-                        graphics->drawImage(img, px, py);
+                        imgVert = new ImageVertexes();
+                        imgVert->image = img;
+                        row->images.push_back(imgVert);
+                        lastImage = img;
                     }
-                    else
-                    {
-                        graphics->drawImagePattern(img, px, py,
-                            width, img->mBounds.h);
-                    }
+                    graphics->calcTile(imgVert, px, py);
                 }
             }
-
-            x += c;
         }
+    }
+}
+
+void MapLayer::drawOGL(Graphics *graphics, int startX, int startY,
+                       int endX, int endY, int scrollX, int scrollY,
+                       int debugFlags)
+{
+    MapRows::iterator rit = mTempRows.begin();
+    MapRows::iterator rit_end = mTempRows.end();
+    while (rit != rit_end)
+    {
+        MepRowImages *images = &(*rit)->images;
+        MepRowImages::iterator iit = images->begin();
+        MepRowImages::iterator iit_end = images->end();
+        while (iit != iit_end)
+        {
+            graphics->drawTile(*iit);
+            ++ iit;
+        }
+        ++ rit;
     }
 }
 
@@ -743,7 +753,6 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
         mLastScrollX = scrollX;
         mLastScrollY = scrollY;
         updateFlag = 2;
-//        updateMapLayer(this, endX, endY, debugFlags);
     }
 
     if (mDebugFlags == MAP_SPECIAL3 || mDebugFlags == MAP_BLACKWHITE)

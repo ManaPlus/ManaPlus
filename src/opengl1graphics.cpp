@@ -414,6 +414,16 @@ bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
     return true;
 }
 
+void OpenGL1Graphics::calcTile(ImageVertexes *vert, int x, int y)
+{
+
+}
+
+void OpenGL1Graphics::drawTile(ImageVertexes *vert)
+{
+
+}
+
 void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert,
                                      const ImageRect &imgRect)
 {

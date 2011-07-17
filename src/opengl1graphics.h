@@ -101,6 +101,10 @@ class OpenGL1Graphics : public Graphics
 
         void drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect);
 
+        void calcTile(ImageVertexes *vert, int x, int y);
+
+        void drawTile(ImageVertexes *vert);
+
         void updateScreen();
 
         void _beginDraw();

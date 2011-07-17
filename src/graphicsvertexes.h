@@ -87,6 +87,14 @@ class OpenGLGraphicsVertexes
 
         void switchVp(int n);
 
+        GLfloat *continueFloatTexArray();
+
+        GLint *continueIntVertArray();
+
+        GLint *continueIntTexArray();
+
+        int continueVp();
+
         std::vector<int> *getVp()
         { return &mVp; }
 
@@ -110,7 +118,9 @@ typedef std::vector<DoubleRect*> DoubleRects;
 class ImageVertexes
 {
     public:
-        ImageVertexes() : image(0)
+        ImageVertexes() :
+            image(0),
+            ogl(new OpenGLGraphicsVertexes())
         { }
 
         ~ImageVertexes();
@@ -119,7 +129,7 @@ class ImageVertexes
         DoubleRects sdl;
 
 #ifdef USE_OPENGL
-        std::vector<OpenGLGraphicsVertexes*> ogl;
+        OpenGLGraphicsVertexes *ogl;
 #endif
 };
 
