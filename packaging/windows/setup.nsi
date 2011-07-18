@@ -40,6 +40,9 @@ RequestExecutionLevel admin
 ;--- (and without !defines ) ---
 !System "${UPX} --best --crp-ms=999999 --compress-icons=0 --nrv2d ${EXEDIR}\manaplus.exe"
 
+!define MULTIUSER_INSTALLMODE_COMMANDLINE
+!include "MultiUser.nsh"
+
 ; HM NIS Edit helper defines
 !define PRODUCT_NAME "ManaPlus"
 !ifndef PRODUCT_VERSION
@@ -49,7 +52,7 @@ RequestExecutionLevel admin
 !define PRODUCT_WEB_SITE "http://manaplus.evolonline.org/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\manaplus.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
-!define PRODUCT_UNINST_ROOT_KEY "HKLM"
+!define PRODUCT_UNINST_ROOT_KEY "SHCTX"
 
 !include "FileAssociation.nsh"
 
@@ -174,11 +177,12 @@ ShowInstDetails show
 ShowUnInstDetails show
 
 Function .onInit
+  !insertmacro MULTIUSER_INIT
   !insertmacro MUI_LANGDLL_DISPLAY
   InitPluginsDir
   File /oname=$PLUGINSDIR\setup_finish.bmp "setup_finish.bmp"
 
-  ReadRegStr $R0 HKLM \
+  ReadRegStr $R0 SHCTX \
   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}" \
   "UninstallString"
   StrCmp $R0 "" done
@@ -186,12 +190,12 @@ Function .onInit
   MessageBox MB_YESNO|MB_ICONEXCLAMATION \
   "${PRODUCT_NAME} is already installed. $\n$\nClick `YES` (recomended) to remove the \
   previous version or `NO` to install new version over old version." \
-  IDYES uninst
-      Abort
+  IDNO done
+
 ;Run the uninstaller
 uninst:
   ClearErrors
-  ExecWait '$R0 _?=$INSTDIR' ;Do not copy the uninstaller to a temp file
+  ExecWait '$R0' ;Do not copy the uninstaller to a temp file
 
   IfErrors no_remove_uninstaller done
     ;You can either use Delete /REBOOTOK in the uninstaller or add some code
@@ -203,6 +207,7 @@ uninst:
 done:
 
 FunctionEnd
+
 
 Section "Core files (required)" SecCore
   SectionIn RO
@@ -365,7 +370,7 @@ SectionEnd
 
 Section -Post
   WriteUninstaller "$INSTDIR\uninst.exe"
-  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\manaplus.exe"
+  WriteRegStr SHCTX "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\manaplus.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\manaplus.exe"
@@ -376,10 +381,11 @@ SectionEnd
 
 Function un.onInit
   !insertmacro MUI_UNGETLANGUAGE
+  !insertmacro MULTIUSER_UNINIT
 FunctionEnd
 
 Section Uninstall
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Mana"
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Mana"
 
   Delete "$INSTDIR\*.*"
 
@@ -400,7 +406,7 @@ Section Uninstall
   RMDir "$INSTDIR"
 
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
   ${unregisterExtension} ".manaplus" "ManaPlus brandings"
   SetAutoClose true
 SectionEnd
