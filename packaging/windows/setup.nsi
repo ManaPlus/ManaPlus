@@ -177,6 +177,31 @@ Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
   InitPluginsDir
   File /oname=$PLUGINSDIR\setup_finish.bmp "setup_finish.bmp"
+
+  ReadRegStr $R0 HKLM \
+  "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}" \
+  "UninstallString"
+  StrCmp $R0 "" done
+
+  MessageBox MB_YESNO|MB_ICONEXCLAMATION \
+  "${PRODUCT_NAME} is already installed. $\n$\nClick `YES` (recomended) to remove the \
+  previous version or `NO` to install new version over old version." \
+  IDYES uninst
+      Abort
+;Run the uninstaller
+uninst:
+  ClearErrors
+  ExecWait '$R0 _?=$INSTDIR' ;Do not copy the uninstaller to a temp file
+
+  IfErrors no_remove_uninstaller done
+    ;You can either use Delete /REBOOTOK in the uninstaller or add some code
+    ;here to remove the uninstaller. Use a registry key to check
+    ;whether the user has chosen to uninstall. If you are using an uninstaller
+    ;components page, make sure all sections are uninstalled.
+  no_remove_uninstaller:
+
+done:
+
 FunctionEnd
 
 Section "Core files (required)" SecCore
