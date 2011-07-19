@@ -159,10 +159,8 @@ namespace gcn
 
     Widget* ScrollArea::getContent()
     {
-        if (mWidgets.size() > 0)
-        {
+        if (!mWidgets.empty())
             return *mWidgets.begin();
-        }
 
         return NULL;
     }
@@ -372,11 +370,11 @@ namespace gcn
     {
         if (mIsVerticalMarkerDragged)
         {
-            int pos = mouseEvent.getY() - getVerticalBarDimension().y
+            Rectangle barDim = getVerticalBarDimension();
+
+            int pos = mouseEvent.getY() - barDim.y
                  - mVerticalMarkerDragOffset;
             int length = getVerticalMarkerDimension().height;
-
-            Rectangle barDim = getVerticalBarDimension();
 
             if ((barDim.height - length) > 0)
             {
@@ -391,11 +389,11 @@ namespace gcn
 
         if (mIsHorizontalMarkerDragged)
         {
-            int pos = mouseEvent.getX() - getHorizontalBarDimension().x 
+            Rectangle barDim = getHorizontalBarDimension();
+
+            int pos = mouseEvent.getX() - barDim.x 
                 - mHorizontalMarkerDragOffset;
             int length = getHorizontalMarkerDimension().width;
-
-            Rectangle barDim = getHorizontalBarDimension();
 
             if ((barDim.width - length) > 0)
             {
@@ -896,7 +894,7 @@ namespace gcn
         }
     }
 
-    Rectangle ScrollArea::getUpButtonDimension()
+    Rectangle ScrollArea::getUpButtonDimension() const
     {
         if (!mVBarVisible)
             return Rectangle(0, 0, 0, 0);
@@ -905,7 +903,7 @@ namespace gcn
             mScrollbarWidth, mScrollbarWidth);
     }
 
-    Rectangle ScrollArea::getDownButtonDimension()
+    Rectangle ScrollArea::getDownButtonDimension() const
     {
         if (!mVBarVisible)
             return Rectangle(0, 0, 0, 0);
@@ -924,7 +922,7 @@ namespace gcn
                          mScrollbarWidth);
     }
 
-    Rectangle ScrollArea::getLeftButtonDimension()
+    Rectangle ScrollArea::getLeftButtonDimension() const
     {
         if (!mHBarVisible)
             return Rectangle(0, 0, 0, 0);
@@ -933,7 +931,7 @@ namespace gcn
             mScrollbarWidth, mScrollbarWidth);
     }
 
-    Rectangle ScrollArea::getRightButtonDimension()
+    Rectangle ScrollArea::getRightButtonDimension() const
     {
         if (!mHBarVisible)
             return Rectangle(0, 0, 0, 0);
@@ -964,7 +962,7 @@ namespace gcn
         return area;
     }
 
-    Rectangle ScrollArea::getVerticalBarDimension()
+    Rectangle ScrollArea::getVerticalBarDimension() const
     {
         if (!mVBarVisible)
             return Rectangle(0, 0, 0, 0);
@@ -988,7 +986,7 @@ namespace gcn
                          - getDownButtonDimension().height);
     }
 
-    Rectangle ScrollArea::getHorizontalBarDimension()
+    Rectangle ScrollArea::getHorizontalBarDimension() const
     {
         if (!mHBarVisible)
             return Rectangle(0, 0, 0, 0);
@@ -1018,27 +1016,38 @@ namespace gcn
             return Rectangle(0, 0, 0, 0);
 
         int length, pos;
-        Rectangle barDim = getVerticalBarDimension();
+        int height;
+
+        if (mHBarVisible)
+        {
+            height = getHeight() - getUpButtonDimension().height
+                - getDownButtonDimension().height - mScrollbarWidth;
+        }
+        else
+        {
+            height = getHeight() - getUpButtonDimension().height
+                - getDownButtonDimension().height;
+        }
 
         if (getContent() && getContent()->getHeight() != 0)
         {
-            length = (barDim.height * getChildrenArea().height)
+            length = (height * getChildrenArea().height)
                 / getContent()->getHeight();
         }
         else
         {
-            length = barDim.height;
+            length = height;
         }
 
         if (length < mScrollbarWidth)
             length = mScrollbarWidth;
 
-        if (length > barDim.height)
-            length = barDim.height;
+        if (length > height)
+            length = height;
 
         if (getVerticalMaxScroll() != 0)
         {
-            pos = ((barDim.height - length) * getVerticalScrollAmount())
+            pos = ((height - length) * getVerticalScrollAmount())
                 / getVerticalMaxScroll();
         }
         else
@@ -1046,7 +1055,8 @@ namespace gcn
             pos = 0;
         }
 
-        return Rectangle(barDim.x, barDim.y + pos, mScrollbarWidth, length);
+        return Rectangle(getWidth() - mScrollbarWidth,
+            getUpButtonDimension().height + pos, mScrollbarWidth, length);
     }
 
     Rectangle ScrollArea::getHorizontalMarkerDimension()
@@ -1055,31 +1065,38 @@ namespace gcn
             return Rectangle(0, 0, 0, 0);
 
         int length, pos;
-        Rectangle barDim = getHorizontalBarDimension();
+        int width;
+
+        if (mVBarVisible)
+        {
+            width = getWidth() - getLeftButtonDimension().width
+                - getRightButtonDimension().width - mScrollbarWidth;
+        }
+        else
+        {
+            width = getWidth() - getLeftButtonDimension().width
+                - getRightButtonDimension().width;
+        }
 
         if (getContent() && getContent()->getWidth() != 0)
         {
-            length = (barDim.width * getChildrenArea().width)
+            length = (width * getChildrenArea().width)
                 / getContent()->getWidth();
         }
         else
         {
-            length = barDim.width;
+            length = width;
         }
 
         if (length < mScrollbarWidth)
-        {
             length = mScrollbarWidth;
-        }
 
-        if (length > barDim.width)
-        {
-            length = barDim.width;
-        }
+        if (length > width)
+            length = width;
 
         if (getHorizontalMaxScroll() != 0)
         {
-            pos = ((barDim.width - length) * getHorizontalScrollAmount())
+            pos = ((width - length) * getHorizontalScrollAmount())
                 / getHorizontalMaxScroll();
         }
         else
@@ -1087,7 +1104,8 @@ namespace gcn
             pos = 0;
         }
 
-        return Rectangle(barDim.x + pos, barDim.y, length, mScrollbarWidth);
+        return Rectangle(getLeftButtonDimension().width + pos,
+            getHeight() - mScrollbarWidth, length, mScrollbarWidth);
     }
 
     void ScrollArea::showWidgetPart(Widget* widget, Rectangle area)
