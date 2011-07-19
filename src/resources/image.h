@@ -95,6 +95,8 @@ class Image : public Resource
 
         static SDL_Surface* convertTo32Bit(SDL_Surface* tmpImage);
 
+        static Image *createTextSurface(SDL_Surface *tmpImage, float alpha);
+
         /**
          * Frees the resources created by SDL.
          */

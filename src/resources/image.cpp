@@ -189,6 +189,83 @@ Image *Image::load(SDL_Surface *tmpImage)
     return _SDLload(tmpImage);
 }
 
+Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
+{
+    if (!tmpImage)
+        return NULL;
+
+    Image *img;
+#ifdef USE_OPENGL
+    if (mUseOpenGL)
+    {
+        img = _GLload(tmpImage);
+        img->setAlpha(alpha);
+        return img;
+    }
+#endif
+
+    bool hasAlpha = false;
+    bool converted = false;
+
+    // The alpha channel to be filled with alpha values
+    Uint8 *alphaChannel = new Uint8[tmpImage->w * tmpImage->h];
+
+    const int sz = tmpImage->w * tmpImage->h;
+    const SDL_PixelFormat * const fmt = tmpImage->format;
+    if (fmt->Amask)
+    {
+        for (int i = 0; i < sz; ++ i)
+        {
+            unsigned v = ((static_cast<Uint32*>(tmpImage->pixels))[i]
+                & fmt->Amask) >> fmt->Ashift;
+            Uint8 a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
+
+            Uint8 a2 = static_cast<Uint8>(static_cast<float>(a) * alpha);
+
+            (static_cast<Uint32*>(tmpImage->pixels))[i] &= ~fmt->Amask;
+            (static_cast<Uint32*>(tmpImage->pixels))[i] |=
+                ((a2 >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
+
+            if (a != 255)
+                hasAlpha = true;
+
+            alphaChannel[i] = a;
+
+        }
+    }
+
+    SDL_Surface *image;
+
+    // Convert the surface to the current display format
+    if (hasAlpha)
+    {
+        image = SDL_DisplayFormatAlpha(tmpImage);
+    }
+    else
+    {
+        image = SDL_DisplayFormat(tmpImage);
+
+        // We also delete the alpha channel since
+        // it's not used.
+        delete[] alphaChannel;
+        alphaChannel = 0;
+    }
+
+    if (!image)
+    {
+        logger->log1("Error: Image convert failed.");
+        delete[] alphaChannel;
+        return 0;
+    }
+
+    if (converted)
+        SDL_FreeSurface(tmpImage);
+
+    img = new Image(image, hasAlpha, alphaChannel);
+    img->mAlpha = alpha;
+    return img;
+}
+
 void Image::SDLCleanCache()
 {
     ResourceManager *resman = ResourceManager::getInstance();

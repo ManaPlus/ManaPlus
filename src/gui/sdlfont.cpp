@@ -64,7 +64,7 @@ class SDLTextChunk
             return (chunk.text == text && chunk.color == color);
         }
 
-        void generate(TTF_Font *font)
+        void generate(TTF_Font *font, float alpha)
         {
             SDL_Color sdlCol;
             sdlCol.b = static_cast<Uint8>(color.b);
@@ -83,7 +83,8 @@ class SDLTextChunk
                 return;
             }
 
-            img = Image::load(surface);
+            img = Image::createTextSurface(surface, alpha);
+//            img = Image::load(surface);
 
             SDL_FreeSurface(surface);
         }
@@ -243,7 +244,7 @@ void SDLFont::drawString(gcn::Graphics *graphics,
         mCreateCounter ++;
 #endif
         cache->push_front(chunk);
-        cache->front().generate(mFont);
+        cache->front().generate(mFont, alpha);
 
         if (!mCleanTime)
         {
@@ -254,9 +255,13 @@ void SDLFont::drawString(gcn::Graphics *graphics,
             doClean();
             mCleanTime = cur_time + CLEAN_TIME;
         }
+        if (cache->front().img)
+        {
+//            cache->front().img->setAlpha(alpha);
+            g->drawImage(cache->front().img, x, y);
+        }
     }
-
-    if (cache->front().img)
+    else if (cache->front().img)
     {
         cache->front().img->setAlpha(alpha);
         g->drawImage(cache->front().img, x, y);
@@ -271,9 +276,9 @@ void SDLFont::createSDLTextChunk(SDLTextChunk *chunk)
 
     const float alpha = static_cast<float>(chunk->color.a) / 255.0f;
     chunk->color.a = 255;
-    chunk->generate(mFont);
-    if (chunk->img)
-        chunk->img->setAlpha(alpha);
+    chunk->generate(mFont, alpha);
+//    if (chunk->img)
+//        chunk->img->setAlpha(alpha);
 }
 
 int SDLFont::getWidth(const std::string &text) const
