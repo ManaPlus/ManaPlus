@@ -417,24 +417,21 @@ void Image::setAlpha(float alpha)
             const int i1 = mBounds.y * mSDLSurface->w + mBounds.x;
             const int i2 = (maxHeight - 1) * mSDLSurface->w + maxWidth - 1;
 
+            const SDL_PixelFormat * const fmt = mSDLSurface->format;
+
             for (int i = i1; i <= i2; i++)
             {
                 // Only change the pixel if it was visible at load time...
                 Uint8 sourceAlpha = mAlphaChannel[i];
                 if (sourceAlpha > 0)
                 {
-                    Uint8 r, g, b, a;
-                    SDL_GetRGBA((static_cast<Uint32*>
-                        (mSDLSurface->pixels))[i],
-                        mSDLSurface->format,
-                        &r, &g, &b, &a);
+                    Uint8 a = static_cast<Uint8>(
+                        static_cast<float>(sourceAlpha) * mAlpha);
 
-                    a = static_cast<Uint8>(static_cast<float>(
-                        sourceAlpha) * mAlpha);
-
-                    // Here is the pixel we want to set
-                    (static_cast<Uint32 *>(mSDLSurface->pixels))[i] =
-                        SDL_MapRGBA(mSDLSurface->format, r, g, b, a);
+                    (static_cast<Uint32*>(mSDLSurface->pixels))[i]
+                        &= ~fmt->Amask;
+                    (static_cast<Uint32*>(mSDLSurface->pixels))[i]
+                        |= ((a >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
                 }
             }
 
