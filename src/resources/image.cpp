@@ -165,13 +165,15 @@ Resource *Image::load(void *buffer, unsigned bufferSize, Dye const &dye)
     Uint32 *pixels = static_cast< Uint32 * >(surf->pixels);
     for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
     {
-        int alpha = *pixels & 255;
+        const Uint32 p = *pixels;
+
+        int alpha = p & 255;
         if (!alpha)
             continue;
         int v[3];
-        v[0] = (*pixels >> 24) & 255;
-        v[1] = (*pixels >> 16) & 255;
-        v[2] = (*pixels >> 8 ) & 255;
+        v[0] = (p >> 24) & 255;
+        v[1] = (p >> 16) & 255;
+        v[2] = (p >> 8 ) & 255;
         dye.update(v);
         *pixels = (v[0] << 24) | (v[1] << 16) | (v[2] << 8) | alpha;
     }
@@ -217,21 +219,21 @@ Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
     {
         for (int i = 0; i < sz; ++ i)
         {
-            unsigned v = ((static_cast<Uint32*>(tmpImage->pixels))[i]
-                & fmt->Amask) >> fmt->Ashift;
+            Uint32 c = (static_cast<Uint32*>(tmpImage->pixels))[i];
+
+            unsigned v = (c & fmt->Amask) >> fmt->Ashift;
             Uint8 a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
 
             Uint8 a2 = static_cast<Uint8>(static_cast<float>(a) * alpha);
 
-            (static_cast<Uint32*>(tmpImage->pixels))[i] &= ~fmt->Amask;
-            (static_cast<Uint32*>(tmpImage->pixels))[i] |=
-                ((a2 >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
+            c &= ~fmt->Amask;
+            c |= ((a2 >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
+            (static_cast<Uint32*>(tmpImage->pixels))[i] = c;
 
             if (a != 255)
                 hasAlpha = true;
 
             alphaChannel[i] = a;
-
         }
     }
 
@@ -429,10 +431,10 @@ void Image::setAlpha(float alpha)
                     Uint8 a = static_cast<Uint8>(
                         static_cast<float>(sourceAlpha) * mAlpha);
 
-                    (static_cast<Uint32*>(mSDLSurface->pixels))[i]
-                        &= ~fmt->Amask;
-                    (static_cast<Uint32*>(mSDLSurface->pixels))[i]
-                        |= ((a >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
+                    Uint32 c = (static_cast<Uint32*>(mSDLSurface->pixels))[i];
+                    c &= ~fmt->Amask;
+                    c |= ((a >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
+                    (static_cast<Uint32*>(mSDLSurface->pixels))[i] = c;
                 }
             }
 

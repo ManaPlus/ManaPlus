@@ -28,6 +28,12 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/mouselistener.hpp>
 
+#ifdef __GNUC__
+#define A_PURE  __attribute__ ((pure))
+#else
+#define A_PURE
+#endif
+
 #define OUTFITS_COUNT 100
 #define OUTFIT_ITEM_COUNT 12
 
@@ -82,9 +88,9 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         void unequipNotInOutfit(int outfit);
 
-        int keyToNumber(SDLKey key) const;
+        int keyToNumber(SDLKey key) const A_PURE;
 
-        SDLKey numberToKey(int number) const;
+        SDLKey numberToKey(int number) const A_PURE;
 
         void next();
 
@@ -100,7 +106,7 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         void showCurrentOutfit();
 
-        std::string keyName(int number);
+        std::string keyName(int number) A_PURE;
 
     private:
         Button *mPreviousButton;
