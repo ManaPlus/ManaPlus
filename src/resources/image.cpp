@@ -166,7 +166,8 @@ Resource *Image::load(void *buffer, unsigned bufferSize, Dye const &dye)
     for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
     {
         int alpha = *pixels & 255;
-        if (!alpha) continue;
+        if (!alpha)
+            continue;
         int v[3];
         v[0] = (*pixels >> 24) & 255;
         v[1] = (*pixels >> 16) & 255;
@@ -758,15 +759,13 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
     if (mUseOpenGL == 1)
         OpenGLGraphics::bindTexture(mTextureType, texture);
     else if (mUseOpenGL == 2)
-//        glBindTexture(mTextureType, texture);
         OpenGL1Graphics::bindTexture(mTextureType, texture);
 
     if (SDL_MUSTLOCK(tmpImage))
         SDL_LockSurface(tmpImage);
 
-//    glTexImage2D(mTextureType, 0, GL_COMPRESSED_RGBA_ARB, tmpImage->w, tmpImage->h,
     glTexImage2D(mTextureType, 0, 4, tmpImage->w, tmpImage->h,
-                0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
+        0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
 
 #ifdef DEBUG_OPENGL_LEAKS
     textures_count ++;
