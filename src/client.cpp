@@ -659,9 +659,6 @@ Client::~Client()
 
     ActorSprite::unload();
 
-    delete SpriteReference::Empty;
-    SpriteReference::Empty = 0;
-
     ResourceManager::deleteInstance();
 
     logger->log1("Quitting8");
@@ -1029,6 +1026,14 @@ int Client::exec()
                     // Read default paths file 'data/paths.xml'
                     paths.init("paths.xml", true);
                     paths.setDefaultValues(getPathsDefaults());
+                    if (!SpriteReference::Empty)
+                    {
+                        SpriteReference::Empty = new SpriteReference(
+                            paths.getStringValue("spriteErrorFile"), 0);
+                    }
+
+                    if (!BeingInfo::unknown)
+                        BeingInfo::unknown = new BeingInfo;
 
                     Mana::Event event(EVENT_STATECHANGE);
                     event.setInt("newState", STATE_LOAD_DATA);

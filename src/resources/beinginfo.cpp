@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-BeingInfo *BeingInfo::unknown = new BeingInfo;
+BeingInfo *BeingInfo::unknown = 0;
 Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, "", "");
 
 BeingInfo::BeingInfo():

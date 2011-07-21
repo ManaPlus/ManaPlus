@@ -39,8 +39,7 @@
 
 #include "debug.h"
 
-SpriteReference *SpriteReference::Empty = new SpriteReference(
-                paths.getStringValue("spriteErrorFile"), 0);
+SpriteReference *SpriteReference::Empty = 0;
 
 Action *SpriteDef::getAction(std::string action) const
 {
