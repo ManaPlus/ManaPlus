@@ -321,7 +321,7 @@ void UpdaterWindow::loadPatch()
         if (version > CHECK_VERSION)
         {
             mBrowserBox->addRow("", true);
-            mBrowserBox->addRow("  ##1http://tmw.cetki.com/4144/", true);
+            mBrowserBox->addRow("  ##1http://manaplus.evolonline.org/", true);
             mBrowserBox->addRow("##1You can download it from", true);
             mBrowserBox->addRow("##1ManaPlus updated.", true);
         }
@@ -353,7 +353,17 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
     else if (status == DOWNLOAD_STATUS_ERROR ||
              status == DOWNLOAD_STATUS_CANCELLED)
     {
-        uw->mDownloadStatus = UPDATE_ERROR;
+        if (uw->mDownloadStatus == UPDATE_PATCH)
+        {
+            uw->mDownloadStatus = UPDATE_COMPLETE;
+            uw->mDownloadComplete = true;
+            free(uw->mMemoryBuffer);
+            uw->mMemoryBuffer = NULL;
+        }
+        else
+        {
+            uw->mDownloadStatus = UPDATE_ERROR;
+        }
     }
 
     if (!dt)
@@ -410,7 +420,7 @@ void UpdaterWindow::download()
     }
     if (mDownloadStatus == UPDATE_PATCH)
     {
-        mDownload = new Net::Download(this, "http://tmw.cetki.com/update/"
+        mDownload = new Net::Download(this, "http://manaplus.evolonline.org/update/"
                                       + mCurrentFile, updateProgress);
     }
     else
