@@ -353,8 +353,8 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
     else if (status == DOWNLOAD_STATUS_ERROR ||
              status == DOWNLOAD_STATUS_CANCELLED)
     {
-        if (uw->mDownloadStatus == UPDATE_PATCH)
-        {
+        if (uw->mDownloadStatus == UPDATE_COMPLETE)
+        {   // ignoring error in last state (was UPDATE_PATCH)
             uw->mDownloadStatus = UPDATE_COMPLETE;
             uw->mDownloadComplete = true;
             free(uw->mMemoryBuffer);
@@ -421,7 +421,7 @@ void UpdaterWindow::download()
     if (mDownloadStatus == UPDATE_PATCH)
     {
         mDownload = new Net::Download(this, "http://manaplus.evolonline.org/update/"
-                                      + mCurrentFile, updateProgress);
+                                      + mCurrentFile, updateProgress, true);
     }
     else
     {
