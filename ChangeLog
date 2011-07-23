@@ -1,3 +1,20 @@
+2011-07-24 New release 1.1.7.24
+ManaPlus:
+fix: compilation without opengl.
+fix: crash with other players equipment window.
+fix: improve speed.
+fix: compilation in big endian systems.
+fix: opengl configure flag for mac os.
+fix: rectangle draw bug in some systems in software mode.
+add: close popup menu by esc key.
+add: keys for quick add items to trade
+add: shortcut key to close current chat tab.
+by default unassigned.
+add: uninstall before install in windows installer.
+add: multi user support in windows installer.
+add: new update check url.
+add: updated translations.
+
 2011-07-10 New release 1.1.7.10
 ManaPlus:
 fix: char deletion
