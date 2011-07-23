@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-22 01:05+0300\n"
+"POT-Creation-Date: 2011-07-23 17:22+0300\n"
 "PO-Revision-Date: 2011-06-20 00:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.net/projects/p/manaplus/team/"
@@ -3233,21 +3233,21 @@ msgstr "Verbinde..."
 msgid "Play"
 msgstr "Los!"
 
-#: src/gui/updatewindow.cpp:555
+#: src/gui/updatewindow.cpp:556
 msgid "##1  The update process is incomplete."
 msgstr "##1 Update wurde nicht erfolgreich abgeschlossen."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:557
+#: src/gui/updatewindow.cpp:558
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Es wird dringend empfohlen,"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:559
+#: src/gui/updatewindow.cpp:560
 msgid "##1  you try again later."
 msgstr ""
 
-#: src/gui/updatewindow.cpp:685
+#: src/gui/updatewindow.cpp:686
 msgid "Completed"
 msgstr "Fertig"
 
@@ -4089,27 +4089,27 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/localplayer.cpp:3175
+#: src/localplayer.cpp:3174
 msgid "Away"
 msgstr "Abwesend"
 
-#: src/localplayer.cpp:3479
+#: src/localplayer.cpp:3478
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3481 src/localplayer.cpp:3496
+#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3488
+#: src/localplayer.cpp:3487
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3490 src/localplayer.cpp:3498
+#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3850
+#: src/localplayer.cpp:3849
 msgid "You see "
 msgstr ""
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <antoinebcn@hotmail.com>, 2011.
 # Jumpy <antoinebcn@hotmail.com>, 2011.
 # Bernard  <nard@bh28.net>, 2011.
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-22 01:05+0300\n"
+"POT-Creation-Date: 2011-07-23 17:22+0300\n"
 "PO-Revision-Date: 2011-07-21 23:49+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/fr/)\n"
+"Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/actorspritemanager.cpp:1034
@@ -140,11 +141,11 @@ msgstr "Vous ne pouvez pas envoyer de messages vides."
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Vous ne pouvez créer une nouvelle fenêtre de message privé avec le nom "
-"\"%s\". Soit elle existe déjà, soit il s'agit de vous même."
+"Vous ne pouvez créer une nouvelle fenêtre de message privé avec le nom \"%s"
+"\". Soit elle existe déjà, soit il s'agit de vous même."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -299,7 +300,8 @@ msgstr "Images des ressources non affectées :"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Les options de /%s sont \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
+msgstr ""
+"Les options de /%s sont \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -2618,8 +2620,8 @@ msgstr "Choisissez le nom de la guilde."
 #: src/gui/socialwindow.cpp:1309
 msgid "Received guild request, but one already exists."
 msgstr ""
-"Vous avez reçu une invitation pour rejoindre une guilde, mais vous êtes déjà"
-" dans une."
+"Vous avez reçu une invitation pour rejoindre une guilde, mais vous êtes déjà "
+"dans une."
 
 #: src/gui/socialwindow.cpp:1315
 #, c-format
@@ -3208,8 +3210,7 @@ msgid "Change"
 msgstr "Changer"
 
 #: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "L'objet ne peux être ajouté. Vous ne pouvez ajouter deux fois le même objet "
 "dans cette fenêtre."
@@ -3235,21 +3236,21 @@ msgstr "Connexion..."
 msgid "Play"
 msgstr "Jouer"
 
-#: src/gui/updatewindow.cpp:555
+#: src/gui/updatewindow.cpp:556
 msgid "##1  The update process is incomplete."
 msgstr "##1 Le processus de mise à jour n'est pas achevé"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:557
+#: src/gui/updatewindow.cpp:558
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Il est fortement recommandé que"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:559
+#: src/gui/updatewindow.cpp:560
 msgid "##1  you try again later."
 msgstr "##1 Essayez à nouveau plus tard"
 
-#: src/gui/updatewindow.cpp:685
+#: src/gui/updatewindow.cpp:686
 msgid "Completed"
 msgstr "Terminé"
 
@@ -3451,8 +3452,7 @@ msgstr "Commande : /users"
 
 #: src/gui/widgets/channeltab.cpp:67
 msgid "This command shows the users in this channel."
-msgstr ""
-"Cette commande affiche la liste d'utilisateurs présents dans ce salon."
+msgstr "Cette commande affiche la liste d'utilisateurs présents dans ce salon."
 
 #: src/gui/widgets/channeltab.cpp:71
 msgid "Command: /topic <message>"
@@ -3562,10 +3562,8 @@ msgid "Command: /unignore <player>"
 msgstr "Commande : /unignore <joueur>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
-msgstr ""
-"Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
+msgid "This command stops ignoring the other player if they are being ignored."
+msgstr "Cette commande vous fait cesser d'ignorer un joueur si c'était le cas."
 
 #: src/gui/windowmenu.cpp:65
 msgid "BC"
@@ -4099,27 +4097,27 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Vous avez ramassé %d [@@%d|%s@@]."
 msgstr[1] "Vous avez ramassé %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3175
+#: src/localplayer.cpp:3174
 msgid "Away"
 msgstr "Inactif"
 
-#: src/localplayer.cpp:3479
+#: src/localplayer.cpp:3478
 msgid "Follow: "
 msgstr "Suivre : "
 
-#: src/localplayer.cpp:3481 src/localplayer.cpp:3496
+#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
 msgid "Follow canceled"
 msgstr "Suivi annulé"
 
-#: src/localplayer.cpp:3488
+#: src/localplayer.cpp:3487
 msgid "Imitation: "
 msgstr "Imitation: "
 
-#: src/localplayer.cpp:3490 src/localplayer.cpp:3498
+#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
 msgid "Imitation canceled"
 msgstr "Imitation annulée"
 
-#: src/localplayer.cpp:3850
+#: src/localplayer.cpp:3849
 msgid "You see "
 msgstr "Vous voyez  "
 
@@ -4212,8 +4210,7 @@ msgstr ""
 
 #: src/main.cpp:71
 msgid "     --screenshot-dir : Directory to store screenshots"
-msgstr ""
-"      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
+msgstr "      --screenshot-dir : Répertoire à utiliser pour les imprime-écrans"
 
 #: src/main.cpp:72
 msgid "     --safemode       : Start game in safe mode"
@@ -5297,11 +5294,10 @@ msgstr "Message"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
-"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus"
-" en mesure de regagner vos points de vie."
+"Vous portez plus de la moitié du poids de votre inventaire. Vous n'êtes plus "
+"en mesure de regagner vos points de vie."
 
 #: src/net/tmwa/playerhandler.cpp:353
 msgid "You are carrying less than half your weight. You can regain health."
@@ -5497,5 +5493,3 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Objet inconnu"
-
-

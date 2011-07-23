@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <freya.df@gmail.com>, 2011.
 # freya <freya.df@gmail.com>, 2011.
 # Andrei Karas <akaras@inbox.ru>, 2011.
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-22 01:05+0300\n"
-"PO-Revision-Date: 2011-07-21 23:49+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Portuguese (http://www.transifex.net/projects/p/manaplus/team/pt/)\n"
+"POT-Creation-Date: 2011-07-23 17:22+0300\n"
+"PO-Revision-Date: 2011-07-23 15:40+0000\n"
+"Last-Translator: freya <freya.df@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.net/projects/p/manaplus/team/"
+"pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1034
@@ -138,11 +139,11 @@ msgstr "Não é possível enviar mensagens privadas vazias!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela"
-" já existe ou é você mesmo."
+"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
+"já existe ou é você mesmo."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -296,7 +297,8 @@ msgstr "Recursos de imagens orfãos:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr ""
+"Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -3196,8 +3198,7 @@ msgid "Change"
 msgstr "Mudar"
 
 #: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
@@ -3222,21 +3223,21 @@ msgstr "Conectando..."
 msgid "Play"
 msgstr "Jogar"
 
-#: src/gui/updatewindow.cpp:555
+#: src/gui/updatewindow.cpp:556
 msgid "##1  The update process is incomplete."
 msgstr "##1  O processo de update está incompleto."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:557
+#: src/gui/updatewindow.cpp:558
 msgid "##1  It is strongly recommended that"
 msgstr "##1  É altamente recomendado que"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:559
+#: src/gui/updatewindow.cpp:560
 msgid "##1  you try again later."
 msgstr "##1  tente novamente mais tarde."
 
-#: src/gui/updatewindow.cpp:685
+#: src/gui/updatewindow.cpp:686
 msgid "Completed"
 msgstr "Concluído"
 
@@ -3541,8 +3542,7 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jogador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Este comando para de ignorar o outro jogador se ele estiver sendo ignorado."
 
@@ -3902,7 +3902,7 @@ msgstr "Próxima aba de chat"
 
 #: src/keyboardconfig.cpp:278
 msgid "Close current Chat Tab"
-msgstr ""
+msgstr "Fechar aba de chat atual"
 
 #: src/keyboardconfig.cpp:280
 msgid "Previous chat line"
@@ -4078,27 +4078,27 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Você pegou %d [@@%d|%s@@]."
 msgstr[1] "Você pegou %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3175
+#: src/localplayer.cpp:3174
 msgid "Away"
 msgstr "Indisponivel "
 
-#: src/localplayer.cpp:3479
+#: src/localplayer.cpp:3478
 msgid "Follow: "
 msgstr "Seguindo:"
 
-#: src/localplayer.cpp:3481 src/localplayer.cpp:3496
+#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3488
+#: src/localplayer.cpp:3487
 msgid "Imitation: "
 msgstr "Imitando:"
 
-#: src/localplayer.cpp:3490 src/localplayer.cpp:3498
+#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
 msgid "Imitation canceled"
 msgstr "Imitação cancelada"
 
-#: src/localplayer.cpp:3850
+#: src/localplayer.cpp:3849
 msgid "You see "
 msgstr "Você vê "
 
@@ -5004,8 +5004,7 @@ msgstr "Comando: /exp <policy>"
 
 #: src/net/tmwa/gui/partytab.cpp:108
 msgid "This command changes the party's experience sharing policy."
-msgstr ""
-"Este comando muda a opção de compartilhamento de experiência do grupo."
+msgstr "Este comando muda a opção de compartilhamento de experiência do grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:110
 msgid ""
@@ -5022,8 +5021,7 @@ msgstr "Comando: /exp"
 #: src/net/tmwa/gui/partytab.cpp:114
 msgid "This command displays the party's current experience sharing policy."
 msgstr ""
-"Este comando exibe a atual opção de compartilhamento de experiência do "
-"grupo."
+"Este comando exibe a atual opção de compartilhamento de experiência do grupo."
 
 #: src/net/tmwa/gui/partytab.cpp:148 src/net/tmwa/partyhandler.cpp:289
 msgid "Item sharing enabled."
@@ -5257,8 +5255,7 @@ msgstr "Mensagem"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
@@ -5453,5 +5450,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Item desconhecido"
-
-

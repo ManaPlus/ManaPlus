@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-22 01:05+0300\n"
+"POT-Creation-Date: 2011-07-23 17:22+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -3443,22 +3443,22 @@ msgstr "Csatlakozás…"
 msgid "Play"
 msgstr "Játék"
 
-#: src/gui/updatewindow.cpp:555
+#: src/gui/updatewindow.cpp:556
 msgid "##1  The update process is incomplete."
 msgstr "##1 A frissítési folyamat befejezetlen"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:557
+#: src/gui/updatewindow.cpp:558
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Erősen ajánljuk, hogy"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:559
+#: src/gui/updatewindow.cpp:560
 #, fuzzy
 msgid "##1  you try again later."
 msgstr "##1 próbáld meg később"
 
-#: src/gui/updatewindow.cpp:685
+#: src/gui/updatewindow.cpp:686
 msgid "Completed"
 msgstr "Kész"
 
@@ -4356,30 +4356,30 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Zsákmányod%s [@@%d|%s@@]."
 msgstr[1] "Zsákmányod%s [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3175
+#: src/localplayer.cpp:3174
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3479
+#: src/localplayer.cpp:3478
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3481 src/localplayer.cpp:3496
+#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
 #, fuzzy
 msgid "Follow canceled"
 msgstr "Az üzlet megszakadt."
 
-#: src/localplayer.cpp:3488
+#: src/localplayer.cpp:3487
 #, fuzzy
 msgid "Imitation: "
 msgstr "Email cím módosírása"
 
-#: src/localplayer.cpp:3490 src/localplayer.cpp:3498
+#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
 #, fuzzy
 msgid "Imitation canceled"
 msgstr "Az üzlet megszakadt."
 
-#: src/localplayer.cpp:3850
+#: src/localplayer.cpp:3849
 #, fuzzy
 msgid "You see "
 msgstr "Kapott tárgy: %s."

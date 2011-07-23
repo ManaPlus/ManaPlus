@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Nelson  <nelson6eeduardo65@gmail.com>, 2011.
 # Nelson Martell <nelson6eeduardo65@gmail.com>, 2011.
 # Jumpy <antoinebcn@hotmail.com>, 2011.
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-22 01:05+0300\n"
-"PO-Revision-Date: 2011-07-21 23:49+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/manaplus/team/es/)\n"
+"POT-Creation-Date: 2011-07-23 17:22+0300\n"
+"PO-Revision-Date: 2011-07-22 15:52+0000\n"
+"Last-Translator: nelson6e65 <nelson6eeduardo65@gmail.com>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"manaplus/team/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1034
@@ -68,7 +69,7 @@ msgstr "Conectando al servidor del juego"
 
 #: src/client.cpp:1108
 msgid "Changing game servers"
-msgstr "Cambiando el servidor del juego"
+msgstr "Cambio servidores del juego"
 
 #: src/client.cpp:1145 src/client.cpp:1152 src/client.cpp:1289
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
@@ -139,8 +140,8 @@ msgstr "¡No puedes enviar susurros vacíos!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
 "¡No se puede crear una pestaña de susurro para el nick \"%s\"! O bien ya "
 "existe, o eres tú."
@@ -169,7 +170,7 @@ msgstr "Volver a alternar el chat."
 
 #: src/commandhandler.cpp:510
 msgid "Message closes chat."
-msgstr "Mensaje cierra el chat."
+msgstr "Mensaje cierra la charla."
 
 #: src/commandhandler.cpp:521
 msgid "Return now toggles chat."
@@ -199,7 +200,7 @@ msgstr "¡Jugador ya es %s!"
 #: src/commandhandler.cpp:598
 #, c-format
 msgid "Player successfully %s!"
-msgstr "¡Jugador exitosamente %s!"
+msgstr "¡Jugador %s exitosamente!"
 
 #: src/commandhandler.cpp:606
 #, c-format
@@ -297,7 +298,8 @@ msgstr "Imágenes de recurso huérfano:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opciones para /%s son \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr ""
+"Opciones para /%s son \"yes\" | \"no\", \"true\" | \"false\", \"1\" | \"0\"."
 
 #: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -3197,8 +3199,7 @@ msgid "Change"
 msgstr "Cambiar"
 
 #: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Fallo al añadir objeto. No puedes añadir más de un mismo tipo de objeto en "
 "la ventana."
@@ -3224,21 +3225,21 @@ msgstr "Conectando..."
 msgid "Play"
 msgstr "Jugar"
 
-#: src/gui/updatewindow.cpp:555
+#: src/gui/updatewindow.cpp:556
 msgid "##1  The update process is incomplete."
 msgstr "##1  El proceso de actualización esta incompleto."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:557
+#: src/gui/updatewindow.cpp:558
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Es altamente recomendado que"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:559
+#: src/gui/updatewindow.cpp:560
 msgid "##1  you try again later."
 msgstr "##1 lo intentes de nuevo más tarde."
 
-#: src/gui/updatewindow.cpp:685
+#: src/gui/updatewindow.cpp:686
 msgid "Completed"
 msgstr "Completado"
 
@@ -3473,7 +3474,7 @@ msgstr "Hacer al jugador <nick> operador del canal."
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
 #: src/net/tmwa/gui/guildtab.cpp:91 src/net/tmwa/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
-msgstr "Si el <nick> posee espacios, colóquelo entre las comillas dobles (\")."
+msgstr "Si el <nick> posee espacios, enciérrelo entre comillas dobles (\")."
 
 #: src/gui/widgets/channeltab.cpp:87
 msgid "Channel operators can kick and op other users from the channel."
@@ -3546,8 +3547,7 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jugador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr "Este comando para de ignorar al jugador si había sido ignorado."
 
 #: src/gui/windowmenu.cpp:65
@@ -3906,7 +3906,7 @@ msgstr "Siguiente Pestaña De Chat"
 
 #: src/keyboardconfig.cpp:278
 msgid "Close current Chat Tab"
-msgstr ""
+msgstr "Cerrar la pestaña activa del chat"
 
 #: src/keyboardconfig.cpp:280
 msgid "Previous chat line"
@@ -4082,27 +4082,27 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Usted cogió un/a %d [@@%d|%s@@]."
 msgstr[1] "Usted Cogió %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3175
+#: src/localplayer.cpp:3174
 msgid "Away"
 msgstr "Fuera del Teclado"
 
-#: src/localplayer.cpp:3479
+#: src/localplayer.cpp:3478
 msgid "Follow: "
 msgstr "Seguir: "
 
-#: src/localplayer.cpp:3481 src/localplayer.cpp:3496
+#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3488
+#: src/localplayer.cpp:3487
 msgid "Imitation: "
 msgstr "Imitacion: "
 
-#: src/localplayer.cpp:3490 src/localplayer.cpp:3498
+#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
 msgid "Imitation canceled"
 msgstr "Imitar cancelado"
 
-#: src/localplayer.cpp:3850
+#: src/localplayer.cpp:3849
 msgid "You see "
 msgstr "Ves "
 
@@ -4997,8 +4997,7 @@ msgstr "Comando: /item"
 
 #: src/net/tmwa/gui/partytab.cpp:102
 msgid "This command displays the party's current item sharing policy."
-msgstr ""
-"Este comando muestra el actual estado de compartir objetos en el grupo"
+msgstr "Este comando muestra el actual estado de compartir objetos en el grupo"
 
 #: src/net/tmwa/gui/partytab.cpp:107
 msgid "Command: /exp <policy>"
@@ -5093,8 +5092,8 @@ msgstr "Rechazado del servidor."
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
-"Has sido baneado permanentemente del juego. Por favor contacta con el equipo"
-" GM."
+"Has sido baneado permanentemente del juego. Por favor contacta con el equipo "
+"GM."
 
 #: src/net/tmwa/loginhandler.cpp:181
 msgid "Client too old."
@@ -5257,8 +5256,7 @@ msgstr "Mensaje"
 
 #: src/net/tmwa/playerhandler.cpp:343
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
 #: src/net/tmwa/playerhandler.cpp:353
@@ -5450,5 +5448,3 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:168
 msgid "Unknown item"
 msgstr "Objeto desconocido"
-
-
