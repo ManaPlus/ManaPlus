@@ -685,7 +685,8 @@ int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
     /* If the destination rectangle is NULL, use the entire dest surface */
     if (dstrect == NULL)
     {
-        fulldst.x = fulldst.y = 0;
+        fulldst.x = 0;
+        fulldst.y = 0;
         dstrect = &fulldst;
     }
 

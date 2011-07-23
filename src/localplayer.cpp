@@ -3089,7 +3089,6 @@ void LocalPlayer::setHome()
 void LocalPlayer::saveHomes()
 {
     std::string homeStr;
-    std::string buf;
     std::stringstream ss(homeStr);
 
     for (std::map<std::string, Vector>::iterator iter = mHomes.begin();

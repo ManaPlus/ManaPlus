@@ -50,7 +50,7 @@ class SpecialLayer;
 class MapItem;
 class ObjectsLayer;
 
-struct ImageVertexes;
+class ImageVertexes;
 
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;

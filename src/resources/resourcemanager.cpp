@@ -256,7 +256,7 @@ void ResourceManager::searchAndAddArchives(const std::string &path,
 
         if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
         {
-            std::string file, realPath, archive, realFixPath;
+            std::string file, realPath, archive;
 
             file = path + (*i);
             realPath = std::string(PHYSFS_getRealDir(file.c_str()));
@@ -281,7 +281,7 @@ void ResourceManager::searchAndRemoveArchives(const std::string &path,
 
         if (len > ext.length() && !ext.compare((*i) + (len - ext.length())))
         {
-            std::string file, realPath, archive, realFixPath;
+            std::string file, realPath, archive;
 
             file = path + (*i);
             realPath = std::string(PHYSFS_getRealDir(file.c_str()));

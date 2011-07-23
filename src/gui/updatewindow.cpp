@@ -420,8 +420,9 @@ void UpdaterWindow::download()
     }
     if (mDownloadStatus == UPDATE_PATCH)
     {
-        mDownload = new Net::Download(this, "http://manaplus.evolonline.org/update/"
-                                      + mCurrentFile, updateProgress, true);
+        mDownload = new Net::Download(this,
+            "http://manaplus.evolonline.org/update/" + mCurrentFile,
+            updateProgress, true);
     }
     else
     {
