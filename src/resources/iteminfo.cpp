@@ -77,7 +77,7 @@ ItemInfo::~ItemInfo()
 {
     delete_all(mSpriteToItemReplaceList);
     mSpriteToItemReplaceList.clear();
-    for (int f = 0;f < 9; f ++)
+    for (int f = 0; f < 9; f ++)
         mSpriteToItemReplaceMap[f] = 0;
 }
 
