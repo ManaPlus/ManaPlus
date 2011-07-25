@@ -92,6 +92,9 @@ enum ItemType
     ITEM_SPRITE_HAIR // 15
 };
 
+// sprite, <itemfrom, itemto>
+typedef std::map<int, std::map<int, int> > SpriteToItemMap;
+
 /**
  * Defines a class for storing item infos. This includes information used when
  * the item is equipped.
@@ -102,23 +105,11 @@ class ItemInfo
         /**
          * Constructor.
          */
-        ItemInfo():
-            mType(ITEM_UNUSABLE),
-            mWeight(0),
-            mView(0),
-            mId(0),
-            mDrawBefore(-1),
-            mDrawAfter(-1),
-            mDrawPriority(0),
-            mIsRemoveSprites(false),
-            mAttackAction(SpriteAction::INVALID),
-            mAttackRange(0),
-            mColors(0),
-            mColorList(""),
-            mHitEffectId(0),
-            mCriticalHitEffectId(0)
-        {
-        }
+        ItemInfo();
+
+        ItemInfo(ItemInfo &info);
+
+        ~ItemInfo();
 
         void setId(int id)
         { mId = id; }
@@ -253,10 +244,9 @@ class ItemInfo
 
         int getReplaceToSpriteId(int id) const;
 
-        std::map<int, int> &addReplaceSprite(int sprite);
+        std::map<int, int> *addReplaceSprite(int sprite, int direction);
 
-        std::map<int, std::map<int, int> > getSpriteToItemReplaceMap() const
-        { return mSpriteToItemReplaceMap; }
+        SpriteToItemMap *getSpriteToItemReplaceMap(int directions) const;
 
         std::string getDyeString(int color) const;
 
@@ -285,8 +275,10 @@ class ItemInfo
         int mDrawAfter;
         int mDrawPriority;
         bool mIsRemoveSprites;
-        // sprite, <itemfrom, itemto>
-        std::map<int, std::map<int, int> > mSpriteToItemReplaceMap;
+        // sprite, <itemfrom, itemto> [direction]
+        SpriteToItemMap *mSpriteToItemReplaceMap[9];
+
+        std::vector<SpriteToItemMap*> mSpriteToItemReplaceList;
 
         // Equipment related members.
         /** Attack type, in case of weapon.

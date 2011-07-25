@@ -70,7 +70,7 @@ void Item::setId(int id, unsigned char color)
         mDrawImage->decRef();
 
     ResourceManager *resman = ResourceManager::getInstance();
-    ItemInfo info = getInfo();
+    const ItemInfo &info = getInfo();
     mTags = info.getTags();
 //    logger->log("tag0=" + toString(mTags[1]));
 
@@ -107,7 +107,7 @@ bool Item::isHaveTag(int tagId)
 Image *Item::getImage(int id, unsigned char color)
 {
     ResourceManager *resman = ResourceManager::getInstance();
-    ItemInfo info = ItemDB::get(id);
+    const ItemInfo &info = ItemDB::get(id);
     SpriteDisplay display = info.getDisplay();
     std::string imagePath = "graphics/items/" + display.image;
     Image *image;

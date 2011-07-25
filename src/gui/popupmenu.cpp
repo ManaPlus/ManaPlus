@@ -462,7 +462,7 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
         return;
 
     mFloorItem = floorItem;
-    ItemInfo info = floorItem->getInfo();
+    const ItemInfo &info = floorItem->getInfo();
     mBrowserBox->clearRows();
     std::string name;
 

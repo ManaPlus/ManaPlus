@@ -1470,7 +1470,7 @@ int LocalPlayer::getAttackRange()
         Item *weapon = PlayerInfo::getEquipment(EQUIP_FIGHT1_SLOT);
         if (weapon)
         {
-            const ItemInfo info = weapon->getInfo();
+            const ItemInfo &info = weapon->getInfo();
             return info.getAttackRange();
         }
         return 48; // unarmed range

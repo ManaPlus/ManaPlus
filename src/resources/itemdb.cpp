@@ -56,6 +56,7 @@ static void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node);
 static void loadFloorSprite(SpriteDisplay *display, xmlNodePtr node);
 static void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode);
 static int parseSpriteName(std::string &name);
+static int parseDirectionName(std::string name);
 
 static char const *const fields[][2] =
 {
@@ -530,6 +531,29 @@ int parseSpriteName(std::string &name)
     return id;
 }
 
+int parseDirectionName(std::string name)
+{
+    int id = -1;
+    if (name == "down")
+        id = DIRECTION_DOWN;
+    else if (name == "downleft" || name == "leftdown")
+        id = DIRECTION_DOWNLEFT;
+    else if (name == "left")
+        id = DIRECTION_LEFT;
+    else if (name == "upleft" || name == "leftup")
+        id = DIRECTION_UPLEFT;
+    else if (name == "up")
+        id = DIRECTION_UP;
+    else if (name == "upright" || name == "rightup")
+        id = DIRECTION_UPRIGHT;
+    else if (name == "right")
+        id = DIRECTION_RIGHT;
+    else if (name == "downright" || name == "rightdown")
+        id = DIRECTION_DOWNRIGHT;
+
+    return id;
+}
+
 void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node)
 {
     std::string gender = XML::getProperty(node, "gender", "unisex");
@@ -588,8 +612,10 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
 void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
 {
     std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
-    std::map<int, int> &mapList = itemInfo->addReplaceSprite(
-        parseSpriteName(removeSprite));
+    int direction = parseDirectionName(XML::getProperty(
+        replaceNode, "direction", "all"));
+    std::map<int, int> *mapList = itemInfo->addReplaceSprite(
+        parseSpriteName(removeSprite), direction);
 
     itemInfo->setRemoveSprites();
 
@@ -599,7 +625,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
         {
             int from = XML::getProperty(itemNode, "from", 0);
             int to = XML::getProperty(itemNode, "to", 1);
-            mapList[from] = to;
+            (*mapList)[from] = to;
         }
     }
 }

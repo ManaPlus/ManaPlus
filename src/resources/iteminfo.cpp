@@ -25,10 +25,61 @@
 #include "resources/itemdb.h"
 #include "configuration.h"
 
+#include "utils/dtor.h"
+
 #include <set>
 #include <map>
 
 #include "debug.h"
+
+
+ItemInfo::ItemInfo(ItemInfo &info)
+{
+    mType = info.mType;
+    mWeight = info.mWeight;
+    mView = info.mView;
+    mId = info.mId;
+    mDrawBefore = info.mDrawBefore;
+    mDrawAfter = info.mDrawAfter;
+    mDrawPriority = info.mDrawPriority;
+    mIsRemoveSprites = info.mIsRemoveSprites;
+    mAttackAction = info.mAttackAction;
+    mAttackRange = info.mAttackRange;
+    mColors = info.mColors;
+    mColorList = info.mColorList;
+    mHitEffectId = info.mHitEffectId;
+    mCriticalHitEffectId = info.mCriticalHitEffectId;
+    for (int f = 0; f < 9; f ++)
+        mSpriteToItemReplaceMap[f] = 0;
+}
+
+ItemInfo::ItemInfo() :
+    mType(ITEM_UNUSABLE),
+    mWeight(0),
+    mView(0),
+    mId(0),
+    mDrawBefore(-1),
+    mDrawAfter(-1),
+    mDrawPriority(0),
+    mIsRemoveSprites(false),
+    mAttackAction(SpriteAction::INVALID),
+    mAttackRange(0),
+    mColors(0),
+    mColorList(""),
+    mHitEffectId(0),
+    mCriticalHitEffectId(0)
+{
+    for (int f = 0; f < 9; f ++)
+        mSpriteToItemReplaceMap[f] = 0;
+}
+
+ItemInfo::~ItemInfo()
+{
+    delete_all(mSpriteToItemReplaceList);
+    mSpriteToItemReplaceList.clear();
+    for (int f = 0;f < 9; f ++)
+        mSpriteToItemReplaceMap[f] = 0;
+}
 
 const std::string &ItemInfo::getSprite(Gender gender) const
 {
@@ -73,17 +124,45 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
     return i->second.size() > 0 ? i->second[rand() % i->second.size()] : empty;
 }
 
-std::map<int, int> &ItemInfo::addReplaceSprite(int sprite)
+std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
 {
-    std::map<int, std::map<int, int> >::iterator it
-        = mSpriteToItemReplaceMap.find(sprite);
-    if (it == mSpriteToItemReplaceMap.end())
+    if (direction == -1)
+    {
+        SpriteToItemMap *spMap = new SpriteToItemMap();
+        for (int f = 0; f < 9; f ++)
+        {
+            if (!mSpriteToItemReplaceMap[f])
+            {
+                mSpriteToItemReplaceMap[f] = spMap;
+                direction = f;
+            }
+        }
+        if (direction >= 0)
+            mSpriteToItemReplaceList.push_back(spMap);
+        else
+            delete spMap;
+    }
+
+    if (direction < 0 || direction >= 9)
+        return 0;
+
+    SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
+
+    if (!spMap)
+    {
+        spMap = new SpriteToItemMap();
+        mSpriteToItemReplaceMap[direction] = spMap;
+        mSpriteToItemReplaceList.push_back(spMap);
+    }
+
+    SpriteToItemMap::iterator it = spMap->find(sprite);
+    if (it == spMap->end())
     {
         std::map<int, int> tmp;
-        mSpriteToItemReplaceMap[sprite] = tmp;
-        it = mSpriteToItemReplaceMap.find(sprite);
+        (*mSpriteToItemReplaceMap[direction])[sprite] = tmp;
+        it = mSpriteToItemReplaceMap[direction]->find(sprite);
     }
-    return it->second;
+    return &it->second;
 }
 
 void ItemInfo::setColorsList(std::string name)
@@ -144,4 +223,21 @@ const std::string ItemInfo::replaceColors(std::string str,
         name[0] = static_cast<char>(toupper(name[0]));
 
     return replaceAll(str, "%Color%", name);
+}
+
+SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
+{
+    if (direction < 0 || direction >= 9)
+        return 0;
+
+    SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
+    if (spMap)
+        return spMap;
+    if (direction == DIRECTION_UPLEFT || direction == DIRECTION_UPRIGHT)
+        return mSpriteToItemReplaceMap[DIRECTION_UP];
+
+    if (direction == DIRECTION_DOWNLEFT || direction == DIRECTION_DOWNRIGHT)
+        return mSpriteToItemReplaceMap[DIRECTION_DOWN];
+
+    return 0;
 }

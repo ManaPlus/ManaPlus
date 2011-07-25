@@ -1073,6 +1073,7 @@ void Being::setDirection(Uint8 direction)
     mSpriteDirection = dir;
 
     CompoundSprite::setSpriteDirection(dir);
+    recalcSpritesOrder();
 }
 
 Uint8 Being::calcDirection() const
@@ -1660,7 +1661,7 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
     }
     else
     {
-        ItemInfo info = ItemDB::get(id);
+        const ItemInfo &info = ItemDB::get(id);
         std::string filename = info.getSprite(mGender);
         AnimatedSprite *equipmentSprite = NULL;
 
@@ -2094,6 +2095,9 @@ void Being::recalcSpritesOrder()
     {
         slotRemap.push_back(slot);
 
+        if (mSpriteIDs.size() <= slot)
+            continue;
+
         int id = mSpriteIDs[slot];
         if (!id)
             continue;
@@ -2102,35 +2106,39 @@ void Being::recalcSpritesOrder()
 
         if (info.isRemoveSprites())
         {
-            std::map<int, std::map<int, int> > spriteToItems
-                = info.getSpriteToItemReplaceMap();
+            SpriteToItemMap *spriteToItems = info.getSpriteToItemReplaceMap(
+                mSpriteDirection);
 
-            std::map<int, std::map<int, int> >::iterator it;
-
-            for (it = spriteToItems.begin(); it != spriteToItems.end(); ++it)
+            if (spriteToItems)
             {
-                int removeSprite = it->first;
-                std::map<int, int> &itemReplacer = it->second;
-                if (itemReplacer.size() == 0)
+                SpriteToItemMap::iterator it;
+
+                for (it = spriteToItems->begin();
+                     it != spriteToItems->end(); ++it)
                 {
-                    mSpriteHide[removeSprite] = 1;
-                }
-                else
-                {
-                    std::map<int, int>::iterator repIt
-                        = itemReplacer.find(mSpriteIDs[removeSprite]);
-                    if (repIt != itemReplacer.end())
+                    int removeSprite = it->first;
+                    std::map<int, int> &itemReplacer = it->second;
+                    if (itemReplacer.empty())
                     {
-                        mSpriteHide[removeSprite] = repIt->second;
-                        if (repIt->second != 1)
+                        mSpriteHide[removeSprite] = 1;
+                    }
+                    else
+                    {
+                        std::map<int, int>::iterator repIt
+                            = itemReplacer.find(mSpriteIDs[removeSprite]);
+                        if (repIt != itemReplacer.end())
                         {
-                            setSprite(removeSprite, repIt->second,
-                                mSpriteColors[removeSprite], 1, false, true);
+                            mSpriteHide[removeSprite] = repIt->second;
+                            if (repIt->second != 1)
+                            {
+                                setSprite(removeSprite, repIt->second,
+                                    mSpriteColors[removeSprite],
+                                    1, false, true);
+                            }
                         }
                     }
                 }
             }
-
         }
 
         if (info.getDrawBefore() > 0)
@@ -2195,7 +2203,11 @@ void Being::recalcSpritesOrder()
         {
             int slot = searchSlotValue(slotRemap, slot0);
             int val = slotRemap.at(slot);
-            int id = mSpriteIDs[val];
+            int id = 0;
+
+            if ((int)mSpriteIDs.size() > val)
+                id = mSpriteIDs[val];
+
             int idx = -1;
             int idx1 = -1;
 //            logger->log("item %d, id=%d", slot, id);
