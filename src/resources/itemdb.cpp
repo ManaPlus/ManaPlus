@@ -617,6 +617,9 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
     std::map<int, int> *mapList = itemInfo->addReplaceSprite(
         parseSpriteName(removeSprite), direction);
 
+    if (!mapList)
+        return;
+
     itemInfo->setRemoveSprites();
 
     for_each_xml_child_node(itemNode, replaceNode)
