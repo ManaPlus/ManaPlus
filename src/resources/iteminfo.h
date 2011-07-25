@@ -207,23 +207,19 @@ class ItemInfo
 
         const std::string &getSound(EquipmentSoundEvent event) const;
 
-        int getDrawBefore() const
-        { return mDrawBefore; }
+        int getDrawBefore(int direction) const;
 
-        void setDrawBefore(int n)
-        { mDrawBefore = n; }
+        void setDrawBefore(int direction, int n);
 
-        int getDrawAfter() const
-        { return mDrawAfter; }
+        int getDrawAfter(int direction) const;
 
-        void setDrawAfter(int n)
-        { mDrawAfter = n; }
+        void setDrawAfter(int direction, int n);
 
-        int getDrawPriority() const
-        { return mDrawPriority; }
+        int getDrawPriority(int direction) const;
 
-        void setDrawPriority(int n)
-        { mDrawPriority = n; }
+        void setDrawPriority(int direction, int n);
+
+        void setSpriteOrder(int *ptr, int direction, int n, int def = -1);
 
         std::map<int, int> getTags() const
         { return mTags; }
@@ -271,9 +267,9 @@ class ItemInfo
         int mWeight;                /**< Weight in grams. */
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */
-        int mDrawBefore;
-        int mDrawAfter;
-        int mDrawPriority;
+        int mDrawBefore[9];
+        int mDrawAfter[9];
+        int mDrawPriority[9];
         bool mIsRemoveSprites;
         // sprite, <itemfrom, itemto> [direction]
         SpriteToItemMap *mSpriteToItemReplaceMap[9];

@@ -55,7 +55,9 @@ static void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node);
 static void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node);
 static void loadFloorSprite(SpriteDisplay *display, xmlNodePtr node);
 static void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode);
-static int parseSpriteName(std::string &name);
+static void loadOrderSprite(ItemInfo *itemInfo, xmlNodePtr node,
+                            bool drawAfter);
+static int parseSpriteName(std::string name);
 static int parseDirectionName(std::string name);
 
 static char const *const fields[][2] =
@@ -293,9 +295,9 @@ void ItemDB::load()
         itemInfo->setMissileParticleFile(missileParticle);
         itemInfo->setHitEffectId(hitEffectId);
         itemInfo->setCriticalHitEffectId(criticalEffectId);
-        itemInfo->setDrawBefore(parseSpriteName(drawBefore));
-        itemInfo->setDrawAfter(parseSpriteName(drawAfter));
-        itemInfo->setDrawPriority(drawPriority);
+        itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
+        itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
+        itemInfo->setDrawPriority(-1, drawPriority);
         itemInfo->setColorsList(colors);
 
         std::string effect;
@@ -345,6 +347,14 @@ void ItemDB::load()
             else if (xmlStrEqual(itemChild->name, BAD_CAST "replace"))
             {
                 loadReplaceSprite(itemInfo, itemChild);
+            }
+            else if (xmlStrEqual(itemChild->name, BAD_CAST "drawAfter"))
+            {
+                loadOrderSprite(itemInfo, itemChild, true);
+            }
+            else if (xmlStrEqual(itemChild->name, BAD_CAST "drawBefore"))
+            {
+                loadOrderSprite(itemInfo, itemChild, false);
             }
         }
 
@@ -471,7 +481,7 @@ const std::map<int, ItemInfo*> &ItemDB::getItemInfos()
     return mItemInfos;
 }
 
-int parseSpriteName(std::string &name)
+int parseSpriteName(std::string name)
 {
     int id = -1;
     if (name == "shoes" || name == "boot" || name == "boots")
@@ -631,4 +641,18 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
             (*mapList)[from] = to;
         }
     }
+}
+
+void loadOrderSprite(ItemInfo *itemInfo, xmlNodePtr node, bool drawAfter)
+{
+    int sprite = parseSpriteName(XML::getProperty(node, "name", ""));
+    int priority = XML::getProperty(node, "priority", 0);
+
+    int direction = parseDirectionName(XML::getProperty(
+        node, "direction", "all"));
+    if (drawAfter)
+        itemInfo->setDrawAfter(direction, sprite);
+    else
+        itemInfo->setDrawBefore(direction, sprite);
+    itemInfo->setDrawPriority(direction, priority);
 }

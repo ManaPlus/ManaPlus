@@ -2141,15 +2141,16 @@ void Being::recalcSpritesOrder()
             }
         }
 
-        if (info.getDrawBefore() > 0)
+        if (info.getDrawBefore(mSpriteDirection) > 0)
         {
-            int id2 = mSpriteIDs[info.getDrawBefore()];
+            int id2 = mSpriteIDs[info.getDrawBefore(mSpriteDirection)];
             std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
                 const ItemInfo &info2 = ItemDB::get(id2);
-                if (info.getDrawPriority() < info2.getDrawPriority())
+                if (info.getDrawPriority(mSpriteDirection)
+                    < info2.getDrawPriority(mSpriteDirection))
                 {
 //                    logger->log("old more priority");
                     continue;
@@ -2161,18 +2162,19 @@ void Being::recalcSpritesOrder()
                 }
             }
 
-            itemSlotRemap[id] = -info.getDrawBefore();
+            itemSlotRemap[id] = -info.getDrawBefore(mSpriteDirection);
 //            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
         }
-        else if (info.getDrawAfter() > 0)
+        else if (info.getDrawAfter(mSpriteDirection) > 0)
         {
-            int id2 = mSpriteIDs[info.getDrawAfter()];
+            int id2 = mSpriteIDs[info.getDrawAfter(mSpriteDirection)];
             std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (after)");
                 const ItemInfo &info2 = ItemDB::get(id2);
-                if (info.getDrawPriority() < info2.getDrawPriority())
+                if (info.getDrawPriority(mSpriteDirection)
+                    < info2.getDrawPriority(mSpriteDirection))
                 {
 //                    logger->log("old more priority");
                     continue;
@@ -2184,7 +2186,7 @@ void Being::recalcSpritesOrder()
                 }
             }
 
-            itemSlotRemap[id] = info.getDrawAfter();
+            itemSlotRemap[id] = info.getDrawAfter(mSpriteDirection);
 //            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
         }
     }

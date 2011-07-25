@@ -39,9 +39,6 @@ ItemInfo::ItemInfo(ItemInfo &info)
     mWeight = info.mWeight;
     mView = info.mView;
     mId = info.mId;
-    mDrawBefore = info.mDrawBefore;
-    mDrawAfter = info.mDrawAfter;
-    mDrawPriority = info.mDrawPriority;
     mIsRemoveSprites = info.mIsRemoveSprites;
     mAttackAction = info.mAttackAction;
     mAttackRange = info.mAttackRange;
@@ -50,7 +47,12 @@ ItemInfo::ItemInfo(ItemInfo &info)
     mHitEffectId = info.mHitEffectId;
     mCriticalHitEffectId = info.mCriticalHitEffectId;
     for (int f = 0; f < 9; f ++)
+    {
         mSpriteToItemReplaceMap[f] = 0;
+        mDrawBefore[f] = info.mDrawBefore[f];
+        mDrawAfter[f] = info.mDrawAfter[f];
+        mDrawPriority[f] = info.mDrawPriority[f];
+    }
 }
 
 ItemInfo::ItemInfo() :
@@ -58,9 +60,6 @@ ItemInfo::ItemInfo() :
     mWeight(0),
     mView(0),
     mId(0),
-    mDrawBefore(-1),
-    mDrawAfter(-1),
-    mDrawPriority(0),
     mIsRemoveSprites(false),
     mAttackAction(SpriteAction::INVALID),
     mAttackRange(0),
@@ -70,7 +69,12 @@ ItemInfo::ItemInfo() :
     mCriticalHitEffectId(0)
 {
     for (int f = 0; f < 9; f ++)
+    {
         mSpriteToItemReplaceMap[f] = 0;
+        mDrawBefore[f] = -1;
+        mDrawAfter[f] = -1;
+        mDrawPriority[f] = 0;
+    }
 }
 
 ItemInfo::~ItemInfo()
@@ -240,4 +244,71 @@ SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
         return mSpriteToItemReplaceMap[DIRECTION_DOWN];
 
     return 0;
+}
+
+void ItemInfo::setSpriteOrder(int *ptr, int direction, int n, int def)
+{
+    if (direction == -1)
+    {
+        for (int f = 0; f < 9; f ++)
+        {
+            if (ptr[f] == def)
+                ptr[f] = n;
+        }
+        return;
+    }
+    if (direction < 0 || direction >= 9)
+        return;
+
+    if (direction == DIRECTION_UP)
+    {
+        if (ptr[DIRECTION_UPLEFT] == def)
+            ptr[DIRECTION_UPLEFT] = n;
+        if (ptr[DIRECTION_UPRIGHT] == def)
+            ptr[DIRECTION_UPRIGHT] = n;
+    }
+    else if (direction == DIRECTION_DOWN)
+    {
+        if (ptr[DIRECTION_DOWNLEFT] == def)
+            ptr[DIRECTION_DOWNLEFT] = n;
+        if (ptr[DIRECTION_DOWNRIGHT] == def)
+            ptr[DIRECTION_DOWNRIGHT] = n;
+    }
+    ptr[direction] = n;
+}
+
+void ItemInfo::setDrawBefore(int direction, int n)
+{
+    setSpriteOrder(&mDrawBefore[0], direction, n);
+}
+
+void ItemInfo::setDrawAfter(int direction, int n)
+{
+    setSpriteOrder(&mDrawAfter[0], direction, n);
+}
+
+void ItemInfo::setDrawPriority(int direction, int n)
+{
+    setSpriteOrder(&mDrawPriority[0], direction, n, 0);
+}
+
+int ItemInfo::getDrawBefore(int direction) const
+{
+    if (direction < 0 || direction >= 9)
+        return -1;
+    return mDrawBefore[direction];
+}
+
+int ItemInfo::getDrawAfter(int direction) const
+{
+    if (direction < 0 || direction >= 9)
+        return -1;
+    return mDrawAfter[direction];
+}
+
+int ItemInfo::getDrawPriority(int direction) const
+{
+    if (direction < 0 || direction >= 9)
+        return 0;
+    return mDrawPriority[direction];
 }
