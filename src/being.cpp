@@ -2084,6 +2084,9 @@ void Being::recalcSpritesOrder()
 //    logger->log("preparation start");
     std::vector<int>::iterator it;
     int oldHide[20];
+    int dir = mSpriteDirection;
+    if (dir < 0 || dir >= 9)
+        dir = 0;
 
     for (unsigned slot = 0; slot < sz; slot ++)
     {
@@ -2141,16 +2144,15 @@ void Being::recalcSpritesOrder()
             }
         }
 
-        if (info.getDrawBefore(mSpriteDirection) > 0)
+        if (info.mDrawBefore[dir] > 0)
         {
-            int id2 = mSpriteIDs[info.getDrawBefore(mSpriteDirection)];
+            int id2 = mSpriteIDs[info.mDrawBefore[dir]];
             std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
                 const ItemInfo &info2 = ItemDB::get(id2);
-                if (info.getDrawPriority(mSpriteDirection)
-                    < info2.getDrawPriority(mSpriteDirection))
+                if (info.mDrawPriority[dir] < info2.mDrawPriority[dir])
                 {
 //                    logger->log("old more priority");
                     continue;
@@ -2162,19 +2164,18 @@ void Being::recalcSpritesOrder()
                 }
             }
 
-            itemSlotRemap[id] = -info.getDrawBefore(mSpriteDirection);
+            itemSlotRemap[id] = -info.mDrawBefore[dir];
 //            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
         }
-        else if (info.getDrawAfter(mSpriteDirection) > 0)
+        else if (info.mDrawAfter[dir] > 0)
         {
-            int id2 = mSpriteIDs[info.getDrawAfter(mSpriteDirection)];
+            int id2 = mSpriteIDs[info.mDrawAfter[dir]];
             std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (after)");
                 const ItemInfo &info2 = ItemDB::get(id2);
-                if (info.getDrawPriority(mSpriteDirection)
-                    < info2.getDrawPriority(mSpriteDirection))
+                if (info.mDrawPriority[dir] < info2.mDrawPriority[dir])
                 {
 //                    logger->log("old more priority");
                     continue;
@@ -2186,7 +2187,7 @@ void Being::recalcSpritesOrder()
                 }
             }
 
-            itemSlotRemap[id] = info.getDrawAfter(mSpriteDirection);
+            itemSlotRemap[id] = info.mDrawAfter[dir];
 //            logger->log("item slot->slot %d %d->%d", id, slot, itemSlotRemap[id]);
         }
     }

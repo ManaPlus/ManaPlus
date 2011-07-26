@@ -256,6 +256,9 @@ class ItemInfo
         const std::string replaceColors(std::string str,
                                         unsigned char color) const;
 
+        int mDrawBefore[9];
+        int mDrawAfter[9];
+        int mDrawPriority[9];
 
     protected:
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
@@ -267,9 +270,6 @@ class ItemInfo
         int mWeight;                /**< Weight in grams. */
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */
-        int mDrawBefore[9];
-        int mDrawAfter[9];
-        int mDrawPriority[9];
         bool mIsRemoveSprites;
         // sprite, <itemfrom, itemto> [direction]
         SpriteToItemMap *mSpriteToItemReplaceMap[9];
