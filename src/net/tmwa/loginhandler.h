@@ -25,8 +25,11 @@
 
 #include "net/loginhandler.h"
 
+#include "net/ea/loginhandler.h"
+
 #include "net/tmwa/messagehandler.h"
-#include "net/tmwa/token.h"
+
+#include "net/ea/token.h"
 
 #include <string>
 
@@ -41,7 +44,7 @@ class LoginData;
 namespace TmwAthena
 {
 
-class LoginHandler : public MessageHandler, public Net::LoginHandler
+class LoginHandler : public MessageHandler, public Ea::LoginHandler
 {
     public:
         LoginHandler();
@@ -59,46 +62,20 @@ class LoginHandler : public MessageHandler, public Net::LoginHandler
         int supportedOptionalActions() const
         { return SetGenderOnRegister; }
 
-        bool isRegistrationEnabled();
-
-        void getRegistrationDetails();
-
         unsigned int getMaxPasswordLength() const
         { return 25; }
-
-        void loginAccount(LoginData *loginData);
-
-        void logout();
-
-        void changeEmail(const std::string &email);
 
         void changePassword(const std::string &username,
                             const std::string &oldPassword,
                             const std::string &newPassword);
 
-        void chooseServer(unsigned int server);
+        ServerInfo *getCharServer();
 
-        void registerAccount(LoginData *loginData);
-
-        void unregisterAccount(const std::string &username,
-                               const std::string &password);
-
-        Worlds getWorlds() const;
-
-        void clearWorlds();
-
-        const Token &getToken() const 
-        { return mToken; }
+        void processServerVersion(Net::MessageIn &msg);
 
     private:
         void sendLoginRegister(const std::string &username,
                                const std::string &password);
-
-        bool mVersionResponse;
-        bool mRegistrationEnabled;
-        std::string mUpdateHost;
-        Worlds mWorlds;
-        Token mToken;
 };
 
 } // namespace TmwAthena

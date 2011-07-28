@@ -30,7 +30,8 @@
 #include "net/serverinfo.h"
 
 #include "net/tmwa/messagehandler.h"
-#include "net/tmwa/token.h"
+
+#include "net/ea/token.h"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))

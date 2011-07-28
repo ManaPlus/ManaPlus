@@ -79,131 +79,32 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 {
     switch (msg.getId())
     {
-            case SMSG_CHAR_LOGIN:
-            {
-                msg.skip(2);  // Length word
-                int slots = msg.readInt16();
-                if (slots > 0 && slots < 30)
-                {
-                    loginData.characterSlots
-                        = static_cast<short unsigned int>(slots);
-                }
-                bool version = msg.readInt8() == 1 && serverVersion > 0;
-                msg.skip(17); // Unused
-
-                delete_all(mCharacters);
-                mCharacters.clear();
-
-                // Derive number of characters from message length
-                int count = (msg.getLength() - 24);
-                if (version)
-                    count /= 120;
-                else
-                    count /= 106;
-
-                for (int i = 0; i < count; ++i)
-                {
-                    Net::Character *character = new Net::Character;
-                    readPlayerData(msg, character, version);
-                    mCharacters.push_back(character);
-                    logger->log("CharServer: Player: %s (%d)",
-                        character->dummy->getName().c_str(), character->slot);
-                }
-
-                Client::setState(STATE_CHAR_SELECT);
-            }
+        case SMSG_CHAR_LOGIN:
+            processCharLogin(msg);
             break;
 
         case SMSG_CHAR_LOGIN_ERROR:
-            switch (msg.readInt8())
-            {
-                case 0:
-                    errorMessage = _("Access denied. Most likely, there are "
-                                     "too many players on this server.");
-                    break;
-                case 1:
-                    errorMessage = _("Cannot use this ID.");
-                    break;
-                default:
-                    errorMessage = _("Unknown char-server failure.");
-                    break;
-            }
-            Client::setState(STATE_ERROR);
+            processCharLoginError(msg);
             break;
 
         case SMSG_CHAR_CREATE_SUCCEEDED:
-            {
-                Net::Character *character = new Net::Character;
-                readPlayerData(msg, character, false);
-                mCharacters.push_back(character);
-
-                updateCharSelectDialog();
-
-                // Close the character create dialog
-                if (mCharCreateDialog)
-                {
-                    mCharCreateDialog->scheduleDelete();
-                    mCharCreateDialog = 0;
-                }
-            }
+            processCharCreate(msg, false);
             break;
 
         case SMSG_CHAR_CREATE_SUCCEEDED2:
-            {
-                Net::Character *character = new Net::Character;
-                readPlayerData(msg, character, true);
-                mCharacters.push_back(character);
-
-                updateCharSelectDialog();
-
-                // Close the character create dialog
-                if (mCharCreateDialog)
-                {
-                    mCharCreateDialog->scheduleDelete();
-                    mCharCreateDialog = 0;
-                }
-            }
+            processCharCreate(msg, true);
             break;
 
         case SMSG_CHAR_CREATE_FAILED:
-            switch (msg.readInt8())
-            {
-                case 1:
-                case 0:
-                default:
-                    errorMessage = _("Failed to create character. Most "
-                                       "likely the name is already taken.");
-                    break;
-                case 2:
-                    errorMessage = _("Wrong name.");
-                    break;
-                case 3:
-                    errorMessage = _("Incorrect stats.");
-                    break;
-                case 4:
-                    errorMessage = _("Incorrect hair.");
-                    break;
-                case 5:
-                    errorMessage = _("Incorrect slot.");
-                    break;
-            }
-            new OkDialog(_("Error"), errorMessage);
-            if (mCharCreateDialog)
-                mCharCreateDialog->unlock();
+            processCharCreateFailed(msg);
             break;
 
         case SMSG_CHAR_DELETE_SUCCEEDED:
-            delete mSelectedCharacter;
-            mCharacters.remove(mSelectedCharacter);
-            mSelectedCharacter = 0;
-            updateCharSelectDialog();
-            unlockCharSelectDialog();
-            new OkDialog(_("Info"), _("Character deleted."));
+            processCharDelete(msg);
             break;
 
         case SMSG_CHAR_DELETE_FAILED:
-            unlockCharSelectDialog();
-            new OkDialog(_("Error"), _("Failed to delete character."));
+            processCharDeleteFailed(msg);
             break;
 
         case SMSG_CHAR_MAP_INFO:
@@ -366,39 +267,6 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt8();                        // unknown
 }
 
-void CharServerHandler::setCharSelectDialog(CharSelectDialog *window)
-{
-    mCharSelectDialog = window;
-    updateCharSelectDialog();
-}
-
-void CharServerHandler::setCharCreateDialog(CharCreateDialog *window)
-{
-    mCharCreateDialog = window;
-
-    if (!mCharCreateDialog)
-        return;
-
-    std::vector<std::string> attributes;
-    attributes.push_back(_("Strength:"));
-    attributes.push_back(_("Agility:"));
-    attributes.push_back(_("Vitality:"));
-    attributes.push_back(_("Intelligence:"));
-    attributes.push_back(_("Dexterity:"));
-    attributes.push_back(_("Luck:"));
-
-    const Token &token =
-        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
-
-    mCharCreateDialog->setAttributes(attributes, 30, 1, 9);
-    mCharCreateDialog->setFixedGender(true, token.sex);
-}
-
-void CharServerHandler::requestCharacters()
-{
-    connect();
-}
-
 void CharServerHandler::chooseCharacter(Net::Character *character)
 {
     mSelectedCharacter = character;
@@ -444,21 +312,6 @@ void CharServerHandler::switchCharacter()
     outMsg.writeInt8(1);
 }
 
-unsigned int CharServerHandler::baseSprite() const
-{
-    return SPRITE_BASE;
-}
-
-unsigned int CharServerHandler::hairSprite() const
-{
-    return SPRITE_HAIR;
-}
-
-unsigned int CharServerHandler::maxSprite() const
-{
-    return SPRITE_VECTOREND;
-}
-
 void CharServerHandler::connect()
 {
     const Token &token =
@@ -483,6 +336,40 @@ void CharServerHandler::connect()
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
     mNetwork->skip(4);
+}
+
+void CharServerHandler::processCharLogin(Net::MessageIn &msg)
+{
+    msg.skip(2);  // Length word
+    int slots = msg.readInt16();
+    if (slots > 0 && slots < 30)
+    {
+        loginData.characterSlots
+            = static_cast<short unsigned int>(slots);
+    }
+    bool version = msg.readInt8() == 1 && serverVersion > 0;
+    msg.skip(17); // Unused
+
+    delete_all(mCharacters);
+    mCharacters.clear();
+
+    // Derive number of characters from message length
+    int count = (msg.getLength() - 24);
+    if (version)
+        count /= 120;
+    else
+        count /= 106;
+
+    for (int i = 0; i < count; ++i)
+    {
+        Net::Character *character = new Net::Character;
+        readPlayerData(msg, character, version);
+        mCharacters.push_back(character);
+        logger->log("CharServer: Player: %s (%d)",
+            character->dummy->getName().c_str(), character->slot);
+    }
+
+    Client::setState(STATE_CHAR_SELECT);
 }
 
 } // namespace TmwAthena

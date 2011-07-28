@@ -24,10 +24,14 @@
 #define NET_TA_CHARSERVERHANDLER_H
 
 #include "net/charhandler.h"
+
+#include "net/ea/charserverhandler.h"
+
 #include "net/serverinfo.h"
 
 #include "net/tmwa/messagehandler.h"
-#include "net/tmwa/token.h"
+
+#include "net/ea/token.h"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
@@ -43,23 +47,12 @@ namespace TmwAthena
 /**
  * Deals with incoming messages from the character server.
  */
-class CharServerHandler : public MessageHandler, public Net::CharHandler
+class CharServerHandler : public MessageHandler, public Ea::CharServerHandler
 {
     public:
         CharServerHandler();
 
         virtual void handleMessage(Net::MessageIn &msg);
-
-        void setCharSelectDialog(CharSelectDialog *window);
-
-        /**
-         * Sets the character create dialog. The handler will clean up this
-         * dialog when a new character is succesfully created, and will unlock
-         * the dialog when a new character failed to be created.
-         */
-        void setCharCreateDialog(CharCreateDialog *window);
-
-        void requestCharacters();
 
         void chooseCharacter(Net::Character *character);
 
@@ -72,15 +65,11 @@ class CharServerHandler : public MessageHandler, public Net::CharHandler
 
         void switchCharacter();
 
-        unsigned int baseSprite() const;
-
-        unsigned int hairSprite() const;
-
-        unsigned int maxSprite() const;
-
         void connect();
 
-    private:
+        void processCharLogin(Net::MessageIn &msg);
+
+    protected:
         void readPlayerData(Net::MessageIn &msg, Net::Character *character,
                             bool withColors);
 };

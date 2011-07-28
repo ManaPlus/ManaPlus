@@ -22,8 +22,8 @@
 
 #include "being.h"
 
-#ifndef NET_TA_TOKEN_H
-#define NET_TA_TOKEN_H
+#ifndef NET_EA_TOKEN_H
+#define NET_EA_TOKEN_H
 
 struct Token
 {
@@ -41,4 +41,4 @@ struct Token
     }
 };
 
-#endif // NET_TA_TOKEN_H
+#endif // NET_EA_TOKEN_H

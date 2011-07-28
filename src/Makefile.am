@@ -666,7 +666,12 @@ manaplus_SOURCES += \
 	      net/ea/beinghandler.h \
 	      net/ea/buysellhandler.cpp \
 	      net/ea/buysellhandler.h \
+	      net/ea/charserverhandler.cpp \
+	      net/ea/charserverhandler.h \
+	      net/ea/loginhandler.cpp \
+	      net/ea/loginhandler.h \
 	      net/ea/eaprotocol.h \
+	      net/ea/token.h \
 	      net/tmwa/gui/guildtab.cpp \
 	      net/tmwa/gui/guildtab.h \
 	      net/tmwa/gui/partytab.cpp \
@@ -710,7 +715,6 @@ manaplus_SOURCES += \
 	      net/tmwa/protocol.h \
 	      net/tmwa/specialhandler.cpp \
 	      net/tmwa/specialhandler.h \
-	      net/tmwa/token.h \
 	      net/tmwa/tradehandler.cpp \
 	      net/tmwa/tradehandler.h
 

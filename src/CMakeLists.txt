@@ -682,7 +682,12 @@ SET(SRCS_EVOL
     net/ea/beinghandler.h
     net/ea/buysellhandler.cpp
     net/ea/buysellhandler.h
+    net/ea/charserverhandler.cpp
+    net/ea/charserverhandler.h
+    net/ea/loginhandler.cpp
+    net/ea/loginhandler.h
     net/ea/eaprotocol.h
+    net/ea/token.h
     )
 
 SET(SRCS_TMWA
@@ -729,7 +734,6 @@ SET(SRCS_TMWA
     net/tmwa/protocol.h
     net/tmwa/specialhandler.cpp
     net/tmwa/specialhandler.h
-    net/tmwa/token.h
     net/tmwa/tradehandler.cpp
     net/tmwa/tradehandler.h
     )
