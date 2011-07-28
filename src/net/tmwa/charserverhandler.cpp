@@ -24,15 +24,12 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "game.h"
 #include "log.h"
 
 #include "gui/charcreatedialog.h"
-#include "gui/okdialog.h"
 
 #include "net/logindata.h"
 #include "net/messagein.h"
-#include "net/messageout.h"
 #include "net/net.h"
 
 #include "net/tmwa/gamehandler.h"
@@ -43,8 +40,6 @@
 #include "resources/colordb.h"
 
 #include "utils/dtor.h"
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

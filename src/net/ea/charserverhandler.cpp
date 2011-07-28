@@ -23,25 +23,17 @@
 #include "net/ea/charserverhandler.h"
 
 #include "client.h"
-#include "configuration.h"
-#include "game.h"
 #include "log.h"
 
 #include "gui/charcreatedialog.h"
 #include "gui/okdialog.h"
 
-#include "net/logindata.h"
-#include "net/messageout.h"
 #include "net/net.h"
 
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"
 
-#include "resources/colordb.h"
-
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

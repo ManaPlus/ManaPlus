@@ -102,6 +102,6 @@ class LoginHandler : public Net::LoginHandler
         Token mToken;
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
 #endif // NET_TA_LOGINHANDLER_H

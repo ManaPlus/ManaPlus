@@ -26,9 +26,9 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
-#include "net/tmwa/messagehandler.h"
+#include "net/ea/chathandler.h"
 
-#include <queue>
+#include "net/tmwa/messagehandler.h"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
@@ -39,7 +39,7 @@
 namespace TmwAthena
 {
 
-class ChatHandler : public MessageHandler, public Net::ChatHandler
+class ChatHandler : public MessageHandler, public Ea::ChatHandler
 {
     public:
         ChatHandler();
@@ -50,37 +50,14 @@ class ChatHandler : public MessageHandler, public Net::ChatHandler
 
         void talkRaw(const std::string &text);
 
-        void me(const std::string &text);
-
         void privateMessage(const std::string &recipient,
                             const std::string &text);
-
-        void channelList();
-
-        void enterChannel(const std::string &channel,
-                          const std::string &password);
-
-        void quitChannel(int channelId);
-
-        void sendToChannel(int channelId, const std::string &text);
-
-        void userList(const std::string &channel);
-
-        void setChannelTopic(int channelId, const std::string &text);
-
-        void setUserMode(int channelId, const std::string &name, int mode);
-
-        void kickUser(int channelId, const std::string &name);
 
         void who();
 
         void sendRaw(const std::string &args);
 
         void processRaw(MessageOut &outMsg, std::string &line);
-
-    private:
-        typedef std::queue<std::string> WhisperQueue;
-        WhisperQueue mSentWhispers;
 };
 
 } // namespace TmwAthena

@@ -668,9 +668,13 @@ manaplus_SOURCES += \
 	      net/ea/buysellhandler.h \
 	      net/ea/charserverhandler.cpp \
 	      net/ea/charserverhandler.h \
+	      net/ea/chathandler.cpp \
+	      net/ea/chathandler.h \
+	      net/ea/gamehandler.cpp \
+	      net/ea/gamehandler.h \
+	      net/ea/eaprotocol.h \
 	      net/ea/loginhandler.cpp \
 	      net/ea/loginhandler.h \
-	      net/ea/eaprotocol.h \
 	      net/ea/token.h \
 	      net/tmwa/gui/guildtab.cpp \
 	      net/tmwa/gui/guildtab.h \

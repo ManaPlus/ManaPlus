@@ -28,17 +28,12 @@
 #include "localplayer.h"
 #include "log.h"
 
-#include "gui/okdialog.h"
-
 #include "net/messagein.h"
 #include "net/messageout.h"
 
 #include "net/tmwa/loginhandler.h"
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
-
-#include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -62,9 +57,6 @@ GameHandler::GameHandler()
     };
     handledMessages = _messages;
     gameHandler = this;
-    mCharID = 0;
-
-    listen(Mana::CHANNEL_GAME);
 }
 
 void GameHandler::handleMessage(Net::MessageIn &msg)
@@ -72,20 +64,8 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_MAP_LOGIN_SUCCESS:
-        {
-            unsigned char direction;
-            Uint16 x, y;
-            msg.readInt32();   // server tick
-            msg.readCoordinates(x, y, direction);
-            msg.skip(2);      // unknown
-            logger->log("Protocol: Player start position: (%d, %d),"
-                        " Direction: %d", x, y, direction);
-            // Switch now or we'll have problems
-            Client::setState(STATE_GAME);
-            if (player_node)
-                player_node->setTileCoords(x, y);
+            processMapLogin(msg);
             break;
-        }
 
         case SMSG_SERVER_PING:
             // We ignore this for now
@@ -93,17 +73,15 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_WHO_ANSWER:
-            SERVER_NOTICE(strprintf(_("Online users: %d"), msg.readInt32()))
+            processWhoAnswer(msg);
             break;
 
         case SMSG_CHAR_SWITCH_RESPONSE:
-            if (msg.readInt8())
-                Client::setState(STATE_SWITCH_CHARACTER);
+            processCharSwitchResponse(msg);
             break;
 
         case SMSG_MAP_QUIT_RESPONSE:
-            if (msg.readInt8())
-                new OkDialog(_("Game"), _("Request to quit denied!"), NULL);
+            processMapQuitResponse(msg);
             break;
 
         default:
@@ -111,15 +89,9 @@ void GameHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void GameHandler::event(Mana::Channels channel, const Mana::Event &event)
+void GameHandler::mapLoadedEvent()
 {
-    if (channel == Mana::CHANNEL_GAME)
-    {
-        if (event.getName() == Mana::EVENT_ENGINESINITALIZED)
-            Game::instance()->changeMap(mMap);
-        else if (event.getName() == Mana::EVENT_MAPLOADED)
-            MessageOut outMsg(CMSG_MAP_LOADED);
-    }
+    MessageOut outMsg(CMSG_MAP_LOADED);
 }
 
 void GameHandler::connect()
@@ -172,10 +144,6 @@ void GameHandler::disconnect()
         mNetwork->disconnect();
 }
 
-void GameHandler::who()
-{
-}
-
 void GameHandler::quit()
 {
     MessageOut outMsg(CMSG_CLIENT_QUIT);
@@ -185,11 +153,6 @@ void GameHandler::ping(int tick)
 {
     MessageOut msg(CMSG_CLIENT_PING);
     msg.writeInt32(tick);
-}
-
-void GameHandler::setMap(const std::string map)
-{
-    mMap = map.substr(0, map.rfind("."));
 }
 
 void GameHandler::disconnect2()

@@ -26,16 +26,12 @@
 #include "log.h"
 #include "configuration.h"
 
-#include "net/logindata.h"
 #include "net/messagein.h"
-#include "net/messageout.h"
 
 #include "net/tmwa/network.h"
 #include "net/tmwa/protocol.h"
 
-#include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

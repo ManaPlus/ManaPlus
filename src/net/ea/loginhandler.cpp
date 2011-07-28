@@ -26,12 +26,8 @@
 #include "log.h"
 #include "configuration.h"
 
-#include "net/logindata.h"
-#include "net/messageout.h"
-
 #include "utils/dtor.h"
 #include "utils/gettext.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 

@@ -20,16 +20,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_MAPHANDLER_H
-#define NET_TA_MAPHANDLER_H
+#ifndef NET_EA_GAMEHANDLER_H
+#define NET_EA_GAMEHANDLER_H
+
+#include "listener.h"
 
 #include "net/gamehandler.h"
+#include "net/messagein.h"
 #include "net/net.h"
-#include "net/serverinfo.h"
-
-#include "net/tmwa/messagehandler.h"
-
-#include "net/ea/gamehandler.h"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
@@ -37,33 +35,42 @@
 #define A_UNUSED
 #endif
 
-namespace TmwAthena
+namespace Ea
 {
 
-class GameHandler : public MessageHandler, public Ea::GameHandler
+class GameHandler : public Net::GameHandler, public Mana::Listener
 {
     public:
         GameHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        virtual void event(Mana::Channels channel, const Mana::Event &event);
 
-        void connect();
+        virtual void who();
 
-        bool isConnected();
+        virtual bool removeDeadBeings() const
+        { return true; }
 
-        void disconnect();
+        virtual void setMap(const std::string map);
 
-        void quit();
+        /** The tmwAthena protocol is making use of the MP status bar. */
+        virtual bool canUseMagicBar() const
+        { return true; }
 
-        void ping(int tick);
+        virtual void mapLoadedEvent() = 0;
 
-        void clear();
+        virtual void processMapLogin(Net::MessageIn &msg);
 
-        void disconnect2();
+        virtual void processWhoAnswer(Net::MessageIn &msg);
 
-        void mapLoadedEvent();
+        virtual void processCharSwitchResponse(Net::MessageIn &msg);
+
+        virtual void processMapQuitResponse(Net::MessageIn &msg);
+
+    protected:
+        std::string mMap;
+        int mCharID; /// < Saved for map-server switching
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_MAPHANDLER_H
+#endif // NET_EA_GAMEHANDLER_H
