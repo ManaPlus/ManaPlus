@@ -26,6 +26,8 @@
 
 #include "net/tmwa/messagehandler.h"
 
+#include "net/ea/partyhandler.h"
+
 #include "party.h"
 
 #ifdef __GNUC__
@@ -37,7 +39,7 @@
 namespace TmwAthena
 {
 
-class PartyHandler : public MessageHandler, public Net::PartyHandler
+class PartyHandler : public MessageHandler, public Ea::PartyHandler
 {
     public:
         PartyHandler();
@@ -47,8 +49,6 @@ class PartyHandler : public MessageHandler, public Net::PartyHandler
         void handleMessage(Net::MessageIn &msg);
 
         void create(const std::string &name = "");
-
-        void join(int partyId);
 
         void invite(Being *being);
 
@@ -64,24 +64,9 @@ class PartyHandler : public MessageHandler, public Net::PartyHandler
 
         void chat(const std::string &text);
 
-        void requestPartyMembers() const;
-
-        PartyShare getShareExperience() const
-        { return mShareExp; }
-
         void setShareExperience(PartyShare share);
 
-        PartyShare getShareItems() const
-        { return mShareItems; }
-
         void setShareItems(PartyShare share);
-
-        void reload();
-
-        void clear();
-
-    private:
-        PartyShare mShareExp, mShareItems;
 };
 
 } // namespace TmwAthena

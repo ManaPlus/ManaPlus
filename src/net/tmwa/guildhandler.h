@@ -24,6 +24,10 @@
 
 #include "net/guildhandler.h"
 
+#include "net/ea/guildhandler.h"
+
+#include "net/ea/gui/guildtab.h"
+
 #include "net/tmwa/messagehandler.h"
 
 #ifdef __GNUC__
@@ -35,7 +39,7 @@
 namespace TmwAthena
 {
 
-class GuildHandler : public Net::GuildHandler, public MessageHandler
+class GuildHandler : public Ea::GuildHandler, public MessageHandler
 {
     public:
         GuildHandler();
@@ -80,6 +84,8 @@ class GuildHandler : public Net::GuildHandler, public MessageHandler
 //        Guild *mGuild;
 };
 
+    extern Ea::GuildTab *guildTab;
+    extern Guild *taGuild;
 }
 
 #endif // NET_TA_GUILDHANDLER_H

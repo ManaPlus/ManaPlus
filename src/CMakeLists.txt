@@ -676,6 +676,10 @@ SET(SRCS_GUICHAN
     )
 
 SET(SRCS_EVOL
+    net/ea/gui/guildtab.cpp
+    net/ea/gui/guildtab.h
+    net/ea/gui/partytab.cpp
+    net/ea/gui/partytab.h
     net/ea/adminhandler.cpp
     net/ea/adminhandler.h
     net/ea/beinghandler.cpp
@@ -689,8 +693,12 @@ SET(SRCS_EVOL
     net/ea/eaprotocol.h
     net/ea/gamehandler.cpp
     net/ea/gamehandler.h
+    net/ea/guildhandler.cpp
+    net/ea/guildhandler.h
     net/ea/loginhandler.cpp
     net/ea/loginhandler.h
+    net/ea/partyhandler.cpp
+    net/ea/partyhandler.h
     net/ea/token.h
     )
 

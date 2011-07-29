@@ -37,6 +37,11 @@
 #include "net/messageout.h"
 #include "net/serverinfo.h"
 
+#include "net/ea/guildhandler.h"
+
+#include "net/ea/gui/guildtab.h"
+#include "net/ea/gui/partytab.h"
+
 #include "net/tmwa/adminhandler.h"
 #include "net/tmwa/beinghandler.h"
 #include "net/tmwa/buysellhandler.h"
@@ -74,9 +79,6 @@ namespace TmwAthena
 
 ServerInfo charServer;
 ServerInfo mapServer;
-
-extern Guild *taGuild;
-extern Party *taParty;
 
 GeneralHandler::GeneralHandler():
     mAdminHandler(new AdminHandler),
@@ -282,15 +284,15 @@ void GeneralHandler::event(Mana::Channels channel,
         {
             if (socialWindow)
             {
-                socialWindow->removeTab(taGuild);
-                socialWindow->removeTab(taParty);
+                socialWindow->removeTab(Ea::taGuild);
+                socialWindow->removeTab(Ea::taParty);
             }
 
-            delete guildTab;
-            guildTab = 0;
+            delete Ea::guildTab;
+            Ea::guildTab = 0;
 
-            delete partyTab;
-            partyTab = 0;
+            delete Ea::partyTab;
+            Ea::partyTab = 0;
         }
     }
 }

@@ -52,7 +52,6 @@ class GameHandler : public Net::GameHandler, public Mana::Listener
 
         virtual void setMap(const std::string map);
 
-        /** The tmwAthena protocol is making use of the MP status bar. */
         virtual bool canUseMagicBar() const
         { return true; }
 

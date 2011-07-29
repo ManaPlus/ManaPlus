@@ -20,25 +20,38 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TA_GUILDTAB_H
-#define TA_GUILDTAB_H
+#ifndef EA_GUILDTAB_H
+#define EA_GUILDTAB_H
 
-#include "net/ea/gui/guildtab.h"
+#include "gui/widgets/chattab.h"
 
-namespace TmwAthena
+namespace Ea
 {
 
 /**
  * A tab for a guild chat channel.
  */
-class GuildTab : public Ea::GuildTab
+class GuildTab : public ChatTab
 {
     public:
         GuildTab();
 
         ~GuildTab();
+
+        bool handleCommand(const std::string &type, const std::string &args);
+
+        void showHelp();
+
+        void saveToLogFile(std::string &msg);
+
+        int getType() const { return ChatTab::TAB_GUILD; }
+
+    protected:
+        void handleInput(const std::string &msg);
+
+        void getAutoCompleteList(std::vector<std::string> &names) const;
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // TA_GUILDTAB_H
+#endif // EA_GUILDTAB_H

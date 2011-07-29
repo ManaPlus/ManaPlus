@@ -23,7 +23,7 @@
 #ifndef TA_PARTYTAB_H
 #define TA_PARTYTAB_H
 
-#include "gui/widgets/chattab.h"
+#include "net/ea/gui/partytab.h"
 
 namespace TmwAthena
 {
@@ -31,27 +31,13 @@ namespace TmwAthena
 /**
  * A tab for a party chat channel.
  */
-class PartyTab : public ChatTab
+class PartyTab : public Ea::PartyTab
 {
     public:
         PartyTab();
+
         ~PartyTab();
-
-        void showHelp();
-
-        bool handleCommand(const std::string &type, const std::string &args);
-
-        int getType() const { return ChatTab::TAB_PARTY; }
-
-        void saveToLogFile(std::string &msg);
-
-    protected:
-        void handleInput(const std::string &msg);
-
-        virtual void getAutoCompleteList(std::vector<std::string>&) const;
 };
-
-extern PartyTab *partyTab;
 
 } // namespace TmwAthena
 

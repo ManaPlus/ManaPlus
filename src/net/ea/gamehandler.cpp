@@ -98,4 +98,4 @@ void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
         new OkDialog(_("Game"), _("Request to quit denied!"), NULL);
 }
 
-} // namespace TmwAthena
+} // namespace Ea
