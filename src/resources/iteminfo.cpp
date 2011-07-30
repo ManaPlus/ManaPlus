@@ -145,6 +145,8 @@ std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
             mSpriteToItemReplaceList.push_back(spMap);
         else
             delete spMap;
+        if (direction == -1)
+            direction = 1;
     }
 
     if (direction < 0 || direction >= 9)
