@@ -199,8 +199,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg, bool playerIn
         for (int i = 0; i < 4; i++)
             cards[i] = msg.readInt16();
 
-        index -= ((msg.getId() == playerInvintory) ?
-                  INVENTORY_OFFSET : STORAGE_OFFSET);
+        index -= (playerInvintory ? INVENTORY_OFFSET : STORAGE_OFFSET);
 
         if (mDebugInventory)
         {
