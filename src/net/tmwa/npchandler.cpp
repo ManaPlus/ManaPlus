@@ -22,21 +22,17 @@
 
 #include "net/tmwa/npchandler.h"
 
-#include "actorspritemanager.h"
 #include "localplayer.h"
 
 #include "gui/npcdialog.h"
 
 #include "net/messagein.h"
-#include "net/messageout.h"
 #include "net/net.h"
 #include "net/npchandler.h"
 
 #include "net/tmwa/protocol.h"
 
 #include "net/ea/eaprotocol.h"
-
-#include <SDL_types.h>
 
 #include "debug.h"
 
@@ -63,82 +59,33 @@ NpcHandler::NpcHandler()
 
 void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
-    if (msg.getId() == SMSG_NPC_CHOICE || msg.getId() == SMSG_NPC_MESSAGE)
-        msg.readInt16();  // length
-
-    int npcId = msg.readInt32();
-    NpcDialogs::iterator diag = mNpcDialogs.find(npcId);
-    NpcDialog *dialog = 0;
-
-    if (diag == mNpcDialogs.end())
-    {
-        // Empty dialogs don't help
-        if (msg.getId() == SMSG_NPC_CLOSE)
-        {
-            closeDialog(npcId);
-            return;
-        }
-        else if (msg.getId() == SMSG_NPC_NEXT)
-        {
-            nextDialog(npcId);
-            return;
-        }
-        else
-        {
-            dialog = new NpcDialog(npcId);
-            Wrapper wrap;
-            wrap.dialog = dialog;
-            mNpcDialogs[npcId] = wrap;
-        }
-    }
-    else
-    {
-        dialog = diag->second.dialog;
-    }
+    getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
+        || msg.getId() == SMSG_NPC_MESSAGE);
 
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
-            if (dialog)
-            {
-                dialog->choiceRequest();
-                dialog->parseListItems(msg.readString(msg.getLength() - 8));
-            }
-            else
-            {
-                msg.readString(msg.getLength() - 8);
-            }
+            processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
-            if (dialog)
-                dialog->addText(msg.readString(msg.getLength() - 8));
-            else
-                msg.readString(msg.getLength() - 8);
+            processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
-            // Show the close button
-            if (dialog)
-                dialog->showCloseButton();
+            processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
-            // Show the next button
-            if (dialog)
-                dialog->showNextButton();
+            processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
-            // Request for an integer
-            if (dialog)
-                dialog->integerRequest(0);
+            processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
-            // Request for a string
-            if (dialog)
-                dialog->textRequest("");
+            processNpcStrInput(msg);
             break;
 
         default:
@@ -147,6 +94,8 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 
     if (player_node && player_node->getCurrentAction() != Being::SIT)
         player_node->setAction(Being::STAND);
+    
+    mDialog = 0;
 }
 
 void NpcHandler::talk(int npcId)
@@ -199,18 +148,6 @@ void NpcHandler::stringInput(int npcId, const std::string &value)
     outMsg.writeInt8(0); // Prevent problems with string reading
 }
 
-void NpcHandler::sendLetter(int npcId A_UNUSED,
-                            const std::string &recipient A_UNUSED,
-                            const std::string &text A_UNUSED)
-{
-    // TODO
-}
-
-void NpcHandler::startShopping(int beingId A_UNUSED)
-{
-    // TODO
-}
-
 void NpcHandler::buy(int beingId)
 {
     MessageOut outMsg(CMSG_NPC_BUY_SELL_REQUEST);
@@ -253,21 +190,42 @@ void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)
     outMsg.writeInt16(static_cast<Sint16>(amount));
 }
 
-void NpcHandler::endShopping(int beingId A_UNUSED)
+int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
 {
-    // TODO
-}
+    if (haveLength)
+        msg.readInt16();  // length
 
-void NpcHandler::clearDialogs()
-{
-    NpcDialogs::iterator it = mNpcDialogs.begin();
-    NpcDialogs::iterator it_end = mNpcDialogs.end();
-    while (it != it_end)
+    const int npcId = msg.readInt32();
+
+    NpcDialogs::iterator diag = mNpcDialogs.find(npcId);
+    mDialog = 0;
+
+    if (diag == mNpcDialogs.end())
     {
-        delete (*it).second.dialog;
-        ++ it;
+        // Empty dialogs don't help
+        if (msg.getId() == SMSG_NPC_CLOSE)
+        {
+            closeDialog(npcId);
+            return npcId;
+        }
+        else if (msg.getId() == SMSG_NPC_NEXT)
+        {
+            nextDialog(npcId);
+            return npcId;
+        }
+        else
+        {
+            mDialog = new NpcDialog(npcId);
+            Wrapper wrap;
+            wrap.dialog = mDialog;
+            mNpcDialogs[npcId] = wrap;
+        }
     }
-    mNpcDialogs.clear();
+    else
+    {
+        mDialog = diag->second.dialog;
+    }
+    return npcId;
 }
 
 } // namespace TmwAthena

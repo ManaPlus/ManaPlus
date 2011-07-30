@@ -701,8 +701,12 @@ SET(SRCS_EVOL
     net/ea/itemhandler.h
     net/ea/loginhandler.cpp
     net/ea/loginhandler.h
+    net/ea/npchandler.cpp
+    net/ea/npchandler.h
     net/ea/partyhandler.cpp
     net/ea/partyhandler.h
+    net/ea/playerhandler.cpp
+    net/ea/playerhandler.h
     net/ea/token.h
     )
 

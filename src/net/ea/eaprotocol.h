@@ -25,6 +25,29 @@
 
 enum
 {
+    EA_JOB = 0xa,
+
+    EA_STR = 0xd,
+    EA_AGI,
+    EA_VIT,
+    EA_INT,
+    EA_DEX,
+    EA_LUK,
+
+    EA_ATK,
+    EA_DEF,
+    EA_MATK,
+    EA_MDEF,
+    EA_HIT,
+    EA_FLEE,
+    EA_CRIT
+
+//    KARMA,
+//    MANNER
+};
+
+enum
+{
     EA_SPRITE_BASE = 0,
     EA_SPRITE_SHOE,
     EA_SPRITE_BOTTOMCLOTHES,

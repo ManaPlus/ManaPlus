@@ -20,15 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_PLAYERHANDLER_H
-#define NET_TA_PLAYERHANDLER_H
+#ifndef NET_EA_PLAYERHANDLER_H
+#define NET_EA_PLAYERHANDLER_H
 
+#include "net/messagein.h"
 #include "net/net.h"
 #include "net/playerhandler.h"
-
-#include "net/ea/playerhandler.h"
-
-#include "net/tmwa/messagehandler.h"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
@@ -36,31 +33,47 @@
 #define A_UNUSED
 #endif
 
-namespace TmwAthena
+namespace Ea
 {
 
-class PlayerHandler : public MessageHandler, public Ea::PlayerHandler
+class PlayerHandler : public Net::PlayerHandler
 {
     public:
         PlayerHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        void decreaseAttribute(int attr);
 
-        void attack(int id, bool keep = false);
-        void stopAttack();
-        void emote(Uint8 emoteId);
+        void ignorePlayer(const std::string &player, bool ignore);
 
-        void increaseAttribute(int attr);
-        void increaseSkill(unsigned short skillId);
+        void ignoreAll(bool ignore);
 
-        void pickUp(FloorItem *floorItem);
-        void setDirection(char direction);
-        void setDestination(int x, int y, int direction = -1);
-        void changeAction(Being::Action action);
+        bool canUseMagic() const;
 
-        void respawn();
+        bool canCorrectAttributes() const;
+
+        Vector getDefaultWalkSpeed() const;
+
+        int getJobLocation() const;
+
+        void processWalkResponse(Net::MessageIn &msg);
+
+        void processPlayerWarp(Net::MessageIn &msg);
+
+        void processPlayerStatUpdate1(Net::MessageIn &msg);
+
+        void processPlayerStatUpdate2(Net::MessageIn &msg);
+
+        void processPlayerStatUpdate3(Net::MessageIn &msg);
+
+        void processPlayerStatUpdate4(Net::MessageIn &msg);
+
+        void processPlayerStatUpdate5(Net::MessageIn &msg);
+
+        void processPlayerStatUpdate6(Net::MessageIn &msg);
+
+        void processPlayerArrowMessage(Net::MessageIn &msg);
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_PLAYERHANDLER_H
+#endif // NET_EA_PLAYERHANDLER_H

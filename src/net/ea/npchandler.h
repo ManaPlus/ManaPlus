@@ -20,15 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_NPCHANDLER_H
-#define NET_TA_NPCHANDLER_H
+#ifndef NET_EA_NPCHANDLER_H
+#define NET_EA_NPCHANDLER_H
 
+#include "net/messagein.h"
 #include "net/net.h"
 #include "net/npchandler.h"
-
-#include "net/ea/npchandler.h"
-
-#include "net/tmwa/messagehandler.h"
 
 #include <map>
 
@@ -40,39 +37,47 @@
 
 class NpcDialog;
 
-namespace TmwAthena
+namespace Ea
 {
 
-class NpcHandler : public MessageHandler, public Ea::NpcHandler
+class NpcHandler : public Net::NpcHandler
 {
     public:
         NpcHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        void sendLetter(int npcId, const std::string &recipient,
+                        const std::string &text);
 
-        void talk(int npcId);
+        void startShopping(int beingId);
 
-        void nextDialog(int npcId);
+        void endShopping(int beingId);
 
-        void closeDialog(int npcId);
+        void clearDialogs();
 
-        void listInput(int npcId, unsigned char value);
+        virtual int getNpc(Net::MessageIn &msg, bool haveLength) = 0;
 
-        void integerInput(int npcId, int value);
+        void processNpcChoice(Net::MessageIn &msg);
 
-        void stringInput(int npcId, const std::string &value);
+        void processNpcMessage(Net::MessageIn &msg);
 
-        void buy(int beingId);
+        void processNpcClose(Net::MessageIn &msg);
 
-        void sell(int beingId);
+        void processNpcNext(Net::MessageIn &msg);
 
-        void buyItem(int beingId, int itemId, unsigned char color, int amount);
+        void processNpcIntInput(Net::MessageIn &msg);
 
-        void sellItem(int beingId, int itemId, int amount);
+        void processNpcStrInput(Net::MessageIn &msg);
 
-        int getNpc(Net::MessageIn &msg, bool haveLength);
+    protected:
+        typedef struct
+        {
+            NpcDialog* dialog;
+        } Wrapper;
+        typedef std::map<int, Wrapper> NpcDialogs;
+        NpcDialogs mNpcDialogs;
+        NpcDialog *mDialog;
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_NPCHANDLER_H
+#endif // NET_EA_NPCHANDLER_H
