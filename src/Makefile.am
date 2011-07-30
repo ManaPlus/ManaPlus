@@ -674,11 +674,13 @@ manaplus_SOURCES += \
 	      net/ea/charserverhandler.h \
 	      net/ea/chathandler.cpp \
 	      net/ea/chathandler.h \
+	      net/ea/eaprotocol.h \
 	      net/ea/gamehandler.cpp \
 	      net/ea/gamehandler.h \
 	      net/ea/guildhandler.cpp \
 	      net/ea/guildhandler.h \
-	      net/ea/eaprotocol.h \
+	      net/ea/inventoryhandler.cpp \
+	      net/ea/inventoryhandler.h \
 	      net/ea/loginhandler.cpp \
 	      net/ea/loginhandler.h \
 	      net/ea/partyhandler.cpp \

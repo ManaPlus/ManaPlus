@@ -39,6 +39,8 @@
 
 #include "net/tmwa/protocol.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 

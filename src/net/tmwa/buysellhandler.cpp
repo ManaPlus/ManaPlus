@@ -42,6 +42,8 @@
 #include "net/messagein.h"
 #include "net/net.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include "net/tmwa/chathandler.h"
 #include "net/tmwa/protocol.h"
 

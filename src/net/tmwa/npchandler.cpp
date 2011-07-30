@@ -34,6 +34,8 @@
 
 #include "net/tmwa/protocol.h"
 
+#include "net/ea/eaprotocol.h"
+
 #include <SDL_types.h>
 
 #include "debug.h"

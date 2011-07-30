@@ -448,4 +448,4 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg)
     }
 }
 
-} // namespace TmwAthena
+} // namespace Ea

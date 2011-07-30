@@ -695,6 +695,8 @@ SET(SRCS_EVOL
     net/ea/gamehandler.h
     net/ea/guildhandler.cpp
     net/ea/guildhandler.h
+    net/ea/inventoryhandler.cpp
+    net/ea/inventoryhandler.h
     net/ea/loginhandler.cpp
     net/ea/loginhandler.h
     net/ea/partyhandler.cpp
