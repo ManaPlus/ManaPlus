@@ -76,6 +76,8 @@ public:
     void changeNotice(int guildId, std::string msg1,
                       std::string msg2);
 
+    void clear();
+
 protected:
     void joinedGuild(Net::MessageIn &msg);
 };

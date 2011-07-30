@@ -68,20 +68,7 @@ class GuildHandler : public Ea::GuildHandler, public MessageHandler
 
         void changeMemberPostion(GuildMember *member, int level);
 
-        void requestAlliance(int guildId, int otherGuildId);
-
-        void requestAllianceResponse(int guildId, int otherGuildId,
-                                     bool response);
-
-        void endAlliance(int guildId, int otherGuildId);
-
         void changeNotice(int guildId, std::string msg1, std::string msg2);
-
-        bool isSupported();
-
-    private:
-        // TmwAthena (and eAthena) only supports one guild per player
-//        Guild *mGuild;
 };
 
     extern Ea::GuildTab *guildTab;

@@ -358,4 +358,8 @@ void GuildHandler::changeNotice(int guildId  A_UNUSED,
     // TODO
 }
 
+void GuildHandler::clear()
+{
+}
+
 } // namespace ManaServ

@@ -65,6 +65,8 @@ protected:
 class Guild : public AvatarListModel
 {
 public:
+    ~Guild();
+
     /**
      * Set the guild's name.
      */
@@ -178,6 +180,8 @@ public:
 
     int getEmblemId()
     { return mEmblemId; }
+
+    static void clearGuilds();
 
 private:
     typedef std::map<int, Guild*> GuildMap;

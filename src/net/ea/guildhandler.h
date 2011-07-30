@@ -104,6 +104,8 @@ class GuildHandler : public Net::GuildHandler
 
         virtual void processGuildBroken(Net::MessageIn &msg);
 
+        void clear();
+
     protected:
         bool showBasicInfo;
 };

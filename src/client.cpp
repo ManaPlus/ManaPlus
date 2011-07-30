@@ -29,6 +29,7 @@
 #include "emoteshortcut.h"
 #include "event.h"
 #include "game.h"
+#include "guild.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "keyboardconfig.h"
@@ -71,6 +72,7 @@
 #include "net/charhandler.h"
 #include "net/gamehandler.h"
 #include "net/generalhandler.h"
+#include "net/guildhandler.h"
 #include "net/logindata.h"
 #include "net/loginhandler.h"
 #include "net/net.h"
@@ -851,7 +853,9 @@ int Client::exec()
                 if (resman)
                     resman->cleanOrphans();
                 Party::clearParties();
+                Guild::clearGuilds();
                 Net::getNpcHandler()->clearDialogs();
+                Net::getGuildHandler()->clear();
                 Net::getPartyHandler()->clear();
             }
 

@@ -70,6 +70,8 @@ class GuildHandler
 
         virtual void changeNotice(int guildId, std::string msg1,
                                   std::string msg2) = 0;
+
+        virtual void clear() = 0;
 };
 
 }

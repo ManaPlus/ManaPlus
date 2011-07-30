@@ -311,24 +311,6 @@ void GuildHandler::changeMemberPostion(GuildMember *member, int level)
     msg.writeInt32(level); // pos
 }
 
-void GuildHandler::requestAlliance(int guildId A_UNUSED,
-                                   int otherGuildId A_UNUSED)
-{
-    // TODO
-}
-
-void GuildHandler::requestAllianceResponse(int guildId A_UNUSED,
-                                           int otherGuildId A_UNUSED,
-                                           bool response A_UNUSED)
-{
-    // TODO
-}
-
-void GuildHandler::endAlliance(int guildId A_UNUSED, int otherGuildId A_UNUSED)
-{
-    // TODO
-}
-
 void GuildHandler::changeNotice(int guildId, std::string msg1,
                                 std::string msg2)
 {
@@ -336,11 +318,6 @@ void GuildHandler::changeNotice(int guildId, std::string msg1,
     msg.writeInt32(guildId);
     msg.writeString(msg1, 60); // msg1
     msg.writeString(msg2, 120); // msg2
-}
-
-bool GuildHandler::isSupported()
-{
-    return true;
 }
 
 } // namespace TmwAthena

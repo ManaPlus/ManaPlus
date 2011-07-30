@@ -71,6 +71,11 @@ Guild::Guild(short id):
     guilds[id] = this;
 }
 
+Guild::~Guild()
+{
+    clearMembers();
+}
+
 GuildMember *Guild::addMember(int accountId, int charId,
                               const std::string &name)
 {
@@ -305,7 +310,9 @@ Guild *Guild::getGuild(short id)
     if (it != guilds.end())
         return it->second;
 
-    return new Guild(id);
+    Guild *guild = new Guild(id);
+    guilds[id] = guild;
+    return guild;
 }
 
 std::string Guild::getPos(int id) const
@@ -320,4 +327,15 @@ std::string Guild::getPos(int id) const
 void Guild::sort()
 {
     std::sort(mMembers.begin(), mMembers.end(), guildSorter);
+}
+
+void Guild::clearGuilds()
+{
+    GuildMap::iterator it = guilds.begin();
+    while (it != guilds.end())
+    {
+        delete (*it).second;
+        ++ it;
+    }
+    guilds.clear();
 }

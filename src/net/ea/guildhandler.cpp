@@ -587,4 +587,9 @@ void GuildHandler::processGuildBroken(Net::MessageIn &msg)
     msg.readInt32(); // Flag
 }
 
+void GuildHandler::clear()
+{
+    taGuild = 0;
+}
+
 } // namespace Ea
