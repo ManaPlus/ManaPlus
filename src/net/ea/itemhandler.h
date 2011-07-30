@@ -20,24 +20,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_ITEMHANDLER_H
-#define NET_TA_ITEMHANDLER_H
+#ifndef NET_EA_ITEMHANDLER_H
+#define NET_EA_ITEMHANDLER_H
 
-#include "net/tmwa/messagehandler.h"
+#include "net/net.h"
+#include "net/messagein.h"
 
-#include "net/ea/itemhandler.h"
-
-namespace TmwAthena
+namespace Ea
 {
 
-class ItemHandler : public MessageHandler, public Ea::ItemHandler
+class ItemHandler
 {
     public:
         ItemHandler();
 
-        virtual void handleMessage(Net::MessageIn &msg);
+        void processItemVisible(Net::MessageIn &msg, bool isDrop);
+
+        void processItemRemove(Net::MessageIn &msg);
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_ITEMHANDLER_H
+#endif // NET_EA_ITEMHANDLER_H

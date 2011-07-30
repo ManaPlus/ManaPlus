@@ -22,8 +22,6 @@
 
 #include "net/tmwa/itemhandler.h"
 
-#include "actorspritemanager.h"
-
 #include "net/messagein.h"
 
 #include "net/tmwa/protocol.h"
@@ -51,41 +49,11 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
     {
         case SMSG_ITEM_VISIBLE:
         case SMSG_ITEM_DROPPED:
-        {
-            int id = msg.readInt32();
-            int itemId = msg.readInt16();
-            unsigned char identify = msg.readInt8();  // identify flag
-            int x = msg.readInt16();
-            int y = msg.readInt16();
-//            msg.skip(4);     // amount,subX,subY / subX,subY,amount
-            int amount1 = msg.readInt16();
-            int amount2 = msg.readInt16();
-
-            if (actorSpriteManager)
-            {
-                if (msg.getId() == SMSG_ITEM_VISIBLE)
-                {
-                    actorSpriteManager->createItem(id, itemId,
-                        x, y, amount1, identify);
-                }
-                else
-                {
-                    actorSpriteManager->createItem(id, itemId,
-                        x, y, amount2, identify);
-                }
-            }
-        }
+            processItemVisible(msg, msg.getId() == SMSG_ITEM_DROPPED);
         break;
 
         case SMSG_ITEM_REMOVE:
-            if (actorSpriteManager)
-            {
-                if (FloorItem *item = actorSpriteManager->findItem(
-                    msg.readInt32()))
-                {
-                    actorSpriteManager->destroy(item);
-                }
-            }
+            processItemRemove(msg);
             break;
 
         default:

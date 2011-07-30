@@ -681,6 +681,8 @@ manaplus_SOURCES += \
 	      net/ea/guildhandler.h \
 	      net/ea/inventoryhandler.cpp \
 	      net/ea/inventoryhandler.h \
+	      net/ea/itemhandler.cpp \
+	      net/ea/itemhandler.h \
 	      net/ea/loginhandler.cpp \
 	      net/ea/loginhandler.h \
 	      net/ea/partyhandler.cpp \
