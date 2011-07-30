@@ -212,7 +212,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         }
                     }
                     else if (chatMsg.length() > 3
-                              && chatMsg.find("\302\202") == 0)
+                        && chatMsg.find("\302\202") == 0)
                     {
                         chatMsg = chatMsg.erase(0, 2);
                         if (showMsg && chatWindow)
