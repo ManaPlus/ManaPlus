@@ -1311,7 +1311,7 @@ void Being::logic()
                         controlParticle(p);
                 }
 
-                if (curFrame >= frameCount)
+                if (this == player_node && curFrame >= frameCount)
                     nextTile();
 
                 break;
