@@ -692,8 +692,10 @@ manaplus_SOURCES += \
 	      net/ea/playerhandler.cpp \
 	      net/ea/playerhandler.h \
 	      net/ea/specialhandler.cpp \
-	      net/ewa/specialhandler.h \
+	      net/ea/specialhandler.h \
 	      net/ea/token.h \
+	      net/ea/tradehandler.cpp \
+	      net/ea/tradehandler.h \
 	      net/tmwa/gui/guildtab.cpp \
 	      net/tmwa/gui/guildtab.h \
 	      net/tmwa/gui/partytab.cpp \

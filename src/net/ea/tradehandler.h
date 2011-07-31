@@ -20,15 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_TA_TRADEHANDLER_H
-#define NET_TA_TRADEHANDLER_H
+#ifndef NET_EA_TRADEHANDLER_H
+#define NET_EA_TRADEHANDLER_H
 
+#include "net/messagein.h"
 #include "net/net.h"
 #include "net/tradehandler.h"
-
-#include "net/ea/tradehandler.h"
-
-#include "net/tmwa/messagehandler.h"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
@@ -36,31 +33,31 @@
 #define A_UNUSED
 #endif
 
-namespace TmwAthena
+namespace Ea
 {
 
-class TradeHandler : public MessageHandler, public Ea::TradeHandler
+class TradeHandler : public Net::TradeHandler
 {
     public:
         TradeHandler();
 
-        void handleMessage(Net::MessageIn &msg);
+        void removeItem(int slotNum, int amount);
 
-        void request(Being *being);
+        void processTradeRequest(Net::MessageIn &msg);
 
-        void respond(bool accept);
+        void processTradeResponse(Net::MessageIn &msg);
 
-        void addItem(Item *item, int amount);
+        void processTradeItemAdd(Net::MessageIn &msg);
 
-        void setMoney(int amount);
+        void processTradeItemAddResponse(Net::MessageIn &msg);
 
-        void confirm();
+        void processTradeOk(Net::MessageIn &msg);
 
-        void finish();
+        void processTradeCancel(Net::MessageIn &msg);
 
-        void cancel();
+        void processTradeComplete(Net::MessageIn &msg);
 };
 
-} // namespace TmwAthena
+} // namespace Ea
 
-#endif // NET_TA_TRADEHANDLER_H
+#endif // NET_EA_TRADEHANDLER_H

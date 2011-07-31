@@ -710,6 +710,8 @@ SET(SRCS_EVOL
     net/ea/specialhandler.cpp
     net/ea/specialhandler.h
     net/ea/token.h
+    net/ea/tradehandler.cpp
+    net/ea/tradehandler.h
     )
 
 SET(SRCS_TMWA
