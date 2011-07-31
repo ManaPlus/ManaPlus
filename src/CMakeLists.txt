@@ -707,6 +707,8 @@ SET(SRCS_EVOL
     net/ea/partyhandler.h
     net/ea/playerhandler.cpp
     net/ea/playerhandler.h
+    net/ea/specialhandler.cpp
+    net/ea/specialhandler.h
     net/ea/token.h
     )
 
