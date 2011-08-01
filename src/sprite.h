@@ -104,6 +104,12 @@ class Sprite
          */
         virtual unsigned int getFrameCount() const = 0;
 
+        virtual void *getHash()
+        { return 0; }
+
+        virtual void *getHash2()
+        { return this; }
+
     protected:
         float mAlpha;                  /**< The alpha opacity used to draw */
 };

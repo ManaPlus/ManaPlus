@@ -22,6 +22,8 @@
 
 #include "resources/animation.h"
 
+#include "log.h"
+
 #include "utils/dtor.h"
 
 #include "debug.h"

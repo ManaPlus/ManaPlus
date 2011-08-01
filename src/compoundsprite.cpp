@@ -27,6 +27,7 @@
 #include "openglgraphics.h"
 #include "opengl1graphics.h"
 #endif
+#include "localplayer.h"
 #include "map.h"
 
 #include "resources/image.h"
@@ -40,7 +41,11 @@
 #define BUFFER_WIDTH 100
 #define BUFFER_HEIGHT 100
 
+static const unsigned cache_max_size = 10;
+static const unsigned cache_clean_part = 3;
+
 CompoundSprite::CompoundSprite():
+        mCacheItem(0),
         mImage(0),
         mAlphaImage(0),
         mOffsetX(0), mOffsetY(0),
@@ -57,9 +62,9 @@ CompoundSprite::~CompoundSprite()
 
     clear();
 
-    delete mImage;
+//    delete mImage;
     mImage = 0;
-    delete mAlphaImage;
+//    delete mAlphaImage;
     mAlphaImage = 0;
 }
 
@@ -111,7 +116,7 @@ bool CompoundSprite::update(int time)
 bool CompoundSprite::draw(Graphics* graphics, int posX, int posY) const
 {
     if (mNeedsRedraw)
-        redraw();
+        updateImages();
 
     if (mAlpha == 1.0f && mImage)
     {
@@ -278,6 +283,10 @@ void CompoundSprite::clear()
 
     std::vector<Sprite*>::clear();
     mNeedsRedraw = true;
+    delete_all(imagesCache);
+    imagesCache.clear();
+    delete mCacheItem;
+    mCacheItem = 0;
 }
 
 void CompoundSprite::ensureSize(size_t layerCount)
@@ -287,7 +296,6 @@ void CompoundSprite::ensureSize(size_t layerCount)
         return;
 
     resize(layerCount, NULL);
-    mNeedsRedraw = true;
 }
 
 /**
@@ -322,17 +330,6 @@ unsigned int CompoundSprite::getFrameCount(unsigned int layer)
 
 void CompoundSprite::redraw() const
 {
-#ifdef USE_OPENGL
-    // TODO OpenGL support
-    if (Image::mUseOpenGL)
-    {
-        mNeedsRedraw = false;
-        return;
-    }
-#endif
-
-    if (size() <= 1)
-        return;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     int rmask = 0xff000000;
@@ -397,7 +394,6 @@ void CompoundSprite::redraw() const
     mAlphaImage = Image::load(surfaceA);
     SDL_FreeSurface(surfaceA);
 
-    mNeedsRedraw = false;
 }
 
 void CompoundSprite::setAlpha(float alpha)
@@ -413,4 +409,123 @@ void CompoundSprite::setAlpha(float alpha)
 
         mAlpha = alpha;
     }
+}
+
+void CompoundSprite::updateImages() const
+{
+#ifdef USE_OPENGL
+    if (Image::mUseOpenGL)
+        return;
+#endif
+
+    if (size() <= 3)
+        return;
+
+    mNeedsRedraw = false;
+
+    if (updateFromCache())
+        return;
+
+    redraw();
+
+    if (mImage)
+        initCurrentCacheItem();
+}
+
+bool CompoundSprite::updateFromCache() const
+{
+    ImagesCache::iterator it = imagesCache.begin();
+    ImagesCache::iterator it_end = imagesCache.end();
+//    static int hits = 0;
+//    static int miss = 0;
+
+    if (mCacheItem && mCacheItem->image)
+    {
+        imagesCache.push_front(mCacheItem);
+        mCacheItem = 0;
+        if (imagesCache.size() > cache_max_size)
+        {
+            for (unsigned f = 0; f < cache_clean_part; f ++)
+            {
+                CompoundItem *item = imagesCache.back();
+                imagesCache.pop_back();
+                delete item;
+            }
+        }
+    }
+
+//    logger->log("cache size: %d, hit %d, miss %d",
+//        (int)imagesCache.size(), hits, miss);
+
+    for (it = imagesCache.begin(); it != it_end; ++ it)
+    {
+        CompoundItem *ic = *it;
+        if (ic && ic->data.size() == size())
+        {
+            bool fail(false);
+            SpriteConstIterator it1 = begin();
+            SpriteConstIterator it1_end = end();
+            VectorPointers::iterator it2 = ic->data.begin();
+            VectorPointers::iterator it2_end = ic->data.end();
+
+            for (; it1 != it1_end && it2 != it2_end;  ++ it1, ++ it2)
+            {
+                void *ptr1 = 0;
+                void *ptr2 = 0;
+                if (*it1)
+                    ptr1 = (*it1)->getHash();
+                if (*it2)
+                    ptr2 = *it2;
+                if (ptr1 != ptr2)
+                {
+                    fail = true;
+                    break;
+                }
+            }
+            if (!fail)
+            {
+//                hits ++;
+                mImage = (*it)->image;
+                mAlphaImage = (*it)->alphaImage;
+                imagesCache.erase(it);
+                mCacheItem = ic;
+                return true;
+            }
+        }
+    }
+    mImage = 0;
+    mAlphaImage = 0;
+//    miss++;
+    return false;
+}
+
+void CompoundSprite::initCurrentCacheItem() const
+{
+    delete mCacheItem;
+    mCacheItem = new CompoundItem();
+    mCacheItem->image = mImage;
+    mCacheItem->alphaImage = mAlphaImage;
+//    mCacheItem->alpha = mAlpha;
+
+    SpriteConstIterator it, it_end;
+    for (it = begin(), it_end = end(); it != it_end; ++ it)
+    {
+        if (*it)
+            mCacheItem->data.push_back((*it)->getHash());
+        else
+            mCacheItem->data.push_back(0);
+    }
+}
+
+CompoundItem::CompoundItem() :
+//    alpha(1.0f),
+    image(0),
+    alphaImage(0)
+{
+}
+
+CompoundItem::~CompoundItem()
+{
+    delete image;
+    delete alphaImage;
 }

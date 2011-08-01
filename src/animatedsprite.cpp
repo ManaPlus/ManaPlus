@@ -306,3 +306,14 @@ void AnimatedSprite::setAlpha(float alpha)
     if (mFrame && mFrame->image && mFrame->image->getAlpha() != mAlpha)
         mFrame->image->setAlpha(mAlpha);
 }
+
+void *AnimatedSprite::getHash()
+{
+    if (mFrame)
+        return mFrame;
+//    if (mFrame && mFrame->image)
+//        return mFrame->image;
+//    if (mAnimation)
+//        return mAnimation;
+    return this;
+}

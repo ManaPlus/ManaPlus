@@ -24,9 +24,25 @@
 
 #include "sprite.h"
 
+#include <list>
 #include <vector>
 
 class Image;
+
+typedef std::list <void*> VectorPointers;
+
+class CompoundItem
+{
+    public:
+        CompoundItem();
+
+        ~CompoundItem();
+
+//        float alpha;
+        VectorPointers data;
+        Image *image;
+        Image *alphaImage;
+};
 
 class CompoundSprite : public Sprite, private std::vector<Sprite*>
 {
@@ -101,8 +117,17 @@ public:
     virtual void setAlpha(float alpha);
 
 private:
-
     void redraw() const;
+
+    void updateImages() const;
+
+    bool updateFromCache() const;
+
+    void initCurrentCacheItem() const;
+
+    typedef std::list<CompoundItem*> ImagesCache;
+    mutable ImagesCache imagesCache;
+    mutable CompoundItem *mCacheItem;
 
     mutable Image *mImage;
     mutable Image *mAlphaImage;

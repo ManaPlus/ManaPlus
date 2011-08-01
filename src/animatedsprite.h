@@ -82,6 +82,8 @@ class AnimatedSprite : public Sprite
 
         virtual void setAlpha(float alpha);
 
+        virtual void *getHash();
+
     private:
         bool updateCurrentAnimation(unsigned int dt);
 
