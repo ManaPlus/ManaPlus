@@ -128,7 +128,6 @@ bool CompoundSprite::draw(Graphics* graphics, int posX, int posY) const
     {
         drawSprites(graphics, posX, posY);
     }
-
     return false;
 }
 
@@ -380,15 +379,6 @@ void CompoundSprite::redraw() const
 
     drawSpritesSDL(graphics, posX, posY);
 
-/*
-    SpriteConstIterator it, it_end;
-    for (it = begin(), it_end = end(); it != it_end; ++it)
-    {
-        if (*it)
-            (*it)->draw(graphics, posX, posY);
-    }
-*/
-
     delete graphics;
     graphics = 0;
 
@@ -408,4 +398,19 @@ void CompoundSprite::redraw() const
     SDL_FreeSurface(surfaceA);
 
     mNeedsRedraw = false;
+}
+
+void CompoundSprite::setAlpha(float alpha)
+{
+    if (alpha != mAlpha)
+    {
+        SpriteConstIterator it, it_end;
+        for (it = begin(), it_end = end(); it != it_end; ++ it)
+        {
+            if (*it)
+                (*it)->setAlpha(alpha);
+        }
+
+        mAlpha = alpha;
+    }
 }

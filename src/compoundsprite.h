@@ -98,6 +98,8 @@ public:
      */
     virtual unsigned int getFrameCount(unsigned int layer);
 
+    virtual void setAlpha(float alpha);
+
 private:
 
     void redraw() const;

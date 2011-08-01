@@ -80,6 +80,8 @@ class AnimatedSprite : public Sprite
 
         unsigned int getFrameCount() const;
 
+        virtual void setAlpha(float alpha);
+
     private:
         bool updateCurrentAnimation(unsigned int dt);
 

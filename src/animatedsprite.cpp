@@ -298,3 +298,11 @@ const Image* AnimatedSprite::getImage() const
 {
     return mFrame ? mFrame->image : 0;
 }
+
+void AnimatedSprite::setAlpha(float alpha)
+{
+    mAlpha = alpha;
+
+    if (mFrame && mFrame->image && mFrame->image->getAlpha() != mAlpha)
+        mFrame->image->setAlpha(mAlpha);
+}
