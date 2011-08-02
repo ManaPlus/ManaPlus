@@ -297,7 +297,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             if (mLastEventPaste && mLastEventPaste > cur_time)
                 break;
             handlePaste();
-            mLastEventPaste = cur_time + 1;
+            mLastEventPaste = cur_time + 2;
             break;
         default:
             break;
