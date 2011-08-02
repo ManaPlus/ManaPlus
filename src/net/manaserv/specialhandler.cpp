@@ -57,7 +57,7 @@ void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED,
     // TODO
 }
 
-void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED, int x _UNUSED_,
+void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED, int x A_UNUSED,
                          int y A_UNUSED)
 {
     // TODO
