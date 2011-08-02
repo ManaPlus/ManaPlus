@@ -499,3 +499,15 @@ std::string stringToHexPath(const std::string &str)
         hex += strprintf("%%%2x", (int)str[f]);
     return hex;
 }
+
+void deleteCharLeft(std::string &str, unsigned *pos)
+{
+    while (*pos > 0)
+    {
+        (*pos)--;
+        int v = str[*pos];
+        str.erase(*pos, 1);
+        if ((v & 192) != 128)
+            break;
+    }
+}

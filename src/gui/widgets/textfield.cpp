@@ -35,6 +35,7 @@
 
 #include "utils/copynpaste.h"
 #include "utils/dtor.h"
+#include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
 
@@ -224,6 +225,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
     switch (val)
     {
+        case 2: // Ctrl+b
         case Key::LEFT:
         {
             while (mCaretPosition > 0)
@@ -234,6 +236,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             }
         } break;
 
+        case 6: // Ctrl+f
         case Key::RIGHT:
         {
             unsigned sz = static_cast<unsigned>(mText.size());
@@ -248,6 +251,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             }
         } break;
 
+        case 4: // Ctrl+d
         case Key::DELETE:
         {
             unsigned sz = static_cast<unsigned>(mText.size());
@@ -263,17 +267,10 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             }
         } break;
 
+        case 8: // Ctrl+h
         case Key::BACKSPACE:
-        {
-            while (mCaretPosition > 0)
-            {
-                --mCaretPosition;
-                int v = mText[mCaretPosition];
-                mText.erase(mCaretPosition, 1);
-                if ((v & 192) != 128)
-                    break;
-            }
-        } break;
+            deleteCharLeft(mText, &mCaretPosition);
+            break;
 
         case Key::ENTER:
             distributeActionEvent();
@@ -292,6 +289,24 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                 return;
             break;
 
+        case 5: // Ctrl+e
+            mCaretPosition = mText.size();
+            break;
+
+        case 11: // Ctrl+k
+            mText = mText.substr(0, mCaretPosition);
+            break;
+//        case 16: // Ctrl+p
+//            break;
+
+        case 21: // Ctrl+u
+            if (mCaretPosition > 0)
+            {
+                mText = mText.substr(mCaretPosition);
+                mCaretPosition = 0;
+            }
+            break;
+
         case 22: // Control code 22, SYNCHRONOUS IDLE, sent on Ctrl+v
             // hack to prevent paste key sticking
             if (mLastEventPaste && mLastEventPaste > cur_time)
@@ -299,6 +314,19 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             handlePaste();
             mLastEventPaste = cur_time + 2;
             break;
+
+        case 23: // Ctrl+w
+            while (mCaretPosition > 0)
+            {
+                deleteCharLeft(mText, &mCaretPosition);
+                if (mCaretPosition > 0 && isWordSeparator(
+                    mText[mCaretPosition - 1]))
+                {
+                    break;
+                }
+            }
+            break;
+
         default:
             break;
     }

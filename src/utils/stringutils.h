@@ -188,4 +188,6 @@ std::list<std::string> unpackList(const std::string &str);
 
 std::string stringToHexPath(const std::string &str);
 
+void deleteCharLeft(std::string &str, unsigned *pos);
+
 #endif // UTILS_STRINGUTILS_H
