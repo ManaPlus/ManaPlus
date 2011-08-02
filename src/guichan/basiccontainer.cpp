@@ -88,7 +88,8 @@ namespace gcn
             throw GCN_EXCEPTION("There is no such widget in this container.");
 
         mWidgets.erase(iter);
-        mWidgets.push_front(widget);
+        mWidgets.insert(mWidgets.begin(), widget);
+//        mWidgets.push_front(widget);
     }
 
     void BasicContainer::death(const Event& event)

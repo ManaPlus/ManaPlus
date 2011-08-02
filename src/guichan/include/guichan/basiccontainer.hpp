@@ -45,6 +45,7 @@
 #define GCN_BASICCONTAINER_HPP
 
 #include <list>
+#include <vector>
 
 #include "guichan/deathlistener.hpp"
 #include "guichan/platform.hpp"
@@ -159,7 +160,7 @@ namespace gcn
         /**
          * Typedef.
          */
-        typedef std::list<Widget *> WidgetList;
+        typedef std::vector<Widget *> WidgetList;
 
          /**
          * Typedef.
