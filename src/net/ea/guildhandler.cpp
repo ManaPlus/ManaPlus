@@ -423,7 +423,7 @@ void GuildHandler::processGuildInviteAck(Net::MessageIn &msg)
 void GuildHandler::processGuildLeave(Net::MessageIn &msg)
 {
     std::string nick = msg.readString(24); // Name
-    std::string message = msg.readString(40); // Message
+    msg.readString(40); // Message
 
     if (taGuild)
         taGuild->removeMember(nick);
@@ -468,7 +468,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
 void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
 {
     std::string nick = msg.readString(24); // Name (of expulsed?)
-    std::string message = msg.readString(40); // Message
+    msg.readString(40); // Message
     msg.skip(24); // unused ("dummy")
     if (taGuild)
         taGuild->removeMember(nick);

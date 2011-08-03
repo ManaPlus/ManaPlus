@@ -35,13 +35,20 @@
 
 ItemInfo::ItemInfo(ItemInfo &info)
 {
+    mMissileParticleFile = info.mMissileParticleFile;
+    mDisplay = info.mDisplay;
+    mName = info.mName;
+    mDescription = info.mDescription;
+    mEffect = info.mEffect;
     mType = info.mType;
+    mParticle = info.mParticle;
     mWeight = info.mWeight;
     mView = info.mView;
     mId = info.mId;
     mIsRemoveSprites = info.mIsRemoveSprites;
     mAttackAction = info.mAttackAction;
     mAttackRange = info.mAttackRange;
+    mMissileParticle = info.mMissileParticle;
     mColors = info.mColors;
     mColorList = info.mColorList;
     mHitEffectId = info.mHitEffectId;
@@ -56,13 +63,19 @@ ItemInfo::ItemInfo(ItemInfo &info)
 }
 
 ItemInfo::ItemInfo() :
+    mMissileParticleFile(""),
+    mName(""),
+    mDescription(""),
+    mEffect(""),
     mType(ITEM_UNUSABLE),
+    mParticle(""),
     mWeight(0),
     mView(0),
     mId(0),
     mIsRemoveSprites(false),
     mAttackAction(SpriteAction::INVALID),
     mAttackRange(0),
+    mMissileParticle(""),
     mColors(0),
     mColorList(""),
     mHitEffectId(0),

@@ -38,6 +38,7 @@ LoginHandler::LoginHandler():
         mVersionResponse(false),
         mRegistrationEnabled(true)
 {
+    mToken.clear();
 }
 
 LoginHandler::~LoginHandler()

@@ -158,7 +158,8 @@ int InventoryHandler::getSlot(int eAthenaSlot)
     return EQUIP_POINTS[position];
 }
 
-void InventoryHandler::processPlayerInventory(Net::MessageIn &msg, bool playerInvintory)
+void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
+                                              bool playerInvintory)
 {
     int index, amount, itemId, arrow;
     int cards[4], itemType;
@@ -450,7 +451,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 {
     int index, amount, itemId, refine;
     unsigned char identified;
-    int cards[4];
+//    int cards[4];
 
     // Move an item into storage
     index = msg.readInt16() - STORAGE_OFFSET;
@@ -460,7 +461,7 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
     msg.readInt8();  // attribute
     refine = msg.readInt8();
     for (int i = 0; i < 4; i++)
-        cards[i] = msg.readInt16();
+        msg.readInt16(); // card i
 
     if (Item *item = mStorage->getItem(index))
     {
@@ -583,10 +584,10 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
-    int index, equipType;
+    int equipType;
     int flag;
 
-    index = msg.readInt16() - INVENTORY_OFFSET;
+    msg.readInt16(); // inder val - INVENTORY_OFFSET;
     equipType = msg.readInt16();
     flag = msg.readInt8();
 

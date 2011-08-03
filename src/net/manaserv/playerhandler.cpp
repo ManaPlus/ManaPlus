@@ -100,7 +100,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case GPMSG_PLAYER_SERVER_CHANGE:
         {   // TODO: Implement reconnecting to another game server
-            std::string token = msg.readString(32);
+            msg.readString(32); // token
             std::string address = msg.readString();
             int port = msg.readInt16();
             logger->log("Changing server to %s:%d", address.c_str(), port);
