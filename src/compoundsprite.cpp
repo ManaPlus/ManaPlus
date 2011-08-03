@@ -391,7 +391,7 @@ void CompoundSprite::redraw() const
     mImage = Image::load(surface);
     SDL_FreeSurface(surface);
 
-    if (mAlpha != 1.0f)
+    if (Image::mEnableAlpha)
     {
         mAlphaImage = Image::load(surfaceA);
         SDL_FreeSurface(surfaceA);
