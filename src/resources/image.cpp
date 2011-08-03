@@ -664,16 +664,18 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
         {
             if (SDL_ALPHA_OPAQUE != 255)
                 hasAlpha = true;
-            for (int i = 0; i < sz; ++ i)
-                alphaChannel[i] = SDL_ALPHA_OPAQUE;
+            memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
+//            for (int i = 0; i < sz; ++ i)
+//                alphaChannel[i] = SDL_ALPHA_OPAQUE;
         }
     }
     else
     {
         if (SDL_ALPHA_OPAQUE != 255)
             hasAlpha = true;
-        for (int i = 0; i < sz; ++ i)
-            alphaChannel[i] = SDL_ALPHA_OPAQUE;
+        memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
+//        for (int i = 0; i < sz; ++ i)
+//            alphaChannel[i] = SDL_ALPHA_OPAQUE;
     }
 
     SDL_Surface *image;
