@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-23 17:22+0300\n"
+"POT-Creation-Date: 2011-08-06 16:24+0300\n"
 "PO-Revision-Date: 2011-06-20 00:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium/Flemish) (http://www.transifex.net/projects/p/"
@@ -32,97 +32,96 @@ msgid "miss"
 msgstr "mist"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1512
+#: src/being.cpp:1513
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1517
+#: src/being.cpp:1518
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:823 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configureren"
 
-#: src/client.cpp:903
+#: src/client.cpp:907
 msgid "Connecting to server"
 msgstr "Verbinden met server"
 
-#: src/client.cpp:934
+#: src/client.cpp:938
 msgid "Logging in"
 msgstr "Inloggen"
 
-#: src/client.cpp:967
+#: src/client.cpp:971
 msgid "Entering game world"
 msgstr "Spelwereld binnenkomen"
 
-#: src/client.cpp:1067
+#: src/client.cpp:1071
 msgid "Requesting characters"
 msgstr "Aanvragen personage"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1102
 msgid "Connecting to the game server"
 msgstr "Verbinden met de spelserver"
 
-#: src/client.cpp:1108
+#: src/client.cpp:1112
 msgid "Changing game servers"
 msgstr "Wijzigen spelservers"
 
-#: src/client.cpp:1145 src/client.cpp:1152 src/client.cpp:1289
+#: src/client.cpp:1149 src/client.cpp:1156 src/client.cpp:1293
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
 #: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
-#: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:190
-#: src/net/tmwa/charserverhandler.cpp:206
+#: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Fout"
 
-#: src/client.cpp:1161
+#: src/client.cpp:1165
 msgid "Requesting registration details"
 msgstr "Aanvragen registratie details"
 
-#: src/client.cpp:1188
+#: src/client.cpp:1192
 msgid "Password Change"
 msgstr "Paswoord Wijziging"
 
-#: src/client.cpp:1189
+#: src/client.cpp:1193
 msgid "Password changed successfully!"
 msgstr "Paswoord is gewijzigd!"
 
-#: src/client.cpp:1208
+#: src/client.cpp:1212
 msgid "Email Change"
 msgstr "Email Wijziging"
 
-#: src/client.cpp:1209
+#: src/client.cpp:1213
 msgid "Email changed successfully!"
 msgstr "Email is gewijzigd!"
 
-#: src/client.cpp:1229
+#: src/client.cpp:1233
 msgid "Unregister Successful"
 msgstr "Registratie ongedaan gemaakt!"
 
-#: src/client.cpp:1230
+#: src/client.cpp:1234
 msgid "Farewell, come back any time..."
 msgstr "Tot ziens..."
 
-#: src/client.cpp:1419 src/client.cpp:1449 src/client.cpp:1493
-#: src/client.cpp:1914
+#: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
+#: src/client.cpp:1918
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s bestaat niet en kan niet gecreëerd worden! Stoppen."
 
-#: src/client.cpp:1624
+#: src/client.cpp:1628
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Ongeldige update host %s"
 
-#: src/client.cpp:1658 src/client.cpp:1664
+#: src/client.cpp:1662 src/client.cpp:1668
 msgid "Error creating updates directory!"
 msgstr "Fout bij het creëren van de update map!"
 
-#: src/client.cpp:1685
+#: src/client.cpp:1689
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Fout: %s bestaat niet en kan niet gecreëerd worden! Stoppen."
@@ -149,7 +148,7 @@ msgstr ""
 msgid "Requesting to join channel %s."
 msgstr "Aanvragen om bij kanaal %s toegevoegd te worden."
 
-#: src/commandhandler.cpp:445 src/net/tmwa/gui/partytab.cpp:125
+#: src/commandhandler.cpp:445
 msgid "Party name is missing."
 msgstr "Groepsnaam ontbreekt."
 
@@ -370,7 +369,7 @@ msgstr "Naam"
 
 #: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:130
 #: src/gui/popupmenu.cpp:286 src/gui/popupmenu.cpp:604
-#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:264
+#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:266
 msgid "Attack"
 msgstr "Aanvallen"
 
@@ -2435,7 +2434,6 @@ msgid "Show links in announce"
 msgstr ""
 
 #: src/gui/shopwindow.cpp:723 src/net/manaserv/tradehandler.cpp:127
-#: src/net/tmwa/tradehandler.cpp:124
 msgid "Request for Trade"
 msgstr "Handel aanvragen"
 
@@ -2477,7 +2475,7 @@ msgstr ""
 msgid "Lvl: %d (%+d)"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:117 src/net/tmwa/gui/guildtab.cpp:50
+#: src/gui/socialwindow.cpp:117
 msgid "Guild"
 msgstr "Guild"
 
@@ -2509,7 +2507,7 @@ msgstr "Verlaten Guild?"
 msgid "Are you sure you want to leave guild %s?"
 msgstr "Bent u zeker dat u guild %s wilt verlaten?"
 
-#: src/gui/socialwindow.cpp:215 src/net/tmwa/gui/partytab.cpp:50
+#: src/gui/socialwindow.cpp:215
 msgid "Party"
 msgstr "Groep"
 
@@ -3479,7 +3477,6 @@ msgid "This command makes <nick> a channel operator."
 msgstr "Dit commando maakt van <nick> een kanaalbeheerder."
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
-#: src/net/tmwa/gui/guildtab.cpp:91 src/net/tmwa/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr ""
 "Als de <nick> spaties bevat, omsluit het dan met dubbele aanhalingstekens "
@@ -4216,7 +4213,7 @@ msgstr "Bedankt voor de aankopen."
 msgid "Unable to buy."
 msgstr "Kan niets kopen."
 
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:257
+#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:259
 msgid "Strength"
 msgstr "Kracht"
 
@@ -4225,7 +4222,7 @@ msgstr "Kracht"
 msgid "Strength %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:258
+#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:260
 msgid "Agility"
 msgstr "Behendigheid"
 
@@ -4234,7 +4231,7 @@ msgstr "Behendigheid"
 msgid "Agility %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:261
+#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:263
 msgid "Dexterity"
 msgstr "Vaardigheid"
 
@@ -4243,7 +4240,7 @@ msgstr "Vaardigheid"
 msgid "Dexterity %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:259
+#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:261
 msgid "Vitality"
 msgstr "Vitaliteit"
 
@@ -4252,7 +4249,7 @@ msgstr "Vitaliteit"
 msgid "Vitality %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:260
+#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:262
 msgid "Intelligence"
 msgstr "Intelligentie"
 
@@ -4270,29 +4267,29 @@ msgstr ""
 msgid "Willpower %+.1f"
 msgstr ""
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:103
+#: src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
 msgstr "Je bent dood."
 
-#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:316
 msgid "We regret to inform you that your character was killed in battle."
 msgstr ""
 "We betreuren het om je te melden dat jouw personage is gestorven in een "
 "gevecht."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:106
+#: src/net/manaserv/beinghandler.cpp:318
 msgid "You are not that alive anymore."
 msgstr "Je bent niet langer levend."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:319
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "De koude handen van Pietje de Dood grijpen naar jouw ziel."
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:108
+#: src/net/manaserv/beinghandler.cpp:320
 msgid "Game Over!"
 msgstr "Game Over!"
 
-#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:110
+#: src/net/manaserv/beinghandler.cpp:321
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4300,7 +4297,7 @@ msgstr ""
 "Neen, kinderen. Jouw personage is niet echt gestorven. Het... euhm... is "
 "naar een beter plaats gegaan."
 
-#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:112
+#: src/net/manaserv/beinghandler.cpp:323
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
@@ -4308,27 +4305,27 @@ msgstr ""
 "Jouw plan om vijandelijke wapens te vernietignen door ermee tegen jouw keel "
 "te slaan is mislukt."
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:114
+#: src/net/manaserv/beinghandler.cpp:325
 msgid "I guess this did not run too well."
 msgstr "Dit verliep niet zoals gepland."
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:116
+#: src/net/manaserv/beinghandler.cpp:326
 msgid "Do you want your possessions identified?"
 msgstr "Wil je dat jouw bezittingen geïdentificeerd worden?"
 
-#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:118
+#: src/net/manaserv/beinghandler.cpp:327
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Spijtig genoeg, was er geen spoor van jou gevonden..."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:120
+#: src/net/manaserv/beinghandler.cpp:329
 msgid "Annihilated."
 msgstr "Verslagen"
 
-#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:122
+#: src/net/manaserv/beinghandler.cpp:330
 msgid "Looks like you got your head handed to you."
 msgstr ""
 
-#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:124
+#: src/net/manaserv/beinghandler.cpp:332
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -4390,11 +4387,10 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:203
 msgid "Unknown error."
 msgstr ""
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:201
+#: src/net/manaserv/charhandler.cpp:210
 msgid "Info"
 msgstr "Info"
 
@@ -4461,7 +4457,7 @@ msgstr ""
 msgid "Unknown channel event."
 msgstr ""
 
-#: src/net/manaserv/guildhandler.cpp:85 src/net/tmwa/guildhandler.cpp:107
+#: src/net/manaserv/guildhandler.cpp:85
 msgid "Guild created."
 msgstr "Guild aangemaakt."
 
@@ -4497,7 +4493,7 @@ msgstr ""
 msgid "New password incorrect."
 msgstr ""
 
-#: src/net/manaserv/loginhandler.cpp:127 src/net/tmwa/loginhandler.cpp:96
+#: src/net/manaserv/loginhandler.cpp:127
 msgid "Old password incorrect."
 msgstr ""
 
@@ -4576,7 +4572,7 @@ msgstr "Inkomende handelsaanvragen accepteren."
 msgid "Ignoring incoming trade requests."
 msgstr "Inkomende handelsaanvragen negeren."
 
-#: src/net/manaserv/tradehandler.cpp:128 src/net/tmwa/tradehandler.cpp:125
+#: src/net/manaserv/tradehandler.cpp:128
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s wil met jou handelen, aanvaard je dit?"
@@ -4586,11 +4582,11 @@ msgstr "%s wil met jou handelen, aanvaard je dit?"
 msgid "Trading with %s"
 msgstr "Handelen met %s"
 
-#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:282
+#: src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "Handel geannuleerd."
 
-#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:292
+#: src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "Handel voltooid."
 
@@ -4602,528 +4598,125 @@ msgstr "Kick gefaald!"
 msgid "Kick succeeded!"
 msgstr "Kick succesvol!"
 
-#: src/net/tmwa/buysellhandler.cpp:131
+#: src/net/tmwa/buysellhandler.cpp:133
 msgid "Thanks for selling."
 msgstr "Bedankt voor het verkopen."
 
-#: src/net/tmwa/buysellhandler.cpp:135
+#: src/net/tmwa/buysellhandler.cpp:137
 msgid "Unable to sell."
 msgstr "Kan niets verkopen."
 
-#: src/net/tmwa/buysellhandler.cpp:138
+#: src/net/tmwa/buysellhandler.cpp:140
 msgid "Unable to sell while trading."
 msgstr ""
 
-#: src/net/tmwa/buysellhandler.cpp:141
+#: src/net/tmwa/buysellhandler.cpp:143
 msgid "Unable to sell unsellable item."
 msgstr "Niet mogelijk om onverkoopbaar voorwerp te verkopen"
 
-#: src/net/tmwa/charserverhandler.cpp:121
-msgid "Access denied. Most likely, there are too many players on this server."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:125
-msgid "Cannot use this ID."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:128
-msgid "Unknown char-server failure."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:174
-msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Kan personage niet aanmaken. Waarschijnlijk bestaat de naam al."
-
-#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:197
-msgid "Wrong name."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:181
-msgid "Incorrect stats."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:184
-msgid "Incorrect hair."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:187
-msgid "Incorrect slot."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:201
-msgid "Character deleted."
-msgstr "Personage verwijderd."
-
-#: src/net/tmwa/charserverhandler.cpp:206
-msgid "Failed to delete character."
-msgstr "Kon personage niet verwijderen."
-
-#: src/net/tmwa/charserverhandler.cpp:383
-msgid "Strength:"
-msgstr "Sterkte:"
-
-#: src/net/tmwa/charserverhandler.cpp:384
-msgid "Agility:"
-msgstr "Agiliteit:"
-
-#: src/net/tmwa/charserverhandler.cpp:385
-msgid "Vitality:"
-msgstr "Vitaliteit:"
-
-#: src/net/tmwa/charserverhandler.cpp:386
-msgid "Intelligence:"
-msgstr "Intelligentie:"
-
-#: src/net/tmwa/charserverhandler.cpp:387
-msgid "Dexterity:"
-msgstr "Dexteriteit:"
-
-#: src/net/tmwa/charserverhandler.cpp:388
-msgid "Luck:"
-msgstr "Geluk:"
-
-#: src/net/tmwa/chathandler.cpp:106
-#, c-format
-msgid "Whisper could not be sent, %s is offline."
-msgstr ""
-
-#: src/net/tmwa/chathandler.cpp:114
-#, c-format
-msgid "Whisper could not be sent, ignored by %s."
-msgstr ""
-
-#: src/net/tmwa/chathandler.cpp:334
-msgid "MVP player."
-msgstr ""
-
-#: src/net/tmwa/chathandler.cpp:338
-msgid "MVP player: "
-msgstr ""
-
-#: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
-#: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
-#: src/net/tmwa/chathandler.cpp:413 src/net/tmwa/chathandler.cpp:419
-#: src/net/tmwa/chathandler.cpp:426 src/net/tmwa/chathandler.cpp:432
-msgid "Channels are not supported!"
-msgstr "Kanalen worden niet ondersteund!"
-
-#: src/net/tmwa/gamehandler.cpp:96
-#, c-format
-msgid "Online users: %d"
-msgstr ""
-
-#: src/net/tmwa/gamehandler.cpp:106
-msgid "Game"
-msgstr ""
-
-#: src/net/tmwa/gamehandler.cpp:106
-msgid "Request to quit denied!"
-msgstr ""
-
-#: src/net/tmwa/generalhandler.cpp:107
+#: src/net/tmwa/generalhandler.cpp:109
 #, c-format
 msgid "Strength %+d"
 msgstr "Kracht %+d"
 
-#: src/net/tmwa/generalhandler.cpp:108
+#: src/net/tmwa/generalhandler.cpp:110
 #, c-format
 msgid "Agility %+d"
 msgstr "Behandigheid %+d"
 
-#: src/net/tmwa/generalhandler.cpp:109
+#: src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Vitality %+d"
 msgstr "Vitaliteit %+d"
 
-#: src/net/tmwa/generalhandler.cpp:110
+#: src/net/tmwa/generalhandler.cpp:112
 #, c-format
 msgid "Intelligence %+d"
 msgstr "Intelligentie %+d"
 
-#: src/net/tmwa/generalhandler.cpp:111
+#: src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Dexterity %+d"
 msgstr "Vaardigheid %+d"
 
-#: src/net/tmwa/generalhandler.cpp:112
+#: src/net/tmwa/generalhandler.cpp:114
 #, c-format
 msgid "Luck %+d"
 msgstr "Geluk %+d"
 
-#: src/net/tmwa/generalhandler.cpp:138
+#: src/net/tmwa/generalhandler.cpp:140
 msgid "Authentication failed."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:141
+#: src/net/tmwa/generalhandler.cpp:143
 msgid "No servers available."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:145
+#: src/net/tmwa/generalhandler.cpp:147
 msgid "Someone else is trying to use this account."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:148
+#: src/net/tmwa/generalhandler.cpp:150
 msgid "This account is already logged in."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:151
+#: src/net/tmwa/generalhandler.cpp:153
 msgid "Speed hack detected."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:154
+#: src/net/tmwa/generalhandler.cpp:156
 msgid "Duplicated login."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:157
+#: src/net/tmwa/generalhandler.cpp:159
 msgid "Unknown connection error."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:230
+#: src/net/tmwa/generalhandler.cpp:232
 msgid "Got disconnected from server!"
 msgstr "De verbinding met de server werd verbroken!"
 
-#: src/net/tmwa/generalhandler.cpp:262
+#: src/net/tmwa/generalhandler.cpp:264
 msgid "Luck"
 msgstr "Geluk"
 
-#: src/net/tmwa/generalhandler.cpp:265
+#: src/net/tmwa/generalhandler.cpp:267
 msgid "Defense"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:266
+#: src/net/tmwa/generalhandler.cpp:268
 msgid "M.Attack"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:267
-msgid "M.Defense"
-msgstr ""
-
 #: src/net/tmwa/generalhandler.cpp:269
-#, no-c-format
-msgid "% Accuracy"
+msgid "M.Defense"
 msgstr ""
 
 #: src/net/tmwa/generalhandler.cpp:271
 #, no-c-format
-msgid "% Evade"
+msgid "% Accuracy"
 msgstr ""
 
 #: src/net/tmwa/generalhandler.cpp:273
 #, no-c-format
+msgid "% Evade"
+msgstr ""
+
+#: src/net/tmwa/generalhandler.cpp:275
+#, no-c-format
 msgid "% Critical"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:274
+#: src/net/tmwa/generalhandler.cpp:276
 msgid "Attack Delay"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:276
+#: src/net/tmwa/generalhandler.cpp:278
 msgid "Walk Delay"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:278
+#: src/net/tmwa/generalhandler.cpp:280
 msgid "Attack Range"
-msgstr ""
-
-#: src/net/tmwa/gui/guildtab.cpp:77 src/net/tmwa/gui/partytab.cpp:69
-msgid "/help > Display this help."
-msgstr "/help > Geeft deze help weer."
-
-#: src/net/tmwa/gui/guildtab.cpp:78
-msgid "/invite > Invite a player to your guild"
-msgstr ""
-
-#: src/net/tmwa/gui/guildtab.cpp:79
-msgid "/leave > Leave the guild you are in"
-msgstr ""
-
-#: src/net/tmwa/gui/guildtab.cpp:80
-msgid "/kick > Kick some one from the guild you are in"
-msgstr ""
-
-#: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
-msgid "Command: /invite <nick>"
-msgstr "Commando: /invite <nick>"
-
-#: src/net/tmwa/gui/guildtab.cpp:90
-msgid "This command invites <nick> to the guild you're in."
-msgstr ""
-
-#: src/net/tmwa/gui/guildtab.cpp:96 src/net/tmwa/gui/partytab.cpp:90
-msgid "Command: /leave"
-msgstr "Commando: /leave"
-
-#: src/net/tmwa/gui/guildtab.cpp:97
-msgid "This command causes the player to leave the guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:112 src/net/tmwa/guildhandler.cpp:117
-msgid "You are already in guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:122
-msgid "Emperium check failed."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:127
-msgid "Unknown server response."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:205
-#, c-format
-msgid "Guild name: %s"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:207
-#, c-format
-msgid "Guild master: %s"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:209
-#, c-format
-msgid "Guild level: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:211
-#, c-format
-msgid "Online members: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:213
-#, c-format
-msgid "Max members: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:215
-#, c-format
-msgid "Average level: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:217
-#, c-format
-msgid "Guild exp: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:219
-#, c-format
-msgid "Guild next exp: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:221
-#, c-format
-msgid "Guild castle: %s"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:436
-msgid "Could not inivte user to guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:441
-msgid "User rejected guild invite."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:446
-msgid "User is now part of your guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:451
-msgid "Your guild is full."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:456
-msgid "Unknown guild invite response."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:478
-msgid "You have left the guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:492
-#, c-format
-msgid "%s has left your guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:524
-msgid "You was kicked from guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:538
-#, c-format
-msgid "%s has kicked from your guild."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:70
-msgid "/invite > Invite a player to your party"
-msgstr "/invite > Nodig een speler uit voor jouw groep"
-
-#: src/net/tmwa/gui/partytab.cpp:71
-msgid "/leave > Leave the party you are in"
-msgstr "/leave > Verlaat de groep waarin je je bevindt"
-
-#: src/net/tmwa/gui/partytab.cpp:72
-msgid "/kick > Kick some one from the party you are in"
-msgstr "/kick > Verwijder iemand vanuit de groep waarin je bent"
-
-#: src/net/tmwa/gui/partytab.cpp:73
-msgid "/item > Show/change party item sharing options"
-msgstr "/item > Geeft weer/wijzigt de opties voor voorwerpdeling"
-
-#: src/net/tmwa/gui/partytab.cpp:74
-msgid "/exp > Show/change party experience sharing options"
-msgstr "/exp > Geeft weer/wijzigt de ervaringsdelingsopties"
-
-#: src/net/tmwa/gui/partytab.cpp:84
-msgid "This command invites <nick> to party with you."
-msgstr "Dit commando nodigt <nick> uit om een groep te vormen met jou."
-
-#: src/net/tmwa/gui/partytab.cpp:91
-msgid "This command causes the player to leave the party."
-msgstr "Dit commando zorgt ervoor dat de speler de groep verlaat."
-
-#: src/net/tmwa/gui/partytab.cpp:95
-msgid "Command: /item <policy>"
-msgstr "Commando: /item <beleid>"
-
-#: src/net/tmwa/gui/partytab.cpp:97
-msgid "This command changes the party's item sharing policy."
-msgstr "Dit commando wijzigt het voorwerpdelingsbeleid van de groep."
-
-#: src/net/tmwa/gui/partytab.cpp:98
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
-"\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<beleid> kan een van de volgende zijn om voorwerpdeling in te schakelen: "
-"\"1\", \"yes\", \"true\". Of om voorwerpdeling uit te schakelen: \"0\", \"no"
-"\", \"false\"."
-
-#: src/net/tmwa/gui/partytab.cpp:101
-msgid "Command: /item"
-msgstr "Commando: /item"
-
-#: src/net/tmwa/gui/partytab.cpp:102
-msgid "This command displays the party's current item sharing policy."
-msgstr ""
-"Dit commando geeft het huidige voorwerpdelingsbeleid van de groep weer."
-
-#: src/net/tmwa/gui/partytab.cpp:107
-msgid "Command: /exp <policy>"
-msgstr "Commando: /exp <beleid>"
-
-#: src/net/tmwa/gui/partytab.cpp:108
-msgid "This command changes the party's experience sharing policy."
-msgstr "Dit commando wijzigt het ervaringsdelingsbeleid van de groep."
-
-#: src/net/tmwa/gui/partytab.cpp:110
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-"sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-msgstr ""
-"<beleid> kan een van de volgende zijn om ervaringsdeling in te schakelen: "
-"\"1\", \"true\", \"yes\". Of om ervaringsdeling uit te schakelen: \"0\", "
-"\"false\", \"no\"."
-
-#: src/net/tmwa/gui/partytab.cpp:113
-msgid "Command: /exp"
-msgstr "Commando: /exp"
-
-#: src/net/tmwa/gui/partytab.cpp:114
-msgid "This command displays the party's current experience sharing policy."
-msgstr ""
-"Dit commando geeft het huidige ervaringsdelingbeleid van de groep weer."
-
-#: src/net/tmwa/gui/partytab.cpp:148 src/net/tmwa/partyhandler.cpp:289
-msgid "Item sharing enabled."
-msgstr "Voorwerpdeling ingeschakeld."
-
-#: src/net/tmwa/gui/partytab.cpp:151 src/net/tmwa/partyhandler.cpp:299
-msgid "Item sharing disabled."
-msgstr "Voorwerpdeling uitgeschakeld."
-
-#: src/net/tmwa/gui/partytab.cpp:154 src/net/tmwa/partyhandler.cpp:309
-msgid "Item sharing not possible."
-msgstr "Voorwerpdeling is niet mogelijk."
-
-#: src/net/tmwa/gui/partytab.cpp:157
-msgid "Item sharing unknown."
-msgstr "Voorwerpdeling onbekend."
-
-#: src/net/tmwa/gui/partytab.cpp:187 src/net/tmwa/partyhandler.cpp:251
-msgid "Experience sharing enabled."
-msgstr "Ervaringsdeling ingeschakeld."
-
-#: src/net/tmwa/gui/partytab.cpp:190 src/net/tmwa/partyhandler.cpp:261
-msgid "Experience sharing disabled."
-msgstr "Ervaringsdeling uitgeschakeld."
-
-#: src/net/tmwa/gui/partytab.cpp:193 src/net/tmwa/partyhandler.cpp:271
-msgid "Experience sharing not possible."
-msgstr "Ervaringsdeling is niet mogelijk."
-
-#: src/net/tmwa/gui/partytab.cpp:196
-msgid "Experience sharing unknown."
-msgstr ""
-
-#: src/net/tmwa/inventoryhandler.cpp:379
-msgid "Failed to use item."
-msgstr "Kan voorwerp niet gebruiken."
-
-#: src/net/tmwa/inventoryhandler.cpp:531
-msgid "Unable to equip."
-msgstr "Kan dit niet uitrusten."
-
-#: src/net/tmwa/loginhandler.cpp:93
-msgid "Account was not found. Please re-login."
-msgstr "Account was niet gevonden. Probeer opnieuw in te loggen aub."
-
-#: src/net/tmwa/loginhandler.cpp:99
-msgid "New password too short."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:165
-msgid "Unregistered ID."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:168
-msgid "Wrong password."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:171
-msgid "Account expired."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:174
-msgid "Rejected from server."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:177
-msgid ""
-"You have been permanently banned from the game. Please contact the GM team."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:181
-msgid "Client too old."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:184
-#, c-format
-msgid ""
-"You have been temporarily banned from the game until %s.\n"
-"Please contact the GM team via the forums."
-msgstr ""
-"Je bent tijdelijk geband van het spel tot %s.\n"
-"Neem aub contact op met het GM team via de forums."
-
-#: src/net/tmwa/loginhandler.cpp:191
-msgid "Server overpopulated."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:194
-msgid "This user name is already taken."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:200
-msgid "Username permanently erased."
 msgstr ""
 
 #: src/net/tmwa/network.cpp:152
@@ -5138,277 +4731,10 @@ msgstr ""
 msgid "Connection to server terminated. "
 msgstr ""
 
-#: src/net/tmwa/partyhandler.cpp:86
-msgid "Could not create party."
-msgstr "Kan geen groep aanmaken."
-
-#: src/net/tmwa/partyhandler.cpp:88
-msgid "Party successfully created."
-msgstr "Groep succesvol aangemaakt."
-
-#: src/net/tmwa/partyhandler.cpp:143
-#, c-format
-msgid "%s has joined your party."
-msgstr ""
-
-#: src/net/tmwa/partyhandler.cpp:179
-#, c-format
-msgid "%s is already a member of a party."
-msgstr "%s is al een lid van een groep."
-
-#: src/net/tmwa/partyhandler.cpp:184
-#, c-format
-msgid "%s refused your invitation."
-msgstr "%s wees jouw uitnodiging af."
-
-#: src/net/tmwa/partyhandler.cpp:189
-#, c-format
-msgid "%s is now a member of your party."
-msgstr "%s is nu een lid van jouw groep."
-
-#: src/net/tmwa/partyhandler.cpp:194
-#, c-format
-msgid "%s can't join your party because party is full."
-msgstr ""
-
-#: src/net/tmwa/partyhandler.cpp:199
-#, c-format
-msgid "QQQ Unknown invite response for %s."
-msgstr ""
-
-#: src/net/tmwa/partyhandler.cpp:359
-msgid "You have left the party."
-msgstr "Je hebt de groep verlaten."
-
-#: src/net/tmwa/partyhandler.cpp:371
-#, c-format
-msgid "%s has left your party."
-msgstr "%s heeft jouw groep verlaten."
-
-#: src/net/tmwa/partyhandler.cpp:447
-#, c-format
-msgid "An unknown member tried to say: %s"
-msgstr "Een onbekend lid probeerde te zeggen: %s"
-
-#: src/net/tmwa/partyhandler.cpp:529
+#: src/net/tmwa/partyhandler.cpp:171
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s is niet in jouw groep!"
-
-#: src/net/tmwa/playerhandler.cpp:109
-msgid "Insert coin to continue."
-msgstr "Werp een muntstuk in om verder te spelen."
-
-#: src/net/tmwa/playerhandler.cpp:127
-msgid "You're not dead yet. You're just resting."
-msgstr "Je bent nog niet dood. Je bent maar aan het rusten."
-
-#: src/net/tmwa/playerhandler.cpp:128
-msgid "You are no more."
-msgstr "Je bent niet langer."
-
-#: src/net/tmwa/playerhandler.cpp:129
-msgid "You have ceased to be."
-msgstr "Je hebt opgehouden te zijn."
-
-#: src/net/tmwa/playerhandler.cpp:130
-msgid "You've expired and gone to meet your maker."
-msgstr "Je bent verlopen en gaat een bezoekje maken bij jouw schepper."
-
-#: src/net/tmwa/playerhandler.cpp:131
-msgid "You're a stiff."
-msgstr "Je bent stokstijf."
-
-#: src/net/tmwa/playerhandler.cpp:132
-msgid "Bereft of life, you rest in peace."
-msgstr "Beroofd van het leven, rust je in vrede."
-
-#: src/net/tmwa/playerhandler.cpp:133
-msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:134
-msgid "Your metabolic processes are now history."
-msgstr "Jouw metabolische processen behoren nu tot het verleden."
-
-#: src/net/tmwa/playerhandler.cpp:135
-msgid "You're off the twig."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:136
-msgid "You've kicked the bucket."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:137
-msgid ""
-"You've shuffled off your mortal coil, run down the curtain and joined the "
-"bleedin' choir invisibile."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:139
-msgid "You are an ex-player."
-msgstr "Je bent een ex-speler."
-
-#: src/net/tmwa/playerhandler.cpp:140
-msgid "You're pining for the fjords."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:342 src/net/tmwa/playerhandler.cpp:352
-#: src/net/tmwa/playerhandler.cpp:431
-msgid "Message"
-msgstr "Bericht"
-
-#: src/net/tmwa/playerhandler.cpp:343
-msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
-msgstr ""
-"Je draagt meer dan de helft van jouw eigen gewicht. Je kan geen leven "
-"herstellen."
-
-#: src/net/tmwa/playerhandler.cpp:353
-msgid "You are carrying less than half your weight. You can regain health."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:458
-#, c-format
-msgid "You picked up %s."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:464
-#, c-format
-msgid "You spent %s."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:509
-msgid "Cannot raise skill!"
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:629
-msgid "Equip arrows first."
-msgstr ""
-
-#: src/net/tmwa/specialhandler.cpp:165
-msgid "Trade failed!"
-msgstr "Handel mislukte!"
-
-#: src/net/tmwa/specialhandler.cpp:168
-msgid "Emote failed!"
-msgstr "Emoticon gefaald!"
-
-#: src/net/tmwa/specialhandler.cpp:171
-msgid "Sit failed!"
-msgstr "Zitten niet mogelijk!"
-
-#: src/net/tmwa/specialhandler.cpp:174
-msgid "Chat creating failed!"
-msgstr "Chatcreatie mislukte!"
-
-#: src/net/tmwa/specialhandler.cpp:177
-msgid "Could not join party!"
-msgstr "Kan je niet bij de groep voegen!"
-
-#: src/net/tmwa/specialhandler.cpp:180
-msgid "Cannot shout!"
-msgstr "Kan niet roepen!"
-
-#: src/net/tmwa/specialhandler.cpp:193
-msgid "You have not yet reached a high enough lvl!"
-msgstr "Je hebt nog geen hoog genoeg level bereikt!"
-
-#: src/net/tmwa/specialhandler.cpp:197
-msgid "Insufficient HP!"
-msgstr "Onvoldoende leven!"
-
-#: src/net/tmwa/specialhandler.cpp:200
-msgid "Insufficient SP!"
-msgstr "Onvoldoende Vaardigheidspunten!"
-
-#: src/net/tmwa/specialhandler.cpp:203
-msgid "You have no memos!"
-msgstr "Je hebt geen memo's!"
-
-#: src/net/tmwa/specialhandler.cpp:206
-msgid "You cannot do that right now!"
-msgstr "Je kan dat nu niet doen!"
-
-#: src/net/tmwa/specialhandler.cpp:209
-msgid "Seems you need more money... ;-)"
-msgstr "Het lijkt erop dat je meer geld nodig hebt... ;-)"
-
-#: src/net/tmwa/specialhandler.cpp:212
-msgid "You cannot use this skill with that kind of weapon!"
-msgstr "Je kan die vaardigheid niet gebruiken met dit type wapen!"
-
-#: src/net/tmwa/specialhandler.cpp:216
-msgid "You need another red gem!"
-msgstr "Je hebt een andere rode edelsteen nodig!"
-
-#: src/net/tmwa/specialhandler.cpp:219
-msgid "You need another blue gem!"
-msgstr "Je hebt een andere blauwe edelsteen nodig!"
-
-#: src/net/tmwa/specialhandler.cpp:222
-msgid "You're carrying to much to do this!"
-msgstr "Je draagt teveel bij je om dit te doen!"
-
-#: src/net/tmwa/specialhandler.cpp:225
-msgid "Huh? What's that?"
-msgstr "Huh? Wat is dat?"
-
-#: src/net/tmwa/specialhandler.cpp:236
-msgid "Warp failed..."
-msgstr "Warp mislukt..."
-
-#: src/net/tmwa/specialhandler.cpp:239
-msgid "Could not steal anything..."
-msgstr "Kon niets stelen..."
-
-#: src/net/tmwa/specialhandler.cpp:242
-msgid "Poison had no effect..."
-msgstr "Gif had geen effect..."
-
-#: src/net/tmwa/tradehandler.cpp:148
-msgid "Trading isn't possible. Trade partner is too far away."
-msgstr "Handelen is niet mogelijk. Partner is te ver weg."
-
-#: src/net/tmwa/tradehandler.cpp:152
-msgid "Trading isn't possible. Character doesn't exist."
-msgstr "Handelen is niet mogelijk. Personage bestaat niet."
-
-#: src/net/tmwa/tradehandler.cpp:156
-msgid "Trade cancelled due to an unknown reason."
-msgstr "Handel onderbroken vanwege een onbekende reden."
-
-#: src/net/tmwa/tradehandler.cpp:164
-#, c-format
-msgid "Trade: You and %s"
-msgstr "Handelen: Jij en %s"
-
-#: src/net/tmwa/tradehandler.cpp:174
-#, c-format
-msgid "Trade with %s cancelled."
-msgstr "Handel met %s geannuleerd."
-
-#: src/net/tmwa/tradehandler.cpp:187
-msgid "Unhandled trade cancel packet."
-msgstr ""
-
-#: src/net/tmwa/tradehandler.cpp:250
-msgid "Failed adding item. Trade partner is over weighted."
-msgstr "Kan voorwerp niet toevoegen. Handelspartner is al te zwaar beladen."
-
-#: src/net/tmwa/tradehandler.cpp:255
-msgid "Failed adding item. Trade partner has no free slot."
-msgstr "Kan voorwerp niet toevoegen. Handelspartner heeft geen vrij slot."
-
-#: src/net/tmwa/tradehandler.cpp:260
-msgid "Failed adding item. You can't trade this item."
-msgstr ""
-"Gefaald om voorwerp toe te voegen. U kan dit voorwerp niet verhandelen."
-
-#: src/net/tmwa/tradehandler.cpp:264
-msgid "Failed adding item for unknown reason."
-msgstr "Kan voorwerp niet toevoegen voor een onbekende reden."
 
 #: src/playerrelations.cpp:414
 msgid "Print '...'"
@@ -5426,31 +4752,319 @@ msgstr ""
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:245
+#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:248
 #: src/resources/monsterdb.cpp:84
 msgid "unnamed"
 msgstr "naamloos"
 
-#: src/resources/itemdb.cpp:62
+#: src/resources/itemdb.cpp:65
 #, c-format
 msgid "Attack %+d"
 msgstr "Aanval %+d"
 
-#: src/resources/itemdb.cpp:63
+#: src/resources/itemdb.cpp:66
 #, c-format
 msgid "Defense %+d"
 msgstr "Verdediging %+d"
 
-#: src/resources/itemdb.cpp:64
+#: src/resources/itemdb.cpp:67
 #, c-format
 msgid "HP %+d"
 msgstr "Leven %+d"
 
-#: src/resources/itemdb.cpp:65
+#: src/resources/itemdb.cpp:68
 #, c-format
 msgid "MP %+d"
 msgstr "Magie %+d"
 
-#: src/resources/itemdb.cpp:168
+#: src/resources/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Onbekend voorwerp"
+
+#~ msgid "Failed to create character. Most likely the name is already taken."
+#~ msgstr "Kan personage niet aanmaken. Waarschijnlijk bestaat de naam al."
+
+#~ msgid "Character deleted."
+#~ msgstr "Personage verwijderd."
+
+#~ msgid "Failed to delete character."
+#~ msgstr "Kon personage niet verwijderen."
+
+#~ msgid "Strength:"
+#~ msgstr "Sterkte:"
+
+#~ msgid "Agility:"
+#~ msgstr "Agiliteit:"
+
+#~ msgid "Vitality:"
+#~ msgstr "Vitaliteit:"
+
+#~ msgid "Intelligence:"
+#~ msgstr "Intelligentie:"
+
+#~ msgid "Dexterity:"
+#~ msgstr "Dexteriteit:"
+
+#~ msgid "Luck:"
+#~ msgstr "Geluk:"
+
+#~ msgid "Channels are not supported!"
+#~ msgstr "Kanalen worden niet ondersteund!"
+
+#~ msgid "/help > Display this help."
+#~ msgstr "/help > Geeft deze help weer."
+
+#~ msgid "Command: /invite <nick>"
+#~ msgstr "Commando: /invite <nick>"
+
+#~ msgid "Command: /leave"
+#~ msgstr "Commando: /leave"
+
+#~ msgid "/invite > Invite a player to your party"
+#~ msgstr "/invite > Nodig een speler uit voor jouw groep"
+
+#~ msgid "/leave > Leave the party you are in"
+#~ msgstr "/leave > Verlaat de groep waarin je je bevindt"
+
+#~ msgid "/kick > Kick some one from the party you are in"
+#~ msgstr "/kick > Verwijder iemand vanuit de groep waarin je bent"
+
+#~ msgid "/item > Show/change party item sharing options"
+#~ msgstr "/item > Geeft weer/wijzigt de opties voor voorwerpdeling"
+
+#~ msgid "/exp > Show/change party experience sharing options"
+#~ msgstr "/exp > Geeft weer/wijzigt de ervaringsdelingsopties"
+
+#~ msgid "This command invites <nick> to party with you."
+#~ msgstr "Dit commando nodigt <nick> uit om een groep te vormen met jou."
+
+#~ msgid "This command causes the player to leave the party."
+#~ msgstr "Dit commando zorgt ervoor dat de speler de groep verlaat."
+
+#~ msgid "Command: /item <policy>"
+#~ msgstr "Commando: /item <beleid>"
+
+#~ msgid "This command changes the party's item sharing policy."
+#~ msgstr "Dit commando wijzigt het voorwerpdelingsbeleid van de groep."
+
+#~ msgid ""
+#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, "
+#~ "or \"0\", \"no\", \"false\" to disable item sharing."
+#~ msgstr ""
+#~ "<beleid> kan een van de volgende zijn om voorwerpdeling in te schakelen: "
+#~ "\"1\", \"yes\", \"true\". Of om voorwerpdeling uit te schakelen: \"0\", "
+#~ "\"no\", \"false\"."
+
+#~ msgid "Command: /item"
+#~ msgstr "Commando: /item"
+
+#~ msgid "This command displays the party's current item sharing policy."
+#~ msgstr ""
+#~ "Dit commando geeft het huidige voorwerpdelingsbeleid van de groep weer."
+
+#~ msgid "Command: /exp <policy>"
+#~ msgstr "Commando: /exp <beleid>"
+
+#~ msgid "This command changes the party's experience sharing policy."
+#~ msgstr "Dit commando wijzigt het ervaringsdelingsbeleid van de groep."
+
+#~ msgid ""
+#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
+#~ "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
+#~ msgstr ""
+#~ "<beleid> kan een van de volgende zijn om ervaringsdeling in te schakelen: "
+#~ "\"1\", \"true\", \"yes\". Of om ervaringsdeling uit te schakelen: \"0\", "
+#~ "\"false\", \"no\"."
+
+#~ msgid "Command: /exp"
+#~ msgstr "Commando: /exp"
+
+#~ msgid "This command displays the party's current experience sharing policy."
+#~ msgstr ""
+#~ "Dit commando geeft het huidige ervaringsdelingbeleid van de groep weer."
+
+#~ msgid "Item sharing enabled."
+#~ msgstr "Voorwerpdeling ingeschakeld."
+
+#~ msgid "Item sharing disabled."
+#~ msgstr "Voorwerpdeling uitgeschakeld."
+
+#~ msgid "Item sharing not possible."
+#~ msgstr "Voorwerpdeling is niet mogelijk."
+
+#~ msgid "Item sharing unknown."
+#~ msgstr "Voorwerpdeling onbekend."
+
+#~ msgid "Experience sharing enabled."
+#~ msgstr "Ervaringsdeling ingeschakeld."
+
+#~ msgid "Experience sharing disabled."
+#~ msgstr "Ervaringsdeling uitgeschakeld."
+
+#~ msgid "Experience sharing not possible."
+#~ msgstr "Ervaringsdeling is niet mogelijk."
+
+#~ msgid "Failed to use item."
+#~ msgstr "Kan voorwerp niet gebruiken."
+
+#~ msgid "Unable to equip."
+#~ msgstr "Kan dit niet uitrusten."
+
+#~ msgid "Account was not found. Please re-login."
+#~ msgstr "Account was niet gevonden. Probeer opnieuw in te loggen aub."
+
+#~ msgid ""
+#~ "You have been temporarily banned from the game until %s.\n"
+#~ "Please contact the GM team via the forums."
+#~ msgstr ""
+#~ "Je bent tijdelijk geband van het spel tot %s.\n"
+#~ "Neem aub contact op met het GM team via de forums."
+
+#~ msgid "Could not create party."
+#~ msgstr "Kan geen groep aanmaken."
+
+#~ msgid "Party successfully created."
+#~ msgstr "Groep succesvol aangemaakt."
+
+#~ msgid "%s is already a member of a party."
+#~ msgstr "%s is al een lid van een groep."
+
+#~ msgid "%s refused your invitation."
+#~ msgstr "%s wees jouw uitnodiging af."
+
+#~ msgid "%s is now a member of your party."
+#~ msgstr "%s is nu een lid van jouw groep."
+
+#~ msgid "You have left the party."
+#~ msgstr "Je hebt de groep verlaten."
+
+#~ msgid "%s has left your party."
+#~ msgstr "%s heeft jouw groep verlaten."
+
+#~ msgid "An unknown member tried to say: %s"
+#~ msgstr "Een onbekend lid probeerde te zeggen: %s"
+
+#~ msgid "Insert coin to continue."
+#~ msgstr "Werp een muntstuk in om verder te spelen."
+
+#~ msgid "You're not dead yet. You're just resting."
+#~ msgstr "Je bent nog niet dood. Je bent maar aan het rusten."
+
+#~ msgid "You are no more."
+#~ msgstr "Je bent niet langer."
+
+#~ msgid "You have ceased to be."
+#~ msgstr "Je hebt opgehouden te zijn."
+
+#~ msgid "You've expired and gone to meet your maker."
+#~ msgstr "Je bent verlopen en gaat een bezoekje maken bij jouw schepper."
+
+#~ msgid "You're a stiff."
+#~ msgstr "Je bent stokstijf."
+
+#~ msgid "Bereft of life, you rest in peace."
+#~ msgstr "Beroofd van het leven, rust je in vrede."
+
+#~ msgid "Your metabolic processes are now history."
+#~ msgstr "Jouw metabolische processen behoren nu tot het verleden."
+
+#~ msgid "You are an ex-player."
+#~ msgstr "Je bent een ex-speler."
+
+#~ msgid "Message"
+#~ msgstr "Bericht"
+
+#~ msgid ""
+#~ "You are carrying more than half your weight. You are unable to regain "
+#~ "health."
+#~ msgstr ""
+#~ "Je draagt meer dan de helft van jouw eigen gewicht. Je kan geen leven "
+#~ "herstellen."
+
+#~ msgid "Trade failed!"
+#~ msgstr "Handel mislukte!"
+
+#~ msgid "Emote failed!"
+#~ msgstr "Emoticon gefaald!"
+
+#~ msgid "Sit failed!"
+#~ msgstr "Zitten niet mogelijk!"
+
+#~ msgid "Chat creating failed!"
+#~ msgstr "Chatcreatie mislukte!"
+
+#~ msgid "Could not join party!"
+#~ msgstr "Kan je niet bij de groep voegen!"
+
+#~ msgid "Cannot shout!"
+#~ msgstr "Kan niet roepen!"
+
+#~ msgid "You have not yet reached a high enough lvl!"
+#~ msgstr "Je hebt nog geen hoog genoeg level bereikt!"
+
+#~ msgid "Insufficient HP!"
+#~ msgstr "Onvoldoende leven!"
+
+#~ msgid "Insufficient SP!"
+#~ msgstr "Onvoldoende Vaardigheidspunten!"
+
+#~ msgid "You have no memos!"
+#~ msgstr "Je hebt geen memo's!"
+
+#~ msgid "You cannot do that right now!"
+#~ msgstr "Je kan dat nu niet doen!"
+
+#~ msgid "Seems you need more money... ;-)"
+#~ msgstr "Het lijkt erop dat je meer geld nodig hebt... ;-)"
+
+#~ msgid "You cannot use this skill with that kind of weapon!"
+#~ msgstr "Je kan die vaardigheid niet gebruiken met dit type wapen!"
+
+#~ msgid "You need another red gem!"
+#~ msgstr "Je hebt een andere rode edelsteen nodig!"
+
+#~ msgid "You need another blue gem!"
+#~ msgstr "Je hebt een andere blauwe edelsteen nodig!"
+
+#~ msgid "You're carrying to much to do this!"
+#~ msgstr "Je draagt teveel bij je om dit te doen!"
+
+#~ msgid "Huh? What's that?"
+#~ msgstr "Huh? Wat is dat?"
+
+#~ msgid "Warp failed..."
+#~ msgstr "Warp mislukt..."
+
+#~ msgid "Could not steal anything..."
+#~ msgstr "Kon niets stelen..."
+
+#~ msgid "Poison had no effect..."
+#~ msgstr "Gif had geen effect..."
+
+#~ msgid "Trading isn't possible. Trade partner is too far away."
+#~ msgstr "Handelen is niet mogelijk. Partner is te ver weg."
+
+#~ msgid "Trading isn't possible. Character doesn't exist."
+#~ msgstr "Handelen is niet mogelijk. Personage bestaat niet."
+
+#~ msgid "Trade cancelled due to an unknown reason."
+#~ msgstr "Handel onderbroken vanwege een onbekende reden."
+
+#~ msgid "Trade: You and %s"
+#~ msgstr "Handelen: Jij en %s"
+
+#~ msgid "Trade with %s cancelled."
+#~ msgstr "Handel met %s geannuleerd."
+
+#~ msgid "Failed adding item. Trade partner is over weighted."
+#~ msgstr "Kan voorwerp niet toevoegen. Handelspartner is al te zwaar beladen."
+
+#~ msgid "Failed adding item. Trade partner has no free slot."
+#~ msgstr "Kan voorwerp niet toevoegen. Handelspartner heeft geen vrij slot."
+
+#~ msgid "Failed adding item. You can't trade this item."
+#~ msgstr ""
+#~ "Gefaald om voorwerp toe te voegen. U kan dit voorwerp niet verhandelen."
+
+#~ msgid "Failed adding item for unknown reason."
+#~ msgstr "Kan voorwerp niet toevoegen voor een onbekende reden."

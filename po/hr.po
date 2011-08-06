@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-23 17:22+0300\n"
+"POT-Creation-Date: 2011-08-06 16:24+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -34,107 +34,106 @@ msgid "miss"
 msgstr ""
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1512
+#: src/being.cpp:1513
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1517
+#: src/being.cpp:1518
 #, fuzzy
 msgid "I"
 msgstr "Je"
 
-#: src/client.cpp:823 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Podešavanje"
 
-#: src/client.cpp:903
+#: src/client.cpp:907
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Spajanje na poslužitelja karti..."
 
-#: src/client.cpp:934
+#: src/client.cpp:938
 #, fuzzy
 msgid "Logging in"
 msgstr "Korisničko ime"
 
-#: src/client.cpp:967
+#: src/client.cpp:971
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1067
+#: src/client.cpp:1071
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Odaberi lika"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1102
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Spajanje na poslužitelja karti..."
 
-#: src/client.cpp:1108
+#: src/client.cpp:1112
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Server"
 
-#: src/client.cpp:1145 src/client.cpp:1152 src/client.cpp:1289
+#: src/client.cpp:1149 src/client.cpp:1156 src/client.cpp:1293
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
 #: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
-#: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:190
-#: src/net/tmwa/charserverhandler.cpp:206
+#: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Greška"
 
-#: src/client.cpp:1161
+#: src/client.cpp:1165
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1188
+#: src/client.cpp:1192
 #, fuzzy
 msgid "Password Change"
 msgstr "Lozinka"
 
-#: src/client.cpp:1189
+#: src/client.cpp:1193
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1208
+#: src/client.cpp:1212
 #, fuzzy
 msgid "Email Change"
 msgstr "Izmijeni"
 
-#: src/client.cpp:1209
+#: src/client.cpp:1213
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "Član je uspješno unaprijeđen."
 
-#: src/client.cpp:1229
+#: src/client.cpp:1233
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Odjavi"
 
-#: src/client.cpp:1230
+#: src/client.cpp:1234
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1419 src/client.cpp:1449 src/client.cpp:1493
-#: src/client.cpp:1914
+#: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
+#: src/client.cpp:1918
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1624
+#: src/client.cpp:1628
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:1658 src/client.cpp:1664
+#: src/client.cpp:1662 src/client.cpp:1668
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:1685
+#: src/client.cpp:1689
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -161,7 +160,7 @@ msgstr ""
 msgid "Requesting to join channel %s."
 msgstr "Zahtjev za pridruživanje kanalu %s."
 
-#: src/commandhandler.cpp:445 src/net/tmwa/gui/partytab.cpp:125
+#: src/commandhandler.cpp:445
 msgid "Party name is missing."
 msgstr "Ime partije nedostaje."
 
@@ -402,7 +401,7 @@ msgstr "Ime"
 
 #: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:130
 #: src/gui/popupmenu.cpp:286 src/gui/popupmenu.cpp:604
-#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:264
+#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:266
 msgid "Attack"
 msgstr "Napad"
 
@@ -2620,7 +2619,6 @@ msgid "Show links in announce"
 msgstr ""
 
 #: src/gui/shopwindow.cpp:723 src/net/manaserv/tradehandler.cpp:127
-#: src/net/tmwa/tradehandler.cpp:124
 msgid "Request for Trade"
 msgstr "Zahtjev za Trgovanje"
 
@@ -2662,7 +2660,7 @@ msgstr "Nivo: %d"
 msgid "Lvl: %d (%+d)"
 msgstr "Nivo: %d"
 
-#: src/gui/socialwindow.cpp:117 src/net/tmwa/gui/guildtab.cpp:50
+#: src/gui/socialwindow.cpp:117
 msgid "Guild"
 msgstr "Ceh"
 
@@ -2695,7 +2693,7 @@ msgstr "Formiraj Ceh"
 msgid "Are you sure you want to leave guild %s?"
 msgstr "Jeste li sigurni da želite odustati?"
 
-#: src/gui/socialwindow.cpp:215 src/net/tmwa/gui/partytab.cpp:50
+#: src/gui/socialwindow.cpp:215
 msgid "Party"
 msgstr "Partija"
 
@@ -3713,7 +3711,6 @@ msgid "This command makes <nick> a channel operator."
 msgstr "Ova naredba čini <nadimak> operatorom kanala."
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
-#: src/net/tmwa/gui/guildtab.cpp:91 src/net/tmwa/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr ""
 "Ako <nick> ima razmake u sebi, zatvoriti ga u dvostrukim navodnicima (\")."
@@ -4503,7 +4500,7 @@ msgstr "Hvala za kupnju."
 msgid "Unable to buy."
 msgstr "Ne može se kupiti"
 
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:257
+#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:259
 msgid "Strength"
 msgstr "Snaga"
 
@@ -4512,7 +4509,7 @@ msgstr "Snaga"
 msgid "Strength %+.1f"
 msgstr "Snaga %+d"
 
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:258
+#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:260
 msgid "Agility"
 msgstr "Okretnost"
 
@@ -4521,7 +4518,7 @@ msgstr "Okretnost"
 msgid "Agility %+.1f"
 msgstr "Okretnost %+d"
 
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:261
+#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:263
 msgid "Dexterity"
 msgstr "Spretnost"
 
@@ -4530,7 +4527,7 @@ msgstr "Spretnost"
 msgid "Dexterity %+.1f"
 msgstr "Spretnost %+d"
 
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:259
+#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:261
 msgid "Vitality"
 msgstr "Vitalnost"
 
@@ -4539,7 +4536,7 @@ msgstr "Vitalnost"
 msgid "Vitality %+.1f"
 msgstr "Vitalnost %+d"
 
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:260
+#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:262
 msgid "Intelligence"
 msgstr "Inteligencija"
 
@@ -4558,60 +4555,60 @@ msgstr "Snaga volje:"
 msgid "Willpower %+.1f"
 msgstr "Snaga Volje %+d"
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:103
+#: src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
 msgstr "Vi ste mrtvi."
 
-#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:316
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "Žao nam je obavijestiti vas da je vaš lik je bio ubijen u borbi."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:106
+#: src/net/manaserv/beinghandler.cpp:318
 msgid "You are not that alive anymore."
 msgstr "Niste više tako živi."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:319
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr ""
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:108
+#: src/net/manaserv/beinghandler.cpp:320
 msgid "Game Over!"
 msgstr "Kraj Igre!"
 
-#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:110
+#: src/net/manaserv/beinghandler.cpp:321
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr ""
 "Ne, djeco. Vaš lik zapravo nije umro. On... err... je otišao na bolje mjesto."
 
-#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:112
+#: src/net/manaserv/beinghandler.cpp:323
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr ""
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:114
+#: src/net/manaserv/beinghandler.cpp:325
 msgid "I guess this did not run too well."
 msgstr "Predpostavljam da ovo nije išlo previše dobro."
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:116
+#: src/net/manaserv/beinghandler.cpp:326
 msgid "Do you want your possessions identified?"
 msgstr "Želite li svoju imovinu identificirati?"
 
-#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:118
+#: src/net/manaserv/beinghandler.cpp:327
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Nažalost, ni traga od vas nije nikada pronađeno ..."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:120
+#: src/net/manaserv/beinghandler.cpp:329
 msgid "Annihilated."
 msgstr "Uništen."
 
-#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:122
+#: src/net/manaserv/beinghandler.cpp:330
 msgid "Looks like you got your head handed to you."
 msgstr "Izgleda da su vam predali vašu glavu."
 
-#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:124
+#: src/net/manaserv/beinghandler.cpp:332
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -4678,12 +4675,11 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:203
 #, fuzzy
 msgid "Unknown error."
 msgstr "Nepoznata greška"
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:201
+#: src/net/manaserv/charhandler.cpp:210
 msgid "Info"
 msgstr "Info"
 
@@ -4756,7 +4752,7 @@ msgstr ""
 msgid "Unknown channel event."
 msgstr "Nepoznata naredba."
 
-#: src/net/manaserv/guildhandler.cpp:85 src/net/tmwa/guildhandler.cpp:107
+#: src/net/manaserv/guildhandler.cpp:85
 msgid "Guild created."
 msgstr "Ceh, ustanovljen."
 
@@ -4796,7 +4792,7 @@ msgstr "Račun je istekao"
 msgid "New password incorrect."
 msgstr "Nova lozinka je netočna"
 
-#: src/net/manaserv/loginhandler.cpp:127 src/net/tmwa/loginhandler.cpp:96
+#: src/net/manaserv/loginhandler.cpp:127
 #, fuzzy
 msgid "Old password incorrect."
 msgstr "Stara lozinka je netočna"
@@ -4885,7 +4881,7 @@ msgstr "Prihvaćanje dolaznih zahtjeva za trgovanje."
 msgid "Ignoring incoming trade requests."
 msgstr "Ignoriranje nadolazećih zahtjeva za trgovanje."
 
-#: src/net/manaserv/tradehandler.cpp:128 src/net/tmwa/tradehandler.cpp:125
+#: src/net/manaserv/tradehandler.cpp:128
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s želi trgovati s vama, prihvaćate li?"
@@ -4895,11 +4891,11 @@ msgstr "%s želi trgovati s vama, prihvaćate li?"
 msgid "Trading with %s"
 msgstr "Trgovanje s %s"
 
-#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:282
+#: src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "Otkazano trgovanje."
 
-#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:292
+#: src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "Trgovanje je završeno."
 
@@ -4911,560 +4907,141 @@ msgstr "Šut nije uspio!"
 msgid "Kick succeeded!"
 msgstr "Šut uspio!"
 
-#: src/net/tmwa/buysellhandler.cpp:131
+#: src/net/tmwa/buysellhandler.cpp:133
 msgid "Thanks for selling."
 msgstr "Hvala za prodaju."
 
-#: src/net/tmwa/buysellhandler.cpp:135
+#: src/net/tmwa/buysellhandler.cpp:137
 msgid "Unable to sell."
 msgstr "Nije moguće prodati."
 
-#: src/net/tmwa/buysellhandler.cpp:138
+#: src/net/tmwa/buysellhandler.cpp:140
 #, fuzzy
 msgid "Unable to sell while trading."
 msgstr "Nije moguće prodati."
 
-#: src/net/tmwa/buysellhandler.cpp:141
+#: src/net/tmwa/buysellhandler.cpp:143
 #, fuzzy
 msgid "Unable to sell unsellable item."
 msgstr "Nije moguće prodati."
 
-#: src/net/tmwa/charserverhandler.cpp:121
-msgid "Access denied. Most likely, there are too many players on this server."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:125
-#, fuzzy
-msgid "Cannot use this ID."
-msgstr "Ne mogu koristiti ovaj ID"
-
-#: src/net/tmwa/charserverhandler.cpp:128
-#, fuzzy
-msgid "Unknown char-server failure."
-msgstr "Nepoznata greška"
-
-#: src/net/tmwa/charserverhandler.cpp:174
-msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Ne mogu stvoriti lik. Najvjerojatnije je ime već zauzeto."
-
-#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:197
-#, fuzzy
-msgid "Wrong name."
-msgstr "Pogrešan magični_simbol"
-
-#: src/net/tmwa/charserverhandler.cpp:181
-msgid "Incorrect stats."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:184
-msgid "Incorrect hair."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:187
-msgid "Incorrect slot."
-msgstr ""
-
-#: src/net/tmwa/charserverhandler.cpp:201
-msgid "Character deleted."
-msgstr "Lik izbrisan."
-
-#: src/net/tmwa/charserverhandler.cpp:206
-msgid "Failed to delete character."
-msgstr "Neuspješno brisanje znaka."
-
-#: src/net/tmwa/charserverhandler.cpp:383
-msgid "Strength:"
-msgstr "Snaga:"
-
-#: src/net/tmwa/charserverhandler.cpp:384
-msgid "Agility:"
-msgstr "Okretnost:"
-
-#: src/net/tmwa/charserverhandler.cpp:385
-msgid "Vitality:"
-msgstr "Vitalnost:"
-
-#: src/net/tmwa/charserverhandler.cpp:386
-msgid "Intelligence:"
-msgstr "Inteligencija:"
-
-#: src/net/tmwa/charserverhandler.cpp:387
-msgid "Dexterity:"
-msgstr "Spretnost:"
-
-#: src/net/tmwa/charserverhandler.cpp:388
-msgid "Luck:"
-msgstr "Sreća:"
-
-#: src/net/tmwa/chathandler.cpp:106
-#, fuzzy, c-format
-msgid "Whisper could not be sent, %s is offline."
-msgstr "Šapat nije mogao biti poslan, korisnik je offline."
-
-#: src/net/tmwa/chathandler.cpp:114
-#, fuzzy, c-format
-msgid "Whisper could not be sent, ignored by %s."
-msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
-
-#: src/net/tmwa/chathandler.cpp:334
-#, fuzzy
-msgid "MVP player."
-msgstr "Igrač"
-
-#: src/net/tmwa/chathandler.cpp:338
-#, fuzzy
-msgid "MVP player: "
-msgstr "Igrač"
-
-#: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
-#: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
-#: src/net/tmwa/chathandler.cpp:413 src/net/tmwa/chathandler.cpp:419
-#: src/net/tmwa/chathandler.cpp:426 src/net/tmwa/chathandler.cpp:432
-msgid "Channels are not supported!"
-msgstr "Kanali nisu podržani!"
-
-#: src/net/tmwa/gamehandler.cpp:96
-#, c-format
-msgid "Online users: %d"
-msgstr ""
-
-#: src/net/tmwa/gamehandler.cpp:106
-#, fuzzy
-msgid "Game"
-msgstr "Ime"
-
-#: src/net/tmwa/gamehandler.cpp:106
-#, fuzzy
-msgid "Request to quit denied!"
-msgstr "Zahtjev za Trgovanje"
-
-#: src/net/tmwa/generalhandler.cpp:107
+#: src/net/tmwa/generalhandler.cpp:109
 #, c-format
 msgid "Strength %+d"
 msgstr "Snaga %+d"
 
-#: src/net/tmwa/generalhandler.cpp:108
+#: src/net/tmwa/generalhandler.cpp:110
 #, c-format
 msgid "Agility %+d"
 msgstr "Okretnost %+d"
 
-#: src/net/tmwa/generalhandler.cpp:109
+#: src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Vitality %+d"
 msgstr "Vitalnost %+d"
 
-#: src/net/tmwa/generalhandler.cpp:110
+#: src/net/tmwa/generalhandler.cpp:112
 #, c-format
 msgid "Intelligence %+d"
 msgstr "Inteligencija %+d"
 
-#: src/net/tmwa/generalhandler.cpp:111
+#: src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Dexterity %+d"
 msgstr "Spretnost %+d"
 
-#: src/net/tmwa/generalhandler.cpp:112
+#: src/net/tmwa/generalhandler.cpp:114
 #, c-format
 msgid "Luck %+d"
 msgstr "Sreća %+d"
 
-#: src/net/tmwa/generalhandler.cpp:138
+#: src/net/tmwa/generalhandler.cpp:140
 #, fuzzy
 msgid "Authentication failed."
 msgstr "Autentikacija nije uspjela"
 
-#: src/net/tmwa/generalhandler.cpp:141
+#: src/net/tmwa/generalhandler.cpp:143
 #, fuzzy
 msgid "No servers available."
 msgstr "Nema dostupnih poslužitelji"
 
-#: src/net/tmwa/generalhandler.cpp:145
+#: src/net/tmwa/generalhandler.cpp:147
 #, fuzzy
 msgid "Someone else is trying to use this account."
 msgstr "Netko drugi pokušava korištiti ovaj račun"
 
-#: src/net/tmwa/generalhandler.cpp:148
+#: src/net/tmwa/generalhandler.cpp:150
 #, fuzzy
 msgid "This account is already logged in."
 msgstr "Ovaj korisnički račun je već prijavljen"
 
-#: src/net/tmwa/generalhandler.cpp:151
+#: src/net/tmwa/generalhandler.cpp:153
 #, fuzzy
 msgid "Speed hack detected."
 msgstr "Otkrit brzi hack"
 
-#: src/net/tmwa/generalhandler.cpp:154
+#: src/net/tmwa/generalhandler.cpp:156
 #, fuzzy
 msgid "Duplicated login."
 msgstr "Dvostruka prijava"
 
-#: src/net/tmwa/generalhandler.cpp:157
+#: src/net/tmwa/generalhandler.cpp:159
 #, fuzzy
 msgid "Unknown connection error."
 msgstr "Nepoznata pogreška veze"
 
-#: src/net/tmwa/generalhandler.cpp:230
+#: src/net/tmwa/generalhandler.cpp:232
 msgid "Got disconnected from server!"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:262
+#: src/net/tmwa/generalhandler.cpp:264
 msgid "Luck"
 msgstr "Sreća"
 
-#: src/net/tmwa/generalhandler.cpp:265
+#: src/net/tmwa/generalhandler.cpp:267
 #, fuzzy
 msgid "Defense"
 msgstr "Obrana:"
 
-#: src/net/tmwa/generalhandler.cpp:266
+#: src/net/tmwa/generalhandler.cpp:268
 #, fuzzy
 msgid "M.Attack"
 msgstr "M.Napad:"
 
-#: src/net/tmwa/generalhandler.cpp:267
+#: src/net/tmwa/generalhandler.cpp:269
 #, fuzzy
 msgid "M.Defense"
 msgstr "M.Obrana:"
 
-#: src/net/tmwa/generalhandler.cpp:269
+#: src/net/tmwa/generalhandler.cpp:271
 #, fuzzy, no-c-format
 msgid "% Accuracy"
 msgstr "% Preciznost:"
 
-#: src/net/tmwa/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:273
 #, fuzzy, no-c-format
 msgid "% Evade"
 msgstr "% Izbjegavanje:"
 
-#: src/net/tmwa/generalhandler.cpp:273
+#: src/net/tmwa/generalhandler.cpp:275
 #, fuzzy, no-c-format
 msgid "% Critical"
 msgstr "Kritični Udarac"
 
-#: src/net/tmwa/generalhandler.cpp:274
+#: src/net/tmwa/generalhandler.cpp:276
 #, fuzzy
 msgid "Attack Delay"
 msgstr "Napad %+d"
 
-#: src/net/tmwa/generalhandler.cpp:276
+#: src/net/tmwa/generalhandler.cpp:278
 #, fuzzy
 msgid "Walk Delay"
 msgstr "Napad %+d"
 
-#: src/net/tmwa/generalhandler.cpp:278
+#: src/net/tmwa/generalhandler.cpp:280
 #, fuzzy
 msgid "Attack Range"
 msgstr "Čudovište pogađa Igrača"
-
-#: src/net/tmwa/gui/guildtab.cpp:77 src/net/tmwa/gui/partytab.cpp:69
-msgid "/help > Display this help."
-msgstr "/help > Prikaži ovu pomoć."
-
-#: src/net/tmwa/gui/guildtab.cpp:78
-#, fuzzy
-msgid "/invite > Invite a player to your guild"
-msgstr "/invite > Pozovite igrače na vašu partiju"
-
-#: src/net/tmwa/gui/guildtab.cpp:79
-#, fuzzy
-msgid "/leave > Leave the guild you are in"
-msgstr "/leave > Napustite partiju u kojoj ste"
-
-#: src/net/tmwa/gui/guildtab.cpp:80
-#, fuzzy
-msgid "/kick > Kick some one from the guild you are in"
-msgstr "/kick > Šutnite nekog iz partije u kojoj ste"
-
-#: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
-msgid "Command: /invite <nick>"
-msgstr "Naredba: /invite <nick>"
-
-#: src/net/tmwa/gui/guildtab.cpp:90
-#, fuzzy
-msgid "This command invites <nick> to the guild you're in."
-msgstr "Ova naredba poziva <nick> na partiju sa vama."
-
-#: src/net/tmwa/gui/guildtab.cpp:96 src/net/tmwa/gui/partytab.cpp:90
-msgid "Command: /leave"
-msgstr "Naredba: /leave"
-
-#: src/net/tmwa/gui/guildtab.cpp:97
-#, fuzzy
-msgid "This command causes the player to leave the guild."
-msgstr "Ova naredba postavlja temu za <message>."
-
-#: src/net/tmwa/guildhandler.cpp:112 src/net/tmwa/guildhandler.cpp:117
-#, fuzzy
-msgid "You are already in guild."
-msgstr "Pogreška pri ustanovljavanju ceha."
-
-#: src/net/tmwa/guildhandler.cpp:122
-msgid "Emperium check failed."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:127
-#, fuzzy
-msgid "Unknown server response."
-msgstr "Nepoznata greška"
-
-#: src/net/tmwa/guildhandler.cpp:205
-#, fuzzy, c-format
-msgid "Guild name: %s"
-msgstr "Ceh"
-
-#: src/net/tmwa/guildhandler.cpp:207
-#, fuzzy, c-format
-msgid "Guild master: %s"
-msgstr "Ceh"
-
-#: src/net/tmwa/guildhandler.cpp:209
-#, fuzzy, c-format
-msgid "Guild level: %d"
-msgstr "Nivo: %d"
-
-#: src/net/tmwa/guildhandler.cpp:211
-#, c-format
-msgid "Online members: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:213
-#, c-format
-msgid "Max members: %d"
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:215
-#, fuzzy, c-format
-msgid "Average level: %d"
-msgstr "Najviša razina"
-
-#: src/net/tmwa/guildhandler.cpp:217
-#, fuzzy, c-format
-msgid "Guild exp: %d"
-msgstr "Ceh"
-
-#: src/net/tmwa/guildhandler.cpp:219
-#, fuzzy, c-format
-msgid "Guild next exp: %d"
-msgstr "Ceh, ustanovljen."
-
-#: src/net/tmwa/guildhandler.cpp:221
-#, fuzzy, c-format
-msgid "Guild castle: %s"
-msgstr "Ceh, ustanovljen."
-
-#: src/net/tmwa/guildhandler.cpp:436
-msgid "Could not inivte user to guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:441
-msgid "User rejected guild invite."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:446
-#, fuzzy
-msgid "User is now part of your guild."
-msgstr "%s je sada član vaše partije."
-
-#: src/net/tmwa/guildhandler.cpp:451
-msgid "Your guild is full."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:456
-msgid "Unknown guild invite response."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:478
-#, fuzzy
-msgid "You have left the guild."
-msgstr "Napustili ste partiju."
-
-#: src/net/tmwa/guildhandler.cpp:492
-#, fuzzy, c-format
-msgid "%s has left your guild."
-msgstr "%s je napustio/la vašu partiju."
-
-#: src/net/tmwa/guildhandler.cpp:524
-msgid "You was kicked from guild."
-msgstr ""
-
-#: src/net/tmwa/guildhandler.cpp:538
-#, fuzzy, c-format
-msgid "%s has kicked from your guild."
-msgstr "%s je sada član vaše partije."
-
-#: src/net/tmwa/gui/partytab.cpp:70
-msgid "/invite > Invite a player to your party"
-msgstr "/invite > Pozovite igrače na vašu partiju"
-
-#: src/net/tmwa/gui/partytab.cpp:71
-msgid "/leave > Leave the party you are in"
-msgstr "/leave > Napustite partiju u kojoj ste"
-
-#: src/net/tmwa/gui/partytab.cpp:72
-msgid "/kick > Kick some one from the party you are in"
-msgstr "/kick > Šutnite nekog iz partije u kojoj ste"
-
-#: src/net/tmwa/gui/partytab.cpp:73
-msgid "/item > Show/change party item sharing options"
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:74
-msgid "/exp > Show/change party experience sharing options"
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:84
-msgid "This command invites <nick> to party with you."
-msgstr "Ova naredba poziva <nick> na partiju sa vama."
-
-#: src/net/tmwa/gui/partytab.cpp:91
-msgid "This command causes the player to leave the party."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:95
-msgid "Command: /item <policy>"
-msgstr "Naredba: /item <policy>"
-
-#: src/net/tmwa/gui/partytab.cpp:97
-msgid "This command changes the party's item sharing policy."
-msgstr ""
-"Ova naredba mijenja politiku korištenja zajedničkih predmete u partiji."
-
-#: src/net/tmwa/gui/partytab.cpp:98
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
-"\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:101
-msgid "Command: /item"
-msgstr "Naredba: /item"
-
-#: src/net/tmwa/gui/partytab.cpp:102
-msgid "This command displays the party's current item sharing policy."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:107
-msgid "Command: /exp <policy>"
-msgstr "Naredba: /exp <policy>"
-
-#: src/net/tmwa/gui/partytab.cpp:108
-msgid "This command changes the party's experience sharing policy."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:110
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-"sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:113
-msgid "Command: /exp"
-msgstr "Naredba: /exp"
-
-#: src/net/tmwa/gui/partytab.cpp:114
-msgid "This command displays the party's current experience sharing policy."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:148 src/net/tmwa/partyhandler.cpp:289
-msgid "Item sharing enabled."
-msgstr "Dijeljenje predmeta je omogućeno.moguće."
-
-#: src/net/tmwa/gui/partytab.cpp:151 src/net/tmwa/partyhandler.cpp:299
-msgid "Item sharing disabled."
-msgstr "Dijeljenje predmeta je onemogućeno."
-
-#: src/net/tmwa/gui/partytab.cpp:154 src/net/tmwa/partyhandler.cpp:309
-msgid "Item sharing not possible."
-msgstr "Dijeljenje predmeta nije moguće."
-
-#: src/net/tmwa/gui/partytab.cpp:157
-#, fuzzy
-msgid "Item sharing unknown."
-msgstr "Dijeljenje predmeta je omogućeno.moguće."
-
-#: src/net/tmwa/gui/partytab.cpp:187 src/net/tmwa/partyhandler.cpp:251
-msgid "Experience sharing enabled."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:190 src/net/tmwa/partyhandler.cpp:261
-msgid "Experience sharing disabled."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:193 src/net/tmwa/partyhandler.cpp:271
-msgid "Experience sharing not possible."
-msgstr ""
-
-#: src/net/tmwa/gui/partytab.cpp:196
-msgid "Experience sharing unknown."
-msgstr ""
-
-#: src/net/tmwa/inventoryhandler.cpp:379
-msgid "Failed to use item."
-msgstr "Neuspješno korištenje predmeta."
-
-#: src/net/tmwa/inventoryhandler.cpp:531
-msgid "Unable to equip."
-msgstr "Nije moguće opremiti."
-
-#: src/net/tmwa/loginhandler.cpp:93
-msgid "Account was not found. Please re-login."
-msgstr "Račun nije pronađen. Molimo, ponovno se prijavite."
-
-#: src/net/tmwa/loginhandler.cpp:99
-#, fuzzy
-msgid "New password too short."
-msgstr "Nova lozinka je prekratka"
-
-#: src/net/tmwa/loginhandler.cpp:165
-#, fuzzy
-msgid "Unregistered ID."
-msgstr "Neregistriran ID"
-
-#: src/net/tmwa/loginhandler.cpp:168
-#, fuzzy
-msgid "Wrong password."
-msgstr "Pogrešna lozinka"
-
-#: src/net/tmwa/loginhandler.cpp:171
-#, fuzzy
-msgid "Account expired."
-msgstr "Račun je istekao"
-
-#: src/net/tmwa/loginhandler.cpp:174
-#, fuzzy
-msgid "Rejected from server."
-msgstr "Odbijeno od poslužitelja"
-
-#: src/net/tmwa/loginhandler.cpp:177
-msgid ""
-"You have been permanently banned from the game. Please contact the GM team."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:181
-#, fuzzy
-msgid "Client too old."
-msgstr "Verzija klijenta je prestara"
-
-#: src/net/tmwa/loginhandler.cpp:184
-#, c-format
-msgid ""
-"You have been temporarily banned from the game until %s.\n"
-"Please contact the GM team via the forums."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:191
-msgid "Server overpopulated."
-msgstr ""
-
-#: src/net/tmwa/loginhandler.cpp:194
-#, fuzzy
-msgid "This user name is already taken."
-msgstr "Ovo korisničko ime je već zauzeto"
-
-#: src/net/tmwa/loginhandler.cpp:200
-#, fuzzy
-msgid "Username permanently erased."
-msgstr "Korisničko ime već postoji"
 
 #: src/net/tmwa/network.cpp:152
 msgid "Empty address given to Network::connect()!"
@@ -5480,281 +5057,10 @@ msgstr "Nije moguće prodati."
 msgid "Connection to server terminated. "
 msgstr "Spajanje na poslužitelja karti..."
 
-#: src/net/tmwa/partyhandler.cpp:86
-msgid "Could not create party."
-msgstr "Nije se mogla napraviti partija."
-
-#: src/net/tmwa/partyhandler.cpp:88
-msgid "Party successfully created."
-msgstr "Partija je uspješno kreirana."
-
-#: src/net/tmwa/partyhandler.cpp:143
-#, fuzzy, c-format
-msgid "%s has joined your party."
-msgstr "%s je napustio/la vašu partiju."
-
-#: src/net/tmwa/partyhandler.cpp:179
-#, c-format
-msgid "%s is already a member of a party."
-msgstr "%s je već član partije."
-
-#: src/net/tmwa/partyhandler.cpp:184
-#, c-format
-msgid "%s refused your invitation."
-msgstr "%s je odbio vašu pozivnicu."
-
-#: src/net/tmwa/partyhandler.cpp:189
-#, c-format
-msgid "%s is now a member of your party."
-msgstr "%s je sada član vaše partije."
-
-#: src/net/tmwa/partyhandler.cpp:194
-#, c-format
-msgid "%s can't join your party because party is full."
-msgstr ""
-
-#: src/net/tmwa/partyhandler.cpp:199
-#, c-format
-msgid "QQQ Unknown invite response for %s."
-msgstr ""
-
-#: src/net/tmwa/partyhandler.cpp:359
-msgid "You have left the party."
-msgstr "Napustili ste partiju."
-
-#: src/net/tmwa/partyhandler.cpp:371
-#, c-format
-msgid "%s has left your party."
-msgstr "%s je napustio/la vašu partiju."
-
-#: src/net/tmwa/partyhandler.cpp:447
-#, c-format
-msgid "An unknown member tried to say: %s"
-msgstr "Nepoznati član pokušava reći: %s"
-
-#: src/net/tmwa/partyhandler.cpp:529
+#: src/net/tmwa/partyhandler.cpp:171
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s nije u vašoj partiji!"
-
-#: src/net/tmwa/playerhandler.cpp:109
-msgid "Insert coin to continue."
-msgstr "Ubacite žeton za nastavak."
-
-#: src/net/tmwa/playerhandler.cpp:127
-msgid "You're not dead yet. You're just resting."
-msgstr "Niste još mrtvi. Samo se odmarate."
-
-#: src/net/tmwa/playerhandler.cpp:128
-msgid "You are no more."
-msgstr "Nema vas više."
-
-#: src/net/tmwa/playerhandler.cpp:129
-msgid "You have ceased to be."
-msgstr "Prestali ste postojati."
-
-#: src/net/tmwa/playerhandler.cpp:130
-msgid "You've expired and gone to meet your maker."
-msgstr "Istekao vam je rok i otišli ste upoznati svog stvoritelja."
-
-#: src/net/tmwa/playerhandler.cpp:131
-msgid "You're a stiff."
-msgstr "Ukočili ste se."
-
-#: src/net/tmwa/playerhandler.cpp:132
-msgid "Bereft of life, you rest in peace."
-msgstr "Lišeni života, počivate u miru."
-
-#: src/net/tmwa/playerhandler.cpp:133
-msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr "Da niste bili toliko animirani sad bi podizali tratinčice."
-
-#: src/net/tmwa/playerhandler.cpp:134
-msgid "Your metabolic processes are now history."
-msgstr "Vaši metabolički procesi su sad povijest."
-
-#: src/net/tmwa/playerhandler.cpp:135
-msgid "You're off the twig."
-msgstr "Pali ste s grančice."
-
-#: src/net/tmwa/playerhandler.cpp:136
-msgid "You've kicked the bucket."
-msgstr "Vi ste šutirali sić."
-
-#: src/net/tmwa/playerhandler.cpp:137
-msgid ""
-"You've shuffled off your mortal coil, run down the curtain and joined the "
-"bleedin' choir invisibile."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:139
-msgid "You are an ex-player."
-msgstr "Vi ste bivši igrač."
-
-#: src/net/tmwa/playerhandler.cpp:140
-msgid "You're pining for the fjords."
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:342 src/net/tmwa/playerhandler.cpp:352
-#: src/net/tmwa/playerhandler.cpp:431
-msgid "Message"
-msgstr "Poruka"
-
-#: src/net/tmwa/playerhandler.cpp:343
-msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
-msgstr ""
-"Nosite više od pola svoje težine. Niste u mogućnosti kako bi povratili "
-"zdravlje."
-
-#: src/net/tmwa/playerhandler.cpp:353
-#, fuzzy
-msgid "You are carrying less than half your weight. You can regain health."
-msgstr ""
-"Nosite više od pola svoje težine. Niste u mogućnosti kako bi povratili "
-"zdravlje."
-
-#: src/net/tmwa/playerhandler.cpp:458
-#, fuzzy, c-format
-msgid "You picked up %s."
-msgstr "Pokupili ste "
-
-#: src/net/tmwa/playerhandler.cpp:464
-#, fuzzy, c-format
-msgid "You spent %s."
-msgstr "Vi dobijete %s."
-
-#: src/net/tmwa/playerhandler.cpp:509
-msgid "Cannot raise skill!"
-msgstr ""
-
-#: src/net/tmwa/playerhandler.cpp:629
-msgid "Equip arrows first."
-msgstr "Prvo se opremite strijelama."
-
-#: src/net/tmwa/specialhandler.cpp:165
-msgid "Trade failed!"
-msgstr "Neuspjela razmjena!"
-
-#: src/net/tmwa/specialhandler.cpp:168
-msgid "Emote failed!"
-msgstr "Neuspjelo korištenje emotea!"
-
-#: src/net/tmwa/specialhandler.cpp:171
-msgid "Sit failed!"
-msgstr "Neuspjelo sjedanje!"
-
-#: src/net/tmwa/specialhandler.cpp:174
-msgid "Chat creating failed!"
-msgstr "Neuspjelo stvaranje lika!"
-
-#: src/net/tmwa/specialhandler.cpp:177
-msgid "Could not join party!"
-msgstr "Neuspjelo priključivanje družini!"
-
-#: src/net/tmwa/specialhandler.cpp:180
-msgid "Cannot shout!"
-msgstr "Neuspjelo vikanje!"
-
-#: src/net/tmwa/specialhandler.cpp:193
-msgid "You have not yet reached a high enough lvl!"
-msgstr "Još nisi dosegao/la dovoljno visok nivo!"
-
-#: src/net/tmwa/specialhandler.cpp:197
-msgid "Insufficient HP!"
-msgstr "Nedovoljno zdravlja!"
-
-#: src/net/tmwa/specialhandler.cpp:200
-msgid "Insufficient SP!"
-msgstr "Nedovoljno SP-a!"
-
-#: src/net/tmwa/specialhandler.cpp:203
-msgid "You have no memos!"
-msgstr "Nemaš podsjetnika!"
-
-#: src/net/tmwa/specialhandler.cpp:206
-msgid "You cannot do that right now!"
-msgstr "Ne možeš to učiniti sad!"
-
-#: src/net/tmwa/specialhandler.cpp:209
-msgid "Seems you need more money... ;-)"
-msgstr "Čini se da trebate više novca... ;-)"
-
-#: src/net/tmwa/specialhandler.cpp:212
-msgid "You cannot use this skill with that kind of weapon!"
-msgstr "Ne možeš koristiti tu vještinu s tim oružjem!"
-
-#: src/net/tmwa/specialhandler.cpp:216
-msgid "You need another red gem!"
-msgstr "Trebaš još jedan crveni dragulj!"
-
-#: src/net/tmwa/specialhandler.cpp:219
-msgid "You need another blue gem!"
-msgstr "Trebaš još jedan plavi dragulj!"
-
-#: src/net/tmwa/specialhandler.cpp:222
-msgid "You're carrying to much to do this!"
-msgstr "Nosiš previše predmeta da bi učinio to!"
-
-#: src/net/tmwa/specialhandler.cpp:225
-msgid "Huh? What's that?"
-msgstr "Ha? Što je to?"
-
-#: src/net/tmwa/specialhandler.cpp:236
-msgid "Warp failed..."
-msgstr "Skok nije uspio..."
-
-#: src/net/tmwa/specialhandler.cpp:239
-msgid "Could not steal anything..."
-msgstr "Krađa nije uspjela..."
-
-#: src/net/tmwa/specialhandler.cpp:242
-msgid "Poison had no effect..."
-msgstr "Otrov nije uspio..."
-
-#: src/net/tmwa/tradehandler.cpp:148
-msgid "Trading isn't possible. Trade partner is too far away."
-msgstr "Trgovanje nije moguće. Trgovački partner je predaleko."
-
-#: src/net/tmwa/tradehandler.cpp:152
-msgid "Trading isn't possible. Character doesn't exist."
-msgstr "Trgovanje nije moguće. Lik ne postoji."
-
-#: src/net/tmwa/tradehandler.cpp:156
-msgid "Trade cancelled due to an unknown reason."
-msgstr "Trgovanje otkazano zbog nepoznatih razloga."
-
-#: src/net/tmwa/tradehandler.cpp:164
-#, c-format
-msgid "Trade: You and %s"
-msgstr "Trgujte: Vi i %s"
-
-#: src/net/tmwa/tradehandler.cpp:174
-#, c-format
-msgid "Trade with %s cancelled."
-msgstr "Trgovanje s %s otkazano."
-
-#: src/net/tmwa/tradehandler.cpp:187
-msgid "Unhandled trade cancel packet."
-msgstr ""
-
-#: src/net/tmwa/tradehandler.cpp:250
-msgid "Failed adding item. Trade partner is over weighted."
-msgstr "Neuspješno dodavanje predmeta. Trgovinski partner je preopterećen."
-
-#: src/net/tmwa/tradehandler.cpp:255
-msgid "Failed adding item. Trade partner has no free slot."
-msgstr ""
-"Neuspješno dodavanje predmeta. Trgovinski partner nema slobodnog prostora."
-
-#: src/net/tmwa/tradehandler.cpp:260
-#, fuzzy
-msgid "Failed adding item. You can't trade this item."
-msgstr "Neuspješno dodavanje predmeta. Trgovinski partner je preopterećen."
-
-#: src/net/tmwa/tradehandler.cpp:264
-msgid "Failed adding item for unknown reason."
-msgstr "Neuspješno dodavanje predmeta, iz nepoznatog razloga."
 
 #: src/playerrelations.cpp:414
 msgid "Print '...'"
@@ -5772,34 +5078,443 @@ msgstr ""
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:245
+#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:248
 #: src/resources/monsterdb.cpp:84
 msgid "unnamed"
 msgstr "neimenovano"
 
-#: src/resources/itemdb.cpp:62
+#: src/resources/itemdb.cpp:65
 #, c-format
 msgid "Attack %+d"
 msgstr "Napad %+d"
 
-#: src/resources/itemdb.cpp:63
+#: src/resources/itemdb.cpp:66
 #, c-format
 msgid "Defense %+d"
 msgstr "Obrana %+d"
 
-#: src/resources/itemdb.cpp:64
+#: src/resources/itemdb.cpp:67
 #, c-format
 msgid "HP %+d"
 msgstr "Zdravlje %+d"
 
-#: src/resources/itemdb.cpp:65
+#: src/resources/itemdb.cpp:68
 #, c-format
 msgid "MP %+d"
 msgstr "Mana %+d"
 
-#: src/resources/itemdb.cpp:168
+#: src/resources/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Nepoznati predmet"
+
+#, fuzzy
+#~ msgid "Cannot use this ID."
+#~ msgstr "Ne mogu koristiti ovaj ID"
+
+#, fuzzy
+#~ msgid "Unknown char-server failure."
+#~ msgstr "Nepoznata greška"
+
+#~ msgid "Failed to create character. Most likely the name is already taken."
+#~ msgstr "Ne mogu stvoriti lik. Najvjerojatnije je ime već zauzeto."
+
+#, fuzzy
+#~ msgid "Wrong name."
+#~ msgstr "Pogrešan magični_simbol"
+
+#~ msgid "Character deleted."
+#~ msgstr "Lik izbrisan."
+
+#~ msgid "Failed to delete character."
+#~ msgstr "Neuspješno brisanje znaka."
+
+#~ msgid "Strength:"
+#~ msgstr "Snaga:"
+
+#~ msgid "Agility:"
+#~ msgstr "Okretnost:"
+
+#~ msgid "Vitality:"
+#~ msgstr "Vitalnost:"
+
+#~ msgid "Intelligence:"
+#~ msgstr "Inteligencija:"
+
+#~ msgid "Dexterity:"
+#~ msgstr "Spretnost:"
+
+#~ msgid "Luck:"
+#~ msgstr "Sreća:"
+
+#, fuzzy
+#~ msgid "Whisper could not be sent, %s is offline."
+#~ msgstr "Šapat nije mogao biti poslan, korisnik je offline."
+
+#, fuzzy
+#~ msgid "Whisper could not be sent, ignored by %s."
+#~ msgstr "Šapat nije mogao biti poslan, ignorirani ste od strane korisnika."
+
+#, fuzzy
+#~ msgid "MVP player."
+#~ msgstr "Igrač"
+
+#, fuzzy
+#~ msgid "MVP player: "
+#~ msgstr "Igrač"
+
+#~ msgid "Channels are not supported!"
+#~ msgstr "Kanali nisu podržani!"
+
+#, fuzzy
+#~ msgid "Game"
+#~ msgstr "Ime"
+
+#, fuzzy
+#~ msgid "Request to quit denied!"
+#~ msgstr "Zahtjev za Trgovanje"
+
+#~ msgid "/help > Display this help."
+#~ msgstr "/help > Prikaži ovu pomoć."
+
+#, fuzzy
+#~ msgid "/invite > Invite a player to your guild"
+#~ msgstr "/invite > Pozovite igrače na vašu partiju"
+
+#, fuzzy
+#~ msgid "/leave > Leave the guild you are in"
+#~ msgstr "/leave > Napustite partiju u kojoj ste"
+
+#, fuzzy
+#~ msgid "/kick > Kick some one from the guild you are in"
+#~ msgstr "/kick > Šutnite nekog iz partije u kojoj ste"
+
+#~ msgid "Command: /invite <nick>"
+#~ msgstr "Naredba: /invite <nick>"
+
+#, fuzzy
+#~ msgid "This command invites <nick> to the guild you're in."
+#~ msgstr "Ova naredba poziva <nick> na partiju sa vama."
+
+#~ msgid "Command: /leave"
+#~ msgstr "Naredba: /leave"
+
+#, fuzzy
+#~ msgid "This command causes the player to leave the guild."
+#~ msgstr "Ova naredba postavlja temu za <message>."
+
+#, fuzzy
+#~ msgid "You are already in guild."
+#~ msgstr "Pogreška pri ustanovljavanju ceha."
+
+#, fuzzy
+#~ msgid "Unknown server response."
+#~ msgstr "Nepoznata greška"
+
+#, fuzzy
+#~ msgid "Guild name: %s"
+#~ msgstr "Ceh"
+
+#, fuzzy
+#~ msgid "Guild master: %s"
+#~ msgstr "Ceh"
+
+#, fuzzy
+#~ msgid "Guild level: %d"
+#~ msgstr "Nivo: %d"
+
+#, fuzzy
+#~ msgid "Average level: %d"
+#~ msgstr "Najviša razina"
+
+#, fuzzy
+#~ msgid "Guild exp: %d"
+#~ msgstr "Ceh"
+
+#, fuzzy
+#~ msgid "Guild next exp: %d"
+#~ msgstr "Ceh, ustanovljen."
+
+#, fuzzy
+#~ msgid "Guild castle: %s"
+#~ msgstr "Ceh, ustanovljen."
+
+#, fuzzy
+#~ msgid "User is now part of your guild."
+#~ msgstr "%s je sada član vaše partije."
+
+#, fuzzy
+#~ msgid "You have left the guild."
+#~ msgstr "Napustili ste partiju."
+
+#, fuzzy
+#~ msgid "%s has left your guild."
+#~ msgstr "%s je napustio/la vašu partiju."
+
+#, fuzzy
+#~ msgid "%s has kicked from your guild."
+#~ msgstr "%s je sada član vaše partije."
+
+#~ msgid "/invite > Invite a player to your party"
+#~ msgstr "/invite > Pozovite igrače na vašu partiju"
+
+#~ msgid "/leave > Leave the party you are in"
+#~ msgstr "/leave > Napustite partiju u kojoj ste"
+
+#~ msgid "/kick > Kick some one from the party you are in"
+#~ msgstr "/kick > Šutnite nekog iz partije u kojoj ste"
+
+#~ msgid "This command invites <nick> to party with you."
+#~ msgstr "Ova naredba poziva <nick> na partiju sa vama."
+
+#~ msgid "Command: /item <policy>"
+#~ msgstr "Naredba: /item <policy>"
+
+#~ msgid "This command changes the party's item sharing policy."
+#~ msgstr ""
+#~ "Ova naredba mijenja politiku korištenja zajedničkih predmete u partiji."
+
+#~ msgid "Command: /item"
+#~ msgstr "Naredba: /item"
+
+#~ msgid "Command: /exp <policy>"
+#~ msgstr "Naredba: /exp <policy>"
+
+#~ msgid "Command: /exp"
+#~ msgstr "Naredba: /exp"
+
+#~ msgid "Item sharing enabled."
+#~ msgstr "Dijeljenje predmeta je omogućeno.moguće."
+
+#~ msgid "Item sharing disabled."
+#~ msgstr "Dijeljenje predmeta je onemogućeno."
+
+#~ msgid "Item sharing not possible."
+#~ msgstr "Dijeljenje predmeta nije moguće."
+
+#, fuzzy
+#~ msgid "Item sharing unknown."
+#~ msgstr "Dijeljenje predmeta je omogućeno.moguće."
+
+#~ msgid "Failed to use item."
+#~ msgstr "Neuspješno korištenje predmeta."
+
+#~ msgid "Unable to equip."
+#~ msgstr "Nije moguće opremiti."
+
+#~ msgid "Account was not found. Please re-login."
+#~ msgstr "Račun nije pronađen. Molimo, ponovno se prijavite."
+
+#, fuzzy
+#~ msgid "New password too short."
+#~ msgstr "Nova lozinka je prekratka"
+
+#, fuzzy
+#~ msgid "Unregistered ID."
+#~ msgstr "Neregistriran ID"
+
+#, fuzzy
+#~ msgid "Wrong password."
+#~ msgstr "Pogrešna lozinka"
+
+#, fuzzy
+#~ msgid "Account expired."
+#~ msgstr "Račun je istekao"
+
+#, fuzzy
+#~ msgid "Rejected from server."
+#~ msgstr "Odbijeno od poslužitelja"
+
+#, fuzzy
+#~ msgid "Client too old."
+#~ msgstr "Verzija klijenta je prestara"
+
+#, fuzzy
+#~ msgid "This user name is already taken."
+#~ msgstr "Ovo korisničko ime je već zauzeto"
+
+#, fuzzy
+#~ msgid "Username permanently erased."
+#~ msgstr "Korisničko ime već postoji"
+
+#~ msgid "Could not create party."
+#~ msgstr "Nije se mogla napraviti partija."
+
+#~ msgid "Party successfully created."
+#~ msgstr "Partija je uspješno kreirana."
+
+#, fuzzy
+#~ msgid "%s has joined your party."
+#~ msgstr "%s je napustio/la vašu partiju."
+
+#~ msgid "%s is already a member of a party."
+#~ msgstr "%s je već član partije."
+
+#~ msgid "%s refused your invitation."
+#~ msgstr "%s je odbio vašu pozivnicu."
+
+#~ msgid "%s is now a member of your party."
+#~ msgstr "%s je sada član vaše partije."
+
+#~ msgid "You have left the party."
+#~ msgstr "Napustili ste partiju."
+
+#~ msgid "%s has left your party."
+#~ msgstr "%s je napustio/la vašu partiju."
+
+#~ msgid "An unknown member tried to say: %s"
+#~ msgstr "Nepoznati član pokušava reći: %s"
+
+#~ msgid "Insert coin to continue."
+#~ msgstr "Ubacite žeton za nastavak."
+
+#~ msgid "You're not dead yet. You're just resting."
+#~ msgstr "Niste još mrtvi. Samo se odmarate."
+
+#~ msgid "You are no more."
+#~ msgstr "Nema vas više."
+
+#~ msgid "You have ceased to be."
+#~ msgstr "Prestali ste postojati."
+
+#~ msgid "You've expired and gone to meet your maker."
+#~ msgstr "Istekao vam je rok i otišli ste upoznati svog stvoritelja."
+
+#~ msgid "You're a stiff."
+#~ msgstr "Ukočili ste se."
+
+#~ msgid "Bereft of life, you rest in peace."
+#~ msgstr "Lišeni života, počivate u miru."
+
+#~ msgid "If you weren't so animated, you'd be pushing up the daisies."
+#~ msgstr "Da niste bili toliko animirani sad bi podizali tratinčice."
+
+#~ msgid "Your metabolic processes are now history."
+#~ msgstr "Vaši metabolički procesi su sad povijest."
+
+#~ msgid "You're off the twig."
+#~ msgstr "Pali ste s grančice."
+
+#~ msgid "You've kicked the bucket."
+#~ msgstr "Vi ste šutirali sić."
+
+#~ msgid "You are an ex-player."
+#~ msgstr "Vi ste bivši igrač."
+
+#~ msgid "Message"
+#~ msgstr "Poruka"
+
+#~ msgid ""
+#~ "You are carrying more than half your weight. You are unable to regain "
+#~ "health."
+#~ msgstr ""
+#~ "Nosite više od pola svoje težine. Niste u mogućnosti kako bi povratili "
+#~ "zdravlje."
+
+#, fuzzy
+#~ msgid "You are carrying less than half your weight. You can regain health."
+#~ msgstr ""
+#~ "Nosite više od pola svoje težine. Niste u mogućnosti kako bi povratili "
+#~ "zdravlje."
+
+#, fuzzy
+#~ msgid "You picked up %s."
+#~ msgstr "Pokupili ste "
+
+#, fuzzy
+#~ msgid "You spent %s."
+#~ msgstr "Vi dobijete %s."
+
+#~ msgid "Equip arrows first."
+#~ msgstr "Prvo se opremite strijelama."
+
+#~ msgid "Trade failed!"
+#~ msgstr "Neuspjela razmjena!"
+
+#~ msgid "Emote failed!"
+#~ msgstr "Neuspjelo korištenje emotea!"
+
+#~ msgid "Sit failed!"
+#~ msgstr "Neuspjelo sjedanje!"
+
+#~ msgid "Chat creating failed!"
+#~ msgstr "Neuspjelo stvaranje lika!"
+
+#~ msgid "Could not join party!"
+#~ msgstr "Neuspjelo priključivanje družini!"
+
+#~ msgid "Cannot shout!"
+#~ msgstr "Neuspjelo vikanje!"
+
+#~ msgid "You have not yet reached a high enough lvl!"
+#~ msgstr "Još nisi dosegao/la dovoljno visok nivo!"
+
+#~ msgid "Insufficient HP!"
+#~ msgstr "Nedovoljno zdravlja!"
+
+#~ msgid "Insufficient SP!"
+#~ msgstr "Nedovoljno SP-a!"
+
+#~ msgid "You have no memos!"
+#~ msgstr "Nemaš podsjetnika!"
+
+#~ msgid "You cannot do that right now!"
+#~ msgstr "Ne možeš to učiniti sad!"
+
+#~ msgid "Seems you need more money... ;-)"
+#~ msgstr "Čini se da trebate više novca... ;-)"
+
+#~ msgid "You cannot use this skill with that kind of weapon!"
+#~ msgstr "Ne možeš koristiti tu vještinu s tim oružjem!"
+
+#~ msgid "You need another red gem!"
+#~ msgstr "Trebaš još jedan crveni dragulj!"
+
+#~ msgid "You need another blue gem!"
+#~ msgstr "Trebaš još jedan plavi dragulj!"
+
+#~ msgid "You're carrying to much to do this!"
+#~ msgstr "Nosiš previše predmeta da bi učinio to!"
+
+#~ msgid "Huh? What's that?"
+#~ msgstr "Ha? Što je to?"
+
+#~ msgid "Warp failed..."
+#~ msgstr "Skok nije uspio..."
+
+#~ msgid "Could not steal anything..."
+#~ msgstr "Krađa nije uspjela..."
+
+#~ msgid "Poison had no effect..."
+#~ msgstr "Otrov nije uspio..."
+
+#~ msgid "Trading isn't possible. Trade partner is too far away."
+#~ msgstr "Trgovanje nije moguće. Trgovački partner je predaleko."
+
+#~ msgid "Trading isn't possible. Character doesn't exist."
+#~ msgstr "Trgovanje nije moguće. Lik ne postoji."
+
+#~ msgid "Trade cancelled due to an unknown reason."
+#~ msgstr "Trgovanje otkazano zbog nepoznatih razloga."
+
+#~ msgid "Trade: You and %s"
+#~ msgstr "Trgujte: Vi i %s"
+
+#~ msgid "Trade with %s cancelled."
+#~ msgstr "Trgovanje s %s otkazano."
+
+#~ msgid "Failed adding item. Trade partner is over weighted."
+#~ msgstr "Neuspješno dodavanje predmeta. Trgovinski partner je preopterećen."
+
+#~ msgid "Failed adding item. Trade partner has no free slot."
+#~ msgstr ""
+#~ "Neuspješno dodavanje predmeta. Trgovinski partner nema slobodnog prostora."
+
+#, fuzzy
+#~ msgid "Failed adding item. You can't trade this item."
+#~ msgstr "Neuspješno dodavanje predmeta. Trgovinski partner je preopterećen."
+
+#~ msgid "Failed adding item for unknown reason."
+#~ msgstr "Neuspješno dodavanje predmeta, iz nepoznatog razloga."
 
 #, fuzzy
 #~ msgid "Level: "
