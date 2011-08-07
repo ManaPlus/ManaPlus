@@ -209,6 +209,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableMapReduce", true);
     AddDEF(configData, "showPlayersStatus", true);
     AddDEF(configData, "beingopacity", false);
+    AddDEF(configData, "adjustPerfomance", true);
     return configData;
 }
 

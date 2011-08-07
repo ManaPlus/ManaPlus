@@ -642,6 +642,12 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     config.addListener("guialpha", this);
     config.addListener("beingopacity", this);
 
+    mOpacity = config.getFloatValue("guialpha");
+    if (mOpacity != 1.0f)
+        mBeingOpacity = config.getBoolValue("beingopacity");
+    else
+        mBeingOpacity = false;
+
 #ifdef USE_OPENGL
     mOpenGL = config.getIntValue("opengl");
 #else

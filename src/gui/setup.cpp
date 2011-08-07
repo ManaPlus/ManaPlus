@@ -23,6 +23,7 @@
 #include "gui/setup.h"
 
 #include "configuration.h"
+#include "game.h"
 #include "main.h"
 
 #include "gui/setup_audio.h"
@@ -129,6 +130,8 @@ Setup::~Setup()
 
 void Setup::action(const gcn::ActionEvent &event)
 {
+    if (Game::instance())
+        Game::instance()->resetAdjustLevel();
     if (event.getId() == "Apply")
     {
         setVisible(false);
