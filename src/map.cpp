@@ -622,7 +622,8 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mDrawY(-1),
     mDrawScrollX(-1),
     mDrawScrollY(-1),
-    mRedrawMap(true)
+    mRedrawMap(true),
+    mBeingOpacity(false)
 {
     const int size = mWidth * mHeight;
 
@@ -639,6 +640,7 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
 
     config.addListener("OverlayDetail", this);
     config.addListener("guialpha", this);
+    config.addListener("beingopacity", this);
 
 #ifdef USE_OPENGL
     mOpenGL = config.getIntValue("opengl");
@@ -651,6 +653,7 @@ Map::~Map()
 {
     config.removeListener("OverlayDetail", this);
     config.removeListener("guialpha", this);
+    config.removeListener("beingopacity", this);
 
     // delete metadata, layers, tilesets and overlays
     delete[] mMetaTiles;
@@ -675,9 +678,24 @@ Map::~Map()
 void Map::optionChanged(const std::string &value)
 {
     if (value == "OverlayDetail")
+    {
         mOverlayDetail = config.getIntValue("OverlayDetail");
+    }
     else if (value == "guialpha")
+    {
         mOpacity = config.getFloatValue("guialpha");
+        if (mOpacity != 1.0f)
+            mBeingOpacity = config.getBoolValue("beingopacity");
+        else
+            mBeingOpacity = false;
+    }
+    else if (value == "beingopacity")
+    {
+        if (mOpacity != 1.0f)
+            mBeingOpacity = config.getBoolValue("beingopacity");
+        else
+            mBeingOpacity = false;
+    }
 }
 
 void Map::initializeAmbientLayers()
@@ -895,7 +913,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     }
 
     // Dont draw if gui opacity == 1
-    if (mOpacity != 1.0f)
+    if (mBeingOpacity && mOpacity != 1.0f)
     {
         // Draws beings with a lower opacity to make them visible
         // even when covered by a wall or some other elements...

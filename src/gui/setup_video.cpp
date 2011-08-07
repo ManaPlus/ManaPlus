@@ -284,7 +284,7 @@ Setup_Video::Setup_Video():
     mAltFps(config.getIntValue("altfpslimit")),
     mAlphaCache(config.getBoolValue("alphaCache")),
     mEnableMapReduce(config.getBoolValue("enableMapReduce")),
-    mShowBackground(config.getBoolValue("showBackground")),
+    mBeingOpacity(config.getBoolValue("beingopacity")),
     mSpeechMode(static_cast<Being::Speech>(
         config.getIntValue("speech"))),
     mModeListModel(new ModeListModel),
@@ -304,8 +304,8 @@ Setup_Video::Setup_Video():
     mAlphaCacheCheckBox(new CheckBox(_("Enable opacity cache"), mAlphaCache)),
     mEnableMapReduceCheckBox(new CheckBox(_("Enable map reduce"),
         mEnableMapReduce)),
-    mShowBackgroundCheckBox(new CheckBox(_("Show background"),
-                            mShowBackground)),
+    mBeingOpacityCheckBox(new CheckBox(_("Show beings transparency"),
+                          mBeingOpacity)),
     mSpeechSlider(new Slider(0, 3)),
     mSpeechLabel(new Label("")),
     mAlphaSlider(new Slider(0.1, 1.0)),
@@ -425,7 +425,7 @@ Setup_Video::Setup_Video():
 
     place(1, 1, mCustomCursorCheckBox, 3);
 
-    place(1, 2, mShowBackgroundCheckBox);
+    place(1, 2, mBeingOpacityCheckBox);
     place(1, 3, mParticleEffectsCheckBox, 2);
 
     place(1, 4, mPickupNotifyLabel, 4);
@@ -552,7 +552,7 @@ void Setup_Video::apply()
 
     config.setValue("alphaCache", mAlphaCacheCheckBox->isSelected());
     config.setValue("enableMapReduce", mEnableMapReduceCheckBox->isSelected());
-    config.setValue("showBackground", mShowBackgroundCheckBox->isSelected());
+    config.setValue("beingopacity", mBeingOpacityCheckBox->isSelected());
 
     // We sync old and new values at apply time
     mFullScreenEnabled = config.getBoolValue("screen");
@@ -560,7 +560,7 @@ void Setup_Video::apply()
     mParticleEffectsEnabled = config.getBoolValue("particleeffects");
     mAlphaCache = config.getBoolValue("alphaCache");
     mEnableMapReduce = config.getBoolValue("enableMapReduce");
-    mShowBackground = config.getBoolValue("showBackground");
+    mBeingOpacity = config.getBoolValue("beingopacity");
 
     mSpeechMode = static_cast<Being::Speech>(
         config.getIntValue("speech"));
@@ -587,7 +587,7 @@ void Setup_Video::cancel()
     mSpeechSlider->setValue(mSpeechMode);
     mAlphaCacheCheckBox->setSelected(mAlphaCache);
     mEnableMapReduceCheckBox->setSelected(mEnableMapReduce);
-    mShowBackgroundCheckBox->setSelected(mShowBackground);
+    mBeingOpacityCheckBox->setSelected(mBeingOpacity);
     mAlphaSlider->setValue(mOpacity);
     mOverlayDetailSlider->setValue(mOverlayDetail);
     mParticleDetailSlider->setValue(mParticleDetail);
@@ -609,7 +609,7 @@ void Setup_Video::cancel()
     config.setValue("speech", static_cast<int>(mSpeechMode));
     config.setValue("alphaCache", mAlphaCache);
     config.setValue("enableMapReduce", mEnableMapReduce);
-    config.setValue("showBackground", mShowBackground);
+    config.setValue("beingopacity", mBeingOpacity);
     config.setValue("guialpha", mOpacity);
     Image::setEnableAlpha(mOpacity != 1.0f);
     config.setValue("opengl", mOpenGLEnabled);

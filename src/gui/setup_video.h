@@ -65,7 +65,7 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         int mAltFps;
         bool mAlphaCache;
         bool mEnableMapReduce;
-        bool mShowBackground;
+        bool mBeingOpacity;
         Being::Speech mSpeechMode;
 
         ModeListModel *mModeListModel;
@@ -92,7 +92,7 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
 
         gcn::CheckBox *mAlphaCacheCheckBox;
         gcn::CheckBox *mEnableMapReduceCheckBox;
-        gcn::CheckBox *mShowBackgroundCheckBox;
+        gcn::CheckBox *mBeingOpacityCheckBox;
         gcn::Slider *mSpeechSlider;
         gcn::Label *mSpeechLabel;
         gcn::Slider *mAlphaSlider;
