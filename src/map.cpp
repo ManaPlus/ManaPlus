@@ -1443,7 +1443,8 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                 // corner.
                 if (dx != 0 && dy != 0)
                 {
-                    MetaTile *t1 = &mMetaTiles[curr.x + (curr.y + dy) * mWidth];
+                    MetaTile *t1 = &mMetaTiles[curr.x +
+                        (curr.y + dy) * mWidth];
                     MetaTile *t2 = &mMetaTiles[curr.x + dx + curWidth];
 
                     //+++ here need check block must depend on player abilities.
