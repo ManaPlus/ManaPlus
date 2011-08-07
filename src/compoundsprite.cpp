@@ -406,13 +406,15 @@ void CompoundSprite::setAlpha(float alpha)
 {
     if (alpha != mAlpha)
     {
-        SpriteConstIterator it, it_end;
-        for (it = begin(), it_end = end(); it != it_end; ++ it)
+        if (Image::mUseOpenGL == 0 && size() > 3)
         {
-            if (*it)
-                (*it)->setAlpha(alpha);
+            SpriteConstIterator it, it_end;
+            for (it = begin(), it_end = end(); it != it_end; ++ it)
+            {
+                if (*it)
+                    (*it)->setAlpha(alpha);
+            }
         }
-
         mAlpha = alpha;
     }
 }
