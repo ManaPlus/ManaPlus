@@ -1378,7 +1378,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
         return path;
 
     // Reset starting tile's G cost to 0
-    MetaTile *startTile = getMetaTile(startX, startY);
+    MetaTile *startTile = &mMetaTiles[startX + startY * mWidth];
     startTile->Gcost = 0;
 
     // Add the start point to the open list
@@ -1401,21 +1401,26 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
         // Put the current tile on the closed list
         curr.tile->whichList = mOnClosedList;
 
+        const int curWidth = curr.y * mWidth;
+
         // Check the adjacent tiles
         for (int dy = -1; dy <= 1; dy++)
         {
+            const int y = curr.y + dy;
+            const int yWidth = y * mWidth;
+            const int dy1 = std::abs(y - destY);
+
             for (int dx = -1; dx <= 1; dx++)
             {
                 // Calculate location of tile to check
                 const int x = curr.x + dx;
-                const int y = curr.y + dy;
 
                 // Skip if if we're checking the same tile we're leaving from,
                 // or if the new location falls outside of the map boundaries
                 if ((dx == 0 && dy == 0) || !contains(x, y))
                     continue;
 
-                MetaTile *newTile = getMetaTile(x, y);
+                MetaTile *newTile = &mMetaTiles[x + yWidth];
 
                 // Skip if the tile is on the closed list or is not walkable
                 // unless its the destination tile
@@ -1432,8 +1437,8 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                 // corner.
                 if (dx != 0 && dy != 0)
                 {
-                    MetaTile *t1 = getMetaTile(curr.x, curr.y + dy);
-                    MetaTile *t2 = getMetaTile(curr.x + dx, curr.y);
+                    MetaTile *t1 = &mMetaTiles[curr.x + (curr.y + dy) * mWidth];
+                    MetaTile *t2 = &mMetaTiles[curr.x + dx + curWidth];
 
                     //+++ here need check block must depend on player abilities.
                     if (!t1 || !t2 || ((t1->blockmask | t2->blockmask)
@@ -1481,9 +1486,9 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                        work reliably if the heuristic cost is higher than the
                        real cost. In particular, using Manhattan distance is
                        forbidden here. */
-                    int dx = std::abs(x - destX), dy = std::abs(y - destY);
-                    newTile->Hcost = std::abs(dx - dy) * basicCost +
-                        std::min(dx, dy) * (basicCost * 362 / 256);
+                    int dx1 = std::abs(x - destX);
+                    newTile->Hcost = std::abs(dx1 - dy1) * basicCost +
+                        std::min(dx1, dy1) * (basicCost * 362 / 256);
 
                     // Set the current tile as the parent of the new tile
                     newTile->parentX = curr.x;
@@ -1556,7 +1561,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
             path.push_front(Position(pathX, pathY));
 
             // Find out the next parent
-            MetaTile *tile = getMetaTile(pathX, pathY);
+            MetaTile *tile = &mMetaTiles[pathX + pathY * mWidth];
             pathX = tile->parentX;
             pathY = tile->parentY;
         }
