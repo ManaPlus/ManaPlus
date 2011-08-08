@@ -571,10 +571,10 @@ void Game::adjustPerfomance()
         int maxFps = config.getIntValue("fpslimit");
         if (!maxFps)
             maxFps = 30;
-        else if (maxFps < 6)
-            maxFps = 6;
+        else if (maxFps < 10)
+            return;
 
-        if (fps < maxFps - 5)
+        if (fps < maxFps - 10)
         {
             mAdjustLevel ++;
             switch (mAdjustLevel)
