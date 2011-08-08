@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-06 16:24+0300\n"
+"POT-Creation-Date: 2011-08-08 04:26+0300\n"
 "PO-Revision-Date: 2009-07-07 19:52+0000\n"
 "Last-Translator: Tatsukichi <artit91@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -43,40 +43,40 @@ msgstr ""
 msgid "I"
 msgstr "Is"
 
-#: src/client.cpp:825 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Beállítások"
 
-#: src/client.cpp:907
+#: src/client.cpp:908
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Csatlakozás a térkép szerverhez...."
 
-#: src/client.cpp:938
+#: src/client.cpp:939
 #, fuzzy
 msgid "Logging in"
 msgstr "Belépés"
 
-#: src/client.cpp:971
+#: src/client.cpp:972
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1071
+#: src/client.cpp:1072
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Kapcsolódási kérelem a %s nevű csatornába."
 
-#: src/client.cpp:1102
+#: src/client.cpp:1103
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Csatlakozás a térkép szerverhez...."
 
-#: src/client.cpp:1112
+#: src/client.cpp:1113
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Szerver"
 
-#: src/client.cpp:1149 src/client.cpp:1156 src/client.cpp:1293
+#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
@@ -85,54 +85,54 @@ msgstr "Szerver"
 msgid "Error"
 msgstr "Hiba"
 
-#: src/client.cpp:1165
+#: src/client.cpp:1166
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1192
+#: src/client.cpp:1193
 #, fuzzy
 msgid "Password Change"
 msgstr "Jelszó:"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1194
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1212
+#: src/client.cpp:1213
 #, fuzzy
 msgid "Email Change"
 msgstr "Változtatás"
 
-#: src/client.cpp:1213
+#: src/client.cpp:1214
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "A tag előléptetése sikeres."
 
-#: src/client.cpp:1233
+#: src/client.cpp:1234
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Regisztráció megszüntetése"
 
-#: src/client.cpp:1234
+#: src/client.cpp:1235
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
-#: src/client.cpp:1918
+#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
+#: src/client.cpp:1919
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1628
+#: src/client.cpp:1629
 #, fuzzy, c-format
 msgid "Invalid update host: %s"
 msgstr "Helytelen frissítési kiszolgáló: "
 
-#: src/client.cpp:1662 src/client.cpp:1668
+#: src/client.cpp:1663 src/client.cpp:1669
 msgid "Error creating updates directory!"
 msgstr "Hiba a frissítési könyvtár létrehozása közben!"
 
-#: src/client.cpp:1689
+#: src/client.cpp:1690
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -321,46 +321,46 @@ msgstr ""
 "Lehetőségek a /%s parancshoz: \"yes\", \"no\", \"true\", \"false\", \"1\", "
 "\"0\"."
 
-#: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
 msgstr "Általános"
 
-#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:464
+#: src/game.cpp:475
 #, fuzzy
 msgid "Screenshot saved as "
 msgstr "Képernyőt mentettük a ~/ helyre"
 
-#: src/game.cpp:472
+#: src/game.cpp:483
 msgid "Saving screenshot failed!"
 msgstr "Hiba a képernyő mentése során!"
 
-#: src/game.cpp:511
+#: src/game.cpp:523
 #, fuzzy
 msgid "The connection to the server was lost."
 msgstr "A kapcsolat megszakadt a szerverrel, a program most kilép."
 
-#: src/game.cpp:525
+#: src/game.cpp:537
 msgid "Network Error"
 msgstr "Hálózati hiba"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1184
 msgid "Ignoring incoming trade requests"
 msgstr "Kereskedési kérelmek elutasítása"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1191
 msgid "Accepting incoming trade requests"
 msgstr "Kereskedési kérelmek elfogadása"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1576
 #, fuzzy
 msgid "Could Not Load Map"
 msgstr "Nem lehet betölteni a térképet"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1577
 #, c-format
 msgid "Error while loading %s"
 msgstr "Hiba %s betöltése közben"
@@ -484,7 +484,7 @@ msgstr "Eladás"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
@@ -1050,7 +1050,7 @@ msgstr "Súly:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:68
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
 msgid "Store"
 msgstr "Raktároz"
 
@@ -2012,11 +2012,11 @@ msgstr "Kék: "
 msgid "Alpha:"
 msgstr ""
 
-#: src/gui/setup.cpp:66
+#: src/gui/setup.cpp:67
 msgid "Apply"
 msgstr "Alkalmaz"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:70
 msgid "Reset Windows"
 msgstr "Ablakok alaphelyzetbe"
 
@@ -2239,6 +2239,11 @@ msgstr ""
 msgid "Hide shield sprite"
 msgstr ""
 
+#: src/gui/setup_other.cpp:169
+#, fuzzy
+msgid "Show background"
+msgstr "Háttér"
+
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
 msgstr "Kapcsolat"
@@ -2393,8 +2398,8 @@ msgstr "Betűméret"
 msgid "Theme Changed"
 msgstr "Változtatás"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
-#: src/gui/setup_video.cpp:663
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
+#: src/gui/setup_video.cpp:675
 msgid "Restart your client for the change to take effect."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
@@ -2448,144 +2453,147 @@ msgstr "közepes"
 msgid "max"
 msgstr "max."
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Full screen"
 msgstr "Teljes képernyő"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 #, fuzzy
 msgid "Hw acceleration"
 msgstr "Kapcsolat"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Custom cursor"
 msgstr "Egyéni kurzor"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "Particle effects"
 msgstr "Játékbéli effektek"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "Show pickup notification"
 msgstr "Értesítés tárgy felvételkor"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "in chat"
 msgstr "Chat-en belül"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:303
 msgid "as particle"
 msgstr "Karakter felett"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
 #, fuzzy
 msgid "Enable opacity cache"
 msgstr "Joystick engedélyezése"
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:306
 #, fuzzy
 msgid "Enable map reduce"
 msgstr "Joystick engedélyezése"
 
-#: src/gui/setup_video.cpp:307
-#, fuzzy
-msgid "Show background"
-msgstr "Háttér"
+#: src/gui/setup_video.cpp:308
+msgid "Auto adjust perfomance"
+msgstr ""
 
-#: src/gui/setup_video.cpp:312
+#: src/gui/setup_video.cpp:310
+msgid "Show beings transparency"
+msgstr ""
+
+#: src/gui/setup_video.cpp:315
 #, fuzzy
 msgid "FPS limit:"
 msgstr "FPS Limit:"
 
-#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
+#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
+#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
 #, fuzzy
 msgid "Alt FPS limit: "
 msgstr "FPS Limit:"
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:328
 msgid "Video"
 msgstr "Videó"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:334
 msgid "Overhead text"
 msgstr "Fej feletti szöveg"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:335
 msgid "Gui opacity"
 msgstr "Menük áttetszősége"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:336
 msgid "Ambient FX"
 msgstr "Környezeti effektek"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:337
 #, fuzzy
 msgid "Particle detail"
 msgstr "Effektek részletessége"
 
-#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
-#: src/gui/setup_video.cpp:746
+#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
+#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:758
 #, fuzzy
 msgid "None"
 msgstr "Nem"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:511
 #, fuzzy
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr "Ez a mód és az előző mód visszaállítása sikertelen."
 
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:517
 #, fuzzy
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "Ez a mód és az előző mód visszaállítása sikertelen."
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:528
 #, fuzzy
 msgid "Switching to Full Screen"
 msgstr "Átállás teljes képernyőre"
 
-#: src/gui/setup_video.cpp:522
+#: src/gui/setup_video.cpp:529
 msgid "Restart needed for changes to take effect."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:541
 #, fuzzy
 msgid "Changing to OpenGL"
 msgstr "OpenGL átállítása"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:542
 msgid "Applying change to OpenGL requires restart."
 msgstr "A változások érvénybe lépéséhez a program újraindítása szükséges."
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:653
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:642
+#: src/gui/setup_video.cpp:654
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
+#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
 #, fuzzy
 msgid "Screen Resolution Changed"
 msgstr "A képernyő felbontása megváltozott"
 
-#: src/gui/setup_video.cpp:660
+#: src/gui/setup_video.cpp:672
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:705
 #, fuzzy
 msgid "Particle Effect Settings Changed."
 msgstr "Effektek beállítása megváltozott."
 
-#: src/gui/setup_video.cpp:694
+#: src/gui/setup_video.cpp:706
 msgid "Changes will take effect on map change."
 msgstr "A változások érvénybe lépéséhez töltsön be egy új térképet."
 

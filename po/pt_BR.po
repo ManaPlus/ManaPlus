@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 #   <alasmirt@gmail.com>, 2011.
 # alastrim <alasmirt@gmail.com>, 2011.
 #   <freya.df@gmail.com>, 2011.
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-06 16:24+0300\n"
-"PO-Revision-Date: 2011-07-23 15:40+0000\n"
-"Last-Translator: freya <freya.df@gmail.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://www.transifex.net/projects/p/"
-"manaplus/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2011-08-08 04:26+0300\n"
+"PO-Revision-Date: 2011-08-08 01:29+0000\n"
+"Last-Translator: akaras <akaras@inbox.ru>\n"
+"Language-Team: Portuguese (Brazilian) (http://www.transifex.net/projects/p/manaplus/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/actorspritemanager.cpp:1034
@@ -44,35 +43,35 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:825 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configurar"
 
-#: src/client.cpp:907
+#: src/client.cpp:908
 msgid "Connecting to server"
 msgstr "Conectando ao servidor"
 
-#: src/client.cpp:938
+#: src/client.cpp:939
 msgid "Logging in"
 msgstr "Efetuando login"
 
-#: src/client.cpp:971
+#: src/client.cpp:972
 msgid "Entering game world"
 msgstr "Entrando no domínio do jogo"
 
-#: src/client.cpp:1071
+#: src/client.cpp:1072
 msgid "Requesting characters"
 msgstr "Requisitando personagens"
 
-#: src/client.cpp:1102
+#: src/client.cpp:1103
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
-#: src/client.cpp:1112
+#: src/client.cpp:1113
 msgid "Changing game servers"
 msgstr "Mudando servidores do jogo"
 
-#: src/client.cpp:1149 src/client.cpp:1156 src/client.cpp:1293
+#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
@@ -81,50 +80,50 @@ msgstr "Mudando servidores do jogo"
 msgid "Error"
 msgstr "Erro"
 
-#: src/client.cpp:1165
+#: src/client.cpp:1166
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
-#: src/client.cpp:1192
+#: src/client.cpp:1193
 msgid "Password Change"
 msgstr "Mudar senha"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1194
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
-#: src/client.cpp:1212
+#: src/client.cpp:1213
 msgid "Email Change"
 msgstr "Mudar email"
 
-#: src/client.cpp:1213
+#: src/client.cpp:1214
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
-#: src/client.cpp:1233
+#: src/client.cpp:1234
 msgid "Unregister Successful"
 msgstr "Registro cancelado com sucesso"
 
-#: src/client.cpp:1234
+#: src/client.cpp:1235
 msgid "Farewell, come back any time..."
 msgstr "Tchau, volte sempre..."
 
-#: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
-#: src/client.cpp:1918
+#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
+#: src/client.cpp:1919
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s não existe e não pode ser criado! Saindo."
 
-#: src/client.cpp:1628
+#: src/client.cpp:1629
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Host de atualização inválido: %s"
 
-#: src/client.cpp:1662 src/client.cpp:1668
+#: src/client.cpp:1663 src/client.cpp:1669
 msgid "Error creating updates directory!"
 msgstr "Erro ao criar pasta de atualizações!"
 
-#: src/client.cpp:1689
+#: src/client.cpp:1690
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Erro: %s não existe e não pode se criado! Saindo."
@@ -140,11 +139,11 @@ msgstr "Não é possível enviar mensagens privadas vazias!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
-"já existe ou é você mesmo."
+"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela"
+" já existe ou é você mesmo."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -298,46 +297,45 @@ msgstr "Recurso de imagem orfão:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
-#: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
 msgstr "Geral"
 
-#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
 msgid "Debug"
 msgstr "Depurador"
 
-#: src/game.cpp:464
+#: src/game.cpp:475
 msgid "Screenshot saved as "
 msgstr "Screenshot salva como "
 
-#: src/game.cpp:472
+#: src/game.cpp:483
 msgid "Saving screenshot failed!"
 msgstr "Falha ao salvar screenshot!"
 
-#: src/game.cpp:511
+#: src/game.cpp:523
 msgid "The connection to the server was lost."
 msgstr "A conexão com o servidor caiu."
 
-#: src/game.cpp:525
+#: src/game.cpp:537
 msgid "Network Error"
 msgstr "Erro de conexão"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1184
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorando propostas de negócios"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1191
 msgid "Accepting incoming trade requests"
 msgstr "Aceitando propostas de negócios"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1576
 msgid "Could Not Load Map"
 msgstr "Não foi possível carregar o mapa"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1577
 #, c-format
 msgid "Error while loading %s"
 msgstr "Erro ao carregar %s"
@@ -459,7 +457,7 @@ msgstr "Vender"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
@@ -982,7 +980,7 @@ msgstr "Peso:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:68
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
 msgid "Store"
 msgstr "Armazenar"
 
@@ -1867,11 +1865,11 @@ msgstr "Azul:"
 msgid "Alpha:"
 msgstr "Alpha:"
 
-#: src/gui/setup.cpp:66
+#: src/gui/setup.cpp:67
 msgid "Apply"
 msgstr "Aplicar"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:70
 msgid "Reset Windows"
 msgstr "Restaurar janelas"
 
@@ -2080,6 +2078,10 @@ msgstr "Modo de baixo tráfego"
 msgid "Hide shield sprite"
 msgstr "Ocultar sprite de escudo"
 
+#: src/gui/setup_other.cpp:169
+msgid "Show background"
+msgstr "Mostrar imagem de fundo"
+
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
 msgstr "Relação"
@@ -2220,8 +2222,8 @@ msgstr "Tamanho da fonte"
 msgid "Theme Changed"
 msgstr "Tema alterado"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
-#: src/gui/setup_video.cpp:663
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
+#: src/gui/setup_video.cpp:675
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie o cliente para que as mudanças surtam efeito."
 
@@ -2273,134 +2275,138 @@ msgstr "médio"
 msgid "max"
 msgstr "máximo"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Full screen"
 msgstr "Tela cheia"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Hw acceleration"
 msgstr "Aceleração por HW"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Custom cursor"
 msgstr "Cursor customizado"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "Particle effects"
 msgstr "Efeitos de partícula"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "Show pickup notification"
 msgstr "Mostrar aviso ao pegar algo"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "in chat"
 msgstr "em chat"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:303
 msgid "as particle"
 msgstr "como partícula"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
 msgid "Enable opacity cache"
 msgstr "Habilitar cache de opacidade"
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:306
 msgid "Enable map reduce"
 msgstr "Habilitar a redução de mapa"
 
-#: src/gui/setup_video.cpp:307
-msgid "Show background"
-msgstr "Mostrar imagem de fundo"
+#: src/gui/setup_video.cpp:308
+msgid "Auto adjust perfomance"
+msgstr ""
 
-#: src/gui/setup_video.cpp:312
+#: src/gui/setup_video.cpp:310
+msgid "Show beings transparency"
+msgstr ""
+
+#: src/gui/setup_video.cpp:315
 msgid "FPS limit:"
 msgstr "Limite FPS:"
 
-#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
+#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
+#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
 msgid "Alt FPS limit: "
 msgstr "Limite FPS alt: "
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:328
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:334
 msgid "Overhead text"
 msgstr "Texto sobrescrito como:"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:335
 msgid "Gui opacity"
 msgstr "Opacidade"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:336
 msgid "Ambient FX"
 msgstr "Ambiente FX"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:337
 msgid "Particle detail"
 msgstr "Detalhe de partículas"
 
-#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
-#: src/gui/setup_video.cpp:746
+#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
+#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:758
 msgid "None"
 msgstr "Nenhum"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:511
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo janela e falha na restauração do modo anterior!"
 
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:517
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo tela cheia e falha na restauração do modo "
 "anterior!"
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:528
 msgid "Switching to Full Screen"
 msgstr "Mudando para tela cheia"
 
-#: src/gui/setup_video.cpp:522
+#: src/gui/setup_video.cpp:529
 msgid "Restart needed for changes to take effect."
 msgstr "É preciso reiniciar para as mudanças terem efeito."
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:541
 msgid "Changing to OpenGL"
 msgstr "Mudando para OpenGL"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:542
 msgid "Applying change to OpenGL requires restart."
 msgstr "Mudanças no OpenGL requerem o reinício do jogo."
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:653
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Resolução customizada (exemplo 1024x768)"
 
-#: src/gui/setup_video.cpp:642
+#: src/gui/setup_video.cpp:654
 msgid "Enter new resolution:                "
 msgstr "Escolha a nova resolução                "
 
-#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
+#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
 msgid "Screen Resolution Changed"
 msgstr "Resolução de tela alterada"
 
-#: src/gui/setup_video.cpp:660
+#: src/gui/setup_video.cpp:672
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Algumas janelas podem ser movidas para se adequar à resolução mais baixa."
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:705
 msgid "Particle Effect Settings Changed."
 msgstr "Configurações de efeito de partícula modificadas."
 
-#: src/gui/setup_video.cpp:694
+#: src/gui/setup_video.cpp:706
 msgid "Changes will take effect on map change."
 msgstr "As mudanças terão efeito ao mudar de mapa."
 
@@ -3198,7 +3204,8 @@ msgid "Change"
 msgstr "Mudar"
 
 #: src/gui/tradewindow.cpp:332
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
@@ -3541,7 +3548,8 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jogador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Este comando para de ignorar o outro jogador se ele estiver sendo ignorado."
 
@@ -4775,497 +4783,4 @@ msgstr "MP %+d"
 msgid "Unknown item"
 msgstr "Item desconhecido"
 
-#~ msgid ""
-#~ "Access denied. Most likely, there are too many players on this server."
-#~ msgstr "Acesso negado. Provavelmente há jogadores demais neste servidor."
 
-#~ msgid "Cannot use this ID."
-#~ msgstr "Não é possível usar este ID."
-
-#~ msgid "Unknown char-server failure."
-#~ msgstr "Erro desconhecido do char-server."
-
-#~ msgid "Failed to create character. Most likely the name is already taken."
-#~ msgstr "Erro ao criar personagem. Provavelmente o nome já está sendo usado."
-
-#~ msgid "Wrong name."
-#~ msgstr "Nome errado."
-
-#~ msgid "Incorrect stats."
-#~ msgstr "Stats incorretos."
-
-#~ msgid "Incorrect hair."
-#~ msgstr "Cabelo incorreto."
-
-#~ msgid "Incorrect slot."
-#~ msgstr "Slot incorreto."
-
-#~ msgid "Character deleted."
-#~ msgstr "Personagem deletado."
-
-#~ msgid "Failed to delete character."
-#~ msgstr "Falha ao deletar personagem."
-
-#~ msgid "Strength:"
-#~ msgstr "Força:"
-
-#~ msgid "Agility:"
-#~ msgstr "Agilidade:"
-
-#~ msgid "Vitality:"
-#~ msgstr "Vitalidade:"
-
-#~ msgid "Intelligence:"
-#~ msgstr "Inteligência:"
-
-#~ msgid "Dexterity:"
-#~ msgstr "Destreza:"
-
-#~ msgid "Luck:"
-#~ msgstr "Sorte:"
-
-#~ msgid "Whisper could not be sent, %s is offline."
-#~ msgstr "Mensagem privada não pode ser enviada, %s está offline."
-
-#~ msgid "Whisper could not be sent, ignored by %s."
-#~ msgstr "Mensagem privada não pode ser enviada, ignorado por %s."
-
-#~ msgid "MVP player."
-#~ msgstr "Jogador VIP."
-
-#~ msgid "MVP player: "
-#~ msgstr "Jogador VIP:  "
-
-#~ msgid "Channels are not supported!"
-#~ msgstr "Não há suporte para canais!"
-
-#~ msgid "Online users: %d"
-#~ msgstr "Jogadores online: %d"
-
-#~ msgid "Game"
-#~ msgstr "Jogo"
-
-#~ msgid "Request to quit denied!"
-#~ msgstr "Requisição de saída negada!"
-
-#~ msgid "/help > Display this help."
-#~ msgstr "/help > Exibe esta ajuda."
-
-#~ msgid "/invite > Invite a player to your guild"
-#~ msgstr "/invite > Convida um jogador para a sua guilda"
-
-#~ msgid "/leave > Leave the guild you are in"
-#~ msgstr "/leave > Sai da guilda em que você está"
-
-#~ msgid "/kick > Kick some one from the guild you are in"
-#~ msgstr "/kick > Expulsa alguém da guilda em que você está"
-
-#~ msgid "Command: /invite <nick>"
-#~ msgstr "Comando: /invite <nick>"
-
-#~ msgid "This command invites <nick> to the guild you're in."
-#~ msgstr "Este comando convida <nick> para a guilda em que você está."
-
-#~ msgid "Command: /leave"
-#~ msgstr "Comando: /leave"
-
-#~ msgid "This command causes the player to leave the guild."
-#~ msgstr "Este comando faz com que o jogador saia da guilda."
-
-#~ msgid "You are already in guild."
-#~ msgstr "Você já está em uma Guilda"
-
-#~ msgid "Emperium check failed."
-#~ msgstr "Falha ao checar Emperium"
-
-#~ msgid "Unknown server response."
-#~ msgstr "Resposta do servidor desconhecida."
-
-#~ msgid "Guild name: %s"
-#~ msgstr "Nome Guilda: %s"
-
-#~ msgid "Guild master: %s"
-#~ msgstr "Mestre da guilda: %s"
-
-#~ msgid "Guild level: %d"
-#~ msgstr "Nível Guilda: %d"
-
-#~ msgid "Online members: %d"
-#~ msgstr "Membros Online: %d"
-
-#~ msgid "Max members: %d"
-#~ msgstr "Max Membros: %d"
-
-#~ msgid "Average level: %d"
-#~ msgstr "Nível médio: %d"
-
-#~ msgid "Guild exp: %d"
-#~ msgstr "Guilda exp: %d"
-
-#~ msgid "Guild next exp: %d"
-#~ msgstr "Guilda prox. exp: %d"
-
-#~ msgid "Guild castle: %s"
-#~ msgstr "Castelo Guilda : %s"
-
-#~ msgid "Could not inivte user to guild."
-#~ msgstr "Não foi possível convidar jogador para a guilda."
-
-#~ msgid "User rejected guild invite."
-#~ msgstr "O jogador rejeitou o convite."
-
-#~ msgid "User is now part of your guild."
-#~ msgstr "Usuário agora é um membro da sua guilda."
-
-#~ msgid "Your guild is full."
-#~ msgstr "Sua guilda está cheia."
-
-#~ msgid "Unknown guild invite response."
-#~ msgstr "Resposta desconhecida de convite para guilda."
-
-#~ msgid "You have left the guild."
-#~ msgstr "Você saiu da Guilda."
-
-#~ msgid "%s has left your guild."
-#~ msgstr "%s saiu de sua Guilda."
-
-#~ msgid "You was kicked from guild."
-#~ msgstr "Você foi expulso da Guilda."
-
-#~ msgid "%s has kicked from your guild."
-#~ msgstr "%s foi expulso da Guilda."
-
-#~ msgid "/invite > Invite a player to your party"
-#~ msgstr "/invite > Convida um jogador para o seu grupo"
-
-#~ msgid "/leave > Leave the party you are in"
-#~ msgstr "/leave > Sai do grupo em que você está"
-
-#~ msgid "/kick > Kick some one from the party you are in"
-#~ msgstr "/kick > Expulsa alguém do grupo em que você está"
-
-#~ msgid "/item > Show/change party item sharing options"
-#~ msgstr "/item > Mostra/Muda opções de compartilhamento de itens do grupo"
-
-#~ msgid "/exp > Show/change party experience sharing options"
-#~ msgstr ""
-#~ "/exp > Mostra/Modifica opções de compartilhamento de experiência do grupo"
-
-#~ msgid "This command invites <nick> to party with you."
-#~ msgstr "Este comando convida <nick> para o seu grupo."
-
-#~ msgid "This command causes the player to leave the party."
-#~ msgstr "Este comando faz com que o jogador saia do grupo."
-
-#~ msgid "Command: /item <policy>"
-#~ msgstr "Comando> /item <opção>"
-
-#~ msgid "This command changes the party's item sharing policy."
-#~ msgstr "Este comando muda a opção de compartilhamento de itens do grupo."
-
-#~ msgid ""
-#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, "
-#~ "or \"0\", \"no\", \"false\" to disable item sharing."
-#~ msgstr ""
-#~ "<policy> pode ser \"1\", \"yes\" e \"true\" para habilitar "
-#~ "compartilhamento de itens, ou \"0\", \"no\" e \"false\" para desabilitar."
-
-#~ msgid "Command: /item"
-#~ msgstr "Comando: /item"
-
-#~ msgid "This command displays the party's current item sharing policy."
-#~ msgstr ""
-#~ "Este comando exibe a atual opção de compartilhamento de itens do grupo."
-
-#~ msgid "Command: /exp <policy>"
-#~ msgstr "Comando: /exp <policy>"
-
-#~ msgid "This command changes the party's experience sharing policy."
-#~ msgstr ""
-#~ "Este comando muda a opção de compartilhamento de experiência do grupo."
-
-#~ msgid ""
-#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-#~ "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-#~ msgstr ""
-#~ "<policy> pode ser \"1\", \"yes\" e \"true\" para habilitar "
-#~ "compartilhamento de experiência, ou \"0\", \"no\" e \"false\" para "
-#~ "desabilitar."
-
-#~ msgid "Command: /exp"
-#~ msgstr "Comando: /exp"
-
-#~ msgid "This command displays the party's current experience sharing policy."
-#~ msgstr ""
-#~ "Este comando exibe a atual opção de compartilhamento de experiência do "
-#~ "grupo."
-
-#~ msgid "Item sharing enabled."
-#~ msgstr "Compartilhamento de itens habilitado."
-
-#~ msgid "Item sharing disabled."
-#~ msgstr "Compartilhamento de itens desabilitado."
-
-#~ msgid "Item sharing not possible."
-#~ msgstr "Não é possível compartilhar itens."
-
-#~ msgid "Item sharing unknown."
-#~ msgstr "Compartilhamento de itens desconhecido."
-
-#~ msgid "Experience sharing enabled."
-#~ msgstr "Compartilhamento de experiência habilitado."
-
-#~ msgid "Experience sharing disabled."
-#~ msgstr "Compartilhamento de experiência desabilitado."
-
-#~ msgid "Experience sharing not possible."
-#~ msgstr "Não é possível compartilhar experiência."
-
-#~ msgid "Experience sharing unknown."
-#~ msgstr "Compartilhamento de experiência desconhecido."
-
-#~ msgid "Failed to use item."
-#~ msgstr "Falha ao usar item."
-
-#~ msgid "Unable to equip."
-#~ msgstr "Impossível equipar."
-
-#~ msgid "Account was not found. Please re-login."
-#~ msgstr "Conta não encontrada. Por favor, tente novamente."
-
-#~ msgid "New password too short."
-#~ msgstr "Nova senha é muito curta."
-
-#~ msgid "Unregistered ID."
-#~ msgstr "ID não registrado."
-
-#~ msgid "Wrong password."
-#~ msgstr "Senha incorreta."
-
-#~ msgid "Account expired."
-#~ msgstr "A conta expirou."
-
-#~ msgid "Rejected from server."
-#~ msgstr "Rejeitado pelo servidor."
-
-#~ msgid ""
-#~ "You have been permanently banned from the game. Please contact the GM "
-#~ "team."
-#~ msgstr ""
-#~ "Você foi permanentemente banido do jogo. Por favor entre em contato com "
-#~ "algum GM."
-
-#~ msgid "Client too old."
-#~ msgstr "Cliente muito antigo."
-
-#~ msgid ""
-#~ "You have been temporarily banned from the game until %s.\n"
-#~ "Please contact the GM team via the forums."
-#~ msgstr ""
-#~ "Você banido do jogo até %s.\n"
-#~ "Por favor entre em contato com algum GM através do fórum."
-
-#~ msgid "Server overpopulated."
-#~ msgstr "Servidor lotado."
-
-#~ msgid "This user name is already taken."
-#~ msgstr "Este nome de usuário já está em uso."
-
-#~ msgid "Username permanently erased."
-#~ msgstr "Usuário apagado permanentemente. "
-
-#~ msgid "Could not create party."
-#~ msgstr "Não foi possível criar o grupo."
-
-#~ msgid "Party successfully created."
-#~ msgstr "Grupo criado."
-
-#~ msgid "%s has joined your party."
-#~ msgstr "%s se juntou ao grupo"
-
-#~ msgid "%s is already a member of a party."
-#~ msgstr "%s já é membro de um grupo."
-
-#~ msgid "%s refused your invitation."
-#~ msgstr "%s recusou seu convite."
-
-#~ msgid "%s is now a member of your party."
-#~ msgstr "%s agora é um membro do seu grupo."
-
-#~ msgid "%s can't join your party because party is full."
-#~ msgstr "%s não pode se juntar ao grupo cheio."
-
-#~ msgid "QQQ Unknown invite response for %s."
-#~ msgstr "QQQ resposta de convite desconhecida por %s."
-
-#~ msgid "You have left the party."
-#~ msgstr "Você saiu do grupo."
-
-#~ msgid "%s has left your party."
-#~ msgstr "%s saiu do seu grupo."
-
-#~ msgid "An unknown member tried to say: %s"
-#~ msgstr "Um membro desconhecido tentou dizer: %s"
-
-#~ msgid "Insert coin to continue."
-#~ msgstr "Insira uma moeda para continuar."
-
-#~ msgid "You're not dead yet. You're just resting."
-#~ msgstr "Você não morreu ainda. Está apenas descansando."
-
-#~ msgid "You are no more."
-#~ msgstr "Você não é mais."
-
-#~ msgid "You have ceased to be."
-#~ msgstr "Você deixou de ser."
-
-#~ msgid "You've expired and gone to meet your maker."
-#~ msgstr "Você expirou e foi encontrar seu criador."
-
-#~ msgid "You're a stiff."
-#~ msgstr "Você é um cadáver."
-
-#~ msgid "Bereft of life, you rest in peace."
-#~ msgstr "Sem vida, você descansa em paz."
-
-#~ msgid "If you weren't so animated, you'd be pushing up the daisies."
-#~ msgstr "Se não fosse tão animado, estaria comendo grama pela raiz."
-
-#~ msgid "Your metabolic processes are now history."
-#~ msgstr "Seus processos metabólicos agora são história."
-
-#~ msgid "You're off the twig."
-#~ msgstr "Você bateu as botas."
-
-#~ msgid "You've kicked the bucket."
-#~ msgstr "Você chutou o balde."
-
-#~ msgid ""
-#~ "You've shuffled off your mortal coil, run down the curtain and joined the "
-#~ "bleedin' choir invisibile."
-#~ msgstr ""
-#~ "Você dispensou seu corpo mortal, abaixou as cortinas e juntou-se ao "
-#~ "maldito coro invisível."
-
-#~ msgid "You are an ex-player."
-#~ msgstr "Você é um ex-jogador"
-
-#~ msgid "You're pining for the fjords."
-#~ msgstr "Você foi desta para melhor."
-
-#~ msgid "Message"
-#~ msgstr "Mensagem"
-
-#~ msgid ""
-#~ "You are carrying more than half your weight. You are unable to regain "
-#~ "health."
-#~ msgstr ""
-#~ "Você está carregando mais que a metade de seu peso. Você não poderá mais "
-#~ "recuperar HP."
-
-#~ msgid "You are carrying less than half your weight. You can regain health."
-#~ msgstr ""
-#~ "Você está carregando menos ou metade de seu peso. Você pode recuperar-se "
-#~ "novamente."
-
-#~ msgid "You picked up %s."
-#~ msgstr "Você pegou %s."
-
-#~ msgid "You spent %s."
-#~ msgstr "Você gastou %s"
-
-#~ msgid "Cannot raise skill!"
-#~ msgstr "Impossível aumentar o atributo!"
-
-#~ msgid "Equip arrows first."
-#~ msgstr "Equipe as flechas primeiro."
-
-#~ msgid "Trade failed!"
-#~ msgstr "Falha na negociação!"
-
-#~ msgid "Emote failed!"
-#~ msgstr "Falha no emoticon!"
-
-#~ msgid "Sit failed!"
-#~ msgstr "Falha ao sentar!"
-
-#~ msgid "Chat creating failed!"
-#~ msgstr "Falha ao criar Chat!"
-
-#~ msgid "Could not join party!"
-#~ msgstr "Impossivel entrar no grupo!"
-
-#~ msgid "Cannot shout!"
-#~ msgstr "Impossivel gritar!"
-
-#~ msgid "You have not yet reached a high enough lvl!"
-#~ msgstr "Você ainda não tem o nivel necessário!"
-
-#~ msgid "Insufficient HP!"
-#~ msgstr "HP insuficiente!"
-
-#~ msgid "Insufficient SP!"
-#~ msgstr "SP insuficiente!"
-
-#~ msgid "You have no memos!"
-#~ msgstr "Você não tem nenhuma nota armazenada!"
-
-#~ msgid "You cannot do that right now!"
-#~ msgstr "Você não pode fazer isso agora!"
-
-#~ msgid "Seems you need more money... ;-)"
-#~ msgstr "Parece que você precisa de mais dinheiro... ;-)"
-
-#~ msgid "You cannot use this skill with that kind of weapon!"
-#~ msgstr "Você não pode usar essa habilidade com esse tipo de arma!"
-
-#~ msgid "You need another red gem!"
-#~ msgstr "Você precisa de outra gema vermelha!"
-
-#~ msgid "You need another blue gem!"
-#~ msgstr "Você precisa de outra jóia azul!"
-
-#~ msgid "You're carrying to much to do this!"
-#~ msgstr "Você está com muita carga para fazer isso!"
-
-#~ msgid "Huh? What's that?"
-#~ msgstr "Hã? O que é isso?"
-
-#~ msgid "Warp failed..."
-#~ msgstr "Falha ao transportar..."
-
-#~ msgid "Could not steal anything..."
-#~ msgstr "Não foi possível roubar nada..."
-
-#~ msgid "Poison had no effect..."
-#~ msgstr "Veneno não surtiu efeito..."
-
-#~ msgid "Trading isn't possible. Trade partner is too far away."
-#~ msgstr "Negociação impossível. O parceiro de negócios está muito longe."
-
-#~ msgid "Trading isn't possible. Character doesn't exist."
-#~ msgstr "Negociação impossível. O personagem não existe."
-
-#~ msgid "Trade cancelled due to an unknown reason."
-#~ msgstr "Negociação cancelada devido a uma razão desconhecida."
-
-#~ msgid "Trade: You and %s"
-#~ msgstr "Negociação: Você e %s"
-
-#~ msgid "Trade with %s cancelled."
-#~ msgstr "Negociação com %s cancelada."
-
-#~ msgid "Unhandled trade cancel packet."
-#~ msgstr "Troca injusta pacote cancelado."
-
-#~ msgid "Failed adding item. Trade partner is over weighted."
-#~ msgstr "Erro ao adicionar item. Parceiro de negócios carregando muito peso."
-
-#~ msgid "Failed adding item. Trade partner has no free slot."
-#~ msgstr "Erro ao adicionar item. Parceiro de negócios não tem slots livres."
-
-#~ msgid "Failed adding item. You can't trade this item."
-#~ msgstr "Falha ao adicionar item. Você não pode trocar este item."
-
-#~ msgid "Failed adding item for unknown reason."
-#~ msgstr "Erro ao adicionar item devido a um motivo desconhecido."

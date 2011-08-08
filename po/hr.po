@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mana\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-06 16:24+0300\n"
+"POT-Creation-Date: 2011-08-08 04:26+0300\n"
 "PO-Revision-Date: 2009-12-13 09:30+0000\n"
 "Last-Translator: nafterburner <nafterburner@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -44,40 +44,40 @@ msgstr ""
 msgid "I"
 msgstr "Je"
 
-#: src/client.cpp:825 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Podešavanje"
 
-#: src/client.cpp:907
+#: src/client.cpp:908
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Spajanje na poslužitelja karti..."
 
-#: src/client.cpp:938
+#: src/client.cpp:939
 #, fuzzy
 msgid "Logging in"
 msgstr "Korisničko ime"
 
-#: src/client.cpp:971
+#: src/client.cpp:972
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1071
+#: src/client.cpp:1072
 #, fuzzy
 msgid "Requesting characters"
 msgstr "Odaberi lika"
 
-#: src/client.cpp:1102
+#: src/client.cpp:1103
 #, fuzzy
 msgid "Connecting to the game server"
 msgstr "Spajanje na poslužitelja karti..."
 
-#: src/client.cpp:1112
+#: src/client.cpp:1113
 #, fuzzy
 msgid "Changing game servers"
 msgstr "Server"
 
-#: src/client.cpp:1149 src/client.cpp:1156 src/client.cpp:1293
+#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
@@ -86,54 +86,54 @@ msgstr "Server"
 msgid "Error"
 msgstr "Greška"
 
-#: src/client.cpp:1165
+#: src/client.cpp:1166
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1192
+#: src/client.cpp:1193
 #, fuzzy
 msgid "Password Change"
 msgstr "Lozinka"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1194
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1212
+#: src/client.cpp:1213
 #, fuzzy
 msgid "Email Change"
 msgstr "Izmijeni"
 
-#: src/client.cpp:1213
+#: src/client.cpp:1214
 #, fuzzy
 msgid "Email changed successfully!"
 msgstr "Član je uspješno unaprijeđen."
 
-#: src/client.cpp:1233
+#: src/client.cpp:1234
 #, fuzzy
 msgid "Unregister Successful"
 msgstr "Odjavi"
 
-#: src/client.cpp:1234
+#: src/client.cpp:1235
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
-#: src/client.cpp:1918
+#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
+#: src/client.cpp:1919
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1628
+#: src/client.cpp:1629
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:1662 src/client.cpp:1668
+#: src/client.cpp:1663 src/client.cpp:1669
 msgid "Error creating updates directory!"
 msgstr ""
 
-#: src/client.cpp:1689
+#: src/client.cpp:1690
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -326,46 +326,46 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "Opcije za /%s su \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
-#: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
 msgstr "Općenito"
 
-#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:464
+#: src/game.cpp:475
 #, fuzzy
 msgid "Screenshot saved as "
 msgstr "Screenshot spremljen u ~/"
 
-#: src/game.cpp:472
+#: src/game.cpp:483
 msgid "Saving screenshot failed!"
 msgstr "Spremanje screenshot-a nije uspjelo!"
 
-#: src/game.cpp:511
+#: src/game.cpp:523
 #, fuzzy
 msgid "The connection to the server was lost."
 msgstr "Veza s poslužiteljem je bila izgubljena, program će se sada zatvoriti"
 
-#: src/game.cpp:525
+#: src/game.cpp:537
 msgid "Network Error"
 msgstr "Mreža Greška"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1184
 msgid "Ignoring incoming trade requests"
 msgstr "Ignoriranje dolaznih zahtjeva za trgovanje"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1191
 msgid "Accepting incoming trade requests"
 msgstr "Prihvaćanje dolaznih zahtjeva za trgovanje"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1576
 #, fuzzy
 msgid "Could Not Load Map"
 msgstr "Ne mogu učitati karte"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1577
 #, c-format
 msgid "Error while loading %s"
 msgstr "Greška prilikom učitavanja %s"
@@ -489,7 +489,7 @@ msgstr "Prodaj"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
@@ -1054,7 +1054,7 @@ msgstr "Težina:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:68
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
 msgid "Store"
 msgstr "Pohrani"
 
@@ -2018,11 +2018,11 @@ msgstr "Plava: "
 msgid "Alpha:"
 msgstr ""
 
-#: src/gui/setup.cpp:66
+#: src/gui/setup.cpp:67
 msgid "Apply"
 msgstr "Primjeni"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:70
 msgid "Reset Windows"
 msgstr "Ponovno pokreni prozore"
 
@@ -2245,6 +2245,11 @@ msgstr ""
 msgid "Hide shield sprite"
 msgstr ""
 
+#: src/gui/setup_other.cpp:169
+#, fuzzy
+msgid "Show background"
+msgstr "Pozadina"
+
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
 msgstr "Odnos"
@@ -2399,8 +2404,8 @@ msgstr "Veličina fonta"
 msgid "Theme Changed"
 msgstr "Izmijeni"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
-#: src/gui/setup_video.cpp:663
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
+#: src/gui/setup_video.cpp:675
 msgid "Restart your client for the change to take effect."
 msgstr "Ponovo pokrenite klijent da bi promjene bile efektne."
 
@@ -2454,142 +2459,145 @@ msgstr "srednje"
 msgid "max"
 msgstr "max"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Full screen"
 msgstr "Pregled na čitavom ekranu"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 #, fuzzy
 msgid "Hw acceleration"
 msgstr "Odnos"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Custom cursor"
 msgstr "Vlastiti kursor"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "Particle effects"
 msgstr "Efekt čestica"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "Show pickup notification"
 msgstr "Prikaži obavijesti o prikupljanju."
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "in chat"
 msgstr "u chat-u"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:303
 msgid "as particle"
 msgstr "kao čestica"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
 #, fuzzy
 msgid "Enable opacity cache"
 msgstr "Omogući igraću palicu"
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:306
 #, fuzzy
 msgid "Enable map reduce"
 msgstr "Omogući igraću palicu"
 
-#: src/gui/setup_video.cpp:307
-#, fuzzy
-msgid "Show background"
-msgstr "Pozadina"
+#: src/gui/setup_video.cpp:308
+msgid "Auto adjust perfomance"
+msgstr ""
 
-#: src/gui/setup_video.cpp:312
+#: src/gui/setup_video.cpp:310
+msgid "Show beings transparency"
+msgstr ""
+
+#: src/gui/setup_video.cpp:315
 #, fuzzy
 msgid "FPS limit:"
 msgstr "Ograničenje sličica u sekundi"
 
-#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
+#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
+#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
 #, fuzzy
 msgid "Alt FPS limit: "
 msgstr "Ograničenje sličica u sekundi"
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:328
 msgid "Video"
 msgstr "Slika"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:334
 msgid "Overhead text"
 msgstr "Tekst iznad glave"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:335
 msgid "Gui opacity"
 msgstr "Prozirnost sučelja"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:336
 msgid "Ambient FX"
 msgstr "Efekti okruženja"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:337
 #, fuzzy
 msgid "Particle detail"
 msgstr "Detalji Čestica"
 
-#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
-#: src/gui/setup_video.cpp:746
+#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
+#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:758
 #, fuzzy
 msgid "None"
 msgstr "Ne"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:511
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:517
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:528
 #, fuzzy
 msgid "Switching to Full Screen"
 msgstr "Prebacivanje u pregled na čitavom ekranu"
 
-#: src/gui/setup_video.cpp:522
+#: src/gui/setup_video.cpp:529
 msgid "Restart needed for changes to take effect."
 msgstr "Potrebno je ponovno pokrenuti klijent za izvršavanje promjena."
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:541
 #, fuzzy
 msgid "Changing to OpenGL"
 msgstr "Promjena OpenGL-a"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:542
 msgid "Applying change to OpenGL requires restart."
 msgstr "Izmjene OpenGL-a zahtjevaju ponovno pokretanje klijenta."
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:653
 msgid "Custom resolution (example: 1024x768)"
 msgstr ""
 
-#: src/gui/setup_video.cpp:642
+#: src/gui/setup_video.cpp:654
 msgid "Enter new resolution:                "
 msgstr ""
 
-#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
+#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
 #, fuzzy
 msgid "Screen Resolution Changed"
 msgstr "Rezolucija Ekrana promijenjena"
 
-#: src/gui/setup_video.cpp:660
+#: src/gui/setup_video.cpp:672
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:705
 #, fuzzy
 msgid "Particle Effect Settings Changed."
 msgstr "Postavke efekta čestica su promijenjene."
 
-#: src/gui/setup_video.cpp:694
+#: src/gui/setup_video.cpp:706
 msgid "Changes will take effect on map change."
 msgstr "Promjene će stupiti na snagu na promjeni karte."
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 #   <reslayer@mail.ru>, 2011.
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
@@ -10,17 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-06 16:24+0300\n"
-"PO-Revision-Date: 2011-07-21 23:52+0000\n"
+"POT-Creation-Date: 2011-08-08 04:26+0300\n"
+"PO-Revision-Date: 2011-08-08 01:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
-"ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1034
 msgid "Visible on map"
@@ -44,35 +42,35 @@ msgstr "О"
 msgid "I"
 msgstr "Б"
 
-#: src/client.cpp:825 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Настройка"
 
-#: src/client.cpp:907
+#: src/client.cpp:908
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
-#: src/client.cpp:938
+#: src/client.cpp:939
 msgid "Logging in"
 msgstr "Авторизация"
 
-#: src/client.cpp:971
+#: src/client.cpp:972
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
-#: src/client.cpp:1071
+#: src/client.cpp:1072
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
-#: src/client.cpp:1102
+#: src/client.cpp:1103
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
-#: src/client.cpp:1112
+#: src/client.cpp:1113
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
-#: src/client.cpp:1149 src/client.cpp:1156 src/client.cpp:1293
+#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
@@ -81,50 +79,50 @@ msgstr "Смена игрового сервера"
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/client.cpp:1165
+#: src/client.cpp:1166
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
-#: src/client.cpp:1192
+#: src/client.cpp:1193
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1194
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
-#: src/client.cpp:1212
+#: src/client.cpp:1213
 msgid "Email Change"
 msgstr "Сменить Email"
 
-#: src/client.cpp:1213
+#: src/client.cpp:1214
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
-#: src/client.cpp:1233
+#: src/client.cpp:1234
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
-#: src/client.cpp:1234
+#: src/client.cpp:1235
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
-#: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
-#: src/client.cpp:1918
+#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
+#: src/client.cpp:1919
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
-#: src/client.cpp:1628
+#: src/client.cpp:1629
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Некорректный сервер обновлений: %s"
 
-#: src/client.cpp:1662 src/client.cpp:1668
+#: src/client.cpp:1663 src/client.cpp:1669
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:1689
+#: src/client.cpp:1690
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -140,11 +138,11 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок Вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок Вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
@@ -303,47 +301,45 @@ msgstr "Удаленных изображений:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
-#: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
 msgstr "Общие"
 
-#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
 msgid "Debug"
 msgstr "Отладка"
 
-#: src/game.cpp:464
+#: src/game.cpp:475
 msgid "Screenshot saved as "
 msgstr "Снимок экрана сохранен как "
 
-#: src/game.cpp:472
+#: src/game.cpp:483
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
-#: src/game.cpp:511
+#: src/game.cpp:523
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
-#: src/game.cpp:525
+#: src/game.cpp:537
 msgid "Network Error"
 msgstr "Ошибка сети"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1184
 msgid "Ignoring incoming trade requests"
 msgstr "Игнорировать предложения о торговле"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1191
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1576
 msgid "Could Not Load Map"
 msgstr "Не удалось загрузить карту"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1577
 #, c-format
 msgid "Error while loading %s"
 msgstr "Ошибка во время загрузки %s"
@@ -465,7 +461,7 @@ msgstr "Продать"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
@@ -988,7 +984,7 @@ msgstr "Вес:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:68
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
 msgid "Store"
 msgstr "Сохранить"
 
@@ -1875,11 +1871,11 @@ msgstr "Синий:"
 msgid "Alpha:"
 msgstr "Прозрачность:"
 
-#: src/gui/setup.cpp:66
+#: src/gui/setup.cpp:67
 msgid "Apply"
 msgstr "Применить"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:70
 msgid "Reset Windows"
 msgstr "Сбросить расположение окон"
 
@@ -2088,6 +2084,10 @@ msgstr "Режим кеширования игроков"
 msgid "Hide shield sprite"
 msgstr "Спрятать картинку счита"
 
+#: src/gui/setup_other.cpp:169
+msgid "Show background"
+msgstr "Показать фон"
+
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
 msgstr "Отношение"
@@ -2228,8 +2228,8 @@ msgstr "Размер шрифта"
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
-#: src/gui/setup_video.cpp:663
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
+#: src/gui/setup_video.cpp:675
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
@@ -2281,136 +2281,140 @@ msgstr "средне"
 msgid "max"
 msgstr "макс."
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Hw acceleration"
 msgstr "Аппаратное ускорение"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "Show pickup notification"
 msgstr "Показать уведомление о подборе предмета"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "in chat"
 msgstr "в чате"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:303
 msgid "as particle"
 msgstr "как частицу"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
 msgid "Enable opacity cache"
 msgstr "Включить кеш прозрачности"
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:306
 msgid "Enable map reduce"
 msgstr "Включить режим сжатия карты"
 
-#: src/gui/setup_video.cpp:307
-msgid "Show background"
-msgstr "Показать фон"
+#: src/gui/setup_video.cpp:308
+msgid "Auto adjust perfomance"
+msgstr "Автоматически подстраивать производительность"
 
-#: src/gui/setup_video.cpp:312
+#: src/gui/setup_video.cpp:310
+msgid "Show beings transparency"
+msgstr "Отображать прозрачность на персонажах и монстрах"
+
+#: src/gui/setup_video.cpp:315
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
+#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
+#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:328
 msgid "Video"
 msgstr "Видео"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:334
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:335
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:336
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:337
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
-#: src/gui/setup_video.cpp:746
+#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
+#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:758
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:511
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:517
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:528
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:522
+#: src/gui/setup_video.cpp:529
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:541
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:542
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:653
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:642
+#: src/gui/setup_video.cpp:654
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
+#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:660
+#: src/gui/setup_video.cpp:672
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:705
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:694
+#: src/gui/setup_video.cpp:706
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 
@@ -3208,7 +3212,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/tradewindow.cpp:332
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3546,15 +3551,16 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:125
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:65
@@ -4788,494 +4794,4 @@ msgstr "Мана %+d"
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
 
-#~ msgid ""
-#~ "Access denied. Most likely, there are too many players on this server."
-#~ msgstr ""
-#~ "В доступе отказано. Скорее всего, на этом сервере слишком много игроков."
 
-#~ msgid "Cannot use this ID."
-#~ msgstr "Нельзя использовать данный ID."
-
-#~ msgid "Unknown char-server failure."
-#~ msgstr "Неизвестная ошибка сервера персонажей."
-
-#~ msgid "Failed to create character. Most likely the name is already taken."
-#~ msgstr ""
-#~ "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
-
-#~ msgid "Wrong name."
-#~ msgstr "Некорректное имя."
-
-#~ msgid "Incorrect stats."
-#~ msgstr "Некорректные статы."
-
-#~ msgid "Incorrect hair."
-#~ msgstr "Некорректный тип волос."
-
-#~ msgid "Incorrect slot."
-#~ msgstr "Некорректный слот."
-
-#~ msgid "Character deleted."
-#~ msgstr "Персонаж удален"
-
-#~ msgid "Failed to delete character."
-#~ msgstr "Невозможно удалить персонажа."
-
-#~ msgid "Strength:"
-#~ msgstr "Сила (str):"
-
-#~ msgid "Agility:"
-#~ msgstr "Выносливость (agi):"
-
-#~ msgid "Vitality:"
-#~ msgstr "Живучесть (vit):"
-
-#~ msgid "Intelligence:"
-#~ msgstr "Интеллект (int):"
-
-#~ msgid "Dexterity:"
-#~ msgstr "Ловкость (dex):"
-
-#~ msgid "Luck:"
-#~ msgstr "Удача (luk):"
-
-#~ msgid "Whisper could not be sent, %s is offline."
-#~ msgstr "Сообщение не может быть отправлено, %s оффлайн."
-
-#~ msgid "Whisper could not be sent, ignored by %s."
-#~ msgstr "Приватное сообщение не может быть послано: %s игнорирует его."
-
-#~ msgid "MVP player."
-#~ msgstr "Игрок MVP."
-
-#~ msgid "MVP player: "
-#~ msgstr "Игрок MVP: "
-
-#~ msgid "Channels are not supported!"
-#~ msgstr "Каналы не поддерживаются!"
-
-#~ msgid "Online users: %d"
-#~ msgstr "Пользователей онлайн: %d"
-
-#~ msgid "Game"
-#~ msgstr "Игра"
-
-#~ msgid "Request to quit denied!"
-#~ msgstr "Запрос на выход отклонен!"
-
-#~ msgid "/help > Display this help."
-#~ msgstr "/help > Показать эту справку"
-
-#~ msgid "/invite > Invite a player to your guild"
-#~ msgstr "/invite > Пригласить игрока в Вашу гильдию"
-
-#~ msgid "/leave > Leave the guild you are in"
-#~ msgstr "/leave > Покинуть текущую гильдию"
-
-#~ msgid "/kick > Kick some one from the guild you are in"
-#~ msgstr "/kick > Вышвырнуть кого-либо из Вашей текущей группы"
-
-#~ msgid "Command: /invite <nick>"
-#~ msgstr "Команда: /invite <игрок>"
-
-#~ msgid "This command invites <nick> to the guild you're in."
-#~ msgstr "Эта команда приглашает <имя персонажа> к Вам в группу."
-
-#~ msgid "Command: /leave"
-#~ msgstr "Команда: /leave"
-
-#~ msgid "This command causes the player to leave the guild."
-#~ msgstr "Эта команда заставляет игрока покинуть гильдию."
-
-#~ msgid "You are already in guild."
-#~ msgstr "Вы и так в гильдии"
-
-#~ msgid "Emperium check failed."
-#~ msgstr "Имперская проверка провалена"
-
-#~ msgid "Unknown server response."
-#~ msgstr "Неизвестный ответ сервера."
-
-#~ msgid "Guild name: %s"
-#~ msgstr "Имя гильдии: %s"
-
-#~ msgid "Guild master: %s"
-#~ msgstr "Мастер гильдии: %s"
-
-#~ msgid "Guild level: %d"
-#~ msgstr "Уровень гильдии: %d"
-
-#~ msgid "Online members: %d"
-#~ msgstr "Пользователей онлайн: %d"
-
-#~ msgid "Max members: %d"
-#~ msgstr "Макс. членов: %d"
-
-#~ msgid "Average level: %d"
-#~ msgstr "Средний уровень: %d"
-
-#~ msgid "Guild exp: %d"
-#~ msgstr "Опыт гильдии: %d"
-
-#~ msgid "Guild next exp: %d"
-#~ msgstr "Нужно опыта до следующего уровня: %d"
-
-#~ msgid "Guild castle: %s"
-#~ msgstr "Замки: %s"
-
-#~ msgid "Could not inivte user to guild."
-#~ msgstr "Не удалось пригласить пользователя в гиьдию."
-
-#~ msgid "User rejected guild invite."
-#~ msgstr "Пользователь отклонил приглашение."
-
-#~ msgid "User is now part of your guild."
-#~ msgstr "Пользователь теперь в Вашей гильдии."
-
-#~ msgid "Your guild is full."
-#~ msgstr "Ваша гильдия полна."
-
-#~ msgid "Unknown guild invite response."
-#~ msgstr "Неизвестный ответ на приглашение в гильдию."
-
-#~ msgid "You have left the guild."
-#~ msgstr "Вы покинули гильдию."
-
-#~ msgid "%s has left your guild."
-#~ msgstr "%s покинул Вашу гильдию."
-
-#~ msgid "You was kicked from guild."
-#~ msgstr "Вы были кикнуты из гильдии."
-
-#~ msgid "%s has kicked from your guild."
-#~ msgstr "%s был вышвырнут из Вашей гильдии."
-
-#~ msgid "/invite > Invite a player to your party"
-#~ msgstr "/invite > Пригласить игрока в Вашу группу"
-
-#~ msgid "/leave > Leave the party you are in"
-#~ msgstr "/leave > Покинуть текущую группу"
-
-#~ msgid "/kick > Kick some one from the party you are in"
-#~ msgstr "/kick > Вышвырнуть кого-либо из Вашей текущей группы"
-
-#~ msgid "/item > Show/change party item sharing options"
-#~ msgstr ""
-#~ "/item > Показать/Скрыть текущее состояние распределения предметов в группе"
-
-#~ msgid "/exp > Show/change party experience sharing options"
-#~ msgstr ""
-#~ "/exp > Показать/Скрыть текущее состояние распределения опыта в группе"
-
-#~ msgid "This command invites <nick> to party with you."
-#~ msgstr "Эта команда приглашает <имя персонажа> к вам в группу."
-
-#~ msgid "This command causes the player to leave the party."
-#~ msgstr "Эта команда заставляет игрока покинуть группу"
-
-#~ msgid "Command: /item <policy>"
-#~ msgstr "Команда: /item <политика разделения предметов>"
-
-#~ msgid "This command changes the party's item sharing policy."
-#~ msgstr "Команда изменяет политику разделения предетов между ченами группы."
-
-#~ msgid ""
-#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, "
-#~ "or \"0\", \"no\", \"false\" to disable item sharing."
-#~ msgstr ""
-#~ "<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения "
-#~ "или \"0\", \"no\", \"false\" -- для выключения."
-
-#~ msgid "Command: /item"
-#~ msgstr "Команда: /item"
-
-#~ msgid "This command displays the party's current item sharing policy."
-#~ msgstr ""
-#~ "Отображает текущую политику разделения предметов между членами группы."
-
-#~ msgid "Command: /exp <policy>"
-#~ msgstr "Команда: /exp <политика распределения опыта>"
-
-#~ msgid "This command changes the party's experience sharing policy."
-#~ msgstr "Эта команда изменяет политику распределения опыта в группе."
-
-#~ msgid ""
-#~ "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-#~ "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-#~ msgstr ""
-#~ "<policy> может быть одним из \"1\", \"yes\", \"true\" - чтобы разрешить "
-#~ "общий опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
-
-#~ msgid "Command: /exp"
-#~ msgstr "Команда: /exp"
-
-#~ msgid "This command displays the party's current experience sharing policy."
-#~ msgstr "Эта команда отображает текущую политику обмена опытом."
-
-#~ msgid "Item sharing enabled."
-#~ msgstr "Обмен предметами включен"
-
-#~ msgid "Item sharing disabled."
-#~ msgstr "Обмен предметами выключен"
-
-#~ msgid "Item sharing not possible."
-#~ msgstr "Обмен предметами невозможен."
-
-#~ msgid "Item sharing unknown."
-#~ msgstr "Статус обмена предметами неизвестен."
-
-#~ msgid "Experience sharing enabled."
-#~ msgstr "Обмен опытом вклыючен."
-
-#~ msgid "Experience sharing disabled."
-#~ msgstr "Обмен опытом выкючен."
-
-#~ msgid "Experience sharing not possible."
-#~ msgstr "Обмен опытом невозможен."
-
-#~ msgid "Experience sharing unknown."
-#~ msgstr "Политика распределения опыта неизвестна."
-
-#~ msgid "Failed to use item."
-#~ msgstr "Не удалось использовать предмет."
-
-#~ msgid "Unable to equip."
-#~ msgstr "Нельзя экипировать!"
-
-#~ msgid "Account was not found. Please re-login."
-#~ msgstr "Учетная запись не найдена. Попробуйте снова."
-
-#~ msgid "New password too short."
-#~ msgstr "Новый пароль слишком короткий."
-
-#~ msgid "Unregistered ID."
-#~ msgstr "Незарегистрированный ID"
-
-#~ msgid "Wrong password."
-#~ msgstr "Неверный пароль"
-
-#~ msgid "Account expired."
-#~ msgstr "Учетная запись просрочена."
-
-#~ msgid "Rejected from server."
-#~ msgstr "Получен отказ от сервера.."
-
-#~ msgid ""
-#~ "You have been permanently banned from the game. Please contact the GM "
-#~ "team."
-#~ msgstr "Вас навсегда забанили. Пожалуйста, свяжитесь с командой ГМ-ов."
-
-#~ msgid "Client too old."
-#~ msgstr "Клиент устарел"
-
-#~ msgid ""
-#~ "You have been temporarily banned from the game until %s.\n"
-#~ "Please contact the GM team via the forums."
-#~ msgstr ""
-#~ "Вас забанили до %s. Пожалуйста, свяжитесь с командой ГМ-ов через форум."
-
-#~ msgid "Server overpopulated."
-#~ msgstr "Сервер переполнен"
-
-#~ msgid "This user name is already taken."
-#~ msgstr "Это имя пользователя уже занято."
-
-#~ msgid "Username permanently erased."
-#~ msgstr "Пользователь удален"
-
-#~ msgid "Could not create party."
-#~ msgstr "Не удалось создать группу."
-
-#~ msgid "Party successfully created."
-#~ msgstr "Группа успешно создана."
-
-#~ msgid "%s has joined your party."
-#~ msgstr "%s присоединился к группе."
-
-#~ msgid "%s is already a member of a party."
-#~ msgstr "%s уже в Вашей группе."
-
-#~ msgid "%s refused your invitation."
-#~ msgstr "%s отверг Ваше приглашение."
-
-#~ msgid "%s is now a member of your party."
-#~ msgstr "%s теперь в Вашей группе."
-
-#~ msgid "%s can't join your party because party is full."
-#~ msgstr "%s не может присоединиться к Вашей группе, т.к. группа переполнена."
-
-#~ msgid "QQQ Unknown invite response for %s."
-#~ msgstr "QQQ Неизвестный ответ на приглашение для %s"
-
-#~ msgid "You have left the party."
-#~ msgstr "Вы покинули группу."
-
-#~ msgid "%s has left your party."
-#~ msgstr "%s покинул Вашу группу."
-
-#~ msgid "An unknown member tried to say: %s"
-#~ msgstr "Неизвестный участник попытался сказать: %s"
-
-#~ msgid "Insert coin to continue."
-#~ msgstr "Опустите монетку для продолжения."
-
-#~ msgid "You're not dead yet. You're just resting."
-#~ msgstr "Вы не мертвы. Вы просто отдыхаете."
-
-#~ msgid "You are no more."
-#~ msgstr "Вас больше нет."
-
-#~ msgid "You have ceased to be."
-#~ msgstr "Вы перестали быть."
-
-#~ msgid "You've expired and gone to meet your maker."
-#~ msgstr "Ваше время истекло, пора встретиться с Создателем."
-
-#~ msgid "You're a stiff."
-#~ msgstr "Вы сдулись."
-
-#~ msgid "Bereft of life, you rest in peace."
-#~ msgstr "Лишенный жизни, покойся с миром."
-
-#~ msgid "If you weren't so animated, you'd be pushing up the daisies."
-#~ msgstr "Если бы Вы не были нарисованными, Вы бы отправлись на тот свет"
-
-#~ msgid "Your metabolic processes are now history."
-#~ msgstr "Ваш обмен веществ стал историей."
-
-#~ msgid "You're off the twig."
-#~ msgstr "Вы упали с ветки."
-
-#~ msgid "You've kicked the bucket."
-#~ msgstr "Вы протянули ноги."
-
-#~ msgid ""
-#~ "You've shuffled off your mortal coil, run down the curtain and joined the "
-#~ "bleedin' choir invisibile."
-#~ msgstr ""
-#~ "Вы затаскали свою смертную оболочку, сорвали занавес и незримо "
-#~ "присоединились к кровоточащему хору..."
-
-#~ msgid "You are an ex-player."
-#~ msgstr "Вы не жилец."
-
-#~ msgid "You're pining for the fjords."
-#~ msgstr "Вас пришпиливают к фьордам."
-
-#~ msgid "Message"
-#~ msgstr "Сообщение"
-
-#~ msgid ""
-#~ "You are carrying more than half your weight. You are unable to regain "
-#~ "health."
-#~ msgstr ""
-#~ "Вы несете груз больший, чем половина вашей грузоподъемности. Здоровье "
-#~ "восстанавливаться не будет."
-
-#~ msgid "You are carrying less than half your weight. You can regain health."
-#~ msgstr ""
-#~ "Вес предметов составляет менее половины допустимого. Теперь Вы можете "
-#~ "восстанавливаться."
-
-#~ msgid "You picked up %s."
-#~ msgstr "Вы получили %s."
-
-#~ msgid "You spent %s."
-#~ msgstr "Вы потратили %s."
-
-#~ msgid "Cannot raise skill!"
-#~ msgstr "Не удалось увеличить навык!"
-
-#~ msgid "Equip arrows first."
-#~ msgstr "Для начала экипируйтесь стрелами!"
-
-#~ msgid "Trade failed!"
-#~ msgstr "Не удалось начать торговлю!"
-
-#~ msgid "Emote failed!"
-#~ msgstr "Не удалось использовать смайлик!"
-
-#~ msgid "Sit failed!"
-#~ msgstr "Не удалось присесть!"
-
-#~ msgid "Chat creating failed!"
-#~ msgstr "Не удалось создать чат!"
-
-#~ msgid "Could not join party!"
-#~ msgstr "Нельзя присоединиться к группе!"
-
-#~ msgid "Cannot shout!"
-#~ msgstr "Нельзя кричать!"
-
-#~ msgid "You have not yet reached a high enough lvl!"
-#~ msgstr "У Вас недостаточный уровень!"
-
-#~ msgid "Insufficient HP!"
-#~ msgstr "Недостаточно ОЖ!"
-
-#~ msgid "Insufficient SP!"
-#~ msgstr "Недостаточно Маны"
-
-#~ msgid "You have no memos!"
-#~ msgstr "У Вас нет записей!"
-
-#~ msgid "You cannot do that right now!"
-#~ msgstr "Вы не можете сделать это сейчас!"
-
-#~ msgid "Seems you need more money... ;-)"
-#~ msgstr "Похоже, Вам нужно боьше денег... ;-)"
-
-#~ msgid "You cannot use this skill with that kind of weapon!"
-#~ msgstr "Вы не можете использовать это умение с этим видом оружия!"
-
-#~ msgid "You need another red gem!"
-#~ msgstr "Вам нужен другой красный камень!"
-
-#~ msgid "You need another blue gem!"
-#~ msgstr "Вам нужен другой синий камень!"
-
-#~ msgid "You're carrying to much to do this!"
-#~ msgstr "Вы несёте слишком много, чтобы сделать это!"
-
-#~ msgid "Huh? What's that?"
-#~ msgstr "А? Что это?"
-
-#~ msgid "Warp failed..."
-#~ msgstr "Изменение не удалось..."
-
-#~ msgid "Could not steal anything..."
-#~ msgstr "Не удалось ничего украсть..."
-
-#~ msgid "Poison had no effect..."
-#~ msgstr "Яд не подействовал..."
-
-#~ msgid "Trading isn't possible. Trade partner is too far away."
-#~ msgstr "Торговля невозможна. Партнер по торговле слишком далеко."
-
-#~ msgid "Trading isn't possible. Character doesn't exist."
-#~ msgstr "Торговля невозможна. Такой персонаж не существует."
-
-#~ msgid "Trade cancelled due to an unknown reason."
-#~ msgstr "Торговля отменена по неизвестной причине."
-
-#~ msgid "Trade: You and %s"
-#~ msgstr "Торговля: Вы и %s"
-
-#~ msgid "Trade with %s cancelled."
-#~ msgstr "Торговля с %s отменена."
-
-#~ msgid "Unhandled trade cancel packet."
-#~ msgstr "Неизвестный сигнал завершения торговли."
-
-#~ msgid "Failed adding item. Trade partner is over weighted."
-#~ msgstr "Не удалось добавить предмет. Партнер по торговле перегружен."
-
-#~ msgid "Failed adding item. Trade partner has no free slot."
-#~ msgstr ""
-#~ "Не удалось добавить предмет. У партнера по торговле кончилось место."
-
-#~ msgid "Failed adding item. You can't trade this item."
-#~ msgstr "Ошибка добавления предмета. Вы не можете торговать этим предметом."
-
-#~ msgid "Failed adding item for unknown reason."
-#~ msgstr "Не удалось добавить предмет по неизвестной причине."
