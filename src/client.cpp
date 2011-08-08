@@ -849,6 +849,7 @@ int Client::exec()
             {
                 delete game;
                 game = 0;
+                Game::clearInstance();
                 ResourceManager *resman = ResourceManager::getInstance();
                 if (resman)
                     resman->cleanOrphans();

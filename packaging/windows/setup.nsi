@@ -92,7 +92,7 @@ RequestExecutionLevel admin
 !define MUI_FINISHPAGE_RUN_FUNCTION RunMana
 !define MUI_FINISHPAGE_SHOWREADME 'notepad.exe "$\"$INSTDIR\README$\""'
 !define MUI_PAGE_CUSTOMFUNCTION_PRE changeFinishImage
-!define MUI_FINISHPAGE_LINK "Visit Mana website for the latest news, FAQs and support"
+!define MUI_FINISHPAGE_LINK "Visit ManaPlus website for the latest news, FAQs and support"
 !define MUI_FINISHPAGE_LINK_LOCATION "http://manaplus.evolonline.org/"
 !insertmacro MUI_PAGE_FINISH
 

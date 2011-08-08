@@ -166,6 +166,8 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Hide shield sprite"), "", "hideShield",
         this, "hideShieldEvent");
 
+    new SetupItemCheckBox(_("Show background"), "", "showBackground",
+        this, "showBackgroundEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }

@@ -1,3 +1,13 @@
+2011-08-07 New release 1.1.8.7
+ManaPlus:
+fix: player attack animation length.
+fix: random opacity issue in complex sprites in software mode.
+fix: compilation in manaserv mode.
+fix: adjust wait time after pasting text. possible should fix multiply paste issue.
+add: improve perfomance in caching complex sprites in software mode.
+add: improve perfomance with max opacity in software mode.
+add: different keys in edit fields.
+
 2011-07-24 New release 1.1.7.24
 ManaPlus:
 fix: compilation without opengl.

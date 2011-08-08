@@ -92,9 +92,6 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
     }
 
-    if (player_node && player_node->getCurrentAction() != Being::SIT)
-        player_node->setAction(Being::STAND);
-    
     mDialog = 0;
 }
 

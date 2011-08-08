@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Sini Ruohomaa <sini.ruohomaa@iki.fi>, 2011.
 # Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-23 17:22+0300\n"
-"PO-Revision-Date: 2011-06-20 00:31+0000\n"
+"POT-Creation-Date: 2011-08-08 04:26+0300\n"
+"PO-Revision-Date: 2011-08-08 01:29+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1034
@@ -31,97 +31,96 @@ msgid "miss"
 msgstr "huti"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1512
+#: src/being.cpp:1513
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1517
+#: src/being.cpp:1518
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:823 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Asetukset"
 
-#: src/client.cpp:903
+#: src/client.cpp:908
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
-#: src/client.cpp:934
+#: src/client.cpp:939
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
-#: src/client.cpp:967
+#: src/client.cpp:972
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
-#: src/client.cpp:1067
+#: src/client.cpp:1072
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1103
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
-#: src/client.cpp:1108
+#: src/client.cpp:1113
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
-#: src/client.cpp:1145 src/client.cpp:1152 src/client.cpp:1289
+#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
 #: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
-#: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:190
-#: src/net/tmwa/charserverhandler.cpp:206
+#: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Virhe"
 
-#: src/client.cpp:1161
+#: src/client.cpp:1166
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
-#: src/client.cpp:1188
+#: src/client.cpp:1193
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
-#: src/client.cpp:1189
+#: src/client.cpp:1194
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1208
+#: src/client.cpp:1213
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
-#: src/client.cpp:1209
+#: src/client.cpp:1214
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1229
+#: src/client.cpp:1234
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
-#: src/client.cpp:1230
+#: src/client.cpp:1235
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
-#: src/client.cpp:1419 src/client.cpp:1449 src/client.cpp:1493
-#: src/client.cpp:1914
+#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
+#: src/client.cpp:1919
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s ei ole olemassa eikä sitä voi luoda! Poistun."
 
-#: src/client.cpp:1624
+#: src/client.cpp:1629
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Epäkelpo päivitysosoite: %s"
 
-#: src/client.cpp:1658 src/client.cpp:1664
+#: src/client.cpp:1663 src/client.cpp:1669
 msgid "Error creating updates directory!"
 msgstr "Päivityshakemistoa luodessa tapahtui virhe!"
 
-#: src/client.cpp:1685
+#: src/client.cpp:1690
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Virhe: %s ei ole olemassa eikä sitä voi luoda! Poistun."
@@ -137,18 +136,18 @@ msgstr "Et voi lähettää tyhjiä kuiskauksia!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai "
-"käytit omaa nimeäsi."
+"Kuiskausvälilehden luonti nimelle \"%s\" epäonnistui! Se on joko jo auki tai"
+" käytit omaa nimeäsi."
 
 #: src/commandhandler.cpp:429
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Pyyntö liittyä kanavalle %s lähetetty."
 
-#: src/commandhandler.cpp:445 src/net/tmwa/gui/partytab.cpp:125
+#: src/commandhandler.cpp:445
 msgid "Party name is missing."
 msgstr "Ryhmän nimi puuttuu."
 
@@ -296,46 +295,46 @@ msgstr "Orvot resurssikuvat:"
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
-"Vaihtoehdot komennolle /%s ovat \"yes\" (kyllä), \"no\" (ei) tai vastaavasti "
-"\"true\", \"false\", \"1\" tai \"0\"."
+"Vaihtoehdot komennolle /%s ovat \"yes\" (kyllä), \"no\" (ei) tai vastaavasti"
+" \"true\", \"false\", \"1\" tai \"0\"."
 
-#: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
 msgstr "Yleiset"
 
-#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
 msgid "Debug"
 msgstr "Debug"
 
-#: src/game.cpp:464
+#: src/game.cpp:475
 msgid "Screenshot saved as "
 msgstr "Ruutukaappaus tallennettu nimellä "
 
-#: src/game.cpp:472
+#: src/game.cpp:483
 msgid "Saving screenshot failed!"
 msgstr "Ruutukaappauksen tallentaminen epäonnistui!"
 
-#: src/game.cpp:511
+#: src/game.cpp:523
 msgid "The connection to the server was lost."
 msgstr "Yhteys palvelimeen katkesi."
 
-#: src/game.cpp:525
+#: src/game.cpp:537
 msgid "Network Error"
 msgstr "Verkkovirhe"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1184
 msgid "Ignoring incoming trade requests"
 msgstr "Et huomioi kaupankäyntipyyntöjä"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1191
 msgid "Accepting incoming trade requests"
 msgstr "Hyväksyt kaupankäyntipyynnöt"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1576
 msgid "Could Not Load Map"
 msgstr "Kartan lataaminen epäonnistui"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1577
 #, c-format
 msgid "Error while loading %s"
 msgstr "Kohdetta %s ladattaessa tapahtui virhe."
@@ -370,7 +369,7 @@ msgstr "Nimi"
 
 #: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:130
 #: src/gui/popupmenu.cpp:286 src/gui/popupmenu.cpp:604
-#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:264
+#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:266
 msgid "Attack"
 msgstr "Hyökkää"
 
@@ -457,7 +456,7 @@ msgstr "Myy"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
@@ -980,7 +979,7 @@ msgstr "Paino:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:68
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
 msgid "Store"
 msgstr "Varastoi"
 
@@ -1376,9 +1375,8 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:266 src/gui/popupmenu.cpp:447
 #: src/gui/popupmenu.cpp:684
-#, fuzzy
 msgid "Sell (?)"
-msgstr "Myy"
+msgstr ""
 
 #: src/gui/popupmenu.cpp:292
 msgid "Kick"
@@ -1625,9 +1623,8 @@ msgid "Choose Your Server"
 msgstr "Valitse palvelimesi"
 
 #: src/gui/serverdialog.cpp:239
-#, fuzzy
 msgid "Choose Your Server  *** SAFE MODE ***"
-msgstr "Valitse palvelimesi"
+msgstr ""
 
 #: src/gui/serverdialog.cpp:244
 msgid "Port:"
@@ -1726,8 +1723,8 @@ msgstr "Huomaa"
 #: src/gui/setup_audio.cpp:120
 msgid "You may have to restart your client if you want to download new music"
 msgstr ""
-"Voit joutua uudelleenkäynnistämään asiakasohjelmasi, jos haluat ladata uudet "
-"musiikit"
+"Voit joutua uudelleenkäynnistämään asiakasohjelmasi, jos haluat ladata uudet"
+" musiikit"
 
 #: src/gui/setup_audio.cpp:133
 msgid "Sound Engine"
@@ -1746,9 +1743,8 @@ msgid "Show chat colors list"
 msgstr "Näytä keskustelun värilista"
 
 #: src/gui/setup_chat.cpp:64
-#, fuzzy
 msgid "Commands"
-msgstr "Komento:"
+msgstr ""
 
 #: src/gui/setup_chat.cpp:66
 msgid "Allow magic and GM commands in all chat tabs"
@@ -1779,9 +1775,8 @@ msgid "Show chat history"
 msgstr "Näytä keskusteluhistoria"
 
 #: src/gui/setup_chat.cpp:88
-#, fuzzy
 msgid "Messages"
-msgstr "Viesti"
+msgstr ""
 
 #: src/gui/setup_chat.cpp:90
 msgid "Hide shop messages"
@@ -1870,11 +1865,11 @@ msgstr "Sininen:"
 msgid "Alpha:"
 msgstr "Alfa:"
 
-#: src/gui/setup.cpp:66
+#: src/gui/setup.cpp:67
 msgid "Apply"
 msgstr "Hyväksy"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:70
 msgid "Reset Windows"
 msgstr "Palauta ikkunoiden oletusasetukset"
 
@@ -2004,9 +1999,8 @@ msgid "Crazy move A program"
 msgstr "Villiliike (a) -ohjelma"
 
 #: src/gui/setup_other.cpp:104
-#, fuzzy
 msgid "Player"
-msgstr "Pelaajat"
+msgstr ""
 
 #: src/gui/setup_other.cpp:106
 msgid "Show own hp bar"
@@ -2041,9 +2035,8 @@ msgid "Enable attack filter"
 msgstr "Ota käyttöön hyökkäyssuodin"
 
 #: src/gui/setup_other.cpp:130
-#, fuzzy
 msgid "Enable advert protocol"
-msgstr "Ota käyttöön suoja bugisten palvelinten varalta"
+msgstr ""
 
 #: src/gui/setup_other.cpp:136
 msgid "Accept sell/buy requests"
@@ -2058,9 +2051,8 @@ msgid "Log NPC dialogue"
 msgstr "Kirjaa keskustelut ei-pelaajahahmojen kanssa lokiin"
 
 #: src/gui/setup_other.cpp:149
-#, fuzzy
 msgid "Other"
-msgstr "muu"
+msgstr ""
 
 #: src/gui/setup_other.cpp:151
 msgid "Enable server side attack"
@@ -2085,6 +2077,10 @@ msgstr "Matalan liikenteen tila"
 #: src/gui/setup_other.cpp:166
 msgid "Hide shield sprite"
 msgstr "Piilota kilpihahmo"
+
+#: src/gui/setup_other.cpp:169
+msgid "Show background"
+msgstr "Näytä tausta"
 
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
@@ -2163,9 +2159,8 @@ msgid "Visible names"
 msgstr "Näytä nimet"
 
 #: src/gui/setup_players.cpp:341
-#, fuzzy
 msgid "Show statuses"
-msgstr "Näytä tavarat"
+msgstr ""
 
 #: src/gui/setup_theme.cpp:105
 msgid "Tiny (10)"
@@ -2227,8 +2222,8 @@ msgstr "Kirjasimen koko"
 msgid "Theme Changed"
 msgstr "Ulkoasua muutettu"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
-#: src/gui/setup_video.cpp:663
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
+#: src/gui/setup_video.cpp:675
 msgid "Restart your client for the change to take effect."
 msgstr "Käynnistä ohjelma uudelleen, jotta muutos astuu voimaan."
 
@@ -2280,132 +2275,136 @@ msgstr "keskitaso"
 msgid "max"
 msgstr "maksimi"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Full screen"
 msgstr "Kokoruututila"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Hw acceleration"
 msgstr "Rautakiihdytys"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Custom cursor"
 msgstr "Tyylitelty hiiren osoitin"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "Particle effects"
 msgstr "Hiukkastehosteet"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "Show pickup notification"
 msgstr "Näytä ottoviesti"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "in chat"
 msgstr "keskusteluikkunassa"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:303
 msgid "as particle"
 msgstr "leijuvana"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
 msgid "Enable opacity cache"
 msgstr "Ota käyttöön läpinäkyvyysvälimuisti"
 
-#: src/gui/setup_video.cpp:305
-#, fuzzy
+#: src/gui/setup_video.cpp:306
 msgid "Enable map reduce"
-msgstr "Ota musiikki käyttöön"
+msgstr ""
 
-#: src/gui/setup_video.cpp:307
-msgid "Show background"
-msgstr "Näytä tausta"
+#: src/gui/setup_video.cpp:308
+msgid "Auto adjust perfomance"
+msgstr ""
 
-#: src/gui/setup_video.cpp:312
+#: src/gui/setup_video.cpp:310
+msgid "Show beings transparency"
+msgstr ""
+
+#: src/gui/setup_video.cpp:315
 msgid "FPS limit:"
 msgstr "Piirtonopeusrajoitin (FPS):"
 
-#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
+#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
+#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
 msgid "Alt FPS limit: "
 msgstr "Vaihtoehtoinen FPS-rajoitin:"
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:328
 msgid "Video"
 msgstr "Kuva"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:334
 msgid "Overhead text"
 msgstr "Tekstinä yläpuolella"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:335
 msgid "Gui opacity"
 msgstr "Käyttöliittymän läpinäkyvyys"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:336
 msgid "Ambient FX"
 msgstr "Taustaäänet"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:337
 msgid "Particle detail"
 msgstr "Hiukkastehosteiden yksityiskohtaisuus"
 
-#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
-#: src/gui/setup_video.cpp:746
+#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
+#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:758
 msgid "None"
 msgstr "-"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:511
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
-msgstr "Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
+msgstr ""
+"Ikkunoituun tilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:517
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "Kokoruututilaan vaihto epäonnistui, samoin paluu edelliseen tilaan!"
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:528
 msgid "Switching to Full Screen"
 msgstr "Vaihdan kokoruututilaan"
 
-#: src/gui/setup_video.cpp:522
+#: src/gui/setup_video.cpp:529
 msgid "Restart needed for changes to take effect."
 msgstr "Ohjelma pitää käynnistää uudelleen, jotta muutokset astuvat voimaan."
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:541
 msgid "Changing to OpenGL"
 msgstr "Vaihdetaan käyttämään OpenGL:ää"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:542
 msgid "Applying change to OpenGL requires restart."
 msgstr "OpenGL -asetuksen muutos vaatii ohjelman uudelleenkäynnistyksen."
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:653
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Oma tarkkuus (esim. 1024x768)"
 
-#: src/gui/setup_video.cpp:642
+#: src/gui/setup_video.cpp:654
 msgid "Enter new resolution:                "
 msgstr "Anna uusi tarkkuus:                  "
 
-#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
+#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
 msgid "Screen Resolution Changed"
 msgstr "Ikkunan koko vaihdettu"
 
-#: src/gui/setup_video.cpp:660
+#: src/gui/setup_video.cpp:672
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Joitakin ikkunoita on siirretty, jotta ne mahtuvat pienemmälle ruudulle."
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:705
 msgid "Particle Effect Settings Changed."
 msgstr "Hiukkastehosteiden asetuksia on muutettu."
 
-#: src/gui/setup_video.cpp:694
+#: src/gui/setup_video.cpp:706
 msgid "Changes will take effect on map change."
 msgstr "Muutokset astuvat voimaan kartan vaihtuessa."
 
@@ -2435,7 +2434,6 @@ msgid "Show links in announce"
 msgstr "Näytä linkit ilmoituksessa"
 
 #: src/gui/shopwindow.cpp:723 src/net/manaserv/tradehandler.cpp:127
-#: src/net/tmwa/tradehandler.cpp:124
 msgid "Request for Trade"
 msgstr "Kaupantekoehdotus"
 
@@ -2477,7 +2475,7 @@ msgstr "Taso: %d"
 msgid "Lvl: %d (%+d)"
 msgstr "Taso: %d (%+d)"
 
-#: src/gui/socialwindow.cpp:117 src/net/tmwa/gui/guildtab.cpp:50
+#: src/gui/socialwindow.cpp:117
 msgid "Guild"
 msgstr "Kilta"
 
@@ -2509,7 +2507,7 @@ msgstr "Eroa killasta?"
 msgid "Are you sure you want to leave guild %s?"
 msgstr "Haluatko varmasti erota killasta %s?"
 
-#: src/gui/socialwindow.cpp:215 src/net/tmwa/gui/partytab.cpp:50
+#: src/gui/socialwindow.cpp:215
 msgid "Party"
 msgstr "Ryhmä"
 
@@ -3204,7 +3202,8 @@ msgid "Change"
 msgstr "Muuta"
 
 #: src/gui/tradewindow.cpp:332
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr "Tavaran lisääminen epäonnistui, limittämisongelma."
 
 #: src/gui/tradewindow.cpp:377
@@ -3475,7 +3474,6 @@ msgid "This command makes <nick> a channel operator."
 msgstr "Tämä komento tekee annetunnimisestä käyttäjästä kanavaoperaattorin."
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
-#: src/net/tmwa/gui/guildtab.cpp:91 src/net/tmwa/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr "Jos nimessä on välilyöntejä, laita sen ympärille lainausmerkit (\")."
 
@@ -3550,7 +3548,8 @@ msgid "Command: /unignore <player>"
 msgstr "Komento: /unignore <pelaajan nimi>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Tämä komento huomioi pelaajan taas, jos tämä on ensin jätetty huomiotta."
 
@@ -3909,9 +3908,8 @@ msgid "Next Chat Tab"
 msgstr "Seuraava keskusteluvälilehti"
 
 #: src/keyboardconfig.cpp:278
-#, fuzzy
 msgid "Close current Chat Tab"
-msgstr "Seuraava keskusteluvälilehti"
+msgstr ""
 
 #: src/keyboardconfig.cpp:280
 msgid "Previous chat line"
@@ -4216,7 +4214,7 @@ msgstr "Kiitos kaupoista."
 msgid "Unable to buy."
 msgstr "Ostaminen epäonnistui."
 
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:257
+#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:259
 msgid "Strength"
 msgstr "Voima"
 
@@ -4225,7 +4223,7 @@ msgstr "Voima"
 msgid "Strength %+.1f"
 msgstr "Voima %+.1f"
 
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:258
+#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:260
 msgid "Agility"
 msgstr "Ketteryys"
 
@@ -4234,7 +4232,7 @@ msgstr "Ketteryys"
 msgid "Agility %+.1f"
 msgstr "Ketteryys %+.1f"
 
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:261
+#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:263
 msgid "Dexterity"
 msgstr "Näppäryys"
 
@@ -4243,7 +4241,7 @@ msgstr "Näppäryys"
 msgid "Dexterity %+.1f"
 msgstr "Näppäryys %+.1f"
 
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:259
+#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:261
 msgid "Vitality"
 msgstr "Elinvoima"
 
@@ -4252,7 +4250,7 @@ msgstr "Elinvoima"
 msgid "Vitality %+.1f"
 msgstr "Elinvoima %+.1f"
 
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:260
+#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:262
 msgid "Intelligence"
 msgstr "Älykkyys"
 
@@ -4270,27 +4268,27 @@ msgstr "Tahdonvoima"
 msgid "Willpower %+.1f"
 msgstr "Tahdonvoima %+.1f"
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:103
+#: src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
 msgstr "Olet kuollut."
 
-#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:316
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "Ikävä kyllä joudumme kertomaan hahmosi kuolleen taistelussa."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:106
+#: src/net/manaserv/beinghandler.cpp:318
 msgid "You are not that alive anymore."
 msgstr "Et ole enää erityisen elossa."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:319
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "Tuonelasta käy sieluusi kylmä viima."
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:108
+#: src/net/manaserv/beinghandler.cpp:320
 msgid "Game Over!"
 msgstr "Se siitä!"
 
-#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:110
+#: src/net/manaserv/beinghandler.cpp:321
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4298,7 +4296,7 @@ msgstr ""
 "Ei, lapsikullat. Hahmonne ei oikeasti kuollut. Se... öhm... meni parempaan "
 "paikkaan."
 
-#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:112
+#: src/net/manaserv/beinghandler.cpp:323
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
@@ -4306,27 +4304,27 @@ msgstr ""
 "Ovela suunnitelmasi rikkoa vastustajiesi aseet iskemällä ne omaan kurkkuusi "
 "epäonnistui."
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:114
+#: src/net/manaserv/beinghandler.cpp:325
 msgid "I guess this did not run too well."
 msgstr "Ei tainnut mennä kovin lujaa."
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:116
+#: src/net/manaserv/beinghandler.cpp:326
 msgid "Do you want your possessions identified?"
 msgstr "Haluatko tietää mitä rojua kanniskelit oikeasti mukanasi?"
 
-#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:118
+#: src/net/manaserv/beinghandler.cpp:327
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Ikävä kyllä sinusta ei jäänyt lopulta jälkeäkään löydettäväksi..."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:120
+#: src/net/manaserv/beinghandler.cpp:329
 msgid "Annihilated."
 msgstr "Pim! Olet annihiloitu."
 
-#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:122
+#: src/net/manaserv/beinghandler.cpp:330
 msgid "Looks like you got your head handed to you."
 msgstr "Jäi näköjään oma pää vetävän käteen."
 
-#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:124
+#: src/net/manaserv/beinghandler.cpp:332
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr "Peballeen meni taas, vedä raatosi vessasta alas ja hanki uusi."
@@ -4387,11 +4385,10 @@ msgstr "Paikan numero ei kelpaa."
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:203
 msgid "Unknown error."
 msgstr "Tuntematon virhe."
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:201
+#: src/net/manaserv/charhandler.cpp:210
 msgid "Info"
 msgstr "Tietoja"
 
@@ -4458,7 +4455,7 @@ msgstr "%s potkaisi käyttäjän %s ulos."
 msgid "Unknown channel event."
 msgstr "Tuntematon kanavatapahtuma."
 
-#: src/net/manaserv/guildhandler.cpp:85 src/net/tmwa/guildhandler.cpp:107
+#: src/net/manaserv/guildhandler.cpp:85
 msgid "Guild created."
 msgstr "Kilta luotu."
 
@@ -4494,7 +4491,7 @@ msgstr "Tili porttikiellossa."
 msgid "New password incorrect."
 msgstr "Uusi salasana on väärä."
 
-#: src/net/manaserv/loginhandler.cpp:127 src/net/tmwa/loginhandler.cpp:96
+#: src/net/manaserv/loginhandler.cpp:127
 msgid "Old password incorrect."
 msgstr "Vanha salsana on väärä."
 
@@ -4577,7 +4574,7 @@ msgstr "Hyväksyt tulevat kaupantekoehdotukset."
 msgid "Ignoring incoming trade requests."
 msgstr "Jätät tulevat kaupantekoehdotukset huomiotta."
 
-#: src/net/manaserv/tradehandler.cpp:128 src/net/tmwa/tradehandler.cpp:125
+#: src/net/manaserv/tradehandler.cpp:128
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s haluaa tehdä kauppaa kanssasi, katsotko tarjouksen?"
@@ -4587,11 +4584,11 @@ msgstr "%s haluaa tehdä kauppaa kanssasi, katsotko tarjouksen?"
 msgid "Trading with %s"
 msgstr "Kaupantekoa pelaajan %s kanssa"
 
-#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:282
+#: src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "Kaupat peruttu."
 
-#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:292
+#: src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "Kaupat tuli."
 
@@ -4603,527 +4600,126 @@ msgstr "Potkiminen epäonnistui!"
 msgid "Kick succeeded!"
 msgstr "Potkiminen onnistui!"
 
-#: src/net/tmwa/buysellhandler.cpp:131
+#: src/net/tmwa/buysellhandler.cpp:133
 msgid "Thanks for selling."
 msgstr "Kiitos kaupoista."
 
-#: src/net/tmwa/buysellhandler.cpp:135
+#: src/net/tmwa/buysellhandler.cpp:137
 msgid "Unable to sell."
 msgstr "Myyminen epäonnistui."
 
-#: src/net/tmwa/buysellhandler.cpp:138
+#: src/net/tmwa/buysellhandler.cpp:140
 msgid "Unable to sell while trading."
 msgstr "Kaupankäynnin aikana ei voi myydä kaupasta."
 
-#: src/net/tmwa/buysellhandler.cpp:141
+#: src/net/tmwa/buysellhandler.cpp:143
 msgid "Unable to sell unsellable item."
 msgstr "Myyntikelvotonta tavaraa ei voi myydä."
 
-#: src/net/tmwa/charserverhandler.cpp:121
-msgid "Access denied. Most likely, there are too many players on this server."
-msgstr "Pääsy evätty. Todennäköisesti palvelimella on liian paljon pelaajia."
-
-#: src/net/tmwa/charserverhandler.cpp:125
-msgid "Cannot use this ID."
-msgstr "Tätä tunnistetta ei voi käyttää."
-
-#: src/net/tmwa/charserverhandler.cpp:128
-msgid "Unknown char-server failure."
-msgstr "Tuntematon hahmopalvelinvirhe."
-
-#: src/net/tmwa/charserverhandler.cpp:174
-msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
-
-#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:197
-msgid "Wrong name."
-msgstr "Väärä nimi."
-
-#: src/net/tmwa/charserverhandler.cpp:181
-msgid "Incorrect stats."
-msgstr "Väärät arvot."
-
-#: src/net/tmwa/charserverhandler.cpp:184
-msgid "Incorrect hair."
-msgstr "Väärä hiustyyli."
-
-#: src/net/tmwa/charserverhandler.cpp:187
-msgid "Incorrect slot."
-msgstr "Väärä paikka."
-
-#: src/net/tmwa/charserverhandler.cpp:201
-msgid "Character deleted."
-msgstr "Hahmo poistettu."
-
-#: src/net/tmwa/charserverhandler.cpp:206
-msgid "Failed to delete character."
-msgstr "Hahmon poisto epäonnistui."
-
-#: src/net/tmwa/charserverhandler.cpp:383
-msgid "Strength:"
-msgstr "Voima:"
-
-#: src/net/tmwa/charserverhandler.cpp:384
-msgid "Agility:"
-msgstr "Ketteryys:"
-
-#: src/net/tmwa/charserverhandler.cpp:385
-msgid "Vitality:"
-msgstr "Elinvoima:"
-
-#: src/net/tmwa/charserverhandler.cpp:386
-msgid "Intelligence:"
-msgstr "Älykkyys:"
-
-#: src/net/tmwa/charserverhandler.cpp:387
-msgid "Dexterity:"
-msgstr "Näppäryys:"
-
-#: src/net/tmwa/charserverhandler.cpp:388
-msgid "Luck:"
-msgstr "Tuuri:"
-
-#: src/net/tmwa/chathandler.cpp:106
-#, c-format
-msgid "Whisper could not be sent, %s is offline."
-msgstr "Kuiskausta ei voitu lähettää, %s ei ole kirjautuneena sisään."
-
-#: src/net/tmwa/chathandler.cpp:114
-#, c-format
-msgid "Whisper could not be sent, ignored by %s."
-msgstr "Kuiskausta ei voitu lähettää, %s ei huomioinut sitä."
-
-#: src/net/tmwa/chathandler.cpp:334
-msgid "MVP player."
-msgstr "MVP-pelaaja."
-
-#: src/net/tmwa/chathandler.cpp:338
-msgid "MVP player: "
-msgstr "MVP-pelaaja: "
-
-#: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
-#: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
-#: src/net/tmwa/chathandler.cpp:413 src/net/tmwa/chathandler.cpp:419
-#: src/net/tmwa/chathandler.cpp:426 src/net/tmwa/chathandler.cpp:432
-msgid "Channels are not supported!"
-msgstr "Kanavia ei tueta!"
-
-#: src/net/tmwa/gamehandler.cpp:96
-#, c-format
-msgid "Online users: %d"
-msgstr "Käyttäjiä palvelimella: %d"
-
-#: src/net/tmwa/gamehandler.cpp:106
-msgid "Game"
-msgstr "Peli"
-
-#: src/net/tmwa/gamehandler.cpp:106
-msgid "Request to quit denied!"
-msgstr "Lopetuspyyntö evätty!"
-
-#: src/net/tmwa/generalhandler.cpp:107
+#: src/net/tmwa/generalhandler.cpp:109
 #, c-format
 msgid "Strength %+d"
 msgstr "Voima %+d"
 
-#: src/net/tmwa/generalhandler.cpp:108
+#: src/net/tmwa/generalhandler.cpp:110
 #, c-format
 msgid "Agility %+d"
 msgstr "Ketteryys %+d"
 
-#: src/net/tmwa/generalhandler.cpp:109
+#: src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Vitality %+d"
 msgstr "Elinvoima %+d"
 
-#: src/net/tmwa/generalhandler.cpp:110
+#: src/net/tmwa/generalhandler.cpp:112
 #, c-format
 msgid "Intelligence %+d"
 msgstr "Älykkyys %+d"
 
-#: src/net/tmwa/generalhandler.cpp:111
+#: src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Dexterity %+d"
 msgstr "Näppäryys %+d"
 
-#: src/net/tmwa/generalhandler.cpp:112
+#: src/net/tmwa/generalhandler.cpp:114
 #, c-format
 msgid "Luck %+d"
 msgstr "Tuuri %+d"
 
-#: src/net/tmwa/generalhandler.cpp:138
+#: src/net/tmwa/generalhandler.cpp:140
 msgid "Authentication failed."
 msgstr "Tunnistus epäonnistui."
 
-#: src/net/tmwa/generalhandler.cpp:141
+#: src/net/tmwa/generalhandler.cpp:143
 msgid "No servers available."
 msgstr "Palvelimia ei saatavilla."
 
-#: src/net/tmwa/generalhandler.cpp:145
+#: src/net/tmwa/generalhandler.cpp:147
 msgid "Someone else is trying to use this account."
 msgstr "Joku muu yrittää käyttää tätä tunnusta."
 
-#: src/net/tmwa/generalhandler.cpp:148
+#: src/net/tmwa/generalhandler.cpp:150
 msgid "This account is already logged in."
 msgstr "Tällä tunnuksella on jo kirjauduttu."
 
-#: src/net/tmwa/generalhandler.cpp:151
+#: src/net/tmwa/generalhandler.cpp:153
 msgid "Speed hack detected."
 msgstr "Nopeusviritelmä havaittu."
 
-#: src/net/tmwa/generalhandler.cpp:154
+#: src/net/tmwa/generalhandler.cpp:156
 msgid "Duplicated login."
 msgstr "Kaksinkertainen sisäänkirjautuminen."
 
-#: src/net/tmwa/generalhandler.cpp:157
+#: src/net/tmwa/generalhandler.cpp:159
 msgid "Unknown connection error."
 msgstr "Tuntematon yhteysongelma."
 
-#: src/net/tmwa/generalhandler.cpp:230
+#: src/net/tmwa/generalhandler.cpp:232
 msgid "Got disconnected from server!"
 msgstr "Yhteys palvelimeen katkesi!"
 
-#: src/net/tmwa/generalhandler.cpp:262
+#: src/net/tmwa/generalhandler.cpp:264
 msgid "Luck"
 msgstr "Tuuri"
 
-#: src/net/tmwa/generalhandler.cpp:265
+#: src/net/tmwa/generalhandler.cpp:267
 msgid "Defense"
 msgstr "Puolustus"
 
-#: src/net/tmwa/generalhandler.cpp:266
+#: src/net/tmwa/generalhandler.cpp:268
 msgid "M.Attack"
 msgstr "T.-hyökkäys"
 
-#: src/net/tmwa/generalhandler.cpp:267
+#: src/net/tmwa/generalhandler.cpp:269
 msgid "M.Defense"
 msgstr "T.-puolustus"
 
-#: src/net/tmwa/generalhandler.cpp:269
+#: src/net/tmwa/generalhandler.cpp:271
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Tarkkuus"
 
-#: src/net/tmwa/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:273
 #, no-c-format
 msgid "% Evade"
 msgstr "% Välttö"
 
-#: src/net/tmwa/generalhandler.cpp:273
+#: src/net/tmwa/generalhandler.cpp:275
 #, no-c-format
 msgid "% Critical"
 msgstr "% Täysosuma"
 
-#: src/net/tmwa/generalhandler.cpp:274
+#: src/net/tmwa/generalhandler.cpp:276
 msgid "Attack Delay"
 msgstr "Hyökkäysviive"
 
-#: src/net/tmwa/generalhandler.cpp:276
+#: src/net/tmwa/generalhandler.cpp:278
 msgid "Walk Delay"
 msgstr "Kävelyviive"
 
-#: src/net/tmwa/generalhandler.cpp:278
+#: src/net/tmwa/generalhandler.cpp:280
 msgid "Attack Range"
 msgstr "Hyökkäyskantama"
-
-#: src/net/tmwa/gui/guildtab.cpp:77 src/net/tmwa/gui/partytab.cpp:69
-msgid "/help > Display this help."
-msgstr "/help > Näytä tämä ohje."
-
-#: src/net/tmwa/gui/guildtab.cpp:78
-msgid "/invite > Invite a player to your guild"
-msgstr "/invite > Kutsu pelaaja kiltaasi"
-
-#: src/net/tmwa/gui/guildtab.cpp:79
-msgid "/leave > Leave the guild you are in"
-msgstr "/leave > Eroa nykyisestä killastasi"
-
-#: src/net/tmwa/gui/guildtab.cpp:80
-msgid "/kick > Kick some one from the guild you are in"
-msgstr "/kick > Poista käyttäjä killastasi"
-
-#: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
-msgid "Command: /invite <nick>"
-msgstr "Komento: /invite <nimi>"
-
-#: src/net/tmwa/gui/guildtab.cpp:90
-msgid "This command invites <nick> to the guild you're in."
-msgstr "Tämä komento kutsuu annetun pelaajan nykyiseen kiltaasi."
-
-#: src/net/tmwa/gui/guildtab.cpp:96 src/net/tmwa/gui/partytab.cpp:90
-msgid "Command: /leave"
-msgstr "Komento: /leave"
-
-#: src/net/tmwa/gui/guildtab.cpp:97
-msgid "This command causes the player to leave the guild."
-msgstr "Tämä komento saa sinut eroamaan killasta."
-
-#: src/net/tmwa/guildhandler.cpp:112 src/net/tmwa/guildhandler.cpp:117
-msgid "You are already in guild."
-msgstr "Olet jo killassa."
-
-#: src/net/tmwa/guildhandler.cpp:122
-msgid "Emperium check failed."
-msgstr "Emperium-tarkistus epäonnistui."
-
-#: src/net/tmwa/guildhandler.cpp:127
-msgid "Unknown server response."
-msgstr "Tuntematon palvelimen vastaus."
-
-#: src/net/tmwa/guildhandler.cpp:205
-#, c-format
-msgid "Guild name: %s"
-msgstr "Killan nimi: %s"
-
-#: src/net/tmwa/guildhandler.cpp:207
-#, c-format
-msgid "Guild master: %s"
-msgstr "Kiltamestari: %s"
-
-#: src/net/tmwa/guildhandler.cpp:209
-#, c-format
-msgid "Guild level: %d"
-msgstr "Kiltataso: %d"
-
-#: src/net/tmwa/guildhandler.cpp:211
-#, c-format
-msgid "Online members: %d"
-msgstr "Jäseniä linjoilla: %d"
-
-#: src/net/tmwa/guildhandler.cpp:213
-#, c-format
-msgid "Max members: %d"
-msgstr "Jäsenmaksimi: %d"
-
-#: src/net/tmwa/guildhandler.cpp:215
-#, c-format
-msgid "Average level: %d"
-msgstr "Keskim. taso: %d"
-
-#: src/net/tmwa/guildhandler.cpp:217
-#, c-format
-msgid "Guild exp: %d"
-msgstr "Kiltakokemusta: %d kkp"
-
-#: src/net/tmwa/guildhandler.cpp:219
-#, c-format
-msgid "Guild next exp: %d"
-msgstr "Seuraavaan tasoon: %d kkp"
-
-#: src/net/tmwa/guildhandler.cpp:221
-#, c-format
-msgid "Guild castle: %s"
-msgstr "Killan linna: %s"
-
-#: src/net/tmwa/guildhandler.cpp:436
-msgid "Could not inivte user to guild."
-msgstr "Pelaajan kutsuminen kiltaan epäonnistui."
-
-#: src/net/tmwa/guildhandler.cpp:441
-msgid "User rejected guild invite."
-msgstr "Käyttäjä ei ottanut kiltakutsua vastaan."
-
-#: src/net/tmwa/guildhandler.cpp:446
-msgid "User is now part of your guild."
-msgstr "Käyttäjä liittyi kiltaasi."
-
-#: src/net/tmwa/guildhandler.cpp:451
-msgid "Your guild is full."
-msgstr "Kiltasi on täynnä."
-
-#: src/net/tmwa/guildhandler.cpp:456
-msgid "Unknown guild invite response."
-msgstr "Tuntematon vastaus kiltakutsuun."
-
-#: src/net/tmwa/guildhandler.cpp:478
-msgid "You have left the guild."
-msgstr "Olet eronnut killasta."
-
-#: src/net/tmwa/guildhandler.cpp:492
-#, c-format
-msgid "%s has left your guild."
-msgstr "%s on eronnut killastasi."
-
-#: src/net/tmwa/guildhandler.cpp:524
-msgid "You was kicked from guild."
-msgstr "Sinut on potkittu killasta."
-
-#: src/net/tmwa/guildhandler.cpp:538
-#, c-format
-msgid "%s has kicked from your guild."
-msgstr "%s on potkittu ulos killastasi."
-
-#: src/net/tmwa/gui/partytab.cpp:70
-msgid "/invite > Invite a player to your party"
-msgstr "/invite > Kutsu pelaaja ryhmääsi"
-
-#: src/net/tmwa/gui/partytab.cpp:71
-msgid "/leave > Leave the party you are in"
-msgstr "/leave > Eroa nykyisestä ryhmästäsi"
-
-#: src/net/tmwa/gui/partytab.cpp:72
-msgid "/kick > Kick some one from the party you are in"
-msgstr "/kick > Potki pelaaja ryhmästäsi"
-
-#: src/net/tmwa/gui/partytab.cpp:73
-msgid "/item > Show/change party item sharing options"
-msgstr "/item > Näytä/muuta ryhmän tavaranjaon asetuksia"
-
-#: src/net/tmwa/gui/partytab.cpp:74
-msgid "/exp > Show/change party experience sharing options"
-msgstr "/exp > Näytä/muuta ryhmän kokemuksenjaon asetuksia"
-
-#: src/net/tmwa/gui/partytab.cpp:84
-msgid "This command invites <nick> to party with you."
-msgstr "Tämä komento kutsuu annetun pelaajan ryhmääsi."
-
-#: src/net/tmwa/gui/partytab.cpp:91
-msgid "This command causes the player to leave the party."
-msgstr "Tämä komento erottaa pelaajan ryhmästä."
-
-#: src/net/tmwa/gui/partytab.cpp:95
-msgid "Command: /item <policy>"
-msgstr "Komento: /item <jakopolitiikka>"
-
-#: src/net/tmwa/gui/partytab.cpp:97
-msgid "This command changes the party's item sharing policy."
-msgstr "Tämä komento muuttaa ryhmän saaliinjakopolitiikkaa."
-
-#: src/net/tmwa/gui/partytab.cpp:98
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
-"\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<jakopolitiikka> voi olla arvoltaan \"1\", \"yes\" tai \"true\", jolloin "
-"saalis jaetaan, tai \"0\", \"no\" tai \"false\", jolloin saalista ei jaeta."
-
-#: src/net/tmwa/gui/partytab.cpp:101
-msgid "Command: /item"
-msgstr "Komento: /item"
-
-#: src/net/tmwa/gui/partytab.cpp:102
-msgid "This command displays the party's current item sharing policy."
-msgstr "Tämä komento näyttää ryhmän nykyisen saaliinjakopolitiikan."
-
-#: src/net/tmwa/gui/partytab.cpp:107
-msgid "Command: /exp <policy>"
-msgstr "Komento: /exp <jakopolitiikka>"
-
-#: src/net/tmwa/gui/partytab.cpp:108
-msgid "This command changes the party's experience sharing policy."
-msgstr "Tämä komento muuttaa ryhmän kokemuksenjaon politiikkaa."
-
-#: src/net/tmwa/gui/partytab.cpp:110
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-"sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-msgstr ""
-"<jakopolitiikka> voi olla arvoltaan \"1\", \"yes\" tai \"true\", jolloin "
-"kokemuspisteet jaetaan, tai \"0\", \"no\" tai \"false\", jolloin "
-"kokemuspisteitä ei jaeta."
-
-#: src/net/tmwa/gui/partytab.cpp:113
-msgid "Command: /exp"
-msgstr "Komento: /exp"
-
-#: src/net/tmwa/gui/partytab.cpp:114
-msgid "This command displays the party's current experience sharing policy."
-msgstr "Tämä komento näyttää ryhmän nykyisen kokemuksenjaon politiikan."
-
-#: src/net/tmwa/gui/partytab.cpp:148 src/net/tmwa/partyhandler.cpp:289
-msgid "Item sharing enabled."
-msgstr "Saaliinjako käytössä."
-
-#: src/net/tmwa/gui/partytab.cpp:151 src/net/tmwa/partyhandler.cpp:299
-msgid "Item sharing disabled."
-msgstr "Saaliinjako poistettu käytöstä."
-
-#: src/net/tmwa/gui/partytab.cpp:154 src/net/tmwa/partyhandler.cpp:309
-msgid "Item sharing not possible."
-msgstr "Saaliinjako ei ole mahdollista."
-
-#: src/net/tmwa/gui/partytab.cpp:157
-msgid "Item sharing unknown."
-msgstr "Saaliinjaon tila on tuntematon."
-
-#: src/net/tmwa/gui/partytab.cpp:187 src/net/tmwa/partyhandler.cpp:251
-msgid "Experience sharing enabled."
-msgstr "Kokemuksen jako käytössä."
-
-#: src/net/tmwa/gui/partytab.cpp:190 src/net/tmwa/partyhandler.cpp:261
-msgid "Experience sharing disabled."
-msgstr "Kokemuksen jako pois käytöstä."
-
-#: src/net/tmwa/gui/partytab.cpp:193 src/net/tmwa/partyhandler.cpp:271
-msgid "Experience sharing not possible."
-msgstr "Kokemuksen jako ei ole mahdollista."
-
-#: src/net/tmwa/gui/partytab.cpp:196
-msgid "Experience sharing unknown."
-msgstr "Kokemuksen jaon tila on tuntematon."
-
-#: src/net/tmwa/inventoryhandler.cpp:379
-msgid "Failed to use item."
-msgstr "Tavaran käyttö ei onnistunut."
-
-#: src/net/tmwa/inventoryhandler.cpp:531
-msgid "Unable to equip."
-msgstr "Käyttöönotto ei onnistunut."
-
-#: src/net/tmwa/loginhandler.cpp:93
-msgid "Account was not found. Please re-login."
-msgstr "Tunnusta ei löytynyt. Yritä uudelleen."
-
-#: src/net/tmwa/loginhandler.cpp:99
-msgid "New password too short."
-msgstr "Uusi salasana on liian lyhyt."
-
-#: src/net/tmwa/loginhandler.cpp:165
-msgid "Unregistered ID."
-msgstr "Rekisteröimätön tunniste."
-
-#: src/net/tmwa/loginhandler.cpp:168
-msgid "Wrong password."
-msgstr "Väärä salasana."
-
-#: src/net/tmwa/loginhandler.cpp:171
-msgid "Account expired."
-msgstr "Tili vanhentunut."
-
-#: src/net/tmwa/loginhandler.cpp:174
-msgid "Rejected from server."
-msgstr "Palvelin ei kelpuuttanut yhteydenottoasi."
-
-#: src/net/tmwa/loginhandler.cpp:177
-msgid ""
-"You have been permanently banned from the game. Please contact the GM team."
-msgstr ""
-"Pääsysi peliin on pysyvästi estetty. Ole hyvä ja ota yhteyttä GM-tiimiin."
-
-#: src/net/tmwa/loginhandler.cpp:181
-msgid "Client too old."
-msgstr "Liian vanha asiakasohjelma."
-
-#: src/net/tmwa/loginhandler.cpp:184
-#, c-format
-msgid ""
-"You have been temporarily banned from the game until %s.\n"
-"Please contact the GM team via the forums."
-msgstr ""
-"Pääsysi peliin on väliaikaisesti estetty %s asti.\n"
-"Ole hyvä ja ota yhteyttä GM-tiimiin keskustelufoorumin kautta."
-
-#: src/net/tmwa/loginhandler.cpp:191
-msgid "Server overpopulated."
-msgstr "Palvelin on täynnä."
-
-#: src/net/tmwa/loginhandler.cpp:194
-msgid "This user name is already taken."
-msgstr "Käyttäjätunnus on jo käytössä."
-
-#: src/net/tmwa/loginhandler.cpp:200
-msgid "Username permanently erased."
-msgstr "Käyttäjänimi pysyvästi poistettu."
 
 #: src/net/tmwa/network.cpp:152
 msgid "Empty address given to Network::connect()!"
@@ -5137,277 +4733,10 @@ msgstr "Osoitetta ei löydy: \""
 msgid "Connection to server terminated. "
 msgstr "Yhteys palvelimeen katkaistu. "
 
-#: src/net/tmwa/partyhandler.cpp:86
-msgid "Could not create party."
-msgstr "Ryhmän luonti epäonnistui."
-
-#: src/net/tmwa/partyhandler.cpp:88
-msgid "Party successfully created."
-msgstr "Ryhmä luotu."
-
-#: src/net/tmwa/partyhandler.cpp:143
-#, c-format
-msgid "%s has joined your party."
-msgstr "%s on liittynyt ryhmääsi."
-
-#: src/net/tmwa/partyhandler.cpp:179
-#, c-format
-msgid "%s is already a member of a party."
-msgstr "%s kuuluu jo johonkin ryhmään."
-
-#: src/net/tmwa/partyhandler.cpp:184
-#, c-format
-msgid "%s refused your invitation."
-msgstr "%s ei ottanut kutsuasi vastaan."
-
-#: src/net/tmwa/partyhandler.cpp:189
-#, c-format
-msgid "%s is now a member of your party."
-msgstr "%s on nyt ryhmäsi jäsen."
-
-#: src/net/tmwa/partyhandler.cpp:194
-#, c-format
-msgid "%s can't join your party because party is full."
-msgstr "%s ei voi liittyä ryhmääsi, koska se on täynnä."
-
-#: src/net/tmwa/partyhandler.cpp:199
-#, c-format
-msgid "QQQ Unknown invite response for %s."
-msgstr "QQQ Tuntematon kutsuvastaus kohteella %s."
-
-#: src/net/tmwa/partyhandler.cpp:359
-msgid "You have left the party."
-msgstr "Erosit ryhmästä."
-
-#: src/net/tmwa/partyhandler.cpp:371
-#, c-format
-msgid "%s has left your party."
-msgstr "%s on eronnut ryhmästä."
-
-#: src/net/tmwa/partyhandler.cpp:447
-#, c-format
-msgid "An unknown member tried to say: %s"
-msgstr "Tuntematon jäsen yritti sanoa: %s"
-
-#: src/net/tmwa/partyhandler.cpp:529
+#: src/net/tmwa/partyhandler.cpp:171
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s ei ole ryhmässäsi!"
-
-#: src/net/tmwa/playerhandler.cpp:109
-msgid "Insert coin to continue."
-msgstr "Syötä kolikko jatkaaksesi."
-
-#: src/net/tmwa/playerhandler.cpp:127
-msgid "You're not dead yet. You're just resting."
-msgstr "Et ole kuollut vielä, lepäät vain."
-
-#: src/net/tmwa/playerhandler.cpp:128
-msgid "You are no more."
-msgstr "Olet lakannut olemasta."
-
-#: src/net/tmwa/playerhandler.cpp:129
-msgid "You have ceased to be."
-msgstr "Olet kuollut kuin päivänkakkaraa pukkaava ex-papukaija."
-
-#: src/net/tmwa/playerhandler.cpp:130
-msgid "You've expired and gone to meet your maker."
-msgstr "Olet lähtenyt moikkaamaan luojaasi."
-
-#: src/net/tmwa/playerhandler.cpp:131
-msgid "You're a stiff."
-msgstr "Raato mikä raato."
-
-#: src/net/tmwa/playerhandler.cpp:132
-msgid "Bereft of life, you rest in peace."
-msgstr "Olet eloton, mutta lepäät rauhassa."
-
-#: src/net/tmwa/playerhandler.cpp:133
-msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr "Ellet olisi näin liikkuvainen, pukkaisit päivänkakkaraa."
-
-#: src/net/tmwa/playerhandler.cpp:134
-msgid "Your metabolic processes are now history."
-msgstr "Aineenvaihduntaprosessisi ovat historiaa."
-
-#: src/net/tmwa/playerhandler.cpp:135
-msgid "You're off the twig."
-msgstr "Olet lopultakin nakkisuojassa."
-
-#: src/net/tmwa/playerhandler.cpp:136
-msgid "You've kicked the bucket."
-msgstr "Potkaisit tyhjää."
-
-#: src/net/tmwa/playerhandler.cpp:137
-msgid ""
-"You've shuffled off your mortal coil, run down the curtain and joined the "
-"bleedin' choir invisibile."
-msgstr ""
-"Olet heittänyt henkesi, poistunut keskuudestamme ja loikannut Tuonelan "
-"jokeen."
-
-#: src/net/tmwa/playerhandler.cpp:139
-msgid "You are an ex-player."
-msgstr "Olet entinen pelaaja."
-
-#: src/net/tmwa/playerhandler.cpp:140
-msgid "You're pining for the fjords."
-msgstr "Kaipaat kotivuonoille."
-
-#: src/net/tmwa/playerhandler.cpp:342 src/net/tmwa/playerhandler.cpp:352
-#: src/net/tmwa/playerhandler.cpp:431
-msgid "Message"
-msgstr "Viesti"
-
-#: src/net/tmwa/playerhandler.cpp:343
-msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
-msgstr "Kannat roinaa yli puolen elopainoasi. Rasitus estää sinua paranemasta."
-
-#: src/net/tmwa/playerhandler.cpp:353
-msgid "You are carrying less than half your weight. You can regain health."
-msgstr "Kannat roinaa alle puolet elopainoasi, ja paranet jälleen."
-
-#: src/net/tmwa/playerhandler.cpp:458
-#, c-format
-msgid "You picked up %s."
-msgstr "%s nostettu."
-
-#: src/net/tmwa/playerhandler.cpp:464
-#, c-format
-msgid "You spent %s."
-msgstr "Käytit %s."
-
-#: src/net/tmwa/playerhandler.cpp:509
-msgid "Cannot raise skill!"
-msgstr "Taidon korottaminen epäonnistui!"
-
-#: src/net/tmwa/playerhandler.cpp:629
-msgid "Equip arrows first."
-msgstr "Varusta ensin nuolia."
-
-#: src/net/tmwa/specialhandler.cpp:165
-msgid "Trade failed!"
-msgstr "Kauppa epäonnistui!"
-
-#: src/net/tmwa/specialhandler.cpp:168
-msgid "Emote failed!"
-msgstr "Elehtiminen epäonnistui!"
-
-#: src/net/tmwa/specialhandler.cpp:171
-msgid "Sit failed!"
-msgstr "Istuminen epäonnistui!"
-
-#: src/net/tmwa/specialhandler.cpp:174
-msgid "Chat creating failed!"
-msgstr "Keskustelun luonti epäonnistui!"
-
-#: src/net/tmwa/specialhandler.cpp:177
-msgid "Could not join party!"
-msgstr "Ryhmään liittyminen epäonnistui!"
-
-#: src/net/tmwa/specialhandler.cpp:180
-msgid "Cannot shout!"
-msgstr "Huutaminen epäonnistui!"
-
-#: src/net/tmwa/specialhandler.cpp:193
-msgid "You have not yet reached a high enough lvl!"
-msgstr "Et ole vielä riittävän korkealla tasolla!"
-
-#: src/net/tmwa/specialhandler.cpp:197
-msgid "Insufficient HP!"
-msgstr "Voimapisteesi eivät riitä!"
-
-#: src/net/tmwa/specialhandler.cpp:200
-msgid "Insufficient SP!"
-msgstr "Manapisteesi eivät riitä!"
-
-#: src/net/tmwa/specialhandler.cpp:203
-msgid "You have no memos!"
-msgstr "Sinulla ei ole muistioita (memo)."
-
-#: src/net/tmwa/specialhandler.cpp:206
-msgid "You cannot do that right now!"
-msgstr "Et voi tehdä tätä juuri nyt."
-
-#: src/net/tmwa/specialhandler.cpp:209
-msgid "Seems you need more money... ;-)"
-msgstr "Näyttää siltä että tarvitset lisää rahaa."
-
-#: src/net/tmwa/specialhandler.cpp:212
-msgid "You cannot use this skill with that kind of weapon!"
-msgstr "Et voi käyttää tätä taitoa tuollaisen aseen kanssa."
-
-#: src/net/tmwa/specialhandler.cpp:216
-msgid "You need another red gem!"
-msgstr "Tarvitset toisen punaisen helmen."
-
-#: src/net/tmwa/specialhandler.cpp:219
-msgid "You need another blue gem!"
-msgstr "Tarvitset toisen sinisen helmen."
-
-#: src/net/tmwa/specialhandler.cpp:222
-msgid "You're carrying to much to do this!"
-msgstr "Kannat liian paljon tehdäksesi tällaista!"
-
-#: src/net/tmwa/specialhandler.cpp:225
-msgid "Huh? What's that?"
-msgstr "Siis mikä?"
-
-#: src/net/tmwa/specialhandler.cpp:236
-msgid "Warp failed..."
-msgstr "Siirtymä (warp) epäonnistui..."
-
-#: src/net/tmwa/specialhandler.cpp:239
-msgid "Could not steal anything..."
-msgstr "Varastaminen ei onnistunut..."
-
-#: src/net/tmwa/specialhandler.cpp:242
-msgid "Poison had no effect..."
-msgstr "Myrkyllä ei ollut vaikutusta..."
-
-#: src/net/tmwa/tradehandler.cpp:148
-msgid "Trading isn't possible. Trade partner is too far away."
-msgstr "Kaupanteko ei ole mahdollista. kauppa kumppani on liian kaukana."
-
-#: src/net/tmwa/tradehandler.cpp:152
-msgid "Trading isn't possible. Character doesn't exist."
-msgstr "Kaupanteko ei ole mahdollista. Hahmoa ei ole."
-
-#: src/net/tmwa/tradehandler.cpp:156
-msgid "Trade cancelled due to an unknown reason."
-msgstr "Kaupanteko keskeytyi tuntemattomasta syystä."
-
-#: src/net/tmwa/tradehandler.cpp:164
-#, c-format
-msgid "Trade: You and %s"
-msgstr "Kauppa: sinä ja %s"
-
-#: src/net/tmwa/tradehandler.cpp:174
-#, c-format
-msgid "Trade with %s cancelled."
-msgstr "Kaupanteko pelaajan %s kanssa peruttu."
-
-#: src/net/tmwa/tradehandler.cpp:187
-msgid "Unhandled trade cancel packet."
-msgstr "Käsittelemätön kaupan peruutus -paketti."
-
-#: src/net/tmwa/tradehandler.cpp:250
-msgid "Failed adding item. Trade partner is over weighted."
-msgstr ""
-"Tavaran lisääminen epäonnistui; kauppakumppanilla on liian painava lasti."
-
-#: src/net/tmwa/tradehandler.cpp:255
-msgid "Failed adding item. Trade partner has no free slot."
-msgstr "Tavaran lisääminen epäonnistui; kauppakumppanilla ei ole tilaa sille."
-
-#: src/net/tmwa/tradehandler.cpp:260
-msgid "Failed adding item. You can't trade this item."
-msgstr "Tavaran lisääminen epäonnistui. Et voi kaupitella sitä."
-
-#: src/net/tmwa/tradehandler.cpp:264
-msgid "Failed adding item for unknown reason."
-msgstr "Tavaran lisääminen epäonnistui tuntemattomasta syystä."
 
 #: src/playerrelations.cpp:414
 msgid "Print '...'"
@@ -5425,31 +4754,33 @@ msgstr "Leijuva '...' -puhekupla"
 msgid "Floating bubble"
 msgstr "Leijuva puhekupla"
 
-#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:245
+#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:248
 #: src/resources/monsterdb.cpp:84
 msgid "unnamed"
 msgstr "nimetön"
 
-#: src/resources/itemdb.cpp:62
+#: src/resources/itemdb.cpp:65
 #, c-format
 msgid "Attack %+d"
 msgstr "Hyökkäys %+d"
 
-#: src/resources/itemdb.cpp:63
+#: src/resources/itemdb.cpp:66
 #, c-format
 msgid "Defense %+d"
 msgstr "Puolustus %+d"
 
-#: src/resources/itemdb.cpp:64
+#: src/resources/itemdb.cpp:67
 #, c-format
 msgid "HP %+d"
 msgstr "VP %+d"
 
-#: src/resources/itemdb.cpp:65
+#: src/resources/itemdb.cpp:68
 #, c-format
 msgid "MP %+d"
 msgstr "MP %+d"
 
-#: src/resources/itemdb.cpp:168
+#: src/resources/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Tuntematon tavara"
+
+

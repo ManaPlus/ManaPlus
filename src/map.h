@@ -615,6 +615,7 @@ class Map : public Properties, public ConfigListener
         int mDrawScrollX;
         int mDrawScrollY;
         bool mRedrawMap;
+        bool mBeingOpacity;
 };
 
 

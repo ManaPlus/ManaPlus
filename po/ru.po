@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 #   <reslayer@mail.ru>, 2011.
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
@@ -10,17 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-07-23 17:22+0300\n"
-"PO-Revision-Date: 2011-07-21 23:52+0000\n"
+"POT-Creation-Date: 2011-08-08 04:26+0300\n"
+"PO-Revision-Date: 2011-08-08 01:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
-"ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1034
 msgid "Visible on map"
@@ -35,97 +33,96 @@ msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1512
+#: src/being.cpp:1513
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1517
+#: src/being.cpp:1518
 msgid "I"
 msgstr "Б"
 
-#: src/client.cpp:823 src/gui/setup.cpp:50 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Настройка"
 
-#: src/client.cpp:903
+#: src/client.cpp:908
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
-#: src/client.cpp:934
+#: src/client.cpp:939
 msgid "Logging in"
 msgstr "Авторизация"
 
-#: src/client.cpp:967
+#: src/client.cpp:972
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
-#: src/client.cpp:1067
+#: src/client.cpp:1072
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
-#: src/client.cpp:1098
+#: src/client.cpp:1103
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
-#: src/client.cpp:1108
+#: src/client.cpp:1113
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
-#: src/client.cpp:1145 src/client.cpp:1152 src/client.cpp:1289
+#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
 #: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
-#: src/net/manaserv/charhandler.cpp:227 src/net/tmwa/charserverhandler.cpp:190
-#: src/net/tmwa/charserverhandler.cpp:206
+#: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/client.cpp:1161
+#: src/client.cpp:1166
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
-#: src/client.cpp:1188
+#: src/client.cpp:1193
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
-#: src/client.cpp:1189
+#: src/client.cpp:1194
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
-#: src/client.cpp:1208
+#: src/client.cpp:1213
 msgid "Email Change"
 msgstr "Сменить Email"
 
-#: src/client.cpp:1209
+#: src/client.cpp:1214
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
-#: src/client.cpp:1229
+#: src/client.cpp:1234
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
-#: src/client.cpp:1230
+#: src/client.cpp:1235
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
-#: src/client.cpp:1419 src/client.cpp:1449 src/client.cpp:1493
-#: src/client.cpp:1914
+#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
+#: src/client.cpp:1919
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
-#: src/client.cpp:1624
+#: src/client.cpp:1629
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Некорректный сервер обновлений: %s"
 
-#: src/client.cpp:1658 src/client.cpp:1664
+#: src/client.cpp:1663 src/client.cpp:1669
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:1685
+#: src/client.cpp:1690
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -141,18 +138,18 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
-"уже создана, или этот игрок Вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
+" уже создана, или этот игрок Вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Запрос на присоединение к каналу %s."
 
-#: src/commandhandler.cpp:445 src/net/tmwa/gui/partytab.cpp:125
+#: src/commandhandler.cpp:445
 msgid "Party name is missing."
 msgstr "Не указано название группы"
 
@@ -304,47 +301,45 @@ msgstr "Удаленных изображений:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
-"\"0\"."
+msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
 
-#: src/game.cpp:244 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
 msgstr "Общие"
 
-#: src/game.cpp:248 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
 msgid "Debug"
 msgstr "Отладка"
 
-#: src/game.cpp:464
+#: src/game.cpp:475
 msgid "Screenshot saved as "
 msgstr "Снимок экрана сохранен как "
 
-#: src/game.cpp:472
+#: src/game.cpp:483
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
-#: src/game.cpp:511
+#: src/game.cpp:523
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
-#: src/game.cpp:525
+#: src/game.cpp:537
 msgid "Network Error"
 msgstr "Ошибка сети"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1184
 msgid "Ignoring incoming trade requests"
 msgstr "Игнорировать предложения о торговле"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1191
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1576
 msgid "Could Not Load Map"
 msgstr "Не удалось загрузить карту"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1577
 #, c-format
 msgid "Error while loading %s"
 msgstr "Ошибка во время загрузки %s"
@@ -379,7 +374,7 @@ msgstr "Имя"
 
 #: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:130
 #: src/gui/popupmenu.cpp:286 src/gui/popupmenu.cpp:604
-#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:264
+#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:266
 msgid "Attack"
 msgstr "Атака"
 
@@ -466,7 +461,7 @@ msgstr "Продать"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:67
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
 #: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
@@ -989,7 +984,7 @@ msgstr "Вес:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:68
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
 msgid "Store"
 msgstr "Сохранить"
 
@@ -1876,11 +1871,11 @@ msgstr "Синий:"
 msgid "Alpha:"
 msgstr "Прозрачность:"
 
-#: src/gui/setup.cpp:66
+#: src/gui/setup.cpp:67
 msgid "Apply"
 msgstr "Применить"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:70
 msgid "Reset Windows"
 msgstr "Сбросить расположение окон"
 
@@ -2089,6 +2084,10 @@ msgstr "Режим кеширования игроков"
 msgid "Hide shield sprite"
 msgstr "Спрятать картинку счита"
 
+#: src/gui/setup_other.cpp:169
+msgid "Show background"
+msgstr "Показать фон"
+
 #: src/gui/setup_players.cpp:65
 msgid "Relation"
 msgstr "Отношение"
@@ -2229,8 +2228,8 @@ msgstr "Размер шрифта"
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:658
-#: src/gui/setup_video.cpp:663
+#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
+#: src/gui/setup_video.cpp:675
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
@@ -2282,136 +2281,140 @@ msgstr "средне"
 msgid "max"
 msgstr "макс."
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:294
 msgid "Hw acceleration"
 msgstr "Аппаратное ускорение"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "Show pickup notification"
 msgstr "Показать уведомление о подборе предмета"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "in chat"
 msgstr "в чате"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:303
 msgid "as particle"
 msgstr "как частицу"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:305
 msgid "Enable opacity cache"
 msgstr "Включить кеш прозрачности"
 
-#: src/gui/setup_video.cpp:305
+#: src/gui/setup_video.cpp:306
 msgid "Enable map reduce"
 msgstr "Включить режим сжатия карты"
 
-#: src/gui/setup_video.cpp:307
-msgid "Show background"
-msgstr "Показать фон"
+#: src/gui/setup_video.cpp:308
+msgid "Auto adjust perfomance"
+msgstr "Автоматически подстраивать производительность"
 
-#: src/gui/setup_video.cpp:312
+#: src/gui/setup_video.cpp:310
+msgid "Show beings transparency"
+msgstr "Отображать прозрачность на персонажах и монстрах"
+
+#: src/gui/setup_video.cpp:315
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:316 src/gui/setup_video.cpp:353
-#: src/gui/setup_video.cpp:596 src/gui/setup_video.cpp:748
+#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
+#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:328
 msgid "Video"
 msgstr "Видео"
 
-#: src/gui/setup_video.cpp:331
+#: src/gui/setup_video.cpp:334
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:332
+#: src/gui/setup_video.cpp:335
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:333
+#: src/gui/setup_video.cpp:336
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:337
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:351 src/gui/setup_video.cpp:354
-#: src/gui/setup_video.cpp:595 src/gui/setup_video.cpp:735
-#: src/gui/setup_video.cpp:746
+#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
+#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
+#: src/gui/setup_video.cpp:758
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:511
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
-"удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
+" удалось!"
 
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_video.cpp:517
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:521
+#: src/gui/setup_video.cpp:528
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:522
+#: src/gui/setup_video.cpp:529
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:534
+#: src/gui/setup_video.cpp:541
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:535
+#: src/gui/setup_video.cpp:542
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_video.cpp:653
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:642
+#: src/gui/setup_video.cpp:654
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:657 src/gui/setup_video.cpp:662
+#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:660
+#: src/gui/setup_video.cpp:672
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:693
+#: src/gui/setup_video.cpp:705
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:694
+#: src/gui/setup_video.cpp:706
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 
@@ -2441,7 +2444,6 @@ msgid "Show links in announce"
 msgstr "Показывать ссылки"
 
 #: src/gui/shopwindow.cpp:723 src/net/manaserv/tradehandler.cpp:127
-#: src/net/tmwa/tradehandler.cpp:124
 msgid "Request for Trade"
 msgstr "Запрос на Торговлю"
 
@@ -2483,7 +2485,7 @@ msgstr "Уровень: %d"
 msgid "Lvl: %d (%+d)"
 msgstr "Уровень: %d (%+d)"
 
-#: src/gui/socialwindow.cpp:117 src/net/tmwa/gui/guildtab.cpp:50
+#: src/gui/socialwindow.cpp:117
 msgid "Guild"
 msgstr "Гильдия"
 
@@ -2515,7 +2517,7 @@ msgstr "Покинуть Гильдию?"
 msgid "Are you sure you want to leave guild %s?"
 msgstr "Вы действительно хотите выйти из гильдии %s?"
 
-#: src/gui/socialwindow.cpp:215 src/net/tmwa/gui/partytab.cpp:50
+#: src/gui/socialwindow.cpp:215
 msgid "Party"
 msgstr "Группа"
 
@@ -3210,7 +3212,8 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/tradewindow.cpp:332
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3483,7 +3486,6 @@ msgid "This command makes <nick> a channel operator."
 msgstr "Эта Команда делает <пользователь> оператором канала."
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
-#: src/net/tmwa/gui/guildtab.cpp:91 src/net/tmwa/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr "Если ник содержит пробелы, заключите его в кавычки (\")."
 
@@ -3549,15 +3551,16 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:125
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
-"отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
+" отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:65
@@ -4222,7 +4225,7 @@ msgstr "Спасибо за покупку!"
 msgid "Unable to buy."
 msgstr "Низзя купить!"
 
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:257
+#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:259
 msgid "Strength"
 msgstr "Сила (str)"
 
@@ -4231,7 +4234,7 @@ msgstr "Сила (str)"
 msgid "Strength %+.1f"
 msgstr "Сила (str) %+.1f"
 
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:258
+#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:260
 msgid "Agility"
 msgstr "Выносливость (agi)"
 
@@ -4240,7 +4243,7 @@ msgstr "Выносливость (agi)"
 msgid "Agility %+.1f"
 msgstr "Выносливость (agi) %+.1f"
 
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:261
+#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:263
 msgid "Dexterity"
 msgstr "Ловкость (dex)"
 
@@ -4249,7 +4252,7 @@ msgstr "Ловкость (dex)"
 msgid "Dexterity %+.1f"
 msgstr "Ловкость (dex) %+.1f"
 
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:259
+#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:261
 msgid "Vitality"
 msgstr "Живучесть (vit)"
 
@@ -4258,7 +4261,7 @@ msgstr "Живучесть (vit)"
 msgid "Vitality %+.1f"
 msgstr "Живучесть (vit) %+.1f"
 
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:260
+#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:262
 msgid "Intelligence"
 msgstr "Интеллект (int)"
 
@@ -4276,27 +4279,27 @@ msgstr "Воля"
 msgid "Willpower %+.1f"
 msgstr "Воля (wil) %+.1f"
 
-#: src/net/manaserv/beinghandler.cpp:315 src/net/tmwa/playerhandler.cpp:103
+#: src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
 msgstr "Вы мертвы."
 
-#: src/net/manaserv/beinghandler.cpp:316 src/net/tmwa/playerhandler.cpp:104
+#: src/net/manaserv/beinghandler.cpp:316
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "С грустью сообщаем вам, что Ваш персонаж пал в бою."
 
-#: src/net/manaserv/beinghandler.cpp:318 src/net/tmwa/playerhandler.cpp:106
+#: src/net/manaserv/beinghandler.cpp:318
 msgid "You are not that alive anymore."
 msgstr "Вас больше нет среди живых."
 
-#: src/net/manaserv/beinghandler.cpp:319 src/net/tmwa/playerhandler.cpp:107
+#: src/net/manaserv/beinghandler.cpp:319
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "Холодные руки Смерти извлекают Вашу душу."
 
-#: src/net/manaserv/beinghandler.cpp:320 src/net/tmwa/playerhandler.cpp:108
+#: src/net/manaserv/beinghandler.cpp:320
 msgid "Game Over!"
 msgstr "Игра Окончена!"
 
-#: src/net/manaserv/beinghandler.cpp:321 src/net/tmwa/playerhandler.cpp:110
+#: src/net/manaserv/beinghandler.cpp:321
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4304,33 +4307,33 @@ msgstr ""
 "Нет, детки. Ваш персонаж на самом деле не умер. Он...эммм...ушел в лучший "
 "мир."
 
-#: src/net/manaserv/beinghandler.cpp:323 src/net/tmwa/playerhandler.cpp:112
+#: src/net/manaserv/beinghandler.cpp:323
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr "Ваш план сломать оружие врагов о свое горло провалился."
 
-#: src/net/manaserv/beinghandler.cpp:325 src/net/tmwa/playerhandler.cpp:114
+#: src/net/manaserv/beinghandler.cpp:325
 msgid "I guess this did not run too well."
 msgstr "Похоже, это было не слишком хорошо."
 
-#: src/net/manaserv/beinghandler.cpp:326 src/net/tmwa/playerhandler.cpp:116
+#: src/net/manaserv/beinghandler.cpp:326
 msgid "Do you want your possessions identified?"
 msgstr "Хочешь, предскажу твою судьбу?"
 
-#: src/net/manaserv/beinghandler.cpp:327 src/net/tmwa/playerhandler.cpp:118
+#: src/net/manaserv/beinghandler.cpp:327
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Грустно, Вас вряд ли когда-нибудь найдут..."
 
-#: src/net/manaserv/beinghandler.cpp:329 src/net/tmwa/playerhandler.cpp:120
+#: src/net/manaserv/beinghandler.cpp:329
 msgid "Annihilated."
 msgstr "Уничтожен."
 
-#: src/net/manaserv/beinghandler.cpp:330 src/net/tmwa/playerhandler.cpp:122
+#: src/net/manaserv/beinghandler.cpp:330
 msgid "Looks like you got your head handed to you."
 msgstr "Похоже, Вам отдали Вашу голову."
 
-#: src/net/manaserv/beinghandler.cpp:332 src/net/tmwa/playerhandler.cpp:124
+#: src/net/manaserv/beinghandler.cpp:332
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr "Вы опять пролетели, выбросите своё тело в трубу, и получите другое."
@@ -4393,11 +4396,10 @@ msgstr "Некорректный номер слота."
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-#: src/net/tmwa/loginhandler.cpp:102 src/net/tmwa/loginhandler.cpp:203
 msgid "Unknown error."
 msgstr "Неизвестная ошибка."
 
-#: src/net/manaserv/charhandler.cpp:210 src/net/tmwa/charserverhandler.cpp:201
+#: src/net/manaserv/charhandler.cpp:210
 msgid "Info"
 msgstr "Сведения"
 
@@ -4464,7 +4466,7 @@ msgstr "%s был вышвырнут %s"
 msgid "Unknown channel event."
 msgstr "Неизвестное событие на канале."
 
-#: src/net/manaserv/guildhandler.cpp:85 src/net/tmwa/guildhandler.cpp:107
+#: src/net/manaserv/guildhandler.cpp:85
 msgid "Guild created."
 msgstr "Гильдия создана."
 
@@ -4500,7 +4502,7 @@ msgstr "Учетная запись заблокирована (бан)."
 msgid "New password incorrect."
 msgstr "Новый пароль указан неверно"
 
-#: src/net/manaserv/loginhandler.cpp:127 src/net/tmwa/loginhandler.cpp:96
+#: src/net/manaserv/loginhandler.cpp:127
 msgid "Old password incorrect."
 msgstr "Старый пароль указан неверно."
 
@@ -4583,7 +4585,7 @@ msgstr "Принимать входящие предложения торгов�
 msgid "Ignoring incoming trade requests."
 msgstr "Игнорировать входящие предложения торговли."
 
-#: src/net/manaserv/tradehandler.cpp:128 src/net/tmwa/tradehandler.cpp:125
+#: src/net/manaserv/tradehandler.cpp:128
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
@@ -4593,11 +4595,11 @@ msgstr "%s хочет торговать с Вами, Вы принимаете 
 msgid "Trading with %s"
 msgstr "Торговля с %s"
 
-#: src/net/manaserv/tradehandler.cpp:160 src/net/tmwa/tradehandler.cpp:282
+#: src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "Торговля отменена."
 
-#: src/net/manaserv/tradehandler.cpp:167 src/net/tmwa/tradehandler.cpp:292
+#: src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "Торговля завершена."
 
@@ -4609,526 +4611,126 @@ msgstr "Не удалось вышвырнуть!"
 msgid "Kick succeeded!"
 msgstr "Игрок вышвырнут!"
 
-#: src/net/tmwa/buysellhandler.cpp:131
+#: src/net/tmwa/buysellhandler.cpp:133
 msgid "Thanks for selling."
 msgstr "Спасибо за продажу!"
 
-#: src/net/tmwa/buysellhandler.cpp:135
+#: src/net/tmwa/buysellhandler.cpp:137
 msgid "Unable to sell."
 msgstr "Нельзя продать."
 
-#: src/net/tmwa/buysellhandler.cpp:138
+#: src/net/tmwa/buysellhandler.cpp:140
 msgid "Unable to sell while trading."
 msgstr "Невозможно продавать в режиме обмена."
 
-#: src/net/tmwa/buysellhandler.cpp:141
+#: src/net/tmwa/buysellhandler.cpp:143
 msgid "Unable to sell unsellable item."
 msgstr "Невозможно продать непродаваемый предмет."
 
-#: src/net/tmwa/charserverhandler.cpp:121
-msgid "Access denied. Most likely, there are too many players on this server."
-msgstr ""
-"В доступе отказано. Скорее всего, на этом сервере слишком много игроков."
-
-#: src/net/tmwa/charserverhandler.cpp:125
-msgid "Cannot use this ID."
-msgstr "Нельзя использовать данный ID."
-
-#: src/net/tmwa/charserverhandler.cpp:128
-msgid "Unknown char-server failure."
-msgstr "Неизвестная ошибка сервера персонажей."
-
-#: src/net/tmwa/charserverhandler.cpp:174
-msgid "Failed to create character. Most likely the name is already taken."
-msgstr "Невозможно создать персонажа. Скорее всего, таке имя уже используется."
-
-#: src/net/tmwa/charserverhandler.cpp:178 src/net/tmwa/loginhandler.cpp:197
-msgid "Wrong name."
-msgstr "Некорректное имя."
-
-#: src/net/tmwa/charserverhandler.cpp:181
-msgid "Incorrect stats."
-msgstr "Некорректные статы."
-
-#: src/net/tmwa/charserverhandler.cpp:184
-msgid "Incorrect hair."
-msgstr "Некорректный тип волос."
-
-#: src/net/tmwa/charserverhandler.cpp:187
-msgid "Incorrect slot."
-msgstr "Некорректный слот."
-
-#: src/net/tmwa/charserverhandler.cpp:201
-msgid "Character deleted."
-msgstr "Персонаж удален"
-
-#: src/net/tmwa/charserverhandler.cpp:206
-msgid "Failed to delete character."
-msgstr "Невозможно удалить персонажа."
-
-#: src/net/tmwa/charserverhandler.cpp:383
-msgid "Strength:"
-msgstr "Сила (str):"
-
-#: src/net/tmwa/charserverhandler.cpp:384
-msgid "Agility:"
-msgstr "Выносливость (agi):"
-
-#: src/net/tmwa/charserverhandler.cpp:385
-msgid "Vitality:"
-msgstr "Живучесть (vit):"
-
-#: src/net/tmwa/charserverhandler.cpp:386
-msgid "Intelligence:"
-msgstr "Интеллект (int):"
-
-#: src/net/tmwa/charserverhandler.cpp:387
-msgid "Dexterity:"
-msgstr "Ловкость (dex):"
-
-#: src/net/tmwa/charserverhandler.cpp:388
-msgid "Luck:"
-msgstr "Удача (luk):"
-
-#: src/net/tmwa/chathandler.cpp:106
-#, c-format
-msgid "Whisper could not be sent, %s is offline."
-msgstr "Сообщение не может быть отправлено, %s оффлайн."
-
-#: src/net/tmwa/chathandler.cpp:114
-#, c-format
-msgid "Whisper could not be sent, ignored by %s."
-msgstr "Приватное сообщение не может быть послано: %s игнорирует его."
-
-#: src/net/tmwa/chathandler.cpp:334
-msgid "MVP player."
-msgstr "Игрок MVP."
-
-#: src/net/tmwa/chathandler.cpp:338
-msgid "MVP player: "
-msgstr "Игрок MVP: "
-
-#: src/net/tmwa/chathandler.cpp:391 src/net/tmwa/chathandler.cpp:397
-#: src/net/tmwa/chathandler.cpp:402 src/net/tmwa/chathandler.cpp:408
-#: src/net/tmwa/chathandler.cpp:413 src/net/tmwa/chathandler.cpp:419
-#: src/net/tmwa/chathandler.cpp:426 src/net/tmwa/chathandler.cpp:432
-msgid "Channels are not supported!"
-msgstr "Каналы не поддерживаются!"
-
-#: src/net/tmwa/gamehandler.cpp:96
-#, c-format
-msgid "Online users: %d"
-msgstr "Пользователей онлайн: %d"
-
-#: src/net/tmwa/gamehandler.cpp:106
-msgid "Game"
-msgstr "Игра"
-
-#: src/net/tmwa/gamehandler.cpp:106
-msgid "Request to quit denied!"
-msgstr "Запрос на выход отклонен!"
-
-#: src/net/tmwa/generalhandler.cpp:107
+#: src/net/tmwa/generalhandler.cpp:109
 #, c-format
 msgid "Strength %+d"
 msgstr "Сила (str) %+d"
 
-#: src/net/tmwa/generalhandler.cpp:108
+#: src/net/tmwa/generalhandler.cpp:110
 #, c-format
 msgid "Agility %+d"
 msgstr "Выносливость (agi) %+d"
 
-#: src/net/tmwa/generalhandler.cpp:109
+#: src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Vitality %+d"
 msgstr "Живучесть (vit) %+d"
 
-#: src/net/tmwa/generalhandler.cpp:110
+#: src/net/tmwa/generalhandler.cpp:112
 #, c-format
 msgid "Intelligence %+d"
 msgstr "Интеллект (int) %+d"
 
-#: src/net/tmwa/generalhandler.cpp:111
+#: src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Dexterity %+d"
 msgstr "Ловкость (dex) %+d"
 
-#: src/net/tmwa/generalhandler.cpp:112
+#: src/net/tmwa/generalhandler.cpp:114
 #, c-format
 msgid "Luck %+d"
 msgstr "Удача (luk) %+d"
 
-#: src/net/tmwa/generalhandler.cpp:138
+#: src/net/tmwa/generalhandler.cpp:140
 msgid "Authentication failed."
 msgstr "Ошибка авторизации."
 
-#: src/net/tmwa/generalhandler.cpp:141
+#: src/net/tmwa/generalhandler.cpp:143
 msgid "No servers available."
 msgstr "Нет доступных серверов."
 
-#: src/net/tmwa/generalhandler.cpp:145
+#: src/net/tmwa/generalhandler.cpp:147
 msgid "Someone else is trying to use this account."
 msgstr "Кто-то еще пытается воспользоваться данным аккаунтом."
 
-#: src/net/tmwa/generalhandler.cpp:148
+#: src/net/tmwa/generalhandler.cpp:150
 msgid "This account is already logged in."
 msgstr "Этот аккаунт уже в сети."
 
-#: src/net/tmwa/generalhandler.cpp:151
+#: src/net/tmwa/generalhandler.cpp:153
 msgid "Speed hack detected."
 msgstr "Обнаружен взлом скорости."
 
-#: src/net/tmwa/generalhandler.cpp:154
+#: src/net/tmwa/generalhandler.cpp:156
 msgid "Duplicated login."
 msgstr "Двойная попытка подключения."
 
-#: src/net/tmwa/generalhandler.cpp:157
+#: src/net/tmwa/generalhandler.cpp:159
 msgid "Unknown connection error."
 msgstr "Неизвестная ошибка подключения."
 
-#: src/net/tmwa/generalhandler.cpp:230
+#: src/net/tmwa/generalhandler.cpp:232
 msgid "Got disconnected from server!"
 msgstr "Отключено от сервера!"
 
-#: src/net/tmwa/generalhandler.cpp:262
+#: src/net/tmwa/generalhandler.cpp:264
 msgid "Luck"
 msgstr "Удача (luk)"
 
-#: src/net/tmwa/generalhandler.cpp:265
+#: src/net/tmwa/generalhandler.cpp:267
 msgid "Defense"
 msgstr "Защита"
 
-#: src/net/tmwa/generalhandler.cpp:266
+#: src/net/tmwa/generalhandler.cpp:268
 msgid "M.Attack"
 msgstr "Маг. Атака"
 
-#: src/net/tmwa/generalhandler.cpp:267
+#: src/net/tmwa/generalhandler.cpp:269
 msgid "M.Defense"
 msgstr "Маг.Защита"
 
-#: src/net/tmwa/generalhandler.cpp:269
+#: src/net/tmwa/generalhandler.cpp:271
 #, no-c-format
 msgid "% Accuracy"
 msgstr "% Точности"
 
-#: src/net/tmwa/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:273
 #, no-c-format
 msgid "% Evade"
 msgstr "% Уклонения"
 
-#: src/net/tmwa/generalhandler.cpp:273
+#: src/net/tmwa/generalhandler.cpp:275
 #, no-c-format
 msgid "% Critical"
 msgstr "% Критический удар"
 
-#: src/net/tmwa/generalhandler.cpp:274
+#: src/net/tmwa/generalhandler.cpp:276
 msgid "Attack Delay"
 msgstr "Задержка атаки"
 
-#: src/net/tmwa/generalhandler.cpp:276
+#: src/net/tmwa/generalhandler.cpp:278
 msgid "Walk Delay"
 msgstr "Задержка движения"
 
-#: src/net/tmwa/generalhandler.cpp:278
+#: src/net/tmwa/generalhandler.cpp:280
 msgid "Attack Range"
 msgstr "Зона атаки"
-
-#: src/net/tmwa/gui/guildtab.cpp:77 src/net/tmwa/gui/partytab.cpp:69
-msgid "/help > Display this help."
-msgstr "/help > Показать эту справку"
-
-#: src/net/tmwa/gui/guildtab.cpp:78
-msgid "/invite > Invite a player to your guild"
-msgstr "/invite > Пригласить игрока в Вашу гильдию"
-
-#: src/net/tmwa/gui/guildtab.cpp:79
-msgid "/leave > Leave the guild you are in"
-msgstr "/leave > Покинуть текущую гильдию"
-
-#: src/net/tmwa/gui/guildtab.cpp:80
-msgid "/kick > Kick some one from the guild you are in"
-msgstr "/kick > Вышвырнуть кого-либо из Вашей текущей группы"
-
-#: src/net/tmwa/gui/guildtab.cpp:89 src/net/tmwa/gui/partytab.cpp:83
-msgid "Command: /invite <nick>"
-msgstr "Команда: /invite <игрок>"
-
-#: src/net/tmwa/gui/guildtab.cpp:90
-msgid "This command invites <nick> to the guild you're in."
-msgstr "Эта команда приглашает <имя персонажа> к Вам в группу."
-
-#: src/net/tmwa/gui/guildtab.cpp:96 src/net/tmwa/gui/partytab.cpp:90
-msgid "Command: /leave"
-msgstr "Команда: /leave"
-
-#: src/net/tmwa/gui/guildtab.cpp:97
-msgid "This command causes the player to leave the guild."
-msgstr "Эта команда заставляет игрока покинуть гильдию."
-
-#: src/net/tmwa/guildhandler.cpp:112 src/net/tmwa/guildhandler.cpp:117
-msgid "You are already in guild."
-msgstr "Вы и так в гильдии"
-
-#: src/net/tmwa/guildhandler.cpp:122
-msgid "Emperium check failed."
-msgstr "Имперская проверка провалена"
-
-#: src/net/tmwa/guildhandler.cpp:127
-msgid "Unknown server response."
-msgstr "Неизвестный ответ сервера."
-
-#: src/net/tmwa/guildhandler.cpp:205
-#, c-format
-msgid "Guild name: %s"
-msgstr "Имя гильдии: %s"
-
-#: src/net/tmwa/guildhandler.cpp:207
-#, c-format
-msgid "Guild master: %s"
-msgstr "Мастер гильдии: %s"
-
-#: src/net/tmwa/guildhandler.cpp:209
-#, c-format
-msgid "Guild level: %d"
-msgstr "Уровень гильдии: %d"
-
-#: src/net/tmwa/guildhandler.cpp:211
-#, c-format
-msgid "Online members: %d"
-msgstr "Пользователей онлайн: %d"
-
-#: src/net/tmwa/guildhandler.cpp:213
-#, c-format
-msgid "Max members: %d"
-msgstr "Макс. членов: %d"
-
-#: src/net/tmwa/guildhandler.cpp:215
-#, c-format
-msgid "Average level: %d"
-msgstr "Средний уровень: %d"
-
-#: src/net/tmwa/guildhandler.cpp:217
-#, c-format
-msgid "Guild exp: %d"
-msgstr "Опыт гильдии: %d"
-
-#: src/net/tmwa/guildhandler.cpp:219
-#, c-format
-msgid "Guild next exp: %d"
-msgstr "Нужно опыта до следующего уровня: %d"
-
-#: src/net/tmwa/guildhandler.cpp:221
-#, c-format
-msgid "Guild castle: %s"
-msgstr "Замки: %s"
-
-#: src/net/tmwa/guildhandler.cpp:436
-msgid "Could not inivte user to guild."
-msgstr "Не удалось пригласить пользователя в гиьдию."
-
-#: src/net/tmwa/guildhandler.cpp:441
-msgid "User rejected guild invite."
-msgstr "Пользователь отклонил приглашение."
-
-#: src/net/tmwa/guildhandler.cpp:446
-msgid "User is now part of your guild."
-msgstr "Пользователь теперь в Вашей гильдии."
-
-#: src/net/tmwa/guildhandler.cpp:451
-msgid "Your guild is full."
-msgstr "Ваша гильдия полна."
-
-#: src/net/tmwa/guildhandler.cpp:456
-msgid "Unknown guild invite response."
-msgstr "Неизвестный ответ на приглашение в гильдию."
-
-#: src/net/tmwa/guildhandler.cpp:478
-msgid "You have left the guild."
-msgstr "Вы покинули гильдию."
-
-#: src/net/tmwa/guildhandler.cpp:492
-#, c-format
-msgid "%s has left your guild."
-msgstr "%s покинул Вашу гильдию."
-
-#: src/net/tmwa/guildhandler.cpp:524
-msgid "You was kicked from guild."
-msgstr "Вы были кикнуты из гильдии."
-
-#: src/net/tmwa/guildhandler.cpp:538
-#, c-format
-msgid "%s has kicked from your guild."
-msgstr "%s был вышвырнут из Вашей гильдии."
-
-#: src/net/tmwa/gui/partytab.cpp:70
-msgid "/invite > Invite a player to your party"
-msgstr "/invite > Пригласить игрока в Вашу группу"
-
-#: src/net/tmwa/gui/partytab.cpp:71
-msgid "/leave > Leave the party you are in"
-msgstr "/leave > Покинуть текущую группу"
-
-#: src/net/tmwa/gui/partytab.cpp:72
-msgid "/kick > Kick some one from the party you are in"
-msgstr "/kick > Вышвырнуть кого-либо из Вашей текущей группы"
-
-#: src/net/tmwa/gui/partytab.cpp:73
-msgid "/item > Show/change party item sharing options"
-msgstr ""
-"/item > Показать/Скрыть текущее состояние распределения предметов в группе"
-
-#: src/net/tmwa/gui/partytab.cpp:74
-msgid "/exp > Show/change party experience sharing options"
-msgstr "/exp > Показать/Скрыть текущее состояние распределения опыта в группе"
-
-#: src/net/tmwa/gui/partytab.cpp:84
-msgid "This command invites <nick> to party with you."
-msgstr "Эта команда приглашает <имя персонажа> к вам в группу."
-
-#: src/net/tmwa/gui/partytab.cpp:91
-msgid "This command causes the player to leave the party."
-msgstr "Эта команда заставляет игрока покинуть группу"
-
-#: src/net/tmwa/gui/partytab.cpp:95
-msgid "Command: /item <policy>"
-msgstr "Команда: /item <политика разделения предметов>"
-
-#: src/net/tmwa/gui/partytab.cpp:97
-msgid "This command changes the party's item sharing policy."
-msgstr "Команда изменяет политику разделения предетов между ченами группы."
-
-#: src/net/tmwa/gui/partytab.cpp:98
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
-"\"0\", \"no\", \"false\" to disable item sharing."
-msgstr ""
-"<политикой> может быть \"1\", \"yes\", \"true\" для включения разделения или "
-"\"0\", \"no\", \"false\" -- для выключения."
-
-#: src/net/tmwa/gui/partytab.cpp:101
-msgid "Command: /item"
-msgstr "Команда: /item"
-
-#: src/net/tmwa/gui/partytab.cpp:102
-msgid "This command displays the party's current item sharing policy."
-msgstr "Отображает текущую политику разделения предметов между членами группы."
-
-#: src/net/tmwa/gui/partytab.cpp:107
-msgid "Command: /exp <policy>"
-msgstr "Команда: /exp <политика распределения опыта>"
-
-#: src/net/tmwa/gui/partytab.cpp:108
-msgid "This command changes the party's experience sharing policy."
-msgstr "Эта команда изменяет политику распределения опыта в группе."
-
-#: src/net/tmwa/gui/partytab.cpp:110
-msgid ""
-"<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
-"sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
-msgstr ""
-"<policy> может быть одним из \"1\", \"yes\", \"true\" - чтобы разрешить "
-"общий опыт, или \"0\", \"no\", \"false\" - чтобы запретить общий опыт"
-
-#: src/net/tmwa/gui/partytab.cpp:113
-msgid "Command: /exp"
-msgstr "Команда: /exp"
-
-#: src/net/tmwa/gui/partytab.cpp:114
-msgid "This command displays the party's current experience sharing policy."
-msgstr "Эта команда отображает текущую политику обмена опытом."
-
-#: src/net/tmwa/gui/partytab.cpp:148 src/net/tmwa/partyhandler.cpp:289
-msgid "Item sharing enabled."
-msgstr "Обмен предметами включен"
-
-#: src/net/tmwa/gui/partytab.cpp:151 src/net/tmwa/partyhandler.cpp:299
-msgid "Item sharing disabled."
-msgstr "Обмен предметами выключен"
-
-#: src/net/tmwa/gui/partytab.cpp:154 src/net/tmwa/partyhandler.cpp:309
-msgid "Item sharing not possible."
-msgstr "Обмен предметами невозможен."
-
-#: src/net/tmwa/gui/partytab.cpp:157
-msgid "Item sharing unknown."
-msgstr "Статус обмена предметами неизвестен."
-
-#: src/net/tmwa/gui/partytab.cpp:187 src/net/tmwa/partyhandler.cpp:251
-msgid "Experience sharing enabled."
-msgstr "Обмен опытом вклыючен."
-
-#: src/net/tmwa/gui/partytab.cpp:190 src/net/tmwa/partyhandler.cpp:261
-msgid "Experience sharing disabled."
-msgstr "Обмен опытом выкючен."
-
-#: src/net/tmwa/gui/partytab.cpp:193 src/net/tmwa/partyhandler.cpp:271
-msgid "Experience sharing not possible."
-msgstr "Обмен опытом невозможен."
-
-#: src/net/tmwa/gui/partytab.cpp:196
-msgid "Experience sharing unknown."
-msgstr "Политика распределения опыта неизвестна."
-
-#: src/net/tmwa/inventoryhandler.cpp:379
-msgid "Failed to use item."
-msgstr "Не удалось использовать предмет."
-
-#: src/net/tmwa/inventoryhandler.cpp:531
-msgid "Unable to equip."
-msgstr "Нельзя экипировать!"
-
-#: src/net/tmwa/loginhandler.cpp:93
-msgid "Account was not found. Please re-login."
-msgstr "Учетная запись не найдена. Попробуйте снова."
-
-#: src/net/tmwa/loginhandler.cpp:99
-msgid "New password too short."
-msgstr "Новый пароль слишком короткий."
-
-#: src/net/tmwa/loginhandler.cpp:165
-msgid "Unregistered ID."
-msgstr "Незарегистрированный ID"
-
-#: src/net/tmwa/loginhandler.cpp:168
-msgid "Wrong password."
-msgstr "Неверный пароль"
-
-#: src/net/tmwa/loginhandler.cpp:171
-msgid "Account expired."
-msgstr "Учетная запись просрочена."
-
-#: src/net/tmwa/loginhandler.cpp:174
-msgid "Rejected from server."
-msgstr "Получен отказ от сервера.."
-
-#: src/net/tmwa/loginhandler.cpp:177
-msgid ""
-"You have been permanently banned from the game. Please contact the GM team."
-msgstr "Вас навсегда забанили. Пожалуйста, свяжитесь с командой ГМ-ов."
-
-#: src/net/tmwa/loginhandler.cpp:181
-msgid "Client too old."
-msgstr "Клиент устарел"
-
-#: src/net/tmwa/loginhandler.cpp:184
-#, c-format
-msgid ""
-"You have been temporarily banned from the game until %s.\n"
-"Please contact the GM team via the forums."
-msgstr ""
-"Вас забанили до %s. Пожалуйста, свяжитесь с командой ГМ-ов через форум."
-
-#: src/net/tmwa/loginhandler.cpp:191
-msgid "Server overpopulated."
-msgstr "Сервер переполнен"
-
-#: src/net/tmwa/loginhandler.cpp:194
-msgid "This user name is already taken."
-msgstr "Это имя пользователя уже занято."
-
-#: src/net/tmwa/loginhandler.cpp:200
-msgid "Username permanently erased."
-msgstr "Пользователь удален"
 
 #: src/net/tmwa/network.cpp:152
 msgid "Empty address given to Network::connect()!"
@@ -5142,280 +4744,10 @@ msgstr "Не удалось найти хост \""
 msgid "Connection to server terminated. "
 msgstr "Подключение к серверу прервано."
 
-#: src/net/tmwa/partyhandler.cpp:86
-msgid "Could not create party."
-msgstr "Не удалось создать группу."
-
-#: src/net/tmwa/partyhandler.cpp:88
-msgid "Party successfully created."
-msgstr "Группа успешно создана."
-
-#: src/net/tmwa/partyhandler.cpp:143
-#, c-format
-msgid "%s has joined your party."
-msgstr "%s присоединился к группе."
-
-#: src/net/tmwa/partyhandler.cpp:179
-#, c-format
-msgid "%s is already a member of a party."
-msgstr "%s уже в Вашей группе."
-
-#: src/net/tmwa/partyhandler.cpp:184
-#, c-format
-msgid "%s refused your invitation."
-msgstr "%s отверг Ваше приглашение."
-
-#: src/net/tmwa/partyhandler.cpp:189
-#, c-format
-msgid "%s is now a member of your party."
-msgstr "%s теперь в Вашей группе."
-
-#: src/net/tmwa/partyhandler.cpp:194
-#, c-format
-msgid "%s can't join your party because party is full."
-msgstr "%s не может присоединиться к Вашей группе, т.к. группа переполнена."
-
-#: src/net/tmwa/partyhandler.cpp:199
-#, c-format
-msgid "QQQ Unknown invite response for %s."
-msgstr "QQQ Неизвестный ответ на приглашение для %s"
-
-#: src/net/tmwa/partyhandler.cpp:359
-msgid "You have left the party."
-msgstr "Вы покинули группу."
-
-#: src/net/tmwa/partyhandler.cpp:371
-#, c-format
-msgid "%s has left your party."
-msgstr "%s покинул Вашу группу."
-
-#: src/net/tmwa/partyhandler.cpp:447
-#, c-format
-msgid "An unknown member tried to say: %s"
-msgstr "Неизвестный участник попытался сказать: %s"
-
-#: src/net/tmwa/partyhandler.cpp:529
+#: src/net/tmwa/partyhandler.cpp:171
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s не в группе!"
-
-#: src/net/tmwa/playerhandler.cpp:109
-msgid "Insert coin to continue."
-msgstr "Опустите монетку для продолжения."
-
-#: src/net/tmwa/playerhandler.cpp:127
-msgid "You're not dead yet. You're just resting."
-msgstr "Вы не мертвы. Вы просто отдыхаете."
-
-#: src/net/tmwa/playerhandler.cpp:128
-msgid "You are no more."
-msgstr "Вас больше нет."
-
-#: src/net/tmwa/playerhandler.cpp:129
-msgid "You have ceased to be."
-msgstr "Вы перестали быть."
-
-#: src/net/tmwa/playerhandler.cpp:130
-msgid "You've expired and gone to meet your maker."
-msgstr "Ваше время истекло, пора встретиться с Создателем."
-
-#: src/net/tmwa/playerhandler.cpp:131
-msgid "You're a stiff."
-msgstr "Вы сдулись."
-
-#: src/net/tmwa/playerhandler.cpp:132
-msgid "Bereft of life, you rest in peace."
-msgstr "Лишенный жизни, покойся с миром."
-
-#: src/net/tmwa/playerhandler.cpp:133
-msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr "Если бы Вы не были нарисованными, Вы бы отправлись на тот свет"
-
-#: src/net/tmwa/playerhandler.cpp:134
-msgid "Your metabolic processes are now history."
-msgstr "Ваш обмен веществ стал историей."
-
-#: src/net/tmwa/playerhandler.cpp:135
-msgid "You're off the twig."
-msgstr "Вы упали с ветки."
-
-#: src/net/tmwa/playerhandler.cpp:136
-msgid "You've kicked the bucket."
-msgstr "Вы протянули ноги."
-
-#: src/net/tmwa/playerhandler.cpp:137
-msgid ""
-"You've shuffled off your mortal coil, run down the curtain and joined the "
-"bleedin' choir invisibile."
-msgstr ""
-"Вы затаскали свою смертную оболочку, сорвали занавес и незримо "
-"присоединились к кровоточащему хору..."
-
-#: src/net/tmwa/playerhandler.cpp:139
-msgid "You are an ex-player."
-msgstr "Вы не жилец."
-
-#: src/net/tmwa/playerhandler.cpp:140
-msgid "You're pining for the fjords."
-msgstr "Вас пришпиливают к фьордам."
-
-#: src/net/tmwa/playerhandler.cpp:342 src/net/tmwa/playerhandler.cpp:352
-#: src/net/tmwa/playerhandler.cpp:431
-msgid "Message"
-msgstr "Сообщение"
-
-#: src/net/tmwa/playerhandler.cpp:343
-msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
-msgstr ""
-"Вы несете груз больший, чем половина вашей грузоподъемности. Здоровье "
-"восстанавливаться не будет."
-
-#: src/net/tmwa/playerhandler.cpp:353
-msgid "You are carrying less than half your weight. You can regain health."
-msgstr ""
-"Вес предметов составляет менее половины допустимого. Теперь Вы можете "
-"восстанавливаться."
-
-#: src/net/tmwa/playerhandler.cpp:458
-#, c-format
-msgid "You picked up %s."
-msgstr "Вы получили %s."
-
-#: src/net/tmwa/playerhandler.cpp:464
-#, c-format
-msgid "You spent %s."
-msgstr "Вы потратили %s."
-
-#: src/net/tmwa/playerhandler.cpp:509
-msgid "Cannot raise skill!"
-msgstr "Не удалось увеличить навык!"
-
-#: src/net/tmwa/playerhandler.cpp:629
-msgid "Equip arrows first."
-msgstr "Для начала экипируйтесь стрелами!"
-
-#: src/net/tmwa/specialhandler.cpp:165
-msgid "Trade failed!"
-msgstr "Не удалось начать торговлю!"
-
-#: src/net/tmwa/specialhandler.cpp:168
-msgid "Emote failed!"
-msgstr "Не удалось использовать смайлик!"
-
-#: src/net/tmwa/specialhandler.cpp:171
-msgid "Sit failed!"
-msgstr "Не удалось присесть!"
-
-#: src/net/tmwa/specialhandler.cpp:174
-msgid "Chat creating failed!"
-msgstr "Не удалось создать чат!"
-
-#: src/net/tmwa/specialhandler.cpp:177
-msgid "Could not join party!"
-msgstr "Нельзя присоединиться к группе!"
-
-#: src/net/tmwa/specialhandler.cpp:180
-msgid "Cannot shout!"
-msgstr "Нельзя кричать!"
-
-#: src/net/tmwa/specialhandler.cpp:193
-msgid "You have not yet reached a high enough lvl!"
-msgstr "У Вас недостаточный уровень!"
-
-#: src/net/tmwa/specialhandler.cpp:197
-msgid "Insufficient HP!"
-msgstr "Недостаточно ОЖ!"
-
-#: src/net/tmwa/specialhandler.cpp:200
-msgid "Insufficient SP!"
-msgstr "Недостаточно Маны"
-
-#: src/net/tmwa/specialhandler.cpp:203
-msgid "You have no memos!"
-msgstr "У Вас нет записей!"
-
-#: src/net/tmwa/specialhandler.cpp:206
-msgid "You cannot do that right now!"
-msgstr "Вы не можете сделать это сейчас!"
-
-#: src/net/tmwa/specialhandler.cpp:209
-msgid "Seems you need more money... ;-)"
-msgstr "Похоже, Вам нужно боьше денег... ;-)"
-
-#: src/net/tmwa/specialhandler.cpp:212
-msgid "You cannot use this skill with that kind of weapon!"
-msgstr "Вы не можете использовать это умение с этим видом оружия!"
-
-#: src/net/tmwa/specialhandler.cpp:216
-msgid "You need another red gem!"
-msgstr "Вам нужен другой красный камень!"
-
-#: src/net/tmwa/specialhandler.cpp:219
-msgid "You need another blue gem!"
-msgstr "Вам нужен другой синий камень!"
-
-#: src/net/tmwa/specialhandler.cpp:222
-msgid "You're carrying to much to do this!"
-msgstr "Вы несёте слишком много, чтобы сделать это!"
-
-#: src/net/tmwa/specialhandler.cpp:225
-msgid "Huh? What's that?"
-msgstr "А? Что это?"
-
-#: src/net/tmwa/specialhandler.cpp:236
-msgid "Warp failed..."
-msgstr "Изменение не удалось..."
-
-#: src/net/tmwa/specialhandler.cpp:239
-msgid "Could not steal anything..."
-msgstr "Не удалось ничего украсть..."
-
-#: src/net/tmwa/specialhandler.cpp:242
-msgid "Poison had no effect..."
-msgstr "Яд не подействовал..."
-
-#: src/net/tmwa/tradehandler.cpp:148
-msgid "Trading isn't possible. Trade partner is too far away."
-msgstr "Торговля невозможна. Партнер по торговле слишком далеко."
-
-#: src/net/tmwa/tradehandler.cpp:152
-msgid "Trading isn't possible. Character doesn't exist."
-msgstr "Торговля невозможна. Такой персонаж не существует."
-
-#: src/net/tmwa/tradehandler.cpp:156
-msgid "Trade cancelled due to an unknown reason."
-msgstr "Торговля отменена по неизвестной причине."
-
-#: src/net/tmwa/tradehandler.cpp:164
-#, c-format
-msgid "Trade: You and %s"
-msgstr "Торговля: Вы и %s"
-
-#: src/net/tmwa/tradehandler.cpp:174
-#, c-format
-msgid "Trade with %s cancelled."
-msgstr "Торговля с %s отменена."
-
-#: src/net/tmwa/tradehandler.cpp:187
-msgid "Unhandled trade cancel packet."
-msgstr "Неизвестный сигнал завершения торговли."
-
-#: src/net/tmwa/tradehandler.cpp:250
-msgid "Failed adding item. Trade partner is over weighted."
-msgstr "Не удалось добавить предмет. Партнер по торговле перегружен."
-
-#: src/net/tmwa/tradehandler.cpp:255
-msgid "Failed adding item. Trade partner has no free slot."
-msgstr "Не удалось добавить предмет. У партнера по торговле кончилось место."
-
-#: src/net/tmwa/tradehandler.cpp:260
-msgid "Failed adding item. You can't trade this item."
-msgstr "Ошибка добавления предмета. Вы не можете торговать этим предметом."
-
-#: src/net/tmwa/tradehandler.cpp:264
-msgid "Failed adding item for unknown reason."
-msgstr "Не удалось добавить предмет по неизвестной причине."
 
 #: src/playerrelations.cpp:414
 msgid "Print '...'"
@@ -5433,31 +4765,33 @@ msgstr "Плавающий '...' пузырек"
 msgid "Floating bubble"
 msgstr "Плавающий пузырек"
 
-#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:245
+#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:248
 #: src/resources/monsterdb.cpp:84
 msgid "unnamed"
 msgstr "безымянный"
 
-#: src/resources/itemdb.cpp:62
+#: src/resources/itemdb.cpp:65
 #, c-format
 msgid "Attack %+d"
 msgstr "Атака %+d"
 
-#: src/resources/itemdb.cpp:63
+#: src/resources/itemdb.cpp:66
 #, c-format
 msgid "Defense %+d"
 msgstr "Защита %+d"
 
-#: src/resources/itemdb.cpp:64
+#: src/resources/itemdb.cpp:67
 #, c-format
 msgid "HP %+d"
 msgstr "HP %+d"
 
-#: src/resources/itemdb.cpp:65
+#: src/resources/itemdb.cpp:68
 #, c-format
 msgid "MP %+d"
 msgstr "Мана %+d"
 
-#: src/resources/itemdb.cpp:168
+#: src/resources/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
+
+

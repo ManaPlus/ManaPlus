@@ -65,6 +65,9 @@ class Game
         static Game *instance()
         { return mInstance; }
 
+        static void clearInstance()
+        { mInstance = 0; }
+
         /**
          * This method takes the game a small step further. It is called 100
          * times per second.
@@ -86,6 +89,13 @@ class Game
 
         void setValidSpeed();
 
+        void adjustPerfomance();
+
+        void resetAdjustLevel();
+
+        void setAdjustLevel(int n)
+        { mAdjustLevel = n; }
+
     private:
 
         void updateHistory(SDL_Event &event);
@@ -104,6 +114,9 @@ class Game
         bool mValidSpeed;
         int mLastAction;
         LastKey mLastKeys[MAX_LASTKEYS];
+        unsigned mNextAdjustTime;
+        int mAdjustLevel;
+        bool mAdjustPerfomance;
 
         static Game *mInstance;
 };

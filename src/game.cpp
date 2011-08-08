@@ -162,6 +162,8 @@ ChatTab *debugChatTab = NULL;
 TradeTab *tradeChatTab = NULL;
 BattleTab *battleChatTab = NULL;
 
+const unsigned adjustDelay = 10;
+
 /**
  * Initialize every game sub-engines in the right order
  */
@@ -331,8 +333,12 @@ Game *Game::mInstance = 0;
 
 Game::Game():
     mLastTarget(ActorSprite::UNKNOWN),
-    mCurrentMap(0), mMapName(""),
-    mValidSpeed(true), mLastAction(0)
+    mCurrentMap(0),
+    mMapName(""),
+    mValidSpeed(true),
+    mLastAction(0),
+    mNextAdjustTime(cur_time + adjustDelay),
+    mAdjustLevel(0)
 {
     spellManager = new SpellManager;
     spellShortcut = new SpellShortcut;
@@ -341,6 +347,8 @@ Game::Game():
     mInstance = this;
 
     disconnectedDialog = NULL;
+
+    mAdjustPerfomance = config.getBoolValue("adjustPerfomance");
 
     // Create the viewport
     viewport = new Viewport;
@@ -391,6 +399,9 @@ Game::~Game()
 {
     config.write();
     serverConfig.write();
+
+    resetAdjustLevel();
+
 //    delete mWindowMenu;
 //    mWindowMenu = 0;
 
@@ -504,6 +515,7 @@ void Game::logic()
     // Handle network stuff
     if (!Net::getGameHandler()->isConnected())
     {
+
         if (Client::getState() == STATE_CHANGE_MAP)
             return; // Not a problem here
 
@@ -530,12 +542,125 @@ void Game::logic()
     }
     else
     {
+        if (mAdjustPerfomance)
+            adjustPerfomance();
         if (disconnectedDialog)
         {
             disconnectedDialog->scheduleDelete();
             disconnectedDialog = 0;
         }
     }
+}
+
+void Game::adjustPerfomance()
+{
+    if (mNextAdjustTime <= adjustDelay)
+    {
+        mNextAdjustTime = cur_time + adjustDelay;
+    }
+    else if (mNextAdjustTime < cur_time)
+    {
+        mNextAdjustTime = cur_time + adjustDelay;
+
+        if (mAdjustLevel > 3 || !player_node || player_node->getHalfAway()
+            || player_node->getAway())
+        {
+            return;
+        }
+
+        int maxFps = config.getIntValue("fpslimit");
+        if (!maxFps)
+            maxFps = 30;
+        else if (maxFps < 10)
+            return;
+
+        if (fps < maxFps - 10)
+        {
+            mAdjustLevel ++;
+            switch (mAdjustLevel)
+            {
+                case 1:
+                {
+                    if (config.getBoolValue("beingopacity"))
+                    {
+                        config.setValue("beingopacity", false);
+                        config.setSilent("beingopacity", true);
+                        if (localChatTab)
+                        {
+                            localChatTab->chatLog("Auto disable Show "
+                                "beings transparency", BY_SERVER);
+                        }
+                    }
+                    else
+                    {
+                        mNextAdjustTime = cur_time + 1;
+                    }
+                    break;
+                }
+                case 2:
+                    if (Particle::emitterSkip < 4)
+                    {
+                        Particle::emitterSkip = 4;
+//                        config.setValue("particleEmitterSkip", 3);
+                        if (localChatTab)
+                        {
+                            localChatTab->chatLog("Auto lower Particle "
+                                "effects", BY_SERVER);
+                        }
+                    }
+                    else
+                    {
+                        mNextAdjustTime = cur_time + 1;
+                    }
+                    break;
+                case 3:
+                    if (!config.getBoolValue("alphaCache"))
+                    {
+                        config.setValue("alphaCache", true);
+                        config.setSilent("alphaCache", false);
+                        if (localChatTab)
+                        {
+                            localChatTab->chatLog("Auto enable opacity cache",
+                                BY_SERVER);
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+void Game::resetAdjustLevel()
+{
+    if (!mAdjustPerfomance)
+        return;
+
+    mNextAdjustTime = cur_time + adjustDelay;
+    switch (mAdjustLevel)
+    {
+        case 1:
+            config.setValue("beingopacity",
+                config.getBoolValue("beingopacity"));
+            break;
+        case 2:
+            config.setValue("beingopacity",
+                config.getBoolValue("beingopacity"));
+            Particle::emitterSkip = config.getIntValue(
+                "particleEmitterSkip") + 1;
+            break;
+        default:
+        case 3:
+            config.setValue("beingopacity",
+                config.getBoolValue("beingopacity"));
+            Particle::emitterSkip = config.getIntValue(
+                "particleEmitterSkip") + 1;
+            config.setValue("alphaCache",
+                config.getBoolValue("alphaCache"));
+            break;
+    }
+    mAdjustLevel = 0;
 }
 
 /**
@@ -1414,6 +1539,8 @@ void Game::handleInput()
  */
 void Game::changeMap(const std::string &mapPath)
 {
+    resetAdjustLevel();
+
     // Clean up floor items, beings and particles
     actorSpriteManager->clear();
 

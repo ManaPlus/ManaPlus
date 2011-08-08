@@ -66,6 +66,11 @@ void Configuration::setValue(const std::string &key, const std::string &value)
     }
 }
 
+void Configuration::setSilent(const std::string &key, const std::string &value)
+{
+    ConfigurationObject::setValue(key, value);
+}
+
 std::string ConfigurationObject::getValue(const std::string &key,
                                           const std::string &deflt) const
 {
