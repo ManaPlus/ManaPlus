@@ -234,6 +234,8 @@
 		<Unit filename="src\gui\setup_keyboard.h" />
 		<Unit filename="src\gui\setup_other.cpp" />
 		<Unit filename="src\gui\setup_other.h" />
+		<Unit filename="src\gui\setup_perfomance.cpp" />
+		<Unit filename="src\gui\setup_perfomance.h" />
 		<Unit filename="src\gui\setup_players.cpp" />
 		<Unit filename="src\gui\setup_players.h" />
 		<Unit filename="src\gui\setup_theme.cpp" />

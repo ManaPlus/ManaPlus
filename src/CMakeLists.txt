@@ -315,6 +315,8 @@ SET(SRCS
     gui/setup_chat.h
     gui/setup_keyboard.cpp
     gui/setup_keyboard.h
+    gui/setup_perfomance.cpp
+    gui/setup_perfomance.h
     gui/setup_players.cpp
     gui/setup_players.h
     gui/setup_video.cpp

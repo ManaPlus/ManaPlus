@@ -27,14 +27,15 @@
 #include "main.h"
 
 #include "gui/setup_audio.h"
+#include "gui/setup_chat.h"
 #include "gui/setup_colors.h"
 #include "gui/setup_joystick.h"
 #include "gui/setup_other.h"
 #include "gui/setup_theme.h"
 #include "gui/setup_keyboard.h"
+#include "gui/setup_perfomance.h"
 #include "gui/setup_players.h"
 #include "gui/setup_video.h"
-#include "gui/setup_chat.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -88,6 +89,7 @@ Setup::Setup():
 
     mTabs.push_back(new Setup_Video);
     mTabs.push_back(new Setup_Audio);
+    mTabs.push_back(new Setup_Perfomance);
     mTabs.push_back(new Setup_Joystick);
     mTabs.push_back(new Setup_Keyboard);
     mTabs.push_back(new Setup_Colors);
