@@ -278,6 +278,7 @@ Setup_Video::Setup_Video():
     mParticleEffectsEnabled(config.getBoolValue("particleeffects")),
     mPickupChatEnabled(config.getBoolValue("showpickupchat")),
     mPickupParticleEnabled(config.getBoolValue("showpickupparticle")),
+    mOpacity(config.getFloatValue("guialpha")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
     mSpeechMode(static_cast<Being::Speech>(
