@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <reslayer@mail.ru>, 2011.
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
@@ -10,39 +10,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-08 04:26+0300\n"
+"POT-Creation-Date: 2011-08-10 01:11+0300\n"
 "PO-Revision-Date: 2011-08-08 01:31+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/ru/)\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
+"ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: src/actorspritemanager.cpp:1034
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
-#: src/being.cpp:541
+#: src/being.cpp:542
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being.cpp:541
+#: src/being.cpp:542
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1513
+#: src/being.cpp:1514
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1518
+#: src/being.cpp:1519
 msgid "I"
 msgstr "Б"
 
-#: src/client.cpp:825 src/gui/setup.cpp:51 src/gui/windowmenu.cpp:100
+#: src/client.cpp:825 src/gui/setup.cpp:53 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Настройка"
 
@@ -74,7 +76,8 @@ msgstr "Смена игрового сервера"
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
-#: src/gui/unregisterdialog.cpp:137 src/net/manaserv/charhandler.cpp:184
+#: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:154
+#: src/net/ea/charserverhandler.cpp:172 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Ошибка"
@@ -138,18 +141,18 @@ msgstr "Нельзя отправлять пустые сообщения!"
 #: src/commandhandler.cpp:409
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
-"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка"
-" уже создана, или этот игрок Вы сами."
+"Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
+"уже создана, или этот игрок Вы сами."
 
 #: src/commandhandler.cpp:429
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Запрос на присоединение к каналу %s."
 
-#: src/commandhandler.cpp:445
+#: src/commandhandler.cpp:445 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "Не указано название группы"
 
@@ -301,7 +304,9 @@ msgstr "Удаленных изображений:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или \"0\"."
+msgstr ""
+"/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
+"\"0\"."
 
 #: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -364,35 +369,35 @@ msgstr "PvP ранг: %d"
 msgid "Comment: %s"
 msgstr "Комментарий: %s"
 
-#: src/gui/botcheckerwindow.cpp:265
+#: src/gui/botcheckerwindow.cpp:266
 msgid "Bot Checker"
 msgstr "Окно детектора ботов"
 
-#: src/gui/botcheckerwindow.cpp:295 src/gui/setup_players.cpp:64
+#: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:64
 msgid "Name"
 msgstr "Имя"
 
-#: src/gui/botcheckerwindow.cpp:296 src/gui/popupmenu.cpp:130
+#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:130
 #: src/gui/popupmenu.cpp:286 src/gui/popupmenu.cpp:604
 #: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:266
 msgid "Attack"
 msgstr "Атака"
 
-#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:275
+#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:275
 #: src/keyboardconfig.cpp:62
 msgid "Talk"
 msgstr "Разговор"
 
-#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:241
+#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:241
 #: src/gui/popupmenu.cpp:280 src/gui/popupmenu.cpp:661
 msgid "Move"
 msgstr "Движение"
 
-#: src/gui/botcheckerwindow.cpp:299
+#: src/gui/botcheckerwindow.cpp:300
 msgid "Result"
 msgstr "Результат"
 
-#: src/gui/botcheckerwindow.cpp:309 src/gui/npcdialog.cpp:123
+#: src/gui/botcheckerwindow.cpp:310 src/gui/npcdialog.cpp:123
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -461,8 +466,8 @@ msgstr "Продать"
 #: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
 #: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:68
-#: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:237
+#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:70
+#: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:238
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updatewindow.cpp:157
 msgid "Cancel"
@@ -631,8 +636,8 @@ msgid "Enter password:"
 msgstr "Введите пароль:"
 
 #: src/gui/charselectdialog.cpp:409 src/gui/serverdialog.cpp:289
-#: src/gui/setup_players.cpp:251 src/gui/shopwindow.cpp:120
-#: src/gui/shopwindow.cpp:123 src/gui/textcommandeditor.cpp:240
+#: src/gui/setup_relations.cpp:243 src/gui/shopwindow.cpp:120
+#: src/gui/shopwindow.cpp:123 src/gui/textcommandeditor.cpp:241
 msgid "Delete"
 msgstr "Удалить"
 
@@ -706,10 +711,10 @@ msgid "rainbow 3"
 msgstr "радуга 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
-#: src/gui/logindialog.cpp:78 src/gui/setup_players.cpp:220
-#: src/gui/setup_theme.cpp:71 src/gui/setup_theme.cpp:125
-#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:101
-#: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:159
+#: src/gui/logindialog.cpp:78 src/gui/setup_relations.cpp:220
+#: src/gui/setup_theme.cpp:72 src/gui/setup_theme.cpp:126
+#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:102
+#: src/gui/textcommandeditor.cpp:141 src/gui/textcommandeditor.cpp:160
 msgid "???"
 msgstr "???"
 
@@ -900,7 +905,7 @@ msgstr "Следующий >"
 msgid "Auto open this window"
 msgstr "Автоматически открывать это окно"
 
-#: src/gui/editdialog.cpp:46 src/gui/itemamountwindow.cpp:208
+#: src/gui/editdialog.cpp:47 src/gui/itemamountwindow.cpp:208
 #: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "ОК"
@@ -984,7 +989,7 @@ msgstr "Вес:"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
 #: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:69
+#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:71
 msgid "Store"
 msgstr "Сохранить"
 
@@ -1043,55 +1048,55 @@ msgstr ","
 msgid "Weight: %s"
 msgstr "Вес: %s"
 
-#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:69
+#: src/gui/killstats.cpp:46 src/gui/windowmenu.cpp:69
 msgid "Kill stats"
 msgstr "Окно статистики атак"
 
-#: src/gui/killstats.cpp:63
+#: src/gui/killstats.cpp:64
 msgid "Reset stats"
 msgstr "Сбросить стат."
 
-#: src/gui/killstats.cpp:64
+#: src/gui/killstats.cpp:65
 msgid "Reset timer"
 msgstr "Сбросить таймер"
 
-#: src/gui/killstats.cpp:68 src/gui/killstats.cpp:204
+#: src/gui/killstats.cpp:69 src/gui/killstats.cpp:205
 #, c-format
 msgid "Level: %d at %f%%"
 msgstr "Уровень: %d на %f%%"
 
-#: src/gui/killstats.cpp:72 src/gui/killstats.cpp:209
+#: src/gui/killstats.cpp:73 src/gui/killstats.cpp:210
 #, c-format
 msgid "Exp: %d/%d Left: %d"
 msgstr "Опыт: %d/%d Осталось: %d"
 
-#: src/gui/killstats.cpp:75 src/gui/killstats.cpp:215
-#: src/gui/killstats.cpp:224
+#: src/gui/killstats.cpp:76 src/gui/killstats.cpp:216
+#: src/gui/killstats.cpp:225
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
 msgstr "1%% = %d опыта, среднее кол-во мобов для 1%%: %s"
 
-#: src/gui/killstats.cpp:78 src/gui/killstats.cpp:141
-#: src/gui/killstats.cpp:233
+#: src/gui/killstats.cpp:79 src/gui/killstats.cpp:142
+#: src/gui/killstats.cpp:234
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr "Убийств: %s, опыта: %s"
 
-#: src/gui/killstats.cpp:80 src/gui/killstats.cpp:143
-#: src/gui/killstats.cpp:219 src/gui/killstats.cpp:229
+#: src/gui/killstats.cpp:81 src/gui/killstats.cpp:144
+#: src/gui/killstats.cpp:220 src/gui/killstats.cpp:230
 #, c-format
 msgid "Avg Exp: %s, No. of avg mob to next level: %s"
 msgstr "Средний опыт: %s, среднее кол-во мобов до след. уровня: %s"
 
-#: src/gui/killstats.cpp:81 src/gui/killstats.cpp:161
-#: src/gui/killstats.cpp:236
+#: src/gui/killstats.cpp:82 src/gui/killstats.cpp:162
+#: src/gui/killstats.cpp:237
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr "Убийств в минуту: %s, Опыта в минуту: %s"
 
-#: src/gui/killstats.cpp:83 src/gui/killstats.cpp:88 src/gui/killstats.cpp:93
-#: src/gui/killstats.cpp:288 src/gui/killstats.cpp:304
-#: src/gui/killstats.cpp:322
+#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:89 src/gui/killstats.cpp:94
+#: src/gui/killstats.cpp:289 src/gui/killstats.cpp:305
+#: src/gui/killstats.cpp:323
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
@@ -1099,7 +1104,7 @@ msgstr[0] "Опыт за %d мин.: %s"
 msgstr[1] "Опыт за %d мин.: %s"
 msgstr[2] "Опыт за %d мин.: %s"
 
-#: src/gui/killstats.cpp:86 src/gui/killstats.cpp:91 src/gui/killstats.cpp:96
+#: src/gui/killstats.cpp:87 src/gui/killstats.cpp:92 src/gui/killstats.cpp:97
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
@@ -1107,29 +1112,29 @@ msgstr[0] "Время до следующего уровня в мин. %d: %s"
 msgstr[1] "Время до следующего уровня в мин. %d: %s"
 msgstr[2] "Время до следующего уровня в мин. %d: %s"
 
-#: src/gui/killstats.cpp:99 src/gui/killstats.cpp:240
+#: src/gui/killstats.cpp:100 src/gui/killstats.cpp:241
 msgid "Last kill exp:"
 msgstr "Опыт за последнее убийство:"
 
-#: src/gui/killstats.cpp:101 src/gui/killstats.cpp:354
-#: src/gui/killstats.cpp:360 src/gui/killstats.cpp:366
-#: src/gui/killstats.cpp:371
+#: src/gui/killstats.cpp:102 src/gui/killstats.cpp:355
+#: src/gui/killstats.cpp:361 src/gui/killstats.cpp:367
+#: src/gui/killstats.cpp:372
 msgid "Time before jacko spawn:"
 msgstr "Время до появления jacko:"
 
-#: src/gui/killstats.cpp:293 src/gui/killstats.cpp:300
-#: src/gui/killstats.cpp:310 src/gui/killstats.cpp:317
-#: src/gui/killstats.cpp:329 src/gui/killstats.cpp:336
+#: src/gui/killstats.cpp:294 src/gui/killstats.cpp:301
+#: src/gui/killstats.cpp:311 src/gui/killstats.cpp:318
+#: src/gui/killstats.cpp:330 src/gui/killstats.cpp:337
 #, c-format
 msgid "  Time for next level: %s"
 msgstr "  Время до следующего уровня: %s"
 
-#: src/gui/killstats.cpp:360
+#: src/gui/killstats.cpp:361
 #, c-format
 msgid "%s %d?"
 msgstr "%s %d?"
 
-#: src/gui/killstats.cpp:366
+#: src/gui/killstats.cpp:367
 msgid "jacko spawning"
 msgstr "jacko появляется"
 
@@ -1793,34 +1798,38 @@ msgid "Tabs"
 msgstr "Страницы"
 
 #: src/gui/setup_chat.cpp:96
+msgid "Put all whispers in tabs"
+msgstr "Личные сообщения во вкладках"
+
+#: src/gui/setup_chat.cpp:99
 msgid "Log magic messages in debug tab"
 msgstr "Оставлять сообщения магии на вкладке отладки"
 
-#: src/gui/setup_chat.cpp:99
+#: src/gui/setup_chat.cpp:102
 msgid "Show server messages in debug tab"
 msgstr "Показывать сообщения сервера на вкладке отладки"
 
-#: src/gui/setup_chat.cpp:102
+#: src/gui/setup_chat.cpp:105
 msgid "Enable trade tab"
 msgstr "Включить вкладки торговли"
 
-#: src/gui/setup_chat.cpp:105
+#: src/gui/setup_chat.cpp:108
 msgid "Enable battle tab"
 msgstr "Включить вкладку боя"
 
-#: src/gui/setup_chat.cpp:108
+#: src/gui/setup_chat.cpp:111
 msgid "Show battle events"
 msgstr "Показать сообщения боя"
 
-#: src/gui/setup_chat.cpp:111
+#: src/gui/setup_chat.cpp:114
 msgid "Resize chat tabs if need"
 msgstr "Подгонять размер чата"
 
-#: src/gui/setup_chat.cpp:115
+#: src/gui/setup_chat.cpp:118
 msgid "Time"
 msgstr "Время"
 
-#: src/gui/setup_chat.cpp:117
+#: src/gui/setup_chat.cpp:120
 msgid "Use local time"
 msgstr "Использовать местное время"
 
@@ -1871,16 +1880,15 @@ msgstr "Синий:"
 msgid "Alpha:"
 msgstr "Прозрачность:"
 
-#: src/gui/setup.cpp:67
+#: src/gui/setup.cpp:69
 msgid "Apply"
 msgstr "Применить"
 
-#: src/gui/setup.cpp:70
+#: src/gui/setup.cpp:72
 msgid "Reset Windows"
 msgstr "Сбросить расположение окон"
 
 #: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
-#: src/gui/setup_players.cpp:334
 msgid "Edit"
 msgstr "Изменить"
 
@@ -2088,148 +2096,203 @@ msgstr "Спрятать картинку счита"
 msgid "Show background"
 msgstr "Показать фон"
 
-#: src/gui/setup_players.cpp:65
-msgid "Relation"
-msgstr "Отношение"
+#: src/gui/setup_perfomance.cpp:48
+msgid "Perfomance"
+msgstr ""
 
-#: src/gui/setup_players.cpp:70
-msgid "Neutral"
-msgstr "Нейтральное"
+#: src/gui/setup_perfomance.cpp:55
+msgid "Better perfomance (enable for better perfomance)"
+msgstr ""
 
-#: src/gui/setup_players.cpp:71
-msgid "Friend"
-msgstr "Друг"
+#: src/gui/setup_perfomance.cpp:58
+msgid "Auto adjust perfomance"
+msgstr "Автоматически подстраивать производительность"
 
-#: src/gui/setup_players.cpp:72
-msgid "Disregarded"
-msgstr "Пренебрегаемый"
+#: src/gui/setup_perfomance.cpp:61
+msgid "Show beings transparency"
+msgstr "Отображать прозрачность на персонажах и монстрах"
 
-#: src/gui/setup_players.cpp:73
-msgid "Ignored"
-msgstr "Игнорировано"
+#: src/gui/setup_perfomance.cpp:64
+msgid "Hw acceleration"
+msgstr "Аппаратное ускорение"
 
-#: src/gui/setup_players.cpp:74
-msgid "Erased"
-msgstr "Стерт"
+#: src/gui/setup_perfomance.cpp:67
+msgid "Enable opacity cache (Software, can use many memory)"
+msgstr ""
 
-#: src/gui/setup_players.cpp:247
-msgid "Allow trading"
-msgstr "Разрешить торговлю"
+#: src/gui/setup_perfomance.cpp:70
+#, fuzzy
+msgid "Enable map reduce (Software)"
+msgstr "Включить режим сжатия карты"
 
-#: src/gui/setup_players.cpp:249
-msgid "Allow whispers"
-msgstr "Разрешить шептание"
+#: src/gui/setup_perfomance.cpp:73
+msgid "Better quality (disable for better perfomance)"
+msgstr ""
 
-#: src/gui/setup_players.cpp:252
-msgid "Old"
-msgstr "Старые"
+#: src/gui/setup_perfomance.cpp:76
+msgid "Enable alpha channel fix (Software, can be very slow)"
+msgstr ""
 
-#: src/gui/setup_players.cpp:254
-msgid "Put all whispers in tabs"
-msgstr "Личные сообщения во вкладках"
+#: src/gui/setup_perfomance.cpp:80
+#, fuzzy
+msgid "Enable reorder sprites."
+msgstr "Включить серверную атаку"
 
-#: src/gui/setup_players.cpp:257
-msgid "Show gender"
-msgstr "Показать пол"
+#: src/gui/setup_perfomance.cpp:83
+msgid "Small memory (enable for lower memory usage)"
+msgstr ""
 
-#: src/gui/setup_players.cpp:267
+#: src/gui/setup_perfomance.cpp:86
+msgid "Disable advanced beings caching (Software)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:89
+msgid "Disable beings caching (Software)"
+msgstr ""
+
+#: src/gui/setup_players.cpp:48
 msgid "Players"
 msgstr "Игроки"
 
-#: src/gui/setup_players.cpp:292
-msgid "When ignoring:"
-msgstr "Когда игнорируется:"
+#: src/gui/setup_players.cpp:54
+msgid "Show gender"
+msgstr "Показать пол"
 
-#: src/gui/setup_players.cpp:315
+#: src/gui/setup_players.cpp:57
 msgid "Show level"
 msgstr "Показать уровень"
 
-#: src/gui/setup_players.cpp:319
+#: src/gui/setup_players.cpp:60
 msgid "Show own name"
 msgstr "Показать свое имя"
 
-#: src/gui/setup_players.cpp:323
+#: src/gui/setup_players.cpp:63
 msgid "Target dead players"
 msgstr "Наводить фокус на мертвых игроков"
 
-#: src/gui/setup_players.cpp:327
-msgid "Secure trades"
-msgstr "Защитить торговлю"
-
-#: src/gui/setup_players.cpp:331 src/gui/setup_players.cpp:523
-msgid "Unsecure chars in names"
-msgstr "Небезопасные символы"
-
-#: src/gui/setup_players.cpp:336
+#: src/gui/setup_players.cpp:66
 msgid "Visible names"
 msgstr "Видимые имена"
 
-#: src/gui/setup_players.cpp:341
+#: src/gui/setup_players.cpp:69
+msgid "Secure trades"
+msgstr "Защитить торговлю"
+
+#: src/gui/setup_players.cpp:72
+msgid "Unsecure chars in names"
+msgstr "Небезопасные символы"
+
+#: src/gui/setup_players.cpp:75
 msgid "Show statuses"
 msgstr "Показывать статусы"
 
-#: src/gui/setup_theme.cpp:105
+#: src/gui/setup_relations.cpp:65
+msgid "Relation"
+msgstr "Отношение"
+
+#: src/gui/setup_relations.cpp:70
+msgid "Neutral"
+msgstr "Нейтральное"
+
+#: src/gui/setup_relations.cpp:71
+msgid "Friend"
+msgstr "Друг"
+
+#: src/gui/setup_relations.cpp:72
+msgid "Disregarded"
+msgstr "Пренебрегаемый"
+
+#: src/gui/setup_relations.cpp:73
+msgid "Ignored"
+msgstr "Игнорировано"
+
+#: src/gui/setup_relations.cpp:74
+msgid "Erased"
+msgstr "Стерт"
+
+#: src/gui/setup_relations.cpp:239
+msgid "Allow trading"
+msgstr "Разрешить торговлю"
+
+#: src/gui/setup_relations.cpp:241
+msgid "Allow whispers"
+msgstr "Разрешить шептание"
+
+#: src/gui/setup_relations.cpp:244
+msgid "Old"
+msgstr "Старые"
+
+#: src/gui/setup_relations.cpp:246
+#, fuzzy
+msgid "Relations"
+msgstr "Отношение"
+
+#: src/gui/setup_relations.cpp:271
+msgid "When ignoring:"
+msgstr "Когда игнорируется:"
+
+#: src/gui/setup_theme.cpp:106
 msgid "Tiny (10)"
 msgstr "Маленький (10)"
 
-#: src/gui/setup_theme.cpp:106
+#: src/gui/setup_theme.cpp:107
 msgid "Small (11)"
 msgstr "Маленький (11)"
 
-#: src/gui/setup_theme.cpp:107
+#: src/gui/setup_theme.cpp:108
 msgid "Medium (12)"
 msgstr "Средний (12)"
 
-#: src/gui/setup_theme.cpp:108
+#: src/gui/setup_theme.cpp:109
 msgid "Large (13)"
 msgstr "Большой (13)"
 
-#: src/gui/setup_theme.cpp:109
+#: src/gui/setup_theme.cpp:110
 msgid "Big (14)"
 msgstr "Боьшой (14)"
 
-#: src/gui/setup_theme.cpp:110
+#: src/gui/setup_theme.cpp:111
 msgid "Huge (15)"
 msgstr "Огромный (15)"
 
-#: src/gui/setup_theme.cpp:140
+#: src/gui/setup_theme.cpp:141
 msgid "Theme"
 msgstr "Тема"
 
-#: src/gui/setup_theme.cpp:142
+#: src/gui/setup_theme.cpp:143
 msgid "Gui theme"
 msgstr "Тема интерфейса"
 
-#: src/gui/setup_theme.cpp:143
+#: src/gui/setup_theme.cpp:144
 msgid "Main Font"
 msgstr "Основной шрифт"
 
-#: src/gui/setup_theme.cpp:144
+#: src/gui/setup_theme.cpp:145
 msgid "Bold font"
 msgstr "Жирный шрифт"
 
-#: src/gui/setup_theme.cpp:145
+#: src/gui/setup_theme.cpp:146
 msgid "Particle font"
 msgstr "Шрифт частиц"
 
-#: src/gui/setup_theme.cpp:146
+#: src/gui/setup_theme.cpp:147
 msgid "Help font"
 msgstr "Шрифт помощи"
 
-#: src/gui/setup_theme.cpp:147
+#: src/gui/setup_theme.cpp:148
 msgid "Secure font"
 msgstr "Безопасный шрифт"
 
-#: src/gui/setup_theme.cpp:175
+#: src/gui/setup_theme.cpp:176
 msgid "Font size"
 msgstr "Размер шрифта"
 
-#: src/gui/setup_theme.cpp:281
+#: src/gui/setup_theme.cpp:282
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:282 src/gui/setup_video.cpp:670
-#: src/gui/setup_video.cpp:675
+#: src/gui/setup_theme.cpp:283 src/gui/setup_video.cpp:619
+#: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
@@ -2281,140 +2344,120 @@ msgstr "средне"
 msgid "max"
 msgstr "макс."
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:288
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:294
-msgid "Hw acceleration"
-msgstr "Аппаратное ускорение"
-
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:289
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:291
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:293
 msgid "Show pickup notification"
 msgstr "Показать уведомление о подборе предмета"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:295
 msgid "in chat"
 msgstr "в чате"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:303
+#: src/gui/setup_video.cpp:297
 msgid "as particle"
 msgstr "как частицу"
 
-#: src/gui/setup_video.cpp:305
-msgid "Enable opacity cache"
-msgstr "Включить кеш прозрачности"
-
-#: src/gui/setup_video.cpp:306
-msgid "Enable map reduce"
-msgstr "Включить режим сжатия карты"
-
-#: src/gui/setup_video.cpp:308
-msgid "Auto adjust perfomance"
-msgstr "Автоматически подстраивать производительность"
-
-#: src/gui/setup_video.cpp:310
-msgid "Show beings transparency"
-msgstr "Отображать прозрачность на персонажах и монстрах"
-
-#: src/gui/setup_video.cpp:315
+#: src/gui/setup_video.cpp:302
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:319 src/gui/setup_video.cpp:356
-#: src/gui/setup_video.cpp:607 src/gui/setup_video.cpp:760
+#: src/gui/setup_video.cpp:306 src/gui/setup_video.cpp:341
+#: src/gui/setup_video.cpp:562 src/gui/setup_video.cpp:709
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:315
 msgid "Video"
 msgstr "Видео"
 
-#: src/gui/setup_video.cpp:334
+#: src/gui/setup_video.cpp:321
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:335
+#: src/gui/setup_video.cpp:322
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:336
+#: src/gui/setup_video.cpp:323
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:337
+#: src/gui/setup_video.cpp:324
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:354 src/gui/setup_video.cpp:357
-#: src/gui/setup_video.cpp:606 src/gui/setup_video.cpp:747
-#: src/gui/setup_video.cpp:758
+#: src/gui/setup_video.cpp:339 src/gui/setup_video.cpp:342
+#: src/gui/setup_video.cpp:561 src/gui/setup_video.cpp:696
+#: src/gui/setup_video.cpp:707
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:511
+#: src/gui/setup_video.cpp:484
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
-"Не удалось переключиться в оконный режим. Восстановить старый режим также не"
-" удалось!"
+"Не удалось переключиться в оконный режим. Восстановить старый режим также не "
+"удалось!"
 
-#: src/gui/setup_video.cpp:517
+#: src/gui/setup_video.cpp:490
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:528
+#: src/gui/setup_video.cpp:501
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:529
+#: src/gui/setup_video.cpp:502
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:541
+#: src/gui/setup_video.cpp:514
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:542
+#: src/gui/setup_video.cpp:515
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:653
+#: src/gui/setup_video.cpp:602
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:654
+#: src/gui/setup_video.cpp:603
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:669 src/gui/setup_video.cpp:674
+#: src/gui/setup_video.cpp:618 src/gui/setup_video.cpp:623
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:672
+#: src/gui/setup_video.cpp:621
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:705
+#: src/gui/setup_video.cpp:654
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:706
+#: src/gui/setup_video.cpp:655
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 
@@ -2443,7 +2486,8 @@ msgstr "Анонс"
 msgid "Show links in announce"
 msgstr "Показывать ссылки"
 
-#: src/gui/shopwindow.cpp:723 src/net/manaserv/tradehandler.cpp:127
+#: src/gui/shopwindow.cpp:723 src/net/ea/tradehandler.cpp:106
+#: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
 msgstr "Запрос на Торговлю"
 
@@ -2485,7 +2529,7 @@ msgstr "Уровень: %d"
 msgid "Lvl: %d (%+d)"
 msgstr "Уровень: %d (%+d)"
 
-#: src/gui/socialwindow.cpp:117
+#: src/gui/socialwindow.cpp:117 src/net/ea/gui/guildtab.cpp:52
 msgid "Guild"
 msgstr "Гильдия"
 
@@ -2517,7 +2561,7 @@ msgstr "Покинуть Гильдию?"
 msgid "Are you sure you want to leave guild %s?"
 msgstr "Вы действительно хотите выйти из гильдии %s?"
 
-#: src/gui/socialwindow.cpp:215
+#: src/gui/socialwindow.cpp:215 src/net/ea/gui/partytab.cpp:50
 msgid "Party"
 msgstr "Группа"
 
@@ -2679,243 +2723,243 @@ msgstr "Выберите имя будущей группы."
 msgid "Specials"
 msgstr "Особые"
 
-#: src/gui/statuspopup.cpp:196
+#: src/gui/statuspopup.cpp:197
 msgid "(D) default moves"
 msgstr "(D) движения по умолчанию"
 
-#: src/gui/statuspopup.cpp:201
+#: src/gui/statuspopup.cpp:202
 msgid "(I) invert moves"
 msgstr "(I) обратное движение"
 
-#: src/gui/statuspopup.cpp:206
+#: src/gui/statuspopup.cpp:207
 msgid "(c) moves with some crazy moves"
 msgstr "(c) обычное движение иногда с сумашедшими движениями"
 
-#: src/gui/statuspopup.cpp:211
+#: src/gui/statuspopup.cpp:212
 msgid "(C) moves with crazy moves"
 msgstr "(C) движение с сумашедшими движениями"
 
-#: src/gui/statuspopup.cpp:216
+#: src/gui/statuspopup.cpp:217
 msgid "(d) double normal + crazy"
 msgstr "(d) нормальные и сумашедшие движения"
 
-#: src/gui/statuspopup.cpp:221
+#: src/gui/statuspopup.cpp:222
 msgid "(?) move"
 msgstr "(?) неизвестное движение"
 
-#: src/gui/statuspopup.cpp:239
+#: src/gui/statuspopup.cpp:240
 msgid "(a) custom crazy move"
 msgstr "(a) пользовательские сумашедшие движения"
 
-#: src/gui/statuspopup.cpp:243
+#: src/gui/statuspopup.cpp:244
 msgid "(?) crazy move"
 msgstr "(?) неизвестные сумасшедшие движения"
 
-#: src/gui/statuspopup.cpp:253
+#: src/gui/statuspopup.cpp:254
 msgid "(0) default moves to target"
 msgstr "(0) обычное движение к цели"
 
-#: src/gui/statuspopup.cpp:258
+#: src/gui/statuspopup.cpp:259
 msgid "(1) moves to target in distance 1"
 msgstr "(1) движение к цели на расстояние 1"
 
-#: src/gui/statuspopup.cpp:263
+#: src/gui/statuspopup.cpp:264
 msgid "(2) moves to target in distance 2"
 msgstr "(2) движение к цели на расстояние 2"
 
-#: src/gui/statuspopup.cpp:268
+#: src/gui/statuspopup.cpp:269
 msgid "(3) moves to target in distance 3"
 msgstr "(3) движение к цели на расстояние 3"
 
-#: src/gui/statuspopup.cpp:273
+#: src/gui/statuspopup.cpp:274
 msgid "(5) moves to target in distance 5"
 msgstr "(5) движение к цели на расстояние 5"
 
-#: src/gui/statuspopup.cpp:278
+#: src/gui/statuspopup.cpp:279
 msgid "(7) moves to target in distance 7"
 msgstr "(7) движение к цели на расстояние 7"
 
-#: src/gui/statuspopup.cpp:283
+#: src/gui/statuspopup.cpp:284
 msgid "(A) moves to target in attack range"
 msgstr "(A) движение к цели на расстояние атаки"
 
-#: src/gui/statuspopup.cpp:288
+#: src/gui/statuspopup.cpp:289
 msgid "(?) move to target"
 msgstr "(?) неизвестное движение к цели"
 
-#: src/gui/statuspopup.cpp:296
+#: src/gui/statuspopup.cpp:297
 msgid "(D) default follow"
 msgstr "(D) следование по умолчанию"
 
-#: src/gui/statuspopup.cpp:300
+#: src/gui/statuspopup.cpp:301
 msgid "(R) relative follow"
 msgstr "(R) относительное следование"
 
-#: src/gui/statuspopup.cpp:304
+#: src/gui/statuspopup.cpp:305
 msgid "(M) mirror follow"
 msgstr "(M) зеркальное следование"
 
-#: src/gui/statuspopup.cpp:308
+#: src/gui/statuspopup.cpp:309
 msgid "(P) pet follow"
 msgstr "(P) следование как животное"
 
-#: src/gui/statuspopup.cpp:312
+#: src/gui/statuspopup.cpp:313
 msgid "(?) unknown follow"
 msgstr "(?) неизвестное следование"
 
-#: src/gui/statuspopup.cpp:321 src/gui/statuspopup.cpp:344
+#: src/gui/statuspopup.cpp:322 src/gui/statuspopup.cpp:345
 msgid "(D) default attack"
 msgstr "(D) обычная атака"
 
-#: src/gui/statuspopup.cpp:326
+#: src/gui/statuspopup.cpp:327
 msgid "(s) switch attack without shield"
 msgstr "(s) переключение атаки без щита"
 
-#: src/gui/statuspopup.cpp:331
+#: src/gui/statuspopup.cpp:332
 msgid "(S) switch attack with shield"
 msgstr "(S) переключение атаки со щитом"
 
-#: src/gui/statuspopup.cpp:335 src/gui/statuspopup.cpp:360
+#: src/gui/statuspopup.cpp:336 src/gui/statuspopup.cpp:361
 msgid "(?) attack"
 msgstr "(?) неизвестная атака"
 
-#: src/gui/statuspopup.cpp:348
+#: src/gui/statuspopup.cpp:349
 msgid "(G) go and attack"
 msgstr "(G) идти и атаковать"
 
-#: src/gui/statuspopup.cpp:352
+#: src/gui/statuspopup.cpp:353
 msgid "(A) go, attack, pickup"
 msgstr "(A) идти, атаковать, собирать"
 
-#: src/gui/statuspopup.cpp:356
+#: src/gui/statuspopup.cpp:357
 msgid "(d) without auto attack"
 msgstr "(d) без автоатаки"
 
-#: src/gui/statuspopup.cpp:374
+#: src/gui/statuspopup.cpp:375
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) поднятие в области 1x1"
 
-#: src/gui/statuspopup.cpp:378
+#: src/gui/statuspopup.cpp:379
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) поднятие из области 2x1"
 
-#: src/gui/statuspopup.cpp:382
+#: src/gui/statuspopup.cpp:383
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) поднятие из области спереди 2x3"
 
-#: src/gui/statuspopup.cpp:386
+#: src/gui/statuspopup.cpp:387
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) поднятие из области 3x3"
 
-#: src/gui/statuspopup.cpp:390
+#: src/gui/statuspopup.cpp:391
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) движение и поднятие на расстоянии 4"
 
-#: src/gui/statuspopup.cpp:394
+#: src/gui/statuspopup.cpp:395
 msgid "(G) go and pick up in distance 8"
 msgstr "(g) движение и поднятие на расстоянии 8"
 
-#: src/gui/statuspopup.cpp:398
+#: src/gui/statuspopup.cpp:399
 msgid "(A) go and pick up in max distance"
 msgstr "(A) движение и поднятие на максимальном расстоянии"
 
-#: src/gui/statuspopup.cpp:402
+#: src/gui/statuspopup.cpp:403
 msgid "(?) pick up"
 msgstr "(?) неизвестный режим поднятия"
 
-#: src/gui/statuspopup.cpp:411
+#: src/gui/statuspopup.cpp:412
 msgid "(N) normal map view"
 msgstr "(N) обычный режим карты"
 
-#: src/gui/statuspopup.cpp:415
+#: src/gui/statuspopup.cpp:416
 msgid "(D) debug map view"
 msgstr "(D) отладочный режим карты"
 
-#: src/gui/statuspopup.cpp:419
+#: src/gui/statuspopup.cpp:420
 msgid "(u) ultra map view"
 msgstr "(u) специальный режим карты"
 
-#: src/gui/statuspopup.cpp:423
+#: src/gui/statuspopup.cpp:424
 msgid "(U) ultra map view 2"
 msgstr "(U) специальный режим карты 2"
 
-#: src/gui/statuspopup.cpp:427
+#: src/gui/statuspopup.cpp:428
 msgid "(e) empty map view"
 msgstr "(e) режим пустой карты"
 
-#: src/gui/statuspopup.cpp:431
+#: src/gui/statuspopup.cpp:432
 msgid "(b) black & white map view"
 msgstr "(b) черно-белый режим карты"
 
-#: src/gui/statuspopup.cpp:435
+#: src/gui/statuspopup.cpp:436
 msgid "(?) map view"
 msgstr "(?) неизвестный режим карты"
 
-#: src/gui/statuspopup.cpp:443
+#: src/gui/statuspopup.cpp:444
 msgid "(f) use #flar for magic attack"
 msgstr "(f) использовать #flar для атаки"
 
-#: src/gui/statuspopup.cpp:448
+#: src/gui/statuspopup.cpp:449
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) использовать #chiza для атаки"
 
-#: src/gui/statuspopup.cpp:453
+#: src/gui/statuspopup.cpp:454
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) использовать #ingrav для атаки"
 
-#: src/gui/statuspopup.cpp:458
+#: src/gui/statuspopup.cpp:459
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) использовать #frillyar для атаки"
 
-#: src/gui/statuspopup.cpp:463
+#: src/gui/statuspopup.cpp:464
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) использовать #upmarmu для атаки"
 
-#: src/gui/statuspopup.cpp:467
+#: src/gui/statuspopup.cpp:468
 msgid "(?) magic attack"
 msgstr "(?) неизвестная магическая атака"
 
-#: src/gui/statuspopup.cpp:476
+#: src/gui/statuspopup.cpp:477
 msgid "(D) default imitation"
 msgstr "(D) имитация по умолчанию"
 
-#: src/gui/statuspopup.cpp:480
+#: src/gui/statuspopup.cpp:481
 msgid "(O) outfits imitation"
 msgstr "(O) имитация нарядов"
 
-#: src/gui/statuspopup.cpp:484
+#: src/gui/statuspopup.cpp:485
 msgid "(?) imitation"
 msgstr "(?) неизвестная имитация"
 
-#: src/gui/statuspopup.cpp:493
+#: src/gui/statuspopup.cpp:494
 msgid "(O) on keyboard"
 msgstr "(O) возле компьютера"
 
-#: src/gui/statuspopup.cpp:496
+#: src/gui/statuspopup.cpp:497
 msgid "(A) away"
 msgstr "(A) отошел"
 
-#: src/gui/statuspopup.cpp:499 src/gui/statuspopup.cpp:519
+#: src/gui/statuspopup.cpp:500 src/gui/statuspopup.cpp:520
 msgid "(?) away"
 msgstr "(?) неизвестный режим отошел"
 
-#: src/gui/statuspopup.cpp:507
+#: src/gui/statuspopup.cpp:508
 msgid "(G) game camera mode"
 msgstr "(G) игровая камера"
 
-#: src/gui/statuspopup.cpp:511
+#: src/gui/statuspopup.cpp:512
 msgid "(F) free camera mode"
 msgstr "(F) свободная камера"
 
-#: src/gui/statuspopup.cpp:515
+#: src/gui/statuspopup.cpp:516
 msgid "(D) design camera mode"
 msgstr "(D) камера в режиме разработки"
 
-#: src/gui/statuspopup.cpp:526
+#: src/gui/statuspopup.cpp:527
 msgid "Game modifiers are disabled"
 msgstr "Игровые модификаторы выключены"
 
-#: src/gui/statuspopup.cpp:531
+#: src/gui/statuspopup.cpp:532
 msgid "Game modifiers are enabled"
 msgstr "Игровые модификаторы включены"
 
@@ -3094,87 +3138,87 @@ msgstr "(b)"
 msgid "(O)"
 msgstr "(O)"
 
-#: src/gui/textcommandeditor.cpp:112
+#: src/gui/textcommandeditor.cpp:113
 msgid "No Target"
 msgstr "Без цели"
 
-#: src/gui/textcommandeditor.cpp:113
+#: src/gui/textcommandeditor.cpp:114
 msgid "Allow Target"
 msgstr "Разрешить цель"
 
-#: src/gui/textcommandeditor.cpp:114
+#: src/gui/textcommandeditor.cpp:115
 msgid "Need Target"
 msgstr "Необходима цель"
 
-#: src/gui/textcommandeditor.cpp:119
+#: src/gui/textcommandeditor.cpp:120
 msgid "General Magic"
 msgstr "Общая Магия"
 
-#: src/gui/textcommandeditor.cpp:120
+#: src/gui/textcommandeditor.cpp:121
 msgid "Life Magic"
 msgstr "Магия Жизни"
 
-#: src/gui/textcommandeditor.cpp:121
+#: src/gui/textcommandeditor.cpp:122
 msgid "War Magic"
 msgstr "Боевая Магия"
 
-#: src/gui/textcommandeditor.cpp:122
+#: src/gui/textcommandeditor.cpp:123
 msgid "Transmute Magic"
 msgstr "Магия Трансформации"
 
-#: src/gui/textcommandeditor.cpp:123
+#: src/gui/textcommandeditor.cpp:124
 msgid "Nature Magic"
 msgstr "Магия Природы"
 
-#: src/gui/textcommandeditor.cpp:124
+#: src/gui/textcommandeditor.cpp:125
 msgid "Astral Magic"
 msgstr "Астральная магия"
 
-#: src/gui/textcommandeditor.cpp:167
+#: src/gui/textcommandeditor.cpp:168
 msgid "Command Editor"
 msgstr "Редактор команд"
 
-#: src/gui/textcommandeditor.cpp:184
+#: src/gui/textcommandeditor.cpp:185
 msgid "magic"
 msgstr "Магия"
 
-#: src/gui/textcommandeditor.cpp:188
+#: src/gui/textcommandeditor.cpp:189
 msgid "other"
 msgstr "Другое"
 
-#: src/gui/textcommandeditor.cpp:193
+#: src/gui/textcommandeditor.cpp:194
 msgid "Symbol:"
 msgstr "Символ:"
 
-#: src/gui/textcommandeditor.cpp:196
+#: src/gui/textcommandeditor.cpp:197
 msgid "Command:"
 msgstr "Команда:"
 
-#: src/gui/textcommandeditor.cpp:199
+#: src/gui/textcommandeditor.cpp:200
 msgid "Mana:"
 msgstr "Мана:"
 
-#: src/gui/textcommandeditor.cpp:205
+#: src/gui/textcommandeditor.cpp:206
 msgid "Target Type:"
 msgstr "Тип цели:"
 
-#: src/gui/textcommandeditor.cpp:211
+#: src/gui/textcommandeditor.cpp:212
 msgid "Icon:"
 msgstr "Картинка:"
 
-#: src/gui/textcommandeditor.cpp:217
+#: src/gui/textcommandeditor.cpp:218
 msgid "Magic level:"
 msgstr "Уровень Магии:"
 
-#: src/gui/textcommandeditor.cpp:223
+#: src/gui/textcommandeditor.cpp:224
 msgid "Magic School:"
 msgstr "Школа Магии:"
 
-#: src/gui/textcommandeditor.cpp:229
+#: src/gui/textcommandeditor.cpp:230
 msgid "School level:"
 msgstr "Уровень школы:"
 
-#: src/gui/textcommandeditor.cpp:234
+#: src/gui/textcommandeditor.cpp:235
 msgid "Save"
 msgstr "Сохранить"
 
@@ -3212,8 +3256,7 @@ msgid "Change"
 msgstr "Сменить"
 
 #: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
@@ -3405,23 +3448,23 @@ msgstr "Бордюр домашней позиции"
 msgid "Road Point"
 msgstr "Точка дороги"
 
-#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:470
+#: src/gui/whoisonline.cpp:81 src/gui/whoisonline.cpp:471
 msgid "Who Is Online - Updating"
 msgstr "Кто онлайн - обновление"
 
-#: src/gui/whoisonline.cpp:100
+#: src/gui/whoisonline.cpp:101
 msgid "Update"
 msgstr "Обновить"
 
-#: src/gui/whoisonline.cpp:293
+#: src/gui/whoisonline.cpp:294
 msgid "Who Is Online - "
 msgstr "Кто онлайн - "
 
-#: src/gui/whoisonline.cpp:484
+#: src/gui/whoisonline.cpp:485
 msgid "Who Is Online - error"
 msgstr "Кто онлайн - ошибка"
 
-#: src/gui/whoisonline.cpp:515
+#: src/gui/whoisonline.cpp:516
 msgid "Who Is Online - Update"
 msgstr "Кто онлайн - обновление"
 
@@ -3486,6 +3529,7 @@ msgid "This command makes <nick> a channel operator."
 msgstr "Эта Команда делает <пользователь> оператором канала."
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
+#: src/net/ea/gui/guildtab.cpp:69 src/net/ea/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr "Если ник содержит пробелы, заключите его в кавычки (\")."
 
@@ -3551,16 +3595,15 @@ msgstr "Команда: /ignore"
 #: src/gui/widgets/whispertab.cpp:125
 msgid "This command ignores the other player regardless of current relations."
 msgstr ""
-"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих"
-" отношений с ним."
+"Эта команда позволяет игнорировать другого игрока вне зависимости от текущих "
+"отношений с ним."
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
 msgstr "Команда: /unignore <игрок>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr "Эта команда прекращает игнорирование другого игрока."
 
 #: src/gui/windowmenu.cpp:65
@@ -4225,6 +4268,823 @@ msgstr "Спасибо за покупку!"
 msgid "Unable to buy."
 msgstr "Низзя купить!"
 
+#: src/net/ea/charserverhandler.cpp:63
+#, fuzzy
+msgid "Strength:"
+msgstr "Сила (str)"
+
+#: src/net/ea/charserverhandler.cpp:64
+#, fuzzy
+msgid "Agility:"
+msgstr "Выносливость (agi)"
+
+#: src/net/ea/charserverhandler.cpp:65
+#, fuzzy
+msgid "Vitality:"
+msgstr "Живучесть (vit)"
+
+#: src/net/ea/charserverhandler.cpp:66
+#, fuzzy
+msgid "Intelligence:"
+msgstr "Интеллект (int)"
+
+#: src/net/ea/charserverhandler.cpp:67
+#, fuzzy
+msgid "Dexterity:"
+msgstr "Ловкость (dex)"
+
+#: src/net/ea/charserverhandler.cpp:68
+#, fuzzy
+msgid "Luck:"
+msgstr "Удача (luk)"
+
+#: src/net/ea/charserverhandler.cpp:102
+msgid "Access denied. Most likely, there are too many players on this server."
+msgstr ""
+
+#: src/net/ea/charserverhandler.cpp:106
+#, fuzzy
+msgid "Cannot use this ID."
+msgstr "Нельзя отправлять пустые сообщения!"
+
+#: src/net/ea/charserverhandler.cpp:109
+#, fuzzy
+msgid "Unknown char-server failure."
+msgstr "Неизвестная ошибка."
+
+#: src/net/ea/charserverhandler.cpp:138
+msgid "Failed to create character. Most likely the name is already taken."
+msgstr ""
+
+#: src/net/ea/charserverhandler.cpp:142 src/net/ea/loginhandler.cpp:237
+#, fuzzy
+msgid "Wrong name."
+msgstr "Ошибочный magic_token."
+
+#: src/net/ea/charserverhandler.cpp:145
+#, fuzzy
+msgid "Incorrect stats."
+msgstr "Нправильный пароль"
+
+#: src/net/ea/charserverhandler.cpp:148
+#, fuzzy
+msgid "Incorrect hair."
+msgstr "Нправильный пароль"
+
+#: src/net/ea/charserverhandler.cpp:151
+#, fuzzy
+msgid "Incorrect slot."
+msgstr "Нправильный пароль"
+
+#: src/net/ea/charserverhandler.cpp:166 src/net/manaserv/charhandler.cpp:210
+msgid "Info"
+msgstr "Сведения"
+
+#: src/net/ea/charserverhandler.cpp:166
+#, fuzzy
+msgid "Character deleted."
+msgstr "Игрок удален."
+
+#: src/net/ea/charserverhandler.cpp:172
+#, fuzzy
+msgid "Failed to delete character."
+msgstr "Введите пароль для удаления персонажа"
+
+#: src/net/ea/chathandler.cpp:60 src/net/ea/chathandler.cpp:66
+#: src/net/ea/chathandler.cpp:71 src/net/ea/chathandler.cpp:77
+#: src/net/ea/chathandler.cpp:82 src/net/ea/chathandler.cpp:88
+#: src/net/ea/chathandler.cpp:95 src/net/ea/chathandler.cpp:101
+msgid "Channels are not supported!"
+msgstr ""
+
+#: src/net/ea/chathandler.cpp:128
+#, c-format
+msgid "Whisper could not be sent, %s is offline."
+msgstr ""
+
+#: src/net/ea/chathandler.cpp:136
+#, fuzzy, c-format
+msgid "Whisper could not be sent, ignored by %s."
+msgstr "Игрок не может быть удален из списка игнорирования!"
+
+#: src/net/ea/chathandler.cpp:348
+#, fuzzy
+msgid "MVP player."
+msgstr "Игрок"
+
+#: src/net/ea/chathandler.cpp:352
+#, fuzzy
+msgid "MVP player: "
+msgstr "Игрок"
+
+#: src/net/ea/gamehandler.cpp:86
+#, c-format
+msgid "Online users: %d"
+msgstr ""
+
+#: src/net/ea/gamehandler.cpp:98
+msgid "Game"
+msgstr ""
+
+#: src/net/ea/gamehandler.cpp:98
+#, fuzzy
+msgid "Request to quit denied!"
+msgstr "Запрос на Торговлю"
+
+#: src/net/ea/gui/guildtab.cpp:67 src/net/ea/gui/partytab.cpp:83
+#, fuzzy
+msgid "Command: /invite <nick>"
+msgstr "Команда: /kick <ник>"
+
+#: src/net/ea/gui/guildtab.cpp:68
+#, fuzzy
+msgid "This command invites <nick> to the guild you're in."
+msgstr "Эта Команда делает <пользователь> оператором канала."
+
+#: src/net/ea/gui/guildtab.cpp:74 src/net/ea/gui/partytab.cpp:90
+#, fuzzy
+msgid "Command: /leave"
+msgstr "Команда: /close"
+
+#: src/net/ea/gui/guildtab.cpp:75
+#, fuzzy
+msgid "This command causes the player to leave the guild."
+msgstr "Задает тему для <сообщение>."
+
+#: src/net/ea/gui/guildtab.cpp:135 src/net/ea/gui/partytab.cpp:69
+#, fuzzy
+msgid "/help > Display this help."
+msgstr "  -h --help           : Показать эту справку"
+
+#: src/net/ea/gui/guildtab.cpp:136
+msgid "/invite > Invite a player to your guild"
+msgstr ""
+
+#: src/net/ea/gui/guildtab.cpp:137
+msgid "/leave > Leave the guild you are in"
+msgstr ""
+
+#: src/net/ea/gui/guildtab.cpp:138
+#, fuzzy
+msgid "/kick > Kick some one from the guild you are in"
+msgstr "/kick > Вышвырнуть пользователя с канала"
+
+#: src/net/ea/guildhandler.cpp:83 src/net/manaserv/guildhandler.cpp:85
+msgid "Guild created."
+msgstr "Гильдия создана."
+
+#: src/net/ea/guildhandler.cpp:88 src/net/ea/guildhandler.cpp:93
+#, fuzzy
+msgid "You are already in guild."
+msgstr "Ошибка создания гильдии"
+
+#: src/net/ea/guildhandler.cpp:98
+msgid "Emperium check failed."
+msgstr ""
+
+#: src/net/ea/guildhandler.cpp:103
+#, fuzzy
+msgid "Unknown server response."
+msgstr "Неизвестная ошибка."
+
+#: src/net/ea/guildhandler.cpp:180
+#, fuzzy, c-format
+msgid "Guild name: %s"
+msgstr "Гильдия: %s"
+
+#: src/net/ea/guildhandler.cpp:182
+#, fuzzy, c-format
+msgid "Guild master: %s"
+msgstr "Гильдия: %s"
+
+#: src/net/ea/guildhandler.cpp:184
+#, fuzzy, c-format
+msgid "Guild level: %d"
+msgstr "Уровень: %d"
+
+#: src/net/ea/guildhandler.cpp:186
+#, c-format
+msgid "Online members: %d"
+msgstr ""
+
+#: src/net/ea/guildhandler.cpp:188
+#, c-format
+msgid "Max members: %d"
+msgstr ""
+
+#: src/net/ea/guildhandler.cpp:190
+#, fuzzy, c-format
+msgid "Average level: %d"
+msgstr "Уровень Магии:"
+
+#: src/net/ea/guildhandler.cpp:192
+#, fuzzy, c-format
+msgid "Guild exp: %d"
+msgstr "Гильдия: %s"
+
+#: src/net/ea/guildhandler.cpp:194
+#, fuzzy, c-format
+msgid "Guild next exp: %d"
+msgstr "Гильдия создана."
+
+#: src/net/ea/guildhandler.cpp:196
+#, fuzzy, c-format
+msgid "Guild castle: %s"
+msgstr "Гильдия: %s"
+
+#: src/net/ea/guildhandler.cpp:402
+#, fuzzy
+msgid "Could not inivte user to guild."
+msgstr "Пользователь %s приглашен в гильдию %s."
+
+#: src/net/ea/guildhandler.cpp:406
+#, fuzzy
+msgid "User rejected guild invite."
+msgstr "%s Отклоняет Ваше приглашение."
+
+#: src/net/ea/guildhandler.cpp:410
+msgid "User is now part of your guild."
+msgstr ""
+
+#: src/net/ea/guildhandler.cpp:414
+msgid "Your guild is full."
+msgstr ""
+
+#: src/net/ea/guildhandler.cpp:418
+#, fuzzy
+msgid "Unknown guild invite response."
+msgstr "Принято приглашение в гильдию от %s."
+
+#: src/net/ea/guildhandler.cpp:438
+msgid "You have left the guild."
+msgstr ""
+
+#: src/net/ea/guildhandler.cpp:452
+#, fuzzy, c-format
+msgid "%s has left your guild."
+msgstr "Выберите имя для гильдии."
+
+#: src/net/ea/guildhandler.cpp:483
+#, fuzzy
+msgid "You was kicked from guild."
+msgstr "Выкинуть из гильдии"
+
+#: src/net/ea/guildhandler.cpp:496
+#, fuzzy, c-format
+msgid "%s has kicked from your guild."
+msgstr "%s был вышвырнут %s"
+
+#: src/net/ea/gui/partytab.cpp:70
+msgid "/invite > Invite a player to your party"
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:71
+msgid "/leave > Leave the party you are in"
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:72
+#, fuzzy
+msgid "/kick > Kick some one from the party you are in"
+msgstr "/kick > Вышвырнуть пользователя с канала"
+
+#: src/net/ea/gui/partytab.cpp:73
+msgid "/item > Show/change party item sharing options"
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:74
+msgid "/exp > Show/change party experience sharing options"
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:84
+#, fuzzy
+msgid "This command invites <nick> to party with you."
+msgstr "Эта команда заставляет <ник> покинуть канал."
+
+#: src/net/ea/gui/partytab.cpp:91
+#, fuzzy
+msgid "This command causes the player to leave the party."
+msgstr "Задает тему для <сообщение>."
+
+#: src/net/ea/gui/partytab.cpp:95
+#, fuzzy
+msgid "Command: /item <policy>"
+msgstr "Команда: /kick <ник>"
+
+#: src/net/ea/gui/partytab.cpp:97
+#, fuzzy
+msgid "This command changes the party's item sharing policy."
+msgstr "Эта Команда показывает пользователей канала"
+
+#: src/net/ea/gui/partytab.cpp:98
+msgid ""
+"<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
+"\"0\", \"no\", \"false\" to disable item sharing."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:101
+#, fuzzy
+msgid "Command: /item"
+msgstr "Команда: /quit"
+
+#: src/net/ea/gui/partytab.cpp:102
+#, fuzzy
+msgid "This command displays the party's current item sharing policy."
+msgstr "Команда покинуть текущий канал"
+
+#: src/net/ea/gui/partytab.cpp:107
+#, fuzzy
+msgid "Command: /exp <policy>"
+msgstr "Команда: /op <имя>"
+
+#: src/net/ea/gui/partytab.cpp:108
+#, fuzzy
+msgid "This command changes the party's experience sharing policy."
+msgstr "Команда покинуть текущий канал"
+
+#: src/net/ea/gui/partytab.cpp:110
+msgid ""
+"<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
+"sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:113
+#, fuzzy
+msgid "Command: /exp"
+msgstr "Комманды: /users"
+
+#: src/net/ea/gui/partytab.cpp:114
+#, fuzzy
+msgid "This command displays the party's current experience sharing policy."
+msgstr "Команда покинуть текущий канал"
+
+#: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:286
+msgid "Item sharing enabled."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:296
+msgid "Item sharing disabled."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:306
+msgid "Item sharing not possible."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:157
+msgid "Item sharing unknown."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:248
+msgid "Experience sharing enabled."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:258
+msgid "Experience sharing disabled."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:268
+msgid "Experience sharing not possible."
+msgstr ""
+
+#: src/net/ea/gui/partytab.cpp:196
+msgid "Experience sharing unknown."
+msgstr ""
+
+#: src/net/ea/inventoryhandler.cpp:407
+#, fuzzy
+msgid "Failed to use item."
+msgstr "Не удалось повысить члена гильдии."
+
+#: src/net/ea/inventoryhandler.cpp:580
+#, fuzzy
+msgid "Unable to equip."
+msgstr "Низзя купить!"
+
+#: src/net/ea/loginhandler.cpp:131
+#, fuzzy
+msgid "Account was not found. Please re-login."
+msgstr "Вы не вошли под своим именем. Пожалуйста, авторизуйтесь"
+
+#: src/net/ea/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:127
+msgid "Old password incorrect."
+msgstr "Старый пароль указан неверно."
+
+#: src/net/ea/loginhandler.cpp:137
+#, fuzzy
+msgid "New password too short."
+msgstr "Новый пароль указан неверно"
+
+#: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:243
+#: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
+#: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
+#: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
+msgid "Unknown error."
+msgstr "Неизвестная ошибка."
+
+#: src/net/ea/loginhandler.cpp:205
+#, fuzzy
+msgid "Unregistered ID."
+msgstr "Удалить регистрацию"
+
+#: src/net/ea/loginhandler.cpp:208
+#, fuzzy
+msgid "Wrong password."
+msgstr "Неверное имя пользователя или пароль."
+
+#: src/net/ea/loginhandler.cpp:211
+#, fuzzy
+msgid "Account expired."
+msgstr "Учетная запись заблокирована (бан)."
+
+#: src/net/ea/loginhandler.cpp:214
+#, fuzzy
+msgid "Rejected from server."
+msgstr "Отключено от сервера!"
+
+#: src/net/ea/loginhandler.cpp:217
+msgid ""
+"You have been permanently banned from the game. Please contact the GM team."
+msgstr ""
+
+#: src/net/ea/loginhandler.cpp:221
+#, fuzzy
+msgid "Client too old."
+msgstr "Версия клиент-программы устарела."
+
+#: src/net/ea/loginhandler.cpp:224
+#, c-format
+msgid ""
+"You have been temporarily banned from the game until %s.\n"
+"Please contact the GM team via the forums."
+msgstr ""
+
+#: src/net/ea/loginhandler.cpp:231
+msgid "Server overpopulated."
+msgstr ""
+
+#: src/net/ea/loginhandler.cpp:234
+#, fuzzy
+msgid "This user name is already taken."
+msgstr "Этот аккаунт уже в сети."
+
+#: src/net/ea/loginhandler.cpp:240
+#, fuzzy
+msgid "Username permanently erased."
+msgstr "Пользователь с таким именем уже существует."
+
+#: src/net/ea/partyhandler.cpp:82
+#, fuzzy
+msgid "Could not create party."
+msgstr "Создать группу"
+
+#: src/net/ea/partyhandler.cpp:84
+#, fuzzy
+msgid "Party successfully created."
+msgstr "Игрок удален!"
+
+#: src/net/ea/partyhandler.cpp:140
+#, fuzzy, c-format
+msgid "%s has joined your party."
+msgstr "%s не в группе!"
+
+#: src/net/ea/partyhandler.cpp:176
+#, c-format
+msgid "%s is already a member of a party."
+msgstr ""
+
+#: src/net/ea/partyhandler.cpp:181
+#, fuzzy, c-format
+msgid "%s refused your invitation."
+msgstr "%s Отклоняет Ваше приглашение."
+
+#: src/net/ea/partyhandler.cpp:186
+#, fuzzy, c-format
+msgid "%s is now a member of your party."
+msgstr "%s не в группе!"
+
+#: src/net/ea/partyhandler.cpp:191
+#, c-format
+msgid "%s can't join your party because party is full."
+msgstr ""
+
+#: src/net/ea/partyhandler.cpp:196
+#, c-format
+msgid "QQQ Unknown invite response for %s."
+msgstr ""
+
+#: src/net/ea/partyhandler.cpp:356
+#, fuzzy
+msgid "You have left the party."
+msgstr "Вас приглашают присоединиться к группе %s."
+
+#: src/net/ea/partyhandler.cpp:368
+#, fuzzy, c-format
+msgid "%s has left your party."
+msgstr "%s не в группе!"
+
+#: src/net/ea/partyhandler.cpp:444
+#, c-format
+msgid "An unknown member tried to say: %s"
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:95 src/net/manaserv/beinghandler.cpp:315
+msgid "You are dead."
+msgstr "Вы мертвы."
+
+#: src/net/ea/playerhandler.cpp:96 src/net/manaserv/beinghandler.cpp:316
+msgid "We regret to inform you that your character was killed in battle."
+msgstr "С грустью сообщаем вам, что Ваш персонаж пал в бою."
+
+#: src/net/ea/playerhandler.cpp:98 src/net/manaserv/beinghandler.cpp:318
+msgid "You are not that alive anymore."
+msgstr "Вас больше нет среди живых."
+
+#: src/net/ea/playerhandler.cpp:99 src/net/manaserv/beinghandler.cpp:319
+msgid "The cold hands of the grim reaper are grabbing for your soul."
+msgstr "Холодные руки Смерти извлекают Вашу душу."
+
+#: src/net/ea/playerhandler.cpp:100 src/net/manaserv/beinghandler.cpp:320
+msgid "Game Over!"
+msgstr "Игра Окончена!"
+
+#: src/net/ea/playerhandler.cpp:101
+msgid "Insert coin to continue."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:321
+msgid ""
+"No, kids. Your character did not really die. It... err... went to a better "
+"place."
+msgstr ""
+"Нет, детки. Ваш персонаж на самом деле не умер. Он...эммм...ушел в лучший "
+"мир."
+
+#: src/net/ea/playerhandler.cpp:104 src/net/manaserv/beinghandler.cpp:323
+msgid ""
+"Your plan of breaking your enemies weapon by bashing it with your throat "
+"failed."
+msgstr "Ваш план сломать оружие врагов о свое горло провалился."
+
+#: src/net/ea/playerhandler.cpp:106 src/net/manaserv/beinghandler.cpp:325
+msgid "I guess this did not run too well."
+msgstr "Похоже, это было не слишком хорошо."
+
+#: src/net/ea/playerhandler.cpp:108 src/net/manaserv/beinghandler.cpp:326
+msgid "Do you want your possessions identified?"
+msgstr "Хочешь, предскажу твою судьбу?"
+
+#: src/net/ea/playerhandler.cpp:110 src/net/manaserv/beinghandler.cpp:327
+msgid "Sadly, no trace of you was ever found..."
+msgstr "Грустно, Вас вряд ли когда-нибудь найдут..."
+
+#: src/net/ea/playerhandler.cpp:112 src/net/manaserv/beinghandler.cpp:329
+msgid "Annihilated."
+msgstr "Уничтожен."
+
+#: src/net/ea/playerhandler.cpp:114 src/net/manaserv/beinghandler.cpp:330
+msgid "Looks like you got your head handed to you."
+msgstr "Похоже, Вам отдали Вашу голову."
+
+#: src/net/ea/playerhandler.cpp:116 src/net/manaserv/beinghandler.cpp:332
+msgid ""
+"You screwed up again, dump your body down the tubes and get you another one."
+msgstr "Вы опять пролетели, выбросите своё тело в трубу, и получите другое."
+
+#: src/net/ea/playerhandler.cpp:119
+msgid "You're not dead yet. You're just resting."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:120
+#, fuzzy
+msgid "You are no more."
+msgstr "Вы мертвы."
+
+#: src/net/ea/playerhandler.cpp:121
+#, fuzzy
+msgid "You have ceased to be."
+msgstr "Вы мертвы."
+
+#: src/net/ea/playerhandler.cpp:122
+msgid "You've expired and gone to meet your maker."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:123
+msgid "You're a stiff."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:124
+msgid "Bereft of life, you rest in peace."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:125
+msgid "If you weren't so animated, you'd be pushing up the daisies."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:126
+msgid "Your metabolic processes are now history."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:127
+msgid "You're off the twig."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:128
+msgid "You've kicked the bucket."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:129
+msgid ""
+"You've shuffled off your mortal coil, run down the curtain and joined the "
+"bleedin' choir invisibile."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:131
+#, fuzzy
+msgid "You are an ex-player."
+msgstr "Вы мертвы."
+
+#: src/net/ea/playerhandler.cpp:132
+msgid "You're pining for the fjords."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:336 src/net/ea/playerhandler.cpp:346
+#: src/net/ea/playerhandler.cpp:425
+#, fuzzy
+msgid "Message"
+msgstr "Сообщения"
+
+#: src/net/ea/playerhandler.cpp:337
+msgid ""
+"You are carrying more than half your weight. You are unable to regain health."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:347
+msgid "You are carrying less than half your weight. You can regain health."
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:451
+#, fuzzy, c-format
+msgid "You picked up %s."
+msgstr "Вы подняли %d [@@%d|%s@@]."
+
+#: src/net/ea/playerhandler.cpp:457
+#, fuzzy, c-format
+msgid "You spent %s."
+msgstr "Вы получаете %s."
+
+#: src/net/ea/playerhandler.cpp:501
+msgid "Cannot raise skill!"
+msgstr ""
+
+#: src/net/ea/playerhandler.cpp:618
+#, fuzzy
+msgid "Equip arrows first."
+msgstr "Сначала снять"
+
+#: src/net/ea/specialhandler.cpp:149
+#, fuzzy
+msgid "Trade failed!"
+msgstr "Торговля отменена."
+
+#: src/net/ea/specialhandler.cpp:152
+#, fuzzy
+msgid "Emote failed!"
+msgstr "Не удалось вышвырнуть!"
+
+#: src/net/ea/specialhandler.cpp:155
+#, fuzzy
+msgid "Sit failed!"
+msgstr "Не удалось вышвырнуть!"
+
+#: src/net/ea/specialhandler.cpp:158
+#, fuzzy
+msgid "Chat creating failed!"
+msgstr "Ошибка авторизации."
+
+#: src/net/ea/specialhandler.cpp:161
+#, fuzzy
+msgid "Could not join party!"
+msgstr "%s не в группе!"
+
+#: src/net/ea/specialhandler.cpp:164
+msgid "Cannot shout!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:177
+msgid "You have not yet reached a high enough lvl!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:181
+msgid "Insufficient HP!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:184
+msgid "Insufficient SP!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:187
+#, fuzzy
+msgid "You have no memos!"
+msgstr "У вас недостаточно денег"
+
+#: src/net/ea/specialhandler.cpp:190
+#, fuzzy
+msgid "You cannot do that right now!"
+msgstr "Вас больше нет среди живых."
+
+#: src/net/ea/specialhandler.cpp:193
+msgid "Seems you need more money... ;-)"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:196
+msgid "You cannot use this skill with that kind of weapon!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:200
+msgid "You need another red gem!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:203
+msgid "You need another blue gem!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:206
+msgid "You're carrying to much to do this!"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:209
+msgid "Huh? What's that?"
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:220
+msgid "Warp failed..."
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:223
+msgid "Could not steal anything..."
+msgstr ""
+
+#: src/net/ea/specialhandler.cpp:226
+msgid "Poison had no effect..."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:107 src/net/manaserv/tradehandler.cpp:128
+#, c-format
+msgid "%s wants to trade with you, do you accept?"
+msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
+
+#: src/net/ea/tradehandler.cpp:130
+msgid "Trading isn't possible. Trade partner is too far away."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:134
+msgid "Trading isn't possible. Character doesn't exist."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:138
+msgid "Trade cancelled due to an unknown reason."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:146
+#, fuzzy, c-format
+msgid "Trade: You and %s"
+msgstr "Торговля: Вы"
+
+#: src/net/ea/tradehandler.cpp:156
+#, fuzzy, c-format
+msgid "Trade with %s cancelled."
+msgstr "Торговля отменена."
+
+#: src/net/ea/tradehandler.cpp:169
+msgid "Unhandled trade cancel packet."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:231
+msgid "Failed adding item. Trade partner is over weighted."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:236
+msgid "Failed adding item. Trade partner has no free slot."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:241
+#, fuzzy
+msgid "Failed adding item. You can't trade this item."
+msgstr ""
+"Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
+"объектов более одного раза."
+
+#: src/net/ea/tradehandler.cpp:245
+msgid "Failed adding item for unknown reason."
+msgstr ""
+
+#: src/net/ea/tradehandler.cpp:264 src/net/manaserv/tradehandler.cpp:160
+msgid "Trade canceled."
+msgstr "Торговля отменена."
+
+#: src/net/ea/tradehandler.cpp:275 src/net/manaserv/tradehandler.cpp:167
+msgid "Trade completed."
+msgstr "Торговля завершена."
+
 #: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:259
 msgid "Strength"
 msgstr "Сила (str)"
@@ -4278,65 +5138,6 @@ msgstr "Воля"
 #, c-format
 msgid "Willpower %+.1f"
 msgstr "Воля (wil) %+.1f"
-
-#: src/net/manaserv/beinghandler.cpp:315
-msgid "You are dead."
-msgstr "Вы мертвы."
-
-#: src/net/manaserv/beinghandler.cpp:316
-msgid "We regret to inform you that your character was killed in battle."
-msgstr "С грустью сообщаем вам, что Ваш персонаж пал в бою."
-
-#: src/net/manaserv/beinghandler.cpp:318
-msgid "You are not that alive anymore."
-msgstr "Вас больше нет среди живых."
-
-#: src/net/manaserv/beinghandler.cpp:319
-msgid "The cold hands of the grim reaper are grabbing for your soul."
-msgstr "Холодные руки Смерти извлекают Вашу душу."
-
-#: src/net/manaserv/beinghandler.cpp:320
-msgid "Game Over!"
-msgstr "Игра Окончена!"
-
-#: src/net/manaserv/beinghandler.cpp:321
-msgid ""
-"No, kids. Your character did not really die. It... err... went to a better "
-"place."
-msgstr ""
-"Нет, детки. Ваш персонаж на самом деле не умер. Он...эммм...ушел в лучший "
-"мир."
-
-#: src/net/manaserv/beinghandler.cpp:323
-msgid ""
-"Your plan of breaking your enemies weapon by bashing it with your throat "
-"failed."
-msgstr "Ваш план сломать оружие врагов о свое горло провалился."
-
-#: src/net/manaserv/beinghandler.cpp:325
-msgid "I guess this did not run too well."
-msgstr "Похоже, это было не слишком хорошо."
-
-#: src/net/manaserv/beinghandler.cpp:326
-msgid "Do you want your possessions identified?"
-msgstr "Хочешь, предскажу твою судьбу?"
-
-#: src/net/manaserv/beinghandler.cpp:327
-msgid "Sadly, no trace of you was ever found..."
-msgstr "Грустно, Вас вряд ли когда-нибудь найдут..."
-
-#: src/net/manaserv/beinghandler.cpp:329
-msgid "Annihilated."
-msgstr "Уничтожен."
-
-#: src/net/manaserv/beinghandler.cpp:330
-msgid "Looks like you got your head handed to you."
-msgstr "Похоже, Вам отдали Вашу голову."
-
-#: src/net/manaserv/beinghandler.cpp:332
-msgid ""
-"You screwed up again, dump your body down the tubes and get you another one."
-msgstr "Вы опять пролетели, выбросите своё тело в трубу, и получите другое."
 
 #: src/net/manaserv/beinghandler.cpp:337
 msgid "Press OK to respawn."
@@ -4392,16 +5193,6 @@ msgstr ""
 #: src/net/manaserv/charhandler.cpp:178
 msgid "Invalid slot number."
 msgstr "Некорректный номер слота."
-
-#: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
-#: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
-#: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
-msgid "Unknown error."
-msgstr "Неизвестная ошибка."
-
-#: src/net/manaserv/charhandler.cpp:210
-msgid "Info"
-msgstr "Сведения"
 
 #: src/net/manaserv/charhandler.cpp:210
 msgid "Player deleted."
@@ -4466,10 +5257,6 @@ msgstr "%s был вышвырнут %s"
 msgid "Unknown channel event."
 msgstr "Неизвестное событие на канале."
 
-#: src/net/manaserv/guildhandler.cpp:85
-msgid "Guild created."
-msgstr "Гильдия создана."
-
 #: src/net/manaserv/guildhandler.cpp:90
 msgid "Error creating guild."
 msgstr "Ошибка создания гильдии"
@@ -4501,10 +5288,6 @@ msgstr "Учетная запись заблокирована (бан)."
 #: src/net/manaserv/loginhandler.cpp:124
 msgid "New password incorrect."
 msgstr "Новый пароль указан неверно"
-
-#: src/net/manaserv/loginhandler.cpp:127
-msgid "Old password incorrect."
-msgstr "Старый пароль указан неверно."
 
 #: src/net/manaserv/loginhandler.cpp:131 src/net/manaserv/loginhandler.cpp:163
 msgid "Account not connected. Please login first."
@@ -4585,23 +5368,10 @@ msgstr "Принимать входящие предложения торгов�
 msgid "Ignoring incoming trade requests."
 msgstr "Игнорировать входящие предложения торговли."
 
-#: src/net/manaserv/tradehandler.cpp:128
-#, c-format
-msgid "%s wants to trade with you, do you accept?"
-msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
-
 #: src/net/manaserv/tradehandler.cpp:146
 #, c-format
 msgid "Trading with %s"
 msgstr "Торговля с %s"
-
-#: src/net/manaserv/tradehandler.cpp:160
-msgid "Trade canceled."
-msgstr "Торговля отменена."
-
-#: src/net/manaserv/tradehandler.cpp:167
-msgid "Trade completed."
-msgstr "Торговля завершена."
 
 #: src/net/tmwa/adminhandler.cpp:70
 msgid "Kick failed!"
@@ -4794,4 +5564,5 @@ msgstr "Мана %+d"
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
 
-
+#~ msgid "Enable opacity cache"
+#~ msgstr "Включить кеш прозрачности"
