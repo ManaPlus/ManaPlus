@@ -236,8 +236,8 @@
 		<Unit filename="src\gui\setup_other.h" />
 		<Unit filename="src\gui\setup_perfomance.cpp" />
 		<Unit filename="src\gui\setup_perfomance.h" />
-		<Unit filename="src\gui\setup_players.cpp" />
-		<Unit filename="src\gui\setup_players.h" />
+		<Unit filename="src\gui\setup_relations.cpp" />
+		<Unit filename="src\gui\setup_relations.h" />
 		<Unit filename="src\gui\setup_theme.cpp" />
 		<Unit filename="src\gui\setup_theme.h" />
 		<Unit filename="src\gui\setup_video.cpp" />

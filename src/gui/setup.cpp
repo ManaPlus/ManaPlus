@@ -34,7 +34,7 @@
 #include "gui/setup_theme.h"
 #include "gui/setup_keyboard.h"
 #include "gui/setup_perfomance.h"
-#include "gui/setup_players.h"
+#include "gui/setup_relations.h"
 #include "gui/setup_video.h"
 
 #include "gui/widgets/button.h"
@@ -94,7 +94,7 @@ Setup::Setup():
     mTabs.push_back(new Setup_Keyboard);
     mTabs.push_back(new Setup_Colors);
     mTabs.push_back(new Setup_Chat);
-    mTabs.push_back(new Setup_Players);
+    mTabs.push_back(new Setup_Relations);
     mTabs.push_back(new Setup_Theme);
     mTabs.push_back(new Setup_Other);
 

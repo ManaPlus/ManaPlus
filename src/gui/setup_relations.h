@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_PLAYERS_H
-#define GUI_SETUP_PLAYERS_H
+#ifndef GUI_SETUP_RELATIONS_H
+#define GUI_SETUP_RELATIONS_H
 
 #include "guichanfwd.h"
 #include "playerrelations.h"
@@ -41,12 +41,12 @@ class GuiTable;
 class PlayerTableModel;
 class StaticTableModel;
 
-class Setup_Players : public SetupTab,
+class Setup_Relations : public SetupTab,
                       public PlayerRelationsListener
 {
 public:
-    Setup_Players();
-    virtual ~Setup_Players();
+    Setup_Relations();
+    virtual ~Setup_Relations();
 
     void apply();
     void cancel();

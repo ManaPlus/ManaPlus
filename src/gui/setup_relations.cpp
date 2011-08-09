@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/setup_players.h"
+#include "gui/setup_relations.h"
 
 #include "actorspritemanager.h"
 #include "configuration.h"
@@ -238,7 +238,7 @@ public:
 #define ACTION_EDIT_UNSECURE "edit unsecure"
 #define ACTION_EDIT_UNSECURE_OK "edit unsecure ok"
 
-Setup_Players::Setup_Players():
+Setup_Relations::Setup_Relations():
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTableModel(new PlayerTableModel),
     mPlayerTable(new GuiTable(mPlayerTableModel)),
@@ -264,7 +264,7 @@ Setup_Players::Setup_Players():
     mShowPlayersStatus(config.getBoolValue("showPlayersStatus")),
     mEditDialog(0)
 {
-    setName(_("Players"));
+    setName(_("Relations"));
 
     mPlayerTable->setOpaque(false);
 
@@ -374,7 +374,7 @@ Setup_Players::Setup_Players():
     setDimension(gcn::Rectangle(0, 0, 500, 350));
 }
 
-Setup_Players::~Setup_Players()
+Setup_Relations::~Setup_Relations()
 {
     player_relations.removeListener(this);
     delete mIgnoreActionChoicesModel;
@@ -382,7 +382,7 @@ Setup_Players::~Setup_Players()
 }
 
 
-void Setup_Players::reset()
+void Setup_Relations::reset()
 {
     // We now have to search through the list of ignore choices to find the
     // current selection. We could use an index into the table of config
@@ -402,7 +402,7 @@ void Setup_Players::reset()
     mIgnoreActionChoicesBox->setSelected(selection);
 }
 
-void Setup_Players::apply()
+void Setup_Relations::apply()
 {
     player_relations.store();
 
@@ -431,7 +431,7 @@ void Setup_Players::apply()
         player_node->setCheckNameSetting(true);
 }
 
-void Setup_Players::cancel()
+void Setup_Relations::cancel()
 {
     mWhisperTab = config.getBoolValue("whispertab");
     mWhisperTabCheckBox->setSelected(mWhisperTab);
@@ -453,7 +453,7 @@ void Setup_Players::cancel()
     mShowPlayersStatusCheckBox->setSelected(mShowPlayersStatus);
 }
 
-void Setup_Players::action(const gcn::ActionEvent &event)
+void Setup_Relations::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == ACTION_TABLE)
     {
@@ -542,7 +542,7 @@ void Setup_Players::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup_Players::updatedPlayer(const std::string &name A_UNUSED)
+void Setup_Relations::updatedPlayer(const std::string &name A_UNUSED)
 {
     mPlayerTableModel->playerRelationsUpdated();
     mDefaultTrading->setSelected(
@@ -553,7 +553,7 @@ void Setup_Players::updatedPlayer(const std::string &name A_UNUSED)
         player_node->updateName();
 }
 
-void Setup_Players::updateAll()
+void Setup_Relations::updateAll()
 {
     PlayerTableModel *model = new PlayerTableModel();
     mPlayerTable->setModel(model);
@@ -572,7 +572,7 @@ void Setup_Players::updateAll()
     mIgnoreActionChoicesBox->adjustHeight();
     reset();
 }
-void Setup_Players::externalUpdated()
+void Setup_Relations::externalUpdated()
 {
     mDefaultTrading->setSelected(
         player_relations.getDefault() & PlayerRelation::TRADE);
