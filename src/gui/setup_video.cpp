@@ -709,10 +709,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         mAltFpsSlider->setValue(mAltFps);
         mAltFpsSlider->setEnabled(mAltFps > 0);
     }
-    else if (id == "opengl")
-    {
-        bool isSoftware = (mOpenGLDropDown->getSelected() == 0);
-    }
 }
 
 void Setup_Video::externalUpdated()

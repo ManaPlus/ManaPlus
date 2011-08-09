@@ -21,6 +21,7 @@
 
 #include "compoundsprite.h"
 
+#include "configuration.h"
 #include "game.h"
 #include "graphics.h"
 #ifdef USE_OPENGL
@@ -52,6 +53,9 @@ CompoundSprite::CompoundSprite():
         mNeedsRedraw(false)
 {
     mAlpha = 1.0f;
+    mEnableAlphaFix = config.getBoolValue("enableAlphaFix");
+    mDisableAdvBeingCaching = config.getBoolValue("disableAdvBeingCaching");
+    mDisableBeingCaching = config.getBoolValue("disableBeingCaching");
 }
 
 CompoundSprite::~CompoundSprite()
@@ -406,7 +410,7 @@ void CompoundSprite::setAlpha(float alpha)
 {
     if (alpha != mAlpha)
     {
-        if (Image::mUseOpenGL == 0 && size() > 3)
+        if (mEnableAlphaFix && Image::mUseOpenGL == 0 && size() > 3)
         {
             SpriteConstIterator it, it_end;
             for (it = begin(), it_end = end(); it != it_end; ++ it)
@@ -426,18 +430,28 @@ void CompoundSprite::updateImages() const
         return;
 #endif
 
-    if (size() <= 3)
-        return;
-
     mNeedsRedraw = false;
 
-    if (updateFromCache())
-        return;
+    if (!mDisableBeingCaching)
+    {
+        if (size() <= 3)
+            return;
 
-    redraw();
+        if (!mDisableAdvBeingCaching)
+        {
+            if (updateFromCache())
+                return;
 
-    if (mImage)
-        initCurrentCacheItem();
+            redraw();
+
+            if (mImage)
+                initCurrentCacheItem();
+        }
+        else
+        {
+            redraw();
+        }
+    }
 }
 
 bool CompoundSprite::updateFromCache() const

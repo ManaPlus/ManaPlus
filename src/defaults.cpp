@@ -210,6 +210,9 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showPlayersStatus", true);
     AddDEF(configData, "beingopacity", false);
     AddDEF(configData, "adjustPerfomance", true);
+    AddDEF(configData, "enableAlphaFix", false);
+    AddDEF(configData, "disableAdvBeingCaching", false);
+    AddDEF(configData, "disableBeingCaching", false);
     return configData;
 }
 
