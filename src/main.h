@@ -26,12 +26,6 @@
 /**
  * \mainpage
  *
- * \section Introduction Introduction
- *
- * This is the documentation for the Mana client (http://manasource.org). It is
- * always a work in progress, with the intent to make it easier for new
- * developers to grow familiar with the source code.
- *
  * \section General General information
  *
  * During the game, the current Map is displayed by the main Viewport, which
