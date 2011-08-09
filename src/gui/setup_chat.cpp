@@ -93,6 +93,9 @@ Setup_Chat::Setup_Chat()
 
     new SetupItemLabel(_("Tabs"), "", this);
 
+    new SetupItemCheckBox(_("Put all whispers in tabs"), "",
+        "whispertab", this, "whispertabEvent");
+
     new SetupItemCheckBox(_("Log magic messages in debug tab"), "",
         "showMagicInDebug", this, "showMagicInDebugEvent");
 

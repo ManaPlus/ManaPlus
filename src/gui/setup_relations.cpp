@@ -229,14 +229,6 @@ public:
 #define ACTION_TABLE "table"
 #define ACTION_STRATEGY "strategy"
 #define ACTION_WHISPER_TAB "whisper tab"
-#define ACTION_SHOW_GENDER "show gender"
-#define ACTION_SHOW_LEVEL "show level"
-#define ACTION_TARGET_DEAD "target dead"
-#define ACTION_SHOW_OWN_NAME "show own name"
-#define ACTION_SECURE_TRADES "secure trades"
-#define ACTION_UNSECURE "unsecure"
-#define ACTION_EDIT_UNSECURE "edit unsecure"
-#define ACTION_EDIT_UNSECURE_OK "edit unsecure ok"
 
 Setup_Relations::Setup_Relations():
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
@@ -249,20 +241,7 @@ Setup_Relations::Setup_Relations():
     mDefaultWhisper(new CheckBox(_("Allow whispers"),
                 player_relations.getDefault() & PlayerRelation::WHISPER)),
     mDeleteButton(new Button(_("Delete"), ACTION_DELETE, this)),
-    mOldButton(new Button(_("Old"), ACTION_OLD, this)),
-    mWhisperTab(config.getBoolValue("whispertab")),
-    mWhisperTabCheckBox(new CheckBox(_("Put all whispers in tabs"),
-                        mWhisperTab)),
-    mShowGender(config.getBoolValue("showgender")),
-    mShowGenderCheckBox(new CheckBox(_("Show gender"), mShowGender)),
-    mShowLevel(config.getBoolValue("showlevel")),
-    mShowOwnName(config.getBoolValue("showownname")),
-    mTargetDead(config.getBoolValue("targetDeadPlayers")),
-    mSecureTrades(config.getBoolValue("securetrades")),
-    mUnsecureChars(config.getStringValue("unsecureChars")),
-    mVisibleNamesEnabled(config.getBoolValue("visiblenames")),
-    mShowPlayersStatus(config.getBoolValue("showPlayersStatus")),
-    mEditDialog(0)
+    mOldButton(new Button(_("Old"), ACTION_OLD, this))
 {
     setName(_("Relations"));
 
@@ -306,43 +285,6 @@ Setup_Relations::Setup_Relations():
     mIgnoreActionChoicesBox->setSelected(ignore_strategy_index);
     mIgnoreActionChoicesBox->adjustHeight();
 
-    mWhisperTabCheckBox->setActionEventId(ACTION_WHISPER_TAB);
-    mWhisperTabCheckBox->addActionListener(this);
-
-    mShowGenderCheckBox->setActionEventId(ACTION_SHOW_GENDER);
-    mShowGenderCheckBox->addActionListener(this);
-
-    mShowLevelCheckBox = new CheckBox(_("Show level"), mShowLevel);
-    mShowLevelCheckBox->setActionEventId(ACTION_SHOW_LEVEL);
-    mShowLevelCheckBox->addActionListener(this);
-
-    mShowOwnNameCheckBox = new CheckBox(_("Show own name"), mShowOwnName);
-    mShowOwnNameCheckBox->setActionEventId(ACTION_SHOW_OWN_NAME);
-    mShowOwnNameCheckBox->addActionListener(this);
-
-    mTargetDeadCheckBox = new CheckBox(_("Target dead players"), mTargetDead);
-    mTargetDeadCheckBox->setActionEventId(ACTION_TARGET_DEAD);
-    mTargetDeadCheckBox->addActionListener(this);
-
-    mSecureTradesCheckBox = new CheckBox(_("Secure trades"), mSecureTrades);
-    mSecureTradesCheckBox->setActionEventId(ACTION_SECURE_TRADES);
-    mSecureTradesCheckBox->addActionListener(this);
-
-    mUnsecureCharsLabel = new Label(_("Unsecure chars in names"));
-    mUnsecureCharsField = new TextField(mUnsecureChars,
-        true, this, ACTION_UNSECURE);
-    mUnsecureCharsButton = new Button(_("Edit"), ACTION_EDIT_UNSECURE, this);
-
-    mVisibleNamesCheckBox = new CheckBox(_("Visible names"),
-        mVisibleNamesEnabled);
-    mVisibleNamesCheckBox->setActionEventId("visiblenames");
-    mVisibleNamesCheckBox->addActionListener(this);
-
-    mShowPlayersStatusCheckBox = new CheckBox(_("Show statuses"),
-        mShowPlayersStatus);
-    mShowPlayersStatusCheckBox->setActionEventId("showPlayersStatus");
-    mShowPlayersStatusCheckBox->addActionListener(this);
-
     reset();
 
     // Do the layout
@@ -352,22 +294,11 @@ Setup_Relations::Setup_Relations():
     place(0, 0, mPlayerTitleTable, 6);
     place(0, 1, mPlayerScrollArea, 6, 4).setPadding(2);
     place(0, 5, mDeleteButton);
-    place(0, 6, mShowGenderCheckBox, 3).setPadding(2);
-    place(0, 7, mShowLevelCheckBox, 3).setPadding(2);
-    place(0, 8, mShowOwnNameCheckBox, 3).setPadding(2);
     place(1, 5, mOldButton, 1);
     place(3, 5, ignore_action_label, 1);
     place(4, 5, mIgnoreActionChoicesBox, 2).setPadding(2);
     place(3, 6, mDefaultTrading, 3);
     place(3, 7, mDefaultWhisper, 3);
-    place(3, 8, mSecureTradesCheckBox, 3);
-    place(3, 9, mUnsecureCharsLabel, 3);
-    place(3, 10, mUnsecureCharsField, 2);
-    place(3, 11, mShowPlayersStatusCheckBox, 2);
-    place(5, 10, mUnsecureCharsButton, 1);
-    place(0, 9, mWhisperTabCheckBox, 3).setPadding(4);
-    place(0, 10, mTargetDeadCheckBox, 3).setPadding(4);
-    place(0, 11, mVisibleNamesCheckBox, 3).setPadding(4);
 
     player_relations.addListener(this);
 
@@ -414,15 +345,6 @@ void Setup_Relations::apply()
                                        PlayerRelation::TRADE : 0)
                                 | (mDefaultWhisper->isSelected() ?
                                        PlayerRelation::WHISPER : 0));
-    config.setValue("whispertab", mWhisperTab);
-    config.setValue("showlevel", mShowLevel);
-    config.setValue("showownname", mShowOwnName);
-    config.setValue("targetDeadPlayers", mTargetDead);
-    config.setValue("showgender", mShowGender);
-    config.setValue("securetrades", mSecureTrades);
-    config.setValue("unsecureChars", mUnsecureCharsField->getText());
-    config.setValue("visiblenames", mVisibleNamesEnabled);
-    config.setValue("showPlayersStatus", mShowPlayersStatus);
 
     if (actorSpriteManager)
         actorSpriteManager->updatePlayerNames();
@@ -433,24 +355,6 @@ void Setup_Relations::apply()
 
 void Setup_Relations::cancel()
 {
-    mWhisperTab = config.getBoolValue("whispertab");
-    mWhisperTabCheckBox->setSelected(mWhisperTab);
-    mShowGender = config.getBoolValue("showgender");
-    mShowGenderCheckBox->setSelected(mShowGender);
-    mShowLevel = config.getBoolValue("showlevel");
-    mShowLevelCheckBox->setSelected(mShowLevel);
-    mShowOwnName = config.getBoolValue("showownname");
-    mShowOwnNameCheckBox->setSelected(mShowOwnName);
-    mTargetDead = config.getBoolValue("targetDeadPlayers");
-    mTargetDeadCheckBox->setSelected(mTargetDead);
-    mSecureTrades = config.getBoolValue("securetrades");
-    mSecureTradesCheckBox->setSelected(mSecureTrades);
-    mUnsecureChars = config.getStringValue("unsecureChars");
-    mUnsecureCharsField->setText(mUnsecureChars);
-    mVisibleNamesEnabled = config.getBoolValue("visiblenames");
-    mVisibleNamesCheckBox->setSelected(mVisibleNamesEnabled);
-    mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
-    mShowPlayersStatusCheckBox->setSelected(mShowPlayersStatus);
 }
 
 void Setup_Relations::action(const gcn::ActionEvent &event)
@@ -493,52 +397,6 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
                 mIgnoreActionChoicesBox->getSelected()];
 
         player_relations.setPlayerIgnoreStrategy(s);
-    }
-    else if (event.getId() == ACTION_WHISPER_TAB)
-    {
-        mWhisperTab = mWhisperTabCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_GENDER)
-    {
-        mShowGender = mShowGenderCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_LEVEL)
-    {
-        mShowLevel = mShowLevelCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SHOW_OWN_NAME)
-    {
-        mShowOwnName = mShowOwnNameCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_TARGET_DEAD)
-    {
-        mTargetDead = mTargetDeadCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_SECURE_TRADES)
-    {
-        mSecureTrades = mSecureTradesCheckBox->isSelected();
-    }
-    else if (event.getId() == ACTION_EDIT_UNSECURE)
-    {
-        mEditDialog = new EditDialog(_("Unsecure chars in names"),
-            mUnsecureCharsField->getText(), ACTION_EDIT_UNSECURE_OK);
-        mEditDialog->addActionListener(this);
-    }
-    else if (event.getId() == ACTION_EDIT_UNSECURE_OK)
-    {
-        mUnsecureCharsField->setText(mEditDialog->getMsg());
-    }
-    else if (event.getId() == ACTION_UNSECURE)
-    {
-        mUnsecureChars = mUnsecureCharsField->getText();
-    }
-    else if (event.getId() == "visiblenames")
-    {
-        mVisibleNamesEnabled = mVisibleNamesCheckBox->isSelected();
-    }
-    else if (event.getId() == "showPlayersStatus")
-    {
-        mShowPlayersStatus = mShowPlayersStatusCheckBox->isSelected();
     }
 }
 

@@ -76,37 +76,6 @@ private:
 
     gcn::ListModel *mIgnoreActionChoicesModel;
     gcn::DropDown *mIgnoreActionChoicesBox;
-
-    bool mWhisperTab;
-    gcn::CheckBox *mWhisperTabCheckBox;
-
-    bool mShowGender;
-    gcn::CheckBox *mShowGenderCheckBox;
-
-    bool mShowLevel;
-    gcn::CheckBox *mShowLevelCheckBox;
-
-    bool mShowOwnName;
-    gcn::CheckBox *mShowOwnNameCheckBox;
-
-    bool mTargetDead;
-    gcn::CheckBox *mTargetDeadCheckBox;
-
-    bool mSecureTrades;
-    gcn::CheckBox *mSecureTradesCheckBox;
-
-    gcn::Label *mUnsecureCharsLabel;
-    gcn::TextField *mUnsecureCharsField;
-    gcn::Button *mUnsecureCharsButton;
-    std::string mUnsecureChars;
-
-    bool mVisibleNamesEnabled;
-    gcn::CheckBox *mVisibleNamesCheckBox;
-
-    bool mShowPlayersStatus;
-    gcn::CheckBox *mShowPlayersStatusCheckBox;
-
-    EditDialog *mEditDialog;
 };
 
 #endif

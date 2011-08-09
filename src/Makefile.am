@@ -320,6 +320,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/setup_keyboard.h \
 	      gui/setup_perfomance.cpp \
 	      gui/setup_perfomance.h \
+	      gui/setup_players.cpp \
+	      gui/setup_players.h \
 	      gui/setup_relations.cpp \
 	      gui/setup_relations.h \
 	      gui/setup_video.cpp \

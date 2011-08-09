@@ -34,6 +34,7 @@
 #include "gui/setup_theme.h"
 #include "gui/setup_keyboard.h"
 #include "gui/setup_perfomance.h"
+#include "gui/setup_players.h"
 #include "gui/setup_relations.h"
 #include "gui/setup_video.h"
 
@@ -86,6 +87,7 @@ Setup::Setup():
 
     mPanel = new TabbedArea;
     mPanel->setDimension(gcn::Rectangle(5, 5, width - 10, height - 40));
+    mPanel->enableScrollButtons(true);
 
     mTabs.push_back(new Setup_Video);
     mTabs.push_back(new Setup_Audio);
@@ -94,6 +96,7 @@ Setup::Setup():
     mTabs.push_back(new Setup_Keyboard);
     mTabs.push_back(new Setup_Colors);
     mTabs.push_back(new Setup_Chat);
+    mTabs.push_back(new Setup_Players);
     mTabs.push_back(new Setup_Relations);
     mTabs.push_back(new Setup_Theme);
     mTabs.push_back(new Setup_Other);
