@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-08-10 01:11+0300\n"
-"PO-Revision-Date: 2011-08-08 01:29+0000\n"
+"PO-Revision-Date: 2011-08-09 22:45+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -2123,9 +2123,8 @@ msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 
 #: src/gui/setup_perfomance.cpp:80
-#, fuzzy
 msgid "Enable reorder sprites."
-msgstr "Ota käyttöön palvelinpuolen hyökkäys"
+msgstr ""
 
 #: src/gui/setup_perfomance.cpp:83
 msgid "Small memory (enable for lower memory usage)"
@@ -2212,9 +2211,8 @@ msgid "Old"
 msgstr "Vanha"
 
 #: src/gui/setup_relations.cpp:246
-#, fuzzy
 msgid "Relations"
-msgstr "Relaatio"
+msgstr ""
 
 #: src/gui/setup_relations.cpp:271
 msgid "When ignoring:"
@@ -4252,409 +4250,370 @@ msgid "Unable to buy."
 msgstr "Ostaminen epäonnistui."
 
 #: src/net/ea/charserverhandler.cpp:63
-#, fuzzy
 msgid "Strength:"
-msgstr "Voima"
+msgstr "Voima:"
 
 #: src/net/ea/charserverhandler.cpp:64
-#, fuzzy
 msgid "Agility:"
-msgstr "Ketteryys"
+msgstr "Ketteryys:"
 
 #: src/net/ea/charserverhandler.cpp:65
-#, fuzzy
 msgid "Vitality:"
-msgstr "Elinvoima"
+msgstr "Elinvoima:"
 
 #: src/net/ea/charserverhandler.cpp:66
-#, fuzzy
 msgid "Intelligence:"
-msgstr "Älykkyys"
+msgstr "Älykkyys:"
 
 #: src/net/ea/charserverhandler.cpp:67
-#, fuzzy
 msgid "Dexterity:"
-msgstr "Näppäryys"
+msgstr "Näppäryys:"
 
 #: src/net/ea/charserverhandler.cpp:68
-#, fuzzy
 msgid "Luck:"
-msgstr "Tuuri"
+msgstr "Tuuri:"
 
 #: src/net/ea/charserverhandler.cpp:102
 msgid "Access denied. Most likely, there are too many players on this server."
-msgstr ""
+msgstr "Pääsy evätty. Todennäköisesti palvelimella on liian paljon pelaajia."
 
 #: src/net/ea/charserverhandler.cpp:106
-#, fuzzy
 msgid "Cannot use this ID."
-msgstr "Et voi lähettää tyhjiä kuiskauksia!"
+msgstr "Tätä tunnistetta ei voi käyttää."
 
 #: src/net/ea/charserverhandler.cpp:109
-#, fuzzy
 msgid "Unknown char-server failure."
-msgstr "Tuntematon virhe."
+msgstr "Tuntematon hahmopalvelinvirhe."
 
 #: src/net/ea/charserverhandler.cpp:138
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr ""
+msgstr "Hahmon luonti epäonnistui. Todennäköisesti hahmon nimi on jo käytössä."
 
 #: src/net/ea/charserverhandler.cpp:142 src/net/ea/loginhandler.cpp:237
-#, fuzzy
 msgid "Wrong name."
-msgstr "Väärä taikalipuke (magic_token)."
+msgstr "Väärä nimi."
 
 #: src/net/ea/charserverhandler.cpp:145
-#, fuzzy
 msgid "Incorrect stats."
-msgstr "Väärä salasana"
+msgstr "Väärät arvot."
 
 #: src/net/ea/charserverhandler.cpp:148
-#, fuzzy
 msgid "Incorrect hair."
-msgstr "Väärä salasana"
+msgstr "Väärä hiustyyli."
 
 #: src/net/ea/charserverhandler.cpp:151
-#, fuzzy
 msgid "Incorrect slot."
-msgstr "Väärä salasana"
+msgstr "Väärä paikka."
 
 #: src/net/ea/charserverhandler.cpp:166 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
 msgstr "Tietoja"
 
 #: src/net/ea/charserverhandler.cpp:166
-#, fuzzy
 msgid "Character deleted."
 msgstr "Hahmo poistettu."
 
 #: src/net/ea/charserverhandler.cpp:172
-#, fuzzy
 msgid "Failed to delete character."
-msgstr "Anna salasana hahmon poistamiseksi"
+msgstr "Hahmon poisto epäonnistui."
 
 #: src/net/ea/chathandler.cpp:60 src/net/ea/chathandler.cpp:66
 #: src/net/ea/chathandler.cpp:71 src/net/ea/chathandler.cpp:77
 #: src/net/ea/chathandler.cpp:82 src/net/ea/chathandler.cpp:88
 #: src/net/ea/chathandler.cpp:95 src/net/ea/chathandler.cpp:101
 msgid "Channels are not supported!"
-msgstr ""
+msgstr "Kanavia ei tueta!"
 
 #: src/net/ea/chathandler.cpp:128
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
-msgstr ""
+msgstr "Kuiskausta ei voitu lähettää, %s ei ole kirjautuneena sisään."
 
 #: src/net/ea/chathandler.cpp:136
-#, fuzzy, c-format
+#, c-format
 msgid "Whisper could not be sent, ignored by %s."
-msgstr "Pelaajan uudelleenhuomiointi epäonnistui."
+msgstr "Kuiskausta ei voitu lähettää, %s ei huomioinut sitä."
 
 #: src/net/ea/chathandler.cpp:348
-#, fuzzy
 msgid "MVP player."
-msgstr "Pelaajat"
+msgstr "MVP-pelaaja."
 
 #: src/net/ea/chathandler.cpp:352
-#, fuzzy
 msgid "MVP player: "
-msgstr "Pelaajat"
+msgstr "MVP-pelaaja: "
 
 #: src/net/ea/gamehandler.cpp:86
 #, c-format
 msgid "Online users: %d"
-msgstr ""
+msgstr "Käyttäjiä palvelimella: %d"
 
 #: src/net/ea/gamehandler.cpp:98
 msgid "Game"
-msgstr ""
+msgstr "Peli"
 
 #: src/net/ea/gamehandler.cpp:98
-#, fuzzy
 msgid "Request to quit denied!"
-msgstr "Kaupantekoehdotus"
+msgstr "Lopetuspyyntö evätty!"
 
 #: src/net/ea/gui/guildtab.cpp:67 src/net/ea/gui/partytab.cpp:83
-#, fuzzy
 msgid "Command: /invite <nick>"
-msgstr "Komento: /kick <nimi>"
+msgstr "Komento: /invite <nimi>"
 
 #: src/net/ea/gui/guildtab.cpp:68
-#, fuzzy
 msgid "This command invites <nick> to the guild you're in."
-msgstr "Tämä komento tekee annetunnimisestä käyttäjästä kanavaoperaattorin."
+msgstr "Tämä komento kutsuu annetun pelaajan nykyiseen kiltaasi."
 
 #: src/net/ea/gui/guildtab.cpp:74 src/net/ea/gui/partytab.cpp:90
-#, fuzzy
 msgid "Command: /leave"
-msgstr "Komento: /close"
+msgstr "Komento: /leave"
 
 #: src/net/ea/gui/guildtab.cpp:75
-#, fuzzy
 msgid "This command causes the player to leave the guild."
-msgstr "Tämä komento asettaa aihekentän arvoksi <viesti>."
+msgstr "Tämä komento saa sinut eroamaan killasta."
 
 #: src/net/ea/gui/guildtab.cpp:135 src/net/ea/gui/partytab.cpp:69
-#, fuzzy
 msgid "/help > Display this help."
-msgstr "  -h --help           : Näytä tämä ohje"
+msgstr "/help > Näytä tämä ohje."
 
 #: src/net/ea/gui/guildtab.cpp:136
 msgid "/invite > Invite a player to your guild"
-msgstr ""
+msgstr "/invite > Kutsu pelaaja kiltaasi"
 
 #: src/net/ea/gui/guildtab.cpp:137
 msgid "/leave > Leave the guild you are in"
-msgstr ""
+msgstr "/leave > Eroa nykyisestä killastasi"
 
 #: src/net/ea/gui/guildtab.cpp:138
-#, fuzzy
 msgid "/kick > Kick some one from the guild you are in"
-msgstr "/kick > Poista käyttäjä kanavalta"
+msgstr "/kick > Poista käyttäjä killastasi"
 
 #: src/net/ea/guildhandler.cpp:83 src/net/manaserv/guildhandler.cpp:85
 msgid "Guild created."
 msgstr "Kilta luotu."
 
 #: src/net/ea/guildhandler.cpp:88 src/net/ea/guildhandler.cpp:93
-#, fuzzy
 msgid "You are already in guild."
-msgstr "Killan luonti epäonnistui."
+msgstr "Olet jo killassa."
 
 #: src/net/ea/guildhandler.cpp:98
 msgid "Emperium check failed."
-msgstr ""
+msgstr "Emperium-tarkistus epäonnistui."
 
 #: src/net/ea/guildhandler.cpp:103
-#, fuzzy
 msgid "Unknown server response."
-msgstr "Tuntematon virhe."
+msgstr "Tuntematon palvelimen vastaus."
 
 #: src/net/ea/guildhandler.cpp:180
-#, fuzzy, c-format
+#, c-format
 msgid "Guild name: %s"
-msgstr "Kilta: %s"
+msgstr "Killan nimi: %s"
 
 #: src/net/ea/guildhandler.cpp:182
-#, fuzzy, c-format
+#, c-format
 msgid "Guild master: %s"
-msgstr "Kilta: %s"
+msgstr "Kiltamestari: %s"
 
 #: src/net/ea/guildhandler.cpp:184
-#, fuzzy, c-format
+#, c-format
 msgid "Guild level: %d"
-msgstr "Taso: %d"
+msgstr "Kiltataso: %d"
 
 #: src/net/ea/guildhandler.cpp:186
 #, c-format
 msgid "Online members: %d"
-msgstr ""
+msgstr "Jäseniä linjoilla: %d"
 
 #: src/net/ea/guildhandler.cpp:188
 #, c-format
 msgid "Max members: %d"
-msgstr ""
+msgstr "Jäsenmaksimi: %d"
 
 #: src/net/ea/guildhandler.cpp:190
-#, fuzzy, c-format
+#, c-format
 msgid "Average level: %d"
-msgstr "Magiataso:"
+msgstr "Keskim. taso: %d"
 
 #: src/net/ea/guildhandler.cpp:192
-#, fuzzy, c-format
+#, c-format
 msgid "Guild exp: %d"
-msgstr "Kilta: %s"
+msgstr "Kiltakokemusta: %d kkp"
 
 #: src/net/ea/guildhandler.cpp:194
-#, fuzzy, c-format
+#, c-format
 msgid "Guild next exp: %d"
-msgstr "Kilta luotu."
+msgstr "Seuraavaan tasoon: %d kkp"
 
 #: src/net/ea/guildhandler.cpp:196
-#, fuzzy, c-format
+#, c-format
 msgid "Guild castle: %s"
-msgstr "Kilta: %s"
+msgstr "Killan linna: %s"
 
 #: src/net/ea/guildhandler.cpp:402
-#, fuzzy
 msgid "Could not inivte user to guild."
-msgstr "Kutsuit käyttäjän %s kiltaan %s."
+msgstr "Pelaajan kutsuminen kiltaan epäonnistui."
 
 #: src/net/ea/guildhandler.cpp:406
-#, fuzzy
 msgid "User rejected guild invite."
-msgstr "%s ei ottanut kutsuasi vastaan."
+msgstr "Käyttäjä ei ottanut kiltakutsua vastaan."
 
 #: src/net/ea/guildhandler.cpp:410
 msgid "User is now part of your guild."
-msgstr ""
+msgstr "Käyttäjä liittyi kiltaasi."
 
 #: src/net/ea/guildhandler.cpp:414
 msgid "Your guild is full."
-msgstr ""
+msgstr "Kiltasi on täynnä."
 
 #: src/net/ea/guildhandler.cpp:418
-#, fuzzy
 msgid "Unknown guild invite response."
-msgstr "Otit vastaan kiltakutsun pelaajalta %s."
+msgstr "Tuntematon vastaus kiltakutsuun."
 
 #: src/net/ea/guildhandler.cpp:438
 msgid "You have left the guild."
-msgstr ""
+msgstr "Olet eronnut killasta."
 
 #: src/net/ea/guildhandler.cpp:452
-#, fuzzy, c-format
+#, c-format
 msgid "%s has left your guild."
-msgstr "Valitse killallesi nimi."
+msgstr "%s on eronnut killastasi."
 
 #: src/net/ea/guildhandler.cpp:483
-#, fuzzy
 msgid "You was kicked from guild."
-msgstr "Potki killasta"
+msgstr "Sinut on potkittu killasta."
 
 #: src/net/ea/guildhandler.cpp:496
-#, fuzzy, c-format
+#, c-format
 msgid "%s has kicked from your guild."
-msgstr "%s potkaisi käyttäjän %s ulos."
+msgstr "%s on potkittu ulos killastasi."
 
 #: src/net/ea/gui/partytab.cpp:70
 msgid "/invite > Invite a player to your party"
-msgstr ""
+msgstr "/invite > Kutsu pelaaja ryhmääsi"
 
 #: src/net/ea/gui/partytab.cpp:71
 msgid "/leave > Leave the party you are in"
-msgstr ""
+msgstr "/leave > Eroa nykyisestä ryhmästäsi"
 
 #: src/net/ea/gui/partytab.cpp:72
-#, fuzzy
 msgid "/kick > Kick some one from the party you are in"
-msgstr "/kick > Poista käyttäjä kanavalta"
+msgstr "/kick > Potki pelaaja ryhmästäsi"
 
 #: src/net/ea/gui/partytab.cpp:73
 msgid "/item > Show/change party item sharing options"
-msgstr ""
+msgstr "/item > Näytä/muuta ryhmän tavaranjaon asetuksia"
 
 #: src/net/ea/gui/partytab.cpp:74
 msgid "/exp > Show/change party experience sharing options"
-msgstr ""
+msgstr "/exp > Näytä/muuta ryhmän kokemuksenjaon asetuksia"
 
 #: src/net/ea/gui/partytab.cpp:84
-#, fuzzy
 msgid "This command invites <nick> to party with you."
-msgstr "Tämä komento poistaa annetunnimisen hahmon kanavalta."
+msgstr "Tämä komento kutsuu annetun pelaajan ryhmääsi."
 
 #: src/net/ea/gui/partytab.cpp:91
-#, fuzzy
 msgid "This command causes the player to leave the party."
-msgstr "Tämä komento asettaa aihekentän arvoksi <viesti>."
+msgstr "Tämä komento erottaa pelaajan ryhmästä."
 
 #: src/net/ea/gui/partytab.cpp:95
-#, fuzzy
 msgid "Command: /item <policy>"
-msgstr "Komento: /kick <nimi>"
+msgstr "Komento: /item <jakopolitiikka>"
 
 #: src/net/ea/gui/partytab.cpp:97
-#, fuzzy
 msgid "This command changes the party's item sharing policy."
-msgstr "Tämä komento näyttää käyttäjät kanavalla."
+msgstr "Tämä komento muuttaa ryhmän saaliinjakopolitiikkaa."
 
 #: src/net/ea/gui/partytab.cpp:98
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
 msgstr ""
+"<jakopolitiikka> voi olla arvoltaan \"1\", \"yes\" tai \"true\", jolloin "
+"saalis jaetaan, tai \"0\", \"no\" tai \"false\", jolloin saalista ei jaeta."
 
 #: src/net/ea/gui/partytab.cpp:101
-#, fuzzy
 msgid "Command: /item"
-msgstr "Komento: /quit"
+msgstr "Komento: /item"
 
 #: src/net/ea/gui/partytab.cpp:102
-#, fuzzy
 msgid "This command displays the party's current item sharing policy."
-msgstr "Tällä komennolla poistut kanvalta."
+msgstr "Tämä komento näyttää ryhmän nykyisen saaliinjakopolitiikan."
 
 #: src/net/ea/gui/partytab.cpp:107
-#, fuzzy
 msgid "Command: /exp <policy>"
-msgstr "Komento: /op <nimi>"
+msgstr "Komento: /exp <jakopolitiikka>"
 
 #: src/net/ea/gui/partytab.cpp:108
-#, fuzzy
 msgid "This command changes the party's experience sharing policy."
-msgstr "Tällä komennolla poistut kanvalta."
+msgstr "Tämä komento muuttaa ryhmän kokemuksenjaon politiikkaa."
 
 #: src/net/ea/gui/partytab.cpp:110
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
+"<jakopolitiikka> voi olla arvoltaan \"1\", \"yes\" tai \"true\", jolloin "
+"kokemuspisteet jaetaan, tai \"0\", \"no\" tai \"false\", jolloin "
+"kokemuspisteitä ei jaeta."
 
 #: src/net/ea/gui/partytab.cpp:113
-#, fuzzy
 msgid "Command: /exp"
-msgstr "Komento: /users"
+msgstr "Komento: /exp"
 
 #: src/net/ea/gui/partytab.cpp:114
-#, fuzzy
 msgid "This command displays the party's current experience sharing policy."
-msgstr "Tällä komennolla poistut kanvalta."
+msgstr "Tämä komento näyttää ryhmän nykyisen kokemuksenjaon politiikan."
 
 #: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:286
 msgid "Item sharing enabled."
-msgstr ""
+msgstr "Saaliinjako käytössä."
 
 #: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:296
 msgid "Item sharing disabled."
-msgstr ""
+msgstr "Saaliinjako poistettu käytöstä."
 
 #: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:306
 msgid "Item sharing not possible."
-msgstr ""
+msgstr "Saaliinjako ei ole mahdollista."
 
 #: src/net/ea/gui/partytab.cpp:157
 msgid "Item sharing unknown."
-msgstr ""
+msgstr "Saaliinjaon tila on tuntematon."
 
 #: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:248
 msgid "Experience sharing enabled."
-msgstr ""
+msgstr "Kokemuksen jako käytössä."
 
 #: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:258
 msgid "Experience sharing disabled."
-msgstr ""
+msgstr "Kokemuksen jako pois käytöstä."
 
 #: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:268
 msgid "Experience sharing not possible."
-msgstr ""
+msgstr "Kokemuksen jako ei ole mahdollista."
 
 #: src/net/ea/gui/partytab.cpp:196
 msgid "Experience sharing unknown."
-msgstr ""
+msgstr "Kokemuksen jaon tila on tuntematon."
 
 #: src/net/ea/inventoryhandler.cpp:407
-#, fuzzy
 msgid "Failed to use item."
-msgstr "Jäsenen ylennys epäonnistui."
+msgstr "Tavaran käyttö ei onnistunut."
 
 #: src/net/ea/inventoryhandler.cpp:580
-#, fuzzy
 msgid "Unable to equip."
-msgstr "Ostaminen epäonnistui."
+msgstr "Käyttöönotto ei onnistunut."
 
 #: src/net/ea/loginhandler.cpp:131
-#, fuzzy
 msgid "Account was not found. Please re-login."
-msgstr "Tiliin ei ole yhteyttä. Ole hyvä ja kirjaudu ensin sisään."
+msgstr "Tunnusta ei löytynyt. Yritä uudelleen."
 
 #: src/net/ea/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:127
 msgid "Old password incorrect."
 msgstr "Vanha salsana on väärä."
 
 #: src/net/ea/loginhandler.cpp:137
-#, fuzzy
 msgid "New password too short."
-msgstr "Uusi salasana on väärä."
+msgstr "Uusi salasana on liian lyhyt."
 
 #: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:243
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
@@ -4664,34 +4623,30 @@ msgid "Unknown error."
 msgstr "Tuntematon virhe."
 
 #: src/net/ea/loginhandler.cpp:205
-#, fuzzy
 msgid "Unregistered ID."
-msgstr "Poista palvelimelta"
+msgstr "Rekisteröimätön tunniste."
 
 #: src/net/ea/loginhandler.cpp:208
-#, fuzzy
 msgid "Wrong password."
-msgstr "Väärä käyttäjätunnus tai salasana."
+msgstr "Väärä salasana."
 
 #: src/net/ea/loginhandler.cpp:211
-#, fuzzy
 msgid "Account expired."
-msgstr "Tili porttikiellossa."
+msgstr "Tili vanhentunut."
 
 #: src/net/ea/loginhandler.cpp:214
-#, fuzzy
 msgid "Rejected from server."
-msgstr "Yhteys palvelimeen katkesi!"
+msgstr "Palvelin ei kelpuuttanut yhteydenottoasi."
 
 #: src/net/ea/loginhandler.cpp:217
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
+"Pääsysi peliin on pysyvästi estetty. Ole hyvä ja ota yhteyttä GM-tiimiin."
 
 #: src/net/ea/loginhandler.cpp:221
-#, fuzzy
 msgid "Client too old."
-msgstr "Asiakasohjelman versio on liian vanha."
+msgstr "Liian vanha asiakasohjelma."
 
 #: src/net/ea/loginhandler.cpp:224
 #, c-format
@@ -4699,75 +4654,72 @@ msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
 msgstr ""
+"Pääsysi peliin on väliaikaisesti estetty %s asti.\n"
+"Ole hyvä ja ota yhteyttä GM-tiimiin keskustelufoorumin kautta."
 
 #: src/net/ea/loginhandler.cpp:231
 msgid "Server overpopulated."
-msgstr ""
+msgstr "Palvelin on täynnä."
 
 #: src/net/ea/loginhandler.cpp:234
-#, fuzzy
 msgid "This user name is already taken."
-msgstr "Tällä tunnuksella on jo kirjauduttu."
-
-#: src/net/ea/loginhandler.cpp:240
-#, fuzzy
-msgid "Username permanently erased."
 msgstr "Käyttäjätunnus on jo käytössä."
 
+#: src/net/ea/loginhandler.cpp:240
+msgid "Username permanently erased."
+msgstr "Käyttäjänimi pysyvästi poistettu."
+
 #: src/net/ea/partyhandler.cpp:82
-#, fuzzy
 msgid "Could not create party."
-msgstr "Luo ryhmä"
+msgstr "Ryhmän luonti epäonnistui."
 
 #: src/net/ea/partyhandler.cpp:84
-#, fuzzy
 msgid "Party successfully created."
-msgstr "Pelaaja pyyhitty."
+msgstr "Ryhmä luotu."
 
 #: src/net/ea/partyhandler.cpp:140
-#, fuzzy, c-format
+#, c-format
 msgid "%s has joined your party."
-msgstr "%s ei ole ryhmässäsi!"
+msgstr "%s on liittynyt ryhmääsi."
 
 #: src/net/ea/partyhandler.cpp:176
 #, c-format
 msgid "%s is already a member of a party."
-msgstr ""
+msgstr "%s kuuluu jo johonkin ryhmään."
 
 #: src/net/ea/partyhandler.cpp:181
-#, fuzzy, c-format
+#, c-format
 msgid "%s refused your invitation."
 msgstr "%s ei ottanut kutsuasi vastaan."
 
 #: src/net/ea/partyhandler.cpp:186
-#, fuzzy, c-format
+#, c-format
 msgid "%s is now a member of your party."
-msgstr "%s ei ole ryhmässäsi!"
+msgstr "%s on nyt ryhmäsi jäsen."
 
 #: src/net/ea/partyhandler.cpp:191
 #, c-format
 msgid "%s can't join your party because party is full."
-msgstr ""
+msgstr "%s ei voi liittyä ryhmääsi, koska se on täynnä."
 
 #: src/net/ea/partyhandler.cpp:196
 #, c-format
 msgid "QQQ Unknown invite response for %s."
-msgstr ""
+msgstr "QQQ Tuntematon kutsuvastaus kohteella %s."
 
 #: src/net/ea/partyhandler.cpp:356
-#, fuzzy
 msgid "You have left the party."
-msgstr "Sinut on kutsuttu liittymään ryhmään %s."
+msgstr "Erosit ryhmästä."
 
 #: src/net/ea/partyhandler.cpp:368
-#, fuzzy, c-format
+#, c-format
 msgid "%s has left your party."
-msgstr "%s ei ole ryhmässäsi!"
+msgstr "%s on eronnut ryhmästä."
 
 #: src/net/ea/partyhandler.cpp:444
 #, c-format
 msgid "An unknown member tried to say: %s"
-msgstr ""
+msgstr "Tuntematon jäsen yritti sanoa: %s"
 
 #: src/net/ea/playerhandler.cpp:95 src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
@@ -4791,7 +4743,7 @@ msgstr "Se siitä!"
 
 #: src/net/ea/playerhandler.cpp:101
 msgid "Insert coin to continue."
-msgstr ""
+msgstr "Syötä kolikko jatkaaksesi."
 
 #: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:321
 msgid ""
@@ -4836,180 +4788,171 @@ msgstr "Peballeen meni taas, vedä raatosi vessasta alas ja hanki uusi."
 
 #: src/net/ea/playerhandler.cpp:119
 msgid "You're not dead yet. You're just resting."
-msgstr ""
+msgstr "Et ole kuollut vielä, lepäät vain."
 
 #: src/net/ea/playerhandler.cpp:120
-#, fuzzy
 msgid "You are no more."
-msgstr "Olet kuollut."
+msgstr "Olet lakannut olemasta."
 
 #: src/net/ea/playerhandler.cpp:121
-#, fuzzy
 msgid "You have ceased to be."
-msgstr "Olet kuollut."
+msgstr "Olet kuollut kuin päivänkakkaraa pukkaava ex-papukaija."
 
 #: src/net/ea/playerhandler.cpp:122
 msgid "You've expired and gone to meet your maker."
-msgstr ""
+msgstr "Olet lähtenyt moikkaamaan luojaasi."
 
 #: src/net/ea/playerhandler.cpp:123
 msgid "You're a stiff."
-msgstr ""
+msgstr "Raato mikä raato."
 
 #: src/net/ea/playerhandler.cpp:124
 msgid "Bereft of life, you rest in peace."
-msgstr ""
+msgstr "Olet eloton, mutta lepäät rauhassa."
 
 #: src/net/ea/playerhandler.cpp:125
 msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr ""
+msgstr "Ellet olisi näin liikkuvainen, pukkaisit päivänkakkaraa."
 
 #: src/net/ea/playerhandler.cpp:126
 msgid "Your metabolic processes are now history."
-msgstr ""
+msgstr "Aineenvaihduntaprosessisi ovat historiaa."
 
 #: src/net/ea/playerhandler.cpp:127
 msgid "You're off the twig."
-msgstr ""
+msgstr "Olet lopultakin nakkisuojassa."
 
 #: src/net/ea/playerhandler.cpp:128
 msgid "You've kicked the bucket."
-msgstr ""
+msgstr "Potkaisit tyhjää."
 
 #: src/net/ea/playerhandler.cpp:129
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
 msgstr ""
+"Olet heittänyt henkesi, poistunut keskuudestamme ja loikannut Tuonelan "
+"jokeen."
 
 #: src/net/ea/playerhandler.cpp:131
-#, fuzzy
 msgid "You are an ex-player."
-msgstr "Olet kuollut."
+msgstr "Olet entinen pelaaja."
 
 #: src/net/ea/playerhandler.cpp:132
 msgid "You're pining for the fjords."
-msgstr ""
+msgstr "Kaipaat kotivuonoille."
 
 #: src/net/ea/playerhandler.cpp:336 src/net/ea/playerhandler.cpp:346
 #: src/net/ea/playerhandler.cpp:425
 msgid "Message"
-msgstr ""
+msgstr "Viesti"
 
 #: src/net/ea/playerhandler.cpp:337
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
-msgstr ""
+msgstr "Kannat roinaa yli puolen elopainoasi. Rasitus estää sinua paranemasta."
 
 #: src/net/ea/playerhandler.cpp:347
 msgid "You are carrying less than half your weight. You can regain health."
-msgstr ""
+msgstr "Kannat roinaa alle puolet elopainoasi, ja paranet jälleen."
 
 #: src/net/ea/playerhandler.cpp:451
-#, fuzzy, c-format
+#, c-format
 msgid "You picked up %s."
-msgstr "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
+msgstr "%s nostettu."
 
 #: src/net/ea/playerhandler.cpp:457
-#, fuzzy, c-format
+#, c-format
 msgid "You spent %s."
-msgstr "Saat %s"
+msgstr "Käytit %s."
 
 #: src/net/ea/playerhandler.cpp:501
 msgid "Cannot raise skill!"
-msgstr ""
+msgstr "Taidon korottaminen epäonnistui!"
 
 #: src/net/ea/playerhandler.cpp:618
-#, fuzzy
 msgid "Equip arrows first."
-msgstr "Riisu ensin"
+msgstr "Varusta ensin nuolia."
 
 #: src/net/ea/specialhandler.cpp:149
-#, fuzzy
 msgid "Trade failed!"
-msgstr "Kaupat peruttu."
+msgstr "Kauppa epäonnistui!"
 
 #: src/net/ea/specialhandler.cpp:152
-#, fuzzy
 msgid "Emote failed!"
-msgstr "Potkiminen epäonnistui!"
+msgstr "Elehtiminen epäonnistui!"
 
 #: src/net/ea/specialhandler.cpp:155
-#, fuzzy
 msgid "Sit failed!"
-msgstr "Potkiminen epäonnistui!"
+msgstr "Istuminen epäonnistui!"
 
 #: src/net/ea/specialhandler.cpp:158
-#, fuzzy
 msgid "Chat creating failed!"
-msgstr "Tunnistus epäonnistui."
+msgstr "Keskustelun luonti epäonnistui!"
 
 #: src/net/ea/specialhandler.cpp:161
-#, fuzzy
 msgid "Could not join party!"
-msgstr "%s ei ole ryhmässäsi!"
+msgstr "Ryhmään liittyminen epäonnistui!"
 
 #: src/net/ea/specialhandler.cpp:164
 msgid "Cannot shout!"
-msgstr ""
+msgstr "Huutaminen epäonnistui!"
 
 #: src/net/ea/specialhandler.cpp:177
 msgid "You have not yet reached a high enough lvl!"
-msgstr ""
+msgstr "Et ole vielä riittävän korkealla tasolla!"
 
 #: src/net/ea/specialhandler.cpp:181
 msgid "Insufficient HP!"
-msgstr ""
+msgstr "Voimapisteesi eivät riitä!"
 
 #: src/net/ea/specialhandler.cpp:184
 msgid "Insufficient SP!"
-msgstr ""
+msgstr "Manapisteesi eivät riitä!"
 
 #: src/net/ea/specialhandler.cpp:187
-#, fuzzy
 msgid "You have no memos!"
-msgstr "Sinulla ei ole tarpeeksi rahaa."
+msgstr "Sinulla ei ole muistioita (memo)."
 
 #: src/net/ea/specialhandler.cpp:190
-#, fuzzy
 msgid "You cannot do that right now!"
-msgstr "Et ole enää erityisen elossa."
+msgstr "Et voi tehdä tätä juuri nyt."
 
 #: src/net/ea/specialhandler.cpp:193
 msgid "Seems you need more money... ;-)"
-msgstr ""
+msgstr "Näyttää siltä että tarvitset lisää rahaa."
 
 #: src/net/ea/specialhandler.cpp:196
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr ""
+msgstr "Et voi käyttää tätä taitoa tuollaisen aseen kanssa."
 
 #: src/net/ea/specialhandler.cpp:200
 msgid "You need another red gem!"
-msgstr ""
+msgstr "Tarvitset toisen punaisen helmen."
 
 #: src/net/ea/specialhandler.cpp:203
 msgid "You need another blue gem!"
-msgstr ""
+msgstr "Tarvitset toisen sinisen helmen."
 
 #: src/net/ea/specialhandler.cpp:206
 msgid "You're carrying to much to do this!"
-msgstr ""
+msgstr "Kannat liian paljon tehdäksesi tällaista!"
 
 #: src/net/ea/specialhandler.cpp:209
 msgid "Huh? What's that?"
-msgstr ""
+msgstr "Siis mikä?"
 
 #: src/net/ea/specialhandler.cpp:220
 msgid "Warp failed..."
-msgstr ""
+msgstr "Siirtymä (warp) epäonnistui..."
 
 #: src/net/ea/specialhandler.cpp:223
 msgid "Could not steal anything..."
-msgstr ""
+msgstr "Varastaminen ei onnistunut..."
 
 #: src/net/ea/specialhandler.cpp:226
 msgid "Poison had no effect..."
-msgstr ""
+msgstr "Myrkyllä ei ollut vaikutusta..."
 
 #: src/net/ea/tradehandler.cpp:107 src/net/manaserv/tradehandler.cpp:128
 #, c-format
@@ -5018,46 +4961,46 @@ msgstr "%s haluaa tehdä kauppaa kanssasi, katsotko tarjouksen?"
 
 #: src/net/ea/tradehandler.cpp:130
 msgid "Trading isn't possible. Trade partner is too far away."
-msgstr ""
+msgstr "Kaupanteko ei ole mahdollista. kauppa kumppani on liian kaukana."
 
 #: src/net/ea/tradehandler.cpp:134
 msgid "Trading isn't possible. Character doesn't exist."
-msgstr ""
+msgstr "Kaupanteko ei ole mahdollista. Hahmoa ei ole."
 
 #: src/net/ea/tradehandler.cpp:138
 msgid "Trade cancelled due to an unknown reason."
-msgstr ""
+msgstr "Kaupanteko keskeytyi tuntemattomasta syystä."
 
 #: src/net/ea/tradehandler.cpp:146
-#, fuzzy, c-format
+#, c-format
 msgid "Trade: You and %s"
-msgstr "Kauppa: Sinä"
+msgstr "Kauppa: sinä ja %s"
 
 #: src/net/ea/tradehandler.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid "Trade with %s cancelled."
-msgstr "Kaupat peruttu."
+msgstr "Kaupanteko pelaajan %s kanssa peruttu."
 
 #: src/net/ea/tradehandler.cpp:169
 msgid "Unhandled trade cancel packet."
-msgstr ""
+msgstr "Käsittelemätön kaupan peruutus -paketti."
 
 #: src/net/ea/tradehandler.cpp:231
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr ""
+"Tavaran lisääminen epäonnistui; kauppakumppanilla on liian painava lasti."
 
 #: src/net/ea/tradehandler.cpp:236
 msgid "Failed adding item. Trade partner has no free slot."
-msgstr ""
+msgstr "Tavaran lisääminen epäonnistui; kauppakumppanilla ei ole tilaa sille."
 
 #: src/net/ea/tradehandler.cpp:241
-#, fuzzy
 msgid "Failed adding item. You can't trade this item."
-msgstr "Tavaran lisääminen epäonnistui, limittämisongelma."
+msgstr "Tavaran lisääminen epäonnistui. Et voi kaupitella sitä."
 
 #: src/net/ea/tradehandler.cpp:245
 msgid "Failed adding item for unknown reason."
-msgstr ""
+msgstr "Tavaran lisääminen epäonnistui tuntemattomasta syystä."
 
 #: src/net/ea/tradehandler.cpp:264 src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
@@ -5543,6 +5486,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Tuntematon tavara"
-
-#~ msgid "Enable opacity cache"
-#~ msgstr "Ota käyttöön läpinäkyvyysvälimuisti"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-08-10 01:11+0300\n"
-"PO-Revision-Date: 2011-08-08 01:29+0000\n"
+"PO-Revision-Date: 2011-08-09 22:47+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.net/projects/p/manaplus/team/"
 "id/)\n"
@@ -2115,9 +2115,8 @@ msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 
 #: src/gui/setup_perfomance.cpp:80
-#, fuzzy
 msgid "Enable reorder sprites."
-msgstr "Perbolehkan jendela transkaksi/trade"
+msgstr ""
 
 #: src/gui/setup_perfomance.cpp:83
 msgid "Small memory (enable for lower memory usage)"
@@ -2204,9 +2203,8 @@ msgid "Old"
 msgstr "Lama"
 
 #: src/gui/setup_relations.cpp:246
-#, fuzzy
 msgid "Relations"
-msgstr "Hubungan"
+msgstr ""
 
 #: src/gui/setup_relations.cpp:271
 msgid "When ignoring:"
@@ -4235,7 +4233,7 @@ msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:63
 msgid "Strength:"
-msgstr ""
+msgstr "Kekuatan"
 
 #: src/net/ea/charserverhandler.cpp:64
 msgid "Agility:"
@@ -4243,15 +4241,15 @@ msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:65
 msgid "Vitality:"
-msgstr ""
+msgstr "Daya/Tenaga Hidup"
 
 #: src/net/ea/charserverhandler.cpp:66
 msgid "Intelligence:"
-msgstr ""
+msgstr "Kecerdasan"
 
 #: src/net/ea/charserverhandler.cpp:67
 msgid "Dexterity:"
-msgstr ""
+msgstr "Ketangkasan"
 
 #: src/net/ea/charserverhandler.cpp:68
 msgid "Luck:"
@@ -4262,9 +4260,8 @@ msgid "Access denied. Most likely, there are too many players on this server."
 msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:106
-#, fuzzy
 msgid "Cannot use this ID."
-msgstr "Tidak dapat mengirimkan pesan tanpa nama"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:109
 msgid "Unknown char-server failure."
@@ -4279,33 +4276,28 @@ msgid "Wrong name."
 msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:145
-#, fuzzy
 msgid "Incorrect stats."
-msgstr "Sandi tidak benar"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:148
-#, fuzzy
 msgid "Incorrect hair."
-msgstr "Sandi tidak benar"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:151
-#, fuzzy
 msgid "Incorrect slot."
-msgstr "Sandi tidak benar"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:166 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
 msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:166
-#, fuzzy
 msgid "Character deleted."
-msgstr "Konfirmasi penghapusan karakter"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:172
-#, fuzzy
 msgid "Failed to delete character."
-msgstr "Masukan Sandi untuk menghapus karakter"
+msgstr ""
 
 #: src/net/ea/chathandler.cpp:60 src/net/ea/chathandler.cpp:66
 #: src/net/ea/chathandler.cpp:71 src/net/ea/chathandler.cpp:77
@@ -4320,19 +4312,17 @@ msgid "Whisper could not be sent, %s is offline."
 msgstr ""
 
 #: src/net/ea/chathandler.cpp:136
-#, fuzzy, c-format
+#, c-format
 msgid "Whisper could not be sent, ignored by %s."
-msgstr "Pemain tidak dapat diabaikan"
+msgstr ""
 
 #: src/net/ea/chathandler.cpp:348
-#, fuzzy
 msgid "MVP player."
-msgstr "Pemain"
+msgstr ""
 
 #: src/net/ea/chathandler.cpp:352
-#, fuzzy
 msgid "MVP player: "
-msgstr "Pemain"
+msgstr ""
 
 #: src/net/ea/gamehandler.cpp:86
 #, c-format
@@ -4344,23 +4334,20 @@ msgid "Game"
 msgstr ""
 
 #: src/net/ea/gamehandler.cpp:98
-#, fuzzy
 msgid "Request to quit denied!"
-msgstr "Meminta untuk menukar"
+msgstr ""
 
 #: src/net/ea/gui/guildtab.cpp:67 src/net/ea/gui/partytab.cpp:83
-#, fuzzy
 msgid "Command: /invite <nick>"
-msgstr "perintah: /unignore <nama pemain>"
+msgstr ""
 
 #: src/net/ea/gui/guildtab.cpp:68
 msgid "This command invites <nick> to the guild you're in."
 msgstr ""
 
 #: src/net/ea/gui/guildtab.cpp:74 src/net/ea/gui/partytab.cpp:90
-#, fuzzy
 msgid "Command: /leave"
-msgstr "Perintah:"
+msgstr ""
 
 #: src/net/ea/gui/guildtab.cpp:75
 msgid "This command causes the player to leave the guild."
@@ -4388,7 +4375,7 @@ msgstr ""
 
 #: src/net/ea/guildhandler.cpp:88 src/net/ea/guildhandler.cpp:93
 msgid "You are already in guild."
-msgstr ""
+msgstr "Kamu sudah berada di dalam organisasi"
 
 #: src/net/ea/guildhandler.cpp:98
 msgid "Emperium check failed."
@@ -4399,19 +4386,19 @@ msgid "Unknown server response."
 msgstr ""
 
 #: src/net/ea/guildhandler.cpp:180
-#, fuzzy, c-format
+#, c-format
 msgid "Guild name: %s"
-msgstr "Organisasi: %s"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:182
-#, fuzzy, c-format
+#, c-format
 msgid "Guild master: %s"
-msgstr "Organisasi: %s"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:184
-#, fuzzy, c-format
+#, c-format
 msgid "Guild level: %d"
-msgstr "Tingkatan: %d"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:186
 #, c-format
@@ -4424,14 +4411,14 @@ msgid "Max members: %d"
 msgstr ""
 
 #: src/net/ea/guildhandler.cpp:190
-#, fuzzy, c-format
+#, c-format
 msgid "Average level: %d"
-msgstr "Level sihir:"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:192
-#, fuzzy, c-format
+#, c-format
 msgid "Guild exp: %d"
-msgstr "Organisasi: %s"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:194
 #, c-format
@@ -4439,14 +4426,13 @@ msgid "Guild next exp: %d"
 msgstr ""
 
 #: src/net/ea/guildhandler.cpp:196
-#, fuzzy, c-format
+#, c-format
 msgid "Guild castle: %s"
-msgstr "Organisasi: %s"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:402
-#, fuzzy
 msgid "Could not inivte user to guild."
-msgstr "Pengguna yang diajak %s ke organisasi %s."
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:406
 msgid "User rejected guild invite."
@@ -4474,14 +4460,13 @@ msgid "%s has left your guild."
 msgstr ""
 
 #: src/net/ea/guildhandler.cpp:483
-#, fuzzy
 msgid "You was kicked from guild."
-msgstr "Keluarkan dari organisasi"
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:496
-#, fuzzy, c-format
+#, c-format
 msgid "%s has kicked from your guild."
-msgstr "Keluarkan dari organisasi"
+msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:70
 msgid "/invite > Invite a player to your party"
@@ -4505,16 +4490,15 @@ msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:84
 msgid "This command invites <nick> to party with you."
-msgstr ""
+msgstr "perintah ini mengundang <nama> untuk menjadi bagian kelompok anda"
 
 #: src/net/ea/gui/partytab.cpp:91
 msgid "This command causes the player to leave the party."
 msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:95
-#, fuzzy
 msgid "Command: /item <policy>"
-msgstr "perintah: /unignore <nama pemain>"
+msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:97
 msgid "This command changes the party's item sharing policy."
@@ -4527,18 +4511,16 @@ msgid ""
 msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:101
-#, fuzzy
 msgid "Command: /item"
-msgstr "Perintah:"
+msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:102
 msgid "This command displays the party's current item sharing policy."
 msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:107
-#, fuzzy
 msgid "Command: /exp <policy>"
-msgstr "perintah: /unignore <nama pemain>"
+msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:108
 msgid "This command changes the party's experience sharing policy."
@@ -4551,9 +4533,8 @@ msgid ""
 msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:113
-#, fuzzy
 msgid "Command: /exp"
-msgstr "Perintah:"
+msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:114
 msgid "This command displays the party's current experience sharing policy."
@@ -4592,14 +4573,12 @@ msgid "Experience sharing unknown."
 msgstr ""
 
 #: src/net/ea/inventoryhandler.cpp:407
-#, fuzzy
 msgid "Failed to use item."
-msgstr "Mencoba mengambil item yang tidak lagi ada"
+msgstr ""
 
 #: src/net/ea/inventoryhandler.cpp:580
-#, fuzzy
 msgid "Unable to equip."
-msgstr "Lepaskan"
+msgstr ""
 
 #: src/net/ea/loginhandler.cpp:131
 msgid "Account was not found. Please re-login."
@@ -4621,14 +4600,12 @@ msgid "Unknown error."
 msgstr ""
 
 #: src/net/ea/loginhandler.cpp:205
-#, fuzzy
 msgid "Unregistered ID."
-msgstr "Tidak jadi mendaftar"
+msgstr ""
 
 #: src/net/ea/loginhandler.cpp:208
-#, fuzzy
 msgid "Wrong password."
-msgstr "Masukkan sandi"
+msgstr ""
 
 #: src/net/ea/loginhandler.cpp:211
 msgid "Account expired."
@@ -4645,7 +4622,7 @@ msgstr ""
 
 #: src/net/ea/loginhandler.cpp:221
 msgid "Client too old."
-msgstr ""
+msgstr "Versi yang digunakan sudah kadaluarsa."
 
 #: src/net/ea/loginhandler.cpp:224
 #, c-format
@@ -4656,7 +4633,7 @@ msgstr ""
 
 #: src/net/ea/loginhandler.cpp:231
 msgid "Server overpopulated."
-msgstr ""
+msgstr "Server kepenuhan."
 
 #: src/net/ea/loginhandler.cpp:234
 msgid "This user name is already taken."
@@ -4664,21 +4641,20 @@ msgstr ""
 
 #: src/net/ea/loginhandler.cpp:240
 msgid "Username permanently erased."
-msgstr ""
+msgstr "Username dihapus permanen."
 
 #: src/net/ea/partyhandler.cpp:82
 msgid "Could not create party."
 msgstr ""
 
 #: src/net/ea/partyhandler.cpp:84
-#, fuzzy
 msgid "Party successfully created."
-msgstr "Pemain telah berhasil dihapus"
+msgstr ""
 
 #: src/net/ea/partyhandler.cpp:140
 #, c-format
 msgid "%s has joined your party."
-msgstr ""
+msgstr "%s telah bergabung dengan kelompok"
 
 #: src/net/ea/partyhandler.cpp:176
 #, c-format
@@ -4698,7 +4674,7 @@ msgstr ""
 #: src/net/ea/partyhandler.cpp:191
 #, c-format
 msgid "%s can't join your party because party is full."
-msgstr ""
+msgstr "%s tidak dapat bergabung dengan kelompok karena kelompok sudah penuh."
 
 #: src/net/ea/partyhandler.cpp:196
 #, c-format
@@ -4785,9 +4761,8 @@ msgid "You're not dead yet. You're just resting."
 msgstr ""
 
 #: src/net/ea/playerhandler.cpp:120
-#, fuzzy
 msgid "You are no more."
-msgstr "Anda tidak memiliki cukup uang."
+msgstr ""
 
 #: src/net/ea/playerhandler.cpp:121
 msgid "You have ceased to be."
@@ -4828,9 +4803,8 @@ msgid ""
 msgstr ""
 
 #: src/net/ea/playerhandler.cpp:131
-#, fuzzy
 msgid "You are an ex-player."
-msgstr "Target pemain yang mati"
+msgstr ""
 
 #: src/net/ea/playerhandler.cpp:132
 msgid "You're pining for the fjords."
@@ -4838,9 +4812,8 @@ msgstr ""
 
 #: src/net/ea/playerhandler.cpp:336 src/net/ea/playerhandler.cpp:346
 #: src/net/ea/playerhandler.cpp:425
-#, fuzzy
 msgid "Message"
-msgstr "Pesan"
+msgstr ""
 
 #: src/net/ea/playerhandler.cpp:337
 msgid ""
@@ -4850,6 +4823,8 @@ msgstr ""
 #: src/net/ea/playerhandler.cpp:347
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
+"Kamu membawa kurang dari setengah jumlah berat maksimal. Darah dapat "
+"beregenerasi."
 
 #: src/net/ea/playerhandler.cpp:451
 #, c-format
@@ -4857,18 +4832,17 @@ msgid "You picked up %s."
 msgstr ""
 
 #: src/net/ea/playerhandler.cpp:457
-#, fuzzy, c-format
+#, c-format
 msgid "You spent %s."
-msgstr "Kamu mendapatkan %s"
+msgstr ""
 
 #: src/net/ea/playerhandler.cpp:501
 msgid "Cannot raise skill!"
 msgstr ""
 
 #: src/net/ea/playerhandler.cpp:618
-#, fuzzy
 msgid "Equip arrows first."
-msgstr "Copot lebih dahulu"
+msgstr ""
 
 #: src/net/ea/specialhandler.cpp:149
 msgid "Trade failed!"
@@ -4879,19 +4853,16 @@ msgid "Emote failed!"
 msgstr ""
 
 #: src/net/ea/specialhandler.cpp:155
-#, fuzzy
 msgid "Sit failed!"
-msgstr "Gagal menyimpan screenshot!"
+msgstr ""
 
 #: src/net/ea/specialhandler.cpp:158
-#, fuzzy
 msgid "Chat creating failed!"
-msgstr "Gagal menyimpan screenshot!"
+msgstr ""
 
 #: src/net/ea/specialhandler.cpp:161
-#, fuzzy
 msgid "Could not join party!"
-msgstr "Tidak dapat menampilkan peta"
+msgstr ""
 
 #: src/net/ea/specialhandler.cpp:164
 msgid "Cannot shout!"
@@ -4910,13 +4881,12 @@ msgid "Insufficient SP!"
 msgstr ""
 
 #: src/net/ea/specialhandler.cpp:187
-#, fuzzy
 msgid "You have no memos!"
-msgstr "Anda tidak memiliki cukup uang."
+msgstr ""
 
 #: src/net/ea/specialhandler.cpp:190
 msgid "You cannot do that right now!"
-msgstr ""
+msgstr "Anda tidak dapat melakukannya sekarang"
 
 #: src/net/ea/specialhandler.cpp:193
 msgid "Seems you need more money... ;-)"
@@ -4924,7 +4894,7 @@ msgstr ""
 
 #: src/net/ea/specialhandler.cpp:196
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr ""
+msgstr "Tidak dapat menggunakan skill tersebut dengan senjata tersebut"
 
 #: src/net/ea/specialhandler.cpp:200
 msgid "You need another red gem!"
@@ -4972,9 +4942,9 @@ msgid "Trade cancelled due to an unknown reason."
 msgstr ""
 
 #: src/net/ea/tradehandler.cpp:146
-#, fuzzy, c-format
+#, c-format
 msgid "Trade: You and %s"
-msgstr "Tukar: Anda"
+msgstr ""
 
 #: src/net/ea/tradehandler.cpp:156
 #, c-format
@@ -4995,7 +4965,7 @@ msgstr ""
 
 #: src/net/ea/tradehandler.cpp:241
 msgid "Failed adding item. You can't trade this item."
-msgstr ""
+msgstr "Gagal menambahkan barang. Kamu tidak dapat menukar barang ini."
 
 #: src/net/ea/tradehandler.cpp:245
 msgid "Failed adding item for unknown reason."
