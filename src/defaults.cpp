@@ -213,6 +213,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableAlphaFix", false);
     AddDEF(configData, "disableAdvBeingCaching", false);
     AddDEF(configData, "disableBeingCaching", false);
+    AddDEF(configData, "enableReorderSprites", true);
     return configData;
 }
 

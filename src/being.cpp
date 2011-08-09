@@ -196,6 +196,7 @@ bool Being::mShowOwnHP = false;
 bool Being::mShowGender = false;
 bool Being::mShowLevel = false;
 bool Being::mShowPlayersStatus = false;
+bool Being::mEnableReorderSprites = true;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 
@@ -1750,6 +1751,7 @@ void Being::reReadConfig()
         mShowGender = config.getBoolValue("showgender");
         mShowLevel = config.getBoolValue("showlevel");
         mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
+        mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
 
         mUpdateConfigTime = cur_time;
     }
@@ -2073,6 +2075,9 @@ void Being::resetCounters()
 
 void Being::recalcSpritesOrder()
 {
+    if (!mEnableReorderSprites)
+        return;
+
 //    logger->log("recalcSpritesOrder");
     unsigned sz = static_cast<unsigned>(size());
     if (sz < 1)

@@ -873,6 +873,7 @@ class Being : public ActorSprite, public ConfigListener
         static bool mShowGender;
         static bool mShowLevel;
         static bool mShowPlayersStatus;
+        static bool mEnableReorderSprites;
 
         unsigned int mMoveTime;
         unsigned int mAttackTime;
