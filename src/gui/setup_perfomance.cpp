@@ -52,7 +52,8 @@ Setup_Perfomance::Setup_Perfomance()
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
-    new SetupItemLabel(_("Better perfomance (enable for better perfomance)"), "", this);
+    new SetupItemLabel(_("Better perfomance (enable for better perfomance)"),
+        "", this);
 
     new SetupItemCheckBox(_("Auto adjust perfomance"), "",
         "adjustPerfomance", this, "adjustPerfomanceEvent");
@@ -69,16 +70,18 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
         "enableMapReduce", this, "enableMapReduceEvent");
 
-    new SetupItemLabel(_("Better quality (disable for better perfomance)"), "", this);
+    new SetupItemLabel(_("Better quality (disable for better perfomance)"),
+        "", this);
 
-    new SetupItemCheckBox(_("Enable alpha channel fix (Software, can be very slow)"),
-        "Can slow down drawing", "enableAlphaFix",
+    new SetupItemCheckBox(_("Enable alpha channel fix (Software, can "
+        "be very slow)"), "Can slow down drawing", "enableAlphaFix",
         this, "enableAlphaFixEvent");
 
     new SetupItemCheckBox(_("Enable reorder sprites."), "",
         "enableReorderSprites", this, "enableReorderSpritesEvent");
 
-    new SetupItemLabel(_("Small memory (enable for lower memory usage)"), "", this);
+    new SetupItemLabel(_("Small memory (enable for lower memory usage)"),
+         "", this);
 
     new SetupItemCheckBox(_("Disable advanced beings caching (Software)"), "",
         "disableAdvBeingCaching", this, "disableAdvBeingCachingEvent");
