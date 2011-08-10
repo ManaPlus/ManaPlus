@@ -124,6 +124,9 @@ std::string ServersListModel::getElementAt(int elementIndex)
 
 void ServersListModel::setVersionString(int index, const std::string &version)
 {
+    if (index >= mVersionStrings.size())
+        return;
+
     if (version.empty())
     {
         mVersionStrings[index] = VersionString(0, "");
@@ -604,6 +607,13 @@ void ServerDialog::downloadServerList()
     if (listFile.empty())
         listFile = "http://manasource.org/serverlist.xml";
 
+    if (mDownload)
+    {
+        mDownload->cancel();
+        delete mDownload;
+        mDownload = 0;
+    }
+
     mDownload = new Net::Download(this, listFile, &downloadUpdate);
     mDownload->setFile(mDir + "/serverlist.xml");
     mDownload->start();
@@ -702,7 +712,6 @@ void ServerDialog::loadServers(bool addNew)
                 break;
             }
         }
-
         if (!found && addNew)
             mServers.push_back(server);
     }
