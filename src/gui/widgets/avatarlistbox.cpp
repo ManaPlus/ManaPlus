@@ -366,8 +366,10 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)
         {
-            chatWindow->addWhisperTab(model->getAvatarAt(selected)
-                                      ->getName(), true);
+            ChatTab *tab = chatWindow->addWhisperTab(
+                model->getAvatarAt(selected)->getName(), true);
+            if (chatWindow && tab)
+                chatWindow->saveState();
         }
     }
 }

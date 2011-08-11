@@ -403,8 +403,14 @@ void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
 
 void CommandHandler::handleQuery(const std::string &args, ChatTab *tab)
 {
-    if (chatWindow && chatWindow->addWhisperTab(args, true))
-        return;
+    if (chatWindow)
+    {
+        if (chatWindow->addWhisperTab(args, true))
+        {
+            chatWindow->saveState();
+            return;
+        }
+    }
 
     tab->chatLog(strprintf(_("Cannot create a whisper tab for nick \"%s\"! "
         "It either already exists, or is you."),
@@ -736,14 +742,20 @@ void CommandHandler::handleCloseAll(const std::string &args A_UNUSED,
                                     ChatTab *tab A_UNUSED)
 {
     if (chatWindow)
+    {
         chatWindow->removeAllWhispers();
+        chatWindow->saveState();
+    }
 }
 
 void CommandHandler::handleIgnoreAll(const std::string &args A_UNUSED,
                                      ChatTab *tab A_UNUSED)
 {
     if (chatWindow)
+    {
         chatWindow->ignoreAllWhispers();
+        chatWindow->saveState();
+    }
 }
 
 void CommandHandler::handleOutfit(const std::string &args,

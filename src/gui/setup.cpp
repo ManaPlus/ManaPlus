@@ -22,6 +22,7 @@
 
 #include "gui/setup.h"
 
+#include "chatwindow.h"
 #include "configuration.h"
 #include "game.h"
 #include "main.h"
@@ -149,6 +150,8 @@ void Setup::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "Store")
     {
+        if (chatWindow)
+            chatWindow->saveState();
         config.write();
         serverConfig.write();
     }
