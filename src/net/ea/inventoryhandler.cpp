@@ -275,7 +275,7 @@ void InventoryHandler::processPlayerStorageEquip(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 {
     int index, amount, itemId, equipType, refine;
-    int cards[4], itemType;
+//    int cards[4], itemType;
     unsigned char identified;
     int floorId;
 
@@ -296,9 +296,9 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     msg.readInt8();  // attribute
     refine = msg.readInt8();
     for (int i = 0; i < 4; i++)
-        cards[i] = msg.readInt16();
+        msg.readInt16(); // cards[i]
     equipType = msg.readInt16();
-    itemType = msg.readInt8();
+    msg.readInt8(); // itemType
 
     const ItemInfo &itemInfo = ItemDB::get(itemId);
 
