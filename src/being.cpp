@@ -263,7 +263,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     if (mType == PLAYER)
         mShowName = config.getBoolValue("visiblenames");
-    else
+    else if (mType != NPC)
         mGotComment = true;
 
     config.addListener("visiblenames", this);
@@ -2363,13 +2363,26 @@ void Being::updateComment()
         return;
 
     mGotComment = true;
-    mComment = loadComment(mName);
+    mComment = loadComment(mName, mType);
 }
 
-std::string Being::loadComment(const std::string &name)
+std::string Being::loadComment(const std::string &name, int type)
 {
-    std::string str = Client::getUsersDirectory()
-        + stringToHexPath(name) + "/comment.txt";
+    std::string str;
+    switch (type)
+    {
+        case PLAYER:
+            str = Client::getUsersDirectory();
+            break;
+        case NPC:
+            str = Client::getNpcsDirectory();
+            break;
+        default:
+            return "";
+    }
+
+    str += stringToHexPath(name) + "/comment.txt";
+    logger->log("load from: %s", str.c_str());
     std::vector<std::string> lines;
 
     ResourceManager *resman = ResourceManager::getInstance();
@@ -2383,10 +2396,22 @@ std::string Being::loadComment(const std::string &name)
 }
 
 void Being::saveComment(const std::string &name,
-                        const std::string &comment)
+                        const std::string &comment, int type)
 {
-    std::string dir = Client::getUsersDirectory()
-        + stringToHexPath(name);
+    std::string dir;
+    switch (type)
+    {
+        case PLAYER:
+            dir = Client::getUsersDirectory();
+            break;
+        case NPC:
+            dir = Client::getNpcsDirectory();
+            break;
+        default:
+            return;
+    }
+    dir += stringToHexPath(name);
+    logger->log("save to: %s", dir.c_str());
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }

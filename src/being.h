@@ -741,10 +741,10 @@ class Being : public ActorSprite, public ConfigListener
 
         static void clearCache();
 
-        static std::string loadComment(const std::string &name);
+        static std::string loadComment(const std::string &name, int type);
 
         static void saveComment(const std::string &name,
-                                const std::string &comment);
+                                const std::string &comment, int type);
 
         bool isAdvanced()
         { return mAdvanced; }

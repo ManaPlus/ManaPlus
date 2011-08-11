@@ -22,6 +22,7 @@
 
 #include "gui/popupmenu.h"
 
+#include "actorsprite.h"
 #include "actorspritemanager.h"
 #include "being.h"
 #include "dropshortcut.h"
@@ -94,7 +95,8 @@ PopupMenu::PopupMenu():
     mSpell(0),
     mDialog(0),
     mButton(0),
-    mNick("")
+    mNick(""),
+    mType(Being::UNKNOWN)
 {
     mBrowserBox = new BrowserBox;
     mBrowserBox->setPosition(4, 4);
@@ -105,6 +107,7 @@ PopupMenu::PopupMenu():
     mRenameListener.setDialog(0);
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(0);
+    mPlayerListener.setType(Being::UNKNOWN);
 
     add(mBrowserBox);
 }
@@ -116,6 +119,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
 
     mBeingId = being->getId();
     mNick = being->getName();
+    mType = being->getType();
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -278,6 +282,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
             mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
             mBrowserBox->addRow("##3---");
             mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
+            mBrowserBox->addRow(strprintf("@@addcomment|%s@@",
+                _("Add comment")));
             break;
 
         case ActorSprite::MONSTER:
@@ -359,6 +365,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
 
     mNick = nick;
     mBeingId = 0;
+    mType = Being::PLAYER;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -599,6 +606,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         {
             mBeingId = being->getId();
             mNick = being->getName();
+            mType = being->getType();
 
             mBrowserBox->addRow(strprintf("@@trade|%s@@", _("Trade")));
             mBrowserBox->addRow(strprintf("@@attack|%s@@", _("Attack")));
@@ -728,6 +736,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         else
         {
             mNick = name;
+            mType = Being::PLAYER;
             mBrowserBox->addRow(strprintf(
                 "@@addcomment|%s@@", _("Add comment")));
             mBrowserBox->addRow("##3---");
@@ -768,6 +777,7 @@ void PopupMenu::showChangePos(int x, int y)
         mItem = 0;
         mMapItem = 0;
         mNick = "";
+        mType = Being::UNKNOWN;
         setVisible(false);
     }
 }
@@ -1220,6 +1230,7 @@ void PopupMenu::handleLink(const std::string &link,
             _("Comment:                      "));
         mPlayerListener.setDialog(dialog);
         mPlayerListener.setNick(mNick);
+        mPlayerListener.setType(mType);
 
         if (being)
         {
@@ -1228,7 +1239,7 @@ void PopupMenu::handleLink(const std::string &link,
         }
         else
         {
-            dialog->setText(Being::loadComment(mNick));
+            dialog->setText(Being::loadComment(mNick, mType));
         }
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
@@ -1560,6 +1571,7 @@ void PopupMenu::handleLink(const std::string &link,
     mItemColor = 1;
     mMapItem = 0;
     mNick = "";
+    mType = Being::UNKNOWN;
 }
 
 void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
@@ -1870,6 +1882,7 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
         return;
 
     mNick = name;
+    mType = Being::MONSTER;
 
     mBrowserBox->clearRows();
 
@@ -2001,7 +2014,8 @@ void RenameListener::action(const gcn::ActionEvent &event)
 
 PlayerListener::PlayerListener() :
     mNick(""),
-    mDialog(0)
+    mDialog(0),
+    mType(Being::UNKNOWN)
 {
 }
 
@@ -2011,10 +2025,10 @@ void PlayerListener::action(const gcn::ActionEvent &event)
     {
         std::string comment = mDialog->getText();
         Being* being  = actorSpriteManager->findBeingByName(
-            mNick, Being::PLAYER);
+            mNick, (ActorSprite::Type)mType);
         if (being)
             being->setComment(comment);
-        Being::saveComment(mNick, comment);
+        Being::saveComment(mNick, comment, mType);
     }
     mDialog = 0;
 }

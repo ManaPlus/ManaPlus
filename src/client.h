@@ -226,6 +226,8 @@ public:
 
     static const std::string getUsersDirectory();
 
+    static const std::string getNpcsDirectory();
+
     static bool getIsMinimized()
     { return instance()->mIsMinimized; }
 
@@ -303,6 +305,7 @@ private:
     std::string mScreenshotDir;
     std::string mServerConfigDir;
     std::string mUsersDir;
+    std::string mNpcsDir;
     std::string mRootDir;
     std::string mServerName;
 

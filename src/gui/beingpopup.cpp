@@ -89,6 +89,12 @@ void BeingPopup::show(int x, int y, Being *b)
 
     b->updateComment();
 
+    if (b->getType() == Being::NPC && b->getComment().empty())
+    {
+        setVisible(false);
+        return;
+    }
+
     mBeingName->setCaption(b->getName() + b->getGenderSignWithSpace());
     if (gui)
     {

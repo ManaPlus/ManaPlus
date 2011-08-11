@@ -684,7 +684,8 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     const int y = getMouseY() + static_cast<int>(mPixelViewY);
 
     mHoverBeing = actorSpriteManager->findBeingByPixel(x, y, true);
-    if (mHoverBeing && mHoverBeing->getType() == Being::PLAYER)
+    if (mHoverBeing && (mHoverBeing->getType() == Being::PLAYER
+        || mHoverBeing->getType() == Being::NPC))
     {
         mTextPopup->setVisible(false);
         if (mShowBeingPopup)

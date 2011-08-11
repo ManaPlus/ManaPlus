@@ -240,6 +240,7 @@ Client::Client(const Options &options):
     mOptions(options),
     mServerConfigDir(""),
     mUsersDir(""),
+    mNpcsDir(""),
     mRootDir(""),
     mCurrentDialog(0),
     mQuitDialog(0),
@@ -1917,6 +1918,13 @@ void Client::initUsersDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mUsersDir.c_str()));
     }
+
+    mNpcsDir = Client::getServerConfigDirectory() + "/npcs/";
+    if (mkdir_r(mNpcsDir.c_str()))
+    {
+        logger->error(strprintf(_("%s doesn't exist and can't be created! "
+            "Exiting."), mNpcsDir.c_str()));
+    }
 }
 
 void Client::initPacketLimiter()
@@ -2135,6 +2143,11 @@ const std::string Client::getServerConfigDirectory()
 const std::string Client::getUsersDirectory()
 {
     return instance()->mUsersDir;
+}
+
+const std::string Client::getNpcsDirectory()
+{
+    return instance()->mNpcsDir;
 }
 
 void Client::setGuiAlpha(float n)
