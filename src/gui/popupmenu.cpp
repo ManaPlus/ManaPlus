@@ -1245,26 +1245,38 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "enable highlight" && mTab)
     {
         mTab->setAllowHighlight(true);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "disable highlight" && mTab)
     {
         mTab->setAllowHighlight(false);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "dont remove name" && mTab)
     {
         mTab->setRemoveNames(false);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "remove name" && mTab)
     {
         mTab->setRemoveNames(true);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "disable away" && mTab)
     {
         mTab->setNoAway(true);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "enable away" && mTab)
     {
         mTab->setNoAway(false);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "remove attack" && being)
     {
