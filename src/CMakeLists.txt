@@ -197,8 +197,8 @@ SET(SRCS
     gui/widgets/tab.h
     gui/widgets/tabbedarea.cpp
     gui/widgets/tabbedarea.h
-    gui/widgets/table.cpp
-    gui/widgets/table.h
+    gui/widgets/guitable.cpp
+    gui/widgets/guitable.h
     gui/widgets/tablemodel.cpp
     gui/widgets/tablemodel.h
     gui/widgets/textbox.cpp

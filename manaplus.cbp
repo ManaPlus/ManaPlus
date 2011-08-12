@@ -365,8 +365,8 @@
 		<Unit filename="src\gui\widgets\tab.h" />
 		<Unit filename="src\gui\widgets\tabbedarea.cpp" />
 		<Unit filename="src\gui\widgets\tabbedarea.h" />
-		<Unit filename="src\gui\widgets\table.cpp" />
-		<Unit filename="src\gui\widgets\table.h" />
+		<Unit filename="src\gui\widgets\guitable.cpp" />
+		<Unit filename="src\gui\widgets\guitable.h" />
 		<Unit filename="src\gui\widgets\tablemodel.cpp" />
 		<Unit filename="src\gui\widgets\tablemodel.h" />
 		<Unit filename="src\gui\widgets\textbox.cpp" />

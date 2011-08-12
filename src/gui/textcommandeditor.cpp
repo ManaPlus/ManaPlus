@@ -38,7 +38,7 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/radiobutton.h"
-#include "gui/widgets/table.h"
+#include "gui/widgets/guitable.h"
 #include "gui/widgets/textfield.h"
 
 #include "configuration.h"

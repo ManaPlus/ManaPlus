@@ -36,7 +36,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/table.h"
+#include "gui/widgets/guitable.h"
 
 #include "actorspritemanager.h"
 #include "configuration.h"
