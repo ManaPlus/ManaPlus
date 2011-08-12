@@ -46,7 +46,7 @@
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/killstats.h"
-#include "gui/ministatus.h"
+#include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/palette.h"

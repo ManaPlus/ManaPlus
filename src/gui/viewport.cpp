@@ -36,7 +36,7 @@
 #include "gui/beingpopup.h"
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
-#include "gui/ministatus.h"
+#include "gui/ministatuswindow.h"
 #include "gui/popupmenu.h"
 #include "gui/statuspopup.h"
 #include "gui/textpopup.h"

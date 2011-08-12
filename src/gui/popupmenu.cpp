@@ -44,7 +44,7 @@
 #include "gui/equipmentwindow.h"
 #include "gui/inventorywindow.h"
 #include "gui/itemamountwindow.h"
-#include "gui/ministatus.h"
+#include "gui/ministatuswindow.h"
 #include "gui/outfitwindow.h"
 #include "gui/selldialog.h"
 #include "gui/socialwindow.h"

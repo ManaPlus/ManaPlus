@@ -270,8 +270,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/logindialog.h \
 	      gui/minimap.cpp \
 	      gui/minimap.h \
-	      gui/ministatus.cpp \
-	      gui/ministatus.h \
+	      gui/ministatuswindow.cpp \
+	      gui/ministatuswindow.h \
 	      gui/npcdialog.cpp \
 	      gui/npcdialog.h \
 	      gui/npcpostdialog.cpp \

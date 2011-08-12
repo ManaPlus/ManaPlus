@@ -26,7 +26,7 @@
 #include "localplayer.h"
 #include "logger.h"
 
-#include "gui/ministatus.h"
+#include "gui/ministatuswindow.h"
 
 #include "net/messagein.h"
 
