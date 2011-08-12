@@ -1039,174 +1039,184 @@ void Game::handleInput()
             if (keyboard.isEnabled()
                 && !chatWindow->isInputFocused()
                 && !NpcDialog::isAnyInputFocused()
-                && !setupWindow->isVisible()
                 && !player_node->getAwayMode()
                 && !keyboard.isKeyActive(keyboard.KEY_TARGET))
             {
                 const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
 
-                // Do not activate shortcuts if tradewindow is visible
-                if (itemShortcutWindow && !tradeWindow->isVisible()
-                    && !setupWindow->isVisible())
+                if (setupWindow->isVisible())
                 {
-                    int num = itemShortcutWindow->getTabIndex();
-                    if (num >= 0 && num < SHORTCUT_TABS)
+                    if (tKey == KeyboardConfig::KEY_WINDOW_SETUP)
                     {
-                        // Checks if any item shortcut is pressed.
-                        for (int i = KeyboardConfig::KEY_SHORTCUT_1;
-                                 i <= KeyboardConfig::KEY_SHORTCUT_20;
-                                 i++)
+                        setupWindow->doCancel();
+                        used = true;
+                    }
+                }
+                else
+                {
+                    // Do not activate shortcuts if tradewindow is visible
+                    if (itemShortcutWindow && !tradeWindow->isVisible()
+                        && !setupWindow->isVisible())
+                    {
+                        int num = itemShortcutWindow->getTabIndex();
+                        if (num >= 0 && num < SHORTCUT_TABS)
                         {
-                            if (tKey == i && !used)
+                            // Checks if any item shortcut is pressed.
+                            for (int i = KeyboardConfig::KEY_SHORTCUT_1;
+                                 i <= KeyboardConfig::KEY_SHORTCUT_20;
+                                 i ++)
                             {
-                                itemShortcut[num]->useItem(
-                                    i - KeyboardConfig::KEY_SHORTCUT_1);
-                                break;
+                                if (tKey == i && !used)
+                                {
+                                    itemShortcut[num]->useItem(
+                                        i - KeyboardConfig::KEY_SHORTCUT_1);
+                                    break;
+                                }
                             }
                         }
                     }
-                }
 
-                switch (tKey)
-                {
-                    case KeyboardConfig::KEY_PICKUP:
-                        player_node->pickUpItems();
-                        used = true;
-                        break;
-                    case KeyboardConfig::KEY_SIT:
-                        // Player sit action
-                        if (keyboard.isKeyActive(keyboard.KEY_EMOTE))
-                            player_node->updateSit();
-                        else
-                            player_node->toggleSit();
-                        used = true;
-                        break;
-                    case KeyboardConfig::KEY_HIDE_WINDOWS:
-                        // Hide certain windows
-                        if (!chatWindow->isInputFocused())
+                    switch (tKey)
+                    {
+                        case KeyboardConfig::KEY_PICKUP:
+                            player_node->pickUpItems();
+                            used = true;
+                            break;
+                        case KeyboardConfig::KEY_SIT:
+                            // Player sit action
+                            if (keyboard.isKeyActive(keyboard.KEY_EMOTE))
+                                player_node->updateSit();
+                            else
+                                player_node->toggleSit();
+                            used = true;
+                            break;
+                        case KeyboardConfig::KEY_HIDE_WINDOWS:
+                            // Hide certain windows
+                            if (!chatWindow->isInputFocused())
+                            {
+                                statusWindow->setVisible(false);
+                                inventoryWindow->setVisible(false);
+                                shopWindow->setVisible(false);
+                                skillDialog->setVisible(false);
+                                setupWindow->setVisible(false);
+                                equipmentWindow->setVisible(false);
+                                helpWindow->setVisible(false);
+                                debugWindow->setVisible(false);
+                                outfitWindow->setVisible(false);
+                                dropShortcutWindow->setVisible(false);
+                                spellShortcutWindow->setVisible(false);
+                                botCheckerWindow->setVisible(false);
+                                socialWindow->setVisible(false);
+                            }
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_STATUS:
+                            requestedWindow = statusWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_INVENTORY:
+                            requestedWindow = inventoryWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_SHOP:
+                            requestedWindow = shopWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_EQUIPMENT:
+                            requestedWindow = equipmentWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_SKILL:
+                            requestedWindow = skillDialog;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_KILLS:
+                            requestedWindow = killStats;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_MINIMAP:
+                            minimap->toggle();
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_CHAT:
+                            requestedWindow = chatWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_SHORTCUT:
+                            requestedWindow = itemShortcutWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_SETUP:
+                            requestedWindow = setupWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_DEBUG:
+                            requestedWindow = debugWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_SOCIAL:
+                            requestedWindow = socialWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_EMOTE_SHORTCUT:
+                            requestedWindow = emoteShortcutWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_OUTFIT:
+                            requestedWindow = outfitWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_DROP:
+                            requestedWindow = dropShortcutWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_SPELLS:
+                            requestedWindow = spellShortcutWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_BOT_CHECKER:
+                            requestedWindow = botCheckerWindow;
+                            break;
+                        case KeyboardConfig::KEY_WINDOW_ONLINE:
+                            requestedWindow = whoIsOnline;
+                            break;
+                        case KeyboardConfig::KEY_SCREENSHOT:
+                            // Screenshot (picture, hence the p)
+                            saveScreenshot();
+                            used = true;
+                            break;
+                        case KeyboardConfig::KEY_PATHFIND:
+                            // Find path to mouse (debug purpose)
+                            if (!player_node->getDisableGameModifiers())
+                            {
+                                if (viewport)
+                                    viewport->toggleDebugPath();
+                                if (miniStatusWindow)
+                                    miniStatusWindow->updateStatus();
+                                if (mCurrentMap)
+                                    mCurrentMap->redrawMap();
+                                used = true;
+                            }
+                            break;
+                        case KeyboardConfig::KEY_TRADE:
                         {
-                            statusWindow->setVisible(false);
-                            inventoryWindow->setVisible(false);
-                            shopWindow->setVisible(false);
-                            skillDialog->setVisible(false);
-                            setupWindow->setVisible(false);
-                            equipmentWindow->setVisible(false);
-                            helpWindow->setVisible(false);
-                            debugWindow->setVisible(false);
-                            outfitWindow->setVisible(false);
-                            dropShortcutWindow->setVisible(false);
-                            spellShortcutWindow->setVisible(false);
-                            botCheckerWindow->setVisible(false);
-                            socialWindow->setVisible(false);
-                        }
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_STATUS:
-                        requestedWindow = statusWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_INVENTORY:
-                        requestedWindow = inventoryWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SHOP:
-                        requestedWindow = shopWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_EQUIPMENT:
-                        requestedWindow = equipmentWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SKILL:
-                        requestedWindow = skillDialog;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_KILLS:
-                        requestedWindow = killStats;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_MINIMAP:
-                        minimap->toggle();
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_CHAT:
-                        requestedWindow = chatWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SHORTCUT:
-                        requestedWindow = itemShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SETUP:
-                        requestedWindow = setupWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_DEBUG:
-                        requestedWindow = debugWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SOCIAL:
-                        requestedWindow = socialWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_EMOTE_SHORTCUT:
-                        requestedWindow = emoteShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_OUTFIT:
-                        requestedWindow = outfitWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_DROP:
-                        requestedWindow = dropShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SPELLS:
-                        requestedWindow = spellShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_BOT_CHECKER:
-                        requestedWindow = botCheckerWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_ONLINE:
-                        requestedWindow = whoIsOnline;
-                        break;
-                    case KeyboardConfig::KEY_SCREENSHOT:
-                        // Screenshot (picture, hence the p)
-                        saveScreenshot();
-                        used = true;
-                        break;
-                    case KeyboardConfig::KEY_PATHFIND:
-                        // Find path to mouse (debug purpose)
-                        if (!player_node->getDisableGameModifiers())
-                        {
-                            if (viewport)
-                                viewport->toggleDebugPath();
-                            if (miniStatusWindow)
-                                miniStatusWindow->updateStatus();
-                            if (mCurrentMap)
-                                mCurrentMap->redrawMap();
+                            // Toggle accepting of incoming trade requests
+                            unsigned int deflt = player_relations.getDefault();
+                            if (deflt & PlayerRelation::TRADE)
+                            {
+                                localChatTab->chatLog(
+                                    _("Ignoring incoming trade requests"),
+                                    BY_SERVER);
+                                deflt &= ~PlayerRelation::TRADE;
+                            }
+                            else
+                            {
+                                localChatTab->chatLog(
+                                    _("Accepting incoming trade requests"),
+                                    BY_SERVER);
+                                deflt |= PlayerRelation::TRADE;
+                            }
+
+                            player_relations.setDefault(deflt);
+
                             used = true;
                         }
-                        break;
-                    case KeyboardConfig::KEY_TRADE:
-                    {
-                        // Toggle accepting of incoming trade requests
-                        unsigned int deflt = player_relations.getDefault();
-                        if (deflt & PlayerRelation::TRADE)
-                        {
-                            localChatTab->chatLog(
-                                        _("Ignoring incoming trade requests"),
-                                        BY_SERVER);
-                            deflt &= ~PlayerRelation::TRADE;
-                        }
-                        else
-                        {
-                            localChatTab->chatLog(
-                                        _("Accepting incoming trade requests"),
-                                        BY_SERVER);
-                            deflt |= PlayerRelation::TRADE;
-                        }
-
-                        player_relations.setDefault(deflt);
-
-                        used = true;
+                            break;
+                        default:
+                            break;
                     }
-                        break;
-                    default:
-                        break;
                 }
-            }
 
-            if (requestedWindow)
-            {
-                requestedWindow->setVisible(!requestedWindow->isVisible());
-                if (requestedWindow->isVisible())
-                    requestedWindow->requestMoveToTop();
-                used = true;
+                if (requestedWindow)
+                {
+                    requestedWindow->setVisible(!requestedWindow->isVisible());
+                    if (requestedWindow->isVisible())
+                        requestedWindow->requestMoveToTop();
+                    used = true;
+                }
             }
         }
         // Active event

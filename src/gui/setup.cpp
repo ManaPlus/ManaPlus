@@ -145,8 +145,7 @@ void Setup::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "Cancel")
     {
-        setVisible(false);
-        for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
+        doCancel();
     }
     else if (event.getId() == "Store")
     {
@@ -187,6 +186,12 @@ void Setup::externalUpdate()
 void Setup::registerWindowForReset(Window *window)
 {
     mWindowsToReset.push_back(window);
+}
+
+void Setup::doCancel()
+{
+    setVisible(false);
+    for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
 }
 
 Setup *setupWindow;
