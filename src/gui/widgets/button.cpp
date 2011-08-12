@@ -26,7 +26,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/palette.h"
 #include "gui/theme.h"

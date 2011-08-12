@@ -23,7 +23,7 @@
 #ifndef NET_TA_INVENTORYHANDLER_H
 #define NET_TA_INVENTORYHANDLER_H
 
-#include "log.h"
+#include "logger.h"
 
 #include "net/net.h"
 

@@ -24,7 +24,7 @@
 #ifndef PALETTE_H
 #define PALETTE_H
 
-#include "log.h"
+#include "logger.h"
 #include "utils/stringutils.h"
 
 #include <guichan/color.hpp>

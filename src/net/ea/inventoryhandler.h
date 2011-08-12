@@ -25,7 +25,7 @@
 
 #include "equipment.h"
 #include "inventory.h"
-#include "log.h"
+#include "logger.h"
 #include "playerinfo.h"
 
 #include "gui/inventorywindow.h"

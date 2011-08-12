@@ -23,7 +23,7 @@
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/radiobutton.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "debug.h"
 

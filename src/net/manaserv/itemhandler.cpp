@@ -29,7 +29,7 @@
 
 #include "game.h"
 #include "map.h"
-#include "log.h"
+#include "logger.h"
 
 namespace ManaServ
 {

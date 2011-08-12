@@ -22,7 +22,7 @@
 
 #include "configuration.h"
 #include "main.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/editdialog.h"
 

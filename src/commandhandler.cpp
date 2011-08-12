@@ -27,7 +27,7 @@
 #include "channel.h"
 #include "game.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "gui/chatwindow.h"

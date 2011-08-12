@@ -23,7 +23,7 @@
 #include "gui/setup_audio.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "sound.h"
 
 #include "gui/okdialog.h"

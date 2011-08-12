@@ -22,7 +22,7 @@
 
 #include "gui/widgets/layout.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include <cassert>
 

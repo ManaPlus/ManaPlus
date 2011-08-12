@@ -31,7 +31,7 @@
 #include "guild.h"
 #include "item.h"
 #include "keyboardconfig.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "party.h"
 #include "particle.h"

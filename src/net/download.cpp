@@ -22,7 +22,7 @@
 #include "net/download.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "utils/stringutils.h"

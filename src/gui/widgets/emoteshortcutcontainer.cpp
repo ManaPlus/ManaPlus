@@ -29,7 +29,7 @@
 #include "itemshortcut.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/palette.h"
 #include "gui/textpopup.h"

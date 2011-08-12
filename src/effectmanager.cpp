@@ -21,7 +21,7 @@
 
 #include "being.h"
 #include "effectmanager.h"
-#include "log.h"
+#include "logger.h"
 #include "particle.h"
 #include "sound.h"
 

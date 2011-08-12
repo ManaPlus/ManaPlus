@@ -25,7 +25,7 @@
 #define SPELLSHORTCUT_H
 
 #include "spellmanager.h"
-#include "log.h"
+#include "logger.h"
 #include "utils/stringutils.h"
 
 class TextCommand;

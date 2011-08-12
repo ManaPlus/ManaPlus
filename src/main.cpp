@@ -25,7 +25,7 @@
 #include "utils/gettext.h"
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include <libxml/parser.h>
 

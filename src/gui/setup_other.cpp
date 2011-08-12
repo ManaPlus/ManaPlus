@@ -29,7 +29,7 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/gettext.h"
 

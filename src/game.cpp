@@ -42,7 +42,7 @@
 #include "joystick.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "particle.h"
 #include "playerrelations.h"

@@ -21,7 +21,7 @@
 
 #include "resources/specialdb.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "utils/dtor.h"
 #include "utils/xml.h"

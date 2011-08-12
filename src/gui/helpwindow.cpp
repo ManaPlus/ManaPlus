@@ -22,7 +22,7 @@
 
 #include "gui/helpwindow.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "gui/gui.h"
 #include "gui/setup.h"

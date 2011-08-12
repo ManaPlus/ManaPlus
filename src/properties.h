@@ -23,7 +23,7 @@
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
 
-#include "log.h"
+#include "logger.h"
 #include <map>
 #include <sstream>
 #include <string>

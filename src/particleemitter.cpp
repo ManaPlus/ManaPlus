@@ -22,7 +22,7 @@
 
 #include "animationparticle.h"
 #include "imageparticle.h"
-#include "log.h"
+#include "logger.h"
 #include "particle.h"
 #include "particleemitter.h"
 #include "rotationalparticle.h"

@@ -23,7 +23,7 @@
 #include "net/manaserv/partyhandler.h"
 
 #include "event.h"
-#include "log.h"
+#include "logger.h"
 #include "localplayer.h"
 
 #include "gui/socialwindow.h"

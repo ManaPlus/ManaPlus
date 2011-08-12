@@ -22,7 +22,7 @@
 
 #include "connectiondialog.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"

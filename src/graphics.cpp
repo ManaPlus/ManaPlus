@@ -25,7 +25,7 @@
 #include "graphics.h"
 
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 
 #include "resources/image.h"

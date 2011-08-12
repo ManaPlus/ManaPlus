@@ -40,7 +40,7 @@
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "spellmanager.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/image.h"
 #include "textcommand.h"

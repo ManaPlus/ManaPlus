@@ -3,7 +3,7 @@
 #include "mumblemanager.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/mathutils.h"
 

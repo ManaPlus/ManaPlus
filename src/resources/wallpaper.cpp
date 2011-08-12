@@ -23,7 +23,7 @@
 #include "resources/wallpaper.h"
 
 #include "resources/resourcemanager.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/stringutils.h"
 #include "configuration.h"

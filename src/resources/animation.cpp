@@ -22,7 +22,7 @@
 
 #include "resources/animation.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "utils/dtor.h"
 

@@ -117,8 +117,8 @@
 		<Unit filename="src\channel.h" />
 		<Unit filename="src\channelmanager.cpp" />
 		<Unit filename="src\channelmanager.h" />
-		<Unit filename="src\chatlog.cpp" />
-		<Unit filename="src\chatlog.h" />
+		<Unit filename="src\chatlogger.cpp" />
+		<Unit filename="src\chatlogger.h" />
 		<Unit filename="src\client.cpp" />
 		<Unit filename="src\client.h" />
 		<Unit filename="src\commandhandler.cpp" />
@@ -410,8 +410,8 @@
 		<Unit filename="src\listener.h" />
 		<Unit filename="src\localplayer.cpp" />
 		<Unit filename="src\localplayer.h" />
-		<Unit filename="src\log.cpp" />
-		<Unit filename="src\log.h" />
+		<Unit filename="src\logger.cpp" />
+		<Unit filename="src\logger.h" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.h" />
 		<Unit filename="src\manaplus.rc">

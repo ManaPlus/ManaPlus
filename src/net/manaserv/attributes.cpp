@@ -21,7 +21,7 @@
 
 #include "net/manaserv/attributes.h"
 
-#include "log.h"
+#include "logger.h"
 #include "playerinfo.h"
 
 #include "gui/statuswindow.h"

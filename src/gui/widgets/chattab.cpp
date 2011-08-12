@@ -23,11 +23,11 @@
 #include "gui/widgets/chattab.h"
 
 #include "actorspritemanager.h"
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "sound.h"
 
 #include "gui/widgets/browserbox.h"

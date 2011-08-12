@@ -22,10 +22,10 @@
 
 #include "gui/serverdialog.h"
 
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "client.h"
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "gui/gui.h"

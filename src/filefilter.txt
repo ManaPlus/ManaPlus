@@ -1,5 +1,6 @@
 ~ RULE_3_1_A_do_not_start_filename_with_underbar
 ~ RULE_3_2_CD_do_not_use_special_characters_in_filename
+~ RULE_3_2_F_use_representitive_classname_for_cpp_filename
 ~ RULE_3_2_H_do_not_use_uppercase_for_c_filename
 ~ RULE_3_3_A_start_function_name_with_lowercase_unix
 ~ RULE_4_1_A_B_use_space_for_indentation
@@ -23,3 +24,4 @@
 ~ RULE_8_1_A_provide_file_info_comment
 ~ RULE_9_1_A_do_not_use_hardcorded_include_path
 ~ RULE_9_2_D_use_reentrant_function
+

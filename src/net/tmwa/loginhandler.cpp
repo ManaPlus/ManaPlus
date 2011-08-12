@@ -23,7 +23,7 @@
 #include "net/tmwa/loginhandler.h"
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 #include "configuration.h"
 
 #include "net/messagein.h"

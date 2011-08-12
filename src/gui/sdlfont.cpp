@@ -25,7 +25,7 @@
 
 #include "client.h"
 #include "graphics.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "resources/image.h"

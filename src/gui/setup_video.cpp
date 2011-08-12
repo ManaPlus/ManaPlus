@@ -26,7 +26,7 @@
 #include "game.h"
 #include "graphics.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 #include "particle.h"
 

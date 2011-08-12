@@ -25,7 +25,7 @@
 
 #include "being.h"
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 

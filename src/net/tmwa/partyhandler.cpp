@@ -22,7 +22,7 @@
 
 #include "actorspritemanager.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "net/messagein.h"
 

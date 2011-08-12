@@ -22,7 +22,7 @@
 
 #include "net/tmwa/gui/guildtab.h"
 
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "commandhandler.h"
 #include "guild.h"
 #include "localplayer.h"

@@ -24,7 +24,7 @@
 
 #include "inventory.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/ministatus.h"
 

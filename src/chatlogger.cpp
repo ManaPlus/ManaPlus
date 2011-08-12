@@ -21,7 +21,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "chatlog.h"
+#include "chatlogger.h"
 
 #include <iostream>
 #include <sstream>
@@ -37,7 +37,7 @@
 #include <Carbon/Carbon.h>
 #endif
 
-#include "log.h"
+#include "logger.h"
 #include "configuration.h"
 
 #include "utils/stringutils.h"

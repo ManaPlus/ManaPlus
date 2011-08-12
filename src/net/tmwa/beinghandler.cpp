@@ -29,7 +29,7 @@
 #include "guild.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "configuration.h"

@@ -22,7 +22,7 @@
 
 #include "gui/skilldialog.h"
 
-#include "log.h"
+#include "logger.h"
 #include "playerinfo.h"
 #include "configuration.h"
 

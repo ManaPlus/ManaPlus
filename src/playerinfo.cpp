@@ -26,7 +26,7 @@
 #include "event.h"
 #include "inventory.h"
 #include "listener.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"

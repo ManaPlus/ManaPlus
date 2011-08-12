@@ -22,7 +22,7 @@
 
 #include "net/tmwa/specialhandler.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "net/messagein.h"
 

@@ -25,7 +25,7 @@
 #include "actorspritemanager.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/editdialog.h"
 #include "gui/okdialog.h"

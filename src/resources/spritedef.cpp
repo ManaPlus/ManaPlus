@@ -22,7 +22,7 @@
 
 #include "resources/spritedef.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "resources/action.h"
 #include "resources/animation.h"

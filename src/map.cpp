@@ -27,7 +27,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 #include "particle.h"
 #include "simpleanimation.h"
 #include "tileset.h"

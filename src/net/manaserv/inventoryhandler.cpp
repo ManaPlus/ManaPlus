@@ -38,7 +38,7 @@
 
 #include "resources/iteminfo.h"
 
-#include "log.h" // <<< REMOVE ME!
+#include "logger.h" // <<< REMOVE ME!
 
 extern Net::InventoryHandler *inventoryHandler;
 

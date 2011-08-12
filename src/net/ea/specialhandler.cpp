@@ -22,7 +22,7 @@
 
 #include "net/ea/specialhandler.h"
 
-#include "log.h"
+#include "logger.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 

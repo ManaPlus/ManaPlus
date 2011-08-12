@@ -22,7 +22,7 @@
 
 #include "net/tmwa/playerhandler.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "net/messagein.h"
 

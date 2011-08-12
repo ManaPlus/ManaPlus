@@ -472,8 +472,8 @@ SET(SRCS
     being.h
     spellmanager.cpp
     spellmanager.h
-    chatlog.cpp
-    chatlog.h
+    chatlogger.cpp
+    chatlogger.h
     client.cpp
     client.h
     channel.cpp
@@ -532,8 +532,8 @@ SET(SRCS
     listener.h
     localplayer.cpp
     localplayer.h
-    log.cpp
-    log.h
+    logger.cpp
+    logger.h
     main.cpp
     main.h
     map.cpp

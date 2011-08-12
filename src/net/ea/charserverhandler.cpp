@@ -23,7 +23,7 @@
 #include "net/ea/charserverhandler.h"
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/charcreatedialog.h"
 #include "gui/okdialog.h"

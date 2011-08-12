@@ -31,7 +31,7 @@
 #include "guild.h"
 #include "item.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "particle.h"
 #include "party.h"

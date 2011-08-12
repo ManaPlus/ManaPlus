@@ -26,7 +26,7 @@
 
 #include "net/tmwa/network.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "utils/stringutils.h"
 

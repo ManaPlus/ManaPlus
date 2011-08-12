@@ -35,7 +35,7 @@
 #include "configlistener.h"
 #include "configuration.h"
 #include "graphics.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/image.h"
 #include "resources/imageset.h"

@@ -23,7 +23,7 @@
 #include "resources/itemdb.h"
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"

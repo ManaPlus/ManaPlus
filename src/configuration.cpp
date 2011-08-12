@@ -23,7 +23,7 @@
 #include "configuration.h"
 
 #include "configlistener.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/paths.h"
 #include "utils/stringutils.h"

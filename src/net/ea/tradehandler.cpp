@@ -25,7 +25,7 @@
 #include "event.h"
 #include "inventory.h"
 #include "item.h"
-#include "log.h"
+#include "logger.h"
 #include "playerinfo.h"
 #include "playerrelations.h"
 

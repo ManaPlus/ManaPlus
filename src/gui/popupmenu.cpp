@@ -32,7 +32,7 @@
 #include "item.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "party.h"
 #include "playerinfo.h"

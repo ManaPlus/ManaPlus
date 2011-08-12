@@ -24,7 +24,7 @@
 
 #include "event.h"
 #include "guild.h"
-#include "log.h"
+#include "logger.h"
 #include "localplayer.h"
 #include "channel.h"
 #include "channelmanager.h"

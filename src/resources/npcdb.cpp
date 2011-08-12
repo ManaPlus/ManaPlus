@@ -22,7 +22,7 @@
 
 #include "resources/npcdb.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "resources/beinginfo.h"
 
