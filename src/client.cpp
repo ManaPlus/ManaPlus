@@ -61,7 +61,7 @@
 #include "gui/setup.h"
 #include "gui/theme.h"
 #include "gui/unregisterdialog.h"
-#include "gui/updatewindow.h"
+#include "gui/updaterwindow.h"
 #include "gui/userpalette.h"
 #include "gui/worldselectdialog.h"
 

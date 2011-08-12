@@ -349,8 +349,8 @@ SET(SRCS
     gui/tradewindow.h
     gui/unregisterdialog.cpp
     gui/unregisterdialog.h
-    gui/updatewindow.cpp
-    gui/updatewindow.h
+    gui/updaterwindow.cpp
+    gui/updaterwindow.h
     gui/userpalette.cpp
     gui/userpalette.h
     gui/viewport.cpp
