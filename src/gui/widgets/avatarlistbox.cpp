@@ -242,25 +242,45 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             }
         }
 
-        if (mShowGender)
+        if (graphics->getSecure())
         {
-            switch (a->getGender())
+            if (mShowGender)
             {
-                case GENDER_FEMALE:
-                    text += strprintf(" \u2640 %s",
-                        a->getAdditionString().c_str());
-                    break;
-                case GENDER_MALE:
-                    text += strprintf(" \u2642 %s",
-                        a->getAdditionString().c_str());
-                    break;
-                default:
-                    break;
+                switch (a->getGender())
+                {
+                    case GENDER_FEMALE:
+                        text += strprintf(" \u2640 ");
+                        break;
+                    case GENDER_MALE:
+                        text += strprintf(" \u2642 ");
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         else
         {
-            text += a->getAdditionString();
+            if (mShowGender)
+            {
+                switch (a->getGender())
+                {
+                    case GENDER_FEMALE:
+                        text += strprintf(" \u2640 %s",
+                            a->getAdditionString().c_str());
+                        break;
+                    case GENDER_MALE:
+                        text += strprintf(" \u2642 %s",
+                            a->getAdditionString().c_str());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                text += a->getAdditionString();
+            }
         }
 
         graphics->setColor(Theme::getThemeColor(Theme::TEXT));

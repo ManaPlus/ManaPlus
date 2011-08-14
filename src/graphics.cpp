@@ -48,7 +48,8 @@ Graphics::Graphics():
     mHWAccel(false),
     mBlitMode(BLIT_NORMAL),
     mRedraw(false),
-    mDoubleBuffer(false)
+    mDoubleBuffer(false),
+    mSecure(false)
 {
     mRect.x = 0;
     mRect.y = 0;

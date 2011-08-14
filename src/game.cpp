@@ -431,8 +431,20 @@ Game::~Game()
 static bool saveScreenshot()
 {
     static unsigned int screenshotCount = 0;
+    SDL_Surface *screenshot = 0;
 
-    SDL_Surface *screenshot = graphics->getScreenshot();
+    if (!config.getBoolValue("showip"))
+    {
+        graphics->setSecure(true);
+        gui->draw();
+        screenshot = graphics->getScreenshot();
+        graphics->setSecure(false);
+    }
+    else
+    {
+        screenshot = graphics->getScreenshot();
+    }
+
     if (!screenshot)
         return false;
 

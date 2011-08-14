@@ -214,6 +214,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "disableAdvBeingCaching", false);
     AddDEF(configData, "disableBeingCaching", false);
     AddDEF(configData, "enableReorderSprites", true);
+    AddDEF(configData, "showip", false);
     return configData;
 }
 

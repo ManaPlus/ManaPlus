@@ -75,6 +75,9 @@ Setup_Players::Setup_Players()
     new SetupItemCheckBox(_("Show statuses"), "",
         "showPlayersStatus", this, "showPlayersStatusEvent");
 
+    new SetupItemCheckBox(_("Show ip addresses on screenshots"), "",
+        "showip", this, "showipEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

@@ -269,6 +269,12 @@ class Graphics : public gcn::SDLGraphics
         bool getRedraw()
         { return mRedraw; }
 
+        void setSecure(bool n)
+        { mSecure = n; }
+
+        bool getSecure()
+        { return mSecure; }
+
         int mWidth;
         int mHeight;
 
@@ -283,6 +289,7 @@ class Graphics : public gcn::SDLGraphics
         bool mRedraw;
         bool mDoubleBuffer;
         SDL_Rect mRect;
+        bool mSecure;
 };
 
 extern Graphics *graphics;
