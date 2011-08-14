@@ -502,6 +502,11 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
     mBrowserBox->addRow(strprintf("@@rename map|%s@@", _("Rename")));
     mBrowserBox->addRow(strprintf("@@remove map|%s@@", _("Remove")));
 
+    if (player_node && player_node->isGM())
+    {
+        mBrowserBox->addRow("##3---");
+        mBrowserBox->addRow(strprintf("@@warp map|%s@@", _("Warp")));
+    }
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
@@ -1143,6 +1148,14 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (chatWindow)
             chatWindow->clearTab();
+    }
+    else if (link == "warp map" && mMapItem)
+    {
+        if (Game::instance())
+        {
+            Net::getAdminHandler()->warp(Game::instance()->getCurrentMapName(),
+                mMapItem->getX(), mMapItem->getY());
+        }
     }
     else if (link == "remove map" && mMapItem)
     {
