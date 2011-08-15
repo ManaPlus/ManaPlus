@@ -22,6 +22,7 @@
 
 #include "gui/statuswindow.h"
 
+#include "chatwindow.h"
 #include "configuration.h"
 #include "event.h"
 #include "equipment.h"
@@ -70,6 +71,14 @@ class AttrDisplay : public Container
 
         virtual Type getType()
         { return UNKNOWN; }
+
+        std::string getValue()
+        {
+            if (!mValue)
+                return "-";
+            else
+                return mValue->getCaption();
+        }
 
     protected:
         AttrDisplay(int id, const std::string &name);
@@ -227,6 +236,10 @@ StatusWindow::StatusWindow():
 
     mCharacterPointsLabel = new Label("C");
     place(0, 6, mCharacterPointsLabel, 5);
+
+    mCopyButton = new Button(_("Copy to chat"), "copy", this);
+
+    place(0, 5, mCopyButton);
 
     if (Net::getPlayerHandler()->canCorrectAttributes())
     {
@@ -887,6 +900,27 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.b = 0;
 //        bar->setColor(new gcn::Color(255, 255, 0));
         bar->setColor(col);
+    }
+}
+
+void StatusWindow::action(const gcn::ActionEvent &event)
+{
+    if (!chatWindow)
+        return;
+
+    if (event.getId() == "copy")
+    {
+        Attrs::iterator it = mAttrs.begin();
+        Attrs::iterator it_end = mAttrs.end();
+        std::string str;
+        while (it != it_end)
+        {
+            ChangeDisplay *attr = dynamic_cast<ChangeDisplay*>((*it).second);
+            if (attr)
+                str += attr->getValue() + " ";
+            ++ it;
+        }
+        chatWindow->addInputText(str);
     }
 }
 

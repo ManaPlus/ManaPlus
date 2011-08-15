@@ -48,7 +48,9 @@ class VertContainer;
  *
  * \ingroup Interface
  */
-class StatusWindow : public Window, public Mana::Listener
+class StatusWindow : public Window,
+                     public gcn::ActionListener,
+                     public Mana::Listener
 {
     public:
         /**
@@ -77,6 +79,8 @@ class StatusWindow : public Window, public Mana::Listener
         void updateProgressBar(ProgressBar *bar, int id,
                                bool percent = true);
 
+        void action(const gcn::ActionEvent &event);
+
     private:
         static std::string translateLetter(char* letters);
 
@@ -97,6 +101,7 @@ class StatusWindow : public Window, public Mana::Listener
 
         gcn::Label *mCharacterPointsLabel;
         gcn::Label *mCorrectionPointsLabel;
+        gcn::Button *mCopyButton;
 
         typedef std::map<int, AttrDisplay*> Attrs;
         Attrs mAttrs;
