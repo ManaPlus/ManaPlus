@@ -132,7 +132,7 @@ namespace gcn
          * @see remove, clear
          */
         virtual void clear();
-        
+
         /**
          * Draws the children widgets of the basic container.
          *

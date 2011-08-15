@@ -41,8 +41,11 @@ class HorizontContainer : public Container, public gcn::WidgetListener
 {
     public:
         HorizontContainer(int height, int spacing);
+
         virtual void add(gcn::Widget *widget);
+
         virtual void clear();
+
         void widgetResized(const gcn::Event &event);
 
     protected:

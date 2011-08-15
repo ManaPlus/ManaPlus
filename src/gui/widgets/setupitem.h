@@ -42,6 +42,7 @@
 class CheckBox;
 class Configuration;
 class ContainerPlacer;
+class DropDown;
 class EditDialog;
 class HorizontContainer;
 class IntTextField;
@@ -239,6 +240,34 @@ class SetupItemLabel : public SetupItem
     protected:
         Label *mLabel;
         bool mIsSeparator;
+};
+
+class SetupItemDropDown : public SetupItem
+{
+    public:
+        SetupItemDropDown(std::string text, std::string description,
+                          std::string keyName, SetupTabScroll *parent,
+                          std::string eventName, gcn::ListModel *model,
+                          bool mainConfig = true);
+
+        SetupItemDropDown(std::string text, std::string description,
+                          std::string keyName, SetupTabScroll *parent,
+                          std::string eventName, gcn::ListModel *model,
+                          std::string def, bool mainConfig = true);
+
+        ~SetupItemDropDown();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        gcn::ListModel *mModel;
+        DropDown *mDropDown;
 };
 
 #endif

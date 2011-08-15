@@ -28,6 +28,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/dropdown.h"
 #include "gui/widgets/horizontcontainer.h"
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
@@ -330,7 +331,6 @@ void SetupItemTextField::apply(std::string eventName)
     save();
 }
 
-
 SetupItemIntTextField::SetupItemIntTextField(std::string text,
                                              std::string description,
                                              std::string keyName,
@@ -454,6 +454,8 @@ void SetupItemIntTextField::apply(std::string eventName)
     save();
 }
 
+
+
 SetupItemLabel::SetupItemLabel(std::string text, std::string description,
                                SetupTabScroll *parent, bool separator) :
     SetupItem(text, description, "", parent, "", "", true),
@@ -504,4 +506,86 @@ void SetupItemLabel::action(const gcn::ActionEvent &event A_UNUSED)
 
 void SetupItemLabel::apply(std::string eventName A_UNUSED)
 {
+}
+
+
+SetupItemDropDown::SetupItemDropDown(std::string text,
+                                     std::string description,
+                                     std::string keyName,
+                                     SetupTabScroll *parent,
+                                     std::string eventName,
+                                     gcn::ListModel *model,
+                                     bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(0),
+    mLabel(0),
+    mModel(model),
+    mDropDown(0)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemDropDown::SetupItemDropDown(std::string text,
+                                     std::string description,
+                                     std::string keyName,
+                                     SetupTabScroll *parent,
+                                     std::string eventName,
+                                     gcn::ListModel *model,
+                                     std::string def,
+                                     bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(0),
+    mLabel(0),
+    mModel(model),
+    mDropDown(0)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemDropDown::~SetupItemDropDown()
+{
+    mHorizont = 0;
+    mWidget = 0;
+    mModel = 0;
+    mDropDown = 0;
+    mLabel = 0;
+}
+
+void SetupItemDropDown::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    mLabel = new Label(mText);
+    mDropDown = new DropDown(mModel);
+    mDropDown->setActionEventId(mEventName);
+    mDropDown->addActionListener(mParent);
+
+    mWidget = mDropDown;
+//    mTextField->setWidth(50);
+    mHorizont->add(mLabel);
+    mHorizont->add(mDropDown);
+
+    mParent->getContainer()->add(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+void SetupItemDropDown::fromWidget()
+{
+    if (!mDropDown)
+        return;
+
+    mValue = mDropDown->getSelectedString();
+}
+
+void SetupItemDropDown::toWidget()
+{
+    if (!mDropDown)
+        return;
+
+    mDropDown->setSelectedString(mValue);
 }
