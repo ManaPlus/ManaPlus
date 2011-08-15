@@ -349,6 +349,8 @@
 		<Unit filename="src\gui\widgets\resizegrip.h" />
 		<Unit filename="src\gui\widgets\scrollarea.cpp" />
 		<Unit filename="src\gui\widgets\scrollarea.h" />
+		<Unit filename="src\gui\widgets\setupitem.cpp" />
+		<Unit filename="src\gui\widgets\setupitem.h" />
 		<Unit filename="src\gui\widgets\setuptab.cpp" />
 		<Unit filename="src\gui\widgets\setuptab.h" />
 		<Unit filename="src\gui\widgets\shopitems.cpp" />

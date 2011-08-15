@@ -25,7 +25,6 @@
 
 #include "gui/chatwindow.h"
 #include "gui/editdialog.h"
-#include "gui/setupitem.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
@@ -34,6 +33,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/setupitem.h"
 
 #include "configuration.h"
 #include "localplayer.h"

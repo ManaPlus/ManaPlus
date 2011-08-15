@@ -181,6 +181,8 @@ SET(SRCS
     gui/widgets/resizegrip.h
     gui/widgets/scrollarea.cpp
     gui/widgets/scrollarea.h
+    gui/widgets/setupitem.cpp
+    gui/widgets/setupitem.h
     gui/widgets/setuptab.cpp
     gui/widgets/setuptab.h
     gui/widgets/setuptabscroll.cpp
@@ -299,8 +301,6 @@ SET(SRCS
     gui/serverdialog.h
     gui/setup.cpp
     gui/setup.h
-    gui/setupitem.cpp
-    gui/setupitem.h
     gui/setup_audio.cpp
     gui/setup_audio.h
     gui/setup_colors.cpp

@@ -42,7 +42,6 @@ src/gui/setup_audio.cpp
 src/gui/setup_chat.cpp
 src/gui/setup_colors.cpp
 src/gui/setup.cpp
-src/gui/setupitem.cpp
 src/gui/setup_joystick.cpp
 src/gui/setup_keyboard.cpp
 src/gui/setup_other.cpp
@@ -67,6 +66,7 @@ src/gui/whoisonline.cpp
 src/gui/widgets/battletab.cpp
 src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
+src/gui/widgets/setupitem.cpp
 src/gui/widgets/tradetab.cpp
 src/gui/widgets/whispertab.cpp
 src/gui/windowmenu.cpp
