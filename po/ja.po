@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <Necromong@inbox.ru>, 2011.
 # Necromonger <Necromong@inbox.ru>, 2011.
 # sn0w75 <ibenrunnin@gmail.com>, 2011.
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-15 15:56+0300\n"
-"PO-Revision-Date: 2011-08-15 13:02+0000\n"
+"POT-Creation-Date: 2011-08-16 19:07+0300\n"
+"PO-Revision-Date: 2011-08-16 16:09+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/team/ja/)\n"
+"Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/team/"
+"ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: src/actorspritemanager.cpp:1034
@@ -109,7 +110,7 @@ msgid "Farewell, come back any time..."
 msgstr "さよなら、いつでも戻ってね..."
 
 #: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
-#: src/client.cpp:1918 src/client.cpp:1925
+#: src/client.cpp:1922 src/client.cpp:1929
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s は存在しないので作成することが不可能！終了中…"
@@ -139,9 +140,11 @@ msgstr "空のメッセージを送信することはできません！"
 #: src/commandhandler.cpp:415
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
-msgstr "%sと言うメッセージタブの作成ができません！それはもう既に存在しているか、自分です。"
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
+msgstr ""
+"%sと言うメッセージタブの作成ができません！それはもう既に存在しているか、自分"
+"です。"
 
 #: src/commandhandler.cpp:435
 #, c-format
@@ -290,7 +293,9 @@ msgstr ""
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"。"
+msgstr ""
+"/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", "
+"\"0\"。"
 
 #: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
 msgid "General"
@@ -427,7 +432,7 @@ msgid "Max"
 msgstr "最大"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:146 src/gui/setup_other.cpp:134
+#: src/gui/inventorywindow.cpp:146 src/gui/setup_other.cpp:133
 msgid "Shop"
 msgstr "店"
 
@@ -696,7 +701,7 @@ msgstr "虹 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_relations.cpp:220
-#: src/gui/setup_theme.cpp:72 src/gui/setup_theme.cpp:126
+#: src/gui/setup_theme.cpp:73 src/gui/setup_theme.cpp:127
 #: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:102
 #: src/gui/textcommandeditor.cpp:141 src/gui/textcommandeditor.cpp:160
 msgid "???"
@@ -732,7 +737,7 @@ msgid "Ignore"
 msgstr "無視"
 
 #: src/gui/debugwindow.cpp:70 src/gui/minimap.cpp:49 src/gui/minimap.cpp:96
-#: src/gui/setup_other.cpp:65
+#: src/gui/setup_other.cpp:64
 msgid "Map"
 msgstr "地図"
 
@@ -1212,7 +1217,7 @@ msgid "Submit"
 msgstr "決定"
 
 #: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
-#: src/gui/setup_other.cpp:143
+#: src/gui/setup_other.cpp:142
 msgid "NPC"
 msgstr "NPC"
 
@@ -1715,7 +1720,9 @@ msgstr "お知らせ"
 
 #: src/gui/setup_audio.cpp:120
 msgid "You may have to restart your client if you want to download new music"
-msgstr "新しい音楽をダウンロードする場合は、クライアントを再起動する必要がある可能性がある"
+msgstr ""
+"新しい音楽をダウンロードする場合は、クライアントを再起動する必要がある可能性"
+"がある"
 
 #: src/gui/setup_audio.cpp:133
 msgid "Sound Engine"
@@ -1868,10 +1875,6 @@ msgstr "適用"
 msgid "Reset Windows"
 msgstr "ウィンドウをリセットする"
 
-#: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
-msgid "Edit"
-msgstr "エディット"
-
 #: src/gui/setup_joystick.cpp:40 src/gui/setup_joystick.cpp:79
 msgid "Press the button to start calibration"
 msgstr "ボタンを押すと較正が始まります。"
@@ -1916,163 +1919,163 @@ msgstr "標準に戻す"
 msgid "Key Conflict(s) Detected."
 msgstr "キーが重複しています。"
 
-#: src/gui/setup_other.cpp:40
+#: src/gui/setup_other.cpp:39
 msgid "Misc"
 msgstr "他"
 
-#: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:125
+#: src/gui/setup_other.cpp:45 src/gui/userpalette.cpp:125
 msgid "Monsters"
 msgstr "モンスター"
 
-#: src/gui/setup_other.cpp:48
+#: src/gui/setup_other.cpp:47
 msgid "Show damage inflicted to monsters"
 msgstr "モンスターに与えた損傷を表示する"
 
-#: src/gui/setup_other.cpp:51
+#: src/gui/setup_other.cpp:50
 msgid "Auto target only reachable monsters"
 msgstr ""
 
-#: src/gui/setup_other.cpp:54
+#: src/gui/setup_other.cpp:53
 msgid "Highlight monster attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:58
+#: src/gui/setup_other.cpp:57
 msgid "Show monster hp bar"
 msgstr "モンスターHPバーを表示する"
 
-#: src/gui/setup_other.cpp:61
+#: src/gui/setup_other.cpp:60
 msgid "Cycle monster targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:67
+#: src/gui/setup_other.cpp:66
 msgid "Show warps particles"
 msgstr ""
 
-#: src/gui/setup_other.cpp:70
+#: src/gui/setup_other.cpp:69
 msgid "Highlight map portals"
 msgstr ""
 
-#: src/gui/setup_other.cpp:73
+#: src/gui/setup_other.cpp:72
 msgid "Highlight floor items"
 msgstr ""
 
-#: src/gui/setup_other.cpp:76
+#: src/gui/setup_other.cpp:75
 msgid "Highlight player attack range"
 msgstr ""
 
-#: src/gui/setup_other.cpp:79
+#: src/gui/setup_other.cpp:78
 msgid "Show extended minimaps"
 msgstr ""
 
-#: src/gui/setup_other.cpp:82
+#: src/gui/setup_other.cpp:81
 msgid "Draw path"
 msgstr "パスを描画"
 
-#: src/gui/setup_other.cpp:85
+#: src/gui/setup_other.cpp:84
 msgid "Draw hotkeys on map"
 msgstr ""
 
-#: src/gui/setup_other.cpp:89
+#: src/gui/setup_other.cpp:88
 msgid "Moving"
 msgstr ""
 
-#: src/gui/setup_other.cpp:91
+#: src/gui/setup_other.cpp:90
 msgid "Auto fix position"
 msgstr ""
 
-#: src/gui/setup_other.cpp:94
+#: src/gui/setup_other.cpp:93
 msgid "Attack while moving"
 msgstr ""
 
-#: src/gui/setup_other.cpp:97
+#: src/gui/setup_other.cpp:96
 msgid "Sync player move"
 msgstr ""
 
-#: src/gui/setup_other.cpp:100
+#: src/gui/setup_other.cpp:99
 msgid "Crazy move A program"
 msgstr ""
 
-#: src/gui/setup_other.cpp:104
+#: src/gui/setup_other.cpp:103
 msgid "Player"
 msgstr ""
 
-#: src/gui/setup_other.cpp:106
+#: src/gui/setup_other.cpp:105
 msgid "Show own hp bar"
 msgstr "自分のHPバーを表示する"
 
-#: src/gui/setup_other.cpp:109
+#: src/gui/setup_other.cpp:108
 msgid "Enable quick stats"
 msgstr ""
 
-#: src/gui/setup_other.cpp:112
+#: src/gui/setup_other.cpp:111
 msgid "Cycle player targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:115
+#: src/gui/setup_other.cpp:114
 msgid "Show job exp messages"
 msgstr ""
 
-#: src/gui/setup_other.cpp:118
+#: src/gui/setup_other.cpp:117
 msgid "Show players popups"
 msgstr ""
 
-#: src/gui/setup_other.cpp:121
+#: src/gui/setup_other.cpp:120
 msgid "Afk message"
 msgstr ""
 
-#: src/gui/setup_other.cpp:124
+#: src/gui/setup_other.cpp:123
 msgid "Show job"
 msgstr "仕事を表示する"
 
-#: src/gui/setup_other.cpp:127
+#: src/gui/setup_other.cpp:126
 msgid "Enable attack filter"
 msgstr ""
 
-#: src/gui/setup_other.cpp:130
+#: src/gui/setup_other.cpp:129
 msgid "Enable advert protocol"
 msgstr ""
 
-#: src/gui/setup_other.cpp:136
+#: src/gui/setup_other.cpp:135
 msgid "Accept sell/buy requests"
 msgstr ""
 
-#: src/gui/setup_other.cpp:139
+#: src/gui/setup_other.cpp:138
 msgid "Enable shop mode"
 msgstr ""
 
-#: src/gui/setup_other.cpp:145
+#: src/gui/setup_other.cpp:144
 msgid "Log NPC dialogue"
 msgstr ""
 
-#: src/gui/setup_other.cpp:149
+#: src/gui/setup_other.cpp:148
 msgid "Other"
 msgstr ""
 
-#: src/gui/setup_other.cpp:151
+#: src/gui/setup_other.cpp:150
 msgid "Enable server side attack"
 msgstr ""
 
-#: src/gui/setup_other.cpp:154
+#: src/gui/setup_other.cpp:153
 msgid "Enable bot checker"
 msgstr ""
 
-#: src/gui/setup_other.cpp:157
+#: src/gui/setup_other.cpp:156
 msgid "Enable buggy servers protection"
 msgstr ""
 
-#: src/gui/setup_other.cpp:160
+#: src/gui/setup_other.cpp:159
 msgid "Enable debug log"
 msgstr "デバッグループを有効にする"
 
-#: src/gui/setup_other.cpp:163
+#: src/gui/setup_other.cpp:162
 msgid "Low traffic mode"
 msgstr ""
 
-#: src/gui/setup_other.cpp:166
+#: src/gui/setup_other.cpp:165
 msgid "Hide shield sprite"
 msgstr ""
 
-#: src/gui/setup_other.cpp:169
+#: src/gui/setup_other.cpp:168
 msgid "Show background"
 msgstr "背景を表示する"
 
@@ -2212,67 +2215,71 @@ msgstr ""
 msgid "When ignoring:"
 msgstr "無視の際には："
 
-#: src/gui/setup_theme.cpp:106
+#: src/gui/setup_theme.cpp:107
 msgid "Tiny (10)"
 msgstr "小さい (10)"
 
-#: src/gui/setup_theme.cpp:107
+#: src/gui/setup_theme.cpp:108
 msgid "Small (11)"
 msgstr "小（11）"
 
-#: src/gui/setup_theme.cpp:108
+#: src/gui/setup_theme.cpp:109
 msgid "Medium (12)"
 msgstr "媒体（12）"
 
-#: src/gui/setup_theme.cpp:109
+#: src/gui/setup_theme.cpp:110
 msgid "Large (13)"
 msgstr "大（13）"
 
-#: src/gui/setup_theme.cpp:110
+#: src/gui/setup_theme.cpp:111
 msgid "Big (14)"
 msgstr "ビッグ（14）"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_theme.cpp:112
 msgid "Huge (15)"
 msgstr "巨大（15）"
 
-#: src/gui/setup_theme.cpp:141
+#: src/gui/setup_theme.cpp:143
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/gui/setup_theme.cpp:143
+#: src/gui/setup_theme.cpp:145
 msgid "Gui theme"
 msgstr "GUIテーマ"
 
-#: src/gui/setup_theme.cpp:144
+#: src/gui/setup_theme.cpp:146
 msgid "Main Font"
 msgstr "メインフォント"
 
-#: src/gui/setup_theme.cpp:145
+#: src/gui/setup_theme.cpp:147
 msgid "Bold font"
 msgstr "太字フォント"
 
-#: src/gui/setup_theme.cpp:146
+#: src/gui/setup_theme.cpp:148
 msgid "Particle font"
 msgstr "粒子のフォント"
 
-#: src/gui/setup_theme.cpp:147
+#: src/gui/setup_theme.cpp:149
 msgid "Help font"
 msgstr "ヘルプフォント"
 
-#: src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:150
 msgid "Secure font"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:176
+#: src/gui/setup_theme.cpp:151
+msgid "Japanese font"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:183
 msgid "Font size"
 msgstr "フォントサイズ"
 
-#: src/gui/setup_theme.cpp:282
+#: src/gui/setup_theme.cpp:299
 msgid "Theme Changed"
 msgstr "テーマは変えました"
 
-#: src/gui/setup_theme.cpp:283 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:300 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "設定変更のため、アプリケーションを再起動してください。"
@@ -3231,9 +3238,10 @@ msgid "Change"
 msgstr "変更"
 
 #: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
-msgstr "アイテムを追加することに失敗しました。アイテム一種類を一つのウインドウ上で重複して追加することは出来ません！"
+msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgstr ""
+"アイテムを追加することに失敗しました。アイテム一種類を一つのウインドウ上で重"
+"複して追加することは出来ません！"
 
 #: src/gui/tradewindow.cpp:377
 msgid "You don't have enough money."
@@ -3505,11 +3513,15 @@ msgstr "このコマンドでは、入力したユーザーをチャンネルの
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
 #: src/net/ea/gui/guildtab.cpp:69 src/net/ea/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
-msgstr "入力するニックネームにスペースが入っている場合、ダブルコーテーション(\"\")で囲んでください。"
+msgstr ""
+"入力するニックネームにスペースが入っている場合、ダブルコーテーション(\"\")で"
+"囲んでください。"
 
 #: src/gui/widgets/channeltab.cpp:87
 msgid "Channel operators can kick and op other users from the channel."
-msgstr "チャンネルのオペレーターはチャンネルからオペレーター以外のユーザーを追い出すことができます。"
+msgstr ""
+"チャンネルのオペレーターはチャンネルからオペレーター以外のユーザーを追い出す"
+"ことができます。"
 
 #: src/gui/widgets/channeltab.cpp:92
 msgid "Command: /kick <nick>"
@@ -3541,6 +3553,10 @@ msgstr "%sからのアナウンス:"
 msgid "%s whispers: %s"
 msgstr "%s ささやく: %s"
 
+#: src/gui/widgets/setupitem.cpp:271 src/gui/widgets/setupitem.cpp:394
+msgid "Edit"
+msgstr "エディット"
+
 #: src/gui/widgets/whispertab.cpp:107
 msgid "/ignore > Ignore the other player"
 msgstr "/ignore > 他のプレイヤーを無視する"
@@ -3559,7 +3575,8 @@ msgstr "コマンド: /close"
 
 #: src/gui/widgets/whispertab.cpp:120
 msgid "This command closes the current whisper tab."
-msgstr "このコマンドでは、現在開いているプライベートメッセージのタブを閉じます。"
+msgstr ""
+"このコマンドでは、現在開いているプライベートメッセージのタブを閉じます。"
 
 #: src/gui/widgets/whispertab.cpp:124
 msgid "Command: /ignore"
@@ -3574,8 +3591,7 @@ msgid "Command: /unignore <player>"
 msgstr "コマンド：　/unignore <プレイヤー>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
 #: src/gui/windowmenu.cpp:65
@@ -4513,7 +4529,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
 msgstr ""
-"＜ポリシ＞を有効するためには「１」、「yes」か「true」を設定ください。無効にするために、「0」、「no」か「false」を設定ください。"
+"＜ポリシ＞を有効するためには「１」、「yes」か「true」を設定ください。無効にす"
+"るために、「0」、「no」か「false」を設定ください。"
 
 #: src/net/ea/gui/partytab.cpp:101
 msgid "Command: /item"
@@ -4536,7 +4553,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<ポリシ>を有効するためには、「1」、「yes」か「true」を設定ください。無効にする場合、「0」、「no」か「false」を設定ください。"
+"<ポリシ>を有効するためには、「1」、「yes」か「true」を設定ください。無効にす"
+"る場合、「0」、「no」か「false」を設定ください。"
 
 #: src/net/ea/gui/partytab.cpp:113
 msgid "Command: /exp"
@@ -4731,7 +4749,9 @@ msgstr "ゲームを続けるためにはコインを入れてください。"
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
-msgstr "ううん、棒ややち。あなたのキャラは本当にしんでなかった。もっと綺麗なところに向かっただけ。"
+msgstr ""
+"ううん、棒ややち。あなたのキャラは本当にしんでなかった。もっと綺麗なところに"
+"向かっただけ。"
 
 #: src/net/ea/playerhandler.cpp:104 src/net/manaserv/beinghandler.cpp:323
 msgid ""
@@ -4790,7 +4810,9 @@ msgstr "命を失い、天国に向かった。"
 
 #: src/net/ea/playerhandler.cpp:125
 msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr "もしあなたがそんなにも生気に満ちていなかったならば、死んで葬られていたんじゃないか？"
+msgstr ""
+"もしあなたがそんなにも生気に満ちていなかったならば、死んで葬られていたんじゃ"
+"ないか？"
 
 #: src/net/ea/playerhandler.cpp:126
 msgid "Your metabolic processes are now history."
@@ -4825,8 +4847,7 @@ msgstr "メッセージ"
 
 #: src/net/ea/playerhandler.cpp:337
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr "持っているアイテムは体重より半分以上なので、体力が回復できない。"
 
 #: src/net/ea/playerhandler.cpp:347
@@ -5458,5 +5479,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "不明なアイテム"
-
-

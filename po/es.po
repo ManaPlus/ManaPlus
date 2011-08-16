@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-15 15:56+0300\n"
-"PO-Revision-Date: 2011-08-15 13:02+0000\n"
+"POT-Creation-Date: 2011-08-16 19:07+0300\n"
+"PO-Revision-Date: 2011-08-16 16:09+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
 "manaplus/team/es/)\n"
@@ -111,7 +111,7 @@ msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
 #: src/client.cpp:1423 src/client.cpp:1453 src/client.cpp:1497
-#: src/client.cpp:1918 src/client.cpp:1925
+#: src/client.cpp:1922 src/client.cpp:1929
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "¡%s no existe y no puede ser creado! Saliendo."
@@ -437,7 +437,7 @@ msgid "Max"
 msgstr "Máximo"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:146 src/gui/setup_other.cpp:134
+#: src/gui/inventorywindow.cpp:146 src/gui/setup_other.cpp:133
 msgid "Shop"
 msgstr "Tienda"
 
@@ -706,7 +706,7 @@ msgstr "arco iris 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
 #: src/gui/logindialog.cpp:78 src/gui/setup_relations.cpp:220
-#: src/gui/setup_theme.cpp:72 src/gui/setup_theme.cpp:126
+#: src/gui/setup_theme.cpp:73 src/gui/setup_theme.cpp:127
 #: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:102
 #: src/gui/textcommandeditor.cpp:141 src/gui/textcommandeditor.cpp:160
 msgid "???"
@@ -742,7 +742,7 @@ msgid "Ignore"
 msgstr "Ignorar"
 
 #: src/gui/debugwindow.cpp:70 src/gui/minimap.cpp:49 src/gui/minimap.cpp:96
-#: src/gui/setup_other.cpp:65
+#: src/gui/setup_other.cpp:64
 msgid "Map"
 msgstr "Mapa"
 
@@ -1224,7 +1224,7 @@ msgid "Submit"
 msgstr "Enviar"
 
 #: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
-#: src/gui/setup_other.cpp:143
+#: src/gui/setup_other.cpp:142
 msgid "NPC"
 msgstr "NPC"
 
@@ -1882,10 +1882,6 @@ msgstr "Aplicar"
 msgid "Reset Windows"
 msgstr "Restaurar Ventanas"
 
-#: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
-msgid "Edit"
-msgstr "Editar"
-
 #: src/gui/setup_joystick.cpp:40 src/gui/setup_joystick.cpp:79
 msgid "Press the button to start calibration"
 msgstr "Presiona el botón para empezar la calibración"
@@ -1930,163 +1926,163 @@ msgstr "Por defecto"
 msgid "Key Conflict(s) Detected."
 msgstr "Conflicto de teclas detectado."
 
-#: src/gui/setup_other.cpp:40
+#: src/gui/setup_other.cpp:39
 msgid "Misc"
 msgstr "Misceláneos"
 
-#: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:125
+#: src/gui/setup_other.cpp:45 src/gui/userpalette.cpp:125
 msgid "Monsters"
 msgstr "Monstruos"
 
-#: src/gui/setup_other.cpp:48
+#: src/gui/setup_other.cpp:47
 msgid "Show damage inflicted to monsters"
 msgstr "Mostrar daño infligido a monstruos"
 
-#: src/gui/setup_other.cpp:51
+#: src/gui/setup_other.cpp:50
 msgid "Auto target only reachable monsters"
 msgstr "Eligir automáticamente sólo a los monstruos alcanzables"
 
-#: src/gui/setup_other.cpp:54
+#: src/gui/setup_other.cpp:53
 msgid "Highlight monster attack range"
 msgstr "Resaltar el alcanze de ataque de los monstruos"
 
-#: src/gui/setup_other.cpp:58
+#: src/gui/setup_other.cpp:57
 msgid "Show monster hp bar"
 msgstr "Mostrar barra de energía del monstruo"
 
-#: src/gui/setup_other.cpp:61
+#: src/gui/setup_other.cpp:60
 msgid "Cycle monster targets"
 msgstr "Apuntar a los monstruos en derredor, no necesariamente al más cercano"
 
-#: src/gui/setup_other.cpp:67
+#: src/gui/setup_other.cpp:66
 msgid "Show warps particles"
 msgstr "Mostrar las partículas de efectos"
 
-#: src/gui/setup_other.cpp:70
+#: src/gui/setup_other.cpp:69
 msgid "Highlight map portals"
 msgstr "Resaltar las puertas del mapa"
 
-#: src/gui/setup_other.cpp:73
+#: src/gui/setup_other.cpp:72
 msgid "Highlight floor items"
 msgstr "Resaltar los objetos sobre el suelo"
 
-#: src/gui/setup_other.cpp:76
+#: src/gui/setup_other.cpp:75
 msgid "Highlight player attack range"
 msgstr "Resaltar el alcance de ataque del jugador"
 
-#: src/gui/setup_other.cpp:79
+#: src/gui/setup_other.cpp:78
 msgid "Show extended minimaps"
 msgstr "Mostrar minmapas extendidos"
 
-#: src/gui/setup_other.cpp:82
+#: src/gui/setup_other.cpp:81
 msgid "Draw path"
 msgstr "Dibujar trayectoria"
 
-#: src/gui/setup_other.cpp:85
+#: src/gui/setup_other.cpp:84
 msgid "Draw hotkeys on map"
 msgstr "Dibujar teclas de acceso rápido en el mapa"
 
-#: src/gui/setup_other.cpp:89
+#: src/gui/setup_other.cpp:88
 msgid "Moving"
 msgstr "En movimiento"
 
-#: src/gui/setup_other.cpp:91
+#: src/gui/setup_other.cpp:90
 msgid "Auto fix position"
 msgstr "Corrección automatica de la posición"
 
-#: src/gui/setup_other.cpp:94
+#: src/gui/setup_other.cpp:93
 msgid "Attack while moving"
 msgstr "Atacar mientras está en movimiento"
 
-#: src/gui/setup_other.cpp:97
+#: src/gui/setup_other.cpp:96
 msgid "Sync player move"
 msgstr "Sincronización de movimiento de jugador"
 
-#: src/gui/setup_other.cpp:100
+#: src/gui/setup_other.cpp:99
 msgid "Crazy move A program"
 msgstr "Programa de movimientos locos A"
 
-#: src/gui/setup_other.cpp:104
+#: src/gui/setup_other.cpp:103
 msgid "Player"
 msgstr "Jugador"
 
-#: src/gui/setup_other.cpp:106
+#: src/gui/setup_other.cpp:105
 msgid "Show own hp bar"
 msgstr "Mostrar barra de energía propia"
 
-#: src/gui/setup_other.cpp:109
+#: src/gui/setup_other.cpp:108
 msgid "Enable quick stats"
 msgstr "Habilitar estadísticas rápidas"
 
-#: src/gui/setup_other.cpp:112
+#: src/gui/setup_other.cpp:111
 msgid "Cycle player targets"
 msgstr "Apuntar a los jugadores en derredor, no necesariamente al más cercano"
 
-#: src/gui/setup_other.cpp:115
+#: src/gui/setup_other.cpp:114
 msgid "Show job exp messages"
 msgstr "Mostrar los mensajes de experiencia de trabajo"
 
-#: src/gui/setup_other.cpp:118
+#: src/gui/setup_other.cpp:117
 msgid "Show players popups"
 msgstr "Mostrar las ventanas emergentes de jugadores"
 
-#: src/gui/setup_other.cpp:121
+#: src/gui/setup_other.cpp:120
 msgid "Afk message"
 msgstr "Mensaje afk"
 
-#: src/gui/setup_other.cpp:124
+#: src/gui/setup_other.cpp:123
 msgid "Show job"
 msgstr "Mostrar trabajo"
 
-#: src/gui/setup_other.cpp:127
+#: src/gui/setup_other.cpp:126
 msgid "Enable attack filter"
 msgstr "Habilitar filtro de ataque"
 
-#: src/gui/setup_other.cpp:130
+#: src/gui/setup_other.cpp:129
 msgid "Enable advert protocol"
 msgstr "Habilitar el protocolo de anuncio"
 
-#: src/gui/setup_other.cpp:136
+#: src/gui/setup_other.cpp:135
 msgid "Accept sell/buy requests"
 msgstr "Aceptar solicitudes de compra / venta"
 
-#: src/gui/setup_other.cpp:139
+#: src/gui/setup_other.cpp:138
 msgid "Enable shop mode"
 msgstr "Habilitar la tienda"
 
-#: src/gui/setup_other.cpp:145
+#: src/gui/setup_other.cpp:144
 msgid "Log NPC dialogue"
 msgstr "Registro de diálogo de NPC"
 
-#: src/gui/setup_other.cpp:149
+#: src/gui/setup_other.cpp:148
 msgid "Other"
 msgstr "Otro"
 
-#: src/gui/setup_other.cpp:151
+#: src/gui/setup_other.cpp:150
 msgid "Enable server side attack"
 msgstr "Habilitar los ataques colaterales de servidor"
 
-#: src/gui/setup_other.cpp:154
+#: src/gui/setup_other.cpp:153
 msgid "Enable bot checker"
 msgstr "Habilitar el control de robot"
 
-#: src/gui/setup_other.cpp:157
+#: src/gui/setup_other.cpp:156
 msgid "Enable buggy servers protection"
 msgstr "Habilitar la proteción contra servidores defectuosos"
 
-#: src/gui/setup_other.cpp:160
+#: src/gui/setup_other.cpp:159
 msgid "Enable debug log"
 msgstr "Habilitar registro de depuración"
 
-#: src/gui/setup_other.cpp:163
+#: src/gui/setup_other.cpp:162
 msgid "Low traffic mode"
 msgstr "Modo de bajo tráfico"
 
-#: src/gui/setup_other.cpp:166
+#: src/gui/setup_other.cpp:165
 msgid "Hide shield sprite"
 msgstr "Ocultar los objetos escudos"
 
-#: src/gui/setup_other.cpp:169
+#: src/gui/setup_other.cpp:168
 msgid "Show background"
 msgstr "Mostrar fondo"
 
@@ -2226,67 +2222,71 @@ msgstr "Relaciones"
 msgid "When ignoring:"
 msgstr "Cuando se ignora a alguien:"
 
-#: src/gui/setup_theme.cpp:106
+#: src/gui/setup_theme.cpp:107
 msgid "Tiny (10)"
 msgstr "Diminuto (10)"
 
-#: src/gui/setup_theme.cpp:107
+#: src/gui/setup_theme.cpp:108
 msgid "Small (11)"
 msgstr "Pequeño (11)"
 
-#: src/gui/setup_theme.cpp:108
+#: src/gui/setup_theme.cpp:109
 msgid "Medium (12)"
 msgstr "Medio (12)"
 
-#: src/gui/setup_theme.cpp:109
+#: src/gui/setup_theme.cpp:110
 msgid "Large (13)"
 msgstr "Extenso (13)"
 
-#: src/gui/setup_theme.cpp:110
+#: src/gui/setup_theme.cpp:111
 msgid "Big (14)"
 msgstr "Grande (14)"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_theme.cpp:112
 msgid "Huge (15)"
 msgstr "Enorme (15)"
 
-#: src/gui/setup_theme.cpp:141
+#: src/gui/setup_theme.cpp:143
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/setup_theme.cpp:143
+#: src/gui/setup_theme.cpp:145
 msgid "Gui theme"
 msgstr "Tema de interfáz gráfica"
 
-#: src/gui/setup_theme.cpp:144
+#: src/gui/setup_theme.cpp:146
 msgid "Main Font"
 msgstr "Fuente principal"
 
-#: src/gui/setup_theme.cpp:145
+#: src/gui/setup_theme.cpp:147
 msgid "Bold font"
 msgstr "Fuente negrita"
 
-#: src/gui/setup_theme.cpp:146
+#: src/gui/setup_theme.cpp:148
 msgid "Particle font"
 msgstr "Fuente de partícula"
 
-#: src/gui/setup_theme.cpp:147
+#: src/gui/setup_theme.cpp:149
 msgid "Help font"
 msgstr "Fuente de la ayuda"
 
-#: src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:150
 msgid "Secure font"
 msgstr "Fuente segura"
 
-#: src/gui/setup_theme.cpp:176
+#: src/gui/setup_theme.cpp:151
+msgid "Japanese font"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:183
 msgid "Font size"
 msgstr "Tamaño de fuente"
 
-#: src/gui/setup_theme.cpp:282
+#: src/gui/setup_theme.cpp:299
 msgid "Theme Changed"
 msgstr "Tema cambiado"
 
-#: src/gui/setup_theme.cpp:283 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:300 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie el juego para que los cambios tengan efecto."
@@ -3560,6 +3560,10 @@ msgstr "Anuncio global de  %s:"
 #, c-format
 msgid "%s whispers: %s"
 msgstr "%s envía mensaje privado: %s"
+
+#: src/gui/widgets/setupitem.cpp:271 src/gui/widgets/setupitem.cpp:394
+msgid "Edit"
+msgstr "Editar"
 
 #: src/gui/widgets/whispertab.cpp:107
 msgid "/ignore > Ignore the other player"
