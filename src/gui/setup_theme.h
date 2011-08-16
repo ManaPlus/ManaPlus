@@ -74,6 +74,10 @@ class Setup_Theme : public SetupTab
         DropDown *mSecureFontDropDown;
         std::string mSecureFont;
 
+        gcn::Label *mJapanFontLabel;
+        DropDown *mJapanFontDropDown;
+        std::string mJapanFont;
+
         FontSizeChoiceListModel *mFontSizeListModel;
         gcn::Label *fontSizeLabel;
         int mFontSize;

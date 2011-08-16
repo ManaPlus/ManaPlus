@@ -1802,6 +1802,7 @@ void Client::storeSafeParameters()
     std::string particleFont;
     std::string helpFont;
     std::string secureFont;
+    std::string japanFont;
     bool showBackground;
     bool enableMumble;
     bool enableMapReduce;
@@ -1829,6 +1830,7 @@ void Client::storeSafeParameters()
     particleFont = config.getStringValue("particleFont");
     helpFont = config.getStringValue("helpFont");
     secureFont = config.getStringValue("secureFont");
+    japanFont = config.getStringValue("japanFont");
 
     showBackground = config.getBoolValue("showBackground");
     enableMumble = config.getBoolValue("enableMumble");
@@ -1847,6 +1849,7 @@ void Client::storeSafeParameters()
     config.setValue("particleFont", "fonts/dejavusans.ttf");
     config.setValue("helpFont", "fonts/dejavusansmono.ttf");
     config.setValue("secureFont", "fonts/dejavusansmono.ttf");
+    config.setValue("japanFont", "fonts/mplus-1p-regular.ttf");
     config.setValue("showBackground", false);
     config.setValue("enableMumble", false);
     config.setValue("enableMapReduce", false);
@@ -1872,6 +1875,7 @@ void Client::storeSafeParameters()
     config.setValue("particleFont", particleFont);
     config.setValue("helpFont", helpFont);
     config.setValue("secureFont", secureFont);
+    config.setValue("japanFont", japanFont);
     config.setValue("showBackground", showBackground);
     config.setValue("enableMumble", enableMumble);
     config.setValue("enableMapReduce", enableMapReduce);
