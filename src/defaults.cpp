@@ -168,9 +168,9 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "floorItemsHighlight", true);
     AddDEF(configData, "enableBotCheker", true);
     AddDEF(configData, "removeColors", true);
-    AddDEF(configData, "showMagicInDebug", false);
+    AddDEF(configData, "showMagicInDebug", true);
     AddDEF(configData, "allowCommandsInChatTabs", true);
-    AddDEF(configData, "serverMsgInDebug", false);
+    AddDEF(configData, "serverMsgInDebug", true);
     AddDEF(configData, "hideShopMessages", true);
     AddDEF(configData, "showChatHistory", true);
     AddDEF(configData, "showChatColorsList", true);
