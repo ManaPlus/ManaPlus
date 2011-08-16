@@ -107,7 +107,7 @@ class ItemInfo
          */
         ItemInfo();
 
-        ItemInfo(ItemInfo &info);
+//        ItemInfo(ItemInfo &info);
 
         ~ItemInfo();
 

@@ -1,4 +1,6 @@
-/* Code taken from: http://mumble.sourceforge.net/Link */
+/*
+ *Code taken from: http://mumble.sourceforge.net/Link
+ */
 
 #include "mumblemanager.h"
 

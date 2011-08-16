@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-
+/*
 ItemInfo::ItemInfo(ItemInfo &info)
 {
     mMissileParticleFile = info.mMissileParticleFile;
@@ -61,6 +61,7 @@ ItemInfo::ItemInfo(ItemInfo &info)
         mDrawPriority[f] = info.mDrawPriority[f];
     }
 }
+*/
 
 ItemInfo::ItemInfo() :
     mMissileParticleFile(""),
