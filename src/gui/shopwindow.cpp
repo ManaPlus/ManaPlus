@@ -803,3 +803,12 @@ int ShopWindow::sumAmount(Item *shopItem)
     }
     return sum;
 }
+
+bool ShopWindow::isShopEmpty()
+{
+    if (!mBuyShopItems || !mSellShopItems)
+        return true;
+    if (mBuyShopItems->empty() && mSellShopItems->empty())
+        return true;
+    return false;
+}

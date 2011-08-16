@@ -43,6 +43,11 @@ int ShopItems::getNumberOfElements()
     return static_cast<int>(mShopItems.size());
 }
 
+bool ShopItems::empty()
+{
+    return mShopItems.empty();
+}
+
 std::string ShopItems::getElementAt(int i)
 {
     if (i < 0 || static_cast<unsigned>(i) >= mShopItems.size()

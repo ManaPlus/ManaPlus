@@ -50,6 +50,7 @@
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/palette.h"
+#include "gui/shopwindow.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/statuswindow.h"
@@ -344,7 +345,7 @@ void LocalPlayer::logic()
     if (mEnableAdvert && !mBlockAdvert && mAdvertTime < cur_time)
     {
         Uint8 smile = FLAG_SPECIAL;
-        if (mTradebot)
+        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile += FLAG_SHOP;
 
         if (mAwayMode)
