@@ -3464,10 +3464,7 @@ void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
         if (target && target->getType() != Being::NPC)
         {
             mKeepAttacking = true;
-            if (mAttackWeaponType == 1)
-                moveToTarget();
-            else
-                moveToTarget(mAttackRange);
+            moveToTarget();
         }
     }
 }
