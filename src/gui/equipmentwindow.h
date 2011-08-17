@@ -81,24 +81,18 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
     private:
         void mouseExited(gcn::MouseEvent &event);
+
         void mouseMoved(gcn::MouseEvent &event);
 
         Item *getItem(int x, int y) const;
 
         void setSelected(int index);
 
+        void fillBoxes();
+
+        void addBox(int x, int y);
+
         Equipment *mEquipment;
-
-        /**
-         * Equipment box.
-         */
-        struct EquipBox
-        {
-            int posX;
-            int posY;
-        };
-
-        EquipBox mEquipBox[Equipment::EQUIP_VECTOREND]; /**<Equipment Boxes. */
 
         ItemPopup *mItemPopup;
         PlayerBox *mPlayerBox;
@@ -107,6 +101,7 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         int mSelected; /**< Index of selected item. */
         bool mForing;
         Being *mBeing;
+        std::vector<std::pair<int, int>*> mBoxes;
 };
 
 extern EquipmentWindow *equipmentWindow;

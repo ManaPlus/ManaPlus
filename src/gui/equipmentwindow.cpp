@@ -55,24 +55,6 @@
 static const int BOX_WIDTH = 36;
 static const int BOX_HEIGHT = 36;
 
-// Positions of the boxes, 2nd dimension is X and Y respectively.
-static const int boxPosition[][2] =
-{
-    { 90,  40 },    // EQUIP_TORSO_SLOT
-    { 8,   78 },    // EQUIP_GLOVES_SLOT
-    { 70,  0 },     // EQUIP_HEAD_SLOT
-    { 50,  253 },   // EQUIP_LEGS_SLOT
-    { 90,  253 },   // EQUIP_FEET_SLOT
-    { 8,   213 },   // EQUIP_RING1_SLOT
-    { 129, 213 },   // EQUIP_RING2_SLOT
-    { 50,  40 },    // EQUIP_NECK_SLOT
-    { 8,   168 },   // EQUIP_FIGHT1_SLOT
-    { 129, 168 },   // EQUIP_FIGHT2_SLOT
-    { 129, 78 },    // EQUIP_PROJECTILE_SLOT
-    { 8,   123 },   // EQUIP_EVOL_RING1_SLOT
-    { 129, 123 },   // EQUIP_EVOL_RING2_SLOT
-};
-
 EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
                                  bool foring):
     Window(_("Equipment")),
@@ -80,6 +62,7 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     mSelected(-1),
     mForing(foring)
 {
+    fillBoxes();
     mBeing = being;
     mItemPopup = new ItemPopup;
     if (setupWindow)
@@ -109,11 +92,6 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     add(mPlayerBox);
     add(mUnequip);
 
-    for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
-    {
-        mEquipBox[i].posX = boxPosition[i][0] + getPadding();
-        mEquipBox[i].posY = boxPosition[i][1] + getTitleBarHeight();
-    }
 }
 
 EquipmentWindow::~EquipmentWindow()
@@ -138,23 +116,30 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
 
     Window::drawChildren(graphics);
 
-    for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
+    int i = 0;
+    const int fontHeight = getFont()->getHeight();
+
+    std::vector<std::pair<int, int>*>::const_iterator it;
+    std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
+
+    for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
     {
+        std::pair<int, int> *box = *it;
         if (i == mSelected)
         {
             const gcn::Color color = Theme::getThemeColor(Theme::HIGHLIGHT);
 
             // Set color to the highlight color
             g->setColor(gcn::Color(color.r, color.g, color.b, getGuiAlpha()));
-            g->fillRectangle(gcn::Rectangle(mEquipBox[i].posX,
-                             mEquipBox[i].posY, BOX_WIDTH, BOX_HEIGHT));
+            g->fillRectangle(gcn::Rectangle(box->first,
+                box->second, BOX_WIDTH, BOX_HEIGHT));
         }
 
         // Set color black
         g->setColor(gcn::Color(0, 0, 0));
         // Draw box border
-        g->drawRectangle(gcn::Rectangle(mEquipBox[i].posX, mEquipBox[i].posY,
-                                        BOX_WIDTH, BOX_HEIGHT));
+        g->drawRectangle(gcn::Rectangle(box->first, box->second,
+            BOX_WIDTH, BOX_HEIGHT));
 
         if (!mEquipment)
             continue;
@@ -168,15 +153,13 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             {
                 image->setAlpha(1.0f); // Ensure the image is drawn
                                        // with maximum opacity
-                g->drawImage(image,
-                             mEquipBox[i].posX + 2,
-                             mEquipBox[i].posY + 2);
+                g->drawImage(image, box->first + 2, box->second + 2);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
                     g->setColor(Theme::getThemeColor(Theme::TEXT));
                     graphics->drawText(toString(item->getQuantity()),
-                        mEquipBox[i].posX + (BOX_WIDTH / 2),
-                        mEquipBox[i].posY - getFont()->getHeight(),
+                        box->first + (BOX_WIDTH / 2),
+                        box->second - fontHeight,
                         gcn::Graphics::CENTER);
                 }
             }
@@ -202,10 +185,15 @@ Item *EquipmentWindow::getItem(int x, int y) const
     if (!mEquipment)
         return 0;
 
-    for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
+    std::vector<std::pair<int, int>*>::const_iterator it;
+    std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
+    int i = 0;
+
+    for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
     {
-        gcn::Rectangle tRect(mEquipBox[i].posX, mEquipBox[i].posY,
-                             BOX_WIDTH, BOX_HEIGHT);
+        std::pair<int, int> *box = *it;
+        const gcn::Rectangle tRect(box->first, box->second,
+            BOX_WIDTH, BOX_HEIGHT);
 
         if (tRect.isPointInRect(x, y))
             return mEquipment->getEquipment(i);
@@ -228,11 +216,16 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
         if (mForing)
             return;
         // Checks if any of the presses were in the equip boxes.
-        for (int i = 0; i < Equipment::EQUIP_VECTOREND; i++)
+        std::vector<std::pair<int, int>*>::const_iterator it;
+        std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
+        int i = 0;
+
+        for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
         {
+            std::pair<int, int> *box = *it;
             Item *item = mEquipment->getEquipment(i);
-            gcn::Rectangle tRect(mEquipBox[i].posX, mEquipBox[i].posY,
-                                 BOX_WIDTH, BOX_HEIGHT);
+            const gcn::Rectangle tRect(box->first, box->second,
+                BOX_WIDTH, BOX_HEIGHT);
 
             if (tRect.isPointInRect(x, y) && item)
                 setSelected(i);
@@ -325,4 +318,27 @@ void EquipmentWindow::resetBeing(Being *being)
 {
     if (being == mBeing)
         setBeing(0);
+}
+
+void EquipmentWindow::fillBoxes()
+{
+    addBox(90, 40);     // torso
+    addBox(8, 78);      // gloves
+    addBox(70, 0);      // hat
+    addBox(50, 253);    // pants
+    addBox(90, 253);    // boots
+    addBox(8, 213);     // FREE
+    addBox(129, 213);   // wings
+    addBox(50, 40);     // scarf
+    addBox(8, 168);     // weapon
+    addBox(129, 168);   // shield
+    addBox(129, 78);    // ammo
+    addBox(8, 123);     // amulet
+    addBox(129, 123);   // ring
+}
+
+void EquipmentWindow::addBox(int x, int y)
+{
+    mBoxes.push_back(new std::pair<int, int>(
+        x + getPadding(), y + getTitleBarHeight()));
 }
