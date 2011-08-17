@@ -249,12 +249,13 @@ void ChatTab::chatLog(std::string line, Own own,
     // We look if the Vertical Scroll Bar is set at the max before
     // adding a row, otherwise the max will always be a row higher
     // at comparison.
-    if (mScrollArea->getVerticalScrollAmount() >=
+    if (mScrollArea->getVerticalScrollAmount() + 2 >=
         mScrollArea->getVerticalMaxScroll())
     {
         addRow(line);
         mScrollArea->setVerticalScrollAmount(
             mScrollArea->getVerticalMaxScroll());
+
     }
     else
     {
