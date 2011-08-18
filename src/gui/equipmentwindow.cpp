@@ -62,7 +62,6 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     mSelected(-1),
     mForing(foring)
 {
-    fillBoxes();
     mBeing = being;
     mItemPopup = new ItemPopup;
     if (setupWindow)
@@ -81,6 +80,13 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     setCloseButton(true);
     setSaveVisible(true);
     setDefaultSize(180, 345, ImageRect::CENTER);
+
+    mBoxes.reserve(13);
+    for (int f = 0; f < 13; f ++)
+        mBoxes.push_back(0);
+
+    fillBoxes();
+
     loadWindowState();
 
     mUnequip = new Button(_("Unequip"), "unequip", this);
@@ -125,6 +131,8 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
     {
         std::pair<int, int> *box = *it;
+        if (!box)
+            continue;
         if (i == mSelected)
         {
             const gcn::Color color = Theme::getThemeColor(Theme::HIGHLIGHT);
@@ -192,6 +200,8 @@ Item *EquipmentWindow::getItem(int x, int y) const
     for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
     {
         std::pair<int, int> *box = *it;
+        if (!box)
+            continue;
         const gcn::Rectangle tRect(box->first, box->second,
             BOX_WIDTH, BOX_HEIGHT);
 
@@ -217,12 +227,15 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
             return;
         // Checks if any of the presses were in the equip boxes.
         std::vector<std::pair<int, int>*>::const_iterator it;
-        std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
+        std::vector<std::pair<int, int>*>::const_iterator
+            it_end = mBoxes.end();
         int i = 0;
 
         for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
         {
             std::pair<int, int> *box = *it;
+            if (!box)
+                continue;
             Item *item = mEquipment->getEquipment(i);
             const gcn::Rectangle tRect(box->first, box->second,
                 BOX_WIDTH, BOX_HEIGHT);
@@ -322,23 +335,141 @@ void EquipmentWindow::resetBeing(Being *being)
 
 void EquipmentWindow::fillBoxes()
 {
-    addBox(90, 40);     // torso
-    addBox(8, 78);      // gloves
-    addBox(70, 0);      // hat
-    addBox(50, 253);    // pants
-    addBox(90, 253);    // boots
-    addBox(8, 213);     // FREE
-    addBox(129, 213);   // wings
-    addBox(50, 40);     // scarf
-    addBox(8, 168);     // weapon
-    addBox(129, 168);   // shield
-    addBox(129, 78);    // ammo
-    addBox(8, 123);     // amulet
-    addBox(129, 123);   // ring
+    XML::Document *doc = new XML::Document("equipmentwindow.xml");
+    xmlNodePtr root = doc->rootNode();
+    if (!root)
+    {
+        delete doc;
+        fillDefault();
+        return;
+    }
+
+    for_each_xml_child_node(node, root)
+    {
+        if (xmlStrEqual(node->name, BAD_CAST "window"))
+            loadWindow(node);
+        else if (xmlStrEqual(node->name, BAD_CAST "playerbox"))
+            loadPlayerBox(node);
+        else if (xmlStrEqual(node->name, BAD_CAST "slot"))
+            loadSlot(node);
+    }
 }
 
-void EquipmentWindow::addBox(int x, int y)
+void EquipmentWindow::loadWindow(xmlNodePtr windowNode)
 {
-    mBoxes.push_back(new std::pair<int, int>(
-        x + getPadding(), y + getTitleBarHeight()));
+    setDefaultSize(XML::getProperty(windowNode, "width", 180),
+        XML::getProperty(windowNode, "height", 345), ImageRect::CENTER);
+}
+
+void EquipmentWindow::loadPlayerBox(xmlNodePtr playerBoxNode)
+{
+    mPlayerBox->setDimension(gcn::Rectangle(
+        XML::getProperty(playerBoxNode, "x", 50),
+        XML::getProperty(playerBoxNode, "y", 80),
+        XML::getProperty(playerBoxNode, "width", 74),
+        XML::getProperty(playerBoxNode, "height", 168)));
+}
+
+void EquipmentWindow::loadSlot(xmlNodePtr slotNode)
+{
+    int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
+    if (slot < 0)
+        return;
+
+    const int x = XML::getProperty(slotNode, "x", 0) + getPadding();
+    const int y = XML::getProperty(slotNode, "y", 0) + getTitleBarHeight();
+
+    if (mBoxes[slot])
+    {
+        std::pair<int, int> *pair = mBoxes[slot];
+        pair->first = x;
+        pair->second = y;
+    }
+    else
+    {
+         mBoxes[slot] = new std::pair<int, int>(x, y);
+    }
+}
+
+int EquipmentWindow::parseSlotName(std::string name)
+{
+    int id = -1;
+    if (name == "shoes" || name == "boot" || name == "boots")
+    {
+        id = 4;
+    }
+    else if (name == "bottomclothes" || name == "bottom" || name == "pants")
+    {
+        id = 3;
+    }
+    else if (name == "topclothes" || name == "top"
+             || name == "torso" || name == "body")
+    {
+        id = 0;
+    }
+    else if (name == "free" || name == "misc1")
+    {
+        id = 5;
+    }
+    else if (name == "misc2" || name == "scarf" || name == "scarfs")
+    {
+        id = 7;
+    }
+    else if (name == "hat" || name == "hats")
+    {
+        id = 2;
+    }
+    else if (name == "wings")
+    {
+        id = 6;
+    }
+    else if (name == "glove" || name == "gloves")
+    {
+        id = 1;
+    }
+    else if (name == "weapon" || name == "weapons")
+    {
+        id = 8;
+    }
+    else if (name == "shield" || name == "shields")
+    {
+        id = 9;
+    }
+    else if (name == "amulet" || name == "amulets")
+    {
+        id = 11;
+    }
+    else if (name == "ring" || name == "rings")
+    {
+        id = 12;
+    }
+    else if (name == "arrow" || name == "arrows" || name == "ammo")
+    {
+        id = 10;
+    }
+
+    return id;
+}
+
+void EquipmentWindow::fillDefault()
+{
+    addBox(0, 90, 40);     // torso
+    addBox(1, 8, 78);      // gloves
+    addBox(2, 70, 0);      // hat
+    addBox(3, 50, 253);    // pants
+    addBox(4, 90, 253);    // boots
+    addBox(5, 8, 213);     // FREE
+    addBox(6, 129, 213);   // wings
+    addBox(7, 50, 40);     // scarf
+    addBox(8, 8, 168);     // weapon
+    addBox(9, 129, 168);   // shield
+    addBox(10, 129, 78);   // ammo
+    addBox(11, 8, 123);    // amulet
+    addBox(12, 129, 123);  // ring
+}
+
+void EquipmentWindow::addBox(int idx, int x, int y)
+{
+    mBoxes[idx] = new std::pair<int, int>(
+        x + getPadding(), y + getTitleBarHeight());
 }

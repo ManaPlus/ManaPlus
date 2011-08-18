@@ -28,6 +28,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/xml.h"
+
 #include <guichan/actionlistener.hpp>
 
 #ifdef __GNUC__
@@ -90,7 +92,17 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void fillBoxes();
 
-        void addBox(int x, int y);
+        void fillDefault();
+
+        void addBox(int idx, int x, int y);
+
+        void loadWindow(xmlNodePtr windowNode);
+
+        void loadPlayerBox(xmlNodePtr playerBoxNode);
+
+        void loadSlot(xmlNodePtr slotNode);
+
+        int parseSlotName(std::string name);
 
         Equipment *mEquipment;
 
