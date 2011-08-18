@@ -338,7 +338,8 @@ Game::Game():
     mValidSpeed(true),
     mLastAction(0),
     mNextAdjustTime(cur_time + adjustDelay),
-    mAdjustLevel(0)
+    mAdjustLevel(0),
+    mLowerCounter(0)
 {
     spellManager = new SpellManager;
     spellShortcut = new SpellShortcut;
@@ -586,6 +587,13 @@ void Game::adjustPerfomance()
 
         if (fps < maxFps - 10)
         {
+            if (mLowerCounter < 2)
+            {
+                mLowerCounter ++;
+                mNextAdjustTime = cur_time + 1;
+                return;
+            }
+            mLowerCounter = 0;
             mAdjustLevel ++;
             switch (mAdjustLevel)
             {
@@ -604,6 +612,7 @@ void Game::adjustPerfomance()
                     else
                     {
                         mNextAdjustTime = cur_time + 1;
+                        mLowerCounter = 2;
                     }
                     break;
                 }
@@ -621,6 +630,7 @@ void Game::adjustPerfomance()
                     else
                     {
                         mNextAdjustTime = cur_time + 1;
+                        mLowerCounter = 2;
                     }
                     break;
                 case 3:
