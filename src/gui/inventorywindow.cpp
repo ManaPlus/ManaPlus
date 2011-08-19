@@ -427,7 +427,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
             else
             {
                 if (tradeWindow)
-                    tradeWindow->tradeItem(item, item->getQuantity());
+                    tradeWindow->tradeItem(item, item->getQuantity(), true);
             }
         }
     }

@@ -1066,18 +1066,18 @@ void PopupMenu::handleLink(const std::string &link,
             int cnt = 10;
             if (cnt > mItem->getQuantity())
                 cnt = mItem->getQuantity();
-            tradeWindow->tradeItem(mItem, cnt);
+            tradeWindow->tradeItem(mItem, cnt, true);
         }
     }
     else if (link == "addtrade half" && mItem)
     {
         if (tradeWindow)
-            tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2);
+            tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2, true);
     }
     else if (link == "addtrade all" && mItem)
     {
         if (tradeWindow)
-            tradeWindow->tradeItem(mItem, mItem->getQuantity());
+            tradeWindow->tradeItem(mItem, mItem->getQuantity(), true);
     }
     else if (link == "retrieve" && mItem)
     {

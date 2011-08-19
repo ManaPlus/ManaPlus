@@ -246,8 +246,11 @@ void TradeWindow::receivedOk(bool own)
     }
 }
 
-void TradeWindow::tradeItem(Item *item, int quantity)
+void TradeWindow::tradeItem(Item *item, int quantity, bool check)
 {
+    if (check && !checkItem(item))
+        return;
+
     Net::getTradeHandler()->addItem(item, quantity);
 }
 
@@ -325,15 +328,9 @@ void TradeWindow::action(const gcn::ActionEvent &event)
         if (mMyInventory->getFreeSlot() == -1)
             return;
 
-        if (mMyInventory->contains(item))
-        {
-            if (localChatTab)
-            {
-                localChatTab->chatLog(_("Failed adding item. You can not "
-                    "overlap one kind of item on the window."), BY_SERVER);
-            }
+
+        if (!checkItem(item))
             return;
-        }
 
         // Choose amount of items to trade
         ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd, this, item);
@@ -441,4 +438,22 @@ void TradeWindow::initTrade(std::string nick)
     clear();
     if (!player_relations.isGoodName(nick))
         setCaptionFont(gui->getSecureFont());
+}
+
+bool TradeWindow::checkItem(Item *item)
+{
+    Item *tradeItem = mMyInventory->findItem(
+        item->getId(), item->getColor());
+
+    if (tradeItem && (tradeItem->getQuantity() > 1
+        || item->getQuantity() > 1))
+    {
+        if (localChatTab)
+        {
+            localChatTab->chatLog(_("Failed adding item. You can not "
+                "overlap one kind of item on the window."), BY_SERVER);
+        }
+        return false;
+    }
+    return true;
 }
