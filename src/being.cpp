@@ -476,7 +476,7 @@ void Being::setSpeech(const std::string &text, int time)
         mSpeech = mSpeech.substr(0, lineLim);
 
     trim(mSpeech);
-    if (mSpeech.length() < 1)
+    if (mSpeech.empty())
         return;
 
     if (!time && mSpeech.size() < 200)
@@ -1363,7 +1363,7 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
 
 void Being::drawSpeech(int offsetX, int offsetY)
 {
-    if (!mSpeechBubble)
+    if (!mSpeechBubble || mSpeech.empty())
         return;
 
     const int px = getPixelX() - offsetX;
@@ -1553,6 +1553,9 @@ void Being::showName()
     {
         font = gui->getSecureFont();
     }
+
+    if (mDisplayName.empty())
+        return;
 
     mDispName = new FlashText(mDisplayName, getPixelX(), getPixelY(),
                               gcn::Graphics::CENTER, mNameColor, font);
