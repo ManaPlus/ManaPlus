@@ -1,3 +1,26 @@
+2011-08-21 New release 1.1.8.21
+ManaPlus:
+fix: moving near npc.
+fix: crash in server dialog if press load button twice.
+fix: saving opened whisper tabs.
+fix: hide/show setup window by hot key.
+fix: show shop sign on players only if shop enabled and shop not empty.
+fix: chat auto scroll.
+fix: mode with switching bow to knife.
+fix: adding limits to adding items to trade.
+fix: perfomance issue with invisible npcs.
+add: auto improve perfomance by disabling different draphics features.
+add: perfomance tab. most perfomance related settings moved to this tab.
+add: new perfomance related options to perfomance tab.
+add: split players setup tab to relations and players.
+add: ability to add comments to npcs.
+add: option to hide ip addresses on screen shots.
+add: warp menu item navigation points menu (for gms only).
+add: copy to chat button in status window to copy player stats to chat.
+add: enable auto switching to janapese font if used japan locale.
+add: update dejavu and mplus fonts.
+add: updated translations.
+
 2011-08-07 New release 1.1.8.7
 ManaPlus:
 fix: player attack animation length.
