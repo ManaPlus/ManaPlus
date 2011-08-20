@@ -124,7 +124,7 @@ std::string ServersListModel::getElementAt(int elementIndex)
 
 void ServersListModel::setVersionString(int index, const std::string &version)
 {
-    if (index >= mVersionStrings.size())
+    if (index >= (int)mVersionStrings.size())
         return;
 
     if (version.empty())
