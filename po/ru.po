@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-16 19:07+0300\n"
+"POT-Creation-Date: 2011-08-20 17:42+0300\n"
 "PO-Revision-Date: 2011-08-16 16:10+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
@@ -308,43 +308,43 @@ msgstr ""
 "/%s может принимать значение \"yes\", \"no\", \"true\", \"false\", \"1\" или "
 "\"0\"."
 
-#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:411
 msgid "General"
 msgstr "Общие"
 
-#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:413
 msgid "Debug"
 msgstr "Отладка"
 
-#: src/game.cpp:487
+#: src/game.cpp:488
 msgid "Screenshot saved as "
 msgstr "Снимок экрана сохранен как "
 
-#: src/game.cpp:495
+#: src/game.cpp:496
 msgid "Saving screenshot failed!"
 msgstr "Ошибка при сохранении снимка экрана!"
 
-#: src/game.cpp:535
+#: src/game.cpp:536
 msgid "The connection to the server was lost."
 msgstr "Соединение с сервером потеряно."
 
-#: src/game.cpp:547
+#: src/game.cpp:548
 msgid "Network Error"
 msgstr "Ошибка сети"
 
-#: src/game.cpp:1203
+#: src/game.cpp:1213
 msgid "Ignoring incoming trade requests"
 msgstr "Игнорировать предложения о торговле"
 
-#: src/game.cpp:1210
+#: src/game.cpp:1220
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
-#: src/game.cpp:1596
+#: src/game.cpp:1606
 msgid "Could Not Load Map"
 msgstr "Не удалось загрузить карту"
 
-#: src/game.cpp:1597
+#: src/game.cpp:1607
 #, c-format
 msgid "Error while loading %s"
 msgstr "Ошибка во время загрузки %s"
@@ -910,11 +910,11 @@ msgstr "Автоматически открывать это окно"
 msgid "OK"
 msgstr "ОК"
 
-#: src/gui/equipmentwindow.cpp:78 src/gui/windowmenu.cpp:74
+#: src/gui/equipmentwindow.cpp:61 src/gui/windowmenu.cpp:74
 msgid "Equipment"
 msgstr "Снаряжение"
 
-#: src/gui/equipmentwindow.cpp:103 src/gui/inventorywindow.cpp:130
+#: src/gui/equipmentwindow.cpp:93 src/gui/inventorywindow.cpp:130
 #: src/gui/inventorywindow.cpp:511 src/gui/inventorywindow.cpp:520
 #: src/gui/popupmenu.cpp:1643 src/gui/popupmenu.cpp:1738
 #: src/gui/popupmenu.cpp:1783
@@ -926,7 +926,7 @@ msgid "Help"
 msgstr "Помощь"
 
 #: src/gui/inventorywindow.cpp:80 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:246
+#: src/inventory.cpp:249
 msgid "Inventory"
 msgstr "Инвентарь"
 
@@ -3262,15 +3262,15 @@ msgstr "Вы отдаете:"
 msgid "Change"
 msgstr "Сменить"
 
-#: src/gui/tradewindow.cpp:332
+#: src/gui/tradewindow.cpp:374
+msgid "You don't have enough money."
+msgstr "У вас недостаточно денег"
+
+#: src/gui/tradewindow.cpp:453
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Отказано в добавлении предмета. Вы не можете добавить какой-либо вид "
 "объектов более одного раза."
-
-#: src/gui/tradewindow.cpp:377
-msgid "You don't have enough money."
-msgstr "У вас недостаточно денег"
 
 #: src/gui/unregisterdialog.cpp:54
 #, c-format
@@ -3709,11 +3709,11 @@ msgstr "Сменить логин"
 msgid "Choose World"
 msgstr "Выберите сервер"
 
-#: src/inventory.cpp:248
+#: src/inventory.cpp:251
 msgid "Storage"
 msgstr "Хранилище"
 
-#: src/inventory.cpp:250
+#: src/inventory.cpp:253
 msgid "Cart"
 msgstr "Телега"
 
@@ -4108,41 +4108,41 @@ msgstr ""
 "Конфликт клавиш \"%s\" и \"%s\".Исправьте их, или игра может себя странно "
 "вести."
 
-#: src/localplayer.cpp:371
+#: src/localplayer.cpp:372
 msgid "You were killed by "
 msgstr "Вы были убиты "
 
-#: src/localplayer.cpp:1402
+#: src/localplayer.cpp:1403
 msgid "Tried to pick up nonexistent item."
 msgstr "Попытка поднять несуществующий предмет."
 
-#: src/localplayer.cpp:1404
+#: src/localplayer.cpp:1405
 msgid "Item is too heavy."
 msgstr "Предмет слишком тяжелый."
 
-#: src/localplayer.cpp:1406
+#: src/localplayer.cpp:1407
 msgid "Item is too far away."
 msgstr "Предмет слишком далеко"
 
-#: src/localplayer.cpp:1408
+#: src/localplayer.cpp:1409
 msgid "Inventory is full."
 msgstr "Инвентарь переполнен."
 
-#: src/localplayer.cpp:1410
+#: src/localplayer.cpp:1411
 msgid "Stack is too big."
 msgstr "Слишком много предметов."
 
-#: src/localplayer.cpp:1413
+#: src/localplayer.cpp:1414
 msgid "Item belongs to someone else."
 msgstr "Предмет принадлежит кому-то еще."
 
-#: src/localplayer.cpp:1416
+#: src/localplayer.cpp:1417
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1440
+#: src/localplayer.cpp:1441
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -4150,27 +4150,27 @@ msgstr[0] "Вы подняли %d [@@%d|%s@@]."
 msgstr[1] "Вы подняли %d [@@%d|%s@@]."
 msgstr[2] "Вы подняли %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3174
+#: src/localplayer.cpp:3175
 msgid "Away"
 msgstr "Отошел"
 
-#: src/localplayer.cpp:3478
+#: src/localplayer.cpp:3476
 msgid "Follow: "
 msgstr "Следование: "
 
-#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
+#: src/localplayer.cpp:3478 src/localplayer.cpp:3493
 msgid "Follow canceled"
 msgstr "Следование отменено"
 
-#: src/localplayer.cpp:3487
+#: src/localplayer.cpp:3485
 msgid "Imitation: "
 msgstr "Имитация: "
 
-#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
+#: src/localplayer.cpp:3487 src/localplayer.cpp:3495
 msgid "Imitation canceled"
 msgstr "Имитация отменена"
 
-#: src/localplayer.cpp:3849
+#: src/localplayer.cpp:3847
 msgid "You see "
 msgstr "Вы видите "
 

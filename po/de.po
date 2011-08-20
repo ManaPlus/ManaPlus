@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-16 19:07+0300\n"
+"POT-Creation-Date: 2011-08-20 17:42+0300\n"
 "PO-Revision-Date: 2011-08-09 22:16+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.net/projects/p/manaplus/team/"
@@ -301,43 +301,43 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Gültige Optionen für /%s sind \"yes\",\"no\",\"true\",\"false\",\"1\",\"0\"."
 
-#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:246 src/gui/widgets/chattab.cpp:411
 msgid "General"
 msgstr "Allgemein"
 
-#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:413
 msgid "Debug"
 msgstr "Debug"
 
-#: src/game.cpp:487
+#: src/game.cpp:488
 msgid "Screenshot saved as "
 msgstr ""
 
-#: src/game.cpp:495
+#: src/game.cpp:496
 msgid "Saving screenshot failed!"
 msgstr "Bildschirmfoto konnte nicht gespeichert werden!"
 
-#: src/game.cpp:535
+#: src/game.cpp:536
 msgid "The connection to the server was lost."
 msgstr ""
 
-#: src/game.cpp:547
+#: src/game.cpp:548
 msgid "Network Error"
 msgstr "Netzwerkfehler"
 
-#: src/game.cpp:1203
+#: src/game.cpp:1213
 msgid "Ignoring incoming trade requests"
 msgstr "Ignoriere eingehende Handelsanfragen"
 
-#: src/game.cpp:1210
+#: src/game.cpp:1220
 msgid "Accepting incoming trade requests"
 msgstr "Akzeptiere eingehende Handelsanfragen"
 
-#: src/game.cpp:1596
+#: src/game.cpp:1606
 msgid "Could Not Load Map"
 msgstr ""
 
-#: src/game.cpp:1597
+#: src/game.cpp:1607
 #, c-format
 msgid "Error while loading %s"
 msgstr "Fehler beim Laden von %s"
@@ -903,11 +903,11 @@ msgstr ""
 msgid "OK"
 msgstr "Ok"
 
-#: src/gui/equipmentwindow.cpp:78 src/gui/windowmenu.cpp:74
+#: src/gui/equipmentwindow.cpp:61 src/gui/windowmenu.cpp:74
 msgid "Equipment"
 msgstr "Ausrüstung"
 
-#: src/gui/equipmentwindow.cpp:103 src/gui/inventorywindow.cpp:130
+#: src/gui/equipmentwindow.cpp:93 src/gui/inventorywindow.cpp:130
 #: src/gui/inventorywindow.cpp:511 src/gui/inventorywindow.cpp:520
 #: src/gui/popupmenu.cpp:1643 src/gui/popupmenu.cpp:1738
 #: src/gui/popupmenu.cpp:1783
@@ -919,7 +919,7 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: src/gui/inventorywindow.cpp:80 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:246
+#: src/inventory.cpp:249
 msgid "Inventory"
 msgstr "Inventar"
 
@@ -3247,15 +3247,15 @@ msgstr "Du gibst:"
 msgid "Change"
 msgstr "Ändern"
 
-#: src/gui/tradewindow.cpp:332
+#: src/gui/tradewindow.cpp:374
+msgid "You don't have enough money."
+msgstr "Du hast nicht genügend Geld."
+
+#: src/gui/tradewindow.cpp:453
 msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Gegenstand konnte nicht hinzugefügt werden. Du kannst keinen weiteren dieser "
 "Gegenstände hinzufügen."
-
-#: src/gui/tradewindow.cpp:377
-msgid "You don't have enough money."
-msgstr "Du hast nicht genügend Geld."
 
 #: src/gui/unregisterdialog.cpp:54
 #, c-format
@@ -3695,11 +3695,11 @@ msgstr ""
 msgid "Choose World"
 msgstr ""
 
-#: src/inventory.cpp:248
+#: src/inventory.cpp:251
 msgid "Storage"
 msgstr ""
 
-#: src/inventory.cpp:250
+#: src/inventory.cpp:253
 msgid "Cart"
 msgstr ""
 
@@ -4092,68 +4092,68 @@ msgid ""
 "strange behaviour."
 msgstr ""
 
-#: src/localplayer.cpp:371
+#: src/localplayer.cpp:372
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1402
+#: src/localplayer.cpp:1403
 msgid "Tried to pick up nonexistent item."
 msgstr ""
 
-#: src/localplayer.cpp:1404
+#: src/localplayer.cpp:1405
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1406
+#: src/localplayer.cpp:1407
 msgid "Item is too far away."
 msgstr ""
 
-#: src/localplayer.cpp:1408
+#: src/localplayer.cpp:1409
 msgid "Inventory is full."
 msgstr ""
 
-#: src/localplayer.cpp:1410
+#: src/localplayer.cpp:1411
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1413
+#: src/localplayer.cpp:1414
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1416
+#: src/localplayer.cpp:1417
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1440
+#: src/localplayer.cpp:1441
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/localplayer.cpp:3174
+#: src/localplayer.cpp:3175
 msgid "Away"
 msgstr "Abwesend"
 
-#: src/localplayer.cpp:3478
+#: src/localplayer.cpp:3476
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
+#: src/localplayer.cpp:3478 src/localplayer.cpp:3493
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3487
+#: src/localplayer.cpp:3485
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
+#: src/localplayer.cpp:3487 src/localplayer.cpp:3495
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3849
+#: src/localplayer.cpp:3847
 msgid "You see "
 msgstr ""
 
