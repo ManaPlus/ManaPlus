@@ -2039,13 +2039,27 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
 
     int dx = static_cast<int>(static_cast<float>(width) / p);
 
+    if (!damage || (!hp && maxHP == damage))
+    {
+        graphics->setColor(userPalette->getColorWithAlpha(color1));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x, y, dx, height));
+        return;
+    }
+    else if (width - dx <= 0)
+    {
+        graphics->setColor(userPalette->getColorWithAlpha(color2));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x, y, width, height));
+        return;
+    }
+
     graphics->setColor(userPalette->getColorWithAlpha(color1));
 
     graphics->fillRectangle(gcn::Rectangle(
         x, y, dx, height));
-
-    if (width - dx <= 0)
-        return;
 
     graphics->setColor(userPalette->getColorWithAlpha(color2));
 
