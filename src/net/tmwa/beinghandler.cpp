@@ -552,7 +552,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
 
-        // because server dont send direction in move packet,
+        // because server don't send direction in move packet,
         // we fixing it
 
         if (srcX != dstX || srcY != dstY)

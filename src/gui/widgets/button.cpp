@@ -202,7 +202,7 @@ void Button::draw(gcn::Graphics *graphics)
     }
     else
     {
-        // because we dont know where parent windows was moved,
+        // because we don't know where parent windows was moved,
         // need recalc vertexes
         gcn::ClipRectangle &rect = static_cast<Graphics*>(
             graphics)->getTopClip();

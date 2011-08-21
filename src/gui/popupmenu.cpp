@@ -574,7 +574,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     if (tab->getRemoveNames())
     {
         mBrowserBox->addRow(strprintf("@@dont remove name|%s@@",
-                            _("Dont remove name")));
+                            _("Don't remove name")));
     }
     else
     {
