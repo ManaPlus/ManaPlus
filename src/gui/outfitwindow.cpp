@@ -78,6 +78,9 @@ OutfitWindow::OutfitWindow():
 
     addMouseListener(this);
 
+    mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
+    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
+
     mPreviousButton = new Button(_("<"), "previous", this);
     mNextButton = new Button(_(">"), "next", this);
     mCurrentLabel = new Label(strprintf(_("Outfit: %d"), 1));
@@ -304,9 +307,9 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
         const int itemX = 10 + ((i % mGridWidth) * mBoxWidth);
         const int itemY = 25 + ((i / mGridWidth) * mBoxHeight);
 
-        graphics->setColor(Theme::getThemeColor(Theme::BORDER, 64));
+        graphics->setColor(mBorderColor);
         graphics->drawRectangle(gcn::Rectangle(itemX, itemY, 32, 32));
-        graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND, 32));
+        graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(gcn::Rectangle(itemX, itemY, 32, 32));
 
         if (mItems[mCurrentOutfit][i] < 0)

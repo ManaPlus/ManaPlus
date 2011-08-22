@@ -68,6 +68,8 @@ class Desktop : public Container, gcn::WidgetListener
 
         Image *mWallpaper;
         gcn::Label *mVersionLabel;
+        gcn::Color mBackgroundColor;
+        gcn::Color mBackgroundGrayColor;
 };
 
 #endif // DESKTOP_H

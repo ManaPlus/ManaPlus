@@ -64,6 +64,10 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
 {
     setFocusable(true);
     addMouseListener(this);
+
+    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    mHyperLinkColor = Theme::getThemeColor(Theme::HYPERLINK);
 }
 
 BrowserBox::~BrowserBox()
@@ -310,7 +314,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
     if (mOpaque)
     {
-        graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND));
+        graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
@@ -319,7 +323,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
     {
         if ((mHighMode & BACKGROUND))
         {
-            graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT));
+            graphics->setColor(mHighlightColor);
             graphics->fillRectangle(gcn::Rectangle(
                 mLinks[mSelectedLink].x1,
                 mLinks[mSelectedLink].y1,
@@ -330,7 +334,7 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
         if ((mHighMode & UNDERLINE))
         {
-            graphics->setColor(Theme::getThemeColor(Theme::HYPERLINK));
+            graphics->setColor(mHyperLinkColor);
             graphics->drawLine(
                 mLinks[mSelectedLink].x1,
                 mLinks[mSelectedLink].y2,

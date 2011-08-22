@@ -135,6 +135,9 @@ void Button::init()
         }
         updateAlpha();
     }
+    mEnabledColor = Theme::getThemeColor(Theme::BUTTON);
+    mDisabledColor = Theme::getThemeColor(Theme::BUTTON_DISABLED);
+
     mInstances++;
 }
 
@@ -238,9 +241,9 @@ void Button::draw(gcn::Graphics *graphics)
 //        drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
 
     if (mode == BUTTON_DISABLED)
-        graphics->setColor(Theme::getThemeColor(Theme::BUTTON_DISABLED));
+        graphics->setColor(mDisabledColor);
     else
-        graphics->setColor(Theme::getThemeColor(Theme::BUTTON));
+        graphics->setColor(mEnabledColor);
 
     int textX;
     int textY = getHeight() / 2 - getFont()->getHeight() / 2;

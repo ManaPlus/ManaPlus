@@ -87,6 +87,9 @@ class DropDown : public gcn::DropDown
          */
         void drawButton(gcn::Graphics *graphics);
 
+        gcn::Color mShadowColor;
+        gcn::Color mHighlightColor;
+
         // Add own Images.
         static int instances;
         static Image *buttons[2][2];

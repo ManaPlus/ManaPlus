@@ -73,7 +73,6 @@ ScrollArea::ScrollArea(gcn::Widget *widget):
     mDrawWidth(0),
     mDrawHeight(0)
 {
-//    addWidgetListener(this);
     init();
 }
 
@@ -219,6 +218,9 @@ void ScrollArea::init()
     }
 
     instances++;
+
+    mGray = Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32);
+    mBackground = Theme::getThemeColor(Theme::BACKGROUND);
 }
 
 void ScrollArea::logic()
@@ -439,17 +441,17 @@ void ScrollArea::drawRightButton(gcn::Graphics *graphics)
 void ScrollArea::drawVBar(gcn::Graphics *graphics)
 {
     const gcn::Rectangle dim = getVerticalBarDimension();
-    graphics->setColor(Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32));
+    graphics->setColor(mGray);
     graphics->fillRectangle(dim);
-    graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND));
+    graphics->setColor(mBackground);
 }
 
 void ScrollArea::drawHBar(gcn::Graphics *graphics)
 {
     const gcn::Rectangle dim = getHorizontalBarDimension();
-    graphics->setColor(Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32));
+    graphics->setColor(mGray);
     graphics->fillRectangle(dim);
-    graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND));
+    graphics->setColor(mBackground);
 }
 
 void ScrollArea::drawVMarker(gcn::Graphics *graphics)

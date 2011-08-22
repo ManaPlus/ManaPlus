@@ -80,6 +80,7 @@ EmoteShortcutContainer::EmoteShortcutContainer():
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 EmoteShortcutContainer::~EmoteShortcutContainer()
@@ -118,19 +119,8 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
         std::string key = keyboard.getKeyValueString(
             keyboard.KEY_EMOTE_1 + i);
 
-        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+        graphics->setColor(getForegroundColor());
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
-
-/*
-        if (emoteShortcut->getEmote(i)
-            && static_cast<unsigned>(emoteShortcut->getEmote(i)) - 1
-            < mEmoteImg.size()
-            && mEmoteImg[emoteShortcut->getEmote(i) - 1])
-        {
-            mEmoteImg[emoteShortcut->getEmote(i) - 1]->draw(g, emoteX + 2,
-                                                            emoteY + 10);
-        }
-*/
 
         if (i < mEmoteImg.size() && mEmoteImg[i] && mEmoteImg[i]->sprite)
             mEmoteImg[i]->sprite->draw(g, emoteX + 2, emoteY + 10);

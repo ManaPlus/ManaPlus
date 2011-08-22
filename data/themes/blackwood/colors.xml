@@ -14,6 +14,7 @@
 	<color id="BACKGROUND" color="#ffffff" />
 	<color id="BACKGROUND_GRAY" color="#404040" />
 	<color id="SCROLLBAR_GRAY" color="#000000" />
+	<color id="DROPDOWN_SHADOW" color="#c0c0c0" />
 	<color id="HIGHLIGHT" color="#361c00" />
 	<color id="TAB_FLASH" color="#000000" effect="pulse" />
 	<color id="TAB_PLAYER_FLASH" color="#00ff00" effect="pulse" />

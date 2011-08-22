@@ -118,6 +118,9 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     if (!mSelImg)
         logger->log1("Error: Unable to load selection.png");
 
+    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
+    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
+
     addKeyListener(this);
     addMouseListener(this);
     addWidgetListener(this);
@@ -204,9 +207,9 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 caption = "Eq.";
 
             if (item->isEquipped())
-                g->setColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED));
+                g->setColor(mEquipedColor);
             else
-                g->setColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED));
+                g->setColor(mUnEquipedColor);
 
             g->drawText(caption, itemX + BOX_WIDTH / 2,
                         itemY + BOX_HEIGHT - 14, gcn::Graphics::CENTER);

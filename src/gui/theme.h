@@ -155,6 +155,7 @@ class Theme : public Palette, public ConfigListener
             BACKGROUND,
             BACKGROUND_GRAY,
             SCROLLBAR_GRAY,
+            DROPDOWN_SHADOW,
             HIGHLIGHT,
             TAB_FLASH,
             TAB_PLAYER_FLASH,

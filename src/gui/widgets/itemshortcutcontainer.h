@@ -88,7 +88,8 @@ class ItemShortcutContainer : public ShortcutContainer
 
         ItemPopup *mItemPopup;
         SpellPopup *mSpellPopup;
+        gcn::Color mEquipedColor;
+        gcn::Color mUnEquipedColor;
 };
 
-//extern SpellManager *spellManager;
 #endif

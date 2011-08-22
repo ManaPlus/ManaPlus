@@ -202,6 +202,8 @@ class ItemContainer : public gcn::Widget,
         typedef SelectionListenerList::iterator SelectionListenerIterator;
 
         SelectionListenerList mSelectionListeners;
+        gcn::Color mEquipedColor;
+        gcn::Color mUnEquipedColor;
 };
 
 #endif

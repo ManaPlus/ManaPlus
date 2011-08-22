@@ -116,6 +116,8 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         bool mForing;
         Being *mBeing;
         std::vector<std::pair<int, int>*> mBoxes;
+        gcn::Color mHighlightColor;
+        gcn::Color mBorderColor;
 };
 
 extern EquipmentWindow *equipmentWindow;

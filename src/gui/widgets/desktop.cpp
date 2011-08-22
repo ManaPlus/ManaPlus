@@ -56,6 +56,9 @@ Desktop::Desktop() :
     mVersionLabel->setBackgroundColor(
         Theme::getThemeColor(Theme::BACKGROUND, 128));
     add(mVersionLabel, 25, 2);
+
+    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 128);
+    mBackgroundGrayColor = Theme::getThemeColor(Theme::BACKGROUND_GRAY);
 }
 
 Desktop::~Desktop()
@@ -85,8 +88,7 @@ void Desktop::draw(gcn::Graphics *graphics)
     if (!mWallpaper || (getWidth() > mWallpaper->getWidth() ||
         getHeight() > mWallpaper->getHeight()))
     {
-        // TODO: Color from palette
-        g->setColor(Theme::getThemeColor(Theme::BACKGROUND_GRAY));
+        g->setColor(mBackgroundGrayColor);
         g->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
@@ -107,7 +109,7 @@ void Desktop::draw(gcn::Graphics *graphics)
     }
 
     // Draw a thin border under the application version...
-    g->setColor(Theme::getThemeColor(Theme::BACKGROUND, 128));
+    g->setColor(mBackgroundColor);
     g->fillRectangle(gcn::Rectangle(mVersionLabel->getDimension()));
 
     Container::draw(graphics);
