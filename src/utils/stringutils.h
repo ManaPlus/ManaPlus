@@ -133,7 +133,7 @@ bool isWordSeparator(char chr);
 
 unsigned long findI(std::string str, std::string subStr);
 
-unsigned long findI(std::string str, std::vector<std::string> &list);
+unsigned long findI(std::string &text, std::vector<std::string> &list);
 
 const std::string encodeStr(unsigned int value, unsigned int size = 0);
 
@@ -175,6 +175,9 @@ std::list<int> splitToIntList(const std::string &text, char separator);
 
 std::list<std::string> splitToStringList(const std::string &text,
                                          char separator);
+
+void splitToStringVector(std::vector<std::string> &tokens,
+                         const std::string &text, char separator);
 
 std::string combineDye(std::string file, std::string dye);
 

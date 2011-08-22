@@ -211,6 +211,7 @@ ChatWindow::ChatWindow():
     fillCommands();
     initTradeFilter();
     loadCustomList();
+    parseHighlights();
 }
 
 ChatWindow::~ChatWindow()
@@ -1503,7 +1504,7 @@ void ChatWindow::addToAwayLog(std::string line)
     if (mAwayLog.size() > 20)
         mAwayLog.pop_front();
 
-    if (line.find(player_node->getName()) != std::string::npos)
+    if (findI(line, mHighlights) != std::string::npos)
         mAwayLog.push_back("##9away:" + line);
 }
 
@@ -1519,4 +1520,21 @@ void ChatWindow::displayAwayLog()
         localChatTab->addNewRow(*i);
         ++i;
     }
+}
+
+void ChatWindow::parseHighlights()
+{
+    mHighlights.clear();
+    if (!player_node)
+        return;
+
+    splitToStringVector(mHighlights, config.getStringValue(
+        "highlightWords"), ',');
+
+    mHighlights.push_back(player_node->getName());
+}
+
+bool ChatWindow::findHighlight(std::string &str)
+{
+    return findI(str, mHighlights) != std::string::npos;
 }
