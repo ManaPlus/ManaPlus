@@ -145,8 +145,10 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
     if (mScrollLaziness < 1)
         mScrollLaziness = 1; // Avoids division by zero
 
+    int cnt = 0;
+
     // Apply lazy scrolling
-    while (lastTick < tick_time)
+    while (lastTick < tick_time && cnt < 32)
     {
         if (player_x > static_cast<int>(mPixelViewX) + mScrollRadius)
         {
@@ -172,19 +174,26 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
             - static_cast<int>(mPixelViewY) + mScrollRadius) /
             static_cast<float>(mScrollLaziness);
         }
-        lastTick++;
+        lastTick ++;
+        cnt ++;
     }
 
     // Auto center when player is off screen
-    if (player_x - static_cast<int>(mPixelViewX) > graphics->mWidth / 2
-        ||  static_cast<int>(mPixelViewX) - player_x > graphics->mWidth / 2
-        ||  static_cast<int>(mPixelViewY) - player_y
-        > graphics->getHeight() / 2
-        ||  player_y - static_cast<int>(mPixelViewY)
-        > graphics->getHeight() / 2)
+    if (cnt > 30 || player_x - static_cast<int>(mPixelViewX)
+        > graphics->mWidth / 2 || static_cast<int>(mPixelViewX)
+        - player_x > graphics->mWidth / 2 ||  static_cast<int>(mPixelViewY)
+        - player_y > graphics->getHeight() / 2 ||  player_y
+        - static_cast<int>(mPixelViewY) > graphics->getHeight() / 2)
     {
         mPixelViewX = static_cast<float>(player_x);
         mPixelViewY = static_cast<float>(player_y);
+        if (player_x <= 0 || player_y <= 0)
+        {
+            if (debugChatTab)
+                debugChatTab->chatLog("incorrect player position!");
+            logger->log("incorrect player position: %d, %d",
+                player_x, player_y);
+        }
     };
 
     // Don't move camera so that the end of the map is on screen
