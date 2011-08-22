@@ -157,6 +157,7 @@ class Theme : public Palette, public ConfigListener
             TAB_PLAYER_FLASH,
             SHOP_WARNING,
             ITEM_EQUIPPED,
+            ITEM_NOT_EQUIPPED,
             CHAT,
             GM,
             PLAYER,

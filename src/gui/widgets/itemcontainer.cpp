@@ -206,7 +206,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
             if (item->isEquipped())
                 g->setColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED));
             else
-                g->setColor(gcn::Color(0, 0, 0));
+                g->setColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED));
 
             g->drawText(caption, itemX + BOX_WIDTH / 2,
                         itemY + BOX_HEIGHT - 14, gcn::Graphics::CENTER);

@@ -27,6 +27,8 @@
 #include "gui/gui.h"
 #include "gui/palette.h"
 
+#include "gui/widgets/label.h"
+
 #include "textcommand.h"
 
 #include "graphics.h"
@@ -36,7 +38,6 @@
 #include "utils/stringutils.h"
 
 #include <guichan/font.hpp>
-#include <guichan/widgets/label.hpp>
 
 #include "debug.h"
 
@@ -44,7 +45,7 @@ SpellPopup::SpellPopup():
     Popup("SpellPopup")
 {
     // Item Name
-    mItemName = new gcn::Label;
+    mItemName = new Label;
     mItemName->setFont(boldFont);
     mItemName->setPosition(getPadding(), getPadding());
 

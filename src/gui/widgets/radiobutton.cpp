@@ -46,6 +46,7 @@ RadioButton::RadioButton(const std::string &caption, const std::string &group,
     gcn::RadioButton(caption, group, marked),
     mHasMouse(false)
 {
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
     if (instances == 0)
     {
         radioNormal = Theme::getImageFromTheme("radioout.png");

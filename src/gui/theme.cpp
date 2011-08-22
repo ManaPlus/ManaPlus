@@ -613,6 +613,7 @@ static int readColorType(const std::string &type)
         "TAB_PLAYER_FLASH",
         "SHOP_WARNING",
         "ITEM_EQUIPPED",
+        "ITEM_NOT_EQUIPPED",
         "CHAT",
         "GM",
         "PLAYER",
