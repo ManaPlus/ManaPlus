@@ -106,7 +106,6 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
     Graphics *g = static_cast<Graphics*>(graphics);
 
-    graphics->setColor(gcn::Color(0, 0, 0, 255));
     graphics->setFont(getFont());
 
     int selectedId = spellShortcut->getSelectedItem();

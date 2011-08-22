@@ -147,7 +147,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
         }
 
         // Set color black
-        g->setColor(Theme::getThemeColor(Theme::OUTLINE));
+        g->setColor(Theme::getThemeColor(Theme::BORDER));
         // Draw box border
         g->drawRectangle(gcn::Rectangle(box->first, box->second,
             BOX_WIDTH, BOX_HEIGHT));

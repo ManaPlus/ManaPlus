@@ -53,7 +53,8 @@ Desktop::Desktop() :
         mVersionLabel = new Label(strprintf("%s (Mana %s)", appName.c_str(),
                                             FULL_VERSION));
 
-    mVersionLabel->setBackgroundColor(gcn::Color(255, 255, 255, 128));
+    mVersionLabel->setBackgroundColor(
+        Theme::getThemeColor(Theme::BACKGROUND, 128));
     add(mVersionLabel, 25, 2);
 }
 
@@ -85,7 +86,7 @@ void Desktop::draw(gcn::Graphics *graphics)
         getHeight() > mWallpaper->getHeight()))
     {
         // TODO: Color from palette
-        g->setColor(gcn::Color(64, 64, 64));
+        g->setColor(Theme::getThemeColor(Theme::BACKGROUND_GRAY));
         g->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
@@ -106,7 +107,7 @@ void Desktop::draw(gcn::Graphics *graphics)
     }
 
     // Draw a thin border under the application version...
-    g->setColor(gcn::Color(255, 255, 255, 128));
+    g->setColor(Theme::getThemeColor(Theme::BACKGROUND, 128));
     g->fillRectangle(gcn::Rectangle(mVersionLabel->getDimension()));
 
     Container::draw(graphics);

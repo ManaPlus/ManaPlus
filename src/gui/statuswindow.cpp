@@ -889,7 +889,6 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.r = 100;
         col.g = 100;
         col.b = 100;
-//        bar->setColor(new gcn::Color(100, 100, 100));
         bar->setColor(col);
     }
     else
@@ -898,7 +897,6 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.r = 255;
         col.g = 255;
         col.b = 0;
-//        bar->setColor(new gcn::Color(255, 255, 0));
         bar->setColor(col);
     }
 }

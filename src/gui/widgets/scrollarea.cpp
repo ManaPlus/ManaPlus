@@ -439,17 +439,17 @@ void ScrollArea::drawRightButton(gcn::Graphics *graphics)
 void ScrollArea::drawVBar(gcn::Graphics *graphics)
 {
     const gcn::Rectangle dim = getVerticalBarDimension();
-    graphics->setColor(gcn::Color(0, 0, 0, 32));
+    graphics->setColor(Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32));
     graphics->fillRectangle(dim);
-    graphics->setColor(gcn::Color(255, 255, 255));
+    graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND));
 }
 
 void ScrollArea::drawHBar(gcn::Graphics *graphics)
 {
     const gcn::Rectangle dim = getHorizontalBarDimension();
-    graphics->setColor(gcn::Color(0, 0, 0, 32));
+    graphics->setColor(Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32));
     graphics->fillRectangle(dim);
-    graphics->setColor(gcn::Color(255, 255, 255));
+    graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND));
 }
 
 void ScrollArea::drawVMarker(gcn::Graphics *graphics)

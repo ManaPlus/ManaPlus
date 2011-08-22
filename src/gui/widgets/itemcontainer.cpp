@@ -213,6 +213,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
         }
     }
 
+/*
     // Draw an orange box around the selected item
     if (isFocused() && mHighlightedIndex != -1 && mGridColumns)
     {
@@ -221,6 +222,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
         g->setColor(gcn::Color(255, 128, 0));
         g->drawRectangle(gcn::Rectangle(itemX, itemY, BOX_WIDTH, BOX_HEIGHT));
     }
+*/
 }
 
 void ItemContainer::selectNone()
