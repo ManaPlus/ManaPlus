@@ -55,6 +55,9 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL SunOS)
     SET(EXTRA_LIBRARIES intl)
 ENDIF()
 
+SET(GUICHAN_COMPONENTS "SDL")
+FIND_PACKAGE(Guichan REQUIRED ${GUICHAN_COMPONENTS})
+
 IF (WITH_OPENGL)
     FIND_PACKAGE(OpenGL REQUIRED)
     INCLUDE_DIRECTORIES(${OPENGL_INCLUDE_DIR})
@@ -68,8 +71,6 @@ IF (USE_X11)
 ENDIF (USE_X11)
 
 INCLUDE_DIRECTORIES(
-    "guichan/include"
-    "SDL_gfx"
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${SDL_INCLUDE_DIR}
     ${SDLIMAGE_INCLUDE_DIR}
@@ -81,6 +82,7 @@ INCLUDE_DIRECTORIES(
     ${PHYSFS_INCLUDE_DIR}
     ${CURL_INCLUDE_DIR}
     ${LIBXML2_INCLUDE_DIR}
+    ${GUICHAN_INCLUDE_DIR}
     )
 
 # enable rc-handling with mingw
@@ -586,99 +588,6 @@ SET(SRCS
     mumblemanager.h
     )
 
-SET(SRCS_GUICHAN
-    guichan/include/guichan/actionevent.hpp
-    guichan/include/guichan/actionlistener.hpp
-    guichan/include/guichan/basiccontainer.hpp
-    guichan/include/guichan/cliprectangle.hpp
-    guichan/include/guichan/color.hpp
-    guichan/include/guichan/deathlistener.hpp
-    guichan/include/guichan/defaultfont.hpp
-    guichan/include/guichan/event.hpp
-    guichan/include/guichan/exception.hpp
-    guichan/include/guichan/focushandler.hpp
-    guichan/include/guichan/focuslistener.hpp
-    guichan/include/guichan/font.hpp
-    guichan/include/guichan/graphics.hpp
-    guichan/include/guichan/gui.hpp
-    guichan/include/guichan/image.hpp
-    guichan/include/guichan/imageloader.hpp
-    guichan/include/guichan/input.hpp
-    guichan/include/guichan/inputevent.hpp
-    guichan/include/guichan/key.hpp
-    guichan/include/guichan/keyevent.hpp
-    guichan/include/guichan/keyinput.hpp
-    guichan/include/guichan/keylistener.hpp
-    guichan/include/guichan/listmodel.hpp
-    guichan/include/guichan/mouseevent.hpp
-    guichan/include/guichan/mouseinput.hpp
-    guichan/include/guichan/mouselistener.hpp
-    guichan/include/guichan/platform.hpp
-    guichan/include/guichan/rectangle.hpp
-    guichan/include/guichan/selectionevent.hpp
-    guichan/include/guichan/selectionlistener.hpp
-    guichan/include/guichan/sdl/sdlgraphics.hpp
-    guichan/include/guichan/sdl/sdlimage.hpp
-    guichan/include/guichan/sdl/sdlpixel.hpp
-    guichan/include/guichan/widget.hpp
-    guichan/include/guichan/widgetlistener.hpp
-    guichan/include/guichan/widgets/button.hpp
-    guichan/include/guichan/widgets/checkbox.hpp
-    guichan/include/guichan/widgets/container.hpp
-    guichan/include/guichan/widgets/dropdown.hpp
-    guichan/include/guichan/widgets/icon.hpp
-    guichan/include/guichan/widgets/imagebutton.hpp
-    guichan/include/guichan/widgets/label.hpp
-    guichan/include/guichan/widgets/listbox.hpp
-    guichan/include/guichan/widgets/radiobutton.hpp
-    guichan/include/guichan/widgets/scrollarea.hpp
-    guichan/include/guichan/widgets/slider.hpp
-    guichan/include/guichan/widgets/tabbedarea.hpp
-    guichan/include/guichan/widgets/tab.hpp
-    guichan/include/guichan/widgets/textbox.hpp
-    guichan/include/guichan/widgets/textfield.hpp
-    guichan/include/guichan/widgets/window.hpp
-    guichan/actionevent.cpp
-    guichan/basiccontainer.cpp
-    guichan/cliprectangle.cpp
-    guichan/color.cpp
-    guichan/defaultfont.cpp
-    guichan/event.cpp
-    guichan/exception.cpp
-    guichan/focushandler.cpp
-    guichan/font.cpp
-    guichan/graphics.cpp
-    guichan/gui.cpp
-    guichan/image.cpp
-    guichan/inputevent.cpp
-    guichan/key.cpp
-    guichan/keyevent.cpp
-    guichan/keyinput.cpp
-    guichan/mouseevent.cpp
-    guichan/mouseinput.cpp
-    guichan/rectangle.cpp
-    guichan/selectionevent.cpp
-    guichan/widget.cpp
-    guichan/sdl/sdlgraphics.cpp
-    guichan/sdl/sdlimage.cpp
-    guichan/widgets/button.cpp
-    guichan/widgets/checkbox.cpp
-    guichan/widgets/container.cpp
-    guichan/widgets/dropdown.cpp
-    guichan/widgets/icon.cpp
-    guichan/widgets/imagebutton.cpp
-    guichan/widgets/label.cpp
-    guichan/widgets/listbox.cpp
-    guichan/widgets/radiobutton.cpp
-    guichan/widgets/scrollarea.cpp
-    guichan/widgets/slider.cpp
-    guichan/widgets/tabbedarea.cpp
-    guichan/widgets/tab.cpp
-    guichan/widgets/textbox.cpp
-    guichan/widgets/textfield.cpp
-    guichan/widgets/window.cpp
-    )
-
 SET(SRCS_EVOL
     net/ea/gui/guildtab.cpp
     net/ea/gui/guildtab.h
@@ -767,24 +676,6 @@ SET(SRCS_TMWA
     )
 
 SET(SRCS_MANASERV
-    enet/callbacks.c
-    enet/callbacks.h
-    enet/compress.c
-    enet/enet.h
-    enet/host.c
-    enet/list.c
-    enet/list.h
-    enet/packet.c
-    enet/peer.c
-    enet/protocol.c
-    enet/protocol.h
-    enet/time.h
-    enet/types.h
-    enet/unix.c
-    enet/unix.h
-    enet/utility.h
-    enet/win32.c
-    enet/win32.h
     net/manaserv/attributes.cpp
     net/manaserv/attributes.h
     net/manaserv/adminhandler.cpp
@@ -849,9 +740,9 @@ ENDIF ()
 SET (PROGRAMS manaplus)
 
 IF (ENABLE_MANASERV)
-    ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA} ${SRCS_EVOL})
+    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA} ${SRCS_EVOL})
 ELSE(ENABLE_MANASERV)
-    ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_TMWA} ${SRCS_EVOL})
+    ADD_EXECUTABLE(manaplus WIN32 ${SRCS} ${SRCS_TMWA} ${SRCS_EVOL})
 ENDIF(ENABLE_MANASERV)
 
 TARGET_LINK_LIBRARIES(manaplus
@@ -865,6 +756,7 @@ TARGET_LINK_LIBRARIES(manaplus
     ${PHYSFS_LIBRARY}
     ${CURL_LIBRARIES}
     ${LIBXML2_LIBRARIES}
+    ${GUICHAN_LIBRARIES}
     ${OPENGL_LIBRARIES}
     ${LIBINTL_LIBRARIES}
     ${EXTRA_LIBRARIES})

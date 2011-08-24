@@ -593,25 +593,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 
 if ENABLE_MANASERV
 manaplus_CXXFLAGS += -DMANASERV_SUPPORT
-manaplus_SOURCES += enet/callbacks.c \
-	      enet/compress.c \
-	      enet/host.c \
-	      enet/list.c \
-	      enet/packet.c \
-	      enet/peer.c \
-	      enet/protocol.c \
-	      enet/unix.c \
-	      enet/win32.c \
-	      enet/callbacks.h \
-	      enet/enet.h \
-	      enet/list.h \
-	      enet/protocol.h \
-	      enet/time.h \
-	      enet/types.h \
-	      enet/unix.h \
-	      enet/utility.h \
-	      enet/win32.h \
-	      net/manaserv/attributes.cpp \
+manaplus_SOURCES += net/manaserv/attributes.cpp \
 	      net/manaserv/attributes.h \
 	      net/manaserv/adminhandler.cpp \
 	      net/manaserv/adminhandler.h \
@@ -753,10 +735,6 @@ manaplus_SOURCES += \
 
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \
-	     enet/ChangeLog \
-	     enet/design.txt \
-	     enet/LICENSE \
-	     enet/README \
 	     manaplus.rc \
 	     SDLMain.h \
 	     SDLMain.m \
