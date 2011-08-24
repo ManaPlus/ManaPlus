@@ -23,7 +23,7 @@
 #ifndef MUTEX_H
 #define MUTEX_H
 
-#include "log.h"
+#include "logger.h"
 
 #include <SDL_thread.h>
 

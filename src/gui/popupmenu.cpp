@@ -22,6 +22,7 @@
 
 #include "gui/popupmenu.h"
 
+#include "actorsprite.h"
 #include "actorspritemanager.h"
 #include "being.h"
 #include "dropshortcut.h"
@@ -31,7 +32,7 @@
 #include "item.h"
 #include "itemshortcut.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "party.h"
 #include "playerinfo.h"
@@ -43,7 +44,7 @@
 #include "gui/equipmentwindow.h"
 #include "gui/inventorywindow.h"
 #include "gui/itemamountwindow.h"
-#include "gui/ministatus.h"
+#include "gui/ministatuswindow.h"
 #include "gui/outfitwindow.h"
 #include "gui/selldialog.h"
 #include "gui/socialwindow.h"
@@ -94,7 +95,8 @@ PopupMenu::PopupMenu():
     mSpell(0),
     mDialog(0),
     mButton(0),
-    mNick("")
+    mNick(""),
+    mType(Being::UNKNOWN)
 {
     mBrowserBox = new BrowserBox;
     mBrowserBox->setPosition(4, 4);
@@ -105,6 +107,7 @@ PopupMenu::PopupMenu():
     mRenameListener.setDialog(0);
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(0);
+    mPlayerListener.setType(Being::UNKNOWN);
 
     add(mBrowserBox);
 }
@@ -116,6 +119,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
 
     mBeingId = being->getId();
     mNick = being->getName();
+    mType = being->getType();
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -278,6 +282,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
             mBrowserBox->addRow(strprintf("@@sell|%s@@", _("Sell")));
             mBrowserBox->addRow("##3---");
             mBrowserBox->addRow(strprintf("@@move|%s@@", _("Move")));
+            mBrowserBox->addRow(strprintf("@@addcomment|%s@@",
+                _("Add comment")));
             break;
 
         case ActorSprite::MONSTER:
@@ -359,6 +365,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
 
     mNick = nick;
     mBeingId = 0;
+    mType = Being::PLAYER;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -495,6 +502,11 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
     mBrowserBox->addRow(strprintf("@@rename map|%s@@", _("Rename")));
     mBrowserBox->addRow(strprintf("@@remove map|%s@@", _("Remove")));
 
+    if (player_node && player_node->isGM())
+    {
+        mBrowserBox->addRow("##3---");
+        mBrowserBox->addRow(strprintf("@@warp map|%s@@", _("Warp")));
+    }
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow(strprintf("@@cancel|%s@@", _("Cancel")));
 
@@ -562,7 +574,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     if (tab->getRemoveNames())
     {
         mBrowserBox->addRow(strprintf("@@dont remove name|%s@@",
-                            _("Dont remove name")));
+                            _("Don't remove name")));
     }
     else
     {
@@ -599,6 +611,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         {
             mBeingId = being->getId();
             mNick = being->getName();
+            mType = being->getType();
 
             mBrowserBox->addRow(strprintf("@@trade|%s@@", _("Trade")));
             mBrowserBox->addRow(strprintf("@@attack|%s@@", _("Attack")));
@@ -728,6 +741,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         else
         {
             mNick = name;
+            mType = Being::PLAYER;
             mBrowserBox->addRow(strprintf(
                 "@@addcomment|%s@@", _("Add comment")));
             mBrowserBox->addRow("##3---");
@@ -768,6 +782,7 @@ void PopupMenu::showChangePos(int x, int y)
         mItem = 0;
         mMapItem = 0;
         mNick = "";
+        mType = Being::UNKNOWN;
         setVisible(false);
     }
 }
@@ -1051,18 +1066,18 @@ void PopupMenu::handleLink(const std::string &link,
             int cnt = 10;
             if (cnt > mItem->getQuantity())
                 cnt = mItem->getQuantity();
-            tradeWindow->tradeItem(mItem, cnt);
+            tradeWindow->tradeItem(mItem, cnt, true);
         }
     }
     else if (link == "addtrade half" && mItem)
     {
         if (tradeWindow)
-            tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2);
+            tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2, true);
     }
     else if (link == "addtrade all" && mItem)
     {
         if (tradeWindow)
-            tradeWindow->tradeItem(mItem, mItem->getQuantity());
+            tradeWindow->tradeItem(mItem, mItem->getQuantity(), true);
     }
     else if (link == "retrieve" && mItem)
     {
@@ -1133,6 +1148,14 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (chatWindow)
             chatWindow->clearTab();
+    }
+    else if (link == "warp map" && mMapItem)
+    {
+        if (Game::instance())
+        {
+            Net::getAdminHandler()->warp(Game::instance()->getCurrentMapName(),
+                mMapItem->getX(), mMapItem->getY());
+        }
     }
     else if (link == "remove map" && mMapItem)
     {
@@ -1220,6 +1243,7 @@ void PopupMenu::handleLink(const std::string &link,
             _("Comment:                      "));
         mPlayerListener.setDialog(dialog);
         mPlayerListener.setNick(mNick);
+        mPlayerListener.setType(mType);
 
         if (being)
         {
@@ -1228,7 +1252,7 @@ void PopupMenu::handleLink(const std::string &link,
         }
         else
         {
-            dialog->setText(Being::loadComment(mNick));
+            dialog->setText(Being::loadComment(mNick, mType));
         }
         dialog->setActionEventId("ok");
         dialog->addActionListener(&mPlayerListener);
@@ -1245,26 +1269,38 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "enable highlight" && mTab)
     {
         mTab->setAllowHighlight(true);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "disable highlight" && mTab)
     {
         mTab->setAllowHighlight(false);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "dont remove name" && mTab)
     {
         mTab->setRemoveNames(false);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "remove name" && mTab)
     {
         mTab->setRemoveNames(true);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "disable away" && mTab)
     {
         mTab->setNoAway(true);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "enable away" && mTab)
     {
         mTab->setNoAway(false);
+        if (chatWindow)
+            chatWindow->saveState();
     }
     else if (link == "remove attack" && being)
     {
@@ -1548,6 +1584,7 @@ void PopupMenu::handleLink(const std::string &link,
     mItemColor = 1;
     mMapItem = 0;
     mNick = "";
+    mType = Being::UNKNOWN;
 }
 
 void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
@@ -1858,6 +1895,7 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
         return;
 
     mNick = name;
+    mType = Being::MONSTER;
 
     mBrowserBox->clearRows();
 
@@ -1989,7 +2027,8 @@ void RenameListener::action(const gcn::ActionEvent &event)
 
 PlayerListener::PlayerListener() :
     mNick(""),
-    mDialog(0)
+    mDialog(0),
+    mType(Being::UNKNOWN)
 {
 }
 
@@ -1999,10 +2038,10 @@ void PlayerListener::action(const gcn::ActionEvent &event)
     {
         std::string comment = mDialog->getText();
         Being* being  = actorSpriteManager->findBeingByName(
-            mNick, Being::PLAYER);
+            mNick, (ActorSprite::Type)mType);
         if (being)
             being->setComment(comment);
-        Being::saveComment(mNick, comment);
+        Being::saveComment(mNick, comment, mType);
     }
     mDialog = 0;
 }

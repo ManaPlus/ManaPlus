@@ -65,7 +65,6 @@ class QuitDialog : public Window, public gcn::ActionListener,
         std::vector<gcn::RadioButton*> mOptions;
 
         gcn::RadioButton *mLogoutQuit;
-        gcn::CheckBox *mSaveState;
         gcn::RadioButton *mForceQuit;
         gcn::RadioButton *mSwitchAccountServer;
         gcn::RadioButton *mSwitchCharacter;

@@ -41,6 +41,8 @@ float ListBox::mAlpha = 1.0;
 ListBox::ListBox(gcn::ListModel *listModel):
     gcn::ListBox(listModel)
 {
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 ListBox::~ListBox()
@@ -63,8 +65,8 @@ void ListBox::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
-    graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
-            static_cast<int>(mAlpha * 255.0f)));
+    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+    graphics->setColor(mHighlightColor);
     graphics->setFont(getFont());
 
     const int height = getRowHeight();
@@ -77,7 +79,7 @@ void ListBox::draw(gcn::Graphics *graphics)
     }
 
     // Draw the list elements
-    graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+    graphics->setColor(getForegroundColor());
     for (int i = 0, y = 0; i < mListModel->getNumberOfElements();
          ++i, y += height)
     {

@@ -193,8 +193,8 @@ void ItemShortcut::setItemSelected(Item *item)
 {
     if (item)
     {
-        logger->log("set selected id: %d", item->getId());
-        logger->log("set selected color: %d", item->getColor());
+//        logger->log("set selected id: %d", item->getId());
+//        logger->log("set selected color: %d", item->getColor());
         mItemSelected = item->getId();
         mItemColorSelected = item->getColor();
     }

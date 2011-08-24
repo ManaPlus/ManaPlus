@@ -62,6 +62,7 @@ public:
 private:
     bool mShowGender;
     bool mShowLevel;
+    gcn::Color mHighlightColor;
 
     static int instances;
     static Image *onlineIcon;

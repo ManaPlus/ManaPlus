@@ -25,7 +25,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include <guichan/widgets/container.hpp>
 

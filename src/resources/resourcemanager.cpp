@@ -24,7 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "resources/dye.h"

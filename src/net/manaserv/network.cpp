@@ -22,7 +22,7 @@
 
 #include "net/manaserv/network.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "net/manaserv/connection.h"
 #include "net/manaserv/internal.h"

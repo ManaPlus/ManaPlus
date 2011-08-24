@@ -23,7 +23,7 @@
 
 #include "configuration.h"
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/xml.h"
 

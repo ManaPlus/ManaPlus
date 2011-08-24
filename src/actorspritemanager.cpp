@@ -24,7 +24,7 @@
 
 #include "configuration.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 #include "playerinfo.h"
 #include "playerrelations.h"

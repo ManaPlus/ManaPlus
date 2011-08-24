@@ -63,4 +63,10 @@ void AdminHandler::mute(int playerId A_UNUSED, int type A_UNUSED,
     return; // Still looking into this
 }
 
+void AdminHandler::warp(std::string map, int x, int y)
+{
+    Net::getChatHandler()->talk(strprintf(
+        "@warp %s %d %d", map.c_str(), x, y));
+}
+
 } // namespace Ea

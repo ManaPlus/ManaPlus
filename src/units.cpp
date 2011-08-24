@@ -22,7 +22,7 @@
 
 #include "units.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "utils/stringutils.h"
 #include "utils/xml.h"

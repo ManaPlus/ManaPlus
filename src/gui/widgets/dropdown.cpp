@@ -101,6 +101,10 @@ DropDown::DropDown(gcn::ListModel *listModel):
     }
 
     instances++;
+
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    mShadowColor = Theme::getThemeColor(Theme::DROPDOWN_SHADOW);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 DropDown::~DropDown()
@@ -163,25 +167,20 @@ void DropDown::draw(gcn::Graphics* graphics)
     updateAlpha();
 
     const int alpha = static_cast<int>(mAlpha * 255.0f);
-    gcn::Color faceColor = getBaseColor();
-    faceColor.a = alpha;
-    const gcn::Color *highlightColor = &Theme::getThemeColor(Theme::HIGHLIGHT,
-                                                             alpha);
-    gcn::Color shadowColor = faceColor - 0x303030;
-    shadowColor.a = alpha;
+    mHighlightColor.a = alpha;
+    mShadowColor.a = alpha;
 
     if (mListBox->getListModel() && mListBox->getSelected() >= 0)
     {
         graphics->setFont(getFont());
-        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+        graphics->setColor(getForegroundColor());
         graphics->drawText(mListBox->getListModel()->getElementAt(
                            mListBox->getSelected()), 1, 0);
     }
 
     if (isFocused())
     {
-        if (highlightColor)
-            graphics->setColor(*highlightColor);
+        graphics->setColor(mHighlightColor);
         graphics->drawRectangle(gcn::Rectangle(0, 0, getWidth() - h, h));
     }
 
@@ -193,10 +192,9 @@ void DropDown::draw(gcn::Graphics* graphics)
 
         // Draw two lines separating the ListBox with selected
         // element view.
-        if (highlightColor)
-            graphics->setColor(*highlightColor);
+        graphics->setColor(mHighlightColor);
         graphics->drawLine(0, h, getWidth(), h);
-        graphics->setColor(shadowColor);
+        graphics->setColor(mShadowColor);
         graphics->drawLine(0, h + 1, getWidth(), h + 1);
     }
 }

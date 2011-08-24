@@ -50,9 +50,7 @@ ShopListBox::ShopListBox(gcn::ListModel *listModel):
     mShopItems(0)
 {
     mRowHeight = getFont()->getHeight();
-    mPriceCheck = true;
-
-    mItemPopup = new ItemPopup;
+    init();
 }
 
 ShopListBox::ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel):
@@ -61,9 +59,17 @@ ShopListBox::ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel):
     mShopItems(shopListModel)
 {
     mRowHeight = std::max(getFont()->getHeight(), ITEM_ICON_SIZE);
-    mPriceCheck = true;
+    init();
+}
 
+void ShopListBox::init()
+{
+    mPriceCheck = true;
     mItemPopup = new ItemPopup;
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
+    mWarningColor = Theme::getThemeColor(Theme::SHOP_WARNING);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 void ShopListBox::setPlayersMoney(int money)
@@ -80,8 +86,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
         mAlpha = Client::getGuiAlpha();
 
     int alpha = static_cast<int>(mAlpha * 255.0f);
-    const gcn::Color* highlightColor =
-            &Theme::getThemeColor(Theme::HIGHLIGHT, alpha);
+    mHighlightColor.a = alpha;
 
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
 
@@ -93,29 +98,30 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
          ++i, y += mRowHeight)
     {
         gcn::Color temp;
-        const gcn::Color* backgroundColor =
-                &Theme::getThemeColor(Theme::BACKGROUND, alpha);
+        gcn::Color* backgroundColor = &mBackgroundColor;
+        mBackgroundColor.a = alpha;
 
         if (mShopItems && mShopItems->at(i) &&
             mPlayerMoney < mShopItems->at(i)->getPrice() && mPriceCheck)
         {
             if (i != mSelected)
             {
-                backgroundColor = &Theme::getThemeColor(Theme::SHOP_WARNING,
-                                                        alpha);
+                backgroundColor = &mWarningColor;
+                backgroundColor->a = alpha;
             }
             else
             {
-                temp = Theme::getThemeColor(Theme::SHOP_WARNING, alpha);
-                temp.r = (temp.r + highlightColor->r) / 2;
-                temp.g = (temp.g + highlightColor->g) / 2;
-                temp.b = (temp.g + highlightColor->b) / 2;
+                temp = mWarningColor;
+                temp.r = (temp.r + mHighlightColor.r) / 2;
+                temp.g = (temp.g + mHighlightColor.g) / 2;
+                temp.b = (temp.g + mHighlightColor.b) / 2;
+                temp.a = alpha;
                 backgroundColor = &temp;
             }
         }
         else if (i == mSelected)
         {
-            backgroundColor = highlightColor;
+            backgroundColor = &mHighlightColor;
         }
 
         graphics->setColor(*backgroundColor);
@@ -130,9 +136,9 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
                 graphics->drawImage(icon, 1, y);
             }
         }
-        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+        graphics->setColor(getForegroundColor());
         graphics->drawText(mListModel->getElementAt(i), ITEM_ICON_SIZE + 5,
-                y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2);
+            y + (ITEM_ICON_SIZE - getFont()->getHeight()) / 2);
     }
 }
 

@@ -27,7 +27,7 @@
 #include "item.h"
 #include "itemshortcut.h"
 #include "dropshortcut.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/chatwindow.h"
 #include "gui/itempopup.h"
@@ -118,6 +118,9 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     if (!mSelImg)
         logger->log1("Error: Unable to load selection.png");
 
+    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
+    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
+
     addKeyListener(this);
     addMouseListener(this);
     addWidgetListener(this);
@@ -204,15 +207,16 @@ void ItemContainer::draw(gcn::Graphics *graphics)
                 caption = "Eq.";
 
             if (item->isEquipped())
-                g->setColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED));
+                g->setColor(mEquipedColor);
             else
-                g->setColor(gcn::Color(0, 0, 0));
+                g->setColor(mUnEquipedColor);
 
             g->drawText(caption, itemX + BOX_WIDTH / 2,
                         itemY + BOX_HEIGHT - 14, gcn::Graphics::CENTER);
         }
     }
 
+/*
     // Draw an orange box around the selected item
     if (isFocused() && mHighlightedIndex != -1 && mGridColumns)
     {
@@ -221,6 +225,7 @@ void ItemContainer::draw(gcn::Graphics *graphics)
         g->setColor(gcn::Color(255, 128, 0));
         g->drawRectangle(gcn::Rectangle(itemX, itemY, BOX_WIDTH, BOX_HEIGHT));
     }
+*/
 }
 
 void ItemContainer::selectNone()

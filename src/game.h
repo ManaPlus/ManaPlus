@@ -117,6 +117,7 @@ class Game
         unsigned mNextAdjustTime;
         int mAdjustLevel;
         bool mAdjustPerfomance;
+        int mLowerCounter;
 
         static Game *mInstance;
 };

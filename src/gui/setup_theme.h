@@ -1,9 +1,10 @@
 /*
- *  The Mana World
+ *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011  ManaPlus developers
  *
- *  This file is part of The Mana World.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -72,6 +73,10 @@ class Setup_Theme : public SetupTab
         gcn::Label *mSecureFontLabel;
         DropDown *mSecureFontDropDown;
         std::string mSecureFont;
+
+        gcn::Label *mJapanFontLabel;
+        DropDown *mJapanFontDropDown;
+        std::string mJapanFont;
 
         FontSizeChoiceListModel *mFontSizeListModel;
         gcn::Label *fontSizeLabel;

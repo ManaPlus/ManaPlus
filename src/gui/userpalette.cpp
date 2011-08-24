@@ -25,7 +25,7 @@
 
 #include "configuration.h"
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/gui.h"
 

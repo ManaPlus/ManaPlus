@@ -1,10 +1,10 @@
 /*
- *  The Mana World
+ *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011  The ManaPlus Developers
  *
- *  This file is part of The Mana World.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@
 
 #include "gui/chatwindow.h"
 #include "gui/editdialog.h"
-#include "gui/setupitem.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/chattab.h"
@@ -34,10 +33,11 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/setupitem.h"
 
 #include "configuration.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/gettext.h"
 
@@ -93,6 +93,9 @@ Setup_Chat::Setup_Chat()
 
     new SetupItemLabel(_("Tabs"), "", this);
 
+    new SetupItemCheckBox(_("Put all whispers in tabs"), "",
+        "whispertab", this, "whispertabEvent");
+
     new SetupItemCheckBox(_("Log magic messages in debug tab"), "",
         "showMagicInDebug", this, "showMagicInDebugEvent");
 
@@ -117,6 +120,11 @@ Setup_Chat::Setup_Chat()
     new SetupItemCheckBox(_("Use local time"), "",
         "useLocalTime", this, "useLocalTimeEvent");
 
+    new SetupItemLabel(_("Other"), "", this);
+
+    new SetupItemTextField(_("Highlight words (separated by comma)"), "",
+        "highlightWords", this, "highlightWordsEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
@@ -125,5 +133,8 @@ void Setup_Chat::apply()
     SetupTabScroll::apply();
 
     if (chatWindow)
+    {
         chatWindow->adjustTabSize();
+        chatWindow->parseHighlights();
+    }
 }

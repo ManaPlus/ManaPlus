@@ -24,7 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/charselectdialog.h"
 #include "gui/inventorywindow.h"

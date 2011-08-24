@@ -22,7 +22,7 @@
 
 #include "net/ea/playerhandler.h"
 
-#include "log.h"
+#include "logger.h"
 #include "party.h"
 #include "playerinfo.h"
 #include "units.h"

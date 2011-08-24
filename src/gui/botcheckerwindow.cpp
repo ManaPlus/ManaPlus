@@ -1,9 +1,10 @@
 /*
- *  The Mana World
+ *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011  ManaPlus developers
  *
- *  This file is part of The Mana World.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -35,7 +36,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/layouthelper.h"
-#include "gui/widgets/table.h"
+#include "gui/widgets/guitable.h"
 
 #include "actorspritemanager.h"
 #include "configuration.h"
@@ -289,7 +290,6 @@ BotCheckerWindow::BotCheckerWindow():
     }
 
     mPlayerTitleTable = new GuiTable(mPlayerTableTitleModel);
-    //mPlayerTitleTable->setBackgroundColor(gcn::Color(0xbf, 0xbf, 0xbf));
     mPlayerTitleTable->setHeight(1);
 
     mPlayerTableTitleModel->set(0, 0, new Label(_("Name")));

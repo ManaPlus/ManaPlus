@@ -66,6 +66,9 @@ AvatarListBox::AvatarListBox(AvatarListModel *model):
 
     config.addListener("showgender", this);
     config.addListener("showlevel", this);
+
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 AvatarListBox::~AvatarListBox()
@@ -102,8 +105,8 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
     Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
 
-    graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
-        static_cast<int>(mAlpha * 255.0f)));
+    mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+    graphics->setColor(mHighlightColor);
     graphics->setFont(getFont());
 
     const int fontHeight = getFont()->getHeight();
@@ -113,7 +116,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
     const std::string name = player_node->getName();
 
     // Draw the list elements
-    graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+    graphics->setColor(getForegroundColor());
     for (int i = 0, y = 0;
          i < model->getNumberOfElements();
          ++i, y += fontHeight)
@@ -206,7 +209,7 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
 
                 if (a->getLevel() > 1)
                 {
-                    graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+                    graphics->setColor(getForegroundColor());
                     int minHp = 40 + ((a->getLevel() - 1) * 5);
                     if (minHp < 0)
                         minHp = 40;
@@ -242,28 +245,48 @@ void AvatarListBox::draw(gcn::Graphics *gcnGraphics)
             }
         }
 
-        if (mShowGender)
+        if (graphics->getSecure())
         {
-            switch (a->getGender())
+            if (mShowGender)
             {
-                case GENDER_FEMALE:
-                    text += strprintf(" \u2640 %s",
-                        a->getAdditionString().c_str());
-                    break;
-                case GENDER_MALE:
-                    text += strprintf(" \u2642 %s",
-                        a->getAdditionString().c_str());
-                    break;
-                default:
-                    break;
+                switch (a->getGender())
+                {
+                    case GENDER_FEMALE:
+                        text += strprintf(" \u2640 ");
+                        break;
+                    case GENDER_MALE:
+                        text += strprintf(" \u2642 ");
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         else
         {
-            text += a->getAdditionString();
+            if (mShowGender)
+            {
+                switch (a->getGender())
+                {
+                    case GENDER_FEMALE:
+                        text += strprintf(" \u2640 %s",
+                            a->getAdditionString().c_str());
+                        break;
+                    case GENDER_MALE:
+                        text += strprintf(" \u2642 %s",
+                            a->getAdditionString().c_str());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                text += a->getAdditionString();
+            }
         }
 
-        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+        graphics->setColor(getForegroundColor());
 
         // Draw Name
         if (a->getType() == MapItem::SEPARATOR)
@@ -366,8 +389,10 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)
         {
-            chatWindow->addWhisperTab(model->getAvatarAt(selected)
-                                      ->getName(), true);
+            ChatTab *tab = chatWindow->addWhisperTab(
+                model->getAvatarAt(selected)->getName(), true);
+            if (chatWindow && tab)
+                chatWindow->saveState();
         }
     }
 }

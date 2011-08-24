@@ -53,6 +53,7 @@ class AdminHandler
 
         virtual void mute(int playerId, int type, int limit) = 0;
 
+        virtual void warp(std::string map, int x, int y) = 0;
         // TODO
 };
 

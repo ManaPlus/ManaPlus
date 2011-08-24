@@ -23,7 +23,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "log.h"
+#include "logger.h"
 
 #include "configuration.h"
 

@@ -23,7 +23,7 @@
 #include "simpleanimation.h"
 
 #include "graphics.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/stringutils.h"
 

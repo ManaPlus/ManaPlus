@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2008-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -17,96 +17,28 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
 #ifndef GUI_SETUP_PLAYERS_H
 #define GUI_SETUP_PLAYERS_H
 
 #include "guichanfwd.h"
-#include "playerrelations.h"
 
-#include "gui/widgets/setuptab.h"
+#include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
+class IntTextField;
 class EditDialog;
-class GuiTable;
-class PlayerTableModel;
-class StaticTableModel;
 
-class Setup_Players : public SetupTab,
-                      public PlayerRelationsListener
+class Setup_Players : public SetupTabScroll
 {
-public:
-    Setup_Players();
-    virtual ~Setup_Players();
+    public:
+        Setup_Players();
 
-    void apply();
-    void cancel();
-
-    void reset();
-
-    void action(const gcn::ActionEvent &event);
-
-    virtual void updatedPlayer(const std::string &name);
-
-    virtual void updateAll();
-
-    virtual void externalUpdated();
-
-private:
-    StaticTableModel *mPlayerTableTitleModel;
-    PlayerTableModel *mPlayerTableModel;
-    GuiTable *mPlayerTable;
-    GuiTable *mPlayerTitleTable;
-    gcn::ScrollArea *mPlayerScrollArea;
-
-    gcn::CheckBox *mDefaultTrading;
-    gcn::CheckBox *mDefaultWhisper;
-
-    gcn::Button *mDeleteButton;
-    gcn::Button *mOldButton;
-
-    gcn::ListModel *mIgnoreActionChoicesModel;
-    gcn::DropDown *mIgnoreActionChoicesBox;
-
-    bool mWhisperTab;
-    gcn::CheckBox *mWhisperTabCheckBox;
-
-    bool mShowGender;
-    gcn::CheckBox *mShowGenderCheckBox;
-
-    bool mShowLevel;
-    gcn::CheckBox *mShowLevelCheckBox;
-
-    bool mShowOwnName;
-    gcn::CheckBox *mShowOwnNameCheckBox;
-
-    bool mTargetDead;
-    gcn::CheckBox *mTargetDeadCheckBox;
-
-    bool mSecureTrades;
-    gcn::CheckBox *mSecureTradesCheckBox;
-
-    gcn::Label *mUnsecureCharsLabel;
-    gcn::TextField *mUnsecureCharsField;
-    gcn::Button *mUnsecureCharsButton;
-    std::string mUnsecureChars;
-
-    bool mVisibleNamesEnabled;
-    gcn::CheckBox *mVisibleNamesCheckBox;
-
-    bool mShowPlayersStatus;
-    gcn::CheckBox *mShowPlayersStatusCheckBox;
-
-    EditDialog *mEditDialog;
+        void apply();
 };
 
 #endif

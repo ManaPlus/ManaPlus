@@ -28,7 +28,7 @@
 #include "being.h"
 #include "event.h"
 #include "game.h"
-#include "log.h"
+#include "logger.h"
 #include "playerrelations.h"
 
 #include "net/chathandler.h"

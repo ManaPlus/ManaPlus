@@ -22,7 +22,7 @@
 
 #include "utils/xml.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "resources/resourcemanager.h"
 

@@ -741,10 +741,10 @@ class Being : public ActorSprite, public ConfigListener
 
         static void clearCache();
 
-        static std::string loadComment(const std::string &name);
+        static std::string loadComment(const std::string &name, int type);
 
         static void saveComment(const std::string &name,
-                                const std::string &comment);
+                                const std::string &comment, int type);
 
         bool isAdvanced()
         { return mAdvanced; }
@@ -873,6 +873,7 @@ class Being : public ActorSprite, public ConfigListener
         static bool mShowGender;
         static bool mShowLevel;
         static bool mShowPlayersStatus;
+        static bool mEnableReorderSprites;
 
         unsigned int mMoveTime;
         unsigned int mAttackTime;

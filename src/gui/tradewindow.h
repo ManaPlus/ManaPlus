@@ -95,7 +95,7 @@ class TradeWindow : public Window, gcn::ActionListener, gcn::SelectionListener
         /**
          * Send trade packet.
          */
-        void tradeItem(Item *item, int quantity);
+        void tradeItem(Item *item, int quantity, bool check = false);
 
         /**
          * Updates the labels and makes sure only one item is selected in
@@ -130,6 +130,8 @@ class TradeWindow : public Window, gcn::ActionListener, gcn::SelectionListener
 
         std::string getAutoTradeNick()
         { return mAutoAddToNick; }
+
+        bool checkItem(Item *item);
 
     private:
         enum Status

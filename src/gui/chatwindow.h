@@ -260,6 +260,10 @@ class ChatWindow : public Window,
         void clearAwayLog()
         { mAwayLog.clear(); }
 
+        void parseHighlights();
+
+        bool findHighlight(std::string &str);
+
     protected:
         friend class ChatTab;
         friend class WhisperTab;
@@ -329,6 +333,7 @@ class ChatWindow : public Window,
         int mChatColor;
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
+        std::vector<std::string> mHighlights;
 };
 
 extern ChatWindow *chatWindow;

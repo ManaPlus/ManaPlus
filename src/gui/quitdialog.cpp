@@ -53,7 +53,6 @@ QuitDialog::QuitDialog(QuitDialog** pointerToMe):
 
     mForceQuit = new RadioButton(_("Quit"), "quitdialog");
     mLogoutQuit = new RadioButton(_("Quit"), "quitdialog");
-    mSaveState = new CheckBox(_("Save state"), true);
     mSwitchAccountServer = new RadioButton(_("Switch server"), "quitdialog");
     mSwitchCharacter = new RadioButton(_("Switch character"), "quitdialog");
     mOkButton = new Button(_("OK"), "ok", this);
@@ -91,9 +90,8 @@ QuitDialog::QuitDialog(QuitDialog** pointerToMe):
 
     place = getPlacer(0, 1);
 
-    place(0, 0, mSaveState, 3);
-    place(1, 1, mOkButton, 1);
-    place(2, 1, mCancelButton, 1);
+    place(1, 0, mOkButton, 1);
+    place(2, 0, mCancelButton, 1);
 
     reflowLayout(200, 0);
     setLocationRelativeTo(getParent());
@@ -133,8 +131,6 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             if (map)
                 map->saveExtraLayer();
         }
-        if (chatWindow && mSaveState->isSelected())
-            chatWindow->saveState();
 
         if (mForceQuit->isSelected())
         {

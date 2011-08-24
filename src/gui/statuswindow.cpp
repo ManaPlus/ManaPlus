@@ -22,6 +22,7 @@
 
 #include "gui/statuswindow.h"
 
+#include "chatwindow.h"
 #include "configuration.h"
 #include "event.h"
 #include "equipment.h"
@@ -70,6 +71,14 @@ class AttrDisplay : public Container
 
         virtual Type getType()
         { return UNKNOWN; }
+
+        std::string getValue()
+        {
+            if (!mValue)
+                return "-";
+            else
+                return mValue->getCaption();
+        }
 
     protected:
         AttrDisplay(int id, const std::string &name);
@@ -228,6 +237,10 @@ StatusWindow::StatusWindow():
     mCharacterPointsLabel = new Label("C");
     place(0, 6, mCharacterPointsLabel, 5);
 
+    mCopyButton = new Button(_("Copy to chat"), "copy", this);
+
+    place(0, 5, mCopyButton);
+
     if (Net::getPlayerHandler()->canCorrectAttributes())
     {
         mCorrectionPointsLabel = new Label("C");
@@ -343,7 +356,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
 
                 if (!lvl)
                 {
-                    // possible server broken and dont send job level,
+                    // possible server broken and don't send job level,
                     // then we fixing it :)
                     if (exp.second < 20000)
                     {
@@ -359,7 +372,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
                 }
 
                 if (exp.first < oldExp && exp.second >= 20000)
-                {   // possible job level up. but server broken and dont send
+                {   // possible job level up. but server broken and don't send
                     // new job exp limit, we fixing it
                     lvl ++;
                     blocked = true;
@@ -876,7 +889,6 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.r = 100;
         col.g = 100;
         col.b = 100;
-//        bar->setColor(new gcn::Color(100, 100, 100));
         bar->setColor(col);
     }
     else
@@ -885,8 +897,28 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.r = 255;
         col.g = 255;
         col.b = 0;
-//        bar->setColor(new gcn::Color(255, 255, 0));
         bar->setColor(col);
+    }
+}
+
+void StatusWindow::action(const gcn::ActionEvent &event)
+{
+    if (!chatWindow)
+        return;
+
+    if (event.getId() == "copy")
+    {
+        Attrs::iterator it = mAttrs.begin();
+        Attrs::iterator it_end = mAttrs.end();
+        std::string str;
+        while (it != it_end)
+        {
+            ChangeDisplay *attr = dynamic_cast<ChangeDisplay*>((*it).second);
+            if (attr)
+                str += attr->getValue() + " ";
+            ++ it;
+        }
+        chatWindow->addInputText(str);
     }
 }
 

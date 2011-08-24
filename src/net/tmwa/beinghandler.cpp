@@ -29,7 +29,7 @@
 #include "guild.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "configuration.h"
@@ -552,7 +552,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
 
-        // because server dont send direction in move packet,
+        // because server don't send direction in move packet,
         // we fixing it
 
         if (srcX != dstX || srcY != dstY)

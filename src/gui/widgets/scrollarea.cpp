@@ -26,7 +26,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/theme.h"
 
@@ -73,7 +73,6 @@ ScrollArea::ScrollArea(gcn::Widget *widget):
     mDrawWidth(0),
     mDrawHeight(0)
 {
-//    addWidgetListener(this);
     init();
 }
 
@@ -219,6 +218,9 @@ void ScrollArea::init()
     }
 
     instances++;
+
+    mGray = Theme::getThemeColor(Theme::SCROLLBAR_GRAY, 32);
+    mBackground = Theme::getThemeColor(Theme::BACKGROUND);
 }
 
 void ScrollArea::logic()
@@ -336,7 +338,7 @@ void ScrollArea::drawFrame(gcn::Graphics *graphics)
         }
         else
         {
-            // because we dont know where parent windows was moved,
+            // because we don't know where parent windows was moved,
             // need recalc vertexes
             gcn::ClipRectangle &rect = static_cast<Graphics*>(
                 graphics)->getTopClip();
@@ -439,17 +441,17 @@ void ScrollArea::drawRightButton(gcn::Graphics *graphics)
 void ScrollArea::drawVBar(gcn::Graphics *graphics)
 {
     const gcn::Rectangle dim = getVerticalBarDimension();
-    graphics->setColor(gcn::Color(0, 0, 0, 32));
+    graphics->setColor(mGray);
     graphics->fillRectangle(dim);
-    graphics->setColor(gcn::Color(255, 255, 255));
+    graphics->setColor(mBackground);
 }
 
 void ScrollArea::drawHBar(gcn::Graphics *graphics)
 {
     const gcn::Rectangle dim = getHorizontalBarDimension();
-    graphics->setColor(gcn::Color(0, 0, 0, 32));
+    graphics->setColor(mGray);
     graphics->fillRectangle(dim);
-    graphics->setColor(gcn::Color(255, 255, 255));
+    graphics->setColor(mBackground);
 }
 
 void ScrollArea::drawVMarker(gcn::Graphics *graphics)

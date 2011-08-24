@@ -35,7 +35,7 @@
 #include "configlistener.h"
 #include "configuration.h"
 #include "graphics.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/image.h"
 #include "resources/imageset.h"
@@ -107,9 +107,18 @@ Gui::Gui(Graphics *graphics):
 
     // Set global font
     const int fontSize = config.getIntValue("fontSize");
+
     std::string fontFile = config.getValue("font", "");
-// may be here need get paths from paths.getValue?
-//    std::string path = resman->getPath(fontFile);
+
+    std::vector<std::string> langs = getLang();
+    if (!langs.empty() && langs[0].size() > 3
+        && langs[0].substr(0, 3) == "ja_")
+    {
+        fontFile = config.getValue("japanFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("japanFont");
+    }
+
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 

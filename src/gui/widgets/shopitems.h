@@ -76,6 +76,8 @@ class ShopItems : public gcn::ListModel
          */
         int getNumberOfElements();
 
+        bool empty();
+
         /**
          * Returns the name of item number i in the shop.
          *

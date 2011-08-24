@@ -25,7 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/gui.h"
 #include "gui/palette.h"
@@ -95,6 +95,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
 
     addWidgetListener(this);
     mCaptionFont = getFont();
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 Window::~Window()
@@ -146,15 +147,10 @@ void Window::draw(gcn::Graphics *graphics)
 
     g->drawImageRect2(mVertexes, mSkin->getBorder());
 
-/*
-    g->drawImageRect(0, 0, getWidth(),
-            getHeight(), mSkin->getBorder());
-*/
-
     // Draw title
     if (mShowTitle)
     {
-        g->setColor(Theme::getThemeColor(Theme::TEXT));
+        g->setColor(getForegroundColor());
         g->setFont(mCaptionFont);
         g->drawText(getCaption(), 7, 5, gcn::Graphics::LEFT);
     }

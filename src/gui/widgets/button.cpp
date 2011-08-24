@@ -26,7 +26,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/palette.h"
 #include "gui/theme.h"
@@ -135,6 +135,9 @@ void Button::init()
         }
         updateAlpha();
     }
+    mEnabledColor = Theme::getThemeColor(Theme::BUTTON);
+    mDisabledColor = Theme::getThemeColor(Theme::BUTTON_DISABLED);
+
     mInstances++;
 }
 
@@ -202,7 +205,7 @@ void Button::draw(gcn::Graphics *graphics)
     }
     else
     {
-        // because we dont know where parent windows was moved,
+        // because we don't know where parent windows was moved,
         // need recalc vertexes
         gcn::ClipRectangle &rect = static_cast<Graphics*>(
             graphics)->getTopClip();
@@ -238,9 +241,9 @@ void Button::draw(gcn::Graphics *graphics)
 //        drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
 
     if (mode == BUTTON_DISABLED)
-        graphics->setColor(Theme::getThemeColor(Theme::BUTTON_DISABLED));
+        graphics->setColor(mDisabledColor);
     else
-        graphics->setColor(Theme::getThemeColor(Theme::BUTTON));
+        graphics->setColor(mEnabledColor);
 
     int textX;
     int textY = getHeight() / 2 - getFont()->getHeight() / 2;

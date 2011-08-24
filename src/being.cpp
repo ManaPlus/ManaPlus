@@ -31,7 +31,7 @@
 #include "guild.h"
 #include "item.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "particle.h"
 #include "party.h"
@@ -196,6 +196,7 @@ bool Being::mShowOwnHP = false;
 bool Being::mShowGender = false;
 bool Being::mShowLevel = false;
 bool Being::mShowPlayersStatus = false;
+bool Being::mEnableReorderSprites = true;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 
@@ -262,7 +263,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     if (mType == PLAYER)
         mShowName = config.getBoolValue("visiblenames");
-    else
+    else if (mType != NPC)
         mGotComment = true;
 
     config.addListener("visiblenames", this);
@@ -475,7 +476,7 @@ void Being::setSpeech(const std::string &text, int time)
         mSpeech = mSpeech.substr(0, lineLim);
 
     trim(mSpeech);
-    if (mSpeech.length() < 1)
+    if (mSpeech.empty())
         return;
 
     if (!time && mSpeech.size() < 200)
@@ -1362,7 +1363,7 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
 
 void Being::drawSpeech(int offsetX, int offsetY)
 {
-    if (!mSpeechBubble)
+    if (!mSpeechBubble || mSpeech.empty())
         return;
 
     const int px = getPixelX() - offsetX;
@@ -1552,6 +1553,9 @@ void Being::showName()
     {
         font = gui->getSecureFont();
     }
+
+    if (mDisplayName.empty())
+        return;
 
     mDispName = new FlashText(mDisplayName, getPixelX(), getPixelY(),
                               gcn::Graphics::CENTER, mNameColor, font);
@@ -1750,6 +1754,7 @@ void Being::reReadConfig()
         mShowGender = config.getBoolValue("showgender");
         mShowLevel = config.getBoolValue("showlevel");
         mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
+        mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
 
         mUpdateConfigTime = cur_time;
     }
@@ -2034,13 +2039,27 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
 
     int dx = static_cast<int>(static_cast<float>(width) / p);
 
+    if (!damage || (!hp && maxHP == damage))
+    {
+        graphics->setColor(userPalette->getColorWithAlpha(color1));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x, y, dx, height));
+        return;
+    }
+    else if (width - dx <= 0)
+    {
+        graphics->setColor(userPalette->getColorWithAlpha(color2));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x, y, width, height));
+        return;
+    }
+
     graphics->setColor(userPalette->getColorWithAlpha(color1));
 
     graphics->fillRectangle(gcn::Rectangle(
         x, y, dx, height));
-
-    if (width - dx <= 0)
-        return;
 
     graphics->setColor(userPalette->getColorWithAlpha(color2));
 
@@ -2073,6 +2092,9 @@ void Being::resetCounters()
 
 void Being::recalcSpritesOrder()
 {
+    if (!mEnableReorderSprites)
+        return;
+
 //    logger->log("recalcSpritesOrder");
     unsigned sz = static_cast<unsigned>(size());
     if (sz < 1)
@@ -2358,13 +2380,26 @@ void Being::updateComment()
         return;
 
     mGotComment = true;
-    mComment = loadComment(mName);
+    mComment = loadComment(mName, mType);
 }
 
-std::string Being::loadComment(const std::string &name)
+std::string Being::loadComment(const std::string &name, int type)
 {
-    std::string str = Client::getUsersDirectory()
-        + stringToHexPath(name) + "/comment.txt";
+    std::string str;
+    switch (type)
+    {
+        case PLAYER:
+            str = Client::getUsersDirectory();
+            break;
+        case NPC:
+            str = Client::getNpcsDirectory();
+            break;
+        default:
+            return "";
+    }
+
+    str += stringToHexPath(name) + "/comment.txt";
+    logger->log("load from: %s", str.c_str());
     std::vector<std::string> lines;
 
     ResourceManager *resman = ResourceManager::getInstance();
@@ -2378,10 +2413,22 @@ std::string Being::loadComment(const std::string &name)
 }
 
 void Being::saveComment(const std::string &name,
-                        const std::string &comment)
+                        const std::string &comment, int type)
 {
-    std::string dir = Client::getUsersDirectory()
-        + stringToHexPath(name);
+    std::string dir;
+    switch (type)
+    {
+        case PLAYER:
+            dir = Client::getUsersDirectory();
+            break;
+        case NPC:
+            dir = Client::getNpcsDirectory();
+            break;
+        default:
+            return;
+    }
+    dir += stringToHexPath(name);
+    logger->log("save to: %s", dir.c_str());
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }

@@ -27,7 +27,7 @@
 #include "effectmanager.h"
 #include "game.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "particle.h"
 #include "playerinfo.h"
 #include "configuration.h"

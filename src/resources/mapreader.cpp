@@ -23,7 +23,7 @@
 #include "resources/mapreader.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "tileset.h"
 

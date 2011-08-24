@@ -137,6 +137,8 @@ class OutfitWindow : public Window, gcn::ActionListener
         int mAwayOutfit;
 
         Image *mBackgroundImg;
+        gcn::Color mBorderColor;
+        gcn::Color mBackgroundColor;
 
         static float mAlpha;
 };

@@ -26,7 +26,7 @@
 #include "effectmanager.h"
 #include "imagesprite.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "simpleanimation.h"
 #include "sound.h"
 #include "statuseffect.h"

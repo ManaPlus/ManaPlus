@@ -55,7 +55,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
     private:
         bool mFullScreenEnabled;
         int mOpenGLEnabled;
-        bool mHwAccelEnabled;
         bool mCustomCursorEnabled;
         bool mParticleEffectsEnabled;
         bool mPickupChatEnabled;
@@ -63,10 +62,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         float mOpacity;
         int mFps;
         int mAltFps;
-        bool mAlphaCache;
-        bool mEnableMapReduce;
-        bool mAdjustPerfomance;
-        bool mBeingOpacity;
         Being::Speech mSpeechMode;
 
         ModeListModel *mModeListModel;
@@ -83,7 +78,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::ListBox *mModeList;
         gcn::CheckBox *mFsCheckBox;
         gcn::DropDown *mOpenGLDropDown;
-        gcn::CheckBox *mHwAccelCheckBox;
         gcn::CheckBox *mCustomCursorCheckBox;
         gcn::CheckBox *mParticleEffectsCheckBox;
 
@@ -91,10 +85,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::CheckBox *mPickupChatCheckBox;
         gcn::CheckBox *mPickupParticleCheckBox;
 
-        gcn::CheckBox *mAlphaCacheCheckBox;
-        gcn::CheckBox *mEnableMapReduceCheckBox;
-        gcn::CheckBox *mAdjustPerfomanceCheckBox;
-        gcn::CheckBox *mBeingOpacityCheckBox;
         gcn::Slider *mSpeechSlider;
         gcn::Label *mSpeechLabel;
         gcn::Slider *mAlphaSlider;

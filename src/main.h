@@ -26,12 +26,6 @@
 /**
  * \mainpage
  *
- * \section Introduction Introduction
- *
- * This is the documentation for the Mana client (http://manasource.org). It is
- * always a work in progress, with the intent to make it easier for new
- * developers to grow familiar with the source code.
- *
  * \section General General information
  *
  * During the game, the current Map is displayed by the main Viewport, which
@@ -91,8 +85,8 @@
 //define DEBUG_ALPHA_CACHE 1
 //define DEBUG_OPENGL_LEAKS 1
 
-#define SMALL_VERSION "1.1.8.7"
-#define CHECK_VERSION "01.01.08.07"
+#define SMALL_VERSION "1.1.8.21"
+#define CHECK_VERSION "01.01.08.21"
 
 
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \

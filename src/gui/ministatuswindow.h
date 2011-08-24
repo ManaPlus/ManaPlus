@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MINISTATUS_H
-#define MINISTATUS_H
+#ifndef MINISTATUSWINDOW_H
+#define MINISTATUSWINDOW_H
 
 #include "inventory.h"
 #include "listener.h"

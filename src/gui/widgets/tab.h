@@ -91,6 +91,8 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
         GraphicsVertexes *mVertexes;
         bool mRedraw;
         int mMode;
+        gcn::Color mFlashColor;
+        gcn::Color mPlayerFlashColor;
 };
 
 #endif

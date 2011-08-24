@@ -25,7 +25,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
@@ -58,6 +58,8 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
     setFrameSize(2);
 
     mLoseFocusOnTab = loseFocusOnTab;
+
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 
     if (instances == 0)
     {
@@ -136,7 +138,7 @@ void TextField::draw(gcn::Graphics *graphics)
                   mXScroll);
     }
 
-    graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+    graphics->setColor(getForegroundColor());
     graphics->setFont(getFont());
     graphics->drawText(mText, 1 - mXScroll, 1);
 }

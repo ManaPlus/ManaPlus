@@ -22,10 +22,10 @@
 
 #include "gui/widgets/tradetab.h"
 
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "commandhandler.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/theme.h"
 

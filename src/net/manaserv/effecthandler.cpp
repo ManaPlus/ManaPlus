@@ -24,7 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "effectmanager.h"
-#include "log.h"
+#include "logger.h"
 
 #include "net/messagein.h"
 

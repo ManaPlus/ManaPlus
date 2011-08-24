@@ -26,7 +26,7 @@
 #include "opengl1graphics.h"
 
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/image.h"
 

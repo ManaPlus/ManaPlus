@@ -2,6 +2,7 @@
 	<color id="TEXT" color="#FF00FF" />
 	<color id="SHADOW" color="#000000" />
 	<color id="OUTLINE" color="#000000" />
+	<color id="BORDER" color="#000000" />
 	<color id="PROGRESS_BAR" color="#ffffff" />
 	<color id="BUTTON" color="#FF00FF" />
 	<color id="BUTTON_DISABLED" color="#FF00FF" />
@@ -11,11 +12,15 @@
 	<color id="GUILD_CHAT_TAB" color="#f48055" />
 	<color id="GUILD_SOCIAL_TAB" color="#f48055" />
 	<color id="BACKGROUND" color="#ffffff" />
+	<color id="BACKGROUND_GRAY" color="#404040" />
+	<color id="SCROLLBAR_GRAY" color="#000000" />
+	<color id="DROPDOWN_SHADOW" color="#c0c0c0" />
 	<color id="HIGHLIGHT" color="#FFFEFF" />
 	<color id="TAB_FLASH" color="#ff0000" effect="pulse" />
 	<color id="TAB_PLAYER_FLASH" color="#00ff00" effect="pulse" />
 	<color id="SHOP_WARNING" color="#910000" />
 	<color id="ITEM_EQUIPPED" color="#000091" />
+	<color id="ITEM_NOT_EQUIPPED" color="#000000" />
 	<color id="CHAT" color="#FF00FF" />
 	<color id="GM" color="#ff0000" />
 	<color id="PLAYER" color="#009000" />

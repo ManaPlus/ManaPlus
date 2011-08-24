@@ -22,19 +22,22 @@
 
 #include "gui/setup.h"
 
+#include "chatwindow.h"
 #include "configuration.h"
 #include "game.h"
 #include "main.h"
 
 #include "gui/setup_audio.h"
+#include "gui/setup_chat.h"
 #include "gui/setup_colors.h"
 #include "gui/setup_joystick.h"
 #include "gui/setup_other.h"
 #include "gui/setup_theme.h"
 #include "gui/setup_keyboard.h"
+#include "gui/setup_perfomance.h"
 #include "gui/setup_players.h"
+#include "gui/setup_relations.h"
 #include "gui/setup_video.h"
-#include "gui/setup_chat.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -85,14 +88,17 @@ Setup::Setup():
 
     mPanel = new TabbedArea;
     mPanel->setDimension(gcn::Rectangle(5, 5, width - 10, height - 40));
+    mPanel->enableScrollButtons(true);
 
     mTabs.push_back(new Setup_Video);
     mTabs.push_back(new Setup_Audio);
+    mTabs.push_back(new Setup_Perfomance);
     mTabs.push_back(new Setup_Joystick);
     mTabs.push_back(new Setup_Keyboard);
     mTabs.push_back(new Setup_Colors);
     mTabs.push_back(new Setup_Chat);
     mTabs.push_back(new Setup_Players);
+    mTabs.push_back(new Setup_Relations);
     mTabs.push_back(new Setup_Theme);
     mTabs.push_back(new Setup_Other);
 
@@ -139,11 +145,12 @@ void Setup::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "Cancel")
     {
-        setVisible(false);
-        for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
+        doCancel();
     }
     else if (event.getId() == "Store")
     {
+        if (chatWindow)
+            chatWindow->saveState();
         config.write();
         serverConfig.write();
     }
@@ -179,6 +186,12 @@ void Setup::externalUpdate()
 void Setup::registerWindowForReset(Window *window)
 {
     mWindowsToReset.push_back(window);
+}
+
+void Setup::doCancel()
+{
+    setVisible(false);
+    for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
 }
 
 Setup *setupWindow;

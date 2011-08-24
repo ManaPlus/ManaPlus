@@ -17,7 +17,7 @@ hr
 hu
 id
 #it # Not enough translations
-#ja # Disabled because of current client limitations (font fallbacking)
+ja
 #ka # Not enough translations
 #nb # Not enough translations
 #nds # Not enough translations
@@ -34,6 +34,6 @@ ru
 #th # Disabled because of current client limitations (font fallbacking)
 #tr # Not enough translations
 #uk # Not enough translations
-#zh_CN # Disabled because of current client limitations (font fallbacking)
+zh_CN
 #zh_HK # Disabled because of current client limitations (font fallbacking)
 #zh_TW # Disabled because of current client limitations (font fallbacking)

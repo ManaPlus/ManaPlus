@@ -71,6 +71,8 @@ class Setup : public Window, public gcn::ActionListener
         void clearWindowsForReset()
         { mWindowsToReset.clear(); }
 
+        void doCancel();
+
     private:
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;

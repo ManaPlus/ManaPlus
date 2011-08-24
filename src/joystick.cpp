@@ -22,7 +22,7 @@
 
 #include "configuration.h"
 #include "joystick.h"
-#include "log.h"
+#include "logger.h"
 
 #include <cassert>
 

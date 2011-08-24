@@ -23,7 +23,7 @@
 #include "resources/resource.h"
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/resourcemanager.h"
 

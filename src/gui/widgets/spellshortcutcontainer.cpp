@@ -1,9 +1,10 @@
 /*
- *  The Mana World
+ *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011  ManaPlus developers
  *
- *  This file is part of The Mana World.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -39,7 +40,7 @@
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "spellmanager.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/image.h"
 #include "textcommand.h"
@@ -80,6 +81,7 @@ SpellShortcutContainer::SpellShortcutContainer(unsigned number):
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 SpellShortcutContainer::~SpellShortcutContainer()
@@ -105,11 +107,10 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
     Graphics *g = static_cast<Graphics*>(graphics);
 
-    graphics->setColor(gcn::Color(0, 0, 0, 255));
     graphics->setFont(getFont());
 
     int selectedId = spellShortcut->getSelectedItem();
-    g->setColor(Theme::getThemeColor(Theme::TEXT));
+    g->setColor(getForegroundColor());
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {

@@ -225,6 +225,10 @@ class BrowserBox : public gcn::Widget,
         bool mAlwaysUpdate;
         bool mProcessVersion;
         bool mEnableImages;
+
+        gcn::Color mBackgroundColor;
+        gcn::Color mHighlightColor;
+        gcn::Color mHyperLinkColor;
 };
 
 #endif

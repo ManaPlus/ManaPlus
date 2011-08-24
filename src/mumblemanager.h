@@ -1,4 +1,6 @@
-/* Code taken from: http://mumble.sourceforge.net/Link */
+/*
+ * Code taken from: http://mumble.sourceforge.net/Link
+ */
 
 #ifndef MUMBLEMANAGER_H
 #define MUMBLEMANAGER_H

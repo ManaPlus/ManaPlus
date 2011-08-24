@@ -26,7 +26,7 @@
 #include "game.h"
 #include "localplayer.h"
 #include "units.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/changeemaildialog.h"
 #include "gui/changepassworddialog.h"

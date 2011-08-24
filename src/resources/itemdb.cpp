@@ -23,7 +23,7 @@
 #include "resources/itemdb.h"
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
@@ -213,7 +213,7 @@ void ItemDB::load()
         std::string attackAction = XML::getProperty(node, "attack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
-        std::string removeSprite = XML::getProperty(node, "removeSprite", "");
+//        std::string removeSprite = XML::getProperty(node, "removeSprite", "");
         std::string colors;
         if (serverVersion >= 1)
             colors = XML::getProperty(node, "colors", "");

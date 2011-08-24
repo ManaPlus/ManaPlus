@@ -1,9 +1,11 @@
-/* Code taken from: http://mumble.sourceforge.net/Link */
+/*
+ *Code taken from: http://mumble.sourceforge.net/Link
+ */
 
 #include "mumblemanager.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/mathutils.h"
 

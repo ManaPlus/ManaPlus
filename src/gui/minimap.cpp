@@ -27,7 +27,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 
 #include "gui/userpalette.h"

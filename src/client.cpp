@@ -23,7 +23,7 @@
 #include "client.h"
 #include "main.h"
 
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "configuration.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
@@ -61,7 +61,7 @@
 #include "gui/setup.h"
 #include "gui/theme.h"
 #include "gui/unregisterdialog.h"
-#include "gui/updatewindow.h"
+#include "gui/updaterwindow.h"
 #include "gui/userpalette.h"
 #include "gui/worldselectdialog.h"
 
@@ -240,6 +240,7 @@ Client::Client(const Options &options):
     mOptions(options),
     mServerConfigDir(""),
     mUsersDir(""),
+    mNpcsDir(""),
     mRootDir(""),
     mCurrentDialog(0),
     mQuitDialog(0),
@@ -1289,8 +1290,6 @@ int Client::exec()
                 case STATE_ERROR:
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
-                    if (chatWindow)
-                        chatWindow->saveState();
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = NULL; // OkDialog deletes itself
@@ -1803,6 +1802,7 @@ void Client::storeSafeParameters()
     std::string particleFont;
     std::string helpFont;
     std::string secureFont;
+    std::string japanFont;
     bool showBackground;
     bool enableMumble;
     bool enableMapReduce;
@@ -1830,6 +1830,7 @@ void Client::storeSafeParameters()
     particleFont = config.getStringValue("particleFont");
     helpFont = config.getStringValue("helpFont");
     secureFont = config.getStringValue("secureFont");
+    japanFont = config.getStringValue("japanFont");
 
     showBackground = config.getBoolValue("showBackground");
     enableMumble = config.getBoolValue("enableMumble");
@@ -1848,6 +1849,7 @@ void Client::storeSafeParameters()
     config.setValue("particleFont", "fonts/dejavusans.ttf");
     config.setValue("helpFont", "fonts/dejavusansmono.ttf");
     config.setValue("secureFont", "fonts/dejavusansmono.ttf");
+    config.setValue("japanFont", "fonts/mplus-1p-regular.ttf");
     config.setValue("showBackground", false);
     config.setValue("enableMumble", false);
     config.setValue("enableMapReduce", false);
@@ -1873,6 +1875,7 @@ void Client::storeSafeParameters()
     config.setValue("particleFont", particleFont);
     config.setValue("helpFont", helpFont);
     config.setValue("secureFont", secureFont);
+    config.setValue("japanFont", japanFont);
     config.setValue("showBackground", showBackground);
     config.setValue("enableMumble", enableMumble);
     config.setValue("enableMapReduce", enableMapReduce);
@@ -1918,6 +1921,13 @@ void Client::initUsersDir()
     {
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
             "Exiting."), mUsersDir.c_str()));
+    }
+
+    mNpcsDir = Client::getServerConfigDirectory() + "/npcs/";
+    if (mkdir_r(mNpcsDir.c_str()))
+    {
+        logger->error(strprintf(_("%s doesn't exist and can't be created! "
+            "Exiting."), mNpcsDir.c_str()));
     }
 }
 
@@ -2137,6 +2147,11 @@ const std::string Client::getServerConfigDirectory()
 const std::string Client::getUsersDirectory()
 {
     return instance()->mUsersDir;
+}
+
+const std::string Client::getNpcsDirectory()
+{
+    return instance()->mNpcsDir;
 }
 
 void Client::setGuiAlpha(float n)

@@ -22,7 +22,7 @@
 
 #include "resources/imagewriter.h"
 
-#include "log.h"
+#include "logger.h"
 
 #if defined __OpenBSD__
 #include <libpng/png.h>

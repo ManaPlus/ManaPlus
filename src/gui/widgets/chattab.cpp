@@ -23,11 +23,11 @@
 #include "gui/widgets/chattab.h"
 
 #include "actorspritemanager.h"
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "commandhandler.h"
 #include "configuration.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "sound.h"
 
 #include "gui/widgets/browserbox.h"
@@ -249,12 +249,13 @@ void ChatTab::chatLog(std::string line, Own own,
     // We look if the Vertical Scroll Bar is set at the max before
     // adding a row, otherwise the max will always be a row higher
     // at comparison.
-    if (mScrollArea->getVerticalScrollAmount() >=
+    if (mScrollArea->getVerticalScrollAmount() + 2 >=
         mScrollArea->getVerticalMaxScroll())
     {
         addRow(line);
         mScrollArea->setVerticalScrollAmount(
             mScrollArea->getVerticalMaxScroll());
+
     }
     else
     {
@@ -282,9 +283,7 @@ void ChatTab::chatLog(std::string line, Own own,
             {
                 if (player_node)
                 {
-                    std::string::size_type pos
-                        = tmp.text.find(player_node->getName());
-                    if (pos != std::string::npos)
+                    if (chatWindow && chatWindow->findHighlight(tmp.text))
                         setFlash(2);
                     else
                         setFlash(1);

@@ -22,7 +22,7 @@
 
 #include "inventory.h"
 #include "item.h"
-#include "log.h"
+#include "logger.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
@@ -155,6 +155,9 @@ void Inventory::removeItemAt(int index)
 
 bool Inventory::contains(Item *item) const
 {
+    if (!item)
+        return false;
+
     for (unsigned i = 0; i < mSize; i++)
     {
         if (mItems[i] && mItems[i]->getId() == item->getId())

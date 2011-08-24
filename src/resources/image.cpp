@@ -31,7 +31,7 @@
 #endif
 
 #include "client.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "utils/stringutils.h"

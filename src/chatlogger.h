@@ -1,10 +1,10 @@
 /*
- *  The Mana World
+ *  The ManaPlus Client
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011  The ManaPlus Developers
  *  Copyright (C) 2009-2010  Andrei Karas
  *
- *  This file is part of The Mana World.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef M_CHATLOG_H
-#define M_CHATLOG_H
+#ifndef M_CHATLOGGER_H
+#define M_CHATLOGGER_H
 
 #include <fstream>
 #include <list>

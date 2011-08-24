@@ -27,7 +27,7 @@
 #include "configuration.h"
 #include "resources/dye.h"
 #include "imageparticle.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "particle.h"
 #include "particleemitter.h"

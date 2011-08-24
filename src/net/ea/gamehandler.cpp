@@ -26,7 +26,7 @@
 #include "event.h"
 #include "game.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/okdialog.h"
 

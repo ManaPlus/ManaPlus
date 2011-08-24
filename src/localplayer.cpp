@@ -31,7 +31,7 @@
 #include "guild.h"
 #include "item.h"
 #include "keyboardconfig.h"
-#include "log.h"
+#include "logger.h"
 #include "map.h"
 #include "party.h"
 #include "particle.h"
@@ -46,10 +46,11 @@
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/killstats.h"
-#include "gui/ministatus.h"
+#include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/palette.h"
+#include "gui/shopwindow.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/statuswindow.h"
@@ -344,7 +345,7 @@ void LocalPlayer::logic()
     if (mEnableAdvert && !mBlockAdvert && mAdvertTime < cur_time)
     {
         Uint8 smile = FLAG_SPECIAL;
-        if (mTradebot)
+        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile += FLAG_SHOP;
 
         if (mAwayMode)
@@ -3463,10 +3464,7 @@ void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
         if (target && target->getType() != Being::NPC)
         {
             mKeepAttacking = true;
-            if (mAttackWeaponType == 1)
-                moveToTarget();
-            else
-                moveToTarget(mAttackRange);
+            moveToTarget();
         }
     }
 }

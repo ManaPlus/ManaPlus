@@ -22,7 +22,7 @@
 
 #include "resources/imageset.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include "resources/image.h"
 

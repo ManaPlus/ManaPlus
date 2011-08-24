@@ -24,7 +24,7 @@
 
 #include "client.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/charcreatedialog.h"
 #include "gui/okdialog.h"

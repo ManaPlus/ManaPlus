@@ -27,7 +27,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
-#include "log.h"
+#include "logger.h"
 #include "particle.h"
 #include "simpleanimation.h"
 #include "tileset.h"
@@ -918,7 +918,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
         }
     }
 
-    // Dont draw if gui opacity == 1
+    // Don't draw if gui opacity == 1
     if (mBeingOpacity && mOpacity != 1.0f)
     {
         // Draws beings with a lower opacity to make them visible

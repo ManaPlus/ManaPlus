@@ -78,9 +78,13 @@ class PlayerListener : public gcn::ActionListener
         void setDialog(TextDialog *dialog)
         { mDialog = dialog; }
 
+        void setType(int type)
+        { mType = type; }
+
     private:
         std::string mNick;
         TextDialog *mDialog;
+        int mType;
 };
 
 /**
@@ -171,6 +175,7 @@ class PopupMenu : public Popup, public LinkHandler
         TextDialog *mDialog;
         Button *mButton;
         std::string mNick;
+        int mType;
 
         /**
          * Shared code for the various showPopup functions.

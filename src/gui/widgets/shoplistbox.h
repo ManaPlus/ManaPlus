@@ -85,6 +85,8 @@ class ShopListBox : public ListBox
         void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED);
 
     private:
+        void init();
+
         int mPlayerMoney;
 
         /**
@@ -100,6 +102,10 @@ class ShopListBox : public ListBox
         static float mAlpha;
 
         bool mPriceCheck;
+
+        gcn::Color mHighlightColor;
+        gcn::Color mBackgroundColor;
+        gcn::Color mWarningColor;
 };
 
 #endif // SHOPLISTBOX_H

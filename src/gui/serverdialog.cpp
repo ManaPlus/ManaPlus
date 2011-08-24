@@ -22,10 +22,10 @@
 
 #include "gui/serverdialog.h"
 
-#include "chatlog.h"
+#include "chatlogger.h"
 #include "client.h"
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 
 #include "gui/gui.h"
@@ -124,6 +124,9 @@ std::string ServersListModel::getElementAt(int elementIndex)
 
 void ServersListModel::setVersionString(int index, const std::string &version)
 {
+    if (index >= (int)mVersionStrings.size())
+        return;
+
     if (version.empty())
     {
         mVersionStrings[index] = VersionString(0, "");
@@ -155,6 +158,10 @@ public:
     ServersListBox(ServersListModel *model):
             ListBox(model)
     {
+        mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+        mTextColor = Theme::getThemeColor(Theme::TEXT);
+        mNotSupportedColor = Theme::getThemeColor(
+            Theme::SERVER_VERSION_NOT_SUPPORTED);
     }
 
     void draw(gcn::Graphics *graphics)
@@ -166,20 +173,18 @@ public:
 
         updateAlpha();
 
-        graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
-                static_cast<int>(mAlpha * 255.0f)));
+        mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+        graphics->setColor(mHighlightColor);
         graphics->setFont(getFont());
 
         const int height = getRowHeight();
-        const gcn::Color unsupported =
-                Theme::getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED,
-                                     static_cast<int>(mAlpha * 255.0f));
+        mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0f);
 
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
         {
-            graphics->fillRectangle(gcn::Rectangle(0, height * mSelected,
-                                                   getWidth(), height));
+            graphics->fillRectangle(gcn::Rectangle(0,
+                height * mSelected, getWidth(), height));
         }
 
         // Draw the list elements
@@ -188,7 +193,7 @@ public:
         {
             ServerInfo info = model->getServer(i);
 
-            graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+            graphics->setColor(mTextColor);
 
             int top;
 
@@ -209,7 +214,7 @@ public:
 
             if (info.version.first > 0)
             {
-                graphics->setColor(unsupported);
+                graphics->setColor(mNotSupportedColor);
 
                 graphics->drawText(info.version.second,
                                    getWidth() - info.version.first - 2, top);
@@ -221,6 +226,10 @@ public:
     {
         return 2 * getFont()->getHeight();
     }
+private:
+    gcn::Color mHighlightColor;
+    gcn::Color mTextColor;
+    gcn::Color mNotSupportedColor;
 };
 
 
@@ -604,6 +613,13 @@ void ServerDialog::downloadServerList()
     if (listFile.empty())
         listFile = "http://manasource.org/serverlist.xml";
 
+    if (mDownload)
+    {
+        mDownload->cancel();
+        delete mDownload;
+        mDownload = 0;
+    }
+
     mDownload = new Net::Download(this, listFile, &downloadUpdate);
     mDownload->setFile(mDir + "/serverlist.xml");
     mDownload->start();
@@ -702,7 +718,6 @@ void ServerDialog::loadServers(bool addNew)
                 break;
             }
         }
-
         if (!found && addNew)
             mServers.push_back(server);
     }

@@ -1,10 +1,10 @@
 /*
- *  The Mana World
+ *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
  *  Copyright (C) 2011  The ManaPlus Developers
  *
- *  This file is part of The Mana World.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,13 +23,12 @@
 
 #include "gui/setup_other.h"
 
-#include "gui/setupitem.h"
-
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/setupitem.h"
 
 #include "configuration.h"
-#include "log.h"
+#include "logger.h"
 
 #include "utils/gettext.h"
 

@@ -159,6 +159,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "particleFont", "fonts/dejavusans.ttf");
     AddDEF(configData, "helpFont", "fonts/dejavusansmono.ttf");
     AddDEF(configData, "secureFont", "fonts/dejavusansmono.ttf");
+    AddDEF(configData, "japanFont", "fonts/mplus-1p-regular.ttf");
     AddDEF(configData, "showBackground", true);
     AddDEF(configData, "enableTradeTab", true);
     AddDEF(configData, "logToChat", false);
@@ -167,9 +168,9 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "floorItemsHighlight", true);
     AddDEF(configData, "enableBotCheker", true);
     AddDEF(configData, "removeColors", true);
-    AddDEF(configData, "showMagicInDebug", false);
+    AddDEF(configData, "showMagicInDebug", true);
     AddDEF(configData, "allowCommandsInChatTabs", true);
-    AddDEF(configData, "serverMsgInDebug", false);
+    AddDEF(configData, "serverMsgInDebug", true);
     AddDEF(configData, "hideShopMessages", true);
     AddDEF(configData, "showChatHistory", true);
     AddDEF(configData, "showChatColorsList", true);
@@ -210,6 +211,11 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showPlayersStatus", true);
     AddDEF(configData, "beingopacity", false);
     AddDEF(configData, "adjustPerfomance", true);
+    AddDEF(configData, "enableAlphaFix", false);
+    AddDEF(configData, "disableAdvBeingCaching", false);
+    AddDEF(configData, "disableBeingCaching", false);
+    AddDEF(configData, "enableReorderSprites", true);
+    AddDEF(configData, "showip", false);
     return configData;
 }
 
@@ -237,6 +243,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "particleFont", "fonts/dejavusans.ttf");
     AddDEF(brandingData, "helpFont", "fonts/dejavusansmono.ttf");
     AddDEF(brandingData, "secureFont", "fonts/dejavusansmono.ttf");
+    AddDEF(brandingData, "japanFont", "fonts/mplus-1p-regular.ttf");
 
     AddDEF(brandingData, "guiPath", "graphics/gui/");
     AddDEF(brandingData, "guiThemePath", "themes/");

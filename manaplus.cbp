@@ -117,8 +117,8 @@
 		<Unit filename="src\channel.h" />
 		<Unit filename="src\channelmanager.cpp" />
 		<Unit filename="src\channelmanager.h" />
-		<Unit filename="src\chatlog.cpp" />
-		<Unit filename="src\chatlog.h" />
+		<Unit filename="src\chatlogger.cpp" />
+		<Unit filename="src\chatlogger.h" />
 		<Unit filename="src\client.cpp" />
 		<Unit filename="src\client.h" />
 		<Unit filename="src\commandhandler.cpp" />
@@ -196,8 +196,8 @@
 		<Unit filename="src\gui\logindialog.h" />
 		<Unit filename="src\gui\minimap.cpp" />
 		<Unit filename="src\gui\minimap.h" />
-		<Unit filename="src\gui\ministatus.cpp" />
-		<Unit filename="src\gui\ministatus.h" />
+		<Unit filename="src\gui\ministatuswindow.cpp" />
+		<Unit filename="src\gui\ministatuswindow.h" />
 		<Unit filename="src\gui\npcdialog.cpp" />
 		<Unit filename="src\gui\npcdialog.h" />
 		<Unit filename="src\gui\npcpostdialog.cpp" />
@@ -234,8 +234,12 @@
 		<Unit filename="src\gui\setup_keyboard.h" />
 		<Unit filename="src\gui\setup_other.cpp" />
 		<Unit filename="src\gui\setup_other.h" />
+		<Unit filename="src\gui\setup_perfomance.cpp" />
+		<Unit filename="src\gui\setup_perfomance.h" />
 		<Unit filename="src\gui\setup_players.cpp" />
 		<Unit filename="src\gui\setup_players.h" />
+		<Unit filename="src\gui\setup_relations.cpp" />
+		<Unit filename="src\gui\setup_relations.h" />
 		<Unit filename="src\gui\setup_theme.cpp" />
 		<Unit filename="src\gui\setup_theme.h" />
 		<Unit filename="src\gui\setup_video.cpp" />
@@ -272,8 +276,8 @@
 		<Unit filename="src\gui\sdlfont.h" />
 		<Unit filename="src\gui\unregisterdialog.cpp" />
 		<Unit filename="src\gui\unregisterdialog.h" />
-		<Unit filename="src\gui\updatewindow.cpp" />
-		<Unit filename="src\gui\updatewindow.h" />
+		<Unit filename="src\gui\updaterwindow.cpp" />
+		<Unit filename="src\gui\updaterwindow.h" />
 		<Unit filename="src\gui\userpalette.cpp" />
 		<Unit filename="src\gui\userpalette.h" />
 		<Unit filename="src\gui\viewport.cpp" />
@@ -345,6 +349,8 @@
 		<Unit filename="src\gui\widgets\resizegrip.h" />
 		<Unit filename="src\gui\widgets\scrollarea.cpp" />
 		<Unit filename="src\gui\widgets\scrollarea.h" />
+		<Unit filename="src\gui\widgets\setupitem.cpp" />
+		<Unit filename="src\gui\widgets\setupitem.h" />
 		<Unit filename="src\gui\widgets\setuptab.cpp" />
 		<Unit filename="src\gui\widgets\setuptab.h" />
 		<Unit filename="src\gui\widgets\shopitems.cpp" />
@@ -361,8 +367,8 @@
 		<Unit filename="src\gui\widgets\tab.h" />
 		<Unit filename="src\gui\widgets\tabbedarea.cpp" />
 		<Unit filename="src\gui\widgets\tabbedarea.h" />
-		<Unit filename="src\gui\widgets\table.cpp" />
-		<Unit filename="src\gui\widgets\table.h" />
+		<Unit filename="src\gui\widgets\guitable.cpp" />
+		<Unit filename="src\gui\widgets\guitable.h" />
 		<Unit filename="src\gui\widgets\tablemodel.cpp" />
 		<Unit filename="src\gui\widgets\tablemodel.h" />
 		<Unit filename="src\gui\widgets\textbox.cpp" />
@@ -406,8 +412,8 @@
 		<Unit filename="src\listener.h" />
 		<Unit filename="src\localplayer.cpp" />
 		<Unit filename="src\localplayer.h" />
-		<Unit filename="src\log.cpp" />
-		<Unit filename="src\log.h" />
+		<Unit filename="src\logger.cpp" />
+		<Unit filename="src\logger.h" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.h" />
 		<Unit filename="src\manaplus.rc">

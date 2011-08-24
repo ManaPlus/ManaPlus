@@ -135,6 +135,10 @@ private:
     mutable int mOffsetX, mOffsetY;
 
     mutable bool mNeedsRedraw;
+
+    bool mEnableAlphaFix;
+    bool mDisableAdvBeingCaching;
+    bool mDisableBeingCaching;
 };
 
 #endif // COMPOUNDSPRITE_H

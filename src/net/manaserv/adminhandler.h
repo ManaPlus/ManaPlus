@@ -58,6 +58,8 @@ class AdminHandler : public Net::AdminHandler
         void unban(const std::string &name);
 
         void mute(int playerId, int type, int limit);
+
+        void warp(std::string map, int x, int y);
 };
 
 } // namespace ManaServ

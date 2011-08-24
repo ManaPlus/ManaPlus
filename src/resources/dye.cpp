@@ -22,7 +22,7 @@
 
 #include "resources/dye.h"
 
-#include "log.h"
+#include "logger.h"
 
 #include <math.h>
 #include <sstream>

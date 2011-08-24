@@ -211,10 +211,12 @@ ChatWindow::ChatWindow():
     fillCommands();
     initTradeFilter();
     loadCustomList();
+    parseHighlights();
 }
 
 ChatWindow::~ChatWindow()
 {
+    saveState();
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
     delete mItemLinkHandler;
@@ -935,7 +937,11 @@ void ChatWindow::whisper(const std::string &nick,
     if (i != mWhispers.end())
         tab = i->second;
     else if (config.getBoolValue("whispertab"))
+    {
         tab = addWhisperTab(nick);
+        if (tab)
+            saveState();
+    }
 
     if (tab)
     {
@@ -1414,15 +1420,6 @@ void ChatWindow::loadState()
             tab->setRemoveNames((flags & 2) / 2);
             tab->setNoAway((flags & 4) / 4);
         }
-        serverConfig.deleteKey("chatWhisper" + toString(num));
-        serverConfig.deleteKey("chatWhisperFlags" + toString(num));
-        num ++;
-    }
-
-    while (num < 50)
-    {
-        serverConfig.deleteKey("chatWhisper" + toString(num));
-        serverConfig.deleteKey("chatWhisperFlags" + toString(num));
         num ++;
     }
 }
@@ -1507,7 +1504,7 @@ void ChatWindow::addToAwayLog(std::string line)
     if (mAwayLog.size() > 20)
         mAwayLog.pop_front();
 
-    if (line.find(player_node->getName()) != std::string::npos)
+    if (findI(line, mHighlights) != std::string::npos)
         mAwayLog.push_back("##9away:" + line);
 }
 
@@ -1523,4 +1520,21 @@ void ChatWindow::displayAwayLog()
         localChatTab->addNewRow(*i);
         ++i;
     }
+}
+
+void ChatWindow::parseHighlights()
+{
+    mHighlights.clear();
+    if (!player_node)
+        return;
+
+    splitToStringVector(mHighlights, config.getStringValue(
+        "highlightWords"), ',');
+
+    mHighlights.push_back(player_node->getName());
+}
+
+bool ChatWindow::findHighlight(std::string &str)
+{
+    return findI(str, mHighlights) != std::string::npos;
 }

@@ -27,7 +27,7 @@
 #include "configuration.h"
 #include "localplayer.h"
 #include "playerrelations.h"
-#include "log.h"
+#include "logger.h"
 
 #include "gui/chatwindow.h"
 #include "gui/shopwindow.h"

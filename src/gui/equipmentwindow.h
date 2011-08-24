@@ -28,7 +28,11 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/xml.h"
+
 #include <guichan/actionlistener.hpp>
+
+#include <vector>
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
@@ -81,24 +85,28 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
     private:
         void mouseExited(gcn::MouseEvent &event);
+
         void mouseMoved(gcn::MouseEvent &event);
 
         Item *getItem(int x, int y) const;
 
         void setSelected(int index);
 
+        void fillBoxes();
+
+        void fillDefault();
+
+        void addBox(int idx, int x, int y);
+
+        void loadWindow(xmlNodePtr windowNode);
+
+        void loadPlayerBox(xmlNodePtr playerBoxNode);
+
+        void loadSlot(xmlNodePtr slotNode);
+
+        int parseSlotName(std::string name);
+
         Equipment *mEquipment;
-
-        /**
-         * Equipment box.
-         */
-        struct EquipBox
-        {
-            int posX;
-            int posY;
-        };
-
-        EquipBox mEquipBox[Equipment::EQUIP_VECTOREND]; /**<Equipment Boxes. */
 
         ItemPopup *mItemPopup;
         PlayerBox *mPlayerBox;
@@ -107,6 +115,9 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         int mSelected; /**< Index of selected item. */
         bool mForing;
         Being *mBeing;
+        std::vector<std::pair<int, int>*> mBoxes;
+        gcn::Color mHighlightColor;
+        gcn::Color mBorderColor;
 };
 
 extern EquipmentWindow *equipmentWindow;

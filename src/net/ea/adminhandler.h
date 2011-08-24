@@ -51,6 +51,8 @@ class AdminHandler : public Net::AdminHandler
         virtual void unban(const std::string &name);
 
         virtual void mute(int playerId, int type, int limit);
+
+        virtual void warp(std::string map, int x, int y);
 };
 
 } // namespace Ea

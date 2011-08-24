@@ -26,6 +26,7 @@
 
 Label::Label()
 {
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 Label::Label(const std::string &caption) :

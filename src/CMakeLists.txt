@@ -181,6 +181,8 @@ SET(SRCS
     gui/widgets/resizegrip.h
     gui/widgets/scrollarea.cpp
     gui/widgets/scrollarea.h
+    gui/widgets/setupitem.cpp
+    gui/widgets/setupitem.h
     gui/widgets/setuptab.cpp
     gui/widgets/setuptab.h
     gui/widgets/setuptabscroll.cpp
@@ -197,8 +199,8 @@ SET(SRCS
     gui/widgets/tab.h
     gui/widgets/tabbedarea.cpp
     gui/widgets/tabbedarea.h
-    gui/widgets/table.cpp
-    gui/widgets/table.h
+    gui/widgets/guitable.cpp
+    gui/widgets/guitable.h
     gui/widgets/tablemodel.cpp
     gui/widgets/tablemodel.h
     gui/widgets/textbox.cpp
@@ -267,8 +269,8 @@ SET(SRCS
     gui/logindialog.h
     gui/minimap.cpp
     gui/minimap.h
-    gui/ministatus.cpp
-    gui/ministatus.h
+    gui/ministatuswindow.cpp
+    gui/ministatuswindow.h
     gui/npcdialog.cpp
     gui/npcdialog.h
     gui/npcpostdialog.cpp
@@ -299,8 +301,6 @@ SET(SRCS
     gui/serverdialog.h
     gui/setup.cpp
     gui/setup.h
-    gui/setupitem.cpp
-    gui/setupitem.h
     gui/setup_audio.cpp
     gui/setup_audio.h
     gui/setup_colors.cpp
@@ -315,6 +315,10 @@ SET(SRCS
     gui/setup_chat.h
     gui/setup_keyboard.cpp
     gui/setup_keyboard.h
+    gui/setup_perfomance.cpp
+    gui/setup_perfomance.h
+    gui/setup_relations.cpp
+    gui/setup_relations.h
     gui/setup_players.cpp
     gui/setup_players.h
     gui/setup_video.cpp
@@ -345,8 +349,8 @@ SET(SRCS
     gui/tradewindow.h
     gui/unregisterdialog.cpp
     gui/unregisterdialog.h
-    gui/updatewindow.cpp
-    gui/updatewindow.h
+    gui/updaterwindow.cpp
+    gui/updaterwindow.h
     gui/userpalette.cpp
     gui/userpalette.h
     gui/viewport.cpp
@@ -468,8 +472,8 @@ SET(SRCS
     being.h
     spellmanager.cpp
     spellmanager.h
-    chatlog.cpp
-    chatlog.h
+    chatlogger.cpp
+    chatlogger.h
     client.cpp
     client.h
     channel.cpp
@@ -528,8 +532,8 @@ SET(SRCS
     listener.h
     localplayer.cpp
     localplayer.h
-    log.cpp
-    log.h
+    logger.cpp
+    logger.h
     main.cpp
     main.h
     map.cpp

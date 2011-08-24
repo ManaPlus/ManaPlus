@@ -26,7 +26,7 @@
 #include "game.h"
 #include "graphics.h"
 #include "localplayer.h"
-#include "log.h"
+#include "logger.h"
 #include "main.h"
 #include "particle.h"
 
@@ -274,7 +274,6 @@ const char *Setup_Video::particleDetailToString(int detail)
 Setup_Video::Setup_Video():
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(config.getIntValue("opengl")),
-    mHwAccelEnabled(config.getBoolValue("hwaccel")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mParticleEffectsEnabled(config.getBoolValue("particleeffects")),
     mPickupChatEnabled(config.getBoolValue("showpickupchat")),
@@ -282,16 +281,11 @@ Setup_Video::Setup_Video():
     mOpacity(config.getFloatValue("guialpha")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
-    mAlphaCache(config.getBoolValue("alphaCache")),
-    mEnableMapReduce(config.getBoolValue("enableMapReduce")),
-    mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),
-    mBeingOpacity(config.getBoolValue("beingopacity")),
     mSpeechMode(static_cast<Being::Speech>(
         config.getIntValue("speech"))),
     mModeListModel(new ModeListModel),
     mModeList(new ListBox(mModeListModel)),
     mFsCheckBox(new CheckBox(_("Full screen"), mFullScreenEnabled)),
-    mHwAccelCheckBox(new CheckBox(_("Hw acceleration"), mHwAccelEnabled)),
     mCustomCursorCheckBox(new CheckBox(_("Custom cursor"),
                           mCustomCursorEnabled)),
     mParticleEffectsCheckBox(new CheckBox(_("Particle effects"),
@@ -302,13 +296,6 @@ Setup_Video::Setup_Video():
     // TRANSLATORS: Refers to "Show own name"
     mPickupParticleCheckBox(new CheckBox(_("as particle"),
                             mPickupParticleEnabled)),
-    mAlphaCacheCheckBox(new CheckBox(_("Enable opacity cache"), mAlphaCache)),
-    mEnableMapReduceCheckBox(new CheckBox(_("Enable map reduce"),
-        mEnableMapReduce)),
-    mAdjustPerfomanceCheckBox(new CheckBox(_("Auto adjust perfomance"),
-        mAdjustPerfomance)),
-    mBeingOpacityCheckBox(new CheckBox(_("Show beings transparency"),
-                          mBeingOpacity)),
     mSpeechSlider(new Slider(0, 3)),
     mSpeechLabel(new Label("")),
     mAlphaSlider(new Slider(0.1, 1.0)),
@@ -348,8 +335,6 @@ Setup_Video::Setup_Video():
 
     mAlphaSlider->setValue(mOpacity);
     mAlphaSlider->setWidth(90);
-    mAlphaCacheCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
-    mEnableMapReduceCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
 
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
@@ -381,9 +366,6 @@ Setup_Video::Setup_Video():
     mOverlayDetailField->setActionEventId("overlaydetailfield");
     mParticleDetailSlider->setActionEventId("particledetailslider");
     mParticleDetailField->setActionEventId("particledetailfield");
-    mAlphaCacheCheckBox->setActionEventId("alphaCache");
-    mEnableMapReduceCheckBox->setActionEventId("enableMapReduce");
-    mAdjustPerfomanceCheckBox->setActionEventId("adjustPerfomance");
     mOpenGLDropDown->setActionEventId("opengl");
 
     mModeList->addActionListener(this);
@@ -402,10 +384,6 @@ Setup_Video::Setup_Video():
     mParticleDetailField->addKeyListener(this);
     mOpenGLDropDown->addActionListener(this);
 
-    mAlphaCacheCheckBox->addKeyListener(this);
-    mEnableMapReduceCheckBox->addKeyListener(this);
-    mAdjustPerfomanceCheckBox->addKeyListener(this);
-
     mSpeechLabel->setCaption(speechModeToString(mSpeechMode));
     mSpeechSlider->setValue(mSpeechMode);
 
@@ -422,45 +400,40 @@ Setup_Video::Setup_Video():
     place(0, 0, scrollArea, 1, 5).setPadding(2);
     place(0, 5, mOpenGLDropDown, 1);
 
-    place(0, 6, mHwAccelCheckBox, 6);
-    place(0, 7, mAlphaCacheCheckBox, 6);
-    place(0, 8, mEnableMapReduceCheckBox, 6);
+//    place(0, 6, mHwAccelCheckBox, 6);
 
     place(1, 0, mFsCheckBox, 2);
 
     place(1, 1, mCustomCursorCheckBox, 3);
 
-    place(1, 2, mBeingOpacityCheckBox);
-    place(1, 3, mParticleEffectsCheckBox, 2);
+    place(1, 2, mParticleEffectsCheckBox, 2);
 
-    place(1, 4, mPickupNotifyLabel, 4);
+    place(1, 3, mPickupNotifyLabel, 4);
 
-    place(1, 5, mPickupChatCheckBox, 1);
-    place(2, 5, mPickupParticleCheckBox, 2);
+    place(1, 4, mPickupChatCheckBox, 1);
+    place(2, 4, mPickupParticleCheckBox, 2);
 
-    place(0, 9, mAdjustPerfomanceCheckBox, 6);
+    place(0, 6, mAlphaSlider);
+    place(1, 6, alphaLabel, 3);
 
-    place(0, 10, mAlphaSlider);
-    place(1, 10, alphaLabel, 3);
+    place(0, 7, mFpsSlider);
+    place(1, 7, mFpsCheckBox).setPadding(3);
+    place(2, 7, mFpsLabel).setPadding(1);
 
-    place(0, 11, mFpsSlider);
-    place(1, 11, mFpsCheckBox).setPadding(3);
-    place(2, 11, mFpsLabel).setPadding(1);
+    place(0, 8, mAltFpsSlider);
+    place(1, 8, mAltFpsLabel).setPadding(3);
 
-    place(0, 12, mAltFpsSlider);
-    place(1, 12, mAltFpsLabel).setPadding(3);
+    place(0, 9, mSpeechSlider);
+    place(1, 9, speechLabel);
+    place(2, 9, mSpeechLabel, 3).setPadding(2);
 
-    place(0, 13, mSpeechSlider);
-    place(1, 13, speechLabel);
-    place(2, 13, mSpeechLabel, 3).setPadding(2);
+    place(0, 10, mOverlayDetailSlider);
+    place(1, 10, overlayDetailLabel);
+    place(2, 10, mOverlayDetailField, 3).setPadding(2);
 
-    place(0, 14, mOverlayDetailSlider);
-    place(1, 14, overlayDetailLabel);
-    place(2, 14, mOverlayDetailField, 3).setPadding(2);
-
-    place(0, 15, mParticleDetailSlider);
-    place(1, 15, particleDetailLabel);
-    place(2, 15, mParticleDetailField, 3).setPadding(2);
+    place(0, 11, mParticleDetailSlider);
+    place(1, 11, particleDetailLabel);
+    place(2, 11, mParticleDetailField, 3).setPadding(2);
 
     int width = 600;
 
@@ -551,33 +524,20 @@ void Setup_Video::apply()
 
     mAltFpsSlider->setEnabled(mAltFps > 0);
 
-    config.setValue("hwaccel", mHwAccelCheckBox->isSelected());
-
     // FPS change
     config.setValue("fpslimit", mFps);
     config.setValue("altfpslimit", mAltFps);
-
-    config.setValue("alphaCache", mAlphaCacheCheckBox->isSelected());
-    config.setValue("enableMapReduce", mEnableMapReduceCheckBox->isSelected());
-    config.setValue("adjustPerfomance",
-        mAdjustPerfomanceCheckBox->isSelected());
-    config.setValue("beingopacity", mBeingOpacityCheckBox->isSelected());
 
     // We sync old and new values at apply time
     mFullScreenEnabled = config.getBoolValue("screen");
     mCustomCursorEnabled = config.getBoolValue("customcursor");
     mParticleEffectsEnabled = config.getBoolValue("particleeffects");
-    mAlphaCache = config.getBoolValue("alphaCache");
-    mEnableMapReduce = config.getBoolValue("enableMapReduce");
-    mAdjustPerfomance = config.getBoolValue("adjustPerfomance");
-    mBeingOpacity = config.getBoolValue("beingopacity");
 
     mSpeechMode = static_cast<Being::Speech>(
         config.getIntValue("speech"));
     mOpacity = config.getFloatValue("guialpha");
     mOverlayDetail = config.getIntValue("OverlayDetail");
     mOpenGLEnabled = config.getIntValue("opengl");
-    mHwAccelEnabled = config.getBoolValue("hwaccel");
     mPickupChatEnabled = config.getBoolValue("showpickupchat");
     mPickupParticleEnabled = config.getBoolValue("showpickupparticle");
 }
@@ -587,7 +547,6 @@ void Setup_Video::cancel()
     mFpsCheckBox->setSelected(mFps > 0);
     mFsCheckBox->setSelected(mFullScreenEnabled);
     mOpenGLDropDown->setSelected(mOpenGLEnabled);
-    mHwAccelCheckBox->setSelected(mHwAccelEnabled);
     mCustomCursorCheckBox->setSelected(mCustomCursorEnabled);
     mParticleEffectsCheckBox->setSelected(mParticleEffectsEnabled);
     mFpsSlider->setValue(mFps);
@@ -595,10 +554,6 @@ void Setup_Video::cancel()
     mAltFpsSlider->setValue(mAltFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
     mSpeechSlider->setValue(mSpeechMode);
-    mAlphaCacheCheckBox->setSelected(mAlphaCache);
-    mEnableMapReduceCheckBox->setSelected(mEnableMapReduce);
-    mAdjustPerfomanceCheckBox->setSelected(mAdjustPerfomance);
-    mBeingOpacityCheckBox->setSelected(mBeingOpacity);
     mAlphaSlider->setValue(mOpacity);
     mOverlayDetailSlider->setValue(mOverlayDetail);
     mParticleDetailSlider->setValue(mParticleDetail);
@@ -618,17 +573,11 @@ void Setup_Video::cancel()
     config.setValue("customcursor", mCustomCursorEnabled);
     config.setValue("particleeffects", mParticleEffectsEnabled);
     config.setValue("speech", static_cast<int>(mSpeechMode));
-    config.setValue("alphaCache", mAlphaCache);
-    config.setValue("enableMapReduce", mEnableMapReduce);
-    config.setValue("adjustPerfomance", mAdjustPerfomance);
-    config.setValue("beingopacity", mBeingOpacity);
     config.setValue("guialpha", mOpacity);
     Image::setEnableAlpha(mOpacity != 1.0f);
     config.setValue("opengl", mOpenGLEnabled);
-    config.setValue("hwaccel", mHwAccelEnabled);
     config.setValue("showpickupchat", mPickupChatEnabled);
     config.setValue("showpickupparticle", mPickupParticleEnabled);
-    mAlphaCacheCheckBox->setEnabled(mOpenGLDropDown->getSelected() == 0);
 }
 
 void Setup_Video::action(const gcn::ActionEvent &event)
@@ -760,12 +709,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);
         mAltFpsSlider->setValue(mAltFps);
         mAltFpsSlider->setEnabled(mAltFps > 0);
-    }
-    else if (id == "opengl")
-    {
-        bool isSoftware = (mOpenGLDropDown->getSelected() == 0);
-        mAlphaCacheCheckBox->setEnabled(isSoftware);
-        mEnableMapReduceCheckBox->setEnabled(isSoftware);
     }
 }
 
