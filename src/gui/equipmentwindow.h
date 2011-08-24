@@ -32,6 +32,8 @@
 
 #include <guichan/actionlistener.hpp>
 
+#include <vector>
+
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
 #else
