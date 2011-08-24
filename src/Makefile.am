@@ -21,101 +21,6 @@ else
 manaplus_SOURCES =
 endif
 
-if USE_INTERNALGUICHAN
-manaplus_CXXFLAGS += -DUSE_INTERNALGUICHAN
-manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
-	      guichan/include/guichan/actionlistener.hpp \
-	      guichan/include/guichan/basiccontainer.hpp \
-	      guichan/include/guichan/cliprectangle.hpp \
-	      guichan/include/guichan/color.hpp \
-	      guichan/include/guichan/deathlistener.hpp \
-	      guichan/include/guichan/defaultfont.hpp \
-	      guichan/include/guichan/event.hpp \
-	      guichan/include/guichan/exception.hpp \
-	      guichan/include/guichan/focushandler.hpp \
-	      guichan/include/guichan/focuslistener.hpp \
-	      guichan/include/guichan/font.hpp \
-	      guichan/include/guichan/graphics.hpp \
-	      guichan/include/guichan/gui.hpp \
-	      guichan/include/guichan/image.hpp \
-	      guichan/include/guichan/imageloader.hpp \
-	      guichan/include/guichan/input.hpp \
-	      guichan/include/guichan/inputevent.hpp \
-	      guichan/include/guichan/key.hpp \
-	      guichan/include/guichan/keyevent.hpp \
-	      guichan/include/guichan/keyinput.hpp \
-	      guichan/include/guichan/keylistener.hpp \
-	      guichan/include/guichan/listmodel.hpp \
-	      guichan/include/guichan/mouseevent.hpp \
-	      guichan/include/guichan/mouseinput.hpp \
-	      guichan/include/guichan/mouselistener.hpp \
-	      guichan/include/guichan/platform.hpp \
-	      guichan/include/guichan/rectangle.hpp \
-	      guichan/include/guichan/selectionevent.hpp \
-	      guichan/include/guichan/selectionlistener.hpp \
-	      guichan/include/guichan/sdl/sdlgraphics.hpp \
-	      guichan/include/guichan/sdl/sdlimage.hpp \
-	      guichan/include/guichan/sdl/sdlpixel.hpp \
-	      guichan/include/guichan/widget.hpp \
-	      guichan/include/guichan/widgetlistener.hpp \
-	      guichan/include/guichan/widgets/button.hpp \
-	      guichan/include/guichan/widgets/checkbox.hpp \
-	      guichan/include/guichan/widgets/container.hpp \
-	      guichan/include/guichan/widgets/dropdown.hpp \
-	      guichan/include/guichan/widgets/icon.hpp \
-	      guichan/include/guichan/widgets/imagebutton.hpp \
-	      guichan/include/guichan/widgets/label.hpp \
-	      guichan/include/guichan/widgets/listbox.hpp \
-	      guichan/include/guichan/widgets/radiobutton.hpp \
-	      guichan/include/guichan/widgets/scrollarea.hpp \
-	      guichan/include/guichan/widgets/slider.hpp \
-	      guichan/include/guichan/widgets/tabbedarea.hpp \
-	      guichan/include/guichan/widgets/tab.hpp \
-	      guichan/include/guichan/widgets/textbox.hpp \
-	      guichan/include/guichan/widgets/textfield.hpp \
-	      guichan/include/guichan/widgets/window.hpp
-
-manaplus_SOURCES += guichan/actionevent.cpp \
-	      guichan/basiccontainer.cpp \
-	      guichan/cliprectangle.cpp \
-	      guichan/color.cpp \
-	      guichan/defaultfont.cpp \
-	      guichan/event.cpp \
-	      guichan/exception.cpp \
-	      guichan/focushandler.cpp \
-	      guichan/font.cpp \
-	      guichan/graphics.cpp \
-	      guichan/gui.cpp \
-	      guichan/image.cpp \
-	      guichan/inputevent.cpp \
-	      guichan/key.cpp \
-	      guichan/keyevent.cpp \
-	      guichan/keyinput.cpp \
-	      guichan/mouseevent.cpp \
-	      guichan/mouseinput.cpp \
-	      guichan/rectangle.cpp \
-	      guichan/selectionevent.cpp \
-	      guichan/widget.cpp \
-	      guichan/sdl/sdlgraphics.cpp \
-	      guichan/sdl/sdlimage.cpp \
-	      guichan/widgets/button.cpp \
-	      guichan/widgets/checkbox.cpp \
-	      guichan/widgets/container.cpp \
-	      guichan/widgets/dropdown.cpp \
-	      guichan/widgets/icon.cpp \
-	      guichan/widgets/imagebutton.cpp \
-	      guichan/widgets/label.cpp \
-	      guichan/widgets/listbox.cpp \
-	      guichan/widgets/radiobutton.cpp \
-	      guichan/widgets/scrollarea.cpp \
-	      guichan/widgets/slider.cpp \
-	      guichan/widgets/tabbedarea.cpp \
-	      guichan/widgets/tab.cpp \
-	      guichan/widgets/textbox.cpp \
-	      guichan/widgets/textfield.cpp \
-	      guichan/widgets/window.cpp
-endif
-
 manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
 	      gui/widgets/battletab.cpp \
@@ -737,8 +642,7 @@ EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \
 	     manaplus.rc \
 	     SDLMain.h \
-	     SDLMain.m \
-	     SDL_gfx/SDL_gfxBlitFunc.h
+	     SDLMain.m
 
 # set the include path found by configure
 INCLUDES = $(all_includes)

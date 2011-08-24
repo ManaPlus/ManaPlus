@@ -136,31 +136,16 @@ else
     AC_DEFINE(USE_OPENGL, 1, [Defines if ManaPlus should have OpenGL support])
 fi
 
-# Option to enable internal guichan
-AC_ARG_WITH(internalguichan,[  --without-internalguichan        don't use internal guichan ] )
-if test "x$with_internalguichan" == "xno"; then
-    with_internalguichan=no
+AC_CHECK_LIB([guichan], [gcnGuichanVersion], ,
+AC_MSG_ERROR([ *** Unable to find Guichan library (http://guichan.sf.net/)]))
+AC_CHECK_HEADERS([guichan.hpp], ,
+AC_MSG_ERROR([ *** Guichan library found but cannot find headers (http://guichan.sf.net/)]))
 
-    AC_CHECK_LIB([guichan], [gcnGuichanVersion], ,
-    AC_MSG_ERROR([ *** Unable to find Guichan library (http://guichan.sf.net/)]))
-    AC_CHECK_HEADERS([guichan.hpp], ,
-    AC_MSG_ERROR([ *** Guichan library found but cannot find headers (http://guichan.sf.net/)]))
+AC_CHECK_HEADERS([guichan/widgetlistener.hpp], ,
+AC_MSG_ERROR([ *** Guichan library version is found  but version is < 0.8.0 (http://guichan.sf.net/)]))
 
-    AC_CHECK_HEADERS([guichan/widgetlistener.hpp], ,
-    AC_MSG_ERROR([ *** Guichan library version is found  but version is < 0.8.0 (http://guichan.sf.net/)]))
-
-    AC_CHECK_LIB([guichan_sdl], [gcnSDL], ,
-    AC_MSG_ERROR([ *** Unable to find Guichan SDL library (http://guichan.sf.net/)]))
-
-else
-    with_internalguichan=yes
-
-    CPPFLAGS="$CPPFLAGS -I./guichan/include"
-
-    AC_DEFINE(USE_INTERNALGUICHAN, 1, [Defines if ManaPlus should use internal guichan classes])
-fi
-AM_CONDITIONAL(USE_INTERNALGUICHAN, test x$with_internalguichan = xyes)
-
+AC_CHECK_LIB([guichan_sdl], [gcnSDL], ,
+AC_MSG_ERROR([ *** Unable to find Guichan SDL library (http://guichan.sf.net/)]))
 
 AC_CHECK_LIB(SDL_net, SDLNet_Init, ,
 AC_MSG_ERROR([ *** Unable to find SDL_net library]))

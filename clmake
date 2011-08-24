@@ -10,8 +10,7 @@ export CXX=clang++
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
---mandir=$dir/run/share/man \
---without-internalguichan
+--mandir=$dir/run/share/man
 
 make -j5 2>make2.log
 

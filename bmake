@@ -41,7 +41,6 @@ autoreconf -i
 --bindir=$dir/run/bin \
 --mandir=$dir/run/share/man \
 --enable-memdebug=yes \
---without-internalguichan \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no
 
