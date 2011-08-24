@@ -309,6 +309,10 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             }
             break;
 
+        case 3:
+            handleCopy();
+            break;
+
         case 22: // Control code 22, SYNCHRONOUS IDLE, sent on Ctrl+v
             // hack to prevent paste key sticking
             if (mLastEventPaste && mLastEventPaste > cur_time)
@@ -347,4 +351,10 @@ void TextField::handlePaste()
         setText(text);
         setCaretPosition(static_cast<unsigned>(caretPos));
     }
+}
+
+void TextField::handleCopy()
+{
+    std::string text = getText();
+    sendBuffer(text);
 }

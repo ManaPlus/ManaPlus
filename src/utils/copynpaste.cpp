@@ -1,6 +1,7 @@
 /*
  *  Retrieve string pasted depending on OS mechanisms.
  *  Copyright (C) 2001-2010  Wormux Team
+ *  Copyright (C) 2011  ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -90,6 +91,40 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
     CloseClipboard();
     return ret;
 }
+
+bool sendBuffer(std::string& text)
+{
+    int wCharsLen = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, NULL, 0);
+    if (!wCharsLen)
+        return false;
+
+    HANDLE h;
+    WCHAR *out;
+    h = GlobalAlloc(GMEM_MOVEABLE | GMEM_DDESHARE, wCharsLen * sizeof(WCHAR));
+    out = (WCHAR*)GlobalLock(h);
+
+    MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out, wCharsLen);
+
+    if (!OpenClipboard(0))
+    {
+        GlobalUnlock(h);
+        GlobalFree(h);
+        return false;
+    }
+    GlobalUnlock(h);
+    EmptyClipboard();
+    if (!SetClipboardData(CF_UNICODETEXT, out))
+    {
+        GlobalFree(h);
+        CloseClipboard();
+        return false;
+    }
+    GlobalFree(h);
+    CloseClipboard();
+
+    return true;
+}
+
 #elif defined(__APPLE__)
 
 #ifdef Status
@@ -243,6 +278,11 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
     }
 }
 
+bool sendBuffer(std::string& text)
+{
+    return false;
+}
+
 #elif USE_X11
 static char* getSelection2(Display *dpy, Window us, Atom selection,
                            Atom request_target)
@@ -362,8 +402,55 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
     }
     return false;
 }
+
+bool sendBuffer(std::string& text)
+{
+    pid_t pid;
+    int fd[2];
+
+    if (pipe(fd))
+        return false;
+
+    if ((pid = fork()) == -1)
+    {   // fork error
+        return false;
+    }
+    else if (!pid)
+    {   // child
+        close(fd[1]);
+
+        if (fd[0] != STDIN_FILENO)
+        {
+            if (dup2(fd[0], STDIN_FILENO) != STDIN_FILENO)
+            {
+                close(fd[0]);
+                exit(1);
+            }
+            close(fd[0]);
+        }
+        execl("/usr/bin/xsel", "xsel", "-i", (char *)0);
+        exit(1);
+    }
+
+    // parent
+    close(fd[0]);
+    const int len = strlen(text.c_str());
+    if (write(fd[1], text.c_str(), len) != len)
+    {
+        close(fd[1]);
+        return false;
+    }
+    close(fd[1]);
+    return true;
+}
+
 #else
 bool retrieveBuffer(std::string&, std::string::size_type&)
+{
+    return false;
+}
+
+bool sendBuffer(std::string& text)
 {
     return false;
 }
