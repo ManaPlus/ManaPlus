@@ -1,5 +1,5 @@
 
-SUBDIRS = fonts graphics help icons sfx themes
+SUBDIRS = graphics help icons sfx themes
 
 EXTRA_DIST = CMakeLists.txt items.xsd
 
