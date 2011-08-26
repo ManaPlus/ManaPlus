@@ -31,14 +31,13 @@
 #include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
+#include "dropshortcut.h"
 #include "effectmanager.h"
-#include "event.h"
-#include "spellmanager.h"
 #include "emoteshortcut.h"
+#include "event.h"
+#include "guildmanager.h"
 #include "graphics.h"
 #include "itemshortcut.h"
-#include "dropshortcut.h"
-#include "spellshortcut.h"
 #include "joystick.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
@@ -47,6 +46,8 @@
 #include "particle.h"
 #include "playerrelations.h"
 #include "sound.h"
+#include "spellmanager.h"
+#include "spellshortcut.h"
 
 #include "gui/botcheckerwindow.h"
 #include "gui/buyselldialog.h"
@@ -156,6 +157,7 @@ Particle *particleEngine = NULL;
 EffectManager *effectManager = NULL;
 SpellManager *spellManager = NULL;
 Viewport *viewport = NULL;                    /**< Viewport on the map. */
+GuildManager *guildManager = NULL;
 
 ChatTab *localChatTab = NULL;
 ChatTab *debugChatTab = NULL;
@@ -175,6 +177,8 @@ static void initEngines()
     commandHandler = new CommandHandler;
     channelManager = new ChannelManager;
     effectManager = new EffectManager;
+    if (!guildManager)
+        guildManager = new GuildManager;
 
     particleEngine = new Particle(NULL);
     particleEngine->setupEngine();
@@ -393,6 +397,9 @@ Game::Game():
         setupWindow->setInGame(true);
     clearKeysArray();
 
+    if (guildManager && guildManager->getEnableGuildBot())
+        guildManager->requestGuildInfo();
+
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_CONSTRUCTED));
 }
 
@@ -411,16 +418,17 @@ Game::~Game()
     del_0(actorSpriteManager)
     if (Client::getState() != STATE_CHANGE_MAP)
         del_0(player_node)
+    del_0(guildManager)
     del_0(channelManager)
     del_0(commandHandler)
-    del_0(effectManager);
+    del_0(effectManager)
     del_0(joystick)
     del_0(particleEngine)
     del_0(viewport)
     del_0(mCurrentMap)
-    del_0(spellManager);
-    del_0(spellShortcut);
-    del_0(mumbleManager);
+    del_0(spellManager)
+    del_0(spellShortcut)
+    del_0(mumbleManager)
 
     Being::clearCache();
 

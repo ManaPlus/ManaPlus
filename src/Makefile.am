@@ -140,6 +140,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/emoteshortcutcontainer.h \
 	      gui/widgets/flowcontainer.cpp \
 	      gui/widgets/flowcontainer.h \
+	      gui/widgets/guildtab.cpp \
+	      gui/widgets/guildtab.h \
 	      gui/widgets/horizontcontainer.cpp \
 	      gui/widgets/horizontcontainer.h \
 	      gui/widgets/icon.cpp \
@@ -515,6 +517,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      guichanfwd.h \
 	      guild.cpp \
 	      guild.h \
+	      guildmanager.cpp \
+	      guildmanager.h \
 	      imageparticle.cpp \
 	      imageparticle.h \
 	      imagesprite.cpp \

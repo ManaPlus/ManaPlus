@@ -206,6 +206,109 @@ private:
     Guild *mGuild;
 };
 
+class GuildTab2 : public SocialTab, public gcn::ActionListener
+{
+public:
+    GuildTab2(Guild *guild):
+              mGuild(guild)
+    {
+        setCaption(_("Guild"));
+
+        setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
+
+        mList = new AvatarListBox(guild);
+        mScroll = new ScrollArea(mList);
+
+        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+    }
+
+    ~GuildTab2()
+    {
+        delete mList;
+        mList = 0;
+        delete mScroll;
+        mScroll = 0;
+    }
+
+    void action(const gcn::ActionEvent &event)
+    {
+/*
+        if (event.getId() == "do invite")
+        {
+            std::string name = mInviteDialog->getText();
+            Net::getGuildHandler()->invite(mGuild->getId(), name);
+
+            if (localChatTab)
+            {
+                localChatTab->chatLog(strprintf(
+                    _("Invited user %s to guild %s."),
+                    name.c_str(), mGuild->getName().c_str()), BY_SERVER);
+            }
+            mInviteDialog = 0;
+        }
+        else if (event.getId() == "~do invite")
+        {
+            mInviteDialog = 0;
+        }
+        else if (event.getId() == "yes")
+        {
+            Net::getGuildHandler()->leave(mGuild->getId());
+            if (localChatTab)
+            {
+                localChatTab->chatLog(strprintf(_("Guild %s quit requested."),
+                                      mGuild->getName().c_str()), BY_SERVER);
+            }
+            mConfirmDialog = 0;
+        }
+        else if (event.getId() == "~yes")
+        {
+            mConfirmDialog = 0;
+        }
+*/
+    }
+
+    void updateList()
+    {
+    }
+
+    void updateAvatar(std::string name A_UNUSED)
+    {
+    }
+
+    void resetDamage(std::string name A_UNUSED)
+    {
+    }
+
+protected:
+    void invite()
+    {
+/*
+        mInviteDialog = new TextDialog(_("Member Invite to Guild"),
+                     strprintf(_("Who would you like to invite to guild %s?"),
+                               mGuild->getName().c_str()),
+                     socialWindow);
+        mInviteDialog->setActionEventId("do invite");
+        mInviteDialog->addActionListener(this);
+*/
+    }
+
+    void leave()
+    {
+/*
+        mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
+                       strprintf(_("Are you sure you want to leave guild %s?"),
+                                 mGuild->getName().c_str()),
+                       socialWindow);
+
+        mConfirmDialog->addActionListener(this);
+*/
+    }
+
+private:
+    Guild *mGuild;
+};
+
 class PartyTab : public SocialTab, public gcn::ActionListener
 {
 public:
@@ -1106,9 +1209,13 @@ bool SocialWindow::addTab(Guild *guild)
     if (mGuilds.find(guild) != mGuilds.end())
         return false;
 
-    GuildTab *tab = new GuildTab(guild);
-    mGuilds[guild] = tab;
+    SocialTab *tab = 0;
+    if (guild->getServerGuild())
+        tab = new GuildTab(guild);
+    else
+        tab = new GuildTab2(guild);
 
+    mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);
 
     updateButtons();

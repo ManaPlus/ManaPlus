@@ -193,4 +193,12 @@ std::string stringToHexPath(const std::string &str);
 
 void deleteCharLeft(std::string &str, unsigned *pos);
 
+bool findLast(std::string &str1, std::string str2);
+
+bool findFirst(std::string &str1, std::string str2);
+
+bool findCutLast(std::string &str1, std::string str2);
+
+bool findCutFirst(std::string &str1, std::string str2);
+
 #endif // UTILS_STRINGUTILS_H

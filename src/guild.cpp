@@ -36,6 +36,9 @@ class SortGuildFunctor
             if (m1->getPos() != m2->getPos())
                 return m1->getPos() < m2->getPos();
 
+//            if (m1->getOnline() != m2->getOnline())
+//                return m1->getOnline() > m2->getOnline();
+
             return m1->getName() < m2->getName();
         }
 } guildSorter;
@@ -66,7 +69,8 @@ Guild::GuildMap Guild::guilds;
 Guild::Guild(short id):
     mId(id),
     mCanInviteUsers(false),
-    mEmblemId(0)
+    mEmblemId(0),
+    mServerGuild(true)
 {
     guilds[id] = this;
 }

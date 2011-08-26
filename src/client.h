@@ -260,6 +260,8 @@ public:
 
     static void setFramerate(int fpsLimit);
 
+    static bool isTmw();
+
     void optionChanged(const std::string &name);
 
     void action(const gcn::ActionEvent &event);

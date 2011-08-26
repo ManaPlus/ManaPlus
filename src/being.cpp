@@ -871,8 +871,12 @@ void Being::updateGuild()
         return;
     }
     if (guild->getMember(getName()))
+    {
         setGuild(guild);
-    updateColors();
+        if (!guild->getName().empty())
+            mGuildName = guild->getName();
+        updateColors();
+    }
 }
 
 void Being::setGuild(Guild *guild)

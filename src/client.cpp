@@ -30,6 +30,7 @@
 #include "event.h"
 #include "game.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "keyboardconfig.h"
@@ -792,6 +793,10 @@ int Client::exec()
 
             if (mumbleManager)
                 mumbleManager->setServer(mCurrentServer.hostname);
+
+            if (!guildManager)
+                guildManager = new GuildManager();
+            guildManager->init();
 
             if (!mConfigAutoSaved)
             {
@@ -2179,4 +2184,15 @@ void Client::closeDialogs()
     BuySellDialog::closeAll();
     NpcDialog::closeAll();
     SellDialog::closeAll();
+}
+
+bool Client::isTmw()
+{
+    if (getServerName() == "server.themanaworld.org"
+        || Client::getServerName() == "themanaworld.org"
+        || Client::getServerName() == "81.161.192.4")
+    {
+        return true;
+    }
+    return false;
 }

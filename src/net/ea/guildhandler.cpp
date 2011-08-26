@@ -125,6 +125,7 @@ void GuildHandler::processGuildPositionInfo(Net::MessageIn &msg)
     if (!guildTab && chatWindow)
     {
         guildTab = new GuildTab();
+        guildTab->loadFromLogFile("#Guild");
         if (player_node)
             player_node->addGuild(taGuild);
         memberList(guildId);

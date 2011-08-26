@@ -1459,12 +1459,8 @@ void ChatWindow::saveState()
 
 std::string ChatWindow::doReplace(const std::string &msg)
 {
-    if (Client::getServerName() == "server.themanaworld.org"
-        || Client::getServerName() == "themanaworld.org"
-        || Client::getServerName() == "81.161.192.4")
-    {
+    if (Client::isTmw())
         return msg;
-    }
 
     std::string str = msg;
     replaceSpecialChars(str);

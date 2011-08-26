@@ -524,3 +524,57 @@ void deleteCharLeft(std::string &str, unsigned *pos)
             break;
     }
 }
+
+bool findLast(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(s1 - s2);
+    if (tmp == str2)
+        return true;
+    return false;
+}
+
+bool findFirst(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(0, s2);
+    if (tmp == str2)
+        return true;
+    return false;
+}
+
+bool findCutLast(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(s1 - s2);
+    if (tmp == str2)
+    {
+        str1 = str1.substr(0, s1 - s2);
+        return true;
+    }
+    return false;
+}
+
+bool findCutFirst(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(0, s2);
+    if (tmp == str2)
+    {
+        str1 = str1.substr(s2);
+        return true;
+    }
+    return false;
+}
