@@ -119,9 +119,11 @@ ShopWindow::ShopWindow():
     mBuyAddButton = new Button(_("Add"), "add buy", this);
     mBuyDeleteButton = new Button(_("Delete"), "delete buy", this);
     mBuyAnnounceButton = new Button(_("Announce"), "announce buy", this);
+    mBuyAuctionButton = new Button(_("Auction"), "auction buy", this);
     mSellAddButton = new Button(_("Add"), "add sell", this);
     mSellDeleteButton = new Button(_("Delete"), "delete sell", this);
     mSellAnnounceButton = new Button(_("Announce"), "announce sell", this);
+    mSellAuctionButton = new Button(_("Auction"), "auction sell", this);
     mAnnounceLinks = new CheckBox(_("Show links in announce"), false,
                                   this, "link announce");
 
@@ -135,9 +137,11 @@ ShopWindow::ShopWindow():
     place(0, 6, mBuyAddButton);
     place(1, 6, mBuyDeleteButton);
     place(3, 6, mBuyAnnounceButton);
+    place(4, 6, mBuyAuctionButton);
     place(8, 6, mSellAddButton);
     place(9, 6, mSellDeleteButton);
     place(11, 6, mSellAnnounceButton);
+    place(12, 6, mSellAuctionButton);
     place(0, 7, mAnnounceLinks, 8);
     place(15, 7, mCloseButton);
 
@@ -206,6 +210,16 @@ void ShopWindow::action(const gcn::ActionEvent &event)
              && mSellShopItems->getNumberOfElements() > 0)
     {
         announce(mSellShopItems, SELL);
+    }
+    else if (event.getId() == "auction buy" && mBuyShopItems
+             && mBuyShopItems->getNumberOfElements() > 0)
+    {
+        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 seek");
+    }
+    else if (event.getId() == "auction sell" && mSellShopItems
+             && mSellShopItems->getNumberOfElements() > 0)
+    {
+        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 offer");
     }
 
     if (mSelectedItem < 1)
