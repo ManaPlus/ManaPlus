@@ -27,6 +27,7 @@
 #include <string>
 #include <vector>
 
+class Guild;
 class GuildTab;
 
 class GuildManager
@@ -60,6 +61,10 @@ class GuildManager
         void leave();
 
         void notice(std::string msg);
+
+        void createTab(Guild *guild);
+
+        Guild *createGuild();
 
         bool havePower()
         { return mHavePower; }

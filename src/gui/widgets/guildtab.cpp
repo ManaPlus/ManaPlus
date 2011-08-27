@@ -89,7 +89,7 @@ bool GuildTab::handleCommand(const std::string &type, const std::string &args)
         return false;
     }
 
-    return false;
+    return true;
 }
 
 void GuildTab::handleInput(const std::string &msg)

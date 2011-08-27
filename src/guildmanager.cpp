@@ -83,6 +83,8 @@ void GuildManager::chat(std::string msg)
 
 void GuildManager::getNames(std::vector<std::string> &names)
 {
+    Guild *guild = createGuild();
+    guild->getNames(names);
 }
 
 void GuildManager::requestGuildInfo()
@@ -117,12 +119,22 @@ void GuildManager::updateList()
             if (name.size() > 1)
             {
                 int status = atoi(name.substr(name.size() - 1).c_str());
+
                 name = name.substr(0, name.size() - 1);
                 GuildMember *m = guild->addMember(i, 0, name);
                 if (m)
                 {
                     m->setOnline(status & 1);
                     m->setGender(GENDER_UNSPECIFIED);
+                    if (status & 2)
+                        m->setPos(10);
+                    else
+                        m->setPos(0);
+                    if (player_node && name == player_node->getName())
+                    {
+                        mHavePower = (status & 2);
+                        m->setOnline(true);
+                    }
                 }
             }
             ++ it;
@@ -131,9 +143,14 @@ void GuildManager::updateList()
         guild->sort();
         if (actorSpriteManager)
             actorSpriteManager->updatePlayerGuild();
+        createTab(guild);
     }
     mTempList.clear();
     mGotInfo = true;
+}
+
+void GuildManager::createTab(Guild *guild)
+{
     if (!mTab)
     {
         mTab = new GuildTab();
@@ -141,6 +158,16 @@ void GuildManager::updateList()
         if (player_node)
             player_node->addGuild(guild);
     }
+}
+
+Guild *GuildManager::createGuild()
+{
+    Guild *guild = Guild::getGuild(1);
+    if (!guild)
+        return 0;
+
+    guild->setServerGuild(false);
+    return guild;
 }
 
 bool GuildManager::processGuildMessage(std::string msg)
@@ -158,14 +185,11 @@ bool GuildManager::process(std::string msg)
     if (msg.size() > 4 && msg[0] == '#' && msg[1] == '#')
         msg = msg.substr(3);
 
-    Guild *guild = Guild::getGuild(1);
-    if (!guild)
-        return false;
-
-    guild->setServerGuild(false);
-
     if (findCutLast(msg, " is now Offline."))
     {
+        Guild *guild = createGuild();
+        if (!guild)
+            return false;
         if (msg.size() < 4)
             return false;
         if (msg[0] == '#' && msg[1] == '#')
@@ -180,6 +204,9 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutLast(msg, " is now Online."))
     {
+        Guild *guild = createGuild();
+        if (!guild)
+            return false;
         if (msg.size() < 4)
             return false;
         if (msg[0] == '#' && msg[1] == '#')
@@ -193,7 +220,10 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutFirst(msg, "Welcome to the "))
     {
-        logger->log("welcome message: %s", msg.c_str());
+        Guild *guild = createGuild();
+        if (!guild)
+            return false;
+//        logger->log("welcome message: %s", msg.c_str());
         int pos = msg.find("! (");
         if (pos == (int)std::string::npos)
             return false;
@@ -207,6 +237,9 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutFirst(msg, "Player name: "))
     {
+        Guild *guild = createGuild();
+        if (!guild)
+            return false;
         int pos = msg.find("Access Level: ");
         if (pos == (int)std::string::npos)
             return false;
@@ -242,7 +275,7 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutFirst(msg, "OL#"))
     {
-        logger->log("OL");
+//        logger->log("OL");
         mTempList.clear();
         splitToStringVector(mTempList, msg, '#');
         if (msg.size() < 1 || msg[msg.size() - 1] != '#')
@@ -252,7 +285,7 @@ bool GuildManager::process(std::string msg)
     }
     else if (findCutFirst(msg, "oL#"))
     {
-        logger->log("oL");
+//        logger->log("oL");
         splitToStringVector(mTempList, msg, '#');
         if (msg.size() < 1 || msg[msg.size() - 1] != '#')
             updateList();
@@ -268,6 +301,13 @@ bool GuildManager::process(std::string msg)
     }
     else
     {
+        Guild *guild = createGuild();
+        if (!guild)
+            return false;
+        if (!mTab)
+        {
+            createTab(guild);
+        }
         if (mTab)
         {
             std::string::size_type pos = msg.find(": ", 0);
@@ -275,6 +315,11 @@ bool GuildManager::process(std::string msg)
             {
                 std::string sender_name = ((pos == std::string::npos)
                     ? "" : msg.substr(0, pos));
+                if (!guild->getMember(sender_name))
+                {
+                    mTab->chatLog(msg);
+                    return true;
+                }
 
                 msg.erase(0, pos + 2);
                 if (msg.size() > 3 && msg[0] == '#' && msg[1] == '#')
@@ -295,16 +340,23 @@ bool GuildManager::process(std::string msg)
 
 void GuildManager::kick(std::string msg)
 {
+    send("!remove " + msg);
 }
 
 void GuildManager::invite(std::string msg)
 {
+    send("!invite " + msg);
 }
 
 void GuildManager::leave()
 {
+    send("!leave");
 }
 
 void GuildManager::notice(std::string msg)
 {
+    if (msg.empty())
+        send("!removemotd");
+    else
+        send("!setmotd " + msg);
 }
