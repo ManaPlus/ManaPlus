@@ -97,6 +97,7 @@ class BeingCacheEntry
             mId(id),
             mName(""),
             mPartyName(""),
+            mGuildName(""),
             mLevel(0),
             mPvpRank(0),
             mTime(0),
@@ -129,8 +130,14 @@ class BeingCacheEntry
         void setPartyName(const std::string &name)
         { mPartyName = name; }
 
+        void setGuildName(const std::string &name)
+        { mGuildName = name; }
+
         const std::string &getPartyName() const
         { return mPartyName; }
+
+        const std::string &getGuildName() const
+        { return mGuildName; }
 
         void setLevel(int n)
         { mLevel = n; }
@@ -172,6 +179,7 @@ class BeingCacheEntry
         int mId;                        /**< Unique sprite id */
         std::string mName;              /**< Name of character */
         std::string mPartyName;
+        std::string mGuildName;
         int mLevel;
         unsigned int mPvpRank;
         int mTime;
@@ -1773,6 +1781,7 @@ bool Being::updateFromCache()
         if (!entry->getName().empty())
             setName(entry->getName());
         setPartyName(entry->getPartyName());
+        setGuildName(entry->getGuildName());
         setLevel(entry->getLevel());
         setPvpRank(entry->getPvpRank());
         setIp(entry->getIp());
@@ -1824,6 +1833,7 @@ void Being::addToCache()
     entry->setName(getName());
     entry->setLevel(getLevel());
     entry->setPartyName(getPartyName());
+    entry->setGuildName(getGuildName());
     entry->setTime(cur_time);
     entry->setPvpRank(getPvpRank());
     entry->setIp(getIp());
