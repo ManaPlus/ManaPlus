@@ -29,6 +29,7 @@
 #include "client.h"
 #include "effectmanager.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -661,7 +662,8 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     if ((dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
     {
         dstBeing->setPartyName(msg.readString(24));
-        dstBeing->setGuildName(msg.readString(24));
+        if (!guildManager || !guildManager->getEnableGuildBot())
+            dstBeing->setGuildName(msg.readString(24));
         dstBeing->setGuildPos(msg.readString(24));
         dstBeing->addToCache();
         msg.readString(24); // Discard this

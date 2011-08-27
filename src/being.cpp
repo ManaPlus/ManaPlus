@@ -760,7 +760,6 @@ void Being::setGuildName(const std::string &name)
     mGuildName = name;
 }
 
-
 void Being::setGuildPos(const std::string &pos A_UNUSED)
 {
 //    logger->log("Got guild position \"%s\" for being %s(%i)", pos.c_str(), mName.c_str(), mId);
