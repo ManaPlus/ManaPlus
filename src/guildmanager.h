@@ -68,6 +68,8 @@ class GuildManager
 
         void clear();
 
+        void reload();
+
         bool havePower()
         { return mHavePower; }
 

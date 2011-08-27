@@ -178,7 +178,10 @@ static void initEngines()
     channelManager = new ChannelManager;
     effectManager = new EffectManager;
     if (!guildManager)
+    {
         guildManager = new GuildManager;
+        guildManager->init();
+    }
 
     particleEngine = new Particle(NULL);
     particleEngine->setupEngine();
@@ -334,6 +337,9 @@ static void destroyGuiWindows()
     del_0(didYouKnowWindow);
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADED));
+
+    if (guildManager && guildManager->getEnableGuildBot())
+        guildManager->reload();
 }
 
 Game *Game::mInstance = 0;

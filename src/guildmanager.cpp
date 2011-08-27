@@ -68,6 +68,24 @@ void GuildManager::init()
     mEnableGuildBot = val;
 }
 
+void GuildManager::reload()
+{
+    mGotInfo = false;
+    mGotName = false;
+    mHavePower = false;
+    mRequest = false;
+    mTempList.clear();
+
+    if (socialWindow)
+    {
+        Guild *guild = Guild::getGuild(1);
+        if (guild)
+            socialWindow->removeTab(guild);
+    }
+    delete mTab;
+    mTab = 0;
+}
+
 void GuildManager::send(std::string msg)
 {
     Net::getChatHandler()->privateMessage("guild", msg);
