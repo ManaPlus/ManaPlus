@@ -28,7 +28,7 @@
 
 #include "gui/socialwindow.h"
 
-#include "gui/widgets/guildtab.h"
+#include "gui/widgets/guildchattab.h"
 
 #include "net/chathandler.h"
 #include "net/net.h"
@@ -172,7 +172,7 @@ void GuildManager::createTab(Guild *guild)
 {
     if (!mTab)
     {
-        mTab = new GuildTab();
+        mTab = new GuildChatTab();
         mTab->loadFromLogFile("#Guild");
         if (player_node)
             player_node->addGuild(guild);

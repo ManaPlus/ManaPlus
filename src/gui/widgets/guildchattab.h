@@ -28,12 +28,12 @@
 /**
  * A tab for a guild chat channel.
  */
-class GuildTab : public ChatTab
+class GuildChatTab : public ChatTab
 {
     public:
-        GuildTab();
+        GuildChatTab();
 
-        ~GuildTab();
+        ~GuildChatTab();
 
         bool handleCommand(const std::string &type, const std::string &args);
 

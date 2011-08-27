@@ -28,7 +28,7 @@
 #include <vector>
 
 class Guild;
-class GuildTab;
+class GuildChatTab;
 
 class GuildManager
 {
@@ -81,7 +81,7 @@ class GuildManager
         bool mGotName;
         bool mHavePower;
         std::vector<std::string> mTempList;
-        GuildTab *mTab;
+        GuildChatTab *mTab;
         bool mRequest;
 };
 

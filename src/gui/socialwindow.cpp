@@ -108,10 +108,10 @@ protected:
     AvatarListBox *mList;
 };
 
-class GuildTab : public SocialTab, public gcn::ActionListener
+class SocialGuildTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    GuildTab(Guild *guild):
+    SocialGuildTab(Guild *guild):
             mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -125,7 +125,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    ~GuildTab()
+    ~SocialGuildTab()
     {
         delete mList;
         mList = 0;
@@ -206,10 +206,10 @@ private:
     Guild *mGuild;
 };
 
-class GuildTab2 : public SocialTab, public gcn::ActionListener
+class SocialGuildTab2 : public SocialTab, public gcn::ActionListener
 {
 public:
-    GuildTab2(Guild *guild):
+    SocialGuildTab2(Guild *guild):
               mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -223,7 +223,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    ~GuildTab2()
+    ~SocialGuildTab2()
     {
         delete mList;
         mList = 0;
@@ -309,10 +309,10 @@ private:
     Guild *mGuild;
 };
 
-class PartyTab : public SocialTab, public gcn::ActionListener
+class SocialPartyTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    PartyTab(Party *party):
+    SocialPartyTab(Party *party):
             mParty(party)
     {
         setCaption(_("Party"));
@@ -326,7 +326,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    ~PartyTab()
+    ~SocialPartyTab()
     {
         delete mList;
         mList = 0;
@@ -443,10 +443,10 @@ public:
     std::vector<Avatar*> mMembers;
 };
 
-class PlayersTab : public SocialTab
+class SocialPlayersTab : public SocialTab
 {
 public:
-    PlayersTab(std::string name)
+    SocialPlayersTab(std::string name)
     {
         mBeings = new BeingsListModal();
 
@@ -461,7 +461,7 @@ public:
         setCaption(name);
     }
 
-    ~PlayersTab()
+    ~SocialPlayersTab()
     {
         delete mList;
         mList = 0;
@@ -608,10 +608,10 @@ private:
 };
 
 
-class NavigationTab : public SocialTab
+class SocialNavigationTab : public SocialTab
 {
 public:
-    NavigationTab()
+    SocialNavigationTab()
     {
         mBeings = new BeingsListModal();
 
@@ -625,7 +625,7 @@ public:
 
     }
 
-    ~NavigationTab()
+    ~SocialNavigationTab()
     {
         delete mList;
         mList = 0;
@@ -886,10 +886,10 @@ protected:
 };
 
 
-class AttackTab : public SocialTab
+class SocialAttackTab : public SocialTab
 {
 public:
-    AttackTab()
+    SocialAttackTab()
     {
         mBeings = new BeingsListModal();
 
@@ -902,7 +902,7 @@ public:
         setCaption(_("Atk"));
     }
 
-    ~AttackTab()
+    ~SocialAttackTab()
     {
         delete mList;
         mList = 0;
@@ -1149,15 +1149,15 @@ SocialWindow::SocialWindow() :
 
     loadWindowState();
 
-    mPlayers = new PlayersTab("P");
+    mPlayers = new SocialPlayersTab("P");
     mTabs->addTab(mPlayers, mPlayers->mScroll);
 
-    mNavigation = new NavigationTab();
+    mNavigation = new SocialNavigationTab();
     mTabs->addTab(mNavigation, mNavigation->mScroll);
 
     if (config.getBoolValue("enableAttackFilter"))
     {
-        mAttackFilter = new AttackTab();
+        mAttackFilter = new SocialAttackTab();
         mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
     }
     else
@@ -1211,9 +1211,9 @@ bool SocialWindow::addTab(Guild *guild)
 
     SocialTab *tab = 0;
     if (guild->getServerGuild())
-        tab = new GuildTab(guild);
+        tab = new SocialGuildTab(guild);
     else
-        tab = new GuildTab2(guild);
+        tab = new SocialGuildTab2(guild);
 
     mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);
@@ -1243,7 +1243,7 @@ bool SocialWindow::addTab(Party *party)
     if (mParties.find(party) != mParties.end())
         return false;
 
-    PartyTab *tab = new PartyTab(party);
+    SocialPartyTab *tab = new SocialPartyTab(party);
     mParties[party] = tab;
 
     mTabs->addTab(tab, tab->mScroll);
@@ -1556,7 +1556,7 @@ void SocialWindow::updatePortals()
 void SocialWindow::updatePortalNames()
 {
     if (mNavigation)
-        static_cast<NavigationTab*>(mNavigation)->updateNames();
+        static_cast<SocialNavigationTab*>(mNavigation)->updateNames();
 }
 
 void SocialWindow::selectPortal(unsigned num)
@@ -1568,7 +1568,7 @@ void SocialWindow::selectPortal(unsigned num)
 int SocialWindow::getPortalIndex(int x, int y)
 {
     if (mNavigation)
-        return static_cast<NavigationTab*>(mNavigation)->getPortalIndex(x, y);
+        return static_cast<SocialNavigationTab*>(mNavigation)->getPortalIndex(x, y);
     else
         return -1;
 }
@@ -1576,13 +1576,13 @@ int SocialWindow::getPortalIndex(int x, int y)
 void SocialWindow::addPortal(int x, int y)
 {
     if (mNavigation)
-        static_cast<NavigationTab*>(mNavigation)->addPortal(x, y);
+        static_cast<SocialNavigationTab*>(mNavigation)->addPortal(x, y);
 }
 
 void SocialWindow::removePortal(int x, int y)
 {
     if (mNavigation)
-        static_cast<NavigationTab*>(mNavigation)->removePortal(x, y);
+        static_cast<SocialNavigationTab*>(mNavigation)->removePortal(x, y);
 }
 
 void SocialWindow::nextTab()

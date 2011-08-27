@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/guildtab.h"
+#include "gui/widgets/guildchattab.h"
 
 #include "chatlogger.h"
 #include "commandhandler.h"
@@ -39,17 +39,17 @@
 
 #include "debug.h"
 
-GuildTab::GuildTab() :
+GuildChatTab::GuildChatTab() :
     ChatTab(_("Guild"))
 {
     setTabColor(&Theme::getThemeColor(Theme::GUILD_CHAT_TAB));
 }
 
-GuildTab::~GuildTab()
+GuildChatTab::~GuildChatTab()
 {
 }
 
-bool GuildTab::handleCommand(const std::string &type, const std::string &args)
+bool GuildChatTab::handleCommand(const std::string &type, const std::string &args)
 {
     if (type == "help")
     {
@@ -92,7 +92,7 @@ bool GuildTab::handleCommand(const std::string &type, const std::string &args)
     return true;
 }
 
-void GuildTab::handleInput(const std::string &msg)
+void GuildChatTab::handleInput(const std::string &msg)
 {
     if (!guildManager)
         return;
@@ -103,7 +103,7 @@ void GuildTab::handleInput(const std::string &msg)
         guildManager->chat(msg);
 }
 
-void GuildTab::showHelp()
+void GuildChatTab::showHelp()
 {
     chatLog(_("/help > Display this help."));
     chatLog(_("/invite > Invite a player to your guild"));
@@ -111,7 +111,7 @@ void GuildTab::showHelp()
     chatLog(_("/kick > Kick some one from the guild you are in"));
 }
 
-void GuildTab::getAutoCompleteList(std::vector<std::string> &names) const
+void GuildChatTab::getAutoCompleteList(std::vector<std::string> &names) const
 {
     if (!guildManager)
         return;
@@ -120,7 +120,7 @@ void GuildTab::getAutoCompleteList(std::vector<std::string> &names) const
     names.push_back("/notice ");
 }
 
-void GuildTab::saveToLogFile(std::string &msg)
+void GuildChatTab::saveToLogFile(std::string &msg)
 {
     if (chatLogger)
         chatLogger->log("#Guild", msg);

@@ -310,8 +310,8 @@
 		<Unit filename="src\gui\widgets\emoteshortcutcontainer.h" />
 		<Unit filename="src\gui\widgets\flowcontainer.cpp" />
 		<Unit filename="src\gui\widgets\flowcontainer.h" />
-		<Unit filename="src\gui\widgets\guildtab.cpp" />
-		<Unit filename="src\gui\widgets\guildtab.h" />
+		<Unit filename="src\gui\widgets\guildchattab.cpp" />
+		<Unit filename="src\gui\widgets\guildchattab.h" />
 		<Unit filename="src\gui\widgets\horizontcontainer.cpp" />
 		<Unit filename="src\gui\widgets\horizontcontainer.h" />
 		<Unit filename="src\gui\widgets\icon.cpp" />

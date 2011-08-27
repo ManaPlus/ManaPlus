@@ -137,8 +137,8 @@ SET(SRCS
     gui/widgets/emoteshortcutcontainer.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
-    gui/widgets/guildtab.cpp
-    gui/widgets/guildtab.h
+    gui/widgets/guildchattab.cpp
+    gui/widgets/guildchattab.h
     gui/widgets/horizontcontainer.cpp
     gui/widgets/horizontcontainer.h
     gui/widgets/icon.cpp
