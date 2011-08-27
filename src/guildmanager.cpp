@@ -107,7 +107,6 @@ void GuildManager::updateList()
     Guild *guild = Guild::getGuild(1);
     if (guild)
     {
-        logger->log("filling player");
         guild->setServerGuild(false);
         std::vector<std::string>::iterator it = mTempList.begin();
         std::vector<std::string>::iterator it_end = mTempList.end();
@@ -172,9 +171,10 @@ bool GuildManager::process(std::string msg)
         if (msg[0] == '#' && msg[1] == '#')
             msg = msg.substr(3);
 
-        GuildMember *m = guild->getMember(msg);
+        GuildMember *m = guild->addMember(msg);
         if (m)
             m->setOnline(false);
+        guild->sort();
         mRequest = false;
         return true;
     }
@@ -184,9 +184,10 @@ bool GuildManager::process(std::string msg)
             return false;
         if (msg[0] == '#' && msg[1] == '#')
             msg = msg.substr(3);
-        GuildMember *m = guild->getMember(msg);
+        GuildMember *m = guild->addMember(msg);
         if (m)
             m->setOnline(true);
+        guild->sort();
         mRequest = false;
         return true;
     }
