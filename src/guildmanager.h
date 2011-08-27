@@ -66,6 +66,8 @@ class GuildManager
 
         Guild *createGuild();
 
+        void clear();
+
         bool havePower()
         { return mHavePower; }
 

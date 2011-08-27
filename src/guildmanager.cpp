@@ -50,6 +50,7 @@ GuildManager::GuildManager() :
 
 GuildManager::~GuildManager()
 {
+    delete mTab;
     mTab = 0;
 }
 
@@ -359,4 +360,14 @@ void GuildManager::notice(std::string msg)
         send("!removemotd");
     else
         send("!setmotd " + msg);
+}
+
+void GuildManager::clear()
+{
+    if (socialWindow)
+    {
+        Guild *guild = Guild::getGuild(1);
+        if (guild)
+            socialWindow->removeTab(guild);
+    }
 }

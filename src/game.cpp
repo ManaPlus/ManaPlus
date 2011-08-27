@@ -299,6 +299,9 @@ static void destroyGuiWindows()
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
+    if (guildManager)
+        guildManager->clear();
+
     del_0(windowMenu);
     del_0(localChatTab) // Need to do this first, so it can remove itself
     del_0(debugChatTab)
