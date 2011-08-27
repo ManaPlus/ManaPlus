@@ -181,7 +181,7 @@ unsigned long findI(std::string str, std::string subStr)
     return str.find(subStr);
 }
 
-unsigned long findI(std::string &text, std::vector<std::string> &list)
+unsigned long findI(std::string text, std::vector<std::string> &list)
 {
     std::string str = toLower(text);
     unsigned long idx;
