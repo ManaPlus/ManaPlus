@@ -72,6 +72,8 @@ class GuildManager
 
         void inviteResponse(bool response);
 
+        bool afterRemove();
+
         bool havePower()
         { return mHavePower; }
 

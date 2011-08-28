@@ -33,6 +33,7 @@
 #include "net/chathandler.h"
 #include "net/net.h"
 
+#include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -204,7 +205,9 @@ bool GuildManager::process(std::string msg)
     if (msg.size() > 4 && msg[0] == '#' && msg[1] == '#')
         msg = msg.substr(3);
 
-    if (findCutLast(msg, " is now Offline."))
+    bool haveNick = (msg.find(": ") != std::string::npos);
+
+    if (!haveNick && findCutLast(msg, " is now Offline."))
     {
         Guild *guild = createGuild();
         if (!guild)
@@ -221,7 +224,7 @@ bool GuildManager::process(std::string msg)
         mRequest = false;
         return true;
     }
-    else if (findCutLast(msg, " is now Online."))
+    else if (!haveNick && findCutLast(msg, " is now Online."))
     {
         Guild *guild = createGuild();
         if (!guild)
@@ -326,6 +329,33 @@ bool GuildManager::process(std::string msg)
             socialWindow->showGuildInvite(msg, 1, "");
         return true;
     }
+    else if (!haveNick && findCutLast(msg,
+             " has been removed from the Guild."))
+    {
+        Guild *guild = createGuild();
+        if (!guild)
+            return false;
+        if (msg.size() < 4)
+            return false;
+        if (msg[0] == '#' && msg[1] == '#')
+            msg = msg.substr(3);
+
+        if (actorSpriteManager)
+        {
+            Being *b = actorSpriteManager->findBeingByName(
+                msg, Being::PLAYER);
+
+            if (b)
+                b->clearGuilds();
+        }
+
+        guild->removeMember(msg);
+        return true;
+    }
+    else if (msg == "You have been removed from the Guild")
+    {
+        return afterRemove();
+    }
     else
     {
         Guild *guild = createGuild();
@@ -404,4 +434,23 @@ void GuildManager::inviteResponse(bool response)
         send("yes");
     else
         send("no");
+}
+
+bool GuildManager::afterRemove()
+{
+    Guild *guild = createGuild();
+    if (!guild)
+        return false;
+    guild->removeFromMembers();
+    guild->clearMembers();
+    SERVER_NOTICE(_("You have left the guild."))
+    delete mTab;
+    mTab = 0;
+
+    if (socialWindow)
+        socialWindow->removeTab(guild);
+    if (actorSpriteManager)
+        actorSpriteManager->updatePlayerColors();
+    reload();
+    return true;
 }
