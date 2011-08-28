@@ -49,7 +49,8 @@ GuildChatTab::~GuildChatTab()
 {
 }
 
-bool GuildChatTab::handleCommand(const std::string &type, const std::string &args)
+bool GuildChatTab::handleCommand(const std::string &type,
+                                 const std::string &args)
 {
     if (type == "help")
     {

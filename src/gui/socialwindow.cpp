@@ -1575,9 +1575,14 @@ void SocialWindow::selectPortal(unsigned num)
 int SocialWindow::getPortalIndex(int x, int y)
 {
     if (mNavigation)
-        return static_cast<SocialNavigationTab*>(mNavigation)->getPortalIndex(x, y);
+    {
+        return static_cast<SocialNavigationTab*>(
+            mNavigation)->getPortalIndex(x, y);
+    }
     else
+    {
         return -1;
+    }
 }
 
 void SocialWindow::addPortal(int x, int y)
