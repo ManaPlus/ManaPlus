@@ -40,7 +40,7 @@ class SortGuildFunctor
                 return m1->getOnline() > m2->getOnline();
 
             if (m1->getPos() != m2->getPos())
-                return m1->getPos() < m2->getPos();
+                return m1->getPos() > m2->getPos();
 
             if (m1->getName() != m2->getName())
             {
@@ -51,7 +51,6 @@ class SortGuildFunctor
                 return s1 < s2;
             }
             return false;
-//            return m1->getName() < m2->getName();
         }
 } guildSorter;
 
