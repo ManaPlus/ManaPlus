@@ -23,6 +23,7 @@
 
 #include "actorspritemanager.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -1310,7 +1311,10 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                     strprintf(_("Accepted guild invite from %s."),
                     mPartyInviter.c_str()));
             }
-            Net::getGuildHandler()->inviteResponse(mGuildInvited, true);
+            if (!guildManager || !guildManager->getEnableGuildBot())
+                Net::getGuildHandler()->inviteResponse(mGuildInvited, true);
+            else
+                guildManager->inviteResponse(true);
         }
         else if (eventId == "no")
         {
@@ -1320,7 +1324,10 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                     strprintf(_("Rejected guild invite from %s."),
                     mPartyInviter.c_str()));
             }
-            Net::getGuildHandler()->inviteResponse(mGuildInvited, false);
+            if (!guildManager || !guildManager->getEnableGuildBot())
+                Net::getGuildHandler()->inviteResponse(mGuildInvited, false);
+            else
+                guildManager->inviteResponse(false);
         }
 
         mGuildInvited = 0;

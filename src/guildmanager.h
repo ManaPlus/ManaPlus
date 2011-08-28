@@ -70,6 +70,8 @@ class GuildManager
 
         void reload();
 
+        void inviteResponse(bool response);
+
         bool havePower()
         { return mHavePower; }
 

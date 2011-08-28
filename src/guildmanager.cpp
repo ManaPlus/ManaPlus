@@ -318,6 +318,14 @@ bool GuildManager::process(std::string msg)
         mRequest = true;
         return true;
     }
+    else if (findCutFirst(msg, "You have been invited to the ")
+             && findCutLast(msg, " guild chat. If you would like to accept "
+             "this invitation please reply \"yes\" and if not then \"no\" ."))
+    {
+        if (socialWindow)
+            socialWindow->showGuildInvite(msg, 1, "");
+        return true;
+    }
     else
     {
         Guild *guild = createGuild();
@@ -388,4 +396,12 @@ void GuildManager::clear()
         if (guild)
             socialWindow->removeTab(guild);
     }
+}
+
+void GuildManager::inviteResponse(bool response)
+{
+    if (response)
+        send("yes");
+    else
+        send("no");
 }
