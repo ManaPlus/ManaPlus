@@ -644,7 +644,16 @@ static int readColorType(const std::string &type)
         "SERVER_VERSION_NOT_SUPPORTED",
         "WARNING",
         "CHARM",
-        "PLAYER_ADVANCED"
+        "PLAYER_ADVANCED",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "ORANGE",
+        "YELLOW",
+        "PINK",
+        "PURPLE",
+        "GRAY",
+        "BROWN"
     };
 
     if (type.empty())

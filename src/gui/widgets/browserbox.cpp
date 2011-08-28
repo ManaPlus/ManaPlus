@@ -68,6 +68,15 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
     mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     mHyperLinkColor = Theme::getThemeColor(Theme::HYPERLINK);
+    mColors[RED] = Theme::getThemeColor(Theme::RED);
+    mColors[GREEN] = Theme::getThemeColor(Theme::GREEN);
+    mColors[BLUE] = Theme::getThemeColor(Theme::BLUE);
+    mColors[ORANGE] = Theme::getThemeColor(Theme::ORANGE);
+    mColors[YELLOW] = Theme::getThemeColor(Theme::YELLOW);
+    mColors[PINK] = Theme::getThemeColor(Theme::PINK);
+    mColors[PURPLE] = Theme::getThemeColor(Theme::PURPLE);
+    mColors[GRAY] = Theme::getThemeColor(Theme::GRAY);
+    mColors[BROWN] = Theme::getThemeColor(Theme::BROWN);
 }
 
 BrowserBox::~BrowserBox()
@@ -478,15 +487,15 @@ int BrowserBox::calcHeight()
 
                         switch (c)
                         {
-                            case '1': selColor = RED; break;
-                            case '2': selColor = GREEN; break;
-                            case '3': selColor = BLUE; break;
-                            case '4': selColor = ORANGE; break;
-                            case '5': selColor = YELLOW; break;
-                            case '6': selColor = PINK; break;
-                            case '7': selColor = PURPLE; break;
-                            case '8': selColor = GRAY; break;
-                            case '9': selColor = BROWN; break;
+                            case '1': selColor = mColors[RED]; break;
+                            case '2': selColor = mColors[GREEN]; break;
+                            case '3': selColor = mColors[BLUE]; break;
+                            case '4': selColor = mColors[ORANGE]; break;
+                            case '5': selColor = mColors[YELLOW]; break;
+                            case '6': selColor = mColors[PINK]; break;
+                            case '7': selColor = mColors[PURPLE]; break;
+                            case '8': selColor = mColors[GRAY]; break;
+                            case '9': selColor = mColors[BROWN]; break;
                             case '0':
                             default:
                                 selColor = textColor;

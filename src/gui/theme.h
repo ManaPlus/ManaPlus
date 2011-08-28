@@ -189,6 +189,15 @@ class Theme : public Palette, public ConfigListener
             WARNING,
             CHARM,
             PLAYER_ADVANCED,
+            RED,
+            GREEN,
+            BLUE,
+            ORANGE,
+            YELLOW,
+            PINK,
+            PURPLE,
+            GRAY,
+            BROWN,
             THEME_COLORS_END
         };
 
