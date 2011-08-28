@@ -146,7 +146,9 @@ private:
         UPDATE_COMPLETE,
         UPDATE_NEWS,
         UPDATE_RESOURCES,
-        UPDATE_PATCH
+        UPDATE_PATCH,
+        UPDATE_LIST2,
+        UPDATE_RESOURCES2
     };
 
     /** Status of the current download. */
@@ -157,6 +159,8 @@ private:
 
     /** Place where the updates are stored (absolute path). */
     std::string mUpdatesDir;
+
+    std::string mUpdatesDirReal;
 
     /** The file currently downloading. */
     std::string mCurrentFile;
@@ -194,8 +198,14 @@ private:
     /** List of files to download. */
     std::vector<updateFile> mUpdateFiles;
 
+    /** List of temp files to download. */
+    std::vector<updateFile> mTempUpdateFiles;
+
     /** Index of the file to be downloaded. */
     unsigned int mUpdateIndex;
+
+    /** Index offset for disaplay downloaded file. */
+    unsigned int mUpdateIndexOffset;
 
     /** Tells ~UpdaterWindow() if it should load updates */
     bool mLoadUpdates;
@@ -208,6 +218,7 @@ private:
     ProgressBar *mProgressBar;    /**< Update progress bar. */
     BrowserBox *mBrowserBox;      /**< Box to display news. */
     ScrollArea *mScrollArea;      /**< Used to scroll news box. */
+    std::string mUpdateServerPath;
 };
 
 #endif

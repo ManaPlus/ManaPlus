@@ -578,3 +578,11 @@ bool findCutFirst(std::string &str1, std::string str2)
     }
     return false;
 }
+
+std::string &removeProtocol(std::string &url)
+{
+    int i = url.find("://");
+    if (i != (int)std::string::npos)
+        url = url.substr(i + 3);
+    return url;
+}

@@ -201,4 +201,6 @@ bool findCutLast(std::string &str1, std::string str2);
 
 bool findCutFirst(std::string &str1, std::string str2);
 
+std::string &removeProtocol(std::string &url);
+
 #endif // UTILS_STRINGUTILS_H
