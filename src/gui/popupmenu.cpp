@@ -233,6 +233,17 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                             }
                         }
                     }
+                    else if (guild2->getMember(mNick))
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild-kick|%s@@", _("Kick from guild")));
+                        if (guild2->getServerGuild())
+                        {
+                            mBrowserBox->addRow(strprintf(
+                                "@@guild-pos|%s >@@",
+                                _("Change pos in guild")));
+                        }
+                    }
                     else
                     {
                         if (guild2->getServerGuild()

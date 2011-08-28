@@ -161,9 +161,12 @@ void GuildManager::updateList()
             i ++;
         }
         guild->sort();
-        if (actorSpriteManager)
-            actorSpriteManager->updatePlayerGuild();
         createTab(guild);
+        if (actorSpriteManager)
+        {
+            actorSpriteManager->updatePlayerGuild();
+            actorSpriteManager->updatePlayerColors();
+        }
     }
     mTempList.clear();
     mGotInfo = true;
@@ -346,7 +349,11 @@ bool GuildManager::process(std::string msg)
                 msg, Being::PLAYER);
 
             if (b)
+            {
                 b->clearGuilds();
+                b->setGuildName("");
+                b->updateColors();
+            }
         }
 
         guild->removeMember(msg);
@@ -443,6 +450,11 @@ bool GuildManager::afterRemove()
         return false;
     guild->removeFromMembers();
     guild->clearMembers();
+    if (player_node)
+    {
+        player_node->setGuildName("");
+        player_node->clearGuilds();
+    }
     SERVER_NOTICE(_("You have left the guild."))
     delete mTab;
     mTab = 0;
@@ -450,7 +462,10 @@ bool GuildManager::afterRemove()
     if (socialWindow)
         socialWindow->removeTab(guild);
     if (actorSpriteManager)
+    {
+        actorSpriteManager->updatePlayerGuild();
         actorSpriteManager->updatePlayerColors();
+    }
     reload();
     return true;
 }
