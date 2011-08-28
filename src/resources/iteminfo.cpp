@@ -144,25 +144,6 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
 
 std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
 {
-    if (direction == -1)
-    {
-        SpriteToItemMap *spMap = new SpriteToItemMap();
-        for (int f = 0; f < 9; f ++)
-        {
-            if (!mSpriteToItemReplaceMap[f])
-            {
-                mSpriteToItemReplaceMap[f] = spMap;
-                direction = f;
-            }
-        }
-        if (direction >= 0)
-            mSpriteToItemReplaceList.push_back(spMap);
-        else
-            delete spMap;
-        if (direction == -1)
-            direction = 1;
-    }
-
     if (direction < 0 || direction >= 9)
         return 0;
 
