@@ -26,6 +26,7 @@
 #include "channelmanager.h"
 #include "channel.h"
 #include "game.h"
+#include "guildmanager.h"
 #include "localplayer.h"
 #include "logger.h"
 #include "main.h"
@@ -497,7 +498,12 @@ void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
                 return;
             const Guild *guild = player_node->getGuild();
             if (guild)
-                Net::getGuildHandler()->chat(guild->getId(), str);
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->chat(guild->getId(), str);
+                else if (guildManager)
+                    guildManager->chat(str);
+            }
             break;
         }
         default:
