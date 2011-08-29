@@ -33,10 +33,50 @@ MACRO(MANAPLUS_GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFileArg)
       INSTALL(FILES ${_gmoFile} DESTINATION share/locale/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
       SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
 
-   ENDFOREACH (_currentPoFile )
+   ENDFOREACH (_currentPoFile)
 
    ADD_CUSTOM_TARGET(translations ${_addToAll} DEPENDS ${_gmoFiles})
-ENDMACRO(MANAPLUS_GETTEXT_CREATE_TRANSLATIONS )
+ENDMACRO()
 
-FILE(GLOB POFILES *.po)
+MACRO(MANAPLUS_GETTEXT_UPDATE_PO _potFile _languages)
+   GET_FILENAME_COMPONENT(_absPotFile ${_potFile} ABSOLUTE)
+
+   ADD_CUSTOM_TARGET(
+      update-pot
+      COMMAND xgettext --files-from=translatable-files --directory=. --output=${_potFile} -d manaplus --keyword=_ --keyword=N_
+      )
+
+   ADD_CUSTOM_TARGET(
+      update-translatable-files
+      COMMAND grep '_\(' -Irl ../src | sort > translatable-files
+      )
+
+   FOREACH(_lang ${_languages})
+      GET_FILENAME_COMPONENT(_absFile "${_lang}.po" ABSOLUTE)
+      SET(_currentPoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.po)
+      ADD_CUSTOM_TARGET(
+         "update-translation-${_lang}"
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+         )
+      ADD_DEPENDENCIES("update-translation-${_lang}" update-pot)
+      ADD_DEPENDENCIES(update-po "update-translation-${_lang}")
+      ADD_DEPENDENCIES(update-pot update-translatable-files)
+   ENDFOREACH()
+ENDMACRO()
+
+
+SET(languages)
+SET(POFILES)
+FILE(STRINGS LINGUAS _languages)
+FOREACH(_lang ${_languages})
+   STRING(REGEX REPLACE "#.*" "" _lang "${_lang}")
+   IF(NOT ${_lang} STREQUAL "")
+      SET(languages ${languages} ${_lang})
+      SET(POFILES ${POFILES} "${_lang}.po")
+   ENDIF()
+ENDFOREACH()
+
+ADD_CUSTOM_TARGET(update-po)
+
 MANAPLUS_GETTEXT_CREATE_TRANSLATIONS(manaplus.pot ALL ${POFILES})
+MANAPLUS_GETTEXT_UPDATE_PO(manaplus.pot "${languages}")
