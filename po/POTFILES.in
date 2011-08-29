@@ -24,6 +24,7 @@ src/gui/inventorywindow.cpp
 src/gui/itemamountwindow.cpp
 src/gui/itempopup.cpp
 src/gui/killstats.cpp
+src/guildmanager.cpp
 src/gui/logindialog.cpp
 src/gui/minimap.cpp
 src/gui/ministatuswindow.cpp
@@ -66,6 +67,7 @@ src/gui/whoisonline.cpp
 src/gui/widgets/battletab.cpp
 src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
+src/gui/widgets/guildchattab.cpp
 src/gui/widgets/setupitem.cpp
 src/gui/widgets/tradetab.cpp
 src/gui/widgets/whispertab.cpp
