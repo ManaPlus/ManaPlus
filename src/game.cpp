@@ -177,11 +177,7 @@ static void initEngines()
     commandHandler = new CommandHandler;
     channelManager = new ChannelManager;
     effectManager = new EffectManager;
-    if (!guildManager)
-    {
-        guildManager = new GuildManager;
-        guildManager->init();
-    }
+    GuildManager::init();
 
     particleEngine = new Particle(NULL);
     particleEngine->setupEngine();
@@ -338,7 +334,7 @@ static void destroyGuiWindows()
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADED));
 
-    if (guildManager && guildManager->getEnableGuildBot())
+    if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->reload();
 }
 
@@ -406,7 +402,7 @@ Game::Game():
         setupWindow->setInGame(true);
     clearKeysArray();
 
-    if (guildManager && guildManager->getEnableGuildBot())
+    if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_CONSTRUCTED));
@@ -437,6 +433,7 @@ Game::~Game()
     del_0(mCurrentMap)
     del_0(spellManager)
     del_0(spellShortcut)
+    del_0(guildManager)
     del_0(mumbleManager)
 
     Being::clearCache();

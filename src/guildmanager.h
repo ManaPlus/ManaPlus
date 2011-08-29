@@ -37,7 +37,7 @@ class GuildManager
 
         ~GuildManager();
 
-        void init();
+        static void init();
 
         void chat(std::string msg);
 
@@ -51,7 +51,7 @@ class GuildManager
 
         void updateList();
 
-        bool getEnableGuildBot()
+        static bool getEnableGuildBot()
         { return mEnableGuildBot; }
 
         void kick(std::string msg);
@@ -80,7 +80,7 @@ class GuildManager
     private:
         bool process(std::string msg);
 
-        bool mEnableGuildBot;
+        static bool mEnableGuildBot;
         bool mGotInfo;
         bool mGotName;
         bool mHavePower;

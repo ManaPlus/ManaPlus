@@ -662,7 +662,7 @@ void BeingHandler::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     if ((dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
     {
         dstBeing->setPartyName(msg.readString(24));
-        if (!guildManager || !guildManager->getEnableGuildBot())
+        if (!guildManager || !GuildManager::getEnableGuildBot())
             dstBeing->setGuildName(msg.readString(24));
         dstBeing->setGuildPos(msg.readString(24));
         dstBeing->addToCache();

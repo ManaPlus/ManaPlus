@@ -1311,7 +1311,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                     strprintf(_("Accepted guild invite from %s."),
                     mPartyInviter.c_str()));
             }
-            if (!guildManager || !guildManager->getEnableGuildBot())
+            if (!guildManager || !GuildManager::getEnableGuildBot())
                 Net::getGuildHandler()->inviteResponse(mGuildInvited, true);
             else
                 guildManager->inviteResponse(true);
@@ -1324,7 +1324,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                     strprintf(_("Rejected guild invite from %s."),
                     mPartyInviter.c_str()));
             }
-            if (!guildManager || !guildManager->getEnableGuildBot())
+            if (!guildManager || !GuildManager::getEnableGuildBot())
                 Net::getGuildHandler()->inviteResponse(mGuildInvited, false);
             else
                 guildManager->inviteResponse(false);

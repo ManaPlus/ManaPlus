@@ -794,9 +794,7 @@ int Client::exec()
             if (mumbleManager)
                 mumbleManager->setServer(mCurrentServer.hostname);
 
-            if (!guildManager)
-                guildManager = new GuildManager();
-            guildManager->init();
+            GuildManager::init();
 
             if (!mConfigAutoSaved)
             {

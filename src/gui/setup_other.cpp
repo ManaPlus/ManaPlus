@@ -147,6 +147,9 @@ Setup_Other::Setup_Other()
 
     new SetupItemLabel(_("Bots support"), "", this);
 
+    new SetupItemCheckBox(_("Enable auction bot support"), "",
+        "enableAuctionBot", this, "enableAuctionBotEvent", false);
+
     new SetupItemCheckBox(_("Enable guild bot support and disable native "
         "guild support"), "", "enableGuildBot", this,
         "enableGuildBotEvent", false);

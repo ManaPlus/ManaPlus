@@ -162,7 +162,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
 
     if (nick != "Server")
     {
-        if (guildManager && guildManager->getEnableGuildBot()
+        if (guildManager && GuildManager::getEnableGuildBot()
             && nick == "guild" && guildManager->processGuildMessage(chatMsg))
         {
             return;

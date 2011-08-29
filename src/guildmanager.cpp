@@ -38,9 +38,9 @@
 
 #include "debug.h"
 
+bool GuildManager::mEnableGuildBot = false;
 
 GuildManager::GuildManager() :
-    mEnableGuildBot(false),
     mGotInfo(false),
     mGotName(false),
     mHavePower(false),
@@ -57,6 +57,9 @@ GuildManager::~GuildManager()
 
 void GuildManager::init()
 {
+    if (guildManager)
+        return;
+
     int val = serverConfig.getValue("enableGuildBot", -1);
     if (val == -1)
     {
@@ -67,6 +70,8 @@ void GuildManager::init()
         serverConfig.setValue("enableGuildBot", val);
     }
     mEnableGuildBot = val;
+    if (mEnableGuildBot)
+        guildManager = new GuildManager();
 }
 
 void GuildManager::reload()
