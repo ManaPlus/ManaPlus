@@ -560,6 +560,10 @@ int parseDirectionName(std::string name)
         id = DIRECTION_RIGHT;
     else if (name == "downright" || name == "rightdown")
         id = DIRECTION_DOWNRIGHT;
+    else if (name == "downall")
+        id = -2;
+    else if (name == "upall")
+        id = -3;
 
     return id;
 }
@@ -627,39 +631,99 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
 
     itemInfo->setRemoveSprites();
 
-    if (direction != -1)
+    switch (direction)
     {
-        std::map<int, int> *mapList = itemInfo->addReplaceSprite(
-            parseSpriteName(removeSprite), direction);
-        if (!mapList)
-            return;
-        for_each_xml_child_node(itemNode, replaceNode)
+        case -1:
         {
-            if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+            for_each_xml_child_node(itemNode, replaceNode)
             {
-                int from = XML::getProperty(itemNode, "from", 0);
-                int to = XML::getProperty(itemNode, "to", 1);
-                (*mapList)[from] = to;
-            }
-        }
-    }
-    else
-    {
-        for_each_xml_child_node(itemNode, replaceNode)
-        {
-            if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
-            {
-                int from = XML::getProperty(itemNode, "from", 0);
-                int to = XML::getProperty(itemNode, "to", 1);
-                for (int f = 0; f < 9; f ++)
+                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
                 {
+                    int from = XML::getProperty(itemNode, "from", 0);
+                    int to = XML::getProperty(itemNode, "to", 1);
+                    for (int f = 0; f < 9; f ++)
+                    {
+                        std::map<int, int> *mapList
+                            = itemInfo->addReplaceSprite(
+                            parseSpriteName(removeSprite), f);
+                        if (!mapList)
+                            continue;
+                        (*mapList)[from] = to;
+                    }
+                }
+            }
+            break;
+        }
+        case -2:
+        {
+            logger->log("parse -2");
+            for_each_xml_child_node(itemNode, replaceNode)
+            {
+                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                {
+                    int from = XML::getProperty(itemNode, "from", 0);
+                    int to = XML::getProperty(itemNode, "to", 1);
                     std::map<int, int> *mapList = itemInfo->addReplaceSprite(
-                        parseSpriteName(removeSprite), f);
-                    if (!mapList)
-                        continue;
+                        parseSpriteName(removeSprite), DIRECTION_DOWN);
+                    if (mapList)
+                        (*mapList)[from] = to;
+
+                    mapList = itemInfo->addReplaceSprite(parseSpriteName(
+                        removeSprite), DIRECTION_DOWNLEFT);
+                    if (mapList)
+                        (*mapList)[from] = to;
+
+                    mapList = itemInfo->addReplaceSprite(parseSpriteName(
+                        removeSprite), DIRECTION_DOWNRIGHT);
+                    if (mapList)
+                        (*mapList)[from] = to;
+                }
+            }
+            break;
+        }
+        case -3:
+        {
+            logger->log("parse -3");
+            for_each_xml_child_node(itemNode, replaceNode)
+            {
+                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                {
+                    int from = XML::getProperty(itemNode, "from", 0);
+                    int to = XML::getProperty(itemNode, "to", 1);
+                    std::map<int, int> *mapList = itemInfo->addReplaceSprite(
+                        parseSpriteName(removeSprite), DIRECTION_UP);
+                    if (mapList)
+                        (*mapList)[from] = to;
+
+                    mapList = itemInfo->addReplaceSprite(parseSpriteName(
+                        removeSprite), DIRECTION_UPLEFT);
+                    if (mapList)
+                        (*mapList)[from] = to;
+
+                    mapList = itemInfo->addReplaceSprite(parseSpriteName(
+                        removeSprite), DIRECTION_UPRIGHT);
+                    if (mapList)
+                        (*mapList)[from] = to;
+                }
+            }
+            break;
+        }
+        default:
+        {
+            std::map<int, int> *mapList = itemInfo->addReplaceSprite(
+                parseSpriteName(removeSprite), direction);
+            if (!mapList)
+                return;
+            for_each_xml_child_node(itemNode, replaceNode)
+            {
+                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                {
+                    int from = XML::getProperty(itemNode, "from", 0);
+                    int to = XML::getProperty(itemNode, "to", 1);
                     (*mapList)[from] = to;
                 }
             }
+            break;
         }
     }
 }
