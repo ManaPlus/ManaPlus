@@ -331,6 +331,9 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             dstBeing->setSpriteColor(SPRITE_HAIR,
                 ColorDB::getHairColor(id));
             break;
+        case 7:     // Clothes color
+            // ignoring it
+            break;
         case 8:     // eAthena LOOK_SHIELD
             if (!config.getBoolValue("hideShield"))
             {
