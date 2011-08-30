@@ -279,6 +279,11 @@ void Minimap::draw(gcn::Graphics *graphics)
         {
             type = UserPalette::PARTY;
         }
+        else if (being->getGuild() == player_node->getGuild()
+                 || being->getGuildName() == player_node->getGuildName())
+        {
+            type = UserPalette::GUILD;
+        }
         else if (being)
         {
             switch (being->getType())
