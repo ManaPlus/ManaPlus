@@ -544,7 +544,7 @@ Client::Client(const Options &options):
 
     loginData.username = mOptions.username;
     loginData.password = mOptions.password;
-    loginData.remember = serverConfig.getValue("remember", true);
+    loginData.remember = serverConfig.getValue("remember", 1);
     loginData.registerLogin = false;
 
     if (mCurrentServer.hostname.empty())
@@ -790,7 +790,7 @@ int Client::exec()
             else
                 loginData.username = mOptions.username;
 
-            loginData.remember = serverConfig.getValue("remember", true);
+            loginData.remember = serverConfig.getValue("remember", 1);
 
             Net::connectToServer(mCurrentServer);
 

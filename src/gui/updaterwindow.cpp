@@ -54,7 +54,8 @@
 
 const std::string xmlUpdateFile = "resources.xml";
 const std::string txtUpdateFile = "resources2.txt";
-const std::string updateServer2 = "http://download.evolonline.org/manaplus/updates/";
+const std::string updateServer2
+    = "http://download.evolonline.org/manaplus/updates/";
 
 std::vector<updateFile> loadXMLFile(const std::string &fileName);
 std::vector<updateFile> loadTxtFile(const std::string &fileName);
@@ -186,7 +187,6 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
 
     mUpdateServerPath = mUpdateHost;
     removeProtocol(mUpdateServerPath);
-    logger->log("mUpdateServerPath: %s, %s", mUpdateHost.c_str(), mUpdateServerPath.c_str());
 
     // Try to download the updates list
     download();
