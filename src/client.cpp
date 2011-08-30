@@ -256,6 +256,8 @@ Client::Client(const Options &options):
     mLimitFps(false),
     mConfigAutoSaved(false),
     mIsMinimized(false),
+    mInputFocused(true),
+    mMouseFocused(true),
     mGuiAlpha(1.0f)
 {
     assert(!mInstance);
