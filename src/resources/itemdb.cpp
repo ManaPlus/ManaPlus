@@ -683,7 +683,6 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
         }
         case -3:
         {
-            logger->log("parse -3");
             for_each_xml_child_node(itemNode, replaceNode)
             {
                 if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
