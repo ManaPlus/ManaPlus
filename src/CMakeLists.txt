@@ -468,6 +468,8 @@ SET(SRCS
     animatedsprite.h
     animationparticle.cpp
     animationparticle.h
+    auctionmanager.cpp
+    auctionmanager.h
     avatar.cpp
     avatar.h
     being.cpp

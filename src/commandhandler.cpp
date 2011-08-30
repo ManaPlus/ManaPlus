@@ -22,6 +22,7 @@
 
 #include "commandhandler.h"
 
+#include "auctionmanager.h"
 #include "actorspritemanager.h"
 #include "channelmanager.h"
 #include "channel.h"
@@ -865,7 +866,8 @@ void CommandHandler::handleHack(const std::string &args, ChatTab *tab A_UNUSED)
 
 void CommandHandler::handleMail(const std::string &args, ChatTab *tab A_UNUSED)
 {
-    Net::getChatHandler()->privateMessage("AuctionBot", "!mail " + args);
+    if (auctionManager && auctionManager->getEnableAuctionBot())
+        auctionManager->sendMail(args);
 }
 
 void CommandHandler::handlePriceLoad(const std::string &args A_UNUSED,

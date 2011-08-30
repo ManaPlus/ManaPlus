@@ -109,6 +109,8 @@
 		<Unit filename="src\animatedsprite.h" />
 		<Unit filename="src\animationparticle.cpp" />
 		<Unit filename="src\animationparticle.h" />
+		<Unit filename="src\auctionmanager.cpp" />
+		<Unit filename="src\auctionmanager.h" />
 		<Unit filename="src\avatar.cpp" />
 		<Unit filename="src\avatar.h" />
 		<Unit filename="src\being.cpp" />

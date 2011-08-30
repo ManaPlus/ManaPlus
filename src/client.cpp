@@ -23,6 +23,7 @@
 #include "client.h"
 #include "main.h"
 
+#include "auctionmanager.h"
 #include "chatlogger.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -795,6 +796,7 @@ int Client::exec()
                 mumbleManager->setServer(mCurrentServer.hostname);
 
             GuildManager::init();
+            AuctionManager::init();
 
             if (!mConfigAutoSaved)
             {
