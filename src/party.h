@@ -149,6 +149,11 @@ public:
 
     void sort();
 
+    typedef std::vector<PartyMember*> MemberList;
+
+    MemberList *getMembers()
+    { return &mMembers; }
+
     static Party *getParty(short id);
 
     static void clearParties();
@@ -164,7 +169,6 @@ private:
 
     ~Party();
 
-    typedef std::vector<PartyMember*> MemberList;
     MemberList mMembers;
     std::string mName;
     short mId;

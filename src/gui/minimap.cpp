@@ -29,6 +29,7 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "map.h"
+#include "party.h"
 
 #include "gui/userpalette.h"
 #include "gui/setup.h"
@@ -275,10 +276,6 @@ void Minimap::draw(gcn::Graphics *graphics)
         {
             type = UserPalette::GM;
         }
-        else if (being->isInParty())
-        {
-            type = UserPalette::PARTY;
-        }
         else if (being->getGuild() == player_node->getGuild()
                  || being->getGuildName() == player_node->getGuildName())
         {
@@ -320,6 +317,49 @@ void Minimap::draw(gcn::Graphics *graphics)
                 static_cast<int>(pos.y * mHeightProportion) / 32
                 + mapOriginY - offsetHeight,
                 dotSize, dotSize));
+    }
+
+    if (player_node->isInParty())
+    {
+        Party *party = player_node->getParty();
+        if (party)
+        {
+            PartyMember *m = party->getMember(player_node->getName());
+            Party::MemberList *members = party->getMembers();
+            if (m && members)
+            {
+                const std::string curMap = m->getMap();
+                Party::MemberList::const_iterator it = members->begin();
+                const Party::MemberList::const_iterator
+                    it_end = members->end();
+                while (it != it_end)
+                {
+                    PartyMember *member = *it;
+                    if (member && member->getMap() == curMap
+                        && member->getOnline() && member != m)
+                    {
+                        if (userPalette)
+                        {
+                            graphics->setColor(userPalette->getColor(
+                                UserPalette::PARTY));
+                        }
+
+                        const int offsetHeight = static_cast<int>(
+                            mHeightProportion);
+                        const int offsetWidth = static_cast<int>(
+                            mWidthProportion);
+
+                        graphics->fillRectangle(gcn::Rectangle(
+                            static_cast<int>(member->getX()
+                            * mWidthProportion) + mapOriginX - offsetWidth,
+                            static_cast<int>(member->getY()
+                            * mHeightProportion) + mapOriginY - offsetHeight,
+                            2, 2));
+                    }
+                    ++ it;
+                }
+            }
+        }
     }
 
     const Vector &pos = player_node->getPosition();
