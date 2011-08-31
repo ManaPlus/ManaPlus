@@ -119,12 +119,12 @@ void GuildManager::requestGuildInfo()
 
     if (!mGotName)
     {
-        send("!info");
+        send("!info " + toString(tick_time));
         mRequest = true;
     }
     else if (!mGotInfo)
     {
-        send("!getonlineinfo");
+        send("!getonlineinfo " + toString(tick_time));
         mRequest = true;
     }
 }
