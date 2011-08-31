@@ -167,6 +167,8 @@ ChatWindow::ChatWindow():
     setResizable(true);
     setDefaultVisible(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(600, 123, ImageRect::LOWER_LEFT);
     setMinWidth(150);
     setMinHeight(90);
@@ -660,7 +662,7 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (isMovable() && mMoved)
+    if (canMove() && isMovable() && mMoved)
     {
         int newX = std::max(0, getX() + event.getX() - mDragOffsetX);
         int newY = std::max(0, getY() + event.getY() - mDragOffsetY);

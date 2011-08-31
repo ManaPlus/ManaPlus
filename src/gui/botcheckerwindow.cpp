@@ -302,6 +302,7 @@ BotCheckerWindow::BotCheckerWindow():
 
     setWindowName("BotCheckerWindow");
     setCloseButton(true);
+    setStickyButtonLock(true);
     setDefaultSize(w, h, ImageRect::CENTER);
 
     playersScrollArea = new ScrollArea(mTable);

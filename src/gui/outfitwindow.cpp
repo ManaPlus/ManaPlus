@@ -72,6 +72,8 @@ OutfitWindow::OutfitWindow():
     setWindowName("Outfits");
     setResizable(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(250, 400, 150, 230);
     setMinWidth(145);
     setMinHeight(220);

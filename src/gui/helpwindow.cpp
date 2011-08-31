@@ -47,6 +47,8 @@ HelpWindow::HelpWindow():
     setContentSize(455, 350);
     setWindowName("Help");
     setResizable(true);
+    setStickyButtonLock(true);
+
     setupWindow->registerWindowForReset(this);
 
     setDefaultSize(500, 400, ImageRect::CENTER);

@@ -55,6 +55,7 @@ Setup::Setup():
 {
     setCloseButton(true);
     setResizable(true);
+    setStickyButtonLock(true);
 
     int width = 620;
     int height = 450;

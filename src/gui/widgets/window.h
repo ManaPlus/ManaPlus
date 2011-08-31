@@ -189,6 +189,17 @@ class Window : public gcn::Window, gcn::WidgetListener
         { return mSticky; }
 
         /**
+          * Sets whether the window sticky mean window locked or not.
+          */
+        void setStickyButtonLock(bool sticky);
+
+        /**
+         * Returns whether the window sticky locking window.
+         */
+        bool isStickyButtonLock() const
+        { return mStickyButtonLock; }
+
+        /**
          * Overloads window setVisible by Guichan to allow sticky window
          * handling.
          */
@@ -387,6 +398,9 @@ class Window : public gcn::Window, gcn::WidgetListener
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
 
+    protected:
+        bool canMove();
+
     private:
         enum ResizeHandles
         {
@@ -423,6 +437,7 @@ class Window : public gcn::Window, gcn::WidgetListener
         bool mSaveVisible;            /**< Window will save visibility */
         bool mStickyButton;           /**< Window has a sticky button */
         bool mSticky;                 /**< Window resists hiding*/
+        bool mStickyButtonLock;       /**< Window locked if sticky enabled*/
         int mMinWinWidth;             /**< Minimum window width */
         int mMinWinHeight;            /**< Minimum window height */
         int mMaxWinWidth;             /**< Maximum window width */

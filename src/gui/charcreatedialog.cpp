@@ -60,6 +60,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mRace(0),
     mSlot(slot)
 {
+    setStickyButtonLock(true);
+    setSticky(true);
+
     mPlayer = new Being(0, ActorSprite::PLAYER, mRace, NULL);
     mPlayer->setGender(GENDER_MALE);
 

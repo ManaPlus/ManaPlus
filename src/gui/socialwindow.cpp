@@ -1129,6 +1129,8 @@ SocialWindow::SocialWindow() :
     setResizable(true);
     setSaveVisible(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
+
     setMinWidth(120);
     setMinHeight(55);
     setDefaultSize(590, 200, 150, 120);

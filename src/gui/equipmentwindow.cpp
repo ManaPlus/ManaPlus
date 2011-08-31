@@ -80,6 +80,8 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
 
     setCloseButton(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(180, 345, ImageRect::CENTER);
 
     mBoxes.reserve(13);

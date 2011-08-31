@@ -86,6 +86,7 @@ ShopWindow::ShopWindow():
     setWindowName("Personal Shop");
     setResizable(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(230);
     setDefaultSize(380, 300, ImageRect::CENTER);

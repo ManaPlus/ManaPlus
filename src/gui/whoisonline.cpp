@@ -97,6 +97,7 @@ WhoIsOnline::WhoIsOnline():
 //    setContentSize(w, h);
     setCloseButton(true);
     setResizable(true);
+    setStickyButtonLock(true);
 
     mUpdateButton = new Button(_("Update"), "update", this);
     mUpdateButton->setEnabled(false);
