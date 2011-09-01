@@ -337,8 +337,8 @@ bool GuildManager::process(std::string msg)
             socialWindow->showGuildInvite(msg, 1, "");
         return true;
     }
-    else if (!haveNick && findCutLast(msg,
-             " has been removed from the Guild."))
+    else if (!haveNick && (findCutLast(msg, " has been removed "
+             "from the Guild.") || findCutLast(msg," has left the Guild.")))
     {
         Guild *guild = createGuild();
         if (!guild)
@@ -364,7 +364,8 @@ bool GuildManager::process(std::string msg)
         guild->removeMember(msg);
         return true;
     }
-    else if (msg == "You have been removed from the Guild")
+    else if (msg == "You have been removed from the Guild"
+             || msg == "You have left the Guild")
     {
         return afterRemove();
     }
