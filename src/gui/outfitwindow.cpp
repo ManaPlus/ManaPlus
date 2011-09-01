@@ -78,8 +78,6 @@ OutfitWindow::OutfitWindow():
     setMinWidth(145);
     setMinHeight(220);
 
-    addMouseListener(this);
-
     mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
     mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
 
