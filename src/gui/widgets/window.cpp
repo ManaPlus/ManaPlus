@@ -709,10 +709,10 @@ void Window::loadWindowState()
         int width = getWidth();
         int height = getHeight();
 
-        if (getX() + width >= viewport->getWidth())
-            width = viewport->getWidth() - getX() - 1;
-        if (getY() + height >= viewport->getHeight())
-            height = viewport->getHeight() - getY() - 1;
+        if (getX() + width > viewport->getWidth())
+            width = viewport->getWidth() - getX();
+        if (getY() + height > viewport->getHeight())
+            height = viewport->getHeight() - getY();
         if (width < 0)
             width = 0;
         if (height < 0)
