@@ -78,8 +78,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include <cassert>
-
 #include "debug.h"
 
 std::string tradePartnerName("");

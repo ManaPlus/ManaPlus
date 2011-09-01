@@ -114,7 +114,6 @@
 #endif
 
 #include <sys/stat.h>
-#include <cassert>
 
 #include <iostream>
 #include <fstream>
@@ -260,7 +259,6 @@ Client::Client(const Options &options):
     mMouseFocused(true),
     mGuiAlpha(1.0f)
 {
-    assert(!mInstance);
     mInstance = this;
 
     logger = new Logger;

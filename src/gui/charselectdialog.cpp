@@ -60,7 +60,6 @@
 #include <guichan/font.hpp>
 
 #include <string>
-#include <cassert>
 
 #include "debug.h"
 
@@ -342,8 +341,8 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
 
 void CharSelectDialog::lock()
 {
-    assert(!mLocked);
-    setLocked(true);
+    if (!mLocked)
+        setLocked(true);
 }
 
 void CharSelectDialog::unlock()

@@ -29,8 +29,6 @@
 
 #include <guichan/sdl/sdlpixel.hpp>
 
-#include <cassert>
-
 #include "debug.h"
 
 #ifdef free
@@ -79,12 +77,10 @@ int ProxyImage::getHeight() const
         return mImage->mBounds.h;
     else
         return 0;
-//    return mSDLImage ? mSDLImage->h : mImage->getHeight();
 }
 
 gcn::Color ProxyImage::getPixel(int x, int y)
 {
-    assert(mSDLImage);
     return gcn::SDLgetPixel(mSDLImage, x, y);
 }
 

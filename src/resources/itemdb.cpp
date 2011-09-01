@@ -36,8 +36,6 @@
 
 #include <libxml/tree.h>
 
-#include <cassert>
-
 #include "debug.h"
 
 namespace
@@ -435,7 +433,8 @@ void ItemDB::unload()
 
 bool ItemDB::exists(int id)
 {
-    assert(mLoaded);
+    if (!mLoaded)
+        return false;
 
     ItemInfos::const_iterator i = mItemInfos.find(id);
 
@@ -444,7 +443,8 @@ bool ItemDB::exists(int id)
 
 const ItemInfo &ItemDB::get(int id)
 {
-    assert(mLoaded);
+    if (!mLoaded)
+        load();
 
     ItemInfos::const_iterator i = mItemInfos.find(id);
 
@@ -459,7 +459,8 @@ const ItemInfo &ItemDB::get(int id)
 
 const ItemInfo &ItemDB::get(const std::string &name)
 {
-    assert(mLoaded);
+    if (!mLoaded)
+        load();
 
     NamedItemInfos::const_iterator i = mNamedItemInfos.find(normalize(name));
 
@@ -597,7 +598,7 @@ void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node)
     else
     {
         logger->log("ItemDB: Ignoring unknown sound event '%s'",
-                event.c_str());
+            event.c_str());
     }
 }
 
@@ -656,7 +657,6 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
         }
         case -2:
         {
-            logger->log("parse -2");
             for_each_xml_child_node(itemNode, replaceNode)
             {
                 if (xmlStrEqual(itemNode->name, BAD_CAST "item"))

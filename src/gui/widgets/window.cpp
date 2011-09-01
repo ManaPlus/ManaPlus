@@ -663,7 +663,8 @@ void Window::setModal(bool modal)
 void Window::loadWindowState()
 {
     const std::string &name = mWindowName;
-    assert(!name.empty());
+    if (name.empty())
+        return;
 
     setPosition(config.getValueInt(name + "WinX", mDefaultX),
         config.getValueInt(name + "WinY", mDefaultY));

@@ -477,9 +477,6 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
     if (size < TC_SMALL || size >= NUM_TC)
         return;
 
-//    assert(size > -1);
-//    assert(size < 3);
-
     ResourceManager *resman = ResourceManager::getInstance();
     ImageSet *currentImageSet = resman->getImageSet(filename, width, height);
 
@@ -493,7 +490,6 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
 
     for (unsigned int i = 0; i < currentImageSet->size(); ++i)
     {
-//        anim->addFrame(currentImageSet->get(i), 0,
         anim->addFrame(currentImageSet->get(i), 75,
             (16 - (currentImageSet->getWidth() / 2)),
             (16 - (currentImageSet->getHeight() / 2)),

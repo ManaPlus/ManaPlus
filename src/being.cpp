@@ -79,7 +79,6 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
-#include <cassert>
 #include <cmath>
 
 #include "debug.h"

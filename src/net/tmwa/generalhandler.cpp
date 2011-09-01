@@ -67,7 +67,6 @@
 
 #include "utils/gettext.h"
 
-#include <assert.h>
 #include <list>
 
 #include "debug.h"
