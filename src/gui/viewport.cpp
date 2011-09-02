@@ -79,10 +79,12 @@ Viewport::Viewport():
     mScrollCenterOffsetX = config.getIntValue("ScrollCenterOffsetX");
     mScrollCenterOffsetY = config.getIntValue("ScrollCenterOffsetY");
     mShowBeingPopup = config.getBoolValue("showBeingPopup");
+    mSelfMouseHeal = config.getBoolValue("selfMouseHeal");
 
     config.addListener("ScrollLaziness", this);
     config.addListener("ScrollRadius", this);
     config.addListener("showBeingPopup", this);
+    config.addListener("selfMouseHeal", this);
 
     mPopupMenu = new PopupMenu;
     mBeingPopup = new BeingPopup;
@@ -96,6 +98,7 @@ Viewport::~Viewport()
     config.removeListener("ScrollLaziness", this);
     config.removeListener("ScrollRadius", this);
     config.removeListener("showBeingPopup", this);
+    config.removeListener("selfMouseHeal", this);
 
     delete mPopupMenu;
     mPopupMenu = 0;
@@ -473,17 +476,24 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                 if (mHoverBeing->getType() == ActorSprite::PLAYER)
                 {
                     if (actorSpriteManager)
-                        actorSpriteManager->heal(player_node, mHoverBeing);
+                    {
+                        if (player_node != mHoverBeing || mSelfMouseHeal)
+                            actorSpriteManager->heal(player_node, mHoverBeing);
+                    }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
                          keyboard.isKeyActive(keyboard.KEY_ATTACK))
                 {
-                    player_node->attack(mHoverBeing,
-                        !keyboard.isKeyActive(keyboard.KEY_TARGET));
+                    if (player_node != mHoverBeing)
+                    {
+                        player_node->attack(mHoverBeing,
+                            !keyboard.isKeyActive(keyboard.KEY_TARGET));
+                    }
                 }
                 else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
                 {
-                    player_node->setGotoTarget(mHoverBeing);
+                    if (player_node != mHoverBeing)
+                        player_node->setGotoTarget(mHoverBeing);
                 }
             }
         // Picks up a item if we clicked on one
