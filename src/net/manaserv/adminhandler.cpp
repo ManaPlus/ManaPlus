@@ -91,7 +91,8 @@ void AdminHandler::mute(int playerId A_UNUSED, int type A_UNUSED,
     // TODO
 }
 
-void AdminHandler::warp(std::string map, int x, int y)
+void AdminHandler::warp(std::string map A_UNUSED,
+                        int x A_UNUSED, int y A_UNUSED)
 {
     // TODO
 }

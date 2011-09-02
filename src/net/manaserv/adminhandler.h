@@ -24,6 +24,7 @@
 #define NET_MANASERV_ADMINHANDLER_H
 
 #include "net/adminhandler.h"
+#include "string"
 
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))

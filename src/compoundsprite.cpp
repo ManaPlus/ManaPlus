@@ -410,7 +410,11 @@ void CompoundSprite::setAlpha(float alpha)
 {
     if (alpha != mAlpha)
     {
+#ifdef USE_OPENGL
         if (mEnableAlphaFix && Image::mUseOpenGL == 0 && size() > 3)
+#else
+        if (mEnableAlphaFix && size() > 3)
+#endif
         {
             SpriteConstIterator it, it_end;
             for (it = begin(), it_end = end(); it != it_end; ++ it)
