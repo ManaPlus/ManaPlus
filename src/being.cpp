@@ -1453,6 +1453,11 @@ int Being::getOffset(char pos, char neg) const
     if (mDirection & pos)
         offset = -offset;
 
+    if (offset > 32)
+        offset = 32;
+    if (offset < -32)
+        offset = -32;
+
     return offset;
 }
 
