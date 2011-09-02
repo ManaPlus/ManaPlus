@@ -185,15 +185,20 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         - player_y > graphics->getHeight() / 2 ||  player_y
         - static_cast<int>(mPixelViewY) > graphics->getHeight() / 2)
     {
-        mPixelViewX = static_cast<float>(player_x);
-        mPixelViewY = static_cast<float>(player_y);
         if (player_x <= 0 || player_y <= 0)
         {
             if (debugChatTab)
                 debugChatTab->chatLog("incorrect player position!");
-            logger->log("incorrect player position: %d, %d",
-                player_x, player_y);
+            logger->log("incorrect player position: %d, %d, %d, %d",
+                player_x, player_y, (int)mPixelViewX, (int)mPixelViewY);
+            if (player_node)
+            {
+                logger->log("tile position: %d, %d",
+                    player_node->getTileX(), player_node->getTileY());
+            }
         }
+        mPixelViewX = static_cast<float>(player_x);
+        mPixelViewY = static_cast<float>(player_y);
     };
 
     // Don't move camera so that the end of the map is on screen
