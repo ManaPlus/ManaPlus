@@ -74,6 +74,7 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
         bool canCorrectAttributes() const;
 
         int getJobLocation() const;
+        int getAttackLocation() const;
 
         Vector getDefaultWalkSpeed() const;
 

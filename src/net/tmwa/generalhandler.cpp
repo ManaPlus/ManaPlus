@@ -272,11 +272,13 @@ void GeneralHandler::event(Mana::Channels channel,
             statusWindow->addAttribute(FLEE, _("% Evade"), false, "");
             // xgettext:no-c-format
             statusWindow->addAttribute(CRIT, _("% Critical"), false, "");
-            statusWindow->addAttribute(ATTACK_SPEED, _("Attack Delay"),
+            statusWindow->addAttribute(ATTACK_DELAY, _("Attack Delay"),
                                        false, "");
             statusWindow->addAttribute(WALK_SPEED, _("Walk Delay"),
                                        false, "");
             statusWindow->addAttribute(ATTACK_RANGE, _("Attack Range"),
+                                       false, "");
+            statusWindow->addAttribute(ATTACK_SPEED, _("Damage per sec."),
                                        false, "");
         }
         else if (event.getName() == Mana::EVENT_GUIWINDOWSUNLOADING)

@@ -31,6 +31,9 @@
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
+#include "net/net.h"
+#include "net/playerhandler.h"
+
 #include "debug.h"
 
 namespace PlayerInfo
@@ -277,6 +280,23 @@ void setTrading(bool trading)
         Mana::Event event(Mana::EVENT_TRADING);
         event.setInt("trading", trading);
         Mana::Event::trigger(Mana::CHANNEL_STATUS, event);
+    }
+}
+
+void updateAttrs()
+{
+    int attr = Net::getPlayerHandler()->getAttackLocation();
+    if (attr != -1 && getStatBase(ATTACK_DELAY))
+    {
+        setStatBase(ATTACK_SPEED, getStatBase(attr) * 1000 / getStatBase(
+            ATTACK_DELAY), false);
+        setStatMod(ATTACK_SPEED, getStatMod(attr) * 1000 / getStatBase(
+            ATTACK_DELAY), true);
+    }
+    else
+    {
+        setStatBase(ATTACK_SPEED, 0, false);
+        setStatMod(ATTACK_SPEED, 0, true);
     }
 }
 

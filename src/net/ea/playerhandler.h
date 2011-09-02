@@ -55,6 +55,8 @@ class PlayerHandler : public Net::PlayerHandler
 
         int getJobLocation() const;
 
+        int getAttackLocation() const;
+
         void processWalkResponse(Net::MessageIn &msg);
 
         void processPlayerWarp(Net::MessageIn &msg);

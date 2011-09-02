@@ -359,9 +359,11 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 
         case 0x0029:
             PlayerInfo::setStatBase(EA_ATK, value);
+            PlayerInfo::updateAttrs();
             break;
         case 0x002a:
             PlayerInfo::setStatMod(EA_ATK, value);
+            PlayerInfo::updateAttrs();
             break;
 
         case 0x002b:
@@ -402,8 +404,9 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 
         case 0x0035:
             player_node->setAttackSpeed(value);
-            PlayerInfo::setStatBase(ATTACK_SPEED, value);
-            PlayerInfo::setStatMod(ATTACK_SPEED, 0);
+            PlayerInfo::setStatBase(ATTACK_DELAY, value);
+            PlayerInfo::setStatMod(ATTACK_DELAY, 0);
+            PlayerInfo::updateAttrs();
             break;
 
         case 0x0037:
@@ -484,6 +487,8 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(type, base, false);
     PlayerInfo::setStatMod(type, bonus);
+    if (type == EA_ATK || type == ATTACK_DELAY)
+        PlayerInfo::updateAttrs();
 }
 
 void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
@@ -552,6 +557,7 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(EA_ATK, msg.readInt16(), false);
     PlayerInfo::setStatMod(EA_ATK, msg.readInt16());
+    PlayerInfo::updateAttrs();
 
     val = msg.readInt16();
     PlayerInfo::setStatBase(EA_MATK, val, false);
@@ -636,4 +642,8 @@ int PlayerHandler::getJobLocation() const
     return EA_JOB;
 }
 
+int PlayerHandler::getAttackLocation() const
+{
+    return EA_ATK;
+}
 } // namespace Ea
