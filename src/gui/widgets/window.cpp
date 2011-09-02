@@ -368,7 +368,7 @@ void Window::widgetHidden(const gcn::Event &event A_UNUSED)
     if (gui)
         gui->setCursorType(Gui::CURSOR_POINTER);
 
-    WidgetListIterator it;
+    WidgetListConstIterator it;
 
     if (!mFocusHandler)
         return;

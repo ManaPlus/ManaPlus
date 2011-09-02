@@ -279,7 +279,7 @@ namespace gcn
 
     void Window::resizeToContent()
     {
-        WidgetListIterator it;
+        WidgetListConstIterator it;
 
         int w = 0, h = 0;
         for (it = mWidgets.begin(); it != mWidgets.end(); it++)

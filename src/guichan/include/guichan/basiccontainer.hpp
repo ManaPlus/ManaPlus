@@ -167,10 +167,20 @@ namespace gcn
          */
         typedef WidgetList::iterator WidgetListIterator;
 
+         /**
+         * Typedef.
+         */
+        typedef WidgetList::const_iterator WidgetListConstIterator;
+
         /**
          * Typedef.
          */
         typedef WidgetList::reverse_iterator WidgetListReverseIterator;
+
+        /**
+         * Typedef.
+         */
+        typedef WidgetList::const_reverse_iterator WidgetListCReverseIterator;
 
         /**
          * Holds all widgets of the basic container.
