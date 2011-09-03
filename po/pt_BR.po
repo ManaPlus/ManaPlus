@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-09-02 18:27+0300\n"
-"PO-Revision-Date: 2011-09-02 15:29+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2011-09-02 19:00+0000\n"
+"Last-Translator: freya <freya.df@gmail.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://www.transifex.net/projects/p/"
 "manaplus/team/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -2071,7 +2071,7 @@ msgstr "Suporte de bots"
 
 #: src/gui/setup_other.cpp:150
 msgid "Enable auction bot support"
-msgstr ""
+msgstr "Habilitar suporte ao bot de leilão"
 
 #: src/gui/setup_other.cpp:153
 msgid "Enable guild bot support and disable native guild support"
@@ -2199,7 +2199,7 @@ msgstr "Mostrar endereço de ip nas capturas de tela"
 
 #: src/gui/setup_players.cpp:81
 msgid "Allow self heal with mouse click"
-msgstr ""
+msgstr "Permitir se curar com o clique do mouse"
 
 #: src/gui/setup_relations.cpp:65
 msgid "Relation"
@@ -5474,7 +5474,7 @@ msgstr "Atraso de alcance"
 
 #: src/net/tmwa/generalhandler.cpp:281
 msgid "Damage per sec."
-msgstr ""
+msgstr "Dano por seg."
 
 #: src/net/tmwa/network.cpp:152
 msgid "Empty address given to Network::connect()!"

@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-09-02 18:27+0300\n"
-"PO-Revision-Date: 2011-09-02 15:29+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2011-09-02 22:15+0000\n"
+"Last-Translator: nelson6e65 <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
 "manaplus/team/es/)\n"
 "Language: es\n"
@@ -320,7 +320,7 @@ msgstr "¡El guardado de la captura de pantalla ha fallado!"
 
 #: src/game.cpp:559
 msgid "The connection to the server was lost."
-msgstr "Se ha perdido la conexión con elservidor."
+msgstr "Se ha perdido la conexión con el servidor."
 
 #: src/game.cpp:571
 msgid "Network Error"
@@ -590,11 +590,11 @@ msgstr "Atributos del personaje OK"
 #: src/gui/charcreatedialog.cpp:308
 #, c-format
 msgid "Please remove %d points"
-msgstr "Por favor extraiga %d puntos de estado"
+msgstr "Por favor borre %d puntos"
 
 #: src/gui/charselectdialog.cpp:76
 msgid "Confirm Character Delete"
-msgstr "Confirmar la supresión del personaje"
+msgstr "Confirmar la eliminación del personaje"
 
 #: src/gui/charselectdialog.cpp:77
 msgid "Are you sure you want to delete this character?"
@@ -602,7 +602,7 @@ msgstr "¿Estás seguro de que deseas borrar este personaje?"
 
 #: src/gui/charselectdialog.cpp:125
 msgid "Account and Character Management"
-msgstr "Configuración de la cuenta y los personajes"
+msgstr "Administración de la Cuenta y los Personajes"
 
 #: src/gui/charselectdialog.cpp:138
 msgid "Switch Login"
@@ -650,7 +650,7 @@ msgstr "(vacío)"
 
 #: src/gui/chatwindow.cpp:112
 msgid "default"
-msgstr "Por defecto"
+msgstr "predeterminado"
 
 #: src/gui/chatwindow.cpp:113
 msgid "black"
@@ -724,7 +724,7 @@ msgstr "Presentes: %s; %d jugadores estan presentes."
 #: src/gui/chatwindow.cpp:996
 #, c-format
 msgid "Whispering to %s: %s"
-msgstr "Enviando mensaje privado para %s: %s"
+msgstr "Susurrando a %s: %s"
 
 #: src/gui/confirmdialog.cpp:47
 msgid "Yes"
@@ -801,7 +801,7 @@ msgstr "%d FPS (OpenGL rápido)"
 #: src/gui/debugwindow.cpp:171
 #, c-format
 msgid "%d FPS (old OpenGL)"
-msgstr "%d FPS (Antiguo OpenGL)"
+msgstr "%d FPS (OpenGL antiguo)"
 
 #: src/gui/debugwindow.cpp:178
 #, c-format
@@ -2072,11 +2072,11 @@ msgstr "Soporte de bots"
 
 #: src/gui/setup_other.cpp:150
 msgid "Enable auction bot support"
-msgstr ""
+msgstr "Habilitar soporte para auction bot"
 
 #: src/gui/setup_other.cpp:153
 msgid "Enable guild bot support and disable native guild support"
-msgstr ""
+msgstr "Habilitar soporte de bot clan y deshabilitar soporte de clan nativo"
 
 #: src/gui/setup_other.cpp:159
 msgid "Enable server side attack"
@@ -2200,7 +2200,7 @@ msgstr "Mostrar dirección IP en la captura de pantalla"
 
 #: src/gui/setup_players.cpp:81
 msgid "Allow self heal with mouse click"
-msgstr ""
+msgstr "Permitir curarse a sí mismo con clic del ratón"
 
 #: src/gui/setup_relations.cpp:65
 msgid "Relation"
@@ -2391,12 +2391,12 @@ msgstr "como partícula"
 
 #: src/gui/setup_video.cpp:302
 msgid "FPS limit:"
-msgstr "Limite FPS:"
+msgstr "Límite FPS:"
 
 #: src/gui/setup_video.cpp:306 src/gui/setup_video.cpp:341
 #: src/gui/setup_video.cpp:562 src/gui/setup_video.cpp:709
 msgid "Alt FPS limit: "
-msgstr "Limites alternativas FPS: "
+msgstr "Límite FPS alternativo: "
 
 #: src/gui/setup_video.cpp:315
 msgid "Video"
@@ -4218,7 +4218,7 @@ msgstr "Imitacion: "
 
 #: src/localplayer.cpp:3485 src/localplayer.cpp:3493
 msgid "Imitation canceled"
-msgstr "Imitar cancelado"
+msgstr "Imitación cancelada"
 
 #: src/localplayer.cpp:3845
 msgid "You see "
@@ -4390,7 +4390,7 @@ msgstr "Información"
 
 #: src/net/ea/charserverhandler.cpp:166
 msgid "Character deleted."
-msgstr "Personaje Borrado."
+msgstr "Personaje borrado."
 
 #: src/net/ea/charserverhandler.cpp:172
 msgid "Failed to delete character."
@@ -4799,8 +4799,8 @@ msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr ""
-"No, niños. Tu jugador no murió realmente. Solo... eeeh... fue a un lugar "
-"mejor ."
+"No, niños. Tu jugador no murió realmente. Sólo... eeeh... fue a un lugar "
+"mejor."
 
 #: src/net/ea/playerhandler.cpp:104 src/net/manaserv/beinghandler.cpp:323
 msgid ""
@@ -5016,7 +5016,7 @@ msgstr ""
 
 #: src/net/ea/tradehandler.cpp:134
 msgid "Trading isn't possible. Character doesn't exist."
-msgstr "Intercambio imposible. El personaje no existe."
+msgstr "El intercambio no es posible. El personaje no existe."
 
 #: src/net/ea/tradehandler.cpp:138
 msgid "Trade cancelled due to an unknown reason."
@@ -5042,7 +5042,7 @@ msgstr "Error al añadir objeto. El otro jugador lleva mucho peso."
 
 #: src/net/ea/tradehandler.cpp:236
 msgid "Failed adding item. Trade partner has no free slot."
-msgstr "Error al anadir objeto. El otro jugador no tiene más espacio."
+msgstr "Error al añadir objeto. El otro jugador no tiene más espacio."
 
 #: src/net/ea/tradehandler.cpp:241
 msgid "Failed adding item. You can't trade this item."
@@ -5136,7 +5136,7 @@ msgstr "Nombre no válido."
 
 #: src/net/manaserv/charhandler.cpp:154
 msgid "Character's name already exists."
-msgstr "Nombre del jugador ya existe."
+msgstr "Nombre del personaje ya existe."
 
 #: src/net/manaserv/charhandler.cpp:157
 msgid "Invalid hairstyle."
@@ -5477,7 +5477,7 @@ msgstr "Alcance de Ataque"
 
 #: src/net/tmwa/generalhandler.cpp:281
 msgid "Damage per sec."
-msgstr ""
+msgstr "Daño por segundo."
 
 #: src/net/tmwa/network.cpp:152
 msgid "Empty address given to Network::connect()!"
