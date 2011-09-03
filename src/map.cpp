@@ -2015,7 +2015,10 @@ void Map::reduce()
             {
                 MapLayer *layer = *ri;
                 if (x >= layer->mWidth || y >= layer->mHeight)
+                {
+                    ++ ri;
                     continue;
+                }
 
                 Image *img = layer->mTiles[x + y * layer->mWidth];
                 if (img && !img->isAlphaVisible())
