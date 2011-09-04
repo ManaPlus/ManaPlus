@@ -68,6 +68,8 @@ class PlayerHandler
 
         virtual int getJobLocation() const = 0;
 
+        virtual int getAttackLocation() const = 0;
+
         virtual Vector getDefaultWalkSpeed() const = 0;
 };
 

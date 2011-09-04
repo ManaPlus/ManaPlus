@@ -283,9 +283,7 @@ void ChatTab::chatLog(std::string line, Own own,
             {
                 if (player_node)
                 {
-                    std::string::size_type pos
-                        = tmp.text.find(player_node->getName());
-                    if (pos != std::string::npos)
+                    if (chatWindow && chatWindow->findHighlight(tmp.text))
                         setFlash(2);
                     else
                         setFlash(1);

@@ -24,6 +24,8 @@
 
 #include "actorspritemanager.h"
 
+#include "utils/stringutils.h"
+
 #include "debug.h"
 
 class SortGuildFunctor
@@ -33,10 +35,22 @@ class SortGuildFunctor
         {
             if (!m1 || !m2)
                 return false;
-            if (m1->getPos() != m2->getPos())
-                return m1->getPos() < m2->getPos();
 
-            return m1->getName() < m2->getName();
+            if (m1->getOnline() != m2->getOnline())
+                return m1->getOnline() > m2->getOnline();
+
+            if (m1->getPos() != m2->getPos())
+                return m1->getPos() > m2->getPos();
+
+            if (m1->getName() != m2->getName())
+            {
+                std::string s1 = m1->getName();
+                std::string s2 = m2->getName();
+                toLower(s1);
+                toLower(s2);
+                return s1 < s2;
+            }
+            return false;
         }
 } guildSorter;
 
@@ -66,7 +80,8 @@ Guild::GuildMap Guild::guilds;
 Guild::Guild(short id):
     mId(id),
     mCanInviteUsers(false),
-    mEmblemId(0)
+    mEmblemId(0),
+    mServerGuild(true)
 {
     guilds[id] = this;
 }

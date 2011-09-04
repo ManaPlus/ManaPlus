@@ -89,6 +89,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     setResizable(true);
     setCloseButton(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
 
     setDefaultSize(387, 307, ImageRect::CENTER);
     setMinWidth(316);

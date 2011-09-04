@@ -23,6 +23,7 @@
 #include "client.h"
 #include "main.h"
 
+#include "auctionmanager.h"
 #include "chatlogger.h"
 #include "configuration.h"
 #include "dropshortcut.h"
@@ -30,6 +31,7 @@
 #include "event.h"
 #include "game.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "keyboardconfig.h"
@@ -112,7 +114,6 @@
 #endif
 
 #include <sys/stat.h>
-#include <cassert>
 
 #include <iostream>
 #include <fstream>
@@ -254,9 +255,10 @@ Client::Client(const Options &options):
     mLimitFps(false),
     mConfigAutoSaved(false),
     mIsMinimized(false),
+    mInputFocused(true),
+    mMouseFocused(true),
     mGuiAlpha(1.0f)
 {
-    assert(!mInstance);
     mInstance = this;
 
     logger = new Logger;
@@ -540,7 +542,7 @@ Client::Client(const Options &options):
 
     loginData.username = mOptions.username;
     loginData.password = mOptions.password;
-    loginData.remember = serverConfig.getValue("remember", 0);
+    loginData.remember = serverConfig.getValue("remember", 1);
     loginData.registerLogin = false;
 
     if (mCurrentServer.hostname.empty())
@@ -786,12 +788,15 @@ int Client::exec()
             else
                 loginData.username = mOptions.username;
 
-            loginData.remember = serverConfig.getValue("remember", 0);
+            loginData.remember = serverConfig.getValue("remember", 1);
 
             Net::connectToServer(mCurrentServer);
 
             if (mumbleManager)
                 mumbleManager->setServer(mCurrentServer.hostname);
+
+            GuildManager::init();
+            AuctionManager::init();
 
             if (!mConfigAutoSaved)
             {
@@ -2179,4 +2184,15 @@ void Client::closeDialogs()
     BuySellDialog::closeAll();
     NpcDialog::closeAll();
     SellDialog::closeAll();
+}
+
+bool Client::isTmw()
+{
+    if (getServerName() == "server.themanaworld.org"
+        || Client::getServerName() == "themanaworld.org"
+        || Client::getServerName() == "81.161.192.4")
+    {
+        return true;
+    }
+    return false;
 }

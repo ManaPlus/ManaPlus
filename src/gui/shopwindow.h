@@ -151,9 +151,11 @@ class ShopWindow : public Window, public gcn::ActionListener,
         gcn::Button *mBuyAddButton;
         gcn::Button *mBuyDeleteButton;
         gcn::Button *mBuyAnnounceButton;
+        gcn::Button *mBuyAuctionButton;
         gcn::Button *mSellAddButton;
         gcn::Button *mSellDeleteButton;
         gcn::Button *mSellAnnounceButton;
+        gcn::Button *mSellAuctionButton;
         gcn::CheckBox *mAnnounceLinks;
 
         ShopItems *mBuyShopItems;

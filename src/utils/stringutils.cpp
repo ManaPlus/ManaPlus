@@ -181,9 +181,9 @@ unsigned long findI(std::string str, std::string subStr)
     return str.find(subStr);
 }
 
-unsigned long findI(std::string str, std::vector<std::string> &list)
+unsigned long findI(std::string text, std::vector<std::string> &list)
 {
-    str = toLower(str);
+    std::string str = toLower(text);
     unsigned long idx;
     for (std::vector<std::string>::iterator i = list.begin();
          i != list.end(); ++i)
@@ -414,6 +414,19 @@ std::list<std::string> splitToStringList(const std::string &text,
     return tokens;
 }
 
+void splitToStringVector(std::vector<std::string> &tokens,
+                         const std::string &text, char separator)
+{
+    std::stringstream ss(text);
+    std::string item;
+    while(std::getline(ss, item, separator))
+    {
+        item = trim(item);
+        if (!item.empty())
+            tokens.push_back(item);
+    }
+}
+
 std::string combineDye(std::string file, std::string dye)
 {
     if (dye.empty())
@@ -510,4 +523,66 @@ void deleteCharLeft(std::string &str, unsigned *pos)
         if ((v & 192) != 128)
             break;
     }
+}
+
+bool findLast(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(s1 - s2);
+    if (tmp == str2)
+        return true;
+    return false;
+}
+
+bool findFirst(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(0, s2);
+    if (tmp == str2)
+        return true;
+    return false;
+}
+
+bool findCutLast(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(s1 - s2);
+    if (tmp == str2)
+    {
+        str1 = str1.substr(0, s1 - s2);
+        return true;
+    }
+    return false;
+}
+
+bool findCutFirst(std::string &str1, std::string str2)
+{
+    const unsigned s1 = str1.size();
+    const unsigned s2 = str2.size();
+    if (s1 < s2)
+        return false;
+    std::string tmp = str1.substr(0, s2);
+    if (tmp == str2)
+    {
+        str1 = str1.substr(s2);
+        return true;
+    }
+    return false;
+}
+
+std::string &removeProtocol(std::string &url)
+{
+    int i = url.find("://");
+    if (i != (int)std::string::npos)
+        url = url.substr(i + 3);
+    return url;
 }

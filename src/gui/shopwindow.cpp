@@ -40,6 +40,7 @@
 #include "gui/widgets/tradetab.h"
 
 #include "actorspritemanager.h"
+#include "auctionmanager.h"
 #include "configuration.h"
 #include "confirmdialog.h"
 #include "inventory.h"
@@ -85,6 +86,7 @@ ShopWindow::ShopWindow():
     setWindowName("Personal Shop");
     setResizable(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(230);
     setDefaultSize(380, 300, ImageRect::CENTER);
@@ -140,6 +142,19 @@ ShopWindow::ShopWindow():
     place(11, 6, mSellAnnounceButton);
     place(0, 7, mAnnounceLinks, 8);
     place(15, 7, mCloseButton);
+
+    if (auctionManager && auctionManager->getEnableAuctionBot())
+    {
+        mBuyAuctionButton = new Button(_("Auction"), "auction buy", this);
+        mSellAuctionButton = new Button(_("Auction"), "auction sell", this);
+        place(4, 6, mBuyAuctionButton);
+        place(12, 6, mSellAuctionButton);
+    }
+    else
+    {
+        mBuyAuctionButton = 0;
+        mSellAuctionButton = 0;
+    }
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -206,6 +221,16 @@ void ShopWindow::action(const gcn::ActionEvent &event)
              && mSellShopItems->getNumberOfElements() > 0)
     {
         announce(mSellShopItems, SELL);
+    }
+    else if (event.getId() == "auction buy" && mBuyShopItems
+             && mBuyShopItems->getNumberOfElements() > 0)
+    {
+        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 seek");
+    }
+    else if (event.getId() == "auction sell" && mSellShopItems
+             && mSellShopItems->getNumberOfElements() > 0)
+    {
+        Net::getChatHandler()->privateMessage("AuctionBot", "!pull4144 offer");
     }
 
     if (mSelectedItem < 1)

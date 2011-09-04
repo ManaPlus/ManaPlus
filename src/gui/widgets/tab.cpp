@@ -77,6 +77,8 @@ Tab::Tab() : gcn::Tab(),
     mMode(0)
 {
     init();
+    mFlashColor = Theme::getThemeColor(Theme::TAB_FLASH);
+    mPlayerFlashColor = Theme::getThemeColor(Theme::TAB_PLAYER_FLASH);
 }
 
 Tab::~Tab()
@@ -177,12 +179,10 @@ void Tab::draw(gcn::Graphics *graphics)
         switch (mFlash)
         {
             case 1:
-                mLabel->setForegroundColor(Theme::getThemeColor(
-                    Theme::TAB_FLASH));
+                mLabel->setForegroundColor(mFlashColor);
                 break;
             case 2:
-                mLabel->setForegroundColor(Theme::getThemeColor(
-                    Theme::TAB_PLAYER_FLASH));
+                mLabel->setForegroundColor(mPlayerFlashColor);
                 break;
             default:
                 break;

@@ -72,6 +72,7 @@ void BuyDialog::init()
     setWindowName("Buy");
     setResizable(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(230);
     setDefaultSize(260, 230, ImageRect::CENTER);

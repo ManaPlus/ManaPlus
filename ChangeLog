@@ -1,3 +1,23 @@
+2011-09-04 New release 1.1.9.4
+ManaPlus:
+fix: compilation with different flags.
+fix: possible fix with incorrect camera position.
+fix: replace sprite issues.
+fix: some crashes.
+add: hightlight words list in chat.
+add: many colors for themes.
+add: alien emote (DerLoisl).
+add: basic auction bot integration.
+add: guild bot integration.
+add: impore guild members list sorting.
+add: auto download content fixes.
+add: show guild members on minimap.
+add: always show party members in minimap if on same map.
+add: lock windows position (at top right window corner).
+add: update mplus fonts.
+add: attribute damage per second.
+add: option to disable self heal with mouse.
+
 2011-08-21 New release 1.1.8.21
 ManaPlus:
 fix: moving near npc.

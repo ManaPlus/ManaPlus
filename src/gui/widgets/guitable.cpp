@@ -88,17 +88,17 @@ void GuiTableActionListener::action(const gcn::ActionEvent
 }
 
 
-GuiTable::GuiTable(TableModel *initial_model, gcn::Color background,
-                   bool opacity) :
+GuiTable::GuiTable(TableModel *initial_model, bool opacity) :
     mLinewiseMode(false),
     mWrappingEnabled(false),
     mOpaque(opacity),
-    mBackgroundColor(background),
     mModel(NULL),
     mSelectedRow(0),
     mSelectedColumn(0),
     mTopWidget(NULL)
 {
+    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     setModel(initial_model);
     setFocusable(true);
 
@@ -292,8 +292,8 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
     if (mOpaque)
     {
-        graphics->setColor(Theme::getThemeColor(Theme::BACKGROUND,
-                           static_cast<int>(mAlpha * 255.0f)));
+        mBackgroundColor.a = static_cast<int>(mAlpha * 255.0f);
+        graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
     }
 
@@ -304,7 +304,7 @@ void GuiTable::draw(gcn::Graphics* graphics)
         first_row = 0;
 
     unsigned rows_nr = 1 + (getHeight() / getRowHeight()); // May overestimate
-                                                      // by one.
+                                                           // by one.
 
     unsigned max_rows_nr;
     if (mModel->getRows() < first_row)
@@ -343,8 +343,8 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
                 widget->setDimension(bounds);
 
-                graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
-                        static_cast<int>(mAlpha * 255.0f)));
+                mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+                graphics->setColor(mHighlightColor);
 
                 if (mSelectedRow > 0)
                 {

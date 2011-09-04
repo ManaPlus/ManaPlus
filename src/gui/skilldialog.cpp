@@ -152,7 +152,9 @@ public:
     SkillListBox(SkillModel *model):
         ListBox(model),
         mModel(model),
-        mPopup(new TextPopup())
+        mPopup(new TextPopup()),
+        mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+        mTextColor(Theme::getThemeColor(Theme::TEXT))
     {
     }
 
@@ -187,8 +189,8 @@ public:
 
         Graphics *graphics = static_cast<Graphics*>(gcnGraphics);
 
-        graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
-                           static_cast<int>(mAlpha * 255.0f)));
+        mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+        graphics->setColor(mHighlightColor);
         graphics->setFont(getFont());
 
         // Draw filled rectangle around the selected list element
@@ -199,7 +201,7 @@ public:
         }
 
         // Draw the list elements
-        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+        graphics->setColor(mTextColor);
         for (int i = 0, y = 1;
              i < model->getNumberOfElements();
              ++i, y += getRowHeight())
@@ -239,6 +241,8 @@ public:
 private:
     SkillModel *mModel;
     TextPopup *mPopup;
+    gcn::Color mHighlightColor;
+    gcn::Color mTextColor;
 };
 
 class SkillTab : public Tab
@@ -275,6 +279,7 @@ SkillDialog::SkillDialog():
     setCloseButton(true);
     setResizable(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
     setDefaultSize(windowContainer->getWidth() - 280, 30, 275, 425);
     setupWindow->registerWindowForReset(this);
 

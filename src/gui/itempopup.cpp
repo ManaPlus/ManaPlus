@@ -32,6 +32,7 @@
 #include "gui/theme.h"
 
 #include "gui/widgets/icon.h"
+#include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
 
 #include "utils/gettext.h"
@@ -54,7 +55,7 @@ ItemPopup::ItemPopup():
     mLastColor(1)
 {
     // Item Name
-    mItemName = new gcn::Label;
+    mItemName = new Label;
     mItemName->setFont(boldFont);
     mItemName->setPosition(getPadding(), getPadding());
 

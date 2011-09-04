@@ -24,8 +24,6 @@
 
 #include "net/manaserv/network.h"
 
-#include <cassert>
-
 namespace ManaServ
 {
 

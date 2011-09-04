@@ -133,7 +133,7 @@ bool isWordSeparator(char chr);
 
 unsigned long findI(std::string str, std::string subStr);
 
-unsigned long findI(std::string str, std::vector<std::string> &list);
+unsigned long findI(std::string text, std::vector<std::string> &list);
 
 const std::string encodeStr(unsigned int value, unsigned int size = 0);
 
@@ -176,6 +176,9 @@ std::list<int> splitToIntList(const std::string &text, char separator);
 std::list<std::string> splitToStringList(const std::string &text,
                                          char separator);
 
+void splitToStringVector(std::vector<std::string> &tokens,
+                         const std::string &text, char separator);
+
 std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);
@@ -189,5 +192,15 @@ std::list<std::string> unpackList(const std::string &str);
 std::string stringToHexPath(const std::string &str);
 
 void deleteCharLeft(std::string &str, unsigned *pos);
+
+bool findLast(std::string &str1, std::string str2);
+
+bool findFirst(std::string &str1, std::string str2);
+
+bool findCutLast(std::string &str1, std::string str2);
+
+bool findCutFirst(std::string &str1, std::string str2);
+
+std::string &removeProtocol(std::string &url);
 
 #endif // UTILS_STRINGUTILS_H

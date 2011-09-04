@@ -918,7 +918,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
         }
     }
 
-    // Dont draw if gui opacity == 1
+    // Don't draw if gui opacity == 1
     if (mBeingOpacity && mOpacity != 1.0f)
     {
         // Draws beings with a lower opacity to make them visible
@@ -2015,7 +2015,10 @@ void Map::reduce()
             {
                 MapLayer *layer = *ri;
                 if (x >= layer->mWidth || y >= layer->mHeight)
+                {
+                    ++ ri;
                     continue;
+                }
 
                 Image *img = layer->mTiles[x + y * layer->mWidth];
                 if (img && !img->isAlphaVisible())

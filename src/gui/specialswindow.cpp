@@ -82,6 +82,7 @@ SpecialsWindow::SpecialsWindow():
     setCloseButton(true);
     setResizable(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
     setDefaultSize(windowContainer->getWidth() - 280, 30, 275, 425);
     setupWindow->registerWindowForReset(this);
 

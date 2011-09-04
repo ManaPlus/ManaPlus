@@ -58,7 +58,6 @@ class GuiTable : public gcn::Widget,
 
 public:
     GuiTable(TableModel * initial_model = NULL,
-             gcn::Color background = 0xffffff,
              bool opacity = true);
 
     virtual ~GuiTable();
@@ -190,6 +189,8 @@ private:
 
     /** Vector for compactness; used as a list in practice. */
     std::vector<GuiTableActionListener *> mActionListeners;
+
+    gcn::Color mHighlightColor;
 };
 
 

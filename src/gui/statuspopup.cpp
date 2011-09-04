@@ -28,6 +28,7 @@
 #include "gui/palette.h"
 #include "gui/viewport.h"
 
+#include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/textbox.h"
 
@@ -50,51 +51,51 @@ StatusPopup::StatusPopup():
 
     const int fontHeight = getFont()->getHeight();
 
-    mMoveType = new gcn::Label;
+    mMoveType = new Label;
     mMoveType->setPosition(getPadding(), getPadding());
 
-    mCrazyMoveType = new gcn::Label;
+    mCrazyMoveType = new Label;
     mCrazyMoveType->setPosition(getPadding(), fontHeight + getPadding());
 
-    mMoveToTargetType = new gcn::Label;
+    mMoveToTargetType = new Label;
     mMoveToTargetType->setPosition(getPadding(),
         2 * fontHeight + getPadding());
 
-    mFollowMode = new gcn::Label;
+    mFollowMode = new Label;
     mFollowMode->setPosition(getPadding(),  3 * fontHeight + getPadding());
 
-    mAttackWeaponType = new gcn::Label;
+    mAttackWeaponType = new Label;
     mAttackWeaponType->setPosition(getPadding(),
         4 + 4 * fontHeight + getPadding());
 
-    mAttackType = new gcn::Label;
+    mAttackType = new Label;
     mAttackType->setPosition(getPadding(), 4 + 5 * fontHeight + getPadding());
 
-    mMagicAttackType = new gcn::Label;
+    mMagicAttackType = new Label;
     mMagicAttackType->setPosition(getPadding(),
         4 + 6 * fontHeight + getPadding());
 
-    mDropCounter = new gcn::Label;
+    mDropCounter = new Label;
     mDropCounter->setPosition(getPadding(), 8 + 7 * fontHeight + getPadding());
 
-    mPickUpType = new gcn::Label;
+    mPickUpType = new Label;
     mPickUpType->setPosition(getPadding(), 8 + 8 * fontHeight + getPadding());
 
-    mMapType = new gcn::Label;
+    mMapType = new Label;
     mMapType->setPosition(getPadding(), 12 + 9 * fontHeight + getPadding());
 
-    mImitationMode = new gcn::Label;
+    mImitationMode = new Label;
     mImitationMode->setPosition(getPadding(),
         16 + 10 * fontHeight + getPadding());
 
-    mAwayMode = new gcn::Label;
+    mAwayMode = new Label;
     mAwayMode->setPosition(getPadding(), 16 + 11 * fontHeight + getPadding());
 
-    mCameraMode = new gcn::Label;
+    mCameraMode = new Label;
     mCameraMode->setPosition(getPadding(),
         16 + 12 * fontHeight + getPadding());
 
-    mDisableGameModifiers = new gcn::Label;
+    mDisableGameModifiers = new Label;
     mDisableGameModifiers->setPosition(getPadding(),
         20 + 13 * fontHeight + getPadding());
 

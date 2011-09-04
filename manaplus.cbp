@@ -109,6 +109,8 @@
 		<Unit filename="src\animatedsprite.h" />
 		<Unit filename="src\animationparticle.cpp" />
 		<Unit filename="src\animationparticle.h" />
+		<Unit filename="src\auctionmanager.cpp" />
+		<Unit filename="src\auctionmanager.h" />
 		<Unit filename="src\avatar.cpp" />
 		<Unit filename="src\avatar.h" />
 		<Unit filename="src\being.cpp" />
@@ -310,6 +312,8 @@
 		<Unit filename="src\gui\widgets\emoteshortcutcontainer.h" />
 		<Unit filename="src\gui\widgets\flowcontainer.cpp" />
 		<Unit filename="src\gui\widgets\flowcontainer.h" />
+		<Unit filename="src\gui\widgets\guildchattab.cpp" />
+		<Unit filename="src\gui\widgets\guildchattab.h" />
 		<Unit filename="src\gui\widgets\horizontcontainer.cpp" />
 		<Unit filename="src\gui\widgets\horizontcontainer.h" />
 		<Unit filename="src\gui\widgets\icon.cpp" />
@@ -394,6 +398,8 @@
 		<Unit filename="src\guichanfwd.h" />
 		<Unit filename="src\guild.cpp" />
 		<Unit filename="src\guild.h" />
+		<Unit filename="src\guildmanager.cpp" />
+		<Unit filename="src\guildmanager.h" />
 		<Unit filename="src\imageparticle.cpp" />
 		<Unit filename="src\imageparticle.h" />
 		<Unit filename="src\imagesprite.cpp" />

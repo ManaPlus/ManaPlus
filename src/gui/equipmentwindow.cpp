@@ -80,6 +80,8 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
 
     setCloseButton(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(180, 345, ImageRect::CENTER);
 
     mBoxes.reserve(13);
@@ -99,6 +101,9 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     add(mPlayerBox);
     add(mUnequip);
 
+    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+    mBorderColor = Theme::getThemeColor(Theme::BORDER);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 EquipmentWindow::~EquipmentWindow()
@@ -138,16 +143,15 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             continue;
         if (i == mSelected)
         {
-            const gcn::Color color = Theme::getThemeColor(Theme::HIGHLIGHT);
-
+            mHighlightColor.a = getGuiAlpha();
             // Set color to the highlight color
-            g->setColor(gcn::Color(color.r, color.g, color.b, getGuiAlpha()));
+            g->setColor(mHighlightColor);
             g->fillRectangle(gcn::Rectangle(box->first,
                 box->second, BOX_WIDTH, BOX_HEIGHT));
         }
 
         // Set color black
-        g->setColor(gcn::Color(0, 0, 0));
+        g->setColor(mBorderColor);
         // Draw box border
         g->drawRectangle(gcn::Rectangle(box->first, box->second,
             BOX_WIDTH, BOX_HEIGHT));
@@ -167,7 +171,7 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                 g->drawImage(image, box->first + 2, box->second + 2);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
-                    g->setColor(Theme::getThemeColor(Theme::TEXT));
+                    g->setColor(getForegroundColor());
                     graphics->drawText(toString(item->getQuantity()),
                         box->first + (BOX_WIDTH / 2),
                         box->second - fontHeight,

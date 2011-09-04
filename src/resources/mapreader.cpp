@@ -37,7 +37,6 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
-#include <cassert>
 #include <iostream>
 #include <zlib.h>
 
@@ -110,7 +109,8 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
         }
 
         ret = inflate(&strm, Z_NO_FLUSH);
-        assert(ret != Z_STREAM_ERROR);
+        if (ret == Z_STREAM_ERROR)
+            return ret;
 
         switch (ret)
         {
@@ -140,7 +140,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
         }
     }
     while (ret != Z_STREAM_END);
-    assert(strm.avail_in == 0);
+//    assert(strm.avail_in == 0);
 
     outLength = bufferSize - strm.avail_out;
     (void) inflateEnd(&strm);

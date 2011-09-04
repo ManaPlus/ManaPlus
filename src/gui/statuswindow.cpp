@@ -132,6 +132,7 @@ StatusWindow::StatusWindow():
     setResizable(true);
     setCloseButton(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
     setDefaultSize((windowContainer->getWidth() - 365) / 2,
                    (windowContainer->getHeight() - 255) / 2, 365, 275);
 
@@ -356,7 +357,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
 
                 if (!lvl)
                 {
-                    // possible server broken and dont send job level,
+                    // possible server broken and don't send job level,
                     // then we fixing it :)
                     if (exp.second < 20000)
                     {
@@ -372,7 +373,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
                 }
 
                 if (exp.first < oldExp && exp.second >= 20000)
-                {   // possible job level up. but server broken and dont send
+                {   // possible job level up. but server broken and don't send
                     // new job exp limit, we fixing it
                     lvl ++;
                     blocked = true;
@@ -889,7 +890,6 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.r = 100;
         col.g = 100;
         col.b = 100;
-//        bar->setColor(new gcn::Color(100, 100, 100));
         bar->setColor(col);
     }
     else
@@ -898,7 +898,6 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         col.r = 255;
         col.g = 255;
         col.b = 0;
-//        bar->setColor(new gcn::Color(255, 255, 0));
         bar->setColor(col);
     }
 }

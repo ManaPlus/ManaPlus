@@ -22,10 +22,12 @@
 
 #include "commandhandler.h"
 
+#include "auctionmanager.h"
 #include "actorspritemanager.h"
 #include "channelmanager.h"
 #include "channel.h"
 #include "game.h"
+#include "guildmanager.h"
 #include "localplayer.h"
 #include "logger.h"
 #include "main.h"
@@ -497,7 +499,12 @@ void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
                 return;
             const Guild *guild = player_node->getGuild();
             if (guild)
-                Net::getGuildHandler()->chat(guild->getId(), str);
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->chat(guild->getId(), str);
+                else if (guildManager)
+                    guildManager->chat(str);
+            }
             break;
         }
         default:
@@ -859,7 +866,8 @@ void CommandHandler::handleHack(const std::string &args, ChatTab *tab A_UNUSED)
 
 void CommandHandler::handleMail(const std::string &args, ChatTab *tab A_UNUSED)
 {
-    Net::getChatHandler()->privateMessage("AuctionBot", "!mail " + args);
+    if (auctionManager && auctionManager->getEnableAuctionBot())
+        auctionManager->sendMail(args);
 }
 
 void CommandHandler::handlePriceLoad(const std::string &args A_UNUSED,

@@ -51,6 +51,8 @@ DidYouKnowWindow::DidYouKnowWindow():
     setContentSize(455, 350);
     setWindowName("DidYouKnow");
     setResizable(true);
+    setStickyButtonLock(true);
+
     setupWindow->registerWindowForReset(this);
 
     setDefaultSize(500, 400, ImageRect::CENTER);

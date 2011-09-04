@@ -71,7 +71,7 @@ public:
             if (i->first < 0)
                 continue;
 
-            ItemInfo info = (*i->second);
+            const ItemInfo &info = (*i->second);
             std::string name = info.getName();
             if (name != "unnamed" && !info.getName().empty()
                 && info.getName() != "unnamed")

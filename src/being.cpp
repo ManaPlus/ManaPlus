@@ -79,7 +79,6 @@
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 
-#include <cassert>
 #include <cmath>
 
 #include "debug.h"
@@ -97,6 +96,7 @@ class BeingCacheEntry
             mId(id),
             mName(""),
             mPartyName(""),
+            mGuildName(""),
             mLevel(0),
             mPvpRank(0),
             mTime(0),
@@ -129,8 +129,14 @@ class BeingCacheEntry
         void setPartyName(const std::string &name)
         { mPartyName = name; }
 
+        void setGuildName(const std::string &name)
+        { mGuildName = name; }
+
         const std::string &getPartyName() const
         { return mPartyName; }
+
+        const std::string &getGuildName() const
+        { return mGuildName; }
 
         void setLevel(int n)
         { mLevel = n; }
@@ -172,6 +178,7 @@ class BeingCacheEntry
         int mId;                        /**< Unique sprite id */
         std::string mName;              /**< Name of character */
         std::string mPartyName;
+        std::string mGuildName;
         int mLevel;
         unsigned int mPvpRank;
         int mTime;
@@ -752,7 +759,6 @@ void Being::setGuildName(const std::string &name)
     mGuildName = name;
 }
 
-
 void Being::setGuildPos(const std::string &pos A_UNUSED)
 {
 //    logger->log("Got guild position \"%s\" for being %s(%i)", pos.c_str(), mName.c_str(), mId);
@@ -871,7 +877,11 @@ void Being::updateGuild()
         return;
     }
     if (guild->getMember(getName()))
+    {
         setGuild(guild);
+        if (!guild->getName().empty())
+            mGuildName = guild->getName();
+    }
     updateColors();
 }
 
@@ -1443,6 +1453,11 @@ int Being::getOffset(char pos, char neg) const
     if (mDirection & pos)
         offset = -offset;
 
+    if (offset > 32)
+        offset = 32;
+    if (offset < -32)
+        offset = -32;
+
     return offset;
 }
 
@@ -1769,6 +1784,7 @@ bool Being::updateFromCache()
         if (!entry->getName().empty())
             setName(entry->getName());
         setPartyName(entry->getPartyName());
+        setGuildName(entry->getGuildName());
         setLevel(entry->getLevel());
         setPvpRank(entry->getPvpRank());
         setIp(entry->getIp());
@@ -1820,6 +1836,7 @@ void Being::addToCache()
     entry->setName(getName());
     entry->setLevel(getLevel());
     entry->setPartyName(getPartyName());
+    entry->setGuildName(getGuildName());
     entry->setTime(cur_time);
     entry->setPvpRank(getPvpRank());
     entry->setIp(getIp());
@@ -2039,13 +2056,27 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
 
     int dx = static_cast<int>(static_cast<float>(width) / p);
 
+    if (!damage || (!hp && maxHP == damage))
+    {
+        graphics->setColor(userPalette->getColorWithAlpha(color1));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x, y, dx, height));
+        return;
+    }
+    else if (width - dx <= 0)
+    {
+        graphics->setColor(userPalette->getColorWithAlpha(color2));
+
+        graphics->fillRectangle(gcn::Rectangle(
+            x, y, width, height));
+        return;
+    }
+
     graphics->setColor(userPalette->getColorWithAlpha(color1));
 
     graphics->fillRectangle(gcn::Rectangle(
         x, y, dx, height));
-
-    if (width - dx <= 0)
-        return;
 
     graphics->setColor(userPalette->getColorWithAlpha(color2));
 

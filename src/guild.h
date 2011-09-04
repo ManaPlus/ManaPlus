@@ -178,10 +178,16 @@ public:
     void setEmblemId(int id)
     { mEmblemId = id; }
 
-    int getEmblemId()
+    int getEmblemId() const
     { return mEmblemId; }
 
     static void clearGuilds();
+
+    void setServerGuild(bool b)
+    { mServerGuild = b; }
+
+    bool getServerGuild() const
+    { return mServerGuild; }
 
 private:
     typedef std::map<int, Guild*> GuildMap;
@@ -199,6 +205,7 @@ private:
     bool mCanInviteUsers;
     int mEmblemId;
     PositionsMap mPositions;
+    bool mServerGuild;
 };
 
 #endif // GUILD_H

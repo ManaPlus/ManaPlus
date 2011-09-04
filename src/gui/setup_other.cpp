@@ -145,6 +145,15 @@ Setup_Other::Setup_Other()
         this, "logNpcInGuiEvent");
 
 
+    new SetupItemLabel(_("Bots support"), "", this);
+
+    new SetupItemCheckBox(_("Enable auction bot support"), "",
+        "enableAuctionBot", this, "enableAuctionBotEvent", false);
+
+    new SetupItemCheckBox(_("Enable guild bot support and disable native "
+        "guild support"), "", "enableGuildBot", this,
+        "enableGuildBotEvent", false);
+
     new SetupItemLabel(_("Other"), "", this);
 
     new SetupItemCheckBox(_("Enable server side attack"), "",

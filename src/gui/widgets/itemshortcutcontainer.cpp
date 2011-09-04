@@ -77,6 +77,9 @@ ItemShortcutContainer::ItemShortcutContainer(unsigned number):
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
+    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
 }
 
 ItemShortcutContainer::~ItemShortcutContainer()
@@ -119,7 +122,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         // Draw item keyboard shortcut.
         std::string key = keyboard.getKeyValueString(
             keyboard.KEY_SHORTCUT_1 + i);
-        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+        graphics->setColor(getForegroundColor());
 
         g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
 
@@ -154,14 +157,9 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                     image->setAlpha(1.0f);
                     g->drawImage(image, itemX, itemY);
                     if (item->isEquipped())
-                    {
-                        g->setColor(Theme::getThemeColor(
-                            Theme::ITEM_EQUIPPED));
-                    }
+                        g->setColor(mEquipedColor);
                     else
-                    {
-                        graphics->setColor(Theme::getThemeColor(Theme::TEXT));
-                    }
+                        g->setColor(mUnEquipedColor);
                     g->drawText(caption, itemX + mBoxWidth / 2,
                         itemY + mBoxHeight - 14, gcn::Graphics::CENTER);
                 }

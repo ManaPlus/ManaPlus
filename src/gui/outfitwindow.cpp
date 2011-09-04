@@ -32,6 +32,7 @@
 #include "playerinfo.h"
 
 #include "gui/chatwindow.h"
+#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/button.h"
@@ -71,11 +72,14 @@ OutfitWindow::OutfitWindow():
     setWindowName("Outfits");
     setResizable(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(250, 400, 150, 230);
     setMinWidth(145);
     setMinHeight(220);
 
-    addMouseListener(this);
+    mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
+    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
 
     mPreviousButton = new Button(_("<"), "previous", this);
     mNextButton = new Button(_(">"), "next", this);
@@ -303,9 +307,9 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
         const int itemX = 10 + ((i % mGridWidth) * mBoxWidth);
         const int itemY = 25 + ((i / mGridWidth) * mBoxHeight);
 
-        graphics->setColor(gcn::Color(0, 0, 0, 64));
+        graphics->setColor(mBorderColor);
         graphics->drawRectangle(gcn::Rectangle(itemX, itemY, 32, 32));
-        graphics->setColor(gcn::Color(255, 255, 255, 32));
+        graphics->setColor(mBackgroundColor);
         graphics->fillRectangle(gcn::Rectangle(itemX, itemY, 32, 32));
 
         if (mItems[mCurrentOutfit][i] < 0)

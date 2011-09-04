@@ -432,6 +432,11 @@ int PlayerHandler::getJobLocation() const
     return -1;
 }
 
+int PlayerHandler::getAttackLocation() const
+{
+    return -1;
+}
+
 Vector PlayerHandler::getDefaultWalkSpeed() const
 {
     // Return translation in pixels per ticks.

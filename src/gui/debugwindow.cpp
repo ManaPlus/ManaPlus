@@ -60,6 +60,8 @@ DebugWindow::DebugWindow():
     setResizable(true);
     setCloseButton(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(400, 150, ImageRect::CENTER);
 
     mTabs = new TabbedArea;

@@ -54,6 +54,8 @@
 
 const std::string xmlUpdateFile = "resources.xml";
 const std::string txtUpdateFile = "resources2.txt";
+const std::string updateServer2
+    = "http://download.evolonline.org/manaplus/updates/";
 
 std::vector<updateFile> loadXMLFile(const std::string &fileName);
 std::vector<updateFile> loadTxtFile(const std::string &fileName);
@@ -137,6 +139,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mDownloadStatus(UPDATE_NEWS),
     mUpdateHost(updateHost),
     mUpdatesDir(updatesDir),
+    mUpdatesDirReal(updatesDir),
     mCurrentFile("news.txt"),
     mDownloadProgress(0.0f),
     mCurrentChecksum(0),
@@ -147,6 +150,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mMemoryBuffer(NULL),
     mDownload(NULL),
     mUpdateIndex(0),
+    mUpdateIndexOffset(0),
     mLoadUpdates(applyUpdates),
     mUpdateType(updateType)
 {
@@ -180,6 +184,9 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     center();
     setVisible(true);
     mCancelButton->requestFocus();
+
+    mUpdateServerPath = mUpdateHost;
+    removeProtocol(mUpdateServerPath);
 
     // Try to download the updates list
     download();
@@ -539,8 +546,9 @@ void UpdaterWindow::logic()
         mProgressBar->setProgress(mDownloadProgress);
         if (mUpdateFiles.size() && mUpdateIndex <= mUpdateFiles.size())
         {
-            mProgressBar->setText(strprintf("%d/%d",
-                mUpdateIndex + 1, (int)mUpdateFiles.size() + 1));
+            mProgressBar->setText(strprintf("%d/%d", mUpdateIndex
+                + mUpdateIndexOffset + 1, (int)mUpdateFiles.size()
+                + (int)mTempUpdateFiles.size() + 1));
         }
         else
         {
@@ -582,13 +590,12 @@ void UpdaterWindow::logic()
                 // Parse current memory buffer as news and dispose of the data
                 loadPatch();
 
-/*
-                mCurrentFile = "news.txt";
-                mStoreInMemory = true;
-                mDownloadStatus = UPDATE_NEWS;
-                download(); // download() changes mDownloadComplete to false
-*/
-                mDownloadStatus = UPDATE_COMPLETE;
+                mUpdateHost = updateServer2 + mUpdateServerPath;
+                mUpdatesDir += "/fix";
+                mCurrentFile = xmlUpdateFile;
+                mStoreInMemory = false;
+                mDownloadStatus = UPDATE_LIST2;
+                download();
             }
             break;
 
@@ -681,7 +688,58 @@ void UpdaterWindow::logic()
                 }
             }
             break;
+        case UPDATE_LIST2:
+            if (mDownloadComplete)
+            {
+                if (mCurrentFile == xmlUpdateFile)
+                {
+                    mTempUpdateFiles = loadXMLFile(
+                        mUpdatesDir + "/" + xmlUpdateFile);
+                }
+                mUpdateIndexOffset = mUpdateIndex;
+                mUpdateIndex = 0;
+                mStoreInMemory = false;
+                mDownloadStatus = UPDATE_RESOURCES2;
+                download();
+            }
+            break;
+        case UPDATE_RESOURCES2:
+            if (mDownloadComplete)
+            {
+                if (mUpdateIndex < mTempUpdateFiles.size())
+                {
+                    updateFile thisFile = mTempUpdateFiles[mUpdateIndex];
+                    mCurrentFile = thisFile.name;
+                    std::string checksum;
+                    checksum = thisFile.hash;
+                    std::stringstream ss(checksum);
+                    ss >> std::hex >> mCurrentChecksum;
+
+                    std::ifstream temp(
+                            (mUpdatesDir + "/" + mCurrentFile).c_str());
+
+                    if (!temp.is_open() || !validateFile(mUpdatesDir + "/"
+                        + mCurrentFile, mCurrentChecksum))
+                    {
+                        temp.close();
+                        download();
+                    }
+                    else
+                    {
+                        temp.close();
+                        logger->log("%s already here", mCurrentFile.c_str());
+                    }
+                    mUpdateIndex++;
+                }
+                else
+                {
+                    mUpdatesDir = mUpdatesDirReal;
+                    mDownloadStatus = UPDATE_COMPLETE;
+                }
+            }
+            break;
         case UPDATE_COMPLETE:
+            mUpdatesDir = mUpdatesDirReal;
             enable();
             setLabel(_("Completed"));
             break;

@@ -24,8 +24,6 @@
 #include "joystick.h"
 #include "logger.h"
 
-#include <cassert>
-
 #include "debug.h"
 
 int Joystick::joystickCount = 0;
@@ -48,7 +46,8 @@ Joystick::Joystick(int no):
     mCalibrating(false),
     mEnabled(false)
 {
-    assert(no < joystickCount);
+    if (no >= joystickCount)
+        no = joystickCount;
 
     mJoystick = SDL_JoystickOpen(no);
 

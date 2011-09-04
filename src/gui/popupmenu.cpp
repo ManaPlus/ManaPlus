@@ -27,6 +27,7 @@
 #include "being.h"
 #include "dropshortcut.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "flooritem.h"
 #include "graphics.h"
 #include "item.h"
@@ -76,8 +77,6 @@
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
-
-#include <cassert>
 
 #include "debug.h"
 
@@ -224,14 +223,33 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         {
                             mBrowserBox->addRow(strprintf(
                                 "@@guild-kick|%s@@", _("Kick from guild")));
-                            mBrowserBox->addRow(strprintf("@@guild-pos|%s >@@",
+                            if (guild2->getServerGuild())
+                            {
+                                mBrowserBox->addRow(strprintf(
+                                    "@@guild-pos|%s >@@",
+                                    _("Change pos in guild")));
+                            }
+                        }
+                    }
+                    else if (guild2->getMember(mNick))
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild-kick|%s@@", _("Kick from guild")));
+                        if (guild2->getServerGuild())
+                        {
+                            mBrowserBox->addRow(strprintf(
+                                "@@guild-pos|%s >@@",
                                 _("Change pos in guild")));
                         }
                     }
                     else
                     {
-                        mBrowserBox->addRow(strprintf(
-                            "@@guild|%s@@", _("Invite to guild")));
+                        if (guild2->getServerGuild()
+                            || (guildManager && guildManager->havePower()))
+                        {
+                            mBrowserBox->addRow(strprintf(
+                                "@@guild|%s@@", _("Invite to guild")));
+                        }
                     }
                 }
 
@@ -435,15 +453,26 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     {
         if (guild2->getMember(mNick))
         {
-            mBrowserBox->addRow(strprintf(
-                "@@guild-kick|%s@@", _("Kick from guild")));
-            mBrowserBox->addRow(strprintf(
-                "@@guild-pos|%s >@@", _("Change pos in guild")));
+            if (guild2->getServerGuild() || (guildManager
+                && guildManager->havePower()))
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@guild-kick|%s@@", _("Kick from guild")));
+            }
+            if (guild2->getServerGuild())
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@guild-pos|%s >@@", _("Change pos in guild")));
+            }
         }
         else
         {
-            mBrowserBox->addRow(strprintf(
-                "@@guild|%s@@", _("Invite to guild")));
+            if (guild2->getServerGuild() || (guildManager
+                && guildManager->havePower()))
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@guild|%s@@", _("Invite to guild")));
+            }
         }
     }
 
@@ -574,7 +603,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
     if (tab->getRemoveNames())
     {
         mBrowserBox->addRow(strprintf("@@dont remove name|%s@@",
-                            _("Dont remove name")));
+                            _("Don't remove name")));
     }
     else
     {
@@ -725,16 +754,27 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                 {
                     if (guild1->getId() == guild2->getId())
                     {
-                        mBrowserBox->addRow(strprintf(
-                            "@@guild-kick|%s@@", _("Kick from guild")));
-                        mBrowserBox->addRow(strprintf(
-                            "@@guild-pos|%s >@@", _("Change pos in guild")));
+                        if (guild2->getServerGuild() || (guildManager
+                            && guildManager->havePower()))
+                        {
+                            mBrowserBox->addRow(strprintf(
+                                "@@guild-kick|%s@@", _("Kick from guild")));
+                        }
+                        if (guild2->getServerGuild())
+                        {
+                            mBrowserBox->addRow(strprintf("@@guild-pos|%s >@@",
+                                 _("Change pos in guild")));
+                        }
                     }
                 }
                 else
                 {
-                    mBrowserBox->addRow(strprintf(
-                        "@@guild|%s@@", _("Invite to guild")));
+                    if (guild2->getServerGuild() || (guildManager
+                        && guildManager->havePower()))
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@guild|%s@@", _("Invite to guild")));
+                    }
                 }
             }
         }
@@ -897,7 +937,12 @@ void PopupMenu::handleLink(const std::string &link,
         {
             const Guild *guild = player_node->getGuild();
             if (guild)
-                Net::getGuildHandler()->invite(guild->getId(), mNick);
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->invite(guild->getId(), mNick);
+                else if (guildManager)
+                    guildManager->invite(mNick);
+            }
         }
     }
     else if (link == "nuke" && being)
@@ -1263,7 +1308,12 @@ void PopupMenu::handleLink(const std::string &link,
         {
             const Guild *guild = player_node->getGuild();
             if (guild)
-                Net::getGuildHandler()->kick(guild->getMember(mNick));
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->kick(guild->getMember(mNick));
+                else if (guildManager)
+                    guildManager->kick(mNick);
+            }
         }
     }
     else if (link == "enable highlight" && mTab)

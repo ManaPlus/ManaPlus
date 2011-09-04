@@ -78,6 +78,7 @@ TradeWindow::TradeWindow():
     setWindowName("Trade");
     setResizable(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
     setDefaultSize(386, 180, ImageRect::CENTER);
     setMinWidth(386);
     setMinHeight(180);

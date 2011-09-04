@@ -101,6 +101,8 @@ class Button : public gcn::Button, public gcn::WidgetListener
         int mMode;
         int mXOffset;
         int mYOffset;
+        gcn::Color mEnabledColor;
+        gcn::Color mDisabledColor;
 };
 
 #endif

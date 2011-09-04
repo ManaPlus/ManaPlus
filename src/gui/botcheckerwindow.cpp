@@ -290,7 +290,6 @@ BotCheckerWindow::BotCheckerWindow():
     }
 
     mPlayerTitleTable = new GuiTable(mPlayerTableTitleModel);
-    //mPlayerTitleTable->setBackgroundColor(gcn::Color(0xbf, 0xbf, 0xbf));
     mPlayerTitleTable->setHeight(1);
 
     mPlayerTableTitleModel->set(0, 0, new Label(_("Name")));
@@ -303,6 +302,7 @@ BotCheckerWindow::BotCheckerWindow():
 
     setWindowName("BotCheckerWindow");
     setCloseButton(true);
+    setStickyButtonLock(true);
     setDefaultSize(w, h, ImageRect::CENTER);
 
     playersScrollArea = new ScrollArea(mTable);

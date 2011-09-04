@@ -120,6 +120,11 @@ Setup_Chat::Setup_Chat()
     new SetupItemCheckBox(_("Use local time"), "",
         "useLocalTime", this, "useLocalTimeEvent");
 
+    new SetupItemLabel(_("Other"), "", this);
+
+    new SetupItemTextField(_("Highlight words (separated by comma)"), "",
+        "highlightWords", this, "highlightWordsEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
@@ -128,5 +133,8 @@ void Setup_Chat::apply()
     SetupTabScroll::apply();
 
     if (chatWindow)
+    {
         chatWindow->adjustTabSize();
+        chatWindow->parseHighlights();
+    }
 }

@@ -59,6 +59,8 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
 
     mLoseFocusOnTab = loseFocusOnTab;
 
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+
     if (instances == 0)
     {
         // Load the skin
@@ -136,7 +138,7 @@ void TextField::draw(gcn::Graphics *graphics)
                   mXScroll);
     }
 
-    graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+    graphics->setColor(getForegroundColor());
     graphics->setFont(getFont());
     graphics->drawText(mText, 1 - mXScroll, 1);
 }

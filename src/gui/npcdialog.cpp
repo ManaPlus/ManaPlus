@@ -69,6 +69,7 @@ NpcDialog::NpcDialog(int npcId)
     setResizable(true);
     //setupWindow->registerWindowForReset(this);
     setFocusable(true);
+    setStickyButtonLock(true);
 
     setMinWidth(200);
     setMinHeight(150);

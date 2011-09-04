@@ -599,6 +599,7 @@ static int readColorType(const std::string &type)
         "TEXT",
         "SHADOW",
         "OUTLINE",
+        "BORDER",
         "PROGRESS_BAR",
         "BUTTON",
         "BUTTON_DISABLED",
@@ -608,11 +609,15 @@ static int readColorType(const std::string &type)
         "GUILD_CHAT_TAB",
         "GUILD_SOCIAL_TAB",
         "BACKGROUND",
+        "BACKGROUND_GRAY",
+        "SCROLLBAR_GRAY",
+        "DROPDOWN_SHADOW",
         "HIGHLIGHT",
         "TAB_FLASH",
         "TAB_PLAYER_FLASH",
         "SHOP_WARNING",
         "ITEM_EQUIPPED",
+        "ITEM_NOT_EQUIPPED",
         "CHAT",
         "GM",
         "PLAYER",
@@ -639,7 +644,16 @@ static int readColorType(const std::string &type)
         "SERVER_VERSION_NOT_SUPPORTED",
         "WARNING",
         "CHARM",
-        "PLAYER_ADVANCED"
+        "PLAYER_ADVANCED",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "ORANGE",
+        "YELLOW",
+        "PINK",
+        "PURPLE",
+        "GRAY",
+        "BROWN"
     };
 
     if (type.empty())

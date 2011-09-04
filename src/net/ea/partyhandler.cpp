@@ -359,6 +359,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
 
         if (socialWindow && Ea::taParty)
             socialWindow->removeTab(Ea::taParty);
+        player_node->setPartyName("");
     }
     else
     {
@@ -372,7 +373,10 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
         {
             Being *b = actorSpriteManager->findBeing(id);
             if (b && b->getType() == Being::PLAYER)
+            {
                 b->setParty(0);
+                b->setPartyName("");
+            }
         }
         if (Ea::taParty)
             Ea::taParty->removeMember(id);

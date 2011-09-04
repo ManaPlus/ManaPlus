@@ -23,6 +23,7 @@
 
 #include "actorspritemanager.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -108,10 +109,10 @@ protected:
     AvatarListBox *mList;
 };
 
-class GuildTab : public SocialTab, public gcn::ActionListener
+class SocialGuildTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    GuildTab(Guild *guild):
+    SocialGuildTab(Guild *guild):
             mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -125,7 +126,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    ~GuildTab()
+    ~SocialGuildTab()
     {
         delete mList;
         mList = 0;
@@ -206,10 +207,113 @@ private:
     Guild *mGuild;
 };
 
-class PartyTab : public SocialTab, public gcn::ActionListener
+class SocialGuildTab2 : public SocialTab, public gcn::ActionListener
 {
 public:
-    PartyTab(Party *party):
+    SocialGuildTab2(Guild *guild):
+              mGuild(guild)
+    {
+        setCaption(_("Guild"));
+
+        setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
+
+        mList = new AvatarListBox(guild);
+        mScroll = new ScrollArea(mList);
+
+        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+    }
+
+    ~SocialGuildTab2()
+    {
+        delete mList;
+        mList = 0;
+        delete mScroll;
+        mScroll = 0;
+    }
+
+    void action(const gcn::ActionEvent &event)
+    {
+/*
+        if (event.getId() == "do invite")
+        {
+            std::string name = mInviteDialog->getText();
+            Net::getGuildHandler()->invite(mGuild->getId(), name);
+
+            if (localChatTab)
+            {
+                localChatTab->chatLog(strprintf(
+                    _("Invited user %s to guild %s."),
+                    name.c_str(), mGuild->getName().c_str()), BY_SERVER);
+            }
+            mInviteDialog = 0;
+        }
+        else if (event.getId() == "~do invite")
+        {
+            mInviteDialog = 0;
+        }
+        else if (event.getId() == "yes")
+        {
+            Net::getGuildHandler()->leave(mGuild->getId());
+            if (localChatTab)
+            {
+                localChatTab->chatLog(strprintf(_("Guild %s quit requested."),
+                                      mGuild->getName().c_str()), BY_SERVER);
+            }
+            mConfirmDialog = 0;
+        }
+        else if (event.getId() == "~yes")
+        {
+            mConfirmDialog = 0;
+        }
+*/
+    }
+
+    void updateList()
+    {
+    }
+
+    void updateAvatar(std::string name A_UNUSED)
+    {
+    }
+
+    void resetDamage(std::string name A_UNUSED)
+    {
+    }
+
+protected:
+    void invite()
+    {
+/*
+        mInviteDialog = new TextDialog(_("Member Invite to Guild"),
+                     strprintf(_("Who would you like to invite to guild %s?"),
+                               mGuild->getName().c_str()),
+                     socialWindow);
+        mInviteDialog->setActionEventId("do invite");
+        mInviteDialog->addActionListener(this);
+*/
+    }
+
+    void leave()
+    {
+/*
+        mConfirmDialog = new ConfirmDialog(_("Leave Guild?"),
+                       strprintf(_("Are you sure you want to leave guild %s?"),
+                                 mGuild->getName().c_str()),
+                       socialWindow);
+
+        mConfirmDialog->addActionListener(this);
+*/
+    }
+
+private:
+    Guild *mGuild;
+};
+
+class SocialPartyTab : public SocialTab, public gcn::ActionListener
+{
+public:
+    SocialPartyTab(Party *party):
             mParty(party)
     {
         setCaption(_("Party"));
@@ -223,7 +327,7 @@ public:
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
     }
 
-    ~PartyTab()
+    ~SocialPartyTab()
     {
         delete mList;
         mList = 0;
@@ -340,10 +444,10 @@ public:
     std::vector<Avatar*> mMembers;
 };
 
-class PlayersTab : public SocialTab
+class SocialPlayersTab : public SocialTab
 {
 public:
-    PlayersTab(std::string name)
+    SocialPlayersTab(std::string name)
     {
         mBeings = new BeingsListModal();
 
@@ -358,7 +462,7 @@ public:
         setCaption(name);
     }
 
-    ~PlayersTab()
+    ~SocialPlayersTab()
     {
         delete mList;
         mList = 0;
@@ -505,10 +609,10 @@ private:
 };
 
 
-class NavigationTab : public SocialTab
+class SocialNavigationTab : public SocialTab
 {
 public:
-    NavigationTab()
+    SocialNavigationTab()
     {
         mBeings = new BeingsListModal();
 
@@ -522,7 +626,7 @@ public:
 
     }
 
-    ~NavigationTab()
+    ~SocialNavigationTab()
     {
         delete mList;
         mList = 0;
@@ -783,10 +887,10 @@ protected:
 };
 
 
-class AttackTab : public SocialTab
+class SocialAttackTab : public SocialTab
 {
 public:
-    AttackTab()
+    SocialAttackTab()
     {
         mBeings = new BeingsListModal();
 
@@ -799,7 +903,7 @@ public:
         setCaption(_("Atk"));
     }
 
-    ~AttackTab()
+    ~SocialAttackTab()
     {
         delete mList;
         mList = 0;
@@ -1025,6 +1129,8 @@ SocialWindow::SocialWindow() :
     setResizable(true);
     setSaveVisible(true);
     setCloseButton(true);
+    setStickyButtonLock(true);
+
     setMinWidth(120);
     setMinHeight(55);
     setDefaultSize(590, 200, 150, 120);
@@ -1046,15 +1152,15 @@ SocialWindow::SocialWindow() :
 
     loadWindowState();
 
-    mPlayers = new PlayersTab("P");
+    mPlayers = new SocialPlayersTab("P");
     mTabs->addTab(mPlayers, mPlayers->mScroll);
 
-    mNavigation = new NavigationTab();
+    mNavigation = new SocialNavigationTab();
     mTabs->addTab(mNavigation, mNavigation->mScroll);
 
     if (config.getBoolValue("enableAttackFilter"))
     {
-        mAttackFilter = new AttackTab();
+        mAttackFilter = new SocialAttackTab();
         mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
     }
     else
@@ -1106,9 +1212,13 @@ bool SocialWindow::addTab(Guild *guild)
     if (mGuilds.find(guild) != mGuilds.end())
         return false;
 
-    GuildTab *tab = new GuildTab(guild);
-    mGuilds[guild] = tab;
+    SocialTab *tab = 0;
+    if (guild->getServerGuild())
+        tab = new SocialGuildTab(guild);
+    else
+        tab = new SocialGuildTab2(guild);
 
+    mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);
 
     updateButtons();
@@ -1136,7 +1246,7 @@ bool SocialWindow::addTab(Party *party)
     if (mParties.find(party) != mParties.end())
         return false;
 
-    PartyTab *tab = new PartyTab(party);
+    SocialPartyTab *tab = new SocialPartyTab(party);
     mParties[party] = tab;
 
     mTabs->addTab(tab, tab->mScroll);
@@ -1203,7 +1313,10 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                     strprintf(_("Accepted guild invite from %s."),
                     mPartyInviter.c_str()));
             }
-            Net::getGuildHandler()->inviteResponse(mGuildInvited, true);
+            if (!guildManager || !GuildManager::getEnableGuildBot())
+                Net::getGuildHandler()->inviteResponse(mGuildInvited, true);
+            else
+                guildManager->inviteResponse(true);
         }
         else if (eventId == "no")
         {
@@ -1213,7 +1326,10 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                     strprintf(_("Rejected guild invite from %s."),
                     mPartyInviter.c_str()));
             }
-            Net::getGuildHandler()->inviteResponse(mGuildInvited, false);
+            if (!guildManager || !GuildManager::getEnableGuildBot())
+                Net::getGuildHandler()->inviteResponse(mGuildInvited, false);
+            else
+                guildManager->inviteResponse(false);
         }
 
         mGuildInvited = 0;
@@ -1449,7 +1565,7 @@ void SocialWindow::updatePortals()
 void SocialWindow::updatePortalNames()
 {
     if (mNavigation)
-        static_cast<NavigationTab*>(mNavigation)->updateNames();
+        static_cast<SocialNavigationTab*>(mNavigation)->updateNames();
 }
 
 void SocialWindow::selectPortal(unsigned num)
@@ -1461,21 +1577,26 @@ void SocialWindow::selectPortal(unsigned num)
 int SocialWindow::getPortalIndex(int x, int y)
 {
     if (mNavigation)
-        return static_cast<NavigationTab*>(mNavigation)->getPortalIndex(x, y);
+    {
+        return static_cast<SocialNavigationTab*>(
+            mNavigation)->getPortalIndex(x, y);
+    }
     else
+    {
         return -1;
+    }
 }
 
 void SocialWindow::addPortal(int x, int y)
 {
     if (mNavigation)
-        static_cast<NavigationTab*>(mNavigation)->addPortal(x, y);
+        static_cast<SocialNavigationTab*>(mNavigation)->addPortal(x, y);
 }
 
 void SocialWindow::removePortal(int x, int y)
 {
     if (mNavigation)
-        static_cast<NavigationTab*>(mNavigation)->removePortal(x, y);
+        static_cast<SocialNavigationTab*>(mNavigation)->removePortal(x, y);
 }
 
 void SocialWindow::nextTab()

@@ -158,6 +158,10 @@ public:
     ServersListBox(ServersListModel *model):
             ListBox(model)
     {
+        mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
+        mTextColor = Theme::getThemeColor(Theme::TEXT);
+        mNotSupportedColor = Theme::getThemeColor(
+            Theme::SERVER_VERSION_NOT_SUPPORTED);
     }
 
     void draw(gcn::Graphics *graphics)
@@ -169,20 +173,18 @@ public:
 
         updateAlpha();
 
-        graphics->setColor(Theme::getThemeColor(Theme::HIGHLIGHT,
-                static_cast<int>(mAlpha * 255.0f)));
+        mHighlightColor.a = static_cast<int>(mAlpha * 255.0f);
+        graphics->setColor(mHighlightColor);
         graphics->setFont(getFont());
 
         const int height = getRowHeight();
-        const gcn::Color unsupported =
-                Theme::getThemeColor(Theme::SERVER_VERSION_NOT_SUPPORTED,
-                                     static_cast<int>(mAlpha * 255.0f));
+        mNotSupportedColor.a = static_cast<int>(mAlpha * 255.0f);
 
         // Draw filled rectangle around the selected list element
         if (mSelected >= 0)
         {
-            graphics->fillRectangle(gcn::Rectangle(0, height * mSelected,
-                                                   getWidth(), height));
+            graphics->fillRectangle(gcn::Rectangle(0,
+                height * mSelected, getWidth(), height));
         }
 
         // Draw the list elements
@@ -191,7 +193,7 @@ public:
         {
             ServerInfo info = model->getServer(i);
 
-            graphics->setColor(Theme::getThemeColor(Theme::TEXT));
+            graphics->setColor(mTextColor);
 
             int top;
 
@@ -212,7 +214,7 @@ public:
 
             if (info.version.first > 0)
             {
-                graphics->setColor(unsupported);
+                graphics->setColor(mNotSupportedColor);
 
                 graphics->drawText(info.version.second,
                                    getWidth() - info.version.first - 2, top);
@@ -224,6 +226,10 @@ public:
     {
         return 2 * getFont()->getHeight();
     }
+private:
+    gcn::Color mHighlightColor;
+    gcn::Color mTextColor;
+    gcn::Color mNotSupportedColor;
 };
 
 

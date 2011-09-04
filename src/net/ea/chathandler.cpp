@@ -25,6 +25,7 @@
 #include "actorspritemanager.h"
 #include "being.h"
 #include "configuration.h"
+#include "guildmanager.h"
 #include "localplayer.h"
 #include "playerrelations.h"
 #include "logger.h"
@@ -161,6 +162,12 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
 
     if (nick != "Server")
     {
+        if (guildManager && GuildManager::getEnableGuildBot()
+            && nick == "guild" && guildManager->processGuildMessage(chatMsg))
+        {
+            return;
+        }
+
         if (player_relations.hasPermission(
             nick, PlayerRelation::WHISPER))
         {

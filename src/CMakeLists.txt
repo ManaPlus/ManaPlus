@@ -139,6 +139,8 @@ SET(SRCS
     gui/widgets/emoteshortcutcontainer.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
+    gui/widgets/guildchattab.cpp
+    gui/widgets/guildchattab.h
     gui/widgets/horizontcontainer.cpp
     gui/widgets/horizontcontainer.h
     gui/widgets/icon.cpp
@@ -468,6 +470,8 @@ SET(SRCS
     animatedsprite.h
     animationparticle.cpp
     animationparticle.h
+    auctionmanager.cpp
+    auctionmanager.h
     avatar.cpp
     avatar.h
     being.cpp
@@ -510,6 +514,8 @@ SET(SRCS
     guichanfwd.h
     guild.cpp
     guild.h
+    guildmanager.cpp
+    guildmanager.h
     imageparticle.cpp
     imageparticle.h
     imagesprite.cpp

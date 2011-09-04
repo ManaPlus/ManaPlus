@@ -68,7 +68,9 @@ LayoutArray &LayoutCell::getArray()
 
 void LayoutCell::reflow(int nx, int ny, int nw, int nh)
 {
-    assert(mType != NONE);
+    if (mType == NONE)
+        return;
+
     nx += mHPadding;
     ny += mVPadding;
     nw -= 2 * mHPadding;
@@ -81,7 +83,8 @@ void LayoutCell::reflow(int nx, int ny, int nw, int nh)
 
 void LayoutCell::computeSizes()
 {
-    assert(mType == ARRAY);
+    if (mType != ARRAY)
+        return;
 
     std::vector< std::vector< LayoutCell * > >::iterator
         i = mArray->mCells.begin();

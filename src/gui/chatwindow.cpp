@@ -167,6 +167,8 @@ ChatWindow::ChatWindow():
     setResizable(true);
     setDefaultVisible(true);
     setSaveVisible(true);
+    setStickyButtonLock(true);
+
     setDefaultSize(600, 123, ImageRect::LOWER_LEFT);
     setMinWidth(150);
     setMinHeight(90);
@@ -211,6 +213,7 @@ ChatWindow::ChatWindow():
     fillCommands();
     initTradeFilter();
     loadCustomList();
+    parseHighlights();
 }
 
 ChatWindow::~ChatWindow()
@@ -659,7 +662,7 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     if (event.isConsumed())
         return;
 
-    if (isMovable() && mMoved)
+    if (canMove() && isMovable() && mMoved)
     {
         int newX = std::max(0, getX() + event.getX() - mDragOffsetX);
         int newY = std::max(0, getY() + event.getY() - mDragOffsetY);
@@ -1458,12 +1461,8 @@ void ChatWindow::saveState()
 
 std::string ChatWindow::doReplace(const std::string &msg)
 {
-    if (Client::getServerName() == "server.themanaworld.org"
-        || Client::getServerName() == "themanaworld.org"
-        || Client::getServerName() == "81.161.192.4")
-    {
+    if (Client::isTmw())
         return msg;
-    }
 
     std::string str = msg;
     replaceSpecialChars(str);
@@ -1503,7 +1502,7 @@ void ChatWindow::addToAwayLog(std::string line)
     if (mAwayLog.size() > 20)
         mAwayLog.pop_front();
 
-    if (line.find(player_node->getName()) != std::string::npos)
+    if (findI(line, mHighlights) != std::string::npos)
         mAwayLog.push_back("##9away:" + line);
 }
 
@@ -1519,4 +1518,21 @@ void ChatWindow::displayAwayLog()
         localChatTab->addNewRow(*i);
         ++i;
     }
+}
+
+void ChatWindow::parseHighlights()
+{
+    mHighlights.clear();
+    if (!player_node)
+        return;
+
+    splitToStringVector(mHighlights, config.getStringValue(
+        "highlightWords"), ',');
+
+    mHighlights.push_back(player_node->getName());
+}
+
+bool ChatWindow::findHighlight(std::string &str)
+{
+    return findI(str, mHighlights) != std::string::npos;
 }

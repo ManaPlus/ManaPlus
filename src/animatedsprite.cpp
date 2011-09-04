@@ -32,8 +32,6 @@
 
 #include "utils/xml.h"
 
-#include <cassert>
-
 #include "debug.h"
 
 AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
@@ -46,8 +44,6 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
     mAnimation(0),
     mFrame(0)
 {
-//    assert(mSprite);
-
     mAlpha = 1.0f;
 
     // Take possession of the sprite

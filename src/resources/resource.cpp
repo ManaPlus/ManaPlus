@@ -27,8 +27,6 @@
 
 #include "resources/resourcemanager.h"
 
-#include <cassert>
-
 #include "debug.h"
 
 Resource::~Resource()

@@ -81,6 +81,7 @@ SpellShortcutContainer::SpellShortcutContainer(unsigned number):
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 SpellShortcutContainer::~SpellShortcutContainer()
@@ -106,11 +107,10 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
 
     Graphics *g = static_cast<Graphics*>(graphics);
 
-    graphics->setColor(gcn::Color(0, 0, 0, 255));
     graphics->setFont(getFont());
 
     int selectedId = spellShortcut->getSelectedItem();
-    g->setColor(Theme::getThemeColor(Theme::TEXT));
+    g->setColor(getForegroundColor());
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {

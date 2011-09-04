@@ -156,6 +156,9 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
         int mYOffset;
         int mDrawWidth;
         int mDrawHeight;
+
+        gcn::Color mGray;
+        gcn::Color mBackground;
 };
 
 #endif

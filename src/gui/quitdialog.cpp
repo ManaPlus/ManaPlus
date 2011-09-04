@@ -41,23 +41,17 @@
 
 #include "utils/gettext.h"
 
-#include <assert.h>
-
 #include "debug.h"
 
 QuitDialog::QuitDialog(QuitDialog** pointerToMe):
     Window(_("Quit"), true, NULL), mMyPointer(pointerToMe)
 {
-//    int width = 200;
-//    int height = 120;
-
     mForceQuit = new RadioButton(_("Quit"), "quitdialog");
     mLogoutQuit = new RadioButton(_("Quit"), "quitdialog");
     mSwitchAccountServer = new RadioButton(_("Switch server"), "quitdialog");
     mSwitchCharacter = new RadioButton(_("Switch character"), "quitdialog");
     mOkButton = new Button(_("OK"), "ok", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
-//    setContentSize(width, height);
 
     addKeyListener(this);
 
@@ -149,10 +143,11 @@ void QuitDialog::action(const gcn::ActionEvent &event)
         }
         else if (mSwitchCharacter->isSelected())
         {
-            assert(Client::getState() == STATE_GAME);
-
-            Net::getCharHandler()->switchCharacter();
-            Client::closeDialogs();
+            if (Client::getState() == STATE_GAME)
+            {
+                Net::getCharHandler()->switchCharacter();
+                Client::closeDialogs();
+            }
         }
     }
     scheduleDelete();

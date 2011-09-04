@@ -147,27 +147,18 @@ class BrowserBox : public gcn::Widget,
             AUTO_WRAP       /**< Maybe it needs a fix or to be redone. */
         };
 
-        /**
-         * BrowserBox colors.
-         *
-         * NOTES (by Javila):
-         *  - color values is "0x" prefix followed by HTML color style.
-         *  - we can add up to 10 different colors: [0..9].
-         *  - not all colors will be fine with all backgrounds due transparent
-         *    windows and widgets. So, I think it's better keep BrowserBox
-         *    opaque (white background) by default.
-         */
         enum
         {
-            RED = 0xff0000,         /**< Color 1 */
-            GREEN = 0x009000,       /**< Color 2 */
-            BLUE = 0x0000ff,        /**< Color 3 */
-            ORANGE = 0xe0980e,      /**< Color 4 */
-            YELLOW = 0xf1dc27,      /**< Color 5 */
-            PINK = 0xff00d8,        /**< Color 6 */
-            PURPLE = 0x8415e2,      /**< Color 7 */
-            GRAY = 0x919191,        /**< Color 8 */
-            BROWN = 0x8e4c17        /**< Color 9 */
+            RED = 0,
+            GREEN = 1,
+            BLUE = 2,
+            ORANGE = 3,
+            YELLOW = 4,
+            PINK = 5,
+            PURPLE = 6,
+            GRAY = 7,
+            BROWN = 8,
+            COLORS_MAX = 9
         };
 
         /**
@@ -225,6 +216,11 @@ class BrowserBox : public gcn::Widget,
         bool mAlwaysUpdate;
         bool mProcessVersion;
         bool mEnableImages;
+
+        gcn::Color mBackgroundColor;
+        gcn::Color mHighlightColor;
+        gcn::Color mHyperLinkColor;
+        gcn::Color mColors[COLORS_MAX];
 };
 
 #endif

@@ -60,6 +60,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     mSaveVisible(false),
     mStickyButton(false),
     mSticky(false),
+    mStickyButtonLock(false),
     mMinWinWidth(100),
     mMinWinHeight(40),
     mMaxWinWidth(graphics->mWidth),
@@ -95,6 +96,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
 
     addWidgetListener(this);
     mCaptionFont = getFont();
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 Window::~Window()
@@ -146,15 +148,10 @@ void Window::draw(gcn::Graphics *graphics)
 
     g->drawImageRect2(mVertexes, mSkin->getBorder());
 
-/*
-    g->drawImageRect(0, 0, getWidth(),
-            getHeight(), mSkin->getBorder());
-*/
-
     // Draw title
     if (mShowTitle)
     {
-        g->setColor(Theme::getThemeColor(Theme::TEXT));
+        g->setColor(getForegroundColor());
         g->setFont(mCaptionFont);
         g->drawText(getCaption(), 7, 5, gcn::Graphics::LEFT);
     }
@@ -162,9 +159,9 @@ void Window::draw(gcn::Graphics *graphics)
     // Draw Close Button
     if (mCloseButton && mSkin->getCloseImage())
     {
-        g->drawImage(mSkin->getCloseImage(),
-            getWidth() - mSkin->getCloseImage()->getWidth() - getPadding(),
-            getPadding());
+        Image *button = mSkin->getCloseImage();
+        const int x = getWidth() - button->getWidth() - getPadding();
+        g->drawImage(button, x, getPadding());
     }
 
     // Draw Sticky Button
@@ -175,7 +172,7 @@ void Window::draw(gcn::Graphics *graphics)
         {
             int x = getWidth() - button->getWidth() - getPadding();
             if (mCloseButton && mSkin->getCloseImage())
-                x -= mSkin->getCloseImage()->getWidth();
+                x -= mSkin->getCloseImage()->getWidth() + getPadding();
 
             g->drawImage(button, x, getPadding());
         }
@@ -371,7 +368,7 @@ void Window::widgetHidden(const gcn::Event &event A_UNUSED)
     if (gui)
         gui->setCursorType(Gui::CURSOR_POINTER);
 
-    WidgetListIterator it;
+    WidgetListConstIterator it;
 
     if (!mFocusHandler)
         return;
@@ -403,6 +400,13 @@ void Window::setSticky(bool sticky)
     mSticky = sticky;
 }
 
+void Window::setStickyButtonLock(bool lock)
+{
+    mStickyButtonLock = lock;
+    mStickyButton = lock;
+//    mMovable = false;
+}
+
 void Window::setVisible(bool visible)
 {
     setVisible(visible, false);
@@ -417,7 +421,10 @@ void Window::setVisible(bool visible, bool forceSticky)
     if (visible)
         checkIfIsOffScreen();
 
-    gcn::Window::setVisible((!forceSticky && isSticky()) || visible);
+    if (isStickyButtonLock())
+        gcn::Window::setVisible(visible);
+    else
+        gcn::Window::setVisible((!forceSticky && isSticky()) || visible);
 }
 
 void Window::scheduleDelete()
@@ -483,7 +490,10 @@ void Window::mousePressed(gcn::MouseEvent &event)
 
         // Handle window resizing
         mouseResize = getResizeHandles(event);
-        mMoved = !mouseResize;
+        if (canMove())
+            mMoved = !mouseResize;
+        else
+            mMoved = false;
     }
 }
 
@@ -545,10 +555,24 @@ void Window::mouseMoved(gcn::MouseEvent &event)
         viewport->hideBeingPopup();
 }
 
+bool Window::canMove()
+{
+    return !mStickyButtonLock || !mSticky;
+}
+
 void Window::mouseDragged(gcn::MouseEvent &event)
 {
-    // Let Guichan handle title bar drag
-    gcn::Window::mouseDragged(event);
+    if (canMove())
+    {
+        // Let Guichan handle title bar drag
+        gcn::Window::mouseDragged(event);
+    }
+    else
+    {
+        if (!event.isConsumed() && event.getSource() == this)
+            event.consume();
+        return;
+    }
 
     // Keep guichan window inside screen when it may be moved
     if (isMovable() && mMoved)
@@ -639,21 +663,22 @@ void Window::setModal(bool modal)
 void Window::loadWindowState()
 {
     const std::string &name = mWindowName;
-    assert(!name.empty());
+    if (name.empty())
+        return;
 
     setPosition(config.getValueInt(name + "WinX", mDefaultX),
-                config.getValueInt(name + "WinY", mDefaultY));
+        config.getValueInt(name + "WinY", mDefaultY));
 
     if (mSaveVisible)
     {
         setVisible(config.getValueBool(name
-                   + "Visible", mDefaultVisible));
+            + "Visible", mDefaultVisible));
     }
 
     if (mStickyButton)
     {
         setSticky(config.getValueBool(name
-                  + "Sticky", isSticky()));
+            + "Sticky", isSticky()));
     }
 
     if (mGrip)
@@ -685,10 +710,10 @@ void Window::loadWindowState()
         int width = getWidth();
         int height = getHeight();
 
-        if (getX() + width >= viewport->getWidth())
-            width = viewport->getWidth() - getX() - 1;
-        if (getY() + height >= viewport->getHeight())
-            height = viewport->getHeight() - getY() - 1;
+        if (getX() + width > viewport->getWidth())
+            width = viewport->getWidth() - getX();
+        if (getY() + height > viewport->getHeight())
+            height = viewport->getHeight() - getY();
         if (width < 0)
             width = 0;
         if (height < 0)
@@ -815,7 +840,7 @@ void Window::resetToDefaultSize()
 
 int Window::getResizeHandles(gcn::MouseEvent &event)
 {
-    if (event.getX() < 0 || event.getY() < 0)
+    if ((mStickyButtonLock && mSticky) || event.getX() < 0 || event.getY() < 0)
         return 0;
 
     int resizeHandles = 0;

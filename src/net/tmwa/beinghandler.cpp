@@ -331,6 +331,9 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             dstBeing->setSpriteColor(SPRITE_HAIR,
                 ColorDB::getHairColor(id));
             break;
+        case 7:     // Clothes color
+            // ignoring it
+            break;
         case 8:     // eAthena LOOK_SHIELD
             if (!config.getBoolValue("hideShield"))
             {
@@ -552,7 +555,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
 
-        // because server dont send direction in move packet,
+        // because server don't send direction in move packet,
         // we fixing it
 
         if (srcX != dstX || srcY != dstY)

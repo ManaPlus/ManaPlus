@@ -73,6 +73,8 @@ DropShortcutContainer::DropShortcutContainer():
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
+    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
+    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
 }
 
 DropShortcutContainer::~DropShortcutContainer()
@@ -110,12 +112,6 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
         if (mBackgroundImg)
             g->drawImage(mBackgroundImg, itemX, itemY);
 
-/*        // Draw item keyboard shortcut.
-        const char *key = SDL_GetKeyName(
-            (SDLKey) keyboard.getKeyValue(keyboard.KEY_SHORTCUT_1 + i));
-        graphics->setColor(guiPalette->getColor(Palette::TEXT));
-        g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
-*/
         if (dropShortcut->getItem(i) < 0)
             continue;
 
@@ -142,11 +138,11 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
                 image->setAlpha(1.0f);
                 g->drawImage(image, itemX, itemY);
                 if (item->isEquipped())
-                    g->setColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED));
+                    g->setColor(mEquipedColor);
                 else
-                    g->setColor(Theme::getThemeColor(Theme::TEXT));
+                    g->setColor(mUnEquipedColor);
                 g->drawText(caption, itemX + mBoxWidth / 2,
-                            itemY + mBoxHeight - 14, gcn::Graphics::CENTER);
+                    itemY + mBoxHeight - 14, gcn::Graphics::CENTER);
             }
         }
     }

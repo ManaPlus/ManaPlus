@@ -45,9 +45,10 @@ enum Attribute
     SKILL_POINTS,
     CHAR_POINTS,
     CORR_POINTS,
-    ATTACK_SPEED = 100,
+    ATTACK_DELAY = 100,
     ATTACK_RANGE = 101,
-    WALK_SPEED = 102
+    WALK_SPEED = 102,
+    ATTACK_SPEED = 103
 };
 
 /**
@@ -217,6 +218,8 @@ namespace PlayerInfo
      * Sets whether the player is currently involved in trade or not.
      */
     void setTrading(bool trading);
+
+    void updateAttrs();
 
     /**
      * Initializes some internals.
