@@ -27,6 +27,7 @@
 #include "client.h"
 #include "effectmanager.h"
 #include "guild.h"
+#include "guildmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -505,10 +506,17 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
     guild = msg.readInt32();  // guild
 
-    if (guild == 0)
-        dstBeing->clearGuilds();
-    else
-        dstBeing->setGuild(Guild::getGuild(static_cast<short>(guild)));
+    if (!guildManager || !GuildManager::getEnableGuildBot())
+    {
+        if (guild == 0)
+        {
+            dstBeing->clearGuilds();
+        }
+        else
+        {
+            dstBeing->setGuild(Guild::getGuild(static_cast<short>(guild)));
+        }
+    }
 
     msg.readInt16();  // emblem
     msg.readInt16();  // manner
