@@ -95,9 +95,11 @@ WhoIsOnline::WhoIsOnline():
     const int w = 200;
     setDefaultSize(w, h, ImageRect::CENTER);
 //    setContentSize(w, h);
+    setVisible(false);
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
+    setSaveVisible(true);
 
     mUpdateButton = new Button(_("Update"), "update", this);
     mUpdateButton->setEnabled(false);

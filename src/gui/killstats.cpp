@@ -55,6 +55,7 @@ KillStats::KillStats():
     setWindowName("Kill stats");
     setCloseButton(true);
     setResizable(true);
+    setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
 
