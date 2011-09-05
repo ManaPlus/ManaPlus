@@ -145,6 +145,7 @@ class Sound : public ConfigListener
         bool mPlayBattle;
         bool mPlayGui;
         bool mPlayMusic;
+        int mGuiChannel;
 };
 
 extern Sound sound;

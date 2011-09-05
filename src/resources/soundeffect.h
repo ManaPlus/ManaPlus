@@ -54,11 +54,12 @@ class SoundEffect : public Resource
          *
          * @param loops     Number of times to repeat the playback.
          * @param volume    Sample playback volume.
+         * @param channel   Sample playback channel.
          *
          * @return <code>true</code> if the playback started properly
          *         <code>false</code> otherwise.
          */
-        virtual bool play(int loops, int volume);
+        virtual bool play(int loops, int volume, int channel = -1);
 
     protected:
         /**
