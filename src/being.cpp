@@ -275,6 +275,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     config.addListener("visiblenames", this);
 
+    mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
+
     if (mType == NPC)
         setShowName(true);
     else
