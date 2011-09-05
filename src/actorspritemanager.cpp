@@ -301,8 +301,8 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
         return NULL;
 
     bool targetDead = mTargetDeadPlayers;
-    const int xtol = 16;
-    const int uptol = 32;
+    Being *tempBeing = 0;
+    bool noBeing(false);
 
     for_actors
     {
@@ -319,17 +319,29 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
             && (allPlayers ||  being != player_node))
         {
 
-            if ((being->getPixelX() - xtol <= x) &&
-                (being->getPixelX() + xtol > x) &&
-                (being->getPixelY() - uptol <= y) &&
+            if ((being->getPixelX() - 16 <= x) &&
+                (being->getPixelX() + 16 > x) &&
+                (being->getPixelY() - 32 <= y) &&
                 (being->getPixelY() > y))
             {
                 return being;
             }
+            else if (!noBeing && (being->getPixelX() - 32 <= x) &&
+                (being->getPixelX() + 32 > x) &&
+                (being->getPixelY() - 64 <= y) &&
+                (being->getPixelY() + 16 > y))
+            {
+                if (tempBeing)
+                    noBeing = true;
+                else
+                    tempBeing = being;
+            }
         }
     }
 
-    return NULL;
+    if (noBeing)
+        return 0;
+    return tempBeing;
 }
 
 void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
