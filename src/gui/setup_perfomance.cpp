@@ -58,9 +58,6 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Auto adjust perfomance"), "",
         "adjustPerfomance", this, "adjustPerfomanceEvent");
 
-    new SetupItemCheckBox(_("Show beings transparency"), "",
-        "beingopacity", this, "beingopacityEvent");
-
     new SetupItemCheckBox(_("Hw acceleration"), "",
         "hwaccel", this, "hwaccelEvent");
 
@@ -76,6 +73,9 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Enable alpha channel fix (Software, can "
         "be very slow)"), "Can slow down drawing", "enableAlphaFix",
         this, "enableAlphaFixEvent");
+
+    new SetupItemCheckBox(_("Show beings transparency"), "",
+        "beingopacity", this, "beingopacityEvent");
 
     new SetupItemCheckBox(_("Enable reorder sprites."), "",
         "enableReorderSprites", this, "enableReorderSpritesEvent");
