@@ -84,8 +84,14 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Draw hotkeys on map"), "", "drawHotKeys",
         this, "drawHotKeysEvent");
 
-    new SetupItemCheckBox(_("Enable lazy scrolling"), "", "enableLazyScrolling",
-        this, "enableLazyScrollingEvent");
+    new SetupItemCheckBox(_("Enable lazy scrolling"), "",
+        "enableLazyScrolling", this, "enableLazyScrollingEvent");
+
+    new SetupItemIntTextField(_("Scroll laziness"), "", "ScrollLaziness",
+        this, "ScrollLazinessEvent", 1, 160);
+
+    new SetupItemIntTextField(_("Scroll radius"), "", "ScrollRadius",
+        this, "ScrollRadiusEvent", 0, 32);
 
 
     new SetupItemLabel(_("Moving"), "", this);
