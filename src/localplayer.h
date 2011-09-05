@@ -601,6 +601,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mBlockAdvert;
         bool mEnableAdvert;
         bool mTradebot;
+        bool mNextStep;
 };
 
 extern LocalPlayer *player_node;

@@ -123,7 +123,8 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mLastHitFrom(""),
     mWaitFor(""),
     mAdvertTime(0),
-    mBlockAdvert(false)
+    mBlockAdvert(false),
+    mNextStep(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
@@ -222,8 +223,9 @@ void LocalPlayer::logic()
     if (mActivityTime == 0 || mLastAction != -1)
         mActivityTime = cur_time;
 
-    if (mAction != MOVE && !mNavigatePath.empty())
+    if ((mAction != MOVE || mNextStep) && !mNavigatePath.empty())
     {
+        mNextStep = false;
         int dist = 5;
         if (!mSyncPlayerMove)
             dist = 20;
@@ -844,7 +846,17 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
             mPath.clear();
         }
 
-        Being::nextTile();
+        if (mPath.empty())
+        {
+            if (mNavigatePath.empty() || mAction != MOVE)
+                setAction(STAND);
+            else
+                mNextStep = true;
+        }
+        else
+        {
+            Being::nextTile();
+        }
     }
 #ifdef MANASERV_SUPPORT
     else
