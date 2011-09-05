@@ -43,6 +43,21 @@
 
 #define IGNORE_EMOTE_TIME 100
 
+class SortPlayersFunctor
+{
+    public:
+        bool operator() (const std::string &str1, const std::string &str2)
+        {
+            std::string s1 = str1;
+            std::string s2 = str2;
+            toLower(s1);
+            toLower(s2);
+            if (s1 == s2)
+                return str1 < str2;
+            return s1 < s2;
+        }
+} playersSorter;
+
 // (De)serialisation class
 class PlayerConfSerialiser :
     public ConfigurationListManager<std::pair<std::string, PlayerRelation *>,
@@ -327,7 +342,7 @@ std::vector<std::string> * PlayerRelationsManager::getPlayers()
             retval->push_back(it->first);
     }
 
-    sort(retval->begin(), retval->end());
+    sort(retval->begin(), retval->end(), playersSorter);
 
     return retval;
 }
