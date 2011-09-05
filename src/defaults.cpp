@@ -217,6 +217,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableReorderSprites", true);
     AddDEF(configData, "showip", false);
     AddDEF(configData, "seflMouseHeal", true);
+    AddDEF(configData, "enableLazyScrolling", true);
     return configData;
 }
 
