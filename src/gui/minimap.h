@@ -58,12 +58,16 @@ class Minimap : public Window
          */
         void draw(gcn::Graphics *graphics);
 
+        void mouseReleased(gcn::MouseEvent &event);
+
     private:
         Image *mMapImage;
         float mWidthProportion;
         float mHeightProportion;
         static bool mShow;
         bool mCustomMapImage;
+        int mMapOriginX;
+        int mMapOriginY;
 };
 
 extern Minimap *minimap;
