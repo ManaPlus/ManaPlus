@@ -1459,6 +1459,7 @@ void Client::initHomeDir()
                                   "Exiting."), mConfigDir.c_str()));
     }
 
+/*
     struct stat statbuf;
     std::string newConfigFile = mConfigDir + "/config.xml";
     if (stat(newConfigFile.c_str(), &statbuf))
@@ -1487,6 +1488,7 @@ void Client::initHomeDir()
             }
         }
     }
+*/
 }
 
 /**
