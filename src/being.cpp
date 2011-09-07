@@ -717,6 +717,8 @@ void Being::handleAttack(Being *victim, int damage,
         if (dir)
             setDirection(dir);
     }
+    if (victim->mType == PLAYER && victim->mAction == SIT)
+        victim->setAction(STAND);
 
     sound.playSfx(mInfo->getSound((damage > 0) ?
                   SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
