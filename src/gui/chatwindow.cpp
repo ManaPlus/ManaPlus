@@ -1195,8 +1195,7 @@ std::string ChatWindow::autoComplete(std::vector<std::string> &names,
             {
                 if (newName != "")
                 {
-                    toLower(newName);
-                    newName = findSameSubstring(name, newName);
+                    newName = findSameSubstringI(*i, newName);
                 }
                 else
                 {

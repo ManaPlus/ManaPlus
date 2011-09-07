@@ -116,6 +116,9 @@ std::string removeColors(std::string msg);
 const std::string findSameSubstring(const std::string &str1,
                                     const std::string &str2);
 
+const std::string findSameSubstringI(const std::string &str1,
+                                     const std::string &str2);
+
 /**
  * Compares the two strings case-insensitively.
  *

@@ -174,6 +174,24 @@ const std::string findSameSubstring(const std::string &str1,
     return str1.substr(0, minLength);
 }
 
+const std::string findSameSubstringI(const std::string &s1,
+                                    const std::string &s2)
+{
+    std::string str1 = s1;
+    std::string str2 = s2;
+    toLower(str1);
+    toLower(str2);
+
+    int minLength = str1.length() > str2.length()
+        ? static_cast<int>(str2.length()) : static_cast<int>(str1.length());
+    for (int f = 0; f < minLength; f ++)
+    {
+        if (str1.at(f) != str2.at(f))
+            return s1.substr(0, f);
+    }
+    return s1.substr(0, minLength);
+}
+
 unsigned long findI(std::string str, std::string subStr)
 {
     str = toLower(str);
