@@ -279,8 +279,8 @@ class Graphics : public gcn::SDLGraphics
         int mHeight;
 
     protected:
-        int SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
-                               SDL_Surface *dst, SDL_Rect *dstrect);
+        int SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
+                              SDL_Surface *dst, SDL_Rect *dstrect);
 
         int mBpp;
         bool mFullscreen;

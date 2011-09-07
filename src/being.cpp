@@ -2188,7 +2188,8 @@ void Being::recalcSpritesOrder()
         if (info.mDrawBefore[dir] > 0)
         {
             int id2 = mSpriteIDs[info.mDrawBefore[dir]];
-            std::map<int, int>::const_iterator orderIt = itemSlotRemap.find(id2);
+            std::map<int, int>::const_iterator
+                orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
@@ -2211,7 +2212,8 @@ void Being::recalcSpritesOrder()
         else if (info.mDrawAfter[dir] > 0)
         {
             int id2 = mSpriteIDs[info.mDrawAfter[dir]];
-            std::map<int, int>::const_iterator orderIt = itemSlotRemap.find(id2);
+            std::map<int, int>::const_iterator
+                orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (after)");
@@ -2256,7 +2258,8 @@ void Being::recalcSpritesOrder()
             int idx1 = -1;
 //            logger->log("item %d, id=%d", slot, id);
             int reorder = 0;
-            std::map<int, int>::const_iterator orderIt = itemSlotRemap.find(id);
+            std::map<int, int>::const_iterator
+                orderIt = itemSlotRemap.find(id);
             if (orderIt != itemSlotRemap.end())
                 reorder = orderIt->second;
 

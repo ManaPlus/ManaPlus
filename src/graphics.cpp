@@ -559,7 +559,7 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
             srcRect.w = static_cast<Uint16>(dw);
             srcRect.h = static_cast<Uint16>(dh);
 
-            if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
+            if (sdl_FakeUpperBlit(image->mSDLSurface, &srcRect,
                 mTarget, &dstRect) == 1)
             {
                 vert->pushSDL(srcRect, dstRect);
@@ -588,7 +588,7 @@ void Graphics::calcTile(ImageVertexes *vert, int x, int y)
     rect->src.y = static_cast<short>(image->mBounds.y);
     rect->src.w = static_cast<Uint16>(image->mBounds.w);
     rect->src.h = static_cast<Uint16>(image->mBounds.h);
-    if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
+    if (sdl_FakeUpperBlit(image->mSDLSurface, &rect->src,
         mTarget, &rect->dst) == 1)
     {
         vert->sdl.push_back(rect);
@@ -668,8 +668,8 @@ bool Graphics::calcWindow(GraphicsVertexes* vert,
         imgRect.grid[4]);
 }
 
-int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
-                                 SDL_Surface *dst, SDL_Rect *dstrect)
+int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
+                                SDL_Surface *dst, SDL_Rect *dstrect)
 {
     SDL_Rect fulldst;
     int srcx, srcy, w, h;

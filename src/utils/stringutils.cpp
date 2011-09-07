@@ -175,7 +175,7 @@ const std::string findSameSubstring(const std::string &str1,
 }
 
 const std::string findSameSubstringI(const std::string &s1,
-                                    const std::string &s2)
+                                     const std::string &s2)
 {
     std::string str1 = s1;
     std::string str2 = s2;

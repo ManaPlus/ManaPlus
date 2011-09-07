@@ -705,7 +705,8 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         beingSorter.priorityBeings = &priorityMobsMap;
         if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
             ignoreDefault = true;
-        std::map<std::string, int>::const_iterator itr = attackMobsMap.find("");
+        std::map<std::string, int>::const_iterator
+            itr = attackMobsMap.find("");
         if (itr != attackMobsMap.end())
             defaultAttackIndex = (*itr).second;
         itr = priorityMobsMap.find("");
@@ -1323,7 +1324,8 @@ void ActorSpriteManager::rebuildAttackMobs()
 
 int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
 {
-    std::map<std::string, int>::const_iterator i = mPriorityAttackMobsMap.find(name);
+    std::map<std::string, int>::const_iterator
+        i = mPriorityAttackMobsMap.find(name);
     if (i == mPriorityAttackMobsMap.end())
         return -1;
 

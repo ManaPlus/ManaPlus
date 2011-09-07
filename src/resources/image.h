@@ -162,7 +162,7 @@ class Image : public Resource
          *
          * @return A new Image* object.
          */
-        Image* SDLgetScaledImage(int width, int height);
+        Image* SDLGetScaledImage(int width, int height);
 
         /**
          * Merges two image SDL_Surfaces together. This is for SDL use only, as

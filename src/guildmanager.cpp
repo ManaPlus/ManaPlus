@@ -338,7 +338,7 @@ bool GuildManager::process(std::string msg)
         return true;
     }
     else if (!haveNick && (findCutLast(msg, " has been removed "
-             "from the Guild.") || findCutLast(msg," has left the Guild.")))
+             "from the Guild.") || findCutLast(msg, " has left the Guild.")))
     {
         Guild *guild = createGuild();
         if (!guild)
