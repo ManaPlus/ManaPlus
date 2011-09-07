@@ -902,11 +902,11 @@ void LocalPlayer::inviteToGuild(Being *being)
 
     // TODO: Allow user to choose which guild to invite being to
     // For now, just invite to the first guild you have permissions to invite with
-    std::map<int, Guild*>::iterator itr = mGuilds.begin();
-    std::map<int, Guild*>::iterator itr_end = mGuilds.end();
+    std::map<int, Guild*>::const_iterator itr = mGuilds.begin();
+    std::map<int, Guild*>::const_iterator itr_end = mGuilds.end();
     for (; itr != itr_end; ++itr)
     {
-        if (checkInviteRights(itr->second->getName()))
+        if (itr->second && checkInviteRights(itr->second->getName()))
         {
             Net::getGuildHandler()->invite(itr->second->getId(), being);
             return;
@@ -1813,7 +1813,7 @@ void LocalPlayer::moveToHome()
     }
     else
     {
-        std::map<std::string, Vector>::iterator iter =
+        std::map<std::string, Vector>::const_iterator iter =
             mHomes.find(mMap->getProperty("_realfilename"));
 
         if (iter != mHomes.end())
@@ -2996,7 +2996,7 @@ void LocalPlayer::setHome()
 
     if (mAction == SIT)
     {
-        std::map<std::string, Vector>::iterator iter = mHomes.find(key);
+        std::map<std::string, Vector>::const_iterator iter = mHomes.find(key);
 
         if (iter != mHomes.end())
         {
@@ -3102,7 +3102,7 @@ void LocalPlayer::saveHomes()
     std::string homeStr;
     std::stringstream ss(homeStr);
 
-    for (std::map<std::string, Vector>::iterator iter = mHomes.begin();
+    for (std::map<std::string, Vector>::const_iterator iter = mHomes.begin();
          iter != mHomes.end(); ++iter )
     {
         Vector pos = (*iter).second;
@@ -3802,7 +3802,7 @@ void LocalPlayer::updateNavigateList()
 {
     if (mMap)
     {
-        std::map<std::string, Vector>::iterator iter =
+        std::map<std::string, Vector>::const_iterator iter =
                 mHomes.find(mMap->getProperty("_realfilename"));
 
         if (iter != mHomes.end())

@@ -421,7 +421,7 @@ namespace gcn
 
             // Check if the widget is present in the "widget with mouse" queue.
             bool widgetIsPresentInQueue = false;
-            std::deque<Widget*>::iterator iter;
+            std::deque<Widget*>::const_iterator iter;
             for (iter = mWidgetWithMouseQueue.begin();
                  iter != mWidgetWithMouseQueue.end();
                  ++ iter)
@@ -697,7 +697,7 @@ namespace gcn
                     = widget->_getMouseListeners();
 
                 // Send the event to all mouse listeners of the widget.
-                for (std::list<MouseListener*>::iterator
+                for (std::list<MouseListener*>::const_iterator
                      it = mouseListeners.begin();
                      it != mouseListeners.end();
                      ++it)
@@ -796,7 +796,7 @@ namespace gcn
                     = widget->_getKeyListeners();
 
                 // Send the event to all key listeners of the source widget.
-                for (std::list<KeyListener*>::iterator
+                for (std::list<KeyListener*>::const_iterator
                      it = keyListeners.begin();
                      it != keyListeners.end();
                      ++it)
@@ -936,7 +936,7 @@ namespace gcn
 
             // Check if the widget is present in the "widget with mouse" queue.
             bool widgetIsPresentInQueue = false;
-            std::deque<Widget*>::iterator iter;
+            std::deque<Widget*>::const_iterator iter;
             for (iter = mWidgetWithMouseQueue.begin();
                  iter != mWidgetWithMouseQueue.end();
                  ++ iter)

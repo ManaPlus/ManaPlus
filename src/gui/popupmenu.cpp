@@ -360,7 +360,7 @@ void PopupMenu::showPopup(int x, int y, std::vector<Being*> &beings)
 {
     mBrowserBox->clearRows();
     mBrowserBox->addRow("Players");
-    std::vector<Being*>::iterator it, it_end;
+    std::vector<Being*>::const_iterator it, it_end;
     for (it = beings.begin(), it_end = beings.end(); it != it_end; ++it)
     {
         Being *being = *it;
@@ -804,8 +804,8 @@ void PopupMenu::showChangePos(int x, int y)
     if (guild)
     {
         PositionsMap map = guild->getPositions();
-        PositionsMap::iterator itr = map.begin();
-        PositionsMap::iterator itr_end = map.end();
+        PositionsMap::const_iterator itr = map.begin();
+        PositionsMap::const_iterator itr_end = map.end();
         for (; itr != itr_end; ++itr)
         {
             mBrowserBox->addRow(strprintf("@@guild-pos-%d|%s@@",
@@ -1872,7 +1872,7 @@ void PopupMenu::showPopup(int x, int y, Button *button)
 
     mBrowserBox->clearRows();
     std::vector <gcn::Button*> names = windowMenu->getButtons();
-    std::vector <gcn::Button*>::iterator it, it_end;
+    std::vector <gcn::Button*>::const_iterator it, it_end;
     for (it = names.begin(), it_end = names.end(); it != it_end; ++ it)
     {
         Button *btn = dynamic_cast<Button*>(*it);
@@ -1907,7 +1907,7 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
 
     mBrowserBox->clearRows();
     std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
-    std::vector <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::const_iterator it, it_end;
     for (it = bars.begin(), it_end = bars.end(); it != it_end; ++it)
     {
         ProgressBar *bar = *it;

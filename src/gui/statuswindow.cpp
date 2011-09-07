@@ -311,7 +311,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
 
                 mCharacterPointsLabel->adjustSize();
                 // Update all attributes
-                for (Attrs::iterator it = mAttrs.begin();
+                for (Attrs::const_iterator it = mAttrs.begin();
                      it != mAttrs.end(); ++it)
                 {
                     if (it->second)
@@ -324,7 +324,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
                     _("Correction points: %d"), event.getInt("newValue")));
                 mCorrectionPointsLabel->adjustSize();
                 // Update all attributes
-                for (Attrs::iterator it = mAttrs.begin();
+                for (Attrs::const_iterator it = mAttrs.begin();
                      it != mAttrs.end(); ++it)
                 {
                     if (it->second)
@@ -392,7 +392,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
         else
         {
             updateMPBar(mMpBar, true);
-            Attrs::iterator it = mAttrs.find(id);
+            Attrs::const_iterator it = mAttrs.find(id);
             if (it != mAttrs.end() && it->second)
             {
                 if (it->second)
@@ -404,7 +404,7 @@ void StatusWindow::event(Mana::Channels channel A_UNUSED,
 
 void StatusWindow::setPointsNeeded(int id, int needed)
 {
-    Attrs::iterator it = mAttrs.find(id);
+    Attrs::const_iterator it = mAttrs.find(id);
 
     if (it != mAttrs.end())
     {
@@ -909,8 +909,8 @@ void StatusWindow::action(const gcn::ActionEvent &event)
 
     if (event.getId() == "copy")
     {
-        Attrs::iterator it = mAttrs.begin();
-        Attrs::iterator it_end = mAttrs.end();
+        Attrs::const_iterator it = mAttrs.begin();
+        Attrs::const_iterator it_end = mAttrs.end();
         std::string str;
         while (it != it_end)
         {

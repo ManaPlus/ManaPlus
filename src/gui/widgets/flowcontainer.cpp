@@ -67,7 +67,7 @@ void FlowContainer::widgetResized(const gcn::Event &event A_UNUSED)
 
     int i = 0;
     height = 0;
-    for (WidgetList::iterator it = mWidgets.begin();
+    for (WidgetList::const_iterator it = mWidgets.begin();
          it != mWidgets.end(); ++it)
     {
         int x = i % mGridWidth * mBoxWidth;

@@ -185,10 +185,11 @@ unsigned long findI(std::string text, std::vector<std::string> &list)
 {
     std::string str = toLower(text);
     unsigned long idx;
-    for (std::vector<std::string>::iterator i = list.begin();
+    for (std::vector<std::string>::const_iterator i = list.begin();
          i != list.end(); ++i)
     {
-        std::string subStr = toLower(*i);
+        std::string subStr = *i;
+        subStr = toLower(subStr);
         idx = str.find(subStr);
         if (idx != std::string::npos)
             return idx;
@@ -450,8 +451,8 @@ std::string combineDye2(std::string file, std::string dye)
         file = file.substr(0, pos);
         std::list<std::string> list1 = splitToStringList(dye1, ';');
         std::list<std::string> list2 = splitToStringList(dye, ';');
-        std::list<std::string>::iterator it1, it1_end = list1.end();
-        std::list<std::string>::iterator it2, it2_end = list2.end();
+        std::list<std::string>::const_iterator it1, it1_end = list1.end();
+        std::list<std::string>::const_iterator it2, it2_end = list2.end();
         for (it1 = list1.begin(), it2 = list2.begin();
              it1 != it1_end && it2 != it2_end; ++it1, ++it2)
         {
@@ -485,7 +486,7 @@ std::vector<std::string> getLang()
 
 std::string packList(std::list<std::string> &list)
 {
-    std::list<std::string>::iterator i = list.begin();
+    std::list<std::string>::const_iterator i = list.begin();
     std::string str = "";
     while (i != list.end())
     {

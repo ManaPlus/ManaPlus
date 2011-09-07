@@ -135,8 +135,8 @@ void GuildManager::updateList()
     if (guild)
     {
         guild->setServerGuild(false);
-        std::vector<std::string>::iterator it = mTempList.begin();
-        std::vector<std::string>::iterator it_end = mTempList.end();
+        std::vector<std::string>::const_iterator it = mTempList.begin();
+        std::vector<std::string>::const_iterator it_end = mTempList.end();
         int i = 0;
         while (it != it_end)
         {

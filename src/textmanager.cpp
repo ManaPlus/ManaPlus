@@ -48,7 +48,7 @@ void TextManager::moveText(Text *text, int x, int y)
 void TextManager::removeText(const Text *text)
 {
     for (TextList::iterator ptr = mTextList.begin(),
-             pEnd = mTextList.end(); ptr != pEnd; ++ptr)
+         pEnd = mTextList.end(); ptr != pEnd; ++ptr)
     {
         if (*ptr == text)
         {
@@ -64,8 +64,9 @@ TextManager::~TextManager()
 
 void TextManager::draw(gcn::Graphics *graphics, int xOff, int yOff)
 {
-    for (TextList::iterator bPtr = mTextList.begin(), ePtr = mTextList.end();
-         bPtr != ePtr; ++bPtr)
+    for (TextList::const_iterator bPtr = mTextList.begin(),
+         ePtr = mTextList.end();
+         bPtr != ePtr; ++ bPtr)
     {
         (*bPtr)->draw(graphics, xOff, yOff);
     }

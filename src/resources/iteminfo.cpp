@@ -185,7 +185,8 @@ std::string ItemInfo::getDyeColorsString(int color) const
     if (!mColors || mColorList.empty())
         return "";
 
-    std::map <int, ColorDB::ItemColor>::iterator it = mColors->find(color);
+    std::map <int, ColorDB::ItemColor>::const_iterator
+        it = mColors->find(color);
     if (it == mColors->end())
         return "";
 
@@ -208,7 +209,8 @@ const std::string ItemInfo::replaceColors(std::string str,
     std::string name;
     if (mColors && !mColorList.empty())
     {
-        std::map <int, ColorDB::ItemColor>::iterator it = mColors->find(color);
+        std::map <int, ColorDB::ItemColor>::const_iterator
+            it = mColors->find(color);
         if (it == mColors->end())
             name = "unknown";
         else

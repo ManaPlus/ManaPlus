@@ -104,10 +104,11 @@ void TileAnimation::update(int ticks)
     Image *img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
-        for (std::vector<std::pair<MapLayer*, int> >::iterator i =
+        for (std::vector<std::pair<MapLayer*, int> >::const_iterator i =
              mAffected.begin(); i != mAffected.end(); ++i)
         {
-            i->first->setTile(i->second, img);
+            if (i->first)
+                i->first->setTile(i->second, img);
         }
         mLastImage = img;
     }
@@ -284,13 +285,13 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
 void MapLayer::drawSDL(Graphics *graphics)
 {
-    MapRows::iterator rit = mTempRows.begin();
-    MapRows::iterator rit_end = mTempRows.end();
+    MapRows::const_iterator rit = mTempRows.begin();
+    MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
         MepRowImages *images = &(*rit)->images;
-        MepRowImages::iterator iit = images->begin();
-        MepRowImages::iterator iit_end = images->end();
+        MepRowImages::const_iterator iit = images->begin();
+        MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTile(*iit);
@@ -375,13 +376,13 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
 
 void MapLayer::drawOGL(Graphics *graphics)
 {
-    MapRows::iterator rit = mTempRows.begin();
-    MapRows::iterator rit_end = mTempRows.end();
+    MapRows::const_iterator rit = mTempRows.begin();
+    MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
         MepRowImages *images = &(*rit)->images;
-        MepRowImages::iterator iit = images->begin();
-        MepRowImages::iterator iit_end = images->end();
+        MepRowImages::const_iterator iit = images->begin();
+        MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTile(*iit);
@@ -789,11 +790,12 @@ bool actorCompare(const Actor *a, const Actor *b)
 void Map::update(int ticks)
 {
     // Update animated tiles
-    for (std::map<int, TileAnimation*>::iterator
+    for (std::map<int, TileAnimation*>::const_iterator
          iAni = mTileAnimations.begin();
          iAni != mTileAnimations.end(); ++iAni)
     {
-        iAni->second->update(ticks);
+        if (iAni->second)
+            iAni->second->update(ticks);
     }
 }
 
@@ -1079,7 +1081,7 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     float dy = scrollY - mLastAScrollY;
     int timePassed = get_elapsed_time(lastTick);
 
-    std::vector<AmbientLayer*>::iterator i;
+    std::vector<AmbientLayer*>::const_iterator i;
     for (i = mBackgrounds.begin(); i != mBackgrounds.end(); ++i)
         (*i)->update(timePassed, dx, dy);
 
@@ -1116,10 +1118,11 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
     }
 
     // Draw overlays
-    for (std::vector<AmbientLayer*>::iterator i = layers->begin();
+    for (std::vector<AmbientLayer*>::const_iterator i = layers->begin();
          i != layers->end(); ++i)
     {
-        (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
+        if (*i)
+            (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
 
         // Detail 1: only one overlay, higher: all overlays
         if (detail == 1)
@@ -1598,7 +1601,7 @@ void Map::initializeParticleEffects(Particle *particleEngine)
 
     if (config.getBoolValue("particleeffects"))
     {
-        for (std::vector<ParticleEffectData>::iterator
+        for (std::vector<ParticleEffectData>::const_iterator
              i = particleEffects.begin();
              i != particleEffects.end(); ++i)
         {
@@ -1785,8 +1788,8 @@ void Map::updatePortalTile(const std::string &name, int type,
 
 MapItem *Map::findPortalXY(int x, int y)
 {
-    std::vector<MapItem*>::iterator it;
-    std::vector<MapItem*>::iterator it_end;
+    std::vector<MapItem*>::const_iterator it;
+    std::vector<MapItem*>::const_iterator it_end;
 
     for (it = mMapPortals.begin(), it_end = mMapPortals.end();
          it != it_end; ++it)
@@ -1849,7 +1852,7 @@ std::string Map::getObjectData(unsigned x, unsigned y, int type)
     if (!list)
         return "";
 
-    std::vector<MapObject>::iterator it = list->objects.begin();
+    std::vector<MapObject>::const_iterator it = list->objects.begin();
     while (it != list->objects.end())
     {
         if ((*it).type == type)

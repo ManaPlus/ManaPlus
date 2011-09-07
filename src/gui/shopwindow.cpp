@@ -395,7 +395,7 @@ void ShopWindow::saveList()
     }
 
     std::vector<ShopItem*> items = mBuyShopItems->items();
-    std::vector<ShopItem*>::iterator it;
+    std::vector<ShopItem*>::const_iterator it;
     for (it = items.begin(); it != items.end(); ++it)
     {
         ShopItem *item = *(it);
@@ -428,7 +428,7 @@ void ShopWindow::saveList()
         }
     }
 
-    std::map<int, ShopItem*>::iterator mapIt;
+    std::map<int, ShopItem*>::const_iterator mapIt;
     for (mapIt = mapItems.begin(); mapIt != mapItems.end(); ++mapIt)
     {
         ShopItem *buyItem = (*mapIt).second;
@@ -468,7 +468,7 @@ void ShopWindow::announce(ShopItems *list, int mode)
         mSellAnnounceButton->setEnabled(false);
 
     std::vector<ShopItem*> items = list->items();
-    std::vector<ShopItem*>::iterator it;
+    std::vector<ShopItem*>::const_iterator it;
 
     for (it = items.begin(); it != items.end(); ++it)
     {
@@ -534,7 +534,7 @@ void ShopWindow::giveList(const std::string &nick, int mode)
         return;
 
     std::vector<ShopItem*> items = list->items();
-    std::vector<ShopItem*>::iterator it;
+    std::vector<ShopItem*>::const_iterator it;
 
     for (it = items.begin(); it != items.end(); ++it)
     {
@@ -780,7 +780,7 @@ bool ShopWindow::findShopItem(ShopItem *shopItem, int mode)
         return false;
 
     std::vector<ShopItem*> items;
-    std::vector<ShopItem*>::iterator it;
+    std::vector<ShopItem*>::const_iterator it;
     if (mode == SELL)
     {
         if (!mSellShopItems)

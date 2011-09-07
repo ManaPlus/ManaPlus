@@ -172,7 +172,7 @@ UserPalette::UserPalette():
 
 UserPalette::~UserPalette()
 {
-    for (Colors::iterator col = mColors.begin(),
+    for (Colors::const_iterator col = mColors.begin(),
          colEnd = mColors.end(); col != colEnd; ++col)
     {
         const std::string &configName = ColorTypeNames[col->type];

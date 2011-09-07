@@ -181,8 +181,9 @@ void Party::removeFromMembers()
     if (!actorSpriteManager)
         return;
 
-    MemberList::iterator itr = mMembers.begin(),
-                               itr_end = mMembers.end();
+    MemberList::const_iterator itr = mMembers.begin();
+    MemberList::const_iterator itr_end = mMembers.end();
+
     while (itr != itr_end)
     {
         Being *b = actorSpriteManager->findBeing((*itr)->getID());
@@ -281,7 +282,7 @@ void Party::getNamesSet(std::set<std::string> &names) const
 
 Party *Party::getParty(short id)
 {
-    PartyMap::iterator it = parties.find(id);
+    PartyMap::const_iterator it = parties.find(id);
     if (it != parties.end())
         return it->second;
     Party *party = new Party(id);

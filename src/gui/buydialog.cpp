@@ -317,8 +317,8 @@ void BuyDialog::setVisible(bool visible)
 
 void BuyDialog::closeAll()
 {
-    DialogList::iterator it = instances.begin();
-    DialogList::iterator it_end = instances.end();
+    DialogList::const_iterator it = instances.begin();
+    DialogList::const_iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
     {

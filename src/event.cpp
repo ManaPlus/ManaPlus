@@ -107,17 +107,18 @@ double Event::getFloat(const std::string &key) const throw (BadEvent)
 
 void Event::trigger(Channels channel, const Event &event)
 {
-    ListenMap::iterator it = mBindings.find(channel);
+    ListenMap::const_iterator it = mBindings.find(channel);
 
     // Make sure something is listening
     if (it == mBindings.end())
         return;
 
     // Loop though all listeners
-    ListenerSet::iterator lit = it->second.begin();
+    ListenerSet::const_iterator lit = it->second.begin();
     while (lit != it->second.end())
     {
-        (*lit)->event(channel, event);
+        if (*lit)
+            (*lit)->event(channel, event);
         ++lit;
     }
 }

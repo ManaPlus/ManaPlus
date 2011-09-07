@@ -178,7 +178,7 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
 
     if (dir != 0)
     {
-        std::vector<gcn::RadioButton*>::iterator it = mOptions.begin();
+        std::vector<gcn::RadioButton*>::const_iterator it = mOptions.begin();
 
         for (; it < mOptions.end(); ++it)
         {

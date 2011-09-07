@@ -435,7 +435,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mDeathEffect = o.mDeathEffect;
     mTempSets = o.mTempSets;
 
-    for (std::vector<ImageSet*>::iterator
+    for (std::vector<ImageSet*>::const_iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
     {
@@ -453,7 +453,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 
 ParticleEmitter::~ParticleEmitter()
 {
-    for (std::vector<ImageSet*>::iterator
+    for (std::vector<ImageSet*>::const_iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
     {
@@ -576,7 +576,7 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         newParticle->setFadeIn(mParticleFadeIn.value(tick));
         newParticle->setAlpha(mParticleAlpha.value(tick));
 
-        for (std::list<ParticleEmitter>::iterator
+        for (std::list<ParticleEmitter>::const_iterator
              i = mParticleChildEmitters.begin();
              i != mParticleChildEmitters.end(); ++i)
         {

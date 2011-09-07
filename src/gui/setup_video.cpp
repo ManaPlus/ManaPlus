@@ -166,8 +166,8 @@ ModeListModel::ModeListModel()
 
 void ModeListModel::addCustomMode(std::string mode)
 {
-    std::vector<std::string>::iterator it = mVideoModes.begin();
-    std::vector<std::string>::iterator it_end = mVideoModes.end();
+    std::vector<std::string>::const_iterator it = mVideoModes.begin();
+    std::vector<std::string>::const_iterator it_end = mVideoModes.end();
     while (it != it_end)
     {
         if (*it == mode)

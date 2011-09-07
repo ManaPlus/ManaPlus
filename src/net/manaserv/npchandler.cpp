@@ -60,12 +60,10 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
     Being *being = actorSpriteManager->findBeing(msg.readInt16());
     if (!being || being->getType() != ActorSprite::NPC)
-    {
         return;
-    }
 
     int npcId = being->getId();
-    NpcDialogs::iterator diag = mNpcDialogs.find(npcId);
+    NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
     NpcDialog *dialog;
 
     if (diag == mNpcDialogs.end())

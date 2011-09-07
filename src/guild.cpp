@@ -230,8 +230,8 @@ void Guild::removeFromMembers()
     if (!actorSpriteManager)
         return;
 
-    MemberList::iterator itr = mMembers.begin(),
-                               itr_end = mMembers.end();
+    MemberList::const_iterator itr = mMembers.begin();
+    MemberList::const_iterator itr_end = mMembers.end();
     while (itr != itr_end)
     {
         Being *b = actorSpriteManager->findBeing((*itr)->getID());
@@ -321,7 +321,7 @@ void Guild::addPos(int id, std::string name)
 
 Guild *Guild::getGuild(short id)
 {
-    GuildMap::iterator it = guilds.find(id);
+    GuildMap::const_iterator it = guilds.find(id);
     if (it != guilds.end())
         return it->second;
 

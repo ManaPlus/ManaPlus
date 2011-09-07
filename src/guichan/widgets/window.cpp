@@ -282,7 +282,7 @@ namespace gcn
         WidgetListConstIterator it;
 
         int w = 0, h = 0;
-        for (it = mWidgets.begin(); it != mWidgets.end(); it++)
+        for (it = mWidgets.begin(); it != mWidgets.end(); ++ it)
         {
             if ((*it)->getX() + (*it)->getWidth() > w)
                 w = (*it)->getX() + (*it)->getWidth();

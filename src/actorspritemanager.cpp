@@ -105,9 +105,9 @@ class SortBeingFunctor
             {
                 int w1 = defaultPriorityIndex;
                 int w2 = defaultPriorityIndex;
-                std::map<std::string, int>::iterator it1
+                std::map<std::string, int>::const_iterator it1
                     = priorityBeings->find(being1->getName());
-                std::map<std::string, int>::iterator it2
+                std::map<std::string, int>::const_iterator it2
                     = priorityBeings->find(being2->getName());
                 if (it1 != priorityBeings->end())
                     w1 = (*it1).second;
@@ -144,9 +144,9 @@ class SortBeingFunctor
             {
                 int w1 = defaultAttackIndex;
                 int w2 = defaultAttackIndex;
-                std::map<std::string, int>::iterator it1
+                std::map<std::string, int>::const_iterator it1
                     = attackBeings->find(being1->getName());
-                std::map<std::string, int>::iterator it2
+                std::map<std::string, int>::const_iterator it2
                     = attackBeings->find(being2->getName());
                 if (it1 != attackBeings->end())
                     w1 = (*it1).second;
@@ -327,9 +327,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
                 return being;
             }
             else if (!noBeing && (being->getPixelX() - 32 <= x) &&
-                (being->getPixelX() + 32 > x) &&
-                (being->getPixelY() - 64 <= y) &&
-                (being->getPixelY() + 16 > y))
+                     (being->getPixelX() + 32 > x) &&
+                     (being->getPixelY() - 64 <= y) &&
+                     (being->getPixelY() + 16 > y))
             {
                 if (tempBeing)
                     noBeing = true;
@@ -705,7 +705,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         beingSorter.priorityBeings = &priorityMobsMap;
         if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
             ignoreDefault = true;
-        std::map<std::string, int>::iterator itr = attackMobsMap.find("");
+        std::map<std::string, int>::const_iterator itr = attackMobsMap.find("");
         if (itr != attackMobsMap.end())
             defaultAttackIndex = (*itr).second;
         itr = priorityMobsMap.find("");
@@ -855,7 +855,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                 int w2 = defaultPriorityIndex;
                 if (closestBeing)
                 {
-                    std::map<std::string, int>::iterator it2
+                    std::map<std::string, int>::const_iterator it2
                         = priorityMobsMap.find(being->getName());
                     if (it2 != priorityMobsMap.end())
                         w2 = (*it2).second;
@@ -880,7 +880,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                 {
                     dist = d;
                     closestBeing = being;
-                    std::map<std::string, int>::iterator it1
+                    std::map<std::string, int>::const_iterator it1
                         = priorityMobsMap.find(being->getName());
                     if (it1 != priorityMobsMap.end())
                         index = (*it1).second;
@@ -1054,7 +1054,7 @@ void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
 
     debugChatTab->chatLog("---------------------------------------");
     debugChatTab->chatLog(header);
-    std::set<ActorSprite*>::iterator it;
+    std::set<ActorSprite*>::const_iterator it;
     for (it = beings.begin(); it != beings.end(); ++it)
     {
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
@@ -1079,7 +1079,7 @@ void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
     debugChatTab->chatLog("---------------------------------------");
     debugChatTab->chatLog(header);
 
-    std::vector<Being*>::iterator i;
+    std::vector<Being*>::const_iterator i;
     for (i = beings.begin(); i != beings.end(); ++i)
     {
         const Being *being = *i;
@@ -1298,7 +1298,7 @@ void ActorSpriteManager::addIgnoreAttackMob(std::string name)
 void ActorSpriteManager::rebuildPriorityAttackMobs()
 {
     mPriorityAttackMobsMap.clear();
-    std::list<std::string>::iterator i = mPriorityAttackMobs.begin();
+    std::list<std::string>::const_iterator i = mPriorityAttackMobs.begin();
     int cnt = 0;
     while (i != mPriorityAttackMobs.end())
     {
@@ -1311,7 +1311,7 @@ void ActorSpriteManager::rebuildPriorityAttackMobs()
 void ActorSpriteManager::rebuildAttackMobs()
 {
     mAttackMobsMap.clear();
-    std::list<std::string>::iterator i = mAttackMobs.begin();
+    std::list<std::string>::const_iterator i = mAttackMobs.begin();
     int cnt = 0;
     while (i != mAttackMobs.end())
     {
@@ -1323,7 +1323,7 @@ void ActorSpriteManager::rebuildAttackMobs()
 
 int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
 {
-    std::map<std::string, int>::iterator i = mPriorityAttackMobsMap.find(name);
+    std::map<std::string, int>::const_iterator i = mPriorityAttackMobsMap.find(name);
     if (i == mPriorityAttackMobsMap.end())
         return -1;
 
@@ -1332,7 +1332,7 @@ int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
 
 int ActorSpriteManager::getAttackMobIndex(std::string name)
 {
-    std::map<std::string, int>::iterator i = mAttackMobsMap.find(name);
+    std::map<std::string, int>::const_iterator i = mAttackMobsMap.find(name);
     if (i == mAttackMobsMap.end())
         return -1;
 
@@ -1344,7 +1344,7 @@ void ActorSpriteManager::loadAttackList()
     bool empty = false;
     std::list<std::string> list = unpackList(
         serverConfig.getValue("attackPriorityMobs", ""));
-    std::list<std::string>::iterator i = list.begin();
+    std::list<std::string>::const_iterator i = list.begin();
     while (i != list.end())
     {
         if (*i == "")

@@ -754,7 +754,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatHistoryIndex --;
             }
 
-            std::list<std::string>::iterator it;
+            std::list<std::string>::const_iterator it;
             unsigned int f = 0;
             for (it = tab->getRows().begin();
                  it != tab->getRows().end(); ++it, f++)
@@ -788,7 +788,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatHistoryIndex = 0;
             }
 
-            std::list<std::string>::iterator it;
+            std::list<std::string>::const_iterator it;
             unsigned int f = 0;
             for (it = tab->getRows().begin();
                  it != tab->getRows().end(); ++it, f++)
@@ -1179,7 +1179,7 @@ void ChatWindow::autoComplete()
 std::string ChatWindow::autoComplete(std::vector<std::string> &names,
                                      std::string partName) const
 {
-    std::vector<std::string>::iterator i = names.begin();
+    std::vector<std::string>::const_iterator i = names.begin();
     toLower(partName);
     std::string newName("");
 
@@ -1215,7 +1215,7 @@ std::string ChatWindow::autoComplete(std::string partName, History *words)
     if (!words)
         return "";
 
-    Commands::iterator i = words->begin();
+    Commands::const_iterator i = words->begin();
     std::vector<std::string> nameList;
 
     while (i != words->end())
@@ -1243,7 +1243,7 @@ void ChatWindow::moveTabRight(ChatTab *tab)
 
 std::string ChatWindow::autoCompleteHistory(std::string partName)
 {
-    History::iterator i = mHistory.begin();
+    History::const_iterator i = mHistory.begin();
     std::vector<std::string> nameList;
 
     while (i != mHistory.end())
@@ -1344,7 +1344,7 @@ void ChatWindow::initTradeFilter()
 
 void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
 {
-    TabMap::iterator iter;
+    TabMap::const_iterator iter;
     const Party *party = 0;
     const Guild *guild = 0;
     if (player_node)
@@ -1429,7 +1429,7 @@ void ChatWindow::loadState()
 void ChatWindow::saveState()
 {
     int num = 0;
-    TabMap::iterator iter;
+    TabMap::const_iterator iter;
     for (iter = mWhispers.begin(); iter != mWhispers.end() && num < 50; ++iter)
     {
         if (!iter->second)

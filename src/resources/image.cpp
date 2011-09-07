@@ -336,7 +336,7 @@ bool Image::hasAlphaChannel()
 
 SDL_Surface *Image::getByAlpha(float alpha)
 {
-    std::map<float, SDL_Surface*>::iterator it = mAlphaCache.find(alpha);
+    std::map<float, SDL_Surface*>::const_iterator it = mAlphaCache.find(alpha);
     if (it != mAlphaCache.end())
         return (*it).second;
     return 0;
@@ -361,7 +361,7 @@ void Image::setAlpha(float alpha)
                 {
 #ifdef DEBUG_ALPHA_CACHE
                     logger->log("cleanCache");
-                    for (std::map<float, SDL_Surface*>::iterator
+                    for (std::map<float, SDL_Surface*>::const_iterator
                          i = mAlphaCache.begin(), i_end = mAlphaCache.end();
                          i != i_end; ++i)
                     {

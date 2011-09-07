@@ -104,7 +104,7 @@ bool SpellManager::addSpell(TextCommand *spell)
     if (!spell)
         return false;
 
-    std::map<unsigned int, TextCommand*>::iterator
+    std::map<unsigned int, TextCommand*>::const_iterator
         i = mSpells.find(spell->getId());
     if (i == mSpells.end())
     {
@@ -342,7 +342,7 @@ void SpellManager::save()
 
 std::string SpellManager::autoComplete(std::string partName)
 {
-    std::vector<TextCommand*>::iterator i = mSpellsVector.begin();
+    std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
     std::string newName = "";
     TextCommand *newCommand = NULL;
 

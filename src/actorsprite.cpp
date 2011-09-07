@@ -113,7 +113,7 @@ void ActorSprite::logic()
     if (mMustResetParticles)
     {
         mMustResetParticles = false;
-        for (std::set<int>::iterator it = mStatusEffects.begin();
+        for (std::set<int>::const_iterator it = mStatusEffects.begin();
              it != mStatusEffects.end(); ++it)
         {
             const StatusEffect *effect

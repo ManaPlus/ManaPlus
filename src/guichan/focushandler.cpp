@@ -479,7 +479,8 @@ namespace gcn
             = sourceWidget->_getFocusListeners();
 
         // Send the event to all focus listeners of the widget.
-        for (std::list<FocusListener*>::iterator it = focusListeners.begin();
+        for (std::list<FocusListener*>::const_iterator
+             it = focusListeners.begin();
              it != focusListeners.end();
              ++ it)
         {
@@ -495,7 +496,8 @@ namespace gcn
             = sourceWidget->_getFocusListeners();
 
         // Send the event to all focus listeners of the widget.
-        for (std::list<FocusListener*>::iterator it = focusListeners.begin();
+        for (std::list<FocusListener*>::const_iterator
+             it = focusListeners.begin();
              it != focusListeners.end();
              ++ it)
         {

@@ -68,7 +68,10 @@ void triggerAttr(int id, int old)
 
 void triggerStat(int id, const std::string &changed, int old1, int old2)
 {
-    StatMap::iterator it = mData.mStats.find(id);
+    StatMap::const_iterator it = mData.mStats.find(id);
+    if (it == mData.mStats.end())
+        return;
+
     Mana::Event event(Mana::EVENT_UPDATESTAT);
     event.setInt("id", id);
     event.setInt("base", it->second.base);

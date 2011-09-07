@@ -470,7 +470,7 @@ namespace gcn
     {
         mGlobalFont = font;
 
-        std::list<Widget*>::iterator iter;
+        std::list<Widget*>::const_iterator iter;
         for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
         {
             if ((*iter)->mCurrentFont == NULL)

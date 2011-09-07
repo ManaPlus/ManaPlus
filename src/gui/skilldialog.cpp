@@ -321,7 +321,7 @@ void SkillDialog::action(const gcn::ActionEvent &event)
 
 std::string SkillDialog::update(int id)
 {
-    SkillMap::iterator i = mSkills.find(id);
+    SkillMap::const_iterator i = mSkills.find(id);
 
     if (i != mSkills.end())
     {
@@ -342,7 +342,9 @@ void SkillDialog::update()
                              PlayerInfo::getAttribute(SKILL_POINTS)));
     mPointsLabel->adjustSize();
 
-    for (SkillMap::iterator it = mSkills.begin(); it != mSkills.end(); ++it)
+    for (SkillMap::const_iterator it = mSkills.begin();
+         it != mSkills.end();
+          ++ it)
     {
         if ((*it).second && (*it).second->modifiable)
             (*it).second->update();
@@ -467,7 +469,7 @@ void SkillDialog::loadSkills(const std::string &file)
 
 bool SkillDialog::setModifiable(int id, bool modifiable)
 {
-    SkillMap::iterator it = mSkills.find(id);
+    SkillMap::const_iterator it = mSkills.find(id);
 
     if (it != mSkills.end())
     {
@@ -508,7 +510,9 @@ void SkillModel::updateVisibilities()
 {
     mVisibleSkills.clear();
 
-    for (SkillList::iterator it = mSkills.begin(); it != mSkills.end(); ++it)
+    for (SkillList::const_iterator it = mSkills.begin();
+         it != mSkills.end();
+         ++ it)
     {
         if ((*it)->visible)
             mVisibleSkills.push_back((*it));

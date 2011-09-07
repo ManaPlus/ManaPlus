@@ -329,7 +329,7 @@ void WindowMenu::showButton(std::string name, bool isVisible)
 void WindowMenu::updateButtons()
 {
     int x = 0, h = 0;
-    std::vector <gcn::Button*>::iterator it, it_end;
+    std::vector <gcn::Button*>::const_iterator it, it_end;
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
         safeRemove(*it);
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)

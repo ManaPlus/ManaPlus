@@ -362,12 +362,12 @@ bool NpcDialog::isInputFocused() const
 
 bool NpcDialog::isAnyInputFocused()
 {
-    DialogList::iterator it = instances.begin();
-    DialogList::iterator it_end = instances.end();
+    DialogList::const_iterator it = instances.begin();
+    DialogList::const_iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
     {
-        if ((*it)->isInputFocused())
+        if ((*it) && (*it)->isInputFocused())
             return true;
     }
 
@@ -430,12 +430,12 @@ NpcDialog *NpcDialog::getActive()
     if (instances.size() == 1)
         return instances.front();
 
-    DialogList::iterator it = instances.begin();
-    DialogList::iterator it_end = instances.end();
+    DialogList::const_iterator it = instances.begin();
+    DialogList::const_iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
     {
-        if ((*it)->isFocused())
+        if ((*it) && (*it)->isFocused())
             return (*it);
     }
 
@@ -444,8 +444,8 @@ NpcDialog *NpcDialog::getActive()
 
 void NpcDialog::closeAll()
 {
-    DialogList::iterator it = instances.begin();
-    DialogList::iterator it_end = instances.end();
+    DialogList::const_iterator it = instances.begin();
+    DialogList::const_iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
     {

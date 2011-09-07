@@ -631,15 +631,15 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
     setTexturingAndBlending(true);
 
     std::vector<GLint*> *intVertPool = ogl->getIntVertPool();
-    std::vector<GLint*>::iterator iv;
+    std::vector<GLint*>::const_iterator iv;
     std::vector<int> *vp = ogl->getVp();
-    std::vector<int>::iterator ivp;
+    std::vector<int>::const_iterator ivp;
 
     // Draw a set of textured rectangles
     if (image->mTextureType == GL_TEXTURE_2D)
     {
         std::vector<GLfloat*> *floatTexPool = ogl->getFloatTexPool();
-        std::vector<GLfloat*>::iterator ft;
+        std::vector<GLfloat*>::const_iterator ft;
 
         for (iv = intVertPool->begin(), ft = floatTexPool->begin(),
              ivp = vp->begin();
@@ -653,7 +653,7 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
     else
     {
         std::vector<GLint*> *intTexPool = ogl->getIntTexPool();
-        std::vector<GLint*>::iterator it;
+        std::vector<GLint*>::const_iterator it;
 
         for (iv = intVertPool->begin(), it = intTexPool->begin(),
              ivp = vp->begin();

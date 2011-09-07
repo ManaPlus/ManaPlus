@@ -373,7 +373,7 @@ void Window::widgetHidden(const gcn::Event &event A_UNUSED)
     if (!mFocusHandler)
         return;
 
-    for (it = mWidgets.begin(); it != mWidgets.end(); it++)
+    for (it = mWidgets.begin(); it != mWidgets.end(); ++ it)
     {
         if (mFocusHandler->isFocused(*it))
             mFocusHandler->focusNone();
