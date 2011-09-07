@@ -559,7 +559,7 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
             srcRect.w = static_cast<Uint16>(dw);
             srcRect.h = static_cast<Uint16>(dh);
 
-            if (sdl_FakeUpperBlit(image->mSDLSurface, &srcRect,
+            if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
                 mTarget, &dstRect) == 1)
             {
                 vert->pushSDL(srcRect, dstRect);
@@ -588,7 +588,7 @@ void Graphics::calcTile(ImageVertexes *vert, int x, int y)
     rect->src.y = static_cast<short>(image->mBounds.y);
     rect->src.w = static_cast<Uint16>(image->mBounds.w);
     rect->src.h = static_cast<Uint16>(image->mBounds.h);
-    if (sdl_FakeUpperBlit(image->mSDLSurface, &rect->src,
+    if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
         mTarget, &rect->dst) == 1)
     {
         vert->sdl.push_back(rect);
