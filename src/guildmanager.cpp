@@ -57,9 +57,6 @@ GuildManager::~GuildManager()
 
 void GuildManager::init()
 {
-    if (guildManager)
-        return;
-
     int val = serverConfig.getValue("enableGuildBot", -1);
     if (val == -1)
     {
@@ -71,7 +68,17 @@ void GuildManager::init()
     }
     mEnableGuildBot = val;
     if (mEnableGuildBot)
-        guildManager = new GuildManager();
+    {
+        if (!guildManager)
+            guildManager = new GuildManager();
+        else
+            guildManager->reload();
+    }
+    else if (guildManager)
+    {
+        delete guildManager;
+        guildManager = 0;
+    }
 }
 
 void GuildManager::reload()
