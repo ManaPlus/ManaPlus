@@ -83,6 +83,8 @@ class GuildManager
         static bool mEnableGuildBot;
         bool mGotInfo;
         bool mGotName;
+        bool mSentInfoRequest;
+        bool mSentNameRequest;
         bool mHavePower;
         std::vector<std::string> mTempList;
         GuildChatTab *mTab;

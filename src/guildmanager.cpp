@@ -43,6 +43,8 @@ bool GuildManager::mEnableGuildBot = false;
 GuildManager::GuildManager() :
     mGotInfo(false),
     mGotName(false),
+    mSentInfoRequest(false),
+    mSentNameRequest(false),
     mHavePower(false),
     mTab(0),
     mRequest(false)
@@ -87,6 +89,8 @@ void GuildManager::reload()
     mGotName = false;
     mHavePower = false;
     mRequest = false;
+    mSentNameRequest = false;
+    mSentInfoRequest = false;
     mTempList.clear();
 
     if (socialWindow)
@@ -124,15 +128,21 @@ void GuildManager::requestGuildInfo()
     if (mRequest)
         return;
 
-    if (!mGotName)
+    if (!mGotName && !mSentNameRequest)
     {
+        if (!Client::limitPackets(PACKET_CHAT))
+            return;
         send("!info " + toString(tick_time));
         mRequest = true;
+        mSentNameRequest = true;
     }
-    else if (!mGotInfo)
+    else if (!mGotInfo && !mSentInfoRequest && !mSentNameRequest)
     {
+        if (!Client::limitPackets(PACKET_CHAT))
+            return;
         send("!getonlineinfo " + toString(tick_time));
         mRequest = true;
+        mSentInfoRequest = true;
     }
 }
 
@@ -181,6 +191,7 @@ void GuildManager::updateList()
         }
     }
     mTempList.clear();
+    mSentInfoRequest = false;
     mGotInfo = true;
 }
 
@@ -269,6 +280,7 @@ bool GuildManager::process(std::string msg)
         if (player_node)
             player_node->setGuildName(msg);
         mGotName = true;
+        mSentNameRequest = false;
         mRequest = false;
         return true;
     }
@@ -307,6 +319,7 @@ bool GuildManager::process(std::string msg)
         if (player_node)
             player_node->setGuildName(msg);
         mGotName = true;
+        mSentNameRequest = false;
         mRequest = false;
         return true;
     }
