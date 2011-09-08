@@ -96,6 +96,63 @@ class SortItemIdFunctor
         }
 } itemIdSorter;
 
+class SortItemWeightFunctor
+{
+    public:
+        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        {
+            if (!pair1 || !pair2)
+                return false;
+
+            const int w1 = pair1->mItem->getInfo().getWeight();
+            const int w2 = pair2->mItem->getInfo().getWeight();
+            if (w1 == w2)
+            {
+                return (pair1->mItem->getInfo().getName()
+                        < pair2->mItem->getInfo().getName());
+            }
+            return w1 < w2;
+        }
+} itemWeightSorter;
+
+class SortItemAmountFunctor
+{
+    public:
+        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        {
+            if (!pair1 || !pair2)
+                return false;
+
+            const int c1 = pair1->mItem->getQuantity();
+            const int c2 = pair2->mItem->getQuantity();
+            if (c1 == c2)
+            {
+                return (pair1->mItem->getInfo().getName()
+                        < pair2->mItem->getInfo().getName());
+            }
+            return c1 < c2;;
+        }
+} itemAmountSorter;
+
+class SortItemTypeFunctor
+{
+    public:
+        bool operator() (ItemIdPair* pair1, ItemIdPair* pair2)
+        {
+            if (!pair1 || !pair2)
+                return false;
+
+            const int t1 = pair1->mItem->getInfo().getType();
+            const int t2 = pair2->mItem->getInfo().getType();
+            if (t1 == t2)
+            {
+                return (pair1->mItem->getInfo().getName()
+                        < pair2->mItem->getInfo().getName());
+            }
+            return t1 < t2;;
+        }
+} itemTypeSorter;
+
 ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mInventory(inventory),
     mGridColumns(1),
@@ -477,6 +534,15 @@ void ItemContainer::updateMatrix()
         case 2:
             sort(sortedItems.begin(), sortedItems.end(), itemIdSorter);
             break;
+        case 3:
+            sort(sortedItems.begin(), sortedItems.end(), itemWeightSorter);
+            break;
+        case 4:
+            sort(sortedItems.begin(), sortedItems.end(), itemAmountSorter);
+            break;
+        case 5:
+            sort(sortedItems.begin(), sortedItems.end(), itemTypeSorter);
+            break;
     }
 
     std::vector<ItemIdPair*>::const_iterator iter;
@@ -608,6 +674,5 @@ void ItemContainer::setFilter (int tag)
 void ItemContainer::setSortType (int sortType)
 {
     mSortType = sortType;
-    logger->log("setSortType: %d", sortType);
     updateMatrix();
 }

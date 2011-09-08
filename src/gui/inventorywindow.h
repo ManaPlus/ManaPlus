@@ -41,10 +41,12 @@
 #define A_UNUSED
 #endif
 
+class DropDown;
 class Item;
 class ItemContainer;
 class InventoryFilter;
 class ProgressBar;
+class SortListModel;
 class TextBox;
 
 /**
@@ -151,7 +153,8 @@ class InventoryWindow : public Window,
 
         ProgressBar *mWeightBar, *mSlotsBar;
         InventoryFilter *mFilter;
-        InventoryFilter *mSorter;
+        DropDown *mSortDropDown;
+        SortListModel *mSortModel;
 
         bool mSplit;
 };

@@ -38,6 +38,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/container.h"
+#include "gui/widgets/dropdown.h"
 #include "gui/widgets/inventoryfilter.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
@@ -61,6 +62,34 @@
 #include <string>
 
 #include "debug.h"
+
+const char *SORT_NAME[6] =
+{
+    N_("default"),
+    N_("by name"),
+    N_("by id"),
+    N_("by weight"),
+    N_("by amount"),
+    N_("by type")
+};
+
+class SortListModel : public gcn::ListModel
+{
+public:
+    virtual ~SortListModel()
+    { }
+
+    virtual int getNumberOfElements()
+    { return 6; }
+
+    virtual std::string getElementAt(int i)
+    {
+        if (i >= getNumberOfElements() || i < 0)
+            return _("???");
+
+        return gettext(SORT_NAME[i]);
+    }
+};
 
 InventoryWindow::WindowList InventoryWindow::instances;
 
@@ -109,9 +138,9 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 
-    mSorter = new InventoryFilter("sorter_" + getWindowName(), 20, 0);
-    mSorter->addActionListener(this);
-    mSorter->setActionEventId("sort_");
+    mSortModel = new SortListModel();
+    mSortDropDown = new DropDown(mSortModel, this, "sort");
+    mSortDropDown->setSelected(0);
 
     mFilterLabel = new Label(_("Filter:"));
     mSorterLabel = new Label(_("Sort:"));
@@ -119,10 +148,6 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     std::vector<std::string> tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)
         mFilter->addButton(tags[f]);
-
-    mSorter->addButton(_("na"), "na");
-    mSorter->addButton(_("az"), "az");
-    mSorter->addButton(_("id"), "id");
 
     if (isMainInventory())
     {
@@ -154,7 +179,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(4, 0, mSlotsLabel, 1).setPadding(3);
         place(5, 0, mSlotsBar, 2);
         place(7, 0, mSorterLabel, 1);
-        place(8, 0, mSorter, 3);
+        place(8, 0, mSortDropDown, 3);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
         place(1, 1, mFilter, 10).setPadding(3);
@@ -176,9 +201,9 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         mCloseButton = new Button(_("Close"), "close", this);
 
         place(0, 0, mSlotsLabel).setPadding(3);
-        place(1, 0, mSlotsBar, 3);
-        place(4, 0, mSorterLabel, 1);
-        place(5, 0, mSorter, 2);
+        place(1, 0, mSlotsBar, 4);
+        place(5, 0, mSorterLabel, 1);
+        place(6, 0, mSortDropDown, 1);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
         place(1, 1, mFilter, 6).setPadding(3);
@@ -219,6 +244,8 @@ InventoryWindow::~InventoryWindow()
     mInventory->removeInventoyListener(this);
     if (!instances.empty())
         instances.front()->updateDropButton();
+    delete mSortModel;
+    mSortModel = 0;
 }
 
 void InventoryWindow::action(const gcn::ActionEvent &event)
@@ -257,6 +284,10 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             return;
 
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd, this, item);
+    }
+    else if (event.getId() == "sort")
+    {
+        mItems->setSortType(mSortDropDown->getSelected());
     }
     else if (!event.getId().find("tag_") && mItems)
     {

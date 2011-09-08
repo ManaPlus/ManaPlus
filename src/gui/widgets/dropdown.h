@@ -46,7 +46,9 @@ class DropDown : public gcn::DropDown
          * @param listBox the listBox to use.
          * @see ListModel, ScrollArea, ListBox.
          */
-        DropDown(gcn::ListModel *listModel = 0);
+        DropDown(gcn::ListModel *listModel = 0,
+                 gcn::ActionListener* listener = NULL,
+                 std::string eventId = "");
 
         ~DropDown();
 
