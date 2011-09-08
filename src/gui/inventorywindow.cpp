@@ -22,6 +22,7 @@
 
 #include "gui/inventorywindow.h"
 
+#include "configuration.h"
 #include "inventory.h"
 #include "item.h"
 #include "units.h"
@@ -46,6 +47,7 @@
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/textfield.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
@@ -134,7 +136,8 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsLabel = new Label(_("Slots:"));
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
-    mFilter = new InventoryFilter("filter_" + getWindowName(), 20, 5);
+    int size = config.getIntValue("fontSize");
+    mFilter = new InventoryFilter("filter_" + getWindowName(), size, 0);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 
@@ -144,6 +147,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
 
     mFilterLabel = new Label(_("Filter:"));
     mSorterLabel = new Label(_("Sort:"));
+    mNameFilter = new TextField("", true, this, "namefilter", true);
 
     std::vector<std::string> tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)
@@ -182,7 +186,8 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(8, 0, mSortDropDown, 3);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 10).setPadding(3);
+        place(1, 1, mFilter, 7).setPadding(3);
+        place(8, 1, mNameFilter, 3);
 
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
@@ -206,7 +211,8 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(6, 0, mSortDropDown, 1);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 6).setPadding(3);
+        place(1, 1, mFilter, 5).setPadding(3);
+        place(6, 1, mNameFilter, 1);
 
         place(0, 2, invenScroll, 7, 4);
         place(0, 6, mStoreButton);
@@ -288,23 +294,18 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     else if (event.getId() == "sort")
     {
         mItems->setSortType(mSortDropDown->getSelected());
+        return;
+    }
+    else if (event.getId() == "namefilter")
+    {
+        mItems->setName(mNameFilter->getText());
+        mItems->updateMatrix();
     }
     else if (!event.getId().find("tag_") && mItems)
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));
-    }
-    else if (!event.getId().find("sort_") && mItems)
-    {
-        int sortType = 0;
-        std::string str = event.getId().substr(5).c_str();
-        if (str == "na")
-            sortType = 0;
-        else if (str == "az")
-            sortType = 1;
-        else if (str == "id")
-            sortType = 2;
-        mItems->setSortType(sortType);
+        return;
     }
 
     Item *item = mItems->getSelectedItem();
@@ -652,4 +653,22 @@ void InventoryWindow::updateDropButton()
         else
             mDropButton->setCaption(_("Drop"));
     }
+}
+
+bool InventoryWindow::isInputFocused() const
+{
+    return mNameFilter && mNameFilter->isFocused();
+}
+
+bool InventoryWindow::isAnyInputFocused()
+{
+    WindowList::const_iterator it = instances.begin();
+    WindowList::const_iterator it_end = instances.end();
+
+    for (; it != it_end; ++it)
+    {
+        if ((*it) && (*it)->isInputFocused())
+            return true;
+    }
+    return false;
 }

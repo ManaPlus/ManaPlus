@@ -47,7 +47,8 @@ class ItemContainer;
 class InventoryFilter;
 class ProgressBar;
 class SortListModel;
-class TextBox;
+//class TextBox;
+class TextField;
 
 /**
  * Inventory dialog.
@@ -130,6 +131,10 @@ class InventoryWindow : public Window,
 
         void updateButtons(Item *item = 0);
 
+        bool isInputFocused() const;
+
+        static bool isAnyInputFocused();
+
     private:
         /**
          * Updates the weight bar.
@@ -155,6 +160,7 @@ class InventoryWindow : public Window,
         InventoryFilter *mFilter;
         DropDown *mSortDropDown;
         SortListModel *mSortModel;
+        TextField *mNameFilter;
 
         bool mSplit;
 };

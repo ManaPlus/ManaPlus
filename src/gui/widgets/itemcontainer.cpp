@@ -513,6 +513,9 @@ void ItemContainer::updateMatrix()
     int i = 0;
     int j = 0;
 
+    std::string temp = mName;
+    toLower(temp);
+
     for (unsigned idx = 0; idx < mInventory->getSize(); idx ++)
     {
         Item *item = mInventory->getItem(idx);
@@ -520,7 +523,15 @@ void ItemContainer::updateMatrix()
         if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
             continue;
 
-        sortedItems.push_back(new ItemIdPair(idx, item));
+        if (mName.empty())
+        {
+            sortedItems.push_back(new ItemIdPair(idx, item));
+            continue;
+        }
+        std::string name = item->getInfo().getName();
+        toLower(name);
+        if (name.find(temp) != std::string::npos)
+            sortedItems.push_back(new ItemIdPair(idx, item));
     }
 
     switch (mSortType)

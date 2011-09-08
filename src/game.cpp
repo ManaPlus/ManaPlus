@@ -785,7 +785,8 @@ void Game::handleInput()
                 && !chatWindow->isInputFocused()
                 && !setupWindow->isVisible()
                 && !player_node->getAwayMode()
-                && !NpcDialog::isAnyInputFocused())
+                && !NpcDialog::isAnyInputFocused()
+                && !InventoryWindow::isAnyInputFocused())
             {
                 bool wearOutfit = false;
                 bool copyOutfit = false;
@@ -848,8 +849,11 @@ void Game::handleInput()
                 }
                 if (keyboard.isKeyActive(keyboard.KEY_TOGGLE_CHAT))
                 {
-                    if (chatWindow->requestChatFocus())
-                        used = true;
+                    if (!InventoryWindow::isAnyInputFocused())
+                    {
+                        if (chatWindow->requestChatFocus())
+                            used = true;
+                    }
                 }
                 if (dialog)
                 {
@@ -861,7 +865,8 @@ void Game::handleInput()
             }
 
             if ((!chatWindow->isInputFocused() &&
-                !NpcDialog::isAnyInputFocused())
+                !NpcDialog::isAnyInputFocused() &&
+                !InventoryWindow::isAnyInputFocused())
                 || (event.key.keysym.mod & KMOD_ALT))
             {
                 if (keyboard.isKeyActive(keyboard.KEY_PREV_CHAT_TAB))
@@ -948,7 +953,8 @@ void Game::handleInput()
                 && mValidSpeed
                 && !setupWindow->isVisible()
                 && !player_node->getAwayMode()
-                && !NpcDialog::isAnyInputFocused())
+                && !NpcDialog::isAnyInputFocused()
+                && !InventoryWindow::isAnyInputFocused())
             {
                 switch (tKey)
                 {
@@ -1085,7 +1091,8 @@ void Game::handleInput()
                 && !chatWindow->isInputFocused()
                 && !NpcDialog::isAnyInputFocused()
                 && !player_node->getAwayMode()
-                && !keyboard.isKeyActive(keyboard.KEY_TARGET))
+                && !keyboard.isKeyActive(keyboard.KEY_TARGET)
+                && !InventoryWindow::isAnyInputFocused())
             {
                 const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
 

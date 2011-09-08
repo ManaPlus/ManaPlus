@@ -125,6 +125,9 @@ class ItemContainer : public gcn::Widget,
 
         void setSortType (int sortType);
 
+        void setName(std::string str)
+        { mName = str; }
+
         void updateMatrix();
 
     private:
@@ -194,6 +197,7 @@ class ItemContainer : public gcn::Widget,
         int mDragPosX, mDragPosY;
         int mTag;
         int mSortType;
+        std::string mName;
 
         ItemPopup *mItemPopup;
         int *mShowMatrix;

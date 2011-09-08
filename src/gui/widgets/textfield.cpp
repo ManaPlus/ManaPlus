@@ -48,12 +48,14 @@ float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;
 
 TextField::TextField(const std::string &text, bool loseFocusOnTab,
-                     gcn::ActionListener* listener, std::string eventId):
+                     gcn::ActionListener* listener, std::string eventId,
+                     bool sendAlwaysEvents):
     gcn::TextField(text),
     mNumeric(false),
     mMinimum(0),
     mMaximum(0),
-    mLastEventPaste(false)
+    mLastEventPaste(false),
+    mSendAlwaysEvents(sendAlwaysEvents)
 {
     setFrameSize(2);
 
@@ -276,7 +278,9 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Key::ENTER:
             distributeActionEvent();
-            break;
+            keyEvent.consume();
+            fixScroll();
+            return;
 
         case Key::HOME:
             mCaretPosition = 0;
@@ -336,6 +340,9 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
         default:
             break;
     }
+
+    if (mSendAlwaysEvents)
+        distributeActionEvent();
 
     keyEvent.consume();
     fixScroll();
