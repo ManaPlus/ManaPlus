@@ -32,7 +32,8 @@ export CXXFLAGS="-Wmissing-field-initializers \
 -Wunused-parameter -Wlogical-op \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
--Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe"
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
+-Wpacked -Wshadow"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
