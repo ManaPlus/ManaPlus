@@ -254,7 +254,7 @@ void SHA256Update(SHA256Context *ctx,
     SHA256Transform(ctx, ctx->block, 1);
     SHA256Transform(ctx, shifted_message, block_nb);
     rem_len = new_len % SHA256_BLOCK_SIZE;
-    memcpy(ctx->block, &shifted_message[block_nb << 6],rem_len);
+    memcpy(ctx->block, &shifted_message[block_nb << 6], rem_len);
     ctx->len = rem_len;
     ctx->tot_len += (block_nb + 1) << 6;
 }

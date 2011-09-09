@@ -2445,8 +2445,6 @@ void LocalPlayer::crazyMoveA()
     // direction command
     else if (mMoveProgram[mCrazyMoveState] == 'd')
     {
-        Uint8 dir = 0;
-
         mCrazyMoveState ++;
 
         if (mCrazyMoveState < mMoveProgram.length())
@@ -2492,6 +2490,7 @@ void LocalPlayer::crazyMoveA()
                 case 'L':
                     if (Client::limitPackets(PACKET_DIRECTION))
                     {
+                        Uint8 dir = 0;
                         switch (getDirection())
                         {
                             case UP    : dir = Being::LEFT; break;
@@ -2507,6 +2506,7 @@ void LocalPlayer::crazyMoveA()
                 case 'R':
                     if (Client::limitPackets(PACKET_DIRECTION))
                     {
+                        Uint8 dir = 0;
                         switch (getDirection())
                         {
                             case UP    : dir = Being::RIGHT; break;
@@ -2522,6 +2522,7 @@ void LocalPlayer::crazyMoveA()
                 case 'b':
                     if (Client::limitPackets(PACKET_DIRECTION))
                     {
+                        Uint8 dir = 0;
                         switch (getDirection())
                         {
                             case UP    : dir = Being::DOWN; break;

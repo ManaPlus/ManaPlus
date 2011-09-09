@@ -702,7 +702,8 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     else if (id == "altfpslimitslider")
     {
         int tempFps = static_cast<int>(mAltFpsSlider->getValue());
-        tempFps = tempFps > 0 ? tempFps : static_cast<int>(mAltFpsSlider->getScaleStart());
+        tempFps = tempFps > 0 ? tempFps : static_cast<int>(
+            mAltFpsSlider->getScaleStart());
         mAltFps = tempFps;
         const std::string text = mAltFps > 0 ? toString(mAltFps) : _("None");
 
