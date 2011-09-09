@@ -962,7 +962,7 @@ public:
             {
                 name = *i;
             }
-            Avatar *ava = new Avatar(name);
+            ava = new Avatar(name);
             ava->setOnline(true);
             ava->setLevel(level);
             ava->setType(MapItem::PRIORITY);
@@ -997,7 +997,7 @@ public:
             {
                 name = *i;
             }
-            Avatar *ava = new Avatar(name);
+            ava = new Avatar(name);
             ava->setOnline(true);
             ava->setLevel(level);
             ava->setType(MapItem::ATTACK);
@@ -1032,7 +1032,7 @@ public:
             {
                 name = *i;
             }
-            Avatar *ava = new Avatar(name);
+            ava = new Avatar(name);
             ava->setOnline(false);
             ava->setLevel(level);
             ava->setType(MapItem::IGNORE_);

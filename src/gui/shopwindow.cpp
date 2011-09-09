@@ -596,7 +596,7 @@ void ShopWindow::sendMessage(const std::string &nick,
     if (config.getBoolValue("hideShopMessages"))
         Net::getChatHandler()->privateMessage(nick, data);
     else if (chatWindow)
-        chatWindow->whisper(nick, data, BY_PLAYER);
+        chatWindow->addWhisper(nick, data, BY_PLAYER);
 //here was true
 }
 

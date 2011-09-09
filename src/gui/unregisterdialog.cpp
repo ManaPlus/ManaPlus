@@ -46,10 +46,10 @@
 
 #include "debug.h"
 
-UnRegisterDialog::UnRegisterDialog(LoginData *loginData):
+UnRegisterDialog::UnRegisterDialog(LoginData *data):
     Window(_("Unregister"), true),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(loginData)
+    mLoginData(data)
 {
     gcn::Label *userLabel = new Label(strprintf(_("Name: %s"), mLoginData->
                                                 username.c_str()));
@@ -108,7 +108,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         logger->log("UnregisterDialog::unregistered, Username is %s",
                      username.c_str());
 
-        std::stringstream errorMessage;
+        std::stringstream errorMsg;
         bool error = false;
 
         unsigned int min = Net::getLoginHandler()->getMinPasswordLength();
@@ -118,15 +118,15 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         if (password.length() < min)
         {
             // Pass too short
-            errorMessage << strprintf(_("The password needs to be at least %d "
-                                        "characters long."), min);
+            errorMsg << strprintf(_("The password needs to be at least %d "
+                "characters long."), min);
             error = true;
         }
         else if (password.length() > max - 1)
         {
             // Pass too long
-            errorMessage << strprintf(_("The password needs to be less than "
-                                        "%d characters long."), max);
+            errorMsg << strprintf(_("The password needs to be less than "
+                "%d characters long."), max);
             error = true;
         }
 
@@ -134,7 +134,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         {
             mWrongDataNoticeListener->setTarget(this->mPasswordField);
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMessage.str());
+            OkDialog *dlg = new OkDialog(_("Error"), errorMsg.str());
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

@@ -257,7 +257,6 @@ void ActorSpriteManager::undelete(ActorSprite *actor)
     for (it = mDeleteActors.begin(), it_end = mDeleteActors.end();
          it != it_end; ++it)
     {
-        ActorSprite *actor = *it;
         if (*it == actor)
         {
             mDeleteActors.erase(*it);
@@ -906,15 +905,15 @@ bool ActorSpriteManager::validateBeing(Being *aroundBeing, Being* being,
         || player_node->isReachable(being, maxCost));
 }
 
-void ActorSpriteManager::healTarget(LocalPlayer* player_node)
+void ActorSpriteManager::healTarget()
 {
     if (!player_node)
         return;
 
-    heal(player_node, player_node->getTarget());
+    heal(player_node->getTarget());
 }
 
-void ActorSpriteManager::heal(LocalPlayer* player_node, Being* target)
+void ActorSpriteManager::heal(Being* target)
 {
     if (!player_node || !chatWindow || !player_node->isAlive()
         || !Net::getPlayerHandler()->canUseMagic())

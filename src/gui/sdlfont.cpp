@@ -48,8 +48,8 @@ char *strBuf;
 class SDLTextChunk
 {
     public:
-        SDLTextChunk(const std::string &text, const gcn::Color &color) :
-            img(0), text(text), color(color)
+        SDLTextChunk(const std::string &text0, const gcn::Color &color0) :
+            img(0), text(text0), color(color0)
         {
         }
 

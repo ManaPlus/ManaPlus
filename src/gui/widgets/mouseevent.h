@@ -28,12 +28,12 @@
 class MouseEvent : public gcn::MouseEvent
 {
     public:
-        MouseEvent(gcn::Widget* source, bool isShiftPressed,
-                   bool isControlPressed, bool isAltPressed,
-                   bool isMetaPressed, unsigned int type, unsigned int button,
+        MouseEvent(gcn::Widget* source, bool shiftPressed,
+                   bool controlPressed, bool altPressed,
+                   bool metaPressed, unsigned int type, unsigned int button,
                    int x, int y, int clickCount) :
-            gcn::MouseEvent(source, isShiftPressed, isControlPressed,
-                            isAltPressed, isMetaPressed, type, button, x, y,
+            gcn::MouseEvent(source, shiftPressed, controlPressed,
+                            altPressed, metaPressed, type, button, x, y,
                             clickCount)
         {
         }

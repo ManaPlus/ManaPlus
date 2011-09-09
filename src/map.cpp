@@ -114,10 +114,10 @@ void TileAnimation::update(int ticks)
     }
 }
 
-MapLayer::MapLayer(int x, int y, int width, int height, bool isFringeLayer):
+MapLayer::MapLayer(int x, int y, int width, int height, bool fringeLayer):
     mX(x), mY(y),
     mWidth(width), mHeight(height),
-    mIsFringeLayer(isFringeLayer),
+    mIsFringeLayer(fringeLayer),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange"))
 {
     const int size = mWidth * mHeight;
@@ -1592,9 +1592,9 @@ void Map::addParticleEffect(const std::string &effectFile,
     particleEffects.push_back(newEffect);
 }
 
-void Map::initializeParticleEffects(Particle *particleEngine)
+void Map::initializeParticleEffects(Particle *engine)
 {
-    if (!particleEngine)
+    if (!engine)
         return;
 
     Particle *p;
@@ -1605,7 +1605,7 @@ void Map::initializeParticleEffects(Particle *particleEngine)
              i = particleEffects.begin();
              i != particleEffects.end(); ++i)
         {
-            p = particleEngine->addEffect(i->file, i->x, i->y);
+            p = engine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)
                 p->adjustEmitterSize(i->w, i->h);
         }

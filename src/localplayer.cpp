@@ -3674,9 +3674,9 @@ void LocalPlayer::followMoveTo(Being *being, int x1, int y1, int x2, int y2)
                 {
                     if (actorSpriteManager)
                     {
-                        Being *being = actorSpriteManager->findBeingByName(
-                                mPlayerFollowed, Being::PLAYER);
-                        setTarget(being);
+                        Being *b = actorSpriteManager->findBeingByName(
+                            mPlayerFollowed, Being::PLAYER);
+                        setTarget(b);
                     }
                 }
                 moveToTarget();

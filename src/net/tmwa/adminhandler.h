@@ -50,7 +50,7 @@ class AdminHandler : public MessageHandler, public Ea::AdminHandler
 
         void localAnnounce(const std::string &text);
 
-        void hide(bool hide);
+        void hide(bool h);
 
         void kick(int playerId);
 };

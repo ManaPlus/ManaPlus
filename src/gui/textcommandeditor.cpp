@@ -61,11 +61,11 @@ class IconsModal : public gcn::ListModel
 public:
     IconsModal()
     {
-        std::map<int, ItemInfo*> info = ItemDB::getItemInfos();
+        std::map<int, ItemInfo*> items = ItemDB::getItemInfos();
         std::list<std::string> tempStrings;
 
         for (std::map<int, ItemInfo*>::const_iterator
-             i = info.begin(), i_end = info.end();
+             i = items.begin(), i_end = items.end();
              i != i_end; ++i)
         {
             if (i->first < 0)

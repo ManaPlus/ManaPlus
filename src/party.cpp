@@ -119,9 +119,9 @@ void Party::removeMember(PartyMember *member)
             if ((*itr)->mId == member->mId &&
                 (*itr)->getName() == member->getName())
             {
-                PartyMember *member = (*itr);
+                PartyMember *m = (*itr);
                 mMembers.erase(itr);
-                delete member;
+                delete m;
                 deleted = true;
                 break;
             }

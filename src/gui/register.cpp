@@ -62,21 +62,21 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
         mTarget->requestFocus();
 }
 
-RegisterDialog::RegisterDialog(LoginData *loginData):
+RegisterDialog::RegisterDialog(LoginData *data):
     Window(_("Register")),
     mEmailField(0),
     mMaleButton(0),
     mFemaleButton(0),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(loginData)
+    mLoginData(data)
 {
     int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
 
     gcn::Label *userLabel = new Label(_("Name:"));
     gcn::Label *passwordLabel = new Label(_("Password:"));
     gcn::Label *confirmLabel = new Label(_("Confirm:"));
-    mUserField = new TextField(loginData->username);
-    mPasswordField = new PasswordField(loginData->password);
+    mUserField = new TextField(mLoginData->username);
+    mPasswordField = new PasswordField(mLoginData->password);
     mConfirmField = new PasswordField;
     mRegisterButton = new Button(_("Register"), "register", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
@@ -161,7 +161,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         const std::string user = mUserField->getText();
         logger->log("RegisterDialog::register Username is %s", user.c_str());
 
-        std::string errorMessage;
+        std::string errorMsg;
         int error = 0;
 
         unsigned int minUser = Net::getLoginHandler()->getMinUserNameLength();
@@ -172,7 +172,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         if (user.length() < minUser)
         {
             // Name too short
-            errorMessage = strprintf
+            errorMsg = strprintf
                 (_("The username needs to be at least %d characters long."),
                  minUser);
             error = 1;
@@ -180,7 +180,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         else if (user.length() > maxUser - 1 )
         {
             // Name too long
-            errorMessage = strprintf
+            errorMsg = strprintf
                 (_("The username needs to be less than %d characters long."),
                  maxUser);
             error = 1;
@@ -188,7 +188,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         else if (mPasswordField->getText().length() < minPass)
         {
             // Pass too short
-            errorMessage = strprintf
+            errorMsg = strprintf
                 (_("The password needs to be at least %d characters long."),
                  minPass);
             error = 2;
@@ -196,7 +196,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         else if (mPasswordField->getText().length() > maxPass - 1 )
         {
             // Pass too long
-            errorMessage = strprintf
+            errorMsg = strprintf
                 (_("The password needs to be less than %d characters long."),
                  maxPass);
             error = 2;
@@ -204,7 +204,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         else if (mPasswordField->getText() != mConfirmField->getText())
         {
             // Password does not match with the confirmation one
-            errorMessage = _("Passwords do not match.");
+            errorMsg = _("Passwords do not match.");
             error = 2;
         }
 
@@ -225,7 +225,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                 mWrongDataNoticeListener->setTarget(this->mPasswordField);
             }
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMessage);
+            OkDialog *dlg = new OkDialog(_("Error"), errorMsg);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

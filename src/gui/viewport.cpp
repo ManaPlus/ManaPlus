@@ -489,7 +489,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     if (actorSpriteManager)
                     {
                         if (player_node != mHoverBeing || mSelfMouseHeal)
-                            actorSpriteManager->heal(player_node, mHoverBeing);
+                            actorSpriteManager->heal(mHoverBeing);
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||

@@ -362,17 +362,12 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     else if (event.getId() == "split")
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit, this, item,
-                                 (item->getQuantity() - 1));
+            (item->getQuantity() - 1));
     }
     else if (event.getId() == "retrieve")
     {
-        Item *item = mItems->getSelectedItem();
-
-        if (!item)
-            return;
-
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove, this,
-                                     item);
+        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+            this, item);
     }
 }
 

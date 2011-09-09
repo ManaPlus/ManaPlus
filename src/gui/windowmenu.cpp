@@ -315,13 +315,13 @@ void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
     mTextPopup->hide();
 }
 
-void WindowMenu::showButton(std::string name, bool isVisible)
+void WindowMenu::showButton(std::string name, bool visible)
 {
     Button *btn = dynamic_cast<Button*>(mButtonNames[name]);
     if (!btn)
         return;
 
-    btn->setVisible(isVisible);
+    btn->setVisible(visible);
     updateButtons();
     saveButtons();
 }

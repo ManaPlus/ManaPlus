@@ -478,20 +478,20 @@ void Setup_Video::apply()
                 fullscreen = !fullscreen;
                 if (!mainGraphics->setFullscreen(fullscreen))
                 {
-                    std::stringstream errorMessage;
+                    std::stringstream errorMsg;
                     if (fullscreen)
                     {
-                        errorMessage << _("Failed to switch to windowed mode "
-                                          "and restoration of old mode also "
-                                          "failed!") << std::endl;
+                        errorMsg << _("Failed to switch to windowed mode "
+                            "and restoration of old mode also "
+                            "failed!") << std::endl;
                     }
                     else
                     {
-                        errorMessage << _("Failed to switch to fullscreen mode"
-                                          " and restoration of old mode also "
-                                          "failed!") << std::endl;
+                        errorMsg << _("Failed to switch to fullscreen mode"
+                            " and restoration of old mode also "
+                            "failed!") << std::endl;
                     }
-                    logger->error(errorMessage.str());
+                    logger->error(errorMsg.str());
                 }
             }
 #if defined(WIN32) || defined(__APPLE__)

@@ -400,12 +400,12 @@ void MiniStatusWindow::mouseExited(gcn::MouseEvent &event)
     mStatusPopup->hide();
 }
 
-void MiniStatusWindow::showBar(std::string name, bool isVisible)
+void MiniStatusWindow::showBar(std::string name, bool visible)
 {
     ProgressBar *bar = mBarNames[name];
     if (!bar)
         return;
-    bar->setVisible(isVisible);
+    bar->setVisible(visible);
     updateBars();
     saveBars();
 }

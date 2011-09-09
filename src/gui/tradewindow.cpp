@@ -443,10 +443,10 @@ void TradeWindow::initTrade(std::string nick)
 
 bool TradeWindow::checkItem(Item *item)
 {
-    Item *tradeItem = mMyInventory->findItem(
+    Item *tItem = mMyInventory->findItem(
         item->getId(), item->getColor());
 
-    if (tradeItem && (tradeItem->getQuantity() > 1
+    if (tItem && (tItem->getQuantity() > 1
         || item->getQuantity() > 1))
     {
         if (localChatTab)

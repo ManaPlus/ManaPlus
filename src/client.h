@@ -78,7 +78,7 @@ extern LoginData loginData;
 /**
  * Returns elapsed time. (Warning: supposes the delay is always < 100 seconds)
  */
-int get_elapsed_time(int start_time);
+int get_elapsed_time(int startTime);
 
 /**
  * All client states.
@@ -291,7 +291,7 @@ private:
     bool copyFile(std::string &configPath, std::string &oldConfigPath);
     bool createConfig(std::string &configPath);
 
-    void accountLogin(LoginData *loginData);
+    void accountLogin(LoginData *data);
 
     void storeSafeParameters();
 

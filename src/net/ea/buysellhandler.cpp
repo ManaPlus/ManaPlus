@@ -70,7 +70,7 @@ void BuySellHandler::requestSellList(std::string nick)
     else
     {
         if (chatWindow)
-            chatWindow->whisper(nick, data, BY_PLAYER);
+            chatWindow->addWhisper(nick, data, BY_PLAYER);
     }
 }
 
@@ -89,7 +89,7 @@ void BuySellHandler::requestBuyList(std::string nick)
     else
     {
         if (chatWindow)
-            chatWindow->whisper(nick, data, BY_PLAYER);
+            chatWindow->addWhisper(nick, data, BY_PLAYER);
     }
 }
 
@@ -102,12 +102,12 @@ void BuySellHandler::sendBuyRequest(std::string nick, ShopItem* item,
         return;
     }
     std::string data = strprintf("!buyitem %d %d %d",
-                        item->getId(), item->getPrice(), amount);
+        item->getId(), item->getPrice(), amount);
 
     if (config.getBoolValue("hideShopMessages"))
         Net::getChatHandler()->privateMessage(nick, data);
     else
-        chatWindow->whisper(nick, data, BY_PLAYER);
+        chatWindow->addWhisper(nick, data, BY_PLAYER);
 }
 
 void BuySellHandler::sendSellRequest(std::string nick, ShopItem* item,
@@ -120,12 +120,12 @@ void BuySellHandler::sendSellRequest(std::string nick, ShopItem* item,
     }
 
     std::string data = strprintf("!sellitem %d %d %d",
-                       item->getId(), item->getPrice(), amount);
+        item->getId(), item->getPrice(), amount);
 
     if (config.getBoolValue("hideShopMessages"))
         Net::getChatHandler()->privateMessage(nick, data);
     else
-        chatWindow->whisper(nick, data, BY_PLAYER);
+        chatWindow->addWhisper(nick, data, BY_PLAYER);
 }
 
 void BuySellHandler::processNpcBuySellChoice(Net::MessageIn &msg)

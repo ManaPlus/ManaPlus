@@ -164,9 +164,9 @@ class ActorSpriteManager: public ConfigListener
 //        void HealAllTargets(Being *aroundBeing, int maxdist,
 //                                            Being::Type type) const;
 
-        void healTarget(LocalPlayer* player_node);
+        void healTarget();
 
-        void heal(LocalPlayer* player_node, Being* target);
+        void heal(Being* target);
 
         void itenplz();
 

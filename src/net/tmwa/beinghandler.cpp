@@ -445,7 +445,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     Being *dstBeing;
     int hairStyle, hairColor;
     unsigned char colors[9];
-    Uint8 dir;
+
 
     // An update about a player, potentially including movement.
     int id = msg.readInt32();
@@ -469,7 +469,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
             return;
     }
 
-    dir = dstBeing->getDirectionDelayed();
+    Uint8 dir = dstBeing->getDirectionDelayed();
     if (dir)
     {
         if (dir != dstBeing->getDirection())
@@ -568,10 +568,10 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
         if (srcX != dstX || srcY != dstY)
         {
-            int dir = dstBeing->calcDirection(dstX, dstY);
+            int d = dstBeing->calcDirection(dstX, dstY);
 
-            if (dir && dstBeing->getDirection() != dir)
-                dstBeing->setDirectionDelayed(static_cast<Uint8>(dir));
+            if (d && dstBeing->getDirection() != d)
+                dstBeing->setDirectionDelayed(static_cast<Uint8>(d));
         }
 
         if (player_node->getCurrentAction() != Being::STAND)
@@ -584,7 +584,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     }
     else
     {
-        Uint8 dir;
+//        Uint8 dir;
         Uint16 x, y;
         msg.readCoordinates(x, y, dir);
         dstBeing->setTileCoords(x, y);

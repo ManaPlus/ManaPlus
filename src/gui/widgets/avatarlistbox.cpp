@@ -330,7 +330,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             Being* being = actorSpriteManager->findBeingByName(ava->getName(),
                         Being::PLAYER);
             if (being)
-                actorSpriteManager->heal(player_node, being);
+                actorSpriteManager->heal(being);
         }
         else
         {

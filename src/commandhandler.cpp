@@ -397,7 +397,7 @@ void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
         if (tempNick.compare(playerName) == 0 || args.empty())
             return;
 
-        chatWindow->whisper(recvnick, msg, BY_PLAYER);
+        chatWindow->addWhisper(recvnick, msg, BY_PLAYER);
     }
     else
         tab->chatLog(_("Cannot send empty whispers!"), BY_SERVER);
@@ -851,11 +851,11 @@ void CommandHandler::handleHeal(const std::string &args, ChatTab *tab A_UNUSED)
         Being *being = actorSpriteManager->findBeingByName(
             args, Being::PLAYER);
         if (being)
-            actorSpriteManager->heal(player_node, being);
+            actorSpriteManager->heal(being);
     }
     else
     {
-        actorSpriteManager->heal(player_node, player_node);
+        actorSpriteManager->heal(player_node);
     }
 }
 

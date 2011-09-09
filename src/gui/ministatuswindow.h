@@ -80,7 +80,7 @@ class MiniStatusWindow : public Popup,
 
         void mouseExited(gcn::MouseEvent &event);
 
-        void showBar(std::string name, bool isVisible);
+        void showBar(std::string name, bool visible);
 
         void updateBars();
 

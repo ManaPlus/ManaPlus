@@ -907,9 +907,9 @@ void ChatWindow::addItemText(const std::string &item)
     addInputText(text.str());
 }
 
-void ChatWindow::setVisible(bool isVisible)
+void ChatWindow::setVisible(bool visible)
 {
-    Window::setVisible(isVisible);
+    Window::setVisible(visible);
 
     /*
      * For whatever reason, if setVisible is called, the mTmpVisible effect
@@ -918,8 +918,8 @@ void ChatWindow::setVisible(bool isVisible)
     mTmpVisible = false;
 }
 
-void ChatWindow::whisper(const std::string &nick,
-                         const std::string &mes, Own own)
+void ChatWindow::addWhisper(const std::string &nick,
+                            const std::string &mes, Own own)
 {
     if (mes.empty() || !player_node)
         return;

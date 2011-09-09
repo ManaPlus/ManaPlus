@@ -879,7 +879,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "heal" && being && being->getType() != Being::MONSTER)
     {
-        actorSpriteManager->heal(player_node, being);
+        actorSpriteManager->heal(being);
     }
     else if (link == "unignore" && being &&
              being->getType() == ActorSprite::PLAYER)
@@ -1591,12 +1591,15 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (!link.compare(0, 7, "player_"))
     {
-        mBeingId = atoi(link.substr(7).c_str());
-        Being *being = actorSpriteManager->findBeing(mBeingId);
-        if (being)
+        if (actorSpriteManager)
         {
-            showPopup(getX(), getY(), being);
-            return;
+            mBeingId = atoi(link.substr(7).c_str());
+            being = actorSpriteManager->findBeing(mBeingId);
+            if (being)
+            {
+                showPopup(getX(), getY(), being);
+                return;
+            }
         }
     }
     else if (!link.compare(0, 12, "hide button_"))

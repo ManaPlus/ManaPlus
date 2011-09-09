@@ -972,7 +972,7 @@ void Game::handleInput()
                         break;
 
                     case KeyboardConfig::KEY_MAGIC_INMA1:
-                        actorSpriteManager->healTarget(player_node);
+                        actorSpriteManager->healTarget();
                         setValidSpeed();
                         break;
 
@@ -1094,7 +1094,7 @@ void Game::handleInput()
                 && !keyboard.isKeyActive(keyboard.KEY_TARGET)
                 && !InventoryWindow::isAnyInputFocused())
             {
-                const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
+//                const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
 
                 if (setupWindow->isVisible())
                 {
