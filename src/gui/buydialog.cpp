@@ -111,18 +111,18 @@ void BuyDialog::init()
     mSlider->addActionListener(this);
     mShopItemList->addSelectionListener(this);
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
 
-    place(0, 0, mScrollArea, 8, 5).setPadding(3);
-    place(0, 5, mDecreaseButton);
-    place(1, 5, mSlider, 3);
-    place(4, 5, mIncreaseButton);
-    place(5, 5, mQuantityLabel, 2);
-    place(7, 5, mAddMaxButton);
-    place(0, 6, mMoneyLabel, 8);
-    place(6, 7, mBuyButton);
-    place(7, 7, mQuitButton);
+    placer(0, 0, mScrollArea, 8, 5).setPadding(3);
+    placer(0, 5, mDecreaseButton);
+    placer(1, 5, mSlider, 3);
+    placer(4, 5, mIncreaseButton);
+    placer(5, 5, mQuantityLabel, 2);
+    placer(7, 5, mAddMaxButton);
+    placer(0, 6, mMoneyLabel, 8);
+    placer(6, 7, mBuyButton);
+    placer(7, 7, mQuitButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);

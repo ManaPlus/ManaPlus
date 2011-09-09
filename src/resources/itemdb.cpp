@@ -361,7 +361,7 @@ void ItemDB::load()
         mItemInfos[id] = itemInfo;
         if (!name.empty())
         {
-            std::string temp = normalize(name);
+            temp = normalize(name);
 
             NamedItemInfos::const_iterator itr = mNamedItemInfos.find(temp);
             if (itr == mNamedItemInfos.end())

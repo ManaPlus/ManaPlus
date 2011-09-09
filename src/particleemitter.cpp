@@ -566,9 +566,9 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         newParticle->setFollow(mParticleFollow);
 
         newParticle->setDestination(mParticleTarget,
-                                    mParticleAcceleration.value(tick),
-                                    mParticleMomentum.value(tick)
-                                   );
+            mParticleAcceleration.value(tick),
+            mParticleMomentum.value(tick));
+
         newParticle->setDieDistance(mParticleDieDistance.value(tick));
 
         newParticle->setLifetime(mParticleLifetime.value(tick));
@@ -577,16 +577,14 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         newParticle->setAlpha(mParticleAlpha.value(tick));
 
         for (std::list<ParticleEmitter>::const_iterator
-             i = mParticleChildEmitters.begin();
-             i != mParticleChildEmitters.end(); ++i)
+             it = mParticleChildEmitters.begin();
+             it != mParticleChildEmitters.end(); ++it)
         {
-            newParticle->addEmitter(new ParticleEmitter(*i));
+            newParticle->addEmitter(new ParticleEmitter(*it));
         }
 
         if (!mDeathEffect.empty())
-        {
             newParticle->setDeathEffect(mDeathEffect, mDeathEffectConditions);
-        }
 
         newParticles.push_back(newParticle);
     }

@@ -49,12 +49,12 @@ int Image::mTextureSize = 0;
 bool Image::mEnableAlphaCache = false;
 bool Image::mEnableAlpha = true;
 
-Image::Image(SDL_Surface *image, bool hasAlphaChannel, Uint8 *alphaChannel):
+Image::Image(SDL_Surface *image, bool hasAlphaChannel0, Uint8 *alphaChannel):
     mAlpha(1.0f),
-    mHasAlphaChannel(hasAlphaChannel),
+    mHasAlphaChannel(hasAlphaChannel0),
     mSDLSurface(image),
     mAlphaChannel(alphaChannel),
-    mIsAlphaVisible(hasAlphaChannel),
+    mIsAlphaVisible(hasAlphaChannel0),
     mIsAlphaCalculated(false)
 {
 #ifdef USE_OPENGL

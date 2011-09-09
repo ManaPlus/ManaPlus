@@ -190,12 +190,11 @@ std::string MessageIn::readString(int length)
     char const *stringEnd
         = static_cast<char const *>(memchr(stringBeg, '\0', length));
 
-    std::string readString(stringBeg,
-                           stringEnd ? stringEnd - stringBeg : length);
+    std::string str(stringBeg, stringEnd ? stringEnd - stringBeg : length);
     mPos += length;
     PacketCounters::incInBytes(length);
-    DEBUGLOG("readString: " + readString);
-    return readString;
+    DEBUGLOG("readString: " + str);
+    return str;
 }
 
 std::string MessageIn::readRawString(int length)
@@ -215,12 +214,11 @@ std::string MessageIn::readRawString(int length)
     char const *stringBeg = mData + mPos;
     char const *stringEnd
         = static_cast<char const *>(memchr(stringBeg, '\0', length));
-    std::string readString(stringBeg,
-                           stringEnd ? stringEnd - stringBeg : length);
+    std::string str(stringBeg, stringEnd ? stringEnd - stringBeg : length);
 
     mPos += length;
     PacketCounters::incInBytes(length);
-    DEBUGLOG("readString: " + readString);
+    DEBUGLOG("readString: " + str);
 
     if (stringEnd)
     {
@@ -234,11 +232,11 @@ std::string MessageIn::readRawString(int length)
         {
             DEBUGLOG("readString2: " + hiddenPart);
 
-            return readString + "|" + hiddenPart;
+            return str + "|" + hiddenPart;
         }
     }
 
-    return readString;
+    return str;
 }
 
 }

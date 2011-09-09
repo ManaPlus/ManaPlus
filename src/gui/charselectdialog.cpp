@@ -141,34 +141,34 @@ CharSelectDialog::CharSelectDialog(LoginData *data):
 
     int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
 
-    place(0, 0, mAccountNameLabel, 2);
-    place(0, 1, mSwitchLoginButton);
+    placer(0, 0, mAccountNameLabel, 2);
+    placer(0, 1, mSwitchLoginButton);
 
     if (optionalActions & Net::LoginHandler::Unregister)
     {
         mUnregisterButton = new Button(_("Unregister"),
                                        "unregister", this);
-        place(3, 1, mUnregisterButton);
+        placer(3, 1, mUnregisterButton);
     }
 
-    place(0, 2, mChangePasswordButton);
+    placer(0, 2, mChangePasswordButton);
 
     if (optionalActions & Net::LoginHandler::ChangeEmail)
     {
         mChangeEmailButton = new Button(_("Change Email"),
                                         "change_email", this);
-        place(3, 2, mChangeEmailButton);
+        placer(3, 2, mChangeEmailButton);
     }
 
-    place = getPlacer(0, 1);
+    placer = getPlacer(0, 1);
 
     for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
     {
         mCharacterEntries.push_back(new CharacterDisplay(this));
-        place(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
+        placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
             mCharacterEntries[i]);
     }
 
@@ -410,14 +410,14 @@ CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
     mDelete = new Button(_("Delete"), "delete", charSelectDialog);
 
     LayoutHelper h(this);
-    ContainerPlacer place = h.getPlacer(0, 0);
+    ContainerPlacer placer = h.getPlacer(0, 0);
 
-    place(0, 0, mPlayerBox, 3, 5);
-    place(0, 5, mName, 3);
-    place(0, 6, mLevel, 3);
-    place(0, 7, mMoney, 3);
-    place(0, 8, mButton, 3);
-    place(0, 9, mDelete, 3);
+    placer(0, 0, mPlayerBox, 3, 5);
+    placer(0, 5, mName, 3);
+    placer(0, 6, mLevel, 3);
+    placer(0, 7, mMoney, 3);
+    placer(0, 8, mButton, 3);
+    placer(0, 9, mDelete, 3);
 
     update();
 

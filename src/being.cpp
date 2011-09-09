@@ -496,13 +496,13 @@ void Being::setSpeech(const std::string &text, int time)
 
     // Check for links
     std::string::size_type start = mSpeech.find('[');
-    std::string::size_type end = mSpeech.find(']', start);
+    std::string::size_type e = mSpeech.find(']', start);
 
-    while (start != std::string::npos && end != std::string::npos)
+    while (start != std::string::npos && e != std::string::npos)
     {
         // Catch multiple embeds and ignore them so it doesn't crash the client.
         while ((mSpeech.find('[', start + 1) != std::string::npos) &&
-               (mSpeech.find('[', start + 1) < end))
+               (mSpeech.find('[', start + 1) < e))
         {
             start = mSpeech.find('[', start + 1);
         }
@@ -510,7 +510,7 @@ void Being::setSpeech(const std::string &text, int time)
         std::string::size_type position = mSpeech.find('|');
         if (mSpeech[start + 1] == '@' && mSpeech[start + 2] == '@')
         {
-            mSpeech.erase(end, 1);
+            mSpeech.erase(e, 1);
             mSpeech.erase(start, (position - start) + 1);
         }
         position = mSpeech.find('@');
@@ -522,7 +522,7 @@ void Being::setSpeech(const std::string &text, int time)
         }
 
         start = mSpeech.find('[', start + 1);
-        end = mSpeech.find(']', start);
+        e = mSpeech.find(']', start);
     }
 
     if (!mSpeech.empty())
@@ -1393,17 +1393,16 @@ void Being::drawSpeech(int offsetX, int offsetY)
     else if (mSpeechTime > 0 && (speech == NAME_IN_BUBBLE ||
              speech == NO_NAME_IN_BUBBLE))
     {
-        const bool showName = (speech == NAME_IN_BUBBLE);
+        const bool isShowName = (speech == NAME_IN_BUBBLE);
 
         delete mText;
         mText = 0;
 
-        mSpeechBubble->setCaption(showName ? mName : "", mTextColor);
+        mSpeechBubble->setCaption(isShowName ? mName : "", mTextColor);
 
-        mSpeechBubble->setText(mSpeech, showName);
+        mSpeechBubble->setText(mSpeech, isShowName);
         mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
-                                   py - getHeight()
-                                   - (mSpeechBubble->getHeight()));
+            py - getHeight() - (mSpeechBubble->getHeight()));
         mSpeechBubble->setVisible(true);
     }
     else if (mSpeechTime > 0 && speech == TEXT_OVERHEAD)
@@ -2157,28 +2156,28 @@ void Being::recalcSpritesOrder()
 
             if (spriteToItems)
             {
-                SpriteToItemMap::const_iterator it;
+                SpriteToItemMap::const_iterator itr;
 
-                for (it = spriteToItems->begin();
-                     it != spriteToItems->end(); ++it)
+                for (itr = spriteToItems->begin();
+                     itr != spriteToItems->end(); ++it)
                 {
-                    int removeSprite = it->first;
-                    const std::map<int, int> &itemReplacer = it->second;
+                    int remSprite = itr->first;
+                    const std::map<int, int> &itemReplacer = itr->second;
                     if (itemReplacer.empty())
                     {
-                        mSpriteHide[removeSprite] = 1;
+                        mSpriteHide[remSprite] = 1;
                     }
                     else
                     {
                         std::map<int, int>::const_iterator repIt
-                            = itemReplacer.find(mSpriteIDs[removeSprite]);
+                            = itemReplacer.find(mSpriteIDs[remSprite]);
                         if (repIt != itemReplacer.end())
                         {
-                            mSpriteHide[removeSprite] = repIt->second;
+                            mSpriteHide[remSprite] = repIt->second;
                             if (repIt->second != 1)
                             {
-                                setSprite(removeSprite, repIt->second,
-                                    mSpriteColors[removeSprite],
+                                setSprite(remSprite, repIt->second,
+                                    mSpriteColors[remSprite],
                                     1, false, true);
                             }
                         }

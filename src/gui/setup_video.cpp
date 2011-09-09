@@ -687,12 +687,12 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "fpslimitcheckbox" || id == "fpslimitslider")
     {
-        int fps = static_cast<int>(mFpsSlider->getValue());
+        int tempFps = static_cast<int>(mFpsSlider->getValue());
         if (id == "fpslimitcheckbox" && !mFpsSlider->isEnabled())
-            fps = 60;
+            tempFps = 60;
         else
-            fps = fps > 0 ? fps : 60;
-        mFps = mFpsCheckBox->isSelected() ? fps : 0;
+            tempFps = tempFps > 0 ? tempFps : 60;
+        mFps = mFpsCheckBox->isSelected() ? tempFps : 0;
         const std::string text = mFps > 0 ? toString(mFps) : _("None");
 
         mFpsLabel->setCaption(text);
@@ -701,9 +701,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "altfpslimitslider")
     {
-        int fps = static_cast<int>(mAltFpsSlider->getValue());
-        fps = fps > 0 ? fps : static_cast<int>(mAltFpsSlider->getScaleStart());
-        mAltFps = fps;
+        int tempFps = static_cast<int>(mAltFpsSlider->getValue());
+        tempFps = tempFps > 0 ? tempFps : static_cast<int>(mAltFpsSlider->getScaleStart());
+        mAltFps = tempFps;
         const std::string text = mAltFps > 0 ? toString(mAltFps) : _("None");
 
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);

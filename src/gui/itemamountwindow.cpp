@@ -213,21 +213,21 @@ ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
     minusAmountButton->setWidth(plusAmountButton->getWidth());
 
     // Set positions
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
     int n = 0;
     if (mUsage == ShopBuyAdd)
     {
-        place(0, n, mItemDropDown, 8);
+        placer(0, n, mItemDropDown, 8);
         n++;
     }
-    place(1, n, minusAmountButton);
-    place(2, n, mItemAmountTextField, 3);
-    place(5, n, plusAmountButton);
-    place(6, n, addAllButton);
+    placer(1, n, minusAmountButton);
+    placer(2, n, mItemAmountTextField, 3);
+    placer(5, n, plusAmountButton);
+    placer(6, n, addAllButton);
 
-    place(0, n, mItemIcon, 1, 3);
-    place(1, n + 1, mItemAmountSlide, 7);
+    placer(0, n, mItemIcon, 1, 3);
+    placer(1, n + 1, mItemAmountSlide, 7);
 
     if (mUsage == ShopBuyAdd || mUsage == ShopSellAdd)
     {
@@ -236,19 +236,19 @@ ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
         minusPriceButton->adjustSize();
         minusPriceButton->setWidth(plusPriceButton->getWidth());
 
-        place(1, n + 2, minusPriceButton);
-        place(2, n + 2, mItemPriceTextField, 3);
-        place(5, n + 2, plusPriceButton);
-        place(6, n + 2, mGPLabel);
+        placer(1, n + 2, minusPriceButton);
+        placer(2, n + 2, mItemPriceTextField, 3);
+        placer(5, n + 2, plusPriceButton);
+        placer(6, n + 2, mGPLabel);
 
-        place(1, n + 3, mItemPriceSlide, 7);
-        place(4, n + 5, cancelButton);
-        place(5, n + 5, okButton);
+        placer(1, n + 3, mItemPriceSlide, 7);
+        placer(4, n + 5, cancelButton);
+        placer(5, n + 5, okButton);
     }
     else
     {
-        place(4, n + 2, cancelButton);
-        place(5, n + 2, okButton);
+        placer(4, n + 2, cancelButton);
+        placer(5, n + 2, okButton);
     }
 
     reflowLayout(225, 0);

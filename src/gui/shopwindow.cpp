@@ -127,28 +127,28 @@ ShopWindow::ShopWindow():
     mAnnounceLinks = new CheckBox(_("Show links in announce"), false,
                                   this, "link announce");
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
 
-    place(0, 0, mBuyLabel, 8).setPadding(3);
-    place(8, 0, mSellLabel, 8).setPadding(3);
-    place(0, 1, mBuyScrollArea, 8, 5).setPadding(3);
-    place(8, 1, mSellScrollArea, 8, 5).setPadding(3);
-    place(0, 6, mBuyAddButton);
-    place(1, 6, mBuyDeleteButton);
-    place(3, 6, mBuyAnnounceButton);
-    place(8, 6, mSellAddButton);
-    place(9, 6, mSellDeleteButton);
-    place(11, 6, mSellAnnounceButton);
-    place(0, 7, mAnnounceLinks, 8);
-    place(15, 7, mCloseButton);
+    placer(0, 0, mBuyLabel, 8).setPadding(3);
+    placer(8, 0, mSellLabel, 8).setPadding(3);
+    placer(0, 1, mBuyScrollArea, 8, 5).setPadding(3);
+    placer(8, 1, mSellScrollArea, 8, 5).setPadding(3);
+    placer(0, 6, mBuyAddButton);
+    placer(1, 6, mBuyDeleteButton);
+    placer(3, 6, mBuyAnnounceButton);
+    placer(8, 6, mSellAddButton);
+    placer(9, 6, mSellDeleteButton);
+    placer(11, 6, mSellAnnounceButton);
+    placer(0, 7, mAnnounceLinks, 8);
+    placer(15, 7, mCloseButton);
 
     if (auctionManager && auctionManager->getEnableAuctionBot())
     {
         mBuyAuctionButton = new Button(_("Auction"), "auction buy", this);
         mSellAuctionButton = new Button(_("Auction"), "auction sell", this);
-        place(4, 6, mBuyAuctionButton);
-        place(12, 6, mSellAuctionButton);
+        placer(4, 6, mBuyAuctionButton);
+        placer(12, 6, mSellAuctionButton);
     }
     else
     {

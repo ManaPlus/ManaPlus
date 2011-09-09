@@ -68,7 +68,7 @@ ActorSprite::~ActorSprite()
 
     // Notify listeners of the destruction.
     for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
-         end = mActorSpriteListeners.end(); iter != end; ++iter)
+         e = mActorSpriteListeners.end(); iter != e; ++iter)
     {
         (*iter)->actorSpriteDestroyed(*this);
     }
@@ -366,11 +366,12 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     //setup particle effects
     if (Particle::enabled && particleEngine)
     {
-        std::vector<std::string>::const_iterator it, it_end;
-        for (it = display.particles.begin(), it_end = display.particles.end();
-             it != it_end; ++it)
+        std::vector<std::string>::const_iterator itr, itr_end;
+        for (itr = display.particles.begin(),
+             itr_end = display.particles.end();
+             itr != itr_end; ++itr)
         {
-            Particle *p = particleEngine->addEffect(*it, 0, 0);
+            Particle *p = particleEngine->addEffect(*itr, 0, 0);
             controlParticle(p);
         }
     }
@@ -435,7 +436,7 @@ static const char *cursorSize(int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static std::string targetCursor = "graphics/target-cursor-%s-%s.png";
+    static std::string targetCursorFile = "graphics/target-cursor-%s-%s.png";
     static int targetWidths[NUM_TC] = {44, 62, 82};
     static int targetHeights[NUM_TC] = {35, 44, 60};
 
@@ -444,9 +445,9 @@ void ActorSprite::initTargetCursor()
     {
         for (int type = TCT_NORMAL; type < NUM_TCT; type++)
         {
-            loadTargetCursor(strprintf(targetCursor.c_str(), cursorType(type),
-                             cursorSize(size)), targetWidths[size],
-                             targetHeights[size], type, size);
+            loadTargetCursor(strprintf(targetCursorFile.c_str(),
+                cursorType(type), cursorSize(size)), targetWidths[size],
+                targetHeights[size], type, size);
         }
     }
 }

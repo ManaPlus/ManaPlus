@@ -81,15 +81,15 @@ RegisterDialog::RegisterDialog(LoginData *data):
     mRegisterButton = new Button(_("Register"), "register", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
-    place(0, 0, userLabel);
-    place(0, 1, passwordLabel);
-    place(0, 2, confirmLabel);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
+    placer(0, 0, userLabel);
+    placer(0, 1, passwordLabel);
+    placer(0, 2, confirmLabel);
 
-    place(1, 0, mUserField, 3).setPadding(2);
-    place(1, 1, mPasswordField, 3).setPadding(2);
-    place(1, 2, mConfirmField, 3).setPadding(2);
+    placer(1, 0, mUserField, 3).setPadding(2);
+    placer(1, 1, mPasswordField, 3).setPadding(2);
+    placer(1, 2, mConfirmField, 3).setPadding(2);
 
     int row = 3;
 
@@ -97,8 +97,8 @@ RegisterDialog::RegisterDialog(LoginData *data):
     {
         mMaleButton = new RadioButton(_("Male"), "sex", true);
         mFemaleButton = new RadioButton(_("Female"), "sex", false);
-        place(1, row, mMaleButton);
-        place(2, row, mFemaleButton);
+        placer(1, row, mMaleButton);
+        placer(2, row, mFemaleButton);
 
         row++;
     }
@@ -107,15 +107,15 @@ RegisterDialog::RegisterDialog(LoginData *data):
     {
         gcn::Label *emailLabel = new Label(_("Email:"));
         mEmailField = new TextField;
-        place(0, row, emailLabel);
-        place(1, row, mEmailField, 3).setPadding(2);
+        placer(0, row, emailLabel);
+        placer(1, row, mEmailField, 3).setPadding(2);
 
         row++;
     }
 
-    place = getPlacer(0, 2);
-    place(1, 0, mRegisterButton);
-    place(2, 0, mCancelButton);
+    placer = getPlacer(0, 2);
+    placer(1, 0, mRegisterButton);
+    placer(2, 0, mCancelButton);
     reflowLayout(250, 0);
 
     mUserField->addKeyListener(this);

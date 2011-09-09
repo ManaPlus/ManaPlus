@@ -170,9 +170,9 @@ void Guild::removeMember(GuildMember *member)
             (*itr)->mCharId == member->mCharId &&
             (*itr)->getName() == member->getName())
         {
-            GuildMember *member = *itr;
+            GuildMember *m = *itr;
             mMembers.erase(itr);
-            delete member;
+            delete m;
             return;
         }
         ++itr;

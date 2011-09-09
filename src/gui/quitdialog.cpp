@@ -55,7 +55,7 @@ QuitDialog::QuitDialog(QuitDialog** pointerToMe):
 
     addKeyListener(this);
 
-    ContainerPlacer place = getPlacer(0, 0);
+    ContainerPlacer placer = getPlacer(0, 0);
 
     const State state = Client::getState();
 
@@ -67,25 +67,25 @@ QuitDialog::QuitDialog(QuitDialog** pointerToMe):
         state == STATE_UPDATE ||
         state == STATE_LOAD_DATA)
     {
-        placeOption(place, mForceQuit);
+        placeOption(placer, mForceQuit);
     }
     else
     {
         // Only added if we are connected to an accountserver or gameserver
-        placeOption(place, mLogoutQuit);
-        placeOption(place, mSwitchAccountServer);
+        placeOption(placer, mLogoutQuit);
+        placeOption(placer, mSwitchAccountServer);
 
         // Only added if we are connected to a gameserver
         if (state == STATE_GAME)
-            placeOption(place, mSwitchCharacter);
+            placeOption(placer, mSwitchCharacter);
     }
 
     mOptions[0]->setSelected(true);
 
-    place = getPlacer(0, 1);
+    placer = getPlacer(0, 1);
 
-    place(1, 0, mOkButton, 1);
-    place(2, 0, mCancelButton, 1);
+    placer(1, 0, mOkButton, 1);
+    placer(2, 0, mCancelButton, 1);
 
     reflowLayout(200, 0);
     setLocationRelativeTo(getParent());
@@ -109,9 +109,9 @@ QuitDialog::~QuitDialog()
     mSwitchCharacter = 0;
 }
 
-void QuitDialog::placeOption(ContainerPlacer &place, gcn::RadioButton *option)
+void QuitDialog::placeOption(ContainerPlacer &placer, gcn::RadioButton *option)
 {
-    place(0, static_cast<int>(mOptions.size()), option, 3);
+    placer(0, static_cast<int>(mOptions.size()), option, 3);
     mOptions.push_back(option);
 }
 
