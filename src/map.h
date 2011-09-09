@@ -96,10 +96,10 @@ struct MetaTile
 class MapObject
 {
     public:
-        MapObject(int type, std::string data)
+        MapObject(int type0, std::string data0)
         {
-            this->type = type;
-            this->data = data;
+            type = type0;
+            data = data0;
         }
 
         int type;

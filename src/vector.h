@@ -46,10 +46,10 @@ class Vector
         /**
          * Constructor.
          */
-        Vector(float x, float y, float z = 0.0f):
-            x(x),
-            y(y),
-            z(z)
+        Vector(float x0, float y0, float z0 = 0.0f):
+            x(x0),
+            y(y0),
+            z(z0)
         {}
 
         /**

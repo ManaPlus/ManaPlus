@@ -69,10 +69,10 @@ namespace gcn
          * @param isMetaPressed True if meta is pressed, false otherwise.
          */
         InputEvent(Widget* source,
-                   bool isShiftPressed,
-                   bool isControlPressed,
-                   bool isAltPressed,
-                   bool isMetaPressed);
+                   bool shiftPressed,
+                   bool controlPressed,
+                   bool altPressed,
+                   bool metaPressed);
 
         /**
          * Checks if shift is pressed.

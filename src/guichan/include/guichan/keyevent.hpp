@@ -71,22 +71,22 @@ namespace gcn
          * Constructor.
          *
          * @param source The source widget of the event.
-         * @param isShiftPressed True if shift is pressed, false otherwise.
-         * @param isControlPressed True if control is pressed, false otherwise.
-         * @param isAltPressed True if alt is pressed, false otherwise.
-         * @param isMetaPressed True if meta is pressed, false otherwise.
+         * @param shiftPressed True if shift is pressed, false otherwise.
+         * @param controlPressed True if control is pressed, false otherwise.
+         * @param altPressed True if alt is pressed, false otherwise.
+         * @param metaPressed True if meta is pressed, false otherwise.
          * @param type The type of the event. A value from KeyEventType.
-         * @param isNumericPad True if the event occured on the numeric pad,
+         * @param numericPad True if the event occured on the numeric pad,
          *                     false otherwise.
          * @param key The key of the event.
          */
         KeyEvent(Widget* source,
-                 bool isShiftPressed,
-                 bool isControlPressed,
-                 bool isAltPressed,
-                 bool isMetaPressed,
+                 bool shiftPressed,
+                 bool controlPressed,
+                 bool altPressed,
+                 bool metaPressed,
                  unsigned int type,
-                 bool isNumericPad,
+                 bool numericPad,
                  const Key& key);
 
         /**

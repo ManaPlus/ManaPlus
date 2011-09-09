@@ -371,8 +371,8 @@ Game::Game():
 
     // Create the viewport
     viewport = new Viewport;
-    viewport->setDimension(gcn::Rectangle(0, 0, graphics->mWidth,
-                                          graphics->mHeight));
+    viewport->setDimension(gcn::Rectangle(0, 0, mainGraphics->mWidth,
+        mainGraphics->mHeight));
 
     gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
     top->add(viewport);
@@ -459,14 +459,14 @@ static bool saveScreenshot()
 
     if (!config.getBoolValue("showip"))
     {
-        graphics->setSecure(true);
+        mainGraphics->setSecure(true);
         gui->draw();
-        screenshot = graphics->getScreenshot();
-        graphics->setSecure(false);
+        screenshot = mainGraphics->getScreenshot();
+        mainGraphics->setSecure(false);
     }
     else
     {
-        screenshot = graphics->getScreenshot();
+        screenshot = mainGraphics->getScreenshot();
     }
 
     if (!screenshot)

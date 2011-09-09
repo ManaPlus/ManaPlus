@@ -96,9 +96,9 @@ void TextPopup::show(int x, int y, const std::string &str1,
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->mWidth)
-        posX = graphics->mWidth - getWidth();
-    if (posY + getHeight() > graphics->mHeight)
+    if (posX + getWidth() > mainGraphics->mWidth)
+        posX = mainGraphics->mWidth - getWidth();
+    if (posY + getHeight() > mainGraphics->mHeight)
         posY = y - getHeight() - distance;
 
     setPosition(posX, posY);

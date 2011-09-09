@@ -68,10 +68,10 @@ namespace ItemDB
 
     struct Stat
     {
-        Stat(const std::string &tag,
-             const std::string &format):
-            tag(tag),
-            format(format)
+        Stat(const std::string &tag0,
+             const std::string &format0) :
+            tag(tag0),
+            format(format0)
         {}
 
         std::string tag;

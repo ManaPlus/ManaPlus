@@ -67,23 +67,23 @@ namespace gcn
         /**
          * Constructor.
          *
-         * @param x The rectangle x coordinate.
-         * @param y The rectangle y coordinate.
-         * @param width The rectangle width.
-         * @param height The rectangle height.
-         * @param xOffset The offset of the x coordinate. Used to for
-         *                calculating the actual screen coordinate from
-         *                the relative screen coordinate.
-         * @param yOffset The offset of the y coordinate. Used to for
-         *                calculating the actual screen coordinate from
-         *                the relative screen coordinate.
+         * @param x0 The rectangle x coordinate.
+         * @param y0 The rectangle y coordinate.
+         * @param width0 The rectangle width.
+         * @param height0 The rectangle height.
+         * @param xOffset0 The offset of the x coordinate. Used to for
+         *                 calculating the actual screen coordinate from
+         *                 the relative screen coordinate.
+         * @param yOffset0 The offset of the y coordinate. Used to for
+         *                 calculating the actual screen coordinate from
+         *                 the relative screen coordinate.
          */
-        ClipRectangle(int x, 
-                      int y, 
-                      int width, 
-                      int height,
-                      int xOffset, 
-                      int yOffset);
+        ClipRectangle(int x0,
+                      int y0,
+                      int width0,
+                      int height0,
+                      int xOffset0,
+                      int yOffset0);
 
         /**
          * Copy constructor. Copies x, y, width and height 

@@ -666,8 +666,8 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     {
         int newX = std::max(0, getX() + event.getX() - mDragOffsetX);
         int newY = std::max(0, getY() + event.getY() - mDragOffsetY);
-        newX = std::min(graphics->mWidth - getWidth(), newX);
-        newY = std::min(graphics->mHeight - getHeight(), newY);
+        newX = std::min(mainGraphics->mWidth - getWidth(), newX);
+        newY = std::min(mainGraphics->mHeight - getHeight(), newY);
         setPosition(newX, newY);
     }
 }

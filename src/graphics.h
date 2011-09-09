@@ -292,6 +292,6 @@ class Graphics : public gcn::SDLGraphics
         bool mSecure;
 };
 
-extern Graphics *graphics;
+extern Graphics *mainGraphics;
 
 #endif

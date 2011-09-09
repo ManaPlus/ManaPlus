@@ -66,10 +66,10 @@ namespace gcn
          * Constructor.
          *
          * @param source The source widget of the mouse event.
-         * @param isShiftPressed True if shift is pressed, false otherwise.
-         * @param isControlPressed True if control is pressed, false otherwise.
-         * @param isAltPressed True if alt is pressed, false otherwise.
-         * @param isMetaPressed True if meta is pressed, false otherwise.
+         * @param shiftPressed True if shift is pressed, false otherwise.
+         * @param controlPressed True if control is pressed, false otherwise.
+         * @param altPressed True if alt is pressed, false otherwise.
+         * @param metaPressed True if meta is pressed, false otherwise.
          * @param type The type of the mouse event.
          * @param button The button of the mouse event.
          * @param x The x coordinate of the event relative to the source widget.
@@ -78,10 +78,10 @@ namespace gcn
          *                   It's set to zero if another button is used.
          */
         MouseEvent(Widget* source,
-                   bool isShiftPressed,
-                   bool isControlPressed,
-                   bool isAltPressed,
-                   bool isMetaPressed,
+                   bool shiftPressed,
+                   bool controlPressed,
+                   bool altPressed,
+                   bool metaPressed,
                    unsigned int type,
                    unsigned int button,
                    int x,

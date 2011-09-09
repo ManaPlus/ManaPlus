@@ -99,9 +99,9 @@ WindowMenu::WindowMenu():
         KeyboardConfig::KEY_WINDOW_DIDYOUKNOW);
     addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
 
-    if (graphics)
+    if (mainGraphics)
     {
-        setDimension(gcn::Rectangle(graphics->mWidth - x - 3,
+        setDimension(gcn::Rectangle(mainGraphics->mWidth - x - 3,
             3, x - 3, h));
     }
 
@@ -345,9 +345,9 @@ void WindowMenu::updateButtons()
             h = btn->getHeight();
         }
     }
-    if (graphics)
+    if (mainGraphics)
     {
-        setDimension(gcn::Rectangle(graphics->mWidth - x - 3,
+        setDimension(gcn::Rectangle(mainGraphics->mWidth - x - 3,
             3, x - 3, h));
     }
 }

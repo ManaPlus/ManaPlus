@@ -94,8 +94,8 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
         /**
          * Sets the text shown on the progress bar.
          */
-        void setText(const std::string &text)
-        { mText = text; }
+        void setText(const std::string &str)
+        { mText = str; }
 
         /**
          * Returns the text shown on the progress bar.

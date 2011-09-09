@@ -59,7 +59,7 @@
 
 #include "debug.h"
 
-extern Graphics *graphics;
+extern Graphics *mainGraphics;
 
 /**
  * The list model for mode list.
@@ -157,8 +157,8 @@ ModeListModel::ModeListModel()
     addCustomMode("1280x1024");
     addCustomMode("1400x900");
     addCustomMode("1500x990");
-    addCustomMode(toString(graphics->mWidth) + "x"
-        + toString(graphics->mHeight));
+    addCustomMode(toString(mainGraphics->mWidth) + "x"
+        + toString(mainGraphics->mHeight));
 
     std::sort(mVideoModes.begin(), mVideoModes.end(), modeSorter);
     mVideoModes.push_back("custom");
@@ -348,8 +348,8 @@ Setup_Video::Setup_Video():
     mFpsCheckBox->setSelected(mFps > 0);
 
     // Pre-select the current video mode.
-    std::string videoMode = toString(graphics->mWidth) + "x"
-                            + toString(graphics->mHeight);
+    std::string videoMode = toString(mainGraphics->mWidth) + "x"
+        + toString(mainGraphics->mHeight);
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
 
     mModeList->setActionEventId("videomode");
@@ -473,10 +473,10 @@ void Setup_Video::apply()
         if (!config.getIntValue("opengl"))
         {
 #endif
-            if (!graphics->setFullscreen(fullscreen))
+            if (!mainGraphics->setFullscreen(fullscreen))
             {
                 fullscreen = !fullscreen;
-                if (!graphics->setFullscreen(fullscreen))
+                if (!mainGraphics->setFullscreen(fullscreen))
                 {
                     std::stringstream errorMessage;
                     if (fullscreen)
@@ -564,11 +564,11 @@ void Setup_Video::cancel()
     config.setValue("screen", mFullScreenEnabled);
 
     // Set back to the current video mode.
-    std::string videoMode = toString(graphics->mWidth) + "x"
-                            + toString(graphics->mHeight);
+    std::string videoMode = toString(mainGraphics->mWidth) + "x"
+        + toString(mainGraphics->mHeight);
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
-    config.setValue("screenwidth", graphics->mWidth);
-    config.setValue("screenheight", graphics->mHeight);
+    config.setValue("screenwidth", mainGraphics->mWidth);
+    config.setValue("screenheight", mainGraphics->mHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
     config.setValue("particleeffects", mParticleEffectsEnabled);
@@ -612,9 +612,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             return;
 
         // TODO: Find out why the drawing area doesn't resize without a restart.
-        if (width != graphics->mWidth || height != graphics->mHeight)
+        if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
         {
-            if (width < graphics->mWidth || height < graphics->mHeight)
+            if (width < mainGraphics->mWidth || height < mainGraphics->mHeight)
                 new OkDialog(_("Screen Resolution Changed"),
                        _("Restart your client for the change to take effect.")
                        + std::string("\n") +
@@ -625,8 +625,8 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         }
 
         config.setValue("oldscreen", config.getBoolValue("screen"));
-        config.setValue("oldscreenwidth", graphics->mWidth);
-        config.setValue("oldscreenheight", graphics->mHeight);
+        config.setValue("oldscreenwidth", mainGraphics->mWidth);
+        config.setValue("oldscreenheight", mainGraphics->mHeight);
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }

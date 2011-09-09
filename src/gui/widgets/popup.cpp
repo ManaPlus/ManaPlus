@@ -44,8 +44,8 @@ Popup::Popup(const std::string &name, const std::string &skin):
     mPopupName(name),
     mMinWidth(100),
     mMinHeight(40),
-    mMaxWidth(graphics->mWidth),
-    mMaxHeight(graphics->mHeight),
+    mMaxWidth(mainGraphics->mWidth),
+    mMaxHeight(mainGraphics->mHeight),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true)
 {
@@ -190,9 +190,9 @@ void Popup::position(int x, int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->mWidth)
-        posX = graphics->mWidth - getWidth();
-    if (posY + getHeight() > graphics->mHeight)
+    if (posX + getWidth() > mainGraphics->mWidth)
+        posX = mainGraphics->mWidth - getWidth();
+    if (posY + getHeight() > mainGraphics->mHeight)
         posY = y - getHeight() - distance;
 
     setPosition(posX, posY);

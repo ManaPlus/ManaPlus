@@ -61,15 +61,15 @@ namespace gcn
         yOffset = 0;
     }
 
-    ClipRectangle::ClipRectangle(int x, int y, int width, int height,
-                                 int xOffset, int yOffset)
+    ClipRectangle::ClipRectangle(int x0, int y0, int width0, int height0,
+                                 int xOffset0, int yOffset0)
     {
-        this->x = x;
-        this->y = y;
-        this->width = width;
-        this->height = height;
-        this->xOffset = xOffset;
-        this->yOffset = yOffset;
+        x = x0;
+        y = y0;
+        width = width0;
+        height = height0;
+        xOffset = xOffset0;
+        yOffset = yOffset0;
     }
 
     const ClipRectangle& ClipRectangle::operator=(const Rectangle& other)

@@ -140,11 +140,11 @@ Configuration config;         /**< XML file configuration reader */
 Configuration serverConfig;   /**< XML file server configuration reader */
 Configuration branding;       /**< XML branding information reader */
 Configuration paths;          /**< XML default paths information reader */
-Logger *logger;               /**< Log object */
-ChatLogger *chatLogger;       /**< Chat log object */
+Logger *logger = 0;           /**< Log object */
+ChatLogger *chatLogger = 0;   /**< Chat log object */
 KeyboardConfig keyboard;
-UserPalette *userPalette;
-Graphics *graphics;
+UserPalette *userPalette = 0;
+Graphics *mainGraphics = 0;
 
 Sound sound;
 
@@ -440,20 +440,20 @@ Client::Client(const Options &options):
     switch(useOpenGL)
     {
         case 0:
-            graphics = new Graphics;
+            mainGraphics = new Graphics;
             break;
         case 1:
         default:
-            graphics = new OpenGLGraphics;
+            mainGraphics = new OpenGLGraphics;
             break;
         case 2:
-            graphics = new OpenGL1Graphics;
+            mainGraphics = new OpenGL1Graphics;
             break;
     };
 
 #else
     // Create the graphics context
-    graphics = new Graphics;
+    mainGraphics = new Graphics;
 #endif
 
     runCounters = config.getBoolValue("packetcounters");
@@ -465,7 +465,7 @@ Client::Client(const Options &options):
     const bool hwaccel = config.getBoolValue("hwaccel");
 
     // Try to set the desired video mode
-    if (!graphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
+    if (!mainGraphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
     {
         logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
@@ -482,7 +482,7 @@ Client::Client(const Options &options):
             config.setValueInt("screenwidth", oldWidth);
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen);
-            if (!graphics->setVideoMode(oldWidth, oldHeight, bpp,
+            if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
                 oldFullscreen, hwaccel))
             {
                 logger->error(strprintf("Couldn't restore %dx%dx%d "
@@ -493,7 +493,7 @@ Client::Client(const Options &options):
     }
 
     // Initialize for drawing
-    graphics->_beginDraw();
+    mainGraphics->_beginDraw();
 
     Theme::selectSkin();
 //    Theme::prepareThemePath();
@@ -507,7 +507,7 @@ Client::Client(const Options &options):
     // Initialize the drop shortcuts.
     dropShortcut = new DropShortcut;
 
-    gui = new Gui(graphics);
+    gui = new Gui(mainGraphics);
 
     // Initialize sound engine
     try
@@ -645,8 +645,8 @@ Client::~Client()
 
     logger->log1("Quitting3");
 
-    delete graphics;
-    graphics = 0;
+    delete mainGraphics;
+    mainGraphics = 0;
 
     logger->log1("Quitting4");
 
@@ -760,7 +760,7 @@ int Client::exec()
             frame_count++;
             if (gui)
                 gui->draw();
-            graphics->updateScreen();
+            mainGraphics->updateScreen();
 //            logger->log("active");
         }
         else

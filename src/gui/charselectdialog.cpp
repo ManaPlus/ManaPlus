@@ -121,20 +121,20 @@ class CharacterDisplay : public Container
         Button *mDelete;
 };
 
-CharSelectDialog::CharSelectDialog(LoginData *loginData):
+CharSelectDialog::CharSelectDialog(LoginData *data):
     Window(_("Account and Character Management")),
     mLocked(false),
     mUnregisterButton(0),
     mChangeEmailButton(0),
     mCharacterEntries(0),
-    mLoginData(loginData),
+    mLoginData(data),
     mCharHandler(Net::getCharHandler()),
     mDeleteDialog(0),
     mDeleteIndex(-1)
 {
     setCloseButton(false);
 
-    mAccountNameLabel = new Label(loginData->username);
+    mAccountNameLabel = new Label(mLoginData->username);
     mSwitchLoginButton = new Button(_("Switch Login"), "switch", this);
     mChangePasswordButton = new Button(_("Change Password"), "change_password",
                                        this);
@@ -373,7 +373,7 @@ void CharSelectDialog::setLocked(bool locked)
 }
 
 bool CharSelectDialog::selectByName(const std::string &name,
-                                    SelectAction action)
+                                    SelectAction selAction)
 {
     if (mLocked)
         return false;
@@ -387,7 +387,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
             {
                 if (mCharacterEntries[i])
                     mCharacterEntries[i]->requestFocus();
-                if (action == Choose)
+                if (selAction == Choose)
                     attemptCharacterSelect(i);
                 return true;
             }

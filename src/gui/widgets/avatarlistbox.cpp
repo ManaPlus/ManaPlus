@@ -373,7 +373,7 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             default:
             {
                 Map *map = viewport->getMap();
-                Avatar *ava = model->getAvatarAt(selected);
+                ava = model->getAvatarAt(selected);
                 if (map && ava)
                 {
                     MapItem *mapItem = map->findPortalXY(
@@ -384,7 +384,6 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
             }
         }
     }
-
     else if (event.getButton() == gcn::MouseEvent::MIDDLE)
     {
         if (ava->getType() == AVATAR_PLAYER && chatWindow)

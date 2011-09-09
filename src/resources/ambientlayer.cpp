@@ -41,16 +41,16 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
     if (keepRatio && !mImage->useOpenGL()
         /*&& defaultScreenWidth != 0
         && defaultScreenHeight != 0*/
-        && graphics->mWidth != defaultScreenWidth
-        && graphics->mHeight != defaultScreenHeight)
+        && mainGraphics->mWidth != defaultScreenWidth
+        && mainGraphics->mHeight != defaultScreenHeight)
     {
         // Rescale the overlay to keep the ratio as if we were on
         // the default resolution...
         Image *rescaledOverlay = ResourceManager::getInstance()->
             getRescaled(mImage, static_cast<int>(mImage->mBounds.w)
-            / defaultScreenWidth * graphics->mWidth,
+            / defaultScreenWidth * mainGraphics->mWidth,
             static_cast<int>(mImage->mBounds.h)
-            / defaultScreenHeight * graphics->mHeight);
+            / defaultScreenHeight * mainGraphics->mHeight);
 
         if (rescaledOverlay)
             mImage = rescaledOverlay;

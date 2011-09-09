@@ -52,15 +52,15 @@
 namespace gcn
 {
     InputEvent::InputEvent(Widget* source,
-                           bool isShiftPressed,
-                           bool isControlPressed,
-                           bool isAltPressed,
-                           bool isMetaPressed)
+                           bool shiftPressed,
+                           bool controlPressed,
+                           bool altPressed,
+                           bool metaPressed)
             :Event(source),
-             mShiftPressed(isShiftPressed),
-             mControlPressed(isControlPressed),
-             mAltPressed(isAltPressed),
-             mMetaPressed(isMetaPressed),
+             mShiftPressed(shiftPressed),
+             mControlPressed(controlPressed),
+             mAltPressed(altPressed),
+             mMetaPressed(metaPressed),
              mIsConsumed(false)
     {
 
