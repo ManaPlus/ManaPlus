@@ -2159,7 +2159,7 @@ void Being::recalcSpritesOrder()
                 SpriteToItemMap::const_iterator itr;
 
                 for (itr = spriteToItems->begin();
-                     itr != spriteToItems->end(); ++it)
+                     itr != spriteToItems->end(); ++itr)
                 {
                     int remSprite = itr->first;
                     const std::map<int, int> &itemReplacer = itr->second;
