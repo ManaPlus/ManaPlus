@@ -822,7 +822,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         addInputText(Temp, false);
 }
 
-void ChatWindow::event(Mana::Channels channel, const Mana::Event &event)
+void ChatWindow::processEvent(Mana::Channels channel, const Mana::Event &event)
 {
     if (channel == Mana::CHANNEL_NOTICES)
     {

@@ -386,7 +386,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         void optionChanged(const std::string &value);
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         /**
          * set a following player.

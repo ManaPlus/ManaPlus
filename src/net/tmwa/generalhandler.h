@@ -59,7 +59,7 @@ class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
 
         void clearHandlers();
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         void reloadPartially();
 

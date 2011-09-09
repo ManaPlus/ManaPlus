@@ -437,8 +437,8 @@ void KillStats::validateJacko()
     }
 }
 
-void KillStats::event(Mana::Channels channel A_UNUSED,
-                      const Mana::Event &event)
+void KillStats::processEvent(Mana::Channels channel A_UNUSED,
+                             const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {

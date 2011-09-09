@@ -118,7 +118,7 @@ void Event::trigger(Channels channel, const Event &event)
     while (lit != it->second.end())
     {
         if (*lit)
-            (*lit)->event(channel, event);
+            (*lit)->processEvent(channel, event);
         ++lit;
     }
 }

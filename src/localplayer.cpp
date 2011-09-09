@@ -1633,7 +1633,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mTradebot = config.getBoolValue("tradebot");
 }
 
-void LocalPlayer::event(Mana::Channels channel, const Mana::Event &event)
+void LocalPlayer::processEvent(Mana::Channels channel,
+                               const Mana::Event &event)
 {
     if (channel == Mana::CHANNEL_ATTRIBUTES)
     {

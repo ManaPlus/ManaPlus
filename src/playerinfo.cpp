@@ -312,7 +312,7 @@ public:
         listen(Mana::CHANNEL_GAME);
     }
 
-    void event(Mana::Channels channel, const Mana::Event &event)
+    void processEvent(Mana::Channels channel, const Mana::Event &event)
     {
         if (channel == Mana::CHANNEL_CLIENT)
         {

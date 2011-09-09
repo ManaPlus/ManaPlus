@@ -58,7 +58,7 @@ class StatusWindow : public Window,
          */
         StatusWindow();
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         void setPointsNeeded(int id, int needed);
 

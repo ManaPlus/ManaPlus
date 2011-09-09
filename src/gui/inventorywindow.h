@@ -127,7 +127,7 @@ class InventoryWindow : public Window,
 
         void updateDropButton();
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         void updateButtons(Item *item = 0);
 

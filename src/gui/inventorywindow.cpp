@@ -564,7 +564,6 @@ void InventoryWindow::updateButtons(Item *item)
         else
             mSplitButton->setEnabled(false);
     }
-
 }
 
 void InventoryWindow::setSplitAllowed(bool allowed)
@@ -585,8 +584,8 @@ void InventoryWindow::close()
     }
 }
 
-void InventoryWindow::event(Mana::Channels channel A_UNUSED,
-                            const Mana::Event &event)
+void InventoryWindow::processEvent(Mana::Channels channel A_UNUSED,
+                                   const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {

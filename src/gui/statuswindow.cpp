@@ -276,8 +276,8 @@ StatusWindow::StatusWindow():
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::event(Mana::Channels channel A_UNUSED,
-                         const Mana::Event &event)
+void StatusWindow::processEvent(Mana::Channels channel A_UNUSED,
+                                const Mana::Event &event)
 {
     static bool blocked = false;
     if (blocked)

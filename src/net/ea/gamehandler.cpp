@@ -46,7 +46,8 @@ GameHandler::GameHandler()
     listen(Mana::CHANNEL_GAME);
 }
 
-void GameHandler::event(Mana::Channels channel, const Mana::Event &event)
+void GameHandler::processEvent(Mana::Channels channel,
+                               const Mana::Event &event)
 {
     if (channel == Mana::CHANNEL_GAME)
     {
