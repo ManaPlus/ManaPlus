@@ -355,8 +355,8 @@ void CommandHandler::handleWho(const std::string &args A_UNUSED,
 
 void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
 {
-    std::string recvnick = "";
-    std::string msg = "";
+    std::string recvnick("");
+    std::string msg("");
 
     if (args.substr(0, 1) == "\"")
     {

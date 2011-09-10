@@ -465,7 +465,7 @@ std::string combineDye2(std::string file, std::string dye)
     if (pos != std::string::npos)
     {
         std::string dye1 = file.substr(pos + 1);
-        std::string str = "";
+        std::string str("");
         file = file.substr(0, pos);
         std::list<std::string> list1 = splitToStringList(dye1, ';');
         std::list<std::string> list2 = splitToStringList(dye, ';');
@@ -505,7 +505,7 @@ std::vector<std::string> getLang()
 std::string packList(std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();
-    std::string str = "";
+    std::string str("");
     while (i != list.end())
     {
         str = str + (*i) + "|";

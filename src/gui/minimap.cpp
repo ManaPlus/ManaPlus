@@ -89,7 +89,7 @@ Minimap::~Minimap()
 
 void Minimap::setMap(Map *map)
 {
-    std::string caption = "";
+    std::string caption("");
     std::string minimapName;
 
     if (map)

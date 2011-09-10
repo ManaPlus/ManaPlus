@@ -184,8 +184,8 @@ std::string SpellManager::parseCommand(std::string command,
     if (!player_node)
         return command;
 
-    std::string name = "";
-    std::string id = "";
+    std::string name("");
+    std::string id("");
     std::string name2;
 
     if (target)

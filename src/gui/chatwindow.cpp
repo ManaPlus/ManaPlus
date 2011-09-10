@@ -1074,7 +1074,7 @@ std::string ChatWindow::addColors(std::string &msg)
         return msg;
     }
 
-    std::string newMsg = "";
+    std::string newMsg("");
     int cMap[] = {1, 4, 5, 2, 3, 6, 7, 9, 0, 8};
 
     // rainbow

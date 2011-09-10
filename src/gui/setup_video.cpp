@@ -179,7 +179,7 @@ void ModeListModel::addCustomMode(std::string mode)
 
 int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 {
-    std::string currentMode = "";
+    std::string currentMode("");
     for (int i = 0; i < getNumberOfElements(); i++)
     {
         currentMode = getElementAt(i);

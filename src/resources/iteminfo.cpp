@@ -108,7 +108,7 @@ const std::string &ItemInfo::getSprite(Gender gender) const
     }
     else
     {
-        static const std::string empty = "";
+        static const std::string empty("");
         std::map<int, std::string>::const_iterator i =
             mAnimationFiles.find(gender);
 

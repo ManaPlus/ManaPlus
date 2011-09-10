@@ -86,7 +86,7 @@ namespace SpriteAction
     static const std::string CAST_MAGIC = "magic";
     static const std::string USE_ITEM = "item";
     static const std::string SPAWN = "spawn";
-    static const std::string INVALID = "";
+    static const std::string INVALID("");
 }
 
 enum SpriteDirection

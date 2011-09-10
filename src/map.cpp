@@ -2217,7 +2217,7 @@ MapItem::~MapItem()
 
 void MapItem::setType(int type)
 {
-    std::string name = "";
+    std::string name("");
     mType = type;
     if (mImage)
         mImage->decRef();

@@ -228,8 +228,8 @@ void NpcDialog::action(const gcn::ActionEvent &event)
         }
         else if (mActionState == NPC_ACTION_INPUT)
         {
-            std::string printText = "";  // Text that will get printed
-                                         // in the textbox
+            std::string printText("");  // Text that will get printed
+                                        // in the textbox
 
             if (mInputState == NPC_INPUT_LIST)
             {

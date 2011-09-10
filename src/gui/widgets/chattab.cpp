@@ -337,7 +337,7 @@ void ChatTab::chatInput(const std::string &message)
                 start = msg.find('[', start + 1);
             }
 
-            std::string temp = "";
+            std::string temp("");
             if (start + 1 < msg.length() && end < msg.length()
                 && end > start + 1)
             {

@@ -35,18 +35,18 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
                          std::string icon, unsigned int basicLvl,
                          MagicSchool school, unsigned int schoolLvl,
                          int mana) :
+    mCommand(command),
+    mSymbol(symbol),
+    mTargetType(type),
+    mIcon(icon),
+    mId(id),
+    mMana(mana),
+    mSchool(school),
+    mBaseLvl(basicLvl),
+    mSchoolLvl(schoolLvl),
+    mCommandType(TEXT_COMMAND_MAGIC),
     mImage(0)
 {
-    mId = id;
-    mCommand = command;
-    mSymbol = symbol;
-    mTargetType = type;
-    mIcon = icon;
-    mBaseLvl = basicLvl;
-    mSchool = school;
-    mSchoolLvl = schoolLvl;
-    mMana = mana;
-    mCommandType = TEXT_COMMAND_MAGIC;
     loadImage();
 }
 
@@ -54,36 +54,34 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
 TextCommand::TextCommand(unsigned int id, std::string symbol,
                          std::string command, SpellTarget type,
                          std::string icon) :
+    mCommand(command),
+    mSymbol(symbol),
+    mTargetType(type),
+    mIcon(icon),
+    mId(id),
+    mMana(0),
+    mSchool(SKILL_MAGIC),
+    mBaseLvl(0),
+    mSchoolLvl(0),
+    mCommandType(TEXT_COMMAND_TEXT),
     mImage(0)
 {
-    mId = id;
-    mCommand = command;
-    mSymbol = symbol;
-    mTargetType = type;
-    mIcon = icon;
-    mCommandType = TEXT_COMMAND_TEXT;
-    mBaseLvl = 0;
-    mSchool = SKILL_MAGIC;
-    mSchoolLvl = 0;
-    mMana = 0;
-    mCommandType = TEXT_COMMAND_TEXT;
     loadImage();
 }
 
 TextCommand::TextCommand(unsigned int id) :
+    mCommand(""),
+    mSymbol(""),
+    mTargetType(NOTARGET),
+    mIcon(""),
+    mId(id),
+    mMana(0),
+    mSchool(SKILL_MAGIC),
+    mBaseLvl(0),
+    mSchoolLvl(0),
+    mCommandType(TEXT_COMMAND_TEXT),
     mImage(0)
 {
-    mId = id;
-    mCommand = "";
-    mSymbol = "";
-    mTargetType = NOTARGET;
-    mIcon = "";
-    mCommandType = TEXT_COMMAND_TEXT;
-    mBaseLvl = 0;
-    mSchool = SKILL_MAGIC;
-    mSchoolLvl = 0;
-    mMana = 0;
-    mCommandType = TEXT_COMMAND_TEXT;
     loadImage();
 }
 

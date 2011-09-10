@@ -101,7 +101,7 @@ bool GuildTab::handleCommand(const std::string &type, const std::string &args)
     else if (type == "notice" && taGuild)
     {
         std::string str1 = args.substr(0, 60);
-        std::string str2 = "";
+        std::string str2("");
         if (args.size() > 60)
             str2 = args.substr(60);
         Net::getGuildHandler()->changeNotice(taGuild->getId(), str1, str2);
