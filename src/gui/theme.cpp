@@ -65,14 +65,15 @@ static void initDefaultThemePath()
 
 Skin::Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
            const std::string &filePath,
-           const std::string &name):
+           const std::string &name, int padding):
     instances(0),
     mFilePath(filePath),
     mName(name),
     mBorder(skin),
     mCloseImage(close),
     mStickyImageUp(stickyUp),
-    mStickyImageDown(stickyDown)
+    mStickyImageDown(stickyDown),
+    mPadding(padding)
 {}
 
 Skin::~Skin()
@@ -321,6 +322,7 @@ Skin *Theme::readSkin(const std::string &filename)
     Image *dBorders = Theme::getImageFromTheme(skinSetImage);
     ImageRect border;
     memset(&border, 0, sizeof(ImageRect));
+    int padding = 3;
 
     // iterate <widget>'s
     for_each_xml_child_node(widgetNode, rootNode)
@@ -332,140 +334,143 @@ Skin *Theme::readSkin(const std::string &filename)
                 XML::getProperty(widgetNode, "type", "unknown");
         if (widgetType == "Window")
         {
-            // Iterate through <part>'s
-            // LEEOR / TODO:
-            // We need to make provisions to load in a CloseButton image. For
-            // now it can just be hard-coded.
             for_each_xml_child_node(partNode, widgetNode)
             {
-                if (!xmlStrEqual(partNode->name, BAD_CAST "part"))
-                    continue;
+                if (xmlStrEqual(partNode->name, BAD_CAST "part"))
+                {
+                    const std::string partType =
+                            XML::getProperty(partNode, "type", "unknown");
+                    // TOP ROW
+                    const int xPos = XML::getProperty(partNode, "xpos", 0);
+                    const int yPos = XML::getProperty(partNode, "ypos", 0);
+                    const int width = XML::getProperty(partNode, "width", 1);
+                    const int height = XML::getProperty(partNode, "height", 1);
 
-                const std::string partType =
-                        XML::getProperty(partNode, "type", "unknown");
-                // TOP ROW
-                const int xPos = XML::getProperty(partNode, "xpos", 0);
-                const int yPos = XML::getProperty(partNode, "ypos", 0);
-                const int width = XML::getProperty(partNode, "width", 1);
-                const int height = XML::getProperty(partNode, "height", 1);
+                    if (partType == "top-left-corner")
+                    {
+                        if (dBorders)
+                        {
+                            border.grid[0] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[0] = 0;
+                        }
+                    }
+                    else if (partType == "top-edge")
+                    {
+                        if (dBorders)
+                        {
+                            border.grid[1] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[1] = 0;
+                        }
+                    }
+                    else if (partType == "top-right-corner")
+                    {
+                        if (dBorders)
+                        {
+                            border.grid[2] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[2] = 0;
+                        }
+                    }
 
-                if (partType == "top-left-corner")
-                {
-                    if (dBorders)
+                    // MIDDLE ROW
+                    else if (partType == "left-edge")
                     {
-                        border.grid[0] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
+                        if (dBorders)
+                        {
+                            border.grid[3] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[3] = 0;
+                        }
                     }
-                    else
+                    else if (partType == "bg-quad")
                     {
-                        border.grid[0] = 0;
+                        if (dBorders)
+                        {
+                            border.grid[4] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[4] = 0;
+                        }
                     }
-                }
-                else if (partType == "top-edge")
-                {
-                    if (dBorders)
+                    else if (partType == "right-edge")
                     {
-                        border.grid[1] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
+                        if (dBorders)
+                        {
+                            border.grid[5] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[5] = 0;
+                        }
                     }
-                    else
-                    {
-                        border.grid[1] = 0;
-                    }
-                }
-                else if (partType == "top-right-corner")
-                {
-                    if (dBorders)
-                    {
-                        border.grid[2] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
-                    }
-                    else
-                    {
-                        border.grid[2] = 0;
-                    }
-                }
 
-                // MIDDLE ROW
-                else if (partType == "left-edge")
-                {
-                    if (dBorders)
+                    // BOTTOM ROW
+                    else if (partType == "bottom-left-corner")
                     {
-                        border.grid[3] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
+                        if (dBorders)
+                        {
+                            border.grid[6] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[6] = 0;
+                        }
                     }
-                    else
+                    else if (partType == "bottom-edge")
                     {
-                        border.grid[3] = 0;
+                        if (dBorders)
+                        {
+                            border.grid[7] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[7] = 0;
+                        }
                     }
-                }
-                else if (partType == "bg-quad")
-                {
-                    if (dBorders)
+                    else if (partType == "bottom-right-corner")
                     {
-                        border.grid[4] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
+                        if (dBorders)
+                        {
+                            border.grid[8] = dBorders->getSubImage(
+                                xPos, yPos, width, height);
+                        }
+                        else
+                        {
+                            border.grid[8] = 0;
+                        }
                     }
-                    else
-                    {
-                        border.grid[4] = 0;
-                    }
-                }
-                else if (partType == "right-edge")
-                {
-                    if (dBorders)
-                    {
-                        border.grid[5] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
-                    }
-                    else
-                    {
-                        border.grid[5] = 0;
-                    }
-                }
 
-                // BOTTOM ROW
-                else if (partType == "bottom-left-corner")
-                {
-                    if (dBorders)
-                    {
-                        border.grid[6] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
-                    }
                     else
                     {
-                        border.grid[6] = 0;
+                        logger->log("Theme::readSkin(): Unknown part type '%s'",
+                                    partType.c_str());
                     }
                 }
-                else if (partType == "bottom-edge")
+                else if (xmlStrEqual(partNode->name, BAD_CAST "option"))
                 {
-                    if (dBorders)
-                    {
-                        border.grid[7] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
-                    }
-                    else
-                    {
-                        border.grid[7] = 0;
-                    }
-                }
-                else if (partType == "bottom-right-corner")
-                {
-                    if (dBorders)
-                    {
-                        border.grid[8] = dBorders->getSubImage(
-                            xPos, yPos, width, height);
-                    }
-                    else
-                    {
-                        border.grid[8] = 0;
-                    }
-                }
-
-                else
-                {
-                    logger->log("Theme::readSkin(): Unknown part type '%s'",
-                                partType.c_str());
+                    const std::string name = XML::getProperty(
+                        partNode, "name", "");
+                    if (name == "padding")
+                        padding = XML::getProperty(partNode, "value", 3);
                 }
             }
         }
@@ -495,7 +500,7 @@ Skin *Theme::readSkin(const std::string &filename)
     }
 
     Skin *skin = new Skin(border, closeImage, stickyImageUp, stickyImageDown,
-                          filename);
+                          filename, "", padding);
     skin->updateAlpha(mMinimumOpacity);
     return skin;
 }

@@ -43,8 +43,8 @@ class Skin
 {
     public:
         Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
-             const std::string &filePath,
-             const std::string &name = "");
+             const std::string &filePath, const std::string &name = "",
+             int padding = 3);
 
         ~Skin();
 
@@ -95,6 +95,9 @@ class Skin
          */
         void updateAlpha(float minimumOpacityAllowed = 0.0f);
 
+        int getPadding()
+        { return mPadding; }
+
         int instances;
 
     private:
@@ -104,6 +107,7 @@ class Skin
         Image *mCloseImage;        /**< Close Button Image */
         Image *mStickyImageUp;     /**< Sticky Button Image */
         Image *mStickyImageDown;   /**< Sticky Button Image */
+        int mPadding;
 };
 
 class Theme : public Palette, public ConfigListener
