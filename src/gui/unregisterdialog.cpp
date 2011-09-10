@@ -47,7 +47,7 @@
 #include "debug.h"
 
 UnRegisterDialog::UnRegisterDialog(LoginData *data):
-    Window(_("Unregister"), true),
+    Window(_("Unregister"), true, 0, "unregister.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {

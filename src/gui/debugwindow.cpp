@@ -51,7 +51,7 @@
 #include "debug.h"
 
 DebugWindow::DebugWindow():
-    Window(_("Debug"))
+    Window(_("Debug"), false, 0, "debug.xml")
 {
     setWindowName("Debug");
     if (setupWindow)

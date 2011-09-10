@@ -238,6 +238,8 @@ class Theme : public Palette, public ConfigListener
         Skin *load(const std::string &filename,
                    const std::string &defaultPath = getThemePath());
 
+        void unload(Skin *skin);
+
         /**
          * Updates the alpha values of all of the skins.
          */

@@ -56,7 +56,7 @@
 NpcDialog::DialogList NpcDialog::instances;
 
 NpcDialog::NpcDialog(int npcId)
-    : Window(_("NPC")),
+    : Window(_("NPC"), false, 0, "npc.xml"),
       mNpcId(npcId),
       mLogInteraction(config.getBoolValue("logNpcInGui")),
       mDefaultInt(0),

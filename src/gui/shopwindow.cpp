@@ -72,7 +72,7 @@ extern std::string tradePartnerName;
 ShopWindow::DialogList ShopWindow::instances;
 
 ShopWindow::ShopWindow():
-    Window(_("Personal Shop")),
+    Window(_("Personal Shop"), false, 0, "shop.xml"),
     mSelectedItem(-1),
     mAnnonceTime(0),
     mLastRequestTimeList(0),

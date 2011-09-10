@@ -44,7 +44,8 @@
 #include "debug.h"
 
 QuitDialog::QuitDialog(QuitDialog** pointerToMe):
-    Window(_("Quit"), true, NULL), mMyPointer(pointerToMe)
+    Window(_("Quit"), true, 0, "quit.xml"),
+    mMyPointer(pointerToMe)
 {
     mForceQuit = new RadioButton(_("Quit"), "quitdialog");
     mLogoutQuit = new RadioButton(_("Quit"), "quitdialog");

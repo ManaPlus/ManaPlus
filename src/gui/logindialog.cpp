@@ -83,7 +83,7 @@ public:
 
 LoginDialog::LoginDialog(LoginData *data, std::string serverName,
                          std::string *updateHost):
-    Window(_("Login")),
+    Window(_("Login"), false, 0, "login.xml"),
     mLoginData(data),
     mUpdateHost(updateHost),
     mServerName(serverName)

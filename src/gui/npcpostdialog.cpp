@@ -39,7 +39,7 @@
 NpcPostDialog::DialogList NpcPostDialog::instances;
 
 NpcPostDialog::NpcPostDialog(int npcId):
-    Window(_("NPC")),
+    Window(_("NPC"), false, 0, "npcpost.xml"),
     mNpcId(npcId)
 {
     setContentSize(400, 180);

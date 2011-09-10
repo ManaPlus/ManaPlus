@@ -234,7 +234,7 @@ private:
 
 
 ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
-    Window(_("Choose Your Server")),
+    Window(_("Choose Your Server"), false, 0, "server.xml"),
     mDir(dir),
 //    mDownloadStatus(DOWNLOADING_PREPARING),
     mDownloadStatus(DOWNLOADING_UNKNOWN),

@@ -63,7 +63,7 @@
 #define CAPTION_ACCEPTED _("Agreed. Waiting...")
 
 TradeWindow::TradeWindow():
-    Window(_("Trade: You")),
+    Window(_("Trade: You"), false, 0, "trade.xml"),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mStatus(PROPOSING),

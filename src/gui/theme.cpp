@@ -216,6 +216,9 @@ Skin *Theme::load(const std::string &filename, const std::string &defaultPath)
     Skin *skin = readSkin(filename);
 
     if (!skin)
+        skin = readSkin("window.xml");
+
+    if (!skin)
     {
         // Try falling back on the defaultPath if this makes sense
         if (filename != defaultPath)
@@ -238,6 +241,31 @@ Skin *Theme::load(const std::string &filename, const std::string &defaultPath)
     mSkins[filename] = skin;
 
     return skin;
+}
+
+void Theme::unload(Skin *skin)
+{
+    if (!skin)
+        return;
+    skin->instances --;
+/*
+    // unload theme if no instances
+    if (!skin->instances)
+    {
+        SkinIterator it = mSkins.begin();
+        SkinIterator it_end = mSkins.end();
+        while (it != it_end)
+        {
+            if (it->second == skin)
+            {
+                mSkins.erase(it);
+                break;
+            }
+            ++ it;
+        }
+        delete skin;
+    }
+*/
 }
 
 void Theme::setMinimumOpacity(float minimumOpacity)

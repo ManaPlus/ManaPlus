@@ -47,7 +47,7 @@
 #include "debug.h"
 
 ChangePasswordDialog::ChangePasswordDialog(LoginData *data):
-    Window(_("Change Password"), true),
+    Window(_("Change Password"), true, 0, "changepassword.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {

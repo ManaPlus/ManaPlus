@@ -1114,7 +1114,7 @@ private:
 };
 
 SocialWindow::SocialWindow() :
-    Window(_("Social")),
+    Window(_("Social"), false, 0, "social.xml"),
     mGuildInvited(0),
     mGuildAcceptDialog(0),
     mPartyAcceptDialog(0),

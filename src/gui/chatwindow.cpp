@@ -149,7 +149,7 @@ public:
 
 
 ChatWindow::ChatWindow():
-    Window(_("Chat")),
+    Window(_("Chat"), false, 0, "chat.xml"),
     mTmpVisible(false),
     mChatHistoryIndex(0)
 {

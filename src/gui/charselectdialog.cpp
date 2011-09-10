@@ -122,7 +122,7 @@ class CharacterDisplay : public Container
 };
 
 CharSelectDialog::CharSelectDialog(LoginData *data):
-    Window(_("Account and Character Management")),
+    Window(_("Account and Character Management"), false, 0, "char.xml"),
     mLocked(false),
     mUnregisterButton(0),
     mChangeEmailButton(0),

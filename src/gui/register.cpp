@@ -63,7 +63,7 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
 }
 
 RegisterDialog::RegisterDialog(LoginData *data):
-    Window(_("Register")),
+    Window(_("Register"), false, 0, "register.xml"),
     mEmailField(0),
     mMaleButton(0),
     mFemaleButton(0),

@@ -45,7 +45,7 @@
 #include "debug.h"
 
 ChangeEmailDialog::ChangeEmailDialog(LoginData *data):
-    Window(_("Change Email Address"), true),
+    Window(_("Change Email Address"), true, 0, "changeemail.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {

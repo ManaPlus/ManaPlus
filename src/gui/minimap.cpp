@@ -47,7 +47,7 @@
 bool Minimap::mShow = true;
 
 Minimap::Minimap():
-    Window(_("Map")),
+    Window(_("Map"), false, 0, "map.xml"),
     mMapImage(0),
     mWidthProportion(0.5),
     mHeightProportion(0.5),

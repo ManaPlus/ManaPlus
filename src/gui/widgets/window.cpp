@@ -47,7 +47,7 @@ int Window::instances = 0;
 int Window::mouseResize = 0;
 
 Window::Window(const std::string &caption, bool modal, Window *parent,
-               const std::string &skin):
+               std::string skin):
     gcn::Window(caption),
     mGrip(0),
     mParent(parent),
@@ -79,8 +79,18 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     setPadding(3);
     setTitleBarHeight(20);
 
+    if (skin == "")
+        skin = "window.xml";
+
     // Loads the skin
-    mSkin = Theme::instance()->load(skin);
+    if (Theme::instance())
+    {
+        mSkin = Theme::instance()->load(skin);
+    }
+    else
+    {
+        mSkin = 0;
+    }
 
     // Add this window to the window container
     windowContainer->add(this);
@@ -113,8 +123,6 @@ Window::~Window()
 
     mWidgets.clear();
 
-// need mWidgets.clean ?
-
     removeWidgetListener(this);
     delete mVertexes;
     mVertexes = 0;
@@ -122,7 +130,11 @@ Window::~Window()
     instances--;
 
     if (mSkin)
-        mSkin->instances--;
+    {
+        if (Theme::instance())
+            Theme::instance()->unload(mSkin);
+        mSkin = 0;
+    }
 }
 
 void Window::setWindowContainer(WindowContainer *wc)
@@ -443,7 +455,7 @@ void Window::mousePressed(gcn::MouseEvent &event)
         const int y = event.getY();
 
         // Handle close button
-        if (mCloseButton)
+        if (mCloseButton && mSkin)
         {
             Image *img = mSkin->getCloseImage();
             if (img)
@@ -464,7 +476,7 @@ void Window::mousePressed(gcn::MouseEvent &event)
         }
 
         // Handle sticky button
-        if (mStickyButton)
+        if (mStickyButton && mSkin)
         {
             Image *button = mSkin->getStickyImage(mSticky);
             if (button)

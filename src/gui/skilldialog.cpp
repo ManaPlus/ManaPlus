@@ -273,7 +273,7 @@ private:
 };
 
 SkillDialog::SkillDialog():
-    Window(_("Skills"))
+    Window(_("Skills"), false, 0, "skills.xml")
 {
     setWindowName("Skills");
     setCloseButton(true);

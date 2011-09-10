@@ -55,7 +55,7 @@
 #include "debug.h"
 
 CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
-    Window(_("Create Character"), true, parent),
+    Window(_("Create Character"), true, parent, "charcreate.xml"),
     mCharSelectDialog(parent),
     mRace(0),
     mSlot(slot)

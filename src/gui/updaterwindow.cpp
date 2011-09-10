@@ -135,7 +135,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
                              const std::string &updatesDir,
                              bool applyUpdates,
                              int updateType):
-    Window(_("Updating...")),
+    Window(_("Updating..."), false, 0, "update.xml"),
     mDownloadStatus(UPDATE_NEWS),
     mUpdateHost(updateHost),
     mUpdatesDir(updatesDir),

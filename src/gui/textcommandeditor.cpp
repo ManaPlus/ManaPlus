@@ -165,7 +165,7 @@ public:
 
 
 TextCommandEditor::TextCommandEditor(TextCommand *command):
-    Window(_("Command Editor"))
+    Window(_("Command Editor"), false, 0, "commandeditor.xml")
 {
     int w = 350;
     int h = 350;
