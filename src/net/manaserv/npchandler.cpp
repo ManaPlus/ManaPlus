@@ -63,7 +63,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
         return;
 
     int npcId = being->getId();
-    NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
+    NpcDialogs::iterator diag = mNpcDialogs.find(npcId);
     NpcDialog *dialog;
 
     if (diag == mNpcDialogs.end())
