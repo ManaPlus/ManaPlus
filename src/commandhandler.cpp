@@ -87,221 +87,113 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
     args = trim(args);
 
     if (command == "closeall")
-    {
         handleCloseAll(args, tab);
-    }
     else if (type == "ignoreall")
-    {
         handleIgnoreAll(args, tab);
-    }
     else if (type == "help") // Do help before tabs so they can't override it
-    {
         handleHelp(args, tab);
-    }
     else if (type == "announce")
-    {
         handleAnnounce(args, tab);
-    }
     else if (type == "where")
-    {
         handleWhere(args, tab);
-    }
     else if (type == "who")
-    {
         handleWho(args, tab);
-    }
     else if (type == "msg" || type == "whisper" || type == "w")
-    {
         handleMsg(args, tab);
-    }
     else if (type == "query" || type == "q")
-    {
         handleQuery(args, tab);
-    }
     else if (type == "ignore")
-    {
         handleIgnore(args, tab);
-    }
     else if (type == "unignore")
-    {
         handleUnignore(args, tab);
-    }
     else if (type == "friend" || type == "befriend")
-    {
         handleFriend(args, tab);
-    }
     else if (type == "disregard")
-    {
         handleDisregard(args, tab);
-    }
     else if (type == "neutral")
-    {
         handleNeutral(args, tab);
-    }
     else if (type == "erase")
-    {
         handleErase(args, tab);
-    }
     else if (type == "join")
-    {
         handleJoin(args, tab);
-    }
     else if (type == "list")
-    {
         handleListChannels(args, tab);
-    }
     else if (type == "clear")
-    {
         handleClear(args, tab);
-    }
     else if (type == "createparty")
-    {
         handleCreateParty(args, tab);
-    }
     else if (type == "createguild")
-    {
         handleCreateGuild(args, tab);
-    }
     else if (type == "party")
-    {
         handleParty(args, tab);
-    }
     else if (type == "me")
-    {
         handleMe(args, tab);
-    }
     else if (type == "toggle")
-    {
         handleToggle(args, tab);
-    }
     else if (type == "present")
-    {
         handlePresent(args, tab);
-    }
     else if (type == "quit")
-    {
         handleQuit(args, tab);
-    }
     else if (type == "all")
-    {
         handleShowAll(args, tab);
-    }
     else if (type == "move")
-    {
         handleMove(args, tab);
-    }
     else if (type == "target")
-    {
         handleTarget(args, tab);
-    }
     else if (type == "outfit")
-    {
         handleOutfit(args, tab);
-    }
     else if (type == "emote")
-    {
         handleEmote(args, tab);
-    }
     else if (type == "away")
-    {
         handleAway(args, tab);
-    }
     else if (type == "follow")
-    {
         handleFollow(args, tab);
-    }
     else if (type == "heal")
-    {
         handleHeal(args, tab);
-    }
     else if (type == "navigate")
-    {
         handleNavigate(args, tab);
-    }
     else if (type == "imitation")
-    {
         handleImitation(args, tab);
-    }
     else if (type == "mail")
-    {
         handleMail(args, tab);
-    }
     else if (type == "trade")
-    {
         handleTrade(args, tab);
-    }
     else if (type == "priceload")
-    {
         handlePriceLoad(args, tab);
-    }
     else if (type == "pricesave")
-    {
         handlePriceSave(args, tab);
-    }
     else if (type == "cacheinfo")
-    {
         handleCacheInfo(args, tab);
-    }
     else if (type == "disconnect")
-    {
         handleDisconnect(args, tab);
-    }
     else if (type == "undress")
-    {
         handleUndress(args, tab);
-    }
     else if (type == "attack")
-    {
         handleAttack(args, tab);
-    }
     else if (type == "dirs")
-    {
         handleDirs(args, tab);
-    }
     else if (type == "info")
-    {
         handleInfo(args, tab);
-    }
     else if (type == "wait")
-    {
         handleWait(args, tab);
-    }
     else if (type == "uptime")
-    {
         handleUptime(args, tab);
-    }
     else if (type == "addpriorityattack")
-    {
         handleAddPriorityAttack(args, tab);
-    }
     else if (type == "addattack")
-    {
         handleAddAttack(args, tab);
-    }
     else if (type == "removeattack" || type == "removeignoreattack")
-    {
         handleRemoveAttack(args, tab);
-    }
     else if (type == "addignoreattack")
-    {
         handleAddIgnoreAttack(args, tab);
-    }
     else if (type == "dump")
-    {
         handleDump(args, tab);
-    }
     else if (tab->handleCommand(type, args))
-    {
-        // Nothing to do
-    }
+        ;
     else if (type == "hack")
-    {
         handleHack(args, tab);
-    }
     else
-    {
         tab->chatLog(_("Unknown command."));
-    }
 }
 
 char CommandHandler::parseBoolean(const std::string &value)

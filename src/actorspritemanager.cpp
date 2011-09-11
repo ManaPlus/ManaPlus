@@ -305,6 +305,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -355,6 +358,9 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -386,6 +392,9 @@ Being *ActorSpriteManager::findPortalByTile(int x, int y) const
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() != ActorSprite::PORTAL)
             continue;
 
@@ -402,6 +411,9 @@ FloorItem *ActorSpriteManager::findItem(int id) const
 {
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getId() == id &&
             (*it)->getType() == ActorSprite::FLOOR_ITEM)
         {
@@ -416,6 +428,9 @@ FloorItem *ActorSpriteManager::findItem(int x, int y) const
 {
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getTileX() == x && (*it)->getTileY() == y &&
             (*it)->getType() == ActorSprite::FLOOR_ITEM)
         {
@@ -437,6 +452,9 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
     {
         for_actors
         {
+            if (!*it)
+                continue;
+
             if ((*it)->getType() == ActorSprite::FLOOR_ITEM
                 && ((*it)->getTileX() >= x1 && (*it)->getTileX() <= x2)
                 && ((*it)->getTileY() >= y1 && (*it)->getTileY() <= y2))
@@ -452,6 +470,9 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
         unsigned cnt = 65535;
         for_actors
         {
+            if (!*it)
+                continue;
+
             if ((*it)->getType() == ActorSprite::FLOOR_ITEM
                 && ((*it)->getTileX() >= x1 && (*it)->getTileX() <= x2)
                 && ((*it)->getTileY() >= y1 && (*it)->getTileY() <= y2))
@@ -487,6 +508,9 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
         {
             FloorItem *item = static_cast<FloorItem*>(*it);
@@ -514,6 +538,9 @@ Being *ActorSpriteManager::findBeingByName(const std::string &name,
 {
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -545,6 +572,9 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -583,7 +613,10 @@ const ActorSprites &ActorSpriteManager::getAll() const
 void ActorSpriteManager::logic()
 {
     for_actors
-        (*it)->logic();
+    {
+        if (*it)
+            (*it)->logic();
+    }
 
     if (mDeleteActors.empty())
         return;
@@ -591,6 +624,9 @@ void ActorSpriteManager::logic()
     for (it = mDeleteActors.begin(), it_end = mDeleteActors.end();
          it != it_end; ++it)
     {
+        if (!*it)
+            continue;
+
         if ((*it) && (*it)->getType() == Being::PLAYER)
         {
             Being *being = static_cast<Being*>(*it);
@@ -721,6 +757,9 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
              i_end = mActors.end();
              i != i_end; ++i)
         {
+            if (!*i)
+                continue;
+
             if ((*i)->getType() == ActorSprite::FLOOR_ITEM
                 || (*i)->getType() == ActorSprite::PORTAL)
             {
@@ -803,6 +842,9 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
              i_end = mActors.end();
              i != i_end; ++i)
         {
+            if (!*i)
+                continue;
+
             if ((*i)->getType() == ActorSprite::FLOOR_ITEM
                 || (*i)->getType() == ActorSprite::PORTAL)
             {
@@ -1057,6 +1099,9 @@ void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
     std::set<ActorSprite*>::const_iterator it;
     for (it = beings.begin(); it != beings.end(); ++it)
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
             continue;
 
@@ -1082,6 +1127,9 @@ void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
     std::vector<Being*>::const_iterator i;
     for (i = beings.begin(); i != beings.end(); ++i)
     {
+        if (!*i)
+            continue;
+
         const Being *being = *i;
 
         debugChatTab->chatLog(being->getName()
@@ -1099,6 +1147,9 @@ void ActorSpriteManager::getPlayerNames(std::vector<std::string> &names,
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -1121,6 +1172,9 @@ void ActorSpriteManager::getMobNames(std::vector<std::string> &names)
 
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -1137,6 +1191,9 @@ void ActorSpriteManager::updatePlayerNames()
 {
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -1154,6 +1211,9 @@ void ActorSpriteManager::updatePlayerColors()
 {
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {
@@ -1170,6 +1230,9 @@ void ActorSpriteManager::updatePlayerGuild()
 {
     for_actors
     {
+        if (!*it)
+            continue;
+
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
             || (*it)->getType() == ActorSprite::PORTAL)
         {

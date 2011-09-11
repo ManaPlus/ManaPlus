@@ -395,20 +395,17 @@ void Being::setPosition(const Vector &pos)
 
 void Being::setDestination(int dstX, int dstY)
 {
+    // We can't calculate anything without a map anyway.
+    if (!mMap)
+        return;
+
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-        if (mMap)
-            setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
+        setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
         return;
     }
-
-    // Manaserv's part:
-
-    // We can't calculate anything without a map anyway.
-    if (!mMap)
-        return;
 
     // Don't handle flawed destinations from server...
     if (dstX == 0 || dstY == 0)
@@ -765,7 +762,6 @@ void Being::setGuildName(const std::string &name)
 
 void Being::setGuildPos(const std::string &pos A_UNUSED)
 {
-//    logger->log("Got guild position \"%s\" for being %s(%i)", pos.c_str(), mName.c_str(), mId);
 }
 
 void Being::addGuild(Guild *guild)
@@ -774,7 +770,6 @@ void Being::addGuild(Guild *guild)
         return;
 
     mGuilds[guild->getId()] = guild;
-//    guild->addMember(mId, 0, mName);
 
     if (this == player_node && socialWindow)
         socialWindow->addTab(guild);
@@ -891,10 +886,10 @@ void Being::updateGuild()
 
 void Being::setGuild(Guild *guild)
 {
-    if (guild == getGuild())
+    Guild *old = getGuild();
+    if (guild == old)
         return;
 
-    Guild *old = getGuild();
     clearGuilds();
     addGuild(guild);
 
@@ -1119,7 +1114,6 @@ Uint8 Being::calcDirection(int dstX, int dstY) const
     return dir;
 }
 
-/** TODO: Used by eAthena only */
 void Being::nextTile()
 {
     if (mPath.empty())
@@ -1135,7 +1129,7 @@ void Being::nextTile()
     if (dir)
         setDirection(static_cast<Uint8>(dir));
 
-    if (!mMap->getWalk(pos.x, pos.y, getWalkMask()))
+    if (!mMap || !mMap->getWalk(pos.x, pos.y, getWalkMask()))
     {
         setAction(STAND);
         return;
@@ -1372,7 +1366,10 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
     const int emotionIndex = mEmotion - 1;
 
     if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
-        EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+    {
+        if (EmoteDB::getAnimation(emotionIndex))
+            EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+    }
 }
 
 void Being::drawSpeech(int offsetX, int offsetY)
@@ -1411,11 +1408,9 @@ void Being::drawSpeech(int offsetX, int offsetY)
 
         if (!mText && userPalette)
         {
-            mText = new Text(mSpeech,
-                             getPixelX(), getPixelY() - getHeight(),
-                             gcn::Graphics::CENTER,
-                             &userPalette->getColor(UserPalette::PARTICLE),
-                             true);
+            mText = new Text(mSpeech, getPixelX(), getPixelY() - getHeight(),
+                gcn::Graphics::CENTER, &userPalette->getColor(UserPalette::PARTICLE),
+                true);
         }
     }
     else if (speech == NO_SPEECH)
@@ -1743,7 +1738,7 @@ void Being::load()
     while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE) !=
            paths.getStringValue("spriteErrorFile"))
     {
-        hairstyles++;
+        hairstyles ++;
     }
 
     mNumberOfHairstyles = hairstyles;
@@ -1866,6 +1861,9 @@ BeingCacheEntry* Being::getCacheEntry(int id)
     for (std::list<BeingCacheEntry*>::iterator i = beingInfoCache.begin();
          i != beingInfoCache.end(); ++i)
     {
+        if (!*i)
+            continue;
+
         if (id == (*i)->getId())
         {
             // Raise priority: move it to front
@@ -1979,8 +1977,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
 
-        graphics->fillRectangle(gcn::Rectangle(
-                                x, y, 32, 32));
+        graphics->fillRectangle(gcn::Rectangle(x, y, 32, 32));
 
         if (mDrawHotKeys && !mName.empty())
         {
@@ -2011,7 +2008,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     {
         // show hp bar here
         int maxHP = mMaxHP;
-        if (!maxHP)
+        if (!maxHP && mInfo)
             maxHP = mInfo->getMaxHP();
 
         drawHpBar(graphics, maxHP, mHP, mDamageTaken,
@@ -2451,7 +2448,7 @@ void Being::saveComment(const std::string &name,
             return;
     }
     dir += stringToHexPath(name);
-    logger->log("save to: %s", dir.c_str());
+//    logger->log("save to: %s", dir.c_str());
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }

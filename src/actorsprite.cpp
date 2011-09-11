@@ -70,7 +70,8 @@ ActorSprite::~ActorSprite()
     for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
          e = mActorSpriteListeners.end(); iter != e; ++iter)
     {
-        (*iter)->actorSpriteDestroyed(*this);
+        if (*iter)
+            (*iter)->actorSpriteDestroyed(*this);
     }
 }
 

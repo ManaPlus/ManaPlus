@@ -844,12 +844,10 @@ int Client::exec()
 
         if (mState != mOldState)
         {
-            {
-                Mana::Event evt(EVENT_STATECHANGE);
-                evt.setInt("oldState", mOldState);
-                evt.setInt("newState", mState);
-                Mana::Event::trigger(CHANNEL_CLIENT, evt);
-            }
+            Mana::Event evt(EVENT_STATECHANGE);
+            evt.setInt("oldState", mOldState);
+            evt.setInt("newState", mState);
+            Mana::Event::trigger(CHANNEL_CLIENT, evt);
 
             if (mOldState == STATE_GAME)
             {
@@ -1190,8 +1188,7 @@ int Client::exec()
                 case STATE_CHANGEPASSWORD_ATTEMPT:
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
                     Net::getLoginHandler()->changePassword(loginData.username,
-                                                loginData.password,
-                                                loginData.newPassword);
+                        loginData.password, loginData.newPassword);
                     break;
 
                 case STATE_CHANGEPASSWORD_SUCCESS:
@@ -1458,37 +1455,6 @@ void Client::initHomeDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mConfigDir.c_str()));
     }
-
-/*
-    struct stat statbuf;
-    std::string newConfigFile = mConfigDir + "/config.xml";
-    if (stat(newConfigFile.c_str(), &statbuf))
-    {
-        std::string oldConfigFile = std::string(PHYSFS_getUserDir()) +
-            "/.mana/config.xml";
-        if (mRootDir.empty() && !stat(oldConfigFile.c_str(), &statbuf)
-            && S_ISREG(statbuf.st_mode))
-        {
-            std::ifstream oldConfig;
-            std::ofstream newConfig;
-            logger->log1("Copying old TMW settings.");
-
-            oldConfig.open(oldConfigFile.c_str(), std::ios::binary);
-            newConfig.open(newConfigFile.c_str(), std::ios::binary);
-
-            if (!oldConfig.is_open() || !newConfig.is_open())
-            {
-                logger->log1("Unable to copy old settings.");
-            }
-            else
-            {
-                newConfig << oldConfig.rdbuf();
-                newConfig.close();
-                oldConfig.close();
-            }
-        }
-    }
-*/
 }
 
 /**
@@ -2191,8 +2157,8 @@ void Client::closeDialogs()
 bool Client::isTmw()
 {
     if (getServerName() == "server.themanaworld.org"
-        || Client::getServerName() == "themanaworld.org"
-        || Client::getServerName() == "81.161.192.4")
+        || getServerName() == "themanaworld.org"
+        || getServerName() == "81.161.192.4")
     {
         return true;
     }
