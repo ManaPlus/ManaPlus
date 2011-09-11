@@ -54,8 +54,6 @@
 
 #include "debug.h"
 
-bool actorCompare(const Actor *a, const Actor *b);
-
 /**
  * A location on a tile map. Used for pathfinding, open list.
  */
@@ -79,6 +77,17 @@ struct Location
     int x, y;
     MetaTile *tile;
 };
+
+class ActorFunctuator
+{
+    public:
+        bool operator()(const Actor *a, const Actor *b) const
+        {
+            if (!a || !b)
+                return false;
+            return a->getPixelY() < b->getPixelY();
+        }
+} actorCompare;
 
 TileAnimation::TileAnimation(Animation *ani):
     mLastImage(NULL)
@@ -777,14 +786,6 @@ void Map::addTileset(Tileset *tileset)
 
     if (tileset->getHeight() > mMaxTileHeight)
         mMaxTileHeight = tileset->getHeight();
-}
-
-bool actorCompare(const Actor *a, const Actor *b)
-{
-    if (!a || !b)
-        return false;
-
-    return a->getPixelY() < b->getPixelY();
 }
 
 void Map::update(int ticks)
