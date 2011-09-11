@@ -137,7 +137,7 @@ void ItemAmountWindow::finish(Item *item, int amount, int price, Usage usage)
 
 ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
                                    int maxRange):
-    Window("", true, parent),
+    Window("", true, parent, "amount.xml"),
     mItemPriceTextField(0),
     mGPLabel(0),
     mItem(item),

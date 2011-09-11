@@ -123,7 +123,7 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 };
 
 StatusWindow::StatusWindow():
-    Window(player_node ? player_node->getName() : "?")
+    Window(player_node ? player_node->getName() : "?", false, 0, "status.xml")
 {
     listen(Mana::CHANNEL_ATTRIBUTES);
 

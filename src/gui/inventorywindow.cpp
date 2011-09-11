@@ -96,7 +96,7 @@ public:
 InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *inventory):
-    Window(),
+    Window("Inventory", false, 0, "inventory.xml"),
     mInventory(inventory),
     mDropButton(0),
     mSplit(false)

@@ -83,7 +83,7 @@
 std::string tradePartnerName("");
 
 PopupMenu::PopupMenu():
-    Popup("PopupMenu"),
+    Popup("PopupMenu", "popupmenu.xml"),
     mBeingId(0),
     mFloorItem(0),
     mItem(0),

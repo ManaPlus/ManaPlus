@@ -42,7 +42,7 @@
 #include "debug.h"
 
 SpellPopup::SpellPopup():
-    Popup("SpellPopup")
+    Popup("SpellPopup", "spellpopup.xml")
 {
     // Item Name
     mItemName = new Label;

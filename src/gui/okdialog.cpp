@@ -35,7 +35,7 @@
 
 OkDialog::OkDialog(const std::string &title, const std::string &msg,
                    bool modal, bool showCenter, Window *parent):
-    Window(title, modal, parent)
+    Window(title, modal, parent, "ok.xml")
 {
     mTextBox = new TextBox;
     mTextBox->setEditable(false);

@@ -66,8 +66,7 @@ class Popup : public Container, public gcn::MouseListener,
          *                debugging purposes.
          * @param skin    The location where the Popup's skin XML can be found.
          */
-        Popup(const std::string &name = "",
-              const std::string &skin = "window.xml");
+        Popup(const std::string &name = "", std::string skin = "");
 
         /**
          * Destructor. Deletes all the added widgets.

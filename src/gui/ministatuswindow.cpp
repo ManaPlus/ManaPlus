@@ -52,7 +52,7 @@
 extern volatile int tick_time;
 
 MiniStatusWindow::MiniStatusWindow():
-    Popup("MiniStatus")
+    Popup("MiniStatus", "ministatus.xml")
 {
     listen(Mana::CHANNEL_ATTRIBUTES);
 

@@ -41,7 +41,7 @@
 #include "debug.h"
 
 TextPopup::TextPopup():
-    Popup("TextPopup")
+    Popup("TextPopup", "textpopup.xml")
 {
     const int fontHeight = getFont()->getHeight();
 

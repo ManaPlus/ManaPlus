@@ -37,7 +37,7 @@
 
 ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
                              bool ignore, bool modal, Window *parent):
-    Window(title, modal, parent)
+    Window(title, modal, parent, "confirm.xml")
 {
     mTextBox = new TextBox;
     mTextBox->setEditable(false);

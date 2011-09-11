@@ -49,7 +49,7 @@
 #include "debug.h"
 
 ItemPopup::ItemPopup():
-    Popup("ItemPopup"),
+    Popup("ItemPopup", "itempopup.xml"),
     mIcon(0),
     mLastName(""),
     mLastColor(1)

@@ -52,7 +52,8 @@ class ShortcutTab : public Tab
 
 ShortcutWindow::ShortcutWindow(const std::string &title,
                                ShortcutContainer *content,
-                               int width, int height)
+                               int width, int height) :
+    Window("Window", false, 0, "shortcuts.xml")
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.

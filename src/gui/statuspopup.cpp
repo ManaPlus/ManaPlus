@@ -46,7 +46,7 @@
 #include "debug.h"
 
 StatusPopup::StatusPopup():
-    Popup("StatusPopup")
+    Popup("StatusPopup", "statuspopup.xml")
 {
 
     const int fontHeight = getFont()->getHeight();
