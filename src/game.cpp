@@ -216,7 +216,7 @@ static void createGuiWindows()
     minimap = new Minimap;
     helpWindow = new HelpWindow;
     debugWindow = new DebugWindow;
-    itemShortcutWindow = new ShortcutWindow("ItemShortcut");
+    itemShortcutWindow = new ShortcutWindow("ItemShortcut", "items.xml");
     for (int f = 0; f < SHORTCUT_TABS; f ++)
     {
         itemShortcutWindow->addTab(toString(f + 1),
@@ -230,13 +230,13 @@ static void createGuiWindows()
     }
 
     emoteShortcutWindow = new ShortcutWindow("EmoteShortcut",
-                                             new EmoteShortcutContainer);
+        new EmoteShortcutContainer, "emotes.xml");
     outfitWindow = new OutfitWindow();
     specialsWindow = new SpecialsWindow();
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
-                                            new DropShortcutContainer);
+        new DropShortcutContainer, "drops.xml");
 
-    spellShortcutWindow = new ShortcutWindow("SpellShortcut",
+    spellShortcutWindow = new ShortcutWindow("SpellShortcut", "spells.xml",
                                              265, 328);
     for (int f = 0; f < SPELL_SHORTCUT_TABS; f ++)
     {

@@ -41,9 +41,10 @@ class ShortcutWindow : public Window
          * Constructor.
          */
         ShortcutWindow(const std::string &title, ShortcutContainer *content,
+                       std::string skinFile = "",
                        int width = 0, int height = 0);
 
-        ShortcutWindow(const std::string &title,
+        ShortcutWindow(const std::string &title, std::string skinFile = "",
                        int width = 0, int height = 0);
 
         /**

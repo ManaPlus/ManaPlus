@@ -52,8 +52,9 @@ class ShortcutTab : public Tab
 
 ShortcutWindow::ShortcutWindow(const std::string &title,
                                ShortcutContainer *content,
+                               std::string skinFile,
                                int width, int height) :
-    Window("Window", false, 0, "shortcuts.xml")
+    Window("Window", false, 0, skinFile)
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
@@ -97,7 +98,9 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     loadWindowState();
 }
 
-ShortcutWindow::ShortcutWindow(const std::string &title, int width, int height)
+ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
+                               int width, int height) :
+    Window("Window", false, 0, skinFile)
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
