@@ -461,8 +461,8 @@ Skin *Theme::readSkin(const std::string &filename)
 
                     else
                     {
-                        logger->log("Theme::readSkin(): Unknown part type '%s'",
-                                    partType.c_str());
+                        logger->log("Theme::readSkin(): Unknown part type "
+                            "'%s'", partType.c_str());
                     }
                 }
                 else if (xmlStrEqual(partNode->name, BAD_CAST "option"))

@@ -130,7 +130,7 @@ class SortItemAmountFunctor
                 return (pair1->mItem->getInfo().getName()
                         < pair2->mItem->getInfo().getName());
             }
-            return c1 < c2;;
+            return c1 < c2;
         }
 } itemAmountSorter;
 
@@ -149,7 +149,7 @@ class SortItemTypeFunctor
                 return (pair1->mItem->getInfo().getName()
                         < pair2->mItem->getInfo().getName());
             }
-            return t1 < t2;;
+            return t1 < t2;
         }
 } itemTypeSorter;
 
