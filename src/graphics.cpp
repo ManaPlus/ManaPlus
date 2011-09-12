@@ -97,13 +97,14 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
         logger->log1("Using video driver: unknown");
 
     mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
-    logger->log("Double buffer mode: %s",
-         mDoubleBuffer ? "yes" : "no");
+    logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
     if (mTarget->format)
         logger->log("Bits per pixel: %d", mTarget->format->BytesPerPixel);
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
+    if (!vi)
+        return false;
 
     logger->log("Possible to create hardware surfaces: %s",
             ((vi->hw_available) ? "yes" : "no"));
@@ -259,7 +260,8 @@ void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     const int iw = image->mBounds.w;
     const int ih = image->mBounds.h;
 
-    if (iw == 0 || ih == 0) return;
+    if (iw == 0 || ih == 0)
+        return;
 
     for (int py = 0; py < h; py += ih)     // Y position on pattern plane
     {
@@ -346,8 +348,6 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
                              Image *bottom, Image *left,
                              Image *center)
 {
-//    pushClipArea(gcn::Rectangle(x, y, w, h));
-
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 
@@ -390,8 +390,6 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
             x + w - bottomRight->getWidth(),
             y + h - bottomRight->getHeight());
     }
-
-//    popClipArea();
 }
 
 void Graphics::drawImageRect(int x, int y, int w, int h,
@@ -601,6 +599,7 @@ void Graphics::calcTile(ImageVertexes *vert, int x, int y)
 
 void Graphics::drawTile(ImageVertexes *vert)
 {
+    // vert and img must be != 0
     Image *img = vert->image;
     DoubleRects *rects = &vert->sdl;
     DoubleRects::const_iterator it = rects->begin();

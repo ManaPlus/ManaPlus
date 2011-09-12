@@ -124,7 +124,7 @@ GuildMember *Guild::getMember(int id) const
                                itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr)->mId == id)
+        if ((*itr) && (*itr)->mId == id)
             return (*itr);
         ++itr;
     }
@@ -138,7 +138,7 @@ GuildMember *Guild::getMember(int accountId, int charId) const
                                itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr)->mId == accountId && (*itr)->mCharId == charId)
+        if ((*itr) && (*itr)->mId == accountId && (*itr)->mCharId == charId)
             return (*itr);
         ++itr;
     }
@@ -152,7 +152,7 @@ GuildMember *Guild::getMember(const std::string &name) const
                                itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr)->getName() == name)
+        if ((*itr) && (*itr)->getName() == name)
             return (*itr);
         ++itr;
     }
@@ -189,7 +189,7 @@ void Guild::removeMember(int id)
             itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            if ((*itr)->mId == id)
+            if ((*itr) && (*itr)->mId == id)
             {
                 GuildMember *member = *itr;
                 mMembers.erase(itr);
@@ -212,7 +212,7 @@ void Guild::removeMember(const std::string &name)
             itr_end = mMembers.end();
         while (itr != itr_end)
         {
-            if ((*itr)->getName() == name)
+            if ((*itr) && (*itr)->getName() == name)
             {
                 GuildMember *member = *itr;
                 mMembers.erase(itr);
@@ -262,7 +262,7 @@ bool Guild::isMember(GuildMember *member) const
                                      itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr)->mId == member->mId &&
+        if ((*itr) && (*itr)->mId == member->mId &&
             (*itr)->getName() == member->getName())
         {
             return true;
@@ -279,7 +279,7 @@ bool Guild::isMember(int id) const
                                      itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr)->mId == id)
+        if ((*itr) && (*itr)->mId == id)
             return true;
         ++itr;
     }
@@ -293,7 +293,7 @@ bool Guild::isMember(const std::string &name) const
                                      itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr)->getName() == name)
+        if ((*itr) && (*itr)->getName() == name)
             return true;
         ++itr;
     }
@@ -309,7 +309,8 @@ void Guild::getNames(std::vector<std::string> &names) const
 
     while (it != it_end)
     {
-        names.push_back((*it)->getName());
+        if (*it)
+            names.push_back((*it)->getName());
         ++it;
     }
 }

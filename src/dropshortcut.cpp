@@ -150,6 +150,10 @@ void DropShortcut::dropItems(int cnt)
 
 bool DropShortcut::dropItem(int cnt)
 {
+    const Inventory *inv = PlayerInfo::getInventory();
+    if (!inv)
+        return false;
+
     int itemId = 0;
     unsigned char itemColor = 1;
     while (mLastDropIndex < DROP_SHORTCUT_ITEMS && itemId < 1)
@@ -160,7 +164,7 @@ bool DropShortcut::dropItem(int cnt)
     }
     if (itemId > 0)
     {
-        Item *item = PlayerInfo::getInventory()->findItem(itemId, itemColor);
+        Item *item = inv->findItem(itemId, itemColor);
         if (item && item->getQuantity() > 0)
         {
             Net::getInventoryHandler()->dropItem(item, cnt);
@@ -180,8 +184,7 @@ bool DropShortcut::dropItem(int cnt)
         }
         if (itemId > 0)
         {
-            Item *item = PlayerInfo::getInventory()->findItem(
-                itemId, itemColor);
+            Item *item = inv->findItem(itemId, itemColor);
             if (item && item->getQuantity() > 0)
             {
                 Net::getInventoryHandler()->dropItem(item, cnt);
@@ -210,6 +213,9 @@ void DropShortcut::setItemSelected(Item *item)
 
 void DropShortcut::setItem(int index)
 {
+    if (index < 0 || index >= DROP_SHORTCUT_ITEMS)
+        return;
+
     mItems[index] = mItemSelected;
     mItemColors[index] = mItemColorSelected;
     save();

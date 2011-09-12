@@ -34,7 +34,6 @@ EmoteShortcut *emoteShortcut;
 EmoteShortcut::EmoteShortcut():
     mEmoteSelected(0)
 {
-//    load();
     for (int i = 0; i < SHORTCUT_EMOTES; i++)
         mEmotes[i] = 0;
 }
@@ -57,16 +56,6 @@ void EmoteShortcut::load()
             j ++;
         }
     }
-
-/*
-    for (int i = 0; i < SHORTCUT_EMOTES; i++)
-    {
-        unsigned char emoteId = static_cast<unsigned char>(
-                serverConfig.getValue("emoteshortcut" + toString(i), i + 1));
-        mEmotes[i] = emoteId;
-//        mEmotes[i] = i + 1;
-    }
-*/
 }
 
 void EmoteShortcut::save()

@@ -383,12 +383,14 @@ Game::Game():
     windowMenu = new WindowMenu;
 //    mWindowMenu = windowMenu;
 
-    windowContainer->add(windowMenu);
+    if (windowContainer)
+        windowContainer->add(windowMenu);
 
     initEngines();
 
     // Initialize beings
-    actorSpriteManager->setPlayer(player_node);
+    if (actorSpriteManager)
+        actorSpriteManager->setPlayer(player_node);
 
     /*
      * To prevent the server from sending data before the client
@@ -551,13 +553,11 @@ void Game::logic()
     // Handle network stuff
     if (!Net::getGameHandler()->isConnected())
     {
-
         if (Client::getState() == STATE_CHANGE_MAP)
             return; // Not a problem here
 
         if (Client::getState() != STATE_ERROR)
             errorMessage = _("The connection to the server was lost.");
-
 
         if (!disconnectedDialog)
         {
@@ -830,7 +830,7 @@ void Game::handleInput()
                 }
             }
 
-            if (!chatWindow->isInputFocused()
+            if ((!chatWindow || !chatWindow->isInputFocused())
                 && !gui->getFocusHandler()->getModalFocused()
                 && !player_node->getAwayMode())
             {
@@ -847,7 +847,8 @@ void Game::handleInput()
                     else if (dialog)
                         dialog->action(gcn::ActionEvent(NULL, "ok"));
                 }
-                if (keyboard.isKeyActive(keyboard.KEY_TOGGLE_CHAT))
+                if (chatWindow && keyboard.isKeyActive(
+                    keyboard.KEY_TOGGLE_CHAT))
                 {
                     if (!InventoryWindow::isAnyInputFocused())
                     {
@@ -864,10 +865,10 @@ void Game::handleInput()
                 }
             }
 
-            if ((!chatWindow->isInputFocused() &&
+            if (chatWindow && ((!chatWindow->isInputFocused() &&
                 !NpcDialog::isAnyInputFocused() &&
                 !InventoryWindow::isAnyInputFocused())
-                || (event.key.keysym.mod & KMOD_ALT))
+                || (event.key.keysym.mod & KMOD_ALT)))
             {
                 if (keyboard.isKeyActive(keyboard.KEY_PREV_CHAT_TAB))
                 {
@@ -900,14 +901,14 @@ void Game::handleInput()
             switch (tKey)
             {
                 case KeyboardConfig::KEY_SCROLL_CHAT_UP:
-                    if (chatWindow->isVisible())
+                    if (chatWindow && chatWindow->isVisible())
                     {
                         chatWindow->scroll(-DEFAULT_CHAT_WINDOW_SCROLL);
                         used = true;
                     }
                     break;
                 case KeyboardConfig::KEY_SCROLL_CHAT_DOWN:
-                    if (chatWindow->isVisible())
+                    if (chatWindow && chatWindow->isVisible())
                     {
                         chatWindow->scroll(DEFAULT_CHAT_WINDOW_SCROLL);
                         used = true;
@@ -916,21 +917,23 @@ void Game::handleInput()
                     break;
                 case KeyboardConfig::KEY_WINDOW_HELP:
                     // In-game Help
-                    if (helpWindow->isVisible())
-                        helpWindow->setVisible(false);
-                    else
+                    if (helpWindow)
                     {
-                        helpWindow->loadHelp("index");
-                        helpWindow->requestMoveToTop();
+                        if (helpWindow->isVisible())
+                        {
+                            helpWindow->setVisible(false);
+                        }
+                        else
+                        {
+                            helpWindow->loadHelp("index");
+                            helpWindow->requestMoveToTop();
+                        }
                     }
                     used = true;
                     break;
-
-
-
                // Quitting confirmation dialog
                case KeyboardConfig::KEY_QUIT:
-                    if (!chatWindow->isInputFocused())
+                    if (!chatWindow || !chatWindow->isInputFocused())
                     {
                         if (viewport && viewport->isPopupMenuVisible())
                         {
@@ -948,31 +951,38 @@ void Game::handleInput()
                     break;
             }
 
-            if (keyboard.isEnabled() && !chatWindow->isInputFocused()
+            if (keyboard.isEnabled() && (!chatWindow
+                || !chatWindow->isInputFocused())
                 && !gui->getFocusHandler()->getModalFocused()
                 && mValidSpeed
-                && !setupWindow->isVisible()
-                && !player_node->getAwayMode()
+                && (!setupWindow || !setupWindow->isVisible())
+                && (!player_node || !player_node->getAwayMode())
                 && !NpcDialog::isAnyInputFocused()
                 && !InventoryWindow::isAnyInputFocused())
             {
                 switch (tKey)
                 {
                     case KeyboardConfig::KEY_QUICK_DROP:
-                        dropShortcut->dropFirst();
+                        if (dropShortcut)
+                            dropShortcut->dropFirst();
                         break;
 
                     case KeyboardConfig::KEY_QUICK_DROPN:
-                        dropShortcut->dropItems();
+                        if (dropShortcut)
+                            dropShortcut->dropItems();
                         break;
 
                     case KeyboardConfig::KEY_SWITCH_QUICK_DROP:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeQuickDropCounter();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeQuickDropCounter();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_MAGIC_INMA1:
-                        actorSpriteManager->healTarget();
+                        if (actorSpriteManager)
+                            actorSpriteManager->healTarget();
                         setValidSpeed();
                         break;
 
@@ -986,85 +996,125 @@ void Game::handleInput()
                         break;
 
                     case KeyboardConfig::KEY_CRAZY_MOVES:
-                        player_node->crazyMove();
+                        if (player_node)
+                            player_node->crazyMove();
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_CRAZY_MOVES_TYPE:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeCrazyMoveType();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeCrazyMoveType();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_PICKUP_TYPE:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changePickUpType();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changePickUpType();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_MOVE_TO_TARGET:
-                        if (!keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK)
-                            && !keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                        if (player_node)
                         {
-                            player_node->moveToTarget();
+                            if (!keyboard.isKeyActive(
+                                keyboard.KEY_TARGET_ATTACK)
+                                && !keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                            {
+                                player_node->moveToTarget();
+                            }
                         }
                         break;
 
                     case KeyboardConfig::KEY_MOVE_TO_HOME:
-                        if (!keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK)
-                            && !keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                        if (player_node)
                         {
-                            player_node->moveToHome();
+                            if (!keyboard.isKeyActive(
+                                keyboard.KEY_TARGET_ATTACK)
+                                && !keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                            {
+                                player_node->moveToHome();
+                            }
+                            setValidSpeed();
                         }
-                        setValidSpeed();
                         break;
 
                     case KeyboardConfig::KEY_SET_HOME:
-                        player_node->setHome();
+                        if (player_node)
+                            player_node->setHome();
                         break;
 
                     case KeyboardConfig::KEY_INVERT_DIRECTION:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->invertDirection();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->invertDirection();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_ATTACK_WEAPON_TYPE:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeAttackWeaponType();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeAttackWeaponType();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_ATTACK_TYPE:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeAttackType();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeAttackType();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_FOLLOW_MODE:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeFollowMode();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeFollowMode();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_IMITATION_MODE:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeImitationMode();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeImitationMode();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_MAGIC_ATTACK:
-                        player_node->magicAttack();
+                        if (player_node)
+                            player_node->magicAttack();
                         break;
 
                     case KeyboardConfig::KEY_SWITCH_MAGIC_ATTACK:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->switchMagicAttack();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->switchMagicAttack();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_MOVE_TO_TARGET:
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeMoveToTargetType();
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->changeMoveToTargetType();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_COPY_EQUIPED_OUTFIT:
-                        outfitWindow->copyFromEquiped();
+                        if (outfitWindow)
+                            outfitWindow->copyFromEquiped();
                         break;
 
                     case KeyboardConfig::KEY_DISABLE_GAME_MODIFIERS:
-                        player_node->switchGameModifiers();
+                        if (player_node)
+                            player_node->switchGameModifiers();
                         break;
 
                     case KeyboardConfig::KEY_CHANGE_AUDIO:
@@ -1072,14 +1122,20 @@ void Game::handleInput()
                         break;
 
                     case KeyboardConfig::KEY_AWAY:
-                        player_node->changeAwayMode();
-                        setValidSpeed();
+                        if (player_node)
+                        {
+                            player_node->changeAwayMode();
+                            setValidSpeed();
+                        }
                         break;
 
                     case KeyboardConfig::KEY_CAMERA:
-                        if (!player_node->getDisableGameModifiers())
-                            viewport->toggleCameraMode();
-                        setValidSpeed();
+                        if (player_node && viewport)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                viewport->toggleCameraMode();
+                            setValidSpeed();
+                        }
                         break;
 
                     default:
@@ -1088,15 +1144,15 @@ void Game::handleInput()
             }
 
             if (keyboard.isEnabled()
-                && !chatWindow->isInputFocused()
+                && (!chatWindow || !chatWindow->isInputFocused())
                 && !NpcDialog::isAnyInputFocused()
-                && !player_node->getAwayMode()
+                && (!player_node || !player_node->getAwayMode())
                 && !keyboard.isKeyActive(keyboard.KEY_TARGET)
                 && !InventoryWindow::isAnyInputFocused())
             {
 //                const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
 
-                if (setupWindow->isVisible())
+                if (setupWindow && setupWindow->isVisible())
                 {
                     if (tKey == KeyboardConfig::KEY_WINDOW_SETUP)
                     {
@@ -1107,7 +1163,8 @@ void Game::handleInput()
                 else
                 {
                     // Do not activate shortcuts if tradewindow is visible
-                    if (itemShortcutWindow && !tradeWindow->isVisible()
+                    if (itemShortcutWindow && tradeWindow
+                        && !tradeWindow->isVisible()
                         && !setupWindow->isVisible())
                     {
                         int num = itemShortcutWindow->getTabIndex();
@@ -1131,34 +1188,51 @@ void Game::handleInput()
                     switch (tKey)
                     {
                         case KeyboardConfig::KEY_PICKUP:
-                            player_node->pickUpItems();
+                            if (player_node)
+                                player_node->pickUpItems();
                             used = true;
                             break;
                         case KeyboardConfig::KEY_SIT:
                             // Player sit action
-                            if (keyboard.isKeyActive(keyboard.KEY_EMOTE))
-                                player_node->updateSit();
-                            else
-                                player_node->toggleSit();
+                            if (player_node)
+                            {
+                                if (keyboard.isKeyActive(keyboard.KEY_EMOTE))
+                                    player_node->updateSit();
+                                else
+                                    player_node->toggleSit();
+                            }
                             used = true;
                             break;
                         case KeyboardConfig::KEY_HIDE_WINDOWS:
                             // Hide certain windows
-                            if (!chatWindow->isInputFocused())
+                            if (!chatWindow || !chatWindow->isInputFocused())
                             {
-                                statusWindow->setVisible(false);
-                                inventoryWindow->setVisible(false);
-                                shopWindow->setVisible(false);
-                                skillDialog->setVisible(false);
-                                setupWindow->setVisible(false);
-                                equipmentWindow->setVisible(false);
-                                helpWindow->setVisible(false);
-                                debugWindow->setVisible(false);
-                                outfitWindow->setVisible(false);
-                                dropShortcutWindow->setVisible(false);
-                                spellShortcutWindow->setVisible(false);
-                                botCheckerWindow->setVisible(false);
-                                socialWindow->setVisible(false);
+                                if (statusWindow)
+                                    statusWindow->setVisible(false);
+                                if (inventoryWindow)
+                                    inventoryWindow->setVisible(false);
+                                if (shopWindow)
+                                    shopWindow->setVisible(false);
+                                if (skillDialog)
+                                    skillDialog->setVisible(false);
+                                if (setupWindow)
+                                    setupWindow->setVisible(false);
+                                if (equipmentWindow)
+                                    equipmentWindow->setVisible(false);
+                                if (helpWindow)
+                                    helpWindow->setVisible(false);
+                                if (debugWindow)
+                                    debugWindow->setVisible(false);
+                                if (outfitWindow)
+                                    outfitWindow->setVisible(false);
+                                if (dropShortcutWindow)
+                                    dropShortcutWindow->setVisible(false);
+                                if (spellShortcutWindow)
+                                    spellShortcutWindow->setVisible(false);
+                                if (botCheckerWindow)
+                                    botCheckerWindow->setVisible(false);
+                                if (socialWindow)
+                                    socialWindow->setVisible(false);
                             }
                             break;
                         case KeyboardConfig::KEY_WINDOW_STATUS:
@@ -1222,7 +1296,8 @@ void Game::handleInput()
                             break;
                         case KeyboardConfig::KEY_PATHFIND:
                             // Find path to mouse (debug purpose)
-                            if (!player_node->getDisableGameModifiers())
+                            if (!player_node || !player_node->
+                                getDisableGameModifiers())
                             {
                                 if (viewport)
                                     viewport->toggleDebugPath();
@@ -1239,16 +1314,22 @@ void Game::handleInput()
                             unsigned int deflt = player_relations.getDefault();
                             if (deflt & PlayerRelation::TRADE)
                             {
-                                localChatTab->chatLog(
-                                    _("Ignoring incoming trade requests"),
-                                    BY_SERVER);
+                                if (localChatTab)
+                                {
+                                    localChatTab->chatLog(
+                                        _("Ignoring incoming trade requests"),
+                                        BY_SERVER);
+                                }
                                 deflt &= ~PlayerRelation::TRADE;
                             }
                             else
                             {
-                                localChatTab->chatLog(
-                                    _("Accepting incoming trade requests"),
-                                    BY_SERVER);
+                                if (localChatTab)
+                                {
+                                    localChatTab->chatLog(
+                                        _("Accepting incoming trade requests"),
+                                        BY_SERVER);
+                                }
                                 deflt |= PlayerRelation::TRADE;
                             }
 
@@ -1284,10 +1365,11 @@ void Game::handleInput()
                 if (event.active.gain)
                 {   // window restore
                     Client::setIsMinimized(false);
-                    if (player_node && !player_node->getAwayMode())
+                    if (!player_node && !player_node->getAwayMode())
                     {
                         fpsLimit = config.getIntValue("fpslimit");
-                        player_node->setHalfAway(false);
+                        if (player_node)
+                            player_node->setHalfAway(false);
                     }
                 }
                 else
@@ -1309,12 +1391,20 @@ void Game::handleInput()
             if (event.active.state & SDL_APPMOUSEFOCUS)
                 Client::setMouseFocused(event.active.gain);
 
-            if (player_node->getAwayMode())
+            if (player_node)
             {
-                if (Client::getInputFocused() || Client::getMouseFocused())
-                    fpsLimit = config.getIntValue("fpslimit");
-                else
-                    fpsLimit = config.getIntValue("altfpslimit");
+                if (player_node->getAwayMode())
+                {
+                    if (Client::getInputFocused() || Client::getMouseFocused())
+                        fpsLimit = config.getIntValue("fpslimit");
+                    else
+                        fpsLimit = config.getIntValue("altfpslimit");
+                    Client::setFramerate(fpsLimit);
+                }
+            }
+            else
+            {
+                fpsLimit = config.getIntValue("fpslimit");
                 Client::setFramerate(fpsLimit);
             }
         }
@@ -1329,7 +1419,8 @@ void Game::handleInput()
         {
             try
             {
-                guiInput->pushInput(event);
+                if (guiInput)
+                    guiInput->pushInput(event);
             }
             catch (const gcn::Exception &e)
             {
@@ -1341,12 +1432,12 @@ void Game::handleInput()
     } // End while
 
     // If the user is configuring the keys then don't respond.
-    if (!keyboard.isEnabled() || player_node->getAwayMode())
+    if (!player_node || !keyboard.isEnabled() || player_node->getAwayMode())
         return;
 
     if (keyboard.isKeyActive(keyboard.KEY_WEAR_OUTFIT)
         || keyboard.isKeyActive(keyboard.KEY_COPY_OUTFIT)
-        || setupWindow->isVisible())
+        || (setupWindow && setupWindow->isVisible()))
     {
         return;
     }
@@ -1355,7 +1446,7 @@ void Game::handleInput()
     if (player_node->isAlive() && (!Being::isTalking()
         || keyboard.getKeyIndex(event.key.keysym.sym)
         == KeyboardConfig::KEY_TALK)
-        && !chatWindow->isInputFocused() && !quitDialog)
+        && chatWindow && !chatWindow->isInputFocused() && !quitDialog)
     {
         // Get the state of the keyboard keys
         keyboard.refreshActiveKeys();
@@ -1602,19 +1693,24 @@ void Game::changeMap(const std::string &mapPath)
     resetAdjustLevel();
 
     // Clean up floor items, beings and particles
-    actorSpriteManager->clear();
+    if (actorSpriteManager)
+        actorSpriteManager->clear();
 
     // Close the popup menu on map change so that invalid options can't be
     // executed.
-    viewport->closePopupMenu();
-    viewport->cleanHoverItems();
+    if (viewport)
+    {
+        viewport->closePopupMenu();
+        viewport->cleanHoverItems();
+    }
 
     // Unset the map of the player so that its particles are cleared before
     // being deleted in the next step
     if (player_node)
         player_node->setMap(0);
 
-    particleEngine->clear();
+    if (particleEngine)
+        particleEngine->clear();
 
     mMapName = mapPath;
 
@@ -1647,10 +1743,14 @@ void Game::changeMap(const std::string &mapPath)
         socialWindow->setMap(newMap);
 
     // Notify the minimap and actorSpriteManager about the map change
-    minimap->setMap(newMap);
-    actorSpriteManager->setMap(newMap);
-    particleEngine->setMap(newMap);
-    viewport->setMap(newMap);
+    if (minimap)
+        minimap->setMap(newMap);
+    if (actorSpriteManager)
+        actorSpriteManager->setMap(newMap);
+    if (particleEngine)
+        particleEngine->setMap(newMap);
+    if (viewport)
+        viewport->setMap(newMap);
 
     // Initialize map-based particle effects
     if (newMap)
@@ -1683,7 +1783,7 @@ void Game::changeMap(const std::string &mapPath)
 
 void Game::updateHistory(SDL_Event &event)
 {
-    if (!player_node->getAttackType())
+    if (!player_node || !player_node->getAttackType())
         return;
 
     bool old = false;
@@ -1738,7 +1838,7 @@ void Game::checkKeys()
     const int timeRange = 120;
     const int cntInTime = 130;
 
-    if (!player_node->getAttackType())
+    if (!player_node || !player_node->getAttackType())
         return;
 
     for (int f = 0; f < MAX_LASTKEYS; f ++)

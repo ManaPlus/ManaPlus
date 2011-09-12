@@ -96,7 +96,7 @@ void GuildManager::reload()
     if (socialWindow)
     {
         Guild *guild = Guild::getGuild(1);
-        if (guild)
+        if (guild && socialWindow)
             socialWindow->removeTab(guild);
     }
     delete mTab;
@@ -120,7 +120,8 @@ void GuildManager::chat(std::string msg)
 void GuildManager::getNames(std::vector<std::string> &names)
 {
     Guild *guild = createGuild();
-    guild->getNames(names);
+    if (guild)
+        guild->getNames(names);
 }
 
 void GuildManager::requestGuildInfo()

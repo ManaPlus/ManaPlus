@@ -50,14 +50,13 @@ FloorItem::FloorItem(int id,
     mX(x),
     mY(y),
     mMap(map),
-//    mAlpha(1.0f),
+    mDropTime(cur_time),
     mAmount(amount),
     mPickupCount(0),
     mColor(color),
-    mShowMsg(true)
+    mShowMsg(true),
+    mHighlight(config.getBoolValue("floorItemsHighlight"))
 {
-    mDropTime = cur_time;
-
     setMap(map);
     if (map)
     {
@@ -99,9 +98,8 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
     const int x = mX * mMap->getTileWidth() + offsetX;
     const int y = mY * mMap->getTileHeight() + offsetY;
     gcn::Font *font = 0;
-    const bool highl = config.getBoolValue("floorItemsHighlight");
 
-    if (highl)
+    if (mHighlight)
     {
         int curTime = cur_time;
         font = gui->getFont();
@@ -118,7 +116,7 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
             {
                 graphics->setColor(gcn::Color(200, 80, 20,
                     80 + 10 * (curTime - mDropTime - 18)));
-                    graphics->fillRectangle(gcn::Rectangle(
+                graphics->fillRectangle(gcn::Rectangle(
                     x, y, dx, dy));
             }
             else if (curTime > mDropTime && curTime < mDropTime + 20)
@@ -133,7 +131,7 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
 
     const bool res = ActorSprite::draw(graphics, offsetX, offsetY);
 
-    if (highl)
+    if (mHighlight)
     {
         if (font && mAmount > 1)
         {

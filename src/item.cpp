@@ -72,14 +72,9 @@ void Item::setId(int id, unsigned char color)
     ResourceManager *resman = ResourceManager::getInstance();
     const ItemInfo &info = getInfo();
     mTags = info.getTags();
-//    logger->log("tag0=" + toString(mTags[1]));
-
-//    for (int f = 0; f < mTags->size(); f ++)
-//        logger->log("tag: %d", (*mTags)[f]);
 
     SpriteDisplay display = info.getDisplay();
-    std::string imagePath = paths.getStringValue("itemIcons")
-                            + display.image;
+    std::string imagePath = paths.getStringValue("itemIcons") + display.image;
     std::string dye = combineDye2(imagePath, info.getDyeColorsString(color));
     mImage = resman->getImage(dye);
     mDrawImage = resman->getImage(dye);

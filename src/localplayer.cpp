@@ -93,6 +93,8 @@ LocalPlayer *player_node = NULL;
 extern std::list<BeingCacheEntry*> beingInfoCache;
 extern OkDialog *weightNotice;
 extern int weightNoticeTime;
+extern MiniStatusWindow *miniStatusWindow;
+extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, 0),
@@ -138,7 +140,10 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mUpdateName = true;
 
     mTextColor = &Theme::getThemeColor(Theme::PLAYER);
-    mNameColor = &userPalette->getColor(UserPalette::SELF);
+    if (userPalette)
+        mNameColor = &userPalette->getColor(UserPalette::SELF);
+    else
+        mNameColor = 0;
 
     mLastTargetX = 0;
     mLastTargetY = 0;
@@ -345,8 +350,11 @@ void LocalPlayer::logic()
     if (mEnableAdvert && !mBlockAdvert && mAdvertTime < cur_time)
     {
         Uint8 smile = FLAG_SPECIAL;
-        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
+        if (mTradebot && shopWindow && shopWindow
+            && !shopWindow->isShopEmpty())
+        {
             smile += FLAG_SHOP;
+        }
 
         if (mAwayMode)
             smile += FLAG_AWAY;
@@ -391,8 +399,6 @@ void LocalPlayer::setGMLevel(int level)
 
 Position LocalPlayer::getNextWalkPosition(unsigned char dir)
 {
-    // check for mMap?
-
     // Compute where the next tile will be set.
     int dx = 0, dy = 0;
     if (dir & Being::UP)
@@ -1040,13 +1046,13 @@ void LocalPlayer::setDestination(int x, int y)
         else if (mInvertDirection == 1)
         {
             Uint8 newDir = 0;
-            if (mDirection&UP)
+            if (mDirection & UP)
                 newDir |= DOWN;
-            if (mDirection&LEFT)
+            if (mDirection & LEFT)
                 newDir |= RIGHT;
-            if (mDirection&DOWN)
+            if (mDirection & DOWN)
                 newDir |= UP;
-            if (mDirection&RIGHT)
+            if (mDirection & RIGHT)
                 newDir |= LEFT;
 
             Net::getPlayerHandler()->setDestination(x, y, newDir);
@@ -1116,8 +1122,8 @@ void LocalPlayer::setWalkingDir(unsigned char dir)
         startWalking(dir);
     }
 #ifdef MANASERV_SUPPORT
-    else if (mAction == MOVE
-             && (Net::getNetworkType() == ServerInfo::MANASERV))
+    else if (mAction == MOVE && (Net::getNetworkType()
+             == ServerInfo::MANASERV))
     {
         nextTile(dir);
     }
@@ -1427,7 +1433,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
                 msg = N_("Unknown problem picking up item.");
                 break;
         }
-        if (config.getBoolValue("showpickupchat"))
+        if (localChatTab && config.getBoolValue("showpickupchat"))
             localChatTab->chatLog(_(msg), BY_SERVER);
 
         if (mMap && config.getBoolValue("showpickupparticle"))
@@ -1544,9 +1550,6 @@ void LocalPlayer::setGotoTarget(Being *target)
         setDestination(target->getTileX(), target->getTileY());
     }
 }
-
-extern MiniStatusWindow *miniStatusWindow;
-extern SkillDialog *skillDialog;
 
 void LocalPlayer::handleStatusEffect(StatusEffect *effect, int effectId)
 {
@@ -1762,9 +1765,12 @@ void LocalPlayer::moveToTarget(unsigned int dist)
 
     if (mTarget)
     {
-        debugPath = mMap->findPath(static_cast<int>(playerPos.x - 16) / 32,
+        if (mMap)
+        {
+            debugPath = mMap->findPath(static_cast<int>(playerPos.x - 16) / 32,
                 static_cast<int>(playerPos.y - 32) / 32,
                 mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
+        }
 
         if (debugPath.size() < dist)
             return;
@@ -1812,7 +1818,7 @@ void LocalPlayer::moveToHome()
     {
         moveTo(mCrossX, mCrossY);
     }
-    else
+    else if (mMap)
     {
         std::map<std::string, Vector>::const_iterator iter =
             mHomes.find(mMap->getProperty("_realfilename"));
@@ -1929,20 +1935,24 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
     if (dx * dx + dy * dy < 8)
         allowSword = true;
 
+    const Inventory *inv = PlayerInfo::getInventory();
+    if (!inv)
+        return;
+
     //if attack distance for sword
     if (allowSword)
     {
         //finding sword
-        item = PlayerInfo::getInventory()->findItem(571, 0);
+        item = inv->findItem(571, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(570, 0);
+            item = inv->findItem(570, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(579, 0);
+            item = inv->findItem(579, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(536, 0);
+            item = inv->findItem(536, 0);
 
         //no swords
         if (!item)
@@ -1950,21 +1960,17 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
 
         //if sword not equiped
         if (!item->isEquipped())
-        {
             Net::getInventoryHandler()->equipItem(item);
-        }
 
         //if need equip shield too
         if (mAttackWeaponType == 3)
         {
             //finding shield
-            item = PlayerInfo::getInventory()->findItem(601, 0);
+            item = inv->findItem(601, 0);
             if (!item)
-                item = PlayerInfo::getInventory()->findItem(602, 0);
+                item = inv->findItem(602, 0);
             if (item && !item->isEquipped())
-            {
                 Net::getInventoryHandler()->equipItem(item);
-            }
         }
 
     }
@@ -1972,29 +1978,22 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
     else
     {
         //finding bow
-        item = PlayerInfo::getInventory()->findItem(545, 0);
+        item = inv->findItem(545, 0);
 
         if (!item)
-            item = PlayerInfo::getInventory()->findItem(530, 0);
+            item = inv->findItem(530, 0);
 
         //no bow
         if (!item)
             return;
 
         if (!item->isEquipped())
-        {
             Net::getInventoryHandler()->equipItem(item);
-        }
     }
-
 }
-
 
 void LocalPlayer::crazyMove()
 {
-//    if (!allowAction())
-//        return;
-
     bool oldDisableCrazyMove = mDisableCrazyMove;
     mDisableCrazyMove = true;
     switch(mCrazyMoveType)
@@ -2251,7 +2250,7 @@ void LocalPlayer::crazyMove7()
 
 void LocalPlayer::crazyMove8()
 {
-    if (mAction == MOVE)
+    if (mAction == MOVE || !mMap)
         return;
     int idx = 0;
     int dist = 1;
@@ -2379,7 +2378,7 @@ void LocalPlayer::crazyMoveA()
     if (mAction == MOVE)
         return;
 
-    if (mMoveProgram.length() == 0)
+    if (mMoveProgram.empty())
         return;
 
     if (mCrazyMoveState >= mMoveProgram.length())
@@ -2609,11 +2608,8 @@ void LocalPlayer::crazyMoveA()
         mCrazyMoveState ++;
     }
 
-//    mCrazyMoveState ++;
     if (mCrazyMoveState >= mMoveProgram.length())
         mCrazyMoveState = 0;
-
-//    debugMsg("mCrazyMoveState: " + toString(mCrazyMoveState));
 }
 
 bool LocalPlayer::isReachable(int x, int y, int maxCost)
@@ -2858,8 +2854,6 @@ void LocalPlayer::specialMove(unsigned char direction)
     }
     else
     {
-//        if (direction != 0 && getInvertDirection() == 4)
-//            crazyMove();
         setWalkingDir(direction);
     }
 
@@ -2980,7 +2974,6 @@ void LocalPlayer::setMap(Map *map)
 
     Being::setMap(map);
     updateNavigateList();
-//    updateCoords();
 }
 
 void LocalPlayer::setHome()
@@ -3012,8 +3005,6 @@ void LocalPlayer::setHome()
             mMap->updatePortalTile("", MapItem::EMPTY,
                 static_cast<int>(pos.x), static_cast<int>(pos.y));
 
-//            if (specialLayer)
-//                specialLayer->setTile(pos.x, pos.y, MapItem::EMPTY);
             mHomes.erase(key);
             socialWindow->removePortal(static_cast<int>(pos.x),
                 static_cast<int>(pos.y));
@@ -3031,8 +3022,6 @@ void LocalPlayer::setHome()
             mHomes[key] = pos;
             mMap->updatePortalTile("home", MapItem::HOME,
                                    getTileX(), getTileY());
-//            if (specialLayer)
-//                specialLayer->setTile(getTileX(), getTileY(), MapItem::HOME);
             socialWindow->addPortal(getTileX(), getTileY());
         }
         MapItem *mapItem = specialLayer->getTile(getTileX(), getTileY());
@@ -3048,8 +3037,6 @@ void LocalPlayer::setHome()
     {
         MapItem *mapItem = specialLayer->getTile(getTileX(), getTileY());
         int type = 0;
-//        if (!mapItem)
-//            return;
 
         std::map<std::string, Vector>::iterator iter = mHomes.find(key);
         if (iter != mHomes.end() && getTileX() == pos.x && getTileY() == pos.y)
@@ -3060,8 +3047,6 @@ void LocalPlayer::setHome()
 
         if (!mapItem || mapItem->getType() == MapItem::EMPTY)
         {
-//            if (mAction == SIT)
-//                type = MapItem::HOME;
             if (mDirection & UP)
                 type = MapItem::ARROW_UP;
             else if (mDirection & LEFT)
@@ -3076,7 +3061,6 @@ void LocalPlayer::setHome()
             type = MapItem::EMPTY;
         }
         mMap->updatePortalTile("", type, getTileX(), getTileY());
-//        mapItem = specialLayer->getTile(getTileX(), getTileY());
 
         if (type != MapItem::EMPTY)
         {
@@ -3350,8 +3334,7 @@ void LocalPlayer::updateCoords()
 
     if (mShowNavigePath)
     {
-        if (getTileX() != mOldTileX || getTileY() != mOldTileY)
-//        if (playerPos.x != mOldX || playerPos.y != mOldY)
+        if (mMap && (getTileX() != mOldTileX || getTileY() != mOldTileY))
         {
             SpecialLayer *tmpLayer = mMap->getTempLayer();
             if (!tmpLayer)
@@ -3575,17 +3558,9 @@ void LocalPlayer::imitateOutfit(Being *player, int sprite)
     if (mImitationMode == 1 && !player_imitated.empty()
         && player->getName() == player_imitated)
     {
-//        logger->log("have equip %d", sprite);
-//        std::string filename = ItemDB::get(
-//                player->getId()).getSprite(mGender);
-//        logger->log("LocalPlayer::imitateOutfit sprite: " + toString(sprite));
-//        logger->log("LocalPlayer::imitateOutfit sprite: " + toString(player->getNumberOfLayers()));
-//        logger->log("LocalPlayer::imitateOutfit spritecount: " + toString(player->getSpritesCount()));
         if (sprite < 0 || sprite >= player->getNumberOfLayers())
-//        if (sprite < 0 || sprite >= 20)
             return;
 
-//        logger->log("after check");
         AnimatedSprite *equipmentSprite = dynamic_cast<AnimatedSprite *>(player
                 ->getSprite(sprite));
 
@@ -3635,7 +3610,8 @@ void LocalPlayer::imitateOutfit(Being *player, int sprite)
 
 void LocalPlayer::followMoveTo(Being *being, int x, int y)
 {
-    if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
+    if (being && !mPlayerFollowed.empty()
+        && being->getName() == mPlayerFollowed)
     {
         mPickUpTarget = 0;
         setDestination(x, y);

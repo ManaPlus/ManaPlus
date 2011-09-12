@@ -1044,10 +1044,10 @@ int Client::exec()
                     if (!BeingInfo::unknown)
                         BeingInfo::unknown = new BeingInfo;
 
-                    Mana::Event evt(EVENT_STATECHANGE);
-                    evt.setInt("newState", STATE_LOAD_DATA);
-                    evt.setInt("oldState", mOldState);
-                    Mana::Event::trigger(CHANNEL_CLIENT, evt);
+                    Mana::Event evt2(EVENT_STATECHANGE);
+                    evt2.setInt("newState", STATE_LOAD_DATA);
+                    evt2.setInt("oldState", mOldState);
+                    Mana::Event::trigger(CHANNEL_CLIENT, evt2);
 
                     // Load XML databases
                     ColorDB::load();

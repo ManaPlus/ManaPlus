@@ -51,9 +51,7 @@ Logger::Logger():
 Logger::~Logger()
 {
     if (mLogFile.is_open())
-    {
         mLogFile.close();
-    }
 }
 
 void Logger::setLogFile(const std::string &logFilename)

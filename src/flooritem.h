@@ -100,6 +100,7 @@ class FloorItem : public ActorSprite
         unsigned mPickupCount;
         unsigned char mColor;
         bool mShowMsg;
+        bool mHighlight;
 };
 
 #endif
