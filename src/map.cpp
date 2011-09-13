@@ -263,11 +263,11 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
-        int tilePtr = startX + yWidth;
+        Image **tilePtr = mTiles + startX + yWidth;
 
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            Image *img = mTiles[tilePtr];
+            Image *img = *tilePtr;
             if (img)
             {
                 const int px = x * 32 + dx;
@@ -344,10 +344,10 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
         const int py0 = y * 32 + dy;
         std::map<Image*, ImageVertexes*> imgSet;
 
-        int tilePtr = startX + yWidth;
+        Image **tilePtr = mTiles + startX + yWidth;
         for (int x = startX; x < endX; x++, tilePtr++)
         {
-            Image *img = mTiles[tilePtr];
+            Image *img = *tilePtr;
             if (img)
             {
                 const int px = x * 32 + dx;
@@ -472,7 +472,6 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
-//            int tilePtr = startX + yWidth;
             Image **tilePtr = mTiles + startX + yWidth;
             for (int x = startX; x < endX; x++, tilePtr++)
             {
