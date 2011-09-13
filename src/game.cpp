@@ -1391,16 +1391,13 @@ void Game::handleInput()
             if (event.active.state & SDL_APPMOUSEFOCUS)
                 Client::setMouseFocused(event.active.gain);
 
-            if (player_node)
+            if (player_node && player_node->getAwayMode())
             {
-                if (player_node->getAwayMode())
-                {
-                    if (Client::getInputFocused() || Client::getMouseFocused())
-                        fpsLimit = config.getIntValue("fpslimit");
-                    else
-                        fpsLimit = config.getIntValue("altfpslimit");
-                    Client::setFramerate(fpsLimit);
-                }
+                if (Client::getInputFocused() || Client::getMouseFocused())
+                    fpsLimit = config.getIntValue("fpslimit");
+                else
+                    fpsLimit = config.getIntValue("altfpslimit");
+                Client::setFramerate(fpsLimit);
             }
             else
             {
