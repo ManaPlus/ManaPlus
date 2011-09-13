@@ -95,12 +95,14 @@ class FlashText : public Text
         /**
          * Remove the text from the screen
          */
-        virtual ~FlashText() {}
+        virtual ~FlashText()
+        { }
 
         /**
          * Flash the text for so many refreshes.
          */
-        void flash(int time) {mTime = time; }
+        void flash(int time)
+        { mTime = time; }
 
         /**
          * Draws the text.

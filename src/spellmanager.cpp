@@ -41,7 +41,6 @@
 
 SpellManager::SpellManager()
 {
-    //fillSpells();
     load();
 }
 
@@ -50,7 +49,6 @@ SpellManager::~SpellManager()
     delete_all(mSpells);
     mSpells.clear();
     mSpellsVector.clear();
-//    save();
 }
 
 TextCommand* SpellManager::getSpell(int spellId)
