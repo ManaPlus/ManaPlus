@@ -161,11 +161,6 @@ class MapLayer: public ConfigListener
         void setTile(int index, Image *img) { mTiles[index] = img; }
 
         /**
-         * Get tile image, with x and y in layer coordinates.
-         */
-        Image *getTile(int x, int y) const;
-
-        /**
          * Draws this layer to the given graphics context. The coordinates are
          * expected to be in map range and will be translated to local layer
          * coordinates and clipped to the layer's dimensions.
@@ -223,7 +218,7 @@ class MapLayer: public ConfigListener
 
         void optionChanged(const std::string &value);
 
-        int getTileDrawWidth(int tilePtr, int endX, int &width) const;
+        int getTileDrawWidth(Image *img, int endX, int &width) const;
 
 //        void initTileInfo();
 

@@ -159,11 +159,6 @@ void MapLayer::setTile(int x, int y, Image *img)
     setTile(x + y * mWidth, img);
 }
 
-Image* MapLayer::getTile(int x, int y) const
-{
-    return mTiles[x + y * mWidth];
-}
-
 void MapLayer::draw(Graphics *graphics, int startX, int startY,
                     int endX, int endY, int scrollX, int scrollY,
                     int debugFlags) const
@@ -197,13 +192,14 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
 
         const int py0 = y32 + dy;
 
-        for (int x = startX; x < endX; x++)
+        Image **tilePtr = mTiles + startX + yWidth;
+
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
             const int x32 = x * 32;
 
-            const int tilePtr = x + yWidth;
             int c = 0;
-            Image *img = mTiles[tilePtr];
+            Image *img = *tilePtr;
             if (img)
             {
                 const int px = x32 + dx;
@@ -212,7 +208,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
                 {
                     int width = 0;
                     // here need not draw over player position
-                    c = getTileDrawWidth(tilePtr, endX - x, width);
+                    c = getTileDrawWidth(img, endX - x, width);
 
                     if (!c)
                     {
@@ -267,10 +263,10 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
+        int tilePtr = startX + yWidth;
 
-        for (int x = startX; x < endX; x++)
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
-            const int tilePtr = x + yWidth;
             Image *img = mTiles[tilePtr];
             if (img)
             {
@@ -348,9 +344,9 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
         const int py0 = y * 32 + dy;
         std::map<Image*, ImageVertexes*> imgSet;
 
-        for (int x = startX; x < endX; x++)
+        int tilePtr = startX + yWidth;
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
-            const int tilePtr = x + yWidth;
             Image *img = mTiles[tilePtr];
             if (img)
             {
@@ -476,14 +472,15 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
-            for (int x = startX; x < endX; x++)
+//            int tilePtr = startX + yWidth;
+            Image **tilePtr = mTiles + startX + yWidth;
+            for (int x = startX; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * 32;
 
                 const int px1 = x32 - scrollX;
-                const int tilePtr = x + yWidth;
                 int c = 0;
-                Image *img = mTiles[tilePtr];
+                Image *img = *tilePtr;
                 if (img)
                 {
                     const int px = x32 + dx;
@@ -494,7 +491,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
                     {
                         int width = 0;
                         // here need not draw over player position
-                        c = getTileDrawWidth(tilePtr, endX - x, width);
+                        c = getTileDrawWidth(img, endX - x, width);
 
                         if (!c)
                         {
@@ -584,9 +581,9 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     }
 }
 
-int MapLayer::getTileDrawWidth(int tilePtr, int endX, int &width) const
+int MapLayer::getTileDrawWidth(Image *img, int endX, int &width) const
 {
-    Image *img1 = mTiles[tilePtr];
+    Image *img1 = img;
     int c = 0;
     if (!img1)
     {
@@ -596,8 +593,7 @@ int MapLayer::getTileDrawWidth(int tilePtr, int endX, int &width) const
     width = img1->mBounds.w;
     for (int x = 1; x < endX; x++)
     {
-        tilePtr ++;
-        Image *img = mTiles[tilePtr];
+        img ++;
         if (img != img1)
             break;
         c ++;
@@ -772,9 +768,12 @@ void Map::initializeAmbientLayers()
 
 void Map::addLayer(MapLayer *layer)
 {
-    mLayers.push_back(layer);
-    if (layer->isFringeLayer() && !mFringeLayer)
-        mFringeLayer = layer;
+    if (layer)
+    {
+        mLayers.push_back(layer);
+        if (layer->isFringeLayer() && !mFringeLayer)
+            mFringeLayer = layer;
+    }
 }
 
 void Map::addTileset(Tileset *tileset)
@@ -829,7 +828,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     // Draw backgrounds
     drawAmbientLayers(graphics, BACKGROUND_LAYERS, mOverlayDetail);
 
-    if (mDebugFlags == MAP_BLACKWHITE)
+    if (mDebugFlags == MAP_BLACKWHITE && userPalette)
     {
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::WALKABLE_HIGHLIGHT));
@@ -981,23 +980,26 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
 
     for (int y = startY; y < endY; y++)
     {
-        for (int x = startX; x < endX; x++)
+        const int yWidth = y * mWidth;
+        int tilePtr = startX + yWidth;
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
             int width = 0;
             int x0 = x;
 
-            if (mMetaTiles[x + y * mWidth].blockmask & BLOCKMASK_WALL)
+            if (mMetaTiles[tilePtr].blockmask & BLOCKMASK_WALL)
             {
                 width = 32;
-                for (int x2 = x + 1; x < endX; x2 ++)
+                for (int x2 = tilePtr + 1; x < endX; x2 ++)
                 {
-                    if (!(mMetaTiles[x2 + y * mWidth].blockmask
+                    if (!(mMetaTiles[x2].blockmask
                         & BLOCKMASK_WALL))
                     {
                         break;
                     }
                     width += 32;
                     x ++;
+                    tilePtr ++;
                 }
                 if (width && userPalette)
                 {
@@ -1011,19 +1013,20 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (x < endX && mMetaTiles[x + y * mWidth].blockmask
+            if (x < endX && mMetaTiles[tilePtr].blockmask
                 & BLOCKMASK_AIR)
             {
                 width = 32;
-                for (int x2 = x + 1; x < endX; x2 ++)
+                for (int x2 = tilePtr + 1; x < endX; x2 ++)
                 {
-                    if (!(mMetaTiles[x2 + y * mWidth].blockmask
+                    if (!(mMetaTiles[x2].blockmask
                         & BLOCKMASK_AIR))
                     {
                         break;
                     }
                     width += 32;
                     x ++;
+                    tilePtr ++;
                 }
                 if (width && userPalette)
                 {
@@ -1037,19 +1040,20 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (x < endX && mMetaTiles[x + y * mWidth].blockmask
+            if (x < endX && mMetaTiles[tilePtr].blockmask
                 & BLOCKMASK_WATER)
             {
                 width = 32;
-                for (int x2 = x + 1; x < endX; x2 ++)
+                for (int x2 = tilePtr + 1; x < endX; x2 ++)
                 {
-                    if (!(mMetaTiles[x2 + y * mWidth].blockmask
+                    if (!(mMetaTiles[x2].blockmask
                         & BLOCKMASK_WATER))
                     {
                         break;
                     }
                     width += 32;
                     x ++;
+                    tilePtr ++;
                 }
                 if (width && userPalette)
                 {
@@ -1133,7 +1137,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
 
 Tileset *Map::getTilesetWithGid(int gid) const
 {
-    if (gid < mIndexedTilesetsSize)
+    if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
     else
         return 0;
@@ -1654,12 +1658,7 @@ void Map::addExtraLayer()
                     comment += " " + buf;
 
                 int type = atoi(type1.c_str());
-/*
-                MapItem *item = new MapItem(atoi(type.c_str()), comment);
-                int x1 = atoi(x.c_str());
-                int y1 = atoi(y.c_str());
-                mSpecialLayer->setTile(x1, y1, item);
-*/
+
                 if (comment.empty())
                 {
                     if (type < MapItem::ARROW_UP
@@ -2106,14 +2105,9 @@ void SpecialLayer::setTile(int x, int y, int type)
 
     int idx = x + y * mWidth;
     if (mTiles[idx])
-    {
         mTiles[idx]->setType(type);
-    }
     else
-    {
-        delete mTiles[idx];
         mTiles[idx] = new MapItem(type);
-    }
     mTiles[idx]->setPos(x, y);
 }
 
@@ -2160,8 +2154,6 @@ void SpecialLayer::draw(Graphics *graphics, int startX, int startY,
         endX = mWidth;
     if (endY > mHeight)
         endY = mHeight;
-
-//    MapSprites::const_iterator si = sprites.begin();
 
     for (int y = startY; y < endY; y++)
     {
@@ -2289,7 +2281,7 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
         default:
             break;
     }
-    if (!mName.empty() && mType != PORTAL && mType != EMPTY)
+    if (!mName.empty() && mType != PORTAL && mType != EMPTY && userPalette)
     {
         gcn::Font *font = gui->getFont();
         if (font)
