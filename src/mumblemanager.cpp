@@ -188,7 +188,7 @@ void MumbleManager::setAction(int action)
         case 3: /* SIT */
             mLinkedMemCache.fAvatarPosition[1] = 1.0f;
             break;
-            case 4: /* DEAD */
+        case 4: /* DEAD */
         default:
             mLinkedMemCache.fAvatarPosition[1] = 0.0f;
             break;

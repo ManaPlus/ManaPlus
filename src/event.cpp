@@ -78,7 +78,7 @@ const std::string &Event::getString(const std::string &key)
     if (it == mData.end())
         throw BAD_KEY;
 
-    if (!! it->second || it->second->getType() != VariableData::DATA_STRING)
+    if (!it->second || it->second->getType() != VariableData::DATA_STRING)
         throw BAD_VALUE;
 
     return static_cast<StringData *>(it->second)->getData();

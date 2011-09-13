@@ -40,12 +40,12 @@ ShopItem::ShopItem(int inventoryIndex, int id, unsigned char color,
     if (serverVersion > 0)
     {
         mDisplayName = getInfo().getName(color) + " ("
-                       + Units::formatCurrency(mPrice).c_str() + ") ";
+            + Units::formatCurrency(mPrice).c_str() + ") ";
     }
     else
     {
         mDisplayName = getInfo().getName() + " ("
-                       + Units::formatCurrency(mPrice).c_str() + ") ";
+            + Units::formatCurrency(mPrice).c_str() + ") ";
     }
     if (quantity > 0)
         mDisplayName += "[" + toString(quantity) + "]";

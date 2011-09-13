@@ -67,7 +67,7 @@ class PlayerConfSerialiser :
         std::pair<std::string, PlayerRelation *> value,
         ConfigurationObject *cobj)
     {
-        if (!value.second)
+        if (!cobj || !value.second)
             return NULL;
         cobj->setValue(NAME, value.first);
         cobj->setValue(RELATION, toString(
@@ -80,6 +80,8 @@ class PlayerConfSerialiser :
     readConfigItem(ConfigurationObject *cobj,
                    std::map<std::string, PlayerRelation *> *container)
     {
+        if (!cobj)
+            return container;
         std::string name = cobj->getValue(NAME, "");
         if (name.empty())
             return container;
@@ -153,6 +155,9 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
 {
     std::vector<PlayerIgnoreStrategy *> *strategies
         = getPlayerIgnoreStrategies();
+
+    if (!strategies)
+        return -1;
 
     for (unsigned int i = 0; i < strategies->size(); i++)
     {
@@ -231,8 +236,6 @@ void PlayerRelationsManager::store()
 
 void PlayerRelationsManager::signalUpdate(const std::string &name)
 {
-//    store();
-
     for (std::list<PlayerRelationsListener *>::const_iterator
          it = mListeners.begin(); it != mListeners.end(); ++it)
     {
@@ -322,7 +325,7 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
                                          PlayerRelation::Relation relation)
 {
     PlayerRelation *r = mRelations[player_name];
-    if (r == NULL)
+    if (!r)
         mRelations[player_name] = new PlayerRelation(relation);
     else
         r->mRelation = relation;

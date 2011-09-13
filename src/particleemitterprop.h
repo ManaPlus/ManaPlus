@@ -60,6 +60,8 @@ template <typename T> struct ParticleEmitterProp
         changeFunc = func;
         changeAmplitude = amplitude;
         changePeriod = period;
+        if (!changePeriod)
+            changePeriod = 1;
         changePhase = phase;
     }
 

@@ -55,10 +55,13 @@ bool RotationalParticle::update()
 
     // TODO: cache velocities to avoid spamming atan2()
 
+    int size = mAnimation->getLength();
+    if (!size)
+        return false;
+
     float rad = static_cast<float>(atan2(mVelocity.x, mVelocity.y));
     if (rad < 0)
         rad = static_cast<float>(PI + (PI + rad));
-    int size = mAnimation->getLength();
 
     float range = static_cast<float>(PI / size);
 

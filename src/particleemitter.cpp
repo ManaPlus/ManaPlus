@@ -225,11 +225,6 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 int offsetX = XML::getProperty(frameNode, "offsetX", 0);
                 int offsetY = XML::getProperty(frameNode, "offsetY", 0);
                 int rand = XML::getProperty(frameNode, "rand", 100);
-                if (!imageset)
-                {
-                    logger->log1("Error: no valid imageset");
-                    continue;
-                }
 
                 offsetY -= imageset->getHeight() - 32;
                 offsetX -= imageset->getWidth() / 2 - 16;
@@ -532,12 +527,12 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
 
             newParticle = new ImageParticle(mMap, mParticleImage);
         }
-        else if (mParticleRotation.getLength() > 0)
+        else if (!mParticleRotation.empty())
         {
             Animation *newAnimation = new Animation(mParticleRotation);
             newParticle = new RotationalParticle(mMap, newAnimation);
         }
-        else if (mParticleAnimation.getLength() > 0)
+        else if (!mParticleAnimation.empty())
         {
             Animation *newAnimation = new Animation(mParticleAnimation);
             newParticle = new AnimationParticle(mMap, newAnimation);

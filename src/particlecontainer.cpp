@@ -187,4 +187,3 @@ void ParticleVector::moveTo(float x, float y)
         }
     }
 }
-
