@@ -437,14 +437,24 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mBrowserBox->addRow(strprintf("@@imitation|%s@@", _("Imitation")));
     mBrowserBox->addRow(strprintf("@@addcomment|%s@@", _("Add comment")));
 
-    if (player_node->isInParty() && player_node->getParty())
+    if (player_node->isInParty())
     {
-        PartyMember *member = player_node->getParty()->getMember(mNick);
-        if (member)
+        Party *party = player_node->getParty();
+        if (party)
         {
-            mBrowserBox->addRow(strprintf(
-                "@@kick party|%s@@", _("Kick from party")));
-            mBrowserBox->addRow("##3---");
+            PartyMember *member = party->getMember(mNick);
+            if (member)
+            {
+                mBrowserBox->addRow(strprintf(
+                    "@@kick party|%s@@", _("Kick from party")));
+                mBrowserBox->addRow("##3---");
+                PartyMember *o = party->getMember(player_node->getName());
+                if (o && member->getMap() == o->getMap())
+                {
+                    mBrowserBox->addRow(strprintf(
+                        "@@move|%s@@", _("Move")));
+                }
+            }
         }
     }
 
@@ -782,8 +792,48 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         {
             mNick = name;
             mType = Being::PLAYER;
+
+            mBrowserBox->addRow(strprintf("@@follow|%s@@", _("Follow")));
+            mBrowserBox->addRow(strprintf("@@imitation|%s@@", _("Imitation")));
+
+            if (player_node->isInParty())
+            {
+                Party *party = player_node->getParty();
+                if (party)
+                {
+                    PartyMember *m = party->getMember(mNick);
+                    if (m)
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@move|%s@@", _("Move")));
+                    }
+                }
+            }
+            mBrowserBox->addRow(strprintf("@@items|%s@@", _("Show Items")));
+            mBrowserBox->addRow(strprintf("@@undress|%s@@", _("Undress")));
             mBrowserBox->addRow(strprintf(
                 "@@addcomment|%s@@", _("Add comment")));
+
+            if (player_relations.getDefault() & PlayerRelation::TRADE)
+            {
+                mBrowserBox->addRow("##3---");
+                if (being->isAdvanced())
+                {
+                    if (being->isShopEnabled())
+                    {
+                        mBrowserBox->addRow(strprintf(
+                            "@@buy|%s@@", _("Buy")));
+                        mBrowserBox->addRow(strprintf(
+                            "@@sell|%s@@", _("Sell")));
+                    }
+                }
+                else
+                {
+                    mBrowserBox->addRow(strprintf("@@buy|%s@@", _("Buy (?)")));
+                    mBrowserBox->addRow(strprintf(
+                        "@@sell|%s@@", _("Sell (?)")));
+                }
+            }
             mBrowserBox->addRow("##3---");
         }
     }
@@ -1054,10 +1104,26 @@ void PopupMenu::handleLink(const std::string &link,
                 chatWindow->addInputText("/w \"" + mNick + "\" ");
         }
     }
-    else if (link == "move" && being)
+    else if (link == "move" && !mNick.empty())
     {
         if (player_node)
-            player_node->navigateTo(being->getTileX(), being->getTileY());
+        {
+            if (being)
+            {
+                player_node->navigateTo(being->getTileX(), being->getTileY());
+            }
+            else if (player_node->isInParty())
+            {
+                Party *party = player_node->getParty();
+                if (party)
+                {
+                    PartyMember *m = party->getMember(mNick);
+                    PartyMember *o = party->getMember(player_node->getName());
+                    if (m && o && m->getMap() == o->getMap())
+                        player_node->navigateTo(m->getX(), m->getY());
+                }
+            }
+        }
     }
     else if (link == "split" && mItem)
     {
