@@ -122,6 +122,8 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
 
         void setSelectedTab(gcn::Tab *tab);
 
+        void setSelectedTab(const std::string &name);
+
         void widgetResized(const gcn::Event &event);
 
 /*

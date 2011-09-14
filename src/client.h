@@ -317,6 +317,9 @@ private:
     QuitDialog *mQuitDialog;
     Desktop *mDesktop;
     Button *mSetupButton;
+    Button *mVideoButton;
+    Button *mThemesButton;
+    Button *mPerfomanceButton;
 
     State mState;
     State mOldState;

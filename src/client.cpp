@@ -247,6 +247,9 @@ Client::Client(const Options &options):
     mQuitDialog(0),
     mDesktop(0),
     mSetupButton(0),
+    mVideoButton(0),
+    mThemesButton(0),
+    mPerfomanceButton(0),
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(0),
@@ -828,10 +831,27 @@ int Client::exec()
 
             mDesktop = new Desktop;
             top->add(mDesktop);
+            int x = top->getWidth();
             mSetupButton = new Button(_("Setup"), "Setup", this);
-            mSetupButton->setPosition(top->getWidth()
-                - mSetupButton->getWidth() - 3, 3);
+            x -= mSetupButton->getWidth() + 3;
+            mSetupButton->setPosition(x, 3);
             top->add(mSetupButton);
+
+            mPerfomanceButton = new Button(
+                _("Perfomance"), "Perfomance", this);
+            x -= mPerfomanceButton->getWidth() + 6;
+            mPerfomanceButton->setPosition(x, 3);
+            top->add(mPerfomanceButton);
+
+            mVideoButton = new Button(_("Video"), "Video", this);
+            x -= mVideoButton->getWidth() + 6;
+            mVideoButton->setPosition(x, 3);
+            top->add(mVideoButton);
+
+            mThemesButton = new Button(_("Themes"), "Themes", this);
+            x -= mThemesButton->getWidth() + 6;
+            mThemesButton->setPosition(x, 3);
+            top->add(mThemesButton);
 
             int screenWidth = config.getIntValue("screenwidth");
             int screenHeight = config.getIntValue("screenheight");
@@ -1138,6 +1158,12 @@ int Client::exec()
 
                     delete mSetupButton;
                     mSetupButton = 0;
+                    delete mVideoButton;
+                    mVideoButton = 0;
+                    delete mThemesButton;
+                    mThemesButton = 0;
+                    delete mPerfomanceButton;
+                    mPerfomanceButton = 0;
                     delete mDesktop;
                     mDesktop = 0;
 
@@ -1329,16 +1355,38 @@ void Client::optionChanged(const std::string &name)
 
 void Client::action(const gcn::ActionEvent &event)
 {
-    Window *window = 0;
+    bool show(false);
+    std::string tab = "";
 
     if (event.getId() == "Setup")
-        window = setupWindow;
-
-    if (window)
     {
-        window->setVisible(!window->isVisible());
-        if (window->isVisible())
-            window->requestMoveToTop();
+        show = true;
+    }
+    else if (event.getId() == "Video")
+    {
+        show = true;
+        tab = "Video";
+    }
+    else if (event.getId() == "Themes")
+    {
+        show = true;
+        tab = "Theme";
+    }
+    else if (event.getId() == "Perfomance")
+    {
+        show = true;
+        tab = "Perfomance";
+    }
+
+    if (setupWindow)
+    {
+        setupWindow->setVisible(!setupWindow->isVisible());
+        if (setupWindow->isVisible())
+        {
+            if (!tab.empty())
+                setupWindow->activateTab(tab);
+            setupWindow->requestMoveToTop();
+        }
     }
 }
 

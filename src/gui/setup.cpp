@@ -198,4 +198,26 @@ void Setup::doCancel()
     for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
 }
 
+void Setup::activateTab(const std::string &name)
+{
+    std::string tmp = gettext(name.c_str());
+    mPanel->setSelectedTab(tmp);
+/*
+    for (std::list<SetupTab*>::const_iterator it = mTabs.begin();
+         it != mTabs.end(); ++it)
+    {
+        if (*it)
+        {
+            SetupTab *tab = *it;
+            logger->log("check tab: " + tab->getName());
+            if (tab->getName() == tmp)
+            {
+                mPanel->setSelectedTab(name);
+                return;
+            }
+        }
+    }
+*/
+}
+
 Setup *setupWindow;
