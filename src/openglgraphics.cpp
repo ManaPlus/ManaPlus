@@ -1064,22 +1064,22 @@ bool OpenGLGraphics::pushClipArea(gcn::Rectangle area)
 
     if (!mClipStack.empty())
     {
-        transX = -mClipStack.top().xOffset;
-        transY = -mClipStack.top().yOffset;
+        const gcn::ClipRectangle &clipArea = mClipStack.top();
+        transX = -clipArea.xOffset;
+        transY = -clipArea.yOffset;
     }
 
     bool result = gcn::Graphics::pushClipArea(area);
 
-    transX += mClipStack.top().xOffset;
-    transY += mClipStack.top().yOffset;
+    const gcn::ClipRectangle &clipArea = mClipStack.top();
+    transX += clipArea.xOffset;
+    transY += clipArea.yOffset;
 
     glPushMatrix();
     glTranslatef(static_cast<GLfloat>(transX),
                  static_cast<GLfloat>(transY), 0);
-    glScissor(mClipStack.top().x,
-              mTarget->h - mClipStack.top().y - mClipStack.top().height,
-              mClipStack.top().width,
-              mClipStack.top().height);
+    glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
+        clipArea.width, clipArea.height);
 
     return result;
 }
@@ -1092,10 +1092,9 @@ void OpenGLGraphics::popClipArea()
         return;
 
     glPopMatrix();
-    glScissor(mClipStack.top().x,
-              mTarget->h - mClipStack.top().y - mClipStack.top().height,
-              mClipStack.top().width,
-              mClipStack.top().height);
+    const gcn::ClipRectangle &clipArea = mClipStack.top();
+    glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
+        clipArea.width, clipArea.height);
 }
 
 void OpenGLGraphics::setColor(const gcn::Color& color)
