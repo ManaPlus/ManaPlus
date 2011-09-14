@@ -331,7 +331,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     }
 
     // Ensure that something is shown, if desired
-    if (size() == 0 && forceDisplay)
+    if (empty() && forceDisplay)
     {
         if (display.image.empty())
         {

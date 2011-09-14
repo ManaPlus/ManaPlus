@@ -367,7 +367,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadServers(false);
 
-    if (mServers.size() == 0)
+    if (mServers.empty())
         downloadServerList();
 }
 

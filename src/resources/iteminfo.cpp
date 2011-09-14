@@ -139,7 +139,7 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
 
     if (i == mSounds.end())
         return empty;
-    return i->second.size() > 0 ? i->second[rand() % i->second.size()] : empty;
+    return (!i->second.empty()) ? i->second[rand() % i->second.size()] : empty;
 }
 
 std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
@@ -222,7 +222,7 @@ const std::string ItemInfo::replaceColors(std::string str,
     }
 
     str = replaceAll(str, "%color%", name);
-    if (name.size() > 0)
+    if (!name.empty())
         name[0] = static_cast<char>(toupper(name[0]));
 
     return replaceAll(str, "%Color%", name);
