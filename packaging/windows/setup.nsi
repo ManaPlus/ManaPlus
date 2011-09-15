@@ -238,6 +238,7 @@ Section "Core files (required)" SecCore
   CreateDirectory "$INSTDIR\data\themes\mana"
   CreateDirectory "$INSTDIR\data\themes\pink"
   CreateDirectory "$INSTDIR\data\themes\redandblack"
+  CreateDirectory "$INSTDIR\data\themes\unity"
   CreateDirectory "$INSTDIR\data\themes\wood"
   CreateDirectory "$INSTDIR\docs"
 

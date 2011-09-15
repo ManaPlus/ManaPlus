@@ -253,6 +253,7 @@ data/themes/enchilado/Makefile
 data/themes/mana/Makefile
 data/themes/pink/Makefile
 data/themes/redandblack/Makefile
+data/themes/unity/Makefile
 data/themes/wood/Makefile
 data/help/Makefile
 data/help/es/Makefile
