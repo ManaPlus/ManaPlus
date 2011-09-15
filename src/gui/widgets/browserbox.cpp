@@ -256,6 +256,11 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     updateHeight();
 }
 
+void BrowserBox::addRow(const std::string &cmd, char *text)
+{
+    addRow(strprintf("@@%s|%s@@", cmd.c_str(), text));
+}
+
 void BrowserBox::addImage(const std::string &path)
 {
     if (!mEnableImages)
