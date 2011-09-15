@@ -89,55 +89,6 @@ namespace gcn
         mText = text;
     }
 
-    void TextField::draw(Graphics* graphics)
-    {
-        Color faceColor = getBaseColor();
-        Color highlightColor, shadowColor;
-        int alpha = getBaseColor().a;
-        highlightColor = faceColor + 0x303030;
-        highlightColor.a = alpha;
-        shadowColor = faceColor - 0x303030;
-        shadowColor.a = alpha;
-
-        // Draw a border.
-        graphics->setColor(shadowColor);
-        graphics->drawLine(0, 0, getWidth() - 1, 0);
-        graphics->drawLine(0, 1, 0, getHeight() - 2);
-        graphics->setColor(highlightColor);
-        graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
-        graphics->drawLine(0, getHeight() - 1,
-            getWidth() - 1, getHeight() - 1);
-
-        // Push a clip area so the other drawings don't need to worry
-        // about the border.
-        graphics->pushClipArea(Rectangle(1, 1,
-            getWidth() - 2, getHeight() - 2));
-
-        graphics->setColor(getBackgroundColor());
-        graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
-
-        if (isFocused())
-        {
-            graphics->setColor(getSelectionColor());
-            graphics->drawRectangle(Rectangle(0, 0,
-                getWidth() - 2, getHeight() - 2));
-            graphics->drawRectangle(Rectangle(1, 1,
-                getWidth() - 4, getHeight() - 4));
-        }
-
-        if (isFocused())
-        {
-            drawCaret(graphics, getFont()->getWidth(
-                mText.substr(0, mCaretPosition)) - mXScroll);
-        }
-
-        graphics->setColor(getForegroundColor());
-        graphics->setFont(getFont());
-        graphics->drawText(mText, 3 - mXScroll, 1);
-
-        graphics->popClipArea();
-    }
-
     void TextField::drawCaret(Graphics* graphics, int x)
     {
         // Check the current clip area as a clip area with a different
@@ -163,53 +114,6 @@ namespace gcn
     void TextField::mouseDragged(MouseEvent& mouseEvent)
     {
         mouseEvent.consume();
-    }
-    
-    void TextField::keyPressed(KeyEvent& keyEvent)
-    {
-        Key key = keyEvent.getKey();
-
-        if (key.getValue() == Key::LEFT && mCaretPosition > 0)
-        {
-            --mCaretPosition;
-        }
-        else if (key.getValue() == Key::RIGHT && mCaretPosition < mText.size())
-        {
-            ++mCaretPosition;
-        }
-        else if (key.getValue() == Key::DELETE
-                 && mCaretPosition < mText.size())
-        {
-            mText.erase(mCaretPosition, 1);
-        }
-        else if (key.getValue() == Key::BACKSPACE && mCaretPosition > 0)
-        {
-            mText.erase(mCaretPosition - 1, 1);
-            --mCaretPosition;
-        }
-        else if (key.getValue() == Key::ENTER)
-        {
-            distributeActionEvent();
-        }
-        else if (key.getValue() == Key::HOME)
-        {
-            mCaretPosition = 0;
-        }
-        else if (key.getValue() == Key::END)
-        {
-            mCaretPosition = mText.size();
-        }
-        else if (key.isCharacter()
-                 && key.getValue() != Key::TAB)
-        {
-            mText.insert(mCaretPosition, std::string(1, (char)key.getValue()));
-            ++mCaretPosition;
-        }
-
-        if (key.getValue() != Key::TAB)
-            keyEvent.consume();
-
-        fixScroll();
     }
 
     void TextField::adjustSize()

@@ -124,19 +124,11 @@ namespace gcn
 
         virtual void fontChanged();
 
-        virtual void draw(Graphics* graphics);
-
-
         // Inherited from MouseListener
 
         virtual void mousePressed(MouseEvent& mouseEvent);
 
         virtual void mouseDragged(MouseEvent& mouseEvent);
-        
-
-        // Inherited from KeyListener
-
-        virtual void keyPressed(KeyEvent& keyEvent);
 
     protected:
         /**

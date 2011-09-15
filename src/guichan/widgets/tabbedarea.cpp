@@ -94,15 +94,6 @@ namespace gcn
         }
     }
 
-    void TabbedArea::addTab(const std::string& caption, Widget* widget)
-    {
-        Tab* tab = new Tab();
-        tab->setCaption(caption);
-        mTabsToDelete.push_back(tab);
-
-        addTab(tab, widget);
-    }
-
     void TabbedArea::addTab(Tab* tab, Widget* widget)
     {
         tab->setTabbedArea(this);
@@ -124,69 +115,6 @@ namespace gcn
             throw GCN_EXCEPTION("No such tab index.");
 
         removeTab(mTabs[index].first);
-    }
-
-    void TabbedArea::removeTab(Tab* tab)
-    {
-        int tabIndexToBeSelected = - 1;
-
-        if (tab == mSelectedTab)
-        {
-            int index = getSelectedTabIndex();
-
-            if (index == (int)mTabs.size() - 1
-                && mTabs.size() >= 2)
-            {
-                tabIndexToBeSelected = index--;
-            }
-            else if (index == (int)mTabs.size() - 1
-                     && mTabs.size() == 1)
-            {
-                tabIndexToBeSelected = -1;
-            }
-            else
-            {
-                tabIndexToBeSelected = index;
-            }
-        }
-
-        std::vector<std::pair<Tab*, Widget*> >::iterator iter;
-        for (iter = mTabs.begin(); iter != mTabs.end(); ++ iter)
-        {
-            if (iter->first == tab)
-            {
-                mTabContainer->remove(tab);
-                mTabs.erase(iter);
-                break;
-            }
-        }
-
-        std::vector<Tab*>::iterator iter2;
-        for (iter2 = mTabsToDelete.begin();
-             iter2 != mTabsToDelete.end();
-             ++ iter2)
-        {
-            if (*iter2 == tab)
-            {
-                mTabsToDelete.erase(iter2);
-                delete tab;
-                tab = 0;
-                break;
-            }
-        }
-
-        if (tabIndexToBeSelected == -1)
-        {
-            mSelectedTab = NULL;
-            mWidgetContainer->clear();
-        }
-        else
-        {
-            setSelectedTab(tabIndexToBeSelected);
-        }
-
-        adjustSize();
-        adjustTabPositions();
     }
 
     bool TabbedArea::isTabSelected(unsigned int index) const
@@ -309,10 +237,6 @@ namespace gcn
         drawChildren(graphics);
     }
 
-    void TabbedArea::logic()
-    {
-    }
-
     void TabbedArea::adjustSize()
     {
         int maxTabHeight = 0;
@@ -402,29 +326,6 @@ namespace gcn
 
             keyEvent.consume();
         }
-    }
-
-
-    void TabbedArea::mousePressed(MouseEvent& mouseEvent)
-    {
-        if (mouseEvent.isConsumed())
-            return;
-
-        if (mouseEvent.getButton() == MouseEvent::LEFT)
-        {
-            Widget* widget = mTabContainer->getWidgetAt(
-                mouseEvent.getX(), mouseEvent.getY());
-            Tab* tab = dynamic_cast<Tab*>(widget);
-
-            if (tab != NULL)
-                setSelectedTab(tab);
-        }
-
-        // Request focus only if the source of the event
-        // is not focusble. If the source of the event
-        // is focused we don't want to steal the focus.
-        if (!mouseEvent.getSource()->isFocusable())
-            requestFocus();
     }
 
     void TabbedArea::death(const Event& event)

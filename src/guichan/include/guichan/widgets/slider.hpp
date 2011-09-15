@@ -204,12 +204,6 @@ namespace gcn
          */
         double getStepLength() const;
 
-
-        // Inherited from Widget
-
-        virtual void draw(Graphics* graphics);
-
-
         // Inherited from MouseListener.
 
         virtual void mousePressed(MouseEvent& mouseEvent);
@@ -226,12 +220,6 @@ namespace gcn
         virtual void keyPressed(KeyEvent& keyEvent);
 
     protected:
-        /**
-         * Draws the marker.
-         *
-         * @param graphics A graphics object to draw with.
-         */
-        virtual void drawMarker(gcn::Graphics* graphics);
 
         /**
          * Converts a marker position to a value in the scale.

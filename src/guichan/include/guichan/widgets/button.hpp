@@ -147,21 +147,13 @@ namespace gcn
         void adjustSize();
 
 
-        //Inherited from Widget
-
-        virtual void draw(Graphics* graphics);
-
-
         // Inherited from FocusListener
 
         virtual void focusLost(const Event& event);
 
-
         // Inherited from MouseListener
 
         virtual void mousePressed(MouseEvent& mouseEvent);
-
-        virtual void mouseReleased(MouseEvent& mouseEvent);
 
         virtual void mouseEntered(MouseEvent& mouseEvent);
 

@@ -109,16 +109,6 @@ namespace gcn
         bool isOpaque() const;
 
         /**
-         * Adds a tab to the tabbed area. The newly created tab will be
-         * automatically deleted by the tabbed area when it is removed.
-         *
-         * @param caption The caption of the tab to add.
-         * @param widget The widget to view when the tab is selected.
-         * @see removeTab, removeTabWithIndex
-         */
-        virtual void addTab(const std::string& caption, Widget* widget);
-
-        /**
          * Adds a tab to the tabbed area. The tab will not be deleted by the
          * tabbed area when it is removed.
          *
@@ -142,7 +132,7 @@ namespace gcn
          * @param index The tab to remove.
          * @see addTab
          */
-        virtual void removeTab(Tab* tab);
+        virtual void removeTab(Tab* tab) = 0;
 
         /**
          * Checks if a tab given an index is selected or not.
@@ -195,12 +185,9 @@ namespace gcn
          */
         Tab* getSelectedTab();
 
-
         // Inherited from Widget
 
         virtual void draw(Graphics *graphics);
-
-        virtual void logic();
 
         void setWidth(int width);
 
@@ -227,9 +214,6 @@ namespace gcn
 
 
         // Inherited from MouseListener
-
-        virtual void mousePressed(MouseEvent& mouseEvent);
-
 
     protected:
         /**

@@ -126,16 +126,9 @@ namespace gcn
          */
         void adjustSize();
 
-
-        // Inherited from Widget
-
-        virtual void draw(Graphics* graphics);
-
-
         // Inherited from KeyListener
 
         virtual void keyPressed(KeyEvent& keyEvent);
-
 
         // Inherited from MouseListener
 
@@ -145,13 +138,6 @@ namespace gcn
 
 
     protected:
-        /**
-         * Draws the box of the check box. 
-         *
-         * @param graphics A Graphics object to draw with.
-         */
-        virtual void drawBox(Graphics *graphics);
-
         /**
          * Toggles the check box between being selected and
          * not being selected.

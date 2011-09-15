@@ -171,8 +171,6 @@ namespace gcn
 
         // Inherited from Widget
 
-        virtual void draw(Graphics* graphics);
-
         void setBaseColor(const Color& color);
 
         void setBackgroundColor(const Color& color);
@@ -206,7 +204,7 @@ namespace gcn
 
         // Inherited from KeyListener
 
-        virtual void keyPressed(KeyEvent& keyEvent);
+        virtual void keyPressed(KeyEvent& keyEvent) = 0;
 
 
         // Inherited from MouseListener
@@ -232,7 +230,7 @@ namespace gcn
          *
          * @param graphics a Graphics object to draw with.
          */
-        virtual void drawButton(Graphics *graphics);
+        virtual void drawButton(Graphics *graphics) = 0;
 
         /**
          * Sets the drop down to be dropped down.

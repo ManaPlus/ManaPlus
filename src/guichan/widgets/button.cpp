@@ -121,6 +121,7 @@ namespace gcn
       return mSpacing;
     }
 
+/*
     void Button::draw(Graphics* graphics)
     {
         Color faceColor = getBaseColor();
@@ -195,6 +196,7 @@ namespace gcn
             }
         }
     }
+*/
 
     void Button::adjustSize()
     {
@@ -231,23 +233,6 @@ namespace gcn
     void Button::mouseEntered(MouseEvent& mouseEvent A_UNUSED)
     {
         mHasMouse = true;
-    }
-
-    void Button::mouseReleased(MouseEvent& mouseEvent)
-    {
-        if (mouseEvent.getButton() == MouseEvent::LEFT
-            && mMousePressed
-            && mHasMouse)
-        {
-            mMousePressed = false;
-            distributeActionEvent();
-            mouseEvent.consume();
-        }
-        else if (mouseEvent.getButton() == MouseEvent::LEFT)
-        {
-            mMousePressed = false;
-            mouseEvent.consume();
-        }
     }
 
     void Button::mouseDragged(MouseEvent& mouseEvent)

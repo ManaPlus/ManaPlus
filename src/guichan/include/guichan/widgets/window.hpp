@@ -187,16 +187,9 @@ namespace gcn
          */
         virtual void resizeToContent();
 
-
         // Inherited from BasicContainer
 
         virtual Rectangle getChildrenArea();
-
-
-        // Inherited from Widget
-
-        virtual void draw(Graphics* graphics);
-
 
         // Inherited from MouseListener
 

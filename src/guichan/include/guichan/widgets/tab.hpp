@@ -127,9 +127,6 @@ namespace gcn
 
         // Inherited from Widget
 
-        virtual void draw(Graphics *graphics);
-
-
         // Inherited from MouseListener
 
         virtual void mouseEntered(MouseEvent& mouseEvent);

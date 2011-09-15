@@ -152,11 +152,6 @@ namespace gcn
         void adjustSize();
 
 
-        // Inherited from Widget
-
-        virtual void draw(Graphics* graphics);
-
-
         // Inherited from KeyListener
 
         virtual void keyPressed(KeyEvent& keyEvent);
@@ -174,7 +169,7 @@ namespace gcn
          *
          * @param graphics a Graphics object to draw with.
          */
-        virtual void drawBox(Graphics *graphics);
+        virtual void drawBox(Graphics *graphics) = 0;
 
         /**
          * True if the radio button is selected, false otherwise.
