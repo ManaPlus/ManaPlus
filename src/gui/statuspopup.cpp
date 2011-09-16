@@ -159,7 +159,8 @@ void StatusPopup::update()
 
     const int fontHeight = getFont()->getHeight();
 
-    setHeight(24 + 8 + 14 * fontHeight + getPadding());
+    setHeight(mDisableGameModifiers->getY()
+        + mDisableGameModifiers->getHeight() + 2 * getPadding());
 }
 
 void StatusPopup::view(int x, int y)
