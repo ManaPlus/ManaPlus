@@ -736,19 +736,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             if (player_relations.getDefault() & PlayerRelation::TRADE)
             {
                 mBrowserBox->addRow("##3---");
-                if (being->isAdvanced())
-                {
-                    if (being->isShopEnabled())
-                    {
-                        mBrowserBox->addRow("buy", _("Buy"));
-                        mBrowserBox->addRow("sell", _("Sell"));
-                    }
-                }
-                else
-                {
-                    mBrowserBox->addRow("buy", _("Buy (?)"));
-                    mBrowserBox->addRow("sell", _("Sell (?)"));
-                }
+                mBrowserBox->addRow("buy", _("Buy (?)"));
+                mBrowserBox->addRow("sell", _("Sell (?)"));
             }
             mBrowserBox->addRow("##3---");
         }
