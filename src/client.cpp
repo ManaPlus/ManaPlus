@@ -1355,28 +1355,18 @@ void Client::optionChanged(const std::string &name)
 
 void Client::action(const gcn::ActionEvent &event)
 {
-    bool show(false);
-    std::string tab = "";
+    std::string tab;
 
     if (event.getId() == "Setup")
-    {
-        show = true;
-    }
+        tab = "";
     else if (event.getId() == "Video")
-    {
-        show = true;
         tab = "Video";
-    }
     else if (event.getId() == "Themes")
-    {
-        show = true;
         tab = "Theme";
-    }
     else if (event.getId() == "Perfomance")
-    {
-        show = true;
         tab = "Perfomance";
-    }
+    else
+        return;
 
     if (setupWindow)
     {

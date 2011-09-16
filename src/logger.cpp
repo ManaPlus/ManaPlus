@@ -207,7 +207,8 @@ void Logger::error(const std::string &error_text)
 #elif defined __linux__ || __linux
     std::cerr << "Error: " << error_text << std::endl;
     std::string msg = "xmessage \"" + error_text + "\"";
-    system(msg.c_str());
+    if (system(msg.c_str()) == -1)
+        std::cerr << "Error: " << error_text << std::endl;
 #else
     std::cerr << "Error: " << error_text << std::endl;
 #endif
