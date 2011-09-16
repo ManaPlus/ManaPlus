@@ -350,11 +350,8 @@ void LocalPlayer::logic()
     if (mEnableAdvert && !mBlockAdvert && mAdvertTime < cur_time)
     {
         Uint8 smile = FLAG_SPECIAL;
-        if (mTradebot && shopWindow && shopWindow
-            && !shopWindow->isShopEmpty())
-        {
+        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile += FLAG_SHOP;
-        }
 
         if (mAwayMode)
             smile += FLAG_AWAY;

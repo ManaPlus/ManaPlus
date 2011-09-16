@@ -529,7 +529,8 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
 
         for (int py = 0; py < h; py += scaledHeight)
         {
-            const int height = (py + scaledHeight >= h) ? h - py : scaledHeight;
+            const int height = (py + scaledHeight >= h)
+                ? h - py : scaledHeight;
             const int dstY = y + py;
             for (int px = 0; px < w; px += scaledWidth)
             {
@@ -583,7 +584,8 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
 
         for (int py = 0; py < h; py += scaledHeight)
         {
-            const int height = (py + scaledHeight >= h) ? h - py : scaledHeight;
+            const int height = (py + scaledHeight >= h)
+                ? h - py : scaledHeight;
             const int dstY = y + py;
             for (int px = 0; px < w; px += scaledWidth)
             {

@@ -157,8 +157,6 @@ void StatusPopup::update()
     minWidth += 16 + 2 * getPadding();
     setWidth(minWidth);
 
-    const int fontHeight = getFont()->getHeight();
-
     setHeight(mDisableGameModifiers->getY()
         + mDisableGameModifiers->getHeight() + 2 * getPadding());
 }

@@ -1409,8 +1409,8 @@ void Being::drawSpeech(int offsetX, int offsetY)
         if (!mText && userPalette)
         {
             mText = new Text(mSpeech, getPixelX(), getPixelY() - getHeight(),
-                gcn::Graphics::CENTER, &userPalette->getColor(UserPalette::PARTICLE),
-                true);
+                gcn::Graphics::CENTER, &userPalette->getColor(
+                UserPalette::PARTICLE), true);
         }
     }
     else if (speech == NO_SPEECH)
