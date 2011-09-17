@@ -73,6 +73,8 @@ class ItemContainer : public gcn::Widget,
          */
         virtual ~ItemContainer();
 
+        void hidePopup();
+
         /**
          * Necessary for checking how full the inventory is.
          */
