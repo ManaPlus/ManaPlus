@@ -1,236 +1,254 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
+# Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011.
+# Pitriss <chytrex@wjake.com>, 2011.
+# Pitriss V <chytrex_fsude@centrum.cz>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-08-10 01:11+0300\n"
-"PO-Revision-Date: 2011-08-09 22:16+0000\n"
+"POT-Creation-Date: 2011-09-17 16:12+0300\n"
+"PO-Revision-Date: 2011-09-17 13:43+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Czech (http://www.transifex.net/projects/p/manaplus/team/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
-#: src/actorspritemanager.cpp:1034
+#: src/actorspritemanager.cpp:1088
 msgid "Visible on map"
-msgstr ""
+msgstr "Viditelný na mapě"
 
-#: src/being.cpp:542
+#: src/being.cpp:548
 msgid "dodge"
-msgstr ""
+msgstr "úskočil"
 
-#: src/being.cpp:542
+#: src/being.cpp:548
 msgid "miss"
-msgstr ""
+msgstr "minul"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1514
+#: src/being.cpp:1527
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1519
+#: src/being.cpp:1532
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:825 src/gui/setup.cpp:53 src/gui/windowmenu.cpp:100
+#: src/client.cpp:835 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Nastavení"
 
-#: src/client.cpp:908
+#: src/client.cpp:841 src/gui/setup_perfomance.cpp:48
+msgid "Perfomance"
+msgstr "Výkon"
+
+#: src/client.cpp:846 src/gui/setup_video.cpp:315
+msgid "Video"
+msgstr "Video"
+
+#: src/client.cpp:851
+msgid "Themes"
+msgstr ""
+
+#: src/client.cpp:932
 msgid "Connecting to server"
-msgstr ""
+msgstr "Připojuji se k serveru"
 
-#: src/client.cpp:939
+#: src/client.cpp:963
 msgid "Logging in"
-msgstr ""
+msgstr "Přihlašuji se"
 
-#: src/client.cpp:972
+#: src/client.cpp:996
 msgid "Entering game world"
-msgstr ""
+msgstr "Vstupuji do herního světa"
 
-#: src/client.cpp:1072
+#: src/client.cpp:1096
 msgid "Requesting characters"
-msgstr ""
+msgstr "Požaduji postavy"
 
-#: src/client.cpp:1103
+#: src/client.cpp:1127
 msgid "Connecting to the game server"
-msgstr ""
+msgstr "Připojuji se k hernímu serveru"
 
-#: src/client.cpp:1113
+#: src/client.cpp:1137
 msgid "Changing game servers"
-msgstr ""
+msgstr "Zaměňuji herní servery"
 
-#: src/client.cpp:1150 src/client.cpp:1157 src/client.cpp:1294
+#: src/client.cpp:1180 src/client.cpp:1187 src/client.cpp:1321
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
-#: src/gui/charcreatedialog.cpp:218 src/gui/charselectdialog.cpp:254
-#: src/gui/register.cpp:228 src/gui/serverdialog.cpp:392
+#: src/gui/charcreatedialog.cpp:221 src/gui/charselectdialog.cpp:253
+#: src/gui/register.cpp:228 src/gui/serverdialog.cpp:401
 #: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:154
 #: src/net/ea/charserverhandler.cpp:172 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Chyba"
 
-#: src/client.cpp:1166
+#: src/client.cpp:1196
 msgid "Requesting registration details"
-msgstr ""
+msgstr "Požaduji registrační detaily"
 
-#: src/client.cpp:1193
+#: src/client.cpp:1222
 msgid "Password Change"
-msgstr ""
+msgstr "Změna hesla"
 
-#: src/client.cpp:1194
+#: src/client.cpp:1223
 msgid "Password changed successfully!"
-msgstr ""
+msgstr "Heslo úspěšně změněno!"
 
-#: src/client.cpp:1213
+#: src/client.cpp:1242
 msgid "Email Change"
-msgstr ""
+msgstr "Změna emailu"
 
-#: src/client.cpp:1214
+#: src/client.cpp:1243
 msgid "Email changed successfully!"
-msgstr ""
+msgstr "Email úspěšně změněn!"
 
-#: src/client.cpp:1234
+#: src/client.cpp:1263
 msgid "Unregister Successful"
-msgstr ""
+msgstr "Zrušení registrace úspěšné"
 
-#: src/client.cpp:1235
+#: src/client.cpp:1264
 msgid "Farewell, come back any time..."
-msgstr ""
+msgstr "Nashledanou, vraťte se kdykoli..."
 
-#: src/client.cpp:1424 src/client.cpp:1454 src/client.cpp:1498
-#: src/client.cpp:1919
+#: src/client.cpp:1463 src/client.cpp:1493 src/client.cpp:1508
+#: src/client.cpp:1933 src/client.cpp:1940
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1629
+#: src/client.cpp:1639
 #, c-format
 msgid "Invalid update host: %s"
-msgstr ""
+msgstr "Neplatný host updatů: %s"
 
-#: src/client.cpp:1663 src/client.cpp:1669
+#: src/client.cpp:1673 src/client.cpp:1679
 msgid "Error creating updates directory!"
-msgstr ""
+msgstr "Chyba při vytváření adresáře s updaty!"
 
-#: src/client.cpp:1690
+#: src/client.cpp:1700
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr "Chyba: %s neexistuje a nelze ho vytvořit. Ukončuji."
 
-#: src/commandhandler.cpp:301
+#: src/commandhandler.cpp:196
 msgid "Unknown command."
 msgstr "Neznámý příkaz."
 
-#: src/commandhandler.cpp:401
+#: src/commandhandler.cpp:295
 msgid "Cannot send empty whispers!"
-msgstr ""
+msgstr "Nelze zaslat prázdné šeptání!"
 
-#: src/commandhandler.cpp:409
+#: src/commandhandler.cpp:309
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
+"Nelze vytvořit záložku se šeptáním pro \"%s\"! Buďto záložka existuje nebo "
+"jsi to ty."
 
-#: src/commandhandler.cpp:429
+#: src/commandhandler.cpp:329
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr ""
 
-#: src/commandhandler.cpp:445 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:345 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
-msgstr ""
+msgstr "Chybí jméno party."
 
-#: src/commandhandler.cpp:456
+#: src/commandhandler.cpp:356
 msgid "Guild name is missing."
-msgstr ""
+msgstr "Chybí jméno guildy."
 
-#: src/commandhandler.cpp:469 src/commandhandler.cpp:576
-#: src/commandhandler.cpp:617 src/commandhandler.cpp:647
+#: src/commandhandler.cpp:369 src/commandhandler.cpp:481
+#: src/commandhandler.cpp:522 src/commandhandler.cpp:552
 msgid "Please specify a name."
-msgstr ""
+msgstr "Prosím zadej jméno."
 
-#: src/commandhandler.cpp:510
+#: src/commandhandler.cpp:415
 msgid "Return toggles chat."
-msgstr ""
+msgstr "Enter přepíná chat."
 
-#: src/commandhandler.cpp:510
+#: src/commandhandler.cpp:415
 msgid "Message closes chat."
-msgstr ""
+msgstr "Zpráva zavírá chat."
 
-#: src/commandhandler.cpp:521
+#: src/commandhandler.cpp:426
 msgid "Return now toggles chat."
-msgstr ""
+msgstr "Enter nyní přepíná chat."
 
-#: src/commandhandler.cpp:527
+#: src/commandhandler.cpp:432
 msgid "Message now closes chat."
-msgstr ""
+msgstr "Zpráva nyní ukončuje chat."
 
-#: src/commandhandler.cpp:555
+#: src/commandhandler.cpp:460
 msgid "friend"
-msgstr ""
+msgstr "přítel"
 
-#: src/commandhandler.cpp:560
+#: src/commandhandler.cpp:465
 msgid "disregarded"
-msgstr ""
+msgstr "přehlížený"
 
-#: src/commandhandler.cpp:565
+#: src/commandhandler.cpp:470
 msgid "neutral"
-msgstr ""
+msgstr "neutrální"
 
-#: src/commandhandler.cpp:584
+#: src/commandhandler.cpp:489
 #, c-format
 msgid "Player already %s!"
-msgstr ""
+msgstr "Hráč je již %s!"
 
-#: src/commandhandler.cpp:598
+#: src/commandhandler.cpp:503
 #, c-format
 msgid "Player successfully %s!"
-msgstr ""
+msgstr "Hráč byl úspěšně zařazen jako %s!"
 
-#: src/commandhandler.cpp:606
+#: src/commandhandler.cpp:511
 #, c-format
 msgid "Player could not be %s!"
-msgstr ""
+msgstr "Hráč nemůže být zařazen jako %s!"
 
-#: src/commandhandler.cpp:628
+#: src/commandhandler.cpp:533
 msgid "Player wasn't ignored!"
-msgstr ""
+msgstr "Hráč nebyl ignorován!"
 
-#: src/commandhandler.cpp:635
+#: src/commandhandler.cpp:540
 msgid "Player no longer ignored!"
-msgstr ""
+msgstr "Hráč již není ignorován!"
 
-#: src/commandhandler.cpp:637
+#: src/commandhandler.cpp:542
 msgid "Player could not be unignored!"
-msgstr ""
+msgstr "Hráč nemůže být odignorován!"
 
-#: src/commandhandler.cpp:654
+#: src/commandhandler.cpp:559
 msgid "Player already erased!"
-msgstr ""
+msgstr "Hráč již byl vymazán!"
 
-#: src/commandhandler.cpp:665
+#: src/commandhandler.cpp:570
 msgid "Player successfully erased!"
-msgstr ""
+msgstr "Hráč byl úspěšně vymazán!"
 
-#: src/commandhandler.cpp:667
+#: src/commandhandler.cpp:572
 msgid "Player could not be erased!"
-msgstr ""
+msgstr "Hráč nemůže být vymazán!"
 
-#: src/commandhandler.cpp:960 src/commandhandler.cpp:1006
+#: src/commandhandler.cpp:872 src/commandhandler.cpp:918
 #, c-format
 msgid "Client uptime: %s"
-msgstr ""
+msgstr "Doba běhu klienta: %s"
 
-#: src/commandhandler.cpp:970
+#: src/commandhandler.cpp:882
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
@@ -238,7 +256,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:979
+#: src/commandhandler.cpp:891
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -246,7 +264,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:987
+#: src/commandhandler.cpp:899
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -254,7 +272,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:995
+#: src/commandhandler.cpp:907
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -262,7 +280,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:1003
+#: src/commandhandler.cpp:915
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -270,27 +288,27 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/commandhandler.cpp:1082
+#: src/commandhandler.cpp:994
 msgid "font cache size"
-msgstr ""
+msgstr "velikost chache fontů"
 
-#: src/commandhandler.cpp:1094
+#: src/commandhandler.cpp:1006
 msgid "Cache size:"
-msgstr ""
+msgstr "Velikost cache:"
 
-#: src/commandhandler.cpp:1098
+#: src/commandhandler.cpp:1010
 msgid "Created:"
-msgstr ""
+msgstr "Vytvořeno:"
 
-#: src/commandhandler.cpp:1100
+#: src/commandhandler.cpp:1012
 msgid "Deleted:"
-msgstr ""
+msgstr "Odstraněno:"
 
-#: src/commandhandler.cpp:1147 src/commandhandler.cpp:1154
+#: src/commandhandler.cpp:1059 src/commandhandler.cpp:1066
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1149 src/commandhandler.cpp:1156
+#: src/commandhandler.cpp:1061 src/commandhandler.cpp:1068
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -299,168 +317,169 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 
-#: src/game.cpp:246 src/gui/widgets/chattab.cpp:410
+#: src/game.cpp:252 src/gui/widgets/chattab.cpp:409
 msgid "General"
 msgstr ""
 
-#: src/game.cpp:250 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:412
+#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:411
 msgid "Debug"
 msgstr ""
 
-#: src/game.cpp:475
+#: src/game.cpp:513
 msgid "Screenshot saved as "
-msgstr ""
+msgstr "Snímky obrazovky ukládat jako "
 
-#: src/game.cpp:483
+#: src/game.cpp:521
 msgid "Saving screenshot failed!"
 msgstr "Ukládání snímku obrazovky selhalo!"
 
-#: src/game.cpp:523
+#: src/game.cpp:560
 msgid "The connection to the server was lost."
-msgstr ""
+msgstr "Spojení se serverem bylo ztraceno."
 
-#: src/game.cpp:537
+#: src/game.cpp:571
 msgid "Network Error"
 msgstr "Chyba sítě"
 
-#: src/game.cpp:1184
+#: src/game.cpp:1320
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorovat příchozí žádosti o obchodování"
 
-#: src/game.cpp:1191
+#: src/game.cpp:1330
 msgid "Accepting incoming trade requests"
 msgstr "Akceptovat příchozí žádosti o obchodování"
 
-#: src/game.cpp:1576
+#: src/game.cpp:1729
 msgid "Could Not Load Map"
-msgstr ""
+msgstr "Nelze načíst mapu"
 
-#: src/game.cpp:1577
+#: src/game.cpp:1730
 #, c-format
 msgid "Error while loading %s"
 msgstr "Chyba při načítání %s"
 
-#: src/gui/beingpopup.cpp:118
+#: src/gui/beingpopup.cpp:124
 #, c-format
 msgid "Party: %s"
-msgstr ""
+msgstr "Parta: %s"
 
-#: src/gui/beingpopup.cpp:132
+#: src/gui/beingpopup.cpp:138
 #, c-format
 msgid "Guild: %s"
-msgstr ""
+msgstr "Guilda: %s"
 
-#: src/gui/beingpopup.cpp:145
+#: src/gui/beingpopup.cpp:151
 #, c-format
 msgid "Pvp rank: %d"
-msgstr ""
+msgstr "Pvp hodnost: %d"
 
-#: src/gui/beingpopup.cpp:156
+#: src/gui/beingpopup.cpp:162
 #, c-format
 msgid "Comment: %s"
-msgstr ""
+msgstr "Komentář: %s"
 
 #: src/gui/botcheckerwindow.cpp:266
 msgid "Bot Checker"
-msgstr ""
+msgstr "Ověřovač botů"
 
 #: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:64
 msgid "Name"
 msgstr "Jméno"
 
-#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:130
-#: src/gui/popupmenu.cpp:286 src/gui/popupmenu.cpp:604
-#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:266
+#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:133
+#: src/gui/popupmenu.cpp:283 src/gui/popupmenu.cpp:596
+#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:265
 msgid "Attack"
 msgstr "Útok"
 
-#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:275
+#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:272
 #: src/keyboardconfig.cpp:62
 msgid "Talk"
-msgstr ""
+msgstr "Mluvit"
 
-#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:241
-#: src/gui/popupmenu.cpp:280 src/gui/popupmenu.cpp:661
+#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:244
+#: src/gui/popupmenu.cpp:276 src/gui/popupmenu.cpp:419
+#: src/gui/popupmenu.cpp:642 src/gui/popupmenu.cpp:729
 msgid "Move"
 msgstr ""
 
 #: src/gui/botcheckerwindow.cpp:300
 msgid "Result"
-msgstr ""
+msgstr "Výsledek"
 
-#: src/gui/botcheckerwindow.cpp:310 src/gui/npcdialog.cpp:123
+#: src/gui/botcheckerwindow.cpp:311 src/gui/npcdialog.cpp:124
 msgid "Reset"
-msgstr "Reset"
+msgstr "Vynulovat"
 
-#: src/gui/buydialog.cpp:56 src/gui/buydialog.cpp:63 src/gui/buydialog.cpp:97
+#: src/gui/buydialog.cpp:56 src/gui/buydialog.cpp:63 src/gui/buydialog.cpp:98
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:256
-#: src/gui/popupmenu.cpp:277 src/gui/popupmenu.cpp:675
+#: src/gui/popupmenu.cpp:273 src/gui/popupmenu.cpp:654
 msgid "Buy"
 msgstr "Nákup"
 
-#: src/gui/buydialog.cpp:88 src/gui/buydialog.cpp:302
-#: src/gui/selldialog.cpp:87 src/gui/selldialog.cpp:324
+#: src/gui/buydialog.cpp:89 src/gui/buydialog.cpp:303
+#: src/gui/selldialog.cpp:88 src/gui/selldialog.cpp:325
 #, c-format
 msgid "Price: %s / Total: %s"
-msgstr ""
+msgstr "Cena: %s / Celkem %s"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
-#: src/gui/buydialog.cpp:93 src/gui/itemamountwindow.cpp:207
-#: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:113
-#: src/gui/selldialog.cpp:90 src/gui/statuswindow.cpp:940
+#: src/gui/buydialog.cpp:94 src/gui/itemamountwindow.cpp:207
+#: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:114
+#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:973
 msgid "+"
 msgstr ""
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
-#: src/gui/buydialog.cpp:96 src/gui/itemamountwindow.cpp:206
-#: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:114
-#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:952
+#: src/gui/buydialog.cpp:97 src/gui/itemamountwindow.cpp:206
+#: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:115
+#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:985
 msgid "-"
 msgstr ""
 
-#: src/gui/buydialog.cpp:98 src/gui/quitdialog.cpp:49
-#: src/gui/quitdialog.cpp:54 src/gui/quitdialog.cpp:55
-#: src/gui/selldialog.cpp:93 src/gui/serverdialog.cpp:285
+#: src/gui/buydialog.cpp:99 src/gui/quitdialog.cpp:47
+#: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
+#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:294
 #: src/keyboardconfig.cpp:290
 msgid "Quit"
 msgstr "Ukončit"
 
-#: src/gui/buydialog.cpp:99 src/gui/selldialog.cpp:94
-#: src/gui/statuswindow.cpp:490 src/gui/statuswindow.cpp:539
-#: src/gui/statuswindow.cpp:939 src/gui/statuswindow.cpp:970
+#: src/gui/buydialog.cpp:100 src/gui/selldialog.cpp:95
+#: src/gui/statuswindow.cpp:504 src/gui/statuswindow.cpp:553
+#: src/gui/statuswindow.cpp:972 src/gui/statuswindow.cpp:1003
 msgid "Max"
 msgstr "Vše"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:146 src/gui/setup_other.cpp:134
+#: src/gui/inventorywindow.cpp:176 src/gui/setup_other.cpp:142
 msgid "Shop"
 msgstr "Obchod"
 
-#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:258
-#: src/gui/popupmenu.cpp:278 src/gui/popupmenu.cpp:677
+#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:257
+#: src/gui/popupmenu.cpp:274 src/gui/popupmenu.cpp:655
 #: src/gui/selldialog.cpp:53 src/gui/selldialog.cpp:60
-#: src/gui/selldialog.cpp:92
+#: src/gui/selldialog.cpp:93
 msgid "Sell"
 msgstr "Prodej"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
-#: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:93
+#: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:96
 #: src/gui/connectiondialog.cpp:47 src/gui/itemamountwindow.cpp:209
-#: src/gui/npcpostdialog.cpp:58 src/gui/popupmenu.cpp:330
-#: src/gui/popupmenu.cpp:351 src/gui/popupmenu.cpp:453
-#: src/gui/popupmenu.cpp:480 src/gui/popupmenu.cpp:499
-#: src/gui/popupmenu.cpp:513 src/gui/popupmenu.cpp:532
-#: src/gui/popupmenu.cpp:736 src/gui/popupmenu.cpp:760
-#: src/gui/popupmenu.cpp:1647 src/gui/popupmenu.cpp:1675
-#: src/gui/popupmenu.cpp:1731 src/gui/popupmenu.cpp:1774
-#: src/gui/popupmenu.cpp:1809 src/gui/popupmenu.cpp:1849
-#: src/gui/popupmenu.cpp:1915 src/gui/popupmenu.cpp:1935
-#: src/gui/quitdialog.cpp:60 src/gui/register.cpp:82 src/gui/setup.cpp:70
-#: src/gui/socialwindow.cpp:973 src/gui/textcommandeditor.cpp:238
+#: src/gui/npcpostdialog.cpp:58 src/gui/popupmenu.cpp:324
+#: src/gui/popupmenu.cpp:345 src/gui/popupmenu.cpp:460
+#: src/gui/popupmenu.cpp:486 src/gui/popupmenu.cpp:510
+#: src/gui/popupmenu.cpp:523 src/gui/popupmenu.cpp:541
+#: src/gui/popupmenu.cpp:745 src/gui/popupmenu.cpp:769
+#: src/gui/popupmenu.cpp:1694 src/gui/popupmenu.cpp:1722
+#: src/gui/popupmenu.cpp:1778 src/gui/popupmenu.cpp:1823
+#: src/gui/popupmenu.cpp:1858 src/gui/popupmenu.cpp:1897
+#: src/gui/popupmenu.cpp:1949 src/gui/popupmenu.cpp:1969
+#: src/gui/quitdialog.cpp:55 src/gui/register.cpp:82 src/gui/setup.cpp:72
+#: src/gui/socialwindow.cpp:1077 src/gui/textcommandeditor.cpp:238
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
-#: src/gui/updatewindow.cpp:157
+#: src/gui/updaterwindow.cpp:161
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -475,24 +494,24 @@ msgstr "Účet: %s"
 
 #: src/gui/changeemaildialog.cpp:54
 msgid "Type new email address twice:"
-msgstr ""
+msgstr "Zadej novou emailovou adresu dvakrát:"
 
 #: src/gui/changeemaildialog.cpp:132
 #, c-format
 msgid "The new email address needs to be at least %d characters long."
-msgstr ""
+msgstr "Nová emailová adresa musí být nejméně %d znaků dlouhá."
 
 #: src/gui/changeemaildialog.cpp:139
 #, c-format
 msgid "The new email address needs to be less than %d characters long."
-msgstr ""
+msgstr "Nová emailová adresa musí být méně než %d znaků dlouhá."
 
 #: src/gui/changeemaildialog.cpp:146
 msgid "The email address entries mismatch."
-msgstr ""
+msgstr "Emailové adresy nesouhlasí."
 
 #: src/gui/changepassworddialog.cpp:50 src/gui/changepassworddialog.cpp:59
-#: src/gui/charselectdialog.cpp:140
+#: src/gui/charselectdialog.cpp:139
 msgid "Change Password"
 msgstr "Změnit heslo"
 
@@ -503,209 +522,210 @@ msgstr "Heslo:"
 
 #: src/gui/changepassworddialog.cpp:66
 msgid "Type new password twice:"
-msgstr ""
+msgstr "Zadej nové heslo dvakrát:"
 
 #: src/gui/changepassworddialog.cpp:114
 msgid "Enter the old password first."
-msgstr ""
+msgstr "Nejdřív zadej původní heslo."
 
 #: src/gui/changepassworddialog.cpp:120
 #, c-format
 msgid "The new password needs to be at least %d characters long."
-msgstr ""
+msgstr "Nové heslo musí být nejméně %d znaků dlouhé."
 
 #: src/gui/changepassworddialog.cpp:127
 #, c-format
 msgid "The new password needs to be less than %d characters long."
-msgstr ""
+msgstr "Nové heslo musí být méně než.%d znaků dlouhé."
 
 #: src/gui/changepassworddialog.cpp:134
 msgid "The new password entries mismatch."
-msgstr ""
+msgstr "Nová hesla nesouhlasí."
 
 #: src/gui/charcreatedialog.cpp:58
 msgid "Create Character"
 msgstr "Vytvořit postavu"
 
-#: src/gui/charcreatedialog.cpp:73 src/gui/logindialog.cpp:94
+#: src/gui/charcreatedialog.cpp:76 src/gui/logindialog.cpp:94
 #: src/gui/register.cpp:75
 msgid "Name:"
 msgstr "Jméno:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:76 src/gui/charcreatedialog.cpp:81
-#: src/gui/charcreatedialog.cpp:87 src/gui/outfitwindow.cpp:81
+#: src/gui/charcreatedialog.cpp:79 src/gui/charcreatedialog.cpp:84
+#: src/gui/charcreatedialog.cpp:90 src/gui/outfitwindow.cpp:85
 msgid ">"
 msgstr ""
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:79 src/gui/charcreatedialog.cpp:82
-#: src/gui/charcreatedialog.cpp:88 src/gui/outfitwindow.cpp:80
+#: src/gui/charcreatedialog.cpp:82 src/gui/charcreatedialog.cpp:85
+#: src/gui/charcreatedialog.cpp:91 src/gui/outfitwindow.cpp:84
 msgid "<"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:80
-msgid "Hair color:"
-msgstr ""
-
 #: src/gui/charcreatedialog.cpp:83
+msgid "Hair color:"
+msgstr "Barva vlasů:"
+
+#: src/gui/charcreatedialog.cpp:86
 msgid "Hair style:"
-msgstr ""
+msgstr "Účes:"
 
-#: src/gui/charcreatedialog.cpp:89
+#: src/gui/charcreatedialog.cpp:92
 msgid "Race:"
-msgstr ""
+msgstr "Rasa:"
 
-#: src/gui/charcreatedialog.cpp:92 src/gui/charselectdialog.cpp:479
-#: src/gui/socialwindow.cpp:1033
+#: src/gui/charcreatedialog.cpp:95 src/gui/charselectdialog.cpp:480
+#: src/gui/socialwindow.cpp:1139
 msgid "Create"
 msgstr "Vytvořit"
 
-#: src/gui/charcreatedialog.cpp:94 src/gui/register.cpp:98
+#: src/gui/charcreatedialog.cpp:97 src/gui/register.cpp:98
 msgid "Male"
 msgstr "Muž"
 
-#: src/gui/charcreatedialog.cpp:95 src/gui/register.cpp:99
+#: src/gui/charcreatedialog.cpp:98 src/gui/register.cpp:99
 msgid "Female"
 msgstr "Žena"
 
-#: src/gui/charcreatedialog.cpp:113 src/gui/charcreatedialog.cpp:300
+#: src/gui/charcreatedialog.cpp:116 src/gui/charcreatedialog.cpp:303
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Rozdělte prosím %d bodů"
 
-#: src/gui/charcreatedialog.cpp:219
+#: src/gui/charcreatedialog.cpp:222
 msgid "Your name needs to be at least 4 characters."
 msgstr "Vaše jméno musí mít nejméně 4 znaky."
 
-#: src/gui/charcreatedialog.cpp:291
+#: src/gui/charcreatedialog.cpp:294
 msgid "Character stats OK"
-msgstr ""
+msgstr "Stav postavy je OK"
 
-#: src/gui/charcreatedialog.cpp:305
+#: src/gui/charcreatedialog.cpp:308
 #, c-format
 msgid "Please remove %d points"
-msgstr "Odstraňte prosím %d bodů."
+msgstr "Odstraňte prosím %d bodů"
 
-#: src/gui/charselectdialog.cpp:77
+#: src/gui/charselectdialog.cpp:76
 msgid "Confirm Character Delete"
 msgstr "Potvrďte smazání postavy"
 
-#: src/gui/charselectdialog.cpp:78
+#: src/gui/charselectdialog.cpp:77
 msgid "Are you sure you want to delete this character?"
 msgstr "Jste si jistí, že chcete smazat tuto postavu?"
 
-#: src/gui/charselectdialog.cpp:126
+#: src/gui/charselectdialog.cpp:125
 msgid "Account and Character Management"
 msgstr "Správa účtu a postavy"
 
-#: src/gui/charselectdialog.cpp:139
+#: src/gui/charselectdialog.cpp:138
 msgid "Switch Login"
-msgstr ""
+msgstr "Přepnout přihlášení"
 
-#: src/gui/charselectdialog.cpp:153 src/gui/unregisterdialog.cpp:50
+#: src/gui/charselectdialog.cpp:152 src/gui/unregisterdialog.cpp:50
 #: src/gui/unregisterdialog.cpp:58
 msgid "Unregister"
 msgstr "Zrušit registraci"
 
-#: src/gui/charselectdialog.cpp:162
+#: src/gui/charselectdialog.cpp:161
 msgid "Change Email"
-msgstr ""
+msgstr "Změnit email"
 
-#: src/gui/charselectdialog.cpp:254
+#: src/gui/charselectdialog.cpp:253
 msgid "Incorrect password"
-msgstr ""
+msgstr "Špatné heslo"
 
-#: src/gui/charselectdialog.cpp:287
+#: src/gui/charselectdialog.cpp:286
 msgid "Enter password for deleting character"
-msgstr ""
+msgstr "Zadej heslo pro smazání postavy"
 
-#: src/gui/charselectdialog.cpp:287
+#: src/gui/charselectdialog.cpp:286
 msgid "Enter password:"
-msgstr ""
+msgstr "Zadej heslo:"
 
-#: src/gui/charselectdialog.cpp:409 src/gui/serverdialog.cpp:289
-#: src/gui/setup_relations.cpp:243 src/gui/shopwindow.cpp:120
-#: src/gui/shopwindow.cpp:123 src/gui/textcommandeditor.cpp:241
+#: src/gui/charselectdialog.cpp:410 src/gui/serverdialog.cpp:298
+#: src/gui/setup_relations.cpp:243 src/gui/shopwindow.cpp:122
+#: src/gui/shopwindow.cpp:125 src/gui/textcommandeditor.cpp:241
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/gui/charselectdialog.cpp:467
+#: src/gui/charselectdialog.cpp:468
 msgid "Choose"
-msgstr ""
+msgstr "Vybrat"
 
-#: src/gui/charselectdialog.cpp:470
+#: src/gui/charselectdialog.cpp:471
 #, c-format
 msgid "Level %d"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:481 src/gui/charselectdialog.cpp:482
+#: src/gui/charselectdialog.cpp:482 src/gui/charselectdialog.cpp:483
 msgid "(empty)"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:112
+#: src/gui/chatwindow.cpp:112 src/gui/inventorywindow.cpp:70
 msgid "default"
-msgstr ""
+msgstr "výchozí"
 
 #: src/gui/chatwindow.cpp:113
 msgid "black"
-msgstr ""
+msgstr "černá"
 
 #: src/gui/chatwindow.cpp:114
 msgid "red"
-msgstr ""
+msgstr "červená"
 
 #: src/gui/chatwindow.cpp:115
 msgid "green"
-msgstr ""
+msgstr "zelená"
 
 #: src/gui/chatwindow.cpp:116
 msgid "blue"
-msgstr ""
+msgstr "modrá"
 
 #: src/gui/chatwindow.cpp:117
 msgid "gold"
-msgstr ""
+msgstr "zlatá"
 
 #: src/gui/chatwindow.cpp:118
 msgid "yellow"
-msgstr ""
+msgstr "žlutá"
 
 #: src/gui/chatwindow.cpp:119
 msgid "pink"
-msgstr ""
+msgstr "růžová"
 
 #: src/gui/chatwindow.cpp:120
 msgid "purple"
-msgstr ""
+msgstr "fialová"
 
 #: src/gui/chatwindow.cpp:121
 msgid "grey"
-msgstr ""
+msgstr "šedá"
 
 #: src/gui/chatwindow.cpp:122
 msgid "brown"
-msgstr ""
+msgstr "hnědá"
 
 #: src/gui/chatwindow.cpp:123
 msgid "rainbow 1"
-msgstr ""
+msgstr "duhová 1"
 
 #: src/gui/chatwindow.cpp:124
 msgid "rainbow 2"
-msgstr ""
+msgstr "duhová 2"
 
 #: src/gui/chatwindow.cpp:125
 msgid "rainbow 3"
-msgstr ""
+msgstr "duhová 3"
 
-#: src/gui/chatwindow.cpp:142 src/gui/itemamountwindow.cpp:93
-#: src/gui/logindialog.cpp:78 src/gui/setup_relations.cpp:220
-#: src/gui/setup_theme.cpp:72 src/gui/setup_theme.cpp:126
-#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:102
-#: src/gui/textcommandeditor.cpp:141 src/gui/textcommandeditor.cpp:160
+#: src/gui/chatwindow.cpp:142 src/gui/inventorywindow.cpp:90
+#: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
+#: src/gui/setup_relations.cpp:220 src/gui/setup_theme.cpp:73
+#: src/gui/setup_theme.cpp:127 src/gui/setup_video.cpp:211
+#: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
+#: src/gui/textcommandeditor.cpp:160
 msgid "???"
 msgstr "???"
 
@@ -713,15 +733,15 @@ msgstr "???"
 msgid "Chat"
 msgstr "Chat"
 
-#: src/gui/chatwindow.cpp:605
+#: src/gui/chatwindow.cpp:609
 #, c-format
 msgid "Present: %s; %d players are present."
-msgstr ""
+msgstr "Přítomno: %s; %d hráčů je přítomno."
 
-#: src/gui/chatwindow.cpp:988
+#: src/gui/chatwindow.cpp:996
 #, c-format
 msgid "Whispering to %s: %s"
-msgstr ""
+msgstr "Šeptání pro %s: %s"
 
 #: src/gui/confirmdialog.cpp:47
 msgid "Yes"
@@ -732,183 +752,183 @@ msgid "No"
 msgstr "Ne"
 
 #: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:146
-#: src/gui/popupmenu.cpp:155 src/gui/popupmenu.cpp:377
-#: src/gui/popupmenu.cpp:383 src/gui/popupmenu.cpp:619
-#: src/gui/popupmenu.cpp:627
+#: src/gui/popupmenu.cpp:152 src/gui/popupmenu.cpp:371
+#: src/gui/popupmenu.cpp:377 src/gui/popupmenu.cpp:608
+#: src/gui/popupmenu.cpp:614
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorovat"
 
-#: src/gui/debugwindow.cpp:70 src/gui/minimap.cpp:49 src/gui/minimap.cpp:96
-#: src/gui/setup_other.cpp:65
+#: src/gui/debugwindow.cpp:72 src/gui/minimap.cpp:50 src/gui/minimap.cpp:99
+#: src/gui/setup_other.cpp:64
 msgid "Map"
 msgstr "Mapa"
 
-#: src/gui/debugwindow.cpp:71
+#: src/gui/debugwindow.cpp:73
 msgid "Target"
-msgstr ""
+msgstr "Cíl"
 
-#: src/gui/debugwindow.cpp:72
+#: src/gui/debugwindow.cpp:74
 msgid "Net"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:145 src/gui/debugwindow.cpp:220
-#: src/gui/debugwindow.cpp:249
-msgid "Music:"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:146 src/gui/debugwindow.cpp:224
-#: src/gui/debugwindow.cpp:251
-msgid "Map:"
-msgstr ""
+msgstr "Síť"
 
 #: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:222
-#: src/gui/debugwindow.cpp:250
+#: src/gui/debugwindow.cpp:251
+msgid "Music:"
+msgstr "Hudba:"
+
+#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:226
+#: src/gui/debugwindow.cpp:253
+msgid "Map:"
+msgstr "Mapa:"
+
+#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:224
+#: src/gui/debugwindow.cpp:252
 msgid "Minimap:"
-msgstr ""
+msgstr "Minimapa:"
 
-#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:218
-#: src/gui/debugwindow.cpp:247
+#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:220
+#: src/gui/debugwindow.cpp:249
 msgid "Cursor:"
-msgstr ""
+msgstr "Kurzor:"
 
-#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:201
-#: src/gui/debugwindow.cpp:206
+#: src/gui/debugwindow.cpp:151 src/gui/debugwindow.cpp:203
+#: src/gui/debugwindow.cpp:208
 msgid "Player Position:"
-msgstr ""
+msgstr "Pozice hráče:"
 
-#: src/gui/debugwindow.cpp:152
+#: src/gui/debugwindow.cpp:154
 msgid "Particle count:"
-msgstr ""
+msgstr "Počet částic:"
 
-#: src/gui/debugwindow.cpp:154 src/gui/debugwindow.cpp:235
-#: src/gui/debugwindow.cpp:254
+#: src/gui/debugwindow.cpp:156 src/gui/debugwindow.cpp:237
+#: src/gui/debugwindow.cpp:256
 msgid "Map actors count:"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:162 src/gui/debugwindow.cpp:173
+#: src/gui/debugwindow.cpp:164 src/gui/debugwindow.cpp:175
 #, c-format
 msgid "%d FPS (Software)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:166
+#: src/gui/debugwindow.cpp:168
 #, c-format
 msgid "%d FPS (fast OpenGL)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:169
+#: src/gui/debugwindow.cpp:171
 #, c-format
 msgid "%d FPS (old OpenGL)"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:176
+#: src/gui/debugwindow.cpp:178
 #, c-format
 msgid "%d FPS"
 msgstr ""
 
-#: src/gui/debugwindow.cpp:188 src/gui/debugwindow.cpp:240
+#: src/gui/debugwindow.cpp:190 src/gui/debugwindow.cpp:242
 msgid "Textures count:"
-msgstr ""
+msgstr "Počet textur:"
 
-#: src/gui/debugwindow.cpp:231
+#: src/gui/debugwindow.cpp:233
 #, c-format
 msgid "Particle count: %d"
-msgstr ""
+msgstr "poet částic: %d"
 
-#: src/gui/debugwindow.cpp:268 src/gui/debugwindow.cpp:299
-#: src/gui/debugwindow.cpp:343
+#: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:301
+#: src/gui/debugwindow.cpp:345
 msgid "Target:"
-msgstr ""
+msgstr "Cíl:"
 
-#: src/gui/debugwindow.cpp:269 src/gui/debugwindow.cpp:304
-#: src/gui/debugwindow.cpp:344
-msgid "Target Id:"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:308
-#: src/gui/debugwindow.cpp:313 src/gui/debugwindow.cpp:345
-msgid "Target Level:"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:316
+#: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:306
 #: src/gui/debugwindow.cpp:346
+msgid "Target Id:"
+msgstr "Id cíle:"
+
+#: src/gui/debugwindow.cpp:272 src/gui/debugwindow.cpp:310
+#: src/gui/debugwindow.cpp:315 src/gui/debugwindow.cpp:347
+msgid "Target Level:"
+msgstr "Úroveň cíle:"
+
+#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:318
+#: src/gui/debugwindow.cpp:348
 msgid "Target Party:"
-msgstr ""
+msgstr "Parta cíle:"
 
-#: src/gui/debugwindow.cpp:272 src/gui/debugwindow.cpp:319
-#: src/gui/debugwindow.cpp:347
-msgid "Target Guild:"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:333
-#: src/gui/debugwindow.cpp:338 src/gui/debugwindow.cpp:348
-msgid "Attack delay:"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:274 src/gui/debugwindow.cpp:323
+#: src/gui/debugwindow.cpp:274 src/gui/debugwindow.cpp:321
 #: src/gui/debugwindow.cpp:349
-msgid "Minimal hit:"
-msgstr ""
+msgid "Target Guild:"
+msgstr "Gilda cíle:"
 
-#: src/gui/debugwindow.cpp:275 src/gui/debugwindow.cpp:325
-#: src/gui/debugwindow.cpp:350
-msgid "Maximum hit:"
-msgstr ""
+#: src/gui/debugwindow.cpp:275 src/gui/debugwindow.cpp:335
+#: src/gui/debugwindow.cpp:340 src/gui/debugwindow.cpp:350
+msgid "Attack delay:"
+msgstr "Prodleva útoku:"
 
-#: src/gui/debugwindow.cpp:276 src/gui/debugwindow.cpp:327
+#: src/gui/debugwindow.cpp:276 src/gui/debugwindow.cpp:325
 #: src/gui/debugwindow.cpp:351
-msgid "Critical hit:"
-msgstr ""
+msgid "Minimal hit:"
+msgstr "Minimální zásah:"
 
-#: src/gui/debugwindow.cpp:385 src/gui/debugwindow.cpp:390
+#: src/gui/debugwindow.cpp:277 src/gui/debugwindow.cpp:327
+#: src/gui/debugwindow.cpp:352
+msgid "Maximum hit:"
+msgstr "Maximální zásah:"
+
+#: src/gui/debugwindow.cpp:278 src/gui/debugwindow.cpp:329
+#: src/gui/debugwindow.cpp:353
+msgid "Critical hit:"
+msgstr "Kritický zásah:"
+
+#: src/gui/debugwindow.cpp:387 src/gui/debugwindow.cpp:392
 #, c-format
 msgid "Ping: %s ms"
-msgstr ""
-
-#: src/gui/debugwindow.cpp:393
-#, c-format
-msgid "In: %d bytes/s"
-msgstr ""
+msgstr "Ping: %s ms"
 
 #: src/gui/debugwindow.cpp:395
 #, c-format
+msgid "In: %d bytes/s"
+msgstr "Příchozí: %d bytes/s"
+
+#: src/gui/debugwindow.cpp:397
+#, c-format
 msgid "Out: %d bytes/s"
-msgstr ""
+msgstr "Odchozí: %d bytes/s"
 
 #: src/gui/didyouknowwindow.cpp:47
 msgid "Did You Know?"
-msgstr ""
+msgstr "Víte že ... ?"
 
-#: src/gui/didyouknowwindow.cpp:61 src/gui/helpwindow.cpp:57
-#: src/gui/inventorywindow.cpp:175 src/gui/npcdialog.cpp:53
-#: src/gui/popupmenu.cpp:547 src/gui/shopwindow.cpp:111
+#: src/gui/didyouknowwindow.cpp:63 src/gui/helpwindow.cpp:59
+#: src/gui/inventorywindow.cpp:206 src/gui/npcdialog.cpp:53
+#: src/gui/popupmenu.cpp:556 src/gui/shopwindow.cpp:113
 msgid "Close"
-msgstr ""
-
-#: src/gui/didyouknowwindow.cpp:62
-msgid "< Previous"
-msgstr ""
-
-#: src/gui/didyouknowwindow.cpp:63
-msgid "Next >"
-msgstr ""
+msgstr "Zavřít"
 
 #: src/gui/didyouknowwindow.cpp:64
+msgid "< Previous"
+msgstr "< Předchozí"
+
+#: src/gui/didyouknowwindow.cpp:65
+msgid "Next >"
+msgstr "Další >"
+
+#: src/gui/didyouknowwindow.cpp:66
 msgid "Auto open this window"
-msgstr ""
+msgstr "Automaticky otevírat toto okno"
 
 #: src/gui/editdialog.cpp:47 src/gui/itemamountwindow.cpp:208
-#: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:59 src/gui/textdialog.cpp:50
+#: src/gui/okdialog.cpp:45 src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "OK"
 
-#: src/gui/equipmentwindow.cpp:78 src/gui/windowmenu.cpp:74
+#: src/gui/equipmentwindow.cpp:61 src/gui/windowmenu.cpp:74
 msgid "Equipment"
 msgstr "Vybavení"
 
-#: src/gui/equipmentwindow.cpp:103 src/gui/inventorywindow.cpp:130
-#: src/gui/inventorywindow.cpp:511 src/gui/inventorywindow.cpp:520
-#: src/gui/popupmenu.cpp:1606 src/gui/popupmenu.cpp:1701
-#: src/gui/popupmenu.cpp:1746
+#: src/gui/equipmentwindow.cpp:95 src/gui/inventorywindow.cpp:160
+#: src/gui/inventorywindow.cpp:539 src/gui/inventorywindow.cpp:548
+#: src/gui/popupmenu.cpp:1656 src/gui/popupmenu.cpp:1748
+#: src/gui/popupmenu.cpp:1793
 msgid "Unequip"
 msgstr "Odstranit z vybavení"
 
@@ -916,80 +936,88 @@ msgstr "Odstranit z vybavení"
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/gui/inventorywindow.cpp:80 src/gui/windowmenu.cpp:76
-#: src/inventory.cpp:246
+#: src/gui/inventorywindow.cpp:71
+msgid "by name"
+msgstr "dle jména"
+
+#: src/gui/inventorywindow.cpp:72
+msgid "by id"
+msgstr "dle id"
+
+#: src/gui/inventorywindow.cpp:73
+msgid "by weight"
+msgstr "dle váhy"
+
+#: src/gui/inventorywindow.cpp:74
+msgid "by amount"
+msgstr "dle množství"
+
+#: src/gui/inventorywindow.cpp:75
+msgid "by type"
+msgstr "dle typu"
+
+#: src/gui/inventorywindow.cpp:111 src/gui/windowmenu.cpp:76
+#: src/inventory.cpp:249
 msgid "Inventory"
 msgstr "Inventář"
 
-#: src/gui/inventorywindow.cpp:104
+#: src/gui/inventorywindow.cpp:136
 msgid "Slots:"
 msgstr "Sloty:"
 
-#: src/gui/inventorywindow.cpp:115
+#: src/gui/inventorywindow.cpp:148
 msgid "Filter:"
-msgstr ""
+msgstr "Filtr:"
 
-#: src/gui/inventorywindow.cpp:116
+#: src/gui/inventorywindow.cpp:149
 msgid "Sort:"
-msgstr ""
+msgstr "Třídit:"
 
-#: src/gui/inventorywindow.cpp:122
-msgid "na"
-msgstr ""
-
-#: src/gui/inventorywindow.cpp:123
-msgid "az"
-msgstr ""
-
-#: src/gui/inventorywindow.cpp:124
-msgid "id"
-msgstr ""
-
-#: src/gui/inventorywindow.cpp:128 src/gui/inventorywindow.cpp:513
-#: src/gui/inventorywindow.cpp:522 src/gui/popupmenu.cpp:1608
-#: src/gui/popupmenu.cpp:1703 src/gui/popupmenu.cpp:1748
+#: src/gui/inventorywindow.cpp:158 src/gui/inventorywindow.cpp:541
+#: src/gui/inventorywindow.cpp:550 src/gui/popupmenu.cpp:1658
+#: src/gui/popupmenu.cpp:1750 src/gui/popupmenu.cpp:1795
 msgid "Equip"
 msgstr "Vybavit"
 
-#: src/gui/inventorywindow.cpp:129 src/gui/inventorywindow.cpp:514
-#: src/gui/inventorywindow.cpp:518 src/gui/popupmenu.cpp:1611
-#: src/gui/popupmenu.cpp:1670 src/gui/popupmenu.cpp:1707
-#: src/gui/popupmenu.cpp:1751
+#: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:542
+#: src/gui/inventorywindow.cpp:546 src/gui/popupmenu.cpp:1662
+#: src/gui/popupmenu.cpp:1717 src/gui/popupmenu.cpp:1754
+#: src/gui/popupmenu.cpp:1799
 msgid "Use"
 msgstr "Použít"
 
-#: src/gui/inventorywindow.cpp:143 src/gui/inventorywindow.cpp:619
-#: src/gui/popupmenu.cpp:1615 src/gui/popupmenu.cpp:1712
-#: src/gui/popupmenu.cpp:1755
+#: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:646
+#: src/gui/popupmenu.cpp:1667 src/gui/popupmenu.cpp:1759
+#: src/gui/popupmenu.cpp:1804
 msgid "Drop..."
-msgstr ""
+msgstr "Upustit..."
 
-#: src/gui/inventorywindow.cpp:144 src/gui/popupmenu.cpp:1624
-#: src/gui/popupmenu.cpp:1721 src/gui/popupmenu.cpp:1764
+#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1676
+#: src/gui/popupmenu.cpp:1768 src/gui/popupmenu.cpp:1813
 msgid "Split"
 msgstr "Rozdělit"
 
-#: src/gui/inventorywindow.cpp:145 src/gui/outfitwindow.cpp:59
-#: src/gui/popupmenu.cpp:508
+#: src/gui/inventorywindow.cpp:175 src/gui/outfitwindow.cpp:60
+#: src/gui/popupmenu.cpp:519
 msgid "Outfits"
-msgstr ""
+msgstr "Výstroje"
 
-#: src/gui/inventorywindow.cpp:148
+#: src/gui/inventorywindow.cpp:178
 msgid "Weight:"
 msgstr "Hmotnost:"
 
-#: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:610
-#: src/gui/popupmenu.cpp:1587 src/gui/popupmenu.cpp:1724
-#: src/gui/popupmenu.cpp:1767 src/gui/setup.cpp:71
+#: src/gui/inventorywindow.cpp:204 src/gui/inventorywindow.cpp:637
+#: src/gui/popupmenu.cpp:1642 src/gui/popupmenu.cpp:1771
+#: src/gui/popupmenu.cpp:1816 src/gui/setup.cpp:73
 msgid "Store"
-msgstr ""
+msgstr "Uložit"
 
-#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1631
+#: src/gui/inventorywindow.cpp:205 src/gui/popupmenu.cpp:1683
 msgid "Retrieve"
-msgstr ""
+msgstr "Vzít"
 
-#: src/gui/inventorywindow.cpp:621 src/gui/popupmenu.cpp:1620
-#: src/gui/popupmenu.cpp:1717 src/gui/popupmenu.cpp:1760
+#: src/gui/inventorywindow.cpp:648 src/gui/popupmenu.cpp:1672
+#: src/gui/popupmenu.cpp:1764 src/gui/popupmenu.cpp:1809
 #: src/gui/windowmenu.cpp:97
 msgid "Drop"
 msgstr "Upustit"
@@ -1008,86 +1036,86 @@ msgstr "Vyberte množství předmětů, které chcete upustit."
 
 #: src/gui/itemamountwindow.cpp:267
 msgid "Select amount of items to store."
-msgstr ""
+msgstr "Vyberte množství předmětů, které chcete uskladnit."
 
 #: src/gui/itemamountwindow.cpp:270
 msgid "Select amount of items to retrieve."
-msgstr ""
+msgstr "Vyberte množství předmětů, které chcete obdržet."
 
 #: src/gui/itemamountwindow.cpp:273
 msgid "Select amount of items to split."
-msgstr ""
+msgstr "Vyberte množství předmětů, které chcete rozdělit."
 
 #: src/gui/itemamountwindow.cpp:276
 msgid "Add to buy shop."
-msgstr ""
+msgstr "Přidat k nákupu."
 
 #: src/gui/itemamountwindow.cpp:279
 msgid "Add to sell shop."
-msgstr ""
+msgstr "Přidat k prodeji."
 
 #: src/gui/itemamountwindow.cpp:282
 msgid "Unknown."
-msgstr ""
+msgstr "Neznámý."
 
-#: src/gui/itempopup.cpp:176 src/gui/itempopup.cpp:182
+#: src/gui/itempopup.cpp:177 src/gui/itempopup.cpp:183
 msgid ", "
 msgstr ""
 
-#: src/gui/itempopup.cpp:192
+#: src/gui/itempopup.cpp:193
 #, c-format
 msgid "Weight: %s"
-msgstr ""
+msgstr "Váha: %s"
 
 #: src/gui/killstats.cpp:46 src/gui/windowmenu.cpp:69
 msgid "Kill stats"
-msgstr ""
+msgstr "Statistiky zabíjení"
 
-#: src/gui/killstats.cpp:64
+#: src/gui/killstats.cpp:67
 msgid "Reset stats"
-msgstr ""
+msgstr "Resetovat statistiky"
 
-#: src/gui/killstats.cpp:65
+#: src/gui/killstats.cpp:68
 msgid "Reset timer"
-msgstr ""
+msgstr "Reset časomíry"
 
-#: src/gui/killstats.cpp:69 src/gui/killstats.cpp:205
+#: src/gui/killstats.cpp:72 src/gui/killstats.cpp:208
 #, c-format
 msgid "Level: %d at %f%%"
-msgstr ""
+msgstr "Úroveň: %d při %f%%"
 
-#: src/gui/killstats.cpp:73 src/gui/killstats.cpp:210
+#: src/gui/killstats.cpp:76 src/gui/killstats.cpp:213
 #, c-format
 msgid "Exp: %d/%d Left: %d"
-msgstr ""
+msgstr "Exp: %d/%d Zbývá: %d"
 
-#: src/gui/killstats.cpp:76 src/gui/killstats.cpp:216
-#: src/gui/killstats.cpp:225
+#: src/gui/killstats.cpp:79 src/gui/killstats.cpp:219
+#: src/gui/killstats.cpp:228
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
-msgstr ""
+msgstr "1%% = %d exp, prům. mobů na 1%%: %s"
 
-#: src/gui/killstats.cpp:79 src/gui/killstats.cpp:142
-#: src/gui/killstats.cpp:234
-#, c-format
-msgid "Kills: %s, total exp: %s"
-msgstr ""
-
-#: src/gui/killstats.cpp:81 src/gui/killstats.cpp:144
-#: src/gui/killstats.cpp:220 src/gui/killstats.cpp:230
-#, c-format
-msgid "Avg Exp: %s, No. of avg mob to next level: %s"
-msgstr ""
-
-#: src/gui/killstats.cpp:82 src/gui/killstats.cpp:162
+#: src/gui/killstats.cpp:82 src/gui/killstats.cpp:145
 #: src/gui/killstats.cpp:237
 #, c-format
-msgid "Kills/Min: %s, Exp/Min: %s"
-msgstr ""
+msgid "Kills: %s, total exp: %s"
+msgstr "Zabitých: %s, celkem exp %s"
 
-#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:89 src/gui/killstats.cpp:94
-#: src/gui/killstats.cpp:289 src/gui/killstats.cpp:305
-#: src/gui/killstats.cpp:323
+#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:147
+#: src/gui/killstats.cpp:223 src/gui/killstats.cpp:233
+#, c-format
+msgid "Avg Exp: %s, No. of avg mob to next level: %s"
+msgstr "Prům exp: %s, Počet prům mobů na další úroveň: %s"
+
+#: src/gui/killstats.cpp:85 src/gui/killstats.cpp:165
+#: src/gui/killstats.cpp:240
+#, c-format
+msgid "Kills/Min: %s, Exp/Min: %s"
+msgstr "Zabitých/Min: %s, Exp/Min: %s"
+
+#: src/gui/killstats.cpp:87 src/gui/killstats.cpp:92 src/gui/killstats.cpp:97
+#: src/gui/killstats.cpp:292 src/gui/killstats.cpp:308
+#: src/gui/killstats.cpp:326
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
@@ -1095,7 +1123,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/gui/killstats.cpp:87 src/gui/killstats.cpp:92 src/gui/killstats.cpp:97
+#: src/gui/killstats.cpp:90 src/gui/killstats.cpp:95 src/gui/killstats.cpp:100
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
@@ -1103,31 +1131,35 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/gui/killstats.cpp:100 src/gui/killstats.cpp:241
+#: src/gui/killstats.cpp:103 src/gui/killstats.cpp:244
 msgid "Last kill exp:"
-msgstr ""
+msgstr "Exp za poslední zabití:"
 
-#: src/gui/killstats.cpp:102 src/gui/killstats.cpp:355
-#: src/gui/killstats.cpp:361 src/gui/killstats.cpp:367
-#: src/gui/killstats.cpp:372
+#: src/gui/killstats.cpp:105 src/gui/killstats.cpp:358
+#: src/gui/killstats.cpp:364 src/gui/killstats.cpp:370
+#: src/gui/killstats.cpp:375
 msgid "Time before jacko spawn:"
-msgstr ""
+msgstr "Čas do zrození Jack O:"
 
-#: src/gui/killstats.cpp:294 src/gui/killstats.cpp:301
-#: src/gui/killstats.cpp:311 src/gui/killstats.cpp:318
-#: src/gui/killstats.cpp:330 src/gui/killstats.cpp:337
+#: src/gui/killstats.cpp:297 src/gui/killstats.cpp:304
+#: src/gui/killstats.cpp:314 src/gui/killstats.cpp:321
+#: src/gui/killstats.cpp:333 src/gui/killstats.cpp:340
 #, c-format
 msgid "  Time for next level: %s"
-msgstr ""
+msgstr "Čas do další úrovně: %s"
 
-#: src/gui/killstats.cpp:361
+#: src/gui/killstats.cpp:364
 #, c-format
 msgid "%s %d?"
 msgstr ""
 
-#: src/gui/killstats.cpp:367
+#: src/gui/killstats.cpp:370
 msgid "jacko spawning"
-msgstr ""
+msgstr "Jack O se rodí"
+
+#: src/guildmanager.cpp:485 src/net/ea/guildhandler.cpp:439
+msgid "You have left the guild."
+msgstr "Opustil jsi gildu."
 
 #: src/gui/logindialog.cpp:59
 msgid "Normal"
@@ -1135,32 +1167,32 @@ msgstr ""
 
 #: src/gui/logindialog.cpp:60
 msgid "Auto Close"
-msgstr ""
+msgstr "Automaticky zavírat"
 
 #: src/gui/logindialog.cpp:61
 msgid "Skip"
-msgstr ""
+msgstr "Přeskočit"
 
 #: src/gui/logindialog.cpp:86 src/gui/logindialog.cpp:123
 msgid "Login"
 msgstr "Přihlášení"
 
-#: src/gui/logindialog.cpp:91 src/gui/serverdialog.cpp:243
+#: src/gui/logindialog.cpp:91 src/gui/serverdialog.cpp:252
 #: src/gui/widgets/chattab.cpp:173
 msgid "Server:"
 msgstr "Server:"
 
 #: src/gui/logindialog.cpp:96
 msgid "Custom update host"
-msgstr ""
+msgstr "Vlastní host updatů"
 
 #: src/gui/logindialog.cpp:110
 msgid "Remember username"
-msgstr ""
+msgstr "Pamatovat přihlášení"
 
 #: src/gui/logindialog.cpp:111
 msgid "Update:"
-msgstr ""
+msgstr "Updaty:"
 
 #: src/gui/logindialog.cpp:121 src/gui/register.cpp:66 src/gui/register.cpp:81
 msgid "Register"
@@ -1168,47 +1200,47 @@ msgstr "Registrace"
 
 #: src/gui/logindialog.cpp:122
 msgid "Change Server"
-msgstr ""
+msgstr "Změnit server"
 
-#: src/gui/ministatus.cpp:59
+#: src/gui/ministatuswindow.cpp:59
 msgid "health bar"
-msgstr ""
+msgstr "pruh zdraví"
 
-#: src/gui/ministatus.cpp:65
+#: src/gui/ministatuswindow.cpp:65
 msgid "mana bar"
-msgstr ""
+msgstr "pruh many"
 
-#: src/gui/ministatus.cpp:77
+#: src/gui/ministatuswindow.cpp:77
 msgid "experience bar"
-msgstr ""
+msgstr "pruh zkušeností"
 
-#: src/gui/ministatus.cpp:83
+#: src/gui/ministatuswindow.cpp:83
 msgid "job bar"
-msgstr ""
+msgstr "pruh práce"
 
-#: src/gui/ministatus.cpp:92
+#: src/gui/ministatuswindow.cpp:92
 msgid "weight bar"
-msgstr ""
+msgstr "pruh váhy"
 
-#: src/gui/ministatus.cpp:95
+#: src/gui/ministatuswindow.cpp:95
 msgid "inventory slots bar"
-msgstr ""
+msgstr "pruh slotů inventáře"
 
-#: src/gui/ministatus.cpp:98
+#: src/gui/ministatuswindow.cpp:98
 msgid "money bar"
-msgstr ""
+msgstr "pruh peněz"
 
-#: src/gui/ministatus.cpp:101
+#: src/gui/ministatuswindow.cpp:101
 msgid "arrows bar"
-msgstr ""
+msgstr "pruh šípů"
 
-#: src/gui/ministatus.cpp:104
+#: src/gui/ministatuswindow.cpp:104
 msgid "status bar"
-msgstr ""
+msgstr "stavový řádek"
 
-#: src/gui/ministatus.cpp:296 src/gui/ministatus.cpp:336
+#: src/gui/ministatuswindow.cpp:296 src/gui/ministatuswindow.cpp:336
 msgid "Need"
-msgstr ""
+msgstr "Potřebuješ"
 
 #: src/gui/npcdialog.cpp:51
 msgid "Waiting for server"
@@ -1220,24 +1252,24 @@ msgstr "Další"
 
 #: src/gui/npcdialog.cpp:54
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 #: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
-#: src/gui/setup_other.cpp:143
+#: src/gui/setup_other.cpp:151
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:107 src/gui/popupmenu.cpp:549
+#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:558
 msgid "Clear"
-msgstr ""
+msgstr "Vyprázdnit"
 
-#: src/gui/npcdialog.cpp:222
+#: src/gui/npcdialog.cpp:223
 msgid "> Next"
-msgstr ""
+msgstr "> Další"
 
 #: src/gui/npcpostdialog.cpp:48
 msgid "To:"
-msgstr ""
+msgstr "Komu:"
 
 #: src/gui/npcpostdialog.cpp:55
 msgid "Send"
@@ -1245,349 +1277,351 @@ msgstr "Odeslat"
 
 #: src/gui/npcpostdialog.cpp:99
 msgid "Failed to send as sender or letter invalid."
-msgstr ""
+msgstr "Odeslání se nezdařilo. odesílatel nebo dopis není platný."
 
-#: src/gui/outfitwindow.cpp:82 src/gui/outfitwindow.cpp:886
+#: src/gui/outfitwindow.cpp:86 src/gui/outfitwindow.cpp:890
 #, c-format
 msgid "Outfit: %d"
-msgstr ""
+msgstr "Výstroj: %d"
 
-#: src/gui/outfitwindow.cpp:84 src/gui/outfitwindow.cpp:888
+#: src/gui/outfitwindow.cpp:88 src/gui/outfitwindow.cpp:892
 #, c-format
 msgid "Key: %s"
-msgstr ""
+msgstr "Klávesa: %s"
 
-#: src/gui/outfitwindow.cpp:87
+#: src/gui/outfitwindow.cpp:91
 msgid "Unequip first"
-msgstr ""
+msgstr "Nejdřív odstrojit"
 
-#: src/gui/outfitwindow.cpp:90
+#: src/gui/outfitwindow.cpp:94
 msgid "Away outfit"
-msgstr ""
+msgstr "Výstroj pro \"Away\""
 
-#: src/gui/popupmenu.cpp:129 src/gui/popupmenu.cpp:603
+#: src/gui/popupmenu.cpp:132 src/gui/popupmenu.cpp:595
 #: src/gui/widgets/tradetab.cpp:44
 msgid "Trade"
 msgstr "Obchod"
 
-#: src/gui/popupmenu.cpp:131 src/gui/popupmenu.cpp:368
+#: src/gui/popupmenu.cpp:134 src/gui/popupmenu.cpp:363
 msgid "Whisper"
-msgstr ""
+msgstr "Šeptat"
 
-#: src/gui/popupmenu.cpp:135 src/gui/popupmenu.cpp:608
+#: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:600
 msgid "Heal"
-msgstr ""
+msgstr "Vyléčit"
 
-#: src/gui/popupmenu.cpp:142 src/gui/popupmenu.cpp:374
-#: src/gui/popupmenu.cpp:615
+#: src/gui/popupmenu.cpp:144 src/gui/popupmenu.cpp:369
+#: src/gui/popupmenu.cpp:606
 msgid "Be friend"
-msgstr ""
+msgstr "Být přátelé"
 
-#: src/gui/popupmenu.cpp:144 src/gui/popupmenu.cpp:153
-#: src/gui/popupmenu.cpp:180 src/gui/popupmenu.cpp:376
-#: src/gui/popupmenu.cpp:382 src/gui/popupmenu.cpp:401
-#: src/gui/popupmenu.cpp:617 src/gui/popupmenu.cpp:625
-#: src/gui/popupmenu.cpp:649
+#: src/gui/popupmenu.cpp:145 src/gui/popupmenu.cpp:151
+#: src/gui/popupmenu.cpp:169 src/gui/popupmenu.cpp:370
+#: src/gui/popupmenu.cpp:376 src/gui/popupmenu.cpp:394
+#: src/gui/popupmenu.cpp:607 src/gui/popupmenu.cpp:613
+#: src/gui/popupmenu.cpp:631
 msgid "Disregard"
-msgstr ""
+msgstr "Přehlížet"
 
-#: src/gui/popupmenu.cpp:148 src/gui/popupmenu.cpp:157
-#: src/gui/popupmenu.cpp:166 src/gui/popupmenu.cpp:173
-#: src/gui/popupmenu.cpp:378 src/gui/popupmenu.cpp:384
-#: src/gui/popupmenu.cpp:391 src/gui/popupmenu.cpp:396
-#: src/gui/popupmenu.cpp:620 src/gui/popupmenu.cpp:628
-#: src/gui/popupmenu.cpp:636 src/gui/popupmenu.cpp:642
+#: src/gui/popupmenu.cpp:147 src/gui/popupmenu.cpp:153
+#: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:164
+#: src/gui/popupmenu.cpp:372 src/gui/popupmenu.cpp:378
+#: src/gui/popupmenu.cpp:384 src/gui/popupmenu.cpp:389
+#: src/gui/popupmenu.cpp:609 src/gui/popupmenu.cpp:615
+#: src/gui/popupmenu.cpp:621 src/gui/popupmenu.cpp:626
 msgid "Erase"
-msgstr ""
+msgstr "Vymazat"
 
-#: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:171
-#: src/gui/popupmenu.cpp:178 src/gui/popupmenu.cpp:388
-#: src/gui/popupmenu.cpp:395 src/gui/popupmenu.cpp:400
-#: src/gui/popupmenu.cpp:633 src/gui/popupmenu.cpp:641
-#: src/gui/popupmenu.cpp:647
+#: src/gui/popupmenu.cpp:157 src/gui/popupmenu.cpp:163
+#: src/gui/popupmenu.cpp:168 src/gui/popupmenu.cpp:382
+#: src/gui/popupmenu.cpp:388 src/gui/popupmenu.cpp:393
+#: src/gui/popupmenu.cpp:619 src/gui/popupmenu.cpp:625
+#: src/gui/popupmenu.cpp:630
 msgid "Unignore"
-msgstr ""
+msgstr "Odignorovat"
 
-#: src/gui/popupmenu.cpp:164 src/gui/popupmenu.cpp:182
-#: src/gui/popupmenu.cpp:390 src/gui/popupmenu.cpp:403
-#: src/gui/popupmenu.cpp:635 src/gui/popupmenu.cpp:651
-#: src/playerrelations.cpp:400
+#: src/gui/popupmenu.cpp:158 src/gui/popupmenu.cpp:170
+#: src/gui/popupmenu.cpp:383 src/gui/popupmenu.cpp:395
+#: src/gui/popupmenu.cpp:620 src/gui/popupmenu.cpp:632
+#: src/playerrelations.cpp:418
 msgid "Completely ignore"
-msgstr ""
+msgstr "Kompletně ignorovat"
 
-#: src/gui/popupmenu.cpp:190 src/gui/popupmenu.cpp:411
-#: src/gui/popupmenu.cpp:659
+#: src/gui/popupmenu.cpp:178 src/gui/popupmenu.cpp:403
+#: src/gui/popupmenu.cpp:640 src/gui/popupmenu.cpp:719
 msgid "Follow"
-msgstr ""
+msgstr "Následovat"
 
-#: src/gui/popupmenu.cpp:192 src/gui/popupmenu.cpp:412
-#: src/gui/popupmenu.cpp:660
+#: src/gui/popupmenu.cpp:179 src/gui/popupmenu.cpp:404
+#: src/gui/popupmenu.cpp:641 src/gui/popupmenu.cpp:720
 msgid "Imitation"
-msgstr ""
+msgstr "imitovat"
 
-#: src/gui/popupmenu.cpp:202 src/gui/popupmenu.cpp:697
+#: src/gui/popupmenu.cpp:188 src/gui/popupmenu.cpp:673
 msgid "Invite to party"
-msgstr ""
+msgstr "Pozvat do party"
 
-#: src/gui/popupmenu.cpp:207 src/gui/popupmenu.cpp:421
-#: src/gui/popupmenu.cpp:702
+#: src/gui/popupmenu.cpp:193 src/gui/popupmenu.cpp:415
+#: src/gui/popupmenu.cpp:678
 msgid "Kick from party"
-msgstr ""
+msgstr "Vykopnout z party"
 
-#: src/gui/popupmenu.cpp:222 src/gui/popupmenu.cpp:432
-#: src/gui/popupmenu.cpp:716
+#: src/gui/popupmenu.cpp:208 src/gui/popupmenu.cpp:220
+#: src/gui/popupmenu.cpp:432 src/gui/popupmenu.cpp:695
 msgid "Kick from guild"
-msgstr ""
+msgstr "Vykopnout z gildy"
 
-#: src/gui/popupmenu.cpp:224 src/gui/popupmenu.cpp:434
-#: src/gui/popupmenu.cpp:718
+#: src/gui/popupmenu.cpp:213 src/gui/popupmenu.cpp:225
+#: src/gui/popupmenu.cpp:437 src/gui/popupmenu.cpp:700
 msgid "Change pos in guild"
-msgstr ""
+msgstr "Změnit pozici v gildě"
 
-#: src/gui/popupmenu.cpp:230 src/gui/popupmenu.cpp:439
-#: src/gui/popupmenu.cpp:724
+#: src/gui/popupmenu.cpp:233 src/gui/popupmenu.cpp:445
+#: src/gui/popupmenu.cpp:709
 msgid "Invite to guild"
-msgstr ""
+msgstr "Pozvat do gildy"
 
-#: src/gui/popupmenu.cpp:238
+#: src/gui/popupmenu.cpp:241
 msgid "Kick player"
-msgstr ""
+msgstr "Vykopnout hráče"
 
-#: src/gui/popupmenu.cpp:240
+#: src/gui/popupmenu.cpp:243
 msgid "Nuke"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:243 src/gui/popupmenu.cpp:662
+#: src/gui/popupmenu.cpp:245 src/gui/popupmenu.cpp:643
+#: src/gui/popupmenu.cpp:732
 msgid "Show Items"
-msgstr ""
+msgstr "Zobrazit věci"
 
-#: src/gui/popupmenu.cpp:244 src/gui/popupmenu.cpp:663
-#: src/gui/popupmenu.cpp:1932
+#: src/gui/popupmenu.cpp:246 src/gui/popupmenu.cpp:644
+#: src/gui/popupmenu.cpp:733 src/gui/popupmenu.cpp:1966
 msgid "Undress"
-msgstr ""
+msgstr "Svléct"
 
-#: src/gui/popupmenu.cpp:246 src/gui/popupmenu.cpp:413
-#: src/gui/popupmenu.cpp:665 src/gui/popupmenu.cpp:732
+#: src/gui/popupmenu.cpp:247 src/gui/popupmenu.cpp:277
+#: src/gui/popupmenu.cpp:405 src/gui/popupmenu.cpp:645
+#: src/gui/popupmenu.cpp:734
 msgid "Add comment"
-msgstr ""
+msgstr "Přidat komentář"
 
-#: src/gui/popupmenu.cpp:264 src/gui/popupmenu.cpp:446
-#: src/gui/popupmenu.cpp:682
+#: src/gui/popupmenu.cpp:262 src/gui/popupmenu.cpp:453
+#: src/gui/popupmenu.cpp:660 src/gui/popupmenu.cpp:739
 msgid "Buy (?)"
-msgstr ""
+msgstr "Koupit (?)"
 
-#: src/gui/popupmenu.cpp:266 src/gui/popupmenu.cpp:447
-#: src/gui/popupmenu.cpp:684
+#: src/gui/popupmenu.cpp:263 src/gui/popupmenu.cpp:454
+#: src/gui/popupmenu.cpp:661 src/gui/popupmenu.cpp:740
 msgid "Sell (?)"
-msgstr ""
+msgstr "Prodat (?)"
 
-#: src/gui/popupmenu.cpp:292
+#: src/gui/popupmenu.cpp:288
 msgid "Kick"
-msgstr ""
+msgstr "Vykopnout"
 
-#: src/gui/popupmenu.cpp:303
+#: src/gui/popupmenu.cpp:299
 msgid "Remove from attack list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:309
+#: src/gui/popupmenu.cpp:304
 msgid "Add to priority attack list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:311
+#: src/gui/popupmenu.cpp:306
 msgid "Add to attack list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:314
+#: src/gui/popupmenu.cpp:308
 msgid "Add to ignore list"
-msgstr ""
+msgstr "Vložit do seznamu ignorovaných"
 
-#: src/gui/popupmenu.cpp:327 src/gui/popupmenu.cpp:450
+#: src/gui/popupmenu.cpp:321 src/gui/popupmenu.cpp:457
 msgid "Add name to chat"
-msgstr ""
+msgstr "Vložit jméno do chatu"
 
-#: src/gui/popupmenu.cpp:476
+#: src/gui/popupmenu.cpp:482
 msgid "Pick up"
-msgstr ""
+msgstr "Sebrat"
 
-#: src/gui/popupmenu.cpp:477 src/gui/popupmenu.cpp:1645
-#: src/gui/popupmenu.cpp:1725 src/gui/popupmenu.cpp:1768
+#: src/gui/popupmenu.cpp:483 src/gui/popupmenu.cpp:1692
+#: src/gui/popupmenu.cpp:1772 src/gui/popupmenu.cpp:1817
 msgid "Add to chat"
-msgstr ""
+msgstr "Vložit do chatu"
 
-#: src/gui/popupmenu.cpp:494
+#: src/gui/popupmenu.cpp:500
 msgid "Map Item"
-msgstr ""
+msgstr "Označit na mapě"
 
-#: src/gui/popupmenu.cpp:495
+#: src/gui/popupmenu.cpp:501
 msgid "Rename"
-msgstr ""
+msgstr "Přejmenovat"
 
-#: src/gui/popupmenu.cpp:496 src/gui/popupmenu.cpp:1885
-#: src/gui/popupmenu.cpp:1903 src/gui/popupmenu.cpp:1908
+#: src/gui/popupmenu.cpp:502 src/gui/popupmenu.cpp:1927
+#: src/gui/popupmenu.cpp:1938 src/gui/popupmenu.cpp:1942
 msgid "Remove"
+msgstr "Odebrat"
+
+#: src/gui/popupmenu.cpp:507
+msgid "Warp"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:510
+#: src/gui/popupmenu.cpp:520
 msgid "Load old outfits"
-msgstr ""
+msgstr "Načíst staré výstroje"
 
-#: src/gui/popupmenu.cpp:526 src/gui/windowmenu.cpp:96
+#: src/gui/popupmenu.cpp:536 src/gui/windowmenu.cpp:96
 msgid "Spells"
-msgstr ""
+msgstr "Kouzla"
 
-#: src/gui/popupmenu.cpp:528
+#: src/gui/popupmenu.cpp:537
 msgid "Load old spells"
-msgstr ""
+msgstr "Načíst stará kouzla"
 
-#: src/gui/popupmenu.cpp:529
+#: src/gui/popupmenu.cpp:538
 msgid "Edit spell"
-msgstr ""
+msgstr "Upravit kouzlo"
 
-#: src/gui/popupmenu.cpp:555
+#: src/gui/popupmenu.cpp:562
 msgid "Disable highlight"
-msgstr ""
+msgstr "vypnout zvýrazǒvání"
 
-#: src/gui/popupmenu.cpp:560
+#: src/gui/popupmenu.cpp:564
 msgid "Enable highlight"
-msgstr ""
+msgstr "Zapnout zvýrazňování"
 
-#: src/gui/popupmenu.cpp:565
-msgid "Dont remove name"
-msgstr ""
+#: src/gui/popupmenu.cpp:566
+msgid "Don't remove name"
+msgstr "Neodebírat jméno"
+
+#: src/gui/popupmenu.cpp:568
+msgid "Remove name"
+msgstr "Odebrat jméno"
 
 #: src/gui/popupmenu.cpp:570
-msgid "Remove name"
-msgstr ""
-
-#: src/gui/popupmenu.cpp:575
 msgid "Enable away"
-msgstr ""
+msgstr "Zapnout \"away\""
 
-#: src/gui/popupmenu.cpp:580
+#: src/gui/popupmenu.cpp:572
 msgid "Disable away"
-msgstr ""
+msgstr "Vypnout \"away\""
 
-#: src/gui/popupmenu.cpp:586 src/gui/socialwindow.cpp:1035
+#: src/gui/popupmenu.cpp:577 src/gui/socialwindow.cpp:1141
 msgid "Leave"
-msgstr ""
+msgstr "Odejít"
 
-#: src/gui/popupmenu.cpp:744
+#: src/gui/popupmenu.cpp:753
 msgid "Change guild position"
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1166
+#: src/gui/popupmenu.cpp:1205
 msgid "Rename map sign          "
-msgstr ""
+msgstr "Přejmenovat značku an mapě"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1168
+#: src/gui/popupmenu.cpp:1207
 msgid "Name:                    "
-msgstr ""
+msgstr "Jméno:                    "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1218
+#: src/gui/popupmenu.cpp:1257
 msgid "Player comment            "
-msgstr ""
+msgstr "Hráčův komentář"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1220
+#: src/gui/popupmenu.cpp:1259
 msgid "Comment:                      "
-msgstr ""
+msgstr "Komentář:                      "
 
-#: src/gui/popupmenu.cpp:1570
+#: src/gui/popupmenu.cpp:1630
 msgid "Add to trade"
-msgstr ""
+msgstr "Přidat do transakce"
 
-#: src/gui/popupmenu.cpp:1576
+#: src/gui/popupmenu.cpp:1634
 msgid "Add to trade 10"
-msgstr ""
+msgstr "Přidat 10 do transakce"
 
-#: src/gui/popupmenu.cpp:1579
+#: src/gui/popupmenu.cpp:1635
 msgid "Add to trade half"
-msgstr ""
+msgstr "Přidat polovinu do transakce"
 
-#: src/gui/popupmenu.cpp:1581
+#: src/gui/popupmenu.cpp:1636
 msgid "Add to trade all"
-msgstr ""
+msgstr "Přidat vše do transakce"
 
-#: src/gui/popupmenu.cpp:1593
+#: src/gui/popupmenu.cpp:1646
 msgid "Store 10"
-msgstr ""
+msgstr "Uschovat 10"
 
-#: src/gui/popupmenu.cpp:1596
+#: src/gui/popupmenu.cpp:1647
 msgid "Store half"
-msgstr ""
+msgstr "Uschovat polovinu"
 
-#: src/gui/popupmenu.cpp:1598
+#: src/gui/popupmenu.cpp:1648
 msgid "Store all"
-msgstr ""
+msgstr "Uschovat všechny"
 
-#: src/gui/popupmenu.cpp:1616 src/gui/popupmenu.cpp:1713
-#: src/gui/popupmenu.cpp:1756
+#: src/gui/popupmenu.cpp:1668 src/gui/popupmenu.cpp:1760
+#: src/gui/popupmenu.cpp:1805
 msgid "Drop all"
-msgstr ""
+msgstr "Upustit vše"
 
-#: src/gui/popupmenu.cpp:1637
+#: src/gui/popupmenu.cpp:1687
 msgid "Retrieve 10"
-msgstr ""
+msgstr "Vzít 10"
 
-#: src/gui/popupmenu.cpp:1640
+#: src/gui/popupmenu.cpp:1688
 msgid "Retrieve half"
-msgstr ""
+msgstr "Vzít polovinu"
 
-#: src/gui/popupmenu.cpp:1642
+#: src/gui/popupmenu.cpp:1689
 msgid "Retrieve all"
-msgstr ""
+msgstr "Vzít všechny"
 
-#: src/gui/popupmenu.cpp:1673 src/gui/popupmenu.cpp:1729
+#: src/gui/popupmenu.cpp:1720 src/gui/popupmenu.cpp:1776
 msgid "Load old item shortcuts"
-msgstr ""
+msgstr "Načíst staré zkratky věcí"
 
-#: src/gui/popupmenu.cpp:1772
+#: src/gui/popupmenu.cpp:1821
 msgid "Load old drop shortcuts"
-msgstr ""
+msgstr "Načíst staré zkratky upuštění"
 
-#: src/gui/popupmenu.cpp:1798 src/gui/popupmenu.cpp:1833
+#: src/gui/popupmenu.cpp:1847 src/gui/popupmenu.cpp:1882
 msgid "Hide"
-msgstr ""
+msgstr "Skrýt"
 
-#: src/gui/popupmenu.cpp:1804 src/gui/popupmenu.cpp:1839
+#: src/gui/popupmenu.cpp:1853 src/gui/popupmenu.cpp:1888
 msgid "Show"
-msgstr ""
+msgstr "Zobrazit"
 
-#: src/gui/popupmenu.cpp:1846
+#: src/gui/popupmenu.cpp:1894
 msgid "Reset yellow bar"
-msgstr ""
+msgstr "Resetovat žlutý pruh"
 
-#: src/gui/popupmenu.cpp:1848
+#: src/gui/popupmenu.cpp:1896 src/gui/statuswindow.cpp:241
 msgid "Copy to chat"
-msgstr ""
+msgstr "Zkopírovat do chatu"
 
-#: src/gui/popupmenu.cpp:1865 src/gui/socialwindow.cpp:854
-#: src/gui/socialwindow.cpp:889 src/gui/socialwindow.cpp:924
+#: src/gui/popupmenu.cpp:1914 src/gui/socialwindow.cpp:958
+#: src/gui/socialwindow.cpp:993 src/gui/socialwindow.cpp:1028
 msgid "(default)"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1877 src/gui/popupmenu.cpp:1895
+#: src/gui/popupmenu.cpp:1924 src/gui/popupmenu.cpp:1935
 msgid "Move up"
-msgstr ""
+msgstr "Posunout nahoru"
 
-#: src/gui/popupmenu.cpp:1882 src/gui/popupmenu.cpp:1900
+#: src/gui/popupmenu.cpp:1926 src/gui/popupmenu.cpp:1937
 msgid "Move down"
-msgstr ""
+msgstr "Posunout dolů"
 
-#: src/gui/quitdialog.cpp:56
-msgid "Save state"
-msgstr ""
-
-#: src/gui/quitdialog.cpp:57
+#: src/gui/quitdialog.cpp:52
 msgid "Switch server"
-msgstr ""
+msgstr "Přepnout server"
 
-#: src/gui/quitdialog.cpp:58
+#: src/gui/quitdialog.cpp:53
 msgid "Switch character"
-msgstr "Přepněte postavu"
+msgstr "Přepnout postavu"
 
 #: src/gui/register.cpp:77
 msgid "Confirm:"
@@ -1621,91 +1655,91 @@ msgstr "Heslo musí být kratší než %d znaků."
 msgid "Passwords do not match."
 msgstr "Hesla se neshodují."
 
-#: src/gui/serverdialog.cpp:228
+#: src/gui/serverdialog.cpp:237
 msgid "Choose Your Server"
-msgstr ""
+msgstr "Zvolte server"
 
-#: src/gui/serverdialog.cpp:239
+#: src/gui/serverdialog.cpp:248
 msgid "Choose Your Server  *** SAFE MODE ***"
-msgstr ""
+msgstr "Zvolte server *** BEZPEČNÝ MÓD ***"
 
-#: src/gui/serverdialog.cpp:244
+#: src/gui/serverdialog.cpp:253
 msgid "Port:"
 msgstr "Port:"
 
-#: src/gui/serverdialog.cpp:248
+#: src/gui/serverdialog.cpp:257
 msgid "Use same ip for game sub servers"
-msgstr ""
+msgstr "Použít stejnou IP pro herní sub servery"
 
-#: src/gui/serverdialog.cpp:262
+#: src/gui/serverdialog.cpp:271
 msgid "Server type:"
-msgstr ""
+msgstr "Typ serveru:"
 
-#: src/gui/serverdialog.cpp:286
+#: src/gui/serverdialog.cpp:295
 msgid "Load"
-msgstr ""
+msgstr "Načíst"
 
-#: src/gui/serverdialog.cpp:287
+#: src/gui/serverdialog.cpp:296
 msgid "Connect"
-msgstr ""
+msgstr "Připojit"
 
-#: src/gui/serverdialog.cpp:288
+#: src/gui/serverdialog.cpp:297
 msgid "Custom Server"
-msgstr ""
+msgstr "Vlastní server"
 
-#: src/gui/serverdialog.cpp:393
+#: src/gui/serverdialog.cpp:402
 msgid "Please type both the address and the port of a server."
 msgstr "Prosím zadejte adresu a port serveru."
 
-#: src/gui/serverdialog.cpp:551
+#: src/gui/serverdialog.cpp:560
 #, c-format
 msgid "Downloading server list...%2.2f%%"
-msgstr ""
+msgstr "Stahuji seznam serverů...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:556
+#: src/gui/serverdialog.cpp:565
 msgid "Waiting for server..."
-msgstr ""
+msgstr "Čekám na odezvu serveru..."
 
-#: src/gui/serverdialog.cpp:560
+#: src/gui/serverdialog.cpp:569
 msgid "Preparing download"
-msgstr ""
+msgstr "Připravuji stažení"
 
-#: src/gui/serverdialog.cpp:564
+#: src/gui/serverdialog.cpp:573
 msgid "Error retreiving server list!"
-msgstr ""
+msgstr "Chyba při získávání seznamu serverů!"
 
-#: src/gui/serverdialog.cpp:662
+#: src/gui/serverdialog.cpp:678
 msgid "requires a newer version"
-msgstr ""
+msgstr "potřebuje novější verzi"
 
-#: src/gui/serverdialog.cpp:664
+#: src/gui/serverdialog.cpp:680
 #, c-format
 msgid "requires v%s"
-msgstr ""
+msgstr "potřebuje v%s"
 
 #: src/gui/setup_audio.cpp:50
 msgid "Enable Audio"
-msgstr ""
+msgstr "Zapnout audio"
 
 #: src/gui/setup_audio.cpp:51
 msgid "Enable game sfx"
-msgstr ""
+msgstr "Zapnout zvukové efekty hry"
 
 #: src/gui/setup_audio.cpp:52
 msgid "Enable gui sfx"
-msgstr ""
+msgstr "Zapnout zvukové efekty gui"
 
 #: src/gui/setup_audio.cpp:53
 msgid "Enable music"
-msgstr ""
+msgstr "Zapnout hudbu"
 
 #: src/gui/setup_audio.cpp:54
 msgid "Enable mumble voice chat"
-msgstr ""
+msgstr "Povolit mumble hlasový chat"
 
 #: src/gui/setup_audio.cpp:56
 msgid "Download music"
-msgstr ""
+msgstr "Stahovat hudbu"
 
 #: src/gui/setup_audio.cpp:61
 msgid "Audio"
@@ -1721,15 +1755,16 @@ msgstr "Hlasitost hudby"
 
 #: src/gui/setup_audio.cpp:120
 msgid "Notice"
-msgstr ""
+msgstr "Upozornění"
 
 #: src/gui/setup_audio.cpp:120
 msgid "You may have to restart your client if you want to download new music"
 msgstr ""
+"Možná budete muset restartovat váš klient, pokud chcete stáhnout novou hudbu"
 
 #: src/gui/setup_audio.cpp:133
 msgid "Sound Engine"
-msgstr ""
+msgstr "Zvukový systém"
 
 #: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
 msgid "Colors"
@@ -1737,113 +1772,121 @@ msgstr "Barvy"
 
 #: src/gui/setup_chat.cpp:57
 msgid "Remove colors from received chat messages"
-msgstr ""
+msgstr "Odstranit barvy z příchozích zpráv"
 
 #: src/gui/setup_chat.cpp:60
 msgid "Show chat colors list"
-msgstr ""
+msgstr "Zobrazit seznam barev"
 
 #: src/gui/setup_chat.cpp:64
 msgid "Commands"
-msgstr ""
+msgstr "Příkazy"
 
 #: src/gui/setup_chat.cpp:66
 msgid "Allow magic and GM commands in all chat tabs"
-msgstr ""
+msgstr "Povolit magii a GM příkazy ve všech záložkách"
 
 #: src/gui/setup_chat.cpp:70
 msgid "Limits"
-msgstr ""
+msgstr "Omezení"
 
 #: src/gui/setup_chat.cpp:72
 msgid "Limit max chars in chat line"
-msgstr ""
+msgstr "Omezit maximum znaků na řádek"
 
 #: src/gui/setup_chat.cpp:75
 msgid "Limit max lines in chat"
-msgstr ""
+msgstr "Omezit počet řádků chatu"
 
 #: src/gui/setup_chat.cpp:79
 msgid "Logs"
-msgstr ""
+msgstr "Záznamy"
 
 #: src/gui/setup_chat.cpp:81
 msgid "Enable chat Log"
-msgstr ""
+msgstr "Zapnout zaznamenávání konverzace"
 
 #: src/gui/setup_chat.cpp:84
 msgid "Show chat history"
-msgstr ""
+msgstr "Zobrazovat historii chatu"
 
 #: src/gui/setup_chat.cpp:88
 msgid "Messages"
-msgstr ""
+msgstr "Zprávy"
 
 #: src/gui/setup_chat.cpp:90
 msgid "Hide shop messages"
-msgstr ""
+msgstr "Skrýt obchodní zprávy"
 
 #: src/gui/setup_chat.cpp:94
 msgid "Tabs"
-msgstr ""
+msgstr "Záložky"
 
 #: src/gui/setup_chat.cpp:96
 msgid "Put all whispers in tabs"
-msgstr ""
+msgstr "Všechy šeptání jako záložky"
 
 #: src/gui/setup_chat.cpp:99
 msgid "Log magic messages in debug tab"
-msgstr ""
+msgstr "Zaznamenávat zprávy o magii v debug záložce"
 
 #: src/gui/setup_chat.cpp:102
 msgid "Show server messages in debug tab"
-msgstr ""
+msgstr "Zobrazovat serverové zprávy v debug záložce"
 
 #: src/gui/setup_chat.cpp:105
 msgid "Enable trade tab"
-msgstr ""
+msgstr "Zapnout obchodní záložku"
 
 #: src/gui/setup_chat.cpp:108
 msgid "Enable battle tab"
-msgstr ""
+msgstr "Zapnout bitevní záložku"
 
 #: src/gui/setup_chat.cpp:111
 msgid "Show battle events"
-msgstr ""
+msgstr "Zobrazovat bitevní události"
 
 #: src/gui/setup_chat.cpp:114
 msgid "Resize chat tabs if need"
-msgstr ""
+msgstr "Změnit velikost záložek pokud nutno"
 
 #: src/gui/setup_chat.cpp:118
 msgid "Time"
-msgstr ""
+msgstr "Čas"
 
 #: src/gui/setup_chat.cpp:120
 msgid "Use local time"
-msgstr ""
+msgstr "Použít místní čas"
+
+#: src/gui/setup_chat.cpp:123 src/gui/setup_other.cpp:166
+msgid "Other"
+msgstr "Ostatní"
+
+#: src/gui/setup_chat.cpp:125
+msgid "Highlight words (separated by comma)"
+msgstr "Zvýrazňovaná slova (oddělená čárkou)"
 
 #: src/gui/setup_colors.cpp:49
 msgid "This is what the color looks like"
-msgstr ""
+msgstr "Takhle to bude vypadat"
 
 #: src/gui/setup_colors.cpp:75
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: src/gui/setup_colors.cpp:86 src/gui/setup_colors.cpp:407
 msgid "Static"
-msgstr ""
+msgstr "Statický"
 
 #: src/gui/setup_colors.cpp:88 src/gui/setup_colors.cpp:89
 #: src/gui/setup_colors.cpp:408
 msgid "Pulse"
-msgstr "Puls"
+msgstr "Pulzní"
 
 #: src/gui/setup_colors.cpp:90 src/gui/setup_colors.cpp:91
 #: src/gui/setup_colors.cpp:409
 msgid "Rainbow"
-msgstr "Duha"
+msgstr "Duhový"
 
 #: src/gui/setup_colors.cpp:92 src/gui/setup_colors.cpp:93
 #: src/gui/setup_colors.cpp:409
@@ -1852,35 +1895,31 @@ msgstr "Spektrum"
 
 #: src/gui/setup_colors.cpp:97 src/gui/setup_colors.cpp:319
 msgid "Delay:"
-msgstr ""
+msgstr "Prodleva:"
 
 #: src/gui/setup_colors.cpp:112
 msgid "Red:"
-msgstr ""
+msgstr "Červená:"
 
 #: src/gui/setup_colors.cpp:127
 msgid "Green:"
-msgstr ""
+msgstr "Zelená:"
 
 #: src/gui/setup_colors.cpp:142
 msgid "Blue:"
-msgstr ""
+msgstr "Modrá:"
 
 #: src/gui/setup_colors.cpp:314
 msgid "Alpha:"
-msgstr ""
+msgstr "Průhlednost:"
 
-#: src/gui/setup.cpp:69
+#: src/gui/setup.cpp:71
 msgid "Apply"
 msgstr "Použít"
 
-#: src/gui/setup.cpp:72
+#: src/gui/setup.cpp:74
 msgid "Reset Windows"
-msgstr ""
-
-#: src/gui/setupitem.cpp:270 src/gui/setupitem.cpp:394
-msgid "Edit"
-msgstr ""
+msgstr "Resetovat okna"
 
 #: src/gui/setup_joystick.cpp:40 src/gui/setup_joystick.cpp:79
 msgid "Press the button to start calibration"
@@ -1912,11 +1951,11 @@ msgstr "Klávesnice"
 
 #: src/gui/setup_keyboard.cpp:89
 msgid "Assign"
-msgstr ""
+msgstr "Přiřadit"
 
 #: src/gui/setup_keyboard.cpp:93
 msgid "Unassign"
-msgstr ""
+msgstr "Odebrat"
 
 #: src/gui/setup_keyboard.cpp:97
 msgid "Default"
@@ -1924,203 +1963,219 @@ msgstr "Výchozí"
 
 #: src/gui/setup_keyboard.cpp:133
 msgid "Key Conflict(s) Detected."
-msgstr ""
+msgstr "Kolize kláves detekovány."
 
-#: src/gui/setup_other.cpp:40
+#: src/gui/setup_other.cpp:39
 msgid "Misc"
-msgstr ""
+msgstr "Ostatní"
 
-#: src/gui/setup_other.cpp:46 src/gui/userpalette.cpp:125
+#: src/gui/setup_other.cpp:45 src/gui/userpalette.cpp:125
 msgid "Monsters"
 msgstr "Monstra"
 
-#: src/gui/setup_other.cpp:48
+#: src/gui/setup_other.cpp:47
 msgid "Show damage inflicted to monsters"
-msgstr ""
+msgstr "Zobrazit poškození způsobené monstrům"
 
-#: src/gui/setup_other.cpp:51
+#: src/gui/setup_other.cpp:50
 msgid "Auto target only reachable monsters"
-msgstr ""
+msgstr "Automaticky zaměřovat pouze dosažitelná monstra"
 
-#: src/gui/setup_other.cpp:54
+#: src/gui/setup_other.cpp:53
 msgid "Highlight monster attack range"
-msgstr ""
+msgstr "Zvýraznit útočný dosah monster"
 
-#: src/gui/setup_other.cpp:58
+#: src/gui/setup_other.cpp:57
 msgid "Show monster hp bar"
-msgstr ""
+msgstr "Zobrazit u monster pruh s životy"
 
-#: src/gui/setup_other.cpp:61
+#: src/gui/setup_other.cpp:60
 msgid "Cycle monster targets"
-msgstr ""
+msgstr "Cyklovat zamířená monstra"
 
-#: src/gui/setup_other.cpp:67
+#: src/gui/setup_other.cpp:66
 msgid "Show warps particles"
 msgstr ""
 
-#: src/gui/setup_other.cpp:70
+#: src/gui/setup_other.cpp:69
 msgid "Highlight map portals"
-msgstr ""
+msgstr "Zvýraznit portály na mapách"
 
-#: src/gui/setup_other.cpp:73
+#: src/gui/setup_other.cpp:72
 msgid "Highlight floor items"
-msgstr ""
+msgstr "Zvýraznit věci na zemi"
 
-#: src/gui/setup_other.cpp:76
+#: src/gui/setup_other.cpp:75
 msgid "Highlight player attack range"
-msgstr ""
+msgstr "Zvýraznit hráčův útočný dosah"
 
-#: src/gui/setup_other.cpp:79
+#: src/gui/setup_other.cpp:78
 msgid "Show extended minimaps"
-msgstr ""
+msgstr "Zobrazit rozšířené minimapy"
 
-#: src/gui/setup_other.cpp:82
+#: src/gui/setup_other.cpp:81
 msgid "Draw path"
-msgstr ""
+msgstr "Vykreslovat cestu"
 
-#: src/gui/setup_other.cpp:85
+#: src/gui/setup_other.cpp:84
 msgid "Draw hotkeys on map"
-msgstr ""
+msgstr "Vykreslovat zkratky na mapě"
 
-#: src/gui/setup_other.cpp:89
-msgid "Moving"
-msgstr ""
+#: src/gui/setup_other.cpp:87
+msgid "Enable lazy scrolling"
+msgstr "Zapnout líné rolování"
 
-#: src/gui/setup_other.cpp:91
-msgid "Auto fix position"
-msgstr ""
+#: src/gui/setup_other.cpp:90
+msgid "Scroll laziness"
+msgstr "Lenost rolování"
 
-#: src/gui/setup_other.cpp:94
-msgid "Attack while moving"
-msgstr ""
+#: src/gui/setup_other.cpp:93
+msgid "Scroll radius"
+msgstr "Radius rolování"
 
 #: src/gui/setup_other.cpp:97
+msgid "Moving"
+msgstr "Pohyb"
+
+#: src/gui/setup_other.cpp:99
+msgid "Auto fix position"
+msgstr "Automaticky opravovat pozici"
+
+#: src/gui/setup_other.cpp:102
+msgid "Attack while moving"
+msgstr "Útočit během pohybu"
+
+#: src/gui/setup_other.cpp:105
 msgid "Sync player move"
-msgstr ""
+msgstr "Synchronizovat hráčův pohyb"
 
-#: src/gui/setup_other.cpp:100
+#: src/gui/setup_other.cpp:108
 msgid "Crazy move A program"
-msgstr ""
-
-#: src/gui/setup_other.cpp:104
-msgid "Player"
-msgstr ""
-
-#: src/gui/setup_other.cpp:106
-msgid "Show own hp bar"
-msgstr ""
-
-#: src/gui/setup_other.cpp:109
-msgid "Enable quick stats"
-msgstr ""
+msgstr "Program A šílených pohybů"
 
 #: src/gui/setup_other.cpp:112
+msgid "Player"
+msgstr "hráč"
+
+#: src/gui/setup_other.cpp:114
+msgid "Show own hp bar"
+msgstr "Zobrazit vlastní pruh životů"
+
+#: src/gui/setup_other.cpp:117
+msgid "Enable quick stats"
+msgstr "Zapnout rychlé statistiky"
+
+#: src/gui/setup_other.cpp:120
 msgid "Cycle player targets"
-msgstr ""
+msgstr "Cyklovat zamířené hráče"
 
-#: src/gui/setup_other.cpp:115
+#: src/gui/setup_other.cpp:123
 msgid "Show job exp messages"
-msgstr ""
+msgstr "Zobrazovat zprávy o pracovních exp"
 
-#: src/gui/setup_other.cpp:118
+#: src/gui/setup_other.cpp:126
 msgid "Show players popups"
-msgstr ""
+msgstr "Zobrazovat popupy o hráčích"
 
-#: src/gui/setup_other.cpp:121
+#: src/gui/setup_other.cpp:129
 msgid "Afk message"
-msgstr ""
+msgstr "Away zpráva"
 
-#: src/gui/setup_other.cpp:124
+#: src/gui/setup_other.cpp:132
 msgid "Show job"
-msgstr ""
+msgstr "Zobrazit práci"
 
-#: src/gui/setup_other.cpp:127
+#: src/gui/setup_other.cpp:135
 msgid "Enable attack filter"
 msgstr ""
 
-#: src/gui/setup_other.cpp:130
+#: src/gui/setup_other.cpp:138
 msgid "Enable advert protocol"
 msgstr ""
 
-#: src/gui/setup_other.cpp:136
+#: src/gui/setup_other.cpp:144
 msgid "Accept sell/buy requests"
-msgstr ""
+msgstr "Akceptovat požadavky na koupi/prodej"
 
-#: src/gui/setup_other.cpp:139
+#: src/gui/setup_other.cpp:147
 msgid "Enable shop mode"
-msgstr ""
+msgstr "Zapnout mód obchodu"
 
-#: src/gui/setup_other.cpp:145
+#: src/gui/setup_other.cpp:153
 msgid "Log NPC dialogue"
-msgstr ""
+msgstr "Zaznamenávat dialogy s NPC"
 
-#: src/gui/setup_other.cpp:149
-msgid "Other"
-msgstr ""
+#: src/gui/setup_other.cpp:157
+msgid "Bots support"
+msgstr "Podpora botů"
 
-#: src/gui/setup_other.cpp:151
+#: src/gui/setup_other.cpp:159
+msgid "Enable auction bot support"
+msgstr "Zapnout podporu AuctionBot-a"
+
+#: src/gui/setup_other.cpp:162
+msgid "Enable guild bot support and disable native guild support"
+msgstr "Zapnout podporu guild bota a vypnout nativní podporu gild"
+
+#: src/gui/setup_other.cpp:168
 msgid "Enable server side attack"
 msgstr ""
 
-#: src/gui/setup_other.cpp:154
+#: src/gui/setup_other.cpp:171
 msgid "Enable bot checker"
-msgstr ""
+msgstr "Zapnout ověřovač botů"
 
-#: src/gui/setup_other.cpp:157
+#: src/gui/setup_other.cpp:174
 msgid "Enable buggy servers protection"
-msgstr ""
+msgstr "Zapnout ochranu proti vadným serverům"
 
-#: src/gui/setup_other.cpp:160
+#: src/gui/setup_other.cpp:177
 msgid "Enable debug log"
-msgstr ""
+msgstr "Zapnout debug záznam"
 
-#: src/gui/setup_other.cpp:163
+#: src/gui/setup_other.cpp:180
 msgid "Low traffic mode"
-msgstr ""
+msgstr "Mód nízké síťvé náročnosti"
 
-#: src/gui/setup_other.cpp:166
+#: src/gui/setup_other.cpp:183
 msgid "Hide shield sprite"
-msgstr ""
+msgstr "Skrýt zobrazení štítu"
 
-#: src/gui/setup_other.cpp:169
+#: src/gui/setup_other.cpp:186
 msgid "Show background"
-msgstr ""
-
-#: src/gui/setup_perfomance.cpp:48
-msgid "Perfomance"
-msgstr ""
+msgstr "Zobrazit pozadí"
 
 #: src/gui/setup_perfomance.cpp:55
 msgid "Better perfomance (enable for better perfomance)"
-msgstr ""
+msgstr "Lepčí výkon (zapněte pro lepší výkon)"
 
 #: src/gui/setup_perfomance.cpp:58
 msgid "Auto adjust perfomance"
-msgstr ""
+msgstr "Automatické nastavování výkonu"
 
 #: src/gui/setup_perfomance.cpp:61
-msgid "Show beings transparency"
-msgstr ""
+msgid "Hw acceleration"
+msgstr "HW akcelerace"
 
 #: src/gui/setup_perfomance.cpp:64
-msgid "Hw acceleration"
-msgstr ""
-
-#: src/gui/setup_perfomance.cpp:67
 msgid "Enable opacity cache (Software, can use many memory)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:70
+#: src/gui/setup_perfomance.cpp:67
 msgid "Enable map reduce (Software)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:73
+#: src/gui/setup_perfomance.cpp:70
 msgid "Better quality (disable for better perfomance)"
-msgstr ""
+msgstr "Lepší kvalita (vypněte pro lepší výkon)"
 
-#: src/gui/setup_perfomance.cpp:76
+#: src/gui/setup_perfomance.cpp:73
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
+
+#: src/gui/setup_perfomance.cpp:77
+msgid "Show beings transparency"
+msgstr "Zobrazit objekty průhledné"
 
 #: src/gui/setup_perfomance.cpp:80
 msgid "Enable reorder sprites."
@@ -2128,7 +2183,7 @@ msgstr ""
 
 #: src/gui/setup_perfomance.cpp:83
 msgid "Small memory (enable for lower memory usage)"
-msgstr ""
+msgstr "Málo paměti (zapněte pro nízké využití paměti)"
 
 #: src/gui/setup_perfomance.cpp:86
 msgid "Disable advanced beings caching (Software)"
@@ -2144,39 +2199,47 @@ msgstr "Hráči"
 
 #: src/gui/setup_players.cpp:54
 msgid "Show gender"
-msgstr ""
+msgstr "Zobrazit pohlaví"
 
 #: src/gui/setup_players.cpp:57
 msgid "Show level"
-msgstr ""
+msgstr "Zobrazit úroveň"
 
 #: src/gui/setup_players.cpp:60
 msgid "Show own name"
-msgstr ""
+msgstr "Zobrazit vlastní jméno"
 
 #: src/gui/setup_players.cpp:63
 msgid "Target dead players"
-msgstr ""
+msgstr "Zaměřovat mrtvé hráče"
 
 #: src/gui/setup_players.cpp:66
 msgid "Visible names"
-msgstr ""
+msgstr "Viditelná jména"
 
 #: src/gui/setup_players.cpp:69
 msgid "Secure trades"
-msgstr ""
+msgstr "Bezpečné obchody"
 
 #: src/gui/setup_players.cpp:72
 msgid "Unsecure chars in names"
-msgstr ""
+msgstr "Nebezpečné znaky ve jménech"
 
 #: src/gui/setup_players.cpp:75
 msgid "Show statuses"
-msgstr ""
+msgstr "Zobrazovat statusy"
+
+#: src/gui/setup_players.cpp:78
+msgid "Show ip addresses on screenshots"
+msgstr "Zobrazovat IP adresy ve snímcích obrazovky"
+
+#: src/gui/setup_players.cpp:81
+msgid "Allow self heal with mouse click"
+msgstr "Povolit léčení sebe sama kliknutím myši"
 
 #: src/gui/setup_relations.cpp:65
 msgid "Relation"
-msgstr ""
+msgstr "Vztahy"
 
 #: src/gui/setup_relations.cpp:70
 msgid "Neutral"
@@ -2184,19 +2247,19 @@ msgstr "Neutrální"
 
 #: src/gui/setup_relations.cpp:71
 msgid "Friend"
-msgstr ""
+msgstr "Přítel"
 
 #: src/gui/setup_relations.cpp:72
 msgid "Disregarded"
-msgstr ""
+msgstr "Přehlížený"
 
 #: src/gui/setup_relations.cpp:73
 msgid "Ignored"
-msgstr ""
+msgstr "Ignorovaný"
 
 #: src/gui/setup_relations.cpp:74
 msgid "Erased"
-msgstr ""
+msgstr "Vymazán"
 
 #: src/gui/setup_relations.cpp:239
 msgid "Allow trading"
@@ -2204,96 +2267,100 @@ msgstr "Povolit obchodování"
 
 #: src/gui/setup_relations.cpp:241
 msgid "Allow whispers"
-msgstr ""
+msgstr "Povolit šeptání"
 
 #: src/gui/setup_relations.cpp:244
 msgid "Old"
-msgstr ""
+msgstr "Starý"
 
 #: src/gui/setup_relations.cpp:246
 msgid "Relations"
-msgstr ""
+msgstr "Vztahy"
 
 #: src/gui/setup_relations.cpp:271
 msgid "When ignoring:"
-msgstr ""
-
-#: src/gui/setup_theme.cpp:106
-msgid "Tiny (10)"
-msgstr ""
+msgstr "Když ignoruji:"
 
 #: src/gui/setup_theme.cpp:107
-msgid "Small (11)"
-msgstr ""
+msgid "Tiny (10)"
+msgstr "Mrňavý (10)"
 
 #: src/gui/setup_theme.cpp:108
-msgid "Medium (12)"
-msgstr ""
+msgid "Small (11)"
+msgstr "Malý (11)"
 
 #: src/gui/setup_theme.cpp:109
-msgid "Large (13)"
-msgstr ""
+msgid "Medium (12)"
+msgstr "Střední (12)"
 
 #: src/gui/setup_theme.cpp:110
-msgid "Big (14)"
-msgstr ""
+msgid "Large (13)"
+msgstr "Velký (13)"
 
 #: src/gui/setup_theme.cpp:111
-msgid "Huge (15)"
-msgstr ""
+msgid "Big (14)"
+msgstr "Větší (14)"
 
-#: src/gui/setup_theme.cpp:141
-msgid "Theme"
-msgstr ""
+#: src/gui/setup_theme.cpp:112
+msgid "Huge (15)"
+msgstr "Obrovský (15)"
 
 #: src/gui/setup_theme.cpp:143
-msgid "Gui theme"
-msgstr ""
-
-#: src/gui/setup_theme.cpp:144
-msgid "Main Font"
-msgstr ""
+msgid "Theme"
+msgstr "Téma"
 
 #: src/gui/setup_theme.cpp:145
-msgid "Bold font"
-msgstr ""
+msgid "Gui theme"
+msgstr "Téma GUI"
 
 #: src/gui/setup_theme.cpp:146
-msgid "Particle font"
-msgstr ""
+msgid "Main Font"
+msgstr "Hlavní font"
 
 #: src/gui/setup_theme.cpp:147
-msgid "Help font"
-msgstr ""
+msgid "Bold font"
+msgstr "Tučný font"
 
 #: src/gui/setup_theme.cpp:148
-msgid "Secure font"
-msgstr ""
+msgid "Particle font"
+msgstr "Font částic"
 
-#: src/gui/setup_theme.cpp:176
+#: src/gui/setup_theme.cpp:149
+msgid "Help font"
+msgstr "Pomocný font"
+
+#: src/gui/setup_theme.cpp:150
+msgid "Secure font"
+msgstr "Bezpečný font"
+
+#: src/gui/setup_theme.cpp:151
+msgid "Japanese font"
+msgstr "Japonský font"
+
+#: src/gui/setup_theme.cpp:183
 msgid "Font size"
 msgstr "Velikost písma"
 
-#: src/gui/setup_theme.cpp:282
+#: src/gui/setup_theme.cpp:299
 msgid "Theme Changed"
-msgstr ""
+msgstr "Téma změněno"
 
-#: src/gui/setup_theme.cpp:283 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:300 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
-msgstr ""
+msgstr "Restartujte klient pro aplikováni změn."
 
 #: src/gui/setup_video.cpp:194
 msgid "Software"
-msgstr ""
+msgstr "Softwarový"
 
 #: src/gui/setup_video.cpp:195
 msgid "Fast OpenGL"
-msgstr ""
+msgstr "Rychlé OpenGL"
 
 #: src/gui/setup_video.cpp:196
 msgid "Safe OpenGL"
-msgstr ""
+msgstr "Bezpečné OpenGL"
 
 #: src/gui/setup_video.cpp:223
 msgid "No text"
@@ -2305,11 +2372,11 @@ msgstr "Text"
 
 #: src/gui/setup_video.cpp:227
 msgid "Bubbles, no names"
-msgstr ""
+msgstr "Bubliny, beze jmen"
 
 #: src/gui/setup_video.cpp:229
 msgid "Bubbles with names"
-msgstr ""
+msgstr "Bubliny se jmény"
 
 #: src/gui/setup_video.cpp:242
 msgid "off"
@@ -2341,34 +2408,30 @@ msgstr "Vlastní kurzor"
 
 #: src/gui/setup_video.cpp:291
 msgid "Particle effects"
-msgstr ""
+msgstr "Částicové efekty"
 
 #: src/gui/setup_video.cpp:293
 msgid "Show pickup notification"
-msgstr ""
+msgstr "Zobrazit informaci o sebrání předmětu"
 
 #. TRANSLATORS: Refers to "Show own name"
 #: src/gui/setup_video.cpp:295
 msgid "in chat"
-msgstr ""
+msgstr "v chatu"
 
 #. TRANSLATORS: Refers to "Show own name"
 #: src/gui/setup_video.cpp:297
 msgid "as particle"
-msgstr ""
+msgstr "jako částici"
 
 #: src/gui/setup_video.cpp:302
 msgid "FPS limit:"
-msgstr ""
+msgstr "Omezení FPS:"
 
 #: src/gui/setup_video.cpp:306 src/gui/setup_video.cpp:341
-#: src/gui/setup_video.cpp:562 src/gui/setup_video.cpp:709
+#: src/gui/setup_video.cpp:562 src/gui/setup_video.cpp:710
 msgid "Alt FPS limit: "
-msgstr ""
-
-#: src/gui/setup_video.cpp:315
-msgid "Video"
-msgstr "Video"
+msgstr "Altern. FPS omezení:"
 
 #: src/gui/setup_video.cpp:321
 msgid "Overhead text"
@@ -2376,7 +2439,7 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:322
 msgid "Gui opacity"
-msgstr ""
+msgstr "Neprůhlednost GUI"
 
 #: src/gui/setup_video.cpp:323
 msgid "Ambient FX"
@@ -2384,27 +2447,30 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:324
 msgid "Particle detail"
-msgstr ""
+msgstr "Detaily částic"
 
 #: src/gui/setup_video.cpp:339 src/gui/setup_video.cpp:342
 #: src/gui/setup_video.cpp:561 src/gui/setup_video.cpp:696
-#: src/gui/setup_video.cpp:707
+#: src/gui/setup_video.cpp:708
 msgid "None"
-msgstr ""
+msgstr "Žádné"
 
 #: src/gui/setup_video.cpp:484
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
+"Selhalo přepnutí do módu v okně a obnovení předchozího módu taktéž selhalo!"
 
 #: src/gui/setup_video.cpp:490
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
+"Selhalo přepnutí do módu celé obrazovky a obnovení předchozího módu taktéž "
+"selhalo!"
 
 #: src/gui/setup_video.cpp:501
 msgid "Switching to Full Screen"
-msgstr ""
+msgstr "Přepínám na celou obrazovku"
 
 #: src/gui/setup_video.cpp:502
 msgid "Restart needed for changes to take effect."
@@ -2412,7 +2478,7 @@ msgstr "Pro uplatnění změn je potřeba restart."
 
 #: src/gui/setup_video.cpp:514
 msgid "Changing to OpenGL"
-msgstr ""
+msgstr "Měním na OpenGL"
 
 #: src/gui/setup_video.cpp:515
 msgid "Applying change to OpenGL requires restart."
@@ -2420,285 +2486,290 @@ msgstr "Změny v OpenGL vyžadují restart."
 
 #: src/gui/setup_video.cpp:602
 msgid "Custom resolution (example: 1024x768)"
-msgstr ""
+msgstr "Vlastní rozlišení (příklad: 1024x768)"
 
 #: src/gui/setup_video.cpp:603
 msgid "Enter new resolution:                "
-msgstr ""
+msgstr "Zadej nové rozlišení:"
 
 #: src/gui/setup_video.cpp:618 src/gui/setup_video.cpp:623
 msgid "Screen Resolution Changed"
-msgstr ""
+msgstr "Rozlišení obrazovky změněno"
 
 #: src/gui/setup_video.cpp:621
 msgid "Some windows may be moved to fit the lowered resolution."
-msgstr ""
+msgstr "Některá okna mohou být přesunuta aby se vešly do menšího okna."
 
 #: src/gui/setup_video.cpp:654
 msgid "Particle Effect Settings Changed."
-msgstr ""
+msgstr "Nastavení částicových efektů bylo změněno."
 
 #: src/gui/setup_video.cpp:655
 msgid "Changes will take effect on map change."
 msgstr "Změny se projeví až po změně mapy."
 
-#: src/gui/shopwindow.cpp:74
+#: src/gui/shopwindow.cpp:75
 msgid "Personal Shop"
-msgstr ""
+msgstr "Osobní obchod"
 
-#: src/gui/shopwindow.cpp:116
+#: src/gui/shopwindow.cpp:118
 msgid "Buy items"
-msgstr ""
+msgstr "Koupit věci"
 
-#: src/gui/shopwindow.cpp:117
+#: src/gui/shopwindow.cpp:119
 msgid "Sell items"
-msgstr ""
+msgstr "Prodat věci"
 
-#: src/gui/shopwindow.cpp:119 src/gui/shopwindow.cpp:122
-#: src/gui/tradewindow.cpp:88
+#: src/gui/shopwindow.cpp:121 src/gui/shopwindow.cpp:124
+#: src/gui/tradewindow.cpp:89
 msgid "Add"
 msgstr "Přidat"
 
-#: src/gui/shopwindow.cpp:121 src/gui/shopwindow.cpp:124
+#: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
 msgid "Announce"
-msgstr ""
+msgstr "Oznámit"
 
-#: src/gui/shopwindow.cpp:125
+#: src/gui/shopwindow.cpp:127
 msgid "Show links in announce"
-msgstr ""
+msgstr "Zobrazit odkazy v oznámení"
 
-#: src/gui/shopwindow.cpp:723 src/net/ea/tradehandler.cpp:106
+#: src/gui/shopwindow.cpp:148 src/gui/shopwindow.cpp:149
+msgid "Auction"
+msgstr "Aukce"
+
+#: src/gui/shopwindow.cpp:748 src/net/ea/tradehandler.cpp:106
 #: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
-msgstr ""
+msgstr "Požadavek k obchodování"
 
-#: src/gui/shopwindow.cpp:724
+#: src/gui/shopwindow.cpp:749
 #, c-format
 msgid "%s wants to %s %s do you accept?"
-msgstr ""
+msgstr "%s chce %s %s příjímáte?"
 
-#: src/gui/skilldialog.cpp:272 src/gui/windowmenu.cpp:81
+#: src/gui/skilldialog.cpp:276 src/gui/windowmenu.cpp:81
 msgid "Skills"
 msgstr "Dovednosti"
 
-#: src/gui/skilldialog.cpp:283
+#: src/gui/skilldialog.cpp:288
 msgid "Up"
-msgstr ""
+msgstr "Zvýšit"
 
-#: src/gui/skilldialog.cpp:336
+#: src/gui/skilldialog.cpp:341
 #, c-format
 msgid "Skill points available: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:413
+#: src/gui/skilldialog.cpp:420
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:425
+#: src/gui/skilldialog.cpp:432
 #, c-format
 msgid "Skill %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:492 src/gui/skilldialog.cpp:545
+#: src/gui/skilldialog.cpp:499 src/gui/skilldialog.cpp:554
 #, c-format
 msgid "Lvl: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:537
+#: src/gui/skilldialog.cpp:546
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:117 src/net/ea/gui/guildtab.cpp:52
+#: src/gui/socialwindow.cpp:118 src/gui/socialwindow.cpp:216
+#: src/gui/widgets/guildchattab.cpp:43 src/net/ea/gui/guildtab.cpp:52
 msgid "Guild"
-msgstr "Guilda"
+msgstr "Gilda"
 
-#: src/gui/socialwindow.cpp:146
+#: src/gui/socialwindow.cpp:147
 #, c-format
 msgid "Invited user %s to guild %s."
-msgstr ""
+msgstr "Pozvali jste %s do gildy %s."
 
-#: src/gui/socialwindow.cpp:160
+#: src/gui/socialwindow.cpp:161
 #, c-format
 msgid "Guild %s quit requested."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:187
-msgid "Member Invite to Guild"
-msgstr ""
+msgstr "Požadován odchod z gildy %s."
 
 #: src/gui/socialwindow.cpp:188
+msgid "Member Invite to Guild"
+msgstr "Člen pozval do gildy"
+
+#: src/gui/socialwindow.cpp:189
 #, c-format
 msgid "Who would you like to invite to guild %s?"
-msgstr ""
-
-#: src/gui/socialwindow.cpp:197
-msgid "Leave Guild?"
-msgstr ""
+msgstr "Koho byste rád pozval do gildy %s?"
 
 #: src/gui/socialwindow.cpp:198
+msgid "Leave Guild?"
+msgstr "Opustit gildu?"
+
+#: src/gui/socialwindow.cpp:199
 #, c-format
 msgid "Are you sure you want to leave guild %s?"
-msgstr ""
+msgstr "Jste si jisti že chcete opustit gildu %s?"
 
-#: src/gui/socialwindow.cpp:215 src/net/ea/gui/partytab.cpp:50
+#: src/gui/socialwindow.cpp:319 src/net/ea/gui/partytab.cpp:50
 msgid "Party"
 msgstr "Parta"
 
-#: src/gui/socialwindow.cpp:243
+#: src/gui/socialwindow.cpp:347
 #, c-format
 msgid "Invited user %s to party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:257
+#: src/gui/socialwindow.cpp:361
 #, c-format
 msgid "Party %s quit requested."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:284
+#: src/gui/socialwindow.cpp:388
 msgid "Member Invite to Party"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:285
+#: src/gui/socialwindow.cpp:389
 #, c-format
 msgid "Who would you like to invite to party %s?"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:294
+#: src/gui/socialwindow.cpp:398
 msgid "Leave Party?"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:295
+#: src/gui/socialwindow.cpp:399
 #, c-format
 msgid "Are you sure you want to leave party %s?"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:521
+#: src/gui/socialwindow.cpp:625
 msgid "Nav"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:799
+#: src/gui/socialwindow.cpp:903
 msgid "Atk"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:840
+#: src/gui/socialwindow.cpp:944
 msgid "Priority mobs"
-msgstr ""
+msgstr "Prioritní monstra"
 
-#: src/gui/socialwindow.cpp:872
+#: src/gui/socialwindow.cpp:976
 msgid "Attack mobs"
-msgstr ""
+msgstr "Útočit na monstra"
 
-#: src/gui/socialwindow.cpp:907
+#: src/gui/socialwindow.cpp:1011
 msgid "Ignore mobs"
-msgstr ""
+msgstr "Ignorovat monstra"
 
-#: src/gui/socialwindow.cpp:970
+#: src/gui/socialwindow.cpp:1074
 msgid "Create Guild"
-msgstr "Vytvořit guildu"
+msgstr "Vytvořit gildu"
 
-#: src/gui/socialwindow.cpp:971 src/gui/socialwindow.cpp:1387
+#: src/gui/socialwindow.cpp:1075 src/gui/socialwindow.cpp:1503
 msgid "Create Party"
-msgstr ""
+msgstr "Vytvořit partu"
 
-#: src/gui/socialwindow.cpp:1013 src/gui/windowmenu.cpp:93
+#: src/gui/socialwindow.cpp:1117 src/gui/windowmenu.cpp:93
 msgid "Social"
-msgstr ""
+msgstr "Společenství"
 
-#: src/gui/socialwindow.cpp:1034
+#: src/gui/socialwindow.cpp:1140
 msgid "Invite"
-msgstr ""
+msgstr "Pozvat"
 
-#: src/gui/socialwindow.cpp:1176
+#: src/gui/socialwindow.cpp:1286
 #, c-format
 msgid "Accepted party invite from %s."
-msgstr ""
+msgstr "Přijato pozvání do party od %s."
 
-#: src/gui/socialwindow.cpp:1186
+#: src/gui/socialwindow.cpp:1296
 #, c-format
 msgid "Rejected party invite from %s."
-msgstr ""
+msgstr "Odmítnuto přijetí do party od %s."
 
-#: src/gui/socialwindow.cpp:1203
+#: src/gui/socialwindow.cpp:1313
 #, c-format
 msgid "Accepted guild invite from %s."
-msgstr ""
+msgstr "Přijato pozvání do gildy od %s."
 
-#: src/gui/socialwindow.cpp:1213
+#: src/gui/socialwindow.cpp:1326
 #, c-format
 msgid "Rejected guild invite from %s."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1257
-#, c-format
-msgid "Creating guild called %s."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1280
-#, c-format
-msgid "Creating party called %s."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1294
-msgid "Guild Name"
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1295
-msgid "Choose your guild's name."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1309
-msgid "Received guild request, but one already exists."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1315
-#, c-format
-msgid "%s has invited you to join the guild %s."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1321
-msgid "Accept Guild Invite"
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1336
-msgid "Received party request, but one already exists."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1347
-msgid "You have been invited you to join a party."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1351
-#, c-format
-msgid "You have been invited to join the %s party."
-msgstr ""
-
-#: src/gui/socialwindow.cpp:1359
-#, c-format
-msgid "%s has invited you to join their party."
-msgstr "%s vás zve ke vstupu do své party."
-
-#: src/gui/socialwindow.cpp:1364
-#, c-format
-msgid "%s has invited you to join the %s party."
-msgstr "%s vás zve ke vstupu do party: %s"
+msgstr "Odmítnuto pozvání do gildy od %s."
 
 #: src/gui/socialwindow.cpp:1373
+#, c-format
+msgid "Creating guild called %s."
+msgstr "Vytvářím gildu s názvem %s."
+
+#: src/gui/socialwindow.cpp:1396
+#, c-format
+msgid "Creating party called %s."
+msgstr "Vytvářím partu s názvem %s."
+
+#: src/gui/socialwindow.cpp:1410
+msgid "Guild Name"
+msgstr "Název gildy"
+
+#: src/gui/socialwindow.cpp:1411
+msgid "Choose your guild's name."
+msgstr "Zvolte jméno vaší gildy."
+
+#: src/gui/socialwindow.cpp:1425
+msgid "Received guild request, but one already exists."
+msgstr "Obdržen požadavek na vytvoření gildy, ale tato již existuje."
+
+#: src/gui/socialwindow.cpp:1431
+#, c-format
+msgid "%s has invited you to join the guild %s."
+msgstr "%s vás zve ke vstupu do gildy %s."
+
+#: src/gui/socialwindow.cpp:1437
+msgid "Accept Guild Invite"
+msgstr "Přílmout pozvání do gildy"
+
+#: src/gui/socialwindow.cpp:1452
+msgid "Received party request, but one already exists."
+msgstr "Obdržen požadavek na vytvoření party, ale tato již existuje."
+
+#: src/gui/socialwindow.cpp:1463
+msgid "You have been invited you to join a party."
+msgstr "Byli jste pozváni k připojení se do party."
+
+#: src/gui/socialwindow.cpp:1467
+#, c-format
+msgid "You have been invited to join the %s party."
+msgstr "Byli jste pozváni k připojení se do party %s."
+
+#: src/gui/socialwindow.cpp:1475
+#, c-format
+msgid "%s has invited you to join their party."
+msgstr "%s vás pozval ke vstupu do své party."
+
+#: src/gui/socialwindow.cpp:1480
+#, c-format
+msgid "%s has invited you to join the %s party."
+msgstr "%s vás zve ke vstupu do party: %s."
+
+#: src/gui/socialwindow.cpp:1489
 msgid "Accept Party Invite"
 msgstr "Přijmout pozvání do party"
 
-#: src/gui/socialwindow.cpp:1388
+#: src/gui/socialwindow.cpp:1504
 msgid "Cannot create party. You are already in a party"
-msgstr ""
+msgstr "Nemohu vytvořit partu. Již jste členem party."
 
-#: src/gui/socialwindow.cpp:1393
+#: src/gui/socialwindow.cpp:1509
 msgid "Party Name"
-msgstr ""
+msgstr "Jméno party"
 
-#: src/gui/socialwindow.cpp:1394
+#: src/gui/socialwindow.cpp:1510
 msgid "Choose your party's name."
-msgstr ""
+msgstr "Zvolte jméno vaší party."
 
 #: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:88
 msgid "Specials"
@@ -2706,79 +2777,79 @@ msgstr ""
 
 #: src/gui/statuspopup.cpp:197
 msgid "(D) default moves"
-msgstr ""
+msgstr "(D) výchozí pohyby"
 
 #: src/gui/statuspopup.cpp:202
 msgid "(I) invert moves"
-msgstr ""
+msgstr "(I) invertované pohyby"
 
 #: src/gui/statuspopup.cpp:207
 msgid "(c) moves with some crazy moves"
-msgstr ""
+msgstr "(c) pohyby s trochou šílených pohybů"
 
 #: src/gui/statuspopup.cpp:212
 msgid "(C) moves with crazy moves"
-msgstr ""
+msgstr "(C) pohyby s šílenými pohyby"
 
 #: src/gui/statuspopup.cpp:217
 msgid "(d) double normal + crazy"
-msgstr ""
+msgstr "(d) dvojité normální + šílené"
 
 #: src/gui/statuspopup.cpp:222
 msgid "(?) move"
-msgstr ""
+msgstr "(?) pohyb"
 
 #: src/gui/statuspopup.cpp:240
 msgid "(a) custom crazy move"
-msgstr ""
+msgstr "(a) vlastní šílené pohyby"
 
 #: src/gui/statuspopup.cpp:244
 msgid "(?) crazy move"
-msgstr ""
+msgstr "(?) šílené pohyby"
 
 #: src/gui/statuspopup.cpp:254
 msgid "(0) default moves to target"
-msgstr ""
+msgstr "(0) výchozí pohyb k cíli"
 
 #: src/gui/statuspopup.cpp:259
 msgid "(1) moves to target in distance 1"
-msgstr ""
+msgstr "(1) pohyb k cíli do vzdálenosti 1"
 
 #: src/gui/statuspopup.cpp:264
 msgid "(2) moves to target in distance 2"
-msgstr ""
+msgstr "(2) pohyb k cíli do vzdálenosti 2"
 
 #: src/gui/statuspopup.cpp:269
 msgid "(3) moves to target in distance 3"
-msgstr ""
+msgstr "(3) pohyb k cíli do vzdálenosti 3"
 
 #: src/gui/statuspopup.cpp:274
 msgid "(5) moves to target in distance 5"
-msgstr ""
+msgstr "(5) pohyb k cíli do vzdálenosti 5"
 
 #: src/gui/statuspopup.cpp:279
 msgid "(7) moves to target in distance 7"
-msgstr ""
+msgstr "(7) pohyb k cíli do vzdálenosti 7"
 
 #: src/gui/statuspopup.cpp:284
 msgid "(A) moves to target in attack range"
-msgstr ""
+msgstr "(A) pohyb k cíli na útočný dosah"
 
 #: src/gui/statuspopup.cpp:289
 msgid "(?) move to target"
-msgstr ""
+msgstr "(?) pohyb k cíli"
 
 #: src/gui/statuspopup.cpp:297
 msgid "(D) default follow"
-msgstr ""
+msgstr "(D) výchozí následování"
 
 #: src/gui/statuspopup.cpp:301
 msgid "(R) relative follow"
-msgstr ""
+msgstr "(R) relativní následování"
 
 #: src/gui/statuspopup.cpp:305
 msgid "(M) mirror follow"
-msgstr ""
+msgstr "(M) zrcadlené následování"
 
 #: src/gui/statuspopup.cpp:309
 msgid "(P) pet follow"
@@ -2786,151 +2857,151 @@ msgstr ""
 
 #: src/gui/statuspopup.cpp:313
 msgid "(?) unknown follow"
-msgstr ""
+msgstr "(?) neznámé následování"
 
 #: src/gui/statuspopup.cpp:322 src/gui/statuspopup.cpp:345
 msgid "(D) default attack"
-msgstr ""
+msgstr "(D) výchozí útok"
 
 #: src/gui/statuspopup.cpp:327
 msgid "(s) switch attack without shield"
-msgstr ""
+msgstr "(s) přepínat útok bez štítu"
 
 #: src/gui/statuspopup.cpp:332
 msgid "(S) switch attack with shield"
-msgstr ""
+msgstr "(S) přepínat útok se štítem"
 
 #: src/gui/statuspopup.cpp:336 src/gui/statuspopup.cpp:361
 msgid "(?) attack"
-msgstr ""
+msgstr "(?) útok"
 
 #: src/gui/statuspopup.cpp:349
 msgid "(G) go and attack"
-msgstr ""
+msgstr "(G) jdi a útoč"
 
 #: src/gui/statuspopup.cpp:353
 msgid "(A) go, attack, pickup"
-msgstr ""
+msgstr "(A) jdi, útoč, sbírej"
 
 #: src/gui/statuspopup.cpp:357
 msgid "(d) without auto attack"
-msgstr ""
+msgstr "(d) bez automatického útoku"
 
 #: src/gui/statuspopup.cpp:375
 msgid "(S) small pick up 1x1 cells"
-msgstr ""
+msgstr "(S) malý sběr 1x1 pole"
 
 #: src/gui/statuspopup.cpp:379
 msgid "(D) default pick up 2x1 cells"
-msgstr ""
+msgstr "(D) výchozí sběr 2x1 pole"
 
 #: src/gui/statuspopup.cpp:383
 msgid "(F) forward pick up 2x3 cells"
-msgstr ""
+msgstr "(F) sběr před 2x3 pole"
 
 #: src/gui/statuspopup.cpp:387
 msgid "(3) pick up 3x3 cells"
-msgstr ""
+msgstr "(3) sběr 3x3 pole"
 
 #: src/gui/statuspopup.cpp:391
 msgid "(g) go and pick up in distance 4"
-msgstr ""
+msgstr "(g) jdi a seber do vzdálenosti 4"
 
 #: src/gui/statuspopup.cpp:395
 msgid "(G) go and pick up in distance 8"
-msgstr ""
+msgstr "(G) jdi a seber do vzdálenosti 8"
 
 #: src/gui/statuspopup.cpp:399
 msgid "(A) go and pick up in max distance"
-msgstr ""
+msgstr "(A) jdi a seber do max. vzdálenosti"
 
 #: src/gui/statuspopup.cpp:403
 msgid "(?) pick up"
-msgstr ""
+msgstr "(?) sběr"
 
 #: src/gui/statuspopup.cpp:412
 msgid "(N) normal map view"
-msgstr ""
+msgstr "(N) Normální zobrazení mapy"
 
 #: src/gui/statuspopup.cpp:416
 msgid "(D) debug map view"
-msgstr ""
+msgstr "(D) debug zobrazení mapy"
 
 #: src/gui/statuspopup.cpp:420
 msgid "(u) ultra map view"
-msgstr ""
+msgstr "(u) ultra zobrazení mapy"
 
 #: src/gui/statuspopup.cpp:424
 msgid "(U) ultra map view 2"
-msgstr ""
+msgstr "(U) ultra zobrazení mapy 2"
 
 #: src/gui/statuspopup.cpp:428
 msgid "(e) empty map view"
-msgstr ""
+msgstr "(e) zobrazen prázdné mapy"
 
 #: src/gui/statuspopup.cpp:432
 msgid "(b) black & white map view"
-msgstr ""
+msgstr "(b) zobrazení černobílé mapy"
 
 #: src/gui/statuspopup.cpp:436
 msgid "(?) map view"
-msgstr ""
+msgstr "(?) zobrazení pamy"
 
 #: src/gui/statuspopup.cpp:444
 msgid "(f) use #flar for magic attack"
-msgstr ""
+msgstr "(f) použij #flar pro magický útok"
 
 #: src/gui/statuspopup.cpp:449
 msgid "(c) use #chiza for magic attack"
-msgstr ""
+msgstr "(c) použij #chiza pro magický útok"
 
 #: src/gui/statuspopup.cpp:454
 msgid "(I) use #ingrav for magic attack"
-msgstr ""
+msgstr "(I) použij #ingrav pro magický útok"
 
 #: src/gui/statuspopup.cpp:459
 msgid "(F) use #frillyar for magic attack"
-msgstr ""
+msgstr "(F) použij #frillyar pro magický útok"
 
 #: src/gui/statuspopup.cpp:464
 msgid "(U) use #upmarmu for magic attack"
-msgstr ""
+msgstr "(U) použij #upmarmu pro magický útok"
 
 #: src/gui/statuspopup.cpp:468
 msgid "(?) magic attack"
-msgstr ""
+msgstr "(?) magický útok attack"
 
 #: src/gui/statuspopup.cpp:477
 msgid "(D) default imitation"
-msgstr ""
+msgstr "(D) výchozí imitace"
 
 #: src/gui/statuspopup.cpp:481
 msgid "(O) outfits imitation"
-msgstr ""
+msgstr "(O) imitace výstroje"
 
 #: src/gui/statuspopup.cpp:485
 msgid "(?) imitation"
-msgstr ""
+msgstr "(?) imitace"
 
 #: src/gui/statuspopup.cpp:494
 msgid "(O) on keyboard"
-msgstr ""
+msgstr "(O) u počítače"
 
 #: src/gui/statuspopup.cpp:497
 msgid "(A) away"
-msgstr ""
+msgstr "(A) pryč (away)"
 
 #: src/gui/statuspopup.cpp:500 src/gui/statuspopup.cpp:520
 msgid "(?) away"
-msgstr ""
+msgstr "(?) away"
 
 #: src/gui/statuspopup.cpp:508
 msgid "(G) game camera mode"
-msgstr ""
+msgstr "(G) mód herní kamery"
 
 #: src/gui/statuspopup.cpp:512
 msgid "(F) free camera mode"
-msgstr ""
+msgstr "(F) mód volné kamery"
 
 #: src/gui/statuspopup.cpp:516
 msgid "(D) design camera mode"
@@ -2938,194 +3009,194 @@ msgstr ""
 
 #: src/gui/statuspopup.cpp:527
 msgid "Game modifiers are disabled"
-msgstr ""
+msgstr "Modifikátory hry jsou vypnuty"
 
 #: src/gui/statuspopup.cpp:532
 msgid "Game modifiers are enabled"
-msgstr ""
+msgstr "Modifikátory hry jsou zapnuty"
 
-#: src/gui/statuswindow.cpp:133 src/gui/statuswindow.cpp:259
-#: src/gui/statuswindow.cpp:322
+#: src/gui/statuswindow.cpp:143 src/gui/statuswindow.cpp:273
+#: src/gui/statuswindow.cpp:336
 #, c-format
 msgid "Level: %d"
 msgstr "Úroveň: %d"
 
-#: src/gui/statuswindow.cpp:134 src/gui/statuswindow.cpp:245
-#: src/gui/statuswindow.cpp:289
+#: src/gui/statuswindow.cpp:144 src/gui/statuswindow.cpp:259
+#: src/gui/statuswindow.cpp:303
 #, c-format
 msgid "Money: %s"
 msgstr "Peníze: %s"
 
-#: src/gui/statuswindow.cpp:140
+#: src/gui/statuswindow.cpp:150
 msgid "HP:"
 msgstr ""
 
-#: src/gui/statuswindow.cpp:147
+#: src/gui/statuswindow.cpp:157
 msgid "Exp:"
 msgstr "Exp:"
 
-#: src/gui/statuswindow.cpp:161
+#: src/gui/statuswindow.cpp:171
 msgid "MP:"
 msgstr ""
 
-#: src/gui/statuswindow.cpp:193 src/gui/statuswindow.cpp:372
+#: src/gui/statuswindow.cpp:203 src/gui/statuswindow.cpp:386
 #, c-format
 msgid "Job: %d"
-msgstr ""
+msgstr "Práce: %d"
 
-#: src/gui/statuswindow.cpp:194
+#: src/gui/statuswindow.cpp:204
 msgid "Job:"
-msgstr ""
+msgstr "Práce:"
 
-#: src/gui/statuswindow.cpp:248 src/gui/statuswindow.cpp:296
+#: src/gui/statuswindow.cpp:262 src/gui/statuswindow.cpp:310
 #, c-format
 msgid "Character points: %d"
-msgstr ""
+msgstr "Bodů postavy: %d"
 
-#: src/gui/statuswindow.cpp:254
+#: src/gui/statuswindow.cpp:268
 #, c-format
 msgid "Level: %d (GM %d)"
-msgstr ""
+msgstr "Úroveň: %d (GM %d)"
 
-#: src/gui/statuswindow.cpp:310
+#: src/gui/statuswindow.cpp:324
 #, c-format
 msgid "Correction points: %d"
 msgstr ""
 
-#: src/gui/statuswindow.cpp:633 src/gui/statuswindow.cpp:698
-#: src/gui/statuswindow.cpp:718 src/gui/statuswindow.cpp:734
-#: src/gui/statuswindow.cpp:780 src/gui/statuswindow.cpp:809
-#: src/gui/statuswindow.cpp:832 src/gui/statuswindow.cpp:851
+#: src/gui/statuswindow.cpp:647 src/gui/statuswindow.cpp:712
+#: src/gui/statuswindow.cpp:732 src/gui/statuswindow.cpp:748
+#: src/gui/statuswindow.cpp:794 src/gui/statuswindow.cpp:823
+#: src/gui/statuswindow.cpp:846 src/gui/statuswindow.cpp:865
 msgid "(D)"
-msgstr ""
+msgstr "(D)"
 
-#: src/gui/statuswindow.cpp:636 src/gui/statuswindow.cpp:759
+#: src/gui/statuswindow.cpp:650 src/gui/statuswindow.cpp:773
 msgid "(I)"
-msgstr ""
+msgstr "(I)"
 
-#: src/gui/statuswindow.cpp:639 src/gui/statuswindow.cpp:756
+#: src/gui/statuswindow.cpp:653 src/gui/statuswindow.cpp:770
 msgid "(c)"
-msgstr ""
+msgstr "(c)"
 
-#: src/gui/statuswindow.cpp:642
+#: src/gui/statuswindow.cpp:656
 msgid "(C)"
-msgstr ""
+msgstr "(C)"
 
-#: src/gui/statuswindow.cpp:645 src/gui/statuswindow.cpp:743
+#: src/gui/statuswindow.cpp:659 src/gui/statuswindow.cpp:757
 msgid "(d)"
-msgstr ""
+msgstr "(d)"
 
-#: src/gui/statuswindow.cpp:648 src/gui/statuswindow.cpp:662
-#: src/gui/statuswindow.cpp:691 src/gui/statuswindow.cpp:710
-#: src/gui/statuswindow.cpp:727 src/gui/statuswindow.cpp:746
-#: src/gui/statuswindow.cpp:768 src/gui/statuswindow.cpp:798
-#: src/gui/statuswindow.cpp:824 src/gui/statuswindow.cpp:838
-#: src/gui/statuswindow.cpp:854 src/gui/statuswindow.cpp:867
+#: src/gui/statuswindow.cpp:662 src/gui/statuswindow.cpp:676
+#: src/gui/statuswindow.cpp:705 src/gui/statuswindow.cpp:724
+#: src/gui/statuswindow.cpp:741 src/gui/statuswindow.cpp:760
+#: src/gui/statuswindow.cpp:782 src/gui/statuswindow.cpp:812
+#: src/gui/statuswindow.cpp:838 src/gui/statuswindow.cpp:852
+#: src/gui/statuswindow.cpp:868 src/gui/statuswindow.cpp:881
 msgid "(?)"
-msgstr ""
-
-#: src/gui/statuswindow.cpp:659
-msgid "(a)"
-msgstr ""
-
-#: src/gui/statuswindow.cpp:670
-msgid "(0)"
-msgstr ""
+msgstr "(?)"
 
 #: src/gui/statuswindow.cpp:673
+msgid "(a)"
+msgstr "(a)"
+
+#: src/gui/statuswindow.cpp:684
+msgid "(0)"
+msgstr "(0)"
+
+#: src/gui/statuswindow.cpp:687
 msgid "(1)"
-msgstr ""
+msgstr "(1)"
 
-#: src/gui/statuswindow.cpp:676
+#: src/gui/statuswindow.cpp:690
 msgid "(2)"
-msgstr ""
+msgstr " (2)"
 
-#: src/gui/statuswindow.cpp:679 src/gui/statuswindow.cpp:786
+#: src/gui/statuswindow.cpp:693 src/gui/statuswindow.cpp:800
 msgid "(3)"
-msgstr ""
+msgstr "(3)"
 
-#: src/gui/statuswindow.cpp:682
+#: src/gui/statuswindow.cpp:696
 msgid "(5)"
-msgstr ""
+msgstr "(5)"
 
-#: src/gui/statuswindow.cpp:685
+#: src/gui/statuswindow.cpp:699
 msgid "(7)"
-msgstr ""
+msgstr "(7)"
 
-#: src/gui/statuswindow.cpp:688 src/gui/statuswindow.cpp:740
-#: src/gui/statuswindow.cpp:795 src/gui/statuswindow.cpp:864
+#: src/gui/statuswindow.cpp:702 src/gui/statuswindow.cpp:754
+#: src/gui/statuswindow.cpp:809 src/gui/statuswindow.cpp:878
 msgid "(A)"
-msgstr ""
+msgstr "(A)"
 
-#: src/gui/statuswindow.cpp:701
+#: src/gui/statuswindow.cpp:715
 msgid "(R)"
-msgstr ""
+msgstr "(R)"
 
-#: src/gui/statuswindow.cpp:704
+#: src/gui/statuswindow.cpp:718
 msgid "(M)"
-msgstr ""
-
-#: src/gui/statuswindow.cpp:707
-msgid "(P)"
-msgstr ""
+msgstr "(M)"
 
 #: src/gui/statuswindow.cpp:721
+msgid "(P)"
+msgstr "(P)"
+
+#: src/gui/statuswindow.cpp:735
 msgid "(s)"
-msgstr ""
+msgstr "(s)"
 
-#: src/gui/statuswindow.cpp:724 src/gui/statuswindow.cpp:777
+#: src/gui/statuswindow.cpp:738 src/gui/statuswindow.cpp:791
 msgid "(S)"
-msgstr ""
+msgstr "(S)"
 
-#: src/gui/statuswindow.cpp:737 src/gui/statuswindow.cpp:792
-#: src/gui/statuswindow.cpp:845
+#: src/gui/statuswindow.cpp:751 src/gui/statuswindow.cpp:806
+#: src/gui/statuswindow.cpp:859
 msgid "(G)"
-msgstr ""
+msgstr "(G)"
 
-#: src/gui/statuswindow.cpp:753
+#: src/gui/statuswindow.cpp:767
 msgid "(f)"
-msgstr ""
+msgstr "(f)"
 
-#: src/gui/statuswindow.cpp:762 src/gui/statuswindow.cpp:783
-#: src/gui/statuswindow.cpp:848
+#: src/gui/statuswindow.cpp:776 src/gui/statuswindow.cpp:797
+#: src/gui/statuswindow.cpp:862
 msgid "(F)"
-msgstr ""
+msgstr "(F)"
 
-#: src/gui/statuswindow.cpp:765 src/gui/statuswindow.cpp:815
+#: src/gui/statuswindow.cpp:779 src/gui/statuswindow.cpp:829
 msgid "(U)"
-msgstr ""
+msgstr "(U)"
 
-#: src/gui/statuswindow.cpp:789
+#: src/gui/statuswindow.cpp:803
 msgid "(g)"
-msgstr ""
+msgstr "(g)"
 
-#: src/gui/statuswindow.cpp:806
+#: src/gui/statuswindow.cpp:820
 msgid "(N)"
-msgstr ""
+msgstr "(N)"
 
-#: src/gui/statuswindow.cpp:812
+#: src/gui/statuswindow.cpp:826
 msgid "(u)"
-msgstr ""
+msgstr "(u)"
 
-#: src/gui/statuswindow.cpp:818
+#: src/gui/statuswindow.cpp:832
 msgid "(e)"
-msgstr ""
+msgstr "(e)"
 
-#: src/gui/statuswindow.cpp:821
+#: src/gui/statuswindow.cpp:835
 msgid "(b)"
-msgstr ""
+msgstr "(b)"
 
-#: src/gui/statuswindow.cpp:835 src/gui/statuswindow.cpp:861
+#: src/gui/statuswindow.cpp:849 src/gui/statuswindow.cpp:875
 msgid "(O)"
-msgstr ""
+msgstr "(O)"
 
 #: src/gui/textcommandeditor.cpp:113
 msgid "No Target"
-msgstr ""
+msgstr "Žádný cíl"
 
 #: src/gui/textcommandeditor.cpp:114
 msgid "Allow Target"
-msgstr ""
+msgstr " "
 
 #: src/gui/textcommandeditor.cpp:115
 msgid "Need Target"
@@ -3133,39 +3204,39 @@ msgstr ""
 
 #: src/gui/textcommandeditor.cpp:120
 msgid "General Magic"
-msgstr ""
+msgstr "Obecná magie"
 
 #: src/gui/textcommandeditor.cpp:121
 msgid "Life Magic"
-msgstr ""
+msgstr "Magie života"
 
 #: src/gui/textcommandeditor.cpp:122
 msgid "War Magic"
-msgstr ""
+msgstr "Magie války"
 
 #: src/gui/textcommandeditor.cpp:123
 msgid "Transmute Magic"
-msgstr ""
+msgstr "Magie přeměn"
 
 #: src/gui/textcommandeditor.cpp:124
 msgid "Nature Magic"
-msgstr ""
+msgstr "Magie přírody"
 
 #: src/gui/textcommandeditor.cpp:125
 msgid "Astral Magic"
-msgstr ""
+msgstr "Magie hvězd"
 
 #: src/gui/textcommandeditor.cpp:168
 msgid "Command Editor"
-msgstr ""
+msgstr "Editor příkazů"
 
 #: src/gui/textcommandeditor.cpp:185
 msgid "magic"
-msgstr ""
+msgstr "magie"
 
 #: src/gui/textcommandeditor.cpp:189
 msgid "other"
-msgstr ""
+msgstr "ostatní"
 
 #: src/gui/textcommandeditor.cpp:194
 msgid "Symbol:"
@@ -3173,35 +3244,35 @@ msgstr ""
 
 #: src/gui/textcommandeditor.cpp:197
 msgid "Command:"
-msgstr ""
+msgstr "Příkaz:"
 
 #: src/gui/textcommandeditor.cpp:200
 msgid "Mana:"
-msgstr ""
+msgstr "Mana:"
 
 #: src/gui/textcommandeditor.cpp:206
 msgid "Target Type:"
-msgstr ""
+msgstr "Typ cíle:"
 
 #: src/gui/textcommandeditor.cpp:212
 msgid "Icon:"
-msgstr ""
+msgstr "Ikona:"
 
 #: src/gui/textcommandeditor.cpp:218
 msgid "Magic level:"
-msgstr ""
+msgstr "Úroveň magie:"
 
 #: src/gui/textcommandeditor.cpp:224
 msgid "Magic School:"
-msgstr ""
+msgstr "Škola magie:"
 
 #: src/gui/textcommandeditor.cpp:230
 msgid "School level:"
-msgstr ""
+msgstr "Úroveň školy:"
 
 #: src/gui/textcommandeditor.cpp:235
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 #: src/gui/tradewindow.cpp:60
 msgid "Propose trade"
@@ -3209,7 +3280,7 @@ msgstr "Nabídnout obchod"
 
 #: src/gui/tradewindow.cpp:61
 msgid "Confirmed. Waiting..."
-msgstr ""
+msgstr "Potvrzeno. Čekám..."
 
 #: src/gui/tradewindow.cpp:62
 msgid "Agree trade"
@@ -3217,68 +3288,67 @@ msgstr "Souhlasit s obchodem"
 
 #: src/gui/tradewindow.cpp:63
 msgid "Agreed. Waiting..."
-msgstr ""
+msgstr "Odsouhlaseno. Čekám..."
 
 #: src/gui/tradewindow.cpp:66
 msgid "Trade: You"
-msgstr ""
+msgstr "Obchod: Ty"
 
-#: src/gui/tradewindow.cpp:110 src/gui/tradewindow.cpp:166
+#: src/gui/tradewindow.cpp:111 src/gui/tradewindow.cpp:167
 #, c-format
 msgid "You get %s"
-msgstr ""
+msgstr "Dostaneš: %s"
 
-#: src/gui/tradewindow.cpp:111
+#: src/gui/tradewindow.cpp:112
 msgid "You give:"
-msgstr ""
+msgstr "Dáváš:"
 
-#: src/gui/tradewindow.cpp:115
+#: src/gui/tradewindow.cpp:116
 msgid "Change"
 msgstr "Změnit"
 
-#: src/gui/tradewindow.cpp:332
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
-msgstr ""
-
-#: src/gui/tradewindow.cpp:377
+#: src/gui/tradewindow.cpp:375
 msgid "You don't have enough money."
 msgstr "Nemáte dost peněz."
+
+#: src/gui/tradewindow.cpp:454
+msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgstr ""
 
 #: src/gui/unregisterdialog.cpp:54
 #, c-format
 msgid "Name: %s"
 msgstr "Jméno: %s"
 
-#: src/gui/updatewindow.cpp:136
+#: src/gui/updaterwindow.cpp:138
 msgid "Updating..."
 msgstr "Aktualizuje se..."
 
-#: src/gui/updatewindow.cpp:155
+#: src/gui/updaterwindow.cpp:159
 msgid "Connecting..."
 msgstr "Připojuji se..."
 
-#: src/gui/updatewindow.cpp:158
+#: src/gui/updaterwindow.cpp:162
 msgid "Play"
 msgstr "Hrát"
 
-#: src/gui/updatewindow.cpp:556
+#: src/gui/updaterwindow.cpp:564
 msgid "##1  The update process is incomplete."
-msgstr ""
+msgstr "##1  Proces aktualizace není kompletní."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updatewindow.cpp:558
+#: src/gui/updaterwindow.cpp:566
 msgid "##1  It is strongly recommended that"
-msgstr ""
+msgstr "##1  silně doporučujeme zkusit"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updatewindow.cpp:560
+#: src/gui/updaterwindow.cpp:568
 msgid "##1  you try again later."
-msgstr ""
+msgstr "##1  aktualizaci později"
 
-#: src/gui/updatewindow.cpp:686
+#: src/gui/updaterwindow.cpp:744
 msgid "Completed"
-msgstr ""
+msgstr "Hotovo"
 
 #: src/gui/userpalette.cpp:116
 msgid "Being"
@@ -3286,19 +3356,19 @@ msgstr ""
 
 #: src/gui/userpalette.cpp:117
 msgid "Friend Names"
-msgstr ""
+msgstr "Jména přátel"
 
 #: src/gui/userpalette.cpp:118
 msgid "Disregarded Names"
-msgstr ""
+msgstr "Jména přehlížených"
 
 #: src/gui/userpalette.cpp:119
 msgid "Ignored Names"
-msgstr ""
+msgstr "Jména ignorovaných"
 
 #: src/gui/userpalette.cpp:120
 msgid "Erased Names"
-msgstr ""
+msgstr "Jména vymazaných"
 
 #: src/gui/userpalette.cpp:121
 msgid "Other Players' Names"
@@ -3306,7 +3376,7 @@ msgstr "Jména ostatních hráčů"
 
 #: src/gui/userpalette.cpp:122
 msgid "Own Name"
-msgstr ""
+msgstr "Vlastní jméno"
 
 #: src/gui/userpalette.cpp:123
 msgid "GM Names"
@@ -3314,55 +3384,55 @@ msgstr "Jména GM"
 
 #: src/gui/userpalette.cpp:124
 msgid "NPCs"
-msgstr ""
+msgstr "Jména NPC"
 
 #: src/gui/userpalette.cpp:126
 msgid "Monster HP bar"
-msgstr ""
+msgstr "Pruh HP monster"
 
 #: src/gui/userpalette.cpp:128
 msgid "Monster HP bar (second color)"
-msgstr ""
+msgstr "Pruh HP monster (druhá barva)"
 
 #: src/gui/userpalette.cpp:129
 msgid "Party Members"
-msgstr ""
+msgstr "Členové party"
 
 #: src/gui/userpalette.cpp:130
 msgid "Guild Members"
-msgstr ""
+msgstr "Členové gildy"
 
 #: src/gui/userpalette.cpp:131
 msgid "Particle Effects"
-msgstr ""
+msgstr "Částicové efekty"
 
 #: src/gui/userpalette.cpp:132
 msgid "Pickup Notification"
-msgstr ""
+msgstr "Oznámení o sběru"
 
 #: src/gui/userpalette.cpp:133
 msgid "Exp Notification"
-msgstr ""
+msgstr "Oznámení o zkušenostech"
 
 #: src/gui/userpalette.cpp:134
 msgid "Player HP bar"
-msgstr ""
+msgstr "Hráčův HP pruh"
 
 #: src/gui/userpalette.cpp:136
 msgid "Player HP bar (second color)"
-msgstr ""
+msgstr "Hráčův HP pruh (druhá barva)"
 
 #: src/gui/userpalette.cpp:137
 msgid "Player Hits Monster"
-msgstr ""
+msgstr "Hráč zasáhne monstrum"
 
 #: src/gui/userpalette.cpp:138
 msgid "Monster Hits Player"
-msgstr ""
+msgstr "Monstrum zasáhne hráče"
 
 #: src/gui/userpalette.cpp:140
 msgid "Other Player Hits Local Player"
-msgstr ""
+msgstr "Hráč zasáhne místního hráče"
 
 #: src/gui/userpalette.cpp:141
 msgid "Critical Hit"
@@ -3370,87 +3440,87 @@ msgstr "Kritický zásah"
 
 #: src/gui/userpalette.cpp:143
 msgid "Local Player Hits Monster"
-msgstr ""
+msgstr "Místní hráč zasáhne monstrum"
 
 #: src/gui/userpalette.cpp:145
 msgid "Local Player Critical Hit"
-msgstr ""
+msgstr "Kritický zásah místního hráče"
 
 #: src/gui/userpalette.cpp:147
 msgid "Local Player Miss"
-msgstr ""
+msgstr "Místní hráč minul"
 
 #: src/gui/userpalette.cpp:148
 msgid "Misses"
-msgstr ""
+msgstr "Minutí"
 
 #: src/gui/userpalette.cpp:149
 msgid "Portal Highlight"
-msgstr ""
+msgstr "Zvýraznění portálů"
 
 #: src/gui/userpalette.cpp:151
 msgid "Default collision Highlight"
-msgstr ""
+msgstr "Zvýraznění výchozí kolize"
 
 #: src/gui/userpalette.cpp:153
 msgid "Air collision Highlight"
-msgstr ""
+msgstr "Zvýraznění vzdušné kolize"
 
 #: src/gui/userpalette.cpp:155
 msgid "Water collision Highlight"
-msgstr ""
+msgstr "Zvýraznění vodní kolize"
 
 #: src/gui/userpalette.cpp:157
 msgid "Walkable Highlight"
-msgstr ""
+msgstr "Zvýraznění schůdnosti"
 
 #: src/gui/userpalette.cpp:159
 msgid "Local Player Attack Range"
-msgstr ""
+msgstr "Útočný dosah místního hráče"
 
 #: src/gui/userpalette.cpp:161
 msgid "Local Player Attack Range Border"
-msgstr ""
+msgstr "Hranice útočného dosahu místního hráče"
 
 #: src/gui/userpalette.cpp:163
 msgid "Monster Attack Range"
-msgstr ""
+msgstr "Útočný dosah monstra"
 
 #: src/gui/userpalette.cpp:165
 msgid "Home Place"
-msgstr ""
+msgstr "Domovské místo"
 
 #: src/gui/userpalette.cpp:167
 msgid "Home Place Border"
-msgstr ""
+msgstr "Hranice domácího místa"
 
 #: src/gui/userpalette.cpp:169
 msgid "Road Point"
-msgstr ""
+msgstr "Bod cesty"
 
-#: src/gui/whoisonline.cpp:81 src/gui/whoisonline.cpp:471
+#: src/gui/whoisonline.cpp:81 src/gui/whoisonline.cpp:474
 msgid "Who Is Online - Updating"
-msgstr ""
+msgstr "Kdo je online - Obnovuji"
 
-#: src/gui/whoisonline.cpp:101
+#: src/gui/whoisonline.cpp:104
 msgid "Update"
-msgstr ""
+msgstr "Obnovit"
 
-#: src/gui/whoisonline.cpp:294
+#: src/gui/whoisonline.cpp:297
 msgid "Who Is Online - "
-msgstr ""
+msgstr "Kdo je online - "
 
-#: src/gui/whoisonline.cpp:485
+#: src/gui/whoisonline.cpp:488
 msgid "Who Is Online - error"
-msgstr ""
+msgstr "Kdo je online - chyba"
 
-#: src/gui/whoisonline.cpp:516
+#: src/gui/whoisonline.cpp:519
 msgid "Who Is Online - Update"
 msgstr ""
 
 #: src/gui/widgets/battletab.cpp:45
 msgid "Battle"
-msgstr ""
+msgstr "Bitvy"
 
 #: src/gui/widgets/channeltab.cpp:52
 msgid "/users > Lists the users in the current channel"
@@ -3509,7 +3579,8 @@ msgid "This command makes <nick> a channel operator."
 msgstr ""
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
-#: src/net/ea/gui/guildtab.cpp:69 src/net/ea/gui/partytab.cpp:85
+#: src/gui/widgets/guildchattab.cpp:61 src/net/ea/gui/guildtab.cpp:69
+#: src/net/ea/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr "Pokud <nick> obsahuje mezeru, uzavřete jej do uvozovek (\")."
 
@@ -3547,6 +3618,45 @@ msgstr "Globální oznámení od %s:"
 msgid "%s whispers: %s"
 msgstr ""
 
+#: src/gui/widgets/guildchattab.cpp:59 src/net/ea/gui/guildtab.cpp:67
+#: src/net/ea/gui/partytab.cpp:83
+msgid "Command: /invite <nick>"
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:60 src/net/ea/gui/guildtab.cpp:68
+msgid "This command invites <nick> to the guild you're in."
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:66 src/net/ea/gui/guildtab.cpp:74
+#: src/net/ea/gui/partytab.cpp:90
+msgid "Command: /leave"
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:67 src/net/ea/gui/guildtab.cpp:75
+msgid "This command causes the player to leave the guild."
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:109 src/net/ea/gui/guildtab.cpp:135
+#: src/net/ea/gui/partytab.cpp:69
+msgid "/help > Display this help."
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:110 src/net/ea/gui/guildtab.cpp:136
+msgid "/invite > Invite a player to your guild"
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:111 src/net/ea/gui/guildtab.cpp:137
+msgid "/leave > Leave the guild you are in"
+msgstr ""
+
+#: src/gui/widgets/guildchattab.cpp:112 src/net/ea/gui/guildtab.cpp:138
+msgid "/kick > Kick some one from the guild you are in"
+msgstr ""
+
+#: src/gui/widgets/setupitem.cpp:271 src/gui/widgets/setupitem.cpp:394
+msgid "Edit"
+msgstr "Upravit"
+
 #: src/gui/widgets/whispertab.cpp:107
 msgid "/ignore > Ignore the other player"
 msgstr ""
@@ -3580,8 +3690,7 @@ msgid "Command: /unignore <player>"
 msgstr ""
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
 #: src/gui/windowmenu.cpp:65
@@ -3590,7 +3699,7 @@ msgstr ""
 
 #: src/gui/windowmenu.cpp:65
 msgid "Bot checker"
-msgstr ""
+msgstr "Ověřovač botů"
 
 #: src/gui/windowmenu.cpp:67
 msgid "ONL"
@@ -3598,7 +3707,7 @@ msgstr ""
 
 #: src/gui/windowmenu.cpp:67
 msgid "Who is online"
-msgstr ""
+msgstr "Kdo je online"
 
 #: src/gui/windowmenu.cpp:69
 msgid "KS"
@@ -3606,7 +3715,7 @@ msgstr ""
 
 #: src/gui/windowmenu.cpp:71
 msgid "Smilies"
-msgstr ""
+msgstr "Smajlíci"
 
 #: src/gui/windowmenu.cpp:73
 msgid "STA"
@@ -3642,7 +3751,7 @@ msgstr ""
 
 #: src/gui/windowmenu.cpp:94
 msgid "Shortcuts"
-msgstr ""
+msgstr "Zkratky"
 
 #: src/gui/windowmenu.cpp:96
 msgid "SP"
@@ -3658,7 +3767,7 @@ msgstr ""
 
 #: src/gui/windowmenu.cpp:98
 msgid "Did you know"
-msgstr ""
+msgstr "Víte že"
 
 #: src/gui/windowmenu.cpp:100
 msgid "SET"
@@ -3666,39 +3775,39 @@ msgstr ""
 
 #: src/gui/worldselectdialog.cpp:77
 msgid "Select World"
-msgstr ""
+msgstr "Zvol svět"
 
 #: src/gui/worldselectdialog.cpp:82
 msgid "Change Login"
-msgstr ""
+msgstr "Změň přihlášení"
 
 #: src/gui/worldselectdialog.cpp:83
 msgid "Choose World"
-msgstr ""
+msgstr "vyber svět"
 
-#: src/inventory.cpp:248
+#: src/inventory.cpp:251
 msgid "Storage"
-msgstr ""
+msgstr "Úložiště"
 
-#: src/inventory.cpp:250
+#: src/inventory.cpp:253
 msgid "Cart"
-msgstr ""
+msgstr "Košík"
 
 #: src/keyboardconfig.cpp:43
 msgid "Move Up"
-msgstr ""
+msgstr "Pohyb nahoru"
 
 #: src/keyboardconfig.cpp:44
 msgid "Move Down"
-msgstr ""
+msgstr "Pohyb dolů"
 
 #: src/keyboardconfig.cpp:45
 msgid "Move Left"
-msgstr ""
+msgstr "Pohyb vlevo"
 
 #: src/keyboardconfig.cpp:46
 msgid "Move Right"
-msgstr ""
+msgstr "Pohyb vpravo"
 
 #: src/keyboardconfig.cpp:49
 msgid "Target & Attack"
@@ -3706,19 +3815,19 @@ msgstr "Cíl & Útok"
 
 #: src/keyboardconfig.cpp:51
 msgid "Move to Target"
-msgstr ""
+msgstr "Přejít k cíli"
 
 #: src/keyboardconfig.cpp:53
 msgid "Change Move to Target type"
-msgstr ""
+msgstr "Změnit typ přesunu k cíli"
 
 #: src/keyboardconfig.cpp:55
 msgid "Move to Home location"
-msgstr ""
+msgstr "Přejít na domácí místo"
 
 #: src/keyboardconfig.cpp:57
 msgid "Set home location"
-msgstr ""
+msgstr "Nastavit domácí místo"
 
 #: src/keyboardconfig.cpp:59
 msgid "Move to navigation point"
@@ -3734,27 +3843,27 @@ msgstr "Zastavit Útok"
 
 #: src/keyboardconfig.cpp:64
 msgid "Target Closest"
-msgstr ""
+msgstr "Zaměřit nejbližší"
 
 #: src/keyboardconfig.cpp:66
 msgid "Target NPC"
-msgstr ""
+msgstr "Zaměřit NPC"
 
 #: src/keyboardconfig.cpp:67
 msgid "Target Player"
-msgstr ""
+msgstr "Zaměřit hráče"
 
 #: src/keyboardconfig.cpp:69
 msgid "Pickup"
-msgstr ""
+msgstr "Sebrat"
 
 #: src/keyboardconfig.cpp:70
 msgid "Change Pickup Type"
-msgstr ""
+msgstr "Změnit typ sběru"
 
 #: src/keyboardconfig.cpp:72
 msgid "Hide Windows"
-msgstr ""
+msgstr "Skrýt okna"
 
 #: src/keyboardconfig.cpp:74
 msgid "Sit"
@@ -3766,11 +3875,11 @@ msgstr "Snímek obrazovky"
 
 #: src/keyboardconfig.cpp:76
 msgid "Enable/Disable Trading"
-msgstr ""
+msgstr "Zapnout/Vypnout obchody"
 
 #: src/keyboardconfig.cpp:78
 msgid "Change Map View Mode"
-msgstr ""
+msgstr "Změnit mód zobrazení mapy"
 
 #: src/keyboardconfig.cpp:80
 msgid "Item Shortcuts Key"
@@ -3793,31 +3902,31 @@ msgstr ""
 
 #: src/keyboardconfig.cpp:122
 msgid "Help Window"
-msgstr ""
+msgstr "Okno nápovědy"
 
 #: src/keyboardconfig.cpp:124
 msgid "Status Window"
-msgstr ""
+msgstr "Stavové okno"
 
 #: src/keyboardconfig.cpp:126
 msgid "Inventory Window"
-msgstr ""
+msgstr "Okno inventáře"
 
 #: src/keyboardconfig.cpp:128
 msgid "Equipment Window"
-msgstr ""
+msgstr "Okno vybavení"
 
 #: src/keyboardconfig.cpp:130
 msgid "Skill Window"
-msgstr ""
+msgstr "Okno dovedností"
 
 #: src/keyboardconfig.cpp:132
 msgid "Minimap Window"
-msgstr ""
+msgstr "Okno s minimapou"
 
 #: src/keyboardconfig.cpp:134
 msgid "Chat Window"
-msgstr ""
+msgstr "Okno s chatem"
 
 #: src/keyboardconfig.cpp:136
 msgid "Item Shortcut Window"
@@ -3825,27 +3934,27 @@ msgstr ""
 
 #: src/keyboardconfig.cpp:138
 msgid "Setup Window"
-msgstr ""
+msgstr "Okno nastavení"
 
 #: src/keyboardconfig.cpp:140
 msgid "Debug Window"
-msgstr ""
+msgstr "Debug okno"
 
 #: src/keyboardconfig.cpp:142
 msgid "Social Window"
-msgstr ""
+msgstr "Okno spolešenství"
 
 #: src/keyboardconfig.cpp:144
 msgid "Emote Shortcut Window"
-msgstr ""
+msgstr "Okno zkratek smajlíků"
 
 #: src/keyboardconfig.cpp:146
 msgid "Outfits Window"
-msgstr ""
+msgstr "Okno výstroje"
 
 #: src/keyboardconfig.cpp:148
 msgid "Shop Window"
-msgstr ""
+msgstr "Okno s obchodem"
 
 #: src/keyboardconfig.cpp:150
 msgid "Quick drop Window"
@@ -3865,19 +3974,19 @@ msgstr ""
 
 #: src/keyboardconfig.cpp:159
 msgid "Who Is Online Window"
-msgstr ""
+msgstr "Okno \"Kdo je online\""
 
 #: src/keyboardconfig.cpp:161
 msgid "Did you know Window"
-msgstr ""
+msgstr "Okno \"Víte že...\""
 
 #: src/keyboardconfig.cpp:164
 msgid "Previous Social Tab"
-msgstr ""
+msgstr "Předchozí záložka společenství"
 
 #: src/keyboardconfig.cpp:166
 msgid "Next Social Tab"
-msgstr ""
+msgstr "Další záložka společenství"
 
 #: src/keyboardconfig.cpp:168 src/keyboardconfig.cpp:170
 #: src/keyboardconfig.cpp:172 src/keyboardconfig.cpp:174
@@ -3904,95 +4013,95 @@ msgstr ""
 #: src/keyboardconfig.cpp:355
 #, c-format
 msgid "Emote Shortcut %d"
-msgstr ""
+msgstr "Zkratka smajlíku %d"
 
 #: src/keyboardconfig.cpp:261
 msgid "Wear Outfit"
-msgstr ""
+msgstr "Obléct výstroj"
 
 #: src/keyboardconfig.cpp:263
 msgid "Copy Outfit"
-msgstr ""
+msgstr "Kopírovat výstroj"
 
 #: src/keyboardconfig.cpp:265
 msgid "Copy equipped to Outfit"
-msgstr ""
+msgstr "Kopírovat výbavu do výstroje"
 
 #: src/keyboardconfig.cpp:267
 msgid "Toggle Chat"
-msgstr ""
+msgstr "Přepnout chat"
 
 #: src/keyboardconfig.cpp:269
 msgid "Scroll Chat Up"
-msgstr ""
+msgstr "Rolovat chat nahoru"
 
 #: src/keyboardconfig.cpp:271
 msgid "Scroll Chat Down"
-msgstr ""
+msgstr "Rolovat chat dolů"
 
 #: src/keyboardconfig.cpp:273
 msgid "Previous Chat Tab"
-msgstr ""
+msgstr "Předchozí záložka chatu"
 
 #: src/keyboardconfig.cpp:275
 msgid "Next Chat Tab"
-msgstr ""
+msgstr "Další záložka chatu"
 
 #: src/keyboardconfig.cpp:278
 msgid "Close current Chat Tab"
-msgstr ""
+msgstr "Zavřít stávající záložku chatu"
 
 #: src/keyboardconfig.cpp:280
 msgid "Previous chat line"
-msgstr ""
+msgstr "Předchozí řádek chatu"
 
 #: src/keyboardconfig.cpp:282
 msgid "Next chat line"
-msgstr ""
+msgstr "Další řádek chatu"
 
 #: src/keyboardconfig.cpp:284
 msgid "Chat Auto Complete"
-msgstr ""
+msgstr "Autodoplňování v chatu"
 
 #: src/keyboardconfig.cpp:286
 msgid "Deactivate Chat Input"
-msgstr ""
+msgstr "Deaktivovat vstup chatu"
 
 #: src/keyboardconfig.cpp:288
 msgid "Select OK"
-msgstr ""
+msgstr "Vybrat OK"
 
 #: src/keyboardconfig.cpp:291
 msgid "Ignore input 1"
-msgstr ""
+msgstr "Ignorovat vstup 1"
 
 #: src/keyboardconfig.cpp:293
 msgid "Ignore input 2"
-msgstr ""
+msgstr "Ignorovat vstup 2"
 
 #: src/keyboardconfig.cpp:295
 msgid "Direct Up"
-msgstr ""
+msgstr "Otočit nahoru"
 
 #: src/keyboardconfig.cpp:296
 msgid "Direct Down"
-msgstr ""
+msgstr "Otočit dolů"
 
 #: src/keyboardconfig.cpp:298
 msgid "Direct Left"
-msgstr ""
+msgstr "Otočit vlevo"
 
 #: src/keyboardconfig.cpp:299
 msgid "Direct Right"
-msgstr ""
+msgstr "Otočit vpravo"
 
 #: src/keyboardconfig.cpp:301
 msgid "Crazy moves"
-msgstr ""
+msgstr "Šílené pohyby"
 
 #: src/keyboardconfig.cpp:303
 msgid "Change Crazy Move mode"
-msgstr ""
+msgstr "Změnit mód šílených pohybů"
 
 #: src/keyboardconfig.cpp:305
 msgid "Quick Drop N Items from 0 slot"
@@ -4008,39 +4117,39 @@ msgstr ""
 
 #: src/keyboardconfig.cpp:311
 msgid "Quick heal target or self"
-msgstr ""
+msgstr "Rychlé léčení cíle nebo sebe"
 
 #: src/keyboardconfig.cpp:313
 msgid "Use #itenplz spell"
-msgstr ""
+msgstr "Použít kouzlo #itenplz"
 
 #: src/keyboardconfig.cpp:315
 msgid "Use magic attack"
-msgstr ""
+msgstr "Použít magický útok"
 
 #: src/keyboardconfig.cpp:317
 msgid "Switch magic attack"
-msgstr ""
+msgstr "Přepnout magický útok"
 
 #: src/keyboardconfig.cpp:319
 msgid "Change move type"
-msgstr ""
+msgstr "Změnit typ pohybu"
 
 #: src/keyboardconfig.cpp:321
 msgid "Change Attack Weapon Type"
-msgstr ""
+msgstr "Změnit typ útočné zbraně"
 
 #: src/keyboardconfig.cpp:323
 msgid "Change Attack Type"
-msgstr ""
+msgstr "Změnit typ útoku"
 
 #: src/keyboardconfig.cpp:325
 msgid "Change Follow mode"
-msgstr ""
+msgstr "Změnit mód následování"
 
 #: src/keyboardconfig.cpp:327
 msgid "Change Imitation mode"
-msgstr ""
+msgstr "Změnit mód imitace"
 
 #: src/keyboardconfig.cpp:330
 msgid "Disable / Enable Game modifier keys"
@@ -4048,23 +4157,23 @@ msgstr ""
 
 #: src/keyboardconfig.cpp:331
 msgid "On / Off audio"
-msgstr ""
+msgstr "Zapnout/Vypnout audio"
 
 #: src/keyboardconfig.cpp:333
 msgid "Enable / Disable away mode"
-msgstr ""
+msgstr "Zapnout/Vypnout Away mód"
 
 #: src/keyboardconfig.cpp:335
 msgid "Emulate right click from keyboard"
-msgstr ""
+msgstr "Emulovat pravý klik z klávesnice"
 
 #: src/keyboardconfig.cpp:337
 msgid "Toggle camera mode"
-msgstr ""
+msgstr "přemnout mód kamery"
 
 #: src/keyboardconfig.cpp:339
 msgid "Modifier key"
-msgstr ""
+msgstr "Klávesa modifikátoru"
 
 #: src/keyboardconfig.cpp:411
 #, c-format
@@ -4072,42 +4181,44 @@ msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
 msgstr ""
+"Konflikt klávesy \"%s\" a klávesy \"%s\". Vyřešte jej, neboť se hra může "
+"chovat podivně."
 
-#: src/localplayer.cpp:371
+#: src/localplayer.cpp:377
 msgid "You were killed by "
-msgstr ""
-
-#: src/localplayer.cpp:1402
-msgid "Tried to pick up nonexistent item."
-msgstr ""
-
-#: src/localplayer.cpp:1404
-msgid "Item is too heavy."
-msgstr ""
-
-#: src/localplayer.cpp:1406
-msgid "Item is too far away."
-msgstr ""
-
-#: src/localplayer.cpp:1408
-msgid "Inventory is full."
-msgstr ""
-
-#: src/localplayer.cpp:1410
-msgid "Stack is too big."
-msgstr ""
-
-#: src/localplayer.cpp:1413
-msgid "Item belongs to someone else."
-msgstr ""
+msgstr "Zabil vás "
 
 #: src/localplayer.cpp:1416
+msgid "Tried to pick up nonexistent item."
+msgstr "Snažili jste se sebrat neexistující předmět."
+
+#: src/localplayer.cpp:1418
+msgid "Item is too heavy."
+msgstr "Předmět je příliš těžký."
+
+#: src/localplayer.cpp:1420
+msgid "Item is too far away."
+msgstr "Předmět je příliš daleko."
+
+#: src/localplayer.cpp:1422
+msgid "Inventory is full."
+msgstr "Inventář je plný."
+
+#: src/localplayer.cpp:1424
+msgid "Stack is too big."
+msgstr "Hromada je příliš velká."
+
+#: src/localplayer.cpp:1427
+msgid "Item belongs to someone else."
+msgstr "Předmět patří někomu jinému."
+
+#: src/localplayer.cpp:1430
 msgid "Unknown problem picking up item."
-msgstr ""
+msgstr "Neznámý problém při pokusu sebrat předmět."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1440
+#: src/localplayer.cpp:1454
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -4115,29 +4226,29 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/localplayer.cpp:3174
+#: src/localplayer.cpp:3168
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3478
+#: src/localplayer.cpp:3468
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3480 src/localplayer.cpp:3495
+#: src/localplayer.cpp:3470 src/localplayer.cpp:3485
 msgid "Follow canceled"
-msgstr ""
+msgstr "Následování zrušeno."
 
-#: src/localplayer.cpp:3487
+#: src/localplayer.cpp:3477
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3489 src/localplayer.cpp:3497
+#: src/localplayer.cpp:3479 src/localplayer.cpp:3487
 msgid "Imitation canceled"
-msgstr ""
+msgstr "Imitace zrušena."
 
-#: src/localplayer.cpp:3849
+#: src/localplayer.cpp:3832
 msgid "You see "
-msgstr ""
+msgstr "Vidíte "
 
 #: src/main.cpp:47
 msgid "manaplus [options] [mana-file]"
@@ -4233,7 +4344,7 @@ msgstr ""
 
 #: src/net/ea/buysellhandler.cpp:163
 msgid "Nothing to sell."
-msgstr ""
+msgstr "Nemáte nic k prodeji."
 
 #: src/net/ea/buysellhandler.cpp:171
 msgid "Thanks for buying."
@@ -4241,35 +4352,35 @@ msgstr "Děkuji za nákup."
 
 #: src/net/ea/buysellhandler.cpp:179
 msgid "Unable to buy."
-msgstr ""
+msgstr "Nelze koupit."
 
 #: src/net/ea/charserverhandler.cpp:63
 msgid "Strength:"
-msgstr ""
+msgstr "Síla:"
 
 #: src/net/ea/charserverhandler.cpp:64
 msgid "Agility:"
-msgstr ""
+msgstr "Hbitost:"
 
 #: src/net/ea/charserverhandler.cpp:65
 msgid "Vitality:"
-msgstr ""
+msgstr "Vitalita:"
 
 #: src/net/ea/charserverhandler.cpp:66
 msgid "Intelligence:"
-msgstr ""
+msgstr "Inteligence:"
 
 #: src/net/ea/charserverhandler.cpp:67
 msgid "Dexterity:"
-msgstr ""
+msgstr "Obratnost:"
 
 #: src/net/ea/charserverhandler.cpp:68
 msgid "Luck:"
-msgstr ""
+msgstr "Štěstí:"
 
 #: src/net/ea/charserverhandler.cpp:102
 msgid "Access denied. Most likely, there are too many players on this server."
-msgstr ""
+msgstr "Přístup zamítnut. Nejpravděpodobněji je na serveru příliš mnoho hráčů."
 
 #: src/net/ea/charserverhandler.cpp:106
 msgid "Cannot use this ID."
@@ -4277,117 +4388,87 @@ msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:109
 msgid "Unknown char-server failure."
-msgstr ""
+msgstr "Neznámá chyba postavy na serveru."
 
 #: src/net/ea/charserverhandler.cpp:138
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
+"Nelze vytvořit postavu. Nejpravděpodobněji její jméno již na serveru "
+"existuje. "
 
 #: src/net/ea/charserverhandler.cpp:142 src/net/ea/loginhandler.cpp:237
 msgid "Wrong name."
-msgstr ""
+msgstr "Špatné jméno."
 
 #: src/net/ea/charserverhandler.cpp:145
 msgid "Incorrect stats."
-msgstr ""
+msgstr "Nesprávné statistiky."
 
 #: src/net/ea/charserverhandler.cpp:148
 msgid "Incorrect hair."
-msgstr ""
+msgstr "Nesprávný účes."
 
 #: src/net/ea/charserverhandler.cpp:151
 msgid "Incorrect slot."
-msgstr ""
+msgstr "Nesprávný slot."
 
 #: src/net/ea/charserverhandler.cpp:166 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
-msgstr "Info"
+msgstr "informaceInfo"
 
 #: src/net/ea/charserverhandler.cpp:166
 msgid "Character deleted."
-msgstr ""
+msgstr "Postava odstraněna."
 
 #: src/net/ea/charserverhandler.cpp:172
 msgid "Failed to delete character."
-msgstr ""
+msgstr "Nepodařilo se odstranit postavu."
 
-#: src/net/ea/chathandler.cpp:60 src/net/ea/chathandler.cpp:66
-#: src/net/ea/chathandler.cpp:71 src/net/ea/chathandler.cpp:77
-#: src/net/ea/chathandler.cpp:82 src/net/ea/chathandler.cpp:88
-#: src/net/ea/chathandler.cpp:95 src/net/ea/chathandler.cpp:101
+#: src/net/ea/chathandler.cpp:61 src/net/ea/chathandler.cpp:67
+#: src/net/ea/chathandler.cpp:72 src/net/ea/chathandler.cpp:78
+#: src/net/ea/chathandler.cpp:83 src/net/ea/chathandler.cpp:89
+#: src/net/ea/chathandler.cpp:96 src/net/ea/chathandler.cpp:102
 msgid "Channels are not supported!"
-msgstr ""
+msgstr "Kanály nejsou podporovány."
 
-#: src/net/ea/chathandler.cpp:128
+#: src/net/ea/chathandler.cpp:129
 #, c-format
 msgid "Whisper could not be sent, %s is offline."
-msgstr ""
+msgstr "Nelze odeslat šeptání, %s není připojen."
 
-#: src/net/ea/chathandler.cpp:136
+#: src/net/ea/chathandler.cpp:137
 #, c-format
 msgid "Whisper could not be sent, ignored by %s."
-msgstr ""
+msgstr "Nelze odeslat šeptání, %s vás ignoruje."
 
-#: src/net/ea/chathandler.cpp:348
+#: src/net/ea/chathandler.cpp:355
 msgid "MVP player."
 msgstr ""
 
-#: src/net/ea/chathandler.cpp:352
+#: src/net/ea/chathandler.cpp:359
 msgid "MVP player: "
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:86
+#: src/net/ea/gamehandler.cpp:87
 #, c-format
 msgid "Online users: %d"
-msgstr ""
+msgstr "připojených uživatel: %d"
 
-#: src/net/ea/gamehandler.cpp:98
+#: src/net/ea/gamehandler.cpp:99
 msgid "Game"
-msgstr ""
+msgstr "Hra"
 
-#: src/net/ea/gamehandler.cpp:98
+#: src/net/ea/gamehandler.cpp:99
 msgid "Request to quit denied!"
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:67 src/net/ea/gui/partytab.cpp:83
-msgid "Command: /invite <nick>"
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:68
-msgid "This command invites <nick> to the guild you're in."
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:74 src/net/ea/gui/partytab.cpp:90
-msgid "Command: /leave"
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:75
-msgid "This command causes the player to leave the guild."
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:135 src/net/ea/gui/partytab.cpp:69
-msgid "/help > Display this help."
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:136
-msgid "/invite > Invite a player to your guild"
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:137
-msgid "/leave > Leave the guild you are in"
-msgstr ""
-
-#: src/net/ea/gui/guildtab.cpp:138
-msgid "/kick > Kick some one from the guild you are in"
 msgstr ""
 
 #: src/net/ea/guildhandler.cpp:83 src/net/manaserv/guildhandler.cpp:85
 msgid "Guild created."
-msgstr ""
+msgstr "Gilda vytvořena."
 
 #: src/net/ea/guildhandler.cpp:88 src/net/ea/guildhandler.cpp:93
 msgid "You are already in guild."
-msgstr ""
+msgstr "Již jste členem gildy."
 
 #: src/net/ea/guildhandler.cpp:98
 msgid "Emperium check failed."
@@ -4395,90 +4476,86 @@ msgstr ""
 
 #: src/net/ea/guildhandler.cpp:103
 msgid "Unknown server response."
-msgstr ""
+msgstr "Neznámá odpověď serveru."
 
-#: src/net/ea/guildhandler.cpp:180
+#: src/net/ea/guildhandler.cpp:181
 #, c-format
 msgid "Guild name: %s"
-msgstr ""
+msgstr "Jméno gildy: %s"
 
-#: src/net/ea/guildhandler.cpp:182
+#: src/net/ea/guildhandler.cpp:183
 #, c-format
 msgid "Guild master: %s"
-msgstr ""
+msgstr "Vedoucí gildy: %s"
 
-#: src/net/ea/guildhandler.cpp:184
+#: src/net/ea/guildhandler.cpp:185
 #, c-format
 msgid "Guild level: %d"
-msgstr ""
+msgstr "Úroveň gildy: %d"
 
-#: src/net/ea/guildhandler.cpp:186
+#: src/net/ea/guildhandler.cpp:187
 #, c-format
 msgid "Online members: %d"
-msgstr ""
+msgstr "Připojených členů: %d"
 
-#: src/net/ea/guildhandler.cpp:188
+#: src/net/ea/guildhandler.cpp:189
 #, c-format
 msgid "Max members: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:190
+#: src/net/ea/guildhandler.cpp:191
 #, c-format
 msgid "Average level: %d"
-msgstr ""
+msgstr "Průměrná úroveň: %d"
 
-#: src/net/ea/guildhandler.cpp:192
+#: src/net/ea/guildhandler.cpp:193
 #, c-format
 msgid "Guild exp: %d"
-msgstr ""
+msgstr "Zkušenosti gildy: %d"
 
-#: src/net/ea/guildhandler.cpp:194
+#: src/net/ea/guildhandler.cpp:195
 #, c-format
 msgid "Guild next exp: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:196
+#: src/net/ea/guildhandler.cpp:197
 #, c-format
 msgid "Guild castle: %s"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:402
+#: src/net/ea/guildhandler.cpp:403
 msgid "Could not inivte user to guild."
-msgstr ""
+msgstr "Nelze pozvat uživatele do gildy."
 
-#: src/net/ea/guildhandler.cpp:406
+#: src/net/ea/guildhandler.cpp:407
 msgid "User rejected guild invite."
-msgstr ""
+msgstr "Uživatel zamítl pozvánku do gildy."
 
-#: src/net/ea/guildhandler.cpp:410
+#: src/net/ea/guildhandler.cpp:411
 msgid "User is now part of your guild."
-msgstr ""
+msgstr "Uživatel je nyní členem vaší gildy."
 
-#: src/net/ea/guildhandler.cpp:414
+#: src/net/ea/guildhandler.cpp:415
 msgid "Your guild is full."
-msgstr ""
+msgstr "Vaše gilda je plná."
 
-#: src/net/ea/guildhandler.cpp:418
+#: src/net/ea/guildhandler.cpp:419
 msgid "Unknown guild invite response."
-msgstr ""
+msgstr "Neznámá odpověď na pozváku do gildy."
 
-#: src/net/ea/guildhandler.cpp:438
-msgid "You have left the guild."
-msgstr ""
-
-#: src/net/ea/guildhandler.cpp:452
+#: src/net/ea/guildhandler.cpp:453
 #, c-format
 msgid "%s has left your guild."
-msgstr ""
+msgstr "%s opustil vaši gildu."
 
-#: src/net/ea/guildhandler.cpp:483
+#: src/net/ea/guildhandler.cpp:484
 msgid "You was kicked from guild."
-msgstr ""
+msgstr "Byl jste vykopnut z gildy."
 
-#: src/net/ea/guildhandler.cpp:496
+#: src/net/ea/guildhandler.cpp:497
 #, c-format
 msgid "%s has kicked from your guild."
-msgstr ""
+msgstr "%s byl vykopnut z vaší gildy."
 
 #: src/net/ea/gui/partytab.cpp:70
 msgid "/invite > Invite a player to your party"
@@ -4554,78 +4631,78 @@ msgstr ""
 
 #: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:286
 msgid "Item sharing enabled."
-msgstr ""
+msgstr "Sdílení předmětů povoleno."
 
 #: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:296
 msgid "Item sharing disabled."
-msgstr ""
+msgstr "Sdílení předmětů zakázáno."
 
 #: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:306
 msgid "Item sharing not possible."
-msgstr ""
+msgstr "Sdílení předmětů není možné."
 
 #: src/net/ea/gui/partytab.cpp:157
 msgid "Item sharing unknown."
-msgstr ""
+msgstr "Stav sdílení předmětů neznámý."
 
 #: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:248
 msgid "Experience sharing enabled."
-msgstr ""
+msgstr "Sdílení zkušeností povoleno."
 
 #: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:258
 msgid "Experience sharing disabled."
-msgstr ""
+msgstr "Sdílení zkušeností zakázáno."
 
 #: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:268
 msgid "Experience sharing not possible."
-msgstr ""
+msgstr "Sdílení zkušeností není možné."
 
 #: src/net/ea/gui/partytab.cpp:196
 msgid "Experience sharing unknown."
-msgstr ""
+msgstr "Stav sdílení zkušeností neznámý."
 
 #: src/net/ea/inventoryhandler.cpp:407
 msgid "Failed to use item."
-msgstr ""
+msgstr "Pokus o použití předmětu selhal."
 
 #: src/net/ea/inventoryhandler.cpp:580
 msgid "Unable to equip."
-msgstr ""
+msgstr "Nelze vybavit."
 
 #: src/net/ea/loginhandler.cpp:131
 msgid "Account was not found. Please re-login."
-msgstr ""
+msgstr "Účet nenalezen, prosím přihlaste se znovu."
 
 #: src/net/ea/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:127
 msgid "Old password incorrect."
-msgstr ""
+msgstr "Půvoní heslo je nesprávné."
 
 #: src/net/ea/loginhandler.cpp:137
 msgid "New password too short."
-msgstr ""
+msgstr "Nové heslo je příliš krátké."
 
 #: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:243
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
 msgid "Unknown error."
-msgstr ""
+msgstr "Neznámá chyba."
 
 #: src/net/ea/loginhandler.cpp:205
 msgid "Unregistered ID."
-msgstr ""
+msgstr "Neregistované ID."
 
 #: src/net/ea/loginhandler.cpp:208
 msgid "Wrong password."
-msgstr ""
+msgstr "Špatné heslo."
 
 #: src/net/ea/loginhandler.cpp:211
 msgid "Account expired."
-msgstr ""
+msgstr "Platnost účtu vypršela."
 
 #: src/net/ea/loginhandler.cpp:214
 msgid "Rejected from server."
-msgstr ""
+msgstr "Odmítnut ze serveru."
 
 #: src/net/ea/loginhandler.cpp:217
 msgid ""
@@ -4634,7 +4711,7 @@ msgstr ""
 
 #: src/net/ea/loginhandler.cpp:221
 msgid "Client too old."
-msgstr ""
+msgstr "Klient je příliš starý."
 
 #: src/net/ea/loginhandler.cpp:224
 #, c-format
@@ -4645,48 +4722,48 @@ msgstr ""
 
 #: src/net/ea/loginhandler.cpp:231
 msgid "Server overpopulated."
-msgstr ""
+msgstr "Server je přelidněný."
 
 #: src/net/ea/loginhandler.cpp:234
 msgid "This user name is already taken."
-msgstr ""
+msgstr "Toto uživatelské jméno je již používáno."
 
 #: src/net/ea/loginhandler.cpp:240
 msgid "Username permanently erased."
-msgstr ""
+msgstr "Uživatelské jméno bylo trvale odstraněno."
 
 #: src/net/ea/partyhandler.cpp:82
 msgid "Could not create party."
-msgstr ""
+msgstr "Nelze vytvořit partu."
 
 #: src/net/ea/partyhandler.cpp:84
 msgid "Party successfully created."
-msgstr ""
+msgstr "Parta úspěšně vytvořena."
 
 #: src/net/ea/partyhandler.cpp:140
 #, c-format
 msgid "%s has joined your party."
-msgstr ""
+msgstr "%s se připojil k vaší partě."
 
 #: src/net/ea/partyhandler.cpp:176
 #, c-format
 msgid "%s is already a member of a party."
-msgstr ""
+msgstr "%s je již členem vaší party."
 
 #: src/net/ea/partyhandler.cpp:181
 #, c-format
 msgid "%s refused your invitation."
-msgstr ""
+msgstr "%s zamítl vaši pozvánku."
 
 #: src/net/ea/partyhandler.cpp:186
 #, c-format
 msgid "%s is now a member of your party."
-msgstr ""
+msgstr "%s je nyní člen vaší party."
 
 #: src/net/ea/partyhandler.cpp:191
 #, c-format
 msgid "%s can't join your party because party is full."
-msgstr ""
+msgstr "%s nemůže být členem party, jelikož je parta plná."
 
 #: src/net/ea/partyhandler.cpp:196
 #, c-format
@@ -4695,185 +4772,190 @@ msgstr ""
 
 #: src/net/ea/partyhandler.cpp:356
 msgid "You have left the party."
-msgstr ""
+msgstr "Odešel jste z party."
 
-#: src/net/ea/partyhandler.cpp:368
+#: src/net/ea/partyhandler.cpp:369
 #, c-format
 msgid "%s has left your party."
-msgstr ""
+msgstr "%s opustil vaši partu."
 
-#: src/net/ea/partyhandler.cpp:444
+#: src/net/ea/partyhandler.cpp:448
 #, c-format
 msgid "An unknown member tried to say: %s"
-msgstr ""
+msgstr "Neznámý člen se snažil říct: %s"
 
 #: src/net/ea/playerhandler.cpp:95 src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
-msgstr ""
+msgstr "Jste mrtev."
 
 #: src/net/ea/playerhandler.cpp:96 src/net/manaserv/beinghandler.cpp:316
 msgid "We regret to inform you that your character was killed in battle."
-msgstr ""
+msgstr "S lítostí vám oznamujeme, že vaše postava byla zabita v bitvě."
 
 #: src/net/ea/playerhandler.cpp:98 src/net/manaserv/beinghandler.cpp:318
 msgid "You are not that alive anymore."
-msgstr ""
+msgstr "Nejste již více naživu."
 
 #: src/net/ea/playerhandler.cpp:99 src/net/manaserv/beinghandler.cpp:319
 msgid "The cold hands of the grim reaper are grabbing for your soul."
-msgstr ""
+msgstr "Chladné ruce smrti se natahují po vaší duši."
 
 #: src/net/ea/playerhandler.cpp:100 src/net/manaserv/beinghandler.cpp:320
 msgid "Game Over!"
-msgstr ""
+msgstr "Konec hry!"
 
 #: src/net/ea/playerhandler.cpp:101
 msgid "Insert coin to continue."
-msgstr ""
+msgstr "Vložte minci pro pokračování."
 
 #: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:321
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr ""
+"Ne, děti. Vaše postava ve skutečnosti neumřela. Ona.. errm.. odešla na lepší "
+"místo."
 
 #: src/net/ea/playerhandler.cpp:104 src/net/manaserv/beinghandler.cpp:323
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
-msgstr ""
+msgstr "Váš plán zničit nepříteli zbraň pomocí úderů vlastním krkem selhal."
 
 #: src/net/ea/playerhandler.cpp:106 src/net/manaserv/beinghandler.cpp:325
 msgid "I guess this did not run too well."
-msgstr ""
+msgstr "Tuším že to nešlo tak hladce."
 
 #: src/net/ea/playerhandler.cpp:108 src/net/manaserv/beinghandler.cpp:326
 msgid "Do you want your possessions identified?"
-msgstr ""
+msgstr "Chcete zaevidovat váš majetek?"
 
 #: src/net/ea/playerhandler.cpp:110 src/net/manaserv/beinghandler.cpp:327
 msgid "Sadly, no trace of you was ever found..."
-msgstr ""
+msgstr "Žel, nezbyla po vás ani stopa..."
 
 #: src/net/ea/playerhandler.cpp:112 src/net/manaserv/beinghandler.cpp:329
 msgid "Annihilated."
-msgstr ""
+msgstr "Zničen."
 
 #: src/net/ea/playerhandler.cpp:114 src/net/manaserv/beinghandler.cpp:330
 msgid "Looks like you got your head handed to you."
-msgstr ""
+msgstr "Vypadá to, že vám někdo podává vaši hlavu."
 
 #: src/net/ea/playerhandler.cpp:116 src/net/manaserv/beinghandler.cpp:332
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
+"Zase jste to podělal. Spláchněte vaše tělo do záchodu a najdete si nějaké "
+"jiné."
 
 #: src/net/ea/playerhandler.cpp:119
 msgid "You're not dead yet. You're just resting."
-msgstr ""
+msgstr "Ještě nejste mrtev. Zatím jen odpočíváte."
 
 #: src/net/ea/playerhandler.cpp:120
 msgid "You are no more."
-msgstr ""
+msgstr "Již nejste."
 
 #: src/net/ea/playerhandler.cpp:121
 msgid "You have ceased to be."
-msgstr ""
+msgstr "Bylo vám odepřeno být."
 
 #: src/net/ea/playerhandler.cpp:122
 msgid "You've expired and gone to meet your maker."
-msgstr ""
+msgstr "Expiroval jste a šel jste navštívit svého tvůrce."
 
 #: src/net/ea/playerhandler.cpp:123
 msgid "You're a stiff."
-msgstr ""
+msgstr "Jste tuhý."
 
 #: src/net/ea/playerhandler.cpp:124
 msgid "Bereft of life, you rest in peace."
-msgstr ""
+msgstr "Jste zbaven života, odpočívejte v pokoji."
 
 #: src/net/ea/playerhandler.cpp:125
 msgid "If you weren't so animated, you'd be pushing up the daisies."
-msgstr ""
+msgstr "Kdybyste nebyl tak animovaný, čuchal by jste ke květinkám zespoda."
 
 #: src/net/ea/playerhandler.cpp:126
 msgid "Your metabolic processes are now history."
-msgstr ""
+msgstr "vaše metabolické procesy jsou nyní historií."
 
 #: src/net/ea/playerhandler.cpp:127
 msgid "You're off the twig."
-msgstr ""
+msgstr "Padl jste."
 
 #: src/net/ea/playerhandler.cpp:128
 msgid "You've kicked the bucket."
-msgstr ""
+msgstr "A je to v kýblu."
 
 #: src/net/ea/playerhandler.cpp:129
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
 msgstr ""
+"Vaše trápení je u konce, opona je stažená a vy jste se připojil k vašemu "
+"neviditelnému sboru."
 
 #: src/net/ea/playerhandler.cpp:131
 msgid "You are an ex-player."
-msgstr ""
+msgstr "nyní jste bývalý hráč."
 
 #: src/net/ea/playerhandler.cpp:132
 msgid "You're pining for the fjords."
 msgstr ""
 
 #: src/net/ea/playerhandler.cpp:336 src/net/ea/playerhandler.cpp:346
-#: src/net/ea/playerhandler.cpp:425
+#: src/net/ea/playerhandler.cpp:428
 msgid "Message"
-msgstr ""
+msgstr "Zpráva"
 
 #: src/net/ea/playerhandler.cpp:337
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
-msgstr ""
+"You are carrying more than half your weight. You are unable to regain health."
+msgstr "Nesete více než polovinu vaší váhy. Obnovování života nyní není možné."
 
 #: src/net/ea/playerhandler.cpp:347
 msgid "You are carrying less than half your weight. You can regain health."
-msgstr ""
+msgstr "Nesete méně než polovinu vaší váhy. Obnovování života je nyní možné."
 
-#: src/net/ea/playerhandler.cpp:451
+#: src/net/ea/playerhandler.cpp:454
 #, c-format
 msgid "You picked up %s."
-msgstr ""
+msgstr "Sebral jste %s."
 
-#: src/net/ea/playerhandler.cpp:457
+#: src/net/ea/playerhandler.cpp:460
 #, c-format
 msgid "You spent %s."
-msgstr ""
+msgstr "utratil jste %s."
 
-#: src/net/ea/playerhandler.cpp:501
+#: src/net/ea/playerhandler.cpp:506
 msgid "Cannot raise skill!"
-msgstr ""
+msgstr "Nelze zlepšit tuto dovednost!"
 
-#: src/net/ea/playerhandler.cpp:618
+#: src/net/ea/playerhandler.cpp:624
 msgid "Equip arrows first."
-msgstr ""
+msgstr "nejdřív se vybavte šípy."
 
 #: src/net/ea/specialhandler.cpp:149
 msgid "Trade failed!"
-msgstr ""
+msgstr "Obchod selhal!"
 
 #: src/net/ea/specialhandler.cpp:152
 msgid "Emote failed!"
-msgstr ""
+msgstr "Smajlík selhal!"
 
 #: src/net/ea/specialhandler.cpp:155
 msgid "Sit failed!"
-msgstr ""
+msgstr "Sednutí selhalo!"
 
 #: src/net/ea/specialhandler.cpp:158
 msgid "Chat creating failed!"
-msgstr ""
+msgstr "Selhalo vytváčení postavy!"
 
 #: src/net/ea/specialhandler.cpp:161
 msgid "Could not join party!"
-msgstr ""
+msgstr "Nemůžete vstoupit do party!"
 
 #: src/net/ea/specialhandler.cpp:164
 msgid "Cannot shout!"
@@ -4881,15 +4963,15 @@ msgstr ""
 
 #: src/net/ea/specialhandler.cpp:177
 msgid "You have not yet reached a high enough lvl!"
-msgstr ""
+msgstr "Nedosáhl jste ještě dostatečně vysoké úrovně!"
 
 #: src/net/ea/specialhandler.cpp:181
 msgid "Insufficient HP!"
-msgstr ""
+msgstr "Nedostatek životů (HP)!"
 
 #: src/net/ea/specialhandler.cpp:184
 msgid "Insufficient SP!"
-msgstr ""
+msgstr "Nedostatek many (SP)!"
 
 #: src/net/ea/specialhandler.cpp:187
 msgid "You have no memos!"
@@ -4897,15 +4979,15 @@ msgstr ""
 
 #: src/net/ea/specialhandler.cpp:190
 msgid "You cannot do that right now!"
-msgstr ""
+msgstr "Nyní toto nelze!"
 
 #: src/net/ea/specialhandler.cpp:193
 msgid "Seems you need more money... ;-)"
-msgstr ""
+msgstr "Vypadá to že potřebujete více peněz... ;-)"
 
 #: src/net/ea/specialhandler.cpp:196
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr ""
+msgstr "Nemůžete použít tuto dovednost s touto zbraní!"
 
 #: src/net/ea/specialhandler.cpp:200
 msgid "You need another red gem!"
@@ -4990,7 +5072,7 @@ msgstr ""
 msgid "Trade completed."
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:259
+#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:258
 msgid "Strength"
 msgstr "Síla"
 
@@ -4999,7 +5081,7 @@ msgstr "Síla"
 msgid "Strength %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:260
+#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:259
 msgid "Agility"
 msgstr "Hbitost"
 
@@ -5008,7 +5090,7 @@ msgstr "Hbitost"
 msgid "Agility %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:263
+#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:262
 msgid "Dexterity"
 msgstr "Obratnost"
 
@@ -5017,7 +5099,7 @@ msgstr "Obratnost"
 msgid "Dexterity %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:261
+#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:260
 msgid "Vitality"
 msgstr "Vitalita"
 
@@ -5026,7 +5108,7 @@ msgstr "Vitalita"
 msgid "Vitality %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:262
+#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:261
 msgid "Intelligence"
 msgstr "Inteligence"
 
@@ -5296,109 +5378,113 @@ msgstr ""
 msgid "Unable to sell unsellable item."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:109
+#: src/net/tmwa/generalhandler.cpp:108
 #, c-format
 msgid "Strength %+d"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:110
+#: src/net/tmwa/generalhandler.cpp:109
 #, c-format
 msgid "Agility %+d"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:111
+#: src/net/tmwa/generalhandler.cpp:110
 #, c-format
 msgid "Vitality %+d"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:112
+#: src/net/tmwa/generalhandler.cpp:111
 #, c-format
 msgid "Intelligence %+d"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:113
+#: src/net/tmwa/generalhandler.cpp:112
 #, c-format
 msgid "Dexterity %+d"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:114
+#: src/net/tmwa/generalhandler.cpp:113
 #, c-format
 msgid "Luck %+d"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:140
+#: src/net/tmwa/generalhandler.cpp:139
 msgid "Authentication failed."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:143
+#: src/net/tmwa/generalhandler.cpp:142
 msgid "No servers available."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:147
+#: src/net/tmwa/generalhandler.cpp:146
 msgid "Someone else is trying to use this account."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:150
+#: src/net/tmwa/generalhandler.cpp:149
 msgid "This account is already logged in."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:153
+#: src/net/tmwa/generalhandler.cpp:152
 msgid "Speed hack detected."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:156
+#: src/net/tmwa/generalhandler.cpp:155
 msgid "Duplicated login."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:159
+#: src/net/tmwa/generalhandler.cpp:158
 msgid "Unknown connection error."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:232
+#: src/net/tmwa/generalhandler.cpp:231
 msgid "Got disconnected from server!"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:264
+#: src/net/tmwa/generalhandler.cpp:263
 msgid "Luck"
 msgstr "Štěstí"
 
-#: src/net/tmwa/generalhandler.cpp:267
+#: src/net/tmwa/generalhandler.cpp:266
 msgid "Defense"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:268
+#: src/net/tmwa/generalhandler.cpp:267
 msgid "M.Attack"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:269
+#: src/net/tmwa/generalhandler.cpp:268
 msgid "M.Defense"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:270
 #, no-c-format
 msgid "% Accuracy"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:273
+#: src/net/tmwa/generalhandler.cpp:272
 #, no-c-format
 msgid "% Evade"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:275
+#: src/net/tmwa/generalhandler.cpp:274
 #, no-c-format
 msgid "% Critical"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:276
+#: src/net/tmwa/generalhandler.cpp:275
 msgid "Attack Delay"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:278
+#: src/net/tmwa/generalhandler.cpp:277
 msgid "Walk Delay"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:280
+#: src/net/tmwa/generalhandler.cpp:279
 msgid "Attack Range"
+msgstr ""
+
+#: src/net/tmwa/generalhandler.cpp:281
+msgid "Damage per sec."
 msgstr ""
 
 #: src/net/tmwa/network.cpp:152
@@ -5418,49 +5504,47 @@ msgstr ""
 msgid "%s is not in your party!"
 msgstr ""
 
-#: src/playerrelations.cpp:414
+#: src/playerrelations.cpp:432
 msgid "Print '...'"
 msgstr ""
 
-#: src/playerrelations.cpp:434
+#: src/playerrelations.cpp:452
 msgid "Blink name"
 msgstr ""
 
-#: src/playerrelations.cpp:478
+#: src/playerrelations.cpp:496
 msgid "Floating '...' bubble"
 msgstr ""
 
-#: src/playerrelations.cpp:481
+#: src/playerrelations.cpp:499
 msgid "Floating bubble"
 msgstr ""
 
-#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:248
+#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:246
 #: src/resources/monsterdb.cpp:84
 msgid "unnamed"
 msgstr ""
 
-#: src/resources/itemdb.cpp:65
+#: src/resources/itemdb.cpp:63
 #, c-format
 msgid "Attack %+d"
 msgstr "Útok %+d"
 
-#: src/resources/itemdb.cpp:66
+#: src/resources/itemdb.cpp:64
 #, c-format
 msgid "Defense %+d"
 msgstr "Obrana %+d"
 
-#: src/resources/itemdb.cpp:67
+#: src/resources/itemdb.cpp:65
 #, c-format
 msgid "HP %+d"
 msgstr ""
 
-#: src/resources/itemdb.cpp:68
+#: src/resources/itemdb.cpp:66
 #, c-format
 msgid "MP %+d"
 msgstr ""
 
-#: src/resources/itemdb.cpp:171
+#: src/resources/itemdb.cpp:169
 msgid "Unknown item"
 msgstr "Neznámý předmět"
-
-
