@@ -837,6 +837,7 @@ int Client::exec()
             mSetupButton->setPosition(x, 3);
             top->add(mSetupButton);
 
+#ifndef WIN32
             mPerfomanceButton = new Button(
                 _("Perfomance"), "Perfomance", this);
             x -= mPerfomanceButton->getWidth() + 6;
@@ -852,6 +853,7 @@ int Client::exec()
             x -= mThemesButton->getWidth() + 6;
             mThemesButton->setPosition(x, 3);
             top->add(mThemesButton);
+#endif
 
             int screenWidth = config.getIntValue("screenwidth");
             int screenHeight = config.getIntValue("screenheight");
