@@ -16,7 +16,7 @@
 # -Weffc++
 
 #from time to time fix: -Wold-style-cast -Wconversion -Wswitch-enum -Waggregate-return
-#from time to time fix: -Winline
+#from time to time fix: -Winline -Woverloaded-virtual
 #need fix: -Wsuggest-attribute=pure -Wsuggest-attribute=const
 #need fix: -Wstrict-overflow=5 -fstrict-overflow
 #need fix: -Wstrict-aliasing=3
@@ -44,7 +44,10 @@ export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls \
 -Wcast-align -Wcast-qual -Wpointer-arith -Wundef \
 -Wmissing-include-dirs -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
 -Wpacked -Wextra -Wstrict-overflow=1 -Wunknown-pragmas -Wwrite-strings \
--Wstack-protector -Wshadow -D_FORTIFY_SOURCE=2"
+-Wstack-protector -Wshadow -Wunused -Wunused-macros -Wsynth \
+-Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
+-Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

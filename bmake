@@ -33,7 +33,10 @@ export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
 -Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
--Wpacked -Wshadow -D_FORTIFY_SOURCE=2"
+-Wpacked -Wshadow -Wunused -Wsynth \
+-Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
+-Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
