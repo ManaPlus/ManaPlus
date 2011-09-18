@@ -275,6 +275,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     config.addListener("visiblenames", this);
 
+    mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
+
     if (mType == NPC)
         setShowName(true);
     else
@@ -393,20 +395,17 @@ void Being::setPosition(const Vector &pos)
 
 void Being::setDestination(int dstX, int dstY)
 {
+    // We can't calculate anything without a map anyway.
+    if (!mMap)
+        return;
+
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-        if (mMap)
-            setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
+        setPath(mMap->findPath(mX, mY, dstX, dstY, getWalkMask()));
         return;
     }
-
-    // Manaserv's part:
-
-    // We can't calculate anything without a map anyway.
-    if (!mMap)
-        return;
 
     // Don't handle flawed destinations from server...
     if (dstX == 0 || dstY == 0)
@@ -494,13 +493,13 @@ void Being::setSpeech(const std::string &text, int time)
 
     // Check for links
     std::string::size_type start = mSpeech.find('[');
-    std::string::size_type end = mSpeech.find(']', start);
+    std::string::size_type e = mSpeech.find(']', start);
 
-    while (start != std::string::npos && end != std::string::npos)
+    while (start != std::string::npos && e != std::string::npos)
     {
         // Catch multiple embeds and ignore them so it doesn't crash the client.
         while ((mSpeech.find('[', start + 1) != std::string::npos) &&
-               (mSpeech.find('[', start + 1) < end))
+               (mSpeech.find('[', start + 1) < e))
         {
             start = mSpeech.find('[', start + 1);
         }
@@ -508,7 +507,7 @@ void Being::setSpeech(const std::string &text, int time)
         std::string::size_type position = mSpeech.find('|');
         if (mSpeech[start + 1] == '@' && mSpeech[start + 2] == '@')
         {
-            mSpeech.erase(end, 1);
+            mSpeech.erase(e, 1);
             mSpeech.erase(start, (position - start) + 1);
         }
         position = mSpeech.find('@');
@@ -520,7 +519,7 @@ void Being::setSpeech(const std::string &text, int time)
         }
 
         start = mSpeech.find('[', start + 1);
-        end = mSpeech.find(']', start);
+        e = mSpeech.find(']', start);
     }
 
     if (!mSpeech.empty())
@@ -715,6 +714,8 @@ void Being::handleAttack(Being *victim, int damage,
         if (dir)
             setDirection(dir);
     }
+    if (damage && victim->mType == PLAYER && victim->mAction == SIT)
+        victim->setAction(STAND);
 
     sound.playSfx(mInfo->getSound((damage > 0) ?
                   SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
@@ -761,7 +762,6 @@ void Being::setGuildName(const std::string &name)
 
 void Being::setGuildPos(const std::string &pos A_UNUSED)
 {
-//    logger->log("Got guild position \"%s\" for being %s(%i)", pos.c_str(), mName.c_str(), mId);
 }
 
 void Being::addGuild(Guild *guild)
@@ -770,7 +770,6 @@ void Being::addGuild(Guild *guild)
         return;
 
     mGuilds[guild->getId()] = guild;
-//    guild->addMember(mId, 0, mName);
 
     if (this == player_node && socialWindow)
         socialWindow->addTab(guild);
@@ -887,10 +886,10 @@ void Being::updateGuild()
 
 void Being::setGuild(Guild *guild)
 {
-    if (guild == getGuild())
+    Guild *old = getGuild();
+    if (guild == old)
         return;
 
-    Guild *old = getGuild();
     clearGuilds();
     addGuild(guild);
 
@@ -1115,7 +1114,6 @@ Uint8 Being::calcDirection(int dstX, int dstY) const
     return dir;
 }
 
-/** TODO: Used by eAthena only */
 void Being::nextTile()
 {
     if (mPath.empty())
@@ -1131,7 +1129,7 @@ void Being::nextTile()
     if (dir)
         setDirection(static_cast<Uint8>(dir));
 
-    if (!mMap->getWalk(pos.x, pos.y, getWalkMask()))
+    if (!mMap || !mMap->getWalk(pos.x, pos.y, getWalkMask()))
     {
         setAction(STAND);
         return;
@@ -1273,7 +1271,7 @@ void Being::logic()
 
             case ATTACK:
             {
-                std::string particleEffect = "";
+                std::string particleEffect("");
 
                 if (!mActionTime)
                     break;
@@ -1368,7 +1366,10 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
     const int emotionIndex = mEmotion - 1;
 
     if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
-        EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+    {
+        if (EmoteDB::getAnimation(emotionIndex))
+            EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+    }
 }
 
 void Being::drawSpeech(int offsetX, int offsetY)
@@ -1389,17 +1390,16 @@ void Being::drawSpeech(int offsetX, int offsetY)
     else if (mSpeechTime > 0 && (speech == NAME_IN_BUBBLE ||
              speech == NO_NAME_IN_BUBBLE))
     {
-        const bool showName = (speech == NAME_IN_BUBBLE);
+        const bool isShowName = (speech == NAME_IN_BUBBLE);
 
         delete mText;
         mText = 0;
 
-        mSpeechBubble->setCaption(showName ? mName : "", mTextColor);
+        mSpeechBubble->setCaption(isShowName ? mName : "", mTextColor);
 
-        mSpeechBubble->setText(mSpeech, showName);
+        mSpeechBubble->setText(mSpeech, isShowName);
         mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
-                                   py - getHeight()
-                                   - (mSpeechBubble->getHeight()));
+            py - getHeight() - (mSpeechBubble->getHeight()));
         mSpeechBubble->setVisible(true);
     }
     else if (mSpeechTime > 0 && speech == TEXT_OVERHEAD)
@@ -1408,11 +1408,9 @@ void Being::drawSpeech(int offsetX, int offsetY)
 
         if (!mText && userPalette)
         {
-            mText = new Text(mSpeech,
-                             getPixelX(), getPixelY() - getHeight(),
-                             gcn::Graphics::CENTER,
-                             &userPalette->getColor(UserPalette::PARTICLE),
-                             true);
+            mText = new Text(mSpeech, getPixelX(), getPixelY() - getHeight(),
+                gcn::Graphics::CENTER, &userPalette->getColor(
+                UserPalette::PARTICLE), true);
         }
     }
     else if (speech == NO_SPEECH)
@@ -1740,7 +1738,7 @@ void Being::load()
     while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE) !=
            paths.getStringValue("spriteErrorFile"))
     {
-        hairstyles++;
+        hairstyles ++;
     }
 
     mNumberOfHairstyles = hairstyles;
@@ -1863,6 +1861,9 @@ BeingCacheEntry* Being::getCacheEntry(int id)
     for (std::list<BeingCacheEntry*>::iterator i = beingInfoCache.begin();
          i != beingInfoCache.end(); ++i)
     {
+        if (!*i)
+            continue;
+
         if (id == (*i)->getId())
         {
             // Raise priority: move it to front
@@ -1976,8 +1977,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
         graphics->setColor(userPalette->
                 getColorWithAlpha(UserPalette::PORTAL_HIGHLIGHT));
 
-        graphics->fillRectangle(gcn::Rectangle(
-                                x, y, 32, 32));
+        graphics->fillRectangle(gcn::Rectangle(x, y, 32, 32));
 
         if (mDrawHotKeys && !mName.empty())
         {
@@ -2008,7 +2008,7 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     {
         // show hp bar here
         int maxHP = mMaxHP;
-        if (!maxHP)
+        if (!maxHP && mInfo)
             maxHP = mInfo->getMaxHP();
 
         drawHpBar(graphics, maxHP, mHP, mDamageTaken,
@@ -2153,28 +2153,28 @@ void Being::recalcSpritesOrder()
 
             if (spriteToItems)
             {
-                SpriteToItemMap::iterator it;
+                SpriteToItemMap::const_iterator itr;
 
-                for (it = spriteToItems->begin();
-                     it != spriteToItems->end(); ++it)
+                for (itr = spriteToItems->begin();
+                     itr != spriteToItems->end(); ++itr)
                 {
-                    int removeSprite = it->first;
-                    std::map<int, int> &itemReplacer = it->second;
+                    int remSprite = itr->first;
+                    const std::map<int, int> &itemReplacer = itr->second;
                     if (itemReplacer.empty())
                     {
-                        mSpriteHide[removeSprite] = 1;
+                        mSpriteHide[remSprite] = 1;
                     }
                     else
                     {
-                        std::map<int, int>::iterator repIt
-                            = itemReplacer.find(mSpriteIDs[removeSprite]);
+                        std::map<int, int>::const_iterator repIt
+                            = itemReplacer.find(mSpriteIDs[remSprite]);
                         if (repIt != itemReplacer.end())
                         {
-                            mSpriteHide[removeSprite] = repIt->second;
+                            mSpriteHide[remSprite] = repIt->second;
                             if (repIt->second != 1)
                             {
-                                setSprite(removeSprite, repIt->second,
-                                    mSpriteColors[removeSprite],
+                                setSprite(remSprite, repIt->second,
+                                    mSpriteColors[remSprite],
                                     1, false, true);
                             }
                         }
@@ -2186,7 +2186,8 @@ void Being::recalcSpritesOrder()
         if (info.mDrawBefore[dir] > 0)
         {
             int id2 = mSpriteIDs[info.mDrawBefore[dir]];
-            std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
+            std::map<int, int>::const_iterator
+                orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
@@ -2209,7 +2210,8 @@ void Being::recalcSpritesOrder()
         else if (info.mDrawAfter[dir] > 0)
         {
             int id2 = mSpriteIDs[info.mDrawAfter[dir]];
-            std::map<int, int>::iterator orderIt = itemSlotRemap.find(id2);
+            std::map<int, int>::const_iterator
+                orderIt = itemSlotRemap.find(id2);
             if (orderIt != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (after)");
@@ -2254,7 +2256,8 @@ void Being::recalcSpritesOrder()
             int idx1 = -1;
 //            logger->log("item %d, id=%d", slot, id);
             int reorder = 0;
-            std::map<int, int>::iterator orderIt = itemSlotRemap.find(id);
+            std::map<int, int>::const_iterator
+                orderIt = itemSlotRemap.find(id);
             if (orderIt != itemSlotRemap.end())
                 reorder = orderIt->second;
 
@@ -2445,7 +2448,7 @@ void Being::saveComment(const std::string &name,
             return;
     }
     dir += stringToHexPath(name);
-    logger->log("save to: %s", dir.c_str());
+//    logger->log("save to: %s", dir.c_str());
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }

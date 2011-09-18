@@ -174,6 +174,24 @@ const std::string findSameSubstring(const std::string &str1,
     return str1.substr(0, minLength);
 }
 
+const std::string findSameSubstringI(const std::string &s1,
+                                     const std::string &s2)
+{
+    std::string str1 = s1;
+    std::string str2 = s2;
+    toLower(str1);
+    toLower(str2);
+
+    int minLength = str1.length() > str2.length()
+        ? static_cast<int>(str2.length()) : static_cast<int>(str1.length());
+    for (int f = 0; f < minLength; f ++)
+    {
+        if (str1.at(f) != str2.at(f))
+            return s1.substr(0, f);
+    }
+    return s1.substr(0, minLength);
+}
+
 unsigned long findI(std::string str, std::string subStr)
 {
     str = toLower(str);
@@ -185,10 +203,11 @@ unsigned long findI(std::string text, std::vector<std::string> &list)
 {
     std::string str = toLower(text);
     unsigned long idx;
-    for (std::vector<std::string>::iterator i = list.begin();
+    for (std::vector<std::string>::const_iterator i = list.begin();
          i != list.end(); ++i)
     {
-        std::string subStr = toLower(*i);
+        std::string subStr = *i;
+        subStr = toLower(subStr);
         idx = str.find(subStr);
         if (idx != std::string::npos)
             return idx;
@@ -446,12 +465,12 @@ std::string combineDye2(std::string file, std::string dye)
     if (pos != std::string::npos)
     {
         std::string dye1 = file.substr(pos + 1);
-        std::string str = "";
+        std::string str("");
         file = file.substr(0, pos);
         std::list<std::string> list1 = splitToStringList(dye1, ';');
         std::list<std::string> list2 = splitToStringList(dye, ';');
-        std::list<std::string>::iterator it1, it1_end = list1.end();
-        std::list<std::string>::iterator it2, it2_end = list2.end();
+        std::list<std::string>::const_iterator it1, it1_end = list1.end();
+        std::list<std::string>::const_iterator it2, it2_end = list2.end();
         for (it1 = list1.begin(), it2 = list2.begin();
              it1 != it1_end && it2 != it2_end; ++it1, ++it2)
         {
@@ -485,8 +504,8 @@ std::vector<std::string> getLang()
 
 std::string packList(std::list<std::string> &list)
 {
-    std::list<std::string>::iterator i = list.begin();
-    std::string str = "";
+    std::list<std::string>::const_iterator i = list.begin();
+    std::string str("");
     while (i != list.end())
     {
         str = str + (*i) + "|";

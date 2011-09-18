@@ -72,7 +72,7 @@ class WindowMenu : public Container,
         std::vector <gcn::Button*> &getButtons()
         { return mButtons; }
 
-        void showButton(std::string name, bool isVisible);
+        void showButton(std::string name, bool visible);
 
         void loadButtons();
 

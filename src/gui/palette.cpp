@@ -80,8 +80,8 @@ const gcn::Color& Palette::getColor(char c, bool &valid)
 
 void Palette::advanceGradients()
 {
-    Palettes::iterator it = mInstances.begin();
-    Palettes::iterator it_end = mInstances.end();
+    Palettes::const_iterator it = mInstances.begin();
+    Palettes::const_iterator it_end = mInstances.end();
 
     for (; it != it_end; ++it)
         (*it)->advanceGradient();

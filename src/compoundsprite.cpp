@@ -461,7 +461,7 @@ void CompoundSprite::updateImages() const
 bool CompoundSprite::updateFromCache() const
 {
     ImagesCache::iterator it = imagesCache.begin();
-    ImagesCache::iterator it_end = imagesCache.end();
+    ImagesCache::const_iterator it_end = imagesCache.end();
 //    static int hits = 0;
 //    static int miss = 0;
 
@@ -491,8 +491,8 @@ bool CompoundSprite::updateFromCache() const
             bool fail(false);
             SpriteConstIterator it1 = begin();
             SpriteConstIterator it1_end = end();
-            VectorPointers::iterator it2 = ic->data.begin();
-            VectorPointers::iterator it2_end = ic->data.end();
+            VectorPointers::const_iterator it2 = ic->data.begin();
+            VectorPointers::const_iterator it2_end = ic->data.end();
 
             for (; it1 != it1_end && it2 != it2_end;  ++ it1, ++ it2)
             {

@@ -50,14 +50,14 @@
 SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(int npcId):
-    Window(_("Sell")),
+    Window(_("Sell"), false, 0, "sell.xml"),
     mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
 {
     init();
 }
 
 SellDialog::SellDialog(std::string nick):
-    Window(_("Sell")),
+    Window(_("Sell"), false, 0, "sell.xml"),
     mNpcId(-1), mMaxItems(0), mAmountItems(0), mNick(nick)
 {
     init();
@@ -107,18 +107,18 @@ void SellDialog::init()
     mSlider->setActionEventId("slider");
     mSlider->addActionListener(this);
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
 
-    place(0, 0, mScrollArea, 8, 5).setPadding(3);
-    place(0, 5, mDecreaseButton);
-    place(1, 5, mSlider, 3);
-    place(4, 5, mIncreaseButton);
-    place(5, 5, mQuantityLabel, 2);
-    place(7, 5, mAddMaxButton);
-    place(0, 6, mMoneyLabel, 8);
-    place(6, 7, mSellButton);
-    place(7, 7, mQuitButton);
+    placer(0, 0, mScrollArea, 8, 5).setPadding(3);
+    placer(0, 5, mDecreaseButton);
+    placer(1, 5, mSlider, 3);
+    placer(4, 5, mIncreaseButton);
+    placer(5, 5, mQuantityLabel, 2);
+    placer(7, 5, mAddMaxButton);
+    placer(0, 6, mMoneyLabel, 8);
+    placer(6, 7, mSellButton);
+    placer(7, 7, mQuitButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -346,8 +346,8 @@ void SellDialog::setVisible(bool visible)
 
 void SellDialog::closeAll()
 {
-    DialogList::iterator it = instances.begin();
-    DialogList::iterator it_end = instances.end();
+    DialogList::const_iterator it = instances.begin();
+    DialogList::const_iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
         (*it)->close();

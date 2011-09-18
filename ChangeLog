@@ -1,3 +1,29 @@
+2011-09-18 New release 1.1.9.18
+Manaplus:
+fix: restore windows visible state after restart.
+fix: players sorting in relation and party tab.
+fix: configuration settings in first start.
+fix: animation moving animation with mouse and some other.
+fix: reorder sprites if disabled in settings.
+fix: disable config copy from ancient tmw versions.
+fix: chat autocomplete case.
+fix: change player state from sit to stay if under attack.
+fix: whisper errors detection.
+add: options to configure lazy scrolling.
+add: move by minimaps clicks.
+add: copy text to clipboard by CTRL+C.
+add: additional sorting to inventory: by wight, by amount, by type.
+add: inventory filter by item name.
+add: per window visual configuration in themes.
+add: add item move to context menu for party members.
+add: configuration buttons in initial game window.
+add: theme unity (by Freya).
+add: Czech (cs) translation (by Pitriss).
+add: improve game speed.
+
+Mana:
+fix: draw overlay in opengl mode.
+
 2011-09-04 New release 1.1.9.4
 ManaPlus:
 fix: compilation with different flags.

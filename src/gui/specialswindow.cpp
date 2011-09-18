@@ -76,7 +76,7 @@ class SpecialEntry : public Container
 };
 
 SpecialsWindow::SpecialsWindow():
-    Window(_("Specials"))
+    Window(_("Specials"), false, 0, "specials.xml")
 {
     setWindowName("Specials");
     setCloseButton(true);
@@ -134,10 +134,11 @@ void SpecialsWindow::draw(gcn::Graphics *graphics)
     unsigned int found = 0; // number of entries in specialData
                             // which match mEntries
 
-    for (std::map<int, Special>::iterator i = specialData.begin();
+    for (std::map<int, Special>::const_iterator i = specialData.begin();
          i != specialData.end(); ++i)
     {
-        std::map<int, SpecialEntry *>::iterator e = mEntries.find(i->first);
+        std::map<int, SpecialEntry *>::const_iterator
+            e = mEntries.find(i->first);
         if (e == mEntries.end())
         {
             // found a new special - abort update and rebuild from scratch

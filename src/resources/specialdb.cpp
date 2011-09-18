@@ -123,7 +123,7 @@ void SpecialDB::unload()
 
 SpecialInfo *SpecialDB::get(int id)
 {
-    SpecialInfos::iterator i = mSpecialInfos.find(id);
+    SpecialInfos::const_iterator i = mSpecialInfos.find(id);
 
     if (i == mSpecialInfos.end())
         return NULL;

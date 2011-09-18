@@ -149,7 +149,7 @@ public:
 
 
 ChatWindow::ChatWindow():
-    Window(_("Chat")),
+    Window(_("Chat"), false, 0, "chat.xml"),
     mTmpVisible(false),
     mChatHistoryIndex(0)
 {
@@ -666,8 +666,8 @@ void ChatWindow::mouseDragged(gcn::MouseEvent &event)
     {
         int newX = std::max(0, getX() + event.getX() - mDragOffsetX);
         int newY = std::max(0, getY() + event.getY() - mDragOffsetY);
-        newX = std::min(graphics->mWidth - getWidth(), newX);
-        newY = std::min(graphics->mHeight - getHeight(), newY);
+        newX = std::min(mainGraphics->mWidth - getWidth(), newX);
+        newY = std::min(mainGraphics->mHeight - getHeight(), newY);
         setPosition(newX, newY);
     }
 }
@@ -754,7 +754,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatHistoryIndex --;
             }
 
-            std::list<std::string>::iterator it;
+            std::list<std::string>::const_iterator it;
             unsigned int f = 0;
             for (it = tab->getRows().begin();
                  it != tab->getRows().end(); ++it, f++)
@@ -788,7 +788,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatHistoryIndex = 0;
             }
 
-            std::list<std::string>::iterator it;
+            std::list<std::string>::const_iterator it;
             unsigned int f = 0;
             for (it = tab->getRows().begin();
                  it != tab->getRows().end(); ++it, f++)
@@ -822,7 +822,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         addInputText(Temp, false);
 }
 
-void ChatWindow::event(Mana::Channels channel, const Mana::Event &event)
+void ChatWindow::processEvent(Mana::Channels channel, const Mana::Event &event)
 {
     if (channel == Mana::CHANNEL_NOTICES)
     {
@@ -907,9 +907,9 @@ void ChatWindow::addItemText(const std::string &item)
     addInputText(text.str());
 }
 
-void ChatWindow::setVisible(bool isVisible)
+void ChatWindow::setVisible(bool visible)
 {
-    Window::setVisible(isVisible);
+    Window::setVisible(visible);
 
     /*
      * For whatever reason, if setVisible is called, the mTmpVisible effect
@@ -918,8 +918,8 @@ void ChatWindow::setVisible(bool isVisible)
     mTmpVisible = false;
 }
 
-void ChatWindow::whisper(const std::string &nick,
-                         const std::string &mes, Own own)
+void ChatWindow::addWhisper(const std::string &nick,
+                            const std::string &mes, Own own)
 {
     if (mes.empty() || !player_node)
         return;
@@ -1074,7 +1074,7 @@ std::string ChatWindow::addColors(std::string &msg)
         return msg;
     }
 
-    std::string newMsg = "";
+    std::string newMsg("");
     int cMap[] = {1, 4, 5, 2, 3, 6, 7, 9, 0, 8};
 
     // rainbow
@@ -1179,7 +1179,7 @@ void ChatWindow::autoComplete()
 std::string ChatWindow::autoComplete(std::vector<std::string> &names,
                                      std::string partName) const
 {
-    std::vector<std::string>::iterator i = names.begin();
+    std::vector<std::string>::const_iterator i = names.begin();
     toLower(partName);
     std::string newName("");
 
@@ -1195,8 +1195,7 @@ std::string ChatWindow::autoComplete(std::vector<std::string> &names,
             {
                 if (newName != "")
                 {
-                    toLower(newName);
-                    newName = findSameSubstring(name, newName);
+                    newName = findSameSubstringI(*i, newName);
                 }
                 else
                 {
@@ -1215,7 +1214,7 @@ std::string ChatWindow::autoComplete(std::string partName, History *words)
     if (!words)
         return "";
 
-    Commands::iterator i = words->begin();
+    Commands::const_iterator i = words->begin();
     std::vector<std::string> nameList;
 
     while (i != words->end())
@@ -1243,7 +1242,7 @@ void ChatWindow::moveTabRight(ChatTab *tab)
 
 std::string ChatWindow::autoCompleteHistory(std::string partName)
 {
-    History::iterator i = mHistory.begin();
+    History::const_iterator i = mHistory.begin();
     std::vector<std::string> nameList;
 
     while (i != mHistory.end())
@@ -1344,7 +1343,7 @@ void ChatWindow::initTradeFilter()
 
 void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
 {
-    TabMap::iterator iter;
+    TabMap::const_iterator iter;
     const Party *party = 0;
     const Guild *guild = 0;
     if (player_node)
@@ -1429,7 +1428,7 @@ void ChatWindow::loadState()
 void ChatWindow::saveState()
 {
     int num = 0;
-    TabMap::iterator iter;
+    TabMap::const_iterator iter;
     for (iter = mWhispers.begin(); iter != mWhispers.end() && num < 50; ++iter)
     {
         if (!iter->second)

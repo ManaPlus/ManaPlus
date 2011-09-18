@@ -85,6 +85,9 @@ public:
     size_t size() const
     { return std::vector<Sprite*>::size(); }
 
+    bool empty() const
+    { return std::vector<Sprite*>::empty(); }
+
     void addSprite(Sprite* sprite);
 
     void setSprite(int layer, Sprite* sprite);

@@ -46,7 +46,8 @@ Image *DropDown::buttons[2][2];
 ImageRect DropDown::skin;
 float DropDown::mAlpha = 1.0;
 
-DropDown::DropDown(gcn::ListModel *listModel):
+DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
+                   std::string eventId):
     gcn::DropDown::DropDown(listModel,
                             new ScrollArea,
                             new ListBox(listModel))
@@ -105,6 +106,12 @@ DropDown::DropDown(gcn::ListModel *listModel):
     mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     mShadowColor = Theme::getThemeColor(Theme::DROPDOWN_SHADOW);
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
+
+    if (!eventId.empty())
+        setActionEventId(eventId);
+
+    if (listener)
+        addActionListener(listener);
 }
 
 DropDown::~DropDown()

@@ -52,7 +52,7 @@
 extern volatile int tick_time;
 
 MiniStatusWindow::MiniStatusWindow():
-    Popup("MiniStatus")
+    Popup("MiniStatus", "ministatus.xml")
 {
     listen(Mana::CHANNEL_ATTRIBUTES);
 
@@ -134,7 +134,7 @@ MiniStatusWindow::~MiniStatusWindow()
     if (inv)
         inv->removeInventoyListener(this);
 
-    std::vector <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::const_iterator it, it_end;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
     {
         ProgressBar *bar = *it;
@@ -160,7 +160,7 @@ ProgressBar *MiniStatusWindow::createBar(float progress, int width, int height,
 void MiniStatusWindow::updateBars()
 {
     int x = 0;
-    std::vector <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::const_iterator it, it_end;
     ProgressBar* lastBar = 0;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
         safeRemove(*it);
@@ -218,8 +218,8 @@ void MiniStatusWindow::drawIcons(Graphics *graphics)
     }
 }
 
-void MiniStatusWindow::event(Mana::Channels channel A_UNUSED,
-                             const Mana::Event &event)
+void MiniStatusWindow::processEvent(Mana::Channels channel A_UNUSED,
+                                    const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {
@@ -400,12 +400,12 @@ void MiniStatusWindow::mouseExited(gcn::MouseEvent &event)
     mStatusPopup->hide();
 }
 
-void MiniStatusWindow::showBar(std::string name, bool isVisible)
+void MiniStatusWindow::showBar(std::string name, bool visible)
 {
     ProgressBar *bar = mBarNames[name];
     if (!bar)
         return;
-    bar->setVisible(isVisible);
+    bar->setVisible(visible);
     updateBars();
     saveBars();
 }
@@ -439,7 +439,7 @@ void MiniStatusWindow::loadBars()
 
 void MiniStatusWindow::saveBars()
 {
-    std::vector <ProgressBar*>::iterator it, it_end;
+    std::vector <ProgressBar*>::const_iterator it, it_end;
     int i = 0;
     for (it = mBars.begin(), it_end = mBars.end();
          it != it_end; ++it)

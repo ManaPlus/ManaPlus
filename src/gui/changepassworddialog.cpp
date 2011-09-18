@@ -46,10 +46,10 @@
 
 #include "debug.h"
 
-ChangePasswordDialog::ChangePasswordDialog(LoginData *loginData):
-    Window(_("Change Password"), true),
+ChangePasswordDialog::ChangePasswordDialog(LoginData *data):
+    Window(_("Change Password"), true, 0, "changepassword.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(loginData)
+    mLoginData(data)
 {
     gcn::Label *accountLabel = new Label(
             strprintf(_("Account: %s"), mLoginData->username.c_str()));
@@ -101,7 +101,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         logger->log("ChangePasswordDialog::Password change, Username is %s",
                      username.c_str());
 
-        std::stringstream errorMessage;
+        std::stringstream errorMsg;
         int error = 0;
 
         unsigned int min = Net::getLoginHandler()->getMinPasswordLength();
@@ -111,27 +111,27 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         if (oldPassword.empty())
         {
             // No old password
-            errorMessage << _("Enter the old password first.");
+            errorMsg << _("Enter the old password first.");
             error = 1;
         }
         else if (newFirstPass.length() < min)
         {
             // First password too short
-            errorMessage << strprintf(_("The new password needs to be at least"
-                                        " %d characters long."), min);
+            errorMsg << strprintf(_("The new password needs to be at least"
+                " %d characters long."), min);
             error = 2;
         }
         else if (newFirstPass.length() > max - 1 )
         {
             // First password too long
-            errorMessage << strprintf(_("The new password needs to be less "
-                                        "than %d characters long."), max);
+            errorMsg << strprintf(_("The new password needs to be less "
+                "than %d characters long."), max);
             error = 2;
         }
         else if (newFirstPass != newSecondPass)
         {
             // Second Pass mismatch
-            errorMessage << _("The new password entries mismatch.");
+            errorMsg << _("The new password entries mismatch.");
             error = 3;
         }
 
@@ -144,7 +144,7 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
             else if (error == 3)
                 mWrongDataNoticeListener->setTarget(this->mSecondPassField);
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMessage.str());
+            OkDialog *dlg = new OkDialog(_("Error"), errorMsg.str());
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

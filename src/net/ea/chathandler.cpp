@@ -125,7 +125,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
         case 0x01:
             if (chatWindow)
             {
-                chatWindow->whisper(nick,
+                chatWindow->addWhisper(nick,
                     strprintf(_("Whisper could not be "
                     "sent, %s is offline."), nick.c_str()), BY_SERVER);
             }
@@ -133,7 +133,7 @@ void ChatHandler::processWhisperResponse(Net::MessageIn &msg)
         case 0x02:
             if (chatWindow)
             {
-                chatWindow->whisper(nick,
+                chatWindow->addWhisper(nick,
                     strprintf(_("Whisper could not "
                     "be sent, ignored by %s."), nick.c_str()),
                     BY_SERVER);
@@ -183,7 +183,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         if (tradeBot)
                         {
                             if (showMsg && chatWindow)
-                                chatWindow->whisper(nick, chatMsg);
+                                chatWindow->addWhisper(nick, chatMsg);
                             shopWindow->giveList(nick,
                                 ShopWindow::SELL);
                         }
@@ -193,7 +193,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         if (tradeBot)
                         {
                             if (showMsg && chatWindow)
-                                chatWindow->whisper(nick, chatMsg);
+                                chatWindow->addWhisper(nick, chatMsg);
                             shopWindow->giveList(nick,
                                 ShopWindow::BUY);
                         }
@@ -201,7 +201,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                     else if (chatMsg.find("!buyitem ") == 0)
                     {
                         if (showMsg && chatWindow)
-                            chatWindow->whisper(nick, chatMsg);
+                            chatWindow->addWhisper(nick, chatMsg);
                         if (tradeBot)
                         {
                             shopWindow->processRequest(nick, chatMsg,
@@ -211,7 +211,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                     else if (chatMsg.find("!sellitem ") == 0)
                     {
                         if (showMsg && chatWindow)
-                            chatWindow->whisper(nick, chatMsg);
+                            chatWindow->addWhisper(nick, chatMsg);
                         if (tradeBot)
                         {
                             shopWindow->processRequest(nick, chatMsg,
@@ -223,7 +223,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                     {
                         chatMsg = chatMsg.erase(0, 2);
                         if (showMsg && chatWindow)
-                            chatWindow->whisper(nick, chatMsg);
+                            chatWindow->addWhisper(nick, chatMsg);
                         if (chatMsg.find("B1") == 0
                             || chatMsg.find("S1") == 0)
                         {
@@ -232,12 +232,12 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                     }
                     else if (chatWindow)
                     {
-                        chatWindow->whisper(nick, chatMsg);
+                        chatWindow->addWhisper(nick, chatMsg);
                     }
                 }
                 else if (chatWindow)
                 {
-                    chatWindow->whisper(nick, chatMsg);
+                    chatWindow->addWhisper(nick, chatMsg);
                 }
             }
             else
@@ -246,7 +246,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                     || (chatMsg.find("!selllist")
                     != 0 && chatMsg.find("!buylist") != 0)))
                 {
-                    chatWindow->whisper(nick, chatMsg);
+                    chatWindow->addWhisper(nick, chatMsg);
                 }
             }
         }

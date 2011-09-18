@@ -40,12 +40,12 @@
 
 #include "debug.h"
 
-Popup::Popup(const std::string &name, const std::string &skin):
+Popup::Popup(const std::string &name, std::string skin):
     mPopupName(name),
     mMinWidth(100),
     mMinHeight(40),
-    mMaxWidth(graphics->mWidth),
-    mMaxHeight(graphics->mHeight),
+    mMaxWidth(mainGraphics->mWidth),
+    mMaxHeight(mainGraphics->mHeight),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true)
 {
@@ -58,8 +58,20 @@ Popup::Popup(const std::string &name, const std::string &skin):
 
     setPadding(3);
 
+    if (skin == "")
+        skin = "popup.xml";
+
     // Loads the skin
-    mSkin = Theme::instance()->load(skin);
+    if (Theme::instance())
+    {
+        mSkin = Theme::instance()->load(skin);
+        if (mSkin)
+            setPadding(mSkin->getPadding());
+    }
+    else
+    {
+        mSkin = 0;
+    }
 
     // Add this window to the window container
     windowContainer->add(this);
@@ -76,7 +88,11 @@ Popup::~Popup()
     mVertexes = 0;
 
     if (mSkin)
-        mSkin->instances--;
+    {
+        if (Theme::instance())
+            Theme::instance()->unload(mSkin);
+        mSkin = 0;
+    }
 }
 
 void Popup::setWindowContainer(WindowContainer *wc)
@@ -190,9 +206,9 @@ void Popup::position(int x, int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->mWidth)
-        posX = graphics->mWidth - getWidth();
-    if (posY + getHeight() > graphics->mHeight)
+    if (posX + getWidth() > mainGraphics->mWidth)
+        posX = mainGraphics->mWidth - getWidth();
+    if (posY + getHeight() > mainGraphics->mHeight)
         posY = y - getHeight() - distance;
 
     setPosition(posX, posY);

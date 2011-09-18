@@ -80,11 +80,13 @@ Viewport::Viewport():
     mScrollCenterOffsetY = config.getIntValue("ScrollCenterOffsetY");
     mShowBeingPopup = config.getBoolValue("showBeingPopup");
     mSelfMouseHeal = config.getBoolValue("selfMouseHeal");
+    mEnableLazyScrolling = config.getBoolValue("enableLazyScrolling");
 
     config.addListener("ScrollLaziness", this);
     config.addListener("ScrollRadius", this);
     config.addListener("showBeingPopup", this);
     config.addListener("selfMouseHeal", this);
+    config.addListener("enableLazyScrolling", this);
 
     mPopupMenu = new PopupMenu;
     mBeingPopup = new BeingPopup;
@@ -99,6 +101,7 @@ Viewport::~Viewport()
     config.removeListener("ScrollRadius", this);
     config.removeListener("showBeingPopup", this);
     config.removeListener("selfMouseHeal", this);
+    config.removeListener("enableLazyScrolling", this);
 
     delete mPopupMenu;
     mPopupMenu = 0;
@@ -150,59 +153,67 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     int cnt = 0;
 
-    // Apply lazy scrolling
-    while (lastTick < tick_time && cnt < 32)
+    if (mEnableLazyScrolling)
     {
-        if (player_x > static_cast<int>(mPixelViewX) + mScrollRadius)
+        // Apply lazy scrolling
+        while (lastTick < tick_time && cnt < 32)
         {
-            mPixelViewX += static_cast<float>(player_x
-                - static_cast<int>(mPixelViewX) - mScrollRadius) /
-                static_cast<float>(mScrollLaziness);
-        }
-        if (player_x < static_cast<int>(mPixelViewX) - mScrollRadius)
-        {
-            mPixelViewX += static_cast<float>(player_x
-                - static_cast<int>(mPixelViewX) + mScrollRadius) /
-                static_cast<float>(mScrollLaziness);
-        }
-        if (player_y > static_cast<int>(mPixelViewY) + mScrollRadius)
-        {
-            mPixelViewY += static_cast<float>(player_y
-            - static_cast<int>(mPixelViewY) - mScrollRadius) /
-            static_cast<float>(mScrollLaziness);
-        }
-        if (player_y < static_cast<int>(mPixelViewY) - mScrollRadius)
-        {
-            mPixelViewY += static_cast<float>(player_y
-            - static_cast<int>(mPixelViewY) + mScrollRadius) /
-            static_cast<float>(mScrollLaziness);
-        }
-        lastTick ++;
-        cnt ++;
-    }
-
-    // Auto center when player is off screen
-    if (cnt > 30 || player_x - static_cast<int>(mPixelViewX)
-        > graphics->mWidth / 2 || static_cast<int>(mPixelViewX)
-        - player_x > graphics->mWidth / 2 ||  static_cast<int>(mPixelViewY)
-        - player_y > graphics->getHeight() / 2 ||  player_y
-        - static_cast<int>(mPixelViewY) > graphics->getHeight() / 2)
-    {
-        if (player_x <= 0 || player_y <= 0)
-        {
-            if (debugChatTab)
-                debugChatTab->chatLog("incorrect player position!");
-            logger->log("incorrect player position: %d, %d, %d, %d",
-                player_x, player_y, (int)mPixelViewX, (int)mPixelViewY);
-            if (player_node)
+            if (player_x > static_cast<int>(mPixelViewX) + mScrollRadius)
             {
-                logger->log("tile position: %d, %d",
-                    player_node->getTileX(), player_node->getTileY());
+                mPixelViewX += static_cast<float>(player_x
+                    - static_cast<int>(mPixelViewX) - mScrollRadius) /
+                    static_cast<float>(mScrollLaziness);
             }
+            if (player_x < static_cast<int>(mPixelViewX) - mScrollRadius)
+            {
+                mPixelViewX += static_cast<float>(player_x
+                    - static_cast<int>(mPixelViewX) + mScrollRadius) /
+                    static_cast<float>(mScrollLaziness);
+            }
+            if (player_y > static_cast<int>(mPixelViewY) + mScrollRadius)
+            {
+                mPixelViewY += static_cast<float>(player_y
+                - static_cast<int>(mPixelViewY) - mScrollRadius) /
+                static_cast<float>(mScrollLaziness);
+            }
+            if (player_y < static_cast<int>(mPixelViewY) - mScrollRadius)
+            {
+                mPixelViewY += static_cast<float>(player_y
+                - static_cast<int>(mPixelViewY) + mScrollRadius) /
+                static_cast<float>(mScrollLaziness);
+            }
+            lastTick ++;
+            cnt ++;
         }
+
+        // Auto center when player is off screen
+        if (cnt > 30 || player_x - static_cast<int>(mPixelViewX)
+            > graphics->mWidth / 2 || static_cast<int>(mPixelViewX)
+            - player_x > graphics->mWidth / 2 ||  static_cast<int>(mPixelViewY)
+            - player_y > graphics->getHeight() / 2 ||  player_y
+            - static_cast<int>(mPixelViewY) > graphics->getHeight() / 2)
+        {
+            if (player_x <= 0 || player_y <= 0)
+            {
+                if (debugChatTab)
+                    debugChatTab->chatLog("incorrect player position!");
+                logger->log("incorrect player position: %d, %d, %d, %d",
+                    player_x, player_y, (int)mPixelViewX, (int)mPixelViewY);
+                if (player_node)
+                {
+                    logger->log("tile position: %d, %d",
+                        player_node->getTileX(), player_node->getTileY());
+                }
+            }
+            mPixelViewX = static_cast<float>(player_x);
+            mPixelViewY = static_cast<float>(player_y);
+        }
+    }
+    else
+    {
         mPixelViewX = static_cast<float>(player_x);
         mPixelViewY = static_cast<float>(player_y);
-    };
+    }
 
     // Don't move camera so that the end of the map is on screen
     const int viewXmax =
@@ -478,7 +489,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     if (actorSpriteManager)
                     {
                         if (player_node != mHoverBeing || mSelfMouseHeal)
-                            actorSpriteManager->heal(player_node, mHoverBeing);
+                            actorSpriteManager->heal(mHoverBeing);
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
@@ -693,9 +704,16 @@ void Viewport::closePopupMenu()
 
 void Viewport::optionChanged(const std::string &name A_UNUSED)
 {
-    mScrollLaziness = config.getIntValue("ScrollLaziness");
-    mScrollRadius = config.getIntValue("ScrollRadius");
-    mShowBeingPopup = config.getBoolValue("showBeingPopup");
+    if (name == "ScrollLaziness")
+        mScrollLaziness = config.getIntValue("ScrollLaziness");
+    else if (name == "ScrollRadius")
+        mScrollRadius = config.getIntValue("ScrollRadius");
+    else if (name == "showBeingPopup")
+        mShowBeingPopup = config.getBoolValue("showBeingPopup");
+    else if (name == "selfMouseHeal")
+        mSelfMouseHeal = config.getBoolValue("selfMouseHeal");
+    else if (name == "enableLazyScrolling")
+        mEnableLazyScrolling = config.getBoolValue("enableLazyScrolling");
 }
 
 void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)

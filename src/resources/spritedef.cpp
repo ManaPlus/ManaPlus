@@ -86,7 +86,7 @@ void SpriteDef::substituteAction(std::string complete, std::string with)
 {
     if (mActions.find(complete) == mActions.end())
     {
-        Actions::iterator i = mActions.find(with);
+        Actions::const_iterator i = mActions.find(with);
         if (i != mActions.end())
             mActions[complete] = i->second;
     }

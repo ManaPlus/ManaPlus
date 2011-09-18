@@ -78,7 +78,7 @@ bool stringCompare(const std::string &left, const std::string &right )
 }
 
 WhoIsOnline::WhoIsOnline():
-    Window(_("Who Is Online - Updating")),
+    Window(_("Who Is Online - Updating"), false, 0, "whoisonline.xml"),
     mThread(NULL),
     mDownloadStatus(UPDATE_LIST),
     mDownloadComplete(true),
@@ -95,9 +95,11 @@ WhoIsOnline::WhoIsOnline():
     const int w = 200;
     setDefaultSize(w, h, ImageRect::CENTER);
 //    setContentSize(w, h);
+    setVisible(false);
     setCloseButton(true);
     setResizable(true);
     setStickyButtonLock(true);
+    setSaveVisible(true);
 
     mUpdateButton = new Button(_("Update"), "update", this);
     mUpdateButton->setEnabled(false);

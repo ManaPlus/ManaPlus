@@ -95,6 +95,8 @@ void Particle::setupEngine()
     Particle::maxCount = config.getIntValue("particleMaxCount");
     Particle::fastPhysics = config.getIntValue("particleFastPhysics");
     Particle::emitterSkip = config.getIntValue("particleEmitterSkip") + 1;
+    if (!Particle::emitterSkip)
+        Particle::emitterSkip = 1;
     Particle::enabled = config.getBoolValue("particleeffects");
     disableAutoDelete();
     logger->log1("Particle engine set up");
@@ -200,11 +202,11 @@ bool Particle::update()
         // Update child emitters
         if ((mLifetimePast - 1) % Particle::emitterSkip == 0)
         {
-            for (EmitterIterator e = mChildEmitters.begin();
+            for (EmitterConstIterator e = mChildEmitters.begin();
                  e != mChildEmitters.end(); ++e)
             {
                 Particles newParticles = (*e)->createParticles(mLifetimePast);
-                for (ParticleIterator p = newParticles.begin();
+                for (ParticleConstIterator p = newParticles.begin();
                      p != newParticles.end(); ++p)
                 {
                     (*p)->moveBy(mPos);
@@ -258,7 +260,7 @@ bool Particle::update()
 void Particle::moveBy(const Vector &change)
 {
     mPos += change;
-    for (ParticleIterator p = mChildParticles.begin();
+    for (ParticleConstIterator p = mChildParticles.begin();
          p != mChildParticles.end(); ++p)
     {
         if ((*p)->doesFollow())
@@ -451,7 +453,7 @@ void Particle::adjustEmitterSize(int w, int h)
 {
     if (mAllowSizeAdjust)
     {
-        for (EmitterIterator e = mChildEmitters.begin();
+        for (EmitterConstIterator e = mChildEmitters.begin();
              e != mChildEmitters.end(); ++e)
         {
             (*e)->adjustSize(w, h);

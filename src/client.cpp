@@ -140,11 +140,11 @@ Configuration config;         /**< XML file configuration reader */
 Configuration serverConfig;   /**< XML file server configuration reader */
 Configuration branding;       /**< XML branding information reader */
 Configuration paths;          /**< XML default paths information reader */
-Logger *logger;               /**< Log object */
-ChatLogger *chatLogger;       /**< Chat log object */
+Logger *logger = 0;           /**< Log object */
+ChatLogger *chatLogger = 0;   /**< Chat log object */
 KeyboardConfig keyboard;
-UserPalette *userPalette;
-Graphics *graphics;
+UserPalette *userPalette = 0;
+Graphics *mainGraphics = 0;
 
 Sound sound;
 
@@ -196,16 +196,16 @@ Uint32 nextSecond(Uint32 interval, void *param A_UNUSED)
  * @return the elapsed time in milliseconds
  * between two tick values.
  */
-int get_elapsed_time(int start_time)
+int get_elapsed_time(int startTime)
 {
-    if (start_time <= tick_time)
+    if (startTime <= tick_time)
     {
-        return (tick_time - start_time) * MILLISECONDS_IN_A_TICK;
+        return (tick_time - startTime) * MILLISECONDS_IN_A_TICK;
     }
     else
     {
-        return (tick_time + (MAX_TICK_VALUE - start_time))
-                * MILLISECONDS_IN_A_TICK;
+        return (tick_time + (MAX_TICK_VALUE - startTime))
+            * MILLISECONDS_IN_A_TICK;
     }
 }
 
@@ -247,6 +247,9 @@ Client::Client(const Options &options):
     mQuitDialog(0),
     mDesktop(0),
     mSetupButton(0),
+    mVideoButton(0),
+    mThemesButton(0),
+    mPerfomanceButton(0),
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(0),
@@ -440,20 +443,20 @@ Client::Client(const Options &options):
     switch(useOpenGL)
     {
         case 0:
-            graphics = new Graphics;
+            mainGraphics = new Graphics;
             break;
         case 1:
         default:
-            graphics = new OpenGLGraphics;
+            mainGraphics = new OpenGLGraphics;
             break;
         case 2:
-            graphics = new OpenGL1Graphics;
+            mainGraphics = new OpenGL1Graphics;
             break;
     };
 
 #else
     // Create the graphics context
-    graphics = new Graphics;
+    mainGraphics = new Graphics;
 #endif
 
     runCounters = config.getBoolValue("packetcounters");
@@ -465,7 +468,7 @@ Client::Client(const Options &options):
     const bool hwaccel = config.getBoolValue("hwaccel");
 
     // Try to set the desired video mode
-    if (!graphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
+    if (!mainGraphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
     {
         logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
@@ -482,7 +485,7 @@ Client::Client(const Options &options):
             config.setValueInt("screenwidth", oldWidth);
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen);
-            if (!graphics->setVideoMode(oldWidth, oldHeight, bpp,
+            if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
                 oldFullscreen, hwaccel))
             {
                 logger->error(strprintf("Couldn't restore %dx%dx%d "
@@ -493,7 +496,7 @@ Client::Client(const Options &options):
     }
 
     // Initialize for drawing
-    graphics->_beginDraw();
+    mainGraphics->_beginDraw();
 
     Theme::selectSkin();
 //    Theme::prepareThemePath();
@@ -507,7 +510,7 @@ Client::Client(const Options &options):
     // Initialize the drop shortcuts.
     dropShortcut = new DropShortcut;
 
-    gui = new Gui(graphics);
+    gui = new Gui(mainGraphics);
 
     // Initialize sound engine
     try
@@ -645,8 +648,8 @@ Client::~Client()
 
     logger->log1("Quitting3");
 
-    delete graphics;
-    graphics = 0;
+    delete mainGraphics;
+    mainGraphics = 0;
 
     logger->log1("Quitting4");
 
@@ -760,7 +763,7 @@ int Client::exec()
             frame_count++;
             if (gui)
                 gui->draw();
-            graphics->updateScreen();
+            mainGraphics->updateScreen();
 //            logger->log("active");
         }
         else
@@ -828,10 +831,29 @@ int Client::exec()
 
             mDesktop = new Desktop;
             top->add(mDesktop);
+            int x = top->getWidth();
             mSetupButton = new Button(_("Setup"), "Setup", this);
-            mSetupButton->setPosition(top->getWidth()
-                - mSetupButton->getWidth() - 3, 3);
+            x -= mSetupButton->getWidth() + 3;
+            mSetupButton->setPosition(x, 3);
             top->add(mSetupButton);
+
+#ifndef WIN32
+            mPerfomanceButton = new Button(
+                _("Perfomance"), "Perfomance", this);
+            x -= mPerfomanceButton->getWidth() + 6;
+            mPerfomanceButton->setPosition(x, 3);
+            top->add(mPerfomanceButton);
+
+            mVideoButton = new Button(_("Video"), "Video", this);
+            x -= mVideoButton->getWidth() + 6;
+            mVideoButton->setPosition(x, 3);
+            top->add(mVideoButton);
+
+            mThemesButton = new Button(_("Themes"), "Themes", this);
+            x -= mThemesButton->getWidth() + 6;
+            mThemesButton->setPosition(x, 3);
+            top->add(mThemesButton);
+#endif
 
             int screenWidth = config.getIntValue("screenwidth");
             int screenHeight = config.getIntValue("screenheight");
@@ -844,12 +866,10 @@ int Client::exec()
 
         if (mState != mOldState)
         {
-            {
-                Mana::Event event(EVENT_STATECHANGE);
-                event.setInt("oldState", mOldState);
-                event.setInt("newState", mState);
-                Mana::Event::trigger(CHANNEL_CLIENT, event);
-            }
+            Mana::Event evt(EVENT_STATECHANGE);
+            evt.setInt("oldState", mOldState);
+            evt.setInt("newState", mState);
+            Mana::Event::trigger(CHANNEL_CLIENT, evt);
 
             if (mOldState == STATE_GAME)
             {
@@ -1046,10 +1066,10 @@ int Client::exec()
                     if (!BeingInfo::unknown)
                         BeingInfo::unknown = new BeingInfo;
 
-                    Mana::Event event(EVENT_STATECHANGE);
-                    event.setInt("newState", STATE_LOAD_DATA);
-                    event.setInt("oldState", mOldState);
-                    Mana::Event::trigger(CHANNEL_CLIENT, event);
+                    Mana::Event evt2(EVENT_STATECHANGE);
+                    evt2.setInt("newState", STATE_LOAD_DATA);
+                    evt2.setInt("oldState", mOldState);
+                    Mana::Event::trigger(CHANNEL_CLIENT, evt2);
 
                     // Load XML databases
                     ColorDB::load();
@@ -1140,6 +1160,12 @@ int Client::exec()
 
                     delete mSetupButton;
                     mSetupButton = 0;
+                    delete mVideoButton;
+                    mVideoButton = 0;
+                    delete mThemesButton;
+                    mThemesButton = 0;
+                    delete mPerfomanceButton;
+                    mPerfomanceButton = 0;
                     delete mDesktop;
                     mDesktop = 0;
 
@@ -1190,8 +1216,7 @@ int Client::exec()
                 case STATE_CHANGEPASSWORD_ATTEMPT:
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
                     Net::getLoginHandler()->changePassword(loginData.username,
-                                                loginData.password,
-                                                loginData.newPassword);
+                        loginData.password, loginData.newPassword);
                     break;
 
                 case STATE_CHANGEPASSWORD_SUCCESS:
@@ -1332,16 +1357,28 @@ void Client::optionChanged(const std::string &name)
 
 void Client::action(const gcn::ActionEvent &event)
 {
-    Window *window = 0;
+    std::string tab;
 
     if (event.getId() == "Setup")
-        window = setupWindow;
+        tab = "";
+    else if (event.getId() == "Video")
+        tab = "Video";
+    else if (event.getId() == "Themes")
+        tab = "Theme";
+    else if (event.getId() == "Perfomance")
+        tab = "Perfomance";
+    else
+        return;
 
-    if (window)
+    if (setupWindow)
     {
-        window->setVisible(!window->isVisible());
-        if (window->isVisible())
-            window->requestMoveToTop();
+        setupWindow->setVisible(!setupWindow->isVisible());
+        if (setupWindow->isVisible())
+        {
+            if (!tab.empty())
+                setupWindow->activateTab(tab);
+            setupWindow->requestMoveToTop();
+        }
     }
 }
 
@@ -1457,35 +1494,6 @@ void Client::initHomeDir()
     {
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mConfigDir.c_str()));
-    }
-
-    struct stat statbuf;
-    std::string newConfigFile = mConfigDir + "/config.xml";
-    if (stat(newConfigFile.c_str(), &statbuf))
-    {
-        std::string oldConfigFile = std::string(PHYSFS_getUserDir()) +
-            "/.mana/config.xml";
-        if (mRootDir.empty() && !stat(oldConfigFile.c_str(), &statbuf)
-            && S_ISREG(statbuf.st_mode))
-        {
-            std::ifstream oldConfig;
-            std::ofstream newConfig;
-            logger->log1("Copying old TMW settings.");
-
-            oldConfig.open(oldConfigFile.c_str(), std::ios::binary);
-            newConfig.open(newConfigFile.c_str(), std::ios::binary);
-
-            if (!oldConfig.is_open() || !newConfig.is_open())
-            {
-                logger->log1("Unable to copy old settings.");
-            }
-            else
-            {
-                newConfig << oldConfig.rdbuf();
-                newConfig.close();
-                oldConfig.close();
-            }
-        }
     }
 }
 
@@ -1731,27 +1739,27 @@ void Client::initScreenshotDir()
     }
 }
 
-void Client::accountLogin(LoginData *loginData)
+void Client::accountLogin(LoginData *data)
 {
-    if (!loginData)
+    if (!data)
         return;
 
-    logger->log("Username is %s", loginData->username.c_str());
+    logger->log("Username is %s", data->username.c_str());
 
     // Send login infos
-    if (loginData->registerLogin)
-        Net::getLoginHandler()->registerAccount(loginData);
+    if (data->registerLogin)
+        Net::getLoginHandler()->registerAccount(data);
     else
-        Net::getLoginHandler()->loginAccount(loginData);
+        Net::getLoginHandler()->loginAccount(data);
 
     // Clear the password, avoids auto login when returning to login
-    loginData->password = "";
+    data->password = "";
 
     // TODO This is not the best place to save the config, but at least better
     // than the login gui window
-    if (loginData->remember)
-        serverConfig.setValue("username", loginData->username);
-    serverConfig.setValue("remember", loginData->remember);
+    if (data->remember)
+        serverConfig.setValue("username", data->username);
+    serverConfig.setValue("remember", data->remember);
 }
 
 bool Client::copyFile(std::string &configPath, std::string &oldConfigPath)
@@ -1803,7 +1811,7 @@ void Client::storeSafeParameters()
     int width;
     int height;
     std::string font;
-    std::string boldFont;
+    std::string bFont;
     std::string particleFont;
     std::string helpFont;
     std::string secureFont;
@@ -1831,7 +1839,7 @@ void Client::storeSafeParameters()
     height = config.getIntValue("screenheight");
 
     font = config.getStringValue("font");
-    boldFont = config.getStringValue("boldFont");
+    bFont = config.getStringValue("boldFont");
     particleFont = config.getStringValue("particleFont");
     helpFont = config.getStringValue("helpFont");
     secureFont = config.getStringValue("secureFont");
@@ -1876,7 +1884,7 @@ void Client::storeSafeParameters()
     config.setValue("screenwidth", width);
     config.setValue("screenheight", height);
     config.setValue("font", font);
-    config.setValue("boldFont", boldFont);
+    config.setValue("boldFont", bFont);
     config.setValue("particleFont", particleFont);
     config.setValue("helpFont", helpFont);
     config.setValue("secureFont", secureFont);
@@ -2189,8 +2197,8 @@ void Client::closeDialogs()
 bool Client::isTmw()
 {
     if (getServerName() == "server.themanaworld.org"
-        || Client::getServerName() == "themanaworld.org"
-        || Client::getServerName() == "81.161.192.4")
+        || getServerName() == "themanaworld.org"
+        || getServerName() == "81.161.192.4")
     {
         return true;
     }

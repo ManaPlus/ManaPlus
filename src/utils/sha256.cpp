@@ -254,7 +254,7 @@ void SHA256Update(SHA256Context *ctx,
     SHA256Transform(ctx, ctx->block, 1);
     SHA256Transform(ctx, shifted_message, block_nb);
     rem_len = new_len % SHA256_BLOCK_SIZE;
-    memcpy(ctx->block, &shifted_message[block_nb << 6],rem_len);
+    memcpy(ctx->block, &shifted_message[block_nb << 6], rem_len);
     ctx->len = rem_len;
     ctx->tot_len += (block_nb + 1) << 6;
 }
@@ -283,7 +283,7 @@ std::string SHA256Hash(const char *src, int len)
     SHA256Final(&ctx, bytehash);
     // Convert it to hex
     const char* hxc = "0123456789abcdef";
-    std::string hash = "";
+    std::string hash("");
     for (int i = 0; i < SHA256_DIGEST_SIZE; i++)
     {
         hash += hxc[bytehash[i] / 16];

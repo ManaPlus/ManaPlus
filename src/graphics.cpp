@@ -97,13 +97,14 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
         logger->log1("Using video driver: unknown");
 
     mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
-    logger->log("Double buffer mode: %s",
-         mDoubleBuffer ? "yes" : "no");
+    logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
     if (mTarget->format)
         logger->log("Bits per pixel: %d", mTarget->format->BytesPerPixel);
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
+    if (!vi)
+        return false;
 
     logger->log("Possible to create hardware surfaces: %s",
             ((vi->hw_available) ? "yes" : "no"));
@@ -259,7 +260,8 @@ void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)
     const int iw = image->mBounds.w;
     const int ih = image->mBounds.h;
 
-    if (iw == 0 || ih == 0) return;
+    if (iw == 0 || ih == 0)
+        return;
 
     for (int py = 0; py < h; py += ih)     // Y position on pattern plane
     {
@@ -346,8 +348,6 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
                              Image *bottom, Image *left,
                              Image *center)
 {
-    pushClipArea(gcn::Rectangle(x, y, w, h));
-
     const bool drawMain = center && topLeft && topRight
         && bottomLeft && bottomRight;
 
@@ -355,7 +355,7 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
     if (center && drawMain)
     {
         drawImagePattern(center,
-            topLeft->getWidth(), topLeft->getHeight(),
+            topLeft->getWidth() + x, topLeft->getHeight() + y,
             w - topLeft->getWidth() - topRight->getWidth(),
             h - topLeft->getHeight() - bottomLeft->getHeight());
     }
@@ -364,18 +364,18 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
     if (top && left && bottom && right)
     {
         drawImagePattern(top,
-            left->getWidth(), 0,
+            x + left->getWidth(), y,
             w - left->getWidth() - right->getWidth(), top->getHeight());
         drawImagePattern(bottom,
-            left->getWidth(), h - bottom->getHeight(),
+            x + left->getWidth(), h - bottom->getHeight() + y,
             w - left->getWidth() - right->getWidth(),
             bottom->getHeight());
         drawImagePattern(left,
-            0, top->getHeight(),
+            x, y + top->getHeight(),
             left->getWidth(),
             h - top->getHeight() - bottom->getHeight());
         drawImagePattern(right,
-            w - right->getWidth(), top->getHeight(),
+            x + w - right->getWidth(), top->getHeight() + y,
             right->getWidth(),
             h - top->getHeight() - bottom->getHeight());
     }
@@ -383,15 +383,13 @@ void Graphics::drawImageRect(int x, int y, int w, int h,
     // Draw the corners
     if (drawMain)
     {
-        drawImage(topLeft, 0, 0);
-        drawImage(topRight, w - topRight->getWidth(), 0);
-        drawImage(bottomLeft, 0, h - bottomLeft->getHeight());
+        drawImage(topLeft, x, y);
+        drawImage(topRight, x + w - topRight->getWidth(), y);
+        drawImage(bottomLeft, x, h - bottomLeft->getHeight() + y);
         drawImage(bottomRight,
-            w - bottomRight->getWidth(),
-            h - bottomRight->getHeight());
+            x + w - bottomRight->getWidth(),
+            y + h - bottomRight->getHeight());
     }
-
-    popClipArea();
 }
 
 void Graphics::drawImageRect(int x, int y, int w, int h,
@@ -453,7 +451,7 @@ void Graphics::drawImagePattern2(GraphicsVertexes *vert, Image *img)
     // here not checking input parameters
 
     std::vector<DoubleRect*> *arr = vert->getRectsSDL();
-    std::vector<DoubleRect*>::iterator it;
+    std::vector<DoubleRect*>::const_iterator it;
 
     for (it = arr->begin(); it != arr->end(); ++it)
         SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
@@ -601,10 +599,11 @@ void Graphics::calcTile(ImageVertexes *vert, int x, int y)
 
 void Graphics::drawTile(ImageVertexes *vert)
 {
+    // vert and img must be != 0
     Image *img = vert->image;
     DoubleRects *rects = &vert->sdl;
-    DoubleRects::iterator it = rects->begin();
-    DoubleRects::iterator it_end = rects->end();
+    DoubleRects::const_iterator it = rects->begin();
+    DoubleRects::const_iterator it_end = rects->end();
     while (it != it_end)
     {
         SDL_LowerBlit(img->mSDLSurface, &(*it)->src, mTarget, &(*it)->dst);
@@ -668,8 +667,8 @@ bool Graphics::calcWindow(GraphicsVertexes* vert,
         imgRect.grid[4]);
 }
 
-int Graphics::SDL_FakeUpperBlit (SDL_Surface *src, SDL_Rect *srcrect,
-                                 SDL_Surface *dst, SDL_Rect *dstrect)
+int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
+                                SDL_Surface *dst, SDL_Rect *dstrect)
 {
     SDL_Rect fulldst;
     int srcx, srcy, w, h;

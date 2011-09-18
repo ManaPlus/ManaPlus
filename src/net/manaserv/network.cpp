@@ -45,7 +45,7 @@ namespace ManaServ
 {
 
 typedef std::map<unsigned short, MessageHandler*> MessageHandlers;
-typedef MessageHandlers::iterator MessageHandlerIterator;
+typedef MessageHandlers::const_iterator MessageHandlerIterator;
 static MessageHandlers mMessageHandlers;
 
 void initialize()
@@ -96,17 +96,13 @@ Connection *getConnection()
 void registerHandler(MessageHandler *handler)
 {
     for (const Uint16 *i = handler->handledMessages; *i; i++)
-    {
         mMessageHandlers[*i] = handler;
-    }
 }
 
 void unregisterHandler(MessageHandler *handler)
 {
     for (const Uint16 *i = handler->handledMessages; *i; i++)
-    {
         mMessageHandlers.erase(*i);
-    }
 }
 
 void clearNetworkHandlers()

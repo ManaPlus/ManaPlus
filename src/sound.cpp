@@ -54,7 +54,8 @@ Sound::Sound():
     mMusic(0),
     mPlayBattle(false),
     mPlayGui(false),
-    mPlayMusic(false)
+    mPlayMusic(false),
+    mGuiChannel(-1)
 {
     // This set up our callback function used to
     // handle fade outs endings.
@@ -353,8 +354,10 @@ void Sound::playGuiSfx(const std::string &path)
         paths.getStringValue("sfx") + path);
     if (sample)
     {
-        logger->log("Sound::playSfx() Playing: %s", path.c_str());
-        sample->play(0, 120);
+        logger->log("Sound::playGuiSfx() Playing: %s", path.c_str());
+        int ret = sample->play(0, 120, mGuiChannel);
+        if (ret != -1)
+            mGuiChannel = ret;
     }
 }
 

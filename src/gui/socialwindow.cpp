@@ -232,7 +232,7 @@ public:
         mScroll = 0;
     }
 
-    void action(const gcn::ActionEvent &event)
+    void action(const gcn::ActionEvent &event A_UNUSED)
     {
 /*
         if (event.getId() == "do invite")
@@ -528,7 +528,7 @@ public:
             return 0;
 
         Avatar *ava = 0;
-        std::vector<Avatar*>::iterator i = avatars->begin();
+        std::vector<Avatar*>::const_iterator i = avatars->begin();
         while (i != avatars->end())
         {
             ava = (*i);
@@ -562,7 +562,7 @@ public:
                 if (!ava)
                     break;
 
-                std::vector<std::string>::iterator i = names.begin();
+                std::vector<std::string>::const_iterator i = names.begin();
                 while (i != names.end())
                 {
                     if (ava->getName() == (*i) && (*i) != "")
@@ -584,7 +584,7 @@ public:
                 }
             }
 
-            std::vector<std::string>::iterator i = names.begin();
+            std::vector<std::string>::const_iterator i = names.begin();
 
             while (i != names.end())
             {
@@ -659,7 +659,7 @@ public:
         std::vector<Avatar*> *avatars = mBeings->getMembers();
         std::vector<MapItem*> portals = map->getPortals();
 
-        std::vector<MapItem*>::iterator i = portals.begin();
+        std::vector<MapItem*>::const_iterator i = portals.begin();
         SpecialLayer *specialLayer = map->getSpecialLayer();
 
         std::vector<Avatar*>::iterator ia = avatars->begin();
@@ -752,7 +752,7 @@ public:
             return;
 
         Avatar *ava = 0;
-        std::vector<Avatar*>::iterator i = avatars->begin();
+        std::vector<Avatar*>::const_iterator i = avatars->begin();
         while (i != avatars->end())
         {
             ava = (*i);
@@ -786,7 +786,7 @@ public:
             return 01;
 
         Avatar *ava = 0;
-        std::vector<Avatar*>::iterator i = avatars->begin();
+        std::vector<Avatar*>::const_iterator i = avatars->begin();
         unsigned num = 0;
         while (i != avatars->end())
         {
@@ -962,7 +962,7 @@ public:
             {
                 name = *i;
             }
-            Avatar *ava = new Avatar(name);
+            ava = new Avatar(name);
             ava->setOnline(true);
             ava->setLevel(level);
             ava->setType(MapItem::PRIORITY);
@@ -997,7 +997,7 @@ public:
             {
                 name = *i;
             }
-            Avatar *ava = new Avatar(name);
+            ava = new Avatar(name);
             ava->setOnline(true);
             ava->setLevel(level);
             ava->setType(MapItem::ATTACK);
@@ -1032,7 +1032,7 @@ public:
             {
                 name = *i;
             }
-            Avatar *ava = new Avatar(name);
+            ava = new Avatar(name);
             ava->setOnline(false);
             ava->setLevel(level);
             ava->setType(MapItem::IGNORE_);
@@ -1114,7 +1114,7 @@ private:
 };
 
 SocialWindow::SocialWindow() :
-    Window(_("Social")),
+    Window(_("Social"), false, 0, "social.xml"),
     mGuildInvited(0),
     mGuildAcceptDialog(0),
     mPartyAcceptDialog(0),

@@ -37,7 +37,7 @@
 BuySellDialog::DialogList BuySellDialog::instances;
 
 BuySellDialog::BuySellDialog(int npcId):
-    Window(_("Shop")),
+    Window(_("Shop"), false, 0, "buysell.xml"),
     mNpcId(npcId),
     mNick(""),
     mBuyButton(0)
@@ -46,7 +46,7 @@ BuySellDialog::BuySellDialog(int npcId):
 }
 
 BuySellDialog::BuySellDialog(std::string nick):
-    Window(_("Shop")),
+    Window(_("Shop"), false, 0, "buysell.xml"),
     mNpcId(-1),
     mNick(nick),
     mBuyButton(0)
@@ -129,8 +129,8 @@ void BuySellDialog::action(const gcn::ActionEvent &event)
 
 void BuySellDialog::closeAll()
 {
-    DialogList::iterator it = instances.begin();
-    DialogList::iterator it_end = instances.end();
+    DialogList::const_iterator it = instances.begin();
+    DialogList::const_iterator it_end = instances.end();
 
     for (; it != it_end; ++it)
     {

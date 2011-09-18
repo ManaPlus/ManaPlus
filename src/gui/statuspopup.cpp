@@ -46,7 +46,7 @@
 #include "debug.h"
 
 StatusPopup::StatusPopup():
-    Popup("StatusPopup")
+    Popup("StatusPopup", "statuspopup.xml")
 {
 
     const int fontHeight = getFont()->getHeight();
@@ -157,9 +157,8 @@ void StatusPopup::update()
     minWidth += 16 + 2 * getPadding();
     setWidth(minWidth);
 
-    const int fontHeight = getFont()->getHeight();
-
-    setHeight(24 + 8 + 14 * fontHeight + getPadding());
+    setHeight(mDisableGameModifiers->getY()
+        + mDisableGameModifiers->getHeight() + 2 * getPadding());
 }
 
 void StatusPopup::view(int x, int y)
@@ -169,9 +168,9 @@ void StatusPopup::view(int x, int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->mWidth)
-        posX = graphics->mWidth - getWidth();
-    if (posY + getHeight() > graphics->mHeight)
+    if (posX + getWidth() > mainGraphics->mWidth)
+        posX = mainGraphics->mWidth - getWidth();
+    if (posY + getHeight() > mainGraphics->mHeight)
         posY = y - getHeight() - distance;
 
     update();

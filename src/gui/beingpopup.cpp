@@ -39,8 +39,8 @@
 
 #include "debug.h"
 
-BeingPopup::BeingPopup():
-    Popup("BeingPopup")
+BeingPopup::BeingPopup() :
+    Popup("BeingPopup", "beingpopup.xml")
 {
     // Being Name
     mBeingName = new Label("A");

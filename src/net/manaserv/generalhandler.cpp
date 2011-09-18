@@ -64,7 +64,7 @@ namespace ManaServ
 Connection *accountServerConnection = 0;
 Connection *chatServerConnection = 0;
 Connection *gameServerConnection = 0;
-std::string netToken = "";
+std::string netToken("");
 ServerInfo gameServer;
 ServerInfo chatServer;
 
@@ -176,8 +176,8 @@ void GeneralHandler::clearHandlers()
     clearNetworkHandlers();
 }
 
-void GeneralHandler::event(Mana::Channels channel,
-                           const Mana::Event &event)
+void GeneralHandler::processEvent(Mana::Channels channel,
+                                  const Mana::Event &event)
 {
     if (channel == Mana::CHANNEL_CLIENT)
     {

@@ -241,6 +241,19 @@ void TabbedArea::setSelectedTab(gcn::Tab *tab)
     widgetResized(NULL);
 }
 
+void TabbedArea::setSelectedTab(const std::string &name)
+{
+    for (TabContainer::const_iterator itr = mTabs.begin(),
+         itr_end = mTabs.end(); itr != itr_end; ++itr)
+    {
+        if ((*itr).first && (*itr).first->getCaption() == name)
+        {
+            setSelectedTab((*itr).first);
+            return;
+        }
+    }
+}
+
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
 {
     int width = getWidth() - 2 * getFrameSize()

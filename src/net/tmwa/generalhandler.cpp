@@ -240,8 +240,8 @@ void GeneralHandler::clearHandlers()
         mNetwork->clearHandlers();
 }
 
-void GeneralHandler::event(Mana::Channels channel,
-                           const Mana::Event &event)
+void GeneralHandler::processEvent(Mana::Channels channel,
+                                  const Mana::Event &event)
 {
     if (channel == Mana::CHANNEL_GAME)
     {

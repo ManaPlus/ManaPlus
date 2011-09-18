@@ -210,23 +210,23 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
 
         for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); ++i)
         {
-            std::string row = *i;
-            for (unsigned int j = 0; j < row.size(); j++)
+            std::string tempRow = *i;
+            for (unsigned int j = 0; j < tempRow.size(); j++)
             {
-                std::string character = row.substr(j, 1);
+                std::string character = tempRow.substr(j, 1);
                 x += font->getWidth(character);
                 nextChar = j + 1;
 
                 // Wraping between words (at blank spaces)
-                if ((nextChar < row.size()) && (row.at(nextChar) == ' '))
+                if (nextChar < tempRow.size() && tempRow.at(nextChar) == ' ')
                 {
                     int nextSpacePos = static_cast<int>(
-                        row.find(" ", (nextChar + 1)));
+                        tempRow.find(" ", (nextChar + 1)));
                     if (nextSpacePos <= 0)
-                        nextSpacePos = static_cast<int>(row.size()) - 1;
+                        nextSpacePos = static_cast<int>(tempRow.size()) - 1;
 
                     unsigned nextWordWidth = font->getWidth(
-                        row.substr(nextChar,
+                        tempRow.substr(nextChar,
                         (nextSpacePos - nextChar)));
 
                     if ((x + nextWordWidth + 10) > (unsigned)getWidth())
@@ -254,6 +254,11 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     }
     mUpdateTime = 0;
     updateHeight();
+}
+
+void BrowserBox::addRow(const std::string &cmd, char *text)
+{
+    addRow(strprintf("@@%s|%s@@", cmd.c_str(), text));
 }
 
 void BrowserBox::addImage(const std::string &path)

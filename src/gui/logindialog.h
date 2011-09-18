@@ -49,7 +49,7 @@ class LoginDialog : public Window, public gcn::ActionListener,
          *
          * @see Window::Window
          */
-        LoginDialog(LoginData *loginData, std::string serverName,
+        LoginDialog(LoginData *data, std::string serverName,
                     std::string *updateHost);
 
         ~LoginDialog();

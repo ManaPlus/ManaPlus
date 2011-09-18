@@ -234,7 +234,7 @@ private:
 
 
 ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
-    Window(_("Choose Your Server")),
+    Window(_("Choose Your Server"), false, 0, "server.xml"),
     mDir(dir),
 //    mDownloadStatus(DOWNLOADING_PREPARING),
     mDownloadStatus(DOWNLOADING_UNKNOWN),
@@ -367,7 +367,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadServers(false);
 
-    if (mServers.size() == 0)
+    if (mServers.empty())
         downloadServerList();
 }
 
@@ -548,7 +548,7 @@ void ServerDialog::mouseClicked(gcn::MouseEvent &mouseEvent)
 void ServerDialog::logic()
 {
     {
-        MutexLocker lock(&mMutex);
+        MutexLocker tempLock(&mMutex);
         if (mDownloadStatus == DOWNLOADING_COMPLETE)
         {
             mDownloadStatus = DOWNLOADING_OVER;
@@ -636,11 +636,11 @@ void ServerDialog::loadServers(bool addNew)
         return;
     }
 
-    int version = XML::getProperty(rootNode, "version", 0);
-    if (version != 1)
+    int ver = XML::getProperty(rootNode, "version", 0);
+    if (ver != 1)
     {
         logger->log("Error: unsupported online server list version: %d",
-                    version);
+                    ver);
         return;
     }
 
@@ -703,7 +703,7 @@ void ServerDialog::loadServers(bool addNew)
         server.version.first = gui->getFont()->getWidth(version);
         server.version.second = version;
 
-        MutexLocker lock(&mMutex);
+        MutexLocker tempLock(&mMutex);
         // Add the server to the local list if it's not already present
         bool found = false;
         for (unsigned int i = 0; i < mServers.size(); i++)

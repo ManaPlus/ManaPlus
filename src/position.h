@@ -31,8 +31,8 @@
  */
 struct Position
 {
-    Position(int x, int y):
-        x(x), y(y)
+    Position(int x0, int y0):
+        x(x0), y(y0)
     { }
 
     int x;

@@ -43,7 +43,8 @@ class GameHandler : public Net::GameHandler, public Mana::Listener
     public:
         GameHandler();
 
-        virtual void event(Mana::Channels channel, const Mana::Event &event);
+        virtual void processEvent(Mana::Channels channel,
+                                  const Mana::Event &event);
 
         virtual void who();
 

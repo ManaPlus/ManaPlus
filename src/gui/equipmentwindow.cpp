@@ -58,7 +58,7 @@ static const int BOX_HEIGHT = 36;
 
 EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
                                  bool foring):
-    Window(_("Equipment")),
+    Window(_("Equipment"), false, 0, "equipment.xml"),
     mEquipment(equipment),
     mSelected(-1),
     mForing(foring)

@@ -42,8 +42,10 @@ class ParticleEmitter;
 
 typedef std::list<Particle *> Particles;
 typedef Particles::iterator ParticleIterator;
+typedef Particles::const_iterator ParticleConstIterator;
 typedef std::list<ParticleEmitter *> Emitters;
 typedef Emitters::iterator EmitterIterator;
+typedef Emitters::const_iterator EmitterConstIterator;
 
 /**
  * A particle spawned by a ParticleEmitter.
@@ -109,7 +111,7 @@ class Particle : public Actor
          * Necessary for sorting with the other sprites.
          */
         virtual int getPixelY() const
-        { return static_cast<int>(mPos.y + mPos.z) - 64; }
+        { return static_cast<int>(mPos.y) - 64; }
 
         /**
          * Creates a blank particle as a child of the current particle

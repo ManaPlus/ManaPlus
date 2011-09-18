@@ -137,7 +137,7 @@ void Wallpaper::loadWallpapers()
 
 std::string Wallpaper::getWallpaper(int width, int height)
 {
-    std::vector<WallpaperData>::iterator iter;
+    std::vector<WallpaperData>::const_iterator iter;
     WallpaperData wp;
 
     // Wallpaper filename container

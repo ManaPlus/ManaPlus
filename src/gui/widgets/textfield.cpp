@@ -48,12 +48,14 @@ float TextField::mAlpha = 1.0;
 ImageRect TextField::skin;
 
 TextField::TextField(const std::string &text, bool loseFocusOnTab,
-                     gcn::ActionListener* listener, std::string eventId):
+                     gcn::ActionListener* listener, std::string eventId,
+                     bool sendAlwaysEvents):
     gcn::TextField(text),
     mNumeric(false),
     mMinimum(0),
     mMaximum(0),
-    mLastEventPaste(false)
+    mLastEventPaste(false),
+    mSendAlwaysEvents(sendAlwaysEvents)
 {
     setFrameSize(2);
 
@@ -276,7 +278,9 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Key::ENTER:
             distributeActionEvent();
-            break;
+            keyEvent.consume();
+            fixScroll();
+            return;
 
         case Key::HOME:
             mCaretPosition = 0;
@@ -309,6 +313,10 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             }
             break;
 
+        case 3:
+            handleCopy();
+            break;
+
         case 22: // Control code 22, SYNCHRONOUS IDLE, sent on Ctrl+v
             // hack to prevent paste key sticking
             if (mLastEventPaste && mLastEventPaste > cur_time)
@@ -333,6 +341,9 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             break;
     }
 
+    if (mSendAlwaysEvents)
+        distributeActionEvent();
+
     keyEvent.consume();
     fixScroll();
 }
@@ -347,4 +358,10 @@ void TextField::handlePaste()
         setText(text);
         setCaretPosition(static_cast<unsigned>(caretPos));
     }
+}
+
+void TextField::handleCopy()
+{
+    std::string text = getText();
+    sendBuffer(text);
 }

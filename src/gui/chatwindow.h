@@ -196,7 +196,7 @@ class ChatWindow : public Window,
          */
         void mousePressed(gcn::MouseEvent &event);
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         /**
          * Scrolls the chat window
@@ -222,8 +222,8 @@ class ChatWindow : public Window,
 
         void doPresent();
 
-        void whisper(const std::string &nick, const std::string &mes,
-                     Own own = BY_OTHER);
+        void addWhisper(const std::string &nick, const std::string &mes,
+                        Own own = BY_OTHER);
 
         ChatTab *addWhisperTab(const std::string &nick, bool switchTo = false);
 

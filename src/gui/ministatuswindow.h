@@ -66,7 +66,7 @@ class MiniStatusWindow : public Popup,
 
         void drawIcons(Graphics *graphics);
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         void updateStatus();
 
@@ -80,7 +80,7 @@ class MiniStatusWindow : public Popup,
 
         void mouseExited(gcn::MouseEvent &event);
 
-        void showBar(std::string name, bool isVisible);
+        void showBar(std::string name, bool visible);
 
         void updateBars();
 

@@ -60,7 +60,7 @@ class CharSelectDialog : public Window, public gcn::ActionListener,
         /**
          * Constructor.
          */
-        CharSelectDialog(LoginData *loginData);
+        CharSelectDialog(LoginData *data);
 
         ~CharSelectDialog();
 

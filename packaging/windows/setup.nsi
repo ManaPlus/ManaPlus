@@ -238,6 +238,7 @@ Section "Core files (required)" SecCore
   CreateDirectory "$INSTDIR\data\themes\mana"
   CreateDirectory "$INSTDIR\data\themes\pink"
   CreateDirectory "$INSTDIR\data\themes\redandblack"
+  CreateDirectory "$INSTDIR\data\themes\unity"
   CreateDirectory "$INSTDIR\data\themes\wood"
   CreateDirectory "$INSTDIR\docs"
 
@@ -293,6 +294,9 @@ Section "Core files (required)" SecCore
   SetOutPath "$INSTDIR\data\themes\redandblack"
   File "${SRCDIR}\data\themes\redandblack\*.png"
   File "${SRCDIR}\data\themes\redandblack\*.xml"
+  SetOutPath "$INSTDIR\data\themes\unity"
+  File "${SRCDIR}\data\themes\unity\*.png"
+  File "${SRCDIR}\data\themes\unity\*.xml"
   SetOutPath "$INSTDIR\data\themes\wood"
   File "${SRCDIR}\data\themes\wood\*.png"
   File "${SRCDIR}\data\themes\wood\*.xml"

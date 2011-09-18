@@ -121,54 +121,54 @@ class CharacterDisplay : public Container
         Button *mDelete;
 };
 
-CharSelectDialog::CharSelectDialog(LoginData *loginData):
-    Window(_("Account and Character Management")),
+CharSelectDialog::CharSelectDialog(LoginData *data):
+    Window(_("Account and Character Management"), false, 0, "char.xml"),
     mLocked(false),
     mUnregisterButton(0),
     mChangeEmailButton(0),
     mCharacterEntries(0),
-    mLoginData(loginData),
+    mLoginData(data),
     mCharHandler(Net::getCharHandler()),
     mDeleteDialog(0),
     mDeleteIndex(-1)
 {
     setCloseButton(false);
 
-    mAccountNameLabel = new Label(loginData->username);
+    mAccountNameLabel = new Label(mLoginData->username);
     mSwitchLoginButton = new Button(_("Switch Login"), "switch", this);
     mChangePasswordButton = new Button(_("Change Password"), "change_password",
                                        this);
 
     int optionalActions = Net::getLoginHandler()->supportedOptionalActions();
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
 
-    place(0, 0, mAccountNameLabel, 2);
-    place(0, 1, mSwitchLoginButton);
+    placer(0, 0, mAccountNameLabel, 2);
+    placer(0, 1, mSwitchLoginButton);
 
     if (optionalActions & Net::LoginHandler::Unregister)
     {
         mUnregisterButton = new Button(_("Unregister"),
                                        "unregister", this);
-        place(3, 1, mUnregisterButton);
+        placer(3, 1, mUnregisterButton);
     }
 
-    place(0, 2, mChangePasswordButton);
+    placer(0, 2, mChangePasswordButton);
 
     if (optionalActions & Net::LoginHandler::ChangeEmail)
     {
         mChangeEmailButton = new Button(_("Change Email"),
                                         "change_email", this);
-        place(3, 2, mChangeEmailButton);
+        placer(3, 2, mChangeEmailButton);
     }
 
-    place = getPlacer(0, 1);
+    placer = getPlacer(0, 1);
 
     for (int i = 0; i < static_cast<int>(mLoginData->characterSlots); i++)
     {
         mCharacterEntries.push_back(new CharacterDisplay(this));
-        place(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
+        placer(i % SLOTS_PER_ROW, static_cast<int>(i) / SLOTS_PER_ROW,
             mCharacterEntries[i]);
     }
 
@@ -309,10 +309,12 @@ void CharSelectDialog::attemptCharacterSelect(int index)
 void CharSelectDialog::setCharacters(const Net::Characters &characters)
 {
     // Reset previous characters
-    std::vector<CharacterDisplay*>::iterator iter, iter_end;
+    std::vector<CharacterDisplay*>::const_iterator iter, iter_end;
     for (iter = mCharacterEntries.begin(), iter_end = mCharacterEntries.end();
          iter != iter_end; ++iter)
+    {
         (*iter)->setCharacter(0);
+    }
 
     Net::Characters::const_iterator i, i_end = characters.end();
     for (i = characters.begin(); i != i_end; ++i)
@@ -371,7 +373,7 @@ void CharSelectDialog::setLocked(bool locked)
 }
 
 bool CharSelectDialog::selectByName(const std::string &name,
-                                    SelectAction action)
+                                    SelectAction selAction)
 {
     if (mLocked)
         return false;
@@ -385,7 +387,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
             {
                 if (mCharacterEntries[i])
                     mCharacterEntries[i]->requestFocus();
-                if (action == Choose)
+                if (selAction == Choose)
                     attemptCharacterSelect(i);
                 return true;
             }
@@ -408,14 +410,14 @@ CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
     mDelete = new Button(_("Delete"), "delete", charSelectDialog);
 
     LayoutHelper h(this);
-    ContainerPlacer place = h.getPlacer(0, 0);
+    ContainerPlacer placer = h.getPlacer(0, 0);
 
-    place(0, 0, mPlayerBox, 3, 5);
-    place(0, 5, mName, 3);
-    place(0, 6, mLevel, 3);
-    place(0, 7, mMoney, 3);
-    place(0, 8, mButton, 3);
-    place(0, 9, mDelete, 3);
+    placer(0, 0, mPlayerBox, 3, 5);
+    placer(0, 5, mName, 3);
+    placer(0, 6, mLevel, 3);
+    placer(0, 7, mMoney, 3);
+    placer(0, 8, mButton, 3);
+    placer(0, 9, mDelete, 3);
 
     update();
 

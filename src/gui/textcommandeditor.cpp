@@ -61,11 +61,11 @@ class IconsModal : public gcn::ListModel
 public:
     IconsModal()
     {
-        std::map<int, ItemInfo*> info = ItemDB::getItemInfos();
+        std::map<int, ItemInfo*> items = ItemDB::getItemInfos();
         std::list<std::string> tempStrings;
 
         for (std::map<int, ItemInfo*>::const_iterator
-             i = info.begin(), i_end = info.end();
+             i = items.begin(), i_end = items.end();
              i != i_end; ++i)
         {
             if (i->first < 0)
@@ -165,7 +165,7 @@ public:
 
 
 TextCommandEditor::TextCommandEditor(TextCommand *command):
-    Window(_("Command Editor"))
+    Window(_("Command Editor"), false, 0, "commandeditor.xml")
 {
     int w = 350;
     int h = 350;
@@ -254,34 +254,34 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
     mSchoolDropDown->setSelected(command->getSchool() - MAGIC_START_ID);
     mSchoolLvlField->setValue(command->getSchoolLvl());
 
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
 
-    place(0, 0, mIsMagic, 1);
-    place(2, 0, mIsOther, 1);
-    place(0, 1, mSymbolLabel, 2).setPadding(3);
-    place(2, 1, mSymbolTextField, 3).setPadding(3);
-    place(0, 2, mCommandLabel, 2).setPadding(3);
-    place(2, 2, mCommandTextField, 4).setPadding(3);
-    place(0, 3, mTypeLabel, 2).setPadding(3);
-    place(2, 3, mTypeDropDown, 3).setPadding(3);
+    placer(0, 0, mIsMagic, 1);
+    placer(2, 0, mIsOther, 1);
+    placer(0, 1, mSymbolLabel, 2).setPadding(3);
+    placer(2, 1, mSymbolTextField, 3).setPadding(3);
+    placer(0, 2, mCommandLabel, 2).setPadding(3);
+    placer(2, 2, mCommandTextField, 4).setPadding(3);
+    placer(0, 3, mTypeLabel, 2).setPadding(3);
+    placer(2, 3, mTypeDropDown, 3).setPadding(3);
 
-    place(0, 4, mIconLabel, 2).setPadding(3);
-    place(2, 4, mIconDropDown, 3).setPadding(3);
+    placer(0, 4, mIconLabel, 2).setPadding(3);
+    placer(2, 4, mIconDropDown, 3).setPadding(3);
 
-    place(0, 5, mManaLabel, 2).setPadding(3);
-    place(2, 5, mManaField, 3).setPadding(3);
-    place(0, 6, mMagicLvlLabel, 2).setPadding(3);
-    place(2, 6, mMagicLvlField, 3).setPadding(3);
+    placer(0, 5, mManaLabel, 2).setPadding(3);
+    placer(2, 5, mManaField, 3).setPadding(3);
+    placer(0, 6, mMagicLvlLabel, 2).setPadding(3);
+    placer(2, 6, mMagicLvlField, 3).setPadding(3);
 
-    place(0, 7, mSchoolLabel, 2).setPadding(3);
-    place(2, 7, mSchoolDropDown, 3).setPadding(3);
-    place(0, 8, mSchoolLvlLabel, 2).setPadding(3);
-    place(2, 8, mSchoolLvlField, 3).setPadding(3);
+    placer(0, 7, mSchoolLabel, 2).setPadding(3);
+    placer(2, 7, mSchoolDropDown, 3).setPadding(3);
+    placer(0, 8, mSchoolLvlLabel, 2).setPadding(3);
+    placer(2, 8, mSchoolLvlField, 3).setPadding(3);
 
-    place(0, 9, mSaveButton, 2).setPadding(3);
-    place(2, 9, mCancelButton, 2).setPadding(3);
-    place(4, 9, mDeleteButton, 2).setPadding(3);
+    placer(0, 9, mSaveButton, 2).setPadding(3);
+    placer(2, 9, mCancelButton, 2).setPadding(3);
+    placer(4, 9, mDeleteButton, 2).setPadding(3);
 
     setWidth(w);
     setHeight(h);

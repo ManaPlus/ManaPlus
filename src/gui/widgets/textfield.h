@@ -41,7 +41,7 @@ class TextField : public gcn::TextField
          */
         TextField(const std::string &text = "", bool loseFocusOnTab = true,
                   gcn::ActionListener* listener = NULL,
-                  std::string eventId = "");
+                  std::string eventId = "", bool sendAlwaysEvents = false);
 
         ~TextField();
 
@@ -99,6 +99,8 @@ class TextField : public gcn::TextField
     private:
         void handlePaste();
 
+        void handleCopy();
+
         static int instances;
         static float mAlpha;
         static ImageRect skin;
@@ -107,6 +109,7 @@ class TextField : public gcn::TextField
         int mMaximum;
         bool mLoseFocusOnTab;
         int mLastEventPaste;
+        bool mSendAlwaysEvents;
 };
 
 #endif

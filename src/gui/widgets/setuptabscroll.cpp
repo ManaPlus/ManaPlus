@@ -90,25 +90,31 @@ void SetupTabScroll::addControl(SetupItem *widget, std::string event)
 
 void SetupTabScroll::apply()
 {
-    std::map<std::string, SetupItem*>::iterator iter;
+    std::map<std::string, SetupItem*>::const_iterator iter;
     for (iter = mItems.begin(); iter != mItems.end(); ++ iter)
-        (*iter).second->apply((*iter).first);
+    {
+        if ((*iter).second)
+            (*iter).second->apply((*iter).first);
+    }
 }
 
 void SetupTabScroll::cancel()
 {
-    std::map<std::string, SetupItem*>::iterator iter;
+    std::map<std::string, SetupItem*>::const_iterator iter;
     for (iter = mItems.begin(); iter != mItems.end(); ++ iter)
-        (*iter).second->cancel((*iter).first);
+    {
+        if ((*iter).second)
+            (*iter).second->cancel((*iter).first);
+    }
 }
 
 void SetupTabScroll::externalUpdated()
 {
-    std::map<std::string, SetupItem*>::iterator iter;
+    std::map<std::string, SetupItem*>::const_iterator iter;
     for (iter = mItems.begin(); iter != mItems.end(); ++ iter)
     {
         SetupItem *widget = (*iter).second;
-        if (!widget->isMainConfig())
+        if (widget && !widget->isMainConfig())
             (*iter).second->externalUpdated((*iter).first);
     }
 }

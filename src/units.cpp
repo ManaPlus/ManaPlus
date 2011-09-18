@@ -208,8 +208,10 @@ std::string formatUnit(int value, int type)
                 ul = ud.levels[i];
 
                 if (ul.count)
+                {
                     nextAmount = levelAmount / ul.count;
-                levelAmount %= ul.count;
+                    levelAmount %= ul.count;
+                }
 
                 if (levelAmount > 0) output = strprintf("%d%s",
                     levelAmount, pl.symbol.c_str()) + output;

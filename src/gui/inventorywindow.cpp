@@ -22,6 +22,7 @@
 
 #include "gui/inventorywindow.h"
 
+#include "configuration.h"
 #include "inventory.h"
 #include "item.h"
 #include "units.h"
@@ -38,6 +39,7 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/container.h"
+#include "gui/widgets/dropdown.h"
 #include "gui/widgets/inventoryfilter.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
@@ -45,6 +47,7 @@
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/textfield.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
@@ -62,10 +65,38 @@
 
 #include "debug.h"
 
+const char *SORT_NAME[6] =
+{
+    N_("default"),
+    N_("by name"),
+    N_("by id"),
+    N_("by weight"),
+    N_("by amount"),
+    N_("by type")
+};
+
+class SortListModel : public gcn::ListModel
+{
+public:
+    virtual ~SortListModel()
+    { }
+
+    virtual int getNumberOfElements()
+    { return 6; }
+
+    virtual std::string getElementAt(int i)
+    {
+        if (i >= getNumberOfElements() || i < 0)
+            return _("???");
+
+        return gettext(SORT_NAME[i]);
+    }
+};
+
 InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *inventory):
-    Window(),
+    Window("Inventory", false, 0, "inventory.xml"),
     mInventory(inventory),
     mDropButton(0),
     mSplit(false)
@@ -105,24 +136,22 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsLabel = new Label(_("Slots:"));
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
-    mFilter = new InventoryFilter("filter_" + getWindowName(), 20, 5);
+    int size = config.getIntValue("fontSize");
+    mFilter = new InventoryFilter("filter_" + getWindowName(), size, 0);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 
-    mSorter = new InventoryFilter("sorter_" + getWindowName(), 20, 0);
-    mSorter->addActionListener(this);
-    mSorter->setActionEventId("sort_");
+    mSortModel = new SortListModel();
+    mSortDropDown = new DropDown(mSortModel, this, "sort");
+    mSortDropDown->setSelected(0);
 
     mFilterLabel = new Label(_("Filter:"));
     mSorterLabel = new Label(_("Sort:"));
+    mNameFilter = new TextField("", true, this, "namefilter", true);
 
     std::vector<std::string> tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)
         mFilter->addButton(tags[f]);
-
-    mSorter->addButton(_("na"), "na");
-    mSorter->addButton(_("az"), "az");
-    mSorter->addButton(_("id"), "id");
 
     if (isMainInventory())
     {
@@ -154,10 +183,11 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(4, 0, mSlotsLabel, 1).setPadding(3);
         place(5, 0, mSlotsBar, 2);
         place(7, 0, mSorterLabel, 1);
-        place(8, 0, mSorter, 3);
+        place(8, 0, mSortDropDown, 3);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 10).setPadding(3);
+        place(1, 1, mFilter, 7).setPadding(3);
+        place(8, 1, mNameFilter, 3);
 
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
@@ -176,12 +206,13 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         mCloseButton = new Button(_("Close"), "close", this);
 
         place(0, 0, mSlotsLabel).setPadding(3);
-        place(1, 0, mSlotsBar, 3);
-        place(4, 0, mSorterLabel, 1);
-        place(5, 0, mSorter, 2);
+        place(1, 0, mSlotsBar, 4);
+        place(5, 0, mSorterLabel, 1);
+        place(6, 0, mSortDropDown, 1);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 6).setPadding(3);
+        place(1, 1, mFilter, 5).setPadding(3);
+        place(6, 1, mNameFilter, 1);
 
         place(0, 2, invenScroll, 7, 4);
         place(0, 6, mStoreButton);
@@ -219,6 +250,8 @@ InventoryWindow::~InventoryWindow()
     mInventory->removeInventoyListener(this);
     if (!instances.empty())
         instances.front()->updateDropButton();
+    delete mSortModel;
+    mSortModel = 0;
 }
 
 void InventoryWindow::action(const gcn::ActionEvent &event)
@@ -258,22 +291,21 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
 
         ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd, this, item);
     }
+    else if (event.getId() == "sort")
+    {
+        mItems->setSortType(mSortDropDown->getSelected());
+        return;
+    }
+    else if (event.getId() == "namefilter")
+    {
+        mItems->setName(mNameFilter->getText());
+        mItems->updateMatrix();
+    }
     else if (!event.getId().find("tag_") && mItems)
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));
-    }
-    else if (!event.getId().find("sort_") && mItems)
-    {
-        int sortType = 0;
-        std::string str = event.getId().substr(5).c_str();
-        if (str == "na")
-            sortType = 0;
-        else if (str == "az")
-            sortType = 1;
-        else if (str == "id")
-            sortType = 2;
-        mItems->setSortType(sortType);
+        return;
     }
 
     Item *item = mItems->getSelectedItem();
@@ -330,17 +362,12 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     else if (event.getId() == "split")
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit, this, item,
-                                 (item->getQuantity() - 1));
+            (item->getQuantity() - 1));
     }
     else if (event.getId() == "retrieve")
     {
-        Item *item = mItems->getSelectedItem();
-
-        if (!item)
-            return;
-
-        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove, this,
-                                     item);
+        ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+            this, item);
     }
 }
 
@@ -532,7 +559,6 @@ void InventoryWindow::updateButtons(Item *item)
         else
             mSplitButton->setEnabled(false);
     }
-
 }
 
 void InventoryWindow::setSplitAllowed(bool allowed)
@@ -553,8 +579,8 @@ void InventoryWindow::close()
     }
 }
 
-void InventoryWindow::event(Mana::Channels channel A_UNUSED,
-                            const Mana::Event &event)
+void InventoryWindow::processEvent(Mana::Channels channel A_UNUSED,
+                                   const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {
@@ -621,4 +647,22 @@ void InventoryWindow::updateDropButton()
         else
             mDropButton->setCaption(_("Drop"));
     }
+}
+
+bool InventoryWindow::isInputFocused() const
+{
+    return mNameFilter && mNameFilter->isFocused();
+}
+
+bool InventoryWindow::isAnyInputFocused()
+{
+    WindowList::const_iterator it = instances.begin();
+    WindowList::const_iterator it_end = instances.end();
+
+    for (; it != it_end; ++it)
+    {
+        if ((*it) && (*it)->isInputFocused())
+            return true;
+    }
+    return false;
 }

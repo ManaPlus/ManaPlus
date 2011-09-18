@@ -44,10 +44,10 @@
 
 #include "debug.h"
 
-ChangeEmailDialog::ChangeEmailDialog(LoginData *loginData):
-    Window(_("Change Email Address"), true),
+ChangeEmailDialog::ChangeEmailDialog(LoginData *data):
+    Window(_("Change Email Address"), true, 0, "changeemail.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
-    mLoginData(loginData)
+    mLoginData(data)
 {
     gcn::Label *accountLabel = new Label(strprintf(_("Account: %s"),
                                          mLoginData->username.c_str()));
@@ -120,7 +120,7 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
         logger->log("ChangeEmailDialog::Email change, Username is %s",
                      username.c_str());
 
-        std::stringstream errorMessage;
+        std::stringstream errorMsg;
         int error = 0;
 
         unsigned int min = Net::getLoginHandler()->getMinPasswordLength();
@@ -129,21 +129,21 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
         if (newFirstEmail.length() < min)
         {
             // First email address too short
-            errorMessage << strprintf(_("The new email address needs to be at "
-                                        "least %d characters long."), min);
+            errorMsg << strprintf(_("The new email address needs to be at "
+                "least %d characters long."), min);
             error = 1;
         }
         else if (newFirstEmail.length() > max - 1 )
         {
             // First email address too long
-            errorMessage << strprintf(_("The new email address needs to be "
-                                        "less than %d characters long."), max);
+            errorMsg << strprintf(_("The new email address needs to be "
+                "less than %d characters long."), max);
             error = 1;
         }
         else if (newFirstEmail != newSecondEmail)
         {
             // Second Pass mismatch
-            errorMessage << _("The email address entries mismatch.");
+            errorMsg << _("The email address entries mismatch.");
             error = 2;
         }
 
@@ -154,7 +154,7 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
             else if (error == 2)
                 mWrongDataNoticeListener->setTarget(this->mSecondEmailField);
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMessage.str());
+            OkDialog *dlg = new OkDialog(_("Error"), errorMsg.str());
             if (dlg)
                 dlg->addActionListener(mWrongDataNoticeListener);
         }

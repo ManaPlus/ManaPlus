@@ -394,7 +394,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
                 = widget->_getMouseListeners();
 
             // Send the event to all mouse listeners of the widget.
-            for (std::list<gcn::MouseListener*>::iterator
+            for (std::list<gcn::MouseListener*>::const_iterator
                  it = mouseListeners.begin();
                  it != mouseListeners.end(); ++ it)
             {

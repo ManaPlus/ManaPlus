@@ -48,7 +48,8 @@ const int EmotePopup::gridHeight = 36; // emote icon height + 4
 
 static const int MAX_COLUMNS = 6;
 
-EmotePopup::EmotePopup():
+EmotePopup::EmotePopup() :
+    Popup("EmotePopup", "emotepopup.xml"),
     mSelectedEmoteIndex(-1),
     mHoveredEmoteIndex(-1),
     mRowCount(1),

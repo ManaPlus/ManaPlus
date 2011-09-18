@@ -70,7 +70,9 @@ ProgressBar::ProgressBar(float progress,
 
     if (mInstances == 0)
     {
-        Image *dBorders = Theme::getImageFromTheme("vscroll_grey.png");
+        Image *dBorders = Theme::getImageFromTheme("progress.png");
+        if (!dBorders)
+            dBorders = Theme::getImageFromTheme("vscroll_grey.png");
         if (dBorders)
         {
             mBorder.grid[0] = dBorders->getSubImage(0, 0, 4, 4);

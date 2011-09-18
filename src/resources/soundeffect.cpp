@@ -53,9 +53,9 @@ Resource *SoundEffect::load(void *buffer, unsigned bufferSize)
     }
 }
 
-bool SoundEffect::play(int loops, int volume)
+bool SoundEffect::play(int loops, int volume, int channel)
 {
     Mix_VolumeChunk(mChunk, volume);
 
-    return Mix_PlayChannel(-1, mChunk, loops) != -1;
+    return Mix_PlayChannel(channel, mChunk, loops) != -1;
 }

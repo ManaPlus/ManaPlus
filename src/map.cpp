@@ -54,8 +54,6 @@
 
 #include "debug.h"
 
-bool actorCompare(const Actor *a, const Actor *b);
-
 /**
  * A location on a tile map. Used for pathfinding, open list.
  */
@@ -79,6 +77,17 @@ struct Location
     int x, y;
     MetaTile *tile;
 };
+
+class ActorFunctuator
+{
+    public:
+        bool operator()(const Actor *a, const Actor *b) const
+        {
+            if (!a || !b)
+                return false;
+            return a->getPixelY() < b->getPixelY();
+        }
+} actorCompare;
 
 TileAnimation::TileAnimation(Animation *ani):
     mLastImage(NULL)
@@ -104,19 +113,20 @@ void TileAnimation::update(int ticks)
     Image *img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
-        for (std::vector<std::pair<MapLayer*, int> >::iterator i =
+        for (std::vector<std::pair<MapLayer*, int> >::const_iterator i =
              mAffected.begin(); i != mAffected.end(); ++i)
         {
-            i->first->setTile(i->second, img);
+            if (i->first)
+                i->first->setTile(i->second, img);
         }
         mLastImage = img;
     }
 }
 
-MapLayer::MapLayer(int x, int y, int width, int height, bool isFringeLayer):
+MapLayer::MapLayer(int x, int y, int width, int height, bool fringeLayer):
     mX(x), mY(y),
     mWidth(width), mHeight(height),
-    mIsFringeLayer(isFringeLayer),
+    mIsFringeLayer(fringeLayer),
     mHighlightAttackRange(config.getBoolValue("highlightAttackRange"))
 {
     const int size = mWidth * mHeight;
@@ -147,11 +157,6 @@ void MapLayer::optionChanged(const std::string &value)
 void MapLayer::setTile(int x, int y, Image *img)
 {
     setTile(x + y * mWidth, img);
-}
-
-Image* MapLayer::getTile(int x, int y) const
-{
-    return mTiles[x + y * mWidth];
 }
 
 void MapLayer::draw(Graphics *graphics, int startX, int startY,
@@ -187,13 +192,14 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
 
         const int py0 = y32 + dy;
 
-        for (int x = startX; x < endX; x++)
+        Image **tilePtr = mTiles + startX + yWidth;
+
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
             const int x32 = x * 32;
 
-            const int tilePtr = x + yWidth;
             int c = 0;
-            Image *img = mTiles[tilePtr];
+            Image *img = *tilePtr;
             if (img)
             {
                 const int px = x32 + dx;
@@ -202,7 +208,7 @@ void MapLayer::draw(Graphics *graphics, int startX, int startY,
                 {
                     int width = 0;
                     // here need not draw over player position
-                    c = getTileDrawWidth(tilePtr, endX - x, width);
+                    c = getTileDrawWidth(img, endX - x, width);
 
                     if (!c)
                     {
@@ -257,11 +263,11 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
+        Image **tilePtr = mTiles + startX + yWidth;
 
-        for (int x = startX; x < endX; x++)
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
-            const int tilePtr = x + yWidth;
-            Image *img = mTiles[tilePtr];
+            Image *img = *tilePtr;
             if (img)
             {
                 const int px = x * 32 + dx;
@@ -284,13 +290,13 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
 
 void MapLayer::drawSDL(Graphics *graphics)
 {
-    MapRows::iterator rit = mTempRows.begin();
-    MapRows::iterator rit_end = mTempRows.end();
+    MapRows::const_iterator rit = mTempRows.begin();
+    MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
         MepRowImages *images = &(*rit)->images;
-        MepRowImages::iterator iit = images->begin();
-        MepRowImages::iterator iit_end = images->end();
+        MepRowImages::const_iterator iit = images->begin();
+        MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTile(*iit);
@@ -338,10 +344,10 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
         const int py0 = y * 32 + dy;
         std::map<Image*, ImageVertexes*> imgSet;
 
-        for (int x = startX; x < endX; x++)
+        Image **tilePtr = mTiles + startX + yWidth;
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
-            const int tilePtr = x + yWidth;
-            Image *img = mTiles[tilePtr];
+            Image *img = *tilePtr;
             if (img)
             {
                 const int px = x * 32 + dx;
@@ -375,13 +381,13 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
 
 void MapLayer::drawOGL(Graphics *graphics)
 {
-    MapRows::iterator rit = mTempRows.begin();
-    MapRows::iterator rit_end = mTempRows.end();
+    MapRows::const_iterator rit = mTempRows.begin();
+    MapRows::const_iterator rit_end = mTempRows.end();
     while (rit != rit_end)
     {
         MepRowImages *images = &(*rit)->images;
-        MepRowImages::iterator iit = images->begin();
-        MepRowImages::iterator iit_end = images->end();
+        MepRowImages::const_iterator iit = images->begin();
+        MepRowImages::const_iterator iit_end = images->end();
         while (iit != iit_end)
         {
             graphics->drawTile(*iit);
@@ -466,14 +472,14 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
             const int py0 = y32 + dy;
             const int py1 = y32 - scrollY;
 
-            for (int x = startX; x < endX; x++)
+            Image **tilePtr = mTiles + startX + yWidth;
+            for (int x = startX; x < endX; x++, tilePtr++)
             {
                 const int x32 = x * 32;
 
                 const int px1 = x32 - scrollX;
-                const int tilePtr = x + yWidth;
                 int c = 0;
-                Image *img = mTiles[tilePtr];
+                Image *img = *tilePtr;
                 if (img)
                 {
                     const int px = x32 + dx;
@@ -484,7 +490,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
                     {
                         int width = 0;
                         // here need not draw over player position
-                        c = getTileDrawWidth(tilePtr, endX - x, width);
+                        c = getTileDrawWidth(img, endX - x, width);
 
                         if (!c)
                         {
@@ -574,9 +580,9 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     }
 }
 
-int MapLayer::getTileDrawWidth(int tilePtr, int endX, int &width) const
+int MapLayer::getTileDrawWidth(Image *img, int endX, int &width) const
 {
-    Image *img1 = mTiles[tilePtr];
+    Image *img1 = img;
     int c = 0;
     if (!img1)
     {
@@ -586,8 +592,7 @@ int MapLayer::getTileDrawWidth(int tilePtr, int endX, int &width) const
     width = img1->mBounds.w;
     for (int x = 1; x < endX; x++)
     {
-        tilePtr ++;
-        Image *img = mTiles[tilePtr];
+        img ++;
         if (img != img1)
             break;
         c ++;
@@ -762,9 +767,12 @@ void Map::initializeAmbientLayers()
 
 void Map::addLayer(MapLayer *layer)
 {
-    mLayers.push_back(layer);
-    if (layer->isFringeLayer() && !mFringeLayer)
-        mFringeLayer = layer;
+    if (layer)
+    {
+        mLayers.push_back(layer);
+        if (layer->isFringeLayer() && !mFringeLayer)
+            mFringeLayer = layer;
+    }
 }
 
 void Map::addTileset(Tileset *tileset)
@@ -778,22 +786,15 @@ void Map::addTileset(Tileset *tileset)
         mMaxTileHeight = tileset->getHeight();
 }
 
-bool actorCompare(const Actor *a, const Actor *b)
-{
-    if (!a || !b)
-        return false;
-
-    return a->getPixelY() < b->getPixelY();
-}
-
 void Map::update(int ticks)
 {
     // Update animated tiles
-    for (std::map<int, TileAnimation*>::iterator
+    for (std::map<int, TileAnimation*>::const_iterator
          iAni = mTileAnimations.begin();
          iAni != mTileAnimations.end(); ++iAni)
     {
-        iAni->second->update(ticks);
+        if (iAni->second)
+            iAni->second->update(ticks);
     }
 }
 
@@ -826,7 +827,7 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     // Draw backgrounds
     drawAmbientLayers(graphics, BACKGROUND_LAYERS, mOverlayDetail);
 
-    if (mDebugFlags == MAP_BLACKWHITE)
+    if (mDebugFlags == MAP_BLACKWHITE && userPalette)
     {
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::WALKABLE_HIGHLIGHT));
@@ -978,23 +979,26 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
 
     for (int y = startY; y < endY; y++)
     {
-        for (int x = startX; x < endX; x++)
+        const int yWidth = y * mWidth;
+        int tilePtr = startX + yWidth;
+        for (int x = startX; x < endX; x++, tilePtr++)
         {
             int width = 0;
             int x0 = x;
 
-            if (mMetaTiles[x + y * mWidth].blockmask & BLOCKMASK_WALL)
+            if (mMetaTiles[tilePtr].blockmask & BLOCKMASK_WALL)
             {
                 width = 32;
-                for (int x2 = x + 1; x < endX; x2 ++)
+                for (int x2 = tilePtr + 1; x < endX; x2 ++)
                 {
-                    if (!(mMetaTiles[x2 + y * mWidth].blockmask
+                    if (!(mMetaTiles[x2].blockmask
                         & BLOCKMASK_WALL))
                     {
                         break;
                     }
                     width += 32;
                     x ++;
+                    tilePtr ++;
                 }
                 if (width && userPalette)
                 {
@@ -1008,19 +1012,20 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (x < endX && mMetaTiles[x + y * mWidth].blockmask
+            if (x < endX && mMetaTiles[tilePtr].blockmask
                 & BLOCKMASK_AIR)
             {
                 width = 32;
-                for (int x2 = x + 1; x < endX; x2 ++)
+                for (int x2 = tilePtr + 1; x < endX; x2 ++)
                 {
-                    if (!(mMetaTiles[x2 + y * mWidth].blockmask
+                    if (!(mMetaTiles[x2].blockmask
                         & BLOCKMASK_AIR))
                     {
                         break;
                     }
                     width += 32;
                     x ++;
+                    tilePtr ++;
                 }
                 if (width && userPalette)
                 {
@@ -1034,19 +1039,20 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                 }
             }
 
-            if (x < endX && mMetaTiles[x + y * mWidth].blockmask
+            if (x < endX && mMetaTiles[tilePtr].blockmask
                 & BLOCKMASK_WATER)
             {
                 width = 32;
-                for (int x2 = x + 1; x < endX; x2 ++)
+                for (int x2 = tilePtr + 1; x < endX; x2 ++)
                 {
-                    if (!(mMetaTiles[x2 + y * mWidth].blockmask
+                    if (!(mMetaTiles[x2].blockmask
                         & BLOCKMASK_WATER))
                     {
                         break;
                     }
                     width += 32;
                     x ++;
+                    tilePtr ++;
                 }
                 if (width && userPalette)
                 {
@@ -1079,7 +1085,7 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     float dy = scrollY - mLastAScrollY;
     int timePassed = get_elapsed_time(lastTick);
 
-    std::vector<AmbientLayer*>::iterator i;
+    std::vector<AmbientLayer*>::const_iterator i;
     for (i = mBackgrounds.begin(); i != mBackgrounds.end(); ++i)
         (*i)->update(timePassed, dx, dy);
 
@@ -1116,10 +1122,11 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
     }
 
     // Draw overlays
-    for (std::vector<AmbientLayer*>::iterator i = layers->begin();
+    for (std::vector<AmbientLayer*>::const_iterator i = layers->begin();
          i != layers->end(); ++i)
     {
-        (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
+        if (*i)
+            (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
 
         // Detail 1: only one overlay, higher: all overlays
         if (detail == 1)
@@ -1129,7 +1136,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
 
 Tileset *Map::getTilesetWithGid(int gid) const
 {
-    if (gid < mIndexedTilesetsSize)
+    if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
     else
         return 0;
@@ -1589,20 +1596,20 @@ void Map::addParticleEffect(const std::string &effectFile,
     particleEffects.push_back(newEffect);
 }
 
-void Map::initializeParticleEffects(Particle *particleEngine)
+void Map::initializeParticleEffects(Particle *engine)
 {
-    if (!particleEngine)
+    if (!engine)
         return;
 
     Particle *p;
 
     if (config.getBoolValue("particleeffects"))
     {
-        for (std::vector<ParticleEffectData>::iterator
+        for (std::vector<ParticleEffectData>::const_iterator
              i = particleEffects.begin();
              i != particleEffects.end(); ++i)
         {
-            p = particleEngine->addEffect(i->file, i->x, i->y);
+            p = engine->addEffect(i->file, i->x, i->y);
             if (p && i->w > 0 && i->h > 0)
                 p->adjustEmitterSize(i->w, i->h);
         }
@@ -1650,12 +1657,7 @@ void Map::addExtraLayer()
                     comment += " " + buf;
 
                 int type = atoi(type1.c_str());
-/*
-                MapItem *item = new MapItem(atoi(type.c_str()), comment);
-                int x1 = atoi(x.c_str());
-                int y1 = atoi(y.c_str());
-                mSpecialLayer->setTile(x1, y1, item);
-*/
+
                 if (comment.empty())
                 {
                     if (type < MapItem::ARROW_UP
@@ -1785,8 +1787,8 @@ void Map::updatePortalTile(const std::string &name, int type,
 
 MapItem *Map::findPortalXY(int x, int y)
 {
-    std::vector<MapItem*>::iterator it;
-    std::vector<MapItem*>::iterator it_end;
+    std::vector<MapItem*>::const_iterator it;
+    std::vector<MapItem*>::const_iterator it_end;
 
     for (it = mMapPortals.begin(), it_end = mMapPortals.end();
          it != it_end; ++it)
@@ -1849,7 +1851,7 @@ std::string Map::getObjectData(unsigned x, unsigned y, int type)
     if (!list)
         return "";
 
-    std::vector<MapObject>::iterator it = list->objects.begin();
+    std::vector<MapObject>::const_iterator it = list->objects.begin();
     while (it != list->objects.end())
     {
         if ((*it).type == type)
@@ -2102,14 +2104,9 @@ void SpecialLayer::setTile(int x, int y, int type)
 
     int idx = x + y * mWidth;
     if (mTiles[idx])
-    {
         mTiles[idx]->setType(type);
-    }
     else
-    {
-        delete mTiles[idx];
         mTiles[idx] = new MapItem(type);
-    }
     mTiles[idx]->setPos(x, y);
 }
 
@@ -2156,8 +2153,6 @@ void SpecialLayer::draw(Graphics *graphics, int startX, int startY,
         endX = mWidth;
     if (endY > mHeight)
         endY = mHeight;
-
-//    MapSprites::const_iterator si = sprites.begin();
 
     for (int y = startY; y < endY; y++)
     {
@@ -2214,7 +2209,7 @@ MapItem::~MapItem()
 
 void MapItem::setType(int type)
 {
-    std::string name = "";
+    std::string name("");
     mType = type;
     if (mImage)
         mImage->decRef();
@@ -2285,7 +2280,7 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
         default:
             break;
     }
-    if (!mName.empty() && mType != PORTAL && mType != EMPTY)
+    if (!mName.empty() && mType != PORTAL && mType != EMPTY && userPalette)
     {
         gcn::Font *font = gui->getFont();
         if (font)

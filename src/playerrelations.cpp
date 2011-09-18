@@ -43,6 +43,21 @@
 
 #define IGNORE_EMOTE_TIME 100
 
+class SortPlayersFunctor
+{
+    public:
+        bool operator() (const std::string &str1, const std::string &str2)
+        {
+            std::string s1 = str1;
+            std::string s2 = str2;
+            toLower(s1);
+            toLower(s2);
+            if (s1 == s2)
+                return str1 < str2;
+            return s1 < s2;
+        }
+} playersSorter;
+
 // (De)serialisation class
 class PlayerConfSerialiser :
     public ConfigurationListManager<std::pair<std::string, PlayerRelation *>,
@@ -52,7 +67,7 @@ class PlayerConfSerialiser :
         std::pair<std::string, PlayerRelation *> value,
         ConfigurationObject *cobj)
     {
-        if (!value.second)
+        if (!cobj || !value.second)
             return NULL;
         cobj->setValue(NAME, value.first);
         cobj->setValue(RELATION, toString(
@@ -65,6 +80,8 @@ class PlayerConfSerialiser :
     readConfigItem(ConfigurationObject *cobj,
                    std::map<std::string, PlayerRelation *> *container)
     {
+        if (!cobj)
+            return container;
         std::string name = cobj->getValue(NAME, "");
         if (name.empty())
             return container;
@@ -138,6 +155,9 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
 {
     std::vector<PlayerIgnoreStrategy *> *strategies
         = getPlayerIgnoreStrategies();
+
+    if (!strategies)
+        return -1;
 
     for (unsigned int i = 0; i < strategies->size(); i++)
     {
@@ -216,8 +236,6 @@ void PlayerRelationsManager::store()
 
 void PlayerRelationsManager::signalUpdate(const std::string &name)
 {
-//    store();
-
     for (std::list<PlayerRelationsListener *>::const_iterator
          it = mListeners.begin(); it != mListeners.end(); ++it)
     {
@@ -307,7 +325,7 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
                                          PlayerRelation::Relation relation)
 {
     PlayerRelation *r = mRelations[player_name];
-    if (r == NULL)
+    if (!r)
         mRelations[player_name] = new PlayerRelation(relation);
     else
         r->mRelation = relation;
@@ -327,7 +345,7 @@ std::vector<std::string> * PlayerRelationsManager::getPlayers()
             retval->push_back(it->first);
     }
 
-    sort(retval->begin(), retval->end());
+    sort(retval->begin(), retval->end(), playersSorter);
 
     return retval;
 }

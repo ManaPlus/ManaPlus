@@ -43,10 +43,10 @@ struct SpriteReference
         sprite(""), variant(0)
     {}
 
-    SpriteReference(std::string sprite, int variant)
+    SpriteReference(std::string sprite0, int variant0)
     {
-        this->sprite = sprite;
-        this->variant = variant;
+        sprite = sprite0;
+        variant = variant0;
     }
 
     std::string sprite;
@@ -86,7 +86,7 @@ namespace SpriteAction
     static const std::string CAST_MAGIC = "magic";
     static const std::string USE_ITEM = "item";
     static const std::string SPAWN = "spawn";
-    static const std::string INVALID = "";
+    static const std::string INVALID("");
 }
 
 enum SpriteDirection

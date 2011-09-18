@@ -38,7 +38,7 @@ class Listener
 
         void ignore(Channels channel);
 
-        virtual void event(Channels channel, const Event &event) = 0;
+        virtual void processEvent(Channels channel, const Event &event) = 0;
 };
 
 } // namespace Mana

@@ -179,6 +179,9 @@ class ConfigurationObject
             ConfigurationList *list = &(mContainerOptions[name]);
             CONT container = empty;
 
+            if (!manager)
+                return container;
+
             for (ConfigurationList::const_iterator it = list->begin();
                  it != list->end(); it++)
             {

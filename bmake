@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #may be
-#-Wshadow -Waggregate-return -Winline 
+#-Waggregate-return -Winline 
 
 #for feature
 #-Wstrict-overflow=4 -Wfloat-equal
@@ -33,7 +33,7 @@ export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
 -Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
--Wpacked"
+-Wpacked -Wshadow -D_FORTIFY_SOURCE=2"
 
 autoreconf -i
 ./configure --prefix=$dir/run \

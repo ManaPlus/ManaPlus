@@ -40,7 +40,7 @@
 #include "debug.h"
 
 HelpWindow::HelpWindow():
-    Window(_("Help"))
+    Window(_("Help"), false, 0, "help.xml")
 {
     setMinWidth(300);
     setMinHeight(250);

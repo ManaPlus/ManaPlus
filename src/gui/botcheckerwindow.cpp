@@ -263,12 +263,13 @@ protected:
 
 
 BotCheckerWindow::BotCheckerWindow():
-    Window(_("Bot Checker")),
+    Window(_("Bot Checker"), false, 0, "botchecker.xml"),
     mEnabled(false)
 {
     int w = 500;
     int h = 250;
 
+    setSaveVisible(true);
     mLastUpdateTime = 0;
     mNeedUpdate = false;
 

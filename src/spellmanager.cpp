@@ -41,7 +41,6 @@
 
 SpellManager::SpellManager()
 {
-    //fillSpells();
     load();
 }
 
@@ -50,7 +49,6 @@ SpellManager::~SpellManager()
     delete_all(mSpells);
     mSpells.clear();
     mSpellsVector.clear();
-//    save();
 }
 
 TextCommand* SpellManager::getSpell(int spellId)
@@ -104,7 +102,7 @@ bool SpellManager::addSpell(TextCommand *spell)
     if (!spell)
         return false;
 
-    std::map<unsigned int, TextCommand*>::iterator
+    std::map<unsigned int, TextCommand*>::const_iterator
         i = mSpells.find(spell->getId());
     if (i == mSpells.end())
     {
@@ -184,8 +182,8 @@ std::string SpellManager::parseCommand(std::string command,
     if (!player_node)
         return command;
 
-    std::string name = "";
-    std::string id = "";
+    std::string name("");
+    std::string id("");
     std::string name2;
 
     if (target)
@@ -342,7 +340,7 @@ void SpellManager::save()
 
 std::string SpellManager::autoComplete(std::string partName)
 {
-    std::vector<TextCommand*>::iterator i = mSpellsVector.begin();
+    std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
     std::string newName = "";
     TextCommand *newCommand = NULL;
 

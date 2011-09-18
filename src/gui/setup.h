@@ -73,6 +73,8 @@ class Setup : public Window, public gcn::ActionListener
 
         void doCancel();
 
+        void activateTab(const std::string &name);
+
     private:
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;

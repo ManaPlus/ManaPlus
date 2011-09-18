@@ -59,7 +59,7 @@
 
 #include "debug.h"
 
-extern Graphics *graphics;
+extern Graphics *mainGraphics;
 
 /**
  * The list model for mode list.
@@ -157,8 +157,8 @@ ModeListModel::ModeListModel()
     addCustomMode("1280x1024");
     addCustomMode("1400x900");
     addCustomMode("1500x990");
-    addCustomMode(toString(graphics->mWidth) + "x"
-        + toString(graphics->mHeight));
+    addCustomMode(toString(mainGraphics->mWidth) + "x"
+        + toString(mainGraphics->mHeight));
 
     std::sort(mVideoModes.begin(), mVideoModes.end(), modeSorter);
     mVideoModes.push_back("custom");
@@ -166,8 +166,8 @@ ModeListModel::ModeListModel()
 
 void ModeListModel::addCustomMode(std::string mode)
 {
-    std::vector<std::string>::iterator it = mVideoModes.begin();
-    std::vector<std::string>::iterator it_end = mVideoModes.end();
+    std::vector<std::string>::const_iterator it = mVideoModes.begin();
+    std::vector<std::string>::const_iterator it_end = mVideoModes.end();
     while (it != it_end)
     {
         if (*it == mode)
@@ -179,7 +179,7 @@ void ModeListModel::addCustomMode(std::string mode)
 
 int ModeListModel::getIndexOf(const std::string &widthXHeightMode)
 {
-    std::string currentMode = "";
+    std::string currentMode("");
     for (int i = 0; i < getNumberOfElements(); i++)
     {
         currentMode = getElementAt(i);
@@ -348,8 +348,8 @@ Setup_Video::Setup_Video():
     mFpsCheckBox->setSelected(mFps > 0);
 
     // Pre-select the current video mode.
-    std::string videoMode = toString(graphics->mWidth) + "x"
-                            + toString(graphics->mHeight);
+    std::string videoMode = toString(mainGraphics->mWidth) + "x"
+        + toString(mainGraphics->mHeight);
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
 
     mModeList->setActionEventId("videomode");
@@ -473,25 +473,25 @@ void Setup_Video::apply()
         if (!config.getIntValue("opengl"))
         {
 #endif
-            if (!graphics->setFullscreen(fullscreen))
+            if (!mainGraphics->setFullscreen(fullscreen))
             {
                 fullscreen = !fullscreen;
-                if (!graphics->setFullscreen(fullscreen))
+                if (!mainGraphics->setFullscreen(fullscreen))
                 {
-                    std::stringstream errorMessage;
+                    std::stringstream errorMsg;
                     if (fullscreen)
                     {
-                        errorMessage << _("Failed to switch to windowed mode "
-                                          "and restoration of old mode also "
-                                          "failed!") << std::endl;
+                        errorMsg << _("Failed to switch to windowed mode "
+                            "and restoration of old mode also "
+                            "failed!") << std::endl;
                     }
                     else
                     {
-                        errorMessage << _("Failed to switch to fullscreen mode"
-                                          " and restoration of old mode also "
-                                          "failed!") << std::endl;
+                        errorMsg << _("Failed to switch to fullscreen mode"
+                            " and restoration of old mode also "
+                            "failed!") << std::endl;
                     }
-                    logger->error(errorMessage.str());
+                    logger->error(errorMsg.str());
                 }
             }
 #if defined(WIN32) || defined(__APPLE__)
@@ -564,11 +564,11 @@ void Setup_Video::cancel()
     config.setValue("screen", mFullScreenEnabled);
 
     // Set back to the current video mode.
-    std::string videoMode = toString(graphics->mWidth) + "x"
-                            + toString(graphics->mHeight);
+    std::string videoMode = toString(mainGraphics->mWidth) + "x"
+        + toString(mainGraphics->mHeight);
     mModeList->setSelected(mModeListModel->getIndexOf(videoMode));
-    config.setValue("screenwidth", graphics->mWidth);
-    config.setValue("screenheight", graphics->mHeight);
+    config.setValue("screenwidth", mainGraphics->mWidth);
+    config.setValue("screenheight", mainGraphics->mHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
     config.setValue("particleeffects", mParticleEffectsEnabled);
@@ -612,9 +612,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             return;
 
         // TODO: Find out why the drawing area doesn't resize without a restart.
-        if (width != graphics->mWidth || height != graphics->mHeight)
+        if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
         {
-            if (width < graphics->mWidth || height < graphics->mHeight)
+            if (width < mainGraphics->mWidth || height < mainGraphics->mHeight)
                 new OkDialog(_("Screen Resolution Changed"),
                        _("Restart your client for the change to take effect.")
                        + std::string("\n") +
@@ -625,8 +625,8 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         }
 
         config.setValue("oldscreen", config.getBoolValue("screen"));
-        config.setValue("oldscreenwidth", graphics->mWidth);
-        config.setValue("oldscreenheight", graphics->mHeight);
+        config.setValue("oldscreenwidth", mainGraphics->mWidth);
+        config.setValue("oldscreenheight", mainGraphics->mHeight);
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }
@@ -687,12 +687,12 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "fpslimitcheckbox" || id == "fpslimitslider")
     {
-        int fps = static_cast<int>(mFpsSlider->getValue());
+        int tempFps = static_cast<int>(mFpsSlider->getValue());
         if (id == "fpslimitcheckbox" && !mFpsSlider->isEnabled())
-            fps = 60;
+            tempFps = 60;
         else
-            fps = fps > 0 ? fps : 60;
-        mFps = mFpsCheckBox->isSelected() ? fps : 0;
+            tempFps = tempFps > 0 ? tempFps : 60;
+        mFps = mFpsCheckBox->isSelected() ? tempFps : 0;
         const std::string text = mFps > 0 ? toString(mFps) : _("None");
 
         mFpsLabel->setCaption(text);
@@ -701,9 +701,10 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     else if (id == "altfpslimitslider")
     {
-        int fps = static_cast<int>(mAltFpsSlider->getValue());
-        fps = fps > 0 ? fps : static_cast<int>(mAltFpsSlider->getScaleStart());
-        mAltFps = fps;
+        int tempFps = static_cast<int>(mAltFpsSlider->getValue());
+        tempFps = tempFps > 0 ? tempFps : static_cast<int>(
+            mAltFpsSlider->getScaleStart());
+        mAltFps = tempFps;
         const std::string text = mAltFps > 0 ? toString(mAltFps) : _("None");
 
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);

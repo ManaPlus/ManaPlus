@@ -56,7 +56,7 @@ int Event::getInt(const std::string &key) const throw (BadEvent)
     if (it == mData.end())
         throw BAD_KEY;
 
-    if (it->second->getType() != VariableData::DATA_INT)
+    if (!it->second || it->second->getType() != VariableData::DATA_INT)
         throw BAD_VALUE;
 
     return static_cast<IntData *>(it->second)->getData();
@@ -78,7 +78,7 @@ const std::string &Event::getString(const std::string &key)
     if (it == mData.end())
         throw BAD_KEY;
 
-    if (it->second->getType() != VariableData::DATA_STRING)
+    if (!it->second || it->second->getType() != VariableData::DATA_STRING)
         throw BAD_VALUE;
 
     return static_cast<StringData *>(it->second)->getData();
@@ -99,7 +99,7 @@ double Event::getFloat(const std::string &key) const throw (BadEvent)
     if (it == mData.end())
         throw BAD_KEY;
 
-    if (it->second->getType() != VariableData::DATA_FLOAT)
+    if (!it->second || it->second->getType() != VariableData::DATA_FLOAT)
         throw BAD_VALUE;
 
     return static_cast<FloatData *>(it->second)->getData();
@@ -107,17 +107,18 @@ double Event::getFloat(const std::string &key) const throw (BadEvent)
 
 void Event::trigger(Channels channel, const Event &event)
 {
-    ListenMap::iterator it = mBindings.find(channel);
+    ListenMap::const_iterator it = mBindings.find(channel);
 
     // Make sure something is listening
     if (it == mBindings.end())
         return;
 
     // Loop though all listeners
-    ListenerSet::iterator lit = it->second.begin();
+    ListenerSet::const_iterator lit = it->second.begin();
     while (lit != it->second.end())
     {
-        (*lit)->event(channel, event);
+        if (*lit)
+            (*lit)->processEvent(channel, event);
         ++lit;
     }
 }

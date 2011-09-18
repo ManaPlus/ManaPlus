@@ -46,7 +46,7 @@ class ChangePasswordDialog : public Window, public gcn::ActionListener
          *
          * @see Window::Window
          */
-        ChangePasswordDialog(LoginData *loginData);
+        ChangePasswordDialog(LoginData *data);
 
         /**
          * Destructor

@@ -194,11 +194,32 @@ int Configuration::getIntValue(const std::string &key) const
         {
             DefaultsData::const_iterator itdef = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second
-                && itdef->second->getType() == Mana::VariableData::DATA_INT)
+            if (itdef != mDefaultsData->end() && itdef->second)
             {
-                defaultValue = (static_cast<Mana::IntData*>(
-                    itdef->second))->getData();
+                if (itdef->second->getType() == Mana::VariableData::DATA_INT)
+                {
+                    defaultValue = (static_cast<Mana::IntData*>(
+                        itdef->second))->getData();
+                }
+                else if (itdef->second->getType()
+                         == Mana::VariableData::DATA_STRING)
+                {
+                    defaultValue = atoi((static_cast<Mana::StringData*>(
+                        itdef->second))->getData().c_str());
+                }
+                else if (itdef->second->getType()
+                         == Mana::VariableData::DATA_BOOL)
+                {
+                    if ((static_cast<Mana::BoolData*>(
+                        itdef->second))->getData())
+                    {
+                        defaultValue = 1;
+                    }
+                    else
+                    {
+                        defaultValue = 0;
+                    }
+                }
             }
             else
             {
@@ -241,7 +262,7 @@ int Configuration::resetIntValue(const std::string &key)
 std::string Configuration::getStringValue(const std::string &key) const
 {
     GETLOG();
-    std::string defaultValue = "";
+    std::string defaultValue("");
     Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
@@ -249,11 +270,33 @@ std::string Configuration::getStringValue(const std::string &key) const
         {
             DefaultsData::const_iterator itdef = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second
-                && itdef->second->getType() == Mana::VariableData::DATA_STRING)
+            if (itdef != mDefaultsData->end() && itdef->second)
             {
-                defaultValue = (static_cast<Mana::StringData*>(
-                    itdef->second))->getData();
+                if (itdef->second->getType()
+                    == Mana::VariableData::DATA_STRING)
+                {
+                    defaultValue = (static_cast<Mana::StringData*>(
+                        itdef->second))->getData();
+                }
+                else if (itdef->second->getType()
+                         == Mana::VariableData::DATA_BOOL)
+                {
+                    if ((static_cast<Mana::BoolData*>(
+                        itdef->second))->getData())
+                    {
+                        defaultValue = "1";
+                    }
+                    else
+                    {
+                        defaultValue = "0";
+                    }
+                }
+                else if (itdef->second->getType()
+                         == Mana::VariableData::DATA_INT)
+                {
+                    defaultValue = toString((static_cast<Mana::IntData*>(
+                        itdef->second))->getData());
+                }
             }
             else
             {
@@ -312,11 +355,39 @@ bool Configuration::getBoolValue(const std::string &key) const
         {
             DefaultsData::const_iterator itdef = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second
-                && itdef->second->getType() == Mana::VariableData::DATA_BOOL)
+            if (itdef != mDefaultsData->end() && itdef->second)
             {
-                defaultValue = (static_cast<Mana::BoolData*>(
-                    itdef->second))->getData();
+                if (itdef->second->getType() == Mana::VariableData::DATA_BOOL)
+                {
+                    defaultValue = (static_cast<Mana::BoolData*>(
+                        itdef->second))->getData();
+                }
+                else if (itdef->second->getType()
+                         == Mana::VariableData::DATA_INT)
+                {
+                    if ((static_cast<Mana::IntData*>(
+                        itdef->second))->getData() != 0)
+                    {
+                        defaultValue = true;
+                    }
+                    else
+                    {
+                        defaultValue = false;
+                    }
+                }
+                else if (itdef->second->getType()
+                         == Mana::VariableData::DATA_STRING)
+                {
+                    if ((static_cast<Mana::StringData*>(
+                        itdef->second))->getData() != "0")
+                    {
+                        defaultValue = true;
+                    }
+                    else
+                    {
+                        defaultValue = false;
+                    }
+                }
             }
             else
             {

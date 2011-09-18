@@ -42,7 +42,7 @@
 #include "debug.h"
 
 SpellPopup::SpellPopup():
-    Popup("SpellPopup")
+    Popup("SpellPopup", "spellpopup.xml")
 {
     // Item Name
     mItemName = new Label;
@@ -80,14 +80,14 @@ void SpellPopup::view(int x, int y)
     int posX = std::max(0, x - getWidth() / 2);
     int posY = y + distance;
 
-    if (posX + getWidth() > graphics->mWidth)
+    if (posX + getWidth() > mainGraphics->mWidth)
     {
-        if (graphics->mWidth > getWidth())
-            posX = graphics->mWidth - getWidth();
+        if (mainGraphics->mWidth > getWidth())
+            posX = mainGraphics->mWidth - getWidth();
         else
             posX = 0;
     }
-    if (posY + getHeight() > graphics->mHeight)
+    if (posY + getHeight() > mainGraphics->mHeight)
     {
         if (y > getHeight() + distance)
             posY = y - getHeight() - distance;

@@ -31,3 +31,4 @@
  */
 bool retrieveBuffer(std::string& text, std::string::size_type& pos);
 
+bool sendBuffer(std::string& text);

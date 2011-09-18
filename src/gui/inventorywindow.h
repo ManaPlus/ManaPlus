@@ -41,11 +41,14 @@
 #define A_UNUSED
 #endif
 
+class DropDown;
 class Item;
 class ItemContainer;
 class InventoryFilter;
 class ProgressBar;
-class TextBox;
+class SortListModel;
+//class TextBox;
+class TextField;
 
 /**
  * Inventory dialog.
@@ -124,9 +127,13 @@ class InventoryWindow : public Window,
 
         void updateDropButton();
 
-        void event(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Mana::Channels channel, const Mana::Event &event);
 
         void updateButtons(Item *item = 0);
+
+        bool isInputFocused() const;
+
+        static bool isAnyInputFocused();
 
     private:
         /**
@@ -151,7 +158,9 @@ class InventoryWindow : public Window,
 
         ProgressBar *mWeightBar, *mSlotsBar;
         InventoryFilter *mFilter;
-        InventoryFilter *mSorter;
+        DropDown *mSortDropDown;
+        SortListModel *mSortModel;
+        TextField *mNameFilter;
 
         bool mSplit;
 };

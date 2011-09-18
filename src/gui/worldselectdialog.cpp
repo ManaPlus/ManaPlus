@@ -74,7 +74,7 @@ class WorldListModel : public gcn::ListModel
 };
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
-    Window(_("Select World"))
+    Window(_("Select World"), false, 0, "world.xml")
 {
     mWorldListModel = new WorldListModel(worlds);
     mWorldList = new ListBox(mWorldListModel);

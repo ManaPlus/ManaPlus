@@ -337,7 +337,7 @@ void ChatTab::chatInput(const std::string &message)
                 start = msg.find('[', start + 1);
             }
 
-            std::string temp = "";
+            std::string temp("");
             if (start + 1 < msg.length() && end < msg.length()
                 && end > start + 1)
             {
@@ -439,7 +439,7 @@ void ChatTab::loadFromLogFile(std::string name)
     {
         std::list<std::string> list;
         chatLogger->loadLast(name, list, 5);
-        std::list<std::string>::iterator i = list.begin();
+        std::list<std::string>::const_iterator i = list.begin();
         while (i != list.end())
         {
             std::string line = "##9" + *i;

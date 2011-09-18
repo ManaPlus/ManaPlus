@@ -734,7 +734,7 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
                 Animation *ani = new Animation;
                 for (int i = 0; ; i++)
                 {
-                    std::map<std::string, int>::iterator iFrame, iDelay;
+                    std::map<std::string, int>::const_iterator iFrame, iDelay;
                     iFrame = tileProperties.find(
                         "animation-frame" + toString(i));
                     iDelay = tileProperties.find(

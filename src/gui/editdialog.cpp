@@ -37,7 +37,7 @@
 EditDialog::EditDialog(const std::string &title, const std::string &msg,
                        std::string eventOk, int width,
                        Window *parent, bool modal):
-    Window(title, modal, parent)
+    Window(title, modal, parent, "edit.xml")
 {
     mTextField = new TextField;
     mTextField->setText(msg);

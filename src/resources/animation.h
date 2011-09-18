@@ -85,6 +85,12 @@ class Animation
         { return static_cast<unsigned>(mFrames.size()); }
 
         /**
+         * Check for empty animation.
+         */
+        bool empty() const
+        { return mFrames.empty(); }
+
+        /**
          * Returns the duration of this animation.
          */
         int getDuration() const

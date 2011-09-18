@@ -225,11 +225,6 @@ ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
                 int offsetX = XML::getProperty(frameNode, "offsetX", 0);
                 int offsetY = XML::getProperty(frameNode, "offsetY", 0);
                 int rand = XML::getProperty(frameNode, "rand", 100);
-                if (!imageset)
-                {
-                    logger->log1("Error: no valid imageset");
-                    continue;
-                }
 
                 offsetY -= imageset->getHeight() - 32;
                 offsetX -= imageset->getWidth() / 2 - 16;
@@ -435,7 +430,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mDeathEffect = o.mDeathEffect;
     mTempSets = o.mTempSets;
 
-    for (std::vector<ImageSet*>::iterator
+    for (std::vector<ImageSet*>::const_iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
     {
@@ -453,7 +448,7 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 
 ParticleEmitter::~ParticleEmitter()
 {
-    for (std::vector<ImageSet*>::iterator
+    for (std::vector<ImageSet*>::const_iterator
          i = mTempSets.begin();
          i != mTempSets.end(); ++i)
     {
@@ -532,12 +527,12 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
 
             newParticle = new ImageParticle(mMap, mParticleImage);
         }
-        else if (mParticleRotation.getLength() > 0)
+        else if (!mParticleRotation.empty())
         {
             Animation *newAnimation = new Animation(mParticleRotation);
             newParticle = new RotationalParticle(mMap, newAnimation);
         }
-        else if (mParticleAnimation.getLength() > 0)
+        else if (!mParticleAnimation.empty())
         {
             Animation *newAnimation = new Animation(mParticleAnimation);
             newParticle = new AnimationParticle(mMap, newAnimation);
@@ -566,9 +561,9 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         newParticle->setFollow(mParticleFollow);
 
         newParticle->setDestination(mParticleTarget,
-                                    mParticleAcceleration.value(tick),
-                                    mParticleMomentum.value(tick)
-                                   );
+            mParticleAcceleration.value(tick),
+            mParticleMomentum.value(tick));
+
         newParticle->setDieDistance(mParticleDieDistance.value(tick));
 
         newParticle->setLifetime(mParticleLifetime.value(tick));
@@ -576,17 +571,15 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         newParticle->setFadeIn(mParticleFadeIn.value(tick));
         newParticle->setAlpha(mParticleAlpha.value(tick));
 
-        for (std::list<ParticleEmitter>::iterator
-             i = mParticleChildEmitters.begin();
-             i != mParticleChildEmitters.end(); ++i)
+        for (std::list<ParticleEmitter>::const_iterator
+             it = mParticleChildEmitters.begin();
+             it != mParticleChildEmitters.end(); ++it)
         {
-            newParticle->addEmitter(new ParticleEmitter(*i));
+            newParticle->addEmitter(new ParticleEmitter(*it));
         }
 
         if (!mDeathEffect.empty())
-        {
             newParticle->setDeathEffect(mDeathEffect, mDeathEffectConditions);
-        }
 
         newParticles.push_back(newParticle);
     }

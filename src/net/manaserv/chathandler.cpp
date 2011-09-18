@@ -231,7 +231,7 @@ void ChatHandler::handlePrivateMessage(Net::MessageIn &msg)
     std::string userNick = msg.readString();
     std::string chatMsg = msg.readString();
 
-    chatWindow->whisper(userNick, chatMsg);
+    chatWindow->addWhisper(userNick, chatMsg);
 }
 
 void ChatHandler::handleAnnouncement(Net::MessageIn &msg)

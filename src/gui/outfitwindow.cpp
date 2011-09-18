@@ -57,7 +57,7 @@
 float OutfitWindow::mAlpha = 1.0;
 
 OutfitWindow::OutfitWindow():
-    Window(_("Outfits")),
+    Window(_("Outfits"), false, 0, "outfits.xml"),
     mBoxWidth(33),
     mBoxHeight(33),
     mGridWidth(4),

@@ -154,8 +154,8 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
             mFrameIndex = 0;
 
         mFrame = mAnimation->getFrame(mFrameIndex);
-
-        if (mFrame->type == Frame::LABEL && !mFrame->nextAction.empty())
+        if (!mFrame || (mFrame->type == Frame::LABEL
+            && !mFrame->nextAction.empty()))
         {
             fail = true;
         }

@@ -43,6 +43,8 @@ bool GuildManager::mEnableGuildBot = false;
 GuildManager::GuildManager() :
     mGotInfo(false),
     mGotName(false),
+    mSentInfoRequest(false),
+    mSentNameRequest(false),
     mHavePower(false),
     mTab(0),
     mRequest(false)
@@ -57,9 +59,6 @@ GuildManager::~GuildManager()
 
 void GuildManager::init()
 {
-    if (guildManager)
-        return;
-
     int val = serverConfig.getValue("enableGuildBot", -1);
     if (val == -1)
     {
@@ -71,7 +70,17 @@ void GuildManager::init()
     }
     mEnableGuildBot = val;
     if (mEnableGuildBot)
-        guildManager = new GuildManager();
+    {
+        if (!guildManager)
+            guildManager = new GuildManager();
+        else
+            guildManager->reload();
+    }
+    else if (guildManager)
+    {
+        delete guildManager;
+        guildManager = 0;
+    }
 }
 
 void GuildManager::reload()
@@ -80,12 +89,14 @@ void GuildManager::reload()
     mGotName = false;
     mHavePower = false;
     mRequest = false;
+    mSentNameRequest = false;
+    mSentInfoRequest = false;
     mTempList.clear();
 
     if (socialWindow)
     {
         Guild *guild = Guild::getGuild(1);
-        if (guild)
+        if (guild && socialWindow)
             socialWindow->removeTab(guild);
     }
     delete mTab;
@@ -109,7 +120,8 @@ void GuildManager::chat(std::string msg)
 void GuildManager::getNames(std::vector<std::string> &names)
 {
     Guild *guild = createGuild();
-    guild->getNames(names);
+    if (guild)
+        guild->getNames(names);
 }
 
 void GuildManager::requestGuildInfo()
@@ -117,15 +129,21 @@ void GuildManager::requestGuildInfo()
     if (mRequest)
         return;
 
-    if (!mGotName)
+    if (!mGotName && !mSentNameRequest)
     {
+        if (!Client::limitPackets(PACKET_CHAT))
+            return;
         send("!info " + toString(tick_time));
         mRequest = true;
+        mSentNameRequest = true;
     }
-    else if (!mGotInfo)
+    else if (!mGotInfo && !mSentInfoRequest && !mSentNameRequest)
     {
+        if (!Client::limitPackets(PACKET_CHAT))
+            return;
         send("!getonlineinfo " + toString(tick_time));
         mRequest = true;
+        mSentInfoRequest = true;
     }
 }
 
@@ -135,8 +153,8 @@ void GuildManager::updateList()
     if (guild)
     {
         guild->setServerGuild(false);
-        std::vector<std::string>::iterator it = mTempList.begin();
-        std::vector<std::string>::iterator it_end = mTempList.end();
+        std::vector<std::string>::const_iterator it = mTempList.begin();
+        std::vector<std::string>::const_iterator it_end = mTempList.end();
         int i = 0;
         while (it != it_end)
         {
@@ -174,6 +192,7 @@ void GuildManager::updateList()
         }
     }
     mTempList.clear();
+    mSentInfoRequest = false;
     mGotInfo = true;
 }
 
@@ -262,6 +281,7 @@ bool GuildManager::process(std::string msg)
         if (player_node)
             player_node->setGuildName(msg);
         mGotName = true;
+        mSentNameRequest = false;
         mRequest = false;
         return true;
     }
@@ -300,6 +320,7 @@ bool GuildManager::process(std::string msg)
         if (player_node)
             player_node->setGuildName(msg);
         mGotName = true;
+        mSentNameRequest = false;
         mRequest = false;
         return true;
     }
@@ -338,7 +359,7 @@ bool GuildManager::process(std::string msg)
         return true;
     }
     else if (!haveNick && (findCutLast(msg, " has been removed "
-             "from the Guild.") || findCutLast(msg," has left the Guild.")))
+             "from the Guild.") || findCutLast(msg, " has left the Guild.")))
     {
         Guild *guild = createGuild();
         if (!guild)

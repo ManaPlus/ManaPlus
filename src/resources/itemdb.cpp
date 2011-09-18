@@ -308,7 +308,7 @@ void ItemDB::load()
                 effect += " / ";
             effect += strprintf(gettext(fields[i][1]), value);
         }
-        for (std::vector<Stat>::iterator it = extraStats.begin();
+        for (std::vector<Stat>::const_iterator it = extraStats.begin();
              it != extraStats.end(); ++it)
         {
             int value = XML::getProperty(node, it->tag.c_str(), 0);
@@ -361,7 +361,7 @@ void ItemDB::load()
         mItemInfos[id] = itemInfo;
         if (!name.empty())
         {
-            std::string temp = normalize(name);
+            temp = normalize(name);
 
             NamedItemInfos::const_iterator itr = mNamedItemInfos.find(temp);
             if (itr == mNamedItemInfos.end())

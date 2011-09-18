@@ -194,7 +194,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
 
     const int npcId = msg.readInt32();
 
-    NpcDialogs::iterator diag = mNpcDialogs.find(npcId);
+    NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
     mDialog = 0;
 
     if (diag == mNpcDialogs.end())

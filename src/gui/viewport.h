@@ -286,6 +286,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int mScrollLaziness;
         bool mShowBeingPopup;
         bool mSelfMouseHeal;
+        bool mEnableLazyScrolling;
         int mScrollCenterOffsetX;
         int mScrollCenterOffsetY;
         int mMouseX;                /**< Current mouse position in pixels. */

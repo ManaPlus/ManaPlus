@@ -203,7 +203,7 @@ void PartyHandler::processPartyInvited(Net::MessageIn &msg)
 {
     int id = msg.readInt32();
     std::string partyName = msg.readString(24);
-    std::string nick = "";
+    std::string nick("");
     Being *being;
 
     if (actorSpriteManager)

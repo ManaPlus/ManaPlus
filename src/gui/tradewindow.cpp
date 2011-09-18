@@ -63,7 +63,7 @@
 #define CAPTION_ACCEPTED _("Agreed. Waiting...")
 
 TradeWindow::TradeWindow():
-    Window(_("Trade: You")),
+    Window(_("Trade: You"), false, 0, "trade.xml"),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mStatus(PROPOSING),
@@ -118,14 +118,14 @@ TradeWindow::TradeWindow():
     place(1, 0, mMoneyLabel);
     place(0, 1, myScroll).setPadding(3);
     place(1, 1, partnerScroll).setPadding(3);
-    ContainerPlacer place;
-    place = getPlacer(0, 0);
-    place(0, 0, mMoneyLabel2);
-    place(1, 0, mMoneyField, 2);
-    place(3, 0, mMoneyChangeButton).setHAlign(LayoutCell::LEFT);
-    place = getPlacer(0, 2);
-    place(0, 0, mAddButton);
-    place(1, 0, mOkButton);
+    ContainerPlacer placer;
+    placer = getPlacer(0, 0);
+    placer(0, 0, mMoneyLabel2);
+    placer(1, 0, mMoneyField, 2);
+    placer(3, 0, mMoneyChangeButton).setHAlign(LayoutCell::LEFT);
+    placer = getPlacer(0, 2);
+    placer(0, 0, mAddButton);
+    placer(1, 0, mOkButton);
     Layout &layout = getLayout();
     layout.extend(0, 2, 2, 1);
     layout.setRowHeight(1, Layout::AUTO_SET);
@@ -443,10 +443,10 @@ void TradeWindow::initTrade(std::string nick)
 
 bool TradeWindow::checkItem(Item *item)
 {
-    Item *tradeItem = mMyInventory->findItem(
+    Item *tItem = mMyInventory->findItem(
         item->getId(), item->getColor());
 
-    if (tradeItem && (tradeItem->getQuantity() > 1
+    if (tItem && (tItem->getQuantity() > 1
         || item->getQuantity() > 1))
     {
         if (localChatTab)

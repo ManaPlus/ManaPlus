@@ -43,7 +43,8 @@
 #include "debug.h"
 
 KillStats::KillStats():
-    Window(_("Kill stats")), mKillCounter(0), mExpCounter(0),
+    Window(_("Kill stats"), false, 0, "killstats.xml"),
+    mKillCounter(0), mExpCounter(0),
     mKillTCounter(0), mExpTCounter(0), mKillTimer(0),
     m1minExpTime(0), m1minExpNum(0), m1minSpeed(0),
     m5minExpTime(0), m5minExpNum(0), m5minSpeed(0),
@@ -55,6 +56,7 @@ KillStats::KillStats():
     setWindowName("Kill stats");
     setCloseButton(true);
     setResizable(true);
+    setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
 
@@ -436,8 +438,8 @@ void KillStats::validateJacko()
     }
 }
 
-void KillStats::event(Mana::Channels channel A_UNUSED,
-                      const Mana::Event &event)
+void KillStats::processEvent(Mana::Channels channel A_UNUSED,
+                             const Mana::Event &event)
 {
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {

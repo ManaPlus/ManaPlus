@@ -434,8 +434,8 @@ void InventoryHandler::processPlayerStorageStatus(Net::MessageIn &msg)
     if (!mStorage)
         mStorage = new Inventory(Inventory::STORAGE, size);
 
-    Ea::InventoryItems::iterator it = mInventoryItems.begin();
-    Ea::InventoryItems::iterator it_end = mInventoryItems.end();
+    Ea::InventoryItems::const_iterator it = mInventoryItems.begin();
+    Ea::InventoryItems::const_iterator it_end = mInventoryItems.end();
     for (; it != it_end; ++it)
     {
         mStorage->setItem((*it).slot, (*it).id, (*it).quantity,

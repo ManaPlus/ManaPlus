@@ -112,6 +112,11 @@ class BrowserBox : public gcn::Widget,
          */
         void addRow(const std::string &row, bool atTop = false);
 
+        /**
+         * Adds a menu line to the browser.
+         */
+        void addRow(const std::string &cmd, char *text);
+
         void addImage(const std::string &path);
 
         /**

@@ -50,8 +50,8 @@ static const int LOGIN_DIALOG_WIDTH = 300;
 static const int LOGIN_DIALOG_HEIGHT = 140;
 static const int FIELD_WIDTH = LOGIN_DIALOG_WIDTH - 70;
 
-std::string LoginDialog::savedPassword = "";
-std::string LoginDialog::savedPasswordKey = "";
+std::string LoginDialog::savedPassword("");
+std::string LoginDialog::savedPasswordKey("");
 
 
 const char *UPDATE_TYPE_TEXT[3] =
@@ -81,10 +81,10 @@ public:
     }
 };
 
-LoginDialog::LoginDialog(LoginData *loginData, std::string serverName,
+LoginDialog::LoginDialog(LoginData *data, std::string serverName,
                          std::string *updateHost):
-    Window(_("Login")),
-    mLoginData(loginData),
+    Window(_("Login"), false, 0, "login.xml"),
+    mLoginData(data),
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
@@ -94,7 +94,7 @@ LoginDialog::LoginDialog(LoginData *loginData, std::string serverName,
     gcn::Label *userLabel = new Label(_("Name:"));
     gcn::Label *passLabel = new Label(_("Password:"));
     mCustomUpdateHost = new CheckBox(_("Custom update host"),
-        loginData->updateType & LoginData::Upd_Custom, this, "customhost");
+        mLoginData->updateType & LoginData::Upd_Custom, this, "customhost");
 
     mUpdateHostText = new TextField(serverConfig.getValue(
         "customUpdateHost", ""));
@@ -112,7 +112,7 @@ LoginDialog::LoginDialog(LoginData *loginData, std::string serverName,
     mUpdateTypeModel = new UpdateTypeModel();
     mUpdateTypeDropDown = new DropDown(mUpdateTypeModel);
     mUpdateTypeDropDown->setActionEventId("updatetype");
-    mUpdateTypeDropDown->setSelected((loginData->updateType
+    mUpdateTypeDropDown->setSelected((mLoginData->updateType
         | LoginData::Upd_Custom) ^ LoginData::Upd_Custom);
 
     if (!mCustomUpdateHost->isSelected())
