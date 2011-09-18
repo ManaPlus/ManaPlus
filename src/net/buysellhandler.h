@@ -34,6 +34,9 @@ namespace Net
 class BuySellHandler
 {
     public:
+        virtual ~BuySellHandler()
+        { }
+
         virtual void handleMessage(Net::MessageIn &msg) = 0;
         virtual void requestSellList(std::string nick) = 0;
         virtual void requestBuyList(std::string nick) = 0;

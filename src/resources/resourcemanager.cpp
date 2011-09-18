@@ -48,8 +48,6 @@
 
 #include "debug.h"
 
-#define THEMES_FOLDER "themes"
-
 ResourceManager *ResourceManager::instance = NULL;
 
 ResourceManager::ResourceManager() :

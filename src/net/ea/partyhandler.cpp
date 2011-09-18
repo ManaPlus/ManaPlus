@@ -34,8 +34,6 @@
 
 #include "debug.h"
 
-#define PARTY_ID 1
-
 namespace Ea
 {
 

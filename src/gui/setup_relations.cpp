@@ -228,7 +228,6 @@ public:
 #define ACTION_OLD "old"
 #define ACTION_TABLE "table"
 #define ACTION_STRATEGY "strategy"
-#define ACTION_WHISPER_TAB "whisper tab"
 
 Setup_Relations::Setup_Relations():
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),

@@ -50,8 +50,6 @@
 #define BSKILL_CREATECHAT 0x0003
 #define BSKILL_JOINPARTY  0x0004
 #define BSKILL_SHOUT      0x0005
-#define BSKILL_PK         0x0006 // ??
-#define BSKILL_SETALLIGN  0x0007 // ??
 
 /** reasons why action failed      */
 #define RFAIL_SKILLDEP    0x00
@@ -64,7 +62,6 @@
 #define RFAIL_REDGEM      0x07
 #define RFAIL_BLUEGEM     0x08
 #define RFAIL_OVERWEIGHT  0x09
-#define RFAIL_GENERIC     0x0a
 
 /** should always be zero if failed */
 #define SKILL_FAILED      0x00

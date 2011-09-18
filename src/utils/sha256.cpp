@@ -101,7 +101,7 @@ class SHA256Context
 
 #define SHFR(x, n)    (x >> n)
 #define ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
-#define ROTL(x, n)   ((x << n) | (x >> ((sizeof(x) << 3) - n)))
+//#define ROTL(x, n)   ((x << n) | (x >> ((sizeof(x) << 3) - n)))
 #define CH(x, y, z)  ((x & y) ^ (~x & z))
 #define MAJ(x, y, z) ((x & y) ^ (x & z) ^ (y & z))
 
