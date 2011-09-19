@@ -63,6 +63,8 @@ class SpellPopup : public Popup
 
     private:
         gcn::Label *mItemName;
+
+        gcn::Label *mItemComment;
 };
 
 #endif // SPELLPOPUP_H

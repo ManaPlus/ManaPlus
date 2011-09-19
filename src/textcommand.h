@@ -62,18 +62,16 @@ class TextCommand
         /**
          * Constructor.
          */
-        TextCommand(unsigned int id, std::string symbol,
-                    std::string command, SpellTarget type,
-                    std::string icon, unsigned int basicLvl,
-                    MagicSchool school = SKILL_MAGIC,
+        TextCommand(unsigned int id, std::string symbol, std::string command,
+                    std::string comment, SpellTarget type, std::string icon,
+                    unsigned int basicLvl, MagicSchool school = SKILL_MAGIC,
                     unsigned int schoolLvl = 0, int mana = 0);
 
         /**
          * Constructor.
          */
-        TextCommand(unsigned int id, std::string symbol,
-                    std::string command, SpellTarget type,
-                    std::string icon);
+        TextCommand(unsigned int id, std::string symbol, std::string command,
+                    std::string comment, SpellTarget type, std::string icon);
 
         /**
          * Constructor.
@@ -90,6 +88,9 @@ class TextCommand
 
         std::string getCommand() const
         { return mCommand; }
+
+        std::string getComment() const
+        { return mComment; }
 
         std::string getSymbol() const
         { return mSymbol; }
@@ -120,6 +121,9 @@ class TextCommand
 
         void setCommand(std::string command)
         { mCommand = command; }
+
+        void setComment(std::string comment)
+        { mComment = comment; }
 
         void setSymbol(std::string symbol)
         { mSymbol = symbol; }
@@ -159,6 +163,7 @@ class TextCommand
 
     protected:
         std::string mCommand;
+        std::string mComment;
         std::string mSymbol;
         SpellTarget mTargetType;
         std::string mIcon;

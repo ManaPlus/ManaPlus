@@ -84,6 +84,10 @@ class TextCommandEditor : public Window, public gcn::ActionListener
         TextField *mSymbolTextField;
         Label *mCommandLabel;
         TextField *mCommandTextField;
+
+        Label *mCommentLabel;
+        TextField *mCommentTextField;
+
         Label *mTypeLabel;
         DropDown *mTypeDropDown;
         Label *mIconLabel;

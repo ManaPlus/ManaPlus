@@ -68,31 +68,31 @@ void SpellManager::fillSpells()
 {
 //id, std::string name, std::string symbol, ST type, int basicLvl, MagicSchool school, int schoolLvl, int mana)
 
-    addSpell(new TextCommand(0, "lum", "#lum", ALLOWTARGET,
+    addSpell(new TextCommand(0, "lum", "#lum", "heal with lifestones", ALLOWTARGET,
              "", 1, SKILL_MAGIC_LIFE, 0, 6));
-    addSpell(new TextCommand(1, "inm", "#inma", NEEDTARGET,
+    addSpell(new TextCommand(1, "inm", "#inma", "heal", NEEDTARGET,
              "", 2, SKILL_MAGIC_LIFE, 2, 10));
-    addSpell(new TextCommand(2, "fla", "#flar", NOTARGET,
+    addSpell(new TextCommand(2, "fla", "#flar", "", NOTARGET,
              "", 1, SKILL_MAGIC_WAR, 0, 10));
-    addSpell(new TextCommand(3, "chi", "#chiza", NOTARGET,
+    addSpell(new TextCommand(3, "chi", "#chiza", "", NOTARGET,
              "", 1, SKILL_MAGIC_WAR, 0, 9));
-    addSpell(new TextCommand(4, "ing", "#ingrav", NOTARGET,
+    addSpell(new TextCommand(4, "ing", "#ingrav", "", NOTARGET,
              "", 2, SKILL_MAGIC_WAR, 2, 20));
-    addSpell(new TextCommand(5, "fri", "#frillyar", NOTARGET,
+    addSpell(new TextCommand(5, "fri", "#frillyar", "", NOTARGET,
              "", 2, SKILL_MAGIC_WAR, 2, 25));
-    addSpell(new TextCommand(6, "upm", "#upmarmu", NOTARGET,
+    addSpell(new TextCommand(6, "upm", "#upmarmu", "", NOTARGET,
              "", 2, SKILL_MAGIC_WAR, 2, 20));
-    addSpell(new TextCommand(7, "ite", "#itenplz", NOTARGET,
+    addSpell(new TextCommand(7, "ite", "#itenplz", "", NOTARGET,
              "", 1, SKILL_MAGIC_NATURE, 0, 3));
-    addSpell(new TextCommand(8, "bet", "#betsanc", ALLOWTARGET,
+    addSpell(new TextCommand(8, "bet", "#betsanc", "", ALLOWTARGET,
              "", 2, SKILL_MAGIC_NATURE, 2, 14));
-    addSpell(new TextCommand(9, "abi", "#abizit", NOTARGET,
+    addSpell(new TextCommand(9, "abi", "#abizit", "", NOTARGET,
              "", 1, SKILL_MAGIC, 0, 1));
-    addSpell(new TextCommand(10, "inw", "#inwilt", NOTARGET,
+    addSpell(new TextCommand(10, "inw", "#inwilt", "", NOTARGET,
              "", 2, SKILL_MAGIC, 2, 7));
-    addSpell(new TextCommand(11, "hi", "hi", NOTARGET, ""));
-    addSpell(new TextCommand(12, "hea", "heal", NOTARGET, ""));
-    addSpell(new TextCommand(13, "@sp", "@spawn maggot 10", NOTARGET, ""));
+    addSpell(new TextCommand(11, "hi", "hi", "", NOTARGET, ""));
+    addSpell(new TextCommand(12, "hea", "heal", "", NOTARGET, ""));
+    addSpell(new TextCommand(13, "@sp", "@spawn maggot 10", "", NOTARGET, ""));
     for (int f = 12; f < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; f++)
         addSpell(new TextCommand(f));
 }
@@ -269,6 +269,8 @@ void SpellManager::load(bool oldConfig)
 
         std::string cmd = cfg->getValue("commandShortcutCmd"
                                         + toString(i), "");
+        std::string comment = cfg->getValue("commandShortcutComment"
+                                        + toString(i), "");
         std::string symbol = cfg->getValue("commandShortcutSymbol"
                                            + toString(i), "");
         std::string icon = cfg->getValue("commandShortcutIcon"
@@ -276,13 +278,13 @@ void SpellManager::load(bool oldConfig)
 
         if (static_cast<TextCommandType>(commandType) == TEXT_COMMAND_MAGIC)
         {
-            addSpell(new TextCommand(i, symbol, cmd,
+            addSpell(new TextCommand(i, symbol, cmd, comment,
                 static_cast<SpellTarget>(targetType), icon, basicLvl,
                 static_cast<MagicSchool>(school), schoolLvl, mana));
         }
         else
         {
-            addSpell(new TextCommand(i, symbol, cmd,
+            addSpell(new TextCommand(i, symbol, cmd, comment,
                 static_cast<SpellTarget>(targetType), icon));
         }
     }
@@ -303,6 +305,15 @@ void SpellManager::save()
             else
             {
                 serverConfig.deleteKey("commandShortcutCmd" + toString(i));
+            }
+            if (spell->getComment() != "")
+            {
+                serverConfig.setValue("commandShortcutComment" + toString(i),
+                                      spell->getComment());
+            }
+            else
+            {
+                serverConfig.deleteKey("commandShortcutComment" + toString(i));
             }
             if (spell->getSymbol() != "")
             {

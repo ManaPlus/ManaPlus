@@ -168,7 +168,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
     Window(_("Command Editor"), false, 0, "commandeditor.xml")
 {
     int w = 350;
-    int h = 350;
+    int h = 370;
 
     mEnabledKeyboard = keyboard.isEnabled();
     keyboard.setEnabled(false);
@@ -196,6 +196,9 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
 
     mCommandLabel = new Label(_("Command:"));
     mCommandTextField = new TextField();
+
+    mCommentLabel = new Label(_("Comment:"));
+    mCommentTextField = new TextField();
 
     mManaLabel = new Label(_("Mana:"));
     mManaField = new IntTextField(0);
@@ -248,6 +251,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
 
     mSymbolTextField->setText(command->getSymbol());
     mCommandTextField->setText(command->getCommand());
+    mCommentTextField->setText(command->getComment());
     mManaField->setValue(command->getMana());
     mTypeDropDown->setSelected(command->getTargetType());
     mMagicLvlField->setValue(command->getBaseLvl());
@@ -263,25 +267,29 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
     placer(2, 1, mSymbolTextField, 3).setPadding(3);
     placer(0, 2, mCommandLabel, 2).setPadding(3);
     placer(2, 2, mCommandTextField, 4).setPadding(3);
-    placer(0, 3, mTypeLabel, 2).setPadding(3);
-    placer(2, 3, mTypeDropDown, 3).setPadding(3);
 
-    placer(0, 4, mIconLabel, 2).setPadding(3);
-    placer(2, 4, mIconDropDown, 3).setPadding(3);
+    placer(0, 3, mCommentLabel, 2).setPadding(3);
+    placer(2, 3, mCommentTextField, 4).setPadding(3);
 
-    placer(0, 5, mManaLabel, 2).setPadding(3);
-    placer(2, 5, mManaField, 3).setPadding(3);
-    placer(0, 6, mMagicLvlLabel, 2).setPadding(3);
-    placer(2, 6, mMagicLvlField, 3).setPadding(3);
+    placer(0, 4, mTypeLabel, 2).setPadding(3);
+    placer(2, 4, mTypeDropDown, 3).setPadding(3);
 
-    placer(0, 7, mSchoolLabel, 2).setPadding(3);
-    placer(2, 7, mSchoolDropDown, 3).setPadding(3);
-    placer(0, 8, mSchoolLvlLabel, 2).setPadding(3);
-    placer(2, 8, mSchoolLvlField, 3).setPadding(3);
+    placer(0, 5, mIconLabel, 2).setPadding(3);
+    placer(2, 5, mIconDropDown, 3).setPadding(3);
 
-    placer(0, 9, mSaveButton, 2).setPadding(3);
-    placer(2, 9, mCancelButton, 2).setPadding(3);
-    placer(4, 9, mDeleteButton, 2).setPadding(3);
+    placer(0, 6, mManaLabel, 2).setPadding(3);
+    placer(2, 6, mManaField, 3).setPadding(3);
+    placer(0, 7, mMagicLvlLabel, 2).setPadding(3);
+    placer(2, 7, mMagicLvlField, 3).setPadding(3);
+
+    placer(0, 8, mSchoolLabel, 2).setPadding(3);
+    placer(2, 8, mSchoolDropDown, 3).setPadding(3);
+    placer(0, 9, mSchoolLvlLabel, 2).setPadding(3);
+    placer(2, 9, mSchoolLvlField, 3).setPadding(3);
+
+    placer(0, 10, mSaveButton, 2).setPadding(3);
+    placer(2, 10, mCancelButton, 2).setPadding(3);
+    placer(4, 10, mDeleteButton, 2).setPadding(3);
 
     setWidth(w);
     setHeight(h);
@@ -375,6 +383,7 @@ void TextCommandEditor::save()
 
     mCommand->setSymbol(mSymbolTextField->getText());
     mCommand->setCommand(mCommandTextField->getText());
+    mCommand->setComment(mCommentTextField->getText());
     mCommand->setMana(mManaField->getValue());
     mCommand->setTargetType(
             static_cast<SpellTarget>(mTypeDropDown->getSelected()));
@@ -392,6 +401,7 @@ void TextCommandEditor::deleteCommand()
     mCommand->setCommandType(TEXT_COMMAND_TEXT);
     mCommand->setSymbol("");
     mCommand->setCommand("");
+    mCommand->setComment("");
     mCommand->setMana(0);
     mCommand->setTargetType(NOTARGET);
     mCommand->setIcon("");
