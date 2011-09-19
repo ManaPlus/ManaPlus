@@ -71,8 +71,6 @@ class BotCheckerWindow : public Window, public gcn::ActionListener,
 
         void logic();
 
-        void widgetResized(const gcn::Event &event);
-
         void updateList();
 
         void reset();

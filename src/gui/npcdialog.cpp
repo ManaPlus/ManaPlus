@@ -404,13 +404,6 @@ void NpcDialog::move(int amount)
     }
 }
 
-void NpcDialog::widgetResized(const gcn::Event &event)
-{
-    Window::widgetResized(event);
-
-//    setText(mText);
-}
-
 void NpcDialog::setVisible(bool visible)
 {
     Window::setVisible(visible);

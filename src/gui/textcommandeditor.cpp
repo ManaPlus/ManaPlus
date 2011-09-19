@@ -343,11 +343,6 @@ void TextCommandEditor::update()
 {
 }
 
-void TextCommandEditor::widgetResized(const gcn::Event &event)
-{
-    Window::widgetResized(event);
-}
-
 void TextCommandEditor::updateList()
 {
 }

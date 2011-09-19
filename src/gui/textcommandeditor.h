@@ -60,8 +60,6 @@ class TextCommandEditor : public Window, public gcn::ActionListener
 
         void update();
 
-        void widgetResized(const gcn::Event &event);
-
         void updateList();
 
         void reset();
