@@ -308,9 +308,22 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
         if (!*it)
             continue;
 
-        if ((*it)->getType() == ActorSprite::FLOOR_ITEM
-            || (*it)->getType() == ActorSprite::PORTAL)
+        if ((*it)->getType() == ActorSprite::PORTAL)
+            continue;
+
+        if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
         {
+            if (!noBeing)
+            {
+                FloorItem *floor = static_cast<FloorItem*>(*it);
+                if (!noBeing && (floor->getPixelX() - 32 <= x) &&
+                    (floor->getPixelX() + 32 > x) &&
+                    (floor->getPixelY() - 64 <= y) &&
+                    (floor->getPixelY() + 16 > y))
+                {
+                    noBeing = true;
+                }
+            }
             continue;
         }
 
