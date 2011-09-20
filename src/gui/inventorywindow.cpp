@@ -99,7 +99,8 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     Window("Inventory", false, 0, "inventory.xml"),
     mInventory(inventory),
     mDropButton(0),
-    mSplit(false)
+    mSplit(false),
+    mCompactMode(false)
 {
     if (inventory)
     {
@@ -146,7 +147,6 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSortDropDown->setSelected(0);
 
     mFilterLabel = new Label(_("Filter:"));
-    mSorterLabel = new Label(_("Sort:"));
     mNameFilter = new TextField("", true, this, "namefilter", true);
 
     std::vector<std::string> tags = ItemDB::getTags();
@@ -181,13 +181,12 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(0, 0, mWeightLabel, 1).setPadding(3);
         place(1, 0, mWeightBar, 3);
         place(4, 0, mSlotsLabel, 1).setPadding(3);
-        place(5, 0, mSlotsBar, 2);
-        place(7, 0, mSorterLabel, 1);
-        place(8, 0, mSortDropDown, 3);
+        mSlotsBarCell = &place(5, 0, mSlotsBar, 3);
+        mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 7).setPadding(3);
-        place(8, 1, mNameFilter, 3);
+        mFilterCell = &place(1, 1, mFilter, 8).setPadding(3);
+        mNameFilterCell = &place(8, 1, mNameFilter, 3);
 
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
@@ -206,13 +205,12 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         mCloseButton = new Button(_("Close"), "close", this);
 
         place(0, 0, mSlotsLabel).setPadding(3);
-        place(1, 0, mSlotsBar, 4);
-        place(5, 0, mSorterLabel, 1);
-        place(6, 0, mSortDropDown, 1);
+        mSlotsBarCell = &place(1, 0, mSlotsBar, 5);
+        mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        place(1, 1, mFilter, 5).setPadding(3);
-        place(6, 1, mNameFilter, 1);
+        mFilterCell = &place(1, 1, mFilter, 6).setPadding(3);
+        mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
         place(0, 2, invenScroll, 7, 4);
         place(0, 6, mStoreButton);
@@ -240,6 +238,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     loadWindowState();
     slotsChanged(mInventory);
 
+    widgetResized(0);
     if (!isMainInventory())
         setVisible(true);
 }
@@ -665,4 +664,36 @@ bool InventoryWindow::isAnyInputFocused()
             return true;
     }
     return false;
+}
+
+void InventoryWindow::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+
+    if (!isMainInventory())
+        return;
+
+    if (getWidth() < 600)
+    {
+        if (!mCompactMode)
+        {
+            mSortDropDown->setVisible(false);
+            mNameFilter->setVisible(false);
+            mSortDropDownCell->setType(LayoutCell::NONE);
+            mNameFilterCell->setType(LayoutCell::NONE);
+            mFilterCell->setWidth(mFilterCell->getWidth() + 3);
+            mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() + 3);
+            mCompactMode = true;
+        }
+    }
+    else if (mCompactMode)
+    {
+        mSortDropDown->setVisible(true);
+        mNameFilter->setVisible(true);
+        mSortDropDownCell->setType(LayoutCell::WIDGET);
+        mNameFilterCell->setType(LayoutCell::WIDGET);
+        mFilterCell->setWidth(mFilterCell->getWidth() - 3);
+        mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() - 3);
+        mCompactMode = false;
+    }
 }

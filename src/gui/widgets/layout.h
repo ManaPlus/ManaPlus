@@ -261,6 +261,28 @@ class LayoutCell
          */
         void computeSizes();
 
+        void setType(int t)
+        { mType = t; }
+
+        int getWidth()
+        { return mExtent[0]; }
+
+        int getHeight()
+        { return mExtent[1]; }
+
+        void setWidth(int w)
+        { mExtent[0] = w; }
+
+        void setHeight(int h)
+        { mExtent[1] = h; }
+
+        enum
+        {
+            NONE = 0,
+            WIDGET,
+            ARRAY
+        };
+
     private:
         // Copy not allowed, as the cell may own an array.
         LayoutCell(LayoutCell const &);
@@ -270,13 +292,6 @@ class LayoutCell
         {
             gcn::Widget *mWidget;
             LayoutArray *mArray;
-        };
-
-        enum
-        {
-            NONE = 0,
-            WIDGET,
-            ARRAY
         };
 
         /**
