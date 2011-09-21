@@ -318,6 +318,7 @@ class ActorSpriteManager: public ConfigListener
         bool mTargetOnlyReachable;
         bool mCyclePlayers;
         bool mCycleMonsters;
+        bool mExtMouseTargeting;
 
         std::list<std::string> mPriorityAttackMobs;
         std::list<std::string> mAttackMobs;
