@@ -1,2 +1,2 @@
 version=3
-http://sf.net/themanaworld/mana-(.*)\.tar\.gz
+http://download.evolonline.org/manaplus/download/([\d\.]+)/manaplus-([\d\.]+)\.tar\.bz2
