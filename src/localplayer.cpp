@@ -3413,6 +3413,9 @@ int LocalPlayer::getPathLength(Being* being)
 
     const Vector &playerPos = getPosition();
 
+    if (being->mX == mX && being->mY == mY)
+        return 0;
+
     Path debugPath = mMap->findPath(
         static_cast<int>(playerPos.x - 16) / 32,
         static_cast<int>(playerPos.y - 32) / 32,
