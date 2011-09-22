@@ -171,6 +171,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mShowJobExp = config.getBoolValue("showJobExp");
     mEnableAdvert = config.getBoolValue("enableAdvert");
     mTradebot = config.getBoolValue("tradebot");
+    mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
 
     mPingSendTick = 0;
     mWaitPing = false;
@@ -192,6 +193,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("showJobExp", this);
     config.addListener("enableAdvert", this);
     config.addListener("tradebot", this);
+    config.addListener("targetOnlyReachable", this);
     setShowName(config.getBoolValue("showownname"));
 }
 
@@ -209,6 +211,7 @@ LocalPlayer::~LocalPlayer()
     config.removeListener("showJobExp", this);
     config.removeListener("enableAdvert", this);
     config.removeListener("tradebot", this);
+    config.removeListener("targetOnlyReachable", this);
 
     delete mAwayDialog;
     mAwayDialog = 0;
@@ -1631,6 +1634,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mEnableAdvert = config.getBoolValue("enableAdvert");
     else if (value == "tradebot")
         mTradebot = config.getBoolValue("tradebot");
+    else if (value == "targetOnlyReachable")
+        mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
 }
 
 void LocalPlayer::processEvent(Mana::Channels channel,
@@ -3420,12 +3425,23 @@ int LocalPlayer::getPathLength(Being* being)
         return 1;
     }
 
-    Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
-        being->getTileX(), being->getTileY(),
-        getWalkMask(), 0);
-    return static_cast<int>(debugPath.size());
+    if (mTargetOnlyReachable)
+    {
+        Path debugPath = mMap->findPath(
+            static_cast<int>(playerPos.x - 16) / 32,
+            static_cast<int>(playerPos.y - 32) / 32,
+            being->getTileX(), being->getTileY(),
+            getWalkMask(), 0);
+        return static_cast<int>(debugPath.size());
+    }
+    else
+    {
+        const int dx = static_cast<int>(abs(being->mX - mX));
+        const int dy = static_cast<int>(abs(being->mY - mY));
+        if (dx > dy)
+            return dx;
+        return dy;
+    }
 }
 
 void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
