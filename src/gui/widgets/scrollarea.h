@@ -112,6 +112,10 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
          */
         void mouseExited(gcn::MouseEvent& event);
 
+        void mousePressed(gcn::MouseEvent& event);
+
+        void mouseReleased(gcn::MouseEvent& event);
+
         void widgetResized(const gcn::Event &event);
 
         void widgetMoved(const gcn::Event &event);
@@ -148,6 +152,7 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
         static Image *buttons[4][2];
 
         int mX, mY;
+        int mClickX, mClickY;
         bool mHasMouse;
         bool mOpaque;
         GraphicsVertexes *mVertexes;

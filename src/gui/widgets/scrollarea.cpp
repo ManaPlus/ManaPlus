@@ -47,6 +47,8 @@ ScrollArea::ScrollArea():
     gcn::ScrollArea(),
     mX(0),
     mY(0),
+    mClickX(0),
+    mClickY(0),
     mHasMouse(false),
     mOpaque(true),
     mVertexes(new GraphicsVertexes()),
@@ -64,6 +66,8 @@ ScrollArea::ScrollArea(gcn::Widget *widget):
     gcn::ScrollArea(widget),
     mX(0),
     mY(0),
+    mClickX(0),
+    mClickY(0),
     mHasMouse(false),
     mOpaque(true),
     mVertexes(new GraphicsVertexes()),
@@ -512,4 +516,57 @@ void ScrollArea::widgetResized(const gcn::Event &event A_UNUSED)
 void ScrollArea::widgetMoved(const gcn::Event& event A_UNUSED)
 {
     mRedraw = true;
+}
+
+void ScrollArea::mousePressed(gcn::MouseEvent& event)
+{
+    gcn::ScrollArea::mousePressed(event);
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        mClickX = event.getX();
+        mClickY = event.getY();
+    }
+}
+
+void ScrollArea::mouseReleased(gcn::MouseEvent& event)
+{
+    if (event.getButton() == gcn::MouseEvent::LEFT && mClickX && mClickY)
+    {
+        if (!event.isConsumed())
+        {
+            int dx = event.getX() - mClickX;
+            int dy = event.getY() - mClickY;
+
+            if ((dx < 10 && dx > 0) || (dx > -10 && dx < 0))
+                dx = 0;
+
+            if ((dy < 10 && dy > 0) || (dy > -10 && dy < 0))
+                dy = 0;
+
+            if (dx)
+            {
+                int s = getHorizontalScrollAmount() + dx;
+                if (s < 0)
+                    s = 0;
+                else if (s > getHorizontalMaxScroll())
+                    s = getHorizontalMaxScroll();
+
+                setHorizontalScrollAmount(s);
+            }
+            if (dy)
+            {
+                int s = getVerticalScrollAmount() + dy;
+                if (s < 0)
+                    s = 0;
+                else if (s > getVerticalMaxScroll())
+                    s = getVerticalMaxScroll();
+
+                setVerticalScrollAmount(s);
+            }
+            mClickX = 0;
+            mClickY = 0;
+            event.consume();
+        }
+    }
+    gcn::ScrollArea::mouseReleased(event);
 }
