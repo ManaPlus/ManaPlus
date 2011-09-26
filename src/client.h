@@ -136,6 +136,7 @@ enum PacketTypes
     PACKET_SIT = 7,
     PACKET_DIRECTION = 8,
     PACKET_ATTACK = 9,
+    PACKET_STOPATTACK = 10,
     PACKET_SIZE
 };
 

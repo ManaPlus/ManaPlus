@@ -1383,6 +1383,9 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
 
 void LocalPlayer::stopAttack()
 {
+    if (!Client::limitPackets(PACKET_STOPATTACK))
+        return;
+
     if (mServerAttack && mAction == ATTACK)
         Net::getPlayerHandler()->stopAttack();
 
