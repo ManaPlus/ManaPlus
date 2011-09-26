@@ -348,9 +348,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
                     return being;
                 }
                 else if (!noBeing && (being->getPixelX() - 32 <= x) &&
-                          (being->getPixelX() + 32 > x) &&
-                          (being->getPixelY() - 64 <= y) &&
-                          (being->getPixelY() + 16 > y))
+                         (being->getPixelX() + 32 > x) &&
+                         (being->getPixelY() - 64 <= y) &&
+                         (being->getPixelY() + 16 > y))
                 {
                     if (tempBeing)
                         noBeing = true;
