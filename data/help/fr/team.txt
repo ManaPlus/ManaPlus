@@ -18,6 +18,7 @@
 ##9Bernard Hugonnet (Nard) <>                                 (fr)
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>        (nl_BE)
 ##9Mihail Barer (Necromonger) <>                              (ru)
+##9Petr Varkoček (pitriss) <>                                 (cs)
 ##9Sini Ruohomaa (Byakushin) <sini.ruohomaa iki fi>           (fi)
 ##9Yohann Ferreira (Bertram) <bertram cegetel net>            (fr)
 ##9Antoine Ruck (Jumpy) <antoinebcn hotmail com>              (fr,es)
