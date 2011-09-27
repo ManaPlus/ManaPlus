@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-09-17 16:12+0300\n"
-"PO-Revision-Date: 2011-09-16 20:12+0000\n"
+"POT-Creation-Date: 2011-09-27 22:18+0300\n"
+"PO-Revision-Date: 2011-09-27 19:20+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -19,25 +19,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: src/actorspritemanager.cpp:1088
+#: src/actorspritemanager.cpp:1133
 msgid "Visible on map"
 msgstr "Näkyvillä kartalla"
 
-#: src/being.cpp:548
+#: src/being.cpp:547
 msgid "dodge"
 msgstr "väistö"
 
-#: src/being.cpp:548
+#: src/being.cpp:547
 msgid "miss"
 msgstr "huti"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1527
+#: src/being.cpp:1526
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1532
+#: src/being.cpp:1531
 msgid "I"
 msgstr ""
 
@@ -45,43 +45,43 @@ msgstr ""
 msgid "Setup"
 msgstr "Asetukset"
 
-#: src/client.cpp:841 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:842 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr ""
 
-#: src/client.cpp:846 src/gui/setup_video.cpp:315
+#: src/client.cpp:847 src/gui/setup_video.cpp:315
 msgid "Video"
 msgstr "Kuva"
 
-#: src/client.cpp:851
+#: src/client.cpp:852
 msgid "Themes"
 msgstr ""
 
-#: src/client.cpp:932
+#: src/client.cpp:934
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
-#: src/client.cpp:963
+#: src/client.cpp:965
 msgid "Logging in"
 msgstr "Kirjaudun sisään"
 
-#: src/client.cpp:996
+#: src/client.cpp:998
 msgid "Entering game world"
 msgstr "Siirryn pelimaailmaan"
 
-#: src/client.cpp:1096
+#: src/client.cpp:1098
 msgid "Requesting characters"
 msgstr "Pyydän hahmoja"
 
-#: src/client.cpp:1127
+#: src/client.cpp:1129
 msgid "Connecting to the game server"
 msgstr "Yhdistän pelipalvelimeen"
 
-#: src/client.cpp:1137
+#: src/client.cpp:1139
 msgid "Changing game servers"
 msgstr "Vaihdan pelipalvelinta"
 
-#: src/client.cpp:1180 src/client.cpp:1187 src/client.cpp:1321
+#: src/client.cpp:1182 src/client.cpp:1189 src/client.cpp:1323
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:221 src/gui/charselectdialog.cpp:253
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:401
@@ -91,50 +91,50 @@ msgstr "Vaihdan pelipalvelinta"
 msgid "Error"
 msgstr "Virhe"
 
-#: src/client.cpp:1196
+#: src/client.cpp:1198
 msgid "Requesting registration details"
 msgstr "Pyydän rekisteröitymisen yksityiskohtia"
 
-#: src/client.cpp:1222
+#: src/client.cpp:1224
 msgid "Password Change"
 msgstr "Salasanan vaihto"
 
-#: src/client.cpp:1223
+#: src/client.cpp:1225
 msgid "Password changed successfully!"
 msgstr "Salasana vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1242
+#: src/client.cpp:1244
 msgid "Email Change"
 msgstr "Sähköpostin vaihto"
 
-#: src/client.cpp:1243
+#: src/client.cpp:1245
 msgid "Email changed successfully!"
 msgstr "Sähköpostiosoite vaihdettu onnistuneesti!"
 
-#: src/client.cpp:1263
+#: src/client.cpp:1265
 msgid "Unregister Successful"
 msgstr "Tietojen poisto onnistui"
 
-#: src/client.cpp:1264
+#: src/client.cpp:1266
 msgid "Farewell, come back any time..."
 msgstr "Näkemisiin, tule pian takaisin..."
 
-#: src/client.cpp:1463 src/client.cpp:1493 src/client.cpp:1508
-#: src/client.cpp:1933 src/client.cpp:1940
+#: src/client.cpp:1465 src/client.cpp:1495 src/client.cpp:1510
+#: src/client.cpp:1935 src/client.cpp:1942
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s ei ole olemassa eikä sitä voi luoda! Poistun."
 
-#: src/client.cpp:1639
+#: src/client.cpp:1641
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Epäkelpo päivitysosoite: %s"
 
-#: src/client.cpp:1673 src/client.cpp:1679
+#: src/client.cpp:1675 src/client.cpp:1681
 msgid "Error creating updates directory!"
 msgstr "Päivityshakemistoa luodessa tapahtui virhe!"
 
-#: src/client.cpp:1700
+#: src/client.cpp:1702
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Virhe: %s ei ole olemassa eikä sitä voi luoda! Poistun."
@@ -344,11 +344,11 @@ msgstr "Et huomioi kaupankäyntipyyntöjä"
 msgid "Accepting incoming trade requests"
 msgstr "Hyväksyt kaupankäyntipyynnöt"
 
-#: src/game.cpp:1729
+#: src/game.cpp:1727
 msgid "Could Not Load Map"
 msgstr "Kartan lataaminen epäonnistui"
 
-#: src/game.cpp:1730
+#: src/game.cpp:1728
 #, c-format
 msgid "Error while loading %s"
 msgstr "Kohdetta %s ladattaessa tapahtui virhe."
@@ -383,7 +383,7 @@ msgstr "Nimi"
 
 #: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:133
 #: src/gui/popupmenu.cpp:283 src/gui/popupmenu.cpp:596
-#: src/keyboardconfig.cpp:48 src/net/tmwa/generalhandler.cpp:265
+#: src/keyboardconfig.cpp:49 src/net/tmwa/generalhandler.cpp:265
 msgid "Attack"
 msgstr "Hyökkää"
 
@@ -437,7 +437,7 @@ msgstr "-"
 #: src/gui/buydialog.cpp:99 src/gui/quitdialog.cpp:47
 #: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
 #: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:294
-#: src/keyboardconfig.cpp:290
+#: src/keyboardconfig.cpp:82
 msgid "Quit"
 msgstr "Sulje"
 
@@ -472,7 +472,7 @@ msgstr "Myy"
 #: src/gui/popupmenu.cpp:1858 src/gui/popupmenu.cpp:1897
 #: src/gui/popupmenu.cpp:1949 src/gui/popupmenu.cpp:1969
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:82 src/gui/setup.cpp:72
-#: src/gui/socialwindow.cpp:1077 src/gui/textcommandeditor.cpp:238
+#: src/gui/socialwindow.cpp:1077 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updaterwindow.cpp:161
 msgid "Cancel"
@@ -641,8 +641,8 @@ msgid "Enter password:"
 msgstr "Salasana:"
 
 #: src/gui/charselectdialog.cpp:410 src/gui/serverdialog.cpp:298
-#: src/gui/setup_relations.cpp:243 src/gui/shopwindow.cpp:122
-#: src/gui/shopwindow.cpp:125 src/gui/textcommandeditor.cpp:241
+#: src/gui/setup_relations.cpp:242 src/gui/shopwindow.cpp:122
+#: src/gui/shopwindow.cpp:125 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Poista"
 
@@ -894,7 +894,7 @@ msgid "Did You Know?"
 msgstr ""
 
 #: src/gui/didyouknowwindow.cpp:63 src/gui/helpwindow.cpp:59
-#: src/gui/inventorywindow.cpp:206 src/gui/npcdialog.cpp:53
+#: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:53
 #: src/gui/popupmenu.cpp:556 src/gui/shopwindow.cpp:113
 msgid "Close"
 msgstr "Sulje"
@@ -921,7 +921,7 @@ msgid "Equipment"
 msgstr "Varusteet"
 
 #: src/gui/equipmentwindow.cpp:95 src/gui/inventorywindow.cpp:160
-#: src/gui/inventorywindow.cpp:539 src/gui/inventorywindow.cpp:548
+#: src/gui/inventorywindow.cpp:538 src/gui/inventorywindow.cpp:547
 #: src/gui/popupmenu.cpp:1656 src/gui/popupmenu.cpp:1748
 #: src/gui/popupmenu.cpp:1793
 msgid "Unequip"
@@ -951,37 +951,33 @@ msgstr ""
 msgid "by type"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:111 src/gui/windowmenu.cpp:76
+#: src/gui/inventorywindow.cpp:112 src/gui/windowmenu.cpp:76
 #: src/inventory.cpp:249
 msgid "Inventory"
 msgstr "Tavarat"
 
-#: src/gui/inventorywindow.cpp:136
+#: src/gui/inventorywindow.cpp:137
 msgid "Slots:"
 msgstr "Paikkoja:"
 
-#: src/gui/inventorywindow.cpp:148
+#: src/gui/inventorywindow.cpp:149
 msgid "Filter:"
 msgstr "Suodin:"
 
-#: src/gui/inventorywindow.cpp:149
-msgid "Sort:"
-msgstr "Järj.:"
-
-#: src/gui/inventorywindow.cpp:158 src/gui/inventorywindow.cpp:541
-#: src/gui/inventorywindow.cpp:550 src/gui/popupmenu.cpp:1658
+#: src/gui/inventorywindow.cpp:158 src/gui/inventorywindow.cpp:540
+#: src/gui/inventorywindow.cpp:549 src/gui/popupmenu.cpp:1658
 #: src/gui/popupmenu.cpp:1750 src/gui/popupmenu.cpp:1795
 msgid "Equip"
 msgstr "Ota käyttöön"
 
-#: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:542
-#: src/gui/inventorywindow.cpp:546 src/gui/popupmenu.cpp:1662
+#: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:541
+#: src/gui/inventorywindow.cpp:545 src/gui/popupmenu.cpp:1662
 #: src/gui/popupmenu.cpp:1717 src/gui/popupmenu.cpp:1754
 #: src/gui/popupmenu.cpp:1799
 msgid "Use"
 msgstr "Käytä"
 
-#: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:646
+#: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:645
 #: src/gui/popupmenu.cpp:1667 src/gui/popupmenu.cpp:1759
 #: src/gui/popupmenu.cpp:1804
 msgid "Drop..."
@@ -1001,17 +997,17 @@ msgstr "Asukokonaisuudet"
 msgid "Weight:"
 msgstr "Paino:"
 
-#: src/gui/inventorywindow.cpp:204 src/gui/inventorywindow.cpp:637
+#: src/gui/inventorywindow.cpp:203 src/gui/inventorywindow.cpp:636
 #: src/gui/popupmenu.cpp:1642 src/gui/popupmenu.cpp:1771
 #: src/gui/popupmenu.cpp:1816 src/gui/setup.cpp:73
 msgid "Store"
 msgstr "Varastoi"
 
-#: src/gui/inventorywindow.cpp:205 src/gui/popupmenu.cpp:1683
+#: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1683
 msgid "Retrieve"
 msgstr "Ota"
 
-#: src/gui/inventorywindow.cpp:648 src/gui/popupmenu.cpp:1672
+#: src/gui/inventorywindow.cpp:647 src/gui/popupmenu.cpp:1672
 #: src/gui/popupmenu.cpp:1764 src/gui/popupmenu.cpp:1809
 #: src/gui/windowmenu.cpp:97
 msgid "Drop"
@@ -2204,30 +2200,34 @@ msgid "Show own name"
 msgstr "Näytä oma nimi"
 
 #: src/gui/setup_players.cpp:63
+msgid "Enable extended mouse targeting"
+msgstr ""
+
+#: src/gui/setup_players.cpp:66
 msgid "Target dead players"
 msgstr "Ota kuolleetkin pelaajat kohteiksi"
 
-#: src/gui/setup_players.cpp:66
+#: src/gui/setup_players.cpp:69
 msgid "Visible names"
 msgstr "Näytä nimet"
 
-#: src/gui/setup_players.cpp:69
+#: src/gui/setup_players.cpp:72
 msgid "Secure trades"
 msgstr "Turvaa kaupat"
 
-#: src/gui/setup_players.cpp:72
+#: src/gui/setup_players.cpp:75
 msgid "Unsecure chars in names"
 msgstr ""
 
-#: src/gui/setup_players.cpp:75
+#: src/gui/setup_players.cpp:78
 msgid "Show statuses"
 msgstr ""
 
-#: src/gui/setup_players.cpp:78
+#: src/gui/setup_players.cpp:81
 msgid "Show ip addresses on screenshots"
 msgstr ""
 
-#: src/gui/setup_players.cpp:81
+#: src/gui/setup_players.cpp:84
 msgid "Allow self heal with mouse click"
 msgstr ""
 
@@ -2255,23 +2255,23 @@ msgstr "Huomiotta jätetty"
 msgid "Erased"
 msgstr "Pyyhitty"
 
-#: src/gui/setup_relations.cpp:239
+#: src/gui/setup_relations.cpp:238
 msgid "Allow trading"
 msgstr "Salli kaupakäynti"
 
-#: src/gui/setup_relations.cpp:241
+#: src/gui/setup_relations.cpp:240
 msgid "Allow whispers"
 msgstr "Salli kuiskaukset"
 
-#: src/gui/setup_relations.cpp:244
+#: src/gui/setup_relations.cpp:243
 msgid "Old"
 msgstr "Vanha"
 
-#: src/gui/setup_relations.cpp:246
+#: src/gui/setup_relations.cpp:245
 msgid "Relations"
 msgstr ""
 
-#: src/gui/setup_relations.cpp:271
+#: src/gui/setup_relations.cpp:270
 msgid "When ignoring:"
 msgstr "Kun jätät huomiotta:"
 
@@ -3239,30 +3239,34 @@ msgid "Command:"
 msgstr "Komento:"
 
 #: src/gui/textcommandeditor.cpp:200
+msgid "Comment:"
+msgstr ""
+
+#: src/gui/textcommandeditor.cpp:203
 msgid "Mana:"
 msgstr "Mana:"
 
-#: src/gui/textcommandeditor.cpp:206
+#: src/gui/textcommandeditor.cpp:209
 msgid "Target Type:"
 msgstr "Kohdetyyppi:"
 
-#: src/gui/textcommandeditor.cpp:212
+#: src/gui/textcommandeditor.cpp:215
 msgid "Icon:"
 msgstr "Kuvake:"
 
-#: src/gui/textcommandeditor.cpp:218
+#: src/gui/textcommandeditor.cpp:221
 msgid "Magic level:"
 msgstr "Magiataso:"
 
-#: src/gui/textcommandeditor.cpp:224
+#: src/gui/textcommandeditor.cpp:227
 msgid "Magic School:"
 msgstr "Magian koulukunta:"
 
-#: src/gui/textcommandeditor.cpp:230
+#: src/gui/textcommandeditor.cpp:233
 msgid "School level:"
 msgstr "Koulukunnan taso:"
 
-#: src/gui/textcommandeditor.cpp:235
+#: src/gui/textcommandeditor.cpp:238
 msgid "Save"
 msgstr "Tallenna"
 
@@ -3490,23 +3494,23 @@ msgstr "Kotipaikan raja"
 msgid "Road Point"
 msgstr "Väyläpiste"
 
-#: src/gui/whoisonline.cpp:81 src/gui/whoisonline.cpp:474
+#: src/gui/whoisonline.cpp:85 src/gui/whoisonline.cpp:478
 msgid "Who Is Online - Updating"
 msgstr "Kuka on linjoila - päivitän"
 
-#: src/gui/whoisonline.cpp:104
+#: src/gui/whoisonline.cpp:108
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/gui/whoisonline.cpp:297
+#: src/gui/whoisonline.cpp:301
 msgid "Who Is Online - "
 msgstr "Kuka on linjoilla - "
 
-#: src/gui/whoisonline.cpp:488
+#: src/gui/whoisonline.cpp:492
 msgid "Who Is Online - error"
 msgstr "Kuka on linjoilla - virhe"
 
-#: src/gui/whoisonline.cpp:519
+#: src/gui/whoisonline.cpp:523
 msgid "Who Is Online - Update"
 msgstr "Kuka on linjoilla - päivitä"
 
@@ -3791,48 +3795,48 @@ msgid "Cart"
 msgstr "Kärry"
 
 #: src/keyboardconfig.cpp:43
+msgid "Basic Keys"
+msgstr ""
+
+#: src/keyboardconfig.cpp:44
 msgid "Move Up"
 msgstr "Ylöspäin"
 
-#: src/keyboardconfig.cpp:44
+#: src/keyboardconfig.cpp:45
 msgid "Move Down"
 msgstr "Alaspäin"
 
-#: src/keyboardconfig.cpp:45
+#: src/keyboardconfig.cpp:46
 msgid "Move Left"
 msgstr "Vasemmalle"
 
-#: src/keyboardconfig.cpp:46
+#: src/keyboardconfig.cpp:47
 msgid "Move Right"
 msgstr "Oikealle"
 
-#: src/keyboardconfig.cpp:49
+#: src/keyboardconfig.cpp:50
 msgid "Target & Attack"
 msgstr "Kohdista ja hyökkää"
 
-#: src/keyboardconfig.cpp:51
+#: src/keyboardconfig.cpp:52
 msgid "Move to Target"
 msgstr "Mene kohteen luo"
 
-#: src/keyboardconfig.cpp:53
+#: src/keyboardconfig.cpp:54
 msgid "Change Move to Target type"
 msgstr "Muuta kohteen luo liikkumisen tyyppiä"
 
-#: src/keyboardconfig.cpp:55
+#: src/keyboardconfig.cpp:56
 msgid "Move to Home location"
 msgstr "Siirry kotipaikkaan"
 
-#: src/keyboardconfig.cpp:57
+#: src/keyboardconfig.cpp:58
 msgid "Set home location"
 msgstr "Aseta kotipaikka"
 
-#: src/keyboardconfig.cpp:59
+#: src/keyboardconfig.cpp:60
 msgid "Move to navigation point"
 msgstr "Siirry reittipisteeseen"
-
-#: src/keyboardconfig.cpp:61
-msgid "Smilie"
-msgstr "Hymiö"
 
 #: src/keyboardconfig.cpp:63
 msgid "Stop Attack"
@@ -3879,300 +3883,328 @@ msgid "Change Map View Mode"
 msgstr "Vaihda karttanäkymää"
 
 #: src/keyboardconfig.cpp:80
+msgid "Select OK"
+msgstr "Valitse OK"
+
+#: src/keyboardconfig.cpp:83
+msgid "Shortcuts Keys"
+msgstr ""
+
+#: src/keyboardconfig.cpp:84
 msgid "Item Shortcuts Key"
 msgstr "Tavaroiden pikavalintanäppäin"
 
-#: src/keyboardconfig.cpp:82 src/keyboardconfig.cpp:84
 #: src/keyboardconfig.cpp:86 src/keyboardconfig.cpp:88
 #: src/keyboardconfig.cpp:90 src/keyboardconfig.cpp:92
 #: src/keyboardconfig.cpp:94 src/keyboardconfig.cpp:96
 #: src/keyboardconfig.cpp:98 src/keyboardconfig.cpp:100
 #: src/keyboardconfig.cpp:102 src/keyboardconfig.cpp:104
 #: src/keyboardconfig.cpp:106 src/keyboardconfig.cpp:108
-#: src/keyboardconfig.cpp:110 src/keyboardconfig.cpp:113
-#: src/keyboardconfig.cpp:115 src/keyboardconfig.cpp:117
+#: src/keyboardconfig.cpp:110 src/keyboardconfig.cpp:112
+#: src/keyboardconfig.cpp:114 src/keyboardconfig.cpp:117
 #: src/keyboardconfig.cpp:119 src/keyboardconfig.cpp:121
-#: src/keyboardconfig.cpp:360
+#: src/keyboardconfig.cpp:123 src/keyboardconfig.cpp:125
+#: src/keyboardconfig.cpp:367
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Tavarapikavalinta %d"
 
-#: src/keyboardconfig.cpp:122
+#: src/keyboardconfig.cpp:126
+msgid "Windows Keys"
+msgstr ""
+
+#: src/keyboardconfig.cpp:127
 msgid "Help Window"
 msgstr "Ohjeikkuna"
 
-#: src/keyboardconfig.cpp:124
+#: src/keyboardconfig.cpp:129
 msgid "Status Window"
 msgstr "Tilaikkuna"
 
-#: src/keyboardconfig.cpp:126
+#: src/keyboardconfig.cpp:131
 msgid "Inventory Window"
 msgstr "Tavaraikkuna"
 
-#: src/keyboardconfig.cpp:128
+#: src/keyboardconfig.cpp:133
 msgid "Equipment Window"
 msgstr "Varusteikkuna"
 
-#: src/keyboardconfig.cpp:130
+#: src/keyboardconfig.cpp:135
 msgid "Skill Window"
 msgstr "Taitoikkuna"
 
-#: src/keyboardconfig.cpp:132
+#: src/keyboardconfig.cpp:137
 msgid "Minimap Window"
 msgstr "Karttaikkuna"
 
-#: src/keyboardconfig.cpp:134
+#: src/keyboardconfig.cpp:139
 msgid "Chat Window"
 msgstr "Keskusteluikkuna"
 
-#: src/keyboardconfig.cpp:136
+#: src/keyboardconfig.cpp:141
 msgid "Item Shortcut Window"
 msgstr "Tavaroiden pikavalintaikkuna"
 
-#: src/keyboardconfig.cpp:138
+#: src/keyboardconfig.cpp:143
 msgid "Setup Window"
 msgstr "Asetusikkuna"
 
-#: src/keyboardconfig.cpp:140
+#: src/keyboardconfig.cpp:145
 msgid "Debug Window"
 msgstr "Debug-ikkuna"
 
-#: src/keyboardconfig.cpp:142
+#: src/keyboardconfig.cpp:147
 msgid "Social Window"
 msgstr "Suhdeikkuna"
 
-#: src/keyboardconfig.cpp:144
+#: src/keyboardconfig.cpp:149
 msgid "Emote Shortcut Window"
 msgstr "Eleiden pikavalintaikkuna"
 
-#: src/keyboardconfig.cpp:146
+#: src/keyboardconfig.cpp:151
 msgid "Outfits Window"
 msgstr "Asukokonaisuusikkuna"
 
-#: src/keyboardconfig.cpp:148
+#: src/keyboardconfig.cpp:153
 msgid "Shop Window"
 msgstr "Kauppaikkuna"
 
-#: src/keyboardconfig.cpp:150
+#: src/keyboardconfig.cpp:155
 msgid "Quick drop Window"
 msgstr "Pikapudotusikkuna"
 
-#: src/keyboardconfig.cpp:152
+#: src/keyboardconfig.cpp:157
 msgid "Kill Stats Window"
 msgstr "Tappotilastoikkuna"
 
-#: src/keyboardconfig.cpp:154
+#: src/keyboardconfig.cpp:159
 msgid "Commands Window"
 msgstr "Komentoikkuna"
 
-#: src/keyboardconfig.cpp:156
+#: src/keyboardconfig.cpp:161
 msgid "Bot Checker Window"
 msgstr "Bottitutkaikkuna"
 
-#: src/keyboardconfig.cpp:159
+#: src/keyboardconfig.cpp:164
 msgid "Who Is Online Window"
 msgstr "Kuka on linjoilla -ikkuna"
 
-#: src/keyboardconfig.cpp:161
+#: src/keyboardconfig.cpp:166
 msgid "Did you know Window"
 msgstr ""
 
-#: src/keyboardconfig.cpp:164
+#: src/keyboardconfig.cpp:169
 msgid "Previous Social Tab"
 msgstr "Edellinen sos. välilehti"
 
-#: src/keyboardconfig.cpp:166
+#: src/keyboardconfig.cpp:171
 msgid "Next Social Tab"
 msgstr "Seuraava sos. välilehti"
 
-#: src/keyboardconfig.cpp:168 src/keyboardconfig.cpp:170
-#: src/keyboardconfig.cpp:172 src/keyboardconfig.cpp:174
-#: src/keyboardconfig.cpp:176 src/keyboardconfig.cpp:178
-#: src/keyboardconfig.cpp:180 src/keyboardconfig.cpp:182
-#: src/keyboardconfig.cpp:184 src/keyboardconfig.cpp:186
-#: src/keyboardconfig.cpp:188 src/keyboardconfig.cpp:190
-#: src/keyboardconfig.cpp:193 src/keyboardconfig.cpp:195
-#: src/keyboardconfig.cpp:197 src/keyboardconfig.cpp:199
-#: src/keyboardconfig.cpp:201 src/keyboardconfig.cpp:203
-#: src/keyboardconfig.cpp:205 src/keyboardconfig.cpp:207
-#: src/keyboardconfig.cpp:209 src/keyboardconfig.cpp:211
-#: src/keyboardconfig.cpp:213 src/keyboardconfig.cpp:215
-#: src/keyboardconfig.cpp:217 src/keyboardconfig.cpp:220
-#: src/keyboardconfig.cpp:223 src/keyboardconfig.cpp:226
-#: src/keyboardconfig.cpp:228 src/keyboardconfig.cpp:230
-#: src/keyboardconfig.cpp:232 src/keyboardconfig.cpp:234
-#: src/keyboardconfig.cpp:236 src/keyboardconfig.cpp:238
-#: src/keyboardconfig.cpp:240 src/keyboardconfig.cpp:242
-#: src/keyboardconfig.cpp:244 src/keyboardconfig.cpp:247
-#: src/keyboardconfig.cpp:249 src/keyboardconfig.cpp:251
-#: src/keyboardconfig.cpp:253 src/keyboardconfig.cpp:255
-#: src/keyboardconfig.cpp:257 src/keyboardconfig.cpp:259
-#: src/keyboardconfig.cpp:355
+#: src/keyboardconfig.cpp:173
+msgid "Emotes Keys"
+msgstr ""
+
+#: src/keyboardconfig.cpp:174
+msgid "Smilie"
+msgstr "Hymiö"
+
+#: src/keyboardconfig.cpp:175 src/keyboardconfig.cpp:177
+#: src/keyboardconfig.cpp:179 src/keyboardconfig.cpp:181
+#: src/keyboardconfig.cpp:183 src/keyboardconfig.cpp:185
+#: src/keyboardconfig.cpp:187 src/keyboardconfig.cpp:189
+#: src/keyboardconfig.cpp:191 src/keyboardconfig.cpp:193
+#: src/keyboardconfig.cpp:195 src/keyboardconfig.cpp:197
+#: src/keyboardconfig.cpp:200 src/keyboardconfig.cpp:202
+#: src/keyboardconfig.cpp:204 src/keyboardconfig.cpp:206
+#: src/keyboardconfig.cpp:208 src/keyboardconfig.cpp:210
+#: src/keyboardconfig.cpp:212 src/keyboardconfig.cpp:214
+#: src/keyboardconfig.cpp:216 src/keyboardconfig.cpp:218
+#: src/keyboardconfig.cpp:220 src/keyboardconfig.cpp:222
+#: src/keyboardconfig.cpp:224 src/keyboardconfig.cpp:227
+#: src/keyboardconfig.cpp:230 src/keyboardconfig.cpp:233
+#: src/keyboardconfig.cpp:235 src/keyboardconfig.cpp:237
+#: src/keyboardconfig.cpp:239 src/keyboardconfig.cpp:241
+#: src/keyboardconfig.cpp:243 src/keyboardconfig.cpp:245
+#: src/keyboardconfig.cpp:247 src/keyboardconfig.cpp:249
+#: src/keyboardconfig.cpp:251 src/keyboardconfig.cpp:254
+#: src/keyboardconfig.cpp:256 src/keyboardconfig.cpp:258
+#: src/keyboardconfig.cpp:260 src/keyboardconfig.cpp:262
+#: src/keyboardconfig.cpp:264 src/keyboardconfig.cpp:266
+#: src/keyboardconfig.cpp:362
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Eleen pikavalinta %d"
 
-#: src/keyboardconfig.cpp:261
+#: src/keyboardconfig.cpp:268
+msgid "Outfits Keys"
+msgstr ""
+
+#: src/keyboardconfig.cpp:269
 msgid "Wear Outfit"
 msgstr "Pue asu"
 
-#: src/keyboardconfig.cpp:263
+#: src/keyboardconfig.cpp:271
 msgid "Copy Outfit"
 msgstr "Kopioi asu"
 
-#: src/keyboardconfig.cpp:265
+#: src/keyboardconfig.cpp:273
 msgid "Copy equipped to Outfit"
 msgstr "Kopioi varusteet asuksi"
 
-#: src/keyboardconfig.cpp:267
+#: src/keyboardconfig.cpp:275
+msgid "Chat Keys"
+msgstr ""
+
+#: src/keyboardconfig.cpp:276
 msgid "Toggle Chat"
 msgstr "Ota keskustelu käyttöön/pois käytöstä"
 
-#: src/keyboardconfig.cpp:269
+#: src/keyboardconfig.cpp:278
 msgid "Scroll Chat Up"
 msgstr "Vieritä keskustelua ylös"
 
-#: src/keyboardconfig.cpp:271
+#: src/keyboardconfig.cpp:280
 msgid "Scroll Chat Down"
 msgstr "Vieritä keskustelua alas"
 
-#: src/keyboardconfig.cpp:273
+#: src/keyboardconfig.cpp:282
 msgid "Previous Chat Tab"
 msgstr "Edellinen keskusteluvälilehti"
 
-#: src/keyboardconfig.cpp:275
+#: src/keyboardconfig.cpp:284
 msgid "Next Chat Tab"
 msgstr "Seuraava keskusteluvälilehti"
 
-#: src/keyboardconfig.cpp:278
+#: src/keyboardconfig.cpp:287
 msgid "Close current Chat Tab"
 msgstr ""
 
-#: src/keyboardconfig.cpp:280
+#: src/keyboardconfig.cpp:289
 msgid "Previous chat line"
 msgstr "Edellinen keskustelulinja"
 
-#: src/keyboardconfig.cpp:282
+#: src/keyboardconfig.cpp:291
 msgid "Next chat line"
 msgstr "Seuraava keskustelulinja"
 
-#: src/keyboardconfig.cpp:284
+#: src/keyboardconfig.cpp:293
 msgid "Chat Auto Complete"
 msgstr "Sarkaintäydennys keskustelussa"
 
-#: src/keyboardconfig.cpp:286
+#: src/keyboardconfig.cpp:295
 msgid "Deactivate Chat Input"
 msgstr "Poistu keskustelusyötöstä"
 
-#: src/keyboardconfig.cpp:288
-msgid "Select OK"
-msgstr "Valitse OK"
+#: src/keyboardconfig.cpp:297
+msgid "Other Keys"
+msgstr ""
 
-#: src/keyboardconfig.cpp:291
+#: src/keyboardconfig.cpp:298
 msgid "Ignore input 1"
 msgstr "Jätä huomiotta syöte 1"
 
-#: src/keyboardconfig.cpp:293
+#: src/keyboardconfig.cpp:300
 msgid "Ignore input 2"
 msgstr "Jätä huomiotta syöte 2"
 
-#: src/keyboardconfig.cpp:295
+#: src/keyboardconfig.cpp:302
 msgid "Direct Up"
 msgstr "Vie ylös"
 
-#: src/keyboardconfig.cpp:296
+#: src/keyboardconfig.cpp:303
 msgid "Direct Down"
 msgstr "Vie alas"
 
-#: src/keyboardconfig.cpp:298
+#: src/keyboardconfig.cpp:305
 msgid "Direct Left"
 msgstr "Vie vasemmalle"
 
-#: src/keyboardconfig.cpp:299
+#: src/keyboardconfig.cpp:306
 msgid "Direct Right"
 msgstr "Vie oikealle"
 
-#: src/keyboardconfig.cpp:301
+#: src/keyboardconfig.cpp:308
 msgid "Crazy moves"
 msgstr "Villiliikkeet"
 
-#: src/keyboardconfig.cpp:303
+#: src/keyboardconfig.cpp:310
 msgid "Change Crazy Move mode"
 msgstr "Muuta villiliiketilaa"
 
-#: src/keyboardconfig.cpp:305
+#: src/keyboardconfig.cpp:312
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Pudota nopeasti N esinettä paikasta 0"
 
-#: src/keyboardconfig.cpp:307
+#: src/keyboardconfig.cpp:314
 msgid "Quick Drop N Items"
 msgstr "Pudota nopeasti N esinettä"
 
-#: src/keyboardconfig.cpp:309
+#: src/keyboardconfig.cpp:316
 msgid "Switch Quick Drop Counter"
 msgstr "Vaihda nopean pudotuksen laskuria"
 
-#: src/keyboardconfig.cpp:311
+#: src/keyboardconfig.cpp:318
 msgid "Quick heal target or self"
 msgstr "Pikaparanna kohde tai itse"
 
-#: src/keyboardconfig.cpp:313
+#: src/keyboardconfig.cpp:320
 msgid "Use #itenplz spell"
 msgstr "Käytä #itenplz-loitsua"
 
-#: src/keyboardconfig.cpp:315
+#: src/keyboardconfig.cpp:322
 msgid "Use magic attack"
 msgstr "Käytä magiahyökkäystä"
 
-#: src/keyboardconfig.cpp:317
+#: src/keyboardconfig.cpp:324
 msgid "Switch magic attack"
 msgstr "Vaihda magiahyökkäystä"
 
-#: src/keyboardconfig.cpp:319
+#: src/keyboardconfig.cpp:326
 msgid "Change move type"
 msgstr "Vaihda liikkumistyyppiä"
 
-#: src/keyboardconfig.cpp:321
+#: src/keyboardconfig.cpp:328
 msgid "Change Attack Weapon Type"
 msgstr "Vaihda hyökkäysaseen tyyppiä"
 
-#: src/keyboardconfig.cpp:323
+#: src/keyboardconfig.cpp:330
 msgid "Change Attack Type"
 msgstr "Vaihda hyökkäystyyppiä"
 
-#: src/keyboardconfig.cpp:325
+#: src/keyboardconfig.cpp:332
 msgid "Change Follow mode"
 msgstr "Vaihda seuraustyyliä"
 
-#: src/keyboardconfig.cpp:327
+#: src/keyboardconfig.cpp:334
 msgid "Change Imitation mode"
 msgstr "Vaihda matkintatyyliä"
 
-#: src/keyboardconfig.cpp:330
+#: src/keyboardconfig.cpp:337
 msgid "Disable / Enable Game modifier keys"
 msgstr "Ota käyttöön / poista pelimuokkaimet"
 
-#: src/keyboardconfig.cpp:331
+#: src/keyboardconfig.cpp:338
 msgid "On / Off audio"
 msgstr "Äänet päälle / pois"
 
-#: src/keyboardconfig.cpp:333
+#: src/keyboardconfig.cpp:340
 msgid "Enable / Disable away mode"
 msgstr "Aseta / peru poissaolo"
 
-#: src/keyboardconfig.cpp:335
+#: src/keyboardconfig.cpp:342
 msgid "Emulate right click from keyboard"
 msgstr "Kontekstivalikkoon \"klikkaus\" näppäimistöltä"
 
-#: src/keyboardconfig.cpp:337
+#: src/keyboardconfig.cpp:344
 msgid "Toggle camera mode"
 msgstr "Vaihda kameran toimintaa"
 
-#: src/keyboardconfig.cpp:339
+#: src/keyboardconfig.cpp:346
 msgid "Modifier key"
 msgstr ""
 
-#: src/keyboardconfig.cpp:411
+#: src/keyboardconfig.cpp:425
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -4181,68 +4213,68 @@ msgstr ""
 "Päällekkäiset näppäinoikotiet \"%s\" ja \"%s\" voivat aiheuttaa outouksia; "
 "ole hyvä ja poista päällekkäisyydet. "
 
-#: src/localplayer.cpp:377
+#: src/localplayer.cpp:380
 msgid "You were killed by "
 msgstr "Sinut otti hengiltä "
 
-#: src/localplayer.cpp:1416
+#: src/localplayer.cpp:1422
 msgid "Tried to pick up nonexistent item."
 msgstr "Yritit nostaa olemattoman tavaran."
 
-#: src/localplayer.cpp:1418
+#: src/localplayer.cpp:1424
 msgid "Item is too heavy."
 msgstr "Tavara on liian painava."
 
-#: src/localplayer.cpp:1420
+#: src/localplayer.cpp:1426
 msgid "Item is too far away."
 msgstr "Tavara on liian kaukana."
 
-#: src/localplayer.cpp:1422
+#: src/localplayer.cpp:1428
 msgid "Inventory is full."
 msgstr "Sinulla on liikaa tavaraa ennestään."
 
-#: src/localplayer.cpp:1424
+#: src/localplayer.cpp:1430
 msgid "Stack is too big."
 msgstr "Kasa on liian suuri."
 
-#: src/localplayer.cpp:1427
+#: src/localplayer.cpp:1433
 msgid "Item belongs to someone else."
 msgstr "Tavara kuuluu jollekulle muulle."
 
-#: src/localplayer.cpp:1430
+#: src/localplayer.cpp:1436
 msgid "Unknown problem picking up item."
 msgstr "Tuntematon ongelma esti tavaran nostamisen."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1454
+#: src/localplayer.cpp:1460
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
 msgstr[1] "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
 
-#: src/localplayer.cpp:3168
+#: src/localplayer.cpp:3174
 msgid "Away"
 msgstr "Poissa"
 
-#: src/localplayer.cpp:3468
+#: src/localplayer.cpp:3494
 msgid "Follow: "
 msgstr "Seuraa: "
 
-#: src/localplayer.cpp:3470 src/localplayer.cpp:3485
+#: src/localplayer.cpp:3496 src/localplayer.cpp:3511
 msgid "Follow canceled"
 msgstr "Seuraaminen keskeytetty"
 
-#: src/localplayer.cpp:3477
+#: src/localplayer.cpp:3503
 msgid "Imitation: "
 msgstr "Matki: "
 
-#: src/localplayer.cpp:3479 src/localplayer.cpp:3487
+#: src/localplayer.cpp:3505 src/localplayer.cpp:3513
 msgid "Imitation canceled"
 msgstr "Matkiminen keskeytetty"
 
-#: src/localplayer.cpp:3832
+#: src/localplayer.cpp:3858
 msgid "You see "
 msgstr "Näet "
 
@@ -4629,15 +4661,15 @@ msgstr "Komento: /exp"
 msgid "This command displays the party's current experience sharing policy."
 msgstr "Tämä komento näyttää ryhmän nykyisen kokemuksenjaon politiikan."
 
-#: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:286
+#: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:284
 msgid "Item sharing enabled."
 msgstr "Saaliinjako käytössä."
 
-#: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:296
+#: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:294
 msgid "Item sharing disabled."
 msgstr "Saaliinjako poistettu käytöstä."
 
-#: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:306
+#: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:304
 msgid "Item sharing not possible."
 msgstr "Saaliinjako ei ole mahdollista."
 
@@ -4645,15 +4677,15 @@ msgstr "Saaliinjako ei ole mahdollista."
 msgid "Item sharing unknown."
 msgstr "Saaliinjaon tila on tuntematon."
 
-#: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:248
+#: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:246
 msgid "Experience sharing enabled."
 msgstr "Kokemuksen jako käytössä."
 
-#: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:258
+#: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:256
 msgid "Experience sharing disabled."
 msgstr "Kokemuksen jako pois käytöstä."
 
-#: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:268
+#: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:266
 msgid "Experience sharing not possible."
 msgstr "Kokemuksen jako ei ole mahdollista."
 
@@ -4735,54 +4767,54 @@ msgstr "Käyttäjätunnus on jo käytössä."
 msgid "Username permanently erased."
 msgstr "Käyttäjänimi pysyvästi poistettu."
 
-#: src/net/ea/partyhandler.cpp:82
+#: src/net/ea/partyhandler.cpp:80
 msgid "Could not create party."
 msgstr "Ryhmän luonti epäonnistui."
 
-#: src/net/ea/partyhandler.cpp:84
+#: src/net/ea/partyhandler.cpp:82
 msgid "Party successfully created."
 msgstr "Ryhmä luotu."
 
-#: src/net/ea/partyhandler.cpp:140
+#: src/net/ea/partyhandler.cpp:138
 #, c-format
 msgid "%s has joined your party."
 msgstr "%s on liittynyt ryhmääsi."
 
-#: src/net/ea/partyhandler.cpp:176
+#: src/net/ea/partyhandler.cpp:174
 #, c-format
 msgid "%s is already a member of a party."
 msgstr "%s kuuluu jo johonkin ryhmään."
 
-#: src/net/ea/partyhandler.cpp:181
+#: src/net/ea/partyhandler.cpp:179
 #, c-format
 msgid "%s refused your invitation."
 msgstr "%s ei ottanut kutsuasi vastaan."
 
-#: src/net/ea/partyhandler.cpp:186
+#: src/net/ea/partyhandler.cpp:184
 #, c-format
 msgid "%s is now a member of your party."
 msgstr "%s on nyt ryhmäsi jäsen."
 
-#: src/net/ea/partyhandler.cpp:191
+#: src/net/ea/partyhandler.cpp:189
 #, c-format
 msgid "%s can't join your party because party is full."
 msgstr "%s ei voi liittyä ryhmääsi, koska se on täynnä."
 
-#: src/net/ea/partyhandler.cpp:196
+#: src/net/ea/partyhandler.cpp:194
 #, c-format
 msgid "QQQ Unknown invite response for %s."
 msgstr "QQQ Tuntematon kutsuvastaus kohteella %s."
 
-#: src/net/ea/partyhandler.cpp:356
+#: src/net/ea/partyhandler.cpp:354
 msgid "You have left the party."
 msgstr "Erosit ryhmästä."
 
-#: src/net/ea/partyhandler.cpp:369
+#: src/net/ea/partyhandler.cpp:367
 #, c-format
 msgid "%s has left your party."
 msgstr "%s on eronnut ryhmästä."
 
-#: src/net/ea/partyhandler.cpp:448
+#: src/net/ea/partyhandler.cpp:446
 #, c-format
 msgid "An unknown member tried to say: %s"
 msgstr "Tuntematon jäsen yritti sanoa: %s"
@@ -4940,83 +4972,83 @@ msgstr "Taidon korottaminen epäonnistui!"
 msgid "Equip arrows first."
 msgstr "Varusta ensin nuolia."
 
-#: src/net/ea/specialhandler.cpp:149
+#: src/net/ea/specialhandler.cpp:146
 msgid "Trade failed!"
 msgstr "Kauppa epäonnistui!"
 
-#: src/net/ea/specialhandler.cpp:152
+#: src/net/ea/specialhandler.cpp:149
 msgid "Emote failed!"
 msgstr "Elehtiminen epäonnistui!"
 
-#: src/net/ea/specialhandler.cpp:155
+#: src/net/ea/specialhandler.cpp:152
 msgid "Sit failed!"
 msgstr "Istuminen epäonnistui!"
 
-#: src/net/ea/specialhandler.cpp:158
+#: src/net/ea/specialhandler.cpp:155
 msgid "Chat creating failed!"
 msgstr "Keskustelun luonti epäonnistui!"
 
-#: src/net/ea/specialhandler.cpp:161
+#: src/net/ea/specialhandler.cpp:158
 msgid "Could not join party!"
 msgstr "Ryhmään liittyminen epäonnistui!"
 
-#: src/net/ea/specialhandler.cpp:164
+#: src/net/ea/specialhandler.cpp:161
 msgid "Cannot shout!"
 msgstr "Huutaminen epäonnistui!"
 
-#: src/net/ea/specialhandler.cpp:177
+#: src/net/ea/specialhandler.cpp:174
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Et ole vielä riittävän korkealla tasolla!"
 
-#: src/net/ea/specialhandler.cpp:181
+#: src/net/ea/specialhandler.cpp:178
 msgid "Insufficient HP!"
 msgstr "Voimapisteesi eivät riitä!"
 
-#: src/net/ea/specialhandler.cpp:184
+#: src/net/ea/specialhandler.cpp:181
 msgid "Insufficient SP!"
 msgstr "Manapisteesi eivät riitä!"
 
-#: src/net/ea/specialhandler.cpp:187
+#: src/net/ea/specialhandler.cpp:184
 msgid "You have no memos!"
 msgstr "Sinulla ei ole muistioita (memo)."
 
-#: src/net/ea/specialhandler.cpp:190
+#: src/net/ea/specialhandler.cpp:187
 msgid "You cannot do that right now!"
 msgstr "Et voi tehdä tätä juuri nyt."
 
-#: src/net/ea/specialhandler.cpp:193
+#: src/net/ea/specialhandler.cpp:190
 msgid "Seems you need more money... ;-)"
 msgstr "Näyttää siltä että tarvitset lisää rahaa."
 
-#: src/net/ea/specialhandler.cpp:196
+#: src/net/ea/specialhandler.cpp:193
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Et voi käyttää tätä taitoa tuollaisen aseen kanssa."
 
-#: src/net/ea/specialhandler.cpp:200
+#: src/net/ea/specialhandler.cpp:197
 msgid "You need another red gem!"
 msgstr "Tarvitset toisen punaisen helmen."
 
-#: src/net/ea/specialhandler.cpp:203
+#: src/net/ea/specialhandler.cpp:200
 msgid "You need another blue gem!"
 msgstr "Tarvitset toisen sinisen helmen."
 
-#: src/net/ea/specialhandler.cpp:206
+#: src/net/ea/specialhandler.cpp:203
 msgid "You're carrying to much to do this!"
 msgstr "Kannat liian paljon tehdäksesi tällaista!"
 
-#: src/net/ea/specialhandler.cpp:209
+#: src/net/ea/specialhandler.cpp:206
 msgid "Huh? What's that?"
 msgstr "Siis mikä?"
 
-#: src/net/ea/specialhandler.cpp:220
+#: src/net/ea/specialhandler.cpp:217
 msgid "Warp failed..."
 msgstr "Siirtymä (warp) epäonnistui..."
 
-#: src/net/ea/specialhandler.cpp:223
+#: src/net/ea/specialhandler.cpp:220
 msgid "Could not steal anything..."
 msgstr "Varastaminen ei onnistunut..."
 
-#: src/net/ea/specialhandler.cpp:226
+#: src/net/ea/specialhandler.cpp:223
 msgid "Poison had no effect..."
 msgstr "Myrkyllä ei ollut vaikutusta..."
 
