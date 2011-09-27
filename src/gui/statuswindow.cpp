@@ -502,7 +502,8 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
     if (max == 0)
     {
         bar->setText(_("Max"));
-        bar->setProgress(1.0);
+        bar->setProgress(1);
+        bar->setText(toString(value));
     }
     else
     {
