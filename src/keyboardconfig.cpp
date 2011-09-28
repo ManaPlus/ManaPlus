@@ -61,6 +61,8 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_DEFAULT},
     {"keyTalk", SDLK_t, N_("Talk"), KeyboardConfig::GRP_DEFAULT},
     {"keyTarget", SDLK_LSHIFT, N_("Stop Attack"), KeyboardConfig::GRP_DEFAULT},
+    {"keyUnTarget", KeyboardConfig::KEY_NO_VALUE,
+        N_("Untarget"), KeyboardConfig::GRP_DEFAULT},
     {"keyTargetClosest", SDLK_a, N_("Target Closest"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyTargetNPC", SDLK_n, N_("Target NPC"), KeyboardConfig::GRP_DEFAULT},

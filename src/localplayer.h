@@ -152,6 +152,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void stopAttack();
 
+        void untarget();
+
         /**
          * Returns the current target of the player. Returns 0 if no being is
          * currently targeted.

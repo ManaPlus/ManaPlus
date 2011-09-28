@@ -1389,6 +1389,11 @@ void LocalPlayer::stopAttack()
     if (mServerAttack && mAction == ATTACK)
         Net::getPlayerHandler()->stopAttack();
 
+    untarget();
+}
+
+void LocalPlayer::untarget()
+{
     if (mAction == ATTACK)
         setAction(STAND);
 

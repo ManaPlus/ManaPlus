@@ -174,6 +174,7 @@ class KeyboardConfig
             KEY_MOVE_TO_POINT,
             KEY_TALK,
             KEY_TARGET,
+            KEY_UNTARGET,
             KEY_TARGET_CLOSEST,
             KEY_TARGET_NPC,
             KEY_TARGET_PLAYER,
