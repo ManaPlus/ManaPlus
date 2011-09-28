@@ -96,6 +96,12 @@ class TextField : public gcn::TextField
          */
         int getValue() const;
 
+        void setSendAlwaysEvents(bool b)
+        { mSendAlwaysEvents = b; }
+
+    protected:
+        bool mSendAlwaysEvents;
+
     private:
         void handlePaste();
 
@@ -109,7 +115,6 @@ class TextField : public gcn::TextField
         int mMaximum;
         bool mLoseFocusOnTab;
         int mLastEventPaste;
-        bool mSendAlwaysEvents;
 };
 
 #endif
