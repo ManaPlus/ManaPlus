@@ -306,5 +306,12 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 // Hide ItemTooltip
 void DropShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
-    mItemPopup->setVisible(false);
+    if (mItemPopup)
+        mItemPopup->setVisible(false);
+}
+
+void DropShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
+{
+    if (mItemPopup)
+        mItemPopup->setVisible(false);
 }

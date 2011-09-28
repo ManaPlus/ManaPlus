@@ -87,7 +87,7 @@ class InventoryWindow : public Window,
         /**
          * Handles closing of the window
          */
-        virtual void widgetHidden(const gcn::Event &event);
+        void widgetHidden(const gcn::Event &event);
 
         /**
          * Handles the mouse clicks.
