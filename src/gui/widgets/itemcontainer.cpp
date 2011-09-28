@@ -329,7 +329,8 @@ void ItemContainer::distributeValueChangedEvent()
 
 void ItemContainer::hidePopup()
 {
-    mItemPopup->setVisible(false);
+    if (mItemPopup)
+        mItemPopup->setVisible(false);
 }
 
 void ItemContainer::keyPressed(gcn::KeyEvent &event A_UNUSED)
