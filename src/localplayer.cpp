@@ -3452,6 +3452,14 @@ int LocalPlayer::getPathLength(Being* being)
     }
 }
 
+int LocalPlayer::getAttackRange2()
+{
+    int range = getAttackRange();
+    if (range == 1)
+        range = 2;
+    return range;
+}
+
 void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
 {
     if (!dontChangeEquipment && target)
@@ -3459,7 +3467,7 @@ void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
 
     if ((!target || getAttackType() == 0 || getAttackType() == 3)
         || (withinAttackRange(target, true, 1)
-        && getPathLength(target) <= getAttackRange() + 1))
+        && getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);
         if (getAttackType() == 2)

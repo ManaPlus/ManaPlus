@@ -139,6 +139,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         int getAttackRange();
 
+        int getAttackRange2();
+
         void attack(Being *target = NULL, bool keep = false,
                     bool dontChangeEquipment = false);
 
