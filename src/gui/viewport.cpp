@@ -195,8 +195,8 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         {
             if (player_x <= 0 || player_y <= 0)
             {
-                if (debugChatTab)
-                    debugChatTab->chatLog("incorrect player position!");
+//                if (debugChatTab)
+//                    debugChatTab->chatLog("incorrect player position!");
                 logger->log("incorrect player position: %d, %d, %d, %d",
                     player_x, player_y, (int)mPixelViewX, (int)mPixelViewY);
                 if (player_node)
