@@ -284,6 +284,11 @@ void StatusPopup::updateLabels()
                 _("(A) moves to target in attack range"),
                 keyboard.KEY_CHANGE_MOVE_TO_TARGET);
             break;
+        case 7:
+            setLabelText(mMoveToTargetType,
+                _("(a) archer attack range"),
+                keyboard.KEY_CHANGE_MOVE_TO_TARGET);
+            break;
         default:
             setLabelText(mMoveToTargetType,
                 _("(?) move to target"), keyboard.KEY_CHANGE_MOVE_TO_TARGET);

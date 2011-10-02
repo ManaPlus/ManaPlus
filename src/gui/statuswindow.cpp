@@ -702,6 +702,9 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
         case 6:
             str += translateLetter(N_("(A)"));
             break;
+        case 7:
+            str += translateLetter(N_("(a)"));
+            break;
         default:
             str += translateLetter(N_("(?)"));
             break;
