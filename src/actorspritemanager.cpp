@@ -939,8 +939,11 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
             if (!valid)
                 continue;
 
-            if (specialDistance && being->getDistance() <= 2)
+            if (specialDistance && being->getDistance() <= 2
+                && being->getType() == Being::MONSTER)
+            {
                 continue;
+            }
 
 //            logger->log("being name:" + being->getName());
 //            logger->log("index:" + toString(index));
