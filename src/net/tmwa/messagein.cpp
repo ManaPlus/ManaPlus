@@ -33,10 +33,6 @@
 
 #include "debug.h"
 
-#define MAKEWORD(low, high) \
-    ((unsigned short)(((unsigned char)(low)) | \
-    ((unsigned short)((unsigned char)(high))) << 8))
-
 namespace TmwAthena 
 {
 

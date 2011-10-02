@@ -167,7 +167,7 @@ private:
      */
     Party(short id);
 
-    ~Party();
+    virtual ~Party();
 
     MemberList mMembers;
     std::string mName;

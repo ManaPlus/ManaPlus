@@ -65,7 +65,7 @@ protected:
 class Guild : public AvatarListModel
 {
 public:
-    ~Guild();
+    virtual ~Guild();
 
     /**
      * Set the guild's name.

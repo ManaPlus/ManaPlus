@@ -153,8 +153,17 @@ void Setup_Keyboard::action(const gcn::ActionEvent &event)
     {
         if (!mKeySetting)
         {
-            mAssignKeyButton->setEnabled(true);
-            mUnassignKeyButton->setEnabled(true);
+            int i(mKeyList->getSelected());
+            if (keyboard.isSeparator(i))
+            {
+                mAssignKeyButton->setEnabled(false);
+                mUnassignKeyButton->setEnabled(false);
+            }
+            else
+            {
+                mAssignKeyButton->setEnabled(true);
+                mUnassignKeyButton->setEnabled(true);
+            }
         }
     }
     else if (event.getId() == "assign")
@@ -183,11 +192,21 @@ void Setup_Keyboard::action(const gcn::ActionEvent &event)
 
 void Setup_Keyboard::refreshAssignedKey(int index)
 {
-    std::string caption;
-    char *temp = SDL_GetKeyName(
-        static_cast<SDLKey>(keyboard.getKeyValue(index)));
-    caption = keyboard.getKeyCaption(index) + ": " + toString(temp);
-    mKeyListModel->setElementAt(index, caption);
+    if (keyboard.isSeparator(index))
+    {
+        const std::string str = " \342\200\225\342\200\225\342\200\225"
+            "\342\200\225\342\200\225 ";
+        mKeyListModel->setElementAt(index, str
+            + keyboard.getKeyCaption(index) + str);
+    }
+    else
+    {
+        std::string caption;
+        char *temp = SDL_GetKeyName(
+            static_cast<SDLKey>(keyboard.getKeyValue(index)));
+        caption = keyboard.getKeyCaption(index) + ": " + toString(temp);
+        mKeyListModel->setElementAt(index, caption);
+    }
 }
 
 void Setup_Keyboard::newKeyCallback(int index)

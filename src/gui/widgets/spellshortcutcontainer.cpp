@@ -290,5 +290,12 @@ void SpellShortcutContainer::mouseMoved(gcn::MouseEvent &event)
 // Hide SpellTooltip
 void SpellShortcutContainer::mouseExited(gcn::MouseEvent &event A_UNUSED)
 {
-    mSpellPopup->setVisible(false);
+    if (mSpellPopup)
+        mSpellPopup->setVisible(false);
+}
+
+void SpellShortcutContainer::widgetHidden(const gcn::Event &event A_UNUSED)
+{
+    if (mSpellPopup)
+        mSpellPopup->setVisible(false);
 }

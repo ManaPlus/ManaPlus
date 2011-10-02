@@ -133,8 +133,8 @@ StatusWindow::StatusWindow():
     setCloseButton(true);
     setSaveVisible(true);
     setStickyButtonLock(true);
-    setDefaultSize((windowContainer->getWidth() - 365) / 2,
-                   (windowContainer->getHeight() - 255) / 2, 365, 275);
+    setDefaultSize((windowContainer->getWidth() - 480) / 2,
+                   (windowContainer->getHeight() - 500) / 2, 480, 500);
 
     // ----------------------
     // Status Part
@@ -502,7 +502,8 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
     if (max == 0)
     {
         bar->setText(_("Max"));
-        bar->setProgress(1.0);
+        bar->setProgress(1);
+        bar->setText(toString(value));
     }
     else
     {

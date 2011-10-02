@@ -32,6 +32,9 @@ namespace Net
 class BeingHandler
 {
     public:
+        virtual ~BeingHandler()
+        { }
+
         virtual void handleMessage(Net::MessageIn &msg) = 0;
 
         virtual void requestNameById(int id) = 0;

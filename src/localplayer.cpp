@@ -171,6 +171,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mShowJobExp = config.getBoolValue("showJobExp");
     mEnableAdvert = config.getBoolValue("enableAdvert");
     mTradebot = config.getBoolValue("tradebot");
+    mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
 
     mPingSendTick = 0;
     mWaitPing = false;
@@ -192,6 +193,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("showJobExp", this);
     config.addListener("enableAdvert", this);
     config.addListener("tradebot", this);
+    config.addListener("targetOnlyReachable", this);
     setShowName(config.getBoolValue("showownname"));
 }
 
@@ -209,6 +211,7 @@ LocalPlayer::~LocalPlayer()
     config.removeListener("showJobExp", this);
     config.removeListener("enableAdvert", this);
     config.removeListener("tradebot", this);
+    config.removeListener("targetOnlyReachable", this);
 
     delete mAwayDialog;
     mAwayDialog = 0;
@@ -219,7 +222,7 @@ LocalPlayer::~LocalPlayer()
 void LocalPlayer::logic()
 {
     if (mumbleManager)
-        mumbleManager->setPos(getTileX(), getTileY(), getDirection());
+        mumbleManager->setPos(mX, mY, mDirection);
 
     // Actions are allowed once per second
     if (get_elapsed_time(mLastAction) >= 1000)
@@ -236,14 +239,14 @@ void LocalPlayer::logic()
             dist = 20;
 
         if ((mNavigateX || mNavigateY) &&
-            ((mCrossX + dist >= getTileX() && mCrossX <= getTileX() + dist
-            && mCrossY + dist >= getTileY() && mCrossY <= getTileY() + dist)
+            ((mCrossX + dist >= mX && mCrossX <= mX + dist
+            && mCrossY + dist >= mY && mCrossY <= mY + dist)
             || (!mCrossX && !mCrossY)))
         {
             for (Path::const_iterator i = mNavigatePath.begin(),
                  i_end = mNavigatePath.end(); i != i_end; ++i)
             {
-                if ((*i).x == getTileX() && (*i).y == getTileY())
+                if ((*i).x == mX && (*i).y == mY)
                 {
                     mNavigatePath.pop_front();
                     break;
@@ -813,8 +816,8 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
             PartyMember *pm = Party::getParty(1)->getMember(getName());
             if (pm)
             {
-                pm->setX(getTileX());
-                pm->setY(getTileY());
+                pm->setX(mX);
+                pm->setY(mY);
             }
         }
 
@@ -925,8 +928,8 @@ bool LocalPlayer::pickUp(FloorItem *item)
     if (!Client::limitPackets(PACKET_PICKUP))
         return false;
 
-    int dx = item->getTileX() - getTileX();
-    int dy = item->getTileY() - getTileY();
+    int dx = item->getTileX() - mX;
+    int dy = item->getTileY() - mY;
     int dist = 6;
 
     if (mPickUpType >= 4 && mPickUpType <= 6)
@@ -1148,7 +1151,7 @@ void LocalPlayer::startWalking(unsigned char dir)
         else
 #endif
         {
-            Being::setDestination(getTileX(), getTileY());
+            Being::setDestination(mX, mY);
         }
         return;
     }
@@ -1324,8 +1327,8 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
     else
 #endif
     {
-        int dist_x = target->getTileX() - getTileX();
-        int dist_y = target->getTileY() - getTileY();
+        int dist_x = target->getTileX() - mX;
+        int dist_y = target->getTileY() - mY;
 
         // Must be standing or sitting to attack
         if (mAction != STAND && mAction != SIT)
@@ -1380,9 +1383,17 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
 
 void LocalPlayer::stopAttack()
 {
+    if (!Client::limitPackets(PACKET_STOPATTACK))
+        return;
+
     if (mServerAttack && mAction == ATTACK)
         Net::getPlayerHandler()->stopAttack();
 
+    untarget();
+}
+
+void LocalPlayer::untarget()
+{
     if (mAction == ATTACK)
         setAction(STAND);
 
@@ -1516,8 +1527,8 @@ bool LocalPlayer::withinAttackRange(Being *target, bool fixDistance,
     else
 #endif
     {
-        dx = static_cast<int>(abs(target->getTileX() - getTileX()));
-        dy = static_cast<int>(abs(target->getTileY() - getTileY()));
+        dx = static_cast<int>(abs(target->getTileX() - mX));
+        dy = static_cast<int>(abs(target->getTileY() - mY));
     }
     return !(dx > range || dy > range);
 }
@@ -1631,6 +1642,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mEnableAdvert = config.getBoolValue("enableAdvert");
     else if (value == "tradebot")
         mTradebot = config.getBoolValue("tradebot");
+    else if (value == "targetOnlyReachable")
+        mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
 }
 
 void LocalPlayer::processEvent(Mana::Channels channel,
@@ -1712,7 +1725,7 @@ void LocalPlayer::moveTo(int x, int y)
 void LocalPlayer::move(int dX, int dY)
 {
     mPickUpTarget = 0;
-    moveTo(getTileX() + dX, getTileY() + dY);
+    moveTo(mX + dX, mY + dY);
 }
 
 void LocalPlayer::moveToTarget(unsigned int dist)
@@ -1811,7 +1824,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
 void LocalPlayer::moveToHome()
 {
     mPickUpTarget = 0;
-    if ((getTileX() != mCrossX || getTileY() != mCrossY) && mCrossX && mCrossY)
+    if ((mX != mCrossX || mY != mCrossY) && mCrossX && mCrossY)
     {
         moveTo(mCrossX, mCrossY);
     }
@@ -1823,7 +1836,7 @@ void LocalPlayer::moveToHome()
         if (iter != mHomes.end())
         {
             Vector pos = mHomes[(*iter).first];
-            if (getTileX() == pos.x && getTileY() == pos.y)
+            if (mX == pos.x && mY == pos.y)
             {
                 Net::getPlayerHandler()->setDestination(
                         static_cast<int>(pos.x),
@@ -1922,8 +1935,8 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
         return;
 
     bool allowSword = false;
-    int dx = target->getTileX() - getTileX();
-    int dy = target->getTileY() - getTileY();
+    int dx = target->getTileX() - mX;
+    int dy = target->getTileY() - mY;
     Item *item = NULL;
 
     if (dx * dx + dy * dy > 80)
@@ -2039,25 +2052,25 @@ void LocalPlayer::crazyMove1()
     if (!Client::limitPackets(PACKET_DIRECTION))
         return;
 
-    if (getDirection() == Being::UP)
+    if (mDirection == Being::UP)
     {
         setWalkingDir(Being::UP);
         setDirection(Being::LEFT);
         Net::getPlayerHandler()->setDirection(Being::LEFT);
     }
-    else if (getDirection() == Being::LEFT)
+    else if (mDirection == Being::LEFT)
     {
         setWalkingDir(Being::LEFT);
         setDirection(Being::DOWN);
         Net::getPlayerHandler()->setDirection(Being::DOWN);
     }
-    else if (getDirection() == Being::DOWN)
+    else if (mDirection == Being::DOWN)
     {
         setWalkingDir(Being::DOWN);
         setDirection(Being::RIGHT);
         Net::getPlayerHandler()->setDirection(Being::RIGHT);
     }
-    else if (getDirection() == Being::RIGHT)
+    else if (mDirection == Being::RIGHT)
     {
         setWalkingDir(Being::RIGHT);
         setDirection(Being::UP);
@@ -2073,25 +2086,25 @@ void LocalPlayer::crazyMove2()
     if (!Client::limitPackets(PACKET_DIRECTION))
         return;
 
-    if (getDirection() == Being::UP)
+    if (mDirection == Being::UP)
     {
         setWalkingDir(Being::UP | Being::LEFT);
         setDirection(Being::RIGHT);
         Net::getPlayerHandler()->setDirection(Being::DOWN | Being::RIGHT);
     }
-    else if (getDirection() == Being::RIGHT)
+    else if (mDirection == Being::RIGHT)
     {
         setWalkingDir(Being::UP | Being::RIGHT);
         setDirection(Being::DOWN);
         Net::getPlayerHandler()->setDirection(Being::DOWN | Being::LEFT);
     }
-    else if (getDirection() == Being::DOWN)
+    else if (mDirection == Being::DOWN)
     {
         setWalkingDir(Being::DOWN | Being::RIGHT);
         setDirection(Being::LEFT);
         Net::getPlayerHandler()->setDirection(Being::UP | Being::LEFT);
     }
-    else if (getDirection() == Being::LEFT)
+    else if (mDirection == Being::LEFT)
     {
         setWalkingDir(Being::DOWN | Being::LEFT);
         setDirection(Being::UP);
@@ -2272,19 +2285,19 @@ void LocalPlayer::crazyMove8()
         { 1,  0, -1,  0}    //move down
     };
 
-    if (getDirection() == Being::UP)
+    if (mDirection == Being::UP)
         idx = 0;
-    else if (getDirection() == Being::RIGHT)
+    else if (mDirection == Being::RIGHT)
         idx = 1;
-    else if (getDirection() == Being::DOWN)
+    else if (mDirection == Being::DOWN)
         idx = 2;
-    else if (getDirection() == Being::LEFT)
+    else if (mDirection == Being::LEFT)
         idx = 3;
 
 
     int mult = 1;
     if (mMap->getWalk(mX + movesX[idx][0],
-        getTileY() + movesY[idx][0], getWalkMask()))
+        mY + movesY[idx][0], getWalkMask()))
     {
         while (mMap->getWalk(mX + movesX[idx][0] * mult,
                mY + movesY[idx][0] * mult,
@@ -2340,7 +2353,7 @@ void LocalPlayer::crazyMove9()
     switch (mCrazyMoveState)
     {
         case 0:
-            switch (getDirection())
+            switch (mDirection)
             {
                 case UP   : dy = -1; break;
                 case DOWN : dy = 1; break;
@@ -2412,7 +2425,7 @@ void LocalPlayer::crazyMoveA()
                     move(1, 0);
                     break;
                 case 'f':
-                    switch (getDirection())
+                    switch (mDirection)
                     {
                         case UP   : dy = -1; break;
                         case DOWN : dy = 1; break;
@@ -2423,7 +2436,7 @@ void LocalPlayer::crazyMoveA()
                     move(dx, dy);
                     break;
                 case 'b':
-                    switch (getDirection())
+                    switch (mDirection)
                     {
                         case UP   : dy = 1; break;
                         case DOWN : dy = -1; break;
@@ -2487,7 +2500,7 @@ void LocalPlayer::crazyMoveA()
                     if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         Uint8 dir = 0;
-                        switch (getDirection())
+                        switch (mDirection)
                         {
                             case UP    : dir = Being::LEFT; break;
                             case DOWN  : dir = Being::RIGHT; break;
@@ -2503,7 +2516,7 @@ void LocalPlayer::crazyMoveA()
                     if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         Uint8 dir = 0;
-                        switch (getDirection())
+                        switch (mDirection)
                         {
                             case UP    : dir = Being::RIGHT; break;
                             case DOWN  : dir = Being::LEFT; break;
@@ -2519,7 +2532,7 @@ void LocalPlayer::crazyMoveA()
                     if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         Uint8 dir = 0;
-                        switch (getDirection())
+                        switch (mDirection)
                         {
                             case UP    : dir = Being::DOWN; break;
                             case DOWN  : dir = Being::UP; break;
@@ -2614,8 +2627,8 @@ bool LocalPlayer::isReachable(int x, int y, int maxCost)
     if (!mMap)
         return false;
 
-    if (x - 1 <= getTileX() && x + 1 >= getTileX()
-        && y - 1 <= getTileY() && y + 1 >= getTileY() )
+    if (x - 1 <= mX && x + 1 >= mX
+        && y - 1 <= mY && y + 1 >= mY )
     {
         return true;
     }
@@ -2638,17 +2651,17 @@ bool LocalPlayer::isReachable(Being *being, int maxCost)
     if (being->isReachable() == Being::REACH_NO)
         return false;
 
-    if (being->getTileX() == getTileX()
-        && being->getTileY() == getTileY())
+    if (being->getTileX() == mX
+        && being->getTileY() == mY)
     {
         being->setDistance(0);
         being->setIsReachable(Being::REACH_YES);
         return true;
     }
-    else if (being->getTileX() - 1 <= getTileX()
-             && being->getTileX() + 1 >= getTileX()
-             && being->getTileY() - 1 <= getTileY()
-             && being->getTileY() + 1 >= getTileY())
+    else if (being->getTileX() - 1 <= mX
+             && being->getTileX() + 1 >= mX
+             && being->getTileY() - 1 <= mY
+             && being->getTileY() + 1 >= mY)
     {
         being->setDistance(1);
         being->setIsReachable(Being::REACH_YES);
@@ -2681,8 +2694,8 @@ bool LocalPlayer::pickUpItems(int pickUpType)
         return false;
 
     bool status = false;
-    int x = getTileX();
-    int y = getTileY();
+    int x = mX;
+    int y = mY;
 
     // first pick up item on player position
     FloorItem *item =
@@ -2703,7 +2716,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
     switch(pickUpType)
     {
         case 1:
-            switch (getDirection())
+            switch (mDirection)
             {
                 case UP   : --y; break;
                 case DOWN : ++y; break;
@@ -2719,7 +2732,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             }
             break;
         case 2:
-            switch (getDirection())
+            switch (mDirection)
             {
                 case UP   : x1 = x - 1; y1 = y - 1; x2 = x + 1; y2 = y; break;
                 case DOWN : x1 = x - 1; y1 = y; x2 = x + 1; y2 = y + 1; break;
@@ -2996,8 +3009,8 @@ void LocalPlayer::setHome()
                 static_cast<int>(pos.y));
         }
 
-        if (iter != mHomes.end() && getTileX() == static_cast<int>(pos.x)
-            && getTileY() == static_cast<int>(pos.y))
+        if (iter != mHomes.end() && mX == static_cast<int>(pos.x)
+            && mY == static_cast<int>(pos.y))
         {
             mMap->updatePortalTile("", MapItem::EMPTY,
                 static_cast<int>(pos.x), static_cast<int>(pos.y));
@@ -3014,17 +3027,17 @@ void LocalPlayer::setHome()
                     static_cast<int>(pos.y), MapItem::EMPTY);
             }
 
-            pos.x = static_cast<float>(getTileX());
-            pos.y = static_cast<float>(getTileY());
+            pos.x = static_cast<float>(mX);
+            pos.y = static_cast<float>(mY);
             mHomes[key] = pos;
             mMap->updatePortalTile("home", MapItem::HOME,
-                                   getTileX(), getTileY());
-            socialWindow->addPortal(getTileX(), getTileY());
+                                   mX, mY);
+            socialWindow->addPortal(mX, mY);
         }
-        MapItem *mapItem = specialLayer->getTile(getTileX(), getTileY());
+        MapItem *mapItem = specialLayer->getTile(mX, mY);
         if (mapItem)
         {
-            int idx = socialWindow->getPortalIndex(getTileX(), getTileY());
+            int idx = socialWindow->getPortalIndex(mX, mY);
             mapItem->setName(keyboard.getKeyShortString(
                 outfitWindow->keyName(idx)));
         }
@@ -3032,11 +3045,11 @@ void LocalPlayer::setHome()
     }
     else
     {
-        MapItem *mapItem = specialLayer->getTile(getTileX(), getTileY());
+        MapItem *mapItem = specialLayer->getTile(mX, mY);
         int type = 0;
 
         std::map<std::string, Vector>::iterator iter = mHomes.find(key);
-        if (iter != mHomes.end() && getTileX() == pos.x && getTileY() == pos.y)
+        if (iter != mHomes.end() && mX == pos.x && mY == pos.y)
         {
             mHomes.erase(key);
             saveHomes();
@@ -3057,26 +3070,24 @@ void LocalPlayer::setHome()
         {
             type = MapItem::EMPTY;
         }
-        mMap->updatePortalTile("", type, getTileX(), getTileY());
+        mMap->updatePortalTile("", type, mX, mY);
 
         if (type != MapItem::EMPTY)
         {
-            socialWindow->addPortal(getTileX(), getTileY());
-            mapItem = specialLayer->getTile(getTileX(), getTileY());
+            socialWindow->addPortal(mX, mY);
+            mapItem = specialLayer->getTile(mX, mY);
             if (mapItem)
             {
-                int idx = socialWindow->getPortalIndex(getTileX(), getTileY());
+                int idx = socialWindow->getPortalIndex(mX, mY);
                 mapItem->setName(keyboard.getKeyShortString(
                     outfitWindow->keyName(idx)));
             }
         }
         else
         {
-            specialLayer->setTile(getTileX(), getTileY(), MapItem::EMPTY);
-            socialWindow->removePortal(getTileX(), getTileY());
+            specialLayer->setTile(mX, mY, MapItem::EMPTY);
+            socialWindow->removePortal(mX, mY);
         }
-
-//        specialLayer->setTile(getTileX(), getTileY(), type);
     }
 }
 
@@ -3234,8 +3245,8 @@ bool LocalPlayer::navigateTo(int x, int y)
     mShowNavigePath = true;
     mOldX = static_cast<int>(playerPos.x);
     mOldY = static_cast<int>(playerPos.y);
-    mOldTileX = getTileX();
-    mOldTileY = getTileY();
+    mOldTileX = mX;
+    mOldTileY = mY;
     mNavigateX = x;
     mNavigateY = y;
     mNavigateId = 0;
@@ -3263,8 +3274,8 @@ void LocalPlayer::navigateTo(Being *being)
     mShowNavigePath = true;
     mOldX = static_cast<int>(playerPos.x);
     mOldY = static_cast<int>(playerPos.y);
-    mOldTileX = getTileX();
-    mOldTileY = getTileY();
+    mOldTileX = mX;
+    mOldTileY = mY;
     mNavigateX = being->getTileX();
     mNavigateY = being->getTileY();
 
@@ -3307,7 +3318,7 @@ void LocalPlayer::updateCoords()
 
     const Vector &playerPos = getPosition();
 
-    if (getTileX() != mOldTileX || getTileY() != mOldTileY)
+    if (mX != mOldTileX || mY != mOldTileY)
     {
         if (socialWindow)
             socialWindow->updatePortals();
@@ -3315,7 +3326,7 @@ void LocalPlayer::updateCoords()
             viewport->hideBeingPopup();
         if (mMap)
         {
-            std::string str = mMap->getObjectData(getTileX(), getTileY(),
+            std::string str = mMap->getObjectData(mX, mY,
                 MapItem::MUSIC);
             if (str.empty())
                 str = mMap->getMusicFile();
@@ -3331,7 +3342,7 @@ void LocalPlayer::updateCoords()
 
     if (mShowNavigePath)
     {
-        if (mMap && (getTileX() != mOldTileX || getTileY() != mOldTileY))
+        if (mMap && (mX != mOldTileX || mY != mOldTileY))
         {
             SpecialLayer *tmpLayer = mMap->getTempLayer();
             if (!tmpLayer)
@@ -3367,7 +3378,7 @@ void LocalPlayer::updateCoords()
                 for (Path::const_iterator i = mNavigatePath.begin(),
                      i_end = mNavigatePath.end(); i != i_end; ++i)
                 {
-                    if ((*i).x == getTileX() && (*i).y == getTileY())
+                    if ((*i).x == mX && (*i).y == mY)
                     {
                         mNavigatePath.pop_front();
                         break;
@@ -3385,8 +3396,8 @@ void LocalPlayer::updateCoords()
     }
     mOldX = static_cast<int>(playerPos.x);
     mOldY = static_cast<int>(playerPos.y);
-    mOldTileX = getTileX();
-    mOldTileY = getTileY();
+    mOldTileX = mX;
+    mOldTileY = mY;
 }
 
 void LocalPlayer::targetMoved()
@@ -3413,12 +3424,40 @@ int LocalPlayer::getPathLength(Being* being)
 
     const Vector &playerPos = getPosition();
 
-    Path debugPath = mMap->findPath(
-        static_cast<int>(playerPos.x - 16) / 32,
-        static_cast<int>(playerPos.y - 32) / 32,
-        being->getTileX(), being->getTileY(),
-        getWalkMask(), 0);
-    return static_cast<int>(debugPath.size());
+    if (being->mX == mX && being->mY == mY)
+        return 0;
+
+    if (being->mX - 1 <= mX && being->mX + 1 >= mX
+        && being->mY - 1 <= mY && being->mY + 1 >= mY)
+    {
+        return 1;
+    }
+
+    if (mTargetOnlyReachable)
+    {
+        Path debugPath = mMap->findPath(
+            static_cast<int>(playerPos.x - 16) / 32,
+            static_cast<int>(playerPos.y - 32) / 32,
+            being->getTileX(), being->getTileY(),
+            getWalkMask(), 0);
+        return static_cast<int>(debugPath.size());
+    }
+    else
+    {
+        const int dx = static_cast<int>(abs(being->mX - mX));
+        const int dy = static_cast<int>(abs(being->mY - mY));
+        if (dx > dy)
+            return dx;
+        return dy;
+    }
+}
+
+int LocalPlayer::getAttackRange2()
+{
+    int range = getAttackRange();
+    if (range == 1)
+        range = 2;
+    return range;
 }
 
 void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
@@ -3428,7 +3467,7 @@ void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
 
     if ((!target || getAttackType() == 0 || getAttackType() == 3)
         || (withinAttackRange(target, true, 1)
-        && getPathLength(target) <= getAttackRange() + 1))
+        && getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);
         if (getAttackType() == 2)
@@ -3632,15 +3671,15 @@ void LocalPlayer::followMoveTo(Being *being, int x1, int y1, int x2, int y2)
             case 1:
                 if (x1 != x2 || y1 != y2)
                 {
-                    setDestination(getTileX() + x2 - x1, getTileY() + y2 - y1);
-                    setNextDest(getTileX() + x2 - x1, getTileY() + y2 - y1);
+                    setDestination(mX + x2 - x1, mY + y2 - y1);
+                    setNextDest(mX + x2 - x1, mY + y2 - y1);
                 }
                 break;
             case 2:
                 if (x1 != x2 || y1 != y2)
                 {
-                    setDestination(getTileX() + x1 - x2, getTileY() + y1 - y2);
-                    setNextDest(getTileX() + x1 - x2, getTileY() + y1 - y2);
+                    setDestination(mX + x1 - x2, mY + y1 - y2);
+                    setNextDest(mX + x1 - x2, mY + y1 - y2);
                 }
                 break;
             case 3:
@@ -3694,8 +3733,8 @@ void LocalPlayer::fixPos(int maxDist)
     if (!mCrossX && !mCrossY)
         return;
 
-    int dx = abs(getTileX() - mCrossX);
-    int dy = abs(getTileY() - mCrossY);
+    int dx = abs(mX - mCrossX);
+    int dy = abs(mY - mCrossY);
     int dest = (dx * dx) + (dy * dy);
 
     if (dest > maxDist && mActivityTime

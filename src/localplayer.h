@@ -139,6 +139,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         int getAttackRange();
 
+        int getAttackRange2();
+
         void attack(Being *target = NULL, bool keep = false,
                     bool dontChangeEquipment = false);
 
@@ -151,6 +153,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         { return mGMLevel; }
 
         void stopAttack();
+
+        void untarget();
 
         /**
          * Returns the current target of the player. Returns 0 if no being is
@@ -601,6 +605,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mBlockAdvert;
         bool mEnableAdvert;
         bool mTradebot;
+        bool mTargetOnlyReachable;
         bool mNextStep;
 };
 

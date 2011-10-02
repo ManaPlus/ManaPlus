@@ -218,6 +218,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showip", false);
     AddDEF(configData, "seflMouseHeal", true);
     AddDEF(configData, "enableLazyScrolling", true);
+    AddDEF(configData, "extMouseTargeting", true);
     return configData;
 }
 

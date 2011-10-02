@@ -27,6 +27,12 @@
 
 #include <vector>
 
+#ifdef __GNUC__
+#define A_UNUSED  __attribute__ ((unused))
+#else
+#define A_UNUSED
+#endif
+
 class AnimatedSprite;
 class Image;
 class TextPopup;
@@ -72,6 +78,8 @@ class EmoteShortcutContainer : public ShortcutContainer
         void mouseMoved(gcn::MouseEvent &event);
 
         void mouseExited(gcn::MouseEvent &event);
+
+        void widgetHidden(const gcn::Event &event);
 
     private:
         std::vector<const EmoteSprite*> mEmoteImg;

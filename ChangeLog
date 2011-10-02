@@ -1,5 +1,20 @@
+2011-10-02 New release 1.1.10.2
+ManaPlus:
+fix: inactive state.
+fix: hide inventory filter if window too small.
+fix: mouse selection.
+fix: speed in targeting monsters.
+fix: move to target in attack range.
+add: comment for spells/commands.
+add: split keyboard keys to groups.
+add: chat or other windows scrolling with dragging mouse.
+add: limits for stop attack packet.
+add: show current experience after max level (for tmw after 99 level).
+add: untarget key. it not stop attack but remove selection from current target.
+add: amount field in buy dialog.
+
 2011-09-18 New release 1.1.9.18
-Manaplus:
+ManaPlus:
 fix: restore windows visible state after restart.
 fix: players sorting in relation and party tab.
 fix: configuration settings in first start.

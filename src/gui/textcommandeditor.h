@@ -60,8 +60,6 @@ class TextCommandEditor : public Window, public gcn::ActionListener
 
         void update();
 
-        void widgetResized(const gcn::Event &event);
-
         void updateList();
 
         void reset();
@@ -84,6 +82,10 @@ class TextCommandEditor : public Window, public gcn::ActionListener
         TextField *mSymbolTextField;
         Label *mCommandLabel;
         TextField *mCommandTextField;
+
+        Label *mCommentLabel;
+        TextField *mCommentTextField;
+
         Label *mTypeLabel;
         DropDown *mTypeDropDown;
         Label *mIconLabel;

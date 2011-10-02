@@ -51,11 +51,11 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
                      gcn::ActionListener* listener, std::string eventId,
                      bool sendAlwaysEvents):
     gcn::TextField(text),
+    mSendAlwaysEvents(sendAlwaysEvents),
     mNumeric(false),
     mMinimum(0),
     mMaximum(0),
-    mLastEventPaste(false),
-    mSendAlwaysEvents(sendAlwaysEvents)
+    mLastEventPaste(false)
 {
     setFrameSize(2);
 

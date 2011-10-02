@@ -35,6 +35,9 @@ class Avatar
 public:
     Avatar(const std::string &name = "");
 
+    virtual ~Avatar()
+    { }
+
     /**
      * Returns the avatar's name.
      */

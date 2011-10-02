@@ -38,6 +38,9 @@ namespace Net
 class TradeHandler
 {
     public:
+        virtual ~TradeHandler()
+        { }
+
         virtual void request(Being *being A_UNUSED)
         { }
 //        virtual ~TradeHandler() {}

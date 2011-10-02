@@ -40,6 +40,7 @@ struct KeyData
 
 // keyData must be in same order as enum keyAction.
 static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
+    {"", 0, N_("Basic Keys"), 0},
     {"keyMoveUp", SDLK_UP, N_("Move Up"), KeyboardConfig::GRP_DEFAULT},
     {"keyMoveDown", SDLK_DOWN, N_("Move Down"), KeyboardConfig::GRP_DEFAULT},
     {"keyMoveLeft", SDLK_LEFT, N_("Move Left"), KeyboardConfig::GRP_DEFAULT},
@@ -58,9 +59,10 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_DEFAULT},
     {"keyMoveToPoint", SDLK_RSHIFT, N_("Move to navigation point"),
         KeyboardConfig::GRP_DEFAULT},
-    {"keySmilie", SDLK_LALT, N_("Smilie"), KeyboardConfig::GRP_DEFAULT},
     {"keyTalk", SDLK_t, N_("Talk"), KeyboardConfig::GRP_DEFAULT},
     {"keyTarget", SDLK_LSHIFT, N_("Stop Attack"), KeyboardConfig::GRP_DEFAULT},
+    {"keyUnTarget", KeyboardConfig::KEY_NO_VALUE,
+        N_("Untarget"), KeyboardConfig::GRP_DEFAULT},
     {"keyTargetClosest", SDLK_a, N_("Target Closest"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyTargetNPC", SDLK_n, N_("Target NPC"), KeyboardConfig::GRP_DEFAULT},
@@ -77,6 +79,10 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_DEFAULT},
     {"keyPathfind", SDLK_f, N_("Change Map View Mode"),
         KeyboardConfig::GRP_DEFAULT},
+    {"keyOK", SDLK_SPACE, N_("Select OK"),
+        KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI},
+    {"keyQuit", SDLK_ESCAPE, N_("Quit"), KeyboardConfig::GRP_DEFAULT},
+    {"", 0, N_("Shortcuts Keys"), 0},
     {"keyShortcutsKey", SDLK_MENU, N_("Item Shortcuts Key"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyShortcut1", SDLK_1, strprintf(N_("Item Shortcut %d"), 1),
@@ -119,6 +125,7 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         strprintf(N_("Item Shortcut %d"), 19), KeyboardConfig::GRP_DEFAULT},
     {"keyShortcut20", KeyboardConfig::KEY_NO_VALUE,
         strprintf(N_("Item Shortcut %d"), 20), KeyboardConfig::GRP_DEFAULT},
+    {"", 0, N_("Windows Keys"), 0},
     {"keyWindowHelp", SDLK_F1, N_("Help Window"), KeyboardConfig::GRP_DEFAULT
         | KeyboardConfig::GRP_GUI},
     {"keyWindowStatus", SDLK_F2, N_("Status Window"),
@@ -165,6 +172,8 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         | KeyboardConfig::GRP_GUI},
     {"keySocialNextTab", KeyboardConfig::KEY_NO_VALUE, N_("Next Social Tab"),
         KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI},
+    {"", 0, N_("Emotes Keys"), 0},
+    {"keySmilie", SDLK_LALT, N_("Smilie"), KeyboardConfig::GRP_DEFAULT},
     {"keyEmoteShortcut1", SDLK_1, strprintf(N_("Emote Shortcut %d"), 1),
         KeyboardConfig::GRP_EMOTION},
     {"keyEmoteShortcut2", SDLK_2, strprintf(N_("Emote Shortcut %d"), 2),
@@ -258,12 +267,14 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_EMOTION},
     {"keyEmoteShortcut44", SDLK_b, strprintf(N_("Emote Shortcut %d"), 44),
         KeyboardConfig::GRP_EMOTION},
+    {"", 0, N_("Outfits Keys"), 0},
     {"keyWearOutfit", SDLK_RCTRL, N_("Wear Outfit"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyCopyOutfit", SDLK_RALT, N_("Copy Outfit"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyCopyEquipedOutfit", SDLK_RIGHTBRACKET, N_("Copy equipped to Outfit"),
         KeyboardConfig::GRP_DEFAULT},
+    {"", 0, N_("Chat Keys"), 0},
     {"keyChat", SDLK_RETURN, N_("Toggle Chat"), KeyboardConfig::GRP_DEFAULT
         | KeyboardConfig::GRP_CHAT},
     {"keyChatScrollUp", SDLK_PAGEUP, N_("Scroll Chat Up"),
@@ -285,9 +296,7 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_CHAT},
     {"keyDeActivateChat", SDLK_ESCAPE, N_("Deactivate Chat Input"),
         KeyboardConfig::GRP_CHAT},
-    {"keyOK", SDLK_SPACE, N_("Select OK"),
-        KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI},
-    {"keyQuit", SDLK_ESCAPE, N_("Quit"), KeyboardConfig::GRP_DEFAULT},
+    {"", 0, N_("Other Keys"), 0},
     {"keyIgnoreInput1", SDLK_LSUPER, N_("Ignore input 1"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyIgnoreInput2", SDLK_RSUPER, N_("Ignore input 2"),
@@ -370,15 +379,21 @@ void KeyboardConfig::retrieve()
 {
     for (int i = 0; i < KEY_TOTAL; i++)
     {
-        mKey[i].value = static_cast<int>(config.getValue(
-            mKey[i].configField, mKey[i].defaultValue));
+        if (*mKey[i].configField)
+        {
+            mKey[i].value = static_cast<int>(config.getValue(
+                mKey[i].configField, mKey[i].defaultValue));
+        }
     }
 }
 
 void KeyboardConfig::store()
 {
     for (int i = 0; i < KEY_TOTAL; i++)
-        config.setValue(mKey[i].configField, mKey[i].value);
+    {
+        if (*mKey[i].configField)
+            config.setValue(mKey[i].configField, mKey[i].value);
+    }
 }
 
 void KeyboardConfig::makeDefault()
@@ -396,7 +411,7 @@ bool KeyboardConfig::hasConflicts()
      */
     for (i = 0; i < KEY_TOTAL; i++)
     {
-        if (mKey[i].value == KEY_NO_VALUE)
+        if (mKey[i].value == KEY_NO_VALUE || !*mKey[i].configField)
             continue;
 
         for (j = i, j++; j < KEY_TOTAL; j++)
@@ -405,7 +420,8 @@ bool KeyboardConfig::hasConflicts()
             // as well as emote and ignore keys, but no other keys
             if (mKey[j].value != KEY_NO_VALUE &&
                 mKey[i].value == mKey[j].value &&
-                ((mKey[i].grp & mKey[j].grp) != 0)
+                ((mKey[i].grp & mKey[j].grp) != 0 &&
+                *mKey[i].configField)
                )
             {
                 mBindError = strprintf(_("Conflict \"%s\" and \"%s\" keys. "

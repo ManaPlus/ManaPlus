@@ -1148,6 +1148,7 @@ void Game::handleInput()
                 && !NpcDialog::isAnyInputFocused()
                 && (!player_node || !player_node->getAwayMode())
                 && !keyboard.isKeyActive(keyboard.KEY_TARGET)
+                && !keyboard.isKeyActive(keyboard.KEY_UNTARGET)
                 && !InventoryWindow::isAnyInputFocused())
             {
 //                const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
@@ -1366,11 +1367,9 @@ void Game::handleInput()
                 {   // window restore
                     Client::setIsMinimized(false);
                     if (!player_node && !player_node->getAwayMode())
-                    {
                         fpsLimit = config.getIntValue("fpslimit");
-                        if (player_node)
-                            player_node->setHalfAway(false);
-                    }
+                    if (player_node)
+                        player_node->setHalfAway(false);
                 }
                 else
                 {   // window minimisation
@@ -1613,7 +1612,8 @@ void Game::handleInput()
                 keyboard.isKeyActive(keyboard.KEY_TARGET_CLOSEST) ||
                 keyboard.isKeyActive(keyboard.KEY_TARGET_NPC) ||
                 (joystick && joystick->buttonPressed(3))) &&
-                !keyboard.isKeyActive(keyboard.KEY_TARGET))
+                !keyboard.isKeyActive(keyboard.KEY_TARGET) &&
+                !keyboard.isKeyActive(keyboard.KEY_UNTARGET))
             {
                 ActorSprite::Type currentTarget = ActorSprite::UNKNOWN;
                 if (keyboard.isKeyActive(keyboard.KEY_TARGET_CLOSEST) ||
@@ -1665,10 +1665,12 @@ void Game::handleInput()
 
         // Stop attacking if the right key is pressed
         if (!keyboard.isKeyActive(keyboard.KEY_ATTACK)
-            && keyboard.isKeyActive(keyboard.KEY_TARGET)
             && !keyboard.isKeyActive(keyboard.KEY_EMOTE))
         {
-            player_node->stopAttack();
+            if (keyboard.isKeyActive(keyboard.KEY_TARGET))
+                player_node->stopAttack();
+            else if (keyboard.isKeyActive(keyboard.KEY_UNTARGET))
+                player_node->untarget();
         }
 
         if (joystick)

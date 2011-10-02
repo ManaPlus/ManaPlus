@@ -31,11 +31,12 @@
 #include "debug.h"
 
 TextCommand::TextCommand(unsigned int id, std::string symbol,
-                         std::string command, SpellTarget type,
-                         std::string icon, unsigned int basicLvl,
-                         MagicSchool school, unsigned int schoolLvl,
-                         int mana) :
+                         std::string command,  std::string comment,
+                         SpellTarget type, std::string icon,
+                         unsigned int basicLvl, MagicSchool school,
+                         unsigned int schoolLvl, int mana) :
     mCommand(command),
+    mComment(comment),
     mSymbol(symbol),
     mTargetType(type),
     mIcon(icon),
@@ -52,9 +53,10 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
 
 
 TextCommand::TextCommand(unsigned int id, std::string symbol,
-                         std::string command, SpellTarget type,
-                         std::string icon) :
+                         std::string command, std::string comment,
+                         SpellTarget type, std::string icon) :
     mCommand(command),
+    mComment(comment),
     mSymbol(symbol),
     mTargetType(type),
     mIcon(icon),
@@ -71,6 +73,7 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
 
 TextCommand::TextCommand(unsigned int id) :
     mCommand(""),
+    mComment(""),
     mSymbol(""),
     mTargetType(NOTARGET),
     mIcon(""),

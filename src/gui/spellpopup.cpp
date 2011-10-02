@@ -42,14 +42,15 @@
 #include "debug.h"
 
 SpellPopup::SpellPopup():
-    Popup("SpellPopup", "spellpopup.xml")
+    Popup("SpellPopup", "spellpopup.xml"),
+    mItemName(new Label),
+    mItemComment(new Label)
 {
-    // Item Name
-    mItemName = new Label;
     mItemName->setFont(boldFont);
-    mItemName->setPosition(getPadding(), getPadding());
 
     add(mItemName);
+    add(mItemComment);
+
     addMouseListener(this);
 }
 
@@ -60,17 +61,39 @@ SpellPopup::~SpellPopup()
 void SpellPopup::setItem(TextCommand *spell)
 {
     if (spell)
+    {
         mItemName->setCaption(spell->getName());
+        mItemComment->setCaption(spell->getComment());
+    }
     else
+    {
         mItemName->setCaption("?");
+        mItemComment->setCaption("");
+    }
 
     mItemName->adjustSize();
+    mItemComment->adjustSize();
     int minWidth = mItemName->getWidth();
+    if (mItemComment->getWidth() > minWidth)
+        minWidth = mItemComment->getWidth();
 
     minWidth += 8;
-    setWidth(minWidth);
+    setWidth(minWidth + 2 * getPadding());
 
-    setContentSize(minWidth, getPadding() + getFont()->getHeight());
+    mItemName->setPosition(getPadding(), getPadding());
+    mItemComment->setPosition(getPadding(),
+        getPadding() + mItemName->getHeight());
+
+    if (mItemComment->getCaption() != "")
+    {
+        setContentSize(minWidth, getPadding()
+            + 2 * getFont()->getHeight());
+    }
+    else
+    {
+        setContentSize(minWidth, getPadding()
+            + getFont()->getHeight());
+    }
 }
 
 void SpellPopup::view(int x, int y)

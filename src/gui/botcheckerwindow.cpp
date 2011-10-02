@@ -378,11 +378,6 @@ void BotCheckerWindow::update()
 {
 }
 
-void BotCheckerWindow::widgetResized(const gcn::Event &event)
-{
-    Window::widgetResized(event);
-}
-
 void BotCheckerWindow::updateList()
 {
     if (mTableModel)

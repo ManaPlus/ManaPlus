@@ -50,6 +50,9 @@ void IntTextField::keyPressed(gcn::KeyEvent &event)
         key.getValue() == Key::DELETE)
     {
         setText(std::string());
+        if (mSendAlwaysEvents)
+            distributeActionEvent();
+
         event.consume();
     }
 
@@ -62,6 +65,8 @@ void IntTextField::keyPressed(gcn::KeyEvent &event)
     int i;
     s >> i;
     setValue(i);
+    if (mSendAlwaysEvents)
+        distributeActionEvent();
 }
 
 void IntTextField::setRange(int min, int max)

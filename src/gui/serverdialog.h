@@ -95,7 +95,11 @@ class TypeListModel : public gcn::ListModel
          * Used to get number of line in the list
          */
         int getNumberOfElements()
+#ifdef MANASERV_SUPPORT
+        { return 3; }
+#else
         { return 2; }
+#endif
 
         /**
          * Used to get an element from the list

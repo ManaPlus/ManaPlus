@@ -1133,7 +1133,7 @@ SocialWindow::SocialWindow() :
 
     setMinWidth(120);
     setMinHeight(55);
-    setDefaultSize(590, 200, 150, 120);
+    setDefaultSize(590, 200, 180, 300);
     setupWindow->registerWindowForReset(this);
 
     mCreateButton = new Button(_("Create"), "create", this);

@@ -13,15 +13,16 @@
 ##9Mihail Barer (Necromonger) <>
  
 ##3== traducteurs ==
-##9Aline Ferraz de Souza (Freya) <freya.df gmail com>        (pt, pt_BR)
-##9Andrei Karas (4144) <akaras inbox ru>                     (ru)
-##9Bernard Hugonnet (Nard) <>                                (fr)
-##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>       (nl_BE)
-##9Mihail Barer (Necromonger) <>                             (ru)
-##9Sini Ruohomaa (Byakushin) <sini.ruohomaa iki fi>          (fi)
-##9Yohann Ferreira (Bertram) <bertram cegetel net>           (fr)
-##9Antoine Ruck (Jumpy) <antoinebcn hotmail com>             (fr,es)
-##9Nelson Martell (nelson6e65) <nelson6eeduardo65 gmail com> (es)
+##9Aline Ferraz de Souza (Freya) <freya.df gmail com>         (pt, pt_BR)
+##9Andrei Karas (4144) <akaras inbox ru>                      (ru)
+##9Bernard Hugonnet (Nard) <>                                 (fr)
+##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>        (nl_BE)
+##9Mihail Barer (Necromonger) <>                              (ru)
+##9Petr Varkoček (pitriss) <>                                 (cs)
+##9Sini Ruohomaa (Byakushin) <sini.ruohomaa iki fi>           (fi)
+##9Yohann Ferreira (Bertram) <bertram cegetel net>            (fr)
+##9Antoine Ruck (Jumpy) <antoinebcn hotmail com>              (fr,es)
+##9Nelson Martell (nelson6e65) <nelson6e65-manaplus yahoo es> (es)
 ##9alastrim
 ##9GonzoDark
  

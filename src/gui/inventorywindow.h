@@ -45,6 +45,7 @@ class DropDown;
 class Item;
 class ItemContainer;
 class InventoryFilter;
+class LayoutCell;
 class ProgressBar;
 class SortListModel;
 //class TextBox;
@@ -82,6 +83,11 @@ class InventoryWindow : public Window,
          * Returns the selected item.
          */
         Item* getSelectedItem() const;
+
+        /**
+         * Handles closing of the window
+         */
+        void widgetHidden(const gcn::Event &event);
 
         /**
          * Handles the mouse clicks.
@@ -133,6 +139,8 @@ class InventoryWindow : public Window,
 
         bool isInputFocused() const;
 
+        void widgetResized(const gcn::Event &event);
+
         static bool isAnyInputFocused();
 
     private:
@@ -154,15 +162,20 @@ class InventoryWindow : public Window,
                     *mSplitButton, *mOutfitButton, *mShopButton,
                     *mStoreButton, *mRetrieveButton, *mCloseButton;
 
-        gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel, *mSorterLabel;
+        gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel;
 
         ProgressBar *mWeightBar, *mSlotsBar;
         InventoryFilter *mFilter;
         DropDown *mSortDropDown;
         SortListModel *mSortModel;
         TextField *mNameFilter;
+        LayoutCell *mSortDropDownCell;
+        LayoutCell *mNameFilterCell;
+        LayoutCell *mFilterCell;
+        LayoutCell *mSlotsBarCell;
 
         bool mSplit;
+        bool mCompactMode;
 };
 
 extern InventoryWindow *inventoryWindow;

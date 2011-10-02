@@ -177,11 +177,13 @@ ActorSpriteManager::ActorSpriteManager() :
     mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
     mCyclePlayers = config.getBoolValue("cyclePlayers");
     mCycleMonsters = config.getBoolValue("cycleMonsters");
+    mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
 
     config.addListener("targetDeadPlayers", this);
     config.addListener("targetOnlyReachable", this);
     config.addListener("cyclePlayers", this);
     config.addListener("cycleMonsters", this);
+    config.addListener("extMouseTargeting", this);
 
     loadAttackList();
 }
@@ -192,6 +194,7 @@ ActorSpriteManager::~ActorSpriteManager()
     config.removeListener("targetOnlyReachable", this);
     config.removeListener("cyclePlayers", this);
     config.removeListener("cycleMonsters", this);
+    config.removeListener("extMouseTargeting", this);
     storeAttackList();
     clear();
 }
@@ -300,26 +303,81 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
         return NULL;
 
     bool targetDead = mTargetDeadPlayers;
-    Being *tempBeing = 0;
-    bool noBeing(false);
 
-    for_actors
+    if (mExtMouseTargeting)
     {
-        if (!*it)
-            continue;
+        Being *tempBeing = 0;
+        bool noBeing(false);
 
-        if ((*it)->getType() == ActorSprite::FLOOR_ITEM
-            || (*it)->getType() == ActorSprite::PORTAL)
+        for_actors
         {
-            continue;
+            if (!*it)
+                continue;
+
+            if ((*it)->getType() == ActorSprite::PORTAL)
+                continue;
+
+            if ((*it)->getType() == ActorSprite::FLOOR_ITEM)
+            {
+                if (!noBeing)
+                {
+                    FloorItem *floor = static_cast<FloorItem*>(*it);
+                    if (!noBeing && (floor->getPixelX() - 32 <= x) &&
+                        (floor->getPixelX() + 32 > x) &&
+                        (floor->getPixelY() - 64 <= y) &&
+                        (floor->getPixelY() + 16 > y))
+                    {
+                        noBeing = true;
+                    }
+                }
+                continue;
+            }
+
+            Being *being = static_cast<Being*>(*it);
+
+            if ((being->isAlive()
+                || (targetDead && being->getType() == Being::PLAYER))
+                && (allPlayers ||  being != player_node))
+            {
+
+                if ((being->getPixelX() - 16 <= x) &&
+                    (being->getPixelX() + 16 > x) &&
+                    (being->getPixelY() - 32 <= y) &&
+                    (being->getPixelY() > y))
+                {
+                    return being;
+                }
+                else if (!noBeing && (being->getPixelX() - 32 <= x) &&
+                         (being->getPixelX() + 32 > x) &&
+                         (being->getPixelY() - 64 <= y) &&
+                         (being->getPixelY() + 16 > y))
+                {
+                    if (tempBeing)
+                        noBeing = true;
+                    else
+                        tempBeing = being;
+                }
+            }
         }
 
-        Being *being = static_cast<Being*>(*it);
-
-        if ((being->isAlive()
-            || (targetDead && being->getType() == Being::PLAYER))
-            && (allPlayers ||  being != player_node))
+        if (noBeing)
+            return 0;
+        return tempBeing;
+    }
+    else
+    {
+        for_actors
         {
+            if (!*it)
+                continue;
+
+            if ((*it)->getType() == ActorSprite::PORTAL ||
+                (*it)->getType() == ActorSprite::FLOOR_ITEM)
+            {
+                continue;
+            }
+
+            Being *being = static_cast<Being*>(*it);
 
             if ((being->getPixelX() - 16 <= x) &&
                 (being->getPixelX() + 16 > x) &&
@@ -328,22 +386,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
             {
                 return being;
             }
-            else if (!noBeing && (being->getPixelX() - 32 <= x) &&
-                     (being->getPixelX() + 32 > x) &&
-                     (being->getPixelY() - 64 <= y) &&
-                     (being->getPixelY() + 16 > y))
-            {
-                if (tempBeing)
-                    noBeing = true;
-                else
-                    tempBeing = being;
-            }
         }
-    }
-
-    if (noBeing)
         return 0;
-    return tempBeing;
+    }
 }
 
 void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
@@ -1285,6 +1330,8 @@ void ActorSpriteManager::optionChanged(const std::string &name)
         mCyclePlayers = config.getBoolValue("cyclePlayers");
     else if (name == "cycleMonsters")
         mCycleMonsters = config.getBoolValue("cycleMonsters");
+    else if (name == "extMouseTargeting")
+        mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
 }
 
 void ActorSpriteManager::removeAttackMob(const std::string &name)

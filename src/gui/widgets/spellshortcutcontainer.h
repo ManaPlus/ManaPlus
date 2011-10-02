@@ -77,6 +77,8 @@ class SpellShortcutContainer : public ShortcutContainer
          */
         void mouseReleased(gcn::MouseEvent &event);
 
+        void widgetHidden(const gcn::Event &event);
+
     private:
         void mouseExited(gcn::MouseEvent &event);
         void mouseMoved(gcn::MouseEvent &event);

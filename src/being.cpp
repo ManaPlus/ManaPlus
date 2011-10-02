@@ -84,7 +84,6 @@
 #include "debug.h"
 
 #define CACHE_SIZE 50
-#define HAIR_FILE "hair.xml"
 
 static const int DEFAULT_BEING_WIDTH = 32;
 static const int DEFAULT_BEING_HEIGHT = 32;

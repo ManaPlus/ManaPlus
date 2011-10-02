@@ -56,6 +56,8 @@ class ShortcutWindow : public Window
 
         int getTabIndex();
 
+        void widgetHidden(const gcn::Event &event);
+
     private:
         ShortcutWindow();
         ShortcutContainer *mItems;

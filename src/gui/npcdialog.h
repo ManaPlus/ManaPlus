@@ -147,13 +147,6 @@ class NpcDialog : public Window, public gcn::ActionListener,
 
         void move(int amount);
 
-        /**
-         * Called when resizing the window.
-         *
-         * @param event The calling event
-         */
-        void widgetResized(const gcn::Event &event);
-
         void setVisible(bool visible);
 
         void optionChanged(const std::string &name);

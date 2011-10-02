@@ -159,3 +159,22 @@ int ShortcutWindow::getTabIndex()
         return 0;
     return mTabs->getSelectedTabIndex();
 }
+
+void ShortcutWindow::widgetHidden(const gcn::Event &event)
+{
+    if (mItems)
+        mItems->widgetHidden(event);
+    if (mTabs)
+    {
+        ScrollArea *scroll = static_cast<ScrollArea*>(
+            mTabs->getCurrentWidget());
+        if (scroll)
+        {
+            ShortcutContainer *content = static_cast<ShortcutContainer*>(
+                scroll->getContent());
+
+            if (content)
+                content->widgetHidden(event);
+        }
+    }
+}

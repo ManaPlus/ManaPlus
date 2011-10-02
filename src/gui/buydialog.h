@@ -38,6 +38,7 @@
 
 class ShopItems;
 class ShopListBox;
+class IntTextField;
 class ListBox;
 
 /**
@@ -124,6 +125,8 @@ class BuyDialog : public Window, public gcn::ActionListener,
          */
         static void closeAll();
 
+        void scheduleDelete();
+
     private:
         typedef std::list<BuyDialog*> DialogList;
         static DialogList instances;
@@ -140,6 +143,8 @@ class BuyDialog : public Window, public gcn::ActionListener,
         gcn::Label *mMoneyLabel;
         gcn::Label *mQuantityLabel;
         gcn::Slider *mSlider;
+        gcn::Label *mAmountLabel;
+        IntTextField *mAmountField;
 
         ShopItems *mShopItems;
 
@@ -147,6 +152,7 @@ class BuyDialog : public Window, public gcn::ActionListener,
         int mAmountItems;
         int mMaxItems;
         std::string mNick;
+        bool mEnabledKeyboard;
 };
 
 #endif

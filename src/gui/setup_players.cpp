@@ -60,6 +60,9 @@ Setup_Players::Setup_Players()
     new SetupItemCheckBox(_("Show own name"), "",
         "showownname", this, "showownnameEvent");
 
+    new SetupItemCheckBox(_("Enable extended mouse targeting"), "",
+        "extMouseTargeting", this, "extMouseTargetingEvent");
+
     new SetupItemCheckBox(_("Target dead players"), "",
         "targetDeadPlayers", this, "targetDeadPlayersEvent");
 

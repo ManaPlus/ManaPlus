@@ -78,6 +78,9 @@ class KeyboardConfig
         int getKeyValue(int index) const
         { return mKey[index].value; }
 
+        bool isSeparator(int index) const
+        { return !*mKey[index].configField; }
+
         /**
          * Get the index of the new key to be assigned.
          */
@@ -157,6 +160,7 @@ class KeyboardConfig
         enum KeyAction
         {
             KEY_NO_VALUE = -1,
+            KEY_SEPARATOR1,
             KEY_MOVE_UP,
             KEY_MOVE_DOWN,
             KEY_MOVE_LEFT,
@@ -168,9 +172,9 @@ class KeyboardConfig
             KEY_MOVE_TO_HOME,
             KEY_SET_HOME,
             KEY_MOVE_TO_POINT,
-            KEY_EMOTE,
             KEY_TALK,
             KEY_TARGET,
+            KEY_UNTARGET,
             KEY_TARGET_CLOSEST,
             KEY_TARGET_NPC,
             KEY_TARGET_PLAYER,
@@ -181,6 +185,9 @@ class KeyboardConfig
             KEY_SCREENSHOT,
             KEY_TRADE,
             KEY_PATHFIND,
+            KEY_OK,
+            KEY_QUIT,
+            KEY_SEPARATOR2,
             KEY_SHORTCUTS_KEY,
             KEY_SHORTCUT_1,
             KEY_SHORTCUT_2,
@@ -202,6 +209,7 @@ class KeyboardConfig
             KEY_SHORTCUT_18,
             KEY_SHORTCUT_19,
             KEY_SHORTCUT_20,
+            KEY_SEPARATOR3,
             KEY_WINDOW_HELP,
             KEY_WINDOW_STATUS,
             KEY_WINDOW_INVENTORY,
@@ -224,6 +232,8 @@ class KeyboardConfig
             KEY_WINDOW_DIDYOUKNOW,
             KEY_PREV_SOCIAL_TAB,
             KEY_NEXT_SOCIAL_TAB,
+            KEY_SEPARATOR4,
+            KEY_EMOTE,
             KEY_EMOTE_1,
             KEY_EMOTE_2,
             KEY_EMOTE_3,
@@ -268,9 +278,11 @@ class KeyboardConfig
             KEY_EMOTE_42,
             KEY_EMOTE_43,
             KEY_EMOTE_44,
+            KEY_SEPARATOR5,
             KEY_WEAR_OUTFIT,
             KEY_COPY_OUTFIT,
             KEY_COPY_EQUIPED_OUTFIT,
+            KEY_SEPARATOR6,
             KEY_TOGGLE_CHAT,
             KEY_SCROLL_CHAT_UP,
             KEY_SCROLL_CHAT_DOWN,
@@ -281,8 +293,7 @@ class KeyboardConfig
             KEY_CHAT_NEXT_HISTORY,
             KEY_AUTOCOMPLETE_CHAT,
             KEY_DEACTIVATE_CHAT,
-            KEY_OK,
-            KEY_QUIT,
+            KEY_SEPARATOR7,
             KEY_IGNORE_INPUT_1,
             KEY_IGNORE_INPUT_2,
             KEY_DIRECT_UP,

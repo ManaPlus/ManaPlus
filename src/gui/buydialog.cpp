@@ -22,6 +22,7 @@
 
 #include "gui/buydialog.h"
 
+#include "keyboardconfig.h"
 #include "shopitem.h"
 #include "units.h"
 
@@ -29,6 +30,7 @@
 #include "gui/tradewindow.h"
 
 #include "gui/widgets/button.h"
+#include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
@@ -77,6 +79,9 @@ void BuyDialog::init()
     setMinHeight(230);
     setDefaultSize(260, 230, ImageRect::CENTER);
 
+    mEnabledKeyboard = keyboard.isEnabled();
+    keyboard.setEnabled(false);
+
     mShopItems = new ShopItems;
 
     mShopItemList = new ShopListBox(mShopItems, mShopItems);
@@ -88,6 +93,15 @@ void BuyDialog::init()
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
     mMoneyLabel = new Label(strprintf(_("Price: %s / Total: %s"),
                                             "", ""));
+
+    mAmountField = new IntTextField(1, 1, 123);
+    mAmountField->setActionEventId("amount");
+    mAmountField->addActionListener(this);
+    mAmountField->setSendAlwaysEvents(true);
+    mAmountField->setEnabled(false);
+
+    mAmountLabel = new Label(_("Amount:"));
+    mAmountLabel->adjustSize();
 
     // TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
     // You may change this symbol if your language uses another.
@@ -114,15 +128,17 @@ void BuyDialog::init()
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
 
-    placer(0, 0, mScrollArea, 8, 5).setPadding(3);
+    placer(0, 0, mScrollArea, 9, 5).setPadding(3);
     placer(0, 5, mDecreaseButton);
-    placer(1, 5, mSlider, 3);
-    placer(4, 5, mIncreaseButton);
-    placer(5, 5, mQuantityLabel, 2);
-    placer(7, 5, mAddMaxButton);
-    placer(0, 6, mMoneyLabel, 8);
-    placer(6, 7, mBuyButton);
-    placer(7, 7, mQuitButton);
+    placer(1, 5, mSlider, 4);
+    placer(5, 5, mIncreaseButton);
+    placer(6, 5, mQuantityLabel, 2);
+    placer(8, 5, mAddMaxButton);
+    placer(0, 6, mAmountLabel, 2);
+    placer(2, 6, mAmountField, 2);
+    placer(0, 7, mMoneyLabel, 8);
+    placer(7, 8, mBuyButton);
+    placer(8, 8, mQuitButton);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -188,23 +204,33 @@ void BuyDialog::action(const gcn::ActionEvent &event)
     if (event.getId() == "slider")
     {
         mAmountItems = static_cast<int>(mSlider->getValue());
+        mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
     else if (event.getId() == "inc" && mAmountItems < mMaxItems)
     {
         mAmountItems++;
         mSlider->setValue(mAmountItems);
+        mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
     else if (event.getId() == "dec" && mAmountItems > 1)
     {
         mAmountItems--;
         mSlider->setValue(mAmountItems);
+        mAmountField->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
     else if (event.getId() == "max")
     {
         mAmountItems = mMaxItems;
+        mSlider->setValue(mAmountItems);
+        mAmountField->setValue(mAmountItems);
+        updateButtonsAndLabels();
+    }
+    else if (event.getId() == "amount")
+    {
+        mAmountItems = mAmountField->getValue();
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
@@ -256,6 +282,8 @@ void BuyDialog::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
 
     updateButtonsAndLabels();
     mSlider->gcn::Slider::setScale(1, mMaxItems);
+    mAmountField->setRange(1, mMaxItems);
+    mAmountField->setValue(1);
 }
 
 void BuyDialog::updateButtonsAndLabels()
@@ -297,6 +325,7 @@ void BuyDialog::updateButtonsAndLabels()
     mDecreaseButton->setEnabled(mAmountItems > 1);
     mBuyButton->setEnabled(mAmountItems > 0);
     mSlider->setEnabled(mMaxItems > 1);
+    mAmountField->setEnabled(mAmountItems > 0);
 
     // Update quantity and money labels
     mQuantityLabel->setCaption(strprintf("%d / %d", mAmountItems, mMaxItems));
@@ -325,4 +354,10 @@ void BuyDialog::closeAll()
         if (*it)
             (*it)->close();
     }
+}
+
+void BuyDialog::scheduleDelete()
+{
+    keyboard.setEnabled(mEnabledKeyboard);
+    Window::scheduleDelete();
 }

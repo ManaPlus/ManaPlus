@@ -59,23 +59,27 @@
 #undef malloc
 #endif
 
-bool stringCompare(const std::string &left, const std::string &right);
 
-bool stringCompare(const std::string &left, const std::string &right )
+class NameFunctuator
 {
-    for (std::string::const_iterator lit = left.begin(),
-         rit = right.begin();
-         lit != left.end() && rit != right.end(); ++lit, ++rit)
-    {
-        if (tolower(*lit) < tolower(*rit))
-            return true;
-        else if (tolower(*lit) > tolower(*rit))
+    public:
+        bool operator()(const std::string &left,
+                        const std::string &right) const
+        {
+            for (std::string::const_iterator lit = left.begin(),
+                 rit = right.begin();
+                 lit != left.end() && rit != right.end(); ++lit, ++rit)
+            {
+                if (tolower(*lit) < tolower(*rit))
+                    return true;
+                else if (tolower(*lit) > tolower(*rit))
+                    return false;
+            }
+            if (left.size() < right.size())
+                return true;
             return false;
-    }
-    if (left.size() < right.size())
-        return true;
-    return false;
-}
+        }
+} nameCompare;
 
 WhoIsOnline::WhoIsOnline():
     Window(_("Who Is Online - Updating"), false, 0, "whoisonline.xml"),
@@ -297,9 +301,9 @@ void WhoIsOnline::loadList()
     setCaption(_("Who Is Online - ") + toString(numOnline));
 
     //List the online people
-    sort(friends.begin(), friends.end(), stringCompare);
-    sort(neutral.begin(), neutral.end(), stringCompare);
-    sort(disregard.begin(), disregard.end(), stringCompare);
+    sort(friends.begin(), friends.end(), nameCompare);
+    sort(neutral.begin(), neutral.end(), nameCompare);
+    sort(disregard.begin(), disregard.end(), nameCompare);
     bool addedFromSection(false);
     for (int i = 0; i < static_cast<int>(friends.size()); i++)
     {
