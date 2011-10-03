@@ -119,8 +119,18 @@ class SortBeingFunctor
             }
             if (being1->getDistance() != being2->getDistance())
             {
-                if (specialDistance && being1->getDistance() <= 2)
+                if (specialDistance && being1->getDistance() <= 2
+                    && being2->getDistance() <= attackRange
+                    && being2->getDistance() > 2)
+                {
                     return false;
+                }
+                else if (specialDistance && being2->getDistance() <= 2
+                    && being1->getDistance() <= attackRange
+                    && being1->getDistance() > 2)
+                {
+                    return true;
+                }
                 return being1->getDistance() < being2->getDistance();
             }
 
@@ -169,6 +179,7 @@ class SortBeingFunctor
         std::map<std::string, int> *priorityBeings;
         int defaultPriorityIndex;
         bool specialDistance;
+        int attackRange;
 } beingSorter;
 
 ActorSpriteManager::ActorSpriteManager() :
@@ -768,6 +779,8 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
     std::map<std::string, int> priorityMobsMap;
     int defaultAttackIndex = 10000;
     int defaultPriorityIndex = 10000;
+    const int attackRange = player_node->getAttackRange();
+
     bool specialDistance = false;
     if (player_node->getMoveToTargetType() == 7
         && player_node->getAttackRange() > 2)
@@ -794,6 +807,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         beingSorter.attackBeings = &attackMobsMap;
         beingSorter.priorityBeings = &priorityMobsMap;
         beingSorter.specialDistance = specialDistance;
+        beingSorter.attackRange = attackRange;
         if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
             ignoreDefault = true;
         std::map<std::string, int>::const_iterator
@@ -872,8 +886,15 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 
         if (player_node->getTarget() == NULL)
         {
-            // if no selected being, return first nearest being
-            return sortedBeings.at(0);
+            Being *target = sortedBeings.at(0);
+
+            if (specialDistance && target->getType() == Being::MONSTER
+                && target->getDistance() <= 2)
+            {
+                return 0;
+            }
+            // if no selected being in vector, return first nearest being
+            return target;
         }
 
         beingEqualFinder.findBeing = player_node->getTarget();

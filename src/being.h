@@ -540,7 +540,7 @@ class Being : public ActorSprite, public ConfigListener
         const Path &getPath() const
         { return mPath; }
 
-        int getDistance()
+        int getDistance() const
         { return mDistance; }
 
         void setDistance(int n)
