@@ -126,8 +126,8 @@ class SortBeingFunctor
                     return false;
                 }
                 else if (specialDistance && being2->getDistance() <= 2
-                    && being1->getDistance() <= attackRange
-                    && being1->getDistance() > 2)
+                         && being1->getDistance() <= attackRange
+                         && being1->getDistance() > 2)
                 {
                     return true;
                 }
