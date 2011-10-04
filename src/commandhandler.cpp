@@ -112,6 +112,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleDisregard(args, tab);
     else if (type == "neutral")
         handleNeutral(args, tab);
+    else if (type == "blacklist")
+        handleBlackList(args, tab);
     else if (type == "erase")
         handleErase(args, tab);
     else if (type == "join")
@@ -523,9 +525,10 @@ void CommandHandler::handleUnignore(const std::string &args, ChatTab *tab)
         return;
     }
 
-    if (player_relations.getRelation(args) == PlayerRelation::IGNORED)
+    if (player_relations.getRelation(args) != PlayerRelation::NEUTRAL
+        && player_relations.getRelation(args) != PlayerRelation::FRIEND)
     {
-        player_relations.removePlayer(args);
+        player_relations.setRelation(args, PlayerRelation::NEUTRAL);
     }
     else
     {
@@ -536,13 +539,17 @@ void CommandHandler::handleUnignore(const std::string &args, ChatTab *tab)
 
     if (tab)
     {
-        if (player_relations.getRelation(args) != PlayerRelation::IGNORED)
+        if (player_relations.getRelation(args) == PlayerRelation::NEUTRAL)
             tab->chatLog(_("Player no longer ignored!"), BY_SERVER);
         else
             tab->chatLog(_("Player could not be unignored!"), BY_SERVER);
     }
 }
 
+void CommandHandler::handleBlackList(const std::string &args, ChatTab *tab)
+{
+    changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
+}
 
 void CommandHandler::handleErase(const std::string &args, ChatTab *tab)
 {

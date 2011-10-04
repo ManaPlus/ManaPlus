@@ -278,6 +278,7 @@ void WhoIsOnline::loadList()
                         break;
 
                     case PlayerRelation::DISREGARDED:
+                    case PlayerRelation::BLACKLISTED:
                         disregard.push_back(prepareNick(nick, level, "8"));
                         break;
 

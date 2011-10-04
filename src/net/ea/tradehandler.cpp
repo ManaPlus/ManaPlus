@@ -84,7 +84,7 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
     // special message about the player being occupied.
     std::string tradePartnerNameTemp = msg.readString(24);
 
-    if (player_relations.hasPermission(tradePartnerName,
+    if (player_relations.hasPermission(tradePartnerNameTemp,
         PlayerRelation::TRADE))
     {
         if (PlayerInfo::isTrading() || confirmDlg)

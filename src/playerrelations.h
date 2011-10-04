@@ -44,8 +44,9 @@ struct PlayerRelation
     static const unsigned int WHISPER      = (1 << 3);
     static const unsigned int TRADE        = (1 << 4);
     static const unsigned int INVISIBLE    = (1 << 5);
+    static const unsigned int BLACKLIST    = (1 << 6);
 
-    static const unsigned int RELATIONS_NR = 5;
+    static const unsigned int RELATIONS_NR = 6;
     static const unsigned int RELATION_PERMISSIONS[RELATIONS_NR];
 
     static const unsigned int DEFAULT = EMOTE
@@ -59,7 +60,8 @@ struct PlayerRelation
         FRIEND      = 1,
         DISREGARDED = 2,
         IGNORED     = 3,
-        ERASED      = 4
+        ERASED      = 4,
+        BLACKLISTED = 5
     };
 
     PlayerRelation(Relation relation);

@@ -1623,7 +1623,9 @@ void Being::updateColors()
                 mNameColor = &userPalette->getColor(UserPalette::FRIEND);
             }
             else if (player_relations.getRelation(mName) ==
-                     PlayerRelation::DISREGARDED)
+                     PlayerRelation::DISREGARDED
+                     || player_relations.getRelation(mName) ==
+                     PlayerRelation::BLACKLISTED)
             {
                 mNameColor = &userPalette->getColor(UserPalette::DISREGARDED);
             }
