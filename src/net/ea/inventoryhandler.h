@@ -60,16 +60,22 @@ class EquipBackend : public Equipment::Backend
             if (invyIndex == -1)
                 return NULL;
 
-            return PlayerInfo::getInventory()->getItem(invyIndex);
+            if (PlayerInfo::getInventory())
+                return PlayerInfo::getInventory()->getItem(invyIndex);
+            else
+                return 0;
         }
 
         void clear()
         {
+            Inventory *inv = PlayerInfo::getInventory();
+            if (!inv)
+                return;
             for (int i = 0; i < EQUIPMENT_SIZE; i++)
             {
                 if (mEquipment[i] != -1)
                 {
-                    Item* item = PlayerInfo::getInventory()->getItem(i);
+                    Item* item = inv->getItem(i);
                     if (item)
                         item->setEquipped(false);
                 }
@@ -80,16 +86,19 @@ class EquipBackend : public Equipment::Backend
 
         void setEquipment(int index, int inventoryIndex)
         {
+            Inventory *inv = PlayerInfo::getInventory();
+            if (!inv)
+                return;
+
             // Unequip existing item
-            Item* item = PlayerInfo::getInventory()
-                ->getItem(mEquipment[index]);
+            Item* item = inv->getItem(mEquipment[index]);
 
             if (item)
                 item->setEquipped(false);
 
             mEquipment[index] = inventoryIndex;
 
-            item = PlayerInfo::getInventory()->getItem(inventoryIndex);
+            item = inv->getItem(inventoryIndex);
             if (item)
                 item->setEquipped(true);
 
@@ -115,14 +124,14 @@ class InventoryItem
         bool equip;
 
         InventoryItem(int slot0, int id0, int quantity0, int refine0,
-                      unsigned char color0, bool equip0)
+                      unsigned char color0, bool equip0) :
+            slot(slot0),
+            id(id0),
+            quantity(quantity0),
+            color(color0),
+            refine(refine0),
+            equip(equip0)
         {
-            slot = slot0;
-            id = id0;
-            quantity = quantity0;
-            refine = refine0;
-            color = color0;
-            equip = equip0;
         }
 };
 

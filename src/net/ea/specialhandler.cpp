@@ -134,11 +134,8 @@ void SpecialHandler::processSkillFailed(Net::MessageIn &msg)
     std::string txt;
     if (success == SKILL_FAILED && skillId == SKILL_BASIC)
     {
-        if (player_node && bskill == BSKILL_EMOTE
-            && reason == RFAIL_SKILLDEP)
-        {
+        if (player_node && bskill == BSKILL_EMOTE && reason == RFAIL_SKILLDEP)
             player_node->stopAdvert();
-        }
 
         switch (bskill)
         {
@@ -171,8 +168,7 @@ void SpecialHandler::processSkillFailed(Net::MessageIn &msg)
         switch (reason)
         {
             case RFAIL_SKILLDEP:
-                txt += _("You have not yet reached a high enough "
-                    "lvl!");
+                txt += _("You have not yet reached a high enough lvl!");
                 break;
             case RFAIL_INSUFHP:
                 txt += _("Insufficient HP!");

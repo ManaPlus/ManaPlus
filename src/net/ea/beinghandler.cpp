@@ -58,7 +58,7 @@ namespace Ea
 {
 const int EMOTION_TIME = 500;    /**< Duration of emotion icon */
 
-BeingHandler::BeingHandler(bool enableSync):
+BeingHandler::BeingHandler(bool enableSync) :
     mSync(enableSync),
     mSpawnId(0)
 {
@@ -133,8 +133,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     speed = msg.readInt16();
     stunMode = msg.readInt16();  // opt1
     statusEffects = msg.readInt16();  // opt2
-    statusEffects |= (static_cast<Uint32>(
-        msg.readInt16())) << 16;  // option
+    statusEffects |= (static_cast<Uint32>(msg.readInt16())) << 16;  // option
     job = msg.readInt16();  // class
 
     dstBeing = actorSpriteManager->findBeing(id);
@@ -245,11 +244,10 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     if (dstBeing->getType() == ActorSprite::PLAYER)
     {
-        dstBeing->setGender((gender == 0)
-                            ? GENDER_FEMALE : GENDER_MALE);
+        dstBeing->setGender((gender == 0) ? GENDER_FEMALE : GENDER_MALE);
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, EA_SPRITE_HAIR, hairStyle * -1,
-                  ColorDB::getHairColor(hairColor));
+            ColorDB::getHairColor(hairColor));
         setSprite(dstBeing, EA_SPRITE_BOTTOMCLOTHES, headBottom);
         setSprite(dstBeing, EA_SPRITE_TOPCLOTHES, headMid);
         setSprite(dstBeing, EA_SPRITE_HAT, headTop);
@@ -283,8 +281,6 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         dstBeing->setAction(Being::STAND);
         dstBeing->setTileCoords(srcX, srcY);
         dstBeing->setDestination(dstX, dstY);
-//                if (player_node && player_node->getTarget() == dstBeing)
-//                    player_node->targetMoved();
     }
     else
     {
@@ -292,7 +288,6 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         Uint16 x, y;
         msg.readCoordinates(x, y, dir);
         dstBeing->setTileCoords(x, y);
-
 
         if (job == 45 && socialWindow && outfitWindow)
         {
@@ -379,7 +374,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
         return;
 
     player_node->followMoveTo(dstBeing, player_node->getNextDestX(),
-                              player_node->getNextDestY());
+        player_node->getNextDestY());
 
     // If this is player's current target, clear it.
     if (dstBeing == player_node->getTarget())
@@ -464,20 +459,15 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
     if (!actorSpriteManager)
         return;
 
-    Being *srcBeing;
-    Being *dstBeing;
-    int param1;
-    int type;
-
-    srcBeing = actorSpriteManager->findBeing(msg.readInt32());
-    dstBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *srcBeing = actorSpriteManager->findBeing(msg.readInt32());
+    Being *dstBeing = actorSpriteManager->findBeing(msg.readInt32());
 
     msg.readInt32();   // server tick
     int srcSpeed = msg.readInt32();   // src speed
     msg.readInt32();   // dst speed
-    param1 = msg.readInt16();
+    int param1 = msg.readInt16();
     msg.readInt16();  // param 2
-    type = msg.readInt8();
+    int type = msg.readInt8();
     msg.readInt16();  // param 3
 
     switch (type)
@@ -513,10 +503,7 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
                 {
                     srcBeing->setMoveTime();
                     if (player_node)
-                    {
-                        player_node->imitateAction(
-                            srcBeing, Being::SIT);
-                    }
+                        player_node->imitateAction(srcBeing, Being::SIT);
                 }
             }
             break;
@@ -529,23 +516,18 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
                 {
                     srcBeing->setMoveTime();
                     if (player_node)
-                    {
-                        player_node->imitateAction(
-                            srcBeing, Being::STAND);
-                    }
+                        player_node->imitateAction(srcBeing, Being::STAND);
                 }
             }
             break;
         default:
-            break;
-/*
             logger->log("QQQ1 SMSG_BEING_ACTION:");
             if (srcBeing)
                 logger->log("srcBeing:" + toString(srcBeing->getId()));
             if (dstBeing)
                 logger->log("dstBeing:" + toString(dstBeing->getId()));
             logger->log("type: " + toString(type));
-*/
+            break;
     }
 }
 
@@ -584,8 +566,7 @@ void BeingHandler::processBeingEmotion(Net::MessageIn &msg)
     if (!(dstBeing = actorSpriteManager->findBeing(msg.readInt32())))
         return;
 
-    if (player_relations.hasPermission(dstBeing,
-        PlayerRelation::EMOTE))
+    if (player_relations.hasPermission(dstBeing, PlayerRelation::EMOTE))
     {
         unsigned char emote = msg.readInt8();
         if (emote)
@@ -626,8 +607,7 @@ void BeingHandler::processNameResponse(Net::MessageIn &msg)
                 Party *party = player_node->getParty();
                 if (party && party->isMember(dstBeing->getId()))
                 {
-                    PartyMember *member = party->getMember(
-                        dstBeing->getId());
+                    PartyMember *member = party->getMember(dstBeing->getId());
 
                     if (member)
                         member->setName(dstBeing->getName());

@@ -97,16 +97,13 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
         PlayerInfo::setTrading(true);
         if (tradeWindow)
         {
-            if (tradePartnerName.empty()
-                || tradeWindow->getAutoTradeNick()
+            if (tradePartnerName.empty() || tradeWindow->getAutoTradeNick()
                 != tradePartnerName)
             {
                 tradeWindow->clear();
-                confirmDlg = new ConfirmDialog(
-                    _("Request for Trade"),
+                confirmDlg = new ConfirmDialog(_("Request for Trade"),
                     strprintf(_("%s wants to trade with you, do"
-                    " you accept?"), tradePartnerName.c_str()),
-                    true);
+                    " you accept?"), tradePartnerName.c_str()), true);
                 confirmDlg->addActionListener(&listener);
             }
             else
@@ -128,22 +125,20 @@ void TradeHandler::processTradeResponse(Net::MessageIn &msg)
     {
         case 0: // Too far away
             SERVER_NOTICE(_("Trading isn't possible. Trade "
-                    "partner is too far away."))
+                "partner is too far away."))
             break;
         case 1: // Character doesn't exist
             SERVER_NOTICE(_("Trading isn't possible. Character "
-                    "doesn't exist."))
+                "doesn't exist."))
             break;
         case 2: // Invite request check failed...
-            SERVER_NOTICE(_("Trade cancelled due to an unknown "
-                    "reason."))
+            SERVER_NOTICE(_("Trade cancelled due to an unknown reason."))
             break;
         case 3: // Trade accepted
             if (tradeWindow)
             {
                 tradeWindow->reset();
-                tradeWindow->setCaption(strprintf(
-                    _("Trade: You and %s"),
+                tradeWindow->setCaption(strprintf(_("Trade: You and %s"),
                     tradePartnerName.c_str()));
                 tradeWindow->initTrade(tradePartnerName);
                 tradeWindow->setVisible(true);
@@ -201,7 +196,10 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 {
     // Trade: New Item add response (was 0x00ea, now 01b1)
     const int index = msg.readInt16() - INVENTORY_OFFSET;
-    Item *item = PlayerInfo::getInventory()->getItem(index);
+    Item *item = 0;
+    if (PlayerInfo::getInventory())
+        item = PlayerInfo::getInventory()->getItem(index);
+
     if (!item)
     {
         if (tradeWindow)

@@ -40,7 +40,7 @@ namespace Ea
 PartyTab *partyTab = 0;
 Party *taParty = 0;
 
-PartyHandler::PartyHandler():
+PartyHandler::PartyHandler() :
     mShareExp(PARTY_SHARE_UNKNOWN),
     mShareItems(PARTY_SHARE_UNKNOWN)
 {
@@ -344,7 +344,10 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
     int id = msg.readInt32();
     std::string nick = msg.readString(24);
     msg.readInt8();     // fail
-    if (player_node && id == player_node->getId())
+    if (!player_node)
+        return;
+
+    if (id == player_node->getId())
     {
         if (Ea::taParty)
         {
@@ -431,21 +434,18 @@ void PartyHandler::processPartyMessage(Net::MessageIn &msg)
     int id = msg.readInt32();
     std::string chatMsg = msg.readString(msgLength);
 
-    if (Ea::taParty)
+    if (Ea::taParty && Ea::partyTab)
     {
         PartyMember *member = Ea::taParty->getMember(id);
-        if (Ea::partyTab)
+        if (member)
         {
-            if (member)
-            {
-                Ea::partyTab->chatLog(member->getName(), chatMsg);
-            }
-            else
-            {
-                Ea::partyTab->chatLog(strprintf(
-                    _("An unknown member tried to say: %s"),
-                    chatMsg.c_str()), BY_SERVER);
-            }
+            Ea::partyTab->chatLog(member->getName(), chatMsg);
+        }
+        else
+        {
+            Ea::partyTab->chatLog(strprintf(
+                _("An unknown member tried to say: %s"),
+                chatMsg.c_str()), BY_SERVER);
         }
     }
 }
