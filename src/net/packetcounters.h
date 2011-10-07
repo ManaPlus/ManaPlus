@@ -26,15 +26,22 @@
 class PacketCounters
 {
 public:
-//    PacketCounters();
     static void incInBytes(int cnt);
+
     static void incInPackets();
+
     static int getInBytes();
+
     static int getInPackets();
+
     static void incOutBytes(int cnt);
+
     static void incOutPackets();
+
     static int getOutBytes();
+
     static int getOutPackets();
+
     static void update();
 
     static int mInCurrentSec;

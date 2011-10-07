@@ -64,8 +64,6 @@ class InventoryHandler
         virtual size_t getSize(int type) const = 0;
 
         virtual int convertFromServerSlot(int eAthenaSlot) const = 0;
-
-//        virtual ~InventoryHandler() {}
 };
 
 } // namespace Net

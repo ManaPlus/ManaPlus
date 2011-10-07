@@ -227,7 +227,7 @@ std::string MessageIn::readRawString(int length)
         char const *stringEnd2
             = static_cast<char const *>(memchr(stringBeg2, '\0', len2));
         std::string hiddenPart = std::string(stringBeg2,
-                                stringEnd2 ? stringEnd2 - stringBeg2 : len2);
+            stringEnd2 ? stringEnd2 - stringBeg2 : len2);
         if (hiddenPart.length() > 0)
         {
             DEBUGLOG("readString2: " + hiddenPart);

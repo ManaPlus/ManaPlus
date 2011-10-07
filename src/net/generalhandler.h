@@ -44,6 +44,7 @@ class GeneralHandler
         virtual void flushNetwork() = 0;
 
         virtual void clearHandlers() = 0;
+
         virtual void reloadPartially() = 0;
 
 };

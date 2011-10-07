@@ -31,7 +31,8 @@ namespace Net
 class AdminHandler
 {
     public:
-        virtual ~AdminHandler() {}
+        virtual ~AdminHandler()
+        { }
 
         virtual void announce(const std::string &text) = 0;
 
