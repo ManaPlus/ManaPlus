@@ -153,6 +153,9 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         bool getFollowDownScroll()
         { return mFollowDownScroll; }
 
+        void fixSize()
+        { adjustSize(); }
+
     private:
         typedef std::vector< std::pair<gcn::Tab*, gcn::Widget*> > TabContainer;
 

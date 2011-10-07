@@ -123,6 +123,8 @@ public:
 
     void updateAttackFilter();
 
+    void widgetResized(const gcn::Event &event);
+
 protected:
     friend class SocialTab;
 
