@@ -40,7 +40,7 @@ namespace TmwAthena
 {
 
 class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
-        public Mana::Listener
+                       public Mana::Listener
 {
     public:
         GeneralHandler();

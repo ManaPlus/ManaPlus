@@ -157,7 +157,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
         break;
 
         default:
-        break;
+            break;
     }
 }
 
@@ -165,8 +165,11 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
                                        Net::Character *character,
                                        bool withColors)
 {
+    if (!character)
+        return;
+
     const Token &token =
-            static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
+        static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
     LocalPlayer *tempPlayer = new LocalPlayer(msg.readInt32(), 0);
     tempPlayer->setGender(token.sex);
@@ -264,6 +267,9 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
 
 void CharServerHandler::chooseCharacter(Net::Character *character)
 {
+    if (!character)
+        return;
+
     mSelectedCharacter = character;
     mCharSelectDialog = 0;
 
@@ -338,10 +344,8 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     msg.skip(2);  // Length word
     int slots = msg.readInt16();
     if (slots > 0 && slots < 30)
-    {
-        loginData.characterSlots
-            = static_cast<short unsigned int>(slots);
-    }
+        loginData.characterSlots = static_cast<short unsigned int>(slots);
+
     bool version = msg.readInt8() == 1 && serverVersion > 0;
     msg.skip(17); // Unused
 

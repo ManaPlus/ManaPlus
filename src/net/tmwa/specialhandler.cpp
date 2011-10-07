@@ -53,10 +53,9 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_PLAYER_SKILLS:
-        {
             processPlayerSkills(msg);
             break;
-        }
+
         case SMSG_PLAYER_SKILL_UP:
             processPlayerSkillUp(msg);
             break;

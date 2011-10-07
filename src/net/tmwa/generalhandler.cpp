@@ -143,10 +143,14 @@ void GeneralHandler::handleMessage(Net::MessageIn &msg)
                     break;
                 case 2:
                     if (Client::getState() == STATE_GAME)
+                    {
                         errorMessage = _("Someone else is trying to use this "
                                          "account.");
+                    }
                     else
+                    {
                         errorMessage = _("This account is already logged in.");
+                    }
                     break;
                 case 3:
                     errorMessage = _("Speed hack detected.");

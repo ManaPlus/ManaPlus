@@ -59,8 +59,7 @@ class InventoryHandler : public MessageHandler, public Ea::InventoryHandler
 
         void closeStorage(int type);
 
-        void moveItem(int source, int slot, int amount,
-                      int destination);
+        void moveItem(int source, int slot, int amount, int destination);
 };
 
 } // namespace TmwAthena

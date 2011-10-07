@@ -47,6 +47,7 @@ class MessageOut : public Net::MessageOut
         MessageOut(short id);
 
         void writeInt16(Sint16 value);        /**< Writes a short. */
+
         void writeInt32(Sint32 value);        /**< Writes a long. */
 
         /**
