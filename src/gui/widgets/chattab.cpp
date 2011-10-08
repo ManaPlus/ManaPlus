@@ -281,21 +281,15 @@ void ChatTab::chatLog(std::string line, Own own,
         {
             if (getFlash() == 0)
             {
-                if (player_node)
-                {
-                    if (chatWindow && chatWindow->findHighlight(tmp.text))
-                        setFlash(2);
-                    else
-                        setFlash(1);
-                }
+                if (chatWindow && chatWindow->findHighlight(tmp.text))
+                    setFlash(2);
                 else
-                {
                     setFlash(1);
-                }
             }
         }
 
-        if (getAllowHighlight() && (this != getTabbedArea()->getSelectedTab()
+        if ((getAllowHighlight() || own == BY_GM)
+            && (this != getTabbedArea()->getSelectedTab()
             || (Client::getIsMinimized() || (!Client::getMouseFocused()
             && !Client::getInputFocused()))))
         {
