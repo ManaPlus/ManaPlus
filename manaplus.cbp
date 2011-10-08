@@ -53,7 +53,7 @@
 			</Target>
 			<Target title="Unix">
 				<Option platforms="Unix;" />
-				<Option output="mana" prefix_auto="1" extension_auto="1" />
+				<Option output="manaplus" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option parameters='-u -d &quot;../manadata&quot;' />
@@ -63,7 +63,7 @@
 					<Add option="`sdl-config --cflags`" />
 					<Add option="-DMANASERV_SUPPORT" />
 					<Add option="-DUSE_OPENGL" />
-					<Add directory="\usr\local\include\libxml2" />
+					<Add directory="\usr\include\libxml2" />
 				</Compiler>
 				<Linker>
 					<Add option="`sdl-config --libs`" />
@@ -272,8 +272,8 @@
 		<Unit filename="src\gui\textpopup.h" />
 		<Unit filename="src\gui\theme.cpp" />
 		<Unit filename="src\gui\theme.h" />
-		<Unit filename="src\gui\trade.cpp" />
-		<Unit filename="src\gui\trade.h" />
+		<Unit filename="src\gui\tradewindow.cpp" />
+		<Unit filename="src\gui\tradewindow.h" />
 		<Unit filename="src\gui\sdlfont.cpp" />
 		<Unit filename="src\gui\sdlfont.h" />
 		<Unit filename="src\gui\unregisterdialog.cpp" />
