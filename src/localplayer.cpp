@@ -98,7 +98,6 @@ extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, 0),
-    mAttackRange(0),
     mTargetTime(-1),
     mLastTarget(-1),
     mTarget(NULL),
@@ -129,6 +128,8 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mNextStep(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
+
+    mAttackRange = 0;
 
     listen(Mana::CHANNEL_ATTRIBUTES);
     mLevel = 1;

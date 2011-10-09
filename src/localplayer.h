@@ -501,8 +501,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         bool mInStorage;      /**< Whether storage is currently accessible */
 
-        int mAttackRange;
-
         int mTargetTime;      /** How long the being has been targeted **/
         int mLastTarget;      /** Time stamp of last targeting action,
                                   -1 if none. */
