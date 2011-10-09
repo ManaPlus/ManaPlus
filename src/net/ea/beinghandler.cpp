@@ -209,14 +209,22 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     if (dstBeing->getType() == ActorSprite::MONSTER)
     {
-        int hp = msg.readInt32();
-        int maxHP = msg.readInt32();
-        if (hp && maxHP)
+        if (serverVersion > 0)
         {
-            int oldHP = dstBeing->getHP();
-            if (!oldHP || oldHP > hp)
-                dstBeing->setHP(hp);
-            dstBeing->setMaxHP(maxHP);
+            int hp = msg.readInt32();
+            int maxHP = msg.readInt32();
+            if (hp && maxHP)
+            {
+                int oldHP = dstBeing->getHP();
+                if (!oldHP || oldHP > hp)
+                    dstBeing->setHP(hp);
+                dstBeing->setMaxHP(maxHP);
+            }
+        }
+        else
+        {
+            msg.readInt32();
+            msg.readInt32();
         }
         gloves = 0;
     }
@@ -236,14 +244,22 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
-    msg.readInt8();   // karma
+    if (serverVersion > 0 && dstBeing->getType() == ActorSprite::MONSTER)
+    {
+        int attackRange = msg.readInt8();   // karma
+        dstBeing->setAttackRange(attackRange);
+    }
+    else
+    {
+        msg.readInt8();   // karma
+    }
     gender = msg.readInt8();
 
     // reserving bits for future usage
-    gender &= 1;
 
     if (dstBeing->getType() == ActorSprite::PLAYER)
     {
+        gender &= 1;
         dstBeing->setGender((gender == 0) ? GENDER_FEMALE : GENDER_MALE);
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, EA_SPRITE_HAIR, hairStyle * -1,

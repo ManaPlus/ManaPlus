@@ -229,6 +229,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mGender(GENDER_UNSPECIFIED),
     mParty(0),
     mIsGM(false),
+    mAttackRange(1),
     mType(type),
     mX(0), mY(0),
     mDamageTaken(0),
@@ -1994,7 +1995,11 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     if (mHighlightMonsterAttackRange && mType == ActorSprite::MONSTER
         && isAlive())
     {
-        const int attackRange = 32;
+        int attackRange;
+        if (mAttackRange)
+            attackRange = 32 * mAttackRange;
+        else
+            attackRange = 32;
 
         graphics->setColor(userPalette->getColorWithAlpha(
             UserPalette::MONSTER_ATTACK_RANGE));

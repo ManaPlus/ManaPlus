@@ -130,11 +130,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void actorSpriteDestroyed(const ActorSprite &actorSprite);
 
         /**
-         * Sets the attack range.
-         */
-        void setAttackRange(int range) { mAttackRange = range; }
-
-        /**
          * Gets the attack range.
          */
         int getAttackRange();
