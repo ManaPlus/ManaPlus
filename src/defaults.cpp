@@ -219,6 +219,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "seflMouseHeal", true);
     AddDEF(configData, "enableLazyScrolling", true);
     AddDEF(configData, "extMouseTargeting", true);
+    AddDEF(configData, "showMVP", false);
     return configData;
 }
 

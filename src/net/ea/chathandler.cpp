@@ -338,7 +338,7 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
 {
     // Display MVP player
     int id = msg.readInt32(); // id
-    if (localChatTab && actorSpriteManager)
+    if (localChatTab && actorSpriteManager && config.getBoolValue("showMVP"))
     {
         Being *being = actorSpriteManager->findBeing(id);
         if (!being)

@@ -125,6 +125,9 @@ Setup_Chat::Setup_Chat()
     new SetupItemTextField(_("Highlight words (separated by comma)"), "",
         "highlightWords", this, "highlightWordsEvent");
 
+    new SetupItemCheckBox(_("Show MVP messages"), "",
+        "showMVP", this, "showMVPEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
