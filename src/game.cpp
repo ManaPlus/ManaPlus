@@ -568,6 +568,7 @@ void Game::logic()
                     map->saveExtraLayer();
             }
             Client::closeDialogs();
+            Client::setFramerate(config.getIntValue("fpslimit"));
             disconnectedDialog = new OkDialog(_("Network Error"),
                                               errorMessage, false);
             disconnectedDialog->addActionListener(&errorListener);
@@ -576,6 +577,7 @@ void Game::logic()
     }
     else
     {
+        Client::setFramerate(config.getIntValue("fpslimit"));
         if (mAdjustPerfomance)
             adjustPerfomance();
         if (disconnectedDialog)
