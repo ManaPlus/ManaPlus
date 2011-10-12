@@ -77,6 +77,7 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y)
 
 void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
 {
+    Uint8 serverDir = 0;
     if (mPos + 3 <= mLength)
     {
         const char *data = mData + mPos;
@@ -87,10 +88,10 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
         temp = MAKEWORD(data[2] & 0x00f0, data[1] & 0x003f);
         y = static_cast<unsigned short>(temp >> 4);
 
-        direction = data[2] & 0x000f;
+        serverDir = data[2] & 0x000f;
 
         // Translate from eAthena format
-        switch (direction)
+        switch (serverDir)
         {
             case 0:
                 direction = 1;
@@ -134,7 +135,8 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
     mPos += 3;
     PacketCounters::incInBytes(3);
     DEBUGLOG("readCoordinates: " + toString(static_cast<int>(x))
-        + "," + toString(static_cast<int>(y)));
+        + "," + toString(static_cast<int>(y)) + "," + toString(
+        static_cast<int>(serverDir)));
 }
 
 void MessageIn::readCoordinatePair(Uint16 &srcX, Uint16 &srcY,
