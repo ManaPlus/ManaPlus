@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 dir=`pwd`
 
 cd packaging/windows

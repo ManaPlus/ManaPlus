@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd ..
+
 #may be
 #-Wshadow -Waggregate-return -Winline 
 
@@ -56,8 +58,8 @@ autoreconf -i
 --mandir=$dir/run/share/man
 
 cd po
-#make -j5 update-po 2>../make1.log
-make -j5 update-gmo 2>../make1.log
+#make -j5 update-po 2>../build/make1.log
+make -j5 update-gmo 2>../build/make1.log
 cd ..
-make -j5 2>make2.log
+make -j5 2>build/make2.log
 

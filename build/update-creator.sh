@@ -1,4 +1,7 @@
 #!/bin/sh
+
+cd ..
+
 find -name \*.cpp \
   -o -name \*.h \
   -o -name \*.am \

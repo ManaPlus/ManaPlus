@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd ..
+
 #may be
 #-Wshadow -Waggregate-return -Winline 
 
@@ -19,11 +21,11 @@
 
 dir=`pwd`
 
-export CC=gcc-4.4
-export CXX=g++-4.4
+export CC=gcc-4.5
+export CXX=g++-4.5
 
 export LANG=C
-export CXXFLAGS="-Wmissing-field-initializers \
+export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
 -Wabi -Wdisabled-optimization -Wuninitialized \
 -Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
 -Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
@@ -32,18 +34,24 @@ export CXXFLAGS="-Wmissing-field-initializers \
 -Wunused-parameter -Wlogical-op \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
--Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
--Wpacked -Wshadow -D_FORTIFY_SOURCE=2"
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O0 -pipe \
+-fno-default-inline -fno-inline"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
---mandir=$dir/run/share/man
+--mandir=$dir/run/share/man \
+--enable-memdebug=no \
+--with-internalguichan=yes \
+--enable-tcmalloc=yes \
+--enable-googleprofiler=yes
+
+#--without-librt
 
 cd po
-#make -j5 update-po 2>../make1.log
-make -j5 update-gmo 2>../make1.log
+#make -j5 update-po 2>../build/make1.log
+make -j5 update-gmo 2>../build/make1.log
 cd ..
-make -j5 2>make2.log
+make -j5 2>build/make2.log
 

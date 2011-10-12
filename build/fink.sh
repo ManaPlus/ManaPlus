@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 FINKDIR=/sw
 GCCVER=4.0
 
@@ -13,7 +15,7 @@ export LDFLAGS="-framework OpenGL"
 dir=`pwd`/run
 #dir=${FINKDIR}
 
-autoreconf -i 2>fink1.log
+autoreconf -i 2>build/fink1.log
 
 # with prefix
 #./configure --enable-applebuild=yes \
@@ -27,8 +29,8 @@ autoreconf -i 2>fink1.log
 --datarootdir=${dir}/share/games \
 --bindir=${dir}/bin \
 --sbindir=${dir}/bin \
---mandir=${dir}/share/man 2>fink2.log
+--mandir=${dir}/share/man 2>build/fink2.log
 
 # simple
 #./configure --enable-applebuild=yes 2>fink2.log 1>fink2_ok.log
-make 2>fink3.log
+make 2>build/fink3.log

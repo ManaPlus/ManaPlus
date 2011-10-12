@@ -1,7 +1,0 @@
-#!/bin/bash
-
-export PATH=/usr/i586-mingw32msvc/bin:$PATH
-CXXFLAGS="-Wall -g0 -O2" cmake -DCMAKE_TOOLCHAIN_FILE=./toolchain.cmake . 2>make1.log
-
-make -j5 2>make.log
-
