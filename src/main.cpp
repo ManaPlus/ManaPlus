@@ -45,7 +45,7 @@ static void printHelp()
 
     std::cout
         << _("manaplus [options] [manaplus-file]") << endl << endl
-        << _("[manaplus-file] : The mana file is an XML file (.manaplus)")
+        << _("[manaplus-file] : The manaplus file is an XML file (.manaplus)")
         << endl
         << _("                  used to set custom parameters") << endl
         << _("                  to the manaplus client.")

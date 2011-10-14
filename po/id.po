@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-10-01 01:22+0300\n"
-"PO-Revision-Date: 2011-09-27 19:20+0000\n"
+"POT-Creation-Date: 2011-10-15 00:08+0300\n"
+"PO-Revision-Date: 2011-10-14 21:11+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.net/projects/p/manaplus/team/"
 "id/)\n"
@@ -21,25 +21,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: src/actorspritemanager.cpp:1133
+#: src/actorspritemanager.cpp:1171
 msgid "Visible on map"
 msgstr "Terlihat di peta"
 
-#: src/being.cpp:547
+#: src/being.cpp:548
 msgid "dodge"
 msgstr "Menghindar"
 
-#: src/being.cpp:547
+#: src/being.cpp:548
 msgid "miss"
 msgstr "Luput"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1526
+#: src/being.cpp:1527
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1531
+#: src/being.cpp:1532
 msgid "I"
 msgstr "l"
 
@@ -141,15 +141,15 @@ msgstr "Gagal membuat direktori update!"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "kesalahan %s tidak ada dan tidak dapat dibuat!keluar."
 
-#: src/commandhandler.cpp:196
+#: src/commandhandler.cpp:198
 msgid "Unknown command."
 msgstr "Perintah tidak dikenal."
 
-#: src/commandhandler.cpp:295
+#: src/commandhandler.cpp:297
 msgid "Cannot send empty whispers!"
 msgstr "Tidak dapat mengirimkan pesan tanpa nama"
 
-#: src/commandhandler.cpp:309
+#: src/commandhandler.cpp:311
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -158,147 +158,151 @@ msgstr ""
 "Tidak dapat membuat kolom whisper baru untuk nama \"%s\"! nama telah ada, "
 "atau nama anda sendiri"
 
-#: src/commandhandler.cpp:329
+#: src/commandhandler.cpp:331
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Meminta untuk masuk ke channel %s."
 
-#: src/commandhandler.cpp:345 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:347 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "Nama kelompok tidak dapat di temukan"
 
-#: src/commandhandler.cpp:356
+#: src/commandhandler.cpp:358
 msgid "Guild name is missing."
 msgstr "Nama organisasi tidak ditemukan."
 
-#: src/commandhandler.cpp:369 src/commandhandler.cpp:481
-#: src/commandhandler.cpp:522 src/commandhandler.cpp:552
+#: src/commandhandler.cpp:371 src/commandhandler.cpp:483
+#: src/commandhandler.cpp:524 src/commandhandler.cpp:559
 msgid "Please specify a name."
 msgstr "Tetapkan sebuah nama"
 
-#: src/commandhandler.cpp:415
+#: src/commandhandler.cpp:417
 msgid "Return toggles chat."
 msgstr "Kembalikan pengalihan obrolan"
 
-#: src/commandhandler.cpp:415
+#: src/commandhandler.cpp:417
 msgid "Message closes chat."
 msgstr "Tutup pesan obrolan"
 
-#: src/commandhandler.cpp:426
+#: src/commandhandler.cpp:428
 msgid "Return now toggles chat."
 msgstr "Kembalikan sekarang pengalihan obrolan"
 
-#: src/commandhandler.cpp:432
+#: src/commandhandler.cpp:434
 msgid "Message now closes chat."
 msgstr "Pesan menutup obrolan"
 
-#: src/commandhandler.cpp:460
+#: src/commandhandler.cpp:462
 msgid "friend"
 msgstr "Teman"
 
-#: src/commandhandler.cpp:465
+#: src/commandhandler.cpp:467
 msgid "disregarded"
 msgstr "Diabaikan"
 
-#: src/commandhandler.cpp:470
+#: src/commandhandler.cpp:472
 msgid "neutral"
 msgstr "netral"
 
-#: src/commandhandler.cpp:489
+#: src/commandhandler.cpp:491
 #, c-format
 msgid "Player already %s!"
 msgstr "Pemain telah %s!"
 
-#: src/commandhandler.cpp:503
+#: src/commandhandler.cpp:505
 #, c-format
 msgid "Player successfully %s!"
 msgstr "Pemain telah berhasil %s!"
 
-#: src/commandhandler.cpp:511
+#: src/commandhandler.cpp:513
 #, c-format
 msgid "Player could not be %s!"
 msgstr "Pemain tidak bisa %s!"
 
-#: src/commandhandler.cpp:533
+#: src/commandhandler.cpp:536
 msgid "Player wasn't ignored!"
 msgstr "Pemain tidak diabaikan!"
 
-#: src/commandhandler.cpp:540
+#: src/commandhandler.cpp:543
 msgid "Player no longer ignored!"
 msgstr "Pemain tidak lagi diabaikan!"
 
-#: src/commandhandler.cpp:542
+#: src/commandhandler.cpp:545
 msgid "Player could not be unignored!"
 msgstr "Pemain tidak dapat diabaikan"
 
-#: src/commandhandler.cpp:559
+#: src/commandhandler.cpp:551
+msgid "blacklisted"
+msgstr ""
+
+#: src/commandhandler.cpp:566
 msgid "Player already erased!"
 msgstr "Pemain telah terhapus"
 
-#: src/commandhandler.cpp:570
+#: src/commandhandler.cpp:577
 msgid "Player successfully erased!"
 msgstr "Pemain telah berhasil dihapus"
 
-#: src/commandhandler.cpp:572
+#: src/commandhandler.cpp:579
 msgid "Player could not be erased!"
 msgstr "Pemain tidak dapat dihapus"
 
-#: src/commandhandler.cpp:872 src/commandhandler.cpp:918
+#: src/commandhandler.cpp:879 src/commandhandler.cpp:925
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:882
+#: src/commandhandler.cpp:889
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:891
+#: src/commandhandler.cpp:898
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:899
+#: src/commandhandler.cpp:906
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:907
+#: src/commandhandler.cpp:914
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:915
+#: src/commandhandler.cpp:922
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:994
+#: src/commandhandler.cpp:1001
 msgid "font cache size"
 msgstr "Ukuran jenis huruf cache"
 
-#: src/commandhandler.cpp:1006
+#: src/commandhandler.cpp:1013
 msgid "Cache size:"
 msgstr "Ukuran Cache:"
 
-#: src/commandhandler.cpp:1010
+#: src/commandhandler.cpp:1017
 msgid "Created:"
 msgstr "Buat"
 
-#: src/commandhandler.cpp:1012
+#: src/commandhandler.cpp:1019
 msgid "Deleted:"
 msgstr "Hapus"
 
-#: src/commandhandler.cpp:1059 src/commandhandler.cpp:1066
+#: src/commandhandler.cpp:1066 src/commandhandler.cpp:1073
 msgid "Resource images:"
 msgstr "Sumber gambar"
 
-#: src/commandhandler.cpp:1061 src/commandhandler.cpp:1068
+#: src/commandhandler.cpp:1068 src/commandhandler.cpp:1075
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -308,11 +312,11 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Pilihan untuk /%s adalah \"ya\", \"tidak\", \"benar\",\"salah\", \"1\",\"0\"."
 
-#: src/game.cpp:252 src/gui/widgets/chattab.cpp:409
+#: src/game.cpp:252 src/gui/widgets/chattab.cpp:403
 msgid "General"
 msgstr "Umum"
 
-#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:411
+#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:405
 msgid "Debug"
 msgstr "Debug"
 
@@ -328,23 +332,23 @@ msgstr "Gagal menyimpan screenshot!"
 msgid "The connection to the server was lost."
 msgstr "Koneksi ke server terputus"
 
-#: src/game.cpp:571
+#: src/game.cpp:572
 msgid "Network Error"
 msgstr "Kesalahan jaringan"
 
-#: src/game.cpp:1321
+#: src/game.cpp:1323
 msgid "Ignoring incoming trade requests"
 msgstr "Abaikan permohonan transaksi"
 
-#: src/game.cpp:1331
+#: src/game.cpp:1333
 msgid "Accepting incoming trade requests"
 msgstr "Terima permohonan transaksi"
 
-#: src/game.cpp:1731
+#: src/game.cpp:1733
 msgid "Could Not Load Map"
 msgstr "Tidak dapat menampilkan peta"
 
-#: src/game.cpp:1732
+#: src/game.cpp:1734
 #, c-format
 msgid "Error while loading %s"
 msgstr "Error ketika menunggu %s"
@@ -378,19 +382,19 @@ msgid "Name"
 msgstr "Nama"
 
 #: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:133
-#: src/gui/popupmenu.cpp:283 src/gui/popupmenu.cpp:596
-#: src/keyboardconfig.cpp:49 src/net/tmwa/generalhandler.cpp:265
+#: src/gui/popupmenu.cpp:292 src/gui/popupmenu.cpp:614
+#: src/keyboardconfig.cpp:49 src/net/tmwa/generalhandler.cpp:269
 msgid "Attack"
 msgstr "Pukul"
 
-#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:272
+#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:281
 #: src/keyboardconfig.cpp:62
 msgid "Talk"
 msgstr "Berbicara"
 
-#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:244
-#: src/gui/popupmenu.cpp:276 src/gui/popupmenu.cpp:419
-#: src/gui/popupmenu.cpp:642 src/gui/popupmenu.cpp:729
+#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:253
+#: src/gui/popupmenu.cpp:285 src/gui/popupmenu.cpp:437
+#: src/gui/popupmenu.cpp:669 src/gui/popupmenu.cpp:756
 msgid "Move"
 msgstr "Jalan"
 
@@ -403,8 +407,8 @@ msgid "Reset"
 msgstr "Reset"
 
 #: src/gui/buydialog.cpp:58 src/gui/buydialog.cpp:65 src/gui/buydialog.cpp:112
-#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:256
-#: src/gui/popupmenu.cpp:273 src/gui/popupmenu.cpp:654
+#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:265
+#: src/gui/popupmenu.cpp:282 src/gui/popupmenu.cpp:681
 msgid "Buy"
 msgstr "Beli"
 
@@ -415,15 +419,14 @@ msgid "Price: %s / Total: %s"
 msgstr "Harga: %s/ Total: %s"
 
 #: src/gui/buydialog.cpp:103
-#, fuzzy
 msgid "Amount:"
-msgstr "Akun:%s"
+msgstr ""
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:108 src/gui/itemamountwindow.cpp:207
 #: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:114
-#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:974
+#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:977
 msgid "+"
 msgstr "+"
 
@@ -431,7 +434,7 @@ msgstr "+"
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:111 src/gui/itemamountwindow.cpp:206
 #: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:115
-#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:986
+#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:989
 msgid "-"
 msgstr "-"
 
@@ -444,7 +447,7 @@ msgstr "Keluar"
 
 #: src/gui/buydialog.cpp:114 src/gui/selldialog.cpp:95
 #: src/gui/statuswindow.cpp:504 src/gui/statuswindow.cpp:554
-#: src/gui/statuswindow.cpp:973 src/gui/statuswindow.cpp:1004
+#: src/gui/statuswindow.cpp:976 src/gui/statuswindow.cpp:1007
 msgid "Max"
 msgstr "Max"
 
@@ -453,8 +456,8 @@ msgstr "Max"
 msgid "Shop"
 msgstr "Toko"
 
-#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:257
-#: src/gui/popupmenu.cpp:274 src/gui/popupmenu.cpp:655
+#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:266
+#: src/gui/popupmenu.cpp:283 src/gui/popupmenu.cpp:682
 #: src/gui/selldialog.cpp:53 src/gui/selldialog.cpp:60
 #: src/gui/selldialog.cpp:93
 msgid "Sell"
@@ -463,15 +466,15 @@ msgstr "Jual"
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
 #: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:96
 #: src/gui/connectiondialog.cpp:47 src/gui/itemamountwindow.cpp:209
-#: src/gui/npcpostdialog.cpp:58 src/gui/popupmenu.cpp:324
-#: src/gui/popupmenu.cpp:345 src/gui/popupmenu.cpp:460
-#: src/gui/popupmenu.cpp:486 src/gui/popupmenu.cpp:510
-#: src/gui/popupmenu.cpp:523 src/gui/popupmenu.cpp:541
-#: src/gui/popupmenu.cpp:745 src/gui/popupmenu.cpp:769
-#: src/gui/popupmenu.cpp:1694 src/gui/popupmenu.cpp:1722
-#: src/gui/popupmenu.cpp:1778 src/gui/popupmenu.cpp:1823
-#: src/gui/popupmenu.cpp:1858 src/gui/popupmenu.cpp:1897
-#: src/gui/popupmenu.cpp:1949 src/gui/popupmenu.cpp:1969
+#: src/gui/npcpostdialog.cpp:58 src/gui/popupmenu.cpp:333
+#: src/gui/popupmenu.cpp:354 src/gui/popupmenu.cpp:478
+#: src/gui/popupmenu.cpp:504 src/gui/popupmenu.cpp:528
+#: src/gui/popupmenu.cpp:541 src/gui/popupmenu.cpp:559
+#: src/gui/popupmenu.cpp:772 src/gui/popupmenu.cpp:796
+#: src/gui/popupmenu.cpp:1732 src/gui/popupmenu.cpp:1760
+#: src/gui/popupmenu.cpp:1816 src/gui/popupmenu.cpp:1861
+#: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:1935
+#: src/gui/popupmenu.cpp:1987 src/gui/popupmenu.cpp:2007
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:82 src/gui/setup.cpp:72
 #: src/gui/socialwindow.cpp:1077 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
@@ -642,7 +645,7 @@ msgid "Enter password:"
 msgstr "Masukkan sandi"
 
 #: src/gui/charselectdialog.cpp:410 src/gui/serverdialog.cpp:298
-#: src/gui/setup_relations.cpp:242 src/gui/shopwindow.cpp:122
+#: src/gui/setup_relations.cpp:243 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Hapus"
@@ -718,7 +721,7 @@ msgstr "pelangi 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
-#: src/gui/setup_relations.cpp:220 src/gui/setup_theme.cpp:73
+#: src/gui/setup_relations.cpp:221 src/gui/setup_theme.cpp:73
 #: src/gui/setup_theme.cpp:127 src/gui/setup_video.cpp:211
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
@@ -729,12 +732,12 @@ msgstr "???"
 msgid "Chat"
 msgstr "Obrolan"
 
-#: src/gui/chatwindow.cpp:609
+#: src/gui/chatwindow.cpp:610
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Kehadiran: %s; %d pemain yang hadir."
 
-#: src/gui/chatwindow.cpp:996
+#: src/gui/chatwindow.cpp:997
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Berbisik ke %s: %s"
@@ -748,9 +751,10 @@ msgid "No"
 msgstr "Tidak"
 
 #: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:146
-#: src/gui/popupmenu.cpp:152 src/gui/popupmenu.cpp:371
-#: src/gui/popupmenu.cpp:377 src/gui/popupmenu.cpp:608
-#: src/gui/popupmenu.cpp:614
+#: src/gui/popupmenu.cpp:153 src/gui/popupmenu.cpp:161
+#: src/gui/popupmenu.cpp:380 src/gui/popupmenu.cpp:387
+#: src/gui/popupmenu.cpp:395 src/gui/popupmenu.cpp:626
+#: src/gui/popupmenu.cpp:633 src/gui/popupmenu.cpp:641
 msgid "Ignore"
 msgstr "Abaikan"
 
@@ -896,7 +900,7 @@ msgstr "Apakah kamu tahu?"
 
 #: src/gui/didyouknowwindow.cpp:63 src/gui/helpwindow.cpp:59
 #: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:53
-#: src/gui/popupmenu.cpp:556 src/gui/shopwindow.cpp:113
+#: src/gui/popupmenu.cpp:574 src/gui/shopwindow.cpp:113
 msgid "Close"
 msgstr "Tutup"
 
@@ -923,8 +927,8 @@ msgstr "Perlengkapan"
 
 #: src/gui/equipmentwindow.cpp:95 src/gui/inventorywindow.cpp:160
 #: src/gui/inventorywindow.cpp:545 src/gui/inventorywindow.cpp:554
-#: src/gui/popupmenu.cpp:1656 src/gui/popupmenu.cpp:1748
-#: src/gui/popupmenu.cpp:1793
+#: src/gui/popupmenu.cpp:1694 src/gui/popupmenu.cpp:1786
+#: src/gui/popupmenu.cpp:1831
 msgid "Unequip"
 msgstr "Lepaskan"
 
@@ -966,31 +970,31 @@ msgid "Filter:"
 msgstr "Penyaring:"
 
 #: src/gui/inventorywindow.cpp:158 src/gui/inventorywindow.cpp:547
-#: src/gui/inventorywindow.cpp:556 src/gui/popupmenu.cpp:1658
-#: src/gui/popupmenu.cpp:1750 src/gui/popupmenu.cpp:1795
+#: src/gui/inventorywindow.cpp:556 src/gui/popupmenu.cpp:1696
+#: src/gui/popupmenu.cpp:1788 src/gui/popupmenu.cpp:1833
 msgid "Equip"
 msgstr "Pakai"
 
 #: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:548
-#: src/gui/inventorywindow.cpp:552 src/gui/popupmenu.cpp:1662
-#: src/gui/popupmenu.cpp:1717 src/gui/popupmenu.cpp:1754
-#: src/gui/popupmenu.cpp:1799
+#: src/gui/inventorywindow.cpp:552 src/gui/popupmenu.cpp:1700
+#: src/gui/popupmenu.cpp:1755 src/gui/popupmenu.cpp:1792
+#: src/gui/popupmenu.cpp:1837
 msgid "Use"
 msgstr "Gunakan"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:652
-#: src/gui/popupmenu.cpp:1667 src/gui/popupmenu.cpp:1759
-#: src/gui/popupmenu.cpp:1804
+#: src/gui/popupmenu.cpp:1705 src/gui/popupmenu.cpp:1797
+#: src/gui/popupmenu.cpp:1842
 msgid "Drop..."
 msgstr "Buang..."
 
-#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1676
-#: src/gui/popupmenu.cpp:1768 src/gui/popupmenu.cpp:1813
+#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1714
+#: src/gui/popupmenu.cpp:1806 src/gui/popupmenu.cpp:1851
 msgid "Split"
 msgstr "Pecah"
 
 #: src/gui/inventorywindow.cpp:175 src/gui/outfitwindow.cpp:60
-#: src/gui/popupmenu.cpp:519
+#: src/gui/popupmenu.cpp:537
 msgid "Outfits"
 msgstr "Setelan"
 
@@ -999,17 +1003,17 @@ msgid "Weight:"
 msgstr "Berat"
 
 #: src/gui/inventorywindow.cpp:203 src/gui/inventorywindow.cpp:643
-#: src/gui/popupmenu.cpp:1642 src/gui/popupmenu.cpp:1771
-#: src/gui/popupmenu.cpp:1816 src/gui/setup.cpp:73
+#: src/gui/popupmenu.cpp:1680 src/gui/popupmenu.cpp:1809
+#: src/gui/popupmenu.cpp:1854 src/gui/setup.cpp:73
 msgid "Store"
 msgstr "Simpan"
 
-#: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1683
+#: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1721
 msgid "Retrieve"
 msgstr "Kembalikan"
 
-#: src/gui/inventorywindow.cpp:654 src/gui/popupmenu.cpp:1672
-#: src/gui/popupmenu.cpp:1764 src/gui/popupmenu.cpp:1809
+#: src/gui/inventorywindow.cpp:654 src/gui/popupmenu.cpp:1710
+#: src/gui/popupmenu.cpp:1802 src/gui/popupmenu.cpp:1847
 #: src/gui/windowmenu.cpp:97
 msgid "Drop"
 msgstr "Buang"
@@ -1145,7 +1149,7 @@ msgstr "%s %d?"
 msgid "jacko spawning"
 msgstr "Jacko bertelur"
 
-#: src/guildmanager.cpp:485 src/net/ea/guildhandler.cpp:439
+#: src/guildmanager.cpp:485 src/net/ea/guildhandler.cpp:451
 msgid "You have left the guild."
 msgstr ""
 
@@ -1247,7 +1251,7 @@ msgstr "Masukan"
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:558
+#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:576
 msgid "Clear"
 msgstr "Hapus"
 
@@ -1285,321 +1289,331 @@ msgstr "Copot lebih dahulu"
 msgid "Away outfit"
 msgstr "Setelan saat bepergian"
 
-#: src/gui/popupmenu.cpp:132 src/gui/popupmenu.cpp:595
+#: src/gui/popupmenu.cpp:132 src/gui/popupmenu.cpp:613
 #: src/gui/widgets/tradetab.cpp:44
 msgid "Trade"
 msgstr "Tukar"
 
-#: src/gui/popupmenu.cpp:134 src/gui/popupmenu.cpp:363
+#: src/gui/popupmenu.cpp:134 src/gui/popupmenu.cpp:372
 msgid "Whisper"
 msgstr "Berbisik"
 
-#: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:600
+#: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:618
 msgid "Heal"
 msgstr "Menyembuhkan"
 
-#: src/gui/popupmenu.cpp:144 src/gui/popupmenu.cpp:369
-#: src/gui/popupmenu.cpp:606
+#: src/gui/popupmenu.cpp:144 src/gui/popupmenu.cpp:378
+#: src/gui/popupmenu.cpp:624
 msgid "Be friend"
 msgstr "Jadikan teman"
 
-#: src/gui/popupmenu.cpp:145 src/gui/popupmenu.cpp:151
-#: src/gui/popupmenu.cpp:169 src/gui/popupmenu.cpp:370
-#: src/gui/popupmenu.cpp:376 src/gui/popupmenu.cpp:394
-#: src/gui/popupmenu.cpp:607 src/gui/popupmenu.cpp:613
-#: src/gui/popupmenu.cpp:631
+#: src/gui/popupmenu.cpp:145 src/gui/popupmenu.cpp:152
+#: src/gui/popupmenu.cpp:160 src/gui/popupmenu.cpp:178
+#: src/gui/popupmenu.cpp:379 src/gui/popupmenu.cpp:386
+#: src/gui/popupmenu.cpp:394 src/gui/popupmenu.cpp:412
+#: src/gui/popupmenu.cpp:625 src/gui/popupmenu.cpp:632
+#: src/gui/popupmenu.cpp:640 src/gui/popupmenu.cpp:658
 msgid "Disregard"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:147 src/gui/popupmenu.cpp:153
-#: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:164
-#: src/gui/popupmenu.cpp:372 src/gui/popupmenu.cpp:378
-#: src/gui/popupmenu.cpp:384 src/gui/popupmenu.cpp:389
-#: src/gui/popupmenu.cpp:609 src/gui/popupmenu.cpp:615
-#: src/gui/popupmenu.cpp:621 src/gui/popupmenu.cpp:626
+#: src/gui/popupmenu.cpp:147 src/gui/popupmenu.cpp:154
+#: src/gui/popupmenu.cpp:381 src/gui/popupmenu.cpp:388
+#: src/gui/popupmenu.cpp:627 src/gui/popupmenu.cpp:634
+msgid "Black list"
+msgstr ""
+
+#: src/gui/popupmenu.cpp:148 src/gui/popupmenu.cpp:155
+#: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:168
+#: src/gui/popupmenu.cpp:173 src/gui/popupmenu.cpp:382
+#: src/gui/popupmenu.cpp:389 src/gui/popupmenu.cpp:396
+#: src/gui/popupmenu.cpp:402 src/gui/popupmenu.cpp:407
+#: src/gui/popupmenu.cpp:628 src/gui/popupmenu.cpp:635
+#: src/gui/popupmenu.cpp:642 src/gui/popupmenu.cpp:648
+#: src/gui/popupmenu.cpp:653
 msgid "Erase"
 msgstr "Hapus"
 
-#: src/gui/popupmenu.cpp:157 src/gui/popupmenu.cpp:163
-#: src/gui/popupmenu.cpp:168 src/gui/popupmenu.cpp:382
-#: src/gui/popupmenu.cpp:388 src/gui/popupmenu.cpp:393
-#: src/gui/popupmenu.cpp:619 src/gui/popupmenu.cpp:625
-#: src/gui/popupmenu.cpp:630
+#: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:166
+#: src/gui/popupmenu.cpp:172 src/gui/popupmenu.cpp:177
+#: src/gui/popupmenu.cpp:393 src/gui/popupmenu.cpp:400
+#: src/gui/popupmenu.cpp:406 src/gui/popupmenu.cpp:411
+#: src/gui/popupmenu.cpp:639 src/gui/popupmenu.cpp:646
+#: src/gui/popupmenu.cpp:652 src/gui/popupmenu.cpp:657
 msgid "Unignore"
 msgstr "Batalkan pengabaian"
 
-#: src/gui/popupmenu.cpp:158 src/gui/popupmenu.cpp:170
-#: src/gui/popupmenu.cpp:383 src/gui/popupmenu.cpp:395
-#: src/gui/popupmenu.cpp:620 src/gui/popupmenu.cpp:632
-#: src/playerrelations.cpp:418
+#: src/gui/popupmenu.cpp:167 src/gui/popupmenu.cpp:179
+#: src/gui/popupmenu.cpp:401 src/gui/popupmenu.cpp:413
+#: src/gui/popupmenu.cpp:647 src/gui/popupmenu.cpp:659
+#: src/playerrelations.cpp:421
 msgid "Completely ignore"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:178 src/gui/popupmenu.cpp:403
-#: src/gui/popupmenu.cpp:640 src/gui/popupmenu.cpp:719
+#: src/gui/popupmenu.cpp:187 src/gui/popupmenu.cpp:421
+#: src/gui/popupmenu.cpp:667 src/gui/popupmenu.cpp:746
 msgid "Follow"
 msgstr "Mengikuti"
 
-#: src/gui/popupmenu.cpp:179 src/gui/popupmenu.cpp:404
-#: src/gui/popupmenu.cpp:641 src/gui/popupmenu.cpp:720
+#: src/gui/popupmenu.cpp:188 src/gui/popupmenu.cpp:422
+#: src/gui/popupmenu.cpp:668 src/gui/popupmenu.cpp:747
 msgid "Imitation"
 msgstr "Tirukan"
 
-#: src/gui/popupmenu.cpp:188 src/gui/popupmenu.cpp:673
+#: src/gui/popupmenu.cpp:197 src/gui/popupmenu.cpp:700
 msgid "Invite to party"
 msgstr "Undang ke kelompok"
 
-#: src/gui/popupmenu.cpp:193 src/gui/popupmenu.cpp:415
-#: src/gui/popupmenu.cpp:678
+#: src/gui/popupmenu.cpp:202 src/gui/popupmenu.cpp:433
+#: src/gui/popupmenu.cpp:705
 msgid "Kick from party"
 msgstr "Keluarkan dari kelompok"
 
-#: src/gui/popupmenu.cpp:208 src/gui/popupmenu.cpp:220
-#: src/gui/popupmenu.cpp:432 src/gui/popupmenu.cpp:695
+#: src/gui/popupmenu.cpp:217 src/gui/popupmenu.cpp:229
+#: src/gui/popupmenu.cpp:450 src/gui/popupmenu.cpp:722
 msgid "Kick from guild"
 msgstr "Keluarkan dari organisasi"
 
-#: src/gui/popupmenu.cpp:213 src/gui/popupmenu.cpp:225
-#: src/gui/popupmenu.cpp:437 src/gui/popupmenu.cpp:700
+#: src/gui/popupmenu.cpp:222 src/gui/popupmenu.cpp:234
+#: src/gui/popupmenu.cpp:455 src/gui/popupmenu.cpp:727
 msgid "Change pos in guild"
 msgstr "Ubah posisi di organisasi"
 
-#: src/gui/popupmenu.cpp:233 src/gui/popupmenu.cpp:445
-#: src/gui/popupmenu.cpp:709
+#: src/gui/popupmenu.cpp:242 src/gui/popupmenu.cpp:463
+#: src/gui/popupmenu.cpp:736
 msgid "Invite to guild"
 msgstr "Undang ke organisasi"
 
-#: src/gui/popupmenu.cpp:241
+#: src/gui/popupmenu.cpp:250
 msgid "Kick player"
 msgstr "keluarkan  pemain"
 
-#: src/gui/popupmenu.cpp:243
+#: src/gui/popupmenu.cpp:252
 msgid "Nuke"
 msgstr "Sembunyikan"
 
-#: src/gui/popupmenu.cpp:245 src/gui/popupmenu.cpp:643
-#: src/gui/popupmenu.cpp:732
+#: src/gui/popupmenu.cpp:254 src/gui/popupmenu.cpp:670
+#: src/gui/popupmenu.cpp:759
 msgid "Show Items"
 msgstr "Perlihatkan item"
 
-#: src/gui/popupmenu.cpp:246 src/gui/popupmenu.cpp:644
-#: src/gui/popupmenu.cpp:733 src/gui/popupmenu.cpp:1966
+#: src/gui/popupmenu.cpp:255 src/gui/popupmenu.cpp:671
+#: src/gui/popupmenu.cpp:760 src/gui/popupmenu.cpp:2004
 msgid "Undress"
 msgstr "Tanggalkan pakaian"
 
-#: src/gui/popupmenu.cpp:247 src/gui/popupmenu.cpp:277
-#: src/gui/popupmenu.cpp:405 src/gui/popupmenu.cpp:645
-#: src/gui/popupmenu.cpp:734
+#: src/gui/popupmenu.cpp:256 src/gui/popupmenu.cpp:286
+#: src/gui/popupmenu.cpp:423 src/gui/popupmenu.cpp:672
+#: src/gui/popupmenu.cpp:761
 msgid "Add comment"
 msgstr "Penambahan komentar"
 
-#: src/gui/popupmenu.cpp:262 src/gui/popupmenu.cpp:453
-#: src/gui/popupmenu.cpp:660 src/gui/popupmenu.cpp:739
+#: src/gui/popupmenu.cpp:271 src/gui/popupmenu.cpp:471
+#: src/gui/popupmenu.cpp:687 src/gui/popupmenu.cpp:766
 msgid "Buy (?)"
 msgstr "Beli(?)"
 
-#: src/gui/popupmenu.cpp:263 src/gui/popupmenu.cpp:454
-#: src/gui/popupmenu.cpp:661 src/gui/popupmenu.cpp:740
+#: src/gui/popupmenu.cpp:272 src/gui/popupmenu.cpp:472
+#: src/gui/popupmenu.cpp:688 src/gui/popupmenu.cpp:767
 msgid "Sell (?)"
 msgstr "Jual(?)"
 
-#: src/gui/popupmenu.cpp:288
+#: src/gui/popupmenu.cpp:297
 msgid "Kick"
 msgstr "keluarkan"
 
-#: src/gui/popupmenu.cpp:299
+#: src/gui/popupmenu.cpp:308
 msgid "Remove from attack list"
 msgstr "Hapus dari daftar menyerang"
 
-#: src/gui/popupmenu.cpp:304
+#: src/gui/popupmenu.cpp:313
 msgid "Add to priority attack list"
 msgstr "Tambahkan prioritas daftar menyerang"
 
-#: src/gui/popupmenu.cpp:306
+#: src/gui/popupmenu.cpp:315
 msgid "Add to attack list"
 msgstr "Tambahkan ke daftar menyerang"
 
-#: src/gui/popupmenu.cpp:308
+#: src/gui/popupmenu.cpp:317
 msgid "Add to ignore list"
 msgstr "Tambahkan ke daftar Abaikan"
 
-#: src/gui/popupmenu.cpp:321 src/gui/popupmenu.cpp:457
+#: src/gui/popupmenu.cpp:330 src/gui/popupmenu.cpp:475
 msgid "Add name to chat"
 msgstr "Tambahkan nama ke Obrolan"
 
-#: src/gui/popupmenu.cpp:482
+#: src/gui/popupmenu.cpp:500
 msgid "Pick up"
 msgstr "Ambil"
 
-#: src/gui/popupmenu.cpp:483 src/gui/popupmenu.cpp:1692
-#: src/gui/popupmenu.cpp:1772 src/gui/popupmenu.cpp:1817
+#: src/gui/popupmenu.cpp:501 src/gui/popupmenu.cpp:1730
+#: src/gui/popupmenu.cpp:1810 src/gui/popupmenu.cpp:1855
 msgid "Add to chat"
 msgstr "Ambil ke obrolan"
 
-#: src/gui/popupmenu.cpp:500
+#: src/gui/popupmenu.cpp:518
 msgid "Map Item"
 msgstr "Daftar barang"
 
-#: src/gui/popupmenu.cpp:501
+#: src/gui/popupmenu.cpp:519
 msgid "Rename"
 msgstr "Ganti nama"
 
-#: src/gui/popupmenu.cpp:502 src/gui/popupmenu.cpp:1927
-#: src/gui/popupmenu.cpp:1938 src/gui/popupmenu.cpp:1942
+#: src/gui/popupmenu.cpp:520 src/gui/popupmenu.cpp:1965
+#: src/gui/popupmenu.cpp:1976 src/gui/popupmenu.cpp:1980
 msgid "Remove"
 msgstr "Hapus"
 
-#: src/gui/popupmenu.cpp:507
+#: src/gui/popupmenu.cpp:525
 msgid "Warp"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:520
+#: src/gui/popupmenu.cpp:538
 msgid "Load old outfits"
 msgstr "Memuat setelan lama"
 
-#: src/gui/popupmenu.cpp:536 src/gui/windowmenu.cpp:96
+#: src/gui/popupmenu.cpp:554 src/gui/windowmenu.cpp:96
 msgid "Spells"
 msgstr "Mantra"
 
-#: src/gui/popupmenu.cpp:537
+#: src/gui/popupmenu.cpp:555
 msgid "Load old spells"
 msgstr "Memuat mantra lama"
 
-#: src/gui/popupmenu.cpp:538
+#: src/gui/popupmenu.cpp:556
 msgid "Edit spell"
 msgstr "Edit mantra"
 
-#: src/gui/popupmenu.cpp:562
+#: src/gui/popupmenu.cpp:580
 msgid "Disable highlight"
 msgstr "Nonaktifkan sorotan"
 
-#: src/gui/popupmenu.cpp:564
+#: src/gui/popupmenu.cpp:582
 msgid "Enable highlight"
 msgstr "Aktifkan sorotan"
 
-#: src/gui/popupmenu.cpp:566
+#: src/gui/popupmenu.cpp:584
 msgid "Don't remove name"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:568
+#: src/gui/popupmenu.cpp:586
 msgid "Remove name"
 msgstr "hapus nama"
 
-#: src/gui/popupmenu.cpp:570
+#: src/gui/popupmenu.cpp:588
 msgid "Enable away"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:572
+#: src/gui/popupmenu.cpp:590
 msgid "Disable away"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:577 src/gui/socialwindow.cpp:1141
+#: src/gui/popupmenu.cpp:595 src/gui/socialwindow.cpp:1141
 msgid "Leave"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:753
+#: src/gui/popupmenu.cpp:780
 msgid "Change guild position"
 msgstr "Ubah posisi Organisasi"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1205
+#: src/gui/popupmenu.cpp:1243
 msgid "Rename map sign          "
 msgstr "Ubah nama tanda peta"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1207
+#: src/gui/popupmenu.cpp:1245
 msgid "Name:                    "
 msgstr "Nama:"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1257
+#: src/gui/popupmenu.cpp:1295
 msgid "Player comment            "
 msgstr "Komentar pemain"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1259
+#: src/gui/popupmenu.cpp:1297
 msgid "Comment:                      "
 msgstr "komentar"
 
-#: src/gui/popupmenu.cpp:1630
+#: src/gui/popupmenu.cpp:1668
 msgid "Add to trade"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1634
+#: src/gui/popupmenu.cpp:1672
 msgid "Add to trade 10"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1635
+#: src/gui/popupmenu.cpp:1673
 msgid "Add to trade half"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1636
+#: src/gui/popupmenu.cpp:1674
 msgid "Add to trade all"
 msgstr "Tambahkan semua ke Penukaran"
 
-#: src/gui/popupmenu.cpp:1646
+#: src/gui/popupmenu.cpp:1684
 msgid "Store 10"
 msgstr "Masukkan 10"
 
-#: src/gui/popupmenu.cpp:1647
+#: src/gui/popupmenu.cpp:1685
 msgid "Store half"
 msgstr "Masukkan setengah"
 
-#: src/gui/popupmenu.cpp:1648
+#: src/gui/popupmenu.cpp:1686
 msgid "Store all"
 msgstr "Masukkan semua"
 
-#: src/gui/popupmenu.cpp:1668 src/gui/popupmenu.cpp:1760
-#: src/gui/popupmenu.cpp:1805
+#: src/gui/popupmenu.cpp:1706 src/gui/popupmenu.cpp:1798
+#: src/gui/popupmenu.cpp:1843
 msgid "Drop all"
 msgstr "Buang semuanya"
 
-#: src/gui/popupmenu.cpp:1687
+#: src/gui/popupmenu.cpp:1725
 msgid "Retrieve 10"
 msgstr "Ambil 10"
 
-#: src/gui/popupmenu.cpp:1688
+#: src/gui/popupmenu.cpp:1726
 msgid "Retrieve half"
 msgstr "Ambil setengah"
 
-#: src/gui/popupmenu.cpp:1689
+#: src/gui/popupmenu.cpp:1727
 msgid "Retrieve all"
 msgstr "Ambil semua"
 
-#: src/gui/popupmenu.cpp:1720 src/gui/popupmenu.cpp:1776
+#: src/gui/popupmenu.cpp:1758 src/gui/popupmenu.cpp:1814
 msgid "Load old item shortcuts"
 msgstr "Muat jalan pintas iItem lama"
 
-#: src/gui/popupmenu.cpp:1821
+#: src/gui/popupmenu.cpp:1859
 msgid "Load old drop shortcuts"
 msgstr "Muat jalan pintas Buang yang lama"
 
-#: src/gui/popupmenu.cpp:1847 src/gui/popupmenu.cpp:1882
+#: src/gui/popupmenu.cpp:1885 src/gui/popupmenu.cpp:1920
 msgid "Hide"
 msgstr "Sembunyikan"
 
-#: src/gui/popupmenu.cpp:1853 src/gui/popupmenu.cpp:1888
+#: src/gui/popupmenu.cpp:1891 src/gui/popupmenu.cpp:1926
 msgid "Show"
 msgstr "Tampilkan"
 
-#: src/gui/popupmenu.cpp:1894
+#: src/gui/popupmenu.cpp:1932
 msgid "Reset yellow bar"
 msgstr "Atur ulang bar kuning"
 
-#: src/gui/popupmenu.cpp:1896 src/gui/statuswindow.cpp:241
+#: src/gui/popupmenu.cpp:1934 src/gui/statuswindow.cpp:241
 msgid "Copy to chat"
 msgstr "Pindahkan ke chat"
 
-#: src/gui/popupmenu.cpp:1914 src/gui/socialwindow.cpp:958
+#: src/gui/popupmenu.cpp:1952 src/gui/socialwindow.cpp:958
 #: src/gui/socialwindow.cpp:993 src/gui/socialwindow.cpp:1028
 msgid "(default)"
 msgstr "(kembalikan)"
 
-#: src/gui/popupmenu.cpp:1924 src/gui/popupmenu.cpp:1935
+#: src/gui/popupmenu.cpp:1962 src/gui/popupmenu.cpp:1973
 msgid "Move up"
 msgstr "Bergerak keatas"
 
-#: src/gui/popupmenu.cpp:1926 src/gui/popupmenu.cpp:1937
+#: src/gui/popupmenu.cpp:1964 src/gui/popupmenu.cpp:1975
 msgid "Move down"
 msgstr "Bergerak kebawah"
 
@@ -1851,6 +1865,10 @@ msgstr "Lainnya"
 
 #: src/gui/setup_chat.cpp:125
 msgid "Highlight words (separated by comma)"
+msgstr ""
+
+#: src/gui/setup_chat.cpp:128
+msgid "Show MVP messages"
 msgstr ""
 
 #: src/gui/setup_colors.cpp:49
@@ -2252,23 +2270,27 @@ msgstr "Ditolak"
 msgid "Erased"
 msgstr "Dihapus"
 
-#: src/gui/setup_relations.cpp:238
+#: src/gui/setup_relations.cpp:75
+msgid "Blacklisted"
+msgstr ""
+
+#: src/gui/setup_relations.cpp:239
 msgid "Allow trading"
 msgstr "Perbolehkan penukaran"
 
-#: src/gui/setup_relations.cpp:240
+#: src/gui/setup_relations.cpp:241
 msgid "Allow whispers"
 msgstr "Perbolehkan berbisik"
 
-#: src/gui/setup_relations.cpp:243
+#: src/gui/setup_relations.cpp:244
 msgid "Old"
 msgstr "Lama"
 
-#: src/gui/setup_relations.cpp:245
+#: src/gui/setup_relations.cpp:246
 msgid "Relations"
 msgstr ""
 
-#: src/gui/setup_relations.cpp:270
+#: src/gui/setup_relations.cpp:271
 msgid "When ignoring:"
 msgstr "Ketika menolak:"
 
@@ -2525,7 +2547,7 @@ msgstr "Perlihatkan link di Umumkan"
 msgid "Auction"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:748 src/net/ea/tradehandler.cpp:106
+#: src/gui/shopwindow.cpp:748 src/net/ea/tradehandler.cpp:104
 #: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
 msgstr "Meminta untuk menukar"
@@ -2824,182 +2846,186 @@ msgid "(A) moves to target in attack range"
 msgstr ""
 
 #: src/gui/statuspopup.cpp:289
+msgid "(a) archer attack range"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:294
 msgid "(?) move to target"
 msgstr "(?)bergerak ke target"
 
-#: src/gui/statuspopup.cpp:297
+#: src/gui/statuspopup.cpp:302
 msgid "(D) default follow"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:301
+#: src/gui/statuspopup.cpp:306
 msgid "(R) relative follow"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:305
+#: src/gui/statuspopup.cpp:310
 msgid "(M) mirror follow"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:309
+#: src/gui/statuspopup.cpp:314
 msgid "(P) pet follow"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:313
+#: src/gui/statuspopup.cpp:318
 msgid "(?) unknown follow"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:322 src/gui/statuspopup.cpp:345
+#: src/gui/statuspopup.cpp:327 src/gui/statuspopup.cpp:350
 msgid "(D) default attack"
 msgstr "(D) pukulan normal"
 
-#: src/gui/statuspopup.cpp:327
+#: src/gui/statuspopup.cpp:332
 msgid "(s) switch attack without shield"
 msgstr "(s) ganti pukulan tanpa pelindung"
 
-#: src/gui/statuspopup.cpp:332
+#: src/gui/statuspopup.cpp:337
 msgid "(S) switch attack with shield"
 msgstr "(S) pukulan dengan pelindung"
 
-#: src/gui/statuspopup.cpp:336 src/gui/statuspopup.cpp:361
+#: src/gui/statuspopup.cpp:341 src/gui/statuspopup.cpp:366
 msgid "(?) attack"
 msgstr "(?)serangan"
 
-#: src/gui/statuspopup.cpp:349
+#: src/gui/statuspopup.cpp:354
 msgid "(G) go and attack"
 msgstr "(G) jalan dan serang"
 
-#: src/gui/statuspopup.cpp:353
+#: src/gui/statuspopup.cpp:358
 msgid "(A) go, attack, pickup"
 msgstr "(A) jalan, serang, ambil"
 
-#: src/gui/statuspopup.cpp:357
+#: src/gui/statuspopup.cpp:362
 msgid "(d) without auto attack"
 msgstr "(d) tanpa penyerangan otomatis"
 
-#: src/gui/statuspopup.cpp:375
+#: src/gui/statuspopup.cpp:380
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:379
+#: src/gui/statuspopup.cpp:384
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:383
+#: src/gui/statuspopup.cpp:388
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:387
+#: src/gui/statuspopup.cpp:392
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:391
+#: src/gui/statuspopup.cpp:396
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:395
+#: src/gui/statuspopup.cpp:400
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:399
+#: src/gui/statuspopup.cpp:404
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:403
+#: src/gui/statuspopup.cpp:408
 msgid "(?) pick up"
 msgstr "(?)mengambil"
 
-#: src/gui/statuspopup.cpp:412
+#: src/gui/statuspopup.cpp:417
 msgid "(N) normal map view"
 msgstr "(N) penampilan peta normal"
 
-#: src/gui/statuspopup.cpp:416
+#: src/gui/statuspopup.cpp:421
 msgid "(D) debug map view"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:420
+#: src/gui/statuspopup.cpp:425
 msgid "(u) ultra map view"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:424
+#: src/gui/statuspopup.cpp:429
 msgid "(U) ultra map view 2"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:428
+#: src/gui/statuspopup.cpp:433
 msgid "(e) empty map view"
 msgstr "(e) penampilan peta kosong"
 
-#: src/gui/statuspopup.cpp:432
+#: src/gui/statuspopup.cpp:437
 msgid "(b) black & white map view"
 msgstr "(b)penampilan peta hitam & putih"
 
-#: src/gui/statuspopup.cpp:436
+#: src/gui/statuspopup.cpp:441
 msgid "(?) map view"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:444
+#: src/gui/statuspopup.cpp:449
 msgid "(f) use #flar for magic attack"
 msgstr "(f) gunakan #flar untuk serangan magic"
 
-#: src/gui/statuspopup.cpp:449
+#: src/gui/statuspopup.cpp:454
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) gunakan #chiza untuk serangan magic"
 
-#: src/gui/statuspopup.cpp:454
+#: src/gui/statuspopup.cpp:459
 msgid "(I) use #ingrav for magic attack"
 msgstr "(l) gunakan #ingrav untuk serangan magic"
 
-#: src/gui/statuspopup.cpp:459
+#: src/gui/statuspopup.cpp:464
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) gunakan #frillyar untuk serangan magic"
 
-#: src/gui/statuspopup.cpp:464
+#: src/gui/statuspopup.cpp:469
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) gunakan #upmarmu untuk serangan magic"
 
-#: src/gui/statuspopup.cpp:468
+#: src/gui/statuspopup.cpp:473
 msgid "(?) magic attack"
 msgstr "(?) serangan magic"
 
-#: src/gui/statuspopup.cpp:477
+#: src/gui/statuspopup.cpp:482
 msgid "(D) default imitation"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:481
+#: src/gui/statuspopup.cpp:486
 msgid "(O) outfits imitation"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:485
+#: src/gui/statuspopup.cpp:490
 msgid "(?) imitation"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:494
+#: src/gui/statuspopup.cpp:499
 msgid "(O) on keyboard"
 msgstr "(O) pada keyboard"
 
-#: src/gui/statuspopup.cpp:497
+#: src/gui/statuspopup.cpp:502
 msgid "(A) away"
 msgstr "(A) pergi"
 
-#: src/gui/statuspopup.cpp:500 src/gui/statuspopup.cpp:520
+#: src/gui/statuspopup.cpp:505 src/gui/statuspopup.cpp:525
 msgid "(?) away"
 msgstr "(?) pergi"
 
-#: src/gui/statuspopup.cpp:508
+#: src/gui/statuspopup.cpp:513
 msgid "(G) game camera mode"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:512
+#: src/gui/statuspopup.cpp:517
 msgid "(F) free camera mode"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:516
+#: src/gui/statuspopup.cpp:521
 msgid "(D) design camera mode"
 msgstr ""
 
-#: src/gui/statuspopup.cpp:527
+#: src/gui/statuspopup.cpp:532
 msgid "Game modifiers are disabled"
 msgstr "Perombakan game tidak diperbolehkan"
 
-#: src/gui/statuspopup.cpp:532
+#: src/gui/statuspopup.cpp:537
 msgid "Game modifiers are enabled"
 msgstr "Perombakan game diperbolehkan"
 
@@ -3051,18 +3077,18 @@ msgstr ""
 msgid "Correction points: %d"
 msgstr ""
 
-#: src/gui/statuswindow.cpp:648 src/gui/statuswindow.cpp:713
-#: src/gui/statuswindow.cpp:733 src/gui/statuswindow.cpp:749
-#: src/gui/statuswindow.cpp:795 src/gui/statuswindow.cpp:824
-#: src/gui/statuswindow.cpp:847 src/gui/statuswindow.cpp:866
+#: src/gui/statuswindow.cpp:648 src/gui/statuswindow.cpp:716
+#: src/gui/statuswindow.cpp:736 src/gui/statuswindow.cpp:752
+#: src/gui/statuswindow.cpp:798 src/gui/statuswindow.cpp:827
+#: src/gui/statuswindow.cpp:850 src/gui/statuswindow.cpp:869
 msgid "(D)"
 msgstr "(D)"
 
-#: src/gui/statuswindow.cpp:651 src/gui/statuswindow.cpp:774
+#: src/gui/statuswindow.cpp:651 src/gui/statuswindow.cpp:777
 msgid "(I)"
 msgstr "(l)"
 
-#: src/gui/statuswindow.cpp:654 src/gui/statuswindow.cpp:771
+#: src/gui/statuswindow.cpp:654 src/gui/statuswindow.cpp:774
 msgid "(c)"
 msgstr "(c)"
 
@@ -3070,20 +3096,20 @@ msgstr "(c)"
 msgid "(C)"
 msgstr "(C)"
 
-#: src/gui/statuswindow.cpp:660 src/gui/statuswindow.cpp:758
+#: src/gui/statuswindow.cpp:660 src/gui/statuswindow.cpp:761
 msgid "(d)"
 msgstr "(d)"
 
 #: src/gui/statuswindow.cpp:663 src/gui/statuswindow.cpp:677
-#: src/gui/statuswindow.cpp:706 src/gui/statuswindow.cpp:725
-#: src/gui/statuswindow.cpp:742 src/gui/statuswindow.cpp:761
-#: src/gui/statuswindow.cpp:783 src/gui/statuswindow.cpp:813
-#: src/gui/statuswindow.cpp:839 src/gui/statuswindow.cpp:853
-#: src/gui/statuswindow.cpp:869 src/gui/statuswindow.cpp:882
+#: src/gui/statuswindow.cpp:709 src/gui/statuswindow.cpp:728
+#: src/gui/statuswindow.cpp:745 src/gui/statuswindow.cpp:764
+#: src/gui/statuswindow.cpp:786 src/gui/statuswindow.cpp:816
+#: src/gui/statuswindow.cpp:842 src/gui/statuswindow.cpp:856
+#: src/gui/statuswindow.cpp:872 src/gui/statuswindow.cpp:885
 msgid "(?)"
 msgstr "(?)"
 
-#: src/gui/statuswindow.cpp:674
+#: src/gui/statuswindow.cpp:674 src/gui/statuswindow.cpp:706
 msgid "(a)"
 msgstr "(a)"
 
@@ -3099,7 +3125,7 @@ msgstr "(1)"
 msgid "(2)"
 msgstr "(2)"
 
-#: src/gui/statuswindow.cpp:694 src/gui/statuswindow.cpp:801
+#: src/gui/statuswindow.cpp:694 src/gui/statuswindow.cpp:804
 msgid "(3)"
 msgstr "(3)"
 
@@ -3111,70 +3137,70 @@ msgstr "(5)"
 msgid "(7)"
 msgstr "(7)"
 
-#: src/gui/statuswindow.cpp:703 src/gui/statuswindow.cpp:755
-#: src/gui/statuswindow.cpp:810 src/gui/statuswindow.cpp:879
+#: src/gui/statuswindow.cpp:703 src/gui/statuswindow.cpp:758
+#: src/gui/statuswindow.cpp:813 src/gui/statuswindow.cpp:882
 msgid "(A)"
 msgstr "(A)"
 
-#: src/gui/statuswindow.cpp:716
+#: src/gui/statuswindow.cpp:719
 msgid "(R)"
 msgstr "(R)"
 
-#: src/gui/statuswindow.cpp:719
+#: src/gui/statuswindow.cpp:722
 msgid "(M)"
 msgstr "(M)"
 
-#: src/gui/statuswindow.cpp:722
+#: src/gui/statuswindow.cpp:725
 msgid "(P)"
 msgstr "(P)"
 
-#: src/gui/statuswindow.cpp:736
+#: src/gui/statuswindow.cpp:739
 msgid "(s)"
 msgstr "(s)"
 
-#: src/gui/statuswindow.cpp:739 src/gui/statuswindow.cpp:792
+#: src/gui/statuswindow.cpp:742 src/gui/statuswindow.cpp:795
 msgid "(S)"
 msgstr "(S)"
 
-#: src/gui/statuswindow.cpp:752 src/gui/statuswindow.cpp:807
-#: src/gui/statuswindow.cpp:860
+#: src/gui/statuswindow.cpp:755 src/gui/statuswindow.cpp:810
+#: src/gui/statuswindow.cpp:863
 msgid "(G)"
 msgstr "(G)"
 
-#: src/gui/statuswindow.cpp:768
+#: src/gui/statuswindow.cpp:771
 msgid "(f)"
 msgstr "(f)"
 
-#: src/gui/statuswindow.cpp:777 src/gui/statuswindow.cpp:798
-#: src/gui/statuswindow.cpp:863
+#: src/gui/statuswindow.cpp:780 src/gui/statuswindow.cpp:801
+#: src/gui/statuswindow.cpp:866
 msgid "(F)"
 msgstr "(F)"
 
-#: src/gui/statuswindow.cpp:780 src/gui/statuswindow.cpp:830
+#: src/gui/statuswindow.cpp:783 src/gui/statuswindow.cpp:833
 msgid "(U)"
 msgstr "(U)"
 
-#: src/gui/statuswindow.cpp:804
+#: src/gui/statuswindow.cpp:807
 msgid "(g)"
 msgstr "(g)"
 
-#: src/gui/statuswindow.cpp:821
+#: src/gui/statuswindow.cpp:824
 msgid "(N)"
 msgstr "(N)"
 
-#: src/gui/statuswindow.cpp:827
+#: src/gui/statuswindow.cpp:830
 msgid "(u)"
 msgstr "(u)"
 
-#: src/gui/statuswindow.cpp:833
+#: src/gui/statuswindow.cpp:836
 msgid "(e)"
 msgstr "(e)"
 
-#: src/gui/statuswindow.cpp:836
+#: src/gui/statuswindow.cpp:839
 msgid "(b)"
 msgstr "(b)"
 
-#: src/gui/statuswindow.cpp:850 src/gui/statuswindow.cpp:876
+#: src/gui/statuswindow.cpp:853 src/gui/statuswindow.cpp:879
 msgid "(O)"
 msgstr "(O)"
 
@@ -3490,7 +3516,7 @@ msgstr ""
 msgid "Road Point"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:85 src/gui/whoisonline.cpp:478
+#: src/gui/whoisonline.cpp:85 src/gui/whoisonline.cpp:479
 msgid "Who Is Online - Updating"
 msgstr ""
 
@@ -3498,15 +3524,15 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:301
+#: src/gui/whoisonline.cpp:302
 msgid "Who Is Online - "
 msgstr ""
 
-#: src/gui/whoisonline.cpp:492
+#: src/gui/whoisonline.cpp:493
 msgid "Who Is Online - error"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:523
+#: src/gui/whoisonline.cpp:525
 msgid "Who Is Online - Update"
 msgstr ""
 
@@ -3834,9 +3860,8 @@ msgid "Stop Attack"
 msgstr ""
 
 #: src/keyboardconfig.cpp:65
-#, fuzzy
 msgid "Untarget"
-msgstr "Target"
+msgstr ""
 
 #: src/keyboardconfig.cpp:66
 msgid "Target Closest"
@@ -4207,159 +4232,159 @@ msgid ""
 "strange behaviour."
 msgstr ""
 
-#: src/localplayer.cpp:380
+#: src/localplayer.cpp:381
 msgid "You were killed by "
 msgstr ""
 
-#: src/localplayer.cpp:1427
+#: src/localplayer.cpp:1428
 msgid "Tried to pick up nonexistent item."
 msgstr "Mencoba mengambil item yang tidak lagi ada"
 
-#: src/localplayer.cpp:1429
+#: src/localplayer.cpp:1430
 msgid "Item is too heavy."
 msgstr "item terlalu berat"
 
-#: src/localplayer.cpp:1431
+#: src/localplayer.cpp:1432
 msgid "Item is too far away."
 msgstr "barang terlalu jauh"
 
-#: src/localplayer.cpp:1433
+#: src/localplayer.cpp:1434
 msgid "Inventory is full."
 msgstr "Perbekalan sudah penuh"
 
-#: src/localplayer.cpp:1435
+#: src/localplayer.cpp:1436
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1438
+#: src/localplayer.cpp:1439
 msgid "Item belongs to someone else."
 msgstr "Barang milik orang lain."
 
-#: src/localplayer.cpp:1441
+#: src/localplayer.cpp:1442
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1465
+#: src/localplayer.cpp:1466
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] ""
 
-#: src/localplayer.cpp:3179
+#: src/localplayer.cpp:3181
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:3507
+#: src/localplayer.cpp:3509
 msgid "Follow: "
 msgstr "Ikuti:"
 
-#: src/localplayer.cpp:3509 src/localplayer.cpp:3524
+#: src/localplayer.cpp:3511 src/localplayer.cpp:3526
 msgid "Follow canceled"
 msgstr "Batal mengikuti"
 
-#: src/localplayer.cpp:3516
+#: src/localplayer.cpp:3518
 msgid "Imitation: "
 msgstr "Tirukan:"
 
-#: src/localplayer.cpp:3518 src/localplayer.cpp:3526
+#: src/localplayer.cpp:3520 src/localplayer.cpp:3528
 msgid "Imitation canceled"
 msgstr "Batal menirukan"
 
-#: src/localplayer.cpp:3871
+#: src/localplayer.cpp:3873
 msgid "You see "
 msgstr ""
 
 #: src/main.cpp:47
-msgid "manaplus [options] [mana-file]"
+msgid "manaplus [options] [manaplus-file]"
 msgstr ""
 
 #: src/main.cpp:48
-msgid "[mana-file] : The mana file is an XML file (.mana)"
-msgstr ""
-
-#: src/main.cpp:49
-msgid "              used to set custom parameters"
+msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
 msgstr ""
 
 #: src/main.cpp:50
-msgid "              to the manaplus client."
-msgstr "ke klien manaplus"
+msgid "                  used to set custom parameters"
+msgstr ""
 
-#: src/main.cpp:52
-msgid "Options:"
+#: src/main.cpp:51
+msgid "                  to the manaplus client."
 msgstr ""
 
 #: src/main.cpp:53
-msgid "  -l --log-file       : Log file to use"
+msgid "Options:"
 msgstr ""
 
 #: src/main.cpp:54
-msgid "  -L --chat-log-dir   : Chat log dir to use"
+msgid "  -l --log-file       : Log file to use"
 msgstr ""
 
 #: src/main.cpp:55
-msgid "  -v --version        : Display the version"
+msgid "  -L --chat-log-dir   : Chat log dir to use"
 msgstr ""
 
 #: src/main.cpp:56
-msgid "  -h --help           : Display this help"
+msgid "  -v --version        : Display the version"
 msgstr ""
 
 #: src/main.cpp:57
-msgid "  -C --config-dir     : Configuration directory to use"
+msgid "  -h --help           : Display this help"
 msgstr ""
 
 #: src/main.cpp:58
-msgid "  -U --username       : Login with this username"
+msgid "  -C --config-dir     : Configuration directory to use"
 msgstr ""
 
 #: src/main.cpp:59
-msgid "  -P --password       : Login with this password"
+msgid "  -U --username       : Login with this username"
 msgstr ""
 
 #: src/main.cpp:60
-msgid "  -c --character      : Login with this character"
+msgid "  -P --password       : Login with this password"
 msgstr ""
 
 #: src/main.cpp:61
-msgid "  -s --server         : Login server name or IP"
+msgid "  -c --character      : Login with this character"
 msgstr ""
 
 #: src/main.cpp:62
-msgid "  -p --port           : Login server port"
+msgid "  -s --server         : Login server name or IP"
 msgstr ""
 
 #: src/main.cpp:63
-msgid "     --update-host    : Use this update host"
+msgid "  -p --port           : Login server port"
 msgstr ""
 
 #: src/main.cpp:64
+msgid "     --update-host    : Use this update host"
+msgstr ""
+
+#: src/main.cpp:65
 msgid "  -D --default        : Choose default character server and character"
 msgstr ""
 
-#: src/main.cpp:66
+#: src/main.cpp:67
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr ""
 
-#: src/main.cpp:67
+#: src/main.cpp:68
 msgid "  -d --data           : Directory to load game data from"
 msgstr ""
 
-#: src/main.cpp:69
+#: src/main.cpp:70
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr ""
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr ""
 
-#: src/main.cpp:72
+#: src/main.cpp:73
 msgid "     --safemode       : Start game in safe mode"
 msgstr ""
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 msgid "     --no-opengl      : Disable OpenGL for this session"
 msgstr ""
 
@@ -4415,7 +4440,7 @@ msgstr ""
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:142 src/net/ea/loginhandler.cpp:237
+#: src/net/ea/charserverhandler.cpp:142 src/net/ea/loginhandler.cpp:235
 msgid "Wrong name."
 msgstr ""
 
@@ -4460,11 +4485,11 @@ msgstr ""
 msgid "Whisper could not be sent, ignored by %s."
 msgstr ""
 
-#: src/net/ea/chathandler.cpp:355
+#: src/net/ea/chathandler.cpp:346
 msgid "MVP player."
 msgstr ""
 
-#: src/net/ea/chathandler.cpp:359
+#: src/net/ea/chathandler.cpp:350
 msgid "MVP player: "
 msgstr ""
 
@@ -4497,81 +4522,81 @@ msgstr ""
 msgid "Unknown server response."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:181
+#: src/net/ea/guildhandler.cpp:180
 #, c-format
 msgid "Guild name: %s"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:183
+#: src/net/ea/guildhandler.cpp:182
 #, c-format
 msgid "Guild master: %s"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:185
+#: src/net/ea/guildhandler.cpp:184
 #, c-format
 msgid "Guild level: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:187
+#: src/net/ea/guildhandler.cpp:185
 #, c-format
 msgid "Online members: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:189
+#: src/net/ea/guildhandler.cpp:187
 #, c-format
 msgid "Max members: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:191
+#: src/net/ea/guildhandler.cpp:189
 #, c-format
 msgid "Average level: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:193
+#: src/net/ea/guildhandler.cpp:191
 #, c-format
 msgid "Guild exp: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:195
+#: src/net/ea/guildhandler.cpp:192
 #, c-format
 msgid "Guild next exp: %d"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:197
+#: src/net/ea/guildhandler.cpp:194
 #, c-format
 msgid "Guild castle: %s"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:403
+#: src/net/ea/guildhandler.cpp:412
 msgid "Could not inivte user to guild."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:407
+#: src/net/ea/guildhandler.cpp:416
 msgid "User rejected guild invite."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:411
+#: src/net/ea/guildhandler.cpp:420
 msgid "User is now part of your guild."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:415
+#: src/net/ea/guildhandler.cpp:424
 msgid "Your guild is full."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:419
+#: src/net/ea/guildhandler.cpp:428
 msgid "Unknown guild invite response."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:453
+#: src/net/ea/guildhandler.cpp:464
 #, c-format
 msgid "%s has left your guild."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:484
+#: src/net/ea/guildhandler.cpp:498
 msgid "You was kicked from guild."
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:497
+#: src/net/ea/guildhandler.cpp:511
 #, c-format
 msgid "%s has kicked from your guild."
 msgstr ""
@@ -4680,11 +4705,11 @@ msgstr ""
 msgid "Experience sharing unknown."
 msgstr ""
 
-#: src/net/ea/inventoryhandler.cpp:407
+#: src/net/ea/inventoryhandler.cpp:404
 msgid "Failed to use item."
 msgstr ""
 
-#: src/net/ea/inventoryhandler.cpp:580
+#: src/net/ea/inventoryhandler.cpp:572
 msgid "Unable to equip."
 msgstr ""
 
@@ -4700,54 +4725,54 @@ msgstr ""
 msgid "New password too short."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:243
+#: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:241
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
 msgid "Unknown error."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:205
+#: src/net/ea/loginhandler.cpp:203
 msgid "Unregistered ID."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:208
+#: src/net/ea/loginhandler.cpp:206
 msgid "Wrong password."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:211
+#: src/net/ea/loginhandler.cpp:209
 msgid "Account expired."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:214
+#: src/net/ea/loginhandler.cpp:212
 msgid "Rejected from server."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:217
+#: src/net/ea/loginhandler.cpp:215
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:221
+#: src/net/ea/loginhandler.cpp:219
 msgid "Client too old."
 msgstr "Versi yang digunakan sudah kadaluarsa."
 
-#: src/net/ea/loginhandler.cpp:224
+#: src/net/ea/loginhandler.cpp:222
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
 "Please contact the GM team via the forums."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:231
+#: src/net/ea/loginhandler.cpp:229
 msgid "Server overpopulated."
 msgstr "Server kepenuhan."
 
-#: src/net/ea/loginhandler.cpp:234
+#: src/net/ea/loginhandler.cpp:232
 msgid "This user name is already taken."
 msgstr ""
 
-#: src/net/ea/loginhandler.cpp:240
+#: src/net/ea/loginhandler.cpp:238
 msgid "Username permanently erased."
 msgstr "Username dihapus permanen."
 
@@ -4789,305 +4814,305 @@ msgstr "%s tidak dapat bergabung dengan kelompok karena kelompok sudah penuh."
 msgid "QQQ Unknown invite response for %s."
 msgstr ""
 
-#: src/net/ea/partyhandler.cpp:354
+#: src/net/ea/partyhandler.cpp:357
 msgid "You have left the party."
 msgstr ""
 
-#: src/net/ea/partyhandler.cpp:367
+#: src/net/ea/partyhandler.cpp:370
 #, c-format
 msgid "%s has left your party."
 msgstr ""
 
-#: src/net/ea/partyhandler.cpp:446
+#: src/net/ea/partyhandler.cpp:447
 #, c-format
 msgid "An unknown member tried to say: %s"
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:95 src/net/manaserv/beinghandler.cpp:315
+#: src/net/ea/playerhandler.cpp:96 src/net/manaserv/beinghandler.cpp:315
 msgid "You are dead."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:96 src/net/manaserv/beinghandler.cpp:316
+#: src/net/ea/playerhandler.cpp:97 src/net/manaserv/beinghandler.cpp:316
 msgid "We regret to inform you that your character was killed in battle."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:98 src/net/manaserv/beinghandler.cpp:318
+#: src/net/ea/playerhandler.cpp:99 src/net/manaserv/beinghandler.cpp:318
 msgid "You are not that alive anymore."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:99 src/net/manaserv/beinghandler.cpp:319
+#: src/net/ea/playerhandler.cpp:100 src/net/manaserv/beinghandler.cpp:319
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:100 src/net/manaserv/beinghandler.cpp:320
+#: src/net/ea/playerhandler.cpp:101 src/net/manaserv/beinghandler.cpp:320
 msgid "Game Over!"
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:101
+#: src/net/ea/playerhandler.cpp:102
 msgid "Insert coin to continue."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:321
+#: src/net/ea/playerhandler.cpp:103 src/net/manaserv/beinghandler.cpp:321
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:104 src/net/manaserv/beinghandler.cpp:323
+#: src/net/ea/playerhandler.cpp:105 src/net/manaserv/beinghandler.cpp:323
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:106 src/net/manaserv/beinghandler.cpp:325
+#: src/net/ea/playerhandler.cpp:107 src/net/manaserv/beinghandler.cpp:325
 msgid "I guess this did not run too well."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:108 src/net/manaserv/beinghandler.cpp:326
+#: src/net/ea/playerhandler.cpp:109 src/net/manaserv/beinghandler.cpp:326
 msgid "Do you want your possessions identified?"
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:110 src/net/manaserv/beinghandler.cpp:327
+#: src/net/ea/playerhandler.cpp:111 src/net/manaserv/beinghandler.cpp:327
 msgid "Sadly, no trace of you was ever found..."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:112 src/net/manaserv/beinghandler.cpp:329
+#: src/net/ea/playerhandler.cpp:113 src/net/manaserv/beinghandler.cpp:329
 msgid "Annihilated."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:114 src/net/manaserv/beinghandler.cpp:330
+#: src/net/ea/playerhandler.cpp:115 src/net/manaserv/beinghandler.cpp:330
 msgid "Looks like you got your head handed to you."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:116 src/net/manaserv/beinghandler.cpp:332
+#: src/net/ea/playerhandler.cpp:117 src/net/manaserv/beinghandler.cpp:332
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:119
+#: src/net/ea/playerhandler.cpp:120
 msgid "You're not dead yet. You're just resting."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:120
+#: src/net/ea/playerhandler.cpp:121
 msgid "You are no more."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:121
+#: src/net/ea/playerhandler.cpp:122
 msgid "You have ceased to be."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:122
+#: src/net/ea/playerhandler.cpp:123
 msgid "You've expired and gone to meet your maker."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:123
+#: src/net/ea/playerhandler.cpp:124
 msgid "You're a stiff."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:124
+#: src/net/ea/playerhandler.cpp:125
 msgid "Bereft of life, you rest in peace."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:125
+#: src/net/ea/playerhandler.cpp:126
 msgid "If you weren't so animated, you'd be pushing up the daisies."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:126
+#: src/net/ea/playerhandler.cpp:127
 msgid "Your metabolic processes are now history."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:127
+#: src/net/ea/playerhandler.cpp:128
 msgid "You're off the twig."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:128
+#: src/net/ea/playerhandler.cpp:129
 msgid "You've kicked the bucket."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:129
+#: src/net/ea/playerhandler.cpp:130
 msgid ""
 "You've shuffled off your mortal coil, run down the curtain and joined the "
 "bleedin' choir invisibile."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:131
+#: src/net/ea/playerhandler.cpp:132
 msgid "You are an ex-player."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:132
+#: src/net/ea/playerhandler.cpp:133
 msgid "You're pining for the fjords."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:336 src/net/ea/playerhandler.cpp:346
-#: src/net/ea/playerhandler.cpp:428
+#: src/net/ea/playerhandler.cpp:335 src/net/ea/playerhandler.cpp:345
+#: src/net/ea/playerhandler.cpp:427
 msgid "Message"
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:337
+#: src/net/ea/playerhandler.cpp:336
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:347
+#: src/net/ea/playerhandler.cpp:346
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Kamu membawa kurang dari setengah jumlah berat maksimal. Darah dapat "
 "beregenerasi."
 
-#: src/net/ea/playerhandler.cpp:454
+#: src/net/ea/playerhandler.cpp:453
 #, c-format
 msgid "You picked up %s."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:460
+#: src/net/ea/playerhandler.cpp:459
 #, c-format
 msgid "You spent %s."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:506
+#: src/net/ea/playerhandler.cpp:505
 msgid "Cannot raise skill!"
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:624
+#: src/net/ea/playerhandler.cpp:623
 msgid "Equip arrows first."
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:146
+#: src/net/ea/specialhandler.cpp:143
 msgid "Trade failed!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:149
+#: src/net/ea/specialhandler.cpp:146
 msgid "Emote failed!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:152
+#: src/net/ea/specialhandler.cpp:149
 msgid "Sit failed!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:155
+#: src/net/ea/specialhandler.cpp:152
 msgid "Chat creating failed!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:158
+#: src/net/ea/specialhandler.cpp:155
 msgid "Could not join party!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:161
+#: src/net/ea/specialhandler.cpp:158
 msgid "Cannot shout!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:174
+#: src/net/ea/specialhandler.cpp:171
 msgid "You have not yet reached a high enough lvl!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:178
+#: src/net/ea/specialhandler.cpp:174
 msgid "Insufficient HP!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:181
+#: src/net/ea/specialhandler.cpp:177
 msgid "Insufficient SP!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:184
+#: src/net/ea/specialhandler.cpp:180
 msgid "You have no memos!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:187
+#: src/net/ea/specialhandler.cpp:183
 msgid "You cannot do that right now!"
 msgstr "Anda tidak dapat melakukannya sekarang"
 
-#: src/net/ea/specialhandler.cpp:190
+#: src/net/ea/specialhandler.cpp:186
 msgid "Seems you need more money... ;-)"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:193
+#: src/net/ea/specialhandler.cpp:189
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Tidak dapat menggunakan skill tersebut dengan senjata tersebut"
 
-#: src/net/ea/specialhandler.cpp:197
+#: src/net/ea/specialhandler.cpp:193
 msgid "You need another red gem!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:200
+#: src/net/ea/specialhandler.cpp:196
 msgid "You need another blue gem!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:203
+#: src/net/ea/specialhandler.cpp:199
 msgid "You're carrying to much to do this!"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:206
+#: src/net/ea/specialhandler.cpp:202
 msgid "Huh? What's that?"
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:217
+#: src/net/ea/specialhandler.cpp:213
 msgid "Warp failed..."
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:220
+#: src/net/ea/specialhandler.cpp:216
 msgid "Could not steal anything..."
 msgstr ""
 
-#: src/net/ea/specialhandler.cpp:223
+#: src/net/ea/specialhandler.cpp:219
 msgid "Poison had no effect..."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:107 src/net/manaserv/tradehandler.cpp:128
+#: src/net/ea/tradehandler.cpp:105 src/net/manaserv/tradehandler.cpp:128
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:130
+#: src/net/ea/tradehandler.cpp:127
 msgid "Trading isn't possible. Trade partner is too far away."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:134
+#: src/net/ea/tradehandler.cpp:131
 msgid "Trading isn't possible. Character doesn't exist."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:138
+#: src/net/ea/tradehandler.cpp:135
 msgid "Trade cancelled due to an unknown reason."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:146
+#: src/net/ea/tradehandler.cpp:141
 #, c-format
 msgid "Trade: You and %s"
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:156
+#: src/net/ea/tradehandler.cpp:151
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:169
+#: src/net/ea/tradehandler.cpp:164
 msgid "Unhandled trade cancel packet."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:231
+#: src/net/ea/tradehandler.cpp:229
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:236
+#: src/net/ea/tradehandler.cpp:234
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:241
+#: src/net/ea/tradehandler.cpp:239
 msgid "Failed adding item. You can't trade this item."
 msgstr "Gagal menambahkan barang. Kamu tidak dapat menukar barang ini."
 
-#: src/net/ea/tradehandler.cpp:245
+#: src/net/ea/tradehandler.cpp:243
 msgid "Failed adding item for unknown reason."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:264 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:262 src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:275 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:273 src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:258
+#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:262
 msgid "Strength"
 msgstr ""
 
@@ -5096,7 +5121,7 @@ msgstr ""
 msgid "Strength %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:259
+#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:263
 msgid "Agility"
 msgstr ""
 
@@ -5105,7 +5130,7 @@ msgstr ""
 msgid "Agility %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:262
+#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:266
 msgid "Dexterity"
 msgstr ""
 
@@ -5114,7 +5139,7 @@ msgstr ""
 msgid "Dexterity %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:260
+#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:264
 msgid "Vitality"
 msgstr ""
 
@@ -5123,7 +5148,7 @@ msgstr ""
 msgid "Vitality %+.1f"
 msgstr ""
 
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:261
+#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:265
 msgid "Intelligence"
 msgstr ""
 
@@ -5431,74 +5456,74 @@ msgstr ""
 msgid "No servers available."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:146
+#: src/net/tmwa/generalhandler.cpp:147
 msgid "Someone else is trying to use this account."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:149
+#: src/net/tmwa/generalhandler.cpp:152
 msgid "This account is already logged in."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:152
+#: src/net/tmwa/generalhandler.cpp:156
 msgid "Speed hack detected."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:155
+#: src/net/tmwa/generalhandler.cpp:159
 msgid "Duplicated login."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:158
+#: src/net/tmwa/generalhandler.cpp:162
 msgid "Unknown connection error."
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:231
+#: src/net/tmwa/generalhandler.cpp:235
 msgid "Got disconnected from server!"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:263
+#: src/net/tmwa/generalhandler.cpp:267
 msgid "Luck"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:266
+#: src/net/tmwa/generalhandler.cpp:270
 msgid "Defense"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:267
+#: src/net/tmwa/generalhandler.cpp:271
 msgid "M.Attack"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:268
-msgid "M.Defense"
-msgstr ""
-
-#: src/net/tmwa/generalhandler.cpp:270
-#, no-c-format
-msgid "% Accuracy"
-msgstr ""
-
 #: src/net/tmwa/generalhandler.cpp:272
-#, no-c-format
-msgid "% Evade"
+msgid "M.Defense"
 msgstr ""
 
 #: src/net/tmwa/generalhandler.cpp:274
 #, no-c-format
+msgid "% Accuracy"
+msgstr ""
+
+#: src/net/tmwa/generalhandler.cpp:276
+#, no-c-format
+msgid "% Evade"
+msgstr ""
+
+#: src/net/tmwa/generalhandler.cpp:278
+#, no-c-format
 msgid "% Critical"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:275
+#: src/net/tmwa/generalhandler.cpp:279
 msgid "Attack Delay"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:277
+#: src/net/tmwa/generalhandler.cpp:281
 msgid "Walk Delay"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:279
+#: src/net/tmwa/generalhandler.cpp:283
 msgid "Attack Range"
 msgstr ""
 
-#: src/net/tmwa/generalhandler.cpp:281
+#: src/net/tmwa/generalhandler.cpp:285
 msgid "Damage per sec."
 msgstr ""
 
@@ -5506,11 +5531,11 @@ msgstr ""
 msgid "Empty address given to Network::connect()!"
 msgstr ""
 
-#: src/net/tmwa/network.cpp:356
+#: src/net/tmwa/network.cpp:355
 msgid "Unable to resolve host \""
 msgstr ""
 
-#: src/net/tmwa/network.cpp:426
+#: src/net/tmwa/network.cpp:425
 msgid "Connection to server terminated. "
 msgstr ""
 
@@ -5519,19 +5544,19 @@ msgstr ""
 msgid "%s is not in your party!"
 msgstr ""
 
-#: src/playerrelations.cpp:432
+#: src/playerrelations.cpp:435
 msgid "Print '...'"
 msgstr ""
 
-#: src/playerrelations.cpp:452
+#: src/playerrelations.cpp:455
 msgid "Blink name"
 msgstr ""
 
-#: src/playerrelations.cpp:496
+#: src/playerrelations.cpp:499
 msgid "Floating '...' bubble"
 msgstr ""
 
-#: src/playerrelations.cpp:499
+#: src/playerrelations.cpp:502
 msgid "Floating bubble"
 msgstr ""
 
