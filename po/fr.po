@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-10-15 00:08+0300\n"
-"PO-Revision-Date: 2011-10-14 21:11+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2011-10-15 00:41+0000\n"
+"Last-Translator: reid <reidyaro@gmail.com>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/"
 "fr/)\n"
 "Language: fr\n"
@@ -237,7 +237,7 @@ msgstr "Vous n'avez pas pu enlever le statut ignoré de ce joueur !"
 
 #: src/commandhandler.cpp:551
 msgid "blacklisted"
-msgstr ""
+msgstr "sous liste noir"
 
 #: src/commandhandler.cpp:566
 msgid "Player already erased!"
@@ -1332,7 +1332,7 @@ msgstr "Éviter"
 #: src/gui/popupmenu.cpp:381 src/gui/popupmenu.cpp:388
 #: src/gui/popupmenu.cpp:627 src/gui/popupmenu.cpp:634
 msgid "Black list"
-msgstr ""
+msgstr "Liste noir"
 
 #: src/gui/popupmenu.cpp:148 src/gui/popupmenu.cpp:155
 #: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:168
@@ -1882,7 +1882,7 @@ msgstr "Mots en surbrillance (séparer par un coma)"
 
 #: src/gui/setup_chat.cpp:128
 msgid "Show MVP messages"
-msgstr ""
+msgstr "Montrer les messages MVP"
 
 #: src/gui/setup_colors.cpp:49
 msgid "This is what the color looks like"
@@ -2287,7 +2287,7 @@ msgstr "Effacé"
 
 #: src/gui/setup_relations.cpp:75
 msgid "Blacklisted"
-msgstr ""
+msgstr "Sous liste noir"
 
 #: src/gui/setup_relations.cpp:239
 msgid "Allow trading"
@@ -2874,7 +2874,7 @@ msgstr "(A) Aller à la cible dans le champ d'attaque"
 
 #: src/gui/statuspopup.cpp:289
 msgid "(a) archer attack range"
-msgstr ""
+msgstr "(a) Portée des attaques des Archéens"
 
 #: src/gui/statuspopup.cpp:294
 msgid "(?) move to target"
@@ -4338,19 +4338,19 @@ msgstr "Vous voyez  "
 
 #: src/main.cpp:47
 msgid "manaplus [options] [manaplus-file]"
-msgstr ""
+msgstr "manaplus [options] [manaplus-file]"
 
 #: src/main.cpp:48
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
-msgstr ""
+msgstr "[Manaplus-file]: Le fichier manaplus est un fichier XML (.manaplus)"
 
 #: src/main.cpp:50
 msgid "                  used to set custom parameters"
-msgstr ""
+msgstr "utilisé pour définir des paramètres personnalisés"
 
 #: src/main.cpp:51
 msgid "                  to the manaplus client."
-msgstr ""
+msgstr "pour le client manaplus."
 
 #: src/main.cpp:53
 msgid "Options:"
