@@ -577,7 +577,6 @@ void Game::logic()
     }
     else
     {
-        Client::setFramerate(config.getIntValue("fpslimit"));
         if (mAdjustPerfomance)
             adjustPerfomance();
         if (disconnectedDialog)
