@@ -79,8 +79,6 @@ GuildHandler::~GuildHandler()
 
 void GuildHandler::handleMessage(Net::MessageIn &msg)
 {
-    DEBUGLOG("guild message");
-
     switch (msg.getId())
     {
         case SMSG_GUILD_CREATE_RESPONSE:
@@ -92,10 +90,8 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_GUILD_MEMBER_LOGIN:
-        {
             processGuildMemberLogin(msg);
             break;
-        }
 
         case SMSG_GUILD_MASTER_OR_MEMBER:
             processGuildMasterOrMember(msg);

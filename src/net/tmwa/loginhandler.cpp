@@ -146,12 +146,10 @@ ServerInfo *LoginHandler::getCharServer()
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    // TODO: verify these!
-
     char b1 = msg.readInt8(); // -1
-    char b2 = msg.readInt8(); // T
-    char b3 = msg.readInt8(); // M
-    char b4 = msg.readInt8(); // W
+    char b2 = msg.readInt8(); // E
+    char b3 = msg.readInt8(); // V
+    char b4 = msg.readInt8(); // L
     if (b1 == -1 && b2 == 'E' && b3 == 'V' && b4 == 'L')
     {
         unsigned int options = msg.readInt8();

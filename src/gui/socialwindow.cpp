@@ -1632,3 +1632,11 @@ void SocialWindow::updateAttackFilter()
     if (mAttackFilter)
         mAttackFilter->updateList();
 }
+
+void SocialWindow::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+
+    if (mTabs)
+        mTabs->fixSize();
+}

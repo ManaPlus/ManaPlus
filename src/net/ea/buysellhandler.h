@@ -40,9 +40,12 @@ class BuySellHandler : public Net::BuySellHandler
         BuySellHandler();
 
         virtual void requestSellList(std::string nick);
+
         virtual void requestBuyList(std::string nick);
+
         virtual void sendBuyRequest(std::string nick, ShopItem* item,
                                     int amount);
+
         virtual void sendSellRequest(std::string nick, ShopItem* item,
                                      int amount);
 

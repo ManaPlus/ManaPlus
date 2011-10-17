@@ -111,7 +111,7 @@ class Particle : public Actor
          * Necessary for sorting with the other sprites.
          */
         virtual int getPixelY() const
-        { return static_cast<int>(mPos.y) - 64; }
+        { return static_cast<int>(mPos.y) - 16; }
 
         /**
          * Creates a blank particle as a child of the current particle

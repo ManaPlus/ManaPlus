@@ -168,13 +168,11 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
             return;
         }
 
-        if (player_relations.hasPermission(
-            nick, PlayerRelation::WHISPER))
+        if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
         {
             bool tradeBot = config.getBoolValue("tradebot");
             bool showMsg = !config.getBoolValue("hideShopMessages");
-            if (player_relations.hasPermission(
-                nick, PlayerRelation::TRADE))
+            if (player_relations.hasPermission(nick, PlayerRelation::TRADE))
             {
                 if (shopWindow)
                 {   //commands to shop from player
@@ -184,8 +182,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         {
                             if (showMsg && chatWindow)
                                 chatWindow->addWhisper(nick, chatMsg);
-                            shopWindow->giveList(nick,
-                                ShopWindow::SELL);
+                            shopWindow->giveList(nick, ShopWindow::SELL);
                         }
                     }
                     else if (chatMsg.find("!buylist ") == 0)
@@ -194,8 +191,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         {
                             if (showMsg && chatWindow)
                                 chatWindow->addWhisper(nick, chatMsg);
-                            shopWindow->giveList(nick,
-                                ShopWindow::BUY);
+                            shopWindow->giveList(nick, ShopWindow::BUY);
                         }
                     }
                     else if (chatMsg.find("!buyitem ") == 0)
@@ -205,7 +201,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         if (tradeBot)
                         {
                             shopWindow->processRequest(nick, chatMsg,
-                                    ShopWindow::BUY);
+                                ShopWindow::BUY);
                         }
                     }
                     else if (chatMsg.find("!sellitem ") == 0)
@@ -215,7 +211,7 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         if (tradeBot)
                         {
                             shopWindow->processRequest(nick, chatMsg,
-                                    ShopWindow::SELL);
+                                ShopWindow::SELL);
                         }
                     }
                     else if (chatMsg.length() > 3
@@ -224,11 +220,8 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
                         chatMsg = chatMsg.erase(0, 2);
                         if (showMsg && chatWindow)
                             chatWindow->addWhisper(nick, chatMsg);
-                        if (chatMsg.find("B1") == 0
-                            || chatMsg.find("S1") == 0)
-                        {
+                        if (chatMsg.find("B1") == 0 || chatMsg.find("S1") == 0)
                             shopWindow->showList(nick, chatMsg);
-                        }
                     }
                     else if (chatWindow)
                     {
@@ -242,9 +235,8 @@ void ChatHandler::processWhisper(Net::MessageIn &msg)
             }
             else
             {
-                if (chatWindow && (showMsg
-                    || (chatMsg.find("!selllist")
-                    != 0 && chatMsg.find("!buylist") != 0)))
+                if (chatWindow && (showMsg || (chatMsg.find("!selllist") != 0
+                    && chatMsg.find("!buylist") != 0)))
                 {
                     chatWindow->addWhisper(nick, chatMsg);
                 }
@@ -277,8 +269,7 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     std::string sender_name = ((pos == std::string::npos)
                                 ? "" : chatMsg.substr(0, pos));
 
-    if (sender_name != being->getName()
-        && being->getType() == Being::PLAYER)
+    if (sender_name != being->getName() && being->getType() == Being::PLAYER)
     {
         if (!being->getName().empty())
             sender_name = being->getName();
@@ -296,8 +287,8 @@ void ChatHandler::processBeingChat(Net::MessageIn &msg)
     if (player_relations.checkPermissionSilently(sender_name,
         PlayerRelation::SPEECH_LOG) && chatWindow)
     {
-        chatWindow->resortChatLog(removeColors(sender_name) + " : "
-                                  + chatMsg, BY_OTHER);
+        chatWindow->resortChatLog(removeColors(sender_name)
+            + " : " + chatMsg, BY_OTHER);
     }
 
     if (player_relations.hasPermission(sender_name,
@@ -347,7 +338,7 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
 {
     // Display MVP player
     int id = msg.readInt32(); // id
-    if (localChatTab && actorSpriteManager)
+    if (localChatTab && actorSpriteManager && config.getBoolValue("showMVP"))
     {
         Being *being = actorSpriteManager->findBeing(id);
         if (!being)
@@ -363,4 +354,3 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
 }
 
 } // namespace Ea
-

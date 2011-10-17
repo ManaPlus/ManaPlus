@@ -45,7 +45,9 @@ class MessageOut
 {
     public:
         virtual void writeInt8(Sint8 value);          /**< Writes a byte. */
+
         virtual void writeInt16(Sint16 value) = 0;    /**< Writes a short. */
+
         virtual void writeInt32(Sint32 value) = 0;    /**< Writes a long. */
 
         /**

@@ -1,3 +1,17 @@
+2011-10-16 New release 1.1.10.16
+ManaPlus:
+fix: particle effects Y position.
+fix: resize in some dialogs.
+fix: codeblocks project file.
+fix: global messages sound highlight.
+fix: last character selection with space in login dialog.
+fix: fps if network error.
+add: move to target mode for archers/mages.
+add: blacklist relation.
+add: reading real monsters attack range (in evol only).
+add: option to show hide MVP messages.
+add: update mplus fonts.
+
 2011-10-02 New release 1.1.10.2
 ManaPlus:
 fix: inactive state.

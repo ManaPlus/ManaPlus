@@ -91,7 +91,7 @@ class CharHandler
         virtual unsigned int maxSprite() const = 0;
 
     protected:
-        CharHandler():
+        CharHandler() :
             mSelectedCharacter(0),
             mCharSelectDialog(0),
             mCharCreateDialog(0)

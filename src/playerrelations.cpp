@@ -103,11 +103,12 @@ class PlayerConfSerialiser :
 static PlayerConfSerialiser player_conf_serialiser; // stateless singleton
 
 const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] = {
-    /* NEUTRAL */    0, // we always fall back to the defaults anyway
-    /* FRIEND  */    EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE,
-    /* DISREGARDED*/ EMOTE | SPEECH_FLOAT,
-    /* IGNORED */    0,
-    /* ERASED */     INVISIBLE
+    /* NEUTRAL */     0, // we always fall back to the defaults anyway
+    /* FRIEND  */     EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE,
+    /* DISREGARDED*/  EMOTE | SPEECH_FLOAT,
+    /* IGNORED */     0,
+    /* ERASED */      INVISIBLE,
+    /* BLACKLISTED */ SPEECH_LOG | WHISPER
 };
 
 PlayerRelation::PlayerRelation(Relation relation)
@@ -278,6 +279,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
             case PlayerRelation::DISREGARDED:
             case PlayerRelation::IGNORED:
             case PlayerRelation::ERASED:
+            case PlayerRelation::BLACKLISTED:
             default:
                 permissions &= mDefaultPermissions; // narrow
         }
@@ -395,13 +397,14 @@ void PlayerRelationsManager::ignoreTrade(std::string name)
 
     if (relation == PlayerRelation::IGNORED
         || relation == PlayerRelation::DISREGARDED
+        || relation == PlayerRelation::BLACKLISTED
         || relation == PlayerRelation::ERASED)
     {
         return;
     }
     else
     {
-        player_relations.setRelation(name, PlayerRelation::DISREGARDED);
+        player_relations.setRelation(name, PlayerRelation::BLACKLISTED);
     }
 }
 

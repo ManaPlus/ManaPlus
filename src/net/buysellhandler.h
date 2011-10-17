@@ -38,10 +38,14 @@ class BuySellHandler
         { }
 
         virtual void handleMessage(Net::MessageIn &msg) = 0;
+
         virtual void requestSellList(std::string nick) = 0;
+
         virtual void requestBuyList(std::string nick) = 0;
+
         virtual void sendBuyRequest(std::string nick, ShopItem* item,
                                     int amount) = 0;
+
         virtual void sendSellRequest(std::string nick, ShopItem* item,
                                      int amount) = 0;
 };

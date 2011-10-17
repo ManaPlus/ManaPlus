@@ -34,7 +34,7 @@
 namespace Ea
 {
 
-LoginHandler::LoginHandler():
+LoginHandler::LoginHandler() :
         mVersionResponse(false),
         mRegistrationEnabled(true)
 {
@@ -184,10 +184,8 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
         world->updateHost = mUpdateHost;
         msg.skip(2);                        // unknown
 
-        logger->log("Network: Server: %s (%s:%d)",
-                world->name.c_str(),
-                ipToString(world->address),
-                world->port);
+        logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
+            ipToString(world->address), world->port);
 
         mWorlds.push_back(world);
     }

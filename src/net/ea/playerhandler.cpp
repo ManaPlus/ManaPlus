@@ -70,7 +70,8 @@ namespace
     {
         void action(const gcn::ActionEvent &event A_UNUSED)
         {
-            Net::getPlayerHandler()->respawn();
+            if (Net::getPlayerHandler())
+                Net::getPlayerHandler()->respawn();
             deathNotice = NULL;
 
             Client::closeDialogs();
@@ -326,13 +327,11 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         case 0x0018:
             if (!weightNotice)
             {
-                const int max
-                    = PlayerInfo::getAttribute(MAX_WEIGHT) / 2;
-                const int total
-                    = PlayerInfo::getAttribute(TOTAL_WEIGHT);
+                const int max = PlayerInfo::getAttribute(MAX_WEIGHT) / 2;
+                const int total = PlayerInfo::getAttribute(TOTAL_WEIGHT);
                 if (value >= max && total < max)
                 {
-                    weightNoticeTime = cur_time + 10;
+                    weightNoticeTime = cur_time + 5;
                     weightNotice = new OkDialog(_("Message"),
                         _("You are carrying more than "
                         "half your weight. You are "
@@ -342,7 +341,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                 }
                 else if (value < max && total >= max)
                 {
-                    weightNoticeTime = cur_time + 10;
+                    weightNoticeTime = cur_time + 5;
                     weightNotice = new OkDialog(_("Message"),
                         _("You are carrying less than "
                         "half your weight. You "

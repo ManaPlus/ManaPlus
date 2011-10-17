@@ -177,24 +177,22 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
     if (guildTab && showBasicInfo)
     {
         showBasicInfo = false;
-        guildTab->chatLog(strprintf(
-            _("Guild name: %s"), name.c_str()), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Guild master: %s"), master.c_str()), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Guild level: %d"), level), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Online members: %d"), members), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Max members: %d"), maxMembers), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Average level: %d"), avgLevel), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Guild exp: %d"), exp), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Guild next exp: %d"), nextExp), BY_SERVER);
-        guildTab->chatLog(strprintf(
-            _("Guild castle: %s"), castle.c_str()), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild name: %s"),
+            name.c_str()), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild master: %s"),
+            master.c_str()), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild level: %d"), level), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Online members: %d"),
+            members), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Max members: %d"),
+            maxMembers), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Average level: %d"),
+            avgLevel), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild exp: %d"), exp), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild next exp: %d"),
+            nextExp), BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild castle: %s"),
+            castle.c_str()), BY_SERVER);
     }
 
     Guild *g = Guild::getGuild(static_cast<short int>(guildId));
@@ -206,6 +204,8 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
 void GuildHandler::processGuildAlianceInfo(Net::MessageIn &msg)
 {
     int length = msg.readInt16();
+    if (length < 4)
+        return;
     int count = (length - 4) / 32;
 
     for (int i = 0; i < count; i++)
@@ -219,6 +219,8 @@ void GuildHandler::processGuildAlianceInfo(Net::MessageIn &msg)
 void GuildHandler::processGuildMemberList(Net::MessageIn &msg)
 {
     int length = msg.readInt16();
+    if (length < 4)
+        return;
     int count = (length - 4) / 104;
     if (!taGuild)
     {
@@ -260,7 +262,6 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg)
             m->setExp(exp);
             m->setPos(pos);
             m->setRace(race);
-//                    m->setDisplayBold(!pos);
             if (actorSpriteManager)
             {
                 Being *being = actorSpriteManager->findBeingByName(
@@ -294,6 +295,8 @@ void GuildHandler::processGuildPosNameList(Net::MessageIn &msg)
     }
 
     int length = msg.readInt16();
+    if (length < 4)
+        return;
     int count = (length - 4) / 28;
 
     for (int i = 0; i < count; i++)
@@ -307,6 +310,8 @@ void GuildHandler::processGuildPosNameList(Net::MessageIn &msg)
 void GuildHandler::processGuildPosInfoList(Net::MessageIn &msg)
 {
     int length = msg.readInt16();
+    if (length < 4)
+        return;
     int count = (length - 4) / 16;
 
     for (int i = 0; i < count; i++)
@@ -348,6 +353,8 @@ void GuildHandler::processGuildEmblem(Net::MessageIn &msg)
 
     msg.readInt32(); // Guild ID
     msg.readInt32(); // Emblem ID
+    if (length < 12)
+        return;
     msg.skip(length - 12); // Emblem data (unknown format)
 }
 
@@ -358,6 +365,8 @@ void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg)
 
     msg.readInt16(); // 'Skill point'
 
+    if (length < 6)
+        return;
     for (int i = 0; i < count; i++)
     {
         msg.readInt16(); // ID
@@ -429,7 +438,10 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
     if (taGuild)
         taGuild->removeMember(nick);
 
-    if (player_node && nick == player_node->getName())
+    if (!player_node)
+        return;
+
+    if (nick == player_node->getName())
     {
         if (taGuild)
         {
@@ -449,8 +461,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
     {
         if (guildTab)
         {
-            guildTab->chatLog(strprintf(
-                _("%s has left your guild."),
+            guildTab->chatLog(strprintf(_("%s has left your guild."),
                 nick.c_str()), BY_SERVER);
         }
         if (actorSpriteManager)
@@ -474,7 +485,10 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
     if (taGuild)
         taGuild->removeMember(nick);
 
-    if (player_node && nick == player_node->getName())
+    if (!player_node)
+        return;
+
+    if (nick == player_node->getName())
     {
         if (taGuild)
         {
@@ -514,6 +528,9 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
 void GuildHandler::processGuildExpulsionList(Net::MessageIn &msg)
 {
     int length = msg.readInt16();
+    if (length < 4)
+        return;
+
     int count = (length - 4) / 88;
 
     for (int i = 0; i < count; i++)
@@ -540,7 +557,7 @@ void GuildHandler::processGuildMessage(Net::MessageIn &msg)
             std::string sender_name = ((pos == std::string::npos)
                 ? "" : chatMsg.substr(0, pos));
 
-                chatMsg.erase(0, pos + 3);
+            chatMsg.erase(0, pos + 3);
 
             trim(chatMsg);
             guildTab->chatLog(sender_name, chatMsg);

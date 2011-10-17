@@ -136,7 +136,7 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
         case 0:
         default:
             errorMessage = _("Failed to create character. Most "
-                                "likely the name is already taken.");
+                "likely the name is already taken.");
             break;
         case 2:
             errorMessage = _("Wrong name.");

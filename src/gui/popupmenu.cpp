@@ -144,10 +144,19 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("friend", _("Be friend"));
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
+                        mBrowserBox->addRow("blacklist", _("Black list"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
                     case PlayerRelation::FRIEND:
+                        mBrowserBox->addRow("disregard", _("Disregard"));
+                        mBrowserBox->addRow("ignore", _("Ignore"));
+                        mBrowserBox->addRow("blacklist", _("Black list"));
+                        mBrowserBox->addRow("erase", _("Erase"));
+                        break;
+
+                    case PlayerRelation::BLACKLISTED:
+                        mBrowserBox->addRow("unignore", _("Unignore"));
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
                         mBrowserBox->addRow("erase", _("Erase"));
@@ -369,10 +378,19 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("friend", _("Be friend"));
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
         case PlayerRelation::FRIEND:
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::BLACKLISTED:
+            mBrowserBox->addRow("unignore", _("Unignore"));
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
             mBrowserBox->addRow("erase", _("Erase"));
@@ -606,10 +624,19 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("friend", _("Be friend"));
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
+                    mBrowserBox->addRow("blacklist", _("Black list"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
                 case PlayerRelation::FRIEND:
+                    mBrowserBox->addRow("disregard", _("Disregard"));
+                    mBrowserBox->addRow("ignore", _("Ignore"));
+                    mBrowserBox->addRow("blacklist", _("Black list"));
+                    mBrowserBox->addRow("erase", _("Erase"));
+                    break;
+
+                case PlayerRelation::BLACKLISTED:
+                    mBrowserBox->addRow("unignore", _("Unignore"));
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
                     mBrowserBox->addRow("erase", _("Erase"));
@@ -856,6 +883,17 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "ignore" && !mNick.empty())
     {
         player_relations.setRelation(mNick, PlayerRelation::IGNORED);
+    }
+
+    else if (link == "blacklist" && being &&
+             being->getType() == ActorSprite::PLAYER)
+    {
+        player_relations.setRelation(being->getName(),
+            PlayerRelation::BLACKLISTED);
+    }
+    else if (link == "blacklist" && !mNick.empty())
+    {
+        player_relations.setRelation(mNick, PlayerRelation::BLACKLISTED);
     }
     else if (link == "erase" && being &&
              being->getType() == ActorSprite::PLAYER)

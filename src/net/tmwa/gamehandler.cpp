@@ -107,9 +107,16 @@ void GameHandler::connect()
 
     if (Client::getState() == STATE_CONNECT_GAME)
     {
-        mCharID = player_node->getId();
         // Change the player's ID to the account ID to match what eAthena uses
-        player_node->setId(token.account_ID);
+        if (player_node)
+        {
+            mCharID = player_node->getId();
+            player_node->setId(token.account_ID);
+        }
+        else
+        {
+            mCharID = 0;
+        }
     }
 
     // Send login infos

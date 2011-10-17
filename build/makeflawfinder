@@ -1,0 +1,4 @@
+#!/bin/sh
+
+flawfinder ../src 1> makeflawfinder.log
+rats ../src 1> makerats.log

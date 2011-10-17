@@ -71,7 +71,8 @@ static const char *RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
     N_("Friend"),
     N_("Disregarded"),
     N_("Ignored"),
-    N_("Erased")
+    N_("Erased"),
+    N_("Blacklisted")
 };
 
 class PlayerRelationListModel : public gcn::ListModel

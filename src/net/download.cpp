@@ -49,17 +49,17 @@ namespace Net
 {
 
 Download::Download(void *ptr, const std::string &url,
-                   DownloadUpdate updateFunction, bool ignoreError):
-        mPtr(ptr),
-        mUrl(url),
-        mFileName(""),
-        mWriteFunction(NULL),
-        mAdler(0),
-        mUpdateFunction(updateFunction),
-        mThread(NULL),
-        mCurl(NULL),
-        mHeaders(NULL),
-        mIgnoreError(ignoreError)
+                   DownloadUpdate updateFunction, bool ignoreError) :
+    mPtr(ptr),
+    mUrl(url),
+    mFileName(""),
+    mWriteFunction(NULL),
+    mAdler(0),
+    mUpdateFunction(updateFunction),
+    mThread(NULL),
+    mCurl(NULL),
+    mHeaders(NULL),
+    mIgnoreError(ignoreError)
 {
     mError = static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1));
     mError[0] = 0;
@@ -72,6 +72,7 @@ Download::~Download()
     if (mHeaders)
         curl_slist_free_all(mHeaders);
 
+    mHeaders = 0;
     int status;
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, &status);
@@ -261,7 +262,7 @@ int Download::downloadThread(void *ptr)
                     case CURLE_COULDNT_CONNECT:
                     default:
                         logger->log("curl error %d: %s host: %s",
-                                    res, d->mError, d->mUrl.c_str());
+                            res, d->mError, d->mUrl.c_str());
                         break;
                 }
 

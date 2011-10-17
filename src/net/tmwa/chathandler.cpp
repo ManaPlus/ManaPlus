@@ -107,7 +107,6 @@ void ChatHandler::talk(const std::string &text)
         return;
 
     std::string mes = player_node->getName() + " : " + text;
-//    std::string mes = player_node->getName() + "zzzz : " + text;
 
     MessageOut outMsg(CMSG_CHAT_MESSAGE);
     // Added + 1 in order to let eAthena parse admin commands correctly
@@ -227,7 +226,7 @@ void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
                 if (pos != std::string::npos)
                 {
                     unsigned short x = static_cast<unsigned short>(
-                            atoi(data.substr(0, pos).c_str()));
+                        atoi(data.substr(0, pos).c_str()));
                     data = data.substr(pos + 1);
                     pos = line.find(",");
                     if (pos == std::string::npos)

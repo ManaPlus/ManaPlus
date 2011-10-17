@@ -316,10 +316,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     if (err)
     {
         if (player_node)
-        {
-            player_node->pickedUp(itemInfo, 0, identified,
-                floorId, err);
-        }
+            player_node->pickedUp(itemInfo, 0, identified, floorId, err);
     }
     else
     {
@@ -334,13 +331,13 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
             Item *item = inventory->getItem(index);
 
             if  (item && item->getId() == itemId)
-                amount += inventory->getItem(index)->getQuantity();
+                amount += item->getQuantity();
 
             if (serverVersion < 1 && identified > 1)
                 identified = 1;
 
             inventory->setItem(index, itemId, amount, refine,
-                                identified, equipType != 0);
+                identified, equipType != 0);
         }
     }
 }
@@ -451,7 +448,6 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
 {
     int index, amount, itemId, refine;
     unsigned char identified;
-//    int cards[4];
 
     // Move an item into storage
     index = msg.readInt16() - STORAGE_OFFSET;
@@ -475,8 +471,8 @@ void InventoryHandler::processPlayerStorageAdd(Net::MessageIn &msg)
             if (serverVersion < 1 && identified > 1)
                 identified = 1;
 
-            mStorage->setItem(index, itemId, amount, refine,
-                              identified, false);
+            mStorage->setItem(index, itemId, amount,
+                refine, identified, false);
         }
     }
 }
@@ -502,7 +498,6 @@ void InventoryHandler::processPlayerStorageRemove(Net::MessageIn &msg)
 void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 {
     // Storage access has been closed
-
     // Storage window deletes itself
     mStorageWindow = 0;
 
@@ -569,12 +564,9 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 {
-    int index, equipType;
-    int flag;
-
-    index = msg.readInt16() - INVENTORY_OFFSET;
-    equipType = msg.readInt16();
-    flag = msg.readInt8();
+    int index = msg.readInt16() - INVENTORY_OFFSET;
+    int equipType = msg.readInt16();
+    int flag = msg.readInt8();
 
     if (!flag)
         SERVER_NOTICE(_("Unable to equip."))
@@ -584,12 +576,9 @@ void InventoryHandler::processPlayerEquip(Net::MessageIn &msg)
 
 void InventoryHandler::processPlayerUnEquip(Net::MessageIn &msg)
 {
-    int equipType;
-    int flag;
-
     msg.readInt16(); // inder val - INVENTORY_OFFSET;
-    equipType = msg.readInt16();
-    flag = msg.readInt8();
+    int equipType = msg.readInt16();
+    int flag = msg.readInt8();
 
     if (flag)
         mEquips.setEquipment(getSlot(equipType), -1);

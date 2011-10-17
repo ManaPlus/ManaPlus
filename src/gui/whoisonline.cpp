@@ -278,6 +278,7 @@ void WhoIsOnline::loadList()
                         break;
 
                     case PlayerRelation::DISREGARDED:
+                    case PlayerRelation::BLACKLISTED:
                         disregard.push_back(prepareNick(nick, level, "8"));
                         break;
 
@@ -492,6 +493,7 @@ void WhoIsOnline::logic()
             setCaption(_("Who Is Online - error"));
             mUpdateButton->setEnabled(true);
             mUpdateTimer = cur_time + 240;
+            updateSize();
             break;
         case UPDATE_LIST:
             if (mDownloadComplete == true)

@@ -97,7 +97,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "imitationMode", 0);
     AddDEF(configData, "syncPlayerMove", false);
     AddDEF(configData, "drawPath", false);
-    AddDEF(configData, "moveToTargetType", 0);
+    AddDEF(configData, "moveToTargetType", 6);
     AddDEF(configData, "crazyMoveProgram", "mumrsonmdmlon");
     AddDEF(configData, "disableGameModifiers", false);
     AddDEF(configData, "targetDeadPlayers", false);
@@ -219,6 +219,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "seflMouseHeal", true);
     AddDEF(configData, "enableLazyScrolling", true);
     AddDEF(configData, "extMouseTargeting", true);
+    AddDEF(configData, "showMVP", false);
     return configData;
 }
 

@@ -35,13 +35,15 @@ class PartyTab : public ChatTab
 {
     public:
         PartyTab();
+
         ~PartyTab();
 
         void showHelp();
 
         bool handleCommand(const std::string &type, const std::string &args);
 
-        int getType() const { return ChatTab::TAB_PARTY; }
+        int getType() const
+        { return ChatTab::TAB_PARTY; }
 
         void saveToLogFile(std::string &msg);
 

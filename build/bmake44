@@ -1,7 +1,9 @@
 #!/bin/sh
 
+cd ..
+
 #may be
-#-Waggregate-return -Winline 
+#-Wshadow -Waggregate-return -Winline 
 
 #for feature
 #-Wstrict-overflow=4 -Wfloat-equal
@@ -19,11 +21,11 @@
 
 dir=`pwd`
 
-export CC=gcc-4.5
-export CXX=g++-4.5
+export CC=gcc-4.4
+export CXX=g++-4.4
 
 export LANG=C
-export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
+export CXXFLAGS="-Wmissing-field-initializers \
 -Wabi -Wdisabled-optimization -Wuninitialized \
 -Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
 -Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
@@ -33,26 +35,17 @@ export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
 -Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
--Wpacked -Wshadow -Wunused -Wsynth \
--Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
--Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
--Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2"
+-Wpacked -Wshadow -D_FORTIFY_SOURCE=2"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
---mandir=$dir/run/share/man \
---enable-memdebug=yes \
---enable-tcmalloc=no \
---enable-googleprofiler=no
-
-#--enable-applebuild=yes
-#--without-librt
+--mandir=$dir/run/share/man
 
 cd po
-#make -j5 update-po 2>../make1.log
-make -j5 update-gmo 2>../make1.log
+#make -j5 update-po 2>../build/make1.log
+make -j5 update-gmo 2>../build/make1.log
 cd ..
-make -j5 2>make2.log
+make -j5 2>build/make2.log
 

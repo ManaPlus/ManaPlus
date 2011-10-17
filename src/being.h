@@ -540,7 +540,7 @@ class Being : public ActorSprite, public ConfigListener
         const Path &getPath() const
         { return mPath; }
 
-        int getDistance()
+        int getDistance() const
         { return mDistance; }
 
         void setDistance(int n)
@@ -755,6 +755,18 @@ class Being : public ActorSprite, public ConfigListener
         bool isShopEnabled()
         { return mShop; }
 
+        /**
+         * Sets the attack range.
+         */
+        void setAttackRange(int range)
+        { mAttackRange = range; }
+
+        void attack(Being *target = NULL, bool keep = false,
+                    bool dontChangeEquipment = false);
+
+        void attack2(Being *target = NULL, bool keep = false,
+                     bool dontChangeEquipment = false);
+
     protected:
         /**
          * Sets the new path for this being.
@@ -823,6 +835,7 @@ class Being : public ActorSprite, public ConfigListener
         Party *mParty;
 
         bool mIsGM;
+        int mAttackRange;
 
     private:
 

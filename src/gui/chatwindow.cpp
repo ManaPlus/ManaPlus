@@ -293,6 +293,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/addpriorityattack ");
     mCommands.push_back("/removeattack ");
     mCommands.push_back("/addignoreattack ");
+    mCommands.push_back("/blacklist ");
 }
 
 void ChatWindow::resetToDefaultSize()

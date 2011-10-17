@@ -130,11 +130,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void actorSpriteDestroyed(const ActorSprite &actorSprite);
 
         /**
-         * Sets the attack range.
-         */
-        void setAttackRange(int range) { mAttackRange = range; }
-
-        /**
          * Gets the attack range.
          */
         int getAttackRange();
@@ -505,8 +500,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void loadHomes();
 
         bool mInStorage;      /**< Whether storage is currently accessible */
-
-        int mAttackRange;
 
         int mTargetTime;      /** How long the being has been targeted **/
         int mLastTarget;      /** Time stamp of last targeting action,

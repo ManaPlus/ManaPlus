@@ -598,3 +598,11 @@ SkillInfo* SkillDialog::getSkill(int id)
 {
     return mSkills[id];
 }
+
+void SkillDialog::widgetResized(const gcn::Event &event)
+{
+    Window::widgetResized(event);
+
+    if (mTabs)
+        mTabs->fixSize();
+}

@@ -98,7 +98,6 @@ extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, 0),
-    mAttackRange(0),
     mTargetTime(-1),
     mLastTarget(-1),
     mTarget(NULL),
@@ -129,6 +128,8 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mNextStep(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
+
+    mAttackRange = 0;
 
     listen(Mana::CHANNEL_ATTRIBUTES);
     mLevel = 1;
@@ -1764,6 +1765,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
                     dist = 7;
                     break;
                 case 6:
+                case 7:
                     dist = mAttackRange;
                     if (dist == 1)
                         dist = 2;
@@ -2946,7 +2948,7 @@ void LocalPlayer::tryMagic(std::string spell, int baseMagic,
 void LocalPlayer::changeMoveToTargetType()
 {
     mMoveToTargetType++;
-    if (mMoveToTargetType > 6)
+    if (mMoveToTargetType > 7)
         mMoveToTargetType = 0;
 
     config.setValue("moveToTargetType", mMoveToTargetType);

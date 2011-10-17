@@ -1,11 +1,13 @@
 #!/bin/bash
 
+cd ..
+
 dir=`pwd`
 
 cd packaging/windows
 ./make-translations.sh
 makensis -DDLLDIR=$dir/../mana_win/libs/dll/ \
-    -DPRODUCT_VERSION="1.1.10.2" \
+    -DPRODUCT_VERSION="1.1.10.16" \
     -DEXESUFFIX=/src \
     -DUPX=true \
     setup.nsi

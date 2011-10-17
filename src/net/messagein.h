@@ -54,10 +54,12 @@ class MessageIn
          * Returns the length of unread data.
          */
         unsigned int getUnreadLength() const
-        { return mLength - mPos; }
+        { return mLength > mPos ? mLength - mPos : 0; }
 
         virtual unsigned char readInt8();             /**< Reads a byte. */
+
         virtual Sint16 readInt16() = 0;        /**< Reads a short. */
+
         virtual int readInt32() = 0;        /**< Reads a long. */
 
         /**

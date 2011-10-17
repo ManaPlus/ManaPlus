@@ -45,12 +45,15 @@
  * different interfaces, which have different implementations for each server.
  */
 
+#define SMALL_VERSION "1.1.10.16"
+#define CHECK_VERSION "01.01.10.16"
+
 #ifdef HAVE_CONFIG_H
 #include "../config.h"
 #elif defined WIN32
 #include "winver.h"
-#elif defined __APPLE__
-#define PACKAGE_VERSION "1.0.0"
+#else
+#define PACKAGE_VERSION SMALL_VERSION
 #endif
 
 #if defined __APPLE__
@@ -84,10 +87,6 @@
 //define DEBUG_FONT_COUNTERS 1
 //define DEBUG_ALPHA_CACHE 1
 //define DEBUG_OPENGL_LEAKS 1
-
-#define SMALL_VERSION "1.1.10.2"
-#define CHECK_VERSION "01.01.10.02"
-
 
 #define PACKAGE_EXTENDED_VERSION "ManaPlus (" PACKAGE_OS \
 "; %s; 4144 v" SMALL_VERSION ")"

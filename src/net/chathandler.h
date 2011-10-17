@@ -64,8 +64,6 @@ class ChatHandler
         virtual void who() = 0;
 
         virtual void sendRaw(const std::string &args) = 0;
-
-//        virtual ~ChatHandler() {}
 };
 }
 

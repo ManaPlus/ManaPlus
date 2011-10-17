@@ -1145,7 +1145,7 @@ int Client::exec()
                     {
                         logger->log("Memorizing selected character %s",
                             player_node->getName().c_str());
-                        config.setValue("lastCharacter",
+                        serverConfig.setValue("lastCharacter",
                             player_node->getName());
                         if (mumbleManager)
                             mumbleManager->setPlayer(player_node->getName());

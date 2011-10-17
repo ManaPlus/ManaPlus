@@ -1,9 +1,11 @@
 #!/bin/sh
 
+cd ..
+
 dir=`pwd`
 
-export CC=gcc-4.6
-export CXX=g++-4.6
+export CC=gcc-4.5
+export CXX=g++-4.5
 
 #-D_GLIBCXX_PROFILE
 
@@ -17,7 +19,8 @@ export CXXFLAGS="-pg -fno-inline -Wunreachable-code -Wmissing-field-initializers
 -Wunused-parameter -Wredundant-decls -Wlogical-op \
 -Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
 -Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
--Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe"
+-Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O0 -pipe \
+-fno-default-inline -fno-inline"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
@@ -25,5 +28,5 @@ autoreconf -i
             --bindir=$dir/run/bin \
             --mandir=$dir/run/share/man
 
-make -j5 2>make.log
+make -j5 2>build/make.log
 

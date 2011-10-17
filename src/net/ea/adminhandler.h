@@ -38,7 +38,8 @@ namespace Ea
 class AdminHandler : public Net::AdminHandler
 {
     public:
-        virtual ~AdminHandler() { }
+        virtual ~AdminHandler()
+        { }
 
         virtual void kick(const std::string &name);
 

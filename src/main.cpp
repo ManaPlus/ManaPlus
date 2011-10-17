@@ -44,10 +44,11 @@ static void printHelp()
     using std::endl;
 
     std::cout
-        << _("manaplus [options] [mana-file]") << endl << endl
-        << _("[mana-file] : The mana file is an XML file (.mana)") << endl
-        << _("              used to set custom parameters") << endl
-        << _("              to the manaplus client.")
+        << _("manaplus [options] [manaplus-file]") << endl << endl
+        << _("[manaplus-file] : The manaplus file is an XML file (.manaplus)")
+        << endl
+        << _("                  used to set custom parameters") << endl
+        << _("                  to the manaplus client.")
         << endl << endl
         << _("Options:") << endl
         << _("  -l --log-file       : Log file to use") << endl

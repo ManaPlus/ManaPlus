@@ -132,20 +132,16 @@ void BeingHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_SKILL_DAMAGE:
-        {
             processSkillDamage(msg);
             break;
-        }
+
         case SMSG_BEING_ACTION:
-        {
             processBeingAction(msg);
             break;
-        }
+
         case SMSG_BEING_SELFEFFECT:
-        {
             processBeingSelfEffect(msg);
             break;
-        }
 
         case SMSG_BEING_EMOTION:
             processBeingEmotion(msg);
@@ -509,13 +505,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     if (!guildManager || !GuildManager::getEnableGuildBot())
     {
         if (guild == 0)
-        {
             dstBeing->clearGuilds();
-        }
         else
-        {
             dstBeing->setGuild(Guild::getGuild(static_cast<short>(guild)));
-        }
     }
 
     msg.readInt16();  // emblem
@@ -658,7 +650,5 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     if (msgType == 3 && dstBeing->getType() == Being::PLAYER)
         dstBeing->setMoveTime();
 }
-
-
 
 } // namespace TmwAthena

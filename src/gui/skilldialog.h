@@ -86,6 +86,8 @@ class SkillDialog : public Window, public gcn::ActionListener
         bool hasSkills()
         { return !mSkills.empty(); }
 
+        void widgetResized(const gcn::Event &event);
+
     private:
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
