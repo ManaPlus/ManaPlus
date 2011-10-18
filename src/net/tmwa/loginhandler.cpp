@@ -118,8 +118,8 @@ void LoginHandler::changePassword(const std::string &username A_UNUSED,
                                   const std::string &newPassword)
 {
     MessageOut outMsg(CMSG_CHAR_PASSWORD_CHANGE);
-    outMsg.writeString(oldPassword, 24);
-    outMsg.writeString(newPassword, 24);
+    outMsg.writeStringNoLog(oldPassword, 24);
+    outMsg.writeStringNoLog(newPassword, 24);
 }
 
 void LoginHandler::sendLoginRegister(const std::string &username,
@@ -128,7 +128,7 @@ void LoginHandler::sendLoginRegister(const std::string &username,
     MessageOut outMsg(0x0064);
     outMsg.writeInt32(0); // client version
     outMsg.writeString(username, 24);
-    outMsg.writeString(password, 24);
+    outMsg.writeStringNoLog(password, 24);
 
     /*
      * eAthena calls the last byte "client version 2", but it isn't used at

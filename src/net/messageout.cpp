@@ -82,6 +82,34 @@ void MessageOut::writeString(const std::string &string, int length)
     PacketCounters::incOutBytes(length);
 }
 
+void MessageOut::writeStringNoLog(const std::string &string, int length)
+{
+    DEBUGLOG("writeString: ***");
+    int stringLength = static_cast<int>(string.length());
+    if (length < 0)
+    {
+        // Write the length at the start if not fixed
+        writeInt16(static_cast<short>(stringLength));
+        length = stringLength;
+    }
+    else if (length < stringLength)
+    {
+        // Make sure the length of the string is no longer than specified
+        stringLength = length;
+    }
+    expand(length);
+
+    // Write the actual string
+    memcpy(mData + mPos, string.c_str(), stringLength);
+
+    // Pad remaining space with zeros
+    if (length > stringLength)
+        memset(mData + mPos + stringLength, '\0', length - stringLength);
+
+    mPos += length;
+    PacketCounters::incOutBytes(length);
+}
+
 char *MessageOut::getData() const
 {
     return mData;
