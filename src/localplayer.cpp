@@ -3779,8 +3779,11 @@ void LocalPlayer::fixAttackTarget()
     if (!mMap || !mTarget)
         return;
 
-    if (!getAttackType() || !config.getBoolValue("autofixPos"))
+    if (getMoveToTargetType() == 7 || !getAttackType()
+        || !config.getBoolValue("autofixPos"))
+    {
         return;
+    }
 
     const Vector &playerPos = getPosition();
     Path debugPath = mMap->findPath(
