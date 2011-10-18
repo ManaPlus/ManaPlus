@@ -260,6 +260,7 @@ void Network::flush()
 
     SDL_mutexP(mMutex);
     ret = SDLNet_TCP_Send(mSocket, mOutBuffer, mOutSize);
+    DEBUGLOG("Send " + toString(mOutSize) + " bytes");
     if (ret < static_cast<int>(mOutSize))
     {
         setError("Error in SDLNet_TCP_Send(): " +
@@ -427,6 +428,7 @@ void Network::receive()
                 }
                 else
                 {
+                    DEBUGLOG("Receive " + toString(ret) + " bytes");
                     mInSize += ret;
                     if (mToSkip)
                     {
