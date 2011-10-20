@@ -29,7 +29,7 @@
 class ChatWindow;
 
 #ifdef ENABLEDEBUGLOG
-#define DEBUGLOG(msg) logger->dlog(msg)
+#define DEBUGLOG(msg) if (logger) logger->dlog(msg)
 #else
 #define DEBUGLOG(msg) {}
 #endif
