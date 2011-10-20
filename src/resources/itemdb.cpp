@@ -636,19 +636,20 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
     {
         case -1:
         {
-            for_each_xml_child_node(itemNode, replaceNode)
+            for (int f = 0; f < 9; f ++)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                std::map<int, int> *mapList
+                    = itemInfo->addReplaceSprite(
+                    parseSpriteName(removeSprite), f);
+                if (!mapList)
+                    continue;
+                for_each_xml_child_node(itemNode, replaceNode)
                 {
-                    int from = XML::getProperty(itemNode, "from", 0);
-                    int to = XML::getProperty(itemNode, "to", 1);
-                    for (int f = 0; f < 9; f ++)
+                    if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
                     {
-                        std::map<int, int> *mapList
-                            = itemInfo->addReplaceSprite(
-                            parseSpriteName(removeSprite), f);
-                        if (!mapList)
-                            continue;
+                        int from = XML::getProperty(itemNode, "from", 0);
+                        int to = XML::getProperty(itemNode, "to", 1);
+
                         (*mapList)[from] = to;
                     }
                 }
@@ -657,6 +658,13 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
         }
         case -2:
         {
+            itemInfo->addReplaceSprite(parseSpriteName(
+                removeSprite), DIRECTION_DOWN);
+            itemInfo->addReplaceSprite(parseSpriteName(
+                removeSprite), DIRECTION_DOWNLEFT);
+            itemInfo->addReplaceSprite(parseSpriteName(
+                removeSprite), DIRECTION_DOWNRIGHT);
+
             for_each_xml_child_node(itemNode, replaceNode)
             {
                 if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
@@ -683,6 +691,13 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
         }
         case -3:
         {
+            itemInfo->addReplaceSprite(parseSpriteName(
+                removeSprite), DIRECTION_UP);
+            itemInfo->addReplaceSprite(parseSpriteName(
+                removeSprite), DIRECTION_UPLEFT);
+            itemInfo->addReplaceSprite(parseSpriteName(
+                removeSprite), DIRECTION_UPRIGHT);
+
             for_each_xml_child_node(itemNode, replaceNode)
             {
                 if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
