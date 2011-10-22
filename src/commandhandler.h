@@ -290,6 +290,12 @@ class CommandHandler
         void handleAddIgnoreAttack(const std::string &args,
                                    ChatTab *tab A_UNUSED);
 
+        void handleServerIgnoreAll(const std::string &args,
+                                   ChatTab *tab A_UNUSED);
+
+        void handleServerUnIgnoreAll(const std::string &args,
+                                     ChatTab *tab A_UNUSED);
+
         void handleDump(const std::string &args, ChatTab *tab);
 
         void handleCacheInfo(const std::string &args, ChatTab *tab A_UNUSED);

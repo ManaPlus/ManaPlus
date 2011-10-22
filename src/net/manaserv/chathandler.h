@@ -133,6 +133,10 @@ class ChatHandler : public MessageHandler, public Net::ChatHandler
          * Handle who responses.
          */
         void handleWhoResponse(Net::MessageIn &msg);
+
+        void ignoreAll()
+
+        void unIgnoreAll()
 };
 
 } // namespace ManaServ

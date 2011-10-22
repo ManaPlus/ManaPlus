@@ -294,6 +294,8 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/removeattack ");
     mCommands.push_back("/addignoreattack ");
     mCommands.push_back("/blacklist ");
+    mCommands.push_back("/serverignoreall");
+    mCommands.push_back("/serverunignoreall");
 }
 
 void ChatWindow::resetToDefaultSize()

@@ -190,6 +190,10 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleAddIgnoreAttack(args, tab);
     else if (type == "dump")
         handleDump(args, tab);
+    else if (type == "serverignoreall")
+        handleServerIgnoreAll(args, tab);
+    else if (type == "serverunignoreall")
+        handleServerUnIgnoreAll(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -1020,6 +1024,18 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
 #endif
 }
 
+void CommandHandler::handleServerIgnoreAll(const std::string &args,
+                                           ChatTab *tab A_UNUSED)
+{
+    Net::getChatHandler()->ignoreAll();
+}
+
+void CommandHandler::handleServerUnIgnoreAll(const std::string &args,
+                                             ChatTab *tab A_UNUSED)
+{
+    Net::getChatHandler()->unIgnoreAll();
+}
+
 #ifdef DEBUG_DUMP_LEAKS
 void showRes(std::string str, ResourceManager::Resources *res);
 
@@ -1076,6 +1092,7 @@ void CommandHandler::handleDump(const std::string &args,
             + toString(res->size()));
     }
 }
+
 #elif defined ENABLE_MEM_DEBUG
 void CommandHandler::handleDump(const std::string &args A_UNUSED,
                                 ChatTab *tab A_UNUSED)

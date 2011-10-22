@@ -60,6 +60,7 @@ ChatHandler::ChatHandler()
         SMSG_WHISPER_RESPONSE,
         SMSG_GM_CHAT,
         SMSG_MVP, // MVP
+        SMSG_IGNORE_ALL_RESPONSE,
         0
     };
     handledMessages = _messages;
@@ -95,6 +96,9 @@ void ChatHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_MVP:
             processMVP(msg);
             break;
+
+        case SMSG_IGNORE_ALL_RESPONSE:
+            processIgnoreAllResponse(msg);
 
         default:
             break;
@@ -249,5 +253,16 @@ void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
     }
 }
 
-} // namespace TmwAthena
+void ChatHandler::ignoreAll()
+{
+    MessageOut outMsg(CMSG_IGNORE_ALL);
+    outMsg.writeInt8(0);
+}
 
+void ChatHandler::unIgnoreAll()
+{
+    MessageOut outMsg(CMSG_IGNORE_ALL);
+    outMsg.writeInt8(1);
+}
+
+} // namespace TmwAthena
