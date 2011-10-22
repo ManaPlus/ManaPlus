@@ -121,6 +121,13 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
 
 void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 {
+    if (confirmDlg || tradePartnerName.empty()
+        || !player_relations.hasPermission(tradePartnerName, PlayerRelation::TRADE))
+    {
+        Net::getTradeHandler()->respond(false);
+        return;
+    }
+
     switch (msg.readInt8())
     {
         case 0: // Too far away
