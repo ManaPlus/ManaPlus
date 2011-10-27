@@ -296,6 +296,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/blacklist ");
     mCommands.push_back("/serverignoreall");
     mCommands.push_back("/serverunignoreall");
+    mCommands.push_back("/dumpg");
 }
 
 void ChatWindow::resetToDefaultSize()

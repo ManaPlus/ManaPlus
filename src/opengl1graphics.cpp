@@ -49,6 +49,7 @@ OpenGL1Graphics::OpenGL1Graphics():
     mAlpha(false), mTexture(false), mColorAlpha(false),
     mSync(false)
 {
+    mOpenGL = 2;
 }
 
 OpenGL1Graphics::~OpenGL1Graphics()

@@ -53,6 +53,7 @@ Graphics::Graphics():
     mRect.y = 0;
     mRect.w = 0;
     mRect.h = 0;
+    mOpenGL = 0;
 }
 
 Graphics::~Graphics()
@@ -100,7 +101,10 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
     if (mTarget->format)
+    {
         logger->log("Bits per pixel: %d", mTarget->format->BytesPerPixel);
+        bpp = mTarget->format->BytesPerPixel;
+    }
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
     if (!vi)
