@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-10-15 00:08+0300\n"
-"PO-Revision-Date: 2011-10-14 21:13+0000\n"
+"POT-Creation-Date: 2011-10-28 03:52+0300\n"
+"PO-Revision-Date: 2011-10-28 00:58+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
 "ru/)\n"
@@ -143,15 +143,15 @@ msgstr "Ошибка создания директории для обновле
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
 
-#: src/commandhandler.cpp:198
+#: src/commandhandler.cpp:205
 msgid "Unknown command."
 msgstr "Неизвестная команда."
 
-#: src/commandhandler.cpp:297
+#: src/commandhandler.cpp:304
 msgid "Cannot send empty whispers!"
 msgstr "Нельзя отправлять пустые сообщения!"
 
-#: src/commandhandler.cpp:311
+#: src/commandhandler.cpp:318
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -160,101 +160,101 @@ msgstr ""
 "Невозможно создать вкладку для личного общения с игроком \"%s\"! Или вкладка "
 "уже создана, или этот игрок Вы сами."
 
-#: src/commandhandler.cpp:331
+#: src/commandhandler.cpp:338
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Запрос на присоединение к каналу %s."
 
-#: src/commandhandler.cpp:347 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:354 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "Не указано название группы"
 
-#: src/commandhandler.cpp:358
+#: src/commandhandler.cpp:365
 msgid "Guild name is missing."
 msgstr "Не задано имя гильдии."
 
-#: src/commandhandler.cpp:371 src/commandhandler.cpp:483
-#: src/commandhandler.cpp:524 src/commandhandler.cpp:559
+#: src/commandhandler.cpp:378 src/commandhandler.cpp:496
+#: src/commandhandler.cpp:537 src/commandhandler.cpp:572
 msgid "Please specify a name."
 msgstr "Пожалуйста, укажите имя"
 
-#: src/commandhandler.cpp:417
+#: src/commandhandler.cpp:430
 msgid "Return toggles chat."
 msgstr "Enter переключает Вас на окно чата."
 
-#: src/commandhandler.cpp:417
+#: src/commandhandler.cpp:430
 msgid "Message closes chat."
 msgstr "Сообщение закрывает чат."
 
-#: src/commandhandler.cpp:428
+#: src/commandhandler.cpp:441
 msgid "Return now toggles chat."
 msgstr "Теперь Return переключает чат."
 
-#: src/commandhandler.cpp:434
+#: src/commandhandler.cpp:447
 msgid "Message now closes chat."
 msgstr "Теперь сообщение закрывает чат."
 
-#: src/commandhandler.cpp:462
+#: src/commandhandler.cpp:475
 msgid "friend"
 msgstr "друг"
 
-#: src/commandhandler.cpp:467
+#: src/commandhandler.cpp:480
 msgid "disregarded"
 msgstr "пренебрегаемый"
 
-#: src/commandhandler.cpp:472
+#: src/commandhandler.cpp:485
 msgid "neutral"
 msgstr "нейтральный"
 
-#: src/commandhandler.cpp:491
+#: src/commandhandler.cpp:504
 #, c-format
 msgid "Player already %s!"
 msgstr "Игрок уже %s!"
 
-#: src/commandhandler.cpp:505
+#: src/commandhandler.cpp:518
 #, c-format
 msgid "Player successfully %s!"
 msgstr "Игрок удачно %s!"
 
-#: src/commandhandler.cpp:513
+#: src/commandhandler.cpp:526
 #, c-format
 msgid "Player could not be %s!"
 msgstr "Игрок не может быть %s!"
 
-#: src/commandhandler.cpp:536
+#: src/commandhandler.cpp:549
 msgid "Player wasn't ignored!"
 msgstr "Игрок не был игнорируемым!"
 
-#: src/commandhandler.cpp:543
+#: src/commandhandler.cpp:556
 msgid "Player no longer ignored!"
 msgstr "Игрок больше не игнорируется!"
 
-#: src/commandhandler.cpp:545
+#: src/commandhandler.cpp:558
 msgid "Player could not be unignored!"
 msgstr "Игрок не может быть удален из списка игнорирования!"
 
-#: src/commandhandler.cpp:551
+#: src/commandhandler.cpp:564
 msgid "blacklisted"
 msgstr "добавлен в черный список"
 
-#: src/commandhandler.cpp:566
+#: src/commandhandler.cpp:579
 msgid "Player already erased!"
 msgstr "Игрок и так уже удален!"
 
-#: src/commandhandler.cpp:577
+#: src/commandhandler.cpp:590
 msgid "Player successfully erased!"
 msgstr "Игрок удален!"
 
-#: src/commandhandler.cpp:579
+#: src/commandhandler.cpp:592
 msgid "Player could not be erased!"
 msgstr "Игрок не может быть удален!"
 
-#: src/commandhandler.cpp:879 src/commandhandler.cpp:925
+#: src/commandhandler.cpp:892 src/commandhandler.cpp:938
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Время работы клиента: %s"
 
-#: src/commandhandler.cpp:889
+#: src/commandhandler.cpp:902
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
@@ -262,7 +262,7 @@ msgstr[0] "%d неделя"
 msgstr[1] "%d недели"
 msgstr[2] "%d недель"
 
-#: src/commandhandler.cpp:898
+#: src/commandhandler.cpp:911
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -270,7 +270,7 @@ msgstr[0] "%d день"
 msgstr[1] "%d дня"
 msgstr[2] "%d дней"
 
-#: src/commandhandler.cpp:906
+#: src/commandhandler.cpp:919
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -278,7 +278,7 @@ msgstr[0] "%d час"
 msgstr[1] "%d часа"
 msgstr[2] "%d часов"
 
-#: src/commandhandler.cpp:914
+#: src/commandhandler.cpp:927
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -286,7 +286,7 @@ msgstr[0] "%d минута"
 msgstr[1] "%d минуты"
 msgstr[2] "%d минут"
 
-#: src/commandhandler.cpp:922
+#: src/commandhandler.cpp:935
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -294,27 +294,27 @@ msgstr[0] "%d секунда"
 msgstr[1] "%d секунды"
 msgstr[2] "%d секунд"
 
-#: src/commandhandler.cpp:1001
+#: src/commandhandler.cpp:1014
 msgid "font cache size"
 msgstr "размер кеша шрифта"
 
-#: src/commandhandler.cpp:1013
+#: src/commandhandler.cpp:1026
 msgid "Cache size:"
 msgstr "Размер кеша:"
 
-#: src/commandhandler.cpp:1017
+#: src/commandhandler.cpp:1030
 msgid "Created:"
 msgstr "Создано:"
 
-#: src/commandhandler.cpp:1019
+#: src/commandhandler.cpp:1032
 msgid "Deleted:"
 msgstr "Удалено:"
 
-#: src/commandhandler.cpp:1066 src/commandhandler.cpp:1073
+#: src/commandhandler.cpp:1133 src/commandhandler.cpp:1140
 msgid "Resource images:"
 msgstr "Изображений:"
 
-#: src/commandhandler.cpp:1068 src/commandhandler.cpp:1075
+#: src/commandhandler.cpp:1135 src/commandhandler.cpp:1142
 msgid "Resource orphaned images:"
 msgstr "Удаленных изображений:"
 
@@ -349,19 +349,19 @@ msgstr "Соединение с сервером потеряно."
 msgid "Network Error"
 msgstr "Ошибка сети"
 
-#: src/game.cpp:1323
+#: src/game.cpp:1322
 msgid "Ignoring incoming trade requests"
 msgstr "Игнорировать предложения о торговле"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1332
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
-#: src/game.cpp:1733
+#: src/game.cpp:1732
 msgid "Could Not Load Map"
 msgstr "Не удалось загрузить карту"
 
-#: src/game.cpp:1734
+#: src/game.cpp:1733
 #, c-format
 msgid "Error while loading %s"
 msgstr "Ошибка во время загрузки %s"
@@ -745,12 +745,12 @@ msgstr "???"
 msgid "Chat"
 msgstr "Чат"
 
-#: src/gui/chatwindow.cpp:610
+#: src/gui/chatwindow.cpp:613
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Присутствуют: %s; Всего %d игроков."
 
-#: src/gui/chatwindow.cpp:997
+#: src/gui/chatwindow.cpp:1000
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Вы прошептали %s: %s"
@@ -4330,7 +4330,7 @@ msgstr "Имитация: "
 msgid "Imitation canceled"
 msgstr "Имитация отменена"
 
-#: src/localplayer.cpp:3873
+#: src/localplayer.cpp:3876
 msgid "You see "
 msgstr "Вы видите "
 
@@ -4532,6 +4532,22 @@ msgstr "Игрок MVP."
 #: src/net/ea/chathandler.cpp:350
 msgid "MVP player: "
 msgstr "Игрок MVP: "
+
+#: src/net/ea/chathandler.cpp:370
+msgid "All whispers ignored."
+msgstr "Включено игнорирование всех приватных сообщений."
+
+#: src/net/ea/chathandler.cpp:374
+msgid "All whispers ignore failed."
+msgstr "Не удалось игнорирование всех приватных сообщение."
+
+#: src/net/ea/chathandler.cpp:385
+msgid "All whispers unignored."
+msgstr "Убрано игнорирование всех приватных сообщений."
+
+#: src/net/ea/chathandler.cpp:389
+msgid "All whispers unignore failed."
+msgstr "Не удалось убрать игнорирование всех приватных сообщение."
 
 #: src/net/ea/gamehandler.cpp:87
 #, c-format
@@ -5114,53 +5130,53 @@ msgstr "Яд не подействовал..."
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s хочет торговать с Вами, Вы принимаете предложение?"
 
-#: src/net/ea/tradehandler.cpp:127
+#: src/net/ea/tradehandler.cpp:134
 msgid "Trading isn't possible. Trade partner is too far away."
 msgstr "Торговля невозможна. Партнер по торговле слишком далеко."
 
-#: src/net/ea/tradehandler.cpp:131
+#: src/net/ea/tradehandler.cpp:138
 msgid "Trading isn't possible. Character doesn't exist."
 msgstr "Торговля невозможна. Такой персонаж не существует."
 
-#: src/net/ea/tradehandler.cpp:135
+#: src/net/ea/tradehandler.cpp:142
 msgid "Trade cancelled due to an unknown reason."
 msgstr "Торговля отменена по неизвестной причине."
 
-#: src/net/ea/tradehandler.cpp:141
+#: src/net/ea/tradehandler.cpp:148
 #, c-format
 msgid "Trade: You and %s"
 msgstr "Торговля: Вы и %s"
 
-#: src/net/ea/tradehandler.cpp:151
+#: src/net/ea/tradehandler.cpp:158
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr "Торговля с %s отменена."
 
-#: src/net/ea/tradehandler.cpp:164
+#: src/net/ea/tradehandler.cpp:171
 msgid "Unhandled trade cancel packet."
 msgstr "Неизвестный сигнал завершения торговли."
 
-#: src/net/ea/tradehandler.cpp:229
+#: src/net/ea/tradehandler.cpp:236
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "Не удалось добавить предмет. Партнер по торговле перегружен."
 
-#: src/net/ea/tradehandler.cpp:234
+#: src/net/ea/tradehandler.cpp:241
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Не удалось добавить предмет. У партнера по торговле кончилось место."
 
-#: src/net/ea/tradehandler.cpp:239
+#: src/net/ea/tradehandler.cpp:246
 msgid "Failed adding item. You can't trade this item."
 msgstr "Ошибка добавления предмета. Вы не можете торговать этим предметом."
 
-#: src/net/ea/tradehandler.cpp:243
+#: src/net/ea/tradehandler.cpp:250
 msgid "Failed adding item for unknown reason."
 msgstr "Не удалось добавить предмет по неизвестной причине."
 
-#: src/net/ea/tradehandler.cpp:262 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:269 src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "Торговля отменена."
 
-#: src/net/ea/tradehandler.cpp:273 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:280 src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "Торговля завершена."
 
@@ -5589,11 +5605,11 @@ msgstr "Урон в сек."
 msgid "Empty address given to Network::connect()!"
 msgstr "Пустой адрес был передан методу Network::connect()!"
 
-#: src/net/tmwa/network.cpp:355
+#: src/net/tmwa/network.cpp:356
 msgid "Unable to resolve host \""
 msgstr "Не удалось найти хост \""
 
-#: src/net/tmwa/network.cpp:425
+#: src/net/tmwa/network.cpp:426
 msgid "Connection to server terminated. "
 msgstr "Подключение к серверу прервано."
 
