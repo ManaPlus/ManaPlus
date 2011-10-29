@@ -1,3 +1,14 @@
+2011-10-30 New release 1.1.10.30
+ManaPlus:
+fix: disable autofix position for archer mode.
+fix; hide password from packets log.
+fix: replace tags without item id in items.xml.
+fix: protect trades from some kind of abusing.
+add: chat commands to use server side ignore for whispers:
+Commands: /serverignoreall and /serverunignoreall
+add: command for dump graphics and some other settings to chat.
+Command: /dumpg
+
 2011-10-16 New release 1.1.10.16
 ManaPlus:
 fix: particle effects Y position.
