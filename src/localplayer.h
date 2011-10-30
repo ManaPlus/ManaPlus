@@ -325,9 +325,6 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void changeAwayMode();
 
-        bool getAwayMode()
-        { return mAwayMode; }
-
         void setAway(const std::string &message);
 
         bool getAway()

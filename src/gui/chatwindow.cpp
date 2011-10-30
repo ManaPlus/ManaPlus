@@ -1499,7 +1499,7 @@ void ChatWindow::loadCustomList()
 
 void ChatWindow::addToAwayLog(std::string line)
 {
-    if (!player_node || !player_node->getAwayMode())
+    if (!player_node || !player_node->getAway())
         return;
 
     if (mAwayLog.size() > 20)

@@ -873,7 +873,7 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
             break;
     }
 
-    switch ((int)player_node->getAwayMode())
+    switch ((int)player_node->getAway())
     {
         case 0:
             str += translateLetter(N_("(O)"));

@@ -3930,7 +3930,7 @@ void LocalPlayer::stopAdvert()
 
 void AwayListener::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "ok" && player_node && player_node->getAwayMode())
+    if (event.getId() == "ok" && player_node && player_node->getAway())
     {
         player_node->changeAwayMode();
         if (outfitWindow)

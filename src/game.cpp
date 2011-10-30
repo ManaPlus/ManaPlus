@@ -785,7 +785,7 @@ void Game::handleInput()
             if (keyboard.isEnabled()
                 && !chatWindow->isInputFocused()
                 && !setupWindow->isVisible()
-                && !player_node->getAwayMode()
+                && !player_node->getAway()
                 && !NpcDialog::isAnyInputFocused()
                 && !InventoryWindow::isAnyInputFocused())
             {
@@ -833,7 +833,7 @@ void Game::handleInput()
 
             if ((!chatWindow || !chatWindow->isInputFocused())
                 && !gui->getFocusHandler()->getModalFocused()
-                && !player_node->getAwayMode())
+                && !player_node->getAway())
             {
                 NpcDialog *dialog = NpcDialog::getActive();
                 if (keyboard.isKeyActive(keyboard.KEY_OK)
@@ -957,7 +957,7 @@ void Game::handleInput()
                 && !gui->getFocusHandler()->getModalFocused()
                 && mValidSpeed
                 && (!setupWindow || !setupWindow->isVisible())
-                && (!player_node || !player_node->getAwayMode())
+                && (!player_node || !player_node->getAway())
                 && !NpcDialog::isAnyInputFocused()
                 && !InventoryWindow::isAnyInputFocused())
             {
@@ -1147,7 +1147,7 @@ void Game::handleInput()
             if (keyboard.isEnabled()
                 && (!chatWindow || !chatWindow->isInputFocused())
                 && !NpcDialog::isAnyInputFocused()
-                && (!player_node || !player_node->getAwayMode())
+                && (!player_node || !player_node->getAway())
                 && !keyboard.isKeyActive(keyboard.KEY_TARGET)
                 && !keyboard.isKeyActive(keyboard.KEY_UNTARGET)
                 && !InventoryWindow::isAnyInputFocused())
@@ -1367,7 +1367,7 @@ void Game::handleInput()
                 if (event.active.gain)
                 {   // window restore
                     Client::setIsMinimized(false);
-                    if (!player_node && !player_node->getAwayMode())
+                    if (!player_node && !player_node->getAway())
                         fpsLimit = config.getIntValue("fpslimit");
                     if (player_node)
                         player_node->setHalfAway(false);
@@ -1375,7 +1375,7 @@ void Game::handleInput()
                 else
                 {   // window minimisation
                     Client::setIsMinimized(true);
-                    if (player_node && !player_node->getAwayMode())
+                    if (player_node && !player_node->getAway())
                     {
                         fpsLimit = config.getIntValue("altfpslimit");
                         player_node->setHalfAway(true);
@@ -1391,7 +1391,7 @@ void Game::handleInput()
             if (event.active.state & SDL_APPMOUSEFOCUS)
                 Client::setMouseFocused(event.active.gain);
 
-            if (player_node && player_node->getAwayMode())
+            if (player_node && player_node->getAway())
             {
                 if (Client::getInputFocused() || Client::getMouseFocused())
                     fpsLimit = config.getIntValue("fpslimit");
@@ -1429,7 +1429,7 @@ void Game::handleInput()
     } // End while
 
     // If the user is configuring the keys then don't respond.
-    if (!player_node || !keyboard.isEnabled() || player_node->getAwayMode())
+    if (!player_node || !keyboard.isEnabled() || player_node->getAway())
         return;
 
     if (keyboard.isKeyActive(keyboard.KEY_WEAR_OUTFIT)
