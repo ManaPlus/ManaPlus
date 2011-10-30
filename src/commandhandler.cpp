@@ -1042,19 +1042,20 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
 #endif
 }
 
-void CommandHandler::handleServerIgnoreAll(const std::string &args,
+void CommandHandler::handleServerIgnoreAll(const std::string &args A_UNUSED,
                                            ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->ignoreAll();
 }
 
-void CommandHandler::handleServerUnIgnoreAll(const std::string &args,
+void CommandHandler::handleServerUnIgnoreAll(const std::string &args A_UNUSED,
                                              ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->unIgnoreAll();
 }
 
-void CommandHandler::handleDumpGraphics(const std::string &args, ChatTab *tab)
+void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
+                                        ChatTab *tab)
 {
     std::string str;
     str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
