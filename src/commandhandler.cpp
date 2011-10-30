@@ -149,6 +149,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleEmote(args, tab);
     else if (type == "away")
         handleAway(args, tab);
+    else if (type == "pseudoaway")
+        handlePseudoAway(args, tab);
     else if (type == "follow")
         handleFollow(args, tab);
     else if (type == "heal")
@@ -710,6 +712,13 @@ void CommandHandler::handleAway(const std::string &args, ChatTab *tab A_UNUSED)
 {
     if (player_node)
         player_node->setAway(args);
+}
+
+void CommandHandler::handlePseudoAway(const std::string &args,
+                                      ChatTab *tab A_UNUSED)
+{
+    if (player_node)
+        player_node->setPseudoAway(args);
 }
 
 void CommandHandler::handleFollow(const std::string &args, ChatTab *tab)

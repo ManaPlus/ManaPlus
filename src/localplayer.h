@@ -327,8 +327,13 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void setAway(const std::string &message);
 
+        void setPseudoAway(const std::string &message);
+
         bool getAway()
         { return mAwayMode; }
+
+        bool getPseudoAway()
+        { return mPseudoAwayMode; }
 
         void setHalfAway(bool n)
         { mInactive = n; }
@@ -568,6 +573,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int mPingTime;
         int mAfkTime;
         bool mAwayMode;
+        bool mPseudoAwayMode;
 
         bool mShowNavigePath;
         bool mIsServerBuggy;

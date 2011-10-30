@@ -113,6 +113,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mAwayDialog(0),
     mAfkTime(0),
     mAwayMode(false),
+    mPseudoAwayMode(false),
     mShowNavigePath(false),
     mDrawPath(false),
     mActivityTime(0),
@@ -357,7 +358,7 @@ void LocalPlayer::logic()
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile += FLAG_SHOP;
 
-        if (mAwayMode)
+        if (mAwayMode || mPseudoAwayMode)
             smile += FLAG_AWAY;
 
         if (mInactive)
@@ -3200,6 +3201,13 @@ void LocalPlayer::setAway(const std::string &message)
     if (!message.empty())
         config.setValue("afkMessage", message);
     changeAwayMode();
+}
+
+void LocalPlayer::setPseudoAway(const std::string &message)
+{
+    if (!message.empty())
+        config.setValue("afkMessage", message);
+    mPseudoAwayMode = !mPseudoAwayMode;
 }
 
 void LocalPlayer::afkRespond(ChatTab *tab, const std::string &nick)

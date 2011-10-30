@@ -297,6 +297,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/serverignoreall");
     mCommands.push_back("/serverunignoreall");
     mCommands.push_back("/dumpg");
+    mCommands.push_back("/pseudoaway ");
 }
 
 void ChatWindow::resetToDefaultSize()

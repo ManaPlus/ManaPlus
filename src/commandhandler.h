@@ -234,6 +234,11 @@ class CommandHandler
         void handleAway(const std::string &args, ChatTab *tab);
 
         /**
+         * Handle pseudo away command.
+         */
+        void handlePseudoAway(const std::string &args, ChatTab *tab);
+
+        /**
          * Handle follow command.
          */
         void handleFollow(const std::string &args, ChatTab *tab);
