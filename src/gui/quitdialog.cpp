@@ -133,13 +133,13 @@ void QuitDialog::action(const gcn::ActionEvent &event)
         }
         else if (mLogoutQuit->isSelected())
         {
-            Client::closeDialogs();
+            Game::closeDialogs();
             Client::setState(STATE_EXIT);
         }
         else if (Net::getGameHandler()->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
-            Client::closeDialogs();
+            Game::closeDialogs();
             Client::setState(STATE_SWITCH_SERVER);
         }
         else if (mSwitchCharacter->isSelected())
@@ -147,7 +147,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             if (Client::getState() == STATE_GAME)
             {
                 Net::getCharHandler()->switchCharacter();
-                Client::closeDialogs();
+                Game::closeDialogs();
             }
         }
     }

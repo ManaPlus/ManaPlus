@@ -567,7 +567,7 @@ void Game::logic()
                 if (map)
                     map->saveExtraLayer();
             }
-            Client::closeDialogs();
+            closeDialogs();
             Client::setFramerate(config.getIntValue("fpslimit"));
             if (logger)
             {
@@ -1873,5 +1873,15 @@ void Game::clearKeysArray()
         mLastKeys[f].time = 0;
         mLastKeys[f].key = -1;
         mLastKeys[f].cnt = 0;
+    }
+}
+
+void Game::closeDialogs()
+{
+    Client::closeDialogs();
+    if (deathNotice)
+    {
+        deathNotice->scheduleDelete();
+        deathNotice = 0;
     }
 }

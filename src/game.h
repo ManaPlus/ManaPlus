@@ -96,6 +96,8 @@ class Game
         void setAdjustLevel(int n)
         { mAdjustLevel = n; }
 
+        static void closeDialogs();
+
     private:
 
         void updateHistory(SDL_Event &event);

@@ -74,7 +74,7 @@ namespace
                 Net::getPlayerHandler()->respawn();
             deathNotice = NULL;
 
-            Client::closeDialogs();
+            Game::closeDialogs();
 
             if (viewport)
                 viewport->closePopupMenu();
