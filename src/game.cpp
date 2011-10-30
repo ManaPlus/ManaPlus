@@ -569,6 +569,11 @@ void Game::logic()
             }
             Client::closeDialogs();
             Client::setFramerate(config.getIntValue("fpslimit"));
+            if (logger)
+            {
+                logger->log("Show error message on state: %d",
+                    Client::getState());
+            }
             disconnectedDialog = new OkDialog(_("Network Error"),
                                               errorMessage, false);
             disconnectedDialog->addActionListener(&errorListener);
