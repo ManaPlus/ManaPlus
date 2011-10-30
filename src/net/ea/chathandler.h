@@ -84,6 +84,8 @@ class ChatHandler : public Net::ChatHandler
 
         virtual void processMVP(Net::MessageIn &msg);
 
+        virtual void processIgnoreAllResponse(Net::MessageIn &msg);
+
     protected:
         typedef std::queue<std::string> WhisperQueue;
         WhisperQueue mSentWhispers;

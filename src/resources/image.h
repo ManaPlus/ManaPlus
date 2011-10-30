@@ -188,6 +188,9 @@ class Image : public Resource
         static void SDLSetEnableAlphaCache(bool n)
         { mEnableAlphaCache = n; }
 
+        static bool SDLGetEnableAlphaCache()
+        { return mEnableAlphaCache; }
+
         static void setEnableAlpha(bool n)
         { mEnableAlpha = n; }
 

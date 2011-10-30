@@ -26,6 +26,7 @@
 #include "actorspritemanager.h"
 #include "channelmanager.h"
 #include "channel.h"
+#include "configuration.h"
 #include "game.h"
 #include "guildmanager.h"
 #include "localplayer.h"
@@ -190,6 +191,12 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleAddIgnoreAttack(args, tab);
     else if (type == "dump")
         handleDump(args, tab);
+    else if (type == "serverignoreall")
+        handleServerIgnoreAll(args, tab);
+    else if (type == "serverunignoreall")
+        handleServerUnIgnoreAll(args, tab);
+    else if (type == "dumpg")
+        handleDumpGraphics(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -373,13 +380,19 @@ void CommandHandler::handleParty(const std::string &args, ChatTab *tab)
 
 void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
 {
+    const std::string str = strprintf("*%s*", args.c_str());
+    outString(tab, strprintf("*%s*", args.c_str()), args);
+}
+
+void CommandHandler::outString(ChatTab *tab, const std::string &str,
+                               const std::string &def)
+{
     if (!tab)
     {
-        Net::getChatHandler()->me(args);
+        Net::getChatHandler()->me(def);
         return;
     }
 
-    const std::string str = strprintf("*%s*", args.c_str());
     switch (tab->getType())
     {
         case ChatTab::TAB_PARTY:
@@ -402,7 +415,7 @@ void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
             break;
         }
         default:
-            Net::getChatHandler()->me(args);
+            Net::getChatHandler()->me(def);
             break;
     }
 }
@@ -1020,6 +1033,60 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
 #endif
 }
 
+void CommandHandler::handleServerIgnoreAll(const std::string &args,
+                                           ChatTab *tab A_UNUSED)
+{
+    Net::getChatHandler()->ignoreAll();
+}
+
+void CommandHandler::handleServerUnIgnoreAll(const std::string &args,
+                                             ChatTab *tab A_UNUSED)
+{
+    Net::getChatHandler()->unIgnoreAll();
+}
+
+void CommandHandler::handleDumpGraphics(const std::string &args, ChatTab *tab)
+{
+    std::string str;
+    str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,
+        mainGraphics->getWidth(), mainGraphics->getHeight(),
+        mainGraphics->getBpp());
+
+    if (mainGraphics->getFullScreen())
+        str += "F";
+    else
+        str += "W";
+    if (mainGraphics->getHWAccel())
+        str += "H";
+    else
+        str += "S";
+
+    if (mainGraphics->getDoubleBuffer())
+        str += "D";
+    else
+        str += "_";
+
+#if defined USE_OPENGL
+    str += strprintf(",%d", mainGraphics->getOpenGL());
+#else
+    str += ",0";
+#endif
+
+    str += strprintf(",%f,", Client::getGuiAlpha());
+    str += config.getBoolValue("adjustPerfomance") ? "1" : "0";
+    str += config.getBoolValue("alphaCache") ? "1" : "0";
+    str += config.getBoolValue("enableMapReduce") ? "1" : "0";
+    str += config.getBoolValue("beingopacity") ? "1" : "0";
+    str += ",";
+    str += config.getBoolValue("enableAlphaFix") ? "1" : "0";
+    str += config.getBoolValue("disableAdvBeingCaching") ? "1" : "0";
+    str += config.getBoolValue("disableBeingCaching") ? "1" : "0";
+    str += config.getBoolValue("particleeffects") ? "1" : "0";
+
+    str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
+    outString(tab, str, str);
+}
+
 #ifdef DEBUG_DUMP_LEAKS
 void showRes(std::string str, ResourceManager::Resources *res);
 
@@ -1076,6 +1143,7 @@ void CommandHandler::handleDump(const std::string &args,
             + toString(res->size()));
     }
 }
+
 #elif defined ENABLE_MEM_DEBUG
 void CommandHandler::handleDump(const std::string &args A_UNUSED,
                                 ChatTab *tab A_UNUSED)

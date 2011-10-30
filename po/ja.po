@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-10-15 00:08+0300\n"
-"PO-Revision-Date: 2011-10-14 21:11+0000\n"
+"POT-Creation-Date: 2011-10-28 03:52+0300\n"
+"PO-Revision-Date: 2011-10-28 00:55+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/team/"
 "ja/)\n"
@@ -142,15 +142,15 @@ msgstr "更新フォルダの作成エラー"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー： %s は存在しないので作成することが不可能！終了中…"
 
-#: src/commandhandler.cpp:198
+#: src/commandhandler.cpp:205
 msgid "Unknown command."
 msgstr "不明なコマンド"
 
-#: src/commandhandler.cpp:297
+#: src/commandhandler.cpp:304
 msgid "Cannot send empty whispers!"
 msgstr "空のメッセージを送信することはできません！"
 
-#: src/commandhandler.cpp:311
+#: src/commandhandler.cpp:318
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -159,151 +159,151 @@ msgstr ""
 "%sと言うメッセージタブの作成ができません！それはもう既に存在しているか、自分"
 "です。"
 
-#: src/commandhandler.cpp:331
+#: src/commandhandler.cpp:338
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "%sというチャンネルへの参加を要求しています。"
 
-#: src/commandhandler.cpp:347 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:354 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "パーティ名がない。"
 
-#: src/commandhandler.cpp:358
+#: src/commandhandler.cpp:365
 msgid "Guild name is missing."
 msgstr "ギルド名がない。"
 
-#: src/commandhandler.cpp:371 src/commandhandler.cpp:483
-#: src/commandhandler.cpp:524 src/commandhandler.cpp:559
+#: src/commandhandler.cpp:378 src/commandhandler.cpp:496
+#: src/commandhandler.cpp:537 src/commandhandler.cpp:572
 msgid "Please specify a name."
 msgstr "名前を教えてください。"
 
-#: src/commandhandler.cpp:417
+#: src/commandhandler.cpp:430
 msgid "Return toggles chat."
 msgstr "リターンはチャットを留めておきます。"
 
-#: src/commandhandler.cpp:417
+#: src/commandhandler.cpp:430
 msgid "Message closes chat."
 msgstr "メッセージはチャットを閉じます。"
 
-#: src/commandhandler.cpp:428
+#: src/commandhandler.cpp:441
 msgid "Return now toggles chat."
 msgstr "リターンはこれからチャットを留めておきます。"
 
-#: src/commandhandler.cpp:434
+#: src/commandhandler.cpp:447
 msgid "Message now closes chat."
 msgstr "メッセージはこれからチャットを閉じます。"
 
-#: src/commandhandler.cpp:462
+#: src/commandhandler.cpp:475
 msgid "friend"
 msgstr "友達"
 
-#: src/commandhandler.cpp:467
+#: src/commandhandler.cpp:480
 msgid "disregarded"
 msgstr "無視"
 
-#: src/commandhandler.cpp:472
+#: src/commandhandler.cpp:485
 msgid "neutral"
 msgstr "中性"
 
-#: src/commandhandler.cpp:491
+#: src/commandhandler.cpp:504
 #, c-format
 msgid "Player already %s!"
 msgstr "プレイヤーはもう%s!"
 
-#: src/commandhandler.cpp:505
+#: src/commandhandler.cpp:518
 #, c-format
 msgid "Player successfully %s!"
 msgstr "プレイヤーは%s成功！"
 
-#: src/commandhandler.cpp:513
+#: src/commandhandler.cpp:526
 #, c-format
 msgid "Player could not be %s!"
 msgstr "選手は%sを居られなかった "
 
-#: src/commandhandler.cpp:536
+#: src/commandhandler.cpp:549
 msgid "Player wasn't ignored!"
 msgstr "プレイヤーは無視されなかった！"
 
-#: src/commandhandler.cpp:543
+#: src/commandhandler.cpp:556
 msgid "Player no longer ignored!"
 msgstr "プレイヤーはもう無視していない！"
 
-#: src/commandhandler.cpp:545
+#: src/commandhandler.cpp:558
 msgid "Player could not be unignored!"
 msgstr "Playerはunignoredことができなかった！"
 
-#: src/commandhandler.cpp:551
+#: src/commandhandler.cpp:564
 msgid "blacklisted"
 msgstr ""
 
-#: src/commandhandler.cpp:566
+#: src/commandhandler.cpp:579
 msgid "Player already erased!"
 msgstr "プレイヤーはもう消している!"
 
-#: src/commandhandler.cpp:577
+#: src/commandhandler.cpp:590
 msgid "Player successfully erased!"
 msgstr "プレーアが首尾よくに消去！"
 
-#: src/commandhandler.cpp:579
+#: src/commandhandler.cpp:592
 msgid "Player could not be erased!"
 msgstr ""
 
-#: src/commandhandler.cpp:879 src/commandhandler.cpp:925
+#: src/commandhandler.cpp:892 src/commandhandler.cpp:938
 #, c-format
 msgid "Client uptime: %s"
 msgstr "クライアントの稼働時間：%s"
 
-#: src/commandhandler.cpp:889
+#: src/commandhandler.cpp:902
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:898
+#: src/commandhandler.cpp:911
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:906
+#: src/commandhandler.cpp:919
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:914
+#: src/commandhandler.cpp:927
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:922
+#: src/commandhandler.cpp:935
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:1001
+#: src/commandhandler.cpp:1014
 msgid "font cache size"
 msgstr ""
 
-#: src/commandhandler.cpp:1013
+#: src/commandhandler.cpp:1026
 msgid "Cache size:"
 msgstr ""
 
-#: src/commandhandler.cpp:1017
+#: src/commandhandler.cpp:1030
 msgid "Created:"
 msgstr ""
 
-#: src/commandhandler.cpp:1019
+#: src/commandhandler.cpp:1032
 msgid "Deleted:"
 msgstr ""
 
-#: src/commandhandler.cpp:1066 src/commandhandler.cpp:1073
+#: src/commandhandler.cpp:1133 src/commandhandler.cpp:1140
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1068 src/commandhandler.cpp:1075
+#: src/commandhandler.cpp:1135 src/commandhandler.cpp:1142
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -338,19 +338,19 @@ msgstr ""
 msgid "Network Error"
 msgstr "ネットワークエラー"
 
-#: src/game.cpp:1323
+#: src/game.cpp:1322
 msgid "Ignoring incoming trade requests"
 msgstr "他人からのトレードリクエストを無視します。"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1332
 msgid "Accepting incoming trade requests"
 msgstr "他人からのトレードリクエストを受け入れます。"
 
-#: src/game.cpp:1733
+#: src/game.cpp:1732
 msgid "Could Not Load Map"
 msgstr "マップをロードできませんでした"
 
-#: src/game.cpp:1734
+#: src/game.cpp:1733
 #, c-format
 msgid "Error while loading %s"
 msgstr "%sをロードしている間にエラーが起きました。"
@@ -734,12 +734,12 @@ msgstr "???"
 msgid "Chat"
 msgstr "チャット"
 
-#: src/gui/chatwindow.cpp:610
+#: src/gui/chatwindow.cpp:613
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:997
+#: src/gui/chatwindow.cpp:1000
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "%sに送信中： %s"
@@ -4303,7 +4303,7 @@ msgstr "擬い: "
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3873
+#: src/localplayer.cpp:3876
 msgid "You see "
 msgstr "あなた"
 
@@ -4503,6 +4503,22 @@ msgstr "プレイヤー MVP"
 #: src/net/ea/chathandler.cpp:350
 msgid "MVP player: "
 msgstr "プレイヤー MVP "
+
+#: src/net/ea/chathandler.cpp:370
+msgid "All whispers ignored."
+msgstr ""
+
+#: src/net/ea/chathandler.cpp:374
+msgid "All whispers ignore failed."
+msgstr ""
+
+#: src/net/ea/chathandler.cpp:385
+msgid "All whispers unignored."
+msgstr ""
+
+#: src/net/ea/chathandler.cpp:389
+msgid "All whispers unignore failed."
+msgstr ""
 
 #: src/net/ea/gamehandler.cpp:87
 #, c-format
@@ -5081,53 +5097,53 @@ msgstr "毒は不効果"
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%sはあなたと取引したいみたいが、応じる？"
 
-#: src/net/ea/tradehandler.cpp:127
+#: src/net/ea/tradehandler.cpp:134
 msgid "Trading isn't possible. Trade partner is too far away."
 msgstr "取引は不可能。取引の相手は遠すぎる。"
 
-#: src/net/ea/tradehandler.cpp:131
+#: src/net/ea/tradehandler.cpp:138
 msgid "Trading isn't possible. Character doesn't exist."
 msgstr "取引は不可能。本キャラが存在していない。"
 
-#: src/net/ea/tradehandler.cpp:135
+#: src/net/ea/tradehandler.cpp:142
 msgid "Trade cancelled due to an unknown reason."
 msgstr "不明な理由で取引が中止された。"
 
-#: src/net/ea/tradehandler.cpp:141
+#: src/net/ea/tradehandler.cpp:148
 #, c-format
 msgid "Trade: You and %s"
 msgstr "あなたと%sとの取引"
 
-#: src/net/ea/tradehandler.cpp:151
+#: src/net/ea/tradehandler.cpp:158
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr "%sとの取引が中止された。"
 
-#: src/net/ea/tradehandler.cpp:164
+#: src/net/ea/tradehandler.cpp:171
 msgid "Unhandled trade cancel packet."
 msgstr "できなかった取引キャンセルパケット"
 
-#: src/net/ea/tradehandler.cpp:229
+#: src/net/ea/tradehandler.cpp:236
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "アイテム追加失敗。相手はアイテムを持ちすぎている状態である。"
 
-#: src/net/ea/tradehandler.cpp:234
+#: src/net/ea/tradehandler.cpp:241
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "アイテム追加失敗。相手の空いているスロットはない。"
 
-#: src/net/ea/tradehandler.cpp:239
+#: src/net/ea/tradehandler.cpp:246
 msgid "Failed adding item. You can't trade this item."
 msgstr ""
 
-#: src/net/ea/tradehandler.cpp:243
+#: src/net/ea/tradehandler.cpp:250
 msgid "Failed adding item for unknown reason."
 msgstr "不明な理由でアイテム追加失敗"
 
-#: src/net/ea/tradehandler.cpp:262 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:269 src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "取引中止"
 
-#: src/net/ea/tradehandler.cpp:273 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:280 src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "取引完了"
 
@@ -5550,11 +5566,11 @@ msgstr ""
 msgid "Empty address given to Network::connect()!"
 msgstr ""
 
-#: src/net/tmwa/network.cpp:355
+#: src/net/tmwa/network.cpp:356
 msgid "Unable to resolve host \""
 msgstr "ホスト名を解決できません。"
 
-#: src/net/tmwa/network.cpp:425
+#: src/net/tmwa/network.cpp:426
 msgid "Connection to server terminated. "
 msgstr ""
 

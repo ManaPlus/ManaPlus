@@ -353,4 +353,49 @@ void ChatHandler::processMVP(Net::MessageIn &msg)
     }
 }
 
+void ChatHandler::processIgnoreAllResponse(Net::MessageIn &msg)
+{
+    int action = msg.readInt8();
+    int fail = msg.readInt8();
+    if (!localChatTab)
+        return;
+
+    switch (action)
+    {
+        case 0:
+        {
+            switch (fail)
+            {
+                case 0:
+                    localChatTab->chatLog(_("All whispers ignored."),
+                        BY_SERVER);
+                    break;
+                default:
+                    localChatTab->chatLog(_("All whispers ignore failed."),
+                        BY_SERVER);
+                    break;
+            }
+            break;
+        }
+        case 1:
+        {
+            switch (fail)
+            {
+                case 0:
+                    localChatTab->chatLog(_("All whispers unignored."),
+                        BY_SERVER);
+                    break;
+                default:
+                    localChatTab->chatLog(_("All whispers unignore failed."),
+                        BY_SERVER);
+                    break;
+            }
+            break;
+        }
+        default:
+            // unknown result
+            break;
+    }
+}
+
 } // namespace Ea

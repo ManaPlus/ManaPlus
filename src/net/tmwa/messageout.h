@@ -56,6 +56,9 @@ class MessageOut : public Net::MessageOut
         void writeCoordinates(unsigned short x, unsigned short y,
                               unsigned char direction);
 
+        void resetPos()
+        { mPos = 0; }
+
     private:
         void expand(size_t size);
 

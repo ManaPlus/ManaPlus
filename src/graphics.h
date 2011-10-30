@@ -275,6 +275,21 @@ class Graphics : public gcn::SDLGraphics
         bool getSecure()
         { return mSecure; }
 
+        int getBpp()
+        { return mBpp; }
+
+        bool getFullScreen()
+        { return mFullscreen; }
+
+        bool getHWAccel()
+        { return mHWAccel; }
+
+        bool getDoubleBuffer()
+        { return mDoubleBuffer; }
+
+        int getOpenGL()
+        { return mOpenGL; }
+
         int mWidth;
         int mHeight;
 
@@ -290,6 +305,7 @@ class Graphics : public gcn::SDLGraphics
         bool mDoubleBuffer;
         SDL_Rect mRect;
         bool mSecure;
+        int mOpenGL;
 };
 
 extern Graphics *mainGraphics;

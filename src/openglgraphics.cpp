@@ -53,6 +53,7 @@ OpenGLGraphics::OpenGLGraphics():
     mAlpha(false), mTexture(false), mColorAlpha(false),
     mSync(false)
 {
+    mOpenGL = 1;
     mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
     mIntTexArray = new GLint[vertexBufSize * 4 + 30];
     mIntVertArray = new GLint[vertexBufSize * 4 + 30];

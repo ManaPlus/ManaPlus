@@ -57,6 +57,13 @@ class MessageOut
         virtual void writeString(const std::string &string, int length = -1);
 
         /**
+         * Writes a string. If a fixed length is not given (-1), it is stored
+         * as a short at the start of the string.
+         */
+        virtual void writeStringNoLog(const std::string &string,
+                                      int length = -1);
+
+        /**
          * Returns the content of the message.
          */
         virtual char *getData() const;

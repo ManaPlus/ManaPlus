@@ -57,6 +57,10 @@ class ChatHandler : public MessageHandler, public Ea::ChatHandler
 
         void sendRaw(const std::string &args);
 
+        void ignoreAll();
+
+        void unIgnoreAll();
+
         void processRaw(MessageOut &outMsg, std::string &line);
 };
 
