@@ -1229,6 +1229,7 @@ void LocalPlayer::stopWalking(bool sendToServer)
     mPathSetByMouse = false;
 
     clearPath();
+    navigateClean();
 }
 
 bool LocalPlayer::toggleSit()

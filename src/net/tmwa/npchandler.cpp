@@ -213,6 +213,8 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
         else
         {
             mDialog = new NpcDialog(npcId);
+            if (player_node)
+                player_node->stopWalking(false);
             Wrapper wrap;
             wrap.dialog = mDialog;
             mNpcDialogs[npcId] = wrap;
