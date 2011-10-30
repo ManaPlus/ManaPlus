@@ -122,7 +122,8 @@ void TradeHandler::processTradeRequest(Net::MessageIn &msg)
 void TradeHandler::processTradeResponse(Net::MessageIn &msg)
 {
     if (confirmDlg || tradePartnerName.empty()
-        || !player_relations.hasPermission(tradePartnerName, PlayerRelation::TRADE))
+        || !player_relations.hasPermission(tradePartnerName,
+        PlayerRelation::TRADE))
     {
         Net::getTradeHandler()->respond(false);
         return;
