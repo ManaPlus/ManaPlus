@@ -232,11 +232,32 @@ void CommandHandler::handleAnnounce(const std::string &args,
 void CommandHandler::handleHelp(const std::string &args A_UNUSED,
                                 ChatTab *tab A_UNUSED)
 {
-    if (helpWindow)
+    if (!helpWindow)
+        return;
+
+    if (!tab)
     {
         helpWindow->loadHelp("chatcommands");
         helpWindow->requestMoveToTop();
+        return;
     }
+    switch (tab->getType())
+    {
+        case ChatTab::TAB_PARTY:
+        {
+            helpWindow->loadHelp("chatparty");
+            break;
+        }
+        case ChatTab::TAB_GUILD:
+        {
+            helpWindow->loadHelp("chatguild");
+            break;
+        }
+        default:
+            helpWindow->loadHelp("chatcommands");
+            break;
+    }
+    helpWindow->requestMoveToTop();
 }
 
 void CommandHandler::handleWhere(const std::string &args A_UNUSED,
