@@ -171,8 +171,9 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Enable bot checker"), "",
         "enableBotCheker", this, "enableBotChekerEvent");
 
-    new SetupItemCheckBox(_("Enable buggy servers protection"), "",
-        "enableBuggyServers", this, "enableBuggyServersEvent", false);
+    new SetupItemCheckBox(_("Enable buggy servers protection "
+        "(do not disable)"), "", "enableBuggyServers", this,
+        "enableBuggyServersEvent", false);
 
     new SetupItemCheckBox(_("Enable debug log"), "",
         "debugLog", this, "debugLogEvent");
