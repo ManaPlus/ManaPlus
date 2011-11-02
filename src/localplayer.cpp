@@ -36,6 +36,7 @@
 #include "party.h"
 #include "particle.h"
 #include "playerinfo.h"
+#include "playerrelations.h"
 #include "simpleanimation.h"
 #include "sound.h"
 #include "statuseffect.h"
@@ -159,6 +160,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mDisableCrazyMove = false;
     mPickUpType = config.getIntValue("pickUpType");
     mMagicAttackType = config.getIntValue("magicAttackType");
+    mPvpAttackType = config.getIntValue("pvpAttackType");
     mMoveToTargetType = config.getIntValue("moveToTargetType");
     mDisableGameModifiers = config.getBoolValue("disableGameModifiers");
     mTargetDeadPlayers = config.getBoolValue("targetDeadPlayers");
@@ -1356,26 +1358,30 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         mTargetTime = tick_time;
     }
 
-    setAction(ATTACK);
-
-    if (mEquippedWeapon)
+    if (target->getType() != Being::PLAYER || checAttackPermissions(target))
     {
-        std::string soundFile = mEquippedWeapon->getSound(EQUIP_EVENT_STRIKE);
-        if (!soundFile.empty())
-            sound.playSfx(soundFile);
+        setAction(ATTACK);
+
+        if (mEquippedWeapon)
+        {
+            std::string soundFile = mEquippedWeapon->getSound(EQUIP_EVENT_STRIKE);
+            if (!soundFile.empty())
+                sound.playSfx(soundFile);
+        }
+        else
+        {
+            sound.playSfx(paths.getValue("attackSfxFile", "fist-swish.ogg"));
+        }
+
+        if (!Client::limitPackets(PACKET_ATTACK))
+            return;
+
+        if (!dontChangeEquipment && target)
+            changeEquipmentBeforeAttack(target);
+
+        Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
     }
-    else
-    {
-        sound.playSfx(paths.getValue("attackSfxFile", "fist-swish.ogg"));
-    }
 
-    if (!Client::limitPackets(PACKET_ATTACK))
-        return;
-
-    if (!dontChangeEquipment && target)
-        changeEquipmentBeforeAttack(target);
-
-    Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
 #ifdef MANASERV_SUPPORT
     if ((Net::getNetworkType() != ServerInfo::MANASERV) && !keep)
 #else
@@ -2890,6 +2896,17 @@ void LocalPlayer::switchMagicAttack()
         miniStatusWindow->updateStatus();
 }
 
+void LocalPlayer::switchPvpAttack()
+{
+    mPvpAttackType++;
+    if (mPvpAttackType > 3)
+        mPvpAttackType = 0;
+
+    config.setValue("pvpAttackType", mPvpAttackType);
+    if (miniStatusWindow)
+        miniStatusWindow->updateStatus();
+}
+
 void LocalPlayer::magicAttack()
 {
     if (!chatWindow || !isAlive()
@@ -3897,6 +3914,7 @@ void LocalPlayer::resetYellowBar()
     mAttackWeaponType = config.resetIntValue("attackWeaponType");
     mAttackType = config.resetIntValue("attackType");
     mMagicAttackType = config.resetIntValue("magicAttackType");
+    mPvpAttackType = config.resetIntValue("pvpAttackType");
     mQuickDropCounter = config.resetIntValue("quickDropCounter");
     mPickUpType = config.resetIntValue("pickUpType");
     if (viewport)
@@ -3935,6 +3953,26 @@ void LocalPlayer::removeHome()
 void LocalPlayer::stopAdvert()
 {
     mBlockAdvert = true;
+}
+
+bool LocalPlayer::checAttackPermissions(Being *target)
+{
+    if (!target)
+        return false;
+
+    switch (mPvpAttackType)
+    {
+        case 0:
+            return true;
+        case 1:
+            return !(player_relations.getRelation(target->getName())
+                == PlayerRelation::FRIEND);
+        case 2:
+            return player_relations.checkBadRelation(target->getName());
+        default:
+        case 3:
+            return false;
+    }
 }
 
 void AwayListener::action(const gcn::ActionEvent &event)

@@ -271,8 +271,13 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void switchMagicAttack();
 
+        void switchPvpAttack();
+
         int getMagicAttackType()
         { return mMagicAttackType ; }
+
+        int getPvpAttackType()
+        { return mPvpAttackType ; }
 
         int getMoveToTargetType()
         { return mMoveToTargetType ; }
@@ -475,6 +480,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void stopAdvert();
 
+        bool checAttackPermissions(Being *target);
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -526,6 +533,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         unsigned int mPickUpType;
         //magic attack type
         unsigned int mMagicAttackType;
+        //pvp attack type
+        unsigned int mPvpAttackType;
         //type how move to target
         unsigned int mMoveToTargetType;
         unsigned int mAttackType;

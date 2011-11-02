@@ -75,29 +75,33 @@ StatusPopup::StatusPopup():
     mMagicAttackType->setPosition(getPadding(),
         4 + 6 * fontHeight + getPadding());
 
+    mPvpAttackType = new Label;
+    mPvpAttackType->setPosition(getPadding(),
+        4 + 7 * fontHeight + getPadding());
+
     mDropCounter = new Label;
-    mDropCounter->setPosition(getPadding(), 8 + 7 * fontHeight + getPadding());
+    mDropCounter->setPosition(getPadding(), 8 + 8 * fontHeight + getPadding());
 
     mPickUpType = new Label;
-    mPickUpType->setPosition(getPadding(), 8 + 8 * fontHeight + getPadding());
+    mPickUpType->setPosition(getPadding(), 8 + 9 * fontHeight + getPadding());
 
     mMapType = new Label;
-    mMapType->setPosition(getPadding(), 12 + 9 * fontHeight + getPadding());
+    mMapType->setPosition(getPadding(), 12 + 10 * fontHeight + getPadding());
 
     mImitationMode = new Label;
     mImitationMode->setPosition(getPadding(),
-        16 + 10 * fontHeight + getPadding());
+        16 + 11 * fontHeight + getPadding());
 
     mAwayMode = new Label;
-    mAwayMode->setPosition(getPadding(), 16 + 11 * fontHeight + getPadding());
+    mAwayMode->setPosition(getPadding(), 16 + 12 * fontHeight + getPadding());
 
     mCameraMode = new Label;
     mCameraMode->setPosition(getPadding(),
-        16 + 12 * fontHeight + getPadding());
+        16 + 13 * fontHeight + getPadding());
 
     mDisableGameModifiers = new Label;
     mDisableGameModifiers->setPosition(getPadding(),
-        20 + 13 * fontHeight + getPadding());
+        20 + 14 * fontHeight + getPadding());
 
     add(mMoveType);
     add(mCrazyMoveType);
@@ -109,6 +113,7 @@ StatusPopup::StatusPopup():
     add(mPickUpType);
     add(mMapType);
     add(mMagicAttackType);
+    add(mPvpAttackType);
     add(mDisableGameModifiers);
     add(mImitationMode);
     add(mAwayMode);
@@ -145,6 +150,8 @@ void StatusPopup::update()
         minWidth = mMapType->getWidth();
     if (mMagicAttackType->getWidth() > minWidth)
         minWidth = mMagicAttackType->getWidth();
+    if (mPvpAttackType->getWidth() > minWidth)
+        minWidth = mPvpAttackType->getWidth();
     if (mDisableGameModifiers->getWidth() > minWidth)
         minWidth = mDisableGameModifiers->getWidth();
     if (mAwayMode->getWidth() > minWidth)
@@ -475,6 +482,31 @@ void StatusPopup::updateLabels()
             break;
     }
     mMagicAttackType->adjustSize();
+
+    switch (player_node->getPvpAttackType())
+    {
+        case 0:
+            setLabelText(mPvpAttackType, _("(a) attack all players"),
+                keyboard.KEY_SWITCH_PVP_ATTACK);
+            break;
+        case 1:
+            setLabelText(mPvpAttackType, _("(f) attack not friends"),
+                keyboard.KEY_SWITCH_PVP_ATTACK);
+            break;
+        case 2:
+            setLabelText(mPvpAttackType, _("(b) attack bad relations"),
+                keyboard.KEY_SWITCH_PVP_ATTACK);
+            break;
+        case 3:
+            setLabelText(mPvpAttackType, _("(d) dont attack players"),
+                keyboard.KEY_SWITCH_PVP_ATTACK);
+            break;
+        default:
+            setLabelText(mMagicAttackType, _("(?) pvp attack"),
+                keyboard.KEY_SWITCH_MAGIC_ATTACK);
+            break;
+    }
+    mPvpAttackType->adjustSize();
 
     switch (player_node->getImitationMode())
     {

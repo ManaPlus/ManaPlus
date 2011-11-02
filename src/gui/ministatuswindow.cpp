@@ -100,7 +100,7 @@ MiniStatusWindow::MiniStatusWindow():
     mArrowsBar = createBar(0, 50, 20, Theme::PROG_INVY_SLOTS,
                            "arrows bar", _("arrows bar"));
 
-    mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
+    mStatusBar = createBar(100, 165, 20, Theme::PROG_EXP,
                            "status bar", _("status bar"));
 
     loadBars();

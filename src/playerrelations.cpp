@@ -409,6 +409,23 @@ void PlayerRelationsManager::ignoreTrade(std::string name)
     }
 }
 
+bool PlayerRelationsManager::checkBadRelation(std::string name)
+{
+    if (name.empty())
+        return true;
+
+    PlayerRelation::Relation relation = getRelation(name);
+
+    if (relation == PlayerRelation::IGNORED
+        || relation == PlayerRelation::DISREGARDED
+        || relation == PlayerRelation::BLACKLISTED
+        || relation == PlayerRelation::ERASED
+        || relation == PlayerRelation::ENEMY2)
+    {
+        return true;
+    }
+    return false;
+}
 
 ////////////////////////////////////////
 // ignore strategies

@@ -1105,6 +1105,14 @@ void Game::handleInput()
                         }
                         break;
 
+                    case KeyboardConfig::KEY_SWITCH_PVP_ATTACK:
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->switchPvpAttack();
+                        }
+                        break;
+
                     case KeyboardConfig::KEY_CHANGE_MOVE_TO_TARGET:
                         if (player_node)
                         {

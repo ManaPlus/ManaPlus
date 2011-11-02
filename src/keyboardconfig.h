@@ -309,6 +309,7 @@ class KeyboardConfig
             KEY_MAGIC_ITENPLZ,
             KEY_MAGIC_ATTACK,
             KEY_SWITCH_MAGIC_ATTACK,
+            KEY_SWITCH_PVP_ATTACK,
             KEY_INVERT_DIRECTION,
             KEY_CHANGE_ATTACK_WEAPON_TYPE,
             KEY_CHANGE_ATTACK_TYPE,

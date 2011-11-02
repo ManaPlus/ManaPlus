@@ -239,6 +239,7 @@ class PlayerRelationsManager
         void removeListener(PlayerRelationsListener *listener)
         { mListeners.remove(listener); }
 
+        bool checkBadRelation(std::string name);
 
     private:
         void signalUpdate(const std::string &name);

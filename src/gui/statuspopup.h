@@ -72,6 +72,7 @@ class StatusPopup : public Popup
         gcn::Label *mPickUpType;
         gcn::Label *mMapType;
         gcn::Label *mMagicAttackType;
+        gcn::Label *mPvpAttackType;
         gcn::Label *mDisableGameModifiers;
         gcn::Label *mImitationMode;
         gcn::Label *mAwayMode;

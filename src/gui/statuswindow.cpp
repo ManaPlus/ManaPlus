@@ -787,6 +787,25 @@ void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
             break;
     }
 
+    switch (player_node->getPvpAttackType())
+    {
+        case 0:
+            str += translateLetter(N_("(a)"));
+            break;
+        case 1:
+            str += translateLetter(N_("(f)"));
+            break;
+        case 2:
+            str += translateLetter(N_("(b)"));
+            break;
+        case 3:
+            str += translateLetter(N_("(d)"));
+            break;
+        default:
+            str += translateLetter(N_("(?)"));
+            break;
+    }
+
     str += " " + toString(player_node->getQuickDropCounter());
 
     switch (player_node->getPickUpType())
