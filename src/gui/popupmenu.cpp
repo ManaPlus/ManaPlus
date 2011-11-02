@@ -145,6 +145,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
                         mBrowserBox->addRow("blacklist", _("Black list"));
+                        mBrowserBox->addRow("enemy", _("Set as enemy"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
@@ -152,6 +153,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
                         mBrowserBox->addRow("blacklist", _("Black list"));
+                        mBrowserBox->addRow("enemy", _("Set as enemy"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
@@ -159,6 +161,15 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("unignore", _("Unignore"));
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
+                        mBrowserBox->addRow("enemy", _("Set as enemy"));
+                        mBrowserBox->addRow("erase", _("Erase"));
+                        break;
+
+                    case PlayerRelation::ENEMY2:
+                        mBrowserBox->addRow("unignore", _("Unignore"));
+                        mBrowserBox->addRow("disregard", _("Disregard"));
+                        mBrowserBox->addRow("ignore", _("Ignore"));
+                        mBrowserBox->addRow("blacklist", _("Black list"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
@@ -379,6 +390,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
             mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -386,6 +398,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
             mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -393,6 +406,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("unignore", _("Unignore"));
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -404,6 +418,14 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
 
         case PlayerRelation::IGNORED:
             mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::ENEMY2:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -625,6 +647,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
                     mBrowserBox->addRow("blacklist", _("Black list"));
+                    mBrowserBox->addRow("enemy", _("Set as enemy"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
@@ -632,6 +655,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
                     mBrowserBox->addRow("blacklist", _("Black list"));
+                    mBrowserBox->addRow("enemy", _("Set as enemy"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
@@ -639,12 +663,21 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("unignore", _("Unignore"));
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
+                    mBrowserBox->addRow("enemy", _("Set as enemy"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
                 case PlayerRelation::DISREGARDED:
                     mBrowserBox->addRow("unignore", _("Unignore"));
                     mBrowserBox->addRow("ignore", _("Completely ignore"));
+                    mBrowserBox->addRow("erase", _("Erase"));
+                    break;
+
+                case PlayerRelation::ENEMY2:
+                    mBrowserBox->addRow("unignore", _("Unignore"));
+                    mBrowserBox->addRow("disregard", _("Disregard"));
+                    mBrowserBox->addRow("ignore", _("Ignore"));
+                    mBrowserBox->addRow("blacklist", _("Black list"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
@@ -894,6 +927,16 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "blacklist" && !mNick.empty())
     {
         player_relations.setRelation(mNick, PlayerRelation::BLACKLISTED);
+    }
+    else if (link == "enemy" && being &&
+             being->getType() == ActorSprite::PLAYER)
+    {
+        player_relations.setRelation(being->getName(),
+            PlayerRelation::ENEMY2);
+    }
+    else if (link == "enemy" && !mNick.empty())
+    {
+        player_relations.setRelation(mNick, PlayerRelation::ENEMY2);
     }
     else if (link == "erase" && being &&
              being->getType() == ActorSprite::PLAYER)

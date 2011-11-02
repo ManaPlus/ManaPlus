@@ -115,6 +115,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleNeutral(args, tab);
     else if (type == "blacklist")
         handleBlackList(args, tab);
+    else if (type == "enemy")
+        handleEnemy(args, tab);
     else if (type == "erase")
         handleErase(args, tab);
     else if (type == "join")
@@ -585,6 +587,11 @@ void CommandHandler::handleUnignore(const std::string &args, ChatTab *tab)
 void CommandHandler::handleBlackList(const std::string &args, ChatTab *tab)
 {
     changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
+}
+
+void CommandHandler::handleEnemy(const std::string &args, ChatTab *tab)
+{
+    changeRelation(args, PlayerRelation::ENEMY2, _("enemy"), tab);
 }
 
 void CommandHandler::handleErase(const std::string &args, ChatTab *tab)

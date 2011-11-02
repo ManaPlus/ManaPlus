@@ -177,6 +177,11 @@ class CommandHandler
         void handleBlackList(const std::string &args, ChatTab *tab);
 
         /**
+         * Handle an enemy command.
+         */
+        void handleEnemy(const std::string &args, ChatTab *tab);
+
+        /**
          * Handle an erase command.
          */
         void handleErase(const std::string &args, ChatTab *tab);

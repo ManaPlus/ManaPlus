@@ -1631,7 +1631,9 @@ void Being::updateColors()
                 mNameColor = &userPalette->getColor(UserPalette::DISREGARDED);
             }
             else if (player_relations.getRelation(mName) ==
-                     PlayerRelation::IGNORED)
+                     PlayerRelation::IGNORED
+                     || player_relations.getRelation(mName) ==
+                     PlayerRelation::ENEMY2)
             {
                 mNameColor = &userPalette->getColor(UserPalette::IGNORED);
             }

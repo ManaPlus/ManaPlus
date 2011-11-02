@@ -108,7 +108,8 @@ const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] = {
     /* DISREGARDED*/  EMOTE | SPEECH_FLOAT,
     /* IGNORED */     0,
     /* ERASED */      INVISIBLE,
-    /* BLACKLISTED */ SPEECH_LOG | WHISPER
+    /* BLACKLISTED */ SPEECH_LOG | WHISPER,
+    /* ENEMY2 */      EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE
 };
 
 PlayerRelation::PlayerRelation(Relation relation)
