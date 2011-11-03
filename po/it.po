@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-10-28 03:52+0300\n"
-"PO-Revision-Date: 2011-10-28 00:55+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2011-11-03 15:03+0000\n"
+"Last-Translator: WildX <guglielmo__@hotmail.it>\n"
 "Language-Team: Italian (http://www.transifex.net/projects/p/manaplus/team/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +65,7 @@ msgstr "Connessione al server"
 
 #: src/client.cpp:965
 msgid "Logging in"
-msgstr "Accesso"
+msgstr "Accesso all'account"
 
 #: src/client.cpp:998
 msgid "Entering game world"
@@ -73,7 +73,7 @@ msgstr "Accesso al gioco"
 
 #: src/client.cpp:1098
 msgid "Requesting characters"
-msgstr "Ricerca personaggi"
+msgstr "Caricamento personaggi"
 
 #: src/client.cpp:1129
 msgid "Connecting to the game server"
@@ -99,7 +99,7 @@ msgstr "Richiesta dettagli di registrazione"
 
 #: src/client.cpp:1224
 msgid "Password Change"
-msgstr "Cambiamento password"
+msgstr "Cambia password"
 
 #: src/client.cpp:1225
 msgid "Password changed successfully!"
@@ -107,7 +107,7 @@ msgstr "Password modificata con successo!"
 
 #: src/client.cpp:1244
 msgid "Email Change"
-msgstr "Cambio Email"
+msgstr "Cambia Email"
 
 #: src/client.cpp:1245
 msgid "Email changed successfully!"
@@ -178,7 +178,7 @@ msgstr "Prego specificare un nome."
 
 #: src/commandhandler.cpp:430
 msgid "Return toggles chat."
-msgstr "Invio attiva/disattiva la conversazione."
+msgstr "Attiva/disattiva la chat."
 
 #: src/commandhandler.cpp:430
 msgid "Message closes chat."
@@ -186,11 +186,11 @@ msgstr "I messaggi chiudono la conversazione."
 
 #: src/commandhandler.cpp:441
 msgid "Return now toggles chat."
-msgstr "\"Invio\" adesso attiva/disattiva la conversazione."
+msgstr "Attiva/disattiva la chat adesso."
 
 #: src/commandhandler.cpp:447
 msgid "Message now closes chat."
-msgstr "I messaggi adesso chiudono la conversazione."
+msgstr "I messaggi adesso chiudono la chat."
 
 #: src/commandhandler.cpp:475
 msgid "friend"
@@ -202,22 +202,22 @@ msgstr "Disprezzato"
 
 #: src/commandhandler.cpp:485
 msgid "neutral"
-msgstr "Neutro"
+msgstr "Neutrale"
 
 #: src/commandhandler.cpp:504
 #, c-format
 msgid "Player already %s!"
-msgstr "Giocatore già %s!"
+msgstr "Il giocatore è già %s!"
 
 #: src/commandhandler.cpp:518
 #, c-format
 msgid "Player successfully %s!"
-msgstr "Giocatore %s con successo!"
+msgstr "Il giocatore è stato %s con successo!"
 
 #: src/commandhandler.cpp:526
 #, c-format
 msgid "Player could not be %s!"
-msgstr "Player non può essere %s!"
+msgstr "Il giocatore non può essere %s!"
 
 #: src/commandhandler.cpp:549
 msgid "Player wasn't ignored!"
@@ -332,11 +332,11 @@ msgstr "Screenshot salvato come"
 
 #: src/game.cpp:521
 msgid "Saving screenshot failed!"
-msgstr "Salvataggio della schermata fallito!"
+msgstr "Salvataggio immagine fallito!"
 
 #: src/game.cpp:560
 msgid "The connection to the server was lost."
-msgstr "La connessione al server è stata persa."
+msgstr "La connessione al server è caduta."
 
 #: src/game.cpp:572
 msgid "Network Error"
@@ -513,7 +513,7 @@ msgstr "Il nuovo indirizzo email deve essere lungo meno di %d caratteri."
 
 #: src/gui/changeemaildialog.cpp:146
 msgid "The email address entries mismatch."
-msgstr ""
+msgstr "Gli indirizzi email immessi non coincidono."
 
 #: src/gui/changepassworddialog.cpp:50 src/gui/changepassworddialog.cpp:59
 #: src/gui/charselectdialog.cpp:139
@@ -545,7 +545,7 @@ msgstr "La nuova password deve essere più corta di %d caratteri."
 
 #: src/gui/changepassworddialog.cpp:134
 msgid "The new password entries mismatch."
-msgstr ""
+msgstr "Le password immesse non coincidono."
 
 #: src/gui/charcreatedialog.cpp:58
 msgid "Create Character"
@@ -838,7 +838,7 @@ msgstr ""
 #: src/gui/debugwindow.cpp:233
 #, c-format
 msgid "Particle count: %d"
-msgstr ""
+msgstr "Conto particelle: %d"
 
 #: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:301
 #: src/gui/debugwindow.cpp:345
@@ -1526,7 +1526,7 @@ msgstr "Cambia posizione nella gilda"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1243
 msgid "Rename map sign          "
-msgstr ""
+msgstr "Rinomina mappa"
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1245
@@ -1787,7 +1787,7 @@ msgstr "Rimuovi colori dei messaggi ricevuti in chat"
 
 #: src/gui/setup_chat.cpp:60
 msgid "Show chat colors list"
-msgstr ""
+msgstr "Mostra colori per la chat"
 
 #: src/gui/setup_chat.cpp:64
 msgid "Commands"
@@ -1803,11 +1803,11 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:72
 msgid "Limit max chars in chat line"
-msgstr ""
+msgstr "Limita un massimo di caratteri per messaggio"
 
 #: src/gui/setup_chat.cpp:75
 msgid "Limit max lines in chat"
-msgstr ""
+msgstr "Limita un massimo di messaggi per la chat"
 
 #: src/gui/setup_chat.cpp:79
 msgid "Logs"
@@ -1815,11 +1815,11 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:81
 msgid "Enable chat Log"
-msgstr ""
+msgstr "Abilita I logs della chat"
 
 #: src/gui/setup_chat.cpp:84
 msgid "Show chat history"
-msgstr ""
+msgstr "Mostra la storia della chat"
 
 #: src/gui/setup_chat.cpp:88
 msgid "Messages"
@@ -1827,7 +1827,7 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:90
 msgid "Hide shop messages"
-msgstr ""
+msgstr "Nascondi i messaggi del negozio"
 
 #: src/gui/setup_chat.cpp:94
 msgid "Tabs"
@@ -1843,19 +1843,19 @@ msgstr "Salva i messaggi delle magie nella debug tab"
 
 #: src/gui/setup_chat.cpp:102
 msgid "Show server messages in debug tab"
-msgstr ""
+msgstr "Mostra i messaggi del server nella chat di debug"
 
 #: src/gui/setup_chat.cpp:105
 msgid "Enable trade tab"
-msgstr ""
+msgstr "Abilita la chat di commercio"
 
 #: src/gui/setup_chat.cpp:108
 msgid "Enable battle tab"
-msgstr ""
+msgstr "Abilita la chat di battaglia"
 
 #: src/gui/setup_chat.cpp:111
 msgid "Show battle events"
-msgstr ""
+msgstr "Mostra gli eventi della battaglia"
 
 #: src/gui/setup_chat.cpp:114
 msgid "Resize chat tabs if need"
@@ -1887,7 +1887,7 @@ msgstr "Come appaiono i colori"
 
 #: src/gui/setup_colors.cpp:75
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
 #: src/gui/setup_colors.cpp:86 src/gui/setup_colors.cpp:407
 msgid "Static"
@@ -1910,7 +1910,7 @@ msgstr "Gamma"
 
 #: src/gui/setup_colors.cpp:97 src/gui/setup_colors.cpp:319
 msgid "Delay:"
-msgstr ""
+msgstr "Ritardo: "
 
 #: src/gui/setup_colors.cpp:112
 msgid "Red:"
@@ -1926,7 +1926,7 @@ msgstr "blu"
 
 #: src/gui/setup_colors.cpp:314
 msgid "Alpha:"
-msgstr ""
+msgstr "Alfa:"
 
 #: src/gui/setup.cpp:71
 msgid "Apply"
@@ -1970,7 +1970,7 @@ msgstr "Imposta"
 
 #: src/gui/setup_keyboard.cpp:93
 msgid "Unassign"
-msgstr ""
+msgstr "Annullare l'assegnazione"
 
 #: src/gui/setup_keyboard.cpp:97
 msgid "Default"
@@ -1982,7 +1982,7 @@ msgstr "Sono stati rilevati conflitti nei tasti."
 
 #: src/gui/setup_other.cpp:39
 msgid "Misc"
-msgstr ""
+msgstr "Varie"
 
 #: src/gui/setup_other.cpp:45 src/gui/userpalette.cpp:125
 msgid "Monsters"
@@ -1990,19 +1990,19 @@ msgstr "Mostri"
 
 #: src/gui/setup_other.cpp:47
 msgid "Show damage inflicted to monsters"
-msgstr ""
+msgstr "Mostra danno afflitto ai nemici"
 
 #: src/gui/setup_other.cpp:50
 msgid "Auto target only reachable monsters"
-msgstr ""
+msgstr "Target automatico solo sui nemici raggiungibili"
 
 #: src/gui/setup_other.cpp:53
 msgid "Highlight monster attack range"
-msgstr ""
+msgstr "Evidenzia distanza massima di attacco del nemico"
 
 #: src/gui/setup_other.cpp:57
 msgid "Show monster hp bar"
-msgstr ""
+msgstr "Mostra la barra hp dei nemici, punti vita"
 
 #: src/gui/setup_other.cpp:60
 msgid "Cycle monster targets"
@@ -2014,15 +2014,15 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:69
 msgid "Highlight map portals"
-msgstr ""
+msgstr "Evidenzia i cambiamenti di mappa"
 
 #: src/gui/setup_other.cpp:72
 msgid "Highlight floor items"
-msgstr ""
+msgstr "Evidenzia oggetti sul terreno"
 
 #: src/gui/setup_other.cpp:75
 msgid "Highlight player attack range"
-msgstr ""
+msgstr "Evidenzia distanza massima d'attacco"
 
 #: src/gui/setup_other.cpp:78
 msgid "Show extended minimaps"
@@ -2054,11 +2054,11 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:99
 msgid "Auto fix position"
-msgstr ""
+msgstr "Correggi posizione automaticamente"
 
 #: src/gui/setup_other.cpp:102
 msgid "Attack while moving"
-msgstr ""
+msgstr "Attacca in movimento"
 
 #: src/gui/setup_other.cpp:105
 msgid "Sync player move"
@@ -2066,7 +2066,7 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:108
 msgid "Crazy move A program"
-msgstr ""
+msgstr "Movimento matto \"A\""
 
 #: src/gui/setup_other.cpp:112
 msgid "Player"
@@ -2074,11 +2074,11 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:114
 msgid "Show own hp bar"
-msgstr ""
+msgstr "Mostra la mia barra hp"
 
 #: src/gui/setup_other.cpp:117
 msgid "Enable quick stats"
-msgstr ""
+msgstr "Abilita statistiche veloci"
 
 #: src/gui/setup_other.cpp:120
 msgid "Cycle player targets"
@@ -2110,11 +2110,11 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:144
 msgid "Accept sell/buy requests"
-msgstr ""
+msgstr "Accetta richieste di vendita/acquisto"
 
 #: src/gui/setup_other.cpp:147
 msgid "Enable shop mode"
-msgstr ""
+msgstr "Abilita la modalità negozio"
 
 #: src/gui/setup_other.cpp:153
 msgid "Log NPC dialogue"
@@ -2138,15 +2138,15 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:171
 msgid "Enable bot checker"
-msgstr ""
+msgstr "Abilita il bot checker"
 
 #: src/gui/setup_other.cpp:174
 msgid "Enable buggy servers protection"
-msgstr ""
+msgstr "Abilita protezione dai bug del server"
 
 #: src/gui/setup_other.cpp:177
 msgid "Enable debug log"
-msgstr ""
+msgstr "Abilita i log di debug"
 
 #: src/gui/setup_other.cpp:180
 msgid "Low traffic mode"
@@ -3688,7 +3688,7 @@ msgstr ""
 
 #: src/gui/widgets/setupitem.cpp:271 src/gui/widgets/setupitem.cpp:394
 msgid "Edit"
-msgstr ""
+msgstr "Modifica"
 
 #: src/gui/widgets/whispertab.cpp:107
 msgid "/ignore > Ignore the other player"
