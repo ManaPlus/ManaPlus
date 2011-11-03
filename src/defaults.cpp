@@ -221,6 +221,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "extMouseTargeting", true);
     AddDEF(configData, "showMVP", false);
     AddDEF(configData, "pvpAttackType", 0);
+    AddDEF(configData, "lang", "");
     return configData;
 }
 

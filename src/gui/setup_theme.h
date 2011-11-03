@@ -30,10 +30,11 @@
 
 #include <guichan/actionlistener.hpp>
 
+class DropDown;
+class EditDialog;
 class FontsModel;
 class FontSizeChoiceListModel;
-class EditDialog;
-class DropDown;
+class LangListModel;
 class ThemesModel;
 
 class Setup_Theme : public SetupTab
@@ -57,6 +58,12 @@ class Setup_Theme : public SetupTab
         gcn::Label *mFontLabel;
         DropDown *mFontDropDown;
         std::string mFont;
+
+        LangListModel *mLangListModel;
+
+        gcn::Label *mLangLabel;
+        DropDown *mLangDropDown;
+        std::string mLang;
 
         gcn::Label *mBoldFontLabel;
         DropDown *mBoldFontDropDown;

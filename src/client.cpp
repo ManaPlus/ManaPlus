@@ -286,6 +286,27 @@ Client::Client(const Options &options):
 
     storeSafeParameters();
 
+#if ENABLE_NLS
+    std::string lang = config.getValue("lang", "");
+#ifdef WIN32
+    putenv((char*)("LANG=" + lang).c_str());
+    putenv((char*)("LANGUAGE=" + lang).c_str());
+    // mingw doesn't like LOCALEDIR to be defined for some reason
+    if (lang != "C")
+        bindtextdomain("manaplus", "translations/");
+#else
+#ifdef ENABLE_PORTABLE
+    bindtextdomain("manaplus", (std::string(PHYSFS_getBaseDir())
+        + "../locale/").c_str());
+#else
+    bindtextdomain("manaplus", LOCALEDIR);
+#endif
+#endif
+    setlocale(LC_MESSAGES, lang.c_str());
+    bind_textdomain_codeset("manaplus", "UTF-8");
+    textdomain("manaplus");
+#endif
+
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
         chatLogger->setLogDir(mLocalDataDir + std::string("/logs/"));
