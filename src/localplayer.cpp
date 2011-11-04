@@ -1364,7 +1364,8 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
 
         if (mEquippedWeapon)
         {
-            std::string soundFile = mEquippedWeapon->getSound(EQUIP_EVENT_STRIKE);
+            std::string soundFile = mEquippedWeapon->getSound(
+                EQUIP_EVENT_STRIKE);
             if (!soundFile.empty())
                 sound.playSfx(soundFile);
         }
