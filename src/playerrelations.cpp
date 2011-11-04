@@ -28,6 +28,7 @@
 #include "being.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "localplayer.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -327,6 +328,12 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
 void PlayerRelationsManager::setRelation(const std::string &player_name,
                                          PlayerRelation::Relation relation)
 {
+    if (!player_node || (relation != PlayerRelation::NEUTRAL
+        && player_node->getName() == player_name))
+    {
+        return;
+    }
+
     PlayerRelation *r = mRelations[player_name];
     if (!r)
         mRelations[player_name] = new PlayerRelation(relation);
