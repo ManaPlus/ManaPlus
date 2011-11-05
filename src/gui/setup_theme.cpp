@@ -85,7 +85,7 @@ class ThemesModel : public NamesModel
 public:
     ThemesModel()
     {
-        mNames.push_back("(default)");
+        mNames.push_back(gettext("(default)"));
         Theme::fillSkinsList(mNames);
     }
 
@@ -172,7 +172,7 @@ public:
         if (i >= getNumberOfElements() || i < 0)
             return _("???");
 
-        return LANG_NAME[i].name;
+        return gettext(LANG_NAME[i].name.c_str());
     }
 };
 
