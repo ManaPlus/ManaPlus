@@ -167,6 +167,10 @@ int start_time;
 
 int textures_count = 0;
 
+#ifdef WIN32
+extern "C" char const *_nl_locale_name_default(void);
+#endif
+
 /**
  * Advances game logic counter.
  * Called every 10 milliseconds by SDL_AddTimer()
@@ -289,6 +293,9 @@ Client::Client(const Options &options):
 #if ENABLE_NLS
     std::string lang = config.getValue("lang", "");
 #ifdef WIN32
+    if (lang == "")
+        lang = std::string(_nl_locale_name_default());
+
     putenv((char*)("LANG=" + lang).c_str());
     putenv((char*)("LANGUAGE=" + lang).c_str());
     // mingw doesn't like LOCALEDIR to be defined for some reason

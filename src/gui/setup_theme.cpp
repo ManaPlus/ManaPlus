@@ -150,7 +150,7 @@ const Language LANG_NAME[langs_count] =
     {N_("French"), "fr_FR"},
     {N_("German"), "de_DE"},
     {N_("Indonesian"), "id_ID"},
-    {N_("Japanese"), "ja_JP"},
+    {N_("Japanese"), "ja_JP.utf8"},
     {N_("Dutch (Belgium/Flemish)"), "nl_BE"},
     {N_("Portuguese"), "pt_PT"},
     {N_("Portuguese (Brazilian)"), "pt_BR"},
