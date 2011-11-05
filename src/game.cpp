@@ -557,28 +557,25 @@ void Game::logic()
             return; // Not a problem here
 
         if (Client::getState() != STATE_ERROR)
-            errorMessage = _("The connection to the server was lost.");
-
-        if (!disconnectedDialog)
         {
-            if (viewport)
+            errorMessage = _("The connection to the server was lost.");
+            if (!disconnectedDialog)
             {
-                Map *map = viewport->getCurrentMap();
-                if (map)
-                    map->saveExtraLayer();
+                disconnectedDialog = new OkDialog(_("Network Error"),
+                                                  errorMessage, false);
+                disconnectedDialog->addActionListener(&errorListener);
+                disconnectedDialog->requestMoveToTop();
             }
-            closeDialogs();
-            Client::setFramerate(config.getIntValue("fpslimit"));
-            if (logger)
-            {
-                logger->log("Show error message on state: %d",
-                    Client::getState());
-            }
-            disconnectedDialog = new OkDialog(_("Network Error"),
-                                              errorMessage, false);
-            disconnectedDialog->addActionListener(&errorListener);
-            disconnectedDialog->requestMoveToTop();
         }
+
+        if (viewport)
+        {
+            Map *map = viewport->getCurrentMap();
+            if (map)
+                map->saveExtraLayer();
+        }
+        closeDialogs();
+        Client::setFramerate(config.getIntValue("fpslimit"));
     }
     else
     {
