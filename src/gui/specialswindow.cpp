@@ -76,7 +76,7 @@ class SpecialEntry : public Container
 };
 
 SpecialsWindow::SpecialsWindow():
-    Window(_("Specials"), false, 0, "specials.xml")
+    Window(_("Specials"), false, nullptr, "specials.xml")
 {
     setWindowName("Specials");
     setCloseButton(true);

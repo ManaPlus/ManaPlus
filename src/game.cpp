@@ -206,7 +206,7 @@ static void createGuiWindows()
     tradeWindow = new TradeWindow;
     equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
         player_node);
-    beingEquipmentWindow = new EquipmentWindow(0, 0, true);
+    beingEquipmentWindow = new EquipmentWindow(nullptr, nullptr, true);
     beingEquipmentWindow->setVisible(false);
     statusWindow = new StatusWindow;
     miniStatusWindow = new MiniStatusWindow;
@@ -263,7 +263,7 @@ static void createGuiWindows()
     }
     else
     {
-        tradeChatTab = 0;
+        tradeChatTab = nullptr;
     }
 
     if (config.getBoolValue("enableBattleTab"))
@@ -273,7 +273,7 @@ static void createGuiWindows()
     }
     else
     {
-        battleChatTab = 0;
+        battleChatTab = nullptr;
     }
 
     if (config.getBoolValue("logToChat"))
@@ -288,7 +288,7 @@ static void createGuiWindows()
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSLOADED));
 }
 
-#define del_0(X) { delete X; X = 0; }
+#define del_0(X) { delete X; X = nullptr; }
 
 /**
  * Destroy all the globally accessible gui windows
@@ -347,11 +347,11 @@ static void destroyGuiWindows()
         guildManager->reload();
 }
 
-Game *Game::mInstance = 0;
+Game *Game::mInstance = nullptr;
 
 Game::Game():
     mLastTarget(ActorSprite::UNKNOWN),
-    mCurrentMap(0),
+    mCurrentMap(nullptr),
     mMapName(""),
     mValidSpeed(true),
     mLastAction(0),
@@ -449,7 +449,7 @@ Game::~Game()
 
     Being::clearCache();
 
-    mInstance = 0;
+    mInstance = nullptr;
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_DESTRUCTED));
 }
@@ -457,7 +457,7 @@ Game::~Game()
 static bool saveScreenshot()
 {
     static unsigned int screenshotCount = 0;
-    SDL_Surface *screenshot = 0;
+    SDL_Surface *screenshot = nullptr;
 
     if (!config.getBoolValue("showip"))
     {
@@ -542,7 +542,7 @@ void Game::logic()
     if (mCurrentMap)
         mCurrentMap->update();
 
-    cur_time = static_cast<int>(time(0));
+    cur_time = static_cast<int>(time(nullptr));
     Being::reReadConfig();
     if (killStats)
         killStats->recalcStats();
@@ -584,7 +584,7 @@ void Game::logic()
         if (disconnectedDialog)
         {
             disconnectedDialog->scheduleDelete();
-            disconnectedDialog = 0;
+            disconnectedDialog = nullptr;
         }
     }
 }
@@ -1597,7 +1597,7 @@ void Game::handleInput()
             if (keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK)
                 && !keyboard.isKeyActive(keyboard.KEY_MOVE_TO_TARGET))
             {
-                Being *target = 0;
+                Being *target = nullptr;
 
                 bool newTarget = !keyboard.isKeyActive(keyboard.KEY_TARGET);
                 // A set target has highest priority
@@ -1717,7 +1717,7 @@ void Game::changeMap(const std::string &mapPath)
     // Unset the map of the player so that its particles are cleared before
     // being deleted in the next step
     if (player_node)
-        player_node->setMap(0);
+        player_node->setMap(nullptr);
 
     if (particleEngine)
         particleEngine->clear();
@@ -1887,6 +1887,6 @@ void Game::closeDialogs()
     if (deathNotice)
     {
         deathNotice->scheduleDelete();
-        deathNotice = 0;
+        deathNotice = nullptr;
     }
 }

@@ -55,7 +55,7 @@ Text::Text(const std::string &text, int x, int y,
     else
         mFont = font;
 
-    if (textManager == 0)
+    if (!textManager)
     {
         textManager = new TextManager;
         Image *sbImage = Theme::getImageFromTheme("bubble.png|W:#"
@@ -76,8 +76,8 @@ Text::Text(const std::string &text, int x, int y,
         else
         {
             for (int f = 0; f < 9; f ++)
-                mBubble.grid[f] = 0;
-            mBubbleArrow = 0;
+                mBubble.grid[f] = nullptr;
+            mBubbleArrow = nullptr;
         }
         const float bubbleAlpha = config.getFloatValue("speechBubbleAlpha");
         for (int i = 0; i < 9; i++)
@@ -121,27 +121,27 @@ Text::~Text()
     if (--mInstances == 0)
     {
         delete textManager;
-        textManager = 0;
+        textManager = nullptr;
         delete mBubble.grid[0];
-        mBubble.grid[0] = 0;
+        mBubble.grid[0] = nullptr;
         delete mBubble.grid[1];
-        mBubble.grid[1] = 0;
+        mBubble.grid[1] = nullptr;
         delete mBubble.grid[2];
-        mBubble.grid[2] = 0;
+        mBubble.grid[2] = nullptr;
         delete mBubble.grid[3];
-        mBubble.grid[3] = 0;
+        mBubble.grid[3] = nullptr;
         delete mBubble.grid[4];
-        mBubble.grid[4] = 0;
+        mBubble.grid[4] = nullptr;
         delete mBubble.grid[5];
-        mBubble.grid[5] = 0;
+        mBubble.grid[5] = nullptr;
         delete mBubble.grid[6];
-        mBubble.grid[6] = 0;
+        mBubble.grid[6] = nullptr;
         delete mBubble.grid[7];
-        mBubble.grid[7] = 0;
+        mBubble.grid[7] = nullptr;
         delete mBubble.grid[8];
-        mBubble.grid[8] = 0;
+        mBubble.grid[8] = nullptr;
         delete mBubbleArrow;
-        mBubbleArrow = 0;
+        mBubbleArrow = nullptr;
     }
 }
 

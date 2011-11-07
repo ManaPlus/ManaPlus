@@ -35,7 +35,7 @@
 namespace XML
 {
     Document::Document(const std::string &filename, bool useResman):
-        mDoc(0)
+        mDoc(nullptr)
     {
         int size;
         char *data = nullptr;
@@ -87,7 +87,7 @@ namespace XML
         if (data)
             mDoc = xmlParseMemory(data, size);
         else
-            mDoc = 0;
+            mDoc = nullptr;
     }
 
     Document::~Document()
@@ -98,7 +98,7 @@ namespace XML
 
     xmlNodePtr Document::rootNode()
     {
-        return mDoc ? xmlDocGetRootElement(mDoc) : 0;
+        return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
     int getProperty(xmlNodePtr node, const char* name, int def)

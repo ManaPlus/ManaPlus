@@ -94,7 +94,7 @@ ResourceManager::~ResourceManager()
             continue;
         }
 #endif
-        if (dynamic_cast<SpriteDef*>(iter->second) != 0)
+        if (dynamic_cast<SpriteDef*>(iter->second))
         {
             cleanUp(iter->second);
             ResourceIterator toErase = iter;
@@ -118,7 +118,7 @@ ResourceManager::~ResourceManager()
             continue;
         }
 #endif
-        if (dynamic_cast<ImageSet*>(iter->second) != 0)
+        if (dynamic_cast<ImageSet*>(iter->second))
         {
             cleanUp(iter->second);
             ResourceIterator toErase = iter;
@@ -574,7 +574,7 @@ ResourceManager *ResourceManager::getInstance()
 void ResourceManager::deleteInstance()
 {
     delete instance;
-    instance = 0;
+    instance = nullptr;
 }
 
 void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
@@ -748,7 +748,7 @@ struct RescaledLoader
 Image *ResourceManager::getRescaled(Image *image, int width, int height)
 {
     if (!image)
-        return 0;
+        return nullptr;
 
     std::string idPath = image->getIdPath() + strprintf(
         "_rescaled%dx%d", width, height);

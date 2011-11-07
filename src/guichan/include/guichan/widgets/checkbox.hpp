@@ -85,7 +85,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~CheckBox() { }
+        virtual ~CheckBox()
+        { }
 
         /**
          * Checks if the check box is selected.

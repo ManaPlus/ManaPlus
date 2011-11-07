@@ -33,8 +33,8 @@
 
 Item::Item(int id, int quantity, int refine, unsigned char color,
            bool equipment, bool equipped):
-    mImage(0),
-    mDrawImage(0),
+    mImage(nullptr),
+    mDrawImage(nullptr),
     mQuantity(quantity),
     mEquipment(equipment),
     mEquipped(equipped),
@@ -50,7 +50,7 @@ Item::~Item()
     if (mImage)
     {
         mImage->decRef();
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 

@@ -50,7 +50,8 @@ bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
     if (SDL_MUSTLOCK(surface))
         SDL_LockSurface(surface);
 
-    png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, 0, 0, 0);
+    png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
+        nullptr, nullptr, nullptr);
     if (!png_ptr)
     {
         logger->log1("Had trouble creating png_structp");

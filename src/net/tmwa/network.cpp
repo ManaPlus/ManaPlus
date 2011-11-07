@@ -104,16 +104,17 @@ int networkThread(void *data)
     return 0;
 }
 
-Network *Network::mInstance = 0;
+Network *Network::mInstance = nullptr;
 
 Network::Network() :
-    mSocket(0),
+    mSocket(nullptr),
     mInBuffer(new char[BUFFER_SIZE]),
     mOutBuffer(new char[BUFFER_SIZE]),
-    mInSize(0), mOutSize(0),
+    mInSize(0),
+    mOutSize(0),
     mToSkip(0),
     mState(IDLE),
-    mWorkerThread(0)
+    mWorkerThread(nullptr)
 {
     SDLNet_Init();
 
@@ -129,8 +130,8 @@ Network::~Network()
         disconnect();
 
     SDL_DestroyMutex(mMutex);
-    mMutex = 0;
-    mInstance = 0;
+    mMutex = nullptr;
+    mInstance = nullptr;
 
     delete[] mInBuffer;
     delete[] mOutBuffer;
@@ -189,7 +190,7 @@ void Network::disconnect()
     {
         // need call SDLNet_TCP_DelSocket?
         SDLNet_TCP_Close(mSocket);
-        mSocket = 0;
+        mSocket = nullptr;
     }
 }
 
@@ -212,7 +213,7 @@ void Network::unregisterHandler(MessageHandler *handler)
     for (const Uint16 *i = handler->handledMessages; *i; ++i)
         mMessageHandlers.erase(*i);
 
-    handler->setNetwork(0);
+    handler->setNetwork(nullptr);
 }
 
 void Network::clearHandlers()
@@ -221,7 +222,7 @@ void Network::clearHandlers()
     for (i = mMessageHandlers.begin(); i != mMessageHandlers.end(); ++i)
     {
         if (i->second)
-            i->second->setNetwork(0);
+            i->second->setNetwork(nullptr);
     }
     mMessageHandlers.clear();
 }

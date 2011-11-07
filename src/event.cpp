@@ -37,7 +37,7 @@ Event::~Event()
     while (it != mData.end())
     {
         delete it->second;
-        it->second = 0;
+        it->second = nullptr;
         ++it;
     }
 }

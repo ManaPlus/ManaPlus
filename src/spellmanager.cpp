@@ -166,7 +166,7 @@ void SpellManager::invokeSpell(TextCommand* spell) const
 {
     if (!chatWindow || !spell)
         return;
-    chatWindow->localChatInput(parseCommand(spell->getCommand(), 0));
+    chatWindow->localChatInput(parseCommand(spell->getCommand(), nullptr));
 }
 
 void SpellManager::invokeSpell(TextCommand* spell, Being* target) const

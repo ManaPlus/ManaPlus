@@ -155,7 +155,7 @@ unsigned char *php3_base64_decode(const unsigned char *string,
             case 0:
             case 1:
                 free(result);
-                return 0;
+                return nullptr;
             case 2:
                 k++;
             case 3:

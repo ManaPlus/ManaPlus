@@ -87,8 +87,8 @@ Image::Image(GLuint glimage, int width, int height,
              int texWidth, int texHeight):
     mAlpha(1.0f),
     mHasAlphaChannel(true),
-    mSDLSurface(0),
-    mAlphaChannel(0),
+    mSDLSurface(nullptr),
+    mAlphaChannel(nullptr),
     mUseAlphaCache(false),
     mIsAlphaVisible(true),
     mIsAlphaCalculated(false),
@@ -251,14 +251,14 @@ Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
         // We also delete the alpha channel since
         // it's not used.
         delete[] alphaChannel;
-        alphaChannel = 0;
+        alphaChannel = nullptr;
     }
 
     if (!image)
     {
         logger->log1("Error: Image convert failed.");
         delete[] alphaChannel;
-        return 0;
+        return nullptr;
     }
 
     if (converted)
@@ -279,7 +279,7 @@ void Image::SDLCleanCache()
     {
         if (mSDLSurface != i->second)
             resman->scheduleDelete(i->second);
-        i->second = 0;
+        i->second = nullptr;
     }
     mAlphaCache.clear();
 }
@@ -339,7 +339,7 @@ SDL_Surface *Image::getByAlpha(float alpha)
     std::map<float, SDL_Surface*>::const_iterator it = mAlphaCache.find(alpha);
     if (it != mAlphaCache.end())
         return (*it).second;
-    return 0;
+    return nullptr;
 }
 
 void Image::setAlpha(float alpha)
@@ -575,7 +575,7 @@ SDL_Surface* Image::convertTo32Bit(SDL_Surface* tmpImage)
     if (!tmpImage)
         return nullptr;
     SDL_PixelFormat RGBAFormat;
-    RGBAFormat.palette = 0;
+    RGBAFormat.palette = nullptr;
     RGBAFormat.colorkey = 0;
     RGBAFormat.alpha = 0;
     RGBAFormat.BitsPerPixel = 32;
@@ -692,14 +692,14 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
         // We also delete the alpha channel since
         // it's not used.
         delete[] alphaChannel;
-        alphaChannel = 0;
+        alphaChannel = nullptr;
     }
 
     if (!image)
     {
         logger->log1("Error: Image convert failed.");
         delete[] alphaChannel;
-        return 0;
+        return nullptr;
     }
 
     if (converted)
@@ -880,7 +880,7 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
     {
         mHasAlphaChannel = false;
         mIsAlphaVisible = false;
-        mAlphaChannel = 0;
+        mAlphaChannel = nullptr;
     }
 
     // Set up the rectangle.
@@ -921,16 +921,16 @@ SubImage::SubImage(Image *parent, GLuint image,
 SubImage::~SubImage()
 {
     // Avoid destruction of the image
-    mSDLSurface = 0;
+    mSDLSurface = nullptr;
     // Avoid possible destruction of its alpha channel
-    mAlphaChannel = 0;
+    mAlphaChannel = nullptr;
 #ifdef USE_OPENGL
     mGLImage = 0;
 #endif
     if (mParent)
     {
         mParent->decRef();
-        mParent = 0;
+        mParent = nullptr;
     }
 }
 

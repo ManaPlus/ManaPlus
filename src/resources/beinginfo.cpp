@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-BeingInfo *BeingInfo::unknown = 0;
+BeingInfo *BeingInfo::unknown = nullptr;
 Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, "", "");
 
 BeingInfo::BeingInfo():
@@ -121,7 +121,7 @@ void BeingInfo::addAttack(int id, std::string action,
 void BeingInfo::clear()
 {
     delete unknown;
-    unknown = 0;
+    unknown = nullptr;
     delete empty;
-    empty = 0;
+    empty = nullptr;
 }

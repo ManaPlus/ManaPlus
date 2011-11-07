@@ -51,7 +51,7 @@ namespace Ea
 
 BuySellHandler::BuySellHandler() :
     mNpcId(0),
-    mBuyDialog(0)
+    mBuyDialog(nullptr)
 {
 }
 

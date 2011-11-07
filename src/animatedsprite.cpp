@@ -40,9 +40,9 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
     mFrameIndex(0),
     mFrameTime(0),
     mSprite(sprite),
-    mAction(0),
-    mAnimation(0),
-    mFrame(0)
+    mAction(nullptr),
+    mAnimation(nullptr),
+    mFrame(nullptr)
 {
     mAlpha = 1.0f;
 
@@ -59,7 +59,7 @@ AnimatedSprite *AnimatedSprite::load(const std::string &filename, int variant)
     ResourceManager *resman = ResourceManager::getInstance();
     SpriteDef *s = resman->getSprite(filename, variant);
     if (!s)
-        return 0;
+        return nullptr;
     AnimatedSprite *as = new AnimatedSprite(s);
     s->decRef();
     return as;
@@ -70,7 +70,7 @@ AnimatedSprite::~AnimatedSprite()
     if (mSprite)
     {
         mSprite->decRef();
-        mSprite = 0;
+        mSprite = nullptr;
     }
 }
 
@@ -194,8 +194,8 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
         {
             if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
             {
-                mAnimation = 0;
-                mFrame = 0;
+                mAnimation = nullptr;
+                mFrame = nullptr;
                 return false;
             }
         }
@@ -292,7 +292,7 @@ std::string AnimatedSprite::getIdPath()
 
 const Image* AnimatedSprite::getImage() const
 {
-    return mFrame ? mFrame->image : 0;
+    return mFrame ? mFrame->image : nullptr;
 }
 
 void AnimatedSprite::setAlpha(float alpha)

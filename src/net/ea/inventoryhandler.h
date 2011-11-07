@@ -64,7 +64,7 @@ class EquipBackend : public Equipment::Backend
             if (PlayerInfo::getInventory())
                 return PlayerInfo::getInventory()->getItem(invyIndex);
             else
-                return 0;
+                return nullptr;
         }
 
         void clear()

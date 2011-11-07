@@ -212,7 +212,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     ActorSprite(id),
     mInfo(BeingInfo::unknown),
     mActionTime(0),
-    mEmotion(0), mEmotionTime(0),
+    mEmotion(0),
+    mEmotionTime(0),
     mSpeechTime(0),
     mAttackType(1),
     mAttackSpeed(350),
@@ -221,19 +222,21 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mDirection(DOWN),
     mDirectionDelayed(0),
     mSpriteDirection(DIRECTION_DOWN),
-    mDispName(0),
+    mDispName(nullptr),
     mShowName(false),
     mEquippedWeapon(nullptr),
-    mText(0),
+    mText(nullptr),
     mLevel(0),
     mGender(GENDER_UNSPECIFIED),
-    mParty(0),
+    mParty(nullptr),
     mIsGM(false),
     mAttackRange(1),
     mType(type),
-    mX(0), mY(0),
+    mX(0),
+    mY(0),
     mDamageTaken(0),
-    mHP(0), mMaxHP(0),
+    mHP(0),
+    mMaxHP(0),
     mDistance(0),
     mIsReachable(REACH_UNKNOWN),
     mGoodStatus(-1),
@@ -291,16 +294,16 @@ Being::~Being()
     config.removeListener("visiblenames", this);
 
     delete[] mSpriteRemap;
-    mSpriteRemap = 0;
+    mSpriteRemap = nullptr;
     delete[] mSpriteHide;
-    mSpriteHide = 0;
+    mSpriteHide = nullptr;
 
     delete mSpeechBubble;
-    mSpeechBubble = 0;
+    mSpeechBubble = nullptr;
     delete mDispName;
-    mDispName = 0;
+    mDispName = nullptr;
     delete mText;
-    mText = 0;
+    mText = nullptr;
 }
 
 void Being::setSubtype(Uint16 subtype)
@@ -543,7 +546,7 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
     if (!userPalette || !attacker)
         return;
 
-    gcn::Font *font = 0;
+    gcn::Font *font = nullptr;
     std::string damage = amount ? toString(amount) : type == FLEE ?
             _("dodge") : _("miss");
     const gcn::Color *color;
@@ -751,7 +754,7 @@ void Being::setShowName(bool doShowName)
     else
     {
         delete mDispName;
-        mDispName = 0;
+        mDispName = nullptr;
     }
 }
 
@@ -795,7 +798,7 @@ Guild *Being::getGuild(const std::string &guildName) const
             return guild;
     }
 
-    return 0;
+    return nullptr;
 }
 
 Guild *Being::getGuild(int id) const
@@ -805,7 +808,7 @@ Guild *Being::getGuild(int id) const
     if (itr != mGuilds.end())
         return itr->second;
 
-    return 0;
+    return nullptr;
 }
 
 Guild *Being::getGuild() const
@@ -815,7 +818,7 @@ Guild *Being::getGuild() const
     if (itr != mGuilds.end())
         return itr->second;
 
-    return 0;
+    return nullptr;
 }
 
 void Being::clearGuilds()
@@ -1157,7 +1160,7 @@ void Being::logic()
     if (mSpeechTime == 0 && mText)
     {
         delete mText;
-        mText = 0;
+        mText = nullptr;
     }
 
     int frameCount = static_cast<int>(getFrameCount());
@@ -1393,7 +1396,7 @@ void Being::drawSpeech(int offsetX, int offsetY)
         const bool isShowName = (speech == NAME_IN_BUBBLE);
 
         delete mText;
-        mText = 0;
+        mText = nullptr;
 
         mSpeechBubble->setCaption(isShowName ? mName : "", mTextColor);
 
@@ -1418,7 +1421,7 @@ void Being::drawSpeech(int offsetX, int offsetY)
         mSpeechBubble->setVisible(false);
 
         delete mText;
-        mText = 0;
+        mText = nullptr;
     }
 }
 
@@ -1538,7 +1541,7 @@ std::string Being::getGenderSign() const
 void Being::showName()
 {
     delete mDispName;
-    mDispName = 0;
+    mDispName = nullptr;
     std::string mDisplayName(mName);
 
     if (mType != MONSTER && (mShowGender || mShowLevel))
@@ -1556,7 +1559,7 @@ void Being::showName()
             mDisplayName += ", " + toString(getDamageTaken());
     }
 
-    gcn::Font *font = 0;
+    gcn::Font *font = nullptr;
     if (player_node && player_node->getTarget() == this
         && mType != MONSTER)
     {
@@ -1879,7 +1882,7 @@ BeingCacheEntry* Being::getCacheEntry(int id)
             return *i;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 
@@ -2521,7 +2524,7 @@ void BeingEquipBackend::clear()
     for (int i = 0; i < EQUIPMENT_SIZE; i++)
     {
         delete mEquipment[i];
-        mEquipment[i] = 0;
+        mEquipment[i] = nullptr;
     }
 }
 
@@ -2533,6 +2536,6 @@ void BeingEquipBackend::setEquipment(int index, Item *item)
 Item *BeingEquipBackend::getEquipment(int index) const
 {
     if (index < 0 || index >= EQUIPMENT_SIZE)
-        return 0;
+        return nullptr;
     return mEquipment[index];
 }

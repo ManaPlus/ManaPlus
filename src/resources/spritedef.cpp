@@ -39,7 +39,7 @@
 
 #include "debug.h"
 
-SpriteReference *SpriteReference::Empty = 0;
+SpriteReference *SpriteReference::Empty = nullptr;
 
 Action *SpriteDef::getAction(std::string action) const
 {
@@ -360,7 +360,7 @@ SpriteDef::~SpriteDef()
         if (i->second)
         {
             i->second->decRef();
-            i->second = 0;
+            i->second = nullptr;
         }
     }
 }

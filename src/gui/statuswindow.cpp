@@ -123,7 +123,8 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 };
 
 StatusWindow::StatusWindow():
-    Window(player_node ? player_node->getName() : "?", false, 0, "status.xml")
+    Window(player_node ? player_node->getName() :
+        "?", false, nullptr, "status.xml")
 {
     listen(Mana::CHANNEL_ATTRIBUTES);
 
@@ -177,8 +178,8 @@ StatusWindow::StatusWindow():
     }
     else
     {
-        mMpLabel = 0;
-        mMpBar = 0;
+        mMpLabel = nullptr;
+        mMpBar = nullptr;
     }
 
     place(0, 0, mLvlLabel, 3);
@@ -210,9 +211,9 @@ StatusWindow::StatusWindow():
     }
     else
     {
-        mJobLvlLabel = 0;
-        mJobLabel = 0;
-        mJobBar = 0;
+        mJobLvlLabel = nullptr;
+        mJobLabel = nullptr;
+        mJobBar = nullptr;
     }
 
     // ----------------------
@@ -963,6 +964,7 @@ AttrDisplay::AttrDisplay(int id, const std::string &name):
 AttrDisplay::~AttrDisplay()
 {
     delete mLayout;
+    mLayout = nullptr;
 }
 
 std::string AttrDisplay::update()
@@ -1012,7 +1014,7 @@ ChangeDisplay::ChangeDisplay(int id, const std::string &name):
     }
     else
     {
-        mDec = 0;
+        mDec = nullptr;
     }
 
     update();

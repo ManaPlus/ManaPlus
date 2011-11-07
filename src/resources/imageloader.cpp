@@ -51,12 +51,12 @@ void ProxyImage::free()
     if (mSDLImage)
     {
         SDL_FreeSurface(mSDLImage);
-        mSDLImage = 0;
+        mSDLImage = nullptr;
     }
     else
     {
         delete mImage;
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 

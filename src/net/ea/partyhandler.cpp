@@ -37,8 +37,8 @@
 namespace Ea
 {
 
-PartyTab *partyTab = 0;
-Party *taParty = 0;
+PartyTab *partyTab = nullptr;
+Party *taParty = nullptr;
 
 PartyHandler::PartyHandler() :
     mShareExp(PARTY_SHARE_UNKNOWN),
@@ -50,7 +50,7 @@ PartyHandler::PartyHandler() :
 PartyHandler::~PartyHandler()
 {
     delete partyTab;
-    partyTab = 0;
+    partyTab = nullptr;
 }
 
 void PartyHandler::join(int partyId A_UNUSED)
@@ -71,7 +71,7 @@ void PartyHandler::reload()
 
 void PartyHandler::clear()
 {
-    taParty = 0;
+    taParty = nullptr;
 }
 
 void PartyHandler::processPartyCreate(Net::MessageIn &msg)
@@ -128,7 +128,7 @@ void PartyHandler::processPartyInfo(Net::MessageIn &msg)
 
         if (Ea::taParty)
         {
-            PartyMember *member = 0;
+            PartyMember *member = nullptr;
             if (oldParty)
             {
                 //member = Ea::taParty->getMember(id);
@@ -314,7 +314,7 @@ void PartyHandler::processPartySettings(Net::MessageIn &msg)
 void PartyHandler::processPartyMove(Net::MessageIn &msg)
 {
     int id = msg.readInt32();    // id
-    PartyMember *m = 0;
+    PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
     if (m)
@@ -356,7 +356,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
         }
         SERVER_NOTICE(_("You have left the party."))
         delete Ea::partyTab;
-        Ea::partyTab = 0;
+        Ea::partyTab = nullptr;
 
         if (socialWindow && Ea::taParty)
             socialWindow->removeTab(Ea::taParty);
@@ -375,7 +375,7 @@ void PartyHandler::processPartyLeave(Net::MessageIn &msg)
             Being *b = actorSpriteManager->findBeing(id);
             if (b && b->getType() == Being::PLAYER)
             {
-                b->setParty(0);
+                b->setParty(nullptr);
                 b->setPartyName("");
             }
         }
@@ -389,7 +389,7 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
     int id = msg.readInt32();
     int hp = msg.readInt16();
     int maxhp = msg.readInt16();
-    PartyMember *m = 0;
+    PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
     if (m)
@@ -410,7 +410,7 @@ void PartyHandler::processPartyUpdateHp(Net::MessageIn &msg)
 void PartyHandler::processPartyUpdateCoords(Net::MessageIn &msg)
 {
     int id = msg.readInt32(); // id
-    PartyMember *m = 0;
+    PartyMember *m = nullptr;
     if (Ea::taParty)
         m = Ea::taParty->getMember(id);
     if (m)

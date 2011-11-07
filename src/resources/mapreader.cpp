@@ -251,7 +251,7 @@ Map *MapReader::readMap(const std::string &filename,
 Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
 {
     if (!node)
-        return 0;
+        return nullptr;
 
     // Take the filename off the path
     const std::string pathDir = path.substr(0, path.rfind("/") + 1);
@@ -270,7 +270,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
         logger->log("MapReader: Warning: "
                     "Unitialized tile width or height value for map: %s",
                     path.c_str());
-        return 0;
+        return nullptr;
     }
 
     Map *map = new Map(w, h, tilew, tileh);
@@ -405,7 +405,7 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
     if (layer)
     {
         // Set regular tile on a layer
-        Image * const img = set ? set->get(gid - set->getFirstGid()) : 0;
+        Image * const img = set ? set->get(gid - set->getFirstGid()) : nullptr;
         layer->setTile(x, y, img);
     }
     else
@@ -458,7 +458,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
 
     map->indexTilesets();
 
-    MapLayer *layer = 0;
+    MapLayer *layer = nullptr;
 
     if (!isCollisionLayer)
     {
@@ -668,7 +668,7 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
         doc = new XML::Document(filename);
         node = doc->rootNode();
         if (!node)
-            return 0;
+            return nullptr;
 
         // Reset path to be realtive to the tsx file
         pathDir = filename.substr(0, filename.rfind("/") + 1);
@@ -760,7 +760,7 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
                 else
                 {
                     delete ani;
-                    ani = 0;
+                    ani = nullptr;
                 }
             }
         }

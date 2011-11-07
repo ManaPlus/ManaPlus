@@ -51,7 +51,7 @@ Sound::Sound():
     mInstalled(false),
     mSfxVolume(100),
     mMusicVolume(60),
-    mMusic(0),
+    mMusic(nullptr),
     mPlayBattle(false),
     mPlayGui(false),
     mPlayMusic(false),
@@ -202,7 +202,7 @@ static Mix_Music *loadMusic(const std::string &filename)
         if (success)
             path = resman->getPath("tempMusic.ogg");
         else
-            return NULL;
+            return nullptr;
     }
     else
     {
@@ -210,7 +210,7 @@ static Mix_Music *loadMusic(const std::string &filename)
     }
 
     if (path.empty())
-        return 0;
+        return nullptr;
 
     Mix_Music *music = Mix_LoadMUS(path.c_str());
 
@@ -247,7 +247,7 @@ void Sound::stopMusic()
     {
         Mix_HaltMusic();
         Mix_FreeMusic(mMusic);
-        mMusic = NULL;
+        mMusic = nullptr;
     }
 }
 
@@ -298,7 +298,7 @@ void Sound::logic()
         if (mMusic)
         {
             Mix_FreeMusic(mMusic);
-            mMusic = NULL;
+            mMusic = nullptr;
         }
         sFadingOutEnded = false;
 
@@ -380,7 +380,7 @@ void Sound::haltMusic()
 
     Mix_HaltMusic();
     Mix_FreeMusic(mMusic);
-    mMusic = NULL;
+    mMusic = nullptr;
 }
 
 void Sound::changeAudio()

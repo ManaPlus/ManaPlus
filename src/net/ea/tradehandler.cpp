@@ -53,7 +53,7 @@ namespace
     {
         void action(const gcn::ActionEvent &event)
         {
-            confirmDlg = 0;
+            confirmDlg = nullptr;
             if (event.getId() == "ignore")
                 player_relations.ignoreTrade(tradePartnerName);
             Net::getTradeHandler()->respond(event.getId() == "yes");
@@ -66,7 +66,7 @@ namespace Ea
 
 TradeHandler::TradeHandler()
 {
-    confirmDlg = 0;
+    confirmDlg = nullptr;
 }
 
 void TradeHandler::removeItem(int slotNum A_UNUSED, int amount A_UNUSED)
@@ -204,7 +204,7 @@ void TradeHandler::processTradeItemAddResponse(Net::MessageIn &msg)
 {
     // Trade: New Item add response (was 0x00ea, now 01b1)
     const int index = msg.readInt16() - INVENTORY_OFFSET;
-    Item *item = 0;
+    Item *item = nullptr;
     if (PlayerInfo::getInventory())
         item = PlayerInfo::getInventory()->getItem(index);
 

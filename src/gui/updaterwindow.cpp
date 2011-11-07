@@ -135,7 +135,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
                              const std::string &updatesDir,
                              bool applyUpdates,
                              int updateType):
-    Window(_("Updating..."), false, 0, "update.xml"),
+    Window(_("Updating..."), false, nullptr, "update.xml"),
     mDownloadStatus(UPDATE_NEWS),
     mUpdateHost(updateHost),
     mUpdatesDir(updatesDir),
@@ -202,7 +202,7 @@ UpdaterWindow::~UpdaterWindow()
         mDownload->cancel();
 
         delete mDownload;
-        mDownload = 0;
+        mDownload = nullptr;
     }
     free(mMemoryBuffer);
 }

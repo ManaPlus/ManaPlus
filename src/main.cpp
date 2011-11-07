@@ -107,7 +107,7 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
         { "chat-log-dir",   required_argument, 0, 'L' },
         { "screenshot-dir", required_argument, 0, 'i' },
         { "safemode",       no_argument,       0, 'm' },
-        { 0,                0,                 0, 0 }
+        { nullptr,          0,                 0, 0 }
     };
 
     while (optind < argc)

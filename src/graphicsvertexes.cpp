@@ -44,9 +44,9 @@ SDLGraphicsVertexes::~SDLGraphicsVertexes()
 #ifdef USE_OPENGL
 OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     ptr(0),
-    mFloatTexArray(0),
-    mIntTexArray(0),
-    mIntVertArray(0)
+    mFloatTexArray(nullptr),
+    mIntTexArray(nullptr),
+    mIntVertArray(nullptr)
 {
     mFloatTexPool.reserve(30);
     mIntVertPool.reserve(30);
@@ -240,6 +240,6 @@ ImageVertexes::~ImageVertexes()
     sdl.clear();
 #ifdef USE_OPENGL
     delete ogl;
-    ogl = 0;
+    ogl = nullptr;
 #endif
 }

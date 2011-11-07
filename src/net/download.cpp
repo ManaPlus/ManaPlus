@@ -72,11 +72,11 @@ Download::~Download()
     if (mHeaders)
         curl_slist_free_all(mHeaders);
 
-    mHeaders = 0;
+    mHeaders = nullptr;
     int status;
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, &status);
-    mThread = 0;
+    mThread = nullptr;
     free(mError);
 }
 
@@ -281,7 +281,7 @@ int Download::downloadThread(void *ptr)
             }
 
             curl_easy_cleanup(d->mCurl);
-            d->mCurl = 0;
+            d->mCurl = nullptr;
 
             if (!d->mOptions.memoryWrite)
             {
@@ -329,7 +329,7 @@ int Download::downloadThread(void *ptr)
         if (d->mCurl)
         {
             curl_easy_cleanup(d->mCurl);
-            d->mCurl = 0;
+            d->mCurl = nullptr;
         }
 
         if (d->mOptions.cancel)

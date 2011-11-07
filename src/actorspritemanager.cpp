@@ -183,7 +183,7 @@ class SortBeingFunctor
 } beingSorter;
 
 ActorSpriteManager::ActorSpriteManager() :
-    mMap(0)
+    mMap(nullptr)
 {
     mSpellHeal1 = serverConfig.getValue("spellHeal1", "#lum");
     mSpellHeal2 = serverConfig.getValue("spellHeal2", "#inma");
@@ -321,7 +321,7 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
 
     if (mExtMouseTargeting)
     {
-        Being *tempBeing = 0;
+        Being *tempBeing = nullptr;
         bool noBeing(false);
 
         for_actors
@@ -376,7 +376,7 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
         }
 
         if (noBeing)
-            return 0;
+            return nullptr;
         return tempBeing;
     }
     else
@@ -402,7 +402,7 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
                 return being;
             }
         }
-        return 0;
+        return nullptr;
     }
 }
 
@@ -526,7 +526,7 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
     }
     else if (Client::checkPackets(PACKET_PICKUP))
     {
-        FloorItem *item = 0;
+        FloorItem *item = nullptr;
         unsigned cnt = 65535;
         for_actors
         {
@@ -621,7 +621,7 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
                                              Being::Type type) const
 {
     if (!player_node)
-        return 0;
+        return nullptr;
 
     int dist = 0;
     Being* closestBeing = nullptr;
@@ -653,7 +653,7 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
                 int d = (being->getTileX() - x) * (being->getTileX() - x)
                         + (being->getTileY() - y) * (being->getTileY() - y);
 
-                if (validateBeing(0, being, type, 0, 50)
+                if (validateBeing(nullptr, being, type, nullptr, 50)
                     && (d < dist || closestBeing == nullptr))
                 {
                     dist = d;
@@ -697,7 +697,7 @@ void ActorSpriteManager::logic()
         if (player_node)
         {
             if (player_node->getTarget() == *it)
-                player_node->setTarget(0);
+                player_node->setTarget(nullptr);
             if (player_node->getPickUpTarget() == *it)
                 player_node->unSetPickUpTarget();
         }
@@ -718,11 +718,11 @@ void ActorSpriteManager::logic()
 void ActorSpriteManager::clear()
 {
     if (beingEquipmentWindow)
-        beingEquipmentWindow->setBeing(0);
+        beingEquipmentWindow->setBeing(nullptr);
 
     if (player_node)
     {
-        player_node->setTarget(0);
+        player_node->setTarget(nullptr);
         player_node->unSetPickUpTarget();
         mActors.erase(player_node);
     }
@@ -753,7 +753,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                                                   Being::Type type) const
 {
     if (!aroundBeing)
-        return 0;
+        return nullptr;
 
     int x = aroundBeing->getTileX();
     int y = aroundBeing->getTileY();
@@ -769,9 +769,9 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                                                   Being *excluded) const
 {
     if (!aroundBeing || !player_node)
-        return 0;
+        return nullptr;
 
-    Being *closestBeing = 0;
+    Being *closestBeing = nullptr;
     std::set<std::string> attackMobs;
     std::set<std::string> priorityMobs;
     std::set<std::string> ignoreAttackMobs;
@@ -852,7 +852,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                     continue;
                 }
             }
-            if (validateBeing(aroundBeing, being, type, 0, maxDist))
+            if (validateBeing(aroundBeing, being, type, nullptr, maxDist))
             {
                 if (being != excluded)
                     sortedBeings.push_back(being);
@@ -861,7 +861,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 
         // no selectable beings
         if (sortedBeings.empty())
-            return 0;
+            return nullptr;
 
         beingSorter.x = x;
         beingSorter.y = y;
@@ -874,14 +874,14 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
         }
         else
         {
-            beingSorter.attackBeings = 0;
-            beingSorter.priorityBeings = 0;
+            beingSorter.attackBeings = nullptr;
+            beingSorter.priorityBeings = nullptr;
         }
         sort(sortedBeings.begin(), sortedBeings.end(), beingSorter);
         if (filtered)
         {
-            beingSorter.attackBeings = 0;
-            beingSorter.priorityBeings = 0;
+            beingSorter.attackBeings = nullptr;
+            beingSorter.priorityBeings = nullptr;
         }
 
         if (player_node->getTarget() == nullptr)
@@ -891,7 +891,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
             if (specialDistance && target->getType() == Being::MONSTER
                 && target->getDistance() <= 2)
             {
-                return 0;
+                return nullptr;
             }
             // if no selected being in vector, return first nearest being
             return target;
@@ -970,7 +970,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
 //            logger->log("index:" + toString(index));
 //            logger->log("d:" + toString(d));
 
-            if (valid && !filtered && (d <= dist || closestBeing == 0))
+            if (valid && !filtered && (d <= dist || !closestBeing))
             {
                 dist = d;
                 closestBeing = being;
@@ -1014,7 +1014,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                 }
             }
         }
-        return (maxDist >= dist) ? closestBeing : 0;
+        return (maxDist >= dist) ? closestBeing : nullptr;
     }
 }
 

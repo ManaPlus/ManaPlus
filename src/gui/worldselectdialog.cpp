@@ -74,7 +74,7 @@ class WorldListModel : public gcn::ListModel
 };
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
-    Window(_("Select World"), false, 0, "world.xml")
+    Window(_("Select World"), false, nullptr, "world.xml")
 {
     mWorldListModel = new WorldListModel(worlds);
     mWorldList = new ListBox(mWorldListModel);
@@ -114,7 +114,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
 WorldSelectDialog::~WorldSelectDialog()
 {
     delete mWorldListModel;
-    mWorldListModel = 0;
+    mWorldListModel = nullptr;
 }
 
 void WorldSelectDialog::action(const gcn::ActionEvent &event)

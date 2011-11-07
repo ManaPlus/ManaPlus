@@ -48,7 +48,7 @@ static std::string defaultThemePath;
 
 std::string Theme::mThemePath;
 std::string Theme::mThemeName;
-Theme *Theme::mInstance = 0;
+Theme *Theme::mInstance = nullptr;
 
 // Set the theme path...
 static void initDefaultThemePath()
@@ -82,18 +82,18 @@ Skin::~Skin()
     for (int i = 0; i < 9; i++)
     {
         delete mBorder.grid[i];
-        mBorder.grid[i] = 0;
+        mBorder.grid[i] = nullptr;
     }
 
     if (mCloseImage)
     {
         mCloseImage->decRef();
-        mCloseImage = 0;
+        mCloseImage = nullptr;
     }
     delete mStickyImageUp;
-    mStickyImageUp = 0;
+    mStickyImageUp = nullptr;
     delete mStickyImageDown;
-    mStickyImageDown = 0;
+    mStickyImageDown = nullptr;
 }
 
 void Skin::updateAlpha(float minimumOpacityAllowed)
@@ -182,7 +182,7 @@ Theme *Theme::instance()
 void Theme::deleteInstance()
 {
     delete mInstance;
-    mInstance = 0;
+    mInstance = nullptr;
 }
 
 gcn::Color Theme::getProgressColor(int type, float progress)
@@ -295,7 +295,7 @@ void Theme::optionChanged(const std::string &)
 Skin *Theme::readSkin(const std::string &filename)
 {
     if (filename.empty())
-        return 0;
+        return nullptr;
 
 //    std::string filename = filename0;
 //    ResourceManager *resman = ResourceManager::getInstance();
@@ -306,14 +306,14 @@ Skin *Theme::readSkin(const std::string &filename)
     xmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "skinset"))
-        return 0;
+        return nullptr;
 
     const std::string skinSetImage = XML::getProperty(rootNode, "image", "");
 
     if (skinSetImage.empty())
     {
         logger->log1("Theme::readSkin(): Skinset does not define an image!");
-        return 0;
+        return nullptr;
     }
 
     logger->log("Theme::load(): <skinset> defines '%s' as a skin image.",
@@ -355,7 +355,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[0] = 0;
+                            border.grid[0] = nullptr;
                         }
                     }
                     else if (partType == "top-edge")
@@ -367,7 +367,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[1] = 0;
+                            border.grid[1] = nullptr;
                         }
                     }
                     else if (partType == "top-right-corner")
@@ -379,7 +379,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[2] = 0;
+                            border.grid[2] = nullptr;
                         }
                     }
 
@@ -393,7 +393,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[3] = 0;
+                            border.grid[3] = nullptr;
                         }
                     }
                     else if (partType == "bg-quad")
@@ -405,7 +405,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[4] = 0;
+                            border.grid[4] = nullptr;
                         }
                     }
                     else if (partType == "right-edge")
@@ -417,7 +417,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[5] = 0;
+                            border.grid[5] = nullptr;
                         }
                     }
 
@@ -431,7 +431,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[6] = 0;
+                            border.grid[6] = nullptr;
                         }
                     }
                     else if (partType == "bottom-edge")
@@ -443,7 +443,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[7] = 0;
+                            border.grid[7] = nullptr;
                         }
                     }
                     else if (partType == "bottom-right-corner")
@@ -455,7 +455,7 @@ Skin *Theme::readSkin(const std::string &filename)
                         }
                         else
                         {
-                            border.grid[8] = 0;
+                            border.grid[8] = nullptr;
                         }
                     }
 
@@ -490,8 +490,8 @@ Skin *Theme::readSkin(const std::string &filename)
     // to look for window buttons
     Image *closeImage = Theme::getImageFromTheme("close_button.png");
     Image *sticky = Theme::getImageFromTheme("sticky_button.png");
-    Image *stickyImageUp = 0;
-    Image *stickyImageDown = 0;
+    Image *stickyImageUp = nullptr;
+    Image *stickyImageDown = nullptr;
     if (sticky)
     {
         stickyImageUp = sticky->getSubImage(0, 0, 15, 15);
@@ -526,7 +526,7 @@ void Theme::fillSkinsList(std::vector<std::string> &list)
     char **skins = PHYSFS_enumerateFiles(
         branding.getStringValue("guiThemePath").c_str());
 
-    for (char **i = skins; *i != 0; i++)
+    for (char **i = skins; *i; i++)
     {
         if (PHYSFS_isDirectory((
             branding.getStringValue("guiThemePath") + *i).c_str()))
@@ -544,7 +544,7 @@ void Theme::fillFontsList(std::vector<std::string> &list)
     char **fonts = PHYSFS_enumerateFiles(
         branding.getStringValue("fontsPath").c_str());
 
-    for (char **i = fonts; *i != 0; i++)
+    for (char **i = fonts; *i; i++)
     {
         if (!PHYSFS_isDirectory((
             branding.getStringValue("fontsPath") + *i).c_str()))

@@ -121,7 +121,7 @@ PlayerRelation::PlayerRelation(Relation relation)
 PlayerRelationsManager::PlayerRelationsManager() :
     mPersistIgnores(false),
     mDefaultPermissions(PlayerRelation::DEFAULT),
-    mIgnoreStrategy(0)
+    mIgnoreStrategy(nullptr)
 {
 }
 
@@ -146,7 +146,7 @@ void PlayerRelationsManager::clear()
         removePlayer(*it);
     }
     delete names;
-    names = 0;
+    names = nullptr;
 }
 
 #define PERSIST_IGNORE_LIST "persistent-player-list"

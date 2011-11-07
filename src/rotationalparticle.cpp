@@ -44,8 +44,8 @@ RotationalParticle::RotationalParticle(Map *map, xmlNodePtr animationNode,
 RotationalParticle::~RotationalParticle()
 {
     delete mAnimation;
-    mAnimation = 0;
-    mImage = 0;
+    mAnimation = nullptr;
+    mImage = nullptr;
 }
 
 bool RotationalParticle::update()

@@ -72,14 +72,14 @@ extern std::string tradePartnerName;
 ShopWindow::DialogList ShopWindow::instances;
 
 ShopWindow::ShopWindow():
-    Window(_("Personal Shop"), false, 0, "shop.xml"),
+    Window(_("Personal Shop"), false, nullptr, "shop.xml"),
     mSelectedItem(-1),
     mAnnonceTime(0),
     mLastRequestTimeList(0),
     mLastRequestTimeItem(0),
     mRandCounter(0),
     mAcceptPlayer(""),
-    mTradeItem(0),
+    mTradeItem(nullptr),
     mTradeNick(""),
     mTradeMoney(0)
 {
@@ -152,8 +152,8 @@ ShopWindow::ShopWindow():
     }
     else
     {
-        mBuyAuctionButton = 0;
-        mSellAuctionButton = 0;
+        mBuyAuctionButton = nullptr;
+        mSellAuctionButton = nullptr;
     }
 
     Layout &layout = getLayout();
@@ -173,10 +173,10 @@ ShopWindow::~ShopWindow()
     saveList();
 
     delete mBuyShopItems;
-    mBuyShopItems = 0;
+    mBuyShopItems = nullptr;
 
     delete mSellShopItems;
-    mSellShopItems = 0;
+    mSellShopItems = nullptr;
 
     instances.remove(this);
 }
@@ -602,8 +602,8 @@ void ShopWindow::sendMessage(const std::string &nick,
 
 void ShopWindow::showList(const std::string &nick, std::string data)
 {
-    BuyDialog *buyDialog = 0;
-    SellDialog *sellDialog = 0;
+    BuyDialog *buyDialog = nullptr;
+    SellDialog *sellDialog = nullptr;
     if (data.find("B1") == 0)
     {
         data = data.substr(2);

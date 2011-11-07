@@ -55,13 +55,13 @@ SimpleAnimation::SimpleAnimation(xmlNodePtr animationNode,
     if (mAnimation)
         mCurrentFrame = mAnimation->getFrame(0);
     else
-        mCurrentFrame = 0;
+        mCurrentFrame = nullptr;
 }
 
 SimpleAnimation::~SimpleAnimation()
 {
     delete mAnimation;
-    mAnimation = 0;
+    mAnimation = nullptr;
 }
 
 bool SimpleAnimation::draw(Graphics *graphics, int posX, int posY) const

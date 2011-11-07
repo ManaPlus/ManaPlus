@@ -105,7 +105,8 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mPlayerFollowed(""),
     mPlayerImitated(""),
     mPickUpTarget(nullptr),
-    mGoingToTarget(false), mKeepAttacking(false),
+    mGoingToTarget(false),
+    mKeepAttacking(false),
     mLastAction(-1),
     mWalkingDir(0),
     mPathSetByMouse(false),
@@ -118,11 +119,15 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mShowNavigePath(false),
     mDrawPath(false),
     mActivityTime(0),
-    mNavigateX(0), mNavigateY(0),
+    mNavigateX(0),
+    mNavigateY(0),
     mNavigateId(0),
-    mCrossX(0), mCrossY(0),
-    mOldX(0), mOldY(0),
-    mOldTileX(0), mOldTileY(0),
+    mCrossX(0),
+    mCrossY(0),
+    mOldX(0),
+    mOldY(0),
+    mOldTileX(0),
+    mOldTileY(0),
     mLastHitFrom(""),
     mWaitFor(""),
     mAdvertTime(0),
@@ -218,9 +223,9 @@ LocalPlayer::~LocalPlayer()
     config.removeListener("targetOnlyReachable", this);
 
     delete mAwayDialog;
-    mAwayDialog = 0;
+    mAwayDialog = nullptr;
     delete mAwayListener;
-    mAwayListener = 0;
+    mAwayListener = nullptr;
 }
 
 void LocalPlayer::logic()
@@ -264,7 +269,7 @@ void LocalPlayer::logic()
     if (weightNotice && weightNoticeTime < cur_time)
     {
         weightNotice->scheduleDelete();
-        weightNotice = 0;
+        weightNotice = nullptr;
         weightNoticeTime = 0;
     }
 
@@ -977,7 +982,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
 void LocalPlayer::actorSpriteDestroyed(const ActorSprite &actorSprite)
 {
     if (mPickUpTarget == &actorSprite)
-        mPickUpTarget = 0;
+        mPickUpTarget = nullptr;
 }
 
 Being *LocalPlayer::getTarget() const
@@ -1006,7 +1011,7 @@ void LocalPlayer::setTarget(Being *target)
         mTargetTime = -1;
     }
 
-    Being *oldTarget = 0;
+    Being *oldTarget = nullptr;
     if (mTarget)
     {
         mTarget->untarget();
@@ -1141,7 +1146,7 @@ void LocalPlayer::startWalking(unsigned char dir)
     if (!mMap || !dir)
         return;
 
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     if (mAction == MOVE && !mPath.empty())
     {
         // Just finish the current action, otherwise we get out of sync
@@ -1214,7 +1219,7 @@ void LocalPlayer::stopWalking(bool sendToServer)
     {
         mWalkingDir = 0;
         mLocalWalkTime = 0;
-        mPickUpTarget = 0;
+        mPickUpTarget = nullptr;
 
         setDestination(static_cast<int>(getPosition().x),
                        static_cast<int>(getPosition().y));
@@ -1550,7 +1555,7 @@ void LocalPlayer::setGotoTarget(Being *target)
     if (!target)
         return;
 
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
@@ -1734,7 +1739,7 @@ void LocalPlayer::moveTo(int x, int y)
 
 void LocalPlayer::move(int dX, int dY)
 {
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     moveTo(mX + dX, mY + dY);
 }
 
@@ -1834,7 +1839,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
 
 void LocalPlayer::moveToHome()
 {
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     if ((mX != mCrossX || mY != mCrossY) && mCrossX && mCrossY)
     {
         moveTo(mCrossX, mCrossY);
@@ -3205,7 +3210,7 @@ void LocalPlayer::changeAwayMode()
     }
     else
     {
-        mAwayDialog = 0;
+        mAwayDialog = nullptr;
         sound.volumeRestore();
         if (chatWindow)
         {
@@ -3678,7 +3683,7 @@ void LocalPlayer::followMoveTo(Being *being, int x, int y)
     if (being && !mPlayerFollowed.empty()
         && being->getName() == mPlayerFollowed)
     {
-        mPickUpTarget = 0;
+        mPickUpTarget = nullptr;
         setDestination(x, y);
     }
 }
@@ -3688,7 +3693,7 @@ void LocalPlayer::followMoveTo(Being *being, int x1, int y1, int x2, int y2)
     if (!being)
         return;
 
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
     {
         switch (mFollowMode)

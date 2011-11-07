@@ -136,15 +136,15 @@ std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
 
-Configuration config;         /**< XML file configuration reader */
-Configuration serverConfig;   /**< XML file server configuration reader */
-Configuration branding;       /**< XML branding information reader */
-Configuration paths;          /**< XML default paths information reader */
-Logger *logger = 0;           /**< Log object */
-ChatLogger *chatLogger = 0;   /**< Chat log object */
+Configuration config;             /**< XML file configuration reader */
+Configuration serverConfig;       /**< XML file server configuration reader */
+Configuration branding;           /**< XML branding information reader */
+Configuration paths;              /**< XML default paths information reader */
+Logger *logger = nullptr;         /**< Log object */
+ChatLogger *chatLogger = nullptr; /**< Chat log object */
 KeyboardConfig keyboard;
-UserPalette *userPalette = 0;
-Graphics *mainGraphics = 0;
+UserPalette *userPalette = nullptr;
+Graphics *mainGraphics = nullptr;
 
 Sound sound;
 
@@ -239,7 +239,7 @@ class LoginListener : public gcn::ActionListener
 } // anonymous namespace
 
 
-Client *Client::mInstance = 0;
+Client *Client::mInstance = nullptr;
 
 Client::Client(const Options &options):
     mOptions(options),
@@ -247,16 +247,16 @@ Client::Client(const Options &options):
     mUsersDir(""),
     mNpcsDir(""),
     mRootDir(""),
-    mCurrentDialog(0),
-    mQuitDialog(0),
-    mDesktop(0),
-    mSetupButton(0),
-    mVideoButton(0),
-    mThemesButton(0),
-    mPerfomanceButton(0),
+    mCurrentDialog(nullptr),
+    mQuitDialog(nullptr),
+    mDesktop(nullptr),
+    mSetupButton(nullptr),
+    mVideoButton(nullptr),
+    mThemesButton(nullptr),
+    mPerfomanceButton(nullptr),
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
-    mIcon(0),
+    mIcon(nullptr),
     mLogicCounterId(0),
     mSecondsCounterId(0),
     mLimitFps(false),
@@ -651,7 +651,7 @@ Client::~Client()
         Net::getLoginHandler()->clearWorlds();
 
     delete mumbleManager;
-    mumbleManager = 0;
+    mumbleManager = nullptr;
 
     PlayerInfo::deinit();
 
@@ -659,24 +659,24 @@ Client::~Client()
     for (int f = 0; f < SHORTCUT_TABS; f ++)
     {
         delete itemShortcut[f];
-        itemShortcut[f] = 0;
+        itemShortcut[f] = nullptr;
     }
     delete emoteShortcut;
-    emoteShortcut = 0;
+    emoteShortcut = nullptr;
     delete dropShortcut;
-    dropShortcut = 0;
+    dropShortcut = nullptr;
 
     player_relations.store();
 
     logger->log1("Quitting2");
 
     delete gui;
-    gui = 0;
+    gui = nullptr;
 
     logger->log1("Quitting3");
 
     delete mainGraphics;
-    mainGraphics = 0;
+    mainGraphics = nullptr;
 
     logger->log1("Quitting4");
 
@@ -703,7 +703,7 @@ Client::~Client()
     logger->log1("Quitting9");
 
     delete userPalette;
-    userPalette = 0;
+    userPalette = nullptr;
 
     logger->log1("Quitting10");
 
@@ -716,12 +716,12 @@ Client::~Client()
     logger->log1("Quitting11");
 
     delete chatLogger;
-    chatLogger = 0;
+    chatLogger = nullptr;
 
     delete logger;
-    logger = 0;
+    logger = nullptr;
 
-    mInstance = 0;
+    mInstance = nullptr;
 }
 
 int Client::exec()
@@ -731,7 +731,7 @@ int Client::exec()
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
 
-    Game *game = 0;
+    Game *game = nullptr;
     SDL_Event event;
 
     while (mState != STATE_EXIT)
@@ -901,7 +901,7 @@ int Client::exec()
             if (mOldState == STATE_GAME)
             {
                 delete game;
-                game = 0;
+                game = nullptr;
                 Game::clearInstance();
                 ResourceManager *resman = ResourceManager::getInstance();
                 if (resman)
@@ -917,13 +917,13 @@ int Client::exec()
 
             // Get rid of the dialog of the previous state
             delete mCurrentDialog;
-            mCurrentDialog = 0;
+            mCurrentDialog = nullptr;
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
             if (mQuitDialog)
             {
                 mQuitDialog->scheduleDelete();
-                mQuitDialog = 0;
+                mQuitDialog = nullptr;
             }
 
             switch (mState)
@@ -1013,7 +1013,7 @@ int Client::exec()
                             if (mOptions.chooseDefault)
                             {
                                 static_cast<WorldSelectDialog*>(mCurrentDialog)
-                                        ->action(gcn::ActionEvent(0, "ok"));
+                                    ->action(gcn::ActionEvent(nullptr, "ok"));
                             }
                         }
                     }
@@ -1186,15 +1186,15 @@ int Client::exec()
                     Theme::instance()->setMinimumOpacity(-1.0f);
 
                     delete mSetupButton;
-                    mSetupButton = 0;
+                    mSetupButton = nullptr;
                     delete mVideoButton;
-                    mVideoButton = 0;
+                    mVideoButton = nullptr;
                     delete mThemesButton;
-                    mThemesButton = 0;
+                    mThemesButton = nullptr;
                     delete mPerfomanceButton;
-                    mPerfomanceButton = 0;
+                    mPerfomanceButton = nullptr;
                     delete mDesktop;
-                    mDesktop = 0;
+                    mDesktop = nullptr;
 
                     mCurrentDialog = nullptr;
 
@@ -1537,7 +1537,7 @@ void Client::initServerConfig(std::string serverName)
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mServerConfigDir.c_str()));
     }
-    FILE *configFile = 0;
+    FILE *configFile = nullptr;
     std::string configPath;
 
     configPath = mServerConfigDir + "/config.xml";
@@ -1601,7 +1601,7 @@ void Client::initConfiguration()
 
     // Checking if the configuration file exists... otherwise create it with
     // default options.
-    FILE *configFile = 0;
+    FILE *configFile = nullptr;
     std::string configPath;
 //    bool oldConfig = false;
 //    int emptySize = config.getSize();
@@ -1791,7 +1791,7 @@ void Client::accountLogin(LoginData *data)
 
 bool Client::copyFile(std::string &configPath, std::string &oldConfigPath)
 {
-    FILE *configFile = 0;
+    FILE *configFile = nullptr;
 
     configFile = fopen(oldConfigPath.c_str(), "r");
 

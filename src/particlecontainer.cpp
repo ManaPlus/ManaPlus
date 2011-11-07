@@ -37,7 +37,7 @@ ParticleContainer::~ParticleContainer()
     if (mDelParent)
     {
         delete mNext;
-        mNext = 0;
+        mNext = nullptr;
     }
 }
 

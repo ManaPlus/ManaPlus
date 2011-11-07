@@ -53,18 +53,18 @@ ActorSprite::ActorSprite(int id):
     mStatusParticleEffects(&mStunParticleEffects, false),
     mChildParticleEffects(&mStatusParticleEffects, false),
     mMustResetParticles(false),
-    mUsedTargetCursor(0)
+    mUsedTargetCursor(nullptr)
 {
 }
 
 ActorSprite::~ActorSprite()
 {
-    setMap(0);
+    setMap(nullptr);
 
-    mUsedTargetCursor = 0;
+    mUsedTargetCursor = nullptr;
 
     if (player_node && player_node->getTarget() == this)
-        player_node->setTarget(0);
+        player_node->setTarget(nullptr);
 
     // Notify listeners of the destruction.
     for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
@@ -160,7 +160,7 @@ struct EffectDescription
     std::string mSFXEffect;
 };
 
-static EffectDescription *default_effect = 0;
+static EffectDescription *default_effect = nullptr;
 static std::map<int, EffectDescription *> effects;
 static bool effects_initialized = false;
 
@@ -462,12 +462,12 @@ void ActorSprite::cleanupTargetCursors()
             if (targetCursor[type][size])
             {
                 delete targetCursor[type][size];
-                targetCursor[type][size] = 0;
+                targetCursor[type][size] = nullptr;
             }
             if (targetCursorImages[type][size])
             {
                 targetCursorImages[type][size]->decRef();
-                targetCursorImages[type][size] = 0;
+                targetCursorImages[type][size] = nullptr;
             }
         }
     }
@@ -503,7 +503,7 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
     if (targetCursor[type][size])
     {
         delete targetCursor[type][size];
-        targetCursor[type][size] = 0;
+        targetCursor[type][size] = nullptr;
         if (targetCursorImages[type][size])
             targetCursorImages[type][size]->decRef();
     }

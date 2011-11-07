@@ -55,14 +55,14 @@
 BuyDialog::DialogList BuyDialog::instances;
 
 BuyDialog::BuyDialog(int npcId):
-    Window(_("Buy"), false, 0, "buy.xml"),
+    Window(_("Buy"), false, nullptr, "buy.xml"),
     mNpcId(npcId), mMoney(0), mAmountItems(0), mMaxItems(0), mNick("")
 {
     init();
 }
 
 BuyDialog::BuyDialog(std::string nick):
-    Window(_("Buy"), false, 0, "buy.xml"),
+    Window(_("Buy"), false, nullptr, "buy.xml"),
     mNpcId(-1), mMoney(0), mAmountItems(0), mMaxItems(0), mNick(nick)
 {
     init();
@@ -153,7 +153,7 @@ void BuyDialog::init()
 BuyDialog::~BuyDialog()
 {
     delete mShopItems;
-    mShopItems = 0;
+    mShopItems = nullptr;
 
     instances.remove(this);
 }

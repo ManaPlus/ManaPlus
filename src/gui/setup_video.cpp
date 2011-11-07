@@ -133,7 +133,7 @@ ModeListModel::ModeListModel()
     SDL_Rect **modes = SDL_ListModes(nullptr, SDL_FULLSCREEN | SDL_HWSURFACE);
 
     /* Check which modes are available */
-    if (modes == static_cast<SDL_Rect **>(0))
+    if (modes == static_cast<SDL_Rect **>(nullptr))
     {
         logger->log1("No modes available");
     }
@@ -310,7 +310,7 @@ Setup_Video::Setup_Video():
     mParticleDetail(3 - config.getIntValue("particleEmitterSkip")),
     mParticleDetailSlider(new Slider(0, 3)),
     mParticleDetailField(new Label),
-    mDialog(0)
+    mDialog(nullptr)
 {
     setName(_("Video"));
 
@@ -446,13 +446,13 @@ Setup_Video::Setup_Video():
 Setup_Video::~Setup_Video()
 {
     delete mModeListModel;
-    mModeListModel = 0;
+    mModeListModel = nullptr;
     delete mModeList;
-    mModeList = 0;
+    mModeList = nullptr;
     delete mOpenGLListModel;
-    mOpenGLListModel = 0;
+    mOpenGLListModel = nullptr;
     delete mDialog;
-    mDialog = 0;
+    mDialog = nullptr;
 }
 
 void Setup_Video::apply()
@@ -594,7 +594,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             if (mDialog)
             {
                 mode = mDialog->getText();
-                mDialog = 0;
+                mDialog = nullptr;
             }
             else
             {
@@ -632,7 +632,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     }
     if (id == "~videomode")
     {
-        mDialog = 0;
+        mDialog = nullptr;
     }
     else if (id == "guialpha")
     {

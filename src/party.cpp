@@ -198,7 +198,7 @@ void Party::removeFromMembers()
     {
         Being *b = actorSpriteManager->findBeing((*itr)->getID());
         if (b)
-            b->setParty(0);
+            b->setParty(nullptr);
         ++itr;
     }
 }

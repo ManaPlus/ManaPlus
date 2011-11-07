@@ -46,7 +46,7 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
     mBaseLvl(basicLvl),
     mSchoolLvl(schoolLvl),
     mCommandType(TEXT_COMMAND_MAGIC),
-    mImage(0)
+    mImage(nullptr)
 {
     loadImage();
 }
@@ -66,7 +66,7 @@ TextCommand::TextCommand(unsigned int id, std::string symbol,
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TEXT_COMMAND_TEXT),
-    mImage(0)
+    mImage(nullptr)
 {
     loadImage();
 }
@@ -83,7 +83,7 @@ TextCommand::TextCommand(unsigned int id) :
     mBaseLvl(0),
     mSchoolLvl(0),
     mCommandType(TEXT_COMMAND_TEXT),
-    mImage(0)
+    mImage(nullptr)
 {
     loadImage();
 }
@@ -94,7 +94,7 @@ TextCommand::~TextCommand()
     if (mImage)
     {
         mImage->decRef();
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 
@@ -103,7 +103,7 @@ void TextCommand::loadImage()
     if (mImage)
     {
         mImage->decRef();
-        mImage = 0;
+        mImage = nullptr;
     }
 
     if (getIcon().empty())

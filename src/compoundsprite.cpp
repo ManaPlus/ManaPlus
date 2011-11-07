@@ -45,12 +45,13 @@
 static const unsigned cache_max_size = 10;
 static const unsigned cache_clean_part = 3;
 
-CompoundSprite::CompoundSprite():
-        mCacheItem(0),
-        mImage(0),
-        mAlphaImage(0),
-        mOffsetX(0), mOffsetY(0),
-        mNeedsRedraw(false)
+CompoundSprite::CompoundSprite() :
+    mCacheItem(nullptr),
+    mImage(nullptr),
+    mAlphaImage(nullptr),
+    mOffsetX(0),
+    mOffsetY(0),
+    mNeedsRedraw(false)
 {
     mAlpha = 1.0f;
     mEnableAlphaFix = config.getBoolValue("enableAlphaFix");
@@ -67,9 +68,9 @@ CompoundSprite::~CompoundSprite()
     clear();
 
 //    delete mImage;
-    mImage = 0;
+    mImage = nullptr;
 //    delete mAlphaImage;
-    mAlphaImage = 0;
+    mAlphaImage = nullptr;
 }
 
 bool CompoundSprite::reset()
@@ -275,7 +276,7 @@ void CompoundSprite::removeSprite(int layer)
         return;
 
     delete at(layer);
-    at(layer) = 0;
+    at(layer) = nullptr;
     mNeedsRedraw = true;
 }
 
@@ -290,7 +291,7 @@ void CompoundSprite::clear()
     delete_all(imagesCache);
     imagesCache.clear();
     delete mCacheItem;
-    mCacheItem = 0;
+    mCacheItem = nullptr;
 }
 
 void CompoundSprite::ensureSize(size_t layerCount)
@@ -381,7 +382,7 @@ void CompoundSprite::redraw() const
     drawSpritesSDL(graphics, posX, posY);
 
     delete graphics;
-    graphics = 0;
+    graphics = nullptr;
 
     SDL_Surface *surfaceA = SDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
@@ -402,7 +403,7 @@ void CompoundSprite::redraw() const
     }
     else
     {
-        mAlphaImage = 0;
+        mAlphaImage = nullptr;
     }
 }
 
@@ -468,7 +469,7 @@ bool CompoundSprite::updateFromCache() const
     if (mCacheItem && mCacheItem->image)
     {
         imagesCache.push_front(mCacheItem);
-        mCacheItem = 0;
+        mCacheItem = nullptr;
         if (imagesCache.size() > cache_max_size)
         {
             for (unsigned f = 0; f < cache_clean_part; f ++)
@@ -496,8 +497,8 @@ bool CompoundSprite::updateFromCache() const
 
             for (; it1 != it1_end && it2 != it2_end;  ++ it1, ++ it2)
             {
-                void *ptr1 = 0;
-                void *ptr2 = 0;
+                void *ptr1 = nullptr;
+                void *ptr2 = nullptr;
                 if (*it1)
                     ptr1 = (*it1)->getHash();
                 if (*it2)
@@ -519,8 +520,8 @@ bool CompoundSprite::updateFromCache() const
             }
         }
     }
-    mImage = 0;
-    mAlphaImage = 0;
+    mImage = nullptr;
+    mAlphaImage = nullptr;
 //    miss++;
     return false;
 }
@@ -539,14 +540,14 @@ void CompoundSprite::initCurrentCacheItem() const
         if (*it)
             mCacheItem->data.push_back((*it)->getHash());
         else
-            mCacheItem->data.push_back(0);
+            mCacheItem->data.push_back(nullptr);
     }
 }
 
 CompoundItem::CompoundItem() :
 //    alpha(1.0f),
-    image(0),
-    alphaImage(0)
+    image(nullptr),
+    alphaImage(nullptr)
 {
 }
 

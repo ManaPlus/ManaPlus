@@ -29,7 +29,7 @@
 #include "debug.h"
 
 MumbleManager::MumbleManager() :
-    mLinkedMem(0)
+    mLinkedMem(nullptr)
 {
     mMapBase[0] = mMapBase[1] = mMapBase[2] = 0.;
     init();
@@ -45,7 +45,7 @@ MumbleManager::~MumbleManager()
 #else
         munmap(mLinkedMem, sizeof(struct LinkedMem));
 #endif
-        mLinkedMem = 0;
+        mLinkedMem = nullptr;
     }
 }
 

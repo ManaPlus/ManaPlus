@@ -175,5 +175,5 @@ std::map <int, ColorDB::ItemColor> *ColorDB::getColorsList(std::string name)
 
     if (it != mColorLists.end())
         return &it->second;
-    return 0;
+    return nullptr;
 }

@@ -120,7 +120,7 @@ GeneralHandler::GeneralHandler():
 GeneralHandler::~GeneralHandler()
 {
     delete mNetwork;
-    mNetwork = 0;
+    mNetwork = nullptr;
 }
 
 void GeneralHandler::handleMessage(Net::MessageIn &msg)
@@ -294,10 +294,10 @@ void GeneralHandler::processEvent(Mana::Channels channel,
             }
 
             delete Ea::guildTab;
-            Ea::guildTab = 0;
+            Ea::guildTab = nullptr;
 
             delete Ea::partyTab;
-            Ea::partyTab = 0;
+            Ea::partyTab = nullptr;
         }
     }
 }
