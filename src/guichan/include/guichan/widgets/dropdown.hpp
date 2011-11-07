@@ -57,6 +57,8 @@
 #include "guichan/widgets/listbox.hpp"
 #include "guichan/widgets/scrollarea.hpp"
 
+#include "localconsts.h"
+
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
 #else
