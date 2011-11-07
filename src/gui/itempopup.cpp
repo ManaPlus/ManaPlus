@@ -50,7 +50,7 @@
 
 ItemPopup::ItemPopup():
     Popup("ItemPopup", "itempopup.xml"),
-    mIcon(0),
+    mIcon(nullptr),
     mLastName(""),
     mLastColor(1)
 {
@@ -76,7 +76,7 @@ ItemPopup::ItemPopup():
     mItemWeight->setEditable(false);
     mItemWeight->setPosition(getPadding(), 3 * fontHeight + 4 * getPadding());
 
-    mIcon = new Icon(0);
+    mIcon = new Icon(nullptr);
 
     add(mItemName);
     add(mItemDesc);
@@ -95,7 +95,7 @@ ItemPopup::~ItemPopup()
         if (image)
         {
             image->decRef();
-            image = 0;
+            image = nullptr;
         }
     }
 }
@@ -164,7 +164,7 @@ void ItemPopup::setItem(const ItemInfo &item, unsigned char color,
     }
     else
     {
-        mIcon->setImage(0);
+        mIcon->setImage(nullptr);
     }
 
     mItemType = item.getType();

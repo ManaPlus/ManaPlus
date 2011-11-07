@@ -83,11 +83,11 @@ class NameFunctuator
 
 WhoIsOnline::WhoIsOnline():
     Window(_("Who Is Online - Updating"), false, 0, "whoisonline.xml"),
-    mThread(NULL),
+    mThread(nullptr),
     mDownloadStatus(UPDATE_LIST),
     mDownloadComplete(true),
     mDownloadedBytes(0),
-    mMemoryBuffer(NULL),
+    mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
     mAllowUpdate(true),
     mShowLevel(false)
@@ -137,7 +137,7 @@ WhoIsOnline::~WhoIsOnline()
     config.removeListener("updateOnlineList", this);
 
     if (mThread && SDL_GetThreadID(mThread))
-        SDL_WaitThread(mThread, NULL);
+        SDL_WaitThread(mThread, nullptr);
 
     free(mMemoryBuffer);
     mMemoryBuffer = 0;
@@ -206,7 +206,7 @@ void WhoIsOnline::loadList()
 
     mShowLevel = config.getBoolValue("showlevel");
 
-    while (line != NULL)
+    while (line)
     {
         std::string nick;
         lineStr = line;
@@ -295,7 +295,7 @@ void WhoIsOnline::loadList()
         {
             listStarted = true;
         }
-        line = strtok(NULL, "\n");
+        line = strtok(nullptr, "\n");
     }
 
     //Set window caption
@@ -448,12 +448,12 @@ void WhoIsOnline::download()
 {
     mDownloadComplete = true;
     if (mThread && SDL_GetThreadID(mThread))
-        SDL_WaitThread(mThread, NULL);
+        SDL_WaitThread(mThread, nullptr);
 
     mDownloadComplete = false;
     mThread = SDL_CreateThread(WhoIsOnline::downloadThread, this);
 
-    if (mThread == NULL)
+    if (mThread == nullptr)
         mDownloadStatus = UPDATE_ERROR;
 }
 
@@ -525,8 +525,8 @@ void WhoIsOnline::action(const gcn::ActionEvent &event)
             setCaption(_("Who Is Online - Update"));
             if (mThread && SDL_GetThreadID(mThread))
             {
-                SDL_WaitThread(mThread, NULL);
-                mThread = NULL;
+                SDL_WaitThread(mThread, nullptr);
+                mThread = nullptr;
             }
             mDownloadComplete = true;
         }

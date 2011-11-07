@@ -140,7 +140,7 @@ void WorldSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
     gcn::Key key = keyEvent.getKey();
 
     if (key.getValue() == Key::ESCAPE)
-        action(gcn::ActionEvent(NULL, mChangeLoginButton->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mChangeLoginButton->getActionEventId()));
     else if (key.getValue() == Key::ENTER)
-        action(gcn::ActionEvent(NULL, mChooseWorld->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mChooseWorld->getActionEventId()));
 }

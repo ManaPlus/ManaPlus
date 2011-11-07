@@ -43,7 +43,7 @@
 
 Logger::Logger():
     mLogToStandardOut(true),
-    mChatWindow(NULL),
+    mChatWindow(nullptr),
     mDebugLog(false)
 {
 }
@@ -80,7 +80,7 @@ void Logger::dlog(std::string str)
 
     // Get the current system time
     timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, nullptr);
 
     // Print the log entry
     std::stringstream timeStr;
@@ -112,7 +112,7 @@ void Logger::log1(const char *buf)
 {
     // Get the current system time
     timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, nullptr);
 
     // Print the log entry
     std::stringstream timeStr;
@@ -158,7 +158,7 @@ void Logger::log(const char *log_text, ...)
 
     // Get the current system time
     timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, nullptr);
 
     // Print the log entry
     std::stringstream timeStr;
@@ -193,17 +193,17 @@ void Logger::error(const std::string &error_text)
 {
     log("Error: %s", error_text.c_str());
 #ifdef WIN32
-    MessageBox(NULL, error_text.c_str(), "Error", MB_ICONERROR | MB_OK);
+    MessageBox(nullptr, error_text.c_str(), "Error", MB_ICONERROR | MB_OK);
 #elif defined __APPLE__
 //    Str255 msg;
 //    CFStringRef error;
-//    error = CFStringCreateWithCString(NULL,
+//    error = CFStringCreateWithCString(nullptr,
 //                                      error_text.c_str(),
 //                                      kCFStringEncodingMacRoman);
 //    CFStringGetPascalString(error, msg, 255, kCFStringEncodingMacRoman);
 //    StandardAlert(kAlertStopAlert,
 //                  (const unsigned char*)"\pError",
-//                  (ConstStr255Param) msg, NULL, NULL);
+//                  (ConstStr255Param) msg, nullptr, nullptr);
 #elif defined __linux__ || __linux
     std::cerr << "Error: " << error_text << std::endl;
     std::string msg = "xmessage \"" + error_text + "\"";

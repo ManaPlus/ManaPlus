@@ -76,7 +76,7 @@ class Particle : public Actor
         /**
          * Constructor.
          *
-         * @param map the map this particle will add itself to, may be NULL
+         * @param map the map this particle will add itself to, may be nullptr
          */
         Particle(Map *map);
 

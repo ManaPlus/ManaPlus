@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/textfield.hpp>
 
+#include "localconsts.h"
+
 class ImageRect;
 class TextField;
 
@@ -40,7 +42,7 @@ class TextField : public gcn::TextField
          * Constructor, initializes the text field with the given string.
          */
         TextField(const std::string &text = "", bool loseFocusOnTab = true,
-                  gcn::ActionListener* listener = NULL,
+                  gcn::ActionListener* listener = nullptr,
                   std::string eventId = "", bool sendAlwaysEvents = false);
 
         ~TextField();

@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "localconsts.h"
+
 #ifdef ENABLE_MEM_DEBUG
 //define _DEBUG_NEW_EMULATE_MALLOC 1
 #include "debug/debug_new.h"

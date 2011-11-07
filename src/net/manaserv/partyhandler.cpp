@@ -96,7 +96,7 @@ void PartyHandler::handleMessage(Net::MessageIn &msg)
             if (msg.readInt8() == ERRMSG_OK)
             {
                 mParty->clearMembers();
-                player_node->setParty(NULL);
+                player_node->setParty(nullptr);
             }
         } break;
 

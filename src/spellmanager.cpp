@@ -54,7 +54,7 @@ SpellManager::~SpellManager()
 TextCommand* SpellManager::getSpell(int spellId)
 {
     if (spellId < 0 || static_cast<unsigned int>(spellId) >= mSpells.size())
-        return NULL;
+        return nullptr;
 
     return mSpells[spellId];
 }
@@ -353,7 +353,7 @@ std::string SpellManager::autoComplete(std::string partName)
 {
     std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
     std::string newName = "";
-    TextCommand *newCommand = NULL;
+    TextCommand *newCommand = nullptr;
 
     while (i != mSpellsVector.end())
     {
@@ -368,7 +368,7 @@ std::string SpellManager::autoComplete(std::string partName)
                 if (newName != "")
                 {
                     newName = findSameSubstring(line, newName);
-                    newCommand = NULL;
+                    newCommand = nullptr;
                 }
                 else
                 {

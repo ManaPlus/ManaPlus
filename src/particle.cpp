@@ -73,7 +73,7 @@ Particle::Particle(Map *map):
     mRandomness(0),
     mBounce(0.0f),
     mFollow(false),
-    mTarget(NULL),
+    mTarget(nullptr),
     mAcceleration(0.0f),
     mInvDieDistance(-1.0f),
     mMomentum(1.0f)
@@ -283,7 +283,7 @@ Particle *Particle::createChild()
 Particle *Particle::addEffect(const std::string &particleEffectFile,
                               int pixelX, int pixelY, int rotation)
 {
-    Particle *newParticle = NULL;
+    Particle *newParticle = nullptr;
 
     std::string::size_type pos = particleEffectFile.find('|');
     std::string dyePalettes;
@@ -296,7 +296,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "effect"))
     {
         logger->log("Error loading particle: %s", particleEffectFile.c_str());
-        return NULL;
+        return nullptr;
     }
 
     ResourceManager *resman = ResourceManager::getInstance();

@@ -182,7 +182,7 @@ class PlayerRelationsManager
         /**
          * Return the current player ignore strategy.
          *
-         * \return A player ignore strategy, or NULL
+         * \return A player ignore strategy, or nullptr
          */
         PlayerIgnoreStrategy *getPlayerIgnoreStrategy() const
         { return mIgnoreStrategy; }

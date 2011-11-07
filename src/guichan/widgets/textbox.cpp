@@ -270,7 +270,7 @@ namespace gcn
         {
             Widget* par = getParent();
 
-            if (par != NULL)
+            if (par)
             {
                 int rowsPerPage = par->getChildrenArea().height
                     / getFont()->getHeight();
@@ -284,7 +284,7 @@ namespace gcn
         {
             Widget* par = getParent();
 
-            if (par != NULL)
+            if (par)
             {
                 int rowsPerPage = par->getChildrenArea().height
                     / getFont()->getHeight();

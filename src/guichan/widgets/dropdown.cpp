@@ -68,8 +68,8 @@ namespace gcn
 
         setInternalFocusHandler(&mInternalFocusHandler);
 
-        mInternalScrollArea = (scrollArea == NULL);
-        mInternalListBox = (listBox == NULL);
+        mInternalScrollArea = (!scrollArea);
+        mInternalListBox = (!listBox);
 
         if (mInternalScrollArea)
             mScrollArea = new ScrollArea();
@@ -110,16 +110,16 @@ namespace gcn
         if (mInternalScrollArea)
         {
             delete mScrollArea;
-            mScrollArea = 0;
+            mScrollArea = nullptr;
         }
 
         if (mInternalListBox)
         {
             delete mListBox;
-            mListBox = 0;
+            mListBox = nullptr;
         }
 
-        setInternalFocusHandler(NULL);
+        setInternalFocusHandler(nullptr);
     }
 
     int DropDown::getSelected() const
@@ -223,10 +223,10 @@ namespace gcn
 
     void DropDown::adjustHeight()
     {
-        if (mScrollArea == NULL)
+        if (!mScrollArea)
             throw GCN_EXCEPTION("Scroll area has been deleted.");
 
-        if (mListBox == NULL)
+        if (!mListBox)
             throw GCN_EXCEPTION("List box has been deleted.");
 
         int listBoxHeight = mListBox->getHeight();
@@ -296,7 +296,7 @@ namespace gcn
     void DropDown::death(const Event& event)
     {
         if (event.getSource() == mScrollArea)
-            mScrollArea = NULL;
+            mScrollArea = nullptr;
 
         BasicContainer::death(event);
     }

@@ -47,7 +47,7 @@
 #include "debug.h"
 
 WrongDataNoticeListener::WrongDataNoticeListener():
-    mTarget(0)
+    mTarget(nullptr)
 {
 }
 
@@ -63,10 +63,10 @@ void WrongDataNoticeListener::action(const gcn::ActionEvent &event)
 }
 
 RegisterDialog::RegisterDialog(LoginData *data):
-    Window(_("Register"), false, 0, "register.xml"),
-    mEmailField(0),
-    mMaleButton(0),
-    mFemaleButton(0),
+    Window(_("Register"), false, nullptr, "register.xml"),
+    mEmailField(nullptr),
+    mMaleButton(nullptr),
+    mFemaleButton(nullptr),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
@@ -147,7 +147,7 @@ RegisterDialog::RegisterDialog(LoginData *data):
 RegisterDialog::~RegisterDialog()
 {
     delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = 0;
+    mWrongDataNoticeListener = nullptr;
 }
 
 void RegisterDialog::action(const gcn::ActionEvent &event)

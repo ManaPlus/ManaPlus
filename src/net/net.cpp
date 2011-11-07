@@ -48,21 +48,21 @@
 
 #include "debug.h"
 
-Net::AdminHandler *adminHandler = NULL;
-Net::CharHandler *charHandler = NULL;
-Net::ChatHandler *chatHandler = NULL;
-Net::GeneralHandler *generalHandler = NULL;
-Net::InventoryHandler *inventoryHandler = NULL;
-Net::LoginHandler *loginHandler = NULL;
-Net::GameHandler *gameHandler = NULL;
-Net::GuildHandler *guildHandler = NULL;
-Net::NpcHandler *npcHandler = NULL;
-Net::PartyHandler *partyHandler = NULL;
-Net::PlayerHandler *playerHandler = NULL;
-Net::SpecialHandler *specialHandler = NULL;
-Net::TradeHandler *tradeHandler = NULL;
-Net::BeingHandler *beingHandler = NULL;
-Net::BuySellHandler *buySellHandler = NULL;
+Net::AdminHandler *adminHandler = nullptr;
+Net::CharHandler *charHandler = nullptr;
+Net::ChatHandler *chatHandler = nullptr;
+Net::GeneralHandler *generalHandler = nullptr;
+Net::InventoryHandler *inventoryHandler = nullptr;
+Net::LoginHandler *loginHandler = nullptr;
+Net::GameHandler *gameHandler = nullptr;
+Net::GuildHandler *guildHandler = nullptr;
+Net::NpcHandler *npcHandler = nullptr;
+Net::PartyHandler *partyHandler = nullptr;
+Net::PlayerHandler *playerHandler = nullptr;
+Net::SpecialHandler *specialHandler = nullptr;
+Net::TradeHandler *tradeHandler = nullptr;
+Net::BeingHandler *beingHandler = nullptr;
+Net::BuySellHandler *buySellHandler = nullptr;
 
 Net::AdminHandler *Net::getAdminHandler()
 {
@@ -151,13 +151,13 @@ void connectToServer(const ServerInfo &server)
         // that
     }
 
-    if (networkType == server.type && getGeneralHandler() != NULL)
+    if (networkType == server.type && getGeneralHandler())
     {
         getGeneralHandler()->reload();
     }
     else
     {
-        if (networkType != ServerInfo::UNKNOWN && getGeneralHandler() != NULL)
+        if (networkType != ServerInfo::UNKNOWN && getGeneralHandler())
             getGeneralHandler()->unload();
 
         switch (server.type)

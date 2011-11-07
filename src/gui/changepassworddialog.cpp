@@ -47,7 +47,7 @@
 #include "debug.h"
 
 ChangePasswordDialog::ChangePasswordDialog(LoginData *data):
-    Window(_("Change Password"), true, 0, "changepassword.xml"),
+    Window(_("Change Password"), true, nullptr, "changepassword.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
@@ -82,7 +82,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData *data):
 ChangePasswordDialog::~ChangePasswordDialog()
 {
     delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = 0;
+    mWrongDataNoticeListener = nullptr;
 }
 
 void ChangePasswordDialog::action(const gcn::ActionEvent &event)

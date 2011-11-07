@@ -28,6 +28,7 @@
 #include "client.h"
 #include "game.h"
 #include "listener.h"
+#include "localconsts.h"
 
 #include "gui/userpalette.h"
 
@@ -136,10 +137,10 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         int getAttackRange2();
 
-        void attack(Being *target = NULL, bool keep = false,
+        void attack(Being *target = nullptr, bool keep = false,
                     bool dontChangeEquipment = false);
 
-        void attack2(Being *target = NULL, bool keep = false,
+        void attack2(Being *target = nullptr, bool keep = false,
                      bool dontChangeEquipment = false);
 
         void setGMLevel(int level);
@@ -422,7 +423,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         { return mPickUpTarget; }
 
         void unSetPickUpTarget()
-        { mPickUpTarget = 0; }
+        { mPickUpTarget = nullptr; }
 
         /**
          * Stop following a player.

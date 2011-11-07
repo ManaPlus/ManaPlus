@@ -86,7 +86,7 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
                 }
                 else
                 {
-                    skin.grid[a] = 0;
+                    skin.grid[a] = nullptr;
                 }
                 a++;
             }

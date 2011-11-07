@@ -223,7 +223,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mSpriteDirection(DIRECTION_DOWN),
     mDispName(0),
     mShowName(false),
-    mEquippedWeapon(NULL),
+    mEquippedWeapon(nullptr),
     mText(0),
     mLevel(0),
     mGender(GENDER_UNSPECIFIED),
@@ -1678,13 +1678,13 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
         removeSprite(slot);
 
         if (isWeapon)
-            mEquippedWeapon = NULL;
+            mEquippedWeapon = nullptr;
     }
     else
     {
         const ItemInfo &info = ItemDB::get(id);
         std::string filename = info.getSprite(mGender);
-        AnimatedSprite *equipmentSprite = NULL;
+        AnimatedSprite *equipmentSprite = nullptr;
 
         if (!filename.empty())
         {

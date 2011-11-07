@@ -45,7 +45,7 @@
 #include "debug.h"
 
 ChangeEmailDialog::ChangeEmailDialog(LoginData *data):
-    Window(_("Change Email Address"), true, 0, "changeemail.xml"),
+    Window(_("Change Email Address"), true, nullptr, "changeemail.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
@@ -102,7 +102,7 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData *data):
 ChangeEmailDialog::~ChangeEmailDialog()
 {
     delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = 0;
+    mWrongDataNoticeListener = nullptr;
 }
 
 void ChangeEmailDialog::action(const gcn::ActionEvent &event)

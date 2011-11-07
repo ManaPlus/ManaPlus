@@ -33,7 +33,7 @@
 float ShortcutContainer::mAlpha = 1.0;
 
 ShortcutContainer::ShortcutContainer():
-    mBackgroundImg(0),
+    mBackgroundImg(nullptr),
     mMaxItems(0),
     mBoxWidth(1),
     mBoxHeight(1),

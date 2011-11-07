@@ -117,54 +117,54 @@
 
 #include "debug.h"
 
-Joystick *joystick = NULL;
+Joystick *joystick = nullptr;
 
-OkDialog *weightNotice = NULL;
+OkDialog *weightNotice = nullptr;
 int weightNoticeTime = 0;
-OkDialog *deathNotice = NULL;
-QuitDialog *quitDialog = NULL;
-OkDialog *disconnectedDialog = NULL;
+OkDialog *deathNotice = nullptr;
+QuitDialog *quitDialog = nullptr;
+OkDialog *disconnectedDialog = nullptr;
 
-ChatWindow *chatWindow = NULL;
-StatusWindow *statusWindow = NULL;
-MiniStatusWindow *miniStatusWindow = NULL;
-InventoryWindow *inventoryWindow = NULL;
-ShopWindow *shopWindow = NULL;
-SkillDialog *skillDialog = NULL;
-Minimap *minimap = NULL;
-EquipmentWindow *equipmentWindow = NULL;
-EquipmentWindow *beingEquipmentWindow = NULL;
-TradeWindow *tradeWindow = NULL;
-HelpWindow *helpWindow = NULL;
-DebugWindow *debugWindow = NULL;
-ShortcutWindow *itemShortcutWindow = NULL;
-ShortcutWindow *emoteShortcutWindow = NULL;
-OutfitWindow *outfitWindow = NULL;
-SpecialsWindow *specialsWindow = NULL;
-ShortcutWindow *dropShortcutWindow = NULL;
-ShortcutWindow *spellShortcutWindow = NULL;
-WhoIsOnline *whoIsOnline = NULL;
-DidYouKnowWindow *didYouKnowWindow = NULL;
-KillStats *killStats = NULL;
-BotCheckerWindow *botCheckerWindow = NULL;
-SocialWindow *socialWindow = NULL;
-WindowMenu *windowMenu = NULL;
+ChatWindow *chatWindow = nullptr;
+StatusWindow *statusWindow = nullptr;
+MiniStatusWindow *miniStatusWindow = nullptr;
+InventoryWindow *inventoryWindow = nullptr;
+ShopWindow *shopWindow = nullptr;
+SkillDialog *skillDialog = nullptr;
+Minimap *minimap = nullptr;
+EquipmentWindow *equipmentWindow = nullptr;
+EquipmentWindow *beingEquipmentWindow = nullptr;
+TradeWindow *tradeWindow = nullptr;
+HelpWindow *helpWindow = nullptr;
+DebugWindow *debugWindow = nullptr;
+ShortcutWindow *itemShortcutWindow = nullptr;
+ShortcutWindow *emoteShortcutWindow = nullptr;
+OutfitWindow *outfitWindow = nullptr;
+SpecialsWindow *specialsWindow = nullptr;
+ShortcutWindow *dropShortcutWindow = nullptr;
+ShortcutWindow *spellShortcutWindow = nullptr;
+WhoIsOnline *whoIsOnline = nullptr;
+DidYouKnowWindow *didYouKnowWindow = nullptr;
+KillStats *killStats = nullptr;
+BotCheckerWindow *botCheckerWindow = nullptr;
+SocialWindow *socialWindow = nullptr;
+WindowMenu *windowMenu = nullptr;
 
-ActorSpriteManager *actorSpriteManager = NULL;
-ChannelManager *channelManager = NULL;
-CommandHandler *commandHandler = NULL;
-MumbleManager *mumbleManager = NULL;
-Particle *particleEngine = NULL;
-EffectManager *effectManager = NULL;
-SpellManager *spellManager = NULL;
-Viewport *viewport = NULL;                    /**< Viewport on the map. */
-GuildManager *guildManager = NULL;
-AuctionManager *auctionManager = NULL;
+ActorSpriteManager *actorSpriteManager = nullptr;
+ChannelManager *channelManager = nullptr;
+CommandHandler *commandHandler = nullptr;
+MumbleManager *mumbleManager = nullptr;
+Particle *particleEngine = nullptr;
+EffectManager *effectManager = nullptr;
+SpellManager *spellManager = nullptr;
+Viewport *viewport = nullptr;                    /**< Viewport on the map. */
+GuildManager *guildManager = nullptr;
+AuctionManager *auctionManager = nullptr;
 
-ChatTab *localChatTab = NULL;
-ChatTab *debugChatTab = NULL;
-TradeTab *tradeChatTab = NULL;
-BattleTab *battleChatTab = NULL;
+ChatTab *localChatTab = nullptr;
+ChatTab *debugChatTab = nullptr;
+TradeTab *tradeChatTab = nullptr;
+BattleTab *battleChatTab = nullptr;
 
 const unsigned adjustDelay = 10;
 
@@ -182,7 +182,7 @@ static void initEngines()
     AuctionManager::init();
     GuildManager::init();
 
-    particleEngine = new Particle(NULL);
+    particleEngine = new Particle(nullptr);
     particleEngine->setupEngine();
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_ENGINESINITALIZED));
@@ -297,7 +297,7 @@ static void destroyGuiWindows()
 {
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADING));
 
-    logger->setChatWindow(NULL);
+    logger->setChatWindow(nullptr);
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
@@ -365,7 +365,7 @@ Game::Game():
     assert(!mInstance);
     mInstance = this;
 
-    disconnectedDialog = NULL;
+    disconnectedDialog = nullptr;
 
     mAdjustPerfomance = config.getBoolValue("adjustPerfomance");
 
@@ -729,7 +729,7 @@ void Game::handleInput()
         // Keyboard events (for discontinuous keys)
         if (event.type == SDL_KEYDOWN)
         {
-            gcn::Window *requestedWindow = NULL;
+            gcn::Window *requestedWindow = nullptr;
 
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
@@ -846,9 +846,9 @@ void Game::handleInput()
                         helpWindow->setVisible(false);
                     // Close the config window, cancelling changes if opened
                     else if (setupWindow->isVisible())
-                        setupWindow->action(gcn::ActionEvent(NULL, "cancel"));
+                        setupWindow->action(gcn::ActionEvent(nullptr, "cancel"));
                     else if (dialog)
-                        dialog->action(gcn::ActionEvent(NULL, "ok"));
+                        dialog->action(gcn::ActionEvent(nullptr, "ok"));
                 }
                 if (chatWindow && keyboard.isKeyActive(
                     keyboard.KEY_TOGGLE_CHAT))

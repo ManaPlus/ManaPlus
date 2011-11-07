@@ -25,6 +25,8 @@
 
 #define EQUIPMENT_SIZE 13
 
+#include "localconsts.h"
+
 class Item;
 
 class Equipment
@@ -33,14 +35,14 @@ class Equipment
         /**
          * Constructor.
          */
-        Equipment(): mBackend(0)
+        Equipment(): mBackend(nullptr)
         { }
 
         /**
          * Destructor.
          */
         ~Equipment()
-        { mBackend = 0; }
+        { mBackend = nullptr; }
 
         enum Slot
         {
@@ -72,7 +74,7 @@ class Equipment
          * Get equipment at the given slot.
          */
         Item *getEquipment(int index) const
-        { return mBackend ? mBackend->getEquipment(index) : 0; }
+        { return mBackend ? mBackend->getEquipment(index) : nullptr; }
 
         /**
          * Clears equipment.

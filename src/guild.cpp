@@ -129,7 +129,7 @@ GuildMember *Guild::getMember(int id) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 GuildMember *Guild::getMember(int accountId, int charId) const
@@ -143,7 +143,7 @@ GuildMember *Guild::getMember(int accountId, int charId) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 GuildMember *Guild::getMember(const std::string &name) const
@@ -157,7 +157,7 @@ GuildMember *Guild::getMember(const std::string &name) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void Guild::removeMember(GuildMember *member)

@@ -65,7 +65,7 @@ Setup_Colors::Setup_Colors() :
     mPreview->setOpaque(false);
 
     // don't do anything with links
-    mPreview->setLinkHandler(NULL);
+    mPreview->setLinkHandler(nullptr);
 
     mPreviewBox = new ScrollArea(mPreview);
     mPreviewBox->setHeight(20);
@@ -188,12 +188,12 @@ Setup_Colors::~Setup_Colors()
     if (mPreviewBox && mPreviewBox->getContent() == mPreview)
     {
         delete mTextPreview;
-        mTextPreview = 0;
+        mTextPreview = nullptr;
     }
     else
     {
         delete mPreview;
-        mPreview = 0;
+        mPreview = nullptr;
     }
 }
 
@@ -251,7 +251,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     mPreviewBox->setContent(mTextPreview);
     mTextPreview->setFont(boldFont);
     mTextPreview->setTextColor(col);
-    mTextPreview->setTextBGColor(NULL);
+    mTextPreview->setTextBGColor(nullptr);
     mTextPreview->setOpaque(false);
     mTextPreview->setShadow(true);
     mTextPreview->setOutline(true);

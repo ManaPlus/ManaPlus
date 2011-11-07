@@ -130,7 +130,7 @@ bool modeSorter(std::string mode1, std::string mode2)
 ModeListModel::ModeListModel()
 {
     /* Get available fullscreen/hardware modes */
-    SDL_Rect **modes = SDL_ListModes(NULL, SDL_FULLSCREEN | SDL_HWSURFACE);
+    SDL_Rect **modes = SDL_ListModes(nullptr, SDL_FULLSCREEN | SDL_HWSURFACE);
 
     /* Check which modes are available */
     if (modes == static_cast<SDL_Rect **>(0))

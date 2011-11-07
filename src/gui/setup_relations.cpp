@@ -98,7 +98,7 @@ class PlayerTableModel : public TableModel
 {
 public:
     PlayerTableModel() :
-        mPlayers(NULL),
+        mPlayers(nullptr),
         mListModel(new PlayerRelationListModel)
     {
         playerRelationsUpdated();

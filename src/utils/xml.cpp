@@ -38,7 +38,7 @@ namespace XML
         mDoc(0)
     {
         int size;
-        char *data = NULL;
+        char *data = nullptr;
         if (useResman)
         {
             ResourceManager *resman = ResourceManager::getInstance();
@@ -162,7 +162,7 @@ namespace XML
                 return child;
         }
 
-        return NULL;
+        return nullptr;
     }
 
 } // namespace XML

@@ -41,7 +41,7 @@ std::string getRealPath(const std::string &str)
     char *realPath = (char*)calloc(PATH_MAX, sizeof(char));
     realpath(str.c_str(), realPath);
 #else
-    char *realPath = realpath(str.c_str(), NULL);
+    char *realPath = realpath(str.c_str(), nullptr);
 #endif
     path = realPath;
     free(realPath);

@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/dropdown.hpp>
 
+#include "localconsts.h"
+
 class Image;
 class ImageRect;
 
@@ -47,7 +49,7 @@ class DropDown : public gcn::DropDown
          * @see ListModel, ScrollArea, ListBox.
          */
         DropDown(gcn::ListModel *listModel = 0,
-                 gcn::ActionListener* listener = NULL,
+                 gcn::ActionListener* listener = nullptr,
                  std::string eventId = "");
 
         ~DropDown();

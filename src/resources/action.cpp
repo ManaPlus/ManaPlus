@@ -61,7 +61,7 @@ Animation *Action::getAnimation(int direction) const
             i = mAnimations.begin();
     }
 
-    return (i == mAnimations.end()) ? NULL : i->second;
+    return (i == mAnimations.end()) ? nullptr : i->second;
 }
 
 void Action::setAnimation(int direction, Animation *animation)

@@ -111,7 +111,7 @@ ScrollArea::~ScrollArea()
             buttons[RIGHT][1]->decRef();
     }
     delete mVertexes;
-    mVertexes = 0;
+    mVertexes = nullptr;
 }
 
 void ScrollArea::init()
@@ -147,7 +147,7 @@ void ScrollArea::init()
                 }
                 else
                 {
-                    background.grid[a] = 0;
+                    background.grid[a] = nullptr;
                 }
                 a++;
             }
@@ -179,7 +179,7 @@ void ScrollArea::init()
                 }
                 else
                 {
-                    vMarker.grid[a] = 0;
+                    vMarker.grid[a] = nullptr;
                 }
                 if (vscrollHi)
                 {
@@ -192,7 +192,7 @@ void ScrollArea::init()
                 }
                 else
                 {
-                    vMarkerHi.grid[a] = 0;
+                    vMarkerHi.grid[a] = nullptr;
                 }
                 a++;
             }

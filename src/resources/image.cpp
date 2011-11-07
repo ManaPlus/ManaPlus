@@ -128,7 +128,7 @@ Resource *Image::load(void *buffer, unsigned bufferSize)
     if (!tmpImage)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
-        return NULL;
+        return nullptr;
     }
 
     Image *image = load(tmpImage);
@@ -145,11 +145,11 @@ Resource *Image::load(void *buffer, unsigned bufferSize, Dye const &dye)
     if (!tmpImage)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
-        return NULL;
+        return nullptr;
     }
 
     SDL_PixelFormat rgba;
-    rgba.palette = NULL;
+    rgba.palette = nullptr;
     rgba.BitsPerPixel = 32;
     rgba.BytesPerPixel = 4;
     rgba.Rmask = 0xFF000000; rgba.Rloss = 0; rgba.Rshift = 24;
@@ -195,7 +195,7 @@ Image *Image::load(SDL_Surface *tmpImage)
 Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
 {
     if (!tmpImage)
-        return NULL;
+        return nullptr;
 
     Image *img;
 #ifdef USE_OPENGL
@@ -293,10 +293,10 @@ void Image::unload()
         SDLCleanCache();
         // Free the image surface.
         SDL_FreeSurface(mSDLSurface);
-        mSDLSurface = NULL;
+        mSDLSurface = nullptr;
 
         delete[] mAlphaChannel;
-        mAlphaChannel = NULL;
+        mAlphaChannel = nullptr;
     }
 
 #ifdef USE_OPENGL
@@ -451,7 +451,7 @@ void Image::setAlpha(float alpha)
 Image* Image::SDLmerge(Image *image, int x, int y)
 {
     if (!mSDLSurface || !image || !image->mSDLSurface)
-        return NULL;
+        return nullptr;
 
     SDL_Surface* surface = new SDL_Surface(*(image->mSDLSurface));
 
@@ -543,14 +543,14 @@ Image* Image::SDLgetScaledImage(int width, int height)
 {
     // No scaling on incorrect new values.
     if (width == 0 || height == 0)
-        return NULL;
+        return nullptr;
 
     // No scaling when there is ... no different given size ...
     if (width == getWidth() && height == getHeight())
-        return NULL;
+        return nullptr;
 
-    Image* scaledImage = NULL;
-    SDL_Surface* scaledSurface = NULL;
+    Image* scaledImage = nullptr;
+    SDL_Surface* scaledSurface = nullptr;
 
     if (mSDLSurface)
     {
@@ -573,7 +573,7 @@ Image* Image::SDLgetScaledImage(int width, int height)
 SDL_Surface* Image::convertTo32Bit(SDL_Surface* tmpImage)
 {
     if (!tmpImage)
-        return NULL;
+        return nullptr;
     SDL_PixelFormat RGBAFormat;
     RGBAFormat.palette = 0;
     RGBAFormat.colorkey = 0;
@@ -613,7 +613,7 @@ SDL_Surface* Image::convertTo32Bit(SDL_Surface* tmpImage)
 SDL_Surface* Image::SDLDuplicateSurface(SDL_Surface* tmpImage)
 {
     if (!tmpImage || !tmpImage->format)
-        return NULL;
+        return nullptr;
 
     return SDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
 }
@@ -621,7 +621,7 @@ SDL_Surface* Image::SDLDuplicateSurface(SDL_Surface* tmpImage)
 Image *Image::_SDLload(SDL_Surface *tmpImage)
 {
     if (!tmpImage)
-        return NULL;
+        return nullptr;
 
     bool hasAlpha = false;
     bool converted = false;
@@ -636,14 +636,14 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
         if (!tmpImage)
         {
             delete[] alphaChannel;
-            return NULL;
+            return nullptr;
         }
         converted = true;
     }
 
     const int sz = tmpImage->w * tmpImage->h;
     // Figure out whether the image uses its alpha layer
-    if (tmpImage->format->palette == NULL)
+    if (!tmpImage->format->palette)
     {
         const SDL_PixelFormat * const fmt = tmpImage->format;
         if (fmt->Amask)
@@ -713,7 +713,7 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
 Image *Image::_GLload(SDL_Surface *tmpImage)
 {
     if (!tmpImage)
-        return NULL;
+        return nullptr;
 
     // Flush current error flag.
     glGetError();
@@ -753,10 +753,10 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
     if (!tmpImage)
     {
         logger->log("Error, image convert failed: out of memory");
-        return NULL;
+        return nullptr;
     }
 
-    SDL_BlitSurface(oldImage, NULL, tmpImage, NULL);
+    SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
 
     GLuint texture;
     glGenTextures(1, &texture);
@@ -811,7 +811,7 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
                 break;
         }
         logger->log("Error: Image GL import failed: %s", errmsg.c_str());
-        return NULL;
+        return nullptr;
     }
 
     return new Image(texture, width, height, realWidth, realHeight);
@@ -939,5 +939,5 @@ Image *SubImage::getSubImage(int x, int y, int w, int h)
     if (mParent)
         return mParent->getSubImage(mBounds.x + x, mBounds.y + y, w, h);
     else
-        return NULL;
+        return nullptr;
 }

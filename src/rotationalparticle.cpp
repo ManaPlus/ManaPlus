@@ -29,7 +29,7 @@
 #define PI 3.14159265
 
 RotationalParticle::RotationalParticle(Map *map, Animation *animation):
-    ImageParticle(map, NULL),
+    ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }

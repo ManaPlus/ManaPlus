@@ -130,7 +130,7 @@ namespace gcn
         if (mouseEvent.getSource() != this)
             return;
 
-        if (getParent() != NULL)
+        if (getParent())
             getParent()->moveToTop(this);
 
         mDragOffsetX = mouseEvent.getX();

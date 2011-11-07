@@ -53,12 +53,12 @@ Download::Download(void *ptr, const std::string &url,
     mPtr(ptr),
     mUrl(url),
     mFileName(""),
-    mWriteFunction(NULL),
+    mWriteFunction(nullptr),
     mAdler(0),
     mUpdateFunction(updateFunction),
-    mThread(NULL),
-    mCurl(NULL),
-    mHeaders(NULL),
+    mThread(nullptr),
+    mCurl(nullptr),
+    mHeaders(nullptr),
     mIgnoreError(ignoreError)
 {
     mError = static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1));
@@ -158,9 +158,9 @@ void Download::cancel()
 
     mOptions.cancel = true;
     if (mThread && SDL_GetThreadID(mThread))
-        SDL_WaitThread(mThread, NULL);
+        SDL_WaitThread(mThread, nullptr);
 
-    mThread = NULL;
+    mThread = nullptr;
 }
 
 char *Download::getError()
@@ -204,14 +204,14 @@ int Download::downloadThread(void *ptr)
 
     while (attempts < 3 && !complete && !d->mOptions.cancel)
     {
-        FILE *file = NULL;
+        FILE *file = nullptr;
 
         d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_STARTING, 0, 0);
 
         if (d->mOptions.cancel)
         {
             //need terminate thread?
-            d->mThread = NULL;
+            d->mThread = nullptr;
             return 0;
         }
 
@@ -335,7 +335,7 @@ int Download::downloadThread(void *ptr)
         if (d->mOptions.cancel)
         {
             //need ternibate thread?
-            d->mThread = NULL;
+            d->mThread = nullptr;
             return 0;
         }
         attempts++;
@@ -354,7 +354,7 @@ int Download::downloadThread(void *ptr)
         d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_COMPLETE, 0, 0);
     }
 
-    d->mThread = NULL;
+    d->mThread = nullptr;
     return 0;
 }
 

@@ -147,8 +147,8 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mDownloadComplete(true),
     mUserCancel(false),
     mDownloadedBytes(0),
-    mMemoryBuffer(NULL),
-    mDownload(NULL),
+    mMemoryBuffer(nullptr),
+    mDownload(nullptr),
     mUpdateIndex(0),
     mUpdateIndexOffset(0),
     mLoadUpdates(applyUpdates),
@@ -256,7 +256,7 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
 
     if (key.getValue() == Key::ESCAPE)
     {
-        action(gcn::ActionEvent(NULL, mCancelButton->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
         Client::setState(STATE_WORLD_SELECT);
     }
     else if (key.getValue() == Key::ENTER)
@@ -264,11 +264,11 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
         if (mDownloadStatus == UPDATE_COMPLETE ||
             mDownloadStatus == UPDATE_ERROR)
         {
-            action(gcn::ActionEvent(NULL, mPlayButton->getActionEventId()));
+            action(gcn::ActionEvent(nullptr, mPlayButton->getActionEventId()));
         }
         else
         {
-            action(gcn::ActionEvent(NULL, mCancelButton->getActionEventId()));
+            action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
         }
     }
 }
@@ -294,12 +294,12 @@ void UpdaterWindow::loadNews()
     while (line)
     {
         mBrowserBox->addRow(line);
-        line = strtok(NULL, "\n");
+        line = strtok(nullptr, "\n");
     }
 
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
-    mMemoryBuffer = NULL;
+    mMemoryBuffer = nullptr;
     mDownloadedBytes = 0;
 
     mScrollArea->setVerticalScrollAmount(0);
@@ -340,7 +340,7 @@ void UpdaterWindow::loadPatch()
 
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
-    mMemoryBuffer = NULL;
+    mMemoryBuffer = nullptr;
     mDownloadedBytes = 0;
 
     mScrollArea->setVerticalScrollAmount(0);
@@ -365,7 +365,7 @@ int UpdaterWindow::updateProgress(void *ptr, DownloadStatus status,
             uw->mDownloadStatus = UPDATE_COMPLETE;
             uw->mDownloadComplete = true;
             free(uw->mMemoryBuffer);
-            uw->mMemoryBuffer = NULL;
+            uw->mMemoryBuffer = nullptr;
         }
         else
         {

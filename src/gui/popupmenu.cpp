@@ -85,15 +85,15 @@ std::string tradePartnerName("");
 PopupMenu::PopupMenu():
     Popup("PopupMenu", "popupmenu.xml"),
     mBeingId(0),
-    mFloorItem(0),
-    mItem(0),
+    mFloorItem(nullptr),
+    mItem(nullptr),
     mItemId(0),
     mItemColor(1),
-    mMapItem(0),
-    mTab(0),
-    mSpell(0),
-    mDialog(0),
-    mButton(0),
+    mMapItem(nullptr),
+    mTab(nullptr),
+    mSpell(nullptr),
+    mDialog(nullptr),
+    mButton(nullptr),
     mNick(""),
     mType(Being::UNKNOWN)
 {
@@ -102,10 +102,10 @@ PopupMenu::PopupMenu():
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
-    mRenameListener.setMapItem(0);
-    mRenameListener.setDialog(0);
+    mRenameListener.setMapItem(nullptr);
+    mRenameListener.setDialog(nullptr);
     mPlayerListener.setNick("");
-    mPlayerListener.setDialog(0);
+    mPlayerListener.setDialog(nullptr);
     mPlayerListener.setType(Being::UNKNOWN);
 
     add(mBrowserBox);
@@ -833,9 +833,9 @@ void PopupMenu::showChangePos(int x, int y)
     else
     {
         mBeingId = 0;
-        mFloorItem = 0;
-        mItem = 0;
-        mMapItem = 0;
+        mFloorItem = nullptr;
+        mItem = nullptr;
+        mMapItem = nullptr;
         mNick = "";
         mType = Being::UNKNOWN;
         setVisible(false);
@@ -1683,11 +1683,11 @@ void PopupMenu::handleLink(const std::string &link,
     setVisible(false);
 
     mBeingId = 0;
-    mFloorItem = 0;
-    mItem = 0;
+    mFloorItem = nullptr;
+    mItem = nullptr;
     mItemId = 0;
     mItemColor = 1;
-    mMapItem = 0;
+    mMapItem = nullptr;
     mNick = "";
     mType = Being::UNKNOWN;
 }
@@ -1790,7 +1790,7 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
     }
     else
     {
-        mItem = 0;
+        mItem = nullptr;
         mItemId = itemId;
         mItemColor = color;
         mBrowserBox->clearRows();
@@ -2066,8 +2066,8 @@ void PopupMenu::showPopup(int x, int y)
 }
 
 RenameListener::RenameListener() :
-    mMapItem(0),
-    mDialog(0)
+    mMapItem(nullptr),
+    mDialog(nullptr)
 {
 }
 
@@ -2080,7 +2080,7 @@ void RenameListener::action(const gcn::ActionEvent &event)
             return;
 
         SpecialLayer *sl = map->getSpecialLayer();
-        MapItem *item = 0;
+        MapItem *item = nullptr;
         if (sl)
         {
             item = sl->getTile(mMapItem->getX(), mMapItem->getY());
@@ -2099,12 +2099,12 @@ void RenameListener::action(const gcn::ActionEvent &event)
         if (socialWindow)
             socialWindow->updatePortalNames();
     }
-    mDialog = 0;
+    mDialog = nullptr;
 }
 
 PlayerListener::PlayerListener() :
     mNick(""),
-    mDialog(0),
+    mDialog(nullptr),
     mType(Being::UNKNOWN)
 {
 }
@@ -2120,5 +2120,5 @@ void PlayerListener::action(const gcn::ActionEvent &event)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);
     }
-    mDialog = 0;
+    mDialog = nullptr;
 }

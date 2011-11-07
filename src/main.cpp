@@ -112,7 +112,7 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
 
     while (optind < argc)
     {
-        int result = getopt_long(argc, argv, optstring, long_options, NULL);
+        int result = getopt_long(argc, argv, optstring, long_options, nullptr);
 
         if (result == -1)
             break;
@@ -204,7 +204,7 @@ static void initXML()
     LIBXML_TEST_VERSION;
 
     // Suppress libxml2 error messages
-    xmlSetGenericErrorFunc(NULL, xmlNullLogger);
+    xmlSetGenericErrorFunc(nullptr, xmlNullLogger);
 }
 
 

@@ -155,7 +155,7 @@ const Language LANG_NAME[langs_count] =
     {N_("Portuguese"), "pt_PT"},
     {N_("Portuguese (Brazilian)"), "pt_BR"},
     {N_("Russian"), "ru_RU"},
-    {N_("Spanish (Castilian)"), "es_ES"},
+    {N_("Spanish (Castilian)"), "es_ES"}
 };
 
 class LangListModel : public gcn::ListModel
@@ -302,16 +302,16 @@ Setup_Theme::Setup_Theme():
 Setup_Theme::~Setup_Theme()
 {
     delete mThemesModel;
-    mThemesModel = 0;
+    mThemesModel = nullptr;
 
     delete mFontsModel;
-    mFontsModel = 0;
+    mFontsModel = nullptr;
 
     delete mFontSizeListModel;
-    mFontSizeListModel = 0;
+    mFontSizeListModel = nullptr;
 
     delete mLangListModel;
-    mLangListModel = 0;
+    mLangListModel = nullptr;
 }
 
 void Setup_Theme::action(const gcn::ActionEvent &event)

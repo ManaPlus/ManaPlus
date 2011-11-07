@@ -59,7 +59,7 @@ namespace
     {
         void action(const gcn::ActionEvent &event A_UNUSED)
         {
-            weightNotice = NULL;
+            weightNotice = nullptr;
         }
     } weightListener;
 
@@ -72,7 +72,7 @@ namespace
         {
             if (Net::getPlayerHandler())
                 Net::getPlayerHandler()->respawn();
-            deathNotice = NULL;
+            deathNotice = nullptr;
 
             Game::closeDialogs();
 

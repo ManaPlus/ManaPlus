@@ -68,7 +68,7 @@ PlayerBox::PlayerBox(const Being *being):
                 }
                 else
                 {
-                    background.grid[a] = 0;
+                    background.grid[a] = nullptr;
                 }
                 a++;
             }
@@ -85,7 +85,7 @@ PlayerBox::~PlayerBox()
 {
     instances--;
 
-    mBeing = 0;
+    mBeing = nullptr;
 
     if (instances == 0)
         for_each(background.grid, background.grid + 9, dtor<Image*>());

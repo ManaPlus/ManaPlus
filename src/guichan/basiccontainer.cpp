@@ -173,7 +173,7 @@ namespace gcn
         Rectangle r = getChildrenArea();
 
         if (!r.isPointInRect(x, y))
-            return NULL;
+            return nullptr;
 
         x -= r.x;
         y -= r.y;
@@ -188,7 +188,7 @@ namespace gcn
             }
         }
 
-        return NULL;
+        return nullptr;
     }
 
     void BasicContainer::logic()
@@ -200,7 +200,7 @@ namespace gcn
     {
         Widget::_setFocusHandler(focusHandler);
 
-        if (mInternalFocusHandler != NULL)
+        if (mInternalFocusHandler)
             return;
 
         WidgetListConstIterator iter;
@@ -214,7 +214,7 @@ namespace gcn
     {
         mWidgets.push_back(widget);
 
-        if (mInternalFocusHandler == NULL)
+        if (!mInternalFocusHandler)
             widget->_setFocusHandler(_getFocusHandler());
         else
             widget->_setFocusHandler(mInternalFocusHandler);
@@ -231,8 +231,8 @@ namespace gcn
             if (*iter == widget)
             {
                 mWidgets.erase(iter);
-                widget->_setFocusHandler(NULL);
-                widget->_setParent(NULL);
+                widget->_setFocusHandler(nullptr);
+                widget->_setParent(nullptr);
                 widget->removeDeathListener(this);
                 return;
             }
@@ -247,8 +247,8 @@ namespace gcn
 
         for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
         {
-            (*iter)->_setFocusHandler(NULL);
-            (*iter)->_setParent(NULL);
+            (*iter)->_setFocusHandler(nullptr);
+            (*iter)->_setParent(nullptr);
             (*iter)->removeDeathListener(this);
         }
 
@@ -327,7 +327,7 @@ namespace gcn
         WidgetListConstIterator iter;
         for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
         {
-            if (mInternalFocusHandler == NULL)
+            if (!mInternalFocusHandler)
                 (*iter)->_setFocusHandler(_getFocusHandler());
             else
                 (*iter)->_setFocusHandler(mInternalFocusHandler);
@@ -345,15 +345,15 @@ namespace gcn
             BasicContainer *basicContainer
                 = dynamic_cast<BasicContainer*>(*iter);
 
-            if (basicContainer != NULL)
+            if (basicContainer)
             {
                 Widget *widget = basicContainer->findWidgetById(id);
 
-                if (widget != NULL)
+                if (widget)
                     return widget;
             }
         }
 
-        return NULL;
+        return nullptr;
     }
 }

@@ -34,7 +34,7 @@
 
 #include "debug.h"
 
-Image *ResizeGrip::gripImage = 0;
+Image *ResizeGrip::gripImage = nullptr;
 int ResizeGrip::mInstances = 0;
 float ResizeGrip::mAlpha = 1.0;
 
@@ -69,7 +69,7 @@ ResizeGrip::~ResizeGrip()
     if (mInstances == 0 && gripImage)
     {
         gripImage->decRef();
-        gripImage = 0;
+        gripImage = nullptr;
     }
 }
 

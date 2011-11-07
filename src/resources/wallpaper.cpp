@@ -94,7 +94,7 @@ void Wallpaper::loadWallpapers()
 
     char **imgs = PHYSFS_enumerateFiles(wallpaperPath.c_str());
 
-    for (char **i = imgs; *i != NULL; i++)
+    for (char **i = imgs; *i; i++)
     {
         int width;
         int height;

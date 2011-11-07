@@ -96,7 +96,7 @@ public:
 InventoryWindow::WindowList InventoryWindow::instances;
 
 InventoryWindow::InventoryWindow(Inventory *inventory):
-    Window("Inventory", false, 0, "inventory.xml"),
+    Window("Inventory", false, nullptr, "inventory.xml"),
     mInventory(inventory),
     mDropButton(0),
     mSplit(false),
@@ -238,7 +238,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     loadWindowState();
     slotsChanged(mInventory);
 
-    widgetResized(0);
+    widgetResized(nullptr);
     if (!isMainInventory())
         setVisible(true);
 }
@@ -250,7 +250,7 @@ InventoryWindow::~InventoryWindow()
     if (!instances.empty())
         instances.front()->updateDropButton();
     delete mSortModel;
-    mSortModel = 0;
+    mSortModel = nullptr;
 }
 
 void InventoryWindow::action(const gcn::ActionEvent &event)
@@ -644,7 +644,7 @@ void InventoryWindow::updateDropButton()
     }
     else
     {
-        Item *item = 0;
+        Item *item = nullptr;
         if (mItems)
             item = mItems->getSelectedItem();
 

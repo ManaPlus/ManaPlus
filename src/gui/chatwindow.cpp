@@ -149,7 +149,7 @@ public:
 
 
 ChatWindow::ChatWindow():
-    Window(_("Chat"), false, 0, "chat.xml"),
+    Window(_("Chat"), false, nullptr, "chat.xml"),
     mTmpVisible(false),
     mChatHistoryIndex(0)
 {
@@ -222,11 +222,11 @@ ChatWindow::~ChatWindow()
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
     delete mItemLinkHandler;
-    mItemLinkHandler = 0;
+    mItemLinkHandler = nullptr;
     delete mColorPicker;
-    mColorPicker = 0;
+    mColorPicker = nullptr;
     delete mColorListModel;
-    mColorListModel = 0;
+    mColorListModel = nullptr;
 }
 
 void ChatWindow::fillCommands()
@@ -557,13 +557,13 @@ void ChatWindow::ignoreAllWhispers()
         }
 
         delete(iter->second);
-        iter->second = 0;
+        iter->second = nullptr;
     }
 }
 
 void ChatWindow::chatInput(const std::string &message)
 {
-    ChatTab *tab = NULL;
+    ChatTab *tab = nullptr;
     std::string msg = message;
     trim(msg);
 
@@ -939,7 +939,7 @@ void ChatWindow::addWhisper(const std::string &nick,
     if (tempNick.compare(playerName) == 0)
         return;
 
-    ChatTab *tab = 0;
+    ChatTab *tab = nullptr;
     TabMap::const_iterator i = mWhispers.find(tempNick);
 
     if (i != mWhispers.end())
@@ -1006,7 +1006,7 @@ void ChatWindow::addWhisper(const std::string &nick,
         {
             localChatTab->chatLog(nick + " : " + mes, ACT_WHISPER, false);
             if (player_node)
-                player_node->afkRespond(0, nick);
+                player_node->afkRespond(nullptr, nick);
         }
     }
 }
@@ -1014,7 +1014,7 @@ void ChatWindow::addWhisper(const std::string &nick,
 ChatTab *ChatWindow::addWhisperTab(const std::string &nick, bool switchTo)
 {
     if (!player_node)
-        return NULL;
+        return nullptr;
 
     std::string playerName = player_node->getName();
     std::string tempNick = nick;
@@ -1026,7 +1026,7 @@ ChatTab *ChatWindow::addWhisperTab(const std::string &nick, bool switchTo)
     ChatTab *ret;
 
     if (tempNick.compare(playerName) == 0)
-        return NULL;
+        return nullptr;
 
     if (i != mWhispers.end())
     {
@@ -1051,7 +1051,7 @@ ChatTab *ChatWindow::addWhisperTab(const std::string &nick, bool switchTo)
 ChatTab *ChatWindow::getWhisperTab(const std::string &nick) const
 {
     if (!player_node)
-        return NULL;
+        return nullptr;
 
     std::string playerName = player_node->getName();
     std::string tempNick = nick;
@@ -1060,10 +1060,10 @@ ChatTab *ChatWindow::getWhisperTab(const std::string &nick) const
     toLower(tempNick);
 
     TabMap::const_iterator i = mWhispers.find(tempNick);
-    ChatTab *ret = 0;
+    ChatTab *ret = nullptr;
 
     if (tempNick.compare(playerName) == 0)
-        return NULL;
+        return nullptr;
 
     if (i != mWhispers.end())
         ret = i->second;
@@ -1350,8 +1350,8 @@ void ChatWindow::initTradeFilter()
 void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
 {
     TabMap::const_iterator iter;
-    const Party *party = 0;
-    const Guild *guild = 0;
+    const Party *party = nullptr;
+    const Guild *guild = nullptr;
     if (player_node)
     {
         party = player_node->getParty();

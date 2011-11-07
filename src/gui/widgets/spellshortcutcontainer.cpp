@@ -54,7 +54,7 @@
 SpellShortcutContainer::SpellShortcutContainer(unsigned number):
     ShortcutContainer(),
     mSpellClicked(false),
-    mSpellMoved(NULL),
+    mSpellMoved(nullptr),
     mNumber(number)
 {
     mBoxWidth = mBoxWidth;
@@ -88,9 +88,9 @@ SpellShortcutContainer::~SpellShortcutContainer()
 {
     if (mBackgroundImg)
         mBackgroundImg->decRef();
-    mBackgroundImg = 0;
+    mBackgroundImg = nullptr;
     delete mSpellPopup;
-    mSpellPopup = 0;
+    mSpellPopup = nullptr;
 }
 
 void SpellShortcutContainer::draw(gcn::Graphics *graphics)
@@ -251,7 +251,7 @@ void SpellShortcutContainer::mouseReleased(gcn::MouseEvent &event)
     }
     else if (event.getButton() == gcn::MouseEvent::RIGHT)
     {
-        TextCommand *spell = NULL;
+        TextCommand *spell = nullptr;
         if (itemId >= 0)
             spell = spellManager->getSpell(itemId);
 

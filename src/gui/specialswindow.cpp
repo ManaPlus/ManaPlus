@@ -194,10 +194,10 @@ void SpecialsWindow::rebuild(const std::map<int, Special> &specialData)
 
 SpecialEntry::SpecialEntry(SpecialInfo *info) :
     mInfo(info),
-    mIcon(NULL),
-    mLevelLabel(NULL),
-    mUse(NULL),
-    mRechargeBar(NULL)
+    mIcon(nullptr),
+    mLevelLabel(nullptr),
+    mUse(nullptr),
+    mRechargeBar(nullptr)
 {
     setFrameSize(1);
     setOpaque(false);

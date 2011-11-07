@@ -61,7 +61,7 @@ namespace gcn
 {
     ListBox::ListBox() :
         mSelected(-1),
-        mListModel(NULL),
+        mListModel(nullptr),
         mWrappingEnabled(false)
     {
         setWidth(100);
@@ -88,7 +88,7 @@ namespace gcn
         graphics->setColor(getBackgroundColor());
         graphics->fillRectangle(Rectangle(0, 0, getWidth(), getHeight()));
 
-        if (mListModel == NULL)
+        if (!mListModel)
             return;
 
         graphics->setColor(getForegroundColor());
@@ -161,7 +161,7 @@ namespace gcn
 
     void ListBox::setSelected(int selected)
     {
-        if (mListModel == NULL)
+        if (!mListModel)
         {
             mSelected = -1;
         }
@@ -286,7 +286,7 @@ namespace gcn
 
     void ListBox::adjustSize()
     {
-        if (mListModel != NULL)
+        if (mListModel)
             setHeight(getRowHeight() * mListModel->getNumberOfElements());
     }
 

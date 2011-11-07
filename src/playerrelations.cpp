@@ -69,7 +69,7 @@ class PlayerConfSerialiser :
         ConfigurationObject *cobj)
     {
         if (!cobj || !value.second)
-            return NULL;
+            return nullptr;
         cobj->setValue(NAME, value.first);
         cobj->setValue(RELATION, toString(
                 static_cast<int>(value.second->mRelation)));

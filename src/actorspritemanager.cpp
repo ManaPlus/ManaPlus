@@ -295,7 +295,7 @@ Being *ActorSpriteManager::findBeing(int id) const
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 Being *ActorSpriteManager::findBeing(int x, int y,
@@ -308,14 +308,14 @@ Being *ActorSpriteManager::findBeing(int x, int y,
     ActorSpritesConstIterator it = find_if(mActors.begin(), mActors.end(),
                                            beingFinder);
 
-    return (it == mActors.end()) ? NULL : static_cast<Being*>(*it);
+    return (it == mActors.end()) ? nullptr : static_cast<Being*>(*it);
 }
 
 Being *ActorSpriteManager::findBeingByPixel(int x, int y,
                                             bool allPlayers) const
 {
     if (!mMap)
-        return NULL;
+        return nullptr;
 
     bool targetDead = mTargetDeadPlayers;
 
@@ -448,7 +448,7 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
 Being *ActorSpriteManager::findPortalByTile(int x, int y) const
 {
     if (!mMap)
-        return NULL;
+        return nullptr;
 
     for_actors
     {
@@ -464,7 +464,7 @@ Being *ActorSpriteManager::findPortalByTile(int x, int y) const
             return being;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 FloorItem *ActorSpriteManager::findItem(int id) const
@@ -481,7 +481,7 @@ FloorItem *ActorSpriteManager::findItem(int id) const
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 FloorItem *ActorSpriteManager::findItem(int x, int y) const
@@ -498,7 +498,7 @@ FloorItem *ActorSpriteManager::findItem(int x, int y) const
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
@@ -563,7 +563,7 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
         return false;
 
     maxdist = maxdist * maxdist;
-    FloorItem *closestItem = NULL;
+    FloorItem *closestItem = nullptr;
     int dist = 0;
 
     for_actors
@@ -614,7 +614,7 @@ Being *ActorSpriteManager::findBeingByName(const std::string &name,
             return being;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 Being *ActorSpriteManager::findNearestByName(const std::string &name,
@@ -624,7 +624,7 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
         return 0;
 
     int dist = 0;
-    Being* closestBeing = NULL;
+    Being* closestBeing = nullptr;
     int x, y;
 
     x = player_node->getTileX();
@@ -654,7 +654,7 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
                         + (being->getTileY() - y) * (being->getTileY() - y);
 
                 if (validateBeing(0, being, type, 0, 50)
-                    && (d < dist || closestBeing == NULL))
+                    && (d < dist || closestBeing == nullptr))
                 {
                     dist = d;
                     closestBeing = being;
@@ -745,7 +745,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(int x, int y,
 {
     const int maxDist = maxTileDist * 32;
 
-    return findNearestLivingBeing(NULL, maxDist, type, x, y, excluded);
+    return findNearestLivingBeing(nullptr, maxDist, type, x, y, excluded);
 }
 
 Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
@@ -884,7 +884,7 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
             beingSorter.priorityBeings = 0;
         }
 
-        if (player_node->getTarget() == NULL)
+        if (player_node->getTarget() == nullptr)
         {
             Being *target = sortedBeings.at(0);
 

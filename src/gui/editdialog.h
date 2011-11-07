@@ -24,6 +24,8 @@
 #ifndef EDIT_DIALOG_H
 #define EDIT_DIALOG_H
 
+#include "localconsts.h"
+
 #include "gui/widgets/window.h"
 #include "gui/widgets/textfield.h"
 
@@ -48,7 +50,7 @@ class EditDialog : public Window, public gcn::ActionListener
          */
         EditDialog(const std::string &title, const std::string &msg,
                    std::string eventOk = ACTION_EDIT_OK, int width = 300,
-                   Window *parent = NULL, bool modal = true);
+                   Window *parent = nullptr, bool modal = true);
 
         /**
          * Called when receiving actions from the widgets.

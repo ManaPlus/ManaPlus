@@ -49,8 +49,9 @@
 
 BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     gcn::Widget(),
-    mLinkHandler(0),
-    mMode(mode), mHighMode(UNDERLINE | BACKGROUND),
+    mLinkHandler(nullptr),
+    mMode(mode),
+    mHighMode(UNDERLINE | BACKGROUND),
     mOpaque(opaque),
     mUseLinksAndUserColors(true),
     mSelectedLink(-1),
@@ -648,5 +649,5 @@ LinePart::~LinePart()
 {
     if (mImage)
         mImage->decRef();
-    mImage = 0;
+    mImage = nullptr;
 }

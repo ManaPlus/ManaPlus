@@ -49,14 +49,14 @@ class SDLTextChunk
 {
     public:
         SDLTextChunk(const std::string &text0, const gcn::Color &color0) :
-            img(0), text(text0), color(color0)
+            img(nullptr), text(text0), color(color0)
         {
         }
 
         ~SDLTextChunk()
         {
             delete img;
-            img = 0;
+            img = nullptr;
         }
 
         bool operator==(const SDLTextChunk &chunk) const
@@ -79,7 +79,7 @@ class SDLTextChunk
 
             if (!surface)
             {
-                img = 0;
+                img = nullptr;
                 return;
             }
 
@@ -138,7 +138,7 @@ SDLFont::SDLFont(const std::string &filename, int size, int style) :
 SDLFont::~SDLFont()
 {
     TTF_CloseFont(mFont);
-    mFont = 0;
+    mFont = nullptr;
     --fontCounter;
 
     if (fontCounter == 0)

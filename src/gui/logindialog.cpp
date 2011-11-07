@@ -83,7 +83,7 @@ public:
 
 LoginDialog::LoginDialog(LoginData *data, std::string serverName,
                          std::string *updateHost):
-    Window(_("Login"), false, 0, "login.xml"),
+    Window(_("Login"), false, nullptr, "login.xml"),
     mLoginData(data),
     mUpdateHost(updateHost),
     mServerName(serverName)
@@ -166,7 +166,7 @@ LoginDialog::LoginDialog(LoginData *data, std::string serverName,
 LoginDialog::~LoginDialog()
 {
     delete mUpdateTypeModel;
-    mUpdateTypeModel = 0;
+    mUpdateTypeModel = nullptr;
 }
 
 void LoginDialog::action(const gcn::ActionEvent &event)
@@ -226,9 +226,9 @@ void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
     gcn::Key key = keyEvent.getKey();
 
     if (key.getValue() == Key::ESCAPE)
-        action(gcn::ActionEvent(NULL, mServerButton->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mServerButton->getActionEventId()));
     else if (key.getValue() == Key::ENTER)
-        action(gcn::ActionEvent(NULL, mLoginButton->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mLoginButton->getActionEventId()));
     else
         mLoginButton->setEnabled(canSubmit());
 }

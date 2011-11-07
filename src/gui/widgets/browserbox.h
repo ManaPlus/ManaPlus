@@ -30,6 +30,8 @@
 #include <list>
 #include <vector>
 
+#include "localconsts.h"
+
 class Image;
 class Resource;
 class LinkHandler;
@@ -46,7 +48,7 @@ class LinePart
     public:
         LinePart(int x, int y, gcn::Color color, std::string text, bool bold) :
             mX(x), mY(y), mColor(color), mText(text), mType(0),
-            mImage(0), mBold(bold)
+            mImage(nullptr), mBold(bold)
         {
         }
 

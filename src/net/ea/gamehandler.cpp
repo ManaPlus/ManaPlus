@@ -96,7 +96,7 @@ void GameHandler::processCharSwitchResponse(Net::MessageIn &msg)
 void GameHandler::processMapQuitResponse(Net::MessageIn &msg)
 {
     if (msg.readInt8())
-        new OkDialog(_("Game"), _("Request to quit denied!"), NULL);
+        new OkDialog(_("Game"), _("Request to quit denied!"), nullptr);
 }
 
 } // namespace Ea

@@ -57,7 +57,7 @@ namespace gcn
 {
 
     Graphics::Graphics() :
-        mFont(NULL)
+        mFont(nullptr)
     {
     }
 
@@ -155,7 +155,7 @@ namespace gcn
     void Graphics::drawText(const std::string& text, int x, int y,
                             Alignment alignment)
     {
-        if (mFont == NULL)
+        if (!mFont)
             throw GCN_EXCEPTION("No font set.");
 
         switch (alignment)

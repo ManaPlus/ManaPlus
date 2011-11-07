@@ -1,7 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -20,24 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/windowcontainer.h"
-
-#include "utils/dtor.h"
-
-#include "debug.h"
-
-WindowContainer *windowContainer = nullptr;
-
-void WindowContainer::logic()
-{
-    delete_all(mDeathList);
-    mDeathList.clear();
-
-    gcn::Container::logic();
-}
-
-void WindowContainer::scheduleDelete(gcn::Widget *widget)
-{
-    if (widget)
-        mDeathList.push_back(widget);
-}
+#ifndef __GXX_EXPERIMENTAL_CXX0X__
+#undef nullptr
+#define nullptr 0
+#endif

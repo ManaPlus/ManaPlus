@@ -43,7 +43,7 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
 {
     bool  ret = false;
 
-    if (!OpenClipboard(NULL))
+    if (!OpenClipboard(nullptr))
         return false;
 
     HANDLE  h = GetClipboardData(CF_UNICODETEXT);
@@ -54,13 +54,13 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
         if (data)
         {
             int len = WideCharToMultiByte(CP_UTF8, 0, data, -1,
-                NULL, 0, NULL, NULL);
+                nullptr, 0, nullptr, nullptr);
             if (len > 0)
             {
                 // Convert from UTF-16 to UTF-8
                 void *temp = calloc(len, 1);
                 if (WideCharToMultiByte(CP_UTF8, 0, data, -1,
-                    (LPSTR)temp, len, NULL, NULL))
+                    (LPSTR)temp, len, nullptr, nullptr))
                 {
                     text.insert(pos, (char*)temp);
                     pos += len-1;
@@ -94,7 +94,7 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
 
 bool sendBuffer(std::string& text)
 {
-    int wCharsLen = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, NULL, 0);
+    int wCharsLen = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, nullptr, 0);
     if (!wCharsLen)
         return false;
 
@@ -298,7 +298,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
     if (owner == None)
     {
         //printf("No owner\n");
-        return NULL;
+        return nullptr;
     }
     XConvertSelection(dpy, selection, request_target,
         XA_PRIMARY, us, CurrentTime);
@@ -317,13 +317,13 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
             if (e.xselection.property == None)
             {
                 //printf("Couldn't convert\n");
-                return NULL;
+                return nullptr;
             }
 
             long unsigned len, left, dummy;
             int format;
             Atom type;
-            unsigned char *data = NULL;
+            unsigned char *data = nullptr;
 
             ret = XGetWindowProperty(dpy, us, e.xselection.property, 0, 0,
                 False, AnyPropertyType, &type, &format, &len, &left, &data);
@@ -331,7 +331,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
             {
                 if (ret == Success)
                 XFree(data);
-                return NULL;
+                return nullptr;
             }
 
             ret = XGetWindowProperty(dpy, us, e.xselection.property, 0,
@@ -341,7 +341,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
             if (ret != Success)
             {
                 //printf("Failed to get property: %p on %lu\n", data, len);
-                return NULL;
+                return nullptr;
             }
 
             //printf(">>>  Got %s: len=%lu left=%lu (event %i)\n", data,
@@ -349,14 +349,14 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
             return reinterpret_cast<char*>(data);
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 static Atom requestAtom;
 
 static char* getSelection(Display *dpy, Window us, Atom selection)
 {
-    char *data = NULL;
+    char *data = nullptr;
     if (requestAtom != None)
         data = getSelection2(dpy, us, selection, requestAtom);
     if (!data)
@@ -374,7 +374,7 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
     {
         Display *dpy = info.info.x11.display;
         Window us = info.info.x11.window;
-        char *data = NULL;
+        char *data = nullptr;
 
         requestAtom = XInternAtom (dpy, "UTF8_STRING", true);
 

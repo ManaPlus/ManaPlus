@@ -112,16 +112,16 @@ Setup_Keyboard::Setup_Keyboard():
 Setup_Keyboard::~Setup_Keyboard()
 {
     delete mKeyList;
-    mKeyList = 0;
+    mKeyList = nullptr;
     delete mKeyListModel;
-    mKeyListModel = 0;
+    mKeyListModel = nullptr;
 
     delete mAssignKeyButton;
-    mAssignKeyButton = 0;
+    mAssignKeyButton = nullptr;
     delete mUnassignKeyButton;
-    mUnassignKeyButton = 0;
+    mUnassignKeyButton = nullptr;
     delete mMakeDefaultButton;
-    mMakeDefaultButton = 0;
+    mMakeDefaultButton = nullptr;
 }
 
 void Setup_Keyboard::apply()

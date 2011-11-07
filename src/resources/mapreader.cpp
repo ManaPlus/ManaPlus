@@ -102,7 +102,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
 
     do
     {
-        if (strm.next_out == NULL)
+        if (!strm.next_out)
         {
             inflateEnd(&strm);
             return Z_MEM_ERROR;
@@ -128,7 +128,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
         {
             out = static_cast<unsigned char*>(realloc(out, bufferSize * 2));
 
-            if (out == NULL)
+            if (!out)
             {
                 inflateEnd(&strm);
                 return Z_MEM_ERROR;
@@ -153,7 +153,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
     unsigned int outLength = 0;
     int ret = inflateMemory(in, inLength, out, outLength);
 
-    if (ret != Z_OK || out == NULL)
+    if (ret != Z_OK || !out)
     {
         if (ret == Z_MEM_ERROR)
         {
@@ -173,7 +173,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
         }
 
         free(out);
-        out = NULL;
+        out = nullptr;
         outLength = 0;
     }
 
@@ -188,12 +188,12 @@ Map *MapReader::readMap(const std::string &filename,
     ResourceManager *resman = ResourceManager::getInstance();
     int fileSize;
     void *buffer = resman->loadFile(realFilename, fileSize);
-    Map *map = NULL;
+    Map *map = nullptr;
 
-    if (buffer == NULL)
+    if (!buffer)
     {
         logger->log("Map file not found (%s)", realFilename.c_str());
-        return NULL;
+        return nullptr;
     }
 
     unsigned char *inflated;
@@ -207,11 +207,11 @@ Map *MapReader::readMap(const std::string &filename,
             fileSize, inflated);
         free(buffer);
 
-        if (inflated == NULL)
+        if (!inflated)
         {
             logger->log("Could not decompress map file (%s)",
                         realFilename.c_str());
-            return NULL;
+            return nullptr;
         }
     }
     else
@@ -651,13 +651,13 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
                                 Map *map)
 {
     if (!map)
-        return NULL;
+        return nullptr;
 
     int firstGid = XML::getProperty(node, "firstgid", 0);
     int margin = XML::getProperty(node, "margin", 0);
     int spacing = XML::getProperty(node, "spacing", 0);
-    XML::Document* doc = NULL;
-    Tileset *set = NULL;
+    XML::Document* doc = nullptr;
+    Tileset *set = nullptr;
     std::string pathDir(path);
 
     if (xmlHasProp(node, BAD_CAST "source"))

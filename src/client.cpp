@@ -341,7 +341,7 @@ Client::Client(const Options &options):
     SDL_EnableUNICODE(1);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
-    SDL_WM_SetCaption(branding.getValue("appName", "ManaPlus").c_str(), NULL);
+    SDL_WM_SetCaption(branding.getValue("appName", "ManaPlus").c_str(), nullptr);
 
     ResourceManager *resman = ResourceManager::getInstance();
 
@@ -440,12 +440,11 @@ Client::Client(const Options &options):
     static SDL_SysWMinfo pInfo;
     SDL_GetWMInfo(&pInfo);
     // Attempt to load icon from .ico file
-    HICON icon = (HICON) LoadImage(NULL,
-                                   iconFile.c_str(),
-                                   IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
+    HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
+        IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
     // If it's failing, we load the default resource file.
     if (!icon)
-        icon = LoadIcon(GetModuleHandle(NULL), "A");
+        icon = LoadIcon(GetModuleHandle(nullptr), "A");
 
     if (icon)
         SetClassLong(pInfo.window, GCL_HICON, (LONG) icon);
@@ -454,7 +453,7 @@ Client::Client(const Options &options):
     if (mIcon)
     {
         SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-        SDL_WM_SetIcon(mIcon, NULL);
+        SDL_WM_SetIcon(mIcon, nullptr);
     }
 #endif
 
@@ -601,8 +600,8 @@ Client::Client(const Options &options):
 
     // Initialize logic and seconds counters
     tick_time = 0;
-    mLogicCounterId = SDL_AddTimer(MILLISECONDS_IN_A_TICK, nextTick, NULL);
-    mSecondsCounterId = SDL_AddTimer(1000, nextSecond, NULL);
+    mLogicCounterId = SDL_AddTimer(MILLISECONDS_IN_A_TICK, nextTick, nullptr);
+    mSecondsCounterId = SDL_AddTimer(1000, nextSecond, nullptr);
 
     const int fpsLimit = config.getIntValue("fpslimit");
     mLimitFps = fpsLimit > 0;
@@ -625,7 +624,7 @@ Client::Client(const Options &options):
 
     optionChanged("fpslimit");
 
-    start_time = static_cast<int>(time(NULL));
+    start_time = static_cast<int>(time(nullptr));
 
     // Initialize PlayerInfo
     PlayerInfo::init();
@@ -1197,7 +1196,7 @@ int Client::exec()
                     delete mDesktop;
                     mDesktop = 0;
 
-                    mCurrentDialog = NULL;
+                    mCurrentDialog = nullptr;
 
                     logger->log1("State: GAME");
                     if (Net::getGeneralHandler())
@@ -1209,14 +1208,14 @@ int Client::exec()
                     logger->log1("State: LOGIN ERROR");
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&loginListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_ACCOUNTCHANGE_ERROR:
                     logger->log1("State: ACCOUNT CHANGE ERROR");
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_REGISTER_PREP:
@@ -1252,7 +1251,7 @@ int Client::exec()
                     mCurrentDialog = new OkDialog(_("Password Change"),
                             _("Password changed successfully!"));
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
                     loginData.newPassword = "";
                     break;
@@ -1272,7 +1271,7 @@ int Client::exec()
                     mCurrentDialog = new OkDialog(_("Email Change"),
                             _("Email changed successfully!"));
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_UNREGISTER:
@@ -1295,7 +1294,7 @@ int Client::exec()
                     loginData.clear();
                     //The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_SWITCH_SERVER:
@@ -1350,7 +1349,7 @@ int Client::exec()
                     logger->log("Error: %s\n", errorMessage.c_str());
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&errorListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
                     break;
 
@@ -1796,7 +1795,7 @@ bool Client::copyFile(std::string &configPath, std::string &oldConfigPath)
 
     configFile = fopen(oldConfigPath.c_str(), "r");
 
-    if (configFile != NULL)
+    if (configFile)
     {
         fclose(configFile);
 

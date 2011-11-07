@@ -26,6 +26,8 @@
 #include <string>
 #include "gui/sdlinput.h"
 
+#include "localconsts.h"
+
 #define MAX_LASTKEYS 10
 
 extern volatile int cur_time;
@@ -66,7 +68,7 @@ class Game
         { return mInstance; }
 
         static void clearInstance()
-        { mInstance = 0; }
+        { mInstance = nullptr; }
 
         /**
          * This method takes the game a small step further. It is called 100

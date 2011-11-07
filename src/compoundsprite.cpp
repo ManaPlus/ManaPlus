@@ -166,7 +166,7 @@ void CompoundSprite::drawSpritesSDL(Graphics* graphics,
 
 int CompoundSprite::getWidth() const
 {
-    Sprite *base = NULL;
+    Sprite *base = nullptr;
 
     SpriteConstIterator it, it_end;
     for (it = begin(), it_end = end(); it != it_end; ++it)
@@ -183,7 +183,7 @@ int CompoundSprite::getWidth() const
 
 int CompoundSprite::getHeight() const
 {
-    Sprite *base = NULL;
+    Sprite *base = nullptr;
 
     SpriteConstIterator it, it_end;
     for (it = begin(), it_end = end(); it != it_end; ++it)
@@ -271,7 +271,7 @@ void CompoundSprite::setSprite(int layer, Sprite* sprite)
 void CompoundSprite::removeSprite(int layer)
 {
     // Skip if it won't change anything
-    if (at(layer) == NULL)
+    if (at(layer) == nullptr)
         return;
 
     delete at(layer);
@@ -299,7 +299,7 @@ void CompoundSprite::ensureSize(size_t layerCount)
     if (size() >= layerCount)
         return;
 
-    resize(layerCount, NULL);
+    resize(layerCount, nullptr);
 }
 
 /**
@@ -387,7 +387,7 @@ void CompoundSprite::redraw() const
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-    SDL_BlitSurface(surface, NULL, surfaceA, NULL);
+    SDL_BlitSurface(surface, nullptr, surfaceA, nullptr);
 
     delete mImage;
     delete mAlphaImage;

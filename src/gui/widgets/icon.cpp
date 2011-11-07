@@ -30,7 +30,7 @@
 #include "debug.h"
 
 Icon::Icon(const std::string &file)
-    : mImage(0)
+    : mImage(nullptr)
 {
     mImage = ResourceManager::getInstance()->getImage(file);
     if (mImage)

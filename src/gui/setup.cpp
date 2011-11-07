@@ -51,7 +51,7 @@
 extern Window *statusWindow;
 
 Setup::Setup():
-    Window(_("Setup"), false, 0, "setup.xml")
+    Window(_("Setup"), false, nullptr, "setup.xml")
 {
     setCloseButton(true);
     setResizable(true);
@@ -72,7 +72,7 @@ Setup::Setup():
         N_("Cancel"),
         N_("Store"),
         N_("Reset Windows"),
-        0
+        nullptr
     };
     int x = width;
     for (const char **curBtn = buttonNames; *curBtn; ++curBtn)

@@ -43,8 +43,8 @@
 #include "debug.h"
 
 int AvatarListBox::instances = 0;
-Image *AvatarListBox::onlineIcon = 0;
-Image *AvatarListBox::offlineIcon = 0;
+Image *AvatarListBox::onlineIcon = nullptr;
+Image *AvatarListBox::offlineIcon = nullptr;
 
 AvatarListBox::AvatarListBox(AvatarListModel *model):
     ListBox(model),
@@ -83,12 +83,12 @@ AvatarListBox::~AvatarListBox()
         if (onlineIcon)
         {
             onlineIcon->decRef();
-            onlineIcon = 0;
+            onlineIcon = nullptr;
         }
         if (offlineIcon)
         {
             offlineIcon->decRef();
-            offlineIcon = 0;
+            offlineIcon = nullptr;
         }
     }
 }

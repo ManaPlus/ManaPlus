@@ -48,7 +48,7 @@
 
 #include "debug.h"
 
-ResourceManager *ResourceManager::instance = NULL;
+ResourceManager *ResourceManager::instance = nullptr;
 
 ResourceManager::ResourceManager() :
     mOldestOrphan(0),
@@ -177,7 +177,7 @@ void ResourceManager::cleanUp(Resource *res)
 void ResourceManager::cleanOrphans(bool always)
 {
     timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, nullptr);
     // Delete orphaned resources after 30 seconds.
     time_t oldest = tv.tv_sec, threshold = oldest - 30;
 
@@ -324,7 +324,7 @@ std::string ResourceManager::getPath(const std::string &file)
     const char* tmp = PHYSFS_getRealDir(file.c_str());
     std::string path;
 
-    // if the file is not in the search path, then its NULL
+    // if the file is not in the search path, then its nullptr
     if (tmp)
     {
         path = std::string(tmp) + "/" + file;
@@ -388,7 +388,7 @@ Resource *ResourceManager::get(const std::string &idPath, generator fun,
         logger->log("Error loaging image: " + idPath);
     }
 
-    // Returns NULL if the object could not be created.
+    // Returns nullptr if the object could not be created.
     return resource;
 }
 
@@ -400,14 +400,14 @@ struct ResourceLoader
     static Resource *load(void *v)
     {
         if (!v)
-            return NULL;
+            return nullptr;
         ResourceLoader *l = static_cast< ResourceLoader * >(v);
         int fileSize;
         if (!l->manager)
-            return NULL;
+            return nullptr;
         void *buffer = l->manager->loadFile(l->path, fileSize);
         if (!buffer)
-            return NULL;
+            return nullptr;
         Resource *res = l->fun(buffer, fileSize);
         free(buffer);
         return res;
@@ -437,15 +437,15 @@ struct DyedImageLoader
     static Resource *load(void *v)
     {
         if (!v)
-            return NULL;
+            return nullptr;
 
         DyedImageLoader *l = static_cast< DyedImageLoader * >(v);
         if (!l->manager)
-            return NULL;
+            return nullptr;
 
         std::string path = l->path;
         std::string::size_type p = path.find('|');
-        Dye *d = NULL;
+        Dye *d = nullptr;
         if (p != std::string::npos)
         {
             d = new Dye(path.substr(p + 1));
@@ -495,15 +495,15 @@ struct ImageSetLoader
     static Resource *load(void *v)
     {
         if (!v)
-            return NULL;
+            return nullptr;
 
         ImageSetLoader *l = static_cast< ImageSetLoader * >(v);
         if (!l->manager)
-            return NULL;
+            return nullptr;
 
         Image *img = l->manager->getImage(l->path);
         if (!img)
-            return NULL;
+            return nullptr;
         ImageSet *res = new ImageSet(img, l->w, l->h);
         img->decRef();
         return res;
@@ -526,7 +526,7 @@ struct SpriteDefLoader
     static Resource *load(void *v)
     {
         if (!v)
-            return NULL;
+            return nullptr;
 
         SpriteDefLoader *l = static_cast< SpriteDefLoader * >(v);
         return SpriteDef::load(l->path, l->variant);
@@ -552,7 +552,7 @@ void ResourceManager::release(Resource *res)
     assert(resIter != mResources.end() && resIter->second == res);
 
     timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, nullptr);
     time_t timestamp = tv.tv_sec;
 
     res->mTimeStamp = timestamp;
@@ -583,11 +583,11 @@ void *ResourceManager::loadFile(const std::string &fileName, int &fileSize)
     PHYSFS_file *file = PHYSFS_openRead(fileName.c_str());
 
     // If the handler is an invalid pointer indicate failure
-    if (file == NULL)
+    if (!file)
     {
         logger->log("Warning: Failed to load %s: %s",
                     fileName.c_str(), PHYSFS_getLastError());
-        return NULL;
+        return nullptr;
     }
 
     // Log the real dir of the file
@@ -698,7 +698,7 @@ SDL_Surface *ResourceManager::loadSDLSurface(const std::string &filename)
 {
     int fileSize;
     void *buffer = loadFile(filename, fileSize);
-    SDL_Surface *tmp = NULL;
+    SDL_Surface *tmp = nullptr;
 
     if (buffer)
     {
@@ -734,13 +734,13 @@ struct RescaledLoader
     static Resource *load(void *v)
     {
         if (!v)
-            return NULL;
+            return nullptr;
         RescaledLoader *l = static_cast< RescaledLoader * >(v);
         if (!l->manager)
-            return NULL;
+            return nullptr;
         Image *rescaled = l->image->SDLgetScaledImage(l->width, l->height);
         if (!rescaled)
-            return NULL;
+            return nullptr;
         return rescaled;
     }
 };

@@ -56,9 +56,9 @@ void initialize()
     }
 
 #if defined(ENET_VERSION) && ENET_VERSION >= ENET_CUTOFF
-    client = enet_host_create(NULL, 3, 0, 0, 0);
+    client = enet_host_create(nullptr, 3, 0, 0, 0);
 #else
-    client = enet_host_create(NULL, 3, 0, 0);
+    client = enet_host_create(nullptr, 3, 0, 0);
 #endif
 
     if (!client)

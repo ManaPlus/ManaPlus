@@ -48,7 +48,7 @@ Action *SpriteDef::getAction(std::string action) const
     if (i == mActions.end())
     {
         logger->log("Warning: no action \"%s\" defined!", action.c_str());
-        return NULL;
+        return nullptr;
     }
 
     return i->second;
@@ -73,7 +73,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
         if (animationFile != errorFile)
             return load(errorFile, 0);
         else
-            return NULL;
+            return nullptr;
     }
 
     SpriteDef *def = new SpriteDef;

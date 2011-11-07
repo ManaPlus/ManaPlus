@@ -166,7 +166,7 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mDescItems(false),
     mTag(0),
     mSortType(0),
-    mShowMatrix(0)
+    mShowMatrix(nullptr)
 {
     mItemPopup = new ItemPopup;
     setFocusable(true);
@@ -188,10 +188,10 @@ ItemContainer::~ItemContainer()
     if (mSelImg)
     {
         mSelImg->decRef();
-        mSelImg = 0;
+        mSelImg = nullptr;
     }
     delete mItemPopup;
-    mItemPopup = 0;
+    mItemPopup = nullptr;
     delete []mShowMatrix;
 }
 
@@ -309,7 +309,7 @@ Item *ItemContainer::getSelectedItem() const
     if (mInventory)
         return mInventory->getItem(mSelectedIndex);
     else
-        return 0;
+        return nullptr;
 }
 
 void ItemContainer::distributeValueChangedEvent()

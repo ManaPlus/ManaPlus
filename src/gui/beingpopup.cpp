@@ -130,7 +130,7 @@ void BeingPopup::show(int x, int y, Being *b)
         label4 = label3;
         label3 = label2;
         label2 = label1;
-        label1 = 0;
+        label1 = nullptr;
     }
 
     if (!(b->getGuildName().empty()))
@@ -143,7 +143,7 @@ void BeingPopup::show(int x, int y, Being *b)
     {
         label4 = label3;
         label3 = label2;
-        label2 = 0;
+        label2 = nullptr;
     }
 
     if (b->getPvpRank() > 0)
@@ -154,7 +154,7 @@ void BeingPopup::show(int x, int y, Being *b)
     else
     {
         label4 = label3;
-        label3 = 0;
+        label3 = nullptr;
     }
 
     if (!b->getComment().empty())
@@ -165,7 +165,7 @@ void BeingPopup::show(int x, int y, Being *b)
     }
     else
     {
-        label4 = 0;
+        label4 = nullptr;
     }
 
     int minWidth = mBeingName->getWidth();

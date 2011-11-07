@@ -79,14 +79,14 @@ protected:
         {
             mInviteDialog->close();
             mInviteDialog->scheduleDelete();
-            mInviteDialog = NULL;
+            mInviteDialog = nullptr;
         }
 
         if (mConfirmDialog)
         {
             mConfirmDialog->close();
             mConfirmDialog->scheduleDelete();
-            mConfirmDialog = NULL;
+            mConfirmDialog = nullptr;
         }
     }
 
@@ -347,11 +347,11 @@ public:
                 localChatTab->chatLog(strprintf(_("Invited user %s to party."),
                                       name.c_str()), BY_SERVER);
             }
-            mInviteDialog = NULL;
+            mInviteDialog = nullptr;
         }
         else if (event.getId() == "~do invite")
         {
-            mInviteDialog = NULL;
+            mInviteDialog = nullptr;
         }
         else if (event.getId() == "yes")
         {
@@ -361,11 +361,11 @@ public:
                 localChatTab->chatLog(strprintf(_("Party %s quit requested."),
                                       mParty->getName().c_str()), BY_SERVER);
             }
-            mConfirmDialog = NULL;
+            mConfirmDialog = nullptr;
         }
         else if (event.getId() == "~yes")
         {
-            mConfirmDialog = NULL;
+            mConfirmDialog = nullptr;
         }
     }
 
@@ -1146,7 +1146,7 @@ SocialWindow::SocialWindow() :
     place(2, 0, mLeaveButton);
     place(0, 1, mTabs, 4, 4);
 
-    widgetResized(NULL);
+    widgetResized(nullptr);
 
     mCreatePopup = new CreatePopup();
 
@@ -1184,7 +1184,7 @@ SocialWindow::~SocialWindow()
     {
         mGuildAcceptDialog->close();
         mGuildAcceptDialog->scheduleDelete();
-        mGuildAcceptDialog = NULL;
+        mGuildAcceptDialog = nullptr;
 
         mGuildInvited = 0;
     }
@@ -1193,7 +1193,7 @@ SocialWindow::~SocialWindow()
     {
         mPartyAcceptDialog->close();
         mPartyAcceptDialog->scheduleDelete();
-        mPartyAcceptDialog = NULL;
+        mPartyAcceptDialog = nullptr;
 
         mPartyInviter = "";
     }
@@ -1300,7 +1300,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         }
 
         mPartyInviter = "";
-        mPartyAcceptDialog = NULL;
+        mPartyAcceptDialog = nullptr;
     }
     else if (event.getSource() == mGuildAcceptDialog)
     {
@@ -1333,7 +1333,7 @@ void SocialWindow::action(const gcn::ActionEvent &event)
         }
 
         mGuildInvited = 0;
-        mGuildAcceptDialog = NULL;
+        mGuildAcceptDialog = nullptr;
     }
     else if (event.getId() == "create")
     {
@@ -1374,11 +1374,11 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                                   name.c_str()), BY_SERVER);
         }
 
-        mGuildCreateDialog = NULL;
+        mGuildCreateDialog = nullptr;
     }
     else if (event.getId() == "~create guild")
     {
-        mGuildCreateDialog = NULL;
+        mGuildCreateDialog = nullptr;
     }
     else if (event.getId() == "create party")
     {
@@ -1397,11 +1397,11 @@ void SocialWindow::action(const gcn::ActionEvent &event)
                                   name.c_str()), BY_SERVER);
         }
 
-        mPartyCreateDialog = NULL;
+        mPartyCreateDialog = nullptr;
     }
     else if (event.getId() == "~create party")
     {
-        mPartyCreateDialog = NULL;
+        mPartyCreateDialog = nullptr;
     }
 }
 

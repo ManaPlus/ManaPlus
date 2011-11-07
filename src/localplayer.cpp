@@ -89,7 +89,7 @@
 const short walkingKeyboardDelay = 1000;
 const short awayLimitTimer = 60;
 
-LocalPlayer *player_node = NULL;
+LocalPlayer *player_node = nullptr;
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
 extern OkDialog *weightNotice;
@@ -101,10 +101,10 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, 0),
     mTargetTime(-1),
     mLastTarget(-1),
-    mTarget(NULL),
+    mTarget(nullptr),
     mPlayerFollowed(""),
     mPlayerImitated(""),
-    mPickUpTarget(NULL),
+    mPickUpTarget(nullptr),
     mGoingToTarget(false), mKeepAttacking(false),
     mLastAction(-1),
     mWalkingDir(0),
@@ -305,7 +305,7 @@ void LocalPlayer::logic()
     if (get_elapsed_time(mTargetTime) >= 60000)
     {
         mTargetTime = tick_time;
-//        setTarget(NULL);
+//        setTarget(nullptr);
         mLastTarget = -1;
     }
 
@@ -384,7 +384,7 @@ void LocalPlayer::setAction(Action action, int attackType)
             debugMsg(_("You were killed by ") + mLastHitFrom);
             mLastHitFrom = "";
         }
-        setTarget(NULL);
+        setTarget(nullptr);
     }
 
     Being::setAction(action, attackType);
@@ -942,7 +942,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
     if (dx * dx + dy * dy < dist)
     {
         Net::getPlayerHandler()->pickUp(item);
-        mPickUpTarget = NULL;
+        mPickUpTarget = nullptr;
     }
     else if (mPickUpType >= 4 && mPickUpType <= 6)
     {
@@ -1408,7 +1408,7 @@ void LocalPlayer::untarget()
         setAction(STAND);
 
     if (mTarget)
-        setTarget(NULL);
+        setTarget(nullptr);
 
     mKeepAttacking = false;
     mLastTarget = -1;
@@ -1948,7 +1948,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
     bool allowSword = false;
     int dx = target->getTileX() - mX;
     int dy = target->getTileY() - mY;
-    Item *item = NULL;
+    Item *item = nullptr;
 
     if (dx * dx + dy * dy > 80)
         return;

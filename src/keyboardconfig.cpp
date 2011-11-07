@@ -477,7 +477,7 @@ bool KeyboardConfig::isKeyActive(int index) const
 
 void KeyboardConfig::refreshActiveKeys()
 {
-    mActiveKeys = SDL_GetKeyState(NULL);
+    mActiveKeys = SDL_GetKeyState(nullptr);
 }
 
 std::string KeyboardConfig::getKeyValueString(int index) const

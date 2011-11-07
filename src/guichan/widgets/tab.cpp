@@ -59,7 +59,7 @@ namespace gcn
 {
     Tab::Tab() :
         mHasMouse(false),
-        mTabbedArea(NULL)
+        mTabbedArea(nullptr)
     {
         mLabel = new Label();
         mLabel->setPosition(4, 4);
@@ -71,7 +71,7 @@ namespace gcn
     Tab::~Tab()
     {
         delete mLabel;
-        mLabel = 0;
+        mLabel = nullptr;
     }
 
     void Tab::adjustSize()
@@ -79,7 +79,7 @@ namespace gcn
         setSize(mLabel->getWidth() + 8,
                 mLabel->getHeight() + 8);
 
-        if (mTabbedArea != NULL)
+        if (mTabbedArea)
             mTabbedArea->adjustTabPositions();
     }
 

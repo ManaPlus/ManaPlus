@@ -76,7 +76,7 @@ GuiTableActionListener::~GuiTableActionListener()
     if (mWidget)
     {
         mWidget->removeActionListener(this);
-        mWidget->_setParent(NULL);
+        mWidget->_setParent(nullptr);
     }
 }
 
@@ -92,10 +92,10 @@ GuiTable::GuiTable(TableModel *initial_model, bool opacity) :
     mLinewiseMode(false),
     mWrappingEnabled(false),
     mOpaque(opacity),
-    mModel(NULL),
+    mModel(nullptr),
     mSelectedRow(0),
     mSelectedColumn(0),
-    mTopWidget(NULL)
+    mTopWidget(nullptr)
 {
     mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
     mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
@@ -110,7 +110,7 @@ GuiTable::~GuiTable()
 {
     uninstallActionListeners();
     delete mModel;
-    mModel = 0;
+    mModel = nullptr;
 }
 
 TableModel *GuiTable::getModel() const
@@ -391,7 +391,7 @@ void GuiTable::moveToBottom(gcn::Widget *widget)
 {
     gcn::Widget::moveToBottom(widget);
     if (widget == mTopWidget)
-        mTopWidget = NULL;
+        mTopWidget = nullptr;
 }
 
 gcn::Rectangle GuiTable::getChildrenArea()
@@ -512,7 +512,7 @@ void GuiTable::modelUpdated(bool completed)
     }
     else
     { // before the update?
-        mTopWidget = NULL; // No longer valid in general
+        mTopWidget = nullptr; // No longer valid in general
         uninstallActionListeners();
     }
 }
@@ -531,10 +531,10 @@ gcn::Widget *GuiTable::getWidgetAt(int x, int y)
         if (w && w->isFocusable())
             return w;
         else
-            return NULL; // Grab the event locally
+            return nullptr; // Grab the event locally
     }
     else
-        return NULL;
+        return nullptr;
 }
 
 int GuiTable::getRowForY(int y) const

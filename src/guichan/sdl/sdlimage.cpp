@@ -50,6 +50,8 @@
 #include "guichan/exception.hpp"
 #include "guichan/sdl/sdlpixel.hpp"
 
+#include "debug.h"
+
 namespace gcn
 {
     SDLImage::SDLImage(SDL_Surface* surface, bool autoFree)
@@ -71,7 +73,7 @@ namespace gcn
 
     int SDLImage::getWidth() const
     {
-        if (mSurface == NULL)
+        if (!mSurface)
         {
             throw GCN_EXCEPTION("Trying to get the width of "
                 "a non loaded image.");
@@ -82,7 +84,7 @@ namespace gcn
 
     int SDLImage::getHeight() const
     {
-        if (mSurface == NULL)
+        if (!mSurface)
         {
             throw GCN_EXCEPTION("Trying to get the height of "
                 "a non loaded image.");
@@ -93,7 +95,7 @@ namespace gcn
 
     Color SDLImage::getPixel(int x, int y)
     {
-        if (mSurface == NULL)
+        if (!mSurface)
         {
             throw GCN_EXCEPTION("Trying to get a pixel from a "
                 "non loaded image.");
@@ -104,7 +106,7 @@ namespace gcn
 
     void SDLImage::putPixel(int x, int y, const Color& color)
     {
-        if (mSurface == NULL)
+        if (!mSurface)
         {
             throw GCN_EXCEPTION("Trying to put a pixel in a "
                 "non loaded image.");
@@ -115,7 +117,7 @@ namespace gcn
 
     void SDLImage::convertToDisplayFormat()
     {
-        if (mSurface == NULL)
+        if (!mSurface)
         {
             throw GCN_EXCEPTION("Trying to convert a non loaded image "
                 "to display format.");
@@ -155,16 +157,16 @@ namespace gcn
         {
             tmp = SDL_DisplayFormatAlpha(mSurface);
             SDL_FreeSurface(mSurface);
-            mSurface = NULL;
+            mSurface = nullptr;
         }
         else
         {
             tmp = SDL_DisplayFormat(mSurface);
             SDL_FreeSurface(mSurface);
-            mSurface = NULL;
+            mSurface = nullptr;
         }
 
-        if (tmp == NULL)
+        if (!tmp)
             throw GCN_EXCEPTION("Unable to convert image to display format.");
 
         if (hasPink)

@@ -46,7 +46,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
 
     gcn::Button *yesButton = new Button(_("Yes"), "yes", this);
     gcn::Button *noButton = new Button(_("No"), "no", this);
-    gcn::Button *ignoreButton = NULL;
+    gcn::Button *ignoreButton = nullptr;
 
     if (ignore)
         ignoreButton = new Button(_("Ignore"), "ignore", this);

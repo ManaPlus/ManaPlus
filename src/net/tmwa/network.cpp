@@ -181,8 +181,8 @@ void Network::disconnect()
 
     if (mWorkerThread && SDL_GetThreadID(mWorkerThread))
     {
-        SDL_WaitThread(mWorkerThread, NULL);
-        mWorkerThread = NULL;
+        SDL_WaitThread(mWorkerThread, nullptr);
+        mWorkerThread = nullptr;
     }
 
     if (mSocket)

@@ -45,7 +45,7 @@ LayoutCell::~LayoutCell()
     if (mType == ARRAY)
     {
         delete mArray;
-        mArray = 0;
+        mArray = nullptr;
     }
 }
 
@@ -159,7 +159,7 @@ void LayoutArray::resizeGrid(int w, int h)
         i = mCells.begin();
     while (i != mCells.end())
     {
-        i->resize(w, 0);
+        i->resize(w, nullptr);
         ++i;
     }
 }

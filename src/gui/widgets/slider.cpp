@@ -101,9 +101,9 @@ void Slider::init()
         }
         else
         {
-            hStart = 0;
-            hMid = 0;
-            hEnd = 0;
+            hStart = nullptr;
+            hMid = nullptr;
+            hEnd = nullptr;
         }
         if (sliderHi)
         {
@@ -113,9 +113,9 @@ void Slider::init()
         }
         else
         {
-            hStartHi = 0;
-            hMidHi = 0;
-            hEndHi = 0;
+            hStartHi = nullptr;
+            hMidHi = nullptr;
+            hEndHi = nullptr;
         }
 
         x = 6; y = 8;
@@ -123,11 +123,11 @@ void Slider::init()
         if (slider)
             hGrip = slider->getSubImage(x, y, w, h);
         else
-            hGrip = 0;
+            hGrip = nullptr;
         if (sliderHi)
             hGripHi = sliderHi->getSubImage(x, y, w, h);
         else
-            hGripHi = 0;
+            hGripHi = nullptr;
 
         x = 0; y = 6;
         w = 6; h = 21;
@@ -140,9 +140,9 @@ void Slider::init()
         }
         else
         {
-            vStart = 0;
-            vMid = 0;
-            vEnd = 0;
+            vStart = nullptr;
+            vMid = nullptr;
+            vEnd = nullptr;
         }
         if (sliderHi)
         {
@@ -152,9 +152,9 @@ void Slider::init()
         }
         else
         {
-            vStartHi = 0;
-            vMidHi = 0;
-            vEndHi = 0;
+            vStartHi = nullptr;
+            vMidHi = nullptr;
+            vEndHi = nullptr;
         }
 
         x = 6; y = 8;
@@ -162,12 +162,12 @@ void Slider::init()
         if (slider)
             vGrip = slider->getSubImage(x, y, w, h);
         else
-            vGrip = 0;
+            vGrip = nullptr;
 
         if (sliderHi)
             vGripHi = sliderHi->getSubImage(x, y, w, h);
         else
-            vGripHi = 0;
+            vGripHi = nullptr;
 
         if (slider)
             slider->decRef();

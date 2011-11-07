@@ -75,7 +75,7 @@ void ShopItems::addItemNoDup(int id, unsigned char color,
 void ShopItems::addItem2(int inventoryIndex, int id, unsigned char color,
                          int quantity, int price)
 {
-    ShopItem *item = 0;
+    ShopItem *item = nullptr;
     if (mMergeDuplicates)
         item = findItem(id, color);
 
@@ -93,7 +93,7 @@ void ShopItems::addItem2(int inventoryIndex, int id, unsigned char color,
 ShopItem *ShopItems::at(unsigned int i) const
 {
     if (i >= mShopItems.size())
-        return 0;
+        return nullptr;
 
     return mShopItems.at(i);
 }
@@ -137,5 +137,5 @@ ShopItem *ShopItems::findItem(int id, unsigned char color) const
         ++it;
     }
 
-    return 0;
+    return nullptr;
 }

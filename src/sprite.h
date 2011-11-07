@@ -24,6 +24,8 @@
 
 #include "resources/spritedef.h"
 
+#include "localconsts.h"
+
 class Graphics;
 class Image;
 
@@ -105,7 +107,7 @@ class Sprite
         virtual unsigned int getFrameCount() const = 0;
 
         virtual void *getHash()
-        { return 0; }
+        { return nullptr; }
 
         virtual void *getHash2()
         { return this; }

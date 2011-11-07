@@ -63,7 +63,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     setStickyButtonLock(true);
     setSticky(true);
 
-    mPlayer = new Being(0, ActorSprite::PLAYER, mRace, NULL);
+    mPlayer = new Being(0, ActorSprite::PLAYER, mRace, nullptr);
     mPlayer->setGender(GENDER_MALE);
 
     int numberOfHairColors = ColorDB::getHairSize();

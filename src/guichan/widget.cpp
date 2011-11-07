@@ -66,7 +66,7 @@
 
 namespace gcn
 {
-    Font* Widget::mGlobalFont = NULL;
+    Font* Widget::mGlobalFont = nullptr;
     DefaultFont Widget::mDefaultFont;
     std::list<Widget*> Widget::mWidgets;
     std::set<Widget*> Widget::mWidgetsSet;
@@ -76,16 +76,16 @@ namespace gcn
         mBackgroundColor(0xffffff),
         mBaseColor(0x808090),
         mSelectionColor(0xc3d9ff),
-        mFocusHandler(NULL),
-        mInternalFocusHandler(NULL),
-        mParent(NULL),
+        mFocusHandler(nullptr),
+        mInternalFocusHandler(nullptr),
+        mParent(nullptr),
         mFrameSize(0),
         mFocusable(false),
         mVisible(true),
         mTabIn(true),
         mTabOut(true),
         mEnabled(true),
-        mCurrentFont(NULL)
+        mCurrentFont(nullptr)
     {
         mWidgets.push_back(this);
         mWidgetsSet.insert(this);
@@ -103,7 +103,7 @@ namespace gcn
             (*iter)->death(event);
         }
 
-        _setFocusHandler(NULL);
+        _setFocusHandler(nullptr);
 
         mWidgets.remove(this);
         mWidgetsSet.erase(this);
@@ -272,7 +272,7 @@ namespace gcn
 
     void Widget::requestFocus()
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
         {
             throw GCN_EXCEPTION("No focushandler set (did you add "
                 "the widget to the gui?).");
@@ -455,9 +455,9 @@ namespace gcn
 
     Font* Widget::getFont() const
     {
-        if (mCurrentFont == NULL)
+        if (!mCurrentFont)
         {
-            if (mGlobalFont == NULL)
+            if (!mGlobalFont)
                 return &mDefaultFont;
 
             return mGlobalFont;
@@ -473,7 +473,7 @@ namespace gcn
         std::list<Widget*>::const_iterator iter;
         for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
         {
-            if ((*iter)->mCurrentFont == NULL)
+            if (!(*iter)->mCurrentFont)
                 (*iter)->fontChanged();
         }
     }
@@ -531,7 +531,7 @@ namespace gcn
 
     void Widget::requestModalFocus()
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
         {
             throw GCN_EXCEPTION("No focushandler set (did you add "
                 "the widget to the gui?).");
@@ -542,7 +542,7 @@ namespace gcn
 
     void Widget::requestModalMouseInputFocus()
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
         {
             throw GCN_EXCEPTION("No focushandler set (did you add "
                 "the widget to the gui?).");
@@ -553,7 +553,7 @@ namespace gcn
 
     void Widget::releaseModalFocus()
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
             return;
 
         mFocusHandler->releaseModalFocus(this);
@@ -561,7 +561,7 @@ namespace gcn
 
     void Widget::releaseModalMouseInputFocus()
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
             return;
 
         mFocusHandler->releaseModalMouseInputFocus(this);
@@ -569,7 +569,7 @@ namespace gcn
 
     bool Widget::isModalFocused() const
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
         {
             throw GCN_EXCEPTION("No focushandler set (did you add "
                 "the widget to the gui?).");
@@ -586,7 +586,7 @@ namespace gcn
 
     bool Widget::isModalMouseInputFocused() const
     {
-        if (mFocusHandler == NULL)
+        if (!mFocusHandler)
         {
             throw GCN_EXCEPTION("No focushandler set (did you add "
                 "the widget to the gui?).");
@@ -603,7 +603,7 @@ namespace gcn
 
     Widget *Widget::getWidgetAt(int x A_UNUSED, int y A_UNUSED)
     {
-        return NULL;
+        return nullptr;
     }
 
     const std::list<MouseListener*>& Widget::_getMouseListeners()
@@ -712,7 +712,7 @@ namespace gcn
 
     void Widget::showPart(Rectangle rectangle)
     {
-        if (mParent != NULL)
+        if (mParent)
             mParent->showWidgetPart(this, rectangle);
     }
 }

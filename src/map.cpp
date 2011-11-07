@@ -90,7 +90,7 @@ class ActorFunctuator
 } actorCompare;
 
 TileAnimation::TileAnimation(Animation *ani):
-    mLastImage(NULL)
+    mLastImage(nullptr)
 {
     mAnimation = new SimpleAnimation(ani);
 }
@@ -1807,7 +1807,7 @@ TileAnimation *Map::getAnimationForGid(int gid) const
 
     std::map<int, TileAnimation*>::const_iterator
         i = mTileAnimations.find(gid);
-    return (i == mTileAnimations.end()) ? NULL : i->second;
+    return (i == mTileAnimations.end()) ? nullptr : i->second;
 }
 
 void Map::setPvpMode(int mode)

@@ -25,6 +25,7 @@
 
 #include "equipment.h"
 #include "inventory.h"
+#include "localconsts.h"
 #include "logger.h"
 #include "playerinfo.h"
 
@@ -58,7 +59,7 @@ class EquipBackend : public Equipment::Backend
         {
             int invyIndex = mEquipment[index];
             if (invyIndex == -1)
-                return NULL;
+                return nullptr;
 
             if (PlayerInfo::getInventory())
                 return PlayerInfo::getInventory()->getItem(invyIndex);

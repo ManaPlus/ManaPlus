@@ -68,7 +68,7 @@ StaticTableModel::StaticTableModel(int row, int column) :
     mColumns(column),
     mHeight(1)
 {
-    mTableModel.resize(row * column, NULL);
+    mTableModel.resize(row * column, nullptr);
     mWidths.resize(column, 1);
 }
 
@@ -82,7 +82,7 @@ void StaticTableModel::resize()
 {
     mRows = getRows();
     mColumns = getColumns();
-    mTableModel.resize(mRows * mColumns, NULL);
+    mTableModel.resize(mRows * mColumns, nullptr);
 }
 
 void StaticTableModel::set(int row, int column, gcn::Widget *widget)

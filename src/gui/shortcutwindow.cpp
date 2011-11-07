@@ -54,7 +54,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
                                ShortcutContainer *content,
                                std::string skinFile,
                                int width, int height) :
-    Window("Window", false, 0, skinFile)
+    Window("Window", false, nullptr, skinFile)
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
@@ -66,7 +66,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 
     setupWindow->registerWindowForReset(this);
 
-    mTabs = 0;
+    mTabs = nullptr;
     mItems = content;
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
@@ -100,7 +100,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 
 ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
                                int width, int height) :
-    Window("Window", false, 0, skinFile)
+    Window("Window", false, nullptr, skinFile)
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
@@ -114,7 +114,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
 
     mTabs = new TabbedArea;
 
-    mItems = 0;
+    mItems = nullptr;
 
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
 
@@ -138,9 +138,9 @@ ShortcutWindow::~ShortcutWindow()
     if (mTabs)
         mTabs->removeAll();
     delete mTabs;
-    mTabs = 0;
+    mTabs = nullptr;
     delete mItems;
-    mItems = 0;
+    mItems = nullptr;
 }
 
 void ShortcutWindow::addTab(std::string name, ShortcutContainer *content)

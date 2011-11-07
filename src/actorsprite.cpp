@@ -186,7 +186,7 @@ static EffectDescription *getEffectDescription(int effectId)
         {
             logger->log1("Error loading being effects file: "
                     EFFECTS_FILE);
-            return NULL;
+            return nullptr;
         }
 
         for_each_xml_child_node(node, root)

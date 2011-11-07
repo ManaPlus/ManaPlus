@@ -70,7 +70,7 @@ Sound::~Sound()
     config.removeListener("playMusic", this);
 
     // Unlink the callback function.
-    Mix_HookMusicFinished(NULL);
+    Mix_HookMusicFinished(nullptr);
 }
 
 void Sound::optionChanged(const std::string &value)

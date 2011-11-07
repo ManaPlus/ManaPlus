@@ -24,6 +24,7 @@
 
 #include "actor.h"
 #include "compoundsprite.h"
+#include "localconsts.h"
 #include "map.h"
 #include "particlecontainer.h"
 
@@ -122,7 +123,8 @@ public:
     /**
      * Untargets the actor.
      */
-    void untarget() { mUsedTargetCursor = NULL; }
+    void untarget()
+    { mUsedTargetCursor = nullptr; }
 
     /**
      * Triggers a visual effect, such as `level up'. Only draws the visual

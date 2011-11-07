@@ -126,9 +126,9 @@ SpecialInfo *SpecialDB::get(int id)
     SpecialInfos::const_iterator i = mSpecialInfos.find(id);
 
     if (i == mSpecialInfos.end())
-        return NULL;
+        return nullptr;
     else
         return i->second;
-    return NULL;
+    return nullptr;
 }
 

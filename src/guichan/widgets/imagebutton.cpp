@@ -55,7 +55,7 @@
 namespace gcn
 {
     ImageButton::ImageButton() :
-        mImage(0), 
+        mImage(nullptr), 
         mInternalImage(false)
     {
         setWidth(0);
@@ -63,7 +63,7 @@ namespace gcn
     }
 
     ImageButton::ImageButton(const std::string& filename) :
-        mImage(0), 
+        mImage(nullptr), 
         mInternalImage(false)
     {
         mImage = Image::load(filename);
@@ -85,7 +85,7 @@ namespace gcn
         if (mInternalImage)
         {
             delete mImage;
-            mImage = 0;
+            mImage = nullptr;
         }
     }
 
@@ -94,7 +94,7 @@ namespace gcn
         if (mInternalImage)
         {
             delete mImage;
-            mImage = 0;
+            mImage = nullptr;
         }
 
         mImage = image;

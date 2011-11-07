@@ -65,7 +65,7 @@ namespace gcn
 {
 
     SDLGraphics::SDLGraphics() :
-        mTarget(0),
+        mTarget(nullptr),
         mAlpha(false)
     {
     }
@@ -155,7 +155,7 @@ namespace gcn
 
         const SDLImage* srcImage = dynamic_cast<const SDLImage*>(image);
 
-        if (srcImage == NULL)
+        if (!srcImage)
         {
             throw GCN_EXCEPTION("Trying to draw an image of unknown format,"
                 " must be an SDLImage.");

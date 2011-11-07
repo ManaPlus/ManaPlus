@@ -133,7 +133,7 @@ DropDown::~DropDown()
     }
 
     delete mScrollArea;
-    mScrollArea = 0;
+    mScrollArea = nullptr;
 }
 
 void DropDown::updateAlpha()

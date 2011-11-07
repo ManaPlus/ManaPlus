@@ -95,7 +95,7 @@ PartyMember *Party::getMember(int id) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 PartyMember *Party::getMember(const std::string &name) const
@@ -110,7 +110,7 @@ PartyMember *Party::getMember(const std::string &name) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void Party::removeMember(PartyMember *member)

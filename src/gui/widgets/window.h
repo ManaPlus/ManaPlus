@@ -25,6 +25,7 @@
 
 #include "graphics.h"
 #include "guichanfwd.h"
+#include "localconsts.h"
 
 #include <guichan/widgetlistener.hpp>
 
@@ -65,7 +66,7 @@ class Window : public gcn::Window, gcn::WidgetListener
          * @param skin    The location where the window's skin XML can be found.
          */
         Window(const std::string &caption = "Window", bool modal = false,
-               Window *parent = NULL, std::string skin = "");
+               Window *parent = nullptr, std::string skin = "");
 
         /**
          * Destructor. Deletes all the added widgets.
