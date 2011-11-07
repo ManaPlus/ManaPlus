@@ -284,6 +284,9 @@ bool sendBuffer(std::string& text)
 }
 
 #elif USE_X11
+
+#include <unistd.h>
+
 static char* getSelection2(Display *dpy, Window us, Atom selection,
                            Atom request_target)
 {

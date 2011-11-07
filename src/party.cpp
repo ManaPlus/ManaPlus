@@ -220,7 +220,7 @@ bool Party::isMember(PartyMember *member) const
     if (!member)
         return false;
 
-    if (member->mParty > 0 && member->mParty != this)
+    if (member->mParty && member->mParty != this)
         return false;
 
     MemberList::const_iterator itr = mMembers.begin();
