@@ -403,12 +403,6 @@ Game::Game():
      */
     Net::getGameHandler()->ping(tick_time);
 
-    Joystick::init();
-    // TODO: The user should be able to choose which one to use
-    // Open the first device
-    if (Joystick::getNumberOfJoysticks() > 0)
-        joystick = new Joystick(0);
-
     if (setupWindow)
         setupWindow->setInGame(true);
     clearKeysArray();

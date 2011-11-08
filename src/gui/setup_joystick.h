@@ -29,21 +29,31 @@
 
 #include <guichan/actionlistener.hpp>
 
+class DropDown;
+class NamesModel;
+
 class Setup_Joystick : public SetupTab
 {
     public:
         Setup_Joystick();
 
+        ~Setup_Joystick();
+
         void apply();
+
         void cancel();
 
         void action(const gcn::ActionEvent &event);
+
+        void setTempEnabled(bool sel);
 
     private:
         gcn::Label *mCalibrateLabel;
         gcn::Button *mCalibrateButton;
         bool mOriginalJoystickEnabled;
         gcn::CheckBox *mJoystickEnabled;
+        NamesModel *mNamesModel;
+        DropDown *mNamesDropDown;
 };
 
 #endif

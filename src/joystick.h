@@ -33,7 +33,7 @@ class Joystick
          */
         enum
         {
-            MAX_BUTTONS = 6
+            MAX_BUTTONS = 64
         };
 
         /**
@@ -66,11 +66,19 @@ class Joystick
 
         ~Joystick();
 
+        bool open();
+
+        void close();
+
         bool isEnabled() const
         { return mEnabled; }
 
-        void setEnabled(bool enabled)
+        void setNumber(int n);
+
+        static void setEnabled(bool enabled)
         { mEnabled = enabled; }
+
+        static void getNames(std::vector <std::string> &names);
 
         /**
          * Updates the direction and button information.
@@ -98,6 +106,9 @@ class Joystick
         bool isRight() const
         { return mEnabled && (mDirection & RIGHT); };
 
+        int getNumber() const
+        { return mNumber; }
+
     protected:
         unsigned char mDirection;
         bool mButtons[MAX_BUTTONS];
@@ -105,11 +116,19 @@ class Joystick
 
         int mUpTolerance, mDownTolerance, mLeftTolerance, mRightTolerance;
         bool mCalibrating;
-        bool mEnabled;
+        int mNumber;
+        bool mCalibrated;
+        int mButtonsNumber;
 
+        /**
+         * Is joystick support enabled.
+         */
+        static bool mEnabled;
         static int joystickCount;
 
         void doCalibration();
 };
+
+extern Joystick *joystick;
 
 #endif // JOYSTICK_H

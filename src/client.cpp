@@ -34,6 +34,7 @@
 #include "guildmanager.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
+#include "joystick.h"
 #include "keyboardconfig.h"
 #ifdef USE_OPENGL
 #include "openglgraphics.h"
@@ -560,6 +561,8 @@ Client::Client(const Options &options):
 
     // Initialise player relations
     player_relations.init();
+
+    Joystick::init();
 
     userPalette = new UserPalette;
     setupWindow = new Setup;

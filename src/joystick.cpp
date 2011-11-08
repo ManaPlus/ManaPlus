@@ -27,47 +27,38 @@
 #include "debug.h"
 
 int Joystick::joystickCount = 0;
+bool Joystick::mEnabled = false;
 
 void Joystick::init()
 {
     SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-
-    // Have SDL call SDL_JoystickUpdate() automatically
     SDL_JoystickEventState(SDL_ENABLE);
-
     joystickCount = SDL_NumJoysticks();
     logger->log("%i joysticks/gamepads found", joystickCount);
     for (int i = 0; i < joystickCount; i++)
         logger->log("- %s", SDL_JoystickName(i));
+
+    mEnabled = config.getBoolValue("joystickEnabled");
+
+    if (Joystick::getNumberOfJoysticks() > 0)
+    {
+        joystick = new Joystick(config.getIntValue("selectedJoystick"));
+        if (mEnabled)
+            joystick->open();
+    }
 }
 
 Joystick::Joystick(int no):
     mDirection(0),
+    mJoystick(nullptr),
     mCalibrating(false),
-    mEnabled(false)
+    mCalibrated(false),
+    mButtonsNumber(MAX_BUTTONS)
 {
     if (no >= joystickCount)
         no = joystickCount;
 
-    mJoystick = SDL_JoystickOpen(no);
-
-    // TODO Bail out!
-    if (!mJoystick)
-    {
-        logger->log("Couldn't open joystick: %s", SDL_GetError());
-        return;
-    }
-
-    logger->log("Axes: %i ", SDL_JoystickNumAxes(mJoystick));
-    logger->log("Balls: %i", SDL_JoystickNumBalls(mJoystick));
-    logger->log("Hats: %i", SDL_JoystickNumHats(mJoystick));
-    logger->log("Buttons: %i", SDL_JoystickNumButtons(mJoystick));
-
-    mEnabled = config.getBoolValue("joystickEnabled");
-    mUpTolerance = config.getIntValue("upTolerance");
-    mDownTolerance = config.getIntValue("downTolerance");
-    mLeftTolerance = config.getIntValue("leftTolerance");
-    mRightTolerance = config.getIntValue("rightTolerance");
+    mNumber = no;
 
     for (int i = 0; i < MAX_BUTTONS; i++)
         mButtons[i] = false;
@@ -75,7 +66,64 @@ Joystick::Joystick(int no):
 
 Joystick::~Joystick()
 {
-    SDL_JoystickClose(mJoystick);
+    close();
+}
+
+bool Joystick::open()
+{
+    logger->log("open joystick %d", mNumber);
+
+    mJoystick = SDL_JoystickOpen(mNumber);
+
+    // TODO Bail out!
+    if (!mJoystick)
+    {
+        logger->log("Couldn't open joystick: %s", SDL_GetError());
+        return false;
+    }
+
+    mButtonsNumber = SDL_JoystickNumButtons(mJoystick);
+    logger->log("Joystick: %i ", mNumber);
+    logger->log("Axes: %i ", SDL_JoystickNumAxes(mJoystick));
+    logger->log("Balls: %i", SDL_JoystickNumBalls(mJoystick));
+    logger->log("Hats: %i", SDL_JoystickNumHats(mJoystick));
+    logger->log("Buttons: %i", mButtonsNumber);
+
+    if (mButtonsNumber > MAX_BUTTONS)
+        mButtonsNumber = MAX_BUTTONS;
+
+    mCalibrated = config.getValueBool("joystick"
+        + toString(mNumber) + "calibrated", false);
+    mUpTolerance = config.getIntValue("upTolerance" + toString(mNumber));
+    mDownTolerance = config.getIntValue("downTolerance" + toString(mNumber));
+    mLeftTolerance = config.getIntValue("leftTolerance" + toString(mNumber));
+    mRightTolerance = config.getIntValue("rightTolerance" + toString(mNumber));
+
+    return true;
+}
+
+void Joystick::close()
+{
+    logger->log("close joystick %d", mNumber);
+    if (mJoystick)
+    {
+        SDL_JoystickClose(mJoystick);
+        mJoystick = nullptr;
+    }
+}
+
+void Joystick::setNumber(int n)
+{
+    if (mJoystick)
+    {
+        SDL_JoystickClose(mJoystick);
+        mNumber = n;
+    }
+    else
+    {
+        mNumber = n;
+    }
+    open();
 }
 
 void Joystick::update()
@@ -89,7 +137,7 @@ void Joystick::update()
         return;
     };
 
-    if (!mEnabled)
+    if (!mEnabled || !mCalibrated)
         return;
 
     // X-Axis
@@ -107,7 +155,7 @@ void Joystick::update()
         mDirection |= DOWN;
 
     // Buttons
-    for (int i = 0; i < MAX_BUTTONS; i++)
+    for (int i = 0; i < mButtonsNumber; i++)
         mButtons[i] = (SDL_JoystickGetButton(mJoystick, i) == 1);
 }
 
@@ -139,14 +187,23 @@ void Joystick::doCalibration()
 
 void Joystick::finishCalibration()
 {
-    config.setValue("leftTolerance", mLeftTolerance);
-    config.setValue("rightTolerance", mRightTolerance);
-    config.setValue("upTolerance", mUpTolerance);
-    config.setValue("downTolerance", mDownTolerance);
+    mCalibrated = true;
     mCalibrating = false;
+    config.setValue("joystick" + toString(mNumber) + "calibrated", true);
+    config.setValue("leftTolerance" + toString(mNumber), mLeftTolerance);
+    config.setValue("rightTolerance" + toString(mNumber), mRightTolerance);
+    config.setValue("upTolerance" + toString(mNumber), mUpTolerance);
+    config.setValue("downTolerance" + toString(mNumber), mDownTolerance);
 }
 
 bool Joystick::buttonPressed(unsigned char no) const
 {
     return (mEnabled && no < MAX_BUTTONS) ? mButtons[no] : false;
+}
+
+void Joystick::getNames(std::vector <std::string> &names)
+{
+    names.clear();
+    for (int i = 0; i < joystickCount; i++)
+        names.push_back(SDL_JoystickName(i));
 }
