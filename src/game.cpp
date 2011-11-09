@@ -1580,19 +1580,22 @@ void Game::handleInput()
             }
         }
 
-        if (((player_node->getAttackType() == 0
+        bool joyAttack(false);
+        if (joystick && joystick->buttonPressed(0))
+            joyAttack = true;
+
+        if ((((player_node->getAttackType() == 0
             && player_node->getFollow().empty()) || event.type == SDL_KEYDOWN)
-            && mValidSpeed)
+            || joyAttack) && mValidSpeed)
         {
             // Attacking monsters
-            if (keyboard.isKeyActive(keyboard.KEY_ATTACK) ||
-                (joystick && joystick->buttonPressed(0)))
+            if (keyboard.isKeyActive(keyboard.KEY_ATTACK))
             {
                 if (player_node->getTarget())
                     player_node->attack(player_node->getTarget(), true);
             }
 
-            if (keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK)
+            if ((keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK) || joyAttack)
                 && !keyboard.isKeyActive(keyboard.KEY_MOVE_TO_TARGET))
             {
                 Being *target = nullptr;
@@ -1676,10 +1679,15 @@ void Game::handleInput()
         if (!keyboard.isKeyActive(keyboard.KEY_ATTACK)
             && !keyboard.isKeyActive(keyboard.KEY_EMOTE))
         {
-            if (keyboard.isKeyActive(keyboard.KEY_TARGET))
+            if (keyboard.isKeyActive(keyboard.KEY_TARGET)
+                || (joystick && joystick->buttonPressed(4)))
+            {
                 player_node->stopAttack();
+            }
             else if (keyboard.isKeyActive(keyboard.KEY_UNTARGET))
+            {
                 player_node->untarget();
+            }
         }
 
         if (joystick)
