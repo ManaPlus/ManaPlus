@@ -102,7 +102,7 @@ unsigned char *php3_base64_decode(const unsigned char *string,
     unsigned char *result = static_cast<unsigned char *>(
         calloc(length + 1, 1));
 
-    if (result == nullptr)
+    if (!result)
         return nullptr;
 
     /* run through the whole string, converting as we go */

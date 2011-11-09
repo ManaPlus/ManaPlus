@@ -44,7 +44,9 @@ public:
      *
      * delParent means that the destructor should also free the parent.
      */
-    ParticleContainer(ParticleContainer *parent = nullptr, bool delParent = true);
+    ParticleContainer(ParticleContainer *parent = nullptr,
+        bool delParent = true);
+
     virtual ~ParticleContainer();
 
     /**

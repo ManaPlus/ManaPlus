@@ -94,7 +94,8 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
 
 bool sendBuffer(std::string& text)
 {
-    int wCharsLen = MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, nullptr, 0);
+    int wCharsLen = MultiByteToWideChar(CP_UTF8,
+        0, text.c_str(), -1, nullptr, 0);
     if (!wCharsLen)
         return false;
 

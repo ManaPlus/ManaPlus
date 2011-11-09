@@ -116,8 +116,9 @@ void MumbleManager::init()
         return;
     }
 
-    mLinkedMem = static_cast<LinkedMem *>(mmap(nullptr, sizeof(struct LinkedMem),
-        PROT_READ | PROT_WRITE, MAP_SHARED, shmfd, 0));
+    mLinkedMem = static_cast<LinkedMem *>(mmap(nullptr,
+        sizeof(struct LinkedMem), PROT_READ | PROT_WRITE,
+        MAP_SHARED, shmfd, 0));
 
     if (mLinkedMem == reinterpret_cast<void *>(-1))
     {

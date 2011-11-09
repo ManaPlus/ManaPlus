@@ -342,7 +342,8 @@ Client::Client(const Options &options):
     SDL_EnableUNICODE(1);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
-    SDL_WM_SetCaption(branding.getValue("appName", "ManaPlus").c_str(), nullptr);
+    SDL_WM_SetCaption(branding.getValue("appName",
+        "ManaPlus").c_str(), nullptr);
 
     ResourceManager *resman = ResourceManager::getInstance();
 

@@ -51,6 +51,10 @@ void Joystick::init()
 Joystick::Joystick(int no):
     mDirection(0),
     mJoystick(nullptr),
+    mUpTolerance(0),
+    mDownTolerance(0),
+    mLeftTolerance(0),
+    mRightTolerance(0),
     mCalibrating(false),
     mCalibrated(false),
     mButtonsNumber(MAX_BUTTONS)

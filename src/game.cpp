@@ -840,9 +840,14 @@ void Game::handleInput()
                         helpWindow->setVisible(false);
                     // Close the config window, cancelling changes if opened
                     else if (setupWindow->isVisible())
-                        setupWindow->action(gcn::ActionEvent(nullptr, "cancel"));
+                    {
+                        setupWindow->action(gcn::ActionEvent(
+                            nullptr, "cancel"));
+                    }
                     else if (dialog)
+                    {
                         dialog->action(gcn::ActionEvent(nullptr, "ok"));
+                    }
                 }
                 if (chatWindow && keyboard.isKeyActive(
                     keyboard.KEY_TOGGLE_CHAT))

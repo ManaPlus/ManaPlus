@@ -165,7 +165,8 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
             action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
             break;
         case Key::ESCAPE:
-            action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
+            action(gcn::ActionEvent(nullptr,
+                mCancelButton->getActionEventId()));
             break;
         case Key::UP:
             dir = -1;

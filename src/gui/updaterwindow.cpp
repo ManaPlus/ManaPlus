@@ -268,7 +268,8 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
         }
         else
         {
-            action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
+            action(gcn::ActionEvent(nullptr,
+                mCancelButton->getActionEventId()));
         }
     }
 }

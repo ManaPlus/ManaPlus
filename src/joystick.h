@@ -114,7 +114,10 @@ class Joystick
         bool mButtons[MAX_BUTTONS];
         SDL_Joystick *mJoystick;
 
-        int mUpTolerance, mDownTolerance, mLeftTolerance, mRightTolerance;
+        int mUpTolerance;
+        int mDownTolerance;
+        int mLeftTolerance;
+        int mRightTolerance;
         bool mCalibrating;
         int mNumber;
         bool mCalibrated;
