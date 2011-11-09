@@ -167,6 +167,15 @@ void Joystick::update()
         else if (position >= mDownTolerance)
             mDirection |= DOWN;
 
+#ifdef DEBUG_JOYSTICK
+        if (SDL_JoystickGetAxis(mJoystick, 2))
+            logger->log("axis 2 pos: %d", SDL_JoystickGetAxis(mJoystick, 2));
+        if (SDL_JoystickGetAxis(mJoystick, 3))
+            logger->log("axis 3 pos: %d", SDL_JoystickGetAxis(mJoystick, 3));
+        if (SDL_JoystickGetAxis(mJoystick, 4))
+            logger->log("axis 4 pos: %d", SDL_JoystickGetAxis(mJoystick, 4));
+#endif
+
         if (!mDirection && mHaveHats)
         {
             // reading only hat 0
@@ -183,7 +192,13 @@ void Joystick::update()
 
         // Buttons
         for (int i = 0; i < mButtonsNumber; i++)
+        {
             mButtons[i] = (SDL_JoystickGetButton(mJoystick, i) == 1);
+#ifdef DEBUG_JOYSTICK
+            if (mButtons[i])
+                logger->log("button: %d", i);
+#endif
+        }
     }
     else
     {
