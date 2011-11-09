@@ -142,7 +142,8 @@ void Setup_Joystick::action(const gcn::ActionEvent &event)
         else
         {
             mCalibrateButton->setCaption(_("Stop"));
-            mCalibrateLabel->setCaption(_("Rotate the stick"));
+            mCalibrateLabel->setCaption(
+                _("Rotate the stick and dont press buttons"));
             joystick->startCalibration();
         }
     }
