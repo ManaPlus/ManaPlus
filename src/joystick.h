@@ -25,6 +25,9 @@
 
 #include <SDL.h>
 
+#include <string>
+#include <vector>
+
 class Joystick
 {
     public:
@@ -109,6 +112,9 @@ class Joystick
         int getNumber() const
         { return mNumber; }
 
+        void setUseInactive(bool b)
+        { mUseInactive = b; }
+
     protected:
         unsigned char mDirection;
         bool mButtons[MAX_BUTTONS];
@@ -122,6 +128,7 @@ class Joystick
         int mNumber;
         bool mCalibrated;
         int mButtonsNumber;
+        bool mUseInactive;
 
         /**
          * Is joystick support enabled.

@@ -20,8 +20,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "configuration.h"
 #include "joystick.h"
+
+#include "client.h"
+#include "configuration.h"
 #include "logger.h"
 
 #include "debug.h"
@@ -57,7 +59,8 @@ Joystick::Joystick(int no):
     mRightTolerance(0),
     mCalibrating(false),
     mCalibrated(false),
-    mButtonsNumber(MAX_BUTTONS)
+    mButtonsNumber(MAX_BUTTONS),
+    mUseInactive(false)
 {
     if (no >= joystickCount)
         no = joystickCount;
@@ -102,6 +105,7 @@ bool Joystick::open()
     mDownTolerance = config.getIntValue("downTolerance" + toString(mNumber));
     mLeftTolerance = config.getIntValue("leftTolerance" + toString(mNumber));
     mRightTolerance = config.getIntValue("rightTolerance" + toString(mNumber));
+    mUseInactive = config.getBoolValue("useInactiveJoystick");
 
     return true;
 }
@@ -144,23 +148,31 @@ void Joystick::update()
     if (!mEnabled || !mCalibrated)
         return;
 
-    // X-Axis
-    int position = SDL_JoystickGetAxis(mJoystick, 0);
-    if (position >= mRightTolerance)
-        mDirection |= RIGHT;
-    else if (position <= mLeftTolerance)
-        mDirection |= LEFT;
+    if (mUseInactive || Client::getInputFocused())
+    {
+        // X-Axis
+        int position = SDL_JoystickGetAxis(mJoystick, 0);
+        if (position >= mRightTolerance)
+            mDirection |= RIGHT;
+        else if (position <= mLeftTolerance)
+            mDirection |= LEFT;
 
-    // Y-Axis
-    position = SDL_JoystickGetAxis(mJoystick, 1);
-    if (position <= mUpTolerance)
-        mDirection |= UP;
-    else if (position >= mDownTolerance)
-        mDirection |= DOWN;
+        // Y-Axis
+        position = SDL_JoystickGetAxis(mJoystick, 1);
+        if (position <= mUpTolerance)
+            mDirection |= UP;
+        else if (position >= mDownTolerance)
+            mDirection |= DOWN;
 
-    // Buttons
-    for (int i = 0; i < mButtonsNumber; i++)
-        mButtons[i] = (SDL_JoystickGetButton(mJoystick, i) == 1);
+        // Buttons
+        for (int i = 0; i < mButtonsNumber; i++)
+            mButtons[i] = (SDL_JoystickGetButton(mJoystick, i) == 1);
+    }
+    else
+    {
+        for (int i = 0; i < mButtonsNumber; i++)
+            mButtons[i] = false;
+    }
 }
 
 void Joystick::startCalibration()

@@ -54,6 +54,7 @@ class Setup_Joystick : public SetupTab
         gcn::CheckBox *mJoystickEnabled;
         NamesModel *mNamesModel;
         DropDown *mNamesDropDown;
+        gcn::CheckBox *mUseInactiveCheckBox;
 };
 
 #endif

@@ -223,6 +223,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "pvpAttackType", 0);
     AddDEF(configData, "lang", "");
     AddDEF(configData, "selectedJoystick", 0);
+    AddDEF(configData, "useInactiveJoystick", false);
     return configData;
 }
 

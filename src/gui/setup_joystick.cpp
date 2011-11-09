@@ -70,7 +70,10 @@ Setup_Joystick::Setup_Joystick():
     mCalibrateLabel(new Label(_("Press the button to start calibration"))),
     mCalibrateButton(new Button(_("Calibrate"), "calibrate", this)),
     mJoystickEnabled(new CheckBox(_("Enable joystick"))),
-    mNamesModel(new NamesModel())
+    mNamesModel(new NamesModel()),
+    mNamesDropDown(new DropDown(mNamesModel)),
+    mUseInactiveCheckBox(new CheckBox(_("Use joystick if client "
+        "window inactive"), config.getBoolValue("useInactiveJoystick")))
 {
     setName(_("Joystick"));
 
@@ -82,7 +85,6 @@ Setup_Joystick::Setup_Joystick():
     mJoystickEnabled->addActionListener(this);
     mCalibrateButton->setEnabled(mOriginalJoystickEnabled);
 
-    mNamesDropDown = new DropDown(mNamesModel);
     mNamesDropDown->setActionEventId("name");
     mNamesDropDown->addActionListener(this);
 
@@ -104,8 +106,9 @@ Setup_Joystick::Setup_Joystick():
 
     place(0, 0, mJoystickEnabled);
     place(0, 1, mNamesDropDown);
-    place(0, 2, mCalibrateLabel);
-    place(0, 3, mCalibrateButton);
+    place(0, 2, mUseInactiveCheckBox);
+    place(0, 3, mCalibrateLabel);
+    place(0, 4, mCalibrateButton);
 
     setDimension(gcn::Rectangle(0, 0, 365, 75));
 }
@@ -180,4 +183,8 @@ void Setup_Joystick::apply()
 
     config.setValue("joystickEnabled",
         joystick ? joystick->isEnabled() : false);
+
+    config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
+    if (joystick)
+        joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
 }
