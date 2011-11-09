@@ -710,6 +710,7 @@ void Game::handleInput()
     if (joystick)
         joystick->update();
 
+    bool wasDown(false);
     // Events
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -722,6 +723,7 @@ void Game::handleInput()
         // Keyboard events (for discontinuous keys)
         if (event.type == SDL_KEYDOWN)
         {
+            wasDown = true;
             gcn::Window *requestedWindow = nullptr;
 
             if (setupWindow && setupWindow->isVisible() &&
@@ -1585,7 +1587,7 @@ void Game::handleInput()
             joyAttack = true;
 
         if ((((player_node->getAttackType() == 0
-            && player_node->getFollow().empty()) || event.type == SDL_KEYDOWN)
+            && player_node->getFollow().empty()) || wasDown)
             || joyAttack) && mValidSpeed)
         {
             // Attacking monsters
