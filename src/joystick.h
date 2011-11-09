@@ -129,6 +129,7 @@ class Joystick
         bool mCalibrated;
         int mButtonsNumber;
         bool mUseInactive;
+        bool mHaveHats;
 
         /**
          * Is joystick support enabled.

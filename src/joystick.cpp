@@ -60,7 +60,8 @@ Joystick::Joystick(int no):
     mCalibrating(false),
     mCalibrated(false),
     mButtonsNumber(MAX_BUTTONS),
-    mUseInactive(false)
+    mUseInactive(false),
+    mHaveHats(false)
 {
     if (no >= joystickCount)
         no = joystickCount;
@@ -95,6 +96,8 @@ bool Joystick::open()
     logger->log("Balls: %i", SDL_JoystickNumBalls(mJoystick));
     logger->log("Hats: %i", SDL_JoystickNumHats(mJoystick));
     logger->log("Buttons: %i", mButtonsNumber);
+
+    mHaveHats = (SDL_JoystickNumHats(mJoystick) > 0);
 
     if (mButtonsNumber > MAX_BUTTONS)
         mButtonsNumber = MAX_BUTTONS;
@@ -163,6 +166,20 @@ void Joystick::update()
             mDirection |= UP;
         else if (position >= mDownTolerance)
             mDirection |= DOWN;
+
+        if (!mDirection && mHaveHats)
+        {
+            // reading only hat 0
+            Uint8 hat = SDL_JoystickGetHat(mJoystick, 0);
+            if (hat & SDL_HAT_RIGHT)
+                mDirection |= RIGHT;
+            else if (hat & SDL_HAT_LEFT)
+                mDirection |= LEFT;
+            if (hat & SDL_HAT_UP)
+                mDirection |= UP;
+            else if (hat & SDL_HAT_DOWN)
+                mDirection |= DOWN;
+        }
 
         // Buttons
         for (int i = 0; i < mButtonsNumber; i++)
