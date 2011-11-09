@@ -709,6 +709,9 @@ Client::~Client()
     delete userPalette;
     userPalette = nullptr;
 
+    delete joystick;
+    joystick = nullptr;
+
     logger->log1("Quitting10");
 
     config.write();
