@@ -129,12 +129,12 @@ void Joystick::setNumber(int n)
     {
         SDL_JoystickClose(mJoystick);
         mNumber = n;
+        open();
     }
     else
     {
         mNumber = n;
     }
-    open();
 }
 
 void Joystick::update()
