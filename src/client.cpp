@@ -294,7 +294,7 @@ Client::Client(const Options &options):
 #if ENABLE_NLS
     std::string lang = config.getValue("lang", "");
 #ifdef WIN32
-    if (lang == "")
+    if (!lang.empty())
         lang = std::string(_nl_locale_name_default());
 
     putenv((char*)("LANG=" + lang).c_str());
@@ -303,6 +303,11 @@ Client::Client(const Options &options):
     if (lang != "C")
         bindtextdomain("manaplus", "translations/");
 #else
+    if (!lang.empty())
+    {
+        putenv(const_cast<char*>(("LANG=" + lang).c_str()));
+        putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
+    }
 #ifdef ENABLE_PORTABLE
     bindtextdomain("manaplus", (std::string(PHYSFS_getBaseDir())
         + "../locale/").c_str());
