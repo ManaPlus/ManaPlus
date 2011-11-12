@@ -33,6 +33,8 @@
 
 #include <map>
 
+#include "debug.h"
+
 /**
  * The local host which is shared for all outgoing connections.
  */

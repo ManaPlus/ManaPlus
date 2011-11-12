@@ -470,4 +470,15 @@ void ChatHandler::sendRaw(const std::string &args A_UNUSED)
 {
 
 }
+
+void ChatHandler::ignoreAll()
+{
+
+}
+
+void ChatHandler::unIgnoreAll()
+{
+
+}
+
 } // namespace ManaServ
