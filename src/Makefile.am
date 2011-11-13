@@ -543,6 +543,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      keyboardconfig.h \
 	      listener.cpp \
 	      listener.h \
+	      localconsts.h \
 	      localplayer.cpp \
 	      localplayer.h \
 	      logger.cpp \
