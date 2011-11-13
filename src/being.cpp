@@ -2171,22 +2171,48 @@ void Being::recalcSpritesOrder()
                 {
                     int remSprite = itr->first;
                     const std::map<int, int> &itemReplacer = itr->second;
-                    if (itemReplacer.empty())
-                    {
-                        mSpriteHide[remSprite] = 1;
+                    if (remSprite >= 0)
+                    {   // slot known
+                        if (itemReplacer.empty())
+                        {
+                            mSpriteHide[remSprite] = 1;
+                        }
+                        else
+                        {
+                            std::map<int, int>::const_iterator repIt
+                                = itemReplacer.find(mSpriteIDs[remSprite]);
+                            if (repIt != itemReplacer.end())
+                            {
+                                mSpriteHide[remSprite] = repIt->second;
+                                if (repIt->second != 1)
+                                {
+                                    setSprite(remSprite, repIt->second,
+                                        mSpriteColors[remSprite],
+                                        1, false, true);
+                                }
+                            }
+                        }
                     }
                     else
-                    {
+                    {   // slot unknown. Search for real slot, this can be slow
                         std::map<int, int>::const_iterator repIt
-                            = itemReplacer.find(mSpriteIDs[remSprite]);
-                        if (repIt != itemReplacer.end())
+                            = itemReplacer.begin();
+                        std::map<int, int>::const_iterator repIt_end
+                            = itemReplacer.end();
+                        for (;repIt != repIt_end; ++ repIt)
                         {
-                            mSpriteHide[remSprite] = repIt->second;
-                            if (repIt->second != 1)
+                            for (unsigned slot2 = 0; slot2 < sz; slot2 ++)
                             {
-                                setSprite(remSprite, repIt->second,
-                                    mSpriteColors[remSprite],
-                                    1, false, true);
+                                if (mSpriteIDs[slot2] == repIt->first)
+                                {
+                                    mSpriteHide[slot2] = repIt->second;
+                                    if (repIt->second != 1)
+                                    {
+                                        setSprite(slot2, repIt->second,
+                                            mSpriteColors[slot2],
+                                            1, false, true);
+                                    }
+                                }
                             }
                         }
                     }
