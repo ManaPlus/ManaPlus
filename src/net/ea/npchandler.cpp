@@ -33,7 +33,7 @@ namespace Ea
 {
 
 NpcHandler::NpcHandler() :
-    mDialog(0)
+    mDialog(nullptr)
 {
 }
 

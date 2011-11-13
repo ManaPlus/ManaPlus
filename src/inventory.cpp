@@ -51,7 +51,7 @@ Inventory::Inventory(int type, int size):
     mUsed(0)
 {
     mItems = new Item*[mSize];
-    std::fill_n(mItems, mSize, static_cast<Item*>(0));
+    std::fill_n(mItems, mSize, static_cast<Item*>(nullptr));
 }
 
 Inventory::~Inventory()
@@ -60,7 +60,7 @@ Inventory::~Inventory()
         delete mItems[i];
 
     delete [] mItems;
-    mItems = 0;
+    mItems = nullptr;
 }
 
 Item *Inventory::getItem(int index) const
@@ -68,7 +68,7 @@ Item *Inventory::getItem(int index) const
     if (index < 0 || index >= static_cast<int>(mSize) || !mItems[index]
         || mItems[index]->getQuantity() <= 0)
     {
-        return 0;
+        return nullptr;
     }
 
     return mItems[index];
@@ -88,7 +88,7 @@ Item *Inventory::findItem(int itemId, unsigned char color) const
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 void Inventory::addItem(int id, int quantity, int refine,
@@ -145,7 +145,7 @@ void Inventory::removeItem(int id)
 void Inventory::removeItemAt(int index)
 {
     delete mItems[index];
-    mItems[index] = 0;
+    mItems[index] = nullptr;
     mUsed--;
     if (mUsed < 0) // Already at 0, no need to distribute event
         mUsed = 0;
@@ -237,7 +237,7 @@ Item *Inventory::findItemBySprite(std::string spritePath, Gender gender)
     if (partialIndex != -1)
         return mItems[partialIndex];
 
-    return 0;
+    return nullptr;
 }
 
 std::string Inventory::getName()

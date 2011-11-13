@@ -70,12 +70,12 @@ CheckBox::CheckBox(const std::string &caption, bool selected,
         }
         else
         {
-            checkBoxNormal = 0;
-            checkBoxChecked = 0;
-            checkBoxDisabled = 0;
-            checkBoxDisabledChecked = 0;
-            checkBoxNormalHi = 0;
-            checkBoxCheckedHi = 0;
+            checkBoxNormal = nullptr;
+            checkBoxChecked = nullptr;
+            checkBoxDisabled = nullptr;
+            checkBoxDisabledChecked = nullptr;
+            checkBoxNormalHi = nullptr;
+            checkBoxCheckedHi = nullptr;
         }
     }
 
@@ -97,17 +97,17 @@ CheckBox::~CheckBox()
     if (instances == 0)
     {
         delete checkBoxNormal;
-        checkBoxNormal = 0;
+        checkBoxNormal = nullptr;
         delete checkBoxChecked;
-        checkBoxChecked = 0;
+        checkBoxChecked = nullptr;
         delete checkBoxDisabled;
-        checkBoxDisabled = 0;
+        checkBoxDisabled = nullptr;
         delete checkBoxDisabledChecked;
-        checkBoxDisabledChecked = 0;
+        checkBoxDisabledChecked = nullptr;
         delete checkBoxNormalHi;
-        checkBoxNormalHi = 0;
+        checkBoxNormalHi = nullptr;
         delete checkBoxCheckedHi;
-        checkBoxCheckedHi = 0;
+        checkBoxCheckedHi = nullptr;
     }
 }
 

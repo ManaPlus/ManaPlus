@@ -63,11 +63,11 @@
 #define CAPTION_ACCEPTED _("Agreed. Waiting...")
 
 TradeWindow::TradeWindow():
-    Window(_("Trade: You"), false, 0, "trade.xml"),
+    Window(_("Trade: You"), false, nullptr, "trade.xml"),
     mMyInventory(new Inventory(Inventory::TRADE)),
     mPartnerInventory(new Inventory(Inventory::TRADE)),
     mStatus(PROPOSING),
-    mAutoAddItem(0),
+    mAutoAddItem(nullptr),
     mAutoAddToNick(""),
     mGotMoney(0),
     mGotMaxMoney(0),
@@ -390,7 +390,7 @@ void TradeWindow::close()
 
 void TradeWindow::clear()
 {
-    mAutoAddItem = 0;
+    mAutoAddItem = nullptr;
     mAutoAddToNick = "";
     mAutoMoney = 0;
     mAutoAddAmount = 0;

@@ -23,6 +23,8 @@
 #ifndef OPTION_DIALOG_H
 #define OPTION_DIALOG_H
 
+#include "localconsts.h"
+
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -44,7 +46,7 @@ class ConfirmDialog : public Window, public gcn::ActionListener
          */
         ConfirmDialog(const std::string &title, const std::string &msg,
                       bool ignore = false, bool modal = false,
-                      Window *parent = NULL);
+                      Window *parent = nullptr);
 
         /**
          * Called when receiving actions from the widgets.

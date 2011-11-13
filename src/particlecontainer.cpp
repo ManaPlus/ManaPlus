@@ -37,7 +37,7 @@ ParticleContainer::~ParticleContainer()
     if (mDelParent)
     {
         delete mNext;
-        mNext = 0;
+        mNext = nullptr;
     }
 }
 
@@ -139,7 +139,7 @@ void ParticleVector::setLocally(int index, Particle *particle)
     delLocally(index);
 
     if (mIndexedElements.size() <= static_cast<unsigned>(index))
-        mIndexedElements.resize(index + 1, NULL);
+        mIndexedElements.resize(index + 1, nullptr);
 
     if (particle)
         particle->disableAutoDelete();
@@ -157,7 +157,7 @@ void ParticleVector::delLocally(int index)
     Particle *p = mIndexedElements[index];
     if (p)
     {
-        mIndexedElements[index] = NULL;
+        mIndexedElements[index] = nullptr;
         p->kill();
     }
 }
@@ -182,7 +182,7 @@ void ParticleVector::moveTo(float x, float y)
             if ((*it)->isExtinct())
             {
                 (*it)->kill();
-                *it = NULL;
+                *it = nullptr;
             }
         }
     }

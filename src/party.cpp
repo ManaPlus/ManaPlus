@@ -95,7 +95,7 @@ PartyMember *Party::getMember(int id) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 PartyMember *Party::getMember(const std::string &name) const
@@ -110,7 +110,7 @@ PartyMember *Party::getMember(const std::string &name) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void Party::removeMember(PartyMember *member)
@@ -198,7 +198,7 @@ void Party::removeFromMembers()
     {
         Being *b = actorSpriteManager->findBeing((*itr)->getID());
         if (b)
-            b->setParty(0);
+            b->setParty(nullptr);
         ++itr;
     }
 }
@@ -220,7 +220,7 @@ bool Party::isMember(PartyMember *member) const
     if (!member)
         return false;
 
-    if (member->mParty > 0 && member->mParty != this)
+    if (member->mParty && member->mParty != this)
         return false;
 
     MemberList::const_iterator itr = mMembers.begin();

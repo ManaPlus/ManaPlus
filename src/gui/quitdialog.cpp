@@ -44,7 +44,7 @@
 #include "debug.h"
 
 QuitDialog::QuitDialog(QuitDialog** pointerToMe):
-    Window(_("Quit"), true, 0, "quit.xml"),
+    Window(_("Quit"), true, nullptr, "quit.xml"),
     mMyPointer(pointerToMe)
 {
     mForceQuit = new RadioButton(_("Quit"), "quitdialog");
@@ -98,16 +98,16 @@ QuitDialog::QuitDialog(QuitDialog** pointerToMe):
 QuitDialog::~QuitDialog()
 {
     if (mMyPointer)
-        *mMyPointer = 0;
+        *mMyPointer = nullptr;
     // Optional widgets, so delete them by hand.
     delete mForceQuit;
-    mForceQuit = 0;
+    mForceQuit = nullptr;
     delete mLogoutQuit;
-    mLogoutQuit = 0;
+    mLogoutQuit = nullptr;
     delete mSwitchAccountServer;
-    mSwitchAccountServer = 0;
+    mSwitchAccountServer = nullptr;
     delete mSwitchCharacter;
-    mSwitchCharacter = 0;
+    mSwitchCharacter = nullptr;
 }
 
 void QuitDialog::placeOption(ContainerPlacer &placer, gcn::RadioButton *option)
@@ -133,13 +133,13 @@ void QuitDialog::action(const gcn::ActionEvent &event)
         }
         else if (mLogoutQuit->isSelected())
         {
-            Client::closeDialogs();
+            Game::closeDialogs();
             Client::setState(STATE_EXIT);
         }
         else if (Net::getGameHandler()->isConnected()
                  && mSwitchAccountServer->isSelected())
         {
-            Client::closeDialogs();
+            Game::closeDialogs();
             Client::setState(STATE_SWITCH_SERVER);
         }
         else if (mSwitchCharacter->isSelected())
@@ -147,7 +147,7 @@ void QuitDialog::action(const gcn::ActionEvent &event)
             if (Client::getState() == STATE_GAME)
             {
                 Net::getCharHandler()->switchCharacter();
-                Client::closeDialogs();
+                Game::closeDialogs();
             }
         }
     }
@@ -162,10 +162,11 @@ void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
     switch (key.getValue())
     {
         case Key::ENTER:
-            action(gcn::ActionEvent(NULL, mOkButton->getActionEventId()));
+            action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
             break;
         case Key::ESCAPE:
-            action(gcn::ActionEvent(NULL, mCancelButton->getActionEventId()));
+            action(gcn::ActionEvent(nullptr,
+                mCancelButton->getActionEventId()));
             break;
         case Key::UP:
             dir = -1;

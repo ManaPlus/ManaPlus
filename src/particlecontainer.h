@@ -26,6 +26,8 @@
 #include <list>
 #include <vector>
 
+#include "localconsts.h"
+
 class Particle;
 
 /**
@@ -42,7 +44,9 @@ public:
      *
      * delParent means that the destructor should also free the parent.
      */
-    ParticleContainer(ParticleContainer *parent = NULL, bool delParent = true);
+    ParticleContainer(ParticleContainer *parent = nullptr,
+        bool delParent = true);
+
     virtual ~ParticleContainer();
 
     /**
@@ -71,7 +75,7 @@ protected:
 class ParticleList : public ParticleContainer
 {
 public:
-    ParticleList(ParticleContainer *parent = NULL, bool delParent = true);
+    ParticleList(ParticleContainer *parent = nullptr, bool delParent = true);
     virtual ~ParticleList();
 
     /**
@@ -98,7 +102,7 @@ protected:
 class ParticleVector : public ParticleContainer
 {
 public:
-    ParticleVector(ParticleContainer *parent = NULL, bool delParent = true);
+    ParticleVector(ParticleContainer *parent = nullptr, bool delParent = true);
     virtual ~ParticleVector();
 
     /**

@@ -23,6 +23,8 @@
 #ifndef TABLE_H
 #define TABLE_H
 
+#include "localconsts.h"
+
 #include "gui/widgets/tablemodel.h"
 
 #include <guichan/keylistener.hpp>
@@ -57,7 +59,7 @@ class GuiTable : public gcn::Widget,
     friend class GuiTableActionListener;
 
 public:
-    GuiTable(TableModel * initial_model = NULL,
+    GuiTable(TableModel * initial_model = nullptr,
              bool opacity = true);
 
     virtual ~GuiTable();

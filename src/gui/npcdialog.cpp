@@ -55,14 +55,14 @@
 
 NpcDialog::DialogList NpcDialog::instances;
 
-NpcDialog::NpcDialog(int npcId)
-    : Window(_("NPC"), false, 0, "npc.xml"),
-      mNpcId(npcId),
-      mLogInteraction(config.getBoolValue("logNpcInGui")),
-      mDefaultInt(0),
-      mInputState(NPC_INPUT_NONE),
-      mActionState(NPC_ACTION_WAIT),
-      mLastNextTime(0)
+NpcDialog::NpcDialog(int npcId) :
+    Window(_("NPC"), false, nullptr, "npc.xml"),
+    mNpcId(npcId),
+    mLogInteraction(config.getBoolValue("logNpcInGui")),
+    mDefaultInt(0),
+    mInputState(NPC_INPUT_NONE),
+    mActionState(NPC_ACTION_WAIT),
+    mLastNextTime(0)
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -143,32 +143,32 @@ NpcDialog::~NpcDialog()
     clearLayout();
 
     delete mTextBox;
-    mTextBox = 0;
+    mTextBox = nullptr;
     delete mClearButton;
-    mClearButton = 0;
+    mClearButton = nullptr;
     delete mButton;
-    mButton = 0;
+    mButton = nullptr;
 
     // These might not actually be in the layout, so lets be safe
     delete mScrollArea;
-    mScrollArea = 0;
+    mScrollArea = nullptr;
     delete mItemList;
-    mItemList = 0;
+    mItemList = nullptr;
     delete mTextField;
-    mTextField = 0;
+    mTextField = nullptr;
     delete mIntField;
-    mIntField = 0;
+    mIntField = nullptr;
     delete mResetButton;
-    mResetButton = 0;
+    mResetButton = nullptr;
     delete mPlusButton;
-    mPlusButton = 0;
+    mPlusButton = nullptr;
     delete mMinusButton;
-    mMinusButton = 0;
+    mMinusButton = nullptr;
     delete mItemLinkHandler;
-    mItemLinkHandler = 0;
+    mItemLinkHandler = nullptr;
 
     delete mListScrollArea;
-    mListScrollArea = 0;
+    mListScrollArea = nullptr;
 
     instances.remove(this);
 }
@@ -432,7 +432,7 @@ NpcDialog *NpcDialog::getActive()
             return (*it);
     }
 
-    return 0;
+    return nullptr;
 }
 
 void NpcDialog::closeAll()

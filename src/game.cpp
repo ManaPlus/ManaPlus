@@ -117,54 +117,54 @@
 
 #include "debug.h"
 
-Joystick *joystick = NULL;
+Joystick *joystick = nullptr;
 
-OkDialog *weightNotice = NULL;
+OkDialog *weightNotice = nullptr;
 int weightNoticeTime = 0;
-OkDialog *deathNotice = NULL;
-QuitDialog *quitDialog = NULL;
-OkDialog *disconnectedDialog = NULL;
+OkDialog *deathNotice = nullptr;
+QuitDialog *quitDialog = nullptr;
+OkDialog *disconnectedDialog = nullptr;
 
-ChatWindow *chatWindow = NULL;
-StatusWindow *statusWindow = NULL;
-MiniStatusWindow *miniStatusWindow = NULL;
-InventoryWindow *inventoryWindow = NULL;
-ShopWindow *shopWindow = NULL;
-SkillDialog *skillDialog = NULL;
-Minimap *minimap = NULL;
-EquipmentWindow *equipmentWindow = NULL;
-EquipmentWindow *beingEquipmentWindow = NULL;
-TradeWindow *tradeWindow = NULL;
-HelpWindow *helpWindow = NULL;
-DebugWindow *debugWindow = NULL;
-ShortcutWindow *itemShortcutWindow = NULL;
-ShortcutWindow *emoteShortcutWindow = NULL;
-OutfitWindow *outfitWindow = NULL;
-SpecialsWindow *specialsWindow = NULL;
-ShortcutWindow *dropShortcutWindow = NULL;
-ShortcutWindow *spellShortcutWindow = NULL;
-WhoIsOnline *whoIsOnline = NULL;
-DidYouKnowWindow *didYouKnowWindow = NULL;
-KillStats *killStats = NULL;
-BotCheckerWindow *botCheckerWindow = NULL;
-SocialWindow *socialWindow = NULL;
-WindowMenu *windowMenu = NULL;
+ChatWindow *chatWindow = nullptr;
+StatusWindow *statusWindow = nullptr;
+MiniStatusWindow *miniStatusWindow = nullptr;
+InventoryWindow *inventoryWindow = nullptr;
+ShopWindow *shopWindow = nullptr;
+SkillDialog *skillDialog = nullptr;
+Minimap *minimap = nullptr;
+EquipmentWindow *equipmentWindow = nullptr;
+EquipmentWindow *beingEquipmentWindow = nullptr;
+TradeWindow *tradeWindow = nullptr;
+HelpWindow *helpWindow = nullptr;
+DebugWindow *debugWindow = nullptr;
+ShortcutWindow *itemShortcutWindow = nullptr;
+ShortcutWindow *emoteShortcutWindow = nullptr;
+OutfitWindow *outfitWindow = nullptr;
+SpecialsWindow *specialsWindow = nullptr;
+ShortcutWindow *dropShortcutWindow = nullptr;
+ShortcutWindow *spellShortcutWindow = nullptr;
+WhoIsOnline *whoIsOnline = nullptr;
+DidYouKnowWindow *didYouKnowWindow = nullptr;
+KillStats *killStats = nullptr;
+BotCheckerWindow *botCheckerWindow = nullptr;
+SocialWindow *socialWindow = nullptr;
+WindowMenu *windowMenu = nullptr;
 
-ActorSpriteManager *actorSpriteManager = NULL;
-ChannelManager *channelManager = NULL;
-CommandHandler *commandHandler = NULL;
-MumbleManager *mumbleManager = NULL;
-Particle *particleEngine = NULL;
-EffectManager *effectManager = NULL;
-SpellManager *spellManager = NULL;
-Viewport *viewport = NULL;                    /**< Viewport on the map. */
-GuildManager *guildManager = NULL;
-AuctionManager *auctionManager = NULL;
+ActorSpriteManager *actorSpriteManager = nullptr;
+ChannelManager *channelManager = nullptr;
+CommandHandler *commandHandler = nullptr;
+MumbleManager *mumbleManager = nullptr;
+Particle *particleEngine = nullptr;
+EffectManager *effectManager = nullptr;
+SpellManager *spellManager = nullptr;
+Viewport *viewport = nullptr;                    /**< Viewport on the map. */
+GuildManager *guildManager = nullptr;
+AuctionManager *auctionManager = nullptr;
 
-ChatTab *localChatTab = NULL;
-ChatTab *debugChatTab = NULL;
-TradeTab *tradeChatTab = NULL;
-BattleTab *battleChatTab = NULL;
+ChatTab *localChatTab = nullptr;
+ChatTab *debugChatTab = nullptr;
+TradeTab *tradeChatTab = nullptr;
+BattleTab *battleChatTab = nullptr;
 
 const unsigned adjustDelay = 10;
 
@@ -182,7 +182,7 @@ static void initEngines()
     AuctionManager::init();
     GuildManager::init();
 
-    particleEngine = new Particle(NULL);
+    particleEngine = new Particle(nullptr);
     particleEngine->setupEngine();
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_ENGINESINITALIZED));
@@ -206,7 +206,7 @@ static void createGuiWindows()
     tradeWindow = new TradeWindow;
     equipmentWindow = new EquipmentWindow(PlayerInfo::getEquipment(),
         player_node);
-    beingEquipmentWindow = new EquipmentWindow(0, 0, true);
+    beingEquipmentWindow = new EquipmentWindow(nullptr, nullptr, true);
     beingEquipmentWindow->setVisible(false);
     statusWindow = new StatusWindow;
     miniStatusWindow = new MiniStatusWindow;
@@ -263,7 +263,7 @@ static void createGuiWindows()
     }
     else
     {
-        tradeChatTab = 0;
+        tradeChatTab = nullptr;
     }
 
     if (config.getBoolValue("enableBattleTab"))
@@ -273,7 +273,7 @@ static void createGuiWindows()
     }
     else
     {
-        battleChatTab = 0;
+        battleChatTab = nullptr;
     }
 
     if (config.getBoolValue("logToChat"))
@@ -288,7 +288,7 @@ static void createGuiWindows()
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSLOADED));
 }
 
-#define del_0(X) { delete X; X = 0; }
+#define del_0(X) { delete X; X = nullptr; }
 
 /**
  * Destroy all the globally accessible gui windows
@@ -297,7 +297,7 @@ static void destroyGuiWindows()
 {
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADING));
 
-    logger->setChatWindow(NULL);
+    logger->setChatWindow(nullptr);
     if (whoIsOnline)
         whoIsOnline->setAllowUpdate(false);
 
@@ -347,11 +347,11 @@ static void destroyGuiWindows()
         guildManager->reload();
 }
 
-Game *Game::mInstance = 0;
+Game *Game::mInstance = nullptr;
 
 Game::Game():
     mLastTarget(ActorSprite::UNKNOWN),
-    mCurrentMap(0),
+    mCurrentMap(nullptr),
     mMapName(""),
     mValidSpeed(true),
     mLastAction(0),
@@ -365,7 +365,7 @@ Game::Game():
     assert(!mInstance);
     mInstance = this;
 
-    disconnectedDialog = NULL;
+    disconnectedDialog = nullptr;
 
     mAdjustPerfomance = config.getBoolValue("adjustPerfomance");
 
@@ -403,12 +403,6 @@ Game::Game():
      */
     Net::getGameHandler()->ping(tick_time);
 
-    Joystick::init();
-    // TODO: The user should be able to choose which one to use
-    // Open the first device
-    if (Joystick::getNumberOfJoysticks() > 0)
-        joystick = new Joystick(0);
-
     if (setupWindow)
         setupWindow->setInGame(true);
     clearKeysArray();
@@ -437,7 +431,6 @@ Game::~Game()
     del_0(channelManager)
     del_0(commandHandler)
     del_0(effectManager)
-    del_0(joystick)
     del_0(particleEngine)
     del_0(viewport)
     del_0(mCurrentMap)
@@ -449,7 +442,7 @@ Game::~Game()
 
     Being::clearCache();
 
-    mInstance = 0;
+    mInstance = nullptr;
 
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_DESTRUCTED));
 }
@@ -457,7 +450,7 @@ Game::~Game()
 static bool saveScreenshot()
 {
     static unsigned int screenshotCount = 0;
-    SDL_Surface *screenshot = 0;
+    SDL_Surface *screenshot = nullptr;
 
     if (!config.getBoolValue("showip"))
     {
@@ -542,7 +535,7 @@ void Game::logic()
     if (mCurrentMap)
         mCurrentMap->update();
 
-    cur_time = static_cast<int>(time(0));
+    cur_time = static_cast<int>(time(nullptr));
     Being::reReadConfig();
     if (killStats)
         killStats->recalcStats();
@@ -557,23 +550,25 @@ void Game::logic()
             return; // Not a problem here
 
         if (Client::getState() != STATE_ERROR)
-            errorMessage = _("The connection to the server was lost.");
-
-        if (!disconnectedDialog)
         {
-            if (viewport)
+            errorMessage = _("The connection to the server was lost.");
+            if (!disconnectedDialog)
             {
-                Map *map = viewport->getCurrentMap();
-                if (map)
-                    map->saveExtraLayer();
+                disconnectedDialog = new OkDialog(_("Network Error"),
+                                                  errorMessage, false);
+                disconnectedDialog->addActionListener(&errorListener);
+                disconnectedDialog->requestMoveToTop();
             }
-            Client::closeDialogs();
-            Client::setFramerate(config.getIntValue("fpslimit"));
-            disconnectedDialog = new OkDialog(_("Network Error"),
-                                              errorMessage, false);
-            disconnectedDialog->addActionListener(&errorListener);
-            disconnectedDialog->requestMoveToTop();
         }
+
+        if (viewport)
+        {
+            Map *map = viewport->getCurrentMap();
+            if (map)
+                map->saveExtraLayer();
+        }
+        closeDialogs();
+        Client::setFramerate(config.getIntValue("fpslimit"));
     }
     else
     {
@@ -582,7 +577,7 @@ void Game::logic()
         if (disconnectedDialog)
         {
             disconnectedDialog->scheduleDelete();
-            disconnectedDialog = 0;
+            disconnectedDialog = nullptr;
         }
     }
 }
@@ -715,6 +710,7 @@ void Game::handleInput()
     if (joystick)
         joystick->update();
 
+    bool wasDown(false);
     // Events
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -727,7 +723,8 @@ void Game::handleInput()
         // Keyboard events (for discontinuous keys)
         if (event.type == SDL_KEYDOWN)
         {
-            gcn::Window *requestedWindow = NULL;
+            wasDown = true;
+            gcn::Window *requestedWindow = nullptr;
 
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
@@ -785,7 +782,7 @@ void Game::handleInput()
             if (keyboard.isEnabled()
                 && !chatWindow->isInputFocused()
                 && !setupWindow->isVisible()
-                && !player_node->getAwayMode()
+                && !player_node->getAway()
                 && !NpcDialog::isAnyInputFocused()
                 && !InventoryWindow::isAnyInputFocused())
             {
@@ -833,7 +830,7 @@ void Game::handleInput()
 
             if ((!chatWindow || !chatWindow->isInputFocused())
                 && !gui->getFocusHandler()->getModalFocused()
-                && !player_node->getAwayMode())
+                && !player_node->getAway())
             {
                 NpcDialog *dialog = NpcDialog::getActive();
                 if (keyboard.isKeyActive(keyboard.KEY_OK)
@@ -844,9 +841,14 @@ void Game::handleInput()
                         helpWindow->setVisible(false);
                     // Close the config window, cancelling changes if opened
                     else if (setupWindow->isVisible())
-                        setupWindow->action(gcn::ActionEvent(NULL, "cancel"));
+                    {
+                        setupWindow->action(gcn::ActionEvent(
+                            nullptr, "cancel"));
+                    }
                     else if (dialog)
-                        dialog->action(gcn::ActionEvent(NULL, "ok"));
+                    {
+                        dialog->action(gcn::ActionEvent(nullptr, "ok"));
+                    }
                 }
                 if (chatWindow && keyboard.isKeyActive(
                     keyboard.KEY_TOGGLE_CHAT))
@@ -957,7 +959,7 @@ void Game::handleInput()
                 && !gui->getFocusHandler()->getModalFocused()
                 && mValidSpeed
                 && (!setupWindow || !setupWindow->isVisible())
-                && (!player_node || !player_node->getAwayMode())
+                && (!player_node || !player_node->getAway())
                 && !NpcDialog::isAnyInputFocused()
                 && !InventoryWindow::isAnyInputFocused())
             {
@@ -1100,6 +1102,14 @@ void Game::handleInput()
                         }
                         break;
 
+                    case KeyboardConfig::KEY_SWITCH_PVP_ATTACK:
+                        if (player_node)
+                        {
+                            if (!player_node->getDisableGameModifiers())
+                                player_node->switchPvpAttack();
+                        }
+                        break;
+
                     case KeyboardConfig::KEY_CHANGE_MOVE_TO_TARGET:
                         if (player_node)
                         {
@@ -1147,7 +1157,7 @@ void Game::handleInput()
             if (keyboard.isEnabled()
                 && (!chatWindow || !chatWindow->isInputFocused())
                 && !NpcDialog::isAnyInputFocused()
-                && (!player_node || !player_node->getAwayMode())
+                && (!player_node || !player_node->getAway())
                 && !keyboard.isKeyActive(keyboard.KEY_TARGET)
                 && !keyboard.isKeyActive(keyboard.KEY_UNTARGET)
                 && !InventoryWindow::isAnyInputFocused())
@@ -1367,7 +1377,7 @@ void Game::handleInput()
                 if (event.active.gain)
                 {   // window restore
                     Client::setIsMinimized(false);
-                    if (!player_node && !player_node->getAwayMode())
+                    if (!player_node && !player_node->getAway())
                         fpsLimit = config.getIntValue("fpslimit");
                     if (player_node)
                         player_node->setHalfAway(false);
@@ -1375,7 +1385,7 @@ void Game::handleInput()
                 else
                 {   // window minimisation
                     Client::setIsMinimized(true);
-                    if (player_node && !player_node->getAwayMode())
+                    if (player_node && !player_node->getAway())
                     {
                         fpsLimit = config.getIntValue("altfpslimit");
                         player_node->setHalfAway(true);
@@ -1391,7 +1401,7 @@ void Game::handleInput()
             if (event.active.state & SDL_APPMOUSEFOCUS)
                 Client::setMouseFocused(event.active.gain);
 
-            if (player_node && player_node->getAwayMode())
+            if (player_node && player_node->getAway())
             {
                 if (Client::getInputFocused() || Client::getMouseFocused())
                     fpsLimit = config.getIntValue("fpslimit");
@@ -1429,7 +1439,7 @@ void Game::handleInput()
     } // End while
 
     // If the user is configuring the keys then don't respond.
-    if (!player_node || !keyboard.isEnabled() || player_node->getAwayMode())
+    if (!player_node || !keyboard.isEnabled() || player_node->getAway())
         return;
 
     if (keyboard.isKeyActive(keyboard.KEY_WEAR_OUTFIT)
@@ -1572,22 +1582,25 @@ void Game::handleInput()
             }
         }
 
-        if (((player_node->getAttackType() == 0
-            && player_node->getFollow().empty()) || event.type == SDL_KEYDOWN)
-            && mValidSpeed)
+        bool joyAttack(false);
+        if (joystick && joystick->buttonPressed(0))
+            joyAttack = true;
+
+        if ((((player_node->getAttackType() == 0
+            && player_node->getFollow().empty()) || wasDown)
+            || joyAttack) && mValidSpeed)
         {
             // Attacking monsters
-            if (keyboard.isKeyActive(keyboard.KEY_ATTACK) ||
-                (joystick && joystick->buttonPressed(0)))
+            if (keyboard.isKeyActive(keyboard.KEY_ATTACK))
             {
                 if (player_node->getTarget())
                     player_node->attack(player_node->getTarget(), true);
             }
 
-            if (keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK)
+            if ((keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK) || joyAttack)
                 && !keyboard.isKeyActive(keyboard.KEY_MOVE_TO_TARGET))
             {
-                Being *target = 0;
+                Being *target = nullptr;
 
                 bool newTarget = !keyboard.isKeyActive(keyboard.KEY_TARGET);
                 // A set target has highest priority
@@ -1668,10 +1681,15 @@ void Game::handleInput()
         if (!keyboard.isKeyActive(keyboard.KEY_ATTACK)
             && !keyboard.isKeyActive(keyboard.KEY_EMOTE))
         {
-            if (keyboard.isKeyActive(keyboard.KEY_TARGET))
+            if (keyboard.isKeyActive(keyboard.KEY_TARGET)
+                || (joystick && joystick->buttonPressed(4)))
+            {
                 player_node->stopAttack();
+            }
             else if (keyboard.isKeyActive(keyboard.KEY_UNTARGET))
+            {
                 player_node->untarget();
+            }
         }
 
         if (joystick)
@@ -1707,7 +1725,7 @@ void Game::changeMap(const std::string &mapPath)
     // Unset the map of the player so that its particles are cleared before
     // being deleted in the next step
     if (player_node)
-        player_node->setMap(0);
+        player_node->setMap(nullptr);
 
     if (particleEngine)
         particleEngine->clear();
@@ -1868,5 +1886,15 @@ void Game::clearKeysArray()
         mLastKeys[f].time = 0;
         mLastKeys[f].key = -1;
         mLastKeys[f].cnt = 0;
+    }
+}
+
+void Game::closeDialogs()
+{
+    Client::closeDialogs();
+    if (deathNotice)
+    {
+        deathNotice->scheduleDelete();
+        deathNotice = nullptr;
     }
 }

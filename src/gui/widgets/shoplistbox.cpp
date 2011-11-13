@@ -47,7 +47,7 @@ float ShopListBox::mAlpha = 1.0;
 ShopListBox::ShopListBox(gcn::ListModel *listModel):
     ListBox(listModel),
     mPlayerMoney(0),
-    mShopItems(0)
+    mShopItems(nullptr)
 {
     mRowHeight = getFont()->getHeight();
     init();

@@ -39,5 +39,5 @@ Channel::Channel(short id,
 Channel::~Channel()
 {
     delete mTab;
-    mTab = 0;
+    mTab = nullptr;
 }

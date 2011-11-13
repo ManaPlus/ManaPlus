@@ -36,7 +36,8 @@
 #endif
 
 ProxyImage::ProxyImage(SDL_Surface *s):
-    mImage(NULL), mSDLImage(s)
+    mImage(nullptr),
+    mSDLImage(s)
 {
 }
 
@@ -50,12 +51,12 @@ void ProxyImage::free()
     if (mSDLImage)
     {
         SDL_FreeSurface(mSDLImage);
-        mSDLImage = 0;
+        mSDLImage = nullptr;
     }
     else
     {
         delete mImage;
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 
@@ -103,7 +104,7 @@ void ProxyImage::convertToDisplayFormat()
                     SDL_MapRGB(mSDLImage->format, 255, 0, 255));
     mImage = ::Image::load(mSDLImage);
     SDL_FreeSurface(mSDLImage);
-    mSDLImage = NULL;
+    mSDLImage = nullptr;
 }
 
 gcn::Image *ImageLoader::load(const std::string &filename, bool convert)

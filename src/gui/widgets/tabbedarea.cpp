@@ -46,15 +46,15 @@ TabbedArea::TabbedArea()
     mArrowButton[0] = new Button("<", "shift_left", this);
     mArrowButton[1] = new Button(">", "shift_right", this);
 
-    widgetResized(NULL);
+    widgetResized(nullptr);
 }
 
 TabbedArea::~TabbedArea()
 {
     delete mArrowButton[0];
-    mArrowButton[0] = 0;
+    mArrowButton[0] = nullptr;
     delete mArrowButton[1];
-    mArrowButton[1] = 0;
+    mArrowButton[1] = nullptr;
 }
 
 void TabbedArea::enableScrollButtons(bool enable)
@@ -90,7 +90,7 @@ Tab *TabbedArea::getTab(const std::string &name) const
 
         ++itr;
     }
-    return NULL;
+    return nullptr;
 }
 
 void TabbedArea::draw(gcn::Graphics *graphics)
@@ -112,7 +112,7 @@ gcn::Widget *TabbedArea::getWidget(const std::string &name) const
         ++itr;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 gcn::Widget *TabbedArea::getCurrentWidget()
@@ -122,7 +122,7 @@ gcn::Widget *TabbedArea::getCurrentWidget()
     if (tab)
         return getWidget(tab->getCaption());
     else
-        return NULL;
+        return nullptr;
 }
 
 void TabbedArea::addTab(gcn::Tab* tab, gcn::Widget* widget)
@@ -192,7 +192,7 @@ void TabbedArea::removeTab(gcn::Tab *tab)
 
     if (tabIndexToBeSelected == -1)
     {
-        mSelectedTab = 0;
+        mSelectedTab = nullptr;
         mWidgetContainer->clear();
     }
     else
@@ -238,7 +238,7 @@ void TabbedArea::setSelectedTab(gcn::Tab *tab)
     if (newTab)
         newTab->setCurrent();
 
-    widgetResized(NULL);
+    widgetResized(nullptr);
 }
 
 void TabbedArea::setSelectedTab(const std::string &name)
@@ -266,7 +266,7 @@ void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
     if (w)
     {
         int newScroll = 0;
-        ScrollArea* scr = 0;
+        ScrollArea* scr = nullptr;
         if (mFollowDownScroll && height != 0)
         {
             gcn::Rectangle rect = w->getDimension();
@@ -444,14 +444,14 @@ void TabbedArea::updateArrowEnableState()
 Tab *TabbedArea::getTabByIndex(int index) const
 {
     if (index < 0 || index >= static_cast<int>(mTabs.size()))
-        return 0;
+        return nullptr;
     return static_cast<Tab*>(mTabs[index].first);
 }
 
 gcn::Widget *TabbedArea::getWidgetByIndex(int index) const
 {
     if (index < 0 || index >= static_cast<int>(mTabs.size()))
-        return 0;
+        return nullptr;
     return mTabs[index].second;
 }
 

@@ -56,7 +56,7 @@
 extern volatile int tick_time;
 
 Viewport::Viewport():
-    mMap(0),
+    mMap(nullptr),
     mMouseX(0),
     mMouseY(0),
     mPixelViewX(0.0f),
@@ -65,9 +65,9 @@ Viewport::Viewport():
     mCameraMode(0),
     mPlayerFollowMouse(false),
     mLocalWalkTime(-1),
-    mHoverBeing(0),
-    mHoverItem(0),
-    mHoverSign(0),
+    mHoverBeing(nullptr),
+    mHoverItem(nullptr),
+    mHoverSign(nullptr),
     mCameraRelativeX(0),
     mCameraRelativeY(0)
 {
@@ -104,11 +104,11 @@ Viewport::~Viewport()
     config.removeListener("enableLazyScrolling", this);
 
     delete mPopupMenu;
-    mPopupMenu = 0;
+    mPopupMenu = nullptr;
     delete mBeingPopup;
-    mBeingPopup = 0;
+    mBeingPopup = nullptr;
     delete mTextPopup;
-    mTextPopup = 0;
+    mTextPopup = nullptr;
 }
 
 void Viewport::setMap(Map *map)
@@ -298,8 +298,8 @@ void Viewport::_followMouse()
     if (mPlayerFollowMouse && button & SDL_BUTTON(1))
     {
         // We create a mouse event and send it to mouseDragged.
-        Uint8 *keys = SDL_GetKeyState(NULL);
-        gcn::MouseEvent mouseEvent(NULL,
+        Uint8 *keys = SDL_GetKeyState(nullptr);
+        gcn::MouseEvent mouseEvent(nullptr,
                       (keys[SDLK_LSHIFT] || keys[SDLK_RSHIFT]),
                       false,
                       false,
@@ -699,7 +699,7 @@ void Viewport::showUndressPopup(int x, int y, Being *being, Item *item)
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)
-        mPopupMenu->handleLink("cancel", 0);
+        mPopupMenu->handleLink("cancel", nullptr);
 }
 
 void Viewport::optionChanged(const std::string &name A_UNUSED)
@@ -738,7 +738,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
         mBeingPopup->setVisible(false);
     }
 
-    mHoverItem = 0;
+    mHoverItem = nullptr;
     if (!mHoverBeing && actorSpriteManager)
     {
         mHoverItem = actorSpriteManager->findItem(x / mMap->getTileWidth(),
@@ -844,17 +844,17 @@ void Viewport::hideBeingPopup()
 void Viewport::clearHover(ActorSprite *actor)
 {
     if (mHoverBeing == actor)
-        mHoverBeing = 0;
+        mHoverBeing = nullptr;
 
     if (mHoverItem == actor)
-        mHoverItem = 0;
+        mHoverItem = nullptr;
 }
 
 void Viewport::cleanHoverItems()
 {
-    mHoverBeing = 0;
-    mHoverItem = 0;
-    mHoverSign = 0;
+    mHoverBeing = nullptr;
+    mHoverItem = nullptr;
+    mHoverSign = nullptr;
 }
 
 void Viewport::moveCamera(int dx, int dy)

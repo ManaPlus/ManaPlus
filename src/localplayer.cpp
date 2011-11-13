@@ -36,6 +36,7 @@
 #include "party.h"
 #include "particle.h"
 #include "playerinfo.h"
+#include "playerrelations.h"
 #include "simpleanimation.h"
 #include "sound.h"
 #include "statuseffect.h"
@@ -88,7 +89,7 @@
 const short walkingKeyboardDelay = 1000;
 const short awayLimitTimer = 60;
 
-LocalPlayer *player_node = NULL;
+LocalPlayer *player_node = nullptr;
 
 extern std::list<BeingCacheEntry*> beingInfoCache;
 extern OkDialog *weightNotice;
@@ -100,11 +101,12 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, 0),
     mTargetTime(-1),
     mLastTarget(-1),
-    mTarget(NULL),
+    mTarget(nullptr),
     mPlayerFollowed(""),
     mPlayerImitated(""),
-    mPickUpTarget(NULL),
-    mGoingToTarget(false), mKeepAttacking(false),
+    mPickUpTarget(nullptr),
+    mGoingToTarget(false),
+    mKeepAttacking(false),
     mLastAction(-1),
     mWalkingDir(0),
     mPathSetByMouse(false),
@@ -113,14 +115,19 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mAwayDialog(0),
     mAfkTime(0),
     mAwayMode(false),
+    mPseudoAwayMode(false),
     mShowNavigePath(false),
     mDrawPath(false),
     mActivityTime(0),
-    mNavigateX(0), mNavigateY(0),
+    mNavigateX(0),
+    mNavigateY(0),
     mNavigateId(0),
-    mCrossX(0), mCrossY(0),
-    mOldX(0), mOldY(0),
-    mOldTileX(0), mOldTileY(0),
+    mCrossX(0),
+    mCrossY(0),
+    mOldX(0),
+    mOldY(0),
+    mOldTileX(0),
+    mOldTileY(0),
     mLastHitFrom(""),
     mWaitFor(""),
     mAdvertTime(0),
@@ -158,6 +165,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mDisableCrazyMove = false;
     mPickUpType = config.getIntValue("pickUpType");
     mMagicAttackType = config.getIntValue("magicAttackType");
+    mPvpAttackType = config.getIntValue("pvpAttackType");
     mMoveToTargetType = config.getIntValue("moveToTargetType");
     mDisableGameModifiers = config.getBoolValue("disableGameModifiers");
     mTargetDeadPlayers = config.getBoolValue("targetDeadPlayers");
@@ -215,9 +223,9 @@ LocalPlayer::~LocalPlayer()
     config.removeListener("targetOnlyReachable", this);
 
     delete mAwayDialog;
-    mAwayDialog = 0;
+    mAwayDialog = nullptr;
     delete mAwayListener;
-    mAwayListener = 0;
+    mAwayListener = nullptr;
 }
 
 void LocalPlayer::logic()
@@ -261,7 +269,7 @@ void LocalPlayer::logic()
     if (weightNotice && weightNoticeTime < cur_time)
     {
         weightNotice->scheduleDelete();
-        weightNotice = 0;
+        weightNotice = nullptr;
         weightNoticeTime = 0;
     }
 
@@ -302,7 +310,7 @@ void LocalPlayer::logic()
     if (get_elapsed_time(mTargetTime) >= 60000)
     {
         mTargetTime = tick_time;
-//        setTarget(NULL);
+//        setTarget(nullptr);
         mLastTarget = -1;
     }
 
@@ -357,7 +365,7 @@ void LocalPlayer::logic()
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile += FLAG_SHOP;
 
-        if (mAwayMode)
+        if (mAwayMode || mPseudoAwayMode)
             smile += FLAG_AWAY;
 
         if (mInactive)
@@ -381,7 +389,7 @@ void LocalPlayer::setAction(Action action, int attackType)
             debugMsg(_("You were killed by ") + mLastHitFrom);
             mLastHitFrom = "";
         }
-        setTarget(NULL);
+        setTarget(nullptr);
     }
 
     Being::setAction(action, attackType);
@@ -939,7 +947,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
     if (dx * dx + dy * dy < dist)
     {
         Net::getPlayerHandler()->pickUp(item);
-        mPickUpTarget = NULL;
+        mPickUpTarget = nullptr;
     }
     else if (mPickUpType >= 4 && mPickUpType <= 6)
     {
@@ -974,7 +982,7 @@ bool LocalPlayer::pickUp(FloorItem *item)
 void LocalPlayer::actorSpriteDestroyed(const ActorSprite &actorSprite)
 {
     if (mPickUpTarget == &actorSprite)
-        mPickUpTarget = 0;
+        mPickUpTarget = nullptr;
 }
 
 Being *LocalPlayer::getTarget() const
@@ -1003,7 +1011,7 @@ void LocalPlayer::setTarget(Being *target)
         mTargetTime = -1;
     }
 
-    Being *oldTarget = 0;
+    Being *oldTarget = nullptr;
     if (mTarget)
     {
         mTarget->untarget();
@@ -1138,7 +1146,7 @@ void LocalPlayer::startWalking(unsigned char dir)
     if (!mMap || !dir)
         return;
 
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     if (mAction == MOVE && !mPath.empty())
     {
         // Just finish the current action, otherwise we get out of sync
@@ -1211,7 +1219,7 @@ void LocalPlayer::stopWalking(bool sendToServer)
     {
         mWalkingDir = 0;
         mLocalWalkTime = 0;
-        mPickUpTarget = 0;
+        mPickUpTarget = nullptr;
 
         setDestination(static_cast<int>(getPosition().x),
                        static_cast<int>(getPosition().y));
@@ -1228,6 +1236,7 @@ void LocalPlayer::stopWalking(bool sendToServer)
     mPathSetByMouse = false;
 
     clearPath();
+    navigateClean();
 }
 
 bool LocalPlayer::toggleSit()
@@ -1354,26 +1363,31 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         mTargetTime = tick_time;
     }
 
-    setAction(ATTACK);
-
-    if (mEquippedWeapon)
+    if (target->getType() != Being::PLAYER || checAttackPermissions(target))
     {
-        std::string soundFile = mEquippedWeapon->getSound(EQUIP_EVENT_STRIKE);
-        if (!soundFile.empty())
-            sound.playSfx(soundFile);
+        setAction(ATTACK);
+
+        if (mEquippedWeapon)
+        {
+            std::string soundFile = mEquippedWeapon->getSound(
+                EQUIP_EVENT_STRIKE);
+            if (!soundFile.empty())
+                sound.playSfx(soundFile);
+        }
+        else
+        {
+            sound.playSfx(paths.getValue("attackSfxFile", "fist-swish.ogg"));
+        }
+
+        if (!Client::limitPackets(PACKET_ATTACK))
+            return;
+
+        if (!dontChangeEquipment && target)
+            changeEquipmentBeforeAttack(target);
+
+        Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
     }
-    else
-    {
-        sound.playSfx(paths.getValue("attackSfxFile", "fist-swish.ogg"));
-    }
 
-    if (!Client::limitPackets(PACKET_ATTACK))
-        return;
-
-    if (!dontChangeEquipment && target)
-        changeEquipmentBeforeAttack(target);
-
-    Net::getPlayerHandler()->attack(target->getId(), mServerAttack);
 #ifdef MANASERV_SUPPORT
     if ((Net::getNetworkType() != ServerInfo::MANASERV) && !keep)
 #else
@@ -1399,7 +1413,7 @@ void LocalPlayer::untarget()
         setAction(STAND);
 
     if (mTarget)
-        setTarget(NULL);
+        setTarget(nullptr);
 
     mKeepAttacking = false;
     mLastTarget = -1;
@@ -1541,7 +1555,7 @@ void LocalPlayer::setGotoTarget(Being *target)
     if (!target)
         return;
 
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
@@ -1725,7 +1739,7 @@ void LocalPlayer::moveTo(int x, int y)
 
 void LocalPlayer::move(int dX, int dY)
 {
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     moveTo(mX + dX, mY + dY);
 }
 
@@ -1825,7 +1839,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
 
 void LocalPlayer::moveToHome()
 {
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     if ((mX != mCrossX || mY != mCrossY) && mCrossX && mCrossY)
     {
         moveTo(mCrossX, mCrossY);
@@ -1939,7 +1953,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
     bool allowSword = false;
     int dx = target->getTileX() - mX;
     int dy = target->getTileY() - mY;
-    Item *item = NULL;
+    Item *item = nullptr;
 
     if (dx * dx + dy * dy > 80)
         return;
@@ -2888,6 +2902,17 @@ void LocalPlayer::switchMagicAttack()
         miniStatusWindow->updateStatus();
 }
 
+void LocalPlayer::switchPvpAttack()
+{
+    mPvpAttackType++;
+    if (mPvpAttackType > 3)
+        mPvpAttackType = 0;
+
+    config.setValue("pvpAttackType", mPvpAttackType);
+    if (miniStatusWindow)
+        miniStatusWindow->updateStatus();
+}
+
 void LocalPlayer::magicAttack()
 {
     if (!chatWindow || !isAlive()
@@ -3185,7 +3210,7 @@ void LocalPlayer::changeAwayMode()
     }
     else
     {
-        mAwayDialog = 0;
+        mAwayDialog = nullptr;
         sound.volumeRestore();
         if (chatWindow)
         {
@@ -3200,6 +3225,13 @@ void LocalPlayer::setAway(const std::string &message)
     if (!message.empty())
         config.setValue("afkMessage", message);
     changeAwayMode();
+}
+
+void LocalPlayer::setPseudoAway(const std::string &message)
+{
+    if (!message.empty())
+        config.setValue("afkMessage", message);
+    mPseudoAwayMode = !mPseudoAwayMode;
 }
 
 void LocalPlayer::afkRespond(ChatTab *tab, const std::string &nick)
@@ -3651,7 +3683,7 @@ void LocalPlayer::followMoveTo(Being *being, int x, int y)
     if (being && !mPlayerFollowed.empty()
         && being->getName() == mPlayerFollowed)
     {
-        mPickUpTarget = 0;
+        mPickUpTarget = nullptr;
         setDestination(x, y);
     }
 }
@@ -3661,7 +3693,7 @@ void LocalPlayer::followMoveTo(Being *being, int x1, int y1, int x2, int y2)
     if (!being)
         return;
 
-    mPickUpTarget = 0;
+    mPickUpTarget = nullptr;
     if (!mPlayerFollowed.empty() && being->getName() == mPlayerFollowed)
     {
         switch (mFollowMode)
@@ -3888,6 +3920,7 @@ void LocalPlayer::resetYellowBar()
     mAttackWeaponType = config.resetIntValue("attackWeaponType");
     mAttackType = config.resetIntValue("attackType");
     mMagicAttackType = config.resetIntValue("magicAttackType");
+    mPvpAttackType = config.resetIntValue("pvpAttackType");
     mQuickDropCounter = config.resetIntValue("quickDropCounter");
     mPickUpType = config.resetIntValue("pickUpType");
     if (viewport)
@@ -3928,9 +3961,29 @@ void LocalPlayer::stopAdvert()
     mBlockAdvert = true;
 }
 
+bool LocalPlayer::checAttackPermissions(Being *target)
+{
+    if (!target)
+        return false;
+
+    switch (mPvpAttackType)
+    {
+        case 0:
+            return true;
+        case 1:
+            return !(player_relations.getRelation(target->getName())
+                == PlayerRelation::FRIEND);
+        case 2:
+            return player_relations.checkBadRelation(target->getName());
+        default:
+        case 3:
+            return false;
+    }
+}
+
 void AwayListener::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "ok" && player_node && player_node->getAwayMode())
+    if (event.getId() == "ok" && player_node && player_node->getAway())
     {
         player_node->changeAwayMode();
         if (outfitWindow)

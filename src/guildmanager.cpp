@@ -46,7 +46,7 @@ GuildManager::GuildManager() :
     mSentInfoRequest(false),
     mSentNameRequest(false),
     mHavePower(false),
-    mTab(0),
+    mTab(nullptr),
     mRequest(false)
 {
 }
@@ -54,7 +54,7 @@ GuildManager::GuildManager() :
 GuildManager::~GuildManager()
 {
     delete mTab;
-    mTab = 0;
+    mTab = nullptr;
 }
 
 void GuildManager::init()
@@ -79,7 +79,7 @@ void GuildManager::init()
     else if (guildManager)
     {
         delete guildManager;
-        guildManager = 0;
+        guildManager = nullptr;
     }
 }
 
@@ -100,7 +100,7 @@ void GuildManager::reload()
             socialWindow->removeTab(guild);
     }
     delete mTab;
-    mTab = 0;
+    mTab = nullptr;
 }
 
 void GuildManager::send(std::string msg)
@@ -211,7 +211,7 @@ Guild *GuildManager::createGuild()
 {
     Guild *guild = Guild::getGuild(1);
     if (!guild)
-        return 0;
+        return nullptr;
 
     guild->setServerGuild(false);
     return guild;
@@ -484,7 +484,7 @@ bool GuildManager::afterRemove()
     }
     SERVER_NOTICE(_("You have left the guild."))
     delete mTab;
-    mTab = 0;
+    mTab = nullptr;
 
     if (socialWindow)
         socialWindow->removeTab(guild);

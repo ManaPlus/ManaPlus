@@ -40,8 +40,8 @@ int TextDialog::instances = 0;
 TextDialog::TextDialog(const std::string &title, const std::string &msg,
                        Window *parent, bool isPassword):
     Window(title, true, parent, "textdialog.xml"),
-    mTextField(0),
-    mPasswordField(0)
+    mTextField(nullptr),
+    mPasswordField(nullptr)
 {
     mEnabledKeyboard = keyboard.isEnabled();
     keyboard.setEnabled(false);

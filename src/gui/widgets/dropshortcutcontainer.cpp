@@ -49,7 +49,7 @@
 DropShortcutContainer::DropShortcutContainer():
     ShortcutContainer(),
     mItemClicked(false),
-    mItemMoved(NULL)
+    mItemMoved(nullptr)
 {
     addMouseListener(this);
     addWidgetListener(this);
@@ -82,10 +82,10 @@ DropShortcutContainer::~DropShortcutContainer()
     if (mBackgroundImg)
     {
         mBackgroundImg->decRef();
-        mBackgroundImg = 0;
+        mBackgroundImg = nullptr;
     }
     delete mItemPopup;
-    mItemPopup = 0;
+    mItemPopup = nullptr;
 }
 
 void DropShortcutContainer::draw(gcn::Graphics *graphics)
@@ -254,14 +254,14 @@ void DropShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
         {
-            mItemMoved = NULL;
+            mItemMoved = nullptr;
             return;
         }
         if (mItemMoved)
         {
             dropShortcut->setItems(index, mItemMoved->getId(),
                 mItemMoved->getColor());
-            mItemMoved = NULL;
+            mItemMoved = nullptr;
         }
 
         if (mItemClicked)

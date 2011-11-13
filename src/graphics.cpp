@@ -645,7 +645,7 @@ SDL_Surface *Graphics::getScreenshot()
             mTarget->h, 24, rmask, gmask, bmask, amask);
 
     if (screenshot)
-        SDL_BlitSurface(mTarget, NULL, screenshot, NULL);
+        SDL_BlitSurface(mTarget, nullptr, screenshot, nullptr);
 
     return screenshot;
 }
@@ -684,8 +684,8 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
     if (src->locked || dst->locked)
         return(-1);
 
-    /* If the destination rectangle is NULL, use the entire dest surface */
-    if (dstrect == NULL)
+    /* If the destination rectangle is nullptr, use the entire dest surface */
+    if (!dstrect)
     {
         fulldst.x = 0;
         fulldst.y = 0;

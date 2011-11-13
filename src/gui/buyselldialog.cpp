@@ -37,19 +37,19 @@
 BuySellDialog::DialogList BuySellDialog::instances;
 
 BuySellDialog::BuySellDialog(int npcId):
-    Window(_("Shop"), false, 0, "buysell.xml"),
+    Window(_("Shop"), false, nullptr, "buysell.xml"),
     mNpcId(npcId),
     mNick(""),
-    mBuyButton(0)
+    mBuyButton(nullptr)
 {
     init();
 }
 
 BuySellDialog::BuySellDialog(std::string nick):
-    Window(_("Shop"), false, 0, "buysell.xml"),
+    Window(_("Shop"), false, nullptr, "buysell.xml"),
     mNpcId(-1),
     mNick(nick),
-    mBuyButton(0)
+    mBuyButton(nullptr)
 {
     init();
 }
@@ -62,7 +62,7 @@ void BuySellDialog::init()
 
     static const char *buttonNames[] =
     {
-        N_("Buy"), N_("Sell"), N_("Cancel"), 0
+        N_("Buy"), N_("Sell"), N_("Cancel"), nullptr
     };
     int x = 10, y = 10;
 

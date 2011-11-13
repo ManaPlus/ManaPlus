@@ -45,7 +45,7 @@ std::string getSpecialFolderLocation(int folderId)
     char szPath[_MAX_PATH];
 
     // get the item ID list for folderId
-    HRESULT hr = SHGetSpecialFolderLocation(NULL, folderId, &pItemIdList);
+    HRESULT hr = SHGetSpecialFolderLocation(nullptr, folderId, &pItemIdList);
     if (hr != S_OK)
         return ret;
 

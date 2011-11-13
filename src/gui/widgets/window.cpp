@@ -49,9 +49,9 @@ int Window::mouseResize = 0;
 Window::Window(const std::string &caption, bool modal, Window *parent,
                std::string skin):
     gcn::Window(caption),
-    mGrip(0),
+    mGrip(nullptr),
     mParent(parent),
-    mLayout(NULL),
+    mLayout(nullptr),
     mWindowName("window"),
     mShowTitle(true),
     mModal(modal),
@@ -91,7 +91,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     }
     else
     {
-        mSkin = 0;
+        mSkin = nullptr;
     }
 
     // Add this window to the window container
@@ -118,7 +118,7 @@ Window::~Window()
     saveWindowState();
 
     delete mLayout;
-    mLayout = 0;
+    mLayout = nullptr;
 
     while (!mWidgets.empty())
         delete mWidgets.front();
@@ -127,7 +127,7 @@ Window::~Window()
 
     removeWidgetListener(this);
     delete mVertexes;
-    mVertexes = 0;
+    mVertexes = nullptr;
 
     instances--;
 
@@ -135,7 +135,7 @@ Window::~Window()
     {
         if (Theme::instance())
             Theme::instance()->unload(mSkin);
-        mSkin = 0;
+        mSkin = nullptr;
     }
 }
 
@@ -348,7 +348,7 @@ void Window::setResizable(bool r)
     {
         remove(mGrip);
         delete mGrip;
-        mGrip = 0;
+        mGrip = nullptr;
     }
 }
 
@@ -947,7 +947,7 @@ void Window::reflowLayout(int w, int h)
 
     mLayout->reflow(w, h);
     delete mLayout;
-    mLayout = 0;
+    mLayout = nullptr;
     setContentSize(w, h);
 }
 

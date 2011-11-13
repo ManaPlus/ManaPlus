@@ -102,7 +102,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
 
     do
     {
-        if (strm.next_out == NULL)
+        if (!strm.next_out)
         {
             inflateEnd(&strm);
             return Z_MEM_ERROR;
@@ -128,7 +128,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
         {
             out = static_cast<unsigned char*>(realloc(out, bufferSize * 2));
 
-            if (out == NULL)
+            if (!out)
             {
                 inflateEnd(&strm);
                 return Z_MEM_ERROR;
@@ -153,7 +153,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
     unsigned int outLength = 0;
     int ret = inflateMemory(in, inLength, out, outLength);
 
-    if (ret != Z_OK || out == NULL)
+    if (ret != Z_OK || !out)
     {
         if (ret == Z_MEM_ERROR)
         {
@@ -173,7 +173,7 @@ int inflateMemory(unsigned char *in, unsigned int inLength,
         }
 
         free(out);
-        out = NULL;
+        out = nullptr;
         outLength = 0;
     }
 
@@ -188,12 +188,12 @@ Map *MapReader::readMap(const std::string &filename,
     ResourceManager *resman = ResourceManager::getInstance();
     int fileSize;
     void *buffer = resman->loadFile(realFilename, fileSize);
-    Map *map = NULL;
+    Map *map = nullptr;
 
-    if (buffer == NULL)
+    if (!buffer)
     {
         logger->log("Map file not found (%s)", realFilename.c_str());
-        return NULL;
+        return nullptr;
     }
 
     unsigned char *inflated;
@@ -207,11 +207,11 @@ Map *MapReader::readMap(const std::string &filename,
             fileSize, inflated);
         free(buffer);
 
-        if (inflated == NULL)
+        if (!inflated)
         {
             logger->log("Could not decompress map file (%s)",
                         realFilename.c_str());
-            return NULL;
+            return nullptr;
         }
     }
     else
@@ -251,7 +251,7 @@ Map *MapReader::readMap(const std::string &filename,
 Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
 {
     if (!node)
-        return 0;
+        return nullptr;
 
     // Take the filename off the path
     const std::string pathDir = path.substr(0, path.rfind("/") + 1);
@@ -270,7 +270,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
         logger->log("MapReader: Warning: "
                     "Unitialized tile width or height value for map: %s",
                     path.c_str());
-        return 0;
+        return nullptr;
     }
 
     Map *map = new Map(w, h, tilew, tileh);
@@ -405,7 +405,7 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
     if (layer)
     {
         // Set regular tile on a layer
-        Image * const img = set ? set->get(gid - set->getFirstGid()) : 0;
+        Image * const img = set ? set->get(gid - set->getFirstGid()) : nullptr;
         layer->setTile(x, y, img);
     }
     else
@@ -458,7 +458,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
 
     map->indexTilesets();
 
-    MapLayer *layer = 0;
+    MapLayer *layer = nullptr;
 
     if (!isCollisionLayer)
     {
@@ -651,13 +651,13 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
                                 Map *map)
 {
     if (!map)
-        return NULL;
+        return nullptr;
 
     int firstGid = XML::getProperty(node, "firstgid", 0);
     int margin = XML::getProperty(node, "margin", 0);
     int spacing = XML::getProperty(node, "spacing", 0);
-    XML::Document* doc = NULL;
-    Tileset *set = NULL;
+    XML::Document* doc = nullptr;
+    Tileset *set = nullptr;
     std::string pathDir(path);
 
     if (xmlHasProp(node, BAD_CAST "source"))
@@ -668,7 +668,7 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
         doc = new XML::Document(filename);
         node = doc->rootNode();
         if (!node)
-            return 0;
+            return nullptr;
 
         // Reset path to be realtive to the tsx file
         pathDir = filename.substr(0, filename.rfind("/") + 1);
@@ -760,7 +760,7 @@ Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
                 else
                 {
                     delete ani;
-                    ani = 0;
+                    ani = nullptr;
                 }
             }
         }

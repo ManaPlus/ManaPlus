@@ -78,8 +78,8 @@ namespace Ea
 
 InventoryHandler::InventoryHandler()
 {
-    mStorage = 0;
-    mStorageWindow = 0;
+    mStorage = nullptr;
+    mStorageWindow = nullptr;
     mDebugInventory = true;
 }
 
@@ -88,11 +88,11 @@ InventoryHandler::~InventoryHandler()
     if (mStorageWindow)
     {
         mStorageWindow->close();
-        mStorageWindow = 0;
+        mStorageWindow = nullptr;
     }
 
     delete mStorage;
-    mStorage = 0;
+    mStorage = nullptr;
 }
 
 bool InventoryHandler::canSplit(const Item *item A_UNUSED) const
@@ -164,7 +164,7 @@ void InventoryHandler::processPlayerInventory(Net::MessageIn &msg,
     int index, amount, itemId, arrow;
     int cards[4], itemType;
     unsigned char identified;
-    Inventory *inventory = 0;
+    Inventory *inventory = nullptr;
 
     if (player_node)
         inventory = PlayerInfo::getInventory();
@@ -279,7 +279,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
     unsigned char identified;
     int floorId;
 
-    Inventory *inventory = 0;
+    Inventory *inventory = nullptr;
     if (player_node)
         inventory = PlayerInfo::getInventory();
 
@@ -345,7 +345,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
 {
     int index, amount;
-    Inventory *inventory = 0;
+    Inventory *inventory = nullptr;
     if (player_node)
         inventory = PlayerInfo::getInventory();
 
@@ -367,7 +367,7 @@ void InventoryHandler::processPlayerInventoryRemove(Net::MessageIn &msg)
 void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 {
     int index, amount;
-    Inventory *inventory = 0;
+    Inventory *inventory = nullptr;
     if (player_node)
         inventory = PlayerInfo::getInventory();
 
@@ -392,7 +392,7 @@ void InventoryHandler::processPlayerInventoryUse(Net::MessageIn &msg)
 void InventoryHandler::processItemUseResponse(Net::MessageIn &msg)
 {
     int index, amount;
-    Inventory *inventory = 0;
+    Inventory *inventory = nullptr;
     if (player_node)
         inventory = PlayerInfo::getInventory();
 
@@ -499,13 +499,13 @@ void InventoryHandler::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
 {
     // Storage access has been closed
     // Storage window deletes itself
-    mStorageWindow = 0;
+    mStorageWindow = nullptr;
 
     if (mStorage)
         mStorage->clear();
 
     delete mStorage;
-    mStorage = 0;
+    mStorage = nullptr;
 }
 
 void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
@@ -514,7 +514,7 @@ void InventoryHandler::processPlayerEquipment(Net::MessageIn &msg)
     int number;
     unsigned char identified;
 
-    Inventory *inventory = 0;
+    Inventory *inventory = nullptr;
     if (player_node)
         inventory = PlayerInfo::getInventory();
 

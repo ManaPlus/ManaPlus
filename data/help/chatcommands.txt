@@ -21,6 +21,7 @@
     /outfit prev - wear previous outfit.
     /emote N - use emotion number N.
     /away, /away MSG - set away mode.
+    /pseudoaway, /pseudoaway MSG - set/unset pseudo away mode.
     /follow NICK - start follow mode.
     /imitation NICK - start imitation mode.
     /heal NICK - heal nick.
@@ -30,7 +31,10 @@
     /disconnect - quick disconnect from server.
     /attack - attack target.
     /undress NICK - remove all clothes from nick. Local effect only.
-
+    /addattack NAME - add monster to attack list.
+    /addpriorityattack NAME - add monster to priority attack list.
+    /removeattack NAME - remove monster from attack list.
+    /addignoreattack NAME - add monster to ignore attack list.
 
 ##PTrade
 ##2
@@ -46,11 +50,13 @@
     /friend NICK, /befriend NICK - add nick to friends list.
     /disregard NICK - add nick to disregarded list.
     /neutral NICK - add nick to neutral relation list.
+    /blacklist NICK - add nick to blacklist relation list.
     /erase NICK - add nick to erased list.
     /clear - clear current chat tab.
     /createparty NAME - create party with selected name.
     /me text - send text to chat as /me command in irc.
-
+    /serverignoreall - ignore all whispers on server side.
+    /serverunignoreall - unignore all whispers on server side.
 
 ##PDebug 
 ##2
@@ -59,6 +65,8 @@
     /where - print current player position to chat.
     /cacheinfo - show text cache info.
     /uptime - show client uptime.
+    /dumpg - dump graphics and some other settings to chat.
+    /dirs - show client dirs in debug chat tab.
 
 
 ##PWhispers commands

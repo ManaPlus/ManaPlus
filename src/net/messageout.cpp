@@ -37,7 +37,7 @@ namespace Net
 {
 
 MessageOut::MessageOut(short id A_UNUSED):
-    mData(0),
+    mData(nullptr),
     mDataSize(0),
     mPos(0)
 {

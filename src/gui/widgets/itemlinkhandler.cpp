@@ -42,7 +42,7 @@ ItemLinkHandler::ItemLinkHandler()
 ItemLinkHandler::~ItemLinkHandler()
 {
     delete mItemPopup;
-    mItemPopup = 0;
+    mItemPopup = nullptr;
 }
 
 void ItemLinkHandler::handleLink(const std::string &link,

@@ -50,7 +50,8 @@ bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
     if (SDL_MUSTLOCK(surface))
         SDL_LockSurface(surface);
 
-    png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, 0, 0, 0);
+    png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
+        nullptr, nullptr, nullptr);
     if (!png_ptr)
     {
         logger->log1("Had trouble creating png_structp");
@@ -60,14 +61,14 @@ bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
     info_ptr = png_create_info_struct(png_ptr);
     if (!info_ptr)
     {
-        png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(NULL));
+        png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
         logger->log1("Could not create png_info");
         return false;
     }
 
     if (setjmp(png_jmpbuf(png_ptr)))
     {
-        png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(NULL));
+        png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
         logger->log("problem writing to %s", filename.c_str());
         return false;
     }
@@ -113,7 +114,7 @@ bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
 
     delete [] row_pointers;
 
-    png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(NULL));
+    png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
 
     if (SDL_MUSTLOCK(surface))
         SDL_UnlockSurface(surface);

@@ -43,10 +43,10 @@ SetupTabScroll::SetupTabScroll() :
 
 SetupTabScroll::~SetupTabScroll()
 {
-    mScroll = 0;
+    mScroll = nullptr;
 
     delete mContainer;
-    mContainer = 0;
+    mContainer = nullptr;
 
     std::set<SetupItem*>::iterator it = mAllItems.begin();
     std::set<SetupItem*>::iterator it_end = mAllItems.end();

@@ -3,14 +3,15 @@
 dir=`pwd`
 export LANG=C
 
+cd ..
 #--enable-applebuild=yes
 #--without-librt
 
-echo start >make2.log
+echo start >build/make.log
 
 autoreconf -i
-echo opengl+debug+guichan >>make2.log
-make clean 2>>make2.log
+echo opengl+debug+guichan >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -19,11 +20,11 @@ make clean 2>>make2.log
 --with-internalguichan=yes \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo opengl+guichan >>make2.log
-make clean 2>>make2.log
+echo opengl+guichan >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -32,11 +33,11 @@ make clean 2>>make2.log
 --with-internalguichan=yes \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo opengl >>make2.log
-make clean 2>>make2.log
+echo opengl >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -45,11 +46,11 @@ make clean 2>>make2.log
 --with-internalguichan=no \
 --enable-tcmalloc=no \
 --enable-googleprofiler=no
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo opengl+manaserv >>make2.log
-make clean 2>>make2.log
+echo opengl+manaserv >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -59,11 +60,11 @@ make clean 2>>make2.log
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
 --enable-manaserv=yes
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo opengl+guichan+manaserv >>make2.log
-make clean 2>>make2.log
+echo opengl+guichan+manaserv >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -73,11 +74,11 @@ make clean 2>>make2.log
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
 --enable-manaserv=yes
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo guichan >>make2.log
-make clean 2>>make2.log
+echo guichan >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -87,11 +88,11 @@ make clean 2>>make2.log
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
 --without-opengl
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo "-" >>make2.log
-make clean 2>>make2.log
+echo "-" >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -101,11 +102,11 @@ make clean 2>>make2.log
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
 --without-opengl
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo guichan+manaserv >>make2.log
-make clean 2>>make2.log
+echo guichan+manaserv >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -116,11 +117,11 @@ make clean 2>>make2.log
 --enable-googleprofiler=no \
 --enable-manaserv=yes \
 --without-opengl
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo opengl+debug+guichan+portable >>make2.log
-make clean 2>>make2.log
+echo opengl+debug+guichan+portable >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -130,11 +131,11 @@ make clean 2>>make2.log
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
 --enable-portable=yes
-make -j5 2>>make2.log
+make -j5 2>>build/make.log
 
 autoreconf -i
-echo opengl+guichan+portable+manaserv >>make2.log
-make clean 2>>make2.log
+echo opengl+guichan+portable+manaserv >>build/make.log
+make clean 2>>build/make.log
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
@@ -145,4 +146,4 @@ make clean 2>>make2.log
 --enable-googleprofiler=no \
 --enable-manaserv=yes \
 --enable-portable=yes
-make -j5 2>>make2.log
+make -j5 2>>build/make.log

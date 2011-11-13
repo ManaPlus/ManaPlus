@@ -43,7 +43,7 @@
 #include "debug.h"
 
 KillStats::KillStats():
-    Window(_("Kill stats"), false, 0, "killstats.xml"),
+    Window(_("Kill stats"), false, nullptr, "killstats.xml"),
     mKillCounter(0), mExpCounter(0),
     mKillTCounter(0), mExpTCounter(0), mKillTimer(0),
     m1minExpTime(0), m1minExpNum(0), m1minSpeed(0),

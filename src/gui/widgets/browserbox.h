@@ -30,6 +30,8 @@
 #include <list>
 #include <vector>
 
+#include "localconsts.h"
+
 class Image;
 class Resource;
 class LinkHandler;
@@ -44,13 +46,15 @@ struct BROWSER_LINK
 class LinePart
 {
     public:
-        LinePart(int x, int y, gcn::Color color, std::string text) :
-            mX(x), mY(y), mColor(color), mText(text), mType(0), mImage(0)
+        LinePart(int x, int y, gcn::Color color, std::string text, bool bold) :
+            mX(x), mY(y), mColor(color), mText(text), mType(0),
+            mImage(nullptr), mBold(bold)
         {
         }
 
         LinePart(int x, int y, gcn::Color color, Image *image) :
-            mX(x), mY(y), mColor(color), mText(""), mType(1), mImage(image)
+            mX(x), mY(y), mColor(color), mText(""), mType(1),
+            mImage(image), mBold(false)
         {
         }
 
@@ -61,6 +65,7 @@ class LinePart
         std::string mText;
         unsigned char mType;
         Image *mImage;
+        bool mBold;
 };
 
 /**

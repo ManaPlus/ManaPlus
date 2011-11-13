@@ -115,6 +115,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleNeutral(args, tab);
     else if (type == "blacklist")
         handleBlackList(args, tab);
+    else if (type == "enemy")
+        handleEnemy(args, tab);
     else if (type == "erase")
         handleErase(args, tab);
     else if (type == "join")
@@ -149,6 +151,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleEmote(args, tab);
     else if (type == "away")
         handleAway(args, tab);
+    else if (type == "pseudoaway")
+        handlePseudoAway(args, tab);
     else if (type == "follow")
         handleFollow(args, tab);
     else if (type == "heal")
@@ -230,11 +234,32 @@ void CommandHandler::handleAnnounce(const std::string &args,
 void CommandHandler::handleHelp(const std::string &args A_UNUSED,
                                 ChatTab *tab A_UNUSED)
 {
-    if (helpWindow)
+    if (!helpWindow)
+        return;
+
+    if (!tab)
     {
         helpWindow->loadHelp("chatcommands");
         helpWindow->requestMoveToTop();
+        return;
     }
+    switch (tab->getType())
+    {
+        case ChatTab::TAB_PARTY:
+        {
+            helpWindow->loadHelp("chatparty");
+            break;
+        }
+        case ChatTab::TAB_GUILD:
+        {
+            helpWindow->loadHelp("chatguild");
+            break;
+        }
+        default:
+            helpWindow->loadHelp("chatcommands");
+            break;
+    }
+    helpWindow->requestMoveToTop();
 }
 
 void CommandHandler::handleWhere(const std::string &args A_UNUSED,
@@ -564,6 +589,11 @@ void CommandHandler::handleBlackList(const std::string &args, ChatTab *tab)
     changeRelation(args, PlayerRelation::BLACKLISTED, _("blacklisted"), tab);
 }
 
+void CommandHandler::handleEnemy(const std::string &args, ChatTab *tab)
+{
+    changeRelation(args, PlayerRelation::ENEMY2, _("enemy"), tab);
+}
+
 void CommandHandler::handleErase(const std::string &args, ChatTab *tab)
 {
     if (args.empty())
@@ -710,6 +740,13 @@ void CommandHandler::handleAway(const std::string &args, ChatTab *tab A_UNUSED)
 {
     if (player_node)
         player_node->setAway(args);
+}
+
+void CommandHandler::handlePseudoAway(const std::string &args,
+                                      ChatTab *tab A_UNUSED)
+{
+    if (player_node)
+        player_node->setPseudoAway(args);
 }
 
 void CommandHandler::handleFollow(const std::string &args, ChatTab *tab)
@@ -1033,19 +1070,20 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
 #endif
 }
 
-void CommandHandler::handleServerIgnoreAll(const std::string &args,
+void CommandHandler::handleServerIgnoreAll(const std::string &args A_UNUSED,
                                            ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->ignoreAll();
 }
 
-void CommandHandler::handleServerUnIgnoreAll(const std::string &args,
+void CommandHandler::handleServerUnIgnoreAll(const std::string &args A_UNUSED,
                                              ChatTab *tab A_UNUSED)
 {
     Net::getChatHandler()->unIgnoreAll();
 }
 
-void CommandHandler::handleDumpGraphics(const std::string &args, ChatTab *tab)
+void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
+                                        ChatTab *tab)
 {
     std::string str;
     str = strprintf ("%s,%s,%dX%dX%d,", PACKAGE_OS, SMALL_VERSION,

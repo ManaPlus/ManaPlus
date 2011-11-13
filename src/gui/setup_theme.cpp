@@ -47,6 +47,7 @@
 
 const char* ACTION_THEME = "theme";
 const char* ACTION_FONT = "font";
+const char* ACTION_LANG = "lang";
 const char* ACTION_BOLD_FONT = "bold font";
 const char* ACTION_PARTICLE_FONT = "particle font";
 const char* ACTION_HELP_FONT = "help font";
@@ -84,7 +85,7 @@ class ThemesModel : public NamesModel
 public:
     ThemesModel()
     {
-        mNames.push_back("(default)");
+        mNames.push_back(gettext("(default)"));
         Theme::fillSkinsList(mNames);
     }
 
@@ -130,9 +131,55 @@ public:
     }
 };
 
+struct Language
+{
+    std::string name;
+
+    std::string value;
+};
+
+const int langs_count = 14;
+
+const Language LANG_NAME[langs_count] =
+{
+    {N_("(default)"), ""},
+    {N_("Chinese (China)"), "zh_CN"},
+    {N_("Czech"), "cs_CZ"},
+    {N_("English"), "C"},
+    {N_("Finnish"), "fi_FI"},
+    {N_("French"), "fr_FR"},
+    {N_("German"), "de_DE"},
+    {N_("Indonesian"), "id_ID"},
+    {N_("Japanese"), "ja_JP.utf8"},
+    {N_("Dutch (Belgium/Flemish)"), "nl_BE"},
+    {N_("Portuguese"), "pt_PT"},
+    {N_("Portuguese (Brazilian)"), "pt_BR"},
+    {N_("Russian"), "ru_RU"},
+    {N_("Spanish (Castilian)"), "es_ES"}
+};
+
+class LangListModel : public gcn::ListModel
+{
+public:
+    virtual ~LangListModel()
+    { }
+
+    virtual int getNumberOfElements()
+    { return langs_count; }
+
+    virtual std::string getElementAt(int i)
+    {
+        if (i >= getNumberOfElements() || i < 0)
+            return _("???");
+
+        return gettext(LANG_NAME[i].name.c_str());
+    }
+};
+
 Setup_Theme::Setup_Theme():
     mTheme(config.getValue("theme", config.getValue("selectedSkin", ""))),
     mFont(config.getStringValue("font")),
+    mLang(config.getStringValue("lang")),
     mBoldFont(config.getStringValue("boldFont")),
     mParticleFont(config.getStringValue("particleFont")),
     mHelpFont(config.getStringValue("helpFont")),
@@ -143,6 +190,7 @@ Setup_Theme::Setup_Theme():
     setName(_("Theme"));
 
     mThemeLabel = new Label(_("Gui theme"));
+    mLangLabel = new Label(_("Language"));
     mFontLabel = new Label(_("Main Font"));
     mBoldFontLabel = new Label(_("Bold font"));
     mParticleFontLabel = new Label(_("Particle font"));
@@ -151,6 +199,7 @@ Setup_Theme::Setup_Theme():
     mJapanFontLabel = new Label(_("Japanese font"));
     mThemesModel  = new ThemesModel();
     mFontsModel  = new FontsModel();
+    mLangListModel = new LangListModel();
 
     mThemeDropDown = new DropDown(mThemesModel);
     mThemeDropDown->setActionEventId(ACTION_THEME);
@@ -159,6 +208,10 @@ Setup_Theme::Setup_Theme():
     mFontDropDown = new DropDown(mFontsModel);
     mFontDropDown->setActionEventId(ACTION_FONT);
     mFontDropDown->addActionListener(this);
+
+    mLangDropDown = new DropDown(mLangListModel);
+    mLangDropDown->setActionEventId(ACTION_LANG);
+    mLangDropDown->addActionListener(this);
 
     mBoldFontDropDown = new DropDown(mFontsModel);
     mBoldFontDropDown->setActionEventId(ACTION_BOLD_FONT);
@@ -192,6 +245,17 @@ Setup_Theme::Setup_Theme():
     else
         mThemeDropDown->setSelected(0);
 
+    const std::string str = config.getStringValue("lang");
+
+    for (int f = 0; f < langs_count; f ++)
+    {
+        if (LANG_NAME[f].value == str)
+        {
+            mLangDropDown->setSelected(f);
+            break;
+        }
+    }
+
     mFontDropDown->setSelectedString(getFileName(
         config.getStringValue("font")));
     mBoldFontDropDown->setSelectedString(getFileName(
@@ -210,22 +274,24 @@ Setup_Theme::Setup_Theme():
     ContainerPlacer place = h.getPlacer(0, 0);
 
     place(0, 0, mThemeLabel, 5);
-    place(0, 1, fontSizeLabel, 5);
-    place(0, 2, mFontLabel, 5);
-    place(0, 3, mBoldFontLabel, 5);
-    place(0, 4, mParticleFontLabel, 5);
-    place(0, 5, mHelpFontLabel, 5);
-    place(0, 6, mSecureFontLabel, 5);
-    place(0, 7, mJapanFontLabel, 5);
+    place(0, 1, mLangLabel, 5);
+    place(0, 2, fontSizeLabel, 5);
+    place(0, 3, mFontLabel, 5);
+    place(0, 4, mBoldFontLabel, 5);
+    place(0, 5, mParticleFontLabel, 5);
+    place(0, 6, mHelpFontLabel, 5);
+    place(0, 7, mSecureFontLabel, 5);
+    place(0, 8, mJapanFontLabel, 5);
 
     place(6, 0, mThemeDropDown, 10);
-    place(6, 1, mFontSizeDropDown, 10);
-    place(6, 2, mFontDropDown, 10);
-    place(6, 3, mBoldFontDropDown, 10);
-    place(6, 4, mParticleFontDropDown, 10);
-    place(6, 5, mHelpFontDropDown, 10);
-    place(6, 6, mSecureFontDropDown, 10);
-    place(6, 7, mJapanFontDropDown, 10);
+    place(6, 1, mLangDropDown, 10);
+    place(6, 2, mFontSizeDropDown, 10);
+    place(6, 3, mFontDropDown, 10);
+    place(6, 4, mBoldFontDropDown, 10);
+    place(6, 5, mParticleFontDropDown, 10);
+    place(6, 6, mHelpFontDropDown, 10);
+    place(6, 7, mSecureFontDropDown, 10);
+    place(6, 8, mJapanFontDropDown, 10);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -236,13 +302,16 @@ Setup_Theme::Setup_Theme():
 Setup_Theme::~Setup_Theme()
 {
     delete mThemesModel;
-    mThemesModel = 0;
+    mThemesModel = nullptr;
 
     delete mFontsModel;
-    mFontsModel = 0;
+    mFontsModel = nullptr;
 
     delete mFontSizeListModel;
-    mFontSizeListModel = 0;
+    mFontSizeListModel = nullptr;
+
+    delete mLangListModel;
+    mLangListModel = nullptr;
 }
 
 void Setup_Theme::action(const gcn::ActionEvent &event)
@@ -257,6 +326,14 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
     else if (event.getId() == ACTION_FONT)
     {
         mFont = mFontDropDown->getSelectedString();
+    }
+    else if (event.getId() == ACTION_LANG)
+    {
+        int id = mLangDropDown->getSelected();
+        if (id < 0 || id >= langs_count)
+            mLang = "";
+        else
+            mLang = LANG_NAME[id].value;
     }
     else if (event.getId() == ACTION_BOLD_FONT)
     {
@@ -283,6 +360,7 @@ void Setup_Theme::action(const gcn::ActionEvent &event)
 void Setup_Theme::cancel()
 {
     mTheme = config.getValue("theme", config.getValue("selectedSkin", ""));
+    mLang = config.getStringValue("lang");
     mFont = getFileName(config.getStringValue("font"));
     mBoldFont = getFileName(config.getStringValue("boldFont"));
     mParticleFont = getFileName(config.getStringValue("particleFont"));
@@ -302,6 +380,7 @@ void Setup_Theme::apply()
 
     config.setValue("selectedSkin", "");
     config.setValue("theme", mTheme);
+    config.setValue("lang", mLang);
     if (config.getValue("font", "dejavusans.ttf") != mFont
         || config.getValue("boldFont", "dejavusans-bold.ttf") != mBoldFont
         || config.getValue("particleFont", "dejavusans.ttf") != mParticleFont

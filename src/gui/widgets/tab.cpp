@@ -91,7 +91,7 @@ Tab::~Tab()
             for_each(tabImg[mode].grid, tabImg[mode].grid + 9, dtor<Image*>());
     }
     delete mVertexes;
-    mVertexes = 0;
+    mVertexes = nullptr;
 }
 
 void Tab::init()

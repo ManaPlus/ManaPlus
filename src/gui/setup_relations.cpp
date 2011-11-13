@@ -72,7 +72,8 @@ static const char *RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
     N_("Disregarded"),
     N_("Ignored"),
     N_("Erased"),
-    N_("Blacklisted")
+    N_("Blacklisted"),
+    N_("Enemy")
 };
 
 class PlayerRelationListModel : public gcn::ListModel
@@ -97,7 +98,7 @@ class PlayerTableModel : public TableModel
 {
 public:
     PlayerTableModel() :
-        mPlayers(NULL),
+        mPlayers(nullptr),
         mListModel(new PlayerRelationListModel)
     {
         playerRelationsUpdated();
@@ -107,9 +108,9 @@ public:
     {
         freeWidgets();
         delete mListModel;
-        mListModel = 0;
+        mListModel = nullptr;
         delete mPlayers;
-        mPlayers = 0;
+        mPlayers = nullptr;
     }
 
     virtual int getRows() const
@@ -184,7 +185,7 @@ public:
     virtual void freeWidgets()
     {
         delete mPlayers;
-        mPlayers = 0;
+        mPlayers = nullptr;
 
         delete_all(mWidgets);
         mWidgets.clear();
@@ -309,7 +310,7 @@ Setup_Relations::~Setup_Relations()
 {
     player_relations.removeListener(this);
     delete mIgnoreActionChoicesModel;
-    mIgnoreActionChoicesModel = 0;
+    mIgnoreActionChoicesModel = nullptr;
 }
 
 

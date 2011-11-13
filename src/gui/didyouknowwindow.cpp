@@ -44,7 +44,7 @@ static const int minTip = 1;
 static const int maxTip = 14;
 
 DidYouKnowWindow::DidYouKnowWindow():
-    Window(_("Did You Know?"), false, 0, "didyouknow.xml")
+    Window(_("Did You Know?"), false, nullptr, "didyouknow.xml")
 {
     setMinWidth(300);
     setMinHeight(250);

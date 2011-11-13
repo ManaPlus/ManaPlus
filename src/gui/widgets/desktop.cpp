@@ -39,7 +39,7 @@
 #include "debug.h"
 
 Desktop::Desktop() :
-    mWallpaper(0)
+    mWallpaper(nullptr)
 {
     addWidgetListener(this);
 
@@ -66,7 +66,7 @@ Desktop::~Desktop()
     if (mWallpaper)
     {
         mWallpaper->decRef();
-        mWallpaper = 0;
+        mWallpaper = nullptr;
     }
 }
 

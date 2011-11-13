@@ -165,7 +165,7 @@ public:
 
 
 TextCommandEditor::TextCommandEditor(TextCommand *command):
-    Window(_("Command Editor"), false, 0, "commandeditor.xml")
+    Window(_("Command Editor"), false, nullptr, "commandeditor.xml")
 {
     int w = 350;
     int h = 370;
@@ -302,11 +302,11 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
 TextCommandEditor::~TextCommandEditor()
 {
     delete mIconsModal;
-    mIconsModal = 0;
+    mIconsModal = nullptr;
     delete mTargetTypeModel;
-    mTargetTypeModel = 0;
+    mTargetTypeModel = nullptr;
     delete mMagicSchoolModel;
-    mMagicSchoolModel = 0;
+    mMagicSchoolModel = nullptr;
 }
 
 void TextCommandEditor::action(const gcn::ActionEvent &event)

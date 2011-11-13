@@ -28,14 +28,14 @@
 #include "debug.h"
 
 AnimationParticle::AnimationParticle(Map *map, Animation *animation):
-    ImageParticle(map, 0),
+    ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
 
 AnimationParticle::AnimationParticle(Map *map, xmlNodePtr animationNode,
                                      const std::string& dyePalettes):
-    ImageParticle(map, 0),
+    ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
 }
@@ -43,8 +43,8 @@ AnimationParticle::AnimationParticle(Map *map, xmlNodePtr animationNode,
 AnimationParticle::~AnimationParticle()
 {
     delete mAnimation;
-    mAnimation = 0;
-    mImage = 0;
+    mAnimation = nullptr;
+    mImage = nullptr;
 }
 
 bool AnimationParticle::update()

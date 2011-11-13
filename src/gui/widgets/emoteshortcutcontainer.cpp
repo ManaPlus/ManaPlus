@@ -90,7 +90,7 @@ EmoteShortcutContainer::~EmoteShortcutContainer()
     if (mBackgroundImg)
     {
         mBackgroundImg->decRef();
-        mBackgroundImg = 0;
+        mBackgroundImg = nullptr;
     }
 }
 

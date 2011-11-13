@@ -35,8 +35,8 @@
 
 namespace Ea
 {
-GuildTab *guildTab = 0;
-Guild *taGuild = 0;
+GuildTab *guildTab = nullptr;
+Guild *taGuild = nullptr;
 
 GuildHandler::GuildHandler() :
     showBasicInfo(false)
@@ -46,7 +46,7 @@ GuildHandler::GuildHandler() :
 GuildHandler::~GuildHandler()
 {
     delete guildTab;
-    guildTab = 0;
+    guildTab = nullptr;
 }
 
 void GuildHandler::requestAlliance(int guildId A_UNUSED,
@@ -450,7 +450,7 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
         }
         SERVER_NOTICE(_("You have left the guild."))
         delete guildTab;
-        guildTab = 0;
+        guildTab = nullptr;
 
         if (socialWindow && taGuild)
             socialWindow->removeTab(taGuild);
@@ -497,7 +497,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
         }
         SERVER_NOTICE(_("You was kicked from guild."));
         delete guildTab;
-        guildTab = 0;
+        guildTab = nullptr;
 
         if (socialWindow && taGuild)
             socialWindow->removeTab(taGuild);
@@ -607,7 +607,7 @@ void GuildHandler::processGuildBroken(Net::MessageIn &msg)
 
 void GuildHandler::clear()
 {
-    taGuild = 0;
+    taGuild = nullptr;
 }
 
 } // namespace Ea

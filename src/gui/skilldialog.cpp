@@ -81,8 +81,8 @@ struct SkillInfo
     gcn::Color color;
 
     SkillInfo() :
-        id(0), name(""), dispName(""), icon(0), modifiable(false),
-        visible(false), model(0), skillLevel(""), skillLevelWidth(0),
+        id(0), name(""), dispName(""), icon(nullptr), modifiable(false),
+        visible(false), model(nullptr), skillLevel(""), skillLevelWidth(0),
         skillExp(""), progress(0.0f)
     {
     }
@@ -92,7 +92,7 @@ struct SkillInfo
         if (icon)
         {
             icon->decRef();
-            icon = 0;
+            icon = nullptr;
         }
     }
 
@@ -161,9 +161,9 @@ public:
     ~SkillListBox()
     {
         delete mModel;
-        mModel = 0;
+        mModel = nullptr;
         delete mPopup;
-        mPopup = 0;
+        mPopup = nullptr;
     }
 
     SkillInfo *getSelectedInfo()
@@ -172,7 +172,7 @@ public:
         if (!mListModel || selected < 0
             || selected > mListModel->getNumberOfElements())
         {
-            return 0;
+            return nullptr;
         }
 
         return static_cast<SkillModel*>(mListModel)->getSkillAt(selected);
@@ -257,7 +257,7 @@ public:
     ~SkillTab()
     {
         delete mListBox;
-        mListBox = 0;
+        mListBox = nullptr;
     }
 
     SkillInfo *getSelectedInfo()
@@ -265,7 +265,7 @@ public:
         if (mListBox)
             return mListBox->getSelectedInfo();
         else
-            return 0;
+            return nullptr;
     }
 
 private:
@@ -273,7 +273,7 @@ private:
 };
 
 SkillDialog::SkillDialog():
-    Window(_("Skills"), false, 0, "skills.xml")
+    Window(_("Skills"), false, nullptr, "skills.xml")
 {
     setWindowName("Skills");
     setCloseButton(true);
@@ -286,7 +286,7 @@ SkillDialog::SkillDialog():
     mTabs = new TabbedArea();
     mPointsLabel = new Label("0");
     mIncreaseButton = new Button(_("Up"), "inc", this);
-    mDefaultModel = 0;
+    mDefaultModel = nullptr;
 
     place(0, 0, mTabs, 5, 5);
     place(0, 5, mPointsLabel, 4);

@@ -58,7 +58,7 @@ static const int BOX_HEIGHT = 36;
 
 EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
                                  bool foring):
-    Window(_("Equipment"), false, 0, "equipment.xml"),
+    Window(_("Equipment"), false, nullptr, "equipment.xml"),
     mEquipment(equipment),
     mSelected(-1),
     mForing(foring)
@@ -86,7 +86,7 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
 
     mBoxes.reserve(13);
     for (int f = 0; f < 13; f ++)
-        mBoxes.push_back(0);
+        mBoxes.push_back(nullptr);
 
     fillBoxes();
 
@@ -109,13 +109,13 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
 EquipmentWindow::~EquipmentWindow()
 {
     delete mItemPopup;
-    mItemPopup = 0;
+    mItemPopup = nullptr;
     if (this == beingEquipmentWindow)
     {
         if (mEquipment)
             delete mEquipment->getBackend();
         delete mEquipment;
-        mEquipment = 0;
+        mEquipment = nullptr;
     }
     delete_all(mBoxes);
     mBoxes.clear();
@@ -198,7 +198,7 @@ void EquipmentWindow::action(const gcn::ActionEvent &event)
 Item *EquipmentWindow::getItem(int x, int y) const
 {
     if (!mEquipment)
-        return 0;
+        return nullptr;
 
     std::vector<std::pair<int, int>*>::const_iterator it;
     std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
@@ -215,7 +215,7 @@ Item *EquipmentWindow::getItem(int x, int y) const
         if (tRect.isPointInRect(x, y))
             return mEquipment->getEquipment(i);
     }
-    return NULL;
+    return nullptr;
 }
 
 void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
@@ -322,7 +322,7 @@ void EquipmentWindow::setBeing(Being *being)
     delete mEquipment;
     if (!being)
     {
-        mEquipment = 0;
+        mEquipment = nullptr;
         return;
     }
     mEquipment = being->getEquipment();
@@ -337,7 +337,7 @@ void EquipmentWindow::updateBeing(Being *being)
 void EquipmentWindow::resetBeing(Being *being)
 {
     if (being == mBeing)
-        setBeing(0);
+        setBeing(nullptr);
 }
 
 void EquipmentWindow::fillBoxes()

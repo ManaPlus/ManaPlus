@@ -51,7 +51,7 @@
 #include "debug.h"
 
 DebugWindow::DebugWindow():
-    Window(_("Debug"), false, 0, "debug.xml")
+    Window(_("Debug"), false, nullptr, "debug.xml")
 {
     setWindowName("Debug");
     if (setupWindow)
@@ -85,11 +85,11 @@ DebugWindow::DebugWindow():
 DebugWindow::~DebugWindow()
 {
     delete mMapWidget;
-    mMapWidget = 0;
+    mMapWidget = nullptr;
     delete mTargetWidget;
-    mTargetWidget = 0;
+    mTargetWidget = nullptr;
     delete mNetWidget;
-    mNetWidget = 0;
+    mNetWidget = nullptr;
 }
 
 void DebugWindow::logic()
@@ -139,7 +139,7 @@ void DebugWindow::widgetResized(const gcn::Event &event)
 }
 
 MapDebugTab::MapDebugTab() :
-    mTexturesLabel(0)
+    mTexturesLabel(nullptr)
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);

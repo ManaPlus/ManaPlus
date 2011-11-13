@@ -97,7 +97,7 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
 
     const int x = mX * mMap->getTileWidth() + offsetX;
     const int y = mY * mMap->getTileHeight() + offsetY;
-    gcn::Font *font = 0;
+    gcn::Font *font = nullptr;
 
     if (mHighlight)
     {

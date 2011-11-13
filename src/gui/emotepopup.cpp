@@ -80,7 +80,7 @@ EmotePopup::~EmotePopup()
     if (mSelectionImage)
     {
         mSelectionImage->decRef();
-        mSelectionImage = 0;
+        mSelectionImage = nullptr;
     }
 }
 

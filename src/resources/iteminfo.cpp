@@ -77,14 +77,14 @@ ItemInfo::ItemInfo() :
     mAttackAction(SpriteAction::INVALID),
     mAttackRange(0),
     mMissileParticle(""),
-    mColors(0),
+    mColors(nullptr),
     mColorList(""),
     mHitEffectId(0),
     mCriticalHitEffectId(0)
 {
     for (int f = 0; f < 9; f ++)
     {
-        mSpriteToItemReplaceMap[f] = 0;
+        mSpriteToItemReplaceMap[f] = nullptr;
         mDrawBefore[f] = -1;
         mDrawAfter[f] = -1;
         mDrawPriority[f] = 0;
@@ -96,7 +96,7 @@ ItemInfo::~ItemInfo()
     delete_all(mSpriteToItemReplaceList);
     mSpriteToItemReplaceList.clear();
     for (int f = 0; f < 9; f ++)
-        mSpriteToItemReplaceMap[f] = 0;
+        mSpriteToItemReplaceMap[f] = nullptr;
 }
 
 const std::string &ItemInfo::getSprite(Gender gender) const
@@ -145,7 +145,7 @@ const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
 std::map<int, int> *ItemInfo::addReplaceSprite(int sprite, int direction)
 {
     if (direction < 0 || direction >= 9)
-        return 0;
+        return nullptr;
 
     SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
 
@@ -170,7 +170,7 @@ void ItemInfo::setColorsList(std::string name)
 {
     if (name.empty())
     {
-        mColors = 0;
+        mColors = nullptr;
         mColorList = "";
     }
     else
@@ -231,7 +231,7 @@ const std::string ItemInfo::replaceColors(std::string str,
 SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
 {
     if (direction < 0 || direction >= 9)
-        return 0;
+        return nullptr;
 
     SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
     if (spMap)
@@ -242,7 +242,7 @@ SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(int direction) const
     if (direction == DIRECTION_DOWNLEFT || direction == DIRECTION_DOWNRIGHT)
         return mSpriteToItemReplaceMap[DIRECTION_DOWN];
 
-    return 0;
+    return nullptr;
 }
 
 void ItemInfo::setSpriteOrder(int *ptr, int direction, int n, int def)

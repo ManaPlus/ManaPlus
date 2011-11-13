@@ -94,7 +94,7 @@ void Wallpaper::loadWallpapers()
 
     char **imgs = PHYSFS_enumerateFiles(wallpaperPath.c_str());
 
-    for (char **i = imgs; *i != NULL; i++)
+    for (char **i = imgs; *i; i++)
     {
         int width;
         int height;
@@ -157,7 +157,7 @@ std::string Wallpaper::getWallpaper(int width, int height)
         {
           // Return randomly a wallpaper between vector[0] and
           // vector[vector.size() - 1]
-          srand(static_cast<unsigned>(time(0)));
+          srand(static_cast<unsigned>(time(nullptr)));
           return wallPaperVector[int(static_cast<double>(
                 wallPaperVector.size()) * rand() / (RAND_MAX + 1.0))];
         }

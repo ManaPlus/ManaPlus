@@ -57,13 +57,13 @@
 float OutfitWindow::mAlpha = 1.0;
 
 OutfitWindow::OutfitWindow():
-    Window(_("Outfits"), false, 0, "outfits.xml"),
+    Window(_("Outfits"), false, nullptr, "outfits.xml"),
     mBoxWidth(33),
     mBoxHeight(33),
     mGridWidth(4),
     mGridHeight(3),
     mItemClicked(false),
-    mItemMoved(NULL),
+    mItemMoved(nullptr),
     mItemSelected(-1),
     mItemColorSelected(1),
     mCurrentOutfit(0),
@@ -383,7 +383,7 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
                 if (item)
                     mItemMoved = item;
                 else
-                    mItemMoved = 0;
+                    mItemMoved = nullptr;
                 mItems[mCurrentOutfit][index] = -1;
             }
         }
@@ -433,7 +433,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
         {
-            mItemMoved = NULL;
+            mItemMoved = nullptr;
             Window::mouseReleased(event);
             return;
         }
@@ -443,7 +443,7 @@ void OutfitWindow::mouseReleased(gcn::MouseEvent &event)
         {
             mItems[mCurrentOutfit][index] = mItemMoved->getId();
             mItemColors[mCurrentOutfit][index] = mItemMoved->getColor();
-            mItemMoved = NULL;
+            mItemMoved = nullptr;
         }
         if (mItemClicked)
             mItemClicked = false;

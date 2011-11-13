@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-TextManager *textManager = 0;
+TextManager *textManager = nullptr;
 
 TextManager::TextManager()
 {
@@ -34,7 +34,7 @@ TextManager::TextManager()
 
 void TextManager::addText(Text *text)
 {
-    place(text, 0, text->mX, text->mY, text->mHeight);
+    place(text, nullptr, text->mX, text->mY, text->mHeight);
     mTextList.push_back(text);
 }
 

@@ -25,6 +25,7 @@
 #include "main.h"
 
 #include "graphics.h"
+#include "localconsts.h"
 
 #ifdef USE_OPENGL
 #define NO_SDL_GLEXT
@@ -122,7 +123,7 @@ class ImageVertexes
 {
     public:
         ImageVertexes() :
-            image(0)
+            image(nullptr)
         {
             sdl.reserve(30);
 #ifdef USE_OPENGL

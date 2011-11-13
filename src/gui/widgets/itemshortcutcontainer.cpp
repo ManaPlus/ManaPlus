@@ -51,7 +51,7 @@
 ItemShortcutContainer::ItemShortcutContainer(unsigned number):
     ShortcutContainer(),
     mItemClicked(false),
-    mItemMoved(NULL),
+    mItemMoved(nullptr),
     mNumber(number)
 {
     addMouseListener(this);
@@ -87,12 +87,12 @@ ItemShortcutContainer::~ItemShortcutContainer()
     if (mBackgroundImg)
     {
         mBackgroundImg->decRef();
-        mBackgroundImg = 0;
+        mBackgroundImg = nullptr;
     }
     delete mItemPopup;
-    mItemPopup = 0;
+    mItemPopup = nullptr;
     delete mSpellPopup;
-    mSpellPopup = 0;
+    mSpellPopup = nullptr;
 }
 
 void ItemShortcutContainer::draw(gcn::Graphics *graphics)
@@ -304,14 +304,14 @@ void ItemShortcutContainer::mouseReleased(gcn::MouseEvent &event)
         const int index = getIndexFromGrid(event.getX(), event.getY());
         if (index == -1)
         {
-            mItemMoved = NULL;
+            mItemMoved = nullptr;
             return;
         }
         if (mItemMoved)
         {
             itemShortcut[mNumber]->setItems(index,
                 mItemMoved->getId(), mItemMoved->getColor());
-            mItemMoved = NULL;
+            mItemMoved = nullptr;
         }
         else if (itemShortcut[mNumber]->getItem(index) && mItemClicked)
         {

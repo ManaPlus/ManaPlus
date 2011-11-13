@@ -102,8 +102,8 @@ unsigned char *php3_base64_decode(const unsigned char *string,
     unsigned char *result = static_cast<unsigned char *>(
         calloc(length + 1, 1));
 
-    if (result == NULL)
-        return NULL;
+    if (!result)
+        return nullptr;
 
     /* run through the whole string, converting as we go */
     while ((ch = *current++) != '\0')
@@ -155,7 +155,7 @@ unsigned char *php3_base64_decode(const unsigned char *string,
             case 0:
             case 1:
                 free(result);
-                return 0;
+                return nullptr;
             case 2:
                 k++;
             case 3:

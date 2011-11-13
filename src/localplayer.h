@@ -28,6 +28,7 @@
 #include "client.h"
 #include "game.h"
 #include "listener.h"
+#include "localconsts.h"
 
 #include "gui/userpalette.h"
 
@@ -136,10 +137,10 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         int getAttackRange2();
 
-        void attack(Being *target = NULL, bool keep = false,
+        void attack(Being *target = nullptr, bool keep = false,
                     bool dontChangeEquipment = false);
 
-        void attack2(Being *target = NULL, bool keep = false,
+        void attack2(Being *target = nullptr, bool keep = false,
                      bool dontChangeEquipment = false);
 
         void setGMLevel(int level);
@@ -271,8 +272,13 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void switchMagicAttack();
 
+        void switchPvpAttack();
+
         int getMagicAttackType()
         { return mMagicAttackType ; }
+
+        int getPvpAttackType()
+        { return mPvpAttackType ; }
 
         int getMoveToTargetType()
         { return mMoveToTargetType ; }
@@ -325,13 +331,15 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void changeAwayMode();
 
-        bool getAwayMode()
-        { return mAwayMode; }
-
         void setAway(const std::string &message);
+
+        void setPseudoAway(const std::string &message);
 
         bool getAway()
         { return mAwayMode; }
+
+        bool getPseudoAway()
+        { return mPseudoAwayMode; }
 
         void setHalfAway(bool n)
         { mInactive = n; }
@@ -415,7 +423,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         { return mPickUpTarget; }
 
         void unSetPickUpTarget()
-        { mPickUpTarget = 0; }
+        { mPickUpTarget = nullptr; }
 
         /**
          * Stop following a player.
@@ -473,6 +481,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void stopAdvert();
 
+        bool checAttackPermissions(Being *target);
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -524,6 +534,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         unsigned int mPickUpType;
         //magic attack type
         unsigned int mMagicAttackType;
+        //pvp attack type
+        unsigned int mPvpAttackType;
         //type how move to target
         unsigned int mMoveToTargetType;
         unsigned int mAttackType;
@@ -571,6 +583,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int mPingTime;
         int mAfkTime;
         bool mAwayMode;
+        bool mPseudoAwayMode;
 
         bool mShowNavigePath;
         bool mIsServerBuggy;

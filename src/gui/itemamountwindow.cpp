@@ -138,13 +138,13 @@ void ItemAmountWindow::finish(Item *item, int amount, int price, Usage usage)
 ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
                                    int maxRange):
     Window("", true, parent, "amount.xml"),
-    mItemPriceTextField(0),
-    mGPLabel(0),
+    mItemPriceTextField(nullptr),
+    mGPLabel(nullptr),
     mItem(item),
     mMax(maxRange),
     mUsage(usage),
-    mItemPriceSlide(0),
-    mItemsModal(0),
+    mItemPriceSlide(nullptr),
+    mItemsModal(nullptr),
     mPrice(0)
 {
     if (!mItem)
@@ -293,7 +293,7 @@ ItemAmountWindow::ItemAmountWindow(Usage usage, Window *parent, Item *item,
 ItemAmountWindow::~ItemAmountWindow()
 {
     delete mItemPopup;
-    mItemPopup = 0;
+    mItemPopup = nullptr;
 }
 
 // Show ItemTooltip

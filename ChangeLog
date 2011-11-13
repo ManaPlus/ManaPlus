@@ -1,3 +1,24 @@
+2011-11-12 New release 1.1.11.12
+ManaPlus:
+fix: hide death message on reconnect.
+fix: stop move after open npc dialog.
+fix: disable incomplete hr, hy translations.
+fix: self player ignore.
+fix: double network error dialog.
+fix: joystick support.
+fix: random key press loses.
+add: pseudo away.
+Command: /pseudoaway text
+add: enemy relation. (no any ignore, but mark player as enemy)
+add: option for attack players in pvp "Switch pvp attack". Default key not assigned
+add: interface language selection.
+Settings / Theme / Language.
+add: Bold text type in chat. (To enable command ##B, to disable ##b)
+Example: ##Bbold##b text.
+add: update mplus fonts.
+add: joystick selection, option for joystick usage only in active game.
+add: enable joystick hat (if exists).
+
 2011-10-30 New release 1.1.10.30
 ManaPlus:
 fix: disable autofix position for archer mode.

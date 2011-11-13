@@ -85,15 +85,15 @@ std::string tradePartnerName("");
 PopupMenu::PopupMenu():
     Popup("PopupMenu", "popupmenu.xml"),
     mBeingId(0),
-    mFloorItem(0),
-    mItem(0),
+    mFloorItem(nullptr),
+    mItem(nullptr),
     mItemId(0),
     mItemColor(1),
-    mMapItem(0),
-    mTab(0),
-    mSpell(0),
-    mDialog(0),
-    mButton(0),
+    mMapItem(nullptr),
+    mTab(nullptr),
+    mSpell(nullptr),
+    mDialog(nullptr),
+    mButton(nullptr),
     mNick(""),
     mType(Being::UNKNOWN)
 {
@@ -102,10 +102,10 @@ PopupMenu::PopupMenu():
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mBrowserBox->setOpaque(false);
     mBrowserBox->setLinkHandler(this);
-    mRenameListener.setMapItem(0);
-    mRenameListener.setDialog(0);
+    mRenameListener.setMapItem(nullptr);
+    mRenameListener.setDialog(nullptr);
     mPlayerListener.setNick("");
-    mPlayerListener.setDialog(0);
+    mPlayerListener.setDialog(nullptr);
     mPlayerListener.setType(Being::UNKNOWN);
 
     add(mBrowserBox);
@@ -145,6 +145,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
                         mBrowserBox->addRow("blacklist", _("Black list"));
+                        mBrowserBox->addRow("enemy", _("Set as enemy"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
@@ -152,6 +153,7 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
                         mBrowserBox->addRow("blacklist", _("Black list"));
+                        mBrowserBox->addRow("enemy", _("Set as enemy"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
@@ -159,6 +161,15 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                         mBrowserBox->addRow("unignore", _("Unignore"));
                         mBrowserBox->addRow("disregard", _("Disregard"));
                         mBrowserBox->addRow("ignore", _("Ignore"));
+                        mBrowserBox->addRow("enemy", _("Set as enemy"));
+                        mBrowserBox->addRow("erase", _("Erase"));
+                        break;
+
+                    case PlayerRelation::ENEMY2:
+                        mBrowserBox->addRow("unignore", _("Unignore"));
+                        mBrowserBox->addRow("disregard", _("Disregard"));
+                        mBrowserBox->addRow("ignore", _("Ignore"));
+                        mBrowserBox->addRow("blacklist", _("Black list"));
                         mBrowserBox->addRow("erase", _("Erase"));
                         break;
 
@@ -379,6 +390,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
             mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -386,6 +398,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
             mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -393,6 +406,7 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
             mBrowserBox->addRow("unignore", _("Unignore"));
             mBrowserBox->addRow("disregard", _("Disregard"));
             mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -404,6 +418,14 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
 
         case PlayerRelation::IGNORED:
             mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::ENEMY2:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
             mBrowserBox->addRow("erase", _("Erase"));
             break;
 
@@ -625,6 +647,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
                     mBrowserBox->addRow("blacklist", _("Black list"));
+                    mBrowserBox->addRow("enemy", _("Set as enemy"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
@@ -632,6 +655,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
                     mBrowserBox->addRow("blacklist", _("Black list"));
+                    mBrowserBox->addRow("enemy", _("Set as enemy"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
@@ -639,12 +663,21 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                     mBrowserBox->addRow("unignore", _("Unignore"));
                     mBrowserBox->addRow("disregard", _("Disregard"));
                     mBrowserBox->addRow("ignore", _("Ignore"));
+                    mBrowserBox->addRow("enemy", _("Set as enemy"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
                 case PlayerRelation::DISREGARDED:
                     mBrowserBox->addRow("unignore", _("Unignore"));
                     mBrowserBox->addRow("ignore", _("Completely ignore"));
+                    mBrowserBox->addRow("erase", _("Erase"));
+                    break;
+
+                case PlayerRelation::ENEMY2:
+                    mBrowserBox->addRow("unignore", _("Unignore"));
+                    mBrowserBox->addRow("disregard", _("Disregard"));
+                    mBrowserBox->addRow("ignore", _("Ignore"));
+                    mBrowserBox->addRow("blacklist", _("Black list"));
                     mBrowserBox->addRow("erase", _("Erase"));
                     break;
 
@@ -800,9 +833,9 @@ void PopupMenu::showChangePos(int x, int y)
     else
     {
         mBeingId = 0;
-        mFloorItem = 0;
-        mItem = 0;
-        mMapItem = 0;
+        mFloorItem = nullptr;
+        mItem = nullptr;
+        mMapItem = nullptr;
         mNick = "";
         mType = Being::UNKNOWN;
         setVisible(false);
@@ -894,6 +927,16 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "blacklist" && !mNick.empty())
     {
         player_relations.setRelation(mNick, PlayerRelation::BLACKLISTED);
+    }
+    else if (link == "enemy" && being &&
+             being->getType() == ActorSprite::PLAYER)
+    {
+        player_relations.setRelation(being->getName(),
+            PlayerRelation::ENEMY2);
+    }
+    else if (link == "enemy" && !mNick.empty())
+    {
+        player_relations.setRelation(mNick, PlayerRelation::ENEMY2);
     }
     else if (link == "erase" && being &&
              being->getType() == ActorSprite::PLAYER)
@@ -1640,11 +1683,11 @@ void PopupMenu::handleLink(const std::string &link,
     setVisible(false);
 
     mBeingId = 0;
-    mFloorItem = 0;
-    mItem = 0;
+    mFloorItem = nullptr;
+    mItem = nullptr;
     mItemId = 0;
     mItemColor = 1;
-    mMapItem = 0;
+    mMapItem = nullptr;
     mNick = "";
     mType = Being::UNKNOWN;
 }
@@ -1747,7 +1790,7 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
     }
     else
     {
-        mItem = 0;
+        mItem = nullptr;
         mItemId = itemId;
         mItemColor = color;
         mBrowserBox->clearRows();
@@ -2023,8 +2066,8 @@ void PopupMenu::showPopup(int x, int y)
 }
 
 RenameListener::RenameListener() :
-    mMapItem(0),
-    mDialog(0)
+    mMapItem(nullptr),
+    mDialog(nullptr)
 {
 }
 
@@ -2037,7 +2080,7 @@ void RenameListener::action(const gcn::ActionEvent &event)
             return;
 
         SpecialLayer *sl = map->getSpecialLayer();
-        MapItem *item = 0;
+        MapItem *item = nullptr;
         if (sl)
         {
             item = sl->getTile(mMapItem->getX(), mMapItem->getY());
@@ -2056,12 +2099,12 @@ void RenameListener::action(const gcn::ActionEvent &event)
         if (socialWindow)
             socialWindow->updatePortalNames();
     }
-    mDialog = 0;
+    mDialog = nullptr;
 }
 
 PlayerListener::PlayerListener() :
     mNick(""),
-    mDialog(0),
+    mDialog(nullptr),
     mType(Being::UNKNOWN)
 {
 }
@@ -2077,5 +2120,5 @@ void PlayerListener::action(const gcn::ActionEvent &event)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);
     }
-    mDialog = 0;
+    mDialog = nullptr;
 }

@@ -29,6 +29,7 @@
 
 #include "utils/stringutils.h"
 
+#include "gui/gui.h"
 #include "gui/palette.h"
 #include "gui/theme.h"
 
@@ -48,8 +49,9 @@
 
 BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     gcn::Widget(),
-    mLinkHandler(0),
-    mMode(mode), mHighMode(UNDERLINE | BACKGROUND),
+    mLinkHandler(nullptr),
+    mMode(mode),
+    mHighMode(UNDERLINE | BACKGROUND),
     mOpaque(opaque),
     mUseLinksAndUserColors(true),
     mSelectedLink(-1),
@@ -371,7 +373,10 @@ void BrowserBox::draw(gcn::Graphics *graphics)
         if (!part.mType)
         {
             graphics->setColor(part.mColor);
-            font->drawString(graphics, part.mText, part.mX, part.mY);
+            if (part.mBold)
+                boldFont->drawString(graphics, part.mText, part.mX, part.mY);
+            else
+                font->drawString(graphics, part.mText, part.mX, part.mY);
         }
         else if (part.mImage)
         {
@@ -389,6 +394,8 @@ int BrowserBox::calcHeight()
     int moreHeight = 0;
     int maxWidth = getWidth();
     int link = 0;
+    bool bold = false;
+
     if (getWidth() < 0)
         return 1;
 
@@ -417,7 +424,7 @@ int BrowserBox::calcHeight()
             const int dashWidth = fontWidthMinus;
             for (x = 0; x < (unsigned)getWidth(); x++)
             {
-                mLineParts.push_back(LinePart(x, y, selColor, "-"));
+                mLineParts.push_back(LinePart(x, y, selColor, "-", false));
                 x += dashWidth - 2;
             }
 
@@ -458,6 +465,8 @@ int BrowserBox::calcHeight()
                 wrapped = false;
             }
 
+            bold = false;
+
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)
                 end = row.find("##", start + 1);
@@ -482,6 +491,14 @@ int BrowserBox::calcHeight()
 //                        link++;
                         prevColor = selColor;
                         selColor = col;
+                    }
+                    else if (c == 'B')
+                    {
+                        bold = true;
+                    }
+                    else if (c == 'b')
+                    {
+                        bold = false;
                     }
                     else if (valid)
                     {
@@ -533,10 +550,16 @@ int BrowserBox::calcHeight()
 
             std::string part = row.substr(start, len);
 
+            int width = 0;
+            if (bold)
+                width = boldFont->getWidth(part);
+            else
+                width = font->getWidth(part);
+
             // Auto wrap mode
             if (mMode == AUTO_WRAP && getWidth() > 0
-                && font->getWidth(part) > 0
-                && (x + font->getWidth(part) + 10) > (unsigned)getWidth())
+                && width > 0
+                && (x + width + 10) > (unsigned)getWidth())
             {
                 bool forced = false;
 
@@ -564,16 +587,20 @@ int BrowserBox::calcHeight()
                     end--; // And then to the last byte of the previous one
 
                     part = row.substr(start, end - start + 1);
+                    if (bold)
+                        width = boldFont->getWidth(part);
+                    else
+                        width = font->getWidth(part);
                 }
-                while (end > start && font->getWidth(part) > 0
-                       && (x + font->getWidth(part) + 10)
+                while (end > start && width > 0
+                       && (x + width + 10)
                        > (unsigned)getWidth());
 
                 if (forced)
                 {
                     x -= hyphenWidth; // Remove the wrap-notifier accounting
                     mLineParts.push_back(LinePart(getWidth() - hyphenWidth,
-                                         y, selColor, hyphen));
+                        y, selColor, hyphen, bold));
                     end++; // Skip to the next character
                 }
                 else
@@ -585,12 +612,17 @@ int BrowserBox::calcHeight()
                 wrappedLines++;
             }
 
-            mLineParts.push_back(LinePart(x, y, selColor, part.c_str()));
+            mLineParts.push_back(LinePart(x, y, selColor, part.c_str(), bold));
 
-            if (mMode == AUTO_WRAP && font->getWidth(part) == 0)
+            if (bold)
+                width = boldFont->getWidth(part);
+            else
+                width = font->getWidth(part);
+
+            if (mMode == AUTO_WRAP && width == 0)
                 break;
 
-            x += font->getWidth(part);
+            x += width;
         }
         y += fontHeight;
     }
@@ -617,5 +649,5 @@ LinePart::~LinePart()
 {
     if (mImage)
         mImage->decRef();
-    mImage = 0;
+    mImage = nullptr;
 }

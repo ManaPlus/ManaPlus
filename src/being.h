@@ -354,7 +354,7 @@ class Being : public ActorSprite, public ConfigListener
         { return static_cast<short>(mGuilds.size()); }
 
         bool isInParty() const
-        { return mParty != NULL; }
+        { return mParty; }
 
         void setParty(Party *party);
 
@@ -761,10 +761,10 @@ class Being : public ActorSprite, public ConfigListener
         void setAttackRange(int range)
         { mAttackRange = range; }
 
-        void attack(Being *target = NULL, bool keep = false,
+        void attack(Being *target = nullptr, bool keep = false,
                     bool dontChangeEquipment = false);
 
-        void attack2(Being *target = NULL, bool keep = false,
+        void attack2(Being *target = nullptr, bool keep = false,
                      bool dontChangeEquipment = false);
 
     protected:

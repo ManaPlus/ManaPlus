@@ -45,12 +45,13 @@
 static const unsigned cache_max_size = 10;
 static const unsigned cache_clean_part = 3;
 
-CompoundSprite::CompoundSprite():
-        mCacheItem(0),
-        mImage(0),
-        mAlphaImage(0),
-        mOffsetX(0), mOffsetY(0),
-        mNeedsRedraw(false)
+CompoundSprite::CompoundSprite() :
+    mCacheItem(nullptr),
+    mImage(nullptr),
+    mAlphaImage(nullptr),
+    mOffsetX(0),
+    mOffsetY(0),
+    mNeedsRedraw(false)
 {
     mAlpha = 1.0f;
     mEnableAlphaFix = config.getBoolValue("enableAlphaFix");
@@ -67,9 +68,9 @@ CompoundSprite::~CompoundSprite()
     clear();
 
 //    delete mImage;
-    mImage = 0;
+    mImage = nullptr;
 //    delete mAlphaImage;
-    mAlphaImage = 0;
+    mAlphaImage = nullptr;
 }
 
 bool CompoundSprite::reset()
@@ -166,7 +167,7 @@ void CompoundSprite::drawSpritesSDL(Graphics* graphics,
 
 int CompoundSprite::getWidth() const
 {
-    Sprite *base = NULL;
+    Sprite *base = nullptr;
 
     SpriteConstIterator it, it_end;
     for (it = begin(), it_end = end(); it != it_end; ++it)
@@ -183,7 +184,7 @@ int CompoundSprite::getWidth() const
 
 int CompoundSprite::getHeight() const
 {
-    Sprite *base = NULL;
+    Sprite *base = nullptr;
 
     SpriteConstIterator it, it_end;
     for (it = begin(), it_end = end(); it != it_end; ++it)
@@ -271,11 +272,11 @@ void CompoundSprite::setSprite(int layer, Sprite* sprite)
 void CompoundSprite::removeSprite(int layer)
 {
     // Skip if it won't change anything
-    if (at(layer) == NULL)
+    if (at(layer) == nullptr)
         return;
 
     delete at(layer);
-    at(layer) = 0;
+    at(layer) = nullptr;
     mNeedsRedraw = true;
 }
 
@@ -290,7 +291,7 @@ void CompoundSprite::clear()
     delete_all(imagesCache);
     imagesCache.clear();
     delete mCacheItem;
-    mCacheItem = 0;
+    mCacheItem = nullptr;
 }
 
 void CompoundSprite::ensureSize(size_t layerCount)
@@ -299,7 +300,7 @@ void CompoundSprite::ensureSize(size_t layerCount)
     if (size() >= layerCount)
         return;
 
-    resize(layerCount, NULL);
+    resize(layerCount, nullptr);
 }
 
 /**
@@ -381,13 +382,13 @@ void CompoundSprite::redraw() const
     drawSpritesSDL(graphics, posX, posY);
 
     delete graphics;
-    graphics = 0;
+    graphics = nullptr;
 
     SDL_Surface *surfaceA = SDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
-    SDL_BlitSurface(surface, NULL, surfaceA, NULL);
+    SDL_BlitSurface(surface, nullptr, surfaceA, nullptr);
 
     delete mImage;
     delete mAlphaImage;
@@ -402,7 +403,7 @@ void CompoundSprite::redraw() const
     }
     else
     {
-        mAlphaImage = 0;
+        mAlphaImage = nullptr;
     }
 }
 
@@ -468,7 +469,7 @@ bool CompoundSprite::updateFromCache() const
     if (mCacheItem && mCacheItem->image)
     {
         imagesCache.push_front(mCacheItem);
-        mCacheItem = 0;
+        mCacheItem = nullptr;
         if (imagesCache.size() > cache_max_size)
         {
             for (unsigned f = 0; f < cache_clean_part; f ++)
@@ -496,8 +497,8 @@ bool CompoundSprite::updateFromCache() const
 
             for (; it1 != it1_end && it2 != it2_end;  ++ it1, ++ it2)
             {
-                void *ptr1 = 0;
-                void *ptr2 = 0;
+                void *ptr1 = nullptr;
+                void *ptr2 = nullptr;
                 if (*it1)
                     ptr1 = (*it1)->getHash();
                 if (*it2)
@@ -519,8 +520,8 @@ bool CompoundSprite::updateFromCache() const
             }
         }
     }
-    mImage = 0;
-    mAlphaImage = 0;
+    mImage = nullptr;
+    mAlphaImage = nullptr;
 //    miss++;
     return false;
 }
@@ -539,14 +540,14 @@ void CompoundSprite::initCurrentCacheItem() const
         if (*it)
             mCacheItem->data.push_back((*it)->getHash());
         else
-            mCacheItem->data.push_back(0);
+            mCacheItem->data.push_back(nullptr);
     }
 }
 
 CompoundItem::CompoundItem() :
 //    alpha(1.0f),
-    image(0),
-    alphaImage(0)
+    image(nullptr),
+    alphaImage(nullptr)
 {
 }
 

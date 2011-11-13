@@ -122,14 +122,14 @@ class CharacterDisplay : public Container
 };
 
 CharSelectDialog::CharSelectDialog(LoginData *data):
-    Window(_("Account and Character Management"), false, 0, "char.xml"),
+    Window(_("Account and Character Management"), false, nullptr, "char.xml"),
     mLocked(false),
-    mUnregisterButton(0),
-    mChangeEmailButton(0),
+    mUnregisterButton(nullptr),
+    mChangeEmailButton(nullptr),
     mCharacterEntries(0),
     mLoginData(data),
     mCharHandler(Net::getCharHandler()),
-    mDeleteDialog(0),
+    mDeleteDialog(nullptr),
     mDeleteIndex(-1)
 {
     setCloseButton(false);
@@ -246,7 +246,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
             == LoginDialog::savedPassword)
         {
             attemptCharacterDelete(mDeleteIndex);
-            mDeleteDialog = 0;
+            mDeleteDialog = nullptr;
         }
         else
         {
@@ -313,7 +313,7 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
     for (iter = mCharacterEntries.begin(), iter_end = mCharacterEntries.end();
          iter != iter_end; ++iter)
     {
-        (*iter)->setCharacter(0);
+        (*iter)->setCharacter(nullptr);
     }
 
     Net::Characters::const_iterator i, i_end = characters.end();
@@ -399,7 +399,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
 
 
 CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
-    mCharacter(0),
+    mCharacter(nullptr),
     mPlayerBox(new PlayerBox)
 {
     mButton = new Button("wwwwwwwww", "go", charSelectDialog);
@@ -445,7 +445,7 @@ void CharacterDisplay::setCharacter(Net::Character *character)
         return;
 
     mCharacter = character;
-    mPlayerBox->setPlayer(character ? character->dummy : 0);
+    mPlayerBox->setPlayer(character ? character->dummy : nullptr);
     update();
 }
 

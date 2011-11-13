@@ -82,12 +82,12 @@ class NameFunctuator
 } nameCompare;
 
 WhoIsOnline::WhoIsOnline():
-    Window(_("Who Is Online - Updating"), false, 0, "whoisonline.xml"),
-    mThread(NULL),
+    Window(_("Who Is Online - Updating"), false, nullptr, "whoisonline.xml"),
+    mThread(nullptr),
     mDownloadStatus(UPDATE_LIST),
     mDownloadComplete(true),
     mDownloadedBytes(0),
-    mMemoryBuffer(NULL),
+    mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
     mAllowUpdate(true),
     mShowLevel(false)
@@ -137,10 +137,10 @@ WhoIsOnline::~WhoIsOnline()
     config.removeListener("updateOnlineList", this);
 
     if (mThread && SDL_GetThreadID(mThread))
-        SDL_WaitThread(mThread, NULL);
+        SDL_WaitThread(mThread, nullptr);
 
     free(mMemoryBuffer);
-    mMemoryBuffer = 0;
+    mMemoryBuffer = nullptr;
 
     // Remove possibly leftover temporary download
     delete[] mCurlError;
@@ -206,7 +206,7 @@ void WhoIsOnline::loadList()
 
     mShowLevel = config.getBoolValue("showlevel");
 
-    while (line != NULL)
+    while (line)
     {
         std::string nick;
         lineStr = line;
@@ -295,7 +295,7 @@ void WhoIsOnline::loadList()
         {
             listStarted = true;
         }
-        line = strtok(NULL, "\n");
+        line = strtok(nullptr, "\n");
     }
 
     //Set window caption
@@ -333,7 +333,7 @@ void WhoIsOnline::loadList()
 
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
-    mMemoryBuffer = 0;
+    mMemoryBuffer = nullptr;
 
     if (mScrollArea->getVerticalMaxScroll() <
         mScrollArea->getVerticalScrollAmount())
@@ -377,7 +377,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             if (!wio->mAllowUpdate)
             {
                 curl_easy_cleanup(curl);
-                curl = 0;
+                curl = nullptr;
                 break;
             }
             wio->mDownloadedBytes = 0;
@@ -398,7 +398,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 7);
             curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30);
 
-            struct curl_slist *pHeaders = 0;
+            struct curl_slist *pHeaders = nullptr;
             // Make sure the resources2.txt and news.txt aren't cached,
             // in order to always get the latest version.
             pHeaders = curl_slist_append(pHeaders, "pragma: no-cache");
@@ -422,7 +422,7 @@ int WhoIsOnline::downloadThread(void *ptr)
                 attempts++;
                 curl_easy_cleanup(curl);
                 curl_slist_free_all(pHeaders);
-                curl = 0;
+                curl = nullptr;
                 continue;
             }
 
@@ -448,12 +448,12 @@ void WhoIsOnline::download()
 {
     mDownloadComplete = true;
     if (mThread && SDL_GetThreadID(mThread))
-        SDL_WaitThread(mThread, NULL);
+        SDL_WaitThread(mThread, nullptr);
 
     mDownloadComplete = false;
     mThread = SDL_CreateThread(WhoIsOnline::downloadThread, this);
 
-    if (mThread == NULL)
+    if (mThread == nullptr)
         mDownloadStatus = UPDATE_ERROR;
 }
 
@@ -525,8 +525,8 @@ void WhoIsOnline::action(const gcn::ActionEvent &event)
             setCaption(_("Who Is Online - Update"));
             if (mThread && SDL_GetThreadID(mThread))
             {
-                SDL_WaitThread(mThread, NULL);
-                mThread = NULL;
+                SDL_WaitThread(mThread, nullptr);
+                mThread = nullptr;
             }
             mDownloadComplete = true;
         }

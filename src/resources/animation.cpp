@@ -44,28 +44,28 @@ void Animation::addFrame(Image *image, int delay, int offsetX, int offsetY,
 
 void Animation::addTerminator(int rand)
 {
-    addFrame(NULL, 0, 0, 0, rand);
+    addFrame(nullptr, 0, 0, 0, rand);
 }
 
 bool Animation::isTerminator(const Frame &candidate)
 {
-    return (candidate.image == NULL && candidate.type == Frame::ANIMATION);
+    return (!candidate.image && candidate.type == Frame::ANIMATION);
 }
 
 void Animation::addJump(std::string name, int rand)
 {
-    Frame frame = { 0, 0, 0, 0, rand, Frame::JUMP, name };
+    Frame frame = { nullptr, 0, 0, 0, rand, Frame::JUMP, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addLabel(std::string name)
 {
-    Frame frame = { 0, 0, 0, 0, 100, Frame::LABEL, name };
+    Frame frame = { nullptr, 0, 0, 0, 100, Frame::LABEL, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addGoto(std::string name, int rand)
 {
-    Frame frame = { 0, 0, 0, 0, rand, Frame::GOTO, name };
+    Frame frame = { nullptr, 0, 0, 0, rand, Frame::GOTO, name };
     mFrames.push_back(frame);
 }

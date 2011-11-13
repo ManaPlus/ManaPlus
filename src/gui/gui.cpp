@@ -48,11 +48,11 @@
 #include "debug.h"
 
 // Guichan stuff
-Gui *gui = 0;
-SDLInput *guiInput = 0;
+Gui *gui = nullptr;
+SDLInput *guiInput = nullptr;
 
 // Bolded font
-gcn::Font *boldFont = 0;
+gcn::Font *boldFont = nullptr;
 
 class GuiConfigListener : public ConfigListener
 {
@@ -75,7 +75,7 @@ class GuiConfigListener : public ConfigListener
 
 Gui::Gui(Graphics *graphics):
     mCustomCursor(false),
-    mMouseCursors(NULL),
+    mMouseCursors(nullptr),
     mMouseCursorAlpha(1.0f),
     mMouseInactivityTimer(0),
     mCursorType(CURSOR_POINTER)
@@ -205,28 +205,28 @@ Gui::~Gui()
 {
     config.removeListener("customcursor", mConfigListener);
     delete mConfigListener;
-    mConfigListener = 0;
+    mConfigListener = nullptr;
 
     if (mMouseCursors)
     {
         mMouseCursors->decRef();
-        mMouseCursors = 0;
+        mMouseCursors = nullptr;
     }
 
     delete mGuiFont;
-    mGuiFont = 0;
+    mGuiFont = nullptr;
     delete boldFont;
-    boldFont = 0;
+    boldFont = nullptr;
     delete mHelpFont;
-    mHelpFont = 0;
+    mHelpFont = nullptr;
     delete mSecureFont;
-    mSecureFont = 0;
+    mSecureFont = nullptr;
     delete mInfoParticleFont;
-    mInfoParticleFont = 0;
+    mInfoParticleFont = nullptr;
     delete getTop();
 
     delete guiInput;
-    guiInput = 0;
+    guiInput = nullptr;
 
     Theme::deleteInstance();
 }
@@ -306,7 +306,7 @@ void Gui::setUseCustomCursor(bool customCursor)
             if (mMouseCursors)
             {
                 mMouseCursors->decRef();
-                mMouseCursors = NULL;
+                mMouseCursors = nullptr;
             }
         }
     }
@@ -357,13 +357,13 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
     gcn::Widget* parent = source;
     gcn::Widget* widget = source;
 
-    if (!force && mFocusHandler->getModalFocused() != NULL
+    if (!force && mFocusHandler->getModalFocused() != nullptr
         && !widget->isModalFocused())
     {
         return;
     }
 
-    if (!force && mFocusHandler->getModalMouseInputFocused() != NULL
+    if (!force && mFocusHandler->getModalMouseInputFocused() != nullptr
         && !widget->isModalMouseInputFocused())
     {
         return;
@@ -373,7 +373,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         mAltPressed, mMetaPressed, type, button,
         x, y, mClickCount);
 
-    while (parent != NULL)
+    while (parent)
     {
         // If the widget has been removed due to input
         // cancel the distribution.
@@ -443,7 +443,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
 
         // If a non modal focused widget has been reach
         // and we have modal focus cancel the distribution.
-        if (mFocusHandler->getModalFocused() != NULL
+        if (mFocusHandler->getModalFocused()
             && !widget->isModalFocused())
         {
             break;
@@ -451,7 +451,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
 
         // If a non modal mouse input focused widget has been reach
         // and we have modal mouse input focus cancel the distribution.
-        if (mFocusHandler->getModalMouseInputFocused() != NULL
+        if (mFocusHandler->getModalMouseInputFocused()
             && !widget->isModalMouseInputFocused())
         {
             break;

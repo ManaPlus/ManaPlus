@@ -145,7 +145,7 @@ void ChatHandler::sendRaw(const std::string &args)
 {
     std::string line = args;
     std::string str;
-    MessageOut *outMsg = 0;
+    MessageOut *outMsg = nullptr;
 
     if (line == "")
         return;

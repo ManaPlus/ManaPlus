@@ -58,7 +58,7 @@ extern Window *botCheckerWindow;
 extern Window *socialWindow;
 
 WindowMenu::WindowMenu():
-    mEmotePopup(0)
+    mEmotePopup(nullptr)
 {
     int x = 0, h = 0;
 
@@ -115,7 +115,7 @@ WindowMenu::WindowMenu():
 WindowMenu::~WindowMenu()
 {
     delete mTextPopup;
-    mTextPopup = 0;
+    mTextPopup = nullptr;
     mButtonNames.clear();
     std::vector <gcn::Button*>::iterator it, it_end;
     for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
@@ -132,7 +132,7 @@ WindowMenu::~WindowMenu()
 
 void WindowMenu::action(const gcn::ActionEvent &event)
 {
-    Window *window = 0;
+    Window *window = nullptr;
 
     if (event.getId() == ":-)")
     {
@@ -153,14 +153,14 @@ void WindowMenu::action(const gcn::ActionEvent &event)
             }
             else
             {
-                mEmotePopup = 0;
+                mEmotePopup = nullptr;
             }
         }
         else
         {
             if (windowContainer)
                 windowContainer->scheduleDelete(mEmotePopup);
-            mEmotePopup = 0;
+            mEmotePopup = nullptr;
         }
     }
     else if (event.getId() == "STA")
@@ -238,7 +238,7 @@ void WindowMenu::valueChanged(const gcn::SelectionEvent &event)
 
         if (windowContainer)
             windowContainer->scheduleDelete(mEmotePopup);
-        mEmotePopup = 0;
+        mEmotePopup = nullptr;
     }
 }
 

@@ -325,6 +325,8 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_DEFAULT},
     {"keySwitchMagicAttack", SDLK_COMMA, N_("Switch magic attack"),
         KeyboardConfig::GRP_DEFAULT},
+    {"keySwitchPvpAttack", KeyboardConfig::KEY_NO_VALUE,
+        N_("Switch pvp attack"), KeyboardConfig::GRP_DEFAULT},
     {"keyInvertDirection", SDLK_KP0, N_("Change move type"),
         KeyboardConfig::GRP_DEFAULT},
     {"keyChangeAttackWeaponType", SDLK_g, N_("Change Attack Weapon Type"),
@@ -475,7 +477,7 @@ bool KeyboardConfig::isKeyActive(int index) const
 
 void KeyboardConfig::refreshActiveKeys()
 {
-    mActiveKeys = SDL_GetKeyState(NULL);
+    mActiveKeys = SDL_GetKeyState(nullptr);
 }
 
 std::string KeyboardConfig::getKeyValueString(int index) const

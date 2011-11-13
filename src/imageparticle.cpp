@@ -60,9 +60,9 @@ ImageParticle::~ImageParticle()
             ImageParticle::imageParticleCountByName[name] --;
 
         mImage->decRef();
-        mImage = 0;
+        mImage = nullptr;
     }
-    setMap(0);
+    setMap(nullptr);
 }
 
 bool ImageParticle::draw(Graphics *graphics, int offsetX, int offsetY) const

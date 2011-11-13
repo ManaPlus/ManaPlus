@@ -1027,7 +1027,7 @@ SDL_Surface* OpenGLGraphics::getScreenshot()
             0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
     if (!screenshot)
-        return 0;
+        return nullptr;
 
     if (SDL_MUSTLOCK(screenshot))
         SDL_LockSurface(screenshot);

@@ -18,11 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "localconsts.h"
-
-//#define DEBUG_JOYSTICK 1
-
-#ifdef ENABLE_MEM_DEBUG
-//define _DEBUG_NEW_EMULATE_MALLOC 1
-#include "debug/debug_new.h"
+#ifndef __GXX_EXPERIMENTAL_CXX0X__
+#undef nullptr
+#define nullptr 0
 #endif

@@ -93,7 +93,7 @@ ProgressBar::ProgressBar(float progress,
         else
         {
             for (int f = 0; f < 9; f ++)
-                mBorder.grid[f] = 0;
+                mBorder.grid[f] = nullptr;
         }
 
     }
@@ -108,7 +108,7 @@ ProgressBar::~ProgressBar()
     if (mInstances == 0)
         for_each(mBorder.grid, mBorder.grid + 9, dtor<Image*>());
     delete mVertexes;
-    mVertexes = 0;
+    mVertexes = nullptr;
 }
 
 void ProgressBar::logic()

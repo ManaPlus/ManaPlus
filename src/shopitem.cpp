@@ -131,7 +131,7 @@ int ShopItem::sellCurrentDuplicate(int quantity)
     if (dupl->quantity == 0)
     {
         delete dupl;
-        dupl = 0;
+        dupl = nullptr;
         mDuplicates.pop();
     }
     return sellCount;

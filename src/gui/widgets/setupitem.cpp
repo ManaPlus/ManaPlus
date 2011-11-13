@@ -53,7 +53,7 @@ SetupItem::SetupItem(std::string text, std::string description,
     mUseDefault(false),
     mValue(""),
     mDefault(""),
-    mWidget(0),
+    mWidget(nullptr),
     mValueType(VBOOL)
 {
 }
@@ -70,7 +70,7 @@ SetupItem::SetupItem(std::string text, std::string description,
     mUseDefault(true),
     mValue(""),
     mDefault(def),
-    mWidget(0),
+    mWidget(nullptr),
     mValueType(VBOOL)
 {
 }
@@ -184,7 +184,7 @@ SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
 
 SetupItemCheckBox::~SetupItemCheckBox()
 {
-    mWidget = 0;
+    mWidget = nullptr;
 }
 
 void SetupItemCheckBox::createControls()
@@ -225,11 +225,11 @@ SetupItemTextField::SetupItemTextField(std::string text,
                                        std::string eventName,
                                        bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
-    mHorizont(0),
-    mLabel(0),
-    mTextField(0),
-    mButton(0),
-    mEditDialog(0)
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mTextField(nullptr),
+    mButton(nullptr),
+    mEditDialog(nullptr)
 {
     mValueType = VSTR;
     createControls();
@@ -242,11 +242,11 @@ SetupItemTextField::SetupItemTextField(std::string text,
                                        std::string eventName, std::string def,
                                        bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
-    mHorizont(0),
-    mLabel(0),
-    mTextField(0),
-    mButton(0),
-    mEditDialog(0)
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mTextField(nullptr),
+    mButton(nullptr),
+    mEditDialog(nullptr)
 {
     mValueType = VSTR;
     createControls();
@@ -254,11 +254,11 @@ SetupItemTextField::SetupItemTextField(std::string text,
 
 SetupItemTextField::~SetupItemTextField()
 {
-    mHorizont = 0;
-    mWidget = 0;
-    mTextField = 0;
-    mLabel = 0;
-    mButton = 0;
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mTextField = nullptr;
+    mLabel = nullptr;
+    mButton = nullptr;
 }
 
 void SetupItemTextField::createControls()
@@ -318,7 +318,7 @@ void SetupItemTextField::action(const gcn::ActionEvent &event)
     else if (event.getId() == mEventName + "_EDIT_OK")
     {
         mTextField->setText(mEditDialog->getMsg());
-        mEditDialog = 0;
+        mEditDialog = nullptr;
     }
 }
 
@@ -339,13 +339,13 @@ SetupItemIntTextField::SetupItemIntTextField(std::string text,
                                              int min, int max,
                                              bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
-    mHorizont(0),
-    mLabel(0),
-    mTextField(0),
-    mButton(0),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mTextField(nullptr),
+    mButton(nullptr),
     mMin(min),
     mMax(max),
-    mEditDialog(0)
+    mEditDialog(nullptr)
 {
     mValueType = VSTR;
     createControls();
@@ -360,13 +360,13 @@ SetupItemIntTextField::SetupItemIntTextField(std::string text,
                                              std::string def,
                                              bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
-    mHorizont(0),
-    mLabel(0),
-    mTextField(0),
-    mButton(0),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mTextField(nullptr),
+    mButton(nullptr),
     mMin(min),
     mMax(max),
-    mEditDialog(0)
+    mEditDialog(nullptr)
 {
     mValueType = VSTR;
     createControls();
@@ -374,11 +374,11 @@ SetupItemIntTextField::SetupItemIntTextField(std::string text,
 
 SetupItemIntTextField::~SetupItemIntTextField()
 {
-    mHorizont = 0;
-    mWidget = 0;
-    mTextField = 0;
-    mLabel = 0;
-    mButton = 0;
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mTextField = nullptr;
+    mLabel = nullptr;
+    mButton = nullptr;
 }
 
 void SetupItemIntTextField::createControls()
@@ -441,7 +441,7 @@ void SetupItemIntTextField::action(const gcn::ActionEvent &event)
     else if (event.getId() == mEventName + "_EDIT_OK")
     {
         mTextField->setValue(atoi(mEditDialog->getMsg().c_str()));
-        mEditDialog = 0;
+        mEditDialog = nullptr;
     }
 }
 
@@ -459,7 +459,7 @@ void SetupItemIntTextField::apply(std::string eventName)
 SetupItemLabel::SetupItemLabel(std::string text, std::string description,
                                SetupTabScroll *parent, bool separator) :
     SetupItem(text, description, "", parent, "", "", true),
-    mLabel(0),
+    mLabel(nullptr),
     mIsSeparator(separator)
 {
     mValueType = VNONE;
@@ -468,8 +468,8 @@ SetupItemLabel::SetupItemLabel(std::string text, std::string description,
 
 SetupItemLabel::~SetupItemLabel()
 {
-    mWidget = 0;
-    mLabel = 0;
+    mWidget = nullptr;
+    mLabel = nullptr;
 }
 
 void SetupItemLabel::createControls()
@@ -517,10 +517,10 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
                                      gcn::ListModel *model,
                                      bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
-    mHorizont(0),
-    mLabel(0),
+    mHorizont(nullptr),
+    mLabel(nullptr),
     mModel(model),
-    mDropDown(0)
+    mDropDown(nullptr)
 {
     mValueType = VSTR;
     createControls();
@@ -535,10 +535,10 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
                                      std::string def,
                                      bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
-    mHorizont(0),
-    mLabel(0),
+    mHorizont(nullptr),
+    mLabel(nullptr),
     mModel(model),
-    mDropDown(0)
+    mDropDown(nullptr)
 {
     mValueType = VSTR;
     createControls();
@@ -546,11 +546,11 @@ SetupItemDropDown::SetupItemDropDown(std::string text,
 
 SetupItemDropDown::~SetupItemDropDown()
 {
-    mHorizont = 0;
-    mWidget = 0;
-    mModel = 0;
-    mDropDown = 0;
-    mLabel = 0;
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mModel = nullptr;
+    mDropDown = nullptr;
+    mLabel = nullptr;
 }
 
 void SetupItemDropDown::createControls()

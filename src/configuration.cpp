@@ -152,7 +152,7 @@ ConfigurationObject::~ConfigurationObject()
 
 Configuration::Configuration() :
     mConfigPath(""),
-    mDefaultsData(0),
+    mDefaultsData(nullptr),
     mDirectory("")
 {
 }
@@ -168,7 +168,7 @@ void Configuration::cleanDefaults()
         }
         mDefaultsData->clear();
         delete mDefaultsData;
-        mDefaultsData = 0;
+        mDefaultsData = nullptr;
     }
 }
 
@@ -470,7 +470,7 @@ void ConfigurationObject::initFromXML(xmlNodePtr parent_node)
 
 void Configuration::init(const std::string &filename, bool useResManager)
 {
-    mDefaultsData = 0;
+    mDefaultsData = nullptr;
     XML::Document doc(filename, useResManager);
 
     if (useResManager)
@@ -565,8 +565,8 @@ void Configuration::write()
     logger->log1("Configuration::write() writing configuration...");
 
     xmlTextWriterSetIndent(writer, 1);
-    xmlTextWriterStartDocument(writer, NULL, NULL, NULL);
-//    xmlTextWriterStartDocument(writer, NULL, "utf8", NULL);
+    xmlTextWriterStartDocument(writer, nullptr, nullptr, nullptr);
+//    xmlTextWriterStartDocument(writer, nullptr, "utf8", nullptr);
     xmlTextWriterStartElement(writer, BAD_CAST "configuration");
 
     writeToXML(writer);

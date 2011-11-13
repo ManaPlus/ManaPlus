@@ -67,7 +67,7 @@ BeingHandler::BeingHandler(bool enableSync) :
 Being *BeingHandler::createBeing(int id, short job)
 {
     if (!actorSpriteManager)
-        return 0;
+        return nullptr;
 
     ActorSprite::Type type = ActorSprite::UNKNOWN;
     if (job <= 25 || (job >= 4001 && job <= 4049))
@@ -143,7 +143,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     {
         actorSpriteManager->destroy(dstBeing);
         actorSpriteManager->erase(dstBeing);
-        dstBeing = 0;
+        dstBeing = nullptr;
     }
 
     if (!dstBeing)

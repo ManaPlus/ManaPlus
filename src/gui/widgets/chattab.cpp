@@ -82,9 +82,9 @@ ChatTab::~ChatTab()
         chatWindow->removeTab(this);
 
     delete mTextOutput;
-    mTextOutput = 0;
+    mTextOutput = nullptr;
     delete mScrollArea;
-    mScrollArea = 0;
+    mScrollArea = nullptr;
 }
 
 void ChatTab::chatLog(std::string line, Own own,

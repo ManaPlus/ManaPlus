@@ -146,7 +146,7 @@ Button::~Button()
     mInstances--;
 
     delete mVertexes;
-    mVertexes = 0;
+    mVertexes = nullptr;
     if (mInstances == 0)
     {
         for (int mode = 0; mode < BUTTON_COUNT; mode++)

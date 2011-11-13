@@ -74,7 +74,7 @@ class WorldListModel : public gcn::ListModel
 };
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
-    Window(_("Select World"), false, 0, "world.xml")
+    Window(_("Select World"), false, nullptr, "world.xml")
 {
     mWorldListModel = new WorldListModel(worlds);
     mWorldList = new ListBox(mWorldListModel);
@@ -114,7 +114,7 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
 WorldSelectDialog::~WorldSelectDialog()
 {
     delete mWorldListModel;
-    mWorldListModel = 0;
+    mWorldListModel = nullptr;
 }
 
 void WorldSelectDialog::action(const gcn::ActionEvent &event)
@@ -140,7 +140,12 @@ void WorldSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
     gcn::Key key = keyEvent.getKey();
 
     if (key.getValue() == Key::ESCAPE)
-        action(gcn::ActionEvent(NULL, mChangeLoginButton->getActionEventId()));
+    {
+        action(gcn::ActionEvent(nullptr,
+            mChangeLoginButton->getActionEventId()));
+    }
     else if (key.getValue() == Key::ENTER)
-        action(gcn::ActionEvent(NULL, mChooseWorld->getActionEventId()));
+    {
+        action(gcn::ActionEvent(nullptr, mChooseWorld->getActionEventId()));
+    }
 }

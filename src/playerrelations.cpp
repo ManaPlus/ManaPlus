@@ -28,6 +28,7 @@
 #include "being.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "localplayer.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -68,7 +69,7 @@ class PlayerConfSerialiser :
         ConfigurationObject *cobj)
     {
         if (!cobj || !value.second)
-            return NULL;
+            return nullptr;
         cobj->setValue(NAME, value.first);
         cobj->setValue(RELATION, toString(
                 static_cast<int>(value.second->mRelation)));
@@ -108,7 +109,8 @@ const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] = {
     /* DISREGARDED*/  EMOTE | SPEECH_FLOAT,
     /* IGNORED */     0,
     /* ERASED */      INVISIBLE,
-    /* BLACKLISTED */ SPEECH_LOG | WHISPER
+    /* BLACKLISTED */ SPEECH_LOG | WHISPER,
+    /* ENEMY2 */      EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE
 };
 
 PlayerRelation::PlayerRelation(Relation relation)
@@ -119,7 +121,7 @@ PlayerRelation::PlayerRelation(Relation relation)
 PlayerRelationsManager::PlayerRelationsManager() :
     mPersistIgnores(false),
     mDefaultPermissions(PlayerRelation::DEFAULT),
-    mIgnoreStrategy(0)
+    mIgnoreStrategy(nullptr)
 {
 }
 
@@ -144,7 +146,7 @@ void PlayerRelationsManager::clear()
         removePlayer(*it);
     }
     delete names;
-    names = 0;
+    names = nullptr;
 }
 
 #define PERSIST_IGNORE_LIST "persistent-player-list"
@@ -326,6 +328,12 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
 void PlayerRelationsManager::setRelation(const std::string &player_name,
                                          PlayerRelation::Relation relation)
 {
+    if (!player_node || (relation != PlayerRelation::NEUTRAL
+        && player_node->getName() == player_name))
+    {
+        return;
+    }
+
     PlayerRelation *r = mRelations[player_name];
     if (!r)
         mRelations[player_name] = new PlayerRelation(relation);
@@ -408,6 +416,23 @@ void PlayerRelationsManager::ignoreTrade(std::string name)
     }
 }
 
+bool PlayerRelationsManager::checkBadRelation(std::string name)
+{
+    if (name.empty())
+        return true;
+
+    PlayerRelation::Relation relation = getRelation(name);
+
+    if (relation == PlayerRelation::IGNORED
+        || relation == PlayerRelation::DISREGARDED
+        || relation == PlayerRelation::BLACKLISTED
+        || relation == PlayerRelation::ERASED
+        || relation == PlayerRelation::ENEMY2)
+    {
+        return true;
+    }
+    return false;
+}
 
 ////////////////////////////////////////
 // ignore strategies

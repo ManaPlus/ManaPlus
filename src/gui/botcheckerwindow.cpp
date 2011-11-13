@@ -263,7 +263,7 @@ protected:
 
 
 BotCheckerWindow::BotCheckerWindow():
-    Window(_("Bot Checker"), false, 0, "botchecker.xml"),
+    Window(_("Bot Checker"), false, nullptr, "botchecker.xml"),
     mEnabled(false)
 {
     int w = 500;

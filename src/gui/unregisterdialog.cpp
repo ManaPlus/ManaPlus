@@ -47,7 +47,7 @@
 #include "debug.h"
 
 UnRegisterDialog::UnRegisterDialog(LoginData *data):
-    Window(_("Unregister"), true, 0, "unregister.xml"),
+    Window(_("Unregister"), true, nullptr, "unregister.xml"),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
@@ -92,7 +92,7 @@ UnRegisterDialog::UnRegisterDialog(LoginData *data):
 UnRegisterDialog::~UnRegisterDialog()
 {
     delete mWrongDataNoticeListener;
-    mWrongDataNoticeListener = 0;
+    mWrongDataNoticeListener = nullptr;
 }
 
 void UnRegisterDialog::action(const gcn::ActionEvent &event)

@@ -44,7 +44,7 @@ ImageSprite::~ImageSprite()
     if (mImage)
     {
         mImage->decRef();
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 

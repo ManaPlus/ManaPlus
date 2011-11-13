@@ -29,12 +29,12 @@
 #include "debug.h"
 
 Actor::Actor():
-        mMap(0)
+    mMap(nullptr)
 {}
 
 Actor::~Actor()
 {
-    setMap(0);
+    setMap(nullptr);
 }
 
 void Actor::setMap(Map *map)

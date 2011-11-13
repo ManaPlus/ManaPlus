@@ -35,10 +35,10 @@
 namespace XML
 {
     Document::Document(const std::string &filename, bool useResman):
-        mDoc(0)
+        mDoc(nullptr)
     {
         int size;
-        char *data = NULL;
+        char *data = nullptr;
         if (useResman)
         {
             ResourceManager *resman = ResourceManager::getInstance();
@@ -87,7 +87,7 @@ namespace XML
         if (data)
             mDoc = xmlParseMemory(data, size);
         else
-            mDoc = 0;
+            mDoc = nullptr;
     }
 
     Document::~Document()
@@ -98,7 +98,7 @@ namespace XML
 
     xmlNodePtr Document::rootNode()
     {
-        return mDoc ? xmlDocGetRootElement(mDoc) : 0;
+        return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
     int getProperty(xmlNodePtr node, const char* name, int def)
@@ -162,7 +162,7 @@ namespace XML
                 return child;
         }
 
-        return NULL;
+        return nullptr;
     }
 
 } // namespace XML

@@ -234,15 +234,15 @@ private:
 
 
 ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
-    Window(_("Choose Your Server"), false, 0, "server.xml"),
+    Window(_("Choose Your Server"), false, nullptr, "server.xml"),
     mDir(dir),
 //    mDownloadStatus(DOWNLOADING_PREPARING),
     mDownloadStatus(DOWNLOADING_UNKNOWN),
-    mDownload(0),
+    mDownload(nullptr),
     mDownloadProgress(-1.0f),
     mServers(ServerInfos()),
     mServerInfo(serverInfo),
-    mPersistentIPCheckBox(0)
+    mPersistentIPCheckBox(nullptr)
 {
     if (isSafeMode)
         setCaption(_("Choose Your Server  *** SAFE MODE ***"));
@@ -377,12 +377,12 @@ ServerDialog::~ServerDialog()
     {
         mDownload->cancel();
         delete mDownload;
-        mDownload = 0;
+        mDownload = nullptr;
     }
     delete mServersListModel;
-    mServersListModel = 0;
+    mServersListModel = nullptr;
     delete mTypeListModel;
-    mTypeListModel = 0;
+    mTypeListModel = nullptr;
 }
 
 void ServerDialog::action(const gcn::ActionEvent &event)
@@ -489,7 +489,7 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
     if (key.getValue() == Key::ESCAPE)
         Client::setState(STATE_EXIT);
     else if (key.getValue() == Key::ENTER)
-        action(gcn::ActionEvent(NULL, mConnectButton->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mConnectButton->getActionEventId()));
 }
 
 void ServerDialog::valueChanged(const gcn::SelectionEvent &)
@@ -617,7 +617,7 @@ void ServerDialog::downloadServerList()
     {
         mDownload->cancel();
         delete mDownload;
-        mDownload = 0;
+        mDownload = nullptr;
     }
 
     mDownload = new Net::Download(this, listFile, &downloadUpdate);

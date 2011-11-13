@@ -41,13 +41,13 @@ namespace PlayerInfo
 
 class PlayerInfoListener;
 
-PlayerInfoListener *mListener = 0;
+PlayerInfoListener *mListener = nullptr;
 
 PlayerInfoBackend mData;
 int mCharId = 0;
 
-Inventory *mInventory = 0;
-Equipment *mEquipment = 0;
+Inventory *mInventory = nullptr;
+Equipment *mEquipment = nullptr;
 
 std::map<int, Special> mSpecials;
 char mSpecialRechargeUpdateNeeded = 0;
@@ -210,7 +210,7 @@ Item *getEquipment(unsigned int slot)
     if (mEquipment)
         return mEquipment->getEquipment(slot);
     else
-        return 0;
+        return nullptr;
 }
 
 void setEquipmentBackend(Equipment::Backend *backend)
@@ -322,7 +322,7 @@ public:
 
                 if (newState == STATE_GAME)
                 {
-                    if (mInventory == 0)
+                    if (!mInventory)
                     {
                         mInventory = new Inventory(Inventory::INVENTORY);
                         mEquipment = new Equipment();
@@ -335,10 +335,9 @@ public:
             if (event.getName() == Mana::EVENT_DESTRUCTED)
             {
                 delete mInventory;
+                mInventory = nullptr;
                 delete mEquipment;
-
-                mInventory = 0;
-                mEquipment = 0;
+                mEquipment = nullptr;
             }
         }
     }
@@ -356,7 +355,7 @@ void init()
 void deinit()
 {
     delete mListener;
-    mListener = 0;
+    mListener = nullptr;
 }
 
 } // namespace PlayerInfo

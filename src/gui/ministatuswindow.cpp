@@ -67,7 +67,7 @@ MiniStatusWindow::MiniStatusWindow():
     }
     else
     {
-        mMpBar = 0;
+        mMpBar = nullptr;
     }
 
     int job = Net::getPlayerHandler()->getJobLocation()
@@ -85,7 +85,7 @@ MiniStatusWindow::MiniStatusWindow():
     }
     else
     {
-        mJobBar = 0;
+        mJobBar = nullptr;
     }
 
     mWeightBar = createBar(0, 140, 20, Theme::PROG_WEIGHT,
@@ -100,7 +100,7 @@ MiniStatusWindow::MiniStatusWindow():
     mArrowsBar = createBar(0, 50, 20, Theme::PROG_INVY_SLOTS,
                            "arrows bar", _("arrows bar"));
 
-    mStatusBar = createBar(100, 150, 20, Theme::PROG_EXP,
+    mStatusBar = createBar(100, 165, 20, Theme::PROG_EXP,
                            "status bar", _("status bar"));
 
     loadBars();
@@ -124,9 +124,9 @@ MiniStatusWindow::MiniStatusWindow():
 MiniStatusWindow::~MiniStatusWindow()
 {
     delete mTextPopup;
-    mTextPopup = 0;
+    mTextPopup = nullptr;
     delete mStatusPopup;
-    mStatusPopup = 0;
+    mStatusPopup = nullptr;
     delete_all(mIcons);
     mIcons.clear();
 
@@ -161,7 +161,7 @@ void MiniStatusWindow::updateBars()
 {
     int x = 0;
     std::vector <ProgressBar*>::const_iterator it, it_end;
-    ProgressBar* lastBar = 0;
+    ProgressBar* lastBar = nullptr;
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)
         safeRemove(*it);
     for (it = mBars.begin(), it_end = mBars.end(); it != it_end; ++it)

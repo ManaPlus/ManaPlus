@@ -47,8 +47,8 @@
 bool Minimap::mShow = true;
 
 Minimap::Minimap():
-    Window(_("Map"), false, 0, "map.xml"),
-    mMapImage(0),
+    Window(_("Map"), false, nullptr, "map.xml"),
+    mMapImage(nullptr),
     mWidthProportion(0.5),
     mHeightProportion(0.5),
     mCustomMapImage(false),
@@ -83,7 +83,7 @@ Minimap::~Minimap()
             delete mMapImage;
         else
             mMapImage->decRef();
-        mMapImage = 0;
+        mMapImage = nullptr;
     }
 }
 
@@ -107,7 +107,7 @@ void Minimap::setMap(Map *map)
             delete mMapImage;
         else
             mMapImage->decRef();
-        mMapImage = 0;
+        mMapImage = nullptr;
     }
 
     if (map)

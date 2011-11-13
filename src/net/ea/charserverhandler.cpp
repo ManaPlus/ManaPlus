@@ -124,7 +124,7 @@ void CharServerHandler::processCharCreate(Net::MessageIn &msg, bool withColors)
     if (mCharCreateDialog)
     {
         mCharCreateDialog->scheduleDelete();
-        mCharCreateDialog = 0;
+        mCharCreateDialog = nullptr;
     }
 }
 
@@ -160,7 +160,7 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
 {
     delete mSelectedCharacter;
     mCharacters.remove(mSelectedCharacter);
-    mSelectedCharacter = 0;
+    mSelectedCharacter = nullptr;
     updateCharSelectDialog();
     unlockCharSelectDialog();
     new OkDialog(_("Info"), _("Character deleted."));

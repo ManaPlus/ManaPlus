@@ -92,7 +92,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
     }
 
-    mDialog = 0;
+    mDialog = nullptr;
 }
 
 void NpcHandler::talk(int npcId)
@@ -195,7 +195,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     const int npcId = msg.readInt32();
 
     NpcDialogs::const_iterator diag = mNpcDialogs.find(npcId);
-    mDialog = 0;
+    mDialog = nullptr;
 
     if (diag == mNpcDialogs.end())
     {
@@ -213,6 +213,8 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
         else
         {
             mDialog = new NpcDialog(npcId);
+            if (player_node)
+                player_node->stopWalking(false);
             Wrapper wrap;
             wrap.dialog = mDialog;
             mNpcDialogs[npcId] = wrap;

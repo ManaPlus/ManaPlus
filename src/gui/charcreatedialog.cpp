@@ -63,7 +63,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     setStickyButtonLock(true);
     setSticky(true);
 
-    mPlayer = new Being(0, ActorSprite::PLAYER, mRace, NULL);
+    mPlayer = new Being(0, ActorSprite::PLAYER, mRace, nullptr);
     mPlayer->setGender(GENDER_MALE);
 
     int numberOfHairColors = ColorDB::getHairSize();
@@ -180,10 +180,10 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
 CharCreateDialog::~CharCreateDialog()
 {
     delete mPlayer;
-    mPlayer = 0;
+    mPlayer = nullptr;
 
     // Make sure the char server handler knows that we're gone
-    Net::getCharHandler()->setCharCreateDialog(0);
+    Net::getCharHandler()->setCharCreateDialog(nullptr);
 }
 
 void CharCreateDialog::action(const gcn::ActionEvent &event)
@@ -335,13 +335,13 @@ void CharCreateDialog::setAttributes(const std::vector<std::string> &labels,
     {
         remove(mAttributeLabel[i]);
         delete mAttributeLabel[i];
-        mAttributeLabel[i] = 0;
+        mAttributeLabel[i] = nullptr;
         remove(mAttributeSlider[i]);
         delete mAttributeSlider[i];
-        mAttributeSlider[i] = 0;
+        mAttributeSlider[i] = nullptr;
         remove(mAttributeValue[i]);
         delete mAttributeValue[i];
-        mAttributeValue[i] = 0;
+        mAttributeValue[i] = nullptr;
     }
 
     mAttributeLabel.resize(labels.size());

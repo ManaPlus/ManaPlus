@@ -538,6 +538,7 @@ SET(SRCS
     keyboardconfig.h
     listener.cpp
     listener.h
+    localconsts.h
     localplayer.cpp
     localplayer.h
     logger.cpp

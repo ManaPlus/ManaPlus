@@ -22,6 +22,8 @@
 
 #include "utils/stringutils.h"
 
+#include "configuration.h"
+
 #include <string.h>
 #include <algorithm>
 #include <cstdarg>
@@ -487,11 +489,16 @@ std::string combineDye2(std::string file, std::string dye)
 std::vector<std::string> getLang()
 {
     std::vector<std::string> langs;
-    char *lng = getenv("LANG");
-    if (!lng)
-        return langs;
 
-    std::string lang(lng);
+    std::string lang = config.getValue("lang", "").c_str();
+    if (lang.empty())
+    {
+        char *lng = getenv("LANG");
+        if (!lng)
+            return langs;
+        lang = lng;
+    }
+
     int dot = lang.find(".");
     if (dot != (signed)std::string::npos)
         lang = lang.substr(0, dot);

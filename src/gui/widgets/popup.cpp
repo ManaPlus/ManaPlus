@@ -70,7 +70,7 @@ Popup::Popup(const std::string &name, std::string skin):
     }
     else
     {
-        mSkin = 0;
+        mSkin = nullptr;
     }
 
     // Add this window to the window container
@@ -85,13 +85,13 @@ Popup::~Popup()
     logger->log("Popup::~Popup(\"%s\")", mPopupName.c_str());
 
     delete mVertexes;
-    mVertexes = 0;
+    mVertexes = nullptr;
 
     if (mSkin)
     {
         if (Theme::instance())
             Theme::instance()->unload(mSkin);
-        mSkin = 0;
+        mSkin = nullptr;
     }
 }
 

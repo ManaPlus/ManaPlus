@@ -26,7 +26,7 @@
 
 #include "debug.h"
 
-WindowContainer *windowContainer = NULL;
+WindowContainer *windowContainer = nullptr;
 
 void WindowContainer::logic()
 {

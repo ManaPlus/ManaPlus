@@ -23,6 +23,8 @@
 #ifndef WIDGET_LAYOUT_H
 #define WIDGET_LAYOUT_H
 
+#include "localconsts.h"
+
 #include <guichan/widgets/container.hpp>
 
 #include <vector>
@@ -35,7 +37,7 @@ class LayoutCell;
 class ContainerPlacer
 {
     public:
-        ContainerPlacer(gcn::Container *c = NULL, LayoutCell *l = NULL):
+        ContainerPlacer(gcn::Container *c = nullptr, LayoutCell *l = nullptr):
             mContainer(c), mCell(l)
         {}
 
@@ -172,7 +174,7 @@ class LayoutCell
         };
 
         LayoutCell():
-            mWidget(0),
+            mWidget(nullptr),
             mHPadding(0),
             mVPadding(0),
             mType(NONE)

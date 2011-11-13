@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/checkbox.hpp>
 
+#include "localconsts.h"
+
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
 #else
@@ -45,7 +47,7 @@ class CheckBox : public gcn::CheckBox
          * Constructor.
          */
         CheckBox(const std::string &caption, bool selected = false,
-                 gcn::ActionListener* listener = NULL,
+                 gcn::ActionListener* listener = nullptr,
                  std::string eventId = "");
 
         /**

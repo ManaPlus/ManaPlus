@@ -90,7 +90,7 @@ class ActorFunctuator
 } actorCompare;
 
 TileAnimation::TileAnimation(Animation *ani):
-    mLastImage(NULL)
+    mLastImage(nullptr)
 {
     mAnimation = new SimpleAnimation(ani);
 }
@@ -98,7 +98,7 @@ TileAnimation::TileAnimation(Animation *ani):
 TileAnimation::~TileAnimation()
 {
     delete mAnimation;
-    mAnimation = 0;
+    mAnimation = nullptr;
 }
 
 void TileAnimation::update(int ticks)
@@ -132,7 +132,7 @@ MapLayer::MapLayer(int x, int y, int width, int height, bool fringeLayer):
     const int size = mWidth * mHeight;
     mTiles = new Image*[size];
 
-    std::fill_n(mTiles, size, static_cast<Image*>(0));
+    std::fill_n(mTiles, size, static_cast<Image*>(nullptr));
 
     config.addListener("highlightAttackRange", this);
 }
@@ -258,8 +258,8 @@ void MapLayer::updateSDL(Graphics *graphics, int startX, int startY,
         MapRowVertexes *row = new MapRowVertexes();
         mTempRows.push_back(row);
 
-        Image *lastImage = 0;
-        ImageVertexes *imgVert = 0;
+        Image *lastImage = nullptr;
+        ImageVertexes *imgVert = nullptr;
 
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
@@ -337,8 +337,8 @@ void MapLayer::updateOGL(Graphics *graphics, int startX, int startY,
         MapRowVertexes *row = new MapRowVertexes();
         mTempRows.push_back(row);
 
-        Image *lastImage = 0;
-        ImageVertexes *imgVert = 0;
+        Image *lastImage = nullptr;
+        ImageVertexes *imgVert = nullptr;
 
         const int yWidth = y * mWidth;
         const int py0 = y * 32 + dy;
@@ -614,11 +614,11 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mOpacity(config.getFloatValue("guialpha")),
     mPvp(0),
     mTilesetsIndexed(false),
-    mIndexedTilesets(0),
+    mIndexedTilesets(nullptr),
     mIndexedTilesetsSize(0),
     mActorFixX(0),
     mActorFixY(0),
-    mFringeLayer(0),
+    mFringeLayer(nullptr),
     mLastX(-1),
     mLastY(-1),
     mLastScrollX(-1),
@@ -671,18 +671,18 @@ Map::~Map()
     for (int i = 0; i < NB_BLOCKTYPES; i++)
         delete[] mOccupation[i];
 
-    mFringeLayer = 0;
+    mFringeLayer = nullptr;
     delete_all(mLayers);
     delete_all(mTilesets);
     delete_all(mForegrounds);
     delete_all(mBackgrounds);
     delete_all(mTileAnimations);
     delete mSpecialLayer;
-    mSpecialLayer = 0;
+    mSpecialLayer = nullptr;
     delete mTempLayer;
-    mTempLayer = 0;
+    mTempLayer = nullptr;
     delete mObjects;
-    mObjects = 0;
+    mObjects = nullptr;
     delete_all(mMapPortals);
 }
 
@@ -1139,7 +1139,7 @@ Tileset *Map::getTilesetWithGid(int gid) const
     if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
     else
-        return 0;
+        return nullptr;
 }
 
 void Map::blockTile(int x, int y, BlockType type)
@@ -1797,17 +1797,17 @@ MapItem *Map::findPortalXY(int x, int y)
         if (item->mX == x && item->mY == y)
             return item;
     }
-    return 0;
+    return nullptr;
 }
 
 TileAnimation *Map::getAnimationForGid(int gid) const
 {
     if (mTileAnimations.empty())
-        return 0;
+        return nullptr;
 
     std::map<int, TileAnimation*>::const_iterator
         i = mTileAnimations.find(gid);
-    return (i == mTileAnimations.end()) ? NULL : i->second;
+    return (i == mTileAnimations.end()) ? nullptr : i->second;
 }
 
 void Map::setPvpMode(int mode)
@@ -1868,7 +1868,7 @@ void Map::indexTilesets()
 
     mTilesetsIndexed = true;
 
-    Tileset *s = 0;
+    Tileset *s = nullptr;
     for (Tilesets::const_iterator it = mTilesets.begin(),
          it_end = mTilesets.end(); it < it_end;
          ++it)
@@ -1882,14 +1882,14 @@ void Map::indexTilesets()
     if (!s)
     {
         mIndexedTilesetsSize = 0;
-        mIndexedTilesets = 0;
+        mIndexedTilesets = nullptr;
         return;
     }
 
     const int size = s->getFirstGid() + s->size();
     mIndexedTilesetsSize = size;
     mIndexedTilesets = new Tileset*[size];
-    std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(0));
+    std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(nullptr));
 
     for (Tilesets::const_iterator it = mTilesets.begin(),
          it_end = mTilesets.end(); it < it_end;
@@ -2031,7 +2031,7 @@ void Map::reduce()
                         img = (*ri)->mTiles[x + y * (*ri)->mWidth];
                         if (img)
                         {
-                            (*ri)->mTiles[x + y * (*ri)->mWidth] = 0;
+                            (*ri)->mTiles[x + y * (*ri)->mWidth] = nullptr;
                             cnt ++;
                         }
                         ++ ri;
@@ -2055,7 +2055,7 @@ SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):
 {
     const int size = mWidth * mHeight;
     mTiles = new MapItem*[size];
-    std::fill_n(mTiles, size, static_cast<MapItem*>(0));
+    std::fill_n(mTiles, size, static_cast<MapItem*>(nullptr));
     mDrawSprites = drawSprites;
 }
 
@@ -2064,7 +2064,7 @@ SpecialLayer::~SpecialLayer()
     for (int f = 0; f < mWidth * mHeight; f ++)
     {
         delete mTiles[f];
-        mTiles[f] = 0;
+        mTiles[f] = nullptr;
     }
     delete[] mTiles;
 }
@@ -2074,7 +2074,7 @@ MapItem* SpecialLayer::getTile(int x, int y) const
     if (x < 0 || x >= mWidth ||
         y < 0 || y >= mHeight)
     {
-        return 0;
+        return nullptr;
     }
     return mTiles[x + y * mWidth];
 }
@@ -2175,25 +2175,25 @@ void SpecialLayer::itemDraw(Graphics *graphics, int x, int y,
 
 
 MapItem::MapItem():
-    mImage(0), mComment(""), mName(""), mX(-1), mY(-1)
+    mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
 {
     setType(EMPTY);
 }
 
 MapItem::MapItem(int type):
-    mImage(0), mComment(""), mName(""), mX(-1), mY(-1)
+    mImage(nullptr), mComment(""), mName(""), mX(-1), mY(-1)
 {
     setType(type);
 }
 
 MapItem::MapItem(int type, std::string comment):
-    mImage(0), mComment(comment), mName(""), mX(-1), mY(-1)
+    mImage(nullptr), mComment(comment), mName(""), mX(-1), mY(-1)
 {
     setType(type);
 }
 
 MapItem::MapItem(int type, std::string comment, int x, int y):
-    mImage(0), mComment(comment), mName(""), mX(x), mY(y)
+    mImage(nullptr), mComment(comment), mName(""), mX(x), mY(y)
 {
     setType(type);
 }
@@ -2203,7 +2203,7 @@ MapItem::~MapItem()
     if (mImage)
     {
         mImage->decRef();
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 
@@ -2239,7 +2239,7 @@ void MapItem::setType(int type)
     }
     else
     {
-        mImage = 0;
+        mImage = nullptr;
     }
 }
 
@@ -2296,7 +2296,7 @@ ObjectsLayer::ObjectsLayer(unsigned width, unsigned height) :
 {
     const unsigned size = width * height;
     mTiles = new MapObjectList*[size];
-    std::fill_n(mTiles, size, static_cast<MapObjectList*>(0));
+    std::fill_n(mTiles, size, static_cast<MapObjectList*>(nullptr));
 }
 
 ObjectsLayer::~ObjectsLayer()
@@ -2306,7 +2306,7 @@ ObjectsLayer::~ObjectsLayer()
         delete mTiles[f];
 
     delete [] mTiles;
-    mTiles = 0;
+    mTiles = nullptr;
 }
 
 void ObjectsLayer::addObject(std::string name, int type,
@@ -2338,7 +2338,7 @@ void ObjectsLayer::addObject(std::string name, int type,
 MapObjectList *ObjectsLayer::getAt(unsigned x, unsigned y)
 {
     if (x >= mWidth || y >= mHeight)
-        return 0;
+        return nullptr;
     return mTiles[x + y * mWidth];
 }
 

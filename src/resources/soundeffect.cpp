@@ -34,7 +34,7 @@ SoundEffect::~SoundEffect()
 Resource *SoundEffect::load(void *buffer, unsigned bufferSize)
 {
     if (!buffer)
-        return NULL;
+        return nullptr;
 
     // Load the raw file data from the buffer in an RWops structure
     SDL_RWops *rw = SDL_RWFromMem(buffer, bufferSize);
@@ -49,7 +49,7 @@ Resource *SoundEffect::load(void *buffer, unsigned bufferSize)
     else
     {
         logger->log("Error, failed to load sound effect: %s", Mix_GetError());
-        return NULL;
+        return nullptr;
     }
 }
 

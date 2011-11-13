@@ -44,7 +44,7 @@ TextPreview::TextPreview(const std::string &text):
     mTextAlpha = false;
     mFont = gui->getFont();
     mTextColor = &Theme::getThemeColor(Theme::TEXT);
-    mTextBGColor = NULL;
+    mTextBGColor = nullptr;
     mBGColor = &Theme::getThemeColor(Theme::BACKGROUND);
     mOpaque = false;
 }

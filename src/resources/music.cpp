@@ -54,7 +54,7 @@ Resource *Music::load(void *buffer, unsigned bufferSize)
     else
     {
         logger->log("Error, failed to load music: %s", Mix_GetError());
-        return NULL;
+        return nullptr;
     }
 }
 

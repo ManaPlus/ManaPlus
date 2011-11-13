@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <alasmirt@gmail.com>, 2011.
 # alastrim <alasmirt@gmail.com>, 2011.
@@ -12,80 +12,79 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-10-28 03:52+0300\n"
-"PO-Revision-Date: 2011-10-29 01:59+0000\n"
-"Last-Translator: freya <freya.df@gmail.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://www.transifex.net/projects/p/"
-"manaplus/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2011-11-12 00:23+0300\n"
+"PO-Revision-Date: 2011-11-11 21:38+0000\n"
+"Last-Translator: akaras <akaras@inbox.ru>\n"
+"Language-Team: Portuguese (Brazilian) (http://www.transifex.net/projects/p/manaplus/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: src/actorspritemanager.cpp:1171
 msgid "Visible on map"
 msgstr "Mapa visivel "
 
-#: src/being.cpp:548
+#: src/being.cpp:551
 msgid "dodge"
 msgstr "por nome"
 
-#: src/being.cpp:548
+#: src/being.cpp:551
 msgid "miss"
 msgstr "por id"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1527
+#: src/being.cpp:1530
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1532
+#: src/being.cpp:1535
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:835 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:869 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "por peso"
 
-#: src/client.cpp:842 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:876 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:847 src/gui/setup_video.cpp:315
+#: src/client.cpp:881 src/gui/setup_video.cpp:315
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/client.cpp:852
+#: src/client.cpp:886
 msgid "Themes"
 msgstr "Temas"
 
-#: src/client.cpp:934
+#: src/client.cpp:968
 msgid "Connecting to server"
 msgstr "por quantidade"
 
-#: src/client.cpp:965
+#: src/client.cpp:999
 msgid "Logging in"
 msgstr "por tipo"
 
-#: src/client.cpp:998
+#: src/client.cpp:1032
 msgid "Entering game world"
 msgstr "Habilitar rolagem preguisoça "
 
-#: src/client.cpp:1098
+#: src/client.cpp:1132
 msgid "Requesting characters"
 msgstr "Rolagem preguiçosa"
 
-#: src/client.cpp:1129
+#: src/client.cpp:1163
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
-#: src/client.cpp:1139
+#: src/client.cpp:1173
 msgid "Changing game servers"
 msgstr "Mudando servidores do jogo"
 
-#: src/client.cpp:1182 src/client.cpp:1189 src/client.cpp:1323
+#: src/client.cpp:1216 src/client.cpp:1223 src/client.cpp:1357
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:221 src/gui/charselectdialog.cpp:253
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:401
@@ -95,229 +94,232 @@ msgstr "Mudando servidores do jogo"
 msgid "Error"
 msgstr "Erro"
 
-#: src/client.cpp:1198
+#: src/client.cpp:1232
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
-#: src/client.cpp:1224
+#: src/client.cpp:1258
 msgid "Password Change"
 msgstr "Mudar senha"
 
-#: src/client.cpp:1225
+#: src/client.cpp:1259
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
-#: src/client.cpp:1244
+#: src/client.cpp:1278
 msgid "Email Change"
 msgstr "Mudar email"
 
-#: src/client.cpp:1245
+#: src/client.cpp:1279
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
-#: src/client.cpp:1265
+#: src/client.cpp:1299
 msgid "Unregister Successful"
 msgstr "Registro cancelado com sucesso"
 
-#: src/client.cpp:1266
+#: src/client.cpp:1300
 msgid "Farewell, come back any time..."
 msgstr "Tchau, volte sempre..."
 
-#: src/client.cpp:1465 src/client.cpp:1495 src/client.cpp:1510
-#: src/client.cpp:1935 src/client.cpp:1942
+#: src/client.cpp:1499 src/client.cpp:1529 src/client.cpp:1544
+#: src/client.cpp:1969 src/client.cpp:1976
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s não existe e não pode ser criado! Saindo."
 
-#: src/client.cpp:1641
+#: src/client.cpp:1675
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Host de atualização inválido: %s"
 
-#: src/client.cpp:1675 src/client.cpp:1681
+#: src/client.cpp:1709 src/client.cpp:1715
 msgid "Error creating updates directory!"
 msgstr "Erro ao criar pasta de atualizações!"
 
-#: src/client.cpp:1702
+#: src/client.cpp:1736
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Erro: %s não existe e não pode se criado! Saindo."
 
-#: src/commandhandler.cpp:205
+#: src/commandhandler.cpp:209
 msgid "Unknown command."
 msgstr "Comando desconhecido."
 
-#: src/commandhandler.cpp:304
+#: src/commandhandler.cpp:329
 msgid "Cannot send empty whispers!"
 msgstr "Não é possível enviar mensagens privadas vazias!"
 
-#: src/commandhandler.cpp:318
+#: src/commandhandler.cpp:343
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
-"you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
+" you."
 msgstr ""
-"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela "
-"já existe ou é você mesmo."
+"Não é possível  criar uma aba de mensagem privada para o nick \"%s\"! Ou ela"
+" já existe ou é você mesmo."
 
-#: src/commandhandler.cpp:338
+#: src/commandhandler.cpp:363
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Solicitando entrada no canal %s."
 
-#: src/commandhandler.cpp:354 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:379 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "Falta o nome do grupo."
 
-#: src/commandhandler.cpp:365
+#: src/commandhandler.cpp:390
 msgid "Guild name is missing."
 msgstr "Falta o nome da guilda."
 
-#: src/commandhandler.cpp:378 src/commandhandler.cpp:496
-#: src/commandhandler.cpp:537 src/commandhandler.cpp:572
+#: src/commandhandler.cpp:403 src/commandhandler.cpp:521
+#: src/commandhandler.cpp:562 src/commandhandler.cpp:602
 msgid "Please specify a name."
 msgstr "Por favor, especifique um nome."
 
-#: src/commandhandler.cpp:430
+#: src/commandhandler.cpp:455
 msgid "Return toggles chat."
 msgstr "Enter alterna para o chat."
 
-#: src/commandhandler.cpp:430
+#: src/commandhandler.cpp:455
 msgid "Message closes chat."
 msgstr "A mensagem fecha o chat."
 
-#: src/commandhandler.cpp:441
+#: src/commandhandler.cpp:466
 msgid "Return now toggles chat."
 msgstr "Agora Enter alterna para o chat."
 
-#: src/commandhandler.cpp:447
+#: src/commandhandler.cpp:472
 msgid "Message now closes chat."
 msgstr "Agora a mensagem fecha o chat."
 
-#: src/commandhandler.cpp:475
+#: src/commandhandler.cpp:500
 msgid "friend"
 msgstr "amigo"
 
-#: src/commandhandler.cpp:480
+#: src/commandhandler.cpp:505
 msgid "disregarded"
 msgstr "ignorado"
 
-#: src/commandhandler.cpp:485
+#: src/commandhandler.cpp:510
 msgid "neutral"
 msgstr "neutro"
 
-#: src/commandhandler.cpp:504
+#: src/commandhandler.cpp:529
 #, c-format
 msgid "Player already %s!"
 msgstr "Jogador já %s!"
 
-#: src/commandhandler.cpp:518
+#: src/commandhandler.cpp:543
 #, c-format
 msgid "Player successfully %s!"
 msgstr "Jogador %s com sucesso!"
 
-#: src/commandhandler.cpp:526
+#: src/commandhandler.cpp:551
 #, c-format
 msgid "Player could not be %s!"
 msgstr "Jogador não pode ser %s!"
 
-#: src/commandhandler.cpp:549
+#: src/commandhandler.cpp:574
 msgid "Player wasn't ignored!"
 msgstr "O jogador não estava ignorado!"
 
-#: src/commandhandler.cpp:556
+#: src/commandhandler.cpp:581
 msgid "Player no longer ignored!"
 msgstr "O jogador não está mais ignorado!"
 
-#: src/commandhandler.cpp:558
+#: src/commandhandler.cpp:583
 msgid "Player could not be unignored!"
 msgstr "Não foi possível deixar de ignorar o jogador!"
 
-#: src/commandhandler.cpp:564
+#: src/commandhandler.cpp:589
 msgid "blacklisted"
 msgstr "Na Lista Negra"
 
-#: src/commandhandler.cpp:579
+#: src/commandhandler.cpp:594
+msgid "enemy"
+msgstr ""
+
+#: src/commandhandler.cpp:609
 msgid "Player already erased!"
 msgstr "Jogador já apagado!"
 
-#: src/commandhandler.cpp:590
+#: src/commandhandler.cpp:620
 msgid "Player successfully erased!"
 msgstr "Jogador apagado com sucesso!"
 
-#: src/commandhandler.cpp:592
+#: src/commandhandler.cpp:622
 msgid "Player could not be erased!"
 msgstr "Jogador não pode ser apagado!"
 
-#: src/commandhandler.cpp:892 src/commandhandler.cpp:938
+#: src/commandhandler.cpp:929 src/commandhandler.cpp:975
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Uptime do cliente: %s"
 
-#: src/commandhandler.cpp:902
+#: src/commandhandler.cpp:939
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d semana"
 msgstr[1] "%d semanas"
 
-#: src/commandhandler.cpp:911
+#: src/commandhandler.cpp:948
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dia"
 msgstr[1] "%d dias"
 
-#: src/commandhandler.cpp:919
+#: src/commandhandler.cpp:956
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d hora"
 msgstr[1] "%d horas"
 
-#: src/commandhandler.cpp:927
+#: src/commandhandler.cpp:964
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
-#: src/commandhandler.cpp:935
+#: src/commandhandler.cpp:972
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d segundo"
 msgstr[1] "%d segundos"
 
-#: src/commandhandler.cpp:1014
+#: src/commandhandler.cpp:1051
 msgid "font cache size"
 msgstr "Tamanho de fonte Cache"
 
-#: src/commandhandler.cpp:1026
+#: src/commandhandler.cpp:1063
 msgid "Cache size:"
 msgstr "Tamanho de cache:"
 
-#: src/commandhandler.cpp:1030
+#: src/commandhandler.cpp:1067
 msgid "Created:"
 msgstr "Criado:"
 
-#: src/commandhandler.cpp:1032
+#: src/commandhandler.cpp:1069
 msgid "Deleted:"
 msgstr "Deletado:"
 
-#: src/commandhandler.cpp:1133 src/commandhandler.cpp:1140
+#: src/commandhandler.cpp:1171 src/commandhandler.cpp:1178
 msgid "Resource images:"
 msgstr "Recursos de imagem:"
 
-#: src/commandhandler.cpp:1135 src/commandhandler.cpp:1142
+#: src/commandhandler.cpp:1173 src/commandhandler.cpp:1180
 msgid "Resource orphaned images:"
 msgstr "Recurso de imagem orfão:"
 
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr ""
-"Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
+msgstr "Opções para /%s são \"yes\" e \"no\", \"true\" e \"false\", \"1\" e \"0\"."
 
 #: src/game.cpp:252 src/gui/widgets/chattab.cpp:403
 msgid "General"
@@ -327,35 +329,35 @@ msgstr "Geral"
 msgid "Debug"
 msgstr "Depurador"
 
-#: src/game.cpp:513
+#: src/game.cpp:506
 msgid "Screenshot saved as "
 msgstr "Screenshot salva como "
 
-#: src/game.cpp:521
+#: src/game.cpp:514
 msgid "Saving screenshot failed!"
 msgstr "Falha ao salvar screenshot!"
 
-#: src/game.cpp:560
+#: src/game.cpp:554
 msgid "The connection to the server was lost."
 msgstr "A conexão com o servidor caiu."
 
-#: src/game.cpp:572
+#: src/game.cpp:557
 msgid "Network Error"
 msgstr "Erro de conexão"
 
-#: src/game.cpp:1322
+#: src/game.cpp:1332
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorando propostas de negócios"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1342
 msgid "Accepting incoming trade requests"
 msgstr "Aceitando propostas de negócios"
 
-#: src/game.cpp:1732
+#: src/game.cpp:1750
 msgid "Could Not Load Map"
 msgstr "Não foi possível carregar o mapa"
 
-#: src/game.cpp:1733
+#: src/game.cpp:1751
 #, c-format
 msgid "Error while loading %s"
 msgstr "Erro ao carregar %s"
@@ -389,19 +391,19 @@ msgid "Name"
 msgstr "Nome"
 
 #: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:133
-#: src/gui/popupmenu.cpp:292 src/gui/popupmenu.cpp:614
+#: src/gui/popupmenu.cpp:303 src/gui/popupmenu.cpp:636
 #: src/keyboardconfig.cpp:49 src/net/tmwa/generalhandler.cpp:269
 msgid "Attack"
 msgstr "Atacar"
 
-#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:281
+#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:292
 #: src/keyboardconfig.cpp:62
 msgid "Talk"
 msgstr "Falar"
 
-#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:253
-#: src/gui/popupmenu.cpp:285 src/gui/popupmenu.cpp:437
-#: src/gui/popupmenu.cpp:669 src/gui/popupmenu.cpp:756
+#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:264
+#: src/gui/popupmenu.cpp:296 src/gui/popupmenu.cpp:459
+#: src/gui/popupmenu.cpp:702 src/gui/popupmenu.cpp:789
 msgid "Move"
 msgstr "Mover"
 
@@ -414,8 +416,8 @@ msgid "Reset"
 msgstr "Resetar"
 
 #: src/gui/buydialog.cpp:58 src/gui/buydialog.cpp:65 src/gui/buydialog.cpp:112
-#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:265
-#: src/gui/popupmenu.cpp:282 src/gui/popupmenu.cpp:681
+#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:276
+#: src/gui/popupmenu.cpp:293 src/gui/popupmenu.cpp:714
 msgid "Buy"
 msgstr "Comprar"
 
@@ -433,7 +435,7 @@ msgstr "Quantidade:"
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:108 src/gui/itemamountwindow.cpp:207
 #: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:114
-#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:977
+#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:998
 msgid "+"
 msgstr "+"
 
@@ -441,7 +443,7 @@ msgstr "+"
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:111 src/gui/itemamountwindow.cpp:206
 #: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:115
-#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:989
+#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:1010
 msgid "-"
 msgstr "-"
 
@@ -453,8 +455,8 @@ msgid "Quit"
 msgstr "Sair"
 
 #: src/gui/buydialog.cpp:114 src/gui/selldialog.cpp:95
-#: src/gui/statuswindow.cpp:504 src/gui/statuswindow.cpp:554
-#: src/gui/statuswindow.cpp:976 src/gui/statuswindow.cpp:1007
+#: src/gui/statuswindow.cpp:505 src/gui/statuswindow.cpp:555
+#: src/gui/statuswindow.cpp:997 src/gui/statuswindow.cpp:1028
 msgid "Max"
 msgstr "Máximo"
 
@@ -463,8 +465,8 @@ msgstr "Máximo"
 msgid "Shop"
 msgstr "Loja"
 
-#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:266
-#: src/gui/popupmenu.cpp:283 src/gui/popupmenu.cpp:682
+#: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:277
+#: src/gui/popupmenu.cpp:294 src/gui/popupmenu.cpp:715
 #: src/gui/selldialog.cpp:53 src/gui/selldialog.cpp:60
 #: src/gui/selldialog.cpp:93
 msgid "Sell"
@@ -473,15 +475,15 @@ msgstr "Vender"
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
 #: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:96
 #: src/gui/connectiondialog.cpp:47 src/gui/itemamountwindow.cpp:209
-#: src/gui/npcpostdialog.cpp:58 src/gui/popupmenu.cpp:333
-#: src/gui/popupmenu.cpp:354 src/gui/popupmenu.cpp:478
-#: src/gui/popupmenu.cpp:504 src/gui/popupmenu.cpp:528
-#: src/gui/popupmenu.cpp:541 src/gui/popupmenu.cpp:559
-#: src/gui/popupmenu.cpp:772 src/gui/popupmenu.cpp:796
-#: src/gui/popupmenu.cpp:1732 src/gui/popupmenu.cpp:1760
-#: src/gui/popupmenu.cpp:1816 src/gui/popupmenu.cpp:1861
-#: src/gui/popupmenu.cpp:1896 src/gui/popupmenu.cpp:1935
-#: src/gui/popupmenu.cpp:1987 src/gui/popupmenu.cpp:2007
+#: src/gui/npcpostdialog.cpp:58 src/gui/popupmenu.cpp:344
+#: src/gui/popupmenu.cpp:365 src/gui/popupmenu.cpp:500
+#: src/gui/popupmenu.cpp:526 src/gui/popupmenu.cpp:550
+#: src/gui/popupmenu.cpp:563 src/gui/popupmenu.cpp:581
+#: src/gui/popupmenu.cpp:805 src/gui/popupmenu.cpp:829
+#: src/gui/popupmenu.cpp:1775 src/gui/popupmenu.cpp:1803
+#: src/gui/popupmenu.cpp:1859 src/gui/popupmenu.cpp:1904
+#: src/gui/popupmenu.cpp:1939 src/gui/popupmenu.cpp:1978
+#: src/gui/popupmenu.cpp:2030 src/gui/popupmenu.cpp:2050
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:82 src/gui/setup.cpp:72
 #: src/gui/socialwindow.cpp:1077 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
@@ -652,7 +654,7 @@ msgid "Enter password:"
 msgstr "Entre com a senha:"
 
 #: src/gui/charselectdialog.cpp:410 src/gui/serverdialog.cpp:298
-#: src/gui/setup_relations.cpp:243 src/gui/shopwindow.cpp:122
+#: src/gui/setup_relations.cpp:244 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Excluir"
@@ -728,8 +730,9 @@ msgstr "arco-íris 3"
 
 #: src/gui/chatwindow.cpp:142 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
-#: src/gui/setup_relations.cpp:221 src/gui/setup_theme.cpp:73
-#: src/gui/setup_theme.cpp:127 src/gui/setup_video.cpp:211
+#: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
+#: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
+#: src/gui/setup_theme.cpp:173 src/gui/setup_video.cpp:211
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
 msgid "???"
@@ -739,12 +742,12 @@ msgstr "???"
 msgid "Chat"
 msgstr "Chat"
 
-#: src/gui/chatwindow.cpp:613
+#: src/gui/chatwindow.cpp:615
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Presentes: %s; %d jogadores estão presentes."
 
-#: src/gui/chatwindow.cpp:1000
+#: src/gui/chatwindow.cpp:1002
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Enviando MP para %s: %s"
@@ -758,10 +761,12 @@ msgid "No"
 msgstr "Não"
 
 #: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:146
-#: src/gui/popupmenu.cpp:153 src/gui/popupmenu.cpp:161
-#: src/gui/popupmenu.cpp:380 src/gui/popupmenu.cpp:387
-#: src/gui/popupmenu.cpp:395 src/gui/popupmenu.cpp:626
-#: src/gui/popupmenu.cpp:633 src/gui/popupmenu.cpp:641
+#: src/gui/popupmenu.cpp:154 src/gui/popupmenu.cpp:163
+#: src/gui/popupmenu.cpp:171 src/gui/popupmenu.cpp:391
+#: src/gui/popupmenu.cpp:399 src/gui/popupmenu.cpp:408
+#: src/gui/popupmenu.cpp:427 src/gui/popupmenu.cpp:648
+#: src/gui/popupmenu.cpp:656 src/gui/popupmenu.cpp:665
+#: src/gui/popupmenu.cpp:679
 msgid "Ignore"
 msgstr "Ignora"
 
@@ -907,7 +912,7 @@ msgstr "Você Sabia?"
 
 #: src/gui/didyouknowwindow.cpp:63 src/gui/helpwindow.cpp:59
 #: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:53
-#: src/gui/popupmenu.cpp:574 src/gui/shopwindow.cpp:113
+#: src/gui/popupmenu.cpp:596 src/gui/shopwindow.cpp:113
 msgid "Close"
 msgstr "Fechar"
 
@@ -934,8 +939,8 @@ msgstr "Equipamento"
 
 #: src/gui/equipmentwindow.cpp:95 src/gui/inventorywindow.cpp:160
 #: src/gui/inventorywindow.cpp:545 src/gui/inventorywindow.cpp:554
-#: src/gui/popupmenu.cpp:1694 src/gui/popupmenu.cpp:1786
-#: src/gui/popupmenu.cpp:1831
+#: src/gui/popupmenu.cpp:1737 src/gui/popupmenu.cpp:1829
+#: src/gui/popupmenu.cpp:1874
 msgid "Unequip"
 msgstr "Desequipar"
 
@@ -977,31 +982,31 @@ msgid "Filter:"
 msgstr "Filtro:"
 
 #: src/gui/inventorywindow.cpp:158 src/gui/inventorywindow.cpp:547
-#: src/gui/inventorywindow.cpp:556 src/gui/popupmenu.cpp:1696
-#: src/gui/popupmenu.cpp:1788 src/gui/popupmenu.cpp:1833
+#: src/gui/inventorywindow.cpp:556 src/gui/popupmenu.cpp:1739
+#: src/gui/popupmenu.cpp:1831 src/gui/popupmenu.cpp:1876
 msgid "Equip"
 msgstr "Equipar"
 
 #: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:548
-#: src/gui/inventorywindow.cpp:552 src/gui/popupmenu.cpp:1700
-#: src/gui/popupmenu.cpp:1755 src/gui/popupmenu.cpp:1792
-#: src/gui/popupmenu.cpp:1837
+#: src/gui/inventorywindow.cpp:552 src/gui/popupmenu.cpp:1743
+#: src/gui/popupmenu.cpp:1798 src/gui/popupmenu.cpp:1835
+#: src/gui/popupmenu.cpp:1880
 msgid "Use"
 msgstr "Usar"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:652
-#: src/gui/popupmenu.cpp:1705 src/gui/popupmenu.cpp:1797
-#: src/gui/popupmenu.cpp:1842
+#: src/gui/popupmenu.cpp:1748 src/gui/popupmenu.cpp:1840
+#: src/gui/popupmenu.cpp:1885
 msgid "Drop..."
 msgstr "Descartar..."
 
-#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1714
-#: src/gui/popupmenu.cpp:1806 src/gui/popupmenu.cpp:1851
+#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1757
+#: src/gui/popupmenu.cpp:1849 src/gui/popupmenu.cpp:1894
 msgid "Split"
 msgstr "Dividir"
 
 #: src/gui/inventorywindow.cpp:175 src/gui/outfitwindow.cpp:60
-#: src/gui/popupmenu.cpp:537
+#: src/gui/popupmenu.cpp:559
 msgid "Outfits"
 msgstr "Roupas"
 
@@ -1010,17 +1015,17 @@ msgid "Weight:"
 msgstr "Peso:"
 
 #: src/gui/inventorywindow.cpp:203 src/gui/inventorywindow.cpp:643
-#: src/gui/popupmenu.cpp:1680 src/gui/popupmenu.cpp:1809
-#: src/gui/popupmenu.cpp:1854 src/gui/setup.cpp:73
+#: src/gui/popupmenu.cpp:1723 src/gui/popupmenu.cpp:1852
+#: src/gui/popupmenu.cpp:1897 src/gui/setup.cpp:73
 msgid "Store"
 msgstr "Armazenar"
 
-#: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1721
+#: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1764
 msgid "Retrieve"
 msgstr "Retirar"
 
-#: src/gui/inventorywindow.cpp:654 src/gui/popupmenu.cpp:1710
-#: src/gui/popupmenu.cpp:1802 src/gui/popupmenu.cpp:1847
+#: src/gui/inventorywindow.cpp:654 src/gui/popupmenu.cpp:1753
+#: src/gui/popupmenu.cpp:1845 src/gui/popupmenu.cpp:1890
 #: src/gui/windowmenu.cpp:97
 msgid "Drop"
 msgstr "Descartar"
@@ -1260,7 +1265,7 @@ msgstr "Enviar"
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:576
+#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:598
 msgid "Clear"
 msgstr "Limpar"
 
@@ -1298,331 +1303,347 @@ msgstr "Desequipar antes"
 msgid "Away outfit"
 msgstr "Roupas de ocupado"
 
-#: src/gui/popupmenu.cpp:132 src/gui/popupmenu.cpp:613
+#: src/gui/popupmenu.cpp:132 src/gui/popupmenu.cpp:635
 #: src/gui/widgets/tradetab.cpp:44
 msgid "Trade"
 msgstr "Negócios"
 
-#: src/gui/popupmenu.cpp:134 src/gui/popupmenu.cpp:372
+#: src/gui/popupmenu.cpp:134 src/gui/popupmenu.cpp:383
 msgid "Whisper"
 msgstr "Mensagem Privada:"
 
-#: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:618
+#: src/gui/popupmenu.cpp:138 src/gui/popupmenu.cpp:640
 msgid "Heal"
 msgstr "Cura"
 
-#: src/gui/popupmenu.cpp:144 src/gui/popupmenu.cpp:378
-#: src/gui/popupmenu.cpp:624
+#: src/gui/popupmenu.cpp:144 src/gui/popupmenu.cpp:389
+#: src/gui/popupmenu.cpp:646
 msgid "Be friend"
 msgstr "Ser amigo"
 
-#: src/gui/popupmenu.cpp:145 src/gui/popupmenu.cpp:152
-#: src/gui/popupmenu.cpp:160 src/gui/popupmenu.cpp:178
-#: src/gui/popupmenu.cpp:379 src/gui/popupmenu.cpp:386
-#: src/gui/popupmenu.cpp:394 src/gui/popupmenu.cpp:412
-#: src/gui/popupmenu.cpp:625 src/gui/popupmenu.cpp:632
-#: src/gui/popupmenu.cpp:640 src/gui/popupmenu.cpp:658
+#: src/gui/popupmenu.cpp:145 src/gui/popupmenu.cpp:153
+#: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:170
+#: src/gui/popupmenu.cpp:189 src/gui/popupmenu.cpp:390
+#: src/gui/popupmenu.cpp:398 src/gui/popupmenu.cpp:407
+#: src/gui/popupmenu.cpp:426 src/gui/popupmenu.cpp:434
+#: src/gui/popupmenu.cpp:647 src/gui/popupmenu.cpp:655
+#: src/gui/popupmenu.cpp:664 src/gui/popupmenu.cpp:678
+#: src/gui/popupmenu.cpp:691
 msgid "Disregard"
 msgstr "Ser inimigo"
 
-#: src/gui/popupmenu.cpp:147 src/gui/popupmenu.cpp:154
-#: src/gui/popupmenu.cpp:381 src/gui/popupmenu.cpp:388
-#: src/gui/popupmenu.cpp:627 src/gui/popupmenu.cpp:634
+#: src/gui/popupmenu.cpp:147 src/gui/popupmenu.cpp:155
+#: src/gui/popupmenu.cpp:172 src/gui/popupmenu.cpp:392
+#: src/gui/popupmenu.cpp:400 src/gui/popupmenu.cpp:428
+#: src/gui/popupmenu.cpp:649 src/gui/popupmenu.cpp:657
+#: src/gui/popupmenu.cpp:680
 msgid "Black list"
 msgstr "Lista Negra"
 
-#: src/gui/popupmenu.cpp:148 src/gui/popupmenu.cpp:155
-#: src/gui/popupmenu.cpp:162 src/gui/popupmenu.cpp:168
-#: src/gui/popupmenu.cpp:173 src/gui/popupmenu.cpp:382
-#: src/gui/popupmenu.cpp:389 src/gui/popupmenu.cpp:396
-#: src/gui/popupmenu.cpp:402 src/gui/popupmenu.cpp:407
-#: src/gui/popupmenu.cpp:628 src/gui/popupmenu.cpp:635
-#: src/gui/popupmenu.cpp:642 src/gui/popupmenu.cpp:648
-#: src/gui/popupmenu.cpp:653
+#: src/gui/popupmenu.cpp:148 src/gui/popupmenu.cpp:156
+#: src/gui/popupmenu.cpp:164 src/gui/popupmenu.cpp:393
+#: src/gui/popupmenu.cpp:401 src/gui/popupmenu.cpp:409
+#: src/gui/popupmenu.cpp:650 src/gui/popupmenu.cpp:658
+#: src/gui/popupmenu.cpp:666
+msgid "Set as enemy"
+msgstr ""
+
+#: src/gui/popupmenu.cpp:149 src/gui/popupmenu.cpp:157
+#: src/gui/popupmenu.cpp:165 src/gui/popupmenu.cpp:173
+#: src/gui/popupmenu.cpp:179 src/gui/popupmenu.cpp:184
+#: src/gui/popupmenu.cpp:394 src/gui/popupmenu.cpp:402
+#: src/gui/popupmenu.cpp:410 src/gui/popupmenu.cpp:416
+#: src/gui/popupmenu.cpp:421 src/gui/popupmenu.cpp:429
+#: src/gui/popupmenu.cpp:651 src/gui/popupmenu.cpp:659
+#: src/gui/popupmenu.cpp:667 src/gui/popupmenu.cpp:673
+#: src/gui/popupmenu.cpp:681 src/gui/popupmenu.cpp:686
 msgid "Erase"
 msgstr "Apagar"
 
-#: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:166
-#: src/gui/popupmenu.cpp:172 src/gui/popupmenu.cpp:177
-#: src/gui/popupmenu.cpp:393 src/gui/popupmenu.cpp:400
-#: src/gui/popupmenu.cpp:406 src/gui/popupmenu.cpp:411
-#: src/gui/popupmenu.cpp:639 src/gui/popupmenu.cpp:646
-#: src/gui/popupmenu.cpp:652 src/gui/popupmenu.cpp:657
+#: src/gui/popupmenu.cpp:161 src/gui/popupmenu.cpp:169
+#: src/gui/popupmenu.cpp:177 src/gui/popupmenu.cpp:183
+#: src/gui/popupmenu.cpp:188 src/gui/popupmenu.cpp:406
+#: src/gui/popupmenu.cpp:414 src/gui/popupmenu.cpp:420
+#: src/gui/popupmenu.cpp:425 src/gui/popupmenu.cpp:433
+#: src/gui/popupmenu.cpp:663 src/gui/popupmenu.cpp:671
+#: src/gui/popupmenu.cpp:677 src/gui/popupmenu.cpp:685
+#: src/gui/popupmenu.cpp:690
 msgid "Unignore"
 msgstr "Não ignorar"
 
-#: src/gui/popupmenu.cpp:167 src/gui/popupmenu.cpp:179
-#: src/gui/popupmenu.cpp:401 src/gui/popupmenu.cpp:413
-#: src/gui/popupmenu.cpp:647 src/gui/popupmenu.cpp:659
-#: src/playerrelations.cpp:421
+#: src/gui/popupmenu.cpp:178 src/gui/popupmenu.cpp:190
+#: src/gui/popupmenu.cpp:415 src/gui/popupmenu.cpp:435
+#: src/gui/popupmenu.cpp:672 src/gui/popupmenu.cpp:692
+#: src/playerrelations.cpp:446
 msgid "Completely ignore"
 msgstr "Ignorar completamente"
 
-#: src/gui/popupmenu.cpp:187 src/gui/popupmenu.cpp:421
-#: src/gui/popupmenu.cpp:667 src/gui/popupmenu.cpp:746
+#: src/gui/popupmenu.cpp:198 src/gui/popupmenu.cpp:443
+#: src/gui/popupmenu.cpp:700 src/gui/popupmenu.cpp:779
 msgid "Follow"
 msgstr "Seguir"
 
-#: src/gui/popupmenu.cpp:188 src/gui/popupmenu.cpp:422
-#: src/gui/popupmenu.cpp:668 src/gui/popupmenu.cpp:747
+#: src/gui/popupmenu.cpp:199 src/gui/popupmenu.cpp:444
+#: src/gui/popupmenu.cpp:701 src/gui/popupmenu.cpp:780
 msgid "Imitation"
 msgstr "Imitar"
 
-#: src/gui/popupmenu.cpp:197 src/gui/popupmenu.cpp:700
+#: src/gui/popupmenu.cpp:208 src/gui/popupmenu.cpp:733
 msgid "Invite to party"
 msgstr "Convidar para grupo"
 
-#: src/gui/popupmenu.cpp:202 src/gui/popupmenu.cpp:433
-#: src/gui/popupmenu.cpp:705
+#: src/gui/popupmenu.cpp:213 src/gui/popupmenu.cpp:455
+#: src/gui/popupmenu.cpp:738
 msgid "Kick from party"
 msgstr "Expulsar do grupo"
 
-#: src/gui/popupmenu.cpp:217 src/gui/popupmenu.cpp:229
-#: src/gui/popupmenu.cpp:450 src/gui/popupmenu.cpp:722
+#: src/gui/popupmenu.cpp:228 src/gui/popupmenu.cpp:240
+#: src/gui/popupmenu.cpp:472 src/gui/popupmenu.cpp:755
 msgid "Kick from guild"
 msgstr "Expulsar da guilda"
 
-#: src/gui/popupmenu.cpp:222 src/gui/popupmenu.cpp:234
-#: src/gui/popupmenu.cpp:455 src/gui/popupmenu.cpp:727
+#: src/gui/popupmenu.cpp:233 src/gui/popupmenu.cpp:245
+#: src/gui/popupmenu.cpp:477 src/gui/popupmenu.cpp:760
 msgid "Change pos in guild"
 msgstr "Mudar pos na Guilda"
 
-#: src/gui/popupmenu.cpp:242 src/gui/popupmenu.cpp:463
-#: src/gui/popupmenu.cpp:736
+#: src/gui/popupmenu.cpp:253 src/gui/popupmenu.cpp:485
+#: src/gui/popupmenu.cpp:769
 msgid "Invite to guild"
 msgstr "Convidar pra Guilda"
 
-#: src/gui/popupmenu.cpp:250
+#: src/gui/popupmenu.cpp:261
 msgid "Kick player"
 msgstr "Chutar Jogador"
 
-#: src/gui/popupmenu.cpp:252
+#: src/gui/popupmenu.cpp:263
 msgid "Nuke"
 msgstr "Nu"
 
-#: src/gui/popupmenu.cpp:254 src/gui/popupmenu.cpp:670
-#: src/gui/popupmenu.cpp:759
+#: src/gui/popupmenu.cpp:265 src/gui/popupmenu.cpp:703
+#: src/gui/popupmenu.cpp:792
 msgid "Show Items"
 msgstr "Mostrar itens:"
 
-#: src/gui/popupmenu.cpp:255 src/gui/popupmenu.cpp:671
-#: src/gui/popupmenu.cpp:760 src/gui/popupmenu.cpp:2004
+#: src/gui/popupmenu.cpp:266 src/gui/popupmenu.cpp:704
+#: src/gui/popupmenu.cpp:793 src/gui/popupmenu.cpp:2047
 msgid "Undress"
 msgstr "Despir"
 
-#: src/gui/popupmenu.cpp:256 src/gui/popupmenu.cpp:286
-#: src/gui/popupmenu.cpp:423 src/gui/popupmenu.cpp:672
-#: src/gui/popupmenu.cpp:761
+#: src/gui/popupmenu.cpp:267 src/gui/popupmenu.cpp:297
+#: src/gui/popupmenu.cpp:445 src/gui/popupmenu.cpp:705
+#: src/gui/popupmenu.cpp:794
 msgid "Add comment"
 msgstr "Add comentário"
 
-#: src/gui/popupmenu.cpp:271 src/gui/popupmenu.cpp:471
-#: src/gui/popupmenu.cpp:687 src/gui/popupmenu.cpp:766
+#: src/gui/popupmenu.cpp:282 src/gui/popupmenu.cpp:493
+#: src/gui/popupmenu.cpp:720 src/gui/popupmenu.cpp:799
 msgid "Buy (?)"
 msgstr "Comprar (?)"
 
-#: src/gui/popupmenu.cpp:272 src/gui/popupmenu.cpp:472
-#: src/gui/popupmenu.cpp:688 src/gui/popupmenu.cpp:767
+#: src/gui/popupmenu.cpp:283 src/gui/popupmenu.cpp:494
+#: src/gui/popupmenu.cpp:721 src/gui/popupmenu.cpp:800
 msgid "Sell (?)"
 msgstr "vender (?)"
 
-#: src/gui/popupmenu.cpp:297
+#: src/gui/popupmenu.cpp:308
 msgid "Kick"
 msgstr "Chutar"
 
-#: src/gui/popupmenu.cpp:308
+#: src/gui/popupmenu.cpp:319
 msgid "Remove from attack list"
 msgstr "Remover da lista de ataque"
 
-#: src/gui/popupmenu.cpp:313
+#: src/gui/popupmenu.cpp:324
 msgid "Add to priority attack list"
 msgstr "Adicionar na prioridade da lista de ataques"
 
-#: src/gui/popupmenu.cpp:315
+#: src/gui/popupmenu.cpp:326
 msgid "Add to attack list"
 msgstr "Adicionar a lista de ataques"
 
-#: src/gui/popupmenu.cpp:317
+#: src/gui/popupmenu.cpp:328
 msgid "Add to ignore list"
 msgstr "Adicionar a lista de ignorados"
 
-#: src/gui/popupmenu.cpp:330 src/gui/popupmenu.cpp:475
+#: src/gui/popupmenu.cpp:341 src/gui/popupmenu.cpp:497
 msgid "Add name to chat"
 msgstr "Adicionar nome ao chat"
 
-#: src/gui/popupmenu.cpp:500
+#: src/gui/popupmenu.cpp:522
 msgid "Pick up"
 msgstr "Pegar"
 
-#: src/gui/popupmenu.cpp:501 src/gui/popupmenu.cpp:1730
-#: src/gui/popupmenu.cpp:1810 src/gui/popupmenu.cpp:1855
+#: src/gui/popupmenu.cpp:523 src/gui/popupmenu.cpp:1773
+#: src/gui/popupmenu.cpp:1853 src/gui/popupmenu.cpp:1898
 msgid "Add to chat"
 msgstr "Nome no chat"
 
-#: src/gui/popupmenu.cpp:518
+#: src/gui/popupmenu.cpp:540
 msgid "Map Item"
 msgstr "Mapa Item"
 
-#: src/gui/popupmenu.cpp:519
+#: src/gui/popupmenu.cpp:541
 msgid "Rename"
 msgstr "Renomear"
 
-#: src/gui/popupmenu.cpp:520 src/gui/popupmenu.cpp:1965
-#: src/gui/popupmenu.cpp:1976 src/gui/popupmenu.cpp:1980
+#: src/gui/popupmenu.cpp:542 src/gui/popupmenu.cpp:2008
+#: src/gui/popupmenu.cpp:2019 src/gui/popupmenu.cpp:2023
 msgid "Remove"
 msgstr "Remover"
 
-#: src/gui/popupmenu.cpp:525
+#: src/gui/popupmenu.cpp:547
 msgid "Warp"
 msgstr "Urdidura"
 
-#: src/gui/popupmenu.cpp:538
+#: src/gui/popupmenu.cpp:560
 msgid "Load old outfits"
 msgstr "Carregar velhas roupas"
 
-#: src/gui/popupmenu.cpp:554 src/gui/windowmenu.cpp:96
+#: src/gui/popupmenu.cpp:576 src/gui/windowmenu.cpp:96
 msgid "Spells"
 msgstr "Feitiços"
 
-#: src/gui/popupmenu.cpp:555
+#: src/gui/popupmenu.cpp:577
 msgid "Load old spells"
 msgstr "Carregar velhos feitiços"
 
-#: src/gui/popupmenu.cpp:556
+#: src/gui/popupmenu.cpp:578
 msgid "Edit spell"
 msgstr "Editar feitiços"
 
-#: src/gui/popupmenu.cpp:580
+#: src/gui/popupmenu.cpp:602
 msgid "Disable highlight"
 msgstr "Desabilitar destaque"
 
-#: src/gui/popupmenu.cpp:582
+#: src/gui/popupmenu.cpp:604
 msgid "Enable highlight"
 msgstr "Habilitar destaque"
 
-#: src/gui/popupmenu.cpp:584
+#: src/gui/popupmenu.cpp:606
 msgid "Don't remove name"
 msgstr "Não retire o nome"
 
-#: src/gui/popupmenu.cpp:586
+#: src/gui/popupmenu.cpp:608
 msgid "Remove name"
 msgstr "Remover o nome"
 
-#: src/gui/popupmenu.cpp:588
+#: src/gui/popupmenu.cpp:610
 msgid "Enable away"
 msgstr "Habilitar modo indisponível"
 
-#: src/gui/popupmenu.cpp:590
+#: src/gui/popupmenu.cpp:612
 msgid "Disable away"
 msgstr "Desabilitar modo indisponível"
 
-#: src/gui/popupmenu.cpp:595 src/gui/socialwindow.cpp:1141
+#: src/gui/popupmenu.cpp:617 src/gui/socialwindow.cpp:1141
 msgid "Leave"
 msgstr "Sair"
 
-#: src/gui/popupmenu.cpp:780
+#: src/gui/popupmenu.cpp:813
 msgid "Change guild position"
 msgstr "Mudar a posição da guilda"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1243
+#: src/gui/popupmenu.cpp:1286
 msgid "Rename map sign          "
 msgstr "Renomear mapa          "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1245
+#: src/gui/popupmenu.cpp:1288
 msgid "Name:                    "
 msgstr "Nome:                    "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1295
+#: src/gui/popupmenu.cpp:1338
 msgid "Player comment            "
 msgstr "Comentário do jogador"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1297
+#: src/gui/popupmenu.cpp:1340
 msgid "Comment:                      "
 msgstr "Comentário:"
 
-#: src/gui/popupmenu.cpp:1668
+#: src/gui/popupmenu.cpp:1711
 msgid "Add to trade"
 msgstr "Add. na negociação"
 
-#: src/gui/popupmenu.cpp:1672
+#: src/gui/popupmenu.cpp:1715
 msgid "Add to trade 10"
 msgstr "Add. 10 na negociação"
 
-#: src/gui/popupmenu.cpp:1673
+#: src/gui/popupmenu.cpp:1716
 msgid "Add to trade half"
 msgstr "Add. metade na negociação"
 
-#: src/gui/popupmenu.cpp:1674
+#: src/gui/popupmenu.cpp:1717
 msgid "Add to trade all"
 msgstr "Add. todos na negociação"
 
-#: src/gui/popupmenu.cpp:1684
+#: src/gui/popupmenu.cpp:1727
 msgid "Store 10"
 msgstr "Guardar 10"
 
-#: src/gui/popupmenu.cpp:1685
+#: src/gui/popupmenu.cpp:1728
 msgid "Store half"
 msgstr "Guardar metade"
 
-#: src/gui/popupmenu.cpp:1686
+#: src/gui/popupmenu.cpp:1729
 msgid "Store all"
 msgstr "Guardar tudo"
 
-#: src/gui/popupmenu.cpp:1706 src/gui/popupmenu.cpp:1798
-#: src/gui/popupmenu.cpp:1843
+#: src/gui/popupmenu.cpp:1749 src/gui/popupmenu.cpp:1841
+#: src/gui/popupmenu.cpp:1886
 msgid "Drop all"
 msgstr "Descartar tudo"
 
-#: src/gui/popupmenu.cpp:1725
+#: src/gui/popupmenu.cpp:1768
 msgid "Retrieve 10"
 msgstr "Retirar 10"
 
-#: src/gui/popupmenu.cpp:1726
+#: src/gui/popupmenu.cpp:1769
 msgid "Retrieve half"
 msgstr "Retirar metade"
 
-#: src/gui/popupmenu.cpp:1727
+#: src/gui/popupmenu.cpp:1770
 msgid "Retrieve all"
 msgstr "Retirar tudo"
 
-#: src/gui/popupmenu.cpp:1758 src/gui/popupmenu.cpp:1814
+#: src/gui/popupmenu.cpp:1801 src/gui/popupmenu.cpp:1857
 msgid "Load old item shortcuts"
 msgstr "Carregar antigos atalhos de item"
 
-#: src/gui/popupmenu.cpp:1859
+#: src/gui/popupmenu.cpp:1902
 msgid "Load old drop shortcuts"
 msgstr "Carregar antigos atalhos de descarte"
 
-#: src/gui/popupmenu.cpp:1885 src/gui/popupmenu.cpp:1920
+#: src/gui/popupmenu.cpp:1928 src/gui/popupmenu.cpp:1963
 msgid "Hide"
 msgstr "Ocultar"
 
-#: src/gui/popupmenu.cpp:1891 src/gui/popupmenu.cpp:1926
+#: src/gui/popupmenu.cpp:1934 src/gui/popupmenu.cpp:1969
 msgid "Show"
 msgstr "Mostrar"
 
-#: src/gui/popupmenu.cpp:1932
+#: src/gui/popupmenu.cpp:1975
 msgid "Reset yellow bar"
 msgstr "Zerar barra amarela"
 
-#: src/gui/popupmenu.cpp:1934 src/gui/statuswindow.cpp:241
+#: src/gui/popupmenu.cpp:1977 src/gui/statuswindow.cpp:242
 msgid "Copy to chat"
 msgstr "Copiar para chat"
 
-#: src/gui/popupmenu.cpp:1952 src/gui/socialwindow.cpp:958
+#: src/gui/popupmenu.cpp:1995 src/gui/setup_theme.cpp:88
+#: src/gui/setup_theme.cpp:145 src/gui/socialwindow.cpp:958
 #: src/gui/socialwindow.cpp:993 src/gui/socialwindow.cpp:1028
 msgid "(default)"
 msgstr "(padrão)"
 
-#: src/gui/popupmenu.cpp:1962 src/gui/popupmenu.cpp:1973
+#: src/gui/popupmenu.cpp:2005 src/gui/popupmenu.cpp:2016
 msgid "Move up"
 msgstr "Mover para cima"
 
-#: src/gui/popupmenu.cpp:1964 src/gui/popupmenu.cpp:1975
+#: src/gui/popupmenu.cpp:2007 src/gui/popupmenu.cpp:2018
 msgid "Move down"
 msgstr "Mover para baixo"
 
@@ -1936,29 +1957,33 @@ msgstr "Aplicar"
 msgid "Reset Windows"
 msgstr "Restaurar janelas"
 
-#: src/gui/setup_joystick.cpp:40 src/gui/setup_joystick.cpp:79
+#: src/gui/setup_joystick.cpp:70 src/gui/setup_joystick.cpp:142
 msgid "Press the button to start calibration"
 msgstr "Aperte o botão para começar a calibrar"
 
-#: src/gui/setup_joystick.cpp:41 src/gui/setup_joystick.cpp:77
+#: src/gui/setup_joystick.cpp:71 src/gui/setup_joystick.cpp:140
 msgid "Calibrate"
 msgstr "Calibrar"
 
-#: src/gui/setup_joystick.cpp:42
+#: src/gui/setup_joystick.cpp:72
 msgid "Enable joystick"
 msgstr "Habilitar joystick"
 
-#: src/gui/setup_joystick.cpp:44
+#: src/gui/setup_joystick.cpp:75
+msgid "Use joystick if client window inactive"
+msgstr ""
+
+#: src/gui/setup_joystick.cpp:78
 msgid "Joystick"
 msgstr "Joystick"
 
-#: src/gui/setup_joystick.cpp:84
+#: src/gui/setup_joystick.cpp:147
 msgid "Stop"
 msgstr "Parar"
 
-#: src/gui/setup_joystick.cpp:85
-msgid "Rotate the stick"
-msgstr "Gire o bastão"
+#: src/gui/setup_joystick.cpp:149
+msgid "Rotate the stick and dont press buttons"
+msgstr ""
 
 #: src/gui/setup_keyboard.cpp:80
 msgid "Keyboard"
@@ -2141,22 +2166,22 @@ msgid "Enable bot checker"
 msgstr "Habilitar Analisador de bot"
 
 #: src/gui/setup_other.cpp:174
-msgid "Enable buggy servers protection"
-msgstr "Habilitar proteção contra servidores com bugs"
+msgid "Enable buggy servers protection (do not disable)"
+msgstr ""
 
-#: src/gui/setup_other.cpp:177
+#: src/gui/setup_other.cpp:178
 msgid "Enable debug log"
 msgstr "Habilitar Depurador"
 
-#: src/gui/setup_other.cpp:180
+#: src/gui/setup_other.cpp:181
 msgid "Low traffic mode"
 msgstr "Modo de baixo tráfego"
 
-#: src/gui/setup_other.cpp:183
+#: src/gui/setup_other.cpp:184
 msgid "Hide shield sprite"
 msgstr "Ocultar sprite de escudo"
 
-#: src/gui/setup_other.cpp:186
+#: src/gui/setup_other.cpp:187
 msgid "Show background"
 msgstr "Mostrar imagem de fundo"
 
@@ -2284,91 +2309,151 @@ msgstr "Apagado"
 msgid "Blacklisted"
 msgstr "Na Lista Negra "
 
-#: src/gui/setup_relations.cpp:239
+#: src/gui/setup_relations.cpp:76
+msgid "Enemy"
+msgstr ""
+
+#: src/gui/setup_relations.cpp:240
 msgid "Allow trading"
 msgstr "Permitir negociações"
 
-#: src/gui/setup_relations.cpp:241
+#: src/gui/setup_relations.cpp:242
 msgid "Allow whispers"
 msgstr "Permitir mensagens particulares"
 
-#: src/gui/setup_relations.cpp:244
+#: src/gui/setup_relations.cpp:245
 msgid "Old"
 msgstr "Antigo"
 
-#: src/gui/setup_relations.cpp:246
+#: src/gui/setup_relations.cpp:247
 msgid "Relations"
 msgstr "Relações"
 
-#: src/gui/setup_relations.cpp:271
+#: src/gui/setup_relations.cpp:272
 msgid "When ignoring:"
 msgstr "Quando ignorar:"
 
-#: src/gui/setup_theme.cpp:107
+#: src/gui/setup_theme.cpp:108
 msgid "Tiny (10)"
 msgstr "Minúsculo (10)"
 
-#: src/gui/setup_theme.cpp:108
+#: src/gui/setup_theme.cpp:109
 msgid "Small (11)"
 msgstr "Pequeno (11)"
 
-#: src/gui/setup_theme.cpp:109
+#: src/gui/setup_theme.cpp:110
 msgid "Medium (12)"
 msgstr "Médio (12)"
 
-#: src/gui/setup_theme.cpp:110
+#: src/gui/setup_theme.cpp:111
 msgid "Large (13)"
 msgstr "Largo (13)"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_theme.cpp:112
 msgid "Big (14)"
 msgstr "Grande (14)"
 
-#: src/gui/setup_theme.cpp:112
+#: src/gui/setup_theme.cpp:113
 msgid "Huge (15)"
 msgstr "Enorme (15)"
 
-#: src/gui/setup_theme.cpp:143
+#: src/gui/setup_theme.cpp:146
+msgid "Chinese (China)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:147
+msgid "Czech"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:148
+msgid "English"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:149
+msgid "Finnish"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:150
+msgid "French"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:151
+msgid "German"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:152
+msgid "Indonesian"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:153
+msgid "Japanese"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:154
+msgid "Dutch (Belgium/Flemish)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:155
+msgid "Portuguese"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:156
+msgid "Portuguese (Brazilian)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:157
+msgid "Russian"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:158
+msgid "Spanish (Castilian)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:190
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/setup_theme.cpp:145
+#: src/gui/setup_theme.cpp:192
 msgid "Gui theme"
 msgstr "Tema"
 
-#: src/gui/setup_theme.cpp:146
+#: src/gui/setup_theme.cpp:193
+msgid "Language"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:194
 msgid "Main Font"
 msgstr "Fonte"
 
-#: src/gui/setup_theme.cpp:147
+#: src/gui/setup_theme.cpp:195
 msgid "Bold font"
 msgstr "Fonte negrito"
 
-#: src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:196
 msgid "Particle font"
 msgstr "Fonte de particulas"
 
-#: src/gui/setup_theme.cpp:149
+#: src/gui/setup_theme.cpp:197
 msgid "Help font"
 msgstr "Fonte de ajuda"
 
-#: src/gui/setup_theme.cpp:150
+#: src/gui/setup_theme.cpp:198
 msgid "Secure font"
 msgstr "Fonte segura"
 
-#: src/gui/setup_theme.cpp:151
+#: src/gui/setup_theme.cpp:199
 msgid "Japanese font"
 msgstr "Font Japonesa"
 
-#: src/gui/setup_theme.cpp:183
+#: src/gui/setup_theme.cpp:236
 msgid "Font size"
 msgstr "Tamanho da fonte"
 
-#: src/gui/setup_theme.cpp:299
+#: src/gui/setup_theme.cpp:377
 msgid "Theme Changed"
 msgstr "Tema alterado"
 
-#: src/gui/setup_theme.cpp:300 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:378 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie o cliente para que as mudanças surtam efeito."
@@ -2799,422 +2884,445 @@ msgstr "Escolha o nome do seu grupo."
 msgid "Specials"
 msgstr "Especiais"
 
-#: src/gui/statuspopup.cpp:197
+#: src/gui/statuspopup.cpp:204
 msgid "(D) default moves"
 msgstr "(D) movimentos padrão"
 
-#: src/gui/statuspopup.cpp:202
+#: src/gui/statuspopup.cpp:209
 msgid "(I) invert moves"
 msgstr "(l) inserir movimentos"
 
-#: src/gui/statuspopup.cpp:207
+#: src/gui/statuspopup.cpp:214
 msgid "(c) moves with some crazy moves"
 msgstr "(c) Alguns movimentos loucos"
 
-#: src/gui/statuspopup.cpp:212
+#: src/gui/statuspopup.cpp:219
 msgid "(C) moves with crazy moves"
 msgstr "(C) Movimentos loucos"
 
-#: src/gui/statuspopup.cpp:217
+#: src/gui/statuspopup.cpp:224
 msgid "(d) double normal + crazy"
 msgstr "(d) dobro normal + louco"
 
-#: src/gui/statuspopup.cpp:222
+#: src/gui/statuspopup.cpp:229
 msgid "(?) move"
 msgstr "(?) mover"
 
-#: src/gui/statuspopup.cpp:240
+#: src/gui/statuspopup.cpp:247
 msgid "(a) custom crazy move"
 msgstr "(a) movimentos loucos customizados"
 
-#: src/gui/statuspopup.cpp:244
+#: src/gui/statuspopup.cpp:251
 msgid "(?) crazy move"
 msgstr "(?) Movimentos loucos"
 
-#: src/gui/statuspopup.cpp:254
+#: src/gui/statuspopup.cpp:261
 msgid "(0) default moves to target"
 msgstr "(0) Mover ao alvo padrão"
 
-#: src/gui/statuspopup.cpp:259
+#: src/gui/statuspopup.cpp:266
 msgid "(1) moves to target in distance 1"
 msgstr "(1) Mover ao alvo com distância 1"
 
-#: src/gui/statuspopup.cpp:264
+#: src/gui/statuspopup.cpp:271
 msgid "(2) moves to target in distance 2"
 msgstr "(2) mover ao alvo em distância 2"
 
-#: src/gui/statuspopup.cpp:269
+#: src/gui/statuspopup.cpp:276
 msgid "(3) moves to target in distance 3"
 msgstr "(3) Mover ao alvo com distância 3"
 
-#: src/gui/statuspopup.cpp:274
+#: src/gui/statuspopup.cpp:281
 msgid "(5) moves to target in distance 5"
 msgstr "(5) Mover ao alvo com distância 5"
 
-#: src/gui/statuspopup.cpp:279
+#: src/gui/statuspopup.cpp:286
 msgid "(7) moves to target in distance 7"
 msgstr "(7) Mover ao alvo com distância 7"
 
-#: src/gui/statuspopup.cpp:284
+#: src/gui/statuspopup.cpp:291
 msgid "(A) moves to target in attack range"
 msgstr "(A)  Mover ao alvo com a distância de ataque"
 
-#: src/gui/statuspopup.cpp:289
+#: src/gui/statuspopup.cpp:296
 msgid "(a) archer attack range"
 msgstr "(a) Alcance ataque de arqueiro"
 
-#: src/gui/statuspopup.cpp:294
+#: src/gui/statuspopup.cpp:301
 msgid "(?) move to target"
 msgstr "(?) Mover ao alvo"
 
-#: src/gui/statuspopup.cpp:302
+#: src/gui/statuspopup.cpp:309
 msgid "(D) default follow"
 msgstr "(D) Seguir em modo padrão"
 
-#: src/gui/statuspopup.cpp:306
+#: src/gui/statuspopup.cpp:313
 msgid "(R) relative follow"
 msgstr "(R) Seguir em modo relativo"
 
-#: src/gui/statuspopup.cpp:310
+#: src/gui/statuspopup.cpp:317
 msgid "(M) mirror follow"
 msgstr "(M) Seguir em modo espelhado"
 
-#: src/gui/statuspopup.cpp:314
+#: src/gui/statuspopup.cpp:321
 msgid "(P) pet follow"
 msgstr "(P) Seguir em modo animal de extimação"
 
-#: src/gui/statuspopup.cpp:318
+#: src/gui/statuspopup.cpp:325
 msgid "(?) unknown follow"
 msgstr "(?) Seguir em modo desconhecido"
 
-#: src/gui/statuspopup.cpp:327 src/gui/statuspopup.cpp:350
+#: src/gui/statuspopup.cpp:334 src/gui/statuspopup.cpp:357
 msgid "(D) default attack"
 msgstr "(D) Ataque padrão"
 
-#: src/gui/statuspopup.cpp:332
+#: src/gui/statuspopup.cpp:339
 msgid "(s) switch attack without shield"
 msgstr "(s) Trocar ataque sem escudo"
 
-#: src/gui/statuspopup.cpp:337
+#: src/gui/statuspopup.cpp:344
 msgid "(S) switch attack with shield"
 msgstr "(S) Trocar ataque com escudo"
 
-#: src/gui/statuspopup.cpp:341 src/gui/statuspopup.cpp:366
+#: src/gui/statuspopup.cpp:348 src/gui/statuspopup.cpp:373
 msgid "(?) attack"
 msgstr "(?) Ataque"
 
-#: src/gui/statuspopup.cpp:354
+#: src/gui/statuspopup.cpp:361
 msgid "(G) go and attack"
 msgstr "(G) Ir e atacar"
 
-#: src/gui/statuspopup.cpp:358
+#: src/gui/statuspopup.cpp:365
 msgid "(A) go, attack, pickup"
 msgstr "(A) Ir, atacar, pegar"
 
-#: src/gui/statuspopup.cpp:362
+#: src/gui/statuspopup.cpp:369
 msgid "(d) without auto attack"
 msgstr "(d) sem auto ataque"
 
-#: src/gui/statuspopup.cpp:380
+#: src/gui/statuspopup.cpp:387
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) Pequeno pegar 1x1 celulas"
 
-#: src/gui/statuspopup.cpp:384
+#: src/gui/statuspopup.cpp:391
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) Pegar padrão 2x1 células"
 
-#: src/gui/statuspopup.cpp:388
+#: src/gui/statuspopup.cpp:395
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) Pegar em frente 2x3 células"
 
-#: src/gui/statuspopup.cpp:392
+#: src/gui/statuspopup.cpp:399
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) Pegar 3x3 células"
 
-#: src/gui/statuspopup.cpp:396
+#: src/gui/statuspopup.cpp:403
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) Ir e pegar em distância 4"
 
-#: src/gui/statuspopup.cpp:400
+#: src/gui/statuspopup.cpp:407
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) Ir e pegar em distância 8"
 
-#: src/gui/statuspopup.cpp:404
+#: src/gui/statuspopup.cpp:411
 msgid "(A) go and pick up in max distance"
 msgstr "(A) Ir e pegar em distância mâxima"
 
-#: src/gui/statuspopup.cpp:408
+#: src/gui/statuspopup.cpp:415
 msgid "(?) pick up"
 msgstr "(?) Pegar item"
 
-#: src/gui/statuspopup.cpp:417
+#: src/gui/statuspopup.cpp:424
 msgid "(N) normal map view"
 msgstr "(N) Visualizardor de mapa normal"
 
-#: src/gui/statuspopup.cpp:421
+#: src/gui/statuspopup.cpp:428
 msgid "(D) debug map view"
 msgstr "(D) Visualizador de mapa depurador"
 
-#: src/gui/statuspopup.cpp:425
+#: src/gui/statuspopup.cpp:432
 msgid "(u) ultra map view"
 msgstr "(u) Visualizador de mapa ultra"
 
-#: src/gui/statuspopup.cpp:429
+#: src/gui/statuspopup.cpp:436
 msgid "(U) ultra map view 2"
 msgstr "(U) Visualizador de mapa ultra 2"
 
-#: src/gui/statuspopup.cpp:433
+#: src/gui/statuspopup.cpp:440
 msgid "(e) empty map view"
 msgstr "(e) Visualizador de mapa vazio"
 
-#: src/gui/statuspopup.cpp:437
+#: src/gui/statuspopup.cpp:444
 msgid "(b) black & white map view"
 msgstr "(b) Visualizador de mapa preto e branco"
 
-#: src/gui/statuspopup.cpp:441
+#: src/gui/statuspopup.cpp:448
 msgid "(?) map view"
 msgstr "(?) Visualizador de mapa"
 
-#: src/gui/statuspopup.cpp:449
+#: src/gui/statuspopup.cpp:456
 msgid "(f) use #flar for magic attack"
 msgstr "(f) Usar #flar para feitiço de ataque"
 
-#: src/gui/statuspopup.cpp:454
+#: src/gui/statuspopup.cpp:461
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) Usar #chiza para feitiço de ataque"
 
-#: src/gui/statuspopup.cpp:459
+#: src/gui/statuspopup.cpp:466
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) Usar #ingrav para feitiço de ataque"
 
-#: src/gui/statuspopup.cpp:464
+#: src/gui/statuspopup.cpp:471
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) Usar #frillyar para feitiço de ataque"
 
-#: src/gui/statuspopup.cpp:469
+#: src/gui/statuspopup.cpp:476
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) Usar #upmarmu para feitiço de ataque"
 
-#: src/gui/statuspopup.cpp:473
+#: src/gui/statuspopup.cpp:480
 msgid "(?) magic attack"
 msgstr "(?) Feitiço de ataque"
 
-#: src/gui/statuspopup.cpp:482
+#: src/gui/statuspopup.cpp:489
+msgid "(a) attack all players"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:493
+msgid "(f) attack not friends"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:497
+msgid "(b) attack bad relations"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:501
+msgid "(d) dont attack players"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:505
+msgid "(?) pvp attack"
+msgstr ""
+
+#: src/gui/statuspopup.cpp:514
 msgid "(D) default imitation"
 msgstr "(D) Mímica padrão"
 
-#: src/gui/statuspopup.cpp:486
+#: src/gui/statuspopup.cpp:518
 msgid "(O) outfits imitation"
 msgstr "(O) Mímica de roupas"
 
-#: src/gui/statuspopup.cpp:490
+#: src/gui/statuspopup.cpp:522
 msgid "(?) imitation"
 msgstr "(?) Mímica"
 
-#: src/gui/statuspopup.cpp:499
+#: src/gui/statuspopup.cpp:531
 msgid "(O) on keyboard"
 msgstr "(O) No teclado"
 
-#: src/gui/statuspopup.cpp:502
+#: src/gui/statuspopup.cpp:534
 msgid "(A) away"
 msgstr "(A) Ausente"
 
-#: src/gui/statuspopup.cpp:505 src/gui/statuspopup.cpp:525
+#: src/gui/statuspopup.cpp:537 src/gui/statuspopup.cpp:557
 msgid "(?) away"
 msgstr "(?) Ausente"
 
-#: src/gui/statuspopup.cpp:513
+#: src/gui/statuspopup.cpp:545
 msgid "(G) game camera mode"
 msgstr "(G) Modo de jogo câmera"
 
-#: src/gui/statuspopup.cpp:517
+#: src/gui/statuspopup.cpp:549
 msgid "(F) free camera mode"
 msgstr "(F) Modo de jogo câmera livre"
 
-#: src/gui/statuspopup.cpp:521
+#: src/gui/statuspopup.cpp:553
 msgid "(D) design camera mode"
 msgstr "(D)  Modo de jogo câmera design"
 
-#: src/gui/statuspopup.cpp:532
+#: src/gui/statuspopup.cpp:564
 msgid "Game modifiers are disabled"
 msgstr "Modificadores de jogo desativados"
 
-#: src/gui/statuspopup.cpp:537
+#: src/gui/statuspopup.cpp:569
 msgid "Game modifiers are enabled"
 msgstr "Modificadores de jogo desativados"
 
-#: src/gui/statuswindow.cpp:143 src/gui/statuswindow.cpp:273
-#: src/gui/statuswindow.cpp:336
+#: src/gui/statuswindow.cpp:144 src/gui/statuswindow.cpp:274
+#: src/gui/statuswindow.cpp:337
 #, c-format
 msgid "Level: %d"
 msgstr "Nível: %d"
 
-#: src/gui/statuswindow.cpp:144 src/gui/statuswindow.cpp:259
-#: src/gui/statuswindow.cpp:303
+#: src/gui/statuswindow.cpp:145 src/gui/statuswindow.cpp:260
+#: src/gui/statuswindow.cpp:304
 #, c-format
 msgid "Money: %s"
 msgstr "Dinheiro: %s"
 
-#: src/gui/statuswindow.cpp:150
+#: src/gui/statuswindow.cpp:151
 msgid "HP:"
 msgstr "HP:"
 
-#: src/gui/statuswindow.cpp:157
+#: src/gui/statuswindow.cpp:158
 msgid "Exp:"
 msgstr "Exp:"
 
-#: src/gui/statuswindow.cpp:171
+#: src/gui/statuswindow.cpp:172
 msgid "MP:"
 msgstr "MP:"
 
-#: src/gui/statuswindow.cpp:203 src/gui/statuswindow.cpp:386
+#: src/gui/statuswindow.cpp:204 src/gui/statuswindow.cpp:387
 #, c-format
 msgid "Job: %d"
 msgstr "Job: %d"
 
-#: src/gui/statuswindow.cpp:204
+#: src/gui/statuswindow.cpp:205
 msgid "Job:"
 msgstr "Job:"
 
-#: src/gui/statuswindow.cpp:262 src/gui/statuswindow.cpp:310
+#: src/gui/statuswindow.cpp:263 src/gui/statuswindow.cpp:311
 #, c-format
 msgid "Character points: %d"
 msgstr "Pontos do personagem: %d"
 
-#: src/gui/statuswindow.cpp:268
+#: src/gui/statuswindow.cpp:269
 #, c-format
 msgid "Level: %d (GM %d)"
 msgstr "Nível: %d (GM %d)"
 
-#: src/gui/statuswindow.cpp:324
+#: src/gui/statuswindow.cpp:325
 #, c-format
 msgid "Correction points: %d"
 msgstr "Pontos de correção: %d"
 
-#: src/gui/statuswindow.cpp:648 src/gui/statuswindow.cpp:716
-#: src/gui/statuswindow.cpp:736 src/gui/statuswindow.cpp:752
-#: src/gui/statuswindow.cpp:798 src/gui/statuswindow.cpp:827
-#: src/gui/statuswindow.cpp:850 src/gui/statuswindow.cpp:869
+#: src/gui/statuswindow.cpp:649 src/gui/statuswindow.cpp:717
+#: src/gui/statuswindow.cpp:737 src/gui/statuswindow.cpp:753
+#: src/gui/statuswindow.cpp:818 src/gui/statuswindow.cpp:847
+#: src/gui/statuswindow.cpp:870 src/gui/statuswindow.cpp:889
 msgid "(D)"
 msgstr "(D)"
 
-#: src/gui/statuswindow.cpp:651 src/gui/statuswindow.cpp:777
+#: src/gui/statuswindow.cpp:652 src/gui/statuswindow.cpp:778
 msgid "(I)"
 msgstr "(l)"
 
-#: src/gui/statuswindow.cpp:654 src/gui/statuswindow.cpp:774
+#: src/gui/statuswindow.cpp:655 src/gui/statuswindow.cpp:775
 msgid "(c)"
 msgstr "(c)"
 
-#: src/gui/statuswindow.cpp:657
+#: src/gui/statuswindow.cpp:658
 msgid "(C)"
 msgstr "(C)"
 
-#: src/gui/statuswindow.cpp:660 src/gui/statuswindow.cpp:761
+#: src/gui/statuswindow.cpp:661 src/gui/statuswindow.cpp:762
+#: src/gui/statuswindow.cpp:803
 msgid "(d)"
 msgstr "(d)"
 
-#: src/gui/statuswindow.cpp:663 src/gui/statuswindow.cpp:677
-#: src/gui/statuswindow.cpp:709 src/gui/statuswindow.cpp:728
-#: src/gui/statuswindow.cpp:745 src/gui/statuswindow.cpp:764
-#: src/gui/statuswindow.cpp:786 src/gui/statuswindow.cpp:816
-#: src/gui/statuswindow.cpp:842 src/gui/statuswindow.cpp:856
-#: src/gui/statuswindow.cpp:872 src/gui/statuswindow.cpp:885
+#: src/gui/statuswindow.cpp:664 src/gui/statuswindow.cpp:678
+#: src/gui/statuswindow.cpp:710 src/gui/statuswindow.cpp:729
+#: src/gui/statuswindow.cpp:746 src/gui/statuswindow.cpp:765
+#: src/gui/statuswindow.cpp:787 src/gui/statuswindow.cpp:806
+#: src/gui/statuswindow.cpp:836 src/gui/statuswindow.cpp:862
+#: src/gui/statuswindow.cpp:876 src/gui/statuswindow.cpp:892
+#: src/gui/statuswindow.cpp:905
 msgid "(?)"
 msgstr "(?)"
 
-#: src/gui/statuswindow.cpp:674 src/gui/statuswindow.cpp:706
+#: src/gui/statuswindow.cpp:675 src/gui/statuswindow.cpp:707
+#: src/gui/statuswindow.cpp:794
 msgid "(a)"
 msgstr "(a)"
 
-#: src/gui/statuswindow.cpp:685
+#: src/gui/statuswindow.cpp:686
 msgid "(0)"
 msgstr "(0)"
 
-#: src/gui/statuswindow.cpp:688
+#: src/gui/statuswindow.cpp:689
 msgid "(1)"
 msgstr "(1)"
 
-#: src/gui/statuswindow.cpp:691
+#: src/gui/statuswindow.cpp:692
 msgid "(2)"
 msgstr "(2)"
 
-#: src/gui/statuswindow.cpp:694 src/gui/statuswindow.cpp:804
+#: src/gui/statuswindow.cpp:695 src/gui/statuswindow.cpp:824
 msgid "(3)"
 msgstr "(3)"
 
-#: src/gui/statuswindow.cpp:697
+#: src/gui/statuswindow.cpp:698
 msgid "(5)"
 msgstr "(5)"
 
-#: src/gui/statuswindow.cpp:700
+#: src/gui/statuswindow.cpp:701
 msgid "(7)"
 msgstr "(7)"
 
-#: src/gui/statuswindow.cpp:703 src/gui/statuswindow.cpp:758
-#: src/gui/statuswindow.cpp:813 src/gui/statuswindow.cpp:882
+#: src/gui/statuswindow.cpp:704 src/gui/statuswindow.cpp:759
+#: src/gui/statuswindow.cpp:833 src/gui/statuswindow.cpp:902
 msgid "(A)"
 msgstr "(A)"
 
-#: src/gui/statuswindow.cpp:719
+#: src/gui/statuswindow.cpp:720
 msgid "(R)"
 msgstr "(R)"
 
-#: src/gui/statuswindow.cpp:722
+#: src/gui/statuswindow.cpp:723
 msgid "(M)"
 msgstr "(M)"
 
-#: src/gui/statuswindow.cpp:725
+#: src/gui/statuswindow.cpp:726
 msgid "(P)"
 msgstr "(P)"
 
-#: src/gui/statuswindow.cpp:739
+#: src/gui/statuswindow.cpp:740
 msgid "(s)"
 msgstr "(s)"
 
-#: src/gui/statuswindow.cpp:742 src/gui/statuswindow.cpp:795
+#: src/gui/statuswindow.cpp:743 src/gui/statuswindow.cpp:815
 msgid "(S)"
 msgstr "(S)"
 
-#: src/gui/statuswindow.cpp:755 src/gui/statuswindow.cpp:810
-#: src/gui/statuswindow.cpp:863
+#: src/gui/statuswindow.cpp:756 src/gui/statuswindow.cpp:830
+#: src/gui/statuswindow.cpp:883
 msgid "(G)"
 msgstr "(G)"
 
-#: src/gui/statuswindow.cpp:771
+#: src/gui/statuswindow.cpp:772 src/gui/statuswindow.cpp:797
 msgid "(f)"
 msgstr "(f)"
 
-#: src/gui/statuswindow.cpp:780 src/gui/statuswindow.cpp:801
-#: src/gui/statuswindow.cpp:866
+#: src/gui/statuswindow.cpp:781 src/gui/statuswindow.cpp:821
+#: src/gui/statuswindow.cpp:886
 msgid "(F)"
 msgstr "(F)"
 
-#: src/gui/statuswindow.cpp:783 src/gui/statuswindow.cpp:833
+#: src/gui/statuswindow.cpp:784 src/gui/statuswindow.cpp:853
 msgid "(U)"
 msgstr "(U)"
 
-#: src/gui/statuswindow.cpp:807
-msgid "(g)"
-msgstr "(g)"
-
-#: src/gui/statuswindow.cpp:824
-msgid "(N)"
-msgstr "(N)"
-
-#: src/gui/statuswindow.cpp:830
-msgid "(u)"
-msgstr "(u)"
-
-#: src/gui/statuswindow.cpp:836
-msgid "(e)"
-msgstr "(e)"
-
-#: src/gui/statuswindow.cpp:839
+#: src/gui/statuswindow.cpp:800 src/gui/statuswindow.cpp:859
 msgid "(b)"
 msgstr "(b)"
 
-#: src/gui/statuswindow.cpp:853 src/gui/statuswindow.cpp:879
+#: src/gui/statuswindow.cpp:827
+msgid "(g)"
+msgstr "(g)"
+
+#: src/gui/statuswindow.cpp:844
+msgid "(N)"
+msgstr "(N)"
+
+#: src/gui/statuswindow.cpp:850
+msgid "(u)"
+msgstr "(u)"
+
+#: src/gui/statuswindow.cpp:856
+msgid "(e)"
+msgstr "(e)"
+
+#: src/gui/statuswindow.cpp:873 src/gui/statuswindow.cpp:899
 msgid "(O)"
 msgstr "(O)"
 
@@ -3344,7 +3452,8 @@ msgid "You don't have enough money."
 msgstr "Você não tem dinheiro suficiente."
 
 #: src/gui/tradewindow.cpp:454
-msgid "Failed adding item. You can not overlap one kind of item on the window."
+msgid ""
+"Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Falha ao adicionar item. Você não pode duplicar este tipo de item na janela."
 
@@ -3365,21 +3474,21 @@ msgstr "Conectando..."
 msgid "Play"
 msgstr "Jogar"
 
-#: src/gui/updaterwindow.cpp:564
+#: src/gui/updaterwindow.cpp:565
 msgid "##1  The update process is incomplete."
 msgstr "##1  O processo de update está incompleto."
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:566
+#: src/gui/updaterwindow.cpp:567
 msgid "##1  It is strongly recommended that"
 msgstr "##1  É altamente recomendado que"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:568
+#: src/gui/updaterwindow.cpp:569
 msgid "##1  you try again later."
 msgstr "##1  tente novamente mais tarde."
 
-#: src/gui/updaterwindow.cpp:744
+#: src/gui/updaterwindow.cpp:745
 msgid "Completed"
 msgstr "Concluído"
 
@@ -3724,7 +3833,8 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jogador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid "This command stops ignoring the other player if they are being ignored."
+msgid ""
+"This command stops ignoring the other player if they are being ignored."
 msgstr ""
 "Este comando para de ignorar o outro jogador se ele estiver sendo ignorado."
 
@@ -3942,7 +4052,7 @@ msgstr "Atalhos de item"
 #: src/keyboardconfig.cpp:116 src/keyboardconfig.cpp:119
 #: src/keyboardconfig.cpp:121 src/keyboardconfig.cpp:123
 #: src/keyboardconfig.cpp:125 src/keyboardconfig.cpp:127
-#: src/keyboardconfig.cpp:369
+#: src/keyboardconfig.cpp:371
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Atalho para item %d"
@@ -4069,7 +4179,7 @@ msgstr "Emoticon"
 #: src/keyboardconfig.cpp:258 src/keyboardconfig.cpp:260
 #: src/keyboardconfig.cpp:262 src/keyboardconfig.cpp:264
 #: src/keyboardconfig.cpp:266 src/keyboardconfig.cpp:268
-#: src/keyboardconfig.cpp:364
+#: src/keyboardconfig.cpp:366
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Atalho para emoticon %d"
@@ -4198,51 +4308,55 @@ msgstr "Usar feitiço de ataque"
 msgid "Switch magic attack"
 msgstr "Trocar feitiço de ataque"
 
-#: src/keyboardconfig.cpp:328
+#: src/keyboardconfig.cpp:329
+msgid "Switch pvp attack"
+msgstr ""
+
+#: src/keyboardconfig.cpp:330
 msgid "Change move type"
 msgstr "Mudar tipo de movimento"
 
-#: src/keyboardconfig.cpp:330
+#: src/keyboardconfig.cpp:332
 msgid "Change Attack Weapon Type"
 msgstr "Mudar tipo de ataque de arma"
 
-#: src/keyboardconfig.cpp:332
+#: src/keyboardconfig.cpp:334
 msgid "Change Attack Type"
 msgstr "Mudar tipo de ataque"
 
-#: src/keyboardconfig.cpp:334
+#: src/keyboardconfig.cpp:336
 msgid "Change Follow mode"
 msgstr "Mudar modo de seguir"
 
-#: src/keyboardconfig.cpp:336
+#: src/keyboardconfig.cpp:338
 msgid "Change Imitation mode"
 msgstr "Mudar modo de imitação"
 
-#: src/keyboardconfig.cpp:339
+#: src/keyboardconfig.cpp:341
 msgid "Disable / Enable Game modifier keys"
 msgstr "Habilitar / Desabilitar Chaves de modificação"
 
-#: src/keyboardconfig.cpp:340
+#: src/keyboardconfig.cpp:342
 msgid "On / Off audio"
 msgstr "Ligar / Desligar áudio"
 
-#: src/keyboardconfig.cpp:342
+#: src/keyboardconfig.cpp:344
 msgid "Enable / Disable away mode"
 msgstr "Habilitar / Desabilitar modo indisponivel "
 
-#: src/keyboardconfig.cpp:344
+#: src/keyboardconfig.cpp:346
 msgid "Emulate right click from keyboard"
 msgstr "Emular botão direito do teclado"
 
-#: src/keyboardconfig.cpp:346
+#: src/keyboardconfig.cpp:348
 msgid "Toggle camera mode"
 msgstr "Alterar modo de camera"
 
-#: src/keyboardconfig.cpp:348
+#: src/keyboardconfig.cpp:350
 msgid "Modifier key"
 msgstr "Chave de modificação"
 
-#: src/keyboardconfig.cpp:427
+#: src/keyboardconfig.cpp:429
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -4251,68 +4365,68 @@ msgstr ""
 "Conflito com as teclas \"%s\" e \"%s\" . Resolva o conflito para não "
 "comprometer a jogabilidade."
 
-#: src/localplayer.cpp:381
+#: src/localplayer.cpp:389
 msgid "You were killed by "
 msgstr "Você foi morto por "
 
-#: src/localplayer.cpp:1428
+#: src/localplayer.cpp:1442
 msgid "Tried to pick up nonexistent item."
 msgstr "Você tentou pegar um item não existente."
 
-#: src/localplayer.cpp:1430
+#: src/localplayer.cpp:1444
 msgid "Item is too heavy."
 msgstr "Este item é muito pesado."
 
-#: src/localplayer.cpp:1432
+#: src/localplayer.cpp:1446
 msgid "Item is too far away."
 msgstr "Item está muito longe"
 
-#: src/localplayer.cpp:1434
+#: src/localplayer.cpp:1448
 msgid "Inventory is full."
 msgstr "O inventário está cheio."
 
-#: src/localplayer.cpp:1436
+#: src/localplayer.cpp:1450
 msgid "Stack is too big."
 msgstr "Esta pilha é muito grande."
 
-#: src/localplayer.cpp:1439
+#: src/localplayer.cpp:1453
 msgid "Item belongs to someone else."
 msgstr "Este item pertence a outra pessoa."
 
-#: src/localplayer.cpp:1442
+#: src/localplayer.cpp:1456
 msgid "Unknown problem picking up item."
 msgstr "Problema desconhecido ao tentar pegar item."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1466
+#: src/localplayer.cpp:1480
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Você pegou %d [@@%d|%s@@]."
 msgstr[1] "Você pegou %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:3181
+#: src/localplayer.cpp:3206
 msgid "Away"
 msgstr "Indisponivel "
 
-#: src/localplayer.cpp:3509
+#: src/localplayer.cpp:3541
 msgid "Follow: "
 msgstr "Seguindo:"
 
-#: src/localplayer.cpp:3511 src/localplayer.cpp:3526
+#: src/localplayer.cpp:3543 src/localplayer.cpp:3558
 msgid "Follow canceled"
 msgstr "Seguindo cancelado"
 
-#: src/localplayer.cpp:3518
+#: src/localplayer.cpp:3550
 msgid "Imitation: "
 msgstr "Imitando:"
 
-#: src/localplayer.cpp:3520 src/localplayer.cpp:3528
+#: src/localplayer.cpp:3552 src/localplayer.cpp:3560
 msgid "Imitation canceled"
 msgstr "Imitação cancelada"
 
-#: src/localplayer.cpp:3876
+#: src/localplayer.cpp:3908
 msgid "You see "
 msgstr "Você vê "
 
@@ -4701,7 +4815,8 @@ msgstr "Comando: /exp <policy>"
 
 #: src/net/ea/gui/partytab.cpp:108
 msgid "This command changes the party's experience sharing policy."
-msgstr "Este comando muda a opção de compartilhamento de experiência do grupo."
+msgstr ""
+"Este comando muda a opção de compartilhamento de experiência do grupo."
 
 #: src/net/ea/gui/partytab.cpp:110
 msgid ""
@@ -4718,7 +4833,8 @@ msgstr "Comando: /exp"
 #: src/net/ea/gui/partytab.cpp:114
 msgid "This command displays the party's current experience sharing policy."
 msgstr ""
-"Este comando exibe a atual opção de compartilhamento de experiência do grupo."
+"Este comando exibe a atual opção de compartilhamento de experiência do "
+"grupo."
 
 #: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:284
 msgid "Item sharing enabled."
@@ -5006,7 +5122,8 @@ msgstr "Mensagem"
 
 #: src/net/ea/playerhandler.cpp:336
 msgid ""
-"You are carrying more than half your weight. You are unable to regain health."
+"You are carrying more than half your weight. You are unable to regain "
+"health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
@@ -5120,53 +5237,53 @@ msgstr "Veneno não surtiu efeito..."
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s quer negociar com você, você aceita?"
 
-#: src/net/ea/tradehandler.cpp:134
+#: src/net/ea/tradehandler.cpp:135
 msgid "Trading isn't possible. Trade partner is too far away."
 msgstr "Negociação impossível. O parceiro de negócios está muito longe."
 
-#: src/net/ea/tradehandler.cpp:138
+#: src/net/ea/tradehandler.cpp:139
 msgid "Trading isn't possible. Character doesn't exist."
 msgstr "Negociação impossível. O personagem não existe."
 
-#: src/net/ea/tradehandler.cpp:142
+#: src/net/ea/tradehandler.cpp:143
 msgid "Trade cancelled due to an unknown reason."
 msgstr "Negociação cancelada devido a uma razão desconhecida."
 
-#: src/net/ea/tradehandler.cpp:148
+#: src/net/ea/tradehandler.cpp:149
 #, c-format
 msgid "Trade: You and %s"
 msgstr "Negociação: Você e %s"
 
-#: src/net/ea/tradehandler.cpp:158
+#: src/net/ea/tradehandler.cpp:159
 #, c-format
 msgid "Trade with %s cancelled."
 msgstr "Negociação com %s cancelada."
 
-#: src/net/ea/tradehandler.cpp:171
+#: src/net/ea/tradehandler.cpp:172
 msgid "Unhandled trade cancel packet."
 msgstr "Troca injusta pacote cancelado."
 
-#: src/net/ea/tradehandler.cpp:236
+#: src/net/ea/tradehandler.cpp:237
 msgid "Failed adding item. Trade partner is over weighted."
 msgstr "Erro ao adicionar item. Parceiro de negócios carregando muito peso."
 
-#: src/net/ea/tradehandler.cpp:241
+#: src/net/ea/tradehandler.cpp:242
 msgid "Failed adding item. Trade partner has no free slot."
 msgstr "Erro ao adicionar item. Parceiro de negócios não tem slots livres."
 
-#: src/net/ea/tradehandler.cpp:246
+#: src/net/ea/tradehandler.cpp:247
 msgid "Failed adding item. You can't trade this item."
 msgstr "Falha ao adicionar item. Você não pode trocar este item."
 
-#: src/net/ea/tradehandler.cpp:250
+#: src/net/ea/tradehandler.cpp:251
 msgid "Failed adding item for unknown reason."
 msgstr "Erro ao adicionar item devido a um motivo desconhecido."
 
-#: src/net/ea/tradehandler.cpp:269 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:270 src/net/manaserv/tradehandler.cpp:160
 msgid "Trade canceled."
 msgstr "Negociação cancelada."
 
-#: src/net/ea/tradehandler.cpp:280 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:281 src/net/manaserv/tradehandler.cpp:167
 msgid "Trade completed."
 msgstr "Negociação realizada."
 
@@ -5587,15 +5704,15 @@ msgstr "Atraso de alcance"
 msgid "Damage per sec."
 msgstr "Dano por seg."
 
-#: src/net/tmwa/network.cpp:152
+#: src/net/tmwa/network.cpp:153
 msgid "Empty address given to Network::connect()!"
 msgstr "Endereço vazio enviado para Network::connect()!"
 
-#: src/net/tmwa/network.cpp:356
+#: src/net/tmwa/network.cpp:357
 msgid "Unable to resolve host \""
 msgstr "Não foi possível determinar o host \""
 
-#: src/net/tmwa/network.cpp:426
+#: src/net/tmwa/network.cpp:427
 msgid "Connection to server terminated. "
 msgstr "Conexão com o servidor interrompida. "
 
@@ -5604,19 +5721,19 @@ msgstr "Conexão com o servidor interrompida. "
 msgid "%s is not in your party!"
 msgstr "%s não está em seu grupo!"
 
-#: src/playerrelations.cpp:435
+#: src/playerrelations.cpp:460
 msgid "Print '...'"
 msgstr "Imprimir '...'"
 
-#: src/playerrelations.cpp:455
+#: src/playerrelations.cpp:480
 msgid "Blink name"
 msgstr "Piscar nome"
 
-#: src/playerrelations.cpp:499
+#: src/playerrelations.cpp:524
 msgid "Floating '...' bubble"
 msgstr "Bolha '...' flutuante"
 
-#: src/playerrelations.cpp:502
+#: src/playerrelations.cpp:527
 msgid "Floating bubble"
 msgstr "Bolha Flutuante"
 
@@ -5648,3 +5765,5 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:169
 msgid "Unknown item"
 msgstr "Item desconhecido"
+
+

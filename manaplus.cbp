@@ -416,6 +416,7 @@
 		<Unit filename="src\keyboardconfig.h" />
 		<Unit filename="src\listener.cpp" />
 		<Unit filename="src\listener.h" />
+		<Unit filename="src\localconsts.h" />
 		<Unit filename="src\localplayer.cpp" />
 		<Unit filename="src\localplayer.h" />
 		<Unit filename="src\logger.cpp" />

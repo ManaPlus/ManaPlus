@@ -199,7 +199,7 @@ const EmoteInfo *EmoteDB::get(int id, bool allowNull)
     if (i == mEmoteInfos.end())
     {
         if (allowNull)
-            return NULL;
+            return nullptr;
         logger->log("EmoteDB: Warning, unknown emote ID %d requested", id);
         return &mUnknown;
     }
@@ -213,7 +213,7 @@ const AnimatedSprite *EmoteDB::getAnimation(int id, bool allowNull)
 {
     const EmoteInfo *info = get(id, allowNull);
     if (!info)
-        return NULL;
+        return nullptr;
 
     return info->sprites.front()->sprite;
 }
@@ -222,7 +222,7 @@ const EmoteSprite *EmoteDB::getSprite(int id, bool allowNull)
 {
     const EmoteInfo *info = get(id, allowNull);
     if (!info)
-        return NULL;
+        return nullptr;
 
     return info->sprites.front();
 }

@@ -23,6 +23,8 @@
 #ifndef OK_DIALOG_H
 #define OK_DIALOG_H
 
+#include "localconsts.h"
+
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -44,7 +46,7 @@ class OkDialog : public Window, public gcn::ActionListener
          */
         OkDialog(const std::string &title, const std::string &msg,
                  bool modal = true, bool showCenter = true,
-                 Window *parent = NULL);
+                 Window *parent = nullptr);
 
         /**
          * Called when receiving actions from the widgets.

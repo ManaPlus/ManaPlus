@@ -65,7 +65,7 @@ void StatusEffect::deliverMessage()
 Particle *StatusEffect::getParticle()
 {
     if (!particleEngine || mParticleEffect.empty())
-        return NULL;
+        return nullptr;
     else
         return particleEngine->addEffect(mParticleEffect, 0, 0);
 }
@@ -74,7 +74,7 @@ AnimatedSprite *StatusEffect::getIcon()
 {
     if (mIcon.empty())
     {
-        return NULL;
+        return nullptr;
     }
     else
     {
@@ -141,7 +141,7 @@ void StatusEffect::load()
 
     for_each_xml_child_node(node, rootNode)
     {
-        status_effect_map *the_map = NULL;
+        status_effect_map *the_map = nullptr;
 
         int index = atoi(XML::getProperty(node, "id", "-1").c_str());
 

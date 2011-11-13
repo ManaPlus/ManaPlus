@@ -34,6 +34,7 @@
 #include "guildmanager.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
+#include "joystick.h"
 #include "keyboardconfig.h"
 #ifdef USE_OPENGL
 #include "openglgraphics.h"
@@ -136,15 +137,15 @@ std::string errorMessage;
 ErrorListener errorListener;
 LoginData loginData;
 
-Configuration config;         /**< XML file configuration reader */
-Configuration serverConfig;   /**< XML file server configuration reader */
-Configuration branding;       /**< XML branding information reader */
-Configuration paths;          /**< XML default paths information reader */
-Logger *logger = 0;           /**< Log object */
-ChatLogger *chatLogger = 0;   /**< Chat log object */
+Configuration config;             /**< XML file configuration reader */
+Configuration serverConfig;       /**< XML file server configuration reader */
+Configuration branding;           /**< XML branding information reader */
+Configuration paths;              /**< XML default paths information reader */
+Logger *logger = nullptr;         /**< Log object */
+ChatLogger *chatLogger = nullptr; /**< Chat log object */
 KeyboardConfig keyboard;
-UserPalette *userPalette = 0;
-Graphics *mainGraphics = 0;
+UserPalette *userPalette = nullptr;
+Graphics *mainGraphics = nullptr;
 
 Sound sound;
 
@@ -166,6 +167,10 @@ int serverVersion;
 int start_time;
 
 int textures_count = 0;
+
+#ifdef WIN32
+extern "C" char const *_nl_locale_name_default(void);
+#endif
 
 /**
  * Advances game logic counter.
@@ -235,7 +240,7 @@ class LoginListener : public gcn::ActionListener
 } // anonymous namespace
 
 
-Client *Client::mInstance = 0;
+Client *Client::mInstance = nullptr;
 
 Client::Client(const Options &options):
     mOptions(options),
@@ -243,16 +248,16 @@ Client::Client(const Options &options):
     mUsersDir(""),
     mNpcsDir(""),
     mRootDir(""),
-    mCurrentDialog(0),
-    mQuitDialog(0),
-    mDesktop(0),
-    mSetupButton(0),
-    mVideoButton(0),
-    mThemesButton(0),
-    mPerfomanceButton(0),
+    mCurrentDialog(nullptr),
+    mQuitDialog(nullptr),
+    mDesktop(nullptr),
+    mSetupButton(nullptr),
+    mVideoButton(nullptr),
+    mThemesButton(nullptr),
+    mPerfomanceButton(nullptr),
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
-    mIcon(0),
+    mIcon(nullptr),
     mLogicCounterId(0),
     mSecondsCounterId(0),
     mLimitFps(false),
@@ -286,6 +291,35 @@ Client::Client(const Options &options):
 
     storeSafeParameters();
 
+#if ENABLE_NLS
+    std::string lang = config.getValue("lang", "");
+#ifdef WIN32
+    if (!lang.empty())
+        lang = std::string(_nl_locale_name_default());
+
+    putenv((char*)("LANG=" + lang).c_str());
+    putenv((char*)("LANGUAGE=" + lang).c_str());
+    // mingw doesn't like LOCALEDIR to be defined for some reason
+    if (lang != "C")
+        bindtextdomain("manaplus", "translations/");
+#else
+    if (!lang.empty())
+    {
+        putenv(const_cast<char*>(("LANG=" + lang).c_str()));
+        putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
+    }
+#ifdef ENABLE_PORTABLE
+    bindtextdomain("manaplus", (std::string(PHYSFS_getBaseDir())
+        + "../locale/").c_str());
+#else
+    bindtextdomain("manaplus", LOCALEDIR);
+#endif
+#endif
+    setlocale(LC_MESSAGES, lang.c_str());
+    bind_textdomain_codeset("manaplus", "UTF-8");
+    textdomain("manaplus");
+#endif
+
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
         chatLogger->setLogDir(mLocalDataDir + std::string("/logs/"));
@@ -313,7 +347,8 @@ Client::Client(const Options &options):
     SDL_EnableUNICODE(1);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
-    SDL_WM_SetCaption(branding.getValue("appName", "ManaPlus").c_str(), NULL);
+    SDL_WM_SetCaption(branding.getValue("appName",
+        "ManaPlus").c_str(), nullptr);
 
     ResourceManager *resman = ResourceManager::getInstance();
 
@@ -412,12 +447,11 @@ Client::Client(const Options &options):
     static SDL_SysWMinfo pInfo;
     SDL_GetWMInfo(&pInfo);
     // Attempt to load icon from .ico file
-    HICON icon = (HICON) LoadImage(NULL,
-                                   iconFile.c_str(),
-                                   IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
+    HICON icon = (HICON) LoadImage(nullptr, iconFile.c_str(),
+        IMAGE_ICON, 64, 64, LR_LOADFROMFILE);
     // If it's failing, we load the default resource file.
     if (!icon)
-        icon = LoadIcon(GetModuleHandle(NULL), "A");
+        icon = LoadIcon(GetModuleHandle(nullptr), "A");
 
     if (icon)
         SetClassLong(pInfo.window, GCL_HICON, (LONG) icon);
@@ -426,7 +460,7 @@ Client::Client(const Options &options):
     if (mIcon)
     {
         SDL_SetAlpha(mIcon, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-        SDL_WM_SetIcon(mIcon, NULL);
+        SDL_WM_SetIcon(mIcon, nullptr);
     }
 #endif
 
@@ -534,6 +568,8 @@ Client::Client(const Options &options):
     // Initialise player relations
     player_relations.init();
 
+    Joystick::init();
+
     userPalette = new UserPalette;
     setupWindow = new Setup;
 
@@ -573,8 +609,8 @@ Client::Client(const Options &options):
 
     // Initialize logic and seconds counters
     tick_time = 0;
-    mLogicCounterId = SDL_AddTimer(MILLISECONDS_IN_A_TICK, nextTick, NULL);
-    mSecondsCounterId = SDL_AddTimer(1000, nextSecond, NULL);
+    mLogicCounterId = SDL_AddTimer(MILLISECONDS_IN_A_TICK, nextTick, nullptr);
+    mSecondsCounterId = SDL_AddTimer(1000, nextSecond, nullptr);
 
     const int fpsLimit = config.getIntValue("fpslimit");
     mLimitFps = fpsLimit > 0;
@@ -597,7 +633,7 @@ Client::Client(const Options &options):
 
     optionChanged("fpslimit");
 
-    start_time = static_cast<int>(time(NULL));
+    start_time = static_cast<int>(time(nullptr));
 
     // Initialize PlayerInfo
     PlayerInfo::init();
@@ -624,7 +660,7 @@ Client::~Client()
         Net::getLoginHandler()->clearWorlds();
 
     delete mumbleManager;
-    mumbleManager = 0;
+    mumbleManager = nullptr;
 
     PlayerInfo::deinit();
 
@@ -632,24 +668,24 @@ Client::~Client()
     for (int f = 0; f < SHORTCUT_TABS; f ++)
     {
         delete itemShortcut[f];
-        itemShortcut[f] = 0;
+        itemShortcut[f] = nullptr;
     }
     delete emoteShortcut;
-    emoteShortcut = 0;
+    emoteShortcut = nullptr;
     delete dropShortcut;
-    dropShortcut = 0;
+    dropShortcut = nullptr;
 
     player_relations.store();
 
     logger->log1("Quitting2");
 
     delete gui;
-    gui = 0;
+    gui = nullptr;
 
     logger->log1("Quitting3");
 
     delete mainGraphics;
-    mainGraphics = 0;
+    mainGraphics = nullptr;
 
     logger->log1("Quitting4");
 
@@ -676,7 +712,10 @@ Client::~Client()
     logger->log1("Quitting9");
 
     delete userPalette;
-    userPalette = 0;
+    userPalette = nullptr;
+
+    delete joystick;
+    joystick = nullptr;
 
     logger->log1("Quitting10");
 
@@ -689,12 +728,12 @@ Client::~Client()
     logger->log1("Quitting11");
 
     delete chatLogger;
-    chatLogger = 0;
+    chatLogger = nullptr;
 
     delete logger;
-    logger = 0;
+    logger = nullptr;
 
-    mInstance = 0;
+    mInstance = nullptr;
 }
 
 int Client::exec()
@@ -704,7 +743,7 @@ int Client::exec()
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
 
-    Game *game = 0;
+    Game *game = nullptr;
     SDL_Event event;
 
     while (mState != STATE_EXIT)
@@ -874,7 +913,7 @@ int Client::exec()
             if (mOldState == STATE_GAME)
             {
                 delete game;
-                game = 0;
+                game = nullptr;
                 Game::clearInstance();
                 ResourceManager *resman = ResourceManager::getInstance();
                 if (resman)
@@ -890,13 +929,13 @@ int Client::exec()
 
             // Get rid of the dialog of the previous state
             delete mCurrentDialog;
-            mCurrentDialog = 0;
+            mCurrentDialog = nullptr;
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
             if (mQuitDialog)
             {
                 mQuitDialog->scheduleDelete();
-                mQuitDialog = 0;
+                mQuitDialog = nullptr;
             }
 
             switch (mState)
@@ -986,7 +1025,7 @@ int Client::exec()
                             if (mOptions.chooseDefault)
                             {
                                 static_cast<WorldSelectDialog*>(mCurrentDialog)
-                                        ->action(gcn::ActionEvent(0, "ok"));
+                                    ->action(gcn::ActionEvent(nullptr, "ok"));
                             }
                         }
                     }
@@ -1159,17 +1198,17 @@ int Client::exec()
                     Theme::instance()->setMinimumOpacity(-1.0f);
 
                     delete mSetupButton;
-                    mSetupButton = 0;
+                    mSetupButton = nullptr;
                     delete mVideoButton;
-                    mVideoButton = 0;
+                    mVideoButton = nullptr;
                     delete mThemesButton;
-                    mThemesButton = 0;
+                    mThemesButton = nullptr;
                     delete mPerfomanceButton;
-                    mPerfomanceButton = 0;
+                    mPerfomanceButton = nullptr;
                     delete mDesktop;
-                    mDesktop = 0;
+                    mDesktop = nullptr;
 
-                    mCurrentDialog = NULL;
+                    mCurrentDialog = nullptr;
 
                     logger->log1("State: GAME");
                     if (Net::getGeneralHandler())
@@ -1181,14 +1220,14 @@ int Client::exec()
                     logger->log1("State: LOGIN ERROR");
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&loginListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_ACCOUNTCHANGE_ERROR:
                     logger->log1("State: ACCOUNT CHANGE ERROR");
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_REGISTER_PREP:
@@ -1224,7 +1263,7 @@ int Client::exec()
                     mCurrentDialog = new OkDialog(_("Password Change"),
                             _("Password changed successfully!"));
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
                     loginData.newPassword = "";
                     break;
@@ -1244,7 +1283,7 @@ int Client::exec()
                     mCurrentDialog = new OkDialog(_("Email Change"),
                             _("Email changed successfully!"));
                     mCurrentDialog->addActionListener(&accountListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_UNREGISTER:
@@ -1267,7 +1306,7 @@ int Client::exec()
                     loginData.clear();
                     //The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_SWITCH_SERVER:
@@ -1322,7 +1361,7 @@ int Client::exec()
                     logger->log("Error: %s\n", errorMessage.c_str());
                     mCurrentDialog = new OkDialog(_("Error"), errorMessage);
                     mCurrentDialog->addActionListener(&errorListener);
-                    mCurrentDialog = NULL; // OkDialog deletes itself
+                    mCurrentDialog = nullptr; // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
                     break;
 
@@ -1510,7 +1549,7 @@ void Client::initServerConfig(std::string serverName)
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mServerConfigDir.c_str()));
     }
-    FILE *configFile = 0;
+    FILE *configFile = nullptr;
     std::string configPath;
 
     configPath = mServerConfigDir + "/config.xml";
@@ -1574,7 +1613,7 @@ void Client::initConfiguration()
 
     // Checking if the configuration file exists... otherwise create it with
     // default options.
-    FILE *configFile = 0;
+    FILE *configFile = nullptr;
     std::string configPath;
 //    bool oldConfig = false;
 //    int emptySize = config.getSize();
@@ -1764,11 +1803,11 @@ void Client::accountLogin(LoginData *data)
 
 bool Client::copyFile(std::string &configPath, std::string &oldConfigPath)
 {
-    FILE *configFile = 0;
+    FILE *configFile = nullptr;
 
     configFile = fopen(oldConfigPath.c_str(), "r");
 
-    if (configFile != NULL)
+    if (configFile)
     {
         fclose(configFile);
 

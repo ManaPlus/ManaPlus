@@ -421,7 +421,7 @@ void ItemDB::unload()
     logger->log1("Unloading item database...");
 
     delete mUnknown;
-    mUnknown = 0;
+    mUnknown = nullptr;
 
     delete_all(mItemInfos);
     mItemInfos.clear();

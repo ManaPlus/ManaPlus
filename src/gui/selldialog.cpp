@@ -50,14 +50,14 @@
 SellDialog::DialogList SellDialog::instances;
 
 SellDialog::SellDialog(int npcId):
-    Window(_("Sell"), false, 0, "sell.xml"),
+    Window(_("Sell"), false, nullptr, "sell.xml"),
     mNpcId(npcId), mMaxItems(0), mAmountItems(0), mNick("")
 {
     init();
 }
 
 SellDialog::SellDialog(std::string nick):
-    Window(_("Sell"), false, 0, "sell.xml"),
+    Window(_("Sell"), false, nullptr, "sell.xml"),
     mNpcId(-1), mMaxItems(0), mAmountItems(0), mNick(nick)
 {
     init();
@@ -133,7 +133,7 @@ void SellDialog::init()
 SellDialog::~SellDialog()
 {
     delete mShopItems;
-    mShopItems = 0;
+    mShopItems = nullptr;
 
     instances.remove(this);
 }
@@ -290,7 +290,7 @@ void SellDialog::updateButtonsAndLabels()
 {
     int selectedItem = mShopItemList->getSelected();
     int income = 0;
-    ShopItem *item = 0;
+    ShopItem *item = nullptr;
 
     if (selectedItem > -1 && mShopItems->at(selectedItem))
     {

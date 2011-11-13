@@ -29,7 +29,7 @@
 #define PI 3.14159265
 
 RotationalParticle::RotationalParticle(Map *map, Animation *animation):
-    ImageParticle(map, NULL),
+    ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animation))
 {
 }
@@ -44,8 +44,8 @@ RotationalParticle::RotationalParticle(Map *map, xmlNodePtr animationNode,
 RotationalParticle::~RotationalParticle()
 {
     delete mAnimation;
-    mAnimation = 0;
-    mImage = 0;
+    mAnimation = nullptr;
+    mImage = nullptr;
 }
 
 bool RotationalParticle::update()

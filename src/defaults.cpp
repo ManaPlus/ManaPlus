@@ -220,6 +220,10 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableLazyScrolling", true);
     AddDEF(configData, "extMouseTargeting", true);
     AddDEF(configData, "showMVP", false);
+    AddDEF(configData, "pvpAttackType", 0);
+    AddDEF(configData, "lang", "");
+    AddDEF(configData, "selectedJoystick", 0);
+    AddDEF(configData, "useInactiveJoystick", false);
     return configData;
 }
 

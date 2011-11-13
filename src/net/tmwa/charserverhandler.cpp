@@ -123,7 +123,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             player_node = mSelectedCharacter->dummy;
             PlayerInfo::setBackend(mSelectedCharacter->data);
 
-            mSelectedCharacter->dummy = 0;
+            mSelectedCharacter->dummy = nullptr;
 
             delete_all(mCharacters);
             mCharacters.clear();
@@ -151,7 +151,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
             if (player_node)
             {
                 player_node->setTileCoords(x, y);
-                player_node->setMap(0);
+                player_node->setMap(nullptr);
             }
         }
         break;
@@ -271,7 +271,7 @@ void CharServerHandler::chooseCharacter(Net::Character *character)
         return;
 
     mSelectedCharacter = character;
-    mCharSelectDialog = 0;
+    mCharSelectDialog = nullptr;
 
     MessageOut outMsg(CMSG_CHAR_SELECT);
     outMsg.writeInt8(static_cast<unsigned char>(mSelectedCharacter->slot));

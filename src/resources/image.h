@@ -23,6 +23,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
+#include "localconsts.h"
 #include "main.h"
 
 #include "resources/resource.h"
@@ -252,7 +253,7 @@ class Image : public Resource
 
         /** SDL Constructor */
         Image(SDL_Surface *image, bool hasAlphaChannel = false,
-              Uint8 *alphaChannel = NULL);
+              Uint8 *alphaChannel = nullptr);
 
         /** SDL_Surface to SDL_Surface Image loader */
         static Image *_SDLload(SDL_Surface *tmpImage);
