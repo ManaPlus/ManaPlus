@@ -282,6 +282,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
             case PlayerRelation::IGNORED:
             case PlayerRelation::ERASED:
             case PlayerRelation::BLACKLISTED:
+            case PlayerRelation::ENEMY2:
             default:
                 permissions &= mDefaultPermissions; // narrow
         }

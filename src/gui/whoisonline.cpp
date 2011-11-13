@@ -198,6 +198,7 @@ void WhoIsOnline::loadList()
     std::vector<std::string> friends;
     std::vector<std::string> neutral;
     std::vector<std::string> disregard;
+    std::vector<std::string> enemy;
 
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
@@ -270,6 +271,7 @@ void WhoIsOnline::loadList()
                 switch (player_relations.getRelation(nick))
                 {
                     case PlayerRelation::NEUTRAL:
+                    default:
                         neutral.push_back(prepareNick(nick, level, "0"));
                         break;
 
@@ -282,9 +284,12 @@ void WhoIsOnline::loadList()
                         disregard.push_back(prepareNick(nick, level, "8"));
                         break;
 
+                    case PlayerRelation::ENEMY2:
+                        enemy.push_back(prepareNick(nick, level, "1"));
+                        break;
+
                     case PlayerRelation::IGNORED:
                     case PlayerRelation::ERASED:
-                    default:
                         //Ignore the ignored.
                         break;
                 }
@@ -309,6 +314,16 @@ void WhoIsOnline::loadList()
     for (int i = 0; i < static_cast<int>(friends.size()); i++)
     {
         mBrowserBox->addRow(friends.at(i));
+        addedFromSection = true;
+    }
+    if (addedFromSection == true)
+    {
+        mBrowserBox->addRow("---");
+        addedFromSection = false;
+    }
+    for (int i = 0; i < static_cast<int>(enemy.size()); i++)
+    {
+        mBrowserBox->addRow(enemy.at(i));
         addedFromSection = true;
     }
     if (addedFromSection == true)
