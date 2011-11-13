@@ -1017,6 +1017,8 @@ void Being::setAction(Action action, int attackType A_UNUSED)
             currentAction = SpriteAction::DEAD;
             if (mInfo)
                 sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
+            if (mType == MONSTER)
+                mYDiff = 31;
             break;
         case STAND:
             currentAction = SpriteAction::STAND;

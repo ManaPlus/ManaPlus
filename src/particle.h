@@ -114,6 +114,12 @@ class Particle : public Actor
         { return static_cast<int>(mPos.y) - 16; }
 
         /**
+         * Necessary for sorting with the other sprites for sorting only.
+         */
+        virtual int getSortPixelY() const
+        { return static_cast<int>(mPos.y) - 16; }
+
+        /**
          * Creates a blank particle as a child of the current particle
          * Useful for creating target particles
          */
