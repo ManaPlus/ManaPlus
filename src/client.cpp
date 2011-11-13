@@ -322,9 +322,9 @@ Client::Client(const Options &options):
 
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
-        chatLogger->setLogDir(mLocalDataDir + std::string("/logs/"));
+        chatLogger->setBaseLogDir(mLocalDataDir + std::string("/logs/"));
     else
-        chatLogger->setLogDir(mOptions.chatLogDir);
+        chatLogger->setBaseLogDir(mOptions.chatLogDir);
 
     logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
 
