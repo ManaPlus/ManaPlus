@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The ManaPlus Developers
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011.
 # Jumpy <antoinebcn@hotmail.com>, 2011.
@@ -13,13 +13,14 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2011-11-12 00:23+0300\n"
-"PO-Revision-Date: 2011-11-11 21:38+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/manaplus/team/es/)\n"
+"PO-Revision-Date: 2011-11-11 22:16+0000\n"
+"Last-Translator: nelson6e65 <nelson6e65-manaplus@yahoo.es>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
+"manaplus/team/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1171
@@ -153,8 +154,8 @@ msgstr "¡No puedes enviar susurros vacíos!"
 #: src/commandhandler.cpp:343
 #, c-format
 msgid ""
-"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
-" you."
+"Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
+"you."
 msgstr ""
 "¡No se puede crear una pestaña de susurro para el nick \"%s\"! O bien ya "
 "existe, o eres tú."
@@ -319,7 +320,8 @@ msgstr "Imágenes de recurso huérfano:"
 #: src/commandhandler.h:40
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opciones para /%s son \"yes\" | \"no\", \"true\" | \"false\", \"1\" | \"0\"."
+msgstr ""
+"Opciones para /%s son \"yes\" | \"no\", \"true\" | \"false\", \"1\" | \"0\"."
 
 #: src/game.cpp:252 src/gui/widgets/chattab.cpp:403
 msgid "General"
@@ -1968,15 +1970,15 @@ msgstr "Calibrar"
 
 #: src/gui/setup_joystick.cpp:72
 msgid "Enable joystick"
-msgstr "Habilitar joystick"
+msgstr "Habilitar la palanca de mando"
 
 #: src/gui/setup_joystick.cpp:75
 msgid "Use joystick if client window inactive"
-msgstr ""
+msgstr "Usar la palanca de mando si la ventana del cliente está inactiva"
 
 #: src/gui/setup_joystick.cpp:78
 msgid "Joystick"
-msgstr "Joystick"
+msgstr "Palanca de Mando"
 
 #: src/gui/setup_joystick.cpp:147
 msgid "Stop"
@@ -1984,7 +1986,7 @@ msgstr "Parar"
 
 #: src/gui/setup_joystick.cpp:149
 msgid "Rotate the stick and dont press buttons"
-msgstr ""
+msgstr "Girar la palanca y no presionar los botones"
 
 #: src/gui/setup_keyboard.cpp:80
 msgid "Keyboard"
@@ -2160,7 +2162,7 @@ msgstr "Habilitar soporte de bot clan y deshabilitar soporte de clan nativo"
 
 #: src/gui/setup_other.cpp:168
 msgid "Enable server side attack"
-msgstr "Habilitar los ataques colaterales de servidor"
+msgstr "Habilitar el ataque del lado del servidor"
 
 #: src/gui/setup_other.cpp:171
 msgid "Enable bot checker"
@@ -3452,8 +3454,7 @@ msgid "You don't have enough money."
 msgstr "No tienes dinero suficiente."
 
 #: src/gui/tradewindow.cpp:454
-msgid ""
-"Failed adding item. You can not overlap one kind of item on the window."
+msgid "Failed adding item. You can not overlap one kind of item on the window."
 msgstr ""
 "Fallo al añadir objeto. No puedes añadir más de un mismo tipo de objeto en "
 "la ventana."
@@ -3837,8 +3838,7 @@ msgid "Command: /unignore <player>"
 msgstr "Comando: /unignore <jugador>"
 
 #: src/gui/widgets/whispertab.cpp:131
-msgid ""
-"This command stops ignoring the other player if they are being ignored."
+msgid "This command stops ignoring the other player if they are being ignored."
 msgstr "Este comando para de ignorar al jugador si está siendo ignorado."
 
 #: src/gui/windowmenu.cpp:65
@@ -4823,8 +4823,8 @@ msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
 msgstr ""
-"<política> puede ser \"1\", \"yes\" y \"true\" para compartir experiencia, o"
-" \"0\", \"no\" y \"false\" para no compartir."
+"<política> puede ser \"1\", \"yes\" y \"true\" para compartir experiencia, o "
+"\"0\", \"no\" y \"false\" para no compartir."
 
 #: src/net/ea/gui/partytab.cpp:113
 msgid "Command: /exp"
@@ -4915,8 +4915,8 @@ msgstr "Rechazado del servidor."
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
-"Has sido baneado permanentemente del juego. Por favor contacta con el equipo"
-" GM."
+"Has sido baneado permanentemente del juego. Por favor contacta con el equipo "
+"GM."
 
 #: src/net/ea/loginhandler.cpp:219
 msgid "Client too old."
@@ -5123,8 +5123,7 @@ msgstr "Mensaje"
 
 #: src/net/ea/playerhandler.cpp:336
 msgid ""
-"You are carrying more than half your weight. You are unable to regain "
-"health."
+"You are carrying more than half your weight. You are unable to regain health."
 msgstr "Llevas más de la mitad del peso que puedes. No recuperarás PV o PM."
 
 #: src/net/ea/playerhandler.cpp:346
@@ -5766,5 +5765,3 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:169
 msgid "Unknown item"
 msgstr "Objeto desconocido"
-
-
