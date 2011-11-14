@@ -10,6 +10,7 @@ SET (FILES
     close_button.png
     colors.xml
     deepbox.png
+    equipmentbox.png
     hscroll_left_default.png
     hscroll_left_highlight.png
     hscroll_left_pressed.png

@@ -25,10 +25,13 @@
 
 #include "equipment.h"
 #include "guichanfwd.h"
+#include "localconsts.h"
 
 #include "gui/widgets/window.h"
 
 #include "utils/xml.h"
+
+#include "resources/image.h"
 
 #include <guichan/actionlistener.hpp>
 
@@ -42,9 +45,22 @@
 
 class Being;
 class Inventory;
+class Image;
+class ImageSet;
 class Item;
 class ItemPopup;
 class PlayerBox;
+
+struct EquipmentBox
+{
+    EquipmentBox(int x0, int y0, Image *img) :
+        x(x0), y(y0), image(img)
+    { }
+
+    int x;
+    int y;
+    Image *image;
+};
 
 /**
  * Equipment dialog.
@@ -96,13 +112,13 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void fillDefault();
 
-        void addBox(int idx, int x, int y);
+        void addBox(int idx, int x, int y, int imageIndex);
 
         void loadWindow(xmlNodePtr windowNode);
 
         void loadPlayerBox(xmlNodePtr playerBoxNode);
 
-        void loadSlot(xmlNodePtr slotNode);
+        void loadSlot(xmlNodePtr slotNode, ImageSet *imageset);
 
         int parseSlotName(std::string name);
 
@@ -114,8 +130,9 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         int mSelected; /**< Index of selected item. */
         bool mForing;
+        ImageSet *mImageSet;
         Being *mBeing;
-        std::vector<std::pair<int, int>*> mBoxes;
+        std::vector<EquipmentBox*> mBoxes;
         gcn::Color mHighlightColor;
         gcn::Color mBorderColor;
 };

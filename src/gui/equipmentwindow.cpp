@@ -42,6 +42,7 @@
 #include "net/net.h"
 
 #include "resources/image.h"
+#include "resources/imageset.h"
 #include "resources/iteminfo.h"
 #include "resources/resourcemanager.h"
 
@@ -55,13 +56,16 @@
 
 static const int BOX_WIDTH = 36;
 static const int BOX_HEIGHT = 36;
+static const int BOX_X_PAD = (BOX_WIDTH - 32) / 2;
+static const int BOX_Y_PAD = (BOX_HEIGHT - 32) / 2;
 
 EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
                                  bool foring):
     Window(_("Equipment"), false, nullptr, "equipment.xml"),
     mEquipment(equipment),
     mSelected(-1),
-    mForing(foring)
+    mForing(foring),
+    mImageSet(0)
 {
     mBeing = being;
     mItemPopup = new ItemPopup;
@@ -119,6 +123,11 @@ EquipmentWindow::~EquipmentWindow()
     }
     delete_all(mBoxes);
     mBoxes.clear();
+    if (mImageSet)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
 }
 
 void EquipmentWindow::draw(gcn::Graphics *graphics)
@@ -133,12 +142,12 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     int i = 0;
     const int fontHeight = getFont()->getHeight();
 
-    std::vector<std::pair<int, int>*>::const_iterator it;
-    std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
+    std::vector<EquipmentBox*>::const_iterator it;
+    std::vector<EquipmentBox*>::const_iterator it_end = mBoxes.end();
 
     for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
     {
-        std::pair<int, int> *box = *it;
+        EquipmentBox *box = *it;
         if (!box)
             continue;
         if (i == mSelected)
@@ -146,14 +155,14 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             mHighlightColor.a = getGuiAlpha();
             // Set color to the highlight color
             g->setColor(mHighlightColor);
-            g->fillRectangle(gcn::Rectangle(box->first,
-                box->second, BOX_WIDTH, BOX_HEIGHT));
+            g->fillRectangle(gcn::Rectangle(box->x, box->y,
+                BOX_WIDTH, BOX_HEIGHT));
         }
 
         // Set color black
         g->setColor(mBorderColor);
         // Draw box border
-        g->drawRectangle(gcn::Rectangle(box->first, box->second,
+        g->drawRectangle(gcn::Rectangle(box->x, box->y,
             BOX_WIDTH, BOX_HEIGHT));
 
         if (!mEquipment)
@@ -168,15 +177,22 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
             {
                 image->setAlpha(1.0f); // Ensure the image is drawn
                                        // with maximum opacity
-                g->drawImage(image, box->first + 2, box->second + 2);
+                g->drawImage(image, box->x + 2, box->y + 2);
                 if (i == EQUIP_PROJECTILE_SLOT)
                 {
                     g->setColor(getForegroundColor());
                     graphics->drawText(toString(item->getQuantity()),
-                        box->first + (BOX_WIDTH / 2),
-                        box->second - fontHeight,
+                        box->x + (BOX_WIDTH / 2), box->y - fontHeight,
                         gcn::Graphics::CENTER);
                 }
+            }
+        }
+        else
+        {
+            if (box->image)
+            {
+                g->drawImage(box->image, box->x + BOX_X_PAD,
+                    box->y + BOX_Y_PAD);
             }
         }
     }
@@ -200,16 +216,16 @@ Item *EquipmentWindow::getItem(int x, int y) const
     if (!mEquipment)
         return nullptr;
 
-    std::vector<std::pair<int, int>*>::const_iterator it;
-    std::vector<std::pair<int, int>*>::const_iterator it_end = mBoxes.end();
+    std::vector<EquipmentBox*>::const_iterator it;
+    std::vector<EquipmentBox*>::const_iterator it_end = mBoxes.end();
     int i = 0;
 
     for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
     {
-        std::pair<int, int> *box = *it;
+        EquipmentBox *box = *it;
         if (!box)
             continue;
-        const gcn::Rectangle tRect(box->first, box->second,
+        const gcn::Rectangle tRect(box->x, box->y,
             BOX_WIDTH, BOX_HEIGHT);
 
         if (tRect.isPointInRect(x, y))
@@ -233,18 +249,17 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
         if (mForing)
             return;
         // Checks if any of the presses were in the equip boxes.
-        std::vector<std::pair<int, int>*>::const_iterator it;
-        std::vector<std::pair<int, int>*>::const_iterator
-            it_end = mBoxes.end();
+        std::vector<EquipmentBox*>::const_iterator it;
+        std::vector<EquipmentBox*>::const_iterator it_end = mBoxes.end();
         int i = 0;
 
         for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
         {
-            std::pair<int, int> *box = *it;
+            EquipmentBox *box = *it;
             if (!box)
                 continue;
             Item *item = mEquipment->getEquipment(i);
-            const gcn::Rectangle tRect(box->first, box->second,
+            const gcn::Rectangle tRect(box->x, box->y,
                 BOX_WIDTH, BOX_HEIGHT);
 
             if (tRect.isPointInRect(x, y) && item)
@@ -351,6 +366,12 @@ void EquipmentWindow::fillBoxes()
         return;
     }
 
+    if (mImageSet)
+        mImageSet->decRef();
+
+    mImageSet = Theme::getImageSetFromTheme(XML::getProperty(
+        root, "image", "equipmentbox.png"), 32, 32);
+
     for_each_xml_child_node(node, root)
     {
         if (xmlStrEqual(node->name, BAD_CAST "window"))
@@ -358,7 +379,7 @@ void EquipmentWindow::fillBoxes()
         else if (xmlStrEqual(node->name, BAD_CAST "playerbox"))
             loadPlayerBox(node);
         else if (xmlStrEqual(node->name, BAD_CAST "slot"))
-            loadSlot(node);
+            loadSlot(node, mImageSet);
     }
     delete doc;
 }
@@ -378,7 +399,7 @@ void EquipmentWindow::loadPlayerBox(xmlNodePtr playerBoxNode)
         XML::getProperty(playerBoxNode, "height", 168)));
 }
 
-void EquipmentWindow::loadSlot(xmlNodePtr slotNode)
+void EquipmentWindow::loadSlot(xmlNodePtr slotNode, ImageSet *imageset)
 {
     int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)
@@ -386,16 +407,22 @@ void EquipmentWindow::loadSlot(xmlNodePtr slotNode)
 
     const int x = XML::getProperty(slotNode, "x", 0) + getPadding();
     const int y = XML::getProperty(slotNode, "y", 0) + getTitleBarHeight();
+    const int imageIndex = XML::getProperty(slotNode, "image", -1);
+    Image *image = nullptr;
+
+    if (imageset && imageIndex >= 0 && imageIndex < (signed)imageset->size())
+        image = imageset->get(imageIndex);
 
     if (mBoxes[slot])
     {
-        std::pair<int, int> *pair = mBoxes[slot];
-        pair->first = x;
-        pair->second = y;
+        EquipmentBox *box = mBoxes[slot];
+        box->x = x;
+        box->y = y;
+        box->image = image;
     }
     else
     {
-         mBoxes[slot] = new std::pair<int, int>(x, y);
+        mBoxes[slot] = new EquipmentBox(x, y, image);
     }
 }
 
@@ -461,23 +488,34 @@ int EquipmentWindow::parseSlotName(std::string name)
 
 void EquipmentWindow::fillDefault()
 {
-    addBox(0, 90, 40);     // torso
-    addBox(1, 8, 78);      // gloves
-    addBox(2, 70, 0);      // hat
-    addBox(3, 50, 253);    // pants
-    addBox(4, 90, 253);    // boots
-    addBox(5, 8, 213);     // FREE
-    addBox(6, 129, 213);   // wings
-    addBox(7, 50, 40);     // scarf
-    addBox(8, 8, 168);     // weapon
-    addBox(9, 129, 168);   // shield
-    addBox(10, 129, 78);   // ammo
-    addBox(11, 8, 123);    // amulet
-    addBox(12, 129, 123);  // ring
+    if (mImageSet)
+        mImageSet->decRef();
+
+    mImageSet = Theme::getImageSetFromTheme(
+        "equipmentbox.png", 32, 32);
+
+    addBox(0, 90, 40, 0);    // torso
+    addBox(1, 8, 78, 1);     // gloves
+    addBox(2, 70, 0, 2);     // hat
+    addBox(3, 50, 253, 3);   // pants
+    addBox(4, 90, 253, 4);   // boots
+    addBox(5, 8, 213, 5);    // FREE
+    addBox(6, 129, 213, 6);  // wings
+    addBox(7, 50, 40, 5);    // scarf
+    addBox(8, 8, 168, 7);    // weapon
+    addBox(9, 129, 168, 8);  // shield
+    addBox(10, 129, 78, 9);  // ammo
+    addBox(11, 8, 123, 5);   // amulet
+    addBox(12, 129, 123, 5); // ring
 }
 
-void EquipmentWindow::addBox(int idx, int x, int y)
+void EquipmentWindow::addBox(int idx, int x, int y, int imageIndex)
 {
-    mBoxes[idx] = new std::pair<int, int>(
-        x + getPadding(), y + getTitleBarHeight());
+    Image *image = nullptr;
+
+    if (mImageSet && imageIndex >= 0 && imageIndex < (signed)mImageSet->size())
+        image = mImageSet->get(imageIndex);
+
+    mBoxes[idx] = new EquipmentBox(x + getPadding(), y + getTitleBarHeight(),
+        image);
 }
