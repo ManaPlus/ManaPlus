@@ -2201,7 +2201,7 @@ void Being::recalcSpritesOrder()
                             = itemReplacer.begin();
                         std::map<int, int>::const_iterator repIt_end
                             = itemReplacer.end();
-                        for (;repIt != repIt_end; ++ repIt)
+                        for (; repIt != repIt_end; ++ repIt)
                         {
                             for (unsigned slot2 = 0; slot2 < sz; slot2 ++)
                             {

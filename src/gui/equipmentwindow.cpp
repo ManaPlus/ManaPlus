@@ -187,13 +187,10 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
                 }
             }
         }
-        else
+        else if (box->image)
         {
-            if (box->image)
-            {
-                g->drawImage(box->image, box->x + BOX_X_PAD,
-                    box->y + BOX_Y_PAD);
-            }
+            g->drawImage(box->image, box->x + BOX_X_PAD,
+                box->y + BOX_Y_PAD);
         }
     }
 }
