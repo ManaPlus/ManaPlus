@@ -33,7 +33,8 @@ class Channel;
 class WhisperTab : public ChatTab
 {
     public:
-        const std::string &getNick() const { return mNick; }
+        const std::string &getNick() const
+        { return mNick; }
 
         void showHelp();
 
@@ -44,6 +45,8 @@ class WhisperTab : public ChatTab
         { return ChatTab::TAB_WHISPER; }
 
         void saveToLogFile(std::string &msg);
+
+        void getAutoCompleteList(std::vector<std::string> &names) const;
 
     protected:
         friend class ChatWindow;
