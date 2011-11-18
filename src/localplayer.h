@@ -483,6 +483,36 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         bool checAttackPermissions(Being *target);
 
+        std::string getInvertDirectionString();
+
+        std::string getCrazyMoveTypeString();
+
+        std::string getMoveToTargetTypeString();
+
+        std::string getFollowModeString();
+
+        std::string getAttackWeaponTypeString();
+
+        std::string getAttackTypeString();
+
+        std::string getQuickDropCounterString();
+
+        std::string getPickUpTypeString();
+
+        std::string getDebugPathString();
+
+        std::string getMagicAttackString();
+
+        std::string getPvpAttackString();
+
+        std::string getImitationModeString();
+
+        std::string getAwayModeString();
+
+        std::string getCameraModeString();
+
+        std::string getGameModifiersString();
+
     protected:
         /** Whether or not the name settings have changed */
         bool mUpdateName;
@@ -495,6 +525,11 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void tryMagic(std::string spell, int baseMagic,
                       int schoolMagic, int mana);
+
+        const char *getVarItem(const char **arr, unsigned index, unsigned sz);
+
+        void changeMode(unsigned *var, unsigned limit, const char *conf,
+                        std::string (LocalPlayer::*func)(), unsigned def = 0);
 
         void crazyMove1();
         void crazyMove2();

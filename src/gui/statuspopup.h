@@ -60,7 +60,10 @@ class StatusPopup : public Popup
 
     private:
         void updateLabels();
-        void setLabelText(gcn::Label *label, char *text, int key);
+
+        void setLabelText(gcn::Label *label, const char *text, int key);
+
+        void setLabelText2(gcn::Label *label, std::string text, int key);
 
         gcn::Label *mMoveType;
         gcn::Label *mCrazyMoveType;
