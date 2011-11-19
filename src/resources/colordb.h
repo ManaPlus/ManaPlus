@@ -1,6 +1,7 @@
 /*
  *  Color database
  *  Copyright (C) 2008  Aethyra Development Team
+ *  Copyright (C) 2011  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
