@@ -44,6 +44,7 @@
 #include "net/messageout.h"
 #include "net/net.h"
 
+#include "resources/chardb.h"
 #include "resources/colordb.h"
 #include "resources/itemdb.h"
 
@@ -66,10 +67,18 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mPlayer = new Being(0, ActorSprite::PLAYER, mRace, nullptr);
     mPlayer->setGender(GENDER_MALE);
 
-    int numberOfHairColors = ColorDB::getHairSize();
+    maxHairColor = CharDB::getMaxHairColor();
+    minHairColor = CharDB::getMinHairColor();
+    if (!maxHairColor)
+        maxHairColor = ColorDB::getHairSize();
 
-    mHairStyle = rand() % mPlayer->getNumOfHairstyles();
-    mHairColor = rand() % numberOfHairColors;
+    maxHairStyle = CharDB::getMaxHairStyle();
+    minHairStyle = CharDB::getMinHairStyle();
+    if (!maxHairStyle)
+        maxHairStyle = mPlayer->getNumOfHairstyles();
+
+    mHairStyle = (rand() % maxHairStyle) + minHairStyle;
+    mHairColor = (rand() % maxHairColor) + minHairColor;
     updateHair();
 
     mNameField = new TextField("");
@@ -408,10 +417,14 @@ void CharCreateDialog::updateHair()
     mHairStyle %= Being::getNumOfHairstyles();
     if (mHairStyle < 0)
         mHairStyle += Being::getNumOfHairstyles();
+    if (mHairStyle < minHairStyle || mHairStyle > maxHairStyle)
+        mHairStyle = minHairStyle;
 
     mHairColor %= ColorDB::getHairSize();
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
+    if (mHairColor < minHairColor || mHairColor > maxHairColor)
+        mHairColor = minHairColor;
 
     mPlayer->setSprite(Net::getCharHandler()->hairSprite(),
                        mHairStyle * -1, ColorDB::getHairColor(mHairColor));

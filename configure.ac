@@ -266,6 +266,8 @@ data/help/ru/Makefile
 data/help/ru/tips/Makefile
 data/help/tips/Makefile
 data/icons/Makefile
+data/perserver/Makefile
+data/perserver/default/Makefile
 docs/Makefile
 po/Makefile.in
 ])

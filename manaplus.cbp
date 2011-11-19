@@ -589,6 +589,8 @@
 		<Unit filename="src\resources\animation.h" />
 		<Unit filename="src\resources\beinginfo.cpp" />
 		<Unit filename="src\resources\beinginfo.h" />
+		<Unit filename="src\resources\chardb.cpp" />
+		<Unit filename="src\resources\chardb.h" />
 		<Unit filename="src\resources\colordb.cpp" />
 		<Unit filename="src\resources\colordb.h" />
 		<Unit filename="src\resources\dye.cpp" />

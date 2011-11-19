@@ -35,6 +35,8 @@
 
 #include "utils/gettext.h"
 
+#include "resources/chardb.h"
+
 #include "debug.h"
 
 extern Net::CharHandler *charHandler;
@@ -70,7 +72,17 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *window)
     const Token &token =
         static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
-    mCharCreateDialog->setAttributes(attributes, 30, 1, 9);
+    int minStat = CharDB::getMinStat();
+    if (!minStat)
+        minStat = 1;
+    int maxStat = CharDB::getMaxStat();
+    if (!maxStat)
+        maxStat = 9;
+    int sumStat = CharDB::getSumStat();
+    if (!sumStat)
+        sumStat = 30;
+
+    mCharCreateDialog->setAttributes(attributes, sumStat, minStat, maxStat);
     mCharCreateDialog->setFixedGender(true, token.sex);
 }
 

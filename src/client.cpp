@@ -85,6 +85,7 @@
 #include "net/worldinfo.h"
 
 #include "resources/beinginfo.h"
+#include "resources/chardb.h"
 #include "resources/colordb.h"
 #include "resources/emotedb.h"
 #include "resources/image.h"
@@ -368,6 +369,8 @@ Client::Client(const Options &options):
     Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif
 
+    resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
+
 #if defined __APPLE__
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
@@ -649,6 +652,7 @@ Client::~Client()
     SDL_RemoveTimer(mSecondsCounterId);
 
     // Unload XML databases
+    CharDB::unload();
     ColorDB::unload();
     EmoteDB::unload();
     ItemDB::unload();
@@ -1111,6 +1115,7 @@ int Client::exec()
                     Mana::Event::trigger(CHANNEL_CLIENT, evt2);
 
                     // Load XML databases
+                    CharDB::load();
                     ColorDB::load();
                     MapDB::load();
                     ItemDB::load();
