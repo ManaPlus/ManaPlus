@@ -33,6 +33,7 @@
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 
 #include "resources/chardb.h"
@@ -182,6 +183,12 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
 {
     unlockCharSelectDialog();
     new OkDialog(_("Error"), _("Failed to delete character."));
+}
+
+void CharServerHandler::clear()
+{
+    delete_all(mCharacters);
+    mCharacters.clear();
 }
 
 } // namespace Ea

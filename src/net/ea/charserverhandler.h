@@ -78,6 +78,8 @@ class CharServerHandler : public Net::CharHandler
 
         virtual void processCharDeleteFailed(Net::MessageIn &msg);
 
+        virtual void clear();
+
     protected:
         virtual void readPlayerData(Net::MessageIn &msg,
                                     Net::Character *character,

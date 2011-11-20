@@ -90,6 +90,8 @@ class CharHandler
 
         virtual unsigned int maxSprite() const = 0;
 
+        virtual void clear() = 0;
+
     protected:
         CharHandler() :
             mSelectedCharacter(0),
