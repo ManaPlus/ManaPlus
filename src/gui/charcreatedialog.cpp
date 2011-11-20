@@ -417,13 +417,13 @@ void CharCreateDialog::updateHair()
     mHairStyle %= Being::getNumOfHairstyles();
     if (mHairStyle < 0)
         mHairStyle += Being::getNumOfHairstyles();
-    if (mHairStyle < minHairStyle || mHairStyle > maxHairStyle)
+    if (mHairStyle < (signed)minHairStyle || mHairStyle > (signed)maxHairStyle)
         mHairStyle = minHairStyle;
 
     mHairColor %= ColorDB::getHairSize();
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
-    if (mHairColor < minHairColor || mHairColor > maxHairColor)
+    if (mHairColor < (signed)minHairColor || mHairColor > (signed)maxHairColor)
         mHairColor = minHairColor;
 
     mPlayer->setSprite(Net::getCharHandler()->hairSprite(),
