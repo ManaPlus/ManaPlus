@@ -215,10 +215,10 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
             int maxHP = msg.readInt32();
             if (hp && maxHP)
             {
+                dstBeing->setMaxHP(maxHP);
                 int oldHP = dstBeing->getHP();
                 if (!oldHP || oldHP > hp)
                     dstBeing->setHP(hp);
-                dstBeing->setMaxHP(maxHP);
             }
         }
         else

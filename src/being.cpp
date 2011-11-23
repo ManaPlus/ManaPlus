@@ -253,7 +253,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mAdvanced(false),
     mShop(false),
     mAway(false),
-    mInactive(false)
+    mInactive(false),
+    mNumber(100)
 {
     mSpriteRemap = new int[20];
     mSpriteHide = new int[20];
@@ -287,6 +288,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     updateColors();
     resetCounters();
+    updatePercentHP();
 }
 
 Being::~Being()
@@ -660,7 +662,10 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
         }
 
         if (mType == MONSTER)
+        {
+            updatePercentHP();
             updateName();
+        }
         else if (mType == PLAYER && socialWindow && getName() != "")
             socialWindow->updateAvatar(getName());
 
@@ -1036,6 +1041,7 @@ void Being::setAction(Action action, int attackType A_UNUSED)
 
     if (currentAction != SpriteAction::INVALID)
     {
+        //set mNumber
         play(currentAction);
         mAction = action;
     }
@@ -2102,6 +2108,8 @@ void Being::setHP(int hp)
     mHP = hp;
     if (mMaxHP < mHP)
         mMaxHP = mHP;
+    if (mType == MONSTER)
+        updatePercentHP();
 }
 
 void Being::setMaxHP(int hp)
@@ -2518,6 +2526,23 @@ void Being::setEmote(Uint8 emotion, int emote_time)
     {
         mEmotion = emotion;
         mEmotionTime = emote_time;
+    }
+}
+
+void Being::updatePercentHP()
+{
+    if (!mMaxHP || !serverVersion)
+        return;
+    unsigned num = 0;
+    if (mHP)
+    {
+        num = mHP * 100 / mMaxHP;
+        if (num != mNumber)
+        {
+            mNumber = num;
+            if (updateNumber(mNumber))
+                setAction(mAction);
+        }
     }
 }
 

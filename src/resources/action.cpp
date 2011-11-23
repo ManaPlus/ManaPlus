@@ -29,7 +29,8 @@
 
 #include "debug.h"
 
-Action::Action()
+Action::Action() :
+    mNumber(100)
 {
 }
 

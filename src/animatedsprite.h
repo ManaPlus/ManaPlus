@@ -84,6 +84,8 @@ class AnimatedSprite : public Sprite
 
         virtual void *getHash();
 
+        bool updateNumber(unsigned num);
+
     private:
         bool updateCurrentAnimation(unsigned int dt);
 
@@ -97,6 +99,8 @@ class AnimatedSprite : public Sprite
         Action *mAction;               /**< The currently active action. */
         Animation *mAnimation;         /**< The currently active animation. */
         Frame *mFrame;                 /**< The currently active frame. */
+        unsigned mNumber;
+        unsigned mNumber1;
 };
 
 #endif

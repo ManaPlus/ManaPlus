@@ -117,7 +117,9 @@ class SpriteDef : public Resource
         /**
          * Returns the specified action.
          */
-        Action *getAction(std::string action) const;
+        Action *getAction(std::string action, unsigned num) const;
+
+        unsigned findNumber(unsigned num) const;
 
         /**
          * Converts a string into a SpriteDirection enum.
@@ -125,11 +127,14 @@ class SpriteDef : public Resource
         static SpriteDirection
         makeSpriteDirection(const std::string &direction);
 
+        void addAction(unsigned hp, std::string name, Action *action);
+
     private:
         /**
          * Constructor.
          */
-        SpriteDef() {}
+        SpriteDef()
+        { }
 
         /**
          * Destructor.
@@ -178,7 +183,8 @@ class SpriteDef : public Resource
         typedef std::map<std::string, ImageSet*> ImageSets;
         typedef ImageSets::iterator ImageSetIterator;
 
-        typedef std::map<std::string, Action*> Actions;
+//        typedef std::map<std::string, std::map<unsigned, Action*>*> Actions;
+        typedef std::map<unsigned, std::map<std::string, Action*>*> Actions;
 
         ImageSets mImageSets;
         Actions mActions;

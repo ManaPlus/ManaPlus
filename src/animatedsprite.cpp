@@ -42,7 +42,9 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
     mSprite(sprite),
     mAction(nullptr),
     mAnimation(nullptr),
-    mFrame(nullptr)
+    mFrame(nullptr),
+    mNumber(100),
+    mNumber1(100)
 {
     mAlpha = 1.0f;
 
@@ -51,6 +53,7 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
         mSprite->incRef();
 
     // Play the stand animation by default
+    //+++ need get num?
     play(SpriteAction::STAND);
 }
 
@@ -90,7 +93,7 @@ bool AnimatedSprite::play(std::string spriteAction)
     if (!mSprite)
         return false;
 
-    Action *action = mSprite->getAction(spriteAction);
+    Action *action = mSprite->getAction(spriteAction, mNumber);
     if (!action)
         return false;
 
@@ -312,4 +315,20 @@ void *AnimatedSprite::getHash()
 //    if (mAnimation)
 //        return mAnimation;
     return this;
+}
+
+bool AnimatedSprite::updateNumber(unsigned num)
+{
+    if (mNumber1 != num)
+    {
+        mNumber1 = num;
+        mNumber = mSprite->findNumber(num);
+        if (!mNumber)
+        {
+            mNumber = 100;
+            return false;
+        }
+        return true;
+    }
+    return false;
 }

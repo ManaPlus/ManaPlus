@@ -767,6 +767,8 @@ class Being : public ActorSprite, public ConfigListener
         void attack2(Being *target = nullptr, bool keep = false,
                      bool dontChangeEquipment = false);
 
+        void updatePercentHP();
+
     protected:
         /**
          * Sets the new path for this being.
@@ -909,6 +911,7 @@ class Being : public ActorSprite, public ConfigListener
         bool mShop;
         bool mAway;
         bool mInactive;
+        unsigned mNumber;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

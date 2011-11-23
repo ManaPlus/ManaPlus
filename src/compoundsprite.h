@@ -119,6 +119,8 @@ public:
 
     virtual void setAlpha(float alpha);
 
+    bool updateNumber(unsigned num);
+
 private:
     void redraw() const;
 

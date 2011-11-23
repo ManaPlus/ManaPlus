@@ -73,6 +73,9 @@ public:
     unsigned int getFrameCount() const
     { return 1; }
 
+    bool updateNumber(unsigned num A_UNUSED)
+    { return false; }
+
 private:
     Image *mImage;
 };
