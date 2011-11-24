@@ -28,12 +28,6 @@
 #include <guichan/keylistener.hpp>
 #include <guichan/actionlistener.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class Icon;
 class IntTextField;
 class Item;

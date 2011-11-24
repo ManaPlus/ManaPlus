@@ -30,12 +30,6 @@
 #include <string>
 #include <map>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class AttackTab;
 class Button;
 class ConfirmDialog;

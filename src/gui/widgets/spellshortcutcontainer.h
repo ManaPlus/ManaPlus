@@ -27,13 +27,6 @@
 #include <guichan/mouselistener.hpp>
 
 #include "gui/widgets/shortcutcontainer.h"
-//#include "textcommand.h"
-
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
 
 class Image;
 class SpellPopup;

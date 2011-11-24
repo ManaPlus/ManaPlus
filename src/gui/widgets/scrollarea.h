@@ -26,12 +26,6 @@
 #include <guichan/widgets/scrollarea.hpp>
 #include <guichan/widgetlistener.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class GraphicsVertexes;
 class Image;
 class ImageRect;

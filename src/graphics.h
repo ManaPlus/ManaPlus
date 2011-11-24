@@ -25,14 +25,6 @@
 
 #include <guichan/sdl/sdlgraphics.hpp>
 
-//include "graphicsvertexes.h"
-
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class GraphicsVertexes;
 class Image;
 class ImageVertexes;

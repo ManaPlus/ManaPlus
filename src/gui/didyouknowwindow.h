@@ -28,12 +28,6 @@
 
 #include <guichan/actionlistener.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class Button;
 class BrowserBox;
 class CheckBox;
@@ -59,8 +53,7 @@ class DidYouKnowWindow : public Window, public LinkHandler,
         /**
          * Handles link action.
          */
-        void handleLink(const std::string &link,
-                        gcn::MouseEvent *event A_UNUSED);
+        void handleLink(const std::string &link, gcn::MouseEvent *event);
 
         void loadData(int num = 0);
 

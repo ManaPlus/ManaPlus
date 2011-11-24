@@ -28,11 +28,7 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/tab.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
+#include "localconsts.h"
 
 class ScrollArea;
 
@@ -58,6 +54,7 @@ class ChatTab : public Tab
          * Constructor.
          */
         ChatTab(const std::string &name);
+
         ~ChatTab();
 
         /**
@@ -106,7 +103,8 @@ class ChatTab : public Tab
          * Add any extra help text to the output. Allows tabs to define help
          * for commands defined by the tab itself.
          */
-        virtual void showHelp() {}
+        virtual void showHelp()
+        { }
 
         /**
          * Handle special commands. Allows a tab to handle commands it

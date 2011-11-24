@@ -22,12 +22,6 @@
 #ifndef IMAGESPRITE_H
 #define IMAGESPRITE_H
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 #include "sprite.h"
 
 #include "resources/image.h"

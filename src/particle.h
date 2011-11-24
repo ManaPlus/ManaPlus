@@ -25,16 +25,11 @@
 
 #include "actor.h"
 #include "guichanfwd.h"
+#include "localconsts.h"
 #include "vector.h"
 
 #include <list>
 #include <string>
-
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
 
 class Map;
 class Particle;
@@ -280,7 +275,8 @@ class Particle : public Actor
         virtual float getAlpha() const
         { return 1.0f; }
 
-        virtual void setAlpha(float alpha A_UNUSED) {}
+        virtual void setAlpha(float alpha A_UNUSED)
+        { }
 
         virtual void setDeathEffect(const std::string &effectFile,
                                     char conditions)

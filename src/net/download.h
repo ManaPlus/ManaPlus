@@ -28,12 +28,6 @@
 #include <stdio.h>
 #include <string>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 enum DownloadStatus
 {
     DOWNLOAD_STATUS_CANCELLED = -3,
