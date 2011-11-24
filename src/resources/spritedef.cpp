@@ -35,11 +35,8 @@
 
 #include "utils/xml.h"
 
-#include <set>
-
 #include "debug.h"
 
-std::set<std::string> processedFiles;
 SpriteReference *SpriteReference::Empty = nullptr;
 
 Action *SpriteDef::getAction(std::string action, unsigned num) const
@@ -48,11 +45,10 @@ Action *SpriteDef::getAction(std::string action, unsigned num) const
     if (i == mActions.end() && num != 100)
         i = mActions.find(100);
 
-    if (i == mActions.end())
+    if (i == mActions.end() || !(*i).second)
         return nullptr;
 
-    std::map<std::string, Action*>::const_iterator it
-        = ((*i).second)->find(action);
+    ActionMap::const_iterator it = ((*i).second)->find(action);
 
     if (it == ((*i).second)->end())
     {
@@ -86,9 +82,6 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
     if (pos != std::string::npos)
         palettes = animationFile.substr(pos + 1);
 
-    processedFiles.clear();
-    processedFiles.insert(animationFile);
-
     XML::Document doc(animationFile.substr(0, pos));
     xmlNodePtr rootNode = doc.rootNode();
 
@@ -105,6 +98,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
     }
 
     SpriteDef *def = new SpriteDef;
+    def->mProcessedFiles.insert(animationFile);
     def->loadSprite(rootNode, variant, palettes);
     def->substituteActions();
     return def;
@@ -116,10 +110,12 @@ void SpriteDef::substituteAction(std::string complete, std::string with)
     Actions::const_iterator it_end = mActions.end();
     for (; it != it_end; ++ it)
     {
-        std::map<std::string, Action*> *d = (*it).second;
+        ActionMap *d = (*it).second;
+        if (!d)
+            continue;
         if (d->find(complete) == d->end())
         {
-            std::map<std::string, Action*>::iterator i = d->find(with);
+            ActionMap::iterator i = d->find(with);
             if (i != d->end())
                 (*d)[complete] = i->second;
         }
@@ -202,7 +198,7 @@ void SpriteDef::loadAction(xmlNodePtr node, int variant_offset)
     if (si == mImageSets.end())
     {
         logger->log("Warning: imageset \"%s\" not defined in %s",
-                imageSetName.c_str(), getIdPath().c_str());
+            imageSetName.c_str(), getIdPath().c_str());
         return;
     }
     ImageSet *imageSet = si->second;
@@ -210,7 +206,7 @@ void SpriteDef::loadAction(xmlNodePtr node, int variant_offset)
     if (actionName == SpriteAction::INVALID)
     {
         logger->log("Warning: Unknown action \"%s\" defined in %s",
-                actionName.c_str(), getIdPath().c_str());
+            actionName.c_str(), getIdPath().c_str());
         return;
     }
     Action *action = new Action;
@@ -317,7 +313,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
                     if (!img)
                     {
                         logger->log("No image at index %d",
-                                    pos + variant_offset);
+                            pos + variant_offset);
                         pos ++;
                         continue;
                     }
@@ -360,13 +356,13 @@ void SpriteDef::includeSprite(xmlNodePtr includeNode)
         return;
     filename = paths.getStringValue("sprites") + filename;
 
-    if (processedFiles.find(filename) != processedFiles.end())
+    if (mProcessedFiles.find(filename) != mProcessedFiles.end())
     {
         logger->log("Error, Tried to include %s which already is included.",
-                    filename.c_str());
+            filename.c_str());
         return;
     }
-    processedFiles.insert(filename);
+    mProcessedFiles.insert(filename);
 
     XML::Document doc(filename);
     xmlNodePtr rootNode = doc.rootNode();
@@ -387,8 +383,8 @@ SpriteDef::~SpriteDef()
     for (Actions::iterator i = mActions.begin(),
          i_end = mActions.end(); i != i_end; ++i)
     {
-        std::map<std::string, Action*>::iterator it = (*i).second->begin();
-        std::map<std::string, Action*>::iterator it_end = (*i).second->end();
+        ActionMap::iterator it = (*i).second->begin();
+        ActionMap::iterator it_end = (*i).second->end();
         for (; it != it_end; ++ it)
             actions.insert(it->second);
         delete (*i).second;
@@ -441,7 +437,7 @@ void SpriteDef::addAction(unsigned hp, std::string name, Action *action)
 {
     Actions::const_iterator i = mActions.find(hp);
     if (i == mActions.end())
-        mActions[hp] = new std::map<std::string, Action*>();
+        mActions[hp] = new ActionMap();
 
     (*mActions[hp])[name] = action;
 }

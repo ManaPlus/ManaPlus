@@ -29,6 +29,7 @@
 
 #include <list>
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -182,11 +183,12 @@ class SpriteDef : public Resource
 
         typedef std::map<std::string, ImageSet*> ImageSets;
         typedef ImageSets::iterator ImageSetIterator;
-
-        typedef std::map<unsigned, std::map<std::string, Action*>*> Actions;
+        typedef std::map<std::string, Action*> ActionMap;
+        typedef std::map<unsigned, ActionMap*> Actions;
 
         ImageSets mImageSets;
         Actions mActions;
+        std::set<std::string> mProcessedFiles;
 };
 
 #endif // SPRITEDEF_H
