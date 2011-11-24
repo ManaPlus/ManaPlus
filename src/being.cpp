@@ -904,9 +904,6 @@ void Being::setGuild(Guild *guild)
     if (old)
         old->removeMember(mName);
 
-//    if (guild)
-//        guild->addMember(mId, mName);
-
     updateColors();
 
     if (this == player_node && socialWindow)
@@ -1041,7 +1038,6 @@ void Being::setAction(Action action, int attackType A_UNUSED)
 
     if (currentAction != SpriteAction::INVALID)
     {
-        //set mNumber
         play(currentAction);
         mAction = action;
     }
@@ -2141,7 +2137,6 @@ void Being::recalcSpritesOrder()
     std::vector<int> slotRemap;
     std::map<int, int> itemSlotRemap;
 
-//    logger->log("preparation start");
     std::vector<int>::iterator it;
     int oldHide[20];
     int dir = mSpriteDirection;
@@ -2495,7 +2490,6 @@ void Being::saveComment(const std::string &name,
             return;
     }
     dir += stringToHexPath(name);
-//    logger->log("save to: %s", dir.c_str());
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
@@ -2520,7 +2514,6 @@ void Being::setEmote(Uint8 emotion, int emote_time)
             updateName();
             addToCache();
         }
-//        logger->log("flags: %d", emotion - FLAG_SPECIAL);
     }
     else
     {

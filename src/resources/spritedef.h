@@ -183,7 +183,6 @@ class SpriteDef : public Resource
         typedef std::map<std::string, ImageSet*> ImageSets;
         typedef ImageSets::iterator ImageSetIterator;
 
-//        typedef std::map<std::string, std::map<unsigned, Action*>*> Actions;
         typedef std::map<unsigned, std::map<std::string, Action*>*> Actions;
 
         ImageSets mImageSets;

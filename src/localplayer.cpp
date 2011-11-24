@@ -190,7 +190,6 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     PlayerInfo::setStatMod(WALK_SPEED, 0);
 
     loadHomes();
-//    initTargetCursor();
 
     config.addListener("showownname", this);
     config.addListener("targetDeadPlayers", this);
@@ -278,16 +277,12 @@ void LocalPlayer::logic()
     {
         if (mMessageTime == 0)
         {
-            //const Vector &pos = getPosition();
-
             MessagePair info = mMessages.front();
 
             if (particleEngine)
             {
                 particleEngine->addTextRiseFadeOutEffect(
                     info.first,
-                    /*(int) pos.x,
-                    (int) pos.y - 48,*/
                     getPixelX(),
                     getPixelY() - 48,
                     &userPalette->getColor(info.second),
@@ -818,8 +813,6 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-//        updatePos();
-
         if (Party::getParty(1))
         {
             PartyMember *pm = Party::getParty(1)->getMember(getName());
@@ -973,7 +966,6 @@ bool LocalPlayer::pickUp(FloorItem *item)
 
             mPickUpTarget = item;
             mPickUpTarget->addActorSpriteListener(this);
-//            stopAttack();
         }
     }
     return true;
@@ -3042,10 +3034,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             }
             item = actorSpriteManager->findItem(x, y);
             if (item)
-            {
                 status = pickUp(item);
-//                status = true;
-            }
             break;
         case 2:
             switch (mDirection)
@@ -3641,7 +3630,6 @@ void LocalPlayer::updateCoords()
                     tmpLayer->clean();
                     tmpLayer->addRoad(mNavigatePath);
                 }
-//                navigateTo(mNavigateX, mNavigateY);
             }
         }
     }

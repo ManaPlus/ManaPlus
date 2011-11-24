@@ -53,7 +53,6 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
         mSprite->incRef();
 
     // Play the stand animation by default
-    //+++ need get num?
     play(SpriteAction::STAND);
 }
 
