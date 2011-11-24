@@ -599,12 +599,17 @@ std::string Theme::resolveThemePath(const std::string &path)
     else
         file = path;
 
-    // Might be a valid path already
-    if (PHYSFS_exists(file.c_str()))
-        return path;
+    // File with path
+    if (file.find('/') != std::string::npos)
+    {
+        // Might be a valid path already
+        if (PHYSFS_exists(file.c_str()))
+            return path;
+    }
 
     // Try the theme
     file = getThemePath() + "/" + file;
+
     if (PHYSFS_exists(file.c_str()))
         return getThemePath() + "/" + path;
 
