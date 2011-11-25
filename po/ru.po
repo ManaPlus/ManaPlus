@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-11-20 20:07+0300\n"
+"POT-Creation-Date: 2011-11-26 02:20+0300\n"
 "PO-Revision-Date: 2011-11-20 17:44+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
@@ -27,21 +27,21 @@ msgstr ""
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
-#: src/being.cpp:551
+#: src/being.cpp:553
 msgid "dodge"
 msgstr "уворот"
 
-#: src/being.cpp:551
+#: src/being.cpp:553
 msgid "miss"
 msgstr "промах"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1532
+#: src/being.cpp:1534
 msgid "A"
 msgstr "О"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1537
+#: src/being.cpp:1539
 msgid "I"
 msgstr "Б"
 
@@ -322,7 +322,7 @@ msgstr "Изображений:"
 msgid "Resource orphaned images:"
 msgstr "Удаленных изображений:"
 
-#: src/commandhandler.h:40
+#: src/commandhandler.h:34
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
@@ -3988,41 +3988,41 @@ msgstr ""
 "Конфликт клавиш \"%s\" и \"%s\".Исправьте их, или игра может себя странно "
 "вести."
 
-#: src/localplayer.cpp:389
+#: src/localplayer.cpp:384
 msgid "You were killed by "
 msgstr "Вы были убиты "
 
-#: src/localplayer.cpp:1442
+#: src/localplayer.cpp:1434
 msgid "Tried to pick up nonexistent item."
 msgstr "Попытка поднять несуществующий предмет."
 
-#: src/localplayer.cpp:1444
+#: src/localplayer.cpp:1436
 msgid "Item is too heavy."
 msgstr "Предмет слишком тяжелый."
 
-#: src/localplayer.cpp:1446
+#: src/localplayer.cpp:1438
 msgid "Item is too far away."
 msgstr "Предмет слишком далеко"
 
-#: src/localplayer.cpp:1448
+#: src/localplayer.cpp:1440
 msgid "Inventory is full."
 msgstr "Инвентарь переполнен."
 
-#: src/localplayer.cpp:1450
+#: src/localplayer.cpp:1442
 msgid "Stack is too big."
 msgstr "Слишком много предметов."
 
-#: src/localplayer.cpp:1453
+#: src/localplayer.cpp:1445
 msgid "Item belongs to someone else."
 msgstr "Предмет принадлежит кому-то еще."
 
-#: src/localplayer.cpp:1456
+#: src/localplayer.cpp:1448
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1480
+#: src/localplayer.cpp:1472
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -4030,292 +4030,292 @@ msgstr[0] "Вы подняли %d [@@%d|%s@@]."
 msgstr[1] "Вы подняли %d [@@%d|%s@@]."
 msgstr[2] "Вы подняли %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:1895
+#: src/localplayer.cpp:1887
 msgid "(D) default moves"
 msgstr "(D) движения по умолчанию"
 
-#: src/localplayer.cpp:1896
+#: src/localplayer.cpp:1888
 msgid "(I) invert moves"
 msgstr "(I) обратное движение"
 
-#: src/localplayer.cpp:1897
+#: src/localplayer.cpp:1889
 msgid "(c) moves with some crazy moves"
 msgstr "(c) обычное движение иногда с сумашедшими движениями"
 
-#: src/localplayer.cpp:1898
+#: src/localplayer.cpp:1890
 msgid "(C) moves with crazy moves"
 msgstr "(C) движение с сумашедшими движениями"
 
-#: src/localplayer.cpp:1899
+#: src/localplayer.cpp:1891
 msgid "(d) double normal + crazy"
 msgstr "(d) нормальные и сумашедшие движения"
 
-#: src/localplayer.cpp:1900
+#: src/localplayer.cpp:1892
 msgid "(?) unknown move"
 msgstr "(?) неизвестное движение"
 
-#: src/localplayer.cpp:1922
+#: src/localplayer.cpp:1914
 #, c-format
 msgid "(%d) crazy move number %d"
 msgstr "(%d) сумасшедшее движение %d"
 
-#: src/localplayer.cpp:1927
+#: src/localplayer.cpp:1919
 msgid "(a) custom crazy move"
 msgstr "(a) пользовательские сумашедшие движения"
 
-#: src/localplayer.cpp:1931
+#: src/localplayer.cpp:1923
 msgid "(?) crazy move"
 msgstr "(?) неизвестные сумасшедшие движения"
 
-#: src/localplayer.cpp:1945
+#: src/localplayer.cpp:1937
 msgid "(0) default moves to target"
 msgstr "(0) обычное движение к цели"
 
-#: src/localplayer.cpp:1946
+#: src/localplayer.cpp:1938
 msgid "(1) moves to target in distance 1"
 msgstr "(1) движение к цели на расстояние 1"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1939
 msgid "(2) moves to target in distance 2"
 msgstr "(2) движение к цели на расстояние 2"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1940
 msgid "(3) moves to target in distance 3"
 msgstr "(3) движение к цели на расстояние 3"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1941
 msgid "(5) moves to target in distance 5"
 msgstr "(5) движение к цели на расстояние 5"
 
-#: src/localplayer.cpp:1950
+#: src/localplayer.cpp:1942
 msgid "(7) moves to target in distance 7"
 msgstr "(7) движение к цели на расстояние 7"
 
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1943
 msgid "(A) moves to target in attack range"
 msgstr "(A) движение к цели на расстояние атаки"
 
-#: src/localplayer.cpp:1952
+#: src/localplayer.cpp:1944
 msgid "(a) archer attack range"
 msgstr "(a) атака лучника"
 
-#: src/localplayer.cpp:1953
+#: src/localplayer.cpp:1945
 msgid "(?) move to target"
 msgstr "(?) неизвестное движение к цели"
 
-#: src/localplayer.cpp:1972
+#: src/localplayer.cpp:1964
 msgid "(D) default follow"
 msgstr "(D) следование по умолчанию"
 
-#: src/localplayer.cpp:1973
+#: src/localplayer.cpp:1965
 msgid "(R) relative follow"
 msgstr "(R) относительное следование"
 
-#: src/localplayer.cpp:1974
+#: src/localplayer.cpp:1966
 msgid "(M) mirror follow"
 msgstr "(M) зеркальное следование"
 
-#: src/localplayer.cpp:1975
+#: src/localplayer.cpp:1967
 msgid "(P) pet follow"
 msgstr "(P) следование как животное"
 
-#: src/localplayer.cpp:1976
+#: src/localplayer.cpp:1968
 msgid "(?) unknown follow"
 msgstr "(?) неизвестное следование"
 
-#: src/localplayer.cpp:1995 src/localplayer.cpp:1999 src/localplayer.cpp:2022
+#: src/localplayer.cpp:1987 src/localplayer.cpp:1991 src/localplayer.cpp:2014
 msgid "(?) attack"
 msgstr "(?) неизвестная атака"
 
-#: src/localplayer.cpp:1996 src/localplayer.cpp:2018
+#: src/localplayer.cpp:1988 src/localplayer.cpp:2010
 msgid "(D) default attack"
 msgstr "(D) обычная атака"
 
-#: src/localplayer.cpp:1997
+#: src/localplayer.cpp:1989
 msgid "(s) switch attack without shield"
 msgstr "(s) переключение атаки без щита"
 
-#: src/localplayer.cpp:1998
+#: src/localplayer.cpp:1990
 msgid "(S) switch attack with shield"
 msgstr "(S) переключение атаки со щитом"
 
-#: src/localplayer.cpp:2019
+#: src/localplayer.cpp:2011
 msgid "(G) go and attack"
 msgstr "(G) идти и атаковать"
 
-#: src/localplayer.cpp:2020
+#: src/localplayer.cpp:2012
 msgid "(A) go, attack, pickup"
 msgstr "(A) идти, атаковать, собирать"
 
-#: src/localplayer.cpp:2021
+#: src/localplayer.cpp:2013
 msgid "(d) without auto attack"
 msgstr "(d) без автоатаки"
 
-#: src/localplayer.cpp:2055
+#: src/localplayer.cpp:2047
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) поднятие в области 1x1"
 
-#: src/localplayer.cpp:2056
+#: src/localplayer.cpp:2048
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) поднятие из области 2x1"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2049
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) поднятие из области спереди 2x3"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2050
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) поднятие из области 3x3"
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2051
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) движение и поднятие на расстоянии 4"
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2052
 msgid "(G) go and pick up in distance 8"
 msgstr "(g) движение и поднятие на расстоянии 8"
 
-#: src/localplayer.cpp:2061
+#: src/localplayer.cpp:2053
 msgid "(A) go and pick up in max distance"
 msgstr "(A) движение и поднятие на максимальном расстоянии"
 
-#: src/localplayer.cpp:2062
+#: src/localplayer.cpp:2054
 msgid "(?) pick up"
 msgstr "(?) неизвестный режим поднятия"
 
-#: src/localplayer.cpp:2075
+#: src/localplayer.cpp:2067
 msgid "(N) normal map view"
 msgstr "(N) обычный режим карты"
 
-#: src/localplayer.cpp:2076
+#: src/localplayer.cpp:2068
 msgid "(D) debug map view"
 msgstr "(D) отладочный режим карты"
 
-#: src/localplayer.cpp:2077
+#: src/localplayer.cpp:2069
 msgid "(u) ultra map view"
 msgstr "(u) специальный режим карты"
 
-#: src/localplayer.cpp:2078
+#: src/localplayer.cpp:2070
 msgid "(U) ultra map view 2"
 msgstr "(U) специальный режим карты 2"
 
-#: src/localplayer.cpp:2079
+#: src/localplayer.cpp:2071
 msgid "(e) empty map view"
 msgstr "(e) режим пустой карты"
 
-#: src/localplayer.cpp:2080
+#: src/localplayer.cpp:2072
 msgid "(b) black & white map view"
 msgstr "(b) черно-белый режим карты"
 
-#: src/localplayer.cpp:2099
+#: src/localplayer.cpp:2091
 msgid "(f) use #flar for magic attack"
 msgstr "(f) использовать #flar для атаки"
 
-#: src/localplayer.cpp:2100
+#: src/localplayer.cpp:2092
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) использовать #chiza для атаки"
 
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2093
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) использовать #ingrav для атаки"
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2094
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) использовать #frillyar для атаки"
 
-#: src/localplayer.cpp:2103
+#: src/localplayer.cpp:2095
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) использовать #upmarmu для атаки"
 
-#: src/localplayer.cpp:2104
+#: src/localplayer.cpp:2096
 msgid "(?) magic attack"
 msgstr "(?) неизвестная магическая атака"
 
-#: src/localplayer.cpp:2123
+#: src/localplayer.cpp:2115
 msgid "(a) attack all players"
 msgstr "(a) атаковать всех игроков"
 
-#: src/localplayer.cpp:2124
+#: src/localplayer.cpp:2116
 msgid "(f) attack not friends"
 msgstr "(f) атаковать всех кроме друзей"
 
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2117
 msgid "(b) attack bad relations"
 msgstr "(b) атаковать врагов"
 
-#: src/localplayer.cpp:2126
+#: src/localplayer.cpp:2118
 msgid "(d) dont attack players"
 msgstr "(d) не атаковать игроков"
 
-#: src/localplayer.cpp:2127
+#: src/localplayer.cpp:2119
 msgid "(?) pvp attack"
 msgstr "(?) pvp атака"
 
-#: src/localplayer.cpp:2146
+#: src/localplayer.cpp:2138
 msgid "(D) default imitation"
 msgstr "(D) имитация по умолчанию"
 
-#: src/localplayer.cpp:2147
+#: src/localplayer.cpp:2139
 msgid "(O) outfits imitation"
 msgstr "(O) имитация нарядов"
 
-#: src/localplayer.cpp:2148
+#: src/localplayer.cpp:2140
 msgid "(?) imitation"
 msgstr "(?) неизвестная имитация"
 
-#: src/localplayer.cpp:2176
+#: src/localplayer.cpp:2168
 msgid "Away"
 msgstr "Отошел"
 
-#: src/localplayer.cpp:2195
+#: src/localplayer.cpp:2187
 msgid "(O) on keyboard"
 msgstr "(O) возле компьютера"
 
-#: src/localplayer.cpp:2196
+#: src/localplayer.cpp:2188
 msgid "(A) away"
 msgstr "(A) отошел"
 
-#: src/localplayer.cpp:2197 src/localplayer.cpp:2212
+#: src/localplayer.cpp:2189 src/localplayer.cpp:2204
 msgid "(?) away"
 msgstr "(?) неизвестный режим отошел"
 
-#: src/localplayer.cpp:2210
+#: src/localplayer.cpp:2202
 msgid "(G) game camera mode"
 msgstr "(G) игровая камера"
 
-#: src/localplayer.cpp:2211
+#: src/localplayer.cpp:2203
 msgid "(F) free camera mode"
 msgstr "(F) свободная камера"
 
-#: src/localplayer.cpp:2236
+#: src/localplayer.cpp:2228
 msgid "Game modifiers are enabled"
 msgstr "Игровые модификаторы включены"
 
-#: src/localplayer.cpp:2237
+#: src/localplayer.cpp:2229
 msgid "Game modifiers are disabled"
 msgstr "Игровые модификаторы выключены"
 
-#: src/localplayer.cpp:2238
+#: src/localplayer.cpp:2230
 msgid "Game modifiers are unknown"
 msgstr "Игровые модификаторы в неизвестном положении"
 
-#: src/localplayer.cpp:3758
+#: src/localplayer.cpp:3746
 msgid "Follow: "
 msgstr "Следование: "
 
-#: src/localplayer.cpp:3760 src/localplayer.cpp:3775
+#: src/localplayer.cpp:3748 src/localplayer.cpp:3763
 msgid "Follow canceled"
 msgstr "Следование отменено"
 
-#: src/localplayer.cpp:3767
+#: src/localplayer.cpp:3755
 msgid "Imitation: "
 msgstr "Имитация: "
 
-#: src/localplayer.cpp:3769 src/localplayer.cpp:3777
+#: src/localplayer.cpp:3757 src/localplayer.cpp:3765
 msgid "Imitation canceled"
 msgstr "Имитация отменена"
 
-#: src/localplayer.cpp:4125
+#: src/localplayer.cpp:4113
 msgid "You see "
 msgstr "Вы видите "
 
