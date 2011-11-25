@@ -27,6 +27,8 @@
 #include "net/manaserv/messageout.h"
 #include "net/manaserv/protocol.h"
 
+#include "debug.h"
+
 extern Net::SpecialHandler *specialHandler;
 
 namespace ManaServ

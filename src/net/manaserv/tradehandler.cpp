@@ -100,9 +100,9 @@ TradeHandler::TradeHandler():
     tradeHandler = this;
 }
 
-void TradeHandler::setAcceptTradeRequests(bool acceptTradeRequests)
+void TradeHandler::setAcceptTradeRequests(bool acceptRequests)
 {
-    mAcceptTradeRequests = acceptTradeRequests;
+    mAcceptTradeRequests = acceptRequests;
     if (mAcceptTradeRequests)
         SERVER_NOTICE(_("Accepting incoming trade requests."))
     else

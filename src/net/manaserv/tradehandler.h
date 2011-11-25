@@ -50,7 +50,7 @@ class TradeHandler : public MessageHandler, public Net::TradeHandler
          * requests are automatically denied. When true, a popup will ask the
          * player whether he wants to trade.
          */
-        void setAcceptTradeRequests(bool acceptTradeRequests);
+        void setAcceptTradeRequests(bool acceptRequests);
 
         void request(Being *being);
 
