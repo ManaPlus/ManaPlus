@@ -1,3 +1,17 @@
+2011-11-27 New release 1.1.11.27
+ManaPlus:
+fix: show enemy relation in online list.
+fix: dead monsters and floor items poisition.
+fix: file name conflicts between skins and client data files.
+add: update ru and es translations.
+add: change chat log save path to yyyy-mm/dd/file.log.
+add: support for incomplete replace tag for items for compotability with future version of mana.
+add: background images for equipment window.
+add: whisper player name in autocomplete list.
+add: show yellow bar mode changes in debug chat tab.
+add: limits for hair color and style for char creation dialog.
+add: different animations depend on monster hp (only for evol).
+
 2011-11-12 New release 1.1.11.12
 ManaPlus:
 fix: hide death message on reconnect.
