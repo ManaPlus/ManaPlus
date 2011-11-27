@@ -2071,7 +2071,8 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
 
     int dx = static_cast<int>(static_cast<float>(width) / p);
 
-    if (!damage || (!hp && maxHP == damage))
+    if ((!damage && (this != player_node || hp == maxHP))
+        || (!hp && maxHP == damage))
     {
         graphics->setColor(userPalette->getColorWithAlpha(color1));
 
