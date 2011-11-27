@@ -43,6 +43,7 @@
 int mkdir_r(const char *pathname)
 {
     char tmp[PATH_MAX];
+    char tmp2[PATH_MAX];
     char *p;
 
     if (strlen(pathname) >= PATH_MAX - 2)
@@ -72,9 +73,13 @@ int mkdir_r(const char *pathname)
                 continue;
             }
 
+            strcpy(tmp2, tmp);
+            char *p2 = tmp2 + strlen(tmp2) - 1;
+            if (*p2 == '/' || *p2 == '\\')
+                *p2 = 0;
             // check if the name already exists, but not as directory
             struct stat statbuf;
-            if (!stat(tmp, &statbuf))
+            if (!stat(tmp2, &statbuf))
             {
                 if (S_ISDIR(statbuf.st_mode))
                 {
@@ -85,13 +90,12 @@ int mkdir_r(const char *pathname)
                     return -1;
             }
 
-            if (!CreateDirectory(tmp, 0))
+            if (!CreateDirectory(tmp2, 0))
             {
                 // hack, hack. just assume that x: might be a drive
                 // letter, and try again
-                if (!(strlen(tmp) == 2 &&
-                    !strcmp(tmp + 1, ":")))
-                return -1;
+                if (!(strlen(tmp2) == 2 && !strcmp(tmp2 + 1, ":")))
+                    return -1;
             }
 
 #ifdef M_MKDIR_TEST_
