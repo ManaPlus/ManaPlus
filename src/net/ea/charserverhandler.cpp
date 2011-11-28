@@ -33,7 +33,10 @@
 #include "net/ea/loginhandler.h"
 #include "net/ea/eaprotocol.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
+
+#include "resources/chardb.h"
 
 #include "debug.h"
 
@@ -70,7 +73,17 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *window)
     const Token &token =
         static_cast<LoginHandler*>(Net::getLoginHandler())->getToken();
 
-    mCharCreateDialog->setAttributes(attributes, 30, 1, 9);
+    int minStat = CharDB::getMinStat();
+    if (!minStat)
+        minStat = 1;
+    int maxStat = CharDB::getMaxStat();
+    if (!maxStat)
+        maxStat = 9;
+    int sumStat = CharDB::getSumStat();
+    if (!sumStat)
+        sumStat = 30;
+
+    mCharCreateDialog->setAttributes(attributes, sumStat, minStat, maxStat);
     mCharCreateDialog->setFixedGender(true, token.sex);
 }
 
@@ -170,6 +183,12 @@ void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
 {
     unlockCharSelectDialog();
     new OkDialog(_("Error"), _("Failed to delete character."));
+}
+
+void CharServerHandler::clear()
+{
+    delete_all(mCharacters);
+    mCharacters.clear();
 }
 
 } // namespace Ea

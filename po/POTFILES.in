@@ -55,7 +55,6 @@ src/gui/shopwindow.cpp
 src/gui/skilldialog.cpp
 src/gui/socialwindow.cpp
 src/gui/specialswindow.cpp
-src/gui/statuspopup.cpp
 src/gui/statuswindow.cpp
 src/gui/textcommandeditor.cpp
 src/gui/textdialog.cpp

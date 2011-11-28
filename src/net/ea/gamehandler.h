@@ -29,12 +29,6 @@
 #include "net/messagein.h"
 #include "net/net.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 namespace Ea
 {
 

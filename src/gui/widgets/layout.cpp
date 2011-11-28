@@ -222,11 +222,15 @@ LayoutCell &LayoutArray::place(gcn::Widget *widget, int x, int y, int w, int h)
     return cell;
 }
 
-void LayoutArray::align(int &pos, int &size, int dim,
-                        LayoutCell const &cell, int *sizes) const
+void LayoutArray::align(int &pos, int &size, int dim, LayoutCell const &cell,
+                        int *sizes, int sizeCount) const
 {
     int size_max = sizes[0];
-    for (int i = 1; i < cell.mExtent[dim]; ++i)
+    int cnt = cell.mExtent[dim];
+    if (sizeCount && cell.mExtent[dim] > sizeCount)
+        cnt = sizeCount;
+
+    for (int i = 1; i < cnt; ++i)
         size_max += sizes[i] + mSpacing;
     size = std::min<int>(cell.mSize[dim], size_max);
 
@@ -274,7 +278,8 @@ std::vector<int> LayoutArray::getSizes(int dim, int upp) const
         }
     }
 
-    if (upp == Layout::AUTO_DEF) return sizes;
+    if (upp == Layout::AUTO_DEF)
+        return sizes;
 
     // Compute the FILL sizes.
     int nb = static_cast<int>(sizes.size());
@@ -343,8 +348,10 @@ void LayoutArray::reflow(int nx, int ny, int nw, int nh)
             if (cell && cell->mType != LayoutCell::NONE)
             {
                 int dx = x, dy = y, dw = 0, dh = 0;
-                align(dx, dw, 0, *cell, &widths[gridX]);
-                align(dy, dh, 1, *cell, &heights[gridY]);
+                align(dx, dw, 0, *cell, &widths[gridX],
+                    widths.size() - gridX);
+                align(dy, dh, 1, *cell, &heights[gridY],
+                    heights.size() - gridY);
                 cell->reflow(dx, dy, dw, dh);
             }
             x += widths[gridX] + mSpacing;

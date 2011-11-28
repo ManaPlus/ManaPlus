@@ -45,6 +45,10 @@ class TextParticle : public Particle
         virtual int getPixelY() const
         { return static_cast<int>(mPos.y + mPos.z); }
 
+        // hack to improve text visibility (for sorting only)
+        virtual int getSortPixelY() const
+        { return static_cast<int>(mPos.y + mPos.z); }
+
     private:
         std::string mText;             /**< Text of the particle. */
         gcn::Font *mTextFont;          /**< Font used for drawing the text. */

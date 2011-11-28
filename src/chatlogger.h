@@ -40,8 +40,6 @@ class ChatLogger
          */
         ~ChatLogger();
 
-        void setLogDir(const std::string &logDir);
-
         /**
          * Enters a message in the log. The message will be timestamped.
          */
@@ -52,11 +50,14 @@ class ChatLogger
         void loadLast(std::string name, std::list<std::string> &list,
                       unsigned n);
 
-        std::string getDateString() const;
+        std::string getDir() const;
 
         std::string secureName(std::string &str) const;
 
         void setServerName(const std::string &serverName);
+
+        void setBaseLogDir(const std::string &logDir)
+        { mBaseLogDir = logDir; }
 
     private:
         /**
@@ -64,14 +65,15 @@ class ChatLogger
          */
         void setLogFile(const std::string &logFilename);
 
-        void writeTo(std::ofstream &file, const std::string &str) const;
+        void setLogDir(const std::string &logDir);
 
-        void makeDir(const std::string &dir);
+        void writeTo(std::ofstream &file, const std::string &str) const;
 
         std::ofstream mLogFile;
         std::string mLogDir;
+        std::string mBaseLogDir;
         std::string mServerName;
-        std::string mLogDate;
+        std::string mLogFileName;
 };
 
 extern ChatLogger *chatLogger;

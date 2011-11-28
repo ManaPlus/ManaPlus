@@ -43,10 +43,17 @@ class Action
 
         Animation *getAnimation(int direction) const;
 
+        unsigned getNumber()
+        { return mNumber; }
+
+        void setNumber(unsigned n)
+        { mNumber = n; }
+
     protected:
         typedef std::map<int, Animation*> Animations;
         typedef Animations::iterator AnimationIterator;
         Animations mAnimations;
+        unsigned mNumber;
 };
 
 #endif

@@ -31,12 +31,6 @@ class ChatTab;
 
 extern ChatTab *localChatTab;
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 #define BOOLEAN_OPTIONS _("Options to /%s are \"yes\", \"no\", \"true\", "\
 "\"false\", \"1\", \"0\".")
 
@@ -263,23 +257,21 @@ class CommandHandler
          */
         void handleNavigate(const std::string &args, ChatTab *tab);
 
-        void handleMail(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleMail(const std::string &args, ChatTab *tab);
 
         void handleHack(const std::string &args, ChatTab *tab);
 
-        void handlePriceLoad(const std::string &args A_UNUSED,
-                             ChatTab *tab A_UNUSED);
+        void handlePriceLoad(const std::string &args, ChatTab *tab);
 
-        void handlePriceSave(const std::string &args A_UNUSED,
-                             ChatTab *tab A_UNUSED);
+        void handlePriceSave(const std::string &args, ChatTab *tab);
 
-        void handleTrade(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleTrade(const std::string &args, ChatTab *tab);
 
-        void handleDisconnect(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleDisconnect(const std::string &args, ChatTab *tab);
 
-        void handleUndress(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleUndress(const std::string &args, ChatTab *tab);
 
-        void handleAttack(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleAttack(const std::string &args, ChatTab *tab);
 
         void handleDirs(const std::string &args, ChatTab *tab);
 
@@ -289,22 +281,17 @@ class CommandHandler
 
         void handleUptime(const std::string &args, ChatTab *tab);
 
-        void handleAddAttack(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleAddAttack(const std::string &args, ChatTab *tab);
 
-        void handleAddPriorityAttack(const std::string &args,
-                                     ChatTab *tab A_UNUSED);
+        void handleAddPriorityAttack(const std::string &args, ChatTab *tab);
 
-        void handleRemoveAttack(const std::string &args,
-                                ChatTab *tab A_UNUSED);
+        void handleRemoveAttack(const std::string &args, ChatTab *tab);
 
-        void handleAddIgnoreAttack(const std::string &args,
-                                   ChatTab *tab A_UNUSED);
+        void handleAddIgnoreAttack(const std::string &args, ChatTab *tab);
 
-        void handleServerIgnoreAll(const std::string &args,
-                                   ChatTab *tab A_UNUSED);
+        void handleServerIgnoreAll(const std::string &args, ChatTab *tab);
 
-        void handleServerUnIgnoreAll(const std::string &args,
-                                     ChatTab *tab A_UNUSED);
+        void handleServerUnIgnoreAll(const std::string &args, ChatTab *tab);
 
         void handleDump(const std::string &args, ChatTab *tab);
 
@@ -313,7 +300,7 @@ class CommandHandler
         void outString(ChatTab *tab, const std::string &str,
                        const std::string &def);
 
-        void handleCacheInfo(const std::string &args, ChatTab *tab A_UNUSED);
+        void handleCacheInfo(const std::string &args, ChatTab *tab);
 
         bool parse2Int(const std::string &args, int *x, int *y);
 };

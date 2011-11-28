@@ -624,7 +624,7 @@ void StatusWindow::updateInvSlotsBar(ProgressBar *bar)
     bar->setText(strprintf("%d", usedSlots));
 }
 
-std::string StatusWindow::translateLetter(char* letters)
+std::string StatusWindow::translateLetter(const char* letters)
 {
     char buf[2];
     char *str = gettext(letters);
@@ -636,277 +636,34 @@ std::string StatusWindow::translateLetter(char* letters)
     return std::string(buf);
 }
 
+std::string StatusWindow::translateLetter2(std::string letters)
+{
+    if (letters.size() < 5)
+        return "";
+
+    return std::string(gettext(letters.substr(1, 1).c_str()));
+}
+
 void StatusWindow::updateStatusBar(ProgressBar *bar, bool percent A_UNUSED)
 {
     if (!player_node || !viewport)
         return;
 
-    std::string str;
+    bar->setText(translateLetter2(player_node->getInvertDirectionString())
+        += translateLetter2(player_node->getCrazyMoveTypeString())
+        += translateLetter2(player_node->getMoveToTargetTypeString())
+        += translateLetter2(player_node->getFollowModeString())
+        += " " + translateLetter2(player_node->getAttackWeaponTypeString())
+        += translateLetter2(player_node->getAttackTypeString())
+        += translateLetter2(player_node->getMagicAttackString())
+        += translateLetter2(player_node->getPvpAttackString())
+        += " " + translateLetter2(player_node->getQuickDropCounterString())
+        += translateLetter2(player_node->getPickUpTypeString())
+        += " " + translateLetter2(player_node->getDebugPathString())
+        += " " + translateLetter2(player_node->getImitationModeString())
+        += translateLetter2(player_node->getCameraModeString())
+        += translateLetter2(player_node->getAwayModeString()));
 
-    switch (player_node->getInvertDirection())
-    {
-        case 0:
-            str = translateLetter(N_("(D)"));
-            break;
-        case 1:
-            str = translateLetter(N_("(I)"));
-            break;
-        case 2:
-            str = translateLetter(N_("(c)"));
-            break;
-        case 3:
-            str = translateLetter(N_("(C)"));
-            break;
-        case 4:
-            str = translateLetter(N_("(d)"));
-            break;
-        default:
-            str = translateLetter(N_("(?)"));
-            break;
-    }
-
-    if (player_node->getCrazyMoveType() < 10)
-        str += toString(player_node->getCrazyMoveType());
-    else
-    {
-        switch (player_node->getCrazyMoveType())
-        {
-            case 10:
-                str += translateLetter(N_("(a)"));
-                break;
-            default:
-                str += translateLetter(N_("(?)"));
-                break;
-        }
-    }
-
-    switch (player_node->getMoveToTargetType())
-    {
-        case 0:
-            str += translateLetter(N_("(0)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(1)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(2)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(3)"));
-            break;
-        case 4:
-            str += translateLetter(N_("(5)"));
-            break;
-        case 5:
-            str += translateLetter(N_("(7)"));
-            break;
-        case 6:
-            str += translateLetter(N_("(A)"));
-            break;
-        case 7:
-            str += translateLetter(N_("(a)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    switch (player_node->getFollowMode())
-    {
-        case 0:
-            str += translateLetter(N_("(D)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(R)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(M)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(P)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    str += " ";
-    switch (player_node->getAttackWeaponType())
-    {
-        case 1:
-            str += translateLetter(N_("(D)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(s)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(S)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    switch (player_node->getAttackType())
-    {
-        case 0:
-            str += translateLetter(N_("(D)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(G)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(A)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(d)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    switch (player_node->getMagicAttackType())
-    {
-        case 0:
-            str += translateLetter(N_("(f)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(c)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(I)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(F)"));
-            break;
-        case 4:
-            str += translateLetter(N_("(U)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    switch (player_node->getPvpAttackType())
-    {
-        case 0:
-            str += translateLetter(N_("(a)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(f)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(b)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(d)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    str += " " + toString(player_node->getQuickDropCounter());
-
-    switch (player_node->getPickUpType())
-    {
-        case 0:
-            str += translateLetter(N_("(S)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(D)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(F)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(3)"));
-            break;
-        case 4:
-            str += translateLetter(N_("(g)"));
-            break;
-        case 5:
-            str += translateLetter(N_("(G)"));
-            break;
-        case 6:
-            str += translateLetter(N_("(A)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    str += " ";
-    switch (viewport->getDebugPath())
-    {
-        case 0:
-            str += translateLetter(N_("(N)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(D)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(u)"));
-            break;
-        case 3:
-            str += translateLetter(N_("(U)"));
-            break;
-        case 4:
-            str += translateLetter(N_("(e)"));
-            break;
-        case 5:
-            str += translateLetter(N_("(b)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    str += " ";
-    switch (player_node->getImitationMode())
-    {
-        case 0:
-            str += translateLetter(N_("(D)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(O)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    switch (viewport->getCameraMode())
-    {
-        case 0:
-            str += translateLetter(N_("(G)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(F)"));
-            break;
-        case 2:
-            str += translateLetter(N_("(D)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    switch ((int)player_node->getAway())
-    {
-        case 0:
-            str += translateLetter(N_("(O)"));
-            break;
-        case 1:
-            str += translateLetter(N_("(A)"));
-            break;
-        default:
-            str += translateLetter(N_("(?)"));
-            break;
-    }
-
-    bar->setText(str);
     bar->setProgress(50);
     if (player_node->getDisableGameModifiers())
     {

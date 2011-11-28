@@ -29,14 +29,10 @@
 #include <guichan/actionlistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
+#include "localconsts.h"
+
 #include <map>
 #include <vector>
-
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
 
 class EmotePopup;
 class TextPopup;

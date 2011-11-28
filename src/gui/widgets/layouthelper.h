@@ -27,12 +27,6 @@
 
 #include <guichan/widgetlistener.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 /**
  * A helper class for adding a layout to a Guichan container widget. The layout
  * will register itself as a widget listener and relayout the widgets in the

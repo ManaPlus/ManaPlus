@@ -25,12 +25,6 @@
 
 #include "gui/widgets/listbox.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class ShopItems;
 class ItemPopup;
 
@@ -82,7 +76,7 @@ class ShopListBox : public ListBox
 
         void mouseMoved(gcn::MouseEvent &event);
 
-        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED);
+        void mouseExited(gcn::MouseEvent& mouseEvent);
 
     private:
         void init();

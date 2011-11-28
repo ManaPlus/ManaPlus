@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author : 4144
+(C) ManaPlus Developers 2011. -->
+
+<chars>
+    <haircolor min="0" max="11" />
+    <hairstyle min="0" max="19" />
+    <stat min="1" max="9" sum="30" />
+</chars>

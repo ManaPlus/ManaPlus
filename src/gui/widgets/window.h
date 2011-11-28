@@ -31,12 +31,6 @@
 
 #include <guichan/widgets/window.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class ContainerPlacer;
 class GraphicsVertexes;
 class Layout;

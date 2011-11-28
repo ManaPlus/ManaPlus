@@ -25,21 +25,16 @@
 
 #include "gui/widgets/linkhandler.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class ItemPopup;
 
 class ItemLinkHandler : public LinkHandler
 {
     public:
         ItemLinkHandler();
+
         ~ItemLinkHandler();
-        void handleLink(const std::string &link,
-                        gcn::MouseEvent *event A_UNUSED);
+
+        void handleLink(const std::string &link, gcn::MouseEvent *event);
 
     private:
         ItemPopup *mItemPopup;

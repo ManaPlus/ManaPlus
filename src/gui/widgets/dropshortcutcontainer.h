@@ -28,12 +28,6 @@
 
 #include "gui/widgets/shortcutcontainer.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class Image;
 class Item;
 class ItemPopup;

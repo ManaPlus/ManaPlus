@@ -30,12 +30,6 @@
 
 #include "net/tmwa/messagehandler.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 namespace TmwAthena
 {
 
@@ -64,7 +58,7 @@ class GuildHandler : public Ea::GuildHandler, public MessageHandler
 
         void memberList(int guildId);
 
-        void info(int guildId A_UNUSED);
+        void info(int guildId);
 
         void changeMemberPostion(GuildMember *member, int level);
 

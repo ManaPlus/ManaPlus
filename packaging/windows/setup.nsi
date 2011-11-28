@@ -226,6 +226,8 @@ Section "Core files (required)" SecCore
   CreateDirectory "$INSTDIR\data\help\ru\tips"
   CreateDirectory "$INSTDIR\data\help\tips"
   CreateDirectory "$INSTDIR\data\icons"
+  CreateDirectory "$INSTDIR\data\perserver"
+  CreateDirectory "$INSTDIR\data\perserver\default"
   CreateDirectory "$INSTDIR\data\graphics\gui"
   CreateDirectory "$INSTDIR\data\graphics\images"
   CreateDirectory "$INSTDIR\data\graphics\sprites"
@@ -317,6 +319,8 @@ Section "Core files (required)" SecCore
   File "${SRCDIR}\data\help\tips\*.jpg"
   SetOutPath "$INSTDIR\data\icons\"
   File "${SRCDIR}\data\icons\manaplus.ico"
+  SetOutPath "$INSTDIR\data\perserver\default\"
+  File "${SRCDIR}\data\perserver\default\*.xml"
   SetOutPath "$INSTDIR\docs"
   File "${SRCDIR}\docs\FAQ.txt"
 SectionEnd

@@ -253,7 +253,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mAdvanced(false),
     mShop(false),
     mAway(false),
-    mInactive(false)
+    mInactive(false),
+    mNumber(100)
 {
     mSpriteRemap = new int[20];
     mSpriteHide = new int[20];
@@ -287,6 +288,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     updateColors();
     resetCounters();
+    updatePercentHP();
 }
 
 Being::~Being()
@@ -660,7 +662,10 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
         }
 
         if (mType == MONSTER)
+        {
+            updatePercentHP();
             updateName();
+        }
         else if (mType == PLAYER && socialWindow && getName() != "")
             socialWindow->updateAvatar(getName());
 
@@ -899,9 +904,6 @@ void Being::setGuild(Guild *guild)
     if (old)
         old->removeMember(mName);
 
-//    if (guild)
-//        guild->addMember(mId, mName);
-
     updateColors();
 
     if (this == player_node && socialWindow)
@@ -1017,6 +1019,8 @@ void Being::setAction(Action action, int attackType A_UNUSED)
             currentAction = SpriteAction::DEAD;
             if (mInfo)
                 sound.playSfx(mInfo->getSound(SOUND_EVENT_DIE), mX, mY);
+            if (mType == MONSTER)
+                mYDiff = 31;
             break;
         case STAND:
             currentAction = SpriteAction::STAND;
@@ -2100,6 +2104,8 @@ void Being::setHP(int hp)
     mHP = hp;
     if (mMaxHP < mHP)
         mMaxHP = mHP;
+    if (mType == MONSTER)
+        updatePercentHP();
 }
 
 void Being::setMaxHP(int hp)
@@ -2131,7 +2137,6 @@ void Being::recalcSpritesOrder()
     std::vector<int> slotRemap;
     std::map<int, int> itemSlotRemap;
 
-//    logger->log("preparation start");
     std::vector<int>::iterator it;
     int oldHide[20];
     int dir = mSpriteDirection;
@@ -2171,22 +2176,48 @@ void Being::recalcSpritesOrder()
                 {
                     int remSprite = itr->first;
                     const std::map<int, int> &itemReplacer = itr->second;
-                    if (itemReplacer.empty())
-                    {
-                        mSpriteHide[remSprite] = 1;
+                    if (remSprite >= 0)
+                    {   // slot known
+                        if (itemReplacer.empty())
+                        {
+                            mSpriteHide[remSprite] = 1;
+                        }
+                        else
+                        {
+                            std::map<int, int>::const_iterator repIt
+                                = itemReplacer.find(mSpriteIDs[remSprite]);
+                            if (repIt != itemReplacer.end())
+                            {
+                                mSpriteHide[remSprite] = repIt->second;
+                                if (repIt->second != 1)
+                                {
+                                    setSprite(remSprite, repIt->second,
+                                        mSpriteColors[remSprite],
+                                        1, false, true);
+                                }
+                            }
+                        }
                     }
                     else
-                    {
+                    {   // slot unknown. Search for real slot, this can be slow
                         std::map<int, int>::const_iterator repIt
-                            = itemReplacer.find(mSpriteIDs[remSprite]);
-                        if (repIt != itemReplacer.end())
+                            = itemReplacer.begin();
+                        std::map<int, int>::const_iterator repIt_end
+                            = itemReplacer.end();
+                        for (; repIt != repIt_end; ++ repIt)
                         {
-                            mSpriteHide[remSprite] = repIt->second;
-                            if (repIt->second != 1)
+                            for (unsigned slot2 = 0; slot2 < sz; slot2 ++)
                             {
-                                setSprite(remSprite, repIt->second,
-                                    mSpriteColors[remSprite],
-                                    1, false, true);
+                                if (mSpriteIDs[slot2] == repIt->first)
+                                {
+                                    mSpriteHide[slot2] = repIt->second;
+                                    if (repIt->second != 1)
+                                    {
+                                        setSprite(slot2, repIt->second,
+                                            mSpriteColors[slot2],
+                                            1, false, true);
+                                    }
+                                }
                             }
                         }
                     }
@@ -2459,7 +2490,6 @@ void Being::saveComment(const std::string &name,
             return;
     }
     dir += stringToHexPath(name);
-//    logger->log("save to: %s", dir.c_str());
     ResourceManager *resman = ResourceManager::getInstance();
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
@@ -2484,12 +2514,28 @@ void Being::setEmote(Uint8 emotion, int emote_time)
             updateName();
             addToCache();
         }
-//        logger->log("flags: %d", emotion - FLAG_SPECIAL);
     }
     else
     {
         mEmotion = emotion;
         mEmotionTime = emote_time;
+    }
+}
+
+void Being::updatePercentHP()
+{
+    if (!mMaxHP || !serverVersion)
+        return;
+    unsigned num = 0;
+    if (mHP)
+    {
+        num = mHP * 100 / mMaxHP;
+        if (num != mNumber)
+        {
+            mNumber = num;
+            if (updateNumber(mNumber))
+                setAction(mAction);
+        }
     }
 }
 

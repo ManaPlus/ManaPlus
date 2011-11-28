@@ -30,12 +30,6 @@
 
 #include <SDL_types.h>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class Item;
 class ShopItems;
 class ShopListBox;

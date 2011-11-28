@@ -27,12 +27,6 @@
 
 #include "net/manaserv/messagehandler.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 namespace ManaServ
 {
 
@@ -56,7 +50,7 @@ class TradeHandler : public MessageHandler, public Net::TradeHandler
          * requests are automatically denied. When true, a popup will ask the
          * player whether he wants to trade.
          */
-        void setAcceptTradeRequests(bool acceptTradeRequests);
+        void setAcceptTradeRequests(bool acceptRequests);
 
         void request(Being *being);
 

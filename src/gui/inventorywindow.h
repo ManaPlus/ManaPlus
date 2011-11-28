@@ -35,12 +35,6 @@
 #include <guichan/keylistener.hpp>
 #include <guichan/selectionlistener.hpp>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class DropDown;
 class Item;
 class ItemContainer;
@@ -48,7 +42,6 @@ class InventoryFilter;
 class LayoutCell;
 class ProgressBar;
 class SortListModel;
-//class TextBox;
 class TextField;
 
 /**

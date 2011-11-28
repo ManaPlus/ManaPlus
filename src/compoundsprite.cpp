@@ -544,6 +544,21 @@ void CompoundSprite::initCurrentCacheItem() const
     }
 }
 
+bool CompoundSprite::updateNumber(unsigned num)
+{
+    SpriteConstIterator it, it_end;
+    bool res(false);
+    for (it = begin(), it_end = end(); it != it_end; ++ it)
+    {
+        if (*it)
+        {
+            if ((*it)->updateNumber(num))
+                res = true;
+        }
+    }
+    return res;
+}
+
 CompoundItem::CompoundItem() :
 //    alpha(1.0f),
     image(nullptr),

@@ -37,12 +37,6 @@ class ProgressBar;
 class ScrollArea;
 class VertContainer;
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 /**
  * The player status dialog.
  *
@@ -82,7 +76,9 @@ class StatusWindow : public Window,
         void action(const gcn::ActionEvent &event);
 
     private:
-        static std::string translateLetter(char* letters);
+        static std::string translateLetter(const char* letters);
+
+        static std::string translateLetter2(std::string letters);
 
         /**
          * Status Part

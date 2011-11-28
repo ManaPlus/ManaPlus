@@ -27,11 +27,7 @@
 
 #include <iosfwd>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
+#include "localconsts.h"
 
 namespace Net
 {
@@ -43,7 +39,6 @@ class TradeHandler
 
         virtual void request(Being *being A_UNUSED)
         { }
-//        virtual ~TradeHandler() {}
 
         virtual void respond(bool accept A_UNUSED)
         { }

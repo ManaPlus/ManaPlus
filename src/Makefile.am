@@ -309,6 +309,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/animation.h \
 	      resources/beinginfo.cpp \
 	      resources/beinginfo.h \
+	      resources/chardb.cpp \
+	      resources/chardb.h \
 	      resources/colordb.cpp \
 	      resources/colordb.h \
 	      resources/dye.cpp \

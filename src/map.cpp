@@ -85,7 +85,7 @@ class ActorFunctuator
         {
             if (!a || !b)
                 return false;
-            return a->getPixelY() < b->getPixelY();
+            return a->getSortPixelY() < b->getSortPixelY();
         }
 } actorCompare;
 

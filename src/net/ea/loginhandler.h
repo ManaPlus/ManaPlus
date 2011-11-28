@@ -31,12 +31,6 @@
 
 #include <string>
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class LoginData;
 
 namespace Ea

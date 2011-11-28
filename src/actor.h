@@ -88,6 +88,12 @@ public:
     { return static_cast<int>(mPos.y); }
 
     /**
+     * Returns the pixel Y coordinate of the actor for sorting only.
+     */
+    virtual int getSortPixelY() const
+    { return static_cast<int>(mPos.y) - mYDiff; }
+
+    /**
      * Returns the x coordinate in tiles of the actor.
      */
     virtual int getTileX() const;
@@ -121,6 +127,7 @@ public:
 protected:
     Map *mMap;
     Vector mPos;                /**< Position in pixels relative to map. */
+    int mYDiff;
 
 private:
     Actors::iterator mMapActor;

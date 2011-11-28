@@ -40,11 +40,16 @@
 #include "logger.h"
 #include "configuration.h"
 
+#include "utils/mkdir.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
 
-ChatLogger::ChatLogger()
+ChatLogger::ChatLogger() :
+    mLogDir(""),
+    mBaseLogDir(""),
+    mServerName(""),
+    mLogFileName("")
 {
 }
 
@@ -60,6 +65,7 @@ void ChatLogger::setLogFile(const std::string &logFilename)
         mLogFile.close();
 
     mLogFile.open(logFilename.c_str(), std::ios_base::app);
+    mLogFileName = logFilename;
 
     if (!mLogFile.is_open())
     {
@@ -77,19 +83,19 @@ void ChatLogger::setLogDir(const std::string &logDir)
 
     DIR *dir = opendir(mLogDir.c_str());
     if (!dir)
-        makeDir(mLogDir);
+        mkdir_r(mLogDir.c_str());
     else
         closedir(dir);
 }
 
 void ChatLogger::log(std::string str)
 {
-    std::string dateStr = getDateString();
-    if (!mLogFile.is_open() || dateStr != mLogDate)
+    std::string dateStr = getDir();
+    std::string logFileName = strprintf("%s/#General.log", dateStr.c_str());
+    if (!mLogFile.is_open() || logFileName != mLogFileName)
     {
-        mLogDate = dateStr;
-        setLogFile(strprintf("%s/%s/#General_%s.log", mLogDir.c_str(),
-                             mServerName.c_str(), dateStr.c_str()));
+        setLogDir(dateStr);
+        setLogFile(logFileName);
     }
 
     str = removeColors(str);
@@ -99,21 +105,21 @@ void ChatLogger::log(std::string str)
 void ChatLogger::log(std::string name, std::string str)
 {
     std::ofstream logFile;
-    logFile.open(strprintf("%s/%s/%s_%s.log", mLogDir.c_str(),
-        mServerName.c_str(), secureName(name).c_str(),
-        getDateString().c_str()).c_str(), std::ios_base::app);
+    std::string dateStr = getDir();
+    std::string logFileName = strprintf("%s/%s.log",
+        dateStr.c_str(), secureName(name).c_str());
 
-    if (!logFile.is_open())
-        return;
+    if (!mLogFile.is_open() || logFileName != mLogFileName)
+    {
+        setLogDir(dateStr);
+        setLogFile(logFileName);
+    }
 
     str = removeColors(str);
-    writeTo(logFile, str);
-
-    if (logFile.is_open())
-        logFile.close();
+    writeTo(mLogFile, str);
 }
 
-std::string ChatLogger::getDateString() const
+std::string ChatLogger::getDir() const
 {
     std::string date;
 
@@ -124,8 +130,11 @@ std::string ChatLogger::getDateString() const
     time (&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(buffer, 79, "%y-%m-%d", timeinfo);
-    date = buffer;
+    strftime(buffer, 79, "%Y-%m/%d", timeinfo);
+
+    date = strprintf("%s/%s/%s", mBaseLogDir.c_str(),
+        mServerName.c_str(), buffer);
+
     return date;
 }
 
@@ -164,29 +173,20 @@ void ChatLogger::setServerName(const std::string &serverName)
     {
         DIR *dir = opendir((mLogDir + "/" + mServerName).c_str());
         if (!dir)
-            makeDir(mLogDir + "/" + mServerName);
+            mkdir_r((mLogDir + "/" + mServerName).c_str());
         else
             closedir(dir);
     }
-}
-
-void ChatLogger::makeDir(const std::string &dir)
-{
-#ifdef WIN32
-    mkdir(dir.c_str());
-#else
-    mkdir(dir.c_str(), 0750);
-#endif
 }
 
 void ChatLogger::loadLast(std::string name, std::list<std::string> &list,
                           unsigned n)
 {
     std::ifstream logFile;
+    std::string fileName = strprintf("%s/%s.log", getDir().c_str(),
+        secureName(name).c_str());
 
-    logFile.open(strprintf("%s/%s/%s_%s.log", mLogDir.c_str(),
-        mServerName.c_str(), secureName(name).c_str(),
-        getDateString().c_str()).c_str(), std::ios::in);
+    logFile.open(fileName.c_str(), std::ios::in);
 
     if (!logFile.is_open())
         return;

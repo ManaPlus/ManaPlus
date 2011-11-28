@@ -33,12 +33,6 @@
 #include <SDL_opengl.h>
 #endif
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class OpenGLGraphics : public Graphics
 {
     public:

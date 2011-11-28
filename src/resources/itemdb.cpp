@@ -546,25 +546,51 @@ int parseDirectionName(std::string name)
 {
     int id = -1;
     if (name == "down")
-        id = DIRECTION_DOWN;
+    {
+        if (serverVersion > 0)
+            id = DIRECTION_DOWN;
+        else
+            id = -2;
+    }
     else if (name == "downleft" || name == "leftdown")
+    {
         id = DIRECTION_DOWNLEFT;
+    }
     else if (name == "left")
+    {
         id = DIRECTION_LEFT;
+    }
     else if (name == "upleft" || name == "leftup")
+    {
         id = DIRECTION_UPLEFT;
+    }
     else if (name == "up")
-        id = DIRECTION_UP;
+    {
+        if (serverVersion > 0)
+            id = DIRECTION_UP;
+        else
+            id = -3;
+    }
     else if (name == "upright" || name == "rightup")
+    {
         id = DIRECTION_UPRIGHT;
+    }
     else if (name == "right")
+    {
         id = DIRECTION_RIGHT;
+    }
     else if (name == "downright" || name == "rightdown")
+    {
         id = DIRECTION_DOWNRIGHT;
+    }
     else if (name == "downall")
+    {
         id = -2;
+    }
     else if (name == "upall")
+    {
         id = -3;
+    }
 
     return id;
 }

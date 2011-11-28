@@ -28,12 +28,6 @@
 #include "net/net.h"
 #include "net/serverinfo.h"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 class LoginData;
 
 namespace Ea
@@ -77,6 +71,8 @@ class CharServerHandler : public Net::CharHandler
         virtual void processCharDelete(Net::MessageIn &msg);
 
         virtual void processCharDeleteFailed(Net::MessageIn &msg);
+
+        virtual void clear();
 
     protected:
         virtual void readPlayerData(Net::MessageIn &msg,

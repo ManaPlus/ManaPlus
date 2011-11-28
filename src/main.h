@@ -45,8 +45,8 @@
  * different interfaces, which have different implementations for each server.
  */
 
-#define SMALL_VERSION "1.1.11.12"
-#define CHECK_VERSION "01.01.11.12"
+#define SMALL_VERSION "1.1.11.27"
+#define CHECK_VERSION "01.01.11.27"
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"
@@ -96,12 +96,6 @@
 
 #ifndef PKG_DATADIR
 #define PKG_DATADIR ""
-#endif
-
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
 #endif
 
 #endif

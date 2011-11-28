@@ -124,6 +124,11 @@ class CharCreateDialog : public Window, public gcn::ActionListener
         int mRace;
 
         int mSlot;
+
+        unsigned maxHairColor;
+        unsigned minHairColor;
+        unsigned maxHairStyle;
+        unsigned minHairStyle;
 };
 
 #endif // CHAR_CREATE_DIALOG_H

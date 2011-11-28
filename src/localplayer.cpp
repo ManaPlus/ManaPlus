@@ -190,7 +190,6 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     PlayerInfo::setStatMod(WALK_SPEED, 0);
 
     loadHomes();
-//    initTargetCursor();
 
     config.addListener("showownname", this);
     config.addListener("targetDeadPlayers", this);
@@ -278,16 +277,12 @@ void LocalPlayer::logic()
     {
         if (mMessageTime == 0)
         {
-            //const Vector &pos = getPosition();
-
             MessagePair info = mMessages.front();
 
             if (particleEngine)
             {
                 particleEngine->addTextRiseFadeOutEffect(
                     info.first,
-                    /*(int) pos.x,
-                    (int) pos.y - 48,*/
                     getPixelX(),
                     getPixelY() - 48,
                     &userPalette->getColor(info.second),
@@ -818,8 +813,6 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-//        updatePos();
-
         if (Party::getParty(1))
         {
             PartyMember *pm = Party::getParty(1)->getMember(getName());
@@ -973,7 +966,6 @@ bool LocalPlayer::pickUp(FloorItem *item)
 
             mPickUpTarget = item;
             mPickUpTarget->addActorSpriteListener(this);
-//            stopAttack();
         }
     }
     return true;
@@ -1867,83 +1859,383 @@ void LocalPlayer::moveToHome()
     }
 }
 
-void LocalPlayer::changeAttackWeaponType()
-{
-    mAttackWeaponType++;
-    if (mAttackWeaponType > 3)
-        mAttackWeaponType = 1;
+static const unsigned invertDirectionSize = 5;
 
-    config.setValue("attackWeaponType", mAttackWeaponType);
+void LocalPlayer::changeMode(unsigned *var, unsigned limit, const char *conf,
+                             std::string (LocalPlayer::*func)(), unsigned def)
+{
+    (*var) ++;
+    if (*var >= limit)
+        *var = def;
+    config.setValue(conf, *var);
     if (miniStatusWindow)
         miniStatusWindow->updateStatus();
-}
-
-void LocalPlayer::changeAttackType()
-{
-    mAttackType++;
-    if (mAttackType > 3)
-        mAttackType = 0;
-
-    config.setValue("attackType", mAttackType);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    const std::string str = (this->*func)();
+    if (str.size() > 4)
+        debugMsg(str.substr(4));
 }
 
 void LocalPlayer::invertDirection()
 {
     mMoveState = 0;
-    mInvertDirection ++;
-    if (mInvertDirection > 4)
-        mInvertDirection = 0;
-    config.setValue("invertMoveDirection", mInvertDirection);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    changeMode(&mInvertDirection, invertDirectionSize, "invertMoveDirection",
+        &LocalPlayer::getInvertDirectionString);
 }
+
+static const char *invertDirectionStrings[] =
+{
+    N_("(D) default moves"),
+    N_("(I) invert moves"),
+    N_("(c) moves with some crazy moves"),
+    N_("(C) moves with crazy moves"),
+    N_("(d) double normal + crazy"),
+    N_("(?) unknown move")
+};
+
+std::string LocalPlayer::getInvertDirectionString()
+{
+    return gettext(getVarItem(&invertDirectionStrings[0],
+        mInvertDirection, invertDirectionSize));
+}
+
+static const unsigned crazyMoveTypeSize = 11;
 
 void LocalPlayer::changeCrazyMoveType()
 {
     mCrazyMoveState = 0;
-    mCrazyMoveType++;
-    if (mCrazyMoveType > 10)
-        mCrazyMoveType = 1;
-
-    config.setValue("crazyMoveType", mCrazyMoveType);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    changeMode(&mCrazyMoveType, crazyMoveTypeSize, "crazyMoveType",
+        &LocalPlayer::getCrazyMoveTypeString, 1);
 }
 
-void LocalPlayer::changePickUpType()
+std::string LocalPlayer::getCrazyMoveTypeString()
 {
-    mPickUpType++;
-    if (mPickUpType > 6)
-        mPickUpType = 0;
-
-    config.setValue("pickUpType", mPickUpType);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    if (mCrazyMoveType < crazyMoveTypeSize - 1)
+    {
+        return strprintf(_("(%d) crazy move number %d"),
+            mCrazyMoveType, mCrazyMoveType);
+    }
+    else if (mCrazyMoveType == crazyMoveTypeSize - 1)
+    {
+        return _("(a) custom crazy move");
+    }
+    else
+    {
+        return _("(?) crazy move");
+    }
 }
+
+static const unsigned moveToTargetTypeSize = 8;
+
+void LocalPlayer::changeMoveToTargetType()
+{
+    changeMode(&mMoveToTargetType, moveToTargetTypeSize, "moveToTargetType",
+        &LocalPlayer::getMoveToTargetTypeString);
+}
+
+static const char *moveToTargetTypeStrings[] =
+{
+    N_("(0) default moves to target"),
+    N_("(1) moves to target in distance 1"),
+    N_("(2) moves to target in distance 2"),
+    N_("(3) moves to target in distance 3"),
+    N_("(5) moves to target in distance 5"),
+    N_("(7) moves to target in distance 7"),
+    N_("(A) moves to target in attack range"),
+    N_("(a) archer attack range"),
+    N_("(?) move to target")
+};
+
+std::string LocalPlayer::getMoveToTargetTypeString()
+{
+    return gettext(getVarItem(&moveToTargetTypeStrings[0],
+        mMoveToTargetType, moveToTargetTypeSize));
+}
+
+static const unsigned followModeSize = 4;
 
 void LocalPlayer::changeFollowMode()
 {
-    mFollowMode++;
-    if (mFollowMode > 3)
-        mFollowMode = 0;
-
-    config.setValue("followMode", mFollowMode);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
+    changeMode(&mFollowMode, followModeSize, "followMode",
+        &LocalPlayer::getFollowModeString);
 }
+
+static const char *followModeStrings[] =
+{
+    N_("(D) default follow"),
+    N_("(R) relative follow"),
+    N_("(M) mirror follow"),
+    N_("(P) pet follow"),
+    N_("(?) unknown follow")
+};
+
+std::string LocalPlayer::getFollowModeString()
+{
+    return gettext(getVarItem(&followModeStrings[0],
+        mFollowMode, followModeSize));
+}
+
+const unsigned attackWeaponTypeSize = 4;
+
+void LocalPlayer::changeAttackWeaponType()
+{
+    changeMode(&mAttackWeaponType, attackWeaponTypeSize, "attackWeaponType",
+        &LocalPlayer::getAttackWeaponTypeString, 1);
+}
+
+static const char *attackWeaponTypeStrings[] =
+{
+    N_("(?) attack"),
+    N_("(D) default attack"),
+    N_("(s) switch attack without shield"),
+    N_("(S) switch attack with shield"),
+    N_("(?) attack")
+};
+
+std::string LocalPlayer::getAttackWeaponTypeString()
+{
+    return gettext(getVarItem(&attackWeaponTypeStrings[0],
+        mAttackWeaponType, attackWeaponTypeSize));
+}
+
+const unsigned attackTypeSize = 4;
+
+void LocalPlayer::changeAttackType()
+{
+    changeMode(&mAttackType, attackTypeSize, "attackType",
+        &LocalPlayer::getAttackTypeString);
+}
+
+static const char *attackTypeStrings[] =
+{
+    N_("(D) default attack"),
+    N_("(G) go and attack"),
+    N_("(A) go, attack, pickup"),
+    N_("(d) without auto attack"),
+    N_("(?) attack")
+};
+
+std::string LocalPlayer::getAttackTypeString()
+{
+    return gettext(getVarItem(&attackTypeStrings[0],
+        mAttackType, attackTypeSize));
+}
+
+const unsigned quickDropCounterSize = 10;
+
+void LocalPlayer::changeQuickDropCounter()
+{
+    changeMode(&mQuickDropCounter, quickDropCounterSize, "quickDropCounter",
+        &LocalPlayer::getQuickDropCounterString, 1);
+}
+
+std::string LocalPlayer::getQuickDropCounterString()
+{
+    return strprintf("(%d) drop counter %d",
+        mQuickDropCounter, mQuickDropCounter);
+}
+
+const unsigned pickUpTypeSize = 7;
+
+void LocalPlayer::changePickUpType()
+{
+    changeMode(&mPickUpType, pickUpTypeSize, "pickUpType",
+        &LocalPlayer::getPickUpTypeString);
+}
+
+static const char *pickUpTypeStrings[] =
+{
+    N_("(S) small pick up 1x1 cells"),
+    N_("(D) default pick up 2x1 cells"),
+    N_("(F) forward pick up 2x3 cells"),
+    N_("(3) pick up 3x3 cells"),
+    N_("(g) go and pick up in distance 4"),
+    N_("(G) go and pick up in distance 8"),
+    N_("(A) go and pick up in max distance"),
+    N_("(?) pick up")
+};
+
+std::string LocalPlayer::getPickUpTypeString()
+{
+    return gettext(getVarItem(&pickUpTypeStrings[0],
+        mPickUpType, pickUpTypeSize));
+}
+
+const unsigned debugPathSize = 5;
+
+static const char *debugPathStrings[] =
+{
+    N_("(N) normal map view"),
+    N_("(D) debug map view"),
+    N_("(u) ultra map view"),
+    N_("(U) ultra map view 2"),
+    N_("(e) empty map view"),
+    N_("(b) black & white map view")
+};
+
+std::string LocalPlayer::getDebugPathString()
+{
+    return gettext(getVarItem(&debugPathStrings[0],
+        viewport->getDebugPath(), debugPathSize));
+}
+
+const unsigned magicAttackSize = 5;
+
+void LocalPlayer::switchMagicAttack()
+{
+    changeMode(&mMagicAttackType, magicAttackSize, "magicAttackType",
+        &LocalPlayer::getMagicAttackString);
+}
+
+static const char *magicAttackStrings[] =
+{
+    N_("(f) use #flar for magic attack"),
+    N_("(c) use #chiza for magic attack"),
+    N_("(I) use #ingrav for magic attack"),
+    N_("(F) use #frillyar for magic attack"),
+    N_("(U) use #upmarmu for magic attack"),
+    N_("(?) magic attack")
+};
+
+std::string LocalPlayer::getMagicAttackString()
+{
+    return gettext(getVarItem(&magicAttackStrings[0],
+        mMagicAttackType, magicAttackSize));
+}
+
+const unsigned pvpAttackSize = 4;
+
+void LocalPlayer::switchPvpAttack()
+{
+    changeMode(&mPvpAttackType, pvpAttackSize, "pvpAttackType",
+        &LocalPlayer::getPvpAttackString);
+}
+
+static const char *pvpAttackStrings[] =
+{
+    N_("(a) attack all players"),
+    N_("(f) attack not friends"),
+    N_("(b) attack bad relations"),
+    N_("(d) dont attack players"),
+    N_("(?) pvp attack")
+};
+
+std::string LocalPlayer::getPvpAttackString()
+{
+    return gettext(getVarItem(&pvpAttackStrings[0],
+        mPvpAttackType, pvpAttackSize));
+}
+
+const unsigned imitationModeSize = 2;
 
 void LocalPlayer::changeImitationMode()
 {
-    mImitationMode++;
-    if (mImitationMode > 1)
-        mImitationMode = 0;
+    changeMode(&mImitationMode, imitationModeSize, "imitationMode",
+        &LocalPlayer::getImitationModeString);
+}
 
-    config.setValue("imitationMode", mImitationMode);
+static const char *imitationModeStrings[] =
+{
+    N_("(D) default imitation"),
+    N_("(O) outfits imitation"),
+    N_("(?) imitation")
+};
+
+std::string LocalPlayer::getImitationModeString()
+{
+    return gettext(getVarItem(&imitationModeStrings[0],
+        mImitationMode, imitationModeSize));
+}
+
+const unsigned awayModeSize = 2;
+
+void LocalPlayer::changeAwayMode()
+{
+    mAwayMode = !mAwayMode;
+    mAfkTime = 0;
+    mInactive = false;
+    updateName();
     if (miniStatusWindow)
         miniStatusWindow->updateStatus();
+    if (mAwayMode)
+    {
+        if (chatWindow)
+            chatWindow->clearAwayLog();
+
+        cancelFollow();
+        navigateClean();
+        if (outfitWindow)
+            outfitWindow->wearAwayOutfit();
+        mAwayDialog = new OkDialog(_("Away"),
+            config.getStringValue("afkMessage"), true, false);
+        mAwayDialog->addActionListener(mAwayListener);
+        sound.volumeOff();
+    }
+    else
+    {
+        mAwayDialog = nullptr;
+        sound.volumeRestore();
+        if (chatWindow)
+        {
+            chatWindow->displayAwayLog();
+            chatWindow->clearAwayLog();
+        }
+    }
 }
+
+static const char *awayModeStrings[] =
+{
+    N_("(O) on keyboard"),
+    N_("(A) away"),
+    N_("(?) away")
+};
+
+std::string LocalPlayer::getAwayModeString()
+{
+    return gettext(getVarItem(&awayModeStrings[0],
+        mAwayMode, awayModeSize));
+}
+
+const unsigned cameraModeSize = 2;
+
+static const char *cameraModeStrings[] =
+{
+    N_("(G) game camera mode"),
+    N_("(F) free camera mode"),
+    N_("(?) away")
+};
+
+std::string LocalPlayer::getCameraModeString()
+{
+    return gettext(getVarItem(&cameraModeStrings[0],
+        viewport->getCameraMode(), cameraModeSize));
+}
+
+const unsigned gameModifiersSize = 2;
+
+void LocalPlayer::switchGameModifiers()
+{
+    mDisableGameModifiers = !mDisableGameModifiers;
+    config.setValue("disableGameModifiers", mDisableGameModifiers);
+    miniStatusWindow->updateStatus();
+
+    const std::string str = getGameModifiersString();
+    if (str.size() > 4)
+        debugMsg(str.substr(4));
+}
+
+static const char *gameModifiersStrings[] =
+{
+    _("Game modifiers are enabled"),
+    _("Game modifiers are disabled"),
+    _("Game modifiers are unknown")
+};
+
+std::string LocalPlayer::getGameModifiersString()
+{
+    return gettext(getVarItem(&gameModifiersStrings[0],
+        mDisableGameModifiers, gameModifiersSize));
+}
+
 
 void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
 {
@@ -2742,10 +3034,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             }
             item = actorSpriteManager->findItem(x, y);
             if (item)
-            {
                 status = pickUp(item);
-//                status = true;
-            }
             break;
         case 2:
             switch (mDirection)
@@ -2806,15 +3095,6 @@ bool LocalPlayer::pickUpItems(int pickUpType)
     return status;
 }
 
-void LocalPlayer::changeQuickDropCounter()
-{
-    mQuickDropCounter++;
-    if (mQuickDropCounter > 9)
-        mQuickDropCounter = 1;
-
-    config.setValue("quickDropCounter", mQuickDropCounter);
-    miniStatusWindow->updateStatus();
-}
 
 void LocalPlayer::moveByDirection(unsigned char dir)
 {
@@ -2891,28 +3171,6 @@ void LocalPlayer::debugMsg(std::string str)
         debugChatTab->chatLog(str);
 }
 
-void LocalPlayer::switchMagicAttack()
-{
-    mMagicAttackType++;
-    if (mMagicAttackType > 4)
-        mMagicAttackType = 0;
-
-    config.setValue("magicAttackType", mMagicAttackType);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
-}
-
-void LocalPlayer::switchPvpAttack()
-{
-    mPvpAttackType++;
-    if (mPvpAttackType > 3)
-        mPvpAttackType = 0;
-
-    config.setValue("pvpAttackType", mPvpAttackType);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
-}
-
 void LocalPlayer::magicAttack()
 {
     if (!chatWindow || !isAlive()
@@ -2968,17 +3226,6 @@ void LocalPlayer::tryMagic(std::string spell, int baseMagic,
             chatWindow->localChatInput(spell);
         }
     }
-}
-
-void LocalPlayer::changeMoveToTargetType()
-{
-    mMoveToTargetType++;
-    if (mMoveToTargetType > 7)
-        mMoveToTargetType = 0;
-
-    config.setValue("moveToTargetType", mMoveToTargetType);
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
 }
 
 void LocalPlayer::loadHomes()
@@ -3136,14 +3383,6 @@ void LocalPlayer::saveHomes()
     serverConfig.setValue("playerHomes", ss.str());
 }
 
-
-void LocalPlayer::switchGameModifiers()
-{
-    mDisableGameModifiers = !mDisableGameModifiers;
-    config.setValue("disableGameModifiers", mDisableGameModifiers);
-    miniStatusWindow->updateStatus();
-}
-
 void LocalPlayer::pingRequest()
 {
     if (mWaitPing == true && mPingSendTick != 0)
@@ -3186,39 +3425,6 @@ void LocalPlayer::tryPingRequest()
     }
 }
 
-void LocalPlayer::changeAwayMode()
-{
-    mAwayMode = !mAwayMode;
-    mAfkTime = 0;
-    mInactive = false;
-    updateName();
-    if (miniStatusWindow)
-        miniStatusWindow->updateStatus();
-    if (mAwayMode)
-    {
-        if (chatWindow)
-            chatWindow->clearAwayLog();
-
-        cancelFollow();
-        navigateClean();
-        if (outfitWindow)
-            outfitWindow->wearAwayOutfit();
-        mAwayDialog = new OkDialog(_("Away"),
-            config.getStringValue("afkMessage"), true, false);
-        mAwayDialog->addActionListener(mAwayListener);
-        sound.volumeOff();
-    }
-    else
-    {
-        mAwayDialog = nullptr;
-        sound.volumeRestore();
-        if (chatWindow)
-        {
-            chatWindow->displayAwayLog();
-            chatWindow->clearAwayLog();
-        }
-    }
-}
 
 void LocalPlayer::setAway(const std::string &message)
 {
@@ -3424,7 +3630,6 @@ void LocalPlayer::updateCoords()
                     tmpLayer->clean();
                     tmpLayer->addRoad(mNavigatePath);
                 }
-//                navigateTo(mNavigateX, mNavigateY);
             }
         }
     }
@@ -3979,6 +4184,15 @@ bool LocalPlayer::checAttackPermissions(Being *target)
         case 3:
             return false;
     }
+}
+
+
+const char *LocalPlayer::getVarItem(const char **arr, unsigned index,
+                                    unsigned sz)
+{
+    if (index < sz)
+        return arr[index];
+    return arr[sz];
 }
 
 void AwayListener::action(const gcn::ActionEvent &event)

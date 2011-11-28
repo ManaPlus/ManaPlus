@@ -78,6 +78,14 @@ class Game
 
         void handleInput();
 
+        bool handleOutfitsKeys(SDL_Event &event, bool &used);
+
+        bool handleSwitchKeys(SDL_Event &event, bool &used);
+
+        void handleMoveAndAttack(SDL_Event &event, bool wasDown);
+
+        void handleActive(SDL_Event &event);
+
         void changeMap(const std::string &mapName);
 
         /**
