@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-11-26 02:20+0300\n"
+"POT-Creation-Date: 2011-11-29 18:31+0300\n"
 "PO-Revision-Date: 2011-11-20 17:44+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
@@ -740,7 +740,7 @@ msgstr "радуга 3"
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
 #: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
-#: src/gui/setup_theme.cpp:173 src/gui/setup_video.cpp:211
+#: src/gui/setup_theme.cpp:174 src/gui/setup_video.cpp:211
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
 msgid "???"
@@ -2401,74 +2401,79 @@ msgid "Indonesian"
 msgstr "Индонезийский"
 
 #: src/gui/setup_theme.cpp:153
+#, fuzzy
+msgid "Polish"
+msgstr "Английский"
+
+#: src/gui/setup_theme.cpp:154
 msgid "Japanese"
 msgstr "Японский"
 
-#: src/gui/setup_theme.cpp:154
+#: src/gui/setup_theme.cpp:155
 msgid "Dutch (Belgium/Flemish)"
 msgstr "Голландский (Бельгийский / Фламандский)"
 
-#: src/gui/setup_theme.cpp:155
+#: src/gui/setup_theme.cpp:156
 msgid "Portuguese"
 msgstr "Португальский"
 
-#: src/gui/setup_theme.cpp:156
+#: src/gui/setup_theme.cpp:157
 msgid "Portuguese (Brazilian)"
 msgstr "Португальский (Бразильский)"
 
-#: src/gui/setup_theme.cpp:157
+#: src/gui/setup_theme.cpp:158
 msgid "Russian"
 msgstr "Русский"
 
-#: src/gui/setup_theme.cpp:158
+#: src/gui/setup_theme.cpp:159
 msgid "Spanish (Castilian)"
 msgstr "Испанский (Кастильский)"
 
-#: src/gui/setup_theme.cpp:190
+#: src/gui/setup_theme.cpp:191
 msgid "Theme"
 msgstr "Тема"
 
-#: src/gui/setup_theme.cpp:192
+#: src/gui/setup_theme.cpp:193
 msgid "Gui theme"
 msgstr "Тема интерфейса"
 
-#: src/gui/setup_theme.cpp:193
+#: src/gui/setup_theme.cpp:194
 msgid "Language"
 msgstr "Язык"
 
-#: src/gui/setup_theme.cpp:194
+#: src/gui/setup_theme.cpp:195
 msgid "Main Font"
 msgstr "Основной шрифт"
 
-#: src/gui/setup_theme.cpp:195
+#: src/gui/setup_theme.cpp:196
 msgid "Bold font"
 msgstr "Жирный шрифт"
 
-#: src/gui/setup_theme.cpp:196
+#: src/gui/setup_theme.cpp:197
 msgid "Particle font"
 msgstr "Шрифт частиц"
 
-#: src/gui/setup_theme.cpp:197
+#: src/gui/setup_theme.cpp:198
 msgid "Help font"
 msgstr "Шрифт помощи"
 
-#: src/gui/setup_theme.cpp:198
+#: src/gui/setup_theme.cpp:199
 msgid "Secure font"
 msgstr "Безопасный шрифт"
 
-#: src/gui/setup_theme.cpp:199
+#: src/gui/setup_theme.cpp:200
 msgid "Japanese font"
 msgstr "Японский шрифт"
 
-#: src/gui/setup_theme.cpp:236
+#: src/gui/setup_theme.cpp:237
 msgid "Font size"
 msgstr "Размер шрифта"
 
-#: src/gui/setup_theme.cpp:377
+#: src/gui/setup_theme.cpp:378
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:378 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
@@ -3263,23 +3268,23 @@ msgstr "Бордюр домашней позиции"
 msgid "Road Point"
 msgstr "Точка дороги"
 
-#: src/gui/whoisonline.cpp:85 src/gui/whoisonline.cpp:494
+#: src/gui/whoisonline.cpp:87 src/gui/whoisonline.cpp:503
 msgid "Who Is Online - Updating"
 msgstr "Кто онлайн - обновление"
 
-#: src/gui/whoisonline.cpp:108
+#: src/gui/whoisonline.cpp:110
 msgid "Update"
 msgstr "Обновить"
 
-#: src/gui/whoisonline.cpp:307
+#: src/gui/whoisonline.cpp:309
 msgid "Who Is Online - "
 msgstr "Кто онлайн - "
 
-#: src/gui/whoisonline.cpp:508
+#: src/gui/whoisonline.cpp:517
 msgid "Who Is Online - error"
 msgstr "Кто онлайн - ошибка"
 
-#: src/gui/whoisonline.cpp:540
+#: src/gui/whoisonline.cpp:549
 msgid "Who Is Online - Update"
 msgstr "Кто онлайн - обновление"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-11-26 02:20+0300\n"
+"POT-Creation-Date: 2011-11-29 18:31+0300\n"
 "PO-Revision-Date: 2011-11-11 21:38+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -731,7 +731,7 @@ msgstr "sateenkaari 3"
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
 #: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
-#: src/gui/setup_theme.cpp:173 src/gui/setup_video.cpp:211
+#: src/gui/setup_theme.cpp:174 src/gui/setup_video.cpp:211
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
 msgid "???"
@@ -2386,74 +2386,78 @@ msgid "Indonesian"
 msgstr ""
 
 #: src/gui/setup_theme.cpp:153
-msgid "Japanese"
+msgid "Polish"
 msgstr ""
 
 #: src/gui/setup_theme.cpp:154
-msgid "Dutch (Belgium/Flemish)"
+msgid "Japanese"
 msgstr ""
 
 #: src/gui/setup_theme.cpp:155
-msgid "Portuguese"
+msgid "Dutch (Belgium/Flemish)"
 msgstr ""
 
 #: src/gui/setup_theme.cpp:156
-msgid "Portuguese (Brazilian)"
+msgid "Portuguese"
 msgstr ""
 
 #: src/gui/setup_theme.cpp:157
-msgid "Russian"
+msgid "Portuguese (Brazilian)"
 msgstr ""
 
 #: src/gui/setup_theme.cpp:158
+msgid "Russian"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:159
 msgid "Spanish (Castilian)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:190
+#: src/gui/setup_theme.cpp:191
 msgid "Theme"
 msgstr "Teema"
 
-#: src/gui/setup_theme.cpp:192
+#: src/gui/setup_theme.cpp:193
 msgid "Gui theme"
 msgstr "Käyttöliittymän teema"
 
-#: src/gui/setup_theme.cpp:193
+#: src/gui/setup_theme.cpp:194
 msgid "Language"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:194
+#: src/gui/setup_theme.cpp:195
 msgid "Main Font"
 msgstr "Pääkirjasin"
 
-#: src/gui/setup_theme.cpp:195
+#: src/gui/setup_theme.cpp:196
 msgid "Bold font"
 msgstr "Lihavoitu kirjasin"
 
-#: src/gui/setup_theme.cpp:196
+#: src/gui/setup_theme.cpp:197
 msgid "Particle font"
 msgstr "Hiukkaskirjasin"
 
-#: src/gui/setup_theme.cpp:197
+#: src/gui/setup_theme.cpp:198
 msgid "Help font"
 msgstr "Ohjekirjasin"
 
-#: src/gui/setup_theme.cpp:198
+#: src/gui/setup_theme.cpp:199
 msgid "Secure font"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:199
+#: src/gui/setup_theme.cpp:200
 msgid "Japanese font"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:236
+#: src/gui/setup_theme.cpp:237
 msgid "Font size"
 msgstr "Kirjasimen koko"
 
-#: src/gui/setup_theme.cpp:377
+#: src/gui/setup_theme.cpp:378
 msgid "Theme Changed"
 msgstr "Ulkoasua muutettu"
 
-#: src/gui/setup_theme.cpp:378 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "Käynnistä ohjelma uudelleen, jotta muutos astuu voimaan."
@@ -3241,23 +3245,23 @@ msgstr "Kotipaikan raja"
 msgid "Road Point"
 msgstr "Väyläpiste"
 
-#: src/gui/whoisonline.cpp:85 src/gui/whoisonline.cpp:494
+#: src/gui/whoisonline.cpp:87 src/gui/whoisonline.cpp:503
 msgid "Who Is Online - Updating"
 msgstr "Kuka on linjoila - päivitän"
 
-#: src/gui/whoisonline.cpp:108
+#: src/gui/whoisonline.cpp:110
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/gui/whoisonline.cpp:307
+#: src/gui/whoisonline.cpp:309
 msgid "Who Is Online - "
 msgstr "Kuka on linjoilla - "
 
-#: src/gui/whoisonline.cpp:508
+#: src/gui/whoisonline.cpp:517
 msgid "Who Is Online - error"
 msgstr "Kuka on linjoilla - virhe"
 
-#: src/gui/whoisonline.cpp:540
+#: src/gui/whoisonline.cpp:549
 msgid "Who Is Online - Update"
 msgstr "Kuka on linjoilla - päivitä"
 

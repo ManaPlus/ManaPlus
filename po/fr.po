@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-11-26 02:20+0300\n"
-"PO-Revision-Date: 2011-11-11 21:38+0000\n"
-"Last-Translator: akaras <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2011-11-29 18:31+0300\n"
+"PO-Revision-Date: 2011-11-28 21:35+0000\n"
+"Last-Translator: reid <reidyaro@gmail.com>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/"
 "fr/)\n"
 "Language: fr\n"
@@ -241,7 +241,7 @@ msgstr "sous liste noir"
 
 #: src/commandhandler.cpp:594
 msgid "enemy"
-msgstr ""
+msgstr "ennemi"
 
 #: src/commandhandler.cpp:609
 msgid "Player already erased!"
@@ -737,7 +737,7 @@ msgstr "arc en ciel 3"
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
 #: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
-#: src/gui/setup_theme.cpp:173 src/gui/setup_video.cpp:211
+#: src/gui/setup_theme.cpp:174 src/gui/setup_video.cpp:211
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
 msgid "???"
@@ -1351,7 +1351,7 @@ msgstr "Liste noir"
 #: src/gui/popupmenu.cpp:650 src/gui/popupmenu.cpp:658
 #: src/gui/popupmenu.cpp:666
 msgid "Set as enemy"
-msgstr ""
+msgstr "Définir comme ennemi"
 
 #: src/gui/popupmenu.cpp:149 src/gui/popupmenu.cpp:157
 #: src/gui/popupmenu.cpp:165 src/gui/popupmenu.cpp:173
@@ -1976,7 +1976,7 @@ msgstr "Activer la manette de jeu"
 
 #: src/gui/setup_joystick.cpp:75
 msgid "Use joystick if client window inactive"
-msgstr ""
+msgstr "Continuer d'utiliser le joystick si la fenêtre est minimisée."
 
 #: src/gui/setup_joystick.cpp:78
 msgid "Joystick"
@@ -1988,7 +1988,7 @@ msgstr "Stop"
 
 #: src/gui/setup_joystick.cpp:149
 msgid "Rotate the stick and dont press buttons"
-msgstr ""
+msgstr "Tournez le manche et n'appuyer pas sur les boutons"
 
 #: src/gui/setup_keyboard.cpp:80
 msgid "Keyboard"
@@ -2172,7 +2172,7 @@ msgstr "Activer le testeur de robots"
 
 #: src/gui/setup_other.cpp:174
 msgid "Enable buggy servers protection (do not disable)"
-msgstr ""
+msgstr "Active la protection pour serveurs defaillant (ne pas désactiver)"
 
 #: src/gui/setup_other.cpp:178
 msgid "Enable debug log"
@@ -2318,7 +2318,7 @@ msgstr "Sous liste noir"
 
 #: src/gui/setup_relations.cpp:76
 msgid "Enemy"
-msgstr ""
+msgstr "Ennemi"
 
 #: src/gui/setup_relations.cpp:240
 msgid "Allow trading"
@@ -2366,101 +2366,106 @@ msgstr "Immense (15)"
 
 #: src/gui/setup_theme.cpp:146
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Chinois (Chine)"
 
 #: src/gui/setup_theme.cpp:147
 msgid "Czech"
-msgstr ""
+msgstr "Tchèque"
 
 #: src/gui/setup_theme.cpp:148
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: src/gui/setup_theme.cpp:149
 msgid "Finnish"
-msgstr ""
+msgstr "Finnois"
 
 #: src/gui/setup_theme.cpp:150
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: src/gui/setup_theme.cpp:151
 msgid "German"
-msgstr ""
+msgstr "Allemand"
 
 #: src/gui/setup_theme.cpp:152
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonésien"
 
 #: src/gui/setup_theme.cpp:153
-msgid "Japanese"
-msgstr ""
+#, fuzzy
+msgid "Polish"
+msgstr "Anglais"
 
 #: src/gui/setup_theme.cpp:154
-msgid "Dutch (Belgium/Flemish)"
-msgstr ""
+msgid "Japanese"
+msgstr "Japonais"
 
 #: src/gui/setup_theme.cpp:155
-msgid "Portuguese"
-msgstr ""
+msgid "Dutch (Belgium/Flemish)"
+msgstr "Néerlandais (Belgique / Flandre)"
 
 #: src/gui/setup_theme.cpp:156
-msgid "Portuguese (Brazilian)"
-msgstr ""
+msgid "Portuguese"
+msgstr "Portugais"
 
 #: src/gui/setup_theme.cpp:157
-msgid "Russian"
-msgstr ""
+msgid "Portuguese (Brazilian)"
+msgstr "Portugais (Brésilien)"
 
 #: src/gui/setup_theme.cpp:158
-msgid "Spanish (Castilian)"
-msgstr ""
+msgid "Russian"
+msgstr "Russe"
 
-#: src/gui/setup_theme.cpp:190
+#: src/gui/setup_theme.cpp:159
+msgid "Spanish (Castilian)"
+msgstr "Espagnol (Castillan)"
+
+#: src/gui/setup_theme.cpp:191
 msgid "Theme"
 msgstr "Thème"
 
-#: src/gui/setup_theme.cpp:192
+#: src/gui/setup_theme.cpp:193
 msgid "Gui theme"
 msgstr "Thème de l'interface"
 
-#: src/gui/setup_theme.cpp:193
-msgid "Language"
-msgstr ""
-
 #: src/gui/setup_theme.cpp:194
+msgid "Language"
+msgstr "Langue"
+
+#: src/gui/setup_theme.cpp:195
 msgid "Main Font"
 msgstr "Police principale"
 
-#: src/gui/setup_theme.cpp:195
+#: src/gui/setup_theme.cpp:196
 msgid "Bold font"
 msgstr "Police grasse"
 
-#: src/gui/setup_theme.cpp:196
+#: src/gui/setup_theme.cpp:197
 msgid "Particle font"
 msgstr "Taille des effets de particules"
 
-#: src/gui/setup_theme.cpp:197
+#: src/gui/setup_theme.cpp:198
 msgid "Help font"
 msgstr "Police de l'aide"
 
-#: src/gui/setup_theme.cpp:198
+#: src/gui/setup_theme.cpp:199
 msgid "Secure font"
 msgstr "Police sécurisée"
 
-#: src/gui/setup_theme.cpp:199
+#: src/gui/setup_theme.cpp:200
 msgid "Japanese font"
 msgstr "police japonaise"
 
-#: src/gui/setup_theme.cpp:236
+#: src/gui/setup_theme.cpp:237
 msgid "Font size"
 msgstr "Taille de police"
 
-#: src/gui/setup_theme.cpp:377
+#: src/gui/setup_theme.cpp:378
 msgid "Theme Changed"
 msgstr "Thème changé"
 
-#: src/gui/setup_theme.cpp:378 src/gui/setup_video.cpp:619
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:619
 #: src/gui/setup_video.cpp:624
 msgid "Restart your client for the change to take effect."
 msgstr "Redémarrez le jeu pour que les changements soient appliqués."
@@ -3261,23 +3266,23 @@ msgstr "Limites de votre position"
 msgid "Road Point"
 msgstr "Étape"
 
-#: src/gui/whoisonline.cpp:85 src/gui/whoisonline.cpp:494
+#: src/gui/whoisonline.cpp:87 src/gui/whoisonline.cpp:503
 msgid "Who Is Online - Updating"
 msgstr "Qui est en ligne - Mise à jour"
 
-#: src/gui/whoisonline.cpp:108
+#: src/gui/whoisonline.cpp:110
 msgid "Update"
 msgstr "Mise à jour"
 
-#: src/gui/whoisonline.cpp:307
+#: src/gui/whoisonline.cpp:309
 msgid "Who Is Online - "
 msgstr "Qui est en ligne - "
 
-#: src/gui/whoisonline.cpp:508
+#: src/gui/whoisonline.cpp:517
 msgid "Who Is Online - error"
 msgstr "Qui est en ligne - Erreur"
 
-#: src/gui/whoisonline.cpp:540
+#: src/gui/whoisonline.cpp:549
 msgid "Who Is Online - Update"
 msgstr "Qui est en ligne - Mise à jour"
 
@@ -3900,11 +3905,11 @@ msgstr "Vers la droite"
 
 #: src/keyboardconfig.cpp:310
 msgid "Crazy moves"
-msgstr "Mouvements de dingue"
+msgstr "Mouvements de fous"
 
 #: src/keyboardconfig.cpp:312
 msgid "Change Crazy Move mode"
-msgstr "Changer le mode de mouvement de dingue"
+msgstr "Changer le mode de mouvement de fou"
 
 #: src/keyboardconfig.cpp:314
 msgid "Quick Drop N Items from 0 slot"
@@ -3936,7 +3941,7 @@ msgstr "Changer d'attaque magique"
 
 #: src/keyboardconfig.cpp:329
 msgid "Switch pvp attack"
-msgstr ""
+msgstr "Commutateur d'attaque en PVP"
 
 #: src/keyboardconfig.cpp:330
 msgid "Change move type"
@@ -4042,33 +4047,32 @@ msgstr "(I) Mouvements inversés"
 
 #: src/localplayer.cpp:1889
 msgid "(c) moves with some crazy moves"
-msgstr "(c) Mouvements un peu fous"
+msgstr "(c) mouvements un peu fous"
 
 #: src/localplayer.cpp:1890
 msgid "(C) moves with crazy moves"
-msgstr "(C) Mouvement complètement fous"
+msgstr "(C) mouvements complètements fous"
 
 #: src/localplayer.cpp:1891
 msgid "(d) double normal + crazy"
 msgstr "(d) double normal et fou"
 
 #: src/localplayer.cpp:1892
-#, fuzzy
 msgid "(?) unknown move"
-msgstr "(?) Suivre : mode inconnu"
+msgstr "(?) déplacement inconnue"
 
 #: src/localplayer.cpp:1914
-#, fuzzy, c-format
+#, c-format
 msgid "(%d) crazy move number %d"
-msgstr "(?) Mouvements fous"
+msgstr "(%d) mouvement de fou numerique %d"
 
 #: src/localplayer.cpp:1919
 msgid "(a) custom crazy move"
-msgstr "(a) Mouvements fous personnalisés"
+msgstr "(a) mouvements fous personnalisés"
 
 #: src/localplayer.cpp:1923
 msgid "(?) crazy move"
-msgstr "(?) Mouvements fous"
+msgstr "(?) mouvements fous"
 
 #: src/localplayer.cpp:1937
 msgid "(0) default moves to target"
@@ -4236,23 +4240,23 @@ msgstr "(?) Sorts d'attaque"
 
 #: src/localplayer.cpp:2115
 msgid "(a) attack all players"
-msgstr ""
+msgstr "(a) attaque tous les joueurs"
 
 #: src/localplayer.cpp:2116
 msgid "(f) attack not friends"
-msgstr ""
+msgstr "(f) n'attaque pas des amis"
 
 #: src/localplayer.cpp:2117
 msgid "(b) attack bad relations"
-msgstr ""
+msgstr "(b) attaque les mauvaises relations"
 
 #: src/localplayer.cpp:2118
 msgid "(d) dont attack players"
-msgstr ""
+msgstr "(d) Ne pas attaquer les joueurs"
 
 #: src/localplayer.cpp:2119
 msgid "(?) pvp attack"
-msgstr ""
+msgstr "(?) attaque en PVP"
 
 #: src/localplayer.cpp:2138
 msgid "(D) default imitation"
@@ -4299,9 +4303,8 @@ msgid "Game modifiers are disabled"
 msgstr "Modificateurs de mode de jeu désactivés"
 
 #: src/localplayer.cpp:2230
-#, fuzzy
 msgid "Game modifiers are unknown"
-msgstr "Modificateurs de mode de jeu activés"
+msgstr "Les modificateurs de jeux sont inconnus"
 
 #: src/localplayer.cpp:3746
 msgid "Follow: "
@@ -5679,99 +5682,3 @@ msgstr "PM %+d"
 #: src/resources/itemdb.cpp:169
 msgid "Unknown item"
 msgstr "Objet inconnu"
-
-#~ msgid "(?) move"
-#~ msgstr "(?) Mouvements"
-
-#~ msgid "(?) map view"
-#~ msgstr "(?) Carte"
-
-#~ msgid "(D) design camera mode"
-#~ msgstr "(D) Définir le mode camera"
-
-#~ msgid "(D)"
-#~ msgstr "(D)"
-
-#~ msgid "(I)"
-#~ msgstr "(I)"
-
-#~ msgid "(c)"
-#~ msgstr "(c)"
-
-#~ msgid "(C)"
-#~ msgstr "(C)"
-
-#~ msgid "(d)"
-#~ msgstr "(d)"
-
-#~ msgid "(?)"
-#~ msgstr "(?)"
-
-#~ msgid "(a)"
-#~ msgstr "(a)"
-
-#~ msgid "(0)"
-#~ msgstr "(0)"
-
-#~ msgid "(1)"
-#~ msgstr "(1)"
-
-#~ msgid "(2)"
-#~ msgstr "(2)"
-
-#~ msgid "(3)"
-#~ msgstr "(3)"
-
-#~ msgid "(5)"
-#~ msgstr "(5)"
-
-#~ msgid "(7)"
-#~ msgstr "(7)"
-
-#~ msgid "(A)"
-#~ msgstr "(A)"
-
-#~ msgid "(R)"
-#~ msgstr "(R)"
-
-#~ msgid "(M)"
-#~ msgstr "(M)"
-
-#~ msgid "(P)"
-#~ msgstr "(P)"
-
-#~ msgid "(s)"
-#~ msgstr "(s)"
-
-#~ msgid "(S)"
-#~ msgstr "(S)"
-
-#~ msgid "(G)"
-#~ msgstr "(G)"
-
-#~ msgid "(f)"
-#~ msgstr "(f)"
-
-#~ msgid "(F)"
-#~ msgstr "(F)"
-
-#~ msgid "(U)"
-#~ msgstr "(U)"
-
-#~ msgid "(b)"
-#~ msgstr "(b)"
-
-#~ msgid "(g)"
-#~ msgstr "(g)"
-
-#~ msgid "(N)"
-#~ msgstr "(N)"
-
-#~ msgid "(u)"
-#~ msgstr "(u)"
-
-#~ msgid "(e)"
-#~ msgstr "(e)"
-
-#~ msgid "(O)"
-#~ msgstr "(O)"
