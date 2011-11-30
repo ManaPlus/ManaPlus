@@ -71,6 +71,8 @@ class PlayerHandler
         virtual int getAttackLocation() const = 0;
 
         virtual Vector getDefaultWalkSpeed() const = 0;
+
+        virtual void requestOnlineList() = 0;
 };
 
 } // namespace Net

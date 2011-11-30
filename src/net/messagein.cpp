@@ -241,4 +241,29 @@ std::string MessageIn::readRawString(int length)
     return str;
 }
 
+char *MessageIn::readBytes(int length)
+{
+    // Get string length
+    if (length < 0)
+        length = readInt16();
+
+    // Make sure the string isn't erroneous
+    if (length < 0 || mPos + length > mLength)
+    {
+        mPos = mLength + 1;
+        DEBUGLOG("readBytesString error");
+        return nullptr;
+    }
+
+    char *buf = new char[length + 2];
+
+    memcpy (buf, mData + mPos, length);
+    buf[length] = 0;
+    buf[length + 1] = 0;
+    mPos += length;
+
+    PacketCounters::incInBytes(length);
+    return buf;
+}
+
 }

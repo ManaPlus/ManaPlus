@@ -333,5 +333,7 @@ enum
 #define SMSG_PVP_SET                 0x019a
 #define CMSG_IGNORE_ALL              0x00d0
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
+#define CMSG_ONLINE_LIST             0x0210
+#define SMSG_ONLINE_LIST             0x0211
 
 #endif

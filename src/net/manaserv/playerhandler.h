@@ -70,6 +70,8 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
         int getJobLocation() const;
         int getAttackLocation() const;
 
+        void requestOnlineList();
+
         Vector getDefaultWalkSpeed() const;
 
     private:

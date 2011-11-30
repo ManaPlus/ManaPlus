@@ -443,4 +443,9 @@ Vector PlayerHandler::getDefaultWalkSpeed() const
     return ManaServ::BeingHandler::giveSpeedInPixelsPerTicks(6.0f);
 }
 
+void PlayerHandler::requestOnlineList()
+{
+
+}
+
 } // namespace ManaServ

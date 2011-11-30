@@ -51,6 +51,8 @@ class PlayerHandler : public MessageHandler, public Ea::PlayerHandler
         void setDirection(char direction);
         void setDestination(int x, int y, int direction = -1);
         void changeAction(Being::Action action);
+        void processOnlineList(Net::MessageIn &msg);
+        void requestOnlineList();
 
         void respawn();
 };

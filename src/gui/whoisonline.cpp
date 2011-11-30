@@ -41,6 +41,9 @@
 #include "playerrelations.h"
 #include "main.h"
 
+#include "net/net.h"
+#include "net/playerhandler.h"
+
 #include "gui/chatwindow.h"
 
 #include "utils/gettext.h"
@@ -181,7 +184,113 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
     }
 }
 
-void WhoIsOnline::loadList()
+void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
+                               std::vector<std::string> &neutral,
+                               std::vector<std::string> &disregard,
+                               std::vector<std::string> enemy,
+                               int numOnline)
+{
+    //Set window caption
+    setCaption(_("Who Is Online - ") + toString(numOnline));
+
+    //List the online people
+    sort(friends.begin(), friends.end(), nameCompare);
+    sort(neutral.begin(), neutral.end(), nameCompare);
+    sort(disregard.begin(), disregard.end(), nameCompare);
+    bool addedFromSection(false);
+    for (int i = 0; i < static_cast<int>(friends.size()); i++)
+    {
+        mBrowserBox->addRow(friends.at(i));
+        addedFromSection = true;
+    }
+    if (addedFromSection == true)
+    {
+        mBrowserBox->addRow("---");
+        addedFromSection = false;
+    }
+    for (int i = 0; i < static_cast<int>(enemy.size()); i++)
+    {
+        mBrowserBox->addRow(enemy.at(i));
+        addedFromSection = true;
+    }
+    if (addedFromSection == true)
+    {
+        mBrowserBox->addRow("---");
+        addedFromSection = false;
+    }
+    for (int i = 0; i < static_cast<int>(neutral.size()); i++)
+    {
+        mBrowserBox->addRow(neutral.at(i));
+        addedFromSection = true;
+    }
+    if (addedFromSection == true && !disregard.empty())
+    {
+        mBrowserBox->addRow("---");
+        addedFromSection = false;
+    }
+    for (int i = 0; i < static_cast<int>(disregard.size()); i++)
+    {
+        mBrowserBox->addRow(disregard.at(i));
+    }
+
+    if (mScrollArea->getVerticalMaxScroll() <
+        mScrollArea->getVerticalScrollAmount())
+    {
+        mScrollArea->setVerticalScrollAmount(
+            mScrollArea->getVerticalMaxScroll());
+    }
+}
+
+void WhoIsOnline::loadList(std::vector<std::string> &list)
+{
+    mBrowserBox->clearRows();
+    int numOnline = list.size();
+    std::vector<std::string> friends;
+    std::vector<std::string> neutral;
+    std::vector<std::string> disregard;
+    std::vector<std::string> enemy;
+
+    mOnlinePlayers.clear();
+    mShowLevel = config.getBoolValue("showlevel");
+
+    std::vector<std::string>::const_iterator it = list.begin();
+    std::vector<std::string>::const_iterator it_end = list.end();
+    for (; it != it_end; ++ it)
+    {
+        std::string nick = *it;
+        mOnlinePlayers.insert(nick);
+
+        switch (player_relations.getRelation(nick))
+        {
+            case PlayerRelation::NEUTRAL:
+            default:
+                neutral.push_back(prepareNick(nick, 0, "0"));
+                break;
+
+            case PlayerRelation::FRIEND:
+                friends.push_back(prepareNick(nick, 0, "2"));
+                break;
+
+            case PlayerRelation::DISREGARDED:
+            case PlayerRelation::BLACKLISTED:
+                disregard.push_back(prepareNick(nick, 0, "8"));
+                break;
+
+            case PlayerRelation::ENEMY2:
+                enemy.push_back(prepareNick(nick, 0, "1"));
+                break;
+
+            case PlayerRelation::IGNORED:
+            case PlayerRelation::ERASED:
+                //Ignore the ignored.
+                break;
+        }
+    }
+
+    updateWindow(friends, neutral, disregard, enemy, numOnline);
+}
+
+void WhoIsOnline::loadWebList()
 {
     if (!mMemoryBuffer)
         return;
@@ -303,59 +412,11 @@ void WhoIsOnline::loadList()
         line = strtok(nullptr, "\n");
     }
 
-    //Set window caption
-    setCaption(_("Who Is Online - ") + toString(numOnline));
-
-    //List the online people
-    sort(friends.begin(), friends.end(), nameCompare);
-    sort(neutral.begin(), neutral.end(), nameCompare);
-    sort(disregard.begin(), disregard.end(), nameCompare);
-    bool addedFromSection(false);
-    for (int i = 0; i < static_cast<int>(friends.size()); i++)
-    {
-        mBrowserBox->addRow(friends.at(i));
-        addedFromSection = true;
-    }
-    if (addedFromSection == true)
-    {
-        mBrowserBox->addRow("---");
-        addedFromSection = false;
-    }
-    for (int i = 0; i < static_cast<int>(enemy.size()); i++)
-    {
-        mBrowserBox->addRow(enemy.at(i));
-        addedFromSection = true;
-    }
-    if (addedFromSection == true)
-    {
-        mBrowserBox->addRow("---");
-        addedFromSection = false;
-    }
-    for (int i = 0; i < static_cast<int>(neutral.size()); i++)
-    {
-        mBrowserBox->addRow(neutral.at(i));
-        addedFromSection = true;
-    }
-    if (addedFromSection == true && !disregard.empty())
-    {
-        mBrowserBox->addRow("---");
-        addedFromSection = false;
-    }
-    for (int i = 0; i < static_cast<int>(disregard.size()); i++)
-    {
-        mBrowserBox->addRow(disregard.at(i));
-    }
+    updateWindow(friends, neutral, disregard, enemy, numOnline);
 
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
     mMemoryBuffer = nullptr;
-
-    if (mScrollArea->getVerticalMaxScroll() <
-        mScrollArea->getVerticalScrollAmount())
-    {
-        mScrollArea->setVerticalScrollAmount(
-            mScrollArea->getVerticalMaxScroll());
-    }
 }
 
 size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
@@ -461,15 +522,22 @@ int WhoIsOnline::downloadThread(void *ptr)
 
 void WhoIsOnline::download()
 {
-    mDownloadComplete = true;
-    if (mThread && SDL_GetThreadID(mThread))
-        SDL_WaitThread(mThread, nullptr);
+    if (serverVersion < 3)
+    {
+        mDownloadComplete = true;
+        if (mThread && SDL_GetThreadID(mThread))
+            SDL_WaitThread(mThread, nullptr);
 
-    mDownloadComplete = false;
-    mThread = SDL_CreateThread(WhoIsOnline::downloadThread, this);
+        mDownloadComplete = false;
+        mThread = SDL_CreateThread(WhoIsOnline::downloadThread, this);
 
-    if (mThread == nullptr)
-        mDownloadStatus = UPDATE_ERROR;
+        if (mThread == nullptr)
+            mDownloadStatus = UPDATE_ERROR;
+    }
+    else
+    {
+        Net::getPlayerHandler()->requestOnlineList();
+    }
 }
 
 void WhoIsOnline::logic()
@@ -513,7 +581,7 @@ void WhoIsOnline::logic()
         case UPDATE_LIST:
             if (mDownloadComplete == true)
             {
-                loadList();
+                loadWebList();
                 mDownloadStatus = UPDATE_COMPLETE;
                 mUpdateButton->setEnabled(true);
                 mUpdateTimer = 0;
@@ -532,18 +600,27 @@ void WhoIsOnline::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "update")
     {
-        if (mDownloadStatus == UPDATE_COMPLETE)
+        if (serverVersion < 3)
+        {
+            if (mDownloadStatus == UPDATE_COMPLETE)
+            {
+                mUpdateTimer = cur_time - 20;
+                if (mUpdateButton)
+                    mUpdateButton->setEnabled(false);
+                setCaption(_("Who Is Online - Update"));
+                if (mThread && SDL_GetThreadID(mThread))
+                {
+                    SDL_WaitThread(mThread, nullptr);
+                    mThread = nullptr;
+                }
+                mDownloadComplete = true;
+            }
+        }
+        else
         {
             mUpdateTimer = cur_time - 20;
-            if (mUpdateButton)
-                mUpdateButton->setEnabled(false);
+            Net::getPlayerHandler()->requestOnlineList();
             setCaption(_("Who Is Online - Update"));
-            if (mThread && SDL_GetThreadID(mThread))
-            {
-                SDL_WaitThread(mThread, nullptr);
-                mThread = nullptr;
-            }
-            mDownloadComplete = true;
         }
     }
 }
