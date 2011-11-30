@@ -536,7 +536,8 @@ void WhoIsOnline::download()
     }
     else
     {
-        Net::getPlayerHandler()->requestOnlineList();
+        if (Client::limitPackets(PACKET_ONLINELIST))
+            Net::getPlayerHandler()->requestOnlineList();
     }
 }
 
@@ -618,9 +619,11 @@ void WhoIsOnline::action(const gcn::ActionEvent &event)
         }
         else
         {
-            mUpdateTimer = cur_time - 20;
-            Net::getPlayerHandler()->requestOnlineList();
-            setCaption(_("Who Is Online - Update"));
+            if (Client::limitPackets(PACKET_ONLINELIST))
+            {
+                mUpdateTimer = cur_time;
+                Net::getPlayerHandler()->requestOnlineList();
+            }
         }
     }
 }

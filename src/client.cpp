@@ -2055,6 +2055,11 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_STOPATTACK].cntLimit = 1;
     mPacketLimits[PACKET_STOPATTACK].cnt = 0;
 
+    mPacketLimits[PACKET_ONLINELIST].timeLimit = 1800;
+    mPacketLimits[PACKET_ONLINELIST].lastTime = 0;
+    mPacketLimits[PACKET_ONLINELIST].cntLimit = 1;
+    mPacketLimits[PACKET_ONLINELIST].cnt = 0;
+
     if (!mServerConfigDir.empty())
     {
         std::string packetLimitsName =
@@ -2091,7 +2096,7 @@ void Client::initPacketLimiter()
                     mPacketLimits[f].timeLimit = atoi(line);
             }
             inPacketFile.close();
-            if (ver < 3)
+            if (ver < 4)
                 writePacketLimits(packetLimitsName);
         }
     }
@@ -2106,7 +2111,7 @@ void Client::writePacketLimits(std::string packetLimitsName)
         outPacketFile.close();
         return;
     }
-    outPacketFile << "3" << std::endl;
+    outPacketFile << "4" << std::endl;
     for (int f = 0; f < PACKET_SIZE; f ++)
     {
         outPacketFile << toString(mPacketLimits[f].timeLimit)
