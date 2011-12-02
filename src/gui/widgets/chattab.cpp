@@ -205,8 +205,7 @@ void ChatTab::chatLog(std::string line, Own own,
 
     // if configured, move magic messages log to debug chat tab
     if (localChatTab && this == localChatTab
-        && ((config.getBoolValue("showMagicInDebug")
-        && own == BY_PLAYER && tmp.text.length() > 1
+        && ((config.getBoolValue("showMagicInDebug") && own == BY_PLAYER
         && tmp.text.length() > 1 && tmp.text.at(0) == '#'
         && tmp.text.at(1) != '#')
         || (config.getBoolValue("serverMsgInDebug") && (own == BY_SERVER

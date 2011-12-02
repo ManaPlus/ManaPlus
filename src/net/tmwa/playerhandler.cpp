@@ -232,7 +232,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 
     while (buf - start + 1 < size && *(buf + 1))
     {
-        char status = *buf; // now unused
+//        char status = *buf; // now unused
         buf ++;
         arr.push_back(buf);
         buf += strlen(buf) + 1;

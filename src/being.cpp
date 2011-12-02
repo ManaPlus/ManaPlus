@@ -2527,10 +2527,9 @@ void Being::updatePercentHP()
 {
     if (!mMaxHP || !serverVersion)
         return;
-    unsigned num = 0;
     if (mHP)
     {
-        num = mHP * 100 / mMaxHP;
+        unsigned num = mHP * 100 / mMaxHP;
         if (num != mNumber)
         {
             mNumber = num;
