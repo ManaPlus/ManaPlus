@@ -432,7 +432,7 @@ bool sendBuffer(std::string& text)
             }
             close(fd[0]);
         }
-        execl("/usr/bin/xsel", "xsel", "-i", (char *)nullptr);
+        execl("/usr/bin/xsel", "xsel", "-b", "-i", (char *)nullptr);
         exit(1);
     }
 
