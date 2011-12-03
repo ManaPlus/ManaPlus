@@ -645,6 +645,35 @@ void BrowserBox::updateHeight()
     }
 }
 
+std::string BrowserBox::getTextAtPos(const int x, const int y)
+{
+    int textX = 0;
+    int textY = 0;
+
+    getAbsolutePosition(textX, textY);
+    if (x < textX || y < textY)
+        return ""; // mouse position ourside of correct widget (outside of tab)
+
+    textX = x - textX;
+    textY = y - textY;
+
+    std::string str = "";
+
+    for (LinePartIterator i = mLineParts.begin();
+        i != mLineParts.end();
+        ++i)
+    {
+        const LinePart &part = *i;
+        if (part.mY + 50 < mYStart)
+            continue;
+        if (part.mY > textY)
+            break;
+        str = part.mText;
+    }
+
+    return str;
+}
+
 LinePart::~LinePart()
 {
     if (mImage)

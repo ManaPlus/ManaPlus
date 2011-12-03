@@ -258,6 +258,8 @@ class ChatWindow : public Window,
 
         bool findHighlight(std::string &str);
 
+        void copyToClipboard(int x, int y);
+
     protected:
         friend class ChatTab;
         friend class WhisperTab;

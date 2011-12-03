@@ -137,6 +137,7 @@ class BrowserBox : public gcn::Widget,
          * Handles mouse actions.
          */
         void mousePressed(gcn::MouseEvent &event);
+
         void mouseMoved(gcn::MouseEvent &event);
 
         /**
@@ -197,6 +198,8 @@ class BrowserBox : public gcn::Widget,
 
         void setEnableImages(bool n)
         { mEnableImages = n; }
+
+        std::string getTextAtPos(const int x, const int y);
 
     private:
         int calcHeight();

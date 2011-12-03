@@ -172,6 +172,8 @@ class PopupMenu : public Popup, public LinkHandler
         Button *mButton;
         std::string mNick;
         int mType;
+        int mX;
+        int mY;
 
         /**
          * Shared code for the various showPopup functions.

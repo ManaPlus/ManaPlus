@@ -95,7 +95,9 @@ PopupMenu::PopupMenu():
     mDialog(nullptr),
     mButton(nullptr),
     mNick(""),
-    mType(Being::UNKNOWN)
+    mType(Being::UNKNOWN),
+    mX(0),
+    mY(0)
 {
     mBrowserBox = new BrowserBox;
     mBrowserBox->setPosition(4, 4);
@@ -120,6 +122,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     mNick = being->getName();
     mType = being->getType();
     mBrowserBox->clearRows();
+    mX = x;
+    mY = y;
 
     const std::string &name = mNick;
 
@@ -348,6 +352,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
 
 void PopupMenu::showPopup(int x, int y, std::vector<Being*> &beings)
 {
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
     mBrowserBox->addRow("Players");
     std::vector<Being*>::const_iterator it, it_end;
@@ -374,6 +380,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mNick = nick;
     mBeingId = 0;
     mType = Being::PLAYER;
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -508,6 +516,8 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
         return;
 
     mFloorItem = floorItem;
+    mX = x;
+    mY = y;
     const ItemInfo &info = floorItem->getInfo();
     mBrowserBox->clearRows();
     std::string name;
@@ -534,6 +544,8 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
         return;
 
     mMapItem = mapItem;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 
@@ -554,6 +566,9 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
 
 void PopupMenu::showOutfitsPopup(int x, int y)
 {
+    mX = x;
+    mY = y;
+
     mBrowserBox->clearRows();
 
     mBrowserBox->addRow(_("Outfits"));
@@ -573,6 +588,9 @@ void PopupMenu::showSpellPopup(int x, int y, TextCommand *cmd)
     mBrowserBox->clearRows();
 
     mSpell = cmd;
+    mX = x;
+    mY = y;
+
     mBrowserBox->addRow(_("Spells"));
     mBrowserBox->addRow("load old spells", _("Load old spells"));
     mBrowserBox->addRow("edit spell", _("Edit spell"));
@@ -589,6 +607,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         return;
 
     mTab = tab;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 
@@ -617,6 +637,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         mBrowserBox->addRow("leave party", _("Leave"));
         mBrowserBox->addRow("##3---");
     }
+    mBrowserBox->addRow("chat clipboard", _("Copy to clipboard"));
+    mBrowserBox->addRow("##3---");
 
     if (tab->getType() == ChatTab::TAB_WHISPER)
     {
@@ -815,6 +837,8 @@ void PopupMenu::showChangePos(int x, int y)
     if (!player_node)
         return;
 
+    mX = x;
+    mY = y;
     const Guild *guild = player_node->getGuild();
     if (guild)
     {
@@ -838,6 +862,8 @@ void PopupMenu::showChangePos(int x, int y)
         mMapItem = nullptr;
         mNick = "";
         mType = Being::UNKNOWN;
+        mX = 0;
+        mY = 0;
         setVisible(false);
     }
 }
@@ -1404,6 +1430,11 @@ void PopupMenu::handleLink(const std::string &link,
         if (chatWindow)
             chatWindow->saveState();
     }
+    else if (link == "chat clipboard" && mTab)
+    {
+        if (chatWindow)
+            chatWindow->copyToClipboard(mX, mY);
+    }
     else if (link == "remove attack" && being)
     {
         if (actorSpriteManager && being->getType() == Being::MONSTER)
@@ -1690,6 +1721,8 @@ void PopupMenu::handleLink(const std::string &link,
     mMapItem = nullptr;
     mNick = "";
     mType = Being::UNKNOWN;
+    mX = 0;
+    mY = 0;
 }
 
 void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
@@ -1700,6 +1733,8 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
 
     mItem = item;
     mWindow = parent;
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
 
     int cnt = item->getQuantity();
@@ -1793,6 +1828,8 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
         mItem = nullptr;
         mItemId = itemId;
         mItemColor = color;
+        mX = x;
+        mY = y;
         mBrowserBox->clearRows();
 
         mBrowserBox->addRow("use", _("Use"));
@@ -1809,6 +1846,8 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
 void PopupMenu::showItemPopup(int x, int y, Item *item)
 {
     mItem = item;
+    mX = x;
+    mY = y;
     if (item)
     {
         mItemId = item->getId();
@@ -1864,6 +1903,8 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
 void PopupMenu::showDropPopup(int x, int y, Item *item)
 {
     mItem = item;
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
 
     if (item)
@@ -1912,6 +1953,8 @@ void PopupMenu::showPopup(int x, int y, Button *button)
         return;
 
     mButton = button;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
     std::vector <gcn::Button*> names = windowMenu->getButtons();
@@ -1947,6 +1990,8 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
         return;
 
     mNick = b->text();
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
     std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
@@ -1988,6 +2033,8 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
 
     mNick = name;
     mType = Being::MONSTER;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 
@@ -2041,6 +2088,8 @@ void PopupMenu::showUndressPopup(int x, int y, Being *being, Item *item)
     mItem = item;
     mItemId = item->getId();
     mItemColor = item->getColor();
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 

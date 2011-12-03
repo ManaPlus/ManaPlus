@@ -55,6 +55,7 @@
 #include "net/playerhandler.h"
 #include "net/net.h"
 
+#include "utils/copynpaste.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -1540,4 +1541,18 @@ void ChatWindow::parseHighlights()
 bool ChatWindow::findHighlight(std::string &str)
 {
     return findI(str, mHighlights) != std::string::npos;
+}
+
+void ChatWindow::copyToClipboard(int x, int y)
+{
+    ChatTab *tab = getFocused();
+    if (!tab)
+        return;
+
+    BrowserBox *text = tab->mTextOutput;
+    if (!text)
+        return;
+
+    std::string str = text->getTextAtPos(x, y);
+    sendBuffer(str);
 }
