@@ -30,6 +30,7 @@
 #include <guichan/color.hpp>
 
 #include <cstdlib>
+#include <map>
 #include <string>
 #include <set>
 #include <vector>
@@ -200,8 +201,10 @@ class Palette
             }
         };
         typedef std::vector<ColorElem> Colors;
+        typedef std::map<unsigned char, int> CharColors;
         /** Vector containing the colors. */
         Colors mColors;
+        CharColors mCharColors;
         std::vector<ColorElem*> mGradVector;
 };
 

@@ -79,6 +79,7 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mColors[PURPLE] = Theme::getThemeColor(Theme::PURPLE);
     mColors[GRAY] = Theme::getThemeColor(Theme::GRAY);
     mColors[BROWN] = Theme::getThemeColor(Theme::BROWN);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 BrowserBox::~BrowserBox()
@@ -406,8 +407,8 @@ int BrowserBox::calcHeight()
     char const *hyphen = "~";
     int hyphenWidth = font->getWidth(hyphen);
 
-    gcn::Color selColor = Theme::getThemeColor(Theme::TEXT);
-    const gcn::Color textColor = Theme::getThemeColor(Theme::TEXT);
+    gcn::Color selColor = getForegroundColor();
+    const gcn::Color textColor = getForegroundColor();
     ResourceManager *resman = ResourceManager::getInstance();
 
     mLineParts.clear();

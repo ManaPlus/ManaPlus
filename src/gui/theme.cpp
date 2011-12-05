@@ -162,6 +162,18 @@ Theme::Theme():
     mColors[SERVER].ch = 'S';
     mColors[LOGGER].ch = 'L';
     mColors[HYPERLINK].ch = '<';
+    mCharColors['H'] = HIGHLIGHT;
+    mCharColors['C'] = CHAT;
+    mCharColors['G'] = GM;
+    mCharColors['Y'] = PLAYER;
+    mCharColors['W'] = WHISPER;
+    mCharColors['w'] = WHISPER_OFFLINE;
+    mCharColors['I'] = IS;
+    mCharColors['P'] = PARTY_CHAT_TAB;
+    mCharColors['U'] = GUILD_CHAT_TAB;
+    mCharColors['S'] = SERVER;
+    mCharColors['L'] = LOGGER;
+    mCharColors['<'] = HYPERLINK;
 }
 
 Theme::~Theme()

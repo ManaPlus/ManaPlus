@@ -65,15 +65,13 @@ Palette::~Palette()
 
 const gcn::Color& Palette::getColor(char c, bool &valid)
 {
-    for (Colors::const_iterator col = mColors.begin(),
-         colEnd = mColors.end(); col != colEnd; ++col)
+    CharColors::const_iterator it = mCharColors.find(c);
+    if (it != mCharColors.end())
     {
-        if (col->ch == c)
-        {
-            valid = true;
-            return col->color;
-        }
+        valid = true;
+        return mColors[(*it).second].color;
     }
+
     valid = false;
     return BLACK;
 }
