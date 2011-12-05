@@ -397,7 +397,11 @@ void LocalPlayer::setGMLevel(int level)
     mGMLevel = level;
 
     if (level > 0)
+    {
         setGM(true);
+        if (chatWindow)
+            chatWindow->loadGMCommands();
+    }
 }
 
 

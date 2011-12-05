@@ -243,6 +243,8 @@ class ChatWindow : public Window,
 
         void loadCustomList();
 
+        void loadGMCommands();
+
         std::string doReplace(const std::string &msg);
 
         void adjustTabSize();
@@ -330,6 +332,7 @@ class ChatWindow : public Window,
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
         std::vector<std::string> mHighlights;
+        bool mGMLoaded;
 };
 
 extern ChatWindow *chatWindow;

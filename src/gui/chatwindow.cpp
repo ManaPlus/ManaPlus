@@ -60,6 +60,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "resources/resourcemanager.h"
+
 #include <guichan/focushandler.hpp>
 #include <guichan/focuslistener.hpp>
 
@@ -152,7 +154,8 @@ public:
 ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),
     mTmpVisible(false),
-    mChatHistoryIndex(0)
+    mChatHistoryIndex(0),
+    mGMLoaded(false)
 {
     listen(CHANNEL_NOTICES);
     listen(Mana::CHANNEL_ATTRIBUTES);
@@ -212,6 +215,8 @@ ChatWindow::ChatWindow():
     mColorPicker->setVisible(config.getBoolValue("showChatColorsList"));
 
     fillCommands();
+    if (player_node && player_node->isGM())
+        loadGMCommands();
     initTradeFilter();
     loadCustomList();
     parseHighlights();
@@ -300,6 +305,29 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/serverunignoreall");
     mCommands.push_back("/dumpg");
     mCommands.push_back("/pseudoaway ");
+}
+
+void ChatWindow::loadGMCommands()
+{
+    if (mGMLoaded)
+        return;
+
+    const char *fileName = "gmcommands.txt";
+    ResourceManager *resman = ResourceManager::getInstance();
+    std::vector<std::string> list;
+    resman->loadTextFile(fileName, list);
+    std::vector<std::string>::const_iterator it = list.begin();
+    std::vector<std::string>::const_iterator it_end = list.end();
+
+    while (it != it_end)
+    {
+        const std::string str = *it;
+        if (!str.empty())
+            mCommands.push_back(str);
+
+        ++ it;
+    }
+    mGMLoaded = true;
 }
 
 void ChatWindow::resetToDefaultSize()

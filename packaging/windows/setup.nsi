@@ -320,6 +320,7 @@ Section "Core files (required)" SecCore
   SetOutPath "$INSTDIR\data\icons\"
   File "${SRCDIR}\data\icons\manaplus.ico"
   SetOutPath "$INSTDIR\data\perserver\default\"
+  File "${SRCDIR}\data\perserver\default\*.txt"
   File "${SRCDIR}\data\perserver\default\*.xml"
   SetOutPath "$INSTDIR\docs"
   File "${SRCDIR}\docs\FAQ.txt"

@@ -138,16 +138,16 @@ void DidYouKnowWindow::loadFile(int num)
     {
         std::string name = helpPath + langs[0] + "/" + file + ".txt";
         if (resman->exists(name))
-            lines = resman->loadTextFile(name);
+            resman->loadTextFile(name, lines);
         if (lines.empty() && langs.size() > 1)
         {
             name = helpPath + langs[1] + "/" + file + ".txt";
-            lines = resman->loadTextFile(name);
+            resman->loadTextFile(name, lines);
         }
     }
 
     if (lines.empty())
-        lines = resman->loadTextFile(helpPath + file + ".txt");
+        resman->loadTextFile(helpPath + file + ".txt", lines);
 
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);

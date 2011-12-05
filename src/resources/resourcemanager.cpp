@@ -634,18 +634,17 @@ bool ResourceManager::copyFile(const std::string &src, const std::string &dst)
     return true;
 }
 
-std::vector<std::string> ResourceManager::loadTextFile(
-        const std::string &fileName)
+bool ResourceManager::loadTextFile(const std::string &fileName,
+                                   std::vector<std::string> &lines)
 {
     int contentsLength;
     char *fileContents = static_cast<char*>(
         loadFile(fileName, contentsLength));
-    std::vector<std::string> lines;
 
     if (!fileContents)
     {
         logger->log("Couldn't load text file: %s", fileName.c_str());
-        return lines;
+        return false;
     }
 
     std::istringstream iss(std::string(fileContents, contentsLength));
@@ -655,7 +654,7 @@ std::vector<std::string> ResourceManager::loadTextFile(
         lines.push_back(line);
 
     free(fileContents);
-    return lines;
+    return true;
 }
 
 std::vector<std::string> ResourceManager::loadTextFileLocal(

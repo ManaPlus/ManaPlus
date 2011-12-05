@@ -217,7 +217,8 @@ class ResourceManager
         /**
          * Retrieves the contents of a text file (PhysFS).
          */
-        std::vector<std::string> loadTextFile(const std::string &fileName);
+        bool loadTextFile(const std::string &fileName,
+                          std::vector<std::string> &lines);
 
         /**
          * Retrieves the contents of a text file.
