@@ -350,21 +350,35 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, std::vector<Being*> &beings)
+void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
 {
     mX = x;
     mY = y;
     mBrowserBox->clearRows();
-    mBrowserBox->addRow("Players");
-    std::vector<Being*>::const_iterator it, it_end;
+    mBrowserBox->addRow(_("Players"));
+    std::vector<ActorSprite*>::const_iterator it, it_end;
     for (it = beings.begin(), it_end = beings.end(); it != it_end; ++it)
     {
-        Being *being = *it;
-        if (!being->getName().empty())
+        Being *being = dynamic_cast<Being*>(*it);
+        ActorSprite *actor = *it;
+        if (being && !being->getName().empty())
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
                 being->getId(), (being->getName()
                 + being->getGenderSignWithSpace()).c_str()));
+        }
+        else if(actor->getType() == ActorSprite::FLOOR_ITEM)
+        {
+            FloorItem *floorItem = static_cast<FloorItem*>(actor);
+            const ItemInfo &info = floorItem->getInfo();
+            std::string name;
+
+            if (serverVersion > 0)
+                name = info.getName(floorItem->getColor());
+            else
+                name = info.getName();
+            mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
+                actor->getId(), name.c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
@@ -1682,6 +1696,22 @@ void PopupMenu::handleLink(const std::string &link,
             {
                 showPopup(getX(), getY(), being);
                 return;
+            }
+        }
+    }
+    else if (!link.compare(0, 10, "flooritem_"))
+    {
+        if (actorSpriteManager)
+        {
+            int id = atoi(link.substr(10).c_str());
+            if (id)
+            {
+                mFloorItem = actorSpriteManager->findItem(id);
+                if (mFloorItem)
+                {
+                    showPopup(getX(), getY(), mFloorItem);
+                    return;
+                }
             }
         }
     }

@@ -432,7 +432,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         {
             if (actorSpriteManager)
             {
-                std::vector<Being*> beings;
+                std::vector<ActorSprite*> beings;
                 const int x = getMouseX() + static_cast<int>(mPixelViewX);
                 const int y = getMouseY() + static_cast<int>(mPixelViewY);
                 actorSpriteManager->findBeingsByPixel(beings, x, y, true);

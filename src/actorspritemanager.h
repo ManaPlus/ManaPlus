@@ -94,7 +94,7 @@ class ActorSpriteManager: public ConfigListener
         /**
          * Returns a beings at the specific pixel.
          */
-        void findBeingsByPixel(std::vector<Being*> &beings, int x, int y,
+        void findBeingsByPixel(std::vector<ActorSprite*> &beings, int x, int y,
                                bool allPlayers) const;
 
         /**

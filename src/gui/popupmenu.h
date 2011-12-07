@@ -26,6 +26,8 @@
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
 
+#include "actorsprite.h"
+
 #include <guichan/actionlistener.hpp>
 
 #include "localconsts.h"
@@ -102,7 +104,7 @@ class PopupMenu : public Popup, public LinkHandler
         /**
          * Shows the beings related popup menu at the specified mouse coords.
          */
-        void showPopup(int x, int y, std::vector<Being*> &beings);
+        void showPopup(int x, int y, std::vector<ActorSprite*> &beings);
 
         void showPlayerPopup(int x, int y, std::string nick);
 

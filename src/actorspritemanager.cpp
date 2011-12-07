@@ -406,13 +406,12 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
     }
 }
 
-void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
+void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
                                            int x, int y, bool allPlayers) const
 {
     if (!mMap)
         return;
 
-    bool targetDead = mTargetDeadPlayers;
     const int xtol = 16;
     const int uptol = 32;
 
@@ -421,25 +420,24 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<Being*> &beings,
         if (!*it)
             continue;
 
-        if ((*it)->getType() == ActorSprite::FLOOR_ITEM
-            || (*it)->getType() == ActorSprite::PORTAL)
-        {
+        if ((*it)->getType() == ActorSprite::PORTAL)
             continue;
-        }
 
-        Being *being = static_cast<Being*>(*it);
+        Being *being = dynamic_cast<Being*>(*it);
+        ActorSprite *actor = *it;
 
-        if ((being->isAlive()
-            || (targetDead && being->getType() == Being::PLAYER))
+        if ((being && (being->isAlive()
+            || (mTargetDeadPlayers && being->getType() == Being::PLAYER))
             && (allPlayers ||  being != player_node))
+            || actor->getType() == ActorSprite::FLOOR_ITEM)
         {
 
-            if ((being->getPixelX() - xtol <= x) &&
-                (being->getPixelX() + xtol > x) &&
-                (being->getPixelY() - uptol <= y) &&
-                (being->getPixelY() > y))
+            if ((actor->getPixelX() - xtol <= x) &&
+                (actor->getPixelX() + xtol > x) &&
+                (actor->getPixelY() - uptol <= y) &&
+                (actor->getPixelY() > y))
             {
-                beings.push_back(being);
+                beings.push_back(actor);
             }
         }
     }
