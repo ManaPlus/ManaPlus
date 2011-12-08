@@ -59,6 +59,8 @@ class CommandHandler
         void handleCommands(const std::string &command,
                             ChatTab *tab = localChatTab);
 
+        void replaceVars(std::string &str);
+
         static char parseBoolean(const std::string &value);
 
     protected:

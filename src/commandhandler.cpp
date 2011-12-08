@@ -32,6 +32,7 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "main.h"
+#include "party.h"
 
 #include "gui/chatwindow.h"
 #include "gui/helpwindow.h"
@@ -1194,3 +1195,82 @@ void CommandHandler::handleDump(const std::string &args A_UNUSED,
 {
 }
 #endif
+
+void CommandHandler::replaceVars(std::string &str)
+{
+    if (!player_node || !actorSpriteManager)
+        return;
+
+    if (str.find("<PLAYER>") != std::string::npos)
+    {
+        Being *target = player_node->getTarget();
+        if (!target || target->getType() != ActorSprite::PLAYER)
+        {
+            target = actorSpriteManager->findNearestLivingBeing(
+                player_node, 20, ActorSprite::PLAYER);
+        }
+        if (target)
+            replaceAll(str, "<PLAYER>", target->getName());
+        else
+            replaceAll(str, "<PLAYER>", "");
+    }
+    if (str.find("<MONSTER>") != std::string::npos)
+    {
+        Being *target = player_node->getTarget();
+        if (!target || target->getType() != ActorSprite::MONSTER)
+        {
+            target = actorSpriteManager->findNearestLivingBeing(
+                player_node, 20, ActorSprite::MONSTER);
+        }
+        if (target)
+            replaceAll(str, "<MONSTER>", target->getName());
+        else
+            replaceAll(str, "<MONSTER>", "");
+    }
+    if (str.find("<PEOPLE>") != std::string::npos)
+    {
+        std::vector<std::string> names;
+        std::string newStr = "";
+        actorSpriteManager->getPlayerNames(names, false);
+        std::vector<std::string>::const_iterator it = names.begin();
+        std::vector<std::string>::const_iterator it_end = names.end();
+        for (; it != it_end; ++ it)
+        {
+            if (*it != player_node->getName())
+                newStr += *it + ",";
+        }
+        if (newStr[newStr.size() - 1] == ',')
+            newStr = newStr.substr(0, newStr.size() - 1);
+        if (!newStr.empty())
+            replaceAll(str, "<PEOPLE>", newStr);
+        else
+            replaceAll(str, "<PEOPLE>", "");
+    }
+    if (str.find("<PARTY>") != std::string::npos)
+    {
+        std::vector<std::string> names;
+        std::string newStr = "";
+        Party *party = nullptr;
+        if (player_node->isInParty() && (party = player_node->getParty()))
+        {
+            party->getNames(names);
+            std::vector<std::string>::const_iterator it = names.begin();
+            std::vector<std::string>::const_iterator it_end = names.end();
+            for (; it != it_end; ++ it)
+            {
+                if (*it != player_node->getName())
+                    newStr += *it + ",";
+            }
+            if (newStr[newStr.size() - 1] == ',')
+                newStr = newStr.substr(0, newStr.size() - 1);
+            if (!newStr.empty())
+                replaceAll(str, "<PARTY>", newStr);
+            else
+                replaceAll(str, "<PARTY>", "");
+        }
+        else
+        {
+            replaceAll(str, "<PARTY>", "");
+        }
+    }
+}

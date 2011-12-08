@@ -24,6 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "client.h"
+#include "commandhandler.h"
 #include "configuration.h"
 #include "guild.h"
 #include "keyboardconfig.h"
@@ -305,6 +306,10 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/serverunignoreall");
     mCommands.push_back("/dumpg");
     mCommands.push_back("/pseudoaway ");
+    mCommands.push_back("<PLAYER>");
+    mCommands.push_back("<MONSTER>");
+    mCommands.push_back("<PEOPLE>");
+    mCommands.push_back("<PARTY>");
 }
 
 void ChatWindow::loadGMCommands()
