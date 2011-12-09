@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-12-08 17:02+0300\n"
-"PO-Revision-Date: 2011-11-29 15:18+0000\n"
+"POT-Creation-Date: 2011-12-10 01:54+0300\n"
+"PO-Revision-Date: 2011-12-08 19:05+0000\n"
 "Last-Translator: derpella <matwa@poczta.pl>\n"
 "Language-Team: Polish (http://www.transifex.net/projects/p/manaplus/team/"
 "pl/)\n"
@@ -36,7 +36,7 @@ msgstr "Pudło!"
 #. TRANSLATORS: this away status writed in player nick
 #: src/being.cpp:1534
 msgid "A"
-msgstr "AFK"
+msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
 #: src/being.cpp:1539
@@ -141,15 +141,15 @@ msgstr "Błąd podczas tworzenia katalogu aktualizacji!"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Błąd: %s nie istnieje i nie może być utworzone! Wyjście."
 
-#: src/commandhandler.cpp:209
+#: src/commandhandler.cpp:210
 msgid "Unknown command."
 msgstr "Nieznane polecenie."
 
-#: src/commandhandler.cpp:329
+#: src/commandhandler.cpp:330
 msgid "Cannot send empty whispers!"
 msgstr "Nie można wysłać pustych szeptów!"
 
-#: src/commandhandler.cpp:343
+#: src/commandhandler.cpp:344
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -157,105 +157,105 @@ msgid ""
 msgstr ""
 "Nie można utworzyć zakładki szeptu dla \"%s\"! Już istnieje, albo to Ty."
 
-#: src/commandhandler.cpp:363
+#: src/commandhandler.cpp:364
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Prośba o dołączenie do kanału %s."
 
-#: src/commandhandler.cpp:379 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:380 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "Brakuje nazwy grupy."
 
-#: src/commandhandler.cpp:390
+#: src/commandhandler.cpp:391
 msgid "Guild name is missing."
 msgstr "Brak nazwy gildii."
 
-#: src/commandhandler.cpp:403 src/commandhandler.cpp:521
-#: src/commandhandler.cpp:562 src/commandhandler.cpp:602
+#: src/commandhandler.cpp:404 src/commandhandler.cpp:522
+#: src/commandhandler.cpp:563 src/commandhandler.cpp:603
 msgid "Please specify a name."
 msgstr "Proszę wpisać prawidłową nazwę."
 
-#: src/commandhandler.cpp:455
+#: src/commandhandler.cpp:456
 msgid "Return toggles chat."
 msgstr "Return włącza czat."
 
-#: src/commandhandler.cpp:455
+#: src/commandhandler.cpp:456
 msgid "Message closes chat."
 msgstr "Wiadomość zamyka czat."
 
-#: src/commandhandler.cpp:466
+#: src/commandhandler.cpp:467
 msgid "Return now toggles chat."
 msgstr "Return od teraz włącza czat."
 
-#: src/commandhandler.cpp:472
+#: src/commandhandler.cpp:473
 msgid "Message now closes chat."
 msgstr "Wiadomość od teraz zamyka czat."
 
-#: src/commandhandler.cpp:500
+#: src/commandhandler.cpp:501
 msgid "friend"
 msgstr "znajomy"
 
-#: src/commandhandler.cpp:505
+#: src/commandhandler.cpp:506
 msgid "disregarded"
 msgstr "lekceważony"
 
-#: src/commandhandler.cpp:510
+#: src/commandhandler.cpp:511
 msgid "neutral"
 msgstr "neutralny"
 
-#: src/commandhandler.cpp:529
+#: src/commandhandler.cpp:530
 #, c-format
 msgid "Player already %s!"
 msgstr "Gracz jest już %s!"
 
-#: src/commandhandler.cpp:543
+#: src/commandhandler.cpp:544
 #, c-format
 msgid "Player successfully %s!"
 msgstr "Gracz jest teraz %s!"
 
-#: src/commandhandler.cpp:551
+#: src/commandhandler.cpp:552
 #, c-format
 msgid "Player could not be %s!"
 msgstr "Gracz nie może być %s!"
 
-#: src/commandhandler.cpp:574
+#: src/commandhandler.cpp:575
 msgid "Player wasn't ignored!"
 msgstr "Gracz nie był ignorowany!"
 
-#: src/commandhandler.cpp:581
+#: src/commandhandler.cpp:582
 msgid "Player no longer ignored!"
 msgstr "Gracz już nie jest ignorowany!"
 
-#: src/commandhandler.cpp:583
+#: src/commandhandler.cpp:584
 msgid "Player could not be unignored!"
 msgstr "Gracz nie może być odignorowany!"
 
-#: src/commandhandler.cpp:589
+#: src/commandhandler.cpp:590
 msgid "blacklisted"
 msgstr "dodany/a do czarnej listy"
 
-#: src/commandhandler.cpp:594
+#: src/commandhandler.cpp:595
 msgid "enemy"
 msgstr "wróg"
 
-#: src/commandhandler.cpp:609
+#: src/commandhandler.cpp:610
 msgid "Player already erased!"
 msgstr "Gracz został usunięty!"
 
-#: src/commandhandler.cpp:620
+#: src/commandhandler.cpp:621
 msgid "Player successfully erased!"
 msgstr "Gracz usunięty z powodzeniem!"
 
-#: src/commandhandler.cpp:622
+#: src/commandhandler.cpp:623
 msgid "Player could not be erased!"
 msgstr "Gracz nie mógł zostać usunięty!"
 
-#: src/commandhandler.cpp:929 src/commandhandler.cpp:975
+#: src/commandhandler.cpp:930 src/commandhandler.cpp:976
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Czas pracy programu: %s"
 
-#: src/commandhandler.cpp:939
+#: src/commandhandler.cpp:940
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
@@ -263,7 +263,7 @@ msgstr[0] "%d tydzień"
 msgstr[1] "%d tygodni/e"
 msgstr[2] "%d tygodni/e"
 
-#: src/commandhandler.cpp:948
+#: src/commandhandler.cpp:949
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -271,7 +271,7 @@ msgstr[0] "%d dzień"
 msgstr[1] "%d dni"
 msgstr[2] "%d dni"
 
-#: src/commandhandler.cpp:956
+#: src/commandhandler.cpp:957
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -279,7 +279,7 @@ msgstr[0] "%d godzina"
 msgstr[1] "%d godzin/y"
 msgstr[2] "%d godzin/y"
 
-#: src/commandhandler.cpp:964
+#: src/commandhandler.cpp:965
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -287,7 +287,7 @@ msgstr[0] "%d minuta"
 msgstr[1] "%d minut/y"
 msgstr[2] "%d minut/y"
 
-#: src/commandhandler.cpp:972
+#: src/commandhandler.cpp:973
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -295,27 +295,27 @@ msgstr[0] "%d sekunda"
 msgstr[1] "%d sekund/y"
 msgstr[2] "%d sekund/y"
 
-#: src/commandhandler.cpp:1051
+#: src/commandhandler.cpp:1052
 msgid "font cache size"
 msgstr "rozmiar cache czcionki"
 
-#: src/commandhandler.cpp:1063
+#: src/commandhandler.cpp:1064
 msgid "Cache size:"
 msgstr "Rozmiar cache:"
 
-#: src/commandhandler.cpp:1067
+#: src/commandhandler.cpp:1068
 msgid "Created:"
 msgstr "Stworzono:"
 
-#: src/commandhandler.cpp:1069
+#: src/commandhandler.cpp:1070
 msgid "Deleted:"
 msgstr "Usunięto:"
 
-#: src/commandhandler.cpp:1171 src/commandhandler.cpp:1178
+#: src/commandhandler.cpp:1172 src/commandhandler.cpp:1179
 msgid "Resource images:"
 msgstr "Obrazy źródłowe:"
 
-#: src/commandhandler.cpp:1173 src/commandhandler.cpp:1180
+#: src/commandhandler.cpp:1174 src/commandhandler.cpp:1181
 msgid "Resource orphaned images:"
 msgstr "Osierocone obrazy źródłowe:"
 
@@ -324,11 +324,11 @@ msgstr "Osierocone obrazy źródłowe:"
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "Opcjami dla /%s są \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
-#: src/game.cpp:252 src/gui/widgets/chattab.cpp:402
+#: src/game.cpp:252 src/gui/widgets/chattab.cpp:405
 msgid "General"
 msgstr "Ogólny"
 
-#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:404
+#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:407
 msgid "Debug"
 msgstr "Debug"
 
@@ -408,7 +408,7 @@ msgstr "Rozmowa"
 #: src/gui/popupmenu.cpp:300 src/gui/popupmenu.cpp:481
 #: src/gui/popupmenu.cpp:738 src/gui/popupmenu.cpp:825
 msgid "Move"
-msgstr "Przesuń się"
+msgstr "Podejdź"
 
 #: src/gui/botcheckerwindow.cpp:300
 msgid "Result"
@@ -675,63 +675,63 @@ msgstr "Poziom %d"
 msgid "(empty)"
 msgstr "(puste)"
 
-#: src/gui/chatwindow.cpp:115 src/gui/inventorywindow.cpp:70
+#: src/gui/chatwindow.cpp:116 src/gui/inventorywindow.cpp:70
 msgid "default"
-msgstr "domyślny"
+msgstr "domyślnie"
 
-#: src/gui/chatwindow.cpp:116
+#: src/gui/chatwindow.cpp:117
 msgid "black"
 msgstr "czarny"
 
-#: src/gui/chatwindow.cpp:117
+#: src/gui/chatwindow.cpp:118
 msgid "red"
 msgstr "czerwony"
 
-#: src/gui/chatwindow.cpp:118
+#: src/gui/chatwindow.cpp:119
 msgid "green"
 msgstr "zielony"
 
-#: src/gui/chatwindow.cpp:119
+#: src/gui/chatwindow.cpp:120
 msgid "blue"
 msgstr "niebieski"
 
-#: src/gui/chatwindow.cpp:120
+#: src/gui/chatwindow.cpp:121
 msgid "gold"
 msgstr "złoty"
 
-#: src/gui/chatwindow.cpp:121
+#: src/gui/chatwindow.cpp:122
 msgid "yellow"
 msgstr "żółty"
 
-#: src/gui/chatwindow.cpp:122
+#: src/gui/chatwindow.cpp:123
 msgid "pink"
 msgstr "różowy"
 
-#: src/gui/chatwindow.cpp:123
+#: src/gui/chatwindow.cpp:124
 msgid "purple"
 msgstr "fioletowy"
 
-#: src/gui/chatwindow.cpp:124
+#: src/gui/chatwindow.cpp:125
 msgid "grey"
 msgstr "szary"
 
-#: src/gui/chatwindow.cpp:125
+#: src/gui/chatwindow.cpp:126
 msgid "brown"
 msgstr "brązowy"
 
-#: src/gui/chatwindow.cpp:126
+#: src/gui/chatwindow.cpp:127
 msgid "rainbow 1"
 msgstr "tęczowy 1"
 
-#: src/gui/chatwindow.cpp:127
+#: src/gui/chatwindow.cpp:128
 msgid "rainbow 2"
 msgstr "tęczowy 2"
 
-#: src/gui/chatwindow.cpp:128
+#: src/gui/chatwindow.cpp:129
 msgid "rainbow 3"
 msgstr "tęczowy 3"
 
-#: src/gui/chatwindow.cpp:145 src/gui/inventorywindow.cpp:90
+#: src/gui/chatwindow.cpp:146 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
 #: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
@@ -741,16 +741,16 @@ msgstr "tęczowy 3"
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:155 src/gui/setup_chat.cpp:48
+#: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:48
 msgid "Chat"
 msgstr "Czat"
 
-#: src/gui/chatwindow.cpp:644
+#: src/gui/chatwindow.cpp:649
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "%s obecny/a. %d graczy online."
 
-#: src/gui/chatwindow.cpp:1031
+#: src/gui/chatwindow.cpp:1036
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Szepczesz do %s: %s"
@@ -1186,7 +1186,7 @@ msgstr "Omiń"
 
 #: src/gui/logindialog.cpp:86 src/gui/logindialog.cpp:123
 msgid "Login"
-msgstr "Użytkownik"
+msgstr "Zaloguj się"
 
 #: src/gui/logindialog.cpp:91 src/gui/serverdialog.cpp:252
 #: src/gui/widgets/chattab.cpp:173
@@ -1259,7 +1259,7 @@ msgstr "Oczekiwanie na serwer"
 
 #: src/gui/npcdialog.cpp:52
 msgid "Next"
-msgstr "Następna"
+msgstr "Dalej"
 
 #: src/gui/npcdialog.cpp:54
 msgid "Submit"
@@ -1276,7 +1276,7 @@ msgstr "Wyczyść"
 
 #: src/gui/npcdialog.cpp:223
 msgid "> Next"
-msgstr ">Następny"
+msgstr ">Dalej"
 
 #: src/gui/npcpostdialog.cpp:48
 msgid "To:"
@@ -1486,11 +1486,11 @@ msgstr "Podnieś"
 #: src/gui/popupmenu.cpp:547 src/gui/popupmenu.cpp:1838
 #: src/gui/popupmenu.cpp:1922 src/gui/popupmenu.cpp:1969
 msgid "Add to chat"
-msgstr "Dodaj to czatu"
+msgstr "Dodaj do czatu"
 
 #: src/gui/popupmenu.cpp:566
 msgid "Map Item"
-msgstr "Przedmiot mapy"
+msgstr "Portal"
 
 #: src/gui/popupmenu.cpp:567
 msgid "Rename"
@@ -1550,9 +1550,8 @@ msgid "Leave"
 msgstr "Opuść"
 
 #: src/gui/popupmenu.cpp:654
-#, fuzzy
 msgid "Copy to clipboard"
-msgstr "Skopiuj do czatu"
+msgstr "Skopiuj do schowka"
 
 #: src/gui/popupmenu.cpp:849
 msgid "Change guild position"
@@ -1566,7 +1565,7 @@ msgstr "Zmień nazwę drogowskazu"
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1328
 msgid "Name:                    "
-msgstr "Imię:"
+msgstr "Nick:"
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1378
@@ -1821,7 +1820,7 @@ msgstr "Usuń kolory z odbieranych wiadomości"
 
 #: src/gui/setup_chat.cpp:60
 msgid "Show chat colors list"
-msgstr "Pokazuj listę kolorów do czatu"
+msgstr "Pokazuj listę kolorów czatu"
 
 #: src/gui/setup_chat.cpp:64
 msgid "Commands"
@@ -1893,7 +1892,7 @@ msgstr "Pokazuj wydarzenia bitewne"
 
 #: src/gui/setup_chat.cpp:114
 msgid "Resize chat tabs if need"
-msgstr "Jeśli potrzeba, zmień rozmiaw zakładek czatu"
+msgstr "Jeśli potrzeba, zmień rozmiar zakładek czatu"
 
 #: src/gui/setup_chat.cpp:118
 msgid "Time"
@@ -2012,7 +2011,7 @@ msgstr "Odznacz"
 
 #: src/gui/setup_keyboard.cpp:97
 msgid "Default"
-msgstr "Domyślny"
+msgstr "Domyślne"
 
 #: src/gui/setup_keyboard.cpp:133
 msgid "Key Conflict(s) Detected."
@@ -2236,7 +2235,7 @@ msgstr "Włącz reorganizację obrazków"
 
 #: src/gui/setup_perfomance.cpp:83
 msgid "Small memory (enable for lower memory usage)"
-msgstr "Mała pamięć (włącz by zmniejszyć obciążenie pamięci)"
+msgstr "Zmniejszenie zużycia pamięci"
 
 #: src/gui/setup_perfomance.cpp:86
 msgid "Disable advanced beings caching (Software)"
@@ -2332,7 +2331,7 @@ msgstr "Zezwól na szepty"
 
 #: src/gui/setup_relations.cpp:245
 msgid "Old"
-msgstr "Stary"
+msgstr "Resetuj"
 
 #: src/gui/setup_relations.cpp:247
 msgid "Relations"
@@ -2395,9 +2394,8 @@ msgid "Indonesian"
 msgstr "Indonesian"
 
 #: src/gui/setup_theme.cpp:153
-#, fuzzy
 msgid "Polish"
-msgstr "English"
+msgstr "Polish"
 
 #: src/gui/setup_theme.cpp:154
 msgid "Japanese"
@@ -2677,7 +2675,7 @@ msgstr "Zdolności"
 
 #: src/gui/skilldialog.cpp:288
 msgid "Up"
-msgstr "Góra"
+msgstr "Podwyż"
 
 #: src/gui/skilldialog.cpp:341
 #, c-format
@@ -2771,7 +2769,7 @@ msgstr "Na pewno opuścić grupę %s?"
 
 #: src/gui/socialwindow.cpp:625
 msgid "Nav"
-msgstr "Nawigacja"
+msgstr "GPS"
 
 #: src/gui/socialwindow.cpp:903
 msgid "Atk"
@@ -3267,7 +3265,7 @@ msgstr "Kto jest online- aktualizacja"
 
 #: src/gui/whoisonline.cpp:111
 msgid "Update"
-msgstr "Aktualizacja"
+msgstr "Aktualizuj"
 
 #: src/gui/whoisonline.cpp:194
 msgid "Who Is Online - "
@@ -3534,7 +3532,7 @@ msgstr "Czy wiesz, że..."
 
 #: src/gui/windowmenu.cpp:100
 msgid "SET"
-msgstr "UST"
+msgstr "SET"
 
 #: src/gui/worldselectdialog.cpp:77
 msgid "Select World"
@@ -3562,19 +3560,19 @@ msgstr "Podstawowe klawisze"
 
 #: src/keyboardconfig.cpp:44
 msgid "Move Up"
-msgstr "Przesuń w górę"
+msgstr "Idź do góry"
 
 #: src/keyboardconfig.cpp:45
 msgid "Move Down"
-msgstr "Przesuń w dół"
+msgstr "Idź w dół"
 
 #: src/keyboardconfig.cpp:46
 msgid "Move Left"
-msgstr "Przesuń w lewo"
+msgstr "Idź w lewo"
 
 #: src/keyboardconfig.cpp:47
 msgid "Move Right"
-msgstr "Przesuń w prawo"
+msgstr "Idź w prawo"
 
 #: src/keyboardconfig.cpp:50
 msgid "Target & Attack"
@@ -4216,7 +4214,7 @@ msgstr "(I) użyj #ingrav jako M.A."
 
 #: src/localplayer.cpp:2098
 msgid "(F) use #frillyar for magic attack"
-msgstr "(F) użyj #ingrav jako M.A."
+msgstr "(F) użyj #frillyar jako M.A."
 
 #: src/localplayer.cpp:2099
 msgid "(U) use #upmarmu for magic attack"
@@ -5569,7 +5567,7 @@ msgstr "% uników"
 #: src/net/tmwa/generalhandler.cpp:278
 #, no-c-format
 msgid "% Critical"
-msgstr "% ciosów krytycznych"
+msgstr "% ciosów kryt."
 
 #: src/net/tmwa/generalhandler.cpp:279
 msgid "Attack Delay"
@@ -5577,7 +5575,7 @@ msgstr "Opóźnienie ataku"
 
 #: src/net/tmwa/generalhandler.cpp:281
 msgid "Walk Delay"
-msgstr "Opóźnienie poruszania się"
+msgstr "Opóźnienie chodu"
 
 #: src/net/tmwa/generalhandler.cpp:283
 msgid "Attack Range"

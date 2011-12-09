@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-12-08 17:02+0300\n"
+"POT-Creation-Date: 2011-12-10 01:54+0300\n"
 "PO-Revision-Date: 2011-11-11 21:38+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.net/projects/p/manaplus/team/"
@@ -141,15 +141,15 @@ msgstr "Gagal membuat direktori update!"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "kesalahan %s tidak ada dan tidak dapat dibuat!keluar."
 
-#: src/commandhandler.cpp:209
+#: src/commandhandler.cpp:210
 msgid "Unknown command."
 msgstr "Perintah tidak dikenal."
 
-#: src/commandhandler.cpp:329
+#: src/commandhandler.cpp:330
 msgid "Cannot send empty whispers!"
 msgstr "Tidak dapat mengirimkan pesan tanpa nama"
 
-#: src/commandhandler.cpp:343
+#: src/commandhandler.cpp:344
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -158,155 +158,155 @@ msgstr ""
 "Tidak dapat membuat kolom whisper baru untuk nama \"%s\"! nama telah ada, "
 "atau nama anda sendiri"
 
-#: src/commandhandler.cpp:363
+#: src/commandhandler.cpp:364
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "Meminta untuk masuk ke channel %s."
 
-#: src/commandhandler.cpp:379 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:380 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "Nama kelompok tidak dapat di temukan"
 
-#: src/commandhandler.cpp:390
+#: src/commandhandler.cpp:391
 msgid "Guild name is missing."
 msgstr "Nama organisasi tidak ditemukan."
 
-#: src/commandhandler.cpp:403 src/commandhandler.cpp:521
-#: src/commandhandler.cpp:562 src/commandhandler.cpp:602
+#: src/commandhandler.cpp:404 src/commandhandler.cpp:522
+#: src/commandhandler.cpp:563 src/commandhandler.cpp:603
 msgid "Please specify a name."
 msgstr "Tetapkan sebuah nama"
 
-#: src/commandhandler.cpp:455
+#: src/commandhandler.cpp:456
 msgid "Return toggles chat."
 msgstr "Kembalikan pengalihan obrolan"
 
-#: src/commandhandler.cpp:455
+#: src/commandhandler.cpp:456
 msgid "Message closes chat."
 msgstr "Tutup pesan obrolan"
 
-#: src/commandhandler.cpp:466
+#: src/commandhandler.cpp:467
 msgid "Return now toggles chat."
 msgstr "Kembalikan sekarang pengalihan obrolan"
 
-#: src/commandhandler.cpp:472
+#: src/commandhandler.cpp:473
 msgid "Message now closes chat."
 msgstr "Pesan menutup obrolan"
 
-#: src/commandhandler.cpp:500
+#: src/commandhandler.cpp:501
 msgid "friend"
 msgstr "Teman"
 
-#: src/commandhandler.cpp:505
+#: src/commandhandler.cpp:506
 msgid "disregarded"
 msgstr "Diabaikan"
 
-#: src/commandhandler.cpp:510
+#: src/commandhandler.cpp:511
 msgid "neutral"
 msgstr "netral"
 
-#: src/commandhandler.cpp:529
+#: src/commandhandler.cpp:530
 #, c-format
 msgid "Player already %s!"
 msgstr "Pemain telah %s!"
 
-#: src/commandhandler.cpp:543
+#: src/commandhandler.cpp:544
 #, c-format
 msgid "Player successfully %s!"
 msgstr "Pemain telah berhasil %s!"
 
-#: src/commandhandler.cpp:551
+#: src/commandhandler.cpp:552
 #, c-format
 msgid "Player could not be %s!"
 msgstr "Pemain tidak bisa %s!"
 
-#: src/commandhandler.cpp:574
+#: src/commandhandler.cpp:575
 msgid "Player wasn't ignored!"
 msgstr "Pemain tidak diabaikan!"
 
-#: src/commandhandler.cpp:581
+#: src/commandhandler.cpp:582
 msgid "Player no longer ignored!"
 msgstr "Pemain tidak lagi diabaikan!"
 
-#: src/commandhandler.cpp:583
+#: src/commandhandler.cpp:584
 msgid "Player could not be unignored!"
 msgstr "Pemain tidak dapat diabaikan"
 
-#: src/commandhandler.cpp:589
+#: src/commandhandler.cpp:590
 msgid "blacklisted"
 msgstr ""
 
-#: src/commandhandler.cpp:594
+#: src/commandhandler.cpp:595
 msgid "enemy"
 msgstr ""
 
-#: src/commandhandler.cpp:609
+#: src/commandhandler.cpp:610
 msgid "Player already erased!"
 msgstr "Pemain telah terhapus"
 
-#: src/commandhandler.cpp:620
+#: src/commandhandler.cpp:621
 msgid "Player successfully erased!"
 msgstr "Pemain telah berhasil dihapus"
 
-#: src/commandhandler.cpp:622
+#: src/commandhandler.cpp:623
 msgid "Player could not be erased!"
 msgstr "Pemain tidak dapat dihapus"
 
-#: src/commandhandler.cpp:929 src/commandhandler.cpp:975
+#: src/commandhandler.cpp:930 src/commandhandler.cpp:976
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:939
+#: src/commandhandler.cpp:940
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:948
+#: src/commandhandler.cpp:949
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:956
+#: src/commandhandler.cpp:957
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:964
+#: src/commandhandler.cpp:965
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:972
+#: src/commandhandler.cpp:973
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:1051
+#: src/commandhandler.cpp:1052
 msgid "font cache size"
 msgstr "Ukuran jenis huruf cache"
 
-#: src/commandhandler.cpp:1063
+#: src/commandhandler.cpp:1064
 msgid "Cache size:"
 msgstr "Ukuran Cache:"
 
-#: src/commandhandler.cpp:1067
+#: src/commandhandler.cpp:1068
 msgid "Created:"
 msgstr "Buat"
 
-#: src/commandhandler.cpp:1069
+#: src/commandhandler.cpp:1070
 msgid "Deleted:"
 msgstr "Hapus"
 
-#: src/commandhandler.cpp:1171 src/commandhandler.cpp:1178
+#: src/commandhandler.cpp:1172 src/commandhandler.cpp:1179
 msgid "Resource images:"
 msgstr "Sumber gambar"
 
-#: src/commandhandler.cpp:1173 src/commandhandler.cpp:1180
+#: src/commandhandler.cpp:1174 src/commandhandler.cpp:1181
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -316,11 +316,11 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Pilihan untuk /%s adalah \"ya\", \"tidak\", \"benar\",\"salah\", \"1\",\"0\"."
 
-#: src/game.cpp:252 src/gui/widgets/chattab.cpp:402
+#: src/game.cpp:252 src/gui/widgets/chattab.cpp:405
 msgid "General"
 msgstr "Umum"
 
-#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:404
+#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:407
 msgid "Debug"
 msgstr "Debug"
 
@@ -667,63 +667,63 @@ msgstr "Level %d"
 msgid "(empty)"
 msgstr "(kosong)"
 
-#: src/gui/chatwindow.cpp:115 src/gui/inventorywindow.cpp:70
+#: src/gui/chatwindow.cpp:116 src/gui/inventorywindow.cpp:70
 msgid "default"
 msgstr "kembalikan ke semula"
 
-#: src/gui/chatwindow.cpp:116
+#: src/gui/chatwindow.cpp:117
 msgid "black"
 msgstr "hitam"
 
-#: src/gui/chatwindow.cpp:117
+#: src/gui/chatwindow.cpp:118
 msgid "red"
 msgstr "merah"
 
-#: src/gui/chatwindow.cpp:118
+#: src/gui/chatwindow.cpp:119
 msgid "green"
 msgstr "hijau"
 
-#: src/gui/chatwindow.cpp:119
+#: src/gui/chatwindow.cpp:120
 msgid "blue"
 msgstr "biru"
 
-#: src/gui/chatwindow.cpp:120
+#: src/gui/chatwindow.cpp:121
 msgid "gold"
 msgstr "emas"
 
-#: src/gui/chatwindow.cpp:121
+#: src/gui/chatwindow.cpp:122
 msgid "yellow"
 msgstr "kuning"
 
-#: src/gui/chatwindow.cpp:122
+#: src/gui/chatwindow.cpp:123
 msgid "pink"
 msgstr "merah muda"
 
-#: src/gui/chatwindow.cpp:123
+#: src/gui/chatwindow.cpp:124
 msgid "purple"
 msgstr "ungu"
 
-#: src/gui/chatwindow.cpp:124
+#: src/gui/chatwindow.cpp:125
 msgid "grey"
 msgstr "abu-abu"
 
-#: src/gui/chatwindow.cpp:125
+#: src/gui/chatwindow.cpp:126
 msgid "brown"
 msgstr "coklat"
 
-#: src/gui/chatwindow.cpp:126
+#: src/gui/chatwindow.cpp:127
 msgid "rainbow 1"
 msgstr "pelangi 1"
 
-#: src/gui/chatwindow.cpp:127
+#: src/gui/chatwindow.cpp:128
 msgid "rainbow 2"
 msgstr "pelangi 2"
 
-#: src/gui/chatwindow.cpp:128
+#: src/gui/chatwindow.cpp:129
 msgid "rainbow 3"
 msgstr "pelangi 3"
 
-#: src/gui/chatwindow.cpp:145 src/gui/inventorywindow.cpp:90
+#: src/gui/chatwindow.cpp:146 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
 #: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
@@ -733,16 +733,16 @@ msgstr "pelangi 3"
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:155 src/gui/setup_chat.cpp:48
+#: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:48
 msgid "Chat"
 msgstr "Obrolan"
 
-#: src/gui/chatwindow.cpp:644
+#: src/gui/chatwindow.cpp:649
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Kehadiran: %s; %d pemain yang hadir."
 
-#: src/gui/chatwindow.cpp:1031
+#: src/gui/chatwindow.cpp:1036
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Berbisik ke %s: %s"

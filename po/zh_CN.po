@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-12-08 17:02+0300\n"
+"POT-Creation-Date: 2011-12-10 01:54+0300\n"
 "PO-Revision-Date: 2011-11-11 21:38+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.net/projects/p/manaplus/"
@@ -141,170 +141,170 @@ msgstr "创建更新目录错误！"
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在并且无法创建！退出。"
 
-#: src/commandhandler.cpp:209
+#: src/commandhandler.cpp:210
 msgid "Unknown command."
 msgstr "未知命令。"
 
-#: src/commandhandler.cpp:329
+#: src/commandhandler.cpp:330
 msgid "Cannot send empty whispers!"
 msgstr "无法发送空白密语！"
 
-#: src/commandhandler.cpp:343
+#: src/commandhandler.cpp:344
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
 "you."
 msgstr "无法同 \"%s\" 建立一个私人谈话标签页！或者已经存在，或者那就是自己。"
 
-#: src/commandhandler.cpp:363
+#: src/commandhandler.cpp:364
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "请求加入频道%s。"
 
-#: src/commandhandler.cpp:379 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:380 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
 msgstr "帮会名称缺失。"
 
-#: src/commandhandler.cpp:390
+#: src/commandhandler.cpp:391
 msgid "Guild name is missing."
 msgstr "公会名称是缺少的。"
 
-#: src/commandhandler.cpp:403 src/commandhandler.cpp:521
-#: src/commandhandler.cpp:562 src/commandhandler.cpp:602
+#: src/commandhandler.cpp:404 src/commandhandler.cpp:522
+#: src/commandhandler.cpp:563 src/commandhandler.cpp:603
 msgid "Please specify a name."
 msgstr "请指定一个名称。"
 
-#: src/commandhandler.cpp:455
+#: src/commandhandler.cpp:456
 msgid "Return toggles chat."
 msgstr ""
 
-#: src/commandhandler.cpp:455
+#: src/commandhandler.cpp:456
 msgid "Message closes chat."
 msgstr "讯息关闭聊天。"
 
-#: src/commandhandler.cpp:466
+#: src/commandhandler.cpp:467
 msgid "Return now toggles chat."
 msgstr "<回车>键现在切换聊天。"
 
-#: src/commandhandler.cpp:472
+#: src/commandhandler.cpp:473
 msgid "Message now closes chat."
 msgstr "讯息现在关闭聊天。"
 
-#: src/commandhandler.cpp:500
+#: src/commandhandler.cpp:501
 msgid "friend"
 msgstr "朋友"
 
-#: src/commandhandler.cpp:505
+#: src/commandhandler.cpp:506
 msgid "disregarded"
 msgstr "无视"
 
-#: src/commandhandler.cpp:510
+#: src/commandhandler.cpp:511
 msgid "neutral"
 msgstr "中性"
 
-#: src/commandhandler.cpp:529
+#: src/commandhandler.cpp:530
 #, c-format
 msgid "Player already %s!"
 msgstr "玩家已经%s!"
 
-#: src/commandhandler.cpp:543
+#: src/commandhandler.cpp:544
 #, c-format
 msgid "Player successfully %s!"
 msgstr "玩家成功%s!"
 
-#: src/commandhandler.cpp:551
+#: src/commandhandler.cpp:552
 #, c-format
 msgid "Player could not be %s!"
 msgstr "玩家不能为 %s"
 
-#: src/commandhandler.cpp:574
+#: src/commandhandler.cpp:575
 msgid "Player wasn't ignored!"
 msgstr "是不能忽视的！"
 
-#: src/commandhandler.cpp:581
+#: src/commandhandler.cpp:582
 msgid "Player no longer ignored!"
 msgstr "玩家不再被忽略！"
 
-#: src/commandhandler.cpp:583
+#: src/commandhandler.cpp:584
 msgid "Player could not be unignored!"
 msgstr "玩家不能被忽略!"
 
-#: src/commandhandler.cpp:589
+#: src/commandhandler.cpp:590
 msgid "blacklisted"
 msgstr ""
 
-#: src/commandhandler.cpp:594
+#: src/commandhandler.cpp:595
 msgid "enemy"
 msgstr ""
 
-#: src/commandhandler.cpp:609
+#: src/commandhandler.cpp:610
 msgid "Player already erased!"
 msgstr "玩家已经被删除!"
 
-#: src/commandhandler.cpp:620
+#: src/commandhandler.cpp:621
 msgid "Player successfully erased!"
 msgstr "玩家成功删除！"
 
-#: src/commandhandler.cpp:622
+#: src/commandhandler.cpp:623
 msgid "Player could not be erased!"
 msgstr "玩家无法删除！"
 
-#: src/commandhandler.cpp:929 src/commandhandler.cpp:975
+#: src/commandhandler.cpp:930 src/commandhandler.cpp:976
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:939
+#: src/commandhandler.cpp:940
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:948
+#: src/commandhandler.cpp:949
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:956
+#: src/commandhandler.cpp:957
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:964
+#: src/commandhandler.cpp:965
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:972
+#: src/commandhandler.cpp:973
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:1051
+#: src/commandhandler.cpp:1052
 msgid "font cache size"
 msgstr "字体缓存大小"
 
-#: src/commandhandler.cpp:1063
+#: src/commandhandler.cpp:1064
 msgid "Cache size:"
 msgstr ""
 
-#: src/commandhandler.cpp:1067
+#: src/commandhandler.cpp:1068
 msgid "Created:"
 msgstr "创建于："
 
-#: src/commandhandler.cpp:1069
+#: src/commandhandler.cpp:1070
 msgid "Deleted:"
 msgstr "删除："
 
-#: src/commandhandler.cpp:1171 src/commandhandler.cpp:1178
+#: src/commandhandler.cpp:1172 src/commandhandler.cpp:1179
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1173 src/commandhandler.cpp:1180
+#: src/commandhandler.cpp:1174 src/commandhandler.cpp:1181
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -313,11 +313,11 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "/%s的选项是\"yes\"，\"no\"，\"true\"，\"false\"，\"1\"，\"0\"。"
 
-#: src/game.cpp:252 src/gui/widgets/chattab.cpp:402
+#: src/game.cpp:252 src/gui/widgets/chattab.cpp:405
 msgid "General"
 msgstr "常规"
 
-#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:404
+#: src/game.cpp:256 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:407
 msgid "Debug"
 msgstr "调试 "
 
@@ -664,63 +664,63 @@ msgstr "等级 %d"
 msgid "(empty)"
 msgstr "()"
 
-#: src/gui/chatwindow.cpp:115 src/gui/inventorywindow.cpp:70
+#: src/gui/chatwindow.cpp:116 src/gui/inventorywindow.cpp:70
 msgid "default"
 msgstr "默认"
 
-#: src/gui/chatwindow.cpp:116
+#: src/gui/chatwindow.cpp:117
 msgid "black"
 msgstr "黑色"
 
-#: src/gui/chatwindow.cpp:117
+#: src/gui/chatwindow.cpp:118
 msgid "red"
 msgstr "红色"
 
-#: src/gui/chatwindow.cpp:118
+#: src/gui/chatwindow.cpp:119
 msgid "green"
 msgstr "绿色"
 
-#: src/gui/chatwindow.cpp:119
+#: src/gui/chatwindow.cpp:120
 msgid "blue"
 msgstr "蓝色"
 
-#: src/gui/chatwindow.cpp:120
+#: src/gui/chatwindow.cpp:121
 msgid "gold"
 msgstr "金"
 
-#: src/gui/chatwindow.cpp:121
+#: src/gui/chatwindow.cpp:122
 msgid "yellow"
 msgstr "黄色"
 
-#: src/gui/chatwindow.cpp:122
+#: src/gui/chatwindow.cpp:123
 msgid "pink"
 msgstr "粉红色"
 
-#: src/gui/chatwindow.cpp:123
+#: src/gui/chatwindow.cpp:124
 msgid "purple"
 msgstr "紫"
 
-#: src/gui/chatwindow.cpp:124
+#: src/gui/chatwindow.cpp:125
 msgid "grey"
 msgstr "灰色"
 
-#: src/gui/chatwindow.cpp:125
+#: src/gui/chatwindow.cpp:126
 msgid "brown"
 msgstr "棕色"
 
-#: src/gui/chatwindow.cpp:126
+#: src/gui/chatwindow.cpp:127
 msgid "rainbow 1"
 msgstr "彩虹1"
 
-#: src/gui/chatwindow.cpp:127
+#: src/gui/chatwindow.cpp:128
 msgid "rainbow 2"
 msgstr "彩虹2"
 
-#: src/gui/chatwindow.cpp:128
+#: src/gui/chatwindow.cpp:129
 msgid "rainbow 3"
 msgstr "彩虹3"
 
-#: src/gui/chatwindow.cpp:145 src/gui/inventorywindow.cpp:90
+#: src/gui/chatwindow.cpp:146 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:78
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:222
 #: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
@@ -730,16 +730,16 @@ msgstr "彩虹3"
 msgid "???"
 msgstr "？？？"
 
-#: src/gui/chatwindow.cpp:155 src/gui/setup_chat.cpp:48
+#: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:48
 msgid "Chat"
 msgstr "聊天"
 
-#: src/gui/chatwindow.cpp:644
+#: src/gui/chatwindow.cpp:649
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:1031
+#: src/gui/chatwindow.cpp:1036
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "对%s密语到：%s"
