@@ -295,7 +295,7 @@ Client::Client(const Options &options):
 #if ENABLE_NLS
     std::string lang = config.getValue("lang", "");
 #ifdef WIN32
-    if (!lang.empty())
+    if (lang.empty())
         lang = std::string(_nl_locale_name_default());
 
     putenv((char*)("LANG=" + lang).c_str());
