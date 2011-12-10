@@ -1507,8 +1507,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         }
 
         // Talk to the nearest NPC if 't' pressed
-        if (event.type == SDL_KEYDOWN &&
-            keyboard.getKeyIndex(event.key.keysym.sym)
+        if (wasDown && keyboard.getKeyIndex(event.key.keysym.sym)
             == KeyboardConfig::KEY_TALK &&
             !keyboard.isKeyActive(keyboard.KEY_EMOTE))
         {

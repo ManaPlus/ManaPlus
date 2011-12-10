@@ -2,6 +2,7 @@
 fix: draw damage part on hp bar.
 fix: recursive directory creation on windows.
 fix: text colors in wood theme.
+fix: talk to npc key delay.
 add: polish translation (Derpella).
 add: server side online list (evol only).
 add: copy any line from chat to clipboard.
