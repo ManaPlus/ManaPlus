@@ -1,3 +1,19 @@
+2011-12-11 New release 1.1.12.11
+fix: draw damage part on hp bar.
+fix: recursive directory creation on windows.
+fix: text colors in wood theme.
+add: polish translation (Derpella).
+add: server side online list (evol only).
+add: copy any line from chat to clipboard.
+add: use two clipboard in xserver.
+add: gm commands autocomplete for gms.
+add: to combined menus floor items.
+add: variables for replacment in chat messages.
+<PLAYER> - target or nearest player nick.
+<MONSTER> - target or nearest monster name.
+<PEOPLE> - comma separated list of visible players (except self).
+<PARTY> - all party members (except self).
+
 2011-11-27 New release 1.1.11.27
 ManaPlus:
 fix: show enemy relation in online list.
