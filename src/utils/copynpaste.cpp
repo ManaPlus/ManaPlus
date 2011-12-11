@@ -413,6 +413,7 @@ bool sendBuffer(std::string& text)
 {
     runxsel(text, "-i");
     runxsel(text, "-b", "-i");
+    return true;
 }
 
 bool runxsel(std::string& text, const char *p1, const char *p2)
