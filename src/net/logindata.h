@@ -59,6 +59,7 @@ class LoginData
         std::string password;
         std::string newPassword;
         std::string updateHost;
+        std::string lastLogin;
         int updateType;
 
         std::string email;
@@ -82,6 +83,7 @@ class LoginData
             email.clear();
             captchaResponse.clear();
             gender = GENDER_UNSPECIFIED;
+            lastLogin.clear();
             resetCharacterSlots();
         }
         /**

@@ -100,6 +100,7 @@ class CharSelectDialog : public Window, public gcn::ActionListener,
         bool mLocked;
 
         gcn::Label *mAccountNameLabel;
+        gcn::Label *mLastLoginLabel;
 
         gcn::Button *mSwitchLoginButton;
         gcn::Button *mChangePasswordButton;

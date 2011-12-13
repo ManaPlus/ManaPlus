@@ -168,7 +168,11 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     mToken.session_ID1 = msg.readInt32();
     mToken.account_ID = msg.readInt32();
     mToken.session_ID2 = msg.readInt32();
-    msg.skip(30);                           // unknown
+    msg.skip(4);                           // old ip
+    loginData.lastLogin = msg.readString(24);
+    msg.skip(2);                           // unused bytes
+
+//    msg.skip(30);                           // unknown
     // reserve bits for future usage
     mToken.sex = (msg.readInt8() & 1) ? GENDER_MALE : GENDER_FEMALE;
 

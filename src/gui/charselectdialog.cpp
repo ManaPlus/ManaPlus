@@ -135,6 +135,7 @@ CharSelectDialog::CharSelectDialog(LoginData *data):
     setCloseButton(false);
 
     mAccountNameLabel = new Label(mLoginData->username);
+    mLastLoginLabel = new Label(mLoginData->lastLogin);
     mSwitchLoginButton = new Button(_("Switch Login"), "switch", this);
     mChangePasswordButton = new Button(_("Change Password"), "change_password",
                                        this);
@@ -145,6 +146,7 @@ CharSelectDialog::CharSelectDialog(LoginData *data):
     placer = getPlacer(0, 0);
 
     placer(0, 0, mAccountNameLabel, 2);
+    placer(2, 0, mLastLoginLabel);
     placer(0, 1, mSwitchLoginButton);
 
     if (optionalActions & Net::LoginHandler::Unregister)
