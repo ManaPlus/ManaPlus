@@ -551,9 +551,9 @@ void Game::logic()
 
         if (Client::getState() != STATE_ERROR)
         {
-            errorMessage = _("The connection to the server was lost.");
             if (!disconnectedDialog)
             {
+                errorMessage = _("The connection to the server was lost.");
                 disconnectedDialog = new OkDialog(_("Network Error"),
                                                   errorMessage, false);
                 disconnectedDialog->addActionListener(&errorListener);
@@ -561,14 +561,19 @@ void Game::logic()
             }
         }
 
-        if (viewport)
+        if (viewport && !errorMessage.empty())
         {
             Map *map = viewport->getCurrentMap();
             if (map)
+            {
+                logger->log("state: %d", Client::getState());
                 map->saveExtraLayer();
+            }
         }
         closeDialogs();
         Client::setFramerate(config.getIntValue("fpslimit"));
+        if (Client::getState() != STATE_ERROR)
+            errorMessage = "";
     }
     else
     {
