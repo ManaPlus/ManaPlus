@@ -240,6 +240,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 
     if (whoIsOnline)
         whoIsOnline->loadList(arr);
+    delete [] start;
 }
 
 } // namespace TmwAthena
