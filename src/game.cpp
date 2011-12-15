@@ -1092,6 +1092,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
         gcn::Window *requestedWindow = nullptr;
 
         if (!NpcDialog::isAnyInputFocused()
+            && !InventoryWindow::isAnyInputFocused()
             && !keyboard.isKeyActive(keyboard.KEY_TARGET)
             && !keyboard.isKeyActive(keyboard.KEY_UNTARGET))
         {
