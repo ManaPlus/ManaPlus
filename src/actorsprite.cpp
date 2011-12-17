@@ -437,7 +437,7 @@ static const char *cursorSize(int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static std::string targetCursorFile = "graphics/target-cursor-%s-%s.png";
+    static std::string targetCursorFile = "target-cursor-%s-%s.png";
     static int targetWidths[NUM_TC] = {44, 62, 82};
     static int targetHeights[NUM_TC] = {35, 44, 60};
 
@@ -479,8 +479,8 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
     if (size < TC_SMALL || size >= NUM_TC)
         return;
 
-    ResourceManager *resman = ResourceManager::getInstance();
-    ImageSet *currentImageSet = resman->getImageSet(filename, width, height);
+    ImageSet *currentImageSet = Theme::getImageSetFromTheme(
+        filename, width, height);
 
     if (!currentImageSet)
     {
