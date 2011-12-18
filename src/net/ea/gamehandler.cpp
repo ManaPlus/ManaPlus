@@ -73,7 +73,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
     Uint16 x, y;
     msg.readInt32();   // server tick
     msg.readCoordinates(x, y, direction);
-    msg.skip(2);      // unknown
+    msg.skip(2);      // 0x0505
     logger->log("Protocol: Player start position: (%d, %d),"
                 " Direction: %d", x, y, direction);
     // Switch now or we'll have problems

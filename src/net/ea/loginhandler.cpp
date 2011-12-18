@@ -159,7 +159,7 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 void LoginHandler::processLoginData(Net::MessageIn &msg)
 {
     // Skip the length word
-    msg.skip(2);
+    msg.skip(2);    // size
 
     clearWorlds();
 
@@ -170,7 +170,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     mToken.session_ID2 = msg.readInt32();
     msg.skip(4);                           // old ip
     loginData.lastLogin = msg.readString(24);
-    msg.skip(2);                           // unused bytes
+    msg.skip(2);                           // 0 unused bytes
 
 //    msg.skip(30);                           // unknown
     // reserve bits for future usage
@@ -183,10 +183,11 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
         world->address = msg.readInt32();
         world->port = msg.readInt16();
         world->name = msg.readString(20);
-        world->online_users = msg.readInt32();
+        world->online_users = msg.readInt16();
         config.setValue("updatehost", mUpdateHost);
         world->updateHost = mUpdateHost;
-        msg.skip(2);                        // unknown
+        msg.skip(2);                        // maintenance
+        msg.skip(2);                        // new
 
         logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
             ipToString(world->address), world->port);

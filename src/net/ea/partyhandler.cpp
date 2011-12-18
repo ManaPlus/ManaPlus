@@ -320,7 +320,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
         m = Ea::taParty->getMember(id);
     if (m)
     {
-        msg.skip(4);
+        msg.skip(4);        // 0
         m->setX(msg.readInt16());    // x
         m->setY(msg.readInt16());    // y
         m->setOnline(msg.readInt8());     // online (if 0)
@@ -330,7 +330,7 @@ void PartyHandler::processPartyMove(Net::MessageIn &msg)
     }
     else
     {
-        msg.skip(4);
+        msg.skip(4);        // 0
         msg.readInt16();    // x
         msg.readInt16();    // y
         msg.readInt8();     // online (if 0)

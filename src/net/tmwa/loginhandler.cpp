@@ -154,7 +154,7 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
     {
         unsigned int options = msg.readInt8();
         mRegistrationEnabled = options;
-        msg.skip(2);
+        msg.skip(2);    // 0 unused
         serverVersion = msg.readInt8();
     }
     else

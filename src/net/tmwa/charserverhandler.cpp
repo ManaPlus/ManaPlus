@@ -190,7 +190,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt32();                       // option
     msg.readInt32();                       // karma
     msg.readInt32();                       // manner
-    msg.skip(2);                          // unknown
+    msg.readInt16();                       // character points left
 
     character->data.mAttributes[HP] = msg.readInt16();
     character->data.mAttributes[MAX_HP] = msg.readInt16();
@@ -347,7 +347,7 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
         loginData.characterSlots = static_cast<short unsigned int>(slots);
 
     bool version = msg.readInt8() == 1 && serverVersion > 0;
-    msg.skip(17); // Unused
+    msg.skip(17); // 0 Unused
 
     delete_all(mCharacters);
     mCharacters.clear();
