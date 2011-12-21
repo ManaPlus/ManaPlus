@@ -156,7 +156,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mLastTargetX = 0;
     mLastTargetY = 0;
 
-    mInvertDirection = config.getIntValue("invertMoveDirection");
+    mInvertDirection = 0;
     mCrazyMoveType = config.getIntValue("crazyMoveType");
     mCrazyMoveState = 0;
     mAttackWeaponType = config.getIntValue("attackWeaponType");
@@ -1866,12 +1866,14 @@ void LocalPlayer::moveToHome()
 static const unsigned invertDirectionSize = 5;
 
 void LocalPlayer::changeMode(unsigned *var, unsigned limit, const char *conf,
-                             std::string (LocalPlayer::*func)(), unsigned def)
+                             std::string (LocalPlayer::*func)(), unsigned def,
+                             bool save)
 {
     (*var) ++;
     if (*var >= limit)
         *var = def;
-    config.setValue(conf, *var);
+    if (save)
+        config.setValue(conf, *var);
     if (miniStatusWindow)
         miniStatusWindow->updateStatus();
     const std::string str = (this->*func)();
@@ -1883,7 +1885,7 @@ void LocalPlayer::invertDirection()
 {
     mMoveState = 0;
     changeMode(&mInvertDirection, invertDirectionSize, "invertMoveDirection",
-        &LocalPlayer::getInvertDirectionString);
+        &LocalPlayer::getInvertDirectionString, 0, false);
 }
 
 static const char *invertDirectionStrings[] =
@@ -4122,7 +4124,7 @@ void LocalPlayer::checkNewName(Being *being)
 
 void LocalPlayer::resetYellowBar()
 {
-    mInvertDirection = config.resetIntValue("invertMoveDirection");
+    mInvertDirection = 0;
     mCrazyMoveType = config.resetIntValue("crazyMoveType");
     mMoveToTargetType = config.resetIntValue("moveToTargetType");
     mFollowMode = config.resetIntValue("followMode");

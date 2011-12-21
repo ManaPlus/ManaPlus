@@ -523,7 +523,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         const char *getVarItem(const char **arr, unsigned index, unsigned sz);
 
         void changeMode(unsigned *var, unsigned limit, const char *conf,
-                        std::string (LocalPlayer::*func)(), unsigned def = 0);
+                        std::string (LocalPlayer::*func)(), unsigned def = 0,
+                        bool save = true);
 
         void crazyMove1();
         void crazyMove2();
