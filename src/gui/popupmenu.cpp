@@ -367,7 +367,7 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
                 being->getId(), (being->getName()
                 + being->getGenderSignWithSpace()).c_str()));
         }
-        else if(actor->getType() == ActorSprite::FLOOR_ITEM)
+        else if (actor->getType() == ActorSprite::FLOOR_ITEM)
         {
             FloorItem *floorItem = static_cast<FloorItem*>(actor);
             const ItemInfo &info = floorItem->getInfo();

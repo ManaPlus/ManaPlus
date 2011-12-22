@@ -848,10 +848,10 @@ public:
 
         std::vector<Avatar*> *avatars = mBeings->getMembers();
 
-        std::vector<Avatar*>::iterator i = avatars->begin();
-
         if (!avatars)
             return;
+
+        std::vector<Avatar*>::iterator i = avatars->begin();
 
         while (i != avatars->end())
         {

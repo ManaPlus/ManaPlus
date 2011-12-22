@@ -180,7 +180,6 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
         return d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_CANCELLED,
                                   static_cast<size_t>(dltotal),
                                   static_cast<size_t>(dlnow));
-        return -5;
     }
 
     return d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_IDLE,

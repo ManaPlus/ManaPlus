@@ -406,7 +406,6 @@ void CommandHandler::handleParty(const std::string &args, ChatTab *tab)
 
 void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
 {
-    const std::string str = strprintf("*%s*", args.c_str());
     outString(tab, strprintf("*%s*", args.c_str()), args);
 }
 
