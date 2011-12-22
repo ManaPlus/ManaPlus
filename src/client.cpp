@@ -2238,6 +2238,14 @@ void Client::setFramerate(int fpsLimit)
     SDL_setFramerate(&instance()->mFpsManager, fpsLimit);
 }
 
+int Client::getFramerate()
+{
+    if (!instance()->mLimitFps)
+        return 0;
+
+    return SDL_getFramerate(&instance()->mFpsManager);
+}
+
 void Client::closeDialogs()
 {
     Net::getNpcHandler()->clearDialogs();

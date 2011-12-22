@@ -256,6 +256,8 @@ public:
 
     static void setFramerate(int fpsLimit);
 
+    static int getFramerate();
+
     static bool isTmw();
 
     void optionChanged(const std::string &name);

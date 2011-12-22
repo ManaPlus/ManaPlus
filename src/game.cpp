@@ -572,6 +572,7 @@ void Game::logic()
         }
         closeDialogs();
         Client::setFramerate(config.getIntValue("fpslimit"));
+        mNextAdjustTime = cur_time + adjustDelay;
         if (Client::getState() != STATE_ERROR)
             errorMessage = "";
     }
@@ -603,7 +604,10 @@ void Game::adjustPerfomance()
             return;
         }
 
-        int maxFps = config.getIntValue("fpslimit");
+        int maxFps = Client::getFramerate();
+        if (maxFps != config.getIntValue("fpslimit"))
+            return;
+
         if (!maxFps)
             maxFps = 30;
         else if (maxFps < 10)
@@ -1579,7 +1583,6 @@ void Game::handleActive(SDL_Event &event)
                 player_node->setHalfAway(true);
             }
         }
-        Client::setFramerate(fpsLimit);
     }
     if (player_node)
         player_node->updateName();
@@ -1589,19 +1592,22 @@ void Game::handleActive(SDL_Event &event)
     if (event.active.state & SDL_APPMOUSEFOCUS)
         Client::setMouseFocused(event.active.gain);
 
-    if (player_node && player_node->getAway())
+    if (!fpsLimit)
     {
-        if (Client::getInputFocused() || Client::getMouseFocused())
-            fpsLimit = config.getIntValue("fpslimit");
+        if (player_node && player_node->getAway())
+        {
+            if (Client::getInputFocused() || Client::getMouseFocused())
+                fpsLimit = config.getIntValue("fpslimit");
+            else
+                fpsLimit = config.getIntValue("altfpslimit");
+        }
         else
-            fpsLimit = config.getIntValue("altfpslimit");
-        Client::setFramerate(fpsLimit);
+        {
+            fpsLimit = config.getIntValue("fpslimit");
+        }
     }
-    else
-    {
-        fpsLimit = config.getIntValue("fpslimit");
-        Client::setFramerate(fpsLimit);
-    }
+    Client::setFramerate(fpsLimit);
+    mNextAdjustTime = cur_time + adjustDelay;
 }
 
 /**
