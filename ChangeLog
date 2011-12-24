@@ -1,3 +1,15 @@
+2011-12-25 New release 1.1.12.25
+fix: increasing log file if client disconnected from network.
+fix: memory leak in evol online list.
+fix: enter some chars in inventory input box.
+fix: some rare used packets.
+fix: dont load move type from configuration file.
+fix: create char dialog size.
+fix: wrong auto adjusting perfomance after sleep mode.
+add: last login time in char selection dialog.
+add: update mplus font.
+add: move target cursors to themes.
+
 2011-12-11 New release 1.1.12.11
 fix: draw damage part on hp bar.
 fix: recursive directory creation on windows.
