@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2011-12-10 01:54+0300\n"
-"PO-Revision-Date: 2011-11-20 19:51+0000\n"
-"Last-Translator: nelson6e65 <nelson6e65-manaplus@yahoo.es>\n"
+"POT-Creation-Date: 2011-12-24 14:37+0300\n"
+"PO-Revision-Date: 2011-12-13 15:55+0000\n"
+"Last-Translator: Nelson Martell <nelson6e65-manaplus@yahoo.es>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
 "manaplus/team/es/)\n"
 "Language: es\n"
@@ -87,7 +87,7 @@ msgstr "Cambiando servidores del juego"
 
 #: src/client.cpp:1226 src/client.cpp:1233 src/client.cpp:1367
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
-#: src/gui/charcreatedialog.cpp:230 src/gui/charselectdialog.cpp:254
+#: src/gui/charcreatedialog.cpp:230 src/gui/charselectdialog.cpp:256
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:401
 #: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:167
 #: src/net/ea/charserverhandler.cpp:185 src/net/manaserv/charhandler.cpp:184
@@ -173,147 +173,147 @@ msgstr "Falta el nombre del grupo."
 msgid "Guild name is missing."
 msgstr "Falta el nombre del Clan."
 
-#: src/commandhandler.cpp:404 src/commandhandler.cpp:522
-#: src/commandhandler.cpp:563 src/commandhandler.cpp:603
+#: src/commandhandler.cpp:404 src/commandhandler.cpp:521
+#: src/commandhandler.cpp:562 src/commandhandler.cpp:602
 msgid "Please specify a name."
 msgstr "Por favor, especifique un nombre."
 
-#: src/commandhandler.cpp:456
+#: src/commandhandler.cpp:455
 msgid "Return toggles chat."
 msgstr "Volver a alternar el chat."
 
-#: src/commandhandler.cpp:456
+#: src/commandhandler.cpp:455
 msgid "Message closes chat."
 msgstr "Mensaje cierra la charla."
 
-#: src/commandhandler.cpp:467
+#: src/commandhandler.cpp:466
 msgid "Return now toggles chat."
 msgstr "Volver ahora a cambiar de chat."
 
-#: src/commandhandler.cpp:473
+#: src/commandhandler.cpp:472
 msgid "Message now closes chat."
 msgstr "Mensaje ahora cierra el chat."
 
-#: src/commandhandler.cpp:501
+#: src/commandhandler.cpp:500
 msgid "friend"
 msgstr "amigo"
 
-#: src/commandhandler.cpp:506
+#: src/commandhandler.cpp:505
 msgid "disregarded"
 msgstr "desatendido"
 
-#: src/commandhandler.cpp:511
+#: src/commandhandler.cpp:510
 msgid "neutral"
 msgstr "neutral"
 
-#: src/commandhandler.cpp:530
+#: src/commandhandler.cpp:529
 #, c-format
 msgid "Player already %s!"
 msgstr "¡Jugador ya es %s!"
 
-#: src/commandhandler.cpp:544
+#: src/commandhandler.cpp:543
 #, c-format
 msgid "Player successfully %s!"
 msgstr "¡Jugador %s exitosamente!"
 
-#: src/commandhandler.cpp:552
+#: src/commandhandler.cpp:551
 #, c-format
 msgid "Player could not be %s!"
 msgstr "¡Jugador no pudo ser %s!"
 
-#: src/commandhandler.cpp:575
+#: src/commandhandler.cpp:574
 msgid "Player wasn't ignored!"
 msgstr "El jugador no estaba ignorado!"
 
-#: src/commandhandler.cpp:582
+#: src/commandhandler.cpp:581
 msgid "Player no longer ignored!"
 msgstr "¡El jugador ya no es ignorado!"
 
-#: src/commandhandler.cpp:584
+#: src/commandhandler.cpp:583
 msgid "Player could not be unignored!"
 msgstr "¡Al jugador no se le puede dejar de ignorar!"
 
-#: src/commandhandler.cpp:590
+#: src/commandhandler.cpp:589
 msgid "blacklisted"
 msgstr "en la lista negra"
 
-#: src/commandhandler.cpp:595
+#: src/commandhandler.cpp:594
 msgid "enemy"
 msgstr "enemigo"
 
-#: src/commandhandler.cpp:610
+#: src/commandhandler.cpp:609
 msgid "Player already erased!"
 msgstr "¡Jugador ya borrado!"
 
-#: src/commandhandler.cpp:621
+#: src/commandhandler.cpp:620
 msgid "Player successfully erased!"
 msgstr "¡Jugador borrado con éxito!"
 
-#: src/commandhandler.cpp:623
+#: src/commandhandler.cpp:622
 msgid "Player could not be erased!"
 msgstr "¡Jugador no pudo ser borrado!"
 
-#: src/commandhandler.cpp:930 src/commandhandler.cpp:976
+#: src/commandhandler.cpp:929 src/commandhandler.cpp:975
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Tiempo de actividad del cliente: %s"
 
-#: src/commandhandler.cpp:940
+#: src/commandhandler.cpp:939
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d semana"
 msgstr[1] "%d semanas"
 
-#: src/commandhandler.cpp:949
+#: src/commandhandler.cpp:948
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d día"
 msgstr[1] "%d días"
 
-#: src/commandhandler.cpp:957
+#: src/commandhandler.cpp:956
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d hora"
 msgstr[1] "%d horas"
 
-#: src/commandhandler.cpp:965
+#: src/commandhandler.cpp:964
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minuto"
 msgstr[1] "%d minutos"
 
-#: src/commandhandler.cpp:973
+#: src/commandhandler.cpp:972
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d segundo"
 msgstr[1] "%d segundos"
 
-#: src/commandhandler.cpp:1052
+#: src/commandhandler.cpp:1051
 msgid "font cache size"
 msgstr "tamaño de caché de fuente"
 
-#: src/commandhandler.cpp:1064
+#: src/commandhandler.cpp:1063
 msgid "Cache size:"
 msgstr "Tám. caché:"
 
-#: src/commandhandler.cpp:1068
+#: src/commandhandler.cpp:1067
 msgid "Created:"
 msgstr "Creado:"
 
-#: src/commandhandler.cpp:1070
+#: src/commandhandler.cpp:1069
 msgid "Deleted:"
 msgstr "Borrado:"
 
-#: src/commandhandler.cpp:1172 src/commandhandler.cpp:1179
+#: src/commandhandler.cpp:1171 src/commandhandler.cpp:1178
 msgid "Resource images:"
 msgstr "Imágenes de recurso:"
 
-#: src/commandhandler.cpp:1174 src/commandhandler.cpp:1181
+#: src/commandhandler.cpp:1173 src/commandhandler.cpp:1180
 msgid "Resource orphaned images:"
 msgstr "Imágenes de recurso huérfano:"
 
@@ -339,7 +339,7 @@ msgstr "Captura de pantalla guardada como "
 msgid "Saving screenshot failed!"
 msgstr "¡El guardado de la captura de pantalla ha fallado!"
 
-#: src/game.cpp:554
+#: src/game.cpp:556
 msgid "The connection to the server was lost."
 msgstr "Se ha perdido la conexión con el servidor."
 
@@ -347,19 +347,19 @@ msgstr "Se ha perdido la conexión con el servidor."
 msgid "Network Error"
 msgstr "Error de Red"
 
-#: src/game.cpp:1258
+#: src/game.cpp:1268
 msgid "Ignoring incoming trade requests"
 msgstr "Ignorando las peticiones de intercambio"
 
-#: src/game.cpp:1268
+#: src/game.cpp:1278
 msgid "Accepting incoming trade requests"
 msgstr "Aceptando las peticiones de intercambio"
 
-#: src/game.cpp:1773
+#: src/game.cpp:1784
 msgid "Could Not Load Map"
 msgstr "No se pudo cargar el mapa"
 
-#: src/game.cpp:1774
+#: src/game.cpp:1785
 #, c-format
 msgid "Error while loading %s"
 msgstr "Error mientras cargaba %s"
@@ -521,7 +521,7 @@ msgid "The email address entries mismatch."
 msgstr "Los e-mail son distintos."
 
 #: src/gui/changepassworddialog.cpp:50 src/gui/changepassworddialog.cpp:59
-#: src/gui/charselectdialog.cpp:139
+#: src/gui/charselectdialog.cpp:140
 msgid "Change Password"
 msgstr "Cambiar contraseña"
 
@@ -587,7 +587,7 @@ msgstr "Peinado:"
 msgid "Race:"
 msgstr "Race:"
 
-#: src/gui/charcreatedialog.cpp:104 src/gui/charselectdialog.cpp:481
+#: src/gui/charcreatedialog.cpp:104 src/gui/charselectdialog.cpp:483
 #: src/gui/socialwindow.cpp:1139
 msgid "Create"
 msgstr "Crear"
@@ -630,47 +630,47 @@ msgstr "¿Estás seguro de que deseas borrar este personaje?"
 msgid "Account and Character Management"
 msgstr "Administración de la Cuenta y los Personajes"
 
-#: src/gui/charselectdialog.cpp:138
+#: src/gui/charselectdialog.cpp:139
 msgid "Switch Login"
 msgstr "Volver al Login"
 
-#: src/gui/charselectdialog.cpp:152 src/gui/unregisterdialog.cpp:50
+#: src/gui/charselectdialog.cpp:154 src/gui/unregisterdialog.cpp:50
 #: src/gui/unregisterdialog.cpp:58
 msgid "Unregister"
 msgstr "Cancelar Registro"
 
-#: src/gui/charselectdialog.cpp:161
+#: src/gui/charselectdialog.cpp:163
 msgid "Change Email"
 msgstr "Cambiar e-mail"
 
-#: src/gui/charselectdialog.cpp:254
+#: src/gui/charselectdialog.cpp:256
 msgid "Incorrect password"
 msgstr "Contraseña incorrecta"
 
-#: src/gui/charselectdialog.cpp:287
+#: src/gui/charselectdialog.cpp:289
 msgid "Enter password for deleting character"
 msgstr "Ingrese la contraseña para borrar el personaje"
 
-#: src/gui/charselectdialog.cpp:287
+#: src/gui/charselectdialog.cpp:289
 msgid "Enter password:"
 msgstr "Ingrese contraseña:"
 
-#: src/gui/charselectdialog.cpp:411 src/gui/serverdialog.cpp:298
+#: src/gui/charselectdialog.cpp:413 src/gui/serverdialog.cpp:298
 #: src/gui/setup_relations.cpp:244 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Borrar"
 
-#: src/gui/charselectdialog.cpp:469
+#: src/gui/charselectdialog.cpp:471
 msgid "Choose"
 msgstr "Seleccionar"
 
-#: src/gui/charselectdialog.cpp:472
+#: src/gui/charselectdialog.cpp:474
 #, c-format
 msgid "Level %d"
 msgstr "Nivel: %d"
 
-#: src/gui/charselectdialog.cpp:483 src/gui/charselectdialog.cpp:484
+#: src/gui/charselectdialog.cpp:485 src/gui/charselectdialog.cpp:486
 msgid "(empty)"
 msgstr "(vacío)"
 
@@ -1547,9 +1547,8 @@ msgid "Leave"
 msgstr "Dejar"
 
 #: src/gui/popupmenu.cpp:654
-#, fuzzy
 msgid "Copy to clipboard"
-msgstr "Copiar al chat"
+msgstr "Copiar al portapapeles"
 
 #: src/gui/popupmenu.cpp:849
 msgid "Change guild position"
@@ -2394,9 +2393,8 @@ msgid "Indonesian"
 msgstr "Indonesio"
 
 #: src/gui/setup_theme.cpp:153
-#, fuzzy
 msgid "Polish"
-msgstr "Inglés"
+msgstr "Polaco"
 
 #: src/gui/setup_theme.cpp:154
 msgid "Japanese"
@@ -4025,292 +4023,292 @@ msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Usted cogió un/a %d [@@%d|%s@@]."
 msgstr[1] "Usted Cogió %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:1891
+#: src/localplayer.cpp:1893
 msgid "(D) default moves"
 msgstr "(D) moverse predeterminado"
 
-#: src/localplayer.cpp:1892
+#: src/localplayer.cpp:1894
 msgid "(I) invert moves"
 msgstr "(I) moverse invertido"
 
-#: src/localplayer.cpp:1893
+#: src/localplayer.cpp:1895
 msgid "(c) moves with some crazy moves"
 msgstr "(c) moverse con algunos movimientos locos"
 
-#: src/localplayer.cpp:1894
+#: src/localplayer.cpp:1896
 msgid "(C) moves with crazy moves"
 msgstr "(C) moverse con movimientos locos"
 
-#: src/localplayer.cpp:1895
+#: src/localplayer.cpp:1897
 msgid "(d) double normal + crazy"
 msgstr "(d) doble normal + loco"
 
-#: src/localplayer.cpp:1896
+#: src/localplayer.cpp:1898
 msgid "(?) unknown move"
 msgstr "(?) movimiento desconocido"
 
-#: src/localplayer.cpp:1918
+#: src/localplayer.cpp:1920
 #, c-format
 msgid "(%d) crazy move number %d"
 msgstr "(%d) movimiento loco número %d"
 
-#: src/localplayer.cpp:1923
+#: src/localplayer.cpp:1925
 msgid "(a) custom crazy move"
 msgstr "(a) maniobra alocada personalizada"
 
-#: src/localplayer.cpp:1927
+#: src/localplayer.cpp:1929
 msgid "(?) crazy move"
 msgstr "(?) maniobra loca"
 
-#: src/localplayer.cpp:1941
+#: src/localplayer.cpp:1943
 msgid "(0) default moves to target"
 msgstr "(0) moverse por defecto hacia el objetivo"
 
-#: src/localplayer.cpp:1942
+#: src/localplayer.cpp:1944
 msgid "(1) moves to target in distance 1"
 msgstr "(1) moverse al objetivo en distancia 1"
 
-#: src/localplayer.cpp:1943
+#: src/localplayer.cpp:1945
 msgid "(2) moves to target in distance 2"
 msgstr "(2) moverse al objetivo en distancia 2"
 
-#: src/localplayer.cpp:1944
+#: src/localplayer.cpp:1946
 msgid "(3) moves to target in distance 3"
 msgstr "(3) moverse al objetivo en distancia 3"
 
-#: src/localplayer.cpp:1945
+#: src/localplayer.cpp:1947
 msgid "(5) moves to target in distance 5"
 msgstr "(5) moverse al objetivo en distancia 5"
 
-#: src/localplayer.cpp:1946
+#: src/localplayer.cpp:1948
 msgid "(7) moves to target in distance 7"
 msgstr "(7) moverse al objetivo en distancia 7"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1949
 msgid "(A) moves to target in attack range"
 msgstr "(A) desplazarse al objetivo en el rango de ataque"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1950
 msgid "(a) archer attack range"
 msgstr "(a) rango de ataque de arquero"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1951
 msgid "(?) move to target"
 msgstr "(?) mover al objetivo"
 
-#: src/localplayer.cpp:1968
+#: src/localplayer.cpp:1970
 msgid "(D) default follow"
 msgstr "(D) seguimiento predeterminado"
 
-#: src/localplayer.cpp:1969
+#: src/localplayer.cpp:1971
 msgid "(R) relative follow"
 msgstr "(R) seguimiento relativo"
 
-#: src/localplayer.cpp:1970
+#: src/localplayer.cpp:1972
 msgid "(M) mirror follow"
 msgstr "(M) seguimiento tipo espejo"
 
-#: src/localplayer.cpp:1971
+#: src/localplayer.cpp:1973
 msgid "(P) pet follow"
 msgstr "(P) seguimiento como mascota"
 
-#: src/localplayer.cpp:1972
+#: src/localplayer.cpp:1974
 msgid "(?) unknown follow"
 msgstr "(?) seguimiento desconoicido"
 
-#: src/localplayer.cpp:1991 src/localplayer.cpp:1995 src/localplayer.cpp:2018
+#: src/localplayer.cpp:1993 src/localplayer.cpp:1997 src/localplayer.cpp:2020
 msgid "(?) attack"
 msgstr "(?) atacar"
 
-#: src/localplayer.cpp:1992 src/localplayer.cpp:2014
+#: src/localplayer.cpp:1994 src/localplayer.cpp:2016
 msgid "(D) default attack"
 msgstr "(D) ataque predeterminado"
 
-#: src/localplayer.cpp:1993
+#: src/localplayer.cpp:1995
 msgid "(s) switch attack without shield"
 msgstr "(s) intercambiar ataque sin escudo"
 
-#: src/localplayer.cpp:1994
+#: src/localplayer.cpp:1996
 msgid "(S) switch attack with shield"
 msgstr "(S)  intercambiar ataque con escudo"
 
-#: src/localplayer.cpp:2015
+#: src/localplayer.cpp:2017
 msgid "(G) go and attack"
 msgstr "(G) ir y atacar"
 
-#: src/localplayer.cpp:2016
+#: src/localplayer.cpp:2018
 msgid "(A) go, attack, pickup"
 msgstr "(A) ir, atacar, recoger"
 
-#: src/localplayer.cpp:2017
+#: src/localplayer.cpp:2019
 msgid "(d) without auto attack"
 msgstr "(d) sin atacar automáticamente"
 
-#: src/localplayer.cpp:2051
+#: src/localplayer.cpp:2053
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) recoger a 1x1 celdas (pequeño)"
 
-#: src/localplayer.cpp:2052
+#: src/localplayer.cpp:2054
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) recoger a 2x1 celdas (predeterminado)"
 
-#: src/localplayer.cpp:2053
+#: src/localplayer.cpp:2055
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) recoger interesadamente a 2x3 celda"
 
-#: src/localplayer.cpp:2054
+#: src/localplayer.cpp:2056
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) recoger a 3x3 celdas"
 
-#: src/localplayer.cpp:2055
+#: src/localplayer.cpp:2057
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) ir y recoger en distancia 4"
 
-#: src/localplayer.cpp:2056
+#: src/localplayer.cpp:2058
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) ir y recoger en distancia 8"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2059
 msgid "(A) go and pick up in max distance"
 msgstr "(A) ir y recoger a máxima distancia"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2060
 msgid "(?) pick up"
 msgstr "(?) recoger"
 
-#: src/localplayer.cpp:2071
+#: src/localplayer.cpp:2073
 msgid "(N) normal map view"
 msgstr "(N) vista normal del mapa"
 
-#: src/localplayer.cpp:2072
+#: src/localplayer.cpp:2074
 msgid "(D) debug map view"
 msgstr "(D) vista depurar del mapa"
 
-#: src/localplayer.cpp:2073
+#: src/localplayer.cpp:2075
 msgid "(u) ultra map view"
 msgstr "(u) ultra vista del mapa"
 
-#: src/localplayer.cpp:2074
+#: src/localplayer.cpp:2076
 msgid "(U) ultra map view 2"
 msgstr "(U) ultra vista del mapa 2"
 
-#: src/localplayer.cpp:2075
+#: src/localplayer.cpp:2077
 msgid "(e) empty map view"
 msgstr "(e) vista vacía del mapa"
 
-#: src/localplayer.cpp:2076
+#: src/localplayer.cpp:2078
 msgid "(b) black & white map view"
 msgstr "(b) vista del mapa en blanco y negro"
 
-#: src/localplayer.cpp:2095
+#: src/localplayer.cpp:2097
 msgid "(f) use #flar for magic attack"
 msgstr "(f) usar #flar para ataque mágico"
 
-#: src/localplayer.cpp:2096
+#: src/localplayer.cpp:2098
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) usar #chiza para ataque mágico"
 
-#: src/localplayer.cpp:2097
+#: src/localplayer.cpp:2099
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) usar #ingrav para ataque mágico"
 
-#: src/localplayer.cpp:2098
+#: src/localplayer.cpp:2100
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) usar #frillyar para ataque mágico"
 
-#: src/localplayer.cpp:2099
+#: src/localplayer.cpp:2101
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) usar #upmarmu para ataque mágico"
 
-#: src/localplayer.cpp:2100
+#: src/localplayer.cpp:2102
 msgid "(?) magic attack"
 msgstr "(?) ataque mágico"
 
-#: src/localplayer.cpp:2119
+#: src/localplayer.cpp:2121
 msgid "(a) attack all players"
 msgstr "(a) atacar a todos los jugadores"
 
-#: src/localplayer.cpp:2120
+#: src/localplayer.cpp:2122
 msgid "(f) attack not friends"
 msgstr "(f) atacar a los que no son amigos"
 
-#: src/localplayer.cpp:2121
+#: src/localplayer.cpp:2123
 msgid "(b) attack bad relations"
 msgstr "(b) atacar a quienes están en malas relaciones"
 
-#: src/localplayer.cpp:2122
+#: src/localplayer.cpp:2124
 msgid "(d) dont attack players"
 msgstr "(d) no atacar a los jugadores"
 
-#: src/localplayer.cpp:2123
+#: src/localplayer.cpp:2125
 msgid "(?) pvp attack"
 msgstr "(?) ataque pvp"
 
-#: src/localplayer.cpp:2142
+#: src/localplayer.cpp:2144
 msgid "(D) default imitation"
 msgstr "(D) imitación predeterminada"
 
-#: src/localplayer.cpp:2143
+#: src/localplayer.cpp:2145
 msgid "(O) outfits imitation"
 msgstr "(O) imitación de conjuntos"
 
-#: src/localplayer.cpp:2144
+#: src/localplayer.cpp:2146
 msgid "(?) imitation"
 msgstr "(?) imitación"
 
-#: src/localplayer.cpp:2172
+#: src/localplayer.cpp:2174
 msgid "Away"
 msgstr "Fuera del Teclado"
 
-#: src/localplayer.cpp:2191
+#: src/localplayer.cpp:2193
 msgid "(O) on keyboard"
 msgstr "(O) en el teclado"
 
-#: src/localplayer.cpp:2192
+#: src/localplayer.cpp:2194
 msgid "(A) away"
 msgstr "(A) lejos del teclado"
 
-#: src/localplayer.cpp:2193 src/localplayer.cpp:2208
+#: src/localplayer.cpp:2195 src/localplayer.cpp:2210
 msgid "(?) away"
 msgstr "(?) afuera"
 
-#: src/localplayer.cpp:2206
+#: src/localplayer.cpp:2208
 msgid "(G) game camera mode"
 msgstr "(G) modo de cámara de juego"
 
-#: src/localplayer.cpp:2207
+#: src/localplayer.cpp:2209
 msgid "(F) free camera mode"
 msgstr "(F) modo de cámara libre"
 
-#: src/localplayer.cpp:2232
+#: src/localplayer.cpp:2234
 msgid "Game modifiers are enabled"
 msgstr "Modificadores del juego están habilitados"
 
-#: src/localplayer.cpp:2233
+#: src/localplayer.cpp:2235
 msgid "Game modifiers are disabled"
 msgstr "Modificadores del juego están deshabilitados"
 
-#: src/localplayer.cpp:2234
+#: src/localplayer.cpp:2236
 msgid "Game modifiers are unknown"
 msgstr "Los modificadores del juego son desconocidos"
 
-#: src/localplayer.cpp:3750
+#: src/localplayer.cpp:3752
 msgid "Follow: "
 msgstr "Seguir: "
 
-#: src/localplayer.cpp:3752 src/localplayer.cpp:3767
+#: src/localplayer.cpp:3754 src/localplayer.cpp:3769
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3759
+#: src/localplayer.cpp:3761
 msgid "Imitation: "
 msgstr "Imitacion: "
 
-#: src/localplayer.cpp:3761 src/localplayer.cpp:3769
+#: src/localplayer.cpp:3763 src/localplayer.cpp:3771
 msgid "Imitation canceled"
 msgstr "Imitación cancelada"
 
-#: src/localplayer.cpp:4117
+#: src/localplayer.cpp:4119
 msgid "You see "
 msgstr "Ves "
 
@@ -4458,7 +4456,7 @@ msgstr "Error desconocido del char-server."
 msgid "Failed to create character. Most likely the name is already taken."
 msgstr "Error al crear personaje. Probablemente ya esté en uso."
 
-#: src/net/ea/charserverhandler.cpp:155 src/net/ea/loginhandler.cpp:235
+#: src/net/ea/charserverhandler.cpp:155 src/net/ea/loginhandler.cpp:240
 msgid "Wrong name."
 msgstr "Nombre equivocado."
 
@@ -4626,11 +4624,11 @@ msgstr "Invitación desconocida a un clan."
 msgid "%s has left your guild."
 msgstr "%s ha dejado tu clan."
 
-#: src/net/ea/guildhandler.cpp:498
+#: src/net/ea/guildhandler.cpp:499
 msgid "You was kicked from guild."
 msgstr "Usted fue expulsado del clan."
 
-#: src/net/ea/guildhandler.cpp:511
+#: src/net/ea/guildhandler.cpp:512
 #, c-format
 msgid "%s has kicked from your guild."
 msgstr "%s saco alguien de tu clan."
@@ -4769,41 +4767,41 @@ msgstr "Contrasena antigua incorrecta."
 msgid "New password too short."
 msgstr "Nueva contrasena es muy corta."
 
-#: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:241
+#: src/net/ea/loginhandler.cpp:140 src/net/ea/loginhandler.cpp:246
 #: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
 #: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
 #: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
 msgid "Unknown error."
 msgstr "Error desconocido."
 
-#: src/net/ea/loginhandler.cpp:203
+#: src/net/ea/loginhandler.cpp:208
 msgid "Unregistered ID."
 msgstr "ID no registrada."
 
-#: src/net/ea/loginhandler.cpp:206
+#: src/net/ea/loginhandler.cpp:211
 msgid "Wrong password."
 msgstr "Contrasena incorrecta."
 
-#: src/net/ea/loginhandler.cpp:209
+#: src/net/ea/loginhandler.cpp:214
 msgid "Account expired."
 msgstr "La cuenta expiró."
 
-#: src/net/ea/loginhandler.cpp:212
+#: src/net/ea/loginhandler.cpp:217
 msgid "Rejected from server."
 msgstr "Rechazado del servidor."
 
-#: src/net/ea/loginhandler.cpp:215
+#: src/net/ea/loginhandler.cpp:220
 msgid ""
 "You have been permanently banned from the game. Please contact the GM team."
 msgstr ""
 "Has sido baneado permanentemente del juego. Por favor contacta con el equipo "
 "GM."
 
-#: src/net/ea/loginhandler.cpp:219
+#: src/net/ea/loginhandler.cpp:224
 msgid "Client too old."
 msgstr "Cliente es demasiado antíguo."
 
-#: src/net/ea/loginhandler.cpp:222
+#: src/net/ea/loginhandler.cpp:227
 #, c-format
 msgid ""
 "You have been temporarily banned from the game until %s.\n"
@@ -4812,15 +4810,15 @@ msgstr ""
 "Has sido baneado temporalmente del juego %s.\n"
 "Por favor contacta un GM de nuestro equipo via el foro."
 
-#: src/net/ea/loginhandler.cpp:229
+#: src/net/ea/loginhandler.cpp:234
 msgid "Server overpopulated."
 msgstr "Servidor sobrepoblado."
 
-#: src/net/ea/loginhandler.cpp:232
+#: src/net/ea/loginhandler.cpp:237
 msgid "This user name is already taken."
 msgstr "Este nombre de usuario ya está escogido."
 
-#: src/net/ea/loginhandler.cpp:238
+#: src/net/ea/loginhandler.cpp:243
 msgid "Username permanently erased."
 msgstr "Nombre de usuario borrado permanentemente."
 
