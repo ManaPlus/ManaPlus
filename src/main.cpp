@@ -84,7 +84,7 @@ static void printVersion()
 
 static void parseOptions(int argc, char *argv[], Client::Options &options)
 {
-    const char *optstring = "hvud:U:P:Dc:p:l:L:C:";
+    const char *optstring = "hvud:U:P:Dc:p:l:L:C:s:";
 
     const struct option long_options[] =
     {
