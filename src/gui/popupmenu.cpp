@@ -586,7 +586,7 @@ void PopupMenu::showOutfitsPopup(int x, int y)
     mBrowserBox->clearRows();
 
     mBrowserBox->addRow(_("Outfits"));
-    mBrowserBox->addRow("load old outfits", _("Load old outfits"));
+    mBrowserBox->addRow("clear outfit", _("Clear outfit"));
 
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1331,11 +1331,6 @@ void PopupMenu::handleLink(const std::string &link,
         mDialog->setActionEventId("ok");
         mDialog->addActionListener(&mRenameListener);
     }
-    else if (link == "load old outfits")
-    {
-        if (outfitWindow)
-            outfitWindow->load(true);
-    }
     else if (link == "load old spells")
     {
         if (spellManager)
@@ -1672,6 +1667,11 @@ void PopupMenu::handleLink(const std::string &link,
     {
         showChangePos(getX(), getY());
         return;
+    }
+    else if (link == "clear outfit")
+    {
+        if (outfitWindow)
+            outfitWindow->clearCurrentOutfit();
     }
     else if (!link.compare(0, 10, "guild-pos-"))
     {

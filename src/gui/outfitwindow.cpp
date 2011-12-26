@@ -985,3 +985,12 @@ void OutfitWindow::setItemSelected(Item *item)
         mItemColorSelected = 1;
     }
 }
+
+void OutfitWindow::clearCurrentOutfit()
+{
+    for (unsigned f = 0; f < OUTFIT_ITEM_COUNT; f++)
+    {
+        mItems[mCurrentOutfit][f] = -1;
+        mItemColors[mCurrentOutfit][f] = 1;
+    }
+}

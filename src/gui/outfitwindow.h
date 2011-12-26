@@ -108,6 +108,8 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         std::string keyName(int number) A_PURE;
 
+        void clearCurrentOutfit();
+
     private:
         Button *mPreviousButton;
         Button *mNextButton;
