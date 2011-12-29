@@ -450,8 +450,6 @@ SET(SRCS
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
-    utils/sha256.cpp
-    utils/sha256.h
     utils/stringutils.cpp
     utils/stringutils.h
     utils/mutex.h
@@ -794,6 +792,8 @@ SET(SRCS_MANASERV
     enet/utility.h
     enet/win32.c
     enet/win32.h
+    utils/sha256.cpp
+    utils/sha256.h
     net/manaserv/attributes.cpp
     net/manaserv/attributes.h
     net/manaserv/adminhandler.cpp

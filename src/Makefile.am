@@ -457,8 +457,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mkdir.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
-	      utils/sha256.cpp \
-	      utils/sha256.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
 	      utils/stringutils.cpp \
@@ -620,6 +618,8 @@ manaplus_SOURCES += enet/callbacks.c \
 	      enet/unix.h \
 	      enet/utility.h \
 	      enet/win32.h \
+	      utils/sha256.cpp \
+	      utils/sha256.h \
 	      net/manaserv/attributes.cpp \
 	      net/manaserv/attributes.h \
 	      net/manaserv/adminhandler.cpp \
