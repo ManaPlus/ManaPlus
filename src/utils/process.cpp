@@ -1,0 +1,171 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2011  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "utils/process.h"
+
+#include <string.h>
+#include <cstdarg>
+#include <cstdio>
+
+#include <stdlib.h>
+
+#include "debug.h"
+
+#include "localconsts.h"
+
+const int timeOut = 10;
+
+#ifdef WIN32
+
+#include <windows.h>
+
+int execFile(std::string pathName, std::string name,
+             std::string arg1, std::string arg2, int waitTime)
+{
+    if (!waitTime)
+        waitTime = timeOut;
+
+    STARTUPINFO siStartupInfo;
+    PROCESS_INFORMATION piProcessInfo;
+    memset(&siStartupInfo, 0, sizeof(siStartupInfo));
+    memset(&piProcessInfo, 0, sizeof(piProcessInfo));
+    siStartupInfo.cb = sizeof(siStartupInfo); 
+    DWORD ret = -1;
+    std::string args(pathName + " " + arg1);
+    if (!arg2.empty())
+        args += " " + arg2;
+
+    if (CreateProcess(pathName.c_str(), (char*)args.c_str(), 0, 0, false,
+        CREATE_DEFAULT_ERROR_MODE, 0, 0, &siStartupInfo,
+        &piProcessInfo) != false)
+    {
+        if (!WaitForSingleObject(piProcessInfo.hProcess, timeOut * 1000))
+        {
+            if (GetExitCodeProcess(piProcessInfo.hProcess, &ret))
+            {
+                CloseHandle(piProcessInfo.hProcess);
+                CloseHandle(piProcessInfo.hThread);
+                return ret;
+            }
+        }
+        TerminateProcess(piProcessInfo.hProcess, -1);
+    }
+
+    CloseHandle(piProcessInfo.hProcess);
+    CloseHandle(piProcessInfo.hThread);
+    return -1;
+}
+
+#elif defined(__APPLE__)
+
+int execFile(std::string pathName, std::string name,
+             std::string arg1, std::string arg2, int waitTime)
+{
+    return -1;
+}
+
+#elif defined __linux__ || defined __linux
+
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int execFile(std::string pathName, std::string name,
+             std::string arg1, std::string arg2, int waitTime)
+{
+    pid_t mon_pid;
+    int status;
+
+    if (!waitTime)
+        waitTime = timeOut;
+
+    if ((mon_pid = fork()) == -1)
+    {   // fork error
+        return -1;
+    }
+    else if (!mon_pid)
+    {   // monitoring child
+        pid_t pid;
+        if ((pid = fork()) == -1)
+        {   // fork error
+            return -1;
+        }
+        else if (!pid)
+        {   // work child
+            if (arg2.empty())
+            {
+                execl(pathName.c_str(), name.c_str(),
+                      arg1.c_str(), (char *)nullptr);
+            }
+            else
+            {
+                execl(pathName.c_str(), name.c_str(),
+                      arg1.c_str(), arg2.c_str(), (char *)nullptr);
+            }
+            exit(0);
+        }
+
+        // monitoring process
+        pid_t sleep_pid;
+        if ((sleep_pid = fork()) == -1)
+        {   // fork error
+            return -1;
+        }
+        else if (!sleep_pid)
+        {   // sleep pid
+            sleep (timeOut);
+//            printf ("time out\n");
+            exit(-1);
+        }
+
+        // monitoring process
+        pid_t exited_pid = wait(&status);
+        int ret = -1;
+        if (exited_pid == pid)
+        {
+            kill(sleep_pid, SIGKILL);
+            if (WIFEXITED(status))
+                ret = WEXITSTATUS(status);
+        }
+        else
+        {
+            kill(pid, SIGKILL);
+            ret = -1;
+        }
+        wait(nullptr);
+        exit(ret);
+    }
+
+    // monitoring parent
+    waitpid(mon_pid, &status, 0);
+    if (WIFEXITED(status))
+        return WEXITSTATUS(status);
+
+    return -1;
+}
+
+#else
+
+int execFile(std::string pathName, std::string name,
+             std::string arg1, std::string arg2, int waitTime)
+{
+    return -1;
+}
+
+#endif

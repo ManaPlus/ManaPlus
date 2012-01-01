@@ -450,6 +450,8 @@ SET(SRCS
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
+    utils/process.cpp
+    utils/process.h
     utils/stringutils.cpp
     utils/stringutils.h
     utils/mutex.h

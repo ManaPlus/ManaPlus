@@ -670,6 +670,8 @@
 		<Unit filename="src\utils\mutex.h" />
 		<Unit filename="src\utils\paths.cpp" />
 		<Unit filename="src\utils\paths.h" />
+		<Unit filename="src\utils\process.cpp" />
+		<Unit filename="src\utils\process.h" />
 		<Unit filename="src\utils\sha256.cpp" />
 		<Unit filename="src\utils\sha256.h" />
 		<Unit filename="src\utils\specialfolder.cpp" />

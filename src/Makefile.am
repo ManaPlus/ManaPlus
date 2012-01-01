@@ -457,6 +457,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mkdir.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
+	      utils/process.cpp \
+	      utils/process.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
 	      utils/stringutils.cpp \
