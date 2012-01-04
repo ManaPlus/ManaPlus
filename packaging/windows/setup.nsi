@@ -331,7 +331,9 @@ Section "Create Shortcuts" SecShortcuts
   CreateShortCut "$SMPROGRAMS\Mana\ManaPlus.lnk" "$INSTDIR\manaplus.exe"
   CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk" "$INSTDIR\manaplus.exe" --no-opengl
   CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk" "$INSTDIR\manaplus.exe" --safemode
+  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (tests).lnk" "$INSTDIR\manaplus.exe" --tests
   CreateShortCut "$DESKTOP\ManaPlus.lnk" "$INSTDIR\manaplus.exe"
+  CreateShortCut "$DESKTOP\ManaPlus (tests).lnk" "$INSTDIR\manaplus.exe" --tests
 
   ${registerExtension} "$INSTDIR\manaplus.exe" ".manaplus" "ManaPlus brandings"
 SectionEnd
@@ -398,8 +400,11 @@ Section Uninstall
 
   Delete "$SMPROGRAMS\Mana\Uninstall.lnk"
   Delete "$DESKTOP\ManaPlus.lnk"
+  Delete "$DESKTOP\ManaPlus (tests).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus.lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk"
+  Delete "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk"
+  Delete "$SMPROGRAMS\Mana\ManaPlus (tests).lnk"
   Delete "$SMPROGRAMS\Mana\Website.lnk"
   Delete "$SMPROGRAMS\Mana\Readme.lnk"
   Delete "$SMPROGRAMS\Mana\FAQ.lnk"

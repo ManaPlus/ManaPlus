@@ -55,6 +55,7 @@ ENDIF()
 
 If(UNIX)
     INSTALL(FILES manaplus.desktop DESTINATION share/applications)
+    INSTALL(FILES manaplustest.desktop DESTINATION share/applications)
 ENDIF()
 
 SET(CPACK_PACKAGE_NAME "manaplus")

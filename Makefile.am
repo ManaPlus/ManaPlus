@@ -3,7 +3,8 @@ SUBDIRS = data docs po src
 
 desktopdir = $(datarootdir)/applications
 
-desktop_DATA = manaplus.desktop
+desktop_DATA = manaplus.desktop \
+	     manaplustest.desktop
 
 # Extra files to include
 EXTRA_DIST = $(desktop_DATA) \
