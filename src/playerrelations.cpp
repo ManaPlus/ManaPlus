@@ -574,14 +574,24 @@ bool PlayerRelationsManager::checkName(const std::string &name) const
     const int size = name.size();
     std::string check = config.getStringValue("unsecureChars");
 
-    if (name.substr(0, 1) == " " || name.substr(size - 1, 1) == " ")
+    std::string lastChar = name.substr(size - 1, 1);
+    if (name.substr(0, 1) == " " || lastChar == " " || lastChar == "."
+        || name.find("  ") != std::string::npos)
+    {
         return false;
+    }
     else if (check.empty())
+    {
         return true;
+    }
     else if (name.find_first_of(check) != std::string::npos)
+    {
         return false;
+    }
     else
+    {
         return true;
+    }
 }
 
 PlayerRelationsManager player_relations;
