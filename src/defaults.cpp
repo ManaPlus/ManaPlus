@@ -224,6 +224,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "lang", "");
     AddDEF(configData, "selectedJoystick", 0);
     AddDEF(configData, "useInactiveJoystick", false);
+    AddDEF(configData, "testInfo", "");
     return configData;
 }
 
