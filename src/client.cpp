@@ -101,6 +101,9 @@
 #include "utils/paths.h"
 #include "utils/stringutils.h"
 
+#include "test/testlauncher.h"
+#include "test/testmain.h"
+
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
 #endif
@@ -269,7 +272,25 @@ Client::Client(const Options &options):
     mGuiAlpha(1.0f)
 {
     mInstance = this;
+}
 
+void Client::testsInit()
+{
+    printf ("testInit\n");
+    if (!mOptions.test.empty())
+    {
+        gameInit();
+    }
+    else
+    {
+        logger = new Logger;
+        initLocalDataDir();
+        initConfigDir();
+    }
+}
+
+void Client::gameInit()
+{
     logger = new Logger;
 
     // Load branding information
@@ -644,7 +665,31 @@ Client::Client(const Options &options):
 
 Client::~Client()
 {
-    logger->log1("Quitting1");
+    if (!mOptions.testMode)
+        gameClear();
+    else
+        testsClear();
+}
+
+void Client::testsClear()
+{
+    if (!mOptions.test.empty())
+    {
+        gameClear();
+    }
+    else
+    {
+        BeingInfo::clear();
+
+        delete logger;
+        logger = nullptr;
+    }
+}
+
+void Client::gameClear()
+{
+    if (logger)
+        logger->log1("Quitting1");
     config.removeListener("fpslimit", this);
     config.removeListener("guialpha", this);
 
@@ -681,39 +726,46 @@ Client::~Client()
 
     player_relations.store();
 
-    logger->log1("Quitting2");
+    if (logger)
+        logger->log1("Quitting2");
 
     delete gui;
     gui = nullptr;
 
-    logger->log1("Quitting3");
+    if (logger)
+        logger->log1("Quitting3");
 
     delete mainGraphics;
     mainGraphics = nullptr;
 
-    logger->log1("Quitting4");
+    if (logger)
+        logger->log1("Quitting4");
 
     // Shutdown libxml
     xmlCleanupParser();
 
-    logger->log1("Quitting5");
+    if (logger)
+        logger->log1("Quitting5");
 
     BeingInfo::clear();
 
     // Shutdown sound
     sound.close();
 
-    logger->log1("Quitting6");
+    if (logger)
+        logger->log1("Quitting6");
 
     ActorSprite::unload();
 
     ResourceManager::deleteInstance();
 
-    logger->log1("Quitting8");
+    if (logger)
+        logger->log1("Quitting8");
 
     SDL_FreeSurface(mIcon);
 
-    logger->log1("Quitting9");
+    if (logger)
+        logger->log1("Quitting9");
 
     delete userPalette;
     userPalette = nullptr;
@@ -721,7 +773,8 @@ Client::~Client()
     delete joystick;
     joystick = nullptr;
 
-    logger->log1("Quitting10");
+    if (logger)
+        logger->log1("Quitting10");
 
     config.write();
     serverConfig.write();
@@ -729,7 +782,8 @@ Client::~Client()
     config.clear();
     serverConfig.clear();
 
-    logger->log1("Quitting11");
+    if (logger)
+        logger->log1("Quitting11");
 
     delete chatLogger;
     chatLogger = nullptr;
@@ -740,7 +794,22 @@ Client::~Client()
     mInstance = nullptr;
 }
 
-int Client::exec()
+int Client::testsExec()
+{
+    if (mOptions.test.empty())
+    {
+        TestMain test;
+        return test.exec();
+    }
+    else
+    {
+        TestLauncher launcher(mOptions.test);
+        return launcher.exec();
+    }
+    return 0;
+}
+
+int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
@@ -1481,6 +1550,12 @@ void Client::initRootDir()
  */
 void Client::initHomeDir()
 {
+    initLocalDataDir();
+    initConfigDir();
+}
+
+void Client::initLocalDataDir()
+{
     mLocalDataDir = mOptions.localDataDir;
 
     if (mLocalDataDir.empty())
@@ -1509,7 +1584,10 @@ void Client::initHomeDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mLocalDataDir.c_str()));
     }
+}
 
+void Client::initConfigDir()
+{
     mConfigDir = mOptions.configDir;
 
     if (mConfigDir.empty())
@@ -1623,7 +1701,10 @@ void Client::initConfiguration()
 //    bool oldConfig = false;
 //    int emptySize = config.getSize();
 
-    configPath = mConfigDir + "/config.xml";
+    if (mOptions.test.empty())
+        configPath = mConfigDir + "/config.xml";
+    else
+        configPath = mConfigDir + "/test.xml";
 
     configFile = fopen(configPath.c_str(), "r");
 

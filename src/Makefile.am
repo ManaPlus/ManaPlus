@@ -466,6 +466,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mutex.h \
 	      utils/xml.cpp \
 	      utils/xml.h \
+	      test/testlauncher.cpp \
+	      test/testlauncher.h \
+	      test/testmain.cpp \
+	      test/testmain.h \
 	      actor.cpp \
 	      actor.h \
 	      actorsprite.cpp \

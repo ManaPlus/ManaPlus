@@ -71,6 +71,7 @@ static void printHelp()
              " directory") << endl
         << _("     --screenshot-dir : Directory to store screenshots") << endl
         << _("     --safemode       : Start game in safe mode") << endl
+        << _("  -T --tests          : Start testing drivers and auto configuring") << endl
 #ifdef USE_OPENGL
         << _("     --no-opengl      : Disable OpenGL for this session") << endl
 #endif
@@ -84,7 +85,7 @@ static void printVersion()
 
 static void parseOptions(int argc, char *argv[], Client::Options &options)
 {
-    const char *optstring = "hvud:U:P:Dc:p:l:L:C:s:";
+    const char *optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T";
 
     const struct option long_options[] =
     {
@@ -107,6 +108,8 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
         { "chat-log-dir",   required_argument, 0, 'L' },
         { "screenshot-dir", required_argument, 0, 'i' },
         { "safemode",       no_argument,       0, 'm' },
+        { "tests",          no_argument,       0, 'T' },
+        { "test",           required_argument, 0, 't' },
         { nullptr,          0,                 0, 0 }
     };
 
@@ -173,6 +176,14 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
                 break;
             case 'm':
                 options.safeMode = true;
+                break;
+            case 'T':
+                options.testMode = true;
+                options.test = "";
+                break;
+            case 't':
+                options.testMode = true;
+                options.test = std::string(optarg);
                 break;
             default:
                 break;
@@ -247,5 +258,14 @@ int main(int argc, char *argv[])
     SetCurrentDirectory(PHYSFS_getBaseDir());
 #endif
     Client client(options);
-    return client.exec();
+    if (!options.testMode)
+    {
+        client.gameInit();
+        return client.gameExec();
+    }
+    else
+    {
+        client.testsInit();
+        return client.testsExec();
+    }
 }

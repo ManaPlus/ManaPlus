@@ -459,6 +459,10 @@ SET(SRCS
     utils/mkdir.h
     utils/xml.cpp
     utils/xml.h
+    test/testlauncher.cpp
+    test/testlauncher.h
+    test/testmain.cpp
+    test/testmain.h
     actor.cpp
     actor.h
     actorsprite.cpp
