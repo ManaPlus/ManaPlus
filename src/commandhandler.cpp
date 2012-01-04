@@ -202,6 +202,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleServerUnIgnoreAll(args, tab);
     else if (type == "dumpg")
         handleDumpGraphics(args, tab);
+    else if (type == "dumpt")
+        handleDumpTests(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -1122,6 +1124,13 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += config.getBoolValue("particleeffects") ? "1" : "0";
 
     str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
+    outString(tab, str, str);
+}
+
+void CommandHandler::handleDumpTests(const std::string &args A_UNUSED,
+                                     ChatTab *tab)
+{
+    std::string str = config.getStringValue("testInfo");
     outString(tab, str, str);
 }
 
