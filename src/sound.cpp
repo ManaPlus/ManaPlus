@@ -349,9 +349,13 @@ void Sound::playGuiSfx(const std::string &path)
     if (!mInstalled || path.empty() || !mPlayGui)
         return;
 
+    std::string tmpPath;
+    if (!path.compare(0, 4, "sfx/"))
+        tmpPath = path;
+    else
+        tmpPath = paths.getValue("sfx", "sfx/") + path;
     ResourceManager *resman = ResourceManager::getInstance();
-    SoundEffect *sample = resman->getSoundEffect(
-        paths.getStringValue("sfx") + path);
+    SoundEffect *sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("Sound::playGuiSfx() Playing: %s", path.c_str());
