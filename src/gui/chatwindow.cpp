@@ -1180,7 +1180,8 @@ void ChatWindow::autoComplete()
     ChatTab *cTab = static_cast<ChatTab*>(mChatTabs->getSelectedTab());
     std::vector<std::string> nameList;
 
-    cTab->getAutoCompleteList(nameList);
+    if (cTab)
+        cTab->getAutoCompleteList(nameList);
     newName = autoComplete(nameList, name);
 
     if (newName == "" && actorSpriteManager)
