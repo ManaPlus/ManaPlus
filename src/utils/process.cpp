@@ -26,9 +26,9 @@
 
 #include <stdlib.h>
 
-#include "debug.h"
-
 #include "localconsts.h"
+
+#include "debug.h"
 
 const int timeOut = 10;
 
@@ -118,7 +118,7 @@ int execFile(std::string pathName, std::string name,
                 execl(pathName.c_str(), name.c_str(),
                       arg1.c_str(), arg2.c_str(), (char *)nullptr);
             }
-            exit(0);
+            exit(-1);
         }
 
         // monitoring process
