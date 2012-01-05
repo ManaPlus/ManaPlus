@@ -103,7 +103,7 @@ int TestLauncher::testRescale()
 {
     Wallpaper::loadWallpapers();
     const std::string wallpaperName = Wallpaper::getWallpaper(800, 600);
-    Image *img = Theme::getImageFromTheme(wallpaperName);
+    volatile Image *img = Theme::getImageFromTheme(wallpaperName);
     if (!img)
         return 1;
 

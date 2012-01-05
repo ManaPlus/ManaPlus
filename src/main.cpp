@@ -71,7 +71,8 @@ static void printHelp()
              " directory") << endl
         << _("     --screenshot-dir : Directory to store screenshots") << endl
         << _("     --safemode       : Start game in safe mode") << endl
-        << _("  -T --tests          : Start testing drivers and auto configuring") << endl
+        << _("  -T --tests          : Start testing drivers and "
+                                     "auto configuring") << endl
 #ifdef USE_OPENGL
         << _("     --no-opengl      : Disable OpenGL for this session") << endl
 #endif

@@ -78,9 +78,6 @@ int TestMain::exec()
     int safeOpenGLTest = invokeSafeOpenGLRenderTest("3");
     int soundTest = invokeTest4();
     int rescaleTest[3];
-    int softFpsTest = -1;
-    int fastOpenGLFpsTest = -1;
-    int safeOpenGLFpsTest = -1;
     int softFps = 0;
     int fastOpenGLFps = 0;
     int safeOpenGLFps = 0;
@@ -97,7 +94,7 @@ int TestMain::exec()
 
     if (!softwareTest)
     {
-        softFpsTest = invokeSoftwareRenderTest("8");
+        int softFpsTest = invokeSoftwareRenderTest("8");
         info += strprintf ("%d", softFpsTest);
         if (!softFpsTest)
         {
@@ -122,7 +119,7 @@ int TestMain::exec()
     info += ".";
     if (!fastOpenGLTest)
     {
-        fastOpenGLFpsTest = invokeFastOpenGLRenderTest("9");
+        int fastOpenGLFpsTest = invokeFastOpenGLRenderTest("9");
         info += strprintf ("%d", fastOpenGLFpsTest);
         if (!fastOpenGLFpsTest)
         {
@@ -147,7 +144,7 @@ int TestMain::exec()
     info += ".";
     if (!safeOpenGLTest)
     {
-        safeOpenGLFpsTest = invokeSafeOpenGLRenderTest("10");
+        int safeOpenGLFpsTest = invokeSafeOpenGLRenderTest("10");
         info += strprintf ("%d", safeOpenGLFpsTest);
         if (!safeOpenGLFpsTest)
         {
