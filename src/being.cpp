@@ -2183,6 +2183,12 @@ void Being::recalcSpritesOrder()
                         {
                             std::map<int, int>::const_iterator repIt
                                 = itemReplacer.find(mSpriteIDs[remSprite]);
+                            if (repIt == itemReplacer.end())
+                            {
+                                repIt = itemReplacer.find(0);
+                                if (repIt->second == 0)
+                                    repIt = itemReplacer.end();
+                            }
                             if (repIt != itemReplacer.end())
                             {
                                 mSpriteHide[remSprite] = repIt->second;
