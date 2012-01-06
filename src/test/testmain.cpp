@@ -35,14 +35,17 @@
 
 #include "debug.h"
 
-#ifdef WIN32
-    const std::string fileName = "manaplus.exe";
-#else
-    const std::string fileName = "manaplus";
-#endif
+std::string fileName = "";
+extern char *selfName;
 
 TestMain::TestMain()
 {
+#ifdef WIN32
+    fileName = "manaplus.exe";
+#else
+    fileName = selfName;
+#endif
+
     log = new Logger;
 //    log->setLogFile(Client::getLocalDataDirectory()
 //        + std::string("/test.log"));

@@ -39,6 +39,8 @@
 
 #include "debug.h"
 
+char *selfName = nullptr;
+
 static void printHelp()
 {
     using std::endl;
@@ -227,6 +229,8 @@ int main(int argc, char *argv[])
     // may load libray from current dir, it may not same as program dir
     LoadLibrary("exchndl.dll");
 #endif
+
+    selfName = argv[0];
 
     // Parse command line options
     Client::Options options;
