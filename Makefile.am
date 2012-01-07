@@ -14,6 +14,7 @@ EXTRA_DIST = $(desktop_DATA) \
 	     CMake/Modules/FindENet.cmake \
 	     CMake/Modules/FindLibIntl.cmake \
 	     CMake/Modules/FindSDL_gfx.cmake \
+	     manaplustests \
 	     manaplus.cbp \
 	     manaplus.menu \
 	     manaplus.spec \
