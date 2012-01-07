@@ -338,7 +338,7 @@ Section "Create Shortcuts" SecShortcuts
   ${registerExtension} "$INSTDIR\manaplus.exe" ".manaplus" "ManaPlus brandings"
 SectionEnd
 
-Section /o "Music" SecMusic
+Section /o "Music for tmw" SecMusic
   AddSize 17602
   CreateDirectory "$INSTDIR\data\music"
   SetOutPath "$INSTDIR\data\music"
