@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-05 23:31+0300\n"
+"POT-Creation-Date: 2012-01-07 20:36+0300\n"
 "PO-Revision-Date: 2011-11-11 21:38+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.net/projects/p/manaplus/team/"
@@ -312,11 +312,11 @@ msgstr "Vytvořeno:"
 msgid "Deleted:"
 msgstr "Odstraněno:"
 
-#: src/commandhandler.cpp:1180 src/commandhandler.cpp:1187
+#: src/commandhandler.cpp:1226 src/commandhandler.cpp:1233
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1182 src/commandhandler.cpp:1189
+#: src/commandhandler.cpp:1228 src/commandhandler.cpp:1235
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -1274,10 +1274,6 @@ msgstr "NPC"
 #: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:632
 msgid "Clear"
 msgstr "Vyprázdnit"
-
-#: src/gui/npcdialog.cpp:223
-msgid "> Next"
-msgstr "> Další"
 
 #: src/gui/npcpostdialog.cpp:48
 msgid "To:"
@@ -3989,33 +3985,33 @@ msgstr "Zabil vás "
 msgid "Tried to pick up nonexistent item."
 msgstr "Snažili jste se sebrat neexistující předmět."
 
-#: src/localplayer.cpp:1440
+#: src/localplayer.cpp:1441
 msgid "Item is too heavy."
 msgstr "Předmět je příliš těžký."
 
-#: src/localplayer.cpp:1442
+#: src/localplayer.cpp:1444
 msgid "Item is too far away."
 msgstr "Předmět je příliš daleko."
 
-#: src/localplayer.cpp:1444
+#: src/localplayer.cpp:1447
 msgid "Inventory is full."
 msgstr "Inventář je plný."
 
-#: src/localplayer.cpp:1446
+#: src/localplayer.cpp:1450
 msgid "Stack is too big."
 msgstr "Hromada je příliš velká."
 
-#: src/localplayer.cpp:1449
+#: src/localplayer.cpp:1453
 msgid "Item belongs to someone else."
 msgstr "Předmět patří někomu jinému."
 
-#: src/localplayer.cpp:1452
+#: src/localplayer.cpp:1456
 msgid "Unknown problem picking up item."
 msgstr "Neznámý problém při pokusu sebrat předmět."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1476
+#: src/localplayer.cpp:1480
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -4023,390 +4019,390 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/localplayer.cpp:1893
+#: src/localplayer.cpp:1897
 msgid "(D) default moves"
 msgstr "(D) výchozí pohyby"
 
-#: src/localplayer.cpp:1894
+#: src/localplayer.cpp:1898
 msgid "(I) invert moves"
 msgstr "(I) invertované pohyby"
 
-#: src/localplayer.cpp:1895
+#: src/localplayer.cpp:1899
 msgid "(c) moves with some crazy moves"
 msgstr "(c) pohyby s trochou šílených pohybů"
 
-#: src/localplayer.cpp:1896
+#: src/localplayer.cpp:1900
 msgid "(C) moves with crazy moves"
 msgstr "(C) pohyby s šílenými pohyby"
 
-#: src/localplayer.cpp:1897
+#: src/localplayer.cpp:1901
 msgid "(d) double normal + crazy"
 msgstr "(d) dvojité normální + šílené"
 
-#: src/localplayer.cpp:1898
+#: src/localplayer.cpp:1902
 #, fuzzy
 msgid "(?) unknown move"
 msgstr "(?) neznámé následování"
 
-#: src/localplayer.cpp:1920
+#: src/localplayer.cpp:1924
 #, fuzzy, c-format
 msgid "(%d) crazy move number %d"
 msgstr "(?) šílené pohyby"
 
-#: src/localplayer.cpp:1925
+#: src/localplayer.cpp:1929
 msgid "(a) custom crazy move"
 msgstr "(a) vlastní šílené pohyby"
 
-#: src/localplayer.cpp:1929
+#: src/localplayer.cpp:1933
 msgid "(?) crazy move"
 msgstr "(?) šílené pohyby"
 
-#: src/localplayer.cpp:1943
+#: src/localplayer.cpp:1947
 msgid "(0) default moves to target"
 msgstr "(0) výchozí pohyb k cíli"
 
-#: src/localplayer.cpp:1944
+#: src/localplayer.cpp:1948
 msgid "(1) moves to target in distance 1"
 msgstr "(1) pohyb k cíli do vzdálenosti 1"
 
-#: src/localplayer.cpp:1945
+#: src/localplayer.cpp:1949
 msgid "(2) moves to target in distance 2"
 msgstr "(2) pohyb k cíli do vzdálenosti 2"
 
-#: src/localplayer.cpp:1946
+#: src/localplayer.cpp:1950
 msgid "(3) moves to target in distance 3"
 msgstr "(3) pohyb k cíli do vzdálenosti 3"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1951
 msgid "(5) moves to target in distance 5"
 msgstr "(5) pohyb k cíli do vzdálenosti 5"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1952
 msgid "(7) moves to target in distance 7"
 msgstr "(7) pohyb k cíli do vzdálenosti 7"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1953
 msgid "(A) moves to target in attack range"
 msgstr "(A) pohyb k cíli na útočný dosah"
 
-#: src/localplayer.cpp:1950
+#: src/localplayer.cpp:1954
 msgid "(a) archer attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1955
 msgid "(?) move to target"
 msgstr "(?) pohyb k cíli"
 
-#: src/localplayer.cpp:1970
+#: src/localplayer.cpp:1974
 msgid "(D) default follow"
 msgstr "(D) výchozí následování"
 
-#: src/localplayer.cpp:1971
+#: src/localplayer.cpp:1975
 msgid "(R) relative follow"
 msgstr "(R) relativní následování"
 
-#: src/localplayer.cpp:1972
+#: src/localplayer.cpp:1976
 msgid "(M) mirror follow"
 msgstr "(M) zrcadlené následování"
 
-#: src/localplayer.cpp:1973
+#: src/localplayer.cpp:1977
 msgid "(P) pet follow"
 msgstr ""
 
-#: src/localplayer.cpp:1974
+#: src/localplayer.cpp:1978
 msgid "(?) unknown follow"
 msgstr "(?) neznámé následování"
 
-#: src/localplayer.cpp:1993 src/localplayer.cpp:1997 src/localplayer.cpp:2020
+#: src/localplayer.cpp:1997 src/localplayer.cpp:2001 src/localplayer.cpp:2024
 msgid "(?) attack"
 msgstr "(?) útok"
 
-#: src/localplayer.cpp:1994 src/localplayer.cpp:2016
+#: src/localplayer.cpp:1998 src/localplayer.cpp:2020
 msgid "(D) default attack"
 msgstr "(D) výchozí útok"
 
-#: src/localplayer.cpp:1995
+#: src/localplayer.cpp:1999
 msgid "(s) switch attack without shield"
 msgstr "(s) přepínat útok bez štítu"
 
-#: src/localplayer.cpp:1996
+#: src/localplayer.cpp:2000
 msgid "(S) switch attack with shield"
 msgstr "(S) přepínat útok se štítem"
 
-#: src/localplayer.cpp:2017
+#: src/localplayer.cpp:2021
 msgid "(G) go and attack"
 msgstr "(G) jdi a útoč"
 
-#: src/localplayer.cpp:2018
+#: src/localplayer.cpp:2022
 msgid "(A) go, attack, pickup"
 msgstr "(A) jdi, útoč, sbírej"
 
-#: src/localplayer.cpp:2019
+#: src/localplayer.cpp:2023
 msgid "(d) without auto attack"
 msgstr "(d) bez automatického útoku"
 
-#: src/localplayer.cpp:2053
+#: src/localplayer.cpp:2057
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) malý sběr 1x1 pole"
 
-#: src/localplayer.cpp:2054
+#: src/localplayer.cpp:2058
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) výchozí sběr 2x1 pole"
 
-#: src/localplayer.cpp:2055
+#: src/localplayer.cpp:2059
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) sběr před 2x3 pole"
 
-#: src/localplayer.cpp:2056
+#: src/localplayer.cpp:2060
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) sběr 3x3 pole"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2061
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) jdi a seber do vzdálenosti 4"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2062
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) jdi a seber do vzdálenosti 8"
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2063
 msgid "(A) go and pick up in max distance"
 msgstr "(A) jdi a seber do max. vzdálenosti"
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2064
 msgid "(?) pick up"
 msgstr "(?) sběr"
 
-#: src/localplayer.cpp:2073
+#: src/localplayer.cpp:2077
 msgid "(N) normal map view"
 msgstr "(N) Normální zobrazení mapy"
 
-#: src/localplayer.cpp:2074
+#: src/localplayer.cpp:2078
 msgid "(D) debug map view"
 msgstr "(D) debug zobrazení mapy"
 
-#: src/localplayer.cpp:2075
+#: src/localplayer.cpp:2079
 msgid "(u) ultra map view"
 msgstr "(u) ultra zobrazení mapy"
 
-#: src/localplayer.cpp:2076
+#: src/localplayer.cpp:2080
 msgid "(U) ultra map view 2"
 msgstr "(U) ultra zobrazení mapy 2"
 
-#: src/localplayer.cpp:2077
+#: src/localplayer.cpp:2081
 msgid "(e) empty map view"
 msgstr "(e) zobrazen prázdné mapy"
 
-#: src/localplayer.cpp:2078
+#: src/localplayer.cpp:2082
 msgid "(b) black & white map view"
 msgstr "(b) zobrazení černobílé mapy"
 
-#: src/localplayer.cpp:2097
+#: src/localplayer.cpp:2101
 msgid "(f) use #flar for magic attack"
 msgstr "(f) použij #flar pro magický útok"
 
-#: src/localplayer.cpp:2098
+#: src/localplayer.cpp:2102
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) použij #chiza pro magický útok"
 
-#: src/localplayer.cpp:2099
+#: src/localplayer.cpp:2103
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) použij #ingrav pro magický útok"
 
-#: src/localplayer.cpp:2100
+#: src/localplayer.cpp:2104
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) použij #frillyar pro magický útok"
 
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2105
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) použij #upmarmu pro magický útok"
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2106
 msgid "(?) magic attack"
 msgstr "(?) magický útok attack"
 
-#: src/localplayer.cpp:2121
+#: src/localplayer.cpp:2125
 msgid "(a) attack all players"
 msgstr ""
 
-#: src/localplayer.cpp:2122
+#: src/localplayer.cpp:2126
 msgid "(f) attack not friends"
 msgstr ""
 
-#: src/localplayer.cpp:2123
+#: src/localplayer.cpp:2127
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2124
+#: src/localplayer.cpp:2128
 msgid "(d) dont attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2129
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2144
+#: src/localplayer.cpp:2148
 msgid "(D) default imitation"
 msgstr "(D) výchozí imitace"
 
-#: src/localplayer.cpp:2145
+#: src/localplayer.cpp:2149
 msgid "(O) outfits imitation"
 msgstr "(O) imitace výstroje"
 
-#: src/localplayer.cpp:2146
+#: src/localplayer.cpp:2150
 msgid "(?) imitation"
 msgstr "(?) imitace"
 
-#: src/localplayer.cpp:2174
+#: src/localplayer.cpp:2178
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:2193
+#: src/localplayer.cpp:2197
 msgid "(O) on keyboard"
 msgstr "(O) u počítače"
 
-#: src/localplayer.cpp:2194
+#: src/localplayer.cpp:2198
 msgid "(A) away"
 msgstr "(A) pryč (away)"
 
-#: src/localplayer.cpp:2195 src/localplayer.cpp:2210
+#: src/localplayer.cpp:2199 src/localplayer.cpp:2214
 msgid "(?) away"
 msgstr "(?) away"
 
-#: src/localplayer.cpp:2208
+#: src/localplayer.cpp:2212
 msgid "(G) game camera mode"
 msgstr "(G) mód herní kamery"
 
-#: src/localplayer.cpp:2209
+#: src/localplayer.cpp:2213
 msgid "(F) free camera mode"
 msgstr "(F) mód volné kamery"
 
-#: src/localplayer.cpp:2234
+#: src/localplayer.cpp:2238
 msgid "Game modifiers are enabled"
 msgstr "Modifikátory hry jsou zapnuty"
 
-#: src/localplayer.cpp:2235
+#: src/localplayer.cpp:2239
 msgid "Game modifiers are disabled"
 msgstr "Modifikátory hry jsou vypnuty"
 
-#: src/localplayer.cpp:2236
+#: src/localplayer.cpp:2240
 #, fuzzy
 msgid "Game modifiers are unknown"
 msgstr "Modifikátory hry jsou zapnuty"
 
-#: src/localplayer.cpp:3752
+#: src/localplayer.cpp:3756
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3754 src/localplayer.cpp:3769
+#: src/localplayer.cpp:3758 src/localplayer.cpp:3773
 msgid "Follow canceled"
 msgstr "Následování zrušeno."
 
-#: src/localplayer.cpp:3761
+#: src/localplayer.cpp:3765
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3763 src/localplayer.cpp:3771
+#: src/localplayer.cpp:3767 src/localplayer.cpp:3775
 msgid "Imitation canceled"
 msgstr "Imitace zrušena."
 
-#: src/localplayer.cpp:4119
+#: src/localplayer.cpp:4123
 msgid "You see "
 msgstr "Vidíte "
 
-#: src/main.cpp:47
+#: src/main.cpp:49
 msgid "manaplus [options] [manaplus-file]"
 msgstr ""
 
-#: src/main.cpp:48
+#: src/main.cpp:50
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
 msgstr ""
 
-#: src/main.cpp:50
+#: src/main.cpp:52
 msgid "                  used to set custom parameters"
 msgstr ""
 
-#: src/main.cpp:51
+#: src/main.cpp:53
 msgid "                  to the manaplus client."
 msgstr ""
 
-#: src/main.cpp:53
+#: src/main.cpp:55
 msgid "Options:"
 msgstr "Nastavení:"
 
-#: src/main.cpp:54
+#: src/main.cpp:56
 msgid "  -l --log-file       : Log file to use"
 msgstr ""
 
-#: src/main.cpp:55
+#: src/main.cpp:57
 msgid "  -L --chat-log-dir   : Chat log dir to use"
 msgstr ""
 
-#: src/main.cpp:56
+#: src/main.cpp:58
 msgid "  -v --version        : Display the version"
 msgstr ""
 
-#: src/main.cpp:57
+#: src/main.cpp:59
 msgid "  -h --help           : Display this help"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:60
 msgid "  -C --config-dir     : Configuration directory to use"
 msgstr ""
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 msgid "  -U --username       : Login with this username"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "  -P --password       : Login with this password"
 msgstr ""
 
-#: src/main.cpp:61
+#: src/main.cpp:63
 msgid "  -c --character      : Login with this character"
 msgstr ""
 
-#: src/main.cpp:62
+#: src/main.cpp:64
 msgid "  -s --server         : Login server name or IP"
 msgstr ""
 
-#: src/main.cpp:63
+#: src/main.cpp:65
 msgid "  -p --port           : Login server port"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 msgid "     --update-host    : Use this update host"
 msgstr ""
 
-#: src/main.cpp:65
+#: src/main.cpp:67
 msgid "  -D --default        : Choose default character server and character"
 msgstr ""
 
-#: src/main.cpp:67
+#: src/main.cpp:69
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr ""
 
-#: src/main.cpp:68
+#: src/main.cpp:70
 msgid "  -d --data           : Directory to load game data from"
 msgstr ""
 
-#: src/main.cpp:70
+#: src/main.cpp:72
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr ""
 
-#: src/main.cpp:72
+#: src/main.cpp:74
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr ""
 
-#: src/main.cpp:73
+#: src/main.cpp:75
 msgid "     --safemode       : Start game in safe mode"
 msgstr ""
 
-#: src/main.cpp:74
+#: src/main.cpp:76
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
 
-#: src/main.cpp:77
+#: src/main.cpp:79
 msgid "     --no-opengl      : Disable OpenGL for this session"
 msgstr ""
 
@@ -5632,6 +5628,9 @@ msgstr ""
 #: src/resources/itemdb.cpp:169
 msgid "Unknown item"
 msgstr "Neznámý předmět"
+
+#~ msgid "> Next"
+#~ msgstr "> Další"
 
 #~ msgid "Waiting for server"
 #~ msgstr "Čeká se na server"

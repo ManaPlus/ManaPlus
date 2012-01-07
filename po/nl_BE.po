@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-05 23:31+0300\n"
+"POT-Creation-Date: 2012-01-07 20:36+0300\n"
 "PO-Revision-Date: 2011-11-11 21:38+0000\n"
 "Last-Translator: akaras <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium/Flemish) (http://www.transifex.net/projects/p/"
@@ -306,11 +306,11 @@ msgstr "Aangemaakt:"
 msgid "Deleted:"
 msgstr "Verwijdered:"
 
-#: src/commandhandler.cpp:1180 src/commandhandler.cpp:1187
+#: src/commandhandler.cpp:1226 src/commandhandler.cpp:1233
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1182 src/commandhandler.cpp:1189
+#: src/commandhandler.cpp:1228 src/commandhandler.cpp:1235
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -1267,10 +1267,6 @@ msgstr "NPC"
 #: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:632
 msgid "Clear"
 msgstr "Wissen"
-
-#: src/gui/npcdialog.cpp:223
-msgid "> Next"
-msgstr "> Volgende"
 
 #: src/gui/npcpostdialog.cpp:48
 msgid "To:"
@@ -3995,422 +3991,422 @@ msgstr "U bent gedoodt door "
 msgid "Tried to pick up nonexistent item."
 msgstr "Geprobeerd een nietbestaand voorwerp op te rapen."
 
-#: src/localplayer.cpp:1440
+#: src/localplayer.cpp:1441
 msgid "Item is too heavy."
 msgstr "Voorwerp is te zwaar."
 
-#: src/localplayer.cpp:1442
+#: src/localplayer.cpp:1444
 msgid "Item is too far away."
 msgstr "Voorwerp is te ver weg."
 
-#: src/localplayer.cpp:1444
+#: src/localplayer.cpp:1447
 msgid "Inventory is full."
 msgstr ""
 
-#: src/localplayer.cpp:1446
+#: src/localplayer.cpp:1450
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1449
+#: src/localplayer.cpp:1453
 msgid "Item belongs to someone else."
 msgstr "Voorwerp behoort bij iemand anders."
 
-#: src/localplayer.cpp:1452
+#: src/localplayer.cpp:1456
 msgid "Unknown problem picking up item."
 msgstr "Onbekend probleem bij het oprapen van voorwerp."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1476
+#: src/localplayer.cpp:1480
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "U raapte op %d [@@%d|%s@@]."
 msgstr[1] "U raapte op %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:1893
+#: src/localplayer.cpp:1897
 msgid "(D) default moves"
 msgstr "(D) standaard bewegingen"
 
-#: src/localplayer.cpp:1894
+#: src/localplayer.cpp:1898
 msgid "(I) invert moves"
 msgstr "(I) geïnverteerde bewegingen"
 
-#: src/localplayer.cpp:1895
+#: src/localplayer.cpp:1899
 msgid "(c) moves with some crazy moves"
 msgstr "(c) bewegingen met enkele vreemde bewegingen"
 
-#: src/localplayer.cpp:1896
+#: src/localplayer.cpp:1900
 msgid "(C) moves with crazy moves"
 msgstr "(C) bewegingen met vreemde bewegingen"
 
-#: src/localplayer.cpp:1897
+#: src/localplayer.cpp:1901
 msgid "(d) double normal + crazy"
 msgstr "(d) dubbel normaal + raar"
 
-#: src/localplayer.cpp:1898
+#: src/localplayer.cpp:1902
 #, fuzzy
 msgid "(?) unknown move"
 msgstr "(?) onbekend volgen"
 
-#: src/localplayer.cpp:1920
+#: src/localplayer.cpp:1924
 #, fuzzy, c-format
 msgid "(%d) crazy move number %d"
 msgstr "(?) vreemde beweging"
 
-#: src/localplayer.cpp:1925
+#: src/localplayer.cpp:1929
 msgid "(a) custom crazy move"
 msgstr "(a) manuele vreemde beweging"
 
-#: src/localplayer.cpp:1929
+#: src/localplayer.cpp:1933
 msgid "(?) crazy move"
 msgstr "(?) vreemde beweging"
 
-#: src/localplayer.cpp:1943
+#: src/localplayer.cpp:1947
 msgid "(0) default moves to target"
 msgstr "(0) standaard bewegingen tot aan doel"
 
-#: src/localplayer.cpp:1944
+#: src/localplayer.cpp:1948
 msgid "(1) moves to target in distance 1"
 msgstr "(1) bewegen tot aan doel in bereik 1"
 
-#: src/localplayer.cpp:1945
+#: src/localplayer.cpp:1949
 msgid "(2) moves to target in distance 2"
 msgstr "(2) bewegen tot aan doel in bereik 2"
 
-#: src/localplayer.cpp:1946
+#: src/localplayer.cpp:1950
 msgid "(3) moves to target in distance 3"
 msgstr "(3) bewegen tot aan doel in bereik 3"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1951
 msgid "(5) moves to target in distance 5"
 msgstr "(5) bewegen tot aan doel in bereik 5"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1952
 msgid "(7) moves to target in distance 7"
 msgstr "(7) bewegen tot aan doel in bereik 7"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1953
 msgid "(A) moves to target in attack range"
 msgstr "(A) beweeg tot aan doel in aanvalsbereik"
 
-#: src/localplayer.cpp:1950
+#: src/localplayer.cpp:1954
 msgid "(a) archer attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1955
 msgid "(?) move to target"
 msgstr "(?) beweeg tot aan doel"
 
-#: src/localplayer.cpp:1970
+#: src/localplayer.cpp:1974
 msgid "(D) default follow"
 msgstr "(D) standaard volgen"
 
-#: src/localplayer.cpp:1971
+#: src/localplayer.cpp:1975
 msgid "(R) relative follow"
 msgstr "(R) relatief volgen"
 
-#: src/localplayer.cpp:1972
+#: src/localplayer.cpp:1976
 msgid "(M) mirror follow"
 msgstr "(M) gespiegeld volgen"
 
-#: src/localplayer.cpp:1973
+#: src/localplayer.cpp:1977
 msgid "(P) pet follow"
 msgstr "(P) huisdier volgen"
 
-#: src/localplayer.cpp:1974
+#: src/localplayer.cpp:1978
 msgid "(?) unknown follow"
 msgstr "(?) onbekend volgen"
 
-#: src/localplayer.cpp:1993 src/localplayer.cpp:1997 src/localplayer.cpp:2020
+#: src/localplayer.cpp:1997 src/localplayer.cpp:2001 src/localplayer.cpp:2024
 msgid "(?) attack"
 msgstr "(?) aanval"
 
-#: src/localplayer.cpp:1994 src/localplayer.cpp:2016
+#: src/localplayer.cpp:1998 src/localplayer.cpp:2020
 msgid "(D) default attack"
 msgstr "(D) standaard aanval"
 
-#: src/localplayer.cpp:1995
+#: src/localplayer.cpp:1999
 msgid "(s) switch attack without shield"
 msgstr "(s) wissel aanval zonder schild"
 
-#: src/localplayer.cpp:1996
+#: src/localplayer.cpp:2000
 msgid "(S) switch attack with shield"
 msgstr "(S) wissel aanval met schild"
 
-#: src/localplayer.cpp:2017
+#: src/localplayer.cpp:2021
 msgid "(G) go and attack"
 msgstr "(G) ga en val aan"
 
-#: src/localplayer.cpp:2018
+#: src/localplayer.cpp:2022
 msgid "(A) go, attack, pickup"
 msgstr "(A) ga, val aan, raap op"
 
-#: src/localplayer.cpp:2019
+#: src/localplayer.cpp:2023
 msgid "(d) without auto attack"
 msgstr "(d) zonder auto aanval"
 
-#: src/localplayer.cpp:2053
+#: src/localplayer.cpp:2057
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) klein raap op 1x1 velden"
 
-#: src/localplayer.cpp:2054
+#: src/localplayer.cpp:2058
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) standaard raap op 2x1 velden"
 
-#: src/localplayer.cpp:2055
+#: src/localplayer.cpp:2059
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) vooruit raap op 2x3 velden"
 
-#: src/localplayer.cpp:2056
+#: src/localplayer.cpp:2060
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) raap op 3x3 velden"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2061
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) go en raap op met bereik 4"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2062
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) ga en raap op met bereik 8"
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2063
 msgid "(A) go and pick up in max distance"
 msgstr "(A) ga en raap op zonder bereiklimiet"
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2064
 msgid "(?) pick up"
 msgstr "(?) raap op"
 
-#: src/localplayer.cpp:2073
+#: src/localplayer.cpp:2077
 msgid "(N) normal map view"
 msgstr "(N) normale map tonen"
 
-#: src/localplayer.cpp:2074
+#: src/localplayer.cpp:2078
 msgid "(D) debug map view"
 msgstr "(D) debug map tonen"
 
-#: src/localplayer.cpp:2075
+#: src/localplayer.cpp:2079
 msgid "(u) ultra map view"
 msgstr "(u) ultra map tonen"
 
-#: src/localplayer.cpp:2076
+#: src/localplayer.cpp:2080
 msgid "(U) ultra map view 2"
 msgstr "(U) ultra map tonen 2"
 
-#: src/localplayer.cpp:2077
+#: src/localplayer.cpp:2081
 msgid "(e) empty map view"
 msgstr "(e) lege map tonen"
 
-#: src/localplayer.cpp:2078
+#: src/localplayer.cpp:2082
 msgid "(b) black & white map view"
 msgstr "(b) zwart & witte map tonen"
 
-#: src/localplayer.cpp:2097
+#: src/localplayer.cpp:2101
 msgid "(f) use #flar for magic attack"
 msgstr "(f) gebruik #flar voor magie aanval"
 
-#: src/localplayer.cpp:2098
+#: src/localplayer.cpp:2102
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) gebruik #chiza voor magie aanval"
 
-#: src/localplayer.cpp:2099
+#: src/localplayer.cpp:2103
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) gebruik #ingrav voor magie aanval"
 
-#: src/localplayer.cpp:2100
+#: src/localplayer.cpp:2104
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) gebruik #frillyar voor magie aanval"
 
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2105
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) gebruik #upmarmu voor magie aanval"
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2106
 msgid "(?) magic attack"
 msgstr "(?) magie aanval"
 
-#: src/localplayer.cpp:2121
+#: src/localplayer.cpp:2125
 msgid "(a) attack all players"
 msgstr ""
 
-#: src/localplayer.cpp:2122
+#: src/localplayer.cpp:2126
 msgid "(f) attack not friends"
 msgstr ""
 
-#: src/localplayer.cpp:2123
+#: src/localplayer.cpp:2127
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2124
+#: src/localplayer.cpp:2128
 msgid "(d) dont attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2129
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2144
+#: src/localplayer.cpp:2148
 msgid "(D) default imitation"
 msgstr "(D) standaard imitatie"
 
-#: src/localplayer.cpp:2145
+#: src/localplayer.cpp:2149
 msgid "(O) outfits imitation"
 msgstr "(O) kleren imitatie"
 
-#: src/localplayer.cpp:2146
+#: src/localplayer.cpp:2150
 msgid "(?) imitation"
 msgstr "(?) imitatie"
 
-#: src/localplayer.cpp:2174
+#: src/localplayer.cpp:2178
 msgid "Away"
 msgstr "Weg"
 
-#: src/localplayer.cpp:2193
+#: src/localplayer.cpp:2197
 msgid "(O) on keyboard"
 msgstr "(O) op toetsenbord"
 
-#: src/localplayer.cpp:2194
+#: src/localplayer.cpp:2198
 msgid "(A) away"
 msgstr "(A) weg"
 
-#: src/localplayer.cpp:2195 src/localplayer.cpp:2210
+#: src/localplayer.cpp:2199 src/localplayer.cpp:2214
 msgid "(?) away"
 msgstr "(?) weg"
 
-#: src/localplayer.cpp:2208
+#: src/localplayer.cpp:2212
 msgid "(G) game camera mode"
 msgstr "(G) spel camera modus"
 
-#: src/localplayer.cpp:2209
+#: src/localplayer.cpp:2213
 msgid "(F) free camera mode"
 msgstr "(F) vrije camera modus"
 
-#: src/localplayer.cpp:2234
+#: src/localplayer.cpp:2238
 msgid "Game modifiers are enabled"
 msgstr ""
 
-#: src/localplayer.cpp:2235
+#: src/localplayer.cpp:2239
 msgid "Game modifiers are disabled"
 msgstr ""
 
-#: src/localplayer.cpp:2236
+#: src/localplayer.cpp:2240
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3752
+#: src/localplayer.cpp:3756
 msgid "Follow: "
 msgstr "Volg: "
 
-#: src/localplayer.cpp:3754 src/localplayer.cpp:3769
+#: src/localplayer.cpp:3758 src/localplayer.cpp:3773
 msgid "Follow canceled"
 msgstr "Volgen onderbroken"
 
-#: src/localplayer.cpp:3761
+#: src/localplayer.cpp:3765
 msgid "Imitation: "
 msgstr "Imitatie: "
 
-#: src/localplayer.cpp:3763 src/localplayer.cpp:3771
+#: src/localplayer.cpp:3767 src/localplayer.cpp:3775
 msgid "Imitation canceled"
 msgstr "Imitatie onderbroken"
 
-#: src/localplayer.cpp:4119
+#: src/localplayer.cpp:4123
 msgid "You see "
 msgstr ""
 
-#: src/main.cpp:47
+#: src/main.cpp:49
 msgid "manaplus [options] [manaplus-file]"
 msgstr ""
 
-#: src/main.cpp:48
+#: src/main.cpp:50
 msgid "[manaplus-file] : The manaplus file is an XML file (.manaplus)"
 msgstr ""
 
-#: src/main.cpp:50
+#: src/main.cpp:52
 msgid "                  used to set custom parameters"
 msgstr ""
 
-#: src/main.cpp:51
+#: src/main.cpp:53
 msgid "                  to the manaplus client."
 msgstr ""
 
-#: src/main.cpp:53
+#: src/main.cpp:55
 msgid "Options:"
 msgstr "Opties:"
 
-#: src/main.cpp:54
+#: src/main.cpp:56
 msgid "  -l --log-file       : Log file to use"
 msgstr "  -l --log-file       : Log bestand te gebruiken"
 
-#: src/main.cpp:55
+#: src/main.cpp:57
 msgid "  -L --chat-log-dir   : Chat log dir to use"
 msgstr "  -L --chat-log-dir   : Chat log bestand te gebruiken"
 
-#: src/main.cpp:56
+#: src/main.cpp:58
 msgid "  -v --version        : Display the version"
 msgstr "  -v --version        : Toon de versie"
 
-#: src/main.cpp:57
+#: src/main.cpp:59
 msgid "  -h --help           : Display this help"
 msgstr "  -h --help           : Toon deze help"
 
-#: src/main.cpp:58
+#: src/main.cpp:60
 msgid "  -C --config-dir     : Configuration directory to use"
 msgstr "  -C --config-dir     : Configuratie map te gebruiken"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 msgid "  -U --username       : Login with this username"
 msgstr "  -U --username       : Login met deze gebruikersnaam"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "  -P --password       : Login with this password"
 msgstr "  -P --password       : Loging met dit wachtwoord"
 
-#: src/main.cpp:61
+#: src/main.cpp:63
 msgid "  -c --character      : Login with this character"
 msgstr "  -c --character      : Login met dit karakter"
 
-#: src/main.cpp:62
+#: src/main.cpp:64
 msgid "  -s --server         : Login server name or IP"
 msgstr "  -s --server         : Login servernaam of IP"
 
-#: src/main.cpp:63
+#: src/main.cpp:65
 msgid "  -p --port           : Login server port"
 msgstr "  -p --port           : Login serverpoort"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 msgid "     --update-host    : Use this update host"
 msgstr "     --update-host    : Updateserver te gebruiken"
 
-#: src/main.cpp:65
+#: src/main.cpp:67
 msgid "  -D --default        : Choose default character server and character"
 msgstr "  -D --default        : Kies standaard karakterserver en karakter"
 
-#: src/main.cpp:67
+#: src/main.cpp:69
 msgid "  -u --skip-update    : Skip the update downloads"
 msgstr "  -u --skip-update    : update downloads overslaan"
 
-#: src/main.cpp:68
+#: src/main.cpp:70
 msgid "  -d --data           : Directory to load game data from"
 msgstr "  -d --data           : Map om spelgegevens te laden"
 
-#: src/main.cpp:70
+#: src/main.cpp:72
 msgid "  -L --localdata-dir  : Directory to use as local data directory"
 msgstr "  -L --localdata-dir  : Map te gebruiken als lokale data map"
 
-#: src/main.cpp:72
+#: src/main.cpp:74
 msgid "     --screenshot-dir : Directory to store screenshots"
 msgstr "     --screenshot-dir: Map te gebruiken om screenshots te bewaren"
 
-#: src/main.cpp:73
+#: src/main.cpp:75
 msgid "     --safemode       : Start game in safe mode"
 msgstr "     --safemode       : Start spel in veilige modus"
 
-#: src/main.cpp:74
+#: src/main.cpp:76
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
 
-#: src/main.cpp:77
+#: src/main.cpp:79
 msgid "     --no-opengl      : Disable OpenGL for this session"
 msgstr "     --no-opengl      : Zet OpenGL af voor deze sessie"
 
@@ -5651,6 +5647,9 @@ msgstr "Magie %+d"
 #: src/resources/itemdb.cpp:169
 msgid "Unknown item"
 msgstr "Onbekend voorwerp"
+
+#~ msgid "> Next"
+#~ msgstr "> Volgende"
 
 #~ msgid "Waiting for server"
 #~ msgstr "Wachten op server"
