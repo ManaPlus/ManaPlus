@@ -46,9 +46,6 @@ TestMain::TestMain()
     fileName = selfName;
 #endif
 
-#if defined __linux__ || defined __linux
-    chdir(getFileDir(fileName).c_str());
-#endif
     log = new Logger;
 //    log->setLogFile(Client::getLocalDataDirectory()
 //        + std::string("/test.log"));
