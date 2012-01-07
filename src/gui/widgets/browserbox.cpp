@@ -451,6 +451,7 @@ int BrowserBox::calcHeight()
         }
 
         gcn::Color prevColor = selColor;
+        bold = false;
 
         // TODO: Check if we must take texture size limits into account here
         // TODO: Check if some of the O(n) calls can be removed
@@ -465,8 +466,6 @@ int BrowserBox::calcHeight()
                 x = 15;
                 wrapped = false;
             }
-
-            bold = false;
 
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)
