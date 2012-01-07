@@ -1,3 +1,20 @@
+2012-01-08 New release 1.2.1.8
+fix: -s command line parameter.
+fix: restore GL_PACK_ALIGNMENT after creating screenshots in opengl modes
+fix: rare crash with reconnecting to different servers.
+fix: color for /me messages in wood theme.
+fix: crash in char autocomplete if no active tab in chat window.
+fix: bold chat/npc text correction.
+add: allow close npc dialog if script stopped with error.
+add: clear outfit option in outfits context menu.
+add: ability to test graphics and sound perfomance and stability.
+Shortcut ManaPlus (test). Need close all other ManaPlus instances.
+add: chat command /dumpt to dump last test values.
+add: addiitional checks for unsecure chars combinations in players nicks.
+add: allow use item replacment with empty from value.
+This mean replace from any value.
+add: remove "> Next" message from npc dialogs.
+
 2011-12-25 New release 1.1.12.25
 fix: increasing log file if client disconnected from network.
 fix: memory leak in evol online list.
