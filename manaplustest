@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /usr/games
-manaplus --test
+manaplus --tests
