@@ -304,6 +304,9 @@ class CommandHandler
         void outString(ChatTab *tab, const std::string &str,
                        const std::string &def);
 
+        void outStringNormal(ChatTab *tab, const std::string &str,
+                             const std::string &def);
+
         void handleCacheInfo(const std::string &args, ChatTab *tab);
 
         bool parse2Int(const std::string &args, int *x, int *y);

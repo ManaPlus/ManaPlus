@@ -1124,14 +1124,60 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += config.getBoolValue("particleeffects") ? "1" : "0";
 
     str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
-    outString(tab, str, str);
+    outStringNormal(tab, str, str);
 }
 
 void CommandHandler::handleDumpTests(const std::string &args A_UNUSED,
                                      ChatTab *tab)
 {
     std::string str = config.getStringValue("testInfo");
-    outString(tab, str, str);
+    outStringNormal(tab, str, str);
+}
+
+void CommandHandler::outStringNormal(ChatTab *tab, const std::string &str,
+                                     const std::string &def)
+{
+    if (!player_node)
+        return;
+
+    if (!tab)
+    {
+        Net::getChatHandler()->talk(str);
+        return;
+    }
+
+    switch (tab->getType())
+    {
+        case ChatTab::TAB_PARTY:
+        {
+            Net::getPartyHandler()->chat(str);
+            break;
+        }
+        case ChatTab::TAB_GUILD:
+        {
+            if (!player_node)
+                return;
+            const Guild *guild = player_node->getGuild();
+            if (guild)
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->chat(guild->getId(), str);
+                else if (guildManager)
+                    guildManager->chat(str);
+            }
+            break;
+        }
+        case ChatTab::TAB_WHISPER:
+        {
+            WhisperTab *whisper = static_cast<WhisperTab*>(tab);
+            tab->chatLog(player_node->getName(), str);
+            Net::getChatHandler()->privateMessage(whisper->getNick(), str);
+            break;
+        }
+        default:
+            Net::getChatHandler()->talk(def);
+            break;
+    }
 }
 
 #ifdef DEBUG_DUMP_LEAKS
