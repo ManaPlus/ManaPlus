@@ -1689,6 +1689,8 @@ void Client::initConfiguration()
     config.setValue("musicVolume", 60);
     config.setValue("fpslimit", 60);
     std::string defaultUpdateHost = branding.getValue("defaultUpdateHost", "");
+    if (!checkPath(defaultUpdateHost))
+        defaultUpdateHost = "";
     config.setValue("updatehost", defaultUpdateHost);
     config.setValue("customcursor", true);
     config.setValue("useScreenshotDirectorySuffix", true);
@@ -1741,6 +1743,8 @@ void Client::initUpdatesDir()
     // If updatesHost is currently empty, fill it from config file
     if (mUpdateHost.empty())
         mUpdateHost = config.getStringValue("updatehost");
+    if (!checkPath(mUpdateHost))
+        return;
 
     // Don't go out of range int he next check
     if (mUpdateHost.length() < 2)

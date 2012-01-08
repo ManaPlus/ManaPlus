@@ -150,6 +150,11 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 
     len = msg.readInt16() - 4;
     mUpdateHost = msg.readString(len);
+    if (!checkPath(mUpdateHost))
+    {
+        mUpdateHost = "";
+        logger->log1("Warning: incorrect update server name");
+    }
     loginData.updateHost = mUpdateHost;
 
     logger->log("Received update host \"%s\" from login server.",

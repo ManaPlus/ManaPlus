@@ -612,3 +612,13 @@ std::string &removeProtocol(std::string &url)
         url = url.substr(i + 3);
     return url;
 }
+
+bool checkPath(std::string path)
+{
+    if (path.empty())
+        return true;
+    return path.find("../") == std::string::npos
+        && path.find("..\\") == std::string::npos
+        && path.find("/..") == std::string::npos
+        && path.find("\\..") == std::string::npos;
+}

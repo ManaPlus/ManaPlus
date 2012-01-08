@@ -341,9 +341,18 @@ void LoginHandler::readServerInfo(Net::MessageIn &msg)
     // Set the update host when included in the message
     const std::string updateHost = msg.readString();
     if (!updateHost.empty())
+    {
+        if (!checkPath(updateHost))
+        {
+            logger->log1("Warning: incorrect update server name");
+            updateHost = "";
+        }
         mLoginData->updateHost = updateHost;
+    }
     else
+    {
         logger->log1("Warning: server does not have an update host set!");
+    }
 
     // Read the client data folder for dynamic data loading.
     // This is only used by the QT client.

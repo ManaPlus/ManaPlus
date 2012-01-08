@@ -33,6 +33,8 @@
 #include <iostream>
 #include <physfs.h>
 
+#include "utils/stringutils.h"
+
 #ifdef __MINGW32__
 #include <windows.h>
 #endif
@@ -140,7 +142,10 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
                 options.printHelp = true;
                 break;
             case 'H':
-                options.updateHost = optarg;
+                if (checkPath(optarg))
+                    options.updateHost = optarg;
+                else
+                    options.updateHost = "";
                 break;
             case 'c':
                 options.character = optarg;

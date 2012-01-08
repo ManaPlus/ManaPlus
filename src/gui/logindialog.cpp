@@ -184,8 +184,16 @@ void LoginDialog::action(const gcn::ActionEvent &event)
             serverConfig.setValue("customUpdateHost",
                 mUpdateHostText->getText());
 
-            mLoginData->updateHost = mUpdateHostText->getText();
-            *mUpdateHost = mUpdateHostText->getText();
+            if (checkPath(mUpdateHostText->getText()))
+            {
+                mLoginData->updateHost = mUpdateHostText->getText();
+                *mUpdateHost = mUpdateHostText->getText();
+            }
+            else
+            {
+                mLoginData->updateHost = "";
+                *mUpdateHost = "";
+            }
         }
         mLoginData->updateType = updateType;
         serverConfig.setValue("updateType", updateType);
