@@ -57,6 +57,7 @@ rm -rf %{buildroot}
 %attr(-, root, root) %{_datadir}/%{name}
 %attr(-, root, root) %{_datadir}/pixmaps/%{name}.png
 %attr(-, root, root) %{_datadir}/applications/%{name}.desktop
+%attr(-, root, root) %{_datadir}/applications/%{name}test.desktop
 %attr(-, root, root) %{_mandir}/man6/%{name}*
 
 
