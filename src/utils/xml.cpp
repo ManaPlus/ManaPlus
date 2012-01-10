@@ -181,4 +181,10 @@ namespace XML
         xmlSetGenericErrorFunc(nullptr, xmlNullLogger);
     }
 
+    // Shutdown libxml
+    void cleanupXML()
+    {
+        xmlCleanupParser();
+    }
+
 } // namespace XML

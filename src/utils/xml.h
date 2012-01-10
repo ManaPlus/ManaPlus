@@ -100,6 +100,8 @@ namespace XML
     XmlNodePtr findFirstChildByName(XmlNodePtr parent, const char *name);
 
     void initXML();
+
+    void cleanupXML();
 }
 
 #define for_each_xml_child_node(var, parent) \

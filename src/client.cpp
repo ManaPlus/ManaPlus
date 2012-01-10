@@ -741,8 +741,7 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting4");
 
-    // Shutdown libxml
-    xmlCleanupParser();
+    XML::cleanupXML();
 
     if (logger)
         logger->log1("Quitting5");
