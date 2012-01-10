@@ -630,7 +630,7 @@ void ServerDialog::loadServers(bool addNew)
     XML::Document doc(mDir + "/serverlist.xml", false);
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "serverlist"))
+    if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
     {
         logger->log1("Error loading server list!");
         return;
@@ -646,7 +646,7 @@ void ServerDialog::loadServers(bool addNew)
 
     for_each_xml_child_node(serverNode, rootNode)
     {
-        if (!xmlStrEqual(serverNode->name, BAD_CAST "server"))
+        if (!xmlNameEqual(serverNode, "server"))
             continue;
 
         ServerInfo server;
@@ -681,7 +681,7 @@ void ServerDialog::loadServers(bool addNew)
 
         for_each_xml_child_node(subNode, serverNode)
         {
-            if (xmlStrEqual(subNode->name, BAD_CAST "connection"))
+            if (xmlNameEqual(subNode, "connection"))
             {
                 server.hostname = XML::getProperty(subNode, "hostname", "");
                 server.port = static_cast<short unsigned>(
@@ -693,7 +693,7 @@ void ServerDialog::loadServers(bool addNew)
                     server.port = defaultPortForServerType(server.type);
                 }
             }
-            else if (xmlStrEqual(subNode->name, BAD_CAST "description"))
+            else if (xmlNameEqual(subNode, "description"))
             {
                 server.description = reinterpret_cast<const char*>(
                     subNode->xmlChildrenNode->content);

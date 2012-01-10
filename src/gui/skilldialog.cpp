@@ -370,7 +370,7 @@ void SkillDialog::loadSkills(const std::string &file)
     SkillListBox *listbox;
     SkillTab *tab;
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "skills"))
+    if (!root || !xmlNameEqual(root, "skills"))
     {
         logger->log("Error loading skills file: %s", file.c_str());
 
@@ -413,7 +413,7 @@ void SkillDialog::loadSkills(const std::string &file)
 
     for_each_xml_child_node(set, root)
     {
-        if (xmlStrEqual(set->name, BAD_CAST "set"))
+        if (xmlNameEqual(set, "set"))
         {
             setCount++;
             setName = XML::getProperty(set, "name",
@@ -425,7 +425,7 @@ void SkillDialog::loadSkills(const std::string &file)
 
             for_each_xml_child_node(node, set)
             {
-                if (xmlStrEqual(node->name, BAD_CAST "skill"))
+                if (xmlNameEqual(node, "skill"))
                 {
                     int id = atoi(XML::getProperty(node, "id", "-1").c_str());
                     std::string name = XML::getProperty(node, "name",

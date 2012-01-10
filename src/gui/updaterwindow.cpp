@@ -69,7 +69,7 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
     XML::Document doc(fileName, false);
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "updates"))
+    if (!rootNode || !xmlNameEqual(rootNode, "updates"))
     {
         logger->log("Error loading update file: %s", fileName.c_str());
         return files;
@@ -78,7 +78,7 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
     for_each_xml_child_node(fileNode, rootNode)
     {
         // Ignore all tags except for the "update" tags
-        if (!xmlStrEqual(fileNode->name, BAD_CAST "update"))
+        if (!xmlNameEqual(fileNode, "update"))
             continue;
 
         updateFile file;

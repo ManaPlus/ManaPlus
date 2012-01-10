@@ -163,7 +163,7 @@ namespace XML
     {
         for_each_xml_child_node(child, parent)
         {
-            if (xmlStrEqual(child->name, BAD_CAST name))
+            if (xmlNameEqual(child, name))
                 return child;
         }
 

@@ -171,7 +171,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
         offsetY -= imageset->getHeight() - 32;
         offsetX -= imageset->getWidth() / 2 - 16;
 
-        if (xmlStrEqual(frameNode->name, BAD_CAST "frame"))
+        if (xmlNameEqual(frameNode, "frame"))
         {
             int index = XML::getProperty(frameNode, "index", -1);
 
@@ -192,7 +192,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
             if (mAnimation)
                 mAnimation->addFrame(img, delay, offsetX, offsetY, rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
+        else if (xmlNameEqual(frameNode, "sequence"))
         {
             int start = XML::getProperty(frameNode, "start", -1);
             int end = XML::getProperty(frameNode, "end", -1);
@@ -218,7 +218,7 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
                 start++;
             }
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
+        else if (xmlNameEqual(frameNode, "end"))
         {
             if (mAnimation)
                 mAnimation->addTerminator(rand);

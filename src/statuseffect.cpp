@@ -132,7 +132,7 @@ void StatusEffect::load()
     XML::Document doc(STATUS_EFFECTS_FILE);
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "status-effects"))
+    if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
     {
         logger->log1("Error loading status effects file: "
                     STATUS_EFFECTS_FILE);
@@ -145,7 +145,7 @@ void StatusEffect::load()
 
         int index = atoi(XML::getProperty(node, "id", "-1").c_str());
 
-        if (xmlStrEqual(node->name, BAD_CAST "status-effect"))
+        if (xmlNameEqual(node, "status-effect"))
         {
             the_map = &statusEffects;
             int block_index = atoi(XML::getProperty(
@@ -155,8 +155,10 @@ void StatusEffect::load()
                 blockEffectIndexMap[block_index] = index;
 
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "stun-effect"))
+        else if (xmlNameEqual(node, "stun-effect"))
+        {
             the_map = &stunEffects;
+        }
 
         if (the_map)
         {

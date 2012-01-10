@@ -432,7 +432,7 @@ void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
 
     for_each_xml_child_node(node, parent_node)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "list"))
+        if (xmlNameEqual(node, "list"))
         {
             // list option handling
 
@@ -440,7 +440,7 @@ void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
 
             for_each_xml_child_node(subnode, node)
             {
-                if (xmlStrEqual(subnode->name, BAD_CAST name.c_str())
+                if (xmlNameEqual(subnode, name.c_str())
                     && subnode->type == XML_ELEMENT_NODE)
                 {
                     ConfigurationObject *cobj = new ConfigurationObject;
@@ -452,7 +452,7 @@ void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
             }
 
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "option"))
+        else if (xmlNameEqual(node, "option"))
         {
             // single option handling
 
@@ -491,7 +491,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
 
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "configuration"))
+    if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
     {
         logger->log("Warning: No configuration file (%s)", filename.c_str());
         return;

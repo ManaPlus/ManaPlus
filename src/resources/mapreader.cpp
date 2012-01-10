@@ -227,7 +227,7 @@ Map *MapReader::readMap(const std::string &filename,
     // Parse the inflated map data
     if (node)
     {
-        if (!xmlStrEqual(node->name, BAD_CAST "map"))
+        if (!xmlNameEqual(node, "map"))
             logger->log("Error: Not a map file (%s)!", realFilename.c_str());
         else
             map = readMap(node, realFilename);
@@ -276,23 +276,23 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
     for_each_xml_child_node(childNode, node)
     {
-        if (xmlStrEqual(childNode->name, BAD_CAST "tileset"))
+        if (xmlNameEqual(childNode, "tileset"))
         {
             Tileset *tileset = readTileset(childNode, pathDir, map);
             if (tileset)
                 map->addTileset(tileset);
         }
-        else if (xmlStrEqual(childNode->name, BAD_CAST "layer"))
+        else if (xmlNameEqual(childNode, "layer"))
         {
             readLayer(childNode, map);
         }
-        else if (xmlStrEqual(childNode->name, BAD_CAST "properties"))
+        else if (xmlNameEqual(childNode, "properties"))
         {
             readProperties(childNode, map);
             map->setVersion(atoi(map->getProperty(
                 "manaplus version").c_str()));
         }
-        else if (xmlStrEqual(childNode->name, BAD_CAST "objectgroup"))
+        else if (xmlNameEqual(childNode, "objectgroup"))
         {
             // The object group offset is applied to each object individually
             const int tileOffsetX = XML::getProperty(childNode, "x", 0);
@@ -302,7 +302,7 @@ Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 
             for_each_xml_child_node(objectNode, childNode)
             {
-                if (xmlStrEqual(objectNode->name, BAD_CAST "object"))
+                if (xmlNameEqual(objectNode, "object"))
                 {
                     std::string objType = XML::getProperty(
                         objectNode, "type", "");
@@ -386,7 +386,7 @@ void MapReader::readProperties(XmlNodePtr node, Properties *props)
 
     for_each_xml_child_node(childNode, node)
     {
-        if (!xmlStrEqual(childNode->name, BAD_CAST "property"))
+        if (!xmlNameEqual(childNode, "property"))
             continue;
 
         // Example: <property name="name" value="value"/>
@@ -472,7 +472,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
     // Load the tile data
     for_each_xml_child_node(childNode, node)
     {
-        if (!xmlStrEqual(childNode->name, BAD_CAST "data"))
+        if (!xmlNameEqual(childNode, "data"))
             continue;
 
         const std::string encoding =
@@ -619,7 +619,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
             // Read plain XML map file
             for_each_xml_child_node(childNode2, childNode)
             {
-                if (!xmlStrEqual(childNode2->name, BAD_CAST "tile"))
+                if (!xmlNameEqual(childNode2, "tile"))
                     continue;
 
                 const int gid = XML::getProperty(childNode2, "gid", -1);
@@ -678,7 +678,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
 
     for_each_xml_child_node(childNode, node)
     {
-        if (xmlStrEqual(childNode->name, BAD_CAST "image"))
+        if (xmlNameEqual(childNode, "image"))
         {
             const std::string source = XML::getProperty(
                 childNode, "source", "");
@@ -703,11 +703,11 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 }
             }
         }
-        else if (xmlStrEqual(childNode->name, BAD_CAST "tile"))
+        else if (xmlNameEqual(childNode, "tile"))
         {
             for_each_xml_child_node(tileNode, childNode)
             {
-                if (!xmlStrEqual(tileNode->name, BAD_CAST "properties"))
+                if (!xmlNameEqual(tileNode, "properties"))
                     continue;
 
                 int tileGID = firstGid + XML::getProperty(childNode, "id", 0);
@@ -716,7 +716,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 std::map<std::string, int> tileProperties;
                 for_each_xml_child_node(propertyNode, tileNode)
                 {
-                    if (!xmlStrEqual(propertyNode->name, BAD_CAST "property"))
+                    if (!xmlNameEqual(propertyNode, "property"))
                         continue;
                     std::string name = XML::getProperty(
                         propertyNode, "name", "");

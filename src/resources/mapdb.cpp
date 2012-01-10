@@ -52,7 +52,7 @@ void MapDB::load()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "map"))
+        if (xmlNameEqual(node, "map"))
         {
             std::string name = XML::getProperty(node, "name", "");
             if (name.empty())

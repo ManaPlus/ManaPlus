@@ -54,7 +54,7 @@ void MonsterDB::load()
     XML::Document doc("monsters.xml");
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "monsters"))
+    if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
     {
         logger->log("Monster Database: Error while loading monster.xml!");
         mLoaded = true;
@@ -71,7 +71,7 @@ void MonsterDB::load()
     //iterate <monster>s
     for_each_xml_child_node(monsterNode, rootNode)
     {
-        if (!xmlStrEqual(monsterNode->name, BAD_CAST "monster"))
+        if (!xmlNameEqual(monsterNode, "monster"))
             continue;
 
         BeingInfo *currentInfo = new BeingInfo;
@@ -119,7 +119,7 @@ void MonsterDB::load()
             if (!spriteNode->xmlChildrenNode)
                 continue;
 
-            if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
+            if (xmlNameEqual(spriteNode, "sprite"))
             {
                 SpriteReference *currentSprite = new SpriteReference;
                 currentSprite->sprite = reinterpret_cast<const char*>(
@@ -129,7 +129,7 @@ void MonsterDB::load()
                     spriteNode, "variant", 0);
                 display.sprites.push_back(currentSprite);
             }
-            else if (xmlStrEqual(spriteNode->name, BAD_CAST "sound"))
+            else if (xmlNameEqual(spriteNode, "sound"))
             {
                 std::string event = XML::getProperty(spriteNode, "event", "");
                 const char *filename;
@@ -172,7 +172,7 @@ void MonsterDB::load()
                                 currentInfo->getName().c_str());
                 }
             }
-            else if (xmlStrEqual(spriteNode->name, BAD_CAST "attack"))
+            else if (xmlNameEqual(spriteNode, "attack"))
             {
                 const int id = XML::getProperty(spriteNode, "id", 0);
                 const std::string particleEffect = XML::getProperty(
@@ -185,7 +185,7 @@ void MonsterDB::load()
                 currentInfo->addAttack(id, spriteAction,
                                        particleEffect, missileParticle);
             }
-            else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
+            else if (xmlNameEqual(spriteNode, "particlefx"))
             {
                 display.particles.push_back(reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content));

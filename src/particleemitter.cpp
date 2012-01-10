@@ -71,7 +71,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
 
     for_each_xml_child_node(propertyNode, emitterNode)
     {
-        if (xmlStrEqual(propertyNode->name, BAD_CAST "property"))
+        if (xmlNameEqual(propertyNode, "property"))
         {
             std::string name = XML::getProperty(propertyNode, "name", "");
 
@@ -197,13 +197,13 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                             name.c_str());
             }
         }
-        else if (xmlStrEqual(propertyNode->name, BAD_CAST "emitter"))
+        else if (xmlNameEqual(propertyNode, "emitter"))
         {
             ParticleEmitter newEmitter(propertyNode, mParticleTarget, map,
                                        rotation, dyePalettes);
             mParticleChildEmitters.push_back(newEmitter);
         }
-        else if (xmlStrEqual(propertyNode->name, BAD_CAST "rotation"))
+        else if (xmlNameEqual(propertyNode, "rotation"))
         {
             ImageSet *imageset = ResourceManager::getInstance()->getImageSet(
                 XML::getProperty(propertyNode, "imageset", ""),
@@ -229,7 +229,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                 offsetY -= imageset->getHeight() - 32;
                 offsetX -= imageset->getWidth() / 2 - 16;
 
-                if (xmlStrEqual(frameNode->name, BAD_CAST "frame"))
+                if (xmlNameEqual(frameNode, "frame"))
                 {
                     int index = XML::getProperty(frameNode, "index", -1);
 
@@ -250,7 +250,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                     mParticleRotation.addFrame(img, delay,
                         offsetX, offsetY, rand);
                 }
-                else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
+                else if (xmlNameEqual(frameNode, "sequence"))
                 {
                     int start = XML::getProperty(frameNode, "start", -1);
                     int end = XML::getProperty(frameNode, "end", -1);
@@ -276,13 +276,13 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                         start++;
                     }
                 }
-                else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
+                else if (xmlNameEqual(frameNode, "end"))
                 {
                     mParticleRotation.addTerminator(rand);
                 }
             } // for frameNode
         }
-        else if (xmlStrEqual(propertyNode->name, BAD_CAST "animation"))
+        else if (xmlNameEqual(propertyNode, "animation"))
         {
             ImageSet *imageset = ResourceManager::getInstance()->getImageSet(
                 XML::getProperty(propertyNode, "imageset", ""),
@@ -307,7 +307,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                 offsetY -= imageset->getHeight() - 32;
                 offsetX -= imageset->getWidth() / 2 - 16;
 
-                if (xmlStrEqual(frameNode->name, BAD_CAST "frame"))
+                if (xmlNameEqual(frameNode, "frame"))
                 {
                     int index = XML::getProperty(frameNode, "index", -1);
 
@@ -328,7 +328,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                     mParticleAnimation.addFrame(img, delay,
                         offsetX, offsetY, rand);
                 }
-                else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
+                else if (xmlNameEqual(frameNode, "sequence"))
                 {
                     int start = XML::getProperty(frameNode, "start", -1);
                     int end = XML::getProperty(frameNode, "end", -1);
@@ -354,13 +354,13 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                         start++;
                     }
                 }
-                else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
+                else if (xmlNameEqual(frameNode, "end"))
                 {
                     mParticleAnimation.addTerminator(rand);
                 }
             } // for frameNode
         }
-        else if (xmlStrEqual(propertyNode->name, BAD_CAST "deatheffect"))
+        else if (xmlNameEqual(propertyNode, "deatheffect"))
         {
             mDeathEffect = reinterpret_cast<const char*>(
                 propertyNode->xmlChildrenNode->content);

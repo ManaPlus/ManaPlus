@@ -293,7 +293,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     XML::Document doc(particleEffectFile.substr(0, pos));
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "effect"))
+    if (!rootNode || !xmlNameEqual(rootNode, "effect"))
     {
         logger->log("Error loading particle: %s", particleEffectFile.c_str());
         return nullptr;
@@ -305,7 +305,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     for_each_xml_child_node(effectChildNode, rootNode)
     {
         // We're only interested in particles
-        if (!xmlStrEqual(effectChildNode->name, BAD_CAST "particle"))
+        if (!xmlNameEqual(effectChildNode, "particle"))
             continue;
 
         // Determine the exact particle type
@@ -361,14 +361,14 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         // Look for additional emitters for this particle
         for_each_xml_child_node(emitterNode, effectChildNode)
         {
-            if (xmlStrEqual(emitterNode->name, BAD_CAST "emitter"))
+            if (xmlNameEqual(emitterNode, "emitter"))
             {
                 ParticleEmitter *newEmitter;
                 newEmitter = new ParticleEmitter(emitterNode, newParticle,
                     mMap, rotation, dyePalettes);
                 newParticle->addEmitter(newEmitter);
             }
-            else if (xmlStrEqual(emitterNode->name, BAD_CAST "deatheffect"))
+            else if (xmlNameEqual(emitterNode, "deatheffect"))
             {
                 std::string deathEffect = reinterpret_cast<const char*>(
                     emitterNode->xmlChildrenNode->content);

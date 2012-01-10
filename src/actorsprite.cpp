@@ -182,7 +182,7 @@ static EffectDescription *getEffectDescription(int effectId)
         XML::Document doc(EFFECTS_FILE);
         XmlNodePtr root = doc.rootNode();
 
-        if (!root || !xmlStrEqual(root->name, BAD_CAST "being-effects"))
+        if (!root || !xmlNameEqual(root, "being-effects"))
         {
             logger->log1("Error loading being effects file: "
                     EFFECTS_FILE);
@@ -193,13 +193,13 @@ static EffectDescription *getEffectDescription(int effectId)
         {
             int id;
 
-            if (xmlStrEqual(node->name, BAD_CAST "effect"))
+            if (xmlNameEqual(node, "effect"))
             {
                 EffectDescription *EffectDescription =
                     getEffectDescription(node, &id);
                 effects[id] = EffectDescription;
             }
-            else if (xmlStrEqual(node->name, BAD_CAST "default"))
+            else if (xmlNameEqual(node, "default"))
             {
                 EffectDescription *effectDescription =
                     getEffectDescription(node, &id);

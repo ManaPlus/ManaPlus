@@ -174,7 +174,7 @@ void ItemDB::load()
     XML::Document doc("items.xml");
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "items"))
+    if (!rootNode || !xmlNameEqual(rootNode, "items"))
     {
         logger->log("ItemDB: Error while loading items.xml!");
         mLoaded = true;
@@ -183,7 +183,7 @@ void ItemDB::load()
 
     for_each_xml_child_node(node, rootNode)
     {
-        if (!xmlStrEqual(node->name, BAD_CAST "item"))
+        if (!xmlNameEqual(node, "item"))
             continue;
 
         int id = XML::getProperty(node, "id", 0);
@@ -324,7 +324,7 @@ void ItemDB::load()
 
         for_each_xml_child_node(itemChild, node)
         {
-            if (xmlStrEqual(itemChild->name, BAD_CAST "sprite"))
+            if (xmlNameEqual(itemChild, "sprite"))
             {
                 std::string attackParticle = XML::getProperty(
                     itemChild, "particle-effect", "");
@@ -332,23 +332,23 @@ void ItemDB::load()
 
                 loadSpriteRef(itemInfo, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "sound"))
+            else if (xmlNameEqual(itemChild, "sound"))
             {
                 loadSoundRef(itemInfo, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "floor"))
+            else if (xmlNameEqual(itemChild, "floor"))
             {
                 loadFloorSprite(&display, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "replace"))
+            else if (xmlNameEqual(itemChild, "replace"))
             {
                 loadReplaceSprite(itemInfo, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "drawAfter"))
+            else if (xmlNameEqual(itemChild, "drawAfter"))
             {
                 loadOrderSprite(itemInfo, itemChild, true);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "drawBefore"))
+            else if (xmlNameEqual(itemChild, "drawBefore"))
             {
                 loadOrderSprite(itemInfo, itemChild, false);
             }
@@ -630,7 +630,7 @@ void loadFloorSprite(SpriteDisplay *display, XmlNodePtr floorNode)
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
-        if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
+        if (xmlNameEqual(spriteNode, "sprite"))
         {
             SpriteReference *currentSprite = new SpriteReference;
             currentSprite->sprite = reinterpret_cast<const char*>(
@@ -639,7 +639,7 @@ void loadFloorSprite(SpriteDisplay *display, XmlNodePtr floorNode)
                 = XML::getProperty(spriteNode, "variant", 0);
             display->sprites.push_back(currentSprite);
         }
-        else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
+        else if (xmlNameEqual(spriteNode, "particlefx"))
         {
             std::string particlefx = reinterpret_cast<const char*>(
                 spriteNode->xmlChildrenNode->content);
@@ -669,7 +669,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
                     continue;
                 for_each_xml_child_node(itemNode, replaceNode)
                 {
-                    if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                    if (xmlNameEqual(itemNode, "item"))
                     {
                         int from = XML::getProperty(itemNode, "from", 0);
                         int to = XML::getProperty(itemNode, "to", 1);
@@ -691,7 +691,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
 
             for_each_xml_child_node(itemNode, replaceNode)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                if (xmlNameEqual(itemNode, "item"))
                 {
                     int from = XML::getProperty(itemNode, "from", 0);
                     int to = XML::getProperty(itemNode, "to", 1);
@@ -724,7 +724,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
 
             for_each_xml_child_node(itemNode, replaceNode)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                if (xmlNameEqual(itemNode, "item"))
                 {
                     int from = XML::getProperty(itemNode, "from", 0);
                     int to = XML::getProperty(itemNode, "to", 1);
@@ -754,7 +754,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
                 return;
             for_each_xml_child_node(itemNode, replaceNode)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                if (xmlNameEqual(itemNode, "item"))
                 {
                     int from = XML::getProperty(itemNode, "from", 0);
                     int to = XML::getProperty(itemNode, "to", 1);

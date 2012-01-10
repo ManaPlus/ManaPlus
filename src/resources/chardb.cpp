@@ -46,7 +46,7 @@ void CharDB::load()
     XML::Document *doc = new XML::Document("charcreation.xml");
     XmlNodePtr root = doc->rootNode();
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "chars"))
+    if (!root || !xmlNameEqual(root, "chars"))
     {
         logger->log1("CharDB: Failed to parse charcreation.xml.");
 
@@ -56,15 +56,15 @@ void CharDB::load()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "haircolor"))
+        if (xmlNameEqual(node, "haircolor"))
         {
             loadMinMax(node, &mMinHairColor, &mMaxHairColor);
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "hairstyle"))
+        else if (xmlNameEqual(node, "hairstyle"))
         {
             loadMinMax(node, &mMinHairStyle, &mMaxHairStyle);
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "stat"))
+        else if (xmlNameEqual(node, "stat"))
         {
             loadMinMax(node, &mMinStat, &mMaxStat);
             mSumStat = XML::getProperty(node, "sum", 0);

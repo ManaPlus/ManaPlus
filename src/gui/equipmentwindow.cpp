@@ -371,11 +371,11 @@ void EquipmentWindow::fillBoxes()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "window"))
+        if (xmlNameEqual(node, "window"))
             loadWindow(node);
-        else if (xmlStrEqual(node->name, BAD_CAST "playerbox"))
+        else if (xmlNameEqual(node, "playerbox"))
             loadPlayerBox(node);
-        else if (xmlStrEqual(node->name, BAD_CAST "slot"))
+        else if (xmlNameEqual(node, "slot"))
             loadSlot(node, mImageSet);
     }
     delete doc;

@@ -83,7 +83,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
     XML::Document doc(animationFile.substr(0, pos));
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "sprite"))
+    if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         logger->log("Error, failed to parse %s", animationFile.c_str());
 
@@ -149,11 +149,11 @@ void SpriteDef::loadSprite(XmlNodePtr spriteNode, int variant,
 
     for_each_xml_child_node(node, spriteNode)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "imageset"))
+        if (xmlNameEqual(node, "imageset"))
             loadImageSet(node, palettes);
-        else if (xmlStrEqual(node->name, BAD_CAST "action"))
+        else if (xmlNameEqual(node, "action"))
             loadAction(node, variant_offset);
-        else if (xmlStrEqual(node->name, BAD_CAST "include"))
+        else if (xmlNameEqual(node, "include"))
             includeSprite(node);
     }
 }
@@ -223,7 +223,7 @@ void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
     // Load animations
     for_each_xml_child_node(animationNode, node)
     {
-        if (xmlStrEqual(animationNode->name, BAD_CAST "animation"))
+        if (xmlNameEqual(animationNode, "animation"))
             loadAnimation(animationNode, action, imageSet, variant_offset);
     }
 }
@@ -262,7 +262,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
         offsetY -= imageSet->getHeight() - 32;
         offsetX -= imageSet->getWidth() / 2 - 16;
 
-        if (xmlStrEqual(frameNode->name, BAD_CAST "frame"))
+        if (xmlNameEqual(frameNode, "frame"))
         {
             const int index = XML::getProperty(frameNode, "index", -1);
 
@@ -282,7 +282,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
 
             animation->addFrame(img, delay, offsetX, offsetY, rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
+        else if (xmlNameEqual(frameNode, "sequence"))
         {
             const int start = XML::getProperty(frameNode, "start", -1);
             const int end = XML::getProperty(frameNode, "end", -1);
@@ -322,22 +322,22 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                 repeat --;
             }
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
+        else if (xmlNameEqual(frameNode, "end"))
         {
             animation->addTerminator(rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "jump"))
+        else if (xmlNameEqual(frameNode, "jump"))
         {
             animation->addJump(XML::getProperty(
                 frameNode, "action", ""), rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "label"))
+        else if (xmlNameEqual(frameNode, "label"))
         {
             std::string name = XML::getProperty(frameNode, "name", "");
             if (!name.empty())
                 animation->addLabel(name);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "goto"))
+        else if (xmlNameEqual(frameNode, "goto"))
         {
             std::string name = XML::getProperty(frameNode, "label", "");
             if (!name.empty())
@@ -365,7 +365,7 @@ void SpriteDef::includeSprite(XmlNodePtr includeNode)
     XML::Document doc(filename);
     XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "sprite"))
+    if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         logger->log("Error, no sprite root node in %s", filename.c_str());
         return;
