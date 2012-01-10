@@ -30,8 +30,8 @@
 #include <string>
 
 #define XmlNodePtr xmlNodePtr
-
 #define xmlNameEqual(node, str) xmlStrEqual((node)->name, BAD_CAST (str))
+#define XmlTextWriterPtr xmlTextWriterPtr
 
 /**
  * XML helper functions.

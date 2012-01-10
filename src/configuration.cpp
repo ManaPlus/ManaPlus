@@ -500,7 +500,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
     initFromXML(rootNode);
 }
 
-void ConfigurationObject::writeToXML(xmlTextWriterPtr writer)
+void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
 {
     for (Options::const_iterator i = mOptions.begin(), i_end = mOptions.end();
          i != i_end; ++i)
@@ -551,7 +551,7 @@ void Configuration::write()
         fclose(testFile);
     }
 
-    xmlTextWriterPtr writer = xmlNewTextWriterFilename(mConfigPath.c_str(), 0);
+    XmlTextWriterPtr writer = xmlNewTextWriterFilename(mConfigPath.c_str(), 0);
 
     if (!writer)
     {

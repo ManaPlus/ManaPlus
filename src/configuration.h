@@ -194,7 +194,7 @@ class ConfigurationObject
 
     protected:
         virtual void initFromXML(XmlNodePtr node);
-        virtual void writeToXML(xmlTextWriterPtr writer);
+        virtual void writeToXML(XmlTextWriterPtr writer);
 
         void deleteList(const std::string &name);
 
