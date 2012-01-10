@@ -201,7 +201,7 @@ void Setup::doCancel()
 void Setup::activateTab(const std::string &name)
 {
     std::string tmp = gettext(name.c_str());
-    mPanel->setSelectedTab(tmp);
+    mPanel->setSelectedTabByName(tmp);
 /*
     for (std::list<SetupTab*>::const_iterator it = mTabs.begin();
          it != mTabs.end(); ++it)
@@ -212,7 +212,7 @@ void Setup::activateTab(const std::string &name)
             logger->log("check tab: " + tab->getName());
             if (tab->getName() == tmp)
             {
-                mPanel->setSelectedTab(name);
+                mPanel->setSelectedTabByName(name);
                 return;
             }
         }

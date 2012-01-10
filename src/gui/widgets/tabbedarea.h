@@ -78,8 +78,6 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          */
         gcn::Widget *getCurrentWidget();
 
-        using gcn::TabbedArea::addTab;
-
         /**
          * Add a tab. Overridden since it needs to size the widget.
          *
@@ -112,11 +110,11 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         int getContainerHeight() const
         { return mWidgetContainer->getHeight(); }
 
-        using gcn::TabbedArea::setSelectedTab;
-
         void setSelectedTab(gcn::Tab *tab);
 
-        void setSelectedTab(const std::string &name);
+        void setSelectedTabByPos(int tab);
+
+        void setSelectedTabByName(const std::string &name);
 
         void widgetResized(const gcn::Event &event);
 

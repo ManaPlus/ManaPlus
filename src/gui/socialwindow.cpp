@@ -1610,7 +1610,7 @@ void SocialWindow::nextTab()
     if (tab == mTabs->getNumberOfTabs())
         tab = 0;
 
-    mTabs->setSelectedTab(tab);
+    mTabs->setSelectedTabByPos(tab);
 }
 
 void SocialWindow::prevTab()
@@ -1624,7 +1624,7 @@ void SocialWindow::prevTab()
         tab = mTabs->getNumberOfTabs();
     tab--;
 
-    mTabs->setSelectedTab(tab);
+    mTabs->setSelectedTabByPos(tab);
 }
 
 void SocialWindow::updateAttackFilter()

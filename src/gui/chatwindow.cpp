@@ -420,11 +420,11 @@ void ChatWindow::prevTab()
 
     int tab = mChatTabs->getSelectedTabIndex();
 
-    if (tab == 0)
+    if (tab <= 0)
         tab = mChatTabs->getNumberOfTabs();
     tab--;
 
-    mChatTabs->setSelectedTab(tab);
+    mChatTabs->setSelectedTabByPos(tab);
 }
 
 void ChatWindow::nextTab()
@@ -438,7 +438,7 @@ void ChatWindow::nextTab()
     if (tab == mChatTabs->getNumberOfTabs())
         tab = 0;
 
-    mChatTabs->setSelectedTab(tab);
+    mChatTabs->setSelectedTabByPos(tab);
 }
 
 void ChatWindow::closeTab()
