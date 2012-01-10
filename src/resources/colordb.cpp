@@ -49,7 +49,7 @@ void ColorDB::load()
 void ColorDB::loadHair()
 {
     XML::Document *doc = new XML::Document("hair.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     bool hairXml = true;
 
     if (!root || !xmlStrEqual(root->name, BAD_CAST "colors"))
@@ -97,7 +97,7 @@ void ColorDB::loadHair()
 void ColorDB::loadColorLists()
 {
     XML::Document *doc = new XML::Document("itemcolors.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;

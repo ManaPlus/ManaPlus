@@ -52,7 +52,7 @@ void EmoteDB::load()
     logger->log1("Initializing emote database...");
 
     XML::Document doc("emotes.xml");
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "emotes"))
     {

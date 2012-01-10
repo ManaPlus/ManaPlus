@@ -43,7 +43,7 @@ void MapDB::load()
     XML::Document *doc = new XML::Document(
         paths.getStringValue("maps") + "remap.xml");
 
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;

@@ -67,7 +67,7 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
 {
     std::vector<updateFile> files;
     XML::Document doc(fileName, false);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "updates"))
     {

@@ -315,7 +315,7 @@ Skin *Theme::readSkin(const std::string &filename)
 //    filename = resman->mapPathToSkin(filename0);
 
     XML::Document doc(resolveThemePath(filename));
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "skinset"))
         return nullptr;
@@ -818,7 +818,7 @@ void Theme::loadColors(std::string file)
         file += "/colors.xml";
 
     XML::Document doc(resolveThemePath(file));
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlStrEqual(root->name, BAD_CAST "colors"))
     {

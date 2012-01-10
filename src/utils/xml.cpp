@@ -101,12 +101,12 @@ namespace XML
             xmlFreeDoc(mDoc);
     }
 
-    xmlNodePtr Document::rootNode()
+    XmlNodePtr Document::rootNode()
     {
         return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
-    int getProperty(xmlNodePtr node, const char* name, int def)
+    int getProperty(XmlNodePtr node, const char* name, int def)
     {
         int &ret = def;
 
@@ -120,7 +120,7 @@ namespace XML
         return ret;
     }
 
-    double getFloatProperty(xmlNodePtr node, const char* name, double def)
+    double getFloatProperty(XmlNodePtr node, const char* name, double def)
     {
         double &ret = def;
 
@@ -134,7 +134,7 @@ namespace XML
         return ret;
     }
 
-    std::string getProperty(xmlNodePtr node, const char *name,
+    std::string getProperty(XmlNodePtr node, const char *name,
                             const std::string &def)
     {
         xmlChar *prop = xmlGetProp(node, BAD_CAST name);
@@ -148,7 +148,7 @@ namespace XML
         return def;
     }
 
-    bool getBoolProperty(xmlNodePtr node, const char* name, bool def)
+    bool getBoolProperty(XmlNodePtr node, const char* name, bool def)
     {
         xmlChar *prop = xmlGetProp(node, BAD_CAST name);
 
@@ -159,7 +159,7 @@ namespace XML
         return def;
     }
 
-    xmlNodePtr findFirstChildByName(xmlNodePtr parent, const char *name)
+    XmlNodePtr findFirstChildByName(XmlNodePtr parent, const char *name)
     {
         for_each_xml_child_node(child, parent)
         {

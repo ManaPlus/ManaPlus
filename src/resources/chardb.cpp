@@ -44,7 +44,7 @@ void CharDB::load()
         unload();
 
     XML::Document *doc = new XML::Document("charcreation.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
 
     if (!root || !xmlStrEqual(root->name, BAD_CAST "chars"))
     {
@@ -76,7 +76,7 @@ void CharDB::load()
     mLoaded = true;
 }
 
-void CharDB::loadMinMax(xmlNodePtr node, unsigned *min, unsigned *max)
+void CharDB::loadMinMax(XmlNodePtr node, unsigned *min, unsigned *max)
 {
     *min = XML::getProperty(node, "min", 1);
     *max = XML::getProperty(node, "max", 10);

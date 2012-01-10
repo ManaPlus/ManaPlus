@@ -238,7 +238,7 @@ namespace Attributes
         logger->log("Initializing attributes database...");
 
         XML::Document doc(DEFAULT_ATTRIBUTESDB_FILE);
-        xmlNodePtr rootNode = doc.rootNode();
+        XmlNodePtr rootNode = doc.rootNode();
 
         if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "attributes"))
         {

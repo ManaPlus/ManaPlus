@@ -81,7 +81,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
         palettes = animationFile.substr(pos + 1);
 
     XML::Document doc(animationFile.substr(0, pos));
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "sprite"))
     {
@@ -134,7 +134,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::SPAWN, SpriteAction::STAND);
 }
 
-void SpriteDef::loadSprite(xmlNodePtr spriteNode, int variant,
+void SpriteDef::loadSprite(XmlNodePtr spriteNode, int variant,
                            const std::string &palettes)
 {
     // Get the variant
@@ -158,7 +158,7 @@ void SpriteDef::loadSprite(xmlNodePtr spriteNode, int variant,
     }
 }
 
-void SpriteDef::loadImageSet(xmlNodePtr node, const std::string &palettes)
+void SpriteDef::loadImageSet(XmlNodePtr node, const std::string &palettes)
 {
     const std::string name = XML::getProperty(node, "name", "");
 
@@ -186,7 +186,7 @@ void SpriteDef::loadImageSet(xmlNodePtr node, const std::string &palettes)
     mImageSets[name] = imageSet;
 }
 
-void SpriteDef::loadAction(xmlNodePtr node, int variant_offset)
+void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
 {
     const std::string actionName = XML::getProperty(node, "name", "");
     const std::string imageSetName = XML::getProperty(node, "imageset", "");
@@ -228,7 +228,7 @@ void SpriteDef::loadAction(xmlNodePtr node, int variant_offset)
     }
 }
 
-void SpriteDef::loadAnimation(xmlNodePtr animationNode,
+void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                               Action *action, ImageSet *imageSet,
                               int variant_offset)
 {
@@ -346,7 +346,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
     } // for frameNode
 }
 
-void SpriteDef::includeSprite(xmlNodePtr includeNode)
+void SpriteDef::includeSprite(XmlNodePtr includeNode)
 {
     std::string filename = XML::getProperty(includeNode, "file", "");
 
@@ -363,7 +363,7 @@ void SpriteDef::includeSprite(xmlNodePtr includeNode)
     mProcessedFiles.insert(filename);
 
     XML::Document doc(filename);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "sprite"))
     {

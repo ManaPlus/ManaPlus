@@ -164,7 +164,7 @@ static EffectDescription *default_effect = nullptr;
 static std::map<int, EffectDescription *> effects;
 static bool effects_initialized = false;
 
-static EffectDescription *getEffectDescription(xmlNodePtr node, int *id)
+static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
 {
     EffectDescription *ed = new EffectDescription;
 
@@ -180,7 +180,7 @@ static EffectDescription *getEffectDescription(int effectId)
     if (!effects_initialized)
     {
         XML::Document doc(EFFECTS_FILE);
-        xmlNodePtr root = doc.rootNode();
+        XmlNodePtr root = doc.rootNode();
 
         if (!root || !xmlStrEqual(root->name, BAD_CAST "being-effects"))
         {

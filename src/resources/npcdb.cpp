@@ -46,7 +46,7 @@ void NPCDB::load()
     logger->log1("Initializing NPC database...");
 
     XML::Document doc("npcs.xml");
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "npcs"))
     {

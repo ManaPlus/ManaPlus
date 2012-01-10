@@ -44,7 +44,7 @@ SimpleAnimation::SimpleAnimation(Animation *animation):
 {
 }
 
-SimpleAnimation::SimpleAnimation(xmlNodePtr animationNode,
+SimpleAnimation::SimpleAnimation(XmlNodePtr animationNode,
                                  const std::string& dyePalettes):
     mAnimation(new Animation),
     mAnimationTime(0),
@@ -136,7 +136,7 @@ Image *SimpleAnimation::getCurrentImage() const
         return nullptr;
 }
 
-void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
+void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
                                           const std::string& dyePalettes)
 {
     mInitialized = false;
@@ -161,7 +161,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
         return;
 
     // Get animation frames
-    for (xmlNodePtr frameNode = animationNode->xmlChildrenNode;
+    for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;
          frameNode; frameNode = frameNode->next)
     {
         int delay = XML::getProperty(frameNode, "delay", 0);

@@ -426,7 +426,7 @@ bool Configuration::resetBoolValue(const std::string &key)
     return defaultValue;
 }
 
-void ConfigurationObject::initFromXML(xmlNodePtr parent_node)
+void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
 {
     clear();
 
@@ -489,7 +489,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
         return;
     }
 
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "configuration"))
     {

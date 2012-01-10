@@ -108,11 +108,11 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void addBox(int idx, int x, int y, int imageIndex);
 
-        void loadWindow(xmlNodePtr windowNode);
+        void loadWindow(XmlNodePtr windowNode);
 
-        void loadPlayerBox(xmlNodePtr playerBoxNode);
+        void loadPlayerBox(XmlNodePtr playerBoxNode);
 
-        void loadSlot(xmlNodePtr slotNode, ImageSet *imageset);
+        void loadSlot(XmlNodePtr slotNode, ImageSet *imageset);
 
         int parseSlotName(std::string name);
 

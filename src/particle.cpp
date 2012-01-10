@@ -291,7 +291,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         dyePalettes = particleEffectFile.substr(pos + 1);
 
     XML::Document doc(particleEffectFile.substr(0, pos));
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "effect"))
     {
@@ -309,7 +309,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
             continue;
 
         // Determine the exact particle type
-        xmlNodePtr node;
+        XmlNodePtr node;
 
         // Animation
         if ((node = XML::findFirstChildByName(effectChildNode, "animation")))

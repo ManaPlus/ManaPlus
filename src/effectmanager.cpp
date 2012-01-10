@@ -32,7 +32,7 @@
 EffectManager::EffectManager()
 {
     XML::Document doc("effects.xml");
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlStrEqual(root->name, BAD_CAST "being-effects"))
     {

@@ -39,7 +39,7 @@
 #define SIN45 0.707106781f
 #define DEG_RAD_FACTOR 0.017453293f
 
-ParticleEmitter::ParticleEmitter(xmlNodePtr emitterNode, Particle *target,
+ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                                  Map *map, int rotation,
                                  const std::string& dyePalettes):
     mOutputPauseLeft(0),
@@ -466,7 +466,7 @@ ParticleEmitter::~ParticleEmitter()
 
 
 template <typename T> ParticleEmitterProp<T>
-ParticleEmitter::readParticleEmitterProp(xmlNodePtr propertyNode, T def)
+ParticleEmitter::readParticleEmitterProp(XmlNodePtr propertyNode, T def)
 {
     ParticleEmitterProp<T> retval;
 

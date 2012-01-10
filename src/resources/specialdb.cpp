@@ -55,7 +55,7 @@ void SpecialDB::load()
     logger->log("Initializing special database...");
 
     XML::Document doc("specials.xml");
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlStrEqual(root->name, BAD_CAST "specials"))
     {

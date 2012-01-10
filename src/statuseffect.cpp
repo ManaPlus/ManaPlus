@@ -130,7 +130,7 @@ void StatusEffect::load()
         unload();
 
     XML::Document doc(STATUS_EFFECTS_FILE);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "status-effects"))
     {

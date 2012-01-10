@@ -47,11 +47,11 @@ namespace
 }
 
 // Forward declarations
-static void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node);
-static void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node);
-static void loadFloorSprite(SpriteDisplay *display, xmlNodePtr node);
-static void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode);
-static void loadOrderSprite(ItemInfo *itemInfo, xmlNodePtr node,
+static void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node);
+static void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node);
+static void loadFloorSprite(SpriteDisplay *display, XmlNodePtr node);
+static void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode);
+static void loadOrderSprite(ItemInfo *itemInfo, XmlNodePtr node,
                             bool drawAfter);
 static int parseSpriteName(std::string name);
 static int parseDirectionName(std::string name);
@@ -172,7 +172,7 @@ void ItemDB::load()
     mUnknown->addTag(mTags["All"]);
 
     XML::Document doc("items.xml");
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "items"))
     {
@@ -593,7 +593,7 @@ int parseDirectionName(std::string name)
     return id;
 }
 
-void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node)
+void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node)
 {
     std::string gender = XML::getProperty(node, "gender", "unisex");
     std::string filename = reinterpret_cast<const char*>(
@@ -605,7 +605,7 @@ void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node)
         itemInfo->setSprite(filename, GENDER_FEMALE);
 }
 
-void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node)
+void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node)
 {
     std::string event = XML::getProperty(node, "event", "");
     std::string filename = reinterpret_cast<const char*>(
@@ -626,7 +626,7 @@ void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node)
     }
 }
 
-void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
+void loadFloorSprite(SpriteDisplay *display, XmlNodePtr floorNode)
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
@@ -648,7 +648,7 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
     }
 }
 
-void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
+void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
 {
     std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
     int direction = parseDirectionName(XML::getProperty(
@@ -766,7 +766,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
     }
 }
 
-void loadOrderSprite(ItemInfo *itemInfo, xmlNodePtr node, bool drawAfter)
+void loadOrderSprite(ItemInfo *itemInfo, XmlNodePtr node, bool drawAfter)
 {
     int sprite = parseSpriteName(XML::getProperty(node, "name", ""));
     int priority = XML::getProperty(node, "priority", 0);

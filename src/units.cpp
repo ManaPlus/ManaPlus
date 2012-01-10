@@ -100,7 +100,7 @@ void Units::loadUnits()
     }
 
     XML::Document doc("units.xml");
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
     if (!root || !xmlStrEqual(root->name, BAD_CAST "units"))
     {

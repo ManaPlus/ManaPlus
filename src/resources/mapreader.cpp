@@ -222,7 +222,7 @@ Map *MapReader::readMap(const std::string &filename,
     XML::Document doc(reinterpret_cast<char*>(inflated), inflatedSize);
     free(inflated);
 
-    xmlNodePtr node = doc.rootNode();
+    XmlNodePtr node = doc.rootNode();
 
     // Parse the inflated map data
     if (node)
@@ -247,7 +247,7 @@ Map *MapReader::readMap(const std::string &filename,
     return map;
 }
 
-Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
+Map *MapReader::readMap(XmlNodePtr node, const std::string &path)
 {
     if (!node)
         return nullptr;
@@ -379,7 +379,7 @@ Map *MapReader::readMap(xmlNodePtr node, const std::string &path)
     return map;
 }
 
-void MapReader::readProperties(xmlNodePtr node, Properties *props)
+void MapReader::readProperties(XmlNodePtr node, Properties *props)
 {
     if (!node || !props)
         return;
@@ -442,7 +442,7 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
     }
 }
 
-void MapReader::readLayer(xmlNodePtr node, Map *map)
+void MapReader::readLayer(XmlNodePtr node, Map *map)
 {
     // Layers are not necessarily the same size as the map
     const int w = XML::getProperty(node, "width", map->getWidth());
@@ -491,7 +491,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
             }
 
             // Read base64 encoded map file
-            xmlNodePtr dataChild = childNode->xmlChildrenNode;
+            XmlNodePtr dataChild = childNode->xmlChildrenNode;
             if (!dataChild)
                 continue;
 
@@ -576,7 +576,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
         }
         else if (encoding == "csv")
         {
-            xmlNodePtr dataChild = childNode->xmlChildrenNode;
+            XmlNodePtr dataChild = childNode->xmlChildrenNode;
             if (!dataChild)
                 continue;
 
@@ -646,7 +646,7 @@ void MapReader::readLayer(xmlNodePtr node, Map *map)
 
 }
 
-Tileset *MapReader::readTileset(xmlNodePtr node, const std::string &path,
+Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                                 Map *map)
 {
     if (!map)

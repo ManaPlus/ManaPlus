@@ -355,7 +355,7 @@ void EquipmentWindow::resetBeing(Being *being)
 void EquipmentWindow::fillBoxes()
 {
     XML::Document *doc = new XML::Document("equipmentwindow.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -381,13 +381,13 @@ void EquipmentWindow::fillBoxes()
     delete doc;
 }
 
-void EquipmentWindow::loadWindow(xmlNodePtr windowNode)
+void EquipmentWindow::loadWindow(XmlNodePtr windowNode)
 {
     setDefaultSize(XML::getProperty(windowNode, "width", 180),
         XML::getProperty(windowNode, "height", 345), ImageRect::CENTER);
 }
 
-void EquipmentWindow::loadPlayerBox(xmlNodePtr playerBoxNode)
+void EquipmentWindow::loadPlayerBox(XmlNodePtr playerBoxNode)
 {
     mPlayerBox->setDimension(gcn::Rectangle(
         XML::getProperty(playerBoxNode, "x", 50),
@@ -396,7 +396,7 @@ void EquipmentWindow::loadPlayerBox(xmlNodePtr playerBoxNode)
         XML::getProperty(playerBoxNode, "height", 168)));
 }
 
-void EquipmentWindow::loadSlot(xmlNodePtr slotNode, ImageSet *imageset)
+void EquipmentWindow::loadSlot(XmlNodePtr slotNode, ImageSet *imageset)
 {
     int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)

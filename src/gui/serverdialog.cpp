@@ -628,7 +628,7 @@ void ServerDialog::downloadServerList()
 void ServerDialog::loadServers(bool addNew)
 {
     XML::Document doc(mDir + "/serverlist.xml", false);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "serverlist"))
     {
