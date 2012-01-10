@@ -25,7 +25,7 @@
 #include <map>
 #include <string>
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 /**
  * Char information database.

@@ -25,7 +25,7 @@
 
 #include "imageparticle.h"
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 class Animation;
 class Map;

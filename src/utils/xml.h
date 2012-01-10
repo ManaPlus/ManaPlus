@@ -23,6 +23,8 @@
 #ifndef XML_H
 #define XML_H
 
+#include <libxml/encoding.h>
+#include <libxml/xmlwriter.h>
 #include <libxml/tree.h>
 
 #include <string>
@@ -94,6 +96,8 @@ namespace XML
      * Finds the first child node with the given name
      */
     xmlNodePtr findFirstChildByName(xmlNodePtr parent, const char *name);
+
+    void initXML();
 }
 
 #define for_each_xml_child_node(var, parent) \

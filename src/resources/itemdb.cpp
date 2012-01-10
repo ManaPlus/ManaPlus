@@ -23,6 +23,7 @@
 #include "resources/itemdb.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "logger.h"
 
 #include "resources/iteminfo.h"
@@ -32,9 +33,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
-#include "configuration.h"
-
-#include <libxml/tree.h>
 
 #include "debug.h"
 

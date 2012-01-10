@@ -23,7 +23,7 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 #include <map>
 

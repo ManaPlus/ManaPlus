@@ -24,9 +24,10 @@
 #define CONFIGURATION_H
 
 #include "utils/stringutils.h"
+#include "utils/xml.h"
+
 #include "defaults.h"
 
-#include <libxml/xmlwriter.h>
 
 #include <cassert>
 #include <list>

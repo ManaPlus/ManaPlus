@@ -23,7 +23,7 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 #include <vector>
 #include <string>

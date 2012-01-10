@@ -27,9 +27,6 @@
 
 #include "utils/paths.h"
 #include "utils/stringutils.h"
-#include "utils/xml.h"
-
-#include <libxml/encoding.h>
 
 #include <stdlib.h>
 

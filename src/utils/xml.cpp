@@ -32,6 +32,11 @@
 
 #include "debug.h"
 
+static void xmlNullLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
+{
+    // Does nothing, that's the whole point of it
+}
+
 namespace XML
 {
     Document::Document(const std::string &filename, bool useResman):
@@ -163,6 +168,17 @@ namespace XML
         }
 
         return nullptr;
+    }
+
+    // Initialize libxml2 and check for potential ABI mismatches between
+    // compiled version and the shared library actually used.
+    void initXML()
+    {
+        xmlInitParser();
+        LIBXML_TEST_VERSION;
+
+        // Suppress libxml2 error messages
+        xmlSetGenericErrorFunc(nullptr, xmlNullLogger);
     }
 
 } // namespace XML

@@ -23,7 +23,7 @@
 #ifndef MAPREADER_H
 #define MAPREADER_H
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 #include <string>
 

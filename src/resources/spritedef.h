@@ -25,7 +25,7 @@
 
 #include "resources/resource.h"
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 #include <list>
 #include <map>

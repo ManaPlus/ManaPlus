@@ -33,8 +33,6 @@
 
 #include "configuration.h"
 
-#include "utils/xml.h"
-
 #include "debug.h"
 
 SpriteReference *SpriteReference::Empty = nullptr;

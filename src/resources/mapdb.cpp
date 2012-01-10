@@ -27,8 +27,6 @@
 
 #include "utils/xml.h"
 
-#include <libxml/tree.h>
-
 #include "debug.h"
 
 namespace

@@ -27,13 +27,12 @@
 #include "client.h"
 #include "logger.h"
 
-#include <libxml/parser.h>
-
 #include <getopt.h>
 #include <iostream>
 #include <physfs.h>
 
 #include "utils/stringutils.h"
+#include "utils/xml.h"
 
 #ifdef __MINGW32__
 #include <windows.h>
@@ -210,23 +209,6 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
 extern "C" char const *_nl_locale_name_default(void);
 #endif
 
-static void xmlNullLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
-{
-    // Does nothing, that's the whole point of it
-}
-
-// Initialize libxml2 and check for potential ABI mismatches between
-// compiled version and the shared library actually used.
-static void initXML()
-{
-    xmlInitParser();
-    LIBXML_TEST_VERSION;
-
-    // Suppress libxml2 error messages
-    xmlSetGenericErrorFunc(nullptr, xmlNullLogger);
-}
-
-
 int main(int argc, char *argv[])
 {
 #if defined(__MINGW32__)
@@ -262,7 +244,7 @@ int main(int argc, char *argv[])
 
     atexit((void(*)()) PHYSFS_deinit);
 
-    initXML();
+    XML::initXML();
 
 #ifdef WIN32
     SetCurrentDirectory(PHYSFS_getBaseDir());
