@@ -650,7 +650,7 @@ public:
             return;
 
         Map* map = socialWindow->getMap();
-        if (!map)
+        if (!map || map->empty())
             return;
 
         if (socialWindow->getProcessedPortals())

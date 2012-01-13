@@ -1392,6 +1392,9 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
 
     // Reset starting tile's G cost to 0
     MetaTile *startTile = &mMetaTiles[startX + startY * mWidth];
+    if (!startTile)
+        return path;
+
     startTile->Gcost = 0;
 
     // Add the start point to the open list

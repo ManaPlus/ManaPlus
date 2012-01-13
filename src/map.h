@@ -498,6 +498,9 @@ class Map : public Properties, public ConfigListener
 
         void redrawMap();
 
+        bool empty()
+        { return mLayers.empty(); }
+
     protected:
         friend class Actor;
         friend class Minimap;
