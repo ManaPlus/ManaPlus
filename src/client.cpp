@@ -681,8 +681,8 @@ void Client::testsClear()
     {
         BeingInfo::clear();
 
-        delete logger;
-        logger = nullptr;
+        //delete logger;
+        //logger = nullptr;
     }
 }
 
@@ -787,8 +787,8 @@ void Client::gameClear()
     delete chatLogger;
     chatLogger = nullptr;
 
-    delete logger;
-    logger = nullptr;
+    //delete logger;
+    //logger = nullptr;
 
     mInstance = nullptr;
 }
