@@ -58,6 +58,10 @@ class ShortcutWindow : public Window
 
         void widgetHidden(const gcn::Event &event);
 
+        void mousePressed(gcn::MouseEvent &event);
+
+        void mouseDragged(gcn::MouseEvent &event);
+
     private:
         ShortcutWindow();
         ShortcutContainer *mItems;

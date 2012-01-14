@@ -23,6 +23,7 @@
 #include "gui/shortcutwindow.h"
 
 #include "configuration.h"
+#include "logger.h"
 
 #include "gui/setup.h"
 
@@ -63,6 +64,9 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
     setResizable(true);
     setDefaultVisible(false);
     setSaveVisible(true);
+
+    mDragOffsetX = 0;
+    mDragOffsetY = 0;
 
     setupWindow->registerWindowForReset(this);
 
@@ -109,6 +113,9 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
     setResizable(true);
     setDefaultVisible(false);
     setSaveVisible(true);
+
+    mDragOffsetX = 0;
+    mDragOffsetY = 0;
 
     setupWindow->registerWindowForReset(this);
 
@@ -176,5 +183,36 @@ void ShortcutWindow::widgetHidden(const gcn::Event &event)
             if (content)
                 content->widgetHidden(event);
         }
+    }
+}
+
+void ShortcutWindow::mousePressed(gcn::MouseEvent &event)
+{
+    Window::mousePressed(event);
+
+    if (event.isConsumed())
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        mDragOffsetX = event.getX();
+        mDragOffsetY = event.getY();
+    }
+}
+
+void ShortcutWindow::mouseDragged(gcn::MouseEvent &event)
+{
+    Window::mouseDragged(event);
+
+    if (event.isConsumed())
+        return;
+
+    if (canMove() && isMovable() && mMoved)
+    {
+        int newX = std::max(0, getX() + event.getX() - mDragOffsetX);
+        int newY = std::max(0, getY() + event.getY() - mDragOffsetY);
+        newX = std::min(mainGraphics->mWidth - getWidth(), newX);
+        newY = std::min(mainGraphics->mHeight - getHeight(), newY);
+        setPosition(newX, newY);
     }
 }
