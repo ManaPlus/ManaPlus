@@ -216,7 +216,9 @@ static void createGuiWindows()
     minimap = new Minimap;
     helpWindow = new HelpWindow;
     debugWindow = new DebugWindow;
-    itemShortcutWindow = new ShortcutWindow("ItemShortcut", "items.xml");
+    itemShortcutWindow = new ShortcutWindow(
+        "ItemShortcut", "items.xml", 83, 460);
+
     for (int f = 0; f < SHORTCUT_TABS; f ++)
     {
         itemShortcutWindow->addTab(toString(f + 1),
