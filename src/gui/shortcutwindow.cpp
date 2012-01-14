@@ -58,7 +58,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
-    gcn::Window::setTitleBarHeight(gcn::Window::getPadding());
+    gcn::Window::setTitleBarHeight(gcn::Window::getPadding() + 1);
     setShowTitle(false);
     setResizable(true);
     setDefaultVisible(false);
@@ -104,7 +104,7 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
-    gcn::Window::setTitleBarHeight(gcn::Window::getPadding());
+    gcn::Window::setTitleBarHeight(gcn::Window::getPadding() + 1);
     setShowTitle(false);
     setResizable(true);
     setDefaultVisible(false);
