@@ -464,7 +464,7 @@ void TabbedArea::removeAll()
 {
     if (getSelectedTabIndex() != -1)
     {
-        setSelectedTab(static_cast<unsigned int>(0));
+        setSelectedTabByPos(static_cast<unsigned int>(0));
     }
     while (getNumberOfTabs() > 0)
     {

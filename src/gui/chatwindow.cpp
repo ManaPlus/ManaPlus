@@ -460,7 +460,7 @@ void ChatWindow::closeTab()
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
-        mChatTabs->setSelectedTab(static_cast<unsigned>(0));
+        mChatTabs->setSelectedTabByPos(static_cast<unsigned>(0));
 }
 
 void ChatWindow::action(const gcn::ActionEvent &event)
