@@ -2071,20 +2071,40 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
 
     int dx = static_cast<int>(static_cast<float>(width) / p);
 
-    if ((!damage && (this != player_node || hp == maxHP) && serverVersion < 1)
-        || (!hp && maxHP == damage))
-    {
-        graphics->setColor(userPalette->getColorWithAlpha(color1));
-        graphics->fillRectangle(gcn::Rectangle(
-            x, y, dx, height));
-        return;
+    if (serverVersion < 1)
+    {   // old servers
+        if ((!damage && (this != player_node || hp == maxHP))
+            || (!hp && maxHP == damage))
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color1));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, dx, height));
+            return;
+        }
+        else if (width - dx <= 0)
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color2));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, width, height));
+            return;
+        }
     }
-    else if (width - dx <= 0)
-    {
-        graphics->setColor(userPalette->getColorWithAlpha(color2));
-        graphics->fillRectangle(gcn::Rectangle(
-            x, y, width, height));
-        return;
+    else
+    {   // evol servers
+        if (hp == maxHP)
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color1));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, dx, height));
+            return;
+        }
+        else if (width - dx <= 0)
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color2));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, width, height));
+            return;
+        }
     }
 
     graphics->setColor(userPalette->getColorWithAlpha(color1));
