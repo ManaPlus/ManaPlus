@@ -288,6 +288,8 @@ void WhoIsOnline::loadList(std::vector<std::string> &list)
     }
 
     updateWindow(friends, neutral, disregard, enemy, numOnline);
+    if (!mOnlinePlayers.empty() && chatWindow)
+        chatWindow->updateOnline(mOnlinePlayers);
 }
 
 void WhoIsOnline::loadWebList()
