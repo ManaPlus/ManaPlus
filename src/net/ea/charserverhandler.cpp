@@ -163,6 +163,9 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
         case 5:
             errorMessage = _("Incorrect slot.");
             break;
+        case 6:
+            errorMessage = _("Incorrect race.");
+            break;
     }
     new OkDialog(_("Error"), errorMessage);
     if (mCharCreateDialog)
