@@ -361,6 +361,24 @@ std::vector<std::string> * PlayerRelationsManager::getPlayers()
     return retval;
 }
 
+std::vector<std::string> *PlayerRelationsManager::getPlayersByRelation(
+        PlayerRelation::Relation rel)
+{
+    std::vector<std::string> *retval = new std::vector<std::string>();
+
+    for (std::map<std::string,
+         PlayerRelation *>::const_iterator it = mRelations.begin();
+         it != mRelations.end(); ++it)
+    {
+        if (it->second && it->second->mRelation == rel)
+            retval->push_back(it->first);
+    }
+
+    sort(retval->begin(), retval->end(), playersSorter);
+
+    return retval;
+}
+
 void PlayerRelationsManager::removePlayer(const std::string &name)
 {
     if (mRelations[name])

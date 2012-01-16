@@ -21,14 +21,16 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "whoisonline.h"
+#include "gui/whoisonline.h"
 
 #include <SDL.h>
 #include <SDL_thread.h>
 #include <vector>
 #include <algorithm>
 
+#include "gui/socialwindow.h"
 #include "gui/viewport.h"
+
 #include "gui/widgets/button.h"
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
@@ -288,8 +290,13 @@ void WhoIsOnline::loadList(std::vector<std::string> &list)
     }
 
     updateWindow(friends, neutral, disregard, enemy, numOnline);
-    if (!mOnlinePlayers.empty() && chatWindow)
-        chatWindow->updateOnline(mOnlinePlayers);
+    if (!mOnlinePlayers.empty())
+    {
+        if (chatWindow)
+            chatWindow->updateOnline(mOnlinePlayers);
+        if (socialWindow)
+            socialWindow->updateActiveList();
+    }
 }
 
 void WhoIsOnline::loadWebList()
@@ -589,8 +596,13 @@ void WhoIsOnline::logic()
                 mUpdateButton->setEnabled(true);
                 mUpdateTimer = 0;
                 updateSize();
-                if (!mOnlinePlayers.empty() && chatWindow)
-                    chatWindow->updateOnline(mOnlinePlayers);
+                if (!mOnlinePlayers.empty())
+                {
+                    if (chatWindow)
+                        chatWindow->updateOnline(mOnlinePlayers);
+                    if (socialWindow)
+                        socialWindow->updateActiveList();
+                }
             }
             break;
         case UPDATE_COMPLETE:

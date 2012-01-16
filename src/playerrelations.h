@@ -202,6 +202,9 @@ class PlayerRelationsManager
          */
         std::vector<std::string> *getPlayers();
 
+        std::vector<std::string> *getPlayersByRelation(PlayerRelation::Relation
+                                                       rel);
+
         /**
          * Removes all recorded player info.
          */

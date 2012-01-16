@@ -141,6 +141,7 @@ protected:
     SocialTab *mAttackFilter;
     SocialTab *mPlayers;
     SocialTab *mNavigation;
+    SocialTab *mFriends;
 
     CreatePopup *mCreatePopup;
 
