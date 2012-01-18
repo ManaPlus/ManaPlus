@@ -85,7 +85,7 @@ std::string tradePartnerName("");
 PopupMenu::PopupMenu():
     Popup("PopupMenu", "popupmenu.xml"),
     mBeingId(0),
-    mFloorItem(nullptr),
+    mFloorItemId(0),
     mItem(nullptr),
     mItemId(0),
     mItemColor(1),
@@ -529,7 +529,7 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     if (!floorItem)
         return;
 
-    mFloorItem = floorItem;
+    mFloorItemId = floorItem->getId();
     mX = x;
     mY = y;
     const ItemInfo &info = floorItem->getInfo();
@@ -871,7 +871,7 @@ void PopupMenu::showChangePos(int x, int y)
     else
     {
         mBeingId = 0;
-        mFloorItem = nullptr;
+        mFloorItemId = 0;
         mItem = nullptr;
         mMapItem = nullptr;
         mNick = "";
@@ -1038,10 +1038,14 @@ void PopupMenu::handleLink(const std::string &link,
             player_node->setImitate(mNick);
     }
     // Pick Up Floor Item action
-    else if ((link == "pickup") && mFloorItem)
+    else if ((link == "pickup") && mFloorItemId)
     {
-        if (player_node)
-            player_node->pickUp(mFloorItem);
+        if (player_node && actorSpriteManager)
+        {
+            FloorItem *item = actorSpriteManager->findItem(mFloorItemId);
+            if (item)
+                player_node->pickUp(item);
+        }
     }
     // Look To action
     else if (link == "look")
@@ -1106,16 +1110,21 @@ void PopupMenu::handleLink(const std::string &link,
                     chatWindow->addItemText(mItem->getInfo().getName());
                 }
             }
-            else if (mFloorItem)
+            else if (mFloorItemId && actorSpriteManager)
             {
-                if (serverVersion > 0)
+                FloorItem *item = actorSpriteManager->findItem(mFloorItemId);
+
+                if (item)
                 {
-                    chatWindow->addItemText(mFloorItem->getInfo().getName(
-                        mFloorItem->getColor()));
-                }
-                else
-                {
-                    chatWindow->addItemText(mFloorItem->getInfo().getName());
+                    if (serverVersion > 0)
+                    {
+                        chatWindow->addItemText(item->getInfo().getName(
+                            item->getColor()));
+                    }
+                    else
+                    {
+                        chatWindow->addItemText(item->getInfo().getName());
+                    }
                 }
             }
         }
@@ -1706,10 +1715,11 @@ void PopupMenu::handleLink(const std::string &link,
             int id = atoi(link.substr(10).c_str());
             if (id)
             {
-                mFloorItem = actorSpriteManager->findItem(id);
-                if (mFloorItem)
+                FloorItem *item = actorSpriteManager->findItem(id);
+                if (item)
                 {
-                    showPopup(getX(), getY(), mFloorItem);
+                    mFloorItemId = item->getId();
+                    showPopup(getX(), getY(), item);
                     return;
                 }
             }
@@ -1744,7 +1754,7 @@ void PopupMenu::handleLink(const std::string &link,
     setVisible(false);
 
     mBeingId = 0;
-    mFloorItem = nullptr;
+    mFloorItemId = 0;
     mItem = nullptr;
     mItemId = 0;
     mItemColor = 1;

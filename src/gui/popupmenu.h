@@ -160,7 +160,7 @@ class PopupMenu : public Popup, public LinkHandler
         BrowserBox* mBrowserBox;
 
         int mBeingId;
-        FloorItem* mFloorItem;
+        int mFloorItemId;
         Item *mItem;
         int mItemId;
         unsigned char mItemColor;
