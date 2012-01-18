@@ -481,6 +481,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             if (mHoverBeing->canTalk())
             {
                 mHoverBeing->talkTo();
+                return;
             }
             else
             {
@@ -490,6 +491,9 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     {
                         if (player_node != mHoverBeing || mSelfMouseHeal)
                             actorSpriteManager->heal(mHoverBeing);
+                        if (player_node == mHoverBeing && mHoverItem)
+                            player_node->pickUp(mHoverItem);
+                        return;
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
@@ -499,17 +503,21 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     {
                         player_node->attack(mHoverBeing,
                             !keyboard.isKeyActive(keyboard.KEY_TARGET));
+                        return;
                     }
                 }
                 else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
                 {
                     if (player_node != mHoverBeing)
+                    {
                         player_node->setGotoTarget(mHoverBeing);
+                        return;
+                    }
                 }
             }
-        // Picks up a item if we clicked on one
         }
-        else if (mHoverItem)
+        // Picks up a item if we clicked on one
+        if (mHoverItem)
         {
             player_node->pickUp(mHoverItem);
         }
@@ -739,7 +747,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     }
 
     mHoverItem = nullptr;
-    if (!mHoverBeing && actorSpriteManager)
+    if (actorSpriteManager)
     {
         mHoverItem = actorSpriteManager->findItem(x / mMap->getTileWidth(),
                                                   y / mMap->getTileHeight());
