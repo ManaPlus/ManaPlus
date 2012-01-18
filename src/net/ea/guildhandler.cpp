@@ -496,7 +496,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
             taGuild->removeFromMembers();
             taGuild->clearMembers();
         }
-        SERVER_NOTICE(_("You was kicked from guild."));
+        SERVER_NOTICE(_("You were kicked from guild."));
         delete guildTab;
         guildTab = nullptr;
 
