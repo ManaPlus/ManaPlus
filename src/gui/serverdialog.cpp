@@ -365,7 +365,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
             mConnectButton->requestFocus();
     }
 
-    loadServers(false);
+    loadServers(true);
 
     if (mServers.empty())
         downloadServerList();
