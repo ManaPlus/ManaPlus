@@ -69,6 +69,7 @@ void VertContainer::clear()
     Container::clear();
 
     mCount = 0;
+    mNextY = 0;
 }
 
 void VertContainer::widgetResized(const gcn::Event &event A_UNUSED)

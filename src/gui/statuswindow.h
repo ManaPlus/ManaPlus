@@ -75,6 +75,8 @@ class StatusWindow : public Window,
 
         void action(const gcn::ActionEvent &event);
 
+        void clearAttributes();
+
     private:
         static std::string translateLetter(const char* letters);
 

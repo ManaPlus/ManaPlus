@@ -431,8 +431,18 @@ void StatusWindow::addAttribute(int id, const std::string &name,
         disp = new DerDisplay(id, name);
         mDAttrCont->add(disp);
     }
-
     mAttrs[id] = disp;
+}
+
+void StatusWindow::clearAttributes()
+{
+    mAttrCont->clear();
+    mDAttrCont->clear();
+    Attrs::iterator it = mAttrs.begin();
+    Attrs::iterator it_end = mAttrs.end();
+    for (; it != it_end; ++ it)
+        delete (*it).second;
+    mAttrs.clear();
 }
 
 void StatusWindow::updateHPBar(ProgressBar *bar, bool showMax)

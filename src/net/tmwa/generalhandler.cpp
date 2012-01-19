@@ -259,6 +259,9 @@ void GeneralHandler::processEvent(Mana::Channels channel,
             if (!statusWindow)
                 return;
 
+            // protection against double addition attributes.
+            statusWindow->clearAttributes();
+
             statusWindow->addAttribute(STR, _("Strength"), true, "");
             statusWindow->addAttribute(AGI, _("Agility"), true, "");
             statusWindow->addAttribute(VIT, _("Vitality"), true, "");
