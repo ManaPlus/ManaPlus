@@ -381,7 +381,8 @@ void LocalPlayer::setAction(Action action, int attackType)
         mLastTarget = -1;
         if (!mLastHitFrom.empty())
         {
-            debugMsg(_("You were killed by ") + mLastHitFrom);
+            debugMsg(strprintf(_("You were killed by %s"),
+                mLastHitFrom.c_str()));
             mLastHitFrom = "";
         }
         setTarget(nullptr);
