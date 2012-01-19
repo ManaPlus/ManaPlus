@@ -9,3 +9,27 @@ Terminal=false
 Type=Application
 Icon=manaplus
 Categories=Game;AdventureGame;
+
+
+# Translations
+Comment[vls]=Droai wa test'n vo ManaPlus
+Name[vls]=ManaPlus (Tests)
+Icon[vls]=manaplus
+Comment[it]=Testa ManaPlus
+Name[it]=ManaPlus (Tests)
+Icon[it]=manaplus
+Comment[ja]=ManaPlusのテストランする
+Name[ja]=ManaPlus (テスト)
+Icon[ja]=manaplus
+Comment[nl_BE]=Draai enkele testen voor ManaPlus
+Name[nl_BE]=ManaPlus (Tests)
+Icon[nl_BE]=manaplus
+Comment[de]=Testlauf für ManaPlus
+Name[de]=ManaPlus (Tests)
+Icon[de]=manaplus
+Comment[es]=Ejecutar pruebas para ManaPlus
+Name[es]=ManaPlus (Pruebas)
+Icon[es]=manaplus
+Comment[fr]=Lancer le test pour ManaPlus
+Name[fr]=ManaPlus (Tests)
+Icon[fr]=manaplus
