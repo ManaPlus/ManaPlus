@@ -1115,11 +1115,11 @@ public:
         getPlayersAvatars();
     }
 
-    void updateAvatar(std::string name)
+    void updateAvatar(std::string name A_UNUSED)
     {
     }
 
-    void resetDamage(std::string name)
+    void resetDamage(std::string name A_UNUSED)
     {
     }
 

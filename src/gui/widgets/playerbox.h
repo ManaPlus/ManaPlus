@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/scrollarea.hpp>
 
+#include "localconsts.h"
+
 class Being;
 class ImageRect;
 
@@ -40,7 +42,7 @@ class PlayerBox : public gcn::ScrollArea
          * Constructor. Takes the initial player character that this box should
          * display, which defaults to <code>NULL</code>.
          */
-        PlayerBox(const Being *being = 0);
+        PlayerBox(const Being *being = nullptr);
 
         /**
          * Destructor.

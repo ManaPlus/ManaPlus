@@ -43,7 +43,7 @@ ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                                  Map *map, int rotation,
                                  const std::string& dyePalettes):
     mOutputPauseLeft(0),
-    mParticleImage(0)
+    mParticleImage(nullptr)
 {
     mMap = map;
     mParticleTarget = target;
@@ -460,7 +460,7 @@ ParticleEmitter::~ParticleEmitter()
     if (mParticleImage)
     {
         mParticleImage->decRef();
-        mParticleImage = 0;
+        mParticleImage = nullptr;
     }
 }
 

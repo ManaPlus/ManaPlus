@@ -98,7 +98,7 @@ InventoryWindow::WindowList InventoryWindow::instances;
 InventoryWindow::InventoryWindow(Inventory *inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
     mInventory(inventory),
-    mDropButton(0),
+    mDropButton(nullptr),
     mSplit(false),
     mCompactMode(false)
 {

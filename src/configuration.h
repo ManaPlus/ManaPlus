@@ -27,7 +27,7 @@
 #include "utils/xml.h"
 
 #include "defaults.h"
-
+#include "localconsts.h"
 
 #include <cassert>
 #include <list>
@@ -159,7 +159,7 @@ class ConfigurationObject
             }
 
             delete nextobj;
-            nextobj = 0;
+            nextobj = nullptr;
         }
 
        /**

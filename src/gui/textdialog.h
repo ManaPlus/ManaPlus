@@ -44,7 +44,7 @@ public:
      * @see Window::Window
      */
     TextDialog(const std::string &title, const std::string &msg,
-               Window *parent = 0, bool isPassword = false);
+               Window *parent = nullptr, bool isPassword = false);
 
     ~TextDialog();
 

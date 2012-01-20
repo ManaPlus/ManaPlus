@@ -69,7 +69,7 @@ BuySellHandler::BuySellHandler()
     };
     handledMessages = _messages;
     buySellHandler = this;
-    mBuyDialog = 0;
+    mBuyDialog = nullptr;
 }
 
 void BuySellHandler::handleMessage(Net::MessageIn &msg)

@@ -201,9 +201,9 @@ void GeneralHandler::reload()
 
     static_cast<LoginHandler*>(mLoginHandler.get())->clearWorlds();
     static_cast<CharServerHandler*>(
-        mCharHandler.get())->setCharCreateDialog(0);
+        mCharHandler.get())->setCharCreateDialog(nullptr);
     static_cast<CharServerHandler*>(
-        mCharHandler.get())->setCharSelectDialog(0);
+        mCharHandler.get())->setCharSelectDialog(nullptr);
 
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }

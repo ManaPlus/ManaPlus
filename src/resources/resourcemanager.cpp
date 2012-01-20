@@ -456,7 +456,7 @@ struct DyedImageLoader
         if (!buffer)
         {
             delete d;
-            return 0;
+            return nullptr;
         }
         Resource *res = d ? Image::load(buffer, fileSize, *d)
                           : Image::load(buffer, fileSize);

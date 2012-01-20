@@ -36,6 +36,8 @@
 #include "resources/image.h"
 #include "resources/wallpaper.h"
 
+#include <unistd.h>
+
 #ifdef WIN32
 #include <windows.h>
 #define sleep(seconds) Sleep((seconds) * 1000)
@@ -128,7 +130,7 @@ int TestLauncher::testFps()
 
     int cnt = 500;
 
-    gettimeofday(&start, NULL);
+    gettimeofday(&start, nullptr);
     for (int k = 0; k < cnt; k ++)
     {
         for (int x = 0; x < 800; x += 20)
@@ -144,7 +146,7 @@ int TestLauncher::testFps()
         mainGraphics->updateScreen();
     }
 
-    gettimeofday(&end, NULL);
+    gettimeofday(&end, nullptr);
     int tFps = calcFps(&start, &end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;

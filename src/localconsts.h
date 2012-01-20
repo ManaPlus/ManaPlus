@@ -21,6 +21,9 @@
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #undef nullptr
 #define nullptr 0
+#else
+#undef Z_NULL
+#define Z_NULL nullptr
 #endif
 
 #ifdef __GNUC__

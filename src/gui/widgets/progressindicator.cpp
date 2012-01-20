@@ -51,7 +51,7 @@ ProgressIndicator::ProgressIndicator()
     }
     else
     {
-        mIndicator = 0;
+        mIndicator = nullptr;
     }
 
     setSize(32, 32);
@@ -60,7 +60,7 @@ ProgressIndicator::ProgressIndicator()
 ProgressIndicator::~ProgressIndicator()
 {
     delete mIndicator;
-    mIndicator = 0;
+    mIndicator = nullptr;
 }
 
 void ProgressIndicator::logic()

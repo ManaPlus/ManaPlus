@@ -36,7 +36,7 @@ RotationalParticle::RotationalParticle(Map *map, Animation *animation):
 
 RotationalParticle::RotationalParticle(Map *map, XmlNodePtr animationNode,
                                        const std::string& dyePalettes):
-    ImageParticle(map, 0),
+    ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
 }

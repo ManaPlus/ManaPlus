@@ -98,7 +98,7 @@ extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
-    Being(id, PLAYER, subtype, 0),
+    Being(id, PLAYER, subtype, nullptr),
     mTargetTime(-1),
     mLastTarget(-1),
     mTarget(nullptr),
@@ -112,7 +112,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mPathSetByMouse(false),
     mLocalWalkTime(-1),
     mMessageTime(0),
-    mAwayDialog(0),
+    mAwayDialog(nullptr),
     mAfkTime(0),
     mAwayMode(false),
     mPseudoAwayMode(false),
@@ -151,7 +151,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     if (userPalette)
         mNameColor = &userPalette->getColor(UserPalette::SELF);
     else
-        mNameColor = 0;
+        mNameColor = nullptr;
 
     mLastTargetX = 0;
     mLastTargetY = 0;

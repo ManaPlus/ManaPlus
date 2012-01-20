@@ -65,7 +65,7 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     mEquipment(equipment),
     mSelected(-1),
     mForing(foring),
-    mImageSet(0)
+    mImageSet(nullptr)
 {
     mBeing = being;
     mItemPopup = new ItemPopup;

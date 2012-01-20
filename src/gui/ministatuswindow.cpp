@@ -188,7 +188,7 @@ void MiniStatusWindow::updateBars()
 void MiniStatusWindow::setIcon(int index, AnimatedSprite *sprite)
 {
     if (index >= static_cast<int>(mIcons.size()))
-        mIcons.resize(index + 1, 0);
+        mIcons.resize(index + 1, nullptr);
 
     delete mIcons[index];
 

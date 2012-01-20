@@ -128,7 +128,7 @@ class InventoryWindow : public Window,
 
         void processEvent(Mana::Channels channel, const Mana::Event &event);
 
-        void updateButtons(Item *item = 0);
+        void updateButtons(Item *item = nullptr);
 
         bool isInputFocused() const;
 
