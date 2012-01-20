@@ -588,22 +588,25 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
             const int height = (py + scaledHeight >= h)
                 ? h - py : scaledHeight;
             const int dstY = y + py;
+            const int scaledY = srcY + height / scaleFactorH;
             for (int px = 0; px < w; px += scaledWidth)
             {
-                int width = (px + scaledWidth >= w) ? w - px : scaledWidth;
-                int dstX = x + px;
+                const int width = (px + scaledWidth >= w)
+                    ? w - px : scaledWidth;
+                const int dstX = x + px;
+                const int scaledX = srcX + width / scaleFactorW;
 
                 mIntTexArray[vp + 0] = srcX;
                 mIntTexArray[vp + 1] = srcY;
 
-                mIntTexArray[vp + 2] = srcX + width / scaleFactorW;
+                mIntTexArray[vp + 2] = scaledX;
                 mIntTexArray[vp + 3] = srcY;
 
-                mIntTexArray[vp + 4] = srcX + width / scaleFactorW;
-                mIntTexArray[vp + 5] = srcY + height / scaleFactorH;
+                mIntTexArray[vp + 4] = scaledX;
+                mIntTexArray[vp + 5] = scaledY;
 
                 mIntTexArray[vp + 6] = srcX;
-                mIntTexArray[vp + 7] = srcY + height / scaleFactorH;
+                mIntTexArray[vp + 7] = scaledY;
 
                 mIntVertArray[vp + 0] = dstX;
                 mIntVertArray[vp + 1] = dstY;
