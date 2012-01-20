@@ -147,7 +147,8 @@ std::string ChatLogger::secureName(std::string &name) const
             && (name[f] < 'A' || name[f] > 'Z')
             && name[f] != '-' && name[f] != '+' && name[f] != '='
             && name[f] != '.' && name[f] != ',' && name[f] != ')'
-            && name[f] != '(' && name[f] != '[' && name[f] != ']')
+            && name[f] != '(' && name[f] != '[' && name[f] != ']'
+            && name[f] != '#')
         {
             name[f] = '_';
         }
