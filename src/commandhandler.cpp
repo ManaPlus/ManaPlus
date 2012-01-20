@@ -1112,7 +1112,7 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += ",0";
 #endif
 
-    str += strprintf(",%f,", Client::getGuiAlpha());
+    str += strprintf(",%f,", static_cast<double>(Client::getGuiAlpha()));
     str += config.getBoolValue("adjustPerfomance") ? "1" : "0";
     str += config.getBoolValue("alphaCache") ? "1" : "0";
     str += config.getBoolValue("enableMapReduce") ? "1" : "0";

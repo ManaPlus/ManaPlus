@@ -522,7 +522,7 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
                          / static_cast<float>(max);
 
         if (percent)
-            bar->setText(strprintf("%2.5f", 100 * progress) + "%");
+            bar->setText(strprintf("%2.5f%%", static_cast<double>(100 * progress)));
         else
             bar->setText(toString(value) + "/" + toString(max));
 

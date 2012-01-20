@@ -558,7 +558,7 @@ void ServerDialog::logic()
         else if (mDownloadStatus == DOWNLOADING_IN_PROGRESS)
         {
             mDescription->setCaption(strprintf(_("Downloading server list..."
-                "%2.2f%%"), mDownloadProgress * 100));
+                "%2.2f%%"), static_cast<double>(mDownloadProgress * 100)));
         }
         else if (mDownloadStatus == DOWNLOADING_IDLE)
         {
