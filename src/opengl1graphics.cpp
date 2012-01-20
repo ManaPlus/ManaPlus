@@ -377,6 +377,9 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
     // Draw a set of textured rectangles
     glBegin(GL_QUADS);
 
+    const float scaleFactorW = (float) scaledWidth / image->getWidth();
+    const float scaleFactorH = (float) scaledHeight / image->getHeight();
+
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
@@ -386,8 +389,8 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
             int width = (px + iw >= w) ? w - px : iw;
             int dstX = x + px;
 
-            drawRescaledQuad(image, srcX, srcY, dstX, dstY,
-                             width, height, scaledWidth, scaledHeight);
+            drawRescaledQuad(image, srcX, srcY, dstX, dstY, width / scaleFactorW,
+                height / scaleFactorH, scaledWidth, scaledHeight);
         }
     }
 
