@@ -43,6 +43,8 @@ std::string getRealPath(const std::string &str)
 #else
     char *realPath = realpath(str.c_str(), nullptr);
 #endif
+    if (!realPath)
+        return "";
     path = realPath;
     free(realPath);
     return path;
