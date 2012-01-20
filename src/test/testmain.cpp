@@ -264,24 +264,24 @@ int TestMain::invokeFastOpenGLRenderTest(std::string test)
 {
 #if defined USE_OPENGL
     config.setValue("opengl", 1);
-#else
-    return -1;
-#endif
     config.write();
     int ret = execFile(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
+#else
+    return -1;
+#endif
 }
 
 int TestMain::invokeSafeOpenGLRenderTest(std::string test)
 {
 #if defined USE_OPENGL
     config.setValue("opengl", 2);
-#else
-    return -1;
-#endif
     config.write();
     int ret = execFile(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
+#else
+    return -1;
+#endif
 }

@@ -389,8 +389,9 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
             int width = (px + iw >= w) ? w - px : iw;
             int dstX = x + px;
 
-            drawRescaledQuad(image, srcX, srcY, dstX, dstY, width / scaleFactorW,
-                height / scaleFactorH, scaledWidth, scaledHeight);
+            drawRescaledQuad(image, srcX, srcY, dstX, dstY,
+                width / scaleFactorW, height / scaleFactorH,
+                scaledWidth, scaledHeight);
         }
     }
 

@@ -117,7 +117,7 @@ int TestLauncher::testFps()
     timeval end;
 
     Wallpaper::loadWallpapers();
-    const std::string wallpaperName = Wallpaper::getWallpaper(800, 600);
+    Wallpaper::getWallpaper(800, 600);
     Image *img[4];
 
     img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_up.gif");
