@@ -1,3 +1,16 @@
+2012-01-22 New release 1.2.1.22
+fix: bad update hosts handling.
+fix: possible crashes.
+fix: player name checking in logging.
+fix: default shortcuts window size.
+fix: player and mob hp bar in evol server.
+fix: mouse pickup logic.
+fix: adding double attributes to status window.
+fix: ambient layer drawing in safe opengl mode.
+add: increase resize and moving areas in shortcut window and other similar windows.
+add: friends tab in social window.
+add: load all servers from list in server dialog.
+
 2012-01-08 New release 1.2.1.8
 fix: -s command line parameter.
 fix: restore GL_PACK_ALIGNMENT after creating screenshots in opengl modes
