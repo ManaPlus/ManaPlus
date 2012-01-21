@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-19 19:11+0300\n"
+"POT-Creation-Date: 2012-01-21 17:15+0300\n"
 "PO-Revision-Date: 2012-01-05 20:43+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1743,11 +1743,11 @@ msgstr "Valmistelen latausta"
 msgid "Error retreiving server list!"
 msgstr "Palvelinluettelon hakeminen epäonnistui!"
 
-#: src/gui/serverdialog.cpp:678
+#: src/gui/serverdialog.cpp:681
 msgid "requires a newer version"
 msgstr "vaatii uudemman version"
 
-#: src/gui/serverdialog.cpp:680
+#: src/gui/serverdialog.cpp:683
 #, c-format
 msgid "requires v%s"
 msgstr "vaatii version %s"
@@ -3973,332 +3973,333 @@ msgstr ""
 "ole hyvä ja poista päällekkäisyydet. "
 
 #: src/localplayer.cpp:384
-msgid "You were killed by "
+#, fuzzy, c-format
+msgid "You were killed by %s"
 msgstr "Sinut otti hengiltä "
 
-#: src/localplayer.cpp:1438
+#: src/localplayer.cpp:1439
 msgid "Tried to pick up nonexistent item."
 msgstr "Yritit nostaa olemattoman tavaran."
 
-#: src/localplayer.cpp:1441
+#: src/localplayer.cpp:1442
 msgid "Item is too heavy."
 msgstr "Tavara on liian painava."
 
-#: src/localplayer.cpp:1444
+#: src/localplayer.cpp:1445
 msgid "Item is too far away."
 msgstr "Tavara on liian kaukana."
 
-#: src/localplayer.cpp:1447
+#: src/localplayer.cpp:1448
 msgid "Inventory is full."
 msgstr "Sinulla on liikaa tavaraa ennestään."
 
-#: src/localplayer.cpp:1450
+#: src/localplayer.cpp:1451
 msgid "Stack is too big."
 msgstr "Kasa on liian suuri."
 
-#: src/localplayer.cpp:1453
+#: src/localplayer.cpp:1454
 msgid "Item belongs to someone else."
 msgstr "Tavara kuuluu jollekulle muulle."
 
-#: src/localplayer.cpp:1456
+#: src/localplayer.cpp:1457
 msgid "Unknown problem picking up item."
 msgstr "Tuntematon ongelma esti tavaran nostamisen."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1480
+#: src/localplayer.cpp:1481
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
 msgstr[1] "[@@%2$d|%3$s@@] (%1$d kpl) otettu."
 
-#: src/localplayer.cpp:1897
+#: src/localplayer.cpp:1898
 msgid "(D) default moves"
 msgstr "(D) oletusliikkeet"
 
-#: src/localplayer.cpp:1898
+#: src/localplayer.cpp:1899
 msgid "(I) invert moves"
 msgstr "(I) käännetyt liikkeet"
 
-#: src/localplayer.cpp:1899
+#: src/localplayer.cpp:1900
 msgid "(c) moves with some crazy moves"
 msgstr "(c) liikkuu osin villiliikkein"
 
-#: src/localplayer.cpp:1900
+#: src/localplayer.cpp:1901
 msgid "(C) moves with crazy moves"
 msgstr "(C) liikkuu villiliikkein"
 
-#: src/localplayer.cpp:1901
+#: src/localplayer.cpp:1902
 msgid "(d) double normal + crazy"
 msgstr "(d) tuplaa tavallinen + villi"
 
-#: src/localplayer.cpp:1902
+#: src/localplayer.cpp:1903
 msgid "(?) unknown move"
 msgstr ""
 
-#: src/localplayer.cpp:1924
+#: src/localplayer.cpp:1925
 #, c-format
 msgid "(%d) crazy move number %d"
 msgstr ""
 
-#: src/localplayer.cpp:1929
+#: src/localplayer.cpp:1930
 msgid "(a) custom crazy move"
 msgstr "(a) oma villiliike"
 
-#: src/localplayer.cpp:1933
+#: src/localplayer.cpp:1934
 msgid "(?) crazy move"
 msgstr "(?) villiliike"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1948
 msgid "(0) default moves to target"
 msgstr "(0) oletussiirtymä kohteen luo"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1949
 msgid "(1) moves to target in distance 1"
 msgstr "(1) siirry kohteen luo etäisyydellä 1"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1950
 msgid "(2) moves to target in distance 2"
 msgstr "(2) siirry kohteen luo etäisyydellä 2"
 
-#: src/localplayer.cpp:1950
+#: src/localplayer.cpp:1951
 msgid "(3) moves to target in distance 3"
 msgstr "(3) siirry kohteen luo etäisyydellä 3"
 
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1952
 msgid "(5) moves to target in distance 5"
 msgstr "(5) siirry kohteen luo etäisyydellä 5"
 
-#: src/localplayer.cpp:1952
+#: src/localplayer.cpp:1953
 msgid "(7) moves to target in distance 7"
 msgstr "(7) siirry kohteen luo etäisyydellä 7"
 
-#: src/localplayer.cpp:1953
+#: src/localplayer.cpp:1954
 msgid "(A) moves to target in attack range"
 msgstr "(A) siirry kohteen luo hyökkäyskantamalla"
 
-#: src/localplayer.cpp:1954
+#: src/localplayer.cpp:1955
 msgid "(a) archer attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1955
+#: src/localplayer.cpp:1956
 msgid "(?) move to target"
 msgstr "(?) siirry kohteen luo"
 
-#: src/localplayer.cpp:1974
+#: src/localplayer.cpp:1975
 msgid "(D) default follow"
 msgstr "(D) oletusseuraaminen"
 
-#: src/localplayer.cpp:1975
+#: src/localplayer.cpp:1976
 msgid "(R) relative follow"
 msgstr "(R) suhteellinen seuraaminen"
 
-#: src/localplayer.cpp:1976
+#: src/localplayer.cpp:1977
 msgid "(M) mirror follow"
 msgstr "(M) peilikuvaseuraaminen"
 
-#: src/localplayer.cpp:1977
+#: src/localplayer.cpp:1978
 msgid "(P) pet follow"
 msgstr "(P) lemmikkiseuraaminen"
 
-#: src/localplayer.cpp:1978
+#: src/localplayer.cpp:1979
 msgid "(?) unknown follow"
 msgstr "(?) tuntematon seuraaminen"
 
-#: src/localplayer.cpp:1997 src/localplayer.cpp:2001 src/localplayer.cpp:2024
+#: src/localplayer.cpp:1998 src/localplayer.cpp:2002 src/localplayer.cpp:2025
 msgid "(?) attack"
 msgstr "(?) hyökkäys"
 
-#: src/localplayer.cpp:1998 src/localplayer.cpp:2020
+#: src/localplayer.cpp:1999 src/localplayer.cpp:2021
 msgid "(D) default attack"
 msgstr "(D) oletushyökkäys"
 
-#: src/localplayer.cpp:1999
+#: src/localplayer.cpp:2000
 msgid "(s) switch attack without shield"
 msgstr "(s) vaihda hyökkäystä, ei kilpeä"
 
-#: src/localplayer.cpp:2000
+#: src/localplayer.cpp:2001
 msgid "(S) switch attack with shield"
 msgstr "(S) vaihda hyökkäystä, kilpi mukana"
 
-#: src/localplayer.cpp:2021
+#: src/localplayer.cpp:2022
 msgid "(G) go and attack"
 msgstr "(G) mene ja hyökkää"
 
-#: src/localplayer.cpp:2022
+#: src/localplayer.cpp:2023
 msgid "(A) go, attack, pickup"
 msgstr "(A) mene, hyökkää, nosta"
 
-#: src/localplayer.cpp:2023
+#: src/localplayer.cpp:2024
 msgid "(d) without auto attack"
 msgstr "(d) ei automaattista hyökkäystä"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2058
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) pieni nosto 1x1 ruutua"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2059
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) oletusnosto 2x1 ruutua"
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2060
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) nosto edestä 2x3 ruutua"
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2061
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) nosto 3x3 ruutua"
 
-#: src/localplayer.cpp:2061
+#: src/localplayer.cpp:2062
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) mene ja nosta etäisyydellä 4"
 
-#: src/localplayer.cpp:2062
+#: src/localplayer.cpp:2063
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) mene ja nosta etäisyydellä 8"
 
-#: src/localplayer.cpp:2063
+#: src/localplayer.cpp:2064
 msgid "(A) go and pick up in max distance"
 msgstr "(A) mene ja nosta maksimietäisyydellä"
 
-#: src/localplayer.cpp:2064
+#: src/localplayer.cpp:2065
 msgid "(?) pick up"
 msgstr "(?) nosta"
 
-#: src/localplayer.cpp:2077
+#: src/localplayer.cpp:2078
 msgid "(N) normal map view"
 msgstr "(N) normaali karttanäkymä"
 
-#: src/localplayer.cpp:2078
+#: src/localplayer.cpp:2079
 msgid "(D) debug map view"
 msgstr "(D) debug-karttanäkymä"
 
-#: src/localplayer.cpp:2079
+#: src/localplayer.cpp:2080
 msgid "(u) ultra map view"
 msgstr "(u) ultra-karttanäkymä"
 
-#: src/localplayer.cpp:2080
+#: src/localplayer.cpp:2081
 msgid "(U) ultra map view 2"
 msgstr "(U) ultra-karttanäkymä 2"
 
-#: src/localplayer.cpp:2081
+#: src/localplayer.cpp:2082
 msgid "(e) empty map view"
 msgstr "(e) tyhjä karttanäkymä"
 
-#: src/localplayer.cpp:2082
+#: src/localplayer.cpp:2083
 msgid "(b) black & white map view"
 msgstr "(b) mustavalkoinen karttanäkymä"
 
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2102
 msgid "(f) use #flar for magic attack"
 msgstr "(f) #flar taikahyökkäyksenä"
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2103
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) #chiza taikahyökkäyksenä"
 
-#: src/localplayer.cpp:2103
+#: src/localplayer.cpp:2104
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) #ingrav taikahyökkäyksenä"
 
-#: src/localplayer.cpp:2104
+#: src/localplayer.cpp:2105
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) #frillyar taikahyökkäyksenä"
 
-#: src/localplayer.cpp:2105
+#: src/localplayer.cpp:2106
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) #upmarmu taikahyökkäyksenä"
 
-#: src/localplayer.cpp:2106
+#: src/localplayer.cpp:2107
 msgid "(?) magic attack"
 msgstr "(?) taikahyökkäys"
 
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2126
 msgid "(a) attack all players"
 msgstr ""
 
-#: src/localplayer.cpp:2126
+#: src/localplayer.cpp:2127
 msgid "(f) attack not friends"
 msgstr ""
 
-#: src/localplayer.cpp:2127
+#: src/localplayer.cpp:2128
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2128
+#: src/localplayer.cpp:2129
 msgid "(d) dont attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2129
+#: src/localplayer.cpp:2130
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2148
+#: src/localplayer.cpp:2149
 msgid "(D) default imitation"
 msgstr "(D) oletusmatkinta"
 
-#: src/localplayer.cpp:2149
+#: src/localplayer.cpp:2150
 msgid "(O) outfits imitation"
 msgstr "(O) asun matkinta"
 
-#: src/localplayer.cpp:2150
+#: src/localplayer.cpp:2151
 msgid "(?) imitation"
 msgstr "(?) matkinta"
 
-#: src/localplayer.cpp:2178
+#: src/localplayer.cpp:2179
 msgid "Away"
 msgstr "Poissa"
 
-#: src/localplayer.cpp:2197
+#: src/localplayer.cpp:2198
 msgid "(O) on keyboard"
 msgstr "(O) paikalla"
 
-#: src/localplayer.cpp:2198
+#: src/localplayer.cpp:2199
 msgid "(A) away"
 msgstr "(A) poissa"
 
-#: src/localplayer.cpp:2199 src/localplayer.cpp:2214
+#: src/localplayer.cpp:2200 src/localplayer.cpp:2215
 msgid "(?) away"
 msgstr "(?) poissaolo"
 
-#: src/localplayer.cpp:2212
+#: src/localplayer.cpp:2213
 msgid "(G) game camera mode"
 msgstr "(G) pelin kameratila"
 
-#: src/localplayer.cpp:2213
+#: src/localplayer.cpp:2214
 msgid "(F) free camera mode"
 msgstr "(F) vapaa kamera"
 
-#: src/localplayer.cpp:2238
+#: src/localplayer.cpp:2239
 msgid "Game modifiers are enabled"
 msgstr "Pelimuokkaimet käytössä"
 
-#: src/localplayer.cpp:2239
+#: src/localplayer.cpp:2240
 msgid "Game modifiers are disabled"
 msgstr "Pelimuokkaimet poissa käytöstä"
 
-#: src/localplayer.cpp:2240
+#: src/localplayer.cpp:2241
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3756
+#: src/localplayer.cpp:3757
 msgid "Follow: "
 msgstr "Seuraa: "
 
-#: src/localplayer.cpp:3758 src/localplayer.cpp:3773
+#: src/localplayer.cpp:3759 src/localplayer.cpp:3774
 msgid "Follow canceled"
 msgstr "Seuraaminen keskeytetty"
 
-#: src/localplayer.cpp:3765
+#: src/localplayer.cpp:3766
 msgid "Imitation: "
 msgstr "Matki: "
 
-#: src/localplayer.cpp:3767 src/localplayer.cpp:3775
+#: src/localplayer.cpp:3768 src/localplayer.cpp:3776
 msgid "Imitation canceled"
 msgstr "Matkiminen keskeytetty"
 
-#: src/localplayer.cpp:4123
+#: src/localplayer.cpp:4124
 msgid "You see "
 msgstr "Näet "
 

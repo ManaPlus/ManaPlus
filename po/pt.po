@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-19 19:11+0300\n"
-"PO-Revision-Date: 2012-01-05 20:43+0000\n"
+"POT-Creation-Date: 2012-01-21 17:15+0300\n"
+"PO-Revision-Date: 2012-01-19 16:56+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.net/projects/p/manaplus/team/"
 "pt/)\n"
@@ -1744,11 +1744,11 @@ msgstr "Preparando download"
 msgid "Error retreiving server list!"
 msgstr "Erro ao recuperar lista!"
 
-#: src/gui/serverdialog.cpp:678
+#: src/gui/serverdialog.cpp:681
 msgid "requires a newer version"
 msgstr "requer uma versão mais nova"
 
-#: src/gui/serverdialog.cpp:680
+#: src/gui/serverdialog.cpp:683
 #, c-format
 msgid "requires v%s"
 msgstr "requer v%s"
@@ -3974,332 +3974,333 @@ msgstr ""
 "comprometer a jogabilidade."
 
 #: src/localplayer.cpp:384
-msgid "You were killed by "
-msgstr "Você foi morto por "
+#, c-format
+msgid "You were killed by %s"
+msgstr ""
 
-#: src/localplayer.cpp:1438
+#: src/localplayer.cpp:1439
 msgid "Tried to pick up nonexistent item."
 msgstr "Você tentou pegar um item não existente."
 
-#: src/localplayer.cpp:1441
+#: src/localplayer.cpp:1442
 msgid "Item is too heavy."
 msgstr "Este item é muito pesado."
 
-#: src/localplayer.cpp:1444
+#: src/localplayer.cpp:1445
 msgid "Item is too far away."
 msgstr "Item está muito longe"
 
-#: src/localplayer.cpp:1447
+#: src/localplayer.cpp:1448
 msgid "Inventory is full."
 msgstr "O inventário está cheio."
 
-#: src/localplayer.cpp:1450
+#: src/localplayer.cpp:1451
 msgid "Stack is too big."
 msgstr "Esta pilha é muito grande."
 
-#: src/localplayer.cpp:1453
+#: src/localplayer.cpp:1454
 msgid "Item belongs to someone else."
 msgstr "Este item pertence a outra pessoa."
 
-#: src/localplayer.cpp:1456
+#: src/localplayer.cpp:1457
 msgid "Unknown problem picking up item."
 msgstr "Problema desconhecido ao tentar pegar item."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1480
+#: src/localplayer.cpp:1481
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "Você pegou %d [@@%d|%s@@]."
 msgstr[1] "Você pegou %d [@@%d|%s@@]."
 
-#: src/localplayer.cpp:1897
+#: src/localplayer.cpp:1898
 msgid "(D) default moves"
 msgstr "(D) movimentos padrão"
 
-#: src/localplayer.cpp:1898
+#: src/localplayer.cpp:1899
 msgid "(I) invert moves"
 msgstr "(l) inserir movimentos"
 
-#: src/localplayer.cpp:1899
+#: src/localplayer.cpp:1900
 msgid "(c) moves with some crazy moves"
 msgstr "(c) Alguns movimentos loucos"
 
-#: src/localplayer.cpp:1900
+#: src/localplayer.cpp:1901
 msgid "(C) moves with crazy moves"
 msgstr "(C) Movimentos loucos"
 
-#: src/localplayer.cpp:1901
+#: src/localplayer.cpp:1902
 msgid "(d) double normal + crazy"
 msgstr "(d) dobro normal + louco"
 
-#: src/localplayer.cpp:1902
+#: src/localplayer.cpp:1903
 msgid "(?) unknown move"
 msgstr ""
 
-#: src/localplayer.cpp:1924
+#: src/localplayer.cpp:1925
 #, c-format
 msgid "(%d) crazy move number %d"
 msgstr ""
 
-#: src/localplayer.cpp:1929
+#: src/localplayer.cpp:1930
 msgid "(a) custom crazy move"
 msgstr "(a) movimentos loucos customizados"
 
-#: src/localplayer.cpp:1933
+#: src/localplayer.cpp:1934
 msgid "(?) crazy move"
 msgstr "(?) movimentos loucos"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1948
 msgid "(0) default moves to target"
 msgstr "(0) Mover ao alvo padrão"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1949
 msgid "(1) moves to target in distance 1"
 msgstr "(1) Mover ao alvo com distância 1"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1950
 msgid "(2) moves to target in distance 2"
 msgstr "(2) mover ao alvo em distância 2"
 
-#: src/localplayer.cpp:1950
+#: src/localplayer.cpp:1951
 msgid "(3) moves to target in distance 3"
 msgstr "(3) Mover ao alvo com distância 3"
 
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1952
 msgid "(5) moves to target in distance 5"
 msgstr "(5) Mover ao alvo com distância 5"
 
-#: src/localplayer.cpp:1952
+#: src/localplayer.cpp:1953
 msgid "(7) moves to target in distance 7"
 msgstr "(7) Mover ao alvo com distância 7"
 
-#: src/localplayer.cpp:1953
+#: src/localplayer.cpp:1954
 msgid "(A) moves to target in attack range"
 msgstr "(A)  Mover ao alvo com a distância de ataque"
 
-#: src/localplayer.cpp:1954
+#: src/localplayer.cpp:1955
 msgid "(a) archer attack range"
 msgstr "(a) Alcance de arqueiros"
 
-#: src/localplayer.cpp:1955
+#: src/localplayer.cpp:1956
 msgid "(?) move to target"
 msgstr "(?)  Mover ao alvo"
 
-#: src/localplayer.cpp:1974
+#: src/localplayer.cpp:1975
 msgid "(D) default follow"
 msgstr "(D) Seguir em modo padrão"
 
-#: src/localplayer.cpp:1975
+#: src/localplayer.cpp:1976
 msgid "(R) relative follow"
 msgstr "(R) Seguir em modo relativo"
 
-#: src/localplayer.cpp:1976
+#: src/localplayer.cpp:1977
 msgid "(M) mirror follow"
 msgstr "(M) Seguir em modo espelhado"
 
-#: src/localplayer.cpp:1977
+#: src/localplayer.cpp:1978
 msgid "(P) pet follow"
 msgstr "(P) Seguir em modo animal de extimação"
 
-#: src/localplayer.cpp:1978
+#: src/localplayer.cpp:1979
 msgid "(?) unknown follow"
 msgstr "(?) Seguir em modo desconhecido"
 
-#: src/localplayer.cpp:1997 src/localplayer.cpp:2001 src/localplayer.cpp:2024
+#: src/localplayer.cpp:1998 src/localplayer.cpp:2002 src/localplayer.cpp:2025
 msgid "(?) attack"
 msgstr "(?) Ataque"
 
-#: src/localplayer.cpp:1998 src/localplayer.cpp:2020
+#: src/localplayer.cpp:1999 src/localplayer.cpp:2021
 msgid "(D) default attack"
 msgstr "(D) Ataque padrão"
 
-#: src/localplayer.cpp:1999
+#: src/localplayer.cpp:2000
 msgid "(s) switch attack without shield"
 msgstr "(s) Trocar ataque sem escudo"
 
-#: src/localplayer.cpp:2000
+#: src/localplayer.cpp:2001
 msgid "(S) switch attack with shield"
 msgstr "(S) Trocar ataque com escudo"
 
-#: src/localplayer.cpp:2021
+#: src/localplayer.cpp:2022
 msgid "(G) go and attack"
 msgstr "(G) Ir e atacar"
 
-#: src/localplayer.cpp:2022
+#: src/localplayer.cpp:2023
 msgid "(A) go, attack, pickup"
 msgstr "(A) Ir, atacar, pegar"
 
-#: src/localplayer.cpp:2023
+#: src/localplayer.cpp:2024
 msgid "(d) without auto attack"
 msgstr "(d) sem auto ataque"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2058
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) Pequeno pegar 1x1 celulas"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2059
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) Pegar padrão 2x1 células"
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2060
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) Pegar em frente 2x3 células"
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2061
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) Pegar 3x3 células"
 
-#: src/localplayer.cpp:2061
+#: src/localplayer.cpp:2062
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) Ir e pegar em distância 4"
 
-#: src/localplayer.cpp:2062
+#: src/localplayer.cpp:2063
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) Ir e pegar em distância 8"
 
-#: src/localplayer.cpp:2063
+#: src/localplayer.cpp:2064
 msgid "(A) go and pick up in max distance"
 msgstr "(A) Ir e pegar em distância mâxima"
 
-#: src/localplayer.cpp:2064
+#: src/localplayer.cpp:2065
 msgid "(?) pick up"
 msgstr "(?) Pegar item"
 
-#: src/localplayer.cpp:2077
+#: src/localplayer.cpp:2078
 msgid "(N) normal map view"
 msgstr "(N) Visualizardor de mapa normal"
 
-#: src/localplayer.cpp:2078
+#: src/localplayer.cpp:2079
 msgid "(D) debug map view"
 msgstr "(D) Visualizador de mapa depurador"
 
-#: src/localplayer.cpp:2079
+#: src/localplayer.cpp:2080
 msgid "(u) ultra map view"
 msgstr "(u) Visualizador de mapa ultra"
 
-#: src/localplayer.cpp:2080
+#: src/localplayer.cpp:2081
 msgid "(U) ultra map view 2"
 msgstr "(U) Visualizador de mapa ultra 2"
 
-#: src/localplayer.cpp:2081
+#: src/localplayer.cpp:2082
 msgid "(e) empty map view"
 msgstr "(e) Visualizador de mapa vazio"
 
-#: src/localplayer.cpp:2082
+#: src/localplayer.cpp:2083
 msgid "(b) black & white map view"
 msgstr "(b) Visualizador de mapa preto e branco"
 
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2102
 msgid "(f) use #flar for magic attack"
 msgstr "(f) Usar #flar para feitiço de ataque"
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2103
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) Usar #chiza para feitiço de ataque"
 
-#: src/localplayer.cpp:2103
+#: src/localplayer.cpp:2104
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) Usar #ingrav para feitiço de ataque"
 
-#: src/localplayer.cpp:2104
+#: src/localplayer.cpp:2105
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) Usar #frillyar para feitiço de ataque"
 
-#: src/localplayer.cpp:2105
+#: src/localplayer.cpp:2106
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) Usar #upmarmu para feitiço de ataque"
 
-#: src/localplayer.cpp:2106
+#: src/localplayer.cpp:2107
 msgid "(?) magic attack"
 msgstr "(?) Feitiço de ataque"
 
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2126
 msgid "(a) attack all players"
 msgstr ""
 
-#: src/localplayer.cpp:2126
+#: src/localplayer.cpp:2127
 msgid "(f) attack not friends"
 msgstr ""
 
-#: src/localplayer.cpp:2127
+#: src/localplayer.cpp:2128
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2128
+#: src/localplayer.cpp:2129
 msgid "(d) dont attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2129
+#: src/localplayer.cpp:2130
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2148
+#: src/localplayer.cpp:2149
 msgid "(D) default imitation"
 msgstr "(D) Mímica padrão"
 
-#: src/localplayer.cpp:2149
+#: src/localplayer.cpp:2150
 msgid "(O) outfits imitation"
 msgstr "(O) Mímica de roupas"
 
-#: src/localplayer.cpp:2150
+#: src/localplayer.cpp:2151
 msgid "(?) imitation"
 msgstr "(?) Mímica"
 
-#: src/localplayer.cpp:2178
+#: src/localplayer.cpp:2179
 msgid "Away"
 msgstr "Indisponivel "
 
-#: src/localplayer.cpp:2197
+#: src/localplayer.cpp:2198
 msgid "(O) on keyboard"
 msgstr "(O) No teclado"
 
-#: src/localplayer.cpp:2198
+#: src/localplayer.cpp:2199
 msgid "(A) away"
 msgstr "(A) Ausente"
 
-#: src/localplayer.cpp:2199 src/localplayer.cpp:2214
+#: src/localplayer.cpp:2200 src/localplayer.cpp:2215
 msgid "(?) away"
 msgstr "(?) Ausente"
 
-#: src/localplayer.cpp:2212
+#: src/localplayer.cpp:2213
 msgid "(G) game camera mode"
 msgstr "(G) Modo de jogo câmera"
 
-#: src/localplayer.cpp:2213
+#: src/localplayer.cpp:2214
 msgid "(F) free camera mode"
 msgstr "(F) Modo de jogo câmera livre"
 
-#: src/localplayer.cpp:2238
+#: src/localplayer.cpp:2239
 msgid "Game modifiers are enabled"
 msgstr "Modificadores de jogo ativados"
 
-#: src/localplayer.cpp:2239
+#: src/localplayer.cpp:2240
 msgid "Game modifiers are disabled"
 msgstr "Modificadores de jogo desativados"
 
-#: src/localplayer.cpp:2240
+#: src/localplayer.cpp:2241
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3756
+#: src/localplayer.cpp:3757
 msgid "Follow: "
 msgstr "Seguindo:"
 
-#: src/localplayer.cpp:3758 src/localplayer.cpp:3773
+#: src/localplayer.cpp:3759 src/localplayer.cpp:3774
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3765
+#: src/localplayer.cpp:3766
 msgid "Imitation: "
 msgstr "Imitando:"
 
-#: src/localplayer.cpp:3767 src/localplayer.cpp:3775
+#: src/localplayer.cpp:3768 src/localplayer.cpp:3776
 msgid "Imitation canceled"
 msgstr "Imitação cancelada"
 
-#: src/localplayer.cpp:4123
+#: src/localplayer.cpp:4124
 msgid "You see "
 msgstr "Você vê "
 
@@ -4472,9 +4473,8 @@ msgid "Incorrect slot."
 msgstr "Slot incorreto."
 
 #: src/net/ea/charserverhandler.cpp:167
-#, fuzzy
 msgid "Incorrect race."
-msgstr "Cabelo incorreto."
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
@@ -4629,9 +4629,8 @@ msgid "%s has left your guild."
 msgstr "%s saiu de sua Guilda."
 
 #: src/net/ea/guildhandler.cpp:499
-#, fuzzy
 msgid "You were kicked from guild."
-msgstr "Você foi expulso da Guilda."
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:512
 #, c-format
@@ -5645,6 +5644,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:167
 msgid "Unknown item"
 msgstr "Item desconhecido"
-
-#~ msgid "> Next"
-#~ msgstr "> Próximo"

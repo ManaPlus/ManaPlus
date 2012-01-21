@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-19 19:11+0300\n"
-"PO-Revision-Date: 2012-01-18 18:04+0000\n"
+"POT-Creation-Date: 2012-01-21 17:15+0300\n"
+"PO-Revision-Date: 2012-01-21 09:20+0000\n"
 "Last-Translator: Candy <HarajukuCupcakes@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/team/"
 "ja/)\n"
@@ -1005,7 +1005,7 @@ msgstr "分割"
 #: src/gui/inventorywindow.cpp:175 src/gui/outfitwindow.cpp:60
 #: src/gui/popupmenu.cpp:588
 msgid "Outfits"
-msgstr "服"
+msgstr "服装"
 
 #: src/gui/inventorywindow.cpp:178
 msgid "Weight:"
@@ -1279,7 +1279,7 @@ msgstr "文字か差出人が無効の為送信に失敗しました"
 #: src/gui/outfitwindow.cpp:86 src/gui/outfitwindow.cpp:890
 #, c-format
 msgid "Outfit: %d"
-msgstr "服: %d"
+msgstr "服装: %d"
 
 #: src/gui/outfitwindow.cpp:88 src/gui/outfitwindow.cpp:892
 #, c-format
@@ -1480,7 +1480,7 @@ msgstr "マップアイテム"
 
 #: src/gui/popupmenu.cpp:567
 msgid "Rename"
-msgstr "リネーム"
+msgstr "名前を変更する"
 
 #: src/gui/popupmenu.cpp:568 src/gui/popupmenu.cpp:2095
 #: src/gui/popupmenu.cpp:2106 src/gui/popupmenu.cpp:2110
@@ -1739,11 +1739,11 @@ msgstr "ダウンロード準備中..."
 msgid "Error retreiving server list!"
 msgstr "サーバーリストの読み込みに失敗"
 
-#: src/gui/serverdialog.cpp:678
+#: src/gui/serverdialog.cpp:681
 msgid "requires a newer version"
 msgstr "アップデートが必要です"
 
-#: src/gui/serverdialog.cpp:680
+#: src/gui/serverdialog.cpp:683
 #, c-format
 msgid "requires v%s"
 msgstr "v%sが必要"
@@ -3106,11 +3106,11 @@ msgstr "友達の名前"
 
 #: src/gui/userpalette.cpp:118
 msgid "Disregarded Names"
-msgstr "無視名前"
+msgstr "無視している名前"
 
 #: src/gui/userpalette.cpp:119
 msgid "Ignored Names"
-msgstr "無視された名前"
+msgstr "無視している名前"
 
 #: src/gui/userpalette.cpp:120
 msgid "Erased Names"
@@ -3971,331 +3971,332 @@ msgstr ""
 "ん。"
 
 #: src/localplayer.cpp:384
-msgid "You were killed by "
-msgstr " によって殺されました"
+#, c-format
+msgid "You were killed by %s"
+msgstr "%sによって殺されました"
 
-#: src/localplayer.cpp:1438
+#: src/localplayer.cpp:1439
 msgid "Tried to pick up nonexistent item."
 msgstr "存在しないアイテムは拾えません"
 
-#: src/localplayer.cpp:1441
+#: src/localplayer.cpp:1442
 msgid "Item is too heavy."
 msgstr "アイテムが重過ぎます"
 
-#: src/localplayer.cpp:1444
+#: src/localplayer.cpp:1445
 msgid "Item is too far away."
 msgstr "アイテムが遠すぎます."
 
-#: src/localplayer.cpp:1447
+#: src/localplayer.cpp:1448
 msgid "Inventory is full."
 msgstr "インベントリーが満杯です"
 
-#: src/localplayer.cpp:1450
+#: src/localplayer.cpp:1451
 msgid "Stack is too big."
 msgstr "量が多すぎます"
 
-#: src/localplayer.cpp:1453
+#: src/localplayer.cpp:1454
 msgid "Item belongs to someone else."
 msgstr "これは他のプレイヤーのアイテムです"
 
-#: src/localplayer.cpp:1456
+#: src/localplayer.cpp:1457
 msgid "Unknown problem picking up item."
 msgstr "不明なエラーの為拾えません"
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1480
+#: src/localplayer.cpp:1481
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] "%d [@@%d|%s@@]を拾いました"
 
-#: src/localplayer.cpp:1897
+#: src/localplayer.cpp:1898
 msgid "(D) default moves"
 msgstr "(D) デフォルトムーブ"
 
-#: src/localplayer.cpp:1898
+#: src/localplayer.cpp:1899
 msgid "(I) invert moves"
 msgstr "(I) 逆ムーブ"
 
-#: src/localplayer.cpp:1899
+#: src/localplayer.cpp:1900
 msgid "(c) moves with some crazy moves"
 msgstr "(c) クレイジームーブを含んだムーブ"
 
-#: src/localplayer.cpp:1900
+#: src/localplayer.cpp:1901
 msgid "(C) moves with crazy moves"
 msgstr "(C) クレイジームーブ"
 
-#: src/localplayer.cpp:1901
+#: src/localplayer.cpp:1902
 msgid "(d) double normal + crazy"
 msgstr "(d) ダブルノーマル + クレイジー"
 
-#: src/localplayer.cpp:1902
+#: src/localplayer.cpp:1903
 msgid "(?) unknown move"
 msgstr "(?) 不明なムーブ"
 
-#: src/localplayer.cpp:1924
+#: src/localplayer.cpp:1925
 #, c-format
 msgid "(%d) crazy move number %d"
 msgstr "(%d) クレイジームーブ %d"
 
-#: src/localplayer.cpp:1929
+#: src/localplayer.cpp:1930
 msgid "(a) custom crazy move"
 msgstr "(a) カスタムクレイジームーブ"
 
-#: src/localplayer.cpp:1933
+#: src/localplayer.cpp:1934
 msgid "(?) crazy move"
 msgstr "(?) クレイジームーブ"
 
-#: src/localplayer.cpp:1947
+#: src/localplayer.cpp:1948
 msgid "(0) default moves to target"
 msgstr "(0) ターゲットへデフォルト接近"
 
-#: src/localplayer.cpp:1948
+#: src/localplayer.cpp:1949
 msgid "(1) moves to target in distance 1"
 msgstr "(1) 距離1でターゲットへ接近"
 
-#: src/localplayer.cpp:1949
+#: src/localplayer.cpp:1950
 msgid "(2) moves to target in distance 2"
 msgstr "(2) 距離2でターゲットに近付く"
 
-#: src/localplayer.cpp:1950
+#: src/localplayer.cpp:1951
 msgid "(3) moves to target in distance 3"
 msgstr "(3) 距離3でターゲットへ接近"
 
-#: src/localplayer.cpp:1951
+#: src/localplayer.cpp:1952
 msgid "(5) moves to target in distance 5"
 msgstr "(5) 距離5でターゲットに近付く"
 
-#: src/localplayer.cpp:1952
+#: src/localplayer.cpp:1953
 msgid "(7) moves to target in distance 7"
 msgstr "(7) 距離7でターゲットに近付く"
 
-#: src/localplayer.cpp:1953
+#: src/localplayer.cpp:1954
 msgid "(A) moves to target in attack range"
 msgstr "(A) 攻撃範囲内のターゲットに近付く"
 
-#: src/localplayer.cpp:1954
+#: src/localplayer.cpp:1955
 msgid "(a) archer attack range"
 msgstr "(a) 弓師攻撃範囲"
 
-#: src/localplayer.cpp:1955
+#: src/localplayer.cpp:1956
 msgid "(?) move to target"
 msgstr "(?) ターゲットに近付く"
 
-#: src/localplayer.cpp:1974
+#: src/localplayer.cpp:1975
 msgid "(D) default follow"
 msgstr "(D) デフォルトフォロー"
 
-#: src/localplayer.cpp:1975
+#: src/localplayer.cpp:1976
 msgid "(R) relative follow"
 msgstr "(R) 友達フォロー"
 
-#: src/localplayer.cpp:1976
+#: src/localplayer.cpp:1977
 msgid "(M) mirror follow"
 msgstr "(M) ミラーフォロー"
 
-#: src/localplayer.cpp:1977
+#: src/localplayer.cpp:1978
 msgid "(P) pet follow"
 msgstr "(P) ペットフォロー"
 
-#: src/localplayer.cpp:1978
+#: src/localplayer.cpp:1979
 msgid "(?) unknown follow"
 msgstr "(?) 不明なフォロー"
 
-#: src/localplayer.cpp:1997 src/localplayer.cpp:2001 src/localplayer.cpp:2024
+#: src/localplayer.cpp:1998 src/localplayer.cpp:2002 src/localplayer.cpp:2025
 msgid "(?) attack"
 msgstr "(?) 攻撃"
 
-#: src/localplayer.cpp:1998 src/localplayer.cpp:2020
+#: src/localplayer.cpp:1999 src/localplayer.cpp:2021
 msgid "(D) default attack"
 msgstr "(D) デフォルト攻撃"
 
-#: src/localplayer.cpp:1999
+#: src/localplayer.cpp:2000
 msgid "(s) switch attack without shield"
 msgstr "(s) 盾なし攻撃"
 
-#: src/localplayer.cpp:2000
+#: src/localplayer.cpp:2001
 msgid "(S) switch attack with shield"
 msgstr "(S) 盾あり攻撃"
 
-#: src/localplayer.cpp:2021
+#: src/localplayer.cpp:2022
 msgid "(G) go and attack"
 msgstr "(G) 接近、攻撃"
 
-#: src/localplayer.cpp:2022
+#: src/localplayer.cpp:2023
 msgid "(A) go, attack, pickup"
 msgstr "(A) 接近、攻撃、拾う"
 
-#: src/localplayer.cpp:2023
+#: src/localplayer.cpp:2024
 msgid "(d) without auto attack"
 msgstr "(d) 自動攻撃なし"
 
-#: src/localplayer.cpp:2057
+#: src/localplayer.cpp:2058
 msgid "(S) small pick up 1x1 cells"
 msgstr "(S) 小範囲で拾う 1x1セル"
 
-#: src/localplayer.cpp:2058
+#: src/localplayer.cpp:2059
 msgid "(D) default pick up 2x1 cells"
 msgstr "(D) デフォルト範囲で拾う 2x1セル"
 
-#: src/localplayer.cpp:2059
+#: src/localplayer.cpp:2060
 msgid "(F) forward pick up 2x3 cells"
 msgstr "(F) 広範囲で拾う 2x3セル"
 
-#: src/localplayer.cpp:2060
+#: src/localplayer.cpp:2061
 msgid "(3) pick up 3x3 cells"
 msgstr "(3) 3x3セルの範囲で拾う"
 
-#: src/localplayer.cpp:2061
+#: src/localplayer.cpp:2062
 msgid "(g) go and pick up in distance 4"
 msgstr "(g) 距離4の範囲で拾う"
 
-#: src/localplayer.cpp:2062
+#: src/localplayer.cpp:2063
 msgid "(G) go and pick up in distance 8"
 msgstr "(G) 距離8で拾う"
 
-#: src/localplayer.cpp:2063
+#: src/localplayer.cpp:2064
 msgid "(A) go and pick up in max distance"
 msgstr "(A) 最大範囲で拾う"
 
-#: src/localplayer.cpp:2064
+#: src/localplayer.cpp:2065
 msgid "(?) pick up"
 msgstr "(?) 拾う"
 
-#: src/localplayer.cpp:2077
+#: src/localplayer.cpp:2078
 msgid "(N) normal map view"
 msgstr "(N) 通常マップビュー"
 
-#: src/localplayer.cpp:2078
+#: src/localplayer.cpp:2079
 msgid "(D) debug map view"
 msgstr "(D) デバッグマップビュー"
 
-#: src/localplayer.cpp:2079
+#: src/localplayer.cpp:2080
 msgid "(u) ultra map view"
 msgstr "(u) ウルトラマップビュー"
 
-#: src/localplayer.cpp:2080
+#: src/localplayer.cpp:2081
 msgid "(U) ultra map view 2"
 msgstr "(U) ウルトラマップビュー2"
 
-#: src/localplayer.cpp:2081
+#: src/localplayer.cpp:2082
 msgid "(e) empty map view"
 msgstr "(e) 空マップビュー"
 
-#: src/localplayer.cpp:2082
+#: src/localplayer.cpp:2083
 msgid "(b) black & white map view"
 msgstr "(b) 白黒マップビュー"
 
-#: src/localplayer.cpp:2101
+#: src/localplayer.cpp:2102
 msgid "(f) use #flar for magic attack"
 msgstr "(f) 魔法攻撃は #flarを使う"
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2103
 msgid "(c) use #chiza for magic attack"
 msgstr "(c) 魔法攻撃は #chizaを使う"
 
-#: src/localplayer.cpp:2103
+#: src/localplayer.cpp:2104
 msgid "(I) use #ingrav for magic attack"
 msgstr "(I) 魔法攻撃は #ingravを使う"
 
-#: src/localplayer.cpp:2104
+#: src/localplayer.cpp:2105
 msgid "(F) use #frillyar for magic attack"
 msgstr "(F) 魔法攻撃は #frillyarを使う"
 
-#: src/localplayer.cpp:2105
+#: src/localplayer.cpp:2106
 msgid "(U) use #upmarmu for magic attack"
 msgstr "(U) 魔法攻撃は #upmarmuを使う"
 
-#: src/localplayer.cpp:2106
+#: src/localplayer.cpp:2107
 msgid "(?) magic attack"
 msgstr "(?) 魔法攻撃"
 
-#: src/localplayer.cpp:2125
+#: src/localplayer.cpp:2126
 msgid "(a) attack all players"
 msgstr "(a) 全てのプレイヤーを攻撃"
 
-#: src/localplayer.cpp:2126
+#: src/localplayer.cpp:2127
 msgid "(f) attack not friends"
 msgstr "(f) 友達以外を攻撃"
 
-#: src/localplayer.cpp:2127
+#: src/localplayer.cpp:2128
 msgid "(b) attack bad relations"
 msgstr "(b) 敵を攻撃"
 
-#: src/localplayer.cpp:2128
+#: src/localplayer.cpp:2129
 msgid "(d) dont attack players"
 msgstr "(d) 他のプレイヤーを攻撃しない"
 
-#: src/localplayer.cpp:2129
+#: src/localplayer.cpp:2130
 msgid "(?) pvp attack"
 msgstr "(?) PvP攻撃"
 
-#: src/localplayer.cpp:2148
+#: src/localplayer.cpp:2149
 msgid "(D) default imitation"
 msgstr "(D) デフォルト真似"
 
-#: src/localplayer.cpp:2149
+#: src/localplayer.cpp:2150
 msgid "(O) outfits imitation"
 msgstr "(O) 服装真似"
 
-#: src/localplayer.cpp:2150
+#: src/localplayer.cpp:2151
 msgid "(?) imitation"
 msgstr "(?) 真似をする"
 
-#: src/localplayer.cpp:2178
+#: src/localplayer.cpp:2179
 msgid "Away"
 msgstr "アウェイ"
 
-#: src/localplayer.cpp:2197
+#: src/localplayer.cpp:2198
 msgid "(O) on keyboard"
 msgstr "(O) キーボード"
 
-#: src/localplayer.cpp:2198
+#: src/localplayer.cpp:2199
 msgid "(A) away"
 msgstr "(A) アウェイ"
 
-#: src/localplayer.cpp:2199 src/localplayer.cpp:2214
+#: src/localplayer.cpp:2200 src/localplayer.cpp:2215
 msgid "(?) away"
 msgstr "(?) アウェイ"
 
-#: src/localplayer.cpp:2212
+#: src/localplayer.cpp:2213
 msgid "(G) game camera mode"
 msgstr "(G) ゲームカメラモード"
 
-#: src/localplayer.cpp:2213
+#: src/localplayer.cpp:2214
 msgid "(F) free camera mode"
 msgstr "(F) フリーカメラモード"
 
-#: src/localplayer.cpp:2238
+#: src/localplayer.cpp:2239
 msgid "Game modifiers are enabled"
 msgstr "ゲームモディファイアは有効になってます"
 
-#: src/localplayer.cpp:2239
+#: src/localplayer.cpp:2240
 msgid "Game modifiers are disabled"
 msgstr "ゲームモディファイアは無効になってます"
 
-#: src/localplayer.cpp:2240
+#: src/localplayer.cpp:2241
 msgid "Game modifiers are unknown"
 msgstr "不明なゲームモディファイアー"
 
-#: src/localplayer.cpp:3756
+#: src/localplayer.cpp:3757
 msgid "Follow: "
 msgstr "フォロー: "
 
-#: src/localplayer.cpp:3758 src/localplayer.cpp:3773
+#: src/localplayer.cpp:3759 src/localplayer.cpp:3774
 msgid "Follow canceled"
 msgstr "フォローを止める"
 
-#: src/localplayer.cpp:3765
+#: src/localplayer.cpp:3766
 msgid "Imitation: "
 msgstr "真似: "
 
-#: src/localplayer.cpp:3767 src/localplayer.cpp:3775
+#: src/localplayer.cpp:3768 src/localplayer.cpp:3776
 msgid "Imitation canceled"
 msgstr "真似をやめる"
 
-#: src/localplayer.cpp:4123
+#: src/localplayer.cpp:4124
 msgid "You see "
 msgstr " が見える"
 
@@ -4448,7 +4449,9 @@ msgstr "不明なキャラクターサーバーエラー"
 
 #: src/net/ea/charserverhandler.cpp:151
 msgid "Failed to create character. Most likely the name is already taken."
-msgstr "キャラクター作成に失敗しました。この名前は既に使われています"
+msgstr ""
+"キャラクター作成に失敗しました。既に使われている名前もしくは無効な文字が含ま"
+"れています"
 
 #: src/net/ea/charserverhandler.cpp:155 src/net/ea/loginhandler.cpp:245
 msgid "Wrong name."
@@ -4467,9 +4470,8 @@ msgid "Incorrect slot."
 msgstr "間違ったスロット"
 
 #: src/net/ea/charserverhandler.cpp:167
-#, fuzzy
 msgid "Incorrect race."
-msgstr "間違った髪型"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
@@ -4624,7 +4626,6 @@ msgid "%s has left your guild."
 msgstr "%sがギルドを退会しました"
 
 #: src/net/ea/guildhandler.cpp:499
-#, fuzzy
 msgid "You were kicked from guild."
 msgstr "ギルドから追い出されました"
 
@@ -4808,7 +4809,7 @@ msgstr "サーバーが混雑しています"
 
 #: src/net/ea/loginhandler.cpp:242
 msgid "This user name is already taken."
-msgstr "ユーザ名は使用されています"
+msgstr "ユーザ名は既に使用されています"
 
 #: src/net/ea/loginhandler.cpp:248
 msgid "Username permanently erased."
@@ -5221,11 +5222,11 @@ msgstr "空スロットがありません"
 
 #: src/net/manaserv/charhandler.cpp:151
 msgid "Invalid name."
-msgstr "ユーザーネームが見つかりません"
+msgstr "無効な名前"
 
 #: src/net/manaserv/charhandler.cpp:154
 msgid "Character's name already exists."
-msgstr "ユーザーネームが削除されました"
+msgstr "既に使用されているキャラクター名です"
 
 #: src/net/manaserv/charhandler.cpp:157
 msgid "Invalid hairstyle."
@@ -5625,6 +5626,3 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:167
 msgid "Unknown item"
 msgstr "不明なアイテム"
-
-#~ msgid "> Next"
-#~ msgstr "> 次へ"
