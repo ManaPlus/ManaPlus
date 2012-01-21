@@ -99,8 +99,7 @@ Gui::Gui(Graphics *graphics):
     // Initialize top GUI widget
     WindowContainer *guiTop = new WindowContainer;
     guiTop->setFocusable(true);
-    guiTop->setDimension(gcn::Rectangle(0, 0,
-        graphics->mWidth, graphics->mHeight));
+    guiTop->setSize(graphics->mWidth, graphics->mHeight);
     guiTop->setOpaque(false);
     Window::setWindowContainer(guiTop);
     setTop(guiTop);
@@ -285,6 +284,17 @@ void Gui::draw()
     }
 
     mGraphics->popClipArea();
+}
+
+void Gui::videoResized()
+{
+    WindowContainer *top = static_cast<WindowContainer*>(getTop());
+
+    int oldWidth = top->getWidth();
+    int oldHeight = top->getHeight();
+
+    top->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
+    top->adjustAfterResize(oldWidth, oldHeight);
 }
 
 void Gui::setUseCustomCursor(bool customCursor)

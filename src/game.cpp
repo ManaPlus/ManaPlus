@@ -376,8 +376,7 @@ Game::Game():
 
     // Create the viewport
     viewport = new Viewport;
-    viewport->setDimension(gcn::Rectangle(0, 0, mainGraphics->mWidth,
-        mainGraphics->mHeight));
+    viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
 
     gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
     top->add(viewport);
@@ -1636,8 +1635,13 @@ void Game::handleInput()
         updateHistory(event);
         checkKeys();
 
+        if (event.type == SDL_VIDEORESIZE)
+        {
+            // Let the client deal with this one (it'll pass down from there)
+            Client::instance()->resizeVideo(event.resize.w, event.resize.h);
+        }
         // Keyboard events (for discontinuous keys)
-        if (event.type == SDL_KEYDOWN)
+        else if (event.type == SDL_KEYDOWN)
         {
             wasDown = true;
 
@@ -1939,4 +1943,10 @@ void Game::closeDialogs()
         deathNotice->scheduleDelete();
         deathNotice = nullptr;
     }
+}
+
+void Game::videoResized(int width, int height)
+{
+    viewport->setSize(width, height);
+    windowMenu->setPosition(width - 3 - windowMenu->getWidth(), 3);
 }

@@ -38,6 +38,7 @@
 
 class Button;
 class Desktop;
+class Game;
 class LoginData;
 class Window;
 class QuitDialog;
@@ -281,6 +282,8 @@ public:
 
     void writePacketLimits(std::string packetLimitsName);
 
+    void resizeVideo(int width, int height);
+
     static bool limitPackets(int type);
 
     static bool checkPackets(int type);
@@ -334,6 +337,7 @@ private:
 
     ServerInfo mCurrentServer;
 
+    Game *mGame;
     Window *mCurrentDialog;
     QuitDialog *mQuitDialog;
     Desktop *mDesktop;

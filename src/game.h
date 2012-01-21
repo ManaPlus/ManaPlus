@@ -108,6 +108,8 @@ class Game
 
         static void closeDialogs();
 
+        void videoResized(int width, int height);
+
     private:
 
         void updateHistory(SDL_Event &event);

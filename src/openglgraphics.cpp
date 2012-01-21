@@ -85,7 +85,17 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     mHWAccel = hwaccel;
 
     if (fs)
+    {
         displayFlags |= SDL_FULLSCREEN;
+    }
+    else
+    {
+        // Resizing currently not supported on Windows, where it would require
+        // reuploading all textures.
+#if !defined(_WIN32)
+        displayFlags |= SDL_RESIZABLE;
+#endif
+    }
 
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
@@ -1017,6 +1027,7 @@ void OpenGLGraphics::_beginDraw()
 
 void OpenGLGraphics::_endDraw()
 {
+    popClipArea();
 }
 
 SDL_Surface* OpenGLGraphics::getScreenshot()

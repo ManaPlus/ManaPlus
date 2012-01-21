@@ -251,7 +251,7 @@ Client::Client(const Options &options):
     mServerConfigDir(""),
     mUsersDir(""),
     mNpcsDir(""),
-    mRootDir(""),
+    mGame(0),
     mCurrentDialog(nullptr),
     mQuitDialog(nullptr),
     mDesktop(nullptr),
@@ -816,15 +816,14 @@ int Client::gameExec()
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
 
-    Game *game = nullptr;
     SDL_Event event;
 
     while (mState != STATE_EXIT)
     {
-        if (game)
+        if (mGame)
         {
             // Let the game handle the events while it is active
-            game->handleInput();
+            mGame->handleInput();
         }
         else
         {
@@ -839,6 +838,10 @@ int Client::gameExec()
 
                     case SDL_KEYDOWN:
                     default:
+                        break;
+
+                    case SDL_VIDEORESIZE:
+                        resizeVideo(event.resize.w, event.resize.h);
                         break;
                 }
 
@@ -858,8 +861,8 @@ int Client::gameExec()
         {
             if (gui)
                 gui->logic();
-            if (game)
-                game->logic();
+            if (mGame)
+                mGame->logic();
 
             sound.logic();
 
@@ -967,10 +970,8 @@ int Client::gameExec()
             top->add(mThemesButton);
 #endif
 
-            int screenWidth = config.getIntValue("screenwidth");
-            int screenHeight = config.getIntValue("screenheight");
-
-            mDesktop->setSize(screenWidth, screenHeight);
+            mDesktop->setSize(mainGraphics->getWidth(),
+                mainGraphics->getHeight());
         }
 
         if (mState == STATE_SWITCH_LOGIN && mOldState == STATE_GAME)
@@ -985,8 +986,8 @@ int Client::gameExec()
 
             if (mOldState == STATE_GAME)
             {
-                delete game;
-                game = nullptr;
+                delete mGame;
+                mGame = nullptr;
                 Game::clearInstance();
                 ResourceManager *resman = ResourceManager::getInstance();
                 if (resman)
@@ -1291,7 +1292,7 @@ int Client::gameExec()
                     logger->log1("State: GAME");
                     if (Net::getGeneralHandler())
                         Net::getGeneralHandler()->reloadPartially();
-                    game = new Game;
+                    mGame = new Game;
                     break;
 
                 case STATE_LOGIN_ERROR:
@@ -2353,4 +2354,31 @@ bool Client::isTmw()
         return true;
     }
     return false;
+}
+
+void Client::resizeVideo(int width, int height)
+{
+    // Keep a minimum size. This isn't adhered to by the actual window, but
+    // it keeps some window positions from getting messed up.
+    width = std::max(640, width);
+    height = std::max(480, height);
+
+    if (mainGraphics->mWidth == width && mainGraphics->mHeight == height)
+        return;
+
+    if (mainGraphics->resize(width, height))
+    {
+        gui->videoResized();
+
+        if (mDesktop)
+            mDesktop->setSize(width, height);
+
+        if (mSetupButton)
+            mSetupButton->setPosition(width - mSetupButton->getWidth() - 3, 3);
+
+        if (mGame)
+            mGame->videoResized(width, height);
+
+        gui->draw();
+    }
 }
