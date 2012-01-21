@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-21 17:15+0300\n"
+"POT-Creation-Date: 2012-01-21 19:25+0300\n"
 "PO-Revision-Date: 2012-01-20 22:13+0000\n"
 "Last-Translator: Rosemarie Tauber <horos@online.de>\n"
 "Language-Team: German (http://www.transifex.net/projects/p/manaplus/team/"
@@ -4535,16 +4535,16 @@ msgstr ""
 msgid "All whispers unignore failed."
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:87
+#: src/net/ea/gamehandler.cpp:92
 #, c-format
 msgid "Online users: %d"
 msgstr "Benutzer Online: %d"
 
-#: src/net/ea/gamehandler.cpp:99
+#: src/net/ea/gamehandler.cpp:104
 msgid "Game"
 msgstr "Spiel"
 
-#: src/net/ea/gamehandler.cpp:99
+#: src/net/ea/gamehandler.cpp:104
 msgid "Request to quit denied!"
 msgstr ""
 
