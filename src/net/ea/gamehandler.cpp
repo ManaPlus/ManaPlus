@@ -52,9 +52,14 @@ void GameHandler::processEvent(Mana::Channels channel,
     if (channel == Mana::CHANNEL_GAME)
     {
         if (event.getName() == Mana::EVENT_ENGINESINITALIZED)
-            Game::instance()->changeMap(mMap);
+        {
+            if (mMap != "")
+                Game::instance()->changeMap(mMap);
+        }
         else if (event.getName() == Mana::EVENT_MAPLOADED)
+        {
             mapLoadedEvent();
+        }
     }
 }
 
