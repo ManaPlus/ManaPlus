@@ -241,7 +241,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "defaultPort", DEFAULT_PORT);
     AddDEF(brandingData, "defaultServerType", "tmwathena");
     AddDEF(brandingData, "onlineServerList",
-           "http://manasource.org/serverlist.xml");
+           "http://manaplus.evolonline.org/serverlist.xml");
     AddDEF(brandingData, "appShort", "mana");
     AddDEF(brandingData, "defaultUpdateHost", "");
     AddDEF(brandingData, "helpPath", "");
