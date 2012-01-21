@@ -4,7 +4,7 @@
  *  Copyright (C) 2009  Aethyra Development Team
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -162,6 +162,18 @@ Theme::Theme():
     mColors[SERVER].ch = 'S';
     mColors[LOGGER].ch = 'L';
     mColors[HYPERLINK].ch = '<';
+    mCharColors['H'] = HIGHLIGHT;
+    mCharColors['C'] = CHAT;
+    mCharColors['G'] = GM;
+    mCharColors['Y'] = PLAYER;
+    mCharColors['W'] = WHISPER;
+    mCharColors['w'] = WHISPER_OFFLINE;
+    mCharColors['I'] = IS;
+    mCharColors['P'] = PARTY_CHAT_TAB;
+    mCharColors['U'] = GUILD_CHAT_TAB;
+    mCharColors['S'] = SERVER;
+    mCharColors['L'] = LOGGER;
+    mCharColors['<'] = HYPERLINK;
 }
 
 Theme::~Theme()
@@ -303,9 +315,9 @@ Skin *Theme::readSkin(const std::string &filename)
 //    filename = resman->mapPathToSkin(filename0);
 
     XML::Document doc(resolveThemePath(filename));
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "skinset"))
+    if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
         return nullptr;
 
     const std::string skinSetImage = XML::getProperty(rootNode, "image", "");
@@ -327,7 +339,7 @@ Skin *Theme::readSkin(const std::string &filename)
     // iterate <widget>'s
     for_each_xml_child_node(widgetNode, rootNode)
     {
-        if (!xmlStrEqual(widgetNode->name, BAD_CAST "widget"))
+        if (!xmlNameEqual(widgetNode, "widget"))
             continue;
 
         const std::string widgetType =
@@ -336,7 +348,7 @@ Skin *Theme::readSkin(const std::string &filename)
         {
             for_each_xml_child_node(partNode, widgetNode)
             {
-                if (xmlStrEqual(partNode->name, BAD_CAST "part"))
+                if (xmlNameEqual(partNode, "part"))
                 {
                     const std::string partType =
                             XML::getProperty(partNode, "type", "unknown");
@@ -465,7 +477,7 @@ Skin *Theme::readSkin(const std::string &filename)
                             "'%s'", partType.c_str());
                     }
                 }
-                else if (xmlStrEqual(partNode->name, BAD_CAST "option"))
+                else if (xmlNameEqual(partNode, "option"))
                 {
                     const std::string name = XML::getProperty(
                         partNode, "name", "");
@@ -806,9 +818,9 @@ void Theme::loadColors(std::string file)
         file += "/colors.xml";
 
     XML::Document doc(resolveThemePath(file));
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "colors"))
+    if (!root || !xmlNameEqual(root, "colors"))
     {
         logger->log("Error loading colors file: %s", file.c_str());
         return;
@@ -823,7 +835,7 @@ void Theme::loadColors(std::string file)
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "color"))
+        if (xmlNameEqual(node, "color"))
         {
             type = readColorType(XML::getProperty(node, "id", ""));
             if (type < 0) // invalid or no type given
@@ -838,7 +850,7 @@ void Theme::loadColors(std::string file)
 
             mColors[type].set(type, color, grad, 10);
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "progressbar"))
+        else if (xmlNameEqual(node, "progressbar"))
         {
             type = readProgressType(XML::getProperty(node, "id", ""));
             if (type < 0) // invalid or no type given

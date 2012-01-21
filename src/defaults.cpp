@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -224,6 +224,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "lang", "");
     AddDEF(configData, "selectedJoystick", 0);
     AddDEF(configData, "useInactiveJoystick", false);
+    AddDEF(configData, "testInfo", "");
     return configData;
 }
 
@@ -240,7 +241,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "defaultPort", DEFAULT_PORT);
     AddDEF(brandingData, "defaultServerType", "tmwathena");
     AddDEF(brandingData, "onlineServerList",
-           "http://manasource.org/serverlist.xml");
+           "http://manaplus.evolonline.org/serverlist.xml");
     AddDEF(brandingData, "appShort", "mana");
     AddDEF(brandingData, "defaultUpdateHost", "");
     AddDEF(brandingData, "helpPath", "");

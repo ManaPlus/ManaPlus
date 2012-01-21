@@ -407,7 +407,16 @@ bool retrieveBuffer(std::string& text, std::string::size_type& pos)
     return false;
 }
 
+bool runxsel(std::string& text, const char *p1, const char *p2 = nullptr);
+
 bool sendBuffer(std::string& text)
+{
+    runxsel(text, "-i");
+    runxsel(text, "-b", "-i");
+    return true;
+}
+
+bool runxsel(std::string& text, const char *p1, const char *p2)
 {
     pid_t pid;
     int fd[2];
@@ -432,7 +441,11 @@ bool sendBuffer(std::string& text)
             }
             close(fd[0]);
         }
-        execl("/usr/bin/xsel", "xsel", "-i", (char *)nullptr);
+        if (p2)
+            execl("/usr/bin/xsel", "xsel", p1, p2, (char *)nullptr);
+        else
+            execl("/usr/bin/xsel", "xsel", p1, (char *)nullptr);
+
         exit(1);
     }
 

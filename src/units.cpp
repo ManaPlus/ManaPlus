@@ -2,7 +2,7 @@
  *  Support for custom units
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -100,9 +100,9 @@ void Units::loadUnits()
     }
 
     XML::Document doc("units.xml");
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "units"))
+    if (!root || !xmlNameEqual(root, "units"))
     {
         logger->log1("Error loading unit definition file: units.xml");
         return;
@@ -110,7 +110,7 @@ void Units::loadUnits()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "unit"))
+        if (xmlNameEqual(node, "unit"))
         {
             struct UnitDescription ud;
             int level = 1;
@@ -127,7 +127,7 @@ void Units::loadUnits()
 
             for_each_xml_child_node(uLevel, node)
             {
-                if (xmlStrEqual(uLevel->name, BAD_CAST "level"))
+                if (xmlNameEqual(uLevel, "level"))
                 {
                     struct UnitLevel ul;
                     ul.symbol = XML::getProperty(uLevel, "symbol",

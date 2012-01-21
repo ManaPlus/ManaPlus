@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -27,17 +27,20 @@
 #include "client.h"
 #include "logger.h"
 
-#include <libxml/parser.h>
-
 #include <getopt.h>
 #include <iostream>
 #include <physfs.h>
+
+#include "utils/stringutils.h"
+#include "utils/xml.h"
 
 #ifdef __MINGW32__
 #include <windows.h>
 #endif
 
 #include "debug.h"
+
+char *selfName = nullptr;
 
 static void printHelp()
 {
@@ -71,6 +74,8 @@ static void printHelp()
              " directory") << endl
         << _("     --screenshot-dir : Directory to store screenshots") << endl
         << _("     --safemode       : Start game in safe mode") << endl
+        << _("  -T --tests          : Start testing drivers and "
+                                     "auto configuring") << endl
 #ifdef USE_OPENGL
         << _("     --no-opengl      : Disable OpenGL for this session") << endl
 #endif
@@ -84,30 +89,32 @@ static void printVersion()
 
 static void parseOptions(int argc, char *argv[], Client::Options &options)
 {
-    const char *optstring = "hvud:U:P:Dc:p:l:L:C:";
+    const char *optstring = "hvud:U:P:Dc:p:l:L:C:s:t:T";
 
     const struct option long_options[] =
     {
-        { "config-dir",     required_argument, 0, 'C' },
-        { "data",           required_argument, 0, 'd' },
-        { "default",        no_argument,       0, 'D' },
-        { "password",       required_argument, 0, 'P' },
-        { "character",      required_argument, 0, 'c' },
-        { "help",           no_argument,       0, 'h' },
-        { "localdata-dir",  required_argument, 0, 'L' },
-        { "update-host",    required_argument, 0, 'H' },
-        { "port",           required_argument, 0, 'p' },
-        { "server",         required_argument, 0, 's' },
-        { "skip-update",    no_argument,       0, 'u' },
-        { "username",       required_argument, 0, 'U' },
-        { "no-opengl",      no_argument,       0, 'O' },
-        { "chat-log-dir",   required_argument, 0, 'l' },
-        { "version",        no_argument,       0, 'v' },
-        { "log-file",       required_argument, 0, 'l' },
-        { "chat-log-dir",   required_argument, 0, 'L' },
-        { "screenshot-dir", required_argument, 0, 'i' },
-        { "safemode",       no_argument,       0, 'm' },
-        { nullptr,          0,                 0, 0 }
+        { "config-dir",     required_argument, nullptr, 'C' },
+        { "data",           required_argument, nullptr, 'd' },
+        { "default",        no_argument,       nullptr, 'D' },
+        { "password",       required_argument, nullptr, 'P' },
+        { "character",      required_argument, nullptr, 'c' },
+        { "help",           no_argument,       nullptr, 'h' },
+        { "localdata-dir",  required_argument, nullptr, 'L' },
+        { "update-host",    required_argument, nullptr, 'H' },
+        { "port",           required_argument, nullptr, 'p' },
+        { "server",         required_argument, nullptr, 's' },
+        { "skip-update",    no_argument,       nullptr, 'u' },
+        { "username",       required_argument, nullptr, 'U' },
+        { "no-opengl",      no_argument,       nullptr, 'O' },
+        { "chat-log-dir",   required_argument, nullptr, 'l' },
+        { "version",        no_argument,       nullptr, 'v' },
+        { "log-file",       required_argument, nullptr, 'l' },
+        { "chat-log-dir",   required_argument, nullptr, 'L' },
+        { "screenshot-dir", required_argument, nullptr, 'i' },
+        { "safemode",       no_argument,       nullptr, 'm' },
+        { "tests",          no_argument,       nullptr, 'T' },
+        { "test",           required_argument, nullptr, 't' },
+        { nullptr,          0,                 nullptr, 0 }
     };
 
     while (optind < argc)
@@ -134,7 +141,10 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
                 options.printHelp = true;
                 break;
             case 'H':
-                options.updateHost = optarg;
+                if (checkPath(optarg))
+                    options.updateHost = optarg;
+                else
+                    options.updateHost = "";
                 break;
             case 'c':
                 options.character = optarg;
@@ -174,6 +184,14 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
             case 'm':
                 options.safeMode = true;
                 break;
+            case 'T':
+                options.testMode = true;
+                options.test = "";
+                break;
+            case 't':
+                options.testMode = true;
+                options.test = std::string(optarg);
+                break;
             default:
                 break;
         }
@@ -191,23 +209,6 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
 extern "C" char const *_nl_locale_name_default(void);
 #endif
 
-static void xmlNullLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
-{
-    // Does nothing, that's the whole point of it
-}
-
-// Initialize libxml2 and check for potential ABI mismatches between
-// compiled version and the shared library actually used.
-static void initXML()
-{
-    xmlInitParser();
-    LIBXML_TEST_VERSION;
-
-    // Suppress libxml2 error messages
-    xmlSetGenericErrorFunc(nullptr, xmlNullLogger);
-}
-
-
 int main(int argc, char *argv[])
 {
 #if defined(__MINGW32__)
@@ -215,6 +216,8 @@ int main(int argc, char *argv[])
     // may load libray from current dir, it may not same as program dir
     LoadLibrary("exchndl.dll");
 #endif
+
+    selfName = argv[0];
 
     // Parse command line options
     Client::Options options;
@@ -241,11 +244,20 @@ int main(int argc, char *argv[])
 
     atexit((void(*)()) PHYSFS_deinit);
 
-    initXML();
+    XML::initXML();
 
 #ifdef WIN32
     SetCurrentDirectory(PHYSFS_getBaseDir());
 #endif
     Client client(options);
-    return client.exec();
+    if (!options.testMode)
+    {
+        client.gameInit();
+        return client.gameExec();
+    }
+    else
+    {
+        client.testsInit();
+        return client.testsExec();
+    }
 }

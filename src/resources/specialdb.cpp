@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -55,9 +55,9 @@ void SpecialDB::load()
     logger->log("Initializing special database...");
 
     XML::Document doc("specials.xml");
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "specials"))
+    if (!root || !xmlNameEqual(root, "specials"))
     {
         logger->log("Error loading specials file specials.xml");
         return;
@@ -67,13 +67,13 @@ void SpecialDB::load()
 
     for_each_xml_child_node(set, root)
     {
-        if (xmlStrEqual(set->name, BAD_CAST "set"))
+        if (xmlNameEqual(set, "set"))
         {
             setName = XML::getProperty(set, "name", "Actions");
 
             for_each_xml_child_node(special, set)
             {
-                if (xmlStrEqual(special->name, BAD_CAST "special"))
+                if (xmlNameEqual(special, "special"))
                 {
                     SpecialInfo *info = new SpecialInfo();
                     int id = XML::getProperty(special, "id", 0);

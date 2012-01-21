@@ -3,7 +3,7 @@
  *  Copyright (C) 2008  Douglas Boffey <dougaboffey@netscape.net>
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -65,15 +65,13 @@ Palette::~Palette()
 
 const gcn::Color& Palette::getColor(char c, bool &valid)
 {
-    for (Colors::const_iterator col = mColors.begin(),
-         colEnd = mColors.end(); col != colEnd; ++col)
+    CharColors::const_iterator it = mCharColors.find(c);
+    if (it != mCharColors.end())
     {
-        if (col->ch == c)
-        {
-            valid = true;
-            return col->color;
-        }
+        valid = true;
+        return mColors[(*it).second].color;
     }
+
     valid = false;
     return BLACK;
 }

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -361,6 +361,24 @@ std::vector<std::string> * PlayerRelationsManager::getPlayers()
     return retval;
 }
 
+std::vector<std::string> *PlayerRelationsManager::getPlayersByRelation(
+        PlayerRelation::Relation rel)
+{
+    std::vector<std::string> *retval = new std::vector<std::string>();
+
+    for (std::map<std::string,
+         PlayerRelation *>::const_iterator it = mRelations.begin();
+         it != mRelations.end(); ++it)
+    {
+        if (it->second && it->second->mRelation == rel)
+            retval->push_back(it->first);
+    }
+
+    sort(retval->begin(), retval->end(), playersSorter);
+
+    return retval;
+}
+
 void PlayerRelationsManager::removePlayer(const std::string &name)
 {
     if (mRelations[name])
@@ -574,14 +592,24 @@ bool PlayerRelationsManager::checkName(const std::string &name) const
     const int size = name.size();
     std::string check = config.getStringValue("unsecureChars");
 
-    if (name.substr(0, 1) == " " || name.substr(size - 1, 1) == " ")
+    std::string lastChar = name.substr(size - 1, 1);
+    if (name.substr(0, 1) == " " || lastChar == " " || lastChar == "."
+        || name.find("  ") != std::string::npos)
+    {
         return false;
+    }
     else if (check.empty())
+    {
         return true;
+    }
     else if (name.find_first_of(check) != std::string::npos)
+    {
         return false;
+    }
     else
+    {
         return true;
+    }
 }
 
 PlayerRelationsManager player_relations;

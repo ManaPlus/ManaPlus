@@ -1,7 +1,7 @@
 /*
  *  Color database
  *  Copyright (C) 2008  Aethyra Development Team
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -26,8 +26,6 @@
 
 #include "utils/xml.h"
 
-#include <libxml/tree.h>
-
 #include "debug.h"
 
 namespace
@@ -51,10 +49,10 @@ void ColorDB::load()
 void ColorDB::loadHair()
 {
     XML::Document *doc = new XML::Document("hair.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     bool hairXml = true;
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "colors"))
+    if (!root || !xmlNameEqual(root, "colors"))
     {
         logger->log1("Trying to fall back on colors.xml");
 
@@ -64,7 +62,7 @@ void ColorDB::loadHair()
         doc = new XML::Document("colors.xml");
         root = doc->rootNode();
 
-        if (!root || !xmlStrEqual(root->name, BAD_CAST "colors"))
+        if (!root || !xmlNameEqual(root, "colors"))
         {
             logger->log1("ColorDB: Failed to find any color files.");
             mHairColors[0] = mFail;
@@ -78,7 +76,7 @@ void ColorDB::loadHair()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "color"))
+        if (xmlNameEqual(node, "color"))
         {
             int id = XML::getProperty(node, "id", 0);
 
@@ -99,7 +97,7 @@ void ColorDB::loadHair()
 void ColorDB::loadColorLists()
 {
     XML::Document *doc = new XML::Document("itemcolors.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -108,7 +106,7 @@ void ColorDB::loadColorLists()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "list"))
+        if (xmlNameEqual(node, "list"))
         {
             std::string name = XML::getProperty(node, "name", "");
             if (name.empty())
@@ -122,7 +120,7 @@ void ColorDB::loadColorLists()
 
             for_each_xml_child_node(colorNode, node)
             {
-                if (xmlStrEqual(colorNode->name, BAD_CAST "color"))
+                if (xmlNameEqual(colorNode, "color"))
                 {
                     ItemColor c(XML::getProperty(colorNode, "id", -1),
                         XML::getProperty(colorNode, "name", ""),

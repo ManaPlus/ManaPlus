@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -65,7 +65,7 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
     mEquipment(equipment),
     mSelected(-1),
     mForing(foring),
-    mImageSet(0)
+    mImageSet(nullptr)
 {
     mBeing = being;
     mItemPopup = new ItemPopup;
@@ -355,7 +355,7 @@ void EquipmentWindow::resetBeing(Being *being)
 void EquipmentWindow::fillBoxes()
 {
     XML::Document *doc = new XML::Document("equipmentwindow.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -371,23 +371,23 @@ void EquipmentWindow::fillBoxes()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "window"))
+        if (xmlNameEqual(node, "window"))
             loadWindow(node);
-        else if (xmlStrEqual(node->name, BAD_CAST "playerbox"))
+        else if (xmlNameEqual(node, "playerbox"))
             loadPlayerBox(node);
-        else if (xmlStrEqual(node->name, BAD_CAST "slot"))
+        else if (xmlNameEqual(node, "slot"))
             loadSlot(node, mImageSet);
     }
     delete doc;
 }
 
-void EquipmentWindow::loadWindow(xmlNodePtr windowNode)
+void EquipmentWindow::loadWindow(XmlNodePtr windowNode)
 {
     setDefaultSize(XML::getProperty(windowNode, "width", 180),
         XML::getProperty(windowNode, "height", 345), ImageRect::CENTER);
 }
 
-void EquipmentWindow::loadPlayerBox(xmlNodePtr playerBoxNode)
+void EquipmentWindow::loadPlayerBox(XmlNodePtr playerBoxNode)
 {
     mPlayerBox->setDimension(gcn::Rectangle(
         XML::getProperty(playerBoxNode, "x", 50),
@@ -396,7 +396,7 @@ void EquipmentWindow::loadPlayerBox(xmlNodePtr playerBoxNode)
         XML::getProperty(playerBoxNode, "height", 168)));
 }
 
-void EquipmentWindow::loadSlot(xmlNodePtr slotNode, ImageSet *imageset)
+void EquipmentWindow::loadSlot(XmlNodePtr slotNode, ImageSet *imageset)
 {
     int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -43,7 +43,7 @@ class Particle;
 class ParticleEmitter
 {
     public:
-        ParticleEmitter(xmlNodePtr emitterNode,  Particle *target, Map *map,
+        ParticleEmitter(XmlNodePtr emitterNode,  Particle *target, Map *map,
                         int rotation = 0,
                         const std::string& dyePalettes = std::string());
 
@@ -82,7 +82,7 @@ class ParticleEmitter
 
     private:
         template <typename T> ParticleEmitterProp<T>
-            readParticleEmitterProp(xmlNodePtr propertyNode, T def);
+            readParticleEmitterProp(XmlNodePtr propertyNode, T def);
 
         /**
          * initial position of particles:

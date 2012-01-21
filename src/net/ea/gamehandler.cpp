@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -52,9 +52,14 @@ void GameHandler::processEvent(Mana::Channels channel,
     if (channel == Mana::CHANNEL_GAME)
     {
         if (event.getName() == Mana::EVENT_ENGINESINITALIZED)
-            Game::instance()->changeMap(mMap);
+        {
+            if (mMap != "")
+                Game::instance()->changeMap(mMap);
+        }
         else if (event.getName() == Mana::EVENT_MAPLOADED)
+        {
             mapLoadedEvent();
+        }
     }
 }
 
@@ -73,7 +78,7 @@ void GameHandler::processMapLogin(Net::MessageIn &msg)
     Uint16 x, y;
     msg.readInt32();   // server tick
     msg.readCoordinates(x, y, direction);
-    msg.skip(2);      // unknown
+    msg.skip(2);      // 0x0505
     logger->log("Protocol: Player start position: (%d, %d),"
                 " Direction: %d", x, y, direction);
     // Switch now or we'll have problems

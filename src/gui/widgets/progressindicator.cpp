@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -51,7 +51,7 @@ ProgressIndicator::ProgressIndicator()
     }
     else
     {
-        mIndicator = 0;
+        mIndicator = nullptr;
     }
 
     setSize(32, 32);
@@ -60,7 +60,7 @@ ProgressIndicator::ProgressIndicator()
 ProgressIndicator::~ProgressIndicator()
 {
     delete mIndicator;
-    mIndicator = 0;
+    mIndicator = nullptr;
 }
 
 void ProgressIndicator::logic()

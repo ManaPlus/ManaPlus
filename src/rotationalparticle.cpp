@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -34,9 +34,9 @@ RotationalParticle::RotationalParticle(Map *map, Animation *animation):
 {
 }
 
-RotationalParticle::RotationalParticle(Map *map, xmlNodePtr animationNode,
+RotationalParticle::RotationalParticle(Map *map, XmlNodePtr animationNode,
                                        const std::string& dyePalettes):
-    ImageParticle(map, 0),
+    ImageParticle(map, nullptr),
     mAnimation(new SimpleAnimation(animationNode, dyePalettes))
 {
 }
@@ -61,12 +61,12 @@ bool RotationalParticle::update()
 
     float rad = static_cast<float>(atan2(mVelocity.x, mVelocity.y));
     if (rad < 0)
-        rad = static_cast<float>(PI + (PI + rad));
+        rad = static_cast<float>(PI) + static_cast<float>(PI) + rad;
 
     float range = static_cast<float>(PI / size);
 
     // Determines which frame the particle should play
-    if (rad < range || rad > ((PI*2) - range))
+    if (rad < range || rad > ((static_cast<float>(PI)*2) - range))
     {
         mAnimation->setFrame(0);
     }

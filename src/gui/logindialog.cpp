@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -184,8 +184,16 @@ void LoginDialog::action(const gcn::ActionEvent &event)
             serverConfig.setValue("customUpdateHost",
                 mUpdateHostText->getText());
 
-            mLoginData->updateHost = mUpdateHostText->getText();
-            *mUpdateHost = mUpdateHostText->getText();
+            if (checkPath(mUpdateHostText->getText()))
+            {
+                mLoginData->updateHost = mUpdateHostText->getText();
+                *mUpdateHost = mUpdateHostText->getText();
+            }
+            else
+            {
+                mLoginData->updateHost = "";
+                *mUpdateHost = "";
+            }
         }
         mLoginData->updateType = updateType;
         serverConfig.setValue("updateType", updateType);

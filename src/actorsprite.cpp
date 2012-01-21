@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -164,7 +164,7 @@ static EffectDescription *default_effect = nullptr;
 static std::map<int, EffectDescription *> effects;
 static bool effects_initialized = false;
 
-static EffectDescription *getEffectDescription(xmlNodePtr node, int *id)
+static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
 {
     EffectDescription *ed = new EffectDescription;
 
@@ -180,9 +180,9 @@ static EffectDescription *getEffectDescription(int effectId)
     if (!effects_initialized)
     {
         XML::Document doc(EFFECTS_FILE);
-        xmlNodePtr root = doc.rootNode();
+        XmlNodePtr root = doc.rootNode();
 
-        if (!root || !xmlStrEqual(root->name, BAD_CAST "being-effects"))
+        if (!root || !xmlNameEqual(root, "being-effects"))
         {
             logger->log1("Error loading being effects file: "
                     EFFECTS_FILE);
@@ -193,13 +193,13 @@ static EffectDescription *getEffectDescription(int effectId)
         {
             int id;
 
-            if (xmlStrEqual(node->name, BAD_CAST "effect"))
+            if (xmlNameEqual(node, "effect"))
             {
                 EffectDescription *EffectDescription =
                     getEffectDescription(node, &id);
                 effects[id] = EffectDescription;
             }
-            else if (xmlStrEqual(node->name, BAD_CAST "default"))
+            else if (xmlNameEqual(node, "default"))
             {
                 EffectDescription *effectDescription =
                     getEffectDescription(node, &id);
@@ -437,7 +437,7 @@ static const char *cursorSize(int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static std::string targetCursorFile = "graphics/target-cursor-%s-%s.png";
+    static std::string targetCursorFile = "target-cursor-%s-%s.png";
     static int targetWidths[NUM_TC] = {44, 62, 82};
     static int targetHeights[NUM_TC] = {35, 44, 60};
 
@@ -479,8 +479,8 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
     if (size < TC_SMALL || size >= NUM_TC)
         return;
 
-    ResourceManager *resman = ResourceManager::getInstance();
-    ImageSet *currentImageSet = resman->getImageSet(filename, width, height);
+    ImageSet *currentImageSet = Theme::getImageSetFromTheme(
+        filename, width, height);
 
     if (!currentImageSet)
     {

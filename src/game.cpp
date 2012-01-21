@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -216,7 +216,9 @@ static void createGuiWindows()
     minimap = new Minimap;
     helpWindow = new HelpWindow;
     debugWindow = new DebugWindow;
-    itemShortcutWindow = new ShortcutWindow("ItemShortcut", "items.xml");
+    itemShortcutWindow = new ShortcutWindow(
+        "ItemShortcut", "items.xml", 83, 460);
+
     for (int f = 0; f < SHORTCUT_TABS; f ++)
     {
         itemShortcutWindow->addTab(toString(f + 1),
@@ -551,9 +553,9 @@ void Game::logic()
 
         if (Client::getState() != STATE_ERROR)
         {
-            errorMessage = _("The connection to the server was lost.");
             if (!disconnectedDialog)
             {
+                errorMessage = _("The connection to the server was lost.");
                 disconnectedDialog = new OkDialog(_("Network Error"),
                                                   errorMessage, false);
                 disconnectedDialog->addActionListener(&errorListener);
@@ -561,14 +563,20 @@ void Game::logic()
             }
         }
 
-        if (viewport)
+        if (viewport && !errorMessage.empty())
         {
             Map *map = viewport->getCurrentMap();
             if (map)
+            {
+                logger->log("state: %d", Client::getState());
                 map->saveExtraLayer();
+            }
         }
         closeDialogs();
         Client::setFramerate(config.getIntValue("fpslimit"));
+        mNextAdjustTime = cur_time + adjustDelay;
+        if (Client::getState() != STATE_ERROR)
+            errorMessage = "";
     }
     else
     {
@@ -598,7 +606,10 @@ void Game::adjustPerfomance()
             return;
         }
 
-        int maxFps = config.getIntValue("fpslimit");
+        int maxFps = Client::getFramerate();
+        if (maxFps != config.getIntValue("fpslimit"))
+            return;
+
         if (!maxFps)
             maxFps = 30;
         else if (maxFps < 10)
@@ -1087,6 +1098,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
         gcn::Window *requestedWindow = nullptr;
 
         if (!NpcDialog::isAnyInputFocused()
+            && !InventoryWindow::isAnyInputFocused()
             && !keyboard.isKeyActive(keyboard.KEY_TARGET)
             && !keyboard.isKeyActive(keyboard.KEY_UNTARGET))
         {
@@ -1507,8 +1519,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         }
 
         // Talk to the nearest NPC if 't' pressed
-        if (event.type == SDL_KEYDOWN &&
-            keyboard.getKeyIndex(event.key.keysym.sym)
+        if (wasDown && keyboard.getKeyIndex(event.key.keysym.sym)
             == KeyboardConfig::KEY_TALK &&
             !keyboard.isKeyActive(keyboard.KEY_EMOTE))
         {
@@ -1574,7 +1585,6 @@ void Game::handleActive(SDL_Event &event)
                 player_node->setHalfAway(true);
             }
         }
-        Client::setFramerate(fpsLimit);
     }
     if (player_node)
         player_node->updateName();
@@ -1584,19 +1594,22 @@ void Game::handleActive(SDL_Event &event)
     if (event.active.state & SDL_APPMOUSEFOCUS)
         Client::setMouseFocused(event.active.gain);
 
-    if (player_node && player_node->getAway())
+    if (!fpsLimit)
     {
-        if (Client::getInputFocused() || Client::getMouseFocused())
-            fpsLimit = config.getIntValue("fpslimit");
+        if (player_node && player_node->getAway())
+        {
+            if (Client::getInputFocused() || Client::getMouseFocused())
+                fpsLimit = config.getIntValue("fpslimit");
+            else
+                fpsLimit = config.getIntValue("altfpslimit");
+        }
         else
-            fpsLimit = config.getIntValue("altfpslimit");
-        Client::setFramerate(fpsLimit);
+        {
+            fpsLimit = config.getIntValue("fpslimit");
+        }
     }
-    else
-    {
-        fpsLimit = config.getIntValue("fpslimit");
-        Client::setFramerate(fpsLimit);
-    }
+    Client::setFramerate(fpsLimit);
+    mNextAdjustTime = cur_time + adjustDelay;
 }
 
 /**

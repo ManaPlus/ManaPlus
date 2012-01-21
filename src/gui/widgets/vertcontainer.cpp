@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -69,6 +69,7 @@ void VertContainer::clear()
     Container::clear();
 
     mCount = 0;
+    mNextY = 0;
 }
 
 void VertContainer::widgetResized(const gcn::Event &event A_UNUSED)

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -23,7 +23,7 @@
 #ifndef MAPREADER_H
 #define MAPREADER_H
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 #include <string>
 
@@ -47,7 +47,7 @@ class MapReader
          * Read an XML map from a parsed XML tree. The path is used to find the
          * location of referenced tileset images.
          */
-        static Map *readMap(xmlNodePtr node, const std::string &path);
+        static Map *readMap(XmlNodePtr node, const std::string &path);
 
     private:
         /**
@@ -57,17 +57,17 @@ class MapReader
          * @param props The Properties instance to which the properties will
          *              be assigned.
          */
-        static void readProperties(xmlNodePtr node, Properties* props);
+        static void readProperties(XmlNodePtr node, Properties* props);
 
         /**
          * Reads a map layer and adds it to the given map.
          */
-        static void readLayer(xmlNodePtr node, Map *map);
+        static void readLayer(XmlNodePtr node, Map *map);
 
         /**
          * Reads a tile set.
          */
-        static Tileset *readTileset(xmlNodePtr node, const std::string &path,
+        static Tileset *readTileset(XmlNodePtr node, const std::string &path,
                                     Map *map);
 };
 

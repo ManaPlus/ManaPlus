@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2007-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -23,6 +23,7 @@
 #include "gui/shortcutwindow.h"
 
 #include "configuration.h"
+#include "logger.h"
 
 #include "gui/setup.h"
 
@@ -58,11 +59,14 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
-    gcn::Window::setTitleBarHeight(gcn::Window::getPadding());
+    gcn::Window::setTitleBarHeight(gcn::Window::getPadding() + 1);
     setShowTitle(false);
     setResizable(true);
     setDefaultVisible(false);
     setSaveVisible(true);
+
+    mDragOffsetX = 0;
+    mDragOffsetY = 0;
 
     setupWindow->registerWindowForReset(this);
 
@@ -104,11 +108,14 @@ ShortcutWindow::ShortcutWindow(const std::string &title, std::string skinFile,
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
-    gcn::Window::setTitleBarHeight(gcn::Window::getPadding());
+    gcn::Window::setTitleBarHeight(gcn::Window::getPadding() + 1);
     setShowTitle(false);
     setResizable(true);
     setDefaultVisible(false);
     setSaveVisible(true);
+
+    mDragOffsetX = 0;
+    mDragOffsetY = 0;
 
     setupWindow->registerWindowForReset(this);
 
@@ -176,5 +183,36 @@ void ShortcutWindow::widgetHidden(const gcn::Event &event)
             if (content)
                 content->widgetHidden(event);
         }
+    }
+}
+
+void ShortcutWindow::mousePressed(gcn::MouseEvent &event)
+{
+    Window::mousePressed(event);
+
+    if (event.isConsumed())
+        return;
+
+    if (event.getButton() == gcn::MouseEvent::LEFT)
+    {
+        mDragOffsetX = event.getX();
+        mDragOffsetY = event.getY();
+    }
+}
+
+void ShortcutWindow::mouseDragged(gcn::MouseEvent &event)
+{
+    Window::mouseDragged(event);
+
+    if (event.isConsumed())
+        return;
+
+    if (canMove() && isMovable() && mMoved)
+    {
+        int newX = std::max(0, getX() + event.getX() - mDragOffsetX);
+        int newY = std::max(0, getY() + event.getY() - mDragOffsetY);
+        newX = std::min(mainGraphics->mWidth - getWidth(), newX);
+        newY = std::min(mainGraphics->mHeight - getHeight(), newY);
+        setPosition(newX, newY);
     }
 }

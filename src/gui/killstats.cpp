@@ -70,8 +70,8 @@ KillStats::KillStats():
         xpNextLevel = 1;
 
     mLine1 = new Label(strprintf(_("Level: %d at %f%%"),
-        player_node->getLevel(), static_cast<float>(xp)
-        / static_cast<float>(xpNextLevel) * 100.0f));
+        player_node->getLevel(), static_cast<double>(xp)
+        / static_cast<double>(xpNextLevel) * 100.0));
 
     mLine2 = new Label(strprintf(_("Exp: %d/%d Left: %d"),
         xp, xpNextLevel, xpNextLevel - xp));
@@ -206,9 +206,9 @@ void KillStats::gainXp(int xp)
         timeDiff = 1;
 
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
-        player_node->getLevel(), static_cast<float>(
-        PlayerInfo::getAttribute(EXP)) / static_cast<float>(
-        xpNextLevel) * 100.0f));
+        player_node->getLevel(), static_cast<double>(
+        PlayerInfo::getAttribute(EXP)) / static_cast<double>(
+        xpNextLevel) * 100.0));
 
     mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"),
         PlayerInfo::getAttribute(EXP), xpNextLevel,

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -23,7 +23,7 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 #include <vector>
 #include <string>

@@ -52,9 +52,9 @@ void EmoteDB::load()
     logger->log1("Initializing emote database...");
 
     XML::Document doc("emotes.xml");
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "emotes"))
+    if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
     {
         logger->log1("Emote Database: Error while loading emotes.xml!");
         return;
@@ -63,7 +63,7 @@ void EmoteDB::load()
     //iterate <emote>s
     for_each_xml_child_node(emoteNode, rootNode)
     {
-        if (!xmlStrEqual(emoteNode->name, BAD_CAST "emote"))
+        if (!xmlNameEqual(emoteNode, "emote"))
             continue;
 
         int id = XML::getProperty(emoteNode, "id", -1);
@@ -81,7 +81,7 @@ void EmoteDB::load()
             if (!spriteNode->xmlChildrenNode)
                 continue;
 
-            if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
+            if (xmlNameEqual(spriteNode, "sprite"))
             {
                 EmoteSprite *currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
@@ -92,7 +92,7 @@ void EmoteDB::load()
                 currentSprite->name = XML::getProperty(spriteNode, "name", "");
                 currentInfo->sprites.push_back(currentSprite);
             }
-            else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
+            else if (xmlNameEqual(spriteNode, "particlefx"))
             {
                 std::string particlefx = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);
@@ -108,7 +108,7 @@ void EmoteDB::load()
     XML::Document doc2("graphics/sprites/manaplus_emotes.xml");
     rootNode = doc2.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "emotes"))
+    if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
     {
         logger->log1("Emote Database: Error while loading"
                      " manaplus_emotes.xml!");
@@ -118,7 +118,7 @@ void EmoteDB::load()
     //iterate <emote>s
     for_each_xml_child_node(emoteNode, rootNode)
     {
-        if (!xmlStrEqual(emoteNode->name, BAD_CAST "emote"))
+        if (!xmlNameEqual(emoteNode, "emote"))
             continue;
 
         int id = XML::getProperty(emoteNode, "id", -1);
@@ -136,7 +136,7 @@ void EmoteDB::load()
             if (!spriteNode->xmlChildrenNode)
                 continue;
 
-            if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
+            if (xmlNameEqual(spriteNode, "sprite"))
             {
                 EmoteSprite *currentSprite = new EmoteSprite;
                 std::string file = paths.getStringValue("sprites")
@@ -147,7 +147,7 @@ void EmoteDB::load()
                 currentSprite->name = XML::getProperty(spriteNode, "name", "");
                 currentInfo->sprites.push_back(currentSprite);
             }
-            else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
+            else if (xmlNameEqual(spriteNode, "particlefx"))
             {
                 std::string particlefx = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);

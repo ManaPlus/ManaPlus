@@ -26,6 +26,7 @@
 
 #include <string>
 #include <set>
+#include <vector>
 
 #include "configlistener.h"
 
@@ -65,7 +66,9 @@ class WhoIsOnline : public Window,
     /**
      * Loads and display online list from the memory buffer.
      */
-    void loadList();
+    void loadWebList();
+
+    void loadList(std::vector<std::string> &list);
 
     void handleLink(const std::string& link, gcn::MouseEvent *event);
 
@@ -82,6 +85,10 @@ class WhoIsOnline : public Window,
     { mAllowUpdate = n; }
 
     void optionChanged(const std::string &name);
+
+    void updateList(std::vector<std::string> &list);
+
+    void readFromWeb();
 
 private:
     void download();
@@ -101,6 +108,13 @@ private:
 
     const std::string prepareNick(std::string nick, int level,
                                   std::string color) const;
+
+    void updateWindow(std::vector<std::string> &friends,
+                      std::vector<std::string> &neutral,
+                      std::vector<std::string> &disregard,
+                      std::vector<std::string> enemy,
+                      int numOnline);
+
     enum DownloadStatus
     {
         UPDATE_ERROR = 0,
@@ -136,5 +150,7 @@ private:
     bool mShowLevel;
     bool mUpdateOnlineList;
 };
+
+extern WhoIsOnline *whoIsOnline;
 
 #endif

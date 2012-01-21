@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -44,7 +44,7 @@ public:
      * @see Window::Window
      */
     TextDialog(const std::string &title, const std::string &msg,
-               Window *parent = 0, bool isPassword = false);
+               Window *parent = nullptr, bool isPassword = false);
 
     ~TextDialog();
 

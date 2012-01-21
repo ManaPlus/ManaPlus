@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -98,7 +98,7 @@ extern MiniStatusWindow *miniStatusWindow;
 extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
-    Being(id, PLAYER, subtype, 0),
+    Being(id, PLAYER, subtype, nullptr),
     mTargetTime(-1),
     mLastTarget(-1),
     mTarget(nullptr),
@@ -112,7 +112,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mPathSetByMouse(false),
     mLocalWalkTime(-1),
     mMessageTime(0),
-    mAwayDialog(0),
+    mAwayDialog(nullptr),
     mAfkTime(0),
     mAwayMode(false),
     mPseudoAwayMode(false),
@@ -151,12 +151,12 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     if (userPalette)
         mNameColor = &userPalette->getColor(UserPalette::SELF);
     else
-        mNameColor = 0;
+        mNameColor = nullptr;
 
     mLastTargetX = 0;
     mLastTargetY = 0;
 
-    mInvertDirection = config.getIntValue("invertMoveDirection");
+    mInvertDirection = 0;
     mCrazyMoveType = config.getIntValue("crazyMoveType");
     mCrazyMoveState = 0;
     mAttackWeaponType = config.getIntValue("attackWeaponType");
@@ -381,7 +381,8 @@ void LocalPlayer::setAction(Action action, int attackType)
         mLastTarget = -1;
         if (!mLastHitFrom.empty())
         {
-            debugMsg(_("You were killed by ") + mLastHitFrom);
+            debugMsg(strprintf(_("You were killed by %s"),
+                mLastHitFrom.c_str()));
             mLastHitFrom = "";
         }
         setTarget(nullptr);
@@ -397,7 +398,11 @@ void LocalPlayer::setGMLevel(int level)
     mGMLevel = level;
 
     if (level > 0)
+    {
         setGM(true);
+        if (chatWindow)
+            chatWindow->loadGMCommands();
+    }
 }
 
 
@@ -1433,13 +1438,17 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo, int amount,
             case PICKUP_BAD_ITEM:
                 msg = N_("Tried to pick up nonexistent item.");
                 break;
-            case PICKUP_TOO_HEAVY: msg = N_("Item is too heavy.");
+            case PICKUP_TOO_HEAVY:
+                msg = N_("Item is too heavy.");
                 break;
-            case PICKUP_TOO_FAR: msg = N_("Item is too far away.");
+            case PICKUP_TOO_FAR:
+                msg = N_("Item is too far away.");
                 break;
-            case PICKUP_INV_FULL: msg = N_("Inventory is full.");
+            case PICKUP_INV_FULL:
+                msg = N_("Inventory is full.");
                 break;
-            case PICKUP_STACK_FULL: msg = N_("Stack is too big.");
+            case PICKUP_STACK_FULL:
+                msg = N_("Stack is too big.");
                 break;
             case PICKUP_DROP_STEAL:
                 msg = N_("Item belongs to someone else.");
@@ -1862,12 +1871,14 @@ void LocalPlayer::moveToHome()
 static const unsigned invertDirectionSize = 5;
 
 void LocalPlayer::changeMode(unsigned *var, unsigned limit, const char *conf,
-                             std::string (LocalPlayer::*func)(), unsigned def)
+                             std::string (LocalPlayer::*func)(), unsigned def,
+                             bool save)
 {
     (*var) ++;
     if (*var >= limit)
         *var = def;
-    config.setValue(conf, *var);
+    if (save)
+        config.setValue(conf, *var);
     if (miniStatusWindow)
         miniStatusWindow->updateStatus();
     const std::string str = (this->*func)();
@@ -1879,7 +1890,7 @@ void LocalPlayer::invertDirection()
 {
     mMoveState = 0;
     changeMode(&mInvertDirection, invertDirectionSize, "invertMoveDirection",
-        &LocalPlayer::getInvertDirectionString);
+        &LocalPlayer::getInvertDirectionString, 0, false);
 }
 
 static const char *invertDirectionStrings[] =
@@ -4118,7 +4129,7 @@ void LocalPlayer::checkNewName(Being *being)
 
 void LocalPlayer::resetYellowBar()
 {
-    mInvertDirection = config.resetIntValue("invertMoveDirection");
+    mInvertDirection = 0;
     mCrazyMoveType = config.resetIntValue("crazyMoveType");
     mMoveToTargetType = config.resetIntValue("moveToTargetType");
     mFollowMode = config.resetIntValue("followMode");

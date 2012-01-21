@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -78,8 +78,6 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
          */
         gcn::Widget *getCurrentWidget();
 
-        using gcn::TabbedArea::addTab;
-
         /**
          * Add a tab. Overridden since it needs to size the widget.
          *
@@ -112,11 +110,11 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         int getContainerHeight() const
         { return mWidgetContainer->getHeight(); }
 
-        using gcn::TabbedArea::setSelectedTab;
-
         void setSelectedTab(gcn::Tab *tab);
 
-        void setSelectedTab(const std::string &name);
+        void setSelectedTabByPos(int tab);
+
+        void setSelectedTabByName(const std::string &name);
 
         void widgetResized(const gcn::Event &event);
 

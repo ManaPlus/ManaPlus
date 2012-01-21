@@ -4,8 +4,8 @@ cd ..
 
 dir=`pwd`
 
-export CC=gcc-4.5
-export CXX=g++-4.5
+export CC=gcc-4.6
+export CXX=g++-4.6
 
 #-D_GLIBCXX_PROFILE
 

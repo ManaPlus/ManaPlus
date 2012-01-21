@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *  Copyright (C) 2009  Aethyra Development Team
  *
  *  This file is part of The ManaPlus Client.
@@ -79,6 +79,7 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mColors[PURPLE] = Theme::getThemeColor(Theme::PURPLE);
     mColors[GRAY] = Theme::getThemeColor(Theme::GRAY);
     mColors[BROWN] = Theme::getThemeColor(Theme::BROWN);
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 BrowserBox::~BrowserBox()
@@ -406,8 +407,8 @@ int BrowserBox::calcHeight()
     char const *hyphen = "~";
     int hyphenWidth = font->getWidth(hyphen);
 
-    gcn::Color selColor = Theme::getThemeColor(Theme::TEXT);
-    const gcn::Color textColor = Theme::getThemeColor(Theme::TEXT);
+    gcn::Color selColor = getForegroundColor();
+    const gcn::Color textColor = getForegroundColor();
     ResourceManager *resman = ResourceManager::getInstance();
 
     mLineParts.clear();
@@ -450,6 +451,7 @@ int BrowserBox::calcHeight()
         }
 
         gcn::Color prevColor = selColor;
+        bold = false;
 
         // TODO: Check if we must take texture size limits into account here
         // TODO: Check if some of the O(n) calls can be removed
@@ -464,8 +466,6 @@ int BrowserBox::calcHeight()
                 x = 15;
                 wrapped = false;
             }
-
-            bold = false;
 
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)
@@ -643,6 +643,35 @@ void BrowserBox::updateHeight()
         setHeight(mHeight);
         mUpdateTime = cur_time;
     }
+}
+
+std::string BrowserBox::getTextAtPos(const int x, const int y)
+{
+    int textX = 0;
+    int textY = 0;
+
+    getAbsolutePosition(textX, textY);
+    if (x < textX || y < textY)
+        return ""; // mouse position ourside of correct widget (outside of tab)
+
+    textX = x - textX;
+    textY = y - textY;
+
+    std::string str = "";
+
+    for (LinePartIterator i = mLineParts.begin();
+        i != mLineParts.end();
+        ++i)
+    {
+        const LinePart &part = *i;
+        if (part.mY + 50 < mYStart)
+            continue;
+        if (part.mY > textY)
+            break;
+        str = part.mText;
+    }
+
+    return str;
 }
 
 LinePart::~LinePart()

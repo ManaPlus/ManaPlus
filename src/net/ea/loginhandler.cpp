@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -150,6 +150,11 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 
     len = msg.readInt16() - 4;
     mUpdateHost = msg.readString(len);
+    if (!checkPath(mUpdateHost))
+    {
+        mUpdateHost = "";
+        logger->log1("Warning: incorrect update server name");
+    }
     loginData.updateHost = mUpdateHost;
 
     logger->log("Received update host \"%s\" from login server.",
@@ -159,7 +164,7 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 void LoginHandler::processLoginData(Net::MessageIn &msg)
 {
     // Skip the length word
-    msg.skip(2);
+    msg.skip(2);    // size
 
     clearWorlds();
 
@@ -168,7 +173,11 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
     mToken.session_ID1 = msg.readInt32();
     mToken.account_ID = msg.readInt32();
     mToken.session_ID2 = msg.readInt32();
-    msg.skip(30);                           // unknown
+    msg.skip(4);                           // old ip
+    loginData.lastLogin = msg.readString(24);
+    msg.skip(2);                           // 0 unused bytes
+
+//    msg.skip(30);                           // unknown
     // reserve bits for future usage
     mToken.sex = (msg.readInt8() & 1) ? GENDER_MALE : GENDER_FEMALE;
 
@@ -179,10 +188,11 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
         world->address = msg.readInt32();
         world->port = msg.readInt16();
         world->name = msg.readString(20);
-        world->online_users = msg.readInt32();
+        world->online_users = msg.readInt16();
         config.setValue("updatehost", mUpdateHost);
         world->updateHost = mUpdateHost;
-        msg.skip(2);                        // unknown
+        msg.skip(2);                        // maintenance
+        msg.skip(2);                        // new
 
         logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),
             ipToString(world->address), world->port);

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -30,6 +30,8 @@
 #include "net/tmwa/npchandler.h"
 #include "net/tmwa/inventoryhandler.h"
 
+#include "gui/whoisonline.h"
+
 #include "debug.h"
 
 extern Net::PlayerHandler *playerHandler;
@@ -50,6 +52,7 @@ PlayerHandler::PlayerHandler()
         SMSG_PLAYER_STAT_UPDATE_5,
         SMSG_PLAYER_STAT_UPDATE_6,
         SMSG_PLAYER_ARROW_MESSAGE,
+        SMSG_ONLINE_LIST,
         0
     };
     handledMessages = _messages;
@@ -96,6 +99,9 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
         case SMSG_PLAYER_ARROW_MESSAGE:
             processPlayerArrowMessage(msg);
             break;
+
+        case SMSG_ONLINE_LIST:
+            processOnlineList(msg);
 
         default:
             break;
@@ -199,6 +205,42 @@ void PlayerHandler::respawn()
 {
     MessageOut outMsg(CMSG_PLAYER_RESTART);
     outMsg.writeInt8(0);
+}
+
+void PlayerHandler::requestOnlineList()
+{
+    MessageOut outMsg(CMSG_ONLINE_LIST);
+}
+
+void PlayerHandler::processOnlineList(Net::MessageIn &msg)
+{
+    if (!whoIsOnline)
+        return;
+
+    int size = msg.readInt16() - 4;
+    std::vector<std::string> arr;
+
+    if (!size)
+    {
+        if (whoIsOnline)
+            whoIsOnline->loadList(arr);
+        return;
+    }
+
+    const char *start = msg.readBytes(size);
+    const char *buf = start;
+
+    while (buf - start + 1 < size && *(buf + 1))
+    {
+//        char status = *buf; // now unused
+        buf ++;
+        arr.push_back(buf);
+        buf += strlen(buf) + 1;
+    }
+
+    if (whoIsOnline)
+        whoIsOnline->loadList(arr);
+    delete [] start;
 }
 
 } // namespace TmwAthena

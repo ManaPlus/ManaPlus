@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -168,7 +168,7 @@ void GuildHandler::processGuildBasicInfo(Net::MessageIn &msg)
     int avgLevel = msg.readInt32(); // Average level
     int exp = msg.readInt32(); // Exp
     int nextExp = msg.readInt32(); // Next exp
-    msg.skip(16); // unused
+    msg.skip(16); // 0 unused
     std::string name = msg.readString(24); // Name
     std::string master = msg.readString(24); // Master's name
     std::string castle = msg.readString(20); // Castles
@@ -242,7 +242,7 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg)
         int exp = msg.readInt32(); // Exp
         int online = msg.readInt32(); // Online
         int pos = msg.readInt32(); // Position
-        msg.skip(50); // unused
+        msg.skip(50); // 0 unused
         std::string name = msg.readString(24); // Name
 
         GuildMember *m = taGuild->addMember(id, charId, name);
@@ -371,11 +371,11 @@ void GuildHandler::processGuildSkillInfo(Net::MessageIn &msg)
     {
         msg.readInt16(); // ID
         msg.readInt16(); // 'Info' (unknown atm)
-        msg.readInt16(); // unused
+        msg.readInt16(); // 0 unused
         msg.readInt16(); // Level
         msg.readInt16(); // SP
         msg.readInt16(); // 'Range'
-        msg.skip(24); // unused
+        msg.skip(24); // 0 unused
         msg.readInt8(); // Can be increased
     }
 }
@@ -479,9 +479,10 @@ void GuildHandler::processGuildLeave(Net::MessageIn &msg)
 
 void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
 {
+    msg.skip(2);    // size (can be many explusions in list)
     std::string nick = msg.readString(24); // Name (of expulsed?)
-    msg.readString(40); // Message
-    msg.skip(24); // unused ("dummy")
+    msg.skip(24); // acc
+    msg.readString(44); // Message
     if (taGuild)
         taGuild->removeMember(nick);
 
@@ -495,7 +496,7 @@ void GuildHandler::processGuildExpulsion(Net::MessageIn &msg)
             taGuild->removeFromMembers();
             taGuild->clearMembers();
         }
-        SERVER_NOTICE(_("You was kicked from guild."));
+        SERVER_NOTICE(_("You were kicked from guild."));
         delete guildTab;
         guildTab = nullptr;
 

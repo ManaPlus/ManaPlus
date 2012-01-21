@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -291,9 +291,9 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         dyePalettes = particleEffectFile.substr(pos + 1);
 
     XML::Document doc(particleEffectFile.substr(0, pos));
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "effect"))
+    if (!rootNode || !xmlNameEqual(rootNode, "effect"))
     {
         logger->log("Error loading particle: %s", particleEffectFile.c_str());
         return nullptr;
@@ -305,11 +305,11 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
     for_each_xml_child_node(effectChildNode, rootNode)
     {
         // We're only interested in particles
-        if (!xmlStrEqual(effectChildNode->name, BAD_CAST "particle"))
+        if (!xmlNameEqual(effectChildNode, "particle"))
             continue;
 
         // Determine the exact particle type
-        xmlNodePtr node;
+        XmlNodePtr node;
 
         // Animation
         if ((node = XML::findFirstChildByName(effectChildNode, "animation")))
@@ -361,14 +361,14 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
         // Look for additional emitters for this particle
         for_each_xml_child_node(emitterNode, effectChildNode)
         {
-            if (xmlStrEqual(emitterNode->name, BAD_CAST "emitter"))
+            if (xmlNameEqual(emitterNode, "emitter"))
             {
                 ParticleEmitter *newEmitter;
                 newEmitter = new ParticleEmitter(emitterNode, newParticle,
                     mMap, rotation, dyePalettes);
                 newParticle->addEmitter(newEmitter);
             }
-            else if (xmlStrEqual(emitterNode->name, BAD_CAST "deatheffect"))
+            else if (xmlNameEqual(emitterNode, "deatheffect"))
             {
                 std::string deathEffect = reinterpret_cast<const char*>(
                     emitterNode->xmlChildrenNode->content);

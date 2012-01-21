@@ -32,9 +32,9 @@
 EffectManager::EffectManager()
 {
     XML::Document doc("effects.xml");
-    xmlNodePtr root = doc.rootNode();
+    XmlNodePtr root = doc.rootNode();
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "being-effects"))
+    if (!root || !xmlNameEqual(root, "being-effects"))
     {
         logger->log1("Error loading being effects file: effects.xml");
         return;
@@ -46,7 +46,7 @@ EffectManager::EffectManager()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "effect"))
+        if (xmlNameEqual(node, "effect"))
         {
             EffectDescription ed;
             ed.id = XML::getProperty(node, "id", -1);

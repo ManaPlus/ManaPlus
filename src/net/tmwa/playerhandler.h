@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -51,6 +51,8 @@ class PlayerHandler : public MessageHandler, public Ea::PlayerHandler
         void setDirection(char direction);
         void setDestination(int x, int y, int direction = -1);
         void changeAction(Being::Action action);
+        void processOnlineList(Net::MessageIn &msg);
+        void requestOnlineList();
 
         void respawn();
 };

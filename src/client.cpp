@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -100,6 +100,9 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/stringutils.h"
+
+#include "test/testlauncher.h"
+#include "test/testmain.h"
 
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
@@ -259,8 +262,8 @@ Client::Client(const Options &options):
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
-    mLogicCounterId(0),
-    mSecondsCounterId(0),
+    mLogicCounterId(nullptr),
+    mSecondsCounterId(nullptr),
     mLimitFps(false),
     mConfigAutoSaved(false),
     mIsMinimized(false),
@@ -269,7 +272,25 @@ Client::Client(const Options &options):
     mGuiAlpha(1.0f)
 {
     mInstance = this;
+}
 
+void Client::testsInit()
+{
+    printf ("testInit\n");
+    if (!mOptions.test.empty())
+    {
+        gameInit();
+    }
+    else
+    {
+        logger = new Logger;
+        initLocalDataDir();
+        initConfigDir();
+    }
+}
+
+void Client::gameInit()
+{
     logger = new Logger;
 
     // Load branding information
@@ -295,7 +316,7 @@ Client::Client(const Options &options):
 #if ENABLE_NLS
     std::string lang = config.getValue("lang", "");
 #ifdef WIN32
-    if (!lang.empty())
+    if (lang.empty())
         lang = std::string(_nl_locale_name_default());
 
     putenv((char*)("LANG=" + lang).c_str());
@@ -644,7 +665,31 @@ Client::Client(const Options &options):
 
 Client::~Client()
 {
-    logger->log1("Quitting1");
+    if (!mOptions.testMode)
+        gameClear();
+    else
+        testsClear();
+}
+
+void Client::testsClear()
+{
+    if (!mOptions.test.empty())
+    {
+        gameClear();
+    }
+    else
+    {
+        BeingInfo::clear();
+
+        //delete logger;
+        //logger = nullptr;
+    }
+}
+
+void Client::gameClear()
+{
+    if (logger)
+        logger->log1("Quitting1");
     config.removeListener("fpslimit", this);
     config.removeListener("guialpha", this);
 
@@ -681,39 +726,45 @@ Client::~Client()
 
     player_relations.store();
 
-    logger->log1("Quitting2");
+    if (logger)
+        logger->log1("Quitting2");
 
     delete gui;
     gui = nullptr;
 
-    logger->log1("Quitting3");
+    if (logger)
+        logger->log1("Quitting3");
 
     delete mainGraphics;
     mainGraphics = nullptr;
 
-    logger->log1("Quitting4");
+    if (logger)
+        logger->log1("Quitting4");
 
-    // Shutdown libxml
-    xmlCleanupParser();
+    XML::cleanupXML();
 
-    logger->log1("Quitting5");
+    if (logger)
+        logger->log1("Quitting5");
 
     BeingInfo::clear();
 
     // Shutdown sound
     sound.close();
 
-    logger->log1("Quitting6");
+    if (logger)
+        logger->log1("Quitting6");
 
     ActorSprite::unload();
 
     ResourceManager::deleteInstance();
 
-    logger->log1("Quitting8");
+    if (logger)
+        logger->log1("Quitting8");
 
     SDL_FreeSurface(mIcon);
 
-    logger->log1("Quitting9");
+    if (logger)
+        logger->log1("Quitting9");
 
     delete userPalette;
     userPalette = nullptr;
@@ -721,7 +772,8 @@ Client::~Client()
     delete joystick;
     joystick = nullptr;
 
-    logger->log1("Quitting10");
+    if (logger)
+        logger->log1("Quitting10");
 
     config.write();
     serverConfig.write();
@@ -729,18 +781,34 @@ Client::~Client()
     config.clear();
     serverConfig.clear();
 
-    logger->log1("Quitting11");
+    if (logger)
+        logger->log1("Quitting11");
 
     delete chatLogger;
     chatLogger = nullptr;
 
-    delete logger;
-    logger = nullptr;
+    //delete logger;
+    //logger = nullptr;
 
     mInstance = nullptr;
 }
 
-int Client::exec()
+int Client::testsExec()
+{
+    if (mOptions.test.empty())
+    {
+        TestMain test;
+        return test.exec();
+    }
+    else
+    {
+        TestLauncher launcher(mOptions.test);
+        return launcher.exec();
+    }
+    return 0;
+}
+
+int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
@@ -1481,6 +1549,12 @@ void Client::initRootDir()
  */
 void Client::initHomeDir()
 {
+    initLocalDataDir();
+    initConfigDir();
+}
+
+void Client::initLocalDataDir()
+{
     mLocalDataDir = mOptions.localDataDir;
 
     if (mLocalDataDir.empty())
@@ -1509,7 +1583,10 @@ void Client::initHomeDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mLocalDataDir.c_str()));
     }
+}
 
+void Client::initConfigDir()
+{
     mConfigDir = mOptions.configDir;
 
     if (mConfigDir.empty())
@@ -1611,6 +1688,8 @@ void Client::initConfiguration()
     config.setValue("musicVolume", 60);
     config.setValue("fpslimit", 60);
     std::string defaultUpdateHost = branding.getValue("defaultUpdateHost", "");
+    if (!checkPath(defaultUpdateHost))
+        defaultUpdateHost = "";
     config.setValue("updatehost", defaultUpdateHost);
     config.setValue("customcursor", true);
     config.setValue("useScreenshotDirectorySuffix", true);
@@ -1623,7 +1702,10 @@ void Client::initConfiguration()
 //    bool oldConfig = false;
 //    int emptySize = config.getSize();
 
-    configPath = mConfigDir + "/config.xml";
+    if (mOptions.test.empty())
+        configPath = mConfigDir + "/config.xml";
+    else
+        configPath = mConfigDir + "/test.xml";
 
     configFile = fopen(configPath.c_str(), "r");
 
@@ -1660,6 +1742,8 @@ void Client::initUpdatesDir()
     // If updatesHost is currently empty, fill it from config file
     if (mUpdateHost.empty())
         mUpdateHost = config.getStringValue("updatehost");
+    if (!checkPath(mUpdateHost))
+        return;
 
     // Don't go out of range int he next check
     if (mUpdateHost.length() < 2)
@@ -2055,6 +2139,11 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_STOPATTACK].cntLimit = 1;
     mPacketLimits[PACKET_STOPATTACK].cnt = 0;
 
+    mPacketLimits[PACKET_ONLINELIST].timeLimit = 1800;
+    mPacketLimits[PACKET_ONLINELIST].lastTime = 0;
+    mPacketLimits[PACKET_ONLINELIST].cntLimit = 1;
+    mPacketLimits[PACKET_ONLINELIST].cnt = 0;
+
     if (!mServerConfigDir.empty())
     {
         std::string packetLimitsName =
@@ -2091,7 +2180,7 @@ void Client::initPacketLimiter()
                     mPacketLimits[f].timeLimit = atoi(line);
             }
             inPacketFile.close();
-            if (ver < 3)
+            if (ver < 4)
                 writePacketLimits(packetLimitsName);
         }
     }
@@ -2106,7 +2195,7 @@ void Client::writePacketLimits(std::string packetLimitsName)
         outPacketFile.close();
         return;
     }
-    outPacketFile << "3" << std::endl;
+    outPacketFile << "4" << std::endl;
     for (int f = 0; f < PACKET_SIZE; f ++)
     {
         outPacketFile << toString(mPacketLimits[f].timeLimit)
@@ -2231,6 +2320,14 @@ void Client::setFramerate(int fpsLimit)
         return;
 
     SDL_setFramerate(&instance()->mFpsManager, fpsLimit);
+}
+
+int Client::getFramerate()
+{
+    if (!instance()->mLimitFps)
+        return 0;
+
+    return SDL_getFramerate(&instance()->mFpsManager);
 }
 
 void Client::closeDialogs()

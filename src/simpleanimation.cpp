@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -44,7 +44,7 @@ SimpleAnimation::SimpleAnimation(Animation *animation):
 {
 }
 
-SimpleAnimation::SimpleAnimation(xmlNodePtr animationNode,
+SimpleAnimation::SimpleAnimation(XmlNodePtr animationNode,
                                  const std::string& dyePalettes):
     mAnimation(new Animation),
     mAnimationTime(0),
@@ -136,7 +136,7 @@ Image *SimpleAnimation::getCurrentImage() const
         return nullptr;
 }
 
-void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
+void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
                                           const std::string& dyePalettes)
 {
     mInitialized = false;
@@ -161,7 +161,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
         return;
 
     // Get animation frames
-    for (xmlNodePtr frameNode = animationNode->xmlChildrenNode;
+    for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;
          frameNode; frameNode = frameNode->next)
     {
         int delay = XML::getProperty(frameNode, "delay", 0);
@@ -171,7 +171,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
         offsetY -= imageset->getHeight() - 32;
         offsetX -= imageset->getWidth() / 2 - 16;
 
-        if (xmlStrEqual(frameNode->name, BAD_CAST "frame"))
+        if (xmlNameEqual(frameNode, "frame"))
         {
             int index = XML::getProperty(frameNode, "index", -1);
 
@@ -192,7 +192,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
             if (mAnimation)
                 mAnimation->addFrame(img, delay, offsetX, offsetY, rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
+        else if (xmlNameEqual(frameNode, "sequence"))
         {
             int start = XML::getProperty(frameNode, "start", -1);
             int end = XML::getProperty(frameNode, "end", -1);
@@ -218,7 +218,7 @@ void SimpleAnimation::initializeAnimation(xmlNodePtr animationNode,
                 start++;
             }
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
+        else if (xmlNameEqual(frameNode, "end"))
         {
             if (mAnimation)
                 mAnimation->addTerminator(rand);

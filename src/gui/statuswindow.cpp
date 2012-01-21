@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -431,8 +431,18 @@ void StatusWindow::addAttribute(int id, const std::string &name,
         disp = new DerDisplay(id, name);
         mDAttrCont->add(disp);
     }
-
     mAttrs[id] = disp;
+}
+
+void StatusWindow::clearAttributes()
+{
+    mAttrCont->clear();
+    mDAttrCont->clear();
+    Attrs::iterator it = mAttrs.begin();
+    Attrs::iterator it_end = mAttrs.end();
+    for (; it != it_end; ++ it)
+        delete (*it).second;
+    mAttrs.clear();
 }
 
 void StatusWindow::updateHPBar(ProgressBar *bar, bool showMax)
@@ -512,7 +522,7 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
                          / static_cast<float>(max);
 
         if (percent)
-            bar->setText(strprintf("%2.5f", 100 * progress) + "%");
+            bar->setText(strprintf("%2.5f%%", static_cast<double>(100 * progress)));
         else
             bar->setText(toString(value) + "/" + toString(max));
 

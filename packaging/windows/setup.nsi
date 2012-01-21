@@ -268,8 +268,6 @@ Section "Core files (required)" SecCore
   File "${SRCDIR}\README.txt"
   SetOutPath "$INSTDIR\data\fonts"
   File "${SRCDIR}\data\fonts\*.ttf"
-  SetOutPath "$INSTDIR\data\graphics"
-  File "${SRCDIR}\data\graphics\*.png"
   SetOutPath "$INSTDIR\data\graphics\gui"
   File "${SRCDIR}\data\graphics\gui\*.png"
   File "${SRCDIR}\data\graphics\gui\*.xml"
@@ -320,6 +318,7 @@ Section "Core files (required)" SecCore
   SetOutPath "$INSTDIR\data\icons\"
   File "${SRCDIR}\data\icons\manaplus.ico"
   SetOutPath "$INSTDIR\data\perserver\default\"
+  File "${SRCDIR}\data\perserver\default\*.txt"
   File "${SRCDIR}\data\perserver\default\*.xml"
   SetOutPath "$INSTDIR\docs"
   File "${SRCDIR}\docs\FAQ.txt"
@@ -332,12 +331,14 @@ Section "Create Shortcuts" SecShortcuts
   CreateShortCut "$SMPROGRAMS\Mana\ManaPlus.lnk" "$INSTDIR\manaplus.exe"
   CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk" "$INSTDIR\manaplus.exe" --no-opengl
   CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk" "$INSTDIR\manaplus.exe" --safemode
+  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (tests).lnk" "$INSTDIR\manaplus.exe" --tests
   CreateShortCut "$DESKTOP\ManaPlus.lnk" "$INSTDIR\manaplus.exe"
+  CreateShortCut "$DESKTOP\ManaPlus (tests).lnk" "$INSTDIR\manaplus.exe" --tests
 
   ${registerExtension} "$INSTDIR\manaplus.exe" ".manaplus" "ManaPlus brandings"
 SectionEnd
 
-Section /o "Music" SecMusic
+Section /o "Music for tmw" SecMusic
   AddSize 17602
   CreateDirectory "$INSTDIR\data\music"
   SetOutPath "$INSTDIR\data\music"
@@ -399,8 +400,11 @@ Section Uninstall
 
   Delete "$SMPROGRAMS\Mana\Uninstall.lnk"
   Delete "$DESKTOP\ManaPlus.lnk"
+  Delete "$DESKTOP\ManaPlus (tests).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus.lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk"
+  Delete "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk"
+  Delete "$SMPROGRAMS\Mana\ManaPlus (tests).lnk"
   Delete "$SMPROGRAMS\Mana\Website.lnk"
   Delete "$SMPROGRAMS\Mana\Readme.lnk"
   Delete "$SMPROGRAMS\Mana\FAQ.lnk"

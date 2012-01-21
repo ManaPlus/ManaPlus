@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -98,7 +98,7 @@ InventoryWindow::WindowList InventoryWindow::instances;
 InventoryWindow::InventoryWindow(Inventory *inventory):
     Window("Inventory", false, nullptr, "inventory.xml"),
     mInventory(inventory),
-    mDropButton(0),
+    mDropButton(nullptr),
     mSplit(false),
     mCompactMode(false)
 {

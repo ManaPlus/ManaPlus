@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -349,9 +349,13 @@ void Sound::playGuiSfx(const std::string &path)
     if (!mInstalled || path.empty() || !mPlayGui)
         return;
 
+    std::string tmpPath;
+    if (!path.compare(0, 4, "sfx/"))
+        tmpPath = path;
+    else
+        tmpPath = paths.getValue("sfx", "sfx/") + path;
     ResourceManager *resman = ResourceManager::getInstance();
-    SoundEffect *sample = resman->getSoundEffect(
-        paths.getStringValue("sfx") + path);
+    SoundEffect *sample = resman->getSoundEffect(tmpPath);
     if (sample)
     {
         logger->log("Sound::playGuiSfx() Playing: %s", path.c_str());

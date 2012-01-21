@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -32,8 +32,6 @@
 #include "resources/resourcemanager.h"
 
 #include "configuration.h"
-
-#include "utils/xml.h"
 
 #include "debug.h"
 
@@ -83,9 +81,9 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
         palettes = animationFile.substr(pos + 1);
 
     XML::Document doc(animationFile.substr(0, pos));
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "sprite"))
+    if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         logger->log("Error, failed to parse %s", animationFile.c_str());
 
@@ -136,7 +134,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::SPAWN, SpriteAction::STAND);
 }
 
-void SpriteDef::loadSprite(xmlNodePtr spriteNode, int variant,
+void SpriteDef::loadSprite(XmlNodePtr spriteNode, int variant,
                            const std::string &palettes)
 {
     // Get the variant
@@ -151,16 +149,16 @@ void SpriteDef::loadSprite(xmlNodePtr spriteNode, int variant,
 
     for_each_xml_child_node(node, spriteNode)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "imageset"))
+        if (xmlNameEqual(node, "imageset"))
             loadImageSet(node, palettes);
-        else if (xmlStrEqual(node->name, BAD_CAST "action"))
+        else if (xmlNameEqual(node, "action"))
             loadAction(node, variant_offset);
-        else if (xmlStrEqual(node->name, BAD_CAST "include"))
+        else if (xmlNameEqual(node, "include"))
             includeSprite(node);
     }
 }
 
-void SpriteDef::loadImageSet(xmlNodePtr node, const std::string &palettes)
+void SpriteDef::loadImageSet(XmlNodePtr node, const std::string &palettes)
 {
     const std::string name = XML::getProperty(node, "name", "");
 
@@ -188,7 +186,7 @@ void SpriteDef::loadImageSet(xmlNodePtr node, const std::string &palettes)
     mImageSets[name] = imageSet;
 }
 
-void SpriteDef::loadAction(xmlNodePtr node, int variant_offset)
+void SpriteDef::loadAction(XmlNodePtr node, int variant_offset)
 {
     const std::string actionName = XML::getProperty(node, "name", "");
     const std::string imageSetName = XML::getProperty(node, "imageset", "");
@@ -225,12 +223,12 @@ void SpriteDef::loadAction(xmlNodePtr node, int variant_offset)
     // Load animations
     for_each_xml_child_node(animationNode, node)
     {
-        if (xmlStrEqual(animationNode->name, BAD_CAST "animation"))
+        if (xmlNameEqual(animationNode, "animation"))
             loadAnimation(animationNode, action, imageSet, variant_offset);
     }
 }
 
-void SpriteDef::loadAnimation(xmlNodePtr animationNode,
+void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                               Action *action, ImageSet *imageSet,
                               int variant_offset)
 {
@@ -264,7 +262,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
         offsetY -= imageSet->getHeight() - 32;
         offsetX -= imageSet->getWidth() / 2 - 16;
 
-        if (xmlStrEqual(frameNode->name, BAD_CAST "frame"))
+        if (xmlNameEqual(frameNode, "frame"))
         {
             const int index = XML::getProperty(frameNode, "index", -1);
 
@@ -284,7 +282,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
 
             animation->addFrame(img, delay, offsetX, offsetY, rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "sequence"))
+        else if (xmlNameEqual(frameNode, "sequence"))
         {
             const int start = XML::getProperty(frameNode, "start", -1);
             const int end = XML::getProperty(frameNode, "end", -1);
@@ -324,22 +322,22 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
                 repeat --;
             }
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "end"))
+        else if (xmlNameEqual(frameNode, "end"))
         {
             animation->addTerminator(rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "jump"))
+        else if (xmlNameEqual(frameNode, "jump"))
         {
             animation->addJump(XML::getProperty(
                 frameNode, "action", ""), rand);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "label"))
+        else if (xmlNameEqual(frameNode, "label"))
         {
             std::string name = XML::getProperty(frameNode, "name", "");
             if (!name.empty())
                 animation->addLabel(name);
         }
-        else if (xmlStrEqual(frameNode->name, BAD_CAST "goto"))
+        else if (xmlNameEqual(frameNode, "goto"))
         {
             std::string name = XML::getProperty(frameNode, "label", "");
             if (!name.empty())
@@ -348,7 +346,7 @@ void SpriteDef::loadAnimation(xmlNodePtr animationNode,
     } // for frameNode
 }
 
-void SpriteDef::includeSprite(xmlNodePtr includeNode)
+void SpriteDef::includeSprite(XmlNodePtr includeNode)
 {
     std::string filename = XML::getProperty(includeNode, "file", "");
 
@@ -365,9 +363,9 @@ void SpriteDef::includeSprite(xmlNodePtr includeNode)
     mProcessedFiles.insert(filename);
 
     XML::Document doc(filename);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "sprite"))
+    if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
     {
         logger->log("Error, no sprite root node in %s", filename.c_str());
         return;

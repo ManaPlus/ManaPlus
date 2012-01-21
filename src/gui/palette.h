@@ -3,7 +3,7 @@
  *  Copyright (C) 2008  Douglas Boffey <dougaboffey@netscape.net>
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -30,6 +30,7 @@
 #include <guichan/color.hpp>
 
 #include <cstdlib>
+#include <map>
 #include <string>
 #include <set>
 #include <vector>
@@ -200,8 +201,10 @@ class Palette
             }
         };
         typedef std::vector<ColorElem> Colors;
+        typedef std::map<unsigned char, int> CharColors;
         /** Vector containing the colors. */
         Colors mColors;
+        CharColors mCharColors;
         std::vector<ColorElem*> mGradVector;
 };
 

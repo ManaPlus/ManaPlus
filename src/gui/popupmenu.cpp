@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -85,7 +85,7 @@ std::string tradePartnerName("");
 PopupMenu::PopupMenu():
     Popup("PopupMenu", "popupmenu.xml"),
     mBeingId(0),
-    mFloorItem(nullptr),
+    mFloorItemId(0),
     mItem(nullptr),
     mItemId(0),
     mItemColor(1),
@@ -95,7 +95,9 @@ PopupMenu::PopupMenu():
     mDialog(nullptr),
     mButton(nullptr),
     mNick(""),
-    mType(Being::UNKNOWN)
+    mType(Being::UNKNOWN),
+    mX(0),
+    mY(0)
 {
     mBrowserBox = new BrowserBox;
     mBrowserBox->setPosition(4, 4);
@@ -120,6 +122,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     mNick = being->getName();
     mType = being->getType();
     mBrowserBox->clearRows();
+    mX = x;
+    mY = y;
 
     const std::string &name = mNick;
 
@@ -346,19 +350,35 @@ void PopupMenu::showPopup(int x, int y, Being *being)
     showPopup(x, y);
 }
 
-void PopupMenu::showPopup(int x, int y, std::vector<Being*> &beings)
+void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
 {
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
-    mBrowserBox->addRow("Players");
-    std::vector<Being*>::const_iterator it, it_end;
+    mBrowserBox->addRow(_("Players"));
+    std::vector<ActorSprite*>::const_iterator it, it_end;
     for (it = beings.begin(), it_end = beings.end(); it != it_end; ++it)
     {
-        Being *being = *it;
-        if (!being->getName().empty())
+        Being *being = dynamic_cast<Being*>(*it);
+        ActorSprite *actor = *it;
+        if (being && !being->getName().empty())
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
                 being->getId(), (being->getName()
                 + being->getGenderSignWithSpace()).c_str()));
+        }
+        else if (actor->getType() == ActorSprite::FLOOR_ITEM)
+        {
+            FloorItem *floorItem = static_cast<FloorItem*>(actor);
+            const ItemInfo &info = floorItem->getInfo();
+            std::string name;
+
+            if (serverVersion > 0)
+                name = info.getName(floorItem->getColor());
+            else
+                name = info.getName();
+            mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
+                actor->getId(), name.c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
@@ -374,6 +394,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mNick = nick;
     mBeingId = 0;
     mType = Being::PLAYER;
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
 
     const std::string &name = mNick;
@@ -507,7 +529,9 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     if (!floorItem)
         return;
 
-    mFloorItem = floorItem;
+    mFloorItemId = floorItem->getId();
+    mX = x;
+    mY = y;
     const ItemInfo &info = floorItem->getInfo();
     mBrowserBox->clearRows();
     std::string name;
@@ -534,6 +558,8 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
         return;
 
     mMapItem = mapItem;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 
@@ -554,10 +580,13 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
 
 void PopupMenu::showOutfitsPopup(int x, int y)
 {
+    mX = x;
+    mY = y;
+
     mBrowserBox->clearRows();
 
     mBrowserBox->addRow(_("Outfits"));
-    mBrowserBox->addRow("load old outfits", _("Load old outfits"));
+    mBrowserBox->addRow("clear outfit", _("Clear outfit"));
 
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -573,6 +602,9 @@ void PopupMenu::showSpellPopup(int x, int y, TextCommand *cmd)
     mBrowserBox->clearRows();
 
     mSpell = cmd;
+    mX = x;
+    mY = y;
+
     mBrowserBox->addRow(_("Spells"));
     mBrowserBox->addRow("load old spells", _("Load old spells"));
     mBrowserBox->addRow("edit spell", _("Edit spell"));
@@ -589,6 +621,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         return;
 
     mTab = tab;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 
@@ -617,6 +651,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         mBrowserBox->addRow("leave party", _("Leave"));
         mBrowserBox->addRow("##3---");
     }
+    mBrowserBox->addRow("chat clipboard", _("Copy to clipboard"));
+    mBrowserBox->addRow("##3---");
 
     if (tab->getType() == ChatTab::TAB_WHISPER)
     {
@@ -815,6 +851,8 @@ void PopupMenu::showChangePos(int x, int y)
     if (!player_node)
         return;
 
+    mX = x;
+    mY = y;
     const Guild *guild = player_node->getGuild();
     if (guild)
     {
@@ -833,11 +871,13 @@ void PopupMenu::showChangePos(int x, int y)
     else
     {
         mBeingId = 0;
-        mFloorItem = nullptr;
+        mFloorItemId = 0;
         mItem = nullptr;
         mMapItem = nullptr;
         mNick = "";
         mType = Being::UNKNOWN;
+        mX = 0;
+        mY = 0;
         setVisible(false);
     }
 }
@@ -998,10 +1038,14 @@ void PopupMenu::handleLink(const std::string &link,
             player_node->setImitate(mNick);
     }
     // Pick Up Floor Item action
-    else if ((link == "pickup") && mFloorItem)
+    else if ((link == "pickup") && mFloorItemId)
     {
-        if (player_node)
-            player_node->pickUp(mFloorItem);
+        if (player_node && actorSpriteManager)
+        {
+            FloorItem *item = actorSpriteManager->findItem(mFloorItemId);
+            if (item)
+                player_node->pickUp(item);
+        }
     }
     // Look To action
     else if (link == "look")
@@ -1066,16 +1110,21 @@ void PopupMenu::handleLink(const std::string &link,
                     chatWindow->addItemText(mItem->getInfo().getName());
                 }
             }
-            else if (mFloorItem)
+            else if (mFloorItemId && actorSpriteManager)
             {
-                if (serverVersion > 0)
+                FloorItem *item = actorSpriteManager->findItem(mFloorItemId);
+
+                if (item)
                 {
-                    chatWindow->addItemText(mFloorItem->getInfo().getName(
-                        mFloorItem->getColor()));
-                }
-                else
-                {
-                    chatWindow->addItemText(mFloorItem->getInfo().getName());
+                    if (serverVersion > 0)
+                    {
+                        chatWindow->addItemText(item->getInfo().getName(
+                            item->getColor()));
+                    }
+                    else
+                    {
+                        chatWindow->addItemText(item->getInfo().getName());
+                    }
                 }
             }
         }
@@ -1291,11 +1340,6 @@ void PopupMenu::handleLink(const std::string &link,
         mDialog->setActionEventId("ok");
         mDialog->addActionListener(&mRenameListener);
     }
-    else if (link == "load old outfits")
-    {
-        if (outfitWindow)
-            outfitWindow->load(true);
-    }
     else if (link == "load old spells")
     {
         if (spellManager)
@@ -1403,6 +1447,11 @@ void PopupMenu::handleLink(const std::string &link,
         mTab->setNoAway(false);
         if (chatWindow)
             chatWindow->saveState();
+    }
+    else if (link == "chat clipboard" && mTab)
+    {
+        if (chatWindow)
+            chatWindow->copyToClipboard(mX, mY);
     }
     else if (link == "remove attack" && being)
     {
@@ -1628,6 +1677,11 @@ void PopupMenu::handleLink(const std::string &link,
         showChangePos(getX(), getY());
         return;
     }
+    else if (link == "clear outfit")
+    {
+        if (outfitWindow)
+            outfitWindow->clearCurrentOutfit();
+    }
     else if (!link.compare(0, 10, "guild-pos-"))
     {
         if (player_node)
@@ -1651,6 +1705,23 @@ void PopupMenu::handleLink(const std::string &link,
             {
                 showPopup(getX(), getY(), being);
                 return;
+            }
+        }
+    }
+    else if (!link.compare(0, 10, "flooritem_"))
+    {
+        if (actorSpriteManager)
+        {
+            int id = atoi(link.substr(10).c_str());
+            if (id)
+            {
+                FloorItem *item = actorSpriteManager->findItem(id);
+                if (item)
+                {
+                    mFloorItemId = item->getId();
+                    showPopup(getX(), getY(), item);
+                    return;
+                }
             }
         }
     }
@@ -1683,13 +1754,15 @@ void PopupMenu::handleLink(const std::string &link,
     setVisible(false);
 
     mBeingId = 0;
-    mFloorItem = nullptr;
+    mFloorItemId = 0;
     mItem = nullptr;
     mItemId = 0;
     mItemColor = 1;
     mMapItem = nullptr;
     mNick = "";
     mType = Being::UNKNOWN;
+    mX = 0;
+    mY = 0;
 }
 
 void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
@@ -1700,6 +1773,8 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
 
     mItem = item;
     mWindow = parent;
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
 
     int cnt = item->getQuantity();
@@ -1793,6 +1868,8 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
         mItem = nullptr;
         mItemId = itemId;
         mItemColor = color;
+        mX = x;
+        mY = y;
         mBrowserBox->clearRows();
 
         mBrowserBox->addRow("use", _("Use"));
@@ -1809,6 +1886,8 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
 void PopupMenu::showItemPopup(int x, int y, Item *item)
 {
     mItem = item;
+    mX = x;
+    mY = y;
     if (item)
     {
         mItemId = item->getId();
@@ -1864,6 +1943,8 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
 void PopupMenu::showDropPopup(int x, int y, Item *item)
 {
     mItem = item;
+    mX = x;
+    mY = y;
     mBrowserBox->clearRows();
 
     if (item)
@@ -1912,6 +1993,8 @@ void PopupMenu::showPopup(int x, int y, Button *button)
         return;
 
     mButton = button;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
     std::vector <gcn::Button*> names = windowMenu->getButtons();
@@ -1947,6 +2030,8 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
         return;
 
     mNick = b->text();
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
     std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
@@ -1988,6 +2073,8 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
 
     mNick = name;
     mType = Being::MONSTER;
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 
@@ -2041,6 +2128,8 @@ void PopupMenu::showUndressPopup(int x, int y, Being *being, Item *item)
     mItem = item;
     mItemId = item->getId();
     mItemColor = item->getColor();
+    mX = x;
+    mY = y;
 
     mBrowserBox->clearRows();
 

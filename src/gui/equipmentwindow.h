@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -85,7 +85,7 @@ class EquipmentWindow : public Window, public gcn::ActionListener
         void mousePressed(gcn::MouseEvent& mouseEvent);
 
         Item* getEquipment(int i)
-        { return mEquipment ? mEquipment->getEquipment(i) : 0; }
+        { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
 
         void setBeing(Being *being);
 
@@ -108,11 +108,11 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void addBox(int idx, int x, int y, int imageIndex);
 
-        void loadWindow(xmlNodePtr windowNode);
+        void loadWindow(XmlNodePtr windowNode);
 
-        void loadPlayerBox(xmlNodePtr playerBoxNode);
+        void loadPlayerBox(XmlNodePtr playerBoxNode);
 
-        void loadSlot(xmlNodePtr slotNode, ImageSet *imageset);
+        void loadSlot(XmlNodePtr slotNode, ImageSet *imageset);
 
         int parseSlotName(std::string name);
 

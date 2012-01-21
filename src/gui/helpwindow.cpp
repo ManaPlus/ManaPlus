@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -114,16 +114,16 @@ void HelpWindow::loadFile(const std::string &file)
     {
         std::string name = helpPath + langs[0] + "/" + file + ".txt";
         if (resman->exists(name))
-            lines = resman->loadTextFile(name);
+            resman->loadTextFile(name, lines);
         if (lines.empty() && langs.size() > 1)
         {
             name = helpPath + langs[1] + "/" + file + ".txt";
-            lines = resman->loadTextFile(name);
+            resman->loadTextFile(name, lines);
         }
     }
 
     if (lines.empty())
-        lines = resman->loadTextFile(helpPath + file + ".txt");
+        resman->loadTextFile(helpPath + file + ".txt", lines);
 
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);

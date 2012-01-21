@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -94,7 +94,7 @@ class ActorSpriteManager: public ConfigListener
         /**
          * Returns a beings at the specific pixel.
          */
-        void findBeingsByPixel(std::vector<Being*> &beings, int x, int y,
+        void findBeingsByPixel(std::vector<ActorSprite*> &beings, int x, int y,
                                bool allPlayers) const;
 
         /**
@@ -123,7 +123,7 @@ class ActorSpriteManager: public ConfigListener
          */
         Being *findNearestLivingBeing(int x, int y, int maxTileDist,
                                       ActorSprite::Type type = Being::UNKNOWN,
-                                      Being *excluded = 0) const;
+                                      Being *excluded = nullptr) const;
 
         /**
          * Returns a being nearest to another being.
@@ -292,12 +292,12 @@ class ActorSpriteManager: public ConfigListener
 
     protected:
         bool validateBeing(Being *aroundBeing, Being* being,
-                           Being::Type type, Being* excluded = 0,
+                           Being::Type type, Being* excluded = nullptr,
                            int maxCost = 20) const;
 
         Being *findNearestLivingBeing(Being *aroundBeing, int maxdist,
                                       Being::Type type, int x, int y,
-                                      Being *excluded = 0) const;
+                                      Being *excluded = nullptr) const;
 
         void loadAttackList();
         void storeAttackList();

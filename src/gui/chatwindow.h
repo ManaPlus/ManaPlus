@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -243,6 +243,8 @@ class ChatWindow : public Window,
 
         void loadCustomList();
 
+        void loadGMCommands();
+
         std::string doReplace(const std::string &msg);
 
         void adjustTabSize();
@@ -257,6 +259,8 @@ class ChatWindow : public Window,
         void parseHighlights();
 
         bool findHighlight(std::string &str);
+
+        void copyToClipboard(int x, int y);
 
     protected:
         friend class ChatTab;
@@ -328,6 +332,7 @@ class ChatWindow : public Window,
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
         std::vector<std::string> mHighlights;
+        bool mGMLoaded;
 };
 
 extern ChatWindow *chatWindow;

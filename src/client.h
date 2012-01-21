@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -131,6 +131,7 @@ enum PacketTypes
     PACKET_DIRECTION = 8,
     PACKET_ATTACK = 9,
     PACKET_STOPATTACK = 10,
+    PACKET_ONLINELIST = 11,
     PACKET_SIZE
 };
 
@@ -162,6 +163,7 @@ public:
             chooseDefault(false),
             noOpenGL(false),
             safeMode(false),
+            testMode(false),
             serverPort(0)
         {}
 
@@ -183,6 +185,8 @@ public:
         std::string localDataDir;
         std::string screenshotDir;
         bool safeMode;
+        bool testMode;
+        std::string test;
 
         std::string serverName;
         short serverPort;
@@ -197,7 +201,13 @@ public:
     static Client *instance()
     { return mInstance; }
 
-    int exec();
+    void gameInit();
+
+    void testsInit();
+
+    int gameExec();
+
+    int testsExec();
 
     static void setState(State state)
     { instance()->mState = state; }
@@ -255,6 +265,8 @@ public:
 
     static void setFramerate(int fpsLimit);
 
+    static int getFramerate();
+
     static bool isTmw();
 
     void optionChanged(const std::string &name);
@@ -277,18 +289,32 @@ public:
 
 private:
     void initRootDir();
+
     void initHomeDir();
+
     void initConfiguration();
+
+    void initLocalDataDir();
+
+    void initConfigDir();
+
     void initUpdatesDir();
+
     void initScreenshotDir();
+
     void initServerConfig(std::string serverName);
 
     bool copyFile(std::string &configPath, std::string &oldConfigPath);
+
     bool createConfig(std::string &configPath);
 
     void accountLogin(LoginData *data);
 
     void storeSafeParameters();
+
+    void gameClear();
+
+    void testsClear();
 
     static Client *mInstance;
 

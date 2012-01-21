@@ -193,14 +193,14 @@ public:
                     attackBot = true;
 
                 // attacking but not talking more than 2 minutes
-                if (talk > 2 * 60 && talk > 2 * 60)
+                if (talk > 2 * 60)
                 {
                     talkBot = true;
                     str += toString((talk) / 60) + " ";
                 }
 
                 // attacking but not moving more than 2 minutes
-                if (move > 2 * 60 && move > 2 * 60)
+                if (move > 2 * 60)
                 {
                     moveBot = true;
                     str += toString((move) / 60);

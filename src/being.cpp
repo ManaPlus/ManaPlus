@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -2071,30 +2071,47 @@ void Being::drawHpBar(Graphics *graphics, int maxHP, int hp, int damage,
 
     int dx = static_cast<int>(static_cast<float>(width) / p);
 
-    if (!damage || (!hp && maxHP == damage))
-    {
-        graphics->setColor(userPalette->getColorWithAlpha(color1));
-
-        graphics->fillRectangle(gcn::Rectangle(
-            x, y, dx, height));
-        return;
+    if (serverVersion < 1)
+    {   // old servers
+        if ((!damage && (this != player_node || hp == maxHP))
+            || (!hp && maxHP == damage))
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color1));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, dx, height));
+            return;
+        }
+        else if (width - dx <= 0)
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color2));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, width, height));
+            return;
+        }
     }
-    else if (width - dx <= 0)
-    {
-        graphics->setColor(userPalette->getColorWithAlpha(color2));
-
-        graphics->fillRectangle(gcn::Rectangle(
-            x, y, width, height));
-        return;
+    else
+    {   // evol servers
+        if (hp == maxHP)
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color1));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, dx, height));
+            return;
+        }
+        else if (width - dx <= 0)
+        {
+            graphics->setColor(userPalette->getColorWithAlpha(color2));
+            graphics->fillRectangle(gcn::Rectangle(
+                x, y, width, height));
+            return;
+        }
     }
 
     graphics->setColor(userPalette->getColorWithAlpha(color1));
-
     graphics->fillRectangle(gcn::Rectangle(
         x, y, dx, height));
 
     graphics->setColor(userPalette->getColorWithAlpha(color2));
-
     graphics->fillRectangle(gcn::Rectangle(
         x + dx, y, width - dx, height));
 }
@@ -2186,6 +2203,12 @@ void Being::recalcSpritesOrder()
                         {
                             std::map<int, int>::const_iterator repIt
                                 = itemReplacer.find(mSpriteIDs[remSprite]);
+                            if (repIt == itemReplacer.end())
+                            {
+                                repIt = itemReplacer.find(0);
+                                if (repIt->second == 0)
+                                    repIt = itemReplacer.end();
+                            }
                             if (repIt != itemReplacer.end())
                             {
                                 mSpriteHide[remSprite] = repIt->second;
@@ -2526,10 +2549,9 @@ void Being::updatePercentHP()
 {
     if (!mMaxHP || !serverVersion)
         return;
-    unsigned num = 0;
     if (mHP)
     {
-        num = mHP * 100 / mMaxHP;
+        unsigned num = mHP * 100 / mMaxHP;
         if (num != mNumber)
         {
             mNumber = num;

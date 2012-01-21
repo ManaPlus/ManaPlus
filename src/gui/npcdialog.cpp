@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -48,7 +48,7 @@
 
 #include "debug.h"
 
-#define CAPTION_WAITING _("Waiting for server")
+#define CAPTION_WAITING _("Stop waiting")
 #define CAPTION_NEXT _("Next")
 #define CAPTION_CLOSE _("Close")
 #define CAPTION_SUBMIT _("Submit")
@@ -220,9 +220,9 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 return;
 
             nextDialog();
-            addText(_("> Next"), false);
         }
-        else if (mActionState == NPC_ACTION_CLOSE)
+        else if (mActionState == NPC_ACTION_CLOSE
+                 || mActionState == NPC_ACTION_WAIT)
         {
             closeDialog();
         }
@@ -500,8 +500,6 @@ void NpcDialog::buildLayout()
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
-
-    mButton->setEnabled(mActionState != NPC_ACTION_WAIT);
 
     redraw();
 

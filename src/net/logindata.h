@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -59,6 +59,7 @@ class LoginData
         std::string password;
         std::string newPassword;
         std::string updateHost;
+        std::string lastLogin;
         int updateType;
 
         std::string email;
@@ -82,6 +83,7 @@ class LoginData
             email.clear();
             captchaResponse.clear();
             gender = GENDER_UNSPECIFIED;
+            lastLogin.clear();
             resetCharacterSlots();
         }
         /**

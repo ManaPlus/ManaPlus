@@ -362,8 +362,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mkdir.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
-	      utils/sha256.cpp \
-	      utils/sha256.h \
+	      utils/process.cpp \
+	      utils/process.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
 	      utils/stringutils.cpp \
@@ -371,6 +371,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mutex.h \
 	      utils/xml.cpp \
 	      utils/xml.h \
+	      test/testlauncher.cpp \
+	      test/testlauncher.h \
+	      test/testmain.cpp \
+	      test/testmain.h \
 	      actor.cpp \
 	      actor.h \
 	      actorsprite.cpp \
@@ -507,7 +511,9 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 
 if ENABLE_MANASERV
 manaplus_CXXFLAGS += -DMANASERV_SUPPORT
-manaplus_SOURCES += net/manaserv/attributes.cpp \
+manaplus_SOURCES += utils/sha256.cpp \
+	      utils/sha256.h \
+	      net/manaserv/attributes.cpp \
 	      net/manaserv/attributes.h \
 	      net/manaserv/adminhandler.cpp \
 	      net/manaserv/adminhandler.h \

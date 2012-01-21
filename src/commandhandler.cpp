@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -32,6 +32,7 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "main.h"
+#include "party.h"
 
 #include "gui/chatwindow.h"
 #include "gui/helpwindow.h"
@@ -201,6 +202,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleServerUnIgnoreAll(args, tab);
     else if (type == "dumpg")
         handleDumpGraphics(args, tab);
+    else if (type == "dumpt")
+        handleDumpTests(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -405,7 +408,6 @@ void CommandHandler::handleParty(const std::string &args, ChatTab *tab)
 
 void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
 {
-    const std::string str = strprintf("*%s*", args.c_str());
     outString(tab, strprintf("*%s*", args.c_str()), args);
 }
 
@@ -1110,7 +1112,7 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += ",0";
 #endif
 
-    str += strprintf(",%f,", Client::getGuiAlpha());
+    str += strprintf(",%f,", static_cast<double>(Client::getGuiAlpha()));
     str += config.getBoolValue("adjustPerfomance") ? "1" : "0";
     str += config.getBoolValue("alphaCache") ? "1" : "0";
     str += config.getBoolValue("enableMapReduce") ? "1" : "0";
@@ -1122,7 +1124,60 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += config.getBoolValue("particleeffects") ? "1" : "0";
 
     str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
-    outString(tab, str, str);
+    outStringNormal(tab, str, str);
+}
+
+void CommandHandler::handleDumpTests(const std::string &args A_UNUSED,
+                                     ChatTab *tab)
+{
+    std::string str = config.getStringValue("testInfo");
+    outStringNormal(tab, str, str);
+}
+
+void CommandHandler::outStringNormal(ChatTab *tab, const std::string &str,
+                                     const std::string &def)
+{
+    if (!player_node)
+        return;
+
+    if (!tab)
+    {
+        Net::getChatHandler()->talk(str);
+        return;
+    }
+
+    switch (tab->getType())
+    {
+        case ChatTab::TAB_PARTY:
+        {
+            Net::getPartyHandler()->chat(str);
+            break;
+        }
+        case ChatTab::TAB_GUILD:
+        {
+            if (!player_node)
+                return;
+            const Guild *guild = player_node->getGuild();
+            if (guild)
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->chat(guild->getId(), str);
+                else if (guildManager)
+                    guildManager->chat(str);
+            }
+            break;
+        }
+        case ChatTab::TAB_WHISPER:
+        {
+            WhisperTab *whisper = static_cast<WhisperTab*>(tab);
+            tab->chatLog(player_node->getName(), str);
+            Net::getChatHandler()->privateMessage(whisper->getNick(), str);
+            break;
+        }
+        default:
+            Net::getChatHandler()->talk(def);
+            break;
+    }
 }
 
 #ifdef DEBUG_DUMP_LEAKS
@@ -1194,3 +1249,82 @@ void CommandHandler::handleDump(const std::string &args A_UNUSED,
 {
 }
 #endif
+
+void CommandHandler::replaceVars(std::string &str)
+{
+    if (!player_node || !actorSpriteManager)
+        return;
+
+    if (str.find("<PLAYER>") != std::string::npos)
+    {
+        Being *target = player_node->getTarget();
+        if (!target || target->getType() != ActorSprite::PLAYER)
+        {
+            target = actorSpriteManager->findNearestLivingBeing(
+                player_node, 20, ActorSprite::PLAYER);
+        }
+        if (target)
+            replaceAll(str, "<PLAYER>", target->getName());
+        else
+            replaceAll(str, "<PLAYER>", "");
+    }
+    if (str.find("<MONSTER>") != std::string::npos)
+    {
+        Being *target = player_node->getTarget();
+        if (!target || target->getType() != ActorSprite::MONSTER)
+        {
+            target = actorSpriteManager->findNearestLivingBeing(
+                player_node, 20, ActorSprite::MONSTER);
+        }
+        if (target)
+            replaceAll(str, "<MONSTER>", target->getName());
+        else
+            replaceAll(str, "<MONSTER>", "");
+    }
+    if (str.find("<PEOPLE>") != std::string::npos)
+    {
+        std::vector<std::string> names;
+        std::string newStr = "";
+        actorSpriteManager->getPlayerNames(names, false);
+        std::vector<std::string>::const_iterator it = names.begin();
+        std::vector<std::string>::const_iterator it_end = names.end();
+        for (; it != it_end; ++ it)
+        {
+            if (*it != player_node->getName())
+                newStr += *it + ",";
+        }
+        if (newStr[newStr.size() - 1] == ',')
+            newStr = newStr.substr(0, newStr.size() - 1);
+        if (!newStr.empty())
+            replaceAll(str, "<PEOPLE>", newStr);
+        else
+            replaceAll(str, "<PEOPLE>", "");
+    }
+    if (str.find("<PARTY>") != std::string::npos)
+    {
+        std::vector<std::string> names;
+        std::string newStr = "";
+        Party *party = nullptr;
+        if (player_node->isInParty() && (party = player_node->getParty()))
+        {
+            party->getNames(names);
+            std::vector<std::string>::const_iterator it = names.begin();
+            std::vector<std::string>::const_iterator it_end = names.end();
+            for (; it != it_end; ++ it)
+            {
+                if (*it != player_node->getName())
+                    newStr += *it + ",";
+            }
+            if (newStr[newStr.size() - 1] == ',')
+                newStr = newStr.substr(0, newStr.size() - 1);
+            if (!newStr.empty())
+                replaceAll(str, "<PARTY>", newStr);
+            else
+                replaceAll(str, "<PARTY>", "");
+        }
+        else
+        {
+            replaceAll(str, "<PARTY>", "");
+        }
+    }
+}

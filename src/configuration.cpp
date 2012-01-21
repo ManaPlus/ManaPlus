@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -27,9 +27,6 @@
 
 #include "utils/paths.h"
 #include "utils/stringutils.h"
-#include "utils/xml.h"
-
-#include <libxml/encoding.h>
 
 #include <stdlib.h>
 
@@ -429,13 +426,13 @@ bool Configuration::resetBoolValue(const std::string &key)
     return defaultValue;
 }
 
-void ConfigurationObject::initFromXML(xmlNodePtr parent_node)
+void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
 {
     clear();
 
     for_each_xml_child_node(node, parent_node)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "list"))
+        if (xmlNameEqual(node, "list"))
         {
             // list option handling
 
@@ -443,7 +440,7 @@ void ConfigurationObject::initFromXML(xmlNodePtr parent_node)
 
             for_each_xml_child_node(subnode, node)
             {
-                if (xmlStrEqual(subnode->name, BAD_CAST name.c_str())
+                if (xmlNameEqual(subnode, name.c_str())
                     && subnode->type == XML_ELEMENT_NODE)
                 {
                     ConfigurationObject *cobj = new ConfigurationObject;
@@ -455,7 +452,7 @@ void ConfigurationObject::initFromXML(xmlNodePtr parent_node)
             }
 
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "option"))
+        else if (xmlNameEqual(node, "option"))
         {
             // single option handling
 
@@ -492,9 +489,9 @@ void Configuration::init(const std::string &filename, bool useResManager)
         return;
     }
 
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "configuration"))
+    if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
     {
         logger->log("Warning: No configuration file (%s)", filename.c_str());
         return;
@@ -503,7 +500,7 @@ void Configuration::init(const std::string &filename, bool useResManager)
     initFromXML(rootNode);
 }
 
-void ConfigurationObject::writeToXML(xmlTextWriterPtr writer)
+void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
 {
     for (Options::const_iterator i = mOptions.begin(), i_end = mOptions.end();
          i != i_end; ++i)
@@ -554,7 +551,7 @@ void Configuration::write()
         fclose(testFile);
     }
 
-    xmlTextWriterPtr writer = xmlNewTextWriterFilename(mConfigPath.c_str(), 0);
+    XmlTextWriterPtr writer = xmlNewTextWriterFilename(mConfigPath.c_str(), 0);
 
     if (!writer)
     {

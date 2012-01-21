@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -333,5 +333,7 @@ enum
 #define SMSG_PVP_SET                 0x019a
 #define CMSG_IGNORE_ALL              0x00d0
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
+#define CMSG_ONLINE_LIST             0x0210
+#define SMSG_ONLINE_LIST             0x0211
 
 #endif

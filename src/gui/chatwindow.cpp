@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -24,6 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "client.h"
+#include "commandhandler.h"
 #include "configuration.h"
 #include "guild.h"
 #include "keyboardconfig.h"
@@ -55,9 +56,12 @@
 #include "net/playerhandler.h"
 #include "net/net.h"
 
+#include "utils/copynpaste.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/resourcemanager.h"
 
 #include <guichan/focushandler.hpp>
 #include <guichan/focuslistener.hpp>
@@ -151,7 +155,8 @@ public:
 ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),
     mTmpVisible(false),
-    mChatHistoryIndex(0)
+    mChatHistoryIndex(0),
+    mGMLoaded(false)
 {
     listen(CHANNEL_NOTICES);
     listen(Mana::CHANNEL_ATTRIBUTES);
@@ -211,6 +216,8 @@ ChatWindow::ChatWindow():
     mColorPicker->setVisible(config.getBoolValue("showChatColorsList"));
 
     fillCommands();
+    if (player_node && player_node->isGM())
+        loadGMCommands();
     initTradeFilter();
     loadCustomList();
     parseHighlights();
@@ -298,7 +305,35 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/serverignoreall");
     mCommands.push_back("/serverunignoreall");
     mCommands.push_back("/dumpg");
+    mCommands.push_back("/dumpt");
     mCommands.push_back("/pseudoaway ");
+    mCommands.push_back("<PLAYER>");
+    mCommands.push_back("<MONSTER>");
+    mCommands.push_back("<PEOPLE>");
+    mCommands.push_back("<PARTY>");
+}
+
+void ChatWindow::loadGMCommands()
+{
+    if (mGMLoaded)
+        return;
+
+    const char *fileName = "gmcommands.txt";
+    ResourceManager *resman = ResourceManager::getInstance();
+    std::vector<std::string> list;
+    resman->loadTextFile(fileName, list);
+    std::vector<std::string>::const_iterator it = list.begin();
+    std::vector<std::string>::const_iterator it_end = list.end();
+
+    while (it != it_end)
+    {
+        const std::string str = *it;
+        if (!str.empty())
+            mCommands.push_back(str);
+
+        ++ it;
+    }
+    mGMLoaded = true;
 }
 
 void ChatWindow::resetToDefaultSize()
@@ -385,11 +420,11 @@ void ChatWindow::prevTab()
 
     int tab = mChatTabs->getSelectedTabIndex();
 
-    if (tab == 0)
+    if (tab <= 0)
         tab = mChatTabs->getNumberOfTabs();
     tab--;
 
-    mChatTabs->setSelectedTab(tab);
+    mChatTabs->setSelectedTabByPos(tab);
 }
 
 void ChatWindow::nextTab()
@@ -403,7 +438,7 @@ void ChatWindow::nextTab()
     if (tab == mChatTabs->getNumberOfTabs())
         tab = 0;
 
-    mChatTabs->setSelectedTab(tab);
+    mChatTabs->setSelectedTabByPos(tab);
 }
 
 void ChatWindow::closeTab()
@@ -425,7 +460,7 @@ void ChatWindow::closeTab()
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
-        mChatTabs->setSelectedTab(static_cast<unsigned>(0));
+        mChatTabs->setSelectedTabByPos(static_cast<unsigned>(0));
 }
 
 void ChatWindow::action(const gcn::ActionEvent &event)
@@ -1145,7 +1180,8 @@ void ChatWindow::autoComplete()
     ChatTab *cTab = static_cast<ChatTab*>(mChatTabs->getSelectedTab());
     std::vector<std::string> nameList;
 
-    cTab->getAutoCompleteList(nameList);
+    if (cTab)
+        cTab->getAutoCompleteList(nameList);
     newName = autoComplete(nameList, name);
 
     if (newName == "" && actorSpriteManager)
@@ -1540,4 +1576,18 @@ void ChatWindow::parseHighlights()
 bool ChatWindow::findHighlight(std::string &str)
 {
     return findI(str, mHighlights) != std::string::npos;
+}
+
+void ChatWindow::copyToClipboard(int x, int y)
+{
+    ChatTab *tab = getFocused();
+    if (!tab)
+        return;
+
+    BrowserBox *text = tab->mTextOutput;
+    if (!text)
+        return;
+
+    std::string str = text->getTextAtPos(x, y);
+    sendBuffer(str);
 }

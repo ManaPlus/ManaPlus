@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -25,6 +25,8 @@
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/popup.h"
+
+#include "actorsprite.h"
 
 #include <guichan/actionlistener.hpp>
 
@@ -102,7 +104,7 @@ class PopupMenu : public Popup, public LinkHandler
         /**
          * Shows the beings related popup menu at the specified mouse coords.
          */
-        void showPopup(int x, int y, std::vector<Being*> &beings);
+        void showPopup(int x, int y, std::vector<ActorSprite*> &beings);
 
         void showPlayerPopup(int x, int y, std::string nick);
 
@@ -158,7 +160,7 @@ class PopupMenu : public Popup, public LinkHandler
         BrowserBox* mBrowserBox;
 
         int mBeingId;
-        FloorItem* mFloorItem;
+        int mFloorItemId;
         Item *mItem;
         int mItemId;
         unsigned char mItemColor;
@@ -172,6 +174,8 @@ class PopupMenu : public Popup, public LinkHandler
         Button *mButton;
         std::string mNick;
         int mType;
+        int mX;
+        int mY;
 
         /**
          * Shared code for the various showPopup functions.

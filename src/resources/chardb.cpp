@@ -1,7 +1,7 @@
 /*
  *  Color database
  *  Copyright (C) 2008  Aethyra Development Team
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -24,10 +24,6 @@
 #include "client.h"
 #include "logger.h"
 
-#include "utils/xml.h"
-
-#include <libxml/tree.h>
-
 #include "debug.h"
 
 namespace
@@ -48,9 +44,9 @@ void CharDB::load()
         unload();
 
     XML::Document *doc = new XML::Document("charcreation.xml");
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
 
-    if (!root || !xmlStrEqual(root->name, BAD_CAST "chars"))
+    if (!root || !xmlNameEqual(root, "chars"))
     {
         logger->log1("CharDB: Failed to parse charcreation.xml.");
 
@@ -60,15 +56,15 @@ void CharDB::load()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "haircolor"))
+        if (xmlNameEqual(node, "haircolor"))
         {
             loadMinMax(node, &mMinHairColor, &mMaxHairColor);
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "hairstyle"))
+        else if (xmlNameEqual(node, "hairstyle"))
         {
             loadMinMax(node, &mMinHairStyle, &mMaxHairStyle);
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "stat"))
+        else if (xmlNameEqual(node, "stat"))
         {
             loadMinMax(node, &mMinStat, &mMaxStat);
             mSumStat = XML::getProperty(node, "sum", 0);
@@ -80,7 +76,7 @@ void CharDB::load()
     mLoaded = true;
 }
 
-void CharDB::loadMinMax(xmlNodePtr node, unsigned *min, unsigned *max)
+void CharDB::loadMinMax(XmlNodePtr node, unsigned *min, unsigned *max)
 {
     *min = XML::getProperty(node, "min", 1);
     *max = XML::getProperty(node, "max", 10);

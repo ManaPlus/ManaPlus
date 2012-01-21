@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *  Copyright (C) 2009  Aethyra Development Team
  *
  *  This file is part of The ManaPlus Client.
@@ -137,6 +137,7 @@ class BrowserBox : public gcn::Widget,
          * Handles mouse actions.
          */
         void mousePressed(gcn::MouseEvent &event);
+
         void mouseMoved(gcn::MouseEvent &event);
 
         /**
@@ -197,6 +198,8 @@ class BrowserBox : public gcn::Widget,
 
         void setEnableImages(bool n)
         { mEnableImages = n; }
+
+        std::string getTextAtPos(const int x, const int y);
 
     private:
         int calcHeight();

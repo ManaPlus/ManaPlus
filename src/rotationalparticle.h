@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2006-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -25,7 +25,7 @@
 
 #include "imageparticle.h"
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 class Animation;
 class Map;
@@ -36,7 +36,7 @@ class RotationalParticle : public ImageParticle
     public:
         RotationalParticle(Map *map, Animation *animation);
 
-        RotationalParticle(Map *map, xmlNodePtr animationNode,
+        RotationalParticle(Map *map, XmlNodePtr animationNode,
                            const std::string& dyePalettes = std::string());
 
         ~RotationalParticle();

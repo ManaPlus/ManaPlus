@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -205,8 +205,7 @@ void ChatTab::chatLog(std::string line, Own own,
 
     // if configured, move magic messages log to debug chat tab
     if (localChatTab && this == localChatTab
-        && ((config.getBoolValue("showMagicInDebug")
-        && own == BY_PLAYER && tmp.text.length() > 1
+        && ((config.getBoolValue("showMagicInDebug") && own == BY_PLAYER
         && tmp.text.length() > 1 && tmp.text.at(0) == '#'
         && tmp.text.at(1) != '#')
         || (config.getBoolValue("serverMsgInDebug") && (own == BY_SERVER
@@ -349,6 +348,9 @@ void ChatTab::chatInput(const std::string &message)
         }
         start = msg.find('[', start + 1);
     }
+
+    if (commandHandler)
+        commandHandler->replaceVars(msg);
 
     // Prepare ordinary message
     if (msg[0] != '/')

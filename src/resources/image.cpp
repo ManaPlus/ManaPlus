@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -473,10 +473,10 @@ Image* Image::SDLmerge(Image *image, int x, int y)
         static_cast<Uint16>(mBounds.h - y));
 
     // for each pixel lines of a source image
-    for (offset_x = (x > 0 ? 0 : -x); offset_x < maxX; offset_x++)
+    for (offset_x = ((x > 0) ? 0 : -x); offset_x < maxX; offset_x++)
     {
         const int x1 = x0 + offset_x;
-        for (offset_y = (y > 0 ? 0 : -y); offset_y < maxY; offset_y++)
+        for (offset_y = ((y > 0) ? 0 : -y); offset_y < maxY; offset_y++)
         {
             // Computing offset on both images
             current_offset = (offset_y * getWidth()) + x1;
