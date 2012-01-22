@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,24 +18,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "localconsts.h"
+#include "utils/checkutils.h"
 
-//#define DEBUG_JOYSTICK 1
+#include <string.h>
 
-#ifdef ENABLE_MEM_DEBUG
+#include "logger.h"
 
-//define _DEBUG_NEW_EMULATE_MALLOC 1
-#include "debug/debug_new.h"
+bool reportFalseReal(bool val, const char* file, unsigned line)
+{
+    if (!val)
+        logger->log("Debug: false value at %s:%u", file, line);
+    return val;
+}
 
-#define reportFalse(val) reportFalse1(val, __FILE__, __LINE__)
-#define reportFalse1(val, file, line) reportFalseReal(val, file, line)
-
-#define reportTrue(val) reportTrue1(val, __FILE__, __LINE__)
-#define reportTrue1(val, file, line) reportTrueReal(val, file, line)
-
-#else
-
-#define reportFalse(val) (val)
-#define reportTrue(val) (val)
-
-#endif
+bool reportTrueReal(bool val, const char* file, unsigned line)
+{
+    if (val)
+        logger->log("Debug: true value at %s:%u", file, line);
+    return val;
+}
