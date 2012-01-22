@@ -1273,10 +1273,12 @@ SocialWindow::SocialWindow() :
 
     loadWindowState();
 
-    mPlayers = new SocialPlayersTab("P");
+    // TRANSLATORS: here P is title for visible players tab in social window
+    mPlayers = new SocialPlayersTab(_("P"));
     mTabs->addTab(mPlayers, mPlayers->mScroll);
 
-    mFriends = new SocialFriendsTab("F");
+    // TRANSLATORS: here F is title for friends tab in social window
+    mFriends = new SocialFriendsTab(_("F"));
     mTabs->addTab(mFriends, mFriends->mScroll);
 
     mNavigation = new SocialNavigationTab();
