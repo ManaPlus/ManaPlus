@@ -452,6 +452,8 @@ SET(SRCS
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
+    utils/physfsrwops.cpp
+    utils/physfsrwops.h
     utils/process.cpp
     utils/process.h
     utils/stringutils.cpp

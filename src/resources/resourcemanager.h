@@ -37,7 +37,9 @@ class Music;
 class Resource;
 class SoundEffect;
 class SpriteDef;
+
 struct SDL_Surface;
+struct SDL_RWops;
 
 /**
  * A class for loading and managing resources.
@@ -48,7 +50,7 @@ class ResourceManager
 
     public:
 
-        typedef Resource *(*loader)(void *, unsigned);
+        typedef Resource *(*loader)(SDL_RWops *);
         typedef Resource *(*generator)(void *);
 
         ResourceManager();
