@@ -509,6 +509,19 @@ std::vector<std::string> getLang()
     return langs;
 }
 
+std::string getLangSimple()
+{
+    std::string lang = config.getValue("lang", "").c_str();
+    if (lang.empty())
+    {
+        char *lng = getenv("LANG");
+        if (!lng)
+            return "";
+        return lng;
+    }
+    return lang;
+}
+
 std::string packList(std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();

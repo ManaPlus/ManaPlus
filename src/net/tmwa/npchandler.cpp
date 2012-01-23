@@ -41,7 +41,8 @@ extern Net::NpcHandler *npcHandler;
 namespace TmwAthena
 {
 
-NpcHandler::NpcHandler()
+NpcHandler::NpcHandler() :
+    mRequestLang(false)
 {
     static const Uint16 _messages[] =
     {
@@ -51,6 +52,7 @@ NpcHandler::NpcHandler()
         SMSG_NPC_CLOSE,
         SMSG_NPC_INT_INPUT,
         SMSG_NPC_STR_INPUT,
+        SMSG_NPC_COMMAND,
         0
     };
     handledMessages = _messages;
@@ -59,8 +61,11 @@ NpcHandler::NpcHandler()
 
 void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
-    getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
+    int npcId = getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
         || msg.getId() == SMSG_NPC_MESSAGE);
+
+    if (msg.getId() != SMSG_NPC_STR_INPUT)
+        mRequestLang = false;
 
     switch (msg.getId())
     {
@@ -85,7 +90,14 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_STR_INPUT:
-            processNpcStrInput(msg);
+            if (mRequestLang)
+                processLangReuqest(msg, npcId);
+            else
+                processNpcStrInput(msg);
+            break;
+
+        case SMSG_NPC_COMMAND:
+            processNpcCommand(msg);
             break;
 
         default:
@@ -225,6 +237,21 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
         mDialog = diag->second.dialog;
     }
     return npcId;
+}
+
+void NpcHandler::processNpcCommand(Net::MessageIn &msg)
+{
+    const int cmd = msg.readInt16();
+    if (cmd == 0)
+        mRequestLang = true;
+    else
+        logger->log("unknown npc command: %d", cmd);
+}
+
+void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED, int npcId)
+{
+    mRequestLang = false;
+    stringInput(npcId, getLangSimple());
 }
 
 } // namespace TmwAthena

@@ -335,5 +335,6 @@ enum
 #define SMSG_IGNORE_ALL_RESPONSE     0x00d2
 #define CMSG_ONLINE_LIST             0x0210
 #define SMSG_ONLINE_LIST             0x0211
+#define SMSG_NPC_COMMAND             0x0212
 
 #endif
