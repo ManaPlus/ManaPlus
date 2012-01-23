@@ -339,7 +339,7 @@ void LoginHandler::readServerInfo(Net::MessageIn &msg)
         return;
 
     // Set the update host when included in the message
-    const std::string updateHost = msg.readString();
+    std::string updateHost = msg.readString();
     if (!updateHost.empty())
     {
         if (!checkPath(updateHost))
