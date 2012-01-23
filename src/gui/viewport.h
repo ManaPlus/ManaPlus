@@ -250,6 +250,14 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
 
         bool isPopupMenuVisible();
 
+        void moveCameraToActor(int actorId, int x = 0, int y = 0);
+
+        void moveCameraToPosition(int x, int y);
+
+        void moveCameraRelative(int x, int y);
+
+        void returnCamera();
+
     protected:
         friend class ActorSpriteManager;
 

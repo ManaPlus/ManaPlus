@@ -875,3 +875,44 @@ bool Viewport::isPopupMenuVisible()
 {
     return mPopupMenu ? mPopupMenu->isVisible() : false;
 }
+
+void Viewport::moveCameraToActor(int actorId, int x, int y)
+{
+    if (!player_node)
+        return;
+
+    Actor *actor = actorSpriteManager->findBeing(actorId);
+    if (!actor)
+        return;
+    Vector actorPos = actor->getPosition();
+    Vector playerPos = player_node->getPosition();
+    mCameraMode = 1;
+    mCameraRelativeX = actorPos.x - playerPos.x + x;
+    mCameraRelativeY = actorPos.y - playerPos.y + y;
+}
+
+void Viewport::moveCameraToPosition(int x, int y)
+{
+    if (!player_node)
+        return;
+
+    Vector playerPos = player_node->getPosition();
+    mCameraMode = 1;
+
+    mCameraRelativeX = x - playerPos.x;
+    mCameraRelativeY = y - playerPos.y;
+}
+
+void Viewport::moveCameraRelative(int x, int y)
+{
+    mCameraMode = 1;
+    mCameraRelativeX += x;
+    mCameraRelativeY += y;
+}
+
+void Viewport::returnCamera()
+{
+    mCameraMode = 0;
+    mCameraRelativeX = 0;
+    mCameraRelativeY = 0;
+}

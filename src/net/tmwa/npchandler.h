@@ -66,7 +66,7 @@ class NpcHandler : public MessageHandler, public Ea::NpcHandler
 
         int getNpc(Net::MessageIn &msg, bool haveLength);
 
-        void processNpcCommand(Net::MessageIn &msg);
+        void processNpcCommand(Net::MessageIn &msg, int npcId);
 
         void processLangReuqest(Net::MessageIn &msg, int npcId);
 

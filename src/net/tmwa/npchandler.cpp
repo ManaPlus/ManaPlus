@@ -25,6 +25,7 @@
 #include "localplayer.h"
 
 #include "gui/npcdialog.h"
+#include "gui/viewport.h"
 
 #include "net/messagein.h"
 #include "net/net.h"
@@ -97,7 +98,7 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_COMMAND:
-            processNpcCommand(msg);
+            processNpcCommand(msg, npcId);
             break;
 
         default:
@@ -239,13 +240,52 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     return npcId;
 }
 
-void NpcHandler::processNpcCommand(Net::MessageIn &msg)
+void NpcHandler::processNpcCommand(Net::MessageIn &msg, int npcId)
 {
     const int cmd = msg.readInt16();
-    if (cmd == 0)
-        mRequestLang = true;
-    else
-        logger->log("unknown npc command: %d", cmd);
+    switch (cmd)
+    {
+        case 0:
+            mRequestLang = true;
+            break;
+
+        case 1:
+            if (viewport)
+                viewport->moveCameraToActor(npcId);
+            break;
+
+        case 2:
+            if (viewport)
+            {
+                const int id = msg.readInt32();
+                const int x = msg.readInt16();
+                const int y = msg.readInt16();
+                if (!id)
+                    viewport->moveCameraToPosition(x, y);
+                else
+                    viewport->moveCameraToActor(id, x, y);
+            }
+            break;
+
+        case 3:
+            if (viewport)
+                viewport->returnCamera();
+            break;
+
+        case 4:
+            if (viewport)
+            {
+                msg.readInt32(); // id
+                const int x = msg.readInt16();
+                const int y = msg.readInt16();
+                viewport->moveCameraRelative(x, y);
+            }
+            break;
+
+        default:
+            logger->log("unknown npc command: %d", cmd);
+            break;
+    }
 }
 
 void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED, int npcId)
