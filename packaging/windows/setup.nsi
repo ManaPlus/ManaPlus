@@ -338,8 +338,8 @@ Section "Create Shortcuts" SecShortcuts
   ${registerExtension} "$INSTDIR\manaplus.exe" ".manaplus" "ManaPlus brandings"
 SectionEnd
 
-Section /o "Music for tmw" SecMusic
-  AddSize 17602
+Section /o "Tmw music" SecTmwMusic
+  AddSize 25200
   CreateDirectory "$INSTDIR\data\music"
   SetOutPath "$INSTDIR\data\music"
   NSISdl::download "http://downloads.sourceforge.net/themanaworld/tmwmusic-0.3.tar.gz" "$TEMP\tmwmusic-0.3.tar.gz"
@@ -353,7 +353,16 @@ Section /o "Portable" SecPortable
   File "portable.xml"
 SectionEnd
 
-Section "Evol shortcuts" SecEvol
+Section /o "Evol Online music" SecEvolMusic
+  AddSize 9787
+  CreateDirectory "$INSTDIR\data\music"
+  SetOutPath "$INSTDIR\data\music"
+  NSISdl::download "http://downloads.sourceforge.net/project/evolonline/music/evolmusic-beta1-1.tar.gz" "$TEMP\evolmusic-beta1-1.tar.gz"
+  untgz::extract -j -d "$INSTDIR\data\music" "$TEMP\evolmusic-beta1-1.tar.gz"
+  Delete "$TEMP\evolmusic-beta1-1.tar.gz"
+SectionEnd
+
+Section "Evol Online shortcuts" SecEvol
   SetOutPath "$INSTDIR"
   CreateDirectory "$INSTDIR\data\evol"
   CreateDirectory "$INSTDIR\data\evol\images"
@@ -376,9 +385,10 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "The core program files."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcuts} "Create game shortcuts and register extensions."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecMusic} "Background tmw music. (If selected the tmw music will be downloaded from the internet.)"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecTmwMusic} "Background tmw music. (If selected the tmw music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvol} "Create shortcuts for Evol Online."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecEvolMusic} "Background evol music. (If selected the evol music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
