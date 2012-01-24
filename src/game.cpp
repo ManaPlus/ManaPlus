@@ -490,7 +490,7 @@ static bool saveScreenshot()
         filenameSuffix.str("");
         filename.str("");
         filename << screenshotDirectory << "/";
-        filenameSuffix << branding.getValue("appShort", "ManaPlus")
+        filenameSuffix << branding.getValue("appName", "ManaPlus")
                        << "_Screenshot_" << screenshotCount << ".png";
         filename << filenameSuffix.str();
         testExists.open(filename.str().c_str(), std::ios::in);

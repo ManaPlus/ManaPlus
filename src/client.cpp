@@ -612,6 +612,7 @@ void Client::gameInit()
     {
         mCurrentServer.hostname =
             branding.getValue("defaultServer", "").c_str();
+        mOptions.serverName = mCurrentServer.hostname;
     }
 
     if (mCurrentServer.port == 0)
@@ -1563,7 +1564,7 @@ void Client::initLocalDataDir()
         // Use Application Directory instead of .mana
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
             "/Library/Application Support/" +
-            branding.getValue("appName", "Mana");
+            branding.getValue("appName", "ManaPlus");
 #elif defined __HAIKU__
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
            "/config/data/Mana";
@@ -1597,13 +1598,13 @@ void Client::initConfigDir()
 #elif defined __HAIKU__
         mConfigDir = std::string(PHYSFS_getUserDir()) +
            "/config/settings/Mana" +
-           branding.getValue("appName", "Mana");
+           branding.getValue("appName", "ManaPlus");
 #elif defined WIN32
         mConfigDir = getSpecialFolderLocation(CSIDL_APPDATA);
         if (mConfigDir.empty())
             mConfigDir = mLocalDataDir;
         else
-            mConfigDir += "/mana/" + branding.getValue("appShort", "Mana");
+            mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
 #else
         mConfigDir = std::string(PHYSFS_getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
@@ -1855,7 +1856,7 @@ void Client::initScreenshotDir()
         if (config.getBoolValue("useScreenshotDirectorySuffix"))
         {
             std::string configScreenshotSuffix =
-                branding.getValue("appShort", "Mana");
+                branding.getValue("appShort", "mana");
 
             if (!configScreenshotSuffix.empty())
             {
@@ -1917,7 +1918,7 @@ bool Client::createConfig(std::string &configPath)
     // Use Application Directory instead of .mana
     oldHomeDir = std::string(PHYSFS_getUserDir()) +
         "/Library/Application Support/" +
-        branding.getValue("appName", "Mana");
+        branding.getValue("appName", "ManaPlus");
 #else
     oldHomeDir = std::string(PHYSFS_getUserDir()) +
         "/." + branding.getValue("appShort", "mana");
