@@ -353,6 +353,20 @@ Section /o "Portable" SecPortable
   File "portable.xml"
 SectionEnd
 
+Section "Evol shortcuts" SecEvol
+  SetOutPath "$INSTDIR"
+  CreateDirectory "$INSTDIR\data\evol"
+  CreateDirectory "$INSTDIR\data\evol\images"
+
+  SetOutPath "$INSTDIR"
+  File "${SRCDIR}\data\evol\evol.manaplus"
+  SetOutPath "$INSTDIR\data\evol\images"
+  File "${SRCDIR}\data\evol\images\*.png"
+
+  CreateShortCut "$SMPROGRAMS\Mana\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"'
+  CreateShortCut "$DESKTOP\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"'
+SectionEnd
+
 Section "Translations" SecTrans
   SetOutPath "$INSTDIR"
   File /nonfatal /r "${SRCDIR}\translations"
@@ -364,6 +378,7 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcuts} "Create game shortcuts and register extensions."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecMusic} "Background tmw music. (If selected the tmw music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecEvol} "Create shortcuts for Evol Online."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
