@@ -26,6 +26,7 @@
 #include "client.h"
 
 #include "gui/setup.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -62,7 +63,10 @@ NpcDialog::NpcDialog(int npcId) :
     mDefaultInt(0),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
-    mLastNextTime(0)
+    mLastNextTime(0),
+    mCameraMode(-1),
+    mCameraX(0),
+    mCameraY(0)
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -301,6 +305,7 @@ void NpcDialog::nextDialog()
 
 void NpcDialog::closeDialog()
 {
+    restoreCamera();
     Net::getNpcHandler()->closeDialog(mNpcId);
 }
 
@@ -504,4 +509,34 @@ void NpcDialog::buildLayout()
     redraw();
 
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
+}
+
+void NpcDialog::saveCamera()
+{
+    if (!viewport || mCameraMode >= 0)
+        return;
+
+    mCameraMode = viewport->getCameraMode();
+    mCameraX = viewport->getCameraRelativeX();
+    mCameraY = viewport->getCameraRelativeY();
+}
+
+void NpcDialog::restoreCamera()
+{
+    if (!viewport || mCameraMode == -1)
+        return;
+
+    if (!mCameraMode)
+    {
+        if (viewport->getCameraMode() != mCameraMode)
+            viewport->toggleCameraMode();
+    }
+    else
+    {
+        if (viewport->getCameraMode() != mCameraMode)
+            viewport->toggleCameraMode();
+        viewport->setCameraRelativeX(mCameraX);
+        viewport->setCameraRelativeY(mCameraY);
+    }
+    mCameraMode = -1;
 }

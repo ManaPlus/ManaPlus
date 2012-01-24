@@ -248,6 +248,12 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int getCameraRelativeY()
         { return mCameraRelativeY; }
 
+        void setCameraRelativeX(int n)
+        { mCameraRelativeX = n; }
+
+        void setCameraRelativeY(int n)
+        { mCameraRelativeY = n; }
+
         bool isPopupMenuVisible();
 
         void moveCameraToActor(int actorId, int x = 0, int y = 0);

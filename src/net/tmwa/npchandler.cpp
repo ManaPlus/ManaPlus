@@ -131,6 +131,8 @@ void NpcHandler::closeDialog(int npcId)
     {
         if ((*it).second.dialog)
             (*it).second.dialog->close();
+        if ((*it).second.dialog == mDialog)
+            mDialog = nullptr;
         mNpcDialogs.erase(it);
     }
 }
@@ -226,6 +228,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
         else
         {
             mDialog = new NpcDialog(npcId);
+            mDialog->saveCamera();
             if (player_node)
                 player_node->stopWalking(false);
             Wrapper wrap;
@@ -235,7 +238,11 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     }
     else
     {
+        if (mDialog && mDialog != diag->second.dialog)
+            mDialog->restoreCamera();
         mDialog = diag->second.dialog;
+        if (mDialog)
+            mDialog->saveCamera();
     }
     return npcId;
 }

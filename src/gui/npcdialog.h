@@ -172,6 +172,10 @@ class NpcDialog : public Window, public gcn::ActionListener,
          */
         static void destroyAll();
 
+        void saveCamera();
+
+        void restoreCamera();
+
     private:
         typedef std::list<NpcDialog*> DialogList;
         static DialogList instances;
@@ -230,6 +234,9 @@ class NpcDialog : public Window, public gcn::ActionListener,
         NpcInputState mInputState;
         NpcActionState mActionState;
         int mLastNextTime;
+        int mCameraMode;
+        int mCameraX;
+        int mCameraY;
 };
 
 #endif // NPCDIALOG_H
