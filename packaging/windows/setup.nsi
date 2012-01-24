@@ -433,6 +433,8 @@ Section Uninstall
   Delete "$SMPROGRAMS\Mana\Website.lnk"
   Delete "$SMPROGRAMS\Mana\Readme.lnk"
   Delete "$SMPROGRAMS\Mana\FAQ.lnk"
+  Delete "$SMPROGRAMS\Mana\EvolOnline.lnk"
+  Delete "$DESKTOP\EvolOnline.lnk"
 
   RMDir "$SMPROGRAMS\Mana"
 
