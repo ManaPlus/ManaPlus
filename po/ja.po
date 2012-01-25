@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-21 19:25+0300\n"
-"PO-Revision-Date: 2012-01-21 09:20+0000\n"
-"Last-Translator: Candy <HarajukuCupcakes@gmail.com>\n"
+"POT-Creation-Date: 2012-01-25 20:17+0300\n"
+"PO-Revision-Date: 2012-01-25 17:27+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/team/"
 "ja/)\n"
 "Language: ja\n"
@@ -45,47 +45,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:946 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:947 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "設定"
 
-#: src/client.cpp:953 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:954 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "パフォーマンス"
 
-#: src/client.cpp:958 src/gui/setup_video.cpp:315
+#: src/client.cpp:959 src/gui/setup_video.cpp:315
 msgid "Video"
 msgstr "ビデオ"
 
-#: src/client.cpp:963
+#: src/client.cpp:964
 msgid "Themes"
 msgstr "テーマ"
 
-#: src/client.cpp:1045
+#: src/client.cpp:1046
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
-#: src/client.cpp:1076
+#: src/client.cpp:1077
 msgid "Logging in"
 msgstr "ログインしています"
 
-#: src/client.cpp:1109
+#: src/client.cpp:1110
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
-#: src/client.cpp:1210
+#: src/client.cpp:1211
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
-#: src/client.cpp:1241
+#: src/client.cpp:1242
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1252
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
-#: src/client.cpp:1294 src/client.cpp:1301 src/client.cpp:1435
+#: src/client.cpp:1295 src/client.cpp:1302 src/client.cpp:1436
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:230 src/gui/charselectdialog.cpp:256
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:401
@@ -95,50 +95,50 @@ msgstr "ゲームサーバーを変更しています"
 msgid "Error"
 msgstr "エラー"
 
-#: src/client.cpp:1310
+#: src/client.cpp:1311
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
-#: src/client.cpp:1336
+#: src/client.cpp:1337
 msgid "Password Change"
 msgstr "パスワード変更"
 
-#: src/client.cpp:1337
+#: src/client.cpp:1338
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました"
 
-#: src/client.cpp:1356
+#: src/client.cpp:1357
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
-#: src/client.cpp:1357
+#: src/client.cpp:1358
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました"
 
-#: src/client.cpp:1377
+#: src/client.cpp:1378
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
-#: src/client.cpp:1378
+#: src/client.cpp:1379
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう"
 
-#: src/client.cpp:1583 src/client.cpp:1616 src/client.cpp:1631
-#: src/client.cpp:2063 src/client.cpp:2070
+#: src/client.cpp:1584 src/client.cpp:1617 src/client.cpp:1632
+#: src/client.cpp:2064 src/client.cpp:2071
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません"
 
-#: src/client.cpp:1769
+#: src/client.cpp:1770
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "無効なアップデートホスト:%s"
 
-#: src/client.cpp:1803 src/client.cpp:1809
+#: src/client.cpp:1804 src/client.cpp:1810
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラー"
 
-#: src/client.cpp:1830
+#: src/client.cpp:1831
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません"
@@ -408,7 +408,7 @@ msgstr "動く"
 msgid "Result"
 msgstr "結果"
 
-#: src/gui/botcheckerwindow.cpp:311 src/gui/npcdialog.cpp:124
+#: src/gui/botcheckerwindow.cpp:311 src/gui/npcdialog.cpp:128
 msgid "Reset"
 msgstr "リセット"
 
@@ -431,16 +431,16 @@ msgstr "量:"
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:108 src/gui/itemamountwindow.cpp:207
-#: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:114
-#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:765
+#: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:118
+#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:770
 msgid "+"
 msgstr "+"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:111 src/gui/itemamountwindow.cpp:206
-#: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:115
-#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:777
+#: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:119
+#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:782
 msgid "-"
 msgstr "-"
 
@@ -452,8 +452,8 @@ msgid "Quit"
 msgstr "終了"
 
 #: src/gui/buydialog.cpp:114 src/gui/selldialog.cpp:95
-#: src/gui/statuswindow.cpp:515 src/gui/statuswindow.cpp:565
-#: src/gui/statuswindow.cpp:764 src/gui/statuswindow.cpp:795
+#: src/gui/statuswindow.cpp:515 src/gui/statuswindow.cpp:570
+#: src/gui/statuswindow.cpp:769 src/gui/statuswindow.cpp:800
 msgid "Max"
 msgstr "最大"
 
@@ -484,7 +484,7 @@ msgstr "売る"
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:82 src/gui/setup.cpp:72
 #: src/gui/socialwindow.cpp:1198 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
-#: src/gui/updaterwindow.cpp:162
+#: src/gui/updaterwindow.cpp:168
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -627,7 +627,7 @@ msgstr "アカウントとキャラクター管理"
 
 #: src/gui/charselectdialog.cpp:139
 msgid "Switch Login"
-msgstr "他のアカウントでログイン"
+msgstr "別アカウントでログイン"
 
 #: src/gui/charselectdialog.cpp:154 src/gui/unregisterdialog.cpp:50
 #: src/gui/unregisterdialog.cpp:58
@@ -908,7 +908,7 @@ msgid "Did You Know?"
 msgstr "豆知識"
 
 #: src/gui/didyouknowwindow.cpp:63 src/gui/helpwindow.cpp:59
-#: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:53
+#: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:54
 #: src/gui/popupmenu.cpp:630 src/gui/shopwindow.cpp:113
 msgid "Close"
 msgstr "閉じる"
@@ -982,7 +982,7 @@ msgstr "フィルタ:"
 #: src/gui/inventorywindow.cpp:556 src/gui/popupmenu.cpp:1814
 #: src/gui/popupmenu.cpp:1910 src/gui/popupmenu.cpp:1957
 msgid "Equip"
-msgstr "装着する"
+msgstr "装着"
 
 #: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:548
 #: src/gui/inventorywindow.cpp:552 src/gui/popupmenu.cpp:1818
@@ -1243,24 +1243,24 @@ msgstr "情勢"
 msgid "Need"
 msgstr "必要"
 
-#: src/gui/npcdialog.cpp:51
+#: src/gui/npcdialog.cpp:52
 msgid "Stop waiting"
 msgstr "キャンセル"
 
-#: src/gui/npcdialog.cpp:52
+#: src/gui/npcdialog.cpp:53
 msgid "Next"
 msgstr "次"
 
-#: src/gui/npcdialog.cpp:54
+#: src/gui/npcdialog.cpp:55
 msgid "Submit"
 msgstr "決定"
 
-#: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
+#: src/gui/npcdialog.cpp:60 src/gui/npcpostdialog.cpp:42
 #: src/gui/setup_other.cpp:151
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:632
+#: src/gui/npcdialog.cpp:112 src/gui/popupmenu.cpp:632
 msgid "Clear"
 msgstr "クリア"
 
@@ -1282,6 +1282,7 @@ msgid "Outfit: %d"
 msgstr "服装: %d"
 
 #: src/gui/outfitwindow.cpp:88 src/gui/outfitwindow.cpp:892
+#: src/gui/windowmenu.cpp:302
 #, c-format
 msgid "Key: %s"
 msgstr "鍵: %s"
@@ -2166,7 +2167,7 @@ msgstr "ボットチェッカーを有効にする"
 
 #: src/gui/setup_other.cpp:174
 msgid "Enable buggy servers protection (do not disable)"
-msgstr "不安定なサーバーの保護を有効にする(無効にしない)"
+msgstr "不安定なサーバー保護を有効にする(無効にしない)"
 
 #: src/gui/setup_other.cpp:178
 msgid "Enable debug log"
@@ -2522,7 +2523,7 @@ msgstr "パーティクル効果"
 
 #: src/gui/setup_video.cpp:293
 msgid "Show pickup notification"
-msgstr "ピックアップ通知表示"
+msgstr "収集通知表示"
 
 #. TRANSLATORS: Refers to "Show own name"
 #: src/gui/setup_video.cpp:295
@@ -2776,7 +2777,7 @@ msgstr "敵を無視する"
 msgid "Create Guild"
 msgstr "ギルドを作成する"
 
-#: src/gui/socialwindow.cpp:1196 src/gui/socialwindow.cpp:1629
+#: src/gui/socialwindow.cpp:1196 src/gui/socialwindow.cpp:1631
 msgid "Create Party"
 msgstr "パーティを作る"
 
@@ -2788,93 +2789,103 @@ msgstr "ソーシャル"
 msgid "Invite"
 msgstr "招待"
 
-#: src/gui/socialwindow.cpp:1412
+#. TRANSLATORS: here P is title for visible players tab in social window
+#: src/gui/socialwindow.cpp:1277
+msgid "P"
+msgstr ""
+
+#. TRANSLATORS: here F is title for friends tab in social window
+#: src/gui/socialwindow.cpp:1281
+msgid "F"
+msgstr ""
+
+#: src/gui/socialwindow.cpp:1414
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "%sからのパーティ招待を承認しました"
 
-#: src/gui/socialwindow.cpp:1422
+#: src/gui/socialwindow.cpp:1424
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "%sからのパーティ招待を拒否しました"
 
-#: src/gui/socialwindow.cpp:1439
+#: src/gui/socialwindow.cpp:1441
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "%sからのギルド招待を承認しました"
 
-#: src/gui/socialwindow.cpp:1452
+#: src/gui/socialwindow.cpp:1454
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "%sからのギルド招待を拒否しました"
 
-#: src/gui/socialwindow.cpp:1499
+#: src/gui/socialwindow.cpp:1501
 #, c-format
 msgid "Creating guild called %s."
 msgstr "ギルド %sを作成しました"
 
-#: src/gui/socialwindow.cpp:1522
+#: src/gui/socialwindow.cpp:1524
 #, c-format
 msgid "Creating party called %s."
 msgstr "パーティ %sを作成しました"
 
-#: src/gui/socialwindow.cpp:1536
+#: src/gui/socialwindow.cpp:1538
 msgid "Guild Name"
 msgstr "ギルド名"
 
-#: src/gui/socialwindow.cpp:1537
+#: src/gui/socialwindow.cpp:1539
 msgid "Choose your guild's name."
 msgstr "ギルド名を選んでください"
 
-#: src/gui/socialwindow.cpp:1551
+#: src/gui/socialwindow.cpp:1553
 msgid "Received guild request, but one already exists."
 msgstr "ギルド招待を承認したが既に入会しています"
 
-#: src/gui/socialwindow.cpp:1557
+#: src/gui/socialwindow.cpp:1559
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%sがギルド %sへ招待しています"
 
-#: src/gui/socialwindow.cpp:1563
+#: src/gui/socialwindow.cpp:1565
 msgid "Accept Guild Invite"
 msgstr "ギルド招待を受け入れる"
 
-#: src/gui/socialwindow.cpp:1578
+#: src/gui/socialwindow.cpp:1580
 msgid "Received party request, but one already exists."
 msgstr "パーティ招待を承認したが既に入会しています"
 
-#: src/gui/socialwindow.cpp:1589
+#: src/gui/socialwindow.cpp:1591
 msgid "You have been invited you to join a party."
 msgstr "パーティに招待されました"
 
-#: src/gui/socialwindow.cpp:1593
+#: src/gui/socialwindow.cpp:1595
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "パーティ %sに招待されました"
 
-#: src/gui/socialwindow.cpp:1601
+#: src/gui/socialwindow.cpp:1603
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%sはあなたをパーティに招待しました"
 
-#: src/gui/socialwindow.cpp:1606
+#: src/gui/socialwindow.cpp:1608
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%sはあなたを%sというパーティに招待しました"
 
-#: src/gui/socialwindow.cpp:1615
+#: src/gui/socialwindow.cpp:1617
 msgid "Accept Party Invite"
 msgstr "パーティ招待を受け入れます"
 
-#: src/gui/socialwindow.cpp:1630
+#: src/gui/socialwindow.cpp:1632
 msgid "Cannot create party. You are already in a party"
 msgstr "パーティーを作成することはできません。もうパーティーに入っています"
 
-#: src/gui/socialwindow.cpp:1635
+#: src/gui/socialwindow.cpp:1637
 msgid "Party Name"
 msgstr "パーティ名"
 
-#: src/gui/socialwindow.cpp:1636
+#: src/gui/socialwindow.cpp:1638
 msgid "Choose your party's name."
 msgstr "パーティ名を選んでください"
 
@@ -3070,29 +3081,29 @@ msgstr "名前: %s"
 msgid "Updating..."
 msgstr "更新しています..."
 
-#: src/gui/updaterwindow.cpp:160
+#: src/gui/updaterwindow.cpp:166
 msgid "Connecting..."
 msgstr "接続しています..."
 
-#: src/gui/updaterwindow.cpp:163
+#: src/gui/updaterwindow.cpp:169
 msgid "Play"
 msgstr "プレイ"
 
-#: src/gui/updaterwindow.cpp:566
+#: src/gui/updaterwindow.cpp:570
 msgid "##1  The update process is incomplete."
 msgstr "##1  アップデートは完了していません"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:568
+#: src/gui/updaterwindow.cpp:572
 msgid "##1  It is strongly recommended that"
 msgstr "##1 する事を強く推奨します"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:570
+#: src/gui/updaterwindow.cpp:574
 msgid "##1  you try again later."
 msgstr "##1  しばらくたってからもう一度試してください"
 
-#: src/gui/updaterwindow.cpp:746
+#: src/gui/updaterwindow.cpp:750
 msgid "Completed"
 msgstr "完了"
 
@@ -4009,7 +4020,7 @@ msgstr "不明なエラーの為拾えません"
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
-msgstr[0] "%d [@@%d|%s@@]を拾いました"
+msgstr[0] "%d [@@%d|%s@@]を手に入れました"
 
 #: src/localplayer.cpp:1898
 msgid "(D) default moves"
@@ -4280,23 +4291,23 @@ msgstr "ゲームモディファイアは無効になってます"
 msgid "Game modifiers are unknown"
 msgstr "不明なゲームモディファイアー"
 
-#: src/localplayer.cpp:3757
+#: src/localplayer.cpp:3758
 msgid "Follow: "
 msgstr "フォロー: "
 
-#: src/localplayer.cpp:3759 src/localplayer.cpp:3774
+#: src/localplayer.cpp:3760 src/localplayer.cpp:3775
 msgid "Follow canceled"
 msgstr "フォローを止める"
 
-#: src/localplayer.cpp:3766
+#: src/localplayer.cpp:3767
 msgid "Imitation: "
 msgstr "真似: "
 
-#: src/localplayer.cpp:3768 src/localplayer.cpp:3776
+#: src/localplayer.cpp:3769 src/localplayer.cpp:3777
 msgid "Imitation canceled"
 msgstr "真似をやめる"
 
-#: src/localplayer.cpp:4124
+#: src/localplayer.cpp:4125
 msgid "You see "
 msgstr " が見える"
 
@@ -4471,7 +4482,7 @@ msgstr "間違ったスロット"
 
 #: src/net/ea/charserverhandler.cpp:167
 msgid "Incorrect race."
-msgstr ""
+msgstr "種別が間違っています"
 
 #: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
@@ -5000,7 +5011,7 @@ msgstr "インベントリーが体重の半分以下になった為、体力は
 #: src/net/ea/playerhandler.cpp:453
 #, c-format
 msgid "You picked up %s."
-msgstr "%sを拾いました"
+msgstr "%sを手に入れました"
 
 #: src/net/ea/playerhandler.cpp:459
 #, c-format

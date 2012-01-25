@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-01-21 19:25+0300\n"
-"PO-Revision-Date: 2012-01-05 20:43+0000\n"
+"POT-Creation-Date: 2012-01-25 20:17+0300\n"
+"PO-Revision-Date: 2012-01-25 17:27+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.net/projects/p/manaplus/"
 "team/zh_CN/)\n"
@@ -43,47 +43,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:946 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:947 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "魔法攻击"
 
-#: src/client.cpp:953 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:954 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "性能"
 
-#: src/client.cpp:958 src/gui/setup_video.cpp:315
+#: src/client.cpp:959 src/gui/setup_video.cpp:315
 msgid "Video"
 msgstr "视频"
 
-#: src/client.cpp:963
+#: src/client.cpp:964
 msgid "Themes"
 msgstr "主题"
 
-#: src/client.cpp:1045
+#: src/client.cpp:1046
 msgid "Connecting to server"
 msgstr "魔法防御"
 
-#: src/client.cpp:1076
+#: src/client.cpp:1077
 msgid "Logging in"
 msgstr "尝试捡起不存在的物品。"
 
-#: src/client.cpp:1109
+#: src/client.cpp:1110
 msgid "Entering game world"
 msgstr "捡起物品发生不存在的物品。"
 
-#: src/client.cpp:1210
+#: src/client.cpp:1211
 msgid "Requesting characters"
 msgstr "请求角色"
 
-#: src/client.cpp:1241
+#: src/client.cpp:1242
 msgid "Connecting to the game server"
 msgstr "连接到游戏服务器"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1252
 msgid "Changing game servers"
 msgstr "更改游戏服务器"
 
-#: src/client.cpp:1294 src/client.cpp:1301 src/client.cpp:1435
+#: src/client.cpp:1295 src/client.cpp:1302 src/client.cpp:1436
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:230 src/gui/charselectdialog.cpp:256
 #: src/gui/register.cpp:228 src/gui/serverdialog.cpp:401
@@ -93,50 +93,50 @@ msgstr "更改游戏服务器"
 msgid "Error"
 msgstr "错误"
 
-#: src/client.cpp:1310
+#: src/client.cpp:1311
 msgid "Requesting registration details"
 msgstr "请求注册的详细信息"
 
-#: src/client.cpp:1336
+#: src/client.cpp:1337
 msgid "Password Change"
 msgstr "密码更改"
 
-#: src/client.cpp:1337
+#: src/client.cpp:1338
 msgid "Password changed successfully!"
 msgstr "更改密码成功！"
 
-#: src/client.cpp:1356
+#: src/client.cpp:1357
 msgid "Email Change"
 msgstr "更改电子邮件"
 
-#: src/client.cpp:1357
+#: src/client.cpp:1358
 msgid "Email changed successfully!"
 msgstr "更改电子邮件成功！"
 
-#: src/client.cpp:1377
+#: src/client.cpp:1378
 msgid "Unregister Successful"
 msgstr "注销成功"
 
-#: src/client.cpp:1378
+#: src/client.cpp:1379
 msgid "Farewell, come back any time..."
 msgstr "再见，随时欢迎回来... ..."
 
-#: src/client.cpp:1583 src/client.cpp:1616 src/client.cpp:1631
-#: src/client.cpp:2063 src/client.cpp:2070
+#: src/client.cpp:1584 src/client.cpp:1617 src/client.cpp:1632
+#: src/client.cpp:2064 src/client.cpp:2071
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，并且无法创建！退出。"
 
-#: src/client.cpp:1769
+#: src/client.cpp:1770
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "无效的更新主机: %s"
 
-#: src/client.cpp:1803 src/client.cpp:1809
+#: src/client.cpp:1804 src/client.cpp:1810
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:1830
+#: src/client.cpp:1831
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在并且无法创建！退出。"
@@ -403,7 +403,7 @@ msgstr "移动"
 msgid "Result"
 msgstr "结果"
 
-#: src/gui/botcheckerwindow.cpp:311 src/gui/npcdialog.cpp:124
+#: src/gui/botcheckerwindow.cpp:311 src/gui/npcdialog.cpp:128
 msgid "Reset"
 msgstr "重置"
 
@@ -426,16 +426,16 @@ msgstr ""
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:108 src/gui/itemamountwindow.cpp:207
-#: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:114
-#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:765
+#: src/gui/itemamountwindow.cpp:235 src/gui/npcdialog.cpp:118
+#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:770
 msgid "+"
 msgstr "+"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:111 src/gui/itemamountwindow.cpp:206
-#: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:115
-#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:777
+#: src/gui/itemamountwindow.cpp:234 src/gui/npcdialog.cpp:119
+#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:782
 msgid "-"
 msgstr "-"
 
@@ -447,8 +447,8 @@ msgid "Quit"
 msgstr "退出"
 
 #: src/gui/buydialog.cpp:114 src/gui/selldialog.cpp:95
-#: src/gui/statuswindow.cpp:515 src/gui/statuswindow.cpp:565
-#: src/gui/statuswindow.cpp:764 src/gui/statuswindow.cpp:795
+#: src/gui/statuswindow.cpp:515 src/gui/statuswindow.cpp:570
+#: src/gui/statuswindow.cpp:769 src/gui/statuswindow.cpp:800
 msgid "Max"
 msgstr "最大"
 
@@ -479,7 +479,7 @@ msgstr "出售"
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:82 src/gui/setup.cpp:72
 #: src/gui/socialwindow.cpp:1198 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
-#: src/gui/updaterwindow.cpp:162
+#: src/gui/updaterwindow.cpp:168
 msgid "Cancel"
 msgstr "取消"
 
@@ -903,7 +903,7 @@ msgid "Did You Know?"
 msgstr "你知道吗？"
 
 #: src/gui/didyouknowwindow.cpp:63 src/gui/helpwindow.cpp:59
-#: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:53
+#: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:54
 #: src/gui/popupmenu.cpp:630 src/gui/shopwindow.cpp:113
 msgid "Close"
 msgstr "关闭"
@@ -1238,24 +1238,24 @@ msgstr "状态栏"
 msgid "Need"
 msgstr "需要"
 
-#: src/gui/npcdialog.cpp:51
+#: src/gui/npcdialog.cpp:52
 msgid "Stop waiting"
 msgstr ""
 
-#: src/gui/npcdialog.cpp:52
+#: src/gui/npcdialog.cpp:53
 msgid "Next"
 msgstr "下一个"
 
-#: src/gui/npcdialog.cpp:54
+#: src/gui/npcdialog.cpp:55
 msgid "Submit"
 msgstr "提交"
 
-#: src/gui/npcdialog.cpp:59 src/gui/npcpostdialog.cpp:42
+#: src/gui/npcdialog.cpp:60 src/gui/npcpostdialog.cpp:42
 #: src/gui/setup_other.cpp:151
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:108 src/gui/popupmenu.cpp:632
+#: src/gui/npcdialog.cpp:112 src/gui/popupmenu.cpp:632
 msgid "Clear"
 msgstr "清除"
 
@@ -1277,6 +1277,7 @@ msgid "Outfit: %d"
 msgstr "套装： %d"
 
 #: src/gui/outfitwindow.cpp:88 src/gui/outfitwindow.cpp:892
+#: src/gui/windowmenu.cpp:302
 #, c-format
 msgid "Key: %s"
 msgstr "按键：%s"
@@ -2767,7 +2768,7 @@ msgstr ""
 msgid "Create Guild"
 msgstr "创建帮会"
 
-#: src/gui/socialwindow.cpp:1196 src/gui/socialwindow.cpp:1629
+#: src/gui/socialwindow.cpp:1196 src/gui/socialwindow.cpp:1631
 msgid "Create Party"
 msgstr "建立"
 
@@ -2779,93 +2780,103 @@ msgstr ""
 msgid "Invite"
 msgstr "邀请"
 
-#: src/gui/socialwindow.cpp:1412
+#. TRANSLATORS: here P is title for visible players tab in social window
+#: src/gui/socialwindow.cpp:1277
+msgid "P"
+msgstr ""
+
+#. TRANSLATORS: here F is title for friends tab in social window
+#: src/gui/socialwindow.cpp:1281
+msgid "F"
+msgstr ""
+
+#: src/gui/socialwindow.cpp:1414
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "接受%s团队的邀请."
 
-#: src/gui/socialwindow.cpp:1422
+#: src/gui/socialwindow.cpp:1424
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "拒绝%s的团队邀请."
 
-#: src/gui/socialwindow.cpp:1439
+#: src/gui/socialwindow.cpp:1441
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "已接受公会邀请来自%s."
 
-#: src/gui/socialwindow.cpp:1452
+#: src/gui/socialwindow.cpp:1454
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "拒绝%s的公会邀请."
 
-#: src/gui/socialwindow.cpp:1499
+#: src/gui/socialwindow.cpp:1501
 #, c-format
 msgid "Creating guild called %s."
 msgstr "创建公会的名为%s"
 
-#: src/gui/socialwindow.cpp:1522
+#: src/gui/socialwindow.cpp:1524
 #, c-format
 msgid "Creating party called %s."
 msgstr "创建团队名字为%s的"
 
-#: src/gui/socialwindow.cpp:1536
+#: src/gui/socialwindow.cpp:1538
 msgid "Guild Name"
 msgstr "公会名称"
 
-#: src/gui/socialwindow.cpp:1537
+#: src/gui/socialwindow.cpp:1539
 msgid "Choose your guild's name."
 msgstr "选择你的公会的名字."
 
-#: src/gui/socialwindow.cpp:1551
+#: src/gui/socialwindow.cpp:1553
 msgid "Received guild request, but one already exists."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1557
+#: src/gui/socialwindow.cpp:1559
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s邀请你加入公会%s"
 
-#: src/gui/socialwindow.cpp:1563
+#: src/gui/socialwindow.cpp:1565
 msgid "Accept Guild Invite"
 msgstr "接受邀请"
 
-#: src/gui/socialwindow.cpp:1578
+#: src/gui/socialwindow.cpp:1580
 msgid "Received party request, but one already exists."
 msgstr "接受到一个已经存在的帮会邀请。"
 
-#: src/gui/socialwindow.cpp:1589
+#: src/gui/socialwindow.cpp:1591
 msgid "You have been invited you to join a party."
 msgstr "您已被邀请您加入党。"
 
-#: src/gui/socialwindow.cpp:1593
+#: src/gui/socialwindow.cpp:1595
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "您已被邀请加入%s的团队。"
 
-#: src/gui/socialwindow.cpp:1601
+#: src/gui/socialwindow.cpp:1603
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s已经邀请你加入他们的帮会。"
 
-#: src/gui/socialwindow.cpp:1606
+#: src/gui/socialwindow.cpp:1608
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s已经邀请你加入帮会%s。"
 
-#: src/gui/socialwindow.cpp:1615
+#: src/gui/socialwindow.cpp:1617
 msgid "Accept Party Invite"
 msgstr "接受帮会邀请"
 
-#: src/gui/socialwindow.cpp:1630
+#: src/gui/socialwindow.cpp:1632
 msgid "Cannot create party. You are already in a party"
 msgstr "无法建立团队.您已经在一个队伍中了"
 
-#: src/gui/socialwindow.cpp:1635
+#: src/gui/socialwindow.cpp:1637
 msgid "Party Name"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1636
+#: src/gui/socialwindow.cpp:1638
 msgid "Choose your party's name."
 msgstr "选择n的名称。"
 
@@ -3059,29 +3070,29 @@ msgstr "姓名：%s"
 msgid "Updating..."
 msgstr "更新..."
 
-#: src/gui/updaterwindow.cpp:160
+#: src/gui/updaterwindow.cpp:166
 msgid "Connecting..."
 msgstr "连接中..."
 
-#: src/gui/updaterwindow.cpp:163
+#: src/gui/updaterwindow.cpp:169
 msgid "Play"
 msgstr "开始"
 
-#: src/gui/updaterwindow.cpp:566
+#: src/gui/updaterwindow.cpp:570
 msgid "##1  The update process is incomplete."
 msgstr "##1 更新过程不完整。"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:568
+#: src/gui/updaterwindow.cpp:572
 msgid "##1  It is strongly recommended that"
 msgstr "##1 强烈建议"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:570
+#: src/gui/updaterwindow.cpp:574
 msgid "##1  you try again later."
 msgstr ""
 
-#: src/gui/updaterwindow.cpp:746
+#: src/gui/updaterwindow.cpp:750
 msgid "Completed"
 msgstr "已完成"
 
@@ -3954,9 +3965,9 @@ msgid ""
 msgstr ""
 
 #: src/localplayer.cpp:384
-#, fuzzy, c-format
+#, c-format
 msgid "You were killed by %s"
-msgstr "你被打死"
+msgstr ""
 
 #: src/localplayer.cpp:1439
 msgid "Tried to pick up nonexistent item."
@@ -4263,23 +4274,23 @@ msgstr ""
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3757
+#: src/localplayer.cpp:3758
 msgid "Follow: "
 msgstr "跟随:"
 
-#: src/localplayer.cpp:3759 src/localplayer.cpp:3774
+#: src/localplayer.cpp:3760 src/localplayer.cpp:3775
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3766
+#: src/localplayer.cpp:3767
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3768 src/localplayer.cpp:3776
+#: src/localplayer.cpp:3769 src/localplayer.cpp:3777
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:4124
+#: src/localplayer.cpp:4125
 msgid "You see "
 msgstr "你看"
 
@@ -4448,9 +4459,8 @@ msgid "Incorrect slot."
 msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:167
-#, fuzzy
 msgid "Incorrect race."
-msgstr "不正确的头发。"
+msgstr ""
 
 #: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:210
 msgid "Info"
@@ -4605,9 +4615,8 @@ msgid "%s has left your guild."
 msgstr "%s已经离开工会."
 
 #: src/net/ea/guildhandler.cpp:499
-#, fuzzy
 msgid "You were kicked from guild."
-msgstr "你已经被工会开除！."
+msgstr ""
 
 #: src/net/ea/guildhandler.cpp:512
 #, c-format
