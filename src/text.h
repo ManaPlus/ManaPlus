@@ -3,7 +3,7 @@
  *  Copyright (C) 2008  Douglas Boffey <DougABoffey@netscape.net>
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -26,6 +26,7 @@
 
 #include "graphics.h"
 #include "guichanfwd.h"
+#include "localconsts.h"
 
 #include <guichan/color.hpp>
 
@@ -42,7 +43,7 @@ class Text
         Text(const std::string &text, int x, int y,
              gcn::Graphics::Alignment alignment,
              const gcn::Color *color, bool isSpeech = false,
-             gcn::Font *font = 0);
+             gcn::Font *font = nullptr);
 
         /**
          * Destructor. The text is removed from the screen.
@@ -90,7 +91,7 @@ class FlashText : public Text
         FlashText(const std::string &text, int x, int y,
                   gcn::Graphics::Alignment alignment,
                   const gcn::Color* color,
-                  gcn::Font *font = 0);
+                  gcn::Font *font = nullptr);
 
         /**
          * Remove the text from the screen

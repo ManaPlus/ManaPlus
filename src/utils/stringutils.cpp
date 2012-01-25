@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2007-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -509,6 +509,19 @@ std::vector<std::string> getLang()
     return langs;
 }
 
+std::string getLangSimple()
+{
+    std::string lang = config.getValue("lang", "").c_str();
+    if (lang.empty())
+    {
+        char *lng = getenv("LANG");
+        if (!lng)
+            return "";
+        return lng;
+    }
+    return lang;
+}
+
 std::string packList(std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();
@@ -611,4 +624,14 @@ std::string &removeProtocol(std::string &url)
     if (i != (int)std::string::npos)
         url = url.substr(i + 3);
     return url;
+}
+
+bool checkPath(std::string path)
+{
+    if (path.empty())
+        return true;
+    return path.find("../") == std::string::npos
+        && path.find("..\\") == std::string::npos
+        && path.find("/..") == std::string::npos
+        && path.find("\\..") == std::string::npos;
 }

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -23,6 +23,7 @@
 #include "resources/itemdb.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "logger.h"
 
 #include "resources/iteminfo.h"
@@ -32,9 +33,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
-#include "configuration.h"
-
-#include <libxml/tree.h>
 
 #include "debug.h"
 
@@ -49,11 +47,11 @@ namespace
 }
 
 // Forward declarations
-static void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node);
-static void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node);
-static void loadFloorSprite(SpriteDisplay *display, xmlNodePtr node);
-static void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode);
-static void loadOrderSprite(ItemInfo *itemInfo, xmlNodePtr node,
+static void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node);
+static void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node);
+static void loadFloorSprite(SpriteDisplay *display, XmlNodePtr node);
+static void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode);
+static void loadOrderSprite(ItemInfo *itemInfo, XmlNodePtr node,
                             bool drawAfter);
 static int parseSpriteName(std::string name);
 static int parseDirectionName(std::string name);
@@ -174,9 +172,9 @@ void ItemDB::load()
     mUnknown->addTag(mTags["All"]);
 
     XML::Document doc("items.xml");
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "items"))
+    if (!rootNode || !xmlNameEqual(rootNode, "items"))
     {
         logger->log("ItemDB: Error while loading items.xml!");
         mLoaded = true;
@@ -185,7 +183,7 @@ void ItemDB::load()
 
     for_each_xml_child_node(node, rootNode)
     {
-        if (!xmlStrEqual(node->name, BAD_CAST "item"))
+        if (!xmlNameEqual(node, "item"))
             continue;
 
         int id = XML::getProperty(node, "id", 0);
@@ -326,7 +324,7 @@ void ItemDB::load()
 
         for_each_xml_child_node(itemChild, node)
         {
-            if (xmlStrEqual(itemChild->name, BAD_CAST "sprite"))
+            if (xmlNameEqual(itemChild, "sprite"))
             {
                 std::string attackParticle = XML::getProperty(
                     itemChild, "particle-effect", "");
@@ -334,23 +332,23 @@ void ItemDB::load()
 
                 loadSpriteRef(itemInfo, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "sound"))
+            else if (xmlNameEqual(itemChild, "sound"))
             {
                 loadSoundRef(itemInfo, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "floor"))
+            else if (xmlNameEqual(itemChild, "floor"))
             {
                 loadFloorSprite(&display, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "replace"))
+            else if (xmlNameEqual(itemChild, "replace"))
             {
                 loadReplaceSprite(itemInfo, itemChild);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "drawAfter"))
+            else if (xmlNameEqual(itemChild, "drawAfter"))
             {
                 loadOrderSprite(itemInfo, itemChild, true);
             }
-            else if (xmlStrEqual(itemChild->name, BAD_CAST "drawBefore"))
+            else if (xmlNameEqual(itemChild, "drawBefore"))
             {
                 loadOrderSprite(itemInfo, itemChild, false);
             }
@@ -595,7 +593,7 @@ int parseDirectionName(std::string name)
     return id;
 }
 
-void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node)
+void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node)
 {
     std::string gender = XML::getProperty(node, "gender", "unisex");
     std::string filename = reinterpret_cast<const char*>(
@@ -607,7 +605,7 @@ void loadSpriteRef(ItemInfo *itemInfo, xmlNodePtr node)
         itemInfo->setSprite(filename, GENDER_FEMALE);
 }
 
-void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node)
+void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node)
 {
     std::string event = XML::getProperty(node, "event", "");
     std::string filename = reinterpret_cast<const char*>(
@@ -628,11 +626,11 @@ void loadSoundRef(ItemInfo *itemInfo, xmlNodePtr node)
     }
 }
 
-void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
+void loadFloorSprite(SpriteDisplay *display, XmlNodePtr floorNode)
 {
     for_each_xml_child_node(spriteNode, floorNode)
     {
-        if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
+        if (xmlNameEqual(spriteNode, "sprite"))
         {
             SpriteReference *currentSprite = new SpriteReference;
             currentSprite->sprite = reinterpret_cast<const char*>(
@@ -641,7 +639,7 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
                 = XML::getProperty(spriteNode, "variant", 0);
             display->sprites.push_back(currentSprite);
         }
-        else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
+        else if (xmlNameEqual(spriteNode, "particlefx"))
         {
             std::string particlefx = reinterpret_cast<const char*>(
                 spriteNode->xmlChildrenNode->content);
@@ -650,7 +648,7 @@ void loadFloorSprite(SpriteDisplay *display, xmlNodePtr floorNode)
     }
 }
 
-void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
+void loadReplaceSprite(ItemInfo *itemInfo, XmlNodePtr replaceNode)
 {
     std::string removeSprite = XML::getProperty(replaceNode, "sprite", "");
     int direction = parseDirectionName(XML::getProperty(
@@ -671,7 +669,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
                     continue;
                 for_each_xml_child_node(itemNode, replaceNode)
                 {
-                    if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                    if (xmlNameEqual(itemNode, "item"))
                     {
                         int from = XML::getProperty(itemNode, "from", 0);
                         int to = XML::getProperty(itemNode, "to", 1);
@@ -693,7 +691,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
 
             for_each_xml_child_node(itemNode, replaceNode)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                if (xmlNameEqual(itemNode, "item"))
                 {
                     int from = XML::getProperty(itemNode, "from", 0);
                     int to = XML::getProperty(itemNode, "to", 1);
@@ -726,7 +724,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
 
             for_each_xml_child_node(itemNode, replaceNode)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                if (xmlNameEqual(itemNode, "item"))
                 {
                     int from = XML::getProperty(itemNode, "from", 0);
                     int to = XML::getProperty(itemNode, "to", 1);
@@ -756,7 +754,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
                 return;
             for_each_xml_child_node(itemNode, replaceNode)
             {
-                if (xmlStrEqual(itemNode->name, BAD_CAST "item"))
+                if (xmlNameEqual(itemNode, "item"))
                 {
                     int from = XML::getProperty(itemNode, "from", 0);
                     int to = XML::getProperty(itemNode, "to", 1);
@@ -768,7 +766,7 @@ void loadReplaceSprite(ItemInfo *itemInfo, xmlNodePtr replaceNode)
     }
 }
 
-void loadOrderSprite(ItemInfo *itemInfo, xmlNodePtr node, bool drawAfter)
+void loadOrderSprite(ItemInfo *itemInfo, XmlNodePtr node, bool drawAfter)
 {
     int sprite = parseSpriteName(XML::getProperty(node, "name", ""));
     int priority = XML::getProperty(node, "priority", 0);

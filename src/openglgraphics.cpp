@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -588,22 +588,25 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
             const int height = (py + scaledHeight >= h)
                 ? h - py : scaledHeight;
             const int dstY = y + py;
+            const int scaledY = srcY + height / scaleFactorH;
             for (int px = 0; px < w; px += scaledWidth)
             {
-                int width = (px + scaledWidth >= w) ? w - px : scaledWidth;
-                int dstX = x + px;
+                const int width = (px + scaledWidth >= w)
+                    ? w - px : scaledWidth;
+                const int dstX = x + px;
+                const int scaledX = srcX + width / scaleFactorW;
 
                 mIntTexArray[vp + 0] = srcX;
                 mIntTexArray[vp + 1] = srcY;
 
-                mIntTexArray[vp + 2] = srcX + width / scaleFactorW;
+                mIntTexArray[vp + 2] = scaledX;
                 mIntTexArray[vp + 3] = srcY;
 
-                mIntTexArray[vp + 4] = srcX + width / scaleFactorW;
-                mIntTexArray[vp + 5] = srcY + height / scaleFactorH;
+                mIntTexArray[vp + 4] = scaledX;
+                mIntTexArray[vp + 5] = scaledY;
 
                 mIntTexArray[vp + 6] = srcX;
-                mIntTexArray[vp + 7] = srcY + height / scaleFactorH;
+                mIntTexArray[vp + 7] = scaledY;
 
                 mIntVertArray[vp + 0] = dstX;
                 mIntVertArray[vp + 1] = dstY;
@@ -1020,6 +1023,7 @@ SDL_Surface* OpenGLGraphics::getScreenshot()
 {
     int h = mTarget->h;
     int w = mTarget->w;
+    GLint pack = 1;
 
     SDL_Surface *screenshot = SDL_CreateRGBSurface(
             SDL_SWSURFACE,
@@ -1033,6 +1037,7 @@ SDL_Surface* OpenGLGraphics::getScreenshot()
         SDL_LockSurface(screenshot);
 
     // Grap the pixel buffer and write it to the SDL surface
+    glGetIntegerv(GL_PACK_ALIGNMENT, &pack);
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
@@ -1053,6 +1058,8 @@ SDL_Surface* OpenGLGraphics::getScreenshot()
     }
 
     free(buf);
+
+    glPixelStorei(GL_PACK_ALIGNMENT, pack);
 
     if (SDL_MUSTLOCK(screenshot))
         SDL_UnlockSurface(screenshot);

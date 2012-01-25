@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -26,6 +26,7 @@
 #include "client.h"
 
 #include "gui/setup.h"
+#include "gui/viewport.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -48,7 +49,7 @@
 
 #include "debug.h"
 
-#define CAPTION_WAITING _("Waiting for server")
+#define CAPTION_WAITING _("Stop waiting")
 #define CAPTION_NEXT _("Next")
 #define CAPTION_CLOSE _("Close")
 #define CAPTION_SUBMIT _("Submit")
@@ -62,7 +63,10 @@ NpcDialog::NpcDialog(int npcId) :
     mDefaultInt(0),
     mInputState(NPC_INPUT_NONE),
     mActionState(NPC_ACTION_WAIT),
-    mLastNextTime(0)
+    mLastNextTime(0),
+    mCameraMode(-1),
+    mCameraX(0),
+    mCameraY(0)
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -220,9 +224,9 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 return;
 
             nextDialog();
-            addText(_("> Next"), false);
         }
-        else if (mActionState == NPC_ACTION_CLOSE)
+        else if (mActionState == NPC_ACTION_CLOSE
+                 || mActionState == NPC_ACTION_WAIT)
         {
             closeDialog();
         }
@@ -301,6 +305,7 @@ void NpcDialog::nextDialog()
 
 void NpcDialog::closeDialog()
 {
+    restoreCamera();
     Net::getNpcHandler()->closeDialog(mNpcId);
 }
 
@@ -501,9 +506,37 @@ void NpcDialog::buildLayout()
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
 
-    mButton->setEnabled(mActionState != NPC_ACTION_WAIT);
-
     redraw();
 
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
+}
+
+void NpcDialog::saveCamera()
+{
+    if (!viewport || mCameraMode >= 0)
+        return;
+
+    mCameraMode = viewport->getCameraMode();
+    mCameraX = viewport->getCameraRelativeX();
+    mCameraY = viewport->getCameraRelativeY();
+}
+
+void NpcDialog::restoreCamera()
+{
+    if (!viewport || mCameraMode == -1)
+        return;
+
+    if (!mCameraMode)
+    {
+        if (viewport->getCameraMode() != mCameraMode)
+            viewport->toggleCameraMode();
+    }
+    else
+    {
+        if (viewport->getCameraMode() != mCameraMode)
+            viewport->toggleCameraMode();
+        viewport->setCameraRelativeX(mCameraX);
+        viewport->setCameraRelativeY(mCameraY);
+    }
+    mCameraMode = -1;
 }

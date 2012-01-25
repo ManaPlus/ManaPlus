@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2009-2010  Andrei Karas
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -142,11 +142,13 @@ std::string ChatLogger::secureName(std::string &name) const
 {
     for (unsigned int f = 0; f < name.length(); f ++)
     {
-        if (name[f] < '0' && name[f] > '9' && name[f] < 'a' && name[f] > 'z'
-            && name[f] < 'A' && name[f] > 'Z'
+        if ((name[f] < '0' || name[f] > '9')
+            && (name[f] < 'a' || name[f] > 'z')
+            && (name[f] < 'A' || name[f] > 'Z')
             && name[f] != '-' && name[f] != '+' && name[f] != '='
             && name[f] != '.' && name[f] != ',' && name[f] != ')'
-            && name[f] != '(' && name[f] != '[' && name[f] != ']')
+            && name[f] != '(' && name[f] != '[' && name[f] != ']'
+            && name[f] != '#')
         {
             name[f] = '_';
         }

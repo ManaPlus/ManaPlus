@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -41,13 +41,12 @@ class SoundEffect : public Resource
         /**
          * Loads a sample from a buffer in memory.
          *
-         * @param buffer     The memory buffer containing the sample data.
-         * @param bufferSize The size of the memory buffer in bytes.
+         * @param rw         The SDL_RWops to load the sample data from.
          *
          * @return <code>NULL</code> if the an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(void *buffer, unsigned bufferSize);
+        static Resource *load(SDL_RWops *rw);
 
         /**
          * Plays the sample.

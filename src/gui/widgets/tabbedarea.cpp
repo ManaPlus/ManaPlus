@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -197,7 +197,7 @@ void TabbedArea::removeTab(gcn::Tab *tab)
     }
     else
     {
-        setSelectedTab(tabIndexToBeSelected);
+        setSelectedTabByPos(tabIndexToBeSelected);
     }
 
     adjustSize();
@@ -241,7 +241,7 @@ void TabbedArea::setSelectedTab(gcn::Tab *tab)
     widgetResized(nullptr);
 }
 
-void TabbedArea::setSelectedTab(const std::string &name)
+void TabbedArea::setSelectedTabByName(const std::string &name)
 {
     for (TabContainer::const_iterator itr = mTabs.begin(),
          itr_end = mTabs.end(); itr != itr_end; ++itr)
@@ -252,6 +252,11 @@ void TabbedArea::setSelectedTab(const std::string &name)
             return;
         }
     }
+}
+
+void TabbedArea::setSelectedTabByPos(int tab)
+{
+    gcn::TabbedArea::setSelectedTab(tab);
 }
 
 void TabbedArea::widgetResized(const gcn::Event &event A_UNUSED)
@@ -459,8 +464,7 @@ void TabbedArea::removeAll()
 {
     if (getSelectedTabIndex() != -1)
     {
-        setSelectedTab(static_cast<unsigned int>(0));
-
+        setSelectedTabByPos(static_cast<unsigned int>(0));
     }
     while (getNumberOfTabs() > 0)
     {

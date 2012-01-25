@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -124,24 +124,24 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mAttributesLeft = new Label(
             strprintf(_("Please distribute %d points"), 99));
 
-    int w = 200;
+    int w = 280;
     int h = 330;
     setContentSize(w, h);
-    mPlayerBox->setDimension(gcn::Rectangle(80, 30, 110, 85));
+    mPlayerBox->setDimension(gcn::Rectangle(145, 35, 110, 87));
     mNameLabel->setPosition(5, 5);
     mNameField->setDimension(
-            gcn::Rectangle(45, 5, w - 45 - 7, mNameField->getHeight()));
-    mPrevHairColorButton->setPosition(90, 35);
-    mNextHairColorButton->setPosition(165, 35);
+            gcn::Rectangle(60, 5, w - 60 - 7, mNameField->getHeight()));
+    mPrevHairColorButton->setPosition(155, 35);
+    mNextHairColorButton->setPosition(230, 35);
     mHairColorLabel->setPosition(5, 40);
-    mPrevHairStyleButton->setPosition(90, 64);
-    mNextHairStyleButton->setPosition(165, 64);
+    mPrevHairStyleButton->setPosition(155, 64);
+    mNextHairStyleButton->setPosition(230, 64);
     mHairStyleLabel->setPosition(5, 70);
 
     if (serverVersion >= 2)
     {
-        mPrevRaceButton->setPosition(90, 93);
-        mNextRaceButton->setPosition(165, 93);
+        mPrevRaceButton->setPosition(155, 93);
+        mNextRaceButton->setPosition(230, 93);
         mRaceLabel->setPosition(5, 100);
     }
 
@@ -365,17 +365,18 @@ void CharCreateDialog::setAttributes(const std::vector<std::string> &labels,
         mAttributeLabel[i] = new Label(labels[i]);
         mAttributeLabel[i]->setWidth(70);
         mAttributeLabel[i]->setPosition(5, 140 + i*20);
+        mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(min, max);
-        mAttributeSlider[i]->setDimension(gcn::Rectangle(75, 140 + i * 20,
+        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 140 + i * 20,
                                                          100, 10));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(toString(min));
-        mAttributeValue[i]->setPosition(180, 140 + i*20);
+        mAttributeValue[i]->setPosition(245, 140 + i*20);
         add(mAttributeValue[i]);
     }
 

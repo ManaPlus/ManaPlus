@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -46,9 +46,9 @@ void NPCDB::load()
     logger->log1("Initializing NPC database...");
 
     XML::Document doc("npcs.xml");
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "npcs"))
+    if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
     {
         logger->log("NPC Database: Error while loading npcs.xml!");
         mLoaded = true;
@@ -58,7 +58,7 @@ void NPCDB::load()
     //iterate <npc>s
     for_each_xml_child_node(npcNode, rootNode)
     {
-        if (!xmlStrEqual(npcNode->name, BAD_CAST "npc"))
+        if (!xmlNameEqual(npcNode, "npc"))
             continue;
 
         int id = XML::getProperty(npcNode, "id", 0);
@@ -84,7 +84,7 @@ void NPCDB::load()
             if (!spriteNode->xmlChildrenNode)
                 continue;
 
-            if (xmlStrEqual(spriteNode->name, BAD_CAST "sprite"))
+            if (xmlNameEqual(spriteNode, "sprite"))
             {
                 SpriteReference *currentSprite = new SpriteReference;
                 currentSprite->sprite = reinterpret_cast<const char*>(
@@ -93,7 +93,7 @@ void NPCDB::load()
                     XML::getProperty(spriteNode, "variant", 0);
                 display.sprites.push_back(currentSprite);
             }
-            else if (xmlStrEqual(spriteNode->name, BAD_CAST "particlefx"))
+            else if (xmlNameEqual(spriteNode, "particlefx"))
             {
                 std::string particlefx = reinterpret_cast<const char*>(
                     spriteNode->xmlChildrenNode->content);

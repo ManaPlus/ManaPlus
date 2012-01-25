@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -100,6 +100,9 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/stringutils.h"
+
+#include "test/testlauncher.h"
+#include "test/testmain.h"
 
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
@@ -259,8 +262,8 @@ Client::Client(const Options &options):
     mState(STATE_CHOOSE_SERVER),
     mOldState(STATE_START),
     mIcon(nullptr),
-    mLogicCounterId(0),
-    mSecondsCounterId(0),
+    mLogicCounterId(nullptr),
+    mSecondsCounterId(nullptr),
     mLimitFps(false),
     mConfigAutoSaved(false),
     mIsMinimized(false),
@@ -269,7 +272,25 @@ Client::Client(const Options &options):
     mGuiAlpha(1.0f)
 {
     mInstance = this;
+}
 
+void Client::testsInit()
+{
+    printf ("testInit\n");
+    if (!mOptions.test.empty())
+    {
+        gameInit();
+    }
+    else
+    {
+        logger = new Logger;
+        initLocalDataDir();
+        initConfigDir();
+    }
+}
+
+void Client::gameInit()
+{
     logger = new Logger;
 
     // Load branding information
@@ -591,6 +612,7 @@ Client::Client(const Options &options):
     {
         mCurrentServer.hostname =
             branding.getValue("defaultServer", "").c_str();
+        mOptions.serverName = mCurrentServer.hostname;
     }
 
     if (mCurrentServer.port == 0)
@@ -644,7 +666,31 @@ Client::Client(const Options &options):
 
 Client::~Client()
 {
-    logger->log1("Quitting1");
+    if (!mOptions.testMode)
+        gameClear();
+    else
+        testsClear();
+}
+
+void Client::testsClear()
+{
+    if (!mOptions.test.empty())
+    {
+        gameClear();
+    }
+    else
+    {
+        BeingInfo::clear();
+
+        //delete logger;
+        //logger = nullptr;
+    }
+}
+
+void Client::gameClear()
+{
+    if (logger)
+        logger->log1("Quitting1");
     config.removeListener("fpslimit", this);
     config.removeListener("guialpha", this);
 
@@ -681,39 +727,45 @@ Client::~Client()
 
     player_relations.store();
 
-    logger->log1("Quitting2");
+    if (logger)
+        logger->log1("Quitting2");
 
     delete gui;
     gui = nullptr;
 
-    logger->log1("Quitting3");
+    if (logger)
+        logger->log1("Quitting3");
 
     delete mainGraphics;
     mainGraphics = nullptr;
 
-    logger->log1("Quitting4");
+    if (logger)
+        logger->log1("Quitting4");
 
-    // Shutdown libxml
-    xmlCleanupParser();
+    XML::cleanupXML();
 
-    logger->log1("Quitting5");
+    if (logger)
+        logger->log1("Quitting5");
 
     BeingInfo::clear();
 
     // Shutdown sound
     sound.close();
 
-    logger->log1("Quitting6");
+    if (logger)
+        logger->log1("Quitting6");
 
     ActorSprite::unload();
 
     ResourceManager::deleteInstance();
 
-    logger->log1("Quitting8");
+    if (logger)
+        logger->log1("Quitting8");
 
     SDL_FreeSurface(mIcon);
 
-    logger->log1("Quitting9");
+    if (logger)
+        logger->log1("Quitting9");
 
     delete userPalette;
     userPalette = nullptr;
@@ -721,7 +773,8 @@ Client::~Client()
     delete joystick;
     joystick = nullptr;
 
-    logger->log1("Quitting10");
+    if (logger)
+        logger->log1("Quitting10");
 
     config.write();
     serverConfig.write();
@@ -729,18 +782,34 @@ Client::~Client()
     config.clear();
     serverConfig.clear();
 
-    logger->log1("Quitting11");
+    if (logger)
+        logger->log1("Quitting11");
 
     delete chatLogger;
     chatLogger = nullptr;
 
-    delete logger;
-    logger = nullptr;
+    //delete logger;
+    //logger = nullptr;
 
     mInstance = nullptr;
 }
 
-int Client::exec()
+int Client::testsExec()
+{
+    if (mOptions.test.empty())
+    {
+        TestMain test;
+        return test.exec();
+    }
+    else
+    {
+        TestLauncher launcher(mOptions.test);
+        return launcher.exec();
+    }
+    return 0;
+}
+
+int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
@@ -1481,6 +1550,12 @@ void Client::initRootDir()
  */
 void Client::initHomeDir()
 {
+    initLocalDataDir();
+    initConfigDir();
+}
+
+void Client::initLocalDataDir()
+{
     mLocalDataDir = mOptions.localDataDir;
 
     if (mLocalDataDir.empty())
@@ -1489,7 +1564,7 @@ void Client::initHomeDir()
         // Use Application Directory instead of .mana
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
             "/Library/Application Support/" +
-            branding.getValue("appName", "Mana");
+            branding.getValue("appName", "ManaPlus");
 #elif defined __HAIKU__
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
            "/config/data/Mana";
@@ -1509,7 +1584,10 @@ void Client::initHomeDir()
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
                                   "Exiting."), mLocalDataDir.c_str()));
     }
+}
 
+void Client::initConfigDir()
+{
     mConfigDir = mOptions.configDir;
 
     if (mConfigDir.empty())
@@ -1520,13 +1598,13 @@ void Client::initHomeDir()
 #elif defined __HAIKU__
         mConfigDir = std::string(PHYSFS_getUserDir()) +
            "/config/settings/Mana" +
-           branding.getValue("appName", "Mana");
+           branding.getValue("appName", "ManaPlus");
 #elif defined WIN32
         mConfigDir = getSpecialFolderLocation(CSIDL_APPDATA);
         if (mConfigDir.empty())
             mConfigDir = mLocalDataDir;
         else
-            mConfigDir += "/mana/" + branding.getValue("appShort", "Mana");
+            mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
 #else
         mConfigDir = std::string(PHYSFS_getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
@@ -1611,6 +1689,8 @@ void Client::initConfiguration()
     config.setValue("musicVolume", 60);
     config.setValue("fpslimit", 60);
     std::string defaultUpdateHost = branding.getValue("defaultUpdateHost", "");
+    if (!checkPath(defaultUpdateHost))
+        defaultUpdateHost = "";
     config.setValue("updatehost", defaultUpdateHost);
     config.setValue("customcursor", true);
     config.setValue("useScreenshotDirectorySuffix", true);
@@ -1623,7 +1703,10 @@ void Client::initConfiguration()
 //    bool oldConfig = false;
 //    int emptySize = config.getSize();
 
-    configPath = mConfigDir + "/config.xml";
+    if (mOptions.test.empty())
+        configPath = mConfigDir + "/config.xml";
+    else
+        configPath = mConfigDir + "/test.xml";
 
     configFile = fopen(configPath.c_str(), "r");
 
@@ -1660,6 +1743,8 @@ void Client::initUpdatesDir()
     // If updatesHost is currently empty, fill it from config file
     if (mUpdateHost.empty())
         mUpdateHost = config.getStringValue("updatehost");
+    if (!checkPath(mUpdateHost))
+        return;
 
     // Don't go out of range int he next check
     if (mUpdateHost.length() < 2)
@@ -1771,7 +1856,7 @@ void Client::initScreenshotDir()
         if (config.getBoolValue("useScreenshotDirectorySuffix"))
         {
             std::string configScreenshotSuffix =
-                branding.getValue("appShort", "Mana");
+                branding.getValue("appShort", "mana");
 
             if (!configScreenshotSuffix.empty())
             {
@@ -1833,7 +1918,7 @@ bool Client::createConfig(std::string &configPath)
     // Use Application Directory instead of .mana
     oldHomeDir = std::string(PHYSFS_getUserDir()) +
         "/Library/Application Support/" +
-        branding.getValue("appName", "Mana");
+        branding.getValue("appName", "ManaPlus");
 #else
     oldHomeDir = std::string(PHYSFS_getUserDir()) +
         "/." + branding.getValue("appShort", "mana");
@@ -2236,6 +2321,14 @@ void Client::setFramerate(int fpsLimit)
         return;
 
     SDL_setFramerate(&instance()->mFpsManager, fpsLimit);
+}
+
+int Client::getFramerate()
+{
+    if (!instance()->mLimitFps)
+        return 0;
+
+    return SDL_getFramerate(&instance()->mFpsManager);
 }
 
 void Client::closeDialogs()

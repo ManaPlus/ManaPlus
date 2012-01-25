@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -523,7 +523,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         const char *getVarItem(const char **arr, unsigned index, unsigned sz);
 
         void changeMode(unsigned *var, unsigned limit, const char *conf,
-                        std::string (LocalPlayer::*func)(), unsigned def = 0);
+                        std::string (LocalPlayer::*func)(), unsigned def = 0,
+                        bool save = true);
 
         void crazyMove1();
         void crazyMove2();

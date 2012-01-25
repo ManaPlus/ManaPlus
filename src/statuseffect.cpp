@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -37,7 +37,7 @@
 
 #define STATUS_EFFECTS_FILE "status-effects.xml"
 
-void unloadMap(std::map<int, StatusEffect *> map);
+void unloadMap(std::map<int, StatusEffect *> &map);
 
 bool StatusEffect::mLoaded = false;
 
@@ -130,9 +130,9 @@ void StatusEffect::load()
         unload();
 
     XML::Document doc(STATUS_EFFECTS_FILE);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "status-effects"))
+    if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
     {
         logger->log1("Error loading status effects file: "
                     STATUS_EFFECTS_FILE);
@@ -145,7 +145,7 @@ void StatusEffect::load()
 
         int index = atoi(XML::getProperty(node, "id", "-1").c_str());
 
-        if (xmlStrEqual(node->name, BAD_CAST "status-effect"))
+        if (xmlNameEqual(node, "status-effect"))
         {
             the_map = &statusEffects;
             int block_index = atoi(XML::getProperty(
@@ -155,8 +155,10 @@ void StatusEffect::load()
                 blockEffectIndexMap[block_index] = index;
 
         }
-        else if (xmlStrEqual(node->name, BAD_CAST "stun-effect"))
+        else if (xmlNameEqual(node, "stun-effect"))
+        {
             the_map = &stunEffects;
+        }
 
         if (the_map)
         {
@@ -187,7 +189,7 @@ void StatusEffect::load()
     mLoaded = true;
 }
 
-void unloadMap(std::map<int, StatusEffect *> map)
+void unloadMap(std::map<int, StatusEffect *> &map)
 {
     std::map<int, StatusEffect *>::iterator it;
 

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -248,7 +248,21 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int getCameraRelativeY()
         { return mCameraRelativeY; }
 
+        void setCameraRelativeX(int n)
+        { mCameraRelativeX = n; }
+
+        void setCameraRelativeY(int n)
+        { mCameraRelativeY = n; }
+
         bool isPopupMenuVisible();
+
+        void moveCameraToActor(int actorId, int x = 0, int y = 0);
+
+        void moveCameraToPosition(int x, int y);
+
+        void moveCameraRelative(int x, int y);
+
+        void returnCamera();
 
     protected:
         friend class ActorSpriteManager;

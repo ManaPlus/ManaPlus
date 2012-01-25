@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -39,7 +39,7 @@
  * Protocol version, reported to the eAthena char and mapserver who can adjust
  * the protocol accordingly.
  */
-#define CLIENT_PROTOCOL_VERSION      4
+#define CLIENT_PROTOCOL_VERSION      5
 #define CLIENT_TMW_PROTOCOL_VERSION      1
 
 namespace TmwAthena

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -128,7 +128,7 @@ class InventoryWindow : public Window,
 
         void processEvent(Mana::Channels channel, const Mana::Event &event);
 
-        void updateButtons(Item *item = 0);
+        void updateButtons(Item *item = nullptr);
 
         bool isInputFocused() const;
 

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -105,14 +105,14 @@ Gui::Gui(Graphics *graphics):
     Window::setWindowContainer(guiTop);
     setTop(guiTop);
 
+    const std::vector<std::string> langs = getLang();
+    const bool isJapan = (!langs.empty() && langs[0].size() > 3
+        && langs[0].substr(0, 3) == "ja_");
+
     // Set global font
     const int fontSize = config.getIntValue("fontSize");
-
     std::string fontFile = config.getValue("font", "");
-
-    std::vector<std::string> langs = getLang();
-    if (!langs.empty() && langs[0].size() > 3
-        && langs[0].substr(0, 3) == "ja_")
+    if (isJapan)
     {
         fontFile = config.getValue("japanFont", "");
         if (fontFile.empty())
@@ -134,6 +134,15 @@ Gui::Gui(Graphics *graphics):
 
     // Set particle font
     fontFile = config.getValue("particleFont", "");
+
+    if (isJapan)
+    {
+        fontFile = config.getValue("japanFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("japanFont");
+    }
+
+
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 

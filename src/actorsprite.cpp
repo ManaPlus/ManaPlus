@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -39,6 +39,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 #define EFFECTS_FILE "effects.xml"
@@ -70,7 +72,7 @@ ActorSprite::~ActorSprite()
     for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
          e = mActorSpriteListeners.end(); iter != e; ++iter)
     {
-        if (*iter)
+        if (reportFalse(*iter))
             (*iter)->actorSpriteDestroyed(*this);
     }
 }
@@ -164,7 +166,7 @@ static EffectDescription *default_effect = nullptr;
 static std::map<int, EffectDescription *> effects;
 static bool effects_initialized = false;
 
-static EffectDescription *getEffectDescription(xmlNodePtr node, int *id)
+static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
 {
     EffectDescription *ed = new EffectDescription;
 
@@ -180,9 +182,9 @@ static EffectDescription *getEffectDescription(int effectId)
     if (!effects_initialized)
     {
         XML::Document doc(EFFECTS_FILE);
-        xmlNodePtr root = doc.rootNode();
+        XmlNodePtr root = doc.rootNode();
 
-        if (!root || !xmlStrEqual(root->name, BAD_CAST "being-effects"))
+        if (!root || !xmlNameEqual(root, "being-effects"))
         {
             logger->log1("Error loading being effects file: "
                     EFFECTS_FILE);
@@ -193,13 +195,13 @@ static EffectDescription *getEffectDescription(int effectId)
         {
             int id;
 
-            if (xmlStrEqual(node->name, BAD_CAST "effect"))
+            if (xmlNameEqual(node, "effect"))
             {
                 EffectDescription *EffectDescription =
                     getEffectDescription(node, &id);
                 effects[id] = EffectDescription;
             }
-            else if (xmlStrEqual(node->name, BAD_CAST "default"))
+            else if (xmlNameEqual(node, "default"))
             {
                 EffectDescription *effectDescription =
                     getEffectDescription(node, &id);
@@ -245,7 +247,7 @@ void ActorSprite::setStatusEffectBlock(int offset, Uint16 newEffects)
 
 void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
 {
-    if (!particleEngine)
+    if (reportTrue(!particleEngine))
         return;
 
     if (player_node)
@@ -256,13 +258,13 @@ void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
 
     EffectDescription *ed = getEffectDescription(effectId);
 
-    if (!ed)
+    if (reportTrue(!ed))
     {
         logger->log1("Unknown special effect and no default recorded");
         return;
     }
 
-    if (gfx && !ed->mGFXEffect.empty() && particleEngine)
+    if (gfx && !ed->mGFXEffect.empty())
     {
         Particle *selfFX;
 
@@ -287,7 +289,7 @@ void ActorSprite::updateStatusEffect(int index, bool newStatus)
 
 void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
 {
-    if (!effect)
+    if (reportTrue(!effect))
         return;
 
     // TODO: Find out how this is meant to be used
@@ -392,7 +394,7 @@ void ActorSprite::load()
 
 void ActorSprite::unload()
 {
-    if (!loaded)
+    if (reportTrue(!loaded))
         return;
 
     cleanupTargetCursors();
@@ -437,7 +439,7 @@ static const char *cursorSize(int size)
 
 void ActorSprite::initTargetCursor()
 {
-    static std::string targetCursorFile = "graphics/target-cursor-%s-%s.png";
+    static std::string targetCursorFile = "target-cursor-%s-%s.png";
     static int targetWidths[NUM_TC] = {44, 62, 82};
     static int targetHeights[NUM_TC] = {35, 44, 60};
 
@@ -476,11 +478,11 @@ void ActorSprite::cleanupTargetCursors()
 void ActorSprite::loadTargetCursor(const std::string &filename,
                                    int width, int height, int type, int size)
 {
-    if (size < TC_SMALL || size >= NUM_TC)
+    if (reportTrue(size < TC_SMALL || size >= NUM_TC))
         return;
 
-    ResourceManager *resman = ResourceManager::getInstance();
-    ImageSet *currentImageSet = resman->getImageSet(filename, width, height);
+    ImageSet *currentImageSet = Theme::getImageSetFromTheme(
+        filename, width, height);
 
     if (!currentImageSet)
     {

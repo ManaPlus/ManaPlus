@@ -1,7 +1,7 @@
 /*
  *  Color database
  *  Copyright (C) 2008  Aethyra Development Team
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -27,8 +27,6 @@
 
 #include "utils/xml.h"
 
-#include <libxml/tree.h>
-
 #include "debug.h"
 
 namespace
@@ -45,7 +43,7 @@ void MapDB::load()
     XML::Document *doc = new XML::Document(
         paths.getStringValue("maps") + "remap.xml");
 
-    xmlNodePtr root = doc->rootNode();
+    XmlNodePtr root = doc->rootNode();
     if (!root)
     {
         delete doc;
@@ -54,7 +52,7 @@ void MapDB::load()
 
     for_each_xml_child_node(node, root)
     {
-        if (xmlStrEqual(node->name, BAD_CAST "map"))
+        if (xmlNameEqual(node, "map"))
         {
             std::string name = XML::getProperty(node, "name", "");
             if (name.empty())

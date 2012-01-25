@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -47,7 +47,7 @@ class SimpleAnimation
         /**
          * Creates a simple animation that creates its animation from XML Data.
          */
-        SimpleAnimation(xmlNodePtr animationNode,
+        SimpleAnimation(XmlNodePtr animationNode,
                         const std::string& dyePalettes = std::string());
 
         ~SimpleAnimation();
@@ -68,7 +68,7 @@ class SimpleAnimation
         Image *getCurrentImage() const;
 
     private:
-        void initializeAnimation(xmlNodePtr animationNode, const std::string&
+        void initializeAnimation(XmlNodePtr animationNode, const std::string&
                                  dyePalettes = std::string());
 
         /** The hosted animation. */

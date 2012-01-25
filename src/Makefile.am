@@ -448,6 +448,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/wallpaper.h \
 	      utils/base64.cpp \
 	      utils/base64.h \
+	      utils/checkutils.cpp \
+	      utils/checkutils.h \
 	      utils/copynpaste.cpp \
 	      utils/copynpaste.h \
 	      utils/dtor.h \
@@ -457,8 +459,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mkdir.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
-	      utils/sha256.cpp \
-	      utils/sha256.h \
+	      utils/physfsrwops.cpp \
+	      utils/physfsrwops.h \
+	      utils/process.cpp \
+	      utils/process.h \
 	      utils/specialfolder.cpp \
 	      utils/specialfolder.h \
 	      utils/stringutils.cpp \
@@ -466,6 +470,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mutex.h \
 	      utils/xml.cpp \
 	      utils/xml.h \
+	      test/testlauncher.cpp \
+	      test/testlauncher.h \
+	      test/testmain.cpp \
+	      test/testmain.h \
 	      actor.cpp \
 	      actor.h \
 	      actorsprite.cpp \
@@ -620,6 +628,8 @@ manaplus_SOURCES += enet/callbacks.c \
 	      enet/unix.h \
 	      enet/utility.h \
 	      enet/win32.h \
+	      utils/sha256.cpp \
+	      utils/sha256.h \
 	      net/manaserv/attributes.cpp \
 	      net/manaserv/attributes.h \
 	      net/manaserv/adminhandler.cpp \

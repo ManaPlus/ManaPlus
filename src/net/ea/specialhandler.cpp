@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -87,11 +87,11 @@ void SpecialHandler::processPlayerSkills(Net::MessageIn &msg)
     {
         int skillId = msg.readInt16();
         msg.readInt16();  // target type
-        msg.skip(2);  // unused
+        msg.skip(2);  // skill pool flags
         int level = msg.readInt16();
         msg.readInt16(); // sp
         msg.readInt16(); // range
-        msg.skip(24); // unused
+        msg.skip(24); // 0 unused
         int up = msg.readInt8();
 
         PlayerInfo::setStatBase(skillId, level);

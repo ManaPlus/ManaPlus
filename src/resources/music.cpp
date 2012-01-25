@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -26,30 +26,21 @@
 
 #include "debug.h"
 
-Music::Music(Mix_Chunk *music):
-    mChunk(music),
-    mChannel(-1)
+Music::Music(Mix_Music *music) :
+    mMusic(music)
 {
 }
 
 Music::~Music()
 {
-    //Mix_FreeMusic(music);
-    Mix_FreeChunk(mChunk);
+    Mix_FreeMusic(mMusic);
 }
 
-Resource *Music::load(void *buffer, unsigned bufferSize)
+Resource *Music::load(SDL_RWops *rw)
 {
-    // Load the raw file data from the buffer in an RWops structure
-    SDL_RWops *rw = SDL_RWFromMem(buffer, bufferSize);
-
-    // Use Mix_LoadMUS to load the raw music data
-    //Mix_Music* music = Mix_LoadMUS_RW(rw); Need to be implemeted
-    Mix_Chunk *tmpMusic = Mix_LoadWAV_RW(rw, 1);
-
-    if (tmpMusic)
+    if (Mix_Music *music = Mix_LoadMUS_RW(rw))
     {
-        return new Music(tmpMusic);
+        return new Music(music);
     }
     else
     {
@@ -58,30 +49,10 @@ Resource *Music::load(void *buffer, unsigned bufferSize)
     }
 }
 
-bool Music::play(int loops)
+bool Music::play(int loops, int fadeIn)
 {
-    /*
-     * Warning: loops should be always set to -1 (infinite) with current
-     * implementation to avoid halting the playback of other samples
-     */
-
-    /*if (Mix_PlayMusic(music, loops))
-        return true;*/
-    Mix_VolumeChunk(mChunk, 120);
-    mChannel = Mix_PlayChannel(-1, mChunk, loops);
-
-    return mChannel != -1;
-}
-
-void Music::stop()
-{
-    /*
-     * Warning: very dungerous trick, it could try to stop channels occupied
-     * by samples rather than the current music file
-     */
-
-    //Mix_HaltMusic();
-
-    if (mChannel != -1)
-        Mix_HaltChannel(mChannel);
+    if (fadeIn > 0)
+        return Mix_FadeInMusic(mMusic, loops, fadeIn);
+    else
+        return Mix_PlayMusic(mMusic, loops);
 }

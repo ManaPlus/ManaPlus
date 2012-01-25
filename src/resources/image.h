@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -66,28 +66,25 @@ class Image : public Resource
         virtual ~Image();
 
         /**
-         * Loads an image from a buffer in memory.
+         * Loads an image from an SDL_RWops structure.
          *
-         * @param buffer     The memory buffer containing the image data.
-         * @param bufferSize The size of the memory buffer in bytes.
+         * @param rw         The SDL_RWops to load the image from.
          *
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(void *buffer, unsigned bufferSize);
+        static Resource *load(SDL_RWops *rw);
 
         /**
-         * Loads an image from a buffer in memory and recolors it.
+         * Loads an image from an SDL_RWops structure and recolors it.
          *
-         * @param buffer     The memory buffer containing the image data.
-         * @param bufferSize The size of the memory buffer in bytes.
+         * @param rw         The SDL_RWops to load the image from.
          * @param dye        The dye used to recolor the image.
          *
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(void *buffer, unsigned bufferSize,
-                              Dye const &dye);
+        static Resource *load(SDL_RWops *rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.

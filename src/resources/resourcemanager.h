@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -37,7 +37,9 @@ class Music;
 class Resource;
 class SoundEffect;
 class SpriteDef;
+
 struct SDL_Surface;
+struct SDL_RWops;
 
 /**
  * A class for loading and managing resources.
@@ -48,7 +50,7 @@ class ResourceManager
 
     public:
 
-        typedef Resource *(*loader)(void *, unsigned);
+        typedef Resource *(*loader)(SDL_RWops *);
         typedef Resource *(*generator)(void *);
 
         ResourceManager();

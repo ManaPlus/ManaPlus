@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -43,6 +43,8 @@ std::string getRealPath(const std::string &str)
 #else
     char *realPath = realpath(str.c_str(), nullptr);
 #endif
+    if (!realPath)
+        return "";
     path = realPath;
     free(realPath);
     return path;

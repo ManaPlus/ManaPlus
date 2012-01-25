@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -202,6 +202,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleServerUnIgnoreAll(args, tab);
     else if (type == "dumpg")
         handleDumpGraphics(args, tab);
+    else if (type == "dumpt")
+        handleDumpTests(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -406,7 +408,6 @@ void CommandHandler::handleParty(const std::string &args, ChatTab *tab)
 
 void CommandHandler::handleMe(const std::string &args, ChatTab *tab)
 {
-    const std::string str = strprintf("*%s*", args.c_str());
     outString(tab, strprintf("*%s*", args.c_str()), args);
 }
 
@@ -1111,7 +1112,7 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += ",0";
 #endif
 
-    str += strprintf(",%f,", Client::getGuiAlpha());
+    str += strprintf(",%f,", static_cast<double>(Client::getGuiAlpha()));
     str += config.getBoolValue("adjustPerfomance") ? "1" : "0";
     str += config.getBoolValue("alphaCache") ? "1" : "0";
     str += config.getBoolValue("enableMapReduce") ? "1" : "0";
@@ -1123,7 +1124,60 @@ void CommandHandler::handleDumpGraphics(const std::string &args A_UNUSED,
     str += config.getBoolValue("particleeffects") ? "1" : "0";
 
     str += strprintf(",%d-%d", fps, config.getIntValue("fpslimit"));
-    outString(tab, str, str);
+    outStringNormal(tab, str, str);
+}
+
+void CommandHandler::handleDumpTests(const std::string &args A_UNUSED,
+                                     ChatTab *tab)
+{
+    std::string str = config.getStringValue("testInfo");
+    outStringNormal(tab, str, str);
+}
+
+void CommandHandler::outStringNormal(ChatTab *tab, const std::string &str,
+                                     const std::string &def)
+{
+    if (!player_node)
+        return;
+
+    if (!tab)
+    {
+        Net::getChatHandler()->talk(str);
+        return;
+    }
+
+    switch (tab->getType())
+    {
+        case ChatTab::TAB_PARTY:
+        {
+            Net::getPartyHandler()->chat(str);
+            break;
+        }
+        case ChatTab::TAB_GUILD:
+        {
+            if (!player_node)
+                return;
+            const Guild *guild = player_node->getGuild();
+            if (guild)
+            {
+                if (guild->getServerGuild())
+                    Net::getGuildHandler()->chat(guild->getId(), str);
+                else if (guildManager)
+                    guildManager->chat(str);
+            }
+            break;
+        }
+        case ChatTab::TAB_WHISPER:
+        {
+            WhisperTab *whisper = static_cast<WhisperTab*>(tab);
+            tab->chatLog(player_node->getName(), str);
+            Net::getChatHandler()->privateMessage(whisper->getNick(), str);
+            break;
+        }
+        default:
+            Net::getChatHandler()->talk(def);
+            break;
+    }
 }
 
 #ifdef DEBUG_DUMP_LEAKS

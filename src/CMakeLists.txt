@@ -443,6 +443,8 @@ SET(SRCS
     resources/wallpaper.h
     utils/base64.cpp
     utils/base64.h
+    utils/checkutils.cpp
+    utils/checkutils.h
     utils/copynpaste.cpp
     utils/copynpaste.h
     utils/dtor.h
@@ -450,8 +452,10 @@ SET(SRCS
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
-    utils/sha256.cpp
-    utils/sha256.h
+    utils/physfsrwops.cpp
+    utils/physfsrwops.h
+    utils/process.cpp
+    utils/process.h
     utils/stringutils.cpp
     utils/stringutils.h
     utils/mutex.h
@@ -459,6 +463,10 @@ SET(SRCS
     utils/mkdir.h
     utils/xml.cpp
     utils/xml.h
+    test/testlauncher.cpp
+    test/testlauncher.h
+    test/testmain.cpp
+    test/testmain.h
     actor.cpp
     actor.h
     actorsprite.cpp
@@ -794,6 +802,8 @@ SET(SRCS_MANASERV
     enet/utility.h
     enet/win32.c
     enet/win32.h
+    utils/sha256.cpp
+    utils/sha256.h
     net/manaserv/attributes.cpp
     net/manaserv/attributes.h
     net/manaserv/adminhandler.cpp

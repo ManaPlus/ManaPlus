@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -305,6 +305,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/serverignoreall");
     mCommands.push_back("/serverunignoreall");
     mCommands.push_back("/dumpg");
+    mCommands.push_back("/dumpt");
     mCommands.push_back("/pseudoaway ");
     mCommands.push_back("<PLAYER>");
     mCommands.push_back("<MONSTER>");
@@ -419,11 +420,11 @@ void ChatWindow::prevTab()
 
     int tab = mChatTabs->getSelectedTabIndex();
 
-    if (tab == 0)
+    if (tab <= 0)
         tab = mChatTabs->getNumberOfTabs();
     tab--;
 
-    mChatTabs->setSelectedTab(tab);
+    mChatTabs->setSelectedTabByPos(tab);
 }
 
 void ChatWindow::nextTab()
@@ -437,7 +438,7 @@ void ChatWindow::nextTab()
     if (tab == mChatTabs->getNumberOfTabs())
         tab = 0;
 
-    mChatTabs->setSelectedTab(tab);
+    mChatTabs->setSelectedTabByPos(tab);
 }
 
 void ChatWindow::closeTab()
@@ -459,7 +460,7 @@ void ChatWindow::closeTab()
 void ChatWindow::defaultTab()
 {
     if (mChatTabs)
-        mChatTabs->setSelectedTab(static_cast<unsigned>(0));
+        mChatTabs->setSelectedTabByPos(static_cast<unsigned>(0));
 }
 
 void ChatWindow::action(const gcn::ActionEvent &event)
@@ -1179,7 +1180,8 @@ void ChatWindow::autoComplete()
     ChatTab *cTab = static_cast<ChatTab*>(mChatTabs->getSelectedTab());
     std::vector<std::string> nameList;
 
-    cTab->getAutoCompleteList(nameList);
+    if (cTab)
+        cTab->getAutoCompleteList(nameList);
     newName = autoComplete(nameList, name);
 
     if (newName == "" && actorSpriteManager)

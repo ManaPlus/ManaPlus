@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -23,9 +23,15 @@
 #ifndef XML_H
 #define XML_H
 
+#include <libxml/encoding.h>
+#include <libxml/xmlwriter.h>
 #include <libxml/tree.h>
 
 #include <string>
+
+#define XmlNodePtr xmlNodePtr
+#define xmlNameEqual(node, str) xmlStrEqual((node)->name, BAD_CAST (str))
+#define XmlTextWriterPtr xmlTextWriterPtr
 
 /**
  * XML helper functions.
@@ -63,40 +69,44 @@ namespace XML
              * Returns the root node of the document (or NULL if there was a
              * load error).
              */
-            xmlNodePtr rootNode();
+            XmlNodePtr rootNode();
 
         private:
             xmlDocPtr mDoc;
     };
 
     /**
-     * Gets an floating point property from an xmlNodePtr.
+     * Gets an floating point property from an XmlNodePtr.
      */
-    double getFloatProperty(xmlNodePtr node, const char *name, double def);
+    double getFloatProperty(XmlNodePtr node, const char *name, double def);
 
     /**
-     * Gets an integer property from an xmlNodePtr.
+     * Gets an integer property from an XmlNodePtr.
      */
-    int getProperty(xmlNodePtr node, const char *name, int def);
+    int getProperty(XmlNodePtr node, const char *name, int def);
 
     /**
-     * Gets a string property from an xmlNodePtr.
+     * Gets a string property from an XmlNodePtr.
      */
-    std::string getProperty(xmlNodePtr node, const char *name,
+    std::string getProperty(XmlNodePtr node, const char *name,
                             const std::string &def);
 
     /**
-     * Gets a boolean property from an xmlNodePtr.
+     * Gets a boolean property from an XmlNodePtr.
      */
-    bool getBoolProperty(xmlNodePtr node, const char *name, bool def);
+    bool getBoolProperty(XmlNodePtr node, const char *name, bool def);
 
     /**
      * Finds the first child node with the given name
      */
-    xmlNodePtr findFirstChildByName(xmlNodePtr parent, const char *name);
+    XmlNodePtr findFirstChildByName(XmlNodePtr parent, const char *name);
+
+    void initXML();
+
+    void cleanupXML();
 }
 
 #define for_each_xml_child_node(var, parent) \
-    for (xmlNodePtr var = parent->xmlChildrenNode; var; var = var->next)
+    for (XmlNodePtr var = parent->xmlChildrenNode; var; var = var->next)
 
 #endif // XML_H

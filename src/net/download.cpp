@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -180,7 +180,6 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
         return d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_CANCELLED,
                                   static_cast<size_t>(dltotal),
                                   static_cast<size_t>(dlnow));
-        return -5;
     }
 
     return d->mUpdateFunction(d->mPtr, DOWNLOAD_STATUS_IDLE,

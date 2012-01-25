@@ -28,4 +28,5 @@ then
     mkdir -p $DSTDIR/bin
     cp src/manaplus $DSTDIR/bin
     cp nightly/runme.sh $DSTDIR
+    cp "nightly/run tests.sh" $DSTDIR
 fi

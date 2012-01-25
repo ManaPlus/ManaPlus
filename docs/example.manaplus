@@ -9,7 +9,7 @@ filename / path as a command line parameter
 -->
 
 <configuration>
- <option name="appName" value="Mana"/>
+ <option name="appName" value="ManaPlus"/>
  <option name="appShort" value="mana"/>
  <option name="appIcon" value="icons/manaplus.png"/>
  <option name="loginMusic" value="Magick - Real.ogg"/>

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -44,14 +44,14 @@ struct Character
 {
     Character() :
         slot(0),
-        dummy(0)
+        dummy(nullptr)
     {
     }
 
     ~Character()
     {
         delete dummy;
-        dummy = 0;
+        dummy = nullptr;
     }
 
     int slot;            /**< The index in the list of characters */
@@ -94,9 +94,9 @@ class CharHandler
 
     protected:
         CharHandler() :
-            mSelectedCharacter(0),
-            mCharSelectDialog(0),
-            mCharCreateDialog(0)
+            mSelectedCharacter(nullptr),
+            mCharSelectDialog(nullptr),
+            mCharCreateDialog(nullptr)
         {}
 
         void updateCharSelectDialog();

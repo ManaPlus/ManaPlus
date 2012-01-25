@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -238,9 +238,9 @@ namespace Attributes
         logger->log("Initializing attributes database...");
 
         XML::Document doc(DEFAULT_ATTRIBUTESDB_FILE);
-        xmlNodePtr rootNode = doc.rootNode();
+        XmlNodePtr rootNode = doc.rootNode();
 
-        if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "attributes"))
+        if (!rootNode || !xmlNameEqual(rootNode, "attributes"))
         {
             logger->log("Attributes: Error while loading "
                         DEFAULT_ATTRIBUTESDB_FILE ". Using Built-ins.");
@@ -251,7 +251,7 @@ namespace Attributes
 
         for_each_xml_child_node(node, rootNode)
         {
-            if (xmlStrEqual(node->name, BAD_CAST "attribute"))
+            if (xmlNameEqual(node, "attribute"))
             {
                 int id = XML::getProperty(node, "id", 0);
 
@@ -290,7 +290,7 @@ namespace Attributes
                 unsigned int count = 0;
                 for_each_xml_child_node(effectNode, node)
                 {
-                    if (!xmlStrEqual(effectNode->name, BAD_CAST "modifier"))
+                    if (!xmlNameEqual(effectNode, "modifier"))
                          continue;
                     ++count;
                     std::string tag = XML::getProperty(effectNode, "tag", "");
@@ -334,7 +334,7 @@ namespace Attributes
                 logger->log("Found %d tags for attribute %d.", count, id);
 
             }// End attribute
-            else if (xmlStrEqual(node->name, BAD_CAST "points"))
+            else if (xmlNameEqual(node, "points"))
             {
                 creationPoints = XML::getProperty(
                     node, "start", DEFAULT_POINTS);

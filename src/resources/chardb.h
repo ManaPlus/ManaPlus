@@ -1,7 +1,7 @@
 /*
  *  Color database
  *  Copyright (C) 2008  Aethyra Development Team
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -25,7 +25,7 @@
 #include <map>
 #include <string>
 
-#include <libxml/tree.h>
+#include "utils/xml.h"
 
 /**
  * Char information database.
@@ -42,7 +42,7 @@ namespace CharDB
      */
     void unload();
 
-    void loadMinMax(xmlNodePtr node, unsigned *min, unsigned *max);
+    void loadMinMax(XmlNodePtr node, unsigned *min, unsigned *max);
 
     unsigned getMinHairColor();
 

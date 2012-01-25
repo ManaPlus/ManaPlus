@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -31,14 +31,10 @@ SoundEffect::~SoundEffect()
     Mix_FreeChunk(mChunk);
 }
 
-Resource *SoundEffect::load(void *buffer, unsigned bufferSize)
+Resource *SoundEffect::load(SDL_RWops *rw)
 {
-    if (!buffer)
+    if (!rw)
         return nullptr;
-
-    // Load the raw file data from the buffer in an RWops structure
-    SDL_RWops *rw = SDL_RWFromMem(buffer, bufferSize);
-
     // Load the music data and free the RWops structure
     Mix_Chunk *tmpSoundEffect = Mix_LoadWAV_RW(rw, 1);
 

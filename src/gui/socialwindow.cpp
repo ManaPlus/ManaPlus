@@ -1,7 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -29,6 +29,8 @@
 #include "logger.h"
 #include "map.h"
 #include "party.h"
+#include "playerrelations.h"
+#include "gui/whoisonline.h"
 
 #include "gui/confirmdialog.h"
 #include "gui/okdialog.h"
@@ -59,6 +61,30 @@
 #include "utils/stringutils.h"
 
 #include "debug.h"
+
+class SortFriendsFunctor
+{
+    public:
+        bool operator() (Avatar* m1,  Avatar* m2)
+        {
+            if (!m1 || !m2)
+                return false;
+
+            if (m1->getOnline() != m2->getOnline())
+                return m1->getOnline() > m2->getOnline();
+
+            if (m1->getName() != m2->getName())
+            {
+                std::string s1 = m1->getName();
+                std::string s2 = m2->getName();
+                toLower(s1);
+                toLower(s2);
+                return s1 < s2;
+            }
+            return false;
+        }
+} friendSorter;
+
 
 class SocialTab : public Tab
 {
@@ -457,7 +483,6 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
-//        mBeings->getMembers().push_back(new Avatar("test"));
         updateList();
         setCaption(name);
     }
@@ -550,7 +575,6 @@ public:
 
         if (actorSpriteManager)
         {
-//            std::list<Being*> beings = actorSpriteManager->getAll();
             std::vector<std::string> names;
             actorSpriteManager->getPlayerNames(names, false);
 
@@ -650,7 +674,7 @@ public:
             return;
 
         Map* map = socialWindow->getMap();
-        if (!map)
+        if (!map || map->empty())
             return;
 
         if (socialWindow->getProcessedPortals())
@@ -848,10 +872,10 @@ public:
 
         std::vector<Avatar*> *avatars = mBeings->getMembers();
 
-        std::vector<Avatar*>::iterator i = avatars->begin();
-
         if (!avatars)
             return;
+
+        std::vector<Avatar*>::iterator i = avatars->begin();
 
         while (i != avatars->end())
         {
@@ -1058,6 +1082,103 @@ private:
 
 };
 
+
+class SocialFriendsTab : public SocialTab
+{
+public:
+    SocialFriendsTab(std::string name)
+    {
+        mBeings = new BeingsListModal();
+
+        mList = new AvatarListBox(mBeings);
+        mScroll = new ScrollArea(mList);
+
+        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+
+        updateList();
+        setCaption(name);
+    }
+
+    ~SocialFriendsTab()
+    {
+        delete mList;
+        mList = nullptr;
+        delete mScroll;
+        mScroll = nullptr;
+        delete mBeings;
+        mBeings = nullptr;
+    }
+
+    void updateList()
+    {
+        getPlayersAvatars();
+    }
+
+    void updateAvatar(std::string name A_UNUSED)
+    {
+    }
+
+    void resetDamage(std::string name A_UNUSED)
+    {
+    }
+
+    void getPlayersAvatars()
+    {
+        if (!actorSpriteManager)
+            return;
+
+        std::vector<Avatar*> *avatars = mBeings->getMembers();
+        if (!avatars)
+            return;
+
+        std::vector<Avatar*>::iterator ia = avatars->begin();
+        while (ia != avatars->end())
+        {
+            delete *ia;
+            ++ ia;
+        }
+        avatars->clear();
+
+        std::vector<std::string> *players
+            = player_relations.getPlayersByRelation(PlayerRelation::FRIEND);
+
+        std::set<std::string> players2 = whoIsOnline->getOnlinePlayers();
+
+        if (!players)
+            return;
+
+        std::vector<std::string>::iterator it = players->begin();
+        std::vector<std::string>::iterator it_end = players->end();
+        for (; it != it_end; ++ it)
+        {
+            Avatar *ava = nullptr;
+            ava = new Avatar(*it);
+            if (actorSpriteManager->findBeingByName(*it, Being::PLAYER)
+                || players2.find(*it) != players2.end())
+            {
+                ava->setOnline(true);
+            }
+            avatars->push_back(ava);
+        }
+        std::sort(avatars->begin(), avatars->end(), friendSorter);
+        delete players;
+    }
+
+protected:
+    void invite()
+    {
+    }
+
+    void leave()
+    {
+    }
+
+private:
+    BeingsListModal *mBeings;
+};
+
+
 class CreatePopup : public Popup, public LinkHandler
 {
 public:
@@ -1152,8 +1273,13 @@ SocialWindow::SocialWindow() :
 
     loadWindowState();
 
-    mPlayers = new SocialPlayersTab("P");
+    // TRANSLATORS: here P is title for visible players tab in social window
+    mPlayers = new SocialPlayersTab(_("P"));
     mTabs->addTab(mPlayers, mPlayers->mScroll);
+
+    // TRANSLATORS: here F is title for friends tab in social window
+    mFriends = new SocialFriendsTab(_("F"));
+    mTabs->addTab(mFriends, mFriends->mScroll);
 
     mNavigation = new SocialNavigationTab();
     mTabs->addTab(mNavigation, mNavigation->mScroll);
@@ -1205,6 +1331,8 @@ SocialWindow::~SocialWindow()
     mNavigation = nullptr;
     delete mAttackFilter;
     mAttackFilter = nullptr;
+    delete mFriends;
+    mFriends = nullptr;
 }
 
 bool SocialWindow::addTab(Guild *guild)
@@ -1523,6 +1651,7 @@ void SocialWindow::logic()
     if (mNeedUpdate && nowTime - mLastUpdateTime > 1)
     {
         mPlayers->updateList();
+        mFriends->updateList();
         mNeedUpdate = false;
         mLastUpdateTime = nowTime;
     }
@@ -1610,7 +1739,7 @@ void SocialWindow::nextTab()
     if (tab == mTabs->getNumberOfTabs())
         tab = 0;
 
-    mTabs->setSelectedTab(tab);
+    mTabs->setSelectedTabByPos(tab);
 }
 
 void SocialWindow::prevTab()
@@ -1624,7 +1753,7 @@ void SocialWindow::prevTab()
         tab = mTabs->getNumberOfTabs();
     tab--;
 
-    mTabs->setSelectedTab(tab);
+    mTabs->setSelectedTabByPos(tab);
 }
 
 void SocialWindow::updateAttackFilter()

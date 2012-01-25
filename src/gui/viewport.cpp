@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -481,6 +481,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             if (mHoverBeing->canTalk())
             {
                 mHoverBeing->talkTo();
+                return;
             }
             else
             {
@@ -490,6 +491,9 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     {
                         if (player_node != mHoverBeing || mSelfMouseHeal)
                             actorSpriteManager->heal(mHoverBeing);
+                        if (player_node == mHoverBeing && mHoverItem)
+                            player_node->pickUp(mHoverItem);
+                        return;
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
@@ -499,17 +503,21 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     {
                         player_node->attack(mHoverBeing,
                             !keyboard.isKeyActive(keyboard.KEY_TARGET));
+                        return;
                     }
                 }
                 else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
                 {
                     if (player_node != mHoverBeing)
+                    {
                         player_node->setGotoTarget(mHoverBeing);
+                        return;
+                    }
                 }
             }
-        // Picks up a item if we clicked on one
         }
-        else if (mHoverItem)
+        // Picks up a item if we clicked on one
+        if (mHoverItem)
         {
             player_node->pickUp(mHoverItem);
         }
@@ -739,7 +747,7 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     }
 
     mHoverItem = nullptr;
-    if (!mHoverBeing && actorSpriteManager)
+    if (actorSpriteManager)
     {
         mHoverItem = actorSpriteManager->findItem(x / mMap->getTileWidth(),
                                                   y / mMap->getTileHeight());
@@ -866,4 +874,45 @@ void Viewport::moveCamera(int dx, int dy)
 bool Viewport::isPopupMenuVisible()
 {
     return mPopupMenu ? mPopupMenu->isVisible() : false;
+}
+
+void Viewport::moveCameraToActor(int actorId, int x, int y)
+{
+    if (!player_node)
+        return;
+
+    Actor *actor = actorSpriteManager->findBeing(actorId);
+    if (!actor)
+        return;
+    Vector actorPos = actor->getPosition();
+    Vector playerPos = player_node->getPosition();
+    mCameraMode = 1;
+    mCameraRelativeX = actorPos.x - playerPos.x + x;
+    mCameraRelativeY = actorPos.y - playerPos.y + y;
+}
+
+void Viewport::moveCameraToPosition(int x, int y)
+{
+    if (!player_node)
+        return;
+
+    Vector playerPos = player_node->getPosition();
+    mCameraMode = 1;
+
+    mCameraRelativeX = x - playerPos.x;
+    mCameraRelativeY = y - playerPos.y;
+}
+
+void Viewport::moveCameraRelative(int x, int y)
+{
+    mCameraMode = 1;
+    mCameraRelativeX += x;
+    mCameraRelativeY += y;
+}
+
+void Viewport::returnCamera()
+{
+    mCameraMode = 0;
+    mCameraRelativeX = 0;
+    mCameraRelativeY = 0;
 }

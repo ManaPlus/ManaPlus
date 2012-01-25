@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2008-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -201,6 +201,9 @@ class PlayerRelationsManager
          * relations recorded.
          */
         std::vector<std::string> *getPlayers();
+
+        std::vector<std::string> *getPlayersByRelation(PlayerRelation::Relation
+                                                       rel);
 
         /**
          * Removes all recorded player info.

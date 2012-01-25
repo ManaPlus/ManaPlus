@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -188,7 +188,7 @@ void MiniStatusWindow::updateBars()
 void MiniStatusWindow::setIcon(int index, AnimatedSprite *sprite)
 {
     if (index >= static_cast<int>(mIcons.size()))
-        mIcons.resize(index + 1, 0);
+        mIcons.resize(index + 1, nullptr);
 
     delete mIcons[index];
 

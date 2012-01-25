@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *  Copyright (C) 2009  Aethyra Development Team
  *
  *  This file is part of The ManaPlus Client.
@@ -451,6 +451,7 @@ int BrowserBox::calcHeight()
         }
 
         gcn::Color prevColor = selColor;
+        bold = false;
 
         // TODO: Check if we must take texture size limits into account here
         // TODO: Check if some of the O(n) calls can be removed
@@ -465,8 +466,6 @@ int BrowserBox::calcHeight()
                 x = 15;
                 wrapped = false;
             }
-
-            bold = false;
 
             // "Tokenize" the string at control sequences
             if (mUseLinksAndUserColors)

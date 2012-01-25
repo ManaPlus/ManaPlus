@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -67,9 +67,9 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
 {
     std::vector<updateFile> files;
     XML::Document doc(fileName, false);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "updates"))
+    if (!rootNode || !xmlNameEqual(rootNode, "updates"))
     {
         logger->log("Error loading update file: %s", fileName.c_str());
         return files;
@@ -78,7 +78,7 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
     for_each_xml_child_node(fileNode, rootNode)
     {
         // Ignore all tags except for the "update" tags
-        if (!xmlStrEqual(fileNode->name, BAD_CAST "update"))
+        if (!xmlNameEqual(fileNode, "update"))
             continue;
 
         updateFile file;
@@ -91,7 +91,8 @@ std::vector<updateFile> loadXMLFile(const std::string &fileName)
         else
             file.required = false;
 
-        files.push_back(file);
+        if (checkPath(file.name))
+            files.push_back(file);
     }
 
     return files;
@@ -118,7 +119,7 @@ std::vector<updateFile> loadTxtFile(const std::string &fileName)
             thisFile.required = true;
             thisFile.desc = "";
 
-            if (!thisFile.name.empty())
+            if (!thisFile.name.empty() && checkPath(thisFile.name))
                 files.push_back(thisFile);
         }
     }
@@ -154,6 +155,12 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mLoadUpdates(applyUpdates),
     mUpdateType(updateType)
 {
+    setWindowName("UpdaterWindow");
+    setResizable(true);
+    setDefaultSize(450, 400, ImageRect::CENTER);
+    setMinWidth(320);
+    setMinHeight(240);
+
     mBrowserBox = new BrowserBox;
     mScrollArea = new ScrollArea(mBrowserBox);
     mLabel = new Label(_("Connecting..."));
@@ -174,14 +181,12 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     placer(3, 5, mCancelButton);
     placer(4, 5, mPlayButton);
 
-    reflowLayout(450, 400);
-
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
 
     addKeyListener(this);
 
-    center();
+    loadWindowState();
     setVisible(true);
     mCancelButton->requestFocus();
 

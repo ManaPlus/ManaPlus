@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -377,6 +377,9 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
     // Draw a set of textured rectangles
     glBegin(GL_QUADS);
 
+    const float scaleFactorW = (float) scaledWidth / image->getWidth();
+    const float scaleFactorH = (float) scaledHeight / image->getHeight();
+
     for (int py = 0; py < h; py += ih)
     {
         const int height = (py + ih >= h) ? h - py : ih;
@@ -387,7 +390,8 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
             int dstX = x + px;
 
             drawRescaledQuad(image, srcX, srcY, dstX, dstY,
-                             width, height, scaledWidth, scaledHeight);
+                width / scaleFactorW, height / scaleFactorH,
+                scaledWidth, scaledHeight);
         }
     }
 
@@ -474,6 +478,7 @@ SDL_Surface* OpenGL1Graphics::getScreenshot()
 {
     int h = mTarget->h;
     int w = mTarget->w;
+    GLint pack = 1;
 
     SDL_Surface *screenshot = SDL_CreateRGBSurface(
             SDL_SWSURFACE,
@@ -484,6 +489,7 @@ SDL_Surface* OpenGL1Graphics::getScreenshot()
         SDL_LockSurface(screenshot);
 
     // Grap the pixel buffer and write it to the SDL surface
+    glGetIntegerv(GL_PACK_ALIGNMENT, &pack);
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, screenshot->pixels);
 
@@ -504,6 +510,8 @@ SDL_Surface* OpenGL1Graphics::getScreenshot()
     }
 
     free(buf);
+
+    glPixelStorei(GL_PACK_ALIGNMENT, pack);
 
     if (SDL_MUSTLOCK(screenshot))
         SDL_UnlockSurface(screenshot);

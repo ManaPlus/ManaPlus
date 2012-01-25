@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -25,6 +25,7 @@
 #include "localplayer.h"
 
 #include "gui/npcdialog.h"
+#include "gui/viewport.h"
 
 #include "net/messagein.h"
 #include "net/net.h"
@@ -41,7 +42,8 @@ extern Net::NpcHandler *npcHandler;
 namespace TmwAthena
 {
 
-NpcHandler::NpcHandler()
+NpcHandler::NpcHandler() :
+    mRequestLang(false)
 {
     static const Uint16 _messages[] =
     {
@@ -51,6 +53,7 @@ NpcHandler::NpcHandler()
         SMSG_NPC_CLOSE,
         SMSG_NPC_INT_INPUT,
         SMSG_NPC_STR_INPUT,
+        SMSG_NPC_COMMAND,
         0
     };
     handledMessages = _messages;
@@ -59,8 +62,11 @@ NpcHandler::NpcHandler()
 
 void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
-    getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
+    int npcId = getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
         || msg.getId() == SMSG_NPC_MESSAGE);
+
+    if (msg.getId() != SMSG_NPC_STR_INPUT)
+        mRequestLang = false;
 
     switch (msg.getId())
     {
@@ -85,7 +91,14 @@ void NpcHandler::handleMessage(Net::MessageIn &msg)
             break;
 
         case SMSG_NPC_STR_INPUT:
-            processNpcStrInput(msg);
+            if (mRequestLang)
+                processLangReuqest(msg, npcId);
+            else
+                processNpcStrInput(msg);
+            break;
+
+        case SMSG_NPC_COMMAND:
+            processNpcCommand(msg, npcId);
             break;
 
         default:
@@ -118,6 +131,8 @@ void NpcHandler::closeDialog(int npcId)
     {
         if ((*it).second.dialog)
             (*it).second.dialog->close();
+        if ((*it).second.dialog == mDialog)
+            mDialog = nullptr;
         mNpcDialogs.erase(it);
     }
 }
@@ -213,6 +228,7 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
         else
         {
             mDialog = new NpcDialog(npcId);
+            mDialog->saveCamera();
             if (player_node)
                 player_node->stopWalking(false);
             Wrapper wrap;
@@ -222,9 +238,70 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     }
     else
     {
+        if (mDialog && mDialog != diag->second.dialog)
+            mDialog->restoreCamera();
         mDialog = diag->second.dialog;
+        if (mDialog)
+            mDialog->saveCamera();
     }
     return npcId;
+}
+
+void NpcHandler::processNpcCommand(Net::MessageIn &msg, int npcId)
+{
+    const int cmd = msg.readInt16();
+    switch (cmd)
+    {
+        case 0:
+            mRequestLang = true;
+            break;
+
+        case 1:
+            if (viewport)
+                viewport->moveCameraToActor(npcId);
+            break;
+
+        case 2:
+            if (viewport)
+            {
+                const int id = msg.readInt32();
+                const int x = msg.readInt16();
+                const int y = msg.readInt16();
+                if (!id)
+                    viewport->moveCameraToPosition(x, y);
+                else
+                    viewport->moveCameraToActor(id, x, y);
+            }
+            break;
+
+        case 3:
+            if (viewport)
+                viewport->returnCamera();
+            break;
+
+        case 4:
+            if (viewport)
+            {
+                msg.readInt32(); // id
+                const int x = msg.readInt16();
+                const int y = msg.readInt16();
+                viewport->moveCameraRelative(x, y);
+            }
+            break;
+        case 5:
+            closeDialog(npcId);
+            break;
+
+        default:
+            logger->log("unknown npc command: %d", cmd);
+            break;
+    }
+}
+
+void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED, int npcId)
+{
+    mRequestLang = false;
+    stringInput(npcId, getLangSimple());
 }
 
 } // namespace TmwAthena

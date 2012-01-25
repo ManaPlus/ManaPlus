@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -21,6 +21,9 @@
 #ifndef __GXX_EXPERIMENTAL_CXX0X__
 #undef nullptr
 #define nullptr 0
+#else
+#undef Z_NULL
+#define Z_NULL nullptr
 #endif
 
 #ifdef __GNUC__

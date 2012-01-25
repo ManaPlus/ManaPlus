@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -201,9 +201,9 @@ void GeneralHandler::reload()
 
     static_cast<LoginHandler*>(mLoginHandler.get())->clearWorlds();
     static_cast<CharServerHandler*>(
-        mCharHandler.get())->setCharCreateDialog(0);
+        mCharHandler.get())->setCharCreateDialog(nullptr);
     static_cast<CharServerHandler*>(
-        mCharHandler.get())->setCharSelectDialog(0);
+        mCharHandler.get())->setCharSelectDialog(nullptr);
 
     static_cast<PartyHandler*>(mPartyHandler.get())->reload();
 }
@@ -258,6 +258,9 @@ void GeneralHandler::processEvent(Mana::Channels channel,
 
             if (!statusWindow)
                 return;
+
+            // protection against double addition attributes.
+            statusWindow->clearAttributes();
 
             statusWindow->addAttribute(STR, _("Strength"), true, "");
             statusWindow->addAttribute(AGI, _("Agility"), true, "");

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -365,7 +365,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
             mConnectButton->requestFocus();
     }
 
-    loadServers(false);
+    loadServers(true);
 
     if (mServers.empty())
         downloadServerList();
@@ -558,7 +558,7 @@ void ServerDialog::logic()
         else if (mDownloadStatus == DOWNLOADING_IN_PROGRESS)
         {
             mDescription->setCaption(strprintf(_("Downloading server list..."
-                "%2.2f%%"), mDownloadProgress * 100));
+                "%2.2f%%"), static_cast<double>(mDownloadProgress * 100)));
         }
         else if (mDownloadStatus == DOWNLOADING_IDLE)
         {
@@ -609,9 +609,12 @@ void ServerDialog::downloadServerList()
     if (listFile.empty())
         listFile = config.getStringValue("onlineServerList");
 
-    // Fall back to manasource.org when neither branding nor config set it
+    // Fall back to manaplus.evolonline.org when neither branding nor config set it
     if (listFile.empty())
-        listFile = "http://manasource.org/serverlist.xml";
+    {
+        listFile = "http://manaplus.evolonline.org/"
+            "serverlist.xml/serverlist.xml";
+    }
 
     if (mDownload)
     {
@@ -628,9 +631,9 @@ void ServerDialog::downloadServerList()
 void ServerDialog::loadServers(bool addNew)
 {
     XML::Document doc(mDir + "/serverlist.xml", false);
-    xmlNodePtr rootNode = doc.rootNode();
+    XmlNodePtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlStrEqual(rootNode->name, BAD_CAST "serverlist"))
+    if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
     {
         logger->log1("Error loading server list!");
         return;
@@ -646,7 +649,7 @@ void ServerDialog::loadServers(bool addNew)
 
     for_each_xml_child_node(serverNode, rootNode)
     {
-        if (!xmlStrEqual(serverNode->name, BAD_CAST "server"))
+        if (!xmlNameEqual(serverNode, "server"))
             continue;
 
         ServerInfo server;
@@ -681,7 +684,7 @@ void ServerDialog::loadServers(bool addNew)
 
         for_each_xml_child_node(subNode, serverNode)
         {
-            if (xmlStrEqual(subNode->name, BAD_CAST "connection"))
+            if (xmlNameEqual(subNode, "connection"))
             {
                 server.hostname = XML::getProperty(subNode, "hostname", "");
                 server.port = static_cast<short unsigned>(
@@ -693,7 +696,7 @@ void ServerDialog::loadServers(bool addNew)
                     server.port = defaultPortForServerType(server.type);
                 }
             }
-            else if (xmlStrEqual(subNode->name, BAD_CAST "description"))
+            else if (xmlNameEqual(subNode, "description"))
             {
                 server.description = reinterpret_cast<const char*>(
                     subNode->xmlChildrenNode->content);

@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -24,9 +24,10 @@
 #define CONFIGURATION_H
 
 #include "utils/stringutils.h"
-#include "defaults.h"
+#include "utils/xml.h"
 
-#include <libxml/xmlwriter.h>
+#include "defaults.h"
+#include "localconsts.h"
 
 #include <cassert>
 #include <list>
@@ -158,7 +159,7 @@ class ConfigurationObject
             }
 
             delete nextobj;
-            nextobj = 0;
+            nextobj = nullptr;
         }
 
        /**
@@ -192,8 +193,8 @@ class ConfigurationObject
         }
 
     protected:
-        virtual void initFromXML(xmlNodePtr node);
-        virtual void writeToXML(xmlTextWriterPtr writer);
+        virtual void initFromXML(XmlNodePtr node);
+        virtual void writeToXML(XmlTextWriterPtr writer);
 
         void deleteList(const std::string &name);
 

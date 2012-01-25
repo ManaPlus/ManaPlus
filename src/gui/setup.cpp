@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2004-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011  The ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -201,7 +201,7 @@ void Setup::doCancel()
 void Setup::activateTab(const std::string &name)
 {
     std::string tmp = gettext(name.c_str());
-    mPanel->setSelectedTab(tmp);
+    mPanel->setSelectedTabByName(tmp);
 /*
     for (std::list<SetupTab*>::const_iterator it = mTabs.begin();
          it != mTabs.end(); ++it)
@@ -212,7 +212,7 @@ void Setup::activateTab(const std::string &name)
             logger->log("check tab: " + tab->getName());
             if (tab->getName() == tmp)
             {
-                mPanel->setSelectedTab(name);
+                mPanel->setSelectedTabByName(name);
                 return;
             }
         }
