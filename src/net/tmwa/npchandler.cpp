@@ -288,6 +288,9 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg, int npcId)
                 viewport->moveCameraRelative(x, y);
             }
             break;
+        case 5:
+            closeDialog(npcId);
+            break;
 
         default:
             logger->log("unknown npc command: %d", cmd);
