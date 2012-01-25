@@ -18,17 +18,15 @@
  * SDL falls under the LGPL license. You can get SDL at http://www.libsdl.org/
  *
  *  This file was written by Ryan C. Gordon. (icculus@icculus.org).
+ *
+ *  Copyright (C) 2012  The ManaPlus Developers
  */
 
-#ifndef _INCLUDE_PHYSFSRWOPS_H_
-#define _INCLUDE_PHYSFSRWOPS_H_
+#ifndef UTILS_PHYSFSRWOPS_H
+#define UTILS_PHYSFSRWOPS_H
 
-#include "physfs.h"
-#include "SDL.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <physfs.h>
+#include <SDL.h>
 
 /**
  * Open a platform-independent filename for reading, and make it accessible
@@ -40,7 +38,7 @@ extern "C" {
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-__EXPORT__ SDL_RWops *PHYSFSRWOPS_openRead(const char *fname);
+SDL_RWops *PHYSFSRWOPS_openRead(const char *fname);
 
 /**
  * Open a platform-independent filename for writing, and make it accessible
@@ -52,7 +50,7 @@ __EXPORT__ SDL_RWops *PHYSFSRWOPS_openRead(const char *fname);
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-__EXPORT__ SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname);
+SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname);
 
 /**
  * Open a platform-independent filename for appending, and make it accessible
@@ -64,7 +62,7 @@ __EXPORT__ SDL_RWops *PHYSFSRWOPS_openWrite(const char *fname);
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-__EXPORT__ SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname);
+SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname);
 
 /**
  * Make a SDL_RWops from an existing PhysicsFS file handle. You should
@@ -76,11 +74,7 @@ __EXPORT__ SDL_RWops *PHYSFSRWOPS_openAppend(const char *fname);
  *  @return A valid SDL_RWops structure on success, NULL on error. Specifics
  *           of the error can be gleaned from PHYSFS_getLastError().
  */
-__EXPORT__ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_File *handle);
-
-#ifdef __cplusplus
-}
-#endif
+SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle);
 
 #endif /* include-once blocker */
 
