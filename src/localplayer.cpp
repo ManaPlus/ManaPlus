@@ -1782,7 +1782,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
                 case 6:
                 case 7:
                     dist = mAttackRange;
-                    if (dist == 1)
+                    if (dist == 1 && serverVersion < 1)
                         dist = 2;
                 default:
                     break;
@@ -3716,7 +3716,8 @@ void LocalPlayer::attack2(Being *target, bool keep, bool dontChangeEquipment)
         changeEquipmentBeforeAttack(target);
 
     if ((!target || getAttackType() == 0 || getAttackType() == 3)
-        || (withinAttackRange(target, true, 1)
+        || (withinAttackRange(target, serverVersion < 1,
+        serverVersion < 1 ? 1 : 0)
         && getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);
