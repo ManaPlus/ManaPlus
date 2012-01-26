@@ -235,7 +235,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "wallpapersPath", "");
     AddDEF(brandingData, "wallpapersFile", "");
     AddDEF(brandingData, "appName", "ManaPlus");
-    AddDEF(brandingData, "appIcon", "icons/manaplus.png");
+    AddDEF(brandingData, "appIcon", "icons/manaplus");
     AddDEF(brandingData, "loginMusic", "Magick - Real.ogg");
     AddDEF(brandingData, "defaultServer", "");
     AddDEF(brandingData, "defaultPort", DEFAULT_PORT);
