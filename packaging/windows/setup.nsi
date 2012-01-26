@@ -365,15 +365,18 @@ SectionEnd
 Section "Evol Online shortcuts" SecEvol
   SetOutPath "$INSTDIR"
   CreateDirectory "$INSTDIR\data\evol"
+  CreateDirectory "$INSTDIR\data\evol\icons"
   CreateDirectory "$INSTDIR\data\evol\images"
 
   SetOutPath "$INSTDIR"
   File "${SRCDIR}\data\evol\evol.manaplus"
   SetOutPath "$INSTDIR\data\evol\images"
   File "${SRCDIR}\data\evol\images\*.png"
+  SetOutPath "$INSTDIR\data\evol\icons"
+  File "${SRCDIR}\data\evol\icons\*.ico"
 
-  CreateShortCut "$SMPROGRAMS\Mana\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"'
-  CreateShortCut "$DESKTOP\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"'
+  CreateShortCut "$SMPROGRAMS\Mana\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$DESKTOP\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
 SectionEnd
 
 Section "Translations" SecTrans
