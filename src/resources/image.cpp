@@ -79,6 +79,8 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel0, Uint8 *alphaChannel):
     {
         logger->log(
           "Image::Image(SDL_Surface*): Couldn't load invalid Surface!");
+        mBounds.w = 0;
+        mBounds.h = 0;
     }
 }
 
@@ -159,7 +161,7 @@ Resource *Image::load(SDL_RWops *rw, Dye const &dye)
     SDL_Surface *surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
     SDL_FreeSurface(tmpImage);
 
-    Uint32 *pixels = static_cast< Uint32 * >(surf->pixels);
+    Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
     for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
     {
         const Uint32 p = *pixels;
@@ -207,10 +209,11 @@ Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
     bool hasAlpha = false;
     bool converted = false;
 
-    // The alpha channel to be filled with alpha values
-    Uint8 *alphaChannel = new Uint8[tmpImage->w * tmpImage->h];
-
     const int sz = tmpImage->w * tmpImage->h;
+
+    // The alpha channel to be filled with alpha values
+    Uint8 *alphaChannel = new Uint8[sz];
+
     const SDL_PixelFormat * const fmt = tmpImage->format;
     if (fmt->Amask)
     {
@@ -463,7 +466,7 @@ Image* Image::SDLmerge(Image *image, int x, int y)
     SDL_LockSurface(surface);
     SDL_LockSurface(mSDLSurface);
 
-    const int x0 = (y * getWidth()) + x;
+    const int x0 = (y * mBounds.w) + x;
     const int maxX = std::min(image->mBounds.w,
         static_cast<Uint16>(mBounds.w - x));
     const int maxY = std::min(image->mBounds.w,
@@ -476,7 +479,7 @@ Image* Image::SDLmerge(Image *image, int x, int y)
         for (offset_y = ((y > 0) ? 0 : -y); offset_y < maxY; offset_y++)
         {
             // Computing offset on both images
-            current_offset = (offset_y * getWidth()) + x1;
+            current_offset = (offset_y * mBounds.w) + x1;
             surface_offset = offset_y * surface->w + offset_x;
 
             // Retrieving a pixel to merge
@@ -543,7 +546,7 @@ Image* Image::SDLgetScaledImage(int width, int height)
         return nullptr;
 
     // No scaling when there is ... no different given size ...
-    if (width == getWidth() && height == getHeight())
+    if (width == mBounds.w && height == mBounds.h)
         return nullptr;
 
     Image* scaledImage = nullptr;
@@ -552,8 +555,8 @@ Image* Image::SDLgetScaledImage(int width, int height)
     if (mSDLSurface)
     {
         scaledSurface = zoomSurface(mSDLSurface,
-                    static_cast<double>(width) / getWidth(),
-                    static_cast<double>(height) / getHeight(),
+                    static_cast<double>(width) / mBounds.w,
+                    static_cast<double>(height) / mBounds.h,
                     1);
 
         // The load function takes care of the SDL<->OpenGL implementation
@@ -623,22 +626,20 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
     bool hasAlpha = false;
     bool converted = false;
 
-    // The alpha channel to be filled with alpha values
-    Uint8 *alphaChannel = new Uint8[tmpImage->w * tmpImage->h];
-
     if (tmpImage->format->BitsPerPixel != 32)
     {
         tmpImage = convertTo32Bit(tmpImage);
 
         if (!tmpImage)
-        {
-            delete[] alphaChannel;
             return nullptr;
-        }
         converted = true;
     }
 
     const int sz = tmpImage->w * tmpImage->h;
+
+    // The alpha channel to be filled with alpha values
+    Uint8 *alphaChannel = new Uint8[sz];
+
     // Figure out whether the image uses its alpha layer
     if (!tmpImage->format->palette)
     {
@@ -660,19 +661,19 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
         else
         {
             if (SDL_ALPHA_OPAQUE != 255)
+            {
                 hasAlpha = true;
-            memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
-//            for (int i = 0; i < sz; ++ i)
-//                alphaChannel[i] = SDL_ALPHA_OPAQUE;
+                memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
+            }
         }
     }
     else
     {
         if (SDL_ALPHA_OPAQUE != 255)
+        {
             hasAlpha = true;
-        memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
-//        for (int i = 0; i < sz; ++ i)
-//            alphaChannel[i] = SDL_ALPHA_OPAQUE;
+            memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
+        }
     }
 
     SDL_Surface *image;
@@ -702,7 +703,6 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
     if (converted)
         SDL_FreeSurface(tmpImage);
 
-//    SDL_SetColorKey(image, SDL_SRCCOLORKEY | SDL_RLEACCEL, 0);
     return new Image(image, hasAlpha, alphaChannel);
 }
 
