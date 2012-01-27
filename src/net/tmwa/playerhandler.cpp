@@ -218,7 +218,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         return;
 
     int size = msg.readInt16() - 4;
-    std::vector<std::string> arr;
+    std::vector<OnlinePlayer*> arr;
 
     if (!size)
     {
@@ -230,11 +230,25 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
     const char *start = msg.readBytes(size);
     const char *buf = start;
 
-    while (buf - start + 1 < size && *(buf + 1))
+    int addVal = 1;
+    if (serverVersion >= 4)
+        addVal = 3;
+
+    while (buf - start + 1 < size && *(buf + addVal))
     {
-//        char status = *buf; // now unused
+        char status = 0;
+        char ver = 0;
+        char level = 0;
+        if (serverVersion >= 4)
+        {
+            status = *buf;
+            buf ++;
+            level = *buf;
+            buf ++;
+            ver = *buf;
+        }
         buf ++;
-        arr.push_back(buf);
+        arr.push_back(new OnlinePlayer(buf, status, level, ver));
         buf += strlen(buf) + 1;
     }
 

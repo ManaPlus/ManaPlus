@@ -48,6 +48,7 @@
 
 #include "gui/chatwindow.h"
 
+#include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
@@ -68,21 +69,10 @@
 class NameFunctuator
 {
     public:
-        bool operator()(const std::string &left,
-                        const std::string &right) const
+        bool operator()(const OnlinePlayer *left,
+                        const OnlinePlayer *right) const
         {
-            for (std::string::const_iterator lit = left.begin(),
-                 rit = right.begin();
-                 lit != left.end() && rit != right.end(); ++lit, ++rit)
-            {
-                if (tolower(*lit) < tolower(*rit))
-                    return true;
-                else if (tolower(*lit) > tolower(*rit))
-                    return false;
-            }
-            if (left.size() < right.size())
-                return true;
-            return false;
+            return (compareStrI(left->getNick(), right->getNick()) < 0);
         }
 } nameCompare;
 
@@ -149,6 +139,14 @@ WhoIsOnline::~WhoIsOnline()
 
     // Remove possibly leftover temporary download
     delete[] mCurlError;
+
+    std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
+    std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
+
+    for (; itd != itd_end; ++ itd)
+        delete *itd;
+    mOnlinePlayers.clear();
+    mOnlineNicks.clear();
 }
 
 void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
@@ -186,10 +184,10 @@ void WhoIsOnline::handleLink(const std::string& link, gcn::MouseEvent *event)
     }
 }
 
-void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
-                               std::vector<std::string> &neutral,
-                               std::vector<std::string> &disregard,
-                               std::vector<std::string> enemy,
+void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
+                               std::vector<OnlinePlayer*> &neutral,
+                               std::vector<OnlinePlayer*> &disregard,
+                               std::vector<OnlinePlayer*> enemy,
                                int numOnline)
 {
     //Set window caption
@@ -202,7 +200,7 @@ void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
     bool addedFromSection(false);
     for (int i = 0; i < static_cast<int>(friends.size()); i++)
     {
-        mBrowserBox->addRow(friends.at(i));
+        mBrowserBox->addRow(friends.at(i)->getText());
         addedFromSection = true;
     }
     if (addedFromSection == true)
@@ -212,7 +210,7 @@ void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
     }
     for (int i = 0; i < static_cast<int>(enemy.size()); i++)
     {
-        mBrowserBox->addRow(enemy.at(i));
+        mBrowserBox->addRow(enemy.at(i)->getText());
         addedFromSection = true;
     }
     if (addedFromSection == true)
@@ -222,7 +220,7 @@ void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
     }
     for (int i = 0; i < static_cast<int>(neutral.size()); i++)
     {
-        mBrowserBox->addRow(neutral.at(i));
+        mBrowserBox->addRow(neutral.at(i)->getText());
         addedFromSection = true;
     }
     if (addedFromSection == true && !disregard.empty())
@@ -232,7 +230,7 @@ void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
     }
     for (int i = 0; i < static_cast<int>(disregard.size()); i++)
     {
-        mBrowserBox->addRow(disregard.at(i));
+        mBrowserBox->addRow(disregard.at(i)->getText());
     }
 
     if (mScrollArea->getVerticalMaxScroll() <
@@ -243,43 +241,59 @@ void WhoIsOnline::updateWindow(std::vector<std::string> &friends,
     }
 }
 
-void WhoIsOnline::loadList(std::vector<std::string> &list)
+void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 {
     mBrowserBox->clearRows();
     int numOnline = list.size();
-    std::vector<std::string> friends;
-    std::vector<std::string> neutral;
-    std::vector<std::string> disregard;
-    std::vector<std::string> enemy;
+    std::vector<OnlinePlayer*> friends;
+    std::vector<OnlinePlayer*> neutral;
+    std::vector<OnlinePlayer*> disregard;
+    std::vector<OnlinePlayer*> enemy;
 
+    std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
+    std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
+
+    for (; itd != itd_end; ++ itd)
+        delete *itd;
     mOnlinePlayers.clear();
+    mOnlineNicks.clear();
+
     mShowLevel = config.getBoolValue("showlevel");
 
-    std::vector<std::string>::const_iterator it = list.begin();
-    std::vector<std::string>::const_iterator it_end = list.end();
+    std::vector<OnlinePlayer*>::iterator it = list.begin();
+    std::vector<OnlinePlayer*>::iterator it_end = list.end();
     for (; it != it_end; ++ it)
     {
-        std::string nick = *it;
-        mOnlinePlayers.insert(nick);
+        OnlinePlayer *player = *it;
+        std::string nick = player->getNick();
+        mOnlinePlayers.insert(player);
+        mOnlineNicks.insert(nick);
+
+        if (!mShowLevel)
+            player->setLevel(0);
 
         switch (player_relations.getRelation(nick))
         {
             case PlayerRelation::NEUTRAL:
             default:
-                neutral.push_back(prepareNick(nick, 0, "0"));
+                player->setText("0");
+                neutral.push_back(player);
                 break;
 
             case PlayerRelation::FRIEND:
-                friends.push_back(prepareNick(nick, 0, "2"));
+                player->setText("2");
+                neutral.push_back(player);
                 break;
 
             case PlayerRelation::DISREGARDED:
             case PlayerRelation::BLACKLISTED:
-                disregard.push_back(prepareNick(nick, 0, "8"));
+                player->setText("8");
+                disregard.push_back(player);
                 break;
 
             case PlayerRelation::ENEMY2:
-                enemy.push_back(prepareNick(nick, 0, "1"));
+                player->setText("1");
+                enemy.push_back(player);
                 break;
 
             case PlayerRelation::IGNORED:
@@ -290,10 +304,10 @@ void WhoIsOnline::loadList(std::vector<std::string> &list)
     }
 
     updateWindow(friends, neutral, disregard, enemy, numOnline);
-    if (!mOnlinePlayers.empty())
+    if (!mOnlineNicks.empty())
     {
         if (chatWindow)
-            chatWindow->updateOnline(mOnlinePlayers);
+            chatWindow->updateOnline(mOnlineNicks);
         if (socialWindow)
             socialWindow->updateActiveList();
     }
@@ -313,15 +327,16 @@ void WhoIsOnline::loadWebList()
     bool listStarted(false);
     std::string lineStr;
     int numOnline(0);
-    std::vector<std::string> friends;
-    std::vector<std::string> neutral;
-    std::vector<std::string> disregard;
-    std::vector<std::string> enemy;
+    std::vector<OnlinePlayer*> friends;
+    std::vector<OnlinePlayer*> neutral;
+    std::vector<OnlinePlayer*> disregard;
+    std::vector<OnlinePlayer*> enemy;
 
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
     const std::string gmText = "(GM)";
     mOnlinePlayers.clear();
+    mOnlineNicks.clear();
 
     mShowLevel = config.getBoolValue("showlevel");
 
@@ -383,27 +398,37 @@ void WhoIsOnline::loadWebList()
                     }
                 }
 
-                mOnlinePlayers.insert(nick);
+
+                if (!mShowLevel)
+                    level = 0;
+
+                OnlinePlayer *player = new OnlinePlayer(nick, -1, level, -1);
+                mOnlinePlayers.insert(player);
+                mOnlineNicks.insert(nick);
 
                 numOnline++;
                 switch (player_relations.getRelation(nick))
                 {
                     case PlayerRelation::NEUTRAL:
                     default:
-                        neutral.push_back(prepareNick(nick, level, "0"));
+                        player->setText("0");
+                        neutral.push_back(player);
                         break;
 
                     case PlayerRelation::FRIEND:
-                        friends.push_back(prepareNick(nick, level, "2"));
+                        player->setText("2");
+                        friends.push_back(player);
                         break;
 
                     case PlayerRelation::DISREGARDED:
                     case PlayerRelation::BLACKLISTED:
-                        disregard.push_back(prepareNick(nick, level, "8"));
+                        player->setText("8");
+                        disregard.push_back(player);
                         break;
 
                     case PlayerRelation::ENEMY2:
-                        enemy.push_back(prepareNick(nick, level, "1"));
+                        player->setText("1");
+                        enemy.push_back(player);
                         break;
 
                     case PlayerRelation::IGNORED:
@@ -596,10 +621,10 @@ void WhoIsOnline::logic()
                 mUpdateButton->setEnabled(true);
                 mUpdateTimer = 0;
                 updateSize();
-                if (!mOnlinePlayers.empty())
+                if (!mOnlineNicks.empty())
                 {
                     if (chatWindow)
-                        chatWindow->updateOnline(mOnlinePlayers);
+                        chatWindow->updateOnline(mOnlineNicks);
                     if (socialWindow)
                         socialWindow->updateActiveList();
                 }
@@ -680,4 +705,18 @@ void WhoIsOnline::optionChanged(const std::string &name)
 {
     if (name == "updateOnlineList")
         mUpdateOnlineList = config.getBoolValue("updateOnlineList");
+}
+
+void OnlinePlayer::setText(std::string color)
+{
+    mText = strprintf("@@%s|##%s%s", mNick.c_str(),
+        color.c_str(), mNick.c_str());
+
+    if (mLevel > 0)
+        mText += strprintf(" (%d)", mLevel);
+
+    if (mVersion > 0)
+        mText += strprintf(" - %d", mVersion);
+
+    mText += strprintf("@@");
 }
