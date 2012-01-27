@@ -262,6 +262,21 @@ char *MessageIn::readBytes(int length)
     buf[length + 1] = 0;
     mPos += length;
 
+#ifdef ENABLEDEBUGLOG
+    std::string str;
+    for (int f = 0;f < length; f ++)
+        str += strprintf ("%02x", buf[f]);
+    str += " ";
+    for (int f = 0;f < length; f ++)
+    {
+        if (buf[f])
+            str += strprintf ("%c", buf[f]);
+        else
+            str += "_";
+    }
+    logger->log("ReadBytes: " + str);
+#endif
+
     PacketCounters::incInBytes(length);
     return buf;
 }
