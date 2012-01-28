@@ -1232,6 +1232,10 @@ int Client::gameExec()
                             CharSelectDialog::Focus);
                     }
 
+                    // Choosing character on the command line should work only
+                    // once, clear it so that 'switch character' works.
+                    mOptions.character.clear();
+
                     break;
 
                 case STATE_CONNECT_GAME:
