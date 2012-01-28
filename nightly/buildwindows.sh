@@ -29,3 +29,8 @@ makensis -DDLLDIR=$dir/../packaging/windows/libs/dll/ \
     -DUPX=true \
     setup.nsi
 
+makensis -DDLLDIR=$dir/../packaging/windows/libs/dll/ \
+    -DPRODUCT_VERSION="nightly-$1" \
+    -DEXESUFFIX=/src \
+    -DUPX=true \
+    evol.nsi
