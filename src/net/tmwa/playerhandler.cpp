@@ -22,6 +22,7 @@
 
 #include "net/tmwa/playerhandler.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "net/messagein.h"
@@ -227,8 +228,8 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         return;
     }
 
-    const char *start = msg.readBytes(size);
-    const char *buf = start;
+    char *start = (char*)msg.readBytes(size);
+    char *buf = start;
 
     int addVal = 1;
     if (serverVersion >= 4)
@@ -236,9 +237,9 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 
     while (buf - start + 1 < size && *(buf + addVal))
     {
-        char status = 0;
-        char ver = 0;
-        char level = 0;
+        unsigned char status = 0;
+        unsigned char ver = 0;
+        unsigned char level = 0;
         if (serverVersion >= 4)
         {
             status = *buf;
@@ -248,13 +249,33 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
             ver = *buf;
         }
         buf ++;
-        arr.push_back(new OnlinePlayer(buf, status, level, ver));
+
+        int gender = GENDER_UNSPECIFIED;
+        if (serverVersion >= 4)
+        {
+            if (config.getBoolValue("showgender"))
+            {
+                if (status & Being::FLAG_GENDER)
+                    gender = GENDER_MALE;
+                else
+                    gender = GENDER_FEMALE;
+            }
+        }
+        arr.push_back(new OnlinePlayer((char*)buf,
+            status, level, gender, ver));
         buf += strlen(buf) + 1;
     }
 
     if (whoIsOnline)
         whoIsOnline->loadList(arr);
     delete [] start;
+}
+
+void PlayerHandler::updateStatus(Uint8 status)
+{
+    MessageOut outMsg(CMSG_SET_STATUS);
+    outMsg.writeInt8(status);
+    outMsg.writeInt8(0);
 }
 
 } // namespace TmwAthena

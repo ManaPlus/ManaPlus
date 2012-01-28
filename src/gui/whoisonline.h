@@ -45,57 +45,50 @@ struct SDL_Thread;
 class OnlinePlayer
 {
     public:
-        OnlinePlayer(std::string nick, int status, int level, int version) :
+        OnlinePlayer(std::string nick, unsigned char status,
+                     unsigned char level, unsigned char gender,
+                     unsigned char version) :
             mNick(nick),
             mText(""),
             mStatus(status),
             mLevel(level),
-            mVersion(version)
+            mVersion(version),
+            mGender(gender)
         {
         }
 
         const std::string getNick() const
-        {
-            return mNick;
-        }
+        { return mNick; }
 
-        int getStaus() const
-        {
-            return mStatus;
-        }
+        unsigned char getStaus() const
+        { return mStatus; }
 
-        int getVersion() const
-        {
-            return mVersion;
-        }
+        unsigned char getVersion() const
+        { return mVersion; }
 
-        int getLevel() const
-        {
-            return mLevel;
-        }
+        unsigned char getLevel() const
+        { return mLevel; }
 
         const std::string getText()
-        {
-            return mText;
-        }
+        { return mText; }
 
         void setText(std::string str);
 
-        void setLevel(int level)
-        {
-            mLevel = level;
-        }
+        void setLevel(unsigned char level)
+        { mLevel = level; }
 
     private:
         std::string mNick;
 
         std::string mText;
 
-        int mStatus;
+        unsigned char mStatus;
 
-        int mLevel;
+        unsigned char mLevel;
 
-        int mVersion;
+        unsigned char mVersion;
+
+        unsigned char mGender;
 };
 
 /**

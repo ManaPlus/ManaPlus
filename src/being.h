@@ -102,6 +102,7 @@ class Being : public ActorSprite, public ConfigListener
             FLAG_SHOP = 1,
             FLAG_AWAY = 2,
             FLAG_INACTIVE = 4,
+            FLAG_GENDER = 128,
             FLAG_SPECIAL = 128 + 64
         };
 
@@ -546,6 +547,8 @@ class Being : public ActorSprite, public ConfigListener
          */
         void setEmote(Uint8 emotion, int emote_time);
 
+        void setState(Uint8 state);
+
         /**
          * Get the current Emoticon type displayed above
          * the being.
@@ -748,6 +751,9 @@ class Being : public ActorSprite, public ConfigListener
 
         bool isShopEnabled()
         { return mShop; }
+
+        void enableShop(bool b)
+        { mShop = b; }
 
         /**
          * Sets the attack range.

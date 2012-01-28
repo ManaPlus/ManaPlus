@@ -54,6 +54,7 @@
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
+#include "net/playerhandler.h"
 #include "net/tradehandler.h"
 
 #ifdef DEBUG_DUMP_LEAKS
@@ -748,7 +749,10 @@ void CommandHandler::handlePseudoAway(const std::string &args,
                                       ChatTab *tab A_UNUSED)
 {
     if (player_node)
+    {
         player_node->setPseudoAway(args);
+        player_node->updateStatus();
+    }
 }
 
 void CommandHandler::handleFollow(const std::string &args, ChatTab *tab)

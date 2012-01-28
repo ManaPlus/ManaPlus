@@ -287,6 +287,9 @@ static void createGuiWindows()
     if (setupWindow)
         setupWindow->externalUpdate();
 
+    if (player_node)
+        player_node->updateStatus();
+
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSLOADED));
 }
 
@@ -1077,6 +1080,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                     if (player_node)
                     {
                         player_node->changeAwayMode();
+                        player_node->updateStatus();
                         setValidSpeed();
                     }
                     break;
@@ -1585,6 +1589,8 @@ void Game::handleActive(SDL_Event &event)
                 player_node->setHalfAway(true);
             }
         }
+        if (player_node)
+            player_node->updateStatus();
     }
     if (player_node)
         player_node->updateName();

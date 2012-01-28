@@ -68,6 +68,8 @@ class PlayerHandler : public Net::PlayerHandler
         void processPlayerStatUpdate6(Net::MessageIn &msg);
 
         void processPlayerArrowMessage(Net::MessageIn &msg);
+
+        void updateStatus();
 };
 
 } // namespace Ea

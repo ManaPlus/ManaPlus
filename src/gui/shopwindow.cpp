@@ -55,6 +55,7 @@
 #include "net/net.h"
 #include "net/chathandler.h"
 #include "net/npchandler.h"
+#include "net/playerhandler.h"
 #include "net/tradehandler.h"
 
 #include "resources/iteminfo.h"
@@ -206,11 +207,15 @@ void ShopWindow::action(const gcn::ActionEvent &event)
              && mBuyShopItemList->getSelected() >= 0)
     {
         mBuyShopItems->del(mBuyShopItemList->getSelected());
+        if (isShopEmpty() && player_node)
+            player_node->updateStatus();
     }
     else if (event.getId() == "delete sell" && mSellShopItemList
              && mSellShopItemList->getSelected() >= 0)
     {
         mSellShopItems->del(mSellShopItemList->getSelected());
+        if (isShopEmpty() && player_node)
+            player_node->updateStatus();
     }
     else if (event.getId() == "announce buy" && mBuyShopItems
              && mBuyShopItems->getNumberOfElements() > 0)
@@ -306,8 +311,12 @@ void ShopWindow::addBuyItem(Item *item, int amount, int price)
 {
     if (!mBuyShopItems || !item)
         return;
+    bool emp = isShopEmpty();
     mBuyShopItems->addItemNoDup(item->getId(),
         item->getColor(), amount, price);
+    if (emp && player_node)
+        player_node->updateStatus();
+
     updateButtonsAndLabels();
 }
 
@@ -315,8 +324,12 @@ void ShopWindow::addSellItem(Item *item, int amount, int price)
 {
     if (!mBuyShopItems || !item)
         return;
+    bool emp = isShopEmpty();
     mSellShopItems->addItemNoDup(item->getId(),
         item->getColor(), amount, price);
+    if (emp && player_node)
+        player_node->updateStatus();
+
     updateButtonsAndLabels();
 }
 

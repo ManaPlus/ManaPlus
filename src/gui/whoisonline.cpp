@@ -402,7 +402,8 @@ void WhoIsOnline::loadWebList()
                 if (!mShowLevel)
                     level = 0;
 
-                OnlinePlayer *player = new OnlinePlayer(nick, -1, level, -1);
+                OnlinePlayer *player = new OnlinePlayer(nick, 0, level,
+                    GENDER_UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
 
@@ -709,11 +710,40 @@ void WhoIsOnline::optionChanged(const std::string &name)
 
 void OnlinePlayer::setText(std::string color)
 {
-    mText = strprintf("@@%s|##%s%s", mNick.c_str(),
+    mText = strprintf("@@%s|##%s%s ", mNick.c_str(),
         color.c_str(), mNick.c_str());
 
+    if (actorSpriteManager)
+    {
+        Being *being = actorSpriteManager->findBeingByName(
+            mNick, Being::PLAYER);
+        if (being)
+            being->setState(mStatus);
+    }
+
     if (mLevel > 0)
-        mText += strprintf(" (%d)", mLevel);
+        mText += strprintf("%d", mLevel);
+
+    if (mGender == GENDER_FEMALE)
+        mText += "\u2640";
+    else if (mGender == GENDER_MALE)
+        mText += "\u2642";
+
+    if (mStatus > 0)
+    {
+        if (mStatus & Being::FLAG_SHOP)
+            mText += "$";
+        if (mStatus & Being::FLAG_AWAY)
+        {
+            // TRANSLATORS: this away status writed in player nick
+            mText += _("A");
+        }
+        if (mStatus & Being::FLAG_INACTIVE)
+        {
+            // TRANSLATORS: this inactive status writed in player nick
+            mText += _("I");
+        }
+    }
 
     if (mVersion > 0)
         mText += strprintf(" - %d", mVersion);
