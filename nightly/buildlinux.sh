@@ -29,4 +29,5 @@ then
     cp src/manaplus $DSTDIR/bin
     cp nightly/runme.sh $DSTDIR
     cp "nightly/run tests.sh" $DSTDIR
+    cp nightly/evol.sh $DSTDIR
 fi
