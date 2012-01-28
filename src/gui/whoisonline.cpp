@@ -498,8 +498,8 @@ int WhoIsOnline::downloadThread(void *ptr)
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, ptr);
 
             curl_easy_setopt(curl, CURLOPT_USERAGENT,
-                             strprintf(PACKAGE_EXTENDED_VERSION, branding
-                             .getValue("appShort", "mana").c_str()).c_str());
+                strprintf(PACKAGE_EXTENDED_VERSION,
+                branding.getStringValue("appName").c_str()).c_str());
 
             curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, wio->mCurlError);
             curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
