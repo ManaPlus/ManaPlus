@@ -95,7 +95,7 @@ class MessageIn
 
         virtual std::string readRawString(int length);
 
-        char *readBytes(int length);
+        unsigned char *readBytes(int length);
 
         virtual ~MessageIn()
         { }
