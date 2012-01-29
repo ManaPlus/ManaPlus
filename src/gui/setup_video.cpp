@@ -614,6 +614,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         // TODO: Find out why the drawing area doesn't resize without a restart.
         if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
         {
+#if defined(_WIN32)
             if (width < mainGraphics->mWidth || height < mainGraphics->mHeight)
                 new OkDialog(_("Screen Resolution Changed"),
                        _("Restart your client for the change to take effect.")
@@ -622,6 +623,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             else
                 new OkDialog(_("Screen Resolution Changed"),
                      _("Restart your client for the change to take effect."));
+#else
+            Client::resize(width, height);
+#endif
         }
 
         config.setValue("oldscreen", config.getBoolValue("screen"));
