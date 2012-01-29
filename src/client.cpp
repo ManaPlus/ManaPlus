@@ -2368,13 +2368,30 @@ void Client::resizeVideo(int width, int height)
 
     if (mainGraphics->resize(width, height))
     {
-        gui->videoResized();
+        if (gui)
+            gui->videoResized();
 
         if (mDesktop)
             mDesktop->setSize(width, height);
 
         if (mSetupButton)
-            mSetupButton->setPosition(width - mSetupButton->getWidth() - 3, 3);
+        {
+//            mSetupButton->setPosition(width - mSetupButton->getWidth() - 3, 3);
+
+            int x = width - mSetupButton->getWidth() - 3;
+            mSetupButton->setPosition(x, 3);
+
+#ifndef WIN32
+            x -= mPerfomanceButton->getWidth() + 6;
+            mPerfomanceButton->setPosition(x, 3);
+
+            x -= mVideoButton->getWidth() + 6;
+            mVideoButton->setPosition(x, 3);
+
+            x -= mThemesButton->getWidth() + 6;
+            mThemesButton->setPosition(x, 3);
+#endif
+        }
 
         if (mGame)
             mGame->videoResized(width, height);
