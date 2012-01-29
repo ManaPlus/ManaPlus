@@ -101,6 +101,7 @@ class CharCreateDialog : public Window, public gcn::ActionListener
         gcn::Button *mNextRaceButton;
         gcn::Button *mPrevRaceButton;
         gcn::Label *mRaceLabel;
+        gcn::Label *mRaceNameLabel;
 
         gcn::RadioButton *mMale;
         gcn::RadioButton *mFemale;

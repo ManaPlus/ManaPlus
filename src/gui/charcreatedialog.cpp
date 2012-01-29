@@ -47,6 +47,7 @@
 #include "resources/chardb.h"
 #include "resources/colordb.h"
 #include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -99,6 +100,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
         mNextRaceButton = new Button(_(">"), "nextrace", this);
         mPrevRaceButton = new Button(_("<"), "prevrace", this);
         mRaceLabel = new Label(_("Race:"));
+        mRaceNameLabel = new Label("qwerty");
     }
 
     mCreateButton = new Button(_("Create"), "create", this);
@@ -143,6 +145,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
         mPrevRaceButton->setPosition(155, 93);
         mNextRaceButton->setPosition(230, 93);
         mRaceLabel->setPosition(5, 100);
+        mRaceNameLabel->setPosition(5, 118);
     }
 
     mAttributesLeft->setPosition(15, 280);
@@ -172,6 +175,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
         add(mNextRaceButton);
         add(mPrevRaceButton);
         add(mRaceLabel);
+        add(mRaceNameLabel);
     }
 
     add(mAttributesLeft);
@@ -184,6 +188,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     center();
     setVisible(true);
     mNameField->requestFocus();
+    if (serverVersion >= 2)
+        updateRace();
 }
 
 CharCreateDialog::~CharCreateDialog()
@@ -448,4 +454,6 @@ void CharCreateDialog::updateRace()
     }
 
     mPlayer->setSubtype(mRace);
+    const ItemInfo &item = ItemDB::get(id);
+    mRaceNameLabel->setCaption(item.getName());
 }
