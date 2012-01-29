@@ -224,6 +224,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
                 return;
 
             nextDialog();
+            addText(std::string(), false);
         }
         else if (mActionState == NPC_ACTION_CLOSE
                  || mActionState == NPC_ACTION_WAIT)
