@@ -29,6 +29,9 @@ makensis -DDLLDIR=$dir/../packaging/windows/libs/dll/ \
     -DUPX=true \
     setup.nsi
 
+cp ../../nightly/setup_finish.bmp .
+cp ../../nightly/setup_welcome.bmp .
+
 makensis -DDLLDIR=$dir/../packaging/windows/libs/dll/ \
     -DPRODUCT_VERSION="nightly-$1" \
     -DEXESUFFIX=/src \
