@@ -335,6 +335,13 @@ void WhoIsOnline::loadWebList()
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
     const std::string gmText = "(GM)";
+
+    std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
+    std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
+
+    for (; itd != itd_end; ++ itd)
+        delete *itd;
+
     mOnlinePlayers.clear();
     mOnlineNicks.clear();
 
