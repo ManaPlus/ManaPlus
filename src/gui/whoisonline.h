@@ -46,8 +46,7 @@ class OnlinePlayer
 {
     public:
         OnlinePlayer(std::string nick, unsigned char status,
-                     unsigned char level, unsigned char gender,
-                     unsigned char version) :
+                     char level, unsigned char gender, char version) :
             mNick(nick),
             mText(""),
             mStatus(status),
@@ -63,10 +62,10 @@ class OnlinePlayer
         unsigned char getStaus() const
         { return mStatus; }
 
-        unsigned char getVersion() const
+        char getVersion() const
         { return mVersion; }
 
-        unsigned char getLevel() const
+        char getLevel() const
         { return mLevel; }
 
         const std::string getText()
@@ -74,7 +73,7 @@ class OnlinePlayer
 
         void setText(std::string str);
 
-        void setLevel(unsigned char level)
+        void setLevel(char level)
         { mLevel = level; }
 
     private:
@@ -84,9 +83,9 @@ class OnlinePlayer
 
         unsigned char mStatus;
 
-        unsigned char mLevel;
+        char mLevel;
 
-        unsigned char mVersion;
+        char mVersion;
 
         unsigned char mGender;
 };
