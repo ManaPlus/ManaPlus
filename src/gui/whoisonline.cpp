@@ -282,7 +282,7 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 
             case PlayerRelation::FRIEND:
                 player->setText("2");
-                neutral.push_back(player);
+                friends.push_back(player);
                 break;
 
             case PlayerRelation::DISREGARDED:
@@ -409,7 +409,7 @@ void WhoIsOnline::loadWebList()
                 if (!mShowLevel)
                     level = 0;
 
-                OnlinePlayer *player = new OnlinePlayer(nick, 0, level,
+                OnlinePlayer *player = new OnlinePlayer(nick, 255, level,
                     GENDER_UNSPECIFIED, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
@@ -720,7 +720,7 @@ void OnlinePlayer::setText(std::string color)
     mText = strprintf("@@%s|##%s%s ", mNick.c_str(),
         color.c_str(), mNick.c_str());
 
-    if (actorSpriteManager)
+    if (mStatus != 255 && actorSpriteManager)
     {
         Being *being = actorSpriteManager->findBeingByName(
             mNick, Being::PLAYER);
@@ -736,7 +736,7 @@ void OnlinePlayer::setText(std::string color)
     else if (mGender == GENDER_MALE)
         mText += "\u2642";
 
-    if (mStatus > 0)
+    if (mStatus > 0 && mStatus != 255)
     {
         if (mStatus & Being::FLAG_SHOP)
             mText += "$";

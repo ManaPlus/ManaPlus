@@ -237,7 +237,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
 
     while (buf - start + 1 < size && *(buf + addVal))
     {
-        unsigned char status = 0;
+        unsigned char status = 255;
         unsigned char ver = 0;
         unsigned char level = 0;
         if (serverVersion >= 4)
