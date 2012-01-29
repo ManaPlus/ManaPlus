@@ -1947,6 +1947,8 @@ void Game::closeDialogs()
 
 void Game::videoResized(int width, int height)
 {
-    viewport->setSize(width, height);
-    windowMenu->setPosition(width - 3 - windowMenu->getWidth(), 3);
+    if (viewport)
+        viewport->setSize(width, height);
+    if (windowMenu)
+        windowMenu->setPosition(width - 3 - windowMenu->getWidth(), 3);
 }

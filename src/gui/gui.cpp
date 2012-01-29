@@ -290,11 +290,14 @@ void Gui::videoResized()
 {
     WindowContainer *top = static_cast<WindowContainer*>(getTop());
 
-    int oldWidth = top->getWidth();
-    int oldHeight = top->getHeight();
+    if (top)
+    {
+        int oldWidth = top->getWidth();
+        int oldHeight = top->getHeight();
 
-    top->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
-    top->adjustAfterResize(oldWidth, oldHeight);
+        top->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
+        top->adjustAfterResize(oldWidth, oldHeight);
+    }
 }
 
 void Gui::setUseCustomCursor(bool customCursor)

@@ -48,6 +48,8 @@ void WindowContainer::adjustAfterResize(int oldScreenWidth,
                                         int oldScreenHeight)
 {
     for (WidgetListIterator i = mWidgets.begin(); i != mWidgets.end(); ++i)
+    {
         if (Window *window = dynamic_cast<Window*>(*i))
             window->adjustPositionAfterResize(oldScreenWidth, oldScreenHeight);
+    }
 }

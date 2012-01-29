@@ -167,7 +167,7 @@ volatile int frame_count = 0; /**< Counts the frames during one second */
 volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
-int serverVersion;
+int serverVersion = 0;
 int start_time;
 
 int textures_count = 0;
@@ -2363,6 +2363,8 @@ void Client::resizeVideo(int width, int height)
     width = std::max(640, width);
     height = std::max(480, height);
 
+    if (!mainGraphics)
+        return;
     if (mainGraphics->mWidth == width && mainGraphics->mHeight == height)
         return;
 
@@ -2396,7 +2398,8 @@ void Client::resizeVideo(int width, int height)
         if (mGame)
             mGame->videoResized(width, height);
 
-        gui->draw();
+        if (gui)
+            gui->draw();
 
         // Since everything appears to have worked out, remember to store the
         // new size in the configuration.
