@@ -504,7 +504,7 @@ static const SDLKey numsTbl[] =
 
 int OutfitWindow::keyToNumber(SDLKey key) const
 {
-    for (int f = 0; f < sizeof(numsTbl) / sizeof(SDLKey); f ++)
+    for (unsigned f = 0; f < sizeof(numsTbl) / sizeof(SDLKey); f ++)
     {
         if (numsTbl[f] == key)
             return f;
@@ -512,9 +512,9 @@ int OutfitWindow::keyToNumber(SDLKey key) const
     return -1;
 }
 
-SDLKey OutfitWindow::numberToKey(int number) const
+SDLKey OutfitWindow::numberToKey(unsigned number) const
 {
-    if (number < 0 || number >= sizeof(numsTbl) / sizeof(SDLKey))
+    if (number >= sizeof(numsTbl) / sizeof(SDLKey))
         return SDLK_UNKNOWN;
     return numsTbl[number];
 }
