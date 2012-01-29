@@ -590,7 +590,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     if (gmstatus & 0x80)
         dstBeing->setGM(true);
 
-    if (msgType == 1)
+    if (msgType == 1 || msgType == 2)
     {
         int type = msg.readInt8();
         switch (type)
