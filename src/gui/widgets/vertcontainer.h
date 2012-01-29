@@ -40,7 +40,7 @@ class VertContainer : public Container, public gcn::WidgetListener
                       int leftSpacing = 0);
 
         virtual void add2(gcn::Widget *widget, bool resizable,
-                         int spacing = -1);
+                          int spacing = -1);
 
         virtual void add1(gcn::Widget *widget, int spacing = -1);
 

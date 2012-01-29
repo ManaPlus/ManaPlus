@@ -58,7 +58,7 @@ class InventoryHandler
         //void changeCart() = 0;
 
         virtual void moveItem2(int source, int slot, int amount,
-                              int destination) = 0;
+                               int destination) = 0;
 
         // TODO: fix/remove me
         virtual size_t getSize(int type) const = 0;

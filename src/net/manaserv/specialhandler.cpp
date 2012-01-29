@@ -59,8 +59,8 @@ void SpecialHandler::useBeing(int id A_UNUSED, int level A_UNUSED,
     // TODO
 }
 
-void SpecialHandler::usePos(int id A_UNUSED, int level A_UNUSED, int x A_UNUSED,
-                            int y A_UNUSED)
+void SpecialHandler::usePos(int id A_UNUSED, int level A_UNUSED,
+                            int x A_UNUSED, int y A_UNUSED)
 {
     // TODO
 }
