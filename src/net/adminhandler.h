@@ -42,15 +42,15 @@ class AdminHandler
 
         virtual void kick(int playerId) = 0;
 
-        virtual void kick(const std::string &name) = 0;
+        virtual void kickName(const std::string &name) = 0;
 
         virtual void ban(int playerId) = 0;
 
-        virtual void ban(const std::string &name) = 0;
+        virtual void banName(const std::string &name) = 0;
 
         virtual void unban(int playerId) = 0;
 
-        virtual void unban(const std::string &name) = 0;
+        virtual void unbanName(const std::string &name) = 0;
 
         virtual void mute(int playerId, int type, int limit) = 0;
 

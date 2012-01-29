@@ -424,12 +424,12 @@ void StatusWindow::addAttribute(int id, const std::string &name,
     if (modifiable)
     {
         disp = new ChangeDisplay(id, name);
-        mAttrCont->add(disp);
+        mAttrCont->add1(disp);
     }
     else
     {
         disp = new DerDisplay(id, name);
-        mDAttrCont->add(disp);
+        mDAttrCont->add1(disp);
     }
     mAttrs[id] = disp;
 }

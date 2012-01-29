@@ -42,15 +42,15 @@ class AdminHandler : public Net::AdminHandler
 
         void kick(int playerId);
 
-        void kick(const std::string &name);
+        void kickName(const std::string &name);
 
         void ban(int playerId);
 
-        void ban(const std::string &name);
+        void banName(const std::string &name);
 
         void unban(int playerId);
 
-        void unban(const std::string &name);
+        void unbanName(const std::string &name);
 
         void mute(int playerId, int type, int limit);
 

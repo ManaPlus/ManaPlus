@@ -39,10 +39,10 @@ class VertContainer : public Container, public gcn::WidgetListener
         VertContainer(int verticalItemSize, bool resizable = true,
                       int leftSpacing = 0);
 
-        virtual void add(gcn::Widget *widget, bool resizable,
+        virtual void add2(gcn::Widget *widget, bool resizable,
                          int spacing = -1);
 
-        virtual void add(gcn::Widget *widget, int spacing = -1);
+        virtual void add1(gcn::Widget *widget, int spacing = -1);
 
         virtual void clear();
 

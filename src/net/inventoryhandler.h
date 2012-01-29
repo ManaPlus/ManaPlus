@@ -57,7 +57,7 @@ class InventoryHandler
 
         //void changeCart() = 0;
 
-        virtual void moveItem(int source, int slot, int amount,
+        virtual void moveItem2(int source, int slot, int amount,
                               int destination) = 0;
 
         // TODO: fix/remove me

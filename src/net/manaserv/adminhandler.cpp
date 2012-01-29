@@ -62,7 +62,7 @@ void AdminHandler::kick(int playerId A_UNUSED)
     // TODO
 }
 
-void AdminHandler::kick(const std::string &name A_UNUSED)
+void AdminHandler::kickName(const std::string &name A_UNUSED)
 {
     // TODO
 }
@@ -72,7 +72,7 @@ void AdminHandler::ban(int playerId A_UNUSED)
     // TODO
 }
 
-void AdminHandler::ban(const std::string &name A_UNUSED)
+void AdminHandler::banName(const std::string &name A_UNUSED)
 {
     // TODO
 }
@@ -82,7 +82,7 @@ void AdminHandler::unban(int playerId A_UNUSED)
     // TODO
 }
 
-void AdminHandler::unban(const std::string &name A_UNUSED)
+void AdminHandler::unbanName(const std::string &name A_UNUSED)
 {
     // TODO
 }
