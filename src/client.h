@@ -258,6 +258,9 @@ public:
     static std::string getServerName()
     { return instance()->mServerName; }
 
+    static void resize(int width, int height)
+    { instance()->resizeVideo(width, height); }
+
     static void setGuiAlpha(float n);
 
     static float getGuiAlpha();
