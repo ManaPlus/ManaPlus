@@ -61,8 +61,7 @@ CompoundSprite::CompoundSprite() :
 
 CompoundSprite::~CompoundSprite()
 {
-    delete_all(mSprites);
-    mSprites.clear();
+    clear();
 
 //    delete mImage;
     mImage = nullptr;
@@ -122,9 +121,6 @@ bool CompoundSprite::draw(Graphics *graphics, int posX, int posY) const
 
     if (mSprites.empty()) // Nothing to draw
         return false;
-
-//    posX += mOffsetX;
-//    posY += mOffsetY;
 
     if (mAlpha == 1.0f && mImage)
     {
@@ -286,11 +282,11 @@ void CompoundSprite::removeSprite(int layer)
 void CompoundSprite::clear()
 {
     // Skip if it won't change anything
-    if (mSprites.empty())
-        return;
-
-    delete_all(mSprites);
-    mSprites.clear();
+    if (!mSprites.empty())
+    {
+        delete_all(mSprites);
+        mSprites.clear();
+    }
     mNeedsRedraw = true;
     delete_all(imagesCache);
     imagesCache.clear();
