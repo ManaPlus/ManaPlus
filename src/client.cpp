@@ -999,6 +999,8 @@ int Client::gameExec()
                 Net::getNpcHandler()->clearDialogs();
                 Net::getGuildHandler()->clear();
                 Net::getPartyHandler()->clear();
+                if (chatLogger)
+                    chatLogger->clear();
             }
 
             mOldState = mState;

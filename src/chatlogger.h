@@ -59,6 +59,8 @@ class ChatLogger
         void setBaseLogDir(const std::string &logDir)
         { mBaseLogDir = logDir; }
 
+        void clear();
+
     private:
         /**
          * Sets the file to log to and opens it
