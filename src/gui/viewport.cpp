@@ -497,16 +497,16 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
-                         keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                         keyboard.isActionActive(keyboard.KEY_ATTACK))
                 {
                     if (player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
-                            !keyboard.isKeyActive(keyboard.KEY_TARGET));
+                            !keyboard.isActionActive(keyboard.KEY_TARGET));
                         return;
                     }
                 }
-                else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                else if (!keyboard.isActionActive(keyboard.KEY_ATTACK))
                 {
                     if (player_node != mHoverBeing)
                     {
@@ -522,7 +522,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             player_node->pickUp(mHoverItem);
         }
         // Just walk around
-        else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
+        else if (!keyboard.isActionActive(keyboard.KEY_ATTACK))
         {
             player_node->stopAttack();
             player_node->cancelFollow();

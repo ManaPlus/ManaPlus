@@ -764,18 +764,18 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         mCurHist = mHistory.end();
         mChatInput->setText("");
     }
-    else if (keyboard.isKeyActive(keyboard.KEY_AUTOCOMPLETE_CHAT) &&
+    else if (keyboard.isActionActive(keyboard.KEY_AUTOCOMPLETE_CHAT) &&
              mChatInput->getText() != "")
     {
         autoComplete();
         return;
     }
-    else if (keyboard.isKeyActive(keyboard.KEY_DEACTIVATE_CHAT) &&
+    else if (keyboard.isActionActive(keyboard.KEY_DEACTIVATE_CHAT) &&
              mChatInput->isVisible())
     {
         mChatInput->processVisible(false);
     }
-    else if (keyboard.isKeyActive(keyboard.KEY_CHAT_PREV_HISTORY) &&
+    else if (keyboard.isActionActive(keyboard.KEY_CHAT_PREV_HISTORY) &&
              mChatInput->isVisible())
     {
         ChatTab *tab = getFocused();
@@ -807,7 +807,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                     mChatInput->getText().length()));
         }
     }
-    else if (keyboard.isKeyActive(keyboard.KEY_CHAT_NEXT_HISTORY) &&
+    else if (keyboard.isActionActive(keyboard.KEY_CHAT_NEXT_HISTORY) &&
              mChatInput->isVisible())
     {
         ChatTab *tab = getFocused();

@@ -136,7 +136,7 @@ class KeyboardConfig
         /**
          * Checks if the key is active, by providing the key function index.
          */
-        bool isKeyActive(int index) const;
+        bool isActionActive(int index) const;
 
         /**
          * Takes a snapshot of all the active keys.
