@@ -83,6 +83,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     updateHair();
 
     mNameField = new TextField("");
+    mNameField->setMaximum(24);
     mNameLabel = new Label(_("Name:"));
     // TRANSLATORS: This is a narrow symbol used to denote 'next'.
     // You may change this symbol if your language uses another.

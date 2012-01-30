@@ -37,6 +37,7 @@
 
 class LocalPlayer;
 class PlayerBox;
+class TextField;
 
 /**
  * Character creation dialog.
@@ -90,7 +91,7 @@ class CharCreateDialog : public Window, public gcn::ActionListener
 
         CharSelectDialog *mCharSelectDialog;
 
-        gcn::TextField *mNameField;
+        TextField *mNameField;
         gcn::Label *mNameLabel;
         gcn::Button *mNextHairColorButton;
         gcn::Button *mPrevHairColorButton;
