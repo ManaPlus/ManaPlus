@@ -114,7 +114,7 @@ class TextField : public gcn::TextField
         static ImageRect skin;
         bool mNumeric;
         int mMinimum;
-        int mMaximum;
+        unsigned mMaximum;
         bool mLoseFocusOnTab;
         int mLastEventPaste;
 };

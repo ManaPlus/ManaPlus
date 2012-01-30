@@ -193,7 +193,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 {
     int val = keyEvent.getKey().getValue();
 
-    if (val >= 32)
+    if (val >= 32 && (mNumeric || !mMaximum || mText.size() < mMaximum))
     {
         int l;
         if (val < 128)
