@@ -44,12 +44,12 @@ RequestExecutionLevel admin
 !include "MultiUser.nsh"
 
 ; HM NIS Edit helper defines
-!define PRODUCT_NAME "ManaPlus"
+!define PRODUCT_NAME "EvolClient"
 !ifndef PRODUCT_VERSION
   !define PRODUCT_VERSION "1.1"
 !endif
-!define PRODUCT_PUBLISHER "ManaPlus Development Team"
-!define PRODUCT_WEB_SITE "http://manaplus.evolonline.org/"
+!define PRODUCT_PUBLISHER "Evol Online Delopment Team"
+!define PRODUCT_WEB_SITE "http://www.evolonline.org/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\manaplus.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "SHCTX"
@@ -62,14 +62,14 @@ RequestExecutionLevel admin
 ; MUI Settings
 !define MUI_ABORTWARNING
 ;!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\win-install.ico"
-!define MUI_ICON "${SRCDIR}\data\icons\manaplus.ico"
+!define MUI_ICON "${SRCDIR}\data\evol\icons\manaplus.ico"
 ;!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\win-uninstall.ico"
-!define MUI_UNICON "${SRCDIR}\data\icons\manaplus.ico"
+!define MUI_UNICON "${SRCDIR}\data\evol\icons\manaplus.ico"
 
 ;Language Selection Dialog Settings
 ;Remember the installer language
 !define MUI_LANGDLL_REGISTRY_ROOT "HKCU"
-!define MUI_LANGDLL_REGISTRY_KEY "Software\Mana"
+!define MUI_LANGDLL_REGISTRY_KEY "Software\EvolOnline"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 !define MUI_WELCOMEFINISHPAGE_BITMAP "setup_welcome.bmp"
@@ -89,14 +89,14 @@ RequestExecutionLevel admin
 !insertmacro MUI_PAGE_INSTFILES
 ; Finish page
 !define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_FUNCTION RunMana
+!define MUI_FINISHPAGE_RUN_FUNCTION RunEvol
 !define MUI_FINISHPAGE_SHOWREADME 'notepad.exe "$\"$INSTDIR\README$\""'
 !define MUI_PAGE_CUSTOMFUNCTION_PRE changeFinishImage
-!define MUI_FINISHPAGE_LINK "Visit ManaPlus website for the latest news, FAQs and support"
-!define MUI_FINISHPAGE_LINK_LOCATION "http://manaplus.evolonline.org/"
+!define MUI_FINISHPAGE_LINK "Visit EvolOnline website for the latest news, FAQs and support"
+!define MUI_FINISHPAGE_LINK_LOCATION "http://www.evolonline.org/"
 !insertmacro MUI_PAGE_FINISH
 
-Function RunMana
+Function RunEvol
 SetOutPath $INSTDIR
 Exec "$INSTDIR\manaplus.exe"
 FunctionEnd
@@ -170,8 +170,8 @@ ReserveFile "setup_finish.bmp"
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "manaplus-${PRODUCT_VERSION}-win32.exe"
-InstallDir "$PROGRAMFILES\Mana"
+OutFile "evol-${PRODUCT_VERSION}-win32.exe"
+InstallDir "$PROGRAMFILES\EvolOnline"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
@@ -214,6 +214,9 @@ Section "Core files (required)" SecCore
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
   CreateDirectory "$INSTDIR\data"
+  CreateDirectory "$INSTDIR\data\evol"
+  CreateDirectory "$INSTDIR\data\evol\icons"
+  CreateDirectory "$INSTDIR\data\evol\images"
   CreateDirectory "$INSTDIR\data\fonts"
   CreateDirectory "$INSTDIR\data\graphics"
   CreateDirectory "$INSTDIR\data\help"
@@ -322,30 +325,26 @@ Section "Core files (required)" SecCore
   File "${SRCDIR}\data\perserver\default\*.xml"
   SetOutPath "$INSTDIR\docs"
   File "${SRCDIR}\docs\FAQ.txt"
+  SetOutPath "$INSTDIR"
+  File "${SRCDIR}\data\evol\evol.manaplus"
+  SetOutPath "$INSTDIR\data\evol\images"
+  File "${SRCDIR}\data\evol\images\*.png"
+  SetOutPath "$INSTDIR\data\evol\icons"
+  File "${SRCDIR}\data\evol\icons\*.ico"
 SectionEnd
 
 Section "Create Shortcuts" SecShortcuts
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  CreateDirectory "$SMPROGRAMS\Mana"
-  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus.lnk" "$INSTDIR\manaplus.exe"
-  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk" "$INSTDIR\manaplus.exe" --no-opengl
-  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk" "$INSTDIR\manaplus.exe" --safemode
-  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (tests).lnk" "$INSTDIR\manaplus.exe" --tests
-  CreateShortCut "$DESKTOP\ManaPlus.lnk" "$INSTDIR\manaplus.exe"
-  CreateShortCut "$DESKTOP\ManaPlus (tests).lnk" "$INSTDIR\manaplus.exe" --tests
+  CreateDirectory "$SMPROGRAMS\EvolOnline"
+  CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline (no opengl).lnk" '"$INSTDIR\manaplus.exe"' '"--no-opengl" "$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline (safemode).lnk" '"$INSTDIR\manaplus.exe"' '"--safemode" "$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline (tests).lnk" '"$INSTDIR\manaplus.exe"' '"--tests" "$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$DESKTOP\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$DESKTOP\EvolOnline (tests).lnk" '"$INSTDIR\manaplus.exe"' '"--tests" "$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
 
   ${registerExtension} "$INSTDIR\manaplus.exe" ".manaplus" "ManaPlus brandings"
-SectionEnd
-
-Section /o "Tmw music" SecTmwMusic
-  AddSize 25200
-  CreateDirectory "$INSTDIR\data\music"
-  SetOutPath "$INSTDIR\data\music"
-  NSISdl::download "http://downloads.sourceforge.net/themanaworld/tmwmusic-0.3.tar.gz" "$TEMP\tmwmusic-0.3.tar.gz"
-  ;Requires an additional plugin from http://nsis.sourceforge.net/UnTGZ_plug-in  Place untgz.dll in your nsis/plugin dir
-  untgz::extract -j -d "$INSTDIR\data\music" "$TEMP\tmwmusic-0.3.tar.gz"
-  Delete "$TEMP\tmwmusic-0.3.tar.gz"
 SectionEnd
 
 Section /o "Portable" SecPortable
@@ -362,23 +361,6 @@ Section /o "Evol Online music" SecEvolMusic
   Delete "$TEMP\evolmusic-beta1-1.tar.gz"
 SectionEnd
 
-Section "Evol Online shortcuts" SecEvol
-  SetOutPath "$INSTDIR"
-  CreateDirectory "$INSTDIR\data\evol"
-  CreateDirectory "$INSTDIR\data\evol\icons"
-  CreateDirectory "$INSTDIR\data\evol\images"
-
-  SetOutPath "$INSTDIR"
-  File "${SRCDIR}\data\evol\evol.manaplus"
-  SetOutPath "$INSTDIR\data\evol\images"
-  File "${SRCDIR}\data\evol\images\*.png"
-  SetOutPath "$INSTDIR\data\evol\icons"
-  File "${SRCDIR}\data\evol\icons\*.ico"
-
-  CreateShortCut "$SMPROGRAMS\Mana\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
-  CreateShortCut "$DESKTOP\EvolOnline.lnk" '"$INSTDIR\manaplus.exe"' '"$INSTDIR\evol.manaplus"' "$INSTDIR\manaplus.exe" 1
-SectionEnd
-
 Section "Translations" SecTrans
   SetOutPath "$INSTDIR"
   File /nonfatal /r "${SRCDIR}\translations"
@@ -388,9 +370,7 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "The core program files."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcuts} "Create game shortcuts and register extensions."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecTmwMusic} "Background tmw music. (If selected the tmw music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecEvol} "Create shortcuts for Evol Online."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvolMusic} "Background evol music. (If selected the evol music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
@@ -399,10 +379,11 @@ SectionEnd
 
 Section -AdditionalIcons
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
-  CreateShortCut "$SMPROGRAMS\Mana\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
-  CreateShortCut "$SMPROGRAMS\Mana\Readme.lnk" "notepad.exe" "$INSTDIR\README.txt"
-  CreateShortCut "$SMPROGRAMS\Mana\FAQ.lnk" "$INSTDIR\docs\FAQ.txt"
-  CreateShortCut "$SMPROGRAMS\Mana\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  WriteIniStr "$INSTDIR\ManaPlus.url" "InternetShortcut" "URL" "http://manaplus.evolonline.org/"
+  CreateShortCut "$SMPROGRAMS\EvolOnline\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
+  CreateShortCut "$SMPROGRAMS\EvolOnline\Readme.lnk" "notepad.exe" "$INSTDIR\README.txt"
+  CreateShortCut "$SMPROGRAMS\EvolOnline\FAQ.lnk" "$INSTDIR\docs\FAQ.txt"
+  CreateShortCut "$SMPROGRAMS\EvolOnline\Uninstall.lnk" "$INSTDIR\uninst.exe"
 SectionEnd
 
 Section -Post
@@ -422,24 +403,24 @@ Function un.onInit
 FunctionEnd
 
 Section Uninstall
-  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Mana"
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\EvolOnline"
 
   Delete "$INSTDIR\*.*"
 
-  Delete "$SMPROGRAMS\Mana\Uninstall.lnk"
-  Delete "$DESKTOP\ManaPlus.lnk"
-  Delete "$DESKTOP\ManaPlus (tests).lnk"
-  Delete "$SMPROGRAMS\Mana\ManaPlus.lnk"
-  Delete "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk"
-  Delete "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk"
-  Delete "$SMPROGRAMS\Mana\ManaPlus (tests).lnk"
-  Delete "$SMPROGRAMS\Mana\Website.lnk"
-  Delete "$SMPROGRAMS\Mana\Readme.lnk"
-  Delete "$SMPROGRAMS\Mana\FAQ.lnk"
-  Delete "$SMPROGRAMS\Mana\EvolOnline.lnk"
+  Delete "$SMPROGRAMS\EvolOnline\Uninstall.lnk"
+  Delete "$DESKTOP\EvolOnline.lnk"
+  Delete "$DESKTOP\EvolOnline (tests).lnk"
+  Delete "$SMPROGRAMS\EvolOnline\EvolOnline.lnk"
+  Delete "$SMPROGRAMS\EvolOnline\EvolOnline (no opengl).lnk"
+  Delete "$SMPROGRAMS\EvolOnline\EvolOnline (safemode).lnk"
+  Delete "$SMPROGRAMS\EvolOnline\EvolOnline (tests).lnk"
+  Delete "$SMPROGRAMS\EvolOnline\Website.lnk"
+  Delete "$SMPROGRAMS\EvolOnline\Readme.lnk"
+  Delete "$SMPROGRAMS\EvolOnline\FAQ.lnk"
+  Delete "$SMPROGRAMS\EvolOnline\EvolOnline.lnk"
   Delete "$DESKTOP\EvolOnline.lnk"
 
-  RMDir "$SMPROGRAMS\Mana"
+  RMDir "$SMPROGRAMS\EvolOnline"
 
   RMDir /r "$INSTDIR\data"
   RMDir /r "$INSTDIR\docs"

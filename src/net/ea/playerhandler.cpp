@@ -645,4 +645,5 @@ int PlayerHandler::getAttackLocation() const
 {
     return EA_ATK;
 }
+
 } // namespace Ea

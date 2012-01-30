@@ -340,7 +340,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         if (isStorageActive())
         {
-            Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
+            Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
                     item->getInvIndex(), item->getQuantity(),
                     Inventory::STORAGE);
         }
@@ -431,7 +431,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                 }
                 else
                 {
-                    Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
+                    Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::STORAGE);
                 }
@@ -445,7 +445,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                 }
                 else
                 {
-                    Net::getInventoryHandler()->moveItem(Inventory::STORAGE,
+                    Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::INVENTORY);
                 }

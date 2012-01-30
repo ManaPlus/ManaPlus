@@ -186,8 +186,8 @@ void InventoryHandler::closeStorage(int type A_UNUSED)
     MessageOut outMsg(CMSG_CLOSE_STORAGE);
 }
 
-void InventoryHandler::moveItem(int source, int slot, int amount,
-                                int destination)
+void InventoryHandler::moveItem2(int source, int slot, int amount,
+                                 int destination)
 {
     if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
     {

@@ -354,7 +354,8 @@ void LocalPlayer::logic()
         }
     }
 
-    if (mEnableAdvert && !mBlockAdvert && mAdvertTime < cur_time)
+    if (serverVersion < 4 && mEnableAdvert && !mBlockAdvert
+        && mAdvertTime < cur_time)
     {
         Uint8 smile = FLAG_SPECIAL;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
@@ -3442,6 +3443,7 @@ void LocalPlayer::setAway(const std::string &message)
     if (!message.empty())
         config.setValue("afkMessage", message);
     changeAwayMode();
+    updateStatus();
 }
 
 void LocalPlayer::setPseudoAway(const std::string &message)
@@ -4207,11 +4209,30 @@ const char *LocalPlayer::getVarItem(const char **arr, unsigned index,
     return arr[sz];
 }
 
+void LocalPlayer::updateStatus()
+{
+    if (serverVersion >= 4 && mEnableAdvert)
+    {
+        Uint8 status = 0;
+        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
+            status += FLAG_SHOP;
+
+        if (mAwayMode || mPseudoAwayMode)
+            status += FLAG_AWAY;
+
+        if (mInactive)
+            status += FLAG_INACTIVE;
+
+        Net::getPlayerHandler()->updateStatus(status);
+    }
+}
+
 void AwayListener::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "ok" && player_node && player_node->getAway())
     {
         player_node->changeAwayMode();
+        player_node->updateStatus();
         if (outfitWindow)
             outfitWindow->unwearAwayOutfit();
         if (miniStatusWindow)

@@ -477,6 +477,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         bool checAttackPermissions(Being *target);
 
+        void updateStatus();
+
         std::string getInvertDirectionString();
 
         std::string getCrazyMoveTypeString();

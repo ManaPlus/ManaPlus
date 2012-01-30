@@ -53,19 +53,19 @@ void SpecialHandler::use(int id)
     gameServerConnection->send(msg);
 }
 
-void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED,
-                         int beingId A_UNUSED)
+void SpecialHandler::useBeing(int id A_UNUSED, int level A_UNUSED,
+                              int beingId A_UNUSED)
 {
     // TODO
 }
 
-void SpecialHandler::use(int id A_UNUSED, int level A_UNUSED, int x A_UNUSED,
-                         int y A_UNUSED)
+void SpecialHandler::usePos(int id A_UNUSED, int level A_UNUSED,
+                            int x A_UNUSED, int y A_UNUSED)
 {
     // TODO
 }
 
-void SpecialHandler::use(int id A_UNUSED, const std::string &map A_UNUSED)
+void SpecialHandler::useMap(int id A_UNUSED, const std::string &map A_UNUSED)
 {
     // TODO
 }

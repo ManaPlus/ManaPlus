@@ -336,5 +336,6 @@ enum
 #define CMSG_ONLINE_LIST             0x0210
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0212
+#define CMSG_SET_STATUS              0x0213
 
 #endif

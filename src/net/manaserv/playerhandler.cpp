@@ -448,4 +448,9 @@ void PlayerHandler::requestOnlineList()
 
 }
 
+void PlayerHandler::updateStatus(Uint8 status)
+{
+
+}
+
 } // namespace ManaServ

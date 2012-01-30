@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd ..
+
+dir=`pwd`
+
+cd packaging/windows
+./make-translations.sh
+makensis -DDLLDIR=$dir/../mana_win/libs/dll/ \
+    -DPRODUCT_VERSION="1.2.1.22" \
+    -DEXESUFFIX=/src \
+    -DUPX=true \
+    evol.nsi
+

@@ -35,11 +35,11 @@ class SpecialHandler
 
         virtual void use(int id) = 0;
 
-        virtual void use(int id, int level, int beingId) = 0;
+        virtual void useBeing(int id, int level, int beingId) = 0;
 
-        virtual void use(int id, int level, int x, int y) = 0;
+        virtual void usePos(int id, int level, int x, int y) = 0;
 
-        virtual void use(int id, const std::string &map) = 0;
+        virtual void useMap(int id, const std::string &map) = 0;
 };
 }
 

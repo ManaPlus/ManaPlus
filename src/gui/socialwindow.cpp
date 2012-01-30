@@ -1143,7 +1143,7 @@ public:
         std::vector<std::string> *players
             = player_relations.getPlayersByRelation(PlayerRelation::FRIEND);
 
-        std::set<std::string> players2 = whoIsOnline->getOnlinePlayers();
+        const std::set<std::string> &players2 = whoIsOnline->getOnlineNicks();
 
         if (!players)
             return;

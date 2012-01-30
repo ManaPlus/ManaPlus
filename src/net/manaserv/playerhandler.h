@@ -74,6 +74,8 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
 
         Vector getDefaultWalkSpeed() const;
 
+        void updateStatus(Uint8 status);
+
     private:
         void handleMapChangeMessage(Net::MessageIn &msg);
 };

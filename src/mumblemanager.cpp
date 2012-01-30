@@ -78,7 +78,6 @@ void MumbleManager::init()
 #if defined BSD4_4
     return;
 #endif
-
     if (mLinkedMem || !config.getBoolValue("enableMumble"))
         return;
 

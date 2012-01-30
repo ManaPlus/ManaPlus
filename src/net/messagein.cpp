@@ -241,7 +241,7 @@ std::string MessageIn::readRawString(int length)
     return str;
 }
 
-char *MessageIn::readBytes(int length)
+unsigned char *MessageIn::readBytes(int length)
 {
     // Get string length
     if (length < 0)
@@ -255,12 +255,27 @@ char *MessageIn::readBytes(int length)
         return nullptr;
     }
 
-    char *buf = new char[length + 2];
+    unsigned char *buf = new unsigned char[length + 2];
 
     memcpy (buf, mData + mPos, length);
     buf[length] = 0;
     buf[length + 1] = 0;
     mPos += length;
+
+#ifdef ENABLEDEBUGLOG
+    std::string str;
+    for (int f = 0; f < length; f ++)
+        str += strprintf ("%02x", (unsigned)buf[f]);
+    str += " ";
+    for (int f = 0; f < length; f ++)
+    {
+        if (buf[f])
+            str += strprintf ("%c", buf[f]);
+        else
+            str += "_";
+    }
+    logger->log("ReadBytes: " + str);
+#endif
 
     PacketCounters::incInBytes(length);
     return buf;

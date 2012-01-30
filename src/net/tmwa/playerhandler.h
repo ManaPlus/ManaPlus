@@ -53,6 +53,7 @@ class PlayerHandler : public MessageHandler, public Ea::PlayerHandler
         void changeAction(Being::Action action);
         void processOnlineList(Net::MessageIn &msg);
         void requestOnlineList();
+        void updateStatus(Uint8 status);
 
         void respawn();
 };

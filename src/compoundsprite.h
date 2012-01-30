@@ -44,11 +44,11 @@ class CompoundItem
         Image *alphaImage;
 };
 
-class CompoundSprite : public Sprite, private std::vector<Sprite*>
+class CompoundSprite : public Sprite
 {
 public:
-    typedef CompoundSprite::iterator SpriteIterator;
-    typedef CompoundSprite::const_iterator SpriteConstIterator;
+    typedef std::vector<Sprite*>::iterator SpriteIterator;
+    typedef std::vector<Sprite*>::const_iterator SpriteConstIterator;
 
     CompoundSprite();
 
@@ -60,7 +60,7 @@ public:
 
     virtual bool update(int time);
 
-    virtual bool draw(Graphics* graphics, int posX, int posY) const;
+    virtual bool draw(Graphics *graphics, int posX, int posY) const;
 
     /**
      * Gets the width in pixels of the first sprite in the list.
@@ -72,7 +72,7 @@ public:
      */
     virtual int getHeight() const;
 
-    virtual const Image* getImage() const;
+    virtual const Image *getImage() const;
 
     virtual bool setSpriteDirection(SpriteDirection direction);
 
@@ -83,17 +83,17 @@ public:
     unsigned int getFrameCount() const;
 
     size_t size() const
-    { return std::vector<Sprite*>::size(); }
+    { return mSprites.size(); }
 
     bool empty() const
-    { return std::vector<Sprite*>::empty(); }
+    { return mSprites.empty(); }
 
-    void addSprite(Sprite* sprite);
+    void addSprite(Sprite *sprite);
 
-    void setSprite(int layer, Sprite* sprite);
+    void setSprite(int layer, Sprite *sprite);
 
     Sprite *getSprite(int layer) const
-    { return at(layer); }
+    { return mSprites.at(layer); }
 
     void removeSprite(int layer);
 
@@ -144,6 +144,7 @@ private:
     bool mEnableAlphaFix;
     bool mDisableAdvBeingCaching;
     bool mDisableBeingCaching;
+    std::vector<Sprite*> mSprites;
 };
 
 #endif // COMPOUNDSPRITE_H

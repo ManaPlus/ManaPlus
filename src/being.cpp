@@ -2517,26 +2517,31 @@ void Being::saveComment(const std::string &name,
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
 
+void Being::setState(Uint8 state)
+{
+    mAdvanced = true;
+    bool shop = (state & FLAG_SHOP);
+    bool away = (state & FLAG_AWAY);
+    bool inactive = (state & FLAG_INACTIVE);
+    bool needUpdate = (shop != mShop || away != mAway
+        || inactive != mInactive);
+
+    mShop = shop;
+    mAway = away;
+    mInactive = inactive;
+
+    if (needUpdate)
+    {
+        updateName();
+        addToCache();
+    }
+}
+
 void Being::setEmote(Uint8 emotion, int emote_time)
 {
     if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {
-        mAdvanced = true;
-        bool shop = (emotion & FLAG_SHOP);
-        bool away = (emotion & FLAG_AWAY);
-        bool inactive = (emotion & FLAG_INACTIVE);
-        bool needUpdate = (shop != mShop || away != mAway
-            || inactive != mInactive);
-
-        mShop = shop;
-        mAway = away;
-        mInactive = inactive;
-
-        if (needUpdate)
-        {
-            updateName();
-            addToCache();
-        }
+        setState(emotion);
     }
     else
     {
