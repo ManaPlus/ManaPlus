@@ -45,10 +45,12 @@ class OpenGL1Graphics : public Graphics
          * the next call to setVideoMode(). Only implemented on MacOS for now.
          */
         void setSync(bool sync);
+
         bool getSync() const
         { return mSync; }
 
-        bool setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel);
+        bool setVideoMode(int w, int h, int bpp, bool fs,
+                          bool hwaccel, bool resize);
 
         bool drawImage(Image *image,
                        int srcX, int srcY,

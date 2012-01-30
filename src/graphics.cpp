@@ -47,13 +47,14 @@ Graphics::Graphics():
     mBlitMode(BLIT_NORMAL),
     mRedraw(false),
     mDoubleBuffer(false),
-    mSecure(false)
+    mSecure(false),
+    mOpenGL(0),
+    mEnableResize(false)
 {
     mRect.x = 0;
     mRect.y = 0;
     mRect.w = 0;
     mRect.h = 0;
-    mOpenGL = 0;
 }
 
 Graphics::~Graphics()
@@ -61,7 +62,8 @@ Graphics::~Graphics()
     _endDraw();
 }
 
-bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
+bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
+                            bool hwaccel, bool resize)
 {
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
@@ -73,10 +75,11 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     mBpp = bpp;
     mFullscreen = fs;
     mHWAccel = hwaccel;
+    mEnableResize = resize;
 
     if (fs)
         displayFlags |= SDL_FULLSCREEN;
-    else
+    else if (resize)
         displayFlags |= SDL_RESIZABLE;
 
     if (hwaccel)
@@ -140,10 +143,10 @@ bool Graphics::setFullscreen(bool fs)
     if (mFullscreen == fs)
         return true;
 
-    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel);
+    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel, mEnableResize);
 }
 
-bool Graphics::resize(int width, int height)
+bool Graphics::resizeScreen(int width, int height)
 {
     if (mWidth == width && mHeight == height)
         return true;
@@ -153,14 +156,18 @@ bool Graphics::resize(int width, int height)
 
     _endDraw();
 
-    bool success = setVideoMode(width, height, mBpp, mFullscreen, mHWAccel);
+    bool success = setVideoMode(width, height, mBpp,
+        mFullscreen, mHWAccel, mEnableResize);
 
     // If it didn't work, try to restore the previous size. If that didn't
     // work either, bail out (but then we're in deep trouble).
     if (!success)
     {
-        if (!setVideoMode(prevWidth, prevHeight, mBpp, mFullscreen, mHWAccel))
+        if (!setVideoMode(prevWidth, prevHeight, mBpp,
+            mFullscreen, mHWAccel, mEnableResize))
+        {
             return false;
+        }
     }
 
     _beginDraw();

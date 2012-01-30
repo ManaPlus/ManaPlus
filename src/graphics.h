@@ -97,7 +97,7 @@ class Graphics : public gcn::SDLGraphics
          * Try to create a window with the given settings.
          */
         virtual bool setVideoMode(int w, int h, int bpp,
-                                  bool fs, bool hwaccel);
+                                  bool fs, bool hwaccel, bool resize);
 
         /**
          * Set fullscreen mode.
@@ -107,7 +107,7 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Resize the window to the specified size.
          */
-        bool resize(int width, int height);
+        bool resizeScreen(int width, int height);
 
         /**
          * Blits an image onto the screen.
@@ -303,6 +303,7 @@ class Graphics : public gcn::SDLGraphics
         SDL_Rect mRect;
         bool mSecure;
         int mOpenGL;
+        bool mEnableResize;
 };
 
 extern Graphics *mainGraphics;

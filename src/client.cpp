@@ -524,9 +524,11 @@ void Client::gameInit()
     const int bpp = 0;
     const bool fullscreen = config.getBoolValue("screen");
     const bool hwaccel = config.getBoolValue("hwaccel");
+    const bool enableResize = config.getBoolValue("enableresize");
 
     // Try to set the desired video mode
-    if (!mainGraphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
+    if (!mainGraphics->setVideoMode(width, height, bpp,
+        fullscreen, hwaccel, enableResize))
     {
         logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
@@ -544,7 +546,7 @@ void Client::gameInit()
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen);
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
-                oldFullscreen, hwaccel))
+                oldFullscreen, hwaccel, enableResize))
             {
                 logger->error(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,
@@ -2368,7 +2370,7 @@ void Client::resizeVideo(int width, int height)
     if (mainGraphics->mWidth == width && mainGraphics->mHeight == height)
         return;
 
-    if (mainGraphics->resize(width, height))
+    if (mainGraphics->resizeScreen(width, height))
     {
         if (gui)
             gui->videoResized();

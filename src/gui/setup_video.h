@@ -62,6 +62,7 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         float mOpacity;
         int mFps;
         int mAltFps;
+        bool mEnableResize;
         Being::Speech mSpeechMode;
 
         ModeListModel *mModeListModel;
@@ -84,6 +85,8 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::Label *mPickupNotifyLabel;
         gcn::CheckBox *mPickupChatCheckBox;
         gcn::CheckBox *mPickupParticleCheckBox;
+
+        gcn::CheckBox *mEnableResizeCheckBox;
 
         gcn::Slider *mSpeechSlider;
         gcn::Label *mSpeechLabel;

@@ -71,7 +71,8 @@ void OpenGLGraphics::setSync(bool sync)
     mSync = sync;
 }
 
-bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
+bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
+                                  bool hwaccel, bool resize)
 {
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
@@ -83,6 +84,7 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     mBpp = bpp;
     mFullscreen = fs;
     mHWAccel = hwaccel;
+    mEnableResize = resize;
 
     if (fs)
     {
@@ -93,7 +95,8 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
         // Resizing currently not supported on Windows, where it would require
         // reuploading all textures.
 #if !defined(_WIN32)
-        displayFlags |= SDL_RESIZABLE;
+        if (resize)
+            displayFlags |= SDL_RESIZABLE;
 #endif
     }
 
