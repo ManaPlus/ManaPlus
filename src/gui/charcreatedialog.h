@@ -70,6 +70,10 @@ class CharCreateDialog : public Window, public gcn::ActionListener
 
         void setFixedGender(bool fixed, Gender gender = GENDER_FEMALE);
 
+        void logic();
+
+        void updatePlayer();
+
     private:
         int getDistributedPoints() const;
 
@@ -96,13 +100,18 @@ class CharCreateDialog : public Window, public gcn::ActionListener
         gcn::Button *mNextHairColorButton;
         gcn::Button *mPrevHairColorButton;
         gcn::Label *mHairColorLabel;
+        gcn::Label *mHairColorNameLabel;
         gcn::Button *mNextHairStyleButton;
         gcn::Button *mPrevHairStyleButton;
         gcn::Label *mHairStyleLabel;
+        gcn::Label *mHairStyleNameLabel;
         gcn::Button *mNextRaceButton;
         gcn::Button *mPrevRaceButton;
         gcn::Label *mRaceLabel;
         gcn::Label *mRaceNameLabel;
+
+        gcn::Button *mActionButton;
+        gcn::Button *mRotateButton;
 
         gcn::RadioButton *mMale;
         gcn::RadioButton *mFemale;
@@ -131,6 +140,9 @@ class CharCreateDialog : public Window, public gcn::ActionListener
         unsigned minHairColor;
         unsigned maxHairStyle;
         unsigned minHairStyle;
+
+        unsigned mAction;
+        unsigned mDirection;
 };
 
 #endif // CHAR_CREATE_DIALOG_H
