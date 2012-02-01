@@ -1,8 +1,9 @@
 /*
  *  The Mana Client
  *  Copyright (C) 2011-2012  The Mana Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
- *  This file is part of The Mana Client.
+ *  This file is part of The ManaPlus Client.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +19,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/customserverdialog.h"
+#include "gui/editserverdialog.h"
 
 #include "configuration.h"
 
@@ -39,17 +40,23 @@ std::string TypeListModel::getElementAt(int elementIndex)
     if (elementIndex == 0)
         return "TmwAthena";
     else if (elementIndex == 1)
+        return "Evol";
+#ifdef MANASERV_SUPPORT
+    else if (elementIndex == 2)
         return "ManaServ";
+#endif
     else
         return "Unknown";
 }
 
-CustomServerDialog::CustomServerDialog(ServerDialog *parent, int index):
-    Window(_("Custom Server"), true, parent),
+EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
+                                   int index) :
+    Window(_("Edit Server"), true, parent),
     mServerDialog(parent),
+    mServer(server),
     mIndex(index)
 {
-    setWindowName("CustomServerDialog");
+    setWindowName("EditServerDialog");
 
     Label *nameLabel = new Label(_("Name:"));
     Label *serverAdressLabel = new Label(_("Address:"));
@@ -58,6 +65,8 @@ CustomServerDialog::CustomServerDialog(ServerDialog *parent, int index):
     Label *descriptionLabel = new Label(_("Description:"));
     mServerAddressField = new TextField(std::string());
     mPortField = new TextField(std::string());
+    mPortField->setNumeric(true);
+    mPortField->setRange(1, 65535);
 
     mTypeListModel = new TypeListModel();
     mTypeField = new DropDown(mTypeListModel);
@@ -111,16 +120,26 @@ CustomServerDialog::CustomServerDialog(ServerDialog *parent, int index):
 
     loadWindowState();
 
-    // Add the entry's info when in modify mode.
-    if (index > -1)
+    mNameField->setText(mServer.name);
+    mDescriptionField->setText(mServer.description);
+    mServerAddressField->setText(mServer.hostname);
+    mPortField->setText(toString(mServer.port));
+
+    switch (mServer.type)
     {
-        const ServerInfo &serverInfo = mServerDialog->mServers[index];
-        mNameField->setText(serverInfo.name);
-        mDescriptionField->setText(serverInfo.description);
-        mServerAddressField->setText(serverInfo.hostname);
-        mPortField->setText(toString(serverInfo.port));
-        mTypeField->setSelected(serverInfo.type ? ServerInfo::MANASERV :
-                                ServerInfo::TMWATHENA);
+        case ServerInfo::MANASERV:
+#ifdef MANASERV_SUPPORT
+            mTypeField->setSelected(2);
+            break;
+#endif
+        default:
+        case ServerInfo::UNKNOWN:
+        case ServerInfo::TMWATHENA:
+            mTypeField->setSelected(0);
+            break;
+        case ServerInfo::EVOL:
+            mTypeField->setSelected(1);
+            break;
     }
 
     setLocationRelativeTo(getParentWindow());
@@ -129,17 +148,17 @@ CustomServerDialog::CustomServerDialog(ServerDialog *parent, int index):
     mNameField->requestFocus();
 }
 
-CustomServerDialog::~CustomServerDialog()
+EditServerDialog::~EditServerDialog()
 {
     delete mTypeListModel;
 }
 
-void CustomServerDialog::logic()
+void EditServerDialog::logic()
 {
     Window::logic();
 }
 
-void CustomServerDialog::action(const gcn::ActionEvent &event)
+void EditServerDialog::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "ok")
     {
@@ -162,28 +181,40 @@ void CustomServerDialog::action(const gcn::ActionEvent &event)
             mCancelButton->setEnabled(false);
             mOkButton->setEnabled(false);
 
-            ServerInfo serverInfo;
-            serverInfo.name = mNameField->getText();
-            serverInfo.description = mDescriptionField->getText();
-            serverInfo.hostname = mServerAddressField->getText();
-            serverInfo.port = (short) atoi(mPortField->getText().c_str());
-            switch (mTypeField->getSelected())
+            mServer.name = mNameField->getText();
+            mServer.description = mDescriptionField->getText();
+            mServer.hostname = mServerAddressField->getText();
+            mServer.port = (short) atoi(mPortField->getText().c_str());
+
+            if (mTypeField)
             {
-                case 0:
-                    serverInfo.type = ServerInfo::TMWATHENA;
-                    break;
-                case 1:
-                    serverInfo.type = ServerInfo::MANASERV;
-                    break;
-                default:
-                    serverInfo.type = ServerInfo::UNKNOWN;
+                switch (mTypeField->getSelected())
+                {
+                    case 0:
+                        mServer.type = ServerInfo::TMWATHENA;
+                        break;
+                    case 1:
+                        mServer.type = ServerInfo::EVOL;
+                        break;
+#ifdef MANASERV_SUPPORT
+                    case 2:
+                        mServer.type = ServerInfo::MANASERV;
+                        break;
+#endif
+                    default:
+                        mServer.type = ServerInfo::UNKNOWN;
+                }
+            }
+            else
+            {
+                mServer.type = ServerInfo::TMWATHENA;
             }
 
             // Tell the server has to be saved
-            serverInfo.save = true;
+            mServer.save = true;
 
             //Add server
-            mServerDialog->saveCustomServers(serverInfo, mIndex);
+            mServerDialog->updateServer(mServer, mIndex);
             scheduleDelete();
         }
     }
@@ -193,7 +224,7 @@ void CustomServerDialog::action(const gcn::ActionEvent &event)
     }
 }
 
-void CustomServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
+void EditServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
     gcn::Key key = keyEvent.getKey();
 

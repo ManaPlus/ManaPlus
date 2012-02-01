@@ -245,6 +245,8 @@ SET(SRCS
     gui/debugwindow.h
     gui/didyouknowwindow.cpp
     gui/didyouknowwindow.h
+    gui/editserverdialog.cpp
+    gui/editserverdialog.h
     gui/emotepopup.cpp
     gui/emotepopup.h
     gui/equipmentwindow.cpp

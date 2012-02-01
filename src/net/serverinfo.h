@@ -54,7 +54,7 @@ public:
     ServerInfo()
     {
         type = TMWATHENA;
-        port = 0;
+        port = 6901;
         save = false;
         version.first = 0;
     }

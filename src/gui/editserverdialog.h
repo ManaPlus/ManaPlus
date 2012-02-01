@@ -1,6 +1,7 @@
 /*
  *  The Mana Client
  *  Copyright (C) 2011-2012  The Mana Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
  *  This file is part of The Mana Client.
  *
@@ -18,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CUSTOMSERVERDIALOG_H
-#define CUSTOMSERVERDIALOG_H
+#ifndef EDITSERVERDIALOG_H
+#define EDITSERVERDIALOG_H
 
 class Button;
 class Label;
@@ -48,7 +49,12 @@ class TypeListModel : public gcn::ListModel
         /**
          * Used to get number of line in the list
          */
-        int getNumberOfElements() { return 2; }
+        int getNumberOfElements()
+#ifdef MANASERV_SUPPORT
+        { return 3; }
+#else
+        { return 2; }
+#endif
 
         /**
          * Used to get an element from the list
@@ -61,14 +67,14 @@ class TypeListModel : public gcn::ListModel
  *
  * \ingroup Interface
  */
-class CustomServerDialog : public Window,
-                     public gcn::ActionListener,
-                     public gcn::KeyListener
+class EditServerDialog : public Window,
+                         public gcn::ActionListener,
+                         public gcn::KeyListener
 {
     public:
-        CustomServerDialog(ServerDialog *parent, int index = -1);
+        EditServerDialog(ServerDialog *parent, ServerInfo server, int index);
 
-        ~CustomServerDialog();
+        ~EditServerDialog();
 
         /**
          * Called when receiving actions from the widgets.
@@ -82,7 +88,7 @@ class CustomServerDialog : public Window,
     private:
         TextField *mServerAddressField;
         TextField *mPortField;
-        TextField  *mNameField;
+        TextField *mNameField;
         TextField *mDescriptionField;
         Button *mOkButton;
         Button *mCancelButton;
@@ -91,8 +97,8 @@ class CustomServerDialog : public Window,
         TypeListModel *mTypeListModel;
 
         ServerDialog *mServerDialog;
-        // The index of the entry to modify, -1 when only adding a new entry.
+        ServerInfo mServer;
         int mIndex;
 };
 
-#endif // CUSTOMSERVERDIALOG_H
+#endif // EDITSERVERDIALOG_H
