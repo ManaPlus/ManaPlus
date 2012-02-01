@@ -234,6 +234,6 @@ void EditServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
     }
     else if (key.getValue() == Key::ENTER)
     {
-        action(gcn::ActionEvent(NULL, mOkButton->getActionEventId()));
+        action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
     }
 }

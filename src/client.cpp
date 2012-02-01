@@ -251,7 +251,7 @@ Client::Client(const Options &options):
     mServerConfigDir(""),
     mUsersDir(""),
     mNpcsDir(""),
-    mGame(0),
+    mGame(nullptr),
     mCurrentDialog(nullptr),
     mQuitDialog(nullptr),
     mDesktop(nullptr),
