@@ -183,7 +183,7 @@ int TextField::getValue() const
     if (value < mMinimum)
         return mMinimum;
 
-    if (value > mMaximum)
+    if (value > (signed)mMaximum)
         return mMaximum;
 
     return value;
@@ -193,31 +193,45 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 {
     int val = keyEvent.getKey().getValue();
 
-    if (val >= 32 && (mNumeric || !mMaximum || mText.size() < mMaximum))
+    if (val >= 32)
     {
-        int l;
-        if (val < 128)
-            l = 1;               // 0xxxxxxx
-        else if (val < 0x800)
-            l = 2;               // 110xxxxx 10xxxxxx
-        else if (val < 0x10000)
-            l = 3;               // 1110xxxx 10xxxxxx 10xxxxxx
-        else
-            l = 4;               // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-
-        char buf[4];
-        for (int i = 0; i < l; ++i)
+        if (mNumeric)
         {
-            buf[i] = static_cast<char>(val >> (6 * (l - i - 1)));
-            if (i > 0)
-                buf[i] = static_cast<char>((buf[i] & 63) | 128);
+            if ((val >= '0' && val <= '9') || (val == '-' && !mCaretPosition))
+            {
+                char buf[2];
+                buf[0] = val;
+                buf[1] = 0;
+                mText.insert(mCaretPosition, std::string(buf));
+                mCaretPosition += 1;
+            }
         }
+        else if (!mMaximum || mText.size() < mMaximum)
+        {
+            int l;
+            if (val < 128)
+                l = 1;               // 0xxxxxxx
+            else if (val < 0x800)
+                l = 2;               // 110xxxxx 10xxxxxx
+            else if (val < 0x10000)
+                l = 3;               // 1110xxxx 10xxxxxx 10xxxxxx
+            else
+                l = 4;               // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 
-        if (l > 1)
-            buf[0] |= static_cast<char>(255 << (8 - l));
+            char buf[4];
+            for (int i = 0; i < l; ++i)
+            {
+                buf[i] = static_cast<char>(val >> (6 * (l - i - 1)));
+                if (i > 0)
+                    buf[i] = static_cast<char>((buf[i] & 63) | 128);
+            }
 
-        mText.insert(mCaretPosition, std::string(buf, buf + l));
-        mCaretPosition += l;
+            if (l > 1)
+                buf[0] |= static_cast<char>(255 << (8 - l));
+
+            mText.insert(mCaretPosition, std::string(buf, buf + l));
+            mCaretPosition += l;
+        }
     }
 
     /* In UTF-8, 10xxxxxx is only used for inner parts of characters. So skip
