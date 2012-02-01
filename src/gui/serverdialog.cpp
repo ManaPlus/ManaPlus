@@ -183,20 +183,24 @@ public:
             graphics->setColor(mTextColor);
 
             int top;
+            int x = 2;
 
             if (!info.name.empty())
             {
                 graphics->setFont(boldFont);
+                x += boldFont->getWidth(info.name) + 15;
                 graphics->drawText(info.name, 2, y);
-                top = y + height / 2;
+                top = y + boldFont->getHeight() + 2;
             }
             else
             {
-                top = y + height / 4;
+                top = y + height / 4 + 2;
             }
 
             graphics->setFont(getFont());
 
+            if (!info.description.empty())
+                graphics->drawText(info.description, x, y);
             graphics->drawText(model->getElementAt(i), 2, top);
 
             if (info.version.first > 0)
@@ -211,7 +215,7 @@ public:
 
     unsigned int getRowHeight() const
     {
-        return 2 * getFont()->getHeight();
+        return 2 * getFont()->getHeight() + 5;
     }
 private:
     gcn::Color mHighlightColor;
