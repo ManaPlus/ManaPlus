@@ -597,6 +597,7 @@ void ServerDialog::loadServers(bool addNew)
                 // Use the name listed in the server list
                 mServers[i].name = server.name;
                 mServers[i].version = server.version;
+                mServers[i].description = server.description;
                 mServersListModel->setVersionString(i, version);
                 found = true;
                 break;
