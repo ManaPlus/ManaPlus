@@ -302,7 +302,6 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadWindowState();
 
-    setFieldsReadOnly(true);
     mServersList->setSelected(0); // Do this after for the Delete button
     setVisible(true);
 
@@ -420,8 +419,6 @@ void ServerDialog::valueChanged(const gcn::SelectionEvent &)
 
     // Update the server and post fields according to the new selection
     const ServerInfo &myServer = mServersListModel->getServer(index);
-    mDescription->setCaption(myServer.description);
-    setFieldsReadOnly(true);
 
     mDeleteButton->setEnabled(myServer.save);
 }
@@ -466,20 +463,6 @@ void ServerDialog::logic()
     }
 
     Window::logic();
-}
-
-void ServerDialog::setFieldsReadOnly(bool readOnly)
-{
-    if (!readOnly)
-    {
-        mServersList->setSelected(-1);
-        mDescription->setCaption(std::string());
-    }
-
-    mAddEntryButton->setEnabled(readOnly);
-    mDeleteButton->setEnabled(false);
-    mLoadButton->setEnabled(readOnly);
-    mDescription->setVisible(readOnly);
 }
 
 void ServerDialog::downloadServerList()

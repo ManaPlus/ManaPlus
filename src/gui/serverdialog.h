@@ -146,8 +146,6 @@ class ServerDialog : public Window,
         static int downloadUpdate(void *ptr, DownloadStatus status,
                                   size_t total, size_t remaining);
 
-        void setFieldsReadOnly(bool readOnly);
-
         Label  *mDescription;
         Button *mQuitButton;
         Button *mConnectButton;
