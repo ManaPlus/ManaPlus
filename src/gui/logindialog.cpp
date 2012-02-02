@@ -177,7 +177,8 @@ void LoginDialog::action(const gcn::ActionEvent &event)
         mLoginData->remember = mKeepCheck->isSelected();
         int updateType = mUpdateTypeDropDown->getSelected();
 
-        if (mCustomUpdateHost->isSelected())
+        if (mCustomUpdateHost->isSelected()
+            && mUpdateHostText->getText().empty())
         {
             updateType |= LoginData::Upd_Custom;
             serverConfig.setValue("customUpdateHost",
