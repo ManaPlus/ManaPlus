@@ -1,4 +1,9 @@
 <emotes>
+    <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
+        <its:translateRule selector="//emote/sprite/@name" translate="yes"/>
+        <its:translateRule selector="//*" translate="no"/>
+    </its:rules>
+
     <emote id="100"><sprite name="Kitty" variant="0">manaplus_emote.xml</sprite></emote>
     <emote id="101"><sprite name="xD" variant="1">manaplus_emote.xml</sprite></emote>
     <emote id="102"><sprite name="^.^" variant="2">manaplus_emote.xml</sprite></emote>
