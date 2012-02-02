@@ -75,7 +75,7 @@ EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
     mNameField = new TextField(std::string());
     mDescriptionField = new TextField(std::string());
 
-    mOkButton = new Button(_("Ok"), "addServer", this);
+    mOkButton = new Button(_("OK"), "addServer", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
 
     mServerAddressField->addActionListener(this);

@@ -18,6 +18,7 @@ src/gui/connectiondialog.cpp
 src/gui/debugwindow.cpp
 src/gui/didyouknowwindow.cpp
 src/gui/editdialog.cpp
+src/gui/editserverdialog.cpp
 src/gui/equipmentwindow.cpp
 src/gui/helpwindow.cpp
 src/gui/inventorywindow.cpp
