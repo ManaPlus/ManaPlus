@@ -190,6 +190,8 @@ std::vector<std::string> getLang();
 
 std::string getLangSimple();
 
+std::string getLangShort();
+
 std::string packList(std::list<std::string> &list);
 
 std::list<std::string> unpackList(const std::string &str);

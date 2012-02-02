@@ -511,6 +511,9 @@ void ServerDialog::loadServers(bool addNew)
         return;
     }
 
+    const std::string lang = getLangShort();
+    const std::string description2 = "description_" + lang;
+
     for_each_xml_child_node(serverNode, rootNode)
     {
         if (!xmlNameEqual(serverNode, "server"))
@@ -560,7 +563,9 @@ void ServerDialog::loadServers(bool addNew)
                     server.port = defaultPortForServerType(server.type);
                 }
             }
-            else if (xmlNameEqual(subNode, "description"))
+            else if ((xmlNameEqual(subNode, "description")
+                     && server.description.empty()) || (!lang.empty()
+                     && xmlNameEqual(subNode, description2.c_str())))
             {
                 server.description = reinterpret_cast<const char*>(
                     subNode->xmlChildrenNode->content);

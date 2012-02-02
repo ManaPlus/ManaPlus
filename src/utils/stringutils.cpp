@@ -522,6 +522,26 @@ std::string getLangSimple()
     return lang;
 }
 
+std::string getLangShort()
+{
+    std::string lang = config.getValue("lang", "").c_str();
+    if (lang.empty())
+    {
+        char *lng = getenv("LANG");
+        if (!lng)
+            return "";
+        lang = lng;
+    }
+
+    int dot = lang.find(".");
+    if (dot != (signed)std::string::npos)
+        lang = lang.substr(0, dot);
+    dot = lang.find("_");
+    if (dot != (signed)std::string::npos)
+        return lang.substr(0, dot);
+    return lang;
+}
+
 std::string packList(std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();
