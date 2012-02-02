@@ -96,8 +96,8 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Try to create a window with the given settings.
          */
-        virtual bool setVideoMode(int w, int h, int bpp,
-                                  bool fs, bool hwaccel, bool resize);
+        virtual bool setVideoMode(int w, int h, int bpp, bool fs,
+                                  bool hwaccel, bool resize, bool noFrame);
 
         /**
          * Set fullscreen mode.
@@ -287,6 +287,9 @@ class Graphics : public gcn::SDLGraphics
         int getOpenGL()
         { return mOpenGL; }
 
+        void setNoFrame(bool n)
+        { mNoFrame = n; }
+
         int mWidth;
         int mHeight;
 
@@ -304,6 +307,7 @@ class Graphics : public gcn::SDLGraphics
         bool mSecure;
         int mOpenGL;
         bool mEnableResize;
+        bool mNoFrame;
 };
 
 extern Graphics *mainGraphics;

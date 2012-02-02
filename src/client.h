@@ -258,8 +258,8 @@ public:
     static std::string getServerName()
     { return instance()->mServerName; }
 
-    static void resize(int width, int height)
-    { instance()->resizeVideo(width, height); }
+    static void resize(int width, int height, bool always = false)
+    { instance()->resizeVideo(width, height, always); }
 
     static void setGuiAlpha(float n);
 
@@ -285,7 +285,7 @@ public:
 
     void writePacketLimits(std::string packetLimitsName);
 
-    void resizeVideo(int width, int height);
+    void resizeVideo(int width, int height, bool always);
 
     static bool limitPackets(int type);
 

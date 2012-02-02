@@ -61,8 +61,8 @@ void OpenGL1Graphics::setSync(bool sync)
     mSync = sync;
 }
 
-bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp,
-                                   bool fs, bool hwaccel, bool resize)
+bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,
+                                   bool hwaccel, bool resize, bool noFrame)
 {
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
@@ -75,6 +75,7 @@ bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp,
     mFullscreen = fs;
     mHWAccel = hwaccel;
     mEnableResize = resize;
+    mNoFrame = noFrame;
 
     if (fs)
     {
@@ -89,6 +90,9 @@ bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp,
             displayFlags |= SDL_RESIZABLE;
 #endif
     }
+
+    if (noFrame)
+        displayFlags |= SDL_NOFRAME;
 
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 

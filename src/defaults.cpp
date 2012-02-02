@@ -226,6 +226,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "useInactiveJoystick", false);
     AddDEF(configData, "testInfo", "");
     AddDEF(configData, "enableresize", true);
+    AddDEF(configData, "noframe", false);
     return configData;
 }
 

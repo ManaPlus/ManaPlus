@@ -49,7 +49,8 @@ Graphics::Graphics():
     mDoubleBuffer(false),
     mSecure(false),
     mOpenGL(0),
-    mEnableResize(false)
+    mEnableResize(false),
+    mNoFrame(false)
 {
     mRect.x = 0;
     mRect.y = 0;
@@ -63,7 +64,7 @@ Graphics::~Graphics()
 }
 
 bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
-                            bool hwaccel, bool resize)
+                            bool hwaccel, bool resize, bool noFrame)
 {
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
@@ -76,6 +77,7 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
     mFullscreen = fs;
     mHWAccel = hwaccel;
     mEnableResize = resize;
+    mNoFrame = noFrame;
 
     if (fs)
         displayFlags |= SDL_FULLSCREEN;
@@ -86,6 +88,9 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
         displayFlags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
     else
         displayFlags |= SDL_SWSURFACE;
+
+    if (noFrame)
+        displayFlags |= SDL_NOFRAME;
 
     setTarget(SDL_SetVideoMode(w, h, bpp, displayFlags));
 
@@ -143,7 +148,8 @@ bool Graphics::setFullscreen(bool fs)
     if (mFullscreen == fs)
         return true;
 
-    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel, mEnableResize);
+    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel,
+        mEnableResize, mNoFrame);
 }
 
 bool Graphics::resizeScreen(int width, int height)
@@ -157,14 +163,14 @@ bool Graphics::resizeScreen(int width, int height)
     _endDraw();
 
     bool success = setVideoMode(width, height, mBpp,
-        mFullscreen, mHWAccel, mEnableResize);
+        mFullscreen, mHWAccel, mEnableResize, mNoFrame);
 
     // If it didn't work, try to restore the previous size. If that didn't
     // work either, bail out (but then we're in deep trouble).
     if (!success)
     {
         if (!setVideoMode(prevWidth, prevHeight, mBpp,
-            mFullscreen, mHWAccel, mEnableResize))
+            mFullscreen, mHWAccel, mEnableResize, mNoFrame))
         {
             return false;
         }

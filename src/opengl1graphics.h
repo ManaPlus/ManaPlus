@@ -50,7 +50,7 @@ class OpenGL1Graphics : public Graphics
         { return mSync; }
 
         bool setVideoMode(int w, int h, int bpp, bool fs,
-                          bool hwaccel, bool resize);
+                          bool hwaccel, bool resize, bool noFrame);
 
         bool drawImage(Image *image,
                        int srcX, int srcY,

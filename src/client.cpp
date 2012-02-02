@@ -525,10 +525,11 @@ void Client::gameInit()
     const bool fullscreen = config.getBoolValue("screen");
     const bool hwaccel = config.getBoolValue("hwaccel");
     const bool enableResize = config.getBoolValue("enableresize");
+    const bool noFrame = config.getBoolValue("noframe");
 
     // Try to set the desired video mode
     if (!mainGraphics->setVideoMode(width, height, bpp,
-        fullscreen, hwaccel, enableResize))
+        fullscreen, hwaccel, enableResize, noFrame))
     {
         logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
@@ -546,7 +547,7 @@ void Client::gameInit()
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen);
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
-                oldFullscreen, hwaccel, enableResize))
+                oldFullscreen, hwaccel, enableResize, noFrame))
             {
                 logger->error(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,
@@ -843,7 +844,7 @@ int Client::gameExec()
                         break;
 
                     case SDL_VIDEORESIZE:
-                        resizeVideo(event.resize.w, event.resize.h);
+                        resizeVideo(event.resize.w, event.resize.h, false);
                         break;
                 }
 
@@ -2360,7 +2361,7 @@ bool Client::isTmw()
     return false;
 }
 
-void Client::resizeVideo(int width, int height)
+void Client::resizeVideo(int width, int height, bool always)
 {
     // Keep a minimum size. This isn't adhered to by the actual window, but
     // it keeps some window positions from getting messed up.
@@ -2369,8 +2370,11 @@ void Client::resizeVideo(int width, int height)
 
     if (!mainGraphics)
         return;
-    if (mainGraphics->mWidth == width && mainGraphics->mHeight == height)
+    if (!always && mainGraphics->mWidth == width
+        && mainGraphics->mHeight == height)
+    {
         return;
+    }
 
     if (mainGraphics->resizeScreen(width, height))
     {
