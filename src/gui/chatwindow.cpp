@@ -548,6 +548,9 @@ void ChatWindow::removeTab(ChatTab *tab)
 
 void ChatWindow::addTab(ChatTab *tab)
 {
+    if (!tab)
+        return;
+
     mChatTabs->addTab(tab, tab->mScrollArea);
 
     // Update UI

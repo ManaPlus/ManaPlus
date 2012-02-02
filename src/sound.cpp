@@ -159,10 +159,17 @@ void Sound::info()
             compiledVersion.major,
             compiledVersion.minor,
             compiledVersion.patch);
-    logger->log("Sound::info() SDL_mixer: %i.%i.%i (linked)",
+    if (linkedVersion)
+    {
+        logger->log("Sound::info() SDL_mixer: %i.%i.%i (linked)",
             linkedVersion->major,
             linkedVersion->minor,
             linkedVersion->patch);
+    }
+    else
+    {
+        logger->log1("Sound::info() SDL_mixer: unknown");
+    }
     logger->log("Sound::info() Driver: %s", driver);
     logger->log("Sound::info() Format: %s", format);
     logger->log("Sound::info() Rate: %i", rate);

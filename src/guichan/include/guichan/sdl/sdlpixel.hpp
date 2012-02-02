@@ -60,6 +60,9 @@ namespace gcn
      */
     inline const Color SDLgetPixel(SDL_Surface* surface, int x, int y)
     {
+        if (!surface)
+            return Color(0, 0, 0, 0);
+
         int bpp = surface->format->BytesPerPixel;
 
         SDL_LockSurface(surface);
@@ -112,6 +115,9 @@ namespace gcn
     inline void SDLputPixel(SDL_Surface* surface, int x, int y,
                             const Color& color)
     {
+        if (!surface)
+            return;
+
         int bpp = surface->format->BytesPerPixel;
 
         SDL_LockSurface(surface);

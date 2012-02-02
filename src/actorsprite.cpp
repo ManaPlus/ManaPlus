@@ -168,6 +168,9 @@ static bool effects_initialized = false;
 
 static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
 {
+    if (!id)
+        return nullptr;
+
     EffectDescription *ed = new EffectDescription;
 
     *id = atoi(XML::getProperty(node, "id", "-1").c_str());

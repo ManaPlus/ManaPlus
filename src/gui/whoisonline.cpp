@@ -464,6 +464,9 @@ void WhoIsOnline::loadWebList()
 size_t WhoIsOnline::memoryWrite(void *ptr, size_t size,
                                 size_t nmemb, FILE *stream)
 {
+    if (!stream)
+        return 0;
+
     WhoIsOnline *wio = reinterpret_cast<WhoIsOnline *>(stream);
     size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,

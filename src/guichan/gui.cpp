@@ -618,6 +618,7 @@ namespace gcn
     {
         Widget* widget = getWidgetAt(x, y);
 
+        //+++ possible nullpointer
         if (mFocusHandler->getModalMouseInputFocused()
             && !widget->isModalMouseInputFocused())
         {
@@ -631,6 +632,7 @@ namespace gcn
     {
         Widget* widget = mFocusHandler->getFocused();
 
+        //+++ possible nullpointer
         while (widget->_getInternalFocusHandler()
                && widget->_getInternalFocusHandler()->getFocused())
         {

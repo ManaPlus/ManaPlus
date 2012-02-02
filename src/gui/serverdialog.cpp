@@ -680,7 +680,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
 int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
                                  size_t total, size_t remaining)
 {
-    if (status == DOWNLOAD_STATUS_CANCELLED)
+    if (!ptr || status == DOWNLOAD_STATUS_CANCELLED)
         return -1;
 
     ServerDialog *sd = reinterpret_cast<ServerDialog*>(ptr);

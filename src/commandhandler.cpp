@@ -665,6 +665,9 @@ void CommandHandler::handleNavigate(const std::string &args,
 
 bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)
 {
+    if (!x || !y)
+        return false;
+
     bool isValid = false;
     const std::string::size_type pos = args.find(" ");
     if (pos != std::string::npos)
@@ -1189,6 +1192,9 @@ void showRes(std::string str, ResourceManager::Resources *res);
 
 void showRes(std::string str, ResourceManager::Resources *res)
 {
+    if (!res)
+        return;
+
     if (debugChatTab)
         debugChatTab->chatLog(str + toString(res->size()));
     logger->log(str + toString(res->size()));

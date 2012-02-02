@@ -224,9 +224,17 @@ void ChatTab::chatLog(std::string line, Own own,
     {
         struct tm *timeInfo;
         timeInfo = localtime(&t);
-        line = strprintf("%s[%02d:%02d] %s%s", lineColor.c_str(),
-            timeInfo->tm_hour, timeInfo->tm_min, tmp.nick.c_str(),
-            tmp.text.c_str());
+        if (timeInfo)
+        {
+            line = strprintf("%s[%02d:%02d] %s%s", lineColor.c_str(),
+                timeInfo->tm_hour, timeInfo->tm_min, tmp.nick.c_str(),
+                tmp.text.c_str());
+        }
+        else
+        {
+            line = strprintf("%s %s%s", lineColor.c_str(),
+                tmp.nick.c_str(), tmp.text.c_str());
+        }
     }
     else
     {

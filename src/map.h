@@ -152,7 +152,8 @@ class MapLayer: public ConfigListener
         /**
          * Set tile image with x + y * width already known.
          */
-        void setTile(int index, Image *img) { mTiles[index] = img; }
+        void setTile(int index, Image *img)
+        { mTiles[index] = img; }
 
         /**
          * Draws this layer to the given graphics context. The coordinates are

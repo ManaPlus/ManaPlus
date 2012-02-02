@@ -1875,6 +1875,9 @@ void LocalPlayer::changeMode(unsigned *var, unsigned limit, const char *conf,
                              std::string (LocalPlayer::*func)(), unsigned def,
                              bool save)
 {
+    if (!var)
+        return;
+
     (*var) ++;
     if (*var >= limit)
         *var = def;

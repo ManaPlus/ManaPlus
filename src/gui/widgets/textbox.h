@@ -59,7 +59,8 @@ class TextBox : public gcn::TextBox
          */
         inline void draw(gcn::Graphics *graphics)
         {
-            setForegroundColor(*mTextColor);
+            if (mTextColor)
+                setForegroundColor(*mTextColor);
             gcn::TextBox::draw(graphics);
         }
 

@@ -1796,6 +1796,9 @@ MapItem *Map::findPortalXY(int x, int y)
     for (it = mMapPortals.begin(), it_end = mMapPortals.end();
          it != it_end; ++it)
     {
+        if (!*it)
+            continue;
+
         MapItem *item = *it;
         if (item->mX == x && item->mY == y)
             return item;

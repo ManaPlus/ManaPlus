@@ -554,6 +554,9 @@ std::string stringToHexPath(const std::string &str)
 
 void deleteCharLeft(std::string &str, unsigned *pos)
 {
+    if (!pos)
+        return;
+
     while (*pos > 0)
     {
         (*pos)--;

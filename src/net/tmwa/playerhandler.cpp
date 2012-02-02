@@ -229,6 +229,9 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
     }
 
     char *start = (char*)msg.readBytes(size);
+    if (!start)
+        return;
+
     char *buf = start;
 
     int addVal = 1;

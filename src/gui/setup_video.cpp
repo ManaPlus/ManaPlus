@@ -143,11 +143,11 @@ ModeListModel::ModeListModel()
     }
     else
     {
-        for (int i = 0; modes[i]; ++i)
+        for (int i = 0; modes[i]; ++ i)
         {
             const std::string modeString =
                 toString(static_cast<int>(modes[i]->w)) + "x"
-                    + toString(static_cast<int>(modes[i]->h));
+                + toString(static_cast<int>(modes[i]->h));
             mVideoModes.push_back(modeString);
         }
     }
