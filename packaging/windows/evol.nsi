@@ -62,9 +62,9 @@ RequestExecutionLevel admin
 ; MUI Settings
 !define MUI_ABORTWARNING
 ;!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\win-install.ico"
-!define MUI_ICON "${SRCDIR}\data\evol\icons\manaplus.ico"
+!define MUI_ICON "${SRCDIR}\data\evol\icons\evol-client.ico"
 ;!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\win-uninstall.ico"
-!define MUI_UNICON "${SRCDIR}\data\evol\icons\manaplus.ico"
+!define MUI_UNICON "${SRCDIR}\data\evol\icons\evol-client.ico"
 
 ;Language Selection Dialog Settings
 ;Remember the installer language

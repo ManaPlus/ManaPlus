@@ -3,7 +3,7 @@
 <configuration>
  <option name="appName" value="Evol Online"/>
  <option name="appShort" value="mana"/>
- <option name="appIcon" value="evol/icons/manaplus"/>
+ <option name="appIcon" value="evol/icons/evol-client"/>
  <option name="loginMusic" value="Artis - The Adventure Begins.ogg"/>
  <option name="onlineServerList" value="http://manaplus.evolonline.org/serverlist.xml"/>
  <option name="defaultServer" value="world.evolonline.org"/>
