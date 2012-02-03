@@ -41,7 +41,8 @@ class GuildChatTab : public ChatTab
 
         void saveToLogFile(std::string &msg);
 
-        int getType() const { return ChatTab::TAB_GUILD; }
+        int getType() const
+        { return ChatTab::TAB_GUILD; }
 
     protected:
         void handleInput(const std::string &msg);

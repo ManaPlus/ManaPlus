@@ -43,7 +43,7 @@ public:
     Guild *getGuild() const
     { return mGuild; }
 
-    int getPos()
+    int getPos() const
     { return mPos; }
 
     void setPos(int pos)

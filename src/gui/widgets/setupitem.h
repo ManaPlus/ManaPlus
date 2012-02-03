@@ -75,7 +75,7 @@ class SetupItem : public gcn::ActionListener
         void setWidget(gcn::Widget *widget)
         { mWidget = widget; }
 
-        gcn::Widget *getWidget()
+        gcn::Widget *getWidget() const
         { return mWidget; }
 
         Configuration *getConfig();
@@ -93,7 +93,7 @@ class SetupItem : public gcn::ActionListener
         virtual void externalUpdated(std::string eventName);
 //        virtual int add(ContainerPlacer &place, int x, int y, int width);
 
-        bool isMainConfig()
+        bool isMainConfig() const
         { return mMainConfig; }
 
     protected:

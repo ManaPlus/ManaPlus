@@ -74,7 +74,7 @@ class GuildManager
 
         bool afterRemove();
 
-        bool havePower()
+        bool havePower() const
         { return mHavePower; }
 
     private:

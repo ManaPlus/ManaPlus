@@ -154,7 +154,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
         /**
          * Returns true if any instances exist.
          */
-        static bool isActive() { return !instances.empty(); }
+        static bool isActive()
+        { return !instances.empty(); }
 
         /**
          * Returns the first active instance. Useful for pushing user

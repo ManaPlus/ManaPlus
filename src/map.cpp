@@ -156,7 +156,7 @@ void MapLayer::optionChanged(const std::string &value)
 
 void MapLayer::setTile(int x, int y, Image *img)
 {
-    setTile(x + y * mWidth, img);
+    mTiles[x + y * mWidth] = img;
 }
 
 void MapLayer::draw(Graphics *graphics, int startX, int startY,

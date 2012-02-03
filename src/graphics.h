@@ -225,7 +225,7 @@ class Graphics : public gcn::SDLGraphics
         void setBlitMode(BlitMode mode)
         { mBlitMode = mode; }
 
-        BlitMode getBlitMode()
+        BlitMode getBlitMode() const
         { return mBlitMode; }
 
         void fillRectangle(const gcn::Rectangle& rectangle);
@@ -263,25 +263,25 @@ class Graphics : public gcn::SDLGraphics
         void setRedraw(bool n)
         { mRedraw = n; }
 
-        bool getRedraw()
+        bool getRedraw() const
         { return mRedraw; }
 
         void setSecure(bool n)
         { mSecure = n; }
 
-        bool getSecure()
+        bool getSecure() const
         { return mSecure; }
 
-        int getBpp()
+        int getBpp() const
         { return mBpp; }
 
-        bool getFullScreen()
+        bool getFullScreen() const
         { return mFullscreen; }
 
-        bool getHWAccel()
+        bool getHWAccel() const
         { return mHWAccel; }
 
-        bool getDoubleBuffer()
+        bool getDoubleBuffer() const
         { return mDoubleBuffer; }
 
         int getOpenGL()

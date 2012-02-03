@@ -285,7 +285,7 @@ int AnimatedSprite::getHeight() const
         return 0;
 }
 
-std::string AnimatedSprite::getIdPath()
+std::string AnimatedSprite::getIdPath() const
 {
     if (!mSprite)
         return "";

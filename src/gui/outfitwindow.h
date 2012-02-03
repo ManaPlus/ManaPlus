@@ -72,7 +72,7 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         void setItemSelected(Item *item);
 
-        bool isItemSelected()
+        bool isItemSelected() const
         { return mItemSelected > 0; }
 
         void wearOutfit(int outfit, bool unwearEmpty = true,

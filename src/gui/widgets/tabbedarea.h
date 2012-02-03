@@ -136,13 +136,13 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         void setRightMargin(int n)
         { mRightMargin = n; }
 
-        int getRightMargin()
+        int getRightMargin() const
         { return mRightMargin; }
 
         void setFollowDownScroll(bool n)
         { mFollowDownScroll = n; }
 
-        bool getFollowDownScroll()
+        bool getFollowDownScroll() const
         { return mFollowDownScroll; }
 
         void fixSize()

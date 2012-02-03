@@ -101,13 +101,13 @@ public:
 
     void prevTab();
 
-    Map* getMap()
+    Map* getMap() const
     { return mMap; }
 
     void setMap(Map *map)
     { mMap = map; mProcessedPortals = false; }
 
-    bool getProcessedPortals()
+    bool getProcessedPortals() const
     { return mProcessedPortals; }
 
     void setProcessedPortals(int n)

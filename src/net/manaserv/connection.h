@@ -63,7 +63,7 @@ namespace ManaServ
              */
             void disconnect();
 
-            State getState()
+            State getState() const
             { return mState; }
 
             /**

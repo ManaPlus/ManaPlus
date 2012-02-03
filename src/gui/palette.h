@@ -98,9 +98,7 @@ class Palette
          * @return the gradient type of the color with the given index
          */
         inline GradientType getGradientType(int type) const
-        {
-            return mColors[type].grad;
-        }
+        { return mColors[type].grad; }
 
         /**
          * Get the character used by the specified color.
@@ -110,9 +108,7 @@ class Palette
          * @return the color char of the color with the given index
          */
         inline char getColorChar(int type) const
-        {
-            return mColors[type].ch;
-        }
+        { return mColors[type].ch; }
 
         /**
          * Gets the gradient delay for the specified type.
@@ -122,7 +118,7 @@ class Palette
          * @return the gradient delay of the color with the given index
          */
         inline int getGradientDelay(int type) const
-            { return mColors[type].delay; }
+        { return mColors[type].delay; }
 
         /**
          * Updates all colors, that are non-static.

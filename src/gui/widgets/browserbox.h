@@ -187,7 +187,7 @@ class BrowserBox : public gcn::Widget,
         TextRows &getRows()
         { return mTextRows; }
 
-        bool hasRows()
+        bool hasRows() const
         { return !mTextRows.empty(); }
 
         void setAlwaysUpdate(bool n)

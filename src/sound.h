@@ -115,7 +115,7 @@ class Sound : public ConfigListener
 
         void volumeRestore();
 
-        std::string getCurrentMusicFile()
+        std::string getCurrentMusicFile() const
         { return mCurrentMusicFile; }
 
         /**

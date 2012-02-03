@@ -73,16 +73,16 @@ namespace Attributes
     static unsigned int attributeMinimum = 0;
     static unsigned int attributeMaximum = 0;
 
-    unsigned int getCreationPoints()
+    unsigned int getCreationPoints() const
     { return creationPoints; }
 
-    unsigned int getAttributeMinimum()
+    unsigned int getAttributeMinimum() const
     { return attributeMinimum; }
 
-    unsigned int getAttributeMaximum()
+    unsigned int getAttributeMaximum() const
     { return attributeMaximum; }
 
-    std::vector<std::string>& getLabels()
+    std::vector<std::string>& getLabels() const
     { return attributeLabels; }
 
     /**

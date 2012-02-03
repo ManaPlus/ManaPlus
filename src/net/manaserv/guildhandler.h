@@ -35,7 +35,7 @@ class GuildHandler : public Net::GuildHandler, public MessageHandler
 public:
     GuildHandler();
 
-    bool isSupported()
+    bool isSupported() const
     { return true; }
 
     void handleMessage(Net::MessageIn &msg);

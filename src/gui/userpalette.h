@@ -107,7 +107,7 @@ class UserPalette : public Palette, public gcn::ListModel
          *
          * @return the requested test color
          */
-        inline const gcn::Color &getTestColor(int type)
+        inline const gcn::Color &getTestColor(int type) const
         { return mColors[type].testColor; }
 
         /**

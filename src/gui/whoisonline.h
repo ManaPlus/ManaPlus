@@ -68,7 +68,7 @@ class OnlinePlayer
         char getLevel() const
         { return mLevel; }
 
-        const std::string getText()
+        const std::string getText() const
         { return mText; }
 
         void setText(std::string str);

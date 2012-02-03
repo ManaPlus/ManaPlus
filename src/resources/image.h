@@ -103,7 +103,7 @@ class Image : public Resource
         /**
          * Tells is the image is loaded
          */
-        bool isLoaded()
+        bool isLoaded() const
         { return mLoaded; }
 
         /**
@@ -217,16 +217,16 @@ class Image : public Resource
         static int mTextureType;
 #endif
 
-        bool isHasAlphaChannel()
+        bool isHasAlphaChannel() const
         { return mHasAlphaChannel; }
 
-        bool isAlphaVisible()
+        bool isAlphaVisible() const
         { return mIsAlphaVisible; }
 
         void setAlphaVisible(bool b)
         { mIsAlphaVisible = b; }
 
-        bool isAlphaCalculated()
+        bool isAlphaCalculated() const
         { return mIsAlphaCalculated; }
 
         void setAlphaCalculated(bool b)

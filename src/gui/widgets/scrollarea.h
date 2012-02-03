@@ -89,7 +89,8 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
         /**
          * Returns whether the widget draws its background or not.
          */
-        bool isOpaque() const { return mOpaque; }
+        bool isOpaque() const
+        { return mOpaque; }
 
         /**
          * Called when the mouse moves in the widget area.

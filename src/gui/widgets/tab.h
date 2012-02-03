@@ -61,7 +61,7 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
          */
         void setFlash(int flash);
 
-        int getFlash()
+        int getFlash() const
         { return mFlash; }
 
         void widgetResized(const gcn::Event &event);
@@ -70,7 +70,7 @@ class Tab : public gcn::Tab, public gcn::WidgetListener
 
         void setLabelFont(gcn::Font *font);
 
-        gcn::Label *getLabel()
+        gcn::Label *getLabel() const
         { return mLabel; }
 
     protected:

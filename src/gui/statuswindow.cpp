@@ -69,7 +69,7 @@ class AttrDisplay : public Container
 
         virtual std::string update();
 
-        virtual Type getType()
+        virtual Type getType() const
         { return UNKNOWN; }
 
         std::string getValue()
@@ -96,7 +96,7 @@ class DerDisplay : public AttrDisplay
     public:
         DerDisplay(int id, const std::string &name);
 
-        virtual Type getType()
+        virtual Type getType() const
         { return DERIVED; }
 };
 
@@ -107,7 +107,7 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 
         std::string update();
 
-        virtual Type getType()
+        virtual Type getType() const
         { return CHANGEABLE; }
 
         void setPointsNeeded(int needed);

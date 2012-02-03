@@ -73,7 +73,8 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
         /**
          * Returns the current progress.
          */
-        float getProgress() const { return mProgress; }
+        float getProgress() const
+        { return mProgress; }
 
         /**
          * Change the ProgressPalette for this ProgressBar to follow or -1 to
@@ -89,7 +90,8 @@ class ProgressBar : public gcn::Widget, public gcn::WidgetListener
         /**
          * Returns the color of the progress bar.
          */
-        const gcn::Color &getColor() const { return mColor; }
+        const gcn::Color &getColor() const
+        { return mColor; }
 
         /**
          * Sets the text shown on the progress bar.

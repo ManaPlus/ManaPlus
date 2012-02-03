@@ -109,7 +109,7 @@ class ShopWindow : public Window, public gcn::ActionListener,
         void setAcceptPlayer(std::string name)
         { mAcceptPlayer = name; }
 
-        const std::string &getAcceptPlayer()
+        const std::string &getAcceptPlayer() const
         { return mAcceptPlayer; }
 
         void sendMessage(const std::string &nick, std::string data,

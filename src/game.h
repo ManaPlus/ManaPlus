@@ -91,7 +91,7 @@ class Game
         /**
          * Returns the currently active map.
          */
-        Map *getCurrentMap()
+        Map *getCurrentMap() const
         { return mCurrentMap; }
 
         const std::string &getCurrentMapName() const

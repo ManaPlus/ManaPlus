@@ -73,7 +73,7 @@ class Resource
         { return mRefCount; }
 
 #ifdef DEBUG_DUMP_LEAKS
-        bool getDumped()
+        bool getDumped() const
         { return mDumped; }
 
         void setDumped(bool n)

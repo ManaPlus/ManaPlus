@@ -63,13 +63,13 @@ class ImageSet : public Resource
         size_type size() const
         { return mImages.size(); }
 
-        int getOffsetX()
+        int getOffsetX() const
         { return mOffsetX; }
 
         void setOffsetX(int n)
         { mOffsetX = n; }
 
-        int getOffsetY()
+        int getOffsetY() const
         { return mOffsetY; }
 
         void setOffsetY(int n)

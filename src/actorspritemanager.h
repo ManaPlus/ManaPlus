@@ -231,10 +231,10 @@ class ActorSpriteManager: public ConfigListener
 
         void addIgnoreAttackMob(std::string name);
 
-        std::list<std::string> getPriorityAttackMobs()
+        std::list<std::string> getPriorityAttackMobs() const
         { return mPriorityAttackMobs; }
 
-        std::list<std::string> getAttackMobs()
+        std::list<std::string> getAttackMobs() const
         { return mAttackMobs; }
 
         void setPriorityAttackMobs(std::list<std::string> mobs)
@@ -243,29 +243,29 @@ class ActorSpriteManager: public ConfigListener
         void setAttackMobs(std::list<std::string> mobs)
         { mAttackMobs = mobs; }
 
-        int getPriorityAttackMobsSize()
+        int getPriorityAttackMobsSize() const
         { return mPriorityAttackMobs.size(); }
 
-        int getAttackMobsSize()
+        int getAttackMobsSize() const
         { return mAttackMobs.size(); }
 
-        std::list<std::string> getIgnoreAttackMobs()
+        std::list<std::string> getIgnoreAttackMobs() const
         { return mIgnoreAttackMobs; }
 
-        std::set<std::string> getAttackMobsSet()
+        std::set<std::string> getAttackMobsSet() const
         { return mAttackMobsSet; }
 
-        std::set<std::string> getPriorityAttackMobsSet()
+        std::set<std::string> getPriorityAttackMobsSet() const
         { return mPriorityAttackMobsSet; }
 
-        std::set<std::string> getIgnoreAttackMobsSet()
+        std::set<std::string> getIgnoreAttackMobsSet() const
         { return mIgnoreAttackMobsSet; }
 
         void rebuildPriorityAttackMobs();
 
         void rebuildAttackMobs();
 
-        bool isInAttackList(const std::string &name)
+        bool isInAttackList(const std::string &name) const
         { return mAttackMobsSet.find(name) != mAttackMobsSet.end(); }
 
         bool isInPriorityAttackList(const std::string &name)
@@ -280,10 +280,10 @@ class ActorSpriteManager: public ConfigListener
                 != mIgnoreAttackMobsSet.end();
         }
 
-        std::map<std::string, int> getAttackMobsMap()
+        std::map<std::string, int> getAttackMobsMap() const
         { return mAttackMobsMap; }
 
-        std::map<std::string, int> getPriorityAttackMobsMap()
+        std::map<std::string, int> getPriorityAttackMobsMap() const
         { return mPriorityAttackMobsMap; }
 
         int getAttackMobIndex(std::string name);

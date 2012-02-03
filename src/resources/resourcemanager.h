@@ -254,17 +254,17 @@ class ResourceManager
          */
         static void deleteInstance();
 
-        int size()
+        int size() const
         { return mResources.size(); }
 
         typedef std::map<std::string, Resource*> Resources;
         typedef Resources::iterator ResourceIterator;
 
 #ifdef DEBUG_DUMP_LEAKS
-        Resources* getResources()
+        Resources* getResources() const
         { return &mResources; }
 
-        Resources* getOrphanedResources()
+        Resources* getOrphanedResources() const
         { return &mOrphanedResources; }
 #endif
 

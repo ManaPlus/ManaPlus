@@ -70,16 +70,16 @@ class Button : public gcn::Button, public gcn::WidgetListener
         void setDescription(std::string text)
         { mDescription = text; }
 
-        std::string getDescription()
+        std::string getDescription() const
         { return mDescription; }
 
-        unsigned getClickCount()
+        unsigned getClickCount() const
         { return mClickCount; }
 
         void setTag(int tag)
         { mTag = tag; }
 
-        int getTag()
+        int getTag() const
         { return mTag; }
 
         void widgetResized(const gcn::Event &event);

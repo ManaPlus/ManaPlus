@@ -127,6 +127,7 @@ class ServerDialog : public Window,
 
     protected:
         friend class ServersListModel;
+
         MutexLocker lock()
         { return MutexLocker(&mMutex); }
 
