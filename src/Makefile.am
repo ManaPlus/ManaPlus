@@ -448,6 +448,12 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/spritedef.cpp \
 	      resources/wallpaper.cpp \
 	      resources/wallpaper.h \
+	      utils/translation/podict.cpp \
+	      utils/translation/podict.h \
+	      utils/translation/poparser.cpp \
+	      utils/translation/poparser.h \
+	      utils/translation/translationmanager.cpp \
+	      utils/translation/translationmanager.h \
 	      utils/base64.cpp \
 	      utils/base64.h \
 	      utils/checkutils.cpp \

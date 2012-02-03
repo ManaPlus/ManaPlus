@@ -592,3 +592,10 @@ std::string &removeProtocol(std::string &url)
         url = url.substr(i + 3);
     return url;
 }
+
+bool strStartWith(std::string str1, std::string str2)
+{
+    if (str1.size() < str2.size())
+        return false;
+    return str1.substr(0, str2.size()) == str2;
+}

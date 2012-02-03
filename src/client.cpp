@@ -101,6 +101,8 @@
 #include "utils/paths.h"
 #include "utils/stringutils.h"
 
+#include "utils/translation/translationmanager.h"
+
 #include "test/testlauncher.h"
 #include "test/testmain.h"
 
@@ -457,6 +459,8 @@ void Client::gameInit()
     resman->addToSearchPath(mLocalDataDir, false);
 
     //resman->selectSkin();
+
+    TranslationManager::loadCurrentLang();
 
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
@@ -1050,6 +1054,7 @@ int Client::gameExec()
                     logger->log1("State: CONNECT SERVER");
                     mCurrentDialog = new ConnectionDialog(
                             _("Connecting to server"), STATE_SWITCH_SERVER);
+                    TranslationManager::loadCurrentLang();
                     break;
 
                 case STATE_LOGIN:

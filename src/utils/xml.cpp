@@ -26,6 +26,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include "utils/translation/podict.h"
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -146,6 +148,16 @@ namespace XML
         }
 
         return def;
+    }
+
+    std::string langProperty(XmlNodePtr node, const char *name,
+                             const std::string &def)
+    {
+        std::string str = getProperty(node, name, def);
+        if (!translator)
+            return str;
+
+        return translator->getStr(str);
     }
 
     bool getBoolProperty(XmlNodePtr node, const char* name, bool def)

@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2007-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,22 +18,38 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_LANGS_H
-#define UTILS_LANGS_H
+#include "utils/translation/podict.h"
 
-#include <string>
-#include <sstream>
-#include <list>
-#include <set>
-#include <vector>
+#include <string.h>
 
-typedef std::vector<std::string> LangVect;
-typedef LangVect::const_iterator LangIter;
+#include "localconsts.h"
+#include "logger.h"
 
-std::vector<std::string> getLang();
+#include "debug.h"
 
-std::string getLangSimple();
+std::string empty;
 
-std::string getLangShort();
+PoDict *translator = nullptr;
 
-#endif // UTILS_LANGS_H
+PoDict::PoDict(std::string lang) :
+    mLang(lang)
+{
+}
+
+PoDict::~PoDict()
+{
+}
+
+const std::string PoDict::getStr(std::string &str)
+{
+    if (mPoLines.find(str) == mPoLines.end())
+        return str;
+    return mPoLines[str];
+}
+
+const char *PoDict::getChar(const char *str)
+{
+    if (mPoLines.find(str) == mPoLines.end())
+        return str;
+    return mPoLines[str].c_str();
+}

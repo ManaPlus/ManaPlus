@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2007-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,22 +18,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_LANGS_H
-#define UTILS_LANGS_H
+#ifndef UTILS_TRANSLATION_MANAGER_H
+#define UTILS_TRANSLATION_MANAGER_H
 
 #include <string>
-#include <sstream>
-#include <list>
-#include <set>
 #include <vector>
 
-typedef std::vector<std::string> LangVect;
-typedef LangVect::const_iterator LangIter;
+class PoDict;
 
-std::vector<std::string> getLang();
+class TranslationManager
+{
+    public:
+        static PoDict *loadLang(std::vector<std::string> lang);
 
-std::string getLangSimple();
+        static void init();
 
-std::string getLangShort();
+        static void loadCurrentLang();
+};
 
-#endif // UTILS_LANGS_H
+#endif // UTILS_TRANSLATION_MANAGER_H
