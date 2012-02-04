@@ -175,6 +175,7 @@ InstallDir "$PROGRAMFILES\EvolOnline"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
+RequestExecutionLevel admin
 
 Function .onInit
   !insertmacro MULTIUSER_INIT
