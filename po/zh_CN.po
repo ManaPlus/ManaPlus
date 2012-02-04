@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-02 16:43+0300\n"
-"PO-Revision-Date: 2012-02-02 13:44+0000\n"
+"POT-Creation-Date: 2012-02-04 15:55+0300\n"
+"PO-Revision-Date: 2012-02-02 16:45+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.net/projects/p/manaplus/"
 "team/zh_CN/)\n"
@@ -43,47 +43,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:952 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:953 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "魔法攻击"
 
-#: src/client.cpp:959 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:960 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "性能"
 
-#: src/client.cpp:964 src/gui/setup_video.cpp:317
+#: src/client.cpp:965 src/gui/setup_video.cpp:319
 msgid "Video"
 msgstr "视频"
 
-#: src/client.cpp:969
+#: src/client.cpp:970
 msgid "Themes"
 msgstr "主题"
 
-#: src/client.cpp:1051
+#: src/client.cpp:1052
 msgid "Connecting to server"
 msgstr "魔法防御"
 
-#: src/client.cpp:1082
+#: src/client.cpp:1083
 msgid "Logging in"
 msgstr "尝试捡起不存在的物品。"
 
-#: src/client.cpp:1115
+#: src/client.cpp:1116
 msgid "Entering game world"
 msgstr "捡起物品发生不存在的物品。"
 
-#: src/client.cpp:1216
+#: src/client.cpp:1217
 msgid "Requesting characters"
 msgstr "请求角色"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1252
 msgid "Connecting to the game server"
 msgstr "连接到游戏服务器"
 
-#: src/client.cpp:1261
+#: src/client.cpp:1262
 msgid "Changing game servers"
 msgstr "更改游戏服务器"
 
-#: src/client.cpp:1304 src/client.cpp:1311 src/client.cpp:1445
+#: src/client.cpp:1305 src/client.cpp:1312 src/client.cpp:1446
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
@@ -93,50 +93,50 @@ msgstr "更改游戏服务器"
 msgid "Error"
 msgstr "错误"
 
-#: src/client.cpp:1320
+#: src/client.cpp:1321
 msgid "Requesting registration details"
 msgstr "请求注册的详细信息"
 
-#: src/client.cpp:1346
+#: src/client.cpp:1347
 msgid "Password Change"
 msgstr "密码更改"
 
-#: src/client.cpp:1347
+#: src/client.cpp:1348
 msgid "Password changed successfully!"
 msgstr "更改密码成功！"
 
-#: src/client.cpp:1366
+#: src/client.cpp:1367
 msgid "Email Change"
 msgstr "更改电子邮件"
 
-#: src/client.cpp:1367
+#: src/client.cpp:1368
 msgid "Email changed successfully!"
 msgstr "更改电子邮件成功！"
 
-#: src/client.cpp:1387
+#: src/client.cpp:1388
 msgid "Unregister Successful"
 msgstr "注销成功"
 
-#: src/client.cpp:1388
+#: src/client.cpp:1389
 msgid "Farewell, come back any time..."
 msgstr "再见，随时欢迎回来... ..."
 
-#: src/client.cpp:1593 src/client.cpp:1626 src/client.cpp:1641
-#: src/client.cpp:2073 src/client.cpp:2080
+#: src/client.cpp:1594 src/client.cpp:1627 src/client.cpp:1642
+#: src/client.cpp:2074 src/client.cpp:2081
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，并且无法创建！退出。"
 
-#: src/client.cpp:1779
+#: src/client.cpp:1780
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "无效的更新主机: %s"
 
-#: src/client.cpp:1813 src/client.cpp:1819
+#: src/client.cpp:1814 src/client.cpp:1820
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:1840
+#: src/client.cpp:1841
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在并且无法创建！退出。"
@@ -1758,11 +1758,11 @@ msgstr "准备下载"
 msgid "Error retreiving server list!"
 msgstr "恢复服务器列表错误！"
 
-#: src/gui/serverdialog.cpp:545
+#: src/gui/serverdialog.cpp:548
 msgid "requires a newer version"
 msgstr "需要较新版本"
 
-#: src/gui/serverdialog.cpp:547
+#: src/gui/serverdialog.cpp:550
 #, c-format
 msgid "requires v%s"
 msgstr "需要 v%s"
@@ -2470,8 +2470,8 @@ msgstr "字体大小"
 msgid "Theme Changed"
 msgstr "主题更改"
 
-#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:628
-#: src/gui/setup_video.cpp:633
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:636
+#: src/gui/setup_video.cpp:641
 msgid "Restart your client for the change to take effect."
 msgstr "重启您的游戏客户端以使变更生效。"
 
@@ -2523,114 +2523,118 @@ msgstr "中"
 msgid "max"
 msgstr "最大"
 
-#: src/gui/setup_video.cpp:289
+#: src/gui/setup_video.cpp:290
 msgid "Full screen"
 msgstr "全屏"
 
-#: src/gui/setup_video.cpp:290
+#: src/gui/setup_video.cpp:291
 msgid "Custom cursor"
 msgstr "自定义鼠标"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Particle effects"
 msgstr "粒子效果"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Show pickup notification"
 msgstr "显示拾起通知"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "in chat"
 msgstr "聊天中"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "as particle"
 msgstr "作为发射武器"
 
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "Enable resize"
 msgstr ""
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:302
+msgid "No frame"
+msgstr ""
+
+#: src/gui/setup_video.cpp:306
 msgid "FPS limit:"
 msgstr "FPS限制："
 
-#: src/gui/setup_video.cpp:308 src/gui/setup_video.cpp:343
-#: src/gui/setup_video.cpp:568 src/gui/setup_video.cpp:722
+#: src/gui/setup_video.cpp:310 src/gui/setup_video.cpp:345
+#: src/gui/setup_video.cpp:574 src/gui/setup_video.cpp:730
 msgid "Alt FPS limit: "
 msgstr ""
 
-#: src/gui/setup_video.cpp:323
+#: src/gui/setup_video.cpp:325
 msgid "Overhead text"
 msgstr "头顶文字"
 
-#: src/gui/setup_video.cpp:324
+#: src/gui/setup_video.cpp:326
 msgid "Gui opacity"
 msgstr "Gui 透明度"
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:327
 msgid "Ambient FX"
 msgstr "环境音效"
 
-#: src/gui/setup_video.cpp:326
+#: src/gui/setup_video.cpp:328
 msgid "Particle detail"
 msgstr "l"
 
-#: src/gui/setup_video.cpp:341 src/gui/setup_video.cpp:344
-#: src/gui/setup_video.cpp:567 src/gui/setup_video.cpp:708
-#: src/gui/setup_video.cpp:720
+#: src/gui/setup_video.cpp:343 src/gui/setup_video.cpp:346
+#: src/gui/setup_video.cpp:573 src/gui/setup_video.cpp:716
+#: src/gui/setup_video.cpp:728
 msgid "None"
 msgstr "w"
 
-#: src/gui/setup_video.cpp:489
+#: src/gui/setup_video.cpp:494
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr "切换到窗口模式，并恢复旧的模式，也没有失败！"
 
-#: src/gui/setup_video.cpp:495
+#: src/gui/setup_video.cpp:500
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 
-#: src/gui/setup_video.cpp:506
+#: src/gui/setup_video.cpp:511
 msgid "Switching to Full Screen"
 msgstr "切换到全屏"
 
-#: src/gui/setup_video.cpp:507
+#: src/gui/setup_video.cpp:512
 msgid "Restart needed for changes to take effect."
 msgstr "重启生效"
 
-#: src/gui/setup_video.cpp:519
+#: src/gui/setup_video.cpp:524
 msgid "Changing to OpenGL"
 msgstr "切换到OpenGL"
 
-#: src/gui/setup_video.cpp:520
+#: src/gui/setup_video.cpp:525
 msgid "Applying change to OpenGL requires restart."
 msgstr "运用改变为OpenGL需要重新开始"
 
-#: src/gui/setup_video.cpp:610
+#: src/gui/setup_video.cpp:618
 msgid "Custom resolution (example: 1024x768)"
 msgstr "自定义分辨率 (例如: 1024x768)"
 
-#: src/gui/setup_video.cpp:611
+#: src/gui/setup_video.cpp:619
 msgid "Enter new resolution:                "
 msgstr "输入新的分辨率:"
 
-#: src/gui/setup_video.cpp:627 src/gui/setup_video.cpp:632
+#: src/gui/setup_video.cpp:635 src/gui/setup_video.cpp:640
 msgid "Screen Resolution Changed"
 msgstr "屏幕分辨率已更改"
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:638
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 
-#: src/gui/setup_video.cpp:666
+#: src/gui/setup_video.cpp:674
 msgid "Particle Effect Settings Changed."
 msgstr "粒子效果更改的设置。"
 
-#: src/gui/setup_video.cpp:667
+#: src/gui/setup_video.cpp:675
 msgid "Changes will take effect on map change."
 msgstr "变更会在地图更换时生效。"
 

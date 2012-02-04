@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-02 16:43+0300\n"
-"PO-Revision-Date: 2012-02-02 13:44+0000\n"
+"POT-Creation-Date: 2012-02-04 15:55+0300\n"
+"PO-Revision-Date: 2012-02-02 16:46+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/team/"
 "ru/)\n"
@@ -45,47 +45,47 @@ msgstr "О"
 msgid "I"
 msgstr "Б"
 
-#: src/client.cpp:952 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:953 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Настройка"
 
-#: src/client.cpp:959 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:960 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "Производительность"
 
-#: src/client.cpp:964 src/gui/setup_video.cpp:317
+#: src/client.cpp:965 src/gui/setup_video.cpp:319
 msgid "Video"
 msgstr "Видео"
 
-#: src/client.cpp:969
+#: src/client.cpp:970
 msgid "Themes"
 msgstr "Темы"
 
-#: src/client.cpp:1051
+#: src/client.cpp:1052
 msgid "Connecting to server"
 msgstr "Идет подключение к серверу..."
 
-#: src/client.cpp:1082
+#: src/client.cpp:1083
 msgid "Logging in"
 msgstr "Авторизация"
 
-#: src/client.cpp:1115
+#: src/client.cpp:1116
 msgid "Entering game world"
 msgstr "Входим в игровой мир"
 
-#: src/client.cpp:1216
+#: src/client.cpp:1217
 msgid "Requesting characters"
 msgstr "Получение списка персонажей"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1252
 msgid "Connecting to the game server"
 msgstr "Подключение к игровому серверу"
 
-#: src/client.cpp:1261
+#: src/client.cpp:1262
 msgid "Changing game servers"
 msgstr "Смена игрового сервера"
 
-#: src/client.cpp:1304 src/client.cpp:1311 src/client.cpp:1445
+#: src/client.cpp:1305 src/client.cpp:1312 src/client.cpp:1446
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
@@ -95,50 +95,50 @@ msgstr "Смена игрового сервера"
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/client.cpp:1320
+#: src/client.cpp:1321
 msgid "Requesting registration details"
 msgstr "Запрос регистрационных данных"
 
-#: src/client.cpp:1346
+#: src/client.cpp:1347
 msgid "Password Change"
 msgstr "Изменить Пароль"
 
-#: src/client.cpp:1347
+#: src/client.cpp:1348
 msgid "Password changed successfully!"
 msgstr "Пароль изменен!"
 
-#: src/client.cpp:1366
+#: src/client.cpp:1367
 msgid "Email Change"
 msgstr "Сменить Email"
 
-#: src/client.cpp:1367
+#: src/client.cpp:1368
 msgid "Email changed successfully!"
 msgstr "Email изменен!"
 
-#: src/client.cpp:1387
+#: src/client.cpp:1388
 msgid "Unregister Successful"
 msgstr "Регистрация удалена"
 
-#: src/client.cpp:1388
+#: src/client.cpp:1389
 msgid "Farewell, come back any time..."
 msgstr "Хорошо, возвращайтесь в любое время..."
 
-#: src/client.cpp:1593 src/client.cpp:1626 src/client.cpp:1641
-#: src/client.cpp:2073 src/client.cpp:2080
+#: src/client.cpp:1594 src/client.cpp:1627 src/client.cpp:1642
+#: src/client.cpp:2074 src/client.cpp:2081
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s не существует, и не может быть создано! Выход."
 
-#: src/client.cpp:1779
+#: src/client.cpp:1780
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Некорректный сервер обновлений: %s"
 
-#: src/client.cpp:1813 src/client.cpp:1819
+#: src/client.cpp:1814 src/client.cpp:1820
 msgid "Error creating updates directory!"
 msgstr "Ошибка создания директории для обновлений!"
 
-#: src/client.cpp:1840
+#: src/client.cpp:1841
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Ошибка: %s не существует, и не может быть создан! Выход."
@@ -1778,11 +1778,11 @@ msgstr "Подготовка к загрузке"
 msgid "Error retreiving server list!"
 msgstr "Не удалось получить список серверов!"
 
-#: src/gui/serverdialog.cpp:545
+#: src/gui/serverdialog.cpp:548
 msgid "requires a newer version"
 msgstr "требуется более новая версия"
 
-#: src/gui/serverdialog.cpp:547
+#: src/gui/serverdialog.cpp:550
 #, c-format
 msgid "requires v%s"
 msgstr "требуется v%s"
@@ -2496,8 +2496,8 @@ msgstr "Размер шрифта"
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:628
-#: src/gui/setup_video.cpp:633
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:636
+#: src/gui/setup_video.cpp:641
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
@@ -2549,120 +2549,124 @@ msgstr "средне"
 msgid "max"
 msgstr "макс."
 
-#: src/gui/setup_video.cpp:289
+#: src/gui/setup_video.cpp:290
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:290
+#: src/gui/setup_video.cpp:291
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Particle effects"
 msgstr "Эффекты частиц"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Show pickup notification"
 msgstr "Показать уведомление о подборе предмета"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "in chat"
 msgstr "в чате"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "as particle"
 msgstr "как частицу"
 
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "Enable resize"
 msgstr "Разрешить менять размер окна"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:302
+msgid "No frame"
+msgstr "Без рамки"
+
+#: src/gui/setup_video.cpp:306
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:308 src/gui/setup_video.cpp:343
-#: src/gui/setup_video.cpp:568 src/gui/setup_video.cpp:722
+#: src/gui/setup_video.cpp:310 src/gui/setup_video.cpp:345
+#: src/gui/setup_video.cpp:574 src/gui/setup_video.cpp:730
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:323
+#: src/gui/setup_video.cpp:325
 msgid "Overhead text"
 msgstr "Текст над головами"
 
-#: src/gui/setup_video.cpp:324
+#: src/gui/setup_video.cpp:326
 msgid "Gui opacity"
 msgstr "Непрозрачность интерфейса"
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:327
 msgid "Ambient FX"
 msgstr "Эффекты окружающей среды"
 
-#: src/gui/setup_video.cpp:326
+#: src/gui/setup_video.cpp:328
 msgid "Particle detail"
 msgstr "Детализация частиц"
 
-#: src/gui/setup_video.cpp:341 src/gui/setup_video.cpp:344
-#: src/gui/setup_video.cpp:567 src/gui/setup_video.cpp:708
-#: src/gui/setup_video.cpp:720
+#: src/gui/setup_video.cpp:343 src/gui/setup_video.cpp:346
+#: src/gui/setup_video.cpp:573 src/gui/setup_video.cpp:716
+#: src/gui/setup_video.cpp:728
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:489
+#: src/gui/setup_video.cpp:494
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в оконный режим. Восстановить старый режим также не "
 "удалось!"
 
-#: src/gui/setup_video.cpp:495
+#: src/gui/setup_video.cpp:500
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:506
+#: src/gui/setup_video.cpp:511
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:507
+#: src/gui/setup_video.cpp:512
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:519
+#: src/gui/setup_video.cpp:524
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:520
+#: src/gui/setup_video.cpp:525
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:610
+#: src/gui/setup_video.cpp:618
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:611
+#: src/gui/setup_video.cpp:619
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:627 src/gui/setup_video.cpp:632
+#: src/gui/setup_video.cpp:635 src/gui/setup_video.cpp:640
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:638
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
 "разрешении"
 
-#: src/gui/setup_video.cpp:666
+#: src/gui/setup_video.cpp:674
 msgid "Particle Effect Settings Changed."
 msgstr "Настройки эффектов частиц изменены."
 
-#: src/gui/setup_video.cpp:667
+#: src/gui/setup_video.cpp:675
 msgid "Changes will take effect on map change."
 msgstr "Изменения вступят в силу после загрузки новой карты."
 

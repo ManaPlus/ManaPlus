@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-02 16:43+0300\n"
-"PO-Revision-Date: 2012-02-02 13:44+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2012-02-04 15:55+0300\n"
+"PO-Revision-Date: 2012-02-04 00:11+0000\n"
+"Last-Translator: reid <reidyaro@gmail.com>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/team/"
 "fr/)\n"
 "Language: fr\n"
@@ -46,47 +46,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:952 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:953 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "Configuration"
 
-#: src/client.cpp:959 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:960 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:964 src/gui/setup_video.cpp:317
+#: src/client.cpp:965 src/gui/setup_video.cpp:319
 msgid "Video"
 msgstr "Vidéo"
 
-#: src/client.cpp:969
+#: src/client.cpp:970
 msgid "Themes"
 msgstr "Thèmes"
 
-#: src/client.cpp:1051
+#: src/client.cpp:1052
 msgid "Connecting to server"
 msgstr "Connexion au serveur"
 
-#: src/client.cpp:1082
+#: src/client.cpp:1083
 msgid "Logging in"
 msgstr "Connexion"
 
-#: src/client.cpp:1115
+#: src/client.cpp:1116
 msgid "Entering game world"
 msgstr "Vous entrez dans un nouveau monde"
 
-#: src/client.cpp:1216
+#: src/client.cpp:1217
 msgid "Requesting characters"
 msgstr "Téléchargement des personnages"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1252
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
-#: src/client.cpp:1261
+#: src/client.cpp:1262
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
-#: src/client.cpp:1304 src/client.cpp:1311 src/client.cpp:1445
+#: src/client.cpp:1305 src/client.cpp:1312 src/client.cpp:1446
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
@@ -96,50 +96,50 @@ msgstr "Changement de serveur de jeu"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/client.cpp:1320
+#: src/client.cpp:1321
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'inscription"
 
-#: src/client.cpp:1346
+#: src/client.cpp:1347
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
-#: src/client.cpp:1347
+#: src/client.cpp:1348
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
-#: src/client.cpp:1366
+#: src/client.cpp:1367
 msgid "Email Change"
 msgstr "Changer d'e-mail"
 
-#: src/client.cpp:1367
+#: src/client.cpp:1368
 msgid "Email changed successfully!"
 msgstr "L'adresse e-mail a été changée avec succès !"
 
-#: src/client.cpp:1387
+#: src/client.cpp:1388
 msgid "Unregister Successful"
 msgstr "Désinscription réussie"
 
-#: src/client.cpp:1388
+#: src/client.cpp:1389
 msgid "Farewell, come back any time..."
 msgstr "A bientôt, revenez quand vous voudrez..."
 
-#: src/client.cpp:1593 src/client.cpp:1626 src/client.cpp:1641
-#: src/client.cpp:2073 src/client.cpp:2080
+#: src/client.cpp:1594 src/client.cpp:1627 src/client.cpp:1642
+#: src/client.cpp:2074 src/client.cpp:2081
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 
-#: src/client.cpp:1779
+#: src/client.cpp:1780
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Site de mise à jour invalide : %s"
 
-#: src/client.cpp:1813 src/client.cpp:1819
+#: src/client.cpp:1814 src/client.cpp:1820
 msgid "Error creating updates directory!"
 msgstr "Impossible de créer le dossier de mise à jour !"
 
-#: src/client.cpp:1840
+#: src/client.cpp:1841
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -558,7 +558,7 @@ msgstr "Les nouveaux mots de passe ne correspondent pas."
 
 #: src/gui/charcreatedialog.cpp:70
 msgid "New Character"
-msgstr ""
+msgstr "Nouveau Personnage"
 
 #: src/gui/charcreatedialog.cpp:99 src/gui/editserverdialog.cpp:61
 #: src/gui/logindialog.cpp:95 src/gui/register.cpp:75
@@ -590,7 +590,7 @@ msgstr "Coupe :"
 
 #: src/gui/charcreatedialog.cpp:112
 msgid "^"
-msgstr ""
+msgstr "^"
 
 #: src/gui/charcreatedialog.cpp:119
 msgid "Race:"
@@ -947,11 +947,11 @@ msgstr "Ok"
 
 #: src/gui/editserverdialog.cpp:54
 msgid "Edit Server"
-msgstr ""
+msgstr "Editer le Serveur"
 
 #: src/gui/editserverdialog.cpp:62
 msgid "Address:"
-msgstr ""
+msgstr "Addresse :"
 
 #: src/gui/editserverdialog.cpp:63
 msgid "Port:"
@@ -963,11 +963,11 @@ msgstr "Type de Serveur :"
 
 #: src/gui/editserverdialog.cpp:65
 msgid "Description:"
-msgstr ""
+msgstr "Description :"
 
 #: src/gui/editserverdialog.cpp:175
 msgid "Please at least type both the address and the port of the server."
-msgstr ""
+msgstr "S'il te plait, entres la bonne adresse et le bon port du serveur."
 
 #: src/gui/equipmentwindow.cpp:64 src/gui/windowmenu.cpp:74
 msgid "Equipment"
@@ -1774,11 +1774,11 @@ msgstr "Préparation du téléchargement"
 msgid "Error retreiving server list!"
 msgstr "Erreur lors du téléchargement de la liste de serveur !"
 
-#: src/gui/serverdialog.cpp:545
+#: src/gui/serverdialog.cpp:548
 msgid "requires a newer version"
 msgstr "requiert une nouvelle version"
 
-#: src/gui/serverdialog.cpp:547
+#: src/gui/serverdialog.cpp:550
 #, c-format
 msgid "requires v%s"
 msgstr "requiert la v%s"
@@ -2489,8 +2489,8 @@ msgstr "Taille de police"
 msgid "Theme Changed"
 msgstr "Thème changé"
 
-#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:628
-#: src/gui/setup_video.cpp:633
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:636
+#: src/gui/setup_video.cpp:641
 msgid "Restart your client for the change to take effect."
 msgstr "Redémarrez le jeu pour que les changements soient appliqués."
 
@@ -2542,122 +2542,126 @@ msgstr "moyen"
 msgid "max"
 msgstr "max"
 
-#: src/gui/setup_video.cpp:289
+#: src/gui/setup_video.cpp:290
 msgid "Full screen"
 msgstr "Plein écran"
 
-#: src/gui/setup_video.cpp:290
+#: src/gui/setup_video.cpp:291
 msgid "Custom cursor"
 msgstr "Curseur personnalisé"
 
-#: src/gui/setup_video.cpp:292
+#: src/gui/setup_video.cpp:293
 msgid "Particle effects"
 msgstr "Effets de particules"
 
-#: src/gui/setup_video.cpp:294
+#: src/gui/setup_video.cpp:295
 msgid "Show pickup notification"
 msgstr "Afficher les messages de ramassage"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:296
+#: src/gui/setup_video.cpp:297
 msgid "in chat"
 msgstr "dans la conversation"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:298
+#: src/gui/setup_video.cpp:299
 msgid "as particle"
 msgstr "avec des particules"
 
-#: src/gui/setup_video.cpp:300
+#: src/gui/setup_video.cpp:301
 msgid "Enable resize"
-msgstr ""
+msgstr "Activer la redimension"
 
-#: src/gui/setup_video.cpp:304
+#: src/gui/setup_video.cpp:302
+msgid "No frame"
+msgstr "Pas d'image"
+
+#: src/gui/setup_video.cpp:306
 msgid "FPS limit:"
 msgstr "Limite FPS :"
 
-#: src/gui/setup_video.cpp:308 src/gui/setup_video.cpp:343
-#: src/gui/setup_video.cpp:568 src/gui/setup_video.cpp:722
+#: src/gui/setup_video.cpp:310 src/gui/setup_video.cpp:345
+#: src/gui/setup_video.cpp:574 src/gui/setup_video.cpp:730
 msgid "Alt FPS limit: "
 msgstr "Alterner les limites FPS"
 
-#: src/gui/setup_video.cpp:323
+#: src/gui/setup_video.cpp:325
 msgid "Overhead text"
 msgstr "Texte aérien"
 
-#: src/gui/setup_video.cpp:324
+#: src/gui/setup_video.cpp:326
 msgid "Gui opacity"
 msgstr "Opacité de l'interface"
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:327
 msgid "Ambient FX"
 msgstr "Effets ambiants"
 
-#: src/gui/setup_video.cpp:326
+#: src/gui/setup_video.cpp:328
 msgid "Particle detail"
 msgstr "Détail des particules"
 
-#: src/gui/setup_video.cpp:341 src/gui/setup_video.cpp:344
-#: src/gui/setup_video.cpp:567 src/gui/setup_video.cpp:708
-#: src/gui/setup_video.cpp:720
+#: src/gui/setup_video.cpp:343 src/gui/setup_video.cpp:346
+#: src/gui/setup_video.cpp:573 src/gui/setup_video.cpp:716
+#: src/gui/setup_video.cpp:728
 msgid "None"
 msgstr "Rien"
 
-#: src/gui/setup_video.cpp:489
+#: src/gui/setup_video.cpp:494
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Impossible de passer en mode fenêtré, et l'ancienne résolution n'est "
 "également pas accessible !"
 
-#: src/gui/setup_video.cpp:495
+#: src/gui/setup_video.cpp:500
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Impossible de passer en mode plein-écran, et l'ancienne résolution n'est "
 "également pas accessible !"
 
-#: src/gui/setup_video.cpp:506
+#: src/gui/setup_video.cpp:511
 msgid "Switching to Full Screen"
 msgstr "Passage en plein écran"
 
-#: src/gui/setup_video.cpp:507
+#: src/gui/setup_video.cpp:512
 msgid "Restart needed for changes to take effect."
 msgstr ""
 "Les changements ne seront pris en compte qu'au prochain démarrage du jeu."
 
-#: src/gui/setup_video.cpp:519
+#: src/gui/setup_video.cpp:524
 msgid "Changing to OpenGL"
 msgstr "Activation d'OpenGL"
 
-#: src/gui/setup_video.cpp:520
+#: src/gui/setup_video.cpp:525
 msgid "Applying change to OpenGL requires restart."
 msgstr ""
 "Le changement OpenGL ne sera pris en compte qu'au prochain démarrage du jeu."
 
-#: src/gui/setup_video.cpp:610
+#: src/gui/setup_video.cpp:618
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Résolution personnalisée (Exemple : 1024x768)"
 
-#: src/gui/setup_video.cpp:611
+#: src/gui/setup_video.cpp:619
 msgid "Enter new resolution:                "
 msgstr "Entrer la nouvelle résolution : "
 
-#: src/gui/setup_video.cpp:627 src/gui/setup_video.cpp:632
+#: src/gui/setup_video.cpp:635 src/gui/setup_video.cpp:640
 msgid "Screen Resolution Changed"
 msgstr "Résolution de l'écran modifiée"
 
-#: src/gui/setup_video.cpp:630
+#: src/gui/setup_video.cpp:638
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Certaines fenêtres pourraient être modifiées pour coïncider à la résolution "
 "réduite."
 
-#: src/gui/setup_video.cpp:666
+#: src/gui/setup_video.cpp:674
 msgid "Particle Effect Settings Changed."
 msgstr "Paramètres d'effet de particules modifiés."
 
-#: src/gui/setup_video.cpp:667
+#: src/gui/setup_video.cpp:675
 msgid "Changes will take effect on map change."
 msgstr "Les changements seront appliqués au changement de carte."
 
@@ -2832,12 +2836,12 @@ msgstr "Inviter"
 #. TRANSLATORS: here P is title for visible players tab in social window
 #: src/gui/socialwindow.cpp:1277
 msgid "P"
-msgstr ""
+msgstr "P"
 
 #. TRANSLATORS: here F is title for friends tab in social window
 #: src/gui/socialwindow.cpp:1281
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/gui/socialwindow.cpp:1414
 #, c-format
