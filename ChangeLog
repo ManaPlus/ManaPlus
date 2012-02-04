@@ -1,3 +1,32 @@
+2012-02-05 New release 1.2.2.5
+ManaPlus:
+fix: particle font in japan localisation.
+fix: some untranslated strings.
+fix: possible crash after switching servers.
+fix: option "attack range" in evol server.
+fix: drop counter with enabled "buggy servers protection".
+fix: empty custom update server.
+add: request client language from server. (evol server)
+add: moving camera by npc commands. (evol server)
+add: evol branding in windows installer.
+add: extended online list. (evol server)
+add: redesign char creation dialog.
+add: resize window from video settings tab.
+add: option to enable/disable window resize.
+add: option to show/hide window frame border.
+add: 3 new emotes by (Nina O'Reilly)
+add: support for 48 emotes.
+add: redesign servers list dialog, using new server editor.
+add: increase login dialog size.
+add: use translation for description in servers dialog.
+
+Mana:
+fix: infinite character selection with command line parameter --character
+add: resize update window.
+add: separate server editor.
+add: possible improve loading images/music.
+add: game window resize.
+
 2012-01-22 New release 1.2.1.22
 fix: bad update hosts handling.
 fix: possible crashes.
