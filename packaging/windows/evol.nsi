@@ -98,7 +98,7 @@ RequestExecutionLevel admin
 
 Function RunEvol
 SetOutPath $INSTDIR
-Exec "$INSTDIR\manaplus.exe"
+Exec "$INSTDIR\manaplus.exe $INSTDIR\evol.manaplus"
 FunctionEnd
 
 Function changeFinishImage
