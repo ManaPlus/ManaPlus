@@ -35,6 +35,8 @@
 
 #include "net/ea/eaprotocol.h"
 
+#include "utils/langs.h"
+
 #include "debug.h"
 
 extern Net::NpcHandler *npcHandler;

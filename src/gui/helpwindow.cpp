@@ -36,6 +36,7 @@
 #include "configuration.h"
 
 #include "utils/gettext.h"
+#include "utils/langs.h"
 
 #include "debug.h"
 

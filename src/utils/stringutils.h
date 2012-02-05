@@ -186,12 +186,6 @@ std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);
 
-std::vector<std::string> getLang();
-
-std::string getLangSimple();
-
-std::string getLangShort();
-
 std::string packList(std::list<std::string> &list);
 
 std::list<std::string> unpackList(const std::string &str);

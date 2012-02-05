@@ -664,6 +664,8 @@
 		<Unit filename="src\utils\copynpaste.h" />
 		<Unit filename="src\utils\dtor.h" />
 		<Unit filename="src\utils\gettext.h" />
+		<Unit filename="src\utils\langs.cpp" />
+		<Unit filename="src\utils\langs.h" />
 		<Unit filename="src\utils\mathutils.h" />
 		<Unit filename="src\utils\mkdir.cpp" />
 		<Unit filename="src\utils\mkdir.h" />

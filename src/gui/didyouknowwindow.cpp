@@ -22,6 +22,7 @@
 
 #include "gui/didyouknowwindow.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "gui/gui.h"
@@ -34,9 +35,9 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "resources/resourcemanager.h"
-#include "configuration.h"
 
 #include "utils/gettext.h"
+#include "utils/langs.h"
 
 #include "debug.h"
 

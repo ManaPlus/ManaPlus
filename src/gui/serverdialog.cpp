@@ -46,9 +46,9 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
+#include "utils/langs.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
-#include "widgets/dropdown.h"
 
 #include <guichan/font.hpp>
 

@@ -456,6 +456,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/copynpaste.h \
 	      utils/dtor.h \
 	      utils/gettext.h \
+	      utils/langs.cpp \
+	      utils/langs.h \
 	      utils/mathutils.h \
 	      utils/mkdir.cpp \
 	      utils/mkdir.h \

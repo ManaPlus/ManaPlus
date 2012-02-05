@@ -486,62 +486,6 @@ std::string combineDye2(std::string file, std::string dye)
     }
 }
 
-std::vector<std::string> getLang()
-{
-    std::vector<std::string> langs;
-
-    std::string lang = config.getValue("lang", "").c_str();
-    if (lang.empty())
-    {
-        char *lng = getenv("LANG");
-        if (!lng)
-            return langs;
-        lang = lng;
-    }
-
-    int dot = lang.find(".");
-    if (dot != (signed)std::string::npos)
-        lang = lang.substr(0, dot);
-    langs.push_back(lang);
-    dot = lang.find("_");
-    if (dot != (signed)std::string::npos)
-        langs.push_back(lang.substr(0, dot));
-    return langs;
-}
-
-std::string getLangSimple()
-{
-    std::string lang = config.getValue("lang", "").c_str();
-    if (lang.empty())
-    {
-        char *lng = getenv("LANG");
-        if (!lng)
-            return "";
-        return lng;
-    }
-    return lang;
-}
-
-std::string getLangShort()
-{
-    std::string lang = config.getValue("lang", "").c_str();
-    if (lang.empty())
-    {
-        char *lng = getenv("LANG");
-        if (!lng)
-            return "";
-        lang = lng;
-    }
-
-    int dot = lang.find(".");
-    if (dot != (signed)std::string::npos)
-        lang = lang.substr(0, dot);
-    dot = lang.find("_");
-    if (dot != (signed)std::string::npos)
-        return lang.substr(0, dot);
-    return lang;
-}
-
 std::string packList(std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();

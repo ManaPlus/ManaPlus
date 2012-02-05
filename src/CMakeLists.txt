@@ -451,6 +451,8 @@ SET(SRCS
     utils/copynpaste.h
     utils/dtor.h
     utils/gettext.h
+    utils/langs.cpp
+    utils/langs.h
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
