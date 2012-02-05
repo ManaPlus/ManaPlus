@@ -143,11 +143,11 @@ ModeListModel::ModeListModel()
     }
     else
     {
-        for (int i = 0; modes[i]; ++i)
+        for (int i = 0; modes[i]; ++ i)
         {
             const std::string modeString =
                 toString(static_cast<int>(modes[i]->w)) + "x"
-                    + toString(static_cast<int>(modes[i]->h));
+                + toString(static_cast<int>(modes[i]->h));
             mVideoModes.push_back(modeString);
         }
     }
@@ -281,6 +281,8 @@ Setup_Video::Setup_Video():
     mOpacity(config.getFloatValue("guialpha")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
+    mEnableResize(config.getBoolValue("enableresize")),
+    mNoFrame(config.getBoolValue("noframe")),
     mSpeechMode(static_cast<Being::Speech>(
         config.getIntValue("speech"))),
     mModeListModel(new ModeListModel),
@@ -296,6 +298,8 @@ Setup_Video::Setup_Video():
     // TRANSLATORS: Refers to "Show own name"
     mPickupParticleCheckBox(new CheckBox(_("as particle"),
                             mPickupParticleEnabled)),
+    mEnableResizeCheckBox(new CheckBox(_("Enable resize"), mEnableResize)),
+    mNoFrameCheckBox(new CheckBox(_("No frame"), mNoFrame)),
     mSpeechSlider(new Slider(0, 3)),
     mSpeechLabel(new Label("")),
     mAlphaSlider(new Slider(0.1, 1.0)),
@@ -367,6 +371,8 @@ Setup_Video::Setup_Video():
     mParticleDetailSlider->setActionEventId("particledetailslider");
     mParticleDetailField->setActionEventId("particledetailfield");
     mOpenGLDropDown->setActionEventId("opengl");
+    mEnableResizeCheckBox->setActionEventId("enableresize");
+    mNoFrameCheckBox->setActionEventId("noframe");
 
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
@@ -383,6 +389,8 @@ Setup_Video::Setup_Video():
     mParticleDetailSlider->addActionListener(this);
     mParticleDetailField->addKeyListener(this);
     mOpenGLDropDown->addActionListener(this);
+    mEnableResizeCheckBox->addActionListener(this);
+    mNoFrameCheckBox->addActionListener(this);
 
     mSpeechLabel->setCaption(speechModeToString(mSpeechMode));
     mSpeechSlider->setValue(mSpeechMode);
@@ -397,8 +405,8 @@ Setup_Video::Setup_Video():
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, scrollArea, 1, 5).setPadding(2);
-    place(0, 5, mOpenGLDropDown, 1);
+    place(0, 0, scrollArea, 1, 6).setPadding(2);
+    place(0, 6, mOpenGLDropDown, 1);
 
 //    place(0, 6, mHwAccelCheckBox, 6);
 
@@ -406,34 +414,36 @@ Setup_Video::Setup_Video():
 
     place(1, 1, mCustomCursorCheckBox, 3);
 
-    place(1, 2, mParticleEffectsCheckBox, 2);
+    place(1, 2, mEnableResizeCheckBox, 2);
+    place(1, 3, mNoFrameCheckBox, 2);
 
-    place(1, 3, mPickupNotifyLabel, 4);
+    place(1, 4, mParticleEffectsCheckBox, 2);
 
-    place(1, 4, mPickupChatCheckBox, 1);
-    place(2, 4, mPickupParticleCheckBox, 2);
+    place(1, 5, mPickupNotifyLabel, 4);
+    place(1, 6, mPickupChatCheckBox, 1);
+    place(2, 6, mPickupParticleCheckBox, 2);
 
-    place(0, 6, mAlphaSlider);
-    place(1, 6, alphaLabel, 3);
+    place(0, 7, mAlphaSlider);
+    place(1, 7, alphaLabel, 3);
 
-    place(0, 7, mFpsSlider);
-    place(1, 7, mFpsCheckBox).setPadding(3);
-    place(2, 7, mFpsLabel).setPadding(1);
+    place(0, 9, mFpsSlider);
+    place(1, 9, mFpsCheckBox).setPadding(3);
+    place(2, 9, mFpsLabel).setPadding(1);
 
-    place(0, 8, mAltFpsSlider);
-    place(1, 8, mAltFpsLabel).setPadding(3);
+    place(0, 10, mAltFpsSlider);
+    place(1, 10, mAltFpsLabel).setPadding(3);
 
-    place(0, 9, mSpeechSlider);
-    place(1, 9, speechLabel);
-    place(2, 9, mSpeechLabel, 3).setPadding(2);
+    place(0, 11, mSpeechSlider);
+    place(1, 11, speechLabel);
+    place(2, 11, mSpeechLabel, 3).setPadding(2);
 
-    place(0, 10, mOverlayDetailSlider);
-    place(1, 10, overlayDetailLabel);
-    place(2, 10, mOverlayDetailField, 3).setPadding(2);
+    place(0, 12, mOverlayDetailSlider);
+    place(1, 12, overlayDetailLabel);
+    place(2, 12, mOverlayDetailField, 3).setPadding(2);
 
-    place(0, 11, mParticleDetailSlider);
-    place(1, 11, particleDetailLabel);
-    place(2, 11, mParticleDetailField, 3).setPadding(2);
+    place(0, 13, mParticleDetailSlider);
+    place(1, 13, particleDetailLabel);
+    place(2, 13, mParticleDetailField, 3).setPadding(2);
 
     int width = 600;
 
@@ -540,6 +550,8 @@ void Setup_Video::apply()
     mOpenGLEnabled = config.getIntValue("opengl");
     mPickupChatEnabled = config.getBoolValue("showpickupchat");
     mPickupParticleEnabled = config.getBoolValue("showpickupparticle");
+    mEnableResize = config.getBoolValue("enableresize");
+    mNoFrame = config.getBoolValue("noframe");
 }
 
 void Setup_Video::cancel()
@@ -560,6 +572,8 @@ void Setup_Video::cancel()
     mFpsLabel->setCaption(mFpsCheckBox->isSelected()
                           ? toString(mFps) : _("None"));
     mAltFpsLabel->setCaption(_("Alt FPS limit: ") + toString(mAltFps));
+    mEnableResizeCheckBox->setSelected(mEnableResize);
+    mNoFrameCheckBox->setSelected(mNoFrame);
 
     config.setValue("screen", mFullScreenEnabled);
 
@@ -578,6 +592,8 @@ void Setup_Video::cancel()
     config.setValue("opengl", mOpenGLEnabled);
     config.setValue("showpickupchat", mPickupChatEnabled);
     config.setValue("showpickupparticle", mPickupParticleEnabled);
+    config.setValue("enableresize", mEnableResize);
+    config.setValue("noframe", mNoFrame);
 }
 
 void Setup_Video::action(const gcn::ActionEvent &event)
@@ -614,6 +630,7 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         // TODO: Find out why the drawing area doesn't resize without a restart.
         if (width != mainGraphics->mWidth || height != mainGraphics->mHeight)
         {
+#if defined(_WIN32)
             if (width < mainGraphics->mWidth || height < mainGraphics->mHeight)
                 new OkDialog(_("Screen Resolution Changed"),
                        _("Restart your client for the change to take effect.")
@@ -622,6 +639,9 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             else
                 new OkDialog(_("Screen Resolution Changed"),
                      _("Restart your client for the change to take effect."));
+#else
+            Client::resize(width, height);
+#endif
         }
 
         config.setValue("oldscreen", config.getBoolValue("screen"));
@@ -710,6 +730,14 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         mAltFpsLabel->setCaption(_("Alt FPS limit: ") + text);
         mAltFpsSlider->setValue(mAltFps);
         mAltFpsSlider->setEnabled(mAltFps > 0);
+    }
+    else if (id == "enableresize")
+    {
+        config.setValue("enableresize", mEnableResizeCheckBox->isSelected());
+    }
+    else if (id == "noframe")
+    {
+        config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
 }
 

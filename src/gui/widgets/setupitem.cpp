@@ -192,7 +192,7 @@ void SetupItemCheckBox::createControls()
     load();
     mCheckBox = new CheckBox(mText, mValue != "0", mParent, mEventName);
     mWidget = mCheckBox;
-    mParent->getContainer()->add(mWidget);
+    mParent->getContainer()->add1(mWidget);
     mParent->addControl(this);
     mParent->addActionListener(this);
     mWidget->addActionListener(this);
@@ -275,7 +275,7 @@ void SetupItemTextField::createControls()
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
 
-    mParent->getContainer()->add(mHorizont, true, 4);
+    mParent->getContainer()->add2(mHorizont, true, 4);
     mParent->addControl(this);
     mParent->addControl(this, mEventName + "_EDIT");
     mParent->addControl(this, mEventName + "_EDIT_OK");
@@ -398,7 +398,7 @@ void SetupItemIntTextField::createControls()
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
 
-    mParent->getContainer()->add(mHorizont, true, 4);
+    mParent->getContainer()->add2(mHorizont, true, 4);
     mParent->addControl(this);
     mParent->addControl(this, mEventName + "_EDIT");
     mParent->addControl(this, mEventName + "_EDIT_OK");
@@ -486,7 +486,7 @@ void SetupItemLabel::createControls()
     }
 
     mWidget = mLabel;
-    mParent->getContainer()->add(mWidget);
+    mParent->getContainer()->add1(mWidget);
     mParent->addControl(this);
     mParent->addActionListener(this);
     mWidget->addActionListener(this);
@@ -568,7 +568,7 @@ void SetupItemDropDown::createControls()
     mHorizont->add(mLabel);
     mHorizont->add(mDropDown);
 
-    mParent->getContainer()->add(mHorizont, true, 4);
+    mParent->getContainer()->add2(mHorizont, true, 4);
     mParent->addControl(this);
     mParent->addActionListener(this);
     mWidget->addActionListener(this);

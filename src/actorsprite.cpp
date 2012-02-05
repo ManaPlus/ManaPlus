@@ -39,6 +39,8 @@
 #include "resources/imageset.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 #define EFFECTS_FILE "effects.xml"
@@ -70,7 +72,7 @@ ActorSprite::~ActorSprite()
     for (ActorSpriteListenerIterator iter = mActorSpriteListeners.begin(),
          e = mActorSpriteListeners.end(); iter != e; ++iter)
     {
-        if (*iter)
+        if (reportFalse(*iter))
             (*iter)->actorSpriteDestroyed(*this);
     }
 }
@@ -166,6 +168,9 @@ static bool effects_initialized = false;
 
 static EffectDescription *getEffectDescription(XmlNodePtr node, int *id)
 {
+    if (!id)
+        return nullptr;
+
     EffectDescription *ed = new EffectDescription;
 
     *id = atoi(XML::getProperty(node, "id", "-1").c_str());
@@ -245,7 +250,7 @@ void ActorSprite::setStatusEffectBlock(int offset, Uint16 newEffects)
 
 void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
 {
-    if (!particleEngine)
+    if (reportTrue(!particleEngine))
         return;
 
     if (player_node)
@@ -256,13 +261,13 @@ void ActorSprite::internalTriggerEffect(int effectId, bool sfx, bool gfx)
 
     EffectDescription *ed = getEffectDescription(effectId);
 
-    if (!ed)
+    if (reportTrue(!ed))
     {
         logger->log1("Unknown special effect and no default recorded");
         return;
     }
 
-    if (gfx && !ed->mGFXEffect.empty() && particleEngine)
+    if (gfx && !ed->mGFXEffect.empty())
     {
         Particle *selfFX;
 
@@ -287,7 +292,7 @@ void ActorSprite::updateStatusEffect(int index, bool newStatus)
 
 void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
 {
-    if (!effect)
+    if (reportTrue(!effect))
         return;
 
     // TODO: Find out how this is meant to be used
@@ -392,7 +397,7 @@ void ActorSprite::load()
 
 void ActorSprite::unload()
 {
-    if (!loaded)
+    if (reportTrue(!loaded))
         return;
 
     cleanupTargetCursors();
@@ -476,7 +481,7 @@ void ActorSprite::cleanupTargetCursors()
 void ActorSprite::loadTargetCursor(const std::string &filename,
                                    int width, int height, int type, int size)
 {
-    if (size < TC_SMALL || size >= NUM_TC)
+    if (reportTrue(size < TC_SMALL || size >= NUM_TC))
         return;
 
     ImageSet *currentImageSet = Theme::getImageSetFromTheme(

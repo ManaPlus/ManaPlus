@@ -167,7 +167,7 @@ volatile int frame_count = 0; /**< Counts the frames during one second */
 volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
-int serverVersion;
+int serverVersion = 0;
 int start_time;
 
 int textures_count = 0;
@@ -251,7 +251,7 @@ Client::Client(const Options &options):
     mServerConfigDir(""),
     mUsersDir(""),
     mNpcsDir(""),
-    mRootDir(""),
+    mGame(nullptr),
     mCurrentDialog(nullptr),
     mQuitDialog(nullptr),
     mDesktop(nullptr),
@@ -524,9 +524,12 @@ void Client::gameInit()
     const int bpp = 0;
     const bool fullscreen = config.getBoolValue("screen");
     const bool hwaccel = config.getBoolValue("hwaccel");
+    const bool enableResize = config.getBoolValue("enableresize");
+    const bool noFrame = config.getBoolValue("noframe");
 
     // Try to set the desired video mode
-    if (!mainGraphics->setVideoMode(width, height, bpp, fullscreen, hwaccel))
+    if (!mainGraphics->setVideoMode(width, height, bpp,
+        fullscreen, hwaccel, enableResize, noFrame))
     {
         logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
@@ -544,7 +547,7 @@ void Client::gameInit()
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen);
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
-                oldFullscreen, hwaccel))
+                oldFullscreen, hwaccel, enableResize, noFrame))
             {
                 logger->error(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,
@@ -612,6 +615,7 @@ void Client::gameInit()
     {
         mCurrentServer.hostname =
             branding.getValue("defaultServer", "").c_str();
+        mOptions.serverName = mCurrentServer.hostname;
     }
 
     if (mCurrentServer.port == 0)
@@ -815,15 +819,14 @@ int Client::gameExec()
     if (!mumbleManager)
         mumbleManager = new MumbleManager();
 
-    Game *game = nullptr;
     SDL_Event event;
 
     while (mState != STATE_EXIT)
     {
-        if (game)
+        if (mGame)
         {
             // Let the game handle the events while it is active
-            game->handleInput();
+            mGame->handleInput();
         }
         else
         {
@@ -838,6 +841,10 @@ int Client::gameExec()
 
                     case SDL_KEYDOWN:
                     default:
+                        break;
+
+                    case SDL_VIDEORESIZE:
+                        resizeVideo(event.resize.w, event.resize.h, false);
                         break;
                 }
 
@@ -857,8 +864,8 @@ int Client::gameExec()
         {
             if (gui)
                 gui->logic();
-            if (game)
-                game->logic();
+            if (mGame)
+                mGame->logic();
 
             sound.logic();
 
@@ -966,10 +973,8 @@ int Client::gameExec()
             top->add(mThemesButton);
 #endif
 
-            int screenWidth = config.getIntValue("screenwidth");
-            int screenHeight = config.getIntValue("screenheight");
-
-            mDesktop->setSize(screenWidth, screenHeight);
+            mDesktop->setSize(mainGraphics->getWidth(),
+                mainGraphics->getHeight());
         }
 
         if (mState == STATE_SWITCH_LOGIN && mOldState == STATE_GAME)
@@ -984,8 +989,8 @@ int Client::gameExec()
 
             if (mOldState == STATE_GAME)
             {
-                delete game;
-                game = nullptr;
+                delete mGame;
+                mGame = nullptr;
                 Game::clearInstance();
                 ResourceManager *resman = ResourceManager::getInstance();
                 if (resman)
@@ -995,6 +1000,8 @@ int Client::gameExec()
                 Net::getNpcHandler()->clearDialogs();
                 Net::getGuildHandler()->clear();
                 Net::getPartyHandler()->clear();
+                if (chatLogger)
+                    chatLogger->clear();
             }
 
             mOldState = mState;
@@ -1231,6 +1238,10 @@ int Client::gameExec()
                             CharSelectDialog::Focus);
                     }
 
+                    // Choosing character on the command line should work only
+                    // once, clear it so that 'switch character' works.
+                    mOptions.character.clear();
+
                     break;
 
                 case STATE_CONNECT_GAME:
@@ -1286,7 +1297,7 @@ int Client::gameExec()
                     logger->log1("State: GAME");
                     if (Net::getGeneralHandler())
                         Net::getGeneralHandler()->reloadPartially();
-                    game = new Game;
+                    mGame = new Game;
                     break;
 
                 case STATE_LOGIN_ERROR:
@@ -1563,7 +1574,7 @@ void Client::initLocalDataDir()
         // Use Application Directory instead of .mana
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
             "/Library/Application Support/" +
-            branding.getValue("appName", "Mana");
+            branding.getValue("appName", "ManaPlus");
 #elif defined __HAIKU__
         mLocalDataDir = std::string(PHYSFS_getUserDir()) +
            "/config/data/Mana";
@@ -1597,13 +1608,13 @@ void Client::initConfigDir()
 #elif defined __HAIKU__
         mConfigDir = std::string(PHYSFS_getUserDir()) +
            "/config/settings/Mana" +
-           branding.getValue("appName", "Mana");
+           branding.getValue("appName", "ManaPlus");
 #elif defined WIN32
         mConfigDir = getSpecialFolderLocation(CSIDL_APPDATA);
         if (mConfigDir.empty())
             mConfigDir = mLocalDataDir;
         else
-            mConfigDir += "/mana/" + branding.getValue("appShort", "Mana");
+            mConfigDir += "/mana/" + branding.getValue("appShort", "mana");
 #else
         mConfigDir = std::string(PHYSFS_getUserDir()) +
             "/.config/mana/" + branding.getValue("appShort", "mana");
@@ -1855,7 +1866,7 @@ void Client::initScreenshotDir()
         if (config.getBoolValue("useScreenshotDirectorySuffix"))
         {
             std::string configScreenshotSuffix =
-                branding.getValue("appShort", "Mana");
+                branding.getValue("appShort", "mana");
 
             if (!configScreenshotSuffix.empty())
             {
@@ -1917,7 +1928,7 @@ bool Client::createConfig(std::string &configPath)
     // Use Application Directory instead of .mana
     oldHomeDir = std::string(PHYSFS_getUserDir()) +
         "/Library/Application Support/" +
-        branding.getValue("appName", "Mana");
+        branding.getValue("appName", "ManaPlus");
 #else
     oldHomeDir = std::string(PHYSFS_getUserDir()) +
         "/." + branding.getValue("appShort", "mana");
@@ -2348,4 +2359,59 @@ bool Client::isTmw()
         return true;
     }
     return false;
+}
+
+void Client::resizeVideo(int width, int height, bool always)
+{
+    // Keep a minimum size. This isn't adhered to by the actual window, but
+    // it keeps some window positions from getting messed up.
+    width = std::max(640, width);
+    height = std::max(480, height);
+
+    if (!mainGraphics)
+        return;
+    if (!always && mainGraphics->mWidth == width
+        && mainGraphics->mHeight == height)
+    {
+        return;
+    }
+
+    if (mainGraphics->resizeScreen(width, height))
+    {
+        if (gui)
+            gui->videoResized();
+
+        if (mDesktop)
+            mDesktop->setSize(width, height);
+
+        if (mSetupButton)
+        {
+//            mSetupButton->setPosition(width - mSetupButton->getWidth() - 3, 3);
+
+            int x = width - mSetupButton->getWidth() - 3;
+            mSetupButton->setPosition(x, 3);
+
+#ifndef WIN32
+            x -= mPerfomanceButton->getWidth() + 6;
+            mPerfomanceButton->setPosition(x, 3);
+
+            x -= mVideoButton->getWidth() + 6;
+            mVideoButton->setPosition(x, 3);
+
+            x -= mThemesButton->getWidth() + 6;
+            mThemesButton->setPosition(x, 3);
+#endif
+        }
+
+        if (mGame)
+            mGame->videoResized(width, height);
+
+        if (gui)
+            gui->draw();
+
+        // Since everything appears to have worked out, remember to store the
+        // new size in the configuration.
+        config.setValue("screenwidth", width);
+        config.setValue("screenheight", height);
+    }
 }

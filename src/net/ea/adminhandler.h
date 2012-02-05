@@ -35,15 +35,15 @@ class AdminHandler : public Net::AdminHandler
         virtual ~AdminHandler()
         { }
 
-        virtual void kick(const std::string &name);
+        virtual void kickName(const std::string &name);
 
         virtual void ban(int playerId);
 
-        virtual void ban(const std::string &name);
+        virtual void banName(const std::string &name);
 
         virtual void unban(int playerId);
 
-        virtual void unban(const std::string &name);
+        virtual void unbanName(const std::string &name);
 
         virtual void mute(int playerId, int type, int limit);
 

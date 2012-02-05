@@ -299,7 +299,7 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     if (key != KeyboardConfig::KEY_NO_VALUE)
     {
         mTextPopup->show(x + getX(), y + getY(), btn->getDescription(),
-                         "Key: " + keyboard.getKeyValueString(key));
+            strprintf(_("Key: %s"), keyboard.getKeyValueString(key).c_str()));
     }
     else
     {

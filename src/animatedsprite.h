@@ -71,10 +71,10 @@ class AnimatedSprite : public Sprite
 
         bool setSpriteDirection(SpriteDirection direction);
 
-        int getNumberOfLayers()
+        int getNumberOfLayers() const
         { return 1; }
 
-        std::string getIdPath();
+        std::string getIdPath() const;
 
         unsigned int getCurrentFrame() const;
 

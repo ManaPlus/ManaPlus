@@ -48,7 +48,8 @@ class Icon : public gcn::Widget
         /** 
          * Gets the current Image.
          */
-        Image *getImage() const { return mImage; }
+        Image *getImage() const
+        { return mImage; }
 
         /**
          * Sets the image to display.

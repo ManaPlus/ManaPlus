@@ -65,6 +65,13 @@ class NpcHandler : public MessageHandler, public Ea::NpcHandler
         void sellItem(int beingId, int itemId, int amount);
 
         int getNpc(Net::MessageIn &msg, bool haveLength);
+
+        void processNpcCommand(Net::MessageIn &msg, int npcId);
+
+        void processLangReuqest(Net::MessageIn &msg, int npcId);
+
+    private:
+        bool mRequestLang;
 };
 
 } // namespace TmwAthena

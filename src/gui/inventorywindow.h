@@ -115,7 +115,7 @@ class InventoryWindow : public Window,
 
         void slotsChanged(Inventory* inventory);
 
-        bool isMainInventory()
+        bool isMainInventory() const
         { return mInventory->isMainInventory(); }
 
         /**

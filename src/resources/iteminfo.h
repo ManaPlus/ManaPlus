@@ -148,7 +148,8 @@ class ItemInfo
         void setEffect(const std::string &effect)
         { mEffect = effect; }
 
-        const std::string &getEffect() const { return mEffect; }
+        const std::string &getEffect() const
+        { return mEffect; }
 
         void setType(ItemType type)
         { mType = type; }
@@ -250,7 +251,7 @@ class ItemInfo
 
         void setColorsList(std::string name);
 
-        bool isHaveColors()
+        bool isHaveColors() const
         { return !mColorList.empty(); }
 
         const std::string replaceColors(std::string str,

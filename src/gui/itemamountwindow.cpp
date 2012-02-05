@@ -113,14 +113,12 @@ void ItemAmountWindow::finish(Item *item, int amount, int price, Usage usage)
             Net::getInventoryHandler()->splitItem(item, amount);
             break;
         case StoreAdd:
-            Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
-                                                 item->getInvIndex(), amount,
-                                                 Inventory::STORAGE);
+            Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+                item->getInvIndex(), amount, Inventory::STORAGE);
             break;
         case StoreRemove:
-            Net::getInventoryHandler()->moveItem(Inventory::STORAGE,
-                                                 item->getInvIndex(), amount,
-                                                 Inventory::INVENTORY);
+            Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+                item->getInvIndex(), amount, Inventory::INVENTORY);
             break;
         case ShopBuyAdd:
             if (shopWindow)

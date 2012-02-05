@@ -69,7 +69,7 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
     }
 }
 
-void SpecialHandler::use(int id, int level, int beingId)
+void SpecialHandler::useBeing(int id, int level, int beingId)
 {
     MessageOut outMsg(CMSG_SKILL_USE_BEING);
     outMsg.writeInt16(static_cast<Sint16>(level));
@@ -77,7 +77,7 @@ void SpecialHandler::use(int id, int level, int beingId)
     outMsg.writeInt16(static_cast<Sint16>(beingId));
 }
 
-void SpecialHandler::use(int id, int level, int x, int y)
+void SpecialHandler::usePos(int id, int level, int x, int y)
 {
     MessageOut outMsg(CMSG_SKILL_USE_POSITION);
     outMsg.writeInt16(static_cast<Sint16>(level));
@@ -86,7 +86,7 @@ void SpecialHandler::use(int id, int level, int x, int y)
     outMsg.writeInt16(static_cast<Sint16>(y));
 }
 
-void SpecialHandler::use(int id, const std::string &map)
+void SpecialHandler::useMap(int id, const std::string &map)
 {
     MessageOut outMsg(CMSG_SKILL_USE_MAP);
     outMsg.writeInt16(static_cast<Sint16>(id));

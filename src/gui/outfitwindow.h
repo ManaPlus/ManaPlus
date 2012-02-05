@@ -72,7 +72,7 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         void setItemSelected(Item *item);
 
-        bool isItemSelected()
+        bool isItemSelected() const
         { return mItemSelected > 0; }
 
         void wearOutfit(int outfit, bool unwearEmpty = true,
@@ -90,7 +90,7 @@ class OutfitWindow : public Window, gcn::ActionListener
 
         int keyToNumber(SDLKey key) const A_PURE;
 
-        SDLKey numberToKey(int number) const A_PURE;
+        SDLKey numberToKey(unsigned number) const A_PURE;
 
         void next();
 

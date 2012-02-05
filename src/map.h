@@ -152,7 +152,8 @@ class MapLayer: public ConfigListener
         /**
          * Set tile image with x + y * width already known.
          */
-        void setTile(int index, Image *img) { mTiles[index] = img; }
+        void setTile(int index, Image *img)
+        { mTiles[index] = img; }
 
         /**
          * Draws this layer to the given graphics context. The coordinates are
@@ -191,7 +192,7 @@ class MapLayer: public ConfigListener
                         const Actors *actors,
                         int mDebugFlags, int yFix) const;
 
-        bool isFringeLayer()
+        bool isFringeLayer() const
         { return mIsFringeLayer; }
 
         void setSpecialLayer(SpecialLayer *val)
@@ -200,10 +201,10 @@ class MapLayer: public ConfigListener
         void setTempLayer(SpecialLayer *val)
         { mTempLayer = val; }
 
-        int getWidth()
+        int getWidth() const
         { return mWidth; }
 
-        int getHeight()
+        int getHeight() const
         { return mHeight; }
 
 //        void setTileInfo(int x, int y, int width, int cnt);
@@ -355,12 +356,14 @@ class Map : public Properties, public ConfigListener
         /**
          * Returns the width of this map in tiles.
          */
-        int getWidth() const { return mWidth; }
+        int getWidth() const
+        { return mWidth; }
 
         /**
          * Returns the height of this map in tiles.
          */
-        int getHeight() const { return mHeight; }
+        int getHeight() const
+        { return mHeight; }
 
         /**
          * Returns the tile width of this map.
@@ -375,6 +378,7 @@ class Map : public Properties, public ConfigListener
         { return mTileHeight; }
 
         const std::string getMusicFile() const;
+
         const std::string getName() const;
 
         /**
@@ -434,16 +438,16 @@ class Map : public Properties, public ConfigListener
 
         void saveExtraLayer();
 
-        SpecialLayer *getTempLayer()
+        SpecialLayer *getTempLayer() const
         { return mTempLayer; }
 
-        SpecialLayer *getSpecialLayer()
+        SpecialLayer *getSpecialLayer() const
         { return mSpecialLayer; }
 
         void setHasWarps(bool n)
         { mHasWarps = n; }
 
-        bool getHasWarps()
+        bool getHasWarps() const
         { return mHasWarps; }
 
         std::string getUserMapDirectory() const;
@@ -476,7 +480,7 @@ class Map : public Properties, public ConfigListener
 
         void setPvpMode(int mode);
 
-        ObjectsLayer* getObjectsLayer()
+        ObjectsLayer* getObjectsLayer() const
         { return mObjects; }
 
         std::string getObjectData(unsigned x, unsigned y, int type);
@@ -488,7 +492,7 @@ class Map : public Properties, public ConfigListener
         void setActorsFix(int x, int y)
         { mActorFixX = x; mActorFixY = y; }
 
-        int getVersion()
+        int getVersion() const
         { return mVersion; }
 
         void setVersion(int n)
@@ -498,7 +502,7 @@ class Map : public Properties, public ConfigListener
 
         void redrawMap();
 
-        bool empty()
+        bool empty() const
         { return mLayers.empty(); }
 
     protected:

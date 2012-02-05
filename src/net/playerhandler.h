@@ -73,6 +73,8 @@ class PlayerHandler
         virtual Vector getDefaultWalkSpeed() const = 0;
 
         virtual void requestOnlineList() = 0;
+
+        virtual void updateStatus(Uint8 status) = 0;
 };
 
 } // namespace Net

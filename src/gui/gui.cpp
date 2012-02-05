@@ -99,20 +99,19 @@ Gui::Gui(Graphics *graphics):
     // Initialize top GUI widget
     WindowContainer *guiTop = new WindowContainer;
     guiTop->setFocusable(true);
-    guiTop->setDimension(gcn::Rectangle(0, 0,
-        graphics->mWidth, graphics->mHeight));
+    guiTop->setSize(graphics->mWidth, graphics->mHeight);
     guiTop->setOpaque(false);
     Window::setWindowContainer(guiTop);
     setTop(guiTop);
 
+    const std::vector<std::string> langs = getLang();
+    const bool isJapan = (!langs.empty() && langs[0].size() > 3
+        && langs[0].substr(0, 3) == "ja_");
+
     // Set global font
     const int fontSize = config.getIntValue("fontSize");
-
     std::string fontFile = config.getValue("font", "");
-
-    std::vector<std::string> langs = getLang();
-    if (!langs.empty() && langs[0].size() > 3
-        && langs[0].substr(0, 3) == "ja_")
+    if (isJapan)
     {
         fontFile = config.getValue("japanFont", "");
         if (fontFile.empty())
@@ -134,6 +133,15 @@ Gui::Gui(Graphics *graphics):
 
     // Set particle font
     fontFile = config.getValue("particleFont", "");
+
+    if (isJapan)
+    {
+        fontFile = config.getValue("japanFont", "");
+        if (fontFile.empty())
+            fontFile = branding.getStringValue("japanFont");
+    }
+
+
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 
@@ -276,6 +284,20 @@ void Gui::draw()
     }
 
     mGraphics->popClipArea();
+}
+
+void Gui::videoResized()
+{
+    WindowContainer *top = static_cast<WindowContainer*>(getTop());
+
+    if (top)
+    {
+        int oldWidth = top->getWidth();
+        int oldHeight = top->getHeight();
+
+        top->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
+        top->adjustAfterResize(oldWidth, oldHeight);
+    }
 }
 
 void Gui::setUseCustomCursor(bool customCursor)

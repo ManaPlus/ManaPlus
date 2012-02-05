@@ -88,6 +88,7 @@ LoginDialog::LoginDialog(LoginData *data, std::string serverName,
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
+
     gcn::Label *serverLabel1 = new Label(_("Server:"));
     gcn::Label *serverLabel2 = new Label(serverName);
     serverLabel2->adjustSize();
@@ -131,12 +132,11 @@ LoginDialog::LoginDialog(LoginData *data, std::string serverName,
     mPassField->addActionListener(this);
 
     place(0, 0, serverLabel1);
-    place(1, 0, serverLabel2, 8).setPadding(1);
-
+    place(1, 0, serverLabel2, 8);
     place(0, 1, userLabel);
     place(0, 2, passLabel);
-    place(1, 1, mUserField, 8).setPadding(1);
-    place(1, 2, mPassField, 8).setPadding(1);
+    place(1, 1, mUserField, 8);
+    place(1, 2, mPassField, 8);
     place(0, 6, mUpdateTypeLabel, 1);
     place(1, 6, mUpdateTypeDropDown, 8);
     place(0, 7, mCustomUpdateHost, 9);
@@ -146,9 +146,8 @@ LoginDialog::LoginDialog(LoginData *data, std::string serverName,
     place(2, 10, mServerButton);
     place(3, 10, mLoginButton);
 
-    reflowLayout();
-
     addKeyListener(this);
+    setContentSize(300, 200);
 
     center();
     setVisible(true);
@@ -178,7 +177,8 @@ void LoginDialog::action(const gcn::ActionEvent &event)
         mLoginData->remember = mKeepCheck->isSelected();
         int updateType = mUpdateTypeDropDown->getSelected();
 
-        if (mCustomUpdateHost->isSelected())
+        if (mCustomUpdateHost->isSelected()
+            && mUpdateHostText->getText().empty())
         {
             updateType |= LoginData::Upd_Custom;
             serverConfig.setValue("customUpdateHost",

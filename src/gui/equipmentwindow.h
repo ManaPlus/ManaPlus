@@ -84,7 +84,7 @@ class EquipmentWindow : public Window, public gcn::ActionListener
 
         void mousePressed(gcn::MouseEvent& mouseEvent);
 
-        Item* getEquipment(int i)
+        Item* getEquipment(int i) const
         { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
 
         void setBeing(Being *being);

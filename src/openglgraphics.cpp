@@ -71,7 +71,8 @@ void OpenGLGraphics::setSync(bool sync)
     mSync = sync;
 }
 
-bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
+bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
+                                  bool hwaccel, bool resize, bool noFrame)
 {
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
@@ -83,9 +84,25 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     mBpp = bpp;
     mFullscreen = fs;
     mHWAccel = hwaccel;
+    mEnableResize = resize;
+    mNoFrame = noFrame;
 
     if (fs)
+    {
         displayFlags |= SDL_FULLSCREEN;
+    }
+    else
+    {
+        // Resizing currently not supported on Windows, where it would require
+        // reuploading all textures.
+#if !defined(_WIN32)
+        if (resize)
+            displayFlags |= SDL_RESIZABLE;
+#endif
+    }
+
+    if (noFrame)
+        displayFlags |= SDL_NOFRAME;
 
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
@@ -1017,6 +1034,7 @@ void OpenGLGraphics::_beginDraw()
 
 void OpenGLGraphics::_endDraw()
 {
+    popClipArea();
 }
 
 SDL_Surface* OpenGLGraphics::getScreenshot()

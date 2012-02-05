@@ -287,6 +287,9 @@ static void createGuiWindows()
     if (setupWindow)
         setupWindow->externalUpdate();
 
+    if (player_node)
+        player_node->updateStatus();
+
     Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSLOADED));
 }
 
@@ -373,8 +376,7 @@ Game::Game():
 
     // Create the viewport
     viewport = new Viewport;
-    viewport->setDimension(gcn::Rectangle(0, 0, mainGraphics->mWidth,
-        mainGraphics->mHeight));
+    viewport->setSize(mainGraphics->mWidth, mainGraphics->mHeight);
 
     gcn::Container *top = static_cast<gcn::Container*>(gui->getTop());
     top->add(viewport);
@@ -490,7 +492,7 @@ static bool saveScreenshot()
         filenameSuffix.str("");
         filename.str("");
         filename << screenshotDirectory << "/";
-        filenameSuffix << branding.getValue("appShort", "ManaPlus")
+        filenameSuffix << branding.getValue("appName", "ManaPlus")
                        << "_Screenshot_" << screenshotCount << ".png";
         filename << filenameSuffix.str();
         testExists.open(filename.str().c_str(), std::ios::in);
@@ -724,10 +726,10 @@ bool Game::handleOutfitsKeys(SDL_Event &event, bool &used)
     {
         bool wearOutfit = false;
         bool copyOutfit = false;
-        if (keyboard.isKeyActive(keyboard.KEY_WEAR_OUTFIT))
+        if (keyboard.isActionActive(keyboard.KEY_WEAR_OUTFIT))
             wearOutfit = true;
 
-        if (keyboard.isKeyActive(keyboard.KEY_COPY_OUTFIT))
+        if (keyboard.isActionActive(keyboard.KEY_COPY_OUTFIT))
             copyOutfit = true;
 
         if (wearOutfit || copyOutfit)
@@ -744,15 +746,15 @@ bool Game::handleOutfitsKeys(SDL_Event &event, bool &used)
             }
             else
             {
-                if (keyboard.isKeyActive(keyboard.KEY_MOVE_RIGHT))
+                if (keyboard.isActionActive(keyboard.KEY_MOVE_RIGHT))
                     outfitWindow->wearNextOutfit();
-                else if (keyboard.isKeyActive(keyboard.KEY_MOVE_LEFT))
+                else if (keyboard.isActionActive(keyboard.KEY_MOVE_LEFT))
                     outfitWindow->wearPreviousOutfit();
             }
             setValidSpeed();
             return true;
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_MOVE_TO_POINT))
+        else if (keyboard.isActionActive(keyboard.KEY_MOVE_TO_POINT))
         {
             int num = outfitWindow->keyToNumber(
                 event.key.keysym.sym);
@@ -773,7 +775,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
         && !player_node->getAway())
     {
         NpcDialog *dialog = NpcDialog::getActive();
-        if (keyboard.isKeyActive(keyboard.KEY_OK)
+        if (keyboard.isActionActive(keyboard.KEY_OK)
             && (!dialog || !dialog->isTextInputFocused()))
         {
             // Close the Browser if opened
@@ -790,7 +792,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                 dialog->action(gcn::ActionEvent(nullptr, "ok"));
             }
         }
-        if (chatWindow && keyboard.isKeyActive(
+        if (chatWindow && keyboard.isActionActive(
             keyboard.KEY_TOGGLE_CHAT))
         {
             if (!InventoryWindow::isAnyInputFocused())
@@ -801,9 +803,9 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
         }
         if (dialog)
         {
-            if (keyboard.isKeyActive(keyboard.KEY_MOVE_UP))
+            if (keyboard.isActionActive(keyboard.KEY_MOVE_UP))
                 dialog->move(1);
-            else if (keyboard.isKeyActive(keyboard.KEY_MOVE_DOWN))
+            else if (keyboard.isActionActive(keyboard.KEY_MOVE_DOWN))
                 dialog->move(-1);
         }
     }
@@ -813,27 +815,27 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
         !InventoryWindow::isAnyInputFocused())
         || (event.key.keysym.mod & KMOD_ALT)))
     {
-        if (keyboard.isKeyActive(keyboard.KEY_PREV_CHAT_TAB))
+        if (keyboard.isActionActive(keyboard.KEY_PREV_CHAT_TAB))
         {
             chatWindow->prevTab();
             return true;
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_NEXT_CHAT_TAB))
+        else if (keyboard.isActionActive(keyboard.KEY_NEXT_CHAT_TAB))
         {
             chatWindow->nextTab();
             return true;
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_PREV_SOCIAL_TAB))
+        else if (keyboard.isActionActive(keyboard.KEY_PREV_SOCIAL_TAB))
         {
             socialWindow->prevTab();
             return true;
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_NEXT_SOCIAL_TAB))
+        else if (keyboard.isActionActive(keyboard.KEY_NEXT_SOCIAL_TAB))
         {
             socialWindow->nextTab();
             return true;
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_CLOSE_CHAT_TAB))
+        else if (keyboard.isActionActive(keyboard.KEY_CLOSE_CHAT_TAB))
         {
             chatWindow->closeTab();
             return true;
@@ -963,9 +965,9 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                 case KeyboardConfig::KEY_MOVE_TO_TARGET:
                     if (player_node)
                     {
-                        if (!keyboard.isKeyActive(
+                        if (!keyboard.isActionActive(
                             keyboard.KEY_TARGET_ATTACK)
-                            && !keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                            && !keyboard.isActionActive(keyboard.KEY_ATTACK))
                         {
                             player_node->moveToTarget();
                         }
@@ -975,9 +977,9 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                 case KeyboardConfig::KEY_MOVE_TO_HOME:
                     if (player_node)
                     {
-                        if (!keyboard.isKeyActive(
+                        if (!keyboard.isActionActive(
                             keyboard.KEY_TARGET_ATTACK)
-                            && !keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                            && !keyboard.isActionActive(keyboard.KEY_ATTACK))
                         {
                             player_node->moveToHome();
                         }
@@ -1077,6 +1079,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                     if (player_node)
                     {
                         player_node->changeAwayMode();
+                        player_node->updateStatus();
                         setValidSpeed();
                     }
                     break;
@@ -1099,8 +1102,8 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
 
         if (!NpcDialog::isAnyInputFocused()
             && !InventoryWindow::isAnyInputFocused()
-            && !keyboard.isKeyActive(keyboard.KEY_TARGET)
-            && !keyboard.isKeyActive(keyboard.KEY_UNTARGET))
+            && !keyboard.isActionActive(keyboard.KEY_TARGET)
+            && !keyboard.isActionActive(keyboard.KEY_UNTARGET))
         {
             if (setupWindow && setupWindow->isVisible())
             {
@@ -1146,7 +1149,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                         // Player sit action
                         if (player_node)
                         {
-                            if (keyboard.isKeyActive(keyboard.KEY_EMOTE))
+                            if (keyboard.isActionActive(keyboard.KEY_EMOTE))
                                 player_node->updateSit();
                             else
                                 player_node->toggleSit();
@@ -1319,8 +1322,8 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         // Ignore input if either "ignore" key is pressed
         // Stops the character moving about if the user's window manager
         // uses "ignore+arrow key" to switch virtual desktops.
-        if (keyboard.isKeyActive(keyboard.KEY_IGNORE_INPUT_1) ||
-            keyboard.isKeyActive(keyboard.KEY_IGNORE_INPUT_2))
+        if (keyboard.isActionActive(keyboard.KEY_IGNORE_INPUT_1) ||
+            keyboard.isActionActive(keyboard.KEY_IGNORE_INPUT_2))
         {
             return;
         }
@@ -1328,14 +1331,14 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         unsigned char direction = 0;
 
         // Translate pressed keys to movement and direction
-        if (keyboard.isKeyActive(keyboard.KEY_MOVE_UP) ||
+        if (keyboard.isActionActive(keyboard.KEY_MOVE_UP) ||
             (joystick && joystick->isUp()))
         {
             direction |= Being::UP;
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_MOVE_DOWN) ||
+        else if (keyboard.isActionActive(keyboard.KEY_MOVE_DOWN) ||
                  (joystick && joystick->isDown()))
         {
             direction |= Being::DOWN;
@@ -1343,23 +1346,23 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
             player_node->cancelFollow();
         }
 
-        if (keyboard.isKeyActive(keyboard.KEY_MOVE_LEFT) ||
+        if (keyboard.isActionActive(keyboard.KEY_MOVE_LEFT) ||
             (joystick && joystick->isLeft()))
         {
             direction |= Being::LEFT;
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (keyboard.isKeyActive(keyboard.KEY_MOVE_RIGHT) ||
+        else if (keyboard.isActionActive(keyboard.KEY_MOVE_RIGHT) ||
                  (joystick && joystick->isRight()))
         {
             direction |= Being::RIGHT;
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (!keyboard.isKeyActive(keyboard.KEY_EMOTE))
+        else if (!keyboard.isActionActive(keyboard.KEY_EMOTE))
         {
-            if (keyboard.isKeyActive(keyboard.KEY_DIRECT_UP))
+            if (keyboard.isActionActive(keyboard.KEY_DIRECT_UP))
             {
                 if (player_node->getDirection() != Being::UP)
                 {
@@ -1370,7 +1373,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
                     }
                 }
             }
-            else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_DOWN))
+            else if (keyboard.isActionActive(keyboard.KEY_DIRECT_DOWN))
             {
                 if (player_node->getDirection() != Being::DOWN)
                 {
@@ -1381,7 +1384,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
                     }
                 }
             }
-            else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_LEFT))
+            else if (keyboard.isActionActive(keyboard.KEY_DIRECT_LEFT))
             {
                 if (player_node->getDirection() != Being::LEFT)
                 {
@@ -1392,7 +1395,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
                     }
                 }
             }
-            else if (keyboard.isKeyActive(keyboard.KEY_DIRECT_RIGHT))
+            else if (keyboard.isActionActive(keyboard.KEY_DIRECT_RIGHT))
             {
                 if (player_node->getDirection() != Being::RIGHT)
                 {
@@ -1405,7 +1408,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
             }
         }
 
-        if (keyboard.isKeyActive(keyboard.KEY_EMOTE) && direction != 0)
+        if (keyboard.isActionActive(keyboard.KEY_EMOTE) && direction != 0)
         {
             if (player_node->getDirection() != direction)
             {
@@ -1449,18 +1452,19 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
             || joyAttack) && mValidSpeed)
         {
             // Attacking monsters
-            if (keyboard.isKeyActive(keyboard.KEY_ATTACK))
+            if (keyboard.isActionActive(keyboard.KEY_ATTACK))
             {
                 if (player_node->getTarget())
                     player_node->attack(player_node->getTarget(), true);
             }
 
-            if ((keyboard.isKeyActive(keyboard.KEY_TARGET_ATTACK) || joyAttack)
-                && !keyboard.isKeyActive(keyboard.KEY_MOVE_TO_TARGET))
+            if ((keyboard.isActionActive(keyboard.KEY_TARGET_ATTACK)
+                || joyAttack)
+                && !keyboard.isActionActive(keyboard.KEY_MOVE_TO_TARGET))
             {
                 Being *target = nullptr;
 
-                bool newTarget = !keyboard.isKeyActive(keyboard.KEY_TARGET);
+                bool newTarget = !keyboard.isActionActive(keyboard.KEY_TARGET);
                 // A set target has highest priority
                 if (!player_node->getTarget())
                 {
@@ -1477,27 +1481,27 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
             }
         }
 
-        if (!keyboard.isKeyActive(keyboard.KEY_EMOTE))
+        if (!keyboard.isActionActive(keyboard.KEY_EMOTE))
         {
             // Target the nearest player/monster/npc
-            if ((keyboard.isKeyActive(keyboard.KEY_TARGET_PLAYER) ||
-                keyboard.isKeyActive(keyboard.KEY_TARGET_CLOSEST) ||
-                keyboard.isKeyActive(keyboard.KEY_TARGET_NPC) ||
+            if ((keyboard.isActionActive(keyboard.KEY_TARGET_PLAYER) ||
+                keyboard.isActionActive(keyboard.KEY_TARGET_CLOSEST) ||
+                keyboard.isActionActive(keyboard.KEY_TARGET_NPC) ||
                 (joystick && joystick->buttonPressed(3))) &&
-                !keyboard.isKeyActive(keyboard.KEY_TARGET) &&
-                !keyboard.isKeyActive(keyboard.KEY_UNTARGET))
+                !keyboard.isActionActive(keyboard.KEY_TARGET) &&
+                !keyboard.isActionActive(keyboard.KEY_UNTARGET))
             {
                 ActorSprite::Type currentTarget = ActorSprite::UNKNOWN;
-                if (keyboard.isKeyActive(keyboard.KEY_TARGET_CLOSEST) ||
+                if (keyboard.isActionActive(keyboard.KEY_TARGET_CLOSEST) ||
                     (joystick && joystick->buttonPressed(3)))
                 {
                     currentTarget = ActorSprite::MONSTER;
                 }
-                else if (keyboard.isKeyActive(keyboard.KEY_TARGET_PLAYER))
+                else if (keyboard.isActionActive(keyboard.KEY_TARGET_PLAYER))
                 {
                     currentTarget = ActorSprite::PLAYER;
                 }
-                else if (keyboard.isKeyActive(keyboard.KEY_TARGET_NPC))
+                else if (keyboard.isActionActive(keyboard.KEY_TARGET_NPC))
                 {
                     currentTarget = ActorSprite::NPC;
                 }
@@ -1521,7 +1525,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         // Talk to the nearest NPC if 't' pressed
         if (wasDown && keyboard.getKeyIndex(event.key.keysym.sym)
             == KeyboardConfig::KEY_TALK &&
-            !keyboard.isKeyActive(keyboard.KEY_EMOTE))
+            !keyboard.isActionActive(keyboard.KEY_EMOTE))
         {
             Being *target = player_node->getTarget();
 
@@ -1535,15 +1539,15 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         }
 
         // Stop attacking if the right key is pressed
-        if (!keyboard.isKeyActive(keyboard.KEY_ATTACK)
-            && !keyboard.isKeyActive(keyboard.KEY_EMOTE))
+        if (!keyboard.isActionActive(keyboard.KEY_ATTACK)
+            && !keyboard.isActionActive(keyboard.KEY_EMOTE))
         {
-            if (keyboard.isKeyActive(keyboard.KEY_TARGET)
+            if (keyboard.isActionActive(keyboard.KEY_TARGET)
                 || (joystick && joystick->buttonPressed(4)))
             {
                 player_node->stopAttack();
             }
-            else if (keyboard.isKeyActive(keyboard.KEY_UNTARGET))
+            else if (keyboard.isActionActive(keyboard.KEY_UNTARGET))
             {
                 player_node->untarget();
             }
@@ -1585,6 +1589,8 @@ void Game::handleActive(SDL_Event &event)
                 player_node->setHalfAway(true);
             }
         }
+        if (player_node)
+            player_node->updateStatus();
     }
     if (player_node)
         player_node->updateName();
@@ -1630,8 +1636,13 @@ void Game::handleInput()
         updateHistory(event);
         checkKeys();
 
+        if (event.type == SDL_VIDEORESIZE)
+        {
+            // Let the client deal with this one (it'll pass down from there)
+            Client::resize(event.resize.w, event.resize.h);
+        }
         // Keyboard events (for discontinuous keys)
-        if (event.type == SDL_KEYDOWN)
+        else if (event.type == SDL_KEYDOWN)
         {
             wasDown = true;
 
@@ -1661,7 +1672,7 @@ void Game::handleInput()
             }
 
             if (chatWindow && !chatWindow->isInputFocused()
-                && keyboard.isKeyActive(keyboard.KEY_RIGHT_CLICK))
+                && keyboard.isActionActive(keyboard.KEY_RIGHT_CLICK))
             {
                 int mouseX, mouseY;
                 SDL_GetMouseState(&mouseX, &mouseY);
@@ -1674,7 +1685,7 @@ void Game::handleInput()
             }
 
             // Mode switch to emotes
-            if (keyboard.isKeyActive(keyboard.KEY_EMOTE))
+            if (keyboard.isActionActive(keyboard.KEY_EMOTE))
             {
                 // Emotions
                 int emotion = keyboard.getKeyEmoteOffset(event.key.keysym.sym);
@@ -1728,8 +1739,8 @@ void Game::handleInput()
         return;
 
     // If pressed outfits keys, stop processing keys.
-    if (keyboard.isKeyActive(keyboard.KEY_WEAR_OUTFIT)
-        || keyboard.isKeyActive(keyboard.KEY_COPY_OUTFIT)
+    if (keyboard.isActionActive(keyboard.KEY_WEAR_OUTFIT)
+        || keyboard.isActionActive(keyboard.KEY_COPY_OUTFIT)
         || (setupWindow && setupWindow->isVisible()))
     {
         return;
@@ -1933,4 +1944,12 @@ void Game::closeDialogs()
         deathNotice->scheduleDelete();
         deathNotice = nullptr;
     }
+}
+
+void Game::videoResized(int width, int height)
+{
+    if (viewport)
+        viewport->setSize(width, height);
+    if (windowMenu)
+        windowMenu->setPosition(width - 3 - windowMenu->getWidth(), 3);
 }

@@ -95,7 +95,7 @@ class Skin
          */
         void updateAlpha(float minimumOpacityAllowed = 0.0f);
 
-        int getPadding()
+        int getPadding() const
         { return mPadding; }
 
         int instances;

@@ -1,4 +1,9 @@
 <emotes>
+    <its:rules xmlns:its="http://www.w3.org/2005/11/its" version="1.0">
+        <its:translateRule selector="//emote/sprite/@name" translate="yes"/>
+        <its:translateRule selector="//*" translate="no"/>
+    </its:rules>
+
     <emote id="100"><sprite name="Kitty" variant="0">manaplus_emote.xml</sprite></emote>
     <emote id="101"><sprite name="xD" variant="1">manaplus_emote.xml</sprite></emote>
     <emote id="102"><sprite name="^.^" variant="2">manaplus_emote.xml</sprite></emote>
@@ -24,4 +29,7 @@
     <emote id="122"><sprite name="Bad geek" variant="22">manaplus_emote.xml</sprite></emote>
     <emote id="123"><sprite name="Mimi" variant="23">manaplus_emote.xml</sprite></emote>
     <emote id="124"><sprite name="Alien" variant="24">manaplus_emote.xml</sprite></emote>
+    <emote id="125"><sprite name="Troll" variant="25">manaplus_emote.xml</sprite></emote>
+    <emote id="126"><sprite name="Metal" variant="26">manaplus_emote.xml</sprite></emote>
+    <emote id="127"><sprite name="Crying" variant="27">manaplus_emote.xml</sprite></emote>
 </emotes>

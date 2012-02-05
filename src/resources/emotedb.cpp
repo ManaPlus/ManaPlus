@@ -67,6 +67,10 @@ void EmoteDB::load()
             continue;
 
         int id = XML::getProperty(emoteNode, "id", -1);
+        // skip hight images
+        if (id > 19)
+            continue;
+
         if (id == -1)
         {
             logger->log1("Emote Database: Emote with missing ID in "
@@ -103,7 +107,6 @@ void EmoteDB::load()
         if (id > mLastEmote)
             mLastEmote = id;
     }
-
 
     XML::Document doc2("graphics/sprites/manaplus_emotes.xml");
     rootNode = doc2.rootNode();

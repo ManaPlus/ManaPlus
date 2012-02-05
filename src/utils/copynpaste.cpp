@@ -331,7 +331,7 @@ static char* getSelection2(Display *dpy, Window us, Atom selection,
             if (left < 1)
             {
                 if (ret == Success)
-                XFree(data);
+                    XFree(data);
                 return nullptr;
             }
 

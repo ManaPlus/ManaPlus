@@ -75,7 +75,7 @@ Setup::Setup():
         nullptr
     };
     int x = width;
-    for (const char **curBtn = buttonNames; *curBtn; ++curBtn)
+    for (const char **curBtn = buttonNames; *curBtn; ++ curBtn)
     {
         Button *btn = new Button(gettext(*curBtn), *curBtn, this);
         x -= btn->getWidth() + 5;

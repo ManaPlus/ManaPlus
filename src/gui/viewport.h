@@ -218,13 +218,13 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         Map *getCurrentMap() const
         { return mMap; }
 
-        int getDebugPath()
+        int getDebugPath() const
         { return mShowDebugPath; }
 
         void setDebugPath(int n)
         { mShowDebugPath = n; }
 
-        int getCameraMode()
+        int getCameraMode() const
         { return mCameraMode; }
 
         /**
@@ -237,18 +237,32 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          */
         void cleanHoverItems();
 
-        Map *getMap()
+        Map *getMap() const
         { return mMap; }
 
         void moveCamera(int dx, int dy);
 
-        int getCameraRelativeX()
+        int getCameraRelativeX() const
         { return mCameraRelativeX; }
 
-        int getCameraRelativeY()
+        int getCameraRelativeY() const
         { return mCameraRelativeY; }
 
+        void setCameraRelativeX(int n)
+        { mCameraRelativeX = n; }
+
+        void setCameraRelativeY(int n)
+        { mCameraRelativeY = n; }
+
         bool isPopupMenuVisible();
+
+        void moveCameraToActor(int actorId, int x = 0, int y = 0);
+
+        void moveCameraToPosition(int x, int y);
+
+        void moveCameraRelative(int x, int y);
+
+        void returnCamera();
 
     protected:
         friend class ActorSpriteManager;

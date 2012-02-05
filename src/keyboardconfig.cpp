@@ -267,6 +267,14 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_EMOTION},
     {"keyEmoteShortcut44", SDLK_b, strprintf(N_("Emote Shortcut %d"), 44),
         KeyboardConfig::GRP_EMOTION},
+    {"keyEmoteShortcut45", SDLK_n, strprintf(N_("Emote Shortcut %d"), 45),
+        KeyboardConfig::GRP_EMOTION},
+    {"keyEmoteShortcut46", SDLK_m, strprintf(N_("Emote Shortcut %d"), 46),
+        KeyboardConfig::GRP_EMOTION},
+    {"keyEmoteShortcut47", SDLK_COMMA, strprintf(N_("Emote Shortcut %d"), 47),
+        KeyboardConfig::GRP_EMOTION},
+    {"keyEmoteShortcut48", SDLK_PERIOD, strprintf(N_("Emote Shortcut %d"), 48),
+        KeyboardConfig::GRP_EMOTION},
     {"", 0, N_("Outfits Keys"), 0},
     {"keyWearOutfit", SDLK_RCTRL, N_("Wear Outfit"),
         KeyboardConfig::GRP_DEFAULT},
@@ -360,7 +368,7 @@ void KeyboardConfig::init()
         mKey[i].value = KEY_NO_VALUE;
         mKey[i].grp = keyData[i].grp;
     }
-    for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_44; i ++)
+    for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_48; i ++)
     {
         mKey[i].caption = strprintf(
             _("Emote Shortcut %d"), i - KEY_EMOTE_1 + 1);
@@ -460,7 +468,7 @@ int KeyboardConfig::getKeyIndex(int keyValue, int grp) const
 
 int KeyboardConfig::getKeyEmoteOffset(int keyValue) const
 {
-    for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_44; i++)
+    for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_48; i++)
     {
         if (keyValue == mKey[i].value)
             return 1 + i - KEY_EMOTE_1;
@@ -468,7 +476,7 @@ int KeyboardConfig::getKeyEmoteOffset(int keyValue) const
     return 0;
 }
 
-bool KeyboardConfig::isKeyActive(int index) const
+bool KeyboardConfig::isActionActive(int index) const
 {
     if (!mActiveKeys)
         return false;

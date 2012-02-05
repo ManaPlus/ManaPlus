@@ -155,7 +155,7 @@ class TextCommand
         bool isEmpty() const
         { return mCommand == "" && mSymbol == "" ; }
 
-        Image *getImage()
+        Image *getImage() const
         { return mImage; }
 
     private:

@@ -91,7 +91,7 @@ class Game
         /**
          * Returns the currently active map.
          */
-        Map *getCurrentMap()
+        Map *getCurrentMap() const
         { return mCurrentMap; }
 
         const std::string &getCurrentMapName() const
@@ -107,6 +107,8 @@ class Game
         { mAdjustLevel = n; }
 
         static void closeDialogs();
+
+        void videoResized(int width, int height);
 
     private:
 

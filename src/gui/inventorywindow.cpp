@@ -340,13 +340,13 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
     {
         if (isStorageActive())
         {
-            Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
+            Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
                     item->getInvIndex(), item->getQuantity(),
                     Inventory::STORAGE);
         }
         else
         {
-            if (keyboard.isKeyActive(keyboard.KEY_MOD))
+            if (keyboard.isActionActive(keyboard.KEY_MOD))
             {
                 Net::getInventoryHandler()->dropItem(
                     item, item->getQuantity());
@@ -386,11 +386,11 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 {
     Window::mouseClicked(event);
 
-    const bool mod = (isStorageActive() && keyboard.isKeyActive(
+    const bool mod = (isStorageActive() && keyboard.isActionActive(
         keyboard.KEY_MOD));
 
     const bool mod2 = (tradeWindow && tradeWindow->isVisible()
-        && keyboard.isKeyActive(keyboard.KEY_MOD));
+        && keyboard.isActionActive(keyboard.KEY_MOD));
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {
@@ -431,7 +431,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                 }
                 else
                 {
-                    Net::getInventoryHandler()->moveItem(Inventory::INVENTORY,
+                    Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::STORAGE);
                 }
@@ -445,7 +445,7 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
                 }
                 else
                 {
-                    Net::getInventoryHandler()->moveItem(Inventory::STORAGE,
+                    Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
                         item->getInvIndex(), item->getQuantity(),
                         Inventory::INVENTORY);
                 }

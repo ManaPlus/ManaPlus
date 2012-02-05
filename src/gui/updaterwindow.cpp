@@ -155,6 +155,12 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     mLoadUpdates(applyUpdates),
     mUpdateType(updateType)
 {
+    setWindowName("UpdaterWindow");
+    setResizable(true);
+    setDefaultSize(450, 400, ImageRect::CENTER);
+    setMinWidth(320);
+    setMinHeight(240);
+
     mBrowserBox = new BrowserBox;
     mScrollArea = new ScrollArea(mBrowserBox);
     mLabel = new Label(_("Connecting..."));
@@ -175,14 +181,12 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     placer(3, 5, mCancelButton);
     placer(4, 5, mPlayButton);
 
-    reflowLayout(450, 400);
-
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
 
     addKeyListener(this);
 
-    center();
+    loadWindowState();
     setVisible(true);
     mCancelButton->requestFocus();
 

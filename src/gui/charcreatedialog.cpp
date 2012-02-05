@@ -47,6 +47,7 @@
 #include "resources/chardb.h"
 #include "resources/colordb.h"
 #include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -55,14 +56,27 @@
 
 #include "debug.h"
 
+const static Being::Action actions[] =
+{
+    Being::STAND, Being::SIT, Being::MOVE, Being::ATTACK, Being::DEAD
+};
+
+const static int directions[] =
+{
+    Being::DOWN, Being::RIGHT, Being::UP, Being::LEFT
+};
+
 CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
-    Window(_("Create Character"), true, parent, "charcreate.xml"),
+    Window(_("New Character"), true, parent, "charcreate.xml"),
     mCharSelectDialog(parent),
     mRace(0),
-    mSlot(slot)
+    mSlot(slot),
+    mAction(0),
+    mDirection(0)
 {
     setStickyButtonLock(true);
     setSticky(true);
+    setWindowName("NewCharacter");
 
     mPlayer = new Being(0, ActorSprite::PLAYER, mRace, nullptr);
     mPlayer->setGender(GENDER_MALE);
@@ -79,9 +93,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
 
     mHairStyle = (rand() % maxHairStyle) + minHairStyle;
     mHairColor = (rand() % maxHairColor) + minHairColor;
-    updateHair();
 
     mNameField = new TextField("");
+    mNameField->setMaximum(24);
     mNameLabel = new Label(_("Name:"));
     // TRANSLATORS: This is a narrow symbol used to denote 'next'.
     // You may change this symbol if your language uses another.
@@ -90,15 +104,20 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     // You may change this symbol if your language uses another.
     mPrevHairColorButton = new Button(_("<"), "prevcolor", this);
     mHairColorLabel = new Label(_("Hair color:"));
+    mHairColorNameLabel = new Label("");
     mNextHairStyleButton = new Button(_(">"), "nextstyle", this);
     mPrevHairStyleButton = new Button(_("<"), "prevstyle", this);
     mHairStyleLabel = new Label(_("Hair style:"));
+    mHairStyleNameLabel = new Label("");
+    mActionButton = new Button(_("^"), "action", this);
+    mRotateButton = new Button(_(">"), "rotate", this);
 
     if (serverVersion >= 2)
     {
         mNextRaceButton = new Button(_(">"), "nextrace", this);
         mPrevRaceButton = new Button(_("<"), "prevrace", this);
         mRaceLabel = new Label(_("Race:"));
+        mRaceNameLabel = new Label("");
     }
 
     mCreateButton = new Button(_("Create"), "create", this);
@@ -124,31 +143,42 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mAttributesLeft = new Label(
             strprintf(_("Please distribute %d points"), 99));
 
-    int w = 280;
-    int h = 330;
+    int w = 480;
+    int h = 350;
     setContentSize(w, h);
-    mPlayerBox->setDimension(gcn::Rectangle(145, 35, 110, 87));
-    mNameLabel->setPosition(5, 5);
+    mPlayerBox->setDimension(gcn::Rectangle(350, 40, 110, 90));
+    mActionButton->setPosition(375, 140);
+    mRotateButton->setPosition(405, 140);
+
+    mNameLabel->setPosition(5, 10);
     mNameField->setDimension(
-            gcn::Rectangle(60, 5, w - 60 - 7, mNameField->getHeight()));
-    mPrevHairColorButton->setPosition(155, 35);
-    mNextHairColorButton->setPosition(230, 35);
-    mHairColorLabel->setPosition(5, 40);
-    mPrevHairStyleButton->setPosition(155, 64);
-    mNextHairStyleButton->setPosition(230, 64);
-    mHairStyleLabel->setPosition(5, 70);
+            gcn::Rectangle(60, 10, 300, mNameField->getHeight()));
+
+    int leftX = 120;
+    int rightX = 300;
+    int labelX = 5;
+    int nameX = 145;
+    mPrevHairColorButton->setPosition(leftX, 40);
+    mNextHairColorButton->setPosition(rightX, 40);
+    mHairColorLabel->setPosition(labelX, 45);
+    mHairColorNameLabel->setPosition(nameX, 45);
+    mPrevHairStyleButton->setPosition(leftX, 69);
+    mNextHairStyleButton->setPosition(rightX, 69);
+    mHairStyleLabel->setPosition(labelX, 74);
+    mHairStyleNameLabel->setPosition(nameX, 74);
 
     if (serverVersion >= 2)
     {
-        mPrevRaceButton->setPosition(155, 93);
-        mNextRaceButton->setPosition(230, 93);
-        mRaceLabel->setPosition(5, 100);
+        mPrevRaceButton->setPosition(leftX, 103);
+        mNextRaceButton->setPosition(rightX, 103);
+        mRaceLabel->setPosition(labelX, 108);
+        mRaceNameLabel->setPosition(nameX, 108);
     }
 
     mAttributesLeft->setPosition(15, 280);
     updateSliders();
     mCancelButton->setPosition(
-            w - 5 - mCancelButton->getWidth(),
+            w / 2,
             h - 5 - mCancelButton->getHeight());
     mCreateButton->setPosition(
             mCancelButton->getX() - 5 - mCreateButton->getWidth(),
@@ -163,15 +193,20 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     add(mNextHairColorButton);
     add(mPrevHairColorButton);
     add(mHairColorLabel);
+    add(mHairColorNameLabel);
     add(mNextHairStyleButton);
     add(mPrevHairStyleButton);
     add(mHairStyleLabel);
+    add(mHairStyleNameLabel);
+    add(mActionButton);
+    add(mRotateButton);
 
     if (serverVersion >= 2)
     {
         add(mNextRaceButton);
         add(mPrevRaceButton);
         add(mRaceLabel);
+        add(mRaceNameLabel);
     }
 
     add(mAttributesLeft);
@@ -184,6 +219,12 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     center();
     setVisible(true);
     mNameField->requestFocus();
+
+    updateHair();
+    if (serverVersion >= 2)
+        updateRace();
+
+    updatePlayer();
 }
 
 CharCreateDialog::~CharCreateDialog()
@@ -197,7 +238,8 @@ CharCreateDialog::~CharCreateDialog()
 
 void CharCreateDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "create")
+    const std::string id = event.getId();
+    if (id == "create")
     {
         if (
 #ifdef MANASERV_SUPPORT
@@ -232,50 +274,64 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
                          true,  this);
         }
     }
-    else if (event.getId() == "cancel")
+    else if (id == "cancel")
     {
         scheduleDelete();
     }
-    else if (event.getId() == "nextcolor")
+    else if (id == "nextcolor")
     {
-        mHairColor++;
+        mHairColor ++;
         updateHair();
     }
-    else if (event.getId() == "prevcolor")
+    else if (id == "prevcolor")
     {
-        mHairColor--;
+        mHairColor --;
         updateHair();
     }
-    else if (event.getId() == "nextstyle")
+    else if (id == "nextstyle")
     {
-        mHairStyle++;
+        mHairStyle ++;
         updateHair();
     }
-    else if (event.getId() == "prevstyle")
+    else if (id == "prevstyle")
     {
-        mHairStyle--;
+        mHairStyle --;
         updateHair();
     }
-    else if (event.getId() == "nextrace")
+    else if (id == "nextrace")
     {
-        mRace++;
+        mRace ++;
         updateRace();
     }
-    else if (event.getId() == "prevrace")
+    else if (id == "prevrace")
     {
-        mRace--;
+        mRace --;
         updateRace();
     }
-    else if (event.getId() == "statslider")
+    else if (id == "statslider")
     {
         updateSliders();
     }
-    else if (event.getId() == "gender")
+    else if (id == "gender")
     {
         if (mMale->isSelected())
             mPlayer->setGender(GENDER_MALE);
         else
             mPlayer->setGender(GENDER_FEMALE);
+    }
+    else if (id == "action")
+    {
+        mAction ++;
+        if (mAction >= 5)
+            mAction = 0;
+        updatePlayer();
+    }
+    else if (id == "rotate")
+    {
+        mDirection ++;
+        if (mDirection >= 4)
+            mDirection = 0;
+        updatePlayer();
     }
 }
 
@@ -357,34 +413,34 @@ void CharCreateDialog::setAttributes(const std::vector<std::string> &labels,
     mAttributeSlider.resize(labels.size());
     mAttributeValue.resize(labels.size());
 
-    int w = 200;
-    int h = 330;
+    int w = 480;
+    int h = 350;
 
     for (unsigned i = 0; i < labels.size(); i++)
     {
         mAttributeLabel[i] = new Label(labels[i]);
         mAttributeLabel[i]->setWidth(70);
-        mAttributeLabel[i]->setPosition(5, 140 + i*20);
+        mAttributeLabel[i]->setPosition(5, 145 + i * 24);
         mAttributeLabel[i]->adjustSize();
         add(mAttributeLabel[i]);
 
         mAttributeSlider[i] = new Slider(min, max);
-        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 140 + i * 20,
-                                                         100, 10));
+        mAttributeSlider[i]->setDimension(gcn::Rectangle(140, 145 + i * 24,
+                                                         150, 12));
         mAttributeSlider[i]->setActionEventId("statslider");
         mAttributeSlider[i]->addActionListener(this);
         add(mAttributeSlider[i]);
 
         mAttributeValue[i] = new Label(toString(min));
-        mAttributeValue[i]->setPosition(245, 140 + i*20);
+        mAttributeValue[i]->setPosition(295, 145 + i * 24);
         add(mAttributeValue[i]);
     }
 
-    mAttributesLeft->setPosition(15, 280);
+    mAttributesLeft->setPosition(15, 300);
     updateSliders();
 
     mCancelButton->setPosition(
-            w - 5 - mCancelButton->getWidth(),
+            w / 2,
             h - 5 - mCancelButton->getHeight());
     mCreateButton->setPosition(
             mCancelButton->getX() - 5 - mCreateButton->getWidth(),
@@ -420,12 +476,17 @@ void CharCreateDialog::updateHair()
         mHairStyle += Being::getNumOfHairstyles();
     if (mHairStyle < (signed)minHairStyle || mHairStyle > (signed)maxHairStyle)
         mHairStyle = minHairStyle;
+    const ItemInfo &item = ItemDB::get(-mHairStyle);
+    mHairStyleNameLabel->setCaption(item.getName());
+    mHairStyleNameLabel->adjustSize();
 
     mHairColor %= ColorDB::getHairSize();
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
     if (mHairColor < (signed)minHairColor || mHairColor > (signed)maxHairColor)
         mHairColor = minHairColor;
+    mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
+    mHairColorNameLabel->adjustSize();
 
     mPlayer->setSprite(Net::getCharHandler()->hairSprite(),
                        mHairStyle * -1, ColorDB::getHairColor(mHairColor));
@@ -448,4 +509,22 @@ void CharCreateDialog::updateRace()
     }
 
     mPlayer->setSubtype(mRace);
+    const ItemInfo &item = ItemDB::get(id);
+    mRaceNameLabel->setCaption(item.getName());
+    mRaceNameLabel->adjustSize();
+}
+
+void CharCreateDialog::logic()
+{
+    if (mPlayer)
+        mPlayer->logic();
+}
+
+void CharCreateDialog::updatePlayer()
+{
+    if (mPlayer)
+    {
+        mPlayer->setDirection(directions[mDirection]);
+        mPlayer->setAction(actions[mAction]);
+    }
 }

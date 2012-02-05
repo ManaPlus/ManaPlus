@@ -102,6 +102,7 @@ class Being : public ActorSprite, public ConfigListener
             FLAG_SHOP = 1,
             FLAG_AWAY = 2,
             FLAG_INACTIVE = 4,
+            FLAG_GENDER = 128,
             FLAG_SPECIAL = 128 + 64
         };
 
@@ -488,7 +489,7 @@ class Being : public ActorSprite, public ConfigListener
         virtual void setDirectionDelayed(Uint8 direction)
         { mDirectionDelayed = direction; }
 
-        Uint8 getDirectionDelayed()
+        Uint8 getDirectionDelayed() const
         { return mDirectionDelayed; }
 
         /**
@@ -546,6 +547,8 @@ class Being : public ActorSprite, public ConfigListener
          */
         void setEmote(Uint8 emotion, int emote_time);
 
+        void setState(Uint8 state);
+
         /**
          * Get the current Emoticon type displayed above
          * the being.
@@ -585,7 +588,7 @@ class Being : public ActorSprite, public ConfigListener
         void setIsReachable(int n)
         { mIsReachable = n; }
 
-        int isReachable()
+        int isReachable() const
         { return mIsReachable; }
 
         static void reReadConfig();
@@ -678,7 +681,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void setMaxHP(int hp);
 
-        int getHP()
+        int getHP() const
         { return mHP; }
 
         Uint8 calcDirection(int dstX, int dstY) const;
@@ -688,22 +691,22 @@ class Being : public ActorSprite, public ConfigListener
         void setAttackDelay(int n)
         { mAttackDelay = n; }
 
-        int getAttackDelay()
+        int getAttackDelay() const
         { return mAttackDelay; }
 
-        int getMinHit()
+        int getMinHit() const
         { return mMinHit; }
 
         void setMinHit(int n)
         { mMinHit = n; }
 
-        int getMaxHit()
+        int getMaxHit() const
         { return mMaxHit; }
 
         void setMaxHit(int n)
         { mMaxHit = n; }
 
-        int getCriticalHit()
+        int getCriticalHit() const
         { return mCriticalHit; }
 
         void setCriticalHit(int n)
@@ -715,7 +718,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void undressItemById(int id);
 
-        int getGoodStatus()
+        int getGoodStatus() const
         { return mGoodStatus; }
 
         void setGoodStatus(int n)
@@ -727,7 +730,7 @@ class Being : public ActorSprite, public ConfigListener
 
         void updateComment();
 
-        std::string getComment()
+        const std::string getComment() const
         { return mComment; }
 
         void setComment(std::string n)
@@ -740,14 +743,17 @@ class Being : public ActorSprite, public ConfigListener
         static void saveComment(const std::string &name,
                                 const std::string &comment, int type);
 
-        bool isAdvanced()
+        bool isAdvanced() const
         { return mAdvanced; }
 
         void setAdvanced(bool n)
         { mAdvanced = n; addToCache(); }
 
-        bool isShopEnabled()
+        bool isShopEnabled() const
         { return mShop; }
+
+        void enableShop(bool b)
+        { mShop = b; }
 
         /**
          * Sets the attack range.

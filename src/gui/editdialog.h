@@ -57,7 +57,7 @@ class EditDialog : public Window, public gcn::ActionListener
          */
         void action(const gcn::ActionEvent &event);
 
-        std::string getMsg()
+        std::string getMsg() const
         { return mTextField->getText(); }
 
     private:

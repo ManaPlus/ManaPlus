@@ -153,6 +153,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/debugwindow.h \
 	      gui/didyouknowwindow.cpp \
 	      gui/didyouknowwindow.h \
+	      gui/editserverdialog.cpp \
+	      gui/editserverdialog.h \
 	      gui/emotepopup.cpp \
 	      gui/emotepopup.h \
 	      gui/equipmentwindow.cpp \
@@ -353,6 +355,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/wallpaper.h \
 	      utils/base64.cpp \
 	      utils/base64.h \
+	      utils/checkutils.cpp \
+	      utils/checkutils.h \
 	      utils/copynpaste.cpp \
 	      utils/copynpaste.h \
 	      utils/dtor.h \
@@ -362,6 +366,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/mkdir.h \
 	      utils/paths.cpp \
 	      utils/paths.h \
+	      utils/physfsrwops.cpp \
+	      utils/physfsrwops.h \
 	      utils/process.cpp \
 	      utils/process.h \
 	      utils/specialfolder.cpp \

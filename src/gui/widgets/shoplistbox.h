@@ -56,7 +56,8 @@ class ShopListBox : public ListBox
         /**
          * Returns the height of a row.
          */
-        unsigned int getRowHeight() const { return mRowHeight; }
+        unsigned int getRowHeight() const
+        { return mRowHeight; }
 
         /**
          * gives information about the current player's money

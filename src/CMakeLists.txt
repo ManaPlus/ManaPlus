@@ -247,6 +247,8 @@ SET(SRCS
     gui/debugwindow.h
     gui/didyouknowwindow.cpp
     gui/didyouknowwindow.h
+    gui/editserverdialog.cpp
+    gui/editserverdialog.h
     gui/emotepopup.cpp
     gui/emotepopup.h
     gui/equipmentwindow.cpp
@@ -445,6 +447,8 @@ SET(SRCS
     resources/wallpaper.h
     utils/base64.cpp
     utils/base64.h
+    utils/checkutils.cpp
+    utils/checkutils.h
     utils/copynpaste.cpp
     utils/copynpaste.h
     utils/dtor.h
@@ -452,6 +456,8 @@ SET(SRCS
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
+    utils/physfsrwops.cpp
+    utils/physfsrwops.h
     utils/process.cpp
     utils/process.h
     utils/stringutils.cpp

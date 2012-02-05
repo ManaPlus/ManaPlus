@@ -193,6 +193,8 @@ public:
 
     std::string getPlayerAt(int index) const
     {
+        if (index < 0 || index >= (signed)mPlayers->size())
+            return "";
         return (*mPlayers)[index];
     }
 
@@ -257,10 +259,7 @@ Setup_Relations::Setup_Relations():
     mIgnoreActionChoicesBox = new DropDown(mIgnoreActionChoicesModel);
 
     for (int i = 0; i < COLUMNS_NR; i++)
-    {
-        mPlayerTableTitleModel->set(0, i,
-                new Label(gettext(table_titles[i])));
-    }
+        mPlayerTableTitleModel->set(0, i, new Label(gettext(table_titles[i])));
 
     mPlayerTitleTable->setLinewiseSelection(true);
 

@@ -35,12 +35,12 @@ VertContainer::VertContainer(int verticalItemSize, bool resizable,
     addWidgetListener(this);
 }
 
-void VertContainer::add(gcn::Widget *widget, int spacing)
+void VertContainer::add1(gcn::Widget *widget, int spacing)
 {
-    add(widget, mResizable, spacing);
+    add2(widget, mResizable, spacing);
 }
 
-void VertContainer::add(gcn::Widget *widget, bool resizable, int spacing)
+void VertContainer::add2(gcn::Widget *widget, bool resizable, int spacing)
 {
     if (!widget)
         return;
@@ -70,6 +70,7 @@ void VertContainer::clear()
 
     mCount = 0;
     mNextY = 0;
+    mResizableWidgets.clear();
 }
 
 void VertContainer::widgetResized(const gcn::Event &event A_UNUSED)

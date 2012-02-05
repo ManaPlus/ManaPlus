@@ -136,7 +136,7 @@ class KeyboardConfig
         /**
          * Checks if the key is active, by providing the key function index.
          */
-        bool isKeyActive(int index) const;
+        bool isActionActive(int index) const;
 
         /**
          * Takes a snapshot of all the active keys.
@@ -278,6 +278,10 @@ class KeyboardConfig
             KEY_EMOTE_42,
             KEY_EMOTE_43,
             KEY_EMOTE_44,
+            KEY_EMOTE_45,
+            KEY_EMOTE_46,
+            KEY_EMOTE_47,
+            KEY_EMOTE_48,
             KEY_SEPARATOR5,
             KEY_WEAR_OUTFIT,
             KEY_COPY_OUTFIT,

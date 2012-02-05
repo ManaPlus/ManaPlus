@@ -253,10 +253,10 @@ class Configuration : public ConfigurationObject
         void setSilent(const std::string &key, const std::string &value);
 
         inline void setValue(const std::string &key, const char *value)
-        { setValue(key, std::string(value)); }
+        { if (value) setValue(key, std::string(value)); }
 
         inline void setSilent(const std::string &key, const char *value)
-        { setSilent(key, std::string(value)); }
+        { if (value) setSilent(key, std::string(value)); }
 
         inline void setValue(const std::string &key, float value)
         { setValue(key, toString(value)); }

@@ -386,7 +386,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
         Net::Character *character = mCharacterEntries[i]->getCharacter();
         if (mCharacterEntries[i] && character)
         {
-            if (character->dummy->getName() == name)
+            if ( character->dummy && character->dummy->getName() == name)
             {
                 if (mCharacterEntries[i])
                     mCharacterEntries[i]->requestFocus();

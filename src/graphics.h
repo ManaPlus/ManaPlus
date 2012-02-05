@@ -96,13 +96,18 @@ class Graphics : public gcn::SDLGraphics
         /**
          * Try to create a window with the given settings.
          */
-        virtual bool setVideoMode(int w, int h, int bpp,
-                                  bool fs, bool hwaccel);
+        virtual bool setVideoMode(int w, int h, int bpp, bool fs,
+                                  bool hwaccel, bool resize, bool noFrame);
 
         /**
          * Set fullscreen mode.
          */
         bool setFullscreen(bool fs);
+
+        /**
+         * Resize the window to the specified size.
+         */
+        bool resizeScreen(int width, int height);
 
         /**
          * Blits an image onto the screen.
@@ -220,7 +225,7 @@ class Graphics : public gcn::SDLGraphics
         void setBlitMode(BlitMode mode)
         { mBlitMode = mode; }
 
-        BlitMode getBlitMode()
+        BlitMode getBlitMode() const
         { return mBlitMode; }
 
         void fillRectangle(const gcn::Rectangle& rectangle);
@@ -258,29 +263,32 @@ class Graphics : public gcn::SDLGraphics
         void setRedraw(bool n)
         { mRedraw = n; }
 
-        bool getRedraw()
+        bool getRedraw() const
         { return mRedraw; }
 
         void setSecure(bool n)
         { mSecure = n; }
 
-        bool getSecure()
+        bool getSecure() const
         { return mSecure; }
 
-        int getBpp()
+        int getBpp() const
         { return mBpp; }
 
-        bool getFullScreen()
+        bool getFullScreen() const
         { return mFullscreen; }
 
-        bool getHWAccel()
+        bool getHWAccel() const
         { return mHWAccel; }
 
-        bool getDoubleBuffer()
+        bool getDoubleBuffer() const
         { return mDoubleBuffer; }
 
         int getOpenGL()
         { return mOpenGL; }
+
+        void setNoFrame(bool n)
+        { mNoFrame = n; }
 
         int mWidth;
         int mHeight;
@@ -298,6 +306,8 @@ class Graphics : public gcn::SDLGraphics
         SDL_Rect mRect;
         bool mSecure;
         int mOpenGL;
+        bool mEnableResize;
+        bool mNoFrame;
 };
 
 extern Graphics *mainGraphics;

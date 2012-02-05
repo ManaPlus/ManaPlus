@@ -225,6 +225,8 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "selectedJoystick", 0);
     AddDEF(configData, "useInactiveJoystick", false);
     AddDEF(configData, "testInfo", "");
+    AddDEF(configData, "enableresize", true);
+    AddDEF(configData, "noframe", false);
     return configData;
 }
 
@@ -234,8 +236,8 @@ DefaultsData* getBrandingDefaults()
     // Init config defaults
     AddDEF(brandingData, "wallpapersPath", "");
     AddDEF(brandingData, "wallpapersFile", "");
-    AddDEF(brandingData, "appName", "Mana");
-    AddDEF(brandingData, "appIcon", "icons/mana.png");
+    AddDEF(brandingData, "appName", "ManaPlus");
+    AddDEF(brandingData, "appIcon", "icons/manaplus");
     AddDEF(brandingData, "loginMusic", "Magick - Real.ogg");
     AddDEF(brandingData, "defaultServer", "");
     AddDEF(brandingData, "defaultPort", DEFAULT_PORT);

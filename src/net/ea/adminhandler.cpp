@@ -32,7 +32,7 @@
 namespace Ea
 {
 
-void AdminHandler::kick(const std::string &name)
+void AdminHandler::kickName(const std::string &name)
 {
     Net::getChatHandler()->talk("@kick " + name);
 }
@@ -42,7 +42,7 @@ void AdminHandler::ban(int playerId A_UNUSED)
     // Not supported
 }
 
-void AdminHandler::ban(const std::string &name)
+void AdminHandler::banName(const std::string &name)
 {
     Net::getChatHandler()->talk("@ban " + name);
 }
@@ -52,7 +52,7 @@ void AdminHandler::unban(int playerId A_UNUSED)
     // Not supported
 }
 
-void AdminHandler::unban(const std::string &name)
+void AdminHandler::unbanName(const std::string &name)
 {
     Net::getChatHandler()->talk("@unban " + name);
 }

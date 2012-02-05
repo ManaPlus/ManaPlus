@@ -1,5 +1,10 @@
 /*
- *Code taken from: http://mumble.sourceforge.net/Link
+ *  Code taken from: http://mumble.sourceforge.net/Link
+ *
+ *  All code listed below is in the public domain and can be used, shared or
+ *  modified freely
+ *
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  */
 
 #include "mumblemanager.h"
@@ -78,7 +83,6 @@ void MumbleManager::init()
 #if defined BSD4_4
     return;
 #endif
-
     if (mLinkedMem || !config.getBoolValue("enableMumble"))
         return;
 

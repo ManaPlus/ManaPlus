@@ -509,6 +509,39 @@ std::vector<std::string> getLang()
     return langs;
 }
 
+std::string getLangSimple()
+{
+    std::string lang = config.getValue("lang", "").c_str();
+    if (lang.empty())
+    {
+        char *lng = getenv("LANG");
+        if (!lng)
+            return "";
+        return lng;
+    }
+    return lang;
+}
+
+std::string getLangShort()
+{
+    std::string lang = config.getValue("lang", "").c_str();
+    if (lang.empty())
+    {
+        char *lng = getenv("LANG");
+        if (!lng)
+            return "";
+        lang = lng;
+    }
+
+    int dot = lang.find(".");
+    if (dot != (signed)std::string::npos)
+        lang = lang.substr(0, dot);
+    dot = lang.find("_");
+    if (dot != (signed)std::string::npos)
+        return lang.substr(0, dot);
+    return lang;
+}
+
 std::string packList(std::list<std::string> &list)
 {
     std::list<std::string>::const_iterator i = list.begin();
@@ -541,6 +574,9 @@ std::string stringToHexPath(const std::string &str)
 
 void deleteCharLeft(std::string &str, unsigned *pos)
 {
+    if (!pos)
+        return;
+
     while (*pos > 0)
     {
         (*pos)--;

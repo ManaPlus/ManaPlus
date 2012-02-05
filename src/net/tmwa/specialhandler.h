@@ -40,11 +40,11 @@ class SpecialHandler : public MessageHandler, public Ea::SpecialHandler
 
         void handleMessage(Net::MessageIn &msg);
 
-        void use(int id, int level, int beingId);
+        void useBeing(int id, int level, int beingId);
 
-        void use(int id, int level, int x, int y);
+        void usePos(int id, int level, int x, int y);
 
-        void use(int id, const std::string &map);
+        void useMap(int id, const std::string &map);
 };
 
 } // namespace TmwAthena

@@ -47,13 +47,15 @@ Graphics::Graphics():
     mBlitMode(BLIT_NORMAL),
     mRedraw(false),
     mDoubleBuffer(false),
-    mSecure(false)
+    mSecure(false),
+    mOpenGL(0),
+    mEnableResize(false),
+    mNoFrame(false)
 {
     mRect.x = 0;
     mRect.y = 0;
     mRect.w = 0;
     mRect.h = 0;
-    mOpenGL = 0;
 }
 
 Graphics::~Graphics()
@@ -61,7 +63,8 @@ Graphics::~Graphics()
     _endDraw();
 }
 
-bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
+bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
+                            bool hwaccel, bool resize, bool noFrame)
 {
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
@@ -73,14 +76,21 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs, bool hwaccel)
     mBpp = bpp;
     mFullscreen = fs;
     mHWAccel = hwaccel;
+    mEnableResize = resize;
+    mNoFrame = noFrame;
 
     if (fs)
         displayFlags |= SDL_FULLSCREEN;
+    else if (resize)
+        displayFlags |= SDL_RESIZABLE;
 
     if (hwaccel)
         displayFlags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
     else
         displayFlags |= SDL_SWSURFACE;
+
+    if (noFrame)
+        displayFlags |= SDL_NOFRAME;
 
     setTarget(SDL_SetVideoMode(w, h, bpp, displayFlags));
 
@@ -138,7 +148,37 @@ bool Graphics::setFullscreen(bool fs)
     if (mFullscreen == fs)
         return true;
 
-    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel);
+    return setVideoMode(mWidth, mHeight, mBpp, fs, mHWAccel,
+        mEnableResize, mNoFrame);
+}
+
+bool Graphics::resizeScreen(int width, int height)
+{
+    if (mWidth == width && mHeight == height)
+        return true;
+
+    const int prevWidth = mWidth;
+    const int prevHeight = mHeight;
+
+    _endDraw();
+
+    bool success = setVideoMode(width, height, mBpp,
+        mFullscreen, mHWAccel, mEnableResize, mNoFrame);
+
+    // If it didn't work, try to restore the previous size. If that didn't
+    // work either, bail out (but then we're in deep trouble).
+    if (!success)
+    {
+        if (!setVideoMode(prevWidth, prevHeight, mBpp,
+            mFullscreen, mHWAccel, mEnableResize, mNoFrame))
+        {
+            return false;
+        }
+    }
+
+    _beginDraw();
+
+    return success;
 }
 
 int Graphics::getWidth() const

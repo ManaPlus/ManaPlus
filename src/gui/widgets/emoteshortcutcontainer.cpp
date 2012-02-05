@@ -43,7 +43,7 @@
 
 #include "debug.h"
 
-static const int MAX_ITEMS = 44;
+static const int MAX_ITEMS = 48;
 
 EmoteShortcutContainer::EmoteShortcutContainer():
     ShortcutContainer(),

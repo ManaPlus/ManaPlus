@@ -497,16 +497,16 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     }
                 }
                 else if (player_node->withinAttackRange(mHoverBeing) ||
-                         keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                         keyboard.isActionActive(keyboard.KEY_ATTACK))
                 {
                     if (player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
-                            !keyboard.isKeyActive(keyboard.KEY_TARGET));
+                            !keyboard.isActionActive(keyboard.KEY_TARGET));
                         return;
                     }
                 }
-                else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
+                else if (!keyboard.isActionActive(keyboard.KEY_ATTACK))
                 {
                     if (player_node != mHoverBeing)
                     {
@@ -522,7 +522,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             player_node->pickUp(mHoverItem);
         }
         // Just walk around
-        else if (!keyboard.isKeyActive(keyboard.KEY_ATTACK))
+        else if (!keyboard.isActionActive(keyboard.KEY_ATTACK))
         {
             player_node->stopAttack();
             player_node->cancelFollow();
@@ -874,4 +874,45 @@ void Viewport::moveCamera(int dx, int dy)
 bool Viewport::isPopupMenuVisible()
 {
     return mPopupMenu ? mPopupMenu->isVisible() : false;
+}
+
+void Viewport::moveCameraToActor(int actorId, int x, int y)
+{
+    if (!player_node)
+        return;
+
+    Actor *actor = actorSpriteManager->findBeing(actorId);
+    if (!actor)
+        return;
+    Vector actorPos = actor->getPosition();
+    Vector playerPos = player_node->getPosition();
+    mCameraMode = 1;
+    mCameraRelativeX = actorPos.x - playerPos.x + x;
+    mCameraRelativeY = actorPos.y - playerPos.y + y;
+}
+
+void Viewport::moveCameraToPosition(int x, int y)
+{
+    if (!player_node)
+        return;
+
+    Vector playerPos = player_node->getPosition();
+    mCameraMode = 1;
+
+    mCameraRelativeX = x - playerPos.x;
+    mCameraRelativeY = y - playerPos.y;
+}
+
+void Viewport::moveCameraRelative(int x, int y)
+{
+    mCameraMode = 1;
+    mCameraRelativeX += x;
+    mCameraRelativeY += y;
+}
+
+void Viewport::returnCamera()
+{
+    mCameraMode = 0;
+    mCameraRelativeX = 0;
+    mCameraRelativeY = 0;
 }

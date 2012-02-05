@@ -83,7 +83,7 @@ class FloorItem : public ActorSprite
         unsigned char getColor() const
         { return mColor; }
 
-        bool getShowMsg()
+        bool getShowMsg() const
         { return mShowMsg; }
 
         void setShowMsg(bool n)

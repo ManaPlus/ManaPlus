@@ -43,7 +43,7 @@ class Action
 
         Animation *getAnimation(int direction) const;
 
-        unsigned getNumber()
+        unsigned getNumber() const
         { return mNumber; }
 
         void setNumber(unsigned n)

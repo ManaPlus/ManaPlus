@@ -133,6 +133,13 @@ void DropShortcut::dropItems(int cnt)
     if (!player_node)
         return;
 
+
+    if (player_node->isServerBuggy())
+    {
+        dropItem(player_node->getQuickDropCounter());
+        return;
+    }
+
     int n = 0;
     for (int f = 0; f < 9; f++)
     {

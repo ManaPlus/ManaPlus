@@ -83,30 +83,6 @@ class ServersListModel : public gcn::ListModel
         ServerDialog *mParent;
 };
 
-/**
- * Server Type List Model
- */
-class TypeListModel : public gcn::ListModel
-{
-    public:
-        TypeListModel() {}
-
-        /**
-         * Used to get number of line in the list
-         */
-        int getNumberOfElements()
-#ifdef MANASERV_SUPPORT
-        { return 3; }
-#else
-        { return 2; }
-#endif
-
-        /**
-         * Used to get an element from the list
-         */
-        std::string getElementAt(int elementIndex);
-};
-
 
 /**
  * The server choice dialog.
@@ -147,12 +123,17 @@ class ServerDialog : public Window,
 
         void logic();
 
+        void updateServer(ServerInfo server, int index);
+
     protected:
         friend class ServersListModel;
+
         MutexLocker lock()
         { return MutexLocker(&mMutex); }
 
     private:
+        friend class EditServerDialog;
+
         /**
          * Called to load a list of available server from an online xml file.
          */
@@ -160,27 +141,22 @@ class ServerDialog : public Window,
         void loadServers(bool addNew = true);
 
         void loadCustomServers();
-        void saveCustomServers(const ServerInfo &currentServer = ServerInfo());
+        void saveCustomServers(const ServerInfo &currentServer = ServerInfo(),
+                               int index = -1);
 
         static int downloadUpdate(void *ptr, DownloadStatus status,
                                   size_t total, size_t remaining);
 
-        void setFieldsReadOnly(bool readOnly);
-
-        TextField *mServerNameField;
-        TextField *mPortField;
         Label  *mDescription;
         Button *mQuitButton;
         Button *mConnectButton;
-        Button *mManualEntryButton;
+        Button *mAddEntryButton;
+        Button *mEditEntryButton;
         Button *mDeleteButton;
         Button *mLoadButton;
 
         ListBox *mServersList;
         ServersListModel *mServersListModel;
-
-        DropDown *mTypeField;
-        TypeListModel *mTypeListModel;
 
         const std::string &mDir;
 

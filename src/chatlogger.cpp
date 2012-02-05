@@ -39,7 +39,6 @@
 
 #include "logger.h"
 #include "configuration.h"
-
 #include "utils/mkdir.h"
 #include "utils/stringutils.h"
 
@@ -203,4 +202,11 @@ void ChatLogger::loadLast(std::string name, std::list<std::string> &list,
 
     if (logFile.is_open())
         logFile.close();
+}
+
+void ChatLogger::clear()
+{
+    mLogDir = "";
+    mServerName = "";
+    mLogFileName = "";
 }

@@ -42,6 +42,54 @@ class ScrollArea;
 
 struct SDL_Thread;
 
+class OnlinePlayer
+{
+    public:
+        OnlinePlayer(std::string nick, unsigned char status,
+                     char level, unsigned char gender, char version) :
+            mNick(nick),
+            mText(""),
+            mStatus(status),
+            mLevel(level),
+            mVersion(version),
+            mGender(gender)
+        {
+        }
+
+        const std::string getNick() const
+        { return mNick; }
+
+        unsigned char getStaus() const
+        { return mStatus; }
+
+        char getVersion() const
+        { return mVersion; }
+
+        char getLevel() const
+        { return mLevel; }
+
+        const std::string getText() const
+        { return mText; }
+
+        void setText(std::string str);
+
+        void setLevel(char level)
+        { mLevel = level; }
+
+    private:
+        std::string mNick;
+
+        std::string mText;
+
+        unsigned char mStatus;
+
+        char mLevel;
+
+        char mVersion;
+
+        unsigned char mGender;
+};
+
 /**
  * Update progress window GUI
  *
@@ -52,7 +100,7 @@ class WhoIsOnline : public Window,
                     public gcn::ActionListener,
                     public ConfigListener
 {
- public:
+public:
     /**
      * Constructor.
      */
@@ -68,7 +116,7 @@ class WhoIsOnline : public Window,
      */
     void loadWebList();
 
-    void loadList(std::vector<std::string> &list);
+    void loadList(std::vector<OnlinePlayer*> &list);
 
     void handleLink(const std::string& link, gcn::MouseEvent *event);
 
@@ -78,8 +126,11 @@ class WhoIsOnline : public Window,
 
     void widgetResized(const gcn::Event &event);
 
-    std::set<std::string> &getOnlinePlayers()
+    const std::set<OnlinePlayer*> &getOnlinePlayers()
     { return mOnlinePlayers; }
+
+    const std::set<std::string> &getOnlineNicks()
+    { return mOnlineNicks; }
 
     void setAllowUpdate(bool n)
     { mAllowUpdate = n; }
@@ -109,10 +160,10 @@ private:
     const std::string prepareNick(std::string nick, int level,
                                   std::string color) const;
 
-    void updateWindow(std::vector<std::string> &friends,
-                      std::vector<std::string> &neutral,
-                      std::vector<std::string> &disregard,
-                      std::vector<std::string> enemy,
+    void updateWindow(std::vector<OnlinePlayer*> &friends,
+                      std::vector<OnlinePlayer*> &neutral,
+                      std::vector<OnlinePlayer*> &disregard,
+                      std::vector<OnlinePlayer*> enemy,
                       int numOnline);
 
     enum DownloadStatus
@@ -143,7 +194,8 @@ private:
     BrowserBox *mBrowserBox;
     ScrollArea *mScrollArea;
     time_t mUpdateTimer;
-    std::set<std::string> mOnlinePlayers;
+    std::set<OnlinePlayer*> mOnlinePlayers;
+    std::set<std::string> mOnlineNicks;
 
     gcn::Button *mUpdateButton;
     bool mAllowUpdate;

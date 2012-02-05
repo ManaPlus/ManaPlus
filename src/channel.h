@@ -46,7 +46,8 @@ class Channel
         /**
          * Get the id associated witht his channel.
          */
-        int getId() const { return mId; }
+        int getId() const
+        { return mId; }
 
          /**
          * Get this channel's name.
@@ -72,7 +73,7 @@ class Channel
         void setAnnouncement(const std::string &channelAnnouncement)
         { mAnnouncement = channelAnnouncement; }
 
-        ChannelTab *getTab()
+        ChannelTab *getTab() const
         { return mTab; }
 
     protected:

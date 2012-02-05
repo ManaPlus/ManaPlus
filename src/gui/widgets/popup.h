@@ -94,28 +94,32 @@ class Popup : public Container, public gcn::MouseListener,
          */
         void setMinWidth(int width);
 
-        int getMinWidth() const { return mMinWidth; }
+        int getMinWidth() const
+        { return mMinWidth; }
 
         /**
          * Sets the minimum height of the popup.
          */
         void setMinHeight(int height);
 
-        int getMinHeight() const { return mMinHeight; }
+        int getMinHeight() const
+        { return mMinHeight; }
 
         /**
          * Sets the maximum width of the popup.
          */
         void setMaxWidth(int width);
 
-        int getMaxWidth() const { return mMaxWidth; }
+        int getMaxWidth() const
+        { return mMaxWidth; }
 
         /**
          * Sets the minimum height of the popup.
          */
         void setMaxHeight(int height);
 
-        int getMaxHeight() const { return mMaxHeight; }
+        int getMaxHeight() const
+        { return mMaxHeight; }
 
         /**
          * Gets the padding of the popup. The padding is the distance between
@@ -124,9 +128,11 @@ class Popup : public Container, public gcn::MouseListener,
          * @return The padding of the popup.
          * @see setPadding
          */
-        int getPadding() const { return mPadding; }
+        int getPadding() const
+        { return mPadding; }
 
-        void setPadding(int padding) { mPadding = padding; }
+        void setPadding(int padding)
+        { mPadding = padding; }
 
         /**
          * Sets the name of the popup. This is only useful for debug purposes.

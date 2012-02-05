@@ -137,24 +137,24 @@ class ChatTab : public Tab
         std::list<std::string> &getRows()
         { return mTextOutput->getRows(); }
 
-        bool hasRows()
+        bool hasRows() const
         { return mTextOutput->hasRows(); }
 
         void loadFromLogFile(std::string name);
 
-        bool getAllowHighlight()
+        bool getAllowHighlight() const
         { return mAllowHightlight; }
 
         void setAllowHighlight(bool n)
         { mAllowHightlight = n; }
 
-        bool getRemoveNames()
+        bool getRemoveNames() const
         { return mRemoveNames; }
 
         void setRemoveNames(bool n)
         { mRemoveNames = n; }
 
-        bool getNoAway()
+        bool getNoAway() const
         { return mNoAway; }
 
         void setNoAway(bool n)

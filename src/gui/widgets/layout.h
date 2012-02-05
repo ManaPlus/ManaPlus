@@ -266,10 +266,10 @@ class LayoutCell
         void setType(int t)
         { mType = t; }
 
-        int getWidth()
+        int getWidth() const
         { return mExtent[0]; }
 
-        int getHeight()
+        int getHeight() const
         { return mExtent[1]; }
 
         void setWidth(int w)

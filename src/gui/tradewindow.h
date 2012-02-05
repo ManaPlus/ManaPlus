@@ -128,7 +128,7 @@ class TradeWindow : public Window, gcn::ActionListener, gcn::SelectionListener
 
         void initTrade(std::string nick);
 
-        std::string getAutoTradeNick()
+        std::string getAutoTradeNick() const
         { return mAutoAddToNick; }
 
         bool checkItem(Item *item);

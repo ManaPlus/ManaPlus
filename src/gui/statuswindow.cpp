@@ -69,7 +69,7 @@ class AttrDisplay : public Container
 
         virtual std::string update();
 
-        virtual Type getType()
+        virtual Type getType() const
         { return UNKNOWN; }
 
         std::string getValue()
@@ -96,7 +96,7 @@ class DerDisplay : public AttrDisplay
     public:
         DerDisplay(int id, const std::string &name);
 
-        virtual Type getType()
+        virtual Type getType() const
         { return DERIVED; }
 };
 
@@ -107,7 +107,7 @@ class ChangeDisplay : public AttrDisplay, gcn::ActionListener
 
         std::string update();
 
-        virtual Type getType()
+        virtual Type getType() const
         { return CHANGEABLE; }
 
         void setPointsNeeded(int needed);
@@ -424,12 +424,12 @@ void StatusWindow::addAttribute(int id, const std::string &name,
     if (modifiable)
     {
         disp = new ChangeDisplay(id, name);
-        mAttrCont->add(disp);
+        mAttrCont->add1(disp);
     }
     else
     {
         disp = new DerDisplay(id, name);
-        mDAttrCont->add(disp);
+        mDAttrCont->add1(disp);
     }
     mAttrs[id] = disp;
 }
@@ -522,9 +522,14 @@ void StatusWindow::updateProgressBar(ProgressBar *bar, int value, int max,
                          / static_cast<float>(max);
 
         if (percent)
-            bar->setText(strprintf("%2.5f%%", static_cast<double>(100 * progress)));
+        {
+            bar->setText(strprintf("%2.5f%%",
+                static_cast<double>(100 * progress)));
+        }
         else
+        {
             bar->setText(toString(value) + "/" + toString(max));
+        }
 
         bar->setProgress(progress);
     }

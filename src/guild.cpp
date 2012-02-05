@@ -166,6 +166,8 @@ void Guild::removeMember(GuildMember *member)
                                itr_end = mMembers.end();
     while (itr != itr_end)
     {
+        if (!*itr)
+            continue;
         if ((*itr)->mId == member->mId &&
             (*itr)->mCharId == member->mCharId &&
             (*itr)->getName() == member->getName())
@@ -175,7 +177,7 @@ void Guild::removeMember(GuildMember *member)
             delete m;
             return;
         }
-        ++itr;
+        ++ itr;
     }
 }
 
@@ -255,6 +257,9 @@ void Guild::setRights(short rights)
 
 bool Guild::isMember(GuildMember *member) const
 {
+    if (!member)
+        return false;
+
     if (member->mGuild && member->mGuild != this)
         return false;
 

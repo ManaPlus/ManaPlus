@@ -48,10 +48,14 @@ Desktop::Desktop() :
     std::string appName = branding.getValue("appName", std::string(""));
 
     if (appName.empty())
+    {
         mVersionLabel = new Label(FULL_VERSION);
+    }
     else
-        mVersionLabel = new Label(strprintf("%s (Mana %s)", appName.c_str(),
-                                            FULL_VERSION));
+    {
+        mVersionLabel = new Label(strprintf("%s (%s)", FULL_VERSION,
+            appName.c_str()));
+    }
 
     mVersionLabel->setBackgroundColor(
         Theme::getThemeColor(Theme::BACKGROUND, 128));

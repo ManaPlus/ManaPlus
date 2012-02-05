@@ -70,12 +70,14 @@ namespace ColorDB
 
     std::string &getHairColor(int id);
 
+    std::string &getHairColorName(int id);
+
     int getHairSize();
 
     std::map <int, ItemColor> *getColorsList(std::string name);
 
     // Color DB
-    typedef std::map<int, std::string> Colors;
+    typedef std::map<int, ItemColor> Colors;
     typedef Colors::iterator ColorIterator;
     typedef std::map <std::string, std::map <int, ItemColor> > ColorLists;
     typedef ColorLists::iterator ColorListsIterator;

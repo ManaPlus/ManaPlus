@@ -38,6 +38,7 @@
 
 class Button;
 class Desktop;
+class Game;
 class LoginData;
 class Window;
 class QuitDialog;
@@ -257,6 +258,9 @@ public:
     static std::string getServerName()
     { return instance()->mServerName; }
 
+    static void resize(int width, int height, bool always = false)
+    { instance()->resizeVideo(width, height, always); }
+
     static void setGuiAlpha(float n);
 
     static float getGuiAlpha();
@@ -280,6 +284,8 @@ public:
     void initPacketLimiter();
 
     void writePacketLimits(std::string packetLimitsName);
+
+    void resizeVideo(int width, int height, bool always);
 
     static bool limitPackets(int type);
 
@@ -334,6 +340,7 @@ private:
 
     ServerInfo mCurrentServer;
 
+    Game *mGame;
     Window *mCurrentDialog;
     QuitDialog *mQuitDialog;
     Desktop *mDesktop;

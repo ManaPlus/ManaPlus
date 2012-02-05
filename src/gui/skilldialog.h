@@ -77,7 +77,7 @@ class SkillDialog : public Window, public gcn::ActionListener
 
         SkillInfo* getSkill(int id);
 
-        bool hasSkills()
+        bool hasSkills() const
         { return !mSkills.empty(); }
 
         void widgetResized(const gcn::Event &event);

@@ -154,7 +154,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
         /**
          * Returns true if any instances exist.
          */
-        static bool isActive() { return !instances.empty(); }
+        static bool isActive()
+        { return !instances.empty(); }
 
         /**
          * Returns the first active instance. Useful for pushing user
@@ -171,6 +172,10 @@ class NpcDialog : public Window, public gcn::ActionListener,
          * Closes all instances and destroy also net handler dialogs.
          */
         static void destroyAll();
+
+        void saveCamera();
+
+        void restoreCamera();
 
     private:
         typedef std::list<NpcDialog*> DialogList;
@@ -230,6 +235,9 @@ class NpcDialog : public Window, public gcn::ActionListener,
         NpcInputState mInputState;
         NpcActionState mActionState;
         int mLastNextTime;
+        int mCameraMode;
+        int mCameraX;
+        int mCameraY;
 };
 
 #endif // NPCDIALOG_H

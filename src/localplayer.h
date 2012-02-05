@@ -139,7 +139,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void setGMLevel(int level);
 
-        int getGMLevel()
+        int getGMLevel() const
         { return mGMLevel; }
 
         void stopAttack();
@@ -217,7 +217,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool isPathSetByMouse() const
         { return mPathSetByMouse; }
 
-        int getInvertDirection()
+        int getInvertDirection() const
         { return mInvertDirection; }
 
         void setInvertDirection(int n)
@@ -225,16 +225,16 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void invertDirection();
 
-        int getAttackWeaponType()
+        int getAttackWeaponType() const
         { return mAttackWeaponType; }
 
-        int getAttackType()
+        int getAttackType() const
         { return mAttackType; }
 
-        int getFollowMode()
+        int getFollowMode() const
         { return mFollowMode; }
 
-        int getImitationMode()
+        int getImitationMode() const
         { return mImitationMode; }
 
         void changeAttackWeaponType();
@@ -247,41 +247,41 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void changePickUpType();
 
-        int getCrazyMoveType()
-        { return mCrazyMoveType ; }
+        int getCrazyMoveType() const
+        { return mCrazyMoveType; }
 
-        int getPickUpType()
-        { return mPickUpType ; }
+        int getPickUpType() const
+        { return mPickUpType; }
 
-        int getQuickDropCounter()
-        { return mQuickDropCounter ; }
+        int getQuickDropCounter() const
+        { return mQuickDropCounter; }
 
         void changeQuickDropCounter();
 
-        int getMoveState()
-        { return mMoveState ; }
+        int getMoveState() const
+        { return mMoveState; }
 
         void setMoveState(int n)
-        { mMoveState = n ; }
+        { mMoveState = n; }
 
         void switchMagicAttack();
 
         void switchPvpAttack();
 
-        int getMagicAttackType()
-        { return mMagicAttackType ; }
+        int getMagicAttackType() const
+        { return mMagicAttackType; }
 
-        int getPvpAttackType()
-        { return mPvpAttackType ; }
+        int getPvpAttackType() const
+        { return mPvpAttackType; }
 
-        int getMoveToTargetType()
-        { return mMoveToTargetType ; }
+        int getMoveToTargetType() const
+        { return mMoveToTargetType; }
 
-        int getDisableGameModifiers()
-        { return mDisableGameModifiers ; }
+        int getDisableGameModifiers() const
+        { return mDisableGameModifiers; }
 
-        int getPingTime()
-        { return mPingTime ; }
+        int getPingTime() const
+        { return mPingTime; }
 
         void tryPingRequest();
 
@@ -329,16 +329,16 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void setPseudoAway(const std::string &message);
 
-        bool getAway()
+        bool getAway() const
         { return mAwayMode; }
 
-        bool getPseudoAway()
+        bool getPseudoAway() const
         { return mPseudoAwayMode; }
 
         void setHalfAway(bool n)
         { mInactive = n; }
 
-        bool getHalfAway()
+        bool getHalfAway() const
         { return mInactive; }
 
         void afkRespond(ChatTab *tab, const std::string &nick);
@@ -369,7 +369,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void setRealPos(int x, int y);
 
-        bool isServerBuggy()
+        bool isServerBuggy() const
         { return mIsServerBuggy; }
 
         void fixPos(int maxDist = 1);
@@ -413,7 +413,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void respawn();
 
-        FloorItem *getPickUpTarget()
+        FloorItem *getPickUpTarget() const
         { return mPickUpTarget; }
 
         void unSetPickUpTarget()
@@ -476,6 +476,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         void stopAdvert();
 
         bool checAttackPermissions(Being *target);
+
+        void updateStatus();
 
         std::string getInvertDirectionString();
 

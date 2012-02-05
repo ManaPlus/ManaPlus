@@ -22,6 +22,8 @@
 
 #include "gui/widgets/windowcontainer.h"
 
+#include "gui/widgets/window.h"
+
 #include "utils/dtor.h"
 
 #include "debug.h"
@@ -40,4 +42,14 @@ void WindowContainer::scheduleDelete(gcn::Widget *widget)
 {
     if (widget)
         mDeathList.push_back(widget);
+}
+
+void WindowContainer::adjustAfterResize(int oldScreenWidth,
+                                        int oldScreenHeight)
+{
+    for (WidgetListIterator i = mWidgets.begin(); i != mWidgets.end(); ++i)
+    {
+        if (Window *window = dynamic_cast<Window*>(*i))
+            window->adjustPositionAfterResize(oldScreenWidth, oldScreenHeight);
+    }
 }

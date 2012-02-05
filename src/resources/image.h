@@ -66,28 +66,25 @@ class Image : public Resource
         virtual ~Image();
 
         /**
-         * Loads an image from a buffer in memory.
+         * Loads an image from an SDL_RWops structure.
          *
-         * @param buffer     The memory buffer containing the image data.
-         * @param bufferSize The size of the memory buffer in bytes.
+         * @param rw         The SDL_RWops to load the image from.
          *
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(void *buffer, unsigned bufferSize);
+        static Resource *load(SDL_RWops *rw);
 
         /**
-         * Loads an image from a buffer in memory and recolors it.
+         * Loads an image from an SDL_RWops structure and recolors it.
          *
-         * @param buffer     The memory buffer containing the image data.
-         * @param bufferSize The size of the memory buffer in bytes.
+         * @param rw         The SDL_RWops to load the image from.
          * @param dye        The dye used to recolor the image.
          *
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        static Resource *load(void *buffer, unsigned bufferSize,
-                              Dye const &dye);
+        static Resource *load(SDL_RWops *rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.
@@ -106,7 +103,7 @@ class Image : public Resource
         /**
          * Tells is the image is loaded
          */
-        bool isLoaded()
+        bool isLoaded() const
         { return mLoaded; }
 
         /**
@@ -220,16 +217,16 @@ class Image : public Resource
         static int mTextureType;
 #endif
 
-        bool isHasAlphaChannel()
+        bool isHasAlphaChannel() const
         { return mHasAlphaChannel; }
 
-        bool isAlphaVisible()
+        bool isAlphaVisible() const
         { return mIsAlphaVisible; }
 
         void setAlphaVisible(bool b)
         { mIsAlphaVisible = b; }
 
-        bool isAlphaCalculated()
+        bool isAlphaCalculated() const
         { return mIsAlphaCalculated; }
 
         void setAlphaCalculated(bool b)

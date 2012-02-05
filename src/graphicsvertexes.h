@@ -153,7 +153,7 @@ class GraphicsVertexes
         SDLGraphicsVertexes sdl[5];
 
 #ifdef USE_OPENGL
-        OpenGL1GraphicsVertexes ogl1[5];
+//        OpenGL1GraphicsVertexes ogl1[5];
 
         OpenGLGraphicsVertexes ogl[5];
 #endif

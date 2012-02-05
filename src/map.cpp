@@ -156,7 +156,7 @@ void MapLayer::optionChanged(const std::string &value)
 
 void MapLayer::setTile(int x, int y, Image *img)
 {
-    setTile(x + y * mWidth, img);
+    mTiles[x + y * mWidth] = img;
 }
 
 void MapLayer::draw(Graphics *graphics, int startX, int startY,
@@ -1383,9 +1383,6 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
     if (startX >= mWidth || startY >= mHeight)
         return path;
 
-    // Declare open list, a list with open tiles sorted on F cost
-    std::priority_queue<Location> openList;
-
     // Return when destination not walkable
     if (!getWalk(destX, destY, walkmask))
         return path;
@@ -1396,6 +1393,9 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
         return path;
 
     startTile->Gcost = 0;
+
+    // Declare open list, a list with open tiles sorted on F cost
+    std::priority_queue<Location> openList;
 
     // Add the start point to the open list
     openList.push(Location(startX, startY, startTile));
@@ -1796,6 +1796,9 @@ MapItem *Map::findPortalXY(int x, int y)
     for (it = mMapPortals.begin(), it_end = mMapPortals.end();
          it != it_end; ++it)
     {
+        if (!*it)
+            continue;
+
         MapItem *item = *it;
         if (item->mX == x && item->mY == y)
             return item;
