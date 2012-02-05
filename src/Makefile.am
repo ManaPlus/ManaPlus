@@ -564,8 +564,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      logger.h \
 	      main.cpp \
 	      main.h \
-	      map.cpp\
+	      map.cpp \
 	      map.h \
+	      maplayer.cpp \
+	      maplayer.h \
 	      opengl1graphics.cpp\
 	      opengl1graphics.h \
 	      openglgraphics.cpp\

@@ -559,6 +559,8 @@ SET(SRCS
     main.h
     map.cpp
     map.h
+    maplayer.cpp
+    maplayer.h
     opengl1graphics.cpp
     opengl1graphics.h
     openglgraphics.cpp

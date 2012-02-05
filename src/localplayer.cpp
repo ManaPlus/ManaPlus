@@ -33,6 +33,7 @@
 #include "keyboardconfig.h"
 #include "logger.h"
 #include "map.h"
+#include "maplayer.h"
 #include "party.h"
 #include "particle.h"
 #include "playerinfo.h"

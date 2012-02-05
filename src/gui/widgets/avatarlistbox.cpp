@@ -26,6 +26,7 @@
 #include "graphics.h"
 #include "guild.h"
 #include "localplayer.h"
+#include "maplayer.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"

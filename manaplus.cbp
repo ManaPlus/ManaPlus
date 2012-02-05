@@ -428,6 +428,8 @@
 		</Unit>
 		<Unit filename="src\map.cpp" />
 		<Unit filename="src\map.h" />
+		<Unit filename="src\maplayer.cpp" />
+		<Unit filename="src\maplayer.h" />
 		<Unit filename="src\mumblemanager.cpp" />
 		<Unit filename="src\mumblemanager.h" />
 		<Unit filename="src\net\adminhandler.h" />

@@ -28,6 +28,7 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "map.h"
+#include "maplayer.h"
 #include "party.h"
 #include "playerrelations.h"
 #include "gui/whoisonline.h"

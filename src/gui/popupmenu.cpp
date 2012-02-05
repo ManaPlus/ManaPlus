@@ -35,6 +35,7 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "map.h"
+#include "maplayer.h"
 #include "party.h"
 #include "playerinfo.h"
 #include "playerrelations.h"

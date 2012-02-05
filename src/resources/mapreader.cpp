@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "logger.h"
 #include "map.h"
+#include "maplayer.h"
 #include "tileset.h"
 
 #include "resources/animation.h"

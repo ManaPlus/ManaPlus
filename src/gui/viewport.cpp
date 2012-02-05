@@ -31,6 +31,7 @@
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "map.h"
+#include "maplayer.h"
 #include "textmanager.h"
 
 #include "gui/beingpopup.h"
