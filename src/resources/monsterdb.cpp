@@ -80,7 +80,7 @@ void MonsterDB::load()
             | Map::BLOCKMASK_CHARACTER | Map::BLOCKMASK_MONSTER);
         currentInfo->setBlockType(Map::BLOCKTYPE_MONSTER);
 
-        currentInfo->setName(XML::getProperty(
+        currentInfo->setName(XML::langProperty(
             monsterNode, "name", _("unnamed")));
 
         currentInfo->setTargetCursorSize(XML::getProperty(monsterNode,

@@ -1714,20 +1714,28 @@ void LocalPlayer::processEvent(Mana::Channels channel,
                     if (!mMessages.empty())
                     {
                         MessagePair pair = mMessages.back();
-                        if (pair.first.find(" xp") == pair.first.size() - 3)
+                        // TRANSLATORS: this is normal experience
+                        if (pair.first.find(strprintf(" %s",
+                            _("xp"))) == pair.first.size() - 3)
                         {
                             mMessages.pop_back();
-                            pair.first += ", " + toString(change) + " job";
+                            // TRANSLATORS: this is job experience
+                            pair.first += strprintf (", %d %s",
+                                change, _("job"));
                             mMessages.push_back(pair);
                         }
                         else
                         {
-                            addMessageToQueue(toString(change) + " job");
+                            // TRANSLATORS: this is job experience
+                            addMessageToQueue(strprintf("%d %s",
+                                change, _("job")));
                         }
                     }
                     else
                     {
-                        addMessageToQueue(toString(change) + " job");
+                        // TRANSLATORS: this is job experience
+                        addMessageToQueue(strprintf(
+                            "%d %s", change, _("job")));
                     }
                 }
             }
