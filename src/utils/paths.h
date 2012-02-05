@@ -27,4 +27,6 @@ std::string getRealPath(const std::string &str);
 
 bool isRealPath(const std::string &str);
 
+bool checkPath(std::string path);
+
 #endif // UTILS_PATHS_H

@@ -42,6 +42,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
+#include "utils/paths.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
 

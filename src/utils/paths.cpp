@@ -55,3 +55,13 @@ bool isRealPath(const std::string &str)
     std::string path = getRealPath(str);
     return str == path;
 }
+
+bool checkPath(std::string path)
+{
+    if (path.empty())
+        return true;
+    return path.find("../") == std::string::npos
+        && path.find("..\\") == std::string::npos
+        && path.find("/..") == std::string::npos
+        && path.find("\\..") == std::string::npos;
+}

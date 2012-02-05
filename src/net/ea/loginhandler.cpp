@@ -28,6 +28,7 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+#include "utils/paths.h"
 
 #include "debug.h"
 
