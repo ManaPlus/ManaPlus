@@ -798,6 +798,8 @@ void Client::gameClear()
     //delete logger;
     //logger = nullptr;
 
+    TranslationManager::close();
+
     mInstance = nullptr;
 }
 

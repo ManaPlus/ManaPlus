@@ -33,6 +33,8 @@ class TranslationManager
 
         static void init();
 
+        static void close();
+
         static void loadCurrentLang();
 };
 

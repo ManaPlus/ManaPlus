@@ -46,6 +46,12 @@ void TranslationManager::loadCurrentLang()
     translator = loadLang(getLang());
 }
 
+void TranslationManager::close()
+{
+    delete translator;
+    translator = nullptr;
+}
+
 PoDict *TranslationManager::loadLang(LangVect lang)
 {
     std::string name = "";
