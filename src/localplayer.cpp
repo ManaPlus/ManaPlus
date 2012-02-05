@@ -2129,7 +2129,7 @@ void LocalPlayer::switchPvpAttack()
 static const char *pvpAttackStrings[] =
 {
     N_("(a) attack all players"),
-    N_("(f) attack not friends"),
+    N_("(f) attack all except friends"),
     N_("(b) attack bad relations"),
     N_("(d) dont attack players"),
     N_("(?) pvp attack")
