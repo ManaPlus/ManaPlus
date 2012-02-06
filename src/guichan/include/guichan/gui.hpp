@@ -7,6 +7,7 @@
  * \______\/ \______\/ \_\/ \_____\/ \_\/ \_\/ \_\/ \_\/ \_\/ \_\/
  *
  * Copyright (c) 2004 - 2008 Olof Naessén and Per Larsson
+ * Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *
  * Per Larsson a.k.a finalman
