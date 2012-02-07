@@ -1,0 +1,5 @@
+#!/bin/bash
+
+find ../src -type f -name "*.cpp" -exec ../../vera++/vera++ {} \; 2>makecheck_err.txt
+find ../src -type f -name "*.hpp" -exec ../../vera++/vera++ {} \; 2>>makecheck_err.txt
+find ../src -type f -name "*.h" -exec ../../vera++/vera++ {} \; 2>>makecheck_err.txt
