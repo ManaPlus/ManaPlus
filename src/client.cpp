@@ -988,10 +988,10 @@ int Client::gameExec()
 
         if (mState != mOldState)
         {
-            Mana::Event evt(EVENT_STATECHANGE);
+            Event evt(EVENT_STATECHANGE);
             evt.setInt("oldState", mOldState);
             evt.setInt("newState", mState);
-            Mana::Event::trigger(CHANNEL_CLIENT, evt);
+            Event::trigger(CHANNEL_CLIENT, evt);
 
             if (mOldState == STATE_GAME)
             {
@@ -1191,10 +1191,10 @@ int Client::gameExec()
                     if (!BeingInfo::unknown)
                         BeingInfo::unknown = new BeingInfo;
 
-                    Mana::Event evt2(EVENT_STATECHANGE);
+                    Event evt2(EVENT_STATECHANGE);
                     evt2.setInt("newState", STATE_LOAD_DATA);
                     evt2.setInt("oldState", mOldState);
-                    Mana::Event::trigger(CHANNEL_CLIENT, evt2);
+                    Event::trigger(CHANNEL_CLIENT, evt2);
 
                     // Load XML databases
                     CharDB::load();

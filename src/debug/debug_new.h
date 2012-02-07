@@ -61,7 +61,7 @@
 #endif
 
 /**
- * @def _DEBUG_NEW_REDEFINE_NEW
+ * @def M_DEBUG_NEW_REDEFINE_NEW
  *
  * Macro to indicate whether redefinition of \c new is wanted.  If one
  * wants to define one's own <code>operator new</code>, to call
@@ -84,8 +84,8 @@
  * # endif
  * @endcode
  */
-#ifndef _DEBUG_NEW_REDEFINE_NEW
-#define _DEBUG_NEW_REDEFINE_NEW 1
+#ifndef M_DEBUG_NEW_REDEFINE_NEW
+#define M_DEBUG_NEW_REDEFINE_NEW 1
 #endif
 
 /* Prototypes */
@@ -114,16 +114,16 @@ extern const char* new_progname; // default to NULL; should be assigned argv[0]
  * @def DEBUG_NEW
  *
  * Macro to catch file/line information on allocation.  If
- * #_DEBUG_NEW_REDEFINE_NEW is \c 0, one can use this macro directly;
+ * #M_DEBUG_NEW_REDEFINE_NEW is \c 0, one can use this macro directly;
  * otherwise \c new will be defined to it, and one must use \c new
  * instead.
  */
 #define DEBUG_NEW __debug_new_recorder(__FILE__, __LINE__) ->* new
 
-# if _DEBUG_NEW_REDEFINE_NEW
+# if M_DEBUG_NEW_REDEFINE_NEW
 #   define new DEBUG_NEW
 # endif
-# ifdef _DEBUG_NEW_EMULATE_MALLOC
+# ifdef M_DEBUG_NEW_EMULATE_MALLOC
 #   include <stdlib.h>
 #   ifdef new
 #     define malloc(s) ((void*)(new char[s]))

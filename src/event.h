@@ -26,10 +26,6 @@
 #include <set>
 #include <string>
 
-
-namespace Mana
-{
-
 enum Channels
 {
     CHANNEL_ACTORSPRITE = 0,
@@ -115,9 +111,9 @@ typedef std::set<Listener *> ListenerSet;
 typedef std::map<Channels, ListenerSet > ListenMap;
 
 #define SERVER_NOTICE(message) { \
-Mana::Event event(Mana::EVENT_SERVERNOTICE); \
+Event event(EVENT_SERVERNOTICE); \
 event.setString("message", message); \
-Mana::Event::trigger(Mana::CHANNEL_NOTICES, event); }
+Event::trigger(CHANNEL_NOTICES, event); }
 
 class Event
 {
@@ -171,7 +167,5 @@ class Event
 
         VariableMap mData;
 };
-
-} // namespace Mana
 
 #endif

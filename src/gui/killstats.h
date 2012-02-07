@@ -33,7 +33,7 @@
 class Label;
 class Button;
 
-class KillStats : public Window, gcn::ActionListener, public Mana::Listener
+class KillStats : public Window, gcn::ActionListener, public Listener
 {
     public:
         /**
@@ -78,8 +78,8 @@ class KillStats : public Window, gcn::ActionListener, public Mana::Listener
 
         void addLog(std::string str);
 
-        void processEvent(Mana::Channels channel A_UNUSED,
-                          const Mana::Event &event);
+        void processEvent(Channels channel A_UNUSED,
+                          const Event &event);
 
     private:
         void validateJacko();

@@ -113,7 +113,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         setWindowName("Inventory");
     }
 
-    listen(Mana::CHANNEL_ATTRIBUTES);
+    listen(CHANNEL_ATTRIBUTES);
 
     if (setupWindow)
         setupWindow->registerWindowForReset(this);
@@ -585,10 +585,10 @@ void InventoryWindow::close()
     }
 }
 
-void InventoryWindow::processEvent(Mana::Channels channel A_UNUSED,
-                                   const Mana::Event &event)
+void InventoryWindow::processEvent(Channels channel A_UNUSED,
+                                   const Event &event)
 {
-    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
         if (id == TOTAL_WEIGHT || id == MAX_WEIGHT)

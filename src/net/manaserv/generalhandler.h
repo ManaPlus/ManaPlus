@@ -33,7 +33,7 @@
 namespace ManaServ
 {
 
-class GeneralHandler : public Net::GeneralHandler, public Mana::Listener
+class GeneralHandler : public Net::GeneralHandler, public Listener
 {
     public:
         GeneralHandler();
@@ -50,7 +50,7 @@ class GeneralHandler : public Net::GeneralHandler, public Mana::Listener
 
         void clearHandlers();
 
-        void processEvent(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Channels channel, const Event &event);
 
     protected:
         MessageHandlerPtr mBeingHandler;

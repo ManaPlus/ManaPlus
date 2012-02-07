@@ -62,49 +62,49 @@
 #endif
 
 /**
- * @def _DEBUG_NEW_ALIGNMENT
+ * @def M_DEBUG_NEW_ALIGNMENT
  *
  * The alignment requirement of allocated memory blocks.  It must be a
  * power of two.
  */
-#ifndef _DEBUG_NEW_ALIGNMENT
-#define _DEBUG_NEW_ALIGNMENT 16
+#ifndef M_DEBUG_NEW_ALIGNMENT
+#define M_DEBUG_NEW_ALIGNMENT 16
 #endif
 
 /**
- * @def _DEBUG_NEW_CALLER_ADDRESS
+ * @def M_DEBUG_NEW_CALLER_ADDRESS
  *
  * The expression to return the caller address.  #print_position will
  * later on use this address to print the position information of memory
  * operation points.
  */
-#ifndef _DEBUG_NEW_CALLER_ADDRESS
+#ifndef M_DEBUG_NEW_CALLER_ADDRESS
 #ifdef __GNUC__
-#define _DEBUG_NEW_CALLER_ADDRESS __builtin_return_address(0)
+#define M_DEBUG_NEW_CALLER_ADDRESS __builtin_return_address(0)
 #else
-#define _DEBUG_NEW_CALLER_ADDRESS NULL
+#define M_DEBUG_NEW_CALLER_ADDRESS NULL
 #endif
 #endif
 
 /**
- * @def _DEBUG_NEW_ERROR_ACTION
+ * @def M_DEBUG_NEW_ERROR_ACTION
  *
  * The action to take when an error occurs.  The default behaviour is to
- * call \e abort, unless \c _DEBUG_NEW_ERROR_CRASH is defined, in which
+ * call \e abort, unless \c M_DEBUG_NEW_ERROR_CRASH is defined, in which
  * case a segmentation fault will be triggered instead (which can be
  * useful on platforms like Windows that do not generate a core dump
  * when \e abort is called).
  */
-#ifndef _DEBUG_NEW_ERROR_ACTION
-#ifndef _DEBUG_NEW_ERROR_CRASH
-#define _DEBUG_NEW_ERROR_ACTION abort()
+#ifndef M_DEBUG_NEW_ERROR_ACTION
+#ifndef M_DEBUG_NEW_ERROR_CRASH
+#define M_DEBUG_NEW_ERROR_ACTION abort()
 #else
-#define _DEBUG_NEW_ERROR_ACTION do { *((char*)0) = 0; abort(); } while (0)
+#define M_DEBUG_NEW_ERROR_ACTION do { *((char*)0) = 0; abort(); } while (0)
 #endif
 #endif
 
 /**
- * @def _DEBUG_NEW_FILENAME_LEN
+ * @def M_DEBUG_NEW_FILENAME_LEN
  *
  * The length of file name stored if greater than zero.  If it is zero,
  * only a const char pointer will be stored.  Currently the default
@@ -114,70 +114,70 @@
  * name in a shared library after a \c SIGINT).  The current default
  * value makes the size of new_ptr_list_t 64 on 32-bit platforms.
  */
-#ifndef _DEBUG_NEW_FILENAME_LEN
-#define _DEBUG_NEW_FILENAME_LEN 100
+#ifndef M_DEBUG_NEW_FILENAME_LEN
+#define M_DEBUG_NEW_FILENAME_LEN 100
 #endif
 
 /**
- * @def _DEBUG_NEW_PROGNAME
+ * @def M_DEBUG_NEW_PROGNAME
  *
  * The program (executable) name to be set at compile time.  It is
  * better to assign the full program path to #new_progname in \e main
  * (at run time) than to use this (compile-time) macro, but this macro
  * serves well as a quick hack.  Note also that double quotation marks
  * need to be used around the program name, i.e., one should specify a
- * command-line option like <code>-D_DEBUG_NEW_PROGNAME=\"a.out\"</code>
- * in \e bash, or <code>-D_DEBUG_NEW_PROGNAME=\"a.exe\"</code> in the
+ * command-line option like <code>-DM_DEBUG_NEW_PROGNAME=\"a.out\"</code>
+ * in \e bash, or <code>-DM_DEBUG_NEW_PROGNAME=\"a.exe\"</code> in the
  * Windows command prompt.
  */
-#ifndef _DEBUG_NEW_PROGNAME
-#define _DEBUG_NEW_PROGNAME NULL
+#ifndef M_DEBUG_NEW_PROGNAME
+#define M_DEBUG_NEW_PROGNAME NULL
 #endif
 
 /**
- * @def _DEBUG_NEW_STD_OPER_NEW
+ * @def M_DEBUG_NEW_STD_OPER_NEW
  *
  * Macro to indicate whether the standard-conformant behaviour of
  * <code>operator new</code> is wanted.  It is on by default now, but
  * the user may set it to \c 0 to revert to the old behaviour.
  */
-#ifndef _DEBUG_NEW_STD_OPER_NEW
-#define _DEBUG_NEW_STD_OPER_NEW 1
+#ifndef M_DEBUG_NEW_STD_OPER_NEW
+#define M_DEBUG_NEW_STD_OPER_NEW 1
 #endif
 
 /**
- * @def _DEBUG_NEW_TAILCHECK
+ * @def M_DEBUG_NEW_TAILCHECK
  *
  * Macro to indicate whether a writing-past-end check will be performed.
  * Define it to a positive integer as the number of padding bytes at the
  * end of a memory block for checking.
  */
-#ifndef _DEBUG_NEW_TAILCHECK
-#define _DEBUG_NEW_TAILCHECK 0
+#ifndef M_DEBUG_NEW_TAILCHECK
+#define M_DEBUG_NEW_TAILCHECK 0
 #endif
 
 /**
- * @def _DEBUG_NEW_TAILCHECK_CHAR
+ * @def M_DEBUG_NEW_TAILCHECK_CHAR
  *
  * Value of the padding bytes at the end of a memory block.
  */
-#ifndef _DEBUG_NEW_TAILCHECK_CHAR
-#define _DEBUG_NEW_TAILCHECK_CHAR 0xCC
+#ifndef M_DEBUG_NEW_TAILCHECK_CHAR
+#define M_DEBUG_NEW_TAILCHECK_CHAR 0xCC
 #endif
 
 /**
- * @def _DEBUG_NEW_USE_ADDR2LINE
+ * @def M_DEBUG_NEW_USE_ADDR2LINE
  *
  * Whether to use \e addr2line to convert a caller address to file/line
  * information.  Defining it to a non-zero value will enable the
  * conversion (automatically done if GCC is detected).  Defining it to
  * zero will disable the conversion.
  */
-#ifndef _DEBUG_NEW_USE_ADDR2LINE
+#ifndef M_DEBUG_NEW_USE_ADDR2LINE
 #ifdef __GNUC__
-#define _DEBUG_NEW_USE_ADDR2LINE 1
+#define M_DEBUG_NEW_USE_ADDR2LINE 1
 #else
-#define _DEBUG_NEW_USE_ADDR2LINE 0
+#define M_DEBUG_NEW_USE_ADDR2LINE 0
 #endif
 #endif
 
@@ -187,20 +187,20 @@
 #pragma init_seg(lib)
 #endif
 
-#undef  _DEBUG_NEW_EMULATE_MALLOC
-#undef  _DEBUG_NEW_REDEFINE_NEW
+#undef  M_DEBUG_NEW_EMULATE_MALLOC
+#undef  M_DEBUG_NEW_REDEFINE_NEW
 /**
  * Macro to indicate whether redefinition of \c new is wanted.  Here it
  * is defined to \c 0 to disable the redefinition of \c new.
  */
-#define _DEBUG_NEW_REDEFINE_NEW 0
+#define M_DEBUG_NEW_REDEFINE_NEW 0
 #include "debug_new.h"
 
 /**
  * Gets the aligned value of memory block size.
  */
 #define align(s) \
-        (((s) + _DEBUG_NEW_ALIGNMENT - 1) & ~(_DEBUG_NEW_ALIGNMENT - 1))
+        (((s) + M_DEBUG_NEW_ALIGNMENT - 1) & ~(M_DEBUG_NEW_ALIGNMENT - 1))
 
 /**
  * Structure to store the position information where \c new occurs.
@@ -212,10 +212,10 @@ struct new_ptr_list_t
     size_t              size;
     union
     {
-#if _DEBUG_NEW_FILENAME_LEN == 0
+#if M_DEBUG_NEW_FILENAME_LEN == 0
     const char*         file;
 #else
-    char                file[_DEBUG_NEW_FILENAME_LEN];
+    char                file[M_DEBUG_NEW_FILENAME_LEN];
 #endif
     void*               addr;
     };
@@ -244,7 +244,7 @@ static new_ptr_list_t new_ptr_list =
     &new_ptr_list,
     0,
     {
-#if _DEBUG_NEW_FILENAME_LEN == 0
+#if M_DEBUG_NEW_FILENAME_LEN == 0
         NULL
 #else
         ""
@@ -291,15 +291,15 @@ FILE* new_output_fp = stderr;
 
 /**
  * Pointer to the program name.  Its initial value is the macro
- * #_DEBUG_NEW_PROGNAME.  You should try to assign the program path to
+ * #M_DEBUG_NEW_PROGNAME.  You should try to assign the program path to
  * it early in your application.  Assigning <code>argv[0]</code> to it
  * in \e main is one way.  If you use \e bash or \e ksh (or similar),
  * the following statement is probably what you want:
  * `<code>new_progname = getenv("_");</code>'.
  */
-const char* new_progname = _DEBUG_NEW_PROGNAME;
+const char* new_progname = M_DEBUG_NEW_PROGNAME;
 
-#if _DEBUG_NEW_USE_ADDR2LINE
+#if M_DEBUG_NEW_USE_ADDR2LINE
 /**
  * Tries printing the position information from an instruction address.
  * This is the version that uses \e addr2line.
@@ -397,11 +397,11 @@ static bool print_position_from_addr(const void*)
 {
     return false;
 }
-#endif // _DEBUG_NEW_USE_ADDR2LINE
+#endif // M_DEBUG_NEW_USE_ADDR2LINE
 
 /**
  * Prints the position information of a memory operation point.  When \c
- * _DEBUG_NEW_USE_ADDR2LINE is defined to a non-zero value, this
+ * M_DEBUG_NEW_USE_ADDR2LINE is defined to a non-zero value, this
  * function will try to convert a given caller address to file/line
  * information with \e addr2line.
  *
@@ -427,7 +427,7 @@ static void print_position(const void* ptr, int line)
     }
 }
 
-#if _DEBUG_NEW_TAILCHECK
+#if M_DEBUG_NEW_TAILCHECK
 /**
  * Checks whether the padding bytes at the end of a memory block is
  * tampered with.
@@ -440,9 +440,9 @@ static bool check_tail(new_ptr_list_t* ptr)
 {
     const unsigned char* const pointer = (unsigned char*)ptr +
         ALIGNED_LIST_ITEM_SIZE + ptr->size;
-    for (int i = 0; i < _DEBUG_NEW_TAILCHECK; ++i)
+    for (int i = 0; i < M_DEBUG_NEW_TAILCHECK; ++i)
     {
-        if (pointer[i] != _DEBUG_NEW_TAILCHECK_CHAR)
+        if (pointer[i] != M_DEBUG_NEW_TAILCHECK_CHAR)
             return false;
     }
     return true;
@@ -462,14 +462,14 @@ static bool check_tail(new_ptr_list_t* ptr)
 static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
 {
     assert(line >= 0);
-    STATIC_ASSERT((_DEBUG_NEW_ALIGNMENT & (_DEBUG_NEW_ALIGNMENT - 1)) == 0,
+    STATIC_ASSERT((M_DEBUG_NEW_ALIGNMENT & (M_DEBUG_NEW_ALIGNMENT - 1)) == 0,
                   Alignment_must_be_power_of_two);
-    STATIC_ASSERT(_DEBUG_NEW_TAILCHECK >= 0, Invalid_tail_check_length);
-    size_t s = size + ALIGNED_LIST_ITEM_SIZE + _DEBUG_NEW_TAILCHECK;
+    STATIC_ASSERT(M_DEBUG_NEW_TAILCHECK >= 0, Invalid_tail_check_length);
+    size_t s = size + ALIGNED_LIST_ITEM_SIZE + M_DEBUG_NEW_TAILCHECK;
     new_ptr_list_t* ptr = (new_ptr_list_t*)malloc(s);
     if (ptr == NULL)
     {
-#if _DEBUG_NEW_STD_OPER_NEW
+#if M_DEBUG_NEW_STD_OPER_NEW
         return NULL;
 #else
         fast_mutex_autolock lock(new_output_lock);
@@ -477,17 +477,17 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
                 "Out of memory when allocating %u bytes\n",
                 size);
         fflush(new_output_fp);
-        _DEBUG_NEW_ERROR_ACTION;
+        M_DEBUG_NEW_ERROR_ACTION;
 #endif
     }
     void* pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
-#if _DEBUG_NEW_FILENAME_LEN == 0
+#if M_DEBUG_NEW_FILENAME_LEN == 0
     ptr->file = file;
 #else
     if (line)
     {
-        strncpy(ptr->file, file, _DEBUG_NEW_FILENAME_LEN - 1)
-                [_DEBUG_NEW_FILENAME_LEN - 1] = '\0';
+        strncpy(ptr->file, file, M_DEBUG_NEW_FILENAME_LEN - 1)
+                [M_DEBUG_NEW_FILENAME_LEN - 1] = '\0';
     }
     else
     {
@@ -506,9 +506,9 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
         new_ptr_list.prev = ptr;
     }
     ptr->dumped = 0;
-#if _DEBUG_NEW_TAILCHECK
-    memset((char*)pointer + size, _DEBUG_NEW_TAILCHECK_CHAR,
-                                  _DEBUG_NEW_TAILCHECK);
+#if M_DEBUG_NEW_TAILCHECK
+    memset((char*)pointer + size, M_DEBUG_NEW_TAILCHECK_CHAR,
+                                  M_DEBUG_NEW_TAILCHECK);
 #endif
     if (new_verbose_flag)
     {
@@ -552,7 +552,7 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
         }
         check_mem_corruption();
         fflush(new_output_fp);
-        _DEBUG_NEW_ERROR_ACTION;
+        M_DEBUG_NEW_ERROR_ACTION;
     }
     if (is_array != ptr->is_array)
     {
@@ -575,14 +575,14 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
             print_position(ptr->addr, ptr->line);
         fprintf(new_output_fp, "\n");
         fflush(new_output_fp);
-        _DEBUG_NEW_ERROR_ACTION;
+        M_DEBUG_NEW_ERROR_ACTION;
     }
-#if _DEBUG_NEW_TAILCHECK
+#if M_DEBUG_NEW_TAILCHECK
     if (!check_tail(ptr))
     {
         check_mem_corruption();
         fflush(new_output_fp);
-        _DEBUG_NEW_ERROR_ACTION;
+        M_DEBUG_NEW_ERROR_ACTION;
     }
 #endif
     {
@@ -630,7 +630,7 @@ int check_leaks()
                     "warning: heap data corrupt near %p\n",
                     pointer);
         }
-#if _DEBUG_NEW_TAILCHECK
+#if M_DEBUG_NEW_TAILCHECK
         if (!check_tail(ptr))
         {
             fprintf(new_output_fp,
@@ -687,14 +687,14 @@ int check_mem_corruption()
     {
         const char* const pointer = (char*)ptr + ALIGNED_LIST_ITEM_SIZE;
         if (ptr->magic == MAGIC
-#if _DEBUG_NEW_TAILCHECK
+#if M_DEBUG_NEW_TAILCHECK
             && check_tail(ptr)
 #endif
         )
         {
             continue;
         }
-#if _DEBUG_NEW_TAILCHECK
+#if M_DEBUG_NEW_TAILCHECK
         if (ptr->magic != MAGIC)
         {
 #endif
@@ -702,7 +702,7 @@ int check_mem_corruption()
                     "Heap data corrupt near %p (size %u, ",
                     pointer,
                     (unsigned)ptr->size);
-#if _DEBUG_NEW_TAILCHECK
+#if M_DEBUG_NEW_TAILCHECK
         }
         else
         {
@@ -738,19 +738,19 @@ void __debug_new_recorder::_M_process(void* pointer)
                 _M_file, _M_line);
         return;
     }
-#if _DEBUG_NEW_FILENAME_LEN == 0
+#if M_DEBUG_NEW_FILENAME_LEN == 0
     ptr->file = _M_file;
 #else
-    strncpy(ptr->file, _M_file, _DEBUG_NEW_FILENAME_LEN - 1)
-            [_DEBUG_NEW_FILENAME_LEN - 1] = '\0';
+    strncpy(ptr->file, _M_file, M_DEBUG_NEW_FILENAME_LEN - 1)
+            [M_DEBUG_NEW_FILENAME_LEN - 1] = '\0';
 #endif
     ptr->line = _M_line;
 }
 
-void* operator new(size_t size, const char* file, int line)
+void* operator new (size_t size, const char* file, int line)
 {
     void* ptr = alloc_mem(size, file, line, false);
-#if _DEBUG_NEW_STD_OPER_NEW
+#if M_DEBUG_NEW_STD_OPER_NEW
     if (ptr)
         return ptr;
     else
@@ -760,10 +760,10 @@ void* operator new(size_t size, const char* file, int line)
 #endif
 }
 
-void* operator new[](size_t size, const char* file, int line)
+void* operator new [](size_t size, const char* file, int line)
 {
     void* ptr = alloc_mem(size, file, line, true);
-#if _DEBUG_NEW_STD_OPER_NEW
+#if M_DEBUG_NEW_STD_OPER_NEW
     if (ptr)
         return ptr;
     else
@@ -773,40 +773,40 @@ void* operator new[](size_t size, const char* file, int line)
 #endif
 }
 
-void* operator new(size_t size) throw(std::bad_alloc)
+void* operator new (size_t size) throw(std::bad_alloc)
 {
-    return operator new(size, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
+    return operator new (size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 
-void* operator new[](size_t size) throw(std::bad_alloc)
+void* operator new [](size_t size) throw(std::bad_alloc)
 {
-    return operator new[](size, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
+    return operator new [](size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 
 #if !defined(__BORLANDC__) || __BORLANDC__ > 0x551
-void* operator new(size_t size, const std::nothrow_t&) throw()
+void* operator new (size_t size, const std::nothrow_t&) throw()
 {
-    return alloc_mem(size, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0, false);
+    return alloc_mem(size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0, false);
 }
 
-void* operator new[](size_t size, const std::nothrow_t&) throw()
+void* operator new [](size_t size, const std::nothrow_t&) throw()
 {
-    return alloc_mem(size, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0, true);
+    return alloc_mem(size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0, true);
 }
 #endif
 
-void operator delete(void* pointer) throw()
+void operator delete (void* pointer) throw()
 {
-    free_pointer(pointer, _DEBUG_NEW_CALLER_ADDRESS, false);
+    free_pointer(pointer, M_DEBUG_NEW_CALLER_ADDRESS, false);
 }
 
 void operator delete [](void* pointer) throw()
 {
-    free_pointer(pointer, _DEBUG_NEW_CALLER_ADDRESS, true);
+    free_pointer(pointer, M_DEBUG_NEW_CALLER_ADDRESS, true);
 }
 
 #if HAVE_PLACEMENT_DELETE
-void operator delete(void* pointer, const char* file, int line) throw()
+void operator delete (void* pointer, const char* file, int line) throw()
 {
     if (new_verbose_flag)
     {
@@ -817,7 +817,7 @@ void operator delete(void* pointer, const char* file, int line) throw()
         print_position(file, line);
         fprintf(new_output_fp, ")\n");
     }
-    operator delete(pointer);
+    operator delete (pointer);
 }
 
 void operator delete [](void* pointer, const char* file, int line) throw()
@@ -834,14 +834,14 @@ void operator delete [](void* pointer, const char* file, int line) throw()
     operator delete [](pointer);
 }
 
-void operator delete(void* pointer, const std::nothrow_t&) throw()
+void operator delete (void* pointer, const std::nothrow_t&) throw()
 {
-    operator delete(pointer, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
+    operator delete (pointer, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 
 void operator delete [](void* pointer, const std::nothrow_t&) throw()
 {
-    operator delete [](pointer, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
+    operator delete [](pointer, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 #endif // HAVE_PLACEMENT_DELETE
 

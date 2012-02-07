@@ -34,7 +34,7 @@ namespace TmwAthena
 {
 
 class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
-                       public Mana::Listener
+                       public Listener
 {
     public:
         GeneralHandler();
@@ -53,7 +53,7 @@ class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
 
         void clearHandlers();
 
-        void processEvent(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Channels channel, const Event &event);
 
         void reloadPartially();
 

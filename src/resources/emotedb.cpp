@@ -93,7 +93,8 @@ void EmoteDB::load()
                     spriteNode->xmlChildrenNode->content);
                 currentSprite->sprite = AnimatedSprite::load(file,
                     XML::getProperty(spriteNode, "variant", 0));
-                currentSprite->name = XML::langProperty(spriteNode, "name", "");
+                currentSprite->name = XML::langProperty(
+                    spriteNode, "name", "");
                 currentInfo->sprites.push_back(currentSprite);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))
@@ -147,7 +148,8 @@ void EmoteDB::load()
                     spriteNode->xmlChildrenNode->content);
                 currentSprite->sprite = AnimatedSprite::load(file,
                                 XML::getProperty(spriteNode, "variant", 0));
-                currentSprite->name = XML::langProperty(spriteNode, "name", "");
+                currentSprite->name = XML::langProperty(
+                    spriteNode, "name", "");
                 currentInfo->sprites.push_back(currentSprite);
             }
             else if (xmlNameEqual(spriteNode, "particlefx"))

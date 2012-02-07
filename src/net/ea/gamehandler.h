@@ -32,13 +32,13 @@
 namespace Ea
 {
 
-class GameHandler : public Net::GameHandler, public Mana::Listener
+class GameHandler : public Net::GameHandler, public Listener
 {
     public:
         GameHandler();
 
-        virtual void processEvent(Mana::Channels channel,
-                                  const Mana::Event &event);
+        virtual void processEvent(Channels channel,
+                                  const Event &event);
 
         virtual void who();
 

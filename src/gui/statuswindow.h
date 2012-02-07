@@ -44,7 +44,7 @@ class VertContainer;
  */
 class StatusWindow : public Window,
                      public gcn::ActionListener,
-                     public Mana::Listener
+                     public Listener
 {
     public:
         /**
@@ -52,7 +52,7 @@ class StatusWindow : public Window,
          */
         StatusWindow();
 
-        void processEvent(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Channels channel, const Event &event);
 
         void setPointsNeeded(int id, int needed);
 

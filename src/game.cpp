@@ -175,7 +175,7 @@ const unsigned adjustDelay = 10;
  */
 static void initEngines()
 {
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_ENGINESINITALIZING));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_ENGINESINITALIZING));
 
     actorSpriteManager = new ActorSpriteManager;
     commandHandler = new CommandHandler;
@@ -187,7 +187,7 @@ static void initEngines()
     particleEngine = new Particle(nullptr);
     particleEngine->setupEngine();
 
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_ENGINESINITALIZED));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_ENGINESINITALIZED));
 }
 
 /**
@@ -195,7 +195,7 @@ static void initEngines()
  */
 static void createGuiWindows()
 {
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSLOADING));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSLOADING));
 
     if (setupWindow)
         setupWindow->clearWindowsForReset();
@@ -292,7 +292,7 @@ static void createGuiWindows()
     if (player_node)
         player_node->updateStatus();
 
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSLOADED));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSLOADED));
 }
 
 #define del_0(X) { delete X; X = nullptr; }
@@ -302,7 +302,7 @@ static void createGuiWindows()
  */
 static void destroyGuiWindows()
 {
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADING));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSUNLOADING));
 
     logger->setChatWindow(nullptr);
     if (whoIsOnline)
@@ -345,7 +345,7 @@ static void destroyGuiWindows()
     del_0(killStats);
     del_0(didYouKnowWindow);
 
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_GUIWINDOWSUNLOADED));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSUNLOADED));
 
     if (auctionManager && AuctionManager::getEnableAuctionBot())
         auctionManager->reload();
@@ -416,7 +416,7 @@ Game::Game():
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
 
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_CONSTRUCTED));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_CONSTRUCTED));
 }
 
 Game::~Game()
@@ -450,7 +450,7 @@ Game::~Game()
 
     mInstance = nullptr;
 
-    Mana::Event::trigger(CHANNEL_GAME, Mana::Event(EVENT_DESTRUCTED));
+    Event::trigger(CHANNEL_GAME, Event(EVENT_DESTRUCTED));
 }
 
 static bool saveScreenshot()
@@ -1843,9 +1843,9 @@ void Game::changeMap(const std::string &mapPath)
 
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
-    Mana::Event event(EVENT_MAPLOADED);
+    Event event(EVENT_MAPLOADED);
     event.setString("mapPath", mapPath);
-    Mana::Event::trigger(CHANNEL_GAME, event);
+    Event::trigger(CHANNEL_GAME, event);
 }
 
 void Game::updateHistory(SDL_Event &event)

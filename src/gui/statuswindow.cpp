@@ -126,7 +126,7 @@ StatusWindow::StatusWindow():
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml")
 {
-    listen(Mana::CHANNEL_ATTRIBUTES);
+    listen(CHANNEL_ATTRIBUTES);
 
     setWindowName("Status");
     setupWindow->registerWindowForReset(this);
@@ -277,14 +277,14 @@ StatusWindow::StatusWindow():
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::processEvent(Mana::Channels channel A_UNUSED,
-                                const Mana::Event &event)
+void StatusWindow::processEvent(Channels channel A_UNUSED,
+                                const Event &event)
 {
     static bool blocked = false;
     if (blocked)
         return;
 
-    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         switch (event.getInt("id"))
         {
@@ -343,7 +343,7 @@ void StatusWindow::processEvent(Mana::Channels channel A_UNUSED,
                 break;
         }
     }
-    else if (event.getName() == Mana::EVENT_UPDATESTAT)
+    else if (event.getName() == EVENT_UPDATESTAT)
     {
         int id = event.getInt("id");
         if (id == Net::getPlayerHandler()->getJobLocation())

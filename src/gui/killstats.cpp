@@ -60,7 +60,7 @@ KillStats::KillStats():
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
 
-    listen(Mana::CHANNEL_ATTRIBUTES);
+    listen(CHANNEL_ATTRIBUTES);
     int xp(PlayerInfo::getAttribute(EXP));
     int xpNextLevel(PlayerInfo::getAttribute(EXP_NEEDED));
 
@@ -438,10 +438,10 @@ void KillStats::validateJacko()
     }
 }
 
-void KillStats::processEvent(Mana::Channels channel A_UNUSED,
-                             const Mana::Event &event)
+void KillStats::processEvent(Channels channel A_UNUSED,
+                             const Event &event)
 {
-    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
         if (id == EXP || id == EXP_NEEDED)

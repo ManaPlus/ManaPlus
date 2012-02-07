@@ -44,7 +44,7 @@ class TextPopup;
  */
 class MiniStatusWindow : public Popup,
                          public InventoryListener,
-                         public Mana::Listener
+                         public Listener
 {
     public:
         MiniStatusWindow();
@@ -60,7 +60,7 @@ class MiniStatusWindow : public Popup,
 
         void drawIcons(Graphics *graphics);
 
-        void processEvent(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Channels channel, const Event &event);
 
         void updateStatus();
 
