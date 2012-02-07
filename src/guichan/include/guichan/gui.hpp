@@ -65,10 +65,15 @@ namespace gcn
     /**
      * @mainpage
      * @section Introduction
-     * This documentation is mostly intended as a reference to the API. If you want to get started with Guichan, we suggest you check out the programs in the examples directory of the Guichan release.
+     * This documentation is mostly intended as a reference to the API.
+     * If you want to get started with Guichan, we suggest you check out
+     * the programs in the examples directory of the Guichan release.
      * @n
      * @n
-     * This documentation is, and will always be, work in progress. If you find any errors, typos or inconsistencies, or if you feel something needs to be explained in more detail - don't hesitate to tell us.
+     * This documentation is, and will always be, work in progress.
+     * If you find any errors, typos or inconsistencies, or if you feel
+     * something needs to be explained in more detail - don't hesitate to
+     * tell us.
      */
 
     /**

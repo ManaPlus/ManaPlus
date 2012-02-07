@@ -502,7 +502,7 @@ void Client::gameInit()
     GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
 
     // Create the graphics context
-    switch(useOpenGL)
+    switch (useOpenGL)
     {
         case 0:
             mainGraphics = new Graphics;

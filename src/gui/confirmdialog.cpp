@@ -112,4 +112,3 @@ void ConfirmDialog::action(const gcn::ActionEvent &event)
         scheduleDelete();
     }
 }
-

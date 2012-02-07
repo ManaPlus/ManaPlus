@@ -186,7 +186,7 @@ void Logger::log(const char *log_text, ...)
         debugChatTab->chatLog(buf, BY_LOGGER);
 
     // Delete temporary buffer
-    delete[] buf;
+    delete [] buf;
 }
 
 void Logger::error(const std::string &error_text)

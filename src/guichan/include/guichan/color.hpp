@@ -139,7 +139,7 @@ namespace gcn
          */
         bool operator!=(const Color& color) const;
 
-		/**
+        /**
          * Output operator for output.
          *
          * @param out The stream to output to.

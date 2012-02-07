@@ -56,7 +56,7 @@ MapLayer::MapLayer(int x, int y, int width, int height, bool fringeLayer):
 MapLayer::~MapLayer()
 {
     config.removeListener("highlightAttackRange", this);
-    delete[] mTiles;
+    delete [] mTiles;
     delete_all(mTempRows);
     mTempRows.clear();
 }
@@ -534,7 +534,7 @@ SpecialLayer::~SpecialLayer()
         delete mTiles[f];
         mTiles[f] = nullptr;
     }
-    delete[] mTiles;
+    delete [] mTiles;
 }
 
 MapItem* SpecialLayer::getTile(int x, int y) const
@@ -722,7 +722,7 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
     if (mImage)
         graphics->drawImage(mImage, x, y);
 
-    switch(mType)
+    switch (mType)
     {
         case ROAD:
         case CROSS:

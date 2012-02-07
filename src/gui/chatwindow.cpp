@@ -594,7 +594,7 @@ void ChatWindow::ignoreAllWhispers()
                                          PlayerRelation::IGNORED);
         }
 
-        delete(iter->second);
+        delete (iter->second);
         iter->second = nullptr;
     }
 }
@@ -1122,7 +1122,7 @@ std::string ChatWindow::addColors(std::string &msg)
     int cMap[] = {1, 4, 5, 2, 3, 6, 7, 9, 0, 8};
 
     // rainbow
-    switch(mChatColor)
+    switch (mChatColor)
     {
         case 11:
             msg = removeColors(msg);

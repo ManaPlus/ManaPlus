@@ -719,10 +719,10 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
 
     /* Make sure the surfaces aren't locked */
     if (!src || !dst)
-        return(-1);
+        return -1;
 
     if (src->locked || dst->locked)
-        return(-1);
+        return -1;
 
     /* If the destination rectangle is nullptr, use the entire dest surface */
     if (!dstrect)
@@ -841,7 +841,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         Uint32 pixel = SDL_MapRGB(mTarget->format,
             mColor.r, mColor.g, mColor.b);
 
-        switch(bpp)
+        switch (bpp)
         {
             case 1:
                 for (y = y1; y < y2; y++)

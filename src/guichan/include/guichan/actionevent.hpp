@@ -112,4 +112,3 @@ namespace gcn
 }
 
 #endif // GCN_ACTIONEVENT_HPP
-

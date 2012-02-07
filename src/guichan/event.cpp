@@ -68,4 +68,3 @@ namespace gcn
         return mSource;
     }
 }
-

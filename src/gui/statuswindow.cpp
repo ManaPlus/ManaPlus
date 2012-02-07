@@ -286,7 +286,7 @@ void StatusWindow::processEvent(Mana::Channels channel A_UNUSED,
 
     if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
     {
-        switch(event.getInt("id"))
+        switch (event.getInt("id"))
         {
             case HP: case MAX_HP:
                 updateHPBar(mHpBar, true);

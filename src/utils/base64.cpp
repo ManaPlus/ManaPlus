@@ -125,7 +125,7 @@ unsigned char *php3_base64_decode(const unsigned char *string,
             continue;
         ch = static_cast<int>(chp - base64_table);
 
-        switch(i % 4)
+        switch (i % 4)
         {
             case 0:
                 result[j] = ch << 2;
@@ -151,7 +151,7 @@ unsigned char *php3_base64_decode(const unsigned char *string,
     /* mop things up if we ended on a boundary */
     if (ch == base64_pad)
     {
-        switch(i % 4)
+        switch (i % 4)
         {
             case 0:
             case 1:

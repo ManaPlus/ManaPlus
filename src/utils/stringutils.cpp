@@ -405,7 +405,7 @@ std::set<int> splitToIntSet(const std::string &text, char separator)
     std::set<int> tokens;
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
         tokens.insert(atoi(item.c_str()));
 
     return tokens;
@@ -416,7 +416,7 @@ std::list<int> splitToIntList(const std::string &text, char separator)
     std::list<int> tokens;
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
         tokens.push_back(atoi(item.c_str()));
 
     return tokens;
@@ -429,7 +429,7 @@ std::list<std::string> splitToStringList(const std::string &text,
     std::list<std::string> tokens;
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
         tokens.push_back(item);
 
     return tokens;
@@ -440,7 +440,7 @@ void splitToStringVector(std::vector<std::string> &tokens,
 {
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
     {
         item = trim(item);
         if (!item.empty())

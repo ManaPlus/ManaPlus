@@ -66,7 +66,8 @@ TextCommand* SpellManager::getSpellByItem(int itemId)
 
 void SpellManager::fillSpells()
 {
-//id, std::string name, std::string symbol, ST type, int basicLvl, MagicSchool school, int schoolLvl, int mana)
+//id, std::string name, std::string symbol, ST type, int basicLvl,
+//    MagicSchool school, int schoolLvl, int mana)
 
     addSpell(new TextCommand(0, "lum", "#lum", "heal with lifestones",
              ALLOWTARGET, "", 1, SKILL_MAGIC_LIFE, 0, 6));

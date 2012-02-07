@@ -181,9 +181,9 @@ Map::~Map()
     config.removeListener("beingopacity", this);
 
     // delete metadata, layers, tilesets and overlays
-    delete[] mMetaTiles;
+    delete [] mMetaTiles;
     for (int i = 0; i < NB_BLOCKTYPES; i++)
-        delete[] mOccupation[i];
+        delete [] mOccupation[i];
 
     mFringeLayer = nullptr;
     delete_all(mLayers);
@@ -1435,7 +1435,7 @@ void Map::clearIndexedTilesets()
         return;
 
     mTilesetsIndexed = false;
-    delete[] mIndexedTilesets;
+    delete [] mIndexedTilesets;
     mIndexedTilesetsSize = 0;
 }
 

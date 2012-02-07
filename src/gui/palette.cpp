@@ -39,7 +39,8 @@
 const gcn::Color Palette::BLACK = gcn::Color(0, 0, 0);
 Palette::Palettes Palette::mInstances;
 
-const gcn::Color Palette::RAINBOW_COLORS[7] = {
+const gcn::Color Palette::RAINBOW_COLORS[7] =
+{
     gcn::Color(255, 0, 0),
     gcn::Color(255, 153, 0),
     gcn::Color(255, 255, 0),
@@ -48,6 +49,7 @@ const gcn::Color Palette::RAINBOW_COLORS[7] = {
     gcn::Color(51, 0, 153),
     gcn::Color(153, 0, 153)
 };
+
 /** Number of Elemets of RAINBOW_COLORS */
 const int Palette::RAINBOW_COLOR_COUNT = 7;
 

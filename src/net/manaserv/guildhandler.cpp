@@ -153,7 +153,7 @@ void GuildHandler::handleMessage(Net::MessageIn &msg)
             Guild *guild = player_node->getGuild(guildId);
             if (guild)
             {
-                switch(eventId)
+                switch (eventId)
                 {
                     case GUILD_EVENT_NEW_PLAYER:
                         member = guild->addMember(name);

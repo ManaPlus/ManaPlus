@@ -61,9 +61,9 @@ OpenGLGraphics::OpenGLGraphics():
 
 OpenGLGraphics::~OpenGLGraphics()
 {
-    delete[] mFloatTexArray;
-    delete[] mIntTexArray;
-    delete[] mIntVertArray;
+    delete [] mFloatTexArray;
+    delete [] mIntTexArray;
+    delete [] mIntVertArray;
 }
 
 void OpenGLGraphics::setSync(bool sync)

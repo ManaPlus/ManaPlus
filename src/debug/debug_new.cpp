@@ -533,7 +533,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
  * @param pointer   pointer to delete
  * @param addr      pointer to the caller
  * @param is_array  flag indicating whether it is invoked by a
- *                  <code>delete[]</code> call
+ *                  <code>delete []</code> call
  */
 static void free_pointer(void* pointer, void* addr, bool is_array)
 {
@@ -558,9 +558,9 @@ static void free_pointer(void* pointer, void* addr, bool is_array)
     {
         const char* msg;
         if (is_array)
-            msg = "delete[] after new";
+            msg = "delete [] after new";
         else
-            msg = "delete after new[]";
+            msg = "delete after new []";
         fast_mutex_autolock lock(new_output_lock);
         fprintf(new_output_fp,
                 "%s: pointer %p (size %u)\n\tat ",
@@ -800,7 +800,7 @@ void operator delete(void* pointer) throw()
     free_pointer(pointer, _DEBUG_NEW_CALLER_ADDRESS, false);
 }
 
-void operator delete[](void* pointer) throw()
+void operator delete [](void* pointer) throw()
 {
     free_pointer(pointer, _DEBUG_NEW_CALLER_ADDRESS, true);
 }
@@ -820,7 +820,7 @@ void operator delete(void* pointer, const char* file, int line) throw()
     operator delete(pointer);
 }
 
-void operator delete[](void* pointer, const char* file, int line) throw()
+void operator delete [](void* pointer, const char* file, int line) throw()
 {
     if (new_verbose_flag)
     {
@@ -831,7 +831,7 @@ void operator delete[](void* pointer, const char* file, int line) throw()
         print_position(file, line);
         fprintf(new_output_fp, ")\n");
     }
-    operator delete[](pointer);
+    operator delete [](pointer);
 }
 
 void operator delete(void* pointer, const std::nothrow_t&) throw()
@@ -839,9 +839,9 @@ void operator delete(void* pointer, const std::nothrow_t&) throw()
     operator delete(pointer, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 
-void operator delete[](void* pointer, const std::nothrow_t&) throw()
+void operator delete [](void* pointer, const std::nothrow_t&) throw()
 {
-    operator delete[](pointer, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
+    operator delete [](pointer, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 #endif // HAVE_PLACEMENT_DELETE
 

@@ -138,7 +138,7 @@ WhoIsOnline::~WhoIsOnline()
     mMemoryBuffer = nullptr;
 
     // Remove possibly leftover temporary download
-    delete[] mCurlError;
+    delete []mCurlError;
 
     std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
     std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();

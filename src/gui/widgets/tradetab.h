@@ -46,6 +46,3 @@ class TradeTab : public ChatTab
 
 extern TradeTab *tradeChatTab;
 #endif
-
-
-

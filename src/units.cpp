@@ -150,12 +150,12 @@ void Units::loadUnits()
             }
 
             // Add one more level for saftey
-            struct UnitLevel ll;
-            ll.symbol = "";
-            ll.count = INT_MAX;
-            ll.round = 0;
+            struct UnitLevel lev;
+            lev.symbol = "";
+            lev.count = INT_MAX;
+            lev.round = 0;
 
-            ud.levels.push_back(ll);
+            ud.levels.push_back(lev);
 
             if (type == "weight")
                 units[UNIT_WEIGHT] = ud;

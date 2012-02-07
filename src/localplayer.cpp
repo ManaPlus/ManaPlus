@@ -2338,7 +2338,7 @@ void LocalPlayer::crazyMove()
 {
     bool oldDisableCrazyMove = mDisableCrazyMove;
     mDisableCrazyMove = true;
-    switch(mCrazyMoveType)
+    switch (mCrazyMoveType)
     {
         case 1:
             crazyMove1();
@@ -2449,7 +2449,7 @@ void LocalPlayer::crazyMove3()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(1, 1);
@@ -2483,7 +2483,7 @@ void LocalPlayer::crazyMove4()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(7, 0);
@@ -2503,7 +2503,7 @@ void LocalPlayer::crazyMove5()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(0, 7);
@@ -2523,7 +2523,7 @@ void LocalPlayer::crazyMove6()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(3, 0);
@@ -2567,7 +2567,7 @@ void LocalPlayer::crazyMove7()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(1, 1);
@@ -3045,7 +3045,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
         return status;
 
     int x1, y1, x2, y2;
-    switch(pickUpType)
+    switch (pickUpType)
     {
         case 1:
             switch (mDirection)
@@ -3206,7 +3206,7 @@ void LocalPlayer::magicAttack()
     if (!Client::limitPackets(PACKET_CHAT))
         return;
 
-    switch(mMagicAttackType)
+    switch (mMagicAttackType)
     {
         //flar W00
         case 0:

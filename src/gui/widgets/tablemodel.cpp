@@ -173,4 +173,3 @@ int StaticTableModel::getHeight() const
 {
     return mColumns * mHeight;
 }
-

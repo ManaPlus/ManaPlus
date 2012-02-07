@@ -79,4 +79,3 @@ SDL_RWops *PHYSFSRWOPS_makeRWops(PHYSFS_file *handle);
 #endif /* include-once blocker */
 
 /* end of physfsrwops.h ... */
-

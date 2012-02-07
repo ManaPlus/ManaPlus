@@ -26,18 +26,16 @@
 #include <string>
 #include "variabledata.h"
 
-using namespace Mana;
-
 typedef std::map<std::string, Mana::VariableData*> DefaultsData;
 
-VariableData* createData(int defData);
-VariableData* createData(double defData);
-VariableData* createData(float defData);
-VariableData* createData(const std::string &defData);
-VariableData* createData(const char* defData);
-VariableData* createData(bool defData);
-DefaultsData* getConfigDefaults();
-DefaultsData* getBrandingDefaults();
-DefaultsData* getPathsDefaults();
+Mana::VariableData* createData(int defData);
+Mana::VariableData* createData(double defData);
+Mana::VariableData* createData(float defData);
+Mana::VariableData* createData(const std::string &defData);
+Mana::VariableData* createData(const char* defData);
+Mana::VariableData* createData(bool defData);
+Mana::DefaultsData* getConfigDefaults();
+Mana::DefaultsData* getBrandingDefaults();
+Mana::DefaultsData* getPathsDefaults();
 
 #endif

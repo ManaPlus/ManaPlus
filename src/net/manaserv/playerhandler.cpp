@@ -151,8 +151,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
             PlayerInfo::setAttribute(CORR_POINTS, msg.readInt16());
             Particle* effect = particleEngine->addEffect(
                 paths.getStringValue("particles")
-                + paths.getStringValue("levelUpEffectFile")
-                , 0, 0);
+                + paths.getStringValue("levelUpEffectFile"), 0, 0);
             player_node->controlParticle(effect);
         } break;
 

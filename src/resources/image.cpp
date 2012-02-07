@@ -250,14 +250,14 @@ Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
 
         // We also delete the alpha channel since
         // it's not used.
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         alphaChannel = nullptr;
     }
 
     if (!image)
     {
         logger->log1("Error: Image convert failed.");
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         return nullptr;
     }
 
@@ -295,7 +295,7 @@ void Image::unload()
         SDL_FreeSurface(mSDLSurface);
         mSDLSurface = nullptr;
 
-        delete[] mAlphaChannel;
+        delete [] mAlphaChannel;
         mAlphaChannel = nullptr;
     }
 
@@ -689,14 +689,14 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
 
         // We also delete the alpha channel since
         // it's not used.
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         alphaChannel = nullptr;
     }
 
     if (!image)
     {
         logger->log1("Error: Image convert failed.");
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         return nullptr;
     }
 

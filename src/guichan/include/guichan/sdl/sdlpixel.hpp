@@ -72,7 +72,7 @@ namespace gcn
 
         unsigned int color = 0;
 
-        switch(bpp)
+        switch (bpp)
         {
             case 1:
                 color = *p;
@@ -127,7 +127,7 @@ namespace gcn
 
         Uint32 pixel = SDL_MapRGB(surface->format, color.r, color.g, color.b);
 
-        switch(bpp)
+        switch (bpp)
         {
             case 1:
                 *p = pixel;
@@ -234,7 +234,7 @@ namespace gcn
 
         Uint32 pixel = SDL_MapRGB(surface->format, color.r, color.g, color.b);
 
-        switch(bpp)
+        switch (bpp)
         {
             case 1:
                 *p = pixel;

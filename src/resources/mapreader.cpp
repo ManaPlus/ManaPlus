@@ -503,7 +503,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
             const char *charStart = reinterpret_cast<const char*>(xmlChars);
             if (!charStart)
             {
-                delete[] charData;
+                delete [] charData;
                 return;
             }
 
@@ -526,7 +526,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
                 static_cast<int>(strlen(reinterpret_cast<char*>(
                 charData))), &binLen);
 
-            delete[] charData;
+            delete [] charData;
             xmlFree(xmlChars);
 
             if (binData)

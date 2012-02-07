@@ -511,6 +511,12 @@ void BeingHandler::processBeingAction(Net::MessageIn &msg)
             }
             break;
 
+        case 0x01: // dead
+            break;
+            // tmw server can send here garbage?
+//            if (srcBeing)
+//                srcBeing->setAction(Being::DEAD);
+
         case 0x02: // Sit
             if (srcBeing)
             {

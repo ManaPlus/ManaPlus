@@ -182,7 +182,7 @@ void MumbleManager::setAction(int action)
     if (!mLinkedMem)
         return;
 
-    switch(action)
+    switch (action)
     {
         case 0: /* STAND */
         case 1: /* WALK */
@@ -228,7 +228,7 @@ void MumbleManager::setPos(int tileX, int tileY, int direction)
 
     // Unit vector pointing out of the avatars eyes
     // (here Front looks into scene).
-    switch(direction)
+    switch (direction)
     {
         case 4: /* UP */
             mLinkedMemCache.fAvatarFront[0] = 0.0f;
