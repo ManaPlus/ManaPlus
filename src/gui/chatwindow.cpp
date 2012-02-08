@@ -311,6 +311,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("<MONSTER>");
     mCommands.push_back("<PEOPLE>");
     mCommands.push_back("<PARTY>");
+    mCommands.push_back("/setdrop ");
 }
 
 void ChatWindow::loadGMCommands()

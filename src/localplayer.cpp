@@ -2067,6 +2067,16 @@ std::string LocalPlayer::getQuickDropCounterString()
     }
 }
 
+void LocalPlayer::setQuickDropCounter(int n)
+{
+    if (n < 1 || n >= (signed)quickDropCounterSize)
+        return;
+    mQuickDropCounter = n;
+    config.setValue("quickDropCounter", mQuickDropCounter);
+    if (miniStatusWindow)
+        miniStatusWindow->updateStatus();
+}
+
 const unsigned pickUpTypeSize = 7;
 
 void LocalPlayer::changePickUpType()

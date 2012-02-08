@@ -295,6 +295,8 @@ class CommandHandler
 
         void handleServerUnIgnoreAll(const std::string &args, ChatTab *tab);
 
+        void handleSetDrop(const std::string &args, ChatTab *tab);
+
         void handleDump(const std::string &args, ChatTab *tab);
 
         void handleDumpGraphics(const std::string &args, ChatTab *tab);

@@ -256,6 +256,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int getQuickDropCounter() const
         { return mQuickDropCounter; }
 
+        void setQuickDropCounter(int n);
+
         void changeQuickDropCounter();
 
         int getMoveState() const
