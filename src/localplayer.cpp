@@ -2044,7 +2044,7 @@ std::string LocalPlayer::getAttackTypeString()
         mAttackType, attackTypeSize));
 }
 
-const unsigned quickDropCounterSize = 10;
+const unsigned quickDropCounterSize = 31;
 
 void LocalPlayer::changeQuickDropCounter()
 {
@@ -2054,8 +2054,17 @@ void LocalPlayer::changeQuickDropCounter()
 
 std::string LocalPlayer::getQuickDropCounterString()
 {
-    return strprintf("(%d) drop counter %d",
-        mQuickDropCounter, mQuickDropCounter);
+    std::string str;
+    if (mQuickDropCounter > 9)
+    {
+        return strprintf("(%c) drop counter %d",
+            'a' + mQuickDropCounter - 10, mQuickDropCounter);
+    }
+    else
+    {
+        return strprintf("(%d) drop counter %d",
+            mQuickDropCounter, mQuickDropCounter);
+    }
 }
 
 const unsigned pickUpTypeSize = 7;
