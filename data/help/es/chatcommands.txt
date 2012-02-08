@@ -35,6 +35,7 @@
     /addpriorityattack NOMBRE - Agregar al monstruo especificado en NOMBRE a la lista de ataque prioritario.
     /removeattack NOMBRE - Remover al monstruo especificado de la lista de ataque.
     /addignoreattack NOMBRE - Agregar al monstruo especificado a la lista de criaturas ignorados.
+    /setdrop N - 
 
 ##PIntercambio
 ##2
