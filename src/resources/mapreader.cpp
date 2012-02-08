@@ -481,6 +481,8 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
                     return;
                 if (pname == "Version" && value > CHECK_VERSION)
                     return;
+                if (pname == "NotVersion" && value <= CHECK_VERSION)
+                    return;
             }
         }
 
