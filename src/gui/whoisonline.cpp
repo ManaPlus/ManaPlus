@@ -720,8 +720,7 @@ void WhoIsOnline::optionChanged(const std::string &name)
 
 void OnlinePlayer::setText(std::string color)
 {
-    mText = strprintf("@@%s|##%s%s ", mNick.c_str(),
-        color.c_str(), mNick.c_str());
+    mText = "";
 
     if (mStatus != 255 && actorSpriteManager)
     {
@@ -753,10 +752,13 @@ void OnlinePlayer::setText(std::string color)
             // TRANSLATORS: this inactive status writed in player nick
             mText += _("I");
         }
+        if (mStatus & Being::FLAG_GM && color == "0")
+            color = "2";
     }
 
     if (mVersion > 0)
         mText += strprintf(" - %d", mVersion);
 
-    mText += strprintf("@@");
+    mText = strprintf("@@%s|##%s%s %s@@", mNick.c_str(),
+        color.c_str(), mNick.c_str(), mText.c_str());
 }

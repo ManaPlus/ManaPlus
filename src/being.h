@@ -102,6 +102,7 @@ class Being : public ActorSprite, public ConfigListener
             FLAG_SHOP = 1,
             FLAG_AWAY = 2,
             FLAG_INACTIVE = 4,
+            FLAG_GM = 64,
             FLAG_GENDER = 128,
             FLAG_SPECIAL = 128 + 64
         };
