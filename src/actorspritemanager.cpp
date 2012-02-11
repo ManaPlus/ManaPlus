@@ -240,10 +240,11 @@ Being *ActorSpriteManager::createBeing(int id, ActorSprite::Type type,
 }
 
 FloorItem *ActorSpriteManager::createItem(int id, int itemId, int x, int y,
-                                          int amount, unsigned char color)
+                                          int amount, unsigned char color,
+                                          int subX, int subY)
 {
     FloorItem *floorItem = new FloorItem(id, itemId, x, y,
-        mMap, amount, color);
+        mMap, amount, color, subX, subY);
 
     mActors.insert(floorItem);
     return floorItem;

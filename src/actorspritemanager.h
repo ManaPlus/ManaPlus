@@ -63,7 +63,8 @@ class ActorSpriteManager: public ConfigListener
          * Create a FloorItem and add it to the list of ActorSprites.
          */
         FloorItem *createItem(int id, int itemId, int x, int y,
-                              int amount, unsigned char color);
+                              int amount, unsigned char color,
+                              int subX, int subY);
 
         /**
          * Destroys the given ActorSprite at the end of

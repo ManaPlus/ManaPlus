@@ -38,13 +38,8 @@
 
 #include "debug.h"
 
-FloorItem::FloorItem(int id,
-                     int itemId,
-                     int x,
-                     int y,
-                     Map *map,
-                     int amount,
-                     unsigned char color):
+FloorItem::FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
+                     unsigned char color, int subX, int subY):
     ActorSprite(id),
     mItemId(itemId),
     mX(x),
@@ -60,16 +55,8 @@ FloorItem::FloorItem(int id,
     setMap(map);
     if (map)
     {
-        // TODO: Eventually, we probably should fix all sprite offsets so that
-        //       these translations aren't necessary anymore. The sprites know
-        //       best where their base point should be.
-        mPos.x = static_cast<float>(x * map->getTileWidth() + 16);
-#ifdef MANASERV_SUPPORT
-        mPos.y = static_cast<float>(y * map->getTileHeight() +
-                 ((Net::getNetworkType() == ServerInfo::MANASERV) ? 15 : 32));
-#else
-        mPos.y = static_cast<float>(y * map->getTileHeight() + 32);
-#endif
+        mPos.x = static_cast<float>(x * map->getTileWidth() + subX);
+        mPos.y = static_cast<float>(y * map->getTileHeight() + subY);
     }
     else
     {

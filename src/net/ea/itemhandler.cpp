@@ -35,28 +35,39 @@ ItemHandler::ItemHandler()
 {
 }
 
-void ItemHandler::processItemVisible(Net::MessageIn &msg, bool isDrop)
+void ItemHandler::processItemVisible(Net::MessageIn &msg)
 {
     int id = msg.readInt32();
     int itemId = msg.readInt16();
     unsigned char identify = msg.readInt8();  // identify flag
     int x = msg.readInt16();
     int y = msg.readInt16();
-    int amount1 = msg.readInt16();
-    int amount2 = msg.readInt16();
+    int amount = msg.readInt16();
+    int subX = msg.readInt8() + 16 - 8;
+    int subY = msg.readInt8() + 32 - 8;
 
     if (actorSpriteManager)
     {
-        if (!isDrop)
-        {
-            actorSpriteManager->createItem(id, itemId,
-                x, y, amount1, identify);
-        }
-        else
-        {
-            actorSpriteManager->createItem(id, itemId,
-                x, y, amount2, identify);
-        }
+        actorSpriteManager->createItem(id, itemId,
+            x, y, amount, identify, subX, subY);
+    }
+}
+
+void ItemHandler::processItemDropped(Net::MessageIn &msg)
+{
+    int id = msg.readInt32();
+    int itemId = msg.readInt16();
+    unsigned char identify = msg.readInt8();  // identify flag
+    int x = msg.readInt16();
+    int y = msg.readInt16();
+    int subX = msg.readInt8() + 16 - 8;
+    int subY = msg.readInt8() + 32 - 8;
+    int amount = msg.readInt16();
+
+    if (actorSpriteManager)
+    {
+        actorSpriteManager->createItem(id, itemId,
+            x, y, amount, identify, subX, subY);
     }
 }
 

@@ -48,9 +48,12 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
     switch (msg.getId())
     {
         case SMSG_ITEM_VISIBLE:
+            processItemVisible(msg);
+            break;
+
         case SMSG_ITEM_DROPPED:
-            processItemVisible(msg, msg.getId() == SMSG_ITEM_DROPPED);
-        break;
+            processItemDropped(msg);
+            break;
 
         case SMSG_ITEM_REMOVE:
             processItemRemove(msg);
