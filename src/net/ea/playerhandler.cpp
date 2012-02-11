@@ -22,6 +22,7 @@
 
 #include "net/ea/playerhandler.h"
 
+#include "localplayer.h"
 #include "logger.h"
 #include "party.h"
 #include "playerinfo.h"

@@ -69,7 +69,6 @@
 #include "gui/worldselectdialog.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/desktop.h"
 
 #include "net/charhandler.h"
@@ -80,7 +79,6 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
-#include "net/packetcounters.h"
 #include "net/partyhandler.h"
 #include "net/worldinfo.h"
 

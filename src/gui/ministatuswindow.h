@@ -27,7 +27,6 @@
 #include "listener.h"
 
 #include "gui/widgets/popup.h"
-#include "gui/widgets/window.h"
 
 #include <vector>
 

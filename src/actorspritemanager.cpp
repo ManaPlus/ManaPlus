@@ -31,8 +31,6 @@
 
 #include "gui/chatwindow.h"
 #include "gui/equipmentwindow.h"
-#include "gui/killstats.h"
-#include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/viewport.h"
 

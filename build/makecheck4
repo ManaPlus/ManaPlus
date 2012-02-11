@@ -1,5 +1,5 @@
 #!/bin/bash
 
-../../checkheaders/checkheaders ../src 2>tmp.txt
+../../checkheaders/checkheaders --skip debug.h ../src 2>tmp.txt
 sed '/(style): Header not found/d' tmp.txt >makecheck4.txt
 rm tmp.txt

@@ -22,8 +22,6 @@
 
 #include "utils/stringutils.h"
 
-#include "configuration.h"
-
 #include <string.h>
 #include <algorithm>
 #include <cstdarg>

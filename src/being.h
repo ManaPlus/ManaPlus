@@ -27,7 +27,6 @@
 #include "configlistener.h"
 #include "equipment.h"
 #include "map.h"
-#include "particlecontainer.h"
 #include "position.h"
 #include "vector.h"
 

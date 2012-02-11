@@ -24,7 +24,6 @@
 
 #include "graphicsvertexes.h"
 #include "logger.h"
-#include "map.h"
 
 #include "resources/image.h"
 #include "resources/imageloader.h"

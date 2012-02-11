@@ -40,7 +40,6 @@
 #include "sound.h"
 #include "sprite.h"
 #include "text.h"
-#include "statuseffect.h"
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"

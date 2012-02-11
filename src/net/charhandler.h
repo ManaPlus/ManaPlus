@@ -26,8 +26,6 @@
 #include "localplayer.h"
 #include "playerinfo.h"
 
-#include "net/logindata.h"
-
 #include <iosfwd>
 #include <vector>
 
