@@ -209,6 +209,19 @@ esac],[memdebug_enabled=false])
 
 AM_CONDITIONAL(ENABLE_MEM_DEBUG, test x$memdebug_enabled = xtrue)
 
+# Enable unit tests
+AC_ARG_ENABLE(unittests,
+[  --enable-unittests    Turn on unit tests],
+[case "${enableval}" in
+  yes) unittests_enabled=true
+LIBS="$LIBS -lgtest"
+ ;;
+  no)  unittests_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-tests) ;;
+esac],[unittests_enabled=false])
+
+AM_CONDITIONAL(ENABLE_UNITTESTS, test x$unittests_enabled = xtrue)
+
 # Enable tcmalloc
 AC_ARG_ENABLE(tcmalloc,
 [  --enable-tcmalloc    Turn on tcmalloc],

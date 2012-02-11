@@ -21,6 +21,10 @@ else
 manaplus_SOURCES =
 endif
 
+if ENABLE_UNITTESTS
+manaplus_CXXFLAGS += -DUNITTESTS
+endif
+
 if USE_INTERNALGUICHAN
 manaplus_CXXFLAGS += -DUSE_INTERNALGUICHAN
 manaplus_SOURCES += guichan/include/guichan/actionevent.hpp \
