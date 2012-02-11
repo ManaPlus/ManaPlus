@@ -103,7 +103,7 @@ std::string strprintf(char const *, ...)
  * @param str the string to remove the bad chars from
  * @return a reference to the string without bad chars
  */
-std::string &removeBadChars(std::string &str);
+//std::string &removeBadChars(std::string &str);
 
 /**
  * Removes colors from a string

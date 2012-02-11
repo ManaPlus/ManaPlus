@@ -105,6 +105,7 @@ std::string strprintf(char const *format, ...)
     return res;
 }
 
+/*
 std::string &removeBadChars(std::string &str)
 {
     std::string::size_type pos;
@@ -118,6 +119,7 @@ std::string &removeBadChars(std::string &str)
 
     return str;
 }
+*/
 
 std::string removeColors(std::string msg)
 {
@@ -316,27 +318,37 @@ void getSafeUtf8String(std::string text, char *buf)
 
 std::string getFileName(std::string path)
 {
-    size_t pos = path.rfind("/");
-    if (pos == std::string::npos)
-        pos = path.rfind("\\");
-    if (pos == std::string::npos)
+    size_t pos1 = path.rfind("/");
+    size_t pos2 = path.rfind("\\");
+    if (pos1 == std::string::npos)
+        pos1 = pos2;
+    else if (pos2 != std::string::npos && pos2 > pos1)
+        pos1 = pos2;
+
+    if (pos1 == std::string::npos)
         return path;
-    return path.substr(pos + 1);
+    return path.substr(pos1 + 1);
 }
 
 std::string getFileDir(std::string path)
 {
-    size_t pos = path.rfind("/");
-    if (pos == std::string::npos)
-        pos = path.rfind("\\");
-    if (pos == std::string::npos)
-        return "";
-    return path.substr(0, pos);
+    size_t pos1 = path.rfind("/");
+    size_t pos2 = path.rfind("\\");
+    if (pos1 == std::string::npos)
+        pos1 = pos2;
+    else if (pos2 != std::string::npos && pos2 > pos1)
+        pos1 = pos2;
+
+    if (pos1 == std::string::npos)
+        return path;
+    return path.substr(0, pos1);
 }
 
 std::string& replaceAll(std::string& context, const std::string& from,
                         const std::string& to)
 {
+    if (from.empty())
+        return context;
     size_t lookHere = 0;
     size_t foundHere;
     while ((foundHere = context.find(from, lookHere)) != std::string::npos)
