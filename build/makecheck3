@@ -1,6 +1,4 @@
 #!/bin/bash
 
 cd ../src
-#../../cppcheck/cppcheck --enable=all --force -j 5 -v -I /usr/include -I /usr/include/c++/4.5 -I /usr/include/libxml2 -I /usr/include/SDL . 1>../makecheck.txt 2>../makecheck_err.txt
-#../../cppcheck/cppcheck --enable=style --enable=information --enable=unusedFunction --force -j 5 -v . 1>../makecheck.txt 2>../makecheck_err.txt
-../../cppcheck/cppcheck --enable=all -I . -I guichan/include --force -j 5 -v . 1>../build/makecheck.txt 2>../build/makecheck_err.txt
+../../cppcheck/cppcheck --enable=all -I . -I guichan/include --force -j 5 -v . 1>../build/makecheck.txt 2>../build/logs/cppcheck2.txt

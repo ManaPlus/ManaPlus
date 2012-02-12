@@ -79,6 +79,7 @@ mana.creator.user*
 run/*
 my/*
 win/*
+build/logs
 build/make.log
 build/make1.log
 build/make2.log
