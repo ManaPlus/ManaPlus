@@ -13,5 +13,4 @@ export CXX=clang++
 --bindir=$dir/run/bin \
 --mandir=$dir/run/share/man
 
-make -j5 2>build/make2.log
-
+make -j5 2>build/logs/clang.txt
