@@ -172,7 +172,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "hideShopMessages", true);
     AddDEF(configData, "showChatHistory", true);
     AddDEF(configData, "showChatColorsList", true);
-    AddDEF(configData, "chatMaxLinesLimit", 20);
+    AddDEF(configData, "chatMaxLinesLimit", 40);
     AddDEF(configData, "chatColor", 0);
     AddDEF(configData, "hideShield", true);
     AddDEF(configData, "showJob", true);
