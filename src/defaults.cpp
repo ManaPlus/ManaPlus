@@ -132,7 +132,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "download-music", false);
     AddDEF(configData, "guialpha", 0.8f);
     AddDEF(configData, "ChatLogLength", 0);
-    AddDEF(configData, "enableChatLog", false);
+    AddDEF(configData, "enableChatLog", true);
     AddDEF(configData, "whispertab", true);
     AddDEF(configData, "customcursor", true);
     AddDEF(configData, "showownname", true);
