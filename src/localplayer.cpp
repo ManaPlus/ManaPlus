@@ -2049,7 +2049,6 @@ void LocalPlayer::changeQuickDropCounter()
 
 std::string LocalPlayer::getQuickDropCounterString()
 {
-    std::string str;
     if (mQuickDropCounter > 9)
     {
         return strprintf("(%c) drop counter %d",
