@@ -864,7 +864,8 @@ int Client::gameExec()
         if (Net::getGeneralHandler())
             Net::getGeneralHandler()->flushNetwork();
 
-        while (get_elapsed_time(lastTickTime) > 0)
+        int k = 0;
+        while (lastTickTime != tick_time && k < 2)
         {
             if (gui)
                 gui->logic();
@@ -874,6 +875,7 @@ int Client::gameExec()
             sound.logic();
 
             ++lastTickTime;
+            k ++;
         }
 
         // This is done because at some point tick_time will wrap.
