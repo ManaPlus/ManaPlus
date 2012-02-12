@@ -201,6 +201,7 @@ private:
     bool mAllowUpdate;
     bool mShowLevel;
     bool mUpdateOnlineList;
+    bool mGroupFriends;
 };
 
 extern WhoIsOnline *whoIsOnline;

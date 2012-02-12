@@ -85,7 +85,8 @@ WhoIsOnline::WhoIsOnline():
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
     mAllowUpdate(true),
-    mShowLevel(false)
+    mShowLevel(false),
+    mGroupFriends(true)
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
@@ -124,12 +125,15 @@ WhoIsOnline::WhoIsOnline():
     download();
 
     config.addListener("updateOnlineList", this);
+    config.addListener("groupFriends", this);
     mUpdateOnlineList = config.getBoolValue("updateOnlineList");
+    mGroupFriends = config.getBoolValue("groupFriends");
 }
 
 WhoIsOnline::~WhoIsOnline()
 {
     config.removeListener("updateOnlineList", this);
+    config.removeListener("groupFriends", this);
 
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, nullptr);
@@ -282,7 +286,10 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 
             case PlayerRelation::FRIEND:
                 player->setText("2");
-                friends.push_back(player);
+                if (mGroupFriends)
+                    friends.push_back(player);
+                else
+                    neutral.push_back(player);
                 break;
 
             case PlayerRelation::DISREGARDED:
@@ -425,7 +432,10 @@ void WhoIsOnline::loadWebList()
 
                     case PlayerRelation::FRIEND:
                         player->setText("2");
-                        friends.push_back(player);
+                        if (mGroupFriends)
+                            friends.push_back(player);
+                        else
+                            neutral.push_back(player);
                         break;
 
                     case PlayerRelation::DISREGARDED:
@@ -716,6 +726,8 @@ void WhoIsOnline::optionChanged(const std::string &name)
 {
     if (name == "updateOnlineList")
         mUpdateOnlineList = config.getBoolValue("updateOnlineList");
+    else if (name == "groupFriends")
+        mGroupFriends = config.getBoolValue("groupFriends");
 }
 
 void OnlinePlayer::setText(std::string color)
