@@ -42,6 +42,7 @@
 #include "utils/mkdir.h"
 
 #include <limits.h>
+#include <physfs.h>
 
 #include <sys/stat.h>
 
@@ -1251,7 +1252,7 @@ void Map::saveExtraLayer()
 
 std::string Map::getUserMapDirectory() const
 {
-    return Client::getServerConfigDirectory() + "/"
+    return Client::getServerConfigDirectory() + PHYSFS_getDirSeparator()
         + getProperty("_realfilename");
 }
 

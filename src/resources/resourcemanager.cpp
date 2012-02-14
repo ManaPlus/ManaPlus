@@ -329,12 +329,12 @@ std::string ResourceManager::getPath(const std::string &file)
     // if the file is not in the search path, then its nullptr
     if (tmp)
     {
-        path = std::string(tmp) + "/" + file;
+        path = std::string(tmp) + PHYSFS_getDirSeparator() + file;
     }
     else
     {
         // if not found in search path return the default path
-        path = Client::getPackageDirectory() + "/" + file;
+        path = Client::getPackageDirectory() + PHYSFS_getDirSeparator() + file;
     }
 
     return path;
