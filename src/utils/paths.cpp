@@ -20,10 +20,12 @@
 
 #include "utils/paths.h"
 
+#include "utils/stringutils.h"
+
 #include <string.h>
 #include <cstdarg>
 #include <cstdio>
-
+#include <physfs.h>
 #include <stdlib.h>
 
 #ifdef WIN32
@@ -64,4 +66,12 @@ bool checkPath(std::string path)
         && path.find("..\\") == std::string::npos
         && path.find("/..") == std::string::npos
         && path.find("\\..") == std::string::npos;
+}
+
+std::string &fixDirSeparators(std::string &str)
+{
+    if (*PHYSFS_getDirSeparator() == '/')
+        return str;
+
+    return replaceAll(str, "/", "\\");
 }

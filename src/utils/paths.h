@@ -29,4 +29,6 @@ bool isRealPath(const std::string &str);
 
 bool checkPath(std::string path);
 
+std::string &fixDirSeparators(std::string &str);
+
 #endif // UTILS_PATHS_H

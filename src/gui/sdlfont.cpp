@@ -27,6 +27,7 @@
 #include "graphics.h"
 #include "logger.h"
 #include "main.h"
+#include "utils/paths.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -98,7 +99,7 @@ typedef std::list<SDLTextChunk>::iterator CacheIterator;
 
 static int fontCounter;
 
-SDLFont::SDLFont(const std::string &filename, int size, int style) :
+SDLFont::SDLFont(std::string filename, int size, int style) :
     mCreateCounter(0),
     mDeleteCounter(0)
 {
@@ -117,13 +118,16 @@ SDLFont::SDLFont(const std::string &filename, int size, int style) :
     }
 
     ++fontCounter;
+
+    fixDirSeparators(filename);
     mFont = TTF_OpenFont(resman->getPath(filename).c_str(), size);
 
     if (!mFont)
     {
         logger->log("Error finding font " + filename);
+        std::string backFile = "fonts/dejavusans.ttf";
         mFont = TTF_OpenFont(resman->getPath(
-            "fonts/dejavusans.ttf").c_str(), size);
+            fixDirSeparators(backFile)).c_str(), size);
         if (!mFont)
         {
             throw GCN_EXCEPTION("SDLSDLFont::SDLSDLFont: " +
@@ -148,7 +152,7 @@ SDLFont::~SDLFont()
     }
 }
 
-void SDLFont::loadFont(const std::string &filename, int size, int style)
+void SDLFont::loadFont(std::string filename, int size, int style)
 {
     ResourceManager *resman = ResourceManager::getInstance();
 
@@ -159,6 +163,7 @@ void SDLFont::loadFont(const std::string &filename, int size, int style)
         return;
     }
 
+    fixDirSeparators(filename);
     TTF_Font *font = TTF_OpenFont(resman->getPath(filename).c_str(), size);
 
     if (!font)
