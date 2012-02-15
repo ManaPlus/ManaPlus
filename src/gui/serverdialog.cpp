@@ -283,14 +283,10 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.
-    int width = 0, height = 0;
-    getLayout().reflow(width, height);
-    if (width < 400)
-    {
-        width = 400;
-        getLayout().reflow(width, height);
-    }
+    int width = 500;
+    int height = 350;
 
+    getLayout().reflow(width, height);
     setContentSize(width, height);
 
     setMinWidth(getWidth());
