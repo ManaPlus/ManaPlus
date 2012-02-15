@@ -1879,9 +1879,8 @@ void Client::initScreenshotDir()
 
             if (!configScreenshotSuffix.empty())
             {
-                mScreenshotDir += PHYSFS_getDirSeparator() + configScreenshotSuffix;
-//                config.setValue("screenshotDirectorySuffix",
-//                                configScreenshotSuffix);
+                mScreenshotDir += PHYSFS_getDirSeparator()
+                    + configScreenshotSuffix;
             }
         }
     }
