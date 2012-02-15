@@ -769,6 +769,12 @@ class Being : public ActorSprite, public ConfigListener
 
         void updatePercentHP();
 
+        void setRaceName(std::string name)
+        { mRaceName = name; }
+
+        std::string getRaceName()
+        { return mRaceName; }
+
     protected:
         /**
          * Sets the new path for this being.
@@ -804,6 +810,7 @@ class Being : public ActorSprite, public ConfigListener
 
         Uint8 mSpriteDirection;         /**< Facing direction */
         std::string mName;              /**< Name of character */
+        std::string mRaceName;
         std::string mPartyName;
         std::string mGuildName;
 

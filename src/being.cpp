@@ -338,7 +338,15 @@ void Being::setSubtype(Uint16 subtype)
 
         // Prevent showing errors when sprite doesn't exist
         if (!ItemDB::exists(id))
+        {
             id = -100;
+            setRaceName(_("Human"));
+        }
+        else
+        {
+            const ItemInfo &info = ItemDB::get(id);
+            setRaceName(info.getName());
+        }
 
         setSprite(Net::getCharHandler()->baseSprite(), id);
     }

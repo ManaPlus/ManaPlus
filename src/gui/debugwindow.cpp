@@ -62,7 +62,7 @@ DebugWindow::DebugWindow():
     setSaveVisible(true);
     setStickyButtonLock(true);
 
-    setDefaultSize(400, 150, ImageRect::CENTER);
+    setDefaultSize(400, 300, ImageRect::CENTER);
 
     mTabs = new TabbedArea;
     mMapWidget = new MapDebugTab;
@@ -269,9 +269,10 @@ TargetDebugTab::TargetDebugTab()
 
     mTargetLabel = new Label(strprintf("%s ?", _("Target:")));
     mTargetIdLabel = new Label(strprintf("%s ?     ", _("Target Id:")));
-    mTargetLevelLabel = new Label(strprintf("%s ?", _("Target Level:")));
-    mTargetPartyLabel = new Label(strprintf("%s ?", _("Target Party:")));
-    mTargetGuildLabel = new Label(strprintf("%s ?", _("Target Guild:")));
+    mTargetLevelLabel = new Label(strprintf("%s ?", _("Target level:")));
+    mTargetRaceLabel = new Label(strprintf("%s ?", _("Target race:")));
+    mTargetPartyLabel = new Label(strprintf("%s ?", _("Target party:")));
+    mTargetGuildLabel = new Label(strprintf("%s ?", _("Target guild:")));
     mAttackDelayLabel = new Label(strprintf("%s ?", _("Attack delay:")));
     mMinHitLabel = new Label(strprintf("%s ?", _("Minimal hit:")));
     mMaxHitLabel = new Label(strprintf("%s ?", _("Maximum hit:")));
@@ -280,12 +281,13 @@ TargetDebugTab::TargetDebugTab()
     place(0, 0, mTargetLabel, 2);
     place(0, 1, mTargetIdLabel, 2);
     place(0, 2, mTargetLevelLabel, 2);
-    place(0, 3, mAttackDelayLabel, 2);
-    place(0, 4, mTargetPartyLabel, 2);
-    place(0, 5, mTargetGuildLabel, 2);
-    place(0, 6, mMinHitLabel, 2);
-    place(0, 7, mMaxHitLabel, 2);
-    place(0, 8, mCriticalHitLabel, 2);
+    place(0, 3, mTargetRaceLabel, 2);
+    place(0, 4, mAttackDelayLabel, 2);
+    place(0, 5, mTargetPartyLabel, 2);
+    place(0, 6, mTargetGuildLabel, 2);
+    place(0, 7, mMinHitLabel, 2);
+    place(0, 8, mMaxHitLabel, 2);
+    place(0, 9, mCriticalHitLabel, 2);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -314,6 +316,9 @@ void TargetDebugTab::logic()
             mTargetLevelLabel->setCaption(strprintf("%s ?",
                 _("Target Level:")));
         }
+
+        mTargetRaceLabel->setCaption(strprintf("%s %s",
+            _("Target race:"), target->getRaceName().c_str()));
 
         mTargetPartyLabel->setCaption(strprintf("%s %s", _("Target Party:"),
             target->getPartyName().c_str()));

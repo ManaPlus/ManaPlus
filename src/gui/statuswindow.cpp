@@ -135,7 +135,13 @@ StatusWindow::StatusWindow():
     setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize((windowContainer->getWidth() - 480) / 2,
-                   (windowContainer->getHeight() - 500) / 2, 480, 500);
+        (windowContainer->getHeight() - 500) / 2, 480, 500);
+
+    if (player_node && !player_node->getRaceName().empty())
+    {
+        setCaption(strprintf("%s (%s)", player_node->getName().c_str(),
+            player_node->getRaceName().c_str()));
+    }
 
     // ----------------------
     // Status Part
