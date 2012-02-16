@@ -484,13 +484,15 @@ void ServerDialog::downloadServerList()
     }
 
     mDownload = new Net::Download(this, listFile, &downloadUpdate);
-    mDownload->setFile(mDir + "/serverlist.xml");
+    mDownload->setFile(mDir + "/" + branding.getStringValue(
+        "onlineServerFile"));
     mDownload->start();
 }
 
 void ServerDialog::loadServers(bool addNew)
 {
-    XML::Document doc(mDir + "/serverlist.xml", false);
+    XML::Document doc(mDir + "/" + branding.getStringValue(
+        "onlineServerFile"), false);
     XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
