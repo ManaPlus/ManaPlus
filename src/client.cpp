@@ -866,7 +866,7 @@ int Client::gameExec()
             Net::getGeneralHandler()->flushNetwork();
 
         int k = 0;
-        while (lastTickTime != tick_time && k < 2)
+        while (lastTickTime != tick_time && k < 40)
         {
             if (gui)
                 gui->logic();
