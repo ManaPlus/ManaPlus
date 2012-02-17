@@ -655,7 +655,7 @@ std::string BrowserBox::getTextAtPos(const int x, const int y)
         return ""; // mouse position ourside of correct widget (outside of tab)
 
     textX = x - textX;
-    textY = y - textY;
+//    textY = y - textY;
 
     std::string str = "";
 

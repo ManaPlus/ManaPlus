@@ -114,8 +114,6 @@ void SpellPopup::view(int x, int y)
     {
         if (y > getHeight() + distance)
             posY = y - getHeight() - distance;
-        else
-            y = 0;
     }
 
     setPosition(posX, posY);

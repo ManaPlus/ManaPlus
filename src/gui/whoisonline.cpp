@@ -230,7 +230,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
     if (addedFromSection == true && !disregard.empty())
     {
         mBrowserBox->addRow("---");
-        addedFromSection = false;
+//        addedFromSection = false;
     }
     for (int i = 0; i < static_cast<int>(disregard.size()); i++)
     {

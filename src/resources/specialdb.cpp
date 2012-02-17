@@ -129,5 +129,4 @@ SpecialInfo *SpecialDB::get(int id)
         return nullptr;
     else
         return i->second;
-    return nullptr;
 }

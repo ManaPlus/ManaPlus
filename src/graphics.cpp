@@ -112,7 +112,7 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
     if (mTarget->format)
     {
         logger->log("Bits per pixel: %d", mTarget->format->BytesPerPixel);
-        bpp = mTarget->format->BytesPerPixel;
+//        bpp = mTarget->format->BytesPerPixel;
     }
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();

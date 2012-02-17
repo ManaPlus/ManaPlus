@@ -214,7 +214,12 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
             }
         }
         if (fail)
-            mFrameTime = mFrame->delay + 1;
+        {
+            if (mFrame)
+                mFrameTime = mFrame->delay + 1;
+            else
+                mFrameTime ++;
+        }
     }
     return true;
 }

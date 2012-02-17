@@ -1420,7 +1420,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
                     Net::getPlayerHandler()->setDirection(direction);
                 }
             }
-            direction = 0;
+//            direction = 0;
         }
         else
         {
@@ -1695,7 +1695,7 @@ void Game::handleInput()
                 {
                     if (emoteShortcut)
                         emoteShortcut->useEmote(emotion);
-                    used = true;
+//                    used = true;
                     setValidSpeed();
                     return;
                 }

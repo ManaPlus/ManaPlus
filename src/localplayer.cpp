@@ -3168,14 +3168,10 @@ void LocalPlayer::specialMove(unsigned char direction)
         && getInvertDirection() <= 4)
         && !mIsServerBuggy)
     {
-        int max;
-        if (getInvertDirection() == 2)
-            max = 10;
-        else
-            max = 30;
-
         if (mAction == MOVE)
             return;
+
+        int max;
 
         if (getInvertDirection() == 2)
             max = 5;
