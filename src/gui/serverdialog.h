@@ -138,11 +138,15 @@ class ServerDialog : public Window,
          * Called to load a list of available server from an online xml file.
          */
         void downloadServerList();
+
         void loadServers(bool addNew = true);
 
         void loadCustomServers();
+
         void saveCustomServers(const ServerInfo &currentServer = ServerInfo(),
                                int index = -1);
+
+        bool needUpdateServers();
 
         static int downloadUpdate(void *ptr, DownloadStatus status,
                                   size_t total, size_t remaining);

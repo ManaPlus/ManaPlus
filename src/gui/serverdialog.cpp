@@ -305,7 +305,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadServers(true);
 
-    if (mServers.empty())
+    if (needUpdateServers())
         downloadServerList();
 }
 
@@ -487,6 +487,8 @@ void ServerDialog::downloadServerList()
     mDownload->setFile(mDir + "/" + branding.getStringValue(
         "onlineServerFile"));
     mDownload->start();
+
+    config.setValue("serverslistupdate", getDateString());
 }
 
 void ServerDialog::loadServers(bool addNew)
@@ -741,4 +743,15 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
 void ServerDialog::updateServer(ServerInfo server, int index)
 {
     saveCustomServers(server, index);
+}
+
+bool ServerDialog::needUpdateServers()
+{
+    if (mServers.empty() || config.getStringValue("serverslistupdate")
+        != getDateString())
+    {
+        return true;
+    }
+
+    return false;
 }

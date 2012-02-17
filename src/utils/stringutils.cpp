@@ -609,3 +609,17 @@ bool strStartWith(std::string str1, std::string str2)
         return false;
     return str1.substr(0, str2.size()) == str2;
 }
+
+std::string getDateString()
+{
+    char buffer[80];
+
+    time_t rawtime;
+    struct tm *timeinfo;
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer, 79, "%Y-%m-%d", timeinfo);
+    return std::string(buffer);
+}
