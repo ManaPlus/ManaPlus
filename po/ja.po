@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-16 23:43+0300\n"
-"PO-Revision-Date: 2012-02-12 16:02+0000\n"
+"POT-Creation-Date: 2012-02-18 17:08+0300\n"
+"PO-Revision-Date: 2012-02-17 19:35+0000\n"
 "Last-Translator: Candy <HarajukuCupcakes@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/"
 "language/ja/)\n"
@@ -29,7 +29,7 @@ msgstr "マップに表示させる"
 
 #: src/being.cpp:343
 msgid "Human"
-msgstr ""
+msgstr "人間"
 
 #: src/being.cpp:560
 msgid "dodge"
@@ -49,47 +49,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:960 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
+#: src/client.cpp:963 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
 msgstr "設定"
 
-#: src/client.cpp:967 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:970 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
 msgstr "パフォーマンス"
 
-#: src/client.cpp:972 src/gui/setup_video.cpp:319
+#: src/client.cpp:975 src/gui/setup_video.cpp:318
 msgid "Video"
 msgstr "ビデオ"
 
-#: src/client.cpp:977
+#: src/client.cpp:980
 msgid "Themes"
 msgstr "テーマ"
 
-#: src/client.cpp:1059
+#: src/client.cpp:1062
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
-#: src/client.cpp:1091
+#: src/client.cpp:1094
 msgid "Logging in"
 msgstr "ログインしています"
 
-#: src/client.cpp:1124
+#: src/client.cpp:1127
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
-#: src/client.cpp:1226
+#: src/client.cpp:1229
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
-#: src/client.cpp:1261
+#: src/client.cpp:1264
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
-#: src/client.cpp:1271
+#: src/client.cpp:1274
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
-#: src/client.cpp:1314 src/client.cpp:1321 src/client.cpp:1455
+#: src/client.cpp:1317 src/client.cpp:1324 src/client.cpp:1458
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
@@ -99,50 +99,50 @@ msgstr "ゲームサーバーを変更しています"
 msgid "Error"
 msgstr "エラー"
 
-#: src/client.cpp:1330
+#: src/client.cpp:1333
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
-#: src/client.cpp:1356
+#: src/client.cpp:1359
 msgid "Password Change"
 msgstr "パスワード変更"
 
-#: src/client.cpp:1357
+#: src/client.cpp:1360
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました"
 
-#: src/client.cpp:1376
+#: src/client.cpp:1379
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
-#: src/client.cpp:1377
+#: src/client.cpp:1380
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました"
 
-#: src/client.cpp:1397
+#: src/client.cpp:1400
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
-#: src/client.cpp:1398
+#: src/client.cpp:1401
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう"
 
-#: src/client.cpp:1603 src/client.cpp:1636 src/client.cpp:1651
-#: src/client.cpp:2082 src/client.cpp:2089
+#: src/client.cpp:1606 src/client.cpp:1639 src/client.cpp:1654
+#: src/client.cpp:2085 src/client.cpp:2092
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません"
 
-#: src/client.cpp:1789
+#: src/client.cpp:1792
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "無効なアップデートホスト:%s"
 
-#: src/client.cpp:1823 src/client.cpp:1829
+#: src/client.cpp:1826 src/client.cpp:1832
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラー"
 
-#: src/client.cpp:1850
+#: src/client.cpp:1853
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません"
@@ -863,22 +863,18 @@ msgid "Target Id:"
 msgstr "ターゲットID:"
 
 #: src/gui/debugwindow.cpp:272
-#, fuzzy
 msgid "Target level:"
 msgstr "ターゲットレベル:"
 
 #: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:321
-#, fuzzy
 msgid "Target race:"
-msgstr "ターゲットタイプ:"
+msgstr "ターゲット種別:"
 
 #: src/gui/debugwindow.cpp:274
-#, fuzzy
 msgid "Target party:"
 msgstr "ターゲットパーティ:"
 
 #: src/gui/debugwindow.cpp:275
-#, fuzzy
 msgid "Target guild:"
 msgstr "ターゲットギルド:"
 
@@ -1785,11 +1781,11 @@ msgstr "ダウンロード準備中..."
 msgid "Error retreiving server list!"
 msgstr "サーバーリストの読み込みに失敗"
 
-#: src/gui/serverdialog.cpp:544
+#: src/gui/serverdialog.cpp:548
 msgid "requires a newer version"
 msgstr "アップデートが必要です"
 
-#: src/gui/serverdialog.cpp:546
+#: src/gui/serverdialog.cpp:550
 #, c-format
 msgid "requires v%s"
 msgstr "v%sが必要"
@@ -2327,7 +2323,7 @@ msgstr "クリックでヒール"
 
 #: src/gui/setup_players.cpp:87
 msgid "Group friends in who is online window"
-msgstr ""
+msgstr "オンラインリストをグループ化する"
 
 #: src/gui/setup_relations.cpp:66
 msgid "Relation"
@@ -2505,8 +2501,8 @@ msgstr "フォントサイズ"
 msgid "Theme Changed"
 msgstr "テーマを変更しました"
 
-#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:636
-#: src/gui/setup_video.cpp:641
+#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:635
+#: src/gui/setup_video.cpp:640
 msgid "Restart your client for the change to take effect."
 msgstr "設定変更の為アプリケーションを再起動してください"
 
@@ -2538,138 +2534,138 @@ msgstr "吹き出し,名前表示なし"
 msgid "Bubbles with names"
 msgstr "吹き出し,名前表示あり"
 
-#: src/gui/setup_video.cpp:242
+#: src/gui/setup_video.cpp:241
 msgid "off"
 msgstr "オフ"
 
-#: src/gui/setup_video.cpp:244 src/gui/setup_video.cpp:261
+#: src/gui/setup_video.cpp:243 src/gui/setup_video.cpp:260
 msgid "low"
 msgstr "低"
 
-#: src/gui/setup_video.cpp:246 src/gui/setup_video.cpp:265
+#: src/gui/setup_video.cpp:245 src/gui/setup_video.cpp:264
 msgid "high"
 msgstr "高"
 
-#: src/gui/setup_video.cpp:263
+#: src/gui/setup_video.cpp:262
 msgid "medium"
 msgstr "中"
 
-#: src/gui/setup_video.cpp:267
+#: src/gui/setup_video.cpp:266
 msgid "max"
 msgstr "最大"
 
-#: src/gui/setup_video.cpp:290
+#: src/gui/setup_video.cpp:289
 msgid "Full screen"
 msgstr "フルスクリーン"
 
-#: src/gui/setup_video.cpp:291
+#: src/gui/setup_video.cpp:290
 msgid "Custom cursor"
 msgstr "カスタムカーソル"
 
-#: src/gui/setup_video.cpp:293
+#: src/gui/setup_video.cpp:292
 msgid "Particle effects"
 msgstr "パーティクル効果"
 
-#: src/gui/setup_video.cpp:295
+#: src/gui/setup_video.cpp:294
 msgid "Show pickup notification"
 msgstr "収集通知表示"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:297
+#: src/gui/setup_video.cpp:296
 msgid "in chat"
 msgstr "チャットで"
 
 #. TRANSLATORS: Refers to "Show own name"
-#: src/gui/setup_video.cpp:299
+#: src/gui/setup_video.cpp:298
 msgid "as particle"
 msgstr "画面内で"
 
-#: src/gui/setup_video.cpp:301
+#: src/gui/setup_video.cpp:300
 msgid "Enable resize"
 msgstr "リサイズを有効にする"
 
-#: src/gui/setup_video.cpp:302
+#: src/gui/setup_video.cpp:301
 msgid "No frame"
 msgstr "フレームなし"
 
-#: src/gui/setup_video.cpp:306
+#: src/gui/setup_video.cpp:305
 msgid "FPS limit:"
 msgstr "FPSリミット:"
 
-#: src/gui/setup_video.cpp:310 src/gui/setup_video.cpp:345
-#: src/gui/setup_video.cpp:574 src/gui/setup_video.cpp:730
+#: src/gui/setup_video.cpp:309 src/gui/setup_video.cpp:344
+#: src/gui/setup_video.cpp:573 src/gui/setup_video.cpp:729
 msgid "Alt FPS limit: "
 msgstr "Alt FPS リミット: "
 
-#: src/gui/setup_video.cpp:325
+#: src/gui/setup_video.cpp:324
 msgid "Overhead text"
 msgstr "ヘッダーテキスト"
 
-#: src/gui/setup_video.cpp:326
+#: src/gui/setup_video.cpp:325
 msgid "Gui opacity"
 msgstr "GUI不透明"
 
-#: src/gui/setup_video.cpp:327
+#: src/gui/setup_video.cpp:326
 msgid "Ambient FX"
 msgstr "環境FX"
 
-#: src/gui/setup_video.cpp:328
+#: src/gui/setup_video.cpp:327
 msgid "Particle detail"
 msgstr "パーティクルの詳細"
 
-#: src/gui/setup_video.cpp:343 src/gui/setup_video.cpp:346
-#: src/gui/setup_video.cpp:573 src/gui/setup_video.cpp:716
-#: src/gui/setup_video.cpp:728
+#: src/gui/setup_video.cpp:342 src/gui/setup_video.cpp:345
+#: src/gui/setup_video.cpp:572 src/gui/setup_video.cpp:715
+#: src/gui/setup_video.cpp:727
 msgid "None"
 msgstr "なし"
 
-#: src/gui/setup_video.cpp:494
+#: src/gui/setup_video.cpp:493
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr "ウインドウモード、また前モードの復元にも失敗しました"
 
-#: src/gui/setup_video.cpp:500
+#: src/gui/setup_video.cpp:499
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr "フルスクリーンモード、また前モードの復元にも失敗しました"
 
-#: src/gui/setup_video.cpp:511
+#: src/gui/setup_video.cpp:510
 msgid "Switching to Full Screen"
 msgstr "フルスクリーンに変更"
 
-#: src/gui/setup_video.cpp:512
+#: src/gui/setup_video.cpp:511
 msgid "Restart needed for changes to take effect."
 msgstr "設定変更の為、再起動をしてください"
 
-#: src/gui/setup_video.cpp:524
+#: src/gui/setup_video.cpp:523
 msgid "Changing to OpenGL"
 msgstr "OpenGLに変更"
 
-#: src/gui/setup_video.cpp:525
+#: src/gui/setup_video.cpp:524
 msgid "Applying change to OpenGL requires restart."
 msgstr "OpenGLの設定を変更するため、再起動をしてください。"
 
-#: src/gui/setup_video.cpp:618
+#: src/gui/setup_video.cpp:617
 msgid "Custom resolution (example: 1024x768)"
 msgstr "カスタム解像度 (例: 1024x768)"
 
-#: src/gui/setup_video.cpp:619
+#: src/gui/setup_video.cpp:618
 msgid "Enter new resolution:                "
 msgstr "解像度を入力して下さい:                "
 
-#: src/gui/setup_video.cpp:635 src/gui/setup_video.cpp:640
+#: src/gui/setup_video.cpp:634 src/gui/setup_video.cpp:639
 msgid "Screen Resolution Changed"
 msgstr "スクリーンの解像度を変更しました"
 
-#: src/gui/setup_video.cpp:638
+#: src/gui/setup_video.cpp:637
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr "解像度の変更に合わせ、いくつかのウィンドウが移動する可能性があります"
 
-#: src/gui/setup_video.cpp:674
+#: src/gui/setup_video.cpp:673
 msgid "Particle Effect Settings Changed."
 msgstr "パーティクル効果の設定を変更しました"
 
-#: src/gui/setup_video.cpp:675
+#: src/gui/setup_video.cpp:674
 msgid "Changes will take effect on map change."
 msgstr "変更はマップが変わった時に有効になります"
 
@@ -4362,23 +4358,23 @@ msgstr "ゲームモディファイアは無効になってます"
 msgid "Game modifiers are unknown"
 msgstr "不明なゲームモディファイアー"
 
-#: src/localplayer.cpp:3785
+#: src/localplayer.cpp:3781
 msgid "Follow: "
 msgstr "フォロー: "
 
-#: src/localplayer.cpp:3787 src/localplayer.cpp:3802
+#: src/localplayer.cpp:3783 src/localplayer.cpp:3798
 msgid "Follow canceled"
 msgstr "フォローを止める"
 
-#: src/localplayer.cpp:3794
+#: src/localplayer.cpp:3790
 msgid "Imitation: "
 msgstr "真似: "
 
-#: src/localplayer.cpp:3796 src/localplayer.cpp:3804
+#: src/localplayer.cpp:3792 src/localplayer.cpp:3800
 msgid "Imitation canceled"
 msgstr "真似をやめる"
 
-#: src/localplayer.cpp:4152
+#: src/localplayer.cpp:4148
 msgid "You see "
 msgstr " が見える"
 
@@ -4487,7 +4483,7 @@ msgstr "売るアイテムがありません"
 
 #: src/net/ea/buysellhandler.cpp:171
 msgid "Thanks for buying."
-msgstr "ご購入ありがとうございました"
+msgstr "ありがとうございました"
 
 #: src/net/ea/buysellhandler.cpp:179
 msgid "Unable to buy."
@@ -5524,7 +5520,7 @@ msgstr "追い出し成功"
 
 #: src/net/tmwa/buysellhandler.cpp:133
 msgid "Thanks for selling."
-msgstr "販売ありがとうございました。"
+msgstr "ありがとうございました"
 
 #: src/net/tmwa/buysellhandler.cpp:137
 msgid "Unable to sell."

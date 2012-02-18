@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Andrei Karas <akaras@inbox.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
@@ -11,11 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2012-02-16 23:43+0300\n"
 "PO-Revision-Date: 2012-02-16 20:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.net/projects/p/manaplus/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: te\n"
+"Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1168
@@ -92,7 +91,7 @@ msgstr ""
 #: src/net/ea/charserverhandler.cpp:188 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
-msgstr "పొరపాటు"
+msgstr ""
 
 #: src/client.cpp:1330
 msgid "Requesting registration details"
@@ -144,7 +143,7 @@ msgstr ""
 
 #: src/commandhandler.cpp:215
 msgid "Unknown command."
-msgstr "గుర్తుతెలియని ఆదేశం."
+msgstr ""
 
 #: src/commandhandler.cpp:335
 msgid "Cannot send empty whispers!"
@@ -321,7 +320,7 @@ msgstr ""
 
 #: src/game.cpp:256 src/gui/widgets/chattab.cpp:413
 msgid "General"
-msgstr "సాధారణ"
+msgstr ""
 
 #: src/game.cpp:260 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:415
 msgid "Debug"
@@ -386,7 +385,7 @@ msgstr ""
 
 #: src/gui/botcheckerwindow.cpp:297 src/gui/setup_relations.cpp:65
 msgid "Name"
-msgstr "పేరు"
+msgstr ""
 
 #: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:138
 #: src/gui/popupmenu.cpp:308 src/gui/popupmenu.cpp:673
@@ -423,7 +422,7 @@ msgstr ""
 #: src/gui/selldialog.cpp:88 src/gui/selldialog.cpp:325
 #, c-format
 msgid "Price: %s / Total: %s"
-msgstr "వెల: %s / మొత్తం: %s"
+msgstr ""
 
 #: src/gui/buydialog.cpp:103
 msgid "Amount:"
@@ -450,13 +449,13 @@ msgstr ""
 #: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:261
 #: src/keyboardconfig.cpp:84
 msgid "Quit"
-msgstr "నిష్క్రమించు"
+msgstr ""
 
 #: src/gui/buydialog.cpp:114 src/gui/selldialog.cpp:95
 #: src/gui/statuswindow.cpp:521 src/gui/statuswindow.cpp:576
 #: src/gui/statuswindow.cpp:775 src/gui/statuswindow.cpp:806
 msgid "Max"
-msgstr "గరిష్ఠ"
+msgstr ""
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
 #: src/gui/inventorywindow.cpp:176 src/gui/setup_other.cpp:142
@@ -487,16 +486,16 @@ msgstr ""
 #: src/gui/textcommandeditor.cpp:241 src/gui/textdialog.cpp:51
 #: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:169
 msgid "Cancel"
-msgstr "రద్దుచేయి"
+msgstr ""
 
 #: src/gui/changeemaildialog.cpp:48 src/gui/changeemaildialog.cpp:57
 msgid "Change Email Address"
-msgstr "ఈమెయిల్ చిరునామాని మార్చు"
+msgstr ""
 
 #: src/gui/changeemaildialog.cpp:52 src/gui/changepassworddialog.cpp:55
 #, c-format
 msgid "Account: %s"
-msgstr "ఖాతా: %s"
+msgstr ""
 
 #: src/gui/changeemaildialog.cpp:54
 msgid "Type new email address twice:"
@@ -519,12 +518,12 @@ msgstr ""
 #: src/gui/changepassworddialog.cpp:50 src/gui/changepassworddialog.cpp:59
 #: src/gui/charselectdialog.cpp:140
 msgid "Change Password"
-msgstr "సంకేతపదాన్ని మార్చు"
+msgstr ""
 
 #: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:97
 #: src/gui/register.cpp:76 src/gui/unregisterdialog.cpp:56
 msgid "Password:"
-msgstr "సంకేతపదం:"
+msgstr ""
 
 #: src/gui/changepassworddialog.cpp:66
 msgid "Type new password twice:"
@@ -555,7 +554,7 @@ msgstr ""
 #: src/gui/charcreatedialog.cpp:99 src/gui/editserverdialog.cpp:61
 #: src/gui/logindialog.cpp:96 src/gui/register.cpp:75
 msgid "Name:"
-msgstr "పేరు:"
+msgstr ""
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
@@ -591,15 +590,15 @@ msgstr ""
 #: src/gui/charcreatedialog.cpp:123 src/gui/charselectdialog.cpp:483
 #: src/gui/socialwindow.cpp:1261
 msgid "Create"
-msgstr "సృష్టించు"
+msgstr ""
 
 #: src/gui/charcreatedialog.cpp:125 src/gui/register.cpp:98
 msgid "Male"
-msgstr "పురుషుడు"
+msgstr ""
 
 #: src/gui/charcreatedialog.cpp:126 src/gui/register.cpp:99
 msgid "Female"
-msgstr "స్త్రీ"
+msgstr ""
 
 #: src/gui/charcreatedialog.cpp:144 src/gui/charcreatedialog.cpp:368
 #, c-format
@@ -608,7 +607,7 @@ msgstr ""
 
 #: src/gui/charcreatedialog.cpp:273
 msgid "Your name needs to be at least 4 characters."
-msgstr "మీ పేరు కనీసం 4 అక్షరాల పొడవుండాలి."
+msgstr ""
 
 #: src/gui/charcreatedialog.cpp:359
 msgid "Character stats OK"
@@ -660,7 +659,7 @@ msgstr ""
 #: src/gui/setup_relations.cpp:247 src/gui/shopwindow.cpp:123
 #: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
-msgstr "తొలగించు"
+msgstr ""
 
 #: src/gui/charselectdialog.cpp:471
 msgid "Choose"
@@ -739,7 +738,7 @@ msgstr ""
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
 msgid "???"
-msgstr "???"
+msgstr ""
 
 #: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:48
 msgid "Chat"
@@ -757,11 +756,11 @@ msgstr ""
 
 #: src/gui/confirmdialog.cpp:47
 msgid "Yes"
-msgstr "అవును"
+msgstr ""
 
 #: src/gui/confirmdialog.cpp:48
 msgid "No"
-msgstr "కాదు"
+msgstr ""
 
 #: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:151
 #: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:168
@@ -776,7 +775,7 @@ msgstr ""
 #: src/gui/debugwindow.cpp:72 src/gui/minimap.cpp:50 src/gui/minimap.cpp:99
 #: src/gui/setup_other.cpp:64
 msgid "Map"
-msgstr "పటం"
+msgstr ""
 
 #: src/gui/debugwindow.cpp:73
 msgid "Target"
@@ -949,7 +948,7 @@ msgstr ""
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:45
 #: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
-msgstr "సరే"
+msgstr ""
 
 #: src/gui/editserverdialog.cpp:54
 msgid "Edit Server"
@@ -988,7 +987,7 @@ msgstr ""
 
 #: src/gui/helpwindow.cpp:44
 msgid "Help"
-msgstr "సహాయం"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:71
 msgid "by name"
@@ -1054,7 +1053,7 @@ msgstr ""
 
 #: src/gui/inventorywindow.cpp:178
 msgid "Weight:"
-msgstr "బరువు:"
+msgstr ""
 
 #: src/gui/inventorywindow.cpp:203 src/gui/inventorywindow.cpp:643
 #: src/gui/popupmenu.cpp:1799 src/gui/popupmenu.cpp:1932
@@ -1074,7 +1073,7 @@ msgstr ""
 
 #: src/gui/itemamountwindow.cpp:208
 msgid "All"
-msgstr "అన్నీ"
+msgstr ""
 
 #: src/gui/itemamountwindow.cpp:259
 msgid "Select amount of items to trade."
@@ -1223,7 +1222,7 @@ msgstr ""
 
 #: src/gui/logindialog.cpp:87 src/gui/logindialog.cpp:125
 msgid "Login"
-msgstr "ప్రవేశించు"
+msgstr ""
 
 #: src/gui/logindialog.cpp:93 src/gui/widgets/chattab.cpp:173
 msgid "Server:"
@@ -1295,7 +1294,7 @@ msgstr ""
 
 #: src/gui/npcdialog.cpp:53
 msgid "Next"
-msgstr "తదుపరి"
+msgstr ""
 
 #: src/gui/npcdialog.cpp:55
 msgid "Submit"
@@ -1316,7 +1315,7 @@ msgstr ""
 
 #: src/gui/npcpostdialog.cpp:55
 msgid "Send"
-msgstr "పంపించు"
+msgstr ""
 
 #: src/gui/npcpostdialog.cpp:99
 msgid "Failed to send as sender or letter invalid."
@@ -1510,7 +1509,7 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:359 src/gui/setup_players.cpp:48
 msgid "Players"
-msgstr "ఆటగాళ్ళు"
+msgstr ""
 
 #: src/gui/popupmenu.cpp:547
 msgid "Pick up"
@@ -1707,7 +1706,7 @@ msgstr ""
 
 #: src/gui/register.cpp:108
 msgid "Email:"
-msgstr "ఈమెయిల్:"
+msgstr ""
 
 #: src/gui/register.cpp:176
 #, c-format
@@ -1839,7 +1838,7 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
 msgid "Colors"
-msgstr "రంగులు"
+msgstr ""
 
 #: src/gui/setup_chat.cpp:57
 msgid "Remove colors from received chat messages"
@@ -1961,7 +1960,7 @@ msgstr ""
 #: src/gui/setup_colors.cpp:90 src/gui/setup_colors.cpp:91
 #: src/gui/setup_colors.cpp:409
 msgid "Rainbow"
-msgstr "ఇంద్ర ధనస్సు"
+msgstr ""
 
 #: src/gui/setup_colors.cpp:92 src/gui/setup_colors.cpp:93
 #: src/gui/setup_colors.cpp:409
@@ -2519,7 +2518,7 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:225
 msgid "Text"
-msgstr "పాఠ్యం"
+msgstr ""
 
 #: src/gui/setup_video.cpp:227
 msgid "Bubbles, no names"
@@ -2547,11 +2546,11 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:267
 msgid "max"
-msgstr "గరిష్ఠ"
+msgstr ""
 
 #: src/gui/setup_video.cpp:290
 msgid "Full screen"
-msgstr "నిండుతెర"
+msgstr ""
 
 #: src/gui/setup_video.cpp:291
 msgid "Custom cursor"
@@ -2953,7 +2952,7 @@ msgstr ""
 #: src/gui/statuswindow.cpp:343
 #, c-format
 msgid "Level: %d"
-msgstr "స్థాయి: %d"
+msgstr ""
 
 #: src/gui/statuswindow.cpp:151 src/gui/statuswindow.cpp:266
 #: src/gui/statuswindow.cpp:310
@@ -3130,7 +3129,7 @@ msgstr ""
 #: src/gui/unregisterdialog.cpp:54
 #, c-format
 msgid "Name: %s"
-msgstr "పేరు: %s"
+msgstr ""
 
 #: src/gui/updaterwindow.cpp:140
 msgid "Updating..."

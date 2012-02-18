@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Andrei Karas <akaras@inbox.ru>, 2011.
+#   <tassos19962009@hotmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
@@ -11,11 +11,11 @@ msgstr ""
 "POT-Creation-Date: 2012-02-16 23:43+0300\n"
 "PO-Revision-Date: 2012-02-16 20:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Greek (http://www.transifex.net/projects/p/manaplus/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: te\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: src/actorspritemanager.cpp:1168
@@ -28,11 +28,11 @@ msgstr ""
 
 #: src/being.cpp:560
 msgid "dodge"
-msgstr ""
+msgstr "υπευκφυγή"
 
 #: src/being.cpp:560
 msgid "miss"
-msgstr ""
+msgstr "αστοχία"
 
 #. TRANSLATORS: this away status writed in player nick
 #: src/being.cpp:1540 src/gui/whoisonline.cpp:760
@@ -46,7 +46,7 @@ msgstr ""
 
 #: src/client.cpp:960 src/gui/setup.cpp:54 src/gui/windowmenu.cpp:100
 msgid "Setup"
-msgstr ""
+msgstr "Ρύθμισεις"
 
 #: src/client.cpp:967 src/gui/setup_perfomance.cpp:48
 msgid "Perfomance"
@@ -62,27 +62,27 @@ msgstr ""
 
 #: src/client.cpp:1059
 msgid "Connecting to server"
-msgstr ""
+msgstr "Σύνδεση σε τονδιακομιστή"
 
 #: src/client.cpp:1091
 msgid "Logging in"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: src/client.cpp:1124
 msgid "Entering game world"
-msgstr ""
+msgstr "Μπαίνοντας στον κόσμο του παιχνιδιού "
 
 #: src/client.cpp:1226
 msgid "Requesting characters"
-msgstr ""
+msgstr "Αναζητώντας χαρακτήρες"
 
 #: src/client.cpp:1261
 msgid "Connecting to the game server"
-msgstr ""
+msgstr "Σύνδεση με τον διακομιστή του παιχνιδιού"
 
 #: src/client.cpp:1271
 msgid "Changing game servers"
-msgstr ""
+msgstr "Αλλαγή διακοσμητών στο παιχνίδι"
 
 #: src/client.cpp:1314 src/client.cpp:1321 src/client.cpp:1455
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
@@ -92,88 +92,88 @@ msgstr ""
 #: src/net/ea/charserverhandler.cpp:188 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
-msgstr "పొరపాటు"
+msgstr "Σφάλμα"
 
 #: src/client.cpp:1330
 msgid "Requesting registration details"
-msgstr ""
+msgstr "Αναζητούνται τα στοιχεία της εγγραφής"
 
 #: src/client.cpp:1356
 msgid "Password Change"
-msgstr ""
+msgstr "Αλλαγή κωδικού πρόσβασης"
 
 #: src/client.cpp:1357
 msgid "Password changed successfully!"
-msgstr ""
+msgstr "Ο κωδικός σας άλλαξε με επιτυχία!"
 
 #: src/client.cpp:1376
 msgid "Email Change"
-msgstr ""
+msgstr "Αλλαγή ηλεκτρονικού ταχυδρομείου"
 
 #: src/client.cpp:1377
 msgid "Email changed successfully!"
-msgstr ""
+msgstr "Ηλεκτρονικό ταχυδρομείο άλλαξε με επιτυχία!"
 
 #: src/client.cpp:1397
 msgid "Unregister Successful"
-msgstr ""
+msgstr "Διαγραφή Επιτυχής"
 
 #: src/client.cpp:1398
 msgid "Farewell, come back any time..."
-msgstr ""
+msgstr "Αντίο, να επιστρέψεις κάθε στιγμή ..."
 
 #: src/client.cpp:1603 src/client.cpp:1636 src/client.cpp:1651
 #: src/client.cpp:2082 src/client.cpp:2089
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr " %s δεν υπάρχει και δεν μπορεί να δημιουργηθεί!Έξοδος."
 
 #: src/client.cpp:1789
 #, c-format
 msgid "Invalid update host: %s"
-msgstr ""
+msgstr "Άκυρα ενημέρωση υποδοχής: %s"
 
 #: src/client.cpp:1823 src/client.cpp:1829
 msgid "Error creating updates directory!"
-msgstr ""
+msgstr "Σφάλμα κατά τη δημιουργία του καταλόγου ενημερώσεων!"
 
 #: src/client.cpp:1850
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
-msgstr ""
+msgstr "Σφάλμα: %s δεν υπάρχει και δεν μπορεί να δημιουργηθεί! Εγκατάλειψη."
 
 #: src/commandhandler.cpp:215
 msgid "Unknown command."
-msgstr "గుర్తుతెలియని ఆదేశం."
+msgstr "Άγνωστη εντολή."
 
 #: src/commandhandler.cpp:335
 msgid "Cannot send empty whispers!"
-msgstr ""
+msgstr "Δεν είναι δυνατή η αποστολή άδειου ψιθύρου!"
 
 #: src/commandhandler.cpp:349
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is"
 " you."
-msgstr ""
+msgstr "Δεν μπορεί να δημιουργηθεί μια καρτέλα ψίθυρου για nick \"%s \"! Είτε υπάρχει ήδη, ή είσαστε εσείς."
 
 #: src/commandhandler.cpp:369
 #, c-format
 msgid "Requesting to join channel %s."
-msgstr ""
+msgstr "Ζητώντας να ενώσει κανάλι %s."
 
 #: src/commandhandler.cpp:385 src/net/ea/gui/partytab.cpp:125
 msgid "Party name is missing."
-msgstr ""
+msgstr "Το όνομα του κόμματος λείπει. "
 
 #: src/commandhandler.cpp:396
 msgid "Guild name is missing."
-msgstr ""
+msgstr "Το όνομα της συντεχνείας λείπει."
 
 #: src/commandhandler.cpp:409 src/commandhandler.cpp:526
 #: src/commandhandler.cpp:567 src/commandhandler.cpp:607
 msgid "Please specify a name."
-msgstr ""
+msgstr "Ορίστε ένα όνομα."
 
 #: src/commandhandler.cpp:460
 msgid "Return toggles chat."
@@ -193,42 +193,42 @@ msgstr ""
 
 #: src/commandhandler.cpp:505
 msgid "friend"
-msgstr ""
+msgstr "φίλος"
 
 #: src/commandhandler.cpp:510
 msgid "disregarded"
-msgstr ""
+msgstr "αγνόησε"
 
 #: src/commandhandler.cpp:515
 msgid "neutral"
-msgstr ""
+msgstr "ουδέτερος"
 
 #: src/commandhandler.cpp:534
 #, c-format
 msgid "Player already %s!"
-msgstr ""
+msgstr "Παίκτης ήδη %s!"
 
 #: src/commandhandler.cpp:548
 #, c-format
 msgid "Player successfully %s!"
-msgstr ""
+msgstr "Παίκτης με επιτυχία %s!"
 
 #: src/commandhandler.cpp:556
 #, c-format
 msgid "Player could not be %s!"
-msgstr ""
+msgstr "Ο παίκτης δεν θα μπορούσε να είναι %s!"
 
 #: src/commandhandler.cpp:579
 msgid "Player wasn't ignored!"
-msgstr ""
+msgstr "Ο παίκτης δεν αγνοήθηκε!"
 
 #: src/commandhandler.cpp:586
 msgid "Player no longer ignored!"
-msgstr ""
+msgstr "Παίκτης δεν είναι πλέον αγνοημένος!"
 
 #: src/commandhandler.cpp:588
 msgid "Player could not be unignored!"
-msgstr ""
+msgstr "Παίκτης δεν θα μπορούσε να unignored!"
 
 #: src/commandhandler.cpp:594
 msgid "blacklisted"
@@ -321,27 +321,27 @@ msgstr ""
 
 #: src/game.cpp:256 src/gui/widgets/chattab.cpp:413
 msgid "General"
-msgstr "సాధారణ"
+msgstr "Γενικά"
 
 #: src/game.cpp:260 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:415
 msgid "Debug"
-msgstr ""
+msgstr "Αποσφαλμάτωση"
 
 #: src/game.cpp:512
 msgid "Screenshot saved as "
-msgstr ""
+msgstr "Φωτογραφία αποθηκεύτηκε ως"
 
 #: src/game.cpp:520
 msgid "Saving screenshot failed!"
-msgstr ""
+msgstr "Σώσιμο φωτογραφίας απέτυχε"
 
 #: src/game.cpp:562
 msgid "The connection to the server was lost."
-msgstr ""
+msgstr "Η σύνδεση με το διακομιστή χάθηκε."
 
 #: src/game.cpp:563
 msgid "Network Error"
-msgstr ""
+msgstr "Σφάλμα δικτύου"
 
 #: src/game.cpp:1275
 msgid "Ignoring incoming trade requests"
@@ -349,31 +349,31 @@ msgstr ""
 
 #: src/game.cpp:1285
 msgid "Accepting incoming trade requests"
-msgstr ""
+msgstr "Αποδεχόμενος τα εισερχόμενα αιτήματα του εμπορίου"
 
 #: src/game.cpp:1799
 msgid "Could Not Load Map"
-msgstr ""
+msgstr "Δε μπορεί να φορτώθει ο χάρτης"
 
 #: src/game.cpp:1800
 #, c-format
 msgid "Error while loading %s"
-msgstr ""
+msgstr "Σφάλμα κατά τη φόρτωση %s"
 
 #: src/gui/beingpopup.cpp:124
 #, c-format
 msgid "Party: %s"
-msgstr ""
+msgstr "Κόμμα: %s"
 
 #: src/gui/beingpopup.cpp:138
 #, c-format
 msgid "Guild: %s"
-msgstr ""
+msgstr "Συντεχνία: %s"
 
 #: src/gui/beingpopup.cpp:151
 #, c-format
 msgid "Pvp rank: %d"
-msgstr ""
+msgstr "Παίκτης εναντίων παίκτη κατάταξη: %d"
 
 #: src/gui/beingpopup.cpp:162
 #, c-format
@@ -386,44 +386,44 @@ msgstr ""
 
 #: src/gui/botcheckerwindow.cpp:297 src/gui/setup_relations.cpp:65
 msgid "Name"
-msgstr "పేరు"
+msgstr "Όνομα"
 
 #: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:138
 #: src/gui/popupmenu.cpp:308 src/gui/popupmenu.cpp:673
 #: src/keyboardconfig.cpp:49 src/net/tmwa/generalhandler.cpp:272
 msgid "Attack"
-msgstr ""
+msgstr "Επίθεση"
 
 #: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:297
 #: src/keyboardconfig.cpp:62
 msgid "Talk"
-msgstr ""
+msgstr "Συζήτηση"
 
 #: src/gui/botcheckerwindow.cpp:300 src/gui/popupmenu.cpp:269
 #: src/gui/popupmenu.cpp:301 src/gui/popupmenu.cpp:482
 #: src/gui/popupmenu.cpp:739 src/gui/popupmenu.cpp:826
 msgid "Move"
-msgstr ""
+msgstr "Κίνηση"
 
 #: src/gui/botcheckerwindow.cpp:301
 msgid "Result"
-msgstr ""
+msgstr "Αποτέλεσμα"
 
 #: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:128
 msgid "Reset"
-msgstr ""
+msgstr "Επαναφορά"
 
 #: src/gui/buydialog.cpp:58 src/gui/buydialog.cpp:65 src/gui/buydialog.cpp:112
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:281
 #: src/gui/popupmenu.cpp:298 src/gui/popupmenu.cpp:751
 msgid "Buy"
-msgstr ""
+msgstr "Αγορά"
 
 #: src/gui/buydialog.cpp:94 src/gui/buydialog.cpp:332
 #: src/gui/selldialog.cpp:88 src/gui/selldialog.cpp:325
 #, c-format
 msgid "Price: %s / Total: %s"
-msgstr "వెల: %s / మొత్తం: %s"
+msgstr ""
 
 #: src/gui/buydialog.cpp:103
 msgid "Amount:"
@@ -435,7 +435,7 @@ msgstr ""
 #: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:118
 #: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:776
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
@@ -443,32 +443,32 @@ msgstr ""
 #: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:119
 #: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:788
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: src/gui/buydialog.cpp:113 src/gui/quitdialog.cpp:47
 #: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
 #: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:261
 #: src/keyboardconfig.cpp:84
 msgid "Quit"
-msgstr "నిష్క్రమించు"
+msgstr "Έξοδος"
 
 #: src/gui/buydialog.cpp:114 src/gui/selldialog.cpp:95
 #: src/gui/statuswindow.cpp:521 src/gui/statuswindow.cpp:576
 #: src/gui/statuswindow.cpp:775 src/gui/statuswindow.cpp:806
 msgid "Max"
-msgstr "గరిష్ఠ"
+msgstr "Max"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
 #: src/gui/inventorywindow.cpp:176 src/gui/setup_other.cpp:142
 msgid "Shop"
-msgstr ""
+msgstr "Κατάστημα"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:282
 #: src/gui/popupmenu.cpp:299 src/gui/popupmenu.cpp:752
 #: src/gui/selldialog.cpp:53 src/gui/selldialog.cpp:60
 #: src/gui/selldialog.cpp:93
 msgid "Sell"
-msgstr ""
+msgstr "Πουλήστε"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
 #: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:124
@@ -487,30 +487,30 @@ msgstr ""
 #: src/gui/textcommandeditor.cpp:241 src/gui/textdialog.cpp:51
 #: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:169
 msgid "Cancel"
-msgstr "రద్దుచేయి"
+msgstr "Ακύρωση"
 
 #: src/gui/changeemaildialog.cpp:48 src/gui/changeemaildialog.cpp:57
 msgid "Change Email Address"
-msgstr "ఈమెయిల్ చిరునామాని మార్చు"
+msgstr "Αλλαγή Διεύθυνση Ηλεκτρονικού ταχυδρομείου"
 
 #: src/gui/changeemaildialog.cpp:52 src/gui/changepassworddialog.cpp:55
 #, c-format
 msgid "Account: %s"
-msgstr "ఖాతా: %s"
+msgstr "Λογαριασμός: %s"
 
 #: src/gui/changeemaildialog.cpp:54
 msgid "Type new email address twice:"
-msgstr ""
+msgstr "Πληκτρολογήστε τη νέα διεύθυνση ηλεκτρονικού ταχυδρομείου δύο φορές:"
 
 #: src/gui/changeemaildialog.cpp:132
 #, c-format
 msgid "The new email address needs to be at least %d characters long."
-msgstr ""
+msgstr "Η νέα διεύθυνση ηλεκτρονικού ταχυδρομείου πρέπει να είναι τουλάχιστον %d χαρακτήρες."
 
 #: src/gui/changeemaildialog.cpp:139
 #, c-format
 msgid "The new email address needs to be less than %d characters long."
-msgstr ""
+msgstr "Η νέα διεύθυνση ηλεκτρονικού ταχυδρομείου πρέπει να είναι μικρότερο από %d χαρακτήρες."
 
 #: src/gui/changeemaildialog.cpp:146
 msgid "The email address entries mismatch."
@@ -519,30 +519,30 @@ msgstr ""
 #: src/gui/changepassworddialog.cpp:50 src/gui/changepassworddialog.cpp:59
 #: src/gui/charselectdialog.cpp:140
 msgid "Change Password"
-msgstr "సంకేతపదాన్ని మార్చు"
+msgstr "Αλλαγή κωδικού πρόσβασης"
 
 #: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:97
 #: src/gui/register.cpp:76 src/gui/unregisterdialog.cpp:56
 msgid "Password:"
-msgstr "సంకేతపదం:"
+msgstr "Κωδικός πρόσβασης:"
 
 #: src/gui/changepassworddialog.cpp:66
 msgid "Type new password twice:"
-msgstr ""
+msgstr "Πληκτρολογήστε τον νέο κωδικό πρόσβασης δύο φορές:"
 
 #: src/gui/changepassworddialog.cpp:114
 msgid "Enter the old password first."
-msgstr ""
+msgstr "Πληκτρολογήστε τον παλιό κωδικό πρόσβασης πρώτα."
 
 #: src/gui/changepassworddialog.cpp:120
 #, c-format
 msgid "The new password needs to be at least %d characters long."
-msgstr ""
+msgstr "Ο νέος κωδικός πρόσβασης πρέπει να είναι τουλάχιστον %d χαρακτήρες."
 
 #: src/gui/changepassworddialog.cpp:127
 #, c-format
 msgid "The new password needs to be less than %d characters long."
-msgstr ""
+msgstr "Ο νέος κωδικός πρόσβασης πρέπει να είναι μικρότερος από %d χαρακτήρες."
 
 #: src/gui/changepassworddialog.cpp:134
 msgid "The new password entries mismatch."
@@ -555,7 +555,7 @@ msgstr ""
 #: src/gui/charcreatedialog.cpp:99 src/gui/editserverdialog.cpp:61
 #: src/gui/logindialog.cpp:96 src/gui/register.cpp:75
 msgid "Name:"
-msgstr "పేరు:"
+msgstr "Όνομα:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
@@ -563,22 +563,22 @@ msgstr "పేరు:"
 #: src/gui/charcreatedialog.cpp:113 src/gui/charcreatedialog.cpp:117
 #: src/gui/outfitwindow.cpp:85
 msgid ">"
-msgstr ""
+msgstr ">"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
 #: src/gui/charcreatedialog.cpp:105 src/gui/charcreatedialog.cpp:109
 #: src/gui/charcreatedialog.cpp:118 src/gui/outfitwindow.cpp:84
 msgid "<"
-msgstr ""
+msgstr "<"
 
 #: src/gui/charcreatedialog.cpp:106
 msgid "Hair color:"
-msgstr ""
+msgstr "Χρώμα μαλλιών:"
 
 #: src/gui/charcreatedialog.cpp:110
 msgid "Hair style:"
-msgstr ""
+msgstr "Στύλ μαλιών:"
 
 #: src/gui/charcreatedialog.cpp:112
 msgid "^"
@@ -591,49 +591,49 @@ msgstr ""
 #: src/gui/charcreatedialog.cpp:123 src/gui/charselectdialog.cpp:483
 #: src/gui/socialwindow.cpp:1261
 msgid "Create"
-msgstr "సృష్టించు"
+msgstr "Δημιουργία"
 
 #: src/gui/charcreatedialog.cpp:125 src/gui/register.cpp:98
 msgid "Male"
-msgstr "పురుషుడు"
+msgstr "Άντρας"
 
 #: src/gui/charcreatedialog.cpp:126 src/gui/register.cpp:99
 msgid "Female"
-msgstr "స్త్రీ"
+msgstr "Γυναίκα"
 
 #: src/gui/charcreatedialog.cpp:144 src/gui/charcreatedialog.cpp:368
 #, c-format
 msgid "Please distribute %d points"
-msgstr ""
+msgstr "Παρακαλούμε να διανείμετε %d πόντους"
 
 #: src/gui/charcreatedialog.cpp:273
 msgid "Your name needs to be at least 4 characters."
-msgstr "మీ పేరు కనీసం 4 అక్షరాల పొడవుండాలి."
+msgstr "Το όνομά σας πρέπει να είναι τουλάχιστον 4 χαρακτήρες."
 
 #: src/gui/charcreatedialog.cpp:359
 msgid "Character stats OK"
-msgstr ""
+msgstr "Στατιστικά χαρακτηρα:εντάξει"
 
 #: src/gui/charcreatedialog.cpp:373
 #, c-format
 msgid "Please remove %d points"
-msgstr ""
+msgstr "Παρακαλώ αφαιρέστε %d πόντους"
 
 #: src/gui/charselectdialog.cpp:76
 msgid "Confirm Character Delete"
-msgstr ""
+msgstr "Επιβεβαίωση Διαγραφή Χαρακτήρα"
 
 #: src/gui/charselectdialog.cpp:77
 msgid "Are you sure you want to delete this character?"
-msgstr ""
+msgstr "Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτό το χαρακτήρα;"
 
 #: src/gui/charselectdialog.cpp:125
 msgid "Account and Character Management"
-msgstr ""
+msgstr "Λογαριασμός και Διαχείριση Χαρακτήρων"
 
 #: src/gui/charselectdialog.cpp:139
 msgid "Switch Login"
-msgstr ""
+msgstr "Διακόπτης Σύνδεση"
 
 #: src/gui/charselectdialog.cpp:154 src/gui/unregisterdialog.cpp:50
 #: src/gui/unregisterdialog.cpp:58
@@ -642,7 +642,7 @@ msgstr ""
 
 #: src/gui/charselectdialog.cpp:163
 msgid "Change Email"
-msgstr ""
+msgstr "Αλλαγή Ηλεκτρονικού Ταχυδρομείου"
 
 #: src/gui/charselectdialog.cpp:256
 msgid "Incorrect password"
@@ -660,76 +660,76 @@ msgstr ""
 #: src/gui/setup_relations.cpp:247 src/gui/shopwindow.cpp:123
 #: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
-msgstr "తొలగించు"
+msgstr "Διαγραφή"
 
 #: src/gui/charselectdialog.cpp:471
 msgid "Choose"
-msgstr ""
+msgstr "Επιλέξτε"
 
 #: src/gui/charselectdialog.cpp:474
 #, c-format
 msgid "Level %d"
-msgstr ""
+msgstr "Επίπεδο %d"
 
 #: src/gui/charselectdialog.cpp:485 src/gui/charselectdialog.cpp:486
 msgid "(empty)"
-msgstr ""
+msgstr "(Άδειο)"
 
 #: src/gui/chatwindow.cpp:116 src/gui/inventorywindow.cpp:70
 msgid "default"
-msgstr ""
+msgstr "προεπιλογή"
 
 #: src/gui/chatwindow.cpp:117
 msgid "black"
-msgstr ""
+msgstr "μαύρο"
 
 #: src/gui/chatwindow.cpp:118
 msgid "red"
-msgstr ""
+msgstr "κόκκινο"
 
 #: src/gui/chatwindow.cpp:119
 msgid "green"
-msgstr ""
+msgstr "πράσινο"
 
 #: src/gui/chatwindow.cpp:120
 msgid "blue"
-msgstr ""
+msgstr "μπλε"
 
 #: src/gui/chatwindow.cpp:121
 msgid "gold"
-msgstr ""
+msgstr "χρυσό"
 
 #: src/gui/chatwindow.cpp:122
 msgid "yellow"
-msgstr ""
+msgstr "κίτρινο"
 
 #: src/gui/chatwindow.cpp:123
 msgid "pink"
-msgstr ""
+msgstr "ροζ"
 
 #: src/gui/chatwindow.cpp:124
 msgid "purple"
-msgstr ""
+msgstr "μωβ"
 
 #: src/gui/chatwindow.cpp:125
 msgid "grey"
-msgstr ""
+msgstr "γκρί"
 
 #: src/gui/chatwindow.cpp:126
 msgid "brown"
-msgstr ""
+msgstr "καφέ"
 
 #: src/gui/chatwindow.cpp:127
 msgid "rainbow 1"
-msgstr ""
+msgstr "ουράνιο τόξο 1"
 
 #: src/gui/chatwindow.cpp:128
 msgid "rainbow 2"
-msgstr ""
+msgstr "ουράνιο τόξο 2"
 
 #: src/gui/chatwindow.cpp:129
 msgid "rainbow 3"
-msgstr ""
+msgstr "ουράνιο τόξο 3"
 
 #: src/gui/chatwindow.cpp:146 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:79
@@ -739,11 +739,11 @@ msgstr ""
 #: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
 #: src/gui/textcommandeditor.cpp:160
 msgid "???"
-msgstr "???"
+msgstr ";;;"
 
 #: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:48
 msgid "Chat"
-msgstr ""
+msgstr "Συζήτηση"
 
 #: src/gui/chatwindow.cpp:654
 #, c-format
@@ -753,15 +753,15 @@ msgstr ""
 #: src/gui/chatwindow.cpp:1041
 #, c-format
 msgid "Whispering to %s: %s"
-msgstr ""
+msgstr "Ψιθυρίζοντας στο %s: %s"
 
 #: src/gui/confirmdialog.cpp:47
 msgid "Yes"
-msgstr "అవును"
+msgstr "Ναι"
 
 #: src/gui/confirmdialog.cpp:48
 msgid "No"
-msgstr "కాదు"
+msgstr "Δεν"
 
 #: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:151
 #: src/gui/popupmenu.cpp:159 src/gui/popupmenu.cpp:168
@@ -771,12 +771,12 @@ msgstr "కాదు"
 #: src/gui/popupmenu.cpp:693 src/gui/popupmenu.cpp:702
 #: src/gui/popupmenu.cpp:716
 msgid "Ignore"
-msgstr ""
+msgstr "Παράβλεψη"
 
 #: src/gui/debugwindow.cpp:72 src/gui/minimap.cpp:50 src/gui/minimap.cpp:99
 #: src/gui/setup_other.cpp:64
 msgid "Map"
-msgstr "పటం"
+msgstr "Χάρτης"
 
 #: src/gui/debugwindow.cpp:73
 msgid "Target"
@@ -809,7 +809,7 @@ msgstr ""
 #: src/gui/debugwindow.cpp:151 src/gui/debugwindow.cpp:203
 #: src/gui/debugwindow.cpp:208
 msgid "Player Position:"
-msgstr ""
+msgstr "Θέση Παίκτη :"
 
 #: src/gui/debugwindow.cpp:154
 msgid "Particle count:"
@@ -852,7 +852,7 @@ msgstr ""
 #: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:303
 #: src/gui/debugwindow.cpp:350
 msgid "Target:"
-msgstr ""
+msgstr "Στόχος:"
 
 #: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:308
 #: src/gui/debugwindow.cpp:351
@@ -898,7 +898,7 @@ msgstr ""
 #: src/gui/debugwindow.cpp:312 src/gui/debugwindow.cpp:317
 #: src/gui/debugwindow.cpp:352
 msgid "Target Level:"
-msgstr ""
+msgstr "Επίπεδο Στόχου :"
 
 #: src/gui/debugwindow.cpp:323 src/gui/debugwindow.cpp:353
 msgid "Target Party:"
@@ -931,7 +931,7 @@ msgstr ""
 #: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:54
 #: src/gui/popupmenu.cpp:631 src/gui/shopwindow.cpp:114
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: src/gui/didyouknowwindow.cpp:65
 msgid "< Previous"
@@ -949,7 +949,7 @@ msgstr ""
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:45
 #: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
-msgstr "సరే"
+msgstr "ΟΚ"
 
 #: src/gui/editserverdialog.cpp:54
 msgid "Edit Server"
@@ -977,7 +977,7 @@ msgstr ""
 
 #: src/gui/equipmentwindow.cpp:64 src/gui/windowmenu.cpp:74
 msgid "Equipment"
-msgstr ""
+msgstr "Εξοπλισμός"
 
 #: src/gui/equipmentwindow.cpp:99 src/gui/inventorywindow.cpp:160
 #: src/gui/inventorywindow.cpp:545 src/gui/inventorywindow.cpp:554
@@ -988,7 +988,7 @@ msgstr ""
 
 #: src/gui/helpwindow.cpp:44
 msgid "Help"
-msgstr "సహాయం"
+msgstr "Βοήθεια"
 
 #: src/gui/inventorywindow.cpp:71
 msgid "by name"
@@ -1021,80 +1021,80 @@ msgstr ""
 
 #: src/gui/inventorywindow.cpp:149
 msgid "Filter:"
-msgstr ""
+msgstr "Φίλτρο:"
 
 #: src/gui/inventorywindow.cpp:158 src/gui/inventorywindow.cpp:547
 #: src/gui/inventorywindow.cpp:556 src/gui/popupmenu.cpp:1815
 #: src/gui/popupmenu.cpp:1911 src/gui/popupmenu.cpp:1958
 msgid "Equip"
-msgstr ""
+msgstr "Equip"
 
 #: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:548
 #: src/gui/inventorywindow.cpp:552 src/gui/popupmenu.cpp:1819
 #: src/gui/popupmenu.cpp:1876 src/gui/popupmenu.cpp:1915
 #: src/gui/popupmenu.cpp:1962
 msgid "Use"
-msgstr ""
+msgstr "Χρήση"
 
 #: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:652
 #: src/gui/popupmenu.cpp:1824 src/gui/popupmenu.cpp:1920
 #: src/gui/popupmenu.cpp:1967
 msgid "Drop..."
-msgstr ""
+msgstr "Πέτα ..."
 
 #: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1833
 #: src/gui/popupmenu.cpp:1929 src/gui/popupmenu.cpp:1976
 msgid "Split"
-msgstr ""
+msgstr "Διαίρεση"
 
 #: src/gui/inventorywindow.cpp:175 src/gui/outfitwindow.cpp:60
 #: src/gui/popupmenu.cpp:589
 msgid "Outfits"
-msgstr ""
+msgstr "Ρούχα"
 
 #: src/gui/inventorywindow.cpp:178
 msgid "Weight:"
-msgstr "బరువు:"
+msgstr "Βάρος:"
 
 #: src/gui/inventorywindow.cpp:203 src/gui/inventorywindow.cpp:643
 #: src/gui/popupmenu.cpp:1799 src/gui/popupmenu.cpp:1932
 #: src/gui/popupmenu.cpp:1979 src/gui/setup.cpp:73
 msgid "Store"
-msgstr ""
+msgstr "Κατάστημα"
 
 #: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1840
 msgid "Retrieve"
-msgstr ""
+msgstr "Ανάκτηση"
 
 #: src/gui/inventorywindow.cpp:654 src/gui/popupmenu.cpp:1829
 #: src/gui/popupmenu.cpp:1925 src/gui/popupmenu.cpp:1972
 #: src/gui/windowmenu.cpp:97
 msgid "Drop"
-msgstr ""
+msgstr "Πέτα"
 
 #: src/gui/itemamountwindow.cpp:208
 msgid "All"
-msgstr "అన్నీ"
+msgstr "Όλες"
 
 #: src/gui/itemamountwindow.cpp:259
 msgid "Select amount of items to trade."
-msgstr ""
+msgstr "Επιλέξτε το ποσό των στοιχείων για ανταλαγή."
 
 #: src/gui/itemamountwindow.cpp:262
 msgid "Select amount of items to drop."
-msgstr ""
+msgstr "Επιλέξτε το ποσό των στοιχείων για πτώση."
 
 #: src/gui/itemamountwindow.cpp:265
 msgid "Select amount of items to store."
-msgstr ""
+msgstr "Επιλέξτε το ποσό των στοιχείων για αποθήκευση."
 
 #: src/gui/itemamountwindow.cpp:268
 msgid "Select amount of items to retrieve."
-msgstr ""
+msgstr "Επιλέξτε το ποσό των στοιχείων για ανάκτηση."
 
 #: src/gui/itemamountwindow.cpp:271
 msgid "Select amount of items to split."
-msgstr ""
+msgstr "Επιλέξτε το ποσό των στοιχείων για διαιρεση."
 
 #: src/gui/itemamountwindow.cpp:274
 msgid "Add to buy shop."
@@ -1106,11 +1106,11 @@ msgstr ""
 
 #: src/gui/itemamountwindow.cpp:280
 msgid "Unknown."
-msgstr ""
+msgstr "Άγνωστο."
 
 #: src/gui/itempopup.cpp:177 src/gui/itempopup.cpp:183
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: src/gui/itempopup.cpp:193
 #, c-format
@@ -1127,7 +1127,7 @@ msgstr ""
 
 #: src/gui/killstats.cpp:68
 msgid "Reset timer"
-msgstr ""
+msgstr "Επαναφορά χρονόμετρου"
 
 #: src/gui/killstats.cpp:72 src/gui/killstats.cpp:208
 #, c-format
@@ -1211,11 +1211,11 @@ msgstr ""
 
 #: src/gui/logindialog.cpp:60
 msgid "Normal"
-msgstr ""
+msgstr "Κανονική"
 
 #: src/gui/logindialog.cpp:61
 msgid "Auto Close"
-msgstr ""
+msgstr "Αυτόματο Κλείσιμο"
 
 #: src/gui/logindialog.cpp:62
 msgid "Skip"
@@ -1223,11 +1223,11 @@ msgstr ""
 
 #: src/gui/logindialog.cpp:87 src/gui/logindialog.cpp:125
 msgid "Login"
-msgstr "ప్రవేశించు"
+msgstr "Είσοδος"
 
 #: src/gui/logindialog.cpp:93 src/gui/widgets/chattab.cpp:173
 msgid "Server:"
-msgstr ""
+msgstr "Διακοσμιτής:"
 
 #: src/gui/logindialog.cpp:98
 msgid "Custom update host"
@@ -1235,19 +1235,19 @@ msgstr ""
 
 #: src/gui/logindialog.cpp:112
 msgid "Remember username"
-msgstr ""
+msgstr "Θυμηθείτε το όνομα χρήστη"
 
 #: src/gui/logindialog.cpp:113
 msgid "Update:"
-msgstr ""
+msgstr "Ενημέρωση:"
 
 #: src/gui/logindialog.cpp:123 src/gui/register.cpp:66 src/gui/register.cpp:81
 msgid "Register"
-msgstr ""
+msgstr "Εγγραφή"
 
 #: src/gui/logindialog.cpp:124
 msgid "Change Server"
-msgstr ""
+msgstr "Αλλαγή διακοσμιτή"
 
 #: src/gui/ministatuswindow.cpp:59
 msgid "health bar"
@@ -1287,7 +1287,7 @@ msgstr ""
 
 #: src/gui/ministatuswindow.cpp:296 src/gui/ministatuswindow.cpp:336
 msgid "Need"
-msgstr ""
+msgstr "Χρειάζεστε"
 
 #: src/gui/npcdialog.cpp:52
 msgid "Stop waiting"
@@ -1295,11 +1295,11 @@ msgstr ""
 
 #: src/gui/npcdialog.cpp:53
 msgid "Next"
-msgstr "తదుపరి"
+msgstr "Επόμενο"
 
 #: src/gui/npcdialog.cpp:55
 msgid "Submit"
-msgstr ""
+msgstr "Υποβολή"
 
 #: src/gui/npcdialog.cpp:60 src/gui/npcpostdialog.cpp:42
 #: src/gui/setup_other.cpp:151
@@ -1308,15 +1308,15 @@ msgstr ""
 
 #: src/gui/npcdialog.cpp:112 src/gui/popupmenu.cpp:633
 msgid "Clear"
-msgstr ""
+msgstr "Σαφή"
 
 #: src/gui/npcpostdialog.cpp:48
 msgid "To:"
-msgstr ""
+msgstr "Προς:"
 
 #: src/gui/npcpostdialog.cpp:55
 msgid "Send"
-msgstr "పంపించు"
+msgstr "Αποστολή"
 
 #: src/gui/npcpostdialog.cpp:99
 msgid "Failed to send as sender or letter invalid."
@@ -1331,7 +1331,7 @@ msgstr ""
 #: src/gui/windowmenu.cpp:302
 #, c-format
 msgid "Key: %s"
-msgstr ""
+msgstr "Κλειδί: %s"
 
 #: src/gui/outfitwindow.cpp:91
 msgid "Unequip first"
@@ -1510,7 +1510,7 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:359 src/gui/setup_players.cpp:48
 msgid "Players"
-msgstr "ఆటగాళ్ళు"
+msgstr ""
 
 #: src/gui/popupmenu.cpp:547
 msgid "Pick up"
@@ -1519,7 +1519,7 @@ msgstr ""
 #: src/gui/popupmenu.cpp:548 src/gui/popupmenu.cpp:1849
 #: src/gui/popupmenu.cpp:1933 src/gui/popupmenu.cpp:1980
 msgid "Add to chat"
-msgstr ""
+msgstr "Προσθήκη στη συζήτηση"
 
 #: src/gui/popupmenu.cpp:567
 msgid "Map Item"
@@ -1544,7 +1544,7 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:609 src/gui/windowmenu.cpp:96
 msgid "Spells"
-msgstr ""
+msgstr "Ξόρκια"
 
 #: src/gui/popupmenu.cpp:610
 msgid "Load old spells"
@@ -1593,12 +1593,12 @@ msgstr ""
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1336
 msgid "Rename map sign          "
-msgstr ""
+msgstr "Μετονομασία υπογράψει χάρτη "
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1338
 msgid "Name:                    "
-msgstr ""
+msgstr "Όνομα:"
 
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popupmenu.cpp:1383
@@ -1628,15 +1628,15 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:1803
 msgid "Store 10"
-msgstr ""
+msgstr "Κατάστημα 10"
 
 #: src/gui/popupmenu.cpp:1804
 msgid "Store half"
-msgstr ""
+msgstr "Αποθήκευσε τα μισά"
 
 #: src/gui/popupmenu.cpp:1805
 msgid "Store all"
-msgstr ""
+msgstr "Αποθηκεύστε όλα τα"
 
 #: src/gui/popupmenu.cpp:1825 src/gui/popupmenu.cpp:1921
 #: src/gui/popupmenu.cpp:1968
@@ -1649,11 +1649,11 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:1845
 msgid "Retrieve half"
-msgstr ""
+msgstr "Ανέκτησε τα μισά"
 
 #: src/gui/popupmenu.cpp:1846
 msgid "Retrieve all"
-msgstr ""
+msgstr "Ανέκτησε όλα"
 
 #: src/gui/popupmenu.cpp:1879 src/gui/popupmenu.cpp:1937
 msgid "Load old item shortcuts"
@@ -1703,11 +1703,11 @@ msgstr ""
 
 #: src/gui/register.cpp:77
 msgid "Confirm:"
-msgstr ""
+msgstr "Επιβεβαίωση:"
 
 #: src/gui/register.cpp:108
 msgid "Email:"
-msgstr "ఈమెయిల్:"
+msgstr "Ηλεκτρονικό ταχυδρομείο:"
 
 #: src/gui/register.cpp:176
 #, c-format
@@ -1731,11 +1731,11 @@ msgstr ""
 
 #: src/gui/register.cpp:207
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν."
 
 #: src/gui/serverdialog.cpp:228
 msgid "Choose Your Server"
-msgstr ""
+msgstr "Επιλέξε τον διακοσμιτή σου"
 
 #: src/gui/serverdialog.cpp:239
 msgid "Choose Your Server  *** SAFE MODE ***"
@@ -1756,7 +1756,7 @@ msgstr ""
 #: src/gui/serverdialog.cpp:264 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/tradewindow.cpp:89
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: src/gui/serverdialog.cpp:265 src/gui/widgets/setupitem.cpp:271
 #: src/gui/widgets/setupitem.cpp:394
@@ -1839,7 +1839,7 @@ msgstr ""
 
 #: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
 msgid "Colors"
-msgstr "రంగులు"
+msgstr ""
 
 #: src/gui/setup_chat.cpp:57
 msgid "Remove colors from received chat messages"
@@ -1961,7 +1961,7 @@ msgstr ""
 #: src/gui/setup_colors.cpp:90 src/gui/setup_colors.cpp:91
 #: src/gui/setup_colors.cpp:409
 msgid "Rainbow"
-msgstr "ఇంద్ర ధనస్సు"
+msgstr ""
 
 #: src/gui/setup_colors.cpp:92 src/gui/setup_colors.cpp:93
 #: src/gui/setup_colors.cpp:409
@@ -2058,7 +2058,7 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:50
 msgid "Auto target only reachable monsters"
-msgstr ""
+msgstr "Αυτόματη στόχος προσιτοί μόνο τέρατα"
 
 #: src/gui/setup_other.cpp:53
 msgid "Highlight monster attack range"
@@ -2519,7 +2519,7 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:225
 msgid "Text"
-msgstr "పాఠ్యం"
+msgstr ""
 
 #: src/gui/setup_video.cpp:227
 msgid "Bubbles, no names"
@@ -2547,11 +2547,11 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:267
 msgid "max"
-msgstr "గరిష్ఠ"
+msgstr ""
 
 #: src/gui/setup_video.cpp:290
 msgid "Full screen"
-msgstr "నిండుతెర"
+msgstr ""
 
 #: src/gui/setup_video.cpp:291
 msgid "Custom cursor"
@@ -2646,15 +2646,15 @@ msgstr ""
 
 #: src/gui/setup_video.cpp:619
 msgid "Enter new resolution:                "
-msgstr ""
+msgstr "Πληκτρολογήστε το νέα ανάλυση:"
 
 #: src/gui/setup_video.cpp:635 src/gui/setup_video.cpp:640
 msgid "Screen Resolution Changed"
-msgstr ""
+msgstr "Ανάλυση οθόνης Άλλαξε"
 
 #: src/gui/setup_video.cpp:638
 msgid "Some windows may be moved to fit the lowered resolution."
-msgstr ""
+msgstr "Μερικά παράθυρα μπορούν να μετακινούνται για να ταιριάξει στην χαμηλότερη ανάλυση."
 
 #: src/gui/setup_video.cpp:674
 msgid "Particle Effect Settings Changed."
@@ -2666,7 +2666,7 @@ msgstr ""
 
 #: src/gui/shopwindow.cpp:76
 msgid "Personal Shop"
-msgstr ""
+msgstr "Προσωπικό Μαγαζί"
 
 #: src/gui/shopwindow.cpp:119
 msgid "Buy items"
@@ -2674,7 +2674,7 @@ msgstr ""
 
 #: src/gui/shopwindow.cpp:120
 msgid "Sell items"
-msgstr ""
+msgstr "Πουλήστε αντικείμενα"
 
 #: src/gui/shopwindow.cpp:124 src/gui/shopwindow.cpp:127
 msgid "Announce"
@@ -2682,7 +2682,7 @@ msgstr ""
 
 #: src/gui/shopwindow.cpp:128
 msgid "Show links in announce"
-msgstr ""
+msgstr "Εμφάνιση συνδέσμων στις ανακοινώσεις"
 
 #: src/gui/shopwindow.cpp:149 src/gui/shopwindow.cpp:150
 msgid "Auction"
@@ -2953,7 +2953,7 @@ msgstr ""
 #: src/gui/statuswindow.cpp:343
 #, c-format
 msgid "Level: %d"
-msgstr "స్థాయి: %d"
+msgstr ""
 
 #: src/gui/statuswindow.cpp:151 src/gui/statuswindow.cpp:266
 #: src/gui/statuswindow.cpp:310
@@ -3130,7 +3130,7 @@ msgstr ""
 #: src/gui/unregisterdialog.cpp:54
 #, c-format
 msgid "Name: %s"
-msgstr "పేరు: %s"
+msgstr ""
 
 #: src/gui/updaterwindow.cpp:140
 msgid "Updating..."
@@ -3394,7 +3394,7 @@ msgstr ""
 #: src/gui/widgets/guildchattab.cpp:61 src/net/ea/gui/guildtab.cpp:69
 #: src/net/ea/gui/partytab.cpp:85
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
-msgstr ""
+msgstr "Εάν το <nick> εχει διαστήματα, περικλείστε την σε διπλά εισαγωγικά (\")."
 
 #: src/gui/widgets/channeltab.cpp:87
 msgid "Channel operators can kick and op other users from the channel."
@@ -3495,7 +3495,7 @@ msgstr ""
 
 #: src/gui/widgets/whispertab.cpp:130
 msgid "Command: /unignore <player>"
-msgstr ""
+msgstr "Εντολή : / κατάργηση παράβλεψης <player>"
 
 #: src/gui/widgets/whispertab.cpp:131
 msgid ""
