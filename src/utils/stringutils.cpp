@@ -28,6 +28,8 @@
 #include <cstdio>
 #include <list>
 
+#include <sys/time.h>
+
 #include "debug.h"
 
 static int UTF8_MAX_SIZE = 10;
