@@ -243,7 +243,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "defaultServerType", "tmwathena");
     AddDEF(brandingData, "onlineServerList",
            "http://manaplus.evolonline.org/serverlist.xml");
-    AddDEF(brandingData, "onlineServerFile", "serverlist.xml");
+    AddDEF(brandingData, "onlineServerFile", "serverlistplus.xml");
     AddDEF(brandingData, "appShort", "mana");
     AddDEF(brandingData, "defaultUpdateHost", "");
     AddDEF(brandingData, "helpPath", "");
