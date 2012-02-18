@@ -276,7 +276,6 @@ Client::Client(const Options &options):
 
 void Client::testsInit()
 {
-    printf ("testInit\n");
     if (!mOptions.test.empty())
     {
         gameInit();
@@ -341,6 +340,12 @@ void Client::gameInit()
     bind_textdomain_codeset("manaplus", "UTF-8");
     textdomain("manaplus");
 #endif
+
+#if defined(WIN32) || defined(__APPLE__)
+    putenv("SDL_VIDEO_CENTERED=1");
+#endif
+
+    putenv((char*)("LANG=" + lang).c_str());
 
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
