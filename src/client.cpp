@@ -345,8 +345,6 @@ void Client::gameInit()
     putenv("SDL_VIDEO_CENTERED=1");
 #endif
 
-    putenv((char*)("LANG=" + lang).c_str());
-
     chatLogger = new ChatLogger;
     if (mOptions.chatLogDir == "")
         chatLogger->setBaseLogDir(mLocalDataDir + std::string("/logs/"));
