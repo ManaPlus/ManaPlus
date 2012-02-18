@@ -100,6 +100,14 @@ build/toolchain.cmake1
 build/makerats.log
 build/make_hc.txt
 build/make_hc2.txt
+build/makecheck1
+build/makecheck2
+build/makecheck3
+build/makecheck4
+build/makecheck5
+build/makecheck6
+build/clmake
+build/bmakesnapshot
 
 # debian
 debian/*

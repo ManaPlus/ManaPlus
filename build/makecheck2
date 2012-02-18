@@ -1,3 +1,0 @@
-#!/bin/bash
-
-../../nsiqcppstyle/nsiqcppstyle/nsiqcppstyle --show-url ../src >logs/nsiqcppstyle.txt

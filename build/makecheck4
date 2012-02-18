@@ -1,5 +1,0 @@
-#!/bin/bash
-
-../../checkheaders/checkheaders --skip debug.h ../src 2>tmp.txt
-sed '/(style): Header not found/d' tmp.txt >logs/checkheader.txt
-rm tmp.txt
