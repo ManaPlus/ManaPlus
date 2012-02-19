@@ -24,7 +24,6 @@
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
-#include "localplayer.h"
 #include "playerinfo.h"
 #include "spellmanager.h"
 

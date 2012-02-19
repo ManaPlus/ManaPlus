@@ -130,7 +130,7 @@ int execFile(std::string pathName, std::string name,
         }
         else if (!sleep_pid)
         {   // sleep pid
-            sleep (timeOut);
+            sleep (waitTime);
 //            printf ("time out\n");
             exit(-1);
         }

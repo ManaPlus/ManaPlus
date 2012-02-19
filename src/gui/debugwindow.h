@@ -82,6 +82,7 @@ class TargetDebugTab : public DebugTab
         Label *mTargetLabel;
         Label *mTargetIdLabel;
         Label *mTargetLevelLabel;
+        Label *mTargetRaceLabel;
         Label *mTargetPartyLabel;
         Label *mTargetGuildLabel;
         Label *mAttackDelayLabel;

@@ -293,7 +293,7 @@ void ChatHandler::handleChannelEvent(Net::MessageIn &msg)
 
     if (channel)
     {
-        switch(eventId)
+        switch (eventId)
         {
             case CHAT_EVENT_NEW_PLAYER:
                 channel->getTab()->chatLog(strprintf(_("%s entered the "

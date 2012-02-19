@@ -42,6 +42,8 @@
 #include "resources/imageloader.h"
 #include "resources/resourcemanager.h"
 
+#include "utils/langs.h"
+
 #include <guichan/exception.hpp>
 #include <guichan/image.hpp>
 

@@ -244,12 +244,12 @@ void GeneralHandler::clearHandlers()
         mNetwork->clearHandlers();
 }
 
-void GeneralHandler::processEvent(Mana::Channels channel,
-                                  const Mana::Event &event)
+void GeneralHandler::processEvent(Channels channel,
+                                  const Event &event)
 {
-    if (channel == Mana::CHANNEL_GAME)
+    if (channel == CHANNEL_GAME)
     {
-        if (event.getName() == Mana::EVENT_GUIWINDOWSLOADED)
+        if (event.getName() == EVENT_GUIWINDOWSLOADED)
         {
             if (inventoryWindow)
                 inventoryWindow->setSplitAllowed(false);
@@ -288,7 +288,7 @@ void GeneralHandler::processEvent(Mana::Channels channel,
             statusWindow->addAttribute(ATTACK_SPEED, _("Damage per sec."),
                                        false, "");
         }
-        else if (event.getName() == Mana::EVENT_GUIWINDOWSUNLOADING)
+        else if (event.getName() == EVENT_GUIWINDOWSUNLOADING)
         {
             if (socialWindow)
             {

@@ -185,8 +185,8 @@ class Vector
          */
         Vector normalized() const
         {
-            const float l = length();
-            return Vector(x / l, y / l, z / l);
+            const float len = length();
+            return Vector(x / len, y / len, z / len);
         }
 
         float x, y, z;

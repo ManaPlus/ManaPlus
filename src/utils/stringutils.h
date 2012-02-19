@@ -103,7 +103,7 @@ std::string strprintf(char const *, ...)
  * @param str the string to remove the bad chars from
  * @return a reference to the string without bad chars
  */
-std::string &removeBadChars(std::string &str);
+//std::string &removeBadChars(std::string &str);
 
 /**
  * Removes colors from a string
@@ -186,12 +186,6 @@ std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);
 
-std::vector<std::string> getLang();
-
-std::string getLangSimple();
-
-std::string getLangShort();
-
 std::string packList(std::list<std::string> &list);
 
 std::list<std::string> unpackList(const std::string &str);
@@ -210,6 +204,8 @@ bool findCutFirst(std::string &str1, std::string str2);
 
 std::string &removeProtocol(std::string &url);
 
-bool checkPath(std::string path);
+bool strStartWith(std::string str, std::string start);
+
+std::string getDateString();
 
 #endif // UTILS_STRINGUTILS_H

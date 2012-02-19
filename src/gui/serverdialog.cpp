@@ -46,9 +46,9 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
+#include "utils/langs.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
-#include "widgets/dropdown.h"
 
 #include <guichan/font.hpp>
 
@@ -283,14 +283,10 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.
-    int width = 0, height = 0;
-    getLayout().reflow(width, height);
-    if (width < 400)
-    {
-        width = 400;
-        getLayout().reflow(width, height);
-    }
+    int width = 500;
+    int height = 350;
 
+    getLayout().reflow(width, height);
     setContentSize(width, height);
 
     setMinWidth(getWidth());
@@ -309,7 +305,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadServers(true);
 
-    if (mServers.empty())
+    if (needUpdateServers())
         downloadServerList();
 }
 
@@ -488,13 +484,17 @@ void ServerDialog::downloadServerList()
     }
 
     mDownload = new Net::Download(this, listFile, &downloadUpdate);
-    mDownload->setFile(mDir + "/serverlist.xml");
+    mDownload->setFile(mDir + "/" + branding.getStringValue(
+        "onlineServerFile"));
     mDownload->start();
+
+    config.setValue("serverslistupdate", getDateString());
 }
 
 void ServerDialog::loadServers(bool addNew)
 {
-    XML::Document doc(mDir + "/serverlist.xml", false);
+    XML::Document doc(mDir + "/" + branding.getStringValue(
+        "onlineServerFile"), false);
     XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
@@ -743,4 +743,15 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
 void ServerDialog::updateServer(ServerInfo server, int index)
 {
     saveCustomServers(server, index);
+}
+
+bool ServerDialog::needUpdateServers()
+{
+    if (mServers.empty() || config.getStringValue("serverslistupdate")
+        != getDateString())
+    {
+        return true;
+    }
+
+    return false;
 }

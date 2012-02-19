@@ -208,29 +208,29 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
         }
         else if (!mMaximum || mText.size() < mMaximum)
         {
-            int l;
+            int len;
             if (val < 128)
-                l = 1;               // 0xxxxxxx
+                len = 1;               // 0xxxxxxx
             else if (val < 0x800)
-                l = 2;               // 110xxxxx 10xxxxxx
+                len = 2;               // 110xxxxx 10xxxxxx
             else if (val < 0x10000)
-                l = 3;               // 1110xxxx 10xxxxxx 10xxxxxx
+                len = 3;               // 1110xxxx 10xxxxxx 10xxxxxx
             else
-                l = 4;               // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+                len = 4;               // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 
             char buf[4];
-            for (int i = 0; i < l; ++i)
+            for (int i = 0; i < len; ++ i)
             {
-                buf[i] = static_cast<char>(val >> (6 * (l - i - 1)));
+                buf[i] = static_cast<char>(val >> (6 * (len - i - 1)));
                 if (i > 0)
                     buf[i] = static_cast<char>((buf[i] & 63) | 128);
             }
 
-            if (l > 1)
-                buf[0] |= static_cast<char>(255 << (8 - l));
+            if (len > 1)
+                buf[0] |= static_cast<char>(255 << (8 - len));
 
-            mText.insert(mCaretPosition, std::string(buf, buf + l));
-            mCaretPosition += l;
+            mText.insert(mCaretPosition, std::string(buf, buf + len));
+            mCaretPosition += len;
         }
     }
 

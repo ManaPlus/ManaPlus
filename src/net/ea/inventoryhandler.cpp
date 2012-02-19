@@ -330,7 +330,7 @@ void InventoryHandler::processPlayerInventoryAdd(Net::MessageIn &msg)
         {
             Item *item = inventory->getItem(index);
 
-            if  (item && item->getId() == itemId)
+            if (item && item->getId() == itemId)
                 amount += item->getQuantity();
 
             if (serverVersion < 1 && identified > 1)

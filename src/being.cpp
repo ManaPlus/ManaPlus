@@ -40,7 +40,6 @@
 #include "sound.h"
 #include "sprite.h"
 #include "text.h"
-#include "statuseffect.h"
 
 #include "gui/buydialog.h"
 #include "gui/buyselldialog.h"
@@ -295,9 +294,9 @@ Being::~Being()
 {
     config.removeListener("visiblenames", this);
 
-    delete[] mSpriteRemap;
+    delete [] mSpriteRemap;
     mSpriteRemap = nullptr;
-    delete[] mSpriteHide;
+    delete [] mSpriteHide;
     mSpriteHide = nullptr;
 
     delete mSpeechBubble;
@@ -339,7 +338,15 @@ void Being::setSubtype(Uint16 subtype)
 
         // Prevent showing errors when sprite doesn't exist
         if (!ItemDB::exists(id))
+        {
             id = -100;
+            setRaceName(_("Human"));
+        }
+        else
+        {
+            const ItemInfo &info = ItemDB::get(id);
+            setRaceName(info.getName());
+        }
 
         setSprite(Net::getCharHandler()->baseSprite(), id);
     }
@@ -993,7 +1000,6 @@ void Being::setAction(Action action, int attackType A_UNUSED)
                             case DIRECTION_RIGHT: rotation = 270; break;
                             default: break;
                         }
-                        ;
                         if (particleEngine)
                         {
                             Particle *p = particleEngine->addEffect(
@@ -2404,7 +2410,7 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
 //    logger->log("searching %d", val);
     it = slotRemap.begin();
     idx = 0;
-    while(it != slotRemap.end())
+    while (it != slotRemap.end())
     {
 //        logger->log("testing %d", *it);
         if (*it == val)

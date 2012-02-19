@@ -42,14 +42,12 @@ class FloorItem : public ActorSprite
          * @param y      the y position in tiles
          * @param map    the map this item is on
          * @param amount the item amount
+         * @param color  the item color
+         * @param subX   the x pixel relative position
+         * @param subY   the y pixel relative position
          */
-        FloorItem(int id,
-                  int itemId,
-                  int x,
-                  int y,
-                  Map *map,
-                  int amount,
-                  unsigned char color);
+        FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
+                  unsigned char color, int subX, int subY);
 
         Type getType() const
         { return FLOOR_ITEM; }

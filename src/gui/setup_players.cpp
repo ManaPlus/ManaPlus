@@ -84,6 +84,9 @@ Setup_Players::Setup_Players()
     new SetupItemCheckBox(_("Allow self heal with mouse click"), "",
         "selfMouseHeal", this, "selfMouseHealEvent");
 
+    new SetupItemCheckBox(_("Group friends in who is online window"), "",
+        "groupFriends", this, "groupFriendsEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

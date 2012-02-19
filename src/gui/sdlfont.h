@@ -53,14 +53,14 @@ class SDLFont : public gcn::Font
          * @param filename  Font filename.
          * @param size      Font size.
          */
-        SDLFont(const std::string &filename, int size, int style = 0);
+        SDLFont(std::string filename, int size, int style = 0);
 
         /**
          * Destructor.
          */
         ~SDLFont();
 
-        void loadFont(const std::string &filename, int size, int style = 0);
+        void loadFont(std::string filename, int size, int style = 0);
 
         void createSDLTextChunk(SDLTextChunk *chunk);
 

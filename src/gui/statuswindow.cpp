@@ -126,7 +126,7 @@ StatusWindow::StatusWindow():
     Window(player_node ? player_node->getName() :
         "?", false, nullptr, "status.xml")
 {
-    listen(Mana::CHANNEL_ATTRIBUTES);
+    listen(CHANNEL_ATTRIBUTES);
 
     setWindowName("Status");
     setupWindow->registerWindowForReset(this);
@@ -135,7 +135,13 @@ StatusWindow::StatusWindow():
     setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize((windowContainer->getWidth() - 480) / 2,
-                   (windowContainer->getHeight() - 500) / 2, 480, 500);
+        (windowContainer->getHeight() - 500) / 2, 480, 500);
+
+    if (player_node && !player_node->getRaceName().empty())
+    {
+        setCaption(strprintf("%s (%s)", player_node->getName().c_str(),
+            player_node->getRaceName().c_str()));
+    }
 
     // ----------------------
     // Status Part
@@ -277,16 +283,16 @@ StatusWindow::StatusWindow():
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::processEvent(Mana::Channels channel A_UNUSED,
-                                const Mana::Event &event)
+void StatusWindow::processEvent(Channels channel A_UNUSED,
+                                const Event &event)
 {
     static bool blocked = false;
     if (blocked)
         return;
 
-    if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
+    if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
-        switch(event.getInt("id"))
+        switch (event.getInt("id"))
         {
             case HP: case MAX_HP:
                 updateHPBar(mHpBar, true);
@@ -343,7 +349,7 @@ void StatusWindow::processEvent(Mana::Channels channel A_UNUSED,
                 break;
         }
     }
-    else if (event.getName() == Mana::EVENT_UPDATESTAT)
+    else if (event.getName() == EVENT_UPDATESTAT)
     {
         int id = event.getInt("id");
         if (id == Net::getPlayerHandler()->getJobLocation())

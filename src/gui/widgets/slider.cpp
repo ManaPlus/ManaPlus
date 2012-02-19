@@ -298,4 +298,3 @@ void Slider::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
-

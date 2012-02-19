@@ -35,6 +35,7 @@
     /addpriorityattack NAME - add monster to priority attack list.
     /removeattack NAME - remove monster from attack list.
     /addignoreattack NAME - add monster to ignore attack list.
+    /setdrop N - set drop counter to requested value.
 
 ##PTrade
 ##2

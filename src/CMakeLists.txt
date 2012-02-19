@@ -445,6 +445,12 @@ SET(SRCS
     resources/spritedef.cpp
     resources/wallpaper.cpp
     resources/wallpaper.h
+    utils/translation/podict.cpp
+    utils/translation/podict.h
+    utils/translation/poparser.cpp
+    utils/translation/poparser.h
+    utils/translation/translationmanager.cpp
+    utils/translation/translationmanager.h
     utils/base64.cpp
     utils/base64.h
     utils/checkutils.cpp
@@ -453,6 +459,8 @@ SET(SRCS
     utils/copynpaste.h
     utils/dtor.h
     utils/gettext.h
+    utils/langs.cpp
+    utils/langs.h
     utils/mathutils.h
     utils/paths.cpp
     utils/paths.h
@@ -559,6 +567,8 @@ SET(SRCS
     main.h
     map.cpp
     map.h
+    maplayer.cpp
+    maplayer.h
     opengl1graphics.cpp
     opengl1graphics.h
     openglgraphics.cpp

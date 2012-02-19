@@ -50,7 +50,8 @@
 #define RELATION_CHOICE_COLUMN 1
 
 #define ROW_HEIGHT 12
-// The following column widths really shouldn't be hardcoded but should scale with the size of the widget... except
+// The following column widths really shouldn't be hardcoded
+// but should scale with the size of the widget... except
 // that, right now, the widget doesn't exactly scale either.
 #define NAME_COLUMN_WIDTH 230
 #define RELATION_CHOICE_COLUMN_WIDTH 80

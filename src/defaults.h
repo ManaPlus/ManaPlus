@@ -26,9 +26,7 @@
 #include <string>
 #include "variabledata.h"
 
-using namespace Mana;
-
-typedef std::map<std::string, Mana::VariableData*> DefaultsData;
+typedef std::map<std::string, VariableData*> DefaultsData;
 
 VariableData* createData(int defData);
 VariableData* createData(double defData);

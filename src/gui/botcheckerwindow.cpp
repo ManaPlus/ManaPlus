@@ -53,7 +53,8 @@
 #define TIME_COLUMN 1
 
 #define ROW_HEIGHT 12
-// The following column widths really shouldn't be hardcoded but should scale with the size of the widget... excep
+// The following column widths really shouldn't be hardcoded but should 
+// scale with the size of the widget... excep
 // that, right now, the widget doesn't exactly scale either.
 #define NAME_COLUMN_WIDTH 185
 #define TIME_COLUMN_WIDTH 70

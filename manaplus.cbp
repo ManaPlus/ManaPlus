@@ -428,6 +428,8 @@
 		</Unit>
 		<Unit filename="src\map.cpp" />
 		<Unit filename="src\map.h" />
+		<Unit filename="src\maplayer.cpp" />
+		<Unit filename="src\maplayer.h" />
 		<Unit filename="src\mumblemanager.cpp" />
 		<Unit filename="src\mumblemanager.h" />
 		<Unit filename="src\net\adminhandler.h" />
@@ -664,6 +666,8 @@
 		<Unit filename="src\utils\copynpaste.h" />
 		<Unit filename="src\utils\dtor.h" />
 		<Unit filename="src\utils\gettext.h" />
+		<Unit filename="src\utils\langs.cpp" />
+		<Unit filename="src\utils\langs.h" />
 		<Unit filename="src\utils\mathutils.h" />
 		<Unit filename="src\utils\mkdir.cpp" />
 		<Unit filename="src\utils\mkdir.h" />

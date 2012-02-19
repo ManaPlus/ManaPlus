@@ -353,6 +353,12 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/spritedef.cpp \
 	      resources/wallpaper.cpp \
 	      resources/wallpaper.h \
+	      utils/translation/podict.cpp \
+	      utils/translation/podict.h \
+	      utils/translation/poparser.cpp \
+	      utils/translation/poparser.h \
+	      utils/translation/translationmanager.cpp \
+	      utils/translation/translationmanager.h \
 	      utils/base64.cpp \
 	      utils/base64.h \
 	      utils/checkutils.cpp \
@@ -361,6 +367,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/copynpaste.h \
 	      utils/dtor.h \
 	      utils/gettext.h \
+	      utils/langs.cpp \
+	      utils/langs.h \
 	      utils/mathutils.h \
 	      utils/mkdir.cpp \
 	      utils/mkdir.h \
@@ -467,8 +475,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      logger.h \
 	      main.cpp \
 	      main.h \
-	      map.cpp\
+	      map.cpp \
 	      map.h \
+	      maplayer.cpp \
+	      maplayer.h \
 	      opengl1graphics.cpp\
 	      opengl1graphics.h \
 	      openglgraphics.cpp\
@@ -658,6 +668,11 @@ manaplus_SOURCES += \
 	      mumblemanager.cpp \
 	      mumblemanager.h
 
+if ENABLE_UNITTESTS
+manaplus_CXXFLAGS += -DUNITTESTS
+manaplus_SOURCES += \
+	      utils/stringutils_unittest.cc
+endif
 
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \

@@ -26,9 +26,6 @@
 
 #include "debug.h"
 
-namespace Mana
-{
-
 ListenMap Event::mBindings;
 
 Event::~Event()
@@ -141,6 +138,4 @@ void Event::bind(Listener *listener, Channels channel)
 void Event::unbind(Listener *listener, Channels channel)
 {
     mBindings[channel].erase(listener);
-}
-
 }

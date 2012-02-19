@@ -202,10 +202,10 @@ void ItemDB::load()
         int weight = XML::getProperty(node, "weight", 0);
         int view = XML::getProperty(node, "view", 0);
 
-        std::string name = XML::getProperty(node, "name", "");
+        std::string name = XML::langProperty(node, "name", "");
         std::string image = XML::getProperty(node, "image", "");
         std::string floor = XML::getProperty(node, "floor", "");
-        std::string description = XML::getProperty(node, "description", "");
+        std::string description = XML::langProperty(node, "description", "");
         std::string attackAction = XML::getProperty(node, "attack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
@@ -316,7 +316,7 @@ void ItemDB::load()
                 effect += " / ";
             effect += strprintf(it->format.c_str(), value);
         }
-        std::string temp = XML::getProperty(node, "effect", "");
+        std::string temp = XML::langProperty(node, "effect", "");
         if (!effect.empty() && !temp.empty())
             effect += " / ";
         effect += temp;

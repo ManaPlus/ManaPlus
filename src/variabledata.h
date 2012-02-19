@@ -24,9 +24,6 @@
 
 #include <string>
 
-namespace Mana
-{
-
 class VariableData
 {
     public:
@@ -108,7 +105,5 @@ class BoolData : public VariableData
     private:
         bool mData;
 };
-
-} // namespace Mana
 
 #endif

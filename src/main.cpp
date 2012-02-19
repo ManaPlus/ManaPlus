@@ -31,8 +31,13 @@
 #include <iostream>
 #include <physfs.h>
 
+#include "utils/paths.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
+
+#ifdef UNITTESTS
+#include <gtest/gtest.h>
+#endif
 
 #ifdef __MINGW32__
 #include <windows.h>
@@ -209,6 +214,8 @@ static void parseOptions(int argc, char *argv[], Client::Options &options)
 extern "C" char const *_nl_locale_name_default(void);
 #endif
 
+#ifndef UNITTESTS
+// main for normal game usage
 int main(int argc, char *argv[])
 {
 #if defined(__MINGW32__)
@@ -261,3 +268,14 @@ int main(int argc, char *argv[])
         return client.testsExec();
     }
 }
+
+#else
+
+// main for unit testing
+int main(int argc, char **argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
+#endif

@@ -69,7 +69,6 @@
 #include "gui/worldselectdialog.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
 #include "gui/widgets/desktop.h"
 
 #include "net/charhandler.h"
@@ -80,7 +79,6 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
-#include "net/packetcounters.h"
 #include "net/partyhandler.h"
 #include "net/worldinfo.h"
 
@@ -100,6 +98,8 @@
 #include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/stringutils.h"
+
+#include "utils/translation/translationmanager.h"
 
 #include "test/testlauncher.h"
 #include "test/testmain.h"
@@ -276,7 +276,6 @@ Client::Client(const Options &options):
 
 void Client::testsInit()
 {
-    printf ("testInit\n");
     if (!mOptions.test.empty())
     {
         gameInit();
@@ -340,6 +339,10 @@ void Client::gameInit()
     setlocale(LC_MESSAGES, lang.c_str());
     bind_textdomain_codeset("manaplus", "UTF-8");
     textdomain("manaplus");
+#endif
+
+#if defined(WIN32) || defined(__APPLE__)
+    putenv("SDL_VIDEO_CENTERED=1");
 #endif
 
     chatLogger = new ChatLogger;
@@ -443,7 +446,8 @@ void Client::gameInit()
         }
         else
         {
-            mOptions.dataPath = branding.getDirectory() + "/"
+            mOptions.dataPath = branding.getDirectory()
+                + PHYSFS_getDirSeparator()
                 + branding.getStringValue("dataPath");
         }
         mOptions.skipUpdate = true;
@@ -457,6 +461,8 @@ void Client::gameInit()
     resman->addToSearchPath(mLocalDataDir, false);
 
     //resman->selectSkin();
+
+    TranslationManager::loadCurrentLang();
 
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
@@ -498,7 +504,7 @@ void Client::gameInit()
     GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
 
     // Create the graphics context
-    switch(useOpenGL)
+    switch (useOpenGL)
     {
         case 0:
             mainGraphics = new Graphics;
@@ -794,6 +800,8 @@ void Client::gameClear()
     //delete logger;
     //logger = nullptr;
 
+    TranslationManager::close();
+
     mInstance = nullptr;
 }
 
@@ -860,7 +868,8 @@ int Client::gameExec()
         if (Net::getGeneralHandler())
             Net::getGeneralHandler()->flushNetwork();
 
-        while (get_elapsed_time(lastTickTime) > 0)
+        int k = 0;
+        while (lastTickTime != tick_time && k < 40)
         {
             if (gui)
                 gui->logic();
@@ -870,6 +879,7 @@ int Client::gameExec()
             sound.logic();
 
             ++lastTickTime;
+            k ++;
         }
 
         // This is done because at some point tick_time will wrap.
@@ -982,10 +992,10 @@ int Client::gameExec()
 
         if (mState != mOldState)
         {
-            Mana::Event evt(EVENT_STATECHANGE);
+            Event evt(EVENT_STATECHANGE);
             evt.setInt("oldState", mOldState);
             evt.setInt("newState", mState);
-            Mana::Event::trigger(CHANNEL_CLIENT, evt);
+            Event::trigger(CHANNEL_CLIENT, evt);
 
             if (mOldState == STATE_GAME)
             {
@@ -1050,6 +1060,7 @@ int Client::gameExec()
                     logger->log1("State: CONNECT SERVER");
                     mCurrentDialog = new ConnectionDialog(
                             _("Connecting to server"), STATE_SWITCH_SERVER);
+                    TranslationManager::loadCurrentLang();
                     break;
 
                 case STATE_LOGIN:
@@ -1086,6 +1097,7 @@ int Client::gameExec()
                 case STATE_WORLD_SELECT:
                     logger->log1("State: WORLD SELECT");
                     {
+                        TranslationManager::loadCurrentLang();
                         Worlds worlds = Net::getLoginHandler()->getWorlds();
 
                         if (worlds.empty())
@@ -1130,17 +1142,17 @@ int Client::gameExec()
                     }
                     else if (loginData.updateType & LoginData::Upd_Skip)
                     {
-                        UpdaterWindow::loadLocalUpdates(mLocalDataDir + "/"
-                                                        + mUpdatesDir);
+                        UpdaterWindow::loadLocalUpdates(mLocalDataDir
+                            + PHYSFS_getDirSeparator() + mUpdatesDir);
                         mState = STATE_LOAD_DATA;
                     }
                     else
                     {
                         logger->log1("State: UPDATE");
                         mCurrentDialog = new UpdaterWindow(mUpdateHost,
-                                mLocalDataDir + "/" + mUpdatesDir,
-                                mOptions.dataPath.empty(),
-                                loginData.updateType);
+                            mLocalDataDir + PHYSFS_getDirSeparator()
+                            + mUpdatesDir, mOptions.dataPath.empty(),
+                            loginData.updateType);
                     }
                     break;
 
@@ -1168,7 +1180,8 @@ int Client::gameExec()
                             "zip",
                             false);
 
-                        resman->addToSearchPath(mLocalDataDir + "/"
+                        resman->addToSearchPath(mLocalDataDir
+                            + PHYSFS_getDirSeparator()
                             + mUpdatesDir + "/local/", false);
                     }
 
@@ -1184,10 +1197,12 @@ int Client::gameExec()
                     if (!BeingInfo::unknown)
                         BeingInfo::unknown = new BeingInfo;
 
-                    Mana::Event evt2(EVENT_STATECHANGE);
+                    TranslationManager::loadCurrentLang();
+
+                    Event evt2(EVENT_STATECHANGE);
                     evt2.setInt("newState", STATE_LOAD_DATA);
                     evt2.setInt("oldState", mOldState);
-                    Mana::Event::trigger(CHANNEL_CLIENT, evt2);
+                    Event::trigger(CHANNEL_CLIENT, evt2);
 
                     // Load XML databases
                     CharDB::load();
@@ -1603,7 +1618,7 @@ void Client::initConfigDir()
     if (mConfigDir.empty())
     {
 #ifdef __APPLE__
-        mConfigDir = mLocalDataDir + "/"
+        mConfigDir = mLocalDataDir + PHYSFS_getDirSeparator()
             + branding.getValue("appShort", "mana");
 #elif defined __HAIKU__
         mConfigDir = std::string(PHYSFS_getUserDir()) +
@@ -1635,7 +1650,7 @@ void Client::initConfigDir()
  */
 void Client::initServerConfig(std::string serverName)
 {
-    mServerConfigDir = mConfigDir + "/" + serverName;
+    mServerConfigDir = mConfigDir + PHYSFS_getDirSeparator() + serverName;
 
     if (mkdir_r(mServerConfigDir.c_str()))
     {
@@ -1870,9 +1885,8 @@ void Client::initScreenshotDir()
 
             if (!configScreenshotSuffix.empty())
             {
-                mScreenshotDir += "/" + configScreenshotSuffix;
-//                config.setValue("screenshotDirectorySuffix",
-//                                configScreenshotSuffix);
+                mScreenshotDir += PHYSFS_getDirSeparator()
+                    + configScreenshotSuffix;
             }
         }
     }

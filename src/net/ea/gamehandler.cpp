@@ -43,20 +43,20 @@ GameHandler::GameHandler()
 {
     mCharID = 0;
 
-    listen(Mana::CHANNEL_GAME);
+    listen(CHANNEL_GAME);
 }
 
-void GameHandler::processEvent(Mana::Channels channel,
-                               const Mana::Event &event)
+void GameHandler::processEvent(Channels channel,
+                               const Event &event)
 {
-    if (channel == Mana::CHANNEL_GAME)
+    if (channel == CHANNEL_GAME)
     {
-        if (event.getName() == Mana::EVENT_ENGINESINITALIZED)
+        if (event.getName() == EVENT_ENGINESINITALIZED)
         {
             if (mMap != "")
                 Game::instance()->changeMap(mMap);
         }
-        else if (event.getName() == Mana::EVENT_MAPLOADED)
+        else if (event.getName() == EVENT_MAPLOADED)
         {
             mapLoadedEvent();
         }

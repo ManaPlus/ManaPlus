@@ -26,9 +26,6 @@
 
 #include <string>
 
-namespace Mana
-{
-
 class Listener
 {
     public:
@@ -40,7 +37,5 @@ class Listener
 
         virtual void processEvent(Channels channel, const Event &event) = 0;
 };
-
-} // namespace Mana
 
 #endif

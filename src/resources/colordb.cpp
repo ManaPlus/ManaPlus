@@ -95,7 +95,7 @@ void ColorDB::loadHair()
             if (colors.find(id) != colors.end())
                 logger->log("ColorDB: Redefinition of dye ID %d", id);
 
-            colors[id] = ItemColor(id, XML::getProperty(node, "name", ""),
+            colors[id] = ItemColor(id, XML::langProperty(node, "name", ""),
                 XML::getProperty(node, hairXml ? "value" : "dye", "#FFFFFF"));
         }
     }
@@ -135,7 +135,7 @@ void ColorDB::loadColorLists()
                 if (xmlNameEqual(colorNode, "color"))
                 {
                     ItemColor c(XML::getProperty(colorNode, "id", -1),
-                        XML::getProperty(colorNode, "name", ""),
+                        XML::langProperty(colorNode, "name", ""),
                         XML::getProperty(colorNode, "value", ""));
                     if (c.id > -1)
                         colors[c.id] = c;

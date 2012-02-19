@@ -36,7 +36,7 @@ namespace
 
 SpecialInfo::TargetMode SpecialDB::targetModeFromString(const std::string& str)
 {
-    if      (str == "self")   return SpecialInfo::TARGET_SELF;
+    if (str == "self")        return SpecialInfo::TARGET_SELF;
     else if (str == "friend") return SpecialInfo::TARGET_FRIEND;
     else if (str == "enemy")  return SpecialInfo::TARGET_ENEMY;
     else if (str == "being")  return SpecialInfo::TARGET_BEING;
@@ -129,6 +129,4 @@ SpecialInfo *SpecialDB::get(int id)
         return nullptr;
     else
         return i->second;
-    return nullptr;
 }
-

@@ -27,7 +27,6 @@
 #include "configlistener.h"
 #include "equipment.h"
 #include "map.h"
-#include "particlecontainer.h"
 #include "position.h"
 #include "vector.h"
 
@@ -102,6 +101,7 @@ class Being : public ActorSprite, public ConfigListener
             FLAG_SHOP = 1,
             FLAG_AWAY = 2,
             FLAG_INACTIVE = 4,
+            FLAG_GM = 64,
             FLAG_GENDER = 128,
             FLAG_SPECIAL = 128 + 64
         };
@@ -769,6 +769,12 @@ class Being : public ActorSprite, public ConfigListener
 
         void updatePercentHP();
 
+        void setRaceName(std::string name)
+        { mRaceName = name; }
+
+        std::string getRaceName()
+        { return mRaceName; }
+
     protected:
         /**
          * Sets the new path for this being.
@@ -804,6 +810,7 @@ class Being : public ActorSprite, public ConfigListener
 
         Uint8 mSpriteDirection;         /**< Facing direction */
         std::string mName;              /**< Name of character */
+        std::string mRaceName;
         std::string mPartyName;
         std::string mGuildName;
 

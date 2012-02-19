@@ -34,9 +34,11 @@ class ItemHandler
     public:
         ItemHandler();
 
-        void processItemVisible(Net::MessageIn &msg, bool isDrop);
+        void processItemVisible(Net::MessageIn &msg);
 
         void processItemRemove(Net::MessageIn &msg);
+
+        void processItemDropped(Net::MessageIn &msg);
 };
 
 } // namespace Ea

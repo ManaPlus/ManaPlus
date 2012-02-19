@@ -329,12 +329,12 @@ std::string ResourceManager::getPath(const std::string &file)
     // if the file is not in the search path, then its nullptr
     if (tmp)
     {
-        path = std::string(tmp) + "/" + file;
+        path = std::string(tmp) + PHYSFS_getDirSeparator() + file;
     }
     else
     {
         // if not found in search path return the default path
-        path = Client::getPackageDirectory() + "/" + file;
+        path = Client::getPackageDirectory() + PHYSFS_getDirSeparator() + file;
     }
 
     return path;
@@ -404,19 +404,19 @@ struct ResourceLoader
     {
         if (!v)
             return nullptr;
-        ResourceLoader *l = static_cast< ResourceLoader * >(v);
-        SDL_RWops *rw = PHYSFSRWOPS_openRead(l->path.c_str());
+        ResourceLoader *rl = static_cast< ResourceLoader * >(v);
+        SDL_RWops *rw = PHYSFSRWOPS_openRead(rl->path.c_str());
         if (!rw)
             return nullptr;
-        Resource *res = l->fun(rw);
+        Resource *res = rl->fun(rw);
         return res;
     }
 };
 
 Resource *ResourceManager::load(const std::string &path, loader fun)
 {
-    ResourceLoader l = { this, path, fun };
-    return get(path, ResourceLoader::load, &l);
+    ResourceLoader rl = { this, path, fun };
+    return get(path, ResourceLoader::load, &rl);
 }
 
 Music *ResourceManager::getMusic(const std::string &idPath)
@@ -438,11 +438,11 @@ struct DyedImageLoader
         if (!v)
             return nullptr;
 
-        DyedImageLoader *l = static_cast< DyedImageLoader * >(v);
-        if (!l->manager)
+        DyedImageLoader *rl = static_cast< DyedImageLoader * >(v);
+        if (!rl->manager)
             return nullptr;
 
-        std::string path = l->path;
+        std::string path = rl->path;
         std::string::size_type p = path.find('|');
         Dye *d = nullptr;
         if (p != std::string::npos)
@@ -465,8 +465,8 @@ struct DyedImageLoader
 
 Image *ResourceManager::getImage(const std::string &idPath)
 {
-    DyedImageLoader l = { this, idPath };
-    return static_cast<Image*>(get(idPath, DyedImageLoader::load, &l));
+    DyedImageLoader rl = { this, idPath };
+    return static_cast<Image*>(get(idPath, DyedImageLoader::load, &rl));
 }
 
 /*
@@ -475,8 +475,8 @@ Image *ResourceManager::getSkinImage(const std::string &idPath)
     if (mSelectedSkin.empty())
         return getImage(idPath);
 
-    DyedImageLoader l = { this, mSelectedSkin + idPath };
-    void *ptr = get(idPath, DyedImageLoader::load, &l);
+    DyedImageLoader rl = { this, mSelectedSkin + idPath };
+    void *ptr = get(idPath, DyedImageLoader::load, &rl);
     if (ptr)
         return static_cast<Image*>(ptr);
     else
@@ -494,14 +494,14 @@ struct ImageSetLoader
         if (!v)
             return nullptr;
 
-        ImageSetLoader *l = static_cast< ImageSetLoader * >(v);
-        if (!l->manager)
+        ImageSetLoader *rl = static_cast< ImageSetLoader * >(v);
+        if (!rl->manager)
             return nullptr;
 
-        Image *img = l->manager->getImage(l->path);
+        Image *img = rl->manager->getImage(rl->path);
         if (!img)
             return nullptr;
-        ImageSet *res = new ImageSet(img, l->w, l->h);
+        ImageSet *res = new ImageSet(img, rl->w, rl->h);
         img->decRef();
         return res;
     }
@@ -510,10 +510,10 @@ struct ImageSetLoader
 ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
                                        int w, int h)
 {
-    ImageSetLoader l = { this, imagePath, w, h };
+    ImageSetLoader rl = { this, imagePath, w, h };
     std::stringstream ss;
     ss << imagePath << "[" << w << "x" << h << "]";
-    return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &l));
+    return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &rl));
 }
 
 struct SpriteDefLoader
@@ -525,17 +525,17 @@ struct SpriteDefLoader
         if (!v)
             return nullptr;
 
-        SpriteDefLoader *l = static_cast< SpriteDefLoader * >(v);
-        return SpriteDef::load(l->path, l->variant);
+        SpriteDefLoader *rl = static_cast< SpriteDefLoader * >(v);
+        return SpriteDef::load(rl->path, rl->variant);
     }
 };
 
 SpriteDef *ResourceManager::getSprite(const std::string &path, int variant)
 {
-    SpriteDefLoader l = { path, variant };
+    SpriteDefLoader rl = { path, variant };
     std::stringstream ss;
     ss << path << "[" << variant << "]";
-    return static_cast<SpriteDef*>(get(ss.str(), SpriteDefLoader::load, &l));
+    return static_cast<SpriteDef*>(get(ss.str(), SpriteDefLoader::load, &rl));
 }
 
 void ResourceManager::release(Resource *res)
@@ -723,10 +723,10 @@ struct RescaledLoader
     {
         if (!v)
             return nullptr;
-        RescaledLoader *l = static_cast< RescaledLoader * >(v);
-        if (!l->manager)
+        RescaledLoader *rl = static_cast< RescaledLoader * >(v);
+        if (!rl->manager || !rl->image)
             return nullptr;
-        Image *rescaled = l->image->SDLgetScaledImage(l->width, l->height);
+        Image *rescaled = rl->image->SDLgetScaledImage(rl->width, rl->height);
         if (!rescaled)
             return nullptr;
         return rescaled;
@@ -740,7 +740,7 @@ Image *ResourceManager::getRescaled(Image *image, int width, int height)
 
     std::string idPath = image->getIdPath() + strprintf(
         "_rescaled%dx%d", width, height);
-    RescaledLoader l = { this, image, width, height };
-    Image *img = static_cast<Image*>(get(idPath, RescaledLoader::load, &l));
+    RescaledLoader rl = { this, image, width, height };
+    Image *img = static_cast<Image*>(get(idPath, RescaledLoader::load, &rl));
     return img;
 }

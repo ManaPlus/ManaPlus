@@ -56,4 +56,3 @@ PartyTab::~PartyTab()
 }
 
 } // namespace TmwAthena
-

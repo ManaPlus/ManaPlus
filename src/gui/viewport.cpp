@@ -31,6 +31,7 @@
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "map.h"
+#include "maplayer.h"
 #include "textmanager.h"
 
 #include "gui/beingpopup.h"
@@ -878,7 +879,7 @@ bool Viewport::isPopupMenuVisible()
 
 void Viewport::moveCameraToActor(int actorId, int x, int y)
 {
-    if (!player_node)
+    if (!player_node || !actorSpriteManager)
         return;
 
     Actor *actor = actorSpriteManager->findBeing(actorId);

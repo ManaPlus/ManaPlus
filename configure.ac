@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([ManaPlus], [1.2.2.5], [akaras@inbox.ru], [manaplus])
+AC_INIT([ManaPlus], [1.2.2.19], [akaras@inbox.ru], [manaplus])
 AM_INIT_AUTOMAKE([1.9])
 AC_CONFIG_HEADERS([config.h:config.h.in])
 AC_LANG_CPLUSPLUS
@@ -193,6 +193,19 @@ AC_ARG_ENABLE(memdebug,
 esac],[memdebug_enabled=false])
 
 AM_CONDITIONAL(ENABLE_MEM_DEBUG, test x$memdebug_enabled = xtrue)
+
+# Enable unit tests
+AC_ARG_ENABLE(unittests,
+[  --enable-unittests    Turn on unit tests],
+[case "${enableval}" in
+  yes) unittests_enabled=true
+LIBS="$LIBS -lgtest"
+ ;;
+  no)  unittests_enabled=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-tests) ;;
+esac],[unittests_enabled=false])
+
+AM_CONDITIONAL(ENABLE_UNITTESTS, test x$unittests_enabled = xtrue)
 
 # Enable tcmalloc
 AC_ARG_ENABLE(tcmalloc,

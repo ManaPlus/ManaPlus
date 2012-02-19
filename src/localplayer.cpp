@@ -33,6 +33,7 @@
 #include "keyboardconfig.h"
 #include "logger.h"
 #include "map.h"
+#include "maplayer.h"
 #include "party.h"
 #include "particle.h"
 #include "playerinfo.h"
@@ -40,21 +41,16 @@
 #include "simpleanimation.h"
 #include "sound.h"
 #include "statuseffect.h"
-#include "text.h"
 #include "dropshortcut.h"
 
 #include "gui/chatwindow.h"
 #include "gui/gui.h"
-#include "gui/inventorywindow.h"
-#include "gui/killstats.h"
 #include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
-#include "gui/palette.h"
 #include "gui/shopwindow.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
-#include "gui/statuswindow.h"
 #include "gui/theme.h"
 #include "gui/userpalette.h"
 #include "gui/viewport.h"
@@ -138,7 +134,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
 
     mAttackRange = 0;
 
-    listen(Mana::CHANNEL_ATTRIBUTES);
+    listen(CHANNEL_ATTRIBUTES);
     mLevel = 1;
 
     mAdvanced = true;
@@ -1663,12 +1659,12 @@ void LocalPlayer::optionChanged(const std::string &value)
         mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
 }
 
-void LocalPlayer::processEvent(Mana::Channels channel,
-                               const Mana::Event &event)
+void LocalPlayer::processEvent(Channels channel,
+                               const Event &event)
 {
-    if (channel == Mana::CHANNEL_ATTRIBUTES)
+    if (channel == CHANNEL_ATTRIBUTES)
     {
-        if (event.getName() == Mana::EVENT_UPDATEATTRIBUTE)
+        if (event.getName() == EVENT_UPDATEATTRIBUTE)
         {
             switch (event.getInt("id"))
             {
@@ -1691,7 +1687,7 @@ void LocalPlayer::processEvent(Mana::Channels channel,
                     break;
             };
         }
-        else if (event.getName() == Mana::EVENT_UPDATESTAT)
+        else if (event.getName() == EVENT_UPDATESTAT)
         {
             if (!mShowJobExp)
                 return;
@@ -1713,20 +1709,28 @@ void LocalPlayer::processEvent(Mana::Channels channel,
                     if (!mMessages.empty())
                     {
                         MessagePair pair = mMessages.back();
-                        if (pair.first.find(" xp") == pair.first.size() - 3)
+                        // TRANSLATORS: this is normal experience
+                        if (pair.first.find(strprintf(" %s",
+                            _("xp"))) == pair.first.size() - 3)
                         {
                             mMessages.pop_back();
-                            pair.first += ", " + toString(change) + " job";
+                            // TRANSLATORS: this is job experience
+                            pair.first += strprintf (", %d %s",
+                                change, _("job"));
                             mMessages.push_back(pair);
                         }
                         else
                         {
-                            addMessageToQueue(toString(change) + " job");
+                            // TRANSLATORS: this is job experience
+                            addMessageToQueue(strprintf("%d %s",
+                                change, _("job")));
                         }
                     }
                     else
                     {
-                        addMessageToQueue(toString(change) + " job");
+                        // TRANSLATORS: this is job experience
+                        addMessageToQueue(strprintf(
+                            "%d %s", change, _("job")));
                     }
                 }
             }
@@ -2035,7 +2039,7 @@ std::string LocalPlayer::getAttackTypeString()
         mAttackType, attackTypeSize));
 }
 
-const unsigned quickDropCounterSize = 10;
+const unsigned quickDropCounterSize = 31;
 
 void LocalPlayer::changeQuickDropCounter()
 {
@@ -2045,8 +2049,26 @@ void LocalPlayer::changeQuickDropCounter()
 
 std::string LocalPlayer::getQuickDropCounterString()
 {
-    return strprintf("(%d) drop counter %d",
-        mQuickDropCounter, mQuickDropCounter);
+    if (mQuickDropCounter > 9)
+    {
+        return strprintf("(%c) drop counter %d",
+            'a' + mQuickDropCounter - 10, mQuickDropCounter);
+    }
+    else
+    {
+        return strprintf("(%d) drop counter %d",
+            mQuickDropCounter, mQuickDropCounter);
+    }
+}
+
+void LocalPlayer::setQuickDropCounter(int n)
+{
+    if (n < 1 || n >= (signed)quickDropCounterSize)
+        return;
+    mQuickDropCounter = n;
+    config.setValue("quickDropCounter", mQuickDropCounter);
+    if (miniStatusWindow)
+        miniStatusWindow->updateStatus();
 }
 
 const unsigned pickUpTypeSize = 7;
@@ -2128,7 +2150,7 @@ void LocalPlayer::switchPvpAttack()
 static const char *pvpAttackStrings[] =
 {
     N_("(a) attack all players"),
-    N_("(f) attack not friends"),
+    N_("(f) attack all except friends"),
     N_("(b) attack bad relations"),
     N_("(d) dont attack players"),
     N_("(?) pvp attack")
@@ -2329,7 +2351,7 @@ void LocalPlayer::crazyMove()
 {
     bool oldDisableCrazyMove = mDisableCrazyMove;
     mDisableCrazyMove = true;
-    switch(mCrazyMoveType)
+    switch (mCrazyMoveType)
     {
         case 1:
             crazyMove1();
@@ -2440,7 +2462,7 @@ void LocalPlayer::crazyMove3()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(1, 1);
@@ -2474,7 +2496,7 @@ void LocalPlayer::crazyMove4()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(7, 0);
@@ -2494,7 +2516,7 @@ void LocalPlayer::crazyMove5()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(0, 7);
@@ -2514,7 +2536,7 @@ void LocalPlayer::crazyMove6()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(3, 0);
@@ -2558,7 +2580,7 @@ void LocalPlayer::crazyMove7()
     if (mAction == MOVE)
         return;
 
-    switch(mCrazyMoveState)
+    switch (mCrazyMoveState)
     {
         case 0:
             move(1, 1);
@@ -3036,7 +3058,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
         return status;
 
     int x1, y1, x2, y2;
-    switch(pickUpType)
+    switch (pickUpType)
     {
         case 1:
             switch (mDirection)
@@ -3146,14 +3168,10 @@ void LocalPlayer::specialMove(unsigned char direction)
         && getInvertDirection() <= 4)
         && !mIsServerBuggy)
     {
-        int max;
-        if (getInvertDirection() == 2)
-            max = 10;
-        else
-            max = 30;
-
         if (mAction == MOVE)
             return;
+
+        int max;
 
         if (getInvertDirection() == 2)
             max = 5;
@@ -3197,7 +3215,7 @@ void LocalPlayer::magicAttack()
     if (!Client::limitPackets(PACKET_CHAT))
         return;
 
-    switch(mMagicAttackType)
+    switch (mMagicAttackType)
     {
         //flar W00
         case 0:

@@ -228,7 +228,6 @@ static const char *speechModeToString(Being::Speech mode)
         case Being::NAME_IN_BUBBLE:
             return _("Bubbles with names");
     }
-    return "";
 }
 
 const char *Setup_Video::overlayDetailToString(int detail)

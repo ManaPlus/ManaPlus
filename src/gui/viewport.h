@@ -90,7 +90,9 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         void logic();
 
         /**
-         * Toggles whether the path debug graphics are shown. normal, debug with all images and grid, debug with out big images and with out grid.
+         * Toggles whether the path debug graphics are shown. normal,
+         * debug with all images and grid, debug with out big images
+         * and with out grid.
          */
         void toggleDebugPath();
 

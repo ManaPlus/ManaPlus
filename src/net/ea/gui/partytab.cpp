@@ -242,4 +242,3 @@ void PartyTab::saveToLogFile(std::string &msg)
 }
 
 } // namespace Ea
-

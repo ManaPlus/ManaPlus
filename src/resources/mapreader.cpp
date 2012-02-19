@@ -22,9 +22,11 @@
 
 #include "resources/mapreader.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "logger.h"
 #include "map.h"
+#include "maplayer.h"
 #include "tileset.h"
 
 #include "resources/animation.h"
@@ -459,12 +461,6 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
 
     MapLayer *layer = nullptr;
 
-    if (!isCollisionLayer)
-    {
-        layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer);
-        map->addLayer(layer);
-    }
-
     logger->log("- Loading layer \"%s\"", name.c_str());
     int x = 0;
     int y = 0;
@@ -472,8 +468,32 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
     // Load the tile data
     for_each_xml_child_node(childNode, node)
     {
+        if (serverVersion > 0 && xmlNameEqual(childNode, "properties"))
+        {
+            for_each_xml_child_node(prop, childNode)
+            {
+                if (!xmlNameEqual(prop, "property"))
+                    continue;
+                const std::string pname = XML::getProperty(prop, "name", "");
+                const std::string value = XML::getProperty(prop, "value", "");
+                // ignoring any layer if property Hidden is 1
+                if (pname == "Hidden" && value == "1")
+                    return;
+                if (pname == "Version" && value > CHECK_VERSION)
+                    return;
+                if (pname == "NotVersion" && value <= CHECK_VERSION)
+                    return;
+            }
+        }
+
         if (!xmlNameEqual(childNode, "data"))
             continue;
+
+        if (!isCollisionLayer)
+        {
+            layer = new MapLayer(offsetX, offsetY, w, h, isFringeLayer);
+            map->addLayer(layer);
+        }
 
         const std::string encoding =
             XML::getProperty(childNode, "encoding", "");
@@ -502,7 +522,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
             const char *charStart = reinterpret_cast<const char*>(xmlChars);
             if (!charStart)
             {
-                delete[] charData;
+                delete [] charData;
                 return;
             }
 
@@ -525,7 +545,7 @@ void MapReader::readLayer(XmlNodePtr node, Map *map)
                 static_cast<int>(strlen(reinterpret_cast<char*>(
                 charData))), &binLen);
 
-            delete[] charData;
+            delete [] charData;
             xmlFree(xmlChars);
 
             if (binData)

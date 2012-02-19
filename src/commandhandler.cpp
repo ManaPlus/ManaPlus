@@ -201,6 +201,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleServerIgnoreAll(args, tab);
     else if (type == "serverunignoreall")
         handleServerUnIgnoreAll(args, tab);
+    else if (type == "setdrop")
+        handleSetDrop(args, tab);
     else if (type == "dumpg")
         handleDumpGraphics(args, tab);
     else if (type == "dumpt")
@@ -1185,6 +1187,13 @@ void CommandHandler::outStringNormal(ChatTab *tab, const std::string &str,
             Net::getChatHandler()->talk(def);
             break;
     }
+}
+
+void CommandHandler::handleSetDrop(const std::string &args,
+                                   ChatTab *tab A_UNUSED)
+{
+    if (player_node)
+        player_node->setQuickDropCounter(atoi(args.c_str()));
 }
 
 #ifdef DEBUG_DUMP_LEAKS

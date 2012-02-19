@@ -133,8 +133,8 @@ Network::~Network()
     mMutex = nullptr;
     mInstance = nullptr;
 
-    delete[] mInBuffer;
-    delete[] mOutBuffer;
+    delete []mInBuffer;
+    delete []mOutBuffer;
 
     SDLNet_Quit();
 }

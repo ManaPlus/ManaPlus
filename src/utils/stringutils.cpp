@@ -22,13 +22,13 @@
 
 #include "utils/stringutils.h"
 
-#include "configuration.h"
-
 #include <string.h>
 #include <algorithm>
 #include <cstdarg>
 #include <cstdio>
 #include <list>
+
+#include <sys/time.h>
 
 #include "debug.h"
 
@@ -107,6 +107,7 @@ std::string strprintf(char const *format, ...)
     return res;
 }
 
+/*
 std::string &removeBadChars(std::string &str)
 {
     std::string::size_type pos;
@@ -120,6 +121,7 @@ std::string &removeBadChars(std::string &str)
 
     return str;
 }
+*/
 
 std::string removeColors(std::string msg)
 {
@@ -318,27 +320,37 @@ void getSafeUtf8String(std::string text, char *buf)
 
 std::string getFileName(std::string path)
 {
-    size_t pos = path.rfind("/");
-    if (pos == std::string::npos)
-        pos = path.rfind("\\");
-    if (pos == std::string::npos)
+    size_t pos1 = path.rfind("/");
+    size_t pos2 = path.rfind("\\");
+    if (pos1 == std::string::npos)
+        pos1 = pos2;
+    else if (pos2 != std::string::npos && pos2 > pos1)
+        pos1 = pos2;
+
+    if (pos1 == std::string::npos)
         return path;
-    return path.substr(pos + 1);
+    return path.substr(pos1 + 1);
 }
 
 std::string getFileDir(std::string path)
 {
-    size_t pos = path.rfind("/");
-    if (pos == std::string::npos)
-        pos = path.rfind("\\");
-    if (pos == std::string::npos)
-        return "";
-    return path.substr(0, pos);
+    size_t pos1 = path.rfind("/");
+    size_t pos2 = path.rfind("\\");
+    if (pos1 == std::string::npos)
+        pos1 = pos2;
+    else if (pos2 != std::string::npos && pos2 > pos1)
+        pos1 = pos2;
+
+    if (pos1 == std::string::npos)
+        return path;
+    return path.substr(0, pos1);
 }
 
 std::string& replaceAll(std::string& context, const std::string& from,
                         const std::string& to)
 {
+    if (from.empty())
+        return context;
     size_t lookHere = 0;
     size_t foundHere;
     while ((foundHere = context.find(from, lookHere)) != std::string::npos)
@@ -405,7 +417,7 @@ std::set<int> splitToIntSet(const std::string &text, char separator)
     std::set<int> tokens;
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
         tokens.insert(atoi(item.c_str()));
 
     return tokens;
@@ -416,7 +428,7 @@ std::list<int> splitToIntList(const std::string &text, char separator)
     std::list<int> tokens;
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
         tokens.push_back(atoi(item.c_str()));
 
     return tokens;
@@ -429,7 +441,7 @@ std::list<std::string> splitToStringList(const std::string &text,
     std::list<std::string> tokens;
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
         tokens.push_back(item);
 
     return tokens;
@@ -440,7 +452,7 @@ void splitToStringVector(std::vector<std::string> &tokens,
 {
     std::stringstream ss(text);
     std::string item;
-    while(std::getline(ss, item, separator))
+    while (std::getline(ss, item, separator))
     {
         item = trim(item);
         if (!item.empty())
@@ -484,62 +496,6 @@ std::string combineDye2(std::string file, std::string dye)
     {
         return file;
     }
-}
-
-std::vector<std::string> getLang()
-{
-    std::vector<std::string> langs;
-
-    std::string lang = config.getValue("lang", "").c_str();
-    if (lang.empty())
-    {
-        char *lng = getenv("LANG");
-        if (!lng)
-            return langs;
-        lang = lng;
-    }
-
-    int dot = lang.find(".");
-    if (dot != (signed)std::string::npos)
-        lang = lang.substr(0, dot);
-    langs.push_back(lang);
-    dot = lang.find("_");
-    if (dot != (signed)std::string::npos)
-        langs.push_back(lang.substr(0, dot));
-    return langs;
-}
-
-std::string getLangSimple()
-{
-    std::string lang = config.getValue("lang", "").c_str();
-    if (lang.empty())
-    {
-        char *lng = getenv("LANG");
-        if (!lng)
-            return "";
-        return lng;
-    }
-    return lang;
-}
-
-std::string getLangShort()
-{
-    std::string lang = config.getValue("lang", "").c_str();
-    if (lang.empty())
-    {
-        char *lng = getenv("LANG");
-        if (!lng)
-            return "";
-        lang = lng;
-    }
-
-    int dot = lang.find(".");
-    if (dot != (signed)std::string::npos)
-        lang = lang.substr(0, dot);
-    dot = lang.find("_");
-    if (dot != (signed)std::string::npos)
-        return lang.substr(0, dot);
-    return lang;
 }
 
 std::string packList(std::list<std::string> &list)
@@ -649,12 +605,23 @@ std::string &removeProtocol(std::string &url)
     return url;
 }
 
-bool checkPath(std::string path)
+bool strStartWith(std::string str1, std::string str2)
 {
-    if (path.empty())
-        return true;
-    return path.find("../") == std::string::npos
-        && path.find("..\\") == std::string::npos
-        && path.find("/..") == std::string::npos
-        && path.find("\\..") == std::string::npos;
+    if (str1.size() < str2.size())
+        return false;
+    return str1.substr(0, str2.size()) == str2;
+}
+
+std::string getDateString()
+{
+    char buffer[80];
+
+    time_t rawtime;
+    struct tm *timeinfo;
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer, 79, "%Y-%m-%d", timeinfo);
+    return std::string(buffer);
 }

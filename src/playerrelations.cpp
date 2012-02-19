@@ -103,7 +103,8 @@ class PlayerConfSerialiser :
 
 static PlayerConfSerialiser player_conf_serialiser; // stateless singleton
 
-const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] = {
+const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] =
+{
     /* NEUTRAL */     0, // we always fall back to the defaults anyway
     /* FRIEND  */     EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE,
     /* DISREGARDED*/  EMOTE | SPEECH_FLOAT,
@@ -530,8 +531,6 @@ public:
     }
     Uint8 mEmotion;
 };
-
-
 
 std::vector<PlayerIgnoreStrategy *> *
 PlayerRelationsManager::getPlayerIgnoreStrategies()

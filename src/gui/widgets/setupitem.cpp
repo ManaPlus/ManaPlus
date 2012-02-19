@@ -455,7 +455,6 @@ void SetupItemIntTextField::apply(std::string eventName)
 }
 
 
-
 SetupItemLabel::SetupItemLabel(std::string text, std::string description,
                                SetupTabScroll *parent, bool separator) :
     SetupItem(text, description, "", parent, "", "", true),

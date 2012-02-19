@@ -382,8 +382,8 @@ void SkillDialog::loadSkills(const std::string &file)
 
             SkillInfo *skill = new SkillInfo;
             skill->id = 1;
-            skill->name = "basic";
-            skill->dispName = "Skill: basic, Id: 1";
+            skill->name = _("basic");
+            skill->dispName = _("Skill: basic, Id: 1");
             skill->setIcon("");
             skill->modifiable = true;
             skill->visible = true;
@@ -428,14 +428,14 @@ void SkillDialog::loadSkills(const std::string &file)
                 if (xmlNameEqual(node, "skill"))
                 {
                     int id = atoi(XML::getProperty(node, "id", "-1").c_str());
-                    std::string name = XML::getProperty(node, "name",
+                    std::string name = XML::langProperty(node, "name",
                         strprintf(_("Skill %d"), id));
                     std::string icon = XML::getProperty(node, "icon", "");
 
                     SkillInfo *skill = new SkillInfo;
                     skill->id = static_cast<short unsigned>(id);
                     skill->name = name;
-                    skill->dispName = strprintf("Skill: %s, Id: %d",
+                    skill->dispName = strprintf(_("Skill: %s, Id: %d"),
                         name.c_str(), skill->id);
                     skill->setIcon(icon);
                     skill->modifiable = false;

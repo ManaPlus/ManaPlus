@@ -92,6 +92,12 @@ namespace XML
                             const std::string &def);
 
     /**
+     * Gets a translated string property from an XmlNodePtr.
+     */
+    std::string langProperty(XmlNodePtr node, const char *name,
+                             const std::string &def);
+
+    /**
      * Gets a boolean property from an XmlNodePtr.
      */
     bool getBoolProperty(XmlNodePtr node, const char *name, bool def);

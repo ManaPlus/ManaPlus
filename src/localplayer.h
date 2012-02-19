@@ -69,7 +69,7 @@ enum
  * The local player character.
  */
 class LocalPlayer : public Being, public ActorSpriteListener,
-        public Mana::Listener
+        public Listener
 {
     public:
         /**
@@ -256,6 +256,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int getQuickDropCounter() const
         { return mQuickDropCounter; }
 
+        void setQuickDropCounter(int n);
+
         void changeQuickDropCounter();
 
         int getMoveState() const
@@ -387,7 +389,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         void optionChanged(const std::string &value);
 
-        void processEvent(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Channels channel, const Event &event);
 
         /**
          * set a following player.

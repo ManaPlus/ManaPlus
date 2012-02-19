@@ -31,8 +31,6 @@
 
 #include "debug.h"
 
-using namespace Mana;
-
 VariableData* createData(int defData)
 {
     return new IntData(defData);
@@ -134,7 +132,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "download-music", false);
     AddDEF(configData, "guialpha", 0.8f);
     AddDEF(configData, "ChatLogLength", 0);
-    AddDEF(configData, "enableChatLog", false);
+    AddDEF(configData, "enableChatLog", true);
     AddDEF(configData, "whispertab", true);
     AddDEF(configData, "customcursor", true);
     AddDEF(configData, "showownname", true);
@@ -174,7 +172,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "hideShopMessages", true);
     AddDEF(configData, "showChatHistory", true);
     AddDEF(configData, "showChatColorsList", true);
-    AddDEF(configData, "chatMaxLinesLimit", 20);
+    AddDEF(configData, "chatMaxLinesLimit", 40);
     AddDEF(configData, "chatColor", 0);
     AddDEF(configData, "hideShield", true);
     AddDEF(configData, "showJob", true);
@@ -227,6 +225,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "testInfo", "");
     AddDEF(configData, "enableresize", true);
     AddDEF(configData, "noframe", false);
+    AddDEF(configData, "groupFriends", true);
     return configData;
 }
 
@@ -244,6 +243,7 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "defaultServerType", "tmwathena");
     AddDEF(brandingData, "onlineServerList",
            "http://manaplus.evolonline.org/serverlist.xml");
+    AddDEF(brandingData, "onlineServerFile", "serverlistplus.xml");
     AddDEF(brandingData, "appShort", "mana");
     AddDEF(brandingData, "defaultUpdateHost", "");
     AddDEF(brandingData, "helpPath", "");

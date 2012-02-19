@@ -309,7 +309,7 @@ void Dye::instantiate(std::string &target, const std::string &palettes)
             {
                 s << palettes.substr(pal_pos);
                 s << target.substr(next_pos);
-                pal_pos = std::string::npos;
+                //pal_pos = std::string::npos;
                 break;
             }
             s << palettes.substr(pal_pos, pal_next_pos - pal_pos);

@@ -41,6 +41,7 @@
 #include "net/net.h"
 
 #include "utils/gettext.h"
+#include "utils/paths.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"

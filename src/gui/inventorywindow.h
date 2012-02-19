@@ -54,7 +54,7 @@ class InventoryWindow : public Window,
                         public gcn::KeyListener,
                         public gcn::SelectionListener,
                         public InventoryListener,
-                        public Mana::Listener
+                        public Listener
 {
     public:
         /**
@@ -126,7 +126,7 @@ class InventoryWindow : public Window,
 
         void updateDropButton();
 
-        void processEvent(Mana::Channels channel, const Mana::Event &event);
+        void processEvent(Channels channel, const Event &event);
 
         void updateButtons(Item *item = nullptr);
 

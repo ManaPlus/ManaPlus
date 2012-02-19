@@ -24,11 +24,12 @@
 #include "configuration.h"
 #include "game.h"
 #include "graphics.h"
+
 #ifdef USE_OPENGL
 #include "openglgraphics.h"
 #include "opengl1graphics.h"
 #endif
-#include "localplayer.h"
+
 #include "map.h"
 
 #include "resources/image.h"

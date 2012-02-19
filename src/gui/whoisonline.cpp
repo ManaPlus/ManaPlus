@@ -85,7 +85,8 @@ WhoIsOnline::WhoIsOnline():
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
     mAllowUpdate(true),
-    mShowLevel(false)
+    mShowLevel(false),
+    mGroupFriends(true)
 {
     mCurlError[0] = 0;
     setWindowName("WhoIsOnline");
@@ -124,12 +125,15 @@ WhoIsOnline::WhoIsOnline():
     download();
 
     config.addListener("updateOnlineList", this);
+    config.addListener("groupFriends", this);
     mUpdateOnlineList = config.getBoolValue("updateOnlineList");
+    mGroupFriends = config.getBoolValue("groupFriends");
 }
 
 WhoIsOnline::~WhoIsOnline()
 {
     config.removeListener("updateOnlineList", this);
+    config.removeListener("groupFriends", this);
 
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, nullptr);
@@ -138,7 +142,7 @@ WhoIsOnline::~WhoIsOnline()
     mMemoryBuffer = nullptr;
 
     // Remove possibly leftover temporary download
-    delete[] mCurlError;
+    delete []mCurlError;
 
     std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
     std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
@@ -226,7 +230,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
     if (addedFromSection == true && !disregard.empty())
     {
         mBrowserBox->addRow("---");
-        addedFromSection = false;
+//        addedFromSection = false;
     }
     for (int i = 0; i < static_cast<int>(disregard.size()); i++)
     {
@@ -282,7 +286,10 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 
             case PlayerRelation::FRIEND:
                 player->setText("2");
-                friends.push_back(player);
+                if (mGroupFriends)
+                    friends.push_back(player);
+                else
+                    neutral.push_back(player);
                 break;
 
             case PlayerRelation::DISREGARDED:
@@ -425,7 +432,10 @@ void WhoIsOnline::loadWebList()
 
                     case PlayerRelation::FRIEND:
                         player->setText("2");
-                        friends.push_back(player);
+                        if (mGroupFriends)
+                            friends.push_back(player);
+                        else
+                            neutral.push_back(player);
                         break;
 
                     case PlayerRelation::DISREGARDED:
@@ -716,12 +726,13 @@ void WhoIsOnline::optionChanged(const std::string &name)
 {
     if (name == "updateOnlineList")
         mUpdateOnlineList = config.getBoolValue("updateOnlineList");
+    else if (name == "groupFriends")
+        mGroupFriends = config.getBoolValue("groupFriends");
 }
 
 void OnlinePlayer::setText(std::string color)
 {
-    mText = strprintf("@@%s|##%s%s ", mNick.c_str(),
-        color.c_str(), mNick.c_str());
+    mText = "";
 
     if (mStatus != 255 && actorSpriteManager)
     {
@@ -753,10 +764,13 @@ void OnlinePlayer::setText(std::string color)
             // TRANSLATORS: this inactive status writed in player nick
             mText += _("I");
         }
+        if (mStatus & Being::FLAG_GM && color == "0")
+            color = "2";
     }
 
     if (mVersion > 0)
         mText += strprintf(" - %d", mVersion);
 
-    mText += strprintf("@@");
+    mText = strprintf("@@%s|##%s%s %s@@", mNick.c_str(),
+        color.c_str(), mNick.c_str(), mText.c_str());
 }

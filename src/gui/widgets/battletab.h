@@ -43,6 +43,3 @@ class BattleTab : public ChatTab
 
 extern BattleTab *battleChatTab;
 #endif
-
-
-

@@ -27,11 +27,6 @@ namespace gcn
 {
     class ActionEvent;
     class ActionListener;
-    class AllegroFont;
-    class AllegroGraphics;
-    class AllegroImage;
-    class AllegroImageLoader;
-    class AllegroInput;
     class BasicContainer;
     class Button;
     class CheckBox;
@@ -70,7 +65,6 @@ namespace gcn
     class MouseEvent;
     class MouseInput;
     class MouseListener;
-    class OpenGLAllegroImageLoader;
     class OpenGLGraphics;
     class OpenGLImage;
     class OpenGLSDLImageLoader;

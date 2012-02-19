@@ -250,14 +250,14 @@ Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
 
         // We also delete the alpha channel since
         // it's not used.
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         alphaChannel = nullptr;
     }
 
     if (!image)
     {
         logger->log1("Error: Image convert failed.");
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         return nullptr;
     }
 
@@ -295,7 +295,7 @@ void Image::unload()
         SDL_FreeSurface(mSDLSurface);
         mSDLSurface = nullptr;
 
-        delete[] mAlphaChannel;
+        delete [] mAlphaChannel;
         mAlphaChannel = nullptr;
     }
 
@@ -689,14 +689,14 @@ Image *Image::_SDLload(SDL_Surface *tmpImage)
 
         // We also delete the alpha channel since
         // it's not used.
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         alphaChannel = nullptr;
     }
 
     if (!image)
     {
         logger->log1("Error: Image convert failed.");
-        delete[] alphaChannel;
+        delete [] alphaChannel;
         return nullptr;
     }
 
@@ -885,10 +885,20 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
     mBounds.y = static_cast<short>(y);
     mBounds.w = static_cast<Uint16>(width);
     mBounds.h = static_cast<Uint16>(height);
-    mInternalBounds.x = mParent->mBounds.x;
-    mInternalBounds.y = mParent->mBounds.y;
-    mInternalBounds.w = mParent->mBounds.w;
-    mInternalBounds.h = mParent->mBounds.h;
+    if (mParent)
+    {
+        mInternalBounds.x = mParent->mBounds.x;
+        mInternalBounds.y = mParent->mBounds.y;
+        mInternalBounds.w = mParent->mBounds.w;
+        mInternalBounds.h = mParent->mBounds.h;
+    }
+    else
+    {
+        mInternalBounds.x = 0;
+        mInternalBounds.y = 0;
+        mInternalBounds.w = 1;
+        mInternalBounds.h = 1;
+    }
     mUseAlphaCache = false;
 }
 

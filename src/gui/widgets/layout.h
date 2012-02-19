@@ -37,8 +37,8 @@ class LayoutCell;
 class ContainerPlacer
 {
     public:
-        ContainerPlacer(gcn::Container *c = nullptr, LayoutCell *l = nullptr):
-            mContainer(c), mCell(l)
+        ContainerPlacer(gcn::Container *c = nullptr, LayoutCell *lc = nullptr):
+            mContainer(c), mCell(lc)
         {}
 
         /**
