@@ -1677,7 +1677,7 @@ void LocalPlayer::processEvent(Channels channel,
                                  - event.getInt("oldValue");
 
                     if (change != 0)
-                        addMessageToQueue(toString(change) + " xp");
+                        addMessageToQueue(strprintf("%d %s", change, _("xp")));
                     break;
                 }
                 case LEVEL:
@@ -1711,7 +1711,8 @@ void LocalPlayer::processEvent(Channels channel,
                         MessagePair pair = mMessages.back();
                         // TRANSLATORS: this is normal experience
                         if (pair.first.find(strprintf(" %s",
-                            _("xp"))) == pair.first.size() - 3)
+                            _("xp"))) == pair.first.size()
+                            - strlen(_("xp")) - 1)
                         {
                             mMessages.pop_back();
                             // TRANSLATORS: this is job experience
