@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-18 17:08+0300\n"
+"POT-Creation-Date: 2012-02-19 16:05+0300\n"
 "PO-Revision-Date: 2012-02-18 12:40+0000\n"
 "Last-Translator: reid <reidyaro@gmail.com>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/language/"
@@ -74,23 +74,23 @@ msgstr "Connexion au serveur"
 msgid "Logging in"
 msgstr "Connexion"
 
-#: src/client.cpp:1127
+#: src/client.cpp:1128
 msgid "Entering game world"
 msgstr "Vous entrez dans un nouveau monde"
 
-#: src/client.cpp:1229
+#: src/client.cpp:1232
 msgid "Requesting characters"
 msgstr "Téléchargement des personnages"
 
-#: src/client.cpp:1264
+#: src/client.cpp:1267
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
-#: src/client.cpp:1274
+#: src/client.cpp:1277
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
-#: src/client.cpp:1317 src/client.cpp:1324 src/client.cpp:1458
+#: src/client.cpp:1320 src/client.cpp:1327 src/client.cpp:1461
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
@@ -100,50 +100,50 @@ msgstr "Changement de serveur de jeu"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/client.cpp:1333
+#: src/client.cpp:1336
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'inscription"
 
-#: src/client.cpp:1359
+#: src/client.cpp:1362
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
-#: src/client.cpp:1360
+#: src/client.cpp:1363
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
-#: src/client.cpp:1379
+#: src/client.cpp:1382
 msgid "Email Change"
 msgstr "Changer d'e-mail"
 
-#: src/client.cpp:1380
+#: src/client.cpp:1383
 msgid "Email changed successfully!"
 msgstr "L'adresse e-mail a été changée avec succès !"
 
-#: src/client.cpp:1400
+#: src/client.cpp:1403
 msgid "Unregister Successful"
 msgstr "Désinscription réussie"
 
-#: src/client.cpp:1401
+#: src/client.cpp:1404
 msgid "Farewell, come back any time..."
 msgstr "A bientôt, revenez quand vous voudrez..."
 
-#: src/client.cpp:1606 src/client.cpp:1639 src/client.cpp:1654
-#: src/client.cpp:2085 src/client.cpp:2092
+#: src/client.cpp:1609 src/client.cpp:1642 src/client.cpp:1657
+#: src/client.cpp:2088 src/client.cpp:2095
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 
-#: src/client.cpp:1792
+#: src/client.cpp:1795
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Site de mise à jour invalide : %s"
 
-#: src/client.cpp:1826 src/client.cpp:1832
+#: src/client.cpp:1829 src/client.cpp:1835
 msgid "Error creating updates directory!"
 msgstr "Impossible de créer le dossier de mise à jour !"
 
-#: src/client.cpp:1853
+#: src/client.cpp:1856
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
