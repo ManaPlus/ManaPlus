@@ -562,6 +562,8 @@ void Client::gameInit()
         }
     }
 
+    applyGrabMode();
+
     // Initialize for drawing
     mainGraphics->_beginDraw();
 
@@ -2428,4 +2430,10 @@ void Client::resizeVideo(int width, int height, bool always)
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }
+}
+
+void Client::applyGrabMode()
+{
+    SDL_WM_GrabInput(config.getBoolValue("grabinput")
+        ? SDL_GRAB_ON : SDL_GRAB_OFF);
 }

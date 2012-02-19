@@ -55,10 +55,14 @@ Setup_Visual::Setup_Visual()
     new SetupItemCheckBox(_("Show pickup notifications as particle effects"),
         "", "showpickupparticle", this, "showpickupparticleEvent");
 
+    new SetupItemCheckBox(_("Grab mouse and keyboard input"),
+        "", "grabinput", this, "grabinputEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
 void Setup_Visual::apply()
 {
     SetupTabScroll::apply();
+    Client::applyGrabMode();
 }
