@@ -41,6 +41,7 @@ class EditDialog;
 class HorizontContainer;
 class IntTextField;
 class Label;
+class Slider;
 class TextField;
 
 class SetupItem : public gcn::ActionListener
@@ -262,6 +263,39 @@ class SetupItemDropDown : public SetupItem
         Label *mLabel;
         gcn::ListModel *mModel;
         DropDown *mDropDown;
+};
+
+class SetupItemSlider : public SetupItem
+{
+    public:
+        SetupItemSlider(std::string text, std::string description,
+                        std::string keyName, SetupTabScroll *parent,
+                        std::string eventName, double min, double max,
+                        bool mainConfig = true);
+
+        SetupItemSlider(std::string text, std::string description,
+                        std::string keyName, SetupTabScroll *parent,
+                        std::string eventName, double min, double max,
+                        std::string def, bool mainConfig = true);
+
+        ~SetupItemSlider();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        Slider *mSlider;
+        double mMin;
+        double mMax;
 };
 
 #endif

@@ -57,7 +57,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         int mOpenGLEnabled;
         bool mCustomCursorEnabled;
         bool mParticleEffectsEnabled;
-        float mOpacity;
         int mFps;
         int mAltFps;
         bool mEnableResize;
@@ -69,7 +68,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         OpenGLListModel *mOpenGLListModel;
 
         gcn::Label *speechLabel;
-        gcn::Label *alphaLabel;
         gcn::Label *scrollRadiusLabel;
         gcn::Label *scrollLazinessLabel;
         gcn::Label *overlayDetailLabel;
@@ -86,7 +84,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
 
         gcn::Slider *mSpeechSlider;
         gcn::Label *mSpeechLabel;
-        gcn::Slider *mAlphaSlider;
         gcn::CheckBox *mFpsCheckBox;
         gcn::Slider *mFpsSlider;
         gcn::Label *mFpsLabel;

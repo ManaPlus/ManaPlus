@@ -34,11 +34,16 @@ HorizontContainer::HorizontContainer(int height, int spacing):
 
 void HorizontContainer::add(gcn::Widget *widget)
 {
+    add(widget, mSpacing);
+}
+
+void HorizontContainer::add(gcn::Widget *widget, int spacing)
+{
     if (!widget)
         return;
 
     Container::add(widget);
-    widget->setPosition(mLastX, mSpacing);
+    widget->setPosition(mLastX, spacing);
     mCount++;
     mLastX += widget->getWidth() + 2 * mSpacing;
 }

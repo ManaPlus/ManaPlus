@@ -32,6 +32,8 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
 
+#include "resources/image.h"
+
 #include "configuration.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -58,11 +60,15 @@ Setup_Visual::Setup_Visual()
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
         "", "grabinput", this, "grabinputEvent");
 
+    new SetupItemSlider(_("Gui opacity"), "", "guialpha",
+        this, "guialphaEvent", 0.1, 1.0);
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
 void Setup_Visual::apply()
 {
     SetupTabScroll::apply();
+    Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
     Client::applyGrabMode();
 }

@@ -35,6 +35,7 @@ class Setup_Visual : public SetupTabScroll
         Setup_Visual();
 
         void apply();
+
 };
 
 #endif

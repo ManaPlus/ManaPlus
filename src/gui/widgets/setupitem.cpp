@@ -33,6 +33,7 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/slider.h"
 #include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/vertcontainer.h"
@@ -587,4 +588,101 @@ void SetupItemDropDown::toWidget()
         return;
 
     mDropDown->setSelectedString(mValue);
+}
+
+
+
+
+
+
+SetupItemSlider::SetupItemSlider(std::string text, std::string description,
+                                 std::string keyName, SetupTabScroll *parent,
+                                 std::string eventName, double min, double max,
+                                 bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mMin(min),
+    mMax(max)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider::SetupItemSlider(std::string text, std::string description,
+                                 std::string keyName, SetupTabScroll *parent,
+                                 std::string eventName, double min, double max,
+                                 std::string def, bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mMin(min),
+    mMax(max)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider::~SetupItemSlider()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mSlider = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemSlider::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    mLabel = new Label(mText);
+    mSlider = new Slider(mMin, mMax);
+    mSlider->setActionEventId(mEventName);
+    mSlider->addActionListener(mParent);
+    mSlider->setValue(atof(mValue.c_str()));
+    mSlider->setHeight(30);
+
+    mWidget = mSlider;
+    mSlider->setWidth(150);
+    mSlider->setHeight(40);
+    mHorizont->add(mLabel);
+    mHorizont->add(mSlider, -10);
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+void SetupItemSlider::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    mValue = toString(mSlider->getValue());
+}
+
+void SetupItemSlider::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    mSlider->setValue(atof(mValue.c_str()));
+}
+
+void SetupItemSlider::action(const gcn::ActionEvent &event A_UNUSED)
+{
+    fromWidget();
+}
+
+void SetupItemSlider::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
 }

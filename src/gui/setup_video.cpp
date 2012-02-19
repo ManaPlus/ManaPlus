@@ -275,7 +275,6 @@ Setup_Video::Setup_Video():
     mOpenGLEnabled(config.getIntValue("opengl")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mParticleEffectsEnabled(config.getBoolValue("particleeffects")),
-    mOpacity(config.getFloatValue("guialpha")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
     mEnableResize(config.getBoolValue("enableresize")),
@@ -293,7 +292,6 @@ Setup_Video::Setup_Video():
     mNoFrameCheckBox(new CheckBox(_("No frame"), mNoFrame)),
     mSpeechSlider(new Slider(0, 3)),
     mSpeechLabel(new Label("")),
-    mAlphaSlider(new Slider(0.1, 1.0)),
     mFpsCheckBox(new CheckBox(_("FPS limit:"))),
     mFpsSlider(new Slider(2, 160)),
     mFpsLabel(new Label),
@@ -314,7 +312,6 @@ Setup_Video::Setup_Video():
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     speechLabel = new Label(_("Overhead text"));
-    alphaLabel = new Label(_("Gui opacity"));
     overlayDetailLabel = new Label(_("Ambient FX"));
     particleDetailLabel = new Label(_("Particle detail"));
 
@@ -327,9 +324,6 @@ Setup_Video::Setup_Video():
 #ifndef USE_OPENGL
     mOpenGLDropDown->setSelected(0);
 #endif
-
-    mAlphaSlider->setValue(mOpacity);
-    mAlphaSlider->setWidth(90);
 
     mFpsLabel->setCaption(mFps > 0 ? toString(mFps) : _("None"));
     mFpsLabel->setWidth(60);
@@ -350,7 +344,6 @@ Setup_Video::Setup_Video():
     mModeList->setActionEventId("videomode");
     mCustomCursorCheckBox->setActionEventId("customcursor");
     mParticleEffectsCheckBox->setActionEventId("particleeffects");
-    mAlphaSlider->setActionEventId("guialpha");
     mFpsCheckBox->setActionEventId("fpslimitcheckbox");
     mSpeechSlider->setActionEventId("speech");
     mFpsSlider->setActionEventId("fpslimitslider");
@@ -366,7 +359,6 @@ Setup_Video::Setup_Video():
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
     mParticleEffectsCheckBox->addActionListener(this);
-    mAlphaSlider->addActionListener(this);
     mFpsCheckBox->addActionListener(this);
     mSpeechSlider->addActionListener(this);
     mFpsSlider->addActionListener(this);
@@ -406,8 +398,8 @@ Setup_Video::Setup_Video():
 //    place(1, 6, mPickupChatCheckBox, 1);
 //    place(2, 6, mPickupParticleCheckBox, 2);
 
-    place(0, 7, mAlphaSlider);
-    place(1, 7, alphaLabel, 3);
+//    place(0, 7, mAlphaSlider);
+//    place(1, 7, alphaLabel, 3);
 
     place(0, 9, mFpsSlider);
     place(1, 9, mFpsCheckBox).setPadding(3);
@@ -530,7 +522,6 @@ void Setup_Video::apply()
 
     mSpeechMode = static_cast<Being::Speech>(
         config.getIntValue("speech"));
-    mOpacity = config.getFloatValue("guialpha");
     mOverlayDetail = config.getIntValue("OverlayDetail");
     mOpenGLEnabled = config.getIntValue("opengl");
     mEnableResize = config.getBoolValue("enableresize");
@@ -549,7 +540,6 @@ void Setup_Video::cancel()
     mAltFpsSlider->setValue(mAltFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
     mSpeechSlider->setValue(mSpeechMode);
-    mAlphaSlider->setValue(mOpacity);
     mOverlayDetailSlider->setValue(mOverlayDetail);
     mParticleDetailSlider->setValue(mParticleDetail);
     mFpsLabel->setCaption(mFpsCheckBox->isSelected()
@@ -570,8 +560,6 @@ void Setup_Video::cancel()
     config.setValue("customcursor", mCustomCursorEnabled);
     config.setValue("particleeffects", mParticleEffectsEnabled);
     config.setValue("speech", static_cast<int>(mSpeechMode));
-    config.setValue("guialpha", mOpacity);
-    Image::setEnableAlpha(mOpacity != 1.0f);
     config.setValue("opengl", mOpenGLEnabled);
     config.setValue("enableresize", mEnableResize);
     config.setValue("noframe", mNoFrame);
@@ -634,11 +622,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     if (id == "~videomode")
     {
         mDialog = nullptr;
-    }
-    else if (id == "guialpha")
-    {
-        config.setValue("guialpha", mAlphaSlider->getValue());
-        Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
     }
     else if (id == "customcursor")
     {

@@ -38,6 +38,8 @@ class HorizontContainer : public Container, public gcn::WidgetListener
 
         virtual void add(gcn::Widget *widget);
 
+        virtual void add(gcn::Widget *widget, int spacing);
+
         virtual void clear();
 
         void widgetResized(const gcn::Event &event);
