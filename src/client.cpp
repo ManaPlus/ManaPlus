@@ -1097,6 +1097,7 @@ int Client::gameExec()
                 case STATE_WORLD_SELECT:
                     logger->log1("State: WORLD SELECT");
                     {
+                        TranslationManager::loadCurrentLang();
                         Worlds worlds = Net::getLoginHandler()->getWorlds();
 
                         if (worlds.empty())
@@ -1195,6 +1196,8 @@ int Client::gameExec()
 
                     if (!BeingInfo::unknown)
                         BeingInfo::unknown = new BeingInfo;
+
+                    TranslationManager::loadCurrentLang();
 
                     Event evt2(EVENT_STATECHANGE);
                     evt2.setInt("newState", STATE_LOAD_DATA);
