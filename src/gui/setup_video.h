@@ -57,8 +57,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         int mOpenGLEnabled;
         bool mCustomCursorEnabled;
         bool mParticleEffectsEnabled;
-        bool mPickupChatEnabled;
-        bool mPickupParticleEnabled;
         float mOpacity;
         int mFps;
         int mAltFps;
@@ -82,10 +80,6 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::DropDown *mOpenGLDropDown;
         gcn::CheckBox *mCustomCursorCheckBox;
         gcn::CheckBox *mParticleEffectsCheckBox;
-
-        gcn::Label *mPickupNotifyLabel;
-        gcn::CheckBox *mPickupChatCheckBox;
-        gcn::CheckBox *mPickupParticleCheckBox;
 
         gcn::CheckBox *mEnableResizeCheckBox;
         gcn::CheckBox *mNoFrameCheckBox;

@@ -275,8 +275,6 @@ Setup_Video::Setup_Video():
     mOpenGLEnabled(config.getIntValue("opengl")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mParticleEffectsEnabled(config.getBoolValue("particleeffects")),
-    mPickupChatEnabled(config.getBoolValue("showpickupchat")),
-    mPickupParticleEnabled(config.getBoolValue("showpickupparticle")),
     mOpacity(config.getFloatValue("guialpha")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
@@ -291,12 +289,6 @@ Setup_Video::Setup_Video():
                           mCustomCursorEnabled)),
     mParticleEffectsCheckBox(new CheckBox(_("Particle effects"),
                              mParticleEffectsEnabled)),
-    mPickupNotifyLabel(new Label(_("Show pickup notification"))),
-    // TRANSLATORS: Refers to "Show own name"
-    mPickupChatCheckBox(new CheckBox(_("in chat"), mPickupChatEnabled)),
-    // TRANSLATORS: Refers to "Show own name"
-    mPickupParticleCheckBox(new CheckBox(_("as particle"),
-                            mPickupParticleEnabled)),
     mEnableResizeCheckBox(new CheckBox(_("Enable resize"), mEnableResize)),
     mNoFrameCheckBox(new CheckBox(_("No frame"), mNoFrame)),
     mSpeechSlider(new Slider(0, 3)),
@@ -358,8 +350,6 @@ Setup_Video::Setup_Video():
     mModeList->setActionEventId("videomode");
     mCustomCursorCheckBox->setActionEventId("customcursor");
     mParticleEffectsCheckBox->setActionEventId("particleeffects");
-    mPickupChatCheckBox->setActionEventId("pickupchat");
-    mPickupParticleCheckBox->setActionEventId("pickupparticle");
     mAlphaSlider->setActionEventId("guialpha");
     mFpsCheckBox->setActionEventId("fpslimitcheckbox");
     mSpeechSlider->setActionEventId("speech");
@@ -376,8 +366,6 @@ Setup_Video::Setup_Video():
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
     mParticleEffectsCheckBox->addActionListener(this);
-    mPickupChatCheckBox->addActionListener(this);
-    mPickupParticleCheckBox->addActionListener(this);
     mAlphaSlider->addActionListener(this);
     mFpsCheckBox->addActionListener(this);
     mSpeechSlider->addActionListener(this);
@@ -407,8 +395,6 @@ Setup_Video::Setup_Video():
     place(0, 0, scrollArea, 1, 6).setPadding(2);
     place(0, 6, mOpenGLDropDown, 1);
 
-//    place(0, 6, mHwAccelCheckBox, 6);
-
     place(1, 0, mFsCheckBox, 2);
 
     place(1, 1, mCustomCursorCheckBox, 3);
@@ -416,11 +402,9 @@ Setup_Video::Setup_Video():
     place(1, 2, mEnableResizeCheckBox, 2);
     place(1, 3, mNoFrameCheckBox, 2);
 
-    place(1, 4, mParticleEffectsCheckBox, 2);
-
-    place(1, 5, mPickupNotifyLabel, 4);
-    place(1, 6, mPickupChatCheckBox, 1);
-    place(2, 6, mPickupParticleCheckBox, 2);
+//    place(1, 5, mPickupNotifyLabel, 4);
+//    place(1, 6, mPickupChatCheckBox, 1);
+//    place(2, 6, mPickupParticleCheckBox, 2);
 
     place(0, 7, mAlphaSlider);
     place(1, 7, alphaLabel, 3);
@@ -440,9 +424,11 @@ Setup_Video::Setup_Video():
     place(1, 12, overlayDetailLabel);
     place(2, 12, mOverlayDetailField, 3).setPadding(2);
 
-    place(0, 13, mParticleDetailSlider);
-    place(1, 13, particleDetailLabel);
-    place(2, 13, mParticleDetailField, 3).setPadding(2);
+    place(0, 13, mParticleEffectsCheckBox, 5);
+
+    place(0, 14, mParticleDetailSlider);
+    place(1, 14, particleDetailLabel);
+    place(2, 14, mParticleDetailField, 3).setPadding(2);
 
     int width = 600;
 
@@ -547,8 +533,6 @@ void Setup_Video::apply()
     mOpacity = config.getFloatValue("guialpha");
     mOverlayDetail = config.getIntValue("OverlayDetail");
     mOpenGLEnabled = config.getIntValue("opengl");
-    mPickupChatEnabled = config.getBoolValue("showpickupchat");
-    mPickupParticleEnabled = config.getBoolValue("showpickupparticle");
     mEnableResize = config.getBoolValue("enableresize");
     mNoFrame = config.getBoolValue("noframe");
 }
@@ -589,8 +573,6 @@ void Setup_Video::cancel()
     config.setValue("guialpha", mOpacity);
     Image::setEnableAlpha(mOpacity != 1.0f);
     config.setValue("opengl", mOpenGLEnabled);
-    config.setValue("showpickupchat", mPickupChatEnabled);
-    config.setValue("showpickupparticle", mPickupParticleEnabled);
     config.setValue("enableresize", mEnableResize);
     config.setValue("noframe", mNoFrame);
 }
@@ -673,15 +655,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
             new OkDialog(_("Particle Effect Settings Changed."),
                          _("Changes will take effect on map change."));
         }
-    }
-    else if (id == "pickupchat")
-    {
-        config.setValue("showpickupchat", mPickupChatCheckBox->isSelected());
-    }
-    else if (id == "pickupparticle")
-    {
-        config.setValue("showpickupparticle",
-                        mPickupParticleCheckBox->isSelected());
     }
     else if (id == "speech")
     {
