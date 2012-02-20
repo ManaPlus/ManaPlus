@@ -31,6 +31,7 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
+#include "gui/widgets/slider.h"
 
 #include "resources/image.h"
 
@@ -71,4 +72,17 @@ void Setup_Visual::apply()
     SetupTabScroll::apply();
     Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
     Client::applyGrabMode();
+}
+
+void Setup_Visual::action(const gcn::ActionEvent &event)
+{
+    if (event.getId() == "guialphaEvent")
+    {
+        Slider *slider = static_cast<Slider*>(event.getSource());
+        if (slider)
+        {
+            config.setValue("guialpha", slider->getValue());
+            Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+        }
+    }
 }
