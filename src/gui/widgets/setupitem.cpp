@@ -25,6 +25,7 @@
 #include "logger.h"
 
 #include "gui/editdialog.h"
+#include "gui/gui.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
@@ -40,7 +41,9 @@
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+#include "utils/mathutils.h"
 
+#include <guichan/font.hpp>
 
 SetupItem::SetupItem(std::string text, std::string description,
                      std::string keyName, SetupTabScroll *parent,
@@ -591,10 +594,6 @@ void SetupItemDropDown::toWidget()
 }
 
 
-
-
-
-
 SetupItemSlider::SetupItemSlider(std::string text, std::string description,
                                  std::string keyName, SetupTabScroll *parent,
                                  std::string eventName, double min, double max,
@@ -685,4 +684,158 @@ void SetupItemSlider::apply(std::string eventName)
 
     fromWidget();
     save();
+}
+
+SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
+                                   std::string keyName, SetupTabScroll *parent,
+                                   std::string eventName, int min, int max,
+                                   SetupItemNames *values, bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mLabel2(nullptr),
+    mSlider(nullptr),
+    mValues(values),
+    mMin(min),
+    mMax(max),
+    mInvert(false),
+    mInvertValue(0)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
+                                   std::string keyName, SetupTabScroll *parent,
+                                   std::string eventName, int min, int max,
+                                   SetupItemNames *values, std::string def,
+                                   bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mLabel2(nullptr),
+    mSlider(nullptr),
+    mValues(values),
+    mMin(min),
+    mMax(max),
+    mInvert(false),
+    mInvertValue(0)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider2::~SetupItemSlider2()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mSlider = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemSlider2::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    int width = getMaxWidth();
+
+    mLabel = new Label(mText);
+    mLabel2 = new Label("");
+    mLabel2->setWidth(width);
+    mSlider = new Slider(mMin, mMax);
+    mSlider->setActionEventId(mEventName);
+    mSlider->addActionListener(mParent);
+    mSlider->setValue(atof(mValue.c_str()));
+    mSlider->setHeight(30);
+
+    mWidget = mSlider;
+    mSlider->setWidth(150);
+    mSlider->setHeight(40);
+    mHorizont->add(mLabel);
+    mHorizont->add(mSlider, -10);
+    mHorizont->add(mLabel2);
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+    updateLabel();
+}
+
+int SetupItemSlider2::getMaxWidth()
+{
+    if (!mValues || !gui)
+        return 1;
+
+    int maxWidth = 0;
+    SetupItemNamesConstIter it = mValues->begin();
+    SetupItemNamesConstIter it_end = mValues->end();
+    gcn::Font *font = gui->getFont();
+
+    while (it != it_end)
+    {
+        int w = font->getWidth(*it);
+        if (w > maxWidth)
+            maxWidth = w;
+
+        ++ it;
+    }
+    return maxWidth;
+}
+
+void SetupItemSlider2::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    int val = roundDouble(mSlider->getValue());
+    if (mInvert)
+        val = mInvertValue - val;
+    mValue = toString(val);
+}
+
+void SetupItemSlider2::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    int val = roundDouble(atof(mValue.c_str()));
+    if (mInvert)
+        val = mInvertValue - val;
+    mSlider->setValue(val);
+    updateLabel();
+}
+
+void SetupItemSlider2::action(const gcn::ActionEvent &event A_UNUSED)
+{
+    fromWidget();
+    updateLabel();
+}
+
+void SetupItemSlider2::updateLabel()
+{
+    int val = mSlider->getValue() - mMin;
+    if (val < 0)
+        val = 0;
+    else if (val >= (signed)mValues->size())
+        val = (signed)mValues->size() - 1;
+    std::string str = mValues->at(val);
+    mLabel2->setCaption(str);
+}
+
+void SetupItemSlider2::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
+}
+
+void SetupItemSlider2::setInvertValue(int v)
+{
+    mInvert = true;
+    mInvertValue = v;
+    toWidget();
 }

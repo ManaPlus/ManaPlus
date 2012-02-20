@@ -25,6 +25,7 @@
 
 #include "guichanfwd.h"
 
+#include "gui/widgets/setupitem.h"
 #include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
@@ -34,9 +35,18 @@ class Setup_Visual : public SetupTabScroll
     public:
         Setup_Visual();
 
+        ~Setup_Visual();
+
         void apply();
 
         void action(const gcn::ActionEvent &event A_UNUSED);
+
+    private:
+        SetupItemNames *mSpeachList;
+
+        SetupItemNames *mAmbientFxList;
+
+        SetupItemNames *mParticleList;
 };
 
 #endif

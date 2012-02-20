@@ -92,7 +92,6 @@ class SetupItem : public gcn::ActionListener
         virtual void cancel(std::string eventName);
 
         virtual void externalUpdated(std::string eventName);
-//        virtual int add(ContainerPlacer &place, int x, int y, int width);
 
         bool isMainConfig() const
         { return mMainConfig; }
@@ -290,12 +289,62 @@ class SetupItemSlider : public SetupItem
 
         void apply(std::string eventName);
 
+        void updateLabel();
+
     protected:
         HorizontContainer *mHorizont;
         Label *mLabel;
         Slider *mSlider;
         double mMin;
         double mMax;
+};
+
+typedef std::vector<std::string> SetupItemNames;
+typedef SetupItemNames::iterator SetupItemNamesIter;
+typedef SetupItemNames::const_iterator SetupItemNamesConstIter;
+
+class SetupItemSlider2 : public SetupItem
+{
+    public:
+        SetupItemSlider2(std::string text, std::string description,
+                         std::string keyName, SetupTabScroll *parent,
+                         std::string eventName, int min, int max,
+                         SetupItemNames *values, bool mainConfig = true);
+
+        SetupItemSlider2(std::string text, std::string description,
+                         std::string keyName, SetupTabScroll *parent,
+                         std::string eventName, int min, int max,
+                         SetupItemNames *values, std::string def,
+                         bool mainConfig = true);
+
+        ~SetupItemSlider2();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+        void setInvertValue(int v);
+
+    protected:
+        void updateLabel();
+
+        int getMaxWidth();
+
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        Label *mLabel2;
+        Slider *mSlider;
+        SetupItemNames *mValues;
+        int mMin;
+        int mMax;
+        bool mInvert;
+        int mInvertValue;
 };
 
 #endif

@@ -112,4 +112,9 @@ inline float weightedAverage(float n1, float n2, float w)
     return w * n2 + (1.0f - w) * n1;
 }
 
+inline int roundDouble(double v)
+{
+    return (v > 0.0) ? (v + 0.5) : (v - 0.5); 
+}
+
 #endif // UTILS_MATHUTILS_H

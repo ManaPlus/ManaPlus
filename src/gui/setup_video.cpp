@@ -28,7 +28,6 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "main.h"
-#include "particle.h"
 
 #include "gui/gui.h"
 #include "gui/okdialog.h"
@@ -214,95 +213,26 @@ public:
     }
 };
 
-static const char *speechModeToString(Being::Speech mode)
-{
-    switch (mode)
-    {
-        case Being::NO_SPEECH:
-        default:
-            return _("No text");
-        case Being::TEXT_OVERHEAD:
-            return _("Text");
-        case Being::NO_NAME_IN_BUBBLE:
-            return _("Bubbles, no names");
-        case Being::NAME_IN_BUBBLE:
-            return _("Bubbles with names");
-    }
-}
-
-const char *Setup_Video::overlayDetailToString(int detail)
-{
-    if (detail == -1)
-        detail = config.getIntValue("OverlayDetail");
-
-    switch (detail)
-    {
-        case 0:
-            return _("off");
-        case 1:
-            return _("low");
-        case 2:
-            return _("high");
-        default:
-            return "";
-    }
-    return "";
-}
-
-const char *Setup_Video::particleDetailToString(int detail)
-{
-    if (detail == -1)
-        detail = 3 - config.getIntValue("particleEmitterSkip");
-
-    switch (detail)
-    {
-        case 0:
-            return _("low");
-        case 1:
-            return _("medium");
-        case 2:
-            return _("high");
-        case 3:
-            return _("max");
-        default:
-            return "";
-    }
-    return "";
-}
-
 Setup_Video::Setup_Video():
     mFullScreenEnabled(config.getBoolValue("screen")),
     mOpenGLEnabled(config.getIntValue("opengl")),
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
-    mParticleEffectsEnabled(config.getBoolValue("particleeffects")),
     mFps(config.getIntValue("fpslimit")),
     mAltFps(config.getIntValue("altfpslimit")),
     mEnableResize(config.getBoolValue("enableresize")),
     mNoFrame(config.getBoolValue("noframe")),
-    mSpeechMode(static_cast<Being::Speech>(
-        config.getIntValue("speech"))),
     mModeListModel(new ModeListModel),
     mModeList(new ListBox(mModeListModel)),
     mFsCheckBox(new CheckBox(_("Full screen"), mFullScreenEnabled)),
     mCustomCursorCheckBox(new CheckBox(_("Custom cursor"),
                           mCustomCursorEnabled)),
-    mParticleEffectsCheckBox(new CheckBox(_("Particle effects"),
-                             mParticleEffectsEnabled)),
     mEnableResizeCheckBox(new CheckBox(_("Enable resize"), mEnableResize)),
     mNoFrameCheckBox(new CheckBox(_("No frame"), mNoFrame)),
-    mSpeechSlider(new Slider(0, 3)),
-    mSpeechLabel(new Label("")),
     mFpsCheckBox(new CheckBox(_("FPS limit:"))),
     mFpsSlider(new Slider(2, 160)),
     mFpsLabel(new Label),
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(_("Alt FPS limit: "))),
-    mOverlayDetail(config.getIntValue("OverlayDetail")),
-    mOverlayDetailSlider(new Slider(0, 2)),
-    mOverlayDetailField(new Label),
-    mParticleDetail(3 - config.getIntValue("particleEmitterSkip")),
-    mParticleDetailSlider(new Slider(0, 3)),
-    mParticleDetailField(new Label),
     mDialog(nullptr)
 {
     setName(_("Video"));
@@ -310,10 +240,6 @@ Setup_Video::Setup_Video():
     ScrollArea *scrollArea = new ScrollArea(mModeList);
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-
-    speechLabel = new Label(_("Overhead text"));
-    overlayDetailLabel = new Label(_("Ambient FX"));
-    particleDetailLabel = new Label(_("Particle detail"));
 
     mOpenGLListModel = new OpenGLListModel;
     mOpenGLDropDown = new DropDown(mOpenGLListModel),
@@ -343,49 +269,28 @@ Setup_Video::Setup_Video():
 
     mModeList->setActionEventId("videomode");
     mCustomCursorCheckBox->setActionEventId("customcursor");
-    mParticleEffectsCheckBox->setActionEventId("particleeffects");
     mFpsCheckBox->setActionEventId("fpslimitcheckbox");
-    mSpeechSlider->setActionEventId("speech");
     mFpsSlider->setActionEventId("fpslimitslider");
     mAltFpsSlider->setActionEventId("altfpslimitslider");
-    mOverlayDetailSlider->setActionEventId("overlaydetailslider");
-    mOverlayDetailField->setActionEventId("overlaydetailfield");
-    mParticleDetailSlider->setActionEventId("particledetailslider");
-    mParticleDetailField->setActionEventId("particledetailfield");
     mOpenGLDropDown->setActionEventId("opengl");
     mEnableResizeCheckBox->setActionEventId("enableresize");
     mNoFrameCheckBox->setActionEventId("noframe");
 
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
-    mParticleEffectsCheckBox->addActionListener(this);
     mFpsCheckBox->addActionListener(this);
-    mSpeechSlider->addActionListener(this);
     mFpsSlider->addActionListener(this);
     mAltFpsSlider->addActionListener(this);
-    mOverlayDetailSlider->addActionListener(this);
-    mOverlayDetailField->addKeyListener(this);
-    mParticleDetailSlider->addActionListener(this);
-    mParticleDetailField->addKeyListener(this);
     mOpenGLDropDown->addActionListener(this);
     mEnableResizeCheckBox->addActionListener(this);
     mNoFrameCheckBox->addActionListener(this);
-
-    mSpeechLabel->setCaption(speechModeToString(mSpeechMode));
-    mSpeechSlider->setValue(mSpeechMode);
-
-    mOverlayDetailField->setCaption(overlayDetailToString(mOverlayDetail));
-    mOverlayDetailSlider->setValue(mOverlayDetail);
-
-    mParticleDetailField->setCaption(particleDetailToString(mParticleDetail));
-    mParticleDetailSlider->setValue(mParticleDetail);
 
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, scrollArea, 1, 6).setPadding(2);
-    place(0, 6, mOpenGLDropDown, 1);
+    place(0, 0, scrollArea, 1, 5).setPadding(2);
+    place(0, 5, mOpenGLDropDown, 1);
 
     place(1, 0, mFsCheckBox, 2);
 
@@ -401,26 +306,26 @@ Setup_Video::Setup_Video():
 //    place(0, 7, mAlphaSlider);
 //    place(1, 7, alphaLabel, 3);
 
-    place(0, 9, mFpsSlider);
-    place(1, 9, mFpsCheckBox).setPadding(3);
-    place(2, 9, mFpsLabel).setPadding(1);
+    place(0, 6, mFpsSlider);
+    place(1, 6, mFpsCheckBox).setPadding(3);
+    place(2, 6, mFpsLabel).setPadding(1);
 
-    place(0, 10, mAltFpsSlider);
-    place(1, 10, mAltFpsLabel).setPadding(3);
+    place(0, 7, mAltFpsSlider);
+    place(1, 7, mAltFpsLabel).setPadding(3);
 
-    place(0, 11, mSpeechSlider);
-    place(1, 11, speechLabel);
-    place(2, 11, mSpeechLabel, 3).setPadding(2);
+//    place(0, 11, mSpeechSlider);
+//    place(1, 11, speechLabel);
+//    place(2, 11, mSpeechLabel, 3).setPadding(2);
 
-    place(0, 12, mOverlayDetailSlider);
-    place(1, 12, overlayDetailLabel);
-    place(2, 12, mOverlayDetailField, 3).setPadding(2);
+//    place(0, 12, mOverlayDetailSlider);
+//    place(1, 12, overlayDetailLabel);
+//    place(2, 12, mOverlayDetailField, 3).setPadding(2);
 
-    place(0, 13, mParticleEffectsCheckBox, 5);
+//    place(0, 13, mParticleEffectsCheckBox, 5);
 
-    place(0, 14, mParticleDetailSlider);
-    place(1, 14, particleDetailLabel);
-    place(2, 14, mParticleDetailField, 3).setPadding(2);
+//    place(0, 14, mParticleDetailSlider);
+//    place(1, 14, particleDetailLabel);
+//    place(2, 14, mParticleDetailField, 3).setPadding(2);
 
     int width = 600;
 
@@ -518,11 +423,7 @@ void Setup_Video::apply()
     // We sync old and new values at apply time
     mFullScreenEnabled = config.getBoolValue("screen");
     mCustomCursorEnabled = config.getBoolValue("customcursor");
-    mParticleEffectsEnabled = config.getBoolValue("particleeffects");
 
-    mSpeechMode = static_cast<Being::Speech>(
-        config.getIntValue("speech"));
-    mOverlayDetail = config.getIntValue("OverlayDetail");
     mOpenGLEnabled = config.getIntValue("opengl");
     mEnableResize = config.getBoolValue("enableresize");
     mNoFrame = config.getBoolValue("noframe");
@@ -534,14 +435,10 @@ void Setup_Video::cancel()
     mFsCheckBox->setSelected(mFullScreenEnabled);
     mOpenGLDropDown->setSelected(mOpenGLEnabled);
     mCustomCursorCheckBox->setSelected(mCustomCursorEnabled);
-    mParticleEffectsCheckBox->setSelected(mParticleEffectsEnabled);
     mFpsSlider->setValue(mFps);
     mFpsSlider->setEnabled(mFps > 0);
     mAltFpsSlider->setValue(mAltFps);
     mAltFpsSlider->setEnabled(mAltFps > 0);
-    mSpeechSlider->setValue(mSpeechMode);
-    mOverlayDetailSlider->setValue(mOverlayDetail);
-    mParticleDetailSlider->setValue(mParticleDetail);
     mFpsLabel->setCaption(mFpsCheckBox->isSelected()
                           ? toString(mFps) : _("None"));
     mAltFpsLabel->setCaption(_("Alt FPS limit: ") + toString(mAltFps));
@@ -558,8 +455,6 @@ void Setup_Video::cancel()
     config.setValue("screenheight", mainGraphics->mHeight);
 
     config.setValue("customcursor", mCustomCursorEnabled);
-    config.setValue("particleeffects", mParticleEffectsEnabled);
-    config.setValue("speech", static_cast<int>(mSpeechMode));
     config.setValue("opengl", mOpenGLEnabled);
     config.setValue("enableresize", mEnableResize);
     config.setValue("noframe", mNoFrame);
@@ -626,39 +521,6 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     else if (id == "customcursor")
     {
         config.setValue("customcursor", mCustomCursorCheckBox->isSelected());
-    }
-    else if (id == "particleeffects")
-    {
-        config.setValue("particleeffects",
-                        mParticleEffectsCheckBox->isSelected());
-        Particle::enabled = mParticleEffectsCheckBox->isSelected();
-
-        if (Game::instance())
-        {
-            new OkDialog(_("Particle Effect Settings Changed."),
-                         _("Changes will take effect on map change."));
-        }
-    }
-    else if (id == "speech")
-    {
-        Being::Speech val = static_cast<Being::Speech>(
-            mSpeechSlider->getValue());
-        mSpeechLabel->setCaption(speechModeToString(val));
-        mSpeechSlider->setValue(val);
-        config.setValue("speech", static_cast<int>(val));
-    }
-    else if (id == "overlaydetailslider")
-    {
-        int val = static_cast<int>(mOverlayDetailSlider->getValue());
-        mOverlayDetailField->setCaption(overlayDetailToString(val));
-        config.setValue("OverlayDetail", val);
-    }
-    else if (id == "particledetailslider")
-    {
-        int val = static_cast<int>(mParticleDetailSlider->getValue());
-        mParticleDetailField->setCaption(particleDetailToString(val));
-        config.setValue("particleEmitterSkip", 3 - val);
-        Particle::emitterSkip = 4 - val;
     }
     else if (id == "fpslimitcheckbox" || id == "fpslimitslider")
     {

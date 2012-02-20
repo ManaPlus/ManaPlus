@@ -30,7 +30,6 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/setupitem.h"
 #include "gui/widgets/slider.h"
 
 #include "resources/image.h"
@@ -38,6 +37,7 @@
 #include "configuration.h"
 #include "localplayer.h"
 #include "logger.h"
+#include "particle.h"
 
 #include "utils/gettext.h"
 
@@ -64,7 +64,44 @@ Setup_Visual::Setup_Visual()
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
         this, "guialphaEvent", 0.1, 1.0);
 
+    mSpeachList = new SetupItemNames();
+    mSpeachList->push_back(_("No text"));
+    mSpeachList->push_back(_("Text"));
+    mSpeachList->push_back(_("Bubbles, no names"));
+    mSpeachList->push_back(_("Bubbles with names"));
+    new SetupItemSlider2(_("Overhead text"),"", "speech", this,
+        "speechEvent", 0, 3, mSpeachList);
+
+    mAmbientFxList = new SetupItemNames();
+    mAmbientFxList->push_back(_("off"));
+    mAmbientFxList->push_back(_("low"));
+    mAmbientFxList->push_back(_("high"));
+    new SetupItemSlider2(_("Ambient FX"), "", "OverlayDetail", this,
+        "OverlayDetailEvent", 0, 2, mAmbientFxList);
+
+    new SetupItemCheckBox(_("Particle effects"), "",
+        "particleeffects", this, "particleeffectsEvent");
+
+    mParticleList = new SetupItemNames();
+    mParticleList->push_back(_("low"));
+    mParticleList->push_back(_("medium"));
+    mParticleList->push_back(_("high"));
+    mParticleList->push_back(_("max"));
+    (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
+        this, "particleEmitterSkipEvent", 0, 3,
+        mParticleList))->setInvertValue(3);
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
+}
+
+Setup_Visual::~Setup_Visual()
+{
+    delete mSpeachList;
+    mSpeachList = nullptr;
+    delete mAmbientFxList;
+    mAmbientFxList = nullptr;
+    delete mParticleList;
+    mParticleList = nullptr;
 }
 
 void Setup_Visual::apply()
@@ -83,6 +120,15 @@ void Setup_Visual::action(const gcn::ActionEvent &event)
         {
             config.setValue("guialpha", slider->getValue());
             Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+        }
+    }
+    else if (event.getId() == "particleEmitterSkipEvent")
+    {
+        Slider *slider = static_cast<Slider*>(event.getSource());
+        if (slider)
+        {
+            int val = static_cast<int>(slider->getValue());
+            Particle::emitterSkip = 4 - val;
         }
     }
 }

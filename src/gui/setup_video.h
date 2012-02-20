@@ -46,58 +46,37 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
 
         void action(const gcn::ActionEvent &event);
 
-        static const char *overlayDetailToString(int detail = -1);
-
-        static const char *particleDetailToString(int detail = -1);
-
         virtual void externalUpdated();
 
     private:
         bool mFullScreenEnabled;
         int mOpenGLEnabled;
         bool mCustomCursorEnabled;
-        bool mParticleEffectsEnabled;
         int mFps;
         int mAltFps;
         bool mEnableResize;
         bool mNoFrame;
-        Being::Speech mSpeechMode;
 
         ModeListModel *mModeListModel;
 
         OpenGLListModel *mOpenGLListModel;
 
-        gcn::Label *speechLabel;
         gcn::Label *scrollRadiusLabel;
         gcn::Label *scrollLazinessLabel;
-        gcn::Label *overlayDetailLabel;
-        gcn::Label *particleDetailLabel;
 
         gcn::ListBox *mModeList;
         gcn::CheckBox *mFsCheckBox;
         gcn::DropDown *mOpenGLDropDown;
         gcn::CheckBox *mCustomCursorCheckBox;
-        gcn::CheckBox *mParticleEffectsCheckBox;
 
         gcn::CheckBox *mEnableResizeCheckBox;
         gcn::CheckBox *mNoFrameCheckBox;
 
-        gcn::Slider *mSpeechSlider;
-        gcn::Label *mSpeechLabel;
         gcn::CheckBox *mFpsCheckBox;
         gcn::Slider *mFpsSlider;
         gcn::Label *mFpsLabel;
-//        gcn::CheckBox *mAltFpsCheckBox;
         gcn::Slider *mAltFpsSlider;
         gcn::Label *mAltFpsLabel;
-
-        int mOverlayDetail;
-        gcn::Slider *mOverlayDetailSlider;
-        gcn::Label *mOverlayDetailField;
-
-        int mParticleDetail;
-        gcn::Slider *mParticleDetailSlider;
-        gcn::Label *mParticleDetailField;
 
         TextDialog *mDialog;
 };
