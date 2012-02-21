@@ -94,6 +94,13 @@ Setup_Visual::Setup_Visual()
     new SetupItemSlider(_("Gamma"), "", "gamma",
         this, "gammeEvent", 1, 20, 350, true);
 
+    mVSyncList = new SetupItemNames();
+    mVSyncList->push_back(_("default"));
+    mVSyncList->push_back(_("off"));
+    mVSyncList->push_back(_("on"));
+    new SetupItemSlider2(_("Vsync"), "", "vsync", this,
+        "vsyncEvent", 0, 2, mVSyncList);
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 
@@ -105,6 +112,8 @@ Setup_Visual::~Setup_Visual()
     mAmbientFxList = nullptr;
     delete mParticleList;
     mParticleList = nullptr;
+    delete mVSyncList;
+    mVSyncList = nullptr;
 }
 
 void Setup_Visual::apply()

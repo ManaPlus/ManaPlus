@@ -277,6 +277,8 @@ public:
 
     void applyGamma();
 
+    void applyVSync();
+
     void optionChanged(const std::string &name);
 
     void action(const gcn::ActionEvent &event);

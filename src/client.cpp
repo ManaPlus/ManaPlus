@@ -564,6 +564,7 @@ void Client::gameInit()
 
     applyGrabMode();
     applyGamma();
+    applyVSync();
 
     // Initialize for drawing
     mainGraphics->_beginDraw();
@@ -668,6 +669,7 @@ void Client::gameInit()
     config.addListener("guialpha", this);
     config.addListener("gamma", this);
     config.addListener("particleEmitterSkip", this);
+    config.addListener("vsync", this);
     setGuiAlpha(config.getFloatValue("guialpha"));
 
     optionChanged("fpslimit");
@@ -709,6 +711,7 @@ void Client::gameClear()
     config.removeListener("guialpha", this);
     config.removeListener("gamma", this);
     config.removeListener("particleEmitterSkip", this);
+    config.removeListener("vsync", this);
 
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);
@@ -1506,6 +1509,10 @@ void Client::optionChanged(const std::string &name)
     else if (name == "particleEmitterSkip")
     {
         Particle::emitterSkip = config.getIntValue("particleEmitterSkip") + 1;
+    }
+    else if (name == "vsync")
+    {
+        applyVSync();
     }
 }
 
@@ -2456,4 +2463,11 @@ void Client::applyGamma()
 {
     float val = config.getFloatValue("gamma");
     SDL_SetGamma(val, val, val);
+}
+
+void Client::applyVSync()
+{
+    int val = config.getIntValue("vsync");
+    if (val > 0 && val < 2)
+        SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
 }
