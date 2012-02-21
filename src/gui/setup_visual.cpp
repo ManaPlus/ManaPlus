@@ -69,7 +69,7 @@ Setup_Visual::Setup_Visual()
     mSpeachList->push_back(_("Text"));
     mSpeachList->push_back(_("Bubbles, no names"));
     mSpeachList->push_back(_("Bubbles with names"));
-    new SetupItemSlider2(_("Overhead text"),"", "speech", this,
+    new SetupItemSlider2(_("Overhead text"), "", "speech", this,
         "speechEvent", 0, 3, mSpeachList);
 
     mAmbientFxList = new SetupItemNames();
