@@ -228,6 +228,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "groupFriends", true);
     AddDEF(configData, "grabinput", false);
     AddDEF(configData, "gamma", 1);
+    AddDEF(configData, "vsync", 0);
     return configData;
 }
 
