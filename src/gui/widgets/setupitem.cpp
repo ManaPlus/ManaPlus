@@ -597,13 +597,15 @@ void SetupItemDropDown::toWidget()
 SetupItemSlider::SetupItemSlider(std::string text, std::string description,
                                  std::string keyName, SetupTabScroll *parent,
                                  std::string eventName, double min, double max,
-                                 bool mainConfig) :
+                                 int width, bool onTheFly, bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
     mSlider(nullptr),
     mMin(min),
-    mMax(max)
+    mMax(max),
+    mWidth(width),
+    mOnTheFly(onTheFly)
 {
     mValueType = VSTR;
     createControls();
@@ -612,13 +614,16 @@ SetupItemSlider::SetupItemSlider(std::string text, std::string description,
 SetupItemSlider::SetupItemSlider(std::string text, std::string description,
                                  std::string keyName, SetupTabScroll *parent,
                                  std::string eventName, double min, double max,
-                                 std::string def, bool mainConfig) :
+                                 std::string def, int width, bool onTheFly,
+                                 bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
     mSlider(nullptr),
     mMin(min),
-    mMax(max)
+    mMax(max),
+    mWidth(width),
+    mOnTheFly(onTheFly)
 {
     mValueType = VSTR;
     createControls();
@@ -645,7 +650,7 @@ void SetupItemSlider::createControls()
     mSlider->setHeight(30);
 
     mWidget = mSlider;
-    mSlider->setWidth(150);
+    mSlider->setWidth(mWidth);
     mSlider->setHeight(40);
     mHorizont->add(mLabel);
     mHorizont->add(mSlider, -10);
@@ -675,6 +680,8 @@ void SetupItemSlider::toWidget()
 void SetupItemSlider::action(const gcn::ActionEvent &event A_UNUSED)
 {
     fromWidget();
+    if (mOnTheFly)
+        save();
 }
 
 void SetupItemSlider::apply(std::string eventName)
@@ -689,7 +696,8 @@ void SetupItemSlider::apply(std::string eventName)
 SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
                                    std::string keyName, SetupTabScroll *parent,
                                    std::string eventName, int min, int max,
-                                   SetupItemNames *values, bool mainConfig) :
+                                   SetupItemNames *values, bool onTheFly,
+                                   bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -699,7 +707,8 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
     mMin(min),
     mMax(max),
     mInvert(false),
-    mInvertValue(0)
+    mInvertValue(0),
+    mOnTheFly(onTheFly)
 {
     mValueType = VSTR;
     createControls();
@@ -709,7 +718,7 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
                                    std::string keyName, SetupTabScroll *parent,
                                    std::string eventName, int min, int max,
                                    SetupItemNames *values, std::string def,
-                                   bool mainConfig) :
+                                   bool onTheFly, bool mainConfig) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -719,7 +728,8 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
     mMin(min),
     mMax(max),
     mInvert(false),
-    mInvertValue(0)
+    mInvertValue(0),
+    mOnTheFly(onTheFly)
 {
     mValueType = VSTR;
     createControls();
@@ -811,6 +821,8 @@ void SetupItemSlider2::action(const gcn::ActionEvent &event A_UNUSED)
 {
     fromWidget();
     updateLabel();
+    if (mOnTheFly)
+        save();
 }
 
 void SetupItemSlider2::updateLabel()

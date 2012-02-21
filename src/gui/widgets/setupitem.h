@@ -270,12 +270,14 @@ class SetupItemSlider : public SetupItem
         SetupItemSlider(std::string text, std::string description,
                         std::string keyName, SetupTabScroll *parent,
                         std::string eventName, double min, double max,
+                        int width = 150, bool onTheFly = false,
                         bool mainConfig = true);
 
         SetupItemSlider(std::string text, std::string description,
                         std::string keyName, SetupTabScroll *parent,
                         std::string eventName, double min, double max,
-                        std::string def, bool mainConfig = true);
+                        std::string def, int width = 150,
+                        bool onTheFly = false, bool mainConfig = true);
 
         ~SetupItemSlider();
 
@@ -297,6 +299,8 @@ class SetupItemSlider : public SetupItem
         Slider *mSlider;
         double mMin;
         double mMax;
+        int mWidth;
+        bool mOnTheFly;
 };
 
 typedef std::vector<std::string> SetupItemNames;
@@ -309,13 +313,14 @@ class SetupItemSlider2 : public SetupItem
         SetupItemSlider2(std::string text, std::string description,
                          std::string keyName, SetupTabScroll *parent,
                          std::string eventName, int min, int max,
-                         SetupItemNames *values, bool mainConfig = true);
+                         SetupItemNames *values, bool onTheFly = false,
+                         bool mainConfig = true);
 
         SetupItemSlider2(std::string text, std::string description,
                          std::string keyName, SetupTabScroll *parent,
                          std::string eventName, int min, int max,
                          SetupItemNames *values, std::string def,
-                         bool mainConfig = true);
+                         bool onTheFly = false, bool mainConfig = true);
 
         ~SetupItemSlider2();
 
@@ -345,6 +350,7 @@ class SetupItemSlider2 : public SetupItem
         int mMax;
         bool mInvert;
         int mInvertValue;
+        bool mOnTheFly;
 };
 
 #endif

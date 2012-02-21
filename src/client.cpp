@@ -563,6 +563,7 @@ void Client::gameInit()
     }
 
     applyGrabMode();
+    applyGamma();
 
     // Initialize for drawing
     mainGraphics->_beginDraw();
@@ -665,6 +666,8 @@ void Client::gameInit()
     setFramerate(fpsLimit);
     config.addListener("fpslimit", this);
     config.addListener("guialpha", this);
+    config.addListener("gamma", this);
+    config.addListener("particleEmitterSkip", this);
     setGuiAlpha(config.getFloatValue("guialpha"));
 
     optionChanged("fpslimit");
@@ -704,6 +707,8 @@ void Client::gameClear()
         logger->log1("Quitting1");
     config.removeListener("fpslimit", this);
     config.removeListener("guialpha", this);
+    config.removeListener("gamma", this);
+    config.removeListener("particleEmitterSkip", this);
 
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);
@@ -1492,6 +1497,15 @@ void Client::optionChanged(const std::string &name)
     else if (name == "guialpha")
     {
         setGuiAlpha(config.getFloatValue("guialpha"));
+        Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+    }
+    else if (name == "gamma")
+    {
+        applyGamma();
+    }
+    else if (name == "particleEmitterSkip")
+    {
+        Particle::emitterSkip = config.getIntValue("particleEmitterSkip") + 1;
     }
 }
 
@@ -2436,4 +2450,10 @@ void Client::applyGrabMode()
 {
     SDL_WM_GrabInput(config.getBoolValue("grabinput")
         ? SDL_GRAB_ON : SDL_GRAB_OFF);
+}
+
+void Client::applyGamma()
+{
+    float val = config.getFloatValue("gamma");
+    SDL_SetGamma(val, val, val);
 }

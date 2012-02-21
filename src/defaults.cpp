@@ -226,6 +226,8 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableresize", true);
     AddDEF(configData, "noframe", false);
     AddDEF(configData, "groupFriends", true);
+    AddDEF(configData, "grabinput", false);
+    AddDEF(configData, "gamma", 1);
     return configData;
 }
 

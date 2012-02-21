@@ -62,7 +62,7 @@ Setup_Visual::Setup_Visual()
         "", "grabinput", this, "grabinputEvent");
 
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
-        this, "guialphaEvent", 0.1, 1.0);
+        this, "guialphaEvent", 0.1, 1.0, 150, true);
 
     mSpeachList = new SetupItemNames();
     mSpeachList->push_back(_("No text"));
@@ -89,7 +89,10 @@ Setup_Visual::Setup_Visual()
     mParticleList->push_back(_("max"));
     (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
         this, "particleEmitterSkipEvent", 0, 3,
-        mParticleList))->setInvertValue(3);
+        mParticleList, true))->setInvertValue(3);
+
+    new SetupItemSlider(_("Gamma"), "", "gamma",
+        this, "gammeEvent", 1, 20, 350, true);
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
@@ -107,28 +110,5 @@ Setup_Visual::~Setup_Visual()
 void Setup_Visual::apply()
 {
     SetupTabScroll::apply();
-    Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
     Client::applyGrabMode();
-}
-
-void Setup_Visual::action(const gcn::ActionEvent &event)
-{
-    if (event.getId() == "guialphaEvent")
-    {
-        Slider *slider = static_cast<Slider*>(event.getSource());
-        if (slider)
-        {
-            config.setValue("guialpha", slider->getValue());
-            Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
-        }
-    }
-    else if (event.getId() == "particleEmitterSkipEvent")
-    {
-        Slider *slider = static_cast<Slider*>(event.getSource());
-        if (slider)
-        {
-            int val = static_cast<int>(slider->getValue());
-            Particle::emitterSkip = 4 - val;
-        }
-    }
 }

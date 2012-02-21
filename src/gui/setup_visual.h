@@ -39,8 +39,6 @@ class Setup_Visual : public SetupTabScroll
 
         void apply();
 
-        void action(const gcn::ActionEvent &event A_UNUSED);
-
     private:
         SetupItemNames *mSpeachList;
 

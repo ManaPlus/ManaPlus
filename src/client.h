@@ -275,6 +275,8 @@ public:
 
     static void applyGrabMode();
 
+    void applyGamma();
+
     void optionChanged(const std::string &name);
 
     void action(const gcn::ActionEvent &event);
