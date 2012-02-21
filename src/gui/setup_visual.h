@@ -28,8 +28,6 @@
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/setuptabscroll.h"
 
-#include <guichan/actionlistener.hpp>
-
 class Setup_Visual : public SetupTabScroll
 {
     public:

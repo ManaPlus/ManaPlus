@@ -22,22 +22,10 @@
 
 #include "gui/setup_visual.h"
 
-#include "gui/chatwindow.h"
-
-#include "gui/widgets/button.h"
-#include "gui/widgets/chattab.h"
-#include "gui/widgets/checkbox.h"
-#include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/slider.h"
 
-#include "resources/image.h"
-
-#include "configuration.h"
-#include "localplayer.h"
-#include "logger.h"
-#include "particle.h"
+#include "client.h"
 
 #include "utils/gettext.h"
 
@@ -46,7 +34,6 @@
 Setup_Visual::Setup_Visual()
 {
     setName(_("Visual"));
-
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
