@@ -23,7 +23,9 @@
 #ifndef UTILS_MATHUTILS_H
 #define UTILS_MATHUTILS_H
 
+#include <string>
 #include <stdint.h>
+#include <cstring>
 
 static uint16_t crc_table[256] =
 {

@@ -24,6 +24,7 @@
 
 #include <list>
 #include <string>
+#include <vector>
 
 class Being;
 

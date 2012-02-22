@@ -23,15 +23,14 @@
 #ifndef OPENGL1GRAPHICS_H
 #define OPENGL1GRAPHICS_H
 
+#ifdef USE_OPENGL
 #include "main.h"
 
 #include "graphics.h"
 
-#ifdef USE_OPENGL
 #define NO_SDL_GLEXT
 
 #include <SDL_opengl.h>
-#endif
 
 class OpenGL1Graphics : public Graphics
 {
@@ -140,5 +139,6 @@ class OpenGL1Graphics : public Graphics
         bool mColorAlpha;
         bool mSync;
 };
+#endif
 
 #endif

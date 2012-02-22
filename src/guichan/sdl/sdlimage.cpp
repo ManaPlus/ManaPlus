@@ -130,8 +130,8 @@ namespace gcn
 
         for (i = 0; i < mSurface->w * mSurface->h; ++i)
         {
-            if (((unsigned int*)mSurface->pixels)[i] == SDL_MapRGB(
-                mSurface->format, 255, 0, 255))
+            if ((static_cast<unsigned int*>(mSurface->pixels))[i]
+                == SDL_MapRGB(mSurface->format, 255, 0, 255))
             {
                 hasPink = true;
                 break;

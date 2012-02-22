@@ -334,7 +334,7 @@ float Configuration::getFloatValue(const std::string &key) const
                         (static_cast<FloatData*>(itdef->second))->getData());
                 }
                 else if (itdef->second->getType()
-                    == VariableData::DATA_STRING)
+                         == VariableData::DATA_STRING)
                 {
                     defaultValue = atof((static_cast<StringData*>(
                         itdef->second))->getData().c_str());

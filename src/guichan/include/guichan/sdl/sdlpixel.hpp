@@ -68,7 +68,8 @@ namespace gcn
 
         SDL_LockSurface(surface);
 
-        Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+        Uint8 *p = static_cast<Uint8*>(surface->pixels)
+            + y * surface->pitch + x * bpp;
 
         unsigned int color = 0;
 
@@ -79,7 +80,7 @@ namespace gcn
                 break;
 
             case 2:
-                color = *(Uint16 *)p;
+                color = *reinterpret_cast<Uint16*>(p);
                 break;
 
             case 3:
@@ -90,7 +91,7 @@ namespace gcn
                 break;
 
           case 4:
-                color = *(Uint32 *)p;
+                color = *reinterpret_cast<Uint32*>(p);
                 break;
 
           default:
@@ -123,7 +124,7 @@ namespace gcn
 
         SDL_LockSurface(surface);
 
-        Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+        Uint8 *p = static_cast<Uint8*>(surface->pixels) + y * surface->pitch + x * bpp;
 
         Uint32 pixel = SDL_MapRGB(surface->format, color.r, color.g, color.b);
 
@@ -134,7 +135,7 @@ namespace gcn
                 break;
 
             case 2:
-                *(Uint16 *)p = pixel;
+                *reinterpret_cast<Uint16*>(p) = pixel;
                 break;
 
             case 3:
@@ -153,7 +154,7 @@ namespace gcn
                 break;
 
             case 4:
-                *(Uint32 *)p = pixel;
+                *reinterpret_cast<Uint32*>(p) = pixel;
                 break;
 
             default:
@@ -199,7 +200,7 @@ namespace gcn
         unsigned int r = ((src & f->Bmask) * a + (dst & f->Bmask)
             * (255 - a)) >> 8;
 
-        return (unsigned short)((b & f->Rmask)
+        return static_cast<unsigned short>((b & f->Rmask)
             | (g & f->Gmask) | (r & f->Bmask));
     }
 
@@ -230,7 +231,8 @@ namespace gcn
 
         SDL_LockSurface(surface);
 
-        Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+        Uint8 *p = static_cast<Uint8*>(surface->pixels)
+            + y * surface->pitch + x * bpp;
 
         Uint32 pixel = SDL_MapRGB(surface->format, color.r, color.g, color.b);
 
@@ -241,7 +243,7 @@ namespace gcn
                 break;
 
             case 2:
-                *(Uint16 *)p = SDLAlpha16(pixel, *(Uint32 *)p,
+                *reinterpret_cast<Uint16*>(p) = SDLAlpha16(pixel, *(Uint32 *)p,
                     color.a, surface->format);
                 break;
 
@@ -275,7 +277,8 @@ namespace gcn
                 break;
 
             case 4:
-                *(Uint32 *)p = SDLAlpha32(pixel, *(Uint32 *)p, color.a);
+                *reinterpret_cast<Uint32*>(p) = SDLAlpha32(pixel,
+                    *reinterpret_cast<Uint32*>(p), color.a);
                 break;
             default:
                 break;

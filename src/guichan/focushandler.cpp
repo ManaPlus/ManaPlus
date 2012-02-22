@@ -158,7 +158,7 @@ namespace gcn
     {
         int i;
         int focusedWidget = -1;
-        for (i = 0; i < (int)mWidgets.size(); ++i)
+        for (i = 0; i < static_cast<int>(mWidgets.size()); ++i)
         {
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
@@ -167,7 +167,7 @@ namespace gcn
 
         // i is a counter that ensures that the following loop
         // won't get stuck in an infinite loop
-        i = (int)mWidgets.size();
+        i = static_cast<int>(mWidgets.size());
         do
         {
             ++ focusedWidget;
@@ -180,7 +180,7 @@ namespace gcn
 
             -- i;
 
-            if (focusedWidget >= (int)mWidgets.size())
+            if (focusedWidget >= static_cast<int>(mWidgets.size()))
                 focusedWidget = 0;
 
             if (focusedWidget == focused)
@@ -213,7 +213,7 @@ namespace gcn
 
         int i;
         int focusedWidget = -1;
-        for (i = 0; i < (int)mWidgets.size(); ++ i)
+        for (i = 0; i < static_cast<int>(mWidgets.size()); ++ i)
         {
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
@@ -222,7 +222,7 @@ namespace gcn
 
         // i is a counter that ensures that the following loop
         // won't get stuck in an infinite loop
-        i = (int)mWidgets.size();
+        i = static_cast<int>(mWidgets.size());
         do
         {
             -- focusedWidget;
@@ -342,7 +342,7 @@ namespace gcn
 
         int i;
         int focusedWidget = -1;
-        for (i = 0; i < (int)mWidgets.size(); ++i)
+        for (i = 0; i < static_cast<int>(mWidgets.size()); ++ i)
         {
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
@@ -352,7 +352,7 @@ namespace gcn
 
         // i is a counter that ensures that the following loop
         // won't get stuck in an infinite loop
-        i = (int)mWidgets.size();
+        i = static_cast<int>(mWidgets.size());
         do
         {
             ++ focusedWidget;
@@ -365,7 +365,7 @@ namespace gcn
 
             -- i;
 
-            if (focusedWidget >= (int)mWidgets.size())
+            if (focusedWidget >= static_cast<int>(mWidgets.size()))
                 focusedWidget = 0;
 
             if (focusedWidget == focused)
@@ -411,7 +411,7 @@ namespace gcn
 
         int i;
         int focusedWidget = -1;
-        for (i = 0; i < (int)mWidgets.size(); ++i)
+        for (i = 0; i < static_cast<int>(mWidgets.size()); ++ i)
         {
             if (mWidgets[i] == mFocusedWidget)
                 focusedWidget = i;
@@ -421,7 +421,7 @@ namespace gcn
 
         // i is a counter that ensures that the following loop
         // won't get stuck in an infinite loop
-        i = (int)mWidgets.size();
+        i = static_cast<int>(mWidgets.size());
         do
         {
             -- focusedWidget;
