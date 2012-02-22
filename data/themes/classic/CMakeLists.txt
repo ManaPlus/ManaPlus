@@ -1,4 +1,0 @@
-SET (FILES
-    )
-
-INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/themes/classic)
