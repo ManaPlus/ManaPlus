@@ -1,12 +1,9 @@
 SET (FILES
-    bubble.png
     button.png
     button_disabled.png
     buttonhi.png
     buttonpress.png
     checkbox.png
-    circle-gray.png
-    circle-green.png
     close_button.png
     colors.xml
     deepbox.png
@@ -26,18 +23,10 @@ SET (FILES
     selection.png
     slider.png
     slider_hilight.png
-    speechbubble.xml
     sticky_button.png
     tab.png
     tab_hilight.png
     tabselected.png
-    target-cursor-blue-l.png
-    target-cursor-blue-m.png
-    target-cursor-blue-s.png
-    target-cursor-red-l.png
-    target-cursor-red-m.png
-    target-cursor-red-s.png
-    unknown-item.png
     vscroll_down_default.png
     vscroll_down_highlight.png
     vscroll_down_pressed.png
