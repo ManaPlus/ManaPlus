@@ -1,6 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (c) 2009  Aethyra Development Team 
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *

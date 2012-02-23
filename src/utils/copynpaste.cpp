@@ -1,7 +1,7 @@
 /*
  *  Retrieve string pasted depending on OS mechanisms.
  *  Copyright (C) 2001-2010  Wormux Team
- *  Copyright (C) 2011-2012  ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *

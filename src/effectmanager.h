@@ -2,6 +2,7 @@
  *  An effects manager
  *  Copyright (C) 2008  Fate <fate.tmw@googlemail.com>
  *  Copyright (C) 2008  Chuck Miller <shadowmil@gmail.com>
+ *  Copyright (C) 2011-2012  The ManaPlus developers
  *
  *  This file is part of The ManaPlus Client.
  *

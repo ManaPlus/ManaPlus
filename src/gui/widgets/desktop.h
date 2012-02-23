@@ -1,6 +1,7 @@
 /*
  *  Desktop widget
  *  Copyright (c) 2009-2010  The Mana World Development Team
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
