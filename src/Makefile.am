@@ -665,9 +665,7 @@ endif
 
 EXTRA_DIST = CMakeLists.txt \
 	     winver.h.in \
-	     manaplus.rc \
-	     SDLMain.h \
-	     SDLMain.m
+	     manaplus.rc
 
 # set the include path found by configure
 INCLUDES = $(all_includes)
