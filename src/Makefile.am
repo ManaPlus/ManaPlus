@@ -10,18 +10,7 @@ if ENABLE_PORTABLE
 manaplus_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
-if ENABLE_MEM_DEBUG
-manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG
-
-manaplus_SOURCES = debug/debug_new.cpp \
-	      debug/debug_new.h \
-	      debug/fast_mutex.h \
-	      debug/static_assert.h
-else
-manaplus_SOURCES =
-endif
-
-manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
+manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      gui/widgets/avatarlistbox.h \
 	      gui/widgets/battletab.cpp \
 	      gui/widgets/battletab.h \
