@@ -514,62 +514,6 @@ manaplus_SOURCES = gui/widgets/avatarlistbox.cpp \
 	      vector.h \
 	      winver.h
 
-if ENABLE_MANASERV
-manaplus_CXXFLAGS += -DMANASERV_SUPPORT
-manaplus_SOURCES += utils/sha256.cpp \
-	      utils/sha256.h \
-	      net/manaserv/attributes.cpp \
-	      net/manaserv/attributes.h \
-	      net/manaserv/adminhandler.cpp \
-	      net/manaserv/adminhandler.h \
-	      net/manaserv/beinghandler.cpp \
-	      net/manaserv/beinghandler.h \
-	      net/manaserv/buysellhandler.cpp \
-	      net/manaserv/buysellhandler.h \
-	      net/manaserv/charhandler.cpp \
-	      net/manaserv/charhandler.h \
-	      net/manaserv/chathandler.cpp \
-	      net/manaserv/chathandler.h \
-	      net/manaserv/connection.cpp \
-	      net/manaserv/connection.h \
-	      net/manaserv/defines.h \
-	      net/manaserv/effecthandler.cpp \
-	      net/manaserv/effecthandler.h \
-	      net/manaserv/gamehandler.cpp \
-	      net/manaserv/gamehandler.h \
-	      net/manaserv/generalhandler.cpp \
-	      net/manaserv/generalhandler.h \
-	      net/manaserv/guildhandler.cpp \
-	      net/manaserv/guildhandler.h \
-	      net/manaserv/internal.cpp \
-	      net/manaserv/internal.h \
-	      net/manaserv/inventoryhandler.cpp \
-	      net/manaserv/inventoryhandler.h \
-	      net/manaserv/itemhandler.h \
-	      net/manaserv/itemhandler.cpp \
-	      net/manaserv/loginhandler.cpp \
-	      net/manaserv/loginhandler.h \
-	      net/manaserv/messagehandler.cpp \
-	      net/manaserv/messagehandler.h \
-	      net/manaserv/messagein.cpp \
-	      net/manaserv/messagein.h \
-	      net/manaserv/messageout.cpp \
-	      net/manaserv/messageout.h \
-	      net/manaserv/network.cpp \
-	      net/manaserv/network.h \
-	      net/manaserv/npchandler.cpp \
-	      net/manaserv/npchandler.h \
-	      net/manaserv/partyhandler.cpp \
-	      net/manaserv/partyhandler.h \
-	      net/manaserv/playerhandler.cpp \
-	      net/manaserv/playerhandler.h \
-	      net/manaserv/protocol.h \
-	      net/manaserv/specialhandler.cpp \
-	      net/manaserv/specialhandler.h \
-	      net/manaserv/tradehandler.cpp \
-	      net/manaserv/tradehandler.h
-endif
-
 manaplus_SOURCES += \
 	      net/ea/gui/guildtab.cpp \
 	      net/ea/gui/guildtab.h \
