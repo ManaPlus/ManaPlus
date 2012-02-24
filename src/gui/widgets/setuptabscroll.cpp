@@ -30,7 +30,7 @@
 SetupTabScroll::SetupTabScroll() :
     SetupTab()
 {
-    mContainer = new VertContainer(32, false, 8);
+    mContainer = new VertContainer(25, false, 8);
     mScroll = new ScrollArea(mContainer);
     mScroll->setOpaque(false);
     mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
