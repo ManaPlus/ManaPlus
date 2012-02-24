@@ -363,7 +363,7 @@ void Client::gameInit()
     logger->log1("Initializing SDL...");
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
     {
-        logger->error(strprintf("Could not initialize SDL: %s",
+        logger->safeError(strprintf("Could not initialize SDL: %s",
                       SDL_GetError()));
     }
     atexit(SDL_Quit);
@@ -555,7 +555,7 @@ void Client::gameInit()
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
                 oldFullscreen, hwaccel, enableResize, noFrame))
             {
-                logger->error(strprintf("Couldn't restore %dx%dx%d "
+                logger->safeError(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,
                     SDL_GetError()));
             }

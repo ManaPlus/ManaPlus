@@ -98,6 +98,13 @@ class Logger
          */
         void error(const std::string &error_text) __attribute__ ((noreturn));
 
+        /**
+         * Log an error and quit. The error will pop-up on Windows and Mac, and
+         * will be printed to standard error everywhere else.
+         */
+        void safeError(const std::string &error_text)
+            __attribute__ ((noreturn));
+
     private:
         std::ofstream mLogFile;
         bool mLogToStandardOut;

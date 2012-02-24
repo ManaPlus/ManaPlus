@@ -383,7 +383,7 @@ void Setup_Video::apply()
                             " and restoration of old mode also "
                             "failed!") << std::endl;
                     }
-                    logger->error(errorMsg.str());
+                    logger->safeError(errorMsg.str());
                 }
             }
 #if defined(WIN32) || defined(__APPLE__)
