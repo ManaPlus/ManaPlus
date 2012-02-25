@@ -39,6 +39,7 @@
 #include "gui/widgets/listbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/slider.h"
+#include "gui/widgets/sliderlist.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/dropdown.h"
 
@@ -298,6 +299,7 @@ Setup_Video::Setup_Video():
 
     place(1, 2, mEnableResizeCheckBox, 2);
     place(1, 3, mNoFrameCheckBox, 2);
+
 
 //    place(1, 5, mPickupNotifyLabel, 4);
 //    place(1, 6, mPickupChatCheckBox, 1);
