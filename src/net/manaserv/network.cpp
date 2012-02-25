@@ -76,8 +76,8 @@ void finalize()
 
     if (connections)
     {
-        logger->safeError("Tried to shutdown the network subsystem while there "
-                "are network connections left!");
+        logger->safeError("Tried to shutdown the network subsystem "
+            "while there are network connections left!");
     }
 
     clearNetworkHandlers();
