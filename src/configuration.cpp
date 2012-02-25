@@ -572,7 +572,8 @@ void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
              elt_it != it->second.end(); ++elt_it)
         {
             xmlTextWriterStartElement(writer, BAD_CAST name);
-            (*elt_it)->writeToXML(writer);
+            if (*elt_it)
+                (*elt_it)->writeToXML(writer);
             xmlTextWriterEndElement(writer);
         }
 

@@ -229,7 +229,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         return;
     }
 
-    char *start = (char*)msg.readBytes(size);
+    char *start = reinterpret_cast<char*>(msg.readBytes(size));
     if (!start)
         return;
 
@@ -265,7 +265,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
                     gender = GENDER_FEMALE;
             }
         }
-        arr.push_back(new OnlinePlayer((char*)buf,
+        arr.push_back(new OnlinePlayer(static_cast<char*>(buf),
             status, level, gender, ver));
         buf += strlen(buf) + 1;
     }

@@ -137,7 +137,7 @@ namespace gcn
         mDragOffsetX = mouseEvent.getX();
         mDragOffsetY = mouseEvent.getY();
 
-        mMoved = mouseEvent.getY() <= (int)mTitleBarHeight;
+        mMoved = mouseEvent.getY() <= static_cast<int>(mTitleBarHeight);
     }
 
     void Window::mouseReleased(MouseEvent& mouseEvent A_UNUSED)

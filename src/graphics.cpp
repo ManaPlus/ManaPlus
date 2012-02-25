@@ -845,7 +845,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 1:
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p = (Uint8 *)mTarget->pixels + y * mTarget->pitch;
+                    Uint8 *p = static_cast<Uint8 *>(mTarget->pixels)
+                        + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                         *(p + x) = pixel;
                 }
@@ -853,12 +854,14 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 2:
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p0 = (Uint8 *)mTarget->pixels + y * mTarget->pitch;
+                    Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
+                        + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         Uint8 *p = p0 + x * 2;
-                        *(Uint16 *)p = gcn::SDLAlpha16(
-                            pixel, *(Uint32 *)p, mColor.a, mTarget->format);
+                        *reinterpret_cast<Uint16 *>(p) = gcn::SDLAlpha16(
+                            pixel, *reinterpret_cast<Uint32 *>(p),
+                            mColor.a, mTarget->format);
                     }
                 }
                 break;
@@ -871,7 +874,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p0 = (Uint8 *)mTarget->pixels + y * mTarget->pitch;
+                    Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
+                        + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         Uint8 *p = p0 + x * 3;
@@ -896,18 +900,19 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                 const unsigned a1 = (255 - mColor.a);
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p0 = (Uint8 *)mTarget->pixels + y * mTarget->pitch;
+                    Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
+                        + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
                         Uint8 *p = p0 + x * 4;
-                        Uint32 dst = *(Uint32 *)p;
+                        Uint32 dst = *reinterpret_cast<Uint32 *>(p);
                         const unsigned int b = (pb + (dst & 0xff) * a1) >> 8;
                         const unsigned int g = (pg + (dst & 0xff00) * a1) >> 8;
                         const unsigned int r = (pr
                             + (dst & 0xff0000) * a1) >> 8;
 
-                        *(Uint32 *)p = ((b & 0xff) | (g & 0xff00)
-                            | (r & 0xff0000));
+                        *reinterpret_cast<Uint32 *>(p) = ((b & 0xff)
+                            | (g & 0xff00) | (r & 0xff0000));
                     }
                 }
                 break;

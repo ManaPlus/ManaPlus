@@ -155,7 +155,7 @@ namespace gcn
         {
             mCaretRow = mouseEvent.getY() / getFont()->getHeight();
 
-            if (mCaretRow >= (int)mTextRows.size())
+            if (mCaretRow >= static_cast<int>(mTextRows.size()))
                 mCaretRow = mTextRows.size() - 1;
 
             mCaretColumn = getFont()->getStringIndexAt(
@@ -193,11 +193,11 @@ namespace gcn
         else if (key.getValue() == Key::RIGHT)
         {
             ++mCaretColumn;
-            if (mCaretColumn > (int)mTextRows[mCaretRow].size())
+            if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
             {
-                ++mCaretRow;
+                ++ mCaretRow;
 
-                if (mCaretRow >= (int)mTextRows.size())
+                if (mCaretRow >= static_cast<int>(mTextRows.size()))
                 {
                     mCaretRow = mTextRows.size() - 1;
                     if (mCaretRow < 0)
@@ -254,14 +254,15 @@ namespace gcn
             --mCaretRow;
         }
         else if (key.getValue() == Key::DELETE
-                 && mCaretColumn < (int)mTextRows[mCaretRow].size()
-                 && mEditable)
+                 && mCaretColumn < static_cast<int>(
+                 mTextRows[mCaretRow].size()) && mEditable)
         {
             mTextRows[mCaretRow].erase(mCaretColumn, 1);
         }
         else if (key.getValue() == Key::DELETE
-                 && mCaretColumn == (int)mTextRows[mCaretRow].size()
-                 && mCaretRow < ((int)mTextRows.size() - 1)
+                 && mCaretColumn == static_cast<int>(
+                 mTextRows[mCaretRow].size())
+                 && mCaretRow < (static_cast<int>(mTextRows.size()) - 1)
                  && mEditable)
         {
             mTextRows[mCaretRow] += mTextRows[mCaretRow + 1];
@@ -291,7 +292,7 @@ namespace gcn
                     / getFont()->getHeight();
                 mCaretRow += rowsPerPage;
 
-                if (mCaretRow >= (int)mTextRows.size())
+                if (mCaretRow >= static_cast<int>(mTextRows.size()))
                     mCaretRow = mTextRows.size() - 1;
             }
         }
@@ -305,7 +306,7 @@ namespace gcn
                  && mEditable)
         {
             mTextRows[mCaretRow].insert(mCaretColumn,
-                std::string(1, (char)key.getValue()));
+                std::string(1, static_cast<char>(key.getValue())));
             ++ mCaretColumn;
         }
 
@@ -332,9 +333,7 @@ namespace gcn
 
     void TextBox::setCaretPosition(unsigned int position)
     {
-        int row;
-
-        for (row = 0; row < (int)mTextRows.size(); row++)
+        for (int row = 0; row < static_cast<int>(mTextRows.size()); row ++)
         {
             if (position <= mTextRows[row].size())
             {
@@ -373,7 +372,7 @@ namespace gcn
     {
         mCaretRow = row;
 
-        if (mCaretRow >= (int)mTextRows.size())
+        if (mCaretRow >= static_cast<int>(mTextRows.size()))
             mCaretRow = mTextRows.size() - 1;
 
         if (mCaretRow < 0)
@@ -391,7 +390,7 @@ namespace gcn
     {
         mCaretColumn = column;
 
-        if (mCaretColumn > (int)mTextRows[mCaretRow].size())
+        if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
             mCaretColumn = mTextRows[mCaretRow].size();
 
         if (mCaretColumn < 0)
@@ -431,7 +430,7 @@ namespace gcn
         int i;
         std::string text;
 
-        for (i = 0; i < (int)mTextRows.size() - 1; ++i)
+        for (i = 0; i < static_cast<int>(mTextRows.size()) - 1; ++ i)
             text = text + mTextRows[i] + "\n";
 
         text = text + mTextRows[i];

@@ -2320,7 +2320,7 @@ void Being::recalcSpritesOrder()
             int val = slotRemap.at(slot);
             int id = 0;
 
-            if ((int)mSpriteIDs.size() > val)
+            if (static_cast<int>(mSpriteIDs.size()) > val)
                 id = mSpriteIDs[val];
 
             int idx = -1;

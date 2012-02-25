@@ -474,8 +474,11 @@ void CharCreateDialog::updateHair()
     mHairStyle %= Being::getNumOfHairstyles();
     if (mHairStyle < 0)
         mHairStyle += Being::getNumOfHairstyles();
-    if (mHairStyle < (signed)minHairStyle || mHairStyle > (signed)maxHairStyle)
+    if (mHairStyle < static_cast<signed>(minHairStyle)
+        || mHairStyle > static_cast<signed>(maxHairStyle))
+    {
         mHairStyle = minHairStyle;
+    }
     const ItemInfo &item = ItemDB::get(-mHairStyle);
     mHairStyleNameLabel->setCaption(item.getName());
     mHairStyleNameLabel->adjustSize();
@@ -483,8 +486,11 @@ void CharCreateDialog::updateHair()
     mHairColor %= ColorDB::getHairSize();
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
-    if (mHairColor < (signed)minHairColor || mHairColor > (signed)maxHairColor)
+    if (mHairColor < static_cast<signed>(minHairColor)
+        || mHairColor > static_cast<signed>(maxHairColor))
+    {
         mHairColor = minHairColor;
+    }
     mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
     mHairColorNameLabel->adjustSize();
 

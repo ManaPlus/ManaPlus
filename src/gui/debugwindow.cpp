@@ -390,7 +390,7 @@ void NetDebugTab::logic()
     if (player_node && player_node->getPingTime() != 0)
     {
         mPingLabel->setCaption(strprintf(_("Ping: %s ms"),
-            toString((int)player_node->getPingTime()).c_str()));
+            toString(static_cast<int>(player_node->getPingTime())).c_str()));
     }
     else
     {

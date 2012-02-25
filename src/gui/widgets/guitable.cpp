@@ -348,14 +348,15 @@ void GuiTable::draw(gcn::Graphics* graphics)
 
                 if (mSelectedRow > 0)
                 {
-                    if (mLinewiseMode && r == (unsigned)mSelectedRow && c == 0)
+                    if (mLinewiseMode && r == static_cast<unsigned>(
+                        mSelectedRow) && c == 0)
                     {
                         graphics->fillRectangle(gcn::Rectangle(0, y_offset,
-                                                getWidth(), height));
+                            getWidth(), height));
                     }
                     else if (!mLinewiseMode && mSelectedColumn > 0
-                             && c == (unsigned)mSelectedColumn
-                             && r == (unsigned)mSelectedRow)
+                             && c == static_cast<unsigned>(mSelectedColumn)
+                             && r == static_cast<unsigned>(mSelectedRow))
                     {
                         graphics->fillRectangle(gcn::Rectangle(
                             x_offset, y_offset, width, height));

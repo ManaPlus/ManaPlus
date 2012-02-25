@@ -2064,7 +2064,7 @@ std::string LocalPlayer::getQuickDropCounterString()
 
 void LocalPlayer::setQuickDropCounter(int n)
 {
-    if (n < 1 || n >= (signed)quickDropCounterSize)
+    if (n < 1 || n >= static_cast<signed>(quickDropCounterSize))
         return;
     mQuickDropCounter = n;
     config.setValue("quickDropCounter", mQuickDropCounter);

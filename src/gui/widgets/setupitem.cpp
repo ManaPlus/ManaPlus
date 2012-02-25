@@ -830,8 +830,8 @@ void SetupItemSlider2::updateLabel()
     int val = mSlider->getValue() - mMin;
     if (val < 0)
         val = 0;
-    else if (val >= (signed)mValues->size())
-        val = (signed)mValues->size() - 1;
+    else if (val >= static_cast<signed>(mValues->size()))
+        val = static_cast<signed>(mValues->size()) - 1;
     std::string str = mValues->at(val);
     mLabel2->setCaption(str);
 }

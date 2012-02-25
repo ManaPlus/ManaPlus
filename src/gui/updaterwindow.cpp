@@ -554,8 +554,8 @@ void UpdaterWindow::logic()
         if (mUpdateFiles.size() && mUpdateIndex <= mUpdateFiles.size())
         {
             mProgressBar->setText(strprintf("%d/%d", mUpdateIndex
-                + mUpdateIndexOffset + 1, (int)mUpdateFiles.size()
-                + (int)mTempUpdateFiles.size() + 1));
+                + mUpdateIndexOffset + 1, static_cast<int>(mUpdateFiles.size())
+                + static_cast<int>(mTempUpdateFiles.size()) + 1));
         }
         else
         {

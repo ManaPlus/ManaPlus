@@ -554,8 +554,10 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
             {
                 int width = (px + scaledWidth >= w) ? w - px : scaledWidth;
                 int dstX = x + px;
-                const float visibleFractionW = (float) width / scaledWidth;
-                const float visibleFractionH = (float) height / scaledHeight;
+                const float visibleFractionW = static_cast<float>(width)
+                    / scaledWidth;
+                const float visibleFractionH = static_cast<float>(height)
+                    / scaledHeight;
 
                 const float texX2 = texX1 + tFractionW * visibleFractionW;
                 const float texY2 = texY1 + tFractionH * visibleFractionH;
@@ -597,8 +599,8 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
     }
     else
     {
-        const float scaleFactorW = (float) scaledWidth / iw;
-        const float scaleFactorH = (float) scaledHeight / ih;
+        const float scaleFactorW = static_cast<float>(scaledWidth) / iw;
+        const float scaleFactorH = static_cast<float>(scaledHeight) / ih;
 
         for (int py = 0; py < h; py += scaledHeight)
         {

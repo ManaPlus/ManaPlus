@@ -190,7 +190,7 @@ void OutfitWindow::save()
             outfitStr += toString(res);
             if (i < OUTFIT_ITEM_COUNT - 1)
                 outfitStr += " ";
-            outfitColorsStr += toString((int)mItemColors[o][i]);
+            outfitColorsStr += toString(static_cast<int>(mItemColors[o][i]));
             if (i < OUTFIT_ITEM_COUNT - 1)
                 outfitColorsStr += " ";
         }

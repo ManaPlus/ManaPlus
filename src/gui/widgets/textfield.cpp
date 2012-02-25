@@ -183,7 +183,7 @@ int TextField::getValue() const
     if (value < mMinimum)
         return mMinimum;
 
-    if (value > (signed)mMaximum)
+    if (value > static_cast<signed>(mMaximum))
         return mMaximum;
 
     return value;

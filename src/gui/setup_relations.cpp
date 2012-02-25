@@ -194,7 +194,7 @@ public:
 
     std::string getPlayerAt(int index) const
     {
-        if (index < 0 || index >= (signed)mPlayers->size())
+        if (index < 0 || index >= static_cast<signed>(mPlayers->size()))
             return "";
         return (*mPlayers)[index];
     }

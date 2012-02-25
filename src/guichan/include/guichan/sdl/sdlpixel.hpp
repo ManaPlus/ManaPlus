@@ -244,8 +244,8 @@ namespace gcn
                 break;
 
             case 2:
-                *reinterpret_cast<Uint16*>(p) = SDLAlpha16(pixel, *(Uint32 *)p,
-                    color.a, surface->format);
+                *reinterpret_cast<Uint16*>(p) = SDLAlpha16(pixel,
+                    *reinterpret_cast<Uint32*>(p), color.a, surface->format);
                 break;
 
             case 3:

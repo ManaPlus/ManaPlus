@@ -2205,7 +2205,7 @@ void PlayerListener::action(const gcn::ActionEvent &event)
     {
         std::string comment = mDialog->getText();
         Being* being  = actorSpriteManager->findBeingByName(
-            mNick, (ActorSprite::Type)mType);
+            mNick, static_cast<ActorSprite::Type>(mType));
         if (being)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);

@@ -184,7 +184,8 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
             mServer.name = mNameField->getText();
             mServer.description = mDescriptionField->getText();
             mServer.hostname = mServerAddressField->getText();
-            mServer.port = (short) atoi(mPortField->getText().c_str());
+            mServer.port = static_cast<short>(atoi(
+                mPortField->getText().c_str()));
 
             if (mTypeField)
             {

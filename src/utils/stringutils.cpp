@@ -522,9 +522,9 @@ std::string stringToHexPath(const std::string &str)
     if (str.empty())
         return "";
 
-    std::string hex = strprintf("%%%2x/", (int)str[0]);
+    std::string hex = strprintf("%%%2x/", static_cast<int>(str[0]));
     for (unsigned f = 1; f < str.size(); f ++)
-        hex += strprintf("%%%2x", (int)str[f]);
+        hex += strprintf("%%%2x", static_cast<int>(str[f]));
     return hex;
 }
 
@@ -600,7 +600,7 @@ bool findCutFirst(std::string &str1, std::string str2)
 std::string &removeProtocol(std::string &url)
 {
     int i = url.find("://");
-    if (i != (int)std::string::npos)
+    if (i != static_cast<int>(std::string::npos))
         url = url.substr(i + 3);
     return url;
 }
