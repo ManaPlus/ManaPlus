@@ -13,4 +13,5 @@ sprites_DATA =				\
 
 EXTRA_DIST =				\
 	$(sprites_DATA)			\
-	CMakeLists.txt
+	CMakeLists.txt			\
+	manaplus_emotions.xcf
