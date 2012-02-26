@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-19 16:05+0300\n"
+"POT-Creation-Date: 2012-02-26 17:59+0300\n"
 "PO-Revision-Date: 2012-02-16 20:57+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.net/projects/p/manaplus/"
@@ -37,12 +37,12 @@ msgid "miss"
 msgstr "mist"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1540 src/gui/whoisonline.cpp:760
+#: src/being.cpp:1540 src/gui/whoisonline.cpp:759
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1545 src/gui/whoisonline.cpp:765
+#: src/being.cpp:1545 src/gui/whoisonline.cpp:764
 msgid "I"
 msgstr "I"
 
@@ -50,7 +50,7 @@ msgstr "I"
 msgid "Setup"
 msgstr "Configureren"
 
-#: src/client.cpp:970 src/gui/setup_perfomance.cpp:48
+#: src/client.cpp:970 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr ""
 
@@ -91,8 +91,7 @@ msgstr "Wijzigen spelservers"
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
 #: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:170
-#: src/net/ea/charserverhandler.cpp:188 src/net/manaserv/charhandler.cpp:184
-#: src/net/manaserv/charhandler.cpp:227
+#: src/net/ea/charserverhandler.cpp:188
 msgid "Error"
 msgstr "Fout"
 
@@ -385,36 +384,36 @@ msgstr "Pvp rang: %d"
 msgid "Comment: %s"
 msgstr ""
 
-#: src/gui/botcheckerwindow.cpp:267
+#: src/gui/botcheckerwindow.cpp:266
 msgid "Bot Checker"
 msgstr "Bot Controleerder"
 
-#: src/gui/botcheckerwindow.cpp:297 src/gui/setup_relations.cpp:65
+#: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:65
 msgid "Name"
 msgstr "Naam"
 
-#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:138
+#: src/gui/botcheckerwindow.cpp:297 src/gui/popupmenu.cpp:138
 #: src/gui/popupmenu.cpp:308 src/gui/popupmenu.cpp:673
-#: src/keyboardconfig.cpp:49 src/net/tmwa/generalhandler.cpp:272
+#: src/keyboardconfig.cpp:51 src/net/tmwa/generalhandler.cpp:272
 msgid "Attack"
 msgstr "Aanvallen"
 
-#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:297
-#: src/keyboardconfig.cpp:62
+#: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:297
+#: src/keyboardconfig.cpp:64
 msgid "Talk"
 msgstr "Spreken"
 
-#: src/gui/botcheckerwindow.cpp:300 src/gui/popupmenu.cpp:269
+#: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:269
 #: src/gui/popupmenu.cpp:301 src/gui/popupmenu.cpp:482
 #: src/gui/popupmenu.cpp:739 src/gui/popupmenu.cpp:826
 msgid "Move"
 msgstr "Beweeg"
 
-#: src/gui/botcheckerwindow.cpp:301
+#: src/gui/botcheckerwindow.cpp:300
 msgid "Result"
 msgstr "Resultaat"
 
-#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:128
+#: src/gui/botcheckerwindow.cpp:311 src/gui/npcdialog.cpp:128
 msgid "Reset"
 msgstr "Reset"
 
@@ -453,7 +452,7 @@ msgstr "-"
 #: src/gui/buydialog.cpp:113 src/gui/quitdialog.cpp:47
 #: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
 #: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:261
-#: src/keyboardconfig.cpp:84
+#: src/keyboardconfig.cpp:86
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -464,7 +463,7 @@ msgid "Max"
 msgstr "Maximum"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:176 src/gui/setup_other.cpp:142
+#: src/gui/inventorywindow.cpp:176 src/gui/setup_other.cpp:141
 msgid "Shop"
 msgstr "Winkel"
 
@@ -489,7 +488,7 @@ msgstr "Verkopen"
 #: src/gui/popupmenu.cpp:2064 src/gui/popupmenu.cpp:2118
 #: src/gui/popupmenu.cpp:2140 src/gui/quitdialog.cpp:55
 #: src/gui/register.cpp:82 src/gui/setup.cpp:72 src/gui/socialwindow.cpp:1199
-#: src/gui/textcommandeditor.cpp:241 src/gui/textdialog.cpp:51
+#: src/gui/textcommandeditor.cpp:240 src/gui/textdialog.cpp:51
 #: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:169
 msgid "Cancel"
 msgstr "Annuleren"
@@ -663,7 +662,7 @@ msgstr "Geef wachtwoord:"
 
 #: src/gui/charselectdialog.cpp:413 src/gui/serverdialog.cpp:266
 #: src/gui/setup_relations.cpp:247 src/gui/shopwindow.cpp:123
-#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:244
+#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:243
 msgid "Delete"
 msgstr "Verwijderen"
 
@@ -739,14 +738,14 @@ msgstr "regenboog 3"
 #: src/gui/chatwindow.cpp:146 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:79
 #: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:225
-#: src/gui/setup_theme.cpp:74 src/gui/setup_theme.cpp:128
-#: src/gui/setup_theme.cpp:174 src/gui/setup_video.cpp:211
-#: src/gui/textcommandeditor.cpp:102 src/gui/textcommandeditor.cpp:141
-#: src/gui/textcommandeditor.cpp:160
+#: src/gui/setup_theme.cpp:73 src/gui/setup_theme.cpp:127
+#: src/gui/setup_theme.cpp:173 src/gui/setup_video.cpp:211
+#: src/gui/textcommandeditor.cpp:101 src/gui/textcommandeditor.cpp:140
+#: src/gui/textcommandeditor.cpp:159
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:48
+#: src/gui/chatwindow.cpp:156 src/gui/setup_chat.cpp:47
 msgid "Chat"
 msgstr "Chat"
 
@@ -779,7 +778,7 @@ msgid "Ignore"
 msgstr "Negeer"
 
 #: src/gui/debugwindow.cpp:72 src/gui/minimap.cpp:50 src/gui/minimap.cpp:99
-#: src/gui/setup_other.cpp:64
+#: src/gui/setup_other.cpp:63
 msgid "Map"
 msgstr "Map"
 
@@ -950,7 +949,7 @@ msgstr "Volgend >"
 msgid "Auto open this window"
 msgstr ""
 
-#: src/gui/editdialog.cpp:47 src/gui/editserverdialog.cpp:78
+#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:78
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:45
 #: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
@@ -1122,91 +1121,91 @@ msgstr ", "
 msgid "Weight: %s"
 msgstr "Gewicht: %s"
 
-#: src/gui/killstats.cpp:46 src/gui/windowmenu.cpp:69
+#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:69
 msgid "Kill stats"
 msgstr "Doden statistieken"
 
-#: src/gui/killstats.cpp:67
+#: src/gui/killstats.cpp:66
 msgid "Reset stats"
 msgstr "Herzet statistieken"
 
-#: src/gui/killstats.cpp:68
+#: src/gui/killstats.cpp:67
 msgid "Reset timer"
 msgstr "Herzet timer"
 
-#: src/gui/killstats.cpp:72 src/gui/killstats.cpp:208
+#: src/gui/killstats.cpp:71 src/gui/killstats.cpp:207
 #, c-format
 msgid "Level: %d at %f%%"
 msgstr ""
 
-#: src/gui/killstats.cpp:76 src/gui/killstats.cpp:213
+#: src/gui/killstats.cpp:75 src/gui/killstats.cpp:212
 #, c-format
 msgid "Exp: %d/%d Left: %d"
 msgstr ""
 
-#: src/gui/killstats.cpp:79 src/gui/killstats.cpp:219
-#: src/gui/killstats.cpp:228
+#: src/gui/killstats.cpp:78 src/gui/killstats.cpp:218
+#: src/gui/killstats.cpp:227
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:82 src/gui/killstats.cpp:145
-#: src/gui/killstats.cpp:237
+#: src/gui/killstats.cpp:81 src/gui/killstats.cpp:144
+#: src/gui/killstats.cpp:236
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:147
-#: src/gui/killstats.cpp:223 src/gui/killstats.cpp:233
+#: src/gui/killstats.cpp:83 src/gui/killstats.cpp:146
+#: src/gui/killstats.cpp:222 src/gui/killstats.cpp:232
 #, c-format
 msgid "Avg Exp: %s, No. of avg mob to next level: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:85 src/gui/killstats.cpp:165
-#: src/gui/killstats.cpp:240
+#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:164
+#: src/gui/killstats.cpp:239
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:87 src/gui/killstats.cpp:92 src/gui/killstats.cpp:97
-#: src/gui/killstats.cpp:292 src/gui/killstats.cpp:308
-#: src/gui/killstats.cpp:326
+#: src/gui/killstats.cpp:86 src/gui/killstats.cpp:91 src/gui/killstats.cpp:96
+#: src/gui/killstats.cpp:291 src/gui/killstats.cpp:307
+#: src/gui/killstats.cpp:325
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/killstats.cpp:90 src/gui/killstats.cpp:95 src/gui/killstats.cpp:100
+#: src/gui/killstats.cpp:89 src/gui/killstats.cpp:94 src/gui/killstats.cpp:99
 #, c-format
 msgid "Time for next level per %d min: %s"
 msgid_plural "Time for next level per %d min: %s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/killstats.cpp:103 src/gui/killstats.cpp:244
+#: src/gui/killstats.cpp:102 src/gui/killstats.cpp:243
 msgid "Last kill exp:"
 msgstr ""
 
-#: src/gui/killstats.cpp:105 src/gui/killstats.cpp:358
-#: src/gui/killstats.cpp:364 src/gui/killstats.cpp:370
-#: src/gui/killstats.cpp:375
+#: src/gui/killstats.cpp:104 src/gui/killstats.cpp:357
+#: src/gui/killstats.cpp:363 src/gui/killstats.cpp:369
+#: src/gui/killstats.cpp:374
 msgid "Time before jacko spawn:"
 msgstr ""
 
-#: src/gui/killstats.cpp:297 src/gui/killstats.cpp:304
-#: src/gui/killstats.cpp:314 src/gui/killstats.cpp:321
-#: src/gui/killstats.cpp:333 src/gui/killstats.cpp:340
+#: src/gui/killstats.cpp:296 src/gui/killstats.cpp:303
+#: src/gui/killstats.cpp:313 src/gui/killstats.cpp:320
+#: src/gui/killstats.cpp:332 src/gui/killstats.cpp:339
 #, c-format
 msgid "  Time for next level: %s"
 msgstr "  Tijd tot volgend niveau: %s"
 
-#: src/gui/killstats.cpp:364
+#: src/gui/killstats.cpp:363
 #, c-format
 msgid "%s %d?"
 msgstr ""
 
-#: src/gui/killstats.cpp:370
+#: src/gui/killstats.cpp:369
 msgid "jacko spawning"
 msgstr ""
 
@@ -1307,7 +1306,7 @@ msgid "Submit"
 msgstr "Indienen"
 
 #: src/gui/npcdialog.cpp:60 src/gui/npcpostdialog.cpp:42
-#: src/gui/setup_other.cpp:151
+#: src/gui/setup_other.cpp:150
 msgid "NPC"
 msgstr "NPC"
 
@@ -1513,7 +1512,7 @@ msgstr ""
 msgid "Add name to chat"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:359 src/gui/setup_players.cpp:48
+#: src/gui/popupmenu.cpp:359 src/gui/setup_players.cpp:47
 msgid "Players"
 msgstr "Spelers"
 
@@ -1684,8 +1683,8 @@ msgstr ""
 msgid "Copy to chat"
 msgstr "Kopieer naar chat"
 
-#: src/gui/popupmenu.cpp:2083 src/gui/setup_theme.cpp:88
-#: src/gui/setup_theme.cpp:145 src/gui/socialwindow.cpp:983
+#: src/gui/popupmenu.cpp:2083 src/gui/setup_theme.cpp:87
+#: src/gui/setup_theme.cpp:144 src/gui/socialwindow.cpp:983
 #: src/gui/socialwindow.cpp:1018 src/gui/socialwindow.cpp:1053
 msgid "(default)"
 msgstr "(standaard)"
@@ -1844,107 +1843,107 @@ msgstr ""
 msgid "Sound Engine"
 msgstr "Geluidsengine"
 
-#: src/gui/setup_chat.cpp:55 src/gui/setup_colors.cpp:54
+#: src/gui/setup_chat.cpp:54 src/gui/setup_colors.cpp:54
 msgid "Colors"
 msgstr "Kleuren"
 
-#: src/gui/setup_chat.cpp:57
+#: src/gui/setup_chat.cpp:56
 msgid "Remove colors from received chat messages"
 msgstr "Verwijder kleuren van ontvangen chat berichten"
 
-#: src/gui/setup_chat.cpp:60
+#: src/gui/setup_chat.cpp:59
 msgid "Show chat colors list"
 msgstr "Toon chat kleurenlijst"
 
-#: src/gui/setup_chat.cpp:64
+#: src/gui/setup_chat.cpp:63
 msgid "Commands"
 msgstr "Commando's"
 
-#: src/gui/setup_chat.cpp:66
+#: src/gui/setup_chat.cpp:65
 msgid "Allow magic and GM commands in all chat tabs"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:70
+#: src/gui/setup_chat.cpp:69
 msgid "Limits"
 msgstr "Limieten"
 
-#: src/gui/setup_chat.cpp:72
+#: src/gui/setup_chat.cpp:71
 msgid "Limit max chars in chat line"
 msgstr "Limiteer max karakters in chat lijn"
 
-#: src/gui/setup_chat.cpp:75
+#: src/gui/setup_chat.cpp:74
 msgid "Limit max lines in chat"
 msgstr "Limiteer max lijnen in chat"
 
-#: src/gui/setup_chat.cpp:79
+#: src/gui/setup_chat.cpp:78
 msgid "Logs"
 msgstr "Logs"
 
-#: src/gui/setup_chat.cpp:81
+#: src/gui/setup_chat.cpp:80
 msgid "Enable chat Log"
 msgstr "Zet chat log aan"
 
-#: src/gui/setup_chat.cpp:84
+#: src/gui/setup_chat.cpp:83
 msgid "Show chat history"
 msgstr "Toon chat geschiedenis"
 
-#: src/gui/setup_chat.cpp:88
+#: src/gui/setup_chat.cpp:87
 msgid "Messages"
 msgstr "Berichten"
 
-#: src/gui/setup_chat.cpp:90
+#: src/gui/setup_chat.cpp:89
 msgid "Hide shop messages"
 msgstr "Verberg verkoop boodschappen"
 
-#: src/gui/setup_chat.cpp:94
+#: src/gui/setup_chat.cpp:93
 msgid "Tabs"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:96
+#: src/gui/setup_chat.cpp:95
 msgid "Put all whispers in tabs"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:99
+#: src/gui/setup_chat.cpp:98
 msgid "Log magic messages in debug tab"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:102
+#: src/gui/setup_chat.cpp:101
 msgid "Show server messages in debug tab"
 msgstr "Toon server berichten in de debug tab"
 
-#: src/gui/setup_chat.cpp:105
+#: src/gui/setup_chat.cpp:104
 msgid "Enable trade tab"
 msgstr "Zet handle tab aan"
 
-#: src/gui/setup_chat.cpp:108
+#: src/gui/setup_chat.cpp:107
 msgid "Enable battle tab"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:111
+#: src/gui/setup_chat.cpp:110
 msgid "Show battle events"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:114
+#: src/gui/setup_chat.cpp:113
 msgid "Resize chat tabs if need"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:118
+#: src/gui/setup_chat.cpp:117
 msgid "Time"
 msgstr "Tijd"
 
-#: src/gui/setup_chat.cpp:120
+#: src/gui/setup_chat.cpp:119
 msgid "Use local time"
 msgstr "Gebruik lokale tijd"
 
-#: src/gui/setup_chat.cpp:123 src/gui/setup_other.cpp:166
+#: src/gui/setup_chat.cpp:122 src/gui/setup_other.cpp:165
 msgid "Other"
 msgstr "Andere"
 
-#: src/gui/setup_chat.cpp:125
+#: src/gui/setup_chat.cpp:124
 msgid "Highlight words (separated by comma)"
 msgstr ""
 
-#: src/gui/setup_chat.cpp:128
+#: src/gui/setup_chat.cpp:127
 msgid "Show MVP messages"
 msgstr ""
 
@@ -2028,7 +2027,7 @@ msgid "Stop"
 msgstr "Stoppen"
 
 #: src/gui/setup_joystick.cpp:149
-msgid "Rotate the stick and dont press buttons"
+msgid "Rotate the stick and don't press buttons"
 msgstr ""
 
 #: src/gui/setup_keyboard.cpp:80
@@ -2051,279 +2050,279 @@ msgstr "Standaard"
 msgid "Key Conflict(s) Detected."
 msgstr "Conflict(en) tussen toetsen gevonden."
 
-#: src/gui/setup_other.cpp:39
+#: src/gui/setup_other.cpp:38
 msgid "Misc"
 msgstr ""
 
-#: src/gui/setup_other.cpp:45 src/gui/userpalette.cpp:125
+#: src/gui/setup_other.cpp:44 src/gui/userpalette.cpp:125
 msgid "Monsters"
 msgstr "Monsters"
 
-#: src/gui/setup_other.cpp:47
+#: src/gui/setup_other.cpp:46
 msgid "Show damage inflicted to monsters"
 msgstr "Toon aangebrachte schade aan monsters"
 
-#: src/gui/setup_other.cpp:50
+#: src/gui/setup_other.cpp:49
 msgid "Auto target only reachable monsters"
 msgstr "Automatisch enkel bereikbare monsters viseren"
 
-#: src/gui/setup_other.cpp:53
+#: src/gui/setup_other.cpp:52
 msgid "Highlight monster attack range"
 msgstr "Markeer het aanvalsbereik van de monsters"
 
-#: src/gui/setup_other.cpp:57
+#: src/gui/setup_other.cpp:56
 msgid "Show monster hp bar"
 msgstr "Toon hp statusbalk van monsters"
 
-#: src/gui/setup_other.cpp:60
+#: src/gui/setup_other.cpp:59
 msgid "Cycle monster targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:66
+#: src/gui/setup_other.cpp:65
 msgid "Show warps particles"
 msgstr ""
 
-#: src/gui/setup_other.cpp:69
+#: src/gui/setup_other.cpp:68
 msgid "Highlight map portals"
 msgstr ""
 
-#: src/gui/setup_other.cpp:72
+#: src/gui/setup_other.cpp:71
 msgid "Highlight floor items"
 msgstr "Markeer vloer voorwerpen"
 
-#: src/gui/setup_other.cpp:75
+#: src/gui/setup_other.cpp:74
 msgid "Highlight player attack range"
 msgstr "Markeer het aanvalsbereik van de speler"
 
-#: src/gui/setup_other.cpp:78
+#: src/gui/setup_other.cpp:77
 msgid "Show extended minimaps"
 msgstr "Toon uitgebreide minimaps"
 
-#: src/gui/setup_other.cpp:81
+#: src/gui/setup_other.cpp:80
 msgid "Draw path"
 msgstr "Teken de weg"
 
-#: src/gui/setup_other.cpp:84
+#: src/gui/setup_other.cpp:83
 msgid "Draw hotkeys on map"
 msgstr ""
 
-#: src/gui/setup_other.cpp:87
+#: src/gui/setup_other.cpp:86
 msgid "Enable lazy scrolling"
 msgstr ""
 
-#: src/gui/setup_other.cpp:90
+#: src/gui/setup_other.cpp:89
 msgid "Scroll laziness"
 msgstr ""
 
-#: src/gui/setup_other.cpp:93
+#: src/gui/setup_other.cpp:92
 msgid "Scroll radius"
 msgstr ""
 
-#: src/gui/setup_other.cpp:97
+#: src/gui/setup_other.cpp:96
 msgid "Moving"
 msgstr "Bewegen"
 
-#: src/gui/setup_other.cpp:99
+#: src/gui/setup_other.cpp:98
 msgid "Auto fix position"
 msgstr ""
 
-#: src/gui/setup_other.cpp:102
+#: src/gui/setup_other.cpp:101
 msgid "Attack while moving"
 msgstr "Aanvallen tijdens verplaatsen"
 
-#: src/gui/setup_other.cpp:105
+#: src/gui/setup_other.cpp:104
 msgid "Sync player move"
 msgstr ""
 
-#: src/gui/setup_other.cpp:108
+#: src/gui/setup_other.cpp:107
 msgid "Crazy move A program"
 msgstr ""
 
-#: src/gui/setup_other.cpp:112
+#: src/gui/setup_other.cpp:111
 msgid "Player"
 msgstr "Speler"
 
-#: src/gui/setup_other.cpp:114
+#: src/gui/setup_other.cpp:113
 msgid "Show own hp bar"
 msgstr "Toon hp statusbalk van jezelf"
 
-#: src/gui/setup_other.cpp:117
+#: src/gui/setup_other.cpp:116
 msgid "Enable quick stats"
 msgstr "Zet snelle statistieken aan"
 
-#: src/gui/setup_other.cpp:120
+#: src/gui/setup_other.cpp:119
 msgid "Cycle player targets"
 msgstr ""
 
-#: src/gui/setup_other.cpp:123
+#: src/gui/setup_other.cpp:122
 msgid "Show job exp messages"
 msgstr ""
 
-#: src/gui/setup_other.cpp:126
+#: src/gui/setup_other.cpp:125
 msgid "Show players popups"
 msgstr ""
 
-#: src/gui/setup_other.cpp:129
+#: src/gui/setup_other.cpp:128
 msgid "Afk message"
 msgstr ""
 
-#: src/gui/setup_other.cpp:132
+#: src/gui/setup_other.cpp:131
 msgid "Show job"
 msgstr ""
 
-#: src/gui/setup_other.cpp:135
+#: src/gui/setup_other.cpp:134
 msgid "Enable attack filter"
 msgstr ""
 
-#: src/gui/setup_other.cpp:138
+#: src/gui/setup_other.cpp:137
 msgid "Enable advert protocol"
 msgstr ""
 
-#: src/gui/setup_other.cpp:144
+#: src/gui/setup_other.cpp:143
 msgid "Accept sell/buy requests"
 msgstr "Accepteer koop/verkoop aanvragen"
 
-#: src/gui/setup_other.cpp:147
+#: src/gui/setup_other.cpp:146
 msgid "Enable shop mode"
 msgstr "shop modus aanzetten"
 
-#: src/gui/setup_other.cpp:153
+#: src/gui/setup_other.cpp:152
 msgid "Log NPC dialogue"
 msgstr ""
 
-#: src/gui/setup_other.cpp:157
+#: src/gui/setup_other.cpp:156
 msgid "Bots support"
 msgstr ""
 
-#: src/gui/setup_other.cpp:159
+#: src/gui/setup_other.cpp:158
 msgid "Enable auction bot support"
 msgstr ""
 
-#: src/gui/setup_other.cpp:162
+#: src/gui/setup_other.cpp:161
 msgid "Enable guild bot support and disable native guild support"
 msgstr ""
 
-#: src/gui/setup_other.cpp:168
+#: src/gui/setup_other.cpp:167
 msgid "Enable server side attack"
 msgstr "Aanval gecontroleerd door server aanzetten"
 
-#: src/gui/setup_other.cpp:171
+#: src/gui/setup_other.cpp:170
 msgid "Enable bot checker"
 msgstr "Bot controle aanzetten"
 
-#: src/gui/setup_other.cpp:174
+#: src/gui/setup_other.cpp:173
 msgid "Enable buggy servers protection (do not disable)"
 msgstr ""
 
-#: src/gui/setup_other.cpp:178
+#: src/gui/setup_other.cpp:177
 msgid "Enable debug log"
 msgstr "Zet debug log aan"
 
-#: src/gui/setup_other.cpp:181
+#: src/gui/setup_other.cpp:180
 msgid "Low traffic mode"
 msgstr ""
 
-#: src/gui/setup_other.cpp:184
+#: src/gui/setup_other.cpp:183
 msgid "Hide shield sprite"
 msgstr ""
 
-#: src/gui/setup_other.cpp:187
+#: src/gui/setup_other.cpp:186
 msgid "Show background"
 msgstr "Toon achtergrond"
 
-#: src/gui/setup_perfomance.cpp:55
+#: src/gui/setup_perfomance.cpp:54
 msgid "Better perfomance (enable for better perfomance)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:58
+#: src/gui/setup_perfomance.cpp:57
 msgid "Auto adjust perfomance"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:61
+#: src/gui/setup_perfomance.cpp:60
 msgid "Hw acceleration"
 msgstr "Hw acceleratie"
 
-#: src/gui/setup_perfomance.cpp:64
+#: src/gui/setup_perfomance.cpp:63
 msgid "Enable opacity cache (Software, can use many memory)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:67
+#: src/gui/setup_perfomance.cpp:66
 msgid "Enable map reduce (Software)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:70
+#: src/gui/setup_perfomance.cpp:69
 msgid "Better quality (disable for better perfomance)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:73
+#: src/gui/setup_perfomance.cpp:72
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:77
+#: src/gui/setup_perfomance.cpp:76
 msgid "Show beings transparency"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:80
+#: src/gui/setup_perfomance.cpp:79
 msgid "Enable reorder sprites."
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:83
+#: src/gui/setup_perfomance.cpp:82
 msgid "Small memory (enable for lower memory usage)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:86
+#: src/gui/setup_perfomance.cpp:85
 msgid "Disable advanced beings caching (Software)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:89
+#: src/gui/setup_perfomance.cpp:88
 msgid "Disable beings caching (Software)"
 msgstr ""
 
-#: src/gui/setup_players.cpp:54
+#: src/gui/setup_players.cpp:53
 msgid "Show gender"
 msgstr "Toon geslacht"
 
-#: src/gui/setup_players.cpp:57
+#: src/gui/setup_players.cpp:56
 msgid "Show level"
 msgstr "Toon niveau"
 
-#: src/gui/setup_players.cpp:60
+#: src/gui/setup_players.cpp:59
 msgid "Show own name"
 msgstr "Toon eigen naam"
 
-#: src/gui/setup_players.cpp:63
+#: src/gui/setup_players.cpp:62
 msgid "Enable extended mouse targeting"
 msgstr ""
 
-#: src/gui/setup_players.cpp:66
+#: src/gui/setup_players.cpp:65
 msgid "Target dead players"
 msgstr "Viseer dode spelers"
 
-#: src/gui/setup_players.cpp:69
+#: src/gui/setup_players.cpp:68
 msgid "Visible names"
 msgstr "Zichtbare namen"
 
-#: src/gui/setup_players.cpp:72
+#: src/gui/setup_players.cpp:71
 msgid "Secure trades"
 msgstr ""
 
-#: src/gui/setup_players.cpp:75
+#: src/gui/setup_players.cpp:74
 msgid "Unsecure chars in names"
 msgstr ""
 
-#: src/gui/setup_players.cpp:78
+#: src/gui/setup_players.cpp:77
 msgid "Show statuses"
 msgstr ""
 
-#: src/gui/setup_players.cpp:81
+#: src/gui/setup_players.cpp:80
 msgid "Show ip addresses on screenshots"
 msgstr ""
 
-#: src/gui/setup_players.cpp:84
+#: src/gui/setup_players.cpp:83
 msgid "Allow self heal with mouse click"
 msgstr ""
 
-#: src/gui/setup_players.cpp:87
+#: src/gui/setup_players.cpp:86
 msgid "Group friends in who is online window"
 msgstr ""
 
@@ -2379,131 +2378,131 @@ msgstr "Relaties"
 msgid "When ignoring:"
 msgstr "Tijdens negeren:"
 
-#: src/gui/setup_theme.cpp:108
+#: src/gui/setup_theme.cpp:107
 msgid "Tiny (10)"
 msgstr "Heel klein (10)"
 
-#: src/gui/setup_theme.cpp:109
+#: src/gui/setup_theme.cpp:108
 msgid "Small (11)"
 msgstr "Klein (11)"
 
-#: src/gui/setup_theme.cpp:110
+#: src/gui/setup_theme.cpp:109
 msgid "Medium (12)"
 msgstr "Middelmatig (12)"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_theme.cpp:110
 msgid "Large (13)"
 msgstr "Groot (13)"
 
-#: src/gui/setup_theme.cpp:112
+#: src/gui/setup_theme.cpp:111
 msgid "Big (14)"
 msgstr "Heel groot (14)"
 
-#: src/gui/setup_theme.cpp:113
+#: src/gui/setup_theme.cpp:112
 msgid "Huge (15)"
 msgstr "Extreem groot (15)"
 
-#: src/gui/setup_theme.cpp:146
+#: src/gui/setup_theme.cpp:145
 msgid "Chinese (China)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:147
+#: src/gui/setup_theme.cpp:146
 msgid "Czech"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:147
 msgid "English"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:149
+#: src/gui/setup_theme.cpp:148
 msgid "Finnish"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:150
+#: src/gui/setup_theme.cpp:149
 msgid "French"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:151
+#: src/gui/setup_theme.cpp:150
 msgid "German"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:152
+#: src/gui/setup_theme.cpp:151
 msgid "Indonesian"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:153
+#: src/gui/setup_theme.cpp:152
 msgid "Polish"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:154
+#: src/gui/setup_theme.cpp:153
 msgid "Japanese"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:155
+#: src/gui/setup_theme.cpp:154
 msgid "Dutch (Belgium/Flemish)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:156
+#: src/gui/setup_theme.cpp:155
 msgid "Portuguese"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:157
+#: src/gui/setup_theme.cpp:156
 msgid "Portuguese (Brazilian)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:158
+#: src/gui/setup_theme.cpp:157
 msgid "Russian"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:159
+#: src/gui/setup_theme.cpp:158
 msgid "Spanish (Castilian)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:191
+#: src/gui/setup_theme.cpp:190
 msgid "Theme"
 msgstr "Thema"
 
-#: src/gui/setup_theme.cpp:193
+#: src/gui/setup_theme.cpp:192
 msgid "Gui theme"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:194
+#: src/gui/setup_theme.cpp:193
 msgid "Language"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:195
+#: src/gui/setup_theme.cpp:194
 msgid "Main Font"
 msgstr "Standaard Lettertype"
 
-#: src/gui/setup_theme.cpp:196
+#: src/gui/setup_theme.cpp:195
 msgid "Bold font"
 msgstr "Vet lettertype"
 
-#: src/gui/setup_theme.cpp:197
+#: src/gui/setup_theme.cpp:196
 msgid "Particle font"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:198
+#: src/gui/setup_theme.cpp:197
 msgid "Help font"
 msgstr "Help lettertype"
 
-#: src/gui/setup_theme.cpp:199
+#: src/gui/setup_theme.cpp:198
 msgid "Secure font"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:200
+#: src/gui/setup_theme.cpp:199
 msgid "Japanese font"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:237
+#: src/gui/setup_theme.cpp:236
 msgid "Font size"
 msgstr "Lettergrootte"
 
-#: src/gui/setup_theme.cpp:378
+#: src/gui/setup_theme.cpp:377
 msgid "Theme Changed"
 msgstr "Thema is gewijzigd"
 
-#: src/gui/setup_theme.cpp:379 src/gui/setup_video.cpp:635
+#: src/gui/setup_theme.cpp:378 src/gui/setup_video.cpp:635
 #: src/gui/setup_video.cpp:640
 msgid "Restart your client for the change to take effect."
 msgstr "Herstart de client om de wijzigingen in werking te doen treden."
@@ -2702,7 +2701,6 @@ msgid "Auction"
 msgstr ""
 
 #: src/gui/shopwindow.cpp:761 src/net/ea/tradehandler.cpp:104
-#: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
 msgstr "Handel aanvragen"
 
@@ -3010,91 +3008,91 @@ msgstr "Niveau: %d (GM %d)"
 msgid "Correction points: %d"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:113
+#: src/gui/textcommandeditor.cpp:112
 msgid "No Target"
 msgstr "Geen Doel"
 
-#: src/gui/textcommandeditor.cpp:114
+#: src/gui/textcommandeditor.cpp:113
 msgid "Allow Target"
 msgstr "Doel Toestaan"
 
-#: src/gui/textcommandeditor.cpp:115
+#: src/gui/textcommandeditor.cpp:114
 msgid "Need Target"
 msgstr "Heeft Doel Nodig"
 
-#: src/gui/textcommandeditor.cpp:120
+#: src/gui/textcommandeditor.cpp:119
 msgid "General Magic"
 msgstr "Algemene Magie"
 
-#: src/gui/textcommandeditor.cpp:121
+#: src/gui/textcommandeditor.cpp:120
 msgid "Life Magic"
 msgstr "Levensmagie"
 
-#: src/gui/textcommandeditor.cpp:122
+#: src/gui/textcommandeditor.cpp:121
 msgid "War Magic"
 msgstr "Oorlogsmagie"
 
-#: src/gui/textcommandeditor.cpp:123
+#: src/gui/textcommandeditor.cpp:122
 msgid "Transmute Magic"
 msgstr "Wijzigingsmagie"
 
-#: src/gui/textcommandeditor.cpp:124
+#: src/gui/textcommandeditor.cpp:123
 msgid "Nature Magic"
 msgstr "Natuursmagie"
 
-#: src/gui/textcommandeditor.cpp:125
+#: src/gui/textcommandeditor.cpp:124
 msgid "Astral Magic"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:168
+#: src/gui/textcommandeditor.cpp:167
 msgid "Command Editor"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:185
+#: src/gui/textcommandeditor.cpp:184
 msgid "magic"
 msgstr "magie"
 
-#: src/gui/textcommandeditor.cpp:189
+#: src/gui/textcommandeditor.cpp:188
 msgid "other"
 msgstr "ander"
 
-#: src/gui/textcommandeditor.cpp:194
+#: src/gui/textcommandeditor.cpp:193
 msgid "Symbol:"
 msgstr "Symbool:"
 
-#: src/gui/textcommandeditor.cpp:197
+#: src/gui/textcommandeditor.cpp:196
 msgid "Command:"
 msgstr "Commando:"
 
-#: src/gui/textcommandeditor.cpp:200
+#: src/gui/textcommandeditor.cpp:199
 msgid "Comment:"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:203
+#: src/gui/textcommandeditor.cpp:202
 msgid "Mana:"
 msgstr "Mana:"
 
-#: src/gui/textcommandeditor.cpp:209
+#: src/gui/textcommandeditor.cpp:208
 msgid "Target Type:"
 msgstr "Doel Type:"
 
-#: src/gui/textcommandeditor.cpp:215
+#: src/gui/textcommandeditor.cpp:214
 msgid "Icon:"
 msgstr "Icoon:"
 
-#: src/gui/textcommandeditor.cpp:221
+#: src/gui/textcommandeditor.cpp:220
 msgid "Magic level:"
 msgstr "Magie niveau:"
 
-#: src/gui/textcommandeditor.cpp:227
+#: src/gui/textcommandeditor.cpp:226
 msgid "Magic School:"
 msgstr "Magie School:"
 
-#: src/gui/textcommandeditor.cpp:233
+#: src/gui/textcommandeditor.cpp:232
 msgid "School level:"
 msgstr "School niveau:"
 
-#: src/gui/textcommandeditor.cpp:238
+#: src/gui/textcommandeditor.cpp:237
 msgid "Save"
 msgstr "Bewaren"
 
@@ -3324,23 +3322,23 @@ msgstr ""
 msgid "Road Point"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:618
+#: src/gui/whoisonline.cpp:79 src/gui/whoisonline.cpp:617
 msgid "Who Is Online - Updating"
 msgstr "Wie Is Online - Bijwerken"
 
-#: src/gui/whoisonline.cpp:104
+#: src/gui/whoisonline.cpp:103
 msgid "Update"
 msgstr "Bijwerken"
 
-#: src/gui/whoisonline.cpp:198
+#: src/gui/whoisonline.cpp:197
 msgid "Who Is Online - "
 msgstr "Wie Is Online - "
 
-#: src/gui/whoisonline.cpp:632
+#: src/gui/whoisonline.cpp:631
 msgid "Who Is Online - error"
 msgstr "Wie Is Online - fout"
 
-#: src/gui/whoisonline.cpp:671
+#: src/gui/whoisonline.cpp:670
 msgid "Who Is Online - Update"
 msgstr "Wie Is Online - Bijgewerkt"
 
@@ -3624,427 +3622,427 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-#: src/keyboardconfig.cpp:43
+#: src/keyboardconfig.cpp:45
 msgid "Basic Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:44
+#: src/keyboardconfig.cpp:46
 msgid "Move Up"
 msgstr "Omhoog"
 
-#: src/keyboardconfig.cpp:45
+#: src/keyboardconfig.cpp:47
 msgid "Move Down"
 msgstr "Omlaag"
 
-#: src/keyboardconfig.cpp:46
+#: src/keyboardconfig.cpp:48
 msgid "Move Left"
 msgstr "Naar links"
 
-#: src/keyboardconfig.cpp:47
+#: src/keyboardconfig.cpp:49
 msgid "Move Right"
 msgstr "Naar rechts"
 
-#: src/keyboardconfig.cpp:50
+#: src/keyboardconfig.cpp:52
 msgid "Target & Attack"
 msgstr "Viseren en Aanvallen"
 
-#: src/keyboardconfig.cpp:52
+#: src/keyboardconfig.cpp:54
 msgid "Move to Target"
 msgstr "Beweeg tot aan Doel"
 
-#: src/keyboardconfig.cpp:54
+#: src/keyboardconfig.cpp:56
 msgid "Change Move to Target type"
 msgstr "Wijzig Bewegen tot aan Doel type"
 
-#: src/keyboardconfig.cpp:56
+#: src/keyboardconfig.cpp:58
 msgid "Move to Home location"
 msgstr ""
 
-#: src/keyboardconfig.cpp:58
+#: src/keyboardconfig.cpp:60
 msgid "Set home location"
 msgstr ""
 
-#: src/keyboardconfig.cpp:60
+#: src/keyboardconfig.cpp:62
 msgid "Move to navigation point"
 msgstr ""
 
-#: src/keyboardconfig.cpp:63
+#: src/keyboardconfig.cpp:65
 msgid "Stop Attack"
 msgstr "Aanval stoppen"
 
-#: src/keyboardconfig.cpp:65
+#: src/keyboardconfig.cpp:67
 msgid "Untarget"
 msgstr ""
 
-#: src/keyboardconfig.cpp:66
+#: src/keyboardconfig.cpp:68
 msgid "Target Closest"
 msgstr "Dichtsbijzijnde viseren"
 
-#: src/keyboardconfig.cpp:68
+#: src/keyboardconfig.cpp:70
 msgid "Target NPC"
 msgstr "NPC viseren"
 
-#: src/keyboardconfig.cpp:69
+#: src/keyboardconfig.cpp:71
 msgid "Target Player"
 msgstr "Speler viseren"
 
-#: src/keyboardconfig.cpp:71
+#: src/keyboardconfig.cpp:73
 msgid "Pickup"
 msgstr "Oprapen"
 
-#: src/keyboardconfig.cpp:72
+#: src/keyboardconfig.cpp:74
 msgid "Change Pickup Type"
 msgstr ""
 
-#: src/keyboardconfig.cpp:74
+#: src/keyboardconfig.cpp:76
 msgid "Hide Windows"
 msgstr "Vensters verbergen"
 
-#: src/keyboardconfig.cpp:76
+#: src/keyboardconfig.cpp:78
 msgid "Sit"
 msgstr "Zitten"
 
-#: src/keyboardconfig.cpp:77
+#: src/keyboardconfig.cpp:79
 msgid "Screenshot"
 msgstr "Schermafdruk"
 
-#: src/keyboardconfig.cpp:78
+#: src/keyboardconfig.cpp:80
 msgid "Enable/Disable Trading"
 msgstr "Handelen inschakelen/uitschakelen"
 
-#: src/keyboardconfig.cpp:80
+#: src/keyboardconfig.cpp:82
 msgid "Change Map View Mode"
 msgstr "Wijzig Map Tonen Modus"
 
-#: src/keyboardconfig.cpp:82
+#: src/keyboardconfig.cpp:84
 msgid "Select OK"
 msgstr "OK selecteren"
 
-#: src/keyboardconfig.cpp:85
+#: src/keyboardconfig.cpp:87
 msgid "Shortcuts Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:86
+#: src/keyboardconfig.cpp:88
 msgid "Item Shortcuts Key"
 msgstr "Voorwerpsnelkoppelingstoets"
 
-#: src/keyboardconfig.cpp:88 src/keyboardconfig.cpp:90
-#: src/keyboardconfig.cpp:92 src/keyboardconfig.cpp:94
-#: src/keyboardconfig.cpp:96 src/keyboardconfig.cpp:98
-#: src/keyboardconfig.cpp:100 src/keyboardconfig.cpp:102
-#: src/keyboardconfig.cpp:104 src/keyboardconfig.cpp:106
-#: src/keyboardconfig.cpp:108 src/keyboardconfig.cpp:110
-#: src/keyboardconfig.cpp:112 src/keyboardconfig.cpp:114
-#: src/keyboardconfig.cpp:116 src/keyboardconfig.cpp:119
-#: src/keyboardconfig.cpp:121 src/keyboardconfig.cpp:123
-#: src/keyboardconfig.cpp:125 src/keyboardconfig.cpp:127
-#: src/keyboardconfig.cpp:379
+#: src/keyboardconfig.cpp:90 src/keyboardconfig.cpp:92
+#: src/keyboardconfig.cpp:94 src/keyboardconfig.cpp:96
+#: src/keyboardconfig.cpp:98 src/keyboardconfig.cpp:100
+#: src/keyboardconfig.cpp:102 src/keyboardconfig.cpp:104
+#: src/keyboardconfig.cpp:106 src/keyboardconfig.cpp:108
+#: src/keyboardconfig.cpp:110 src/keyboardconfig.cpp:112
+#: src/keyboardconfig.cpp:114 src/keyboardconfig.cpp:116
+#: src/keyboardconfig.cpp:118 src/keyboardconfig.cpp:121
+#: src/keyboardconfig.cpp:123 src/keyboardconfig.cpp:125
+#: src/keyboardconfig.cpp:127 src/keyboardconfig.cpp:129
+#: src/keyboardconfig.cpp:381
 #, c-format
 msgid "Item Shortcut %d"
 msgstr "Snelkoppeling naar voorwerp %d"
 
-#: src/keyboardconfig.cpp:128
+#: src/keyboardconfig.cpp:130
 msgid "Windows Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:129
+#: src/keyboardconfig.cpp:131
 msgid "Help Window"
 msgstr "Help venster"
 
-#: src/keyboardconfig.cpp:131
+#: src/keyboardconfig.cpp:133
 msgid "Status Window"
 msgstr "Statusvenster"
 
-#: src/keyboardconfig.cpp:133
+#: src/keyboardconfig.cpp:135
 msgid "Inventory Window"
 msgstr ""
 
-#: src/keyboardconfig.cpp:135
+#: src/keyboardconfig.cpp:137
 msgid "Equipment Window"
 msgstr "Uitrustingsvenster"
 
-#: src/keyboardconfig.cpp:137
+#: src/keyboardconfig.cpp:139
 msgid "Skill Window"
 msgstr "Vaardigheidsvenster"
 
-#: src/keyboardconfig.cpp:139
+#: src/keyboardconfig.cpp:141
 msgid "Minimap Window"
 msgstr "Minimapvenster"
 
-#: src/keyboardconfig.cpp:141
+#: src/keyboardconfig.cpp:143
 msgid "Chat Window"
 msgstr "Gespreksvenster"
 
-#: src/keyboardconfig.cpp:143
+#: src/keyboardconfig.cpp:145
 msgid "Item Shortcut Window"
 msgstr "Voorwerpsnelkoppelingsvenster"
 
-#: src/keyboardconfig.cpp:145
+#: src/keyboardconfig.cpp:147
 msgid "Setup Window"
 msgstr "Instellingenvenster"
 
-#: src/keyboardconfig.cpp:147
+#: src/keyboardconfig.cpp:149
 msgid "Debug Window"
 msgstr "Debugvenster"
 
-#: src/keyboardconfig.cpp:149
+#: src/keyboardconfig.cpp:151
 msgid "Social Window"
 msgstr "Sociaal Venster"
 
-#: src/keyboardconfig.cpp:151
+#: src/keyboardconfig.cpp:153
 msgid "Emote Shortcut Window"
 msgstr "Emoticonsnelkoppelingsvenster"
 
-#: src/keyboardconfig.cpp:153
+#: src/keyboardconfig.cpp:155
 msgid "Outfits Window"
 msgstr "Kleren Venster"
 
-#: src/keyboardconfig.cpp:155
+#: src/keyboardconfig.cpp:157
 msgid "Shop Window"
 msgstr ""
 
-#: src/keyboardconfig.cpp:157
+#: src/keyboardconfig.cpp:159
 msgid "Quick drop Window"
 msgstr "Snel neerleggingsvenster"
 
-#: src/keyboardconfig.cpp:159
+#: src/keyboardconfig.cpp:161
 msgid "Kill Stats Window"
 msgstr ""
 
-#: src/keyboardconfig.cpp:161
+#: src/keyboardconfig.cpp:163
 msgid "Commands Window"
 msgstr "Commando Venster"
 
-#: src/keyboardconfig.cpp:163
+#: src/keyboardconfig.cpp:165
 msgid "Bot Checker Window"
 msgstr "Bot Controle Venster"
 
-#: src/keyboardconfig.cpp:166
+#: src/keyboardconfig.cpp:168
 msgid "Who Is Online Window"
 msgstr "Wie Is Online Venster"
 
-#: src/keyboardconfig.cpp:168
+#: src/keyboardconfig.cpp:170
 msgid "Did you know Window"
 msgstr "Weet u Venster"
 
-#: src/keyboardconfig.cpp:171
+#: src/keyboardconfig.cpp:173
 msgid "Previous Social Tab"
 msgstr ""
 
-#: src/keyboardconfig.cpp:173
+#: src/keyboardconfig.cpp:175
 msgid "Next Social Tab"
 msgstr ""
 
-#: src/keyboardconfig.cpp:175
+#: src/keyboardconfig.cpp:177
 msgid "Emotes Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:176
+#: src/keyboardconfig.cpp:178
 msgid "Smilie"
 msgstr "Smilie"
 
-#: src/keyboardconfig.cpp:177 src/keyboardconfig.cpp:179
-#: src/keyboardconfig.cpp:181 src/keyboardconfig.cpp:183
-#: src/keyboardconfig.cpp:185 src/keyboardconfig.cpp:187
-#: src/keyboardconfig.cpp:189 src/keyboardconfig.cpp:191
-#: src/keyboardconfig.cpp:193 src/keyboardconfig.cpp:195
-#: src/keyboardconfig.cpp:197 src/keyboardconfig.cpp:199
-#: src/keyboardconfig.cpp:202 src/keyboardconfig.cpp:204
-#: src/keyboardconfig.cpp:206 src/keyboardconfig.cpp:208
-#: src/keyboardconfig.cpp:210 src/keyboardconfig.cpp:212
-#: src/keyboardconfig.cpp:214 src/keyboardconfig.cpp:216
-#: src/keyboardconfig.cpp:218 src/keyboardconfig.cpp:220
-#: src/keyboardconfig.cpp:222 src/keyboardconfig.cpp:224
-#: src/keyboardconfig.cpp:226 src/keyboardconfig.cpp:229
-#: src/keyboardconfig.cpp:232 src/keyboardconfig.cpp:235
-#: src/keyboardconfig.cpp:237 src/keyboardconfig.cpp:239
-#: src/keyboardconfig.cpp:241 src/keyboardconfig.cpp:243
-#: src/keyboardconfig.cpp:245 src/keyboardconfig.cpp:247
-#: src/keyboardconfig.cpp:249 src/keyboardconfig.cpp:251
-#: src/keyboardconfig.cpp:253 src/keyboardconfig.cpp:256
-#: src/keyboardconfig.cpp:258 src/keyboardconfig.cpp:260
-#: src/keyboardconfig.cpp:262 src/keyboardconfig.cpp:264
-#: src/keyboardconfig.cpp:266 src/keyboardconfig.cpp:268
-#: src/keyboardconfig.cpp:270 src/keyboardconfig.cpp:272
-#: src/keyboardconfig.cpp:274 src/keyboardconfig.cpp:276
-#: src/keyboardconfig.cpp:374
+#: src/keyboardconfig.cpp:179 src/keyboardconfig.cpp:181
+#: src/keyboardconfig.cpp:183 src/keyboardconfig.cpp:185
+#: src/keyboardconfig.cpp:187 src/keyboardconfig.cpp:189
+#: src/keyboardconfig.cpp:191 src/keyboardconfig.cpp:193
+#: src/keyboardconfig.cpp:195 src/keyboardconfig.cpp:197
+#: src/keyboardconfig.cpp:199 src/keyboardconfig.cpp:201
+#: src/keyboardconfig.cpp:204 src/keyboardconfig.cpp:206
+#: src/keyboardconfig.cpp:208 src/keyboardconfig.cpp:210
+#: src/keyboardconfig.cpp:212 src/keyboardconfig.cpp:214
+#: src/keyboardconfig.cpp:216 src/keyboardconfig.cpp:218
+#: src/keyboardconfig.cpp:220 src/keyboardconfig.cpp:222
+#: src/keyboardconfig.cpp:224 src/keyboardconfig.cpp:226
+#: src/keyboardconfig.cpp:228 src/keyboardconfig.cpp:231
+#: src/keyboardconfig.cpp:234 src/keyboardconfig.cpp:237
+#: src/keyboardconfig.cpp:239 src/keyboardconfig.cpp:241
+#: src/keyboardconfig.cpp:243 src/keyboardconfig.cpp:245
+#: src/keyboardconfig.cpp:247 src/keyboardconfig.cpp:249
+#: src/keyboardconfig.cpp:251 src/keyboardconfig.cpp:253
+#: src/keyboardconfig.cpp:255 src/keyboardconfig.cpp:258
+#: src/keyboardconfig.cpp:260 src/keyboardconfig.cpp:262
+#: src/keyboardconfig.cpp:264 src/keyboardconfig.cpp:266
+#: src/keyboardconfig.cpp:268 src/keyboardconfig.cpp:270
+#: src/keyboardconfig.cpp:272 src/keyboardconfig.cpp:274
+#: src/keyboardconfig.cpp:276 src/keyboardconfig.cpp:278
+#: src/keyboardconfig.cpp:376
 #, c-format
 msgid "Emote Shortcut %d"
 msgstr "Emoticon snelkoppeling %d"
 
-#: src/keyboardconfig.cpp:278
+#: src/keyboardconfig.cpp:280
 msgid "Outfits Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:279
+#: src/keyboardconfig.cpp:281
 msgid "Wear Outfit"
 msgstr "Draag Kledij"
 
-#: src/keyboardconfig.cpp:281
+#: src/keyboardconfig.cpp:283
 msgid "Copy Outfit"
 msgstr "Kopiëer Kledij"
 
-#: src/keyboardconfig.cpp:283
+#: src/keyboardconfig.cpp:285
 msgid "Copy equipped to Outfit"
 msgstr ""
 
-#: src/keyboardconfig.cpp:285
+#: src/keyboardconfig.cpp:287
 msgid "Chat Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:286
+#: src/keyboardconfig.cpp:288
 msgid "Toggle Chat"
 msgstr ""
 
-#: src/keyboardconfig.cpp:288
+#: src/keyboardconfig.cpp:290
 msgid "Scroll Chat Up"
 msgstr "Chat omhoogscrollen"
 
-#: src/keyboardconfig.cpp:290
+#: src/keyboardconfig.cpp:292
 msgid "Scroll Chat Down"
 msgstr "Chat omlaagscrollen"
 
-#: src/keyboardconfig.cpp:292
+#: src/keyboardconfig.cpp:294
 msgid "Previous Chat Tab"
 msgstr "Vorige chattab"
 
-#: src/keyboardconfig.cpp:294
+#: src/keyboardconfig.cpp:296
 msgid "Next Chat Tab"
 msgstr "Volgende chattab"
 
-#: src/keyboardconfig.cpp:297
+#: src/keyboardconfig.cpp:299
 msgid "Close current Chat Tab"
 msgstr ""
 
-#: src/keyboardconfig.cpp:299
+#: src/keyboardconfig.cpp:301
 msgid "Previous chat line"
 msgstr ""
 
-#: src/keyboardconfig.cpp:301
+#: src/keyboardconfig.cpp:303
 msgid "Next chat line"
 msgstr ""
 
-#: src/keyboardconfig.cpp:303
+#: src/keyboardconfig.cpp:305
 msgid "Chat Auto Complete"
 msgstr ""
 
-#: src/keyboardconfig.cpp:305
+#: src/keyboardconfig.cpp:307
 msgid "Deactivate Chat Input"
 msgstr ""
 
-#: src/keyboardconfig.cpp:307
+#: src/keyboardconfig.cpp:309
 msgid "Other Keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:308
+#: src/keyboardconfig.cpp:310
 msgid "Ignore input 1"
 msgstr "Ingave 1 negeren"
 
-#: src/keyboardconfig.cpp:310
+#: src/keyboardconfig.cpp:312
 msgid "Ignore input 2"
 msgstr "Ingave 2 negeren"
 
-#: src/keyboardconfig.cpp:312
+#: src/keyboardconfig.cpp:314
 msgid "Direct Up"
 msgstr ""
 
-#: src/keyboardconfig.cpp:313
+#: src/keyboardconfig.cpp:315
 msgid "Direct Down"
 msgstr ""
 
-#: src/keyboardconfig.cpp:315
+#: src/keyboardconfig.cpp:317
 msgid "Direct Left"
 msgstr ""
 
-#: src/keyboardconfig.cpp:316
+#: src/keyboardconfig.cpp:318
 msgid "Direct Right"
 msgstr ""
 
-#: src/keyboardconfig.cpp:318
+#: src/keyboardconfig.cpp:320
 msgid "Crazy moves"
 msgstr ""
 
-#: src/keyboardconfig.cpp:320
+#: src/keyboardconfig.cpp:322
 msgid "Change Crazy Move mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:322
+#: src/keyboardconfig.cpp:324
 msgid "Quick Drop N Items from 0 slot"
 msgstr "Snel N Voorwerpen van slot 0 neerleggen"
 
-#: src/keyboardconfig.cpp:324
+#: src/keyboardconfig.cpp:326
 msgid "Quick Drop N Items"
 msgstr "Snel N Voorwerpen Neerleggen"
 
-#: src/keyboardconfig.cpp:326
+#: src/keyboardconfig.cpp:328
 msgid "Switch Quick Drop Counter"
 msgstr "Wissel Snel Neerleggingsteller"
 
-#: src/keyboardconfig.cpp:328
+#: src/keyboardconfig.cpp:330
 msgid "Quick heal target or self"
 msgstr "Snel jezelf of iemand anders genezen"
 
-#: src/keyboardconfig.cpp:330
+#: src/keyboardconfig.cpp:332
 msgid "Use #itenplz spell"
 msgstr "Gebruik #itenplz spreuk"
 
-#: src/keyboardconfig.cpp:332
+#: src/keyboardconfig.cpp:334
 msgid "Use magic attack"
 msgstr "Gebruik magie aanval"
 
-#: src/keyboardconfig.cpp:334
+#: src/keyboardconfig.cpp:336
 msgid "Switch magic attack"
 msgstr ""
 
-#: src/keyboardconfig.cpp:337
+#: src/keyboardconfig.cpp:339
 msgid "Switch pvp attack"
 msgstr ""
 
-#: src/keyboardconfig.cpp:338
+#: src/keyboardconfig.cpp:340
 msgid "Change move type"
 msgstr ""
 
-#: src/keyboardconfig.cpp:340
+#: src/keyboardconfig.cpp:342
 msgid "Change Attack Weapon Type"
 msgstr ""
 
-#: src/keyboardconfig.cpp:342
+#: src/keyboardconfig.cpp:344
 msgid "Change Attack Type"
 msgstr ""
 
-#: src/keyboardconfig.cpp:344
+#: src/keyboardconfig.cpp:346
 msgid "Change Follow mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:346
+#: src/keyboardconfig.cpp:348
 msgid "Change Imitation mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:349
+#: src/keyboardconfig.cpp:351
 msgid "Disable / Enable Game modifier keys"
 msgstr ""
 
-#: src/keyboardconfig.cpp:350
+#: src/keyboardconfig.cpp:352
 msgid "On / Off audio"
 msgstr "Aan / Uit audio"
 
-#: src/keyboardconfig.cpp:352
+#: src/keyboardconfig.cpp:354
 msgid "Enable / Disable away mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:354
+#: src/keyboardconfig.cpp:356
 msgid "Emulate right click from keyboard"
 msgstr ""
 
-#: src/keyboardconfig.cpp:356
+#: src/keyboardconfig.cpp:358
 msgid "Toggle camera mode"
 msgstr ""
 
-#: src/keyboardconfig.cpp:358
+#: src/keyboardconfig.cpp:360
 msgid "Modifier key"
 msgstr ""
 
-#: src/keyboardconfig.cpp:437
+#: src/keyboardconfig.cpp:439
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -4315,7 +4313,7 @@ msgid "(b) attack bad relations"
 msgstr ""
 
 #: src/localplayer.cpp:2155
-msgid "(d) dont attack players"
+msgid "(d) don't attack players"
 msgstr ""
 
 #: src/localplayer.cpp:2156
@@ -4560,7 +4558,7 @@ msgstr ""
 msgid "Incorrect race."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:210
+#: src/net/ea/charserverhandler.cpp:182
 msgid "Info"
 msgstr "Info"
 
@@ -4626,7 +4624,7 @@ msgstr "Spel"
 msgid "Request to quit denied!"
 msgstr "Aanvraag op de stoppen is geweigerd!"
 
-#: src/net/ea/guildhandler.cpp:83 src/net/manaserv/guildhandler.cpp:85
+#: src/net/ea/guildhandler.cpp:83
 msgid "Guild created."
 msgstr "Guild aangemaakt."
 
@@ -4801,15 +4799,15 @@ msgid "This command displays the party's current experience sharing policy."
 msgstr ""
 "Dit commando geeft het huidige ervaringsdelingbeleid van de groep weer."
 
-#: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:285
+#: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:286
 msgid "Item sharing enabled."
 msgstr "Voorwerpdeling ingeschakeld."
 
-#: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:295
+#: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:296
 msgid "Item sharing disabled."
 msgstr "Voorwerpdeling uitgeschakeld."
 
-#: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:305
+#: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:306
 msgid "Item sharing not possible."
 msgstr "Voorwerpdeling is niet mogelijk."
 
@@ -4817,15 +4815,15 @@ msgstr "Voorwerpdeling is niet mogelijk."
 msgid "Item sharing unknown."
 msgstr "Voorwerpdeling onbekend."
 
-#: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:247
+#: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:248
 msgid "Experience sharing enabled."
 msgstr "Ervaringsdeling ingeschakeld."
 
-#: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:257
+#: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:258
 msgid "Experience sharing disabled."
 msgstr "Ervaringsdeling uitgeschakeld."
 
-#: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:267
+#: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:268
 msgid "Experience sharing not possible."
 msgstr "Ervaringsdeling is niet mogelijk."
 
@@ -4845,7 +4843,7 @@ msgstr "Kan dit niet uitrusten."
 msgid "Account was not found. Please re-login."
 msgstr "Account was niet gevonden. Probeer opnieuw in te loggen aub."
 
-#: src/net/ea/loginhandler.cpp:135 src/net/manaserv/loginhandler.cpp:127
+#: src/net/ea/loginhandler.cpp:135
 msgid "Old password incorrect."
 msgstr "Oud wachtwoord is ongeldig."
 
@@ -4854,9 +4852,6 @@ msgid "New password too short."
 msgstr "Nieuw wachtwoord is te kort."
 
 #: src/net/ea/loginhandler.cpp:141 src/net/ea/loginhandler.cpp:252
-#: src/net/manaserv/charhandler.cpp:181 src/net/manaserv/loginhandler.cpp:102
-#: src/net/manaserv/loginhandler.cpp:134 src/net/manaserv/loginhandler.cpp:170
-#: src/net/manaserv/loginhandler.cpp:291 src/net/manaserv/loginhandler.cpp:328
 msgid "Unknown error."
 msgstr "Onbekende fout."
 
@@ -4906,77 +4901,77 @@ msgstr "Deze gebruikersnaam is al genomen."
 msgid "Username permanently erased."
 msgstr "Gebruikersnaam is compleet verwijderd"
 
-#: src/net/ea/partyhandler.cpp:80
+#: src/net/ea/partyhandler.cpp:81
 msgid "Could not create party."
 msgstr "Kan geen groep aanmaken."
 
-#: src/net/ea/partyhandler.cpp:82
+#: src/net/ea/partyhandler.cpp:83
 msgid "Party successfully created."
 msgstr "Groep succesvol aangemaakt."
 
-#: src/net/ea/partyhandler.cpp:138
+#: src/net/ea/partyhandler.cpp:139
 #, c-format
 msgid "%s has joined your party."
 msgstr ""
 
-#: src/net/ea/partyhandler.cpp:174
+#: src/net/ea/partyhandler.cpp:175
 #, c-format
 msgid "%s is already a member of a party."
 msgstr "%s is al een lid van een groep."
 
-#: src/net/ea/partyhandler.cpp:179
+#: src/net/ea/partyhandler.cpp:180
 #, c-format
 msgid "%s refused your invitation."
 msgstr "%s wees jouw uitnodiging af."
 
-#: src/net/ea/partyhandler.cpp:184
+#: src/net/ea/partyhandler.cpp:185
 #, c-format
 msgid "%s is now a member of your party."
 msgstr "%s is nu een lid van jouw groep."
 
-#: src/net/ea/partyhandler.cpp:189
+#: src/net/ea/partyhandler.cpp:190
 #, c-format
 msgid "%s can't join your party because party is full."
 msgstr ""
 
-#: src/net/ea/partyhandler.cpp:194
+#: src/net/ea/partyhandler.cpp:195
 #, c-format
 msgid "QQQ Unknown invite response for %s."
 msgstr ""
 
-#: src/net/ea/partyhandler.cpp:358
+#: src/net/ea/partyhandler.cpp:359
 msgid "You have left the party."
 msgstr "Je hebt de groep verlaten."
 
-#: src/net/ea/partyhandler.cpp:371
+#: src/net/ea/partyhandler.cpp:372
 #, c-format
 msgid "%s has left your party."
 msgstr "%s heeft jouw groep verlaten."
 
-#: src/net/ea/partyhandler.cpp:448
+#: src/net/ea/partyhandler.cpp:449
 #, c-format
 msgid "An unknown member tried to say: %s"
 msgstr "Een onbekend lid probeerde te zeggen: %s"
 
-#: src/net/ea/playerhandler.cpp:97 src/net/manaserv/beinghandler.cpp:315
+#: src/net/ea/playerhandler.cpp:97
 msgid "You are dead."
 msgstr "Je bent dood."
 
-#: src/net/ea/playerhandler.cpp:98 src/net/manaserv/beinghandler.cpp:316
+#: src/net/ea/playerhandler.cpp:98
 msgid "We regret to inform you that your character was killed in battle."
 msgstr ""
 "We betreuren het om je te melden dat jouw personage is gestorven in een "
 "gevecht."
 
-#: src/net/ea/playerhandler.cpp:100 src/net/manaserv/beinghandler.cpp:318
+#: src/net/ea/playerhandler.cpp:100
 msgid "You are not that alive anymore."
 msgstr "Je bent niet langer levend."
 
-#: src/net/ea/playerhandler.cpp:101 src/net/manaserv/beinghandler.cpp:319
+#: src/net/ea/playerhandler.cpp:101
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "De koude handen van Pietje de Dood grijpen naar jouw ziel."
 
-#: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:320
+#: src/net/ea/playerhandler.cpp:102
 msgid "Game Over!"
 msgstr "Game Over!"
 
@@ -4984,7 +4979,7 @@ msgstr "Game Over!"
 msgid "Insert coin to continue."
 msgstr "Werp een muntstuk in om verder te spelen."
 
-#: src/net/ea/playerhandler.cpp:104 src/net/manaserv/beinghandler.cpp:321
+#: src/net/ea/playerhandler.cpp:104
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
@@ -4992,7 +4987,7 @@ msgstr ""
 "Neen, kinderen. Jouw personage is niet echt gestorven. Het... euhm... is "
 "naar een beter plaats gegaan."
 
-#: src/net/ea/playerhandler.cpp:106 src/net/manaserv/beinghandler.cpp:323
+#: src/net/ea/playerhandler.cpp:106
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
@@ -5000,27 +4995,27 @@ msgstr ""
 "Jouw plan om vijandelijke wapens te vernietignen door ermee tegen jouw keel "
 "te slaan is mislukt."
 
-#: src/net/ea/playerhandler.cpp:108 src/net/manaserv/beinghandler.cpp:325
+#: src/net/ea/playerhandler.cpp:108
 msgid "I guess this did not run too well."
 msgstr "Dit verliep niet zoals gepland."
 
-#: src/net/ea/playerhandler.cpp:110 src/net/manaserv/beinghandler.cpp:326
+#: src/net/ea/playerhandler.cpp:110
 msgid "Do you want your possessions identified?"
 msgstr "Wil je dat jouw bezittingen geïdentificeerd worden?"
 
-#: src/net/ea/playerhandler.cpp:112 src/net/manaserv/beinghandler.cpp:327
+#: src/net/ea/playerhandler.cpp:112
 msgid "Sadly, no trace of you was ever found..."
 msgstr "Spijtig genoeg, was er geen spoor van jou gevonden..."
 
-#: src/net/ea/playerhandler.cpp:114 src/net/manaserv/beinghandler.cpp:329
+#: src/net/ea/playerhandler.cpp:114
 msgid "Annihilated."
 msgstr "Verslagen"
 
-#: src/net/ea/playerhandler.cpp:116 src/net/manaserv/beinghandler.cpp:330
+#: src/net/ea/playerhandler.cpp:116
 msgid "Looks like you got your head handed to you."
 msgstr "Het ziet ernaar uit dat je je pijp aan Maarten mag geven."
 
-#: src/net/ea/playerhandler.cpp:118 src/net/manaserv/beinghandler.cpp:332
+#: src/net/ea/playerhandler.cpp:118
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -5194,7 +5189,7 @@ msgstr "Kon niets stelen..."
 msgid "Poison had no effect..."
 msgstr "Gif had geen effect..."
 
-#: src/net/ea/tradehandler.cpp:105 src/net/manaserv/tradehandler.cpp:128
+#: src/net/ea/tradehandler.cpp:105
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s wil met jou handelen, aanvaard je dit?"
@@ -5242,296 +5237,13 @@ msgstr ""
 msgid "Failed adding item for unknown reason."
 msgstr "Kan voorwerp niet toevoegen voor een onbekende reden."
 
-#: src/net/ea/tradehandler.cpp:270 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:270
 msgid "Trade canceled."
 msgstr "Handel geannuleerd."
 
-#: src/net/ea/tradehandler.cpp:281 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:281
 msgid "Trade completed."
 msgstr "Handel voltooid."
-
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:265
-msgid "Strength"
-msgstr "Kracht"
-
-#: src/net/manaserv/attributes.cpp:167
-#, c-format
-msgid "Strength %+.1f"
-msgstr "Kracht %+.1f"
-
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:266
-msgid "Agility"
-msgstr "Behendigheid"
-
-#: src/net/manaserv/attributes.cpp:180
-#, c-format
-msgid "Agility %+.1f"
-msgstr "Behendigheid %+.1f"
-
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:269
-msgid "Dexterity"
-msgstr "Handigheid"
-
-#: src/net/manaserv/attributes.cpp:193
-#, c-format
-msgid "Dexterity %+.1f"
-msgstr "Handigheid %+.1f"
-
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:267
-msgid "Vitality"
-msgstr "Vitaliteit"
-
-#: src/net/manaserv/attributes.cpp:206
-#, c-format
-msgid "Vitality %+.1f"
-msgstr "Vitality %+.1f"
-
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:268
-msgid "Intelligence"
-msgstr "Intelligentie"
-
-#: src/net/manaserv/attributes.cpp:219
-#, c-format
-msgid "Intelligence %+.1f"
-msgstr "Intelligentie %+.1f"
-
-#: src/net/manaserv/attributes.cpp:225
-msgid "Willpower"
-msgstr "Wilskracht"
-
-#: src/net/manaserv/attributes.cpp:232
-#, c-format
-msgid "Willpower %+.1f"
-msgstr "Wilskracht %+.1f"
-
-#: src/net/manaserv/beinghandler.cpp:337
-msgid "Press OK to respawn."
-msgstr "Klik OK om opnieuw te verschijnen."
-
-#: src/net/manaserv/beinghandler.cpp:338
-msgid "You Died"
-msgstr "Je bent gestorven"
-
-#: src/net/manaserv/charhandler.cpp:145 src/net/manaserv/charhandler.cpp:219
-msgid "Not logged in."
-msgstr "Niet ingelogd"
-
-#: src/net/manaserv/charhandler.cpp:148
-msgid "No empty slot."
-msgstr ""
-
-#: src/net/manaserv/charhandler.cpp:151
-msgid "Invalid name."
-msgstr "Ongeldige naam."
-
-#: src/net/manaserv/charhandler.cpp:154
-msgid "Character's name already exists."
-msgstr "Naam van personage bestaat al."
-
-#: src/net/manaserv/charhandler.cpp:157
-msgid "Invalid hairstyle."
-msgstr "Ongeldige haarstijl."
-
-#: src/net/manaserv/charhandler.cpp:160
-msgid "Invalid hair color."
-msgstr "Ongeldige haarkleur."
-
-#: src/net/manaserv/charhandler.cpp:163
-msgid "Invalid gender."
-msgstr "Ongeldig geslacht."
-
-#: src/net/manaserv/charhandler.cpp:166
-msgid "Character's stats are too high."
-msgstr "Statistieken van personage zijn te hoog."
-
-#: src/net/manaserv/charhandler.cpp:169
-msgid "Character's stats are too low."
-msgstr "Statistieken van personage zijn te laag."
-
-#: src/net/manaserv/charhandler.cpp:172
-#, c-format
-msgid "At least one stat is out of the permitted range: (%u - %u)."
-msgstr ""
-
-#: src/net/manaserv/charhandler.cpp:178
-msgid "Invalid slot number."
-msgstr ""
-
-#: src/net/manaserv/charhandler.cpp:210
-msgid "Player deleted."
-msgstr "Speler verwijderd."
-
-#: src/net/manaserv/charhandler.cpp:222
-msgid "Selection out of range."
-msgstr ""
-
-#: src/net/manaserv/charhandler.cpp:225
-#, c-format
-msgid "Unknown error (%d)."
-msgstr "Onbekende fout (%d)."
-
-#: src/net/manaserv/charhandler.cpp:261
-msgid "No gameservers are available."
-msgstr "Geen gameservers beschikbaar."
-
-#: src/net/manaserv/chathandler.cpp:186 src/net/manaserv/chathandler.cpp:309
-#: src/net/manaserv/guildhandler.cpp:265
-#, c-format
-msgid "Topic: %s"
-msgstr "Onderwerp: %s"
-
-#: src/net/manaserv/chathandler.cpp:191 src/net/manaserv/chathandler.cpp:269
-msgid "Players in this channel:"
-msgstr "Spelers in dit kanaal:"
-
-#: src/net/manaserv/chathandler.cpp:208
-msgid "Error joining channel."
-msgstr "Fout bij binnenkomen ruimte."
-
-#: src/net/manaserv/chathandler.cpp:214
-msgid "Listing channels."
-msgstr "Lijst van ruimtes."
-
-#: src/net/manaserv/chathandler.cpp:226
-msgid "End of channel list."
-msgstr "Einde van lijst van ruimtes."
-
-#: src/net/manaserv/chathandler.cpp:299
-#, c-format
-msgid "%s entered the channel."
-msgstr "%s is de ruimte binnengekomen."
-
-#: src/net/manaserv/chathandler.cpp:304
-#, c-format
-msgid "%s left the channel."
-msgstr "%s verliet de ruimte."
-
-#: src/net/manaserv/chathandler.cpp:320
-#, c-format
-msgid "%s has set mode %s on user %s."
-msgstr "%s heeft modus %s gezet op gebruiker %s."
-
-#: src/net/manaserv/chathandler.cpp:331
-#, c-format
-msgid "%s has kicked %s."
-msgstr "%s heeft %s eruit geschopt."
-
-#: src/net/manaserv/chathandler.cpp:337
-msgid "Unknown channel event."
-msgstr "Onbekend ruimte gebeurtenis."
-
-#: src/net/manaserv/guildhandler.cpp:90
-msgid "Error creating guild."
-msgstr "Fout bij aanmaken guild."
-
-#: src/net/manaserv/guildhandler.cpp:100
-msgid "Invite sent."
-msgstr "Uitnodiging verzonden."
-
-#: src/net/manaserv/guildhandler.cpp:207
-msgid "Member was promoted successfully."
-msgstr "Lid is succesvol gepromoveerd."
-
-#: src/net/manaserv/guildhandler.cpp:212
-msgid "Failed to promote member."
-msgstr "Kon lid niet promoveren."
-
-#: src/net/manaserv/loginhandler.cpp:93
-msgid "Wrong magic_token."
-msgstr "Verkeerd magic_token."
-
-#: src/net/manaserv/loginhandler.cpp:96 src/net/manaserv/loginhandler.cpp:281
-msgid "Already logged in."
-msgstr "Je bent al ingelogd."
-
-#: src/net/manaserv/loginhandler.cpp:99
-msgid "Account banned."
-msgstr ""
-
-#: src/net/manaserv/loginhandler.cpp:124
-msgid "New password incorrect."
-msgstr "Nieuw wachtwoord is ongeldig."
-
-#: src/net/manaserv/loginhandler.cpp:131 src/net/manaserv/loginhandler.cpp:163
-msgid "Account not connected. Please login first."
-msgstr "Account niet verbonden. Log eerst in aub."
-
-#: src/net/manaserv/loginhandler.cpp:156
-msgid "New email address incorrect."
-msgstr "Nieuw email adres is ongeldig."
-
-#: src/net/manaserv/loginhandler.cpp:159
-msgid "Old email address incorrect."
-msgstr "Oud email adres is ongeldig."
-
-#: src/net/manaserv/loginhandler.cpp:167
-msgid "The new email address already exists."
-msgstr "Het nieuwe email adres bestaat reeds."
-
-#: src/net/manaserv/loginhandler.cpp:249
-msgid ""
-"Client registration is not allowed. Please contact server administration."
-msgstr ""
-"Client registratie is niet toegestaan. Contacteer aub de server adminstratie."
-
-#: src/net/manaserv/loginhandler.cpp:275 src/net/manaserv/loginhandler.cpp:312
-msgid "Client version is too old."
-msgstr "Client versie is te oud."
-
-#: src/net/manaserv/loginhandler.cpp:278
-msgid "Wrong username or password."
-msgstr "Verkeerde gebruikersnaam of wachtwoord."
-
-#: src/net/manaserv/loginhandler.cpp:284
-msgid "Account banned"
-msgstr ""
-
-#: src/net/manaserv/loginhandler.cpp:287
-msgid "Login attempt too soon after previous attempt."
-msgstr ""
-
-#: src/net/manaserv/loginhandler.cpp:315
-msgid "Wrong username, password or email address."
-msgstr "Verkeerde gebruikersnaam, wachtwoord of email adres."
-
-#: src/net/manaserv/loginhandler.cpp:318
-msgid "Username already exists."
-msgstr "Gebruikersnaam bestaat al."
-
-#: src/net/manaserv/loginhandler.cpp:321
-msgid "Email address already exists."
-msgstr "Email adres bestaat al."
-
-#: src/net/manaserv/loginhandler.cpp:324
-msgid "You took too long with the captcha or your response was incorrect."
-msgstr ""
-
-#: src/net/manaserv/partyhandler.cpp:90
-msgid "Joined party."
-msgstr "Bijgevoegd bij groep."
-
-#: src/net/manaserv/partyhandler.cpp:108
-#, c-format
-msgid "%s joined the party."
-msgstr "%s heeft zich bij de groep gevoegd."
-
-#: src/net/manaserv/partyhandler.cpp:126
-#, c-format
-msgid "%s rejected your invite."
-msgstr "%s heeft uw uitnodiging geweigerd."
-
-#: src/net/manaserv/tradehandler.cpp:107
-msgid "Accepting incoming trade requests."
-msgstr "Inkomende handelsaanvragen accepteren."
-
-#: src/net/manaserv/tradehandler.cpp:109
-msgid "Ignoring incoming trade requests."
-msgstr "Inkomende handelsaanvragen negeren."
-
-#: src/net/manaserv/tradehandler.cpp:146
-#, c-format
-msgid "Trading with %s"
-msgstr "Handelen met %s"
 
 #: src/net/tmwa/adminhandler.cpp:70
 msgid "Kick failed!"
@@ -5619,6 +5331,26 @@ msgstr "Onbekende connectiefout."
 msgid "Got disconnected from server!"
 msgstr "De verbinding met de server werd verbroken!"
 
+#: src/net/tmwa/generalhandler.cpp:265
+msgid "Strength"
+msgstr "Kracht"
+
+#: src/net/tmwa/generalhandler.cpp:266
+msgid "Agility"
+msgstr "Behendigheid"
+
+#: src/net/tmwa/generalhandler.cpp:267
+msgid "Vitality"
+msgstr "Vitaliteit"
+
+#: src/net/tmwa/generalhandler.cpp:268
+msgid "Intelligence"
+msgstr "Intelligentie"
+
+#: src/net/tmwa/generalhandler.cpp:269
+msgid "Dexterity"
+msgstr "Handigheid"
+
 #: src/net/tmwa/generalhandler.cpp:270
 msgid "Luck"
 msgstr "Geluk"
@@ -5678,7 +5410,7 @@ msgstr "Niet mogelijk te resolven van host \""
 msgid "Connection to server terminated. "
 msgstr "Verbinding met server beëindigd. "
 
-#: src/net/tmwa/partyhandler.cpp:171
+#: src/net/tmwa/partyhandler.cpp:172
 #, c-format
 msgid "%s is not in your party!"
 msgstr "%s is niet in jouw groep!"
@@ -5727,3 +5459,165 @@ msgstr "Magie %+d"
 #: src/resources/itemdb.cpp:167
 msgid "Unknown item"
 msgstr "Onbekend voorwerp"
+
+#~ msgid "Strength %+.1f"
+#~ msgstr "Kracht %+.1f"
+
+#~ msgid "Agility %+.1f"
+#~ msgstr "Behendigheid %+.1f"
+
+#~ msgid "Dexterity %+.1f"
+#~ msgstr "Handigheid %+.1f"
+
+#~ msgid "Vitality %+.1f"
+#~ msgstr "Vitality %+.1f"
+
+#~ msgid "Intelligence %+.1f"
+#~ msgstr "Intelligentie %+.1f"
+
+#~ msgid "Willpower"
+#~ msgstr "Wilskracht"
+
+#~ msgid "Willpower %+.1f"
+#~ msgstr "Wilskracht %+.1f"
+
+#~ msgid "Press OK to respawn."
+#~ msgstr "Klik OK om opnieuw te verschijnen."
+
+#~ msgid "You Died"
+#~ msgstr "Je bent gestorven"
+
+#~ msgid "Not logged in."
+#~ msgstr "Niet ingelogd"
+
+#~ msgid "Invalid name."
+#~ msgstr "Ongeldige naam."
+
+#~ msgid "Character's name already exists."
+#~ msgstr "Naam van personage bestaat al."
+
+#~ msgid "Invalid hairstyle."
+#~ msgstr "Ongeldige haarstijl."
+
+#~ msgid "Invalid hair color."
+#~ msgstr "Ongeldige haarkleur."
+
+#~ msgid "Invalid gender."
+#~ msgstr "Ongeldig geslacht."
+
+#~ msgid "Character's stats are too high."
+#~ msgstr "Statistieken van personage zijn te hoog."
+
+#~ msgid "Character's stats are too low."
+#~ msgstr "Statistieken van personage zijn te laag."
+
+#~ msgid "Player deleted."
+#~ msgstr "Speler verwijderd."
+
+#~ msgid "Unknown error (%d)."
+#~ msgstr "Onbekende fout (%d)."
+
+#~ msgid "No gameservers are available."
+#~ msgstr "Geen gameservers beschikbaar."
+
+#~ msgid "Topic: %s"
+#~ msgstr "Onderwerp: %s"
+
+#~ msgid "Players in this channel:"
+#~ msgstr "Spelers in dit kanaal:"
+
+#~ msgid "Error joining channel."
+#~ msgstr "Fout bij binnenkomen ruimte."
+
+#~ msgid "Listing channels."
+#~ msgstr "Lijst van ruimtes."
+
+#~ msgid "End of channel list."
+#~ msgstr "Einde van lijst van ruimtes."
+
+#~ msgid "%s entered the channel."
+#~ msgstr "%s is de ruimte binnengekomen."
+
+#~ msgid "%s left the channel."
+#~ msgstr "%s verliet de ruimte."
+
+#~ msgid "%s has set mode %s on user %s."
+#~ msgstr "%s heeft modus %s gezet op gebruiker %s."
+
+#~ msgid "%s has kicked %s."
+#~ msgstr "%s heeft %s eruit geschopt."
+
+#~ msgid "Unknown channel event."
+#~ msgstr "Onbekend ruimte gebeurtenis."
+
+#~ msgid "Error creating guild."
+#~ msgstr "Fout bij aanmaken guild."
+
+#~ msgid "Invite sent."
+#~ msgstr "Uitnodiging verzonden."
+
+#~ msgid "Member was promoted successfully."
+#~ msgstr "Lid is succesvol gepromoveerd."
+
+#~ msgid "Failed to promote member."
+#~ msgstr "Kon lid niet promoveren."
+
+#~ msgid "Wrong magic_token."
+#~ msgstr "Verkeerd magic_token."
+
+#~ msgid "Already logged in."
+#~ msgstr "Je bent al ingelogd."
+
+#~ msgid "New password incorrect."
+#~ msgstr "Nieuw wachtwoord is ongeldig."
+
+#~ msgid "Account not connected. Please login first."
+#~ msgstr "Account niet verbonden. Log eerst in aub."
+
+#~ msgid "New email address incorrect."
+#~ msgstr "Nieuw email adres is ongeldig."
+
+#~ msgid "Old email address incorrect."
+#~ msgstr "Oud email adres is ongeldig."
+
+#~ msgid "The new email address already exists."
+#~ msgstr "Het nieuwe email adres bestaat reeds."
+
+#~ msgid ""
+#~ "Client registration is not allowed. Please contact server administration."
+#~ msgstr ""
+#~ "Client registratie is niet toegestaan. Contacteer aub de server "
+#~ "adminstratie."
+
+#~ msgid "Client version is too old."
+#~ msgstr "Client versie is te oud."
+
+#~ msgid "Wrong username or password."
+#~ msgstr "Verkeerde gebruikersnaam of wachtwoord."
+
+#~ msgid "Wrong username, password or email address."
+#~ msgstr "Verkeerde gebruikersnaam, wachtwoord of email adres."
+
+#~ msgid "Username already exists."
+#~ msgstr "Gebruikersnaam bestaat al."
+
+#~ msgid "Email address already exists."
+#~ msgstr "Email adres bestaat al."
+
+#~ msgid "Joined party."
+#~ msgstr "Bijgevoegd bij groep."
+
+#~ msgid "%s joined the party."
+#~ msgstr "%s heeft zich bij de groep gevoegd."
+
+#~ msgid "%s rejected your invite."
+#~ msgstr "%s heeft uw uitnodiging geweigerd."
+
+#~ msgid "Accepting incoming trade requests."
+#~ msgstr "Inkomende handelsaanvragen accepteren."
+
+#~ msgid "Ignoring incoming trade requests."
+#~ msgstr "Inkomende handelsaanvragen negeren."
+
+#~ msgid "Trading with %s"
+#~ msgstr "Handelen met %s"
