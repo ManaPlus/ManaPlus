@@ -2,7 +2,6 @@
 iconsdir = $(pkgdatadir)/data/icons
 
 icons_DATA = manaplus.png \
-	     manaplus.svg \
 	     manaplus.icns \
 	     manaplus.ico \
 	     manaplus.hqx \
