@@ -36,6 +36,7 @@
 #include "debug.h"
 
 SpriteReference *SpriteReference::Empty = nullptr;
+extern int serverVersion;
 
 Action *SpriteDef::getAction(std::string action, unsigned num) const
 {
@@ -99,13 +100,30 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
     def->mProcessedFiles.insert(animationFile);
     def->loadSprite(rootNode, variant, palettes);
     def->substituteActions();
+    if (serverVersion < 1)
+        def->fixDeadAction();
     return def;
+}
+
+void SpriteDef::fixDeadAction()
+{
+    ActionsIter it = mActions.begin();
+    ActionsIter it_end = mActions.end();
+    for (; it != it_end; ++ it)
+    {
+        ActionMap *d = (*it).second;
+        if (!d)
+            continue;
+        ActionMap::iterator i = d->find("dead");
+        if (i != d->end() && i->second)
+            (i->second)->setLastFrameDelay(0);
+    }
 }
 
 void SpriteDef::substituteAction(std::string complete, std::string with)
 {
-    Actions::const_iterator it = mActions.begin();
-    Actions::const_iterator it_end = mActions.end();
+    ActionsConstIter it = mActions.begin();
+    ActionsConstIter it_end = mActions.end();
     for (; it != it_end; ++ it)
     {
         ActionMap *d = (*it).second;

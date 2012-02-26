@@ -176,6 +176,11 @@ class SpriteDef : public Resource
         void substituteActions();
 
         /**
+         * Fix bad timeout in last dead action frame
+         */
+        void fixDeadAction();
+
+        /**
          * When there are no animations defined for the action "complete", its
          * animations become a copy of those of the action "with".
          */
@@ -185,6 +190,8 @@ class SpriteDef : public Resource
         typedef ImageSets::iterator ImageSetIterator;
         typedef std::map<std::string, Action*> ActionMap;
         typedef std::map<unsigned, ActionMap*> Actions;
+        typedef Actions::const_iterator ActionsConstIter;
+        typedef Actions::iterator ActionsIter;
 
         ImageSets mImageSets;
         Actions mActions;
