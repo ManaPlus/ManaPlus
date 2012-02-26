@@ -1,4 +1,4 @@
 
-SUBDIRS = blackwood enchilado mana pink redandblack unity wood
+SUBDIRS = blackwood enchilado mana pink unity wood
 
 EXTRA_DIST = CMakeLists.txt
