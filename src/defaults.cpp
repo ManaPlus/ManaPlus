@@ -263,6 +263,8 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "guiThemePath", "themes/");
     AddDEF(brandingData, "fontsPath", "fonts/");
 
+    AddDEF(brandingData, "systemsounds", "sfx/system/");
+
     AddDEF(brandingData, "wallpaperFile", "");
     AddDEF(brandingData, "dataPath", "");
     return brandingData;

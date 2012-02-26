@@ -35,6 +35,7 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/slider.h"
+#include "gui/widgets/sliderlist.h"
 #include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/vertcontainer.h"
@@ -693,6 +694,7 @@ void SetupItemSlider::apply(std::string eventName)
     save();
 }
 
+
 SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
                                    std::string keyName, SetupTabScroll *parent,
                                    std::string eventName, int min, int max,
@@ -850,4 +852,105 @@ void SetupItemSlider2::setInvertValue(int v)
     mInvert = true;
     mInvertValue = v;
     toWidget();
+}
+
+
+SetupItemSliderList::SetupItemSliderList(std::string text,
+                                         std::string description,
+                                         std::string keyName,
+                                         SetupTabScroll *parent,
+                                         std::string eventName,
+                                         gcn::ListModel *model,
+                                         int width, bool onTheFly,
+                                         bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mModel(model),
+    mWidth(width),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSliderList::SetupItemSliderList(std::string text,
+                                         std::string description,
+                                         std::string keyName,
+                                         SetupTabScroll *parent,
+                                         std::string eventName,
+                                         gcn::ListModel *model,
+                                         std::string def, int width,
+                                         bool onTheFly, bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mModel(model),
+    mWidth(width),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSliderList::~SetupItemSliderList()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mSlider = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemSliderList::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    mLabel = new Label(mText);
+    mSlider = new SliderList(mModel, mParent, mEventName);
+    mSlider->setSelectedString(mValue);
+    mSlider->adjustSize();
+
+    mWidget = mSlider;
+    mHorizont->add(mLabel, 5);
+    mHorizont->add(mSlider);
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+void SetupItemSliderList::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    mValue = mSlider->getSelectedString();
+}
+
+void SetupItemSliderList::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    mSlider->setSelectedString(mValue);
+}
+
+void SetupItemSliderList::action(const gcn::ActionEvent &event A_UNUSED)
+{
+    fromWidget();
+    if (mOnTheFly)
+        save();
+}
+
+void SetupItemSliderList::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
 }

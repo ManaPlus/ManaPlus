@@ -42,6 +42,7 @@ class HorizontContainer;
 class IntTextField;
 class Label;
 class Slider;
+class SliderList;
 class TextField;
 
 class SetupItem : public gcn::ActionListener
@@ -350,6 +351,42 @@ class SetupItemSlider2 : public SetupItem
         int mMax;
         bool mInvert;
         int mInvertValue;
+        bool mOnTheFly;
+};
+
+class SetupItemSliderList : public SetupItem
+{
+    public:
+        SetupItemSliderList(std::string text, std::string description,
+                            std::string keyName, SetupTabScroll *parent,
+                            std::string eventName, gcn::ListModel *model,
+                            int width = 150, bool onTheFly = false,
+                            bool mainConfig = true);
+
+        SetupItemSliderList(std::string text, std::string description,
+                            std::string keyName, SetupTabScroll *parent,
+                            std::string eventName, gcn::ListModel *model,
+                            std::string def, int width = 150,
+                            bool onTheFly = false, bool mainConfig = true);
+
+        ~SetupItemSliderList();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        SliderList *mSlider;
+        gcn::ListModel *mModel;
+        int mWidth;
         bool mOnTheFly;
 };
 

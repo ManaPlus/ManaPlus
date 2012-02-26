@@ -167,6 +167,8 @@ SET(SRCS
     gui/widgets/listbox.cpp
     gui/widgets/listbox.h
     gui/widgets/mouseevent.h
+    gui/widgets/namesmodel.cpp
+    gui/widgets/namesmodel.h
     gui/widgets/passwordfield.cpp
     gui/widgets/passwordfield.h
     gui/widgets/playerbox.cpp
