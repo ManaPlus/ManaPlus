@@ -52,6 +52,7 @@ src/gui/setup_players.cpp
 src/gui/setup_relations.cpp
 src/gui/setup_theme.cpp
 src/gui/setup_video.cpp
+src/gui/setup_visual.cpp
 src/gui/shopwindow.cpp
 src/gui/skilldialog.cpp
 src/gui/socialwindow.cpp
