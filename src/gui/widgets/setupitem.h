@@ -377,9 +377,11 @@ class SetupItemSliderList : public SetupItem
 
         void toWidget();
 
-        void action(const gcn::ActionEvent &event);
+        virtual void action(const gcn::ActionEvent &event);
 
         void apply(std::string eventName);
+
+        virtual void addMoreControls() = 0;
 
     protected:
         HorizontContainer *mHorizont;
@@ -388,6 +390,23 @@ class SetupItemSliderList : public SetupItem
         gcn::ListModel *mModel;
         int mWidth;
         bool mOnTheFly;
+};
+
+class SetupItemSound : public SetupItemSliderList
+{
+    public:
+        SetupItemSound(std::string text, std::string description,
+                       std::string keyName, SetupTabScroll *parent,
+                       std::string eventName, gcn::ListModel *model,
+                       int width = 150, bool onTheFly = false,
+                       bool mainConfig = true);
+
+        void action(const gcn::ActionEvent &event);
+
+        void addMoreControls();
+
+    protected:
+        Button *mButton;
 };
 
 #endif

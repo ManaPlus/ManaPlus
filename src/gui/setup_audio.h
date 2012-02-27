@@ -34,7 +34,12 @@ class Setup_Audio : public SetupTabScroll
     public:
         Setup_Audio();
 
+        ~Setup_Audio();
+
         void apply();
+
+    private:
+        gcn::ListModel *mSoundModel;
 };
 
 #endif

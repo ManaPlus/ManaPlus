@@ -134,7 +134,8 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         {
             mWrongDataNoticeListener->setTarget(this->mPasswordField);
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMsg.str());
+            OkDialog *dlg = new OkDialog(_("Error"),
+                errorMsg.str(), DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

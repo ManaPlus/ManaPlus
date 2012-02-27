@@ -1327,14 +1327,16 @@ int Client::gameExec()
 
                 case STATE_LOGIN_ERROR:
                     logger->log1("State: LOGIN ERROR");
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage);
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_ACCOUNTCHANGE_ERROR:
                     logger->log1("State: ACCOUNT CHANGE ERROR");
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage);
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
@@ -1370,7 +1372,7 @@ int Client::gameExec()
                 case STATE_CHANGEPASSWORD_SUCCESS:
                     logger->log1("State: CHANGE PASSWORD SUCCESS");
                     mCurrentDialog = new OkDialog(_("Password Change"),
-                            _("Password changed successfully!"));
+                        _("Password changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
@@ -1390,7 +1392,7 @@ int Client::gameExec()
                 case STATE_CHANGEEMAIL_SUCCESS:
                     logger->log1("State: CHANGE EMAIL SUCCESS");
                     mCurrentDialog = new OkDialog(_("Email Change"),
-                            _("Email changed successfully!"));
+                        _("Email changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
@@ -1411,7 +1413,7 @@ int Client::gameExec()
                     Net::getLoginHandler()->disconnect();
 
                     mCurrentDialog = new OkDialog(_("Unregister Successful"),
-                            _("Farewell, come back any time..."));
+                        _("Farewell, come back any time..."), DIALOG_ERROR);
                     loginData.clear();
                     //The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
@@ -1468,7 +1470,8 @@ int Client::gameExec()
                 case STATE_ERROR:
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage);
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();

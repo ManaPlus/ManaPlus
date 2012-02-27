@@ -131,7 +131,7 @@ void Setup_Keyboard::apply()
     if (keyboard.hasConflicts())
     {
         new OkDialog(_("Key Conflict(s) Detected."),
-                     keyboard.getBindError());
+            keyboard.getBindError(), DIALOG_ERROR);
     }
     keyboard.setEnabled(true);
     keyboard.store();

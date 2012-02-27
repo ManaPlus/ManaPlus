@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "main.h"
 #include "logger.h"
+#include "sound.h"
 
 #include "gui/editdialog.h"
 #include "gui/gui.h"
@@ -872,7 +873,7 @@ SetupItemSliderList::SetupItemSliderList(std::string text,
     mOnTheFly(onTheFly)
 {
     mValueType = VSTR;
-    createControls();
+//    createControls();
 }
 
 SetupItemSliderList::SetupItemSliderList(std::string text,
@@ -892,7 +893,7 @@ SetupItemSliderList::SetupItemSliderList(std::string text,
     mOnTheFly(onTheFly)
 {
     mValueType = VSTR;
-    createControls();
+//    createControls();
 }
 
 SetupItemSliderList::~SetupItemSliderList()
@@ -916,6 +917,8 @@ void SetupItemSliderList::createControls()
     mWidget = mSlider;
     mHorizont->add(mLabel, 5);
     mHorizont->add(mSlider);
+
+    addMoreControls();
 
     mParent->getContainer()->add2(mHorizont, true, 4);
     mParent->addControl(this);
@@ -953,4 +956,37 @@ void SetupItemSliderList::apply(std::string eventName)
 
     fromWidget();
     save();
+}
+
+SetupItemSound::SetupItemSound(std::string text, std::string description,
+                               std::string keyName, SetupTabScroll *parent,
+                               std::string eventName, gcn::ListModel *model,
+                               int width, bool onTheFly, bool mainConfig) :
+    SetupItemSliderList(text, description, keyName, parent, eventName,
+                        model, width, onTheFly, mainConfig),
+    mButton(nullptr)
+{
+    createControls();
+}
+
+void SetupItemSound::addMoreControls()
+{
+    mButton = new Button(_("Play"), mEventName + "_PLAY", this);
+    mHorizont->add(mButton);
+}
+
+void SetupItemSound::action(const gcn::ActionEvent &event)
+{
+    if (event.getId() == mEventName + "_PLAY")
+    {
+        if (mSlider->getSelected())
+        {
+            sound.playGuiSfx(branding.getStringValue("systemsounds")
+                + mSlider->getSelectedString() + ".ogg");
+        }
+    }
+    else
+    {
+        SetupItemSliderList::action(event);
+    }
 }

@@ -349,8 +349,8 @@ void Setup_Theme::apply()
     if (config.getValue("theme",
         config.getValue("selectedSkin", "")) != mTheme)
     {
-        new OkDialog(_("Theme Changed"),
-                     _("Restart your client for the change to take effect."));
+        new OkDialog(_("Theme Changed"), _("Restart your client for "
+            "the change to take effect."));
     }
 
     config.setValue("selectedSkin", "");

@@ -753,7 +753,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
 
     if (config.getBoolValue("autoShop"))
     {
-        sound.playGuiSfx("system/newmessage.ogg");
+        sound.playGuiSound("soundtrade");
         startTrade();
     }
     else

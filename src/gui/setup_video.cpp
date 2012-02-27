@@ -393,7 +393,7 @@ void Setup_Video::apply()
         else
         {
             new OkDialog(_("Switching to Full Screen"),
-                         _("Restart needed for changes to take effect."));
+                _("Restart needed for changes to take effect."));
         }
 #endif
         config.setValue("screen", fullscreen);
@@ -406,7 +406,7 @@ void Setup_Video::apply()
 
         // OpenGL can currently only be changed by restarting, notify user.
         new OkDialog(_("Changing to OpenGL"),
-                     _("Applying change to OpenGL requires restart."));
+            _("Applying change to OpenGL requires restart."));
     }
 
     mFps = mFpsCheckBox->isSelected() ?
@@ -498,13 +498,17 @@ void Setup_Video::action(const gcn::ActionEvent &event)
         {
 #if defined(_WIN32)
             if (width < mainGraphics->mWidth || height < mainGraphics->mHeight)
+            {
                 new OkDialog(_("Screen Resolution Changed"),
-                       _("Restart your client for the change to take effect.")
-                       + std::string("\n") +
-                _("Some windows may be moved to fit the lowered resolution."));
+                   _("Restart your client for the change to take effect.")
+                   + std::string("\n") + _("Some windows may be moved to "
+                    "fit the lowered resolution."));
+            }
             else
+            {
                 new OkDialog(_("Screen Resolution Changed"),
-                     _("Restart your client for the change to take effect."));
+                    _("Restart your client for the change to take effect."));
+            }
 #else
             Client::resize(width, height);
 #endif

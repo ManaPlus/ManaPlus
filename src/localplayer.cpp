@@ -2204,7 +2204,8 @@ void LocalPlayer::changeAwayMode()
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
         mAwayDialog = new OkDialog(_("Away"),
-            config.getStringValue("afkMessage"), true, false);
+            config.getStringValue("afkMessage"),
+            DIALOG_SILENCE, true, false);
         mAwayDialog->addActionListener(mAwayListener);
         sound.volumeOff();
     }
@@ -4147,7 +4148,7 @@ void LocalPlayer::checkNewName(Being *being)
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
         debugMsg(_("You see ") + mWaitFor);
-        sound.playGuiSfx("system/newmessage.ogg");
+        sound.playGuiSound("soundinfo");
         mWaitFor = "";
     }
 }

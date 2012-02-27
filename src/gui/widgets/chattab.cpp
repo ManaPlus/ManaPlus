@@ -301,7 +301,7 @@ void ChatTab::chatLog(std::string line, Own own,
             && !Client::getInputFocused()))))
         {
             if (own != BY_SERVER)
-                sound.playGuiSfx("system/newmessage.ogg");
+                sound.playGuiSound("soundwhisper");
         }
     }
 }

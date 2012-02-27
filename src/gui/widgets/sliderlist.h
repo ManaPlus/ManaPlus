@@ -63,6 +63,9 @@ class SliderList : public Container,
 
         void adjustSize();
 
+        int getSelected()
+        { return mSelectedIndex; }
+
     protected:
         void updateLabel();
 

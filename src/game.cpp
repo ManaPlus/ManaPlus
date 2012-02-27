@@ -561,7 +561,7 @@ void Game::logic()
             {
                 errorMessage = _("The connection to the server was lost.");
                 disconnectedDialog = new OkDialog(_("Network Error"),
-                                                  errorMessage, false);
+                    errorMessage, DIALOG_ERROR, false);
                 disconnectedDialog->addActionListener(&errorListener);
                 disconnectedDialog->requestMoveToTop();
             }
@@ -1796,8 +1796,8 @@ void Game::changeMap(const std::string &mapPath)
     if (!newMap)
     {
         logger->log("Error while loading %s", fullMap.c_str());
-        new OkDialog(_("Could Not Load Map"),
-                     strprintf(_("Error while loading %s"), fullMap.c_str()));
+        new OkDialog(_("Could Not Load Map"), strprintf(
+            _("Error while loading %s"), fullMap.c_str()), DIALOG_ERROR);
     }
 
     if (mCurrentMap)

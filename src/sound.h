@@ -109,6 +109,8 @@ class Sound : public ConfigListener
          */
         void playGuiSfx(const std::string &path);
 
+        void playGuiSound(const std::string &name);
+
         void changeAudio();
 
         void volumeOff();

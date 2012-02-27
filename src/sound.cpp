@@ -325,6 +325,12 @@ void Sound::playSfx(const std::string &path, int x, int y)
     }
 }
 
+void Sound::playGuiSound(const std::string &name)
+{
+    playGuiSfx(branding.getStringValue("systemsounds")
+        + config.getStringValue(name) + ".ogg");
+}
+
 void Sound::playGuiSfx(const std::string &path)
 {
     if (!mInstalled || path.empty() || !mPlayGui)

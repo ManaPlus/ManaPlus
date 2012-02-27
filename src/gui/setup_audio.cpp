@@ -25,15 +25,30 @@
 #include "configuration.h"
 #include "sound.h"
 
+#include "gui/theme.h"
 #include "gui/viewport.h"
 
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/setupitem.h"
 
 #include "utils/gettext.h"
 
 #include "debug.h"
+
+class SoundsModel : public NamesModel
+{
+public:
+    SoundsModel()
+    {
+        mNames.push_back(gettext("(no sound)"));
+        Theme::fillSoundsList(mNames);
+    }
+
+    virtual ~SoundsModel()
+    { }
+};
 
 Setup_Audio::Setup_Audio()
 {
@@ -43,6 +58,10 @@ Setup_Audio::Setup_Audio()
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
+
+    mSoundModel = new SoundsModel();
+
+    new SetupItemLabel(_("Basic settings"), "", this);
 
     new SetupItemCheckBox(_("Enable Audio"), "", "sound", this, "soundEvent");
 
@@ -61,6 +80,31 @@ Setup_Audio::Setup_Audio()
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
         this, "musicVolumeEvent", 0, sound.getMaxVolume(), 150, true);
 
+    new SetupItemLabel(_("Sound effects"), "", this);
+
+    new SetupItemSound(_("Information dialog sound"), "",
+        "soundinfo", this, "soundinfoEvent", mSoundModel);
+
+    new SetupItemSound(_("Request dialog sound"), "",
+        "soundrequest", this, "soundrequestEvent", mSoundModel);
+
+    new SetupItemSound(_("Whisper message sound"), "",
+        "soundwhisper", this, "soundwhisperEvent", mSoundModel);
+
+    new SetupItemSound(_("Highlight message sound"), "",
+        "soundhighlight", this, "soundhighlightEvent", mSoundModel);
+
+    new SetupItemSound(_("Global message sound"), "",
+        "soundglobal", this, "soundglobalEvent", mSoundModel);
+
+    new SetupItemSound(_("Error message sound"), "",
+        "sounderror", this, "sounderrorEvent", mSoundModel);
+
+    new SetupItemSound(_("Trade request sound"), "",
+        "soundtrade", this, "soundtradeEvent", mSoundModel);
+
+    new SetupItemLabel(_("Other"), "", this);
+
     new SetupItemCheckBox(_("Enable mumble voice chat"), "",
         "enableMumble", this, "enableMumbleEvent");
 
@@ -68,6 +112,12 @@ Setup_Audio::Setup_Audio()
         "download-music", this, "download-musicEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
+}
+
+Setup_Audio::~Setup_Audio()
+{
+    delete mSoundModel;
+    mSoundModel = nullptr;
 }
 
 void Setup_Audio::apply()

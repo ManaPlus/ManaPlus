@@ -253,7 +253,7 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
         }
         else
         {
-            new OkDialog(_("Error"), _("Incorrect password"));
+            new OkDialog(_("Error"), _("Incorrect password"), DIALOG_ERROR);
         }
         mDeleteIndex = -1;
     }
