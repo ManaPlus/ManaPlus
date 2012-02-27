@@ -38,6 +38,12 @@ class NamesModel : public gcn::ListModel
 
         virtual std::string getElementAt(int i);
 
+        std::vector<std::string> &getNames()
+        { return mNames; }
+
+        size_t size()
+        { return mNames.size(); }
+
     protected:
         std::vector<std::string> mNames;
 };
