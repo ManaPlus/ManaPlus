@@ -162,6 +162,8 @@ class ChatTab : public Tab
 
         void addNewRow(std::string &line);
 
+        virtual void playNewMessageSound();
+
     protected:
         friend class ChatWindow;
         friend class WhisperWindow;

@@ -26,6 +26,7 @@
 #include "commandhandler.h"
 #include "guild.h"
 #include "localplayer.h"
+#include "sound.h"
 
 #include "gui/theme.h"
 
@@ -149,6 +150,11 @@ void GuildTab::saveToLogFile(std::string &msg)
 {
     if (chatLogger)
         chatLogger->log("#Guild", msg);
+}
+
+void GuildTab::playNewMessageSound()
+{
+    sound.playGuiSound(SOUND_GUILD);
 }
 
 } // namespace Ea

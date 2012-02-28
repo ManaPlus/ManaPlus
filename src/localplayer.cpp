@@ -4148,7 +4148,7 @@ void LocalPlayer::checkNewName(Being *being)
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
         debugMsg(_("You see ") + mWaitFor);
-        sound.playGuiSound("soundinfo");
+        sound.playGuiSound(SOUND_INFO);
         mWaitFor = "";
     }
 }

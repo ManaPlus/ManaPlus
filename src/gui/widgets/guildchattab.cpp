@@ -27,6 +27,7 @@
 #include "guild.h"
 #include "guildmanager.h"
 #include "localplayer.h"
+#include "sound.h"
 
 #include "gui/theme.h"
 
@@ -125,4 +126,9 @@ void GuildChatTab::saveToLogFile(std::string &msg)
 {
     if (chatLogger)
         chatLogger->log("#Guild", msg);
+}
+
+void GuildChatTab::playNewMessageSound()
+{
+    sound.playGuiSound(SOUND_GUILD);
 }

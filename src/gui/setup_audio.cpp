@@ -91,6 +91,9 @@ Setup_Audio::Setup_Audio()
     new SetupItemSound(_("Whisper message sound"), "",
         "soundwhisper", this, "soundwhisperEvent", mSoundModel);
 
+    new SetupItemSound(_("Guild / Party message sound"), "",
+        "soundguild", this, "soundguildEvent", mSoundModel);
+
     new SetupItemSound(_("Highlight message sound"), "",
         "soundhighlight", this, "soundhighlightEvent", mSoundModel);
 

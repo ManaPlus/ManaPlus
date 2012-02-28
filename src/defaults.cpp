@@ -236,6 +236,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "soundtrade", "start");
     AddDEF(configData, "soundinfo", "notify");
     AddDEF(configData, "soundrequest", "attention");
+    AddDEF(configData, "soundguild", "newmessage");
     return configData;
 }
 
