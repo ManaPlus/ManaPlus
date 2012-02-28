@@ -447,5 +447,5 @@ void Button::adjustSize()
 void Button::setCaption(const std::string& caption)
 {
     mCaption = caption;
-    adjustSize();
+//    adjustSize();
 }

@@ -27,6 +27,8 @@
 
 #include "localconsts.h"
 
+#include "debug.h"
+
 static int physfsrwops_seek(SDL_RWops *rw, int offset, int whence)
 {
     PHYSFS_file *handle = static_cast<PHYSFS_file *>(rw->hidden.unknown.data1);

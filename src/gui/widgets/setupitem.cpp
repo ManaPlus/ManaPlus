@@ -47,6 +47,8 @@
 
 #include <guichan/font.hpp>
 
+#include "debug.h"
+
 SetupItem::SetupItem(std::string text, std::string description,
                      std::string keyName, SetupTabScroll *parent,
                      std::string eventName, bool mainConfig) :

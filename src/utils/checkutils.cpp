@@ -24,6 +24,8 @@
 
 #include "logger.h"
 
+#include "debug.h"
+
 bool reportFalseReal(bool val, const char* file, unsigned line)
 {
     if (!val)
