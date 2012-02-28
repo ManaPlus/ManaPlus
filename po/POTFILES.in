@@ -69,6 +69,7 @@ src/gui/widgets/battletab.cpp
 src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
 src/gui/widgets/guildchattab.cpp
+src/gui/widgets/namesmodel.cpp
 src/gui/widgets/setupitem.cpp
 src/gui/widgets/tradetab.cpp
 src/gui/widgets/whispertab.cpp

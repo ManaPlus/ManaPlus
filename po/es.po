@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-02-26 19:59+0300\n"
-"PO-Revision-Date: 2012-02-26 17:12+0000\n"
+"POT-Creation-Date: 2012-02-29 01:39+0300\n"
+"PO-Revision-Date: 2012-02-28 21:32+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/"
 "manaplus/language/es/)\n"
@@ -40,12 +40,12 @@ msgid "miss"
 msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1540 src/gui/whoisonline.cpp:759
+#: src/being.cpp:1542 src/gui/whoisonline.cpp:764
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1545 src/gui/whoisonline.cpp:764
+#: src/being.cpp:1547 src/gui/whoisonline.cpp:769
 msgid "I"
 msgstr "I"
 
@@ -89,7 +89,7 @@ msgstr "Conectando al servidor del juego"
 msgid "Changing game servers"
 msgstr "Cambiando servidores del juego"
 
-#: src/client.cpp:1330 src/client.cpp:1337 src/client.cpp:1471
+#: src/client.cpp:1330 src/client.cpp:1338 src/client.cpp:1473
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:272 src/gui/charselectdialog.cpp:256
 #: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:228
@@ -99,50 +99,50 @@ msgstr "Cambiando servidores del juego"
 msgid "Error"
 msgstr "Error"
 
-#: src/client.cpp:1346
+#: src/client.cpp:1348
 msgid "Requesting registration details"
 msgstr "Solicitando detalles de registro"
 
-#: src/client.cpp:1372
+#: src/client.cpp:1374
 msgid "Password Change"
 msgstr "Cambio de contraseña"
 
-#: src/client.cpp:1373
+#: src/client.cpp:1375
 msgid "Password changed successfully!"
 msgstr "¡Contraseña cambiada exitosamente!"
 
-#: src/client.cpp:1392
+#: src/client.cpp:1394
 msgid "Email Change"
 msgstr "Cambio de Email"
 
-#: src/client.cpp:1393
+#: src/client.cpp:1395
 msgid "Email changed successfully!"
 msgstr "¡Email modificado exitosamente!"
 
-#: src/client.cpp:1413
+#: src/client.cpp:1415
 msgid "Unregister Successful"
 msgstr "Registro cancelado"
 
-#: src/client.cpp:1414
+#: src/client.cpp:1416
 msgid "Farewell, come back any time..."
 msgstr "Adiós, vuelve cuando quieras..."
 
-#: src/client.cpp:1632 src/client.cpp:1665 src/client.cpp:1680
-#: src/client.cpp:2111 src/client.cpp:2118
+#: src/client.cpp:1635 src/client.cpp:1668 src/client.cpp:1683
+#: src/client.cpp:2114 src/client.cpp:2121
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "¡%s no existe y no puede ser creado! Saliendo."
 
-#: src/client.cpp:1818
+#: src/client.cpp:1821
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Servidor de actualización inválido: %s"
 
-#: src/client.cpp:1852 src/client.cpp:1858
+#: src/client.cpp:1855 src/client.cpp:1861
 msgid "Error creating updates directory!"
 msgstr "¡Error al crear la carpeta de actualizaciones!"
 
-#: src/client.cpp:1879
+#: src/client.cpp:1882
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Error: ¡%s no existe y no puede ser creado! Saliendo."
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Requesting to join channel %s."
 msgstr "Solicitando la entrada del canal %s."
 
-#: src/commandhandler.cpp:385 src/net/ea/gui/partytab.cpp:125
+#: src/commandhandler.cpp:385 src/net/ea/gui/partytab.cpp:126
 msgid "Party name is missing."
 msgstr "Falta el nombre del grupo."
 
@@ -327,11 +327,11 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Opciones para /%s son \"yes\" | \"no\", \"true\" | \"false\", \"1\" | \"0\"."
 
-#: src/game.cpp:256 src/gui/widgets/chattab.cpp:413
+#: src/game.cpp:256 src/gui/widgets/chattab.cpp:425
 msgid "General"
 msgstr "General"
 
-#: src/game.cpp:260 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:415
+#: src/game.cpp:260 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:427
 msgid "Debug"
 msgstr "Depurador"
 
@@ -684,7 +684,7 @@ msgid "(empty)"
 msgstr "(vacío)"
 
 #: src/gui/chatwindow.cpp:116 src/gui/inventorywindow.cpp:70
-#: src/gui/setup_visual.cpp:85
+#: src/gui/setup_visual.cpp:87
 msgid "default"
 msgstr "predeterminado"
 
@@ -742,11 +742,10 @@ msgstr "arco iris 3"
 
 #: src/gui/chatwindow.cpp:146 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:79
-#: src/gui/setup_joystick.cpp:60 src/gui/setup_relations.cpp:225
-#: src/gui/setup_theme.cpp:73 src/gui/setup_theme.cpp:127
-#: src/gui/setup_theme.cpp:173 src/gui/setup_video.cpp:211
+#: src/gui/setup_relations.cpp:225 src/gui/setup_theme.cpp:102
+#: src/gui/setup_theme.cpp:148 src/gui/setup_video.cpp:211
 #: src/gui/textcommandeditor.cpp:101 src/gui/textcommandeditor.cpp:140
-#: src/gui/textcommandeditor.cpp:159
+#: src/gui/textcommandeditor.cpp:159 src/gui/widgets/namesmodel.cpp:48
 msgid "???"
 msgstr "???"
 
@@ -955,7 +954,7 @@ msgid "Auto open this window"
 msgstr "Abrir automáticamente esta ventana"
 
 #: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:78
-#: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:45
+#: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:48
 #: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "OK"
@@ -1689,8 +1688,8 @@ msgstr "Restablecer barra amarilla"
 msgid "Copy to chat"
 msgstr "Copiar al chat"
 
-#: src/gui/popupmenu.cpp:2083 src/gui/setup_theme.cpp:87
-#: src/gui/setup_theme.cpp:144 src/gui/socialwindow.cpp:983
+#: src/gui/popupmenu.cpp:2083 src/gui/setup_theme.cpp:62
+#: src/gui/setup_theme.cpp:119 src/gui/socialwindow.cpp:983
 #: src/gui/socialwindow.cpp:1018 src/gui/socialwindow.cpp:1053
 msgid "(default)"
 msgstr "(predeterminado)"
@@ -1768,8 +1767,8 @@ msgstr "Conectar"
 msgid "Add"
 msgstr "Añadir"
 
-#: src/gui/serverdialog.cpp:265 src/gui/widgets/setupitem.cpp:275
-#: src/gui/widgets/setupitem.cpp:398
+#: src/gui/serverdialog.cpp:265 src/gui/widgets/setupitem.cpp:285
+#: src/gui/widgets/setupitem.cpp:409
 msgid "Edit"
 msgstr "Editar"
 
@@ -1799,39 +1798,88 @@ msgstr "requiere una versión mas nueva"
 msgid "requires v%s"
 msgstr "requiere v%s"
 
-#: src/gui/setup_audio.cpp:40
+#: src/gui/setup_audio.cpp:45
+msgid "(no sound)"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:55
 msgid "Audio"
 msgstr "Audio"
 
-#: src/gui/setup_audio.cpp:47
+#: src/gui/setup_audio.cpp:64
+msgid "Basic settings"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:66
 msgid "Enable Audio"
 msgstr "Habilitar Audio"
 
-#: src/gui/setup_audio.cpp:49
+#: src/gui/setup_audio.cpp:68
 msgid "Enable music"
 msgstr "Habilitar música"
 
-#: src/gui/setup_audio.cpp:52
+#: src/gui/setup_audio.cpp:71
 msgid "Enable game sfx"
 msgstr "Habilitar sfx del juego"
 
-#: src/gui/setup_audio.cpp:55
+#: src/gui/setup_audio.cpp:74
 msgid "Enable gui sfx"
 msgstr "Habilitar sfx de interfaz gráfica"
 
-#: src/gui/setup_audio.cpp:58
+#: src/gui/setup_audio.cpp:77
 msgid "Sfx volume"
 msgstr "Volumen de sfx"
 
-#: src/gui/setup_audio.cpp:61
+#: src/gui/setup_audio.cpp:80
 msgid "Music volume"
 msgstr "Volumen de Música"
 
-#: src/gui/setup_audio.cpp:64
+#: src/gui/setup_audio.cpp:83
+msgid "Sound effects"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:85
+msgid "Information dialog sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:88
+msgid "Request dialog sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:91
+msgid "Whisper message sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:94
+msgid "Guild / Party message sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:97
+msgid "Highlight message sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:100
+msgid "Global message sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:103
+msgid "Error message sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:106
+msgid "Trade request sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:109 src/gui/setup_chat.cpp:122
+#: src/gui/setup_other.cpp:165
+msgid "Other"
+msgstr "Otro"
+
+#: src/gui/setup_audio.cpp:111
 msgid "Enable mumble voice chat"
 msgstr "Habilitar el chat de voz de mumble"
 
-#: src/gui/setup_audio.cpp:67
+#: src/gui/setup_audio.cpp:114
 msgid "Download music"
 msgstr "Bajar Música"
 
@@ -1929,10 +1977,6 @@ msgstr "Tiempo"
 msgid "Use local time"
 msgstr "Usar hora local"
 
-#: src/gui/setup_chat.cpp:122 src/gui/setup_other.cpp:165
-msgid "Other"
-msgstr "Otro"
-
 #: src/gui/setup_chat.cpp:124
 msgid "Highlight words (separated by comma)"
 msgstr "Resaltar palabras (separadas por coma)"
@@ -1996,31 +2040,31 @@ msgstr "Aplicar"
 msgid "Reset Windows"
 msgstr "Restaurar Ventanas"
 
-#: src/gui/setup_joystick.cpp:70 src/gui/setup_joystick.cpp:142
+#: src/gui/setup_joystick.cpp:45 src/gui/setup_joystick.cpp:117
 msgid "Press the button to start calibration"
 msgstr "Presiona el botón para empezar la calibración"
 
-#: src/gui/setup_joystick.cpp:71 src/gui/setup_joystick.cpp:140
+#: src/gui/setup_joystick.cpp:46 src/gui/setup_joystick.cpp:115
 msgid "Calibrate"
 msgstr "Calibrar"
 
-#: src/gui/setup_joystick.cpp:72
+#: src/gui/setup_joystick.cpp:47
 msgid "Enable joystick"
 msgstr "Habilitar la palanca de mando"
 
-#: src/gui/setup_joystick.cpp:75
+#: src/gui/setup_joystick.cpp:50
 msgid "Use joystick if client window inactive"
 msgstr "Usar la palanca de mando si la ventana del cliente está inactiva"
 
-#: src/gui/setup_joystick.cpp:78
+#: src/gui/setup_joystick.cpp:53
 msgid "Joystick"
 msgstr "Palanca de Mando"
 
-#: src/gui/setup_joystick.cpp:147
+#: src/gui/setup_joystick.cpp:122
 msgid "Stop"
 msgstr "Parar"
 
-#: src/gui/setup_joystick.cpp:149
+#: src/gui/setup_joystick.cpp:124
 msgid "Rotate the stick and don't press buttons"
 msgstr ""
 
@@ -2372,132 +2416,132 @@ msgstr "Relaciones"
 msgid "When ignoring:"
 msgstr "Cuando se ignora a alguien:"
 
-#: src/gui/setup_theme.cpp:107
+#: src/gui/setup_theme.cpp:82
 msgid "Tiny (10)"
 msgstr "Diminuto (10)"
 
-#: src/gui/setup_theme.cpp:108
+#: src/gui/setup_theme.cpp:83
 msgid "Small (11)"
 msgstr "Pequeño (11)"
 
-#: src/gui/setup_theme.cpp:109
+#: src/gui/setup_theme.cpp:84
 msgid "Medium (12)"
 msgstr "Medio (12)"
 
-#: src/gui/setup_theme.cpp:110
+#: src/gui/setup_theme.cpp:85
 msgid "Large (13)"
 msgstr "Extenso (13)"
 
-#: src/gui/setup_theme.cpp:111
+#: src/gui/setup_theme.cpp:86
 msgid "Big (14)"
 msgstr "Grande (14)"
 
-#: src/gui/setup_theme.cpp:112
+#: src/gui/setup_theme.cpp:87
 msgid "Huge (15)"
 msgstr "Enorme (15)"
 
-#: src/gui/setup_theme.cpp:145
+#: src/gui/setup_theme.cpp:120
 msgid "Chinese (China)"
 msgstr "Chino (China)"
 
-#: src/gui/setup_theme.cpp:146
+#: src/gui/setup_theme.cpp:121
 msgid "Czech"
 msgstr "Checo"
 
-#: src/gui/setup_theme.cpp:147
+#: src/gui/setup_theme.cpp:122
 msgid "English"
 msgstr "Inglés"
 
-#: src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:123
 msgid "Finnish"
 msgstr "Finlandés"
 
-#: src/gui/setup_theme.cpp:149
+#: src/gui/setup_theme.cpp:124
 msgid "French"
 msgstr "Francés"
 
-#: src/gui/setup_theme.cpp:150
+#: src/gui/setup_theme.cpp:125
 msgid "German"
 msgstr "Alemán"
 
-#: src/gui/setup_theme.cpp:151
+#: src/gui/setup_theme.cpp:126
 msgid "Indonesian"
 msgstr "Indonesio"
 
-#: src/gui/setup_theme.cpp:152
+#: src/gui/setup_theme.cpp:127
 msgid "Polish"
 msgstr "Polaco"
 
-#: src/gui/setup_theme.cpp:153
+#: src/gui/setup_theme.cpp:128
 msgid "Japanese"
 msgstr "Japonés"
 
-#: src/gui/setup_theme.cpp:154
+#: src/gui/setup_theme.cpp:129
 msgid "Dutch (Belgium/Flemish)"
 msgstr "Holanda (Bélgica/Flandes)"
 
-#: src/gui/setup_theme.cpp:155
+#: src/gui/setup_theme.cpp:130
 msgid "Portuguese"
 msgstr "Portugués"
 
-#: src/gui/setup_theme.cpp:156
+#: src/gui/setup_theme.cpp:131
 msgid "Portuguese (Brazilian)"
 msgstr "Portugués (Brasileño)"
 
-#: src/gui/setup_theme.cpp:157
+#: src/gui/setup_theme.cpp:132
 msgid "Russian"
 msgstr "Ruso"
 
-#: src/gui/setup_theme.cpp:158
+#: src/gui/setup_theme.cpp:133
 msgid "Spanish (Castilian)"
 msgstr "Español (Castellano)"
 
-#: src/gui/setup_theme.cpp:190
+#: src/gui/setup_theme.cpp:165
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/setup_theme.cpp:192
+#: src/gui/setup_theme.cpp:167
 msgid "Gui theme"
 msgstr "Tema de interfaz gráfica"
 
-#: src/gui/setup_theme.cpp:193
+#: src/gui/setup_theme.cpp:168
 msgid "Language"
 msgstr "Idioma"
 
-#: src/gui/setup_theme.cpp:194
+#: src/gui/setup_theme.cpp:169
 msgid "Main Font"
 msgstr "Fuente principal"
 
-#: src/gui/setup_theme.cpp:195
+#: src/gui/setup_theme.cpp:170
 msgid "Bold font"
 msgstr "Fuente negrita"
 
-#: src/gui/setup_theme.cpp:196
+#: src/gui/setup_theme.cpp:171
 msgid "Particle font"
 msgstr "Fuente de partícula"
 
-#: src/gui/setup_theme.cpp:197
+#: src/gui/setup_theme.cpp:172
 msgid "Help font"
 msgstr "Fuente de la ayuda"
 
-#: src/gui/setup_theme.cpp:198
+#: src/gui/setup_theme.cpp:173
 msgid "Secure font"
 msgstr "Fuente segura"
 
-#: src/gui/setup_theme.cpp:199
+#: src/gui/setup_theme.cpp:174
 msgid "Japanese font"
 msgstr "Fuente japonesa"
 
-#: src/gui/setup_theme.cpp:236
+#: src/gui/setup_theme.cpp:211
 msgid "Font size"
 msgstr "Tamaño de fuente"
 
-#: src/gui/setup_theme.cpp:377
+#: src/gui/setup_theme.cpp:352
 msgid "Theme Changed"
 msgstr "Tema cambiado"
 
-#: src/gui/setup_theme.cpp:378 src/gui/setup_video.cpp:502
-#: src/gui/setup_video.cpp:507
+#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:503
+#: src/gui/setup_video.cpp:510
 msgid "Restart your client for the change to take effect."
 msgstr "Reinicia el juego para que los cambios tengan efecto."
 
@@ -2534,13 +2578,13 @@ msgid "FPS limit:"
 msgstr "Límite FPS:"
 
 #: src/gui/setup_video.cpp:236 src/gui/setup_video.cpp:257
-#: src/gui/setup_video.cpp:446 src/gui/setup_video.cpp:549
+#: src/gui/setup_video.cpp:446 src/gui/setup_video.cpp:553
 msgid "Alt FPS limit: "
 msgstr "Límite FPS alternativo: "
 
 #: src/gui/setup_video.cpp:255 src/gui/setup_video.cpp:258
-#: src/gui/setup_video.cpp:445 src/gui/setup_video.cpp:535
-#: src/gui/setup_video.cpp:547
+#: src/gui/setup_video.cpp:445 src/gui/setup_video.cpp:539
+#: src/gui/setup_video.cpp:551
 msgid "None"
 msgstr "Nada"
 
@@ -2581,7 +2625,7 @@ msgstr "Resolución personalizada (ejemplo: 1024x768)"
 msgid "Enter new resolution:                "
 msgstr "Ingrese la nueva resolución:                "
 
-#: src/gui/setup_video.cpp:501 src/gui/setup_video.cpp:506
+#: src/gui/setup_video.cpp:502 src/gui/setup_video.cpp:509
 msgid "Screen Resolution Changed"
 msgstr "Resolución de pantalla cambiada"
 
@@ -2593,83 +2637,83 @@ msgstr "Algunas ventanas deben ser movidas a una resolución más baja."
 msgid "Visual"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:42
+#: src/gui/setup_visual.cpp:44
 msgid "Show pickup notifications in chat"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:45
+#: src/gui/setup_visual.cpp:47
 msgid "Show pickup notifications as particle effects"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:48
+#: src/gui/setup_visual.cpp:50
 msgid "Grab mouse and keyboard input"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:51
+#: src/gui/setup_visual.cpp:53
 msgid "Gui opacity"
 msgstr "Opacidad de interfaz"
 
-#: src/gui/setup_visual.cpp:55
+#: src/gui/setup_visual.cpp:57
 msgid "No text"
 msgstr "Sin texto"
 
-#: src/gui/setup_visual.cpp:56
+#: src/gui/setup_visual.cpp:58
 msgid "Text"
 msgstr "Texto"
 
-#: src/gui/setup_visual.cpp:57
+#: src/gui/setup_visual.cpp:59
 msgid "Bubbles, no names"
 msgstr "Burbujas sin nombres"
 
-#: src/gui/setup_visual.cpp:58
+#: src/gui/setup_visual.cpp:60
 msgid "Bubbles with names"
 msgstr "Burbujas con nombres"
 
-#: src/gui/setup_visual.cpp:59
+#: src/gui/setup_visual.cpp:61
 msgid "Overhead text"
 msgstr "Sobrecarga de texto"
 
-#: src/gui/setup_visual.cpp:63 src/gui/setup_visual.cpp:86
+#: src/gui/setup_visual.cpp:65 src/gui/setup_visual.cpp:88
 msgid "off"
 msgstr "apagado"
 
-#: src/gui/setup_visual.cpp:64 src/gui/setup_visual.cpp:73
+#: src/gui/setup_visual.cpp:66 src/gui/setup_visual.cpp:75
 msgid "low"
 msgstr "bajo"
 
-#: src/gui/setup_visual.cpp:65 src/gui/setup_visual.cpp:75
+#: src/gui/setup_visual.cpp:67 src/gui/setup_visual.cpp:77
 msgid "high"
 msgstr "alto"
 
-#: src/gui/setup_visual.cpp:66
+#: src/gui/setup_visual.cpp:68
 msgid "Ambient FX"
 msgstr "Ambiente FX"
 
-#: src/gui/setup_visual.cpp:69
+#: src/gui/setup_visual.cpp:71
 msgid "Particle effects"
 msgstr "Efectos de partículas"
 
-#: src/gui/setup_visual.cpp:74
+#: src/gui/setup_visual.cpp:76
 msgid "medium"
 msgstr "medio"
 
-#: src/gui/setup_visual.cpp:76
+#: src/gui/setup_visual.cpp:78
 msgid "max"
 msgstr "máximo"
 
-#: src/gui/setup_visual.cpp:77
+#: src/gui/setup_visual.cpp:79
 msgid "Particle detail"
 msgstr "Detalle de partículas"
 
-#: src/gui/setup_visual.cpp:81
+#: src/gui/setup_visual.cpp:83
 msgid "Gamma"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:87
+#: src/gui/setup_visual.cpp:89
 msgid "on"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:88
+#: src/gui/setup_visual.cpp:90
 msgid "Vsync"
 msgstr ""
 
@@ -2754,7 +2798,7 @@ msgid "Lvl: %d (%+d)"
 msgstr "Nivel: %d (%+d)"
 
 #: src/gui/socialwindow.cpp:145 src/gui/socialwindow.cpp:243
-#: src/gui/widgets/guildchattab.cpp:43 src/net/ea/gui/guildtab.cpp:52
+#: src/gui/widgets/guildchattab.cpp:44 src/net/ea/gui/guildtab.cpp:53
 msgid "Guild"
 msgstr "Clan"
 
@@ -2786,7 +2830,7 @@ msgstr "¿Dejar el clan?"
 msgid "Are you sure you want to leave guild %s?"
 msgstr "¿Estás seguro de dejar el clan %s?"
 
-#: src/gui/socialwindow.cpp:346 src/net/ea/gui/partytab.cpp:50
+#: src/gui/socialwindow.cpp:346 src/net/ea/gui/partytab.cpp:51
 msgid "Party"
 msgstr "Grupo"
 
@@ -3401,8 +3445,8 @@ msgid "This command makes <nick> a channel operator."
 msgstr "Hacer al jugador <nick> operador del canal."
 
 #: src/gui/widgets/channeltab.cpp:85 src/gui/widgets/channeltab.cpp:94
-#: src/gui/widgets/guildchattab.cpp:61 src/net/ea/gui/guildtab.cpp:69
-#: src/net/ea/gui/partytab.cpp:85
+#: src/gui/widgets/guildchattab.cpp:62 src/net/ea/gui/guildtab.cpp:70
+#: src/net/ea/gui/partytab.cpp:86
 msgid "If the <nick> has spaces in it, enclose it in double quotes (\")."
 msgstr "Si el <nick> tiene espacios, enciérralo entre comillas dobles (\")."
 
@@ -3442,38 +3486,38 @@ msgstr "Anuncio global de  %s:"
 msgid "%s whispers: %s"
 msgstr "%s envía mensaje privado: %s"
 
-#: src/gui/widgets/guildchattab.cpp:59 src/net/ea/gui/guildtab.cpp:67
-#: src/net/ea/gui/partytab.cpp:83
+#: src/gui/widgets/guildchattab.cpp:60 src/net/ea/gui/guildtab.cpp:68
+#: src/net/ea/gui/partytab.cpp:84
 msgid "Command: /invite <nick>"
 msgstr "Comando: /invite <nick>"
 
-#: src/gui/widgets/guildchattab.cpp:60 src/net/ea/gui/guildtab.cpp:68
+#: src/gui/widgets/guildchattab.cpp:61 src/net/ea/gui/guildtab.cpp:69
 msgid "This command invites <nick> to the guild you're in."
 msgstr "Este comando invita a <nick> para el clan en el que estás ."
 
-#: src/gui/widgets/guildchattab.cpp:66 src/net/ea/gui/guildtab.cpp:74
-#: src/net/ea/gui/partytab.cpp:90
+#: src/gui/widgets/guildchattab.cpp:67 src/net/ea/gui/guildtab.cpp:75
+#: src/net/ea/gui/partytab.cpp:91
 msgid "Command: /leave"
 msgstr "Comando: /leave"
 
-#: src/gui/widgets/guildchattab.cpp:67 src/net/ea/gui/guildtab.cpp:75
+#: src/gui/widgets/guildchattab.cpp:68 src/net/ea/gui/guildtab.cpp:76
 msgid "This command causes the player to leave the guild."
 msgstr "Este comando hace que dejes el clan."
 
-#: src/gui/widgets/guildchattab.cpp:109 src/net/ea/gui/guildtab.cpp:135
-#: src/net/ea/gui/partytab.cpp:69
+#: src/gui/widgets/guildchattab.cpp:110 src/net/ea/gui/guildtab.cpp:136
+#: src/net/ea/gui/partytab.cpp:70
 msgid "/help > Display this help."
 msgstr "/help > Mostrar la ayuda."
 
-#: src/gui/widgets/guildchattab.cpp:110 src/net/ea/gui/guildtab.cpp:136
+#: src/gui/widgets/guildchattab.cpp:111 src/net/ea/gui/guildtab.cpp:137
 msgid "/invite > Invite a player to your guild"
 msgstr "/invite > Invitar a un jugador a tu clan"
 
-#: src/gui/widgets/guildchattab.cpp:111 src/net/ea/gui/guildtab.cpp:137
+#: src/gui/widgets/guildchattab.cpp:112 src/net/ea/gui/guildtab.cpp:138
 msgid "/leave > Leave the guild you are in"
 msgstr "/leave > Dejar el clan en el que estás"
 
-#: src/gui/widgets/guildchattab.cpp:112 src/net/ea/gui/guildtab.cpp:138
+#: src/gui/widgets/guildchattab.cpp:113 src/net/ea/gui/guildtab.cpp:139
 msgid "/kick > Kick some one from the guild you are in"
 msgstr "/kick > Expulsar a alguien del clan en el que estás."
 
@@ -4331,55 +4375,55 @@ msgstr "(?) imitación"
 msgid "Away"
 msgstr "Fuera del Teclado"
 
-#: src/localplayer.cpp:2225
+#: src/localplayer.cpp:2226
 msgid "(O) on keyboard"
 msgstr "(O) en el teclado"
 
-#: src/localplayer.cpp:2226
+#: src/localplayer.cpp:2227
 msgid "(A) away"
 msgstr "(A) lejos del teclado"
 
-#: src/localplayer.cpp:2227 src/localplayer.cpp:2242
+#: src/localplayer.cpp:2228 src/localplayer.cpp:2243
 msgid "(?) away"
 msgstr "(?) afuera"
 
-#: src/localplayer.cpp:2240
+#: src/localplayer.cpp:2241
 msgid "(G) game camera mode"
 msgstr "(G) modo de cámara de juego"
 
-#: src/localplayer.cpp:2241
+#: src/localplayer.cpp:2242
 msgid "(F) free camera mode"
 msgstr "(F) modo de cámara libre"
 
-#: src/localplayer.cpp:2266
+#: src/localplayer.cpp:2267
 msgid "Game modifiers are enabled"
 msgstr "Modificadores del juego están habilitados"
 
-#: src/localplayer.cpp:2267
+#: src/localplayer.cpp:2268
 msgid "Game modifiers are disabled"
 msgstr "Modificadores del juego están deshabilitados"
 
-#: src/localplayer.cpp:2268
+#: src/localplayer.cpp:2269
 msgid "Game modifiers are unknown"
 msgstr "Los modificadores del juego son desconocidos"
 
-#: src/localplayer.cpp:3782
+#: src/localplayer.cpp:3783
 msgid "Follow: "
 msgstr "Seguir: "
 
-#: src/localplayer.cpp:3784 src/localplayer.cpp:3799
+#: src/localplayer.cpp:3785 src/localplayer.cpp:3800
 msgid "Follow canceled"
 msgstr "Seguir cancelado"
 
-#: src/localplayer.cpp:3791
+#: src/localplayer.cpp:3792
 msgid "Imitation: "
 msgstr "Imitación: "
 
-#: src/localplayer.cpp:3793 src/localplayer.cpp:3801
+#: src/localplayer.cpp:3794 src/localplayer.cpp:3802
 msgid "Imitation canceled"
 msgstr "Imitación cancelada"
 
-#: src/localplayer.cpp:4149
+#: src/localplayer.cpp:4150
 msgid "You see "
 msgstr "Ves "
 
@@ -4715,44 +4759,44 @@ msgstr "Fuiste expulsado del clan."
 msgid "%s has kicked from your guild."
 msgstr "%s ha sido sacado de tu clan."
 
-#: src/net/ea/gui/partytab.cpp:70
+#: src/net/ea/gui/partytab.cpp:71
 msgid "/invite > Invite a player to your party"
 msgstr "/invite > Invitar a un jugador a tu grupo"
 
-#: src/net/ea/gui/partytab.cpp:71
+#: src/net/ea/gui/partytab.cpp:72
 msgid "/leave > Leave the party you are in"
 msgstr "/leave > Dejar el grupo en el que estás"
 
-#: src/net/ea/gui/partytab.cpp:72
+#: src/net/ea/gui/partytab.cpp:73
 msgid "/kick > Kick some one from the party you are in"
 msgstr "/kick > Expulsar a alguien del grupo en el que estás"
 
-#: src/net/ea/gui/partytab.cpp:73
+#: src/net/ea/gui/partytab.cpp:74
 msgid "/item > Show/change party item sharing options"
 msgstr "/item > Mostrar/Cambiar opciones para compartir objetos en el grupo"
 
-#: src/net/ea/gui/partytab.cpp:74
+#: src/net/ea/gui/partytab.cpp:75
 msgid "/exp > Show/change party experience sharing options"
 msgstr "/exp > Mostrar/Cambiar opciones para compartir experiencia en el grupo"
 
-#: src/net/ea/gui/partytab.cpp:84
+#: src/net/ea/gui/partytab.cpp:85
 msgid "This command invites <nick> to party with you."
 msgstr "Este comando invita al jugador <nick> a formar parte de tu grupo."
 
-#: src/net/ea/gui/partytab.cpp:91
+#: src/net/ea/gui/partytab.cpp:92
 msgid "This command causes the player to leave the party."
 msgstr "Este comando hace que dejes el grupo."
 
-#: src/net/ea/gui/partytab.cpp:95
+#: src/net/ea/gui/partytab.cpp:96
 msgid "Command: /item <policy>"
 msgstr "Comando> /item <política>"
 
-#: src/net/ea/gui/partytab.cpp:97
+#: src/net/ea/gui/partytab.cpp:98
 msgid "This command changes the party's item sharing policy."
 msgstr ""
 "Este comando cambia la política de compartición de artículos en el grupo."
 
-#: src/net/ea/gui/partytab.cpp:98
+#: src/net/ea/gui/partytab.cpp:99
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable item sharing, or "
 "\"0\", \"no\", \"false\" to disable item sharing."
@@ -4760,26 +4804,26 @@ msgstr ""
 "<política> puede ser \"1\", \"yes\" y \"true\" para compartir artículos, o "
 "\"0\", \"no\" y \"false\" para no compartirlos."
 
-#: src/net/ea/gui/partytab.cpp:101
+#: src/net/ea/gui/partytab.cpp:102
 msgid "Command: /item"
 msgstr "Comando: /item"
 
-#: src/net/ea/gui/partytab.cpp:102
+#: src/net/ea/gui/partytab.cpp:103
 msgid "This command displays the party's current item sharing policy."
 msgstr ""
 "Este comando muestra la política actual de compartición de artículos del "
 "grupo."
 
-#: src/net/ea/gui/partytab.cpp:107
+#: src/net/ea/gui/partytab.cpp:108
 msgid "Command: /exp <policy>"
 msgstr "Comando: /exp <política>"
 
-#: src/net/ea/gui/partytab.cpp:108
+#: src/net/ea/gui/partytab.cpp:109
 msgid "This command changes the party's experience sharing policy."
 msgstr ""
 "Este comando cambia la política de compartición de experiencia del grupo."
 
-#: src/net/ea/gui/partytab.cpp:110
+#: src/net/ea/gui/partytab.cpp:111
 msgid ""
 "<policy> can be one of \"1\", \"yes\", \"true\" to enable experience "
 "sharing, or \"0\", \"no\", \"false\" to disable experience sharing."
@@ -4787,45 +4831,45 @@ msgstr ""
 "<política> puede ser \"1\", \"yes\" y \"true\" para compartir experiencia, o "
 "\"0\", \"no\" y \"false\" para no compartir."
 
-#: src/net/ea/gui/partytab.cpp:113
+#: src/net/ea/gui/partytab.cpp:114
 msgid "Command: /exp"
 msgstr "Comando: /exp"
 
-#: src/net/ea/gui/partytab.cpp:114
+#: src/net/ea/gui/partytab.cpp:115
 msgid "This command displays the party's current experience sharing policy."
 msgstr ""
 "Este comando muestra la política actual de compartición experiencia del "
 "grupo."
 
-#: src/net/ea/gui/partytab.cpp:148 src/net/ea/partyhandler.cpp:286
+#: src/net/ea/gui/partytab.cpp:149 src/net/ea/partyhandler.cpp:286
 msgid "Item sharing enabled."
 msgstr "Compartir artículos habilitado."
 
-#: src/net/ea/gui/partytab.cpp:151 src/net/ea/partyhandler.cpp:296
+#: src/net/ea/gui/partytab.cpp:152 src/net/ea/partyhandler.cpp:296
 msgid "Item sharing disabled."
 msgstr "Compartir artículos deshabilitado."
 
-#: src/net/ea/gui/partytab.cpp:154 src/net/ea/partyhandler.cpp:306
+#: src/net/ea/gui/partytab.cpp:155 src/net/ea/partyhandler.cpp:306
 msgid "Item sharing not possible."
 msgstr "No se pueden compartir artículos."
 
-#: src/net/ea/gui/partytab.cpp:157
+#: src/net/ea/gui/partytab.cpp:158
 msgid "Item sharing unknown."
 msgstr "Compartir artículos desconocido."
 
-#: src/net/ea/gui/partytab.cpp:187 src/net/ea/partyhandler.cpp:248
+#: src/net/ea/gui/partytab.cpp:188 src/net/ea/partyhandler.cpp:248
 msgid "Experience sharing enabled."
 msgstr "Compartir experiencia habilitado."
 
-#: src/net/ea/gui/partytab.cpp:190 src/net/ea/partyhandler.cpp:258
+#: src/net/ea/gui/partytab.cpp:191 src/net/ea/partyhandler.cpp:258
 msgid "Experience sharing disabled."
 msgstr "Compartir experiencia habilitado."
 
-#: src/net/ea/gui/partytab.cpp:193 src/net/ea/partyhandler.cpp:268
+#: src/net/ea/gui/partytab.cpp:194 src/net/ea/partyhandler.cpp:268
 msgid "Experience sharing not possible."
 msgstr "Imposible compartir experiencia."
 
-#: src/net/ea/gui/partytab.cpp:196
+#: src/net/ea/gui/partytab.cpp:197
 msgid "Experience sharing unknown."
 msgstr "Compartir experiencia desconocido."
 
@@ -5094,21 +5138,21 @@ msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Estás cargando menos de la mitad de tu peso. Ahora puedes recobrar la salud."
 
-#: src/net/ea/playerhandler.cpp:454
+#: src/net/ea/playerhandler.cpp:453
 #, c-format
 msgid "You picked up %s."
 msgstr "Has recogido %s."
 
-#: src/net/ea/playerhandler.cpp:460
+#: src/net/ea/playerhandler.cpp:459
 #, c-format
 msgid "You spent %s."
 msgstr "Has gastado %s."
 
-#: src/net/ea/playerhandler.cpp:506
+#: src/net/ea/playerhandler.cpp:505
 msgid "Cannot raise skill!"
 msgstr "¡Imposible incrementar!"
 
-#: src/net/ea/playerhandler.cpp:624
+#: src/net/ea/playerhandler.cpp:623
 msgid "Equip arrows first."
 msgstr "Equipar las flechas primero."
 
