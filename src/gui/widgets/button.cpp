@@ -229,7 +229,7 @@ Button::~Button()
     if (mImages)
     {
         for (int f = 0; f < BUTTON_COUNT; f ++)
-            mImages[f] = 0;
+            mImages[f] = nullptr;
         delete [] mImages;
         mImages = nullptr;
     }
@@ -366,7 +366,6 @@ void Button::draw(gcn::Graphics *graphics)
         case gcn::Graphics::CENTER:
             if (mImages)
             {
-                textX = getWidth() / 2;
                 int width = getFont()->getWidth(mCaption) + mImageWidth + 2;
                 imageX = getWidth() / 2 - width / 2;
                 textX = imageX + mImageWidth + 2;
