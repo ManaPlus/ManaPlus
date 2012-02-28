@@ -971,7 +971,7 @@ SetupItemSound::SetupItemSound(std::string text, std::string description,
 
 void SetupItemSound::addMoreControls()
 {
-    mButton = new Button(_("Play"), mEventName + "_PLAY", this);
+    mButton = new Button(BUTTON_PLAY, 16, 16, mEventName + "_PLAY", this);
     mHorizont->add(mButton);
 }
 
