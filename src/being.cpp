@@ -1380,8 +1380,10 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
 
     if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
     {
-        if (EmoteDB::getAnimation(emotionIndex))
+        if (EmoteDB::getAnimation(emotionIndex, true))
             EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+        else
+            mEmotion = 0;
     }
 }
 
