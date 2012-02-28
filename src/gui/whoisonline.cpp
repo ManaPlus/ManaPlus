@@ -738,7 +738,12 @@ void OnlinePlayer::setText(std::string color)
         Being *being = actorSpriteManager->findBeingByName(
             mNick, Being::PLAYER);
         if (being)
+        {
             being->setState(mStatus);
+            // for now highlight versions > 3
+            if (mVersion > 3)
+                being->setAdvanced(true);
+        }
     }
 
     if (mLevel > 0)

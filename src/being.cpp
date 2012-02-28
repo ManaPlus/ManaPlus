@@ -2525,7 +2525,6 @@ void Being::saveComment(const std::string &name,
 
 void Being::setState(Uint8 state)
 {
-    mAdvanced = true;
     bool shop = (state & FLAG_SHOP);
     bool away = (state & FLAG_AWAY);
     bool inactive = (state & FLAG_INACTIVE);
@@ -2548,6 +2547,7 @@ void Being::setEmote(Uint8 emotion, int emote_time)
     if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {
         setState(emotion);
+        mAdvanced = true;
     }
     else
     {
