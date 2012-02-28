@@ -28,17 +28,14 @@
 #include "debug.h"
 
 SetupTabScroll::SetupTabScroll() :
-    SetupTab()
+    SetupTab(),
+    mPreferredFirstItemSize(200)
 {
     mContainer = new VertContainer(25, false, 8);
     mScroll = new ScrollArea(mContainer);
     mScroll->setOpaque(false);
     mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
-
-//    LayoutHelper h(this);
-//    ContainerPlacer place = h.getPlacer(0, 0);
-//    place(0, 0, mScroll, 10, 10);
 }
 
 SetupTabScroll::~SetupTabScroll()

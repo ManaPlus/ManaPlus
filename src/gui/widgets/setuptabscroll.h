@@ -55,11 +55,15 @@ class SetupTabScroll : public SetupTab
         virtual void action(const gcn::ActionEvent &event A_UNUSED)
         { }
 
+        int getPreferredFirstItemSize()
+        { return mPreferredFirstItemSize; }
+
     protected:
         VertContainer *mContainer;
         ScrollArea *mScroll;
         std::map<std::string, SetupItem*> mItems;
         std::set<SetupItem*> mAllItems;
+        int mPreferredFirstItemSize;
 };
 
 #endif

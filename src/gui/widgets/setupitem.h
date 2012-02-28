@@ -97,6 +97,8 @@ class SetupItem : public gcn::ActionListener
         bool isMainConfig() const
         { return mMainConfig; }
 
+        void fixFirstItemSize(gcn::Widget *widget);
+
     protected:
         std::string mText;
 

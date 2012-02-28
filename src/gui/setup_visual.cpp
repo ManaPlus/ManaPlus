@@ -39,6 +39,8 @@ Setup_Visual::Setup_Visual()
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    mPreferredFirstItemSize = 150;
+
     new SetupItemCheckBox(_("Show pickup notifications in chat"), "",
         "showpickupchat", this, "showpickupchatEvent");
 

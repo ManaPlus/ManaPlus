@@ -171,6 +171,12 @@ void SetupItem::externalUpdated(std::string eventName A_UNUSED)
     toWidget();
 }
 
+void SetupItem::fixFirstItemSize(gcn::Widget *widget)
+{
+    if (widget->getWidth() < mParent->getPreferredFirstItemSize())
+        widget->setWidth(mParent->getPreferredFirstItemSize());
+}
+
 SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      std::string keyName,
                                      SetupTabScroll *parent,
@@ -279,6 +285,7 @@ void SetupItemTextField::createControls()
     mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(200);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
@@ -402,6 +409,7 @@ void SetupItemIntTextField::createControls()
     mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(50);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
@@ -572,6 +580,7 @@ void SetupItemDropDown::createControls()
 
     mWidget = mDropDown;
 //    mTextField->setWidth(50);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mDropDown);
 
@@ -656,6 +665,7 @@ void SetupItemSlider::createControls()
     mWidget = mSlider;
     mSlider->setWidth(mWidth);
     mSlider->setHeight(40);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mSlider, -10);
 
@@ -767,6 +777,7 @@ void SetupItemSlider2::createControls()
     mWidget = mSlider;
     mSlider->setWidth(150);
     mSlider->setHeight(40);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mSlider, -10);
     mHorizont->add(mLabel2);
@@ -917,6 +928,7 @@ void SetupItemSliderList::createControls()
     mSlider->adjustSize();
 
     mWidget = mSlider;
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel, 5);
     mHorizont->add(mSlider);
 
