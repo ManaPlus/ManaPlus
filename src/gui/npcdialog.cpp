@@ -78,7 +78,7 @@ NpcDialog::NpcDialog(int npcId) :
     setMinWidth(200);
     setMinHeight(150);
 
-    setDefaultSize(260, 200, ImageRect::CENTER);
+    setDefaultSize(400, 400, ImageRect::CENTER);
 
     mItemLinkHandler = new ItemLinkHandler;
     // Setup output text box
