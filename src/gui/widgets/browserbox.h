@@ -104,7 +104,8 @@ class BrowserBox : public gcn::Widget,
         /**
          * Sets the maximum numbers of rows in the browser box. 0 = no limit.
          */
-        void setMaxRow(unsigned max) {mMaxRows = max; };
+        void setMaxRow(unsigned max)
+        { mMaxRows = max; };
 
         /**
          * Disable links & user defined colors to be used in chat input.

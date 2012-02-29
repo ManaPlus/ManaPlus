@@ -72,21 +72,24 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~FocusListener() { }
+        virtual ~FocusListener()
+        { }
 
         /**
          * Called when a widget gains focus. 
          *
          * @param event Discribes the event.
          */
-        virtual void focusGained(const Event& event A_UNUSED) { };
+        virtual void focusGained(const Event& event A_UNUSED)
+        { };
 
         /**
          * Called when a widget loses focus. 
          *
          * @param event Discribes the event.
          */
-        virtual void focusLost(const Event& event A_UNUSED) { };
+        virtual void focusLost(const Event& event A_UNUSED)
+        { };
 
     protected:
         /**
@@ -95,7 +98,8 @@ namespace gcn
          * You should not be able to make an instance of FocusListener,
          * therefore its constructor is protected.
          */
-        FocusListener() { }
+        FocusListener()
+        { }
     };
 }
 

@@ -74,7 +74,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~WidgetListener() { }
+        virtual ~WidgetListener()
+        { }
 
         /**
          * Invoked when a widget changes its size.
@@ -82,7 +83,8 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetResized(const Event& event A_UNUSED) { }
+        virtual void widgetResized(const Event& event A_UNUSED)
+        { }
 
         /**
          * Invoked when a widget is moved.
@@ -90,7 +92,8 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetMoved(const Event& event A_UNUSED) { }
+        virtual void widgetMoved(const Event& event A_UNUSED)
+        { }
 
         /**
          * Invoked when a widget is hidden, i.e it's set to be
@@ -99,7 +102,8 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetHidden(const Event& event A_UNUSED) { }
+        virtual void widgetHidden(const Event& event A_UNUSED)
+        { }
 
         /**
          * Invoked when a widget is shown, i.e it's set to be
@@ -108,7 +112,8 @@ namespace gcn
          * @param event Describes the event.
          * @since 0.8.0
          */
-        virtual void widgetShown(const Event& event A_UNUSED) { }
+        virtual void widgetShown(const Event& event A_UNUSED)
+        { }
 
     protected:
         /**
@@ -117,8 +122,8 @@ namespace gcn
          * You should not be able to make an instance of WidgetListener,
          * therefore its constructor is protected.
          */
-        WidgetListener() { }
-
+        WidgetListener()
+        { }
     };
 }
 

@@ -48,7 +48,8 @@ class GameHandler : public MessageHandler, public Net::GameHandler
 
         void quit(bool reconnectAccount);
 
-        void quit() { quit(false); }
+        void quit()
+        { quit(false); }
 
         void ping(int tick);
 

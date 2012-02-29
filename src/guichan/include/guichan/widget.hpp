@@ -173,7 +173,8 @@ namespace gcn
          * @see Gui::logic
          * @since 0.1.0
          */
-        virtual void logic() { }
+        virtual void logic()
+        { }
 
         /**
          * Gets the widget's parent container.
@@ -686,7 +687,8 @@ namespace gcn
          *
          * @since 0.1.0
          */
-        virtual void fontChanged() { }
+        virtual void fontChanged()
+        { }
 
         /**
          * Checks if a widget exists or not, that is if it still exists
@@ -895,7 +897,8 @@ namespace gcn
          * @see moveToBottom
          * @since 0.1.0
          */
-        virtual void moveToTop(Widget* widget A_UNUSED) { };
+        virtual void moveToTop(Widget* widget A_UNUSED)
+        { };
 
         /**
          * Moves a widget in this widget to the bottom of this widget.
@@ -905,7 +908,8 @@ namespace gcn
          * @see moveToTop
          * @since 0.1.0
          */
-        virtual void moveToBottom(Widget* widget A_UNUSED) { };
+        virtual void moveToBottom(Widget* widget A_UNUSED)
+        { };
 
         /**
          * Focuses the next widget in the widget.
@@ -913,7 +917,8 @@ namespace gcn
          * @see moveToBottom
          * @since 0.1.0
          */
-        virtual void focusNext() { };
+        virtual void focusNext()
+        { };
 
         /**
          * Focuses the previous widget in the widget.
@@ -921,7 +926,8 @@ namespace gcn
          * @see moveToBottom
          * @since 0.1.0
          */
-        virtual void focusPrevious() { };
+        virtual void focusPrevious()
+        { };
 
         /**
          * Tries to show a specific part of a widget by moving it. Used if the

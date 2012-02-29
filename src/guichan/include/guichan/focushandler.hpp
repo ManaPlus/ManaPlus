@@ -80,7 +80,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~FocusHandler() { };
+        virtual ~FocusHandler()
+        { };
 
         /**
          * Requests focus for a widget. Focus will only be granted to a widget

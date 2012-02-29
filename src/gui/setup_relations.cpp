@@ -80,7 +80,8 @@ static const char *RELATION_NAMES[PlayerRelation::RELATIONS_NR] =
 class PlayerRelationListModel : public gcn::ListModel
 {
 public:
-    virtual ~PlayerRelationListModel() { }
+    virtual ~PlayerRelationListModel()
+    { }
 
     virtual int getNumberOfElements()
     {
@@ -211,7 +212,8 @@ protected:
 class IgnoreChoicesListModel : public gcn::ListModel
 {
 public:
-    virtual ~IgnoreChoicesListModel() { }
+    virtual ~IgnoreChoicesListModel()
+    { }
 
     virtual int getNumberOfElements()
     {

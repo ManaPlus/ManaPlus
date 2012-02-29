@@ -58,12 +58,14 @@ class Logger
         /**
          * Sets whether the log should be written to standard output.
          */
-        void setLogToStandardOut(bool value) { mLogToStandardOut = value; }
+        void setLogToStandardOut(bool value)
+        { mLogToStandardOut = value; }
 
         /**
          * Enables logging to chat window
          */
-        void setChatWindow(ChatWindow *window) { mChatWindow = window; }
+        void setChatWindow(ChatWindow *window)
+        { mChatWindow = window; }
 
         /**
          * Enters a message in the log. The message will be timestamped.

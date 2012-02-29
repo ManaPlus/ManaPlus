@@ -34,7 +34,8 @@
 class LinkHandler
 {
     public:
-        virtual ~LinkHandler() { }
+        virtual ~LinkHandler()
+        { }
 
         virtual void handleLink(const std::string &link,
                                 gcn::MouseEvent *event) = 0;
