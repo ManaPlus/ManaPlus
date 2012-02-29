@@ -342,9 +342,20 @@ void NpcDialog::parseListItems(const std::string &itemString)
         mItems.push_back(tmp);
 
     if (!mItems.empty())
+    {
         mItemList->setSelected(0);
+        mItemList->requestFocus();
+    }
     else
+    {
         mItemList->setSelected(-1);
+    }
+}
+
+void NpcDialog::refocus()
+{
+    if (!mItems.empty())
+        mItemList->requestFocus();
 }
 
 void NpcDialog::textRequest(const std::string &defaultText)

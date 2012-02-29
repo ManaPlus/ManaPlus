@@ -803,12 +803,13 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                     used = true;
             }
         }
-        if (dialog)
+        if (dialog && !dialog->isInputFocused())
         {
-            if (keyboard.isActionActive(keyboard.KEY_MOVE_UP))
-                dialog->move(1);
-            else if (keyboard.isActionActive(keyboard.KEY_MOVE_DOWN))
-                dialog->move(-1);
+            if (keyboard.isActionActive(keyboard.KEY_MOVE_UP)
+                || keyboard.isActionActive(keyboard.KEY_MOVE_DOWN))
+            {
+                dialog->refocus();
+            }
         }
     }
 
