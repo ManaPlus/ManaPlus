@@ -1317,7 +1317,8 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
     if (player_node->isAlive() && (!Being::isTalking()
         || keyboard.getKeyIndex(event.key.keysym.sym)
         == KeyboardConfig::KEY_TALK)
-        && chatWindow && !chatWindow->isInputFocused() && !quitDialog)
+        && chatWindow && !chatWindow->isInputFocused()
+        && !InventoryWindow::isAnyInputFocused() && !quitDialog)
     {
         // Get the state of the keyboard keys
         keyboard.refreshActiveKeys();
