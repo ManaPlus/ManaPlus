@@ -342,7 +342,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                     weightNotice = new OkDialog(_("Message"),
                         _("You are carrying more than "
                         "half your weight. You are "
-                        "unable to regain health."), DIALOG_ERROR, false);
+                        "unable to regain health."), DIALOG_OK, false);
                     weightNotice->addActionListener(
                         &weightListener);
                 }
@@ -352,7 +352,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                     weightNotice = new OkDialog(_("Message"),
                         _("You are carrying less than "
                         "half your weight. You "
-                        "can regain health."), DIALOG_ERROR, false);
+                        "can regain health."), DIALOG_OK, false);
                     weightNotice->addActionListener(
                         &weightListener);
                 }
