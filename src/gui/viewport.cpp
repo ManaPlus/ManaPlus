@@ -413,7 +413,6 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         return;
 
     // Check if we are alive and kickin'
-//    if (!mMap || !player_node || !player_node->isAlive())
     if (!mMap || !player_node)
         return;
 
@@ -421,7 +420,6 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     // if commented, allow context menu if npc dialog open
     if (Being::isTalking())
         return;
-
 
     const int pixelX = event.getX() + static_cast<int>(mPixelViewX);
     const int pixelY = event.getY() + static_cast<int>(mPixelViewY);
@@ -459,6 +457,13 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         else if (mHoverSign)
         {
             mPopupMenu->showPopup(event.getX(), event.getY(), mHoverSign);
+            return;
+        }
+        else if (mCameraMode)
+        {
+            mPopupMenu->showMapPopup(event.getX(), event.getY(),
+                (getMouseX() + getCameraX()) / mMap->getTileWidth(),
+                (getMouseY() + getCameraY()) / mMap->getTileHeight());
             return;
         }
     }

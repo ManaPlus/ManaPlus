@@ -28,6 +28,7 @@
 #include "playerinfo.h"
 #include "units.h"
 
+#include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
@@ -257,7 +258,12 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
         static_cast<int>(scrollOffsetY));
 
     if (viewport)
+    {
+        viewport->returnCamera();
+        if (miniStatusWindow)
+            miniStatusWindow->updateStatus();
         viewport->scrollBy(scrollOffsetX, scrollOffsetY);
+    }
 }
 
 void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
