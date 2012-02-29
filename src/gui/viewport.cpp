@@ -706,6 +706,11 @@ void Viewport::showUndressPopup(int x, int y, Being *being, Item *item)
     mPopupMenu->showUndressPopup(x, y, being, item);
 }
 
+void Viewport::showMapPopup(int x, int y)
+{
+    mPopupMenu->showMapPopup(getMouseX(), getMouseY(), x, y);
+}
+
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)

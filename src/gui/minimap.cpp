@@ -401,17 +401,29 @@ void Minimap::mouseReleased(gcn::MouseEvent &event)
 {
     gcn::Window::mouseReleased(event);
 
-    if (!player_node)
+    if (!player_node || !viewport)
         return;
 
     if (event.getButton() == gcn::MouseEvent::LEFT)
     {
-        const gcn::Rectangle a = getChildrenArea();
-        const int x = event.getX() - a.x;
-        const int y = event.getY() - a.y;
+        int x = event.getX();
+        int y = event.getY();
+        screenToMap(x, y);
 
-        player_node->navigateTo((x - mMapOriginX + mWidthProportion)
-            / mWidthProportion, (y - mMapOriginY + mHeightProportion)
-            / mHeightProportion);
+        player_node->navigateTo(x, y);
     }
+    else if (event.getButton() == gcn::MouseEvent::RIGHT)
+    {
+        int x = event.getX();
+        int y = event.getY();
+        screenToMap(x, y);
+        viewport->showMapPopup(x, y);
+    }
+}
+
+void Minimap::screenToMap(int &x, int &y)
+{
+    const gcn::Rectangle a = getChildrenArea();
+    x = (x - a.x - mMapOriginX + mWidthProportion) / mWidthProportion;
+    y = (y - a.y - mMapOriginY + mHeightProportion) / mHeightProportion;
 }
