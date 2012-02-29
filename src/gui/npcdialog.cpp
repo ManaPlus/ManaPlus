@@ -363,7 +363,8 @@ bool NpcDialog::isTextInputFocused() const
 
 bool NpcDialog::isInputFocused() const
 {
-    return mTextField->isFocused() || mIntField->isFocused();
+    return mTextField->isFocused() || mIntField->isFocused()
+        || mItemList->isFocused();
 }
 
 bool NpcDialog::isAnyInputFocused()
