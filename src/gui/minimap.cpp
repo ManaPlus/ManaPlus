@@ -60,7 +60,7 @@ Minimap::Minimap():
     setDefaultSize(5, 25, 100, 100);
     // set this to false as the minimap window size is changed
     //depending on the map size
-    setResizable(false);
+    setResizable(true);
     setupWindow->registerWindowForReset(this);
 
     setDefaultVisible(true);
