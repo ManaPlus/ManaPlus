@@ -131,8 +131,7 @@ WhoIsOnline::WhoIsOnline():
 
 WhoIsOnline::~WhoIsOnline()
 {
-    config.removeListener("updateOnlineList", this);
-    config.removeListener("groupFriends", this);
+    config.removeListeners(this);
 
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, nullptr);

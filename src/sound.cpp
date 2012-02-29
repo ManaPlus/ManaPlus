@@ -66,11 +66,7 @@ Sound::Sound():
 
 Sound::~Sound()
 {
-    config.removeListener("playBattleSound", this);
-    config.removeListener("playGuiSound", this);
-    config.removeListener("playMusic", this);
-    config.removeListener("sfxVolume", this);
-    config.removeListener("musicVolume", this);
+    config.removeListeners(this);
 
     // Unlink the callback function.
     Mix_HookMusicFinished(nullptr);

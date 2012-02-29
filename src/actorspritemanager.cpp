@@ -203,11 +203,7 @@ ActorSpriteManager::ActorSpriteManager() :
 
 ActorSpriteManager::~ActorSpriteManager()
 {
-    config.removeListener("targetDeadPlayers", this);
-    config.removeListener("targetOnlyReachable", this);
-    config.removeListener("cyclePlayers", this);
-    config.removeListener("cycleMonsters", this);
-    config.removeListener("extMouseTargeting", this);
+    config.removeListeners(this);
     storeAttackList();
     clear();
 }

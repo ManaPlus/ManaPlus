@@ -617,14 +617,22 @@ void Configuration::write()
     xmlFreeTextWriter(writer);
 }
 
-void Configuration::addListener(
-        const std::string &key, ConfigListener *listener)
+void Configuration::addListener(const std::string &key,
+                                ConfigListener *listener)
 {
     mListenerMap[key].push_front(listener);
 }
 
-void Configuration::removeListener(
-        const std::string &key, ConfigListener *listener)
+void Configuration::removeListener(const std::string &key,
+                                   ConfigListener *listener)
 {
     mListenerMap[key].remove(listener);
+}
+
+void Configuration::removeListeners(ConfigListener *listener)
+{
+    ListenerMapIterator it = mListenerMap.begin();
+    ListenerMapIterator it_end = mListenerMap.end();
+    for (; it != it_end; ++ it)
+        (it->second).remove(listener);
 }

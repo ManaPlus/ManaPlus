@@ -707,11 +707,7 @@ void Client::gameClear()
 {
     if (logger)
         logger->log1("Quitting1");
-    config.removeListener("fpslimit", this);
-    config.removeListener("guialpha", this);
-    config.removeListener("gamma", this);
-    config.removeListener("particleEmitterSkip", this);
-    config.removeListener("vsync", this);
+    config.removeListeners(this);
 
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);

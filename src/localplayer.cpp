@@ -205,17 +205,8 @@ LocalPlayer::~LocalPlayer()
 {
     logger->log1("LocalPlayer::~LocalPlayer");
 
-    config.removeListener("showownname", this);
-    config.removeListener("targetDeadPlayers", this);
+    config.removeListeners(this);
     serverConfig.removeListener("enableBuggyServers", this);
-    config.removeListener("syncPlayerMove", this);
-    config.removeListener("drawPath", this);
-    config.removeListener("serverAttack", this);
-    config.removeListener("attackMoving", this);
-    config.removeListener("showJobExp", this);
-    config.removeListener("enableAdvert", this);
-    config.removeListener("tradebot", this);
-    config.removeListener("targetOnlyReachable", this);
 
     delete mAwayDialog;
     mAwayDialog = nullptr;

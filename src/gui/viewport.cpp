@@ -98,11 +98,7 @@ Viewport::Viewport():
 
 Viewport::~Viewport()
 {
-    config.removeListener("ScrollLaziness", this);
-    config.removeListener("ScrollRadius", this);
-    config.removeListener("showBeingPopup", this);
-    config.removeListener("selfMouseHeal", this);
-    config.removeListener("enableLazyScrolling", this);
+    config.removeListeners(this);
 
     delete mPopupMenu;
     mPopupMenu = nullptr;
