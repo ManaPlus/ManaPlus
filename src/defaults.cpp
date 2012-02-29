@@ -229,6 +229,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "grabinput", false);
     AddDEF(configData, "gamma", 1);
     AddDEF(configData, "vsync", 0);
+    AddDEF(configData, "enableBuggyServers", true);
     AddDEF(configData, "soundwhisper", "newmessage");
     AddDEF(configData, "soundhighlight", "reminder");
     AddDEF(configData, "soundglobal", "email");

@@ -1697,6 +1697,7 @@ void Client::initServerConfig(std::string serverName)
     {
         fclose(configFile);
         serverConfig.init(configPath);
+        serverConfig.setDefaultValues(getConfigDefaults());
         logger->log("serverConfigPath: " + configPath);
     }
     initPacketLimiter();
