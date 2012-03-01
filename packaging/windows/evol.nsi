@@ -355,6 +355,13 @@ Section /o "Portable" SecPortable
   File "portable.xml"
 SectionEnd
 
+Section /o "Debugger" SecDebug
+  SetOutPath "$INSTDIR"
+  File "${DLLDIR}\gdb.exe"
+  CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe" 1
+  CreateShortCut "$DESKTOP\EvolOnline (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe" 1
+SectionEnd
+
 Section /o "Evol Online music" SecEvolMusic
   AddSize 9787
   CreateDirectory "$INSTDIR\data\music"
@@ -376,6 +383,7 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvolMusic} "Background evol music. (If selected the evol music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to find stability problems."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
@@ -412,8 +420,10 @@ Section Uninstall
 
   Delete "$SMPROGRAMS\EvolOnline\Uninstall.lnk"
   Delete "$DESKTOP\EvolOnline.lnk"
+  Delete "$DESKTOP\EvolOnline (debug).lnk"
   Delete "$DESKTOP\EvolOnline (tests).lnk"
   Delete "$SMPROGRAMS\EvolOnline\EvolOnline.lnk"
+  Delete "$SMPROGRAMS\EvolOnline\EvolOnline (debug).lnk"
   Delete "$SMPROGRAMS\EvolOnline\EvolOnline (no opengl).lnk"
   Delete "$SMPROGRAMS\EvolOnline\EvolOnline (safemode).lnk"
   Delete "$SMPROGRAMS\EvolOnline\EvolOnline (tests).lnk"
