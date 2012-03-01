@@ -252,6 +252,7 @@ Makefile
 PKGBUILD
 src/Makefile
 data/Makefile
+data/evol/Makefile
 data/fonts/Makefile
 data/graphics/Makefile
 data/graphics/gui/Makefile
