@@ -131,6 +131,8 @@ class OpenGLGraphics : public Graphics
 
         void drawLineArrayf(int size);
 
+        static void dumpSettings();
+
         /**
          * Takes a screenshot and returns it as SDL surface.
          */

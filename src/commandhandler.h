@@ -304,6 +304,8 @@ class CommandHandler
 
         void handleDumpTests(const std::string &args, ChatTab *tab);
 
+        void handleDumpOGL(const std::string &args, ChatTab *tab);
+
         void outString(ChatTab *tab, const std::string &str,
                        const std::string &def);
 

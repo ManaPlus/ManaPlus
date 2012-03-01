@@ -307,6 +307,7 @@ void ChatWindow::fillCommands()
     mCommands.push_back("/serverunignoreall");
     mCommands.push_back("/dumpg");
     mCommands.push_back("/dumpt");
+    mCommands.push_back("/dumpogl");
     mCommands.push_back("/pseudoaway ");
     mCommands.push_back("<PLAYER>");
     mCommands.push_back("<MONSTER>");

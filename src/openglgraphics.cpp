@@ -1351,4 +1351,24 @@ inline void OpenGLGraphics::drawLineArrayf(int size)
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
+void OpenGLGraphics::dumpSettings()
+{
+    GLint test[1000];
+    logger->log("\n\n");
+    logger->log("start opengl dump");
+    for (int f = 0; f < 65535; f ++)
+    {
+        test[0] = 0;
+        test[1] = 0;
+        test[2] = 0;
+        test[3] = 0;
+        glGetIntegerv(f, &test[0]);
+        if (test[0] || test[1] || test[2] || test[3])
+        {
+            logger->log("%d = %d, %d, %d, %d", f, test[0], test[1], test[2], test[3]);
+        }
+    }
+    logger->log("end opengl dump\n\n");
+}
+
 #endif // USE_OPENGL
