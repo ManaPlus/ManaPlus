@@ -5,8 +5,6 @@ SET (FILES
     buttonhi.png
     buttonpress.png
     checkbox.png
-    circle-gray.png
-    circle-green.png
     close_button.png
     colors.xml
     deepbox.png
@@ -17,7 +15,6 @@ SET (FILES
     hscroll_right_highlight.png
     hscroll_right_pressed.png
     item_shortcut_bgr.png
-    mouse.png
     progress-indicator.png
     radioin.png
     radioin_highlight.png
@@ -27,17 +24,10 @@ SET (FILES
     selection.png
     slider.png
     slider_hilight.png
-    speechbubble.xml
     sticky_button.png
     tab.png
     tab_hilight.png
     tabselected.png
-    target-cursor-blue-l.png
-    target-cursor-blue-m.png
-    target-cursor-blue-s.png
-    target-cursor-red-l.png
-    target-cursor-red-m.png
-    target-cursor-red-s.png
     unknown-item.png
     vscroll_down_default.png
     vscroll_down_highlight.png

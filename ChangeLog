@@ -1,3 +1,18 @@
+2012-02-19 New release 1.2.2.19
+add: client data translations (items, etc).
+add: increased max value for drop counter from 9 to 30.
+add: chat command /setdrop N. to set drop counter from scripts.
+add: hide map layers feature.
+add: show gms with green color in online list (evol server).
+add: relative position for floor items (item drops).
+add: option to enable/disable grouping friends in online list.
+add: enable chat logging by default.
+add: set default max chat lines to 40.
+add: update windows libs.
+add: center game on screen in windows and osx.
+add: race name to status and debug windows.
+add: update liberation and mplus fonts.
+
 2012-02-05 New release 1.2.2.5
 ManaPlus:
 fix: particle font in japan localisation.

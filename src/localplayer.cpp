@@ -205,17 +205,8 @@ LocalPlayer::~LocalPlayer()
 {
     logger->log1("LocalPlayer::~LocalPlayer");
 
-    config.removeListener("showownname", this);
-    config.removeListener("targetDeadPlayers", this);
+    config.removeListeners(this);
     serverConfig.removeListener("enableBuggyServers", this);
-    config.removeListener("syncPlayerMove", this);
-    config.removeListener("drawPath", this);
-    config.removeListener("serverAttack", this);
-    config.removeListener("attackMoving", this);
-    config.removeListener("showJobExp", this);
-    config.removeListener("enableAdvert", this);
-    config.removeListener("tradebot", this);
-    config.removeListener("targetOnlyReachable", this);
 
     delete mAwayDialog;
     mAwayDialog = nullptr;
@@ -1677,7 +1668,7 @@ void LocalPlayer::processEvent(Channels channel,
                                  - event.getInt("oldValue");
 
                     if (change != 0)
-                        addMessageToQueue(toString(change) + " xp");
+                        addMessageToQueue(strprintf("%d %s", change, _("xp")));
                     break;
                 }
                 case LEVEL:
@@ -1711,7 +1702,8 @@ void LocalPlayer::processEvent(Channels channel,
                         MessagePair pair = mMessages.back();
                         // TRANSLATORS: this is normal experience
                         if (pair.first.find(strprintf(" %s",
-                            _("xp"))) == pair.first.size() - 3)
+                            _("xp"))) == pair.first.size()
+                            - strlen(_("xp")) - 1)
                         {
                             mMessages.pop_back();
                             // TRANSLATORS: this is job experience
@@ -2063,7 +2055,7 @@ std::string LocalPlayer::getQuickDropCounterString()
 
 void LocalPlayer::setQuickDropCounter(int n)
 {
-    if (n < 1 || n >= (signed)quickDropCounterSize)
+    if (n < 1 || n >= static_cast<signed>(quickDropCounterSize))
         return;
     mQuickDropCounter = n;
     config.setValue("quickDropCounter", mQuickDropCounter);
@@ -2152,7 +2144,7 @@ static const char *pvpAttackStrings[] =
     N_("(a) attack all players"),
     N_("(f) attack all except friends"),
     N_("(b) attack bad relations"),
-    N_("(d) dont attack players"),
+    N_("(d) don't attack players"),
     N_("(?) pvp attack")
 };
 
@@ -2203,7 +2195,8 @@ void LocalPlayer::changeAwayMode()
         if (outfitWindow)
             outfitWindow->wearAwayOutfit();
         mAwayDialog = new OkDialog(_("Away"),
-            config.getStringValue("afkMessage"), true, false);
+            config.getStringValue("afkMessage"),
+            DIALOG_SILENCE, true, false);
         mAwayDialog->addActionListener(mAwayListener);
         sound.volumeOff();
     }
@@ -3168,14 +3161,10 @@ void LocalPlayer::specialMove(unsigned char direction)
         && getInvertDirection() <= 4)
         && !mIsServerBuggy)
     {
-        int max;
-        if (getInvertDirection() == 2)
-            max = 10;
-        else
-            max = 30;
-
         if (mAction == MOVE)
             return;
+
+        int max;
 
         if (getInvertDirection() == 2)
             max = 5;
@@ -4150,7 +4139,7 @@ void LocalPlayer::checkNewName(Being *being)
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
         debugMsg(_("You see ") + mWaitFor);
-        sound.playGuiSfx("system/newmessage.ogg");
+        sound.playGuiSound(SOUND_INFO);
         mWaitFor = "";
     }
 }

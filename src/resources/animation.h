@@ -102,13 +102,19 @@ class Animation
 
         void addGoto(std::string name, int rand);
 
+        void setLastFrameDelay(int delay);
+
         /**
          * Determines whether the given animation frame is a terminator.
          */
         static bool isTerminator(const Frame &phase);
 
     protected:
-        std::vector<Frame> mFrames;
+        typedef std::vector<Frame> Frames;
+        typedef Frames::iterator FramesIter;
+        typedef Frames::reverse_iterator FramesRevIter;
+
+        Frames mFrames;
         int mDuration;
 };
 

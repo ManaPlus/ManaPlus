@@ -89,7 +89,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~ListBox() { }
+        virtual ~ListBox()
+        { }
 
         /**
          * Gets the selected item as an index in the list model.

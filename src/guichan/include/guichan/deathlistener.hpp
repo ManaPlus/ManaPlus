@@ -66,7 +66,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~DeathListener() { }
+        virtual ~DeathListener()
+        { }
 
         /**
          * Called when a widget dies. It is used to be able to recieve
@@ -83,8 +84,8 @@ namespace gcn
          * You should not be able to make an instance of DeathListener,
          * therefore its constructor is protected.
          */
-        DeathListener() { }
-
+        DeathListener()
+        { }
     };
 }
 

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cppcheck --enable=style --enable=information --enable=unusedFunction --force -j 5 -v .. 1>makecheck.txt 2>logs/cppcheck1.txt

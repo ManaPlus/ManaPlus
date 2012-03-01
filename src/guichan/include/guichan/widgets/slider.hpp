@@ -94,7 +94,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~Slider() { }
+        virtual ~Slider()
+        { }
 
         /**
          * Sets the scale of the slider.

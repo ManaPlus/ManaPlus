@@ -6,6 +6,7 @@ gui_DATA =				\
 	button.png			\
 	button_disabled.png		\
 	buttonhi.png			\
+	buttonplay.png			\
 	buttonpress.png			\
 	checkbox.png			\
 	circle-gray.png			\

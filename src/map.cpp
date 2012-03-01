@@ -177,9 +177,7 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
 
 Map::~Map()
 {
-    config.removeListener("OverlayDetail", this);
-    config.removeListener("guialpha", this);
-    config.removeListener("beingopacity", this);
+    config.removeListeners(this);
 
     // delete metadata, layers, tilesets and overlays
     delete [] mMetaTiles;

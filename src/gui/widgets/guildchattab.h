@@ -44,6 +44,8 @@ class GuildChatTab : public ChatTab
         int getType() const
         { return ChatTab::TAB_GUILD; }
 
+        void playNewMessageSound();
+
     protected:
         void handleInput(const std::string &msg);
 

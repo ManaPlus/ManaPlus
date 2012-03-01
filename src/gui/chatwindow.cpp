@@ -133,7 +133,8 @@ const char *COLOR_NAME[14] =
 class ColorListModel : public gcn::ListModel
 {
 public:
-    virtual ~ColorListModel() { }
+    virtual ~ColorListModel()
+    { }
 
     virtual int getNumberOfElements()
     {

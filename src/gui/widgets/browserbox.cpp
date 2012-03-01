@@ -232,15 +232,17 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
                         tempRow.substr(nextChar,
                         (nextSpacePos - nextChar)));
 
-                    if ((x + nextWordWidth + 10) > (unsigned)getWidth())
+                    if ((x + nextWordWidth + 10)
+                        > static_cast<unsigned>(getWidth()))
                     {
                         x = 15; // Ident in new line
                         y += 1;
-                        j++;
+                        j ++;
                     }
                 }
                 // Wrapping looong lines (brutal force)
-                else if ((x + 2 * hyphenWidth) > (unsigned)getWidth())
+                else if ((x + 2 * hyphenWidth)
+                         > static_cast<unsigned>(getWidth()))
                 {
                     x = 15; // Ident in new line
                     y += 1;
@@ -249,7 +251,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         }
 
         setHeight(font->getHeight() * (static_cast<int>(
-                  mTextRows.size()) + y));
+            mTextRows.size()) + y));
     }
     else
     {
@@ -423,7 +425,7 @@ int BrowserBox::calcHeight()
         if (row.find("---", 0) == 0)
         {
             const int dashWidth = fontWidthMinus;
-            for (x = 0; x < (unsigned)getWidth(); x++)
+            for (x = 0; x < static_cast<unsigned>(getWidth()); x ++)
             {
                 mLineParts.push_back(LinePart(x, y, selColor, "-", false));
                 x += dashWidth - 2;
@@ -557,9 +559,8 @@ int BrowserBox::calcHeight()
                 width = font->getWidth(part);
 
             // Auto wrap mode
-            if (mMode == AUTO_WRAP && getWidth() > 0
-                && width > 0
-                && (x + width + 10) > (unsigned)getWidth())
+            if (mMode == AUTO_WRAP && getWidth() > 0 && width > 0
+                && (x + width + 10) > static_cast<unsigned>(getWidth()))
             {
                 bool forced = false;
 
@@ -592,9 +593,8 @@ int BrowserBox::calcHeight()
                     else
                         width = font->getWidth(part);
                 }
-                while (end > start && width > 0
-                       && (x + width + 10)
-                       > (unsigned)getWidth());
+                while (end > start && width > 0 && (x + width + 10)
+                       > static_cast<unsigned>(getWidth()));
 
                 if (forced)
                 {

@@ -206,4 +206,6 @@ std::string &removeProtocol(std::string &url);
 
 bool strStartWith(std::string str, std::string start);
 
+std::string getDateString();
+
 #endif // UTILS_STRINGUTILS_H

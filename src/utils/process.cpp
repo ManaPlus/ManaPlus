@@ -112,12 +112,12 @@ int execFile(std::string pathName, std::string name,
             if (arg2.empty())
             {
                 execl(pathName.c_str(), name.c_str(),
-                      arg1.c_str(), (char *)nullptr);
+                   arg1.c_str(), static_cast<char *>(nullptr));
             }
             else
             {
-                execl(pathName.c_str(), name.c_str(),
-                      arg1.c_str(), arg2.c_str(), (char *)nullptr);
+                execl(pathName.c_str(), name.c_str(), arg1.c_str(),
+                    arg2.c_str(), static_cast<char *>(nullptr));
             }
             exit(-1);
         }
@@ -130,7 +130,7 @@ int execFile(std::string pathName, std::string name,
         }
         else if (!sleep_pid)
         {   // sleep pid
-            sleep (timeOut);
+            sleep (waitTime);
 //            printf ("time out\n");
             exit(-1);
         }

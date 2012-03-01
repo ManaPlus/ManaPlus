@@ -70,7 +70,8 @@ namespace gcn
         /**
          * Destructor.
          */
-        virtual ~KeyListener() { }
+        virtual ~KeyListener()
+        { }
 
         /**
          * Called if a key is pressed when the widget has keyboard focus.
@@ -79,14 +80,16 @@ namespace gcn
          *
          * @param keyEvent Discribes the event.
          */
-        virtual void keyPressed(KeyEvent& keyEvent A_UNUSED) { }
+        virtual void keyPressed(KeyEvent& keyEvent A_UNUSED)
+        { }
 
         /**
          * Called if a key is released when the widget has keyboard focus.
          *
          * @param keyEvent Discribes the event.
          */
-        virtual void keyReleased(KeyEvent& keyEvent A_UNUSED) { }
+        virtual void keyReleased(KeyEvent& keyEvent A_UNUSED)
+        { }
 
     protected:
         /**
@@ -95,7 +98,8 @@ namespace gcn
          * You should not be able to make an instance of KeyListener,
          * therefore its constructor is protected.
          */
-        KeyListener() { }
+        KeyListener()
+        { }
     };
 }
 

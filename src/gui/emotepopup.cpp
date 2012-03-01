@@ -197,12 +197,15 @@ void EmotePopup::recalculateSize()
         ++mRowCount;
 
     if (mRowCount)
+    {
         mColumnCount = emoteCount / mRowCount;
+        if (emoteCount % mRowCount > 0)
+            ++ mColumnCount;
+    }
     else
+    {
         mColumnCount = 1;
-
-    if (emoteCount % mRowCount > 0)
-        ++mColumnCount;
+    }
 
     setContentSize(mColumnCount * gridWidth, mRowCount * gridHeight);
 }

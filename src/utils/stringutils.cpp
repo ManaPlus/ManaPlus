@@ -28,6 +28,8 @@
 #include <cstdio>
 #include <list>
 
+#include <sys/time.h>
+
 #include "debug.h"
 
 static int UTF8_MAX_SIZE = 10;
@@ -520,9 +522,9 @@ std::string stringToHexPath(const std::string &str)
     if (str.empty())
         return "";
 
-    std::string hex = strprintf("%%%2x/", (int)str[0]);
+    std::string hex = strprintf("%%%2x/", static_cast<int>(str[0]));
     for (unsigned f = 1; f < str.size(); f ++)
-        hex += strprintf("%%%2x", (int)str[f]);
+        hex += strprintf("%%%2x", static_cast<int>(str[f]));
     return hex;
 }
 
@@ -598,7 +600,7 @@ bool findCutFirst(std::string &str1, std::string str2)
 std::string &removeProtocol(std::string &url)
 {
     int i = url.find("://");
-    if (i != (int)std::string::npos)
+    if (i != static_cast<int>(std::string::npos))
         url = url.substr(i + 3);
     return url;
 }
@@ -608,4 +610,18 @@ bool strStartWith(std::string str1, std::string str2)
     if (str1.size() < str2.size())
         return false;
     return str1.substr(0, str2.size()) == str2;
+}
+
+std::string getDateString()
+{
+    char buffer[80];
+
+    time_t rawtime;
+    struct tm *timeinfo;
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer, 79, "%Y-%m-%d", timeinfo);
+    return std::string(buffer);
 }

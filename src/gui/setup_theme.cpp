@@ -1,8 +1,8 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
- *  Copyright (C) 2010  Andrei Karas
- *  Copyright (C) 2011  ManaPlus developers
+ *  Copyright (C) 2009-2010  Andrei Karas
+ *  Copyright (C) 2011-2012  The ManaPlus developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -17,8 +17,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "gui/setup_theme.h"
@@ -30,10 +29,11 @@
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
+#include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 #include "gui/widgets/textfield.h"
-#include "gui/widgets/dropdown.h"
 
 #include "configuration.h"
 #include "localplayer.h"
@@ -53,32 +53,6 @@ const char* ACTION_PARTICLE_FONT = "particle font";
 const char* ACTION_HELP_FONT = "help font";
 const char* ACTION_SECURE_FONT = "secure font";
 const char* ACTION_JAPAN_FONT = "japan font";
-
-class NamesModel : public gcn::ListModel
-{
-public:
-    NamesModel()
-    {
-    }
-
-    virtual ~NamesModel() { }
-
-    virtual int getNumberOfElements()
-    {
-        return static_cast<int>(mNames.size());
-    }
-
-    virtual std::string getElementAt(int i)
-    {
-        if (i >= getNumberOfElements() || i < 0)
-            return _("???");
-
-        return mNames[i];
-    }
-
-protected:
-    std::vector<std::string> mNames;
-};
 
 class ThemesModel : public NamesModel
 {
@@ -375,8 +349,8 @@ void Setup_Theme::apply()
     if (config.getValue("theme",
         config.getValue("selectedSkin", "")) != mTheme)
     {
-        new OkDialog(_("Theme Changed"),
-                     _("Restart your client for the change to take effect."));
+        new OkDialog(_("Theme Changed"), _("Restart your client for "
+            "the change to take effect."));
     }
 
     config.setValue("selectedSkin", "");

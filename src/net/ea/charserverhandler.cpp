@@ -167,7 +167,7 @@ void CharServerHandler::processCharCreateFailed(Net::MessageIn &msg)
             errorMessage = _("Incorrect race.");
             break;
     }
-    new OkDialog(_("Error"), errorMessage);
+    new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
     if (mCharCreateDialog)
         mCharCreateDialog->unlock();
 }
@@ -185,7 +185,7 @@ void CharServerHandler::processCharDelete(Net::MessageIn &msg A_UNUSED)
 void CharServerHandler::processCharDeleteFailed(Net::MessageIn &msg A_UNUSED)
 {
     unlockCharSelectDialog();
-    new OkDialog(_("Error"), _("Failed to delete character."));
+    new OkDialog(_("Error"), _("Failed to delete character."), DIALOG_ERROR);
 }
 
 void CharServerHandler::clear()

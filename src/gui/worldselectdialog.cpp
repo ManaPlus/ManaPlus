@@ -54,7 +54,8 @@ class WorldListModel : public gcn::ListModel
         {
         }
 
-        virtual ~WorldListModel() {}
+        virtual ~WorldListModel()
+        { }
 
         int getNumberOfElements()
         {

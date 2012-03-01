@@ -22,6 +22,8 @@
 
 #include "gui/okdialog.h"
 
+#include "sound.h"
+
 #include "gui/gui.h"
 
 #include "gui/widgets/button.h"
@@ -34,7 +36,8 @@
 #include "debug.h"
 
 OkDialog::OkDialog(const std::string &title, const std::string &msg,
-                   bool modal, bool showCenter, Window *parent):
+                   int soundEvent, bool modal, bool showCenter,
+                   Window *parent):
     Window(title, modal, parent, "ok.xml")
 {
     mTextBox = new TextBox;
@@ -71,6 +74,11 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
         centerHorisontally();
     setVisible(true);
     okButton->requestFocus();
+
+    if (soundEvent == DIALOG_OK)
+        sound.playGuiSound(SOUND_INFO);
+    else if (soundEvent == DIALOG_ERROR)
+        sound.playGuiSound(SOUND_ERROR);
 }
 
 void OkDialog::action(const gcn::ActionEvent &event)

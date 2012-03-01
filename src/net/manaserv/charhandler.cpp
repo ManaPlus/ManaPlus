@@ -181,7 +181,7 @@ void CharHandler::handleCharacterCreateResponse(Net::MessageIn &msg)
                 errorMessage = _("Unknown error.");
                 break;
         }
-        new OkDialog(_("Error"), errorMessage);
+        new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
 
         if (mCharCreateDialog)
             mCharCreateDialog->unlock();
@@ -224,7 +224,7 @@ void CharHandler::handleCharacterDeleteResponse(Net::MessageIn &msg)
             default:
                 errorMessage = strprintf(_("Unknown error (%d)."), errMsg);
         }
-        new OkDialog(_("Error"), errorMessage);
+        new OkDialog(_("Error"), errorMessage, DIALOG_ERROR);
     }
     mSelectedCharacter = 0;
     unlockCharSelectDialog();

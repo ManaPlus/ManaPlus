@@ -173,7 +173,7 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
         {
             OkDialog *dlg = new OkDialog(_("Error"),
                 _("Please at least type both the address and the port "
-                  "of the server."));
+                  "of the server."), DIALOG_ERROR);
             dlg->addActionListener(this);
         }
         else
@@ -184,7 +184,8 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
             mServer.name = mNameField->getText();
             mServer.description = mDescriptionField->getText();
             mServer.hostname = mServerAddressField->getText();
-            mServer.port = (short) atoi(mPortField->getText().c_str());
+            mServer.port = static_cast<short>(atoi(
+                mPortField->getText().c_str()));
 
             if (mTypeField)
             {

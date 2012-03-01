@@ -23,7 +23,9 @@
 #ifndef UTILS_MATHUTILS_H
 #define UTILS_MATHUTILS_H
 
+#include <string>
 #include <stdint.h>
+#include <cstring>
 
 static uint16_t crc_table[256] =
 {
@@ -110,6 +112,11 @@ inline float weightedAverage(float n1, float n2, float w)
         return n2;
 
     return w * n2 + (1.0f - w) * n1;
+}
+
+inline int roundDouble(double v)
+{
+    return (v > 0.0) ? (v + 0.5) : (v - 0.5); 
 }
 
 #endif // UTILS_MATHUTILS_H

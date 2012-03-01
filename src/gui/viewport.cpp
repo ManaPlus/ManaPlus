@@ -98,11 +98,7 @@ Viewport::Viewport():
 
 Viewport::~Viewport()
 {
-    config.removeListener("ScrollLaziness", this);
-    config.removeListener("ScrollRadius", this);
-    config.removeListener("showBeingPopup", this);
-    config.removeListener("selfMouseHeal", this);
-    config.removeListener("enableLazyScrolling", this);
+    config.removeListeners(this);
 
     delete mPopupMenu;
     mPopupMenu = nullptr;
@@ -199,7 +195,8 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 //                if (debugChatTab)
 //                    debugChatTab->chatLog("incorrect player position!");
                 logger->log("incorrect player position: %d, %d, %d, %d",
-                    player_x, player_y, (int)mPixelViewX, (int)mPixelViewY);
+                    player_x, player_y, static_cast<int>(mPixelViewX),
+                    static_cast<int>(mPixelViewY));
                 if (player_node)
                 {
                     logger->log("tile position: %d, %d",
@@ -412,7 +409,6 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         return;
 
     // Check if we are alive and kickin'
-//    if (!mMap || !player_node || !player_node->isAlive())
     if (!mMap || !player_node)
         return;
 
@@ -420,7 +416,6 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     // if commented, allow context menu if npc dialog open
     if (Being::isTalking())
         return;
-
 
     const int pixelX = event.getX() + static_cast<int>(mPixelViewX);
     const int pixelY = event.getY() + static_cast<int>(mPixelViewY);
@@ -458,6 +453,13 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         else if (mHoverSign)
         {
             mPopupMenu->showPopup(event.getX(), event.getY(), mHoverSign);
+            return;
+        }
+        else if (mCameraMode)
+        {
+            mPopupMenu->showMapPopup(event.getX(), event.getY(),
+                (getMouseX() + getCameraX()) / mMap->getTileWidth(),
+                (getMouseY() + getCameraY()) / mMap->getTileHeight());
             return;
         }
     }
@@ -705,6 +707,11 @@ void Viewport::showUndressPopup(int x, int y, Being *being, Item *item)
     mPopupMenu->showUndressPopup(x, y, being, item);
 }
 
+void Viewport::showMapPopup(int x, int y)
+{
+    mPopupMenu->showMapPopup(getMouseX(), getMouseY(), x, y);
+}
+
 void Viewport::closePopupMenu()
 {
     if (mPopupMenu)
@@ -879,7 +886,7 @@ bool Viewport::isPopupMenuVisible()
 
 void Viewport::moveCameraToActor(int actorId, int x, int y)
 {
-    if (!player_node)
+    if (!player_node || !actorSpriteManager)
         return;
 
     Actor *actor = actorSpriteManager->findBeing(actorId);

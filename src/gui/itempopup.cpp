@@ -123,7 +123,7 @@ void ItemPopup::setItem(const Item *item, bool showImage)
         }
         mItemName->adjustSize();
         unsigned minWidth = mItemName->getWidth() + 8;
-        if ((unsigned)getWidth() < minWidth)
+        if (static_cast<unsigned>(getWidth()) < minWidth)
             setWidth(minWidth);
     }
 }

@@ -42,7 +42,8 @@ public:
      */
     virtual void modelUpdated(bool completed) = 0;
 
-    virtual ~TableModelListener() {}
+    virtual ~TableModelListener()
+    { }
 };
 
 /**

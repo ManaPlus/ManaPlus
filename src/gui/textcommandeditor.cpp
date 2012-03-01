@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
- *  Copyright (C) 2011  ManaPlus developers
+ *  Copyright (C) 2011-2012  The ManaPlus developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -17,8 +17,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "gui/textcommandeditor.h"
@@ -128,7 +127,8 @@ const char *MAGIC_SCHOOL_TEXT[6] =
 class TargetTypeModel : public gcn::ListModel
 {
 public:
-    virtual ~TargetTypeModel() { }
+    virtual ~TargetTypeModel()
+    { }
 
     virtual int getNumberOfElements()
     {
@@ -147,7 +147,8 @@ public:
 class MagicSchoolModel : public gcn::ListModel
 {
 public:
-    virtual ~MagicSchoolModel() { }
+    virtual ~MagicSchoolModel()
+    { }
 
     virtual int getNumberOfElements()
     {

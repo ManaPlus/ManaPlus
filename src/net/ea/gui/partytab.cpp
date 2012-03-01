@@ -26,6 +26,7 @@
 #include "commandhandler.h"
 #include "localplayer.h"
 #include "party.h"
+#include "sound.h"
 
 #include "gui/theme.h"
 
@@ -241,4 +242,8 @@ void PartyTab::saveToLogFile(std::string &msg)
         chatLogger->log("#Party", msg);
 }
 
+void PartyTab::playNewMessageSound()
+{
+    sound.playGuiSound(SOUND_GUILD);
+}
 } // namespace Ea

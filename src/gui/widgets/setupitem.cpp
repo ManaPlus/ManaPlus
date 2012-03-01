@@ -23,8 +23,10 @@
 #include "configuration.h"
 #include "main.h"
 #include "logger.h"
+#include "sound.h"
 
 #include "gui/editdialog.h"
+#include "gui/gui.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
@@ -33,13 +35,19 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/slider.h"
+#include "gui/widgets/sliderlist.h"
 #include "gui/widgets/tabbedarea.h"
 #include "gui/widgets/textfield.h"
 #include "gui/widgets/vertcontainer.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
+#include "utils/mathutils.h"
 
+#include <guichan/font.hpp>
+
+#include "debug.h"
 
 SetupItem::SetupItem(std::string text, std::string description,
                      std::string keyName, SetupTabScroll *parent,
@@ -163,6 +171,12 @@ void SetupItem::externalUpdated(std::string eventName A_UNUSED)
     toWidget();
 }
 
+void SetupItem::fixFirstItemSize(gcn::Widget *widget)
+{
+    if (widget->getWidth() < mParent->getPreferredFirstItemSize())
+        widget->setWidth(mParent->getPreferredFirstItemSize());
+}
+
 SetupItemCheckBox::SetupItemCheckBox(std::string text, std::string description,
                                      std::string keyName,
                                      SetupTabScroll *parent,
@@ -271,6 +285,7 @@ void SetupItemTextField::createControls()
     mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(200);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
@@ -394,6 +409,7 @@ void SetupItemIntTextField::createControls()
     mButton = new Button(_("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;
     mTextField->setWidth(50);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mTextField);
     mHorizont->add(mButton);
@@ -564,6 +580,7 @@ void SetupItemDropDown::createControls()
 
     mWidget = mDropDown;
 //    mTextField->setWidth(50);
+    fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mDropDown);
 
@@ -587,4 +604,403 @@ void SetupItemDropDown::toWidget()
         return;
 
     mDropDown->setSelectedString(mValue);
+}
+
+
+SetupItemSlider::SetupItemSlider(std::string text, std::string description,
+                                 std::string keyName, SetupTabScroll *parent,
+                                 std::string eventName, double min, double max,
+                                 int width, bool onTheFly, bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mMin(min),
+    mMax(max),
+    mWidth(width),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider::SetupItemSlider(std::string text, std::string description,
+                                 std::string keyName, SetupTabScroll *parent,
+                                 std::string eventName, double min, double max,
+                                 std::string def, int width, bool onTheFly,
+                                 bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mMin(min),
+    mMax(max),
+    mWidth(width),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider::~SetupItemSlider()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mSlider = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemSlider::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    mLabel = new Label(mText);
+    mSlider = new Slider(mMin, mMax);
+    mSlider->setActionEventId(mEventName);
+    mSlider->addActionListener(mParent);
+    mSlider->setValue(atof(mValue.c_str()));
+    mSlider->setHeight(30);
+
+    mWidget = mSlider;
+    mSlider->setWidth(mWidth);
+    mSlider->setHeight(40);
+    fixFirstItemSize(mLabel);
+    mHorizont->add(mLabel);
+    mHorizont->add(mSlider, -10);
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+void SetupItemSlider::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    mValue = toString(mSlider->getValue());
+}
+
+void SetupItemSlider::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    mSlider->setValue(atof(mValue.c_str()));
+}
+
+void SetupItemSlider::action(const gcn::ActionEvent &event A_UNUSED)
+{
+    fromWidget();
+    if (mOnTheFly)
+        save();
+}
+
+void SetupItemSlider::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
+}
+
+
+SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
+                                   std::string keyName, SetupTabScroll *parent,
+                                   std::string eventName, int min, int max,
+                                   SetupItemNames *values, bool onTheFly,
+                                   bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mLabel2(nullptr),
+    mSlider(nullptr),
+    mValues(values),
+    mMin(min),
+    mMax(max),
+    mInvert(false),
+    mInvertValue(0),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
+                                   std::string keyName, SetupTabScroll *parent,
+                                   std::string eventName, int min, int max,
+                                   SetupItemNames *values, std::string def,
+                                   bool onTheFly, bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mLabel2(nullptr),
+    mSlider(nullptr),
+    mValues(values),
+    mMin(min),
+    mMax(max),
+    mInvert(false),
+    mInvertValue(0),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemSlider2::~SetupItemSlider2()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mSlider = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemSlider2::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    int width = getMaxWidth();
+
+    mLabel = new Label(mText);
+    mLabel2 = new Label("");
+    mLabel2->setWidth(width);
+    mSlider = new Slider(mMin, mMax);
+    mSlider->setActionEventId(mEventName);
+    mSlider->addActionListener(mParent);
+    mSlider->setValue(atof(mValue.c_str()));
+    mSlider->setHeight(30);
+
+    mWidget = mSlider;
+    mSlider->setWidth(150);
+    mSlider->setHeight(40);
+    fixFirstItemSize(mLabel);
+    mHorizont->add(mLabel);
+    mHorizont->add(mSlider, -10);
+    mHorizont->add(mLabel2);
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+    updateLabel();
+}
+
+int SetupItemSlider2::getMaxWidth()
+{
+    if (!mValues || !gui)
+        return 1;
+
+    int maxWidth = 0;
+    SetupItemNamesConstIter it = mValues->begin();
+    SetupItemNamesConstIter it_end = mValues->end();
+    gcn::Font *font = gui->getFont();
+
+    while (it != it_end)
+    {
+        int w = font->getWidth(*it);
+        if (w > maxWidth)
+            maxWidth = w;
+
+        ++ it;
+    }
+    return maxWidth;
+}
+
+void SetupItemSlider2::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    int val = roundDouble(mSlider->getValue());
+    if (mInvert)
+        val = mInvertValue - val;
+    mValue = toString(val);
+}
+
+void SetupItemSlider2::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    int val = roundDouble(atof(mValue.c_str()));
+    if (mInvert)
+        val = mInvertValue - val;
+    mSlider->setValue(val);
+    updateLabel();
+}
+
+void SetupItemSlider2::action(const gcn::ActionEvent &event A_UNUSED)
+{
+    fromWidget();
+    updateLabel();
+    if (mOnTheFly)
+        save();
+}
+
+void SetupItemSlider2::updateLabel()
+{
+    int val = mSlider->getValue() - mMin;
+    if (val < 0)
+        val = 0;
+    else if (val >= static_cast<signed>(mValues->size()))
+        val = static_cast<signed>(mValues->size()) - 1;
+    std::string str = mValues->at(val);
+    mLabel2->setCaption(str);
+}
+
+void SetupItemSlider2::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
+}
+
+void SetupItemSlider2::setInvertValue(int v)
+{
+    mInvert = true;
+    mInvertValue = v;
+    toWidget();
+}
+
+
+SetupItemSliderList::SetupItemSliderList(std::string text,
+                                         std::string description,
+                                         std::string keyName,
+                                         SetupTabScroll *parent,
+                                         std::string eventName,
+                                         gcn::ListModel *model,
+                                         int width, bool onTheFly,
+                                         bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mModel(model),
+    mWidth(width),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+//    createControls();
+}
+
+SetupItemSliderList::SetupItemSliderList(std::string text,
+                                         std::string description,
+                                         std::string keyName,
+                                         SetupTabScroll *parent,
+                                         std::string eventName,
+                                         gcn::ListModel *model,
+                                         std::string def, int width,
+                                         bool onTheFly, bool mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mSlider(nullptr),
+    mModel(model),
+    mWidth(width),
+    mOnTheFly(onTheFly)
+{
+    mValueType = VSTR;
+//    createControls();
+}
+
+SetupItemSliderList::~SetupItemSliderList()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mSlider = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemSliderList::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(32, 2);
+
+    mLabel = new Label(mText);
+    mSlider = new SliderList(mModel, mParent, mEventName);
+    mSlider->setSelectedString(mValue);
+    mSlider->adjustSize();
+
+    mWidget = mSlider;
+    fixFirstItemSize(mLabel);
+    mHorizont->add(mLabel, 5);
+    mHorizont->add(mSlider);
+
+    addMoreControls();
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+void SetupItemSliderList::fromWidget()
+{
+    if (!mSlider)
+        return;
+
+    mValue = mSlider->getSelectedString();
+}
+
+void SetupItemSliderList::toWidget()
+{
+    if (!mSlider)
+        return;
+
+    mSlider->setSelectedString(mValue);
+}
+
+void SetupItemSliderList::action(const gcn::ActionEvent &event A_UNUSED)
+{
+    fromWidget();
+    if (mOnTheFly)
+        save();
+}
+
+void SetupItemSliderList::apply(std::string eventName)
+{
+    if (eventName != mEventName)
+        return;
+
+    fromWidget();
+    save();
+}
+
+SetupItemSound::SetupItemSound(std::string text, std::string description,
+                               std::string keyName, SetupTabScroll *parent,
+                               std::string eventName, gcn::ListModel *model,
+                               int width, bool onTheFly, bool mainConfig) :
+    SetupItemSliderList(text, description, keyName, parent, eventName,
+                        model, width, onTheFly, mainConfig),
+    mButton(nullptr)
+{
+    createControls();
+}
+
+void SetupItemSound::addMoreControls()
+{
+    mButton = new Button(BUTTON_PLAY, 16, 16, mEventName + "_PLAY", this);
+    mHorizont->add(mButton);
+}
+
+void SetupItemSound::action(const gcn::ActionEvent &event)
+{
+    if (event.getId() == mEventName + "_PLAY")
+    {
+        if (mSlider->getSelected())
+        {
+            sound.playGuiSfx(branding.getStringValue("systemsounds")
+                + mSlider->getSelectedString() + ".ogg");
+        }
+    }
+    else
+    {
+        SetupItemSliderList::action(event);
+    }
 }

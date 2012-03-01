@@ -31,6 +31,7 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/namesmodel.h"
 
 #include "utils/gettext.h"
 
@@ -39,32 +40,6 @@
 #include "debug.h"
 
 extern Joystick *joystick;
-
-class NamesModel : public gcn::ListModel
-{
-    public:
-        NamesModel()
-        { }
-
-        virtual ~NamesModel()
-        { }
-
-        virtual int getNumberOfElements()
-        {
-            return static_cast<int>(mNames.size());
-        }
-
-        virtual std::string getElementAt(int i)
-        {
-            if (i >= getNumberOfElements() || i < 0)
-                return _("???");
-
-            return mNames[i];
-        }
-
-        std::vector<std::string> mNames;
-};
-
 
 Setup_Joystick::Setup_Joystick():
     mCalibrateLabel(new Label(_("Press the button to start calibration"))),
@@ -77,7 +52,7 @@ Setup_Joystick::Setup_Joystick():
 {
     setName(_("Joystick"));
 
-    Joystick::getNames(mNamesModel->mNames);
+    Joystick::getNames(mNamesModel->getNames());
 
     mOriginalJoystickEnabled = config.getBoolValue("joystickEnabled");
     mJoystickEnabled->setSelected(mOriginalJoystickEnabled);
@@ -95,7 +70,7 @@ Setup_Joystick::Setup_Joystick():
     else
     {
         unsigned sel = config.getIntValue("selectedJoystick");
-        if (sel >= mNamesModel->mNames.size())
+        if (sel >= mNamesModel->size())
             sel = 0;
         mNamesDropDown->setSelected(sel);
     }
@@ -146,7 +121,7 @@ void Setup_Joystick::action(const gcn::ActionEvent &event)
         {
             mCalibrateButton->setCaption(_("Stop"));
             mCalibrateLabel->setCaption(
-                _("Rotate the stick and dont press buttons"));
+                _("Rotate the stick and don't press buttons"));
             joystick->startCalibration();
         }
     }

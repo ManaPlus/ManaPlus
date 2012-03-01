@@ -78,7 +78,7 @@ NpcDialog::NpcDialog(int npcId) :
     setMinWidth(200);
     setMinHeight(150);
 
-    setDefaultSize(260, 200, ImageRect::CENTER);
+    setDefaultSize(400, 400, ImageRect::CENTER);
 
     mItemLinkHandler = new ItemLinkHandler;
     // Setup output text box
@@ -342,9 +342,20 @@ void NpcDialog::parseListItems(const std::string &itemString)
         mItems.push_back(tmp);
 
     if (!mItems.empty())
+    {
         mItemList->setSelected(0);
+        mItemList->requestFocus();
+    }
     else
+    {
         mItemList->setSelected(-1);
+    }
+}
+
+void NpcDialog::refocus()
+{
+    if (!mItems.empty())
+        mItemList->requestFocus();
 }
 
 void NpcDialog::textRequest(const std::string &defaultText)
@@ -363,7 +374,8 @@ bool NpcDialog::isTextInputFocused() const
 
 bool NpcDialog::isInputFocused() const
 {
-    return mTextField->isFocused() || mIntField->isFocused();
+    return mTextField->isFocused() || mIntField->isFocused()
+        || mItemList->isFocused();
 }
 
 bool NpcDialog::isAnyInputFocused()

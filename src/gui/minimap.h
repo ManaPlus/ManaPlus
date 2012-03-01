@@ -60,6 +60,8 @@ class Minimap : public Window
 
         void mouseReleased(gcn::MouseEvent &event);
 
+        void screenToMap(int &x, int &y);
+
     private:
         Image *mMapImage;
         float mWidthProportion;

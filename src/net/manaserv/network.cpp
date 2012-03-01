@@ -54,7 +54,7 @@ void initialize()
 {
     if (enet_initialize())
     {
-        logger->error("Failed to initialize ENet.");
+        logger->safeError("Failed to initialize ENet.");
     }
 
 #if defined(ENET_VERSION) && ENET_VERSION >= ENET_CUTOFF
@@ -65,7 +65,7 @@ void initialize()
 
     if (!client)
     {
-        logger->error("Failed to create the local host.");
+        logger->safeError("Failed to create the local host.");
     }
 }
 
@@ -76,8 +76,8 @@ void finalize()
 
     if (connections)
     {
-        logger->error("Tried to shutdown the network subsystem while there "
-                "are network connections left!");
+        logger->safeError("Tried to shutdown the network subsystem "
+            "while there are network connections left!");
     }
 
     clearNetworkHandlers();
@@ -88,7 +88,7 @@ Connection *getConnection()
 {
     if (!client)
     {
-        logger->error("Tried to instantiate a network object before "
+        logger->safeError("Tried to instantiate a network object before "
                 "initializing the network subsystem!");
     }
 

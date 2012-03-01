@@ -265,7 +265,7 @@ unsigned char *MessageIn::readBytes(int length)
 #ifdef ENABLEDEBUGLOG
     std::string str;
     for (int f = 0; f < length; f ++)
-        str += strprintf ("%02x", (unsigned)buf[f]);
+        str += strprintf ("%02x", static_cast<unsigned>(buf[f]));
     str += " ";
     for (int f = 0; f < length; f ++)
     {

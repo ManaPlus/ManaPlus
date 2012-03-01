@@ -48,7 +48,8 @@ class CommandHandler
         /**
          * Destructor
          */
-        ~CommandHandler() {}
+        ~CommandHandler()
+        { }
 
         /**
          * Parse and handle the given command.

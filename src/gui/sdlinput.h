@@ -8,6 +8,7 @@
  *
  * Copyright (c) 2004, 2005, 2006, 2007 Olof Naessén and Per Larsson
  * Copyright (C) 2007-2010  The Mana World Development Team
+ * Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *                                                         Js_./
  * Per Larsson a.k.a finalman                          _RqZ{a<^_aa
@@ -146,7 +147,8 @@ public:
      * only use SDL and plan sticking with SDL you can safely ignore this
      * function as it in the SDL case does nothing.
      */
-    virtual void _pollInput() { }
+    virtual void _pollInput()
+    { }
 
 
     // Inherited from Input

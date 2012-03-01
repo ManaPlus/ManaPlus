@@ -125,7 +125,7 @@ std::string ServersListModel::getElementAt(int elementIndex)
 
 void ServersListModel::setVersionString(int index, const std::string &version)
 {
-    if (index >= (int)mVersionStrings.size())
+    if (index >= static_cast<int>(mVersionStrings.size()))
         return;
 
     if (version.empty())
@@ -305,7 +305,7 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadServers(true);
 
-    if (mServers.empty())
+    if (needUpdateServers())
         downloadServerList();
 }
 
@@ -484,13 +484,17 @@ void ServerDialog::downloadServerList()
     }
 
     mDownload = new Net::Download(this, listFile, &downloadUpdate);
-    mDownload->setFile(mDir + "/serverlist.xml");
+    mDownload->setFile(mDir + "/" + branding.getStringValue(
+        "onlineServerFile"));
     mDownload->start();
+
+    config.setValue("serverslistupdate", getDateString());
 }
 
 void ServerDialog::loadServers(bool addNew)
 {
-    XML::Document doc(mDir + "/serverlist.xml", false);
+    XML::Document doc(mDir + "/" + branding.getStringValue(
+        "onlineServerFile"), false);
     XmlNodePtr rootNode = doc.rootNode();
 
     if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
@@ -628,7 +632,7 @@ void ServerDialog::saveCustomServers(const ServerInfo &currentServer,
     // Make sure the current server is mentioned first
     if (currentServer.isValid())
     {
-        if (index >= 0 && (unsigned)index < mServers.size())
+        if (index >= 0 && static_cast<unsigned>(index) < mServers.size())
         {
             mServers[index] = currentServer;
         }
@@ -739,4 +743,15 @@ int ServerDialog::downloadUpdate(void *ptr, DownloadStatus status,
 void ServerDialog::updateServer(ServerInfo server, int index)
 {
     saveCustomServers(server, index);
+}
+
+bool ServerDialog::needUpdateServers()
+{
+    if (mServers.empty() || config.getStringValue("serverslistupdate")
+        != getDateString())
+    {
+        return true;
+    }
+
+    return false;
 }

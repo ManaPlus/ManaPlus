@@ -407,8 +407,11 @@ void EquipmentWindow::loadSlot(XmlNodePtr slotNode, ImageSet *imageset)
     const int imageIndex = XML::getProperty(slotNode, "image", -1);
     Image *image = nullptr;
 
-    if (imageset && imageIndex >= 0 && imageIndex < (signed)imageset->size())
+    if (imageset && imageIndex >= 0 && imageIndex
+        < static_cast<signed>(imageset->size()))
+    {
         image = imageset->get(imageIndex);
+    }
 
     if (mBoxes[slot])
     {
@@ -510,8 +513,11 @@ void EquipmentWindow::addBox(int idx, int x, int y, int imageIndex)
 {
     Image *image = nullptr;
 
-    if (mImageSet && imageIndex >= 0 && imageIndex < (signed)mImageSet->size())
+    if (mImageSet && imageIndex >= 0 && imageIndex
+        < static_cast<signed>(mImageSet->size()))
+    {
         image = mImageSet->get(imageIndex);
+    }
 
     mBoxes[idx] = new EquipmentBox(x + getPadding(), y + getTitleBarHeight(),
         image);

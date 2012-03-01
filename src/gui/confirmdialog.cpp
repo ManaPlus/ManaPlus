@@ -97,7 +97,7 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
     }
     setVisible(true);
     yesButton->requestFocus();
-    sound.playGuiSfx("system/newmessage.ogg");
+    sound.playGuiSound(SOUND_REQUEST);
 }
 
 void ConfirmDialog::action(const gcn::ActionEvent &event)

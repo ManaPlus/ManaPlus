@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  Andrei Karas
- *  Copyright (C) 2011  ManaPlus developers
+ *  Copyright (C) 2011-2012  The ManaPlus developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -17,8 +17,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "gui/whoisonline.h"
@@ -132,8 +131,7 @@ WhoIsOnline::WhoIsOnline():
 
 WhoIsOnline::~WhoIsOnline()
 {
-    config.removeListener("updateOnlineList", this);
-    config.removeListener("groupFriends", this);
+    config.removeListeners(this);
 
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, nullptr);
@@ -230,7 +228,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
     if (addedFromSection == true && !disregard.empty())
     {
         mBrowserBox->addRow("---");
-        addedFromSection = false;
+//        addedFromSection = false;
     }
     for (int i = 0; i < static_cast<int>(disregard.size()); i++)
     {
@@ -739,7 +737,12 @@ void OnlinePlayer::setText(std::string color)
         Being *being = actorSpriteManager->findBeingByName(
             mNick, Being::PLAYER);
         if (being)
+        {
             being->setState(mStatus);
+            // for now highlight versions > 3
+            if (mVersion > 3)
+                being->setAdvanced(true);
+        }
     }
 
     if (mLevel > 0)

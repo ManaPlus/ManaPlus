@@ -116,14 +116,14 @@ void TextBox::setTextWrapped(const std::string &text, int minDimension)
                     mMinWidth = minWidth;
                     wrappedStream.clear();
                     wrappedStream.str("");
-                    spacePos = 0;
+//                    spacePos = 0;
                     lastNewlinePos = 0;
                     newlinePos = text.find("\n", lastNewlinePos);
                     if (newlinePos == std::string::npos)
                         newlinePos = text.size();
                     line = text.substr(lastNewlinePos, newlinePos -
                                        lastNewlinePos);
-                    width = 0;
+//                    width = 0;
                     break;
                 }
                 else

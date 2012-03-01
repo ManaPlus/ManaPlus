@@ -44,11 +44,11 @@ std::vector<std::string> getLang()
     }
 
     int dot = lang.find(".");
-    if (dot != (signed)std::string::npos)
+    if (dot != static_cast<signed>(std::string::npos))
         lang = lang.substr(0, dot);
     langs.push_back(lang);
     dot = lang.find("_");
-    if (dot != (signed)std::string::npos)
+    if (dot != static_cast<signed>(std::string::npos))
         langs.push_back(lang.substr(0, dot));
     return langs;
 }
@@ -78,10 +78,10 @@ std::string getLangShort()
     }
 
     int dot = lang.find(".");
-    if (dot != (signed)std::string::npos)
+    if (dot != static_cast<signed>(std::string::npos))
         lang = lang.substr(0, dot);
     dot = lang.find("_");
-    if (dot != (signed)std::string::npos)
+    if (dot != static_cast<signed>(std::string::npos))
         return lang.substr(0, dot);
     return lang;
 }

@@ -144,7 +144,7 @@ bool PoParser::readMsgId()
             mLine = "";
             return true;
         }
-        // stop reading if we dont read msgid before
+        // stop reading if we don't read msgid before
         return mMsgId.empty();
     }
 }

@@ -325,12 +325,12 @@ namespace gcn
             if (y < getVerticalMarkerDimension().y)
             {
                 setVerticalScrollAmount(getVerticalScrollAmount()
-                    - (int)(getChildrenArea().height * 0.95));
+                    - static_cast<int>(getChildrenArea().height * 0.95));
             }
             else
             {
                 setVerticalScrollAmount(getVerticalScrollAmount()
-                    + (int)(getChildrenArea().height * 0.95));
+                    + static_cast<int>(getChildrenArea().height * 0.95));
             }
         }
         else if (getHorizontalMarkerDimension().isPointInRect(x, y))
@@ -345,12 +345,12 @@ namespace gcn
             if (x < getHorizontalMarkerDimension().x)
             {
                 setHorizontalScrollAmount(getHorizontalScrollAmount()
-                    - (int)(getChildrenArea().width * 0.95));
+                    - static_cast<int>(getChildrenArea().width * 0.95));
             }
             else
             {
                 setHorizontalScrollAmount(getHorizontalScrollAmount()
-                    + (int)(getChildrenArea().width * 0.95));
+                    + static_cast<int>(getChildrenArea().width * 0.95));
             }
         }
     }

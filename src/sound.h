@@ -31,6 +31,15 @@
 
 class Music;
 
+const static std::string SOUND_INFO = "soundinfo";
+const static std::string SOUND_ERROR = "sounderror";
+const static std::string SOUND_REQUEST = "soundrequest";
+const static std::string SOUND_TRADE = "soundtrade";
+const static std::string SOUND_WHISPER = "soundwhisper";
+const static std::string SOUND_HIGHLIGHT = "soundhighlight";
+const static std::string SOUND_GLOBAL = "soundglobal";
+const static std::string SOUND_GUILD = "soundguild";
+
 /** Sound engine
  *
  * \ingroup CORE
@@ -108,6 +117,8 @@ class Sound : public ConfigListener
          * @param path The resource path to the sound file.
          */
         void playGuiSfx(const std::string &path);
+
+        void playGuiSound(const std::string &name);
 
         void changeAudio();
 

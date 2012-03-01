@@ -28,7 +28,11 @@
 #include <guichan/widgetlistener.hpp>
 
 class GraphicsVertexes;
+class Image;
+class ImageSet;
 class ImageRect;
+
+const std::string BUTTON_PLAY = "buttonplay.png";
 
 /**
  * Button widget. Same as the Guichan button but with custom look.
@@ -48,6 +52,23 @@ class Button : public gcn::Button, public gcn::WidgetListener
          * adds the given action listener.
          */
         Button(const std::string &caption, const std::string &actionEventId,
+               gcn::ActionListener *listener);
+
+        /**
+         * Constructor, sets the caption of the button to the given string and
+         * adds the given action listener.
+         */
+        Button(const std::string &caption, const std::string &imageName,
+               int imageWidth, int imageHeight,
+               const std::string &actionEventId,
+               gcn::ActionListener *listener);
+
+        /**
+         * Constructor, sets the caption of the button to the given string and
+         * adds the given action listener.
+         */
+        Button(const std::string &imageName, int imageWidth, int imageHeight,
+               const std::string &actionEventId,
                gcn::ActionListener *listener);
 
         /**
@@ -86,6 +107,12 @@ class Button : public gcn::Button, public gcn::WidgetListener
 
         void widgetMoved(const gcn::Event &event);
 
+        void loadImage(const std::string &imageName);
+
+        void adjustSize();
+
+        void setCaption(const std::string& caption);
+
     private:
         void init();
 
@@ -103,6 +130,10 @@ class Button : public gcn::Button, public gcn::WidgetListener
         int mYOffset;
         gcn::Color mEnabledColor;
         gcn::Color mDisabledColor;
+        Image **mImages;
+        ImageSet *mImageSet;
+        int mImageWidth;
+        int mImageHeight;
 };
 
 #endif

@@ -1,7 +1,7 @@
 /*
  *  Retrieve string pasted depending on OS mechanisms.
  *  Copyright (C) 2001-2010  Wormux Team
- *  Copyright (C) 2011  ManaPlus Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -442,9 +442,15 @@ bool runxsel(std::string& text, const char *p1, const char *p2)
             close(fd[0]);
         }
         if (p2)
-            execl("/usr/bin/xsel", "xsel", p1, p2, (char *)nullptr);
+        {
+            execl("/usr/bin/xsel", "xsel", p1, p2,
+                static_cast<char *>(nullptr));
+        }
         else
-            execl("/usr/bin/xsel", "xsel", p1, (char *)nullptr);
+        {
+            execl("/usr/bin/xsel", "xsel", p1,
+                static_cast<char *>(nullptr));
+        }
 
         exit(1);
     }

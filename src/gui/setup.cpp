@@ -38,6 +38,7 @@
 #include "gui/setup_players.h"
 #include "gui/setup_relations.h"
 #include "gui/setup_video.h"
+#include "gui/setup_visual.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -92,6 +93,7 @@ Setup::Setup():
     mPanel->enableScrollButtons(true);
 
     mTabs.push_back(new Setup_Video);
+    mTabs.push_back(new Setup_Visual);
     mTabs.push_back(new Setup_Audio);
     mTabs.push_back(new Setup_Perfomance);
     mTabs.push_back(new Setup_Joystick);

@@ -44,7 +44,8 @@ class TypeListModel;
 class TypeListModel : public gcn::ListModel
 {
     public:
-        TypeListModel() {}
+        TypeListModel()
+        { }
 
         /**
          * Used to get number of line in the list

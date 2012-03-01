@@ -270,8 +270,8 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
         else
         {
             new OkDialog(_("Error"),
-                         _("Your name needs to be at least 4 characters."),
-                         true,  this);
+                _("Your name needs to be at least 4 characters."),
+                DIALOG_ERROR, true,  this);
         }
     }
     else if (id == "cancel")
@@ -474,8 +474,11 @@ void CharCreateDialog::updateHair()
     mHairStyle %= Being::getNumOfHairstyles();
     if (mHairStyle < 0)
         mHairStyle += Being::getNumOfHairstyles();
-    if (mHairStyle < (signed)minHairStyle || mHairStyle > (signed)maxHairStyle)
+    if (mHairStyle < static_cast<signed>(minHairStyle)
+        || mHairStyle > static_cast<signed>(maxHairStyle))
+    {
         mHairStyle = minHairStyle;
+    }
     const ItemInfo &item = ItemDB::get(-mHairStyle);
     mHairStyleNameLabel->setCaption(item.getName());
     mHairStyleNameLabel->adjustSize();
@@ -483,8 +486,11 @@ void CharCreateDialog::updateHair()
     mHairColor %= ColorDB::getHairSize();
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
-    if (mHairColor < (signed)minHairColor || mHairColor > (signed)maxHairColor)
+    if (mHairColor < static_cast<signed>(minHairColor)
+        || mHairColor > static_cast<signed>(maxHairColor))
+    {
         mHairColor = minHairColor;
+    }
     mHairColorNameLabel->setCaption(ColorDB::getHairColorName(mHairColor));
     mHairColorNameLabel->adjustSize();
 

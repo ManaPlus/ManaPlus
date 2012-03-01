@@ -74,8 +74,7 @@ AvatarListBox::AvatarListBox(AvatarListModel *model):
 
 AvatarListBox::~AvatarListBox()
 {
-    config.removeListener("showgender", this);
-    config.removeListener("showlevel", this);
+    config.removeListeners(this);
 
     instances--;
 

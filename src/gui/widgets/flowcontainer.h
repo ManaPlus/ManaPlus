@@ -43,7 +43,8 @@ class FlowContainer : public Container,
         /**
          * Destructor.
          */
-        ~FlowContainer() {}
+        ~FlowContainer()
+        { }
 
         /**
          * Invoked when a widget changes its size. This is used to determine

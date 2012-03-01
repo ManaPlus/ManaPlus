@@ -97,23 +97,23 @@ namespace gcn
                      b - color.b, 
                      255);
 
-        result.r = (result.r>255?255:(result.r<0?0:result.r));
-        result.g = (result.g>255?255:(result.g<0?0:result.g));
-        result.b = (result.b>255?255:(result.b<0?0:result.b));
+        result.r = (result.r > 255 ? 255 : (result.r < 0 ? 0 : result.r));
+        result.g = (result.g > 255 ? 255 : (result.g < 0 ? 0 : result.g));
+        result.b = (result.b > 255 ? 255 : (result.b < 0 ? 0 : result.b));
 
         return result;
     }
 
     Color Color::operator*(float value) const
     {
-        Color result((int)(r * value), 
-                     (int)(g * value), 
-                     (int)(b * value), 
+        Color result(static_cast<int>(r * value), 
+                     static_cast<int>(g * value), 
+                     static_cast<int>(b * value), 
                      a);
 
-        result.r = (result.r>255?255:(result.r<0?0:result.r));
-        result.g = (result.g>255?255:(result.g<0?0:result.g));
-        result.b = (result.b>255?255:(result.b<0?0:result.b));
+        result.r = (result.r > 255 ? 255 : (result.r < 0 ? 0 : result.r));
+        result.g = (result.g > 255 ? 255 : (result.g < 0 ? 0 : result.g));
+        result.b = (result.b > 255 ? 255 : (result.b < 0 ? 0 : result.b));
 
         return result;
     }

@@ -320,7 +320,7 @@ namespace gcn
             int index = getSelectedTabIndex();
             index++;
 
-            if (index >= (int)mTabs.size())
+            if (index >= static_cast<int>(mTabs.size()))
                 return;
             else
                 setSelectedTab(mTabs[index].first);

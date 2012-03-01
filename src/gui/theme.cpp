@@ -569,6 +569,25 @@ void Theme::fillFontsList(std::vector<std::string> &list)
     PHYSFS_permitSymbolicLinks(0);
 }
 
+void Theme::fillSoundsList(std::vector<std::string> &list)
+{
+    char **skins = PHYSFS_enumerateFiles(
+        branding.getStringValue("systemsounds").c_str());
+
+    for (char **i = skins; *i; i++)
+    {
+        if (!PHYSFS_isDirectory((
+            branding.getStringValue("systemsounds") + *i).c_str()))
+        {
+            std::string str = *i;
+            if (findCutLast(str, ".ogg"))
+                list.push_back(str);
+        }
+    }
+
+    PHYSFS_freeList(skins);
+}
+
 void Theme::selectSkin()
 {
     prepareThemePath();

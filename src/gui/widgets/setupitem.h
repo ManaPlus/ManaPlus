@@ -41,6 +41,8 @@ class EditDialog;
 class HorizontContainer;
 class IntTextField;
 class Label;
+class Slider;
+class SliderList;
 class TextField;
 
 class SetupItem : public gcn::ActionListener
@@ -91,10 +93,11 @@ class SetupItem : public gcn::ActionListener
         virtual void cancel(std::string eventName);
 
         virtual void externalUpdated(std::string eventName);
-//        virtual int add(ContainerPlacer &place, int x, int y, int width);
 
         bool isMainConfig() const
         { return mMainConfig; }
+
+        void fixFirstItemSize(gcn::Widget *widget);
 
     protected:
         std::string mText;
@@ -262,6 +265,150 @@ class SetupItemDropDown : public SetupItem
         Label *mLabel;
         gcn::ListModel *mModel;
         DropDown *mDropDown;
+};
+
+class SetupItemSlider : public SetupItem
+{
+    public:
+        SetupItemSlider(std::string text, std::string description,
+                        std::string keyName, SetupTabScroll *parent,
+                        std::string eventName, double min, double max,
+                        int width = 150, bool onTheFly = false,
+                        bool mainConfig = true);
+
+        SetupItemSlider(std::string text, std::string description,
+                        std::string keyName, SetupTabScroll *parent,
+                        std::string eventName, double min, double max,
+                        std::string def, int width = 150,
+                        bool onTheFly = false, bool mainConfig = true);
+
+        ~SetupItemSlider();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+        void updateLabel();
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        Slider *mSlider;
+        double mMin;
+        double mMax;
+        int mWidth;
+        bool mOnTheFly;
+};
+
+typedef std::vector<std::string> SetupItemNames;
+typedef SetupItemNames::iterator SetupItemNamesIter;
+typedef SetupItemNames::const_iterator SetupItemNamesConstIter;
+
+class SetupItemSlider2 : public SetupItem
+{
+    public:
+        SetupItemSlider2(std::string text, std::string description,
+                         std::string keyName, SetupTabScroll *parent,
+                         std::string eventName, int min, int max,
+                         SetupItemNames *values, bool onTheFly = false,
+                         bool mainConfig = true);
+
+        SetupItemSlider2(std::string text, std::string description,
+                         std::string keyName, SetupTabScroll *parent,
+                         std::string eventName, int min, int max,
+                         SetupItemNames *values, std::string def,
+                         bool onTheFly = false, bool mainConfig = true);
+
+        ~SetupItemSlider2();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+        void setInvertValue(int v);
+
+    protected:
+        void updateLabel();
+
+        int getMaxWidth();
+
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        Label *mLabel2;
+        Slider *mSlider;
+        SetupItemNames *mValues;
+        int mMin;
+        int mMax;
+        bool mInvert;
+        int mInvertValue;
+        bool mOnTheFly;
+};
+
+class SetupItemSliderList : public SetupItem
+{
+    public:
+        SetupItemSliderList(std::string text, std::string description,
+                            std::string keyName, SetupTabScroll *parent,
+                            std::string eventName, gcn::ListModel *model,
+                            int width = 150, bool onTheFly = false,
+                            bool mainConfig = true);
+
+        SetupItemSliderList(std::string text, std::string description,
+                            std::string keyName, SetupTabScroll *parent,
+                            std::string eventName, gcn::ListModel *model,
+                            std::string def, int width = 150,
+                            bool onTheFly = false, bool mainConfig = true);
+
+        ~SetupItemSliderList();
+
+        void createControls();
+
+        void fromWidget();
+
+        void toWidget();
+
+        virtual void action(const gcn::ActionEvent &event);
+
+        void apply(std::string eventName);
+
+        virtual void addMoreControls() = 0;
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        SliderList *mSlider;
+        gcn::ListModel *mModel;
+        int mWidth;
+        bool mOnTheFly;
+};
+
+class SetupItemSound : public SetupItemSliderList
+{
+    public:
+        SetupItemSound(std::string text, std::string description,
+                       std::string keyName, SetupTabScroll *parent,
+                       std::string eventName, gcn::ListModel *model,
+                       int width = 150, bool onTheFly = false,
+                       bool mainConfig = true);
+
+        void action(const gcn::ActionEvent &event);
+
+        void addMoreControls();
+
+    protected:
+        Button *mButton;
 };
 
 #endif

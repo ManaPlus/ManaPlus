@@ -31,6 +31,13 @@
 
 class TextBox;
 
+enum
+{
+    DIALOG_OK = 0,
+    DIALOG_ERROR,
+    DIALOG_SILENCE
+};
+
 /**
  * An 'Ok' button dialog.
  *
@@ -45,8 +52,8 @@ class OkDialog : public Window, public gcn::ActionListener
          * @see Window::Window
          */
         OkDialog(const std::string &title, const std::string &msg,
-                 bool modal = true, bool showCenter = true,
-                 Window *parent = nullptr);
+                 int soundEvent = DIALOG_OK, bool modal = true,
+                 bool showCenter = true, Window *parent = nullptr);
 
         /**
          * Called when receiving actions from the widgets.
