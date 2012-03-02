@@ -192,8 +192,8 @@ void InventoryHandler::closeStorage(int type A_UNUSED)
     // TODO
 }
 
-void InventoryHandler::moveItem(int source A_UNUSED, int slot A_UNUSED,
-                                int amount A_UNUSED, int destination A_UNUSED)
+void InventoryHandler::moveItem2(int source A_UNUSED, int slot A_UNUSED,
+                                 int amount A_UNUSED, int destination A_UNUSED)
 {
     // TODO
 }

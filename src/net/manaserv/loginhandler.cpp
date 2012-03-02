@@ -33,6 +33,7 @@
 #include "net/manaserv/protocol.h"
 
 #include "utils/gettext.h"
+#include "utils/paths.h"
 #include "utils/sha256.h"
 
 extern Net::LoginHandler *loginHandler;

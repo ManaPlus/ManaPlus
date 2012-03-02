@@ -88,8 +88,8 @@ class InventoryHandler : public MessageHandler, Net::InventoryHandler
 
         void closeStorage(int type);
 
-        void moveItem(int source, int slot, int amount,
-                      int destination);
+        void moveItem2(int source, int slot, int amount,
+                       int destination);
 
         size_t getSize(int type) const;
 

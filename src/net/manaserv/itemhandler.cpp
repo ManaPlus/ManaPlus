@@ -66,9 +66,9 @@ void ItemHandler::handleMessage(Net::MessageIn &msg)
                         if (Map *map = game->getCurrentMap())
                         {
                             actorSpriteManager->createItem(id, itemId,
-                                                     x / map->getTileWidth(),
-                                                     y / map->getTileHeight(),
-                                                     0, 1);
+                                x / map->getTileWidth(),
+                                y / map->getTileHeight(),
+                                0, 1, 0, 0);
                         }
                         else
                         {
