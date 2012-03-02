@@ -129,6 +129,8 @@ class OpenGL1Graphics : public Graphics
          */
         SDL_Surface *getScreenshot();
 
+        void prepareScreenshot();
+
         static void bindTexture(GLenum target, GLuint texture);
 
         static GLuint mLastImage;
@@ -140,6 +142,9 @@ class OpenGL1Graphics : public Graphics
         bool mAlpha, mTexture;
         bool mColorAlpha;
         bool mSync;
+        GLuint mFboId;
+        GLuint mTextureId;
+        GLuint mRboId;
 };
 #endif
 
