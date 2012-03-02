@@ -1365,10 +1365,10 @@ void OpenGLGraphics::dumpSettings()
         glGetIntegerv(f, &test[0]);
         if (test[0] || test[1] || test[2] || test[3])
         {
-            logger->log("%d = %d, %d, %d, %d", f, test[0], test[1], test[2], test[3]);
+            logger->log("\n%d = %d, %d, %d, %d", f,
+                test[0], test[1], test[2], test[3]);
         }
     }
-    logger->log("end opengl dump\n\n");
 }
 
 #endif // USE_OPENGL
