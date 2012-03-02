@@ -28,9 +28,11 @@
 
 #include "graphics.h"
 
-#define NO_SDL_GLEXT
+//#define NO_SDL_GLEXT
+#define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
+#include <GL/glext.h>
 
 class OpenGL1Graphics : public Graphics
 {

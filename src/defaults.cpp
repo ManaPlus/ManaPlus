@@ -227,6 +227,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "noframe", false);
     AddDEF(configData, "groupFriends", true);
     AddDEF(configData, "grabinput", false);
+    AddDEF(configData, "usefbo", false);
     AddDEF(configData, "gamma", 1);
     AddDEF(configData, "vsync", 0);
     AddDEF(configData, "enableBuggyServers", true);

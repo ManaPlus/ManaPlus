@@ -183,6 +183,11 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Hide shield sprite"), "", "hideShield",
         this, "hideShieldEvent");
 
+#if !defined(_WIN32)
+    new SetupItemCheckBox(_("Use FBO for screenshots (only for opengl)"),
+        "", "usefbo", this, "usefboEvent");
+#endif
+
     new SetupItemCheckBox(_("Show background"), "", "showBackground",
         this, "showBackgroundEvent");
 

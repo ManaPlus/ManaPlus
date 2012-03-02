@@ -41,11 +41,15 @@ Setup_Visual::Setup_Visual()
 
     mPreferredFirstItemSize = 150;
 
+    new SetupItemLabel(_("Notifications"), "", this);
+
     new SetupItemCheckBox(_("Show pickup notifications in chat"), "",
         "showpickupchat", this, "showpickupchatEvent");
 
     new SetupItemCheckBox(_("Show pickup notifications as particle effects"),
         "", "showpickupparticle", this, "showpickupparticleEvent");
+
+    new SetupItemLabel(_("Effects"), "", this);
 
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
         "", "grabinput", this, "grabinputEvent");
@@ -79,6 +83,8 @@ Setup_Visual::Setup_Visual()
     (new SetupItemSlider2(_("Particle detail"), "", "particleEmitterSkip",
         this, "particleEmitterSkipEvent", 0, 3,
         mParticleList, true))->setInvertValue(3);
+
+    new SetupItemLabel(_("Other"), "", this);
 
     new SetupItemSlider(_("Gamma"), "", "gamma",
         this, "gammeEvent", 1, 20, 350, true);

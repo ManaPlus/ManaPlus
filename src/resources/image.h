@@ -36,7 +36,8 @@
  * gl.h headers, since they also include these definitions. As we're not using
  * extensions anyway it's safe to just disable the SDL version.
  */
-#define NO_SDL_GLEXT
+//#define NO_SDL_GLEXT
+#define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
 #endif

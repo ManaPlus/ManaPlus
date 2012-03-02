@@ -461,6 +461,7 @@ static bool saveScreenshot()
     if (!config.getBoolValue("showip"))
     {
         mainGraphics->setSecure(true);
+        mainGraphics->prepareScreenshot();
         gui->draw();
         screenshot = mainGraphics->getScreenshot();
         mainGraphics->setSecure(false);
