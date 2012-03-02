@@ -1014,7 +1014,6 @@ void OpenGLGraphics::_beginDraw()
     glLoadIdentity();
 
     glEnable(GL_SCISSOR_TEST);
-    glEnableClientState(GL_VERTEX_ARRAY);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -1174,8 +1173,11 @@ bool OpenGLGraphics::pushClipArea(gcn::Rectangle area)
     transY += clipArea.yOffset;
 
     glPushMatrix();
-    glTranslatef(static_cast<GLfloat>(transX),
-                 static_cast<GLfloat>(transY), 0);
+    if (transX || transY)
+    {
+        glTranslatef(static_cast<GLfloat>(transX),
+                     static_cast<GLfloat>(transY), 0);
+    }
     glScissor(clipArea.x, mTarget->h - clipArea.y - clipArea.height,
         clipArea.width, clipArea.height);
 
