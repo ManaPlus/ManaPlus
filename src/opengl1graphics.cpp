@@ -540,8 +540,8 @@ void OpenGL1Graphics::prepareScreenshot()
 
 SDL_Surface* OpenGL1Graphics::getScreenshot()
 {
-    int h = mTarget->h;
-    int w = mTarget->w;
+    const int h = mTarget->h;
+    const int w = mTarget->w - (mTarget->w % 4);
     GLint pack = 1;
 
     SDL_Surface *screenshot = SDL_CreateRGBSurface(
