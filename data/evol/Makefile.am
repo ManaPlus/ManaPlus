@@ -3,6 +3,8 @@ desktopdir = $(datarootdir)/applications
 
 evol-client:
 	     mkdir -p "$(DESTDIR)$(pkgdatadir)/data/evol/icons"
+	     mkdir -p "$(DESTDIR)$(datarootdir)/icons"
+	     mkdir -p "$(DESTDIR)$(desktopdir)"
 	     cp evol.desktop "$(DESTDIR)$(desktopdir)"
 	     cp evol.manaplus "$(DESTDIR)$(pkgdatadir)/data/evol"
 	     cp icons/evol-client.png "$(DESTDIR)$(pkgdatadir)/data/evol/icons"
