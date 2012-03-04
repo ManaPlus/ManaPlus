@@ -2,12 +2,12 @@
 desktopdir = $(datarootdir)/applications
 
 evol-client:
-	     mkdir -p "$(pkgdatadir)/data/evol/icons"
-	     cp evol.desktop "$(desktopdir)"
-	     cp evol.manaplus "$(pkgdatadir)/data/evol"
-	     cp icons/evol-client.png "$(pkgdatadir)/data/evol/icons"
-	     cp icons/evol-client.png "$(datarootdir)/icons"
-	     cp -r images "$(pkgdatadir)/data/evol"
+	     mkdir -p "$(DESTDIR)$(pkgdatadir)/data/evol/icons"
+	     cp evol.desktop "$(DESTDIR)$(desktopdir)"
+	     cp evol.manaplus "$(DESTDIR)$(pkgdatadir)/data/evol"
+	     cp icons/evol-client.png "$(DESTDIR)$(pkgdatadir)/data/evol/icons"
+	     cp icons/evol-client.png "$(DESTDIR)$(datarootdir)/icons"
+	     cp -r images "$(DESTDIR)$(pkgdatadir)/data/evol"
 
 EXTRA_DIST = evol.desktop \
 	    evol.manaplus \
