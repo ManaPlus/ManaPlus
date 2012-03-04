@@ -1,3 +1,28 @@
+2012-03-04 New release 1.2.3.4
+fix: loading client data translations.
+fix: display translated xp+job messages.
+fix: default paramters value.
+fix: last frame delay in dead sprite actions.
+fix: don't show errors for missing emotes.
+fix: drawing big minimaps.
+fix: ignore shortcuts keys in npc menu and in inventory.
+fix: npc menu keyboard navigation.
+fix: default npc dialog size.
+fix: some copyrights.
+fix: possible crashes.
+add: visual settings page.
+add: option to grab input.
+add: move some settings and new to page visual in settings.
+add: different sound effects for different messages.
+can be configured in audio settings page.
+add: resize minimaps.
+add: context menu for minimaps.
+add: gdb to windows build.
+add: show latest client version in update news.
+add: option for for creating screenshots with FBO.
+If enable, can fix opengl screenshots issue.
+add: update liberation fonts.
+
 2012-02-19 New release 1.2.2.19
 add: client data translations (items, etc).
 add: increased max value for drop counter from 9 to 30.

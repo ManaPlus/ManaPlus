@@ -66,6 +66,8 @@ class ListBox : public gcn::ListBox
 
         void mouseDragged(gcn::MouseEvent &event);
 
+        void refocus();
+
     protected:
         gcn::Color mHighlightColor;
         static float mAlpha;

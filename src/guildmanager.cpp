@@ -274,7 +274,7 @@ bool GuildManager::process(std::string msg)
             return false;
 //        logger->log("welcome message: %s", msg.c_str());
         int pos = msg.find("! (");
-        if (pos == (int)std::string::npos)
+        if (pos == static_cast<int>(std::string::npos))
             return false;
         msg = msg.substr(0, pos);
         guild->setName(msg);
@@ -299,7 +299,7 @@ bool GuildManager::process(std::string msg)
             return false;
 
         pos = msg.find(", Guild:");
-        if (pos == (int)std::string::npos)
+        if (pos == static_cast<int>(std::string::npos))
             return false;
 
         int level = atoi(msg.substr(0, pos).c_str());
@@ -310,7 +310,7 @@ bool GuildManager::process(std::string msg)
 
         msg = msg.substr(pos + strlen(", Guild:"));
         pos = msg.find(", No. Of Online Players: ");
-        if (pos == (int)std::string::npos)
+        if (pos == static_cast<int>(std::string::npos))
             return false;
 
         msg = msg.substr(0, pos);

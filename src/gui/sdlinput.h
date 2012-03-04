@@ -147,7 +147,8 @@ public:
      * only use SDL and plan sticking with SDL you can safely ignore this
      * function as it in the SDL case does nothing.
      */
-    virtual void _pollInput() { }
+    virtual void _pollInput()
+    { }
 
 
     // Inherited from Input

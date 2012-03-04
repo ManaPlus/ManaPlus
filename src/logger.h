@@ -58,12 +58,14 @@ class Logger
         /**
          * Sets whether the log should be written to standard output.
          */
-        void setLogToStandardOut(bool value) { mLogToStandardOut = value; }
+        void setLogToStandardOut(bool value)
+        { mLogToStandardOut = value; }
 
         /**
          * Enables logging to chat window
          */
-        void setChatWindow(ChatWindow *window) { mChatWindow = window; }
+        void setChatWindow(ChatWindow *window)
+        { mChatWindow = window; }
 
         /**
          * Enters a message in the log. The message will be timestamped.
@@ -97,6 +99,13 @@ class Logger
          * will be printed to standard error everywhere else.
          */
         void error(const std::string &error_text) __attribute__ ((noreturn));
+
+        /**
+         * Log an error and quit. The error will pop-up on Windows and Mac, and
+         * will be printed to standard error everywhere else.
+         */
+        void safeError(const std::string &error_text)
+            __attribute__ ((noreturn));
 
     private:
         std::ofstream mLogFile;

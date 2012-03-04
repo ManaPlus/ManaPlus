@@ -251,6 +251,9 @@ class Graphics : public gcn::SDLGraphics
          */
         virtual SDL_Surface *getScreenshot();
 
+        virtual void prepareScreenshot()
+        { }
+
         virtual bool drawNet(int x1, int y1, int x2, int y2,
                              int width, int height);
 

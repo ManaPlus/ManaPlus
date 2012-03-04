@@ -23,15 +23,16 @@
 #ifndef OPENGLGRAPHICS_H
 #define OPENGLGRAPHICS_H
 
-#include "main.h"
+#ifdef USE_OPENGL
 
+#include "main.h"
 #include "graphics.h"
 
-#ifdef USE_OPENGL
-#define NO_SDL_GLEXT
+//#define NO_SDL_GLEXT
+#define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
-#endif
+//#include <GL/glext.h>
 
 class OpenGLGraphics : public Graphics
 {
@@ -132,10 +133,14 @@ class OpenGLGraphics : public Graphics
 
         void drawLineArrayf(int size);
 
+        static void dumpSettings();
+
         /**
          * Takes a screenshot and returns it as SDL surface.
          */
         SDL_Surface *getScreenshot();
+
+        void prepareScreenshot();
 
         bool drawNet(int x1, int y1, int x2, int y2, int width, int height);
 
@@ -153,6 +158,10 @@ class OpenGLGraphics : public Graphics
         bool mAlpha, mTexture;
         bool mColorAlpha;
         bool mSync;
+        GLuint mFboId;
+        GLuint mTextureId;
+        GLuint mRboId;
 };
+#endif
 
 #endif

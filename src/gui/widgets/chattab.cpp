@@ -289,9 +289,19 @@ void ChatTab::chatLog(std::string line, Own own,
             if (getFlash() == 0)
             {
                 if (chatWindow && chatWindow->findHighlight(tmp.text))
+                {
                     setFlash(2);
+                    sound.playGuiSound(SOUND_HIGHLIGHT);
+                }
                 else
+                {
                     setFlash(1);
+                }
+            }
+            else if (getFlash() == 2)
+            {
+                if (chatWindow && chatWindow->findHighlight(tmp.text))
+                    sound.playGuiSound(SOUND_HIGHLIGHT);
             }
         }
 
@@ -300,8 +310,10 @@ void ChatTab::chatLog(std::string line, Own own,
             || (Client::getIsMinimized() || (!Client::getMouseFocused()
             && !Client::getInputFocused()))))
         {
-            if (own != BY_SERVER)
-                sound.playGuiSfx("system/newmessage.ogg");
+            if (own == BY_GM)
+                sound.playGuiSound(SOUND_GLOBAL);
+            else if (own != BY_SERVER)
+                playNewMessageSound();
         }
     }
 }
@@ -467,4 +479,9 @@ void ChatTab::addNewRow(std::string &line)
         addRow(line);
     }
     mScrollArea->logic();
+}
+
+void ChatTab::playNewMessageSound()
+{
+    sound.playGuiSound(SOUND_WHISPER);
 }

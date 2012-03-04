@@ -442,9 +442,15 @@ bool runxsel(std::string& text, const char *p1, const char *p2)
             close(fd[0]);
         }
         if (p2)
-            execl("/usr/bin/xsel", "xsel", p1, p2, (char *)nullptr);
+        {
+            execl("/usr/bin/xsel", "xsel", p1, p2,
+                static_cast<char *>(nullptr));
+        }
         else
-            execl("/usr/bin/xsel", "xsel", p1, (char *)nullptr);
+        {
+            execl("/usr/bin/xsel", "xsel", p1,
+                static_cast<char *>(nullptr));
+        }
 
         exit(1);
     }

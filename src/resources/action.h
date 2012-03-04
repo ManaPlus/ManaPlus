@@ -29,6 +29,7 @@
 
 class Animation;
 
+
 /**
  * An action consists of several animations, one for each direction.
  */
@@ -49,9 +50,12 @@ class Action
         void setNumber(unsigned n)
         { mNumber = n; }
 
+        void setLastFrameDelay(int delay);
+
     protected:
         typedef std::map<int, Animation*> Animations;
-        typedef Animations::iterator AnimationIterator;
+        typedef Animations::iterator AnimationIter;
+
         Animations mAnimations;
         unsigned mNumber;
 };

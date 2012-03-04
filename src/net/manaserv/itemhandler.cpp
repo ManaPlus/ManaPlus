@@ -1,0 +1,91 @@
+/*
+ *  The ManaPlus Client
+ *  Copyright (C) 2004-2009  The Mana World Development Team
+ *  Copyright (C) 2009-2010  The Mana Developers
+ *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *
+ *  This file is part of The ManaPlus Client.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "net/manaserv/itemhandler.h"
+
+#include "actorspritemanager.h"
+
+#include "net/manaserv/protocol.h"
+#include "net/manaserv/messagein.h"
+
+#include "game.h"
+#include "map.h"
+#include "logger.h"
+
+namespace ManaServ
+{
+
+ItemHandler::ItemHandler()
+{
+    static const Uint16 _messages[] =
+    {
+        GPMSG_ITEMS,
+        GPMSG_ITEM_APPEAR,
+        0
+    };
+    handledMessages = _messages;
+}
+
+void ItemHandler::handleMessage(Net::MessageIn &msg)
+{
+    switch (msg.getId())
+    {
+        case GPMSG_ITEM_APPEAR:
+        case GPMSG_ITEMS:
+        {
+            while (msg.getUnreadLength())
+            {
+                int itemId = msg.readInt16();
+                int x = msg.readInt16();
+                int y = msg.readInt16();
+                int id = (x << 16) | y; // dummy id
+
+                if (itemId)
+                {
+                    if (Game *game = Game::instance())
+                    {
+                        if (Map *map = game->getCurrentMap())
+                        {
+                            actorSpriteManager->createItem(id, itemId,
+                                x / map->getTileWidth(),
+                                y / map->getTileHeight(),
+                                0, 1, 0, 0);
+                        }
+                        else
+                        {
+                            logger->log(
+                                    "ItemHandler: An item wasn't created "
+                                    "because of Game/Map not initialized...");
+                        }
+                    }
+                }
+                else if (FloorItem *item = actorSpriteManager->findItem(id))
+                {
+                    actorSpriteManager->destroy(item);
+                }
+            }
+        } break;
+        default: break;
+    }
+}
+
+} // namespace ManaServ

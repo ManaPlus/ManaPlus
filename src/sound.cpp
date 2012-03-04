@@ -66,9 +66,7 @@ Sound::Sound():
 
 Sound::~Sound()
 {
-    config.removeListener("playBattleSound", this);
-    config.removeListener("playGuiSound", this);
-    config.removeListener("playMusic", this);
+    config.removeListeners(this);
 
     // Unlink the callback function.
     Mix_HookMusicFinished(nullptr);
@@ -82,6 +80,10 @@ void Sound::optionChanged(const std::string &value)
         mPlayGui = config.getBoolValue("playGuiSound");
     else if (value == "playMusic")
         mPlayMusic = config.getBoolValue("playMusic");
+    else if (value == "sfxVolume")
+        setSfxVolume(config.getIntValue("sfxVolume"));
+    else if (value == "musicVolume")
+        setMusicVolume(config.getIntValue("musicVolume"));
 }
 
 void Sound::init()
@@ -98,6 +100,8 @@ void Sound::init()
     config.addListener("playBattleSound", this);
     config.addListener("playGuiSound", this);
     config.addListener("playMusic", this);
+    config.addListener("sfxVolume", this);
+    config.addListener("musicVolume", this);
 
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
     {
@@ -315,6 +319,12 @@ void Sound::playSfx(const std::string &path, int x, int y)
         }
         sample->play(0, vol);
     }
+}
+
+void Sound::playGuiSound(const std::string &name)
+{
+    playGuiSfx(branding.getStringValue("systemsounds")
+        + config.getStringValue(name) + ".ogg");
 }
 
 void Sound::playGuiSfx(const std::string &path)

@@ -226,6 +226,19 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "enableresize", true);
     AddDEF(configData, "noframe", false);
     AddDEF(configData, "groupFriends", true);
+    AddDEF(configData, "grabinput", false);
+    AddDEF(configData, "usefbo", false);
+    AddDEF(configData, "gamma", 1);
+    AddDEF(configData, "vsync", 0);
+    AddDEF(configData, "enableBuggyServers", true);
+    AddDEF(configData, "soundwhisper", "newmessage");
+    AddDEF(configData, "soundhighlight", "reminder");
+    AddDEF(configData, "soundglobal", "email");
+    AddDEF(configData, "sounderror", "error");
+    AddDEF(configData, "soundtrade", "start");
+    AddDEF(configData, "soundinfo", "notify");
+    AddDEF(configData, "soundrequest", "attention");
+    AddDEF(configData, "soundguild", "newmessage");
     return configData;
 }
 
@@ -259,6 +272,8 @@ DefaultsData* getBrandingDefaults()
     AddDEF(brandingData, "guiPath", "graphics/gui/");
     AddDEF(brandingData, "guiThemePath", "themes/");
     AddDEF(brandingData, "fontsPath", "fonts/");
+
+    AddDEF(brandingData, "systemsounds", "sfx/system/");
 
     AddDEF(brandingData, "wallpaperFile", "");
     AddDEF(brandingData, "dataPath", "");

@@ -461,6 +461,7 @@ static bool saveScreenshot()
     if (!config.getBoolValue("showip"))
     {
         mainGraphics->setSecure(true);
+        mainGraphics->prepareScreenshot();
         gui->draw();
         screenshot = mainGraphics->getScreenshot();
         mainGraphics->setSecure(false);
@@ -561,7 +562,7 @@ void Game::logic()
             {
                 errorMessage = _("The connection to the server was lost.");
                 disconnectedDialog = new OkDialog(_("Network Error"),
-                                                  errorMessage, false);
+                    errorMessage, DIALOG_ERROR, false);
                 disconnectedDialog->addActionListener(&errorListener);
                 disconnectedDialog->requestMoveToTop();
             }
@@ -803,12 +804,13 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
                     used = true;
             }
         }
-        if (dialog)
+        if (dialog && !dialog->isInputFocused())
         {
-            if (keyboard.isActionActive(keyboard.KEY_MOVE_UP))
-                dialog->move(1);
-            else if (keyboard.isActionActive(keyboard.KEY_MOVE_DOWN))
-                dialog->move(-1);
+            if (keyboard.isActionActive(keyboard.KEY_MOVE_UP)
+                || keyboard.isActionActive(keyboard.KEY_MOVE_DOWN))
+            {
+                dialog->refocus();
+            }
         }
     }
 
@@ -1316,7 +1318,8 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
     if (player_node->isAlive() && (!Being::isTalking()
         || keyboard.getKeyIndex(event.key.keysym.sym)
         == KeyboardConfig::KEY_TALK)
-        && chatWindow && !chatWindow->isInputFocused() && !quitDialog)
+        && chatWindow && !chatWindow->isInputFocused()
+        && !InventoryWindow::isAnyInputFocused() && !quitDialog)
     {
         // Get the state of the keyboard keys
         keyboard.refreshActiveKeys();
@@ -1796,8 +1799,9 @@ void Game::changeMap(const std::string &mapPath)
     if (!newMap)
     {
         logger->log("Error while loading %s", fullMap.c_str());
-        new OkDialog(_("Could Not Load Map"),
-                     strprintf(_("Error while loading %s"), fullMap.c_str()));
+        new OkDialog(_("Could Not Load Map"), strprintf(
+            _("Error while loading %s"), fullMap.c_str()),
+            DIALOG_ERROR, false);
     }
 
     if (mCurrentMap)

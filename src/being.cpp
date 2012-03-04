@@ -1380,8 +1380,10 @@ void Being::drawEmotion(Graphics *graphics, int offsetX, int offsetY)
 
     if (emotionIndex >= 0 && emotionIndex <= EmoteDB::getLast())
     {
-        if (EmoteDB::getAnimation(emotionIndex))
+        if (EmoteDB::getAnimation(emotionIndex, true))
             EmoteDB::getAnimation(emotionIndex)->draw(graphics, px, py);
+        else
+            mEmotion = 0;
     }
 }
 
@@ -2320,7 +2322,7 @@ void Being::recalcSpritesOrder()
             int val = slotRemap.at(slot);
             int id = 0;
 
-            if ((int)mSpriteIDs.size() > val)
+            if (static_cast<int>(mSpriteIDs.size()) > val)
                 id = mSpriteIDs[val];
 
             int idx = -1;
@@ -2525,7 +2527,6 @@ void Being::saveComment(const std::string &name,
 
 void Being::setState(Uint8 state)
 {
-    mAdvanced = true;
     bool shop = (state & FLAG_SHOP);
     bool away = (state & FLAG_AWAY);
     bool inactive = (state & FLAG_INACTIVE);
@@ -2548,6 +2549,7 @@ void Being::setEmote(Uint8 emotion, int emote_time)
     if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {
         setState(emotion);
+        mAdvanced = true;
     }
     else
     {

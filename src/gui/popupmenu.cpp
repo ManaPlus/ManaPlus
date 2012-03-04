@@ -579,6 +579,25 @@ void PopupMenu::showPopup(int x, int y, MapItem *mapItem)
     showPopup(x, y);
 }
 
+void PopupMenu::showMapPopup(int x, int y, int x2, int y2)
+{
+    mX = x2;
+    mY = y2;
+
+    mBrowserBox->clearRows();
+
+    mBrowserBox->addRow(_("Map Item"));
+
+    if (player_node && player_node->isGM())
+        mBrowserBox->addRow("warp map", _("Warp"));
+    mBrowserBox->addRow("move", _("Move"));
+    mBrowserBox->addRow("movecamera", _("Move camera"));
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
 void PopupMenu::showOutfitsPopup(int x, int y)
 {
     mX = x;
@@ -1161,6 +1180,16 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
+    else if (link == "move" && (mX || mY))
+    {
+        if (player_node)
+            player_node->navigateTo(mX, mY);
+    }
+    else if (link == "movecamera" && (mX || mY))
+    {
+        if (viewport)
+            viewport->moveCameraToPosition(mX * 32, mY * 32);
+    }
     else if (link == "split" && mItem)
     {
         ItemAmountWindow::showWindow(ItemAmountWindow::ItemSplit,
@@ -1302,6 +1331,14 @@ void PopupMenu::handleLink(const std::string &link,
         {
             Net::getAdminHandler()->warp(Game::instance()->getCurrentMapName(),
                 mMapItem->getX(), mMapItem->getY());
+        }
+    }
+    else if (link == "warp map" && (mX || mY))
+    {
+        if (Game::instance())
+        {
+            Net::getAdminHandler()->warp(Game::instance()->getCurrentMapName(),
+                mX, mY);
         }
     }
     else if (link == "remove map" && mMapItem)
@@ -2205,7 +2242,7 @@ void PlayerListener::action(const gcn::ActionEvent &event)
     {
         std::string comment = mDialog->getText();
         Being* being  = actorSpriteManager->findBeingByName(
-            mNick, (ActorSprite::Type)mType);
+            mNick, static_cast<ActorSprite::Type>(mType));
         if (being)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);

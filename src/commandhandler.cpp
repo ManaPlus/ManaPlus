@@ -57,6 +57,10 @@
 #include "net/playerhandler.h"
 #include "net/tradehandler.h"
 
+#if defined USE_OPENGL
+#include "openglgraphics.h"
+#endif
+
 #ifdef DEBUG_DUMP_LEAKS
 #include "resources/image.h"
 #include "resources/resource.h"
@@ -207,6 +211,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleDumpGraphics(args, tab);
     else if (type == "dumpt")
         handleDumpTests(args, tab);
+    else if (type == "dumpogl")
+        handleDumpOGL(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -1346,4 +1352,12 @@ void CommandHandler::replaceVars(std::string &str)
             replaceAll(str, "<PARTY>", "");
         }
     }
+}
+
+void CommandHandler::handleDumpOGL(const std::string &args A_UNUSED,
+                                   ChatTab *tab A_UNUSED)
+{
+#if defined USE_OPENGL
+    OpenGLGraphics::dumpSettings();
+#endif
 }

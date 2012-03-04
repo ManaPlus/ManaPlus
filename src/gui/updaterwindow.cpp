@@ -298,9 +298,26 @@ void UpdaterWindow::loadNews()
 
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
+    bool firstLine(true);
     while (line)
     {
-        mBrowserBox->addRow(line);
+        if (firstLine)
+        {
+            firstLine = false;
+            std::string str = line;
+            unsigned i = str.find("##9 Latest client version: ##6");
+            if (!i)
+            {
+                line = strtok(nullptr, "\n");
+                continue;
+            }
+
+            mBrowserBox->addRow(str);
+        }
+        else
+        {
+            mBrowserBox->addRow(line);
+        }
         line = strtok(nullptr, "\n");
     }
 
@@ -332,6 +349,15 @@ void UpdaterWindow::loadPatch()
     if (line)
     {
         version = line;
+        if (serverVersion < 1)
+        {
+            line = strtok(nullptr, "\n");
+            if (line)
+            {
+                mBrowserBox->addRow("##9 Latest client version: ##6ManaPlus "
+                    + std::string(line), true);
+            }
+        }
         if (version > CHECK_VERSION)
         {
             mBrowserBox->addRow("", true);
@@ -554,8 +580,8 @@ void UpdaterWindow::logic()
         if (mUpdateFiles.size() && mUpdateIndex <= mUpdateFiles.size())
         {
             mProgressBar->setText(strprintf("%d/%d", mUpdateIndex
-                + mUpdateIndexOffset + 1, (int)mUpdateFiles.size()
-                + (int)mTempUpdateFiles.size() + 1));
+                + mUpdateIndexOffset + 1, static_cast<int>(mUpdateFiles.size())
+                + static_cast<int>(mTempUpdateFiles.size()) + 1));
         }
         else
         {

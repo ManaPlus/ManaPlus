@@ -32,6 +32,7 @@
 #include "gui/theme.h"
 
 #include "resources/image.h"
+#include "resources/imageset.h"
 
 #include "utils/dtor.h"
 
@@ -69,30 +70,92 @@ static ButtonData const data[BUTTON_COUNT] =
 
 ImageRect Button::button[BUTTON_COUNT];
 
-Button::Button():
+Button::Button() :
     mDescription(""), mClickCount(0),
     mTag(0),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mMode(0),
     mXOffset(0),
-    mYOffset(0)
+    mYOffset(0),
+    mImages(nullptr),
+    mImageSet(nullptr)
 {
     init();
+    adjustSize();
 }
 
 Button::Button(const std::string &caption, const std::string &actionEventId,
-               gcn::ActionListener *listener):
+               gcn::ActionListener *listener) :
     gcn::Button(caption),
-    mDescription(""), mClickCount(0),
+    mDescription(""),
+    mClickCount(0),
     mTag(0),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mMode(0),
     mXOffset(0),
-    mYOffset(0)
+    mYOffset(0),
+    mImages(nullptr),
+    mImageSet(nullptr),
+    mImageWidth(0),
+    mImageHeight(0)
 {
     init();
+    adjustSize();
+    setActionEventId(actionEventId);
+
+    if (listener)
+        addActionListener(listener);
+}
+
+Button::Button(const std::string &caption, const std::string &imageName,
+               int imageWidth, int imageHeight,
+               const std::string &actionEventId,
+               gcn::ActionListener *listener) :
+    gcn::Button(caption),
+    mDescription(""),
+    mClickCount(0),
+    mTag(0),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true),
+    mMode(0),
+    mXOffset(0),
+    mYOffset(0),
+    mImages(nullptr),
+    mImageSet(nullptr),
+    mImageWidth(imageWidth),
+    mImageHeight(imageHeight)
+{
+    init();
+    loadImage(imageName);
+    adjustSize();
+    setActionEventId(actionEventId);
+
+    if (listener)
+        addActionListener(listener);
+}
+
+Button::Button(const std::string &imageName, int imageWidth, int imageHeight,
+               const std::string &actionEventId,
+               gcn::ActionListener *listener) :
+    gcn::Button(""),
+    mDescription(""),
+    mClickCount(0),
+    mTag(0),
+    mVertexes(new GraphicsVertexes()),
+    mRedraw(true),
+    mMode(0),
+    mXOffset(0),
+    mYOffset(0),
+    mImages(nullptr),
+    mImageSet(nullptr),
+    mImageWidth(imageWidth),
+    mImageHeight(imageHeight)
+{
+    init();
+    loadImage(imageName);
+    adjustSize();
     setActionEventId(actionEventId);
 
     if (listener)
@@ -158,6 +221,41 @@ Button::~Button()
             }
         }
     }
+    if (mImageSet)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
+    if (mImages)
+    {
+        for (int f = 0; f < BUTTON_COUNT; f ++)
+            mImages[f] = nullptr;
+        delete [] mImages;
+        mImages = nullptr;
+    }
+}
+
+void Button::loadImage(const std::string &imageName)
+{
+    if (mImageSet)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
+    mImageSet = Theme::getImageSetFromTheme(imageName,
+        mImageWidth, mImageHeight);
+    if (!mImageSet)
+        return;
+    mImages = new Image*[BUTTON_COUNT];
+    mImages[0] = nullptr;
+    for (int f = 0; f < BUTTON_COUNT; f ++)
+    {
+        Image *img = mImageSet->get(f);
+        if (img)
+            mImages[f] = img;
+        else
+            mImages[f] = mImages[0];
+    }
 }
 
 void Button::updateAlpha()
@@ -197,6 +295,7 @@ void Button::draw(gcn::Graphics *graphics)
 
     updateAlpha();
 
+    Graphics *g2 = static_cast<Graphics*>(graphics);
 
     bool recalc = false;
     if (mRedraw)
@@ -207,8 +306,7 @@ void Button::draw(gcn::Graphics *graphics)
     {
         // because we don't know where parent windows was moved,
         // need recalc vertexes
-        gcn::ClipRectangle &rect = static_cast<Graphics*>(
-            graphics)->getTopClip();
+        gcn::ClipRectangle &rect = g2->getTopClip();
         if (rect.xOffset != mXOffset || rect.yOffset != mYOffset)
         {
             recalc = true;
@@ -220,7 +318,7 @@ void Button::draw(gcn::Graphics *graphics)
             recalc = true;
             mMode = mode;
         }
-        else if (static_cast<Graphics*>(graphics)->getRedraw())
+        else if (g2->getRedraw())
         {
             recalc = true;
         }
@@ -230,45 +328,73 @@ void Button::draw(gcn::Graphics *graphics)
     {
         mRedraw = false;
         mMode = mode;
-        static_cast<Graphics*>(graphics)->calcWindow(mVertexes, 0, 0,
-            getWidth(), getHeight(), button[mode]);
+        g2->calcWindow(mVertexes, 0, 0, getWidth(), getHeight(), button[mode]);
     }
 
-    static_cast<Graphics*>(graphics)->drawImageRect2(
-        mVertexes, button[mode]);
+    g2->drawImageRect2(mVertexes, button[mode]);
 
-//    static_cast<Graphics*>(graphics)->
-//        drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
+//    g2->drawImageRect(0, 0, getWidth(), getHeight(), button[mode]);
 
     if (mode == BUTTON_DISABLED)
         graphics->setColor(mDisabledColor);
     else
         graphics->setColor(mEnabledColor);
 
-    int textX;
+    int textX = 0;
     int textY = getHeight() / 2 - getFont()->getHeight() / 2;
+    int imageX = 0;
+    int imageY = 0;
+    if (mImages)
+        imageY = getHeight() / 2 - mImageHeight / 2;
+
+// need move calculation from draw!!!
 
     switch (getAlignment())
     {
         default:
         case gcn::Graphics::LEFT:
-            textX = 4;
+            if (mImages)
+            {
+                imageX = 4;
+                textX = 4 + mImageWidth + 2;
+            }
+            else
+            {
+                textX = 4;
+            }
             break;
         case gcn::Graphics::CENTER:
-            textX = getWidth() / 2;
+            if (mImages)
+            {
+                int width = getFont()->getWidth(mCaption) + mImageWidth + 2;
+                imageX = getWidth() / 2 - width / 2;
+                textX = imageX + mImageWidth + 2;
+            }
+            else
+            {
+                textX = getWidth() / 2;
+            }
             break;
         case gcn::Graphics::RIGHT:
             textX = getWidth() - 4;
+            imageX = textX - getFont()->getWidth(mCaption) - 2;
             break;
-//            throw GCN_EXCEPTION("Button::draw. Unknown alignment.");
     }
 
     graphics->setFont(getFont());
 
     if (isPressed())
-        graphics->drawText(getCaption(), textX + 1, textY + 1, getAlignment());
+    {
+        if (mImages)
+            g2->drawImage(mImages[mode], imageX + 1, imageY + 1);
+        g2->drawText(getCaption(), textX + 1, textY + 1, getAlignment());
+    }
     else
-        graphics->drawText(getCaption(), textX, textY, getAlignment());
+    {
+        if (mImages)
+            g2->drawImage(mImages[mode], imageX, imageY);
+        g2->drawText(getCaption(), textX, textY, getAlignment());
+    }
 }
 
 void Button::mouseReleased(gcn::MouseEvent& mouseEvent)
@@ -297,4 +423,28 @@ void Button::widgetResized(const gcn::Event &event A_UNUSED)
 void Button::widgetMoved(const gcn::Event &event A_UNUSED)
 {
     mRedraw = true;
+}
+
+void Button::adjustSize()
+{
+    if (mImages)
+    {
+        setWidth(getFont()->getWidth(mCaption)
+            + mImageWidth + 2 + 2 * mSpacing);
+        int height = getFont()->getHeight();
+        if (height < mImageHeight)
+            height = mImageHeight;
+        setHeight(height + 2 * mSpacing);
+    }
+    else
+    {
+        setWidth(getFont()->getWidth(mCaption) + 2 * mSpacing);
+        setHeight(getFont()->getHeight() + 2 * mSpacing);
+    }
+}
+
+void Button::setCaption(const std::string& caption)
+{
+    mCaption = caption;
+//    adjustSize();
 }

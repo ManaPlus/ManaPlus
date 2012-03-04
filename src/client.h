@@ -273,6 +273,12 @@ public:
 
     static bool isTmw();
 
+    static void applyGrabMode();
+
+    void applyGamma();
+
+    void applyVSync();
+
     void optionChanged(const std::string &name);
 
     void action(const gcn::ActionEvent &event);

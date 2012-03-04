@@ -127,7 +127,8 @@ const char *MAGIC_SCHOOL_TEXT[6] =
 class TargetTypeModel : public gcn::ListModel
 {
 public:
-    virtual ~TargetTypeModel() { }
+    virtual ~TargetTypeModel()
+    { }
 
     virtual int getNumberOfElements()
     {
@@ -146,7 +147,8 @@ public:
 class MagicSchoolModel : public gcn::ListModel
 {
 public:
-    virtual ~MagicSchoolModel() { }
+    virtual ~MagicSchoolModel()
+    { }
 
     virtual int getNumberOfElements()
     {

@@ -37,7 +37,8 @@ class ConfigListener
         /**
          * Destructor.
          */
-        virtual ~ConfigListener() {}
+        virtual ~ConfigListener()
+        { }
 
         /**
          * Called when an option changed. The config listener will have to be

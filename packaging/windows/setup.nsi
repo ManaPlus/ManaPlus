@@ -356,6 +356,13 @@ Section /o "Portable" SecPortable
   File "portable.xml"
 SectionEnd
 
+Section /o "Debugger" SecDebug
+  SetOutPath "$INSTDIR"
+  File "${DLLDIR}\gdb.exe"
+  CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe"
+  CreateShortCut "$DESKTOP\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe"
+SectionEnd
+
 Section /o "Evol Online music" SecEvolMusic
   AddSize 9787
   CreateDirectory "$INSTDIR\data\music"
@@ -396,8 +403,8 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvol} "Create shortcuts for Evol Online."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvolMusic} "Background evol music. (If selected the evol music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to find stability problems."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
-
 
 
 Section -AdditionalIcons
@@ -431,8 +438,10 @@ Section Uninstall
 
   Delete "$SMPROGRAMS\Mana\Uninstall.lnk"
   Delete "$DESKTOP\ManaPlus.lnk"
+  Delete "$DESKTOP\ManaPlus (debug).lnk"
   Delete "$DESKTOP\ManaPlus (tests).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus.lnk"
+  Delete "$SMPROGRAMS\Mana\ManaPlus (debug).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (tests).lnk"

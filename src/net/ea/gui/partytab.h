@@ -47,6 +47,8 @@ class PartyTab : public ChatTab
 
         void saveToLogFile(std::string &msg);
 
+        void playNewMessageSound();
+
     protected:
         void handleInput(const std::string &msg);
 

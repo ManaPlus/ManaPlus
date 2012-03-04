@@ -28,6 +28,7 @@
 #include "playerinfo.h"
 #include "units.h"
 
+#include "gui/ministatuswindow.h"
 #include "gui/okdialog.h"
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
@@ -257,7 +258,12 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
         static_cast<int>(scrollOffsetY));
 
     if (viewport)
+    {
+        viewport->returnCamera();
+        if (miniStatusWindow)
+            miniStatusWindow->updateStatus();
         viewport->scrollBy(scrollOffsetX, scrollOffsetY);
+    }
 }
 
 void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
@@ -336,7 +342,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                     weightNotice = new OkDialog(_("Message"),
                         _("You are carrying more than "
                         "half your weight. You are "
-                        "unable to regain health."), false);
+                        "unable to regain health."), DIALOG_OK, false);
                     weightNotice->addActionListener(
                         &weightListener);
                 }
@@ -346,7 +352,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                     weightNotice = new OkDialog(_("Message"),
                         _("You are carrying less than "
                         "half your weight. You "
-                        "can regain health."), false);
+                        "can regain health."), DIALOG_OK, false);
                     weightNotice->addActionListener(
                         &weightListener);
                 }
@@ -426,8 +432,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
     if (PlayerInfo::getAttribute(HP) == 0 && !deathNotice)
     {
         deathNotice = new OkDialog(_("Message"),
-                                    randomDeathMessage(),
-                                    false);
+            randomDeathMessage(), DIALOG_OK, false);
         deathNotice->addActionListener(&deathListener);
         player_node->setAction(Being::DEAD);
     }

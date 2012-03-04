@@ -131,8 +131,7 @@ WhoIsOnline::WhoIsOnline():
 
 WhoIsOnline::~WhoIsOnline()
 {
-    config.removeListener("updateOnlineList", this);
-    config.removeListener("groupFriends", this);
+    config.removeListeners(this);
 
     if (mThread && SDL_GetThreadID(mThread))
         SDL_WaitThread(mThread, nullptr);
@@ -738,7 +737,12 @@ void OnlinePlayer::setText(std::string color)
         Being *being = actorSpriteManager->findBeingByName(
             mNick, Being::PLAYER);
         if (being)
+        {
             being->setState(mStatus);
+            // for now highlight versions > 3
+            if (mVersion > 3)
+                being->setAdvanced(true);
+        }
     }
 
     if (mLevel > 0)

@@ -30,7 +30,8 @@ class ActorSpriteListener
         /**
          * Destructor.
          */
-        virtual ~ActorSpriteListener() {}
+        virtual ~ActorSpriteListener()
+        { }
 
         /**
          * Called when the ActorSprite has been destroyed. The listener will

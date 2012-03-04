@@ -225,7 +225,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
                 mWrongDataNoticeListener->setTarget(this->mPasswordField);
             }
 
-            OkDialog *dlg = new OkDialog(_("Error"), errorMsg);
+            OkDialog *dlg = new OkDialog(_("Error"), errorMsg, DIALOG_ERROR);
             dlg->addActionListener(mWrongDataNoticeListener);
         }
         else

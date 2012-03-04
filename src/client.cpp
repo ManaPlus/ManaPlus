@@ -363,7 +363,7 @@ void Client::gameInit()
     logger->log1("Initializing SDL...");
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
     {
-        logger->error(strprintf("Could not initialize SDL: %s",
+        logger->safeError(strprintf("Could not initialize SDL: %s",
                       SDL_GetError()));
     }
     atexit(SDL_Quit);
@@ -555,12 +555,16 @@ void Client::gameInit()
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
                 oldFullscreen, hwaccel, enableResize, noFrame))
             {
-                logger->error(strprintf("Couldn't restore %dx%dx%d "
+                logger->safeError(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,
                     SDL_GetError()));
             }
         }
     }
+
+    applyGrabMode();
+    applyGamma();
+    applyVSync();
 
     // Initialize for drawing
     mainGraphics->_beginDraw();
@@ -663,6 +667,9 @@ void Client::gameInit()
     setFramerate(fpsLimit);
     config.addListener("fpslimit", this);
     config.addListener("guialpha", this);
+    config.addListener("gamma", this);
+    config.addListener("particleEmitterSkip", this);
+    config.addListener("vsync", this);
     setGuiAlpha(config.getFloatValue("guialpha"));
 
     optionChanged("fpslimit");
@@ -700,8 +707,7 @@ void Client::gameClear()
 {
     if (logger)
         logger->log1("Quitting1");
-    config.removeListener("fpslimit", this);
-    config.removeListener("guialpha", this);
+    config.removeListeners(this);
 
     SDL_RemoveTimer(mLogicCounterId);
     SDL_RemoveTimer(mSecondsCounterId);
@@ -1317,14 +1323,16 @@ int Client::gameExec()
 
                 case STATE_LOGIN_ERROR:
                     logger->log1("State: LOGIN ERROR");
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage);
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&loginListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
 
                 case STATE_ACCOUNTCHANGE_ERROR:
                     logger->log1("State: ACCOUNT CHANGE ERROR");
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage);
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
@@ -1360,7 +1368,7 @@ int Client::gameExec()
                 case STATE_CHANGEPASSWORD_SUCCESS:
                     logger->log1("State: CHANGE PASSWORD SUCCESS");
                     mCurrentDialog = new OkDialog(_("Password Change"),
-                            _("Password changed successfully!"));
+                        _("Password changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     loginData.password = loginData.newPassword;
@@ -1380,7 +1388,7 @@ int Client::gameExec()
                 case STATE_CHANGEEMAIL_SUCCESS:
                     logger->log1("State: CHANGE EMAIL SUCCESS");
                     mCurrentDialog = new OkDialog(_("Email Change"),
-                            _("Email changed successfully!"));
+                        _("Email changed successfully!"), DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&accountListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     break;
@@ -1401,7 +1409,7 @@ int Client::gameExec()
                     Net::getLoginHandler()->disconnect();
 
                     mCurrentDialog = new OkDialog(_("Unregister Successful"),
-                            _("Farewell, come back any time..."));
+                        _("Farewell, come back any time..."), DIALOG_ERROR);
                     loginData.clear();
                     //The errorlistener sets the state to STATE_CHOOSE_SERVER
                     mCurrentDialog->addActionListener(&errorListener);
@@ -1458,7 +1466,8 @@ int Client::gameExec()
                 case STATE_ERROR:
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
-                    mCurrentDialog = new OkDialog(_("Error"), errorMessage);
+                    mCurrentDialog = new OkDialog(_("Error"),
+                        errorMessage, DIALOG_ERROR);
                     mCurrentDialog->addActionListener(&errorListener);
                     mCurrentDialog = nullptr; // OkDialog deletes itself
                     Net::getGameHandler()->disconnect();
@@ -1490,6 +1499,19 @@ void Client::optionChanged(const std::string &name)
     else if (name == "guialpha")
     {
         setGuiAlpha(config.getFloatValue("guialpha"));
+        Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+    }
+    else if (name == "gamma")
+    {
+        applyGamma();
+    }
+    else if (name == "particleEmitterSkip")
+    {
+        Particle::emitterSkip = config.getIntValue("particleEmitterSkip") + 1;
+    }
+    else if (name == "vsync")
+    {
+        applyVSync();
     }
 }
 
@@ -1671,6 +1693,7 @@ void Client::initServerConfig(std::string serverName)
     {
         fclose(configFile);
         serverConfig.init(configPath);
+        serverConfig.setDefaultValues(getConfigDefaults());
         logger->log("serverConfigPath: " + configPath);
     }
     initPacketLimiter();
@@ -2428,4 +2451,23 @@ void Client::resizeVideo(int width, int height, bool always)
         config.setValue("screenwidth", width);
         config.setValue("screenheight", height);
     }
+}
+
+void Client::applyGrabMode()
+{
+    SDL_WM_GrabInput(config.getBoolValue("grabinput")
+        ? SDL_GRAB_ON : SDL_GRAB_OFF);
+}
+
+void Client::applyGamma()
+{
+    float val = config.getFloatValue("gamma");
+    SDL_SetGamma(val, val, val);
+}
+
+void Client::applyVSync()
+{
+    int val = config.getIntValue("vsync");
+    if (val > 0 && val < 2)
+        SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
 }

@@ -248,6 +248,8 @@ class Configuration : public ConfigurationObject
          */
         void removeListener(const std::string &key, ConfigListener *listener);
 
+        void removeListeners(ConfigListener *listener);
+
         void setValue(const std::string &key, const std::string &value);
 
         void setSilent(const std::string &key, const std::string &value);

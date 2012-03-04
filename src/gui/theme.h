@@ -131,6 +131,8 @@ class Theme : public Palette, public ConfigListener
 
         static void fillFontsList(std::vector<std::string> &list);
 
+        static void fillSoundsList(std::vector<std::string> &list);
+
         /**
          * Returns the patch to the given gui resource relative to the theme
          * or, if it isn't in the theme, relative to 'graphics/gui'.

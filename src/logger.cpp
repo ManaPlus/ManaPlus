@@ -189,7 +189,8 @@ void Logger::log(const char *log_text, ...)
     delete [] buf;
 }
 
-void Logger::error(const std::string &error_text)
+// here string must be safe for any usage
+void Logger::safeError(const std::string &error_text)
 {
     log("Error: %s", error_text.c_str());
 #ifdef WIN32
@@ -207,6 +208,34 @@ void Logger::error(const std::string &error_text)
 #elif defined __linux__ || __linux
     std::cerr << "Error: " << error_text << std::endl;
     std::string msg = "xmessage \"Error happand. Please see log file for more information.\"";
+    if (system(msg.c_str()) == -1)
+        std::cerr << "Error: " << error_text << std::endl;
+#else
+    std::cerr << "Error: " << error_text << std::endl;
+#endif
+    exit(1);
+}
+
+// here string can be unsafe strings
+void Logger::error(const std::string &error_text)
+{
+    log("Error: %s", error_text.c_str());
+#ifdef WIN32
+    MessageBox(nullptr, error_text.c_str(), "Error", MB_ICONERROR | MB_OK);
+#elif defined __APPLE__
+//    Str255 msg;
+//    CFStringRef error;
+//    error = CFStringCreateWithCString(nullptr,
+//                                      error_text.c_str(),
+//                                      kCFStringEncodingMacRoman);
+//    CFStringGetPascalString(error, msg, 255, kCFStringEncodingMacRoman);
+//    StandardAlert(kAlertStopAlert,
+//                  (const unsigned char*)"\pError",
+//                  (ConstStr255Param) msg, nullptr, nullptr);
+#elif defined __linux__ || __linux
+    std::cerr << "Error: " << error_text << std::endl;
+    std::string msg = "xmessage \"Error happend. "
+        "Please see log file for more information.\"";
     if (system(msg.c_str()) == -1)
         std::cerr << "Error: " << error_text << std::endl;
 #else

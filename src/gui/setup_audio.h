@@ -25,30 +25,21 @@
 
 #include "guichanfwd.h"
 
-#include "gui/widgets/setuptab.h"
+#include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
 
-class Setup_Audio : public SetupTab
+class Setup_Audio : public SetupTabScroll
 {
     public:
         Setup_Audio();
 
-        void apply();
-        void cancel();
+        ~Setup_Audio();
 
-        void action(const gcn::ActionEvent &event);
+        void apply();
 
     private:
-        int mMusicVolume, mSfxVolume;
-        bool mAudioEnabled, mGameSoundEnabled, mGuiSoundEnabled;
-        bool mMusicEnabled, mMumbleEnabled;
-        bool mDownloadEnabled;
-
-        gcn::CheckBox *mAudioCheckBox, *mGameSoundCheckBox, *mGuiSoundCheckBox;
-        gcn::CheckBox *mMusicCheckBox, *mMumbleCheckBox;
-        gcn::CheckBox *mDownloadMusicCheckBox;
-        gcn::Slider *mSfxSlider, *mMusicSlider;
+        gcn::ListModel *mSoundModel;
 };
 
 #endif

@@ -1630,13 +1630,13 @@ void SocialWindow::showPartyCreate()
     if (player_node->getParty())
     {
         new OkDialog(_("Create Party"),
-                     _("Cannot create party. You are already in a party"),
-                     this);
+            _("Cannot create party. You are already in a party"),
+            DIALOG_ERROR, true, true, this);
         return;
     }
 
     mPartyCreateDialog = new TextDialog(_("Party Name"),
-                                        _("Choose your party's name."), this);
+        _("Choose your party's name."), this);
     mPartyCreateDialog->setActionEventId("create party");
     mPartyCreateDialog->addActionListener(this);
 }

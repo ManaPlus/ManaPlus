@@ -177,6 +177,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
 
         void restoreCamera();
 
+        void refocus();
+
     private:
         typedef std::list<NpcDialog*> DialogList;
         static DialogList instances;

@@ -69,3 +69,17 @@ void Animation::addGoto(std::string name, int rand)
     Frame frame = { nullptr, 0, 0, 0, rand, Frame::GOTO, name };
     mFrames.push_back(frame);
 }
+
+void Animation::setLastFrameDelay(int delay)
+{
+    FramesRevIter it = mFrames.rbegin();
+    FramesRevIter it_end = mFrames.rend();
+    for (; it != it_end; ++ it)
+    {
+        if ((*it).type == Frame::ANIMATION && (*it).image)
+        {
+            (*it).delay = delay;
+            break;
+        }
+    }
+}

@@ -23,15 +23,16 @@
 #ifndef OPENGL1GRAPHICS_H
 #define OPENGL1GRAPHICS_H
 
+#ifdef USE_OPENGL
 #include "main.h"
 
 #include "graphics.h"
 
-#ifdef USE_OPENGL
-#define NO_SDL_GLEXT
+//#define NO_SDL_GLEXT
+#define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
-#endif
+#include <GL/glext.h>
 
 class OpenGL1Graphics : public Graphics
 {
@@ -128,6 +129,8 @@ class OpenGL1Graphics : public Graphics
          */
         SDL_Surface *getScreenshot();
 
+        void prepareScreenshot();
+
         static void bindTexture(GLenum target, GLuint texture);
 
         static GLuint mLastImage;
@@ -139,6 +142,10 @@ class OpenGL1Graphics : public Graphics
         bool mAlpha, mTexture;
         bool mColorAlpha;
         bool mSync;
+        GLuint mFboId;
+        GLuint mTextureId;
+        GLuint mRboId;
 };
+#endif
 
 #endif

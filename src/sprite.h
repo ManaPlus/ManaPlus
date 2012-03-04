@@ -32,7 +32,8 @@ class Image;
 class Sprite
 {
     public:
-        virtual ~Sprite() {}
+        virtual ~Sprite()
+        { }
 
         /**
          * Resets the sprite.

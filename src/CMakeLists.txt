@@ -165,6 +165,8 @@ SET(SRCS
     gui/widgets/listbox.cpp
     gui/widgets/listbox.h
     gui/widgets/mouseevent.h
+    gui/widgets/namesmodel.cpp
+    gui/widgets/namesmodel.h
     gui/widgets/passwordfield.cpp
     gui/widgets/passwordfield.h
     gui/widgets/playerbox.cpp
@@ -195,6 +197,8 @@ SET(SRCS
     gui/widgets/shortcutcontainer.h
     gui/widgets/slider.cpp
     gui/widgets/slider.h
+    gui/widgets/sliderlist.cpp
+    gui/widgets/sliderlist.h
     gui/widgets/tab.cpp
     gui/widgets/tab.h
     gui/widgets/tabbedarea.cpp
@@ -325,6 +329,8 @@ SET(SRCS
     gui/setup_players.h
     gui/setup_video.cpp
     gui/setup_video.h
+    gui/setup_visual.cpp
+    gui/setup_visual.h
     gui/sdlfont.cpp
     gui/sdlfont.h
     gui/shopwindow.cpp

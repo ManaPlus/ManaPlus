@@ -142,6 +142,8 @@ class PopupMenu : public Popup, public LinkHandler
 
         void showUndressPopup(int x, int y, Being *being, Item *item);
 
+        void showMapPopup(int x, int y, int x2, int y2);
+
         /**
          * Shows the related popup menu when right click on the chat
          * at the specified mouse coordinates.
