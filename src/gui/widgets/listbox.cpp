@@ -29,6 +29,7 @@
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 
+#include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>
 #include <guichan/graphics.hpp>
 #include <guichan/key.hpp>
@@ -148,4 +149,13 @@ void ListBox::mouseDragged(gcn::MouseEvent &event)
     int y = std::max(0, event.getY());
     if (getRowHeight())
         setSelected(y / getRowHeight());
+}
+
+void ListBox::refocus()
+{
+    if (!mFocusHandler)
+        return;
+
+    if (isFocusable())
+        mFocusHandler->requestFocus(this);
 }

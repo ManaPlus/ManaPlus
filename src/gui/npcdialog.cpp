@@ -355,7 +355,7 @@ void NpcDialog::parseListItems(const std::string &itemString)
 void NpcDialog::refocus()
 {
     if (!mItems.empty())
-        mItemList->requestFocus();
+        mItemList->refocus();
 }
 
 void NpcDialog::textRequest(const std::string &defaultText)
