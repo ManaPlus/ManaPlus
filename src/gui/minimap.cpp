@@ -233,7 +233,7 @@ void Minimap::draw(gcn::Graphics *graphics)
                 + viewport->getCameraRelativeX()) * mWidthProportion) / 32;
 
             mMapOriginY = ((a.height) / 2) - (static_cast<float>(p.y
-                + viewport->getCameraRelativeX()) * mHeightProportion) / 32;
+                + viewport->getCameraRelativeY()) * mHeightProportion) / 32;
 
             const int minOriginX = a.width - mMapImage->mBounds.w;
             const int minOriginY = a.height - mMapImage->mBounds.h;
