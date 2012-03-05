@@ -358,8 +358,10 @@ SectionEnd
 Section /o "Debugger" SecDebug
   SetOutPath "$INSTDIR"
   File "${DLLDIR}\gdb.exe"
-  CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe" 1
-  CreateShortCut "$DESKTOP\EvolOnline (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe" 1
+  ${If} ${SectionIsSelected} ${SecShortcuts}
+    CreateShortCut "$SMPROGRAMS\EvolOnline\EvolOnline (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe" 1
+    CreateShortCut "$DESKTOP\EvolOnline (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe" 1
+  ${EndIf}
 SectionEnd
 
 Section /o "Evol Online music" SecEvolMusic
