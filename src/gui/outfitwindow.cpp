@@ -402,8 +402,14 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     if (index == -1)
     {
         if (event.getButton() == gcn::MouseEvent::RIGHT && viewport)
+        {
             viewport->showOutfitsPopup();
-        Window::mousePressed(event);
+            event.consume();
+        }
+        else
+        {
+            Window::mousePressed(event);
+        }
         return;
     }
     mMoved = false;
