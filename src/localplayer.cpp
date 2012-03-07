@@ -208,8 +208,12 @@ LocalPlayer::~LocalPlayer()
     config.removeListeners(this);
     serverConfig.removeListener("enableBuggyServers", this);
 
-    delete mAwayDialog;
-    mAwayDialog = nullptr;
+    if (mAwayDialog)
+    {
+        sound.volumeRestore();
+        delete mAwayDialog;
+        mAwayDialog = nullptr;
+    }
     delete mAwayListener;
     mAwayListener = nullptr;
 }
