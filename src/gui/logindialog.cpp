@@ -82,6 +82,36 @@ public:
     }
 };
 
+class UpdateListModel : public gcn::ListModel
+{
+    public:
+        UpdateListModel(LoginData *data) :
+            gcn::ListModel(),
+            mLoginData(data)
+        {
+        }
+
+        virtual ~UpdateListModel()
+        { }
+
+        virtual int getNumberOfElements()
+        {
+            if (!mLoginData)
+                return 0;
+            return mLoginData->updateHosts.size();
+        }
+
+        virtual std::string getElementAt(int i)
+        {
+            if (!mLoginData || i >= getNumberOfElements() || i < 0)
+                return _("???");
+
+            return mLoginData->updateHosts[i];
+        }
+    protected:
+        LoginData *mLoginData;
+};
+
 LoginDialog::LoginDialog(LoginData *data, std::string serverName,
                          std::string *updateHost):
     Window(_("Login"), false, nullptr, "login.xml"),
@@ -89,12 +119,29 @@ LoginDialog::LoginDialog(LoginData *data, std::string serverName,
     mUpdateHost(updateHost),
     mServerName(serverName)
 {
-
     gcn::Label *serverLabel1 = new Label(_("Server:"));
     gcn::Label *serverLabel2 = new Label(serverName);
     serverLabel2->adjustSize();
     gcn::Label *userLabel = new Label(_("Name:"));
     gcn::Label *passLabel = new Label(_("Password:"));
+    if (mLoginData && mLoginData->updateHosts.size() > 1)
+    {
+        mUpdateHostLabel = new Label(strprintf(_("Update host: %s"),
+            mLoginData->updateHost.c_str()));
+        mUpdateListModel = new UpdateListModel(mLoginData);
+        mUpdateHostDropDown = new DropDown(mUpdateListModel,
+            this, "updateselect");
+        const std::string str = serverConfig.getValue("updateHost2", "");
+        if (!str.empty())
+            mUpdateHostDropDown->setSelectedString(str);
+    }
+    else
+    {
+        mUpdateHostLabel = nullptr;
+        mUpdateListModel = nullptr;
+        mUpdateHostDropDown = nullptr;
+    }
+
     mCustomUpdateHost = new CheckBox(_("Custom update host"),
         mLoginData->updateType & LoginData::Upd_Custom, this, "customhost");
 
@@ -135,20 +182,30 @@ LoginDialog::LoginDialog(LoginData *data, std::string serverName,
     place(0, 0, serverLabel1);
     place(1, 0, serverLabel2, 8);
     place(0, 1, userLabel);
-    place(0, 2, passLabel);
     place(1, 1, mUserField, 8);
+    place(0, 2, passLabel);
     place(1, 2, mPassField, 8);
     place(0, 6, mUpdateTypeLabel, 1);
     place(1, 6, mUpdateTypeDropDown, 8);
-    place(0, 7, mCustomUpdateHost, 9);
-    place(0, 8, mUpdateHostText, 9);
-    place(0, 9, mKeepCheck, 9);
-    place(0, 10, mRegisterButton).setHAlign(LayoutCell::LEFT);
-    place(2, 10, mServerButton);
-    place(3, 10, mLoginButton);
+    int n = 7;
+    if (mUpdateHostLabel)
+    {
+        place(0, 7, mUpdateHostLabel, 9);
+        place(0, 8, mUpdateHostDropDown, 9);
+        n += 2;
+    }
+    place(0, n, mCustomUpdateHost, 9);
+    place(0, n + 1, mUpdateHostText, 9);
+    place(0, n + 2, mKeepCheck, 9);
+    place(0, n + 3, mRegisterButton).setHAlign(LayoutCell::LEFT);
+    place(2, n + 3, mServerButton);
+    place(3, n + 3, mLoginButton);
 
     addKeyListener(this);
-    setContentSize(300, 200);
+    if (mUpdateHostLabel)
+        setContentSize(300, 250);
+    else
+        setContentSize(300, 200);
 
     center();
     setVisible(true);
@@ -196,6 +253,22 @@ void LoginDialog::action(const gcn::ActionEvent &event)
                 *mUpdateHost = "";
             }
         }
+        else if (mUpdateHostDropDown)
+        {
+            const std::string str = mUpdateHostDropDown->getSelectedString();
+            serverConfig.setValue("updateHost2", str);
+            if (!str.empty() && checkPath(str))
+            {
+                mLoginData->updateHost = str;
+                *mUpdateHost = str;
+            }
+            else
+            {
+                mLoginData->updateHost = "";
+                *mUpdateHost = "";
+            }
+        }
+
         mLoginData->updateType = updateType;
         serverConfig.setValue("updateType", updateType);
 
@@ -228,6 +301,11 @@ void LoginDialog::action(const gcn::ActionEvent &event)
     {
         mUpdateHostText->setVisible(mCustomUpdateHost->isSelected());
     }
+    else if (event.getId() == "updateselect")
+    {
+        mCustomUpdateHost->setSelected(false);
+        mUpdateHostText->setVisible(false);
+    }
 }
 
 void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
@@ -245,6 +323,6 @@ void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
 bool LoginDialog::canSubmit() const
 {
     return !mUserField->getText().empty() &&
-           !mPassField->getText().empty() &&
-           Client::getState() == STATE_LOGIN;
+        !mPassField->getText().empty() &&
+        Client::getState() == STATE_LOGIN;
 }

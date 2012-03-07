@@ -64,6 +64,7 @@ QuitDialog::QuitDialog(QuitDialog** pointerToMe):
     if (state == STATE_CHOOSE_SERVER ||
         state == STATE_CONNECT_SERVER ||
         state == STATE_LOGIN ||
+        state == STATE_PRE_LOGIN ||
         state == STATE_LOGIN_ATTEMPT ||
         state == STATE_UPDATE ||
         state == STATE_LOAD_DATA)

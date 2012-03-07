@@ -151,6 +151,7 @@ void LoginHandler::processUpdateHost(Net::MessageIn &msg)
 
     len = msg.readInt16() - 4;
     mUpdateHost = msg.readString(len);
+
     if (!checkPath(mUpdateHost))
     {
         mUpdateHost = "";

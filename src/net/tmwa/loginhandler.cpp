@@ -32,6 +32,7 @@
 #include "net/tmwa/protocol.h"
 
 #include "utils/gettext.h"
+#include "utils/paths.h"
 
 #include "debug.h"
 
@@ -47,6 +48,7 @@ LoginHandler::LoginHandler()
     static const Uint16 _messages[] =
     {
         SMSG_UPDATE_HOST,
+        SMSG_UPDATE_HOST2,
         SMSG_LOGIN_DATA,
         SMSG_LOGIN_ERROR,
         SMSG_CHAR_PASSWORD_RESPONSE,
@@ -71,6 +73,10 @@ void LoginHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_UPDATE_HOST:
             processUpdateHost(msg);
+            break;
+
+        case SMSG_UPDATE_HOST2:
+            processUpdateHost2(msg);
             break;
 
         case SMSG_LOGIN_DATA:
@@ -144,6 +150,13 @@ ServerInfo *LoginHandler::getCharServer()
     return &charServer;
 }
 
+void LoginHandler::requestUpdateHosts()
+{
+    MessageOut outMsg(CMSG_SEND_CLIENT_INFO);
+    outMsg.writeInt8(CLIENT_PROTOCOL_VERSION);
+    outMsg.writeInt8(0);    // unused
+}
+
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
     char b1 = msg.readInt8(); // -1
@@ -156,6 +169,8 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
         mRegistrationEnabled = options;
         msg.skip(2);    // 0 unused
         serverVersion = msg.readInt8();
+        if (serverVersion >= 5)
+            requestUpdateHosts();
     }
     else
     {
@@ -163,9 +178,42 @@ void LoginHandler::processServerVersion(Net::MessageIn &msg)
         mRegistrationEnabled = options;
         serverVersion = 0;
     }
+    logger->log("Server version: %d", serverVersion);
+    if (serverVersion < 5)
+    {
+        if (Client::getState() != STATE_LOGIN)
+            Client::setState(STATE_LOGIN);
+    }
 
     // Leave this last
     mVersionResponse = true;
+}
+
+void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
+{
+    int len;
+
+    len = msg.readInt16() - 4;
+    std::string updateHost = msg.readString(len);
+
+    splitToStringVector(loginData.updateHosts, updateHost, '|');
+    std::vector<std::string>::iterator it = loginData.updateHosts.begin();
+    std::vector<std::string>::iterator it_end = loginData.updateHosts.end();
+    for (; it != it_end; ++ it)
+    {
+        if (!checkPath(*it))
+        {
+            logger->log1("Warning: incorrect update server name");
+            loginData.updateHosts.clear();
+            break;
+        }
+    }
+
+    logger->log("Received update hosts \"%s\" from login server.",
+        updateHost.c_str());
+
+    if (Client::getState() == STATE_PRE_LOGIN)
+        Client::setState(STATE_LOGIN);
 }
 
 } // namespace TmwAthena

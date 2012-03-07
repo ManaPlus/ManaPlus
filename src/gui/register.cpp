@@ -154,7 +154,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "cancel")
     {
-        Client::setState(STATE_LOGIN);
+        Client::setState(STATE_PRE_LOGIN);
     }
     else if (event.getId() == "register" && canSubmit())
     {

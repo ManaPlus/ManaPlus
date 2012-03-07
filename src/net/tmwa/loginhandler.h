@@ -67,6 +67,10 @@ class LoginHandler : public MessageHandler, public Ea::LoginHandler
 
         void processServerVersion(Net::MessageIn &msg);
 
+        void requestUpdateHosts();
+
+        void processUpdateHost2(Net::MessageIn &msg);
+
     private:
         void sendLoginRegister(const std::string &username,
                                const std::string &password);

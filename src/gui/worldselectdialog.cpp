@@ -132,7 +132,7 @@ void WorldSelectDialog::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "login")
     {
-        Client::setState(STATE_LOGIN);
+        Client::setState(STATE_PRE_LOGIN);
     }
 }
 

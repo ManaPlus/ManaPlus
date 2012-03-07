@@ -59,6 +59,7 @@ class LoginData
         std::string password;
         std::string newPassword;
         std::string updateHost;
+        std::vector<std::string> updateHosts;
         std::string lastLogin;
         int updateType;
 
@@ -79,6 +80,7 @@ class LoginData
             password.clear();
             newPassword.clear();
             updateHost.clear();
+            updateHosts.clear();
             updateType = Upd_Normal;
             email.clear();
             captchaResponse.clear();

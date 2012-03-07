@@ -79,6 +79,8 @@ class LoginHandler : public Net::LoginHandler
 
         virtual void processUpdateHost(Net::MessageIn &msg);
 
+        virtual void processUpdateHost2(Net::MessageIn &msg) = 0;
+
         virtual void processLoginData(Net::MessageIn &msg);
 
         virtual void processLoginError(Net::MessageIn &msg);

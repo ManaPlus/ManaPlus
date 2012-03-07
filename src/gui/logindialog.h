@@ -32,7 +32,9 @@
 #include <string>
 #include <vector>
 
+class DropDown;
 class LoginData;
+class UpdateListModel;
 class UpdateTypeModel;
 
 /**
@@ -78,12 +80,15 @@ class LoginDialog : public Window, public gcn::ActionListener,
         gcn::TextField *mPassField;
         gcn::CheckBox *mKeepCheck;
         gcn::Label *mUpdateTypeLabel;
-        gcn::DropDown *mUpdateTypeDropDown;
+        gcn::Label *mUpdateHostLabel;
+        DropDown *mUpdateTypeDropDown;
         gcn::Button *mServerButton;
         gcn::Button *mLoginButton;
         gcn::Button *mRegisterButton;
         gcn::CheckBox *mCustomUpdateHost;
         gcn::TextField *mUpdateHostText;
+        UpdateListModel *mUpdateListModel;
+        DropDown *mUpdateHostDropDown;
 
         LoginData *mLoginData;
         std::string *mUpdateHost;

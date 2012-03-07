@@ -237,7 +237,7 @@ class LoginListener : public gcn::ActionListener
     public:
         void action(const gcn::ActionEvent &)
         {
-            Client::setState(STATE_LOGIN);
+            Client::setState(STATE_PRE_LOGIN);
         }
 } loginListener;
 
@@ -945,12 +945,12 @@ int Client::gameExec()
                  mOldState != STATE_CHOOSE_SERVER &&
                  Net::getLoginHandler()->isConnected())
         {
-            mState = STATE_LOGIN;
+            mState = STATE_PRE_LOGIN;
         }
         else if (mState == STATE_WORLD_SELECT && mOldState == STATE_UPDATE)
         {
             if (Net::getLoginHandler()->getWorlds().size() < 2)
-                mState = STATE_LOGIN;
+                mState = STATE_PRE_LOGIN;
         }
         else if (mOldState == STATE_START ||
                  (mOldState == STATE_GAME && mState != STATE_GAME))
@@ -1038,6 +1038,9 @@ int Client::gameExec()
                 case STATE_CHOOSE_SERVER:
                     logger->log1("State: CHOOSE SERVER");
 
+                    loginData.clear();
+                    serverVersion = 0;
+
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
                     // options weren't set.
@@ -1064,9 +1067,16 @@ int Client::gameExec()
 
                 case STATE_CONNECT_SERVER:
                     logger->log1("State: CONNECT SERVER");
+                    loginData.updateHosts.clear();
                     mCurrentDialog = new ConnectionDialog(
                             _("Connecting to server"), STATE_SWITCH_SERVER);
                     TranslationManager::loadCurrentLang();
+                    break;
+
+                case STATE_PRE_LOGIN:
+                    logger->log1("State: PRE_LOGIN");
+//                    if (serverVersion < 5)
+//                        setState(STATE_LOGIN);
                     break;
 
                 case STATE_LOGIN:

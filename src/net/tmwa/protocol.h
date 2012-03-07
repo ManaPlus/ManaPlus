@@ -338,4 +338,7 @@ enum
 #define SMSG_NPC_COMMAND             0x0212
 #define CMSG_SET_STATUS              0x0213
 
+#define CMSG_SEND_CLIENT_INFO        0x7533
+#define SMSG_UPDATE_HOST2            0x7534
+
 #endif
