@@ -224,6 +224,8 @@ LoginDialog::~LoginDialog()
 {
     delete mUpdateTypeModel;
     mUpdateTypeModel = nullptr;
+    delete mUpdateListModel;
+    mUpdateListModel = nullptr;
 }
 
 void LoginDialog::action(const gcn::ActionEvent &event)
