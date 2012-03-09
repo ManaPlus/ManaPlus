@@ -1650,8 +1650,6 @@ void Game::handleInput()
         {
             wasDown = true;
 
-            logger->log("key. sym=%d, scancode=%d", event.key.keysym.sym, event.key.keysym.scancode);
-
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
             {
