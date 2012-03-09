@@ -205,9 +205,32 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
+void DyePalette::replaceColor(int color[3]) const
+{
+    std::vector<Color>::const_iterator it = mColors.begin();
+    std::vector<Color>::const_iterator it_end = mColors.end();
+    while (it != it_end)
+    {
+        const Color &col = *it;
+        ++ it;
+        if (it == it_end)
+            return;
+        const Color &col2 = *it;
+        if (color[0] == col.value[0] && color[1] == col.value[1]
+            && color[2] == col.value[2])
+        {
+            color[0] = col2.value[0];
+            color[1] = col2.value[1];
+            color[2] = col2.value[2];
+            return;
+        }
+        ++ it;
+    }
+}
+
 Dye::Dye(const std::string &description)
 {
-    for (int i = 0; i < 7; ++i)
+    for (int i = 0; i < dyePalateSize; ++i)
         mDyePalettes[i] = nullptr;
 
     if (description.empty())
@@ -239,6 +262,7 @@ Dye::Dye(const std::string &description)
             case 'M': i = 4; break;
             case 'C': i = 5; break;
             case 'W': i = 6; break;
+            case 'S': i = 7; break;
             default:
                 logger->log("Error, invalid dye: %s", description.c_str());
                 return;
@@ -252,7 +276,7 @@ Dye::Dye(const std::string &description)
 
 Dye::~Dye()
 {
-    for (int i = 0; i < 7; ++i)
+    for (int i = 0; i < dyePalateSize; ++i)
     {
         delete mDyePalettes[i];
         mDyePalettes[i] = nullptr;
@@ -261,6 +285,12 @@ Dye::~Dye()
 
 void Dye::update(int color[3]) const
 {
+    if (mDyePalettes[dyePalateSize - 1])
+    {
+        mDyePalettes[dyePalateSize - 1]->replaceColor(color);
+        return;
+    }
+
     int cmax = std::max(color[0], std::max(color[1], color[2]));
     if (cmax == 0)
         return;
@@ -268,8 +298,8 @@ void Dye::update(int color[3]) const
     int cmin = std::min(color[0], std::min(color[1], color[2]));
     int intensity = color[0] + color[1] + color[2];
 
-    if (cmin != cmax &&
-        (cmin != 0 || (intensity != cmax && intensity != 2 * cmax)))
+    if (cmin != cmax && (cmin != 0 || (intensity != cmax
+        && intensity != 2 * cmax)))
     {
         // not pure
         return;

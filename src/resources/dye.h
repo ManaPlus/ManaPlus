@@ -26,6 +26,8 @@
 #include <string>
 #include <vector>
 
+const int dyePalateSize = 8;
+
 /**
  * Class for performing a linear interpolation between colors.
  */
@@ -57,11 +59,13 @@ class DyePalette
          */
         void getColor(double intensity, int color[3]) const;
 
+        void replaceColor(int color[3]) const;
+
     private:
+        struct Color
+        { unsigned char value[3]; };
 
-        struct Color { unsigned char value[3]; };
-
-        std::vector< Color > mColors;
+        std::vector<Color> mColors;
 };
 
 /**
@@ -100,9 +104,9 @@ class Dye
         /**
          * The order of the palettes, as well as their uppercase letter, is:
          *
-         * Red, Green, Yellow, Blue, Magenta, White (or rather gray).
+         * Red, Green, Yellow, Blue, Magenta, White (or rather gray), Simple.
          */
-        DyePalette *mDyePalettes[7];
+        DyePalette *mDyePalettes[dyePalateSize];
 };
 
 #endif
