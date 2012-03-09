@@ -201,11 +201,9 @@ void Setup_Keyboard::refreshAssignedKey(int index)
     }
     else
     {
-        std::string caption;
-        char *temp = SDL_GetKeyName(
-            static_cast<SDLKey>(keyboard.getKeyValue(index)));
-        caption = keyboard.getKeyCaption(index) + ": " + toString(temp);
-        mKeyListModel->setElementAt(index, caption);
+        mKeyListModel->setElementAt(index, strprintf("%s: %s",
+            keyboard.getKeyCaption(index).c_str(),
+            keyboard.getKeyStringLong(index).c_str()));
     }
 }
 

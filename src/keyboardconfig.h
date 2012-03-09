@@ -28,7 +28,6 @@
 
 #include <string>
 
-//enum SDLKey;
 union SDL_Event;
 
 /**
@@ -152,10 +151,14 @@ class KeyboardConfig
 
         std::string getKeyShortString(const std::string &key) const;
 
+        std::string getKeyStringLong(int index) const;
+
         const std::string &getBindError() const
         { return mBindError; }
 
         SDLKey getKeyFromEvent(const SDL_Event &event) const;
+
+        int getKeyValueFromEvent(const SDL_Event &event) const;
 
         void unassignKey();
 

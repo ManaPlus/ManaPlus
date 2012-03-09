@@ -456,9 +456,18 @@ void KeyboardConfig::callbackNewKey()
     mSetupKey->newKeyCallback(mNewKeyIndex);
 }
 
+int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
+{
+    if (event.key.keysym.sym)
+        return event.key.keysym.sym;
+    else if (event.key.keysym.scancode > 1)
+        return -event.key.keysym.scancode;
+    return 0;
+}
+
 int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
 {
-    const int keyValue = event.key.keysym.sym;
+    const int keyValue = getKeyValueFromEvent(event);
     for (int i = 0; i < KEY_TOTAL; i++)
     {
         if (keyValue == mKey[i].value &&
@@ -473,7 +482,7 @@ int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
 
 int KeyboardConfig::getKeyEmoteOffset(const SDL_Event &event) const
 {
-    const int keyValue = event.key.keysym.sym;
+    const int keyValue = getKeyValueFromEvent(event);
     for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_48; i++)
     {
         if (keyValue == mKey[i].value)
@@ -486,7 +495,11 @@ bool KeyboardConfig::isActionActive(int index) const
 {
     if (!mActiveKeys)
         return false;
-    return mActiveKeys[mKey[index].value];
+    const int value = mKey[index].value;
+    if (value >= 0)
+        return mActiveKeys[value];
+    else
+        return false;   // scan codes active state now not implimented
 }
 
 void KeyboardConfig::refreshActiveKeys()
@@ -494,20 +507,47 @@ void KeyboardConfig::refreshActiveKeys()
     mActiveKeys = SDL_GetKeyState(nullptr);
 }
 
+std::string KeyboardConfig::getKeyStringLong(int index) const
+{
+    const int keyValue = getKeyValue(index);
+    if (keyValue >= 0)
+        return SDL_GetKeyName(static_cast<SDLKey>(keyValue));
+    else if (keyValue < -1)
+        return strprintf(_("key_%d"), -keyValue);
+    else
+        return _("unknown key");
+}
+
 std::string KeyboardConfig::getKeyValueString(int index) const
 {
-    std::string key = SDL_GetKeyName(
-        static_cast<SDLKey>(getKeyValue(index)));
-
-    return getKeyShortString(key);
+    const int keyValue = getKeyValue(index);
+    if (keyValue >= 0)
+    {
+        std::string key = SDL_GetKeyName(static_cast<SDLKey>(keyValue));
+        return getKeyShortString(key);
+    }
+    else if (keyValue < -1)
+    {
+        return strprintf("#%d", -keyValue);
+    }
+    else
+    {
+        // TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
+        return _("u key");
+    }
 }
 
 std::string KeyboardConfig::getKeyShortString(const std::string &key) const
 {
     if (key == "backspace")
+    {
         return "bksp";
+    }
     else if (key == "unknown key")
-        return "u key";
+    {
+        // TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
+        return _("u key");
+    }
     return key;
 }
 
@@ -518,7 +558,7 @@ SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event) const
 
 void KeyboardConfig::setNewKey(const SDL_Event &event)
 {
-    mKey[mNewKeyIndex].value = event.key.keysym.sym;
+    mKey[mNewKeyIndex].value = getKeyValueFromEvent(event);
 }
 
 void KeyboardConfig::unassignKey()
