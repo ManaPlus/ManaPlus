@@ -30,6 +30,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include <SDL_events.h>
+
 #include "debug.h"
 
 struct KeyData
@@ -454,8 +456,9 @@ void KeyboardConfig::callbackNewKey()
     mSetupKey->newKeyCallback(mNewKeyIndex);
 }
 
-int KeyboardConfig::getKeyIndex(int keyValue, int grp) const
+int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
 {
+    const int keyValue = event.key.keysym.sym;
     for (int i = 0; i < KEY_TOTAL; i++)
     {
         if (keyValue == mKey[i].value &&
@@ -468,8 +471,9 @@ int KeyboardConfig::getKeyIndex(int keyValue, int grp) const
 }
 
 
-int KeyboardConfig::getKeyEmoteOffset(int keyValue) const
+int KeyboardConfig::getKeyEmoteOffset(const SDL_Event &event) const
 {
+    const int keyValue = event.key.keysym.sym;
     for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_48; i++)
     {
         if (keyValue == mKey[i].value)
@@ -505,4 +509,19 @@ std::string KeyboardConfig::getKeyShortString(const std::string &key) const
     else if (key == "unknown key")
         return "u key";
     return key;
+}
+
+SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event) const
+{
+    return event.key.keysym.sym;
+}
+
+void KeyboardConfig::setNewKey(const SDL_Event &event)
+{
+    mKey[mNewKeyIndex].value = event.key.keysym.sym;
+}
+
+void KeyboardConfig::unassignKey()
+{
+    mKey[mNewKeyIndex].value = KEY_NO_VALUE;
 }

@@ -180,7 +180,7 @@ void Setup_Keyboard::action(const gcn::ActionEvent &event)
         int i(mKeyList->getSelected());
         keyboard.setNewKeyIndex(i);
         refreshAssignedKey(mKeyList->getSelected());
-        keyboard.setNewKey(keyboard.KEY_NO_VALUE);
+        keyboard.unassignKey();
         mAssignKeyButton->setEnabled(true);
     }
     else if (event.getId() == "makeDefault")

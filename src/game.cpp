@@ -738,7 +738,7 @@ bool Game::handleOutfitsKeys(SDL_Event &event, bool &used)
         if (wearOutfit || copyOutfit)
         {
             int outfitNum = outfitWindow->keyToNumber(
-                event.key.keysym.sym);
+                keyboard.getKeyFromEvent(event));
             if (outfitNum >= 0)
             {
                 used = true;
@@ -760,7 +760,7 @@ bool Game::handleOutfitsKeys(SDL_Event &event, bool &used)
         else if (keyboard.isActionActive(keyboard.KEY_MOVE_TO_POINT))
         {
             int num = outfitWindow->keyToNumber(
-                event.key.keysym.sym);
+                keyboard.getKeyFromEvent(event));
             if (socialWindow && num >= 0)
             {
                 socialWindow->selectPortal(num);
@@ -846,7 +846,7 @@ bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
         }
     }
 
-    const int tKey = keyboard.getKeyIndex(event.key.keysym.sym);
+    const int tKey = keyboard.getKeyIndex(event);
     switch (tKey)
     {
         case KeyboardConfig::KEY_SCROLL_CHAT_UP:
@@ -1316,7 +1316,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
 {
     // Moving player around
     if (player_node->isAlive() && (!Being::isTalking()
-        || keyboard.getKeyIndex(event.key.keysym.sym)
+        || keyboard.getKeyIndex(event)
         == KeyboardConfig::KEY_TALK)
         && chatWindow && !chatWindow->isInputFocused()
         && !InventoryWindow::isAnyInputFocused() && !quitDialog)
@@ -1528,9 +1528,8 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         }
 
         // Talk to the nearest NPC if 't' pressed
-        if (wasDown && keyboard.getKeyIndex(event.key.keysym.sym)
-            == KeyboardConfig::KEY_TALK &&
-            !keyboard.isActionActive(keyboard.KEY_EMOTE))
+        if (wasDown && keyboard.getKeyIndex(event) == KeyboardConfig::KEY_TALK
+            && !keyboard.isActionActive(keyboard.KEY_EMOTE))
         {
             Being *target = player_node->getTarget();
 
@@ -1651,10 +1650,12 @@ void Game::handleInput()
         {
             wasDown = true;
 
+            logger->log("key. sym=%d, scancode=%d", event.key.keysym.sym, event.key.keysym.scancode);
+
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
             {
-                keyboard.setNewKey(static_cast<int>(event.key.keysym.sym));
+                keyboard.setNewKey(event);
                 keyboard.callbackNewKey();
                 keyboard.setNewKeyIndex(keyboard.KEY_NO_VALUE);
                 return;
@@ -1693,7 +1694,7 @@ void Game::handleInput()
             if (keyboard.isActionActive(keyboard.KEY_EMOTE))
             {
                 // Emotions
-                int emotion = keyboard.getKeyEmoteOffset(event.key.keysym.sym);
+                int emotion = keyboard.getKeyEmoteOffset(event);
                 if (emotion)
                 {
                     if (emoteShortcut)
@@ -1861,7 +1862,7 @@ void Game::updateHistory(SDL_Event &event)
 
     if (event.key.keysym.sym != -1)
     {
-        int key = keyboard.getKeyIndex(event.key.keysym.sym);
+        int key = keyboard.getKeyIndex(event);
         int time = cur_time;
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)

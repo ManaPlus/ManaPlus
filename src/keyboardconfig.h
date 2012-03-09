@@ -24,8 +24,12 @@
 #define KEYBOARDCONFIG_H
 
 #include <SDL_types.h>
+#include <SDL_keyboard.h>
 
 #include <string>
+
+//enum SDLKey;
+union SDL_Event;
 
 /**
  * Each key represents a key function. Such as 'Move up', 'Attack' etc.
@@ -104,12 +108,12 @@ class KeyboardConfig
         /**
          * Get the key function index by providing the keys value.
          */
-        int getKeyIndex(int keyValue, int grp = 1) const;
+        int getKeyIndex(const SDL_Event &event, int grp = 1) const;
 
         /**
          * Get the key function index for an emote by providing the offset value.
          */
-        int getKeyEmoteOffset(int keyValue) const;
+        int getKeyEmoteOffset(const SDL_Event &event) const;
 
         /**
          * Set the enable flag, which will stop the user from doing actions.
@@ -126,8 +130,7 @@ class KeyboardConfig
         /**
          * Set the value of the new key.
          */
-        void setNewKey(int value)
-        { mKey[mNewKeyIndex].value = value; }
+        void setNewKey(const SDL_Event &event);
 
         /**
          * Set a reference to the key setup window.
@@ -151,6 +154,10 @@ class KeyboardConfig
 
         const std::string &getBindError() const
         { return mBindError; }
+
+        SDLKey getKeyFromEvent(const SDL_Event &event) const;
+
+        void unassignKey();
 
         /**
          * All the key functions.
