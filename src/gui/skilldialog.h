@@ -71,9 +71,9 @@ class SkillDialog : public Window, public gcn::ActionListener
 
         void loadSkills(const std::string &file);
 
-        bool setModifiable(int id, bool modifiable);
+        bool updateSkill(int id, int range, bool modifiable);
 
-        void addSkill(int id, int level, bool modifiable);
+        void addSkill(int id, int level, int range, bool modifiable);
 
         SkillInfo* getSkill(int id);
 

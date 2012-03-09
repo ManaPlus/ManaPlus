@@ -79,11 +79,12 @@ struct SkillInfo
     std::string skillExp;
     float progress;
     gcn::Color color;
+    int range;
 
     SkillInfo() :
         id(0), name(""), dispName(""), icon(nullptr), modifiable(false),
         visible(false), model(nullptr), skillLevel(""), skillLevelWidth(0),
-        skillExp(""), progress(0.0f)
+        skillExp(""), progress(0.0f), range(0)
     {
     }
 
@@ -467,7 +468,7 @@ void SkillDialog::loadSkills(const std::string &file)
     update();
 }
 
-bool SkillDialog::setModifiable(int id, bool modifiable)
+bool SkillDialog::updateSkill(int id, int range, bool modifiable)
 {
     SkillMap::const_iterator it = mSkills.find(id);
 
@@ -477,6 +478,7 @@ bool SkillDialog::setModifiable(int id, bool modifiable)
         if (info)
         {
             info->modifiable = modifiable;
+            info->range = range;
             info->update();
         }
         return true;
@@ -484,7 +486,7 @@ bool SkillDialog::setModifiable(int id, bool modifiable)
     return false;
 }
 
-void SkillDialog::addSkill(int id, int level, bool modifiable)
+void SkillDialog::addSkill(int id, int level, int range, bool modifiable)
 {
     if (mDefaultModel)
     {
@@ -497,6 +499,7 @@ void SkillDialog::addSkill(int id, int level, bool modifiable)
         skill->visible = false;
         skill->model = mDefaultModel;
         skill->skillLevel = strprintf(_("Lvl: %d"), level);
+        skill->range = range;
         skill->update();
 
         mDefaultModel->addSkill(skill);

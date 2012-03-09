@@ -90,15 +90,15 @@ void SpecialHandler::processPlayerSkills(Net::MessageIn &msg)
         msg.skip(2);  // skill pool flags
         int level = msg.readInt16();
         msg.readInt16(); // sp
-        msg.readInt16(); // range
+        int range = msg.readInt16();
         msg.skip(24); // 0 unused
         int up = msg.readInt8();
 
         PlayerInfo::setStatBase(skillId, level);
         if (skillDialog)
         {
-            if (!skillDialog->setModifiable(skillId, up))
-                skillDialog->addSkill(skillId, level, up);
+            if (!skillDialog->updateSkill(skillId, range, up))
+                skillDialog->addSkill(skillId, level, range, up);
         }
     }
 }
@@ -108,14 +108,14 @@ void SpecialHandler::processPlayerSkillUp(Net::MessageIn &msg)
     const int skillId = msg.readInt16();
     const int level = msg.readInt16();
     msg.readInt16(); // sp
-    msg.readInt16(); // range
+    int range = msg.readInt16();
     int up = msg.readInt8();
 
     PlayerInfo::setStatBase(skillId, level);
     if (skillDialog)
     {
-        if (!skillDialog->setModifiable(skillId, up))
-            skillDialog->addSkill(skillId, level, up);
+        if (!skillDialog->updateSkill(skillId, range, up))
+            skillDialog->addSkill(skillId, level, range, up);
     }
 }
 
