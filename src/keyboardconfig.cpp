@@ -397,7 +397,6 @@ void KeyboardConfig::retrieve()
         {
             mKey[i].value = static_cast<int>(config.getValue(
                 mKey[i].configField, mKey[i].defaultValue));
-            logger->log("key: %d", mKey[i].value);
             if (mKey[i].value < -255 || mKey[i].value > SDLK_LAST)
                 mKey[i].value = KEY_NO_VALUE;
         }

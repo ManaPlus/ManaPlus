@@ -274,7 +274,7 @@ unsigned char *MessageIn::readBytes(int length)
         else
             str += "_";
     }
-    logger->log("ReadBytes: " + str);
+    logger->dlog("ReadBytes: " + str);
 #endif
 
     PacketCounters::incInBytes(length);
