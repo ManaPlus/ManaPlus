@@ -305,6 +305,8 @@ bool Network::messageReady()
         int msgId = readWord(0);
         if (msgId == SMSG_SERVER_VERSION_RESPONSE)
             len = 10;
+        else if (msgId == SMSG_UPDATE_HOST2)
+            len = -1;
         else
             len = packet_lengths[msgId];
 
