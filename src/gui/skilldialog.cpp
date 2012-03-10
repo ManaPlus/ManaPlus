@@ -22,12 +22,14 @@
 
 #include "gui/skilldialog.h"
 
+#include "itemshortcut.h"
 #include "localplayer.h"
 #include "logger.h"
 #include "playerinfo.h"
 #include "configuration.h"
 
 #include "gui/setup.h"
+#include "gui/shortcutwindow.h"
 #include "gui/textpopup.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
@@ -268,9 +270,20 @@ void SkillDialog::action(const gcn::ActionEvent &event)
         if (tab)
         {
             if (SkillInfo *info = tab->getSelectedInfo())
+            {
                 mUseButton->setEnabled(info->range > 0);
+
+                int num = itemShortcutWindow->getTabIndex();
+                if (num >= 0 && num < SHORTCUT_TABS && itemShortcut[num])
+                {
+                    itemShortcut[num]->setItemSelected(
+                        info->id + SKILL_MIN_ID);
+                }
+            }
             else
+            {
                 mUseButton->setEnabled(false);
+            }
         }
     }
     else if (event.getId() == "use")
@@ -361,6 +374,7 @@ void SkillDialog::loadSkills(const std::string &file)
             skill->id = 1;
             skill->name = _("basic");
             skill->dispName = _("Skill: basic, Id: 1");
+            skill->shortName = "bas";
             skill->setIcon("");
             skill->modifiable = true;
             skill->visible = true;
@@ -416,6 +430,8 @@ void SkillDialog::loadSkills(const std::string &file)
                     skill->name = name;
                     skill->dispName = strprintf(_("Skill: %s, Id: %d"),
                         name.c_str(), skill->id);
+                    skill->shortName = XML::langProperty(node,
+                        "shortName", name.substr(0, 3));
                     skill->setIcon(icon);
                     skill->modifiable = false;
                     skill->visible = false;
@@ -507,9 +523,9 @@ void SkillModel::updateVisibilities()
 }
 
 SkillInfo::SkillInfo() :
-    id(0), name(""), dispName(""), icon(nullptr), modifiable(false),
-    visible(false), model(nullptr), level(0), skillLevel(""),
-    skillLevelWidth(0), skillExp(""), progress(0.0f), range(0),
+    id(0), name(""), shortName(""), dispName(""), icon(nullptr),
+    modifiable(false), visible(false), model(nullptr), level(0),
+    skillLevel(""), skillLevelWidth(0), skillExp(""), progress(0.0f), range(0),
     particle(""), soundHit(""), soundMiss("")
 {
 }
@@ -625,4 +641,18 @@ void SkillDialog::widgetResized(const gcn::Event &event)
 
     if (mTabs)
         mTabs->fixSize();
+}
+
+void SkillDialog::useItem(int itemId)
+{
+    const SkillInfo *info = mSkills[itemId - SKILL_MIN_ID];
+    if (info && player_node && player_node->getTarget())
+    {
+        const Being *being = player_node->getTarget();
+        if (being)
+        {
+            Net::getSpecialHandler()->useBeing(info->level,
+                info->id, being->getId());
+        }
+    }
 }

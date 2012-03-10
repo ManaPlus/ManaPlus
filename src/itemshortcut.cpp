@@ -20,12 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "itemshortcut.h"
+
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
-#include "itemshortcut.h"
 #include "playerinfo.h"
 #include "spellmanager.h"
+
+#include "gui/skilldialog.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
@@ -142,9 +145,13 @@ void ItemShortcut::useItem(int index)
                 }
             }
         }
-        else if (spellManager)
+        else if (itemId < SKILL_MIN_ID && spellManager)
         {
             spellManager->useItem(itemId);
+        }
+        else if (skillDialog)
+        {
+            skillDialog->useItem(itemId);
         }
     }
 }

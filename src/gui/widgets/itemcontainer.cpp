@@ -293,6 +293,8 @@ void ItemContainer::selectNone()
         outfitWindow->setItemSelected(-1);
     if (shopWindow)
         shopWindow->setItemSelected(-1);
+//    if (skillDialog)
+//        skillDialog->setItemSelected(-1);
 }
 
 void ItemContainer::setSelectedIndex(int newIndex)

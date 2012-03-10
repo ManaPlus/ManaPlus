@@ -37,6 +37,7 @@
 #include "gui/inventorywindow.h"
 #include "gui/itempopup.h"
 #include "gui/palette.h"
+#include "gui/skilldialog.h"
 #include "gui/spellpopup.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
@@ -165,7 +166,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                 }
             }
         }
-        else if (spellManager)   // this is magic shortcut
+        else if (itemId < SKILL_MIN_ID && spellManager)   // this is magic shortcut
         {
             TextCommand *spell = spellManager->getSpellByItem(itemId);
             if (spell)
@@ -185,7 +186,15 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                             itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
             }
         }
-
+        else if (skillDialog)
+        {
+            SkillInfo *skill = skillDialog->getSkill(itemId - SKILL_MIN_ID);
+            if (skill)
+            {
+                g->drawText(skill->shortName, itemX + 2,
+                    itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
+            }
+        }
     }
 
     if (mItemMoved)
@@ -239,11 +248,15 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                     itemShortcut[mNumber]->removeItem(index);
                 }
             }
-            else if (spellManager)
+            else if (itemId < SKILL_MIN_ID && spellManager)
             {
                 TextCommand *spell = spellManager->getSpellByItem(itemId);
                 if (spell)
                     itemShortcut[mNumber]->removeItem(index);
+            }
+            else
+            {
+                itemShortcut[mNumber]->removeItem(index);
             }
         }
         if (mItemMoved)
@@ -268,8 +281,8 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
     {
         // Stores the selected item if theirs one.
         if (itemShortcut[mNumber]->isItemSelected() &&
-            (inventoryWindow && (inventoryWindow->isVisible() ||
-            itemShortcut[mNumber]->getSelectedItem() >= SPELL_MIN_ID)))
+            inventoryWindow && (inventoryWindow->isVisible() ||
+            itemShortcut[mNumber]->getSelectedItem() >= SPELL_MIN_ID))
         {
             itemShortcut[mNumber]->setItem(index);
             itemShortcut[mNumber]->setItemSelected(-1);
@@ -359,7 +372,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
             mItemPopup->setVisible(false);
         }
     }
-    else if (spellManager)
+    else if (itemId < SKILL_MIN_ID && spellManager)
     {
         mItemPopup->setVisible(false);
         TextCommand *spell = spellManager->getSpellByItem(itemId);
@@ -372,6 +385,10 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         {
             mSpellPopup->setVisible(false);
         }
+    }
+    else if (skillDialog)
+    {
+        mItemPopup->setVisible(false);
     }
 }
 

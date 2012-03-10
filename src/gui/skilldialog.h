@@ -32,8 +32,9 @@
 
 #include <map>
 
+#define SKILL_MIN_ID 200000
+
 class Button;
-//class Image;
 class Label;
 class ScrollArea;
 class SkillModel;
@@ -44,6 +45,7 @@ struct SkillInfo
 {
     unsigned short id;
     std::string name;
+    std::string shortName;
     std::string dispName;
     Image *icon;
     bool modifiable;
@@ -73,9 +75,7 @@ struct SkillInfo
     void draw(Graphics *graphics, int y, int width);
 };
 
-
 typedef std::vector<SkillInfo*> SkillList;
-
 
 /**
  * The skill dialog.
@@ -116,6 +116,8 @@ class SkillDialog : public Window, public gcn::ActionListener
         { return !mSkills.empty(); }
 
         void widgetResized(const gcn::Event &event);
+
+        void useItem(int itemId);
 
     private:
         typedef std::map<int, SkillInfo*> SkillMap;

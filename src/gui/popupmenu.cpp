@@ -49,6 +49,7 @@
 #include "gui/ministatuswindow.h"
 #include "gui/outfitwindow.h"
 #include "gui/selldialog.h"
+#include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/textcommandeditor.h"
 #include "gui/textdialog.h"
@@ -1109,9 +1110,13 @@ void PopupMenu::handleLink(const std::string &link,
                 }
             }
         }
-        else if (spellManager)
+        else if (mItemId < SKILL_MIN_ID && spellManager)
         {
             spellManager->useItem(mItemId);
+        }
+        else if (skillDialog)
+        {
+            skillDialog->useItem(mItemId);
         }
     }
     else if (link == "chat")
