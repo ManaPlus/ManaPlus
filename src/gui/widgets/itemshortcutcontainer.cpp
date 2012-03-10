@@ -191,6 +191,14 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
             SkillInfo *skill = skillDialog->getSkill(itemId - SKILL_MIN_ID);
             if (skill)
             {
+                Image* image = skill->icon;
+
+                if (image)
+                {
+                    image->setAlpha(1.0f);
+                    g->drawImage(image, itemX, itemY);
+                }
+
                 g->drawText(skill->shortName, itemX + 2,
                     itemY + mBoxHeight / 2, gcn::Graphics::LEFT);
             }

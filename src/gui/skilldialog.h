@@ -119,6 +119,8 @@ class SkillDialog : public Window, public gcn::ActionListener
 
         void useItem(int itemId);
 
+        void updateTabSelection();
+
     private:
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;

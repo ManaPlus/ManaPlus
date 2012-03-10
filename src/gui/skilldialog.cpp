@@ -216,6 +216,12 @@ public:
             return nullptr;
     }
 
+    void setCurrent()
+    {
+        if (skillDialog)
+            skillDialog->updateTabSelection();
+    }
+
 private:
     SkillListBox *mListBox;
 };
@@ -654,5 +660,17 @@ void SkillDialog::useItem(int itemId)
             Net::getSpecialHandler()->useBeing(info->level,
                 info->id, being->getId());
         }
+    }
+}
+
+void SkillDialog::updateTabSelection()
+{
+    SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+    if (tab)
+    {
+        if (SkillInfo *info = tab->getSelectedInfo())
+            mUseButton->setEnabled(info->range > 0);
+        else
+            mUseButton->setEnabled(false);
     }
 }
