@@ -52,6 +52,7 @@
 #include "gui/speechbubble.h"
 #include "gui/theme.h"
 #include "gui/sdlfont.h"
+#include "gui/skilldialog.h"
 #include "gui/userpalette.h"
 
 #include "net/charhandler.h"
@@ -550,7 +551,7 @@ void Being::setSpeech(const std::string &text, int time)
     }
 }
 
-void Being::takeDamage(Being *attacker, int amount, AttackType type)
+void Being::takeDamage(Being *attacker, int amount, AttackType type, int id)
 {
     if (!userPalette || !attacker)
         return;
@@ -642,7 +643,8 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
             getPixelX(), getPixelY() - 16, color, font, true);
     }
 
-    attacker->updateHit(amount);
+    if (type != SKILL)
+        attacker->updateHit(amount);
 
     if (amount > 0)
     {
@@ -681,20 +683,28 @@ void Being::takeDamage(Being *attacker, int amount, AttackType type)
             // Init the particle effect path based on current
             // weapon or default.
             int hitEffectId = 0;
-            const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
-            if (attacker->mType == PLAYER && attackerWeapon)
+            if (type != SKILL)
             {
-                if (type != CRITICAL)
-                    hitEffectId = attackerWeapon->getHitEffectId();
+                const ItemInfo *attackerWeapon = attacker->getEquippedWeapon();
+                if (attacker->mType == PLAYER && attackerWeapon)
+                {
+                    if (type != CRITICAL)
+                        hitEffectId = attackerWeapon->getHitEffectId();
+                    else
+                        hitEffectId = attackerWeapon->getCriticalHitEffectId();
+                }
                 else
-                    hitEffectId = attackerWeapon->getCriticalHitEffectId();
+                {
+                    if (type != CRITICAL)
+                        hitEffectId = paths.getIntValue("hitEffectId");
+                    else
+                        hitEffectId = paths.getIntValue("criticalHitEffectId");
+                }
             }
             else
             {
-                if (type != CRITICAL)
-                    hitEffectId = paths.getIntValue("hitEffectId");
-                else
-                    hitEffectId = paths.getIntValue("criticalHitEffectId");
+                // move skills effects to +100000 in effects list
+                hitEffectId = id + 100000;
             }
             effectManager->trigger(hitEffectId, this);
         }
@@ -734,6 +744,49 @@ void Being::handleAttack(Being *victim, int damage,
 
     sound.playSfx(mInfo->getSound((damage > 0) ?
                   SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
+}
+
+void Being::handleSkill(Being *victim, int damage, int skillId)
+{
+    if (!victim || !mInfo || !skillDialog)
+        return;
+
+    if (this != player_node)
+        setAction(Being::ATTACK, 1);
+
+    SkillInfo *skill = skillDialog->getSkill(skillId);
+    if (skill)
+        fireMissile(victim, skill->particle);
+
+#ifdef MANASERV_SUPPORT
+    if (Net::getNetworkType() != ServerInfo::MANASERV)
+#endif
+    {
+        reset();
+        mActionTime = tick_time;
+    }
+
+    if (this != player_node)
+    {
+        Uint8 dir = calcDirection(victim->getTileX(), victim->getTileY());
+        if (dir)
+            setDirection(dir);
+    }
+    if (damage && victim->mType == PLAYER && victim->mAction == SIT)
+        victim->setAction(STAND);
+
+    if (skill)
+    {
+        if (damage > 0)
+            sound.playSfx(skill->soundHit, mX, mY);
+        else
+            sound.playSfx(skill->soundMiss, mX, mY);
+    }
+    else
+    {
+        sound.playSfx(mInfo->getSound((damage > 0) ?
+            SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
+    }
 }
 
 void Being::setName(const std::string &name)

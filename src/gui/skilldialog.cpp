@@ -65,64 +65,6 @@
 class SkillModel;
 class SkillEntry;
 
-struct SkillInfo
-{
-    unsigned short id;
-    std::string name;
-    std::string dispName;
-    Image *icon;
-    bool modifiable;
-    bool visible;
-    SkillModel *model;
-
-    int level;
-    std::string skillLevel;
-    int skillLevelWidth;
-
-    std::string skillExp;
-    float progress;
-    gcn::Color color;
-    int range;
-
-    SkillInfo() :
-        id(0), name(""), dispName(""), icon(nullptr), modifiable(false),
-        visible(false), model(nullptr), level(0), skillLevel(""),
-        skillLevelWidth(0), skillExp(""), progress(0.0f), range(0)
-    {
-    }
-
-    ~SkillInfo()
-    {
-        if (icon)
-        {
-            icon->decRef();
-            icon = nullptr;
-        }
-    }
-
-    void setIcon(const std::string &iconPath)
-    {
-        ResourceManager *res = ResourceManager::getInstance();
-        if (!iconPath.empty())
-        {
-            icon = res->getImage(iconPath);
-        }
-
-        if (!icon)
-        {
-            icon = Theme::getImageFromTheme(
-                paths.getStringValue("unknownItemFile"));
-        }
-    }
-
-    void update();
-
-    void draw(Graphics *graphics, int y, int width);
-};
-
-
-typedef std::vector<SkillInfo*> SkillList;
-
 class SkillModel : public gcn::ListModel
 {
 public:
@@ -477,6 +419,9 @@ void SkillDialog::loadSkills(const std::string &file)
                     skill->setIcon(icon);
                     skill->modifiable = false;
                     skill->visible = false;
+                    skill->particle = XML::getProperty(node, "particle", "");
+                    skill->soundHit = XML::getProperty(node, "soundHit", "");
+                    skill->soundMiss = XML::getProperty(node, "soundMiss", "");
                     skill->model = model;
                     skill->update();
 
@@ -558,6 +503,38 @@ void SkillModel::updateVisibilities()
     {
         if ((*it)->visible)
             mVisibleSkills.push_back((*it));
+    }
+}
+
+SkillInfo::SkillInfo() :
+    id(0), name(""), dispName(""), icon(nullptr), modifiable(false),
+    visible(false), model(nullptr), level(0), skillLevel(""),
+    skillLevelWidth(0), skillExp(""), progress(0.0f), range(0),
+    particle(""), soundHit(""), soundMiss("")
+{
+}
+
+SkillInfo::~SkillInfo()
+{
+    if (icon)
+    {
+        icon->decRef();
+        icon = nullptr;
+    }
+}
+
+void SkillInfo::setIcon(const std::string &iconPath)
+{
+    ResourceManager *res = ResourceManager::getInstance();
+    if (!iconPath.empty())
+    {
+        icon = res->getImage(iconPath);
+    }
+
+    if (!icon)
+    {
+        icon = Theme::getImageFromTheme(
+            paths.getStringValue("unknownItemFile"));
     }
 }
 

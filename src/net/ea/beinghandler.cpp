@@ -445,7 +445,7 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
     Being *dstBeing;
     int param1;
 
-    msg.readInt16(); // Skill Id
+    int id = msg.readInt16(); // Skill Id
     srcBeing = actorSpriteManager->findBeing(msg.readInt32());
     dstBeing = actorSpriteManager->findBeing(msg.readInt32());
     msg.readInt32(); // Server tick
@@ -457,16 +457,16 @@ void BeingHandler::processSkillDamage(Net::MessageIn &msg)
     msg.readInt8(); // Skill hit/type (?)
     if (dstBeing)
     {
-        // Perhaps a new skill attack type should be created and used?
 //                if (dstSpeed)
 //                    dstBeing->setAttackDelay(dstSpeed);
-        dstBeing->takeDamage(srcBeing, param1, Being::HIT);
+        dstBeing->takeDamage(srcBeing, param1, Being::SKILL, id);
     }
     if (srcBeing)
     {
 //                if (srcSpeed)
 //                    srcBeing->setAttackDelay(srcSpeed);
-        srcBeing->handleAttack(dstBeing, param1, Being::HIT);
+//        srcBeing->handleAttack(dstBeing, param1, Being::HIT);
+        srcBeing->handleSkill(dstBeing, param1, id);
     }
 }
 

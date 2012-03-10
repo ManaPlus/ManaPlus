@@ -136,7 +136,8 @@ class Being : public ActorSprite, public ConfigListener
             CRITICAL = 0x0a,
             MULTI = 0x08,
             REFLECT = 0x04,
-            FLEE = 0x0b
+            FLEE = 0x0b,
+            SKILL = 0xff
         };
 
         enum Reachable
@@ -253,8 +254,10 @@ class Being : public ActorSprite, public ConfigListener
          * @param attacker the attacking being
          * @param damage the amount of damage recieved (0 means miss)
          * @param type the attack type
+         * @param id skill id
          */
-        void takeDamage(Being *attacker, int damage, AttackType type);
+        void takeDamage(Being *attacker, int damage,
+                        AttackType type, int id = 0);
 
         /**
          * Handles an attack of another being by this being.
@@ -264,6 +267,8 @@ class Being : public ActorSprite, public ConfigListener
          * @param type the attack type
          */
         virtual void handleAttack(Being *victim, int damage, AttackType type);
+
+        virtual void handleSkill(Being *victim, int damage, int skillId);
 
         const ItemInfo *getEquippedWeapon() const
         { return mEquippedWeapon; }

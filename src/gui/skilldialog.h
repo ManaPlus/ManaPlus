@@ -40,7 +40,42 @@ class SkillModel;
 class Tab;
 class TabbedArea;
 
-struct SkillInfo;
+struct SkillInfo
+{
+    unsigned short id;
+    std::string name;
+    std::string dispName;
+    Image *icon;
+    bool modifiable;
+    bool visible;
+    SkillModel *model;
+
+    int level;
+    std::string skillLevel;
+    int skillLevelWidth;
+
+    std::string skillExp;
+    float progress;
+    gcn::Color color;
+    int range;
+    std::string particle;
+    std::string soundHit;
+    std::string soundMiss;
+
+    SkillInfo();
+
+    ~SkillInfo();
+
+    void setIcon(const std::string &iconPath);
+
+    void update();
+
+    void draw(Graphics *graphics, int y, int width);
+};
+
+
+typedef std::vector<SkillInfo*> SkillList;
+
 
 /**
  * The skill dialog.
