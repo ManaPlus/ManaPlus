@@ -72,9 +72,9 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
 void SpecialHandler::useBeing(int id, int level, int beingId)
 {
     MessageOut outMsg(CMSG_SKILL_USE_BEING);
-    outMsg.writeInt16(static_cast<Sint16>(level));
     outMsg.writeInt16(static_cast<Sint16>(id));
-    outMsg.writeInt16(static_cast<Sint16>(beingId));
+    outMsg.writeInt16(static_cast<Sint16>(level));
+    outMsg.writeInt32(beingId);
 }
 
 void SpecialHandler::usePos(int id, int level, int x, int y)

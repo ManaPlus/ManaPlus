@@ -22,6 +22,7 @@
 
 #include "gui/skilldialog.h"
 
+#include "localplayer.h"
 #include "logger.h"
 #include "playerinfo.h"
 #include "configuration.h"
@@ -44,6 +45,7 @@
 
 #include "net/net.h"
 #include "net/playerhandler.h"
+#include "net/specialhandler.h"
 
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
@@ -73,6 +75,7 @@ struct SkillInfo
     bool visible;
     SkillModel *model;
 
+    int level;
     std::string skillLevel;
     int skillLevelWidth;
 
@@ -83,8 +86,8 @@ struct SkillInfo
 
     SkillInfo() :
         id(0), name(""), dispName(""), icon(nullptr), modifiable(false),
-        visible(false), model(nullptr), skillLevel(""), skillLevelWidth(0),
-        skillExp(""), progress(0.0f), range(0)
+        visible(false), model(nullptr), level(0), skillLevel(""),
+        skillLevelWidth(0), skillExp(""), progress(0.0f), range(0)
     {
     }
 
@@ -286,11 +289,14 @@ SkillDialog::SkillDialog():
 
     mTabs = new TabbedArea();
     mPointsLabel = new Label("0");
+    mUseButton = new Button(_("Use"), "use", this);
+    mUseButton->setEnabled(false);
     mIncreaseButton = new Button(_("Up"), "inc", this);
     mDefaultModel = nullptr;
 
     place(0, 0, mTabs, 5, 5);
     place(0, 5, mPointsLabel, 4);
+    place(3, 5, mUseButton);
     place(4, 5, mIncreaseButton);
 
     setLocationRelativeTo(getParent());
@@ -312,6 +318,34 @@ void SkillDialog::action(const gcn::ActionEvent &event)
         {
             if (SkillInfo *info = tab->getSelectedInfo())
                 Net::getPlayerHandler()->increaseSkill(info->id);
+        }
+    }
+    else if (event.getId() == "sel")
+    {
+        SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+        if (tab)
+        {
+            if (SkillInfo *info = tab->getSelectedInfo())
+                mUseButton->setEnabled(info->range > 0);
+            else
+                mUseButton->setEnabled(false);
+        }
+    }
+    else if (event.getId() == "use")
+    {
+        SkillTab *tab = static_cast<SkillTab*>(mTabs->getSelectedTab());
+        if (tab)
+        {
+            const SkillInfo *info = tab->getSelectedInfo();
+            if (info && player_node && player_node->getTarget())
+            {
+                const Being *being = player_node->getTarget();
+                if (being)
+                {
+                    Net::getSpecialHandler()->useBeing(info->level,
+                        info->id, being->getId());
+                }
+            }
         }
     }
     else if (event.getId() == "close")
@@ -397,6 +431,8 @@ void SkillDialog::loadSkills(const std::string &file)
             model->updateVisibilities();
 
             listbox = new SkillListBox(model);
+            listbox->setActionEventId("sel");
+            listbox->addActionListener(this);
             scroll = new ScrollArea(listbox);
             scroll->setOpaque(false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
@@ -454,6 +490,8 @@ void SkillDialog::loadSkills(const std::string &file)
 
             // possible leak listbox, scroll
             listbox = new SkillListBox(model);
+            listbox->setActionEventId("sel");
+            listbox->addActionListener(this);
             scroll = new ScrollArea(listbox);
             scroll->setOpaque(false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
@@ -498,6 +536,7 @@ void SkillDialog::addSkill(int id, int level, int range, bool modifiable)
         skill->modifiable = modifiable;
         skill->visible = false;
         skill->model = mDefaultModel;
+        skill->level = level;
         skill->skillLevel = strprintf(_("Lvl: %d"), level);
         skill->range = range;
         skill->update();
@@ -556,6 +595,7 @@ void SkillInfo::update()
         else
             skillLevel = strprintf(_("Lvl: %d"), baseLevel);
     }
+    level = baseLevel;
     skillLevelWidth = -1;
 
     if (exp.second)

@@ -88,6 +88,7 @@ class SkillDialog : public Window, public gcn::ActionListener
         TabbedArea *mTabs;
         std::list<Tab*> mDeleteTabs;
         Label *mPointsLabel;
+        Button *mUseButton;
         Button *mIncreaseButton;
         SkillModel *mDefaultModel;
 };
