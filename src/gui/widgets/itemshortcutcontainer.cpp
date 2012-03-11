@@ -166,8 +166,8 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
                 }
             }
         }
-        else if (itemId < SKILL_MIN_ID && spellManager)   // this is magic shortcut
-        {
+        else if (itemId < SKILL_MIN_ID && spellManager)
+        {   // this is magic shortcut
             TextCommand *spell = spellManager->getSpellByItem(itemId);
             if (spell)
             {
