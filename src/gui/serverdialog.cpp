@@ -471,10 +471,7 @@ void ServerDialog::downloadServerList()
 
     // Fall back to manaplus.evolonline.org when neither branding nor config set it
     if (listFile.empty())
-    {
-        listFile = "http://manaplus.evolonline.org/"
-            "serverlist.xml/serverlist.xml";
-    }
+        listFile = "http://manaplus.evolonline.org/serverlist.xml";
 
     if (mDownload)
     {

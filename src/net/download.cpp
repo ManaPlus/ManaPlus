@@ -306,16 +306,19 @@ int Download::downloadThread(void *ptr)
 
                 // Any existing file with this name is deleted first, otherwise
                 // the rename will fail on Windows.
-                ::remove(d->mFileName.c_str());
-                ::rename(outFilename.c_str(), d->mFileName.c_str());
-
-                // Check if we can open it and no errors were encountered
-                // during renaming
-                file = fopen(d->mFileName.c_str(), "rb");
-                if (file)
+                if (!d->mOptions.cancel)
                 {
-                    fclose(file);
-                    complete = true;
+                    ::remove(d->mFileName.c_str());
+                    ::rename(outFilename.c_str(), d->mFileName.c_str());
+
+                    // Check if we can open it and no errors were encountered
+                    // during renaming
+                    file = fopen(d->mFileName.c_str(), "rb");
+                    if (file)
+                    {
+                        fclose(file);
+                        complete = true;
+                    }
                 }
             }
             else
