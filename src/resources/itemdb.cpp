@@ -167,8 +167,8 @@ void ItemDB::load()
     mUnknown->setName(_("Unknown item"));
     mUnknown->setDisplay(SpriteDisplay());
     std::string errFile = paths.getStringValue("spriteErrorFile");
-    mUnknown->setSprite(errFile, GENDER_MALE);
-    mUnknown->setSprite(errFile, GENDER_FEMALE);
+    mUnknown->setSprite(errFile, GENDER_MALE, 0);
+    mUnknown->setSprite(errFile, GENDER_FEMALE, 0);
     mUnknown->addTag(mTags["All"]);
 
     XML::Document doc("items.xml");
@@ -595,14 +595,15 @@ int parseDirectionName(std::string name)
 
 void loadSpriteRef(ItemInfo *itemInfo, XmlNodePtr node)
 {
-    std::string gender = XML::getProperty(node, "gender", "unisex");
-    std::string filename = reinterpret_cast<const char*>(
+    const std::string gender = XML::getProperty(node, "gender", "unisex");
+    const std::string filename = reinterpret_cast<const char*>(
         node->xmlChildrenNode->content);
 
+    const int race = XML::getProperty(node, "race", 0);
     if (gender == "male" || gender == "unisex")
-        itemInfo->setSprite(filename, GENDER_MALE);
+        itemInfo->setSprite(filename, GENDER_MALE, race);
     if (gender == "female" || gender == "unisex")
-        itemInfo->setSprite(filename, GENDER_FEMALE);
+        itemInfo->setSprite(filename, GENDER_FEMALE, race);
 }
 
 void loadSoundRef(ItemInfo *itemInfo, XmlNodePtr node)

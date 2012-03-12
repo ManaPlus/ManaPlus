@@ -3884,7 +3884,8 @@ void LocalPlayer::imitateOutfit(Being *player, int sprite)
 
 //            logger->log("idPath: " + path);
 
-            Item *item = inv->findItemBySprite(path, player->getGender());
+            Item *item = inv->findItemBySprite(path,
+                player->getGender(), player->getSubType());
 //            if (item)
 //            {
 //                logger->log("got item");

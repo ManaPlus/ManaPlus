@@ -149,7 +149,8 @@ class Inventory
         bool isMainInventory() const
         { return mType == INVENTORY; }
 
-        Item *findItemBySprite(std::string spritePath, Gender gender);
+        Item *findItemBySprite(std::string spritePath,
+                               Gender gender, int race);
 
         std::string getName();
 

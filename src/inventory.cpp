@@ -204,7 +204,8 @@ void Inventory::distributeSlotsChangedEvent()
         (*i)->slotsChanged(this);
 }
 
-Item *Inventory::findItemBySprite(std::string spritePath, Gender gender)
+Item *Inventory::findItemBySprite(std::string spritePath,
+                                  Gender gender, int race)
 {
     spritePath = removeSpriteIndex(spritePath);
 //    logger->log1("Inventory::FindItemBySprite sprite: " + spritePath);
@@ -217,7 +218,7 @@ Item *Inventory::findItemBySprite(std::string spritePath, Gender gender)
     {
         if (mItems[i])
         {
-            std::string path = mItems[i]->getInfo().getSprite(gender);
+            std::string path = mItems[i]->getInfo().getSprite(gender, race);
             if (!path.empty())
             {
                 path = removeSpriteIndex(path);

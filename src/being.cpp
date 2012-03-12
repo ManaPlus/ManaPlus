@@ -1751,7 +1751,7 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
     else
     {
         const ItemInfo &info = ItemDB::get(id);
-        std::string filename = info.getSprite(mGender);
+        std::string filename = info.getSprite(mGender, mSubType);
         AnimatedSprite *equipmentSprite = nullptr;
 
         if (!filename.empty())
@@ -1807,7 +1807,7 @@ void Being::load()
     // we can go.
     int hairstyles = 1;
 
-    while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE) !=
+    while (ItemDB::get(-hairstyles).getSprite(GENDER_MALE, 0) !=
            paths.getStringValue("spriteErrorFile"))
     {
         hairstyles ++;

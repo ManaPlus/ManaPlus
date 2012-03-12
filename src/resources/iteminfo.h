@@ -169,10 +169,10 @@ class ItemInfo
         void setView(int view)
         { mView = view; }
 
-        void setSprite(const std::string &animationFile, Gender gender)
-        { mAnimationFiles[gender] = animationFile; }
+        void setSprite(const std::string &animationFile,
+                       Gender gender, int race);
 
-        const std::string &getSprite(Gender gender) const;
+        const std::string &getSprite(Gender gender, int race) const;
 
         void setAttackAction(std::string attackAction);
 

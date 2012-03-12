@@ -32,6 +32,8 @@
 
 #include "debug.h"
 
+extern int serverVersion;
+
 /*
 ItemInfo::ItemInfo(ItemInfo &info)
 {
@@ -99,20 +101,28 @@ ItemInfo::~ItemInfo()
         mSpriteToItemReplaceMap[f] = nullptr;
 }
 
-const std::string &ItemInfo::getSprite(Gender gender) const
+const std::string &ItemInfo::getSprite(Gender gender, int race) const
 {
     if (mView)
     {
         // Forward the request to the item defining how to view this item
-        return ItemDB::get(mView).getSprite(gender);
+        return ItemDB::get(mView).getSprite(gender, race);
     }
     else
     {
         static const std::string empty("");
         std::map<int, std::string>::const_iterator i =
-            mAnimationFiles.find(gender);
+            mAnimationFiles.find(static_cast<int>(gender) * 2 + race);
 
-        return (i != mAnimationFiles.end()) ? i->second : empty;
+        if (i != mAnimationFiles.end())
+            return i->second;
+        if (serverVersion > 0)
+        {
+            i = mAnimationFiles.find(static_cast<int>(gender) * 2);
+            if (i != mAnimationFiles.end())
+                return i->second;
+        }
+        return empty;
     }
 }
 
@@ -310,4 +320,10 @@ int ItemInfo::getDrawPriority(int direction) const
     if (direction < 0 || direction >= 9)
         return 0;
     return mDrawPriority[direction];
+}
+
+void ItemInfo::setSprite(const std::string &animationFile,
+                         Gender gender, int race)
+{
+    mAnimationFiles[static_cast<int>(gender) * 2 + race] = animationFile;
 }
