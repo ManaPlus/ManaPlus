@@ -234,6 +234,15 @@ std::vector<DoubleRect*> *GraphicsVertexes::getRectsSDL()
     return &sdl[mPtr].mList;
 }
 
+ImageVertexes::ImageVertexes() :
+    image(nullptr)
+{
+    sdl.reserve(30);
+#ifdef USE_OPENGL
+    ogl = new OpenGLGraphicsVertexes();
+#endif
+}
+
 ImageVertexes::~ImageVertexes()
 {
     delete_all(sdl);

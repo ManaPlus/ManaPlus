@@ -123,14 +123,7 @@ typedef std::vector<DoubleRect*> DoubleRects;
 class ImageVertexes
 {
     public:
-        ImageVertexes() :
-            image(nullptr)
-        {
-            sdl.reserve(30);
-#ifdef USE_OPENGL
-            ogl = new OpenGLGraphicsVertexes();
-#endif
-        }
+        ImageVertexes();
 
         ~ImageVertexes();
 
