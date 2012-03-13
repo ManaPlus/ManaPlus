@@ -169,7 +169,6 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         }
 
         mUseButton = new Button(longestUseString, "use", this);
-        mUseButton2 = new Button(longestUseString, "equip", this);
         mDropButton = new Button(_("Drop..."), "drop", this);
         mSplitButton = new Button(_("Split"), "split", this);
         mOutfitButton = new Button(_("Outfits"), "outfit", this);
@@ -190,8 +189,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
 
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
-        place(1, 3, mUseButton2);
-        place(2, 3, mDropButton);
+        place(1, 3, mDropButton);
         place(8, 3, mSplitButton);
         place(9, 3, mShopButton);
         place(10, 3, mOutfitButton);
@@ -525,8 +523,6 @@ void InventoryWindow::updateButtons(Item *item)
     {
         if (mUseButton)
             mUseButton->setEnabled(true);
-        if (mUseButton2)
-            mUseButton2->setEnabled(true);
         if (mDropButton)
             mDropButton->setEnabled(true);
         return;
@@ -534,8 +530,6 @@ void InventoryWindow::updateButtons(Item *item)
 
     if (mUseButton)
         mUseButton->setEnabled(true);
-    if (mUseButton2)
-        mUseButton2->setEnabled(true);
     if (mDropButton)
         mDropButton->setEnabled(true);
 
@@ -545,15 +539,10 @@ void InventoryWindow::updateButtons(Item *item)
             mUseButton->setCaption(_("Unequip"));
         else
             mUseButton->setCaption(_("Equip"));
-        mUseButton2->setCaption(_("Use"));
     }
-    else if (mUseButton2)
+    else
     {
         mUseButton->setCaption(_("Use"));
-        if (item->isEquipped())
-            mUseButton2->setCaption(_("Unequip"));
-        else
-            mUseButton2->setCaption(_("Equip"));
     }
 
     updateDropButton();
