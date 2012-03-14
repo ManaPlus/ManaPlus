@@ -67,6 +67,7 @@ RegisterDialog::RegisterDialog(LoginData *data):
     mEmailField(nullptr),
     mMaleButton(nullptr),
     mFemaleButton(nullptr),
+    mOtherButton(nullptr),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(data)
 {
@@ -97,8 +98,18 @@ RegisterDialog::RegisterDialog(LoginData *data):
     {
         mMaleButton = new RadioButton(_("Male"), "sex", true);
         mFemaleButton = new RadioButton(_("Female"), "sex", false);
-        placer(1, row, mMaleButton);
-        placer(2, row, mFemaleButton);
+        if (serverVersion >= 5)
+        {
+            mOtherButton = new RadioButton(_("Other"), "sex", false);
+            placer(0, row, mMaleButton);
+            placer(1, row, mFemaleButton);
+            placer(2, row, mOtherButton);
+        }
+        else
+        {
+            placer(1, row, mMaleButton);
+            placer(2, row, mFemaleButton);
+        }
 
         row++;
     }
@@ -235,9 +246,13 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
 
             mLoginData->username = mUserField->getText();
             mLoginData->password = mPasswordField->getText();
-            if (mFemaleButton)
-                mLoginData->gender = mFemaleButton->isSelected() ?
-                                     GENDER_FEMALE : GENDER_MALE;
+            if (mFemaleButton && mFemaleButton->isSelected())
+                mLoginData->gender = GENDER_FEMALE;
+            else if (mOtherButton && mOtherButton->isSelected())
+                mLoginData->gender = GENDER_OTHER;
+            else
+                mLoginData->gender = GENDER_MALE;
+
             if (mEmailField)
                 mLoginData->email = mEmailField->getText();
             mLoginData->registerLogin = true;

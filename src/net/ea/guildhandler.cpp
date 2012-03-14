@@ -251,13 +251,7 @@ void GuildHandler::processGuildMemberList(Net::MessageIn &msg)
             m->setOnline(online);
             m->setID(id);
             m->setCharId(charId);
-            if (!gender)
-                m->setGender(GENDER_FEMALE);
-            else if (gender == 1)
-                m->setGender(GENDER_MALE);
-            else
-                m->setGender(GENDER_UNSPECIFIED);
-
+            m->setGender(Being::intToGender(gender));
             m->setLevel(level);
             m->setExp(exp);
             m->setPos(pos);

@@ -259,8 +259,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     if (dstBeing->getType() == ActorSprite::PLAYER)
     {
-        gender &= 1;
-        dstBeing->setGender((gender == 0) ? GENDER_FEMALE : GENDER_MALE);
+        gender &= 3;
+        dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, EA_SPRITE_HAIR, hairStyle * -1,
             ColorDB::getHairColor(hairColor));
@@ -283,12 +283,14 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
             case 3:
                 dstBeing->setGender(GENDER_MALE);
                 break;
+            case 4:
+                dstBeing->setGender(GENDER_OTHER);
+                break;
             default:
                 dstBeing->setGender(GENDER_UNSPECIFIED);
                 break;
         }
     }
-
 
     if (!visible)
     {

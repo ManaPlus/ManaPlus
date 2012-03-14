@@ -68,7 +68,8 @@ enum Gender
 {
     GENDER_MALE = 0,
     GENDER_FEMALE = 1,
-    GENDER_UNSPECIFIED = 2
+    GENDER_UNSPECIFIED = 2,
+    GENDER_OTHER = 3
 };
 
 
@@ -101,8 +102,9 @@ class Being : public ActorSprite, public ConfigListener
             FLAG_SHOP = 1,
             FLAG_AWAY = 2,
             FLAG_INACTIVE = 4,
+            FLAG_GENDER_OTHER = 32,
             FLAG_GM = 64,
-            FLAG_GENDER = 128,
+            FLAG_GENDER_MALE = 128,
             FLAG_SPECIAL = 128 + 64
         };
 
@@ -779,6 +781,10 @@ class Being : public ActorSprite, public ConfigListener
 
         std::string getRaceName()
         { return mRaceName; }
+
+        static int genderToInt(Gender sex);
+
+        static Gender intToGender(int sex);
 
     protected:
         /**

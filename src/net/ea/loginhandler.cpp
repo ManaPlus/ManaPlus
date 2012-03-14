@@ -97,7 +97,21 @@ void LoginHandler::registerAccount(LoginData *loginData)
         return;
 
     std::string username = loginData->username;
-    username.append((loginData->gender == GENDER_FEMALE) ? "_F" : "_M");
+    switch (loginData->gender)
+    {
+        case GENDER_FEMALE:
+            username.append("_F");
+            break;
+        case GENDER_MALE:
+            username.append("_M");
+            break;
+        case GENDER_OTHER:
+            username.append("_O");
+            break;
+        case GENDER_UNSPECIFIED:
+        default:
+            break;
+    }
 
     sendLoginRegister(username, loginData->password);
 }
@@ -181,7 +195,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
 //    msg.skip(30);                           // unknown
     // reserve bits for future usage
-    mToken.sex = (msg.readInt8() & 1) ? GENDER_MALE : GENDER_FEMALE;
+    mToken.sex = Being::intToGender(msg.readInt8() & 3);
 
     for (int i = 0; i < worldCount; i++)
     {

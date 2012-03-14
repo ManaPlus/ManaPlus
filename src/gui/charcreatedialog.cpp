@@ -124,15 +124,18 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mCancelButton = new Button(_("Cancel"), "cancel", this);
     mMale = new RadioButton(_("Male"), "gender");
     mFemale = new RadioButton(_("Female"), "gender");
+    mOther = new RadioButton(_("Other"), "gender");
 
     // Default to a Male character
     mMale->setSelected(true);
 
     mMale->setActionEventId("gender");
     mFemale->setActionEventId("gender");
+    mOther->setActionEventId("gender");
 
     mMale->addActionListener(this);
     mFemale->addActionListener(this);
+    mOther->addActionListener(this);
 
     mPlayerBox = new PlayerBox(mPlayer);
     mPlayerBox->setWidth(74);
@@ -186,6 +189,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
 
     mMale->setPosition(30, 120);
     mFemale->setPosition(100, 120);
+    mOther->setPosition(170, 120);
 
     add(mPlayerBox);
     add(mNameField);
@@ -215,6 +219,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
 
     add(mMale);
     add(mFemale);
+    add(mOther);
 
     center();
     setVisible(true);
@@ -453,11 +458,19 @@ void CharCreateDialog::setFixedGender(bool fixed, Gender gender)
     {
         mFemale->setSelected(true);
         mMale->setSelected(false);
+        mOther->setSelected(false);
+    }
+    else if (gender == GENDER_MALE)
+    {
+        mFemale->setSelected(false);
+        mMale->setSelected(true);
+        mOther->setSelected(false);
     }
     else
     {
-        mMale->setSelected(true);
         mFemale->setSelected(false);
+        mMale->setSelected(false);
+        mOther->setSelected(true);
     }
 
     mPlayer->setGender(gender);
@@ -466,6 +479,7 @@ void CharCreateDialog::setFixedGender(bool fixed, Gender gender)
     {
         mMale->setVisible(false);
         mFemale->setVisible(false);
+        mOther->setVisible(false);
     }
 }
 

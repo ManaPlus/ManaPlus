@@ -125,7 +125,7 @@ void GameHandler::connect()
     outMsg.writeInt32(mCharID);
     outMsg.writeInt32(token.session_ID1);
     outMsg.writeInt32(token.session_ID2);
-    outMsg.writeInt8((token.sex == GENDER_MALE) ? 1 : 0);
+    outMsg.writeInt8(Being::genderToInt(token.sex));
 
 /*
     if (player_node)

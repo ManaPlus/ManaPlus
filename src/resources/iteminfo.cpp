@@ -112,13 +112,13 @@ const std::string &ItemInfo::getSprite(Gender gender, int race) const
     {
         static const std::string empty("");
         std::map<int, std::string>::const_iterator i =
-            mAnimationFiles.find(static_cast<int>(gender) * 2 + race);
+            mAnimationFiles.find(static_cast<int>(gender) + race * 4);
 
         if (i != mAnimationFiles.end())
             return i->second;
         if (serverVersion > 0)
         {
-            i = mAnimationFiles.find(static_cast<int>(gender) * 2);
+            i = mAnimationFiles.find(static_cast<int>(gender));
             if (i != mAnimationFiles.end())
                 return i->second;
         }
@@ -325,5 +325,5 @@ int ItemInfo::getDrawPriority(int direction) const
 void ItemInfo::setSprite(const std::string &animationFile,
                          Gender gender, int race)
 {
-    mAnimationFiles[static_cast<int>(gender) * 2 + race] = animationFile;
+    mAnimationFiles[static_cast<int>(gender) + race * 4] = animationFile;
 }

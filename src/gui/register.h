@@ -96,6 +96,7 @@ class RegisterDialog : public Window, public gcn::ActionListener,
         gcn::Button *mCancelButton;
         gcn::RadioButton *mMaleButton;
         gcn::RadioButton *mFemaleButton;
+        gcn::RadioButton *mOtherButton;
 
         WrongDataNoticeListener *mWrongDataNoticeListener;
 

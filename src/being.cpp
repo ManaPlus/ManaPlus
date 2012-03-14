@@ -2627,6 +2627,35 @@ void Being::updatePercentHP()
     }
 }
 
+int Being::genderToInt(Gender sex)
+{
+    switch (sex)
+    {
+        case GENDER_FEMALE:
+        case GENDER_UNSPECIFIED:
+        default:
+            return 0;
+        case GENDER_MALE:
+            return 1;
+        case GENDER_OTHER:
+            return 3;
+    }
+}
+
+Gender Being::intToGender(int sex)
+{
+    switch (sex)
+    {
+        case 0:
+        default:
+            return GENDER_FEMALE;
+        case 1:
+            return GENDER_MALE;
+        case 3:
+            return GENDER_OTHER;
+    }
+}
+
 BeingEquipBackend::BeingEquipBackend(Being *being):
     mBeing(being)
 {

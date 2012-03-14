@@ -333,7 +333,7 @@ void CharServerHandler::connect()
         outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
     else
         outMsg.writeInt16(CLIENT_TMW_PROTOCOL_VERSION);
-    outMsg.writeInt8((token.sex == GENDER_MALE) ? 1 : 0);
+    outMsg.writeInt8(Being::genderToInt(token.sex));
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
     mNetwork->skip(4);

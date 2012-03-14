@@ -259,8 +259,10 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
         {
             if (config.getBoolValue("showgender"))
             {
-                if (status & Being::FLAG_GENDER)
+                if (status & Being::FLAG_GENDER_MALE)
                     gender = GENDER_MALE;
+                else if (status & Being::FLAG_GENDER_OTHER)
+                    gender = GENDER_OTHER;
                 else
                     gender = GENDER_FEMALE;
             }

@@ -115,6 +115,7 @@ class CharCreateDialog : public Window, public gcn::ActionListener
 
         gcn::RadioButton *mMale;
         gcn::RadioButton *mFemale;
+        gcn::RadioButton *mOther;
 
         std::vector<gcn::Slider*> mAttributeSlider;
         std::vector<gcn::Label*> mAttributeLabel;
