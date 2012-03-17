@@ -29,13 +29,12 @@
 
 #include <libintl.h>
 
-#if ENABLE_NLS
+#ifdef ENABLE_NLS
 
 #define _(s) (const_cast <char*>(gettext(s)))
 #define N_(s) (const_cast <char*>(s))
 
 #else
-
 #define gettext(s) (const_cast <char*>(s))
 #define _(s) (const_cast <char*>(s))
 #define N_(s) (const_cast <char*>(s))
