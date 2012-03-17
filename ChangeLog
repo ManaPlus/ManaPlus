@@ -1,3 +1,17 @@
+2012-03-18 New release 1.2.3.18
+fix: minimaps scrolling with moving camera.
+fix: context menu in outfits window.
+fix: shortcuts creation in windows portable version.
+fix: volume in afk mode if was disconnect from server.
+add: many update hosts. (evol only)
+add: dye mode S.
+add: support for unknown for SDL keys bindings.
+add: basic skills actions.
+add: allow add skills to shortcuts bar.
+add: per race equipment sprites.
+add: remove second "equip" button.
+add: neutral other gender.
+
 2012-03-04 New release 1.2.3.4
 fix: loading client data translations.
 fix: display translated xp+job messages.
