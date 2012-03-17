@@ -542,7 +542,7 @@ void Client::gameInit()
 
         const int oldWidth = config.getValueInt("oldscreenwidth", -1);
         const int oldHeight = config.getValueInt("oldscreenheight", -1);
-        const bool oldFullscreen = config.getValueInt("oldscreen", -1);
+        const int oldFullscreen = config.getValueInt("oldscreen", -1);
         if (oldWidth != -1 && oldHeight != -1 && oldFullscreen != -1)
         {
             config.deleteKey("oldscreenwidth");
@@ -551,7 +551,7 @@ void Client::gameInit()
 
             config.setValueInt("screenwidth", oldWidth);
             config.setValueInt("screenheight", oldHeight);
-            config.setValue("screen", oldFullscreen);
+            config.setValue("screen", oldFullscreen == 1);
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
                 oldFullscreen, hwaccel, enableResize, noFrame))
             {
