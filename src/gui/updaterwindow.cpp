@@ -354,8 +354,8 @@ void UpdaterWindow::loadPatch()
             line = strtok(nullptr, "\n");
             if (line)
             {
-                mBrowserBox->addRow("##9 Latest client version: ##6ManaPlus "
-                    + std::string(line), true);
+                mBrowserBox->addRow(strprintf("##9 Latest client version: "
+                    "##6ManaPlus %s##0", line), true);
             }
         }
         if (version > CHECK_VERSION)
