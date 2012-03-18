@@ -24,7 +24,6 @@
 
 #include "utils/stringutils.h"
 
-#include "localconsts.h"
 #include "logger.h"
 
 #include <string.h>
@@ -39,22 +38,30 @@ PoParser::PoParser() :
 {
 }
 
-void PoParser::openFile()
+void PoParser::openFile(std::string name)
 {
     ResourceManager *resman = ResourceManager::getInstance();
     int size;
-    char *buf = static_cast<char*>(resman->loadFile(getFileName(mLang), size));
+    char *buf = static_cast<char*>(resman->loadFile(getFileName(name), size));
 
     mFile.str(std::string(buf, size));
     free(buf);
 }
 
-PoDict *PoParser::load(std::string lang)
+PoDict *PoParser::load(std::string lang, std::string fileName, PoDict *dict)
 {
-    setLang(lang);
-    mDict = getDict();
+    logger->log("loading lang: %s, file: %s", lang.c_str(), fileName.c_str());
 
-    openFile();
+    setLang(lang);
+    if (!dict)
+        mDict = getDict();
+    else
+        mDict = dict;
+
+    if (fileName.empty())
+        openFile(mLang);
+    else
+        openFile(fileName);
 
     mMsgId = "";
     mMsgStr = "";
@@ -84,6 +91,8 @@ PoDict *PoParser::load(std::string lang)
 //            logger->log("add key: " + mMsgId);
 //            logger->log("add value: " + mMsgStr);
 
+            convertStr(mMsgId);
+            convertStr(mMsgStr);
             // store key and value
             mDict->set(mMsgId, mMsgStr);
         }
@@ -212,10 +221,21 @@ bool PoParser::checkLang(std::string lang) const
 std::string PoParser::getFileName(std::string lang) const
 {
     // get po file name from lang name
+    logger->log("getFileName: translations/%s.po", lang.c_str());
     return strprintf("translations/%s.po", lang.c_str());
 }
 
 PoDict *PoParser::getDict()
 {
     return new PoDict(mLang);
+}
+
+void PoParser::convertStr(std::string &str)
+{
+    if (str.empty())
+        return;
+
+    replaceAll(str, "\\n", "\n");
+    replaceAll(str, "\\\"", "\"");
+    replaceAll(str, "\\\\", "\\");
 }

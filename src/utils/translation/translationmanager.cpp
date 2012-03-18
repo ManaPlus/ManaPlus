@@ -21,13 +21,16 @@
 #include "utils/translation/translationmanager.h"
 
 #include "utils/langs.h"
+#include "utils/stringutils.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"
 
+#include "resources/resourcemanager.h"
+
+#include <stdlib.h>
 #include <string.h>
 
-#include "localconsts.h"
 #include "logger.h"
 
 #include "debug.h"
@@ -43,7 +46,8 @@ void TranslationManager::loadCurrentLang()
 {
     if (translator)
         delete translator;
-    translator = loadLang(getLang());
+    translator = loadLang(getLang(), "");
+    translator = loadLang(getLang(), "help/", translator);
 }
 
 void TranslationManager::close()
@@ -52,7 +56,9 @@ void TranslationManager::close()
     translator = nullptr;
 }
 
-PoDict *TranslationManager::loadLang(LangVect lang)
+PoDict *TranslationManager::loadLang(LangVect lang,
+                                     std::string subName,
+                                     PoDict *dict)
 {
     std::string name = "";
     PoParser parser;
@@ -65,14 +71,66 @@ PoDict *TranslationManager::loadLang(LangVect lang)
         if (*it == "C")
             continue;
 
-        if (parser.checkLang(*it))
+        logger->log("check file: " + subName + *it);
+        if (parser.checkLang(subName + *it))
         {
             name = *it;
             break;
         }
     }
     if (!name.empty())
-        return parser.load(name);
+        return parser.load(name, subName + name, dict);
     logger->log("can't find client data translation");
+    if (dict)
+        return dict;
     return PoParser::getEmptyDict();
+}
+
+bool TranslationManager::translateFile(const std::string &fileName,
+                                       PoDict *dict,
+                                       std::vector<std::string> &lines)
+{
+    if (!dict || fileName.empty())
+        return false;
+
+    int contentsLength;
+    ResourceManager *resman = ResourceManager::getInstance();
+    char *fileContents = static_cast<char*>(
+        resman->loadFile(fileName, contentsLength));
+
+    if (!fileContents)
+    {
+        logger->log("Couldn't load file: %s", fileName.c_str());
+        return false;
+    }
+    std::string str = std::string(fileContents, contentsLength);
+
+    std::string::size_type oldPos1 = 0;
+    std::string::size_type pos1;
+    while ((pos1 = str.find("<<")) != std::string::npos)
+    {
+        if (pos1 == oldPos1)
+            break;  // detected infinite loop
+        std::string::size_type pos2 = str.find(">>", pos1 + 2);
+        if (pos2 == std::string::npos)
+            break;
+        const std::string key = str.substr(pos1 + 2, pos2 - pos1 - 2);
+        const std::string key2 = "<<" + str.substr(
+            pos1 + 2, pos2 - pos1 - 2) + ">>";
+        const std::string val = dict->getStr(key);
+
+//        logger->log("key:" + key);
+        replaceAll(str, key2, val);
+
+        oldPos1 = pos1;
+    }
+
+    std::istringstream iss(str);
+    std::string line;
+
+    while (getline(iss, line))
+        lines.push_back(line);
+
+    free(fileContents);
+    return true;
 }

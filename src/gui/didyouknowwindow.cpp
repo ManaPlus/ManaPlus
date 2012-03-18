@@ -39,6 +39,9 @@
 #include "utils/gettext.h"
 #include "utils/langs.h"
 
+#include "utils/translation/podict.h"
+#include "utils/translation/translationmanager.h"
+
 #include "debug.h"
 
 static const int minTip = 1;
@@ -129,26 +132,13 @@ void DidYouKnowWindow::loadFile(int num)
 {
     const std::string file = strprintf("tips/%d", num);
     const std::vector<std::string> langs = getLang();
-    ResourceManager *resman = ResourceManager::getInstance();
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
 
     std::vector<std::string> lines;
-    if (!langs.empty())
-    {
-        std::string name = helpPath + langs[0] + "/" + file + ".txt";
-        if (resman->exists(name))
-            resman->loadTextFile(name, lines);
-        if (lines.empty() && langs.size() > 1)
-        {
-            name = helpPath + langs[1] + "/" + file + ".txt";
-            resman->loadTextFile(name, lines);
-        }
-    }
-
-    if (lines.empty())
-        resman->loadTextFile(helpPath + file + ".txt", lines);
+    TranslationManager::translateFile(helpPath + file + ".txt",
+        translator, lines);
 
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);

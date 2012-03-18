@@ -21,6 +21,8 @@
 #ifndef UTILS_TRANSLATION_MANAGER_H
 #define UTILS_TRANSLATION_MANAGER_H
 
+#include "localconsts.h"
+
 #include <string>
 #include <vector>
 
@@ -29,13 +31,19 @@ class PoDict;
 class TranslationManager
 {
     public:
-        static PoDict *loadLang(std::vector<std::string> lang);
+        static PoDict *loadLang(std::vector<std::string> lang,
+                                std::string subName,
+                                PoDict *dict = nullptr);
 
         static void init();
 
         static void close();
 
         static void loadCurrentLang();
+
+        static bool translateFile(const std::string &fileName,
+                                  PoDict *dict,
+                                  std::vector<std::string> &lines);
 };
 
 #endif // UTILS_TRANSLATION_MANAGER_H

@@ -23,6 +23,8 @@
 
 #include "utils/translation/podict.h"
 
+#include "localconsts.h"
+
 #include <sstream>
 #include <string>
 
@@ -31,7 +33,9 @@ class PoParser
     public:
         PoParser();
 
-        PoDict *load(std::string fileName);
+        PoDict *load(std::string lang,
+                     std::string fileName = "",
+                     PoDict *dict = nullptr);
 
         bool checkLang(std::string lang) const;
 
@@ -41,7 +45,7 @@ class PoParser
         void setLang(std::string lang)
         { mLang = lang; }
 
-        void openFile();
+        void openFile(std::string name);
 
         bool readLine();
 
@@ -54,6 +58,8 @@ class PoParser
         std::string getFileName(std::string lang) const;
 
         PoDict *getDict();
+
+        void convertStr(std::string &str);
 
         // current lang
         std::string mLang;

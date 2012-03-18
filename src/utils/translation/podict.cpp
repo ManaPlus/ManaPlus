@@ -40,7 +40,7 @@ PoDict::~PoDict()
 {
 }
 
-const std::string PoDict::getStr(std::string &str)
+const std::string PoDict::getStr(const std::string &str)
 {
     if (mPoLines.find(str) == mPoLines.end())
         return str;

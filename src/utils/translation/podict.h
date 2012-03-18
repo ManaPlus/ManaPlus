@@ -33,7 +33,7 @@ class PoDict
 
         ~PoDict();
 
-        const std::string getStr(std::string &str);
+        const std::string getStr(const std::string &str);
 
         const char *getChar(const char *str);
 
