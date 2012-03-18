@@ -1,4 +1,4 @@
-SUBDIRS = es fr ru tips pt pt_BR
+SUBDIRS = tips
 
 helpdir = $(pkgdatadir)/data/help
 
@@ -11,7 +11,6 @@ help_DATA =				\
 	skills.txt			\
 	support.txt			\
 	team.txt			\
-	teamtmw.txt			\
 	windows.txt
 
 EXTRA_DIST =			\

@@ -1,2 +1,2 @@
-You can use mumble voice chat for talking with other players.
-Start mumble before client start and enable mumble in settings.
+<<You can use mumble voice chat for talking with other players.
+Start mumble before client start and enable mumble in settings.>>

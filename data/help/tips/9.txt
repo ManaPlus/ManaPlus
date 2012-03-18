@@ -1,3 +1,3 @@
-You can set any client resolution. In settings in video tab,
-click on "custom" and enter for example: 900x500 and press ok.
+<<You can set any client resolution. In settings in video tab,
+click on "custom" and enter for example: 900x500 and press ok.>>
 

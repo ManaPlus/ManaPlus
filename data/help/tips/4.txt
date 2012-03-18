@@ -1,2 +1,2 @@
-You can restore yellow bar settings,
-by right click on it and select in context menu "Reset yellow bar".
+<<You can restore yellow bar settings,
+by right click on it and select in context menu "Reset yellow bar".>>

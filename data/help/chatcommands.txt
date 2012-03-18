@@ -1,77 +1,77 @@
- <- @@index|Back to Index@@
+ <- @@index|<<Back to Index>>@@
 
 
-##3                            Chat commands
+##3                            <<Chat commands>>
 
 
-##PWhispers
+##P<<Whispers>>
 ##2
-    /closeall - close all whispers.
-    /ignoreall - add all whispers to ignore list.
-    /msg NICK text, /whisper NICK text, /w NICK text - send whisper message to nick.
-    /query NICK, /q NICK - open new whisper tab for nick.
+    <</closeall - close all whispers.>>
+    <</ignoreall - add all whispers to ignore list.>>
+    <</msg NICK text, /whisper NICK text, /w NICK text - send whisper message to nick.>>
+    <</query NICK, /q NICK - open new whisper tab for nick.>>
 
 
-##PActions
+##P<<Actions>>
 ##2
-    /help - show small help about chat commands. 
-    /target NICK - select nick as target. Can be monster or player nick.
-    /outfit N - wear outfit number N.
-    /outfit next - wear next outfit.
-    /outfit prev - wear previous outfit.
-    /emote N - use emotion number N.
-    /away, /away MSG - set away mode.
-    /pseudoaway, /pseudoaway MSG - set/unset pseudo away mode.
-    /follow NICK - start follow mode.
-    /imitation NICK - start imitation mode.
-    /heal NICK - heal nick.
-    /move X Y - move to X,Y position in short distance.
-    /navigate x y - move to position x,y in current map in any distance.
-    /mail NICK MSG - send offline message to NICK. Working only in tmw server.
-    /disconnect - quick disconnect from server.
-    /attack - attack target.
-    /undress NICK - remove all clothes from nick. Local effect only.
-    /addattack NAME - add monster to attack list.
-    /addpriorityattack NAME - add monster to priority attack list.
-    /removeattack NAME - remove monster from attack list.
-    /addignoreattack NAME - add monster to ignore attack list.
-    /setdrop N - set drop counter to requested value.
+    <</help - show small help about chat commands. >>
+    <</target NICK - select nick as target. Can be monster or player nick.>>
+    <</outfit N - wear outfit number N.>>
+    <</outfit next - wear next outfit.>>
+    <</outfit prev - wear previous outfit.>>
+    <</emote N - use emotion number N.>>
+    <</away, /away MSG - set away mode.>>
+    <</pseudoaway, /pseudoaway MSG - set/unset pseudo away mode.>>
+    <</follow NICK - start follow mode.>>
+    <</imitation NICK - start imitation mode.>>
+    <</heal NICK - heal nick.>>
+    <</move X Y - move to X,Y position in short distance.>>
+    <</navigate x y - move to position x,y in current map in any distance.>>
+    <</mail NICK MSG - send offline message to NICK. Working only in tmw server.>>
+    <</disconnect - quick disconnect from server.>>
+    <</attack - attack target.>>
+    <</undress NICK - remove all clothes from nick. Local effect only.>>
+    <</addattack NAME - add monster to attack list.>>
+    <</addpriorityattack NAME - add monster to priority attack list.>>
+    <</removeattack NAME - remove monster from attack list.>>
+    <</addignoreattack NAME - add monster to ignore attack list.>>
+    <</setdrop N - set drop counter to requested value.>>
 
-##PTrade
+##P<<Trade>>
 ##2
-    /trade NICK - start trade with nick.
-    /priceload - load shop price from disc.
-    /pricesave - save shop price to disc.
+    <</trade NICK - start trade with nick.>>
+    <</priceload - load shop price from disc.>>
+    <</pricesave - save shop price to disc.>>
 
 
-##PPlayer relations
+##P<<Player relations>>
 ##2
-    /ignore NICK - add nick to ignore list.
-    /unignore NICK - Remove nick from ignore list.
-    /friend NICK, /befriend NICK - add nick to friends list.
-    /disregard NICK - add nick to disregarded list.
-    /neutral NICK - add nick to neutral relation list.
-    /blacklist NICK - add nick to blacklist relation list.
-    /erase NICK - add nick to erased list.
-    /clear - clear current chat tab.
-    /createparty NAME - create party with selected name.
-    /me text - send text to chat as /me command in irc.
-    /serverignoreall - ignore all whispers on server side.
-    /serverunignoreall - unignore all whispers on server side.
+    <</ignore NICK - add nick to ignore list.>>
+    <</unignore NICK - Remove nick from ignore list.>>
+    <</friend NICK, /befriend NICK - add nick to friends list.>>
+    <</disregard NICK - add nick to disregarded list.>>
+    <</neutral NICK - add nick to neutral relation list.>>
+    <</blacklist NICK - add nick to blacklist relation list.>>
+    <</erase NICK - add nick to erased list.>>
+    <</clear - clear current chat tab.>>
+    <</createparty NAME - create party with selected name.>>
+    <</me text - send text to chat as /me command in irc.>>
+    <</serverignoreall - ignore all whispers on server side.>>
+    <</serverunignoreall - unignore all whispers on server side.>>
 
-##PDebug 
+##P<<Debug>>
 ##2
-    /who - print online players number to chat.
-    /all - show visible beings list in debug tab.
-    /where - print current player position to chat.
-    /cacheinfo - show text cache info.
-    /uptime - show client uptime.
-    /dumpg - dump graphics and some other settings to chat.
-    /dirs - show client dirs in debug chat tab.
+    <</who - print online players number to chat.>>
+    <</all - show visible beings list in debug tab.>>
+    <</where - print current player position to chat.>>
+    <</cacheinfo - show text cache info.>>
+    <</uptime - show client uptime.>>
+    <</dumpg - dump graphics and some other settings to chat.>>
+    <</dirs - show client dirs in debug chat tab.>>
 
 
-##PWhispers commands
+##P<<Whispers commands>>
 ##2
-Most commands working in whispers. 
+<<Most commands working in whispers.
 For example command /imitation in whisper nick nick1,
- similar to command /imitation nick1.
+ similar to command /imitation nick1.>>

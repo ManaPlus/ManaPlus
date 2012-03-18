@@ -1,2 +1,0 @@
-Você pode colocar qualquer resolução para o cliente. Nas configurações da aba de vídeo,
-Clique em "custom" e entre por exemplo: 900x500 e pressione ok.

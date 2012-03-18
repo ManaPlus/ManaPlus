@@ -1,22 +1,26 @@
- <- @@index|Back to Index@@
+ <- @@index|<<Back to Index>>@@
  
  
-##3                            === SUPPORT ===
+##3                            === <<SUPPORT>> ===
  
- If you're having troubles, plase first of all read the FAQ. If you
+<< If you're having troubles, plase first of all read the FAQ. If you
  can't find a solution to your problem, feel free to check our
- Bugs/Support section of the forum:
+ Bugs/Support section of the forum:>>
  
- For TMW support:
+<< For Evol Online support:
  
-##2     http://forums.themanaworld.org/viewforum.php?f=3
+ <<Visit IRC channel:>>
+##2     #evolonline ##P@##2 irc.freenode.net
  
- or come visit us on our IRC channel:
  
+<< For TMW support:
+ 
+<<##2     http://forums.themanaworld.org/viewforum.php?f=3
+ or visit IRC channel:>>
 ##2     #themanaworld ##P@##2 irc.freenode.net
  
- Otherwise see the @@team|Development Team@@ section to have a list of
- developers and how to contact them.
+<< Otherwise see the @@team|Development Team@@ section to have a list of
+ developers and how to contact them.>>
  
- For other server look servers pages for support.
+ <<For other server look servers pages for support.>>
 

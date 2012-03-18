@@ -1,2 +1,2 @@
-You can copy value from any bar,
-by right click on it and select in context menu "Copy to chat".
+<<You can copy value from any bar,
+by right click on it and select in context menu "Copy to chat".>>

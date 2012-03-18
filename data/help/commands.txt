@@ -1,175 +1,175 @@
- <- @@index|Back to Index@@
+ <- @@index|<<Back to Index>>@@
  
  
-##3                            === COMMANDS ===
+##3                            === <<COMMANDS>> ===
  
-##2KEYBOARD:
+##2<<KEYBOARD:>>
 
-     ##2UP##P                       "Move Up"
-     ##2DOWN##P                     "Move Down"
-     ##2LEFT##P                     "Move Left"
-     ##2RIGHT##P                    "Move Right"
-     ##2LeftControl##P              "Attack"
-     ##2x##P                        "Target & Attack"
-     ##2v##P                        "Move to Target"
-     ##2Period(.)##P                "Change Move to Target type"
-     ##2d##P                        "Move to Home location"
-     ##2KeyPad[5]##P                "Set home location/Set arrow"
-     ##2RightShift + key##P         "Move to navigation point"
-     ##2LeftAlt + EmoteKey##P       "Smilie"
-     ##2t##P                        "Talk"
-     ##2LeftShift##P                "Stop Attack" 
-     ##2a##P                        "Target Closest"
-     ##2n##P                        "Target NPC"
-     ##2q##P                        "Target Player"
-     ##2z##P                        "Pickup"
-     ##2o##P                        "Change Pickup Type"
-     ##2h##P                        "Hide Windows"
-     ##2s##P                        "Sit"
-     ##2p##P                        "Screenshot"
-     ##2r##P                        "Enable/Disable Trading"
-     ##2f##P                        "Change Map View Mode"
-     ##2MenuKey##P                  "Item Shortcuts Key"
-     ##21##P                        "Item Shortcut 1"
-     ##22##P                        "Item Shortcut 2"
-     ##23##P                        "Item Shortcut 3"
-     ##24##P                        "Item Shortcut 4"
-     ##25##P                        "Item Shortcut 5"
-     ##26##P                        "Item Shortcut 6"
-     ##27##P                        "Item Shortcut 7"
-     ##28##P                        "Item Shortcut 8"
-     ##29##P                        "Item Shortcut 9"
-     ##20##P                        "Item Shortcut 10"
-     ##2Minus(-)##P                 "Item Shortcut 11"
-     ##2Equals(=)##P                "Item Shortcut 12"
-     ##2Backspace##P                "Item Shortcut 13"
-     ##2Insert##P                   "Item Shortcut 14"
-     ##2Home##P                     "Item Shortcut 15"
-     ##2F1##P                       "Help Window"
-     ##2F2##P                       "Status Window"
-     ##2F3##P                       "Inventory Window"
-     ##2F4##P                       "Equipment Window"
-     ##2F5##P                       "Skill Window"
-     ##2F6##P                       "Minimap Window"
-     ##2F7##P                       "Chat Window"
-     ##2F8##P                       "Item Shortcut Window"
-     ##2F9##P                       "Setup Window"
-     ##2F10##P                      "Debug Window"
-     ##2F11##P                      "Social Window"
-     ##2F12##P                      "Emote Shortcut Window"
-     ##2BackQuote(`)##P             "Outfits Window"
-     ##2w##P                        "Quick drop Window"
-     ##2e##P                        "Kills Stats Window"
-     ##2j##P                        "Commands Window"
-     ##2LeftBracket([)##P           "Bot Checker Window"
-     ##2LeftAlt + 1##P              "Emote Shortcut 1"
-     ##2LeftAlt + 2##P              "Emote Shortcut 2"
-     ##2LeftAlt + 3##P              "Emote Shortcut 3"
-     ##2LeftAlt + 4##P              "Emote Shortcut 4"
-     ##2LeftAlt + 5##P              "Emote Shortcut 5"
-     ##2LeftAlt + 6##P              "Emote Shortcut 6"
-     ##2LeftAlt + 7##P              "Emote Shortcut 7"
-     ##2LeftAlt + 8##P              "Emote Shortcut 8"
-     ##2LeftAlt + 9##P              "Emote Shortcut 9"
-     ##2LeftAlt + 0##P              "Emote Shortcut 10"
-     ##2LeftAlt + Minus(-)##P       "Emote Shortcut 11"
-     ##2LeftAlt + Equals(=)##P      "Emote Shortcut 12"
-     ##2LeftAlt + Backspace##P      "Emote Shortcut 13"
-     ##2LeftAlt + Insert##P         "Emote Shortcut 14"
-     ##2RightControl##P             "Wear Outfit"
-     ##2RightAlt##P                 "Copy Outfit"
-     ##2RightBracket(])##P          "Copy Equiped to Outfit"
-     ##2Enter##P                    "Toggle Chat"
-     ##2PageUP##P                   "Scroll Chat Up"
-     ##2PageDOWN##P                 "Scroll Chat Down"
-     ##2KeyPad[7]##P                "Previous Chat Tab"
-     ##2KeyPad[9]##P                "Next Chat Tab"
-     ##2KeyPad[7]##P                "Previous chat tab line"
-     ##2KeyPad[9]##P                "Next chat tab line"
-     ##2Tab##P                      "Chat Auto Complete"
-     ##2Esc##P                      "Deactivate Chat Input"
-     ##2SpaceBar##P                 "Select OK"
-     ##2Esc##P                      "Quit"
-     ##2LeftWinKey##P               "Ignore input 1"
-     ##2RightWinKey##P              "Ignore input 2"
-     ##2l##P                        "Set Direction Up"
-     ##2Semicolon(;)##P             "Set Direction Down"
-     ##2k##P                        "Set Direction Left"
-     ##2Quote(')##P                 "Set Direction Right"
-     ##2Slash(\)##P                 "Crazy moves"
-     ##2Backslash(/)##P             "Change Crazy Move mode"
-     ##2y##P                        "Quick Drop N Items from 0 slot"
-     ##2u##P                        "Quick Drop N Items"
-     ##2i##P                        "Switch Quick Drop Counter"
-     ##2c##P                        "Quick heal target or self"
-     ##2m##P                        "Use #itenplz spell"
-     ##2b##P                        "Use magic attack"
-     ##2Comma(,)##P                 "Switch magic attack"
-     ##2KeyPad0##P                  "Change move type"
-     ##2g##P                        "Change Attack Weapon Type"
-     ##2End##P                      "Change Attack Type"
-     ##2KeyPad[1]##P                "Change Follow mode"
-     ##2KeyPad[4]##P                "Change Imitation mode"
-     ##2KeyPad[8]##P                "Disable / Enable Game modifier keys"
-     ##2KeyPad[3]##P                "On / Off audio"
-     ##2KeyPad[2]##P                "Enable / Disable away mode"
-     ##2Tab##P                      "Emulate right click from keyboard"
-     ##2KeyPad[+]##P                "Toggle camera mode"
+     <<##2UP##P                       "Move Up">>
+     <<##2DOWN##P                     "Move Down">>
+     <<##2LEFT##P                     "Move Left">>
+     <<##2RIGHT##P                    "Move Right">>
+     <<##2LeftControl##P              "Attack">>
+     <<##2x##P                        "Target & Attack">>
+     <<##2v##P                        "Move to Target">>
+     <<##2Period(.)##P                "Change Move to Target type">>
+     <<##2d##P                        "Move to Home location">>
+     <<##2KeyPad[5]##P                "Set home location/Set arrow">>
+     <<##2RightShift + key##P         "Move to navigation point">>
+     <<##2LeftAlt + EmoteKey##P       "Smilie">>
+     <<##2t##P                        "Talk">>
+     <<##2LeftShift##P                "Stop Attack">>
+     <<##2a##P                        "Target Closest">>
+     <<##2n##P                        "Target NPC">>
+     <<##2q##P                        "Target Player">>
+     <<##2z##P                        "Pickup">>
+     <<##2o##P                        "Change Pickup Type">>
+     <<##2h##P                        "Hide Windows">>
+     <<##2s##P                        "Sit">>
+     <<##2p##P                        "Screenshot">>
+     <<##2r##P                        "Enable/Disable Trading">>
+     <<##2f##P                        "Change Map View Mode">>
+     <<##2MenuKey##P                  "Item Shortcuts Key">>
+     <<##21##P                        "Item Shortcut 1">>
+     <<##22##P                        "Item Shortcut 2">>
+     <<##23##P                        "Item Shortcut 3">>
+     <<##24##P                        "Item Shortcut 4">>
+     <<##25##P                        "Item Shortcut 5">>
+     <<##26##P                        "Item Shortcut 6">>
+     <<##27##P                        "Item Shortcut 7">>
+     <<##28##P                        "Item Shortcut 8">>
+     <<##29##P                        "Item Shortcut 9">>
+     <<##20##P                        "Item Shortcut 10">>
+     <<##2Minus(-)##P                 "Item Shortcut 11">>
+     <<##2Equals(=)##P                "Item Shortcut 12">>
+     <<##2Backspace##P                "Item Shortcut 13">>
+     <<##2Insert##P                   "Item Shortcut 14">>
+     <<##2Home##P                     "Item Shortcut 15">>
+     <<##2F1##P                       "Help Window">>
+     <<##2F2##P                       "Status Window">>
+     <<##2F3##P                       "Inventory Window">>
+     <<##2F4##P                       "Equipment Window">>
+     <<##2F5##P                       "Skill Window">>
+     <<##2F6##P                       "Minimap Window">>
+     <<##2F7##P                       "Chat Window">>
+     <<##2F8##P                       "Item Shortcut Window">>
+     <<##2F9##P                       "Setup Window">>
+     <<##2F10##P                      "Debug Window">>
+     <<##2F11##P                      "Social Window">>
+     <<##2F12##P                      "Emote Shortcut Window">>
+     <<##2BackQuote(`)##P             "Outfits Window">>
+     <<##2w##P                        "Quick drop Window">>
+     <<##2e##P                        "Kills Stats Window">>
+     <<##2j##P                        "Commands Window">>
+     <<##2LeftBracket([)##P           "Bot Checker Window">>
+     <<##2LeftAlt + 1##P              "Emote Shortcut 1">>
+     <<##2LeftAlt + 2##P              "Emote Shortcut 2">>
+     <<##2LeftAlt + 3##P              "Emote Shortcut 3">>
+     <<##2LeftAlt + 4##P              "Emote Shortcut 4">>
+     <<##2LeftAlt + 5##P              "Emote Shortcut 5">>
+     <<##2LeftAlt + 6##P              "Emote Shortcut 6">>
+     <<##2LeftAlt + 7##P              "Emote Shortcut 7">>
+     <<##2LeftAlt + 8##P              "Emote Shortcut 8">>
+     <<##2LeftAlt + 9##P              "Emote Shortcut 9">>
+     <<##2LeftAlt + 0##P              "Emote Shortcut 10">>
+     <<##2LeftAlt + Minus(-)##P       "Emote Shortcut 11">>
+     <<##2LeftAlt + Equals(=)##P      "Emote Shortcut 12">>
+     <<##2LeftAlt + Backspace##P      "Emote Shortcut 13">>
+     <<##2LeftAlt + Insert##P         "Emote Shortcut 14">>
+     <<##2RightControl##P             "Wear Outfit">>
+     <<##2RightAlt##P                 "Copy Outfit">>
+     <<##2RightBracket(])##P          "Copy Equiped to Outfit">>
+     <<##2Enter##P                    "Toggle Chat">>
+     <<##2PageUP##P                   "Scroll Chat Up">>
+     <<##2PageDOWN##P                 "Scroll Chat Down">>
+     <<##2KeyPad[7]##P                "Previous Chat Tab">>
+     <<##2KeyPad[9]##P                "Next Chat Tab">>
+     <<##2KeyPad[7]##P                "Previous chat tab line">>
+     <<##2KeyPad[9]##P                "Next chat tab line">>
+     <<##2Tab##P                      "Chat Auto Complete">>
+     <<##2Esc##P                      "Deactivate Chat Input">>
+     <<##2SpaceBar##P                 "Select OK">>
+     <<##2Esc##P                      "Quit">>
+     <<##2LeftWinKey##P               "Ignore input 1">>
+     <<##2RightWinKey##P              "Ignore input 2">>
+     <<##2l##P                        "Set Direction Up">>
+     <<##2Semicolon(;)##P             "Set Direction Down">>
+     <<##2k##P                        "Set Direction Left">>
+     <<##2Quote(')##P                 "Set Direction Right">>
+     <<##2Slash(\)##P                 "Crazy moves">>
+     <<##2Backslash(/)##P             "Change Crazy Move mode">>
+     <<##2y##P                        "Quick Drop N Items from 0 slot">>
+     <<##2u##P                        "Quick Drop N Items">>
+     <<##2i##P                        "Switch Quick Drop Counter">>
+     <<##2c##P                        "Quick heal target or self">>
+     <<##2m##P                        "Use #itenplz spell">>
+     <<##2b##P                        "Use magic attack">>
+     <<##2Comma(,)##P                 "Switch magic attack">>
+     <<##2KeyPad0##P                  "Change move type">>
+     <<##2g##P                        "Change Attack Weapon Type">>
+     <<##2End##P                      "Change Attack Type">>
+     <<##2KeyPad[1]##P                "Change Follow mode">>
+     <<##2KeyPad[4]##P                "Change Imitation mode">>
+     <<##2KeyPad[8]##P                "Disable / Enable Game modifier keys">>
+     <<##2KeyPad[3]##P                "On / Off audio">>
+     <<##2KeyPad[2]##P                "Enable / Disable away mode">>
+     <<##2Tab##P                      "Emulate right click from keyboard">>
+     <<##2KeyPad[+]##P                "Toggle camera mode">>
 
 
-##2MOUSE:
+##2<<MOUSE:>>
 
- Left click to execute default action: walk, pick up an item, attack a monster
+<< Left click to execute default action: walk, pick up an item, attack a monster
  and talk to NPCs (be sure to click on their feet). Right click to show up a
- context menu. Holding [Left Shift] prevents from walking when attacking.
+ context menu. Holding [Left Shift] prevents from walking when attacking.>>
 
 
-##2COMMUNICATION:
+##2<<COMMUNICATION:>>
 
- Communication is often essential to success in this game. You can communicate
+ <<Communication is often essential to success in this game. You can communicate
  in several ways:  By chatting and showing emotions (see above), by trading
- (with the right-click context menu), and by whispering.
+ (with the right-click context menu), and by whispering.>>
 
- To read about whispering and other chat commands, look here: @@chatcommands|Chat commands@@
+ <<To read about whispering and other chat commands, look here:>> @@chatcommands|<<Chat commands>>@@
 
 
-##2IGNORING COMMUNICATION
+##2<<IGNORING COMMUNICATION>>
 
- You may find that not all communication is to your liking.  While most people
+<< You may find that not all communication is to your liking.  While most people
  are nice, some may offend you or try to make your life harder-- since this is
- an open game, there is nothing the developers can do to prevent this.
+ an open game, there is nothing the developers can do to prevent this.>>
 
- However, you can protect yourself from such players by ignoring them.  Right-
+<< However, you can protect yourself from such players by ignoring them.  Right-
  click on them to bring up the context menu, then select `Ignore' or
  `Disregard' (see below).  You can fine-tune your player relations in the
  `Setup' menu, which lists all the players you have added to it.  To open this
- menu, select `Setup' in the upper right corner of the screen, then `Players'.
+ menu, select `Setup' in the upper right corner of the screen, then `Players'.>>
 
- There you will find a list of all players you are acquainted with, as well as
- several configuration options:
+<< There you will find a list of all players you are acquainted with, as well as
+ several configuration options:>>
 
- - ##2save player list##P: Should your acquaintance list be saved when you
+<< - ##2save player list##P: Should your acquaintance list be saved when you
    quit the game?  If you enable this option, your list will survive when you
-   quit and re-start.
- - ##2allow trading##P: Do you wish to allow trade requests from arbitrary
-   players?
- - ##2allow whispers##P: Do you wish to allow arbitrary players to send
-   private messages to you in-game?
+   quit and re-start.>>
+<< - ##2allow trading##P: Do you wish to allow trade requests from arbitrary
+   players?>>
+<< - ##2allow whispers##P: Do you wish to allow arbitrary players to send
+   private messages to you in-game?>>
 
-##2THE PLAYER LIST
+##2<<THE PLAYER LIST>>
 
- The player list lists all of your acquaintances.  They are categorised as one
- of the following:
+<< The player list lists all of your acquaintances.  They are categorised as one
+ of the following:>>
 
- - ##2neutral##P:  As far as the game is concerned, this is the same as not
+<< - ##2neutral##P:  As far as the game is concerned, this is the same as not
    having the player listed:  the player may chat with you, but may only trade
-   or whisper if you have this option allowed for everyone.
- - ##2friend##P:  You consider this player a friend.  The player may chat,
-   message your in private, or trade with you at any point.
- - ##2disregarded##P:  You wish to disregard this player, meaning that his or
+   or whisper if you have this option allowed for everyone.>>
+<< - ##2friend##P:  You consider this player a friend.  The player may chat,
+   message your in private, or trade with you at any point.>>
+<< - ##2disregarded##P:  You wish to disregard this player, meaning that his or
    her chat messages are not logged and trade requests and whispers are
-   ignored.
- - ##2ignored##P:  You wish to completely ignore this player.  You will not
-   even see floating text for him or her anymore, nor emotions.
+   ignored.>>
+<< - ##2ignored##P:  You wish to completely ignore this player.  You will not
+   even see floating text for him or her anymore, nor emotions.>>
 
 

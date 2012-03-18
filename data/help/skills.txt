@@ -1,22 +1,22 @@
- <- @@index|Back to Index@@
+ <- @@index|<<Back to Index>>@@
  
  
-##3                             === SKILLS ===
+##3                             === <<SKILLS>> ===
  
- You can improve your skills by increasing job level. Each job level
- gives you 1 point to spend on basic skills.
+<< You can improve your skills by increasing job level. Each job level
+ gives you 1 point to spend on basic skills.>>
  
-   ##4 Basic skills: 
+   ##4 <<Basic skills:>>
  
-     ##2Emote:##P enables the ability to express emotions
-     ##2Trade:##P enables the ability to trade with others
-     ##2Party Level1:##P enables a char to join a party.
-     ##2Party level2:##P enables a char to create a party
-  
-   ##4 Magic skills:  
+     <<##2Emote:##P enables the ability to express emotions.>>
+     <<##2Trade:##P enables the ability to trade with others.>>
+     <<##2Party Level1:##P enables a char to join a party.>>
+     <<##2Party level2:##P enables a char to create a party.>>
  
-     ##PMagic skills can be obtain by doing quests and missions in game.
+   ##4 <<Magic skills:>>
  
-   ##4 Other skills: 
+     <<##PMagic skills can be obtain by doing quests and missions in game.>>
  
-     ##POther skills can be obtain by doing quests and missions in game.
+   ##4 <<Other skills:>>
+ 
+     <<##POther skills can be obtain by doing quests and missions in game.>>

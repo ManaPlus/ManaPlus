@@ -1,2 +1,0 @@
-Você pode usa o chat de voz mumble para falar com outros jogadores.
-Inicie o mumble antes do cliente e habilite o mumble nas configurações.
