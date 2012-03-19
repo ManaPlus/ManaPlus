@@ -93,11 +93,12 @@ void SimpleAnimation::setFrame(int frame)
     mCurrentFrame = mAnimation->getFrame(mAnimationPhase);
 }
 
-void SimpleAnimation::update(int timePassed)
+bool SimpleAnimation::update(int timePassed)
 {
     if (!mCurrentFrame || !mAnimation)
-        return;
+        return false;
 
+    bool updated(false);
     if (mInitialized && mAnimation)
     {
         mAnimationTime += timePassed;
@@ -105,6 +106,7 @@ void SimpleAnimation::update(int timePassed)
         while (mAnimationTime > mCurrentFrame->delay
                && mCurrentFrame->delay > 0)
         {
+            updated = true;
             mAnimationTime -= mCurrentFrame->delay;
             mAnimationPhase++;
 
@@ -117,7 +119,7 @@ void SimpleAnimation::update(int timePassed)
             mCurrentFrame = mAnimation->getFrame(mAnimationPhase);
         }
     }
-
+    return updated;
 }
 
 int SimpleAnimation::getLength() const

@@ -75,10 +75,14 @@ class TileAnimation
 {
     public:
         TileAnimation(Animation *ani);
+
         ~TileAnimation();
-        void update(int ticks = 1);
+
+        bool update(int ticks = 1);
+
         void addAffectedTile(MapLayer *layer, int index)
         { mAffected.push_back(std::make_pair(layer, index)); }
+
     private:
         std::vector<std::pair<MapLayer*, int> > mAffected;
         SimpleAnimation *mAnimation;

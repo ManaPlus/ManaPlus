@@ -95,13 +95,14 @@ TileAnimation::~TileAnimation()
     mAnimation = nullptr;
 }
 
-void TileAnimation::update(int ticks)
+bool TileAnimation::update(int ticks)
 {
     if (!mAnimation)
-        return;
+        return false;
 
     // update animation
-    mAnimation->update(ticks);
+    if (!mAnimation->update(ticks))
+        return false;
 
     // exchange images
     Image *img = mAnimation->getCurrentImage();
@@ -115,6 +116,7 @@ void TileAnimation::update(int ticks)
         }
         mLastImage = img;
     }
+    return true;
 }
 
 Map::Map(int width, int height, int tileWidth, int tileHeight):
@@ -306,8 +308,8 @@ void Map::update(int ticks)
          iAni = mTileAnimations.begin();
          iAni != mTileAnimations.end(); ++iAni)
     {
-        if (iAni->second)
-            iAni->second->update(ticks);
+        if (iAni->second && iAni->second->update(ticks))
+            mRedrawMap = true;
     }
 }
 

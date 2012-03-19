@@ -56,7 +56,7 @@ class SimpleAnimation
 
         int getLength() const;
 
-        void update(int timePassed);
+        bool update(int timePassed);
 
         bool draw(Graphics *graphics, int posX, int posY) const;
 
