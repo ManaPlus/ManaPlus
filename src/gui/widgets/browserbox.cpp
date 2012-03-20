@@ -668,7 +668,7 @@ std::string BrowserBox::getTextAtPos(const int x, const int y)
             continue;
         if (part.mY > textY)
             break;
-        str = part.mText;
+        str += part.mText;
     }
 
     return str;
