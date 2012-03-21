@@ -26,9 +26,9 @@
 #include "auctionmanager.h"
 #include "chatlogger.h"
 #include "configuration.h"
+#include "depricatedevent.h"
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
-#include "event.h"
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
@@ -998,10 +998,10 @@ int Client::gameExec()
 
         if (mState != mOldState)
         {
-            Event evt(EVENT_STATECHANGE);
+            DepricatedEvent evt(EVENT_STATECHANGE);
             evt.setInt("oldState", mOldState);
             evt.setInt("newState", mState);
-            Event::trigger(CHANNEL_CLIENT, evt);
+            DepricatedEvent::trigger(CHANNEL_CLIENT, evt);
 
             if (mOldState == STATE_GAME)
             {
@@ -1215,10 +1215,10 @@ int Client::gameExec()
 
                     TranslationManager::loadCurrentLang();
 
-                    Event evt2(EVENT_STATECHANGE);
+                    DepricatedEvent evt2(EVENT_STATECHANGE);
                     evt2.setInt("newState", STATE_LOAD_DATA);
                     evt2.setInt("oldState", mOldState);
-                    Event::trigger(CHANNEL_CLIENT, evt2);
+                    DepricatedEvent::trigger(CHANNEL_CLIENT, evt2);
 
                     // Load XML databases
                     CharDB::load();

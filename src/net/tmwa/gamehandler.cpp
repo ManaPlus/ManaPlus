@@ -23,7 +23,7 @@
 #include "net/tmwa/gamehandler.h"
 
 #include "client.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
 #include "logger.h"

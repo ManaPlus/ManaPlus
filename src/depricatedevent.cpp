@@ -19,16 +19,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "event.h"
+#include "depricatedevent.h"
 
 #include "listener.h"
 #include "variabledata.h"
 
 #include "debug.h"
 
-ListenMap Event::mBindings;
+ListenMap DepricatedEvent::mBindings;
 
-Event::~Event()
+DepricatedEvent::~DepricatedEvent()
 {
     VariableMap::iterator it = mData.begin();
     while (it != mData.end())
@@ -39,7 +39,7 @@ Event::~Event()
     }
 }
 
-void Event::setInt(const std::string &key, int value) throw (BadEvent)
+void DepricatedEvent::setInt(const std::string &key, int value) throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
         throw KEY_ALREADY_EXISTS;
@@ -47,7 +47,7 @@ void Event::setInt(const std::string &key, int value) throw (BadEvent)
     mData[key] = new IntData(value);
 }
 
-int Event::getInt(const std::string &key) const throw (BadEvent)
+int DepricatedEvent::getInt(const std::string &key) const throw (BadDepricatedEvent)
 {
     VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
@@ -59,8 +59,8 @@ int Event::getInt(const std::string &key) const throw (BadEvent)
     return static_cast<IntData *>(it->second)->getData();
 }
 
-void Event::setString(const std::string &key,
-                      const std::string &value) throw (BadEvent)
+void DepricatedEvent::setString(const std::string &key,
+                      const std::string &value) throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
         throw KEY_ALREADY_EXISTS;
@@ -68,8 +68,8 @@ void Event::setString(const std::string &key,
     mData[key] = new StringData(value);
 }
 
-const std::string &Event::getString(const std::string &key)
-                                    const throw (BadEvent)
+const std::string &DepricatedEvent::getString(const std::string &key)
+                                    const throw (BadDepricatedEvent)
 {
     VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
@@ -82,7 +82,7 @@ const std::string &Event::getString(const std::string &key)
 }
 
 
-void Event::setFloat(const std::string &key, double value) throw (BadEvent)
+void DepricatedEvent::setFloat(const std::string &key, double value) throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
         throw KEY_ALREADY_EXISTS;
@@ -90,7 +90,7 @@ void Event::setFloat(const std::string &key, double value) throw (BadEvent)
     mData[key] = new FloatData(value);
 }
 
-double Event::getFloat(const std::string &key) const throw (BadEvent)
+double DepricatedEvent::getFloat(const std::string &key) const throw (BadDepricatedEvent)
 {
     VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
@@ -102,7 +102,7 @@ double Event::getFloat(const std::string &key) const throw (BadEvent)
     return static_cast<FloatData *>(it->second)->getData();
 }
 
-void Event::trigger(Channels channel, const Event &event)
+void DepricatedEvent::trigger(Channels channel, const DepricatedEvent &event)
 {
     ListenMap::const_iterator it = mBindings.find(channel);
 
@@ -120,7 +120,7 @@ void Event::trigger(Channels channel, const Event &event)
     }
 }
 
-void Event::remove(Listener *listener)
+void DepricatedEvent::remove(Listener *listener)
 {
     ListenMap::iterator it = mBindings.begin();
     while (it != mBindings.end())
@@ -130,12 +130,12 @@ void Event::remove(Listener *listener)
     }
 }
 
-void Event::bind(Listener *listener, Channels channel)
+void DepricatedEvent::bind(Listener *listener, Channels channel)
 {
     mBindings[channel].insert(listener);
 }
 
-void Event::unbind(Listener *listener, Channels channel)
+void DepricatedEvent::unbind(Listener *listener, Channels channel)
 {
     mBindings[channel].erase(listener);
 }

@@ -22,8 +22,8 @@
 #include "net/ea/guildhandler.h"
 
 #include "actorspritemanager.h"
+#include "depricatedevent.h"
 #include "guild.h"
-#include "event.h"
 #include "localplayer.h"
 #include "logger.h"
 

@@ -22,8 +22,8 @@
 #include "playerinfo.h"
 
 #include "client.h"
+#include "depricatedevent.h"
 #include "equipment.h"
-#include "event.h"
 #include "inventory.h"
 #include "listener.h"
 #include "logger.h"
@@ -59,11 +59,11 @@ int mLevelProgress = 0;
 
 void triggerAttr(int id, int old)
 {
-    Event event(EVENT_UPDATEATTRIBUTE);
+    DepricatedEvent event(EVENT_UPDATEATTRIBUTE);
     event.setInt("id", id);
     event.setInt("oldValue", old);
     event.setInt("newValue", mData.mAttributes.find(id)->second);
-    Event::trigger(CHANNEL_ATTRIBUTES, event);
+    DepricatedEvent::trigger(CHANNEL_ATTRIBUTES, event);
 }
 
 void triggerStat(int id, const std::string &changed, int old1, int old2)
@@ -72,7 +72,7 @@ void triggerStat(int id, const std::string &changed, int old1, int old2)
     if (it == mData.mStats.end())
         return;
 
-    Event event(EVENT_UPDATESTAT);
+    DepricatedEvent event(EVENT_UPDATESTAT);
     event.setInt("id", id);
     event.setInt("base", it->second.base);
     event.setInt("mod", it->second.mod);
@@ -81,7 +81,7 @@ void triggerStat(int id, const std::string &changed, int old1, int old2)
     event.setString("changed", changed);
     event.setInt("oldValue1", old1);
     event.setInt("oldValue2", old2);
-    Event::trigger(CHANNEL_ATTRIBUTES, event);
+    DepricatedEvent::trigger(CHANNEL_ATTRIBUTES, event);
 }
 
 // --- Attributes -------------------------------------------------------------
@@ -280,9 +280,9 @@ void setTrading(bool trading)
 
     if (notify)
     {
-        Event event(EVENT_TRADING);
+        DepricatedEvent event(EVENT_TRADING);
         event.setInt("trading", trading);
-        Event::trigger(CHANNEL_STATUS, event);
+        DepricatedEvent::trigger(CHANNEL_STATUS, event);
     }
 }
 
@@ -312,7 +312,7 @@ public:
         listen(CHANNEL_GAME);
     }
 
-    void processEvent(Channels channel, const Event &event)
+    void processEvent(Channels channel, const DepricatedEvent &event)
     {
         if (channel == CHANNEL_CLIENT)
         {

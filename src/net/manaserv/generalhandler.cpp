@@ -177,7 +177,7 @@ void GeneralHandler::clearHandlers()
 }
 
 void GeneralHandler::processEvent(Channels channel,
-                                  const Event &event)
+                                  const DepricatedEvent &event)
 {
     if (channel == CHANNEL_CLIENT)
     {

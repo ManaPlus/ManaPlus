@@ -219,7 +219,7 @@ void MiniStatusWindow::drawIcons(Graphics *graphics)
 }
 
 void MiniStatusWindow::processEvent(Channels channel A_UNUSED,
-                                    const Event &event)
+                                    const DepricatedEvent &event)
 {
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {

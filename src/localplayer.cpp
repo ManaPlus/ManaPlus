@@ -1655,7 +1655,7 @@ void LocalPlayer::optionChanged(const std::string &value)
 }
 
 void LocalPlayer::processEvent(Channels channel,
-                               const Event &event)
+                               const DepricatedEvent &event)
 {
     if (channel == CHANNEL_ATTRIBUTES)
     {

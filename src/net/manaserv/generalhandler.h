@@ -50,7 +50,7 @@ class GeneralHandler : public Net::GeneralHandler, public Listener
 
         void clearHandlers();
 
-        void processEvent(Channels channel, const Event &event);
+        void processEvent(Channels channel, const DepricatedEvent &event);
 
     protected:
         MessageHandlerPtr mBeingHandler;

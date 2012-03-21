@@ -24,7 +24,7 @@
 
 #include "actorspritemanager.h"
 #include "configuration.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "inventory.h"
 #include "item.h"
 #include "localplayer.h"

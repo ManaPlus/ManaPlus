@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MANA_EVENT_H
-#define MANA_EVENT_H
+#ifndef DEPRICATED_EVENT_H
+#define DEPRICATED_EVENT_H
 
 #include <map>
 #include <set>
@@ -41,7 +41,7 @@ enum Channels
     CHANNEL_STORAGE
 };
 
-enum Events
+enum DepricatedEvents
 {
     EVENT_ANNOUNCEMENT = 0,
     EVENT_BEING,
@@ -96,7 +96,7 @@ enum Events
 };
 
 // Possible exception that can be thrown
-enum BadEvent
+enum BadDepricatedEvent
 {
     BAD_KEY = 0,
     BAD_VALUE,
@@ -111,47 +111,47 @@ typedef std::set<Listener *> ListenerSet;
 typedef std::map<Channels, ListenerSet > ListenMap;
 
 #define SERVER_NOTICE(message) { \
-Event event(EVENT_SERVERNOTICE); \
+DepricatedEvent event(EVENT_SERVERNOTICE); \
 event.setString("message", message); \
-Event::trigger(CHANNEL_NOTICES, event); }
+DepricatedEvent::trigger(CHANNEL_NOTICES, event); }
 
-class Event
+class DepricatedEvent
 {
     public:
         // String passed can be retivered with getName()
         // and is to used to identify what type of event
         // this is.
-        Event(Events name)
-        { mEventName = name; }
+        DepricatedEvent(DepricatedEvents name)
+        { mDepricatedEventName = name; }
 
-        ~Event();
+        ~DepricatedEvent();
 
-        Events getName() const
-        { return mEventName; }
+        DepricatedEvents getName() const
+        { return mDepricatedEventName; }
 
         // Sets or gets a interger with a key to identify
         void setInt(const std::string &key, int value)
-        throw (BadEvent);
+        throw (BadDepricatedEvent);
 
         int getInt(const std::string &key)
-        const throw (BadEvent);
+        const throw (BadDepricatedEvent);
 
         // Sets or gets a string with a key to identify
         void setString(const std::string &key,
                        const std::string &value)
-        throw (BadEvent);
+        throw (BadDepricatedEvent);
 
         const std::string &getString(const std::string &key)
-        const throw (BadEvent);
+        const throw (BadDepricatedEvent);
 
         // Sets or gets a floating point number with key to identify
         void setFloat(const std::string &key, double value)
-        throw (BadEvent);
+        throw (BadDepricatedEvent);
         double getFloat(const std::string &key)
-        const throw (BadEvent);
+        const throw (BadDepricatedEvent);
 
         // Sends event to all listener on the channel
-        static void trigger(Channels channel, const Event &event);
+        static void trigger(Channels channel, const DepricatedEvent &event);
 
         // Removes a listener from all channels
         static void remove(Listener *listener);
@@ -161,7 +161,7 @@ class Event
         static void unbind(Listener *listener, Channels channel);
 
     private:
-        Events mEventName;
+        DepricatedEvents mDepricatedEventName;
 
         static ListenMap mBindings;
 

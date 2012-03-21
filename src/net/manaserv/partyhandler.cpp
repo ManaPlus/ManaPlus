@@ -22,7 +22,7 @@
 
 #include "net/manaserv/partyhandler.h"
 
-#include "event.h"
+#include "depricatedevent.h"
 #include "logger.h"
 #include "localplayer.h"
 

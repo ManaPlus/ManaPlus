@@ -24,7 +24,7 @@
 
 #include "chatwindow.h"
 #include "configuration.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "equipment.h"
 #include "inventory.h"
 #include "item.h"
@@ -284,7 +284,7 @@ StatusWindow::StatusWindow():
 }
 
 void StatusWindow::processEvent(Channels channel A_UNUSED,
-                                const Event &event)
+                                const DepricatedEvent &event)
 {
     static bool blocked = false;
     if (blocked)

@@ -59,7 +59,7 @@ class MiniStatusWindow : public Popup,
 
         void drawIcons(Graphics *graphics);
 
-        void processEvent(Channels channel, const Event &event);
+        void processEvent(Channels channel, const DepricatedEvent &event);
 
         void updateStatus();
 

@@ -21,21 +21,19 @@
 
 #include "listener.h"
 
-#include "event.h"
-
 #include "debug.h"
 
 Listener::~Listener()
 {
-    Event::remove(this);
+    DepricatedEvent::remove(this);
 }
 
 void Listener::listen(Channels channel)
 {
-    Event::bind(this, channel);
+    DepricatedEvent::bind(this, channel);
 }
 
 void Listener::ignore(Channels channel)
 {
-    Event::unbind(this, channel);
+    DepricatedEvent::unbind(this, channel);
 }

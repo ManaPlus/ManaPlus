@@ -520,13 +520,13 @@ SET(SRCS
     debug.h
     defaults.cpp
     defaults.h
+    depricatedevent.cpp
+    depricatedevent.h
     effectmanager.cpp
     effectmanager.h
     emoteshortcut.cpp
     emoteshortcut.h
     equipment.h
-    event.cpp
-    event.h
     flooritem.cpp
     flooritem.h
     game.cpp

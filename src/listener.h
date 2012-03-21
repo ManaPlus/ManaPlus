@@ -22,7 +22,7 @@
 #ifndef LISTENER_H
 #define LISTENER_H
 
-#include "event.h"
+#include "depricatedevent.h"
 
 #include <string>
 
@@ -35,7 +35,8 @@ class Listener
 
         void ignore(Channels channel);
 
-        virtual void processEvent(Channels channel, const Event &event) = 0;
+        virtual void processEvent(Channels channel,
+                                  const DepricatedEvent &event) = 0;
 };
 
 #endif

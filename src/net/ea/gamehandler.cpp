@@ -23,7 +23,7 @@
 #include "net/ea/gamehandler.h"
 
 #include "client.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -47,7 +47,7 @@ GameHandler::GameHandler()
 }
 
 void GameHandler::processEvent(Channels channel,
-                               const Event &event)
+                               const DepricatedEvent &event)
 {
     if (channel == CHANNEL_GAME)
     {

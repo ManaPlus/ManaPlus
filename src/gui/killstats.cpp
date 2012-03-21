@@ -32,7 +32,7 @@
 #include "gui/chatwindow.h"
 
 #include "actorspritemanager.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "localplayer.h"
 #include "playerinfo.h"
 
@@ -438,7 +438,7 @@ void KillStats::validateJacko()
 }
 
 void KillStats::processEvent(Channels channel A_UNUSED,
-                             const Event &event)
+                             const DepricatedEvent &event)
 {
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {

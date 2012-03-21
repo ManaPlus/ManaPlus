@@ -38,7 +38,7 @@ class GameHandler : public Net::GameHandler, public Listener
         GameHandler();
 
         virtual void processEvent(Channels channel,
-                                  const Event &event);
+                                  const DepricatedEvent &event);
 
         virtual void who();
 

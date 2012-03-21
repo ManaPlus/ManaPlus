@@ -32,10 +32,10 @@
 #include "client.h"
 #include "commandhandler.h"
 #include "configuration.h"
+#include "depricatedevent.h"
 #include "dropshortcut.h"
 #include "effectmanager.h"
 #include "emoteshortcut.h"
-#include "event.h"
 #include "guildmanager.h"
 #include "graphics.h"
 #include "itemshortcut.h"
@@ -175,7 +175,8 @@ const unsigned adjustDelay = 10;
  */
 static void initEngines()
 {
-    Event::trigger(CHANNEL_GAME, Event(EVENT_ENGINESINITALIZING));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_ENGINESINITALIZING));
 
     actorSpriteManager = new ActorSpriteManager;
     commandHandler = new CommandHandler;
@@ -187,7 +188,8 @@ static void initEngines()
     particleEngine = new Particle(nullptr);
     particleEngine->setupEngine();
 
-    Event::trigger(CHANNEL_GAME, Event(EVENT_ENGINESINITALIZED));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_ENGINESINITALIZED));
 }
 
 /**
@@ -195,7 +197,8 @@ static void initEngines()
  */
 static void createGuiWindows()
 {
-    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSLOADING));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_GUIWINDOWSLOADING));
 
     if (setupWindow)
         setupWindow->clearWindowsForReset();
@@ -292,7 +295,8 @@ static void createGuiWindows()
     if (player_node)
         player_node->updateStatus();
 
-    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSLOADED));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_GUIWINDOWSLOADED));
 }
 
 #define del_0(X) { delete X; X = nullptr; }
@@ -302,7 +306,8 @@ static void createGuiWindows()
  */
 static void destroyGuiWindows()
 {
-    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSUNLOADING));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_GUIWINDOWSUNLOADING));
 
     logger->setChatWindow(nullptr);
     if (whoIsOnline)
@@ -345,7 +350,8 @@ static void destroyGuiWindows()
     del_0(killStats);
     del_0(didYouKnowWindow);
 
-    Event::trigger(CHANNEL_GAME, Event(EVENT_GUIWINDOWSUNLOADED));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_GUIWINDOWSUNLOADED));
 
     if (auctionManager && AuctionManager::getEnableAuctionBot())
         auctionManager->reload();
@@ -416,7 +422,8 @@ Game::Game():
     if (guildManager && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
 
-    Event::trigger(CHANNEL_GAME, Event(EVENT_CONSTRUCTED));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_CONSTRUCTED));
 }
 
 Game::~Game()
@@ -450,7 +457,8 @@ Game::~Game()
 
     mInstance = nullptr;
 
-    Event::trigger(CHANNEL_GAME, Event(EVENT_DESTRUCTED));
+    DepricatedEvent::trigger(CHANNEL_GAME,
+        DepricatedEvent(EVENT_DESTRUCTED));
 }
 
 static bool saveScreenshot()
@@ -1846,9 +1854,9 @@ void Game::changeMap(const std::string &mapPath)
 
     if (mumbleManager)
         mumbleManager->setMap(mapPath);
-    Event event(EVENT_MAPLOADED);
+    DepricatedEvent event(EVENT_MAPLOADED);
     event.setString("mapPath", mapPath);
-    Event::trigger(CHANNEL_GAME, event);
+    DepricatedEvent::trigger(CHANNEL_GAME, event);
 }
 
 void Game::updateHistory(SDL_Event &event)

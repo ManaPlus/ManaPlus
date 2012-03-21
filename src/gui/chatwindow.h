@@ -190,7 +190,7 @@ class ChatWindow : public Window,
          */
         void mousePressed(gcn::MouseEvent &event);
 
-        void processEvent(Channels channel, const Event &event);
+        void processEvent(Channels channel, const DepricatedEvent &event);
 
         /**
          * Scrolls the chat window

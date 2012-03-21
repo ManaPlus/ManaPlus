@@ -78,7 +78,7 @@ class KillStats : public Window, gcn::ActionListener, public Listener
         void addLog(std::string str);
 
         void processEvent(Channels channel A_UNUSED,
-                          const Event &event);
+                          const DepricatedEvent &event);
 
     private:
         void validateJacko();

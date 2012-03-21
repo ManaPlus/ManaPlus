@@ -389,7 +389,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
          */
         void optionChanged(const std::string &value);
 
-        void processEvent(Channels channel, const Event &event);
+        void processEvent(Channels channel, const DepricatedEvent &event);
 
         /**
          * set a following player.

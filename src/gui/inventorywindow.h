@@ -126,7 +126,7 @@ class InventoryWindow : public Window,
 
         void updateDropButton();
 
-        void processEvent(Channels channel, const Event &event);
+        void processEvent(Channels channel, const DepricatedEvent &event);
 
         void updateButtons(Item *item = nullptr);
 

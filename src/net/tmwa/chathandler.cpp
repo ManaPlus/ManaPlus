@@ -25,7 +25,7 @@
 #include "actorspritemanager.h"
 #include "being.h"
 #include "configuration.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "game.h"
 #include "localplayer.h"
 #include "playerrelations.h"

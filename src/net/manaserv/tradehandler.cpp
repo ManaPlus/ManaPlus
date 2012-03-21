@@ -23,7 +23,7 @@
 #include "net/manaserv/tradehandler.h"
 
 #include "actorspritemanager.h"
-#include "event.h"
+#include "depricatedevent.h"
 #include "item.h"
 #include "localplayer.h"
 #include "playerinfo.h"
