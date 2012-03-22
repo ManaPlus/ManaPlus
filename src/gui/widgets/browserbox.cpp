@@ -659,6 +659,8 @@ std::string BrowserBox::getTextAtPos(const int x, const int y)
 
     std::string str = "";
 
+    int lastY = 0;
+
     for (LinePartIterator i = mLineParts.begin();
         i != mLineParts.end();
         ++i)
@@ -668,7 +670,16 @@ std::string BrowserBox::getTextAtPos(const int x, const int y)
             continue;
         if (part.mY > textY)
             break;
-        str += part.mText;
+
+        if (part.mY > lastY)
+        {
+            str = part.mText;
+            lastY = part.mY;
+        }
+        else
+        {
+            str += part.mText;
+        }
     }
 
     return str;
