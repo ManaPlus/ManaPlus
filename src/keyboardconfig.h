@@ -27,8 +27,18 @@
 #include <SDL_keyboard.h>
 
 #include <string>
+#include <vector>
+
+#include "actionmanager.h"
 
 union SDL_Event;
+
+typedef std::vector<int> KeysVector;
+typedef KeysVector::iterator KeysVectorIter;
+typedef KeysVector::const_iterator KeysVectorCIter;
+
+typedef std::map<int, KeysVector> KeyToActionMap;
+typedef KeyToActionMap::iterator KeyToActionMapIter;
 
 /**
  * Each key represents a key function. Such as 'Move up', 'Attack' etc.
@@ -40,6 +50,10 @@ struct KeyFunction
     std::string caption;        /** The caption value for the key function. */
     int value;                  /** The actual value that is used. */
     int grp;                    /** The key group */
+    ActionFuncPtr action;       /** The key action function */
+    int modKeyIndex;            /** Modifier what enable this key action */
+    int priority;               /** Action priority */
+    int condition;              /** Condition for allow use key */
 };
 
 class Setup_Keyboard;
@@ -110,11 +124,6 @@ class KeyboardConfig
         int getKeyIndex(const SDL_Event &event, int grp = 1) const;
 
         /**
-         * Get the key function index for an emote by providing the offset value.
-         */
-        int getKeyEmoteOffset(const SDL_Event &event) const;
-
-        /**
          * Set the enable flag, which will stop the user from doing actions.
          */
         void setEnabled(bool flag)
@@ -161,6 +170,10 @@ class KeyboardConfig
         int getKeyValueFromEvent(const SDL_Event &event) const;
 
         void unassignKey();
+
+        void updateKeyActionMap();
+
+        bool triggerAction(const SDL_Event &event);
 
         /**
          * All the key functions.
@@ -360,6 +373,8 @@ class KeyboardConfig
         Uint8 *mActiveKeys;            /**< Stores a list of all the keys */
 
         std::string mBindError;
+
+        KeyToActionMap mKeyToAction;
 };
 
 extern KeyboardConfig keyboard;

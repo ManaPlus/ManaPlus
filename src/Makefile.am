@@ -490,6 +490,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      test/testlauncher.h \
 	      test/testmain.cpp \
 	      test/testmain.h \
+	      actionmanager.cpp \
+	      actionmanager.h \
 	      actor.cpp \
 	      actor.h \
 	      actorsprite.cpp \
@@ -563,6 +565,10 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      spellshortcut.h \
 	      textcommand.cpp \
 	      textcommand.h \
+	      inputevent.cpp \
+	      inputevent.h \
+	      inputmanager.cpp \
+	      inputmanager.h \
 	      joystick.cpp \
 	      joystick.h \
 	      keyboardconfig.cpp \

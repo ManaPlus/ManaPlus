@@ -22,38 +22,23 @@
 
 #include "game.h"
 
-#include "gui/npcdialog.h"
-
-#include "actorspritemanager.h"
-#include "actorsprite.h"
 #include "auctionmanager.h"
-#include "being.h"
 #include "channelmanager.h"
-#include "client.h"
 #include "commandhandler.h"
-#include "configuration.h"
-#include "depricatedevent.h"
-#include "dropshortcut.h"
 #include "effectmanager.h"
 #include "emoteshortcut.h"
 #include "guildmanager.h"
-#include "graphics.h"
+#include "inputmanager.h"
 #include "itemshortcut.h"
 #include "joystick.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
-#include "map.h"
 #include "particle.h"
-#include "playerrelations.h"
 #include "sound.h"
-#include "spellmanager.h"
 #include "spellshortcut.h"
 
 #include "gui/botcheckerwindow.h"
-#include "gui/buyselldialog.h"
-#include "gui/chatwindow.h"
-#include "gui/confirmdialog.h"
 #include "gui/debugwindow.h"
 #include "gui/didyouknowwindow.h"
 #include "gui/equipmentwindow.h"
@@ -66,7 +51,6 @@
 #include "gui/npcpostdialog.h"
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
-#include "gui/sdlinput.h"
 #include "gui/setup.h"
 #include "gui/shopwindow.h"
 #include "gui/shortcutwindow.h"
@@ -74,7 +58,6 @@
 #include "gui/specialswindow.h"
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
-#include "gui/quitdialog.h"
 #include "gui/textdialog.h"
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
@@ -90,7 +73,6 @@
 #include "gui/widgets/tradetab.h"
 
 #include "net/gamehandler.h"
-#include "net/generalhandler.h"
 #include "net/net.h"
 #include "net/packetcounters.h"
 #include "net/playerhandler.h"
@@ -175,6 +157,7 @@ const unsigned adjustDelay = 10;
  */
 static void initEngines()
 {
+
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_ENGINESINITALIZING));
 
@@ -461,7 +444,7 @@ Game::~Game()
         DepricatedEvent(EVENT_DESTRUCTED));
 }
 
-static bool saveScreenshot()
+bool Game::saveScreenshot()
 {
     static unsigned int screenshotCount = 0;
     SDL_Surface *screenshot = nullptr;
@@ -726,606 +709,10 @@ void Game::resetAdjustLevel()
     mAdjustLevel = 0;
 }
 
-bool Game::handleOutfitsKeys(SDL_Event &event, bool &used)
-{
-    if (keyboard.isEnabled()
-        && !chatWindow->isInputFocused()
-        && !setupWindow->isVisible()
-        && !player_node->getAway()
-        && !NpcDialog::isAnyInputFocused()
-        && !InventoryWindow::isAnyInputFocused())
-    {
-        bool wearOutfit = false;
-        bool copyOutfit = false;
-        if (keyboard.isActionActive(keyboard.KEY_WEAR_OUTFIT))
-            wearOutfit = true;
-
-        if (keyboard.isActionActive(keyboard.KEY_COPY_OUTFIT))
-            copyOutfit = true;
-
-        if (wearOutfit || copyOutfit)
-        {
-            int outfitNum = outfitWindow->keyToNumber(
-                keyboard.getKeyFromEvent(event));
-            if (outfitNum >= 0)
-            {
-                used = true;
-                if (wearOutfit)
-                    outfitWindow->wearOutfit(outfitNum);
-                else if (copyOutfit)
-                    outfitWindow->copyOutfit(outfitNum);
-            }
-            else
-            {
-                if (keyboard.isActionActive(keyboard.KEY_MOVE_RIGHT))
-                    outfitWindow->wearNextOutfit();
-                else if (keyboard.isActionActive(keyboard.KEY_MOVE_LEFT))
-                    outfitWindow->wearPreviousOutfit();
-            }
-            setValidSpeed();
-            return true;
-        }
-        else if (keyboard.isActionActive(keyboard.KEY_MOVE_TO_POINT))
-        {
-            int num = outfitWindow->keyToNumber(
-                keyboard.getKeyFromEvent(event));
-            if (socialWindow && num >= 0)
-            {
-                socialWindow->selectPortal(num);
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-bool Game::handleSwitchKeys(SDL_Event &event, bool &used)
-{
-    if ((!chatWindow || !chatWindow->isInputFocused())
-        && !gui->getFocusHandler()->getModalFocused()
-        && !player_node->getAway())
-    {
-        NpcDialog *dialog = NpcDialog::getActive();
-        if (keyboard.isActionActive(keyboard.KEY_OK)
-            && (!dialog || !dialog->isTextInputFocused()))
-        {
-            // Close the Browser if opened
-            if (helpWindow->isVisible())
-                helpWindow->setVisible(false);
-            // Close the config window, cancelling changes if opened
-            else if (setupWindow->isVisible())
-            {
-                setupWindow->action(gcn::ActionEvent(
-                    nullptr, "cancel"));
-            }
-            else if (dialog)
-            {
-                dialog->action(gcn::ActionEvent(nullptr, "ok"));
-            }
-        }
-        if (chatWindow && keyboard.isActionActive(
-            keyboard.KEY_TOGGLE_CHAT))
-        {
-            if (!InventoryWindow::isAnyInputFocused())
-            {
-                if (chatWindow->requestChatFocus())
-                    used = true;
-            }
-        }
-        if (dialog && !dialog->isInputFocused())
-        {
-            if (keyboard.isActionActive(keyboard.KEY_MOVE_UP)
-                || keyboard.isActionActive(keyboard.KEY_MOVE_DOWN))
-            {
-                dialog->refocus();
-            }
-        }
-    }
-
-    if (chatWindow && ((!chatWindow->isInputFocused() &&
-        !NpcDialog::isAnyInputFocused() &&
-        !InventoryWindow::isAnyInputFocused())
-        || (event.key.keysym.mod & KMOD_ALT)))
-    {
-        if (keyboard.isActionActive(keyboard.KEY_PREV_CHAT_TAB))
-        {
-            chatWindow->prevTab();
-            return true;
-        }
-        else if (keyboard.isActionActive(keyboard.KEY_NEXT_CHAT_TAB))
-        {
-            chatWindow->nextTab();
-            return true;
-        }
-        else if (keyboard.isActionActive(keyboard.KEY_PREV_SOCIAL_TAB))
-        {
-            socialWindow->prevTab();
-            return true;
-        }
-        else if (keyboard.isActionActive(keyboard.KEY_NEXT_SOCIAL_TAB))
-        {
-            socialWindow->nextTab();
-            return true;
-        }
-        else if (keyboard.isActionActive(keyboard.KEY_CLOSE_CHAT_TAB))
-        {
-            chatWindow->closeTab();
-            return true;
-        }
-    }
-
-    const int tKey = keyboard.getKeyIndex(event);
-    switch (tKey)
-    {
-        case KeyboardConfig::KEY_SCROLL_CHAT_UP:
-            if (chatWindow && chatWindow->isVisible())
-            {
-                chatWindow->scroll(-DEFAULT_CHAT_WINDOW_SCROLL);
-                used = true;
-            }
-            break;
-        case KeyboardConfig::KEY_SCROLL_CHAT_DOWN:
-            if (chatWindow && chatWindow->isVisible())
-            {
-                chatWindow->scroll(DEFAULT_CHAT_WINDOW_SCROLL);
-                used = true;
-                return true;
-            }
-            break;
-        case KeyboardConfig::KEY_WINDOW_HELP:
-            // In-game Help
-            if (helpWindow)
-            {
-                if (helpWindow->isVisible())
-                {
-                    helpWindow->setVisible(false);
-                }
-                else
-                {
-                    helpWindow->loadHelp("index");
-                    helpWindow->requestMoveToTop();
-                }
-            }
-            used = true;
-            break;
-        // Quitting confirmation dialog
-        case KeyboardConfig::KEY_QUIT:
-            if (!chatWindow || !chatWindow->isInputFocused())
-            {
-                if (viewport && viewport->isPopupMenuVisible())
-                {
-                    viewport->closePopupMenu();
-                }
-                else
-                {
-                    quitDialog = new QuitDialog(&quitDialog);
-                    quitDialog->requestMoveToTop();
-                }
-                return true;
-            }
-            break;
-        default:
-            break;
-    }
-
-    if (keyboard.isEnabled()
-        && (!chatWindow || !chatWindow->isInputFocused())
-        && !NpcDialog::isAnyInputFocused()
-        && (!player_node || !player_node->getAway()))
-    {
-        if (!gui->getFocusHandler()->getModalFocused()
-            && mValidSpeed
-            && (!setupWindow || !setupWindow->isVisible())
-            && !InventoryWindow::isAnyInputFocused())
-        {
-            switch (tKey)
-            {
-                case KeyboardConfig::KEY_QUICK_DROP:
-                    if (dropShortcut)
-                        dropShortcut->dropFirst();
-                    break;
-
-                case KeyboardConfig::KEY_QUICK_DROPN:
-                    if (dropShortcut)
-                        dropShortcut->dropItems();
-                    break;
-
-                case KeyboardConfig::KEY_SWITCH_QUICK_DROP:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeQuickDropCounter();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_MAGIC_INMA1:
-                    if (actorSpriteManager)
-                        actorSpriteManager->healTarget();
-                    setValidSpeed();
-                    break;
-
-                case KeyboardConfig::KEY_MAGIC_ITENPLZ:
-                    if (Net::getPlayerHandler()->canUseMagic()
-                        && PlayerInfo::getAttribute(MP) >= 3)
-                    {
-                        actorSpriteManager->itenplz();
-                    }
-                    setValidSpeed();
-                    break;
-
-                case KeyboardConfig::KEY_CRAZY_MOVES:
-                    if (player_node)
-                        player_node->crazyMove();
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_CRAZY_MOVES_TYPE:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeCrazyMoveType();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_PICKUP_TYPE:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changePickUpType();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_MOVE_TO_TARGET:
-                    if (player_node)
-                    {
-                        if (!keyboard.isActionActive(
-                            keyboard.KEY_TARGET_ATTACK)
-                            && !keyboard.isActionActive(keyboard.KEY_ATTACK))
-                        {
-                            player_node->moveToTarget();
-                        }
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_MOVE_TO_HOME:
-                    if (player_node)
-                    {
-                        if (!keyboard.isActionActive(
-                            keyboard.KEY_TARGET_ATTACK)
-                            && !keyboard.isActionActive(keyboard.KEY_ATTACK))
-                        {
-                            player_node->moveToHome();
-                        }
-                        setValidSpeed();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_SET_HOME:
-                    if (player_node)
-                        player_node->setHome();
-                    break;
-
-                case KeyboardConfig::KEY_INVERT_DIRECTION:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->invertDirection();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_ATTACK_WEAPON_TYPE:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeAttackWeaponType();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_ATTACK_TYPE:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeAttackType();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_FOLLOW_MODE:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeFollowMode();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_IMITATION_MODE:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeImitationMode();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_MAGIC_ATTACK:
-                    if (player_node)
-                        player_node->magicAttack();
-                    break;
-
-                case KeyboardConfig::KEY_SWITCH_MAGIC_ATTACK:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->switchMagicAttack();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_SWITCH_PVP_ATTACK:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->switchPvpAttack();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_MOVE_TO_TARGET:
-                    if (player_node)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            player_node->changeMoveToTargetType();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_COPY_EQUIPED_OUTFIT:
-                    if (outfitWindow)
-                        outfitWindow->copyFromEquiped();
-                    break;
-
-                case KeyboardConfig::KEY_DISABLE_GAME_MODIFIERS:
-                    if (player_node)
-                        player_node->switchGameModifiers();
-                    break;
-
-                case KeyboardConfig::KEY_CHANGE_AUDIO:
-                    sound.changeAudio();
-                    break;
-
-                case KeyboardConfig::KEY_AWAY:
-                    if (player_node)
-                    {
-                        player_node->changeAwayMode();
-                        player_node->updateStatus();
-                        setValidSpeed();
-                    }
-                    break;
-
-                case KeyboardConfig::KEY_CAMERA:
-                    if (player_node && viewport)
-                    {
-                        if (!player_node->getDisableGameModifiers())
-                            viewport->toggleCameraMode();
-                        setValidSpeed();
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        gcn::Window *requestedWindow = nullptr;
-
-        if (!NpcDialog::isAnyInputFocused()
-            && !InventoryWindow::isAnyInputFocused()
-            && !keyboard.isActionActive(keyboard.KEY_TARGET)
-            && !keyboard.isActionActive(keyboard.KEY_UNTARGET))
-        {
-            if (setupWindow && setupWindow->isVisible())
-            {
-                if (tKey == KeyboardConfig::KEY_WINDOW_SETUP)
-                {
-                    setupWindow->doCancel();
-                    used = true;
-                }
-            }
-            else
-            {
-                // Do not activate shortcuts if tradewindow is visible
-                if (itemShortcutWindow && tradeWindow
-                    && !tradeWindow->isVisible()
-                    && !setupWindow->isVisible())
-                {
-                    int num = itemShortcutWindow->getTabIndex();
-                    if (num >= 0 && num < SHORTCUT_TABS)
-                    {
-                        // Checks if any item shortcut is pressed.
-                        for (int i = KeyboardConfig::KEY_SHORTCUT_1;
-                              i <= KeyboardConfig::KEY_SHORTCUT_20;
-                              i ++)
-                        {
-                            if (tKey == i && !used)
-                            {
-                                itemShortcut[num]->useItem(
-                                    i - KeyboardConfig::KEY_SHORTCUT_1);
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                switch (tKey)
-                {
-                    case KeyboardConfig::KEY_PICKUP:
-                        if (player_node)
-                            player_node->pickUpItems();
-                        used = true;
-                        break;
-                    case KeyboardConfig::KEY_SIT:
-                        // Player sit action
-                        if (player_node)
-                        {
-                            if (keyboard.isActionActive(keyboard.KEY_EMOTE))
-                                player_node->updateSit();
-                            else
-                                player_node->toggleSit();
-                        }
-                        used = true;
-                        break;
-                    case KeyboardConfig::KEY_HIDE_WINDOWS:
-                        // Hide certain windows
-                        if (!chatWindow || !chatWindow->isInputFocused())
-                        {
-                            if (statusWindow)
-                                statusWindow->setVisible(false);
-                            if (inventoryWindow)
-                                inventoryWindow->setVisible(false);
-                            if (shopWindow)
-                                shopWindow->setVisible(false);
-                            if (skillDialog)
-                                skillDialog->setVisible(false);
-                            if (setupWindow)
-                                setupWindow->setVisible(false);
-                            if (equipmentWindow)
-                                equipmentWindow->setVisible(false);
-                            if (helpWindow)
-                                helpWindow->setVisible(false);
-                            if (debugWindow)
-                                debugWindow->setVisible(false);
-                            if (outfitWindow)
-                                outfitWindow->setVisible(false);
-                            if (dropShortcutWindow)
-                                dropShortcutWindow->setVisible(false);
-                            if (spellShortcutWindow)
-                                spellShortcutWindow->setVisible(false);
-                            if (botCheckerWindow)
-                                botCheckerWindow->setVisible(false);
-                            if (socialWindow)
-                                socialWindow->setVisible(false);
-                        }
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_STATUS:
-                        requestedWindow = statusWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_INVENTORY:
-                        requestedWindow = inventoryWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SHOP:
-                        requestedWindow = shopWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_EQUIPMENT:
-                        requestedWindow = equipmentWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SKILL:
-                        requestedWindow = skillDialog;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_KILLS:
-                        requestedWindow = killStats;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_MINIMAP:
-                        minimap->toggle();
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_CHAT:
-                        requestedWindow = chatWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SHORTCUT:
-                        requestedWindow = itemShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SETUP:
-                        requestedWindow = setupWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_DEBUG:
-                        requestedWindow = debugWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SOCIAL:
-                        requestedWindow = socialWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_EMOTE_SHORTCUT:
-                        requestedWindow = emoteShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_OUTFIT:
-                        requestedWindow = outfitWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_DROP:
-                        requestedWindow = dropShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_SPELLS:
-                        requestedWindow = spellShortcutWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_BOT_CHECKER:
-                        requestedWindow = botCheckerWindow;
-                        break;
-                    case KeyboardConfig::KEY_WINDOW_ONLINE:
-                        requestedWindow = whoIsOnline;
-                        break;
-                    case KeyboardConfig::KEY_SCREENSHOT:
-                        // Screenshot (picture, hence the p)
-                        saveScreenshot();
-                        used = true;
-                        break;
-                    case KeyboardConfig::KEY_PATHFIND:
-                        // Find path to mouse (debug purpose)
-                        if (!player_node || !player_node->
-                            getDisableGameModifiers())
-                        {
-                            if (viewport)
-                                viewport->toggleDebugPath();
-                            if (miniStatusWindow)
-                                miniStatusWindow->updateStatus();
-                            if (mCurrentMap)
-                                mCurrentMap->redrawMap();
-                            used = true;
-                        }
-                        break;
-                    case KeyboardConfig::KEY_TRADE:
-                    {
-                        // Toggle accepting of incoming trade requests
-                        unsigned int deflt = player_relations.getDefault();
-                        if (deflt & PlayerRelation::TRADE)
-                        {
-                            if (localChatTab)
-                            {
-                                localChatTab->chatLog(
-                                    _("Ignoring incoming trade requests"),
-                                    BY_SERVER);
-                            }
-                            deflt &= ~PlayerRelation::TRADE;
-                        }
-                        else
-                        {
-                            if (localChatTab)
-                            {
-                                localChatTab->chatLog(
-                                    _("Accepting incoming trade requests"),
-                                    BY_SERVER);
-                            }
-                            deflt |= PlayerRelation::TRADE;
-                        }
-
-                        player_relations.setDefault(deflt);
-
-                        used = true;
-                    }
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            if (requestedWindow)
-            {
-                requestedWindow->setVisible(!requestedWindow->isVisible());
-                if (requestedWindow->isVisible())
-                    requestedWindow->requestMoveToTop();
-                used = true;
-            }
-        }
-    }
-    return false;
-}
-
-void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
+void Game::handleMoveAndAttack()
 {
     // Moving player around
-    if (player_node->isAlive() && (!Being::isTalking()
-        || keyboard.getKeyIndex(event)
-        == KeyboardConfig::KEY_TALK)
+    if (player_node->isAlive() && !Being::isTalking()
         && chatWindow && !chatWindow->isInputFocused()
         && !InventoryWindow::isAnyInputFocused() && !quitDialog)
     {
@@ -1373,67 +760,8 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
             setValidSpeed();
             player_node->cancelFollow();
         }
-        else if (!keyboard.isActionActive(keyboard.KEY_EMOTE))
-        {
-            if (keyboard.isActionActive(keyboard.KEY_DIRECT_UP))
-            {
-                if (player_node->getDirection() != Being::UP)
-                {
-                    if (Client::limitPackets(PACKET_DIRECTION))
-                    {
-                        player_node->setDirection(Being::UP);
-                        Net::getPlayerHandler()->setDirection(Being::UP);
-                    }
-                }
-            }
-            else if (keyboard.isActionActive(keyboard.KEY_DIRECT_DOWN))
-            {
-                if (player_node->getDirection() != Being::DOWN)
-                {
-                    if (Client::limitPackets(PACKET_DIRECTION))
-                    {
-                        player_node->setDirection(Being::DOWN);
-                        Net::getPlayerHandler()->setDirection(Being::DOWN);
-                    }
-                }
-            }
-            else if (keyboard.isActionActive(keyboard.KEY_DIRECT_LEFT))
-            {
-                if (player_node->getDirection() != Being::LEFT)
-                {
-                    if (Client::limitPackets(PACKET_DIRECTION))
-                    {
-                        player_node->setDirection(Being::LEFT);
-                        Net::getPlayerHandler()->setDirection(Being::LEFT);
-                    }
-                }
-            }
-            else if (keyboard.isActionActive(keyboard.KEY_DIRECT_RIGHT))
-            {
-                if (player_node->getDirection() != Being::RIGHT)
-                {
-                    if (Client::limitPackets(PACKET_DIRECTION))
-                    {
-                        player_node->setDirection(Being::RIGHT);
-                        Net::getPlayerHandler()->setDirection(Being::RIGHT);
-                    }
-                }
-            }
-        }
 
-        if (keyboard.isActionActive(keyboard.KEY_EMOTE) && direction != 0)
-        {
-            if (player_node->getDirection() != direction)
-            {
-                if (Client::limitPackets(PACKET_DIRECTION))
-                {
-                    player_node->setDirection(direction);
-                    Net::getPlayerHandler()->setDirection(direction);
-                }
-            }
-//            direction = 0;
-        }
-        else
+        if (!keyboard.isActionActive(keyboard.KEY_EMOTE) || direction == 0)
         {
             if (!viewport->getCameraMode())
             {
@@ -1460,9 +788,7 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
         if (joystick && joystick->buttonPressed(0))
             joyAttack = true;
 
-        if ((((player_node->getAttackType() == 0
-            && player_node->getFollow().empty()) || wasDown)
-            || joyAttack) && mValidSpeed)
+        if ((player_node->getFollow().empty() || joyAttack) && mValidSpeed)
         {
             // Attacking monsters
             if (keyboard.isActionActive(keyboard.KEY_ATTACK))
@@ -1473,7 +799,8 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
 
             if ((keyboard.isActionActive(keyboard.KEY_TARGET_ATTACK)
                 || joyAttack)
-                && !keyboard.isActionActive(keyboard.KEY_MOVE_TO_TARGET))
+                /*&& !keyboard.isActionActive(keyboard.KEY_MOVE_TO_TARGET)*/
+                )
             {
                 Being *target = nullptr;
 
@@ -1532,21 +859,6 @@ void Game::handleMoveAndAttack(SDL_Event &event, bool wasDown)
             else
             {
                 mLastTarget = ActorSprite::UNKNOWN; // Reset last target
-            }
-        }
-
-        // Talk to the nearest NPC if 't' pressed
-        if (wasDown && keyboard.getKeyIndex(event) == KeyboardConfig::KEY_TALK
-            && !keyboard.isActionActive(keyboard.KEY_EMOTE))
-        {
-            Being *target = player_node->getTarget();
-
-            if (target)
-            {
-                if (target->canTalk())
-                    target->talkTo();
-                else if (target->getType() == Being::PLAYER)
-                    new BuySellDialog(target->getName());
             }
         }
 
@@ -1683,40 +995,8 @@ void Game::handleInput()
                 return;
             }
 
-            if (chatWindow && !chatWindow->isInputFocused()
-                && keyboard.isActionActive(keyboard.KEY_RIGHT_CLICK))
-            {
-                int mouseX, mouseY;
-                SDL_GetMouseState(&mouseX, &mouseY);
-
-                gcn::MouseEvent event2(viewport, false, false, false, false,
-                        0, gcn::MouseEvent::RIGHT, mouseX, mouseY, 1);
-                if (viewport)
-                    viewport->mousePressed(event2);
-                continue;
-            }
-
-            // Mode switch to emotes
-            if (keyboard.isActionActive(keyboard.KEY_EMOTE))
-            {
-                // Emotions
-                int emotion = keyboard.getKeyEmoteOffset(event);
-                if (emotion)
-                {
-                    if (emoteShortcut)
-                        emoteShortcut->useEmote(emotion);
-//                    used = true;
-                    setValidSpeed();
-                    return;
-                }
-            }
-
-            if (handleOutfitsKeys(event, used))
-                continue;
-
-            if (handleSwitchKeys(event, used))
+            if (inputManager.handleKeyEvent(event))
                 return;
-
         }
         // Active event
         else if (event.type == SDL_ACTIVEEVENT)
@@ -1758,7 +1038,7 @@ void Game::handleInput()
         return;
     }
 
-    handleMoveAndAttack(event, wasDown);
+    handleMoveAndAttack();
 }
 
 /**

@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "botcheckerwindow.h"
+#include "gui/botcheckerwindow.h"
 
 #include <SDL.h>
 #include <SDL_thread.h>

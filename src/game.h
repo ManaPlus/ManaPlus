@@ -78,11 +78,7 @@ class Game
 
         void handleInput();
 
-        bool handleOutfitsKeys(SDL_Event &event, bool &used);
-
-        bool handleSwitchKeys(SDL_Event &event, bool &used);
-
-        void handleMoveAndAttack(SDL_Event &event, bool wasDown);
+        void handleMoveAndAttack();
 
         void handleActive(SDL_Event &event);
 
@@ -110,8 +106,12 @@ class Game
 
         void videoResized(int width, int height);
 
-    private:
+        bool getValidSpeed()
+        { return mValidSpeed; }
 
+        static bool saveScreenshot();
+
+    private:
         void updateHistory(SDL_Event &event);
 
         void checkKeys();

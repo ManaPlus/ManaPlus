@@ -483,6 +483,8 @@ SET(SRCS
     test/testlauncher.h
     test/testmain.cpp
     test/testmain.h
+    actionmanager.cpp
+    actionmanager.h
     actor.cpp
     actor.h
     actorsprite.cpp
@@ -556,6 +558,10 @@ SET(SRCS
     spellshortcut.h
     textcommand.cpp
     textcommand.h
+    inputmanager.cpp
+    inputmanager.h
+    inputevent.cpp
+    inputevent.h
     joystick.cpp
     joystick.h
     keyboardconfig.cpp

@@ -23,10 +23,12 @@
 #include "gui/outfitwindow.h"
 
 #include "configuration.h"
+#include "emoteshortcut.h"
 #include "equipment.h"
 #include "graphics.h"
 #include "inventory.h"
 #include "item.h"
+#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
 #include "playerinfo.h"
@@ -497,37 +499,11 @@ void OutfitWindow::unequipNotInOutfit(int outfit)
     }
 }
 
-static const SDLKey numsTbl[] =
-{
-    SDLK_1, SDLK_2, SDLK_3, SDLK_4, SDLK_5, SDLK_6, SDLK_7, SDLK_8, SDLK_9,
-    SDLK_0, SDLK_MINUS, SDLK_EQUALS, SDLK_BACKSPACE, SDLK_INSERT, SDLK_HOME,
-    SDLK_q, SDLK_w, SDLK_e, SDLK_r, SDLK_t, SDLK_y, SDLK_u, SDLK_i, SDLK_o,
-    SDLK_p, SDLK_LEFTBRACKET, SDLK_RIGHTBRACKET, SDLK_BACKSLASH, SDLK_a,
-    SDLK_s, SDLK_d, SDLK_f, SDLK_g, SDLK_h, SDLK_j, SDLK_k, SDLK_l,
-    SDLK_SEMICOLON, SDLK_QUOTE, SDLK_z, SDLK_x, SDLK_c, SDLK_v, SDLK_b, SDLK_n,
-    SDLK_m, SDLK_COMMA, SDLK_PERIOD, SDLK_SLASH
-};
-
-int OutfitWindow::keyToNumber(SDLKey key) const
-{
-    for (unsigned f = 0; f < sizeof(numsTbl) / sizeof(SDLKey); f ++)
-    {
-        if (numsTbl[f] == key)
-            return f;
-    }
-    return -1;
-}
-
-SDLKey OutfitWindow::numberToKey(unsigned number) const
-{
-    if (number >= sizeof(numsTbl) / sizeof(SDLKey))
-        return SDLK_UNKNOWN;
-    return numsTbl[number];
-}
-
 std::string OutfitWindow::keyName(int number)
 {
-    return SDL_GetKeyName(numberToKey(number));
+    if (number < 0 || number >= SHORTCUT_EMOTES)
+        return "";
+    return keyboard.getKeyStringLong(KeyboardConfig::KEY_EMOTE_1 + number);
 }
 
 void OutfitWindow::next()
