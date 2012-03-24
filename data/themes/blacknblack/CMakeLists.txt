@@ -26,18 +26,10 @@ SET (FILES
     selection.png
     slider.png
     slider_hilight.png
-    speechbubble.xml
     sticky_button.png
     tab.png
     tab_hilight.png
     tabselected.png
-    target-cursor-blue-l.png
-    target-cursor-blue-m.png
-    target-cursor-blue-s.png
-    target-cursor-red-l.png
-    target-cursor-red-m.png
-    target-cursor-red-s.png
-    unknown-item.png
     vscroll_down_default.png
     vscroll_down_highlight.png
     vscroll_down_pressed.png
@@ -47,7 +39,6 @@ SET (FILES
     vscroll_up_highlight.png
     vscroll_up_pressed.png
     window.png
-    window.xml
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/themes/blacknblack)
