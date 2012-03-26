@@ -20,7 +20,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef KEYBOARDDATA_H
+#define KEYBOARDDATA_H
+
+#include "actionmanager.h"
+#include "inputmanager.h"
+#include "keyboardconfig.h"
+#include "localconsts.h"
+
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
+
+#include <string>
 
 struct KeyData
 {
@@ -1003,3 +1014,5 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::KEY_NO_VALUE, 50,
         COND_DEFAULT}
 };
+
+#endif

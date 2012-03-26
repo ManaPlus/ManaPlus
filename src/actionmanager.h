@@ -109,6 +109,4 @@ namespace ActionManager
     decHandler(didYouKnowWindowShow);
 }
 
-typedef bool (*ActionFuncPtr) (InputEvent &event);
-
 #endif

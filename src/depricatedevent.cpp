@@ -39,7 +39,8 @@ DepricatedEvent::~DepricatedEvent()
     }
 }
 
-void DepricatedEvent::setInt(const std::string &key, int value) throw (BadDepricatedEvent)
+void DepricatedEvent::setInt(const std::string &key, int value)
+                             throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
         throw KEY_ALREADY_EXISTS;
@@ -47,7 +48,8 @@ void DepricatedEvent::setInt(const std::string &key, int value) throw (BadDepric
     mData[key] = new IntData(value);
 }
 
-int DepricatedEvent::getInt(const std::string &key) const throw (BadDepricatedEvent)
+int DepricatedEvent::getInt(const std::string &key) const
+                            throw (BadDepricatedEvent)
 {
     VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())
@@ -82,7 +84,8 @@ const std::string &DepricatedEvent::getString(const std::string &key)
 }
 
 
-void DepricatedEvent::setFloat(const std::string &key, double value) throw (BadDepricatedEvent)
+void DepricatedEvent::setFloat(const std::string &key, double value)
+                               throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
         throw KEY_ALREADY_EXISTS;
@@ -90,7 +93,8 @@ void DepricatedEvent::setFloat(const std::string &key, double value) throw (BadD
     mData[key] = new FloatData(value);
 }
 
-double DepricatedEvent::getFloat(const std::string &key) const throw (BadDepricatedEvent)
+double DepricatedEvent::getFloat(const std::string &key) const
+                                 throw (BadDepricatedEvent)
 {
     VariableMap::const_iterator it = mData.find(key);
     if (it == mData.end())

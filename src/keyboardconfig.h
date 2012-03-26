@@ -26,10 +26,11 @@
 #include <SDL_types.h>
 #include <SDL_keyboard.h>
 
+#include "inputevent.h"
+
+#include <map>
 #include <string>
 #include <vector>
-
-#include "actionmanager.h"
 
 union SDL_Event;
 

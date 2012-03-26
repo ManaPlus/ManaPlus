@@ -950,7 +950,6 @@ void Game::handleInput()
     if (joystick)
         joystick->update();
 
-    bool wasDown(false);
     // Events
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -968,8 +967,6 @@ void Game::handleInput()
         // Keyboard events (for discontinuous keys)
         else if (event.type == SDL_KEYDOWN)
         {
-            wasDown = true;
-
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
             {
