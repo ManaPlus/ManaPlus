@@ -2,55 +2,39 @@
 
 cd ..
 
-#may be
-#-Wshadow -Waggregate-return -Winline 
-
-#for feature
-#-Wstrict-overflow=4 -Wfloat-equal
-#-Wunsafe-loop-optimizations
-#-Wnon-virtual-dtor
-#-Woverloaded-virtual
-#-Wformat=2
-#-Wswitch-enum
-
-#for better code
-# -Weffc++
-
-#need fix: -Wold-style-cast -Wconversion
-#prof -pg
-
 dir=`pwd`
 
-export CC=gcc-4.5
-export CXX=g++-4.5
+export CC=gcc-4.7
+export CXX=g++-4.7
 
 export LANG=C
-export CXXFLAGS="-Wunreachable-code -Wmissing-field-initializers \
--Wabi -Wdisabled-optimization -Wuninitialized \
+
+export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls \
+-Wpacked-bitfield-compat -Wtrampolines \
+-Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
+-fstrict-aliasing -Wunreachable-code -Wabi -Wdisabled-optimization \
 -Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
 -Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
 -Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
--Wctor-dtor-privacy -Wstrict-null-sentinel \
--Wunused-parameter -Wlogical-op \
--Wempty-body -Wsign-compare -Wclobbered -Wcast-align -Wcast-qual \
--Wtype-limits -Wpointer-arith -Wundef -Wmissing-include-dirs \
--Wignored-qualifiers -Winit-self -pedantic -Wall -ggdb3 -O0 -pipe \
--fno-default-inline -fno-inline"
+-Wctor-dtor-privacy -Wstrict-null-sentinel -Wlogical-op \
+-Wcast-align -Wpointer-arith -Wundef \
+-Wmissing-include-dirs -Winit-self -pedantic -Wall -ggdb3 -O0 -pipe \
+-Wpacked -Wextra -Wstrict-overflow=1 -Wunknown-pragmas -Wwrite-strings \
+-Wstack-protector -Wshadow -Wunused-macros -Wsynth \
+-Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
+-Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
+-Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
+-Wdelete-non-virtual-dtor -Wmaybe-uninitialized -Wunused-local-typedefs \
+-Wvector-operation-performance -Wfree-nonheap-object -Winvalid-memory-model \
+-Wnarrowing -Wzero-as-null-pointer-constant"
 
 autoreconf -i
 ./configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
---mandir=$dir/run/share/man \
---enable-memdebug=no \
---with-internalguichan=yes \
---enable-tcmalloc=yes \
---enable-googleprofiler=yes
-
-#--without-librt
+--mandir=$dir/run/share/man
 
 cd po
-#make -j5 update-po 2>../build/make1.log
 make -j5 update-gmo 2>../build/make1.log
 cd ..
 make -j5 2>build/make2.log
