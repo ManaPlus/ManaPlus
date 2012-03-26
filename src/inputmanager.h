@@ -40,6 +40,7 @@ enum KeyCondition
     COND_NONPCINPUT = 128,     // npc input field inactive
     COND_EMODS = 256,          // game modifiers enabled
     COND_NOTARGET = 512,       // no target/untarget keys pressed
+    COND_SHORTCUT = 2 + 4 + 16 + 512, // flags for shortcut keys
     COND_GAME = 2 + 4 + 8 + 16 + 64, // main game key
     COND_GAME2 = 2 + 8 + 16 + 64
 };
