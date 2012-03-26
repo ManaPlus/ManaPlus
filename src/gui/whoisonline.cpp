@@ -630,6 +630,7 @@ void WhoIsOnline::logic()
             setCaption(_("Who Is Online - error"));
             mUpdateButton->setEnabled(true);
             mUpdateTimer = cur_time + 240;
+            mDownloadComplete = true;
             updateSize();
             break;
         case UPDATE_LIST:
