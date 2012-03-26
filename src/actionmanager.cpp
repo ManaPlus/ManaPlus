@@ -83,7 +83,7 @@ impHandler0(moveUp)
     if (NpcDialog *dialog = NpcDialog::getActive())
     {
         dialog->refocus();
-        return true;
+        return false;
     }
     if (keyboard.isActionActive(keyboard.KEY_EMOTE))
         return directUp(event);
@@ -95,7 +95,7 @@ impHandler0(moveDown)
     if (NpcDialog *dialog = NpcDialog::getActive())
     {
         dialog->refocus();
-        return true;
+        return false;
     }
     if (keyboard.isActionActive(keyboard.KEY_EMOTE))
         return directDown(event);
