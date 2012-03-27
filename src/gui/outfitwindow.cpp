@@ -34,6 +34,7 @@
 #include "playerinfo.h"
 
 #include "gui/chatwindow.h"
+#include "gui/inventorywindow.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"
 
@@ -422,7 +423,9 @@ void OutfitWindow::mousePressed(gcn::MouseEvent &event)
     {
         mItems[mCurrentOutfit][index] = mItemSelected;
         mItemColors[mCurrentOutfit][index] = mItemColorSelected;
-//        mItemSelected = -1;
+
+        if (inventoryWindow)
+            inventoryWindow->unselectItem();
     }
     else if (mItems[mCurrentOutfit][index])
     {

@@ -78,6 +78,11 @@ class InventoryWindow : public Window,
         Item* getSelectedItem() const;
 
         /**
+         * Unselect item
+         */
+        void unselectItem();
+
+        /**
          * Handles closing of the window
          */
         void widgetHidden(const gcn::Event &event);

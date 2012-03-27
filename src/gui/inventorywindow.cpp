@@ -373,6 +373,11 @@ Item *InventoryWindow::getSelectedItem() const
     return mItems->getSelectedItem();
 }
 
+void InventoryWindow::unselectItem()
+{
+    mItems->selectNone();
+}
+
 void InventoryWindow::widgetHidden(const gcn::Event &event)
 {
     Window::widgetHidden(event);
