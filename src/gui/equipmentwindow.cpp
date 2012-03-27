@@ -58,6 +58,7 @@ static const int BOX_WIDTH = 36;
 static const int BOX_HEIGHT = 36;
 static const int BOX_X_PAD = (BOX_WIDTH - 32) / 2;
 static const int BOX_Y_PAD = (BOX_HEIGHT - 32) / 2;
+static const int BOX_COUNT = 13;
 
 EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
                                  bool foring):
@@ -88,8 +89,8 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
 
     setDefaultSize(180, 345, ImageRect::CENTER);
 
-    mBoxes.reserve(13);
-    for (int f = 0; f < 13; f ++)
+    mBoxes.reserve(BOX_COUNT);
+    for (int f = 0; f < BOX_COUNT; f ++)
         mBoxes.push_back(nullptr);
 
     fillBoxes();
