@@ -340,6 +340,10 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                 repeat --;
             }
         }
+        else if (xmlNameEqual(frameNode, "pause"))
+        {
+            animation->addPause(delay, rand);
+        }
         else if (xmlNameEqual(frameNode, "end"))
         {
             animation->addTerminator(rand);

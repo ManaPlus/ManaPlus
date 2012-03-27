@@ -40,7 +40,8 @@ struct Frame
         ANIMATION = 0,
         JUMP,
         GOTO,
-        LABEL
+        LABEL,
+        PAUSE
     };
     Image *image;
     int delay;
@@ -101,6 +102,8 @@ class Animation
         void addLabel(std::string name);
 
         void addGoto(std::string name, int rand);
+
+        void addPause(int delay, int rand);
 
         void setLastFrameDelay(int delay);
 

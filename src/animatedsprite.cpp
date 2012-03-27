@@ -146,7 +146,8 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
     mFrameTime += time;
 
     while ((mFrameTime > static_cast<unsigned>(mFrame->delay)
-           && mFrame->delay > 0) || mFrame->type != Frame::ANIMATION)
+           && mFrame->delay > 0) || (mFrame->type != Frame::ANIMATION
+           && mFrame->type != Frame::PAUSE))
     {
         bool fail(true);
         mFrameTime -= static_cast<unsigned>(mFrame->delay);

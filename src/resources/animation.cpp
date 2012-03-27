@@ -70,6 +70,12 @@ void Animation::addGoto(std::string name, int rand)
     mFrames.push_back(frame);
 }
 
+void Animation::addPause(int delay, int rand)
+{
+    Frame frame = { nullptr, delay, 0, 0, rand, Frame::PAUSE, "" };
+    mFrames.push_back(frame);
+}
+
 void Animation::setLastFrameDelay(int delay)
 {
     FramesRevIter it = mFrames.rbegin();
