@@ -34,6 +34,7 @@
 #include <vector>
 
 class Action;
+class Animation;
 class ImageSet;
 
 struct SpriteReference
@@ -126,9 +127,15 @@ class SpriteDef : public Resource
          * Converts a string into a SpriteDirection enum.
          */
         static SpriteDirection
+
         makeSpriteDirection(const std::string &direction);
 
         void addAction(unsigned hp, std::string name, Action *action);
+
+        bool addSequence(int start, int end, int delay,
+                         int offsetX, int offsetY, int variant_offset,
+                         int repeat, int rand, ImageSet *imageSet,
+                         Animation *animation);
 
     private:
         /**

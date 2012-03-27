@@ -304,13 +304,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
         {
             const int start = XML::getProperty(frameNode, "start", -1);
             const int end = XML::getProperty(frameNode, "end", -1);
-
-            if (start < 0 || end < 0)
-            {
-                logger->log1("No valid value for 'start' or 'end'");
-                continue;
-            }
-
+            const std::string value = XML::getProperty(frameNode, "value", "");
             int repeat = XML::getProperty(frameNode, "repeat", 1);
 
             if (repeat < 1)
@@ -319,25 +313,47 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
                 continue;
             }
 
-            while (repeat > 0)
+            if (value.empty())
             {
-                int pos = start;
-                while (end >= pos)
+                if (addSequence(start, end, delay, offsetX, offsetY,
+                    variant_offset, repeat, rand, imageSet, animation))
                 {
-                    Image *img = imageSet->get(pos + variant_offset);
-
-                    if (!img)
-                    {
-                        logger->log("No image at index %d",
-                            pos + variant_offset);
-                        pos ++;
-                        continue;
-                    }
-
-                    animation->addFrame(img, delay, offsetX, offsetY, rand);
-                    pos ++;
+                    continue;
                 }
-                repeat --;
+
+            }
+            else
+            {
+                std::vector<std::string> vals;
+                splitToStringVector(vals, value, ',');
+                std::vector<std::string>::const_iterator it = vals.begin();
+                std::vector<std::string>::const_iterator it_end = vals.end();
+                for (; it != it_end; ++ it)
+                {
+                    std::string str = *it;
+                    size_t idx = str.find("-");
+                    if (str == "p")
+                    {
+                        animation->addPause(delay, rand);
+                    }
+                    else if (idx != std::string::npos)
+                    {
+                        int v1 = atoi(str.substr(0, idx).c_str());
+                        int v2 = atoi(str.substr(idx + 1).c_str());
+                        addSequence(v1, v2, delay, offsetX, offsetY,
+                            variant_offset, repeat, rand, imageSet, animation);
+                    }
+                    else
+                    {
+                        Image *img = imageSet->get(atoi(
+                            str.c_str()) + variant_offset);
+                        if (img)
+                        {
+                            animation->addFrame(img, delay,
+                                offsetX, offsetY, rand);
+                        }
+                    }
+                }
             }
         }
         else if (xmlNameEqual(frameNode, "pause"))
@@ -460,4 +476,66 @@ void SpriteDef::addAction(unsigned hp, std::string name, Action *action)
         mActions[hp] = new ActionMap();
 
     (*mActions[hp])[name] = action;
+}
+
+bool SpriteDef::addSequence(int start, int end, int delay,
+                            int offsetX, int offsetY, int variant_offset,
+                            int repeat, int rand, ImageSet *imageSet,
+                            Animation *animation)
+{
+    if (start < 0 || end < 0)
+    {
+        logger->log1("No valid value for 'start' or 'end'");
+        return true;
+    }
+
+    if (start <= end)
+    {
+        while (repeat > 0)
+        {
+            int pos = start;
+            while (end >= pos)
+            {
+                Image *img = imageSet->get(pos + variant_offset);
+
+                if (!img)
+                {
+                    logger->log("No image at index %d",
+                        pos + variant_offset);
+                    pos ++;
+                    continue;
+                }
+
+                animation->addFrame(img, delay,
+                    offsetX, offsetY, rand);
+                pos ++;
+            }
+            repeat --;
+        }
+    }
+    else
+    {
+        while (repeat > 0)
+        {
+            int pos = start;
+            while (end <= pos)
+            {
+                Image *img = imageSet->get(pos + variant_offset);
+
+                if (!img)
+                {
+                    logger->log("No image at index %d",
+                        pos + variant_offset);
+                    pos ++;
+                    continue;
+                }
+
+                animation->addFrame(img, delay,
+                    offsetX, offsetY, rand);
+                pos --;
+            }
+            repeat --;
+        }
+    }
+    return false;
 }
