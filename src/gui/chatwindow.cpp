@@ -94,6 +94,8 @@ class ChatInput : public TextField, public gcn::FocusListener
         void focusLost(const gcn::Event &event A_UNUSED)
         {
             processVisible(false);
+            if (chatWindow)
+                chatWindow->updateVisibility();
         }
 
         void processVisible(bool n)
@@ -157,7 +159,9 @@ ChatWindow::ChatWindow():
     Window(_("Chat"), false, nullptr, "chat.xml"),
     mTmpVisible(false),
     mChatHistoryIndex(0),
-    mGMLoaded(false)
+    mGMLoaded(false),
+    mHaveMouse(false),
+    mAutoHide(false)
 {
     listen(CHANNEL_NOTICES);
     listen(CHANNEL_ATTRIBUTES);
@@ -222,10 +226,14 @@ ChatWindow::ChatWindow():
     initTradeFilter();
     loadCustomList();
     parseHighlights();
+
+    config.addListener("autohideChat", this);
+    mAutoHide = config.getBoolValue("autohideChat");
 }
 
 ChatWindow::~ChatWindow()
 {
+    config.removeListener("autohideChat", this);
     saveState();
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
@@ -535,6 +543,7 @@ bool ChatWindow::requestChatFocus()
 
     // Give focus to the chat input
     mChatInput->processVisible(true);
+    unHideWindow();
     mChatInput->requestFocus();
     return true;
 }
@@ -1606,4 +1615,58 @@ void ChatWindow::copyToClipboard(int x, int y)
 
     std::string str = text->getTextAtPos(x, y);
     sendBuffer(str);
+}
+
+void ChatWindow::optionChanged(const std::string &name)
+{
+    if (name == "autohideChat")
+        mAutoHide = config.getBoolValue("autohideChat");
+}
+
+void ChatWindow::mouseMoved(gcn::MouseEvent &event)
+{
+    mHaveMouse = true;
+    gcn::Window::mouseMoved(event);
+}
+
+void ChatWindow::mouseEntered(gcn::MouseEvent& mouseEvent)
+{
+    mHaveMouse = true;
+    gcn::Window::mouseEntered(mouseEvent);
+}
+
+void ChatWindow::mouseExited(gcn::MouseEvent& mouseEvent)
+{
+    updateVisibility();
+    gcn::Window::mouseExited(mouseEvent);
+}
+
+void ChatWindow::draw(gcn::Graphics* graphics)
+{
+    if (!mAutoHide || mHaveMouse)
+        Window::draw(graphics);
+}
+
+void ChatWindow::updateVisibility()
+{
+    int mouseX = 0;
+    int mouseY = 0;
+    int x = 0;
+    int y = 0;
+    SDL_GetMouseState(&mouseX, &mouseY);
+    getAbsolutePosition(x, y);
+    if (mChatInput->isVisible())
+    {
+        mHaveMouse = true;
+    }
+    else
+    {
+        mHaveMouse = mouseX >= x && mouseX <= x + getWidth()
+            && mouseY >= y && mouseY <= y + getHeight();
+    }
+}
+
+void ChatWindow::unHideWindow()
+{
+    mHaveMouse = true;
 }

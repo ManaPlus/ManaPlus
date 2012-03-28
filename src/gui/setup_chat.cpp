@@ -51,6 +51,12 @@ Setup_Chat::Setup_Chat()
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
 
+    new SetupItemLabel(_("Window"), "", this);
+
+    new SetupItemCheckBox(_("Auto hide chat window."), "",
+        "autohideChat", this, "autohideChatEvent");
+
+
     new SetupItemLabel(_("Colors"), "", this);
 
     new SetupItemCheckBox(_("Remove colors from received chat messages"), "",

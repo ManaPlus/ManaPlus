@@ -240,6 +240,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "soundrequest", "attention");
     AddDEF(configData, "soundguild", "newmessage");
     AddDEF(configData, "autohideButtons", true);
+    AddDEF(configData, "autohideChat", false);
     return configData;
 }
 

@@ -311,9 +311,17 @@ void ChatTab::chatLog(std::string line, Own own,
             && !Client::getInputFocused()))))
         {
             if (own == BY_GM)
+            {
+                if (chatWindow)
+                    chatWindow->unHideWindow();
                 sound.playGuiSound(SOUND_GLOBAL);
+            }
             else if (own != BY_SERVER)
+            {
+                if (chatWindow)
+                    chatWindow->unHideWindow();
                 playNewMessageSound();
+            }
         }
     }
 }

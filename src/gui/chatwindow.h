@@ -25,6 +25,8 @@
 
 #include "listener.h"
 
+#include "configlistener.h"
+
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -80,7 +82,8 @@ struct CHATLOG
 class ChatWindow : public Window,
                    public gcn::ActionListener,
                    public gcn::KeyListener,
-                   public Listener
+                   public Listener,
+                   public ConfigListener
 {
     public:
         /**
@@ -262,6 +265,20 @@ class ChatWindow : public Window,
 
         void copyToClipboard(int x, int y);
 
+        void optionChanged(const std::string &name);
+
+        void mouseEntered(gcn::MouseEvent& mouseEvent);
+
+        void mouseMoved(gcn::MouseEvent &event);
+
+        void mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED);
+
+        void draw(gcn::Graphics* graphics);
+
+        void updateVisibility();
+
+        void unHideWindow();
+
     protected:
         friend class ChatTab;
         friend class WhisperTab;
@@ -333,6 +350,8 @@ class ChatWindow : public Window,
         std::list<std::string> mAwayLog;
         std::vector<std::string> mHighlights;
         bool mGMLoaded;
+        bool mHaveMouse;
+        bool mAutoHide;
 };
 
 extern ChatWindow *chatWindow;
