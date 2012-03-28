@@ -1,3 +1,4 @@
+src/actionmanager.cpp
 src/actorspritemanager.cpp
 src/being.cpp
 src/client.cpp
@@ -77,6 +78,7 @@ src/gui/windowmenu.cpp
 src/gui/worldselectdialog.cpp
 src/inventory.cpp
 src/keyboardconfig.cpp
+src/keyboarddata.h
 src/localplayer.cpp
 src/logger.h
 src/main.cpp
