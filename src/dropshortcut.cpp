@@ -28,7 +28,6 @@
 #include "localplayer.h"
 #include "playerinfo.h"
 
-#include "gui/chatwindow.h"
 #include "gui/widgets/chattab.h"
 
 #include "net/inventoryhandler.h"

@@ -62,7 +62,8 @@ int DepricatedEvent::getInt(const std::string &key) const
 }
 
 void DepricatedEvent::setString(const std::string &key,
-                      const std::string &value) throw (BadDepricatedEvent)
+                                const std::string &value)
+                                throw (BadDepricatedEvent)
 {
     if (mData.find(key) != mData.end())
         throw KEY_ALREADY_EXISTS;
