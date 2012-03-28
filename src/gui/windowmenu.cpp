@@ -58,7 +58,9 @@ extern Window *botCheckerWindow;
 extern Window *socialWindow;
 
 WindowMenu::WindowMenu():
-    mEmotePopup(nullptr)
+    mEmotePopup(nullptr),
+    mHaveMouse(false),
+    mAutoHide(true)
 {
     int x = 0, h = 0;
 
@@ -110,10 +112,15 @@ WindowMenu::WindowMenu():
 
     addMouseListener(this);
     setVisible(true);
+
+    config.addListener("autohideButtons", this);
+    mAutoHide = config.getBoolValue("autohideButtons");
 }
 
 WindowMenu::~WindowMenu()
 {
+    config.removeListener("autohideButtons", this);
+
     delete mTextPopup;
     mTextPopup = nullptr;
     mButtonNames.clear();
@@ -276,6 +283,8 @@ void WindowMenu::mousePressed(gcn::MouseEvent &event)
 
 void WindowMenu::mouseMoved(gcn::MouseEvent &event)
 {
+    mHaveMouse = true;
+
     if (!mTextPopup)
         return;
 
@@ -309,6 +318,7 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
 
 void WindowMenu::mouseExited(gcn::MouseEvent& mouseEvent A_UNUSED)
 {
+    mHaveMouse = false;
     if (!mTextPopup)
         return;
 
@@ -387,4 +397,16 @@ void WindowMenu::saveButtons()
     }
     for (int f = i; f < 15; f ++)
         config.deleteKey("windowmenu" + toString(f));
+}
+
+void WindowMenu::drawChildren(gcn::Graphics* graphics)
+{
+    if (!mAutoHide || mHaveMouse)
+        Container::drawChildren(graphics);
+}
+
+void WindowMenu::optionChanged(const std::string &name)
+{
+    if (name == "autohideButtons")
+        mAutoHide = config.getBoolValue("autohideButtons");
 }

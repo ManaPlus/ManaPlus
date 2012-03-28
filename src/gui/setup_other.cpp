@@ -162,6 +162,11 @@ Setup_Other::Setup_Other()
         "guild support"), "", "enableGuildBot", this,
         "enableGuildBotEvent", false);
 
+    new SetupItemLabel(_("Windows"), "", this);
+
+    new SetupItemCheckBox(_("Auto hide shortcuts buttons."), "",
+        "autohideButtons", this, "autohideButtonsEvent");
+
     new SetupItemLabel(_("Other"), "", this);
 
     new SetupItemCheckBox(_("Enable server side attack"), "",

@@ -23,6 +23,8 @@
 #ifndef WINDOWMENU_H
 #define WINDOWMENU_H
 
+#include "configlistener.h"
+
 #include "gui/widgets/container.h"
 #include "gui/widgets/button.h"
 
@@ -44,12 +46,14 @@ class TextPopup;
  * \ingroup Interface
  */
 class WindowMenu : public Container,
+                   public ConfigListener,
                    public gcn::ActionListener,
                    public gcn::SelectionListener,
                    public gcn::MouseListener
 {
     public:
         WindowMenu();
+
         ~WindowMenu();
 
         void action(const gcn::ActionEvent &event);
@@ -74,6 +78,10 @@ class WindowMenu : public Container,
 
         void saveButtons();
 
+        void drawChildren(gcn::Graphics* graphics);
+
+        void optionChanged(const std::string &name);
+
     private:
         inline void addButton(const char* text, std::string description,
                               int &x, int &h, int key);
@@ -84,6 +92,8 @@ class WindowMenu : public Container,
         TextPopup *mTextPopup;
         std::vector <gcn::Button*> mButtons;
         std::map <std::string, gcn::Button*> mButtonNames;
+        bool mHaveMouse;
+        bool mAutoHide;
 };
 
 extern WindowMenu *windowMenu;
