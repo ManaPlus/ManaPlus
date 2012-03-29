@@ -134,9 +134,9 @@ int compareStrI(const std::string &a, const std::string &b);
  */
 bool isWordSeparator(char chr);
 
-unsigned long findI(std::string str, std::string subStr);
+size_t findI(std::string str, std::string subStr);
 
-unsigned long findI(std::string text, StringVect &list);
+size_t findI(std::string text, StringVect &list);
 
 const std::string encodeStr(unsigned int value, unsigned int size = 0);
 

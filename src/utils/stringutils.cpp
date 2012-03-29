@@ -196,14 +196,14 @@ const std::string findSameSubstringI(const std::string &s1,
     return s1.substr(0, minLength);
 }
 
-unsigned long findI(std::string str, std::string subStr)
+size_t findI(std::string str, std::string subStr)
 {
     str = toLower(str);
     subStr = toLower(subStr);
     return str.find(subStr);
 }
 
-unsigned long findI(std::string text, StringVect &list)
+size_t findI(std::string text, StringVect &list)
 {
     std::string str = toLower(text);
     unsigned long idx;

@@ -36,7 +36,7 @@ class EquipBackend : public Equipment::Backend
 {
     public:
         EquipBackend()
-        { memset(mEquipment, 0, sizeof(*mEquipment); }
+        { memset(mEquipment, 0, sizeof(*mEquipment)); }
 
         Item *getEquipment(int index) const
         { return mEquipment[index]; }

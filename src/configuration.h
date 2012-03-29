@@ -184,7 +184,7 @@ class ConfigurationObject
                 return container;
 
             for (ConfigurationList::const_iterator it = list->begin();
-                 it != list->end(); it++)
+                 it != list->end(); ++ it)
             {
                 container = manager->readConfigItem(*it, container);
             }

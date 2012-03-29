@@ -350,8 +350,9 @@ namespace Attributes
                 continue;
             }
         }
-        logger->log("Found %d tags for %d attributes.", int(tags.size()),
-                    int(attributes.size()));
+        logger->log("Found %d tags for %d attributes.",
+            static_cast<int>(tags.size()),
+            static_casr<int>(attributes.size()));
 
         fillLabels();
 

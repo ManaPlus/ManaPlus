@@ -172,12 +172,9 @@ void ChatHandler::sendRaw(const std::string &args)
         line = line.substr(pos + 1);
         pos = line.find(" ");
     }
-    if (outMsg)
-    {
-        if (line != "")
-            processRaw(*outMsg, line);
-        delete outMsg;
-    }
+    if (line != "")
+        processRaw(*outMsg, line);
+    delete outMsg;
 }
 
 void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)

@@ -245,10 +245,10 @@ class ActorSpriteManager: public ConfigListener
         { mAttackMobs = mobs; }
 
         int getPriorityAttackMobsSize() const
-        { return mPriorityAttackMobs.size(); }
+        { return static_cast<int>(mPriorityAttackMobs.size()); }
 
         int getAttackMobsSize() const
-        { return mAttackMobs.size(); }
+        { return static_cast<int>(mAttackMobs.size()); }
 
         std::list<std::string> getIgnoreAttackMobs() const
         { return mIgnoreAttackMobs; }

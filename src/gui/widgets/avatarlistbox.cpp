@@ -343,16 +343,15 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
         {
             case AVATAR_PLAYER:
             {
-                Being* being = actorSpriteManager->findBeingByName(
-                    model->getAvatarAt(selected)->getName(), Being::PLAYER);
-                if (being)
+                Avatar *avatar = model->getAvatarAt(selected);
+                if (avatar)
                 {
-                    viewport->showPopup(being);
-                }
-                else
-                {
-                    viewport->showPlayerPopup(
-                        model->getAvatarAt(selected)->getName());
+                    Being* being = actorSpriteManager->findBeingByName(
+                        avatar->getName(), Being::PLAYER);
+                    if (being)
+                        viewport->showPopup(being);
+                    else
+                        viewport->showPlayerPopup(avatar->getName());
                 }
                 break;
             }

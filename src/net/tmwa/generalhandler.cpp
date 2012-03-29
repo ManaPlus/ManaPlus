@@ -215,8 +215,7 @@ void GeneralHandler::reloadPartially()
 
 void GeneralHandler::unload()
 {
-    if (mNetwork)
-        mNetwork->clearHandlers();
+    clearHandlers();
 }
 
 void GeneralHandler::flushNetwork()

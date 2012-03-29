@@ -273,8 +273,8 @@ bool GuildManager::process(std::string msg)
         if (!guild)
             return false;
 //        logger->log("welcome message: %s", msg.c_str());
-        int pos = msg.find("! (");
-        if (pos == static_cast<int>(std::string::npos))
+        std::string::size_type pos = msg.find("! (");
+        if (pos == std::string::npos)
             return false;
         msg = msg.substr(0, pos);
         guild->setName(msg);
@@ -290,8 +290,8 @@ bool GuildManager::process(std::string msg)
         Guild *guild = createGuild();
         if (!guild)
             return false;
-        int pos = msg.find("Access Level: ");
-        if (pos == (int)std::string::npos)
+        std::string::size_type pos = msg.find("Access Level: ");
+        if (pos == std::string::npos)
             return false;
 
         msg = msg.substr(pos);
@@ -299,7 +299,7 @@ bool GuildManager::process(std::string msg)
             return false;
 
         pos = msg.find(", Guild:");
-        if (pos == static_cast<int>(std::string::npos))
+        if (pos == std::string::npos)
             return false;
 
         int level = atoi(msg.substr(0, pos).c_str());
@@ -310,7 +310,7 @@ bool GuildManager::process(std::string msg)
 
         msg = msg.substr(pos + strlen(", Guild:"));
         pos = msg.find(", No. Of Online Players: ");
-        if (pos == static_cast<int>(std::string::npos))
+        if (pos == std::string::npos)
             return false;
 
         msg = msg.substr(0, pos);

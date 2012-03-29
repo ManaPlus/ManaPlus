@@ -253,7 +253,7 @@ class ResourceManager
         static void deleteInstance();
 
         int size() const
-        { return mResources.size(); }
+        { return static_cast<int>(mResources.size()); }
 
         typedef std::map<std::string, Resource*> Resources;
         typedef Resources::iterator ResourceIterator;

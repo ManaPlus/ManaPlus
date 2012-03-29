@@ -131,7 +131,7 @@
  * Windows command prompt.
  */
 #ifndef M_DEBUG_NEW_PROGNAME
-#define M_DEBUG_NEW_PROGNAME NULL
+#define M_DEBUG_NEW_PROGNAME nullptr
 #endif
 
 /**
@@ -311,7 +311,7 @@ const char* new_progname = M_DEBUG_NEW_PROGNAME;
  */
 static bool print_position_from_addr(const void* addr)
 {
-    static const void* last_addr = NULL;
+    static const void* last_addr = nullptr;
     static char last_info[256] = "";
     if (addr == last_addr)
     {
@@ -416,7 +416,7 @@ static void print_position(const void* ptr, int line)
     {
         fprintf(new_output_fp, "%s:%d", (const char*)ptr, line);
     }
-    else if (ptr != NULL)   // Is caller address present?
+    else if (ptr != nullptr)   // Is caller address present?
     {
         if (!print_position_from_addr(ptr)) // Fail to get source position?
             fprintf(new_output_fp, "%p", ptr);
@@ -467,10 +467,10 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
     STATIC_ASSERT(M_DEBUG_NEW_TAILCHECK >= 0, Invalid_tail_check_length);
     size_t s = size + ALIGNED_LIST_ITEM_SIZE + M_DEBUG_NEW_TAILCHECK;
     new_ptr_list_t* ptr = (new_ptr_list_t*)malloc(s);
-    if (ptr == NULL)
+    if (ptr == nullptr)
     {
 #if M_DEBUG_NEW_STD_OPER_NEW
-        return NULL;
+        return nullptr;
 #else
         fast_mutex_autolock lock(new_output_lock);
         fprintf(new_output_fp,
@@ -537,7 +537,7 @@ static void* alloc_mem(size_t size, const char* file, int line, bool is_array)
  */
 static void free_pointer(void* pointer, void* addr, bool is_array)
 {
-    if (pointer == NULL)
+    if (pointer == nullptr)
         return;
     new_ptr_list_t* ptr =
         (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
@@ -726,7 +726,7 @@ int check_mem_corruption()
 
 void __debug_new_recorder::_M_process(void* pointer)
 {
-    if (pointer == NULL)
+    if (pointer == nullptr)
         return;
     new_ptr_list_t* ptr =
         (new_ptr_list_t*)((char*)pointer - ALIGNED_LIST_ITEM_SIZE);
@@ -773,12 +773,12 @@ void* operator new [](size_t size, const char* file, int line)
 #endif
 }
 
-void* operator new (size_t size) throw(std::bad_alloc)
+void* operator new (size_t size) //throw(std::bad_alloc)
 {
     return operator new (size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
 
-void* operator new [](size_t size) throw(std::bad_alloc)
+void* operator new [](size_t size) //throw(std::bad_alloc)
 {
     return operator new [](size, (char*)M_DEBUG_NEW_CALLER_ADDRESS, 0);
 }

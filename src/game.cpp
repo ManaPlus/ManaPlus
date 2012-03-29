@@ -900,7 +900,7 @@ void Game::handleActive(SDL_Event &event)
         if (event.active.gain)
         {   // window restore
             Client::setIsMinimized(false);
-            if (!player_node && !player_node->getAway())
+            if (player_node && !player_node->getAway())
                 fpsLimit = config.getIntValue("fpslimit");
             if (player_node)
                 player_node->setHalfAway(false);
@@ -983,7 +983,8 @@ void Game::handleInput()
             {
                 try
                 {
-                    guiInput->pushInput(event);
+                    if (guiInput)
+                        guiInput->pushInput(event);
                 }
                 catch (const gcn::Exception &e)
                 {

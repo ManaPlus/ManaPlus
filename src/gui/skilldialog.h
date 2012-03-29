@@ -31,6 +31,7 @@
 #include <guichan/mouselistener.hpp>
 
 #include <map>
+#include <vector>
 
 #define SKILL_MIN_ID 200000
 

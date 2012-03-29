@@ -484,7 +484,7 @@ void Client::gameInit()
         icon = LoadIcon(GetModuleHandle(nullptr), "A");
 
     if (icon)
-        SetClassLong(pInfo.window, GCL_HICON, (LONG) icon);
+        SetClassLong(pInfo.window, GCL_HICON, static_cast<LONG>(icon));
 #else
     mIcon = IMG_Load(iconFile.c_str());
     if (mIcon)
@@ -2271,15 +2271,16 @@ bool Client::checkPackets(int type)
     if (!serverConfig.getValueBool("enableBuggyServers", true))
         return true;
 
-    int timeLimit = instance()->mPacketLimits[type].timeLimit;
+    PacketLimit &limit = instance()->mPacketLimits[type];
+    int timeLimit = limit.timeLimit;
 
     if (!timeLimit)
         return true;
 
     int time = tick_time;
-    int lastTime = instance()->mPacketLimits[type].lastTime;
-    int cnt = instance()->mPacketLimits[type].cnt;
-    int cntLimit = instance()->mPacketLimits[type].cntLimit;
+    int lastTime = limit.lastTime;
+    int cnt = limit.cnt;
+    int cntLimit = limit.cntLimit;
 
     if (lastTime > tick_time)
     {

@@ -127,44 +127,45 @@ public:
             if (!mPlayers.at(r))
                 continue;
 
-            std::string name = mPlayers.at(r)->getName();
+            Being *player = mPlayers.at(r);
+            std::string name = player->getName();
             gcn::Widget *widget = new Label(name);
 
             mWidgets.push_back(widget);
 
-            if (mPlayers.at(r)->getAttackTime() != 0)
+            if (player->getAttackTime() != 0)
             {
                 widget = new Label(toString(curTime
-                    - mPlayers.at(r)->getAttackTime()));
+                    - player->getAttackTime()));
             }
             else
             {
                 widget = new Label(toString(curTime
-                    - mPlayers.at(r)->getTestTime()) + "?");
+                    - player->getTestTime()) + "?");
             }
             mWidgets.push_back(widget);
 
-            if (mPlayers.at(r)->getTalkTime() != 0)
+            if (player->getTalkTime() != 0)
             {
                 widget = new Label(toString(curTime
-                    - mPlayers.at(r)->getTalkTime()));
+                    - player->getTalkTime()));
             }
             else
             {
                 widget = new Label(toString(curTime
-                    - mPlayers.at(r)->getTestTime()) + "?");
+                    - player->getTestTime()) + "?");
             }
             mWidgets.push_back(widget);
 
-            if (mPlayers.at(r)->getMoveTime() != 0)
+            if (player->getMoveTime() != 0)
             {
                 widget = new Label(toString(curTime
-                    - mPlayers.at(r)->getMoveTime()));
+                    - player->getMoveTime()));
             }
             else
             {
                 widget = new Label(toString(curTime
-                    - mPlayers.at(r)->getTestTime()) + "?");
+                    - player->getTestTime()) + "?");
             }
             mWidgets.push_back(widget);
 
@@ -174,20 +175,20 @@ public:
             bool attackBot = false;
             bool otherBot = false;
 
-            if (curTime - mPlayers.at(r)->getTestTime() > 2 * 60)
+            if (curTime - player->getTestTime() > 2 * 60)
             {
-                int attack = curTime - (mPlayers.at(r)->getAttackTime()
-                    ? mPlayers.at(r)->getAttackTime()
-                    : mPlayers.at(r)->getTestTime());
-                int talk = curTime - (mPlayers.at(r)->getTalkTime()
-                    ? mPlayers.at(r)->getTalkTime()
-                    : mPlayers.at(r)->getTestTime()) - attack;
-                int move = curTime - (mPlayers.at(r)->getMoveTime()
-                    ? mPlayers.at(r)->getMoveTime()
-                    : mPlayers.at(r)->getTestTime()) - attack;
-                int other = curTime - (mPlayers.at(r)->getOtherTime()
-                    ? mPlayers.at(r)->getMoveTime()
-                    : mPlayers.at(r)->getOtherTime()) - attack;
+                int attack = curTime - (player->getAttackTime()
+                    ? player->getAttackTime()
+                    : player->getTestTime());
+                int talk = curTime - (player->getTalkTime()
+                    ? player->getTalkTime()
+                    : player->getTestTime()) - attack;
+                int move = curTime - (player->getMoveTime()
+                    ? player->getMoveTime()
+                    : player->getTestTime()) - attack;
+                int other = curTime - (player->getOtherTime()
+                    ? player->getMoveTime()
+                    : player->getOtherTime()) - attack;
 
                 if (attack < 2 * 60)
                     attackBot = true;

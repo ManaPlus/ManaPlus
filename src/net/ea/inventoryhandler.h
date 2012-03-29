@@ -114,8 +114,8 @@ class InventoryItem
         int slot;
         int id;
         int quantity;
-        unsigned char color;
         int refine;
+        unsigned char color;
         bool equip;
 
         InventoryItem(int slot0, int id0, int quantity0, int refine0,
@@ -123,8 +123,8 @@ class InventoryItem
             slot(slot0),
             id(id0),
             quantity(quantity0),
-            color(color0),
             refine(refine0),
+            color(color0),
             equip(equip0)
         {
         }

@@ -510,8 +510,11 @@ void ChatWindow::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == ACTION_COLOR_PICKER)
     {
-        mChatColor = mColorPicker->getSelected();
-        config.setValue("chatColor", mChatColor);
+        if (mColorPicker)
+        {
+            mChatColor = mColorPicker->getSelected();
+            config.setValue("chatColor", mChatColor);
+        }
     }
 
     if (mColorPicker && mColorPicker->isVisible()
@@ -737,7 +740,8 @@ void ChatWindow::mouseReleased(gcn::MouseEvent &event A_UNUSED)
 
 void ChatWindow::keyPressed(gcn::KeyEvent &event)
 {
-    if (event.getKey().getValue() == Key::DOWN)
+    const int key = event.getKey().getValue();
+    if (key == Key::DOWN)
     {
         if (mCurHist != mHistory.end())
         {
@@ -756,12 +760,12 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mCurHist = prevHist;
             }
         }
-        else if (mChatInput->getText() != "")
+        else if (!mChatInput->getText().empty())
         {
             mChatInput->setText("");
         }
     }
-    else if (event.getKey().getValue() == Key::UP &&
+    else if (key == Key::UP &&
              mCurHist != mHistory.begin() && !mHistory.empty())
     {
         // Move backward through the history
@@ -770,7 +774,7 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         mChatInput->setCaretPosition(static_cast<unsigned>(
                 mChatInput->getText().length()));
     }
-    else if (event.getKey().getValue() == Key::INSERT &&
+    else if (key == Key::INSERT &&
              mChatInput->getText() != "")
     {
         // Add the current message to the history and clear the text
@@ -812,8 +816,8 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
 
             std::list<std::string>::const_iterator it;
             unsigned int f = 0;
-            for (it = tab->getRows().begin();
-                 it != tab->getRows().end(); ++it, f++)
+            const std::list<std::string> &rows = tab->getRows();
+            for (it = rows.begin(); it != rows.end(); ++it, f++)
             {
                 if (f == mChatHistoryIndex)
                     mChatInput->setText(*it);
@@ -857,25 +861,48 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
         }
     }
 
-    std::string Temp;
-    switch (event.getKey().getValue())
+    std::string temp;
+    switch (key)
     {
-        case Key::F2: Temp = "\u2318"; break;
-        case Key::F3: Temp = "\u263A"; break;
-        case Key::F4: Temp = "\u2665"; break;
-        case Key::F5: Temp = "\u266A"; break;
-        case Key::F6: Temp = "\u266B"; break;
-        case Key::F7: Temp = "\u26A0"; break;
-        case Key::F8: Temp = "\u2622"; break;
-        case Key::F9: Temp = "\u262E"; break;
-        case Key::F10: Temp = "\u2605"; break;
-        case Key::F11: Temp = "\u2618"; break;
-        case Key::F12: Temp = "\u2592"; break;
-        default: break;
+        case Key::F2:
+            temp = "\u2318";
+            break;
+        case Key::F3:
+            temp = "\u263A";
+            break;
+        case Key::F4:
+            temp = "\u2665";
+            break;
+        case Key::F5:
+            temp = "\u266A";
+            break;
+        case Key::F6:
+            temp = "\u266B";
+            break;
+        case Key::F7:
+            temp = "\u26A0";
+            break;
+        case Key::F8:
+            temp = "\u2622";
+            break;
+        case Key::F9:
+            temp = "\u262E";
+            break;
+        case Key::F10:
+            temp = "\u2605";
+            break;
+        case Key::F11:
+            temp = "\u2618";
+            break;
+        case Key::F12:
+            temp = "\u2592";
+            break;
+        default:
+            break;
     }
 
-    if (Temp != "")
-        addInputText(Temp, false);
+    if (temp != "")
+        addInputText(temp, false);
 }
 
 void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
@@ -1343,7 +1370,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        unsigned long idx = line.find(": \302\202");
+        std::string::size_type idx = line.find(": \302\202");
         if (idx != std::string::npos)
         {
             line = line.erase(idx + 2, 2);
@@ -1351,13 +1378,13 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        unsigned long idx1 = line.find("@@");
+        std::string::size_type idx1 = line.find("@@");
         if (idx1 != std::string::npos)
         {
-            unsigned long idx2 = line.find("|", idx1);
+            std::string::size_type idx2 = line.find("|", idx1);
             if (idx2 != std::string::npos)
             {
-                unsigned long idx3 = line.find("@@", idx2);
+                std::string::size_type idx3 = line.find("@@", idx2);
                 if (idx3 != std::string::npos)
                 {
                     tradeChatTab->chatLog(line, own, ignoreRecord,

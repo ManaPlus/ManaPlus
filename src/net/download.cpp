@@ -64,7 +64,7 @@ Download::Download(void *ptr, const std::string &url,
     mError = static_cast<char*>(calloc(CURL_ERROR_SIZE + 1, 1));
     mError[0] = 0;
 
-    mOptions.cancel = false;
+    mOptions.cancel = 0;
 }
 
 Download::~Download()
@@ -114,7 +114,7 @@ void Download::noCache()
 
 void Download::setFile(const std::string &filename, Sint64 adler32)
 {
-    mOptions.memoryWrite = false;
+    mOptions.memoryWrite = 0;
     mFileName = filename;
 
     if (adler32 > -1)
@@ -124,7 +124,7 @@ void Download::setFile(const std::string &filename, Sint64 adler32)
     }
     else
     {
-        mOptions.checkAdler =  false;
+        mOptions.checkAdler =  0;
     }
 }
 
