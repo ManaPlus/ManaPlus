@@ -28,7 +28,7 @@
 #include "configlistener.h"
 #include "flooritem.h"
 
-#include <vector>
+#include "utils/stringvector.h"
 
 class LocalPlayer;
 class Map;
@@ -204,10 +204,10 @@ class ActorSpriteManager: public ConfigListener
         void printBeingsToChat(std::vector<Being*> beings,
                                std::string header) const;
 
-        void getPlayerNames(std::vector<std::string> &names,
+        void getPlayerNames(StringVect &names,
                             bool npcNames);
 
-        void getMobNames(std::vector<std::string> &names);
+        void getMobNames(StringVect &names);
 
         void updatePlayerNames();
 

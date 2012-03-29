@@ -29,15 +29,15 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/stringvector.h"
+
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 #include <guichan/widget.hpp>
 #include <guichan/widgetlistener.hpp>
 
 #include <list>
-#include <string>
 #include <map>
-#include <vector>
 #include <set>
 
 class BrowserBox;
@@ -302,7 +302,7 @@ class ChatWindow : public Window,
 
         std::string autoComplete(std::string partName, History *words);
 
-        std::string autoComplete(std::vector<std::string> &names,
+        std::string autoComplete(StringVect &names,
                                  std::string partName) const;
 
         /** Used for showing item popup on clicking links **/
@@ -341,14 +341,14 @@ class ChatWindow : public Window,
         bool mReturnToggles; /**< Marks whether <Return> toggles the chat log
                                 or not */
 
-        std::vector<std::string> mTradeFilter;
+        StringVect mTradeFilter;
 
         gcn::DropDown *mColorPicker;
         ColorListModel *mColorListModel;
         int mChatColor;
         unsigned int mChatHistoryIndex;
         std::list<std::string> mAwayLog;
-        std::vector<std::string> mHighlights;
+        StringVect mHighlights;
         bool mGMLoaded;
         bool mHaveMouse;
         bool mAutoHide;

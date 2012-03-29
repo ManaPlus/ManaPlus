@@ -474,6 +474,7 @@ SET(SRCS
     utils/process.h
     utils/stringutils.cpp
     utils/stringutils.h
+    utils/stringvector.h
     utils/mutex.h
     utils/mkdir.cpp
     utils/mkdir.h

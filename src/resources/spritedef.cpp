@@ -324,10 +324,10 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
             }
             else
             {
-                std::vector<std::string> vals;
+                StringVect vals;
                 splitToStringVector(vals, value, ',');
-                std::vector<std::string>::const_iterator it = vals.begin();
-                std::vector<std::string>::const_iterator it_end = vals.end();
+                StringVectCIter it = vals.begin();
+                StringVectCIter it_end = vals.end();
                 for (; it != it_end; ++ it)
                 {
                     std::string str = *it;

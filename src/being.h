@@ -36,8 +36,6 @@
 
 #include <map>
 #include <set>
-#include <string>
-#include <vector>
 
 #define FIRST_IGNORE_EMOTE 14
 #define STATUS_EFFECTS 32
@@ -846,7 +844,7 @@ class Being : public ActorSprite, public ConfigListener
         Vector mDest;  /**< destination coordinates. */
 
         std::vector<int> mSpriteIDs;
-        std::vector<std::string> mSpriteColors;
+        StringVect mSpriteColors;
         std::vector<int> mSpriteColorsIds;
         Gender mGender;
 

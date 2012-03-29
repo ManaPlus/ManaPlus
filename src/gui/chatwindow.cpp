@@ -331,10 +331,10 @@ void ChatWindow::loadGMCommands()
 
     const char *fileName = "gmcommands.txt";
     ResourceManager *resman = ResourceManager::getInstance();
-    std::vector<std::string> list;
+    StringVect list;
     resman->loadTextFile(fileName, list);
-    std::vector<std::string>::const_iterator it = list.begin();
-    std::vector<std::string>::const_iterator it_end = list.end();
+    StringVectCIter it = list.begin();
+    StringVectCIter it_end = list.end();
 
     while (it != it_end)
     {
@@ -1194,7 +1194,7 @@ void ChatWindow::autoComplete()
         return;
 
     ChatTab *cTab = static_cast<ChatTab*>(mChatTabs->getSelectedTab());
-    std::vector<std::string> nameList;
+    StringVect nameList;
 
     if (cTab)
         cTab->getAutoCompleteList(nameList);
@@ -1243,10 +1243,10 @@ void ChatWindow::autoComplete()
     }
 }
 
-std::string ChatWindow::autoComplete(std::vector<std::string> &names,
+std::string ChatWindow::autoComplete(StringVect &names,
                                      std::string partName) const
 {
-    std::vector<std::string>::const_iterator i = names.begin();
+    StringVectCIter i = names.begin();
     toLower(partName);
     std::string newName("");
 
@@ -1282,7 +1282,7 @@ std::string ChatWindow::autoComplete(std::string partName, History *words)
         return "";
 
     Commands::const_iterator i = words->begin();
-    std::vector<std::string> nameList;
+    StringVect nameList;
 
     while (i != words->end())
     {
@@ -1310,7 +1310,7 @@ void ChatWindow::moveTabRight(ChatTab *tab)
 std::string ChatWindow::autoCompleteHistory(std::string partName)
 {
     History::const_iterator i = mHistory.begin();
-    std::vector<std::string> nameList;
+    StringVect nameList;
 
     while (i != mHistory.end())
     {

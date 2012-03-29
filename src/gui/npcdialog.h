@@ -27,12 +27,12 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/stringvector.h"
+
 #include <guichan/actionlistener.hpp>
 #include <guichan/listmodel.hpp>
 
 #include <list>
-#include <string>
-#include <vector>
 
 class BrowserBox;
 class ItemLinkHandler;
@@ -201,7 +201,7 @@ class NpcDialog : public Window, public gcn::ActionListener,
         // Used for choice input
         ListBox *mItemList;
         gcn::ScrollArea *mListScrollArea;
-        std::vector<std::string> mItems;
+        StringVect mItems;
         ItemLinkHandler *mItemLinkHandler;
 
         // Used for string and integer input

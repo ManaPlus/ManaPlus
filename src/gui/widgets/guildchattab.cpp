@@ -113,7 +113,7 @@ void GuildChatTab::showHelp()
     chatLog(_("/kick > Kick some one from the guild you are in"));
 }
 
-void GuildChatTab::getAutoCompleteList(std::vector<std::string> &names) const
+void GuildChatTab::getAutoCompleteList(StringVect &names) const
 {
     if (!guildManager)
         return;

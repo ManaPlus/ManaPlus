@@ -142,8 +142,7 @@ void ItemInfo::addSound(EquipmentSoundEvent event, const std::string &filename)
 const std::string &ItemInfo::getSound(EquipmentSoundEvent event) const
 {
     static const std::string empty;
-    std::map< EquipmentSoundEvent,
-        std::vector<std::string> >::const_iterator i;
+    std::map<EquipmentSoundEvent, StringVect>::const_iterator i;
 
     i = mSounds.find(event);
 

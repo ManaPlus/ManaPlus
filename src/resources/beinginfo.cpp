@@ -86,7 +86,7 @@ void BeingInfo::setTargetCursorSize(const std::string &size)
 void BeingInfo::addSound(SoundEvent event, const std::string &filename)
 {
     if (mSounds.find(event) == mSounds.end())
-        mSounds[event] = new std::vector<std::string>;
+        mSounds[event] = new StringVect;
 
     if (mSounds[event])
         mSounds[event]->push_back("sfx/" + filename);

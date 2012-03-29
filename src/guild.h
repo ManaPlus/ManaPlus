@@ -28,10 +28,9 @@
 #include "gui/widgets/avatarlistbox.h"
 
 #include "utils/dtor.h"
+#include "utils/stringvector.h"
 
 #include <map>
-#include <string>
-#include <vector>
 
 class Guild;
 
@@ -162,7 +161,7 @@ public:
 
     bool isMember(const std::string &name) const;
 
-    void getNames(std::vector<std::string> &names) const;
+    void getNames(StringVect &names) const;
 
     void addPos(int id, std::string name);
 

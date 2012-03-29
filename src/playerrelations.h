@@ -23,10 +23,10 @@
 #ifndef PLAYER_RELATIONS_H
 #define PLAYER_RELATIONS_H
 
+#include "utils/stringvector.h"
+
 #include <list>
 #include <map>
-#include <string>
-#include <vector>
 
 class Being;
 
@@ -200,10 +200,9 @@ class PlayerRelationsManager
          * Retrieves a sorted vector of all players for which we have any
          * relations recorded.
          */
-        std::vector<std::string> *getPlayers();
+        StringVect *getPlayers();
 
-        std::vector<std::string> *getPlayersByRelation(PlayerRelation::Relation
-                                                       rel);
+        StringVect *getPlayersByRelation(PlayerRelation::Relation rel);
 
         /**
          * Removes all recorded player info.

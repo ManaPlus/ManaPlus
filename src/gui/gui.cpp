@@ -106,7 +106,7 @@ Gui::Gui(Graphics *graphics):
     Window::setWindowContainer(guiTop);
     setTop(guiTop);
 
-    const std::vector<std::string> langs = getLang();
+    const StringVect langs = getLang();
     const bool isJapan = (!langs.empty() && langs[0].size() > 3
         && langs[0].substr(0, 3) == "ja_");
 

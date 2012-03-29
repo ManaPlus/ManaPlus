@@ -632,7 +632,7 @@ bool ResourceManager::copyFile(const std::string &src, const std::string &dst)
 }
 
 bool ResourceManager::loadTextFile(const std::string &fileName,
-                                   std::vector<std::string> &lines)
+                                   StringVect &lines)
 {
     int contentsLength;
     char *fileContents = static_cast<char*>(
@@ -654,12 +654,12 @@ bool ResourceManager::loadTextFile(const std::string &fileName,
     return true;
 }
 
-std::vector<std::string> ResourceManager::loadTextFileLocal(
+StringVect ResourceManager::loadTextFileLocal(
         const std::string &fileName)
 {
     std::ifstream file;
     char line[501];
-    std::vector<std::string> lines;
+    StringVect lines;
 
     file.open(fileName.c_str(), std::ios::in);
 

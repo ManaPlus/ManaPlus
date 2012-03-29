@@ -22,10 +22,9 @@
 #define GUILDMANAGER_H
 
 #include "utils/dtor.h"
+#include "utils/stringvector.h"
 
 #include <map>
-#include <string>
-#include <vector>
 
 class Guild;
 class GuildChatTab;
@@ -45,7 +44,7 @@ class GuildManager
 
         bool processGuildMessage(std::string msg);
 
-        void getNames(std::vector<std::string> &names);
+        void getNames(StringVect &names);
 
         void requestGuildInfo();
 
@@ -86,7 +85,7 @@ class GuildManager
         bool mSentInfoRequest;
         bool mSentNameRequest;
         bool mHavePower;
-        std::vector<std::string> mTempList;
+        StringVect mTempList;
         GuildChatTab *mTab;
         bool mRequest;
 };

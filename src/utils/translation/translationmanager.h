@@ -23,15 +23,14 @@
 
 #include "localconsts.h"
 
-#include <string>
-#include <vector>
+#include "utils/stringvector.h"
 
 class PoDict;
 
 class TranslationManager
 {
     public:
-        static PoDict *loadLang(std::vector<std::string> lang,
+        static PoDict *loadLang(StringVect lang,
                                 std::string subName,
                                 PoDict *dict = nullptr);
 
@@ -43,7 +42,7 @@ class TranslationManager
 
         static bool translateFile(const std::string &fileName,
                                   PoDict *dict,
-                                  std::vector<std::string> &lines);
+                                  StringVect &lines);
 };
 
 #endif // UTILS_TRANSLATION_MANAGER_H

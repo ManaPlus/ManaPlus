@@ -24,7 +24,6 @@
 
 #include <SDL.h>
 #include <SDL_thread.h>
-#include <vector>
 #include <algorithm>
 
 #include "gui/chatwindow.h"
@@ -103,7 +102,7 @@ public:
         return mStrings.at(i);
     }
 private:
-    std::vector<std::string> mStrings;
+    StringVect mStrings;
 };
 
 

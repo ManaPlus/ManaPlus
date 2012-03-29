@@ -30,9 +30,9 @@
 
 #include "gui/palette.h"
 
+#include "utils/stringvector.h"
+
 #include <map>
-#include <string>
-#include <vector>
 
 class DyePalette;
 class Image;
@@ -127,11 +127,11 @@ class Theme : public Palette, public ConfigListener
         static std::string getThemeName()
         { return mThemeName; }
 
-        static void fillSkinsList(std::vector<std::string> &list);
+        static void fillSkinsList(StringVect &list);
 
-        static void fillFontsList(std::vector<std::string> &list);
+        static void fillFontsList(StringVect &list);
 
-        static void fillSoundsList(std::vector<std::string> &list);
+        static void fillSoundsList(StringVect &list);
 
         /**
          * Returns the patch to the given gui resource relative to the theme

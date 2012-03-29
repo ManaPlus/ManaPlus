@@ -45,7 +45,6 @@
 
 #include <algorithm>
 #include <list>
-#include <vector>
 
 #include "debug.h"
 
@@ -1216,8 +1215,7 @@ void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
     debugChatTab->chatLog("---------------------------------------");
 }
 
-void ActorSpriteManager::getPlayerNames(std::vector<std::string> &names,
-                                        bool npcNames)
+void ActorSpriteManager::getPlayerNames(StringVect &names, bool npcNames)
 {
     names.clear();
 
@@ -1242,7 +1240,7 @@ void ActorSpriteManager::getPlayerNames(std::vector<std::string> &names,
     }
 }
 
-void ActorSpriteManager::getMobNames(std::vector<std::string> &names)
+void ActorSpriteManager::getMobNames(StringVect &names)
 {
     names.clear();
 

@@ -25,13 +25,12 @@
 
 #include "resources/resource.h"
 
+#include "utils/stringvector.h"
 #include "utils/xml.h"
 
 #include <list>
 #include <map>
 #include <set>
-#include <string>
-#include <vector>
 
 class Action;
 class Animation;
@@ -60,7 +59,7 @@ struct SpriteDisplay
     std::string image;
     std::string floor;
     std::vector<SpriteReference*> sprites;
-    std::vector<std::string> particles;
+    StringVect particles;
 };
 
 typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;

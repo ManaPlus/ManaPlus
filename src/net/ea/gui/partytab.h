@@ -52,7 +52,7 @@ class PartyTab : public ChatTab
     protected:
         void handleInput(const std::string &msg);
 
-        virtual void getAutoCompleteList(std::vector<std::string>&) const;
+        virtual void getAutoCompleteList(StringVect&) const;
 };
 
 extern PartyTab *partyTab;

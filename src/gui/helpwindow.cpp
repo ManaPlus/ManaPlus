@@ -107,12 +107,12 @@ void HelpWindow::loadHelp(const std::string &helpFile)
 
 void HelpWindow::loadFile(const std::string &file)
 {
-    const std::vector<std::string> langs = getLang();
+    const StringVect langs = getLang();
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");
 
-    std::vector<std::string> lines;
+    StringVect lines;
     TranslationManager::translateFile(helpPath + file + ".txt",
         translator, lines);
 

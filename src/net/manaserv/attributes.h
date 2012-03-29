@@ -22,8 +22,7 @@
 #ifndef NET_MANASERV_ATTRIBUTES_H
 #define NET_MANASERV_ATTRIBUTES_H
 
-#include <string>
-#include <vector>
+#include "utils/stringvector.h"
 
 namespace ManaServ
 {
@@ -41,7 +40,7 @@ namespace Attributes
     /**
      * Returns the list of base attribute labels.
      */
-    std::vector<std::string>& getLabels();
+    StringVect& getLabels();
 
     /**
      * Give back the corresponding playerinfo Id from the attribute id

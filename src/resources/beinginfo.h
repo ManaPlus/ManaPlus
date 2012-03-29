@@ -29,8 +29,6 @@
 
 #include <list>
 #include <map>
-#include <string>
-#include <vector>
 
 struct Attack
 {
@@ -60,7 +58,7 @@ enum SoundEvent
     SOUND_EVENT_SPAWN
 };
 
-typedef std::map<SoundEvent, std::vector<std::string>* > SoundEvents;
+typedef std::map<SoundEvent, StringVect*> SoundEvents;
 
 /**
  * Holds information about a certain type of monster. This includes the name

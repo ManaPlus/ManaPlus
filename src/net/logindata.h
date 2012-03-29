@@ -59,7 +59,7 @@ class LoginData
         std::string password;
         std::string newPassword;
         std::string updateHost;
-        std::vector<std::string> updateHosts;
+        StringVect updateHosts;
         std::string lastLogin;
         int updateType;
 

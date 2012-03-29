@@ -66,7 +66,7 @@ namespace Attributes
     static TagMap tags;
 
     /** List of modifiable attribute names used at character's creation. */
-    static std::vector<std::string> attributeLabels;
+    static StringVect attributeLabels;
 
     /** Characters creation points. */
     static unsigned int creationPoints = 0;
@@ -82,7 +82,7 @@ namespace Attributes
     unsigned int getAttributeMaximum()
     { return attributeMaximum; }
 
-    std::vector<std::string>& getLabels()
+    StringVect& getLabels()
     { return attributeLabels; }
 
     /**

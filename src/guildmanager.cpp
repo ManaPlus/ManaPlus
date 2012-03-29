@@ -117,7 +117,7 @@ void GuildManager::chat(std::string msg)
     mTab->chatLog(player_node->getName(), msg);
 }
 
-void GuildManager::getNames(std::vector<std::string> &names)
+void GuildManager::getNames(StringVect &names)
 {
     Guild *guild = createGuild();
     if (guild)
@@ -153,8 +153,8 @@ void GuildManager::updateList()
     if (guild)
     {
         guild->setServerGuild(false);
-        std::vector<std::string>::const_iterator it = mTempList.begin();
-        std::vector<std::string>::const_iterator it_end = mTempList.end();
+        StringVectCIter it = mTempList.begin();
+        StringVectCIter it_end = mTempList.end();
         int i = 0;
         while (it != it_end)
         {

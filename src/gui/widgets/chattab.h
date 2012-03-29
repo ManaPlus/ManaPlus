@@ -28,6 +28,8 @@
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/tab.h"
 
+#include "utils/stringvector.h"
+
 #include "localconsts.h"
 
 class ScrollArea;
@@ -175,7 +177,7 @@ class ChatTab : public Tab
 
         virtual void handleCommand(const std::string &msg);
 
-        virtual void getAutoCompleteList(std::vector<std::string>&) const
+        virtual void getAutoCompleteList(StringVect&) const
         {}
 
         void addRow(std::string &line);

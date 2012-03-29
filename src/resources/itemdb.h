@@ -23,10 +23,10 @@
 #ifndef ITEM_MANAGER_H
 #define ITEM_MANAGER_H
 
+#include "utils/stringvector.h"
+
 #include <list>
-#include <vector>
 #include <map>
-#include <string>
 
 class ItemInfo;
 
@@ -45,7 +45,7 @@ namespace ItemDB
      */
     void unload();
 
-    const std::vector<std::string> &getTags();
+    const StringVect &getTags();
 
     bool exists(int id);
 

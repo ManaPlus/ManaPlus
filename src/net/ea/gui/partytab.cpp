@@ -225,7 +225,7 @@ bool PartyTab::handleCommand(const std::string &type, const std::string &args)
     return true;
 }
 
-void PartyTab::getAutoCompleteList(std::vector<std::string> &names) const
+void PartyTab::getAutoCompleteList(StringVect &names) const
 {
     if (!player_node)
         return;

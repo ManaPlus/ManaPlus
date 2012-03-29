@@ -533,7 +533,7 @@ bool Theme::tryThemePath(std::string themeName)
     return false;
 }
 
-void Theme::fillSkinsList(std::vector<std::string> &list)
+void Theme::fillSkinsList(StringVect &list)
 {
     char **skins = PHYSFS_enumerateFiles(
         branding.getStringValue("guiThemePath").c_str());
@@ -550,7 +550,7 @@ void Theme::fillSkinsList(std::vector<std::string> &list)
     PHYSFS_freeList(skins);
 }
 
-void Theme::fillFontsList(std::vector<std::string> &list)
+void Theme::fillFontsList(StringVect &list)
 {
     PHYSFS_permitSymbolicLinks(1);
     char **fonts = PHYSFS_enumerateFiles(
@@ -569,7 +569,7 @@ void Theme::fillFontsList(std::vector<std::string> &list)
     PHYSFS_permitSymbolicLinks(0);
 }
 
-void Theme::fillSoundsList(std::vector<std::string> &list)
+void Theme::fillSoundsList(StringVect &list)
 {
     char **skins = PHYSFS_enumerateFiles(
         branding.getStringValue("systemsounds").c_str());

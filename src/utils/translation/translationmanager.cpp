@@ -88,7 +88,7 @@ PoDict *TranslationManager::loadLang(LangVect lang,
 
 bool TranslationManager::translateFile(const std::string &fileName,
                                        PoDict *dict,
-                                       std::vector<std::string> &lines)
+                                       StringVect &lines)
 {
     if (!dict || fileName.empty())
         return false;

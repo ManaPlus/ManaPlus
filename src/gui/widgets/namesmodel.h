@@ -21,11 +21,9 @@
 #ifndef GUI_WIDGETS_NAMESMODEL_H
 #define GUI_WIDGETS_NAMESMODEL_H
 
-//#include "guichanfwd.h"
+#include "utils/stringvector.h"
 
 #include <guichan/listmodel.hpp>
-
-#include <vector>
 
 class NamesModel : public gcn::ListModel
 {
@@ -38,14 +36,14 @@ class NamesModel : public gcn::ListModel
 
         virtual std::string getElementAt(int i);
 
-        std::vector<std::string> &getNames()
+        StringVect &getNames()
         { return mNames; }
 
         size_t size()
         { return mNames.size(); }
 
     protected:
-        std::vector<std::string> mNames;
+        StringVect mNames;
 };
 
 #endif

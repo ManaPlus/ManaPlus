@@ -23,11 +23,11 @@
 #ifndef UTILS_STRINGUTILS_H
 #define UTILS_STRINGUTILS_H
 
-#include <string>
+#include "utils/stringvector.h"
+
 #include <sstream>
 #include <list>
 #include <set>
-#include <vector>
 
 /**
  * Trims spaces off the end and the beginning of the given string.
@@ -136,7 +136,7 @@ bool isWordSeparator(char chr);
 
 unsigned long findI(std::string str, std::string subStr);
 
-unsigned long findI(std::string text, std::vector<std::string> &list);
+unsigned long findI(std::string text, StringVect &list);
 
 const std::string encodeStr(unsigned int value, unsigned int size = 0);
 
@@ -179,7 +179,7 @@ std::list<int> splitToIntList(const std::string &text, char separator);
 std::list<std::string> splitToStringList(const std::string &text,
                                          char separator);
 
-void splitToStringVector(std::vector<std::string> &tokens,
+void splitToStringVector(StringVect &tokens,
                          const std::string &text, char separator);
 
 std::string combineDye(std::string file, std::string dye);

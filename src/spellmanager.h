@@ -37,6 +37,7 @@ class SpellManager
 {
     public:
         SpellManager();
+
         ~SpellManager();
 
         TextCommand *getSpell(int spellId);

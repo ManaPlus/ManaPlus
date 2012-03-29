@@ -52,7 +52,7 @@ class GuildTab : public ChatTab
     protected:
         void handleInput(const std::string &msg);
 
-        void getAutoCompleteList(std::vector<std::string> &names) const;
+        void getAutoCompleteList(StringVect &names) const;
 };
 
 } // namespace Ea

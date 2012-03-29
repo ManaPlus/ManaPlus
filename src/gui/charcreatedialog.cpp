@@ -396,7 +396,7 @@ int CharCreateDialog::getDistributedPoints() const
     return points;
 }
 
-void CharCreateDialog::setAttributes(const std::vector<std::string> &labels,
+void CharCreateDialog::setAttributes(const StringVect &labels,
                                      int available, int min, int max)
 {
     mMaxPoints = available;

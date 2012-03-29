@@ -203,12 +203,11 @@ unsigned long findI(std::string str, std::string subStr)
     return str.find(subStr);
 }
 
-unsigned long findI(std::string text, std::vector<std::string> &list)
+unsigned long findI(std::string text, StringVect &list)
 {
     std::string str = toLower(text);
     unsigned long idx;
-    for (std::vector<std::string>::const_iterator i = list.begin();
-         i != list.end(); ++i)
+    for (StringVectCIter i = list.begin(); i != list.end(); ++ i)
     {
         std::string subStr = *i;
         subStr = toLower(subStr);
@@ -447,8 +446,8 @@ std::list<std::string> splitToStringList(const std::string &text,
     return tokens;
 }
 
-void splitToStringVector(std::vector<std::string> &tokens,
-                         const std::string &text, char separator)
+void splitToStringVector(StringVect &tokens, const std::string &text,
+                         char separator)
 {
     std::stringstream ss(text);
     std::string item;

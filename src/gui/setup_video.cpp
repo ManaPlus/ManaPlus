@@ -54,8 +54,6 @@
 #include <SDL.h>
 
 #include <algorithm>
-#include <string>
-#include <vector>
 
 #include "debug.h"
 
@@ -102,7 +100,7 @@ class ModeListModel : public gcn::ListModel
     private:
         void addCustomMode(std::string mode);
 
-        std::vector<std::string> mVideoModes;
+        StringVect mVideoModes;
 };
 
 bool modeSorter(std::string mode1, std::string mode2);
@@ -166,8 +164,8 @@ ModeListModel::ModeListModel()
 
 void ModeListModel::addCustomMode(std::string mode)
 {
-    std::vector<std::string>::const_iterator it = mVideoModes.begin();
-    std::vector<std::string>::const_iterator it_end = mVideoModes.end();
+    StringVectCIter it = mVideoModes.begin();
+    StringVectCIter it_end = mVideoModes.end();
     while (it != it_end)
     {
         if (*it == mode)

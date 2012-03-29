@@ -149,7 +149,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mFilterLabel = new Label(_("Filter:"));
     mNameFilter = new TextField("", true, this, "namefilter", true);
 
-    std::vector<std::string> tags = ItemDB::getTags();
+    StringVect tags = ItemDB::getTags();
     for (unsigned f = 0; f < tags.size(); f ++)
         mFilter->addButton(tags[f]);
 

@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2012  The ManaPlus Developers
+ *  Copyright (C) 2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,22 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_LANGS_H
-#define UTILS_LANGS_H
+#ifndef UTILS_VECTORSTRING_H
+#define UTILS_VECTORSTRING_H
 
 #include <string>
-#include <sstream>
-#include <list>
-#include <set>
 #include <vector>
 
-typedef std::vector<std::string> LangVect;
-typedef LangVect::const_iterator LangIter;
+typedef std::vector<std::string> StringVect;
+typedef StringVect::iterator StringVectIter;
+typedef StringVect::const_iterator StringVectCIter;
 
-LangVect getLang();
-
-std::string getLangSimple();
-
-std::string getLangShort();
-
-#endif // UTILS_LANGS_H
+#endif

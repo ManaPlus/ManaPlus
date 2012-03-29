@@ -29,8 +29,6 @@
 #include "resources/spritedef.h"
 
 #include <map>
-#include <string>
-#include <vector>
 #include <set>
 
 enum EquipmentSoundEvent
@@ -292,7 +290,7 @@ class ItemInfo
         std::map <int, std::string> mAnimationFiles;
 
         /** Stores the names of sounds to be played at certain event. */
-        std::map < EquipmentSoundEvent, std::vector<std::string> > mSounds;
+        std::map <EquipmentSoundEvent, StringVect> mSounds;
         std::map <int, int> mTags;
         std::map <int, ColorDB::ItemColor> *mColors;
         std::string mColorList;

@@ -42,7 +42,7 @@ namespace
     ItemDB::NamedItemInfos mNamedItemInfos;
     ItemInfo *mUnknown;
     bool mLoaded = false;
-    std::vector<std::string> mTagNames;
+    StringVect mTagNames;
     std::map<std::string, int> mTags;
 }
 
@@ -405,7 +405,7 @@ void ItemDB::load()
     mLoaded = true;
 }
 
-const std::vector<std::string> &ItemDB::getTags()
+const StringVect &ItemDB::getTags()
 {
     return mTagNames;
 }

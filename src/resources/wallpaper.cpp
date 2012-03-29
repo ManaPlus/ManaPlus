@@ -33,7 +33,6 @@
 #include <algorithm>
 #include <cstring>
 #include <time.h>
-#include <vector>
 
 #include "debug.h"
 
@@ -141,7 +140,7 @@ std::string Wallpaper::getWallpaper(int width, int height)
     WallpaperData wp;
 
     // Wallpaper filename container
-    std::vector<std::string> wallPaperVector;
+    StringVect wallPaperVector;
 
     for (iter = wallpaperData.begin(); iter != wallpaperData.end(); ++iter)
     {

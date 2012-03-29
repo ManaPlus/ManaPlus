@@ -576,7 +576,7 @@ public:
 
         if (actorSpriteManager)
         {
-            std::vector<std::string> names;
+            StringVect names;
             actorSpriteManager->getPlayerNames(names, false);
 
             std::vector<Avatar*>::iterator ai = avatars->begin();
@@ -587,7 +587,7 @@ public:
                 if (!ava)
                     break;
 
-                std::vector<std::string>::const_iterator i = names.begin();
+                StringVectCIter i = names.begin();
                 while (i != names.end())
                 {
                     if (ava->getName() == (*i) && (*i) != "")
@@ -609,7 +609,7 @@ public:
                 }
             }
 
-            std::vector<std::string>::const_iterator i = names.begin();
+            StringVectCIter i = names.begin();
 
             while (i != names.end())
             {
@@ -1141,7 +1141,7 @@ public:
         }
         avatars->clear();
 
-        std::vector<std::string> *players
+        StringVect *players
             = player_relations.getPlayersByRelation(PlayerRelation::FRIEND);
 
         const std::set<std::string> &players2 = whoIsOnline->getOnlineNicks();
@@ -1149,8 +1149,8 @@ public:
         if (!players)
             return;
 
-        std::vector<std::string>::iterator it = players->begin();
-        std::vector<std::string>::iterator it_end = players->end();
+        StringVectIter it = players->begin();
+        StringVectIter it_end = players->end();
         for (; it != it_end; ++ it)
         {
             Avatar *ava = nullptr;

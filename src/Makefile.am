@@ -483,6 +483,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      utils/specialfolder.h \
 	      utils/stringutils.cpp \
 	      utils/stringutils.h \
+	      utils/stringvector.h \
 	      utils/mutex.h \
 	      utils/xml.cpp \
 	      utils/xml.h \

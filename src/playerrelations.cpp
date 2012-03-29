@@ -140,12 +140,9 @@ PlayerRelationsManager::~PlayerRelationsManager()
 
 void PlayerRelationsManager::clear()
 {
-    std::vector<std::string> *names = getPlayers();
-    for (std::vector<std::string>::const_iterator
-             it = names->begin(); it != names->end(); ++it)
-    {
+    StringVect *names = getPlayers();
+    for (StringVectCIter it = names->begin(); it != names->end(); ++ it)
         removePlayer(*it);
-    }
     delete names;
     names = nullptr;
 }
@@ -345,9 +342,9 @@ void PlayerRelationsManager::setRelation(const std::string &player_name,
     signalUpdate(player_name);
 }
 
-std::vector<std::string> * PlayerRelationsManager::getPlayers()
+StringVect * PlayerRelationsManager::getPlayers()
 {
-    std::vector<std::string> *retval = new std::vector<std::string>();
+    StringVect *retval = new StringVect();
 
     for (std::map<std::string,
          PlayerRelation *>::const_iterator it = mRelations.begin();
@@ -362,10 +359,10 @@ std::vector<std::string> * PlayerRelationsManager::getPlayers()
     return retval;
 }
 
-std::vector<std::string> *PlayerRelationsManager::getPlayersByRelation(
+StringVect *PlayerRelationsManager::getPlayersByRelation(
         PlayerRelation::Relation rel)
 {
-    std::vector<std::string> *retval = new std::vector<std::string>();
+    StringVect *retval = new StringVect();
 
     for (std::map<std::string,
          PlayerRelation *>::const_iterator it = mRelations.begin();

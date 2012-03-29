@@ -22,10 +22,10 @@
 #ifndef EMOTE_DB_H
 #define EMOTE_DB_H
 
+#include "utils/stringvector.h"
+
 #include <list>
 #include <map>
-#include <string>
-#include <vector>
 
 class AnimatedSprite;
 
@@ -38,7 +38,7 @@ struct EmoteSprite
 struct EmoteInfo
 {
     std::list<EmoteSprite*> sprites;
-    std::vector<std::string> particles;
+    StringVect particles;
 };
 
 typedef std::map<int, EmoteInfo*> EmoteInfos;

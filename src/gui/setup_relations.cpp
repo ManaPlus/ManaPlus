@@ -42,9 +42,6 @@
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 
-#include <string>
-#include <vector>
-
 #define COLUMNS_NR 2 // name plus listbox
 #define NAME_COLUMN 0
 #define RELATION_CHOICE_COLUMN 1
@@ -146,7 +143,7 @@ public:
         signalBeforeUpdate();
 
         freeWidgets();
-        std::vector<std::string> *player_names = player_relations.getPlayers();
+        StringVect *player_names = player_relations.getPlayers();
 
         if (!player_names)
             return;
@@ -201,7 +198,7 @@ public:
     }
 
 protected:
-    std::vector<std::string> *mPlayers;
+    StringVect *mPlayers;
     std::vector<gcn::Widget *> mWidgets;
     PlayerRelationListModel *mListModel;
 };

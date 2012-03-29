@@ -95,7 +95,7 @@ public:
         return mStrings.at(i);
     }
 private:
-    std::vector<std::string> mStrings;
+    StringVect mStrings;
 };
 
 void ItemAmountWindow::finish(Item *item, int amount, int price, Usage usage)

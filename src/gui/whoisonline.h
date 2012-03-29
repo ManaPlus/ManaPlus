@@ -23,16 +23,16 @@
 #ifndef WHOISONLINE_H
 #define WHOISONLINE_H
 
-#include <string>
-#include <set>
-#include <vector>
-
 #include "configlistener.h"
 
 #include "gui/widgets/linkhandler.h"
 #include "gui/widgets/window.h"
 
-#include "../utils/mutex.h"
+#include "utils/stringvector.h"
+
+#include "utils/mutex.h"
+
+#include <set>
 
 #include <guichan/actionlistener.hpp>
 
@@ -136,7 +136,7 @@ public:
 
     void optionChanged(const std::string &name);
 
-    void updateList(std::vector<std::string> &list);
+    void updateList(StringVect &list);
 
     void readFromWeb();
 

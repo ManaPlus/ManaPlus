@@ -62,7 +62,7 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *window)
     if (!mCharCreateDialog)
         return;
 
-    std::vector<std::string> attributes;
+    StringVect attributes;
     attributes.push_back(_("Strength:"));
     attributes.push_back(_("Agility:"));
     attributes.push_back(_("Vitality:"));

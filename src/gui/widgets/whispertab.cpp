@@ -166,7 +166,7 @@ void WhisperTab::saveToLogFile(std::string &msg)
         chatLogger->log(getNick(), msg);
 }
 
-void WhisperTab::getAutoCompleteList(std::vector<std::string> &names) const
+void WhisperTab::getAutoCompleteList(StringVect &names) const
 {
     names.push_back(mNick);
 }

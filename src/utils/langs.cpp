@@ -30,9 +30,9 @@
 
 #include "debug.h"
 
-std::vector<std::string> getLang()
+LangVect getLang()
 {
-    std::vector<std::string> langs;
+    LangVect langs;
 
     std::string lang = config.getValue("lang", "").c_str();
     if (lang.empty())

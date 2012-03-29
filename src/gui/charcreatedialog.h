@@ -32,9 +32,6 @@
 
 #include <guichan/actionlistener.hpp>
 
-#include <string>
-#include <vector>
-
 class LocalPlayer;
 class PlayerBox;
 class TextField;
@@ -64,7 +61,7 @@ class CharCreateDialog : public Window, public gcn::ActionListener
          */
         void unlock();
 
-        void setAttributes(const std::vector<std::string> &labels,
+        void setAttributes(const StringVect &labels,
                            int available,
                            int min, int max);
 

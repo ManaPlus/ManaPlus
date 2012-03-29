@@ -2546,7 +2546,7 @@ std::string Being::loadComment(const std::string &name, int type)
 
     str += stringToHexPath(name) + "/comment.txt";
     logger->log("load from: %s", str.c_str());
-    std::vector<std::string> lines;
+    StringVect lines;
 
     ResourceManager *resman = ResourceManager::getInstance();
     if (resman->existsLocal(str))

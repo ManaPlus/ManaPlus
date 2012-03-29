@@ -25,10 +25,10 @@
 
 #include "main.h"
 
+#include "utils/stringvector.h"
+
 #include <ctime>
 #include <map>
-#include <string>
-#include <vector>
 #include <set>
 
 class Image;
@@ -219,14 +219,12 @@ class ResourceManager
         /**
          * Retrieves the contents of a text file (PhysFS).
          */
-        bool loadTextFile(const std::string &fileName,
-                          std::vector<std::string> &lines);
+        bool loadTextFile(const std::string &fileName, StringVect &lines);
 
         /**
          * Retrieves the contents of a text file.
          */
-        std::vector<std::string> loadTextFileLocal(const std::string
-                                                   &fileName);
+        StringVect loadTextFileLocal(const std::string &fileName);
 
         void saveTextFile(std::string path, std::string name,
                           std::string text);

@@ -1308,11 +1308,11 @@ void CommandHandler::replaceVars(std::string &str)
     }
     if (str.find("<PEOPLE>") != std::string::npos)
     {
-        std::vector<std::string> names;
+        StringVect names;
         std::string newStr = "";
         actorSpriteManager->getPlayerNames(names, false);
-        std::vector<std::string>::const_iterator it = names.begin();
-        std::vector<std::string>::const_iterator it_end = names.end();
+        StringVectCIter it = names.begin();
+        StringVectCIter it_end = names.end();
         for (; it != it_end; ++ it)
         {
             if (*it != player_node->getName())
@@ -1327,14 +1327,14 @@ void CommandHandler::replaceVars(std::string &str)
     }
     if (str.find("<PARTY>") != std::string::npos)
     {
-        std::vector<std::string> names;
+        StringVect names;
         std::string newStr = "";
         Party *party = nullptr;
         if (player_node->isInParty() && (party = player_node->getParty()))
         {
             party->getNames(names);
-            std::vector<std::string>::const_iterator it = names.begin();
-            std::vector<std::string>::const_iterator it_end = names.end();
+            StringVectCIter it = names.begin();
+            StringVectCIter it_end = names.end();
             for (; it != it_end; ++ it)
             {
                 if (*it != player_node->getName())
