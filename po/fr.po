@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-03-29 01:26+0300\n"
+"POT-Creation-Date: 2012-03-31 19:47+0300\n"
 "PO-Revision-Date: 2012-03-28 22:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/language/"
@@ -32,7 +32,7 @@ msgstr "Ignorer les requêtes d'échanges entrantes"
 msgid "Accepting incoming trade requests"
 msgstr "Accepter les requêtes d'échanges entrantes"
 
-#: src/actorspritemanager.cpp:1164
+#: src/actorspritemanager.cpp:1163
 msgid "Visible on map"
 msgstr "Visible sur la carte"
 
@@ -66,7 +66,7 @@ msgstr "Configuration"
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:981 src/gui/setup_video.cpp:239
+#: src/client.cpp:981 src/gui/setup_video.cpp:237
 msgid "Video"
 msgstr "Vidéo"
 
@@ -396,7 +396,7 @@ msgstr "Commentaire : %s"
 msgid "Bot Checker"
 msgstr "Testeur de Robot"
 
-#: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:65
+#: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:62
 msgid "Name"
 msgstr "Nom"
 
@@ -497,7 +497,7 @@ msgstr "Vendre"
 #: src/gui/popupmenu.cpp:2065 src/gui/popupmenu.cpp:2106
 #: src/gui/popupmenu.cpp:2160 src/gui/popupmenu.cpp:2182
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:83 src/gui/setup.cpp:73
-#: src/gui/socialwindow.cpp:1199 src/gui/textcommandeditor.cpp:242
+#: src/gui/socialwindow.cpp:1199 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updaterwindow.cpp:169
 msgid "Cancel"
@@ -677,8 +677,8 @@ msgid "Enter password:"
 msgstr "Entrer le mot de passe :"
 
 #: src/gui/charselectdialog.cpp:413 src/gui/serverdialog.cpp:266
-#: src/gui/setup_relations.cpp:249 src/gui/shopwindow.cpp:123
-#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:245
+#: src/gui/setup_relations.cpp:246 src/gui/shopwindow.cpp:123
+#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -754,10 +754,10 @@ msgstr "arc en ciel 3"
 
 #: src/gui/chatwindow.cpp:149 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:79
-#: src/gui/logindialog.cpp:107 src/gui/setup_relations.cpp:227
+#: src/gui/logindialog.cpp:107 src/gui/setup_relations.cpp:224
 #: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
-#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:101
-#: src/gui/textcommandeditor.cpp:141 src/gui/textcommandeditor.cpp:161
+#: src/gui/setup_video.cpp:209 src/gui/textcommandeditor.cpp:100
+#: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:160
 #: src/gui/widgets/namesmodel.cpp:48
 msgid "???"
 msgstr "???"
@@ -1437,7 +1437,7 @@ msgstr "Ne plus ignorer"
 #: src/gui/popupmenu.cpp:184 src/gui/popupmenu.cpp:196
 #: src/gui/popupmenu.cpp:439 src/gui/popupmenu.cpp:459
 #: src/gui/popupmenu.cpp:729 src/gui/popupmenu.cpp:749
-#: src/playerrelations.cpp:466
+#: src/playerrelations.cpp:463
 msgid "Completely ignore"
 msgstr "Ignorer complètement"
 
@@ -2400,55 +2400,55 @@ msgstr "Autoriser la récupération automatique sur clic droit de la souris"
 msgid "Group friends in who is online window"
 msgstr "Regrouper les amis dans la fenêtre de qui est en ligne"
 
-#: src/gui/setup_relations.cpp:66
+#: src/gui/setup_relations.cpp:63
 msgid "Relation"
 msgstr "Relation"
 
-#: src/gui/setup_relations.cpp:71
+#: src/gui/setup_relations.cpp:68
 msgid "Neutral"
 msgstr "Neutre"
 
-#: src/gui/setup_relations.cpp:72
+#: src/gui/setup_relations.cpp:69
 msgid "Friend"
 msgstr "Ami"
 
-#: src/gui/setup_relations.cpp:73
+#: src/gui/setup_relations.cpp:70
 msgid "Disregarded"
 msgstr "Négligé"
 
-#: src/gui/setup_relations.cpp:74
+#: src/gui/setup_relations.cpp:71
 msgid "Ignored"
 msgstr "Ignoré"
 
-#: src/gui/setup_relations.cpp:75
+#: src/gui/setup_relations.cpp:72
 msgid "Erased"
 msgstr "Effacé"
 
-#: src/gui/setup_relations.cpp:76
+#: src/gui/setup_relations.cpp:73
 msgid "Blacklisted"
 msgstr "Sous liste noire"
 
-#: src/gui/setup_relations.cpp:77
+#: src/gui/setup_relations.cpp:74
 msgid "Enemy"
 msgstr "Ennemi"
 
-#: src/gui/setup_relations.cpp:245
+#: src/gui/setup_relations.cpp:242
 msgid "Allow trading"
 msgstr "Autoriser les échanges"
 
-#: src/gui/setup_relations.cpp:247
+#: src/gui/setup_relations.cpp:244
 msgid "Allow whispers"
 msgstr "Autoriser les messages privés"
 
-#: src/gui/setup_relations.cpp:250
+#: src/gui/setup_relations.cpp:247
 msgid "Old"
 msgstr "Ancien"
 
-#: src/gui/setup_relations.cpp:252
+#: src/gui/setup_relations.cpp:249
 msgid "Relations"
 msgstr "Relations"
 
-#: src/gui/setup_relations.cpp:274
+#: src/gui/setup_relations.cpp:271
 msgid "When ignoring:"
 msgstr "Quand ignoré :"
 
@@ -2576,99 +2576,99 @@ msgstr "Taille de police"
 msgid "Theme Changed"
 msgstr "Thème changé"
 
-#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:503
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:501
+#: src/gui/setup_video.cpp:508
 msgid "Restart your client for the change to take effect."
 msgstr "Redémarrez le jeu pour que les changements soient appliqués."
 
-#: src/gui/setup_video.cpp:194
+#: src/gui/setup_video.cpp:192
 msgid "Software"
 msgstr "Logiciel"
 
-#: src/gui/setup_video.cpp:195
+#: src/gui/setup_video.cpp:193
 msgid "Fast OpenGL"
 msgstr "Open GL rapide."
 
-#: src/gui/setup_video.cpp:196
+#: src/gui/setup_video.cpp:194
 msgid "Safe OpenGL"
 msgstr "OpenGL sécurisé"
 
-#: src/gui/setup_video.cpp:227
+#: src/gui/setup_video.cpp:225
 msgid "Full screen"
 msgstr "Plein écran"
 
-#: src/gui/setup_video.cpp:228
+#: src/gui/setup_video.cpp:226
 msgid "Custom cursor"
 msgstr "Curseur personnalisé"
 
-#: src/gui/setup_video.cpp:230
+#: src/gui/setup_video.cpp:228
 msgid "Enable resize"
 msgstr "Activer le redimensionnement"
 
-#: src/gui/setup_video.cpp:231
+#: src/gui/setup_video.cpp:229
 msgid "No frame"
 msgstr "Pas d'image"
 
-#: src/gui/setup_video.cpp:232
+#: src/gui/setup_video.cpp:230
 msgid "FPS limit:"
 msgstr "Limite FPS :"
 
-#: src/gui/setup_video.cpp:236 src/gui/setup_video.cpp:257
-#: src/gui/setup_video.cpp:446 src/gui/setup_video.cpp:553
+#: src/gui/setup_video.cpp:234 src/gui/setup_video.cpp:255
+#: src/gui/setup_video.cpp:444 src/gui/setup_video.cpp:551
 msgid "Alt FPS limit: "
 msgstr "Alterner les limites FPS"
 
-#: src/gui/setup_video.cpp:255 src/gui/setup_video.cpp:258
-#: src/gui/setup_video.cpp:445 src/gui/setup_video.cpp:539
-#: src/gui/setup_video.cpp:551
+#: src/gui/setup_video.cpp:253 src/gui/setup_video.cpp:256
+#: src/gui/setup_video.cpp:443 src/gui/setup_video.cpp:537
+#: src/gui/setup_video.cpp:549
 msgid "None"
 msgstr "Aucun"
 
-#: src/gui/setup_video.cpp:378
+#: src/gui/setup_video.cpp:376
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Impossible de passer en mode fenêtré, et l'ancienne résolution n'est "
 "également pas accessible !"
 
-#: src/gui/setup_video.cpp:384
+#: src/gui/setup_video.cpp:382
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Impossible de passer en mode plein-écran, et l'ancienne résolution n'est "
 "également pas accessible !"
 
-#: src/gui/setup_video.cpp:395
+#: src/gui/setup_video.cpp:393
 msgid "Switching to Full Screen"
 msgstr "Passage en plein écran"
 
-#: src/gui/setup_video.cpp:396
+#: src/gui/setup_video.cpp:394
 msgid "Restart needed for changes to take effect."
 msgstr ""
 "Les changements ne seront pris en compte qu'au prochain démarrage du jeu."
 
-#: src/gui/setup_video.cpp:408
+#: src/gui/setup_video.cpp:406
 msgid "Changing to OpenGL"
 msgstr "Activation d'OpenGL"
 
-#: src/gui/setup_video.cpp:409
+#: src/gui/setup_video.cpp:407
 msgid "Applying change to OpenGL requires restart."
 msgstr ""
 "Le changement OpenGL ne sera pris en compte qu'au prochain démarrage du jeu."
 
-#: src/gui/setup_video.cpp:484
+#: src/gui/setup_video.cpp:482
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Résolution personnalisée (Exemple : 1024x768)"
 
-#: src/gui/setup_video.cpp:485
+#: src/gui/setup_video.cpp:483
 msgid "Enter new resolution:                "
 msgstr "Entrer la nouvelle résolution : "
 
-#: src/gui/setup_video.cpp:502 src/gui/setup_video.cpp:509
+#: src/gui/setup_video.cpp:500 src/gui/setup_video.cpp:507
 msgid "Screen Resolution Changed"
 msgstr "Résolution de l'écran modifiée"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:502
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Certaines fenêtres pourraient être modifiées pour coïncider à la résolution "
@@ -3103,91 +3103,91 @@ msgstr "Niveau : %d (GM %d)"
 msgid "Correction points: %d"
 msgstr "Points de correction : %d"
 
-#: src/gui/textcommandeditor.cpp:112
+#: src/gui/textcommandeditor.cpp:111
 msgid "No Target"
 msgstr "Pas de cible"
 
-#: src/gui/textcommandeditor.cpp:113
+#: src/gui/textcommandeditor.cpp:112
 msgid "Allow Target"
 msgstr "Autoriser le ciblage"
 
-#: src/gui/textcommandeditor.cpp:114
+#: src/gui/textcommandeditor.cpp:113
 msgid "Need Target"
 msgstr "Nécessite une cible"
 
-#: src/gui/textcommandeditor.cpp:119
+#: src/gui/textcommandeditor.cpp:118
 msgid "General Magic"
 msgstr "Magie générale"
 
-#: src/gui/textcommandeditor.cpp:120
+#: src/gui/textcommandeditor.cpp:119
 msgid "Life Magic"
 msgstr "Magie de Vie"
 
-#: src/gui/textcommandeditor.cpp:121
+#: src/gui/textcommandeditor.cpp:120
 msgid "War Magic"
 msgstr "Magie de Guerre"
 
-#: src/gui/textcommandeditor.cpp:122
+#: src/gui/textcommandeditor.cpp:121
 msgid "Transmute Magic"
 msgstr "Magie de Transmutation"
 
-#: src/gui/textcommandeditor.cpp:123
+#: src/gui/textcommandeditor.cpp:122
 msgid "Nature Magic"
 msgstr "Magie de la Nature"
 
-#: src/gui/textcommandeditor.cpp:124
+#: src/gui/textcommandeditor.cpp:123
 msgid "Astral Magic"
 msgstr "Magie Astrale"
 
-#: src/gui/textcommandeditor.cpp:169
+#: src/gui/textcommandeditor.cpp:168
 msgid "Command Editor"
 msgstr "Éditeur de commande"
 
-#: src/gui/textcommandeditor.cpp:186
+#: src/gui/textcommandeditor.cpp:185
 msgid "magic"
 msgstr "Magie"
 
-#: src/gui/textcommandeditor.cpp:190
+#: src/gui/textcommandeditor.cpp:189
 msgid "other"
 msgstr "Autre"
 
-#: src/gui/textcommandeditor.cpp:195
+#: src/gui/textcommandeditor.cpp:194
 msgid "Symbol:"
 msgstr "Symbole : "
 
-#: src/gui/textcommandeditor.cpp:198
+#: src/gui/textcommandeditor.cpp:197
 msgid "Command:"
 msgstr "Commande :"
 
-#: src/gui/textcommandeditor.cpp:201
+#: src/gui/textcommandeditor.cpp:200
 msgid "Comment:"
 msgstr "Commentaire : "
 
-#: src/gui/textcommandeditor.cpp:204
+#: src/gui/textcommandeditor.cpp:203
 msgid "Mana:"
 msgstr "Mana : "
 
-#: src/gui/textcommandeditor.cpp:210
+#: src/gui/textcommandeditor.cpp:209
 msgid "Target Type:"
 msgstr "Type de cible"
 
-#: src/gui/textcommandeditor.cpp:216
+#: src/gui/textcommandeditor.cpp:215
 msgid "Icon:"
 msgstr "Icône : "
 
-#: src/gui/textcommandeditor.cpp:222
+#: src/gui/textcommandeditor.cpp:221
 msgid "Magic level:"
 msgstr "Niveau de Magie :"
 
-#: src/gui/textcommandeditor.cpp:228
+#: src/gui/textcommandeditor.cpp:227
 msgid "Magic School:"
 msgstr "École de magie : "
 
-#: src/gui/textcommandeditor.cpp:234
+#: src/gui/textcommandeditor.cpp:233
 msgid "School level:"
 msgstr "Niveau scolaire : "
 
-#: src/gui/textcommandeditor.cpp:239
+#: src/gui/textcommandeditor.cpp:238
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -5806,19 +5806,19 @@ msgstr "Connexion au serveur terminée."
 msgid "%s is not in your party!"
 msgstr "%s n'est pas membre de votre groupe !"
 
-#: src/playerrelations.cpp:480
+#: src/playerrelations.cpp:477
 msgid "Print '...'"
 msgstr "Affiche '...'"
 
-#: src/playerrelations.cpp:500
+#: src/playerrelations.cpp:497
 msgid "Blink name"
 msgstr "Fais clignoter le nom"
 
-#: src/playerrelations.cpp:542
+#: src/playerrelations.cpp:539
 msgid "Floating '...' bubble"
 msgstr "Bulle flottante '...'"
 
-#: src/playerrelations.cpp:545
+#: src/playerrelations.cpp:542
 msgid "Floating bubble"
 msgstr "Bulle flottante"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-03-29 01:26+0300\n"
+"POT-Creation-Date: 2012-03-31 19:47+0300\n"
 "PO-Revision-Date: 2012-03-28 22:32+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/"
@@ -31,7 +31,7 @@ msgstr "Игнорировать предложения о торговле"
 msgid "Accepting incoming trade requests"
 msgstr "Принимать предложения о торговле"
 
-#: src/actorspritemanager.cpp:1164
+#: src/actorspritemanager.cpp:1163
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
@@ -65,7 +65,7 @@ msgstr "Настройка"
 msgid "Perfomance"
 msgstr "Производительность"
 
-#: src/client.cpp:981 src/gui/setup_video.cpp:239
+#: src/client.cpp:981 src/gui/setup_video.cpp:237
 msgid "Video"
 msgstr "Видео"
 
@@ -398,7 +398,7 @@ msgstr "Комментарий: %s"
 msgid "Bot Checker"
 msgstr "Окно детектора ботов"
 
-#: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:65
+#: src/gui/botcheckerwindow.cpp:296 src/gui/setup_relations.cpp:62
 msgid "Name"
 msgstr "Имя"
 
@@ -499,7 +499,7 @@ msgstr "Продать"
 #: src/gui/popupmenu.cpp:2065 src/gui/popupmenu.cpp:2106
 #: src/gui/popupmenu.cpp:2160 src/gui/popupmenu.cpp:2182
 #: src/gui/quitdialog.cpp:55 src/gui/register.cpp:83 src/gui/setup.cpp:73
-#: src/gui/socialwindow.cpp:1199 src/gui/textcommandeditor.cpp:242
+#: src/gui/socialwindow.cpp:1199 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
 #: src/gui/updaterwindow.cpp:169
 msgid "Cancel"
@@ -679,8 +679,8 @@ msgid "Enter password:"
 msgstr "Введите пароль:"
 
 #: src/gui/charselectdialog.cpp:413 src/gui/serverdialog.cpp:266
-#: src/gui/setup_relations.cpp:249 src/gui/shopwindow.cpp:123
-#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:245
+#: src/gui/setup_relations.cpp:246 src/gui/shopwindow.cpp:123
+#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Удалить"
 
@@ -756,10 +756,10 @@ msgstr "радуга 3"
 
 #: src/gui/chatwindow.cpp:149 src/gui/inventorywindow.cpp:90
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:79
-#: src/gui/logindialog.cpp:107 src/gui/setup_relations.cpp:227
+#: src/gui/logindialog.cpp:107 src/gui/setup_relations.cpp:224
 #: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
-#: src/gui/setup_video.cpp:211 src/gui/textcommandeditor.cpp:101
-#: src/gui/textcommandeditor.cpp:141 src/gui/textcommandeditor.cpp:161
+#: src/gui/setup_video.cpp:209 src/gui/textcommandeditor.cpp:100
+#: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:160
 #: src/gui/widgets/namesmodel.cpp:48
 msgid "???"
 msgstr "???"
@@ -1441,7 +1441,7 @@ msgstr "Не игнорировать"
 #: src/gui/popupmenu.cpp:184 src/gui/popupmenu.cpp:196
 #: src/gui/popupmenu.cpp:439 src/gui/popupmenu.cpp:459
 #: src/gui/popupmenu.cpp:729 src/gui/popupmenu.cpp:749
-#: src/playerrelations.cpp:466
+#: src/playerrelations.cpp:463
 msgid "Completely ignore"
 msgstr "@@ignore|Полностью игнорировать@@"
 
@@ -2406,55 +2406,55 @@ msgstr "Включить самолечение по клику мыши"
 msgid "Group friends in who is online window"
 msgstr "Группировать друзей в окне онлайн списка"
 
-#: src/gui/setup_relations.cpp:66
+#: src/gui/setup_relations.cpp:63
 msgid "Relation"
 msgstr "Отношение"
 
-#: src/gui/setup_relations.cpp:71
+#: src/gui/setup_relations.cpp:68
 msgid "Neutral"
 msgstr "Нейтральное"
 
-#: src/gui/setup_relations.cpp:72
+#: src/gui/setup_relations.cpp:69
 msgid "Friend"
 msgstr "Друг"
 
-#: src/gui/setup_relations.cpp:73
+#: src/gui/setup_relations.cpp:70
 msgid "Disregarded"
 msgstr "Пренебрегаемый"
 
-#: src/gui/setup_relations.cpp:74
+#: src/gui/setup_relations.cpp:71
 msgid "Ignored"
 msgstr "Игнорировано"
 
-#: src/gui/setup_relations.cpp:75
+#: src/gui/setup_relations.cpp:72
 msgid "Erased"
 msgstr "Стерт"
 
-#: src/gui/setup_relations.cpp:76
+#: src/gui/setup_relations.cpp:73
 msgid "Blacklisted"
 msgstr "В черном списке"
 
-#: src/gui/setup_relations.cpp:77
+#: src/gui/setup_relations.cpp:74
 msgid "Enemy"
 msgstr "Враг"
 
-#: src/gui/setup_relations.cpp:245
+#: src/gui/setup_relations.cpp:242
 msgid "Allow trading"
 msgstr "Разрешить торговлю"
 
-#: src/gui/setup_relations.cpp:247
+#: src/gui/setup_relations.cpp:244
 msgid "Allow whispers"
 msgstr "Разрешить шептание"
 
-#: src/gui/setup_relations.cpp:250
+#: src/gui/setup_relations.cpp:247
 msgid "Old"
 msgstr "Старые"
 
-#: src/gui/setup_relations.cpp:252
+#: src/gui/setup_relations.cpp:249
 msgid "Relations"
 msgstr "Связи"
 
-#: src/gui/setup_relations.cpp:274
+#: src/gui/setup_relations.cpp:271
 msgid "When ignoring:"
 msgstr "Когда игнорируется:"
 
@@ -2582,97 +2582,97 @@ msgstr "Размер шрифта"
 msgid "Theme Changed"
 msgstr "Тема изменена"
 
-#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:503
-#: src/gui/setup_video.cpp:510
+#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:501
+#: src/gui/setup_video.cpp:508
 msgid "Restart your client for the change to take effect."
 msgstr "Перезегрузите игру дабы изменения вступили в силу."
 
-#: src/gui/setup_video.cpp:194
+#: src/gui/setup_video.cpp:192
 msgid "Software"
 msgstr "Программно"
 
-#: src/gui/setup_video.cpp:195
+#: src/gui/setup_video.cpp:193
 msgid "Fast OpenGL"
 msgstr "Быстрый OpenGL"
 
-#: src/gui/setup_video.cpp:196
+#: src/gui/setup_video.cpp:194
 msgid "Safe OpenGL"
 msgstr "Безопасный OpenGL"
 
-#: src/gui/setup_video.cpp:227
+#: src/gui/setup_video.cpp:225
 msgid "Full screen"
 msgstr "На полный экран"
 
-#: src/gui/setup_video.cpp:228
+#: src/gui/setup_video.cpp:226
 msgid "Custom cursor"
 msgstr "Игровой курсор"
 
-#: src/gui/setup_video.cpp:230
+#: src/gui/setup_video.cpp:228
 msgid "Enable resize"
 msgstr "Разрешить менять размер окна"
 
-#: src/gui/setup_video.cpp:231
+#: src/gui/setup_video.cpp:229
 msgid "No frame"
 msgstr "Без рамки"
 
-#: src/gui/setup_video.cpp:232
+#: src/gui/setup_video.cpp:230
 msgid "FPS limit:"
 msgstr "Ограничить кадр/с:"
 
-#: src/gui/setup_video.cpp:236 src/gui/setup_video.cpp:257
-#: src/gui/setup_video.cpp:446 src/gui/setup_video.cpp:553
+#: src/gui/setup_video.cpp:234 src/gui/setup_video.cpp:255
+#: src/gui/setup_video.cpp:444 src/gui/setup_video.cpp:551
 msgid "Alt FPS limit: "
 msgstr "Альтер. ограничить кадр/с: "
 
-#: src/gui/setup_video.cpp:255 src/gui/setup_video.cpp:258
-#: src/gui/setup_video.cpp:445 src/gui/setup_video.cpp:539
-#: src/gui/setup_video.cpp:551
+#: src/gui/setup_video.cpp:253 src/gui/setup_video.cpp:256
+#: src/gui/setup_video.cpp:443 src/gui/setup_video.cpp:537
+#: src/gui/setup_video.cpp:549
 msgid "None"
 msgstr "Нет"
 
-#: src/gui/setup_video.cpp:378
+#: src/gui/setup_video.cpp:376
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в оконный режим. Восстановить старый режим также не "
 "удалось!"
 
-#: src/gui/setup_video.cpp:384
+#: src/gui/setup_video.cpp:382
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
 "Не удалось переключиться в полноэкранный режим. Восстановить старый режим "
 "также не удалось!"
 
-#: src/gui/setup_video.cpp:395
+#: src/gui/setup_video.cpp:393
 msgid "Switching to Full Screen"
 msgstr "Переключение в полноэкранный режим"
 
-#: src/gui/setup_video.cpp:396
+#: src/gui/setup_video.cpp:394
 msgid "Restart needed for changes to take effect."
 msgstr "Для вступления в силу выбранных настроек требуется перезагрузка игры."
 
-#: src/gui/setup_video.cpp:408
+#: src/gui/setup_video.cpp:406
 msgid "Changing to OpenGL"
 msgstr "Переключение на OpenGL"
 
-#: src/gui/setup_video.cpp:409
+#: src/gui/setup_video.cpp:407
 msgid "Applying change to OpenGL requires restart."
 msgstr "Для изменения режима OpenGL необходима перезагрузки игры."
 
-#: src/gui/setup_video.cpp:484
+#: src/gui/setup_video.cpp:482
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Свое разрешение (например: 1024х768)"
 
-#: src/gui/setup_video.cpp:485
+#: src/gui/setup_video.cpp:483
 msgid "Enter new resolution:                "
 msgstr "Новое разрешение:                   "
 
-#: src/gui/setup_video.cpp:502 src/gui/setup_video.cpp:509
+#: src/gui/setup_video.cpp:500 src/gui/setup_video.cpp:507
 msgid "Screen Resolution Changed"
 msgstr "Разрешение экрана изменено"
 
-#: src/gui/setup_video.cpp:504
+#: src/gui/setup_video.cpp:502
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Некоторые окна могут быть сдвинуты, чтобы уместиться на экране при меньшем "
@@ -3103,91 +3103,91 @@ msgstr "Уровень: %d (GM %d)"
 msgid "Correction points: %d"
 msgstr "Очков навыков: %d"
 
-#: src/gui/textcommandeditor.cpp:112
+#: src/gui/textcommandeditor.cpp:111
 msgid "No Target"
 msgstr "Без цели"
 
-#: src/gui/textcommandeditor.cpp:113
+#: src/gui/textcommandeditor.cpp:112
 msgid "Allow Target"
 msgstr "Разрешить цель"
 
-#: src/gui/textcommandeditor.cpp:114
+#: src/gui/textcommandeditor.cpp:113
 msgid "Need Target"
 msgstr "Необходима цель"
 
-#: src/gui/textcommandeditor.cpp:119
+#: src/gui/textcommandeditor.cpp:118
 msgid "General Magic"
 msgstr "Общая Магия"
 
-#: src/gui/textcommandeditor.cpp:120
+#: src/gui/textcommandeditor.cpp:119
 msgid "Life Magic"
 msgstr "Магия Жизни"
 
-#: src/gui/textcommandeditor.cpp:121
+#: src/gui/textcommandeditor.cpp:120
 msgid "War Magic"
 msgstr "Боевая Магия"
 
-#: src/gui/textcommandeditor.cpp:122
+#: src/gui/textcommandeditor.cpp:121
 msgid "Transmute Magic"
 msgstr "Магия Трансформации"
 
-#: src/gui/textcommandeditor.cpp:123
+#: src/gui/textcommandeditor.cpp:122
 msgid "Nature Magic"
 msgstr "Магия Природы"
 
-#: src/gui/textcommandeditor.cpp:124
+#: src/gui/textcommandeditor.cpp:123
 msgid "Astral Magic"
 msgstr "Астральная магия"
 
-#: src/gui/textcommandeditor.cpp:169
+#: src/gui/textcommandeditor.cpp:168
 msgid "Command Editor"
 msgstr "Редактор команд"
 
-#: src/gui/textcommandeditor.cpp:186
+#: src/gui/textcommandeditor.cpp:185
 msgid "magic"
 msgstr "Магия"
 
-#: src/gui/textcommandeditor.cpp:190
+#: src/gui/textcommandeditor.cpp:189
 msgid "other"
 msgstr "Другое"
 
-#: src/gui/textcommandeditor.cpp:195
+#: src/gui/textcommandeditor.cpp:194
 msgid "Symbol:"
 msgstr "Символ:"
 
-#: src/gui/textcommandeditor.cpp:198
+#: src/gui/textcommandeditor.cpp:197
 msgid "Command:"
 msgstr "Команда:"
 
-#: src/gui/textcommandeditor.cpp:201
+#: src/gui/textcommandeditor.cpp:200
 msgid "Comment:"
 msgstr "Комментарий:"
 
-#: src/gui/textcommandeditor.cpp:204
+#: src/gui/textcommandeditor.cpp:203
 msgid "Mana:"
 msgstr "Мана:"
 
-#: src/gui/textcommandeditor.cpp:210
+#: src/gui/textcommandeditor.cpp:209
 msgid "Target Type:"
 msgstr "Тип цели:"
 
-#: src/gui/textcommandeditor.cpp:216
+#: src/gui/textcommandeditor.cpp:215
 msgid "Icon:"
 msgstr "Картинка:"
 
-#: src/gui/textcommandeditor.cpp:222
+#: src/gui/textcommandeditor.cpp:221
 msgid "Magic level:"
 msgstr "Уровень Магии:"
 
-#: src/gui/textcommandeditor.cpp:228
+#: src/gui/textcommandeditor.cpp:227
 msgid "Magic School:"
 msgstr "Школа Магии:"
 
-#: src/gui/textcommandeditor.cpp:234
+#: src/gui/textcommandeditor.cpp:233
 msgid "School level:"
 msgstr "Уровень школы:"
 
-#: src/gui/textcommandeditor.cpp:239
+#: src/gui/textcommandeditor.cpp:238
 msgid "Save"
 msgstr "Сохранить"
 
@@ -5775,19 +5775,19 @@ msgstr "Подключение к серверу прервано."
 msgid "%s is not in your party!"
 msgstr "%s не в группе!"
 
-#: src/playerrelations.cpp:480
+#: src/playerrelations.cpp:477
 msgid "Print '...'"
 msgstr "Печатать '...'"
 
-#: src/playerrelations.cpp:500
+#: src/playerrelations.cpp:497
 msgid "Blink name"
 msgstr "Мигать именем"
 
-#: src/playerrelations.cpp:542
+#: src/playerrelations.cpp:539
 msgid "Floating '...' bubble"
 msgstr "Плавающий '...' пузырек"
 
-#: src/playerrelations.cpp:545
+#: src/playerrelations.cpp:542
 msgid "Floating bubble"
 msgstr "Плавающий пузырек"
 
