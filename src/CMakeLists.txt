@@ -567,6 +567,7 @@ SET(SRCS
     joystick.h
     keyboardconfig.cpp
     keyboardconfig.h
+    keyboarddata.h
     listener.cpp
     listener.h
     localconsts.h
