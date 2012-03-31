@@ -285,7 +285,7 @@ Particle *Particle::addEffect(const std::string &particleEffectFile,
 {
     Particle *newParticle = nullptr;
 
-    std::string::size_type pos = particleEffectFile.find('|');
+    size_t pos = particleEffectFile.find('|');
     std::string dyePalettes;
     if (pos != std::string::npos)
         dyePalettes = particleEffectFile.substr(pos + 1);

@@ -122,21 +122,21 @@ void Palette::advanceGradient()
             else
                 colIndex = mGradVector[i]->gradientIndex;
 
-            if (mGradVector[i]->grad == PULSE)
+            ColorElem *elem = mGradVector[i];
+            gcn::Color &color = elem->color;
+
+            if (elem->grad == PULSE)
             {
                 colVal = static_cast<int>(255.0 *
                         sin(M_PI * colIndex / numOfColors));
 
-                const gcn::Color &col = mGradVector[i]->testColor;
+                const gcn::Color &col = elem->testColor;
 
-                mGradVector[i]->color.r =
-                    ((colVal * col.r) / 255) % (col.r + 1);
-                mGradVector[i]->color.g =
-                    ((colVal * col.g) / 255) % (col.g + 1);
-                mGradVector[i]->color.b =
-                    ((colVal * col.b) / 255) % (col.b + 1);
+                color.r = ((colVal * col.r) / 255) % (col.r + 1);
+                color.g = ((colVal * col.g) / 255) % (col.g + 1);
+                color.b = ((colVal * col.b) / 255) % (col.b + 1);
             }
-            if (mGradVector[i]->grad == SPECTRUM)
+            if (elem->grad == SPECTRUM)
             {
                 if (colIndex % 2)
                 { // falling curve
@@ -165,17 +165,14 @@ void Palette::advanceGradient()
                     }
                 }
 
-                mGradVector[i]->color.r =
-                        (colIndex == 0 || colIndex == 5) ? 255 :
-                        (colIndex == 1 || colIndex == 4) ? colVal : 0;
-                mGradVector[i]->color.g =
-                        (colIndex == 1 || colIndex == 2) ? 255 :
-                        (colIndex == 0 || colIndex == 3) ? colVal : 0;
-                mGradVector[i]->color.b =
-                        (colIndex == 3 || colIndex == 4) ? 255 :
-                        (colIndex == 2 || colIndex == 5) ? colVal : 0;
+                color.r = (colIndex == 0 || colIndex == 5) ? 255 :
+                    (colIndex == 1 || colIndex == 4) ? colVal : 0;
+                color.g = (colIndex == 1 || colIndex == 2) ? 255 :
+                    (colIndex == 0 || colIndex == 3) ? colVal : 0;
+                color.b = (colIndex == 3 || colIndex == 4) ? 255 :
+                    (colIndex == 2 || colIndex == 5) ? colVal : 0;
             }
-            else if (mGradVector[i]->grad == RAINBOW)
+            else if (elem->grad == RAINBOW)
             {
                 const gcn::Color &startCol = RAINBOW_COLORS[colIndex];
                 const gcn::Color &destCol =
@@ -188,14 +185,14 @@ void Palette::advanceGradient()
 
                 destColVal = 1 - startColVal;
 
-                mGradVector[i]->color.r = static_cast<int>(startColVal
-                        * startCol.r + destColVal * destCol.r);
+                color.r = static_cast<int>(startColVal
+                    * startCol.r + destColVal * destCol.r);
 
-                mGradVector[i]->color.g = static_cast<int>(startColVal
-                        * startCol.g + destColVal * destCol.g);
+                color.g = static_cast<int>(startColVal
+                    * startCol.g + destColVal * destCol.g);
 
-                mGradVector[i]->color.b = static_cast<int>(startColVal
-                        * startCol.b + destColVal * destCol.b);
+                color.b = static_cast<int>(startColVal
+                    * startCol.b + destColVal * destCol.b);
             }
         }
 

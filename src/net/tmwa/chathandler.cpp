@@ -150,7 +150,7 @@ void ChatHandler::sendRaw(const std::string &args)
     if (line == "")
         return;
 
-    std::string::size_type pos = line.find(" ");
+    size_t pos = line.find(" ");
     if (pos != std::string::npos)
     {
         str = line.substr(0, pos);
@@ -179,7 +179,7 @@ void ChatHandler::sendRaw(const std::string &args)
 
 void ChatHandler::processRaw(MessageOut &outMsg, std::string &line)
 {
-    std::string::size_type pos = line.find(":");
+    size_t pos = line.find(":");
     if (pos == std::string::npos)
     {
         int i = atoi(line.c_str());

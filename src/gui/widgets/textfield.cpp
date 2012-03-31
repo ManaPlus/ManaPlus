@@ -365,7 +365,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 void TextField::handlePaste()
 {
     std::string text = getText();
-    std::string::size_type caretPos = getCaretPosition();
+    size_t caretPos = getCaretPosition();
 
     if (retrieveBuffer(text, caretPos))
     {

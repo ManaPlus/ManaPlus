@@ -1284,7 +1284,7 @@ std::string ChatWindow::autoComplete(StringVect &names,
             std::string name = *i;
             toLower(name);
 
-            std::string::size_type pos = name.find(partName, 0);
+            size_t pos = name.find(partName, 0);
             if (pos == 0)
             {
                 if (newName != "")
@@ -1314,7 +1314,7 @@ std::string ChatWindow::autoComplete(std::string partName, History *words)
     while (i != words->end())
     {
         std::string line = *i;
-        std::string::size_type pos = line.find(partName, 0);
+        size_t pos = line.find(partName, 0);
         if (pos == 0)
             nameList.push_back(line);
         ++i;
@@ -1370,7 +1370,7 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        std::string::size_type idx = line.find(": \302\202");
+        size_t idx = line.find(": \302\202");
         if (idx != std::string::npos)
         {
             line = line.erase(idx + 2, 2);
@@ -1378,13 +1378,13 @@ void ChatWindow::resortChatLog(std::string line, Own own,
             return;
         }
 
-        std::string::size_type idx1 = line.find("@@");
+        size_t idx1 = line.find("@@");
         if (idx1 != std::string::npos)
         {
-            std::string::size_type idx2 = line.find("|", idx1);
+            size_t idx2 = line.find("|", idx1);
             if (idx2 != std::string::npos)
             {
-                std::string::size_type idx3 = line.find("@@", idx2);
+                size_t idx3 = line.find("@@", idx2);
                 if (idx3 != std::string::npos)
                 {
                     tradeChatTab->chatLog(line, own, ignoreRecord,

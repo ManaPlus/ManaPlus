@@ -30,6 +30,6 @@
  * @return <code>true</code> when successful or <code>false</code> when there
  *         was a problem retrieving the clipboard buffer.
  */
-bool retrieveBuffer(std::string& text, std::string::size_type& pos);
+bool retrieveBuffer(std::string& text, size_t& pos);
 
 bool sendBuffer(std::string& text);

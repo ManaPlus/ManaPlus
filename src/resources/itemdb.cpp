@@ -298,7 +298,7 @@ void ItemDB::load()
         itemInfo->setColorsList(colors);
 
         std::string effect;
-        for (int i = 0; i < int(sizeof(fields) / sizeof(fields[0])); ++i)
+        for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
         {
             int value = XML::getProperty(node, fields[i][0], 0);
             if (!value)

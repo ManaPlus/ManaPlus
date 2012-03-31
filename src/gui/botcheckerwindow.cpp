@@ -127,7 +127,7 @@ public:
             if (!mPlayers.at(r))
                 continue;
 
-            Being *player = mPlayers.at(r);
+            const Being *player = mPlayers.at(r);
             std::string name = player->getName();
             gcn::Widget *widget = new Label(name);
 

@@ -249,7 +249,11 @@ void SDLFont::drawString(gcn::Graphics *graphics,
         mCreateCounter ++;
 #endif
         cache->push_front(chunk);
-        cache->front().generate(mFont, alpha);
+        SDLTextChunk &data = cache->front();
+        data.generate(mFont, alpha);
+
+        if (data.img)
+            g->drawImage(data.img, x, y);
 
         if (!mCleanTime)
         {
@@ -260,16 +264,12 @@ void SDLFont::drawString(gcn::Graphics *graphics,
             doClean();
             mCleanTime = cur_time + CLEAN_TIME;
         }
-        if (cache->front().img)
-        {
-//            cache->front().img->setAlpha(alpha);
-            g->drawImage(cache->front().img, x, y);
-        }
     }
     else if (cache->front().img)
     {
-        cache->front().img->setAlpha(alpha);
-        g->drawImage(cache->front().img, x, y);
+        Image *image = cache->front().img;
+        image->setAlpha(alpha);
+        g->drawImage(image, x, y);
     }
 
 }

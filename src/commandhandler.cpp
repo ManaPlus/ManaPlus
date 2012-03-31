@@ -86,7 +86,7 @@ void CommandHandler::handleCommands(const std::string &command, ChatTab *tab)
 
 void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
 {
-    std::string::size_type pos = command.find(' ');
+    size_t pos = command.find(' ');
     std::string type(command, 0, pos);
     std::string args(command, pos == std::string::npos
                      ? command.size() : pos + 1);
@@ -298,7 +298,7 @@ void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
 
     if (args.substr(0, 1) == "\"")
     {
-        const std::string::size_type pos = args.find('"', 1);
+        const size_t pos = args.find('"', 1);
         if (pos != std::string::npos)
         {
             recvnick = args.substr(1, pos - 1);
@@ -308,7 +308,7 @@ void CommandHandler::handleMsg(const std::string &args, ChatTab *tab)
     }
     else
     {
-        const std::string::size_type pos = args.find(" ");
+        const size_t pos = args.find(" ");
         if (pos != std::string::npos)
         {
             recvnick = args.substr(0, pos);
@@ -369,7 +369,7 @@ void CommandHandler::handleJoin(const std::string &args, ChatTab *tab)
     if (!tab)
         return;
 
-    std::string::size_type pos = args.find(' ');
+    size_t pos = args.find(' ');
     std::string name(args, 0, pos);
     std::string password(args, pos + 1);
     tab->chatLog(strprintf(_("Requesting to join channel %s."), name.c_str()));
@@ -677,7 +677,7 @@ bool CommandHandler::parse2Int(const std::string &args, int *x, int *y)
         return false;
 
     bool isValid = false;
-    const std::string::size_type pos = args.find(" ");
+    const size_t pos = args.find(" ");
     if (pos != std::string::npos)
     {
         if (pos + 1 < args.length())

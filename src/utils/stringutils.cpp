@@ -36,7 +36,7 @@ static int UTF8_MAX_SIZE = 10;
 
 std::string &trim(std::string &str)
 {
-    std::string::size_type pos = str.find_last_not_of(' ');
+    size_t pos = str.find_last_not_of(' ');
     if (pos != std::string::npos)
     {
         str.erase(pos + 1);
@@ -110,7 +110,7 @@ std::string strprintf(char const *format, ...)
 /*
 std::string &removeBadChars(std::string &str)
 {
-    std::string::size_type pos;
+    size_t pos;
     do
     {
         pos = str.find_first_of("@#[]");
@@ -186,9 +186,9 @@ const std::string findSameSubstringI(const std::string &s1,
     toLower(str1);
     toLower(str2);
 
-    int minLength = str1.length() > str2.length()
-        ? static_cast<int>(str2.length()) : static_cast<int>(str1.length());
-    for (int f = 0; f < minLength; f ++)
+    size_t minLength = str1.length() > str2.length()
+        ? str2.length() : str1.length();
+    for (size_t f = 0; f < minLength; f ++)
     {
         if (str1.at(f) != str2.at(f))
             return s1.substr(0, f);
@@ -206,7 +206,7 @@ size_t findI(std::string str, std::string subStr)
 size_t findI(std::string text, StringVect &list)
 {
     std::string str = toLower(text);
-    unsigned long idx;
+    size_t idx;
     for (StringVectCIter i = list.begin(); i != list.end(); ++ i)
     {
         std::string subStr = *i;
@@ -544,8 +544,8 @@ void deleteCharLeft(std::string &str, unsigned *pos)
 
 bool findLast(std::string &str1, std::string str2)
 {
-    const unsigned s1 = str1.size();
-    const unsigned s2 = str2.size();
+    const size_t s1 = str1.size();
+    const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
     std::string tmp = str1.substr(s1 - s2);
@@ -556,8 +556,8 @@ bool findLast(std::string &str1, std::string str2)
 
 bool findFirst(std::string &str1, std::string str2)
 {
-    const unsigned s1 = str1.size();
-    const unsigned s2 = str2.size();
+    const size_t s1 = str1.size();
+    const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
     std::string tmp = str1.substr(0, s2);
@@ -568,8 +568,8 @@ bool findFirst(std::string &str1, std::string str2)
 
 bool findCutLast(std::string &str1, std::string str2)
 {
-    const unsigned s1 = str1.size();
-    const unsigned s2 = str2.size();
+    const size_t s1 = str1.size();
+    const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
     std::string tmp = str1.substr(s1 - s2);
@@ -583,8 +583,8 @@ bool findCutLast(std::string &str1, std::string str2)
 
 bool findCutFirst(std::string &str1, std::string str2)
 {
-    const unsigned s1 = str1.size();
-    const unsigned s2 = str2.size();
+    const size_t s1 = str1.size();
+    const size_t s2 = str2.size();
     if (s1 < s2)
         return false;
     std::string tmp = str1.substr(0, s2);
@@ -598,8 +598,8 @@ bool findCutFirst(std::string &str1, std::string str2)
 
 std::string &removeProtocol(std::string &url)
 {
-    int i = url.find("://");
-    if (i != static_cast<int>(std::string::npos))
+    size_t i = url.find("://");
+    if (i != std::string::npos)
         url = url.substr(i + 3);
     return url;
 }

@@ -97,7 +97,7 @@ namespace gcn
 
         mTextRows.clear();
 
-        std::string::size_type pos, lastPos = 0;
+        size_t pos, lastPos = 0;
         int length;
         do
         {

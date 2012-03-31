@@ -286,7 +286,9 @@ void LocalPlayer::logic()
         mMessageTime--;
     }
 
+#ifdef MANASERV_SUPPORT
     PlayerInfo::logic();
+#endif
 
     // Targeting allowed 4 times a second
     if (get_elapsed_time(mLastTarget) >= 250)

@@ -273,7 +273,7 @@ bool GuildManager::process(std::string msg)
         if (!guild)
             return false;
 //        logger->log("welcome message: %s", msg.c_str());
-        std::string::size_type pos = msg.find("! (");
+        size_t pos = msg.find("! (");
         if (pos == std::string::npos)
             return false;
         msg = msg.substr(0, pos);
@@ -290,7 +290,7 @@ bool GuildManager::process(std::string msg)
         Guild *guild = createGuild();
         if (!guild)
             return false;
-        std::string::size_type pos = msg.find("Access Level: ");
+        size_t pos = msg.find("Access Level: ");
         if (pos == std::string::npos)
             return false;
 
@@ -401,7 +401,7 @@ bool GuildManager::process(std::string msg)
         }
         if (mTab)
         {
-            std::string::size_type pos = msg.find(": ", 0);
+            size_t pos = msg.find(": ", 0);
             if (pos != std::string::npos)
             {
                 std::string sender_name = ((pos == std::string::npos)

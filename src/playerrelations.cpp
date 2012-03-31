@@ -552,7 +552,7 @@ bool PlayerRelationsManager::isGoodName(std::string name)
 {
     bool status(false);
 
-    const int size = name.size();
+    const size_t size = name.size();
 
     if (size < 3 || mRelations[name])
         return true;
@@ -572,7 +572,7 @@ bool PlayerRelationsManager::isGoodName(Being *being)
         return (being->getGoodStatus() == 1);
 
     const std::string name = being->getName();
-    const int size = name.size();
+    const size_t size = name.size();
 
     if (size < 3 || mRelations[name])
         return true;
@@ -585,7 +585,7 @@ bool PlayerRelationsManager::isGoodName(Being *being)
 
 bool PlayerRelationsManager::checkName(const std::string &name) const
 {
-    const int size = name.size();
+    const size_t size = name.size();
     std::string check = config.getStringValue("unsecureChars");
 
     std::string lastChar = name.substr(size - 1, 1);

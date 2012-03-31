@@ -236,10 +236,10 @@ Dye::Dye(const std::string &description)
     if (description.empty())
         return;
 
-    std::string::size_type next_pos = 0, length = description.length();
+    size_t next_pos = 0, length = description.length();
     do
     {
-        std::string::size_type pos = next_pos;
+        size_t pos = next_pos;
         next_pos = description.find(';', pos);
 
         if (next_pos == std::string::npos)
@@ -313,7 +313,7 @@ void Dye::update(int color[3]) const
 
 void Dye::instantiate(std::string &target, const std::string &palettes)
 {
-    std::string::size_type next_pos = target.find('|');
+    size_t next_pos = target.find('|');
 
     if (next_pos == std::string::npos || palettes.empty())
         return;
@@ -322,10 +322,10 @@ void Dye::instantiate(std::string &target, const std::string &palettes)
 
     std::ostringstream s;
     s << target.substr(0, next_pos);
-    std::string::size_type last_pos = target.length(), pal_pos = 0;
+    size_t last_pos = target.length(), pal_pos = 0;
     do
     {
-        std::string::size_type pos = next_pos;
+        size_t pos = next_pos;
         next_pos = target.find(';', pos);
 
         if (next_pos == std::string::npos)
@@ -333,7 +333,7 @@ void Dye::instantiate(std::string &target, const std::string &palettes)
 
         if (next_pos == pos + 1 && pal_pos != std::string::npos)
         {
-            std::string::size_type pal_next_pos = palettes.find(';', pal_pos);
+            size_t pal_next_pos = palettes.find(';', pal_pos);
             s << target[pos] << ':';
             if (pal_next_pos == std::string::npos)
             {

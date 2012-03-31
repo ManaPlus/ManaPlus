@@ -546,7 +546,7 @@ void GuildHandler::processGuildMessage(Net::MessageIn &msg)
     {
         std::string chatMsg = msg.readString(msgLength);
 
-        std::string::size_type pos = chatMsg.find(" : ", 0);
+        size_t pos = chatMsg.find(" : ", 0);
         if (pos != std::string::npos)
         {
             std::string sender_name = ((pos == std::string::npos)

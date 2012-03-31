@@ -55,6 +55,8 @@
 #include "debug/fast_mutex.h"
 #include "debug/static_assert.h"
 
+#include "localconsts.h"
+
 //define DUMP_MEM_ADDRESSES 1
 
 #if !_FAST_MUTEX_CHECK_INITIALIZATION && !defined(_NOTHREADS)

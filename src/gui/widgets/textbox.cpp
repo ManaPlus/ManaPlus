@@ -48,7 +48,9 @@ void TextBox::setTextWrapped(const std::string &text, int minDimension)
     mMinWidth = minDimension;
 
     std::stringstream wrappedStream;
-    std::string::size_type spacePos, newlinePos, lastNewlinePos = 0;
+    size_t spacePos;
+    size_t newlinePos;
+    size_t lastNewlinePos = 0;
     int minWidth = 0;
     int xpos;
 
@@ -73,7 +75,7 @@ void TextBox::setTextWrapped(const std::string &text, int minDimension)
 
         std::string line =
             text.substr(lastNewlinePos, newlinePos - lastNewlinePos);
-        std::string::size_type lastSpacePos = 0;
+        size_t lastSpacePos = 0;
         xpos = 0;
 
         do

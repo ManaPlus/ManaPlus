@@ -443,7 +443,7 @@ struct DyedImageLoader
             return nullptr;
 
         std::string path = rl->path;
-        std::string::size_type p = path.find('|');
+        size_t p = path.find('|');
         Dye *d = nullptr;
         if (p != std::string::npos)
         {

@@ -118,10 +118,11 @@ NpcDialog::NpcDialog(int npcId) :
     mPlusButton = new Button(_("+"), "inc", this);
     mMinusButton = new Button(_("-"), "dec", this);
 
-    int width = std::max(mButton->getFont()->getWidth(CAPTION_WAITING),
-                         mButton->getFont()->getWidth(CAPTION_NEXT));
-    width = std::max(width, mButton->getFont()->getWidth(CAPTION_CLOSE));
-    width = std::max(width, mButton->getFont()->getWidth(CAPTION_SUBMIT));
+    gcn::Font *fnt = mButton->getFont();
+    int width = std::max(fnt->getWidth(CAPTION_WAITING),
+        fnt->getWidth(CAPTION_NEXT));
+    width = std::max(width, fnt->getWidth(CAPTION_CLOSE));
+    width = std::max(width, fnt->getWidth(CAPTION_SUBMIT));
 
     mButton->setWidth(8 + width);
 

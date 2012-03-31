@@ -228,7 +228,7 @@ void Slider::updateAlpha()
 
 void Slider::draw(gcn::Graphics *graphics)
 {
-    if (!hStart || !hStartHi)
+    if (!hStart || !hStartHi || !hEnd)
         return;
 
     int w = getWidth();
@@ -253,8 +253,7 @@ void Slider::draw(gcn::Graphics *graphics)
         }
 
         x += w;
-        if (hEnd)
-            static_cast<Graphics*>(graphics)->drawImage(hEnd, x, y);
+        static_cast<Graphics*>(graphics)->drawImage(hEnd, x, y);
     }
     else
     {

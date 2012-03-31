@@ -76,7 +76,7 @@ unsigned SpriteDef::findNumber(unsigned num) const
 
 SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
 {
-    std::string::size_type pos = animationFile.find('|');
+    size_t pos = animationFile.find('|');
     std::string palettes;
     if (pos != std::string::npos)
         palettes = animationFile.substr(pos + 1);

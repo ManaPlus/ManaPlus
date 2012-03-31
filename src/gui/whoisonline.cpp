@@ -365,7 +365,7 @@ void WhoIsOnline::loadWebList()
             {
                 int level = 0;
 
-                std::string::size_type pos = 0;
+                size_t pos = 0;
                 if (lineStr.length() > 24)
                 {
                     nick = lineStr.substr(0, 24);

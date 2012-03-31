@@ -765,8 +765,8 @@ const std::string Map::getName() const
 const std::string Map::getFilename() const
 {
     std::string fileName = getProperty("_filename");
-    int lastSlash = static_cast<int>(fileName.rfind("/")) + 1;
-    int lastDot = static_cast<int>(fileName.rfind("."));
+    size_t lastSlash = fileName.rfind("/") + 1;
+    size_t lastDot = fileName.rfind(".");
 
     return fileName.substr(lastSlash, lastDot - lastSlash);
 }

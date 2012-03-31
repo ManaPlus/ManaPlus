@@ -129,8 +129,7 @@ void Tab::init()
                     a++;
                 }
             }
-            if (tab[mode])
-                tab[mode]->decRef();
+            tab[mode]->decRef();
         }
     }
     mInstances++;

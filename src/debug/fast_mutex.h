@@ -42,6 +42,8 @@
 #ifndef M_FAST_MUTEX_H
 #define M_FAST_MUTEX_H
 
+#include "localconsts.h"
+
 # if !defined(_NOTHREADS)
 #   if !defined(_WIN32THREADS) && \
             (defined(_WIN32) && defined(_MT))

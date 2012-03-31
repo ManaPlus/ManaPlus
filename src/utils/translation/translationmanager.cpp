@@ -105,13 +105,13 @@ bool TranslationManager::translateFile(const std::string &fileName,
     }
     std::string str = std::string(fileContents, contentsLength);
 
-    std::string::size_type oldPos1 = 0;
-    std::string::size_type pos1;
+    size_t oldPos1 = 0;
+    size_t pos1;
     while ((pos1 = str.find("<<")) != std::string::npos)
     {
         if (pos1 == oldPos1)
             break;  // detected infinite loop
-        std::string::size_type pos2 = str.find(">>", pos1 + 2);
+        size_t pos2 = str.find(">>", pos1 + 2);
         if (pos2 == std::string::npos)
             break;
         const std::string key = str.substr(pos1 + 2, pos2 - pos1 - 2);

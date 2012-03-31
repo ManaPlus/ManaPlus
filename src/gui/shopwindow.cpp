@@ -419,6 +419,8 @@ void ShopWindow::saveList()
     items = mSellShopItems->items();
     for (it = items.begin(); it != items.end(); ++it)
     {
+        if (!(*it))
+            continue;
         ShopItem *sellItem = *(it);
         ShopItem *buyItem = mapItems[sellItem->getId()];
 
@@ -426,7 +428,7 @@ void ShopWindow::saveList()
         if (buyItem)
         {
             shopFile << strprintf(" %d %d ", buyItem->getQuantity(),
-                                  buyItem->getPrice());
+                buyItem->getPrice());
             mapItems.erase(sellItem->getId());
         }
         else
@@ -434,11 +436,8 @@ void ShopWindow::saveList()
             shopFile << " 0 0 ";
         }
 
-        if (sellItem)
-        {
-            shopFile << strprintf("%d %d", sellItem->getQuantity(),
-                                  sellItem->getPrice()) << std::endl;
-        }
+        shopFile << strprintf("%d %d", sellItem->getQuantity(),
+            sellItem->getPrice()) << std::endl;
     }
 
     std::map<int, ShopItem*>::const_iterator mapIt;
@@ -682,7 +681,7 @@ void ShopWindow::processRequest(std::string nick, std::string data, int mode)
     if (!inv)
         return;
 
-    unsigned long idx = 0;
+    size_t idx = 0;
 
     idx = data.find(" ");
     if (idx == std::string::npos)

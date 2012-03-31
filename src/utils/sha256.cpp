@@ -279,7 +279,8 @@ std::string SHA256Hash(const char *src, int len)
     unsigned char bytehash[SHA256_DIGEST_SIZE];
     SHA256Context ctx;
     SHA256Init(&ctx);
-    SHA256Update(&ctx, (unsigned char *)src, (unsigned int)len);
+    SHA256Update(&ctx, static_cast<unsigned char *>(src),
+        static_casr<unsigned int>(len));
     SHA256Final(&ctx, bytehash);
     // Convert it to hex
     const char* hxc = "0123456789abcdef";

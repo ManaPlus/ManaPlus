@@ -144,7 +144,7 @@ void Logger::log(const char *log_text, ...)
 {
     unsigned size = 1024;
     char* buf = nullptr;
-    if (strlen(log_text) * 3> size)
+    if (strlen(log_text) * 3 > size)
         size = static_cast<unsigned>(strlen(log_text) * 3);
 
     buf = new char[size + 1];

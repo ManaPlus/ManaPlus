@@ -43,12 +43,12 @@ LangVect getLang()
         lang = lng;
     }
 
-    int dot = lang.find(".");
-    if (dot != static_cast<signed>(std::string::npos))
+    size_t dot = lang.find(".");
+    if (dot != std::string::npos)
         lang = lang.substr(0, dot);
     langs.push_back(lang);
     dot = lang.find("_");
-    if (dot != static_cast<signed>(std::string::npos))
+    if (dot != std::string::npos)
         langs.push_back(lang.substr(0, dot));
     return langs;
 }
@@ -77,11 +77,11 @@ std::string getLangShort()
         lang = lng;
     }
 
-    int dot = lang.find(".");
-    if (dot != static_cast<signed>(std::string::npos))
+    size_t dot = lang.find(".");
+    if (dot != std::string::npos)
         lang = lang.substr(0, dot);
     dot = lang.find("_");
-    if (dot != static_cast<signed>(std::string::npos))
+    if (dot != std::string::npos)
         return lang.substr(0, dot);
     return lang;
 }

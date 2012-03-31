@@ -362,7 +362,7 @@ std::string SpellManager::autoComplete(std::string partName)
 
         if (line != "")
         {
-            std::string::size_type pos = line.find(partName, 0);
+            size_t pos = line.find(partName, 0);
             if (pos == 0)
             {
                 if (newName != "")

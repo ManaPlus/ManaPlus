@@ -39,7 +39,7 @@
 #include "debug.h"
 
 #ifdef WIN32
-bool retrieveBuffer(std::string& text, std::string::size_type& pos)
+bool retrieveBuffer(std::string& text, size_t& pos)
 {
     bool  ret = false;
 
@@ -262,7 +262,7 @@ PasteboardCreateFailed:
     return false;
 }
 
-bool retrieveBuffer(std::string& text, std::string::size_type& pos)
+bool retrieveBuffer(std::string& text, size_t& pos)
 {
     const int bufSize = 512;
     char buffer[bufSize + 1];
@@ -365,7 +365,7 @@ static char* getSelection(Display *dpy, Window us, Atom selection)
     return data;
 }
 
-bool retrieveBuffer(std::string& text, std::string::size_type& pos)
+bool retrieveBuffer(std::string& text, size_t& pos)
 {
     SDL_SysWMinfo info;
 
@@ -468,7 +468,7 @@ bool runxsel(std::string& text, const char *p1, const char *p2)
 }
 
 #else
-bool retrieveBuffer(std::string&, std::string::size_type&)
+bool retrieveBuffer(std::string&, size_t&)
 {
     return false;
 }

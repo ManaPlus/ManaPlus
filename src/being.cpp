@@ -505,8 +505,8 @@ void Being::setSpeech(const std::string &text, int time)
         time = SPEECH_MIN_TIME;
 
     // Check for links
-    std::string::size_type start = mSpeech.find('[');
-    std::string::size_type e = mSpeech.find(']', start);
+    size_t start = mSpeech.find('[');
+    size_t e = mSpeech.find(']', start);
 
     while (start != std::string::npos && e != std::string::npos)
     {
@@ -517,7 +517,7 @@ void Being::setSpeech(const std::string &text, int time)
             start = mSpeech.find('[', start + 1);
         }
 
-        std::string::size_type position = mSpeech.find('|');
+        size_t position = mSpeech.find('|');
         if (mSpeech[start + 1] == '@' && mSpeech[start + 2] == '@')
         {
             mSpeech.erase(e, 1);

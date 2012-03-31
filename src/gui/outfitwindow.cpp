@@ -593,10 +593,11 @@ void OutfitWindow::copyFromEquiped(int dst)
 
     for (unsigned i = 0; i < inventory->getSize(); i++)
     {
-        if (inventory->getItem(i) && inventory->getItem(i)->isEquipped())
+        const Item *item = inventory->getItem(i);
+        if (item && item->isEquipped())
         {
-            mItems[dst][outfitCell] = inventory->getItem(i)->getId();
-            mItemColors[dst][outfitCell++] = inventory->getItem(i)->getColor();
+            mItems[dst][outfitCell] = item->getId();
+            mItemColors[dst][outfitCell++] = item->getColor();
             if (outfitCell >= OUTFIT_ITEM_COUNT)
                 break;
         }

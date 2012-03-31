@@ -149,21 +149,14 @@ std::string Wallpaper::getWallpaper(int width, int height)
             wallPaperVector.push_back(wp.filename);
     }
 
+    // If we've got more than one occurence of a valid wallpaper...
     if (!wallPaperVector.empty())
     {
-        // If we've got more than one occurence of a valid wallpaper...
-        if (!wallPaperVector.empty())
-        {
-          // Return randomly a wallpaper between vector[0] and
-          // vector[vector.size() - 1]
-          srand(static_cast<unsigned>(time(nullptr)));
-          return wallPaperVector[int(static_cast<double>(
-                wallPaperVector.size()) * rand() / (RAND_MAX + 1.0))];
-        }
-        else // If there at least one, we return it
-        {
-            return wallPaperVector[0];
-        }
+        // Return randomly a wallpaper between vector[0] and
+        // vector[vector.size() - 1]
+        srand(static_cast<unsigned>(time(nullptr)));
+        return wallPaperVector[int(static_cast<double>(
+            wallPaperVector.size()) * rand() / (RAND_MAX + 1.0))];
     }
 
     // Return the backup file if everything else failed...

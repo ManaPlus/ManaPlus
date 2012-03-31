@@ -67,7 +67,7 @@ int mkdir_r(const char *pathname)
         {
             *p = '\0';
             // ignore a slash at the beginning of a path
-            if (strlen(tmp) == 0)
+            if (tmp[0] == 0)
             {
                 *p = '/';
                 continue;

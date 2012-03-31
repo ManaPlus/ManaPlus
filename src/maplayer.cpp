@@ -748,7 +748,7 @@ void MapItem::draw(Graphics *graphics, int x, int y, int dx, int dy)
         default:
             break;
     }
-    if (!mName.empty() && mType != PORTAL && mType != EMPTY && userPalette)
+    if (!mName.empty() && mType != PORTAL && mType != EMPTY)
     {
         gcn::Font *font = gui->getFont();
         if (font)

@@ -228,11 +228,8 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
             mPixelViewX = static_cast<float>(viewXmax);
         if (mPixelViewY > viewYmax)
             mPixelViewY = static_cast<float>(viewYmax);
-    }
 
-    // Draw tiles and sprites
-    if (mMap)
-    {
+        // Draw tiles and sprites
         mMap->draw(graphics, static_cast<int>(mPixelViewX),
                    static_cast<int>(mPixelViewY));
 
@@ -255,8 +252,10 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Draw text
     if (textManager)
+    {
         textManager->draw(graphics, static_cast<int>(mPixelViewX),
-                          static_cast<int>(mPixelViewY));
+            static_cast<int>(mPixelViewY));
+    }
 
     // Draw player names, speech, and emotion sprite as needed
     const ActorSprites &actors = actorSpriteManager->getAll();
@@ -764,12 +763,9 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
         mBeingPopup->setVisible(false);
     }
 
-    mHoverItem = nullptr;
-    if (actorSpriteManager)
-    {
-        mHoverItem = actorSpriteManager->findItem(x / mMap->getTileWidth(),
-                                                  y / mMap->getTileHeight());
-    }
+    mHoverItem = actorSpriteManager->findItem(x / mMap->getTileWidth(),
+        y / mMap->getTileHeight());
+
     if (!mHoverBeing && !mHoverItem)
     {
         SpecialLayer *specialLayer = mMap->getSpecialLayer();

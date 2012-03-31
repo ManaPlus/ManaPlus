@@ -74,10 +74,11 @@ void triggerStat(int id, const std::string &changed, int old1, int old2)
 
     DepricatedEvent event(EVENT_UPDATESTAT);
     event.setInt("id", id);
-    event.setInt("base", it->second.base);
-    event.setInt("mod", it->second.mod);
-    event.setInt("exp", it->second.exp);
-    event.setInt("expNeeded", it->second.expNeed);
+    const Stat &stat = it->second;
+    event.setInt("base", stat.base);
+    event.setInt("mod", stat.mod);
+    event.setInt("exp", stat.exp);
+    event.setInt("expNeeded", stat.expNeed);
     event.setString("changed", changed);
     event.setInt("oldValue1", old1);
     event.setInt("oldValue2", old2);
@@ -167,10 +168,12 @@ std::pair<int, int> getStatExperience(int id)
 
 void setStatExperience(int id, int have, int need, bool notify)
 {
-    int oldExp = mData.mStats[id].exp;
-    int oldExpNeed = mData.mStats[id].expNeed;
-    mData.mStats[id].exp = have;
-    mData.mStats[id].expNeed = need;
+    Stat &stat = mData.mStats[id];
+
+    int oldExp = stat.exp;
+    int oldExpNeed = stat.expNeed;
+    stat.exp = have;
+    stat.expNeed = need;
     if (notify)
         triggerStat(id, "exp", oldExp, oldExpNeed);
 }

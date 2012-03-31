@@ -82,7 +82,7 @@ std::string UserPalette::getConfigName(const std::string &typeName)
 {
     std::string res = "Color" + typeName;
 
-    int pos = 5;
+    size_t pos = 5;
     for (size_t i = 0; i < typeName.length(); i++)
     {
         if (i == 0 || typeName[i] == '_')
@@ -96,7 +96,7 @@ std::string UserPalette::getConfigName(const std::string &typeName)
         {
            res[pos] = static_cast<char>(tolower(typeName[i]));
         }
-        pos++;
+        pos ++;
     }
     res.erase(pos, res.length() - pos);
 
@@ -191,9 +191,10 @@ UserPalette::~UserPalette()
 
 void UserPalette::setColor(int type, int r, int g, int b)
 {
-    mColors[type].color.r = r;
-    mColors[type].color.g = g;
-    mColors[type].color.b = b;
+    gcn::Color &color = mColors[type].color;
+    color.r = r;
+    color.g = g;
+    color.b = b;
 }
 
 void UserPalette::setGradient(int type, GradientType grad)
@@ -252,15 +253,17 @@ void UserPalette::rollback()
         if (i->grad != i->committedGrad)
             setGradient(i->type, i->committedGrad);
 
+        const gcn::Color &committedColor = i->committedColor;
         setGradientDelay(i->type, i->committedDelay);
-        setColor(i->type, i->committedColor.r,
-                 i->committedColor.g, i->committedColor.b);
+        setColor(i->type, committedColor.r,
+                 committedColor.g, committedColor.b);
 
         if (i->grad == PULSE)
         {
-            i->testColor.r = i->committedColor.r;
-            i->testColor.g = i->committedColor.g;
-            i->testColor.b = i->committedColor.b;
+            gcn::Color &testColor = i->testColor;
+            testColor.r = committedColor.r;
+            testColor.g = committedColor.g;
+            testColor.b = committedColor.b;
         }
     }
 }

@@ -1846,7 +1846,7 @@ void Client::initUpdatesDir()
         {
 #if defined WIN32
             std::string newDir = mLocalDataDir + "\\" + mUpdatesDir;
-            std::string::size_type loc = newDir.find("/", 0);
+            size_t loc = newDir.find("/", 0);
 
             while (loc != std::string::npos)
             {

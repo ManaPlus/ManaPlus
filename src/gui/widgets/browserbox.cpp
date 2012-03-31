@@ -105,7 +105,9 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
 {
     std::string tmp = row;
     std::string newRow;
-    std::string::size_type idx1, idx2, idx3;
+    size_t idx1;
+    size_t idx2;
+    size_t idx3;
     gcn::Font *font = getFont();
 
     if (getWidth() < 0)
@@ -479,7 +481,7 @@ int BrowserBox::calcHeight()
 
         // TODO: Check if we must take texture size limits into account here
         // TODO: Check if some of the O(n) calls can be removed
-        for (std::string::size_type start = 0, end = std::string::npos;
+        for (size_t start = 0, end = std::string::npos;
              start != std::string::npos;
              start = end, end = std::string::npos)
         {
@@ -566,8 +568,7 @@ int BrowserBox::calcHeight()
                 }
             }
 
-            std::string::size_type len =
-                end == std::string::npos ? end : end - start;
+            size_t len = (end == std::string::npos) ? end : end - start;
 
             if (start >= row.length())
                 break;

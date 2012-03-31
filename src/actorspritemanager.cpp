@@ -1323,7 +1323,7 @@ void ActorSpriteManager::parseLevels(std::string levels)
 {
     levels += ", ";
     unsigned int f = 0;
-    std::string::size_type pos = 0;
+    size_t pos = 0;
     const std::string brkEnd = "), ";
 
     pos = levels.find(brkEnd, f);
@@ -1332,7 +1332,7 @@ void ActorSpriteManager::parseLevels(std::string levels)
         std::string part = levels.substr(f, pos - f);
         if (part.empty())
             break;
-        std::string::size_type bktPos = part.rfind("(");
+        size_t bktPos = part.rfind("(");
         if (bktPos != std::string::npos)
         {
             Being *being = findBeingByName(part.substr(0, bktPos),

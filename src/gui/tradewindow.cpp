@@ -89,10 +89,11 @@ TradeWindow::TradeWindow():
     mAddButton = new Button(_("Add"), "add", this);
     mOkButton = new Button("", "", this); // Will be filled in later
 
-    int width = std::max(mOkButton->getFont()->getWidth(CAPTION_PROPOSE),
-                         mOkButton->getFont()->getWidth(CAPTION_CONFIRMED));
-    width = std::max(width, mOkButton->getFont()->getWidth(CAPTION_ACCEPT));
-    width = std::max(width, mOkButton->getFont()->getWidth(CAPTION_ACCEPTED));
+    gcn::Font *fnt = mOkButton->getFont();
+    int width = std::max(fnt->getWidth(CAPTION_PROPOSE),
+        fnt->getWidth(CAPTION_CONFIRMED));
+    width = std::max(width, fnt->getWidth(CAPTION_ACCEPT));
+    width = std::max(width, fnt->getWidth(CAPTION_ACCEPTED));
 
     mOkButton->setWidth(8 + width);
 

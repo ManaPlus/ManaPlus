@@ -116,7 +116,7 @@ void ChatTab::chatLog(std::string line, Own own,
     tmp.nick = "";
     tmp.text = line;
 
-    std::string::size_type pos = line.find(" : ");
+    size_t pos = line.find(" : ");
     if (pos != std::string::npos)
     {
         if (line.length() <= pos + 3)
@@ -343,11 +343,11 @@ void ChatTab::chatInput(const std::string &message)
         return;
 
     // Check for item link
-    std::string::size_type start = msg.find('[');
+    size_t start = msg.find('[');
     while (start + 1 < msg.size() && start != std::string::npos
            && msg[start + 1] != '@')
     {
-        std::string::size_type end = msg.find(']', start);
+        size_t end = msg.find(']', start);
         if (start + 1 != end && end != std::string::npos)
         {
             // Catch multiple embeds and ignore them
@@ -440,9 +440,9 @@ int ChatTab::getType() const
 
 void ChatTab::addRow(std::string &line)
 {
-    std::string::size_type idx = 0;
+    size_t idx = 0;
 
-    for (unsigned int f = 0; f < line.length(); f++)
+    for (size_t f = 0; f < line.length(); f++)
     {
         if (line.at(f) == ' ')
         {
