@@ -806,7 +806,7 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
         KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_CHAT,
         &ActionManager::toggleChat,
         KeyboardConfig::KEY_NO_VALUE, 50,
-        COND_GAME},
+        COND_ENABLED | COND_NOINPUT | COND_NOAWAY | COND_NOMODAL},
     {"keyChatScrollUp", SDLK_PAGEUP,
         N_("Scroll Chat Up"),
         KeyboardConfig::GRP_DEFAULT | KeyboardConfig::GRP_GUI,
