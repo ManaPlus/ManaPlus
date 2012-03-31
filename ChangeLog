@@ -1,3 +1,19 @@
+2012-04-01 New release 1.2.4.1
+fix: validate assigned keys on load.
+fix: animated tiles drawing in opengl modes.
+fix: copy to clipboard.
+fix: chat item links.
+fix: online list auto update after error.
+fix: outfits items adding/removing.
+add: multi language help.
+add: protect autocomplete from evil nicks.
+add: theme blacknblack (kook).
+add: redesign input handling.
+add: extend xml animation tags.
+add: autohide buttons on top right corner.
+add: autohide chat window if inactive (disabled by default).
+add: remove packet limits for changing direction.
+
 2012-03-18 New release 1.2.3.18
 fix: minimaps scrolling with moving camera.
 fix: context menu in outfits window.
