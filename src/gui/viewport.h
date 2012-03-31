@@ -274,6 +274,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         /// Clears any matching hovers
         void clearHover(ActorSprite *actor);
 
+        void validateSpeed();
+
     private:
         /**
          * Finds a path from the player to the mouse, and draws it. This is for

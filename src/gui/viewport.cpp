@@ -426,6 +426,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         mPlayerFollowMouse = false;
         if (mHoverBeing)
         {
+            validateSpeed();
             if (actorSpriteManager)
             {
                 std::vector<ActorSprite*> beings;
@@ -447,11 +448,13 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         }
         else if (mHoverItem)
         {
+            validateSpeed();
             mPopupMenu->showPopup(event.getX(), event.getY(), mHoverItem);
             return;
         }
         else if (mHoverSign)
         {
+            validateSpeed();
             mPopupMenu->showPopup(event.getX(), event.getY(), mHoverSign);
             return;
         }
@@ -483,6 +486,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
 
             if (mHoverBeing->canTalk())
             {
+                validateSpeed();
                 mHoverBeing->talkTo();
                 return;
             }
@@ -490,6 +494,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             {
                 if (mHoverBeing->getType() == ActorSprite::PLAYER)
                 {
+                    validateSpeed();
                     if (actorSpriteManager)
                     {
                         if (player_node != mHoverBeing || mSelfMouseHeal)
@@ -502,6 +507,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                 else if (player_node->withinAttackRange(mHoverBeing) ||
                          keyboard.isActionActive(keyboard.KEY_ATTACK))
                 {
+                    validateSpeed();
                     if (player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
@@ -511,6 +517,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                 }
                 else if (!keyboard.isActionActive(keyboard.KEY_ATTACK))
                 {
+                    validateSpeed();
                     if (player_node != mHoverBeing)
                     {
                         player_node->setGotoTarget(mHoverBeing);
@@ -522,11 +529,13 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
         // Picks up a item if we clicked on one
         if (mHoverItem)
         {
+            validateSpeed();
             player_node->pickUp(mHoverItem);
         }
         // Just walk around
         else if (!keyboard.isActionActive(keyboard.KEY_ATTACK))
         {
+            validateSpeed();
             player_node->stopAttack();
             player_node->cancelFollow();
             mPlayerFollowMouse = true;
@@ -538,6 +547,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     else if (event.getButton() == gcn::MouseEvent::MIDDLE)
     {
         mPlayerFollowMouse = false;
+        validateSpeed();
         // Find the being nearest to the clicked position
         if (actorSpriteManager)
         {
@@ -923,4 +933,14 @@ void Viewport::returnCamera()
     mCameraMode = 0;
     mCameraRelativeX = 0;
     mCameraRelativeY = 0;
+}
+
+void Viewport::validateSpeed()
+{
+    if (!keyboard.isActionActive(keyboard.KEY_TARGET_ATTACK)
+        && !keyboard.isActionActive(keyboard.KEY_ATTACK))
+    {
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+    }
 }
