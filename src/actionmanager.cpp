@@ -850,7 +850,7 @@ impHandler0(directUp)
     {
         if (player_node->getDirection() != Being::UP)
         {
-            if (Client::limitPackets(PACKET_DIRECTION))
+//            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::UP);
                 Net::getPlayerHandler()->setDirection(Being::UP);
@@ -867,7 +867,7 @@ impHandler0(directDown)
     {
         if (player_node->getDirection() != Being::DOWN)
         {
-            if (Client::limitPackets(PACKET_DIRECTION))
+//            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::DOWN);
                 Net::getPlayerHandler()->setDirection(Being::DOWN);
@@ -884,7 +884,7 @@ impHandler0(directLeft)
     {
         if (player_node->getDirection() != Being::LEFT)
         {
-            if (Client::limitPackets(PACKET_DIRECTION))
+//            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::LEFT);
                 Net::getPlayerHandler()->setDirection(Being::LEFT);
@@ -901,7 +901,7 @@ impHandler0(directRight)
     {
         if (player_node->getDirection() != Being::RIGHT)
         {
-            if (Client::limitPackets(PACKET_DIRECTION))
+//            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 player_node->setDirection(Being::RIGHT);
                 Net::getPlayerHandler()->setDirection(Being::RIGHT);

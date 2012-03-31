@@ -881,8 +881,8 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
         {
             // If the being can't move, just change direction
 
-            if (!Client::limitPackets(PACKET_DIRECTION))
-                return;
+//            if (!Client::limitPackets(PACKET_DIRECTION))
+//                return;
 
             Net::getPlayerHandler()->setDirection(dir);
             setDirection(dir);
@@ -1055,7 +1055,7 @@ void LocalPlayer::setDestination(int x, int y)
 
             Net::getPlayerHandler()->setDestination(x, y, newDir);
 
-            if (Client::limitPackets(PACKET_DIRECTION))
+//            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 setDirection(newDir);
                 Net::getPlayerHandler()->setDirection(newDir);
@@ -1187,7 +1187,7 @@ void LocalPlayer::startWalking(unsigned char dir)
         {
             // If the being can't move, just change direction
 
-            if (Client::limitPackets(PACKET_DIRECTION))
+//            if (Client::limitPackets(PACKET_DIRECTION))
             {
                 Net::getPlayerHandler()->setDirection(dir);
                 setDirection(dir);
@@ -2391,8 +2391,8 @@ void LocalPlayer::crazyMove1()
     if (mAction == MOVE)
         return;
 
-    if (!Client::limitPackets(PACKET_DIRECTION))
-        return;
+//    if (!Client::limitPackets(PACKET_DIRECTION))
+//        return;
 
     if (mDirection == Being::UP)
     {
@@ -2425,8 +2425,8 @@ void LocalPlayer::crazyMove2()
     if (mAction == MOVE)
         return;
 
-    if (!Client::limitPackets(PACKET_DIRECTION))
-        return;
+//    if (!Client::limitPackets(PACKET_DIRECTION))
+//        return;
 
     if (mDirection == Being::UP)
     {
@@ -2481,8 +2481,8 @@ void LocalPlayer::crazyMove3()
             break;
     }
 
-    if (!Client::limitPackets(PACKET_DIRECTION))
-        return;
+//    if (!Client::limitPackets(PACKET_DIRECTION))
+//        return;
 
     setDirection(Being::DOWN);
     Net::getPlayerHandler()->setDirection(Being::DOWN);
@@ -2811,35 +2811,35 @@ void LocalPlayer::crazyMoveA()
             {
                 case 'd':
 
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(Being::DOWN);
                         Net::getPlayerHandler()->setDirection(Being::DOWN);
                     }
                     break;
                 case 'u':
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(Being::UP);
                         Net::getPlayerHandler()->setDirection(Being::UP);
                     }
                     break;
                 case 'l':
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(Being::LEFT);
                         Net::getPlayerHandler()->setDirection(Being::LEFT);
                     }
                     break;
                 case 'r':
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         setDirection(Being::RIGHT);
                         Net::getPlayerHandler()->setDirection(Being::RIGHT);
                     }
                     break;
                 case 'L':
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         Uint8 dir = 0;
                         switch (mDirection)
@@ -2855,7 +2855,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'R':
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         Uint8 dir = 0;
                         switch (mDirection)
@@ -2871,7 +2871,7 @@ void LocalPlayer::crazyMoveA()
                     }
                     break;
                 case 'b':
-                    if (Client::limitPackets(PACKET_DIRECTION))
+//                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
                         Uint8 dir = 0;
                         switch (mDirection)
