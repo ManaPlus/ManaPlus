@@ -459,3 +459,8 @@ bool TradeWindow::checkItem(Item *item)
     }
     return true;
 }
+
+bool TradeWindow::isInpupFocused()
+{
+    return (mMoneyField && mMoneyField->isFocused());
+}

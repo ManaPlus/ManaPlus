@@ -133,6 +133,8 @@ class TradeWindow : public Window, gcn::ActionListener, gcn::SelectionListener
 
         bool checkItem(Item *item);
 
+        bool isInpupFocused();
+
     private:
         enum Status
         {

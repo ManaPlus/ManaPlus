@@ -29,6 +29,7 @@
 #include "gui/inventorywindow.h"
 #include "gui/npcdialog.h"
 #include "gui/setup.h"
+#include "gui/tradewindow.h"
 
 #include <guichan/focushandler.hpp>
 
@@ -52,7 +53,8 @@ int InputManager::getInputConditionMask()
         mask += COND_ENABLED;
     if ((!chatWindow || !chatWindow->isInputFocused()) &&
         !NpcDialog::isAnyInputFocused() &&
-        !InventoryWindow::isAnyInputFocused())
+        !InventoryWindow::isAnyInputFocused() &&
+        (!tradeWindow || !tradeWindow->isInpupFocused()))
     {
         mask += COND_NOINPUT;
     }
