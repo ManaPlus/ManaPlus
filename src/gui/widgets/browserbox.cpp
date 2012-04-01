@@ -106,8 +106,6 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     std::string tmp = row;
     std::string newRow;
     size_t idx1;
-    size_t idx2;
-    size_t idx3;
     gcn::Font *font = getFont();
 
     if (getWidth() < 0)
@@ -122,8 +120,8 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         idx1 = tmp.find("@@");
         while (idx1 != std::string::npos)
         {
-            idx2 = tmp.find("|", idx1);
-            idx3 = tmp.find("@@", idx2);
+            size_t idx2 = tmp.find("|", idx1);
+            size_t idx3 = tmp.find("@@", idx2);
 
             if (idx2 == std::string::npos || idx3 == std::string::npos)
                 break;
@@ -677,7 +675,7 @@ std::string BrowserBox::getTextAtPos(const int x, const int y)
     if (x < textX || y < textY)
         return ""; // mouse position ourside of correct widget (outside of tab)
 
-    textX = x - textX;
+//    textX = x - textX;
     textY = y - textY;
 
     std::string str = "";

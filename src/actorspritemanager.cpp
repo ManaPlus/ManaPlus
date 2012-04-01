@@ -27,7 +27,6 @@
 #include "logger.h"
 #include "main.h"
 #include "playerinfo.h"
-#include "playerrelations.h"
 
 #include "gui/chatwindow.h"
 #include "gui/equipmentwindow.h"

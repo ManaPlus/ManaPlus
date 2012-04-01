@@ -99,7 +99,7 @@ namespace gcn
         if (y_ < 0)
         {
             height_ += y_;
-            y_ = 0;
+//            y_ = 0;
         }
         else if (y_ + height_ > rectangle.height)
         {
