@@ -263,7 +263,7 @@ void UpdaterWindow::keyPressed(gcn::KeyEvent &keyEvent)
     if (key.getValue() == Key::ESCAPE)
     {
         action(gcn::ActionEvent(nullptr, mCancelButton->getActionEventId()));
-        Client::setState(STATE_WORLD_SELECT);
+        Client::setState(STATE_LOGIN);
     }
     else if (key.getValue() == Key::ENTER)
     {
