@@ -241,6 +241,8 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "soundguild", "newmessage");
     AddDEF(configData, "autohideButtons", true);
     AddDEF(configData, "autohideChat", false);
+    AddDEF(configData, "downloadProxy", "");
+    AddDEF(configData, "downloadProxyType", 0);
     return configData;
 }
 

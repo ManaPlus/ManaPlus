@@ -249,6 +249,7 @@ int Download::downloadThread(void *ptr)
             curl_easy_setopt(d->mCurl, CURLOPT_NOSIGNAL, 1);
             curl_easy_setopt(d->mCurl, CURLOPT_CONNECTTIMEOUT, 30);
             curl_easy_setopt(d->mCurl, CURLOPT_TIMEOUT, 1800);
+            addProxy(d->mCurl);
 
             if ((res = curl_easy_perform(d->mCurl)) != 0
                 && !d->mOptions.cancel)
@@ -358,6 +359,44 @@ int Download::downloadThread(void *ptr)
 
     d->mThread = nullptr;
     return 0;
+}
+
+void Download::addProxy(CURL *curl)
+{
+    const int mode = config.getIntValue("downloadProxyType");
+    if (!mode)
+        return;
+
+    if (mode > 1)
+    {
+        curl_easy_setopt(curl, CURLOPT_PROXY,
+            config.getStringValue("downloadProxy").c_str());
+    }
+    switch (mode)
+    {
+        case 1: // direct connection
+        default:
+            curl_easy_setopt(curl, CURLOPT_PROXY, "");
+            break;
+        case 2: // HTTP
+            break;
+        case 3: // HTTP 1.0
+            curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
+            break;
+        case 4: // SOCKS4
+            curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
+            break;
+        case 5: // SOCKS4A
+            curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4A);
+            break;
+        case 6: // SOCKS5
+            curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+            break;
+        case 7: // SOCKS5 hostname
+            curl_easy_setopt(curl, CURLOPT_PROXYTYPE,
+                CURLPROXY_SOCKS5_HOSTNAME);
+            break;
+    }
 }
 
 } // namespace Net

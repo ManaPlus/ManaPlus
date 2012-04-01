@@ -91,6 +91,8 @@ class Download
 
         static unsigned long fadler32(FILE *file);
 
+        static void addProxy(CURL *curl);
+
     private:
         static int downloadThread(void *ptr);
         static int downloadProgress(void *clientp, double dltotal,

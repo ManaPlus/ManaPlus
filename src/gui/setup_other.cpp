@@ -167,6 +167,25 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Auto hide shortcuts buttons."), "",
         "autohideButtons", this, "autohideButtonsEvent");
 
+
+    new SetupItemLabel(_("Proxy server"), "", this);
+
+    mProxyTypeList = new SetupItemNames();
+    mProxyTypeList->push_back(_("System proxy"));
+    mProxyTypeList->push_back(_("Direct connection"));
+    mProxyTypeList->push_back("HTTP");
+    mProxyTypeList->push_back("HTTP 1.0");
+    mProxyTypeList->push_back("SOCKS4");
+    mProxyTypeList->push_back("SOCKS4A");
+    mProxyTypeList->push_back("SOCKS5");
+    mProxyTypeList->push_back(_("SOCKS5 hostname"));
+    new SetupItemSlider2(_("Proxy type"), "", "downloadProxyType", this,
+        "downloadProxyTypeEvent", 0, 7, mProxyTypeList);
+
+    new SetupItemTextField(_("Proxy address:port"), "",
+        "downloadProxy", this, "downloadProxyEvent");
+
+
     new SetupItemLabel(_("Other"), "", this);
 
     new SetupItemCheckBox(_("Enable server side attack"), "",
@@ -197,6 +216,12 @@ Setup_Other::Setup_Other()
         this, "showBackgroundEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
+}
+
+Setup_Other::~Setup_Other()
+{
+    delete mProxyTypeList;
+    mProxyTypeList = nullptr;
 }
 
 void Setup_Other::apply()

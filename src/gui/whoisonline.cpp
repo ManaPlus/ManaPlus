@@ -42,6 +42,7 @@
 #include "playerrelations.h"
 #include "main.h"
 
+#include "net/download.h"
 #include "net/net.h"
 #include "net/playerhandler.h"
 
@@ -526,6 +527,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
             curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 7);
             curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30);
+            Net::Download::addProxy(curl);
 
             struct curl_slist *pHeaders = nullptr;
             // Make sure the resources2.txt and news.txt aren't cached,

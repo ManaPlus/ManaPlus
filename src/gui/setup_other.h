@@ -25,6 +25,7 @@
 
 #include "guichanfwd.h"
 
+#include "gui/widgets/setupitem.h"
 #include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
@@ -37,7 +38,12 @@ class Setup_Other : public SetupTabScroll
     public:
         Setup_Other();
 
+        ~Setup_Other();
+
         void apply();
+
+    protected:
+        SetupItemNames *mProxyTypeList;
 };
 
 #endif
