@@ -317,13 +317,14 @@ class SetupItemSlider2 : public SetupItem
                          std::string keyName, SetupTabScroll *parent,
                          std::string eventName, int min, int max,
                          SetupItemNames *values, bool onTheFly = false,
-                         bool mainConfig = true);
+                         bool mainConfig = true, bool doNotAlign = false);
 
         SetupItemSlider2(std::string text, std::string description,
                          std::string keyName, SetupTabScroll *parent,
                          std::string eventName, int min, int max,
                          SetupItemNames *values, std::string def,
-                         bool onTheFly = false, bool mainConfig = true);
+                         bool onTheFly = false, bool mainConfig = true,
+                         bool doNotAlign = false);
 
         ~SetupItemSlider2();
 
@@ -354,6 +355,7 @@ class SetupItemSlider2 : public SetupItem
         bool mInvert;
         int mInvertValue;
         bool mOnTheFly;
+        bool mDoNotAlign;
 };
 
 class SetupItemSliderList : public SetupItem

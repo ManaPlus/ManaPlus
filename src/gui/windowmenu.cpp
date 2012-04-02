@@ -60,7 +60,7 @@ extern Window *socialWindow;
 WindowMenu::WindowMenu():
     mEmotePopup(nullptr),
     mHaveMouse(false),
-    mAutoHide(true)
+    mAutoHide(1)
 {
     int x = 0, h = 0;
 
@@ -114,7 +114,7 @@ WindowMenu::WindowMenu():
     setVisible(true);
 
     config.addListener("autohideButtons", this);
-    mAutoHide = config.getBoolValue("autohideButtons");
+    mAutoHide = config.getIntValue("autohideButtons");
 }
 
 WindowMenu::~WindowMenu()
@@ -401,12 +401,15 @@ void WindowMenu::saveButtons()
 
 void WindowMenu::drawChildren(gcn::Graphics* graphics)
 {
-    if (!mAutoHide || mHaveMouse)
+    if (mHaveMouse || !mAutoHide || (mAutoHide == 1
+        && mainGraphics && mainGraphics->mWidth > 800))
+    {
         Container::drawChildren(graphics);
+    }
 }
 
 void WindowMenu::optionChanged(const std::string &name)
 {
     if (name == "autohideButtons")
-        mAutoHide = config.getBoolValue("autohideButtons");
+        mAutoHide = config.getIntValue("autohideButtons");
 }

@@ -93,7 +93,7 @@ class WindowMenu : public Container,
         std::vector <gcn::Button*> mButtons;
         std::map <std::string, gcn::Button*> mButtonNames;
         bool mHaveMouse;
-        bool mAutoHide;
+        int mAutoHide;
 };
 
 extern WindowMenu *windowMenu;

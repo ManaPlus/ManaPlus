@@ -712,7 +712,7 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
                                    std::string keyName, SetupTabScroll *parent,
                                    std::string eventName, int min, int max,
                                    SetupItemNames *values, bool onTheFly,
-                                   bool mainConfig) :
+                                   bool mainConfig, bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -723,7 +723,8 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
     mMax(max),
     mInvert(false),
     mInvertValue(0),
-    mOnTheFly(onTheFly)
+    mOnTheFly(onTheFly),
+    mDoNotAlign(doNotAlign)
 {
     mValueType = VSTR;
     createControls();
@@ -733,7 +734,8 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
                                    std::string keyName, SetupTabScroll *parent,
                                    std::string eventName, int min, int max,
                                    SetupItemNames *values, std::string def,
-                                   bool onTheFly, bool mainConfig) :
+                                   bool onTheFly, bool mainConfig,
+                                   bool doNotAlign) :
     SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
     mHorizont(nullptr),
     mLabel(nullptr),
@@ -744,7 +746,8 @@ SetupItemSlider2::SetupItemSlider2(std::string text, std::string description,
     mMax(max),
     mInvert(false),
     mInvertValue(0),
-    mOnTheFly(onTheFly)
+    mOnTheFly(onTheFly),
+    mDoNotAlign(doNotAlign)
 {
     mValueType = VSTR;
     createControls();
@@ -777,7 +780,8 @@ void SetupItemSlider2::createControls()
     mWidget = mSlider;
     mSlider->setWidth(150);
     mSlider->setHeight(40);
-    fixFirstItemSize(mLabel);
+    if (!mDoNotAlign)
+        fixFirstItemSize(mLabel);
     mHorizont->add(mLabel);
     mHorizont->add(mSlider, -10);
     mHorizont->add(mLabel2);

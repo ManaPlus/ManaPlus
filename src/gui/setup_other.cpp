@@ -164,8 +164,12 @@ Setup_Other::Setup_Other()
 
     new SetupItemLabel(_("Windows"), "", this);
 
-    new SetupItemCheckBox(_("Auto hide shortcuts buttons."), "",
-        "autohideButtons", this, "autohideButtonsEvent");
+    mShortcutsList = new SetupItemNames();
+    mShortcutsList->push_back(_("Always show"));
+    mShortcutsList->push_back(_("Auto hide in small resolution"));
+    mShortcutsList->push_back(_("Always auto hide"));
+    new SetupItemSlider2(_("Shortcut buttons"), "", "autohideButtons", this,
+        "autohideButtonsEvent", 0, 2, mShortcutsList, false, true, true);
 
 
     new SetupItemLabel(_("Proxy server"), "", this);
@@ -222,6 +226,8 @@ Setup_Other::~Setup_Other()
 {
     delete mProxyTypeList;
     mProxyTypeList = nullptr;
+    delete mShortcutsList;
+    mShortcutsList = nullptr;
 }
 
 void Setup_Other::apply()

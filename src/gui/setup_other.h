@@ -44,6 +44,8 @@ class Setup_Other : public SetupTabScroll
 
     protected:
         SetupItemNames *mProxyTypeList;
+
+        SetupItemNames *mShortcutsList;
 };
 
 #endif
