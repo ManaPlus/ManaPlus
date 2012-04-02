@@ -1403,13 +1403,10 @@ void PopupMenu::handleLink(const std::string &link,
             }
         }
     }
-    else if (link == "load old drop shortcuts")
+    else if (link == "clear drops")
     {
         if (dropShortcut)
-        {
-            dropShortcut->load(true);
-            dropShortcut->save();
-        }
+            dropShortcut->clear();
     }
     else if (link == "edit spell" && mSpell)
     {
@@ -2022,8 +2019,7 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
         mBrowserBox->addRow("chat", _("Add to chat"));
         mBrowserBox->addRow("##3---");
     }
-    mBrowserBox->addRow("load old drop shortcuts",
-        _("Load old drop shortcuts"));
+    mBrowserBox->addRow("clear drops", _("Clear drop window"));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
 

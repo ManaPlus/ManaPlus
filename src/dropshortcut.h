@@ -141,6 +141,8 @@ class DropShortcut
          */
         void dropItems(int cnt = 1);
 
+        void clear();
+
     private:
 
         /**
