@@ -372,8 +372,9 @@ void Client::gameInit()
     SDL_EnableUNICODE(1);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
-    SDL_WM_SetCaption(branding.getValue("appName",
-        "ManaPlus").c_str(), nullptr);
+    SDL_WM_SetCaption(strprintf("%s %s",
+        branding.getStringValue("appName").c_str(),
+        SMALL_VERSION).c_str(), nullptr);
 
     ResourceManager *resman = ResourceManager::getInstance();
 
