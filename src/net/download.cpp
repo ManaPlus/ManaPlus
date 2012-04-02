@@ -34,6 +34,11 @@
 
 #include <zlib.h>
 
+#define CURLVERSION_ATLEAST(a, b, c) ((LIBCURL_VERSION_MAJOR > (a)) || \
+    ((LIBCURL_VERSION_MAJOR == (a)) && (LIBCURL_VERSION_MINOR > (b))) || \
+    ((LIBCURL_VERSION_MAJOR == (a)) && (LIBCURL_VERSION_MINOR == (b)) && \
+    (LIBCURL_VERSION_PATCH >= (c))))
+
 #include "debug.h"
 
 const char *DOWNLOAD_ERROR_MESSAGE_THREAD
@@ -381,20 +386,28 @@ void Download::addProxy(CURL *curl)
         case 2: // HTTP
             break;
         case 3: // HTTP 1.0
+#if CURLVERSION_ATLEAST(7, 19, 4)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
+#endif
             break;
         case 4: // SOCKS4
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
             break;
         case 5: // SOCKS4A
+#if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4A);
+#else
+            curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
+#endif
             break;
         case 6: // SOCKS5
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
             break;
         case 7: // SOCKS5 hostname
+#if CURLVERSION_ATLEAST(7, 18, 0)
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE,
                 CURLPROXY_SOCKS5_HOSTNAME);
+#endif
             break;
     }
 }
