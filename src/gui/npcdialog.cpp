@@ -94,6 +94,9 @@ NpcDialog::NpcDialog(int npcId) :
     // Setup listbox
     mItemList = new ListBox(this);
     mItemList->setWrappingEnabled(true);
+    mItemList->setActionEventId("ok");
+    mItemList->addActionListener(this);
+
     setContentSize(260, 175);
 
     mListScrollArea = new ScrollArea(mItemList);

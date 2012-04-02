@@ -207,7 +207,6 @@ static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {
     {"keyQuit", SDLK_ESCAPE,
         N_("Quit"),
         KeyboardConfig::GRP_DEFAULT,
-//        nullptr,
         &ActionManager::quit,
         KeyboardConfig::KEY_NO_VALUE, 50,
         COND_DEFAULT},
