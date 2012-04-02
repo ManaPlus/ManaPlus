@@ -882,6 +882,8 @@ int Client::gameExec()
                 gui->logic();
             if (mGame)
                 mGame->logic();
+            else if (gui)
+                gui->handleInput();
 
             sound.logic();
 

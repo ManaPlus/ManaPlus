@@ -955,18 +955,10 @@ void Game::handleInput()
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
-        bool used = false;
-
         updateHistory(event);
         checkKeys();
 
-        if (event.type == SDL_VIDEORESIZE)
-        {
-            // Let the client deal with this one (it'll pass down from there)
-            Client::resize(event.resize.w, event.resize.h);
-        }
-        // Keyboard events (for discontinuous keys)
-        else if (event.type == SDL_KEYDOWN)
+        if (event.type == SDL_KEYDOWN)
         {
             if (setupWindow && setupWindow->isVisible() &&
                 keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
@@ -985,6 +977,8 @@ void Game::handleInput()
                 {
                     if (guiInput)
                         guiInput->pushInput(event);
+                    if (gui)
+                        gui->handleInput();
                 }
                 catch (const gcn::Exception &e)
                 {
@@ -993,7 +987,33 @@ void Game::handleInput()
                 }
                 return;
             }
+        }
 
+        try
+        {
+            if (guiInput)
+                guiInput->pushInput(event);
+        }
+        catch (const gcn::Exception &e)
+        {
+            const char *err = e.getMessage().c_str();
+            logger->log("Warning: guichan input exception: %s", err);
+        }
+        if (gui)
+        {
+            bool res = gui->handleInput();
+            if (res && event.type == SDL_KEYDOWN)
+                return;
+        }
+
+        if (event.type == SDL_VIDEORESIZE)
+        {
+            // Let the client deal with this one (it'll pass down from there)
+            Client::resize(event.resize.w, event.resize.h);
+        }
+        // Keyboard events (for discontinuous keys)
+        else if (event.type == SDL_KEYDOWN)
+        {
             if (inputManager.handleKeyEvent(event))
                 return;
         }
@@ -1007,22 +1027,6 @@ void Game::handleInput()
         {
             Client::setState(STATE_EXIT);
         }
-
-        // Push input to GUI when not used
-        if (!used)
-        {
-            try
-            {
-                if (guiInput)
-                    guiInput->pushInput(event);
-            }
-            catch (const gcn::Exception &e)
-            {
-                const char *err = e.getMessage().c_str();
-                logger->log("Warning: guichan input exception: %s", err);
-            }
-        }
-
     } // End while
 
     // If the user is configuring the keys then don't respond.

@@ -116,6 +116,10 @@ class Gui : public gcn::Gui
 
         void updateFonts();
 
+        bool handleInput();
+
+        bool handleKeyInput2();
+
         /**
          * Cursors are in graphic order from left to right.
          * CURSOR_POINTER should be left untouched.

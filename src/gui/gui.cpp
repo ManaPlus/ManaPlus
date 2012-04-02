@@ -259,7 +259,95 @@ void Gui::logic()
 
     Palette::advanceGradients();
 
-    gcn::Gui::logic();
+    if (!mTop)
+        return;
+
+    handleModalFocus();
+    handleModalMouseInputFocus();
+
+    if (mInput)
+    {
+//        mInput->_pollInput();
+        handleMouseInput();
+    }
+
+    mTop->logic();
+}
+
+bool Gui::handleInput()
+{
+    if (mInput)
+        return handleKeyInput2();
+    else
+        return false;
+}
+
+bool Gui::handleKeyInput2()
+{
+    bool consumed(false);
+
+    while (!mInput->isKeyQueueEmpty())
+    {
+        gcn::KeyInput keyInput = mInput->dequeueKeyInput();
+
+        // Save modifiers state
+        mShiftPressed = keyInput.isShiftPressed();
+        mMetaPressed = keyInput.isMetaPressed();
+        mControlPressed = keyInput.isControlPressed();
+        mAltPressed = keyInput.isAltPressed();
+
+        gcn::KeyEvent keyEventToGlobalKeyListeners(nullptr,
+            mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
+            keyInput.getType(), keyInput.isNumericPad(), keyInput.getKey());
+
+        distributeKeyEventToGlobalKeyListeners(
+            keyEventToGlobalKeyListeners);
+
+        // If a global key listener consumes the event it will not be
+        // sent further to the source of the event.
+        if (keyEventToGlobalKeyListeners.isConsumed())
+        {
+            consumed = true;
+            continue;
+        }
+
+        bool keyEventConsumed = false;
+
+        if (mFocusHandler)
+        {
+            // Send key inputs to the focused widgets
+            if (mFocusHandler->getFocused())
+            {
+                gcn::KeyEvent keyEvent(getKeyEventSource(),
+                    mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
+                    keyInput.getType(), keyInput.isNumericPad(),
+                    keyInput.getKey());
+
+                if (!mFocusHandler->getFocused()->isFocusable())
+                    mFocusHandler->focusNone();
+                else
+                    distributeKeyEvent(keyEvent);
+
+                keyEventConsumed = keyEvent.isConsumed();
+                if (keyEventConsumed)
+                    consumed = true;
+            }
+
+            // If the key event hasn't been consumed and
+            // tabbing is enable check for tab press and
+            // change focus.
+            if (!keyEventConsumed && mTabbing
+                && keyInput.getKey().getValue() == Key::TAB
+                && keyInput.getType() == gcn::KeyInput::PRESSED)
+            {
+                if (keyInput.isShiftPressed())
+                    mFocusHandler->tabPrevious();
+                else
+                    mFocusHandler->tabNext();
+            }
+        }
+    } // end while
+    return consumed;
 }
 
 void Gui::draw()
