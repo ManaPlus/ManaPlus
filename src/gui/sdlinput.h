@@ -140,7 +140,7 @@ public:
      *
      * @param event an event from SDL.
      */
-    virtual void pushInput(SDL_Event event);
+    virtual void pushInput(const SDL_Event &event);
 
     /**
      * Polls all input. It exists for input driver compatibility. If you

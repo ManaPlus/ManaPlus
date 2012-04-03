@@ -106,7 +106,7 @@ gcn::MouseInput SDLInput::dequeueMouseInput()
     return mouseInput;
 }
 
-void SDLInput::pushInput(SDL_Event event)
+void SDLInput::pushInput(const SDL_Event &event)
 {
     gcn::KeyInput keyInput;
     gcn::MouseInput mouseInput;
