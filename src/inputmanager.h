@@ -50,7 +50,9 @@ class InputManager
     public:
         InputManager();
 
-        bool handleKeyEvent(SDL_Event &event);
+        bool handleEvent(const SDL_Event &event);
+
+        bool handleKeyEvent(const SDL_Event &event);
 
         int getInputConditionMask();
 

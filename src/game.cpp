@@ -958,64 +958,13 @@ void Game::handleInput()
         updateHistory(event);
         checkKeys();
 
-        if (event.type == SDL_KEYDOWN)
-        {
-            if (setupWindow && setupWindow->isVisible() &&
-                keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
-            {
-                keyboard.setNewKey(event);
-                keyboard.callbackNewKey();
-                keyboard.setNewKeyIndex(keyboard.KEY_NO_VALUE);
-                return;
-            }
-
-            // send straight to gui for certain windows
-            if (quitDialog || TextDialog::isActive() ||
-                NpcPostDialog::isActive())
-            {
-                try
-                {
-                    if (guiInput)
-                        guiInput->pushInput(event);
-                    if (gui)
-                        gui->handleInput();
-                }
-                catch (const gcn::Exception &e)
-                {
-                    const char* err = e.getMessage().c_str();
-                    logger->log("Warning: guichan input exception: %s", err);
-                }
-                return;
-            }
-        }
-
-        try
-        {
-            if (guiInput)
-                guiInput->pushInput(event);
-        }
-        catch (const gcn::Exception &e)
-        {
-            const char *err = e.getMessage().c_str();
-            logger->log("Warning: guichan input exception: %s", err);
-        }
-        if (gui)
-        {
-            bool res = gui->handleInput();
-            if (res && event.type == SDL_KEYDOWN)
-                return;
-        }
+        if (inputManager.handleEvent(event))
+            return;
 
         if (event.type == SDL_VIDEORESIZE)
         {
             // Let the client deal with this one (it'll pass down from there)
             Client::resize(event.resize.w, event.resize.h);
-        }
-        // Keyboard events (for discontinuous keys)
-        else if (event.type == SDL_KEYDOWN)
-        {
-            if (inputManager.handleKeyEvent(event))
-                return;
         }
         // Active event
         else if (event.type == SDL_ACTIVEEVENT)

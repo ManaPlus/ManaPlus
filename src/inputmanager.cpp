@@ -28,20 +28,84 @@
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/npcdialog.h"
+#include "gui/npcpostdialog.h"
 #include "gui/setup.h"
+#include "gui/textdialog.h"
 #include "gui/tradewindow.h"
 
+#include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
 
 #include "debug.h"
 
 InputManager inputManager;
 
+extern QuitDialog *quitDialog;
+
 InputManager::InputManager()
 {
 }
 
-bool InputManager::handleKeyEvent(SDL_Event &event)
+bool InputManager::handleEvent(const SDL_Event &event)
+{
+    if (event.type == SDL_KEYDOWN)
+    {
+        if (setupWindow && setupWindow->isVisible() &&
+            keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
+        {
+            keyboard.setNewKey(event);
+            keyboard.callbackNewKey();
+            keyboard.setNewKeyIndex(keyboard.KEY_NO_VALUE);
+            return true;
+        }
+
+        // send straight to gui for certain windows
+        if (quitDialog || TextDialog::isActive() ||
+            NpcPostDialog::isActive())
+        {
+            try
+            {
+                if (guiInput)
+                    guiInput->pushInput(event);
+                if (gui)
+                    gui->handleInput();
+            }
+            catch (const gcn::Exception &e)
+            {
+                const char* err = e.getMessage().c_str();
+                logger->log("Warning: guichan input exception: %s", err);
+            }
+            return true;
+        }
+    }
+
+    try
+    {
+        if (guiInput)
+            guiInput->pushInput(event);
+    }
+    catch (const gcn::Exception &e)
+    {
+        const char *err = e.getMessage().c_str();
+        logger->log("Warning: guichan input exception: %s", err);
+    }
+    if (gui)
+    {
+        bool res = gui->handleInput();
+        if (res && event.type == SDL_KEYDOWN)
+            return true;
+    }
+
+    if (event.type == SDL_KEYDOWN)
+    {
+        if (handleKeyEvent(event))
+            return true;
+    }
+
+    return false;
+}
+
+bool InputManager::handleKeyEvent(const SDL_Event &event)
 {
     return keyboard.triggerAction(event);
 }
