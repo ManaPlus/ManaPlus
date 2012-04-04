@@ -311,6 +311,8 @@ class Graphics : public gcn::SDLGraphics
         int mOpenGL;
         bool mEnableResize;
         bool mNoFrame;
+        Uint32 mOldPixel;
+        int mOldAlpha;
 };
 
 extern Graphics *mainGraphics;

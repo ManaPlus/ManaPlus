@@ -37,6 +37,10 @@
 
 #include "debug.h"
 
+static unsigned int *cR = nullptr;
+static unsigned int *cG = nullptr;
+static unsigned int *cB = nullptr;
+
 Graphics::Graphics():
     mWidth(0),
     mHeight(0),
@@ -49,7 +53,9 @@ Graphics::Graphics():
     mSecure(false),
     mOpenGL(0),
     mEnableResize(false),
-    mNoFrame(false)
+    mNoFrame(false),
+    mOldPixel(0),
+    mOldAlpha(0)
 {
     mRect.x = 0;
     mRect.y = 0;
@@ -894,10 +900,12 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             }
             case 4:
             {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
                 const unsigned pb = (pixel & 0xff) * mColor.a;
                 const unsigned pg = (pixel & 0xff00) * mColor.a;
                 const unsigned pr = (pixel & 0xff0000) * mColor.a;
                 const unsigned a1 = (255 - mColor.a);
+
                 for (y = y1; y < y2; y++)
                 {
                     Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
@@ -915,6 +923,50 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                             | (g & 0xff00) | (r & 0xff0000));
                     }
                 }
+#else
+                if (!cR)
+                {
+                    cR = new unsigned int[0xff];
+                    cG = new unsigned int[0xff];
+                    cB = new unsigned int[0xff];
+                    mOldPixel = 0;
+                    mOldAlpha = mColor.a;
+                }
+
+                if (pixel != mOldPixel || mColor.a != mOldAlpha)
+                {
+                    const unsigned pb = (pixel & 0xff) * mColor.a;
+                    const unsigned pg = (pixel & 0xff00) * mColor.a;
+                    const unsigned pr = (pixel & 0xff0000) * mColor.a;
+                    const unsigned a1 = (255 - mColor.a);
+
+                    const unsigned int a2 = a1 * 0xff;
+                    const unsigned int a3 = a1 * 0xff00;
+
+                    for (int f = 0; f < 0xff; f ++)
+                    {
+                        cB[f] = ((pb + f * a1) >> 8) & 0xff;
+                        cG[f] = ((pg + f * a2) >> 8) & 0xff00;
+                        cR[f] = ((pr + f * a3) >> 8) & 0xff0000;
+                    }
+
+                    mOldPixel = pixel;
+                    mOldAlpha = mColor.a;
+                }
+
+                for (y = y1; y < y2; y++)
+                {
+                    Uint32 *p0 = reinterpret_cast<Uint32*>(static_cast<Uint8*>(
+                        mTarget->pixels) + y * mTarget->pitch);
+                    for (x = x1; x < x2; x++)
+                    {
+                        Uint32 *p = p0 + x;
+                        Uint32 dst = *reinterpret_cast<Uint32*>(p);
+                        *p = cB[dst & 0xff] | cG[(dst & 0xff00) >> 8]
+                            | cR[(dst & 0xff0000) >> 16];
+                    }
+                }
+#endif
                 break;
             }
             default:
