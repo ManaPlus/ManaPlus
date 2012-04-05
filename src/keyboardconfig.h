@@ -48,7 +48,6 @@ struct KeyFunction
 {
     const char* configField;    /** Field index that is in the config file. */
     int defaultValue;           /** The default key value used. */
-    std::string caption;        /** The caption value for the key function. */
     int value;                  /** The actual value that is used. */
     int grp;                    /** The key group */
     ActionFuncPtr action;       /** The key action function */
@@ -85,7 +84,7 @@ class KeyboardConfig
         /**
          * Determines if any key assignments are the same as each other.
          */
-        bool hasConflicts();
+        bool hasConflicts(int &key1, int &key2);
 
         /**
          * Calls a function back so the key re-assignment(s) can be seen.
@@ -112,12 +111,6 @@ class KeyboardConfig
          */
         bool isEnabled() const
         { return mEnabled; }
-
-        /**
-         * Get the key caption, providing more meaning to the user.
-         */
-        const std::string &getKeyCaption(int index) const
-        { return mKey[index].caption; }
 
         /**
          * Get the key function index by providing the keys value.
@@ -163,9 +156,6 @@ class KeyboardConfig
 
         std::string getKeyStringLong(int index) const;
 
-        const std::string &getBindError() const
-        { return mBindError; }
-
         SDLKey getKeyFromEvent(const SDL_Event &event) const;
 
         int getKeyValueFromEvent(const SDL_Event &event) const;
@@ -186,7 +176,6 @@ class KeyboardConfig
         enum KeyAction
         {
             KEY_NO_VALUE = -1,
-            KEY_SEPARATOR1,
             KEY_MOVE_UP,
             KEY_MOVE_DOWN,
             KEY_MOVE_LEFT,
@@ -213,7 +202,6 @@ class KeyboardConfig
             KEY_PATHFIND,
             KEY_OK,
             KEY_QUIT,
-            KEY_SEPARATOR2,
             KEY_SHORTCUTS_KEY,
             KEY_SHORTCUT_1,
             KEY_SHORTCUT_2,
@@ -235,7 +223,6 @@ class KeyboardConfig
             KEY_SHORTCUT_18,
             KEY_SHORTCUT_19,
             KEY_SHORTCUT_20,
-            KEY_SEPARATOR3,
             KEY_WINDOW_HELP,
             KEY_WINDOW_STATUS,
             KEY_WINDOW_INVENTORY,
@@ -258,7 +245,6 @@ class KeyboardConfig
             KEY_WINDOW_DIDYOUKNOW,
             KEY_PREV_SOCIAL_TAB,
             KEY_NEXT_SOCIAL_TAB,
-            KEY_SEPARATOR4,
             KEY_EMOTE,
             KEY_EMOTE_1,
             KEY_EMOTE_2,
@@ -308,11 +294,9 @@ class KeyboardConfig
             KEY_EMOTE_46,
             KEY_EMOTE_47,
             KEY_EMOTE_48,
-            KEY_SEPARATOR5,
             KEY_WEAR_OUTFIT,
             KEY_COPY_OUTFIT,
             KEY_COPY_EQUIPED_OUTFIT,
-            KEY_SEPARATOR6,
             KEY_TOGGLE_CHAT,
             KEY_SCROLL_CHAT_UP,
             KEY_SCROLL_CHAT_DOWN,
@@ -323,7 +307,6 @@ class KeyboardConfig
             KEY_CHAT_NEXT_HISTORY,
             KEY_AUTOCOMPLETE_CHAT,
             KEY_DEACTIVATE_CHAT,
-            KEY_SEPARATOR7,
             KEY_IGNORE_INPUT_1,
             KEY_IGNORE_INPUT_2,
             KEY_DIRECT_UP,
@@ -372,8 +355,6 @@ class KeyboardConfig
         KeyFunction mKey[KEY_TOTAL];   /**< Pointer to all the key data */
 
         Uint8 *mActiveKeys;            /**< Stores a list of all the keys */
-
-        std::string mBindError;
 
         KeyToActionMap mKeyToAction;
 };

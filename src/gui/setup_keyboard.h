@@ -46,6 +46,7 @@ class Setup_Keyboard : public SetupTab
         ~Setup_Keyboard();
 
         void apply();
+
         void cancel();
 
         void action(const gcn::ActionEvent &event);
@@ -69,6 +70,8 @@ class Setup_Keyboard : public SetupTab
          * If a key function is unresolved, then this reverts it.
          */
         void keyUnresolved();
+
+        int keyToSetupData(int index);
 
     private:
         class KeyListModel *mKeyListModel;

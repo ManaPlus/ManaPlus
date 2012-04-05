@@ -58,7 +58,7 @@ void KeyboardConfig::init()
     {
         mKey[i].configField = keyData[i].configField;
         mKey[i].defaultValue = keyData[i].defaultValue;
-        mKey[i].caption = gettext(keyData[i].caption.c_str());
+//        mKey[i].caption = gettext(keyData[i].caption.c_str());
         mKey[i].value = KEY_NO_VALUE;
         mKey[i].grp = keyData[i].grp;
         mKey[i].action = keyData[i].action;
@@ -66,6 +66,7 @@ void KeyboardConfig::init()
         mKey[i].priority = keyData[i].priority;
         mKey[i].condition = keyData[i].condition;
     }
+/*
     for (int i = KEY_EMOTE_1; i <= KEY_EMOTE_48; i ++)
     {
         mKey[i].caption = strprintf(
@@ -76,6 +77,7 @@ void KeyboardConfig::init()
         mKey[i].caption = strprintf(
             _("Item Shortcut %d"), i - KEY_SHORTCUT_1 + 1);
     }
+*/
 
     mNewKeyIndex = KEY_NO_VALUE;
     mEnabled = true;
@@ -113,7 +115,7 @@ void KeyboardConfig::makeDefault()
         mKey[i].value = mKey[i].defaultValue;
 }
 
-bool KeyboardConfig::hasConflicts()
+bool KeyboardConfig::hasConflicts(int &key1, int &key2)
 {
     int i, j;
     /**
@@ -135,16 +137,12 @@ bool KeyboardConfig::hasConflicts()
                 *mKey[i].configField)
                )
             {
-                mBindError = strprintf(_("Conflict \"%s\" and \"%s\" keys. "
-                                       "Resolve them, or gameplay may result"
-                                       " in strange behaviour."),
-                                       mKey[i].caption.c_str(),
-                                       mKey[j].caption.c_str());
+                key1 = i;
+                key2 = j;
                 return true;
             }
         }
     }
-    mBindError = "";
     return false;
 }
 
