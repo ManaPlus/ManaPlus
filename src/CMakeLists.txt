@@ -568,6 +568,7 @@ SET(SRCS
     keyboardconfig.cpp
     keyboardconfig.h
     keyboarddata.h
+    keydata.h
     listener.cpp
     listener.h
     localconsts.h

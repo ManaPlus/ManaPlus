@@ -22,6 +22,7 @@
 
 #include "game.h"
 #include "keyboardconfig.h"
+#include "keydata.h"
 #include "localplayer.h"
 
 #include "gui/chatwindow.h"
@@ -150,7 +151,7 @@ int InputManager::getInputConditionMask()
     return mask;
 }
 
-bool InputManager::checkKey(KeyFunction *key, int mask)
+bool InputManager::checkKey(const KeyData *key, int mask)
 {
 //    logger->log("mask=%d, condition=%d", mask, key->condition);
     if (!key || (key->condition & mask) != key->condition)

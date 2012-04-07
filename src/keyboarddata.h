@@ -26,23 +26,13 @@
 #include "actionmanager.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"
+#include "keydata.h"
 #include "localconsts.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
 #include <string>
-
-struct KeyData
-{
-    const char *configField;
-    int defaultValue;
-    int grp;
-    ActionFuncPtr action;
-    int modKeyIndex;
-    int priority;
-    int condition;
-};
 
 // keyData must be in same order as enum keyAction.
 static KeyData const keyData[KeyboardConfig::KEY_TOTAL] = {

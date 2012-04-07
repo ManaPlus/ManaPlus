@@ -575,6 +575,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      keyboardconfig.cpp \
 	      keyboardconfig.h \
 	      keyboarddata.h \
+	      keydata.h \
 	      listener.cpp \
 	      listener.h \
 	      localconsts.h \

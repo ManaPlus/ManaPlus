@@ -41,19 +41,35 @@ typedef KeysVector::const_iterator KeysVectorCIter;
 typedef std::map<int, KeysVector> KeyToActionMap;
 typedef KeyToActionMap::iterator KeyToActionMapIter;
 
+enum KeyTypes
+{
+    INPUT_UNKNOWN = 0,
+    INPUT_KEYBOARD = 1,
+    INPUT_MOUSE = 2,
+    INPUT_JOYSTICK = 3
+};
+
+struct KeyItem
+{
+    KeyItem() : type(-1), value(-1)
+    { }
+
+    KeyItem(int type0, int value0) : type(type0), value(value0)
+    { }
+
+    int type;
+
+    int value;
+};
+
+#define KeyFunctionSize 3
+
 /**
  * Each key represents a key function. Such as 'Move up', 'Attack' etc.
  */
 struct KeyFunction
 {
-    const char* configField;    /** Field index that is in the config file. */
-    int defaultValue;           /** The default key value used. */
-    int value;                  /** The actual value that is used. */
-    int grp;                    /** The key group */
-    ActionFuncPtr action;       /** The key action function */
-    int modKeyIndex;            /** Modifier what enable this key action */
-    int priority;               /** Action priority */
-    int condition;              /** Condition for allow use key */
+    KeyItem values[KeyFunctionSize];
 };
 
 class Setup_Keyboard;
@@ -94,11 +110,7 @@ class KeyboardConfig
         /**
          * Obtain the value stored in memory.
          */
-        int getKeyValue(int index) const
-        { return mKey[index].value; }
-
-        bool isSeparator(int index) const
-        { return !*mKey[index].configField; }
+        int getKeyValue(int index) const;
 
         /**
          * Get the index of the new key to be assigned.

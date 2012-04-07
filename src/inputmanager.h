@@ -26,7 +26,8 @@
 #include <string>
 #include <map>
 
-struct KeyFunction;
+struct KeyData;
+//struct KeyFunction;
 
 enum KeyCondition
 {
@@ -56,7 +57,7 @@ class InputManager
 
         int getInputConditionMask();
 
-        bool checkKey(KeyFunction *key, int mask);
+        bool checkKey(const KeyData *key, int mask);
 };
 
 extern InputManager inputManager;
