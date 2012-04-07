@@ -215,6 +215,9 @@ class Image : public Resource
         static int getTextureType()
         { return mTextureType; }
 
+        static void setBlur(bool n)
+        { mBlur = n; }
+
         static int mTextureType;
 #endif
 
@@ -294,6 +297,7 @@ class Image : public Resource
 
         static int mUseOpenGL;
         static int mTextureSize;
+        static bool mBlur;
 #endif
 };
 

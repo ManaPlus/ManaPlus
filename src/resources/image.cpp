@@ -45,6 +45,7 @@
 int Image::mUseOpenGL = 0;
 int Image::mTextureType = 0;
 int Image::mTextureSize = 0;
+bool Image::mBlur = true;
 #endif
 bool Image::mEnableAlphaCache = false;
 bool Image::mEnableAlpha = true;
@@ -766,8 +767,16 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
         SDL_LockSurface(tmpImage);
 
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    if (mBlur)
+    {
+        glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    }
+    else
+    {
+        glTexParameteri(mTextureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    }
 
     glTexImage2D(mTextureType, 0, 4, tmpImage->w, tmpImage->h,
         0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);

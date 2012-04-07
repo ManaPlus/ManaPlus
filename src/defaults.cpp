@@ -243,6 +243,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "autohideChat", false);
     AddDEF(configData, "downloadProxy", "");
     AddDEF(configData, "downloadProxyType", 0);
+    AddDEF(configData, "blur", true);
     return configData;
 }
 

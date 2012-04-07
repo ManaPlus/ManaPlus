@@ -53,6 +53,9 @@ Setup_Visual::Setup_Visual()
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
         "", "grabinput", this, "grabinputEvent");
 
+    new SetupItemCheckBox(_("Blurring textures (OpenGL)"),
+        "", "blur", this, "blurEvent");
+
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
         this, "guialphaEvent", 0.1, 1.0, 150, true);
 
