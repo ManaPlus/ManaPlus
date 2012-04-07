@@ -207,6 +207,7 @@ class BrowserBox : public gcn::Widget,
 
         typedef TextRows::iterator TextRowIterator;
         TextRows mTextRows;
+        std::list<int> mTextRowLinksCount;
 
         typedef std::vector<LinePart> LinePartList;
         typedef LinePartList::iterator LinePartIterator;

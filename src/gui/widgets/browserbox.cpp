@@ -107,6 +107,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
     std::string newRow;
     size_t idx1;
     gcn::Font *font = getFont();
+    int linksCount = 0;
 
     if (getWidth() < 0)
         return;
@@ -143,6 +144,7 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
             bLink.x2 = bLink.x1 + font->getWidth(bLink.caption) + 1;
 
             mLinks.push_back(bLink);
+            linksCount ++;
 
             newRow += "##<" + bLink.caption;
 
@@ -165,45 +167,29 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         newRow = replaceAll(newRow, "%VER%", SMALL_VERSION);
 
     if (atTop)
+    {
         mTextRows.push_front(newRow);
+        mTextRowLinksCount.push_front(linksCount);
+    }
     else
+    {
         mTextRows.push_back(newRow);
+        mTextRowLinksCount.push_back(linksCount);
+    }
 
     //discard older rows when a row limit has been set
-    if (mMaxRows > 0)
+    if (mMaxRows > 0 && !mTextRows.empty())
     {
         while (mTextRows.size() > mMaxRows)
         {
             mTextRows.pop_front();
+            int cnt = mTextRowLinksCount.front();
+            mTextRowLinksCount.pop_front();
 
-            int yStart = 0;
-
-            LinePartIterator i = mLineParts.begin();
-            if (i != mLineParts.end())
+            while (cnt && !mLinks.empty())
             {
-                ++ i;
-                for (; i != mLineParts.end(); ++ i)
-                {
-                    const LinePart &part = *i;
-                    if (!part.mX)
-                    {
-                        yStart = part.mY;
-                        break;
-                    }
-                }
-            }
-
-            LinkIterator it = mLinks.begin();
-            LinkIterator it_end = mLinks.end();
-            while (it != it_end)
-            {
-                (*it).y1 -= yStart;
-                (*it).y2 -= yStart;
-
-                if ((*it).y1 < 0)
-                    it = mLinks.erase(it);
-                else
-                    ++ it;
+                mLinks.erase(mLinks.begin());
+                cnt --;
             }
         }
     }
@@ -294,11 +280,13 @@ void BrowserBox::addImage(const std::string &path)
         return;
 
     mTextRows.push_back("~~~" + path);
+    mTextRowLinksCount.push_back(0);
 }
 
 void BrowserBox::clearRows()
 {
     mTextRows.clear();
+    mTextRowLinksCount.clear();
     mLinks.clear();
     setWidth(0);
     setHeight(0);
