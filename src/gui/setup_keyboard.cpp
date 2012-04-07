@@ -47,7 +47,8 @@ struct SetupActionData
     int actionId;
 };
 
-static SetupActionData const setupActionData[] = {
+static SetupActionData const setupActionData[] =
+{
     {
         N_("Basic Keys"),
         KeyboardConfig::KEY_NO_VALUE
@@ -707,7 +708,7 @@ static SetupActionData const setupActionData[] = {
     {
         N_("Modifier key"),
         KeyboardConfig::KEY_MOD
-    },
+    }
 };
 
 const int keysSize = sizeof(setupActionData) / sizeof(SetupActionData);

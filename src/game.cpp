@@ -48,7 +48,6 @@
 #include "gui/killstats.h"
 #include "gui/minimap.h"
 #include "gui/ministatuswindow.h"
-#include "gui/npcpostdialog.h"
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/setup.h"
