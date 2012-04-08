@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "inventory.h"
+#include "inputmanager.h"
 #include "item.h"
 #include "itemshortcut.h"
 #include "spellshortcut.h"
@@ -121,7 +122,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
             g->drawImage(mBackgroundImg, itemX, itemY);
 
         // Draw item keyboard shortcut.
-        std::string key = keyboard.getKeyValueString(
+        std::string key = inputManager.getKeyValueString(
             Input::KEY_SHORTCUT_1 + i);
         graphics->setColor(getForegroundColor());
 

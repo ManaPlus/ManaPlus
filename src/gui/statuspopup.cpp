@@ -32,6 +32,7 @@
 #include "gui/widgets/textbox.h"
 
 #include "graphics.h"
+#include "inputmanager.h"
 #include "localplayer.h"
 #include "units.h"
 #include "keyboardconfig.h"
@@ -188,13 +189,13 @@ void StatusPopup::view(int x, int y)
 void StatusPopup::setLabelText(gcn::Label *label, const char *text, int key)
 {
     label->setCaption(strprintf("%s  %s", text,
-        keyboard.getKeyValueString(key).c_str()));
+        inputManager.getKeyValueString(key).c_str()));
 }
 
 void StatusPopup::setLabelText2(gcn::Label *label, std::string text, int key)
 {
     label->setCaption(strprintf("%s  %s", text.c_str(),
-        keyboard.getKeyValueString(key).c_str()));
+        inputManager.getKeyValueString(key).c_str()));
     label->adjustSize();
 }
 

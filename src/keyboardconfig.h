@@ -42,39 +42,6 @@ typedef KeysVector::const_iterator KeysVectorCIter;
 typedef std::map<int, KeysVector> KeyToActionMap;
 typedef KeyToActionMap::iterator KeyToActionMapIter;
 
-enum KeyTypes
-{
-    INPUT_UNKNOWN = 0,
-    INPUT_KEYBOARD = 1,
-    INPUT_MOUSE = 2,
-    INPUT_JOYSTICK = 3
-};
-
-struct KeyItem
-{
-    KeyItem() : type(-1), value(-1)
-    { }
-
-    KeyItem(int type0, int value0) : type(type0), value(value0)
-    { }
-
-    int type;
-
-    int value;
-};
-
-#define KeyFunctionSize 3
-
-/**
- * Each key represents a key function. Such as 'Move up', 'Attack' etc.
- */
-struct KeyFunction
-{
-    KeyItem values[KeyFunctionSize];
-};
-
-class Setup_Keyboard;
-
 class KeyboardConfig
 {
     public:
@@ -82,37 +49,6 @@ class KeyboardConfig
          * Initializes the keyboard config explicitly.
          */
         void init();
-
-        /**
-         * Retrieve the key values from config file.
-         */
-        void retrieve();
-
-        /**
-         * Store the key values to config file.
-         */
-        void store();
-
-        /**
-         * Make the keys their default values.
-         */
-        void makeDefault();
-
-        /**
-         * Determines if any key assignments are the same as each other.
-         */
-        bool hasConflicts(int &key1, int &key2);
-
-        /**
-         * Calls a function back so the key re-assignment(s) can be seen.
-         */
-        void callbackNewKey();
-
-        /**
-         * Get the index of the new key to be assigned.
-         */
-        int getNewKeyIndex() const
-        { return mNewKeyIndex; }
 
         /**
          * Get the enable flag, which will stop the user from doing actions.
@@ -132,55 +68,26 @@ class KeyboardConfig
         { mEnabled = flag; }
 
         /**
-         * Set the index of the new key to be assigned.
-         */
-        void setNewKeyIndex(int value)
-        { mNewKeyIndex = value; }
-
-        /**
-         * Set the value of the new key.
-         */
-        void setNewKey(const SDL_Event &event);
-
-        /**
-         * Set a reference to the key setup window.
-         */
-        void setSetupKeyboard(Setup_Keyboard *setupKey)
-        { mSetupKey = setupKey; }
-
-        /**
-         * Checks if the key is active, by providing the key function index.
-         */
-        bool isActionActive(int index) const;
-
-        /**
          * Takes a snapshot of all the active keys.
          */
         void refreshActiveKeys();
 
-        std::string getKeyValueString(int index) const;
-
         std::string getKeyShortString(const std::string &key) const;
-
-        std::string getKeyStringLong(int index) const;
 
         SDLKey getKeyFromEvent(const SDL_Event &event) const;
 
         int getKeyValueFromEvent(const SDL_Event &event) const;
 
-        void unassignKey();
-
         void updateKeyActionMap();
 
         bool triggerAction(const SDL_Event &event);
 
+        std::string getKeyName(int key);
+
+        bool isActionActive(int index) const;
+
     private:
-        int mNewKeyIndex;              /**< Index of new key to be assigned */
         bool mEnabled;                 /**< Flag to respond to key input */
-
-        Setup_Keyboard *mSetupKey;     /**< Reference to setup window */
-
-        KeyFunction mKey[Input::KEY_TOTAL];   /**< Pointer to all the key data */
 
         Uint8 *mActiveKeys;            /**< Stores a list of all the keys */
 

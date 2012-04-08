@@ -30,6 +30,4 @@ struct InputEvent
     int mask;
 };
 
-typedef bool (*ActionFuncPtr) (InputEvent &event);
-
 #endif

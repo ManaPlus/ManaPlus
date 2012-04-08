@@ -24,6 +24,7 @@
 
 #include "emoteshortcut.h"
 #include "graphics.h"
+#include "inputmanager.h"
 #include "keyboardconfig.h"
 
 #include "gui/didyouknowwindow.h"
@@ -308,7 +309,8 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     if (key != Input::KEY_NO_VALUE)
     {
         mTextPopup->show(x + getX(), y + getY(), btn->getDescription(),
-            strprintf(_("Key: %s"), keyboard.getKeyValueString(key).c_str()));
+            strprintf(_("Key: %s"), inputManager.getKeyValueString(
+            key).c_str()));
     }
     else
     {

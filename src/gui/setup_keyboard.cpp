@@ -23,6 +23,7 @@
 
 #include "gui/setup_keyboard.h"
 
+#include "inputmanager.h"
 #include "keyboardconfig.h"
 
 #include "gui/okdialog.h"
@@ -747,7 +748,7 @@ Setup_Keyboard::Setup_Keyboard():
     mKeyList(new ListBox(mKeyListModel)),
     mKeySetting(false)
 {
-    keyboard.setSetupKeyboard(this);
+    inputManager.setSetupKeyboard(this);
     setName(_("Keyboard"));
 
     refreshKeys();
@@ -800,7 +801,7 @@ void Setup_Keyboard::apply()
     keyUnresolved();
     int key1, key2;
 
-    if (keyboard.hasConflicts(key1, key2))
+    if (inputManager.hasConflicts(key1, key2))
     {
         int s1 = keyToSetupData(key1);
         int s2 = keyToSetupData(key2);
@@ -812,14 +813,14 @@ void Setup_Keyboard::apply()
             setupActionData[s2].name.c_str()), DIALOG_ERROR);
     }
     keyboard.setEnabled(true);
-    keyboard.store();
+    inputManager.store();
 }
 
 void Setup_Keyboard::cancel()
 {
     keyUnresolved();
 
-    keyboard.retrieve();
+    inputManager.retrieve();
     keyboard.setEnabled(true);
 
     refreshKeys();
@@ -858,7 +859,7 @@ void Setup_Keyboard::action(const gcn::ActionEvent &event)
         {
             const SetupActionData &key = setupActionData[i];
             int ik = key.actionId;
-            keyboard.setNewKeyIndex(ik);
+            inputManager.setNewKeyIndex(ik);
             mKeyListModel->setElementAt(i, std::string(
                 gettext(key.name.c_str())) + ": ?");
         }
@@ -870,15 +871,15 @@ void Setup_Keyboard::action(const gcn::ActionEvent &event)
         {
             const SetupActionData &key = setupActionData[i];
             int ik = key.actionId;
-            keyboard.setNewKeyIndex(ik);
+            inputManager.setNewKeyIndex(ik);
             refreshAssignedKey(mKeyList->getSelected());
-            keyboard.unassignKey();
+            inputManager.unassignKey();
         }
         mAssignKeyButton->setEnabled(true);
     }
     else if (event.getId() == "makeDefault")
     {
-        keyboard.makeDefault();
+        inputManager.makeDefault();
         refreshKeys();
     }
 }
@@ -897,7 +898,7 @@ void Setup_Keyboard::refreshAssignedKey(int index)
     {
         mKeyListModel->setElementAt(index, strprintf("%s: %s",
             gettext(key.name.c_str()),
-            keyboard.getKeyStringLong(key.actionId).c_str()));
+            inputManager.getKeyStringLong(key.actionId).c_str()));
     }
 }
 
@@ -931,7 +932,7 @@ void Setup_Keyboard::keyUnresolved()
 {
     if (mKeySetting)
     {
-        newKeyCallback(keyboard.getNewKeyIndex());
-        keyboard.setNewKeyIndex(Input::KEY_NO_VALUE);
+        newKeyCallback(inputManager.getNewKeyIndex());
+        inputManager.setNewKeyIndex(Input::KEY_NO_VALUE);
     }
 }

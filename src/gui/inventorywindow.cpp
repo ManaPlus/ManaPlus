@@ -26,6 +26,7 @@
 #include "inventory.h"
 #include "item.h"
 #include "units.h"
+#include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "playerinfo.h"
 
@@ -344,7 +345,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         }
         else
         {
-            if (keyboard.isActionActive(Input::KEY_MOD))
+            if (inputManager.isActionActive(Input::KEY_MOD))
             {
                 Net::getInventoryHandler()->dropItem(
                     item, item->getQuantity());
@@ -389,11 +390,11 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 {
     Window::mouseClicked(event);
 
-    const bool mod = (isStorageActive() && keyboard.isActionActive(
+    const bool mod = (isStorageActive() && inputManager.isActionActive(
         Input::KEY_MOD));
 
     const bool mod2 = (tradeWindow && tradeWindow->isVisible()
-        && keyboard.isActionActive(Input::KEY_MOD));
+        && inputManager.isActionActive(Input::KEY_MOD));
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {

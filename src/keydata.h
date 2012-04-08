@@ -27,6 +27,8 @@
 
 #include <string>
 
+typedef bool (*ActionFuncPtr) (InputEvent &event);
+
 struct KeyData
 {
     const char *configField;

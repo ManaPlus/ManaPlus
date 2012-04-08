@@ -29,7 +29,6 @@
 #include "logger.h"
 
 #include "gui/sdlinput.h"
-#include "gui/setup_keyboard.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -54,179 +53,9 @@ class KeyFunctor
 
 void KeyboardConfig::init()
 {
-    for (int i = 0; i < Input::KEY_TOTAL; i++)
-    {
-        for (int f = 0; f < KeyFunctionSize; f ++)
-        {
-            mKey[i].values[f].type = INPUT_UNKNOWN;
-            mKey[i].values[f].value = -1;
-        }
-    }
-
-    mNewKeyIndex = Input::KEY_NO_VALUE;
     mEnabled = true;
 
-    makeDefault();
-    retrieve();
     updateKeyActionMap();
-}
-
-void KeyboardConfig::retrieve()
-{
-    for (int i = 0; i < Input::KEY_TOTAL; i++)
-    {
-        if (*keyData[i].configField)
-        {
-            KeyFunction &kf = mKey[i];
-            std::string keyStr = config.getValue(keyData[i].configField,
-                toString(keyData[i].defaultValue));
-            StringVect keys;
-            splitToStringVector(keys, keyStr, ',');
-            StringVectCIter it = keys.begin();
-            StringVectCIter it_end = keys.end();
-            int i2 = 0;
-            for (; it != it_end && i2 < KeyFunctionSize; ++ it)
-            {
-                std::string keyStr2 = *it;
-                if (keyStr.size() < 2)
-                    continue;
-                int type = INPUT_KEYBOARD;
-                if ((keyStr2[0] < '0' || keyStr2[0] > '9')
-                    && keyStr2[0] != '-')
-                {
-                    switch (keyStr2[0])
-                    {
-                        case 'm':
-                            type = INPUT_MOUSE;
-                            break;
-                        case 'j':
-                            type = INPUT_JOYSTICK;
-                            break;
-                        default:
-                            break;
-                    }
-                    keyStr2 = keyStr2.substr(1);
-                }
-                int key = atoi(keyStr2.c_str());
-                if (key >= -255 && key < SDLK_LAST)
-                {
-                    kf.values[i2] = KeyItem(type, key);
-                    i2 ++;
-                }
-            }
-        }
-    }
-}
-
-void KeyboardConfig::store()
-{
-    for (int i = 0; i < Input::KEY_TOTAL; i++)
-    {
-        if (*keyData[i].configField)
-        {
-            std::string keyStr;
-
-            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
-            {
-                const KeyItem &key = mKey[i].values[i2];
-                if (key.type != INPUT_UNKNOWN)
-                {
-                    std::string tmp = "k";
-                    switch(key.type)
-                    {
-                        case INPUT_MOUSE:
-                            tmp = "m";
-                            break;
-                        case INPUT_JOYSTICK:
-                            tmp = "j";
-                            break;
-                        default:
-                            break;
-                    }
-                    if (key.value >= 0)
-                    {
-                        if (keyStr.empty())
-                        {
-                            keyStr = tmp + toString(key.value);
-                        }
-                        else
-                        {
-                            keyStr += strprintf(",%s%d", tmp.c_str(), key.value);
-                        }
-                    }
-                }
-            }
-            if (keyStr.empty())
-                keyStr = "-1";
-
-            config.setValue(keyData[i].configField, keyStr);
-        }
-    }
-}
-
-void KeyboardConfig::makeDefault()
-{
-    for (int i = 0; i < Input::KEY_TOTAL; i++)
-    {
-        for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
-        {
-            mKey[i].values[i2].type = INPUT_UNKNOWN;
-            mKey[i].values[i2].value = -1;
-        }
-        mKey[i].values[0].type = INPUT_KEYBOARD;
-        mKey[i].values[0].value = keyData[i].defaultValue;
-    }
-}
-
-bool KeyboardConfig::hasConflicts(int &key1, int &key2)
-{
-    size_t i;
-    size_t j;
-    /**
-     * No need to parse the square matrix: only check one triangle
-     * that's enough to detect conflicts
-     */
-    for (i = 0; i < Input::KEY_TOTAL; i++)
-    {
-        if (!*keyData[i].configField)
-            continue;
-
-        for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
-        {
-            if (mKey[i].values[i2].value == Input::KEY_NO_VALUE)
-                continue;
-
-            for (j = i, j++; j < Input::KEY_TOTAL; j++)
-            {
-
-                if ((keyData[i].grp & keyData[j].grp) == 0 ||
-                    !*keyData[i].configField)
-                {
-                    continue;
-                }
-
-                for (size_t j2 = 0; j2 < KeyFunctionSize; j2 ++)
-                {
-                    // Allow for item shortcut and emote keys to overlap
-                    // as well as emote and ignore keys, but no other keys
-                    if (mKey[j].values[j2].type != INPUT_UNKNOWN
-                        && mKey[i].values[i2].value == mKey[j].values[j2].value
-                        && mKey[i].values[i2].type == mKey[j].values[j2].type)
-                    {
-                        key1 = i;
-                        key2 = j;
-                        return true;
-                    }
-                }
-            }
-        }
-    }
-    return false;
-}
-
-void KeyboardConfig::callbackNewKey()
-{
-    mSetupKey->newKeyCallback(mNewKeyIndex);
 }
 
 int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
@@ -243,11 +72,12 @@ int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
     const int keyValue = getKeyValueFromEvent(event);
     for (size_t i = 0; i < Input::KEY_TOTAL; i++)
     {
+        KeyFunction &key = inputManager.getKey(i);
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
-            if (keyValue == mKey[i].values[i2].value
+            if (keyValue == key.values[i2].value
                 && (grp & keyData[i].grp) != 0
-                && mKey[i].values[i2].type == INPUT_KEYBOARD)
+                && key.values[i2].type == INPUT_KEYBOARD)
             {
                 return i;
             }
@@ -256,82 +86,19 @@ int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
     return Input::KEY_NO_VALUE;
 }
 
-bool KeyboardConfig::isActionActive(int index) const
-{
-    if (!mActiveKeys)
-        return false;
-
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
-    {
-        const int value = mKey[index].values[i].value;
-        if (value >= 0 && mActiveKeys[value])
-            return true;
-    }
-    return false;
-}
-
 void KeyboardConfig::refreshActiveKeys()
 {
     mActiveKeys = SDL_GetKeyState(nullptr);
 }
 
-std::string KeyboardConfig::getKeyStringLong(int index) const
+std::string KeyboardConfig::getKeyName(int key)
 {
-    std::string keyStr;
+    if (key == Input::KEY_NO_VALUE)
+        return "";
+    if (key >= 0)
+        return SDL_GetKeyName(static_cast<SDLKey>(key));
 
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
-    {
-        const KeyItem &key = mKey[index].values[i];
-        if (key.type == INPUT_KEYBOARD)
-        {
-            if (key.value >= 0)
-            {
-                if (keyStr.empty())
-                {
-                    keyStr = SDL_GetKeyName(static_cast<SDLKey>(key.value));
-                }
-                else
-                {
-                    keyStr += std::string(" ") + SDL_GetKeyName(
-                        static_cast<SDLKey>(key.value));
-                }
-            }
-        }
-    }
-
-    if (keyStr.empty())
-        return _("unknown key");
-    return keyStr;
-}
-
-std::string KeyboardConfig::getKeyValueString(int index) const
-{
-    std::string keyStr;
-
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
-    {
-        const KeyItem &key = mKey[index].values[i];
-        if (key.type == INPUT_KEYBOARD)
-        {
-            if (key.value >= 0)
-            {
-                if (keyStr.empty())
-                {
-                    keyStr = getKeyShortString(SDL_GetKeyName(
-                        static_cast<SDLKey>(key.value)));
-                }
-                else
-                {
-                    keyStr += " " + getKeyShortString(SDL_GetKeyName(
-                        static_cast<SDLKey>(key.value)));
-                }
-            }
-        }
-    }
-
-    if (keyStr.empty())
-        return _("u key");
-    return keyStr;
+    return strprintf(_("key_%d"), key);
 }
 
 std::string KeyboardConfig::getKeyShortString(const std::string &key) const
@@ -353,59 +120,19 @@ SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event) const
     return event.key.keysym.sym;
 }
 
-void KeyboardConfig::setNewKey(const SDL_Event &event)
-{
-    int idx = -1;
-    KeyFunction &key = mKey[mNewKeyIndex];
-    int val = getKeyValueFromEvent(event);
-
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
-    {
-        if (key.values[i].type == INPUT_UNKNOWN
-            || (key.values[i].type == INPUT_KEYBOARD
-            && key.values[i].value == val))
-        {
-            idx = i;
-            break;
-        }
-    }
-    if (idx == -1)
-    {
-        for (size_t i = 1; i < KeyFunctionSize; i ++)
-        {
-            key.values[i - 1].type = key.values[i].type;
-            key.values[i - 1].value = key.values[i].value;
-        }
-        idx = KeyFunctionSize - 1;
-    }
-
-    key.values[idx] = KeyItem(INPUT_KEYBOARD, val);
-    updateKeyActionMap();
-}
-
-void KeyboardConfig::unassignKey()
-{
-    KeyFunction &key = mKey[mNewKeyIndex];
-    for (size_t i = 0; i < KeyFunctionSize; i ++)
-    {
-        key.values[i].type = INPUT_UNKNOWN;
-        key.values[i].value = -1;
-    }
-    updateKeyActionMap();
-}
-
 void KeyboardConfig::updateKeyActionMap()
 {
     mKeyToAction.clear();
 
-    for (size_t i = 0; i < Input::KEY_TOTAL; i++)
+    for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
     {
         if (keyData[i].action)
         {
+            KeyFunction &key = inputManager.getKey(i);
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                if (mKey[i].values[i2].type == INPUT_KEYBOARD)
-                    mKeyToAction[mKey[i].values[i2].value].push_back(i);
+                if (key.values[i2].type == INPUT_KEYBOARD)
+                    mKeyToAction[key.values[i2].value].push_back(i);
             }
         }
     }
@@ -449,6 +176,20 @@ bool KeyboardConfig::triggerAction(const SDL_Event &event)
                 }
             }
         }
+    }
+    return false;
+}
+
+bool KeyboardConfig::isActionActive(int index) const
+{
+    if (!mActiveKeys)
+        return false;
+
+    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    {
+        const int value = inputManager.getKey(index).values[i].value;
+        if (value >= 0 && mActiveKeys[value])
+            return true;
     }
     return false;
 }

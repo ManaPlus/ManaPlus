@@ -24,6 +24,7 @@
 #include "actorspritemanager.h"
 #include "guild.h"
 #include "guildmanager.h"
+#include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"

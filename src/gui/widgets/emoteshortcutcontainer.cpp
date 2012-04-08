@@ -25,6 +25,7 @@
 #include "configuration.h"
 #include "emoteshortcut.h"
 #include "graphics.h"
+#include "inputmanager.h"
 #include "inventory.h"
 #include "item.h"
 #include "itemshortcut.h"
@@ -117,7 +118,7 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
             g->drawImage(mBackgroundImg, emoteX, emoteY);
 
         // Draw emote keyboard shortcut.
-        std::string key = keyboard.getKeyValueString(
+        std::string key = inputManager.getKeyValueString(
             Input::KEY_EMOTE_1 + i);
 
         graphics->setColor(getForegroundColor());

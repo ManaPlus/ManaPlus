@@ -35,6 +35,7 @@
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "joystick.h"
+#include "inputmanager.h"
 #include "keyboardconfig.h"
 #ifdef USE_OPENGL
 #include "openglgraphics.h"
@@ -602,6 +603,7 @@ void Client::gameInit()
 
     // Initialize keyboard
     keyboard.init();
+    inputManager.init();
 
     // Initialise player relations
     player_relations.init();

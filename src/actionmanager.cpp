@@ -25,6 +25,7 @@
 #include "game.h"
 #include "inputevent.h"
 #include "itemshortcut.h"
+#include "inputmanager.h"
 #include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
@@ -85,7 +86,7 @@ impHandler0(moveUp)
         dialog->refocus();
         return false;
     }
-    if (keyboard.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directUp(event);
     return false;
 }
@@ -97,42 +98,42 @@ impHandler0(moveDown)
         dialog->refocus();
         return false;
     }
-    if (keyboard.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directDown(event);
     return false;
 }
 
 impHandler0(moveLeft)
 {
-    if (outfitWindow && keyboard.isActionActive(Input::KEY_WEAR_OUTFIT))
+    if (outfitWindow && inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
         outfitWindow->wearPreviousOutfit();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
     }
-    if (keyboard.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directLeft(event);
     return false;
 }
 
 impHandler0(moveRight)
 {
-    if (outfitWindow && keyboard.isActionActive(Input::KEY_WEAR_OUTFIT))
+    if (outfitWindow && inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
         outfitWindow->wearNextOutfit();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
     }
-    if (keyboard.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(Input::KEY_EMOTE))
         return directRight(event);
     return false;
 }
 
 impHandler(emote)
 {
-    if (keyboard.isActionActive(Input::KEY_EMOTE))
+    if (inputManager.isActionActive(Input::KEY_EMOTE))
     {
         // emote keys
         int emotion = 1 + event.action - Input::KEY_EMOTE_1;
@@ -145,7 +146,7 @@ impHandler(emote)
             return true;
         }
     }
-    else if (keyboard.isActionActive(Input::KEY_MOVE_TO_POINT))
+    else if (inputManager.isActionActive(Input::KEY_MOVE_TO_POINT))
     {
         // move to point keys
         int num = event.action - Input::KEY_EMOTE_1;
@@ -155,7 +156,7 @@ impHandler(emote)
             return true;
         }
     }
-    else if (keyboard.isActionActive(Input::KEY_WEAR_OUTFIT))
+    else if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
         int num = event.action - Input::KEY_EMOTE_1;
         if (outfitWindow && num >= 0)
@@ -166,7 +167,7 @@ impHandler(emote)
             return true;
         }
     }
-    else if (keyboard.isActionActive(Input::KEY_COPY_OUTFIT))
+    else if (inputManager.isActionActive(Input::KEY_COPY_OUTFIT))
     {
         int num = event.action - Input::KEY_EMOTE_1;
         if (outfitWindow && num >= 0)
@@ -412,8 +413,8 @@ impHandler0(changePickupType)
 
 impHandler0(moveToTarget)
 {
-    if (player_node && !keyboard.isActionActive(Input::KEY_TARGET_ATTACK)
-        && !keyboard.isActionActive(Input::KEY_ATTACK))
+    if (player_node && !inputManager.isActionActive(Input::KEY_TARGET_ATTACK)
+        && !inputManager.isActionActive(Input::KEY_ATTACK))
     {
         player_node->moveToTarget();
         return true;
@@ -423,8 +424,8 @@ impHandler0(moveToTarget)
 
 impHandler0(moveToHome)
 {
-    if (player_node && !keyboard.isActionActive(Input::KEY_TARGET_ATTACK)
-        && !keyboard.isActionActive(Input::KEY_ATTACK))
+    if (player_node && !inputManager.isActionActive(Input::KEY_TARGET_ATTACK)
+        && !inputManager.isActionActive(Input::KEY_ATTACK))
     {
         player_node->moveToHome();
         if (Game::instance())
@@ -617,7 +618,7 @@ impHandler0(sit)
 {
     if (player_node)
     {
-        if (keyboard.isActionActive(Input::KEY_EMOTE))
+        if (inputManager.isActionActive(Input::KEY_EMOTE))
             player_node->updateSit();
         else
             player_node->toggleSit();

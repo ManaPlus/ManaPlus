@@ -26,6 +26,7 @@
 #include "emoteshortcut.h"
 #include "equipment.h"
 #include "graphics.h"
+#include "inputmanager.h"
 #include "inventory.h"
 #include "item.h"
 #include "keyboardconfig.h"
@@ -506,7 +507,7 @@ std::string OutfitWindow::keyName(int number)
 {
     if (number < 0 || number >= SHORTCUT_EMOTES)
         return "";
-    return keyboard.getKeyStringLong(Input::KEY_EMOTE_1 + number);
+    return inputManager.getKeyStringLong(Input::KEY_EMOTE_1 + number);
 }
 
 void OutfitWindow::next()

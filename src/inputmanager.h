@@ -21,13 +21,44 @@
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
+#include "keydata.h"
+
 #include "gui/sdlinput.h"
 
 #include <string>
 #include <map>
 
+#define KeyFunctionSize 3
+
 struct KeyData;
-//struct KeyFunction;
+
+class Setup_Keyboard;
+
+enum KeyTypes
+{
+    INPUT_UNKNOWN = 0,
+    INPUT_KEYBOARD = 1,
+    INPUT_MOUSE = 2,
+    INPUT_JOYSTICK = 3
+};
+
+struct KeyItem
+{
+    KeyItem() : type(-1), value(-1)
+    { }
+
+    KeyItem(int type0, int value0) : type(type0), value(value0)
+    { }
+
+    int type;
+
+    int value;
+};
+
+struct KeyFunction
+{
+    KeyItem values[KeyFunctionSize];
+};
 
 enum KeyCondition
 {
@@ -51,6 +82,8 @@ class InputManager
     public:
         InputManager();
 
+        void init();
+
         bool handleEvent(const SDL_Event &event);
 
         bool handleKeyEvent(const SDL_Event &event);
@@ -58,6 +91,55 @@ class InputManager
         int getInputConditionMask();
 
         bool checkKey(const KeyData *key, int mask);
+
+        void retrieve();
+
+        void store();
+
+        void makeDefault();
+
+        bool hasConflicts(int &key1, int &key2);
+
+        void callbackNewKey();
+
+        KeyFunction &getKey(int index);
+
+        std::string getKeyValueString(int index) const;
+
+        std::string getKeyStringLong(int index) const;
+
+        void addActionKey(int action, int type, int val);
+
+        void setNewKey(const SDL_Event &event);
+
+        void unassignKey();
+
+        bool isActionActive(int index) const;
+
+        /**
+         * Set the index of the new key to be assigned.
+         */
+        void setNewKeyIndex(int value)
+        { mNewKeyIndex = value; }
+
+        /**
+         * Set a reference to the key setup window.
+         */
+        void setSetupKeyboard(Setup_Keyboard *setupKey)
+        { mSetupKey = setupKey; }
+
+        /**
+         * Get the index of the new key to be assigned.
+         */
+        int getNewKeyIndex() const
+        { return mNewKeyIndex; }
+
+    protected:
+        Setup_Keyboard *mSetupKey;     /**< Reference to setup window */
+
+        int mNewKeyIndex;              /**< Index of new key to be assigned */
+
+        KeyFunction mKey[Input::KEY_TOTAL];   /**< Pointer to all the key data */
 };
 
 extern InputManager inputManager;
