@@ -85,7 +85,7 @@ impHandler0(moveUp)
         dialog->refocus();
         return false;
     }
-    if (keyboard.isActionActive(keyboard.KEY_EMOTE))
+    if (keyboard.isActionActive(Input::KEY_EMOTE))
         return directUp(event);
     return false;
 }
@@ -97,45 +97,45 @@ impHandler0(moveDown)
         dialog->refocus();
         return false;
     }
-    if (keyboard.isActionActive(keyboard.KEY_EMOTE))
+    if (keyboard.isActionActive(Input::KEY_EMOTE))
         return directDown(event);
     return false;
 }
 
 impHandler0(moveLeft)
 {
-    if (outfitWindow && keyboard.isActionActive(keyboard.KEY_WEAR_OUTFIT))
+    if (outfitWindow && keyboard.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
         outfitWindow->wearPreviousOutfit();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
     }
-    if (keyboard.isActionActive(keyboard.KEY_EMOTE))
+    if (keyboard.isActionActive(Input::KEY_EMOTE))
         return directLeft(event);
     return false;
 }
 
 impHandler0(moveRight)
 {
-    if (outfitWindow && keyboard.isActionActive(keyboard.KEY_WEAR_OUTFIT))
+    if (outfitWindow && keyboard.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
         outfitWindow->wearNextOutfit();
         if (Game::instance())
             Game::instance()->setValidSpeed();
         return true;
     }
-    if (keyboard.isActionActive(keyboard.KEY_EMOTE))
+    if (keyboard.isActionActive(Input::KEY_EMOTE))
         return directRight(event);
     return false;
 }
 
 impHandler(emote)
 {
-    if (keyboard.isActionActive(keyboard.KEY_EMOTE))
+    if (keyboard.isActionActive(Input::KEY_EMOTE))
     {
         // emote keys
-        int emotion = 1 + event.action - KeyboardConfig::KEY_EMOTE_1;
+        int emotion = 1 + event.action - Input::KEY_EMOTE_1;
         if (emotion > 0)
         {
             if (emoteShortcut)
@@ -145,19 +145,19 @@ impHandler(emote)
             return true;
         }
     }
-    else if (keyboard.isActionActive(keyboard.KEY_MOVE_TO_POINT))
+    else if (keyboard.isActionActive(Input::KEY_MOVE_TO_POINT))
     {
         // move to point keys
-        int num = event.action - KeyboardConfig::KEY_EMOTE_1;
+        int num = event.action - Input::KEY_EMOTE_1;
         if (socialWindow && num >= 0)
         {
             socialWindow->selectPortal(num);
             return true;
         }
     }
-    else if (keyboard.isActionActive(keyboard.KEY_WEAR_OUTFIT))
+    else if (keyboard.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
-        int num = event.action - KeyboardConfig::KEY_EMOTE_1;
+        int num = event.action - Input::KEY_EMOTE_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->wearOutfit(num);
@@ -166,9 +166,9 @@ impHandler(emote)
             return true;
         }
     }
-    else if (keyboard.isActionActive(keyboard.KEY_COPY_OUTFIT))
+    else if (keyboard.isActionActive(Input::KEY_COPY_OUTFIT))
     {
-        int num = event.action - KeyboardConfig::KEY_EMOTE_1;
+        int num = event.action - Input::KEY_EMOTE_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->copyOutfit(num);
@@ -226,7 +226,7 @@ impHandler(shortcut)
         if (num >= 0 && num < SHORTCUT_TABS)
         {
             itemShortcut[num]->useItem(event.action
-                - KeyboardConfig::KEY_SHORTCUT_1);
+                - Input::KEY_SHORTCUT_1);
         }
         return true;
     }
@@ -412,8 +412,8 @@ impHandler0(changePickupType)
 
 impHandler0(moveToTarget)
 {
-    if (player_node && !keyboard.isActionActive(keyboard.KEY_TARGET_ATTACK)
-        && !keyboard.isActionActive(keyboard.KEY_ATTACK))
+    if (player_node && !keyboard.isActionActive(Input::KEY_TARGET_ATTACK)
+        && !keyboard.isActionActive(Input::KEY_ATTACK))
     {
         player_node->moveToTarget();
         return true;
@@ -423,8 +423,8 @@ impHandler0(moveToTarget)
 
 impHandler0(moveToHome)
 {
-    if (player_node && !keyboard.isActionActive(keyboard.KEY_TARGET_ATTACK)
-        && !keyboard.isActionActive(keyboard.KEY_ATTACK))
+    if (player_node && !keyboard.isActionActive(Input::KEY_TARGET_ATTACK)
+        && !keyboard.isActionActive(Input::KEY_ATTACK))
     {
         player_node->moveToHome();
         if (Game::instance())
@@ -617,7 +617,7 @@ impHandler0(sit)
 {
     if (player_node)
     {
-        if (keyboard.isActionActive(keyboard.KEY_EMOTE))
+        if (keyboard.isActionActive(Input::KEY_EMOTE))
             player_node->updateSit();
         else
             player_node->toggleSit();

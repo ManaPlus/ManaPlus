@@ -54,7 +54,7 @@ class KeyFunctor
 
 void KeyboardConfig::init()
 {
-    for (int i = 0; i < KEY_TOTAL; i++)
+    for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
         for (int f = 0; f < KeyFunctionSize; f ++)
         {
@@ -63,7 +63,7 @@ void KeyboardConfig::init()
         }
     }
 
-    mNewKeyIndex = KEY_NO_VALUE;
+    mNewKeyIndex = Input::KEY_NO_VALUE;
     mEnabled = true;
 
     makeDefault();
@@ -73,7 +73,7 @@ void KeyboardConfig::init()
 
 void KeyboardConfig::retrieve()
 {
-    for (int i = 0; i < KEY_TOTAL; i++)
+    for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
         if (*keyData[i].configField)
         {
@@ -120,7 +120,7 @@ void KeyboardConfig::retrieve()
 
 void KeyboardConfig::store()
 {
-    for (int i = 0; i < KEY_TOTAL; i++)
+    for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
         if (*keyData[i].configField)
         {
@@ -166,7 +166,7 @@ void KeyboardConfig::store()
 
 void KeyboardConfig::makeDefault()
 {
-    for (int i = 0; i < KEY_TOTAL; i++)
+    for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
         for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
         {
@@ -186,17 +186,17 @@ bool KeyboardConfig::hasConflicts(int &key1, int &key2)
      * No need to parse the square matrix: only check one triangle
      * that's enough to detect conflicts
      */
-    for (i = 0; i < KEY_TOTAL; i++)
+    for (i = 0; i < Input::KEY_TOTAL; i++)
     {
         if (!*keyData[i].configField)
             continue;
 
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
-            if (mKey[i].values[i2].value == KEY_NO_VALUE)
+            if (mKey[i].values[i2].value == Input::KEY_NO_VALUE)
                 continue;
 
-            for (j = i, j++; j < KEY_TOTAL; j++)
+            for (j = i, j++; j < Input::KEY_TOTAL; j++)
             {
 
                 if ((keyData[i].grp & keyData[j].grp) == 0 ||
@@ -241,7 +241,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
 int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
 {
     const int keyValue = getKeyValueFromEvent(event);
-    for (size_t i = 0; i < KEY_TOTAL; i++)
+    for (size_t i = 0; i < Input::KEY_TOTAL; i++)
     {
         for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
         {
@@ -253,7 +253,7 @@ int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
             }
         }
     }
-    return KEY_NO_VALUE;
+    return Input::KEY_NO_VALUE;
 }
 
 bool KeyboardConfig::isActionActive(int index) const
@@ -398,7 +398,7 @@ void KeyboardConfig::updateKeyActionMap()
 {
     mKeyToAction.clear();
 
-    for (size_t i = 0; i < KEY_TOTAL; i++)
+    for (size_t i = 0; i < Input::KEY_TOTAL; i++)
     {
         if (keyData[i].action)
         {
@@ -437,7 +437,7 @@ bool KeyboardConfig::triggerAction(const SDL_Event &event)
         for (; it != it_end; ++ it)
         {
             const int keyNum = *it;
-            if (keyNum < 0 || keyNum >= KEY_TOTAL)
+            if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)
                 continue;
 
             if (inputManager.checkKey(&keyData[keyNum], mask))
@@ -451,9 +451,4 @@ bool KeyboardConfig::triggerAction(const SDL_Event &event)
         }
     }
     return false;
-}
-
-int KeyboardConfig::getKeyValue(int index) const
-{
-    return mKey[index].values[0].value;
 }

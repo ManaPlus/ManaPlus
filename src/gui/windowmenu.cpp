@@ -65,41 +65,41 @@ WindowMenu::WindowMenu():
     int x = 0, h = 0;
 
     addButton(N_("BC"), _("Bot checker"), x, h,
-              KeyboardConfig::KEY_WINDOW_BOT_CHECKER);
+              Input::KEY_WINDOW_BOT_CHECKER);
     addButton(N_("ONL"), _("Who is online"), x, h,
-              KeyboardConfig::KEY_NO_VALUE);
+              Input::KEY_NO_VALUE);
     addButton(N_("KS"), _("Kill stats"), x, h,
-              KeyboardConfig::KEY_WINDOW_KILLS);
+              Input::KEY_WINDOW_KILLS);
     addButton(":-)", _("Smilies"), x, h,
-              KeyboardConfig::KEY_WINDOW_EMOTE_SHORTCUT);
-    addButton(N_("STA"), _("Status"), x, h, KeyboardConfig::KEY_WINDOW_STATUS);
+              Input::KEY_WINDOW_EMOTE_SHORTCUT);
+    addButton(N_("STA"), _("Status"), x, h, Input::KEY_WINDOW_STATUS);
     addButton(N_("EQU"), _("Equipment"), x, h,
-              KeyboardConfig::KEY_WINDOW_EQUIPMENT);
+              Input::KEY_WINDOW_EQUIPMENT);
     addButton(N_("INV"), _("Inventory"), x, h,
-              KeyboardConfig::KEY_WINDOW_INVENTORY);
+              Input::KEY_WINDOW_INVENTORY);
 
     if (skillDialog->hasSkills())
     {
         addButton(N_("SKI"), _("Skills"), x, h,
-                  KeyboardConfig::KEY_WINDOW_SKILL);
+                  Input::KEY_WINDOW_SKILL);
     }
 
 #ifdef MANASERV_SUPPORT
     if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
         addButton(N_("SPE"), _("Specials"), x, h,
-                  KeyboardConfig::KEY_NO_VALUE);
+                  Input::KEY_NO_VALUE);
     }
 #endif
 
-    addButton(N_("SOC"), _("Social"), x, h, KeyboardConfig::KEY_WINDOW_SOCIAL);
+    addButton(N_("SOC"), _("Social"), x, h, Input::KEY_WINDOW_SOCIAL);
     addButton(N_("SH"), _("Shortcuts"), x, h,
-              KeyboardConfig::KEY_WINDOW_SHORTCUT);
-    addButton(N_("SP"), _("Spells"), x, h, KeyboardConfig::KEY_WINDOW_SPELLS);
-    addButton(N_("DR"), _("Drop"), x, h, KeyboardConfig::KEY_WINDOW_DROP);
+              Input::KEY_WINDOW_SHORTCUT);
+    addButton(N_("SP"), _("Spells"), x, h, Input::KEY_WINDOW_SPELLS);
+    addButton(N_("DR"), _("Drop"), x, h, Input::KEY_WINDOW_DROP);
     addButton(N_("YK"), _("Did you know"), x, h,
-        KeyboardConfig::KEY_WINDOW_DIDYOUKNOW);
-    addButton(N_("SET"), _("Setup"), x, h, KeyboardConfig::KEY_WINDOW_SETUP);
+        Input::KEY_WINDOW_DIDYOUKNOW);
+    addButton(N_("SET"), _("Setup"), x, h, Input::KEY_WINDOW_SETUP);
 
     if (mainGraphics)
     {
@@ -305,7 +305,7 @@ void WindowMenu::mouseMoved(gcn::MouseEvent &event)
     const int x = event.getX();
     const int y = event.getY();
     int key = btn->getTag();
-    if (key != KeyboardConfig::KEY_NO_VALUE)
+    if (key != Input::KEY_NO_VALUE)
     {
         mTextPopup->show(x + getX(), y + getY(), btn->getDescription(),
             strprintf(_("Key: %s"), keyboard.getKeyValueString(key).c_str()));

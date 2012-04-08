@@ -52,11 +52,11 @@ bool InputManager::handleEvent(const SDL_Event &event)
     if (event.type == SDL_KEYDOWN)
     {
         if (setupWindow && setupWindow->isVisible() &&
-            keyboard.getNewKeyIndex() > keyboard.KEY_NO_VALUE)
+            keyboard.getNewKeyIndex() > Input::KEY_NO_VALUE)
         {
             keyboard.setNewKey(event);
             keyboard.callbackNewKey();
-            keyboard.setNewKeyIndex(keyboard.KEY_NO_VALUE);
+            keyboard.setNewKeyIndex(Input::KEY_NO_VALUE);
             return true;
         }
 
@@ -143,8 +143,8 @@ int InputManager::getInputConditionMask()
     if (!player_node || !player_node->getDisableGameModifiers())
         mask += COND_EMODS;
 
-    if (!keyboard.isActionActive(keyboard.KEY_TARGET)
-        && !keyboard.isActionActive(keyboard.KEY_UNTARGET))
+    if (!keyboard.isActionActive(Input::KEY_TARGET)
+        && !keyboard.isActionActive(Input::KEY_UNTARGET))
     {
         mask += COND_NOTARGET;
     }
@@ -157,6 +157,6 @@ bool InputManager::checkKey(const KeyData *key, int mask)
     if (!key || (key->condition & mask) != key->condition)
         return false;
 
-    return (key->modKeyIndex == KeyboardConfig::KEY_NO_VALUE
+    return (key->modKeyIndex == Input::KEY_NO_VALUE
         || keyboard.isActionActive(key->modKeyIndex));
 }

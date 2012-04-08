@@ -122,7 +122,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
         // Draw item keyboard shortcut.
         std::string key = keyboard.getKeyValueString(
-            keyboard.KEY_SHORTCUT_1 + i);
+            Input::KEY_SHORTCUT_1 + i);
         graphics->setColor(getForegroundColor());
 
         g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);

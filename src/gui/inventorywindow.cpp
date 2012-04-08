@@ -344,7 +344,7 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
         }
         else
         {
-            if (keyboard.isActionActive(keyboard.KEY_MOD))
+            if (keyboard.isActionActive(Input::KEY_MOD))
             {
                 Net::getInventoryHandler()->dropItem(
                     item, item->getQuantity());
@@ -390,10 +390,10 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
     Window::mouseClicked(event);
 
     const bool mod = (isStorageActive() && keyboard.isActionActive(
-        keyboard.KEY_MOD));
+        Input::KEY_MOD));
 
     const bool mod2 = (tradeWindow && tradeWindow->isVisible()
-        && keyboard.isActionActive(keyboard.KEY_MOD));
+        && keyboard.isActionActive(Input::KEY_MOD));
 
     if (!mod && !mod2 && event.getButton() == gcn::MouseEvent::RIGHT)
     {

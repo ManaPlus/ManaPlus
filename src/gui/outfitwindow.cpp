@@ -506,7 +506,7 @@ std::string OutfitWindow::keyName(int number)
 {
     if (number < 0 || number >= SHORTCUT_EMOTES)
         return "";
-    return keyboard.getKeyStringLong(KeyboardConfig::KEY_EMOTE_1 + number);
+    return keyboard.getKeyStringLong(Input::KEY_EMOTE_1 + number);
 }
 
 void OutfitWindow::next()
