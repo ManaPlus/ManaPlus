@@ -361,18 +361,25 @@ void InputManager::unassignKey()
     keyboard.update();
 }
 
+bool InputManager::handleAssignKey(const SDL_Event &event)
+{
+    if (setupWindow && setupWindow->isVisible() &&
+        getNewKeyIndex() > Input::KEY_NO_VALUE)
+    {
+        setNewKey(event);
+        callbackNewKey();
+        setNewKeyIndex(Input::KEY_NO_VALUE);
+        return true;
+    }
+    return false;
+}
+
 bool InputManager::handleEvent(const SDL_Event &event)
 {
     if (event.type == SDL_KEYDOWN)
     {
-        if (setupWindow && setupWindow->isVisible() &&
-            getNewKeyIndex() > Input::KEY_NO_VALUE)
-        {
-            setNewKey(event);
-            callbackNewKey();
-            setNewKeyIndex(Input::KEY_NO_VALUE);
+        if (handleAssignKey(event))
             return true;
-        }
 
         // send straight to gui for certain windows
         if (quitDialog || TextDialog::isActive() ||

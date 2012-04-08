@@ -139,6 +139,8 @@ class InputManager
 
         bool invokeKey(const KeyData *key, int keyNum, int mask);
 
+        bool handleAssignKey(const SDL_Event &event);
+
     protected:
         Setup_Keyboard *mSetupKey;     /**< Reference to setup window */
 
