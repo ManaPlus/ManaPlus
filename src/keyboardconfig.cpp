@@ -35,27 +35,11 @@
 
 #include <SDL_events.h>
 
-#include <algorithm>
-
 #include "debug.h"
-
-class KeyFunctor
-{
-    public:
-        bool operator() (int key1, int key2)
-        {
-            return keys[key1].priority >= keys[key2].priority;
-        }
-
-        const KeyData *keys;
-
-} keySorter;
 
 void KeyboardConfig::init()
 {
     mEnabled = true;
-
-    updateKeyActionMap();
 }
 
 int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
@@ -120,34 +104,6 @@ SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event) const
     return event.key.keysym.sym;
 }
 
-void KeyboardConfig::updateKeyActionMap()
-{
-    mKeyToAction.clear();
-
-    for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
-    {
-        if (keyData[i].action)
-        {
-            KeyFunction &key = inputManager.getKey(i);
-            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
-            {
-                if (key.values[i2].type == INPUT_KEYBOARD)
-                    mKeyToAction[key.values[i2].value].push_back(i);
-            }
-        }
-    }
-
-    keySorter.keys = &keyData[0];
-    KeyToActionMapIter it = mKeyToAction.begin();
-    KeyToActionMapIter it_end = mKeyToAction.end();
-    for (; it != it_end; ++ it)
-    {
-        KeysVector *keys = &it->second;
-        if (keys->size() > 1)
-            sort(keys->begin(), keys->end(), keySorter);
-    }
-}
-
 bool KeyboardConfig::triggerAction(const SDL_Event &event)
 {
     const int i = getKeyValueFromEvent(event);
@@ -167,14 +123,8 @@ bool KeyboardConfig::triggerAction(const SDL_Event &event)
             if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)
                 continue;
 
-            if (inputManager.checkKey(&keyData[keyNum], mask))
-            {
-                InputEvent evt(keyNum, mask);
-                if ((*(keyData[keyNum].action))(evt))
-                {
-                    return true;
-                }
-            }
+            if (inputManager.invokeKey(&keyData[keyNum], keyNum, mask))
+                return true;
         }
     }
     return false;
@@ -192,4 +142,9 @@ bool KeyboardConfig::isActionActive(int index) const
             return true;
     }
     return false;
+}
+
+void KeyboardConfig::update()
+{
+    inputManager.updateKeyActionMap(mKeyToAction, INPUT_KEYBOARD);
 }

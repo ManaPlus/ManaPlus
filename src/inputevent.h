@@ -21,6 +21,16 @@
 #ifndef INPUTEVENT_H
 #define INPUTEVENT_H
 
+#include <map>
+#include <vector>
+
+typedef std::vector<int> KeysVector;
+typedef KeysVector::iterator KeysVectorIter;
+typedef KeysVector::const_iterator KeysVectorCIter;
+
+typedef std::map<int, KeysVector> KeyToActionMap;
+typedef KeyToActionMap::iterator KeyToActionMapIter;
+
 struct InputEvent
 {
     InputEvent(int action0, int mask0);

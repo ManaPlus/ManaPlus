@@ -21,6 +21,7 @@
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
+#include "inputevent.h"
 #include "keydata.h"
 
 #include "gui/sdlinput.h"
@@ -133,6 +134,10 @@ class InputManager
          */
         int getNewKeyIndex() const
         { return mNewKeyIndex; }
+
+        void updateKeyActionMap(KeyToActionMap &actionMap, int type);
+
+        bool invokeKey(const KeyData *key, int keyNum, int mask);
 
     protected:
         Setup_Keyboard *mSetupKey;     /**< Reference to setup window */

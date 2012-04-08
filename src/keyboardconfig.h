@@ -35,13 +35,6 @@
 
 union SDL_Event;
 
-typedef std::vector<int> KeysVector;
-typedef KeysVector::iterator KeysVectorIter;
-typedef KeysVector::const_iterator KeysVectorCIter;
-
-typedef std::map<int, KeysVector> KeyToActionMap;
-typedef KeyToActionMap::iterator KeyToActionMapIter;
-
 class KeyboardConfig
 {
     public:
@@ -78,13 +71,13 @@ class KeyboardConfig
 
         int getKeyValueFromEvent(const SDL_Event &event) const;
 
-        void updateKeyActionMap();
-
         bool triggerAction(const SDL_Event &event);
 
         std::string getKeyName(int key);
 
         bool isActionActive(int index) const;
+
+        void update();
 
     private:
         bool mEnabled;                 /**< Flag to respond to key input */

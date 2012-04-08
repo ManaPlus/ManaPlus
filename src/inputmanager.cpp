@@ -39,11 +39,26 @@
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>
 
+#include <algorithm>
+
 #include "debug.h"
 
 InputManager inputManager;
 
 extern QuitDialog *quitDialog;
+
+class KeyFunctor
+{
+    public:
+        bool operator() (int key1, int key2)
+        {
+            return keys[key1].priority >= keys[key2].priority;
+        }
+
+        const KeyData *keys;
+
+} keySorter;
+
 
 InputManager::InputManager() :
     mSetupKey(nullptr),
@@ -66,7 +81,7 @@ void InputManager::init()
 
     makeDefault();
     retrieve();
-    keyboard.updateKeyActionMap();
+    keyboard.update();
 }
 
 void InputManager::retrieve()
@@ -332,7 +347,7 @@ void InputManager::setNewKey(const SDL_Event &event)
 
     addActionKey(mNewKeyIndex, INPUT_KEYBOARD, val);
 
-    keyboard.updateKeyActionMap();
+    keyboard.update();
 }
 
 void InputManager::unassignKey()
@@ -343,7 +358,7 @@ void InputManager::unassignKey()
         key.values[i].type = INPUT_UNKNOWN;
         key.values[i].value = -1;
     }
-    keyboard.updateKeyActionMap();
+    keyboard.update();
 }
 
 bool InputManager::handleEvent(const SDL_Event &event)
@@ -458,4 +473,43 @@ bool InputManager::checkKey(const KeyData *key, int mask)
 
     return (key->modKeyIndex == Input::KEY_NO_VALUE
         || isActionActive(key->modKeyIndex));
+}
+
+bool InputManager::invokeKey(const KeyData *key, int keyNum, int mask)
+{
+    if (checkKey(key, mask))
+    {
+        InputEvent evt(keyNum, mask);
+        if ((*(keyData[keyNum].action))(evt))
+            return true;
+    }
+    return false;
+}
+
+void InputManager::updateKeyActionMap(KeyToActionMap &actionMap, int type)
+{
+    actionMap.clear();
+
+    for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
+    {
+        if (keyData[i].action)
+        {
+            KeyFunction &key = mKey[i];
+            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            {
+                if (key.values[i2].type == INPUT_KEYBOARD)
+                    actionMap[key.values[i2].value].push_back(i);
+            }
+        }
+    }
+
+    keySorter.keys = &keyData[0];
+    KeyToActionMapIter it = actionMap.begin();
+    KeyToActionMapIter it_end = actionMap.end();
+    for (; it != it_end; ++ it)
+    {
+        KeysVector *keys = &it->second;
+        if (keys->size() > 1)
+            sort(keys->begin(), keys->end(), keySorter);
+    }
 }
