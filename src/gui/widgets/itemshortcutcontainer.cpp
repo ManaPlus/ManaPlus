@@ -297,6 +297,7 @@ void ItemShortcutContainer::mousePressed(gcn::MouseEvent &event)
             itemShortcut[mNumber]->setItemSelected(-1);
             if (spellShortcut)
                 spellShortcut->setItemSelected(-1);
+            inventoryWindow->unselectItem();
         }
         else if (itemShortcut[mNumber]->getItem(index))
         {

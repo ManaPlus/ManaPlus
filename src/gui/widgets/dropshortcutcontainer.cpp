@@ -220,6 +220,7 @@ void DropShortcutContainer::mousePressed(gcn::MouseEvent &event)
         {
             dropShortcut->setItem(index);
             dropShortcut->setItemSelected(-1);
+            inventoryWindow->unselectItem();
         }
         else if (dropShortcut->getItem(index))
         {
