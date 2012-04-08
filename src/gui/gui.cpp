@@ -492,7 +492,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         if (!gcn::Widget::widgetExists(widget))
             break;
 
-        parent = static_cast<gcn::Widget*>(widget->getParent());
+        parent = widget->getParent();
 
         if (widget->isEnabled() || force)
         {
@@ -551,7 +551,7 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
 
         gcn::Widget* swap = widget;
         widget = parent;
-        parent = static_cast<gcn::Widget*>(swap->getParent());
+        parent = swap->getParent();
 
         // If a non modal focused widget has been reach
         // and we have modal focus cancel the distribution.

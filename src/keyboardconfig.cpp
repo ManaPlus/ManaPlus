@@ -37,6 +37,12 @@
 
 #include "debug.h"
 
+KeyboardConfig::KeyboardConfig() :
+    mEnabled(true),
+    mActiveKeys(nullptr)
+{
+}
+
 void KeyboardConfig::init()
 {
     mEnabled = true;

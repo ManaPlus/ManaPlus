@@ -146,7 +146,7 @@ class InputManager
 
         int mNewKeyIndex;              /**< Index of new key to be assigned */
 
-        KeyFunction mKey[Input::KEY_TOTAL];   /**< Pointer to all the key data */
+        KeyFunction mKey[Input::KEY_TOTAL]; /**< Pointer to all the key data */
 };
 
 extern InputManager inputManager;

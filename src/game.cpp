@@ -804,7 +804,8 @@ void Game::handleMoveAndAttack()
             {
                 Being *target = nullptr;
 
-                bool newTarget = !inputManager.isActionActive(Input::KEY_TARGET);
+                bool newTarget = !inputManager.isActionActive(
+                    Input::KEY_TARGET);
                 // A set target has highest priority
                 if (!player_node->getTarget())
                 {

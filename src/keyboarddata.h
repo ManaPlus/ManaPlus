@@ -25,7 +25,6 @@
 
 #include "actionmanager.h"
 #include "inputmanager.h"
-#include "keyboardconfig.h"
 #include "keydata.h"
 #include "localconsts.h"
 

@@ -26,7 +26,6 @@
 #include "inputevent.h"
 #include "itemshortcut.h"
 #include "inputmanager.h"
-#include "keyboardconfig.h"
 #include "localplayer.h"
 #include "logger.h"
 #include "playerinfo.h"

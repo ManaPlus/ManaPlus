@@ -340,7 +340,7 @@ namespace gcn
 
         while (parent)
         {
-            parent = static_cast<Widget*>(widget->getParent());
+            parent = widget->getParent();
 
             // Check if the widget is present in the "widget with mouse" queue.
             bool widgetIsPresentInQueue = false;
@@ -373,7 +373,7 @@ namespace gcn
 
             Widget* swap = widget;
             widget = parent;
-            parent = static_cast<Widget*>(swap->getParent());
+            parent = swap->getParent();
         }
 
         if (mFocusHandler->getDraggedWidget())
@@ -608,7 +608,7 @@ namespace gcn
             if (!Widget::widgetExists(widget))
                 break;
 
-            parent = static_cast<Widget*>(widget->getParent());
+            parent = widget->getParent();
 
             if (widget->isEnabled() || force)
             {
@@ -667,7 +667,7 @@ namespace gcn
 
             Widget* swap = widget;
             widget = parent;
-            parent = static_cast<Widget*>(swap->getParent());
+            parent = swap->getParent();
 
             // If a non modal focused widget has been reach
             // and we have modal focus cancel the distribution.
@@ -711,7 +711,7 @@ namespace gcn
             if (!Widget::widgetExists(widget))
                 break;
 
-            parent = static_cast<Widget*>(widget->getParent());
+            parent = widget->getParent();
 
             if (widget->isEnabled())
             {
@@ -740,7 +740,7 @@ namespace gcn
 
             Widget* swap = widget;
             widget = parent;
-            parent = static_cast<Widget*>(swap->getParent());
+            parent = swap->getParent();
 
             // If a non modal focused widget has been reach
             // and we have modal focus cancel the distribution.
@@ -853,7 +853,7 @@ namespace gcn
 
         while (parent)
         {
-            parent = static_cast<Widget*>(widget->getParent());
+            parent = widget->getParent();
 
             // Check if the widget is present in the "widget with mouse" queue.
             bool widgetIsPresentInQueue = false;
@@ -885,7 +885,7 @@ namespace gcn
 
             Widget* swap = widget;
             widget = parent;
-            parent = static_cast<Widget*>(swap->getParent());
+            parent = swap->getParent();
         }
     }
 }

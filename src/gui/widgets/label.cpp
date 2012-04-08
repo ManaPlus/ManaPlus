@@ -38,5 +38,5 @@ Label::Label(const std::string &caption) :
 
 void Label::draw(gcn::Graphics *graphics)
 {
-    gcn::Label::draw(static_cast<gcn::Graphics*>(graphics));
+    gcn::Label::draw(graphics);
 }

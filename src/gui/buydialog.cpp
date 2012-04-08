@@ -91,8 +91,7 @@ void BuyDialog::init()
     mSlider = new Slider(1.0);
     mQuantityLabel = new Label(strprintf("%d / %d", mAmountItems, mMaxItems));
     mQuantityLabel->setAlignment(gcn::Graphics::CENTER);
-    mMoneyLabel = new Label(strprintf(_("Price: %s / Total: %s"),
-                                            "", ""));
+    mMoneyLabel = new Label(strprintf(_("Price: %s / Total: %s"), "", ""));
 
     mAmountField = new IntTextField(1, 1, 123);
     mAmountField->setActionEventId("amount");
@@ -196,7 +195,7 @@ void BuyDialog::action(const gcn::ActionEvent &event)
 
     // The following actions require a valid selection
     if (selectedItem < 0 ||
-        selectedItem >= static_cast<int>(mShopItems->getNumberOfElements()))
+        selectedItem >= mShopItems->getNumberOfElements())
     {
         return;
     }

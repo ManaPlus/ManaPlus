@@ -38,6 +38,8 @@ union SDL_Event;
 class KeyboardConfig
 {
     public:
+        KeyboardConfig();
+
         /**
          * Initializes the keyboard config explicitly.
          */

@@ -164,7 +164,8 @@ void InputManager::store()
                         }
                         else
                         {
-                            keyStr += strprintf(",%s%d", tmp.c_str(), key.value);
+                            keyStr += strprintf(",%s%d",
+                                tmp.c_str(), key.value);
                         }
                     }
                 }
@@ -504,7 +505,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap, int type)
             KeyFunction &key = mKey[i];
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                if (key.values[i2].type == INPUT_KEYBOARD)
+                if (key.values[i2].type == type)
                     actionMap[key.values[i2].value].push_back(i);
             }
         }
