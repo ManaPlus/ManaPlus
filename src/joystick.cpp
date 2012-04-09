@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "inputmanager.h"
 #include "logger.h"
 
 #include "debug.h"
@@ -69,7 +70,7 @@ Joystick::Joystick(int no):
     mNumber = no;
 
     for (int i = 0; i < MAX_BUTTONS; i++)
-        mButtons[i] = false;
+        mActiveButtons[i] = false;
 }
 
 Joystick::~Joystick()
@@ -137,10 +138,8 @@ void Joystick::setNumber(int n)
     }
 }
 
-void Joystick::update()
+void Joystick::logic()
 {
-    mDirection = 0;
-
     // When calibrating, don't bother the outside with our state
     if (mCalibrating)
     {
@@ -150,6 +149,8 @@ void Joystick::update()
 
     if (!mEnabled || !mCalibrated)
         return;
+
+    mDirection = 0;
 
     if (mUseInactive || Client::getInputFocused())
     {
@@ -193,9 +194,10 @@ void Joystick::update()
         // Buttons
         for (int i = 0; i < mButtonsNumber; i++)
         {
-            mButtons[i] = (SDL_JoystickGetButton(mJoystick, i) == 1);
+            const bool state = (SDL_JoystickGetButton(mJoystick, i) == 1);
+            mActiveButtons[i] = state;
 #ifdef DEBUG_JOYSTICK
-            if (mButtons[i])
+            if (mActiveButtons[i])
                 logger->log("button: %d", i);
 #endif
         }
@@ -203,7 +205,7 @@ void Joystick::update()
     else
     {
         for (int i = 0; i < mButtonsNumber; i++)
-            mButtons[i] = false;
+            mActiveButtons[i] = false;
     }
 }
 
@@ -246,7 +248,7 @@ void Joystick::finishCalibration()
 
 bool Joystick::buttonPressed(unsigned char no) const
 {
-    return (mEnabled && no < MAX_BUTTONS) ? mButtons[no] : false;
+    return (mEnabled && no < MAX_BUTTONS) ? mActiveButtons[no] : false;
 }
 
 void Joystick::getNames(std::vector <std::string> &names)
@@ -254,4 +256,45 @@ void Joystick::getNames(std::vector <std::string> &names)
     names.clear();
     for (int i = 0; i < joystickCount; i++)
         names.push_back(SDL_JoystickName(i));
+}
+
+void Joystick::update()
+{
+    inputManager.updateKeyActionMap(mKeyToAction, INPUT_JOYSTICK);
+}
+
+KeysVector *Joystick::getActionVector(const SDL_Event &event)
+{
+    const int i = getButtonFromEvent(event);
+
+    if (i < 0 || i >= mButtonsNumber)
+        return nullptr;
+//    logger->log("button triggerAction: %d", i);
+    if (mKeyToAction.find(i) != mKeyToAction.end())
+        return &mKeyToAction[i];
+    return nullptr;
+}
+
+int Joystick::getButtonFromEvent(const SDL_Event &event)
+{
+    if (event.jbutton.which != mNumber)
+        return -1;
+    return event.jbutton.button;
+}
+
+bool Joystick::isActionActive(int index) const
+{
+    const KeyFunction &key = inputManager.getKey(index);
+    for (size_t i = 0; i < KeyFunctionSize; i ++)
+    {
+        if (key.values[i].type != INPUT_JOYSTICK)
+            continue;
+        const int value = key.values[i].value;
+        if (value >= 0 && value < mButtonsNumber)
+        {
+            if (mActiveButtons[value])
+                return true;
+        }
+    }
+    return false;
 }

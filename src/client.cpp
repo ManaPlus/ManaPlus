@@ -857,7 +857,11 @@ int Client::gameExec()
                         break;
 
                     case SDL_KEYDOWN:
-                        inputManager.handleAssignKey(event);
+                        inputManager.handleAssignKey(event, INPUT_KEYBOARD);
+                        break;
+
+                    case SDL_JOYBUTTONDOWN:
+                        inputManager.handleAssignKey(event, INPUT_JOYSTICK);
                         break;
 
                     default:

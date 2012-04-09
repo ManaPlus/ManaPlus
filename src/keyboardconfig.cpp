@@ -23,7 +23,6 @@
 #include "keyboardconfig.h"
 
 #include "configuration.h"
-#include "inputevent.h"
 #include "inputmanager.h"
 #include "keyboarddata.h"
 #include "logger.h"
@@ -114,30 +113,13 @@ SDLKey KeyboardConfig::getKeyFromEvent(const SDL_Event &event) const
     return event.key.keysym.sym;
 }
 
-bool KeyboardConfig::triggerAction(const SDL_Event &event)
+KeysVector *KeyboardConfig::getActionVector(const SDL_Event &event)
 {
     const int i = getKeyValueFromEvent(event);
 //    logger->log("key triggerAction: %d", i);
     if (i != 0 && i < SDLK_LAST && mKeyToAction.find(i) != mKeyToAction.end())
-    {
-        const KeysVector &ptrs = mKeyToAction[i];
-//        logger->log("ptrs: %d", (int)ptrs.size());
-        KeysVectorCIter it = ptrs.begin();
-        KeysVectorCIter it_end = ptrs.end();
-
-        int mask = inputManager.getInputConditionMask();
-
-        for (; it != it_end; ++ it)
-        {
-            const int keyNum = *it;
-            if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)
-                continue;
-
-            if (inputManager.invokeKey(&keyData[keyNum], keyNum, mask))
-                return true;
-        }
-    }
-    return false;
+        return &mKeyToAction[i];
+    return nullptr;
 }
 
 bool KeyboardConfig::isActionActive(int index) const
@@ -145,9 +127,13 @@ bool KeyboardConfig::isActionActive(int index) const
     if (!mActiveKeys)
         return false;
 
+    const KeyFunction &key = inputManager.getKey(index);
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
-        const int value = inputManager.getKey(index).values[i].value;
+        if (key.values[i].type != INPUT_KEYBOARD)
+            continue;
+
+        const int value = key.values[i].value;
         if (value >= 0)
         {
             if (mActiveKeys[value])

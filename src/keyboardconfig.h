@@ -73,7 +73,7 @@ class KeyboardConfig
 
         int getKeyValueFromEvent(const SDL_Event &event) const;
 
-        bool triggerAction(const SDL_Event &event);
+        KeysVector *getActionVector(const SDL_Event &event);
 
         std::string getKeyName(int key);
 

@@ -22,6 +22,7 @@
 
 #include "configuration.h"
 #include "game.h"
+#include "joystick.h"
 #include "keyboardconfig.h"
 #include "keyboarddata.h"
 #include "localplayer.h"
@@ -82,6 +83,8 @@ void InputManager::init()
     makeDefault();
     retrieve();
     keyboard.update();
+    if (joystick)
+        joystick->update();
 }
 
 void InputManager::retrieve()
@@ -245,7 +248,11 @@ void InputManager::callbackNewKey()
 
 bool InputManager::isActionActive(int index) const
 {
-    return keyboard.isActionActive(index);
+    if (keyboard.isActionActive(index))
+        return true;
+    if (joystick)
+        return joystick->isActionActive(index);
+    return false;
 }
 
 KeyFunction &InputManager::getKey(int index)
@@ -262,20 +269,25 @@ std::string InputManager::getKeyStringLong(int index) const
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         const KeyItem &key = mKey[index].values[i];
+        std::string str;
         if (key.type == INPUT_KEYBOARD)
         {
-            std::string str;
             if (key.value >= 0)
                 str = keyboard.getKeyName(key.value);
             else if (key.value < -1)
                 str = strprintf(_("key_%d"), -key.value);
-            if (!str.empty())
-            {
-                if (keyStr.empty())
-                    keyStr = str;
-                else
-                    keyStr += std::string(" ") + str;
-            }
+        }
+        else if (key.type == INPUT_JOYSTICK)
+        {
+            // TRANSLATORS: this is long joystick button name
+            str = strprintf(_("Button%d"), key.value + 1);
+        }
+        if (!str.empty())
+        {
+            if (keyStr.empty())
+                keyStr = str;
+            else
+                keyStr += std::string(" ") + str;
         }
     }
 
@@ -291,9 +303,9 @@ std::string InputManager::getKeyValueString(int index) const
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         const KeyItem &key = mKey[index].values[i];
+        std::string str;
         if (key.type == INPUT_KEYBOARD)
         {
-            std::string str;
             if (key.value >= 0)
             {
                 str = keyboard.getKeyShortString(
@@ -303,13 +315,18 @@ std::string InputManager::getKeyValueString(int index) const
             {
                 str = strprintf(_("key_%d"), -key.value);
             }
-            if (!str.empty())
-            {
-                if (keyStr.empty())
-                    keyStr = str;
-                else
-                    keyStr += std::string(" ") + str;
-            }
+        }
+        else if (key.type == INPUT_JOYSTICK)
+        {
+            // TRANSLATORS: this is short joystick button name
+            str = strprintf(_("But%d"), key.value + 1);
+        }
+        if (!str.empty())
+        {
+            if (keyStr.empty())
+                keyStr = str;
+            else
+                keyStr += std::string(" ") + str;
         }
     }
 
@@ -328,7 +345,7 @@ void InputManager::addActionKey(int action, int type, int val)
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         if (key.values[i].type == INPUT_UNKNOWN
-            || (key.values[i].type == INPUT_KEYBOARD
+            || (key.values[i].type == type
             && key.values[i].value == val))
         {
             idx = i;
@@ -348,13 +365,21 @@ void InputManager::addActionKey(int action, int type, int val)
     key.values[idx] = KeyItem(type, val);
 }
 
-void InputManager::setNewKey(const SDL_Event &event)
+void InputManager::setNewKey(const SDL_Event &event, int type)
 {
-    int val = keyboard.getKeyValueFromEvent(event);
+    int val = -1;
+    if (type == INPUT_KEYBOARD)
+        val = keyboard.getKeyValueFromEvent(event);
+    else if (type == INPUT_JOYSTICK && joystick)
+        val = joystick->getButtonFromEvent(event);
 
-    addActionKey(mNewKeyIndex, INPUT_KEYBOARD, val);
-
-    keyboard.update();
+    if (val != -1)
+    {
+        addActionKey(mNewKeyIndex, type, val);
+        keyboard.update();
+        if (joystick)
+            joystick->update();
+    }
 }
 
 void InputManager::unassignKey()
@@ -366,14 +391,16 @@ void InputManager::unassignKey()
         key.values[i].value = -1;
     }
     keyboard.update();
+    if (joystick)
+        joystick->update();
 }
 
-bool InputManager::handleAssignKey(const SDL_Event &event)
+bool InputManager::handleAssignKey(const SDL_Event &event, int type)
 {
     if (setupWindow && setupWindow->isVisible() &&
         getNewKeyIndex() > Input::KEY_NO_VALUE)
     {
-        setNewKey(event);
+        setNewKey(event, type);
         callbackNewKey();
         setNewKeyIndex(Input::KEY_NO_VALUE);
         return true;
@@ -383,34 +410,53 @@ bool InputManager::handleAssignKey(const SDL_Event &event)
 
 bool InputManager::handleEvent(const SDL_Event &event)
 {
-    if (event.type == SDL_KEYDOWN)
+    switch (event.type)
     {
-        if (handleAssignKey(event))
-            return true;
-
-        keyboard.handleActicateKey(event);
-        // send straight to gui for certain windows
-        if (quitDialog || TextDialog::isActive() ||
-            NpcPostDialog::isActive())
+        case SDL_KEYDOWN:
         {
-            try
+            if (handleAssignKey(event, INPUT_KEYBOARD))
+                return true;
+
+            keyboard.handleActicateKey(event);
+            // send straight to gui for certain windows
+            if (quitDialog || TextDialog::isActive() ||
+                NpcPostDialog::isActive())
             {
-                if (guiInput)
-                    guiInput->pushInput(event);
-                if (gui)
-                    gui->handleInput();
+                try
+                {
+                    if (guiInput)
+                        guiInput->pushInput(event);
+                    if (gui)
+                        gui->handleInput();
+                }
+                catch (const gcn::Exception &e)
+                {
+                    const char* err = e.getMessage().c_str();
+                    logger->log("Warning: guichan input exception: %s", err);
+                }
+                return true;
             }
-            catch (const gcn::Exception &e)
-            {
-                const char* err = e.getMessage().c_str();
-                logger->log("Warning: guichan input exception: %s", err);
-            }
-            return true;
+            break;
         }
-    }
-    else if (event.type == SDL_KEYUP)
-    {
-        keyboard.handleDeActicateKey(event);
+        case SDL_KEYUP:
+        {
+            keyboard.handleDeActicateKey(event);
+            break;
+        }
+        case SDL_JOYBUTTONDOWN:
+        {
+//            joystick.handleActicateButton(event);
+            if (handleAssignKey(event, INPUT_JOYSTICK))
+                return true;
+            break;
+        }
+        case SDL_JOYBUTTONUP:
+        {
+//            joystick.handleDeActicateButton(event);
+            break;
+        }
+        default:
+            break;
     }
 
     try
@@ -430,18 +476,22 @@ bool InputManager::handleEvent(const SDL_Event &event)
             return true;
     }
 
-    if (event.type == SDL_KEYDOWN)
+    switch (event.type)
     {
-        if (handleKeyEvent(event))
-            return true;
+        case SDL_KEYDOWN:
+            if (triggerAction(keyboard.getActionVector(event)))
+                return true;
+            break;
+
+        case SDL_JOYBUTTONDOWN:
+            if (triggerAction(joystick->getActionVector(event)))
+                return true;
+            break;
+        default:
+            break;
     }
 
     return false;
-}
-
-bool InputManager::handleKeyEvent(const SDL_Event &event)
-{
-    return keyboard.triggerAction(event);
 }
 
 int InputManager::getInputConditionMask()
@@ -531,4 +581,27 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap, int type)
         if (keys->size() > 1)
             sort(keys->begin(), keys->end(), keySorter);
     }
+}
+
+bool InputManager::triggerAction(const KeysVector *ptrs)
+{
+    if (!ptrs)
+        return false;
+
+//    logger->log("ptrs: %d", (int)ptrs.size());
+    KeysVectorCIter it = ptrs->begin();
+    KeysVectorCIter it_end = ptrs->end();
+
+    int mask = getInputConditionMask();
+
+    for (; it != it_end; ++ it)
+    {
+        const int keyNum = *it;
+        if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)
+            continue;
+
+        if (invokeKey(&keyData[keyNum], keyNum, mask))
+            return true;
+    }
+    return false;
 }

@@ -23,6 +23,8 @@
 #ifndef JOYSTICK_H
 #define JOYSTICK_H
 
+#include "inputevent.h"
+
 #include <SDL.h>
 
 #include <string>
@@ -86,7 +88,7 @@ class Joystick
         /**
          * Updates the direction and button information.
          */
-        void update();
+        void logic();
 
         void startCalibration();
 
@@ -98,16 +100,16 @@ class Joystick
         bool buttonPressed(unsigned char no) const;
 
         bool isUp() const
-        { return mEnabled && (mDirection & UP); };
+        { return mEnabled && (mDirection & UP); }
 
         bool isDown() const
-        { return mEnabled && (mDirection & DOWN); };
+        { return mEnabled && (mDirection & DOWN); }
 
         bool isLeft() const
-        { return mEnabled && (mDirection & LEFT); };
+        { return mEnabled && (mDirection & LEFT); }
 
         bool isRight() const
-        { return mEnabled && (mDirection & RIGHT); };
+        { return mEnabled && (mDirection & RIGHT); }
 
         int getNumber() const
         { return mNumber; }
@@ -115,9 +117,19 @@ class Joystick
         void setUseInactive(bool b)
         { mUseInactive = b; }
 
+        void update();
+
+        KeysVector *getActionVector(const SDL_Event &event);
+
+        int getButtonFromEvent(const SDL_Event &event);
+
+        bool isActionActive(int index) const;
+
     protected:
         unsigned char mDirection;
-        bool mButtons[MAX_BUTTONS];
+
+        bool mActiveButtons[MAX_BUTTONS];
+
         SDL_Joystick *mJoystick;
 
         int mUpTolerance;
@@ -130,6 +142,8 @@ class Joystick
         int mButtonsNumber;
         bool mUseInactive;
         bool mHaveHats;
+
+        KeyToActionMap mKeyToAction;
 
         /**
          * Is joystick support enabled.

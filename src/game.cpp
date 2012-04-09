@@ -949,7 +949,7 @@ void Game::handleActive(SDL_Event &event)
 void Game::handleInput()
 {
     if (joystick)
-        joystick->update();
+        joystick->logic();
 
     // Events
     SDL_Event event;

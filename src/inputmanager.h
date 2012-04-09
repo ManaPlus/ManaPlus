@@ -87,8 +87,6 @@ class InputManager
 
         bool handleEvent(const SDL_Event &event);
 
-        bool handleKeyEvent(const SDL_Event &event);
-
         int getInputConditionMask();
 
         bool checkKey(const KeyData *key, int mask);
@@ -111,7 +109,7 @@ class InputManager
 
         void addActionKey(int action, int type, int val);
 
-        void setNewKey(const SDL_Event &event);
+        void setNewKey(const SDL_Event &event, int type);
 
         void unassignKey();
 
@@ -139,7 +137,9 @@ class InputManager
 
         bool invokeKey(const KeyData *key, int keyNum, int mask);
 
-        bool handleAssignKey(const SDL_Event &event);
+        bool handleAssignKey(const SDL_Event &event, int type);
+
+        bool triggerAction(const KeysVector *ptrs);
 
     protected:
         Setup_Keyboard *mSetupKey;     /**< Reference to setup window */
