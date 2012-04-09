@@ -81,10 +81,16 @@ class KeyboardConfig
 
         void update();
 
+        void handleActicateKey(const SDL_Event &event);
+
+        void handleDeActicateKey(const SDL_Event &event);
+
     private:
         bool mEnabled;                 /**< Flag to respond to key input */
 
         Uint8 *mActiveKeys;            /**< Stores a list of all the keys */
+
+        Uint8 *mActiveKeys2;           /**< Stores a list of all the keys */
 
         KeyToActionMap mKeyToAction;
 };

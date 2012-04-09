@@ -156,7 +156,7 @@ void InputManager::store()
                         default:
                             break;
                     }
-                    if (key.value >= 0)
+                    if (key.value != -1)
                     {
                         if (keyStr.empty())
                         {
@@ -264,16 +264,17 @@ std::string InputManager::getKeyStringLong(int index) const
         const KeyItem &key = mKey[index].values[i];
         if (key.type == INPUT_KEYBOARD)
         {
+            std::string str;
             if (key.value >= 0)
+                str = keyboard.getKeyName(key.value);
+            else if (key.value < -1)
+                str = strprintf(_("key_%d"), -key.value);
+            if (!str.empty())
             {
-                std::string str = keyboard.getKeyName(key.value);
-                if (!str.empty())
-                {
-                    if (keyStr.empty())
-                        keyStr = str;
-                    else
-                        keyStr += std::string(" ") + str;
-                }
+                if (keyStr.empty())
+                    keyStr = str;
+                else
+                    keyStr += std::string(" ") + str;
             }
         }
     }
@@ -292,17 +293,22 @@ std::string InputManager::getKeyValueString(int index) const
         const KeyItem &key = mKey[index].values[i];
         if (key.type == INPUT_KEYBOARD)
         {
+            std::string str;
             if (key.value >= 0)
             {
-                std::string str = keyboard.getKeyShortString(
+                str = keyboard.getKeyShortString(
                     keyboard.getKeyName(key.value));
-                if (!str.empty())
-                {
-                    if (keyStr.empty())
-                        keyStr = str;
-                    else
-                        keyStr += std::string(" ") + str;
-                }
+            }
+            else if (key.value < -1)
+            {
+                str = strprintf(_("key_%d"), -key.value);
+            }
+            if (!str.empty())
+            {
+                if (keyStr.empty())
+                    keyStr = str;
+                else
+                    keyStr += std::string(" ") + str;
             }
         }
     }
@@ -382,6 +388,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
         if (handleAssignKey(event))
             return true;
 
+        keyboard.handleActicateKey(event);
         // send straight to gui for certain windows
         if (quitDialog || TextDialog::isActive() ||
             NpcPostDialog::isActive())
@@ -400,6 +407,10 @@ bool InputManager::handleEvent(const SDL_Event &event)
             }
             return true;
         }
+    }
+    else if (event.type == SDL_KEYUP)
+    {
+        keyboard.handleDeActicateKey(event);
     }
 
     try

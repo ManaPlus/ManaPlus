@@ -39,13 +39,17 @@
 
 KeyboardConfig::KeyboardConfig() :
     mEnabled(true),
-    mActiveKeys(nullptr)
+    mActiveKeys(nullptr),
+    mActiveKeys2(nullptr)
 {
 }
 
 void KeyboardConfig::init()
 {
     mEnabled = true;
+    if (mActiveKeys2)
+        delete mActiveKeys2;
+    mActiveKeys2 = new Uint8[500];
 }
 
 int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
@@ -144,8 +148,16 @@ bool KeyboardConfig::isActionActive(int index) const
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
         const int value = inputManager.getKey(index).values[i].value;
-        if (value >= 0 && mActiveKeys[value])
-            return true;
+        if (value >= 0)
+        {
+            if (mActiveKeys[value])
+                return true;
+        }
+        else if (value < -1 && value > -500)
+        {
+            if (mActiveKeys2[-value])
+                return true;
+        }
     }
     return false;
 }
@@ -153,4 +165,18 @@ bool KeyboardConfig::isActionActive(int index) const
 void KeyboardConfig::update()
 {
     inputManager.updateKeyActionMap(mKeyToAction, INPUT_KEYBOARD);
+}
+
+void KeyboardConfig::handleActicateKey(const SDL_Event &event)
+{
+    const int key = getKeyValueFromEvent(event);
+    if (key < -1 && key > -500)
+        mActiveKeys2[-key] = 1;
+}
+
+void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
+{
+    const int key = getKeyValueFromEvent(event);
+    if (key < -1 && key > -500)
+        mActiveKeys2[-key] = 0;
 }
