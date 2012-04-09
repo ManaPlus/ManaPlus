@@ -644,7 +644,7 @@ static KeyData const keyData[Input::KEY_TOTAL] = {
         Input::GRP_DEFAULT | Input::GRP_CHAT,
         &ActionManager::toggleChat,
         Input::KEY_NO_VALUE, 50,
-        COND_ENABLED | COND_NOINPUT | COND_NOAWAY | COND_NOMODAL},
+        COND_NOINPUT | COND_NOAWAY | COND_NOMODAL},
     {"keyChatScrollUp", SDLK_PAGEUP,
         Input::GRP_DEFAULT | Input::GRP_GUI,
         &ActionManager::scrollChatUp,
