@@ -929,4 +929,24 @@ impHandler0(talk)
     return false;
 }
 
+impHandler0(stopAttack)
+{
+    if (player_node)
+    {
+        player_node->stopAttack();
+        return true;
+    }
+    return false;
+}
+
+impHandler0(untarget)
+{
+    if (player_node)
+    {
+        player_node->untarget();
+        return true;
+    }
+    return false;
+}
+
 }

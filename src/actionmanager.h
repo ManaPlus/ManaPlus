@@ -85,6 +85,8 @@ namespace ActionManager
     decHandler(directLeft);
     decHandler(directRight);
     decHandler(talk);
+    decHandler(stopAttack);
+    decHandler(untarget);
 
     decHandler(hideWindows);
     decHandler(helpWindowShow);

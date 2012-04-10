@@ -862,16 +862,6 @@ void Game::handleMoveAndAttack()
                 mLastTarget = ActorSprite::UNKNOWN; // Reset last target
             }
         }
-
-        // Stop attacking if the right key is pressed
-        if (!inputManager.isActionActive(Input::KEY_ATTACK)
-            && !inputManager.isActionActive(Input::KEY_EMOTE))
-        {
-            if (inputManager.isActionActive(Input::KEY_STOP_ATTACK))
-                player_node->stopAttack();
-            else if (inputManager.isActionActive(Input::KEY_UNTARGET))
-                player_node->untarget();
-        }
     }
 }
 
