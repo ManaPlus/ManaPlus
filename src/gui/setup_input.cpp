@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/setup_keyboard.h"
+#include "gui/setup_input.h"
 
 #include "inputmanager.h"
 #include "keyboardconfig.h"
@@ -743,13 +743,13 @@ class KeyListModel : public gcn::ListModel
         std::string mKeyFunctions[keysSize];
 };
 
-Setup_Keyboard::Setup_Keyboard():
+Setup_Input::Setup_Input():
     mKeyListModel(new KeyListModel),
     mKeyList(new ListBox(mKeyListModel)),
     mKeySetting(false)
 {
-    inputManager.setSetupKeyboard(this);
-    setName(_("Keyboard"));
+    inputManager.setSetupInput(this);
+    setName(_("Input"));
 
     refreshKeys();
 
@@ -781,7 +781,7 @@ Setup_Keyboard::Setup_Keyboard():
     setDimension(gcn::Rectangle(0, 0, 500, 350));
 }
 
-Setup_Keyboard::~Setup_Keyboard()
+Setup_Input::~Setup_Input()
 {
     delete mKeyList;
     mKeyList = nullptr;
@@ -796,7 +796,7 @@ Setup_Keyboard::~Setup_Keyboard()
     mMakeDefaultButton = nullptr;
 }
 
-void Setup_Keyboard::apply()
+void Setup_Input::apply()
 {
     keyUnresolved();
     int key1, key2;
@@ -816,7 +816,7 @@ void Setup_Keyboard::apply()
     inputManager.store();
 }
 
-void Setup_Keyboard::cancel()
+void Setup_Input::cancel()
 {
     keyUnresolved();
 
@@ -826,7 +826,7 @@ void Setup_Keyboard::cancel()
     refreshKeys();
 }
 
-void Setup_Keyboard::action(const gcn::ActionEvent &event)
+void Setup_Input::action(const gcn::ActionEvent &event)
 {
     if (event.getSource() == mKeyList)
     {
@@ -884,7 +884,7 @@ void Setup_Keyboard::action(const gcn::ActionEvent &event)
     }
 }
 
-void Setup_Keyboard::refreshAssignedKey(int index)
+void Setup_Input::refreshAssignedKey(int index)
 {
     const SetupActionData &key = setupActionData[index];
     if (key.actionId == Input::KEY_NO_VALUE)
@@ -902,7 +902,7 @@ void Setup_Keyboard::refreshAssignedKey(int index)
     }
 }
 
-void Setup_Keyboard::newKeyCallback(int index)
+void Setup_Input::newKeyCallback(int index)
 {
     mKeySetting = false;
     int i = keyToSetupData(index);
@@ -911,7 +911,7 @@ void Setup_Keyboard::newKeyCallback(int index)
     mAssignKeyButton->setEnabled(true);
 }
 
-int Setup_Keyboard::keyToSetupData(int index)
+int Setup_Input::keyToSetupData(int index)
 {
     for (int i = 0; i < keysSize; i++)
     {
@@ -922,13 +922,13 @@ int Setup_Keyboard::keyToSetupData(int index)
     return -1;
 }
 
-void Setup_Keyboard::refreshKeys()
+void Setup_Input::refreshKeys()
 {
     for (int i = 0; i < keysSize; i++)
         refreshAssignedKey(i);
 }
 
-void Setup_Keyboard::keyUnresolved()
+void Setup_Input::keyUnresolved()
 {
     if (mKeySetting)
     {

@@ -33,7 +33,7 @@
 #include "gui/npcdialog.h"
 #include "gui/npcpostdialog.h"
 #include "gui/setup.h"
-#include "gui/setup_keyboard.h"
+#include "gui/setup_input.h"
 #include "gui/textdialog.h"
 #include "gui/tradewindow.h"
 
@@ -62,7 +62,7 @@ class KeyFunctor
 
 
 InputManager::InputManager() :
-    mSetupKey(nullptr),
+    mSetupInput(nullptr),
     mNewKeyIndex(Input::KEY_NO_VALUE)
 {
 }
@@ -243,7 +243,7 @@ bool InputManager::hasConflicts(int &key1, int &key2)
 
 void InputManager::callbackNewKey()
 {
-    mSetupKey->newKeyCallback(mNewKeyIndex);
+    mSetupInput->newKeyCallback(mNewKeyIndex);
 }
 
 bool InputManager::isActionActive(int index) const

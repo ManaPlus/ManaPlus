@@ -33,7 +33,7 @@
 
 struct KeyData;
 
-class Setup_Keyboard;
+class Setup_Input;
 
 enum KeyTypes
 {
@@ -124,8 +124,8 @@ class InputManager
         /**
          * Set a reference to the key setup window.
          */
-        void setSetupKeyboard(Setup_Keyboard *setupKey)
-        { mSetupKey = setupKey; }
+        void setSetupInput(Setup_Input *setupInput)
+        { mSetupInput = setupInput; }
 
         /**
          * Get the index of the new key to be assigned.
@@ -142,7 +142,7 @@ class InputManager
         bool triggerAction(const KeysVector *ptrs);
 
     protected:
-        Setup_Keyboard *mSetupKey;     /**< Reference to setup window */
+        Setup_Input *mSetupInput;      /**< Reference to setup window */
 
         int mNewKeyIndex;              /**< Index of new key to be assigned */
 

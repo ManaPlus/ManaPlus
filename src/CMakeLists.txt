@@ -321,8 +321,8 @@ SET(SRCS
     gui/setup_theme.h
     gui/setup_chat.cpp
     gui/setup_chat.h
-    gui/setup_keyboard.cpp
-    gui/setup_keyboard.h
+    gui/setup_input.cpp
+    gui/setup_input.h
     gui/setup_perfomance.cpp
     gui/setup_perfomance.h
     gui/setup_relations.cpp

@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_SETUP_KEYBOARD_H
-#define GUI_SETUP_KEYBOARD_H
+#ifndef GUI_SETUP_INPUT_H
+#define GUI_SETUP_INPUT_H
 
 #include "guichanfwd.h"
 
@@ -32,18 +32,18 @@
 
 #include <string>
 
-class Setup_Keyboard : public SetupTab
+class Setup_Input : public SetupTab
 {
     public:
         /**
          * Constructor
          */
-        Setup_Keyboard();
+        Setup_Input();
 
         /**
          * Destructor
          */
-        ~Setup_Keyboard();
+        ~Setup_Input();
 
         void apply();
 

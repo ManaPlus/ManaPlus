@@ -33,7 +33,7 @@
 #include "gui/setup_joystick.h"
 #include "gui/setup_other.h"
 #include "gui/setup_theme.h"
-#include "gui/setup_keyboard.h"
+#include "gui/setup_input.h"
 #include "gui/setup_perfomance.h"
 #include "gui/setup_players.h"
 #include "gui/setup_relations.h"
@@ -97,7 +97,7 @@ Setup::Setup():
     mTabs.push_back(new Setup_Audio);
     mTabs.push_back(new Setup_Perfomance);
     mTabs.push_back(new Setup_Joystick);
-    mTabs.push_back(new Setup_Keyboard);
+    mTabs.push_back(new Setup_Input);
     mTabs.push_back(new Setup_Colors);
     mTabs.push_back(new Setup_Chat);
     mTabs.push_back(new Setup_Players);
