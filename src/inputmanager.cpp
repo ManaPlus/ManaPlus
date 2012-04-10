@@ -521,7 +521,7 @@ int InputManager::getInputConditionMask()
     if (Game::instance()->getValidSpeed())
         mask += COND_VALIDSPEED;
 
-    if (!gui->getFocusHandler()->getModalFocused())
+    if (gui && !gui->getFocusHandler()->getModalFocused())
         mask += COND_NOMODAL;
 
     NpcDialog *dialog = NpcDialog::getActive();
@@ -536,6 +536,10 @@ int InputManager::getInputConditionMask()
     {
         mask += COND_NOTARGET;
     }
+
+    if (!player_node || player_node->getFollow().empty())
+        mask += COND_NOFOLLOW;
+
     return mask;
 }
 

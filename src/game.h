@@ -78,7 +78,7 @@ class Game
 
         void handleInput();
 
-        void handleMoveAndAttack();
+        void handleMove();
 
         void handleActive(SDL_Event &event);
 

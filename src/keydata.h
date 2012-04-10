@@ -78,7 +78,7 @@ namespace Input
         KEY_TALK,
         KEY_STOP_ATTACK,
         KEY_UNTARGET,
-        KEY_TARGET_CLOSEST,
+        KEY_TARGET_MONSTER,
         KEY_TARGET_NPC,
         KEY_TARGET_PLAYER,
         KEY_PICKUP,

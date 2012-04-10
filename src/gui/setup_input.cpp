@@ -111,8 +111,8 @@ static SetupActionData const setupActionData[] =
         Input::KEY_UNTARGET
     },
     {
-        N_("Target Closest"),
-        Input::KEY_TARGET_CLOSEST
+        N_("Target monster"),
+        Input::KEY_TARGET_MONSTER
     },
     {
         N_("Target NPC"),

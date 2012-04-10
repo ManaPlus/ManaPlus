@@ -934,6 +934,9 @@ impHandler0(stopAttack)
     if (player_node)
     {
         player_node->stopAttack();
+        // not consume if target attack key pressed
+        if (inputManager.isActionActive(Input::KEY_TARGET_ATTACK))
+            return false;
         return true;
     }
     return false;
@@ -947,6 +950,75 @@ impHandler0(untarget)
         return true;
     }
     return false;
+}
+
+impHandler0(attack)
+{
+    if (player_node)
+    {
+        if (player_node->getTarget())
+            player_node->attack(player_node->getTarget(), true);
+        return true;
+    }
+    return false;
+}
+
+impHandler0(targetAttack)
+{
+    Being *target = nullptr;
+
+    if (player_node && actorSpriteManager)
+    {
+        bool newTarget = !inputManager.isActionActive(
+            Input::KEY_STOP_ATTACK);
+        // A set target has highest priority
+        if (!player_node->getTarget())
+        {
+            // Only auto target Monsters
+            target = actorSpriteManager->findNearestLivingBeing(
+                player_node, 90, ActorSprite::MONSTER);
+        }
+        else
+        {
+            target = player_node->getTarget();
+        }
+
+        player_node->attack2(target, newTarget);
+        return true;
+    }
+    return false;
+}
+
+bool setTarget(ActorSprite::Type type);
+
+bool setTarget(ActorSprite::Type type)
+{
+    if (actorSpriteManager && player_node)
+    {
+        Being *target = actorSpriteManager->findNearestLivingBeing(
+            player_node, 20, type);
+
+        if (target && target != player_node->getTarget())
+            player_node->setTarget(target);
+
+        return true;
+    }
+    return false;
+}
+
+impHandler0(targetPlayer)
+{
+    return setTarget(ActorSprite::PLAYER);
+}
+
+impHandler0(targetMonster)
+{
+    return setTarget(ActorSprite::MONSTER);
+}
+
+impHandler0(targetNPC)
+{
+    return setTarget(ActorSprite::NPC);
 }
 
 }

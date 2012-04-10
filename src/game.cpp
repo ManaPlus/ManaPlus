@@ -709,7 +709,7 @@ void Game::resetAdjustLevel()
     mAdjustLevel = 0;
 }
 
-void Game::handleMoveAndAttack()
+void Game::handleMove()
 {
     // Moving player around
     if (player_node->isAlive() && !Being::isTalking()
@@ -781,85 +781,6 @@ void Game::handleMoveAndAttack()
                 else if (direction & Being::DOWN)
                     dy = 5;
                 viewport->moveCamera(dx, dy);
-            }
-        }
-
-        bool joyAttack(false);
-        if (joystick && joystick->buttonPressed(0))
-            joyAttack = true;
-
-        if ((player_node->getFollow().empty() || joyAttack) && mValidSpeed)
-        {
-            // Attacking monsters
-            if (inputManager.isActionActive(Input::KEY_ATTACK))
-            {
-                if (player_node->getTarget())
-                    player_node->attack(player_node->getTarget(), true);
-            }
-
-            if ((inputManager.isActionActive(Input::KEY_TARGET_ATTACK)
-                || joyAttack)
-                /*&& !inputManager.isActionActive(Input::KEY_MOVE_TO_TARGET)*/
-                )
-            {
-                Being *target = nullptr;
-
-                bool newTarget = !inputManager.isActionActive(
-                    Input::KEY_STOP_ATTACK);
-                // A set target has highest priority
-                if (!player_node->getTarget())
-                {
-                    // Only auto target Monsters
-                    target = actorSpriteManager->findNearestLivingBeing(
-                            player_node, 90, ActorSprite::MONSTER);
-                }
-                else
-                {
-                    target = player_node->getTarget();
-                }
-
-                player_node->attack2(target, newTarget);
-            }
-        }
-
-        if (!inputManager.isActionActive(Input::KEY_EMOTE))
-        {
-            // Target the nearest player/monster/npc
-            if ((inputManager.isActionActive(Input::KEY_TARGET_PLAYER) ||
-                inputManager.isActionActive(Input::KEY_TARGET_CLOSEST) ||
-                inputManager.isActionActive(Input::KEY_TARGET_NPC) ||
-                (joystick && joystick->buttonPressed(3))) &&
-                !inputManager.isActionActive(Input::KEY_STOP_ATTACK) &&
-                !inputManager.isActionActive(Input::KEY_UNTARGET))
-            {
-                ActorSprite::Type currentTarget = ActorSprite::UNKNOWN;
-                if (inputManager.isActionActive(Input::KEY_TARGET_CLOSEST) ||
-                    (joystick && joystick->buttonPressed(3)))
-                {
-                    currentTarget = ActorSprite::MONSTER;
-                }
-                else if (inputManager.isActionActive(Input::KEY_TARGET_PLAYER))
-                {
-                    currentTarget = ActorSprite::PLAYER;
-                }
-                else if (inputManager.isActionActive(Input::KEY_TARGET_NPC))
-                {
-                    currentTarget = ActorSprite::NPC;
-                }
-
-                Being *target = actorSpriteManager->findNearestLivingBeing(
-                    player_node, 20, currentTarget);
-
-                if (target && (target != player_node->getTarget() ||
-                    currentTarget != mLastTarget))
-                {
-                    player_node->setTarget(target);
-                    mLastTarget = currentTarget;
-                }
-            }
-            else
-            {
-                mLastTarget = ActorSprite::UNKNOWN; // Reset last target
             }
         }
     }
@@ -967,7 +888,7 @@ void Game::handleInput()
         return;
     }
 
-    handleMoveAndAttack();
+    handleMove();
 }
 
 /**

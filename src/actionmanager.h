@@ -87,6 +87,11 @@ namespace ActionManager
     decHandler(talk);
     decHandler(stopAttack);
     decHandler(untarget);
+    decHandler(attack);
+    decHandler(targetAttack);
+    decHandler(targetPlayer);
+    decHandler(targetMonster);
+    decHandler(targetNPC);
 
     decHandler(hideWindows);
     decHandler(helpWindowShow);
