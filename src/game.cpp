@@ -805,7 +805,7 @@ void Game::handleMoveAndAttack()
                 Being *target = nullptr;
 
                 bool newTarget = !inputManager.isActionActive(
-                    Input::KEY_TARGET);
+                    Input::KEY_STOP_ATTACK);
                 // A set target has highest priority
                 if (!player_node->getTarget())
                 {
@@ -829,7 +829,7 @@ void Game::handleMoveAndAttack()
                 inputManager.isActionActive(Input::KEY_TARGET_CLOSEST) ||
                 inputManager.isActionActive(Input::KEY_TARGET_NPC) ||
                 (joystick && joystick->buttonPressed(3))) &&
-                !inputManager.isActionActive(Input::KEY_TARGET) &&
+                !inputManager.isActionActive(Input::KEY_STOP_ATTACK) &&
                 !inputManager.isActionActive(Input::KEY_UNTARGET))
             {
                 ActorSprite::Type currentTarget = ActorSprite::UNKNOWN;
@@ -867,23 +867,10 @@ void Game::handleMoveAndAttack()
         if (!inputManager.isActionActive(Input::KEY_ATTACK)
             && !inputManager.isActionActive(Input::KEY_EMOTE))
         {
-            if (inputManager.isActionActive(Input::KEY_TARGET)
-                || (joystick && joystick->buttonPressed(4)))
-            {
+            if (inputManager.isActionActive(Input::KEY_STOP_ATTACK))
                 player_node->stopAttack();
-            }
             else if (inputManager.isActionActive(Input::KEY_UNTARGET))
-            {
                 player_node->untarget();
-            }
-        }
-
-        if (joystick)
-        {
-            if (joystick->buttonPressed(1))
-                player_node->pickUpItems();
-            else if (joystick->buttonPressed(2))
-                player_node->toggleSit();
         }
     }
 }

@@ -511,7 +511,8 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
                     if (player_node != mHoverBeing)
                     {
                         player_node->attack(mHoverBeing,
-                            !inputManager.isActionActive(Input::KEY_TARGET));
+                            !inputManager.isActionActive(
+                            Input::KEY_STOP_ATTACK));
                         return;
                     }
                 }

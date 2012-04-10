@@ -104,7 +104,7 @@ static SetupActionData const setupActionData[] =
     },
     {
         N_("Stop Attack"),
-        Input::KEY_TARGET
+        Input::KEY_STOP_ATTACK
     },
     {
         N_("Untarget"),

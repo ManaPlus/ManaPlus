@@ -32,7 +32,10 @@ typedef bool (*ActionFuncPtr) (InputEvent &event);
 struct KeyData
 {
     const char *configField;
-    int defaultValue;
+    int defaultType1;
+    int defaultValue1;
+    int defaultType2;
+    int defaultValue2;
     int grp;
     ActionFuncPtr action;
     int modKeyIndex;
@@ -73,7 +76,7 @@ namespace Input
         KEY_SET_HOME,
         KEY_MOVE_TO_POINT,
         KEY_TALK,
-        KEY_TARGET,
+        KEY_STOP_ATTACK,
         KEY_UNTARGET,
         KEY_TARGET_CLOSEST,
         KEY_TARGET_NPC,

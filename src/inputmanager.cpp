@@ -94,8 +94,10 @@ void InputManager::retrieve()
         if (*keyData[i].configField)
         {
             KeyFunction &kf = mKey[i];
-            std::string keyStr = config.getValue(keyData[i].configField,
-                toString(keyData[i].defaultValue));
+            std::string keyStr = config.getValue(keyData[i].configField, "");
+            if (keyStr.empty())
+                continue;
+
             StringVect keys;
             splitToStringVector(keys, keyStr, ',');
             StringVectCIter it = keys.begin();
@@ -185,13 +187,16 @@ void InputManager::makeDefault()
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
+        KeyFunction &key = mKey[i];
         for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
         {
-            mKey[i].values[i2].type = INPUT_UNKNOWN;
-            mKey[i].values[i2].value = -1;
+            key.values[i2].type = INPUT_UNKNOWN;
+            key.values[i2].value = -1;
         }
-        mKey[i].values[0].type = INPUT_KEYBOARD;
-        mKey[i].values[0].value = keyData[i].defaultValue;
+        key.values[0].type = keyData[i].defaultType1;
+        key.values[0].value = keyData[i].defaultValue1;
+        key.values[1].type = keyData[i].defaultType2;
+        key.values[1].value = keyData[i].defaultValue2;
     }
 }
 
@@ -280,7 +285,7 @@ std::string InputManager::getKeyStringLong(int index) const
         else if (key.type == INPUT_JOYSTICK)
         {
             // TRANSLATORS: this is long joystick button name
-            str = strprintf(_("Button%d"), key.value + 1);
+            str = strprintf(_("JButton%d"), key.value + 1);
         }
         if (!str.empty())
         {
@@ -319,7 +324,7 @@ std::string InputManager::getKeyValueString(int index) const
         else if (key.type == INPUT_JOYSTICK)
         {
             // TRANSLATORS: this is short joystick button name
-            str = strprintf(_("But%d"), key.value + 1);
+            str = strprintf(_("JB%d"), key.value + 1);
         }
         if (!str.empty())
         {
@@ -526,7 +531,7 @@ int InputManager::getInputConditionMask()
     if (!player_node || !player_node->getDisableGameModifiers())
         mask += COND_EMODS;
 
-    if (!isActionActive(Input::KEY_TARGET)
+    if (!isActionActive(Input::KEY_STOP_ATTACK)
         && !isActionActive(Input::KEY_UNTARGET))
     {
         mask += COND_NOTARGET;
@@ -566,8 +571,9 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap, int type)
             KeyFunction &key = mKey[i];
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
-                if (key.values[i2].type == type)
-                    actionMap[key.values[i2].value].push_back(i);
+                const KeyItem &ki = key.values[i2];
+                if (ki.type == type && ki.value != -1)
+                    actionMap[ki.value].push_back(i);
             }
         }
     }
@@ -578,7 +584,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap, int type)
     for (; it != it_end; ++ it)
     {
         KeysVector *keys = &it->second;
-        if (keys->size() > 1)
+        if (keys && keys->size() > 1)
             sort(keys->begin(), keys->end(), keySorter);
     }
 }
