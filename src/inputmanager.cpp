@@ -605,3 +605,21 @@ bool InputManager::triggerAction(const KeysVector *ptrs)
     }
     return false;
 }
+
+int InputManager::getKeyIndex(int value, int grp, int type) const
+{
+    for (size_t i = 0; i < Input::KEY_TOTAL; i++)
+    {
+        const KeyFunction &key = mKey[i];
+        for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+        {
+            if (value == key.values[i2].value
+                && (grp & keyData[i].grp) != 0
+                && key.values[i2].type == type)
+            {
+                return i;
+            }
+        }
+    }
+    return Input::KEY_NO_VALUE;
+}

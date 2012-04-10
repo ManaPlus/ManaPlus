@@ -141,6 +141,8 @@ class InputManager
 
         bool triggerAction(const KeysVector *ptrs);
 
+        int getKeyIndex(int value, int grp, int type) const;
+
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */
 

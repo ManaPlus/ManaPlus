@@ -63,20 +63,7 @@ int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
 int KeyboardConfig::getKeyIndex(const SDL_Event &event, int grp) const
 {
     const int keyValue = getKeyValueFromEvent(event);
-    for (size_t i = 0; i < Input::KEY_TOTAL; i++)
-    {
-        KeyFunction &key = inputManager.getKey(i);
-        for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
-        {
-            if (keyValue == key.values[i2].value
-                && (grp & keyData[i].grp) != 0
-                && key.values[i2].type == INPUT_KEYBOARD)
-            {
-                return i;
-            }
-        }
-    }
-    return Input::KEY_NO_VALUE;
+    return inputManager.getKeyIndex(keyValue, grp, INPUT_KEYBOARD);
 }
 
 void KeyboardConfig::refreshActiveKeys()
