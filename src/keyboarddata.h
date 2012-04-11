@@ -135,7 +135,7 @@ static KeyData const keyData[Input::KEY_TOTAL] = {
         COND_GAME},
     {"keyTargetMonster",
         INPUT_KEYBOARD, SDLK_a,
-        INPUT_JOYSTICK, 0,
+        INPUT_JOYSTICK, 3,
         Input::GRP_DEFAULT,
         &ActionManager::targetMonster,
         Input::KEY_NO_VALUE, 50,
