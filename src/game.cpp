@@ -172,6 +172,10 @@ static void initEngines()
 
     DepricatedEvent::trigger(CHANNEL_GAME,
         DepricatedEvent(EVENT_ENGINESINITALIZED));
+
+    keyboard.update();
+    if (joystick)
+        joystick->update();
 }
 
 /**
