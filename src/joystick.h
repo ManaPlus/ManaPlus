@@ -121,9 +121,11 @@ class Joystick
 
         KeysVector *getActionVector(const SDL_Event &event);
 
-        int getButtonFromEvent(const SDL_Event &event);
+        int getButtonFromEvent(const SDL_Event &event) const;
 
         bool isActionActive(int index) const;
+
+        bool validate() const;
 
     protected:
         unsigned char mDirection;

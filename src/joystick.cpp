@@ -275,7 +275,7 @@ KeysVector *Joystick::getActionVector(const SDL_Event &event)
     return nullptr;
 }
 
-int Joystick::getButtonFromEvent(const SDL_Event &event)
+int Joystick::getButtonFromEvent(const SDL_Event &event) const
 {
     if (event.jbutton.which != mNumber)
         return -1;
@@ -284,6 +284,9 @@ int Joystick::getButtonFromEvent(const SDL_Event &event)
 
 bool Joystick::isActionActive(int index) const
 {
+    if (!validate())
+        return false;
+
     const KeyFunction &key = inputManager.getKey(index);
     for (size_t i = 0; i < KeyFunctionSize; i ++)
     {
@@ -297,4 +300,12 @@ bool Joystick::isActionActive(int index) const
         }
     }
     return false;
+}
+
+bool Joystick::validate() const
+{
+    if (mCalibrating || !mEnabled || !mCalibrated)
+        return false;
+
+    return (mUseInactive || Client::getInputFocused());
 }

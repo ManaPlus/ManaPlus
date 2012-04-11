@@ -489,8 +489,11 @@ bool InputManager::handleEvent(const SDL_Event &event)
             break;
 
         case SDL_JOYBUTTONDOWN:
-            if (triggerAction(joystick->getActionVector(event)))
-                return true;
+            if (joystick && joystick->validate())
+            {
+                if (triggerAction(joystick->getActionVector(event)))
+                    return true;
+            }
             break;
         default:
             break;
