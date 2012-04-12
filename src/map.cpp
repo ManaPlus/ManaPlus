@@ -895,7 +895,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
     // Path to be built up (empty by default)
     Path path;
 
-    if (startX >= mWidth || startY >= mHeight)
+    if (startX >= mWidth || startY >= mHeight || startX < 0 || startY < 0)
         return path;
 
     // Return when destination not walkable
