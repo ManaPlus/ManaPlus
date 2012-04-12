@@ -3590,6 +3590,9 @@ void LocalPlayer::updateCoords()
     Being::updateCoords();
 
     const Vector &playerPos = getPosition();
+    // probably map not loaded.
+    if (!playerPos.x || !playerPos.y)
+        return;
 
     if (mX != mOldTileX || mY != mOldTileY)
     {
