@@ -926,9 +926,9 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 #else
                 if (!cR)
                 {
-                    cR = new unsigned int[0xff];
-                    cG = new unsigned int[0xff];
-                    cB = new unsigned int[0xff];
+                    cR = new unsigned int[0x100];
+                    cG = new unsigned int[0x100];
+                    cB = new unsigned int[0x100];
                     mOldPixel = 0;
                     mOldAlpha = mColor.a;
                 }
@@ -943,7 +943,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     const unsigned int a2 = a1 * 0xff;
                     const unsigned int a3 = a1 * 0xff00;
 
-                    for (int f = 0; f < 0xff; f ++)
+                    for (int f = 0; f <= 0xff; f ++)
                     {
                         cB[f] = ((pb + f * a1) >> 8) & 0xff;
                         cG[f] = ((pg + f * a2) >> 8) & 0xff00;
