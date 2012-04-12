@@ -45,8 +45,8 @@ src/gui/setup_audio.cpp
 src/gui/setup_chat.cpp
 src/gui/setup_colors.cpp
 src/gui/setup.cpp
+src/gui/setup_input.cpp
 src/gui/setup_joystick.cpp
-src/gui/setup_keyboard.cpp
 src/gui/setup_other.cpp
 src/gui/setup_perfomance.cpp
 src/gui/setup_players.cpp
@@ -76,9 +76,9 @@ src/gui/widgets/tradetab.cpp
 src/gui/widgets/whispertab.cpp
 src/gui/windowmenu.cpp
 src/gui/worldselectdialog.cpp
+src/inputmanager.cpp
 src/inventory.cpp
 src/keyboardconfig.cpp
-src/keyboarddata.h
 src/localplayer.cpp
 src/logger.h
 src/main.cpp
