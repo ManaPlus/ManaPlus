@@ -162,13 +162,6 @@ namespace gcn
 
         virtual void mouseDragged(MouseEvent& mouseEvent);
 
-
-        // Inherited from KeyListener
-
-        virtual void keyPressed(KeyEvent& keyEvent);
-
-        virtual void keyReleased(KeyEvent& keyEvent);
-
     protected:
         /**
          * Checks if the button is pressed. Convenient method to use

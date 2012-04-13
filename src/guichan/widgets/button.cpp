@@ -241,32 +241,6 @@ namespace gcn
         mouseEvent.consume();
     }
 
-    void Button::keyPressed(KeyEvent& keyEvent)
-    {
-        Key key = keyEvent.getKey();
-
-        if (key.getValue() == Key::ENTER
-            || key.getValue() == Key::SPACE)
-        {
-            mKeyPressed = true;
-            keyEvent.consume();
-        }
-    }
-
-    void Button::keyReleased(KeyEvent& keyEvent)
-    {
-        Key key = keyEvent.getKey();
-
-        if ((key.getValue() == Key::ENTER
-            || key.getValue() == Key::SPACE)
-            && mKeyPressed)
-        {
-            mKeyPressed = false;
-            distributeActionEvent();
-            keyEvent.consume();
-        }
-    }
-
     void Button::focusLost(const Event& event A_UNUSED)
     {
         mMousePressed = false;

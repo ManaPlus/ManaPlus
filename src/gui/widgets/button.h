@@ -113,6 +113,10 @@ class Button : public gcn::Button, public gcn::WidgetListener
 
         void setCaption(const std::string& caption);
 
+        void keyPressed(gcn::KeyEvent &keyEvent);
+
+        void keyReleased(gcn::KeyEvent &keyEvent);
+
     private:
         void init();
 

@@ -448,3 +448,26 @@ void Button::setCaption(const std::string& caption)
     mCaption = caption;
 //    adjustSize();
 }
+
+void Button::keyPressed(gcn::KeyEvent& keyEvent)
+{
+    gcn::Key key = keyEvent.getKey();
+
+    if (key.getValue() == gcn::Key::SPACE)
+    {
+        mKeyPressed = true;
+        keyEvent.consume();
+    }
+}
+
+void Button::keyReleased(gcn::KeyEvent& keyEvent)
+{
+    gcn::Key key = keyEvent.getKey();
+
+    if (key.getValue() == gcn::Key::SPACE && mKeyPressed)
+    {
+        mKeyPressed = false;
+        distributeActionEvent();
+        keyEvent.consume();
+    }
+}
