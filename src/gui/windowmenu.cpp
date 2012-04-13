@@ -65,6 +65,8 @@ WindowMenu::WindowMenu():
 {
     int x = 0, h = 0;
 
+    setFocusable(false);
+
     addButton(N_("BC"), _("Bot checker"), x, h,
               Input::KEY_WINDOW_BOT_CHECKER);
     addButton(N_("ONL"), _("Who is online"), x, h,
@@ -258,6 +260,7 @@ void WindowMenu::addButton(const char* text, std::string description,
     btn->setDescription(description);
     btn->setTag(key);
     add(btn);
+    btn->setFocusable(false);
     mButtons.push_back(btn);
     x += btn->getWidth() + 3;
     h = btn->getHeight();
