@@ -24,11 +24,12 @@
 #ifndef GUI_SETUP_INPUT_H
 #define GUI_SETUP_INPUT_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/actionlistener.hpp>
+
+#include <guichan/widgets/button.hpp>
+#include <guichan/widgets/listbox.hpp>
 
 #include <string>
 

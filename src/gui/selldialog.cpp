@@ -179,7 +179,7 @@ void SellDialog::action(const gcn::ActionEvent &event)
 
     // The following actions require a valid item selection
     if (selectedItem == -1 ||
-        selectedItem >= static_cast<int>(mShopItems->getNumberOfElements()))
+        selectedItem >= mShopItems->getNumberOfElements())
     {
         return;
     }

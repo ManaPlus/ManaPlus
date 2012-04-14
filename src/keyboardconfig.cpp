@@ -24,7 +24,6 @@
 
 #include "configuration.h"
 #include "inputmanager.h"
-#include "keyboarddata.h"
 #include "logger.h"
 
 #include "gui/sdlinput.h"
