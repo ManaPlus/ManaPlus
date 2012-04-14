@@ -1,3 +1,21 @@
+2012-04-15 New release 1.2.4.15
+fix: cancel update fix.
+fix: multiple conflicts between windows and game keys.
+fix: random crash in chat update.
+fix: possible crash after connecting to game.
+fix: assign keys before connecting to game.
+fix: cmake build flags.
+add: proxy support for download updates.
+add: change autohide buttons to three state (hide/show/hide in small resolution).
+add: show client version in game window header.
+add: clear in drops window context menu.
+add: improve fill rectange speed in software mode.
+add: option for enable disable textures blurring.
+by default enabled.
+add: allow assign 3 keys or joystick buttons to any action.
+add: unselect item inventory if it was added to other windows.
+add: extend sdl unknown keys for usage in any actions.
+
 2012-04-01 New release 1.2.4.1
 fix: validate assigned keys on load.
 fix: animated tiles drawing in opengl modes.
