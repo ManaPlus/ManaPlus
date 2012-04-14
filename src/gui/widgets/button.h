@@ -103,6 +103,12 @@ class Button : public gcn::Button, public gcn::WidgetListener
         int getTag() const
         { return mTag; }
 
+        void setStick(bool b)
+        { mStick = b; }
+
+        void setPressed(bool b)
+        { mPressed = b; }
+
         void widgetResized(const gcn::Event &event);
 
         void widgetMoved(const gcn::Event &event);
@@ -116,6 +122,8 @@ class Button : public gcn::Button, public gcn::WidgetListener
         void keyPressed(gcn::KeyEvent &keyEvent);
 
         void keyReleased(gcn::KeyEvent &keyEvent);
+
+        bool isPressed2();
 
     private:
         void init();
@@ -138,6 +146,8 @@ class Button : public gcn::Button, public gcn::WidgetListener
         ImageSet *mImageSet;
         int mImageWidth;
         int mImageHeight;
+        bool mStick;
+        bool mPressed;
 };
 
 #endif

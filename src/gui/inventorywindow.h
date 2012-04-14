@@ -38,7 +38,7 @@
 class DropDown;
 class Item;
 class ItemContainer;
-class InventoryFilter;
+class TabStrip;
 class LayoutCell;
 class ProgressBar;
 class SortListModel;
@@ -163,7 +163,7 @@ class InventoryWindow : public Window,
         gcn::Label *mWeightLabel, *mSlotsLabel, *mFilterLabel;
 
         ProgressBar *mWeightBar, *mSlotsBar;
-        InventoryFilter *mFilter;
+        TabStrip *mFilter;
         DropDown *mSortDropDown;
         SortListModel *mSortModel;
         TextField *mNameFilter;

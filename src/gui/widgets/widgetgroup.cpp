@@ -18,39 +18,42 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/inventoryfilter.h"
-
-#include "gui/widgets/horizontcontainer.h"
-#include "gui/widgets/radiobutton.h"
+#include "gui/widgets/widgetgroup.h"
 
 #include "logger.h"
 
 #include "debug.h"
 
-InventoryFilter::InventoryFilter(std::string group, int height, int spacing):
-        HorizontContainer(height, spacing),
-        mGroup(group)
+WidgetGroup::WidgetGroup(std::string group, int height, int spacing) :
+    mSpacing(spacing),
+    mCount(0),
+    mGroup(group),
+    mLastX(spacing)
 {
+    setHeight(height);
+    addWidgetListener(this);
 }
 
-void InventoryFilter::addButton(std::string tag)
+void WidgetGroup::addButton(std::string tag)
 {
     addButton(tag, tag);
 }
 
-void InventoryFilter::addButton(std::string text, std::string tag)
+void WidgetGroup::addButton(std::string text, std::string tag)
 {
     if (text.empty() || tag.empty())
         return;
 
-    RadioButton *radio = new RadioButton(text, mGroup, mCount == 0);
-    radio->adjustSize();
-    radio->setActionEventId(mActionEventId + tag);
-    radio->addActionListener(this);
-    HorizontContainer::add(radio);
+    Widget *widget = createWidget(text);
+    if (widget)
+    {
+        widget->setActionEventId(mActionEventId + tag);
+        widget->addActionListener(this);
+        add(widget, mSpacing);
+    }
 }
 
-void InventoryFilter::action(const gcn::ActionEvent &event)
+void WidgetGroup::action(const gcn::ActionEvent &event)
 {
     ActionListenerIterator iter;
     for (iter = mActionListeners.begin();
@@ -58,4 +61,26 @@ void InventoryFilter::action(const gcn::ActionEvent &event)
     {
         (*iter)->action(event);
     }
+}
+
+void WidgetGroup::add(gcn::Widget *widget, int spacing)
+{
+    if (!widget)
+        return;
+
+    Container::add(widget);
+    widget->setPosition(mLastX, spacing);
+    mCount++;
+    mLastX += widget->getWidth() + 2 * mSpacing;
+}
+
+void WidgetGroup::clear()
+{
+    Container::clear();
+
+    mCount = 0;
+}
+
+void WidgetGroup::widgetResized(const gcn::Event &event A_UNUSED)
+{
 }

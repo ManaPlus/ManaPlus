@@ -79,7 +79,9 @@ Button::Button() :
     mXOffset(0),
     mYOffset(0),
     mImages(nullptr),
-    mImageSet(nullptr)
+    mImageSet(nullptr),
+    mStick(false),
+    mPressed(false)
 {
     init();
     adjustSize();
@@ -99,7 +101,9 @@ Button::Button(const std::string &caption, const std::string &actionEventId,
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(0),
-    mImageHeight(0)
+    mImageHeight(0),
+    mStick(false),
+    mPressed(false)
 {
     init();
     adjustSize();
@@ -125,7 +129,9 @@ Button::Button(const std::string &caption, const std::string &imageName,
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(imageWidth),
-    mImageHeight(imageHeight)
+    mImageHeight(imageHeight),
+    mStick(false),
+    mPressed(false)
 {
     init();
     loadImage(imageName);
@@ -151,7 +157,9 @@ Button::Button(const std::string &imageName, int imageWidth, int imageHeight,
     mImages(nullptr),
     mImageSet(nullptr),
     mImageWidth(imageWidth),
-    mImageHeight(imageHeight)
+    mImageHeight(imageHeight),
+    mStick(false),
+    mPressed(false)
 {
     init();
     loadImage(imageName);
@@ -286,7 +294,7 @@ void Button::draw(gcn::Graphics *graphics)
 
     if (!isEnabled())
         mode = BUTTON_DISABLED;
-    else if (isPressed())
+    else if (isPressed2())
         mode = BUTTON_PRESSED;
     else if (mHasMouse || isFocused())
         mode = BUTTON_HIGHLIGHTED;
@@ -399,18 +407,22 @@ void Button::draw(gcn::Graphics *graphics)
 
 void Button::mouseReleased(gcn::MouseEvent& mouseEvent)
 {
-    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT
-        && mMousePressed && mHasMouse)
+    if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
     {
-        mMousePressed = false;
-        mClickCount = mouseEvent.getClickCount();
-        distributeActionEvent();
-        mouseEvent.consume();
-    }
-    else if (mouseEvent.getButton() == gcn::MouseEvent::LEFT)
-    {
-        mMousePressed = false;
-        mClickCount = 0;
+        if (mStick)
+            mPressed = !mPressed;
+
+        if (mMousePressed && mHasMouse)
+        {
+            mMousePressed = false;
+            mClickCount = mouseEvent.getClickCount();
+            distributeActionEvent();
+        }
+        else
+        {
+            mMousePressed = false;
+            mClickCount = 0;
+        }
         mouseEvent.consume();
     }
 }
@@ -446,7 +458,6 @@ void Button::adjustSize()
 void Button::setCaption(const std::string& caption)
 {
     mCaption = caption;
-//    adjustSize();
 }
 
 void Button::keyPressed(gcn::KeyEvent& keyEvent)
@@ -467,7 +478,15 @@ void Button::keyReleased(gcn::KeyEvent& keyEvent)
     if (key.getValue() == gcn::Key::SPACE && mKeyPressed)
     {
         mKeyPressed = false;
+        if (mStick)
+            mPressed = !mPressed;
         distributeActionEvent();
         keyEvent.consume();
     }
+}
+
+
+bool Button::isPressed2()
+{
+    return (mPressed || isPressed());
 }

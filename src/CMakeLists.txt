@@ -134,8 +134,6 @@ SET(SRCS
     gui/widgets/icon.h
     gui/widgets/inttextfield.cpp
     gui/widgets/inttextfield.h
-    gui/widgets/inventoryfilter.cpp
-    gui/widgets/inventoryfilter.h
     gui/widgets/itemcontainer.cpp
     gui/widgets/itemcontainer.h
     gui/widgets/itemlinkhandler.cpp
@@ -170,6 +168,8 @@ SET(SRCS
     gui/widgets/progressindicator.h
     gui/widgets/radiobutton.cpp
     gui/widgets/radiobutton.h
+    gui/widgets/radiogroup.cpp
+    gui/widgets/radiogroup.h
     gui/widgets/resizegrip.cpp
     gui/widgets/resizegrip.h
     gui/widgets/scrollarea.cpp
@@ -198,6 +198,8 @@ SET(SRCS
     gui/widgets/guitable.h
     gui/widgets/tablemodel.cpp
     gui/widgets/tablemodel.h
+    gui/widgets/tabstrip.cpp
+    gui/widgets/tabstrip.h
     gui/widgets/textbox.cpp
     gui/widgets/textbox.h
     gui/widgets/textfield.cpp
@@ -210,6 +212,8 @@ SET(SRCS
     gui/widgets/vertcontainer.h
     gui/widgets/whispertab.cpp
     gui/widgets/whispertab.h
+    gui/widgets/widgetgroup.cpp
+    gui/widgets/widgetgroup.h
     gui/widgets/window.cpp
     gui/widgets/window.h
     gui/widgets/windowcontainer.cpp

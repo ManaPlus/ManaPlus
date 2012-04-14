@@ -41,13 +41,13 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/container.h"
 #include "gui/widgets/dropdown.h"
-#include "gui/widgets/inventoryfilter.h"
 #include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/radiobutton.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/tabstrip.h"
 #include "gui/widgets/textfield.h"
 
 #include "net/inventoryhandler.h"
@@ -139,7 +139,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
     int size = config.getIntValue("fontSize");
-    mFilter = new InventoryFilter("filter_" + getWindowName(), size, 0);
+    mFilter = new TabStrip("filter_" + getWindowName(), size + 8, 0);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 

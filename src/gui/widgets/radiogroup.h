@@ -1,6 +1,5 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2012  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
@@ -19,27 +18,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_INVENTORYFILTER_H
-#define GUI_INVENTORYFILTER_H
+#ifndef GUI_RADIOGROUP_H
+#define GUI_RADIOGROUP_H
 
-#include <guichan/actionlistener.hpp>
-#include <guichan/widgetlistener.hpp>
+#include "gui/widgets/widgetgroup.h"
 
-#include "gui/widgets/horizontcontainer.h"
+#include <guichan/widget.hpp>
 
-class InventoryFilter : public HorizontContainer, public gcn::ActionListener
+class RadioGroup : public WidgetGroup
 {
     public:
-        InventoryFilter(std::string group, int height, int spacing);
+        RadioGroup(std::string group, int height, int spacing);
 
-        void addButton(std::string tag);
-
-        void addButton(std::string text, std::string tag);
-
-        void action(const gcn::ActionEvent &event);
-
-    private:
-        std::string mGroup;
+        gcn::Widget *createWidget(std::string name);
 };
 
 #endif

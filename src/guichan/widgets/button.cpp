@@ -122,83 +122,6 @@ namespace gcn
       return mSpacing;
     }
 
-/*
-    void Button::draw(Graphics* graphics)
-    {
-        Color faceColor = getBaseColor();
-        Color highlightColor, shadowColor;
-        int alpha = getBaseColor().a;
-
-        if (isPressed())
-        {
-            faceColor = faceColor - 0x303030;
-            faceColor.a = alpha;
-            highlightColor = faceColor - 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = faceColor + 0x303030;
-            shadowColor.a = alpha;
-        }
-        else
-        {
-            highlightColor = faceColor + 0x303030;
-            highlightColor.a = alpha;
-            shadowColor = faceColor - 0x303030;
-            shadowColor.a = alpha;
-        }
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(Rectangle(1, 1,
-            getDimension().width - 1, getHeight() - 1));
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, getWidth() - 1, 0);
-        graphics->drawLine(0, 1, 0, getHeight() - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
-        graphics->drawLine(1, getHeight() - 1,
-            getWidth() - 1, getHeight() - 1);
-
-        graphics->setColor(getForegroundColor());
-
-        int textX;
-        int textY = getHeight() / 2 - getFont()->getHeight() / 2;
-
-        switch (getAlignment())
-        {
-          case Graphics::LEFT:
-              textX = mSpacing;
-              break;
-          case Graphics::CENTER:
-              textX = getWidth() / 2;
-              break;
-          case Graphics::RIGHT:
-              textX = getWidth() - mSpacing;
-              break;
-          default:
-              throw GCN_EXCEPTION("Unknown alignment.");
-        }
-
-        graphics->setFont(getFont());
-
-        if (isPressed())
-        {
-            graphics->drawText(getCaption(), textX + 1, textY + 1,
-                getAlignment());
-        }
-        else
-        {
-            graphics->drawText(getCaption(), textX, textY, getAlignment());
-
-            if (isFocused())
-            {
-                graphics->drawRectangle(Rectangle(2, 2, getWidth() - 4,
-                    getHeight() - 4));
-            }
-        }
-    }
-*/
-
     void Button::adjustSize()
     {
         setWidth(getFont()->getWidth(mCaption) + 2*mSpacing);
@@ -208,13 +131,9 @@ namespace gcn
     bool Button::isPressed() const
     {
         if (mMousePressed)
-        {
             return mHasMouse;
-        }
         else
-        {
             return mKeyPressed;
-        }
     }
 
     void Button::mousePressed(MouseEvent& mouseEvent)
