@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-04-13 02:11+0300\n"
-"PO-Revision-Date: 2012-04-12 23:24+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2012-04-14 14:06+0300\n"
+"PO-Revision-Date: 2012-04-13 16:12+0000\n"
+"Last-Translator: derpella <matwa@poczta.pl>\n"
 "Language-Team: Polish (http://www.transifex.net/projects/p/manaplus/language/"
 "pl/)\n"
 "Language: pl\n"
@@ -55,7 +55,7 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:981 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:103
+#: src/client.cpp:981 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
 msgid "Setup"
 msgstr "Konfiguracja"
 
@@ -993,7 +993,7 @@ msgstr "Opis:"
 msgid "Please at least type both the address and the port of the server."
 msgstr "Wymagany zarówno adres jak i port serwera."
 
-#: src/gui/equipmentwindow.cpp:65 src/gui/windowmenu.cpp:77
+#: src/gui/equipmentwindow.cpp:65 src/gui/windowmenu.cpp:79
 msgid "Equipment"
 msgstr "Ekwipunek"
 
@@ -1027,7 +1027,7 @@ msgstr "wg. ilości"
 msgid "by type"
 msgstr "wg. typu"
 
-#: src/gui/inventorywindow.cpp:113 src/gui/windowmenu.cpp:79
+#: src/gui/inventorywindow.cpp:113 src/gui/windowmenu.cpp:81
 #: src/inventory.cpp:250
 msgid "Inventory"
 msgstr "Inwentarz"
@@ -1085,7 +1085,7 @@ msgstr "Pobierz"
 
 #: src/gui/inventorywindow.cpp:649 src/gui/popupmenu.cpp:1868
 #: src/gui/popupmenu.cpp:1964 src/gui/popupmenu.cpp:2011
-#: src/gui/windowmenu.cpp:100
+#: src/gui/windowmenu.cpp:102
 msgid "Drop"
 msgstr "Upuść"
 
@@ -1134,7 +1134,7 @@ msgstr ", "
 msgid "Weight: %s"
 msgstr "Waga: %s"
 
-#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:72
+#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:74
 msgid "Kill stats"
 msgstr "Statystyki ataku:"
 
@@ -1352,7 +1352,7 @@ msgid "Outfit: %d"
 msgstr "Strój: %d"
 
 #: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
-#: src/gui/windowmenu.cpp:312
+#: src/gui/windowmenu.cpp:315
 #, c-format
 msgid "Key: %s"
 msgstr "Klawisz: %s"
@@ -1570,7 +1570,7 @@ msgstr "Przesuwaj kamerę"
 msgid "Clear outfit"
 msgstr "Usuń ubiór"
 
-#: src/gui/popupmenu.cpp:629 src/gui/windowmenu.cpp:99
+#: src/gui/popupmenu.cpp:629 src/gui/windowmenu.cpp:101
 msgid "Spells"
 msgstr "Zaklęcia"
 
@@ -1689,7 +1689,7 @@ msgstr "Przywróć stare skróty przedmiotów"
 
 #: src/gui/popupmenu.cpp:2022
 msgid "Clear drop window"
-msgstr ""
+msgstr "Wyczyść okno upuszczeń."
 
 #: src/gui/popupmenu.cpp:2050 src/gui/popupmenu.cpp:2087
 msgid "Hide"
@@ -1899,11 +1899,11 @@ msgstr "Ściągnij muzykę"
 
 #: src/gui/setup_chat.cpp:54
 msgid "Window"
-msgstr ""
+msgstr "Okno"
 
 #: src/gui/setup_chat.cpp:56
 msgid "Auto hide chat window."
-msgstr ""
+msgstr "Autoukrywanie okna czatu."
 
 #: src/gui/setup_chat.cpp:60 src/gui/setup_colors.cpp:54
 msgid "Colors"
@@ -2114,7 +2114,7 @@ msgstr "Przestań namierzać"
 
 #: src/gui/setup_input.cpp:114
 msgid "Target monster"
-msgstr ""
+msgstr "Naceluj potwora"
 
 #: src/gui/setup_input.cpp:118
 msgid "Target NPC"
@@ -2480,7 +2480,7 @@ msgstr "Klawisz modyfikatora"
 
 #: src/gui/setup_input.cpp:752
 msgid "Input"
-msgstr ""
+msgstr "Wejście"
 
 #: src/gui/setup_input.cpp:761
 msgid "Assign"
@@ -2689,47 +2689,47 @@ msgstr "Włącz integrację z guild-botem i wyłącz natywną obsługę gildii"
 
 #: src/gui/setup_other.cpp:165
 msgid "Windows"
-msgstr ""
+msgstr "Okna"
 
 #: src/gui/setup_other.cpp:168
 msgid "Always show"
-msgstr ""
+msgstr "Zawsze pokazuj"
 
 #: src/gui/setup_other.cpp:169
 msgid "Auto hide in small resolution"
-msgstr ""
+msgstr "Autoukrywanie w małej rozdzielczości"
 
 #: src/gui/setup_other.cpp:170
 msgid "Always auto hide"
-msgstr ""
+msgstr "Autoukrywanie"
 
 #: src/gui/setup_other.cpp:171
 msgid "Shortcut buttons"
-msgstr ""
+msgstr "Guziki skrótów"
 
 #: src/gui/setup_other.cpp:175
 msgid "Proxy server"
-msgstr ""
+msgstr "Serwer proxy"
 
 #: src/gui/setup_other.cpp:178
 msgid "System proxy"
-msgstr ""
+msgstr "Proxy systemowe"
 
 #: src/gui/setup_other.cpp:179
 msgid "Direct connection"
-msgstr ""
+msgstr "Bezpośrednie połączenie"
 
 #: src/gui/setup_other.cpp:185
 msgid "SOCKS5 hostname"
-msgstr ""
+msgstr "Nazwa hosta SOCKS5"
 
 #: src/gui/setup_other.cpp:186
 msgid "Proxy type"
-msgstr ""
+msgstr "Rodzaj proxy"
 
 #: src/gui/setup_other.cpp:189
 msgid "Proxy address:port"
-msgstr ""
+msgstr "Adres serwera:port"
 
 #: src/gui/setup_other.cpp:195
 msgid "Enable server side attack"
@@ -3156,7 +3156,7 @@ msgstr "Przechwytuj sygnały z myszki i klawiatury"
 
 #: src/gui/setup_visual.cpp:56
 msgid "Blurring textures (OpenGL)"
-msgstr ""
+msgstr "Blurowanie tekstur (OpenGL)"
 
 #: src/gui/setup_visual.cpp:59
 msgid "Gui opacity"
@@ -3260,7 +3260,7 @@ msgstr "Prośba o handel"
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s chce %s%s, akceptujesz?"
 
-#: src/gui/skilldialog.cpp:230 src/gui/windowmenu.cpp:84
+#: src/gui/skilldialog.cpp:230 src/gui/windowmenu.cpp:86
 msgid "Skills"
 msgstr "Zdolności"
 
@@ -3399,7 +3399,7 @@ msgstr "Utwórz gildię"
 msgid "Create Party"
 msgstr "Utwórz grupę"
 
-#: src/gui/socialwindow.cpp:1240 src/gui/windowmenu.cpp:96
+#: src/gui/socialwindow.cpp:1240 src/gui/windowmenu.cpp:98
 msgid "Social"
 msgstr "Społeczność"
 
@@ -3507,7 +3507,7 @@ msgstr "Nazwa grupy"
 msgid "Choose your party's name."
 msgstr "Wybierz nazwę grupy."
 
-#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:91
+#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:93
 msgid "Specials"
 msgstr "Specjalne"
 
@@ -4064,83 +4064,83 @@ msgstr "Komenda: /unignore <gracz>"
 msgid "This command stops ignoring the other player if they are being ignored."
 msgstr "To polecenie przerywa ignorowanie gracza, jeśli był ignorowany."
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:70
 msgid "BC"
 msgstr "WB"
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:70
 msgid "Bot checker"
 msgstr "Wykrywacz botów"
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:72
 msgid "ONL"
 msgstr "ONL"
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:72
 msgid "Who is online"
 msgstr "Gracze online"
 
-#: src/gui/windowmenu.cpp:72
+#: src/gui/windowmenu.cpp:74
 msgid "KS"
 msgstr "SB"
 
-#: src/gui/windowmenu.cpp:74
+#: src/gui/windowmenu.cpp:76
 msgid "Smilies"
 msgstr "Emotki"
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:78
 msgid "STA"
 msgstr "STA"
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:78
 msgid "Status"
 msgstr "Stan"
 
-#: src/gui/windowmenu.cpp:77
+#: src/gui/windowmenu.cpp:79
 msgid "EQU"
 msgstr "EKW"
 
-#: src/gui/windowmenu.cpp:79
+#: src/gui/windowmenu.cpp:81
 msgid "INV"
 msgstr "INW"
 
-#: src/gui/windowmenu.cpp:84
+#: src/gui/windowmenu.cpp:86
 msgid "SKI"
 msgstr "SKI"
 
-#: src/gui/windowmenu.cpp:91
+#: src/gui/windowmenu.cpp:93
 msgid "SPE"
 msgstr "SPE"
 
-#: src/gui/windowmenu.cpp:96
+#: src/gui/windowmenu.cpp:98
 msgid "SOC"
 msgstr "SOC"
 
-#: src/gui/windowmenu.cpp:97
+#: src/gui/windowmenu.cpp:99
 msgid "SH"
 msgstr "SK"
 
-#: src/gui/windowmenu.cpp:97
+#: src/gui/windowmenu.cpp:99
 msgid "Shortcuts"
 msgstr "Skróty"
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:101
 msgid "SP"
 msgstr "MG"
 
-#: src/gui/windowmenu.cpp:100
+#: src/gui/windowmenu.cpp:102
 msgid "DR"
 msgstr "UP"
 
-#: src/gui/windowmenu.cpp:101
+#: src/gui/windowmenu.cpp:103
 msgid "YK"
 msgstr "WŻ"
 
-#: src/gui/windowmenu.cpp:101
+#: src/gui/windowmenu.cpp:103
 msgid "Did you know"
 msgstr "Czy wiesz, że..."
 
-#: src/gui/windowmenu.cpp:103
+#: src/gui/windowmenu.cpp:105
 msgid "SET"
 msgstr "SET"
 
@@ -4156,7 +4156,7 @@ msgstr "Przeloguj się"
 msgid "Choose World"
 msgstr "Wybierz świat"
 
-#: src/inputmanager.cpp:283 src/inputmanager.cpp:321 src/keyboardconfig.cpp:81
+#: src/inputmanager.cpp:283 src/inputmanager.cpp:321 src/keyboardconfig.cpp:80
 #, c-format
 msgid "key_%d"
 msgstr "key_%d"
@@ -4165,7 +4165,7 @@ msgstr "key_%d"
 #: src/inputmanager.cpp:288
 #, c-format
 msgid "JButton%d"
-msgstr ""
+msgstr "JButton%d"
 
 #: src/inputmanager.cpp:300
 msgid "unknown key"
@@ -4175,10 +4175,10 @@ msgstr "nieznany klawisz"
 #: src/inputmanager.cpp:327
 #, c-format
 msgid "JB%d"
-msgstr ""
+msgstr "JB%d"
 
 #. TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
-#: src/inputmanager.cpp:339 src/keyboardconfig.cpp:93
+#: src/inputmanager.cpp:339 src/keyboardconfig.cpp:92
 msgid "u key"
 msgstr "(nieznany)"
 

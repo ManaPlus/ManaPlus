@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-04-13 02:11+0300\n"
+"POT-Creation-Date: 2012-04-14 14:06+0300\n"
 "PO-Revision-Date: 2012-04-12 23:24+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.net/projects/p/manaplus/language/"
@@ -55,7 +55,7 @@ msgstr ""
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:981 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:103
+#: src/client.cpp:981 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
 msgid "Setup"
 msgstr "Nastavení"
 
@@ -994,7 +994,7 @@ msgstr ""
 msgid "Please at least type both the address and the port of the server."
 msgstr ""
 
-#: src/gui/equipmentwindow.cpp:65 src/gui/windowmenu.cpp:77
+#: src/gui/equipmentwindow.cpp:65 src/gui/windowmenu.cpp:79
 msgid "Equipment"
 msgstr "Vybavení"
 
@@ -1028,7 +1028,7 @@ msgstr "dle množství"
 msgid "by type"
 msgstr "dle typu"
 
-#: src/gui/inventorywindow.cpp:113 src/gui/windowmenu.cpp:79
+#: src/gui/inventorywindow.cpp:113 src/gui/windowmenu.cpp:81
 #: src/inventory.cpp:250
 msgid "Inventory"
 msgstr "Inventář"
@@ -1086,7 +1086,7 @@ msgstr "Vzít"
 
 #: src/gui/inventorywindow.cpp:649 src/gui/popupmenu.cpp:1868
 #: src/gui/popupmenu.cpp:1964 src/gui/popupmenu.cpp:2011
-#: src/gui/windowmenu.cpp:100
+#: src/gui/windowmenu.cpp:102
 msgid "Drop"
 msgstr "Upustit"
 
@@ -1135,7 +1135,7 @@ msgstr ""
 msgid "Weight: %s"
 msgstr "Váha: %s"
 
-#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:72
+#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:74
 msgid "Kill stats"
 msgstr "Statistiky zabíjení"
 
@@ -1353,7 +1353,7 @@ msgid "Outfit: %d"
 msgstr "Výstroj: %d"
 
 #: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
-#: src/gui/windowmenu.cpp:312
+#: src/gui/windowmenu.cpp:315
 #, c-format
 msgid "Key: %s"
 msgstr "Klávesa: %s"
@@ -1571,7 +1571,7 @@ msgstr ""
 msgid "Clear outfit"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:629 src/gui/windowmenu.cpp:99
+#: src/gui/popupmenu.cpp:629 src/gui/windowmenu.cpp:101
 msgid "Spells"
 msgstr "Kouzla"
 
@@ -3259,7 +3259,7 @@ msgstr "Požadavek k obchodování"
 msgid "%s wants to %s %s do you accept?"
 msgstr "%s chce %s %s příjímáte?"
 
-#: src/gui/skilldialog.cpp:230 src/gui/windowmenu.cpp:84
+#: src/gui/skilldialog.cpp:230 src/gui/windowmenu.cpp:86
 msgid "Skills"
 msgstr "Dovednosti"
 
@@ -3398,7 +3398,7 @@ msgstr "Vytvořit gildu"
 msgid "Create Party"
 msgstr "Vytvořit partu"
 
-#: src/gui/socialwindow.cpp:1240 src/gui/windowmenu.cpp:96
+#: src/gui/socialwindow.cpp:1240 src/gui/windowmenu.cpp:98
 msgid "Social"
 msgstr "Společenství"
 
@@ -3506,7 +3506,7 @@ msgstr "Jméno party"
 msgid "Choose your party's name."
 msgstr "Zvolte jméno vaší party."
 
-#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:91
+#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:93
 msgid "Specials"
 msgstr ""
 
@@ -4061,83 +4061,83 @@ msgstr ""
 msgid "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:70
 msgid "BC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:70
 msgid "Bot checker"
 msgstr "Ověřovač botů"
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:72
 msgid "ONL"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:72
 msgid "Who is online"
 msgstr "Kdo je online"
 
-#: src/gui/windowmenu.cpp:72
+#: src/gui/windowmenu.cpp:74
 msgid "KS"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:74
+#: src/gui/windowmenu.cpp:76
 msgid "Smilies"
 msgstr "Smajlíci"
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:78
 msgid "STA"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:78
 msgid "Status"
 msgstr "Stav"
 
-#: src/gui/windowmenu.cpp:77
+#: src/gui/windowmenu.cpp:79
 msgid "EQU"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:79
+#: src/gui/windowmenu.cpp:81
 msgid "INV"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:84
+#: src/gui/windowmenu.cpp:86
 msgid "SKI"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:91
+#: src/gui/windowmenu.cpp:93
 msgid "SPE"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:96
+#: src/gui/windowmenu.cpp:98
 msgid "SOC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:97
+#: src/gui/windowmenu.cpp:99
 msgid "SH"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:97
+#: src/gui/windowmenu.cpp:99
 msgid "Shortcuts"
 msgstr "Zkratky"
 
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:101
 msgid "SP"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:100
+#: src/gui/windowmenu.cpp:102
 msgid "DR"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:101
+#: src/gui/windowmenu.cpp:103
 msgid "YK"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:101
+#: src/gui/windowmenu.cpp:103
 msgid "Did you know"
 msgstr "Víte že"
 
-#: src/gui/windowmenu.cpp:103
+#: src/gui/windowmenu.cpp:105
 msgid "SET"
 msgstr ""
 
@@ -4153,7 +4153,7 @@ msgstr "Změň přihlášení"
 msgid "Choose World"
 msgstr "vyber svět"
 
-#: src/inputmanager.cpp:283 src/inputmanager.cpp:321 src/keyboardconfig.cpp:81
+#: src/inputmanager.cpp:283 src/inputmanager.cpp:321 src/keyboardconfig.cpp:80
 #, c-format
 msgid "key_%d"
 msgstr ""
@@ -4175,7 +4175,7 @@ msgid "JB%d"
 msgstr ""
 
 #. TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
-#: src/inputmanager.cpp:339 src/keyboardconfig.cpp:93
+#: src/inputmanager.cpp:339 src/keyboardconfig.cpp:92
 msgid "u key"
 msgstr ""
 
