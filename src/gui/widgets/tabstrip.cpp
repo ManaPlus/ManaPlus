@@ -32,6 +32,11 @@ TabStrip::TabStrip(std::string group, int height, int spacing) :
 {
 }
 
+TabStrip::TabStrip(int height, int spacing) :
+    WidgetGroup("", height, spacing)
+{
+}
+
 gcn::Widget *TabStrip::createWidget(std::string text)
 {
     Button *widget = new Button();

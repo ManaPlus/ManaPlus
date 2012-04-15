@@ -139,7 +139,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mSlotsBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_INVY_SLOTS);
 
     int size = config.getIntValue("fontSize");
-    mFilter = new TabStrip("filter_" + getWindowName(), size + 8, 0);
+    mFilter = new TabStrip("filter_" + getWindowName(), size + 8);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
 

@@ -33,6 +33,9 @@
 
 #include <string>
 
+class TabStrip;
+struct SetupActionData;
+
 class Setup_Input : public SetupTab
 {
     public:
@@ -81,8 +84,11 @@ class Setup_Input : public SetupTab
         gcn::Button *mAssignKeyButton;
         gcn::Button *mUnassignKeyButton;
         gcn::Button *mMakeDefaultButton;
+        TabStrip *mTabs;
 
         bool mKeySetting; /**< flag to check if key being set. */
+
+        int *mActionDataSize;
 };
 
 #endif
