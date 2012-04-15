@@ -132,18 +132,14 @@ impHandler0(moveRight)
 
 impHandler(emote)
 {
-    if (inputManager.isActionActive(Input::KEY_EMOTE))
+    int emotion = 1 + event.action - Input::KEY_EMOTE_1;
+    if (emotion > 0)
     {
-        // emote keys
-        int emotion = 1 + event.action - Input::KEY_EMOTE_1;
-        if (emotion > 0)
-        {
-            if (emoteShortcut)
-                emoteShortcut->useEmote(emotion);
-            if (Game::instance())
-                Game::instance()->setValidSpeed();
-            return true;
-        }
+        if (emoteShortcut)
+            emoteShortcut->useEmote(emotion);
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+        return true;
     }
 
     return false;
@@ -151,7 +147,6 @@ impHandler(emote)
 
 impHandler(moveToPoint)
 {
-    // move to point keys
     int num = event.action - Input::KEY_MOVE_TO_POINT_1;
     if (socialWindow && num >= 0)
     {
