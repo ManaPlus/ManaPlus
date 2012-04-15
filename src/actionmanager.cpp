@@ -145,15 +145,18 @@ impHandler(emote)
             return true;
         }
     }
-    else if (inputManager.isActionActive(Input::KEY_MOVE_TO_POINT))
+
+    return false;
+}
+
+impHandler(moveToPoint)
+{
+    // move to point keys
+    int num = event.action - Input::KEY_MOVE_TO_POINT_1;
+    if (socialWindow && num >= 0)
     {
-        // move to point keys
-        int num = event.action - Input::KEY_EMOTE_1;
-        if (socialWindow && num >= 0)
-        {
-            socialWindow->selectPortal(num);
-            return true;
-        }
+        socialWindow->selectPortal(num);
+        return true;
     }
 
     return false;

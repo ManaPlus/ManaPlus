@@ -51,9 +51,10 @@ namespace Input
         GRP_CHAT = 2,              // chat key
         GRP_EMOTION = 4,           // emotions key
         GRP_OUTFIT = 8,            // outfit key
-        GRP_GUI = 16               // gui key
+        GRP_GUI = 16,              // gui key
+        GRP_MOVETOPOINT = 32       // move to point key
     };
-  
+
     /**
       * All the key functions.
       * KEY_NO_VALUE is used in initialization, and should be unchanged.
@@ -233,6 +234,54 @@ namespace Input
         KEY_OUTFIT_46,
         KEY_OUTFIT_47,
         KEY_OUTFIT_48,
+        KEY_MOVE_TO_POINT_1,
+        KEY_MOVE_TO_POINT_2,
+        KEY_MOVE_TO_POINT_3,
+        KEY_MOVE_TO_POINT_4,
+        KEY_MOVE_TO_POINT_5,
+        KEY_MOVE_TO_POINT_6,
+        KEY_MOVE_TO_POINT_7,
+        KEY_MOVE_TO_POINT_8,
+        KEY_MOVE_TO_POINT_9,
+        KEY_MOVE_TO_POINT_10,
+        KEY_MOVE_TO_POINT_11,
+        KEY_MOVE_TO_POINT_12,
+        KEY_MOVE_TO_POINT_13,
+        KEY_MOVE_TO_POINT_14,
+        KEY_MOVE_TO_POINT_15,
+        KEY_MOVE_TO_POINT_16,
+        KEY_MOVE_TO_POINT_17,
+        KEY_MOVE_TO_POINT_18,
+        KEY_MOVE_TO_POINT_19,
+        KEY_MOVE_TO_POINT_20,
+        KEY_MOVE_TO_POINT_21,
+        KEY_MOVE_TO_POINT_22,
+        KEY_MOVE_TO_POINT_23,
+        KEY_MOVE_TO_POINT_24,
+        KEY_MOVE_TO_POINT_25,
+        KEY_MOVE_TO_POINT_26,
+        KEY_MOVE_TO_POINT_27,
+        KEY_MOVE_TO_POINT_28,
+        KEY_MOVE_TO_POINT_29,
+        KEY_MOVE_TO_POINT_30,
+        KEY_MOVE_TO_POINT_31,
+        KEY_MOVE_TO_POINT_32,
+        KEY_MOVE_TO_POINT_33,
+        KEY_MOVE_TO_POINT_34,
+        KEY_MOVE_TO_POINT_35,
+        KEY_MOVE_TO_POINT_36,
+        KEY_MOVE_TO_POINT_37,
+        KEY_MOVE_TO_POINT_38,
+        KEY_MOVE_TO_POINT_39,
+        KEY_MOVE_TO_POINT_40,
+        KEY_MOVE_TO_POINT_41,
+        KEY_MOVE_TO_POINT_42,
+        KEY_MOVE_TO_POINT_43,
+        KEY_MOVE_TO_POINT_44,
+        KEY_MOVE_TO_POINT_45,
+        KEY_MOVE_TO_POINT_46,
+        KEY_MOVE_TO_POINT_47,
+        KEY_MOVE_TO_POINT_48,
         KEY_TOGGLE_CHAT,
         KEY_SCROLL_CHAT_UP,
         KEY_SCROLL_CHAT_DOWN,

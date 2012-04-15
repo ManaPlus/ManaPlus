@@ -102,7 +102,7 @@ Setup_Input::Setup_Input():
     selectedData = 0;
     mActionDataSize = new int [7];
 
-    for (int f = 0; f < 7; f ++)
+    for (int f = 0; f < 8; f ++)
     {
         int cnt = 0;
         while (!setupActionData[f][cnt].name.empty())

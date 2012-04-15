@@ -40,31 +40,6 @@ struct SetupActionData
 static SetupActionData setupActionData0[] =
 {
     {
-        N_("Move Keys"),
-        Input::KEY_NO_VALUE,
-        "",
-    },
-    {
-        N_("Move Up"),
-        Input::KEY_MOVE_UP,
-        "",
-    },
-    {
-        N_("Move Down"),
-        Input::KEY_MOVE_DOWN,
-        "",
-    },
-    {
-        N_("Move Left"),
-        Input::KEY_MOVE_LEFT,
-        "",
-    },
-    {
-        N_("Move Right"),
-        Input::KEY_MOVE_RIGHT,
-        "",
-    },
-    {
         N_("Target and attack keys"),
         Input::KEY_NO_VALUE,
         "",
@@ -1175,9 +1150,289 @@ static SetupActionData setupActionData6[] =
     }
 };
 
+static SetupActionData setupActionData7[] =
+{
+    {
+        N_("Move Keys"),
+        Input::KEY_NO_VALUE,
+        "",
+    },
+    {
+        N_("Move Up"),
+        Input::KEY_MOVE_UP,
+        "",
+    },
+    {
+        N_("Move Down"),
+        Input::KEY_MOVE_DOWN,
+        "",
+    },
+    {
+        N_("Move Left"),
+        Input::KEY_MOVE_LEFT,
+        "",
+    },
+    {
+        N_("Move Right"),
+        Input::KEY_MOVE_RIGHT,
+        "",
+    },
+    {
+        N_("Move to navigation point shortcuts"),
+        Input::KEY_NO_VALUE,
+        ""
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 1),
+        Input::KEY_MOVE_TO_POINT_1,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 2),
+        Input::KEY_MOVE_TO_POINT_2,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 3),
+        Input::KEY_MOVE_TO_POINT_3,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 4),
+        Input::KEY_MOVE_TO_POINT_4,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 5),
+        Input::KEY_MOVE_TO_POINT_5,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 6),
+        Input::KEY_MOVE_TO_POINT_6,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 7),
+        Input::KEY_MOVE_TO_POINT_7,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 8),
+        Input::KEY_MOVE_TO_POINT_8,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 9),
+        Input::KEY_MOVE_TO_POINT_9,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 10),
+        Input::KEY_MOVE_TO_POINT_10,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 11),
+        Input::KEY_MOVE_TO_POINT_11,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 12),
+        Input::KEY_MOVE_TO_POINT_12,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 13),
+        Input::KEY_MOVE_TO_POINT_13,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 14),
+        Input::KEY_MOVE_TO_POINT_14,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 15),
+        Input::KEY_MOVE_TO_POINT_15,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 16),
+        Input::KEY_MOVE_TO_POINT_16,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 17),
+        Input::KEY_MOVE_TO_POINT_17,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 18),
+        Input::KEY_MOVE_TO_POINT_18,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 19),
+        Input::KEY_MOVE_TO_POINT_19,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 20),
+        Input::KEY_MOVE_TO_POINT_20,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 21),
+        Input::KEY_MOVE_TO_POINT_21,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 22),
+        Input::KEY_MOVE_TO_POINT_22,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 23),
+        Input::KEY_MOVE_TO_POINT_23,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 24),
+        Input::KEY_MOVE_TO_POINT_24,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 25),
+        Input::KEY_MOVE_TO_POINT_25,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 26),
+        Input::KEY_MOVE_TO_POINT_26,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 27),
+        Input::KEY_MOVE_TO_POINT_27,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 28),
+        Input::KEY_MOVE_TO_POINT_28,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 29),
+        Input::KEY_MOVE_TO_POINT_29,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 30),
+        Input::KEY_MOVE_TO_POINT_30,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 31),
+        Input::KEY_MOVE_TO_POINT_31,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 32),
+        Input::KEY_MOVE_TO_POINT_32,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 33),
+        Input::KEY_MOVE_TO_POINT_33,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 34),
+        Input::KEY_MOVE_TO_POINT_34,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 35),
+        Input::KEY_MOVE_TO_POINT_35,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 36),
+        Input::KEY_MOVE_TO_POINT_36,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 37),
+        Input::KEY_MOVE_TO_POINT_37,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 38),
+        Input::KEY_MOVE_TO_POINT_38,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 39),
+        Input::KEY_MOVE_TO_POINT_39,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 40),
+        Input::KEY_MOVE_TO_POINT_40,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 41),
+        Input::KEY_MOVE_TO_POINT_41,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 42),
+        Input::KEY_MOVE_TO_POINT_42,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 43),
+        Input::KEY_MOVE_TO_POINT_43,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 44),
+        Input::KEY_MOVE_TO_POINT_44,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 45),
+        Input::KEY_MOVE_TO_POINT_45,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 46),
+        Input::KEY_MOVE_TO_POINT_46,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 47),
+        Input::KEY_MOVE_TO_POINT_47,
+        "",
+    },
+    {
+        strprintf(N_("Move to point Shortcut %d"), 48),
+        Input::KEY_MOVE_TO_POINT_48,
+        "",
+    },
+    {
+        "",
+        Input::KEY_NO_VALUE,
+        ""
+    }
+};
+
 static SetupActionData *setupActionData[] =
 {
     setupActionData0,
+    setupActionData7,
     setupActionData1,
     setupActionData2,
     setupActionData3,
@@ -1189,6 +1444,7 @@ static SetupActionData *setupActionData[] =
 static const char *pages[] =
 {
     N_("Basic"),
+    N_("Move"),
     N_("Shortcuts"),
     N_("Windows"),
     N_("Emotes"),

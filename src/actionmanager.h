@@ -38,6 +38,7 @@ namespace ActionManager
     decHandler(moveRight);
     decHandler(emote);
     decHandler(outfit);
+    decHandler(moveToPoint);
     decHandler(mouseClick);
     decHandler(ok);
     decHandler(shortcut);
