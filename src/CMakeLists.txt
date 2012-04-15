@@ -326,6 +326,7 @@ SET(SRCS
     gui/setup_video.h
     gui/setup_visual.cpp
     gui/setup_visual.h
+    gui/setupactiondata.h
     gui/sdlfont.cpp
     gui/sdlfont.h
     gui/shopwindow.cpp
