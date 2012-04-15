@@ -127,8 +127,11 @@ Setup_Input::Setup_Input():
     mUnassignKeyButton->addActionListener(this);
     mUnassignKeyButton->setEnabled(false);
 
-    mMakeDefaultButton = new Button(_("Default"), "makeDefault", this);
-    mMakeDefaultButton->addActionListener(this);
+    mResetKeysButton = new Button(_("Reset all keys"), "resetkeys", this);
+    mResetKeysButton->addActionListener(this);
+
+    mDefaultButton = new Button(_("Default"), "default", this);
+    mDefaultButton->addActionListener(this);
 
     mTabs = new TabStrip(config.getIntValue("fontSize") + 10);
     mTabs->addActionListener(this);
@@ -144,11 +147,12 @@ Setup_Input::Setup_Input():
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mTabs, 4);
-    place(0, 1, scrollArea, 4, 5).setPadding(2);
-    place(0, 6, mMakeDefaultButton);
+    place(0, 0, mTabs, 5);
+    place(0, 1, scrollArea, 5, 5).setPadding(2);
+    place(0, 6, mResetKeysButton);
     place(2, 6, mAssignKeyButton);
     place(3, 6, mUnassignKeyButton);
+    place(4, 6, mDefaultButton);
 
     setDimension(gcn::Rectangle(0, 0, 500, 350));
 }
@@ -164,8 +168,8 @@ Setup_Input::~Setup_Input()
     mAssignKeyButton = nullptr;
     delete mUnassignKeyButton;
     mUnassignKeyButton = nullptr;
-    delete mMakeDefaultButton;
-    mMakeDefaultButton = nullptr;
+    delete mResetKeysButton;
+    mResetKeysButton = nullptr;
 }
 
 void Setup_Input::apply()
@@ -252,10 +256,22 @@ void Setup_Input::action(const gcn::ActionEvent &event)
         }
         mAssignKeyButton->setEnabled(true);
     }
-    else if (id == "makeDefault")
+    else if (id == "resetKeys")
     {
-        inputManager.makeDefault();
+        inputManager.resetKeys();
+        inputManager.update();
         refreshKeys();
+    }
+    else if (id == "default")
+    {
+        int i(mKeyList->getSelected());
+        if (i >= 0 && i < mActionDataSize[selectedData])
+        {
+            const SetupActionData &key = setupActionData[selectedData][i];
+            int ik = key.actionId;
+            inputManager.makeDefault(ik);
+            refreshKeys();
+        }
     }
     else if (!id.find("tabs_"))
     {

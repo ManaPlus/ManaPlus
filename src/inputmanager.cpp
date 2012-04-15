@@ -80,8 +80,13 @@ void InputManager::init()
 
     mNewKeyIndex = Input::KEY_NO_VALUE;
 
-    makeDefault();
+    resetKeys();
     retrieve();
+    update();
+}
+
+void InputManager::update()
+{
     keyboard.update();
     if (joystick)
         joystick->update();
@@ -183,7 +188,7 @@ void InputManager::store()
     }
 }
 
-void InputManager::makeDefault()
+void InputManager::resetKeys()
 {
     for (int i = 0; i < Input::KEY_TOTAL; i++)
     {
@@ -197,6 +202,25 @@ void InputManager::makeDefault()
         key.values[0].value = keyData[i].defaultValue1;
         key.values[1].type = keyData[i].defaultType2;
         key.values[1].value = keyData[i].defaultValue2;
+    }
+}
+
+void InputManager::makeDefault(int i)
+{
+    if (i >= 0 && i < Input::KEY_TOTAL)
+    {
+        KeyFunction &key = mKey[i];
+        for (size_t i2 = 1; i2 < KeyFunctionSize; i2 ++)
+        {
+            key.values[i2].type = INPUT_UNKNOWN;
+            key.values[i2].value = -1;
+        }
+        key.values[0].type = keyData[i].defaultType1;
+        key.values[0].value = keyData[i].defaultValue1;
+        key.values[1].type = keyData[i].defaultType2;
+        key.values[1].value = keyData[i].defaultValue2;
+
+        update();
     }
 }
 
@@ -381,9 +405,7 @@ void InputManager::setNewKey(const SDL_Event &event, int type)
     if (val != -1)
     {
         addActionKey(mNewKeyIndex, type, val);
-        keyboard.update();
-        if (joystick)
-            joystick->update();
+        update();
     }
 }
 
@@ -395,9 +417,7 @@ void InputManager::unassignKey()
         key.values[i].type = INPUT_UNKNOWN;
         key.values[i].value = -1;
     }
-    keyboard.update();
-    if (joystick)
-        joystick->update();
+    update();
 }
 
 bool InputManager::handleAssignKey(const SDL_Event &event, int type)

@@ -83,7 +83,8 @@ class Setup_Input : public SetupTab
 
         gcn::Button *mAssignKeyButton;
         gcn::Button *mUnassignKeyButton;
-        gcn::Button *mMakeDefaultButton;
+        gcn::Button *mDefaultButton;
+        gcn::Button *mResetKeysButton;
         TabStrip *mTabs;
 
         bool mKeySetting; /**< flag to check if key being set. */

@@ -96,7 +96,9 @@ class InputManager
 
         void store();
 
-        void makeDefault();
+        void resetKeys();
+
+        void makeDefault(int i);
 
         bool hasConflicts(int &key1, int &key2);
 
@@ -143,6 +145,8 @@ class InputManager
         bool triggerAction(const KeysVector *ptrs);
 
         int getKeyIndex(int value, int grp, int type) const;
+
+        void update();
 
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */
