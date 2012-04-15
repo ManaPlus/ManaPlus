@@ -155,9 +155,15 @@ impHandler(emote)
             return true;
         }
     }
-    else if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
+
+    return false;
+}
+
+impHandler(outfit)
+{
+    if (inputManager.isActionActive(Input::KEY_WEAR_OUTFIT))
     {
-        int num = event.action - Input::KEY_EMOTE_1;
+        int num = event.action - Input::KEY_OUTFIT_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->wearOutfit(num);
@@ -168,7 +174,7 @@ impHandler(emote)
     }
     else if (inputManager.isActionActive(Input::KEY_COPY_OUTFIT))
     {
-        int num = event.action - Input::KEY_EMOTE_1;
+        int num = event.action - Input::KEY_OUTFIT_1;
         if (outfitWindow && num >= 0)
         {
             outfitWindow->copyOutfit(num);

@@ -701,6 +701,11 @@ static SetupActionData setupActionData3[] =
 static SetupActionData setupActionData4[] =
 {
     {
+        N_("Outfits keys"),
+        Input::KEY_NO_VALUE,
+        ""
+    },
+    {
         N_("Wear Outfit"),
         Input::KEY_WEAR_OUTFIT,
         "",
@@ -713,6 +718,251 @@ static SetupActionData setupActionData4[] =
     {
         N_("Copy equipped to Outfit"),
         Input::KEY_COPY_EQUIPED_OUTFIT,
+        "",
+    },
+    {
+        N_("Outfits shortcuts"),
+        Input::KEY_NO_VALUE,
+        ""
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 1),
+        Input::KEY_OUTFIT_1,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 2),
+        Input::KEY_OUTFIT_2,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 3),
+        Input::KEY_OUTFIT_3,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 4),
+        Input::KEY_OUTFIT_4,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 5),
+        Input::KEY_OUTFIT_5,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 6),
+        Input::KEY_OUTFIT_6,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 7),
+        Input::KEY_OUTFIT_7,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 8),
+        Input::KEY_OUTFIT_8,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 9),
+        Input::KEY_OUTFIT_9,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 10),
+        Input::KEY_OUTFIT_10,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 11),
+        Input::KEY_OUTFIT_11,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 12),
+        Input::KEY_OUTFIT_12,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 13),
+        Input::KEY_OUTFIT_13,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 14),
+        Input::KEY_OUTFIT_14,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 15),
+        Input::KEY_OUTFIT_15,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 16),
+        Input::KEY_OUTFIT_16,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 17),
+        Input::KEY_OUTFIT_17,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 18),
+        Input::KEY_OUTFIT_18,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 19),
+        Input::KEY_OUTFIT_19,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 20),
+        Input::KEY_OUTFIT_20,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 21),
+        Input::KEY_OUTFIT_21,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 22),
+        Input::KEY_OUTFIT_22,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 23),
+        Input::KEY_OUTFIT_23,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 24),
+        Input::KEY_OUTFIT_24,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 25),
+        Input::KEY_OUTFIT_25,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 26),
+        Input::KEY_OUTFIT_26,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 27),
+        Input::KEY_OUTFIT_27,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 28),
+        Input::KEY_OUTFIT_28,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 29),
+        Input::KEY_OUTFIT_29,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 30),
+        Input::KEY_OUTFIT_30,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 31),
+        Input::KEY_OUTFIT_31,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 32),
+        Input::KEY_OUTFIT_32,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 33),
+        Input::KEY_OUTFIT_33,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 34),
+        Input::KEY_OUTFIT_34,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 35),
+        Input::KEY_OUTFIT_35,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 36),
+        Input::KEY_OUTFIT_36,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 37),
+        Input::KEY_OUTFIT_37,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 38),
+        Input::KEY_OUTFIT_38,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 39),
+        Input::KEY_OUTFIT_39,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 40),
+        Input::KEY_OUTFIT_40,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 41),
+        Input::KEY_OUTFIT_41,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 42),
+        Input::KEY_OUTFIT_42,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 43),
+        Input::KEY_OUTFIT_43,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 44),
+        Input::KEY_OUTFIT_44,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 45),
+        Input::KEY_OUTFIT_45,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 46),
+        Input::KEY_OUTFIT_46,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 47),
+        Input::KEY_OUTFIT_47,
+        "",
+    },
+    {
+        strprintf(N_("Outfit Shortcut %d"), 48),
+        Input::KEY_OUTFIT_48,
         "",
     },
     {
