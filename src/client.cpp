@@ -373,6 +373,11 @@ void Client::gameInit()
     SDL_EnableUNICODE(1);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
+    // disable unused SDL events
+    SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
+    SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
+    SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
+
     SDL_WM_SetCaption(strprintf("%s %s",
         branding.getStringValue("appName").c_str(),
         SMALL_VERSION).c_str(), nullptr);
