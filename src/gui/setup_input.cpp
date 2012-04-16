@@ -100,7 +100,7 @@ Setup_Input::Setup_Input():
     setName(_("Input"));
 
     selectedData = 0;
-    mActionDataSize = new int [7];
+    mActionDataSize = new int [8];
 
     for (int f = 0; f < 8; f ++)
     {
