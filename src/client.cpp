@@ -385,8 +385,8 @@ void Client::gameInit()
                                 "Exiting.", mLocalDataDir.c_str()));
     }
 
-    Image::setBlur(config.getBoolValue("blur"));
 #if defined USE_OPENGL
+    Image::setBlur(config.getBoolValue("blur"));
     Image::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
         && !config.getIntValue("opengl"));
     Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f

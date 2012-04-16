@@ -24,7 +24,12 @@
 #ifndef GUI_SETUPACTIONDATA_H
 #define GUI_SETUPACTIONDATA_H
 
+#include "keydata.h"
+
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
+
+#include <string>
 
 #include "debug.h"
 
