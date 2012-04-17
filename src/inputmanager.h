@@ -88,9 +88,7 @@ class InputManager
 
         bool handleEvent(const SDL_Event &event);
 
-        int getInputConditionMask();
-
-        bool checkKey(const KeyData *key, int mask);
+        bool checkKey(const KeyData *key);
 
         void retrieve();
 
@@ -138,7 +136,7 @@ class InputManager
 
         void updateKeyActionMap(KeyToActionMap &actionMap, int type);
 
-        bool invokeKey(const KeyData *key, int keyNum, int mask);
+        bool invokeKey(const KeyData *key, int keyNum);
 
         bool handleAssignKey(const SDL_Event &event, int type);
 
@@ -148,10 +146,14 @@ class InputManager
 
         void update();
 
+        void updateConditionMask();
+
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */
 
         int mNewKeyIndex;              /**< Index of new key to be assigned */
+
+        int mMask;
 
         KeyFunction mKey[Input::KEY_TOTAL]; /**< Pointer to all the key data */
 };

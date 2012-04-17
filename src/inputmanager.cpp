@@ -63,7 +63,8 @@ class KeyFunctor
 
 InputManager::InputManager() :
     mSetupInput(nullptr),
-    mNewKeyIndex(Input::KEY_NO_VALUE)
+    mNewKeyIndex(Input::KEY_NO_VALUE),
+    mMask(1)
 {
 }
 
@@ -439,6 +440,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
     {
         case SDL_KEYDOWN:
         {
+            updateConditionMask();
             if (handleAssignKey(event, INPUT_KEYBOARD))
                 return true;
 
@@ -465,11 +467,13 @@ bool InputManager::handleEvent(const SDL_Event &event)
         }
         case SDL_KEYUP:
         {
+            updateConditionMask();
             keyboard.handleDeActicateKey(event);
             break;
         }
         case SDL_JOYBUTTONDOWN:
         {
+            updateConditionMask();
 //            joystick.handleActicateButton(event);
             if (handleAssignKey(event, INPUT_JOYSTICK))
                 return true;
@@ -477,6 +481,7 @@ bool InputManager::handleEvent(const SDL_Event &event)
         }
         case SDL_JOYBUTTONUP:
         {
+            updateConditionMask();
 //            joystick.handleDeActicateButton(event);
             break;
         }
@@ -522,65 +527,63 @@ bool InputManager::handleEvent(const SDL_Event &event)
     return false;
 }
 
-int InputManager::getInputConditionMask()
+void InputManager::updateConditionMask()
 {
-    int mask = 1;
+    mMask = 1;
     if (keyboard.isEnabled())
-        mask += COND_ENABLED;
+        mMask += COND_ENABLED;
     if ((!chatWindow || !chatWindow->isInputFocused()) &&
         !NpcDialog::isAnyInputFocused() &&
         !InventoryWindow::isAnyInputFocused() &&
         (!tradeWindow || !tradeWindow->isInpupFocused()))
     {
-        mask += COND_NOINPUT;
+        mMask += COND_NOINPUT;
     }
 
     if (!player_node || !player_node->getAway())
-        mask += COND_NOAWAY;
+        mMask += COND_NOAWAY;
 
     if (!setupWindow || !setupWindow->isVisible())
-        mask += COND_NOSETUP;
+        mMask += COND_NOSETUP;
 
     if (Game::instance()->getValidSpeed())
-        mask += COND_VALIDSPEED;
+        mMask += COND_VALIDSPEED;
 
     if (gui && !gui->getFocusHandler()->getModalFocused())
-        mask += COND_NOMODAL;
+        mMask += COND_NOMODAL;
 
     NpcDialog *dialog = NpcDialog::getActive();
     if (!dialog || !dialog->isTextInputFocused())
-        mask += COND_NONPCINPUT;
+        mMask += COND_NONPCINPUT;
 
     if (!player_node || !player_node->getDisableGameModifiers())
-        mask += COND_EMODS;
+        mMask += COND_EMODS;
 
     if (!isActionActive(Input::KEY_STOP_ATTACK)
         && !isActionActive(Input::KEY_UNTARGET))
     {
-        mask += COND_NOTARGET;
+        mMask += COND_NOTARGET;
     }
 
     if (!player_node || player_node->getFollow().empty())
-        mask += COND_NOFOLLOW;
-
-    return mask;
+        mMask += COND_NOFOLLOW;
 }
 
-bool InputManager::checkKey(const KeyData *key, int mask)
+bool InputManager::checkKey(const KeyData *key)
 {
-//    logger->log("mask=%d, condition=%d", mask, key->condition);
-    if (!key || (key->condition & mask) != key->condition)
+//    logger->log("mask=%d, condition=%d", mMask, key->condition);
+    if (!key || (key->condition & mMask) != key->condition)
         return false;
 
     return (key->modKeyIndex == Input::KEY_NO_VALUE
         || isActionActive(key->modKeyIndex));
 }
 
-bool InputManager::invokeKey(const KeyData *key, int keyNum, int mask)
+bool InputManager::invokeKey(const KeyData *key, int keyNum)
 {
-    if (checkKey(key, mask))
+    if (checkKey(key))
     {
-        InputEvent evt(keyNum, mask);
+        InputEvent evt(keyNum, mMask);
         if ((*(keyData[keyNum].action))(evt))
             return true;
     }
@@ -625,15 +628,13 @@ bool InputManager::triggerAction(const KeysVector *ptrs)
     KeysVectorCIter it = ptrs->begin();
     KeysVectorCIter it_end = ptrs->end();
 
-    int mask = getInputConditionMask();
-
     for (; it != it_end; ++ it)
     {
         const int keyNum = *it;
         if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)
             continue;
 
-        if (invokeKey(&keyData[keyNum], keyNum, mask))
+        if (invokeKey(&keyData[keyNum], keyNum))
             return true;
     }
     return false;
