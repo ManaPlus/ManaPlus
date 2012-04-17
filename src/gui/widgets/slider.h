@@ -75,6 +75,8 @@ class Slider : public gcn::Slider
          */
         void mouseExited(gcn::MouseEvent& event);
 
+        void keyPressed(gcn::KeyEvent& keyEvent);
+
     private:
         /**
          * Used to initialize instances.

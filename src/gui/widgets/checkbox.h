@@ -74,6 +74,8 @@ class CheckBox : public gcn::CheckBox
          */
         void mouseExited(gcn::MouseEvent& event);
 
+        void keyPressed(gcn::KeyEvent& keyEvent);
+
     private:
         static int instances;
         static float mAlpha;

@@ -298,35 +298,8 @@ namespace gcn
         adjustSize();
     }
 
-    void TabbedArea::keyPressed(KeyEvent& keyEvent)
+    void TabbedArea::keyPressed(KeyEvent& keyEvent A_UNUSED)
     {
-        if (keyEvent.isConsumed() || !isFocused())
-            return;
-
-        if (keyEvent.getKey().getValue() == Key::LEFT)
-        {
-            int index = getSelectedTabIndex();
-            index--;
-
-            if (index < 0)
-                return;
-            else
-                setSelectedTab(mTabs[index].first);
-
-            keyEvent.consume();
-        }
-        else if (keyEvent.getKey().getValue() == Key::RIGHT)
-        {
-            int index = getSelectedTabIndex();
-            index++;
-
-            if (index >= static_cast<int>(mTabs.size()))
-                return;
-            else
-                setSelectedTab(mTabs[index].first);
-
-            keyEvent.consume();
-        }
     }
 
     void TabbedArea::death(const Event& event)

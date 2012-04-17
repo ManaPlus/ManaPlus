@@ -189,53 +189,8 @@ namespace gcn
         distributeValueChangedEvent();
     }
 
-    void ListBox::keyPressed(KeyEvent& keyEvent)
+    void ListBox::keyPressed(KeyEvent& keyEvent A_UNUSED)
     {
-        Key key = keyEvent.getKey();
-
-        if (key.getValue() == Key::ENTER || key.getValue() == Key::SPACE)
-        {
-            distributeActionEvent();
-            keyEvent.consume();
-        }
-        else if (key.getValue() == Key::UP)
-        {
-            setSelected(mSelected - 1);
-
-            if (mSelected == -1)
-            {
-                if (mWrappingEnabled)
-                    setSelected(getListModel()->getNumberOfElements() - 1);
-                else
-                    setSelected(0);
-            }
-
-            keyEvent.consume();
-        }
-        else if (key.getValue() == Key::DOWN)
-        {
-            if (mWrappingEnabled
-                && getSelected() == getListModel()->getNumberOfElements() - 1)
-            {
-                setSelected(0);
-            }
-            else
-            {
-                setSelected(getSelected() + 1);
-            }
-
-            keyEvent.consume();
-        }
-        else if (key.getValue() == Key::HOME)
-        {
-            setSelected(0);
-            keyEvent.consume();
-        }
-        else if (key.getValue() == Key::END)
-        {
-            setSelected(getListModel()->getNumberOfElements() - 1);
-            keyEvent.consume();
-        }
     }
 
     void ListBox::mousePressed(MouseEvent& mouseEvent)

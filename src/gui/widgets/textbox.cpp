@@ -152,3 +152,151 @@ void TextBox::setTextWrapped(const std::string &text, int minDimension)
 
     gcn::TextBox::setText(wrappedStream.str());
 }
+
+void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
+{
+    gcn::Key key = keyEvent.getKey();
+
+    if (key.getValue() == gcn::Key::LEFT)
+    {
+        --mCaretColumn;
+        if (mCaretColumn < 0)
+        {
+            --mCaretRow;
+
+            if (mCaretRow < 0)
+            {
+                mCaretRow = 0;
+                mCaretColumn = 0;
+            }
+            else
+            {
+                mCaretColumn = mTextRows[mCaretRow].size();
+            }
+        }
+    }
+    else if (key.getValue() == gcn::Key::RIGHT)
+    {
+        ++mCaretColumn;
+        if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
+        {
+            ++ mCaretRow;
+
+            if (mCaretRow >= static_cast<int>(mTextRows.size()))
+            {
+                mCaretRow = mTextRows.size() - 1;
+                if (mCaretRow < 0)
+                    mCaretRow = 0;
+
+                mCaretColumn = mTextRows[mCaretRow].size();
+            }
+            else
+            {
+                mCaretColumn = 0;
+            }
+        }
+    }
+    else if (key.getValue() == gcn::Key::DOWN)
+    {
+        setCaretRow(mCaretRow + 1);
+    }
+    else if (key.getValue() == gcn::Key::UP)
+    {
+        setCaretRow(mCaretRow - 1);
+    }
+    else if (key.getValue() == gcn::Key::HOME)
+    {
+        mCaretColumn = 0;
+    }
+    else if (key.getValue() == gcn::Key::END)
+    {
+        mCaretColumn = mTextRows[mCaretRow].size();
+    }
+    else if (key.getValue() == gcn::Key::ENTER && mEditable)
+    {
+        mTextRows.insert(mTextRows.begin() + mCaretRow + 1,
+            mTextRows[mCaretRow].substr(mCaretColumn,
+            mTextRows[mCaretRow].size() - mCaretColumn));
+        mTextRows[mCaretRow].resize(mCaretColumn);
+        ++mCaretRow;
+        mCaretColumn = 0;
+    }
+    else if (key.getValue() == gcn::Key::BACKSPACE
+              && mCaretColumn != 0
+              && mEditable)
+    {
+        mTextRows[mCaretRow].erase(mCaretColumn - 1, 1);
+        --mCaretColumn;
+    }
+    else if (key.getValue() == gcn::Key::BACKSPACE
+              && mCaretColumn == 0
+              && mCaretRow != 0
+              && mEditable)
+    {
+        mCaretColumn = mTextRows[mCaretRow - 1].size();
+        mTextRows[mCaretRow - 1] += mTextRows[mCaretRow];
+        mTextRows.erase(mTextRows.begin() + mCaretRow);
+        --mCaretRow;
+    }
+    else if (key.getValue() == gcn::Key::DELETE
+              && mCaretColumn < static_cast<int>(
+              mTextRows[mCaretRow].size()) && mEditable)
+    {
+        mTextRows[mCaretRow].erase(mCaretColumn, 1);
+    }
+    else if (key.getValue() == gcn::Key::DELETE
+              && mCaretColumn == static_cast<int>(
+              mTextRows[mCaretRow].size())
+              && mCaretRow < (static_cast<int>(mTextRows.size()) - 1)
+              && mEditable)
+    {
+        mTextRows[mCaretRow] += mTextRows[mCaretRow + 1];
+        mTextRows.erase(mTextRows.begin() + mCaretRow + 1);
+    }
+    else if (key.getValue() == gcn::Key::PAGE_UP)
+    {
+        gcn::Widget* par = getParent();
+
+        if (par)
+        {
+            int rowsPerPage = par->getChildrenArea().height
+                / getFont()->getHeight();
+            mCaretRow -= rowsPerPage;
+
+            if (mCaretRow < 0)
+                mCaretRow = 0;
+        }
+    }
+    else if (key.getValue() == gcn::Key::PAGE_DOWN)
+    {
+        gcn::Widget* par = getParent();
+
+        if (par)
+        {
+            int rowsPerPage = par->getChildrenArea().height
+                / getFont()->getHeight();
+            mCaretRow += rowsPerPage;
+
+            if (mCaretRow >= static_cast<int>(mTextRows.size()))
+                mCaretRow = mTextRows.size() - 1;
+        }
+    }
+    else if (key.getValue() == gcn::Key::TAB
+              && mEditable)
+    {
+        mTextRows[mCaretRow].insert(mCaretColumn, std::string("    "));
+        mCaretColumn += 4;
+    }
+    else if (key.isCharacter()
+              && mEditable)
+    {
+        mTextRows[mCaretRow].insert(mCaretColumn,
+            std::string(1, static_cast<char>(key.getValue())));
+        ++ mCaretColumn;
+    }
+
+    adjustSize();
+    scrollToCaret();
+
+    keyEvent.consume();
+}

@@ -128,17 +128,8 @@ namespace gcn
         mCaption = caption;
     }
 
-    void RadioButton::keyPressed(KeyEvent& keyEvent)
+    void RadioButton::keyPressed(KeyEvent& keyEvent A_UNUSED)
     {
-        Key key = keyEvent.getKey();
-
-        if (key.getValue() == Key::ENTER ||
-            key.getValue() == Key::SPACE)
-        {
-            setSelected(true);
-            distributeActionEvent();
-            keyEvent.consume();
-        }
     }
 
     void RadioButton::mouseClicked(MouseEvent& mouseEvent)

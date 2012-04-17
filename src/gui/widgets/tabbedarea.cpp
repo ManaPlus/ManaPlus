@@ -477,6 +477,37 @@ void TabbedArea::removeAll()
     }
 }
 
+void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
+{
+    if (keyEvent.isConsumed() || !isFocused())
+        return;
+
+    if (keyEvent.getKey().getValue() == gcn::Key::LEFT)
+    {
+        int index = getSelectedTabIndex();
+        index--;
+
+        if (index < 0)
+            return;
+        else
+            setSelectedTab(mTabs[index].first);
+
+        keyEvent.consume();
+    }
+    else if (keyEvent.getKey().getValue() == gcn::Key::RIGHT)
+    {
+        int index = getSelectedTabIndex();
+        index++;
+
+        if (index >= static_cast<int>(mTabs.size()))
+            return;
+        else
+            setSelectedTab(mTabs[index].first);
+
+        keyEvent.consume();
+    }
+}
+
 /*
 void TabbedArea::moveLeft(gcn::Tab *tab)
 {

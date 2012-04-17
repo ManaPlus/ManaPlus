@@ -297,3 +297,39 @@ void Slider::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
+
+void Slider::keyPressed(gcn::KeyEvent& keyEvent)
+{
+    gcn::Key key = keyEvent.getKey();
+
+    if (getOrientation() == HORIZONTAL)
+    {
+        if (key.getValue() == gcn::Key::RIGHT)
+        {
+            setValue(getValue() + getStepLength());
+            distributeActionEvent();
+            keyEvent.consume();
+        }
+        else if (key.getValue() == gcn::Key::LEFT)
+        {
+            setValue(getValue() - getStepLength());
+            distributeActionEvent();
+            keyEvent.consume();
+        }
+    }
+    else
+    {
+        if (key.getValue() == gcn::Key::UP)
+        {
+            setValue(getValue() + getStepLength());
+            distributeActionEvent();
+            keyEvent.consume();
+        }
+        else if (key.getValue() == gcn::Key::DOWN)
+        {
+            setValue(getValue() - getStepLength());
+            distributeActionEvent();
+            keyEvent.consume();
+        }
+    }
+}

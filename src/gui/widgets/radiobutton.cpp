@@ -158,3 +158,16 @@ void RadioButton::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
+
+void RadioButton::keyPressed(gcn::KeyEvent& keyEvent)
+{
+    gcn::Key key = keyEvent.getKey();
+
+    if (key.getValue() == gcn::Key::ENTER ||
+        key.getValue() == gcn::Key::SPACE)
+    {
+        setSelected(true);
+        distributeActionEvent();
+        keyEvent.consume();
+    }
+}

@@ -190,3 +190,15 @@ void CheckBox::mouseExited(gcn::MouseEvent& event A_UNUSED)
 {
     mHasMouse = false;
 }
+
+void CheckBox::keyPressed(gcn::KeyEvent& keyEvent)
+{
+    gcn::Key key = keyEvent.getKey();
+
+    if (key.getValue() == gcn::Key::ENTER ||
+        key.getValue() == gcn::Key::SPACE)
+    {
+        toggleSelected();
+        keyEvent.consume();
+    }
+}

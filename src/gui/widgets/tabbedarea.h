@@ -148,6 +148,8 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         void fixSize()
         { adjustSize(); }
 
+        void keyPressed(gcn::KeyEvent& keyEvent);
+
     private:
         typedef std::vector< std::pair<gcn::Tab*, gcn::Widget*> > TabContainer;
 

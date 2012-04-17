@@ -64,6 +64,8 @@ class TextBox : public gcn::TextBox
             gcn::TextBox::draw(graphics);
         }
 
+        void keyPressed(gcn::KeyEvent& keyEvent);
+
     private:
         int mMinWidth;
         const gcn::Color *mTextColor;
