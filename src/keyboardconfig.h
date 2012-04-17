@@ -85,6 +85,8 @@ class KeyboardConfig
 
         void handleDeActicateKey(const SDL_Event &event);
 
+        int getActionId(const SDL_Event &event);
+
     private:
         bool mEnabled;                 /**< Flag to respond to key input */
 
@@ -93,6 +95,8 @@ class KeyboardConfig
         Uint8 *mActiveKeys2;           /**< Stores a list of all the keys */
 
         KeyToActionMap mKeyToAction;
+
+        KeyToIdMap mKeyToId;
 };
 
 extern KeyboardConfig keyboard;

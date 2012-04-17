@@ -108,6 +108,15 @@ KeysVector *KeyboardConfig::getActionVector(const SDL_Event &event)
     return nullptr;
 }
 
+int KeyboardConfig::getActionId(const SDL_Event &event)
+{
+    const int i = getKeyValueFromEvent(event);
+//    logger->log("getActionId: %d", i);
+    if (i != 0 && i < SDLK_LAST && mKeyToId.find(i) != mKeyToId.end())
+        return mKeyToId[i];
+    return -1;
+}
+
 bool KeyboardConfig::isActionActive(int index) const
 {
     if (!mActiveKeys)
@@ -136,7 +145,7 @@ bool KeyboardConfig::isActionActive(int index) const
 
 void KeyboardConfig::update()
 {
-    inputManager.updateKeyActionMap(mKeyToAction, INPUT_KEYBOARD);
+    inputManager.updateKeyActionMap(mKeyToAction, mKeyToId, INPUT_KEYBOARD);
 }
 
 void KeyboardConfig::handleActicateKey(const SDL_Event &event)

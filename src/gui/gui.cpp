@@ -35,6 +35,8 @@
 #include "configlistener.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "keyevent.h"
+#include "keyinput.h"
 #include "logger.h"
 
 #include "resources/image.h"
@@ -284,11 +286,14 @@ bool Gui::handleInput()
 
 bool Gui::handleKeyInput2()
 {
+    if (!guiInput)
+        return false;
+
     bool consumed(false);
 
     while (!mInput->isKeyQueueEmpty())
     {
-        gcn::KeyInput keyInput = mInput->dequeueKeyInput();
+        KeyInput keyInput = guiInput->dequeueKeyInput2();
 
         // Save modifiers state
         mShiftPressed = keyInput.isShiftPressed();
@@ -296,9 +301,10 @@ bool Gui::handleKeyInput2()
         mControlPressed = keyInput.isControlPressed();
         mAltPressed = keyInput.isAltPressed();
 
-        gcn::KeyEvent keyEventToGlobalKeyListeners(nullptr,
+        KeyEvent keyEventToGlobalKeyListeners(nullptr,
             mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
-            keyInput.getType(), keyInput.isNumericPad(), keyInput.getKey());
+            keyInput.getType(), keyInput.isNumericPad(),
+            keyInput.getActionId(), keyInput.getKey());
 
         distributeKeyEventToGlobalKeyListeners(
             keyEventToGlobalKeyListeners);
@@ -318,10 +324,10 @@ bool Gui::handleKeyInput2()
             // Send key inputs to the focused widgets
             if (mFocusHandler->getFocused())
             {
-                gcn::KeyEvent keyEvent(getKeyEventSource(),
+                KeyEvent keyEvent(getKeyEventSource(),
                     mShiftPressed, mControlPressed, mAltPressed, mMetaPressed,
                     keyInput.getType(), keyInput.isNumericPad(),
-                    keyInput.getKey());
+                    keyInput.getActionId(), keyInput.getKey());
 
                 if (!mFocusHandler->getFocused()->isFocusable())
                     mFocusHandler->focusNone();

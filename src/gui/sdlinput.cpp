@@ -58,6 +58,10 @@
 
 #include "sdlinput.h"
 
+#include "keyinput.h"
+
+#include "inputmanager.h"
+
 #include <guichan/exception.hpp>
 
 SDLInput::SDLInput()
@@ -71,9 +75,9 @@ bool SDLInput::isKeyQueueEmpty()
     return mKeyInputQueue.empty();
 }
 
-gcn::KeyInput SDLInput::dequeueKeyInput()
+KeyInput SDLInput::dequeueKeyInput2()
 {
-    gcn::KeyInput keyInput;
+    KeyInput keyInput;
 
     if (mKeyInputQueue.empty())
     {
@@ -108,107 +112,105 @@ gcn::MouseInput SDLInput::dequeueMouseInput()
 
 void SDLInput::pushInput(const SDL_Event &event)
 {
-    gcn::KeyInput keyInput;
+    KeyInput keyInput;
     gcn::MouseInput mouseInput;
 
     switch (event.type)
     {
-      case SDL_KEYDOWN:
-          keyInput.setKey(gcn::Key(convertKeyCharacter(event)));
-          keyInput.setType(gcn::KeyInput::PRESSED);
-          keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
-          keyInput.setControlPressed(event.key.keysym.mod & KMOD_CTRL);
-          keyInput.setAltPressed(event.key.keysym.mod & KMOD_ALT);
-          keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
-          keyInput.setNumericPad(event.key.keysym.sym >= SDLK_KP0
-                                 && event.key.keysym.sym <= SDLK_KP_EQUALS);
+        case SDL_KEYDOWN:
+        {
+            keyInput.setKey(gcn::Key(convertKeyCharacter(event)));
+            keyInput.setType(gcn::KeyInput::PRESSED);
+            keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
+            keyInput.setControlPressed(event.key.keysym.mod & KMOD_CTRL);
+            keyInput.setAltPressed(event.key.keysym.mod & KMOD_ALT);
+            keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
+            keyInput.setNumericPad(event.key.keysym.sym >= SDLK_KP0
+                                   && event.key.keysym.sym <= SDLK_KP_EQUALS);
+            int actionId = inputManager.getActionByKey(event);
+            if (actionId >= 0)
+                keyInput.setActionId(actionId);
+            mKeyInputQueue.push(keyInput);
+            break;
+        }
 
-          mKeyInputQueue.push(keyInput);
-          break;
+        case SDL_KEYUP:
+            keyInput.setKey(gcn::Key(convertKeyCharacter(event)));
+            keyInput.setType(gcn::KeyInput::RELEASED);
+            keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
+            keyInput.setControlPressed(event.key.keysym.mod & KMOD_CTRL);
+            keyInput.setAltPressed(event.key.keysym.mod & KMOD_ALT);
+            keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
+            keyInput.setNumericPad(event.key.keysym.sym >= SDLK_KP0
+                                   && event.key.keysym.sym <= SDLK_KP_EQUALS);
 
-      case SDL_KEYUP:
-          keyInput.setKey(gcn::Key(convertKeyCharacter(event)));
-          keyInput.setType(gcn::KeyInput::RELEASED);
-          keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
-          keyInput.setControlPressed(event.key.keysym.mod & KMOD_CTRL);
-          keyInput.setAltPressed(event.key.keysym.mod & KMOD_ALT);
-          keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
-          keyInput.setNumericPad(event.key.keysym.sym >= SDLK_KP0
-                                 && event.key.keysym.sym <= SDLK_KP_EQUALS);
+            mKeyInputQueue.push(keyInput);
+            break;
 
-          mKeyInputQueue.push(keyInput);
-          break;
+        case SDL_MOUSEBUTTONDOWN:
+            mMouseDown = true;
+            mouseInput.setX(event.button.x);
+            mouseInput.setY(event.button.y);
+            mouseInput.setButton(convertMouseButton(event.button.button));
 
-      case SDL_MOUSEBUTTONDOWN:
-          mMouseDown = true;
-          mouseInput.setX(event.button.x);
-          mouseInput.setY(event.button.y);
-          mouseInput.setButton(convertMouseButton(event.button.button));
+            if (event.button.button == SDL_BUTTON_WHEELDOWN)
+                mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_DOWN);
+            else if (event.button.button == SDL_BUTTON_WHEELUP)
+                mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_UP);
+            else
+                mouseInput.setType(gcn::MouseInput::PRESSED);
+            mouseInput.setTimeStamp(SDL_GetTicks());
+            mMouseInputQueue.push(mouseInput);
+            break;
 
-          if (event.button.button == SDL_BUTTON_WHEELDOWN)
-          {
-              mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_DOWN);
-          }
-          else if (event.button.button == SDL_BUTTON_WHEELUP)
-          {
-              mouseInput.setType(gcn::MouseInput::WHEEL_MOVED_UP);
-          }
-          else
-          {
-              mouseInput.setType(gcn::MouseInput::PRESSED);
-          }
-          mouseInput.setTimeStamp(SDL_GetTicks());
-          mMouseInputQueue.push(mouseInput);
-          break;
+        case SDL_MOUSEBUTTONUP:
+            mMouseDown = false;
+            mouseInput.setX(event.button.x);
+            mouseInput.setY(event.button.y);
+            mouseInput.setButton(convertMouseButton(event.button.button));
+            mouseInput.setType(gcn::MouseInput::RELEASED);
+            mouseInput.setTimeStamp(SDL_GetTicks());
+            mMouseInputQueue.push(mouseInput);
+            break;
 
-      case SDL_MOUSEBUTTONUP:
-          mMouseDown = false;
-          mouseInput.setX(event.button.x);
-          mouseInput.setY(event.button.y);
-          mouseInput.setButton(convertMouseButton(event.button.button));
-          mouseInput.setType(gcn::MouseInput::RELEASED);
-          mouseInput.setTimeStamp(SDL_GetTicks());
-          mMouseInputQueue.push(mouseInput);
-          break;
+        case SDL_MOUSEMOTION:
+            mouseInput.setX(event.button.x);
+            mouseInput.setY(event.button.y);
+            mouseInput.setButton(gcn::MouseInput::EMPTY);
+            mouseInput.setType(gcn::MouseInput::MOVED);
+            mouseInput.setTimeStamp(SDL_GetTicks());
+            mMouseInputQueue.push(mouseInput);
+            break;
 
-      case SDL_MOUSEMOTION:
-          mouseInput.setX(event.button.x);
-          mouseInput.setY(event.button.y);
-          mouseInput.setButton(gcn::MouseInput::EMPTY);
-          mouseInput.setType(gcn::MouseInput::MOVED);
-          mouseInput.setTimeStamp(SDL_GetTicks());
-          mMouseInputQueue.push(mouseInput);
-          break;
+        case SDL_ACTIVEEVENT:
+            /*
+             * This occurs when the mouse leaves the window and the Gui-chan
+             * application loses its mousefocus.
+             */
+            if ((event.active.state & SDL_APPMOUSEFOCUS)
+                && !event.active.gain)
+            {
+                mMouseInWindow = false;
 
-      case SDL_ACTIVEEVENT:
-          /*
-           * This occurs when the mouse leaves the window and the Gui-chan
-           * application loses its mousefocus.
-           */
-          if ((event.active.state & SDL_APPMOUSEFOCUS)
-              && !event.active.gain)
-          {
-              mMouseInWindow = false;
+                if (!mMouseDown)
+                {
+                    mouseInput.setX(-1);
+                    mouseInput.setY(-1);
+                    mouseInput.setButton(gcn::MouseInput::EMPTY);
+                    mouseInput.setType(gcn::MouseInput::MOVED);
+                    mMouseInputQueue.push(mouseInput);
+                }
+            }
 
-              if (!mMouseDown)
-              {
-                  mouseInput.setX(-1);
-                  mouseInput.setY(-1);
-                  mouseInput.setButton(gcn::MouseInput::EMPTY);
-                  mouseInput.setType(gcn::MouseInput::MOVED);
-                  mMouseInputQueue.push(mouseInput);
-              }
-          }
+            if ((event.active.state & SDL_APPMOUSEFOCUS)
+                && event.active.gain)
+            {
+                mMouseInWindow = true;
+            }
+            break;
 
-          if ((event.active.state & SDL_APPMOUSEFOCUS)
-              && event.active.gain)
-          {
-              mMouseInWindow = true;
-          }
-          break;
-
-      default:
-          break;
+        default:
+            break;
 
     } // end switch
 }

@@ -590,20 +590,30 @@ bool InputManager::invokeKey(const KeyData *key, int keyNum)
     return false;
 }
 
-void InputManager::updateKeyActionMap(KeyToActionMap &actionMap, int type)
+void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
+                                      KeyToIdMap &idMap, int type)
 {
     actionMap.clear();
 
     for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
     {
+        KeyFunction &key = mKey[i];
         if (keyData[i].action)
         {
-            KeyFunction &key = mKey[i];
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
                 const KeyItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     actionMap[ki.value].push_back(i);
+            }
+        }
+        if (keyData[i].configField && (keyData[i].grp & Input::GRP_GUI))
+        {
+            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            {
+                const KeyItem &ki = key.values[i2];
+                if (ki.type == type && ki.value != -1)
+                    idMap[ki.value] = i;
             }
         }
     }
@@ -656,4 +666,16 @@ int InputManager::getKeyIndex(int value, int grp, int type) const
         }
     }
     return Input::KEY_NO_VALUE;
+}
+
+int InputManager::getActionByKey(const SDL_Event &event)
+{
+    // for now support only keyboard events
+    if (event.type == SDL_KEYDOWN)
+    {
+        int idx = keyboard.getActionId(event);
+        if (idx >= 0 && checkKey(&keyData[idx]))
+            return idx;
+    }
+    return -1;
 }

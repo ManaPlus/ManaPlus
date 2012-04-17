@@ -134,7 +134,8 @@ class InputManager
         int getNewKeyIndex() const
         { return mNewKeyIndex; }
 
-        void updateKeyActionMap(KeyToActionMap &actionMap, int type);
+        void updateKeyActionMap(KeyToActionMap &actionMap,
+                                KeyToIdMap &idMap, int type);
 
         bool invokeKey(const KeyData *key, int keyNum);
 
@@ -147,6 +148,8 @@ class InputManager
         void update();
 
         void updateConditionMask();
+
+        int getActionByKey(const SDL_Event &event);
 
     protected:
         Setup_Input *mSetupInput;      /**< Reference to setup window */

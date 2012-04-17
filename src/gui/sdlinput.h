@@ -68,6 +68,8 @@
 #include <guichan/mouseinput.hpp>
 #include <guichan/platform.hpp>
 
+class KeyInput;
+
 namespace Key
 {
     enum
@@ -150,12 +152,14 @@ public:
     virtual void _pollInput()
     { }
 
+    virtual KeyInput dequeueKeyInput2();
+
+    virtual gcn::KeyInput dequeueKeyInput()
+    { return gcn::KeyInput(); }
 
     // Inherited from Input
 
     virtual bool isKeyQueueEmpty();
-
-    virtual gcn::KeyInput dequeueKeyInput();
 
     virtual bool isMouseQueueEmpty();
 
@@ -180,7 +184,7 @@ protected:
      */
     int convertKeyCharacter(SDL_Event event);
 
-    std::queue<gcn::KeyInput> mKeyInputQueue;
+    std::queue<KeyInput> mKeyInputQueue;
     std::queue<gcn::MouseInput> mMouseInputQueue;
 
     bool mMouseDown;

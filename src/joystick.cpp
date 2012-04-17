@@ -260,7 +260,7 @@ void Joystick::getNames(std::vector <std::string> &names)
 
 void Joystick::update()
 {
-    inputManager.updateKeyActionMap(mKeyToAction, INPUT_JOYSTICK);
+    inputManager.updateKeyActionMap(mKeyToAction, mKeyToId, INPUT_JOYSTICK);
 }
 
 KeysVector *Joystick::getActionVector(const SDL_Event &event)

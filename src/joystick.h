@@ -147,6 +147,8 @@ class Joystick
 
         KeyToActionMap mKeyToAction;
 
+        KeyToIdMap mKeyToId;
+
         /**
          * Is joystick support enabled.
          */

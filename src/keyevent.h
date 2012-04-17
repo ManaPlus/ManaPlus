@@ -18,29 +18,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUTEVENT_H
-#define INPUTEVENT_H
+#ifndef KEYEVENT_H
+#define KEYEVENT_H
 
-#include <map>
-#include <vector>
+#include <guichan/key.hpp>
+#include <guichan/keyevent.hpp>
+#include <guichan/widget.hpp>
 
-typedef std::vector<int> KeysVector;
-typedef KeysVector::iterator KeysVectorIter;
-typedef KeysVector::const_iterator KeysVectorCIter;
+#include <string>
 
-typedef std::map<int, KeysVector> KeyToActionMap;
-typedef KeyToActionMap::iterator KeyToActionMapIter;
-
-typedef std::map<int, int> KeyToIdMap;
-typedef KeyToIdMap::iterator KeyToIdMapIter;
-
-struct InputEvent
+class KeyEvent : public gcn::KeyEvent
 {
-    InputEvent(int action0, int mask0);
+    public:
+        KeyEvent(gcn::Widget* source,
+                 bool shiftPressed,
+                 bool controlPressed,
+                 bool altPressed,
+                 bool metaPressed,
+                 unsigned int type,
+                 bool numericPad,
+                 int actionId,
+                 const gcn::Key& key);
 
-    int action;
+        virtual ~KeyEvent();
 
-    int mask;
+        int getActionId()
+        { return mActionId; }
+
+    protected:
+        int mActionId;
 };
 
 #endif

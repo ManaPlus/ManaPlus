@@ -18,29 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUTEVENT_H
-#define INPUTEVENT_H
+#include "keyevent.h"
 
-#include <map>
-#include <vector>
+#include "debug.h"
 
-typedef std::vector<int> KeysVector;
-typedef KeysVector::iterator KeysVectorIter;
-typedef KeysVector::const_iterator KeysVectorCIter;
-
-typedef std::map<int, KeysVector> KeyToActionMap;
-typedef KeyToActionMap::iterator KeyToActionMapIter;
-
-typedef std::map<int, int> KeyToIdMap;
-typedef KeyToIdMap::iterator KeyToIdMapIter;
-
-struct InputEvent
+KeyEvent::KeyEvent(gcn::Widget* source,
+                   bool shiftPressed,
+                   bool controlPressed,
+                   bool altPressed,
+                   bool metaPressed,
+                   unsigned int type,
+                   bool numericPad,
+                   int actionId,
+                   const gcn::Key& key) :
+    gcn::KeyEvent(source, shiftPressed, controlPressed, altPressed,
+                  metaPressed, type, numericPad, key),
+    mActionId(actionId)
 {
-    InputEvent(int action0, int mask0);
+}
 
-    int action;
-
-    int mask;
-};
-
-#endif
+KeyEvent::~KeyEvent()
+{
+}
