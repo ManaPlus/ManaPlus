@@ -52,12 +52,6 @@
 #include "guichan/mouselistener.hpp"
 #include "guichan/platform.hpp"
 
-#ifdef __GNUC__
-#define A_UNUSED  __attribute__ ((unused))
-#else
-#define A_UNUSED
-#endif
-
 namespace gcn
 {
     class Label;
