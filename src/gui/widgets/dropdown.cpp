@@ -237,7 +237,7 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
 
     int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    switch(actionId)
+    switch (actionId)
     {
         case Input::KEY_GUI_SELECT:
         case Input::KEY_GUI_SELECT2:

@@ -156,7 +156,7 @@ void InputManager::store()
                 if (key.type != INPUT_UNKNOWN)
                 {
                     std::string tmp = "k";
-                    switch(key.type)
+                    switch (key.type)
                     {
                         case INPUT_MOUSE:
                             tmp = "m";
