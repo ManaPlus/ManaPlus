@@ -257,7 +257,7 @@ void Setup_Input::action(const gcn::ActionEvent &event)
         }
         mAssignKeyButton->setEnabled(true);
     }
-    else if (id == "resetKeys")
+    else if (id == "resetkeys")
     {
         inputManager.resetKeys();
         inputManager.update();
