@@ -300,12 +300,13 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
 
     loadWindowState();
 
-    mServersList->setSelected(0); // Do this after for the Delete button
     setVisible(true);
 
     mConnectButton->requestFocus();
 
     loadServers(true);
+
+    mServersList->setSelected(0); // Do this after for the Delete button
 
     if (needUpdateServers())
         downloadServerList();
@@ -330,16 +331,16 @@ void ServerDialog::action(const gcn::ActionEvent &event)
         if (Client::getState() == STATE_CONNECT_SERVER)
             return;
 
+        int index = mServersList->getSelected();
+        if (index < 0)
+            return;
+
         if (mDownload)
             mDownload->cancel();
 
         mQuitButton->setEnabled(false);
         mConnectButton->setEnabled(false);
         mLoadButton->setEnabled(false);
-
-        int index = mServersList->getSelected();
-        if (index < 0)
-            return;
 
         ServerInfo server = mServers.at(index);
         mServerInfo->hostname = server.hostname;
@@ -598,6 +599,8 @@ void ServerDialog::loadServers(bool addNew)
         if (!found && addNew)
             mServers.push_back(server);
     }
+    if (mServersList->getSelected() < 0)
+        mServersList->setSelected(0);
 }
 
 void ServerDialog::loadCustomServers()
