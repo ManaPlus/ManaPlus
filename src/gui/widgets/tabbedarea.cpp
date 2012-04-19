@@ -22,6 +22,9 @@
 
 #include "gui/widgets/tabbedarea.h"
 
+#include "keydata.h"
+#include "keyevent.h"
+
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/tab.h"
 
@@ -482,7 +485,9 @@ void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
     if (keyEvent.isConsumed() || !isFocused())
         return;
 
-    if (keyEvent.getKey().getValue() == gcn::Key::LEFT)
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+
+    if (actionId == Input::KEY_GUI_LEFT)
     {
         int index = getSelectedTabIndex();
         index--;
@@ -494,7 +499,7 @@ void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
 
         keyEvent.consume();
     }
-    else if (keyEvent.getKey().getValue() == gcn::Key::RIGHT)
+    else if (actionId == Input::KEY_GUI_RIGHT)
     {
         int index = getSelectedTabIndex();
         index++;
@@ -507,13 +512,3 @@ void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
         keyEvent.consume();
     }
 }
-
-/*
-void TabbedArea::moveLeft(gcn::Tab *tab)
-{
-}
-
-void TabbedArea::moveRight(gcn::Tab *tab)
-{
-}
-*/

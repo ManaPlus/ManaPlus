@@ -25,6 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
@@ -233,20 +235,38 @@ void DropDown::keyPressed(gcn::KeyEvent& keyEvent)
     if (keyEvent.isConsumed())
         return;
 
-    gcn::Key key = keyEvent.getKey();
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ENTER || key.getValue() == Key::SPACE)
-        dropDown();
-    else if (key.getValue() == Key::UP)
-        setSelected(getSelected() - 1);
-    else if (key.getValue() == Key::DOWN)
-        setSelected(getSelected() + 1);
-    else if (key.getValue() == Key::HOME)
-        setSelected(0);
-    else if (key.getValue() == Key::END && mListBox->getListModel())
-        setSelected(mListBox->getListModel()->getNumberOfElements() - 1);
-    else
-        return;
+    switch(actionId)
+    {
+        case Input::KEY_GUI_SELECT:
+        case Input::KEY_GUI_SELECT2:
+            dropDown();
+            break;
+
+        case Input::KEY_GUI_UP:
+            setSelected(getSelected() - 1);
+            break;
+
+        case Input::KEY_GUI_DOWN:
+            setSelected(getSelected() + 1);
+            break;
+
+        case Input::KEY_GUI_HOME:
+            setSelected(0);
+            break;
+
+        case Input::KEY_GUI_END:
+            if (mListBox->getListModel())
+            {
+                setSelected(mListBox->getListModel()->
+                    getNumberOfElements() - 1);
+            }
+            break;
+
+        default:
+            return;
+    }
 
     keyEvent.consume();
 }

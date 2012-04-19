@@ -22,6 +22,8 @@
 #include "gui/editserverdialog.h"
 
 #include "configuration.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"
@@ -227,13 +229,14 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
 
 void EditServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ESCAPE)
+    if (actionId == Input::KEY_GUI_CANCEL)
     {
         scheduleDelete();
     }
-    else if (key.getValue() == Key::ENTER)
+    else if (actionId == Input::KEY_GUI_SELECT
+             || actionId == Input::KEY_GUI_SELECT2)
     {
         action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
     }

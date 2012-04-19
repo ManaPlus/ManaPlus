@@ -24,9 +24,9 @@
 
 #include "gui/focushandler.h"
 #include "gui/palette.h"
+#include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
-#include "gui/sdlfont.h"
 
 #include "gui/widgets/mouseevent.h"
 #include "gui/widgets/window.h"
@@ -35,6 +35,7 @@
 #include "configlistener.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "keydata.h"
 #include "keyevent.h"
 #include "keyinput.h"
 #include "logger.h"
@@ -343,7 +344,7 @@ bool Gui::handleKeyInput2()
             // tabbing is enable check for tab press and
             // change focus.
             if (!keyEventConsumed && mTabbing
-                && keyInput.getKey().getValue() == Key::TAB
+                && keyInput.getActionId() == Input::KEY_GUI_TAB
                 && keyInput.getType() == gcn::KeyInput::PRESSED)
             {
                 if (keyInput.isShiftPressed())

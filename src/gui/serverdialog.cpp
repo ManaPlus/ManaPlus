@@ -25,6 +25,8 @@
 #include "chatlogger.h"
 #include "client.h"
 #include "configuration.h"
+#include "keydata.h"
+#include "keyevent.h"
 #include "logger.h"
 #include "main.h"
 
@@ -396,12 +398,17 @@ void ServerDialog::action(const gcn::ActionEvent &event)
 
 void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ESCAPE)
+    if (actionId == Input::KEY_GUI_CANCEL)
+    {
         Client::setState(STATE_EXIT);
-    else if (key.getValue() == Key::ENTER)
+    }
+    else if (actionId == Input::KEY_GUI_SELECT
+             || actionId == Input::KEY_GUI_SELECT2)
+    {
         action(gcn::ActionEvent(nullptr, mConnectButton->getActionEventId()));
+    }
 }
 
 void ServerDialog::valueChanged(const gcn::SelectionEvent &)

@@ -23,6 +23,8 @@
 #include "gui/quitdialog.h"
 
 #include "client.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/chatwindow.h"
 #include "gui/npcdialog.h"
@@ -157,22 +159,23 @@ void QuitDialog::action(const gcn::ActionEvent &event)
 
 void QuitDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    const gcn::Key &key = keyEvent.getKey();
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     int dir = 0;
 
-    switch (key.getValue())
+    switch (actionId)
     {
-        case Key::ENTER:
+        case Input::KEY_GUI_SELECT:
+        case Input::KEY_GUI_SELECT2:
             action(gcn::ActionEvent(nullptr, mOkButton->getActionEventId()));
             break;
-        case Key::ESCAPE:
+        case Input::KEY_GUI_CANCEL:
             action(gcn::ActionEvent(nullptr,
                 mCancelButton->getActionEventId()));
             break;
-        case Key::UP:
+        case Input::KEY_GUI_UP:
             dir = -1;
             break;
-        case Key::DOWN:
+        case Input::KEY_GUI_DOWN:
             dir = 1;
             break;
         default:

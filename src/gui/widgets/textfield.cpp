@@ -25,6 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "keyevent.h"
+#include "keydata.h"
 #include "logger.h"
 
 #include "gui/palette.h"
@@ -241,10 +243,10 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
     if (val != 22)
         mLastEventPaste = 0;
 
+    bool consumed(false);
     switch (val)
     {
         case 2: // Ctrl+b
-        case Key::LEFT:
         {
             while (mCaretPosition > 0)
             {
@@ -252,10 +254,11 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                 if ((mText[mCaretPosition] & 192) != 128)
                     break;
             }
-        } break;
+            consumed = true;
+            break;
+        }
 
         case 6: // Ctrl+f
-        case Key::RIGHT:
         {
             unsigned sz = static_cast<unsigned>(mText.size());
             while (mCaretPosition < sz)
@@ -267,10 +270,11 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                     break;
                 }
             }
-        } break;
+            consumed = true;
+            break;
+        }
 
         case 4: // Ctrl+d
-        case Key::DELETE:
         {
             unsigned sz = static_cast<unsigned>(mText.size());
             while (mCaretPosition < sz)
@@ -283,41 +287,24 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                     break;
                 }
             }
-        } break;
+            consumed = true;
+            break;
+        }
 
         case 8: // Ctrl+h
-        case Key::BACKSPACE:
             deleteCharLeft(mText, &mCaretPosition);
-            break;
-
-        case Key::ENTER:
-            distributeActionEvent();
-            keyEvent.consume();
-            fixScroll();
-            return;
-
-        case Key::HOME:
-            mCaretPosition = 0;
-            break;
-
-        case Key::END:
-            mCaretPosition = static_cast<unsigned>(mText.size());
-            break;
-
-        case Key::TAB:
-            if (mLoseFocusOnTab)
-                return;
+            consumed = true;
             break;
 
         case 5: // Ctrl+e
             mCaretPosition = mText.size();
+            consumed = true;
             break;
 
         case 11: // Ctrl+k
             mText = mText.substr(0, mCaretPosition);
+            consumed = true;
             break;
-//        case 16: // Ctrl+p
-//            break;
 
         case 21: // Ctrl+u
             if (mCaretPosition > 0)
@@ -325,10 +312,12 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                 mText = mText.substr(mCaretPosition);
                 mCaretPosition = 0;
             }
+            consumed = true;
             break;
 
         case 3:
             handleCopy();
+            consumed = true;
             break;
 
         case 22: // Control code 22, SYNCHRONOUS IDLE, sent on Ctrl+v
@@ -337,6 +326,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                 break;
             handlePaste();
             mLastEventPaste = cur_time + 2;
+            consumed = true;
             break;
 
         case 23: // Ctrl+w
@@ -349,6 +339,90 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                     break;
                 }
             }
+            consumed = true;
+            break;
+
+        default:
+            break;
+    }
+
+    if (consumed)
+    {
+        if (mSendAlwaysEvents)
+            distributeActionEvent();
+
+        keyEvent.consume();
+        fixScroll();
+        return;
+    }
+
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+
+    switch (action)
+    {
+        case Input::KEY_GUI_LEFT:
+        {
+            while (mCaretPosition > 0)
+            {
+                --mCaretPosition;
+                if ((mText[mCaretPosition] & 192) != 128)
+                    break;
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_RIGHT:
+        {
+            unsigned sz = static_cast<unsigned>(mText.size());
+            while (mCaretPosition < sz)
+            {
+                ++mCaretPosition;
+                if (mCaretPosition == sz ||
+                    (mText[mCaretPosition] & 192) != 128)
+                {
+                    break;
+                }
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_DELETE:
+        {
+            unsigned sz = static_cast<unsigned>(mText.size());
+            while (mCaretPosition < sz)
+            {
+                --sz;
+                mText.erase(mCaretPosition, 1);
+                if (mCaretPosition == sz ||
+                    (mText[mCaretPosition] & 192) != 128)
+                {
+                    break;
+                }
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_BACKSPACE:
+            deleteCharLeft(mText, &mCaretPosition);
+            break;
+
+        case Input::KEY_GUI_SELECT2:
+            distributeActionEvent();
+            keyEvent.consume();
+            fixScroll();
+            return;
+
+        case Input::KEY_GUI_HOME:
+            mCaretPosition = 0;
+            break;
+
+        case Input::KEY_GUI_END:
+            mCaretPosition = static_cast<unsigned>(mText.size());
+            break;
+
+        case Input::KEY_GUI_TAB:
+            if (mLoseFocusOnTab)
+                return;
             break;
 
         default:

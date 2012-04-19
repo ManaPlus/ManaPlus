@@ -26,6 +26,8 @@
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
+#include "keydata.h"
+#include "keyevent.h"
 #include "logger.h"
 
 #include "gui/palette.h"
@@ -462,9 +464,9 @@ void Button::setCaption(const std::string& caption)
 
 void Button::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == gcn::Key::SPACE)
+    if (action == Input::KEY_GUI_SELECT)
     {
         mKeyPressed = true;
         keyEvent.consume();
@@ -473,9 +475,9 @@ void Button::keyPressed(gcn::KeyEvent& keyEvent)
 
 void Button::keyReleased(gcn::KeyEvent& keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == gcn::Key::SPACE && mKeyPressed)
+    if (action == Input::KEY_GUI_SELECT && mKeyPressed)
     {
         mKeyPressed = false;
         if (mStick)

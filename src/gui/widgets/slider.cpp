@@ -25,6 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "keyevent.h"
+#include "keydata.h"
 
 #include "gui/theme.h"
 
@@ -300,17 +302,17 @@ void Slider::mouseExited(gcn::MouseEvent& event A_UNUSED)
 
 void Slider::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
     if (getOrientation() == HORIZONTAL)
     {
-        if (key.getValue() == gcn::Key::RIGHT)
+        if (action == Input::KEY_GUI_RIGHT)
         {
             setValue(getValue() + getStepLength());
             distributeActionEvent();
             keyEvent.consume();
         }
-        else if (key.getValue() == gcn::Key::LEFT)
+        else if (action == Input::KEY_GUI_LEFT)
         {
             setValue(getValue() - getStepLength());
             distributeActionEvent();
@@ -319,13 +321,13 @@ void Slider::keyPressed(gcn::KeyEvent& keyEvent)
     }
     else
     {
-        if (key.getValue() == gcn::Key::UP)
+        if (action == Input::KEY_GUI_UP)
         {
             setValue(getValue() + getStepLength());
             distributeActionEvent();
             keyEvent.consume();
         }
-        else if (key.getValue() == gcn::Key::DOWN)
+        else if (action == Input::KEY_GUI_DOWN)
         {
             setValue(getValue() - getStepLength());
             distributeActionEvent();

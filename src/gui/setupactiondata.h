@@ -995,16 +995,6 @@ static SetupActionData setupActionData5[] =
         "",
     },
     {
-        N_("Chat Auto Complete"),
-        Input::KEY_AUTOCOMPLETE_CHAT,
-        "",
-    },
-    {
-        N_("Deactivate Chat Input"),
-        Input::KEY_DEACTIVATE_CHAT,
-        "",
-    },
-    {
         "",
         Input::KEY_NO_VALUE,
         ""
@@ -1434,6 +1424,105 @@ static SetupActionData setupActionData7[] =
     }
 };
 
+static SetupActionData setupActionData8[] =
+{
+    {
+        N_("Move selecttion"),
+        Input::KEY_NO_VALUE,
+        "",
+    },
+    {
+        N_("Move Up"),
+        Input::KEY_GUI_UP,
+        "",
+    },
+    {
+        N_("Move Down"),
+        Input::KEY_GUI_DOWN,
+        "",
+    },
+    {
+        N_("Move Left"),
+        Input::KEY_GUI_LEFT,
+        "",
+    },
+    {
+        N_("Move Right"),
+        Input::KEY_GUI_RIGHT,
+        "",
+    },
+    {
+        N_("Move Home"),
+        Input::KEY_GUI_HOME,
+        "",
+    },
+    {
+        N_("Move End"),
+        Input::KEY_GUI_END,
+        "",
+    },
+    {
+        N_("Page up"),
+        Input::KEY_GUI_PAGE_UP,
+        "",
+    },
+    {
+        N_("Page down"),
+        Input::KEY_GUI_PAGE_DOWN,
+        "",
+    },
+    {
+        N_("Other"),
+        Input::KEY_NO_VALUE,
+        "",
+    },
+    {
+        N_("Select"),
+        Input::KEY_GUI_SELECT,
+        "",
+    },
+    {
+        N_("Select2"),
+        Input::KEY_GUI_SELECT2,
+        "",
+    },
+    {
+        N_("Cancel"),
+        Input::KEY_GUI_CANCEL,
+        "",
+    },
+    {
+        N_("Delete"),
+        Input::KEY_GUI_DELETE,
+        "",
+    },
+    {
+        N_("Backspace"),
+        Input::KEY_GUI_BACKSPACE,
+        "",
+    },
+    {
+        N_("Insert"),
+        Input::KEY_GUI_INSERT,
+        "",
+    },
+    {
+        N_("Tab"),
+        Input::KEY_GUI_TAB,
+        "",
+    },
+    {
+        N_("Mod"),
+        Input::KEY_GUI_MOD,
+        "",
+    },
+    {
+        "",
+        Input::KEY_NO_VALUE,
+        ""
+    }
+};
+
 static SetupActionData *setupActionData[] =
 {
     setupActionData0,
@@ -1443,7 +1532,8 @@ static SetupActionData *setupActionData[] =
     setupActionData3,
     setupActionData4,
     setupActionData5,
-    setupActionData6
+    setupActionData6,
+    setupActionData8
 };
 
 static const char *pages[] =
@@ -1456,6 +1546,7 @@ static const char *pages[] =
     N_("Outfits"),
     N_("Chat"),
     N_("Other"),
+    N_("Gui"),
     nullptr
 };
 

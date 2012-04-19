@@ -46,6 +46,8 @@
 
 #include "debug.h"
 
+const int setupGroups = 9;
+
 /**
  * The list model for key function list.
  *
@@ -100,9 +102,9 @@ Setup_Input::Setup_Input():
     setName(_("Input"));
 
     selectedData = 0;
-    mActionDataSize = new int [8];
+    mActionDataSize = new int [9];
 
-    for (int f = 0; f < 8; f ++)
+    for (int f = 0; f < setupGroups; f ++)
     {
         int cnt = 0;
         while (!setupActionData[f][cnt].name.empty())
@@ -179,14 +181,13 @@ void Setup_Input::apply()
 
     if (inputManager.hasConflicts(key1, key2))
     {
-        int s1 = keyToSetupData(key1);
-        int s2 = keyToSetupData(key2);
+        std::string str1 = keyToString(key1);
+        std::string str2 = keyToString(key2);
 
         new OkDialog(_("Key Conflict(s) Detected."),
             strprintf(_("Conflict \"%s\" and \"%s\" keys. "
             "Resolve them, or gameplay may result in strange behaviour."),
-            setupActionData[selectedData][s1].name.c_str(),
-            setupActionData[selectedData][s2].name.c_str()), DIALOG_ERROR);
+            str1.c_str(), str2.c_str()), DIALOG_ERROR);
     }
     keyboard.setEnabled(true);
     inputManager.store();
@@ -329,6 +330,20 @@ int Setup_Input::keyToSetupData(int index)
             return i;
     }
     return -1;
+}
+
+std::string Setup_Input::keyToString(int index)
+{
+    for (int f = 0; f < setupGroups; f ++)
+    {
+        for (int i = 0; i < mActionDataSize[f]; i++)
+        {
+            const SetupActionData &key = setupActionData[f][i];
+            if (key.actionId == index)
+                return key.name;
+        }
+    }
+    return _("unknown");
 }
 
 void Setup_Input::refreshKeys()

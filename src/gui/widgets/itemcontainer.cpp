@@ -337,45 +337,10 @@ void ItemContainer::hidePopup()
 
 void ItemContainer::keyPressed(gcn::KeyEvent &event A_UNUSED)
 {
-    /*switch (event.getKey().getValue())
-    {
-        case Key::LEFT:
-            moveHighlight(Left);
-            break;
-        case Key::RIGHT:
-            moveHighlight(Right);
-            break;
-        case Key::UP:
-            moveHighlight(Up);
-            break;
-        case Key::DOWN:
-            moveHighlight(Down);
-            break;
-        case Key::SPACE:
-            keyAction();
-            break;
-        case Key::LEFT_ALT:
-        case Key::RIGHT_ALT:
-            mSwapItems = true;
-            break;
-        case Key::RIGHT_CONTROL:
-            mDescItems = true;
-            break;
-    }*/
 }
 
 void ItemContainer::keyReleased(gcn::KeyEvent &event A_UNUSED)
 {
-    /*switch (event.getKey().getValue())
-    {
-        case Key::LEFT_ALT:
-        case Key::RIGHT_ALT:
-            mSwapItems = false;
-            break;
-        case Key::RIGHT_CONTROL:
-            mDescItems = false;
-            break;
-    }*/
 }
 
 void ItemContainer::mousePressed(gcn::MouseEvent &event)

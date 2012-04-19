@@ -25,6 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/palette.h"
 #include "gui/theme.h"
@@ -193,10 +195,9 @@ void CheckBox::mouseExited(gcn::MouseEvent& event A_UNUSED)
 
 void CheckBox::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == gcn::Key::ENTER ||
-        key.getValue() == gcn::Key::SPACE)
+    if (action == Input::KEY_GUI_SELECT)
     {
         toggleSelected();
         keyEvent.consume();

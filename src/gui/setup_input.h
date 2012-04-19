@@ -77,6 +77,8 @@ class Setup_Input : public SetupTab
 
         int keyToSetupData(int index);
 
+        std::string keyToString(int index);
+
     private:
         class KeyListModel *mKeyListModel;
         gcn::ListBox *mKeyList;

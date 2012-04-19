@@ -24,6 +24,8 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "keyevent.h"
+#include "keydata.h"
 
 #include "gui/palette.h"
 #include "gui/sdlinput.h"
@@ -88,16 +90,16 @@ void ListBox::draw(gcn::Graphics *graphics)
     }
 }
 
-void ListBox::keyPressed(gcn::KeyEvent& keyEvent)
+void ListBox::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ENTER || key.getValue() == Key::SPACE)
+    if (action == Input::KEY_GUI_SELECT)
     {
         distributeActionEvent();
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::UP)
+    else if (action == Input::KEY_GUI_UP)
     {
         if (getSelected() > 0)
             setSelected(mSelected - 1);
@@ -105,7 +107,7 @@ void ListBox::keyPressed(gcn::KeyEvent& keyEvent)
             setSelected(getListModel()->getNumberOfElements() - 1);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::DOWN)
+    else if (action == Input::KEY_GUI_DOWN)
     {
         if (getSelected() < (getListModel()->getNumberOfElements() - 1))
         {
@@ -118,12 +120,12 @@ void ListBox::keyPressed(gcn::KeyEvent& keyEvent)
         }
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::HOME)
+    else if (action == Input::KEY_GUI_HOME)
     {
         setSelected(0);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::END && getListModel())
+    else if (action == Input::KEY_GUI_END && getListModel())
     {
         setSelected(getListModel()->getNumberOfElements() - 1);
         keyEvent.consume();

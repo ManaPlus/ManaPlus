@@ -23,6 +23,8 @@
 #include "gui/worldselectdialog.h"
 
 #include "client.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/sdlinput.h"
 
@@ -138,14 +140,15 @@ void WorldSelectDialog::action(const gcn::ActionEvent &event)
 
 void WorldSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ESCAPE)
+    if (actionId == Input::KEY_GUI_CANCEL)
     {
         action(gcn::ActionEvent(nullptr,
             mChangeLoginButton->getActionEventId()));
     }
-    else if (key.getValue() == Key::ENTER)
+    else if (actionId == Input::KEY_GUI_SELECT
+             || actionId == Input::KEY_GUI_SELECT2)
     {
         action(gcn::ActionEvent(nullptr, mChooseWorld->getActionEventId()));
     }

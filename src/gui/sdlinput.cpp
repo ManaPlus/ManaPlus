@@ -127,7 +127,7 @@ void SDLInput::pushInput(const SDL_Event &event)
             keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
             keyInput.setNumericPad(event.key.keysym.sym >= SDLK_KP0
                                    && event.key.keysym.sym <= SDLK_KP_EQUALS);
-            int actionId = inputManager.getActionByKey(event);
+            const int actionId = inputManager.getActionByKey(event);
             if (actionId >= 0)
                 keyInput.setActionId(actionId);
             mKeyInputQueue.push(keyInput);
@@ -135,6 +135,7 @@ void SDLInput::pushInput(const SDL_Event &event)
         }
 
         case SDL_KEYUP:
+        {
             keyInput.setKey(gcn::Key(convertKeyCharacter(event)));
             keyInput.setType(gcn::KeyInput::RELEASED);
             keyInput.setShiftPressed(event.key.keysym.mod & KMOD_SHIFT);
@@ -143,9 +144,12 @@ void SDLInput::pushInput(const SDL_Event &event)
             keyInput.setMetaPressed(event.key.keysym.mod & KMOD_META);
             keyInput.setNumericPad(event.key.keysym.sym >= SDLK_KP0
                                    && event.key.keysym.sym <= SDLK_KP_EQUALS);
-
+            const int actionId = inputManager.getActionByKey(event);
+            if (actionId >= 0)
+                keyInput.setActionId(actionId);
             mKeyInputQueue.push(keyInput);
             break;
+        }
 
         case SDL_MOUSEBUTTONDOWN:
             mMouseDown = true;

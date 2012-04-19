@@ -22,6 +22,9 @@
 
 #include "gui/widgets/inttextfield.h"
 
+#include "keydata.h"
+#include "keyevent.h"
+
 #include "gui/sdlinput.h"
 
 #include "utils/stringutils.h"
@@ -44,10 +47,9 @@ IntTextField::IntTextField(int def, int min, int max,
 
 void IntTextField::keyPressed(gcn::KeyEvent &event)
 {
-    const gcn::Key &key = event.getKey();
+    int action = static_cast<KeyEvent*>(&event)->getActionId();
 
-    if (key.getValue() == Key::BACKSPACE ||
-        key.getValue() == Key::DELETE)
+    if (action == Input::KEY_GUI_DELETE || action == Input::KEY_GUI_BACKSPACE)
     {
         setText(std::string());
         if (mSendAlwaysEvents)
@@ -56,7 +58,7 @@ void IntTextField::keyPressed(gcn::KeyEvent &event)
         event.consume();
     }
 
-    if (!key.isNumber())
+    if (!event.getKey().isNumber())
         return;
 
     TextField::keyPressed(event);

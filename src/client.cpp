@@ -863,7 +863,15 @@ int Client::gameExec()
                         break;
 
                     case SDL_KEYDOWN:
-                        inputManager.handleAssignKey(event, INPUT_KEYBOARD);
+                        if (inputManager.handleAssignKey(event, INPUT_KEYBOARD))
+                            continue;
+                        inputManager.updateConditionMask();
+                        break;
+
+                    case SDL_KEYUP:
+                        if (inputManager.handleAssignKey(event, INPUT_KEYBOARD))
+                            continue;
+                        inputManager.updateConditionMask();
                         break;
 
                     case SDL_JOYBUTTONDOWN:

@@ -546,7 +546,7 @@ void InputManager::updateConditionMask()
     if (!setupWindow || !setupWindow->isVisible())
         mMask += COND_NOSETUP;
 
-    if (Game::instance()->getValidSpeed())
+    if (Game::instance() && Game::instance()->getValidSpeed())
         mMask += COND_VALIDSPEED;
 
     if (gui && !gui->getFocusHandler()->getModalFocused())
@@ -607,7 +607,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                     actionMap[ki.value].push_back(i);
             }
         }
-        if (keyData[i].configField && (keyData[i].grp & Input::GRP_GUI))
+        if (keyData[i].configField && (keyData[i].grp & Input::GRP_GUICHAN))
         {
             for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
             {
@@ -671,7 +671,7 @@ int InputManager::getKeyIndex(int value, int grp, int type) const
 int InputManager::getActionByKey(const SDL_Event &event)
 {
     // for now support only keyboard events
-    if (event.type == SDL_KEYDOWN)
+    if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
         int idx = keyboard.getActionId(event);
         if (idx >= 0 && checkKey(&keyData[idx]))

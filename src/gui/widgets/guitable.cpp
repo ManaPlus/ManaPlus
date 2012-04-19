@@ -24,6 +24,8 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "keyevent.h"
+#include "keydata.h"
 
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
@@ -403,40 +405,40 @@ gcn::Rectangle GuiTable::getChildrenArea()
 // -- KeyListener notifications
 void GuiTable::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int action = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ENTER || key.getValue() == Key::SPACE)
+    if (action == Input::KEY_GUI_SELECT)
     {
         distributeActionEvent();
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::UP)
+    else if (action == Input::KEY_GUI_UP)
     {
         setSelectedRow(mSelectedRow - 1);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::DOWN)
+    else if (action == Input::KEY_GUI_DOWN)
     {
         setSelectedRow(mSelectedRow + 1);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::LEFT)
+    else if (action == Input::KEY_GUI_LEFT)
     {
         setSelectedColumn(mSelectedColumn - 1);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::RIGHT)
+    else if (action == Input::KEY_GUI_RIGHT)
     {
         setSelectedColumn(mSelectedColumn + 1);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::HOME)
+    else if (action == Input::KEY_GUI_HOME)
     {
         setSelectedRow(0);
         setSelectedColumn(0);
         keyEvent.consume();
     }
-    else if (key.getValue() == Key::END && mModel)
+    else if (action == Input::KEY_GUI_END && mModel)
     {
         setSelectedRow(mModel->getRows() - 1);
         setSelectedColumn(mModel->getColumns() - 1);

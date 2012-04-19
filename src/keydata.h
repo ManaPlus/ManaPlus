@@ -52,7 +52,8 @@ namespace Input
         GRP_EMOTION = 4,           // emotions key
         GRP_OUTFIT = 8,            // outfit key
         GRP_GUI = 16,              // gui key
-        GRP_MOVETOPOINT = 32       // move to point key
+        GRP_MOVETOPOINT = 32,      // move to point key
+        GRP_GUICHAN = 64           // for guichan based controls
     };
 
     /**
@@ -290,8 +291,6 @@ namespace Input
         KEY_CLOSE_CHAT_TAB,
         KEY_CHAT_PREV_HISTORY,
         KEY_CHAT_NEXT_HISTORY,
-        KEY_AUTOCOMPLETE_CHAT,
-        KEY_DEACTIVATE_CHAT,
         KEY_IGNORE_INPUT_1,
         KEY_IGNORE_INPUT_2,
         KEY_DIRECT_UP,
@@ -319,6 +318,22 @@ namespace Input
         KEY_RIGHT_CLICK,
         KEY_CAMERA,
         KEY_MOD,
+        KEY_GUI_UP,
+        KEY_GUI_DOWN,
+        KEY_GUI_LEFT,
+        KEY_GUI_RIGHT,
+        KEY_GUI_SELECT,
+        KEY_GUI_SELECT2,
+        KEY_GUI_CANCEL,
+        KEY_GUI_HOME,
+        KEY_GUI_END,
+        KEY_GUI_DELETE,
+        KEY_GUI_BACKSPACE,
+        KEY_GUI_TAB,
+        KEY_GUI_PAGE_UP,
+        KEY_GUI_PAGE_DOWN,
+        KEY_GUI_INSERT,
+        KEY_GUI_MOD,
         KEY_TOTAL
     };
 }

@@ -25,10 +25,11 @@
 #include "configuration.h"
 #include "inventory.h"
 #include "item.h"
-#include "units.h"
 #include "inputmanager.h"
-#include "keyboardconfig.h"
+#include "keydata.h"
+#include "keyevent.h"
 #include "playerinfo.h"
+#include "units.h"
 
 #include "gui/itemamountwindow.h"
 #include "gui/setup.h"
@@ -473,28 +474,14 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 
 void InventoryWindow::keyPressed(gcn::KeyEvent &event)
 {
-    switch (event.getKey().getValue())
-    {
-        case Key::LEFT_SHIFT:
-        case Key::RIGHT_SHIFT:
-            mSplit = true;
-            break;
-        default:
-            break;
-    }
+    if (static_cast<KeyEvent*>(&event)->getActionId() == Input::KEY_GUI_MOD)
+        mSplit = true;
 }
 
 void InventoryWindow::keyReleased(gcn::KeyEvent &event)
 {
-    switch (event.getKey().getValue())
-    {
-        case Key::LEFT_SHIFT:
-        case Key::RIGHT_SHIFT:
-            mSplit = false;
-            break;
-        default:
-            break;
-    }
+    if (static_cast<KeyEvent*>(&event)->getActionId() == Input::KEY_GUI_MOD)
+        mSplit = false;
 }
 
 void InventoryWindow::valueChanged(const gcn::SelectionEvent &event A_UNUSED)

@@ -26,6 +26,8 @@
 #include "game.h"
 #include "localplayer.h"
 #include "units.h"
+#include "keydata.h"
+#include "keyevent.h"
 #include "logger.h"
 
 #include "gui/changeemaildialog.h"
@@ -261,9 +263,8 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
 void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
-
-    if (key.getValue() == Key::ESCAPE)
+    if (static_cast<KeyEvent*>(&keyEvent)->getActionId()
+        == Input::KEY_GUI_CANCEL)
     {
         action(gcn::ActionEvent(mSwitchLoginButton,
                mSwitchLoginButton->getActionEventId()));

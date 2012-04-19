@@ -24,6 +24,8 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "keydata.h"
+#include "keyevent.h"
 
 #include "gui/okdialog.h"
 #include "gui/sdlinput.h"
@@ -312,14 +314,21 @@ void LoginDialog::action(const gcn::ActionEvent &event)
 
 void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    gcn::Key key = keyEvent.getKey();
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
 
-    if (key.getValue() == Key::ESCAPE)
+    if (actionId == Input::KEY_GUI_CANCEL)
+    {
         action(gcn::ActionEvent(nullptr, mServerButton->getActionEventId()));
-    else if (key.getValue() == Key::ENTER)
+    }
+    else if (actionId == Input::KEY_GUI_SELECT
+             || actionId == Input::KEY_GUI_SELECT2)
+    {
         action(gcn::ActionEvent(nullptr, mLoginButton->getActionEventId()));
+    }
     else
+    {
         mLoginButton->setEnabled(canSubmit());
+    }
 }
 
 bool LoginDialog::canSubmit() const
