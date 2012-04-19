@@ -413,10 +413,35 @@ void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
                 mConnectButton->getActionEventId()));
             return;
 
+        case Input::KEY_GUI_INSERT:
+            new EditServerDialog(this, ServerInfo(), -1);
+            return;
+
+        case Input::KEY_GUI_DELETE:
+        {
+            int index = mServersList->getSelected();
+            if (index >= 0)
+            {
+                mServersList->setSelected(0);
+                mServers.erase(mServers.begin() + index);
+                saveCustomServers();
+            }
+            return;
+        }
+
+        case Input::KEY_GUI_BACKSPACE:
+        {
+            int index = mServersList->getSelected();
+            if (index >= 0)
+                new EditServerDialog(this, mServers.at(index), index);
+            return;
+        }
+
         default:
             break;
     }
-    mServersList->keyPressed(keyEvent);
+    if (!keyEvent.isConsumed())
+        mServersList->keyPressed(keyEvent);
 }
 
 void ServerDialog::valueChanged(const gcn::SelectionEvent &)
