@@ -399,17 +399,24 @@ void ServerDialog::action(const gcn::ActionEvent &event)
 
 void ServerDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    switch (static_cast<KeyEvent*>(&keyEvent)->getActionId())
+    {
+        case Input::KEY_GUI_CANCEL:
+            keyEvent.consume();
+            Client::setState(STATE_EXIT);
+            return;
 
-    if (actionId == Input::KEY_GUI_CANCEL)
-    {
-        Client::setState(STATE_EXIT);
+        case Input::KEY_GUI_SELECT:
+        case Input::KEY_GUI_SELECT2:
+            keyEvent.consume();
+            action(gcn::ActionEvent(nullptr,
+                mConnectButton->getActionEventId()));
+            return;
+
+        default:
+            break;
     }
-    else if (actionId == Input::KEY_GUI_SELECT
-             || actionId == Input::KEY_GUI_SELECT2)
-    {
-        action(gcn::ActionEvent(nullptr, mConnectButton->getActionEventId()));
-    }
+    mServersList->keyPressed(keyEvent);
 }
 
 void ServerDialog::valueChanged(const gcn::SelectionEvent &)
