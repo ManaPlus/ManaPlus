@@ -98,6 +98,11 @@ Setup_Visual::Setup_Visual()
     new SetupItemSlider2(_("Vsync"), "", "vsync", this,
         "vsyncEvent", 0, 2, mVSyncList);
 
+#if defined(WIN32) || defined(__APPLE__)
+    new SetupItemCheckBox(_("Center game window"),
+        "", "centerwindow", this, "centerwindowEvent");
+#endif
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

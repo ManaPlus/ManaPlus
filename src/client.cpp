@@ -343,7 +343,10 @@ void Client::gameInit()
 #endif
 
 #if defined(WIN32) || defined(__APPLE__)
-    putenv("SDL_VIDEO_CENTERED=1");
+    if (config.getBoolValue("centerwindow"))
+        putenv("SDL_VIDEO_CENTERED=1");
+    else
+        putenv("SDL_VIDEO_CENTERED=0");
 #endif
 
     chatLogger = new ChatLogger;

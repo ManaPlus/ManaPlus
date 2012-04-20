@@ -244,6 +244,9 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "downloadProxy", "");
     AddDEF(configData, "downloadProxyType", 0);
     AddDEF(configData, "blur", true);
+#if defined(WIN32) || defined(__APPLE__)
+    AddDEF(configData, "centerwindow", true);
+#endif
     return configData;
 }
 
