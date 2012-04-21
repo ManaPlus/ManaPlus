@@ -247,6 +247,8 @@ DefaultsData* getConfigDefaults()
 #if defined(WIN32) || defined(__APPLE__)
     AddDEF(configData, "centerwindow", true);
 #endif
+    AddDEF(configData, "audioFrequency", 22010);
+    AddDEF(configData, "audioChannels", 2);
     return configData;
 }
 

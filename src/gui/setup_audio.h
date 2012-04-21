@@ -25,6 +25,7 @@
 
 #include "guichanfwd.h"
 
+#include "gui/widgets/setupitem.h"
 #include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>
@@ -40,6 +41,8 @@ class Setup_Audio : public SetupTabScroll
 
     private:
         gcn::ListModel *mSoundModel;
+
+        SetupItemNames *mChannelsList;
 };
 
 #endif

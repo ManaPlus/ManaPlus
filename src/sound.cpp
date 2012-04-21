@@ -110,9 +110,22 @@ void Sound::init()
     }
 
     const size_t audioBuffer = 4096;
+    int channels = config.getIntValue("audioChannels");
+    switch (channels)
+    {
+        case 3:
+            channels = 4;
+            break;
+        case 4:
+            channels = 6;
+            break;
+        default:
+            break;
+    }
 
-    const int res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,
-                                  MIX_DEFAULT_CHANNELS, audioBuffer);
+    const int res = Mix_OpenAudio(config.getIntValue("audioFrequency"),
+        MIX_DEFAULT_FORMAT, channels, audioBuffer);
+
     if (res < 0)
     {
         logger->log("Sound::init Could not initialize audio: %s",

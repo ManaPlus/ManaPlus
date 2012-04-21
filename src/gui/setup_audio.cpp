@@ -31,7 +31,6 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/namesmodel.h"
 #include "gui/widgets/scrollarea.h"
-#include "gui/widgets/setupitem.h"
 
 #include "utils/gettext.h"
 
@@ -80,6 +79,18 @@ Setup_Audio::Setup_Audio()
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
         this, "musicVolumeEvent", 0, sound.getMaxVolume(), 150, true);
 
+    new SetupItemIntTextField(_("Audio frequency"), "",
+        "audioFrequency", this, "audioFrequencyEvent", 14000, 192000);
+
+    mChannelsList = new SetupItemNames();
+    mChannelsList->push_back(_("mono"));
+    mChannelsList->push_back(_("stereo"));
+    mChannelsList->push_back(_("surround"));
+    mChannelsList->push_back(_("surround+center+lfe"));
+    new SetupItemSlider2(_("Audio channels"), "", "audioChannels", this,
+        "audioChannels", 1, 4, mChannelsList);
+
+
     new SetupItemLabel(_("Sound effects"), "", this);
 
     new SetupItemSound(_("Information dialog sound"), "",
@@ -121,6 +132,9 @@ Setup_Audio::~Setup_Audio()
 {
     delete mSoundModel;
     mSoundModel = nullptr;
+
+    delete mChannelsList;
+    mChannelsList = nullptr;
 }
 
 void Setup_Audio::apply()
