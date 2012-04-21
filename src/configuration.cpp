@@ -33,10 +33,174 @@
 #include "debug.h"
 
 #ifdef DEBUG_CONFIG
-#define GETLOG() if (logger) {logger->log("config get: " + key); }
+std::map<std::string, int> optionsCount;
+#define GETLOG() if (logger) {logger->log("config get: " + key); \
+    if (mIsMain) optionsCount[key] = 1; }
 #else
 #define GETLOG()
 #endif
+
+const std::string unusedKeys[] =
+{
+    "AttackRange",
+    "emoteshortcut0",
+    "AttackRangeBorder",
+    "AttackRangeBorderDelay",
+    "AttackRangeBorderGradient",
+    "AttackRangeDelay",
+    "AttackRangeGradient",
+    "Being",
+    "BeingDelay",
+    "BeingGradient",
+    "BeingPopupSkin",
+    "BotCheckerWindowSkin",
+    "BuySellSkin",
+    "BuySkin",
+    "ChatSkin",
+    "CollisionHighlight",
+    "CollisionHighlightDelay",
+    "CollisionHighlightGradient",
+    "ColorCross",
+    "ColorCrossDelay",
+    "ColorCrossGradient",
+    "ColorExperience",
+    "ColorExperienceGradient",
+    "ColorPickup",
+    "ColorPickupGradient",
+    "DebugSkin",
+    "DropShortcutSkin",
+    "EmoteShortcutSkin",
+    "EquipmentSkin",
+    "ExpInfo",
+    "ExpInfoDelay",
+    "ExpInfoGradient",
+    "Experience",
+    "ExperienceGradient",
+    "GM",
+    "GMDelay",
+    "GMGradient",
+    "Guild",
+    "GuildDelay",
+    "GuildGradient",
+    "GuildSkin",
+    "HelpSkin",
+    "Hit CriticalDelay",
+    "Hit CriticalGradient",
+    "Hit Monster Player",
+    "Hit Monster PlayerGradient",
+    "Hit Player Monster",
+    "Hit Player MonsterGradient",
+    "HitCriticalDelay",
+    "HitCriticalGradient",
+    "HitLocalPlayerCriticalDelay",
+    "HitLocalPlayerCriticalGradient",
+    "HitLocalPlayerMiss",
+    "HitLocalPlayerMissDelay",
+    "HitLocalPlayerMissGradient",
+    "HitLocalPlayerMonster",
+    "HitLocalPlayerMonsterDelay",
+    "HitLocalPlayerMonsterGradient",
+    "HitMonsterPlayer",
+    "HitMonsterPlayerDelay",
+    "HitMonsterPlayerGradient",
+    "HitPlayerMonster",
+    "HitPlayerMonsterDelay",
+    "HitPlayerMonsterGradient",
+    "HomePlace",
+    "HomePlaceBorder",
+    "HomePlaceBorderDelay",
+    "HomePlaceBorderGradient",
+    "HomePlaceDelay",
+    "HomePlaceGradient",
+    "InventorySkin",
+    "ItemPopupSkin",
+    "ItemShortcutSkin",
+    "Kill statsSkin",
+    "MiniStatusSkin",
+    "MinimapSkin",
+    "Miss",
+    "MissDelay",
+    "MissGradient",
+    "Monster",
+    "MonsterAttackRange",
+    "MonsterAttackRangeDelay",
+    "MonsterAttackRangeGradient",
+    "MonsterDelay",
+    "MonsterGradient",
+    "NPC",
+    "NPCDelay",
+    "NPCGradient",
+    "NpcTextSkin",
+    "OutfitsSkin",
+    "Particle",
+    "ParticleDelay",
+    "ParticleGradient",
+    "PartyDelay",
+    "PartyGradient",
+    "PartySkin",
+    "Personal ShopSkin",
+    "Pickup",
+    "PickupGradient",
+    "Player",
+    "PlayerDelay",
+    "PlayerGradient",
+    "PopupMenuSkin",
+    "PortalHighlight",
+    "PortalHighlightDelay",
+    "PortalHighlightGradient",
+    "RecorderSkin",
+    "RecorderWinX",
+    "RecorderWinY",
+    "RoadPoint",
+    "RoadPointDelay",
+    "RoadPointGradient",
+    "Self",
+    "SelfDelay",
+    "SelfGradient",
+    "SellSkin",
+    "ServerDialogSkin",
+    "ShopSkin",
+    "SkillsSkin",
+    "SocialCreatePopupSkin",
+    "SocialSkin",
+    "SpecialsSkin",
+    "SpeechSkin",
+    "SpellPopupSkin",
+    "SpellShortcutSkin",
+    "StatusPopupSkin",
+    "StatusSkin",
+    "StorageSkin",
+    "TextCommandEditorSkin",
+    "TextPopupSkin",
+    "TradeSkin",
+    "WhoIsOnlineSkin",
+    "emoteshortcut1",
+    "emoteshortcut2",
+    "emoteshortcut3",
+    "emoteshortcut4",
+    "emoteshortcut5",
+    "emoteshortcut6",
+    "emoteshortcut7",
+    "emoteshortcut8",
+    "emoteshortcut9",
+    "emoteshortcut10",
+    "emoteshortcut11",
+    "emoteshortcut12",
+    "emoteshortcut13",
+    "fastOpenGL",
+    "keyAutoCompleteChat",
+    "keyDeActivateChat",
+    "keyTargetClosest",
+    "keyWindowParty",
+    "mapalpha",
+    "port",
+    "shopBuyList",
+    "shopSellList",
+    "OutfitAwayIndex",
+    "playerHomes",
+    "remember",
+    ""
+};
 
 void ConfigurationObject::setValue(const std::string &key,
                                    const std::string &value)
@@ -152,6 +316,10 @@ Configuration::Configuration() :
     mDefaultsData(nullptr),
     mDirectory("")
 {
+#ifdef DEBUG_CONFIG
+    mLogKeys = false;
+    mIsMain = false;
+#endif
 }
 
 void Configuration::cleanDefaults()
@@ -470,6 +638,7 @@ bool Configuration::resetBoolValue(const std::string &key)
     return defaultValue;
 }
 
+
 void ConfigurationObject::initFromXML(XmlNodePtr parent_node)
 {
     clear();
@@ -549,6 +718,13 @@ void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
     for (Options::const_iterator i = mOptions.begin(), i_end = mOptions.end();
          i != i_end; ++i)
     {
+#ifdef DEBUG_CONFIG
+        if (mLogKeys)
+        {
+            if (optionsCount.find(i->first) == optionsCount.end())
+                logger->log("unused configuration option: " + i->first);
+        }
+#endif
         xmlTextWriterStartElement(writer, BAD_CAST "option");
         xmlTextWriterWriteAttribute(writer,
                 BAD_CAST "name", BAD_CAST i->first.c_str());
@@ -635,4 +811,29 @@ void Configuration::removeListeners(ConfigListener *listener)
     ListenerMapIterator it_end = mListenerMap.end();
     for (; it != it_end; ++ it)
         (it->second).remove(listener);
+}
+
+void Configuration::removeOldKeys()
+{
+    if (mOptions.find(unusedKeys[0]) != mOptions.end()
+        || mOptions.find(unusedKeys[1]) != mOptions.end())
+    {
+        int f = 0;
+        while (unusedKeys[f] != "")
+        {
+            deleteKey(unusedKeys[f]);
+            logger->log("remove unused key: " + unusedKeys[f]);
+            f ++;
+        }
+        for (f = 0; f < 80; f ++)
+        {
+            deleteKey("Outfit" + toString(f));
+            deleteKey("OutfitUnequip" + toString(f));
+            deleteKey("commandShortcutCmd" + toString(f));
+            deleteKey("commandShortcutFlags" + toString(f));
+            deleteKey("commandShortcutSymbol" + toString(f));
+            deleteKey("drop" + toString(f));
+            deleteKey("shortcut" + toString(f));
+        }
+    }
 }

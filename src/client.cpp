@@ -803,6 +803,10 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting10");
 
+#ifdef DEBUG_CONFIG
+    config.enableKeyLogging();
+#endif
+    config.removeOldKeys();
     config.write();
     serverConfig.write();
 
@@ -1765,6 +1769,10 @@ void Client::initServerConfig(std::string serverName)
  */
 void Client::initConfiguration()
 {
+#ifdef DEBUG_CONFIG
+    config.setIsMain(true);
+#endif
+
     // Fill configuration with defaults
     config.setValue("hwaccel", false);
 #if (defined __APPLE__) && defined USE_OPENGL
@@ -1777,7 +1785,7 @@ void Client::initConfiguration()
     config.setValue("screen", false);
     config.setValue("sound", true);
     config.setValue("guialpha", 0.8f);
-    config.setValue("remember", true);
+//    config.setValue("remember", true);
     config.setValue("sfxVolume", 100);
     config.setValue("musicVolume", 60);
     config.setValue("fpslimit", 60);

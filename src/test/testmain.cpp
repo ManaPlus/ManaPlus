@@ -62,7 +62,7 @@ void TestMain::initConfig()
     config.setValue("screen", false);
     config.setValue("sound", false);
     config.setValue("guialpha", 0.8f);
-    config.setValue("remember", true);
+//    config.setValue("remember", true);
     config.setValue("sfxVolume", 50);
     config.setValue("musicVolume", 60);
     config.setValue("fpslimit", 0);

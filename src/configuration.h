@@ -192,6 +192,14 @@ class ConfigurationObject
             return container;
         }
 
+#ifdef DEBUG_CONFIG
+        void enableKeyLogging()
+        { mLogKeys = true; }
+
+        void setIsMain(bool b)
+        { mIsMain = b; }
+#endif
+
     protected:
         virtual void initFromXML(XmlNodePtr node);
         virtual void writeToXML(XmlTextWriterPtr writer);
@@ -203,6 +211,11 @@ class ConfigurationObject
 
         typedef std::list<ConfigurationObject *> ConfigurationList;
         std::map<std::string, ConfigurationList> mContainerOptions;
+
+#ifdef DEBUG_CONFIG
+        bool mLogKeys;
+        bool mIsMain;
+#endif
 };
 
 /**
@@ -300,6 +313,8 @@ class Configuration : public ConfigurationObject
 
         std::string getDirectory() const
         { return mDirectory; }
+
+        void removeOldKeys();
 
     private:
         /**
