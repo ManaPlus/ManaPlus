@@ -293,6 +293,8 @@ class Graphics : public gcn::SDLGraphics
         void setNoFrame(bool n)
         { mNoFrame = n; }
 
+        bool videoInfo();
+
         int mWidth;
         int mHeight;
 

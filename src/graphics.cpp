@@ -105,6 +105,11 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
     mRect.w = mTarget->w;
     mRect.h = mTarget->h;
 
+    return videoInfo();
+}
+
+bool Graphics::videoInfo()
+{
     char videoDriverName[65];
 
     if (SDL_VideoDriverName(videoDriverName, 64))
