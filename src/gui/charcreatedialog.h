@@ -31,6 +31,7 @@
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
+#include <guichan/keylistener.hpp>
 
 class LocalPlayer;
 class PlayerBox;
@@ -41,7 +42,9 @@ class TextField;
  *
  * \ingroup Interface
  */
-class CharCreateDialog : public Window, public gcn::ActionListener
+class CharCreateDialog : public Window,
+                         public gcn::ActionListener,
+                         public gcn::KeyListener
 {
     public:
         /**
@@ -70,6 +73,8 @@ class CharCreateDialog : public Window, public gcn::ActionListener
         void logic();
 
         void updatePlayer();
+
+        void keyPressed(gcn::KeyEvent &keyEvent);
 
     private:
         int getDistributedPoints() const;

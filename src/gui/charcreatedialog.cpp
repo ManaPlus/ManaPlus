@@ -24,6 +24,8 @@
 
 #include "client.h"
 #include "game.h"
+#include "keydata.h"
+#include "keyevent.h"
 #include "localplayer.h"
 #include "main.h"
 #include "units.h"
@@ -230,6 +232,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
         updateRace();
 
     updatePlayer();
+
+    addKeyListener(this);
 }
 
 CharCreateDialog::~CharCreateDialog()
@@ -546,5 +550,21 @@ void CharCreateDialog::updatePlayer()
     {
         mPlayer->setDirection(directions[mDirection]);
         mPlayer->setAction(actions[mAction]);
+    }
+}
+
+void CharCreateDialog::keyPressed(gcn::KeyEvent &keyEvent)
+{
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    switch (actionId)
+    {
+        case Input::KEY_GUI_CANCEL:
+            keyEvent.consume();
+            action(gcn::ActionEvent(mCancelButton,
+                mCancelButton->getActionEventId()));
+            break;
+
+        default:
+            break;
     }
 }
