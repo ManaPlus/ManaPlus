@@ -352,6 +352,7 @@ class ChatWindow : public Window,
         bool mGMLoaded;
         bool mHaveMouse;
         bool mAutoHide;
+        bool mShowBattleEvents;
 };
 
 extern ChatWindow *chatWindow;

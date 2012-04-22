@@ -163,7 +163,8 @@ ChatWindow::ChatWindow():
     mChatHistoryIndex(0),
     mGMLoaded(false),
     mHaveMouse(false),
-    mAutoHide(false)
+    mAutoHide(false),
+    mShowBattleEvents(false)
 {
     listen(CHANNEL_NOTICES);
     listen(CHANNEL_ATTRIBUTES);
@@ -230,12 +231,15 @@ ChatWindow::ChatWindow():
     parseHighlights();
 
     config.addListener("autohideChat", this);
+    config.addListener("showBattleEvents", this);
+
     mAutoHide = config.getBoolValue("autohideChat");
+    mShowBattleEvents = config.getBoolValue("showBattleEvents");
 }
 
 ChatWindow::~ChatWindow()
 {
-    config.removeListener("autohideChat", this);
+    config.removeListeners(this);
     saveState();
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
@@ -917,7 +921,7 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
     }
     else if (channel == CHANNEL_ATTRIBUTES)
     {
-        if (!config.getBoolValue("showBattleEvents"))
+        if (!mShowBattleEvents)
             return;
 
         if (event.getName() == EVENT_UPDATEATTRIBUTE)
@@ -1651,6 +1655,8 @@ void ChatWindow::optionChanged(const std::string &name)
 {
     if (name == "autohideChat")
         mAutoHide = config.getBoolValue("autohideChat");
+    else if (name == "showBattleEvents")
+        mShowBattleEvents = config.getBoolValue("showBattleEvents");
 }
 
 void ChatWindow::mouseMoved(gcn::MouseEvent &event)
