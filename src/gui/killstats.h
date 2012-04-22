@@ -96,6 +96,7 @@ class KillStats : public Window, gcn::ActionListener, public Listener
         Label *mLine4;
         Label *mLine5;
         Label *mLine6;
+        Label *mLine7;
 
         gcn::Label *mExpSpeed1Label;
         gcn::Label *mExpTime1Label;

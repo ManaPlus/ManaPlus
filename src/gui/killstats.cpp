@@ -79,9 +79,9 @@ KillStats::KillStats():
         xpNextLevel / 100, "?"));
 
     mLine4 = new Label(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
-    mLine5 = new Label(strprintf(
-        _("Avg Exp: %s, No. of avg mob to next level: %s"), "?", "?"));
-    mLine6 = new Label(strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
+    mLine5 = new Label(strprintf(_("Avg Exp: %s"), "?"));
+    mLine6 = new Label(strprintf(_("No. of avg mob to next level: %s"), "?"));
+    mLine7 = new Label(strprintf(_("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
     mExpSpeed1Label = new Label(strprintf(ngettext("Exp speed per %d min: %s",
         "Exp speed per %d min: %s", 1), 1, "?"));
@@ -109,21 +109,19 @@ KillStats::KillStats():
     place(0, 3, mLine4, 6).setPadding(0);
     place(0, 4, mLine5, 6).setPadding(0);
     place(0, 5, mLine6, 6).setPadding(0);
+    place(0, 6, mLine7, 6).setPadding(0);
 
-    place(0, 6, mLastKillExpLabel, 6).setPadding(0);
-    place(0, 7, mTimeBeforeJackoLabel, 6).setPadding(0);
-    place(0, 8, mExpSpeed1Label, 6).setPadding(0);
-    place(0, 9, mExpTime1Label, 6).setPadding(0);
-    place(0, 10, mExpSpeed5Label, 6).setPadding(0);
-    place(0, 11, mExpTime5Label, 6).setPadding(0);
-    place(0, 12, mExpSpeed15Label, 6).setPadding(0);
-    place(0, 13, mExpTime15Label, 6).setPadding(0);
+    place(0, 7, mLastKillExpLabel, 6).setPadding(0);
+    place(0, 8, mTimeBeforeJackoLabel, 6).setPadding(0);
+    place(0, 9, mExpSpeed1Label, 6).setPadding(0);
+    place(0, 10, mExpTime1Label, 6).setPadding(0);
+    place(0, 11, mExpSpeed5Label, 6).setPadding(0);
+    place(0, 12, mExpTime5Label, 6).setPadding(0);
+    place(0, 13, mExpSpeed15Label, 6).setPadding(0);
+    place(0, 14, mExpTime15Label, 6).setPadding(0);
 
-    place(5, 12, mTimerButton).setPadding(0);
-    place(5, 13, mResetButton).setPadding(0);
-
-    Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    place(5, 13, mTimerButton).setPadding(0);
+    place(5, 14, mResetButton).setPadding(0);
 
     loadWindowState();
 
@@ -142,8 +140,9 @@ void KillStats::action(const gcn::ActionEvent &event)
         mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
             PlayerInfo::getAttribute(EXP_NEEDED) / 100, "?"));
         mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
-        mLine5->setCaption(strprintf(
-            _("Avg Exp: %s, No. of avg mob to next level: %s"), "?", "?"));
+        mLine5->setCaption(strprintf(_("Avg Exp: %s"), "?"));
+        mLine6->setCaption(strprintf(
+            _("No. of avg mob to next level: %s"), "?"));
 
         m1minExpTime = 0;
         m1minExpNum = 0;
@@ -160,7 +159,7 @@ void KillStats::action(const gcn::ActionEvent &event)
         mKillTimer = 0;
         mKillTCounter = 0;
         mExpTCounter = 0;
-        mLine6->setCaption(strprintf(
+        mLine7->setCaption(strprintf(
             _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
         m1minExpTime = 0;
@@ -218,9 +217,11 @@ void KillStats::gainXp(int xp)
         mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
             xpNextLevel / 100, "?"));
 
-        mLine5->setCaption(strprintf(
-            _("Avg Exp: %s, No. of avg mob to next level: %s"),
-            toString(AvgExp).c_str(), "?"));
+        mLine5->setCaption(strprintf(_("Avg Exp: %s"),
+            toString(AvgExp).c_str()));
+
+        mLine6->setCaption(strprintf(
+            _("No. of avg mob to next level: %s"), "?"));
     }
     else
     {
@@ -228,15 +229,17 @@ void KillStats::gainXp(int xp)
             xpNextLevel / 100, toString((static_cast<float>(
             xpNextLevel) / 100) / AvgExp).c_str()));
 
-        mLine5->setCaption(strprintf(
-            _("Avg Exp: %s, No. of avg mob to next level: %s"),
-            toString(AvgExp).c_str(), toString(static_cast<float>(
-            xpNextLevel - PlayerInfo::getAttribute(EXP)) / AvgExp).c_str()));
+        mLine5->setCaption(strprintf(_("Avg Exp: %s"),
+            toString(AvgExp).c_str()));
+
+        mLine6->setCaption(strprintf(_("No. of avg mob to next level: %s"),
+            toString(static_cast<float>(xpNextLevel
+            - PlayerInfo::getAttribute(EXP)) / AvgExp).c_str()));
     }
     mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"),
         toString(mKillCounter).c_str(), toString(mExpCounter).c_str()));
 
-    mLine6->setCaption(strprintf(_("Kills/Min: %s, Exp/Min: %s"),
+    mLine7->setCaption(strprintf(_("Kills/Min: %s, Exp/Min: %s"),
         toString(mKillTCounter / timeDiff).c_str(),
         toString(mExpTCounter / timeDiff).c_str()));
 
