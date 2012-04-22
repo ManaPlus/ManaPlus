@@ -34,14 +34,15 @@
 
 #include "debug.h"
 
-TabbedArea::TabbedArea()
-    : gcn::TabbedArea(),
-      mTabsWidth(0),
-      mVisibleTabsWidth(0),
-      mTabScrollIndex(0),
-      mEnableScrollButtons(false),
-      mRightMargin(0),
-      mFollowDownScroll(false)
+TabbedArea::TabbedArea() :
+    gcn::TabbedArea(),
+    mTabsWidth(0),
+    mVisibleTabsWidth(0),
+    mTabScrollIndex(0),
+    mEnableScrollButtons(false),
+    mRightMargin(0),
+    mFollowDownScroll(false),
+    mBlockSwitching(true)
 {
     mWidgetContainer->setOpaque(false);
     addWidgetListener(this);
@@ -482,7 +483,7 @@ void TabbedArea::removeAll()
 
 void TabbedArea::keyPressed(gcn::KeyEvent& keyEvent)
 {
-    if (keyEvent.isConsumed() || !isFocused())
+    if (mBlockSwitching || keyEvent.isConsumed() || !isFocused())
         return;
 
     int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();

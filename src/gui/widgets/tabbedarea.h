@@ -150,6 +150,9 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
 
         void keyPressed(gcn::KeyEvent& keyEvent);
 
+        void setBlockSwitching(bool b)
+        { mBlockSwitching = b; }
+
     private:
         typedef std::vector< std::pair<gcn::Tab*, gcn::Widget*> > TabContainer;
 
@@ -193,6 +196,7 @@ class TabbedArea : public gcn::TabbedArea, public gcn::WidgetListener
         bool mEnableScrollButtons;
         int mRightMargin;
         bool mFollowDownScroll;
+        bool mBlockSwitching;
 };
 
 #endif
