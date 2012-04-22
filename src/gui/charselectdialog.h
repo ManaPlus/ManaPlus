@@ -50,7 +50,8 @@ namespace Net
  *
  * \ingroup Interface
  */
-class CharSelectDialog : public Window, public gcn::ActionListener,
+class CharSelectDialog : public Window,
+                         public gcn::ActionListener,
                          public gcn::KeyListener
 {
     public:
@@ -96,6 +97,10 @@ class CharSelectDialog : public Window, public gcn::ActionListener,
         void lock();
         void unlock();
         void setLocked(bool locked);
+
+        bool getFocusedContainer(int &container, int &idx);
+
+        void setFocusedContainer(int i, int button);
 
         bool mLocked;
 

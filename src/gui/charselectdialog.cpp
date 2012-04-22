@@ -59,6 +59,7 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include <guichan/focushandler.hpp>
 #include <guichan/font.hpp>
 
 #include <string>
@@ -109,6 +110,18 @@ class CharacterDisplay : public Container
         void requestFocus();
 
         void setActive(bool active);
+
+        bool isSelectFocused()
+        { return mButton->isFocused(); }
+
+        bool isDeleteFocused()
+        { return mDelete->isFocused(); }
+
+        void focusSelect()
+        { mFocusHandler->requestFocus(mButton); }
+
+        void focusDelete()
+        { mFocusHandler->requestFocus(mDelete); }
 
     private:
         void update();
@@ -263,11 +276,144 @@ void CharSelectDialog::action(const gcn::ActionEvent &event)
 
 void CharSelectDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    if (static_cast<KeyEvent*>(&keyEvent)->getActionId()
-        == Input::KEY_GUI_CANCEL)
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    switch (actionId)
     {
-        action(gcn::ActionEvent(mSwitchLoginButton,
-               mSwitchLoginButton->getActionEventId()));
+        case Input::KEY_GUI_CANCEL:
+            keyEvent.consume();
+            action(gcn::ActionEvent(mSwitchLoginButton,
+                mSwitchLoginButton->getActionEventId()));
+            break;
+
+        case Input::KEY_GUI_RIGHT:
+        {
+            keyEvent.consume();
+            int idx;
+            int idx2;
+            if (getFocusedContainer(idx, idx2))
+            {
+                idx ++;
+                if (idx == SLOTS_PER_ROW)
+                    break;
+                setFocusedContainer(idx, idx2);
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_LEFT:
+        {
+            keyEvent.consume();
+            int idx;
+            int idx2;
+            if (getFocusedContainer(idx, idx2))
+            {
+                if (!idx || idx == SLOTS_PER_ROW)
+                    break;
+                idx --;
+                setFocusedContainer(idx, idx2);
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_UP:
+        {
+            keyEvent.consume();
+            int idx;
+            int idx2;
+            if (getFocusedContainer(idx, idx2))
+            {
+                if (idx < SLOTS_PER_ROW && !idx2)
+                    break;
+                if (idx2 > 0)
+                {
+                    idx2 = 0;
+                }
+                else
+                {
+                    idx -= SLOTS_PER_ROW;
+                    if (mCharacterEntries[idx]->getCharacter())
+                        idx2 = 1;
+                    else
+                        idx2 = 0;
+                }
+                setFocusedContainer(idx, idx2);
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_DOWN:
+        {
+            keyEvent.consume();
+            int idx;
+            int idx2;
+            if (getFocusedContainer(idx, idx2))
+            {
+                if (idx >= SLOTS_PER_ROW && idx2)
+                    break;
+                if (idx2 > 0)
+                {
+                    idx += SLOTS_PER_ROW;
+                    idx2 = 0;
+                }
+                else
+                {
+                    if (mCharacterEntries[idx]->getCharacter())
+                        idx2 = 1;
+                    else
+                        idx += SLOTS_PER_ROW;
+                }
+                setFocusedContainer(idx, idx2);
+            }
+            break;
+        }
+
+        case Input::KEY_GUI_DELETE:
+        {
+            keyEvent.consume();
+            int idx;
+            int idx2;
+            if (getFocusedContainer(idx, idx2)
+                && mCharacterEntries[idx]->getCharacter())
+            {
+                new CharDeleteConfirm(this, idx);
+            }
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
+bool CharSelectDialog::getFocusedContainer(int &container, int &idx)
+{
+    for (int f = 0; f < static_cast<int>(mLoginData->characterSlots); f ++)
+    {
+        if (mCharacterEntries[f]->isSelectFocused())
+        {
+            container = f;
+            idx = 0;
+            return true;
+        }
+        else if (mCharacterEntries[f]->isDeleteFocused())
+        {
+            container = f;
+            idx = 1;
+            return true;
+        }
+    }
+    return false;
+}
+
+void CharSelectDialog::setFocusedContainer(int i, int button)
+{
+    if (i >= 0 && i < static_cast<int>(mLoginData->characterSlots))
+    {
+        CharacterDisplay *container = mCharacterEntries[i];
+        if (button)
+            container->focusDelete();
+        else
+            container->focusSelect();
     }
 }
 
@@ -387,7 +533,7 @@ bool CharSelectDialog::selectByName(const std::string &name,
         Net::Character *character = mCharacterEntries[i]->getCharacter();
         if (mCharacterEntries[i] && character)
         {
-            if ( character->dummy && character->dummy->getName() == name)
+            if (character->dummy && character->dummy->getName() == name)
             {
                 if (mCharacterEntries[i])
                     mCharacterEntries[i]->requestFocus();
