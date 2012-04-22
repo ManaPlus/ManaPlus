@@ -229,7 +229,6 @@ public:
 };
 
 #define ACTION_DELETE "delete"
-#define ACTION_OLD "old"
 #define ACTION_TABLE "table"
 #define ACTION_STRATEGY "strategy"
 
@@ -243,8 +242,7 @@ Setup_Relations::Setup_Relations():
                 player_relations.getDefault() & PlayerRelation::TRADE)),
     mDefaultWhisper(new CheckBox(_("Allow whispers"),
                 player_relations.getDefault() & PlayerRelation::WHISPER)),
-    mDeleteButton(new Button(_("Delete"), ACTION_DELETE, this)),
-    mOldButton(new Button(_("Old"), ACTION_OLD, this))
+    mDeleteButton(new Button(_("Delete"), ACTION_DELETE, this))
 {
     setName(_("Relations"));
 
@@ -294,7 +292,6 @@ Setup_Relations::Setup_Relations():
     place(0, 0, mPlayerTitleTable, 6);
     place(0, 1, mPlayerScrollArea, 6, 4).setPadding(2);
     place(0, 5, mDeleteButton);
-    place(1, 5, mOldButton, 1);
     place(3, 5, ignore_action_label, 1);
     place(4, 5, mIgnoreActionChoicesBox, 2).setPadding(2);
     place(3, 6, mDefaultTrading, 3);
@@ -384,11 +381,6 @@ void Setup_Relations::action(const gcn::ActionEvent &event)
         std::string name = mPlayerTableModel->getPlayerAt(player_index);
 
         player_relations.removePlayer(name);
-    }
-    else if (event.getId() == ACTION_OLD)
-    {
-        player_relations.load(true);
-        updateAll();
     }
     else if (event.getId() == ACTION_STRATEGY)
     {
