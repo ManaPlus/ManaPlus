@@ -86,6 +86,13 @@ Setup_Visual::Setup_Visual()
         this, "particleEmitterSkipEvent", 0, 3,
         mParticleList, true))->setInvertValue(3);
 
+    mParticleTypeList = new SetupItemNames();
+    mParticleTypeList->push_back(_("best quality"));
+    mParticleTypeList->push_back(_("normal"));
+    mParticleTypeList->push_back(_("best perfomance"));
+    new SetupItemSlider2(_("Particle physics"), "", "particleFastPhysics",
+        this, "particleFastPhysicsEvent", 0, 2, mParticleTypeList);
+
     new SetupItemLabel(_("Other"), "", this);
 
     new SetupItemSlider(_("Gamma"), "", "gamma",
@@ -114,6 +121,8 @@ Setup_Visual::~Setup_Visual()
     mAmbientFxList = nullptr;
     delete mParticleList;
     mParticleList = nullptr;
+    delete mParticleTypeList;
+    mParticleTypeList = nullptr;
     delete mVSyncList;
     mVSyncList = nullptr;
 }

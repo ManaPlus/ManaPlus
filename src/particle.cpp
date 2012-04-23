@@ -194,9 +194,10 @@ bool Particle::update()
             {
                 mAlive = DEAD_FLOOR;
             }
-        } else if (mPos.z > PARTICLE_SKY)
+        }
+        else if (mPos.z > PARTICLE_SKY)
         {
-                mAlive = DEAD_SKY;
+            mAlive = DEAD_SKY;
         }
 
         // Update child emitters

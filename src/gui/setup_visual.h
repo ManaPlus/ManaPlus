@@ -38,11 +38,9 @@ class Setup_Visual : public SetupTabScroll
 
     private:
         SetupItemNames *mSpeachList;
-
         SetupItemNames *mAmbientFxList;
-
         SetupItemNames *mParticleList;
-
+        SetupItemNames *mParticleTypeList;
         SetupItemNames *mVSyncList;
 };
 

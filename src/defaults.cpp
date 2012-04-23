@@ -101,7 +101,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "targetDeadPlayers", false);
     AddDEF(configData, "afkMessage", "I am away from keyboard");
     AddDEF(configData, "particleMaxCount", 3000);
-    AddDEF(configData, "particleFastPhysics", 0);
+    AddDEF(configData, "particleFastPhysics", 2);
     AddDEF(configData, "particleEmitterSkip", 1);
     AddDEF(configData, "particleeffects", true);
     AddDEF(configData, "logToStandardOut", false);
