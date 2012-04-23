@@ -820,8 +820,7 @@ EXTRA_DIST = CMakeLists.txt \
 	     enet/README \
 	     manaplus.rc \
 	     SDLMain.h \
-	     SDLMain.m \
-	     SDL_gfx/SDL_gfxBlitFunc.h
+	     SDLMain.m
 
 # set the include path found by configure
 INCLUDES = $(all_includes)

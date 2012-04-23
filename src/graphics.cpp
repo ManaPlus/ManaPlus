@@ -32,8 +32,7 @@
 
 #include <guichan/sdl/sdlpixel.hpp>
 
-//<SDL_gfxBlitFunc.h>
-#include "SDL_gfxBlitFunc.h"
+#include <SDL_gfxBlitFunc.h>
 
 #include "debug.h"
 
