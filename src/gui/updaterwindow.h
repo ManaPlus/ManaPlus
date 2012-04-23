@@ -113,6 +113,8 @@ class UpdaterWindow : public Window, public gcn::ActionListener,
                               std::string fixPath, std::string file,
                               bool append);
 
+    static void loadManaPlusUpdates(std::string dir, ResourceManager *resman);
+
     int updateState;
 
 private:

@@ -522,6 +522,7 @@ void UpdaterWindow::loadUpdates()
         UpdaterWindow::addUpdateFile(resman, mUpdatesDir, fixPath,
             mUpdateFiles[mUpdateIndex].name, false);
     }
+    loadManaPlusUpdates(mUpdatesDir, resman);
 }
 
 void UpdaterWindow::loadLocalUpdates(std::string dir)
@@ -545,6 +546,28 @@ void UpdaterWindow::loadLocalUpdates(std::string dir)
     {
         UpdaterWindow::addUpdateFile(resman, dir, fixPath, 
             updateFiles[updateIndex].name, false);
+    }
+    loadManaPlusUpdates(dir, resman);
+}
+
+void UpdaterWindow::loadManaPlusUpdates(std::string dir,
+                                        ResourceManager *resman)
+{
+    std::string fixPath = dir + "/fix";
+    std::vector<updateFile> updateFiles
+        = loadXMLFile(fixPath + "/" + xmlUpdateFile);
+
+    for (unsigned int updateIndex = 0;
+         updateIndex < updateFiles.size(); updateIndex ++)
+    {
+        std::string name = updateFiles[updateIndex].name;
+        if (strStartWith(name, "manaplus_"))
+        {
+            struct stat statbuf;
+            std::string file = fixPath + "/" + name;
+            if (!stat(file.c_str(), &statbuf))
+                resman->addToSearchPath(file, false);
+        }
     }
 }
 
