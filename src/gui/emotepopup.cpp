@@ -213,10 +213,9 @@ void EmotePopup::recalculateSize()
 void EmotePopup::distributeValueChangedEvent()
 {
     gcn::SelectionEvent event(this);
-    Listeners::const_iterator i_end = mListeners.end();
-    Listeners::const_iterator i;
 
-    for (i = mListeners.begin(); i != i_end; ++i)
+    for (Listeners::const_iterator i = mListeners.begin(),
+         i_end = mListeners.end(); i != i_end; ++i)
     {
         if (*i)
             (*i)->valueChanged(event);

@@ -382,12 +382,11 @@ void Window::widgetHidden(const gcn::Event &event A_UNUSED)
     if (gui)
         gui->setCursorType(Gui::CURSOR_POINTER);
 
-    WidgetListConstIterator it;
-
     if (!mFocusHandler)
         return;
 
-    for (it = mWidgets.begin(); it != mWidgets.end(); ++ it)
+    for (WidgetListConstIterator it = mWidgets.begin();
+         it != mWidgets.end(); ++ it)
     {
         if (mFocusHandler->isFocused(*it))
             mFocusHandler->focusNone();

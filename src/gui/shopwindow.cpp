@@ -408,8 +408,8 @@ void ShopWindow::saveList()
     }
 
     std::vector<ShopItem*> items = mBuyShopItems->items();
-    std::vector<ShopItem*>::const_iterator it;
-    for (it = items.begin(); it != items.end(); ++it)
+    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
+         it_end = items.end(); it != it_end; ++it)
     {
         ShopItem *item = *(it);
         if (item)
@@ -417,7 +417,8 @@ void ShopWindow::saveList()
     }
 
     items = mSellShopItems->items();
-    for (it = items.begin(); it != items.end(); ++it)
+    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
+         it_end = items.end(); it != it_end; ++it)
     {
         if (!(*it))
             continue;
@@ -440,8 +441,8 @@ void ShopWindow::saveList()
             sellItem->getPrice()) << std::endl;
     }
 
-    std::map<int, ShopItem*>::const_iterator mapIt;
-    for (mapIt = mapItems.begin(); mapIt != mapItems.end(); ++mapIt)
+    for (std::map<int, ShopItem*>::const_iterator mapIt = mapItems.begin(),
+         mapIt_end = mapItems.end(); mapIt != mapIt_end; ++mapIt)
     {
         ShopItem *buyItem = (*mapIt).second;
         if (buyItem)
@@ -480,9 +481,9 @@ void ShopWindow::announce(ShopItems *list, int mode)
         mSellAnnounceButton->setEnabled(false);
 
     std::vector<ShopItem*> items = list->items();
-    std::vector<ShopItem*>::const_iterator it;
 
-    for (it = items.begin(); it != items.end(); ++it)
+    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
+         it_end = items.end(); it != it_end; ++it)
     {
         ShopItem *item = *(it);
         if (item->getQuantity() > 1)
@@ -546,9 +547,9 @@ void ShopWindow::giveList(const std::string &nick, int mode)
         return;
 
     std::vector<ShopItem*> items = list->items();
-    std::vector<ShopItem*>::const_iterator it;
 
-    for (it = items.begin(); it != items.end(); ++it)
+    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
+         it_end = items.end(); it != it_end; ++it)
     {
         ShopItem *item = *(it);
         if (!item)
@@ -792,7 +793,6 @@ bool ShopWindow::findShopItem(ShopItem *shopItem, int mode)
         return false;
 
     std::vector<ShopItem*> items;
-    std::vector<ShopItem*>::const_iterator it;
     if (mode == SELL)
     {
         if (!mSellShopItems)
@@ -806,7 +806,8 @@ bool ShopWindow::findShopItem(ShopItem *shopItem, int mode)
         items = mBuyShopItems->items();
     }
 
-    for (it = items.begin(); it != items.end(); ++it)
+    for (std::vector<ShopItem*>::const_iterator it = items.begin(),
+         it_end = items.end(); it != it_end; ++ it)
     {
         ShopItem *item = *(it);
         if (!item)

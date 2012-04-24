@@ -143,10 +143,8 @@ void EquipmentWindow::draw(gcn::Graphics *graphics)
     int i = 0;
     const int fontHeight = getFont()->getHeight();
 
-    std::vector<EquipmentBox*>::const_iterator it;
-    std::vector<EquipmentBox*>::const_iterator it_end = mBoxes.end();
-
-    for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
+    for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
+         it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
     {
         EquipmentBox *box = *it;
         if (!box)
@@ -214,11 +212,10 @@ Item *EquipmentWindow::getItem(int x, int y) const
     if (!mEquipment)
         return nullptr;
 
-    std::vector<EquipmentBox*>::const_iterator it;
-    std::vector<EquipmentBox*>::const_iterator it_end = mBoxes.end();
     int i = 0;
 
-    for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
+    for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
+         it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
     {
         EquipmentBox *box = *it;
         if (!box)
@@ -247,11 +244,10 @@ void EquipmentWindow::mousePressed(gcn::MouseEvent& mouseEvent)
         if (mForing)
             return;
         // Checks if any of the presses were in the equip boxes.
-        std::vector<EquipmentBox*>::const_iterator it;
-        std::vector<EquipmentBox*>::const_iterator it_end = mBoxes.end();
         int i = 0;
 
-        for (it = mBoxes.begin(); it != it_end; ++ it, ++ i)
+        for (std::vector<EquipmentBox*>::const_iterator it = mBoxes.begin(),
+             it_end = mBoxes.end(); it != it_end; ++ it, ++ i)
         {
             EquipmentBox *box = *it;
             if (!box)

@@ -358,8 +358,8 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
     mY = y;
     mBrowserBox->clearRows();
     mBrowserBox->addRow(_("Players"));
-    std::vector<ActorSprite*>::const_iterator it, it_end;
-    for (it = beings.begin(), it_end = beings.end(); it != it_end; ++it)
+    for (std::vector<ActorSprite*>::const_iterator it = beings.begin(),
+         it_end = beings.end(); it != it_end; ++it)
     {
         Being *being = dynamic_cast<Being*>(*it);
         ActorSprite *actor = *it;
@@ -878,9 +878,8 @@ void PopupMenu::showChangePos(int x, int y)
     if (guild)
     {
         PositionsMap map = guild->getPositions();
-        PositionsMap::const_iterator itr = map.begin();
-        PositionsMap::const_iterator itr_end = map.end();
-        for (; itr != itr_end; ++itr)
+        for (PositionsMap::const_iterator itr = map.begin(),
+             itr_end = map.end(); itr != itr_end; ++itr)
         {
             mBrowserBox->addRow(strprintf("@@guild-pos-%d|%s@@",
                 itr->first, itr->second.c_str()));
@@ -2037,8 +2036,8 @@ void PopupMenu::showPopup(int x, int y, Button *button)
 
     mBrowserBox->clearRows();
     std::vector <gcn::Button*> names = windowMenu->getButtons();
-    std::vector <gcn::Button*>::const_iterator it, it_end;
-    for (it = names.begin(), it_end = names.end(); it != it_end; ++ it)
+    for (std::vector <gcn::Button*>::const_iterator it = names.begin(),
+         it_end = names.end(); it != it_end; ++ it)
     {
         Button *btn = dynamic_cast<Button*>(*it);
         if (!btn || btn->getActionEventId() == "SET")
@@ -2074,8 +2073,8 @@ void PopupMenu::showPopup(int x, int y, ProgressBar *b)
 
     mBrowserBox->clearRows();
     std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
-    std::vector <ProgressBar*>::const_iterator it, it_end;
-    for (it = bars.begin(), it_end = bars.end(); it != it_end; ++it)
+    for (std::vector <ProgressBar*>::const_iterator it = bars.begin(),
+         it_end = bars.end(); it != it_end; ++it)
     {
         ProgressBar *bar = *it;
         if (!bar || bar->getActionEventId() == "status bar")

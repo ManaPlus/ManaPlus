@@ -556,7 +556,8 @@ public:
 
         Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
-        while (i != avatars->end())
+        std::vector<Avatar*>::const_iterator i_end = avatars->end();
+        while (i != i_end)
         {
             ava = (*i);
             if (ava && ava->getName() == name)
@@ -589,7 +590,8 @@ public:
                     break;
 
                 StringVectCIter i = names.begin();
-                while (i != names.end())
+                StringVectCIter i_end = names.end();
+                while (i != i_end)
                 {
                     if (ava->getName() == (*i) && (*i) != "")
                     {
@@ -611,8 +613,9 @@ public:
             }
 
             StringVectCIter i = names.begin();
+            StringVectCIter i_end = names.end();
 
-            while (i != names.end())
+            while (i != i_end)
             {
                 if ((*i) != "")
                     updateAvatar(*i);
@@ -779,7 +782,8 @@ public:
 
         Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
-        while (i != avatars->end())
+        std::vector<Avatar*>::const_iterator i_end = avatars->end();
+        while (i != i_end)
         {
             ava = (*i);
             if (!ava)
@@ -813,8 +817,9 @@ public:
 
         Avatar *ava = nullptr;
         std::vector<Avatar*>::const_iterator i = avatars->begin();
+        std::vector<Avatar*>::const_iterator i_end = avatars->end();
         unsigned num = 0;
-        while (i != avatars->end())
+        while (i != i_end)
         {
             ava = (*i);
 
@@ -878,8 +883,9 @@ public:
             return;
 
         std::vector<Avatar*>::iterator i = avatars->begin();
+        std::vector<Avatar*>::iterator i_end = avatars->end();
 
-        while (i != avatars->end())
+        while (i != i_end)
         {
             Avatar *ava = (*i);
 
@@ -956,7 +962,6 @@ public:
 
         std::list<std::string> mobs
             = actorSpriteManager->getPriorityAttackMobs();
-        std::list<std::string>::iterator i = mobs.begin();
 
         std::vector<Avatar*>::iterator ia = avatars->begin();
 
@@ -975,7 +980,10 @@ public:
         ava->setY(0);
         avatars->push_back(ava);
 
-        while (i != mobs.end())
+        std::list<std::string>::const_iterator i = mobs.begin();
+        std::list<std::string>::const_iterator i_end = mobs.end();
+
+        while (i != i_end)
         {
             std::string name;
             int level = -1;
@@ -1009,8 +1017,9 @@ public:
 
         mobs = actorSpriteManager->getAttackMobs();
         i = mobs.begin();
+        i_end = mobs.end();
 
-        while (i != mobs.end())
+        while (i != i_end)
         {
             std::string name;
             int level = -1;
@@ -1044,8 +1053,9 @@ public:
 
         mobs = actorSpriteManager->getIgnoreAttackMobs();
         i = mobs.begin();
+        i_end = mobs.end();
 
-        while (i != mobs.end())
+        while (i != i_end)
         {
             std::string name;
             int level = -1;
@@ -1150,9 +1160,8 @@ public:
         if (!players)
             return;
 
-        StringVectIter it = players->begin();
-        StringVectIter it_end = players->end();
-        for (; it != it_end; ++ it)
+        for (StringVectCIter it = players->begin(), it_end = players->end();
+             it != it_end; ++ it)
         {
             Avatar *ava = nullptr;
             ava = new Avatar(*it);

@@ -167,8 +167,8 @@ void TabbedArea::removeTab(gcn::Tab *tab)
             tabIndexToBeSelected = index - 1;
     }
 
-    TabContainer::iterator iter;
-    for (iter = mTabs.begin(); iter != mTabs.end(); ++iter)
+    for (TabContainer::iterator iter = mTabs.begin();
+         iter != mTabs.end(); ++iter)
     {
         if (iter->first == tab)
         {
@@ -178,8 +178,8 @@ void TabbedArea::removeTab(gcn::Tab *tab)
         }
     }
 
-    std::vector<gcn::Tab*>::iterator iter2;
-    for (iter2 = mTabsToDelete.begin(); iter2 != mTabsToDelete.end(); ++iter2)
+    for (std::vector<gcn::Tab*>::iterator iter2 = mTabsToDelete.begin();
+         iter2 != mTabsToDelete.end(); ++iter2)
     {
         if (*iter2 == tab)
         {

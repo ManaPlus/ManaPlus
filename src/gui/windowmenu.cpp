@@ -127,8 +127,8 @@ WindowMenu::~WindowMenu()
     delete mTextPopup;
     mTextPopup = nullptr;
     mButtonNames.clear();
-    std::vector <gcn::Button*>::iterator it, it_end;
-    for (it = mButtons.begin(), it_end = mButtons.end(); it != it_end; ++it)
+    for (std::vector <gcn::Button*>::iterator it = mButtons.begin(),
+         it_end = mButtons.end(); it != it_end; ++it)
     {
         Button *btn = dynamic_cast<Button*>(*it);
         if (!btn)

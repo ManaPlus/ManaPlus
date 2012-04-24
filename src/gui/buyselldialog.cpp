@@ -129,10 +129,8 @@ void BuySellDialog::action(const gcn::ActionEvent &event)
 
 void BuySellDialog::closeAll()
 {
-    DialogList::const_iterator it = instances.begin();
-    DialogList::const_iterator it_end = instances.end();
-
-    for (; it != it_end; ++it)
+    for (DialogList::const_iterator it = instances.begin(),
+         it_end = instances.end(); it != it_end; ++it)
     {
         if (*it)
             (*it)->close();

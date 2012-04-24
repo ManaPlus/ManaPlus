@@ -206,11 +206,13 @@ class BrowserBox : public gcn::Widget,
         int calcHeight();
 
         typedef TextRows::iterator TextRowIterator;
+        typedef TextRows::const_iterator TextRowCIter;
         TextRows mTextRows;
         std::list<int> mTextRowLinksCount;
 
         typedef std::vector<LinePart> LinePartList;
         typedef LinePartList::iterator LinePartIterator;
+        typedef LinePartList::const_iterator LinePartCIter;
         LinePartList mLineParts;
 
         typedef std::vector<BROWSER_LINK> Links;

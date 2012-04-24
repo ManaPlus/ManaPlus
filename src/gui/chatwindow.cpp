@@ -587,11 +587,13 @@ void ChatWindow::removeWhisper(const std::string &nick)
 
 void ChatWindow::removeAllWhispers()
 {
-    TabMap::iterator iter;
     std::list<ChatTab*> tabs;
 
-    for (iter = mWhispers.begin(); iter != mWhispers.end(); ++iter)
+    for (TabMap::iterator iter = mWhispers.begin(),
+         iter_end = mWhispers.end(); iter != iter_end; ++ iter)
+    {
         tabs.push_back(iter->second);
+    }
 
     for (std::list<ChatTab*>::iterator it = tabs.begin();
          it != tabs.end(); ++it)
@@ -821,16 +823,16 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatHistoryIndex --;
             }
 
-            std::list<std::string>::const_iterator it;
             unsigned int f = 0;
             const std::list<std::string> &rows = tab->getRows();
-            for (it = rows.begin(); it != rows.end(); ++it, f++)
+            for (std::list<std::string>::const_iterator it = rows.begin(),
+                 it_end = rows.end(); it != it_end; ++ it, f ++)
             {
                 if (f == mChatHistoryIndex)
                     mChatInput->setText(*it);
             }
             mChatInput->setCaretPosition(static_cast<unsigned>(
-                    mChatInput->getText().length()));
+                mChatInput->getText().length()));
         }
     }
     else if (actionId == Input::KEY_CHAT_NEXT_HISTORY &&
@@ -855,10 +857,9 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
                 mChatHistoryIndex = 0;
             }
 
-            std::list<std::string>::const_iterator it;
             unsigned int f = 0;
-            for (it = tab->getRows().begin();
-                 it != tab->getRows().end(); ++it, f++)
+            for (std::list<std::string>::const_iterator it = tab->getRows().begin(),
+                 it_end = tab->getRows().end(); it != it_end; ++it, f++)
             {
                 if (f == mChatHistoryIndex)
                     mChatInput->setText(*it);
@@ -1027,7 +1028,9 @@ void ChatWindow::addWhisper(const std::string &nick,
     TabMap::const_iterator i = mWhispers.find(tempNick);
 
     if (i != mWhispers.end())
+    {
         tab = i->second;
+    }
     else if (config.getBoolValue("whispertab"))
     {
         tab = addWhisperTab(nick);
@@ -1281,10 +1284,11 @@ std::string ChatWindow::autoComplete(StringVect &names,
                                      std::string partName) const
 {
     StringVectCIter i = names.begin();
+    StringVectCIter i_end = names.end();
     toLower(partName);
     std::string newName("");
 
-    while (i != names.end())
+    while (i != i_end)
     {
         if (!i->empty())
         {
@@ -1316,9 +1320,10 @@ std::string ChatWindow::autoComplete(std::string partName, History *words)
         return "";
 
     Commands::const_iterator i = words->begin();
+    Commands::const_iterator i_end = words->end();
     StringVect nameList;
 
-    while (i != words->end())
+    while (i != i_end)
     {
         std::string line = *i;
         size_t pos = line.find(partName, 0);
@@ -1344,9 +1349,10 @@ void ChatWindow::moveTabRight(ChatTab *tab)
 std::string ChatWindow::autoCompleteHistory(std::string partName)
 {
     History::const_iterator i = mHistory.begin();
+    History::const_iterator i_end = mHistory.end();
     StringVect nameList;
 
-    while (i != mHistory.end())
+    while (i != i_end)
     {
         std::string line = *i;
         unsigned int f = 0;
@@ -1444,7 +1450,6 @@ void ChatWindow::initTradeFilter()
 
 void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
 {
-    TabMap::const_iterator iter;
     const Party *party = nullptr;
     const Guild *guild = nullptr;
     if (player_node)
@@ -1452,7 +1457,8 @@ void ChatWindow::updateOnline(std::set<std::string> &onlinePlayers)
         party = player_node->getParty();
         guild = player_node->getGuild();
     }
-    for (iter = mWhispers.begin(); iter != mWhispers.end(); ++iter)
+    for (TabMap::const_iterator iter = mWhispers.begin(),
+         iter_end = mWhispers.end(); iter != iter_end; ++iter)
     {
         if (!iter->second)
             return;
@@ -1529,8 +1535,8 @@ void ChatWindow::loadState()
 void ChatWindow::saveState()
 {
     int num = 0;
-    TabMap::const_iterator iter;
-    for (iter = mWhispers.begin(); iter != mWhispers.end() && num < 50; ++iter)
+    for (TabMap::const_iterator iter = mWhispers.begin(),
+         iter_end = mWhispers.end(); iter != iter_end && num < 50; ++iter)
     {
         if (!iter->second)
             return;
@@ -1612,8 +1618,9 @@ void ChatWindow::displayAwayLog()
         return;
 
     std::list<std::string>::iterator i = mAwayLog.begin();
+    std::list<std::string>::iterator i_end = mAwayLog.end();
 
-    while (i != mAwayLog.end())
+    while (i != i_end)
     {
         localChatTab->addNewRow(*i);
         ++i;

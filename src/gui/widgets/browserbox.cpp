@@ -219,7 +219,8 @@ void BrowserBox::addRow(const std::string &row, bool atTop)
         int hyphenWidth = font->getWidth(hyphen);
         unsigned x = 0;
 
-        for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); ++i)
+        for (TextRowCIter i = mTextRows.begin(), i_end = mTextRows.end();
+             i != i_end; ++ i)
         {
             std::string tempRow = *i;
             for (unsigned int j = 0; j < tempRow.size(); j++)
@@ -374,9 +375,8 @@ void BrowserBox::draw(gcn::Graphics *graphics)
 
     gcn::Font *font = getFont();
 
-    for (LinePartIterator i = mLineParts.begin();
-        i != mLineParts.end();
-        ++i)
+    for (LinePartCIter i = mLineParts.begin(), i_end = mLineParts.end();
+         i != i_end; ++i)
     {
         const LinePart &part = *i;
         if (part.mY + 50 < mYStart)
@@ -425,7 +425,8 @@ int BrowserBox::calcHeight()
 
     mLineParts.clear();
 
-    for (TextRowIterator i = mTextRows.begin(); i != mTextRows.end(); ++i)
+    for (TextRowCIter i = mTextRows.begin(), i_end = mTextRows.end();
+         i != i_end; ++ i)
     {
         const std::string row = *(i);
         bool wrapped = false;
@@ -670,9 +671,8 @@ std::string BrowserBox::getTextAtPos(const int x, const int y)
 
     int lastY = 0;
 
-    for (LinePartIterator i = mLineParts.begin();
-        i != mLineParts.end();
-        ++i)
+    for (LinePartCIter i = mLineParts.begin(), i_end = mLineParts.end();
+        i != i_end; ++i)
     {
         const LinePart &part = *i;
         if (part.mY + 50 < mYStart)

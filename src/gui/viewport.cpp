@@ -368,7 +368,8 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
     if (Net::getNetworkType() != ServerInfo::MANASERV)
 #endif
     {
-        for (Path::const_iterator i = path.begin(); i != path.end(); ++i)
+        for (Path::const_iterator i = path.begin(), i_end = path.end();
+             i != i_end; ++i)
         {
             int squareX = i->x * 32 - static_cast<int>(mPixelViewX) + 12;
             int squareY = i->y * 32 - static_cast<int>(mPixelViewY) + 12;
@@ -385,7 +386,8 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
 #ifdef MANASERV_SUPPORT
     else if (Net::getNetworkType() == ServerInfo::MANASERV)
     {
-        for (Path::const_iterator i = path.begin(); i != path.end(); ++i)
+        for (Path::const_iterator i = path.begin(), i_end = path.end();
+             i != i_end; ++i)
         {
             int squareX = i->x - static_cast<int>(mPixelViewX);
             int squareY = i->y - static_cast<int>(mPixelViewY);

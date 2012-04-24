@@ -529,8 +529,8 @@ void ItemContainer::updateMatrix()
             break;
     }
 
-    std::vector<ItemIdPair*>::const_iterator iter;
-    for (iter = sortedItems.begin(); iter != sortedItems.end(); ++iter)
+    for (std::vector<ItemIdPair*>::const_iterator iter = sortedItems.begin(),
+         iter_end = sortedItems.end(); iter != sortedItems.end(); ++ iter)
     {
         if (j >= mGridRows)
             break;

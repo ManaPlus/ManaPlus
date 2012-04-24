@@ -143,11 +143,11 @@ WhoIsOnline::~WhoIsOnline()
     // Remove possibly leftover temporary download
     delete []mCurlError;
 
-    std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
-    std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
-
-    for (; itd != itd_end; ++ itd)
+    for (std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin(),
+         itd_end = mOnlinePlayers.end(); itd != itd_end; ++ itd)
+    {
         delete *itd;
+    }
     mOnlinePlayers.clear();
     mOnlineNicks.clear();
 }
@@ -253,19 +253,18 @@ void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
     std::vector<OnlinePlayer*> disregard;
     std::vector<OnlinePlayer*> enemy;
 
-    std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
-    std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
-
-    for (; itd != itd_end; ++ itd)
+    for (std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin(),
+         itd_end = mOnlinePlayers.end(); itd != itd_end; ++ itd)
+    {
         delete *itd;
+    }
     mOnlinePlayers.clear();
     mOnlineNicks.clear();
 
     mShowLevel = config.getBoolValue("showlevel");
 
-    std::vector<OnlinePlayer*>::iterator it = list.begin();
-    std::vector<OnlinePlayer*>::iterator it_end = list.end();
-    for (; it != it_end; ++ it)
+    for (std::vector<OnlinePlayer*>::const_iterator it = list.begin(),
+         it_end = list.end(); it != it_end; ++ it)
     {
         OnlinePlayer *player = *it;
         std::string nick = player->getNick();
@@ -342,11 +341,11 @@ void WhoIsOnline::loadWebList()
     char *line = strtok(mMemoryBuffer, "\n");
     const std::string gmText = "(GM)";
 
-    std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin();
-    std::set<OnlinePlayer*>::iterator itd_end = mOnlinePlayers.end();
-
-    for (; itd != itd_end; ++ itd)
+    for (std::set<OnlinePlayer*>::iterator itd = mOnlinePlayers.begin(),
+         itd_end = mOnlinePlayers.end(); itd != itd_end; ++ itd)
+    {
         delete *itd;
+    }
 
     mOnlinePlayers.clear();
     mOnlineNicks.clear();

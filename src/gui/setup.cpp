@@ -165,8 +165,9 @@ void Setup::action(const gcn::ActionEvent &event)
         if (!statusWindow)
             return;
 
-        for (std::list<Window*>::const_iterator it = mWindowsToReset.begin();
-             it != mWindowsToReset.end(); ++it)
+        for (std::list<Window*>::const_iterator it = mWindowsToReset.begin(),
+             it_end = mWindowsToReset.end();
+             it != it_end; ++it)
         {
             if (*it)
                 (*it)->resetToDefaultSize();
@@ -181,8 +182,8 @@ void Setup::setInGame(bool inGame)
 
 void Setup::externalUpdate()
 {
-    for (std::list<SetupTab*>::const_iterator it = mTabs.begin();
-         it != mTabs.end(); ++it)
+    for (std::list<SetupTab*>::const_iterator it = mTabs.begin(), it_end = mTabs.end();
+         it != it_end; ++ it)
     {
         if (*it)
             (*it)->externalUpdated();

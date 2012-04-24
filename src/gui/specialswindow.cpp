@@ -134,8 +134,8 @@ void SpecialsWindow::draw(gcn::Graphics *graphics)
     unsigned int found = 0; // number of entries in specialData
                             // which match mEntries
 
-    for (std::map<int, Special>::const_iterator i = specialData.begin();
-         i != specialData.end(); ++i)
+    for (std::map<int, Special>::const_iterator i = specialData.begin(),
+         i_end = specialData.end(); i != i_end; ++i)
     {
         std::map<int, SpecialEntry *>::const_iterator
             e = mEntries.find(i->first);
@@ -167,9 +167,8 @@ void SpecialsWindow::rebuild(const std::map<int, Special> &specialData)
     mEntries.clear();
     int vPos = 0; //vertical position of next placed element
 
-    for (std::map<int, Special>::const_iterator i = specialData.begin();
-         i != specialData.end();
-         ++i)
+    for (std::map<int, Special>::const_iterator i = specialData.begin(),
+         i_end = specialData.end(); i != i_end; ++i)
     {
         logger->log("Updating special GUI for %d", i->first);
 

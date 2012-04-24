@@ -55,8 +55,7 @@ void WidgetGroup::addButton(std::string text, std::string tag)
 
 void WidgetGroup::action(const gcn::ActionEvent &event)
 {
-    ActionListenerIterator iter;
-    for (iter = mActionListeners.begin();
+    for (ActionListenerIterator iter = mActionListeners.begin();
          iter != mActionListeners.end(); ++iter)
     {
         (*iter)->action(event);

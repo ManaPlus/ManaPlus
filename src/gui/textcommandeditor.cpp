@@ -87,7 +87,7 @@ public:
     }
 
     virtual ~IconsModal()
-    {}
+    { }
 
     virtual int getNumberOfElements()
     {
