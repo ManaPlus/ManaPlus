@@ -41,6 +41,7 @@ src/gui/sdlinput.cpp
 src/gui/sdlinput.h
 src/gui/selldialog.cpp
 src/gui/serverdialog.cpp
+src/gui/setupactiondata.h
 src/gui/setup_audio.cpp
 src/gui/setup_chat.cpp
 src/gui/setup_colors.cpp

@@ -1,13 +1,10 @@
 SET(FILES
-    arrow_up.gif
-    arrow_down.gif
-    arrow_left.gif
-    arrow_right.gif
-    error.png
-    error.xml
-    manaplus_emotions.png
-    manaplus_emote.xml
-    manaplus_emotes.xml
+    de.po
+    es.po
+    fr.po
+    pl.po
+    pt_BR.po
+    ru.po
     )
 
-INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/graphics/sprites)
+INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/translations/help)

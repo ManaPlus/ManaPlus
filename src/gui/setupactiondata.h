@@ -1427,7 +1427,7 @@ static SetupActionData setupActionData7[] =
 static SetupActionData setupActionData8[] =
 {
     {
-        N_("Move selecttion"),
+        N_("Move & selection"),
         Input::KEY_NO_VALUE,
         "",
     },

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-04-13 02:11+0300\n"
-"PO-Revision-Date: 2012-04-12 23:24+0000\n"
+"POT-Creation-Date: 2012-04-25 03:06+0300\n"
+"PO-Revision-Date: 2012-04-25 00:08+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: src/actionmanager.cpp:817
+#: src/actionmanager.cpp:821
 msgid "Ignoring incoming trade requests"
 msgstr "Kereskedési kérelmek elutasítása"
 
-#: src/actionmanager.cpp:826
+#: src/actionmanager.cpp:830
 msgid "Accepting incoming trade requests"
 msgstr "Kereskedési kérelmek elfogadása"
 
-#: src/actorspritemanager.cpp:1162
+#: src/actorspritemanager.cpp:1163
 msgid "Visible on map"
 msgstr ""
 
@@ -43,109 +43,109 @@ msgid "miss"
 msgstr ""
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1595 src/gui/whoisonline.cpp:766
+#: src/being.cpp:1593 src/gui/whoisonline.cpp:765
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1600 src/gui/whoisonline.cpp:771
+#: src/being.cpp:1598 src/gui/whoisonline.cpp:770
 msgid "I"
 msgstr ""
 
-#: src/client.cpp:981 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:103
+#: src/client.cpp:1008 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
 msgid "Setup"
 msgstr "Beállítások"
 
-#: src/client.cpp:988 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:1015 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr ""
 
-#: src/client.cpp:993 src/gui/setup_video.cpp:237
+#: src/client.cpp:1020 src/gui/setup_video.cpp:237
 msgid "Video"
 msgstr "Videó"
 
-#: src/client.cpp:998
+#: src/client.cpp:1025
 msgid "Themes"
 msgstr ""
 
-#: src/client.cpp:1084
+#: src/client.cpp:1111
 msgid "Connecting to server"
 msgstr ""
 
-#: src/client.cpp:1122
+#: src/client.cpp:1149
 msgid "Logging in"
 msgstr ""
 
-#: src/client.cpp:1156
+#: src/client.cpp:1183
 msgid "Entering game world"
 msgstr ""
 
-#: src/client.cpp:1260
+#: src/client.cpp:1287
 msgid "Requesting characters"
 msgstr ""
 
-#: src/client.cpp:1295
+#: src/client.cpp:1322
 msgid "Connecting to the game server"
 msgstr ""
 
-#: src/client.cpp:1305
+#: src/client.cpp:1332
 msgid "Changing game servers"
 msgstr ""
 
-#: src/client.cpp:1348 src/client.cpp:1356 src/client.cpp:1491
+#: src/client.cpp:1375 src/client.cpp:1383 src/client.cpp:1518
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
-#: src/gui/charcreatedialog.cpp:277 src/gui/charselectdialog.cpp:256
-#: src/gui/editserverdialog.cpp:174 src/gui/register.cpp:239
+#: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
+#: src/gui/editserverdialog.cpp:176 src/gui/register.cpp:239
 #: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:170
 #: src/net/ea/charserverhandler.cpp:188 src/net/manaserv/charhandler.cpp:184
 #: src/net/manaserv/charhandler.cpp:227
 msgid "Error"
 msgstr "Hiba"
 
-#: src/client.cpp:1366
+#: src/client.cpp:1393
 msgid "Requesting registration details"
 msgstr ""
 
-#: src/client.cpp:1392
+#: src/client.cpp:1419
 msgid "Password Change"
 msgstr ""
 
-#: src/client.cpp:1393
+#: src/client.cpp:1420
 msgid "Password changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1412
+#: src/client.cpp:1439
 msgid "Email Change"
 msgstr ""
 
-#: src/client.cpp:1413
+#: src/client.cpp:1440
 msgid "Email changed successfully!"
 msgstr ""
 
-#: src/client.cpp:1433
+#: src/client.cpp:1460
 msgid "Unregister Successful"
 msgstr ""
 
-#: src/client.cpp:1434
+#: src/client.cpp:1461
 msgid "Farewell, come back any time..."
 msgstr ""
 
-#: src/client.cpp:1653 src/client.cpp:1686 src/client.cpp:1701
-#: src/client.cpp:2133 src/client.cpp:2140
+#: src/client.cpp:1680 src/client.cpp:1713 src/client.cpp:1728
+#: src/client.cpp:2164 src/client.cpp:2171
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr ""
 
-#: src/client.cpp:1840
+#: src/client.cpp:1871
 #, c-format
 msgid "Invalid update host: %s"
 msgstr ""
 
-#: src/client.cpp:1874 src/client.cpp:1880
+#: src/client.cpp:1905 src/client.cpp:1911
 msgid "Error creating updates directory!"
 msgstr "Hiba a frissítési könyvtár létrehozása közben!"
 
-#: src/client.cpp:1901
+#: src/client.cpp:1932
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -314,11 +314,11 @@ msgstr ""
 msgid "Deleted:"
 msgstr ""
 
-#: src/commandhandler.cpp:1251 src/commandhandler.cpp:1258
+#: src/commandhandler.cpp:1252 src/commandhandler.cpp:1259
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1253 src/commandhandler.cpp:1260
+#: src/commandhandler.cpp:1254 src/commandhandler.cpp:1261
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -390,19 +390,19 @@ msgstr "Név"
 
 #: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:139
 #: src/gui/popupmenu.cpp:309 src/gui/popupmenu.cpp:693
-#: src/gui/setup_input.cpp:74 src/net/tmwa/generalhandler.cpp:271
+#: src/gui/setupactiondata.h:53 src/net/tmwa/generalhandler.cpp:271
 msgid "Attack"
 msgstr "Támadás"
 
 #: src/gui/botcheckerwindow.cpp:299 src/gui/popupmenu.cpp:298
-#: src/gui/setup_input.cpp:102
+#: src/gui/setupactiondata.h:88
 msgid "Talk"
 msgstr "Csevegés"
 
 #: src/gui/botcheckerwindow.cpp:300 src/gui/popupmenu.cpp:270
 #: src/gui/popupmenu.cpp:302 src/gui/popupmenu.cpp:483
 #: src/gui/popupmenu.cpp:594 src/gui/popupmenu.cpp:759
-#: src/gui/popupmenu.cpp:846
+#: src/gui/popupmenu.cpp:846 src/gui/setupactiondata.h:1542
 msgid "Move"
 msgstr ""
 
@@ -434,7 +434,7 @@ msgstr ""
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:107 src/gui/itemamountwindow.cpp:205
 #: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:121
-#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:776
+#: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:777
 msgid "+"
 msgstr ""
 
@@ -442,25 +442,25 @@ msgstr ""
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:110 src/gui/itemamountwindow.cpp:204
 #: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:122
-#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:788
+#: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:789
 msgid "-"
 msgstr ""
 
-#: src/gui/buydialog.cpp:112 src/gui/quitdialog.cpp:47
-#: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
-#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:261
-#: src/gui/setup_input.cpp:158
+#: src/gui/buydialog.cpp:112 src/gui/quitdialog.cpp:49
+#: src/gui/quitdialog.cpp:52 src/gui/quitdialog.cpp:53
+#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:263
+#: src/gui/setupactiondata.h:158
 msgid "Quit"
 msgstr "Kilépés"
 
 #: src/gui/buydialog.cpp:113 src/gui/selldialog.cpp:95
-#: src/gui/statuswindow.cpp:521 src/gui/statuswindow.cpp:576
-#: src/gui/statuswindow.cpp:775 src/gui/statuswindow.cpp:806
+#: src/gui/statuswindow.cpp:522 src/gui/statuswindow.cpp:577
+#: src/gui/statuswindow.cpp:776 src/gui/statuswindow.cpp:807
 msgid "Max"
 msgstr "Max."
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:176 src/gui/setup_other.cpp:141
+#: src/gui/inventorywindow.cpp:177 src/gui/setup_other.cpp:141
 msgid "Shop"
 msgstr "Üzlet"
 
@@ -472,22 +472,23 @@ msgid "Sell"
 msgstr "Eladás"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
-#: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:124
-#: src/gui/connectiondialog.cpp:47 src/gui/editserverdialog.cpp:79
+#: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:126
+#: src/gui/connectiondialog.cpp:47 src/gui/editserverdialog.cpp:81
 #: src/gui/itemamountwindow.cpp:207 src/gui/npcpostdialog.cpp:58
 #: src/gui/popupmenu.cpp:350 src/gui/popupmenu.cpp:387
 #: src/gui/popupmenu.cpp:524 src/gui/popupmenu.cpp:552
 #: src/gui/popupmenu.cpp:578 src/gui/popupmenu.cpp:597
 #: src/gui/popupmenu.cpp:613 src/gui/popupmenu.cpp:634
-#: src/gui/popupmenu.cpp:862 src/gui/popupmenu.cpp:888
-#: src/gui/popupmenu.cpp:1890 src/gui/popupmenu.cpp:1920
-#: src/gui/popupmenu.cpp:1978 src/gui/popupmenu.cpp:2024
-#: src/gui/popupmenu.cpp:2061 src/gui/popupmenu.cpp:2102
-#: src/gui/popupmenu.cpp:2156 src/gui/popupmenu.cpp:2178
-#: src/gui/quitdialog.cpp:55 src/gui/register.cpp:83 src/gui/setup.cpp:73
-#: src/gui/socialwindow.cpp:1200 src/gui/textcommandeditor.cpp:241
+#: src/gui/popupmenu.cpp:862 src/gui/popupmenu.cpp:887
+#: src/gui/popupmenu.cpp:1889 src/gui/popupmenu.cpp:1919
+#: src/gui/popupmenu.cpp:1977 src/gui/popupmenu.cpp:2023
+#: src/gui/popupmenu.cpp:2060 src/gui/popupmenu.cpp:2101
+#: src/gui/popupmenu.cpp:2155 src/gui/popupmenu.cpp:2177
+#: src/gui/quitdialog.cpp:57 src/gui/register.cpp:83
+#: src/gui/setupactiondata.h:1490 src/gui/setup.cpp:73
+#: src/gui/socialwindow.cpp:1209 src/gui/textcommandeditor.cpp:241
 #: src/gui/textdialog.cpp:51 src/gui/unregisterdialog.cpp:59
-#: src/gui/updaterwindow.cpp:169
+#: src/gui/updaterwindow.cpp:171
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -519,11 +520,11 @@ msgid "The email address entries mismatch."
 msgstr ""
 
 #: src/gui/changepassworddialog.cpp:50 src/gui/changepassworddialog.cpp:59
-#: src/gui/charselectdialog.cpp:140
+#: src/gui/charselectdialog.cpp:155
 msgid "Change Password"
 msgstr "Jelszó módosítása"
 
-#: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:126
+#: src/gui/changepassworddialog.cpp:64 src/gui/logindialog.cpp:128
 #: src/gui/register.cpp:77 src/gui/unregisterdialog.cpp:56
 msgid "Password:"
 msgstr "Jelszó:"
@@ -550,199 +551,201 @@ msgstr ""
 msgid "The new password entries mismatch."
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:70
+#: src/gui/charcreatedialog.cpp:72
 msgid "New Character"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:99 src/gui/editserverdialog.cpp:61
-#: src/gui/logindialog.cpp:125 src/gui/register.cpp:76
+#: src/gui/charcreatedialog.cpp:101 src/gui/editserverdialog.cpp:63
+#: src/gui/logindialog.cpp:127 src/gui/register.cpp:76
 msgid "Name:"
 msgstr "Név:"
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'next'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:102 src/gui/charcreatedialog.cpp:108
-#: src/gui/charcreatedialog.cpp:113 src/gui/charcreatedialog.cpp:117
+#: src/gui/charcreatedialog.cpp:104 src/gui/charcreatedialog.cpp:110
+#: src/gui/charcreatedialog.cpp:115 src/gui/charcreatedialog.cpp:119
 #: src/gui/outfitwindow.cpp:89
 msgid ">"
 msgstr ""
 
 #. TRANSLATORS: This is a narrow symbol used to denote 'previous'.
 #. You may change this symbol if your language uses another.
-#: src/gui/charcreatedialog.cpp:105 src/gui/charcreatedialog.cpp:109
-#: src/gui/charcreatedialog.cpp:118 src/gui/outfitwindow.cpp:88
+#: src/gui/charcreatedialog.cpp:107 src/gui/charcreatedialog.cpp:111
+#: src/gui/charcreatedialog.cpp:120 src/gui/outfitwindow.cpp:88
 msgid "<"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:106
+#: src/gui/charcreatedialog.cpp:108
 msgid "Hair color:"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:110
+#: src/gui/charcreatedialog.cpp:112
 msgid "Hair style:"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:112
+#: src/gui/charcreatedialog.cpp:114
 msgid "^"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:119
+#: src/gui/charcreatedialog.cpp:121
 msgid "Race:"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:123 src/gui/charselectdialog.cpp:483
-#: src/gui/socialwindow.cpp:1262
+#: src/gui/charcreatedialog.cpp:125 src/gui/charselectdialog.cpp:630
+#: src/gui/socialwindow.cpp:1271
 msgid "Create"
 msgstr "Létrehozás"
 
-#: src/gui/charcreatedialog.cpp:125 src/gui/register.cpp:99
+#: src/gui/charcreatedialog.cpp:127 src/gui/register.cpp:99
 msgid "Male"
 msgstr "Férfi"
 
-#: src/gui/charcreatedialog.cpp:126 src/gui/register.cpp:100
+#: src/gui/charcreatedialog.cpp:128 src/gui/register.cpp:100
 msgid "Female"
 msgstr "Nő"
 
-#: src/gui/charcreatedialog.cpp:127 src/gui/register.cpp:103
-#: src/gui/setup_audio.cpp:109 src/gui/setup_chat.cpp:128
-#: src/gui/setup_other.cpp:193 src/gui/setup_visual.cpp:89
+#: src/gui/charcreatedialog.cpp:129 src/gui/register.cpp:103
+#: src/gui/setupactiondata.h:1475 src/gui/setupactiondata.h:1548
+#: src/gui/setup_audio.cpp:120 src/gui/setup_chat.cpp:128
+#: src/gui/setup_other.cpp:193 src/gui/setup_visual.cpp:96
 msgid "Other"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:147 src/gui/charcreatedialog.cpp:373
+#: src/gui/charcreatedialog.cpp:149 src/gui/charcreatedialog.cpp:377
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Kérlek oszd el a pontjaidat (%d van még)"
 
-#: src/gui/charcreatedialog.cpp:278
+#: src/gui/charcreatedialog.cpp:282
 msgid "Your name needs to be at least 4 characters."
 msgstr "A nevednek minimum 4 karakternek kell lennie."
 
-#: src/gui/charcreatedialog.cpp:364
+#: src/gui/charcreatedialog.cpp:368
 msgid "Character stats OK"
 msgstr "Karakter statok rendben"
 
-#: src/gui/charcreatedialog.cpp:378
+#: src/gui/charcreatedialog.cpp:382
 #, c-format
 msgid "Please remove %d points"
 msgstr "Kérlek távolíts el %d pontot"
 
-#: src/gui/charselectdialog.cpp:76
+#: src/gui/charselectdialog.cpp:79
 msgid "Confirm Character Delete"
 msgstr "Karakter törlésének megerősítése"
 
-#: src/gui/charselectdialog.cpp:77
+#: src/gui/charselectdialog.cpp:80
 msgid "Are you sure you want to delete this character?"
 msgstr "Biztos hogy ki akarod törölni ezt a karaktert?"
 
-#: src/gui/charselectdialog.cpp:125
+#: src/gui/charselectdialog.cpp:140
 msgid "Account and Character Management"
 msgstr "Fiók és Karakter Menedzsment"
 
-#: src/gui/charselectdialog.cpp:139
+#: src/gui/charselectdialog.cpp:154
 msgid "Switch Login"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:154 src/gui/unregisterdialog.cpp:50
+#: src/gui/charselectdialog.cpp:169 src/gui/unregisterdialog.cpp:50
 #: src/gui/unregisterdialog.cpp:58
 msgid "Unregister"
 msgstr "Regisztráció megszüntetése"
 
-#: src/gui/charselectdialog.cpp:163
+#: src/gui/charselectdialog.cpp:178
 msgid "Change Email"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:256
+#: src/gui/charselectdialog.cpp:271
 msgid "Incorrect password"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:289
+#: src/gui/charselectdialog.cpp:436
 msgid "Enter password for deleting character"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:289
+#: src/gui/charselectdialog.cpp:436
 msgid "Enter password:"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:413 src/gui/serverdialog.cpp:266
-#: src/gui/setup_relations.cpp:246 src/gui/shopwindow.cpp:123
-#: src/gui/shopwindow.cpp:126 src/gui/textcommandeditor.cpp:244
+#: src/gui/charselectdialog.cpp:560 src/gui/serverdialog.cpp:268
+#: src/gui/setupactiondata.h:1495 src/gui/setup_relations.cpp:245
+#: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
+#: src/gui/textcommandeditor.cpp:244
 msgid "Delete"
 msgstr "Törlés"
 
-#: src/gui/charselectdialog.cpp:471
+#: src/gui/charselectdialog.cpp:618
 msgid "Choose"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:474
+#: src/gui/charselectdialog.cpp:621
 #, c-format
 msgid "Level %d"
 msgstr ""
 
-#: src/gui/charselectdialog.cpp:485 src/gui/charselectdialog.cpp:486
+#: src/gui/charselectdialog.cpp:632 src/gui/charselectdialog.cpp:633
 msgid "(empty)"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:119 src/gui/inventorywindow.cpp:71
-#: src/gui/setup_visual.cpp:95
+#: src/gui/chatwindow.cpp:120 src/gui/inventorywindow.cpp:72
+#: src/gui/setup_visual.cpp:102
 msgid "default"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:120
+#: src/gui/chatwindow.cpp:121
 msgid "black"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:121
+#: src/gui/chatwindow.cpp:122
 msgid "red"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:122
+#: src/gui/chatwindow.cpp:123
 msgid "green"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:123
+#: src/gui/chatwindow.cpp:124
 msgid "blue"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:124
+#: src/gui/chatwindow.cpp:125
 msgid "gold"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:125
+#: src/gui/chatwindow.cpp:126
 msgid "yellow"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:126
+#: src/gui/chatwindow.cpp:127
 msgid "pink"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:127
+#: src/gui/chatwindow.cpp:128
 msgid "purple"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:128
+#: src/gui/chatwindow.cpp:129
 msgid "grey"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:129
+#: src/gui/chatwindow.cpp:130
 msgid "brown"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:130
+#: src/gui/chatwindow.cpp:131
 msgid "rainbow 1"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:131
+#: src/gui/chatwindow.cpp:132
 msgid "rainbow 2"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:132
+#: src/gui/chatwindow.cpp:133
 msgid "rainbow 3"
 msgstr ""
 
-#: src/gui/chatwindow.cpp:150 src/gui/inventorywindow.cpp:91
-#: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:79
-#: src/gui/logindialog.cpp:107 src/gui/setup_relations.cpp:224
+#: src/gui/chatwindow.cpp:151 src/gui/inventorywindow.cpp:92
+#: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:81
+#: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:224
 #: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
 #: src/gui/setup_video.cpp:209 src/gui/textcommandeditor.cpp:100
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:160
@@ -750,16 +753,17 @@ msgstr ""
 msgid "???"
 msgstr "???"
 
-#: src/gui/chatwindow.cpp:160 src/gui/setup_chat.cpp:47
+#: src/gui/chatwindow.cpp:161 src/gui/setupactiondata.h:1547
+#: src/gui/setup_chat.cpp:47
 msgid "Chat"
 msgstr "Chat"
 
-#: src/gui/chatwindow.cpp:669
+#: src/gui/chatwindow.cpp:676
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:1080
+#: src/gui/chatwindow.cpp:1089
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Üzenet %s számára: %s"
@@ -937,7 +941,7 @@ msgid "Did You Know?"
 msgstr ""
 
 #: src/gui/didyouknowwindow.cpp:67 src/gui/helpwindow.cpp:63
-#: src/gui/inventorywindow.cpp:204 src/gui/npcdialog.cpp:54
+#: src/gui/inventorywindow.cpp:205 src/gui/npcdialog.cpp:54
 #: src/gui/popupmenu.cpp:651 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "Bezár"
@@ -954,43 +958,43 @@ msgstr ""
 msgid "Auto open this window"
 msgstr ""
 
-#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:78
+#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:80
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:48
-#: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
+#: src/gui/quitdialog.cpp:56 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "Ok"
 
-#: src/gui/editserverdialog.cpp:54
+#: src/gui/editserverdialog.cpp:56
 msgid "Edit Server"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:62
+#: src/gui/editserverdialog.cpp:64
 msgid "Address:"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:63
+#: src/gui/editserverdialog.cpp:65
 msgid "Port:"
 msgstr "Port:"
 
-#: src/gui/editserverdialog.cpp:64
+#: src/gui/editserverdialog.cpp:66
 msgid "Server type:"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:65
+#: src/gui/editserverdialog.cpp:67
 msgid "Description:"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:175
+#: src/gui/editserverdialog.cpp:177
 msgid "Please at least type both the address and the port of the server."
 msgstr ""
 
-#: src/gui/equipmentwindow.cpp:65 src/gui/windowmenu.cpp:77
+#: src/gui/equipmentwindow.cpp:65 src/gui/windowmenu.cpp:79
 msgid "Equipment"
 msgstr "Felszerelés"
 
-#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:161
-#: src/gui/inventorywindow.cpp:545 src/gui/popupmenu.cpp:1852
-#: src/gui/popupmenu.cpp:1948 src/gui/popupmenu.cpp:1995
+#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:162
+#: src/gui/inventorywindow.cpp:532 src/gui/popupmenu.cpp:1851
+#: src/gui/popupmenu.cpp:1947 src/gui/popupmenu.cpp:1994
 msgid "Unequip"
 msgstr "Nem használ"
 
@@ -998,85 +1002,85 @@ msgstr "Nem használ"
 msgid "Help"
 msgstr "Súgó"
 
-#: src/gui/inventorywindow.cpp:72
+#: src/gui/inventorywindow.cpp:73
 msgid "by name"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:73
+#: src/gui/inventorywindow.cpp:74
 msgid "by id"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:74
+#: src/gui/inventorywindow.cpp:75
 msgid "by weight"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:75
+#: src/gui/inventorywindow.cpp:76
 msgid "by amount"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:76
+#: src/gui/inventorywindow.cpp:77
 msgid "by type"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:113 src/gui/windowmenu.cpp:79
-#: src/inventory.cpp:250
+#: src/gui/inventorywindow.cpp:114 src/gui/windowmenu.cpp:81
+#: src/inventory.cpp:251
 msgid "Inventory"
 msgstr "Táska"
 
-#: src/gui/inventorywindow.cpp:138
+#: src/gui/inventorywindow.cpp:139
 msgid "Slots:"
 msgstr "Hely:"
 
-#: src/gui/inventorywindow.cpp:150
+#: src/gui/inventorywindow.cpp:151
 msgid "Filter:"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:159 src/gui/inventorywindow.cpp:547
-#: src/gui/popupmenu.cpp:1854 src/gui/popupmenu.cpp:1950
-#: src/gui/popupmenu.cpp:1997
+#: src/gui/inventorywindow.cpp:160 src/gui/inventorywindow.cpp:534
+#: src/gui/popupmenu.cpp:1853 src/gui/popupmenu.cpp:1949
+#: src/gui/popupmenu.cpp:1996
 msgid "Equip"
 msgstr "Használ"
 
-#: src/gui/inventorywindow.cpp:160 src/gui/inventorywindow.cpp:551
-#: src/gui/popupmenu.cpp:1858 src/gui/popupmenu.cpp:1915
-#: src/gui/popupmenu.cpp:1954 src/gui/popupmenu.cpp:2001
+#: src/gui/inventorywindow.cpp:161 src/gui/inventorywindow.cpp:538
+#: src/gui/popupmenu.cpp:1857 src/gui/popupmenu.cpp:1914
+#: src/gui/popupmenu.cpp:1953 src/gui/popupmenu.cpp:2000
 #: src/gui/skilldialog.cpp:242
 msgid "Use"
 msgstr "Bevet"
 
-#: src/gui/inventorywindow.cpp:173 src/gui/inventorywindow.cpp:647
-#: src/gui/popupmenu.cpp:1863 src/gui/popupmenu.cpp:1959
-#: src/gui/popupmenu.cpp:2006
+#: src/gui/inventorywindow.cpp:174 src/gui/inventorywindow.cpp:634
+#: src/gui/popupmenu.cpp:1862 src/gui/popupmenu.cpp:1958
+#: src/gui/popupmenu.cpp:2005
 msgid "Drop..."
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:174 src/gui/popupmenu.cpp:1872
-#: src/gui/popupmenu.cpp:1968 src/gui/popupmenu.cpp:2015
+#: src/gui/inventorywindow.cpp:175 src/gui/popupmenu.cpp:1871
+#: src/gui/popupmenu.cpp:1967 src/gui/popupmenu.cpp:2014
 msgid "Split"
 msgstr "Felosztás"
 
-#: src/gui/inventorywindow.cpp:175 src/gui/outfitwindow.cpp:64
-#: src/gui/popupmenu.cpp:609
+#: src/gui/inventorywindow.cpp:176 src/gui/outfitwindow.cpp:64
+#: src/gui/popupmenu.cpp:609 src/gui/setupactiondata.h:1546
 msgid "Outfits"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:178
+#: src/gui/inventorywindow.cpp:179
 msgid "Weight:"
 msgstr "Súly:"
 
-#: src/gui/inventorywindow.cpp:202 src/gui/inventorywindow.cpp:638
-#: src/gui/popupmenu.cpp:1838 src/gui/popupmenu.cpp:1971
-#: src/gui/popupmenu.cpp:2018 src/gui/setup.cpp:74
+#: src/gui/inventorywindow.cpp:203 src/gui/inventorywindow.cpp:625
+#: src/gui/popupmenu.cpp:1837 src/gui/popupmenu.cpp:1970
+#: src/gui/popupmenu.cpp:2017 src/gui/setup.cpp:74
 msgid "Store"
 msgstr "Raktároz"
 
-#: src/gui/inventorywindow.cpp:203 src/gui/popupmenu.cpp:1879
+#: src/gui/inventorywindow.cpp:204 src/gui/popupmenu.cpp:1878
 msgid "Retrieve"
 msgstr "Magához vesz"
 
-#: src/gui/inventorywindow.cpp:649 src/gui/popupmenu.cpp:1868
-#: src/gui/popupmenu.cpp:1964 src/gui/popupmenu.cpp:2011
-#: src/gui/windowmenu.cpp:100
+#: src/gui/inventorywindow.cpp:636 src/gui/popupmenu.cpp:1867
+#: src/gui/popupmenu.cpp:1963 src/gui/popupmenu.cpp:2010
+#: src/gui/windowmenu.cpp:102
 msgid "Drop"
 msgstr "Eldob"
 
@@ -1125,7 +1129,7 @@ msgstr ""
 msgid "Weight: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:72
+#: src/gui/killstats.cpp:45 src/gui/windowmenu.cpp:74
 msgid "Kill stats"
 msgstr ""
 
@@ -1137,43 +1141,49 @@ msgstr ""
 msgid "Reset timer"
 msgstr ""
 
-#: src/gui/killstats.cpp:71 src/gui/killstats.cpp:207
+#: src/gui/killstats.cpp:71 src/gui/killstats.cpp:206
 #, c-format
 msgid "Level: %d at %f%%"
 msgstr ""
 
-#: src/gui/killstats.cpp:75 src/gui/killstats.cpp:212
+#: src/gui/killstats.cpp:75 src/gui/killstats.cpp:211
 #, c-format
 msgid "Exp: %d/%d Left: %d"
 msgstr ""
 
-#: src/gui/killstats.cpp:78 src/gui/killstats.cpp:218
-#: src/gui/killstats.cpp:227
+#: src/gui/killstats.cpp:78 src/gui/killstats.cpp:217
+#: src/gui/killstats.cpp:228
 #, c-format
 msgid "1%% = %d exp, avg mob for 1%%: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:81 src/gui/killstats.cpp:144
-#: src/gui/killstats.cpp:236
+#: src/gui/killstats.cpp:81 src/gui/killstats.cpp:142
+#: src/gui/killstats.cpp:239
 #, c-format
 msgid "Kills: %s, total exp: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:83 src/gui/killstats.cpp:146
-#: src/gui/killstats.cpp:222 src/gui/killstats.cpp:232
+#: src/gui/killstats.cpp:82 src/gui/killstats.cpp:143
+#: src/gui/killstats.cpp:220 src/gui/killstats.cpp:232
 #, c-format
-msgid "Avg Exp: %s, No. of avg mob to next level: %s"
+msgid "Avg Exp: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:164
-#: src/gui/killstats.cpp:239
+#: src/gui/killstats.cpp:83 src/gui/killstats.cpp:145
+#: src/gui/killstats.cpp:224 src/gui/killstats.cpp:235
+#, c-format
+msgid "No. of avg mob to next level: %s"
+msgstr ""
+
+#: src/gui/killstats.cpp:84 src/gui/killstats.cpp:163
+#: src/gui/killstats.cpp:242
 #, c-format
 msgid "Kills/Min: %s, Exp/Min: %s"
 msgstr ""
 
 #: src/gui/killstats.cpp:86 src/gui/killstats.cpp:91 src/gui/killstats.cpp:96
-#: src/gui/killstats.cpp:291 src/gui/killstats.cpp:307
-#: src/gui/killstats.cpp:325
+#: src/gui/killstats.cpp:294 src/gui/killstats.cpp:310
+#: src/gui/killstats.cpp:328
 #, c-format
 msgid "Exp speed per %d min: %s"
 msgid_plural "Exp speed per %d min: %s"
@@ -1187,29 +1197,29 @@ msgid_plural "Time for next level per %d min: %s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/killstats.cpp:102 src/gui/killstats.cpp:243
+#: src/gui/killstats.cpp:102 src/gui/killstats.cpp:246
 msgid "Last kill exp:"
 msgstr ""
 
-#: src/gui/killstats.cpp:104 src/gui/killstats.cpp:357
-#: src/gui/killstats.cpp:363 src/gui/killstats.cpp:369
-#: src/gui/killstats.cpp:374
+#: src/gui/killstats.cpp:104 src/gui/killstats.cpp:360
+#: src/gui/killstats.cpp:366 src/gui/killstats.cpp:372
+#: src/gui/killstats.cpp:377
 msgid "Time before jacko spawn:"
 msgstr ""
 
-#: src/gui/killstats.cpp:296 src/gui/killstats.cpp:303
-#: src/gui/killstats.cpp:313 src/gui/killstats.cpp:320
-#: src/gui/killstats.cpp:332 src/gui/killstats.cpp:339
+#: src/gui/killstats.cpp:299 src/gui/killstats.cpp:306
+#: src/gui/killstats.cpp:316 src/gui/killstats.cpp:323
+#: src/gui/killstats.cpp:335 src/gui/killstats.cpp:342
 #, c-format
 msgid "  Time for next level: %s"
 msgstr ""
 
-#: src/gui/killstats.cpp:363
+#: src/gui/killstats.cpp:366
 #, c-format
 msgid "%s %d?"
 msgstr ""
 
-#: src/gui/killstats.cpp:369
+#: src/gui/killstats.cpp:372
 msgid "jacko spawning"
 msgstr ""
 
@@ -1217,48 +1227,48 @@ msgstr ""
 msgid "You have left the guild."
 msgstr ""
 
-#: src/gui/logindialog.cpp:60
+#: src/gui/logindialog.cpp:62
 msgid "Normal"
 msgstr ""
 
-#: src/gui/logindialog.cpp:61
+#: src/gui/logindialog.cpp:63
 msgid "Auto Close"
 msgstr ""
 
-#: src/gui/logindialog.cpp:62
+#: src/gui/logindialog.cpp:64
 msgid "Skip"
 msgstr ""
 
-#: src/gui/logindialog.cpp:117 src/gui/logindialog.cpp:172
+#: src/gui/logindialog.cpp:119 src/gui/logindialog.cpp:174
 msgid "Login"
 msgstr "Belépés"
 
-#: src/gui/logindialog.cpp:122 src/gui/widgets/chattab.cpp:172
+#: src/gui/logindialog.cpp:124 src/gui/widgets/chattab.cpp:172
 msgid "Server:"
 msgstr "Szerver:"
 
-#: src/gui/logindialog.cpp:129
+#: src/gui/logindialog.cpp:131
 #, c-format
 msgid "Update host: %s"
 msgstr ""
 
-#: src/gui/logindialog.cpp:145
+#: src/gui/logindialog.cpp:147
 msgid "Custom update host"
 msgstr ""
 
-#: src/gui/logindialog.cpp:159
+#: src/gui/logindialog.cpp:161
 msgid "Remember username"
 msgstr ""
 
-#: src/gui/logindialog.cpp:160
+#: src/gui/logindialog.cpp:162
 msgid "Update:"
 msgstr ""
 
-#: src/gui/logindialog.cpp:170 src/gui/register.cpp:66 src/gui/register.cpp:82
+#: src/gui/logindialog.cpp:172 src/gui/register.cpp:66 src/gui/register.cpp:82
 msgid "Register"
 msgstr "Regisztráció"
 
-#: src/gui/logindialog.cpp:171
+#: src/gui/logindialog.cpp:173
 msgid "Change Server"
 msgstr ""
 
@@ -1298,7 +1308,7 @@ msgstr ""
 msgid "status bar"
 msgstr ""
 
-#: src/gui/ministatuswindow.cpp:296 src/gui/ministatuswindow.cpp:336
+#: src/gui/ministatuswindow.cpp:299 src/gui/ministatuswindow.cpp:339
 msgid "Need"
 msgstr ""
 
@@ -1341,7 +1351,7 @@ msgid "Outfit: %d"
 msgstr ""
 
 #: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
-#: src/gui/windowmenu.cpp:312
+#: src/gui/windowmenu.cpp:315
 #, c-format
 msgid "Key: %s"
 msgstr ""
@@ -1425,7 +1435,7 @@ msgstr ""
 #: src/gui/popupmenu.cpp:184 src/gui/popupmenu.cpp:196
 #: src/gui/popupmenu.cpp:439 src/gui/popupmenu.cpp:459
 #: src/gui/popupmenu.cpp:729 src/gui/popupmenu.cpp:749
-#: src/playerrelations.cpp:463
+#: src/playerrelations.cpp:468
 msgid "Completely ignore"
 msgstr ""
 
@@ -1477,7 +1487,7 @@ msgid "Show Items"
 msgstr ""
 
 #: src/gui/popupmenu.cpp:272 src/gui/popupmenu.cpp:761
-#: src/gui/popupmenu.cpp:850 src/gui/popupmenu.cpp:2175
+#: src/gui/popupmenu.cpp:850 src/gui/popupmenu.cpp:2174
 msgid "Undress"
 msgstr ""
 
@@ -1529,8 +1539,8 @@ msgstr "Játékosok"
 msgid "Pick up"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:549 src/gui/popupmenu.cpp:1888
-#: src/gui/popupmenu.cpp:1972 src/gui/popupmenu.cpp:2019
+#: src/gui/popupmenu.cpp:549 src/gui/popupmenu.cpp:1887
+#: src/gui/popupmenu.cpp:1971 src/gui/popupmenu.cpp:2018
 msgid "Add to chat"
 msgstr ""
 
@@ -1542,8 +1552,8 @@ msgstr ""
 msgid "Rename"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:570 src/gui/popupmenu.cpp:2134
-#: src/gui/popupmenu.cpp:2145 src/gui/popupmenu.cpp:2149
+#: src/gui/popupmenu.cpp:570 src/gui/popupmenu.cpp:2133
+#: src/gui/popupmenu.cpp:2144 src/gui/popupmenu.cpp:2148
 msgid "Remove"
 msgstr ""
 
@@ -1559,7 +1569,7 @@ msgstr ""
 msgid "Clear outfit"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:629 src/gui/windowmenu.cpp:99
+#: src/gui/popupmenu.cpp:629 src/gui/windowmenu.cpp:101
 msgid "Spells"
 msgstr ""
 
@@ -1595,7 +1605,7 @@ msgstr ""
 msgid "Disable away"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:672 src/gui/socialwindow.cpp:1264
+#: src/gui/popupmenu.cpp:672 src/gui/socialwindow.cpp:1273
 msgid "Leave"
 msgstr ""
 
@@ -1608,113 +1618,113 @@ msgid "Change guild position"
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1378
+#: src/gui/popupmenu.cpp:1377
 msgid "Rename map sign          "
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1380
+#: src/gui/popupmenu.cpp:1379
 msgid "Name:                    "
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1422
+#: src/gui/popupmenu.cpp:1421
 msgid "Player comment            "
 msgstr ""
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1424
+#: src/gui/popupmenu.cpp:1423
 msgid "Comment:                      "
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1826
+#: src/gui/popupmenu.cpp:1825
 msgid "Add to trade"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1830
+#: src/gui/popupmenu.cpp:1829
 msgid "Add to trade 10"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1831
+#: src/gui/popupmenu.cpp:1830
 msgid "Add to trade half"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1832
+#: src/gui/popupmenu.cpp:1831
 msgid "Add to trade all"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1842
+#: src/gui/popupmenu.cpp:1841
 msgid "Store 10"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1843
+#: src/gui/popupmenu.cpp:1842
 msgid "Store half"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1844
+#: src/gui/popupmenu.cpp:1843
 msgid "Store all"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1864 src/gui/popupmenu.cpp:1960
-#: src/gui/popupmenu.cpp:2007
+#: src/gui/popupmenu.cpp:1863 src/gui/popupmenu.cpp:1959
+#: src/gui/popupmenu.cpp:2006
 msgid "Drop all"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1883
+#: src/gui/popupmenu.cpp:1882
 msgid "Retrieve 10"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1884
+#: src/gui/popupmenu.cpp:1883
 msgid "Retrieve half"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1885
+#: src/gui/popupmenu.cpp:1884
 msgid "Retrieve all"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1918 src/gui/popupmenu.cpp:1976
+#: src/gui/popupmenu.cpp:1917 src/gui/popupmenu.cpp:1975
 msgid "Load old item shortcuts"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2022
+#: src/gui/popupmenu.cpp:2021
 msgid "Clear drop window"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2050 src/gui/popupmenu.cpp:2087
+#: src/gui/popupmenu.cpp:2049 src/gui/popupmenu.cpp:2086
 msgid "Hide"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2056 src/gui/popupmenu.cpp:2093
+#: src/gui/popupmenu.cpp:2055 src/gui/popupmenu.cpp:2092
 msgid "Show"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2099
+#: src/gui/popupmenu.cpp:2098
 msgid "Reset yellow bar"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2101 src/gui/statuswindow.cpp:248
+#: src/gui/popupmenu.cpp:2100 src/gui/statuswindow.cpp:248
 msgid "Copy to chat"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2121 src/gui/setup_theme.cpp:62
-#: src/gui/setup_theme.cpp:119 src/gui/socialwindow.cpp:984
-#: src/gui/socialwindow.cpp:1019 src/gui/socialwindow.cpp:1054
+#: src/gui/popupmenu.cpp:2120 src/gui/setup_theme.cpp:62
+#: src/gui/setup_theme.cpp:119 src/gui/socialwindow.cpp:992
+#: src/gui/socialwindow.cpp:1028 src/gui/socialwindow.cpp:1064
 msgid "(default)"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2131 src/gui/popupmenu.cpp:2142
+#: src/gui/popupmenu.cpp:2130 src/gui/popupmenu.cpp:2141
 msgid "Move up"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2133 src/gui/popupmenu.cpp:2144
+#: src/gui/popupmenu.cpp:2132 src/gui/popupmenu.cpp:2143
 msgid "Move down"
 msgstr ""
 
-#: src/gui/quitdialog.cpp:52
+#: src/gui/quitdialog.cpp:54
 msgid "Switch server"
 msgstr "Szerver változtatása"
 
-#: src/gui/quitdialog.cpp:53
+#: src/gui/quitdialog.cpp:55
 msgid "Switch character"
 msgstr "Karakter változtatása"
 
@@ -1750,139 +1760,705 @@ msgstr "A jelszónak legfeljebb %d karakter hosszúnak kell lennie."
 msgid "Passwords do not match."
 msgstr "A jelszavak nem egyeznek."
 
-#: src/gui/serverdialog.cpp:228
+#: src/gui/serverdialog.cpp:230
 msgid "Choose Your Server"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:239
+#: src/gui/serverdialog.cpp:241
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:243
+#: src/gui/serverdialog.cpp:245
 msgid "Use same ip for game sub servers"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:262
+#: src/gui/serverdialog.cpp:264
 msgid "Load"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:263
+#: src/gui/serverdialog.cpp:265
 msgid "Connect"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:264 src/gui/shopwindow.cpp:122
+#: src/gui/serverdialog.cpp:266 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/tradewindow.cpp:89
 msgid "Add"
 msgstr "Hozzáad"
 
-#: src/gui/serverdialog.cpp:265 src/gui/widgets/setupitem.cpp:285
+#: src/gui/serverdialog.cpp:267 src/gui/widgets/setupitem.cpp:285
 #: src/gui/widgets/setupitem.cpp:409
 msgid "Edit"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:444
+#: src/gui/serverdialog.cpp:484
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:449
+#: src/gui/serverdialog.cpp:489
 msgid "Waiting for server..."
 msgstr ""
 
-#: src/gui/serverdialog.cpp:453
+#: src/gui/serverdialog.cpp:493
 msgid "Preparing download"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:457
+#: src/gui/serverdialog.cpp:497
 msgid "Error retreiving server list!"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:545
+#: src/gui/serverdialog.cpp:585
 msgid "requires a newer version"
 msgstr ""
 
-#: src/gui/serverdialog.cpp:547
+#: src/gui/serverdialog.cpp:587
 #, c-format
 msgid "requires v%s"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:45
+#: src/gui/setupactiondata.h:48
+msgid "Target and attack keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:58
+msgid "Target & Attack"
+msgstr "Kijelöl és Támad"
+
+#: src/gui/setupactiondata.h:63
+msgid "Move to Target"
+msgstr ""
+
+#: src/gui/setupactiondata.h:68
+msgid "Change Move to Target type"
+msgstr ""
+
+#: src/gui/setupactiondata.h:73
+msgid "Move to Home location"
+msgstr ""
+
+#: src/gui/setupactiondata.h:78
+msgid "Set home location"
+msgstr ""
+
+#: src/gui/setupactiondata.h:83
+msgid "Move to navigation point"
+msgstr ""
+
+#: src/gui/setupactiondata.h:93
+msgid "Stop Attack"
+msgstr "Támadás Megszüntetése"
+
+#: src/gui/setupactiondata.h:98
+msgid "Untarget"
+msgstr ""
+
+#: src/gui/setupactiondata.h:103
+msgid "Target monster"
+msgstr ""
+
+#: src/gui/setupactiondata.h:108
+msgid "Target NPC"
+msgstr "Gépjátékost Kijelöl"
+
+#: src/gui/setupactiondata.h:113
+msgid "Target Player"
+msgstr "Játékost Kijelöl"
+
+#: src/gui/setupactiondata.h:118
+msgid "Other Keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:123
+msgid "Pickup"
+msgstr "Felvesz"
+
+#: src/gui/setupactiondata.h:128
+msgid "Change Pickup Type"
+msgstr ""
+
+#: src/gui/setupactiondata.h:133
+msgid "Sit"
+msgstr "Ülés"
+
+#: src/gui/setupactiondata.h:138
+msgid "Screenshot"
+msgstr "Képernyőkép"
+
+#: src/gui/setupactiondata.h:143
+msgid "Enable/Disable Trading"
+msgstr "Üzletelés Engedélyezése/Tiltása"
+
+#: src/gui/setupactiondata.h:148
+msgid "Change Map View Mode"
+msgstr ""
+
+#: src/gui/setupactiondata.h:153
+msgid "Select OK"
+msgstr "Ok Kiválasztása"
+
+#: src/gui/setupactiondata.h:172
+msgid "Shortcuts modifiers keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:177
+msgid "Item Shortcuts Key"
+msgstr ""
+
+#: src/gui/setupactiondata.h:182
+msgid "Shortcuts keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:187 src/gui/setupactiondata.h:192
+#: src/gui/setupactiondata.h:197 src/gui/setupactiondata.h:202
+#: src/gui/setupactiondata.h:207 src/gui/setupactiondata.h:212
+#: src/gui/setupactiondata.h:217 src/gui/setupactiondata.h:222
+#: src/gui/setupactiondata.h:227 src/gui/setupactiondata.h:232
+#: src/gui/setupactiondata.h:237 src/gui/setupactiondata.h:242
+#: src/gui/setupactiondata.h:247 src/gui/setupactiondata.h:252
+#: src/gui/setupactiondata.h:257 src/gui/setupactiondata.h:262
+#: src/gui/setupactiondata.h:267 src/gui/setupactiondata.h:272
+#: src/gui/setupactiondata.h:277 src/gui/setupactiondata.h:282
+#, c-format
+msgid "Item Shortcut %d"
+msgstr "Gyorsmenü %d"
+
+#: src/gui/setupactiondata.h:296
+msgid "Hide Windows"
+msgstr "Ablakok Elrejtése"
+
+#: src/gui/setupactiondata.h:301
+msgid "Help Window"
+msgstr "Súgó Ablak"
+
+#: src/gui/setupactiondata.h:306
+msgid "Status Window"
+msgstr "Sztátusz Ablak"
+
+#: src/gui/setupactiondata.h:311
+msgid "Inventory Window"
+msgstr "Táska Ablak"
+
+#: src/gui/setupactiondata.h:316
+msgid "Equipment Window"
+msgstr "Felszerelés Ablak"
+
+#: src/gui/setupactiondata.h:321
+msgid "Skill Window"
+msgstr "Képességek Ablak"
+
+#: src/gui/setupactiondata.h:326
+msgid "Minimap Window"
+msgstr "Minitérkép Ablak"
+
+#: src/gui/setupactiondata.h:331
+msgid "Chat Window"
+msgstr "Chat Ablak"
+
+#: src/gui/setupactiondata.h:336
+msgid "Item Shortcut Window"
+msgstr "Gyorsmenü Ablak"
+
+#: src/gui/setupactiondata.h:341
+msgid "Setup Window"
+msgstr "Beállítások Ablak"
+
+#: src/gui/setupactiondata.h:346
+msgid "Debug Window"
+msgstr "Hibakereső Ablak"
+
+#: src/gui/setupactiondata.h:351
+msgid "Social Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:356
+msgid "Emote Shortcut Window"
+msgstr "Hangulatjel Gyorsmenü Ablak"
+
+#: src/gui/setupactiondata.h:361
+msgid "Outfits Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:366
+msgid "Shop Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:371
+msgid "Quick drop Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:376
+msgid "Kill Stats Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:381
+msgid "Commands Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:386
+msgid "Bot Checker Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:391
+msgid "Who Is Online Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:396
+msgid "Did you know Window"
+msgstr ""
+
+#: src/gui/setupactiondata.h:401
+msgid "Previous Social Tab"
+msgstr ""
+
+#: src/gui/setupactiondata.h:406
+msgid "Next Social Tab"
+msgstr ""
+
+#: src/gui/setupactiondata.h:420
+msgid "Emote modifiers keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:425
+msgid "Emote modifier key"
+msgstr ""
+
+#: src/gui/setupactiondata.h:430
+msgid "Emote shortcuts"
+msgstr ""
+
+#: src/gui/setupactiondata.h:435 src/gui/setupactiondata.h:440
+#: src/gui/setupactiondata.h:445 src/gui/setupactiondata.h:450
+#: src/gui/setupactiondata.h:455 src/gui/setupactiondata.h:460
+#: src/gui/setupactiondata.h:465 src/gui/setupactiondata.h:470
+#: src/gui/setupactiondata.h:475 src/gui/setupactiondata.h:480
+#: src/gui/setupactiondata.h:485 src/gui/setupactiondata.h:490
+#: src/gui/setupactiondata.h:495 src/gui/setupactiondata.h:500
+#: src/gui/setupactiondata.h:505 src/gui/setupactiondata.h:510
+#: src/gui/setupactiondata.h:515 src/gui/setupactiondata.h:520
+#: src/gui/setupactiondata.h:525 src/gui/setupactiondata.h:530
+#: src/gui/setupactiondata.h:535 src/gui/setupactiondata.h:540
+#: src/gui/setupactiondata.h:545 src/gui/setupactiondata.h:550
+#: src/gui/setupactiondata.h:555 src/gui/setupactiondata.h:560
+#: src/gui/setupactiondata.h:565 src/gui/setupactiondata.h:570
+#: src/gui/setupactiondata.h:575 src/gui/setupactiondata.h:580
+#: src/gui/setupactiondata.h:585 src/gui/setupactiondata.h:590
+#: src/gui/setupactiondata.h:595 src/gui/setupactiondata.h:600
+#: src/gui/setupactiondata.h:605 src/gui/setupactiondata.h:610
+#: src/gui/setupactiondata.h:615 src/gui/setupactiondata.h:620
+#: src/gui/setupactiondata.h:625 src/gui/setupactiondata.h:630
+#: src/gui/setupactiondata.h:635 src/gui/setupactiondata.h:640
+#: src/gui/setupactiondata.h:645 src/gui/setupactiondata.h:650
+#: src/gui/setupactiondata.h:655 src/gui/setupactiondata.h:660
+#: src/gui/setupactiondata.h:665 src/gui/setupactiondata.h:670
+#, c-format
+msgid "Emote Shortcut %d"
+msgstr "Hangulatjel Gyorsmenü %d"
+
+#: src/gui/setupactiondata.h:684
+msgid "Outfits keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:689
+msgid "Wear Outfit"
+msgstr ""
+
+#: src/gui/setupactiondata.h:694
+msgid "Copy Outfit"
+msgstr ""
+
+#: src/gui/setupactiondata.h:699
+msgid "Copy equipped to Outfit"
+msgstr ""
+
+#: src/gui/setupactiondata.h:704
+msgid "Outfits shortcuts"
+msgstr ""
+
+#: src/gui/setupactiondata.h:709 src/gui/setupactiondata.h:714
+#: src/gui/setupactiondata.h:719 src/gui/setupactiondata.h:724
+#: src/gui/setupactiondata.h:729 src/gui/setupactiondata.h:734
+#: src/gui/setupactiondata.h:739 src/gui/setupactiondata.h:744
+#: src/gui/setupactiondata.h:749 src/gui/setupactiondata.h:754
+#: src/gui/setupactiondata.h:759 src/gui/setupactiondata.h:764
+#: src/gui/setupactiondata.h:769 src/gui/setupactiondata.h:774
+#: src/gui/setupactiondata.h:779 src/gui/setupactiondata.h:784
+#: src/gui/setupactiondata.h:789 src/gui/setupactiondata.h:794
+#: src/gui/setupactiondata.h:799 src/gui/setupactiondata.h:804
+#: src/gui/setupactiondata.h:809 src/gui/setupactiondata.h:814
+#: src/gui/setupactiondata.h:819 src/gui/setupactiondata.h:824
+#: src/gui/setupactiondata.h:829 src/gui/setupactiondata.h:834
+#: src/gui/setupactiondata.h:839 src/gui/setupactiondata.h:844
+#: src/gui/setupactiondata.h:849 src/gui/setupactiondata.h:854
+#: src/gui/setupactiondata.h:859 src/gui/setupactiondata.h:864
+#: src/gui/setupactiondata.h:869 src/gui/setupactiondata.h:874
+#: src/gui/setupactiondata.h:879 src/gui/setupactiondata.h:884
+#: src/gui/setupactiondata.h:889 src/gui/setupactiondata.h:894
+#: src/gui/setupactiondata.h:899 src/gui/setupactiondata.h:904
+#: src/gui/setupactiondata.h:909 src/gui/setupactiondata.h:914
+#: src/gui/setupactiondata.h:919 src/gui/setupactiondata.h:924
+#: src/gui/setupactiondata.h:929 src/gui/setupactiondata.h:934
+#: src/gui/setupactiondata.h:939 src/gui/setupactiondata.h:944
+#, c-format
+msgid "Outfit Shortcut %d"
+msgstr ""
+
+#: src/gui/setupactiondata.h:958
+msgid "Toggle Chat"
+msgstr "Chat Ki/Be Kapcsolása"
+
+#: src/gui/setupactiondata.h:963
+msgid "Scroll Chat Up"
+msgstr "Csevej Felfele Görgetése"
+
+#: src/gui/setupactiondata.h:968
+msgid "Scroll Chat Down"
+msgstr "Csevej Lefele Görgetése"
+
+#: src/gui/setupactiondata.h:973
+msgid "Previous Chat Tab"
+msgstr "Előző Chat Fül"
+
+#: src/gui/setupactiondata.h:978
+msgid "Next Chat Tab"
+msgstr "Következő Chat Fül"
+
+#: src/gui/setupactiondata.h:983
+msgid "Close current Chat Tab"
+msgstr ""
+
+#: src/gui/setupactiondata.h:988
+msgid "Previous chat line"
+msgstr ""
+
+#: src/gui/setupactiondata.h:993
+msgid "Next chat line"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1007
+msgid "Ignore input 1"
+msgstr "Ignore input 1"
+
+#: src/gui/setupactiondata.h:1012
+msgid "Ignore input 2"
+msgstr "Ignore input 2"
+
+#: src/gui/setupactiondata.h:1017
+msgid "Direct Up"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1022
+msgid "Direct Down"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1027
+msgid "Direct Left"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1032
+msgid "Direct Right"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1037
+msgid "Crazy moves"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1042
+msgid "Change Crazy Move mode"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1047
+msgid "Quick Drop N Items from 0 slot"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1052
+msgid "Quick Drop N Items"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1057
+msgid "Switch Quick Drop Counter"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1062
+msgid "Quick heal target or self"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1067
+msgid "Use #itenplz spell"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1072
+msgid "Use magic attack"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1077
+msgid "Switch magic attack"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1082
+msgid "Switch pvp attack"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1087
+msgid "Change move type"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1092
+msgid "Change Attack Weapon Type"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1097
+msgid "Change Attack Type"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1102
+msgid "Change Follow mode"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1107
+msgid "Change Imitation mode"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1112
+msgid "Disable / Enable Game modifier keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1117
+msgid "On / Off audio"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1122
+msgid "Enable / Disable away mode"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1127
+msgid "Emulate right click from keyboard"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1132
+msgid "Toggle camera mode"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1137
+msgid "Modifier key"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1151
+msgid "Move Keys"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1156 src/gui/setupactiondata.h:1435
+msgid "Move Up"
+msgstr "Mozgás felfelé"
+
+#: src/gui/setupactiondata.h:1161 src/gui/setupactiondata.h:1440
+msgid "Move Down"
+msgstr "Mozgás lefelé"
+
+#: src/gui/setupactiondata.h:1166 src/gui/setupactiondata.h:1445
+msgid "Move Left"
+msgstr "Mozgás balra"
+
+#: src/gui/setupactiondata.h:1171 src/gui/setupactiondata.h:1450
+msgid "Move Right"
+msgstr "Mozgás jobbra"
+
+#: src/gui/setupactiondata.h:1176
+msgid "Move to navigation point shortcuts"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1181 src/gui/setupactiondata.h:1186
+#: src/gui/setupactiondata.h:1191 src/gui/setupactiondata.h:1196
+#: src/gui/setupactiondata.h:1201 src/gui/setupactiondata.h:1206
+#: src/gui/setupactiondata.h:1211 src/gui/setupactiondata.h:1216
+#: src/gui/setupactiondata.h:1221 src/gui/setupactiondata.h:1226
+#: src/gui/setupactiondata.h:1231 src/gui/setupactiondata.h:1236
+#: src/gui/setupactiondata.h:1241 src/gui/setupactiondata.h:1246
+#: src/gui/setupactiondata.h:1251 src/gui/setupactiondata.h:1256
+#: src/gui/setupactiondata.h:1261 src/gui/setupactiondata.h:1266
+#: src/gui/setupactiondata.h:1271 src/gui/setupactiondata.h:1276
+#: src/gui/setupactiondata.h:1281 src/gui/setupactiondata.h:1286
+#: src/gui/setupactiondata.h:1291 src/gui/setupactiondata.h:1296
+#: src/gui/setupactiondata.h:1301 src/gui/setupactiondata.h:1306
+#: src/gui/setupactiondata.h:1311 src/gui/setupactiondata.h:1316
+#: src/gui/setupactiondata.h:1321 src/gui/setupactiondata.h:1326
+#: src/gui/setupactiondata.h:1331 src/gui/setupactiondata.h:1336
+#: src/gui/setupactiondata.h:1341 src/gui/setupactiondata.h:1346
+#: src/gui/setupactiondata.h:1351 src/gui/setupactiondata.h:1356
+#: src/gui/setupactiondata.h:1361 src/gui/setupactiondata.h:1366
+#: src/gui/setupactiondata.h:1371 src/gui/setupactiondata.h:1376
+#: src/gui/setupactiondata.h:1381 src/gui/setupactiondata.h:1386
+#: src/gui/setupactiondata.h:1391 src/gui/setupactiondata.h:1396
+#: src/gui/setupactiondata.h:1401 src/gui/setupactiondata.h:1406
+#: src/gui/setupactiondata.h:1411 src/gui/setupactiondata.h:1416
+#, c-format
+msgid "Move to point Shortcut %d"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1430
+msgid "Move & selection"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1455
+msgid "Move Home"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1460
+msgid "Move End"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1465
+msgid "Page up"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1470
+msgid "Page down"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1480
+msgid "Select"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1485
+msgid "Select2"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1500
+msgid "Backspace"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1505
+msgid "Insert"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1510
+msgid "Tab"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1515
+msgid "Mod"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1541
+msgid "Basic"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1543 src/gui/windowmenu.cpp:99
+msgid "Shortcuts"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1544 src/gui/setup_other.cpp:165
+msgid "Windows"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1545
+msgid "Emotes"
+msgstr ""
+
+#: src/gui/setupactiondata.h:1549
+msgid "Gui"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:44
 msgid "(no sound)"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:55
+#: src/gui/setup_audio.cpp:54
 msgid "Audio"
 msgstr "Audió"
 
-#: src/gui/setup_audio.cpp:64
+#: src/gui/setup_audio.cpp:63
 msgid "Basic settings"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:66
+#: src/gui/setup_audio.cpp:65
 msgid "Enable Audio"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:68
+#: src/gui/setup_audio.cpp:67
 msgid "Enable music"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:71
+#: src/gui/setup_audio.cpp:70
 msgid "Enable game sfx"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:74
+#: src/gui/setup_audio.cpp:73
 msgid "Enable gui sfx"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:77
+#: src/gui/setup_audio.cpp:76
 msgid "Sfx volume"
 msgstr "Effektek hangereje"
 
-#: src/gui/setup_audio.cpp:80
+#: src/gui/setup_audio.cpp:79
 msgid "Music volume"
 msgstr "Zene hangereje"
 
-#: src/gui/setup_audio.cpp:83
-msgid "Sound effects"
+#: src/gui/setup_audio.cpp:82
+msgid "Audio frequency"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:85
-msgid "Information dialog sound"
+#: src/gui/setup_audio.cpp:86
+msgid "mono"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:87
+msgid "stereo"
 msgstr ""
 
 #: src/gui/setup_audio.cpp:88
-msgid "Request dialog sound"
+msgid "surround"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:91
-msgid "Whisper message sound"
+#: src/gui/setup_audio.cpp:89
+msgid "surround+center+lfe"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:90
+msgid "Audio channels"
 msgstr ""
 
 #: src/gui/setup_audio.cpp:94
+msgid "Sound effects"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:96
+msgid "Information dialog sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:99
+msgid "Request dialog sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:102
+msgid "Whisper message sound"
+msgstr ""
+
+#: src/gui/setup_audio.cpp:105
 msgid "Guild / Party message sound"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:97
+#: src/gui/setup_audio.cpp:108
 msgid "Highlight message sound"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:100
+#: src/gui/setup_audio.cpp:111
 msgid "Global message sound"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:103
+#: src/gui/setup_audio.cpp:114
 msgid "Error message sound"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:106
+#: src/gui/setup_audio.cpp:117
 msgid "Trade request sound"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:111
+#: src/gui/setup_audio.cpp:122
 msgid "Enable mumble voice chat"
 msgstr ""
 
-#: src/gui/setup_audio.cpp:114
+#: src/gui/setup_audio.cpp:125
 msgid "Download music"
 msgstr ""
 
@@ -2049,449 +2625,39 @@ msgstr "Alkalmaz"
 msgid "Reset Windows"
 msgstr "Ablakok alaphelyzetbe"
 
-#: src/gui/setup_input.cpp:54
-msgid "Basic Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:58
-msgid "Move Up"
-msgstr "Mozgás felfelé"
-
-#: src/gui/setup_input.cpp:62
-msgid "Move Down"
-msgstr "Mozgás lefelé"
-
-#: src/gui/setup_input.cpp:66
-msgid "Move Left"
-msgstr "Mozgás balra"
-
-#: src/gui/setup_input.cpp:70
-msgid "Move Right"
-msgstr "Mozgás jobbra"
-
-#: src/gui/setup_input.cpp:78
-msgid "Target & Attack"
-msgstr "Kijelöl és Támad"
-
-#: src/gui/setup_input.cpp:82
-msgid "Move to Target"
-msgstr ""
-
-#: src/gui/setup_input.cpp:86
-msgid "Change Move to Target type"
-msgstr ""
-
-#: src/gui/setup_input.cpp:90
-msgid "Move to Home location"
-msgstr ""
-
-#: src/gui/setup_input.cpp:94
-msgid "Set home location"
-msgstr ""
-
-#: src/gui/setup_input.cpp:98
-msgid "Move to navigation point"
-msgstr ""
-
-#: src/gui/setup_input.cpp:106
-msgid "Stop Attack"
-msgstr "Támadás Megszüntetése"
-
-#: src/gui/setup_input.cpp:110
-msgid "Untarget"
-msgstr ""
-
-#: src/gui/setup_input.cpp:114
-msgid "Target monster"
-msgstr ""
-
-#: src/gui/setup_input.cpp:118
-msgid "Target NPC"
-msgstr "Gépjátékost Kijelöl"
-
-#: src/gui/setup_input.cpp:122
-msgid "Target Player"
-msgstr "Játékost Kijelöl"
-
-#: src/gui/setup_input.cpp:126
-msgid "Pickup"
-msgstr "Felvesz"
-
-#: src/gui/setup_input.cpp:130
-msgid "Change Pickup Type"
-msgstr ""
-
-#: src/gui/setup_input.cpp:134
-msgid "Hide Windows"
-msgstr "Ablakok Elrejtése"
-
-#: src/gui/setup_input.cpp:138
-msgid "Sit"
-msgstr "Ülés"
-
-#: src/gui/setup_input.cpp:142
-msgid "Screenshot"
-msgstr "Képernyőkép"
-
-#: src/gui/setup_input.cpp:146
-msgid "Enable/Disable Trading"
-msgstr "Üzletelés Engedélyezése/Tiltása"
-
-#: src/gui/setup_input.cpp:150
-msgid "Change Map View Mode"
-msgstr ""
-
-#: src/gui/setup_input.cpp:154
-msgid "Select OK"
-msgstr "Ok Kiválasztása"
-
-#: src/gui/setup_input.cpp:162
-msgid "Shortcuts Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:166
-msgid "Item Shortcuts Key"
-msgstr ""
-
-#: src/gui/setup_input.cpp:170 src/gui/setup_input.cpp:174
-#: src/gui/setup_input.cpp:178 src/gui/setup_input.cpp:182
-#: src/gui/setup_input.cpp:186 src/gui/setup_input.cpp:190
-#: src/gui/setup_input.cpp:194 src/gui/setup_input.cpp:198
-#: src/gui/setup_input.cpp:202 src/gui/setup_input.cpp:206
-#: src/gui/setup_input.cpp:210 src/gui/setup_input.cpp:214
-#: src/gui/setup_input.cpp:218 src/gui/setup_input.cpp:222
-#: src/gui/setup_input.cpp:226 src/gui/setup_input.cpp:230
-#: src/gui/setup_input.cpp:234 src/gui/setup_input.cpp:238
-#: src/gui/setup_input.cpp:242 src/gui/setup_input.cpp:246
-#, c-format
-msgid "Item Shortcut %d"
-msgstr "Gyorsmenü %d"
-
-#: src/gui/setup_input.cpp:250
-msgid "Windows Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:254
-msgid "Help Window"
-msgstr "Súgó Ablak"
-
-#: src/gui/setup_input.cpp:258
-msgid "Status Window"
-msgstr "Sztátusz Ablak"
-
-#: src/gui/setup_input.cpp:262
-msgid "Inventory Window"
-msgstr "Táska Ablak"
-
-#: src/gui/setup_input.cpp:266
-msgid "Equipment Window"
-msgstr "Felszerelés Ablak"
-
-#: src/gui/setup_input.cpp:270
-msgid "Skill Window"
-msgstr "Képességek Ablak"
-
-#: src/gui/setup_input.cpp:274
-msgid "Minimap Window"
-msgstr "Minitérkép Ablak"
-
-#: src/gui/setup_input.cpp:278
-msgid "Chat Window"
-msgstr "Chat Ablak"
-
-#: src/gui/setup_input.cpp:282
-msgid "Item Shortcut Window"
-msgstr "Gyorsmenü Ablak"
-
-#: src/gui/setup_input.cpp:286
-msgid "Setup Window"
-msgstr "Beállítások Ablak"
-
-#: src/gui/setup_input.cpp:290
-msgid "Debug Window"
-msgstr "Hibakereső Ablak"
-
-#: src/gui/setup_input.cpp:294
-msgid "Social Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:298
-msgid "Emote Shortcut Window"
-msgstr "Hangulatjel Gyorsmenü Ablak"
-
-#: src/gui/setup_input.cpp:302
-msgid "Outfits Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:306
-msgid "Shop Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:310
-msgid "Quick drop Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:314
-msgid "Kill Stats Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:318
-msgid "Commands Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:322
-msgid "Bot Checker Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:326
-msgid "Who Is Online Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:330
-msgid "Did you know Window"
-msgstr ""
-
-#: src/gui/setup_input.cpp:334
-msgid "Previous Social Tab"
-msgstr ""
-
-#: src/gui/setup_input.cpp:338
-msgid "Next Social Tab"
-msgstr ""
-
-#: src/gui/setup_input.cpp:342
-msgid "Emotes Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:346
-msgid "Smilie"
-msgstr "Hangulatjel"
-
-#: src/gui/setup_input.cpp:350 src/gui/setup_input.cpp:354
-#: src/gui/setup_input.cpp:358 src/gui/setup_input.cpp:362
-#: src/gui/setup_input.cpp:366 src/gui/setup_input.cpp:370
-#: src/gui/setup_input.cpp:374 src/gui/setup_input.cpp:378
-#: src/gui/setup_input.cpp:382 src/gui/setup_input.cpp:386
-#: src/gui/setup_input.cpp:390 src/gui/setup_input.cpp:394
-#: src/gui/setup_input.cpp:398 src/gui/setup_input.cpp:402
-#: src/gui/setup_input.cpp:406 src/gui/setup_input.cpp:410
-#: src/gui/setup_input.cpp:414 src/gui/setup_input.cpp:418
-#: src/gui/setup_input.cpp:422 src/gui/setup_input.cpp:426
-#: src/gui/setup_input.cpp:430 src/gui/setup_input.cpp:434
-#: src/gui/setup_input.cpp:438 src/gui/setup_input.cpp:442
-#: src/gui/setup_input.cpp:446 src/gui/setup_input.cpp:450
-#: src/gui/setup_input.cpp:454 src/gui/setup_input.cpp:458
-#: src/gui/setup_input.cpp:462 src/gui/setup_input.cpp:466
-#: src/gui/setup_input.cpp:470 src/gui/setup_input.cpp:474
-#: src/gui/setup_input.cpp:478 src/gui/setup_input.cpp:482
-#: src/gui/setup_input.cpp:486 src/gui/setup_input.cpp:490
-#: src/gui/setup_input.cpp:494 src/gui/setup_input.cpp:498
-#: src/gui/setup_input.cpp:502 src/gui/setup_input.cpp:506
-#: src/gui/setup_input.cpp:510 src/gui/setup_input.cpp:514
-#: src/gui/setup_input.cpp:518 src/gui/setup_input.cpp:522
-#: src/gui/setup_input.cpp:526 src/gui/setup_input.cpp:530
-#: src/gui/setup_input.cpp:534 src/gui/setup_input.cpp:538
-#, c-format
-msgid "Emote Shortcut %d"
-msgstr "Hangulatjel Gyorsmenü %d"
-
-#: src/gui/setup_input.cpp:542
-msgid "Outfits Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:546
-msgid "Wear Outfit"
-msgstr ""
-
-#: src/gui/setup_input.cpp:550
-msgid "Copy Outfit"
-msgstr ""
-
-#: src/gui/setup_input.cpp:554
-msgid "Copy equipped to Outfit"
-msgstr ""
-
-#: src/gui/setup_input.cpp:558
-msgid "Chat Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:562
-msgid "Toggle Chat"
-msgstr "Chat Ki/Be Kapcsolása"
-
-#: src/gui/setup_input.cpp:566
-msgid "Scroll Chat Up"
-msgstr "Csevej Felfele Görgetése"
-
-#: src/gui/setup_input.cpp:570
-msgid "Scroll Chat Down"
-msgstr "Csevej Lefele Görgetése"
-
-#: src/gui/setup_input.cpp:574
-msgid "Previous Chat Tab"
-msgstr "Előző Chat Fül"
-
-#: src/gui/setup_input.cpp:578
-msgid "Next Chat Tab"
-msgstr "Következő Chat Fül"
-
-#: src/gui/setup_input.cpp:582
-msgid "Close current Chat Tab"
-msgstr ""
-
-#: src/gui/setup_input.cpp:586
-msgid "Previous chat line"
-msgstr ""
-
-#: src/gui/setup_input.cpp:590
-msgid "Next chat line"
-msgstr ""
-
-#: src/gui/setup_input.cpp:594
-msgid "Chat Auto Complete"
-msgstr ""
-
-#: src/gui/setup_input.cpp:598
-msgid "Deactivate Chat Input"
-msgstr ""
-
-#: src/gui/setup_input.cpp:602
-msgid "Other Keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:606
-msgid "Ignore input 1"
-msgstr "Ignore input 1"
-
-#: src/gui/setup_input.cpp:610
-msgid "Ignore input 2"
-msgstr "Ignore input 2"
-
-#: src/gui/setup_input.cpp:614
-msgid "Direct Up"
-msgstr ""
-
-#: src/gui/setup_input.cpp:618
-msgid "Direct Down"
-msgstr ""
-
-#: src/gui/setup_input.cpp:622
-msgid "Direct Left"
-msgstr ""
-
-#: src/gui/setup_input.cpp:626
-msgid "Direct Right"
-msgstr ""
-
-#: src/gui/setup_input.cpp:630
-msgid "Crazy moves"
-msgstr ""
-
-#: src/gui/setup_input.cpp:634
-msgid "Change Crazy Move mode"
-msgstr ""
-
-#: src/gui/setup_input.cpp:638
-msgid "Quick Drop N Items from 0 slot"
-msgstr ""
-
-#: src/gui/setup_input.cpp:642
-msgid "Quick Drop N Items"
-msgstr ""
-
-#: src/gui/setup_input.cpp:646
-msgid "Switch Quick Drop Counter"
-msgstr ""
-
-#: src/gui/setup_input.cpp:650
-msgid "Quick heal target or self"
-msgstr ""
-
-#: src/gui/setup_input.cpp:654
-msgid "Use #itenplz spell"
-msgstr ""
-
-#: src/gui/setup_input.cpp:658
-msgid "Use magic attack"
-msgstr ""
-
-#: src/gui/setup_input.cpp:662
-msgid "Switch magic attack"
-msgstr ""
-
-#: src/gui/setup_input.cpp:666
-msgid "Switch pvp attack"
-msgstr ""
-
-#: src/gui/setup_input.cpp:670
-msgid "Change move type"
-msgstr ""
-
-#: src/gui/setup_input.cpp:674
-msgid "Change Attack Weapon Type"
-msgstr ""
-
-#: src/gui/setup_input.cpp:678
-msgid "Change Attack Type"
-msgstr ""
-
-#: src/gui/setup_input.cpp:682
-msgid "Change Follow mode"
-msgstr ""
-
-#: src/gui/setup_input.cpp:686
-msgid "Change Imitation mode"
-msgstr ""
-
-#: src/gui/setup_input.cpp:690
-msgid "Disable / Enable Game modifier keys"
-msgstr ""
-
-#: src/gui/setup_input.cpp:694
-msgid "On / Off audio"
-msgstr ""
-
-#: src/gui/setup_input.cpp:698
-msgid "Enable / Disable away mode"
-msgstr ""
-
-#: src/gui/setup_input.cpp:702
-msgid "Emulate right click from keyboard"
-msgstr ""
-
-#: src/gui/setup_input.cpp:706
-msgid "Toggle camera mode"
-msgstr ""
-
-#: src/gui/setup_input.cpp:710
-msgid "Modifier key"
-msgstr ""
-
-#: src/gui/setup_input.cpp:752
+#: src/gui/setup_input.cpp:102
 msgid "Input"
 msgstr ""
 
-#: src/gui/setup_input.cpp:761
+#: src/gui/setup_input.cpp:124
 msgid "Assign"
 msgstr "Hozzárendel"
 
-#: src/gui/setup_input.cpp:765
+#: src/gui/setup_input.cpp:128
 msgid "Unassign"
 msgstr ""
 
-#: src/gui/setup_input.cpp:769
+#: src/gui/setup_input.cpp:132
+msgid "Reset all keys"
+msgstr ""
+
+#: src/gui/setup_input.cpp:135
 msgid "Default"
 msgstr "Alapértelmezett"
 
-#: src/gui/setup_input.cpp:809
+#: src/gui/setup_input.cpp:187
 msgid "Key Conflict(s) Detected."
 msgstr "Billentyű ütközés van."
 
-#: src/gui/setup_input.cpp:810
+#: src/gui/setup_input.cpp:188
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
+msgstr ""
+
+#: src/gui/setup_input.cpp:346
+msgid "unknown"
 msgstr ""
 
 #: src/gui/setup_joystick.cpp:45 src/gui/setup_joystick.cpp:117
@@ -2672,10 +2838,6 @@ msgstr ""
 
 #: src/gui/setup_other.cpp:161
 msgid "Enable guild bot support and disable native guild support"
-msgstr ""
-
-#: src/gui/setup_other.cpp:165
-msgid "Windows"
 msgstr ""
 
 #: src/gui/setup_other.cpp:168
@@ -2878,23 +3040,19 @@ msgstr ""
 msgid "Enemy"
 msgstr ""
 
-#: src/gui/setup_relations.cpp:242
+#: src/gui/setup_relations.cpp:241
 msgid "Allow trading"
 msgstr "Üzletelés engedélyezése"
 
-#: src/gui/setup_relations.cpp:244
+#: src/gui/setup_relations.cpp:243
 msgid "Allow whispers"
 msgstr "Privát engedélyezése"
 
 #: src/gui/setup_relations.cpp:247
-msgid "Old"
-msgstr ""
-
-#: src/gui/setup_relations.cpp:249
 msgid "Relations"
 msgstr ""
 
-#: src/gui/setup_relations.cpp:271
+#: src/gui/setup_relations.cpp:269
 msgid "When ignoring:"
 msgstr "Ha ignorolva van:"
 
@@ -3164,7 +3322,7 @@ msgstr "Buborékok nevekkel"
 msgid "Overhead text"
 msgstr "Fej feletti szöveg"
 
-#: src/gui/setup_visual.cpp:71 src/gui/setup_visual.cpp:96
+#: src/gui/setup_visual.cpp:71 src/gui/setup_visual.cpp:103
 msgid "off"
 msgstr "ki"
 
@@ -3196,16 +3354,36 @@ msgstr "max."
 msgid "Particle detail"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:91
-msgid "Gamma"
+#: src/gui/setup_visual.cpp:90
+msgid "best quality"
 msgstr ""
 
-#: src/gui/setup_visual.cpp:97
-msgid "on"
+#: src/gui/setup_visual.cpp:91
+msgid "normal"
+msgstr ""
+
+#: src/gui/setup_visual.cpp:92
+msgid "best perfomance"
+msgstr ""
+
+#: src/gui/setup_visual.cpp:93
+msgid "Particle physics"
 msgstr ""
 
 #: src/gui/setup_visual.cpp:98
+msgid "Gamma"
+msgstr ""
+
+#: src/gui/setup_visual.cpp:104
+msgid "on"
+msgstr ""
+
+#: src/gui/setup_visual.cpp:105
 msgid "Vsync"
+msgstr ""
+
+#: src/gui/setup_visual.cpp:109
+msgid "Center game window"
 msgstr ""
 
 #: src/gui/shopwindow.cpp:76
@@ -3232,17 +3410,17 @@ msgstr ""
 msgid "Auction"
 msgstr ""
 
-#: src/gui/shopwindow.cpp:760 src/net/ea/tradehandler.cpp:104
+#: src/gui/shopwindow.cpp:761 src/net/ea/tradehandler.cpp:104
 #: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
 msgstr "Üzleti ajánlat"
 
-#: src/gui/shopwindow.cpp:761
+#: src/gui/shopwindow.cpp:762
 #, c-format
 msgid "%s wants to %s %s do you accept?"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:230 src/gui/windowmenu.cpp:84
+#: src/gui/skilldialog.cpp:230 src/gui/windowmenu.cpp:86
 msgid "Skills"
 msgstr "Képességek"
 
@@ -3255,35 +3433,35 @@ msgstr "Fejleszt"
 msgid "Skill points available: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:381
+#: src/gui/skilldialog.cpp:380
 msgid "basic"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:382
+#: src/gui/skilldialog.cpp:381
 msgid "Skill: basic, Id: 1"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:419
+#: src/gui/skilldialog.cpp:418
 #, c-format
 msgid "Skill Set %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:431
+#: src/gui/skilldialog.cpp:430
 #, c-format
 msgid "Skill %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:437
+#: src/gui/skilldialog.cpp:436
 #, c-format
 msgid "Skill: %s, Id: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:507 src/gui/skilldialog.cpp:595
+#: src/gui/skilldialog.cpp:506 src/gui/skilldialog.cpp:594
 #, c-format
 msgid "Lvl: %d"
 msgstr ""
 
-#: src/gui/skilldialog.cpp:587
+#: src/gui/skilldialog.cpp:586
 #, c-format
 msgid "Lvl: %d (%+d)"
 msgstr ""
@@ -3353,143 +3531,143 @@ msgstr ""
 msgid "Are you sure you want to leave party %s?"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:651
+#: src/gui/socialwindow.cpp:654
 msgid "Nav"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:929
+#: src/gui/socialwindow.cpp:935
 msgid "Atk"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:970
+#: src/gui/socialwindow.cpp:975
 msgid "Priority mobs"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1002
+#: src/gui/socialwindow.cpp:1010
 msgid "Attack mobs"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1037
+#: src/gui/socialwindow.cpp:1046
 msgid "Ignore mobs"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1197
+#: src/gui/socialwindow.cpp:1206
 msgid "Create Guild"
 msgstr "Klán létrehozása"
 
-#: src/gui/socialwindow.cpp:1198 src/gui/socialwindow.cpp:1633
+#: src/gui/socialwindow.cpp:1207 src/gui/socialwindow.cpp:1642
 msgid "Create Party"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1240 src/gui/windowmenu.cpp:96
+#: src/gui/socialwindow.cpp:1249 src/gui/windowmenu.cpp:98
 msgid "Social"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1263
+#: src/gui/socialwindow.cpp:1272
 msgid "Invite"
 msgstr ""
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/socialwindow.cpp:1279
+#: src/gui/socialwindow.cpp:1288
 msgid "P"
 msgstr ""
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1283
+#: src/gui/socialwindow.cpp:1292
 msgid "F"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1416
+#: src/gui/socialwindow.cpp:1425
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1426
+#: src/gui/socialwindow.cpp:1435
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1443
+#: src/gui/socialwindow.cpp:1452
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1456
+#: src/gui/socialwindow.cpp:1465
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1503
+#: src/gui/socialwindow.cpp:1512
 #, c-format
 msgid "Creating guild called %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1526
+#: src/gui/socialwindow.cpp:1535
 #, c-format
 msgid "Creating party called %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1540
+#: src/gui/socialwindow.cpp:1549
 msgid "Guild Name"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1541
+#: src/gui/socialwindow.cpp:1550
 msgid "Choose your guild's name."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1555
+#: src/gui/socialwindow.cpp:1564
 msgid "Received guild request, but one already exists."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1561
+#: src/gui/socialwindow.cpp:1570
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1567
+#: src/gui/socialwindow.cpp:1576
 msgid "Accept Guild Invite"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1582
+#: src/gui/socialwindow.cpp:1591
 msgid "Received party request, but one already exists."
 msgstr "Csapatba hívtak, de neked van csapatod."
 
-#: src/gui/socialwindow.cpp:1593
+#: src/gui/socialwindow.cpp:1602
 msgid "You have been invited you to join a party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1597
+#: src/gui/socialwindow.cpp:1606
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1605
+#: src/gui/socialwindow.cpp:1614
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s a csapatába hívott."
 
-#: src/gui/socialwindow.cpp:1610
+#: src/gui/socialwindow.cpp:1619
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s behívott %s csapatába."
 
-#: src/gui/socialwindow.cpp:1619
+#: src/gui/socialwindow.cpp:1628
 msgid "Accept Party Invite"
 msgstr "Ajánlat elfogadása"
 
-#: src/gui/socialwindow.cpp:1634
+#: src/gui/socialwindow.cpp:1643
 msgid "Cannot create party. You are already in a party"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1639
+#: src/gui/socialwindow.cpp:1648
 msgid "Party Name"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1640
+#: src/gui/socialwindow.cpp:1649
 msgid "Choose your party's name."
 msgstr ""
 
-#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:91
+#: src/gui/specialswindow.cpp:79 src/gui/windowmenu.cpp:93
 msgid "Specials"
 msgstr ""
 
@@ -3676,33 +3854,33 @@ msgstr "Hiba a tárgy hozzáadásakor. Nem tudod rárakni az egyik tárgyat a m�
 msgid "Name: %s"
 msgstr "Név: %s"
 
-#: src/gui/updaterwindow.cpp:140
+#: src/gui/updaterwindow.cpp:142
 msgid "Updating..."
 msgstr "Frissítés…"
 
-#: src/gui/updaterwindow.cpp:167
+#: src/gui/updaterwindow.cpp:169
 msgid "Connecting..."
 msgstr "Csatlakozás…"
 
-#: src/gui/updaterwindow.cpp:170
+#: src/gui/updaterwindow.cpp:172
 msgid "Play"
 msgstr "Játék"
 
-#: src/gui/updaterwindow.cpp:597
+#: src/gui/updaterwindow.cpp:623
 msgid "##1  The update process is incomplete."
 msgstr "##1 A frissítési folyamat befejezetlen"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:599
+#: src/gui/updaterwindow.cpp:625
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Erősen ajánljuk, hogy"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:601
+#: src/gui/updaterwindow.cpp:627
 msgid "##1  you try again later."
 msgstr ""
 
-#: src/gui/updaterwindow.cpp:777
+#: src/gui/updaterwindow.cpp:803
 msgid "Completed"
 msgstr "Kész"
 
@@ -3854,7 +4032,7 @@ msgstr ""
 msgid "Road Point"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:618
+#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:617
 msgid "Who Is Online - Updating"
 msgstr ""
 
@@ -3866,11 +4044,11 @@ msgstr ""
 msgid "Who Is Online - "
 msgstr ""
 
-#: src/gui/whoisonline.cpp:632
+#: src/gui/whoisonline.cpp:631
 msgid "Who Is Online - error"
 msgstr ""
 
-#: src/gui/whoisonline.cpp:672
+#: src/gui/whoisonline.cpp:671
 msgid "Who Is Online - Update"
 msgstr ""
 
@@ -4046,129 +4224,125 @@ msgid ""
 "This command stops ignoring the other player if they are being ignored."
 msgstr ""
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:70
 msgid "BC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:68
+#: src/gui/windowmenu.cpp:70
 msgid "Bot checker"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:72
 msgid "ONL"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:70
+#: src/gui/windowmenu.cpp:72
 msgid "Who is online"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:72
+#: src/gui/windowmenu.cpp:74
 msgid "KS"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:74
+#: src/gui/windowmenu.cpp:76
 msgid "Smilies"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:78
 msgid "STA"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:78
 msgid "Status"
 msgstr "Státusz"
 
-#: src/gui/windowmenu.cpp:77
+#: src/gui/windowmenu.cpp:79
 msgid "EQU"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:79
+#: src/gui/windowmenu.cpp:81
 msgid "INV"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:84
+#: src/gui/windowmenu.cpp:86
 msgid "SKI"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:91
+#: src/gui/windowmenu.cpp:93
 msgid "SPE"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:96
+#: src/gui/windowmenu.cpp:98
 msgid "SOC"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:97
+#: src/gui/windowmenu.cpp:99
 msgid "SH"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:97
-msgid "Shortcuts"
-msgstr ""
-
-#: src/gui/windowmenu.cpp:99
+#: src/gui/windowmenu.cpp:101
 msgid "SP"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:100
+#: src/gui/windowmenu.cpp:102
 msgid "DR"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:101
+#: src/gui/windowmenu.cpp:103
 msgid "YK"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:101
+#: src/gui/windowmenu.cpp:103
 msgid "Did you know"
 msgstr ""
 
-#: src/gui/windowmenu.cpp:103
+#: src/gui/windowmenu.cpp:105
 msgid "SET"
 msgstr ""
 
-#: src/gui/worldselectdialog.cpp:78
+#: src/gui/worldselectdialog.cpp:80
 msgid "Select World"
 msgstr ""
 
-#: src/gui/worldselectdialog.cpp:83
+#: src/gui/worldselectdialog.cpp:85
 msgid "Change Login"
 msgstr ""
 
-#: src/gui/worldselectdialog.cpp:84
+#: src/gui/worldselectdialog.cpp:86
 msgid "Choose World"
 msgstr ""
 
-#: src/inputmanager.cpp:283 src/inputmanager.cpp:321 src/keyboardconfig.cpp:81
+#: src/inputmanager.cpp:307 src/inputmanager.cpp:345 src/keyboardconfig.cpp:80
 #, c-format
 msgid "key_%d"
 msgstr ""
 
 #. TRANSLATORS: this is long joystick button name
-#: src/inputmanager.cpp:288
+#: src/inputmanager.cpp:312
 #, c-format
 msgid "JButton%d"
 msgstr ""
 
-#: src/inputmanager.cpp:300
+#: src/inputmanager.cpp:324
 msgid "unknown key"
 msgstr ""
 
 #. TRANSLATORS: this is short joystick button name
-#: src/inputmanager.cpp:327
+#: src/inputmanager.cpp:351
 #, c-format
 msgid "JB%d"
 msgstr ""
 
 #. TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
-#: src/inputmanager.cpp:339 src/keyboardconfig.cpp:93
+#: src/inputmanager.cpp:363 src/keyboardconfig.cpp:92
 msgid "u key"
 msgstr ""
 
-#: src/inventory.cpp:252
+#: src/inventory.cpp:253
 msgid "Storage"
 msgstr ""
 
-#: src/inventory.cpp:254
+#: src/inventory.cpp:255
 msgid "Cart"
 msgstr ""
 
@@ -4177,337 +4351,337 @@ msgstr ""
 msgid "You were killed by %s"
 msgstr ""
 
-#: src/localplayer.cpp:1433
+#: src/localplayer.cpp:1432
 msgid "Tried to pick up nonexistent item."
 msgstr ""
 
-#: src/localplayer.cpp:1436
+#: src/localplayer.cpp:1435
 msgid "Item is too heavy."
 msgstr ""
 
-#: src/localplayer.cpp:1439
+#: src/localplayer.cpp:1438
 msgid "Item is too far away."
 msgstr ""
 
-#: src/localplayer.cpp:1442
+#: src/localplayer.cpp:1441
 msgid "Inventory is full."
 msgstr ""
 
-#: src/localplayer.cpp:1445
+#: src/localplayer.cpp:1444
 msgid "Stack is too big."
 msgstr ""
 
-#: src/localplayer.cpp:1448
+#: src/localplayer.cpp:1447
 msgid "Item belongs to someone else."
 msgstr ""
 
-#: src/localplayer.cpp:1451
+#: src/localplayer.cpp:1450
 msgid "Unknown problem picking up item."
 msgstr ""
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/localplayer.cpp:1475
+#: src/localplayer.cpp:1474
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/localplayer.cpp:1677 src/localplayer.cpp:1711 src/localplayer.cpp:1712
+#: src/localplayer.cpp:1676 src/localplayer.cpp:1710 src/localplayer.cpp:1711
 msgid "xp"
 msgstr ""
 
-#: src/localplayer.cpp:1717 src/localplayer.cpp:1724 src/localplayer.cpp:1731
+#: src/localplayer.cpp:1716 src/localplayer.cpp:1723 src/localplayer.cpp:1730
 msgid "job"
 msgstr ""
 
-#: src/localplayer.cpp:1904
+#: src/localplayer.cpp:1903
 msgid "(D) default moves"
 msgstr ""
 
-#: src/localplayer.cpp:1905
+#: src/localplayer.cpp:1904
 msgid "(I) invert moves"
 msgstr ""
 
-#: src/localplayer.cpp:1906
+#: src/localplayer.cpp:1905
 msgid "(c) moves with some crazy moves"
 msgstr ""
 
-#: src/localplayer.cpp:1907
+#: src/localplayer.cpp:1906
 msgid "(C) moves with crazy moves"
 msgstr ""
 
-#: src/localplayer.cpp:1908
+#: src/localplayer.cpp:1907
 msgid "(d) double normal + crazy"
 msgstr ""
 
-#: src/localplayer.cpp:1909
+#: src/localplayer.cpp:1908
 msgid "(?) unknown move"
 msgstr ""
 
-#: src/localplayer.cpp:1931
+#: src/localplayer.cpp:1930
 #, c-format
 msgid "(%d) crazy move number %d"
 msgstr ""
 
-#: src/localplayer.cpp:1936
+#: src/localplayer.cpp:1935
 msgid "(a) custom crazy move"
 msgstr ""
 
-#: src/localplayer.cpp:1940
+#: src/localplayer.cpp:1939
 msgid "(?) crazy move"
 msgstr ""
 
-#: src/localplayer.cpp:1954
+#: src/localplayer.cpp:1953
 msgid "(0) default moves to target"
 msgstr ""
 
-#: src/localplayer.cpp:1955
+#: src/localplayer.cpp:1954
 msgid "(1) moves to target in distance 1"
 msgstr ""
 
-#: src/localplayer.cpp:1956
+#: src/localplayer.cpp:1955
 msgid "(2) moves to target in distance 2"
 msgstr ""
 
-#: src/localplayer.cpp:1957
+#: src/localplayer.cpp:1956
 msgid "(3) moves to target in distance 3"
 msgstr ""
 
-#: src/localplayer.cpp:1958
+#: src/localplayer.cpp:1957
 msgid "(5) moves to target in distance 5"
 msgstr ""
 
-#: src/localplayer.cpp:1959
+#: src/localplayer.cpp:1958
 msgid "(7) moves to target in distance 7"
 msgstr ""
 
-#: src/localplayer.cpp:1960
+#: src/localplayer.cpp:1959
 msgid "(A) moves to target in attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1961
+#: src/localplayer.cpp:1960
 msgid "(a) archer attack range"
 msgstr ""
 
-#: src/localplayer.cpp:1962
+#: src/localplayer.cpp:1961
 msgid "(?) move to target"
 msgstr ""
 
-#: src/localplayer.cpp:1981
+#: src/localplayer.cpp:1980
 msgid "(D) default follow"
 msgstr ""
 
-#: src/localplayer.cpp:1982
+#: src/localplayer.cpp:1981
 msgid "(R) relative follow"
 msgstr ""
 
-#: src/localplayer.cpp:1983
+#: src/localplayer.cpp:1982
 msgid "(M) mirror follow"
 msgstr ""
 
-#: src/localplayer.cpp:1984
+#: src/localplayer.cpp:1983
 msgid "(P) pet follow"
 msgstr ""
 
-#: src/localplayer.cpp:1985
+#: src/localplayer.cpp:1984
 msgid "(?) unknown follow"
 msgstr ""
 
-#: src/localplayer.cpp:2004 src/localplayer.cpp:2008 src/localplayer.cpp:2031
+#: src/localplayer.cpp:2003 src/localplayer.cpp:2007 src/localplayer.cpp:2030
 msgid "(?) attack"
 msgstr ""
 
-#: src/localplayer.cpp:2005 src/localplayer.cpp:2027
+#: src/localplayer.cpp:2004 src/localplayer.cpp:2026
 msgid "(D) default attack"
 msgstr ""
 
-#: src/localplayer.cpp:2006
+#: src/localplayer.cpp:2005
 msgid "(s) switch attack without shield"
 msgstr ""
 
-#: src/localplayer.cpp:2007
+#: src/localplayer.cpp:2006
 msgid "(S) switch attack with shield"
 msgstr ""
 
-#: src/localplayer.cpp:2028
+#: src/localplayer.cpp:2027
 msgid "(G) go and attack"
 msgstr ""
 
-#: src/localplayer.cpp:2029
+#: src/localplayer.cpp:2028
 msgid "(A) go, attack, pickup"
 msgstr ""
 
-#: src/localplayer.cpp:2030
+#: src/localplayer.cpp:2029
 msgid "(d) without auto attack"
 msgstr ""
 
-#: src/localplayer.cpp:2082
+#: src/localplayer.cpp:2081
 msgid "(S) small pick up 1x1 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2083
+#: src/localplayer.cpp:2082
 msgid "(D) default pick up 2x1 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2084
+#: src/localplayer.cpp:2083
 msgid "(F) forward pick up 2x3 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2085
+#: src/localplayer.cpp:2084
 msgid "(3) pick up 3x3 cells"
 msgstr ""
 
-#: src/localplayer.cpp:2086
+#: src/localplayer.cpp:2085
 msgid "(g) go and pick up in distance 4"
 msgstr ""
 
-#: src/localplayer.cpp:2087
+#: src/localplayer.cpp:2086
 msgid "(G) go and pick up in distance 8"
 msgstr ""
 
-#: src/localplayer.cpp:2088
+#: src/localplayer.cpp:2087
 msgid "(A) go and pick up in max distance"
 msgstr ""
 
-#: src/localplayer.cpp:2089
+#: src/localplayer.cpp:2088
 msgid "(?) pick up"
 msgstr ""
 
-#: src/localplayer.cpp:2102
+#: src/localplayer.cpp:2101
 msgid "(N) normal map view"
 msgstr ""
 
-#: src/localplayer.cpp:2103
+#: src/localplayer.cpp:2102
 msgid "(D) debug map view"
 msgstr ""
 
-#: src/localplayer.cpp:2104
+#: src/localplayer.cpp:2103
 msgid "(u) ultra map view"
 msgstr ""
 
-#: src/localplayer.cpp:2105
+#: src/localplayer.cpp:2104
 msgid "(U) ultra map view 2"
 msgstr ""
 
-#: src/localplayer.cpp:2106
+#: src/localplayer.cpp:2105
 msgid "(e) empty map view"
 msgstr ""
 
-#: src/localplayer.cpp:2107
+#: src/localplayer.cpp:2106
 msgid "(b) black & white map view"
 msgstr ""
 
-#: src/localplayer.cpp:2126
+#: src/localplayer.cpp:2125
 msgid "(f) use #flar for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2127
+#: src/localplayer.cpp:2126
 msgid "(c) use #chiza for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2128
+#: src/localplayer.cpp:2127
 msgid "(I) use #ingrav for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2129
+#: src/localplayer.cpp:2128
 msgid "(F) use #frillyar for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2130
+#: src/localplayer.cpp:2129
 msgid "(U) use #upmarmu for magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2131
+#: src/localplayer.cpp:2130
 msgid "(?) magic attack"
 msgstr ""
 
-#: src/localplayer.cpp:2150
+#: src/localplayer.cpp:2149
 msgid "(a) attack all players"
 msgstr ""
 
-#: src/localplayer.cpp:2151
+#: src/localplayer.cpp:2150
 msgid "(f) attack all except friends"
 msgstr ""
 
-#: src/localplayer.cpp:2152
+#: src/localplayer.cpp:2151
 msgid "(b) attack bad relations"
 msgstr ""
 
-#: src/localplayer.cpp:2153
+#: src/localplayer.cpp:2152
 msgid "(d) don't attack players"
 msgstr ""
 
-#: src/localplayer.cpp:2154
+#: src/localplayer.cpp:2153
 msgid "(?) pvp attack"
 msgstr ""
 
-#: src/localplayer.cpp:2173
+#: src/localplayer.cpp:2172
 msgid "(D) default imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2174
+#: src/localplayer.cpp:2173
 msgid "(O) outfits imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2175
+#: src/localplayer.cpp:2174
 msgid "(?) imitation"
 msgstr ""
 
-#: src/localplayer.cpp:2203
+#: src/localplayer.cpp:2202
 msgid "Away"
 msgstr ""
 
-#: src/localplayer.cpp:2223
+#: src/localplayer.cpp:2222
 msgid "(O) on keyboard"
 msgstr ""
 
-#: src/localplayer.cpp:2224
+#: src/localplayer.cpp:2223
 msgid "(A) away"
 msgstr ""
 
-#: src/localplayer.cpp:2225 src/localplayer.cpp:2240
+#: src/localplayer.cpp:2224 src/localplayer.cpp:2239
 msgid "(?) away"
 msgstr ""
 
-#: src/localplayer.cpp:2238
+#: src/localplayer.cpp:2237
 msgid "(G) game camera mode"
 msgstr ""
 
-#: src/localplayer.cpp:2239
+#: src/localplayer.cpp:2238
 msgid "(F) free camera mode"
 msgstr ""
 
-#: src/localplayer.cpp:2264
+#: src/localplayer.cpp:2263
 msgid "Game modifiers are enabled"
 msgstr ""
 
-#: src/localplayer.cpp:2265
+#: src/localplayer.cpp:2264
 msgid "Game modifiers are disabled"
 msgstr ""
 
-#: src/localplayer.cpp:2266
+#: src/localplayer.cpp:2265
 msgid "Game modifiers are unknown"
 msgstr ""
 
-#: src/localplayer.cpp:3783
+#: src/localplayer.cpp:3782
 msgid "Follow: "
 msgstr ""
 
-#: src/localplayer.cpp:3785 src/localplayer.cpp:3800
+#: src/localplayer.cpp:3784 src/localplayer.cpp:3799
 msgid "Follow canceled"
 msgstr ""
 
-#: src/localplayer.cpp:3792
+#: src/localplayer.cpp:3791
 msgid "Imitation: "
 msgstr ""
 
-#: src/localplayer.cpp:3794 src/localplayer.cpp:3802
+#: src/localplayer.cpp:3793 src/localplayer.cpp:3801
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:4151
+#: src/localplayer.cpp:4150
 msgid "You see "
 msgstr ""
 
@@ -4948,7 +5122,7 @@ msgstr ""
 msgid "Failed to use item."
 msgstr ""
 
-#: src/net/ea/inventoryhandler.cpp:572
+#: src/net/ea/inventoryhandler.cpp:571
 msgid "Unable to equip."
 msgstr ""
 
@@ -5782,19 +5956,19 @@ msgstr ""
 msgid "%s is not in your party!"
 msgstr "%s nincs a csapatodban!"
 
-#: src/playerrelations.cpp:477
+#: src/playerrelations.cpp:482
 msgid "Print '...'"
 msgstr ""
 
-#: src/playerrelations.cpp:497
+#: src/playerrelations.cpp:502
 msgid "Blink name"
 msgstr ""
 
-#: src/playerrelations.cpp:539
+#: src/playerrelations.cpp:544
 msgid "Floating '...' bubble"
 msgstr ""
 
-#: src/playerrelations.cpp:542
+#: src/playerrelations.cpp:547
 msgid "Floating bubble"
 msgstr ""
 

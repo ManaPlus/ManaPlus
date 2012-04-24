@@ -1,7 +1,12 @@
 helpdir = $(pkgdatadir)/data/translations/help
 
 help_DATA =				\
-	ru.po
+	de.po				\
+	es.po				\
+	fr.po				\
+	pl.po				\
+	pt_BR.po			\
+	ru.po				
 
 EXTRA_DIST =				\
 	$(help_DATA)			\

@@ -1,27 +1,26 @@
 # en#
 # Translators:
-# Andrei Karas <akaras@inbox.ru>, 2012.
-# Dan Sagunov <danilka.pro@gmail.com>, 2012.
+#   <matwa@poczta.pl>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-03-29 09:46+0000\n"
-"Last-Translator: Dan Sagunov <danilka.pro@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/language/ru/)\n"
+"PO-Revision-Date: 2012-03-19 07:06+0000\n"
+"Last-Translator: derpella <matwa@poczta.pl>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/manaplus/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 msgid "##2End##P                      \"Change Attack Type\""
-msgstr ""
+msgstr "##2End##P                      \"Zmień tryb ataku\""
 
 msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr ""
+msgstr "/serverunignoreall -odignoruj szepty na poziomie serwera"
 
 msgid "To read about whispering and other chat commands, look here:"
-msgstr ""
+msgstr "O szeptach i innych poleceniach czatu, przeczytasz tutaj:"
 
 msgid "##2UP##P                       \"Move Up\""
 msgstr ""
@@ -30,7 +29,7 @@ msgid "##21##P                        \"Item Shortcut 1\""
 msgstr ""
 
 msgid "Translators"
-msgstr "Переводчики"
+msgstr "Tłumacze"
 
 msgid "##2Esc##P                      \"Quit\""
 msgstr ""
@@ -51,7 +50,7 @@ msgid "##2LeftAlt + Minus(-)##P       \"Emote Shortcut 11\""
 msgstr ""
 
 msgid "KEYBOARD:"
-msgstr "КЛАВИАТУРА:"
+msgstr "KLAWIATURA"
 
 msgid ""
 "##2     http://forums.themanaworld.org/viewforum.php?f=3\n"
@@ -59,10 +58,10 @@ msgid ""
 msgstr ""
 
 msgid "ManaPlus Contributors"
-msgstr "Разработчики ManaPlus"
+msgstr ""
 
 msgid "MOUSE:"
-msgstr "МЫШЬ:"
+msgstr "MYSZ:"
 
 msgid "/neutral NICK - add nick to neutral relation list."
 msgstr ""
@@ -74,7 +73,7 @@ msgid "##2Enter##P                    \"Toggle Chat\""
 msgstr ""
 
 msgid "Back to Index"
-msgstr "Назад к содержанию"
+msgstr ""
 
 msgid "##2LeftControl##P              \"Attack\""
 msgstr ""
@@ -104,7 +103,7 @@ msgid ""
 msgstr ""
 
 msgid "Support"
-msgstr "Поддержка"
+msgstr ""
 
 msgid "##2z##P                        \"Pickup\""
 msgstr ""
@@ -160,7 +159,7 @@ msgid "For other server look servers pages for support."
 msgstr ""
 
 msgid "Debug"
-msgstr "Отладка"
+msgstr ""
 
 msgid "##2LeftWinKey##P               \"Ignore input 1\""
 msgstr ""
@@ -198,7 +197,7 @@ msgid "##2DOWN##P                     \"Move Down\""
 msgstr ""
 
 msgid "Visit IRC channel:"
-msgstr "Посетить IRC канал"
+msgstr ""
 
 msgid "##2LeftAlt + Equals(=)##P      \"Emote Shortcut 12\""
 msgstr ""
@@ -239,13 +238,13 @@ msgid "##2LeftAlt + 6##P              \"Emote Shortcut 6\""
 msgstr ""
 
 msgid "IGNORING COMMUNICATION"
-msgstr "ИГНОРИРОВАНИЕ"
+msgstr ""
 
 msgid "WINDOWS"
-msgstr "ОКНА"
+msgstr ""
 
 msgid "SUPPORT"
-msgstr "ПОДДЕРЖКА"
+msgstr ""
 
 msgid "##2LEFT##P                     \"Move Left\""
 msgstr ""
@@ -257,7 +256,7 @@ msgid "About"
 msgstr ""
 
 msgid "Other skills:"
-msgstr "Другие навыки:"
+msgstr ""
 
 msgid "##2MenuKey##P                  \"Item Shortcuts Key\""
 msgstr ""
@@ -325,19 +324,19 @@ msgid ""
 msgstr ""
 
 msgid "Windows"
-msgstr "Окна"
+msgstr ""
 
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
 msgstr ""
 
 msgid "Website: http://manaplus.evolonline.org/"
-msgstr "Сайт: http://manaplus.evolonline.org/"
+msgstr "Strona: http://manaplus.evolonline.org/"
 
 msgid "##2F3##P                       \"Inventory Window\""
 msgstr ""
 
 msgid "ABOUT MANAPLUS"
-msgstr "О MANAPLUS"
+msgstr "O MANAPLUS"
 
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr ""
@@ -346,7 +345,7 @@ msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr ""
 
 msgid "INDEX"
-msgstr "СОДЕРЖАНИЕ"
+msgstr ""
 
 msgid ""
 "You can disable yellow bar,\n"
@@ -398,10 +397,10 @@ msgid "##2KeyPad[9]##P                \"Next chat tab line\""
 msgstr ""
 
 msgid "Chat commands"
-msgstr "Команды чата"
+msgstr ""
 
 msgid "Trade"
-msgstr "Обмен"
+msgstr ""
 
 msgid "/blacklist NICK - add nick to blacklist relation list."
 msgstr ""
@@ -431,10 +430,10 @@ msgid "##2j##P                        \"Commands Window\""
 msgstr ""
 
 msgid "THE PLAYER LIST"
-msgstr "СПИСОК ИГРОКОВ"
+msgstr ""
 
 msgid "Basic skills:"
-msgstr "Основные навыки:"
+msgstr ""
 
 msgid "##POther skills can be obtain by doing quests and missions in game."
 msgstr ""
@@ -459,7 +458,7 @@ msgstr ""
 msgid ""
 "##2ManaPlus##P is extended client based on code from ##2Mana##P client.\n"
 " Added many features, improved perfomance, stability, security and more."
-msgstr "##2ManaPlus##P - расширенный клиент для которого за основу взят ##2Mana##P клиент.\n Добавлено множество возможностей, улучшина производительность,\nстабильность, безопасность и многое другое."
+msgstr ""
 
 msgid ""
 " If you're having troubles, plase first of all read the FAQ. If you\n"
@@ -498,7 +497,7 @@ msgid ""
 msgstr ""
 
 msgid "Skills"
-msgstr "Навыки"
+msgstr ""
 
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr ""
@@ -554,7 +553,7 @@ msgid "##2Esc##P                      \"Deactivate Chat Input\""
 msgstr ""
 
 msgid "Player relations"
-msgstr "Отнашения между игроками"
+msgstr ""
 
 msgid ""
 "You can copy value from any bar,\n"
@@ -565,7 +564,7 @@ msgid "/closeall - close all whispers."
 msgstr ""
 
 msgid "COMMANDS"
-msgstr "КОМАНДЫ"
+msgstr ""
 
 msgid "##2RIGHT##P                    \"Move Right\""
 msgstr ""
@@ -598,13 +597,13 @@ msgid "##2u##P                        \"Quick Drop N Items\""
 msgstr ""
 
 msgid "You can change any key in keyboard settings."
-msgstr "Вы можете изменить любую клавишу в настройках"
+msgstr ""
 
 msgid "/dirs - show client dirs in debug chat tab."
 msgstr ""
 
 msgid "Powered By"
-msgstr "Сделано при помощи"
+msgstr ""
 
 msgid "/disconnect - quick disconnect from server."
 msgstr ""
@@ -622,7 +621,7 @@ msgid "##2F5##P                       \"Skill Window\""
 msgstr ""
 
 msgid "Commands"
-msgstr "Команды"
+msgstr ""
 
 msgid "##2t##P                        \"Talk\""
 msgstr ""
@@ -644,7 +643,7 @@ msgstr ""
 msgid ""
 "If client working very slow, you can improve speed\n"
 "by reading this: http://manaplus.evolonline.org/slowpc"
-msgstr "Если клиент работает очень медленно, вы можете его\nускорить прочитав это: http://manaplus.evolonline.org/slowpc"
+msgstr ""
 
 msgid ""
 "/mail NICK MSG - send offline message to NICK. Working only in tmw server."
@@ -671,7 +670,7 @@ msgstr ""
 msgid ""
 "About yellow bar you can read here:\n"
 "http://manaplus.evolonline.org/yellowbar"
-msgstr "О желтой полосе с настройками можно прочитать здесь:\nhttp://manaplus.evolonline.org/yellowbar"
+msgstr ""
 
 msgid "##2F10##P                      \"Debug Window\""
 msgstr ""
@@ -682,7 +681,7 @@ msgid ""
 msgstr ""
 
 msgid "Whispers commands"
-msgstr "Команды привата"
+msgstr ""
 
 msgid "##2LeftAlt + Insert##P         \"Emote Shortcut 14\""
 msgstr ""
@@ -702,7 +701,7 @@ msgid "##2d##P                        \"Move to Home location\""
 msgstr ""
 
 msgid "Whispers"
-msgstr "Приваты"
+msgstr ""
 
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr ""
@@ -791,7 +790,7 @@ msgid "##2h##P                        \"Hide Windows\""
 msgstr ""
 
 msgid "##2Version:##6%VER%"
-msgstr "##2Версия:##6%VER%"
+msgstr "##2Wersja:##6%VER%"
 
 msgid "##2Equals(=)##P                \"Item Shortcut 12\""
 msgstr ""
@@ -811,7 +810,7 @@ msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
 
 msgid "SKILLS"
-msgstr "НАВЫКИ"
+msgstr ""
 
 msgid "Art or images contributors"
 msgstr ""
@@ -823,7 +822,7 @@ msgid "##2F12##P                      \"Emote Shortcut Window\""
 msgstr ""
 
 msgid "Actions"
-msgstr "Действия"
+msgstr ""
 
 msgid "##2Insert##P                   \"Item Shortcut 14\""
 msgstr ""
