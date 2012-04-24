@@ -1133,7 +1133,8 @@ void ActorSpriteManager::addBlock(Uint32 id)
 void ActorSpriteManager::deleteBlock(Uint32 id)
 {
     std::vector<Uint32>::iterator iter = blockedBeings.begin();
-    while (iter != blockedBeings.end())
+    std::vector<Uint32>::iterator iter_end = blockedBeings.end();
+    while (iter != iter_end)
     {
         if (*iter == id)
         {
@@ -1171,7 +1172,8 @@ void ActorSpriteManager::printBeingsToChat(ActorSprites beings,
     debugChatTab->chatLog("---------------------------------------");
     debugChatTab->chatLog(header);
     std::set<ActorSprite*>::const_iterator it;
-    for (it = beings.begin(); it != beings.end(); ++it)
+    std::set<ActorSprite*>::const_iterator it_end = beings.end();
+    for (it = beings.begin(); it != it_end; ++it)
     {
         if (!*it)
             continue;
@@ -1199,7 +1201,8 @@ void ActorSpriteManager::printBeingsToChat(std::vector<Being*> beings,
     debugChatTab->chatLog(header);
 
     std::vector<Being*>::const_iterator i;
-    for (i = beings.begin(); i != beings.end(); ++i)
+    std::vector<Being*>::const_iterator i_end = beings.end();
+    for (i = beings.begin(); i != i_end; ++i)
     {
         if (!*i)
             continue;
@@ -1484,7 +1487,8 @@ void ActorSpriteManager::loadAttackList()
     std::list<std::string> list = unpackList(
         serverConfig.getValue("attackPriorityMobs", ""));
     std::list<std::string>::const_iterator i = list.begin();
-    while (i != list.end())
+    std::list<std::string>::const_iterator i_end = list.end();
+    while (i != i_end)
     {
         if (*i == "")
             empty = true;
@@ -1495,7 +1499,8 @@ void ActorSpriteManager::loadAttackList()
 
     list = unpackList(serverConfig.getValue("attackMobs", ""));
     i = list.begin();
-    while (i != list.end())
+    i_end = list.end();
+    while (i != i_end)
     {
         if (*i == "")
             empty = true;
@@ -1506,7 +1511,8 @@ void ActorSpriteManager::loadAttackList()
 
     list = unpackList(serverConfig.getValue("ignoreAttackMobs", ""));
     i = list.begin();
-    while (i != list.end())
+    i_end = list.end();
+    while (i != i_end)
     {
         if (*i == "")
             empty = true;

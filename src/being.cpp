@@ -855,8 +855,8 @@ void Being::removeGuild(int id)
 
 Guild *Being::getGuild(const std::string &guildName) const
 {
-    std::map<int, Guild*>::const_iterator itr, itr_end = mGuilds.end();
-    for (itr = mGuilds.begin(); itr != itr_end; ++itr)
+    for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
+         itr_end = mGuilds.end(); itr != itr_end; ++itr)
     {
         Guild *guild = itr->second;
         if (guild && guild->getName() == guildName)
@@ -868,8 +868,7 @@ Guild *Being::getGuild(const std::string &guildName) const
 
 Guild *Being::getGuild(int id) const
 {
-    std::map<int, Guild*>::const_iterator itr;
-    itr = mGuilds.find(id);
+    std::map<int, Guild*>::const_iterator itr = mGuilds.find(id);
     if (itr != mGuilds.end())
         return itr->second;
 
@@ -878,8 +877,7 @@ Guild *Being::getGuild(int id) const
 
 Guild *Being::getGuild() const
 {
-    std::map<int, Guild*>::const_iterator itr;
-    itr = mGuilds.begin();
+    std::map<int, Guild*>::const_iterator itr = mGuilds.begin();
     if (itr != mGuilds.end())
         return itr->second;
 
@@ -888,8 +886,8 @@ Guild *Being::getGuild() const
 
 void Being::clearGuilds()
 {
-    std::map<int, Guild*>::const_iterator itr, itr_end = mGuilds.end();
-    for (itr = mGuilds.begin(); itr != itr_end; ++itr)
+    for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
+         itr_end = mGuilds.end(); itr != itr_end; ++itr)
     {
         Guild *guild = itr->second;
 
@@ -1931,7 +1929,7 @@ void Being::addToCache()
 BeingCacheEntry* Being::getCacheEntry(int id)
 {
     for (std::list<BeingCacheEntry*>::iterator i = beingInfoCache.begin();
-         i != beingInfoCache.end(); ++i)
+         i != beingInfoCache.end(); ++ i)
     {
         if (!*i)
             continue;
@@ -2247,10 +2245,8 @@ void Being::recalcSpritesOrder()
 
             if (spriteToItems)
             {
-                SpriteToItemMap::const_iterator itr;
-
-                for (itr = spriteToItems->begin();
-                     itr != spriteToItems->end(); ++itr)
+                for (SpriteToItemMapCIter itr = spriteToItems->begin(),
+                     itr_end = spriteToItems->end(); itr != itr_end; ++ itr)
                 {
                     int remSprite = itr->first;
                     const std::map<int, int> &itemReplacer = itr->second;
@@ -2284,11 +2280,10 @@ void Being::recalcSpritesOrder()
                     }
                     else
                     {   // slot unknown. Search for real slot, this can be slow
-                        std::map<int, int>::const_iterator repIt
-                            = itemReplacer.begin();
-                        std::map<int, int>::const_iterator repIt_end
-                            = itemReplacer.end();
-                        for (; repIt != repIt_end; ++ repIt)
+                        for (std::map<int, int>::const_iterator
+                             repIt = itemReplacer.begin(),
+                             repIt_end = itemReplacer.end();
+                             repIt != repIt_end; ++ repIt)
                         {
                             for (unsigned slot2 = 0; slot2 < sz; slot2 ++)
                             {
@@ -2312,9 +2307,7 @@ void Being::recalcSpritesOrder()
         if (info.mDrawBefore[dir] > 0)
         {
             int id2 = mSpriteIDs[info.mDrawBefore[dir]];
-            std::map<int, int>::const_iterator
-                orderIt = itemSlotRemap.find(id2);
-            if (orderIt != itemSlotRemap.end())
+            if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (before)");
                 const ItemInfo &info2 = ItemDB::get(id2);
@@ -2336,9 +2329,7 @@ void Being::recalcSpritesOrder()
         else if (info.mDrawAfter[dir] > 0)
         {
             int id2 = mSpriteIDs[info.mDrawAfter[dir]];
-            std::map<int, int>::const_iterator
-                orderIt = itemSlotRemap.find(id2);
-            if (orderIt != itemSlotRemap.end())
+            if (itemSlotRemap.find(id2) != itemSlotRemap.end())
             {
 //                logger->log("found duplicate (after)");
                 const ItemInfo &info2 = ItemDB::get(id2);
@@ -2464,8 +2455,9 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
 {
 //    logger->log("searching %d", val);
     it = slotRemap.begin();
+    std::vector<int>::iterator it_end = slotRemap.end();
     idx = 0;
-    while (it != slotRemap.end())
+    while (it != it_end)
     {
 //        logger->log("testing %d", *it);
         if (*it == val)

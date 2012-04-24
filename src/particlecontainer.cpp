@@ -75,9 +75,8 @@ void ParticleList::addLocally(Particle *particle)
 
 void ParticleList::removeLocally(Particle *particle)
 {
-    std::list<Particle *>::iterator it, it_end;
-    for (it = mElements.begin(), it_end = mElements.end();
-         it != it_end; )
+    for (std::list<Particle *>::iterator it = mElements.begin();
+         it != mElements.end(); )
     {
         if (*it == particle)
         {
@@ -93,8 +92,8 @@ void ParticleList::removeLocally(Particle *particle)
 
 void ParticleList::clearLocally()
 {
-    for (std::list<Particle *>::const_iterator it = mElements.begin();
-         it != mElements.end(); ++it)
+    for (std::list<Particle *>::const_iterator it = mElements.begin(),
+         it_end = mElements.end(); it != it_end; ++ it)
     {
         (*it)->kill();
     }

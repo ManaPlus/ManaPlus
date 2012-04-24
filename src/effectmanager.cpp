@@ -68,8 +68,8 @@ bool EffectManager::trigger(int id, Being* being)
         return false;
 
     bool rValue = false;
-    for (std::vector<EffectDescription>::const_iterator i = mEffects.begin();
-         i != mEffects.end(); ++i)
+    for (std::vector<EffectDescription>::const_iterator i = mEffects.begin(),
+         i_end = mEffects.end(); i != i_end; ++i)
     {
         if ((*i).id == id)
         {
@@ -93,8 +93,8 @@ bool EffectManager::trigger(int id, int x, int y)
         return false;
 
     bool rValue = false;
-    for (std::vector<EffectDescription>::const_iterator i = mEffects.begin();
-         i != mEffects.end(); ++i)
+    for (std::vector<EffectDescription>::const_iterator i = mEffects.begin(),
+         i_end = mEffects.end(); i != i_end; ++i)
     {
         if ((*i).id == id)
         {

@@ -909,9 +909,8 @@ void LocalPlayer::inviteToGuild(Being *being)
 
     // TODO: Allow user to choose which guild to invite being to
     // For now, just invite to the first guild you have permissions to invite with
-    std::map<int, Guild*>::const_iterator itr = mGuilds.begin();
-    std::map<int, Guild*>::const_iterator itr_end = mGuilds.end();
-    for (; itr != itr_end; ++itr)
+    for (std::map<int, Guild*>::const_iterator itr = mGuilds.begin(),
+         itr_end = mGuilds.end(); itr != itr_end; ++itr)
     {
         if (itr->second && checkInviteRights(itr->second->getName()))
         {
@@ -3402,8 +3401,8 @@ void LocalPlayer::saveHomes()
     std::string homeStr;
     std::stringstream ss(homeStr);
 
-    for (std::map<std::string, Vector>::const_iterator iter = mHomes.begin();
-         iter != mHomes.end(); ++iter )
+    for (std::map<std::string, Vector>::const_iterator iter = mHomes.begin(),
+         iter_end = mHomes.end(); iter != iter_end; ++iter )
     {
         Vector pos = (*iter).second;
 

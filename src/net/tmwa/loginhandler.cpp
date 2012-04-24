@@ -197,9 +197,8 @@ void LoginHandler::processUpdateHost2(Net::MessageIn &msg)
     std::string updateHost = msg.readString(len);
 
     splitToStringVector(loginData.updateHosts, updateHost, '|');
-    StringVectIter it = loginData.updateHosts.begin();
-    StringVectIter it_end = loginData.updateHosts.end();
-    for (; it != it_end; ++ it)
+    for (StringVectIter it = loginData.updateHosts.begin(),
+         it_end = loginData.updateHosts.end(); it != it_end; ++ it)
     {
         if (!checkPath(*it))
         {

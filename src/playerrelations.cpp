@@ -44,6 +44,11 @@
 
 #define IGNORE_EMOTE_TIME 100
 
+typedef std::map<std::string, PlayerRelation *> PlayerRelations;
+typedef PlayerRelations::const_iterator PlayerRelationsCIter;
+typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;
+typedef PlayerRelationListeners::const_iterator PlayerRelationListenersCIter;
+
 class SortPlayersFunctor
 {
     public:
@@ -130,9 +135,8 @@ PlayerRelationsManager::~PlayerRelationsManager()
 {
     delete_all(mIgnoreStrategies);
 
-    for (std::map<std::string,
-         PlayerRelation *>::const_iterator it = mRelations.begin();
-         it != mRelations.end(); ++it)
+    for (PlayerRelationsCIter it = mRelations.begin(),
+         it_end = mRelations.end(); it != it_end; ++ it)
     {
         delete it->second;
     }
@@ -141,8 +145,11 @@ PlayerRelationsManager::~PlayerRelationsManager()
 void PlayerRelationsManager::clear()
 {
     StringVect *names = getPlayers();
-    for (StringVectCIter it = names->begin(); it != names->end(); ++ it)
+    for (StringVectCIter it = names->begin(), it_end = names->end();
+         it != it_end; ++ it)
+    {
         removePlayer(*it);
+    }
     delete names;
     names = nullptr;
 }
@@ -209,8 +216,8 @@ void PlayerRelationsManager::init()
                  // until the next update.
     }
 
-    for (std::list<PlayerRelationsListener *>::const_iterator
-         it = mListeners.begin(); it != mListeners.end(); ++it)
+    for (PlayerRelationListenersCIter it = mListeners.begin(),
+         it_end = mListeners.end(); it != it_end; ++it)
     {
         (*it)->updateAll();
     }
@@ -237,8 +244,8 @@ void PlayerRelationsManager::store()
 
 void PlayerRelationsManager::signalUpdate(const std::string &name)
 {
-    for (std::list<PlayerRelationsListener *>::const_iterator
-         it = mListeners.begin(); it != mListeners.end(); ++it)
+    for (PlayerRelationListenersCIter it = mListeners.begin(),
+         it_end = mListeners.end(); it != it_end; ++ it)
     {
         (*it)->updatedPlayer(name);
     }
@@ -346,9 +353,8 @@ StringVect * PlayerRelationsManager::getPlayers()
 {
     StringVect *retval = new StringVect();
 
-    for (std::map<std::string,
-         PlayerRelation *>::const_iterator it = mRelations.begin();
-         it != mRelations.end(); ++it)
+    for (PlayerRelationsCIter it = mRelations.begin(),
+         it_end = mRelations.end(); it != it_end; ++ it)
     {
         if (it->second)
             retval->push_back(it->first);
@@ -364,9 +370,8 @@ StringVect *PlayerRelationsManager::getPlayersByRelation(
 {
     StringVect *retval = new StringVect();
 
-    for (std::map<std::string,
-         PlayerRelation *>::const_iterator it = mRelations.begin();
-         it != mRelations.end(); ++it)
+    for (PlayerRelationsCIter it = mRelations.begin(),
+         it_end = mRelations.end(); it != it_end; ++ it)
     {
         if (it->second && it->second->mRelation == rel)
             retval->push_back(it->first);

@@ -43,6 +43,13 @@ class ObjectsLayer;
 
 typedef std::vector<Tileset*> Tilesets;
 typedef std::vector<MapLayer*> Layers;
+typedef Layers::const_iterator LayersCIter;
+
+typedef std::vector<std::pair<MapLayer*, int> > TilePairVector;
+typedef TilePairVector::const_iterator TilePairVectorCIter;
+
+typedef std::vector<AmbientLayer*> AmbientLayerVector;
+typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
 
 /**
  * A meta tile stores additional information about a location on a tile map.
@@ -84,10 +91,13 @@ class TileAnimation
         { mAffected.push_back(std::make_pair(layer, index)); }
 
     private:
-        std::vector<std::pair<MapLayer*, int> > mAffected;
+        TilePairVector mAffected;
         SimpleAnimation *mAnimation;
         Image *mLastImage;
 };
+
+typedef std::map<int, TileAnimation*> TileAnimationMap;
+typedef TileAnimationMap::const_iterator TileAnimationMapCIter;
 
 /**
  * A tile map.
@@ -422,8 +432,8 @@ class Map : public Properties, public ConfigListener
         unsigned mOnClosedList, mOnOpenList;
 
         // Overlay data
-        std::vector<AmbientLayer*> mBackgrounds;
-        std::vector<AmbientLayer*> mForegrounds;
+        AmbientLayerVector mBackgrounds;
+        AmbientLayerVector mForegrounds;
         float mLastAScrollX;
         float mLastAScrollY;
 //        bool mSpritesUpdated;

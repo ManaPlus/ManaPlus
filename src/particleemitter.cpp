@@ -431,8 +431,8 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
     mTempSets = o.mTempSets;
 
     for (std::vector<ImageSet*>::const_iterator
-         i = mTempSets.begin();
-         i != mTempSets.end(); ++i)
+         i = mTempSets.begin(), i_end = mTempSets.end();
+         i != i_end; ++ i)
     {
         if (*i)
             (*i)->incRef();
@@ -449,8 +449,8 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 ParticleEmitter::~ParticleEmitter()
 {
     for (std::vector<ImageSet*>::const_iterator
-         i = mTempSets.begin();
-         i != mTempSets.end(); ++i)
+         i = mTempSets.begin(), i_end = mTempSets.end();
+         i != i_end; ++i)
     {
         if (*i)
             (*i)->decRef();
@@ -572,8 +572,9 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
         newParticle->setAlpha(mParticleAlpha.value(tick));
 
         for (std::list<ParticleEmitter>::const_iterator
-             it = mParticleChildEmitters.begin();
-             it != mParticleChildEmitters.end(); ++it)
+             it = mParticleChildEmitters.begin(),
+             it_end = mParticleChildEmitters.end();
+             it != it_end; ++it)
         {
             newParticle->addEmitter(new ParticleEmitter(*it));
         }

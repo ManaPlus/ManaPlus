@@ -218,8 +218,8 @@ void Network::unregisterHandler(MessageHandler *handler)
 
 void Network::clearHandlers()
 {
-    MessageHandlerIterator i;
-    for (i = mMessageHandlers.begin(); i != mMessageHandlers.end(); ++i)
+    for (MessageHandlerIterator i = mMessageHandlers.begin();
+         i != mMessageHandlers.end(); ++i)
     {
         if (i->second)
             i->second->setNetwork(nullptr);

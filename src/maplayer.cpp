@@ -334,7 +334,8 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     if (endY > mHeight)
         endY = mHeight;
 
-    Actors::const_iterator ai = actors->begin();
+    ActorsCIter ai = actors->begin();
+    ActorsCIter ai_end = actors->end();
 
     const int dx = (mX * 32) - scrollX;
     const int dy = (mY * 32) - scrollY + 32;
@@ -350,7 +351,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
 
         // If drawing the fringe layer, make sure all actors above this row of
         // tiles have been drawn
-        while (ai != actors->end() && (*ai)->getPixelY() <= y32s)
+        while (ai != ai_end && (*ai)->getPixelY() <= y32s)
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ ai;
@@ -453,7 +454,7 @@ void MapLayer::drawFringe(Graphics *graphics, int startX, int startY,
     // Draw any remaining actors
     if (debugFlags != Map::MAP_SPECIAL3)
     {
-        while (ai != actors->end())
+        while (ai != ai_end)
         {
             (*ai)->draw(graphics, -scrollX, -scrollY);
             ++ai;

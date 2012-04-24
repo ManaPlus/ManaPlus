@@ -116,8 +116,8 @@ void ActorSprite::logic()
     if (mMustResetParticles)
     {
         mMustResetParticles = false;
-        for (std::set<int>::const_iterator it = mStatusEffects.begin();
-             it != mStatusEffects.end(); ++it)
+        for (std::set<int>::const_iterator it = mStatusEffects.begin(),
+             it_end = mStatusEffects.end(); it != it_end; ++it)
         {
             const StatusEffect *effect
                 = StatusEffect::getStatusEffect(*it, true);
@@ -372,9 +372,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     //setup particle effects
     if (Particle::enabled && particleEngine)
     {
-        StringVectCIter itr;
-        StringVectCIter itr_end;
-        for (itr = display.particles.begin(),
+        for (StringVectCIter itr = display.particles.begin(),
              itr_end = display.particles.end();
              itr != itr_end; ++itr)
         {

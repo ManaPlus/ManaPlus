@@ -222,8 +222,11 @@ void Configuration::setValue(const std::string &key, const std::string &value)
     if (list != mListenerMap.end())
     {
         Listeners listeners = list->second;
-        for (ListenerIterator i = listeners.begin(); i != listeners.end(); ++i)
+        for (ListenerIterator i = listeners.begin(), i_end = listeners.end();
+             i != i_end; ++i)
+        {
             (*i)->optionChanged(key);
+        }
     }
 }
 
@@ -735,8 +738,8 @@ void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
     }
 
     for (std::map<std::string, ConfigurationList>::const_iterator
-         it = mContainerOptions.begin();
-         it != mContainerOptions.end(); ++it)
+         it = mContainerOptions.begin(), it_end = mContainerOptions.end();
+         it != it_end; ++ it)
     {
         const char *name = it->first.c_str();
 
@@ -744,8 +747,8 @@ void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
         xmlTextWriterWriteAttribute(writer, BAD_CAST "name", BAD_CAST name);
 
         // recurse on all elements
-        for (ConfigurationList::const_iterator elt_it = it->second.begin();
-             elt_it != it->second.end(); ++elt_it)
+        for (ConfigurationList::const_iterator elt_it = it->second.begin(),
+             elt_it_end = it->second.end(); elt_it != elt_it_end; ++elt_it)
         {
             xmlTextWriterStartElement(writer, BAD_CAST name);
             if (*elt_it)
@@ -807,10 +810,11 @@ void Configuration::removeListener(const std::string &key,
 
 void Configuration::removeListeners(ConfigListener *listener)
 {
-    ListenerMapIterator it = mListenerMap.begin();
-    ListenerMapIterator it_end = mListenerMap.end();
-    for (; it != it_end; ++ it)
+    for (ListenerMapIterator it = mListenerMap.begin(),
+         it_end = mListenerMap.end(); it != it_end; ++ it)
+    {
         (it->second).remove(listener);
+    }
 }
 
 void Configuration::removeOldKeys()

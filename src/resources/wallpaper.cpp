@@ -136,13 +136,14 @@ void Wallpaper::loadWallpapers()
 
 std::string Wallpaper::getWallpaper(int width, int height)
 {
-    std::vector<WallpaperData>::const_iterator iter;
     WallpaperData wp;
 
     // Wallpaper filename container
     StringVect wallPaperVector;
 
-    for (iter = wallpaperData.begin(); iter != wallpaperData.end(); ++iter)
+    for (std::vector<WallpaperData>::const_iterator
+         iter = wallpaperData.begin(), iter_end = wallpaperData.end();
+         iter != iter_end; ++iter)
     {
         wp = *iter;
         if (wp.width <= width && wp.height <= height)

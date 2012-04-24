@@ -92,6 +92,7 @@ enum ItemType
 
 // sprite, <itemfrom, itemto>
 typedef std::map<int, std::map<int, int> > SpriteToItemMap;
+typedef SpriteToItemMap::const_iterator SpriteToItemMapCIter;
 
 /**
  * Defines a class for storing item infos. This includes information used when

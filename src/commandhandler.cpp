@@ -1214,7 +1214,8 @@ void showRes(std::string str, ResourceManager::Resources *res)
         debugChatTab->chatLog(str + toString(res->size()));
     logger->log(str + toString(res->size()));
     ResourceManager::ResourceIterator iter = res->begin();
-    while (iter != res->end())
+    ResourceManager::ResourceIterator iter_end = res->end();
+    while (iter != iter_end)
     {
         if (iter->second && iter->second->getRefCount())
         {
@@ -1311,9 +1312,8 @@ void CommandHandler::replaceVars(std::string &str)
         StringVect names;
         std::string newStr = "";
         actorSpriteManager->getPlayerNames(names, false);
-        StringVectCIter it = names.begin();
-        StringVectCIter it_end = names.end();
-        for (; it != it_end; ++ it)
+        for (StringVectCIter it = names.begin(), it_end = names.end();
+             it != it_end; ++ it)
         {
             if (*it != player_node->getName())
                 newStr += *it + ",";
@@ -1333,9 +1333,8 @@ void CommandHandler::replaceVars(std::string &str)
         if (player_node->isInParty() && (party = player_node->getParty()))
         {
             party->getNames(names);
-            StringVectCIter it = names.begin();
-            StringVectCIter it_end = names.end();
-            for (; it != it_end; ++ it)
+            for (StringVectCIter it = names.begin(), it_end = names.end();
+                 it != it_end; ++ it)
             {
                 if (*it != player_node->getName())
                     newStr += *it + ",";

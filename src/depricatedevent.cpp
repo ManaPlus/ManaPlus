@@ -117,7 +117,8 @@ void DepricatedEvent::trigger(Channels channel, const DepricatedEvent &event)
 
     // Loop though all listeners
     ListenerSet::const_iterator lit = it->second.begin();
-    while (lit != it->second.end())
+    ListenerSet::const_iterator lit_end = it->second.end();
+    while (lit != lit_end)
     {
         if (*lit)
             (*lit)->processEvent(channel, event);

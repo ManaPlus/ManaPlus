@@ -108,8 +108,8 @@ bool TileAnimation::update(int ticks)
     Image *img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
-        for (std::vector<std::pair<MapLayer*, int> >::const_iterator i =
-             mAffected.begin(); i != mAffected.end(); ++i)
+        for (TilePairVectorCIter i = mAffected.begin(), i_end = mAffected.end();
+             i != i_end; ++i)
         {
             if (i->first)
                 i->first->setTile(i->second, img);
@@ -304,9 +304,9 @@ void Map::addTileset(Tileset *tileset)
 void Map::update(int ticks)
 {
     // Update animated tiles
-    for (std::map<int, TileAnimation*>::const_iterator
-         iAni = mTileAnimations.begin();
-         iAni != mTileAnimations.end(); ++iAni)
+    for (TileAnimationMapCIter iAni = mTileAnimations.begin(),
+         i_end = mTileAnimations.end();
+         iAni != i_end; ++iAni)
     {
         if (iAni->second && iAni->second->update(ticks))
             mRedrawMap = true;
@@ -351,9 +351,6 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             graphics->mWidth, graphics->mHeight));
     }
 
-    // draw the game world
-    Layers::const_iterator layeri = mLayers.begin();
-
     bool overFringe = false;
     int updateFlag = 0;
 
@@ -392,7 +389,8 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     }
     else
     {
-        for (; layeri != mLayers.end() && !overFringe; ++layeri)
+        for (LayersCIter layeri = mLayers.begin(), layeri_end = mLayers.end();
+             layeri != layeri_end && !overFringe; ++ layeri)
         {
             if ((*layeri)->isFringeLayer())
             {
@@ -439,8 +437,9 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     {
         // Draws beings with a lower opacity to make them visible
         // even when covered by a wall or some other elements...
-        Actors::const_iterator ai = mActors.begin();
-        while (ai != mActors.end())
+        ActorsCIter ai = mActors.begin();
+        ActorsCIter ai_end = mActors.end();
+        while (ai != ai_end)
         {
             if (Actor *actor = *ai)
             {
@@ -600,12 +599,17 @@ void Map::updateAmbientLayers(float scrollX, float scrollY)
     float dy = scrollY - mLastAScrollY;
     int timePassed = get_elapsed_time(lastTick);
 
-    std::vector<AmbientLayer*>::const_iterator i;
-    for (i = mBackgrounds.begin(); i != mBackgrounds.end(); ++i)
+    for (AmbientLayerVectorCIter i = mBackgrounds.begin(),
+         i_end = mBackgrounds.end(); i != i_end; ++i)
+    {
         (*i)->update(timePassed, dx, dy);
+    }
 
-    for (i = mForegrounds.begin(); i != mForegrounds.end(); ++i)
+    for (AmbientLayerVectorCIter i = mForegrounds.begin(),
+        i_end = mForegrounds.end(); i != i_end; ++i)
+    {
         (*i)->update(timePassed, dx, dy);
+    }
 
     mLastAScrollX = scrollX;
     mLastAScrollY = scrollY;
@@ -620,7 +624,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
         return;
 
     // find out which layer list to draw
-    std::vector<AmbientLayer*> *layers;
+    AmbientLayerVector *layers;
     switch (type)
     {
         case FOREGROUND_LAYERS:
@@ -637,8 +641,8 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
     }
 
     // Draw overlays
-    for (std::vector<AmbientLayer*>::const_iterator i = layers->begin();
-         i != layers->end(); ++i)
+    for (AmbientLayerVectorCIter i = layers->begin(), i_end = layers->end();
+         i != i_end; ++i)
     {
         if (*i)
             (*i)->draw(graphics, graphics->mWidth, graphics->mHeight);
@@ -863,8 +867,9 @@ Path Map::findPixelPath(int startPixelX, int startPixelY, int endPixelX,
     // Convert the map path to pixels over tiles
     // And add interpolation between the starting and ending offsets
     Path::iterator it = myPath.begin();
+    Path::iterator it_end = myPath.end();
     int i = 0;
-    while (it != myPath.end())
+    while (it != it_end)
     {
         // A position that is valid on the start and end tile is not
         // necessarily valid on all the tiles in between, so check the offsets.
@@ -1326,8 +1331,7 @@ TileAnimation *Map::getAnimationForGid(int gid) const
     if (mTileAnimations.empty())
         return nullptr;
 
-    std::map<int, TileAnimation*>::const_iterator
-        i = mTileAnimations.find(gid);
+    TileAnimationMapCIter i = mTileAnimations.find(gid);
     return (i == mTileAnimations.end()) ? nullptr : i->second;
 }
 
@@ -1373,7 +1377,8 @@ std::string Map::getObjectData(unsigned x, unsigned y, int type)
         return "";
 
     std::vector<MapObject>::const_iterator it = list->objects.begin();
-    while (it != list->objects.end())
+    std::vector<MapObject>::const_iterator it_end = list->objects.end();
+    while (it != it_end)
     {
         if ((*it).type == type)
             return (*it).data;
@@ -1453,11 +1458,12 @@ void Map::reduce()
     {
         for (int y = 0; y < mHeight; y ++)
         {
-            Layers::const_iterator layeri = mLayers.begin();
             bool correct(true);
             bool dontHaveAlpha(false);
 
-            for (; layeri != mLayers.end(); ++ layeri)
+            for (LayersCIter layeri = mLayers.begin(),
+                 layeri_end = mLayers.end();
+                 layeri != layeri_end; ++ layeri)
             {
                 MapLayer *layer = *layeri;
                 if (x >= layer->mWidth || y >= layer->mHeight)

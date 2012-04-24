@@ -207,7 +207,8 @@ size_t findI(std::string text, StringVect &list)
 {
     std::string str = toLower(text);
     size_t idx;
-    for (StringVectCIter i = list.begin(); i != list.end(); ++ i)
+    for (StringVectCIter i = list.begin(), i_end = list.end();
+         i != i_end; ++ i)
     {
         std::string subStr = *i;
         subStr = toLower(subStr);
@@ -482,9 +483,8 @@ std::string combineDye2(std::string file, std::string dye)
         file = file.substr(0, pos);
         std::list<std::string> list1 = splitToStringList(dye1, ';');
         std::list<std::string> list2 = splitToStringList(dye, ';');
-        std::list<std::string>::const_iterator it1, it1_end = list1.end();
-        std::list<std::string>::const_iterator it2, it2_end = list2.end();
-        for (it1 = list1.begin(), it2 = list2.begin();
+        for (std::list<std::string>::const_iterator it1 = list1.begin(),
+             it2 = list2.begin(), it1_end = list1.end(), it2_end = list2.end();
              it1 != it1_end && it2 != it2_end; ++it1, ++it2)
         {
             str += (*it1) + ":" + (*it2) + ";";

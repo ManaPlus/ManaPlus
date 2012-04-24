@@ -106,10 +106,9 @@ void InputManager::retrieve()
 
             StringVect keys;
             splitToStringVector(keys, keyStr, ',');
-            StringVectCIter it = keys.begin();
-            StringVectCIter it_end = keys.end();
             int i2 = 0;
-            for (; it != it_end && i2 < KeyFunctionSize; ++ it)
+            for (StringVectCIter it = keys.begin(), it_end = keys.end();
+                 it != it_end && i2 < KeyFunctionSize; ++ it)
             {
                 std::string keyStr2 = *it;
                 if (keyStr.size() < 2)
@@ -619,9 +618,8 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
     }
 
     keySorter.keys = &keyData[0];
-    KeyToActionMapIter it = actionMap.begin();
-    KeyToActionMapIter it_end = actionMap.end();
-    for (; it != it_end; ++ it)
+    for (KeyToActionMapIter it = actionMap.begin(), it_end = actionMap.end();
+         it != it_end; ++ it)
     {
         KeysVector *keys = &it->second;
         if (keys && keys->size() > 1)
@@ -635,10 +633,9 @@ bool InputManager::triggerAction(const KeysVector *ptrs)
         return false;
 
 //    logger->log("ptrs: %d", (int)ptrs.size());
-    KeysVectorCIter it = ptrs->begin();
-    KeysVectorCIter it_end = ptrs->end();
 
-    for (; it != it_end; ++ it)
+    for (KeysVectorCIter it = ptrs->begin(), it_end = ptrs->end();
+         it != it_end; ++ it)
     {
         const int keyNum = *it;
         if (keyNum < 0 || keyNum >= Input::KEY_TOTAL)

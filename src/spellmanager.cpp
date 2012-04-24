@@ -352,10 +352,11 @@ void SpellManager::save()
 std::string SpellManager::autoComplete(std::string partName)
 {
     std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
+    std::vector<TextCommand*>::const_iterator i_end = mSpellsVector.end();
     std::string newName = "";
     TextCommand *newCommand = nullptr;
 
-    while (i != mSpellsVector.end())
+    while (i != i_end)
     {
         TextCommand *cmd = *i;
         std::string line = cmd->getCommand();

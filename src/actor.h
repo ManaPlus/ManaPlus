@@ -32,6 +32,7 @@ class Image;
 class Map;
 
 typedef std::list<Actor*> Actors;
+typedef Actors::const_iterator ActorsCIter;
 
 class Actor
 {

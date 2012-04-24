@@ -61,9 +61,8 @@ Action *SpriteDef::getAction(std::string action, unsigned num) const
 unsigned SpriteDef::findNumber(unsigned num) const
 {
     unsigned min = 101;
-    Actions::const_iterator it = mActions.begin();
-    Actions::const_iterator it_end = mActions.end();
-    for (; it != it_end; ++ it)
+    for (Actions::const_iterator it = mActions.begin(),
+         it_end = mActions.end(); it != it_end; ++ it)
     {
         unsigned n = (*it).first;
         if (n >= num && n < min)
@@ -107,9 +106,8 @@ SpriteDef *SpriteDef::load(const std::string &animationFile, int variant)
 
 void SpriteDef::fixDeadAction()
 {
-    ActionsIter it = mActions.begin();
-    ActionsIter it_end = mActions.end();
-    for (; it != it_end; ++ it)
+    for (ActionsIter it = mActions.begin(), it_end = mActions.end();
+         it != it_end; ++ it)
     {
         ActionMap *d = (*it).second;
         if (!d)
@@ -122,9 +120,8 @@ void SpriteDef::fixDeadAction()
 
 void SpriteDef::substituteAction(std::string complete, std::string with)
 {
-    ActionsConstIter it = mActions.begin();
-    ActionsConstIter it_end = mActions.end();
-    for (; it != it_end; ++ it)
+    for (ActionsConstIter it = mActions.begin(), it_end = mActions.end();
+         it != it_end; ++ it)
     {
         ActionMap *d = (*it).second;
         if (!d)
@@ -326,9 +323,8 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
             {
                 StringVect vals;
                 splitToStringVector(vals, value, ',');
-                StringVectCIter it = vals.begin();
-                StringVectCIter it_end = vals.end();
-                for (; it != it_end; ++ it)
+                for (StringVectCIter it = vals.begin(), it_end = vals.end();
+                     it != it_end; ++ it)
                 {
                     std::string str = *it;
                     size_t idx = str.find("-");
@@ -419,10 +415,11 @@ SpriteDef::~SpriteDef()
     for (Actions::iterator i = mActions.begin(),
          i_end = mActions.end(); i != i_end; ++i)
     {
-        ActionMap::iterator it = (*i).second->begin();
-        ActionMap::iterator it_end = (*i).second->end();
-        for (; it != it_end; ++ it)
+        for (ActionMap::iterator it = (*i).second->begin(),
+             it_end = (*i).second->end(); it != it_end; ++ it)
+        {
             actions.insert(it->second);
+        }
         delete (*i).second;
     }
 

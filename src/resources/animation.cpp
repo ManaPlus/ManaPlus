@@ -78,9 +78,8 @@ void Animation::addPause(int delay, int rand)
 
 void Animation::setLastFrameDelay(int delay)
 {
-    FramesRevIter it = mFrames.rbegin();
-    FramesRevIter it_end = mFrames.rend();
-    for (; it != it_end; ++ it)
+    for (FramesRevIter it = mFrames.rbegin(), it_end = mFrames.rend();
+         it != it_end; ++ it)
     {
         if ((*it).type == Frame::ANIMATION && (*it).image)
         {

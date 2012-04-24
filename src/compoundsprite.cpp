@@ -74,8 +74,8 @@ bool CompoundSprite::reset()
 {
     bool ret = false;
 
-    SpriteIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             ret |= (*it)->reset();
@@ -89,8 +89,8 @@ bool CompoundSprite::play(std::string action)
 {
     bool ret = false;
 
-    SpriteIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             ret |= (*it)->play(action);
@@ -104,8 +104,8 @@ bool CompoundSprite::update(int time)
 {
     bool ret = false;
 
-    SpriteIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             ret |= (*it)->update(time);
@@ -143,8 +143,8 @@ bool CompoundSprite::draw(Graphics *graphics, int posX, int posY) const
 
 void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
 {
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
         {
@@ -157,8 +157,8 @@ void CompoundSprite::drawSprites(Graphics* graphics, int posX, int posY) const
 void CompoundSprite::drawSpritesSDL(Graphics* graphics,
                                     int posX, int posY) const
 {
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             (*it)->draw(graphics, posX, posY);
@@ -169,8 +169,8 @@ int CompoundSprite::getWidth() const
 {
     Sprite *base = nullptr;
 
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if ((base = (*it)))
             break;
@@ -186,8 +186,8 @@ int CompoundSprite::getHeight() const
 {
     Sprite *base = nullptr;
 
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if ((base = (*it)))
             break;
@@ -208,8 +208,8 @@ bool CompoundSprite::setSpriteDirection(SpriteDirection direction)
 {
     bool ret = false;
 
-    SpriteIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             ret |= (*it)->setSpriteDirection(direction);
@@ -229,8 +229,8 @@ int CompoundSprite::getNumberOfLayers() const
 
 unsigned int CompoundSprite::getCurrentFrame() const
 {
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             return (*it)->getCurrentFrame();
@@ -241,8 +241,8 @@ unsigned int CompoundSprite::getCurrentFrame() const
 
 unsigned int CompoundSprite::getFrameCount() const
 {
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             return (*it)->getFrameCount();
@@ -419,9 +419,8 @@ void CompoundSprite::setAlpha(float alpha)
         if (mEnableAlphaFix && size() > 3)
 #endif
         {
-            SpriteConstIterator it, it_end;
-            for (it = mSprites.begin(), it_end = mSprites.end();
-                 it != it_end; ++ it)
+            for (SpriteConstIterator it = mSprites.begin(),
+                 it_end = mSprites.end(); it != it_end; ++ it)
             {
                 if (*it)
                     (*it)->setAlpha(alpha);
@@ -464,8 +463,6 @@ void CompoundSprite::updateImages() const
 
 bool CompoundSprite::updateFromCache() const
 {
-    ImagesCache::iterator it = imagesCache.begin();
-    ImagesCache::const_iterator it_end = imagesCache.end();
 //    static int hits = 0;
 //    static int miss = 0;
 
@@ -487,18 +484,20 @@ bool CompoundSprite::updateFromCache() const
 //    logger->log("cache size: %d, hit %d, miss %d",
 //        (int)imagesCache.size(), hits, miss);
 
-    for (it = imagesCache.begin(); it != it_end; ++ it)
+    for (ImagesCache::iterator it = imagesCache.begin(),
+         it_end = imagesCache.end(); it != it_end; ++ it)
     {
         CompoundItem *ic = *it;
         if (ic && ic->data.size() == size())
         {
             bool fail(false);
-            SpriteConstIterator it1 = mSprites.begin();
-            SpriteConstIterator it1_end = mSprites.end();
             VectorPointers::const_iterator it2 = ic->data.begin();
             VectorPointers::const_iterator it2_end = ic->data.end();
 
-            for (; it1 != it1_end && it2 != it2_end;  ++ it1, ++ it2)
+            for (SpriteConstIterator it1 = mSprites.begin(),
+                 it1_end = mSprites.end();
+                 it1 != it1_end && it2 != it2_end;
+                 ++ it1, ++ it2)
             {
                 void *ptr1 = nullptr;
                 void *ptr2 = nullptr;
@@ -549,9 +548,9 @@ void CompoundSprite::initCurrentCacheItem() const
 
 bool CompoundSprite::updateNumber(unsigned num)
 {
-    SpriteConstIterator it, it_end;
     bool res(false);
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(),
+         it_end = mSprites.end(); it != it_end; ++ it)
     {
         if (*it)
         {

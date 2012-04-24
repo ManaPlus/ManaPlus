@@ -307,8 +307,8 @@ void ItemDB::load()
                 effect += " / ";
             effect += strprintf(gettext(fields[i][1]), value);
         }
-        for (std::vector<Stat>::const_iterator it = extraStats.begin();
-             it != extraStats.end(); ++it)
+        for (std::vector<Stat>::const_iterator it = extraStats.begin(),
+             it_end = extraStats.end(); it != it_end; ++it)
         {
             int value = XML::getProperty(node, it->tag.c_str(), 0);
             if (!value)

@@ -671,19 +671,22 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
 
     std::vector<GLint*> *intVertPool = ogl->getIntVertPool();
     std::vector<GLint*>::const_iterator iv;
+    std::vector<GLint*>::const_iterator iv_end = intVertPool->end();
     std::vector<int> *vp = ogl->getVp();
     std::vector<int>::const_iterator ivp;
+    std::vector<int>::const_iterator ivp_end = vp->end();
 
     // Draw a set of textured rectangles
     if (image->mTextureType == GL_TEXTURE_2D)
     {
         std::vector<GLfloat*> *floatTexPool = ogl->getFloatTexPool();
         std::vector<GLfloat*>::const_iterator ft;
+        std::vector<GLfloat*>::const_iterator ft_end = floatTexPool->end();
 
         for (iv = intVertPool->begin(), ft = floatTexPool->begin(),
              ivp = vp->begin();
-             iv != intVertPool->end(), ft != floatTexPool->end(),
-             ivp != vp->end();
+             iv != iv_end, ft != ft_end,
+             ivp != ivp_end;
              ++ iv, ++ ft, ++ ivp)
         {
             drawQuadArrayfi(*iv, *ft, *ivp);
@@ -693,11 +696,12 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
     {
         std::vector<GLint*> *intTexPool = ogl->getIntTexPool();
         std::vector<GLint*>::const_iterator it;
+        std::vector<GLint*>::const_iterator it_end = intTexPool->end();
 
         for (iv = intVertPool->begin(), it = intTexPool->begin(),
              ivp = vp->begin();
-             iv != intVertPool->end(), it != intTexPool->end(),
-             ivp != vp->end();
+             iv != iv_end, it != it_end,
+             ivp != ivp_end;
              ++ iv, ++ it, ++ ivp)
         {
             drawQuadArrayii(*iv, *it, *ivp);
