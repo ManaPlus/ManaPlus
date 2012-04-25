@@ -98,7 +98,7 @@ msgstr " - ##2allow whispers##P: Você deseja permiti que os jogadores arbitrár
 msgid ""
 "##2ManaPlus##P is a serious effort to create an innovative free and open\n"
 " source MMORPG Client. Mana uses 2D graphics and aims to create a large\n"
-" and diverse interactive world. It is licensed under the GPL, making)\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
 " sure this game can't ever run away from you."
 msgstr "##2ManaPlus##P é um serio esforço para criar um inovado, grátis e de código aberto cliente MMORPG. Mana utiliza gráficos 2D e foca em criar um largo e diverso mundo interativo. É licenciado sobre licença GPL. Tendo certeza que o jogo jamais te abandonará; "
 
@@ -461,7 +461,7 @@ msgid ""
 msgstr "##2Manaplus##P é uma extensão baseada no código do cliente ##2Mana##P.\nAdicionado muitos recursos, melhorado a performance, estabilidade, segurança e muito mais."
 
 msgid ""
-" If you're having troubles, plase first of all read the FAQ. If you\n"
+" If you're having troubles, please first of all read the FAQ. If you\n"
 " can't find a solution to your problem, feel free to check our\n"
 " Bugs/Support section of the forum:"
 msgstr "Se você está tendo problemas, por favor, antes de tudo, leia o FAQ. Se você não encontrar uma solução para seu problema, sinta-se livre para verificar a nossa seção de Erros no suporte do fórum:"
@@ -829,7 +829,7 @@ msgstr ""
 
 msgid ""
 "Most commands working in whispers.\n"
-"For example command /imitation in whisper nick nick1,\n"
+"For example command /imitation in whisper with nick1,\n"
 " similar to command /imitation nick1."
 msgstr ""
 
