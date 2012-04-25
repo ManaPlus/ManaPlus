@@ -942,7 +942,7 @@ int Client::gameExec()
         else
         {
 //            logger->log("inactive");
-            SDL_Delay(10);
+            SDL_Delay(100);
         }
 
         if (mLimitFps)
