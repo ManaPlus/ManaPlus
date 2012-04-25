@@ -145,6 +145,8 @@ Setup_Input::Setup_Input():
         k ++;
     }
 
+    fixTranslations();
+
     // Do the layout
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
@@ -205,7 +207,6 @@ void Setup_Input::cancel()
 
 void Setup_Input::action(const gcn::ActionEvent &event)
 {
-    logger->log("event: %s", event.getId().c_str());
     const std::string id = event.getId();
 
     if (event.getSource() == mKeyList)
@@ -359,4 +360,38 @@ void Setup_Input::keyUnresolved()
         newKeyCallback(inputManager.getNewKeyIndex());
         inputManager.setNewKeyIndex(Input::KEY_NO_VALUE);
     }
+}
+
+void Setup_Input::fixTranslation(SetupActionData *actionDatas, int actionStart,
+                                 int actionEnd, std::string text)
+{
+    int k = 0;
+
+    while (!actionDatas[k].name.empty())
+    {
+        SetupActionData &data = actionDatas[k];
+
+        const int actionId = data.actionId;
+        if (actionId >= actionStart && actionId <= actionEnd)
+        {
+            data.name = strprintf(gettext(text.c_str()),
+                actionId - actionStart + 1);
+        }
+        k ++;
+    }
+}
+
+void Setup_Input::fixTranslations()
+{
+    fixTranslation(setupActionData1, Input::KEY_SHORTCUT_1,
+        Input::KEY_SHORTCUT_20, "Item Shortcut %d");
+
+    fixTranslation(setupActionData3, Input::KEY_EMOTE_1,
+        Input::KEY_EMOTE_48, "Emote Shortcut %d");
+
+    fixTranslation(setupActionData4, Input::KEY_OUTFIT_1,
+        Input::KEY_OUTFIT_48, "Outfit Shortcut %d");
+
+    fixTranslation(setupActionData7, Input::KEY_MOVE_TO_POINT_1,
+        Input::KEY_MOVE_TO_POINT_48, "Move to point Shortcut %d");
 }

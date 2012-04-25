@@ -37,7 +37,7 @@ int selectedData = 0;
 
 struct SetupActionData
 {
-    const std::string name;
+    std::string name;
     const int actionId;
     std::string text;
 };

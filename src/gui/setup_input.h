@@ -80,6 +80,11 @@ class Setup_Input : public SetupTab
         std::string keyToString(int index);
 
     private:
+        void fixTranslations();
+
+        void fixTranslation(SetupActionData *actionDatas, int actionStart,
+                            int actionEnd, std::string text);
+
         class KeyListModel *mKeyListModel;
         gcn::ListBox *mKeyList;
 
