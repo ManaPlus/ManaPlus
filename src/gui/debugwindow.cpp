@@ -176,19 +176,21 @@ MapDebugTab::MapDebugTab() :
 #endif
 
     mFPSLabel = new Label(strprintf(_("%d FPS"), 0));
+    mLPSLabel = new Label(strprintf(_("%d LPS"), 0));
 
     place(0, 0, mFPSLabel, 2);
-    place(0, 1, mMusicFileLabel, 2);
-    place(0, 2, mMapLabel, 2);
-    place(0, 3, mMinimapLabel, 2);
-    place(0, 4, mXYLabel, 2);
-    place(0, 5, mTileMouseLabel, 2);
-    place(0, 6, mParticleCountLabel, 2);
-    place(0, 7, mMapActorCountLabel, 2);
+    place(0, 1, mLPSLabel, 2);
+    place(0, 2, mMusicFileLabel, 2);
+    place(0, 3, mMapLabel, 2);
+    place(0, 4, mMinimapLabel, 2);
+    place(0, 5, mXYLabel, 2);
+    place(0, 6, mTileMouseLabel, 2);
+    place(0, 7, mParticleCountLabel, 2);
+    place(0, 8, mMapActorCountLabel, 2);
 #ifdef USE_OPENGL
 #ifdef DEBUG_OPENGL_LEAKS
     mTexturesLabel = new Label(strprintf("%s %s", _("Textures count:"), "?"));
-    place(0, 8, mTexturesLabel, 2);
+    place(0, 9, mTexturesLabel, 2);
 #endif
 #endif
     place.getCell().matchColWidth(0, 0);
@@ -260,6 +262,7 @@ void MapDebugTab::logic()
     mParticleCountLabel->adjustSize();
 
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
+    mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
 }
 
 TargetDebugTab::TargetDebugTab()

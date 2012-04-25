@@ -164,7 +164,9 @@ void ErrorListener::action(const gcn::ActionEvent &)
 
 volatile int tick_time;       /**< Tick counter */
 volatile int fps = 0;         /**< Frames counted in the last second */
+volatile int lps = 0;         /**< Logic processed per second */
 volatile int frame_count = 0; /**< Counts the frames during one second */
+volatile int logic_count = 0; /**< Counts the logic during one second */
 volatile int cur_time;
 volatile bool runCounters;
 bool isSafeMode = false;
@@ -197,7 +199,9 @@ Uint32 nextTick(Uint32 interval, void *param A_UNUSED)
 Uint32 nextSecond(Uint32 interval, void *param A_UNUSED)
 {
     fps = frame_count;
+    lps = logic_count;
     frame_count = 0;
+    logic_count = 0;
 
     return interval;
 }
@@ -926,6 +930,7 @@ int Client::gameExec()
             ++lastTickTime;
             k ++;
         }
+        logic_count += k;
 
         // This is done because at some point tick_time will wrap.
         lastTickTime = tick_time;

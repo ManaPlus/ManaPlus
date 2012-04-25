@@ -53,6 +53,7 @@ static const int MILLISECONDS_IN_A_TICK = 10;
 static const short DEFAULT_PORT = 6901;
 
 extern volatile int fps;
+extern volatile int lps;
 extern volatile int tick_time;
 extern volatile int cur_time;
 extern bool isSafeMode;

@@ -66,6 +66,7 @@ class MapDebugTab : public DebugTab
         Label *mTexturesLabel;
         int mUpdateTime;
         Label *mFPSLabel;
+        Label *mLPSLabel;
         std::string mFPSText;
 };
 
