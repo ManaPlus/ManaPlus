@@ -158,7 +158,11 @@ Setup_Input::Setup_Input():
     place(3, 6, mUnassignKeyButton);
     place(4, 6, mDefaultButton);
 
-    setDimension(gcn::Rectangle(0, 0, 500, 350));
+    int width = 600;
+    if (config.getIntValue("screenwidth") >= 730)
+        width += 100;
+
+    setDimension(gcn::Rectangle(0, 0, width, 300));
 }
 
 Setup_Input::~Setup_Input()
