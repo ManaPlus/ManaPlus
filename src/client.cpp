@@ -677,10 +677,6 @@ void Client::gameInit()
     mFpsManager.rate = 0;
 
     SDL_initFramerate(&mFpsManager);
-    logger->log("mFpsManager.framecount: " + toString(mFpsManager.framecount));
-    logger->log("mFpsManager.rateticks: " + toString(mFpsManager.rateticks));
-    logger->log("mFpsManager.lastticks: " + toString(mFpsManager.lastticks));
-    logger->log("mFpsManager.rate: " + toString(mFpsManager.rate));
     setFramerate(fpsLimit);
     config.addListener("fpslimit", this);
     config.addListener("guialpha", this);
