@@ -162,6 +162,16 @@ Setup_Other::Setup_Other()
         "guild support"), "", "enableGuildBot", this,
         "enableGuildBotEvent", false);
 
+
+    new SetupItemLabel(_("Keyboard"), "", this);
+
+    new SetupItemIntTextField(_("Repeat delay"), "",
+        "repeateDelay", this, "repeateDelayEvent", 0, 10000);
+
+    new SetupItemIntTextField(_("Repeat interval"), "",
+        "repeateInterval", this, "repeateIntervalEvent", 0, 10000);
+
+
     new SetupItemLabel(_("Windows"), "", this);
 
     mShortcutsList = new SetupItemNames();

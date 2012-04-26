@@ -281,6 +281,8 @@ public:
 
     void applyVSync();
 
+    void applyKeyRepeat();
+
     void optionChanged(const std::string &name);
 
     void action(const gcn::ActionEvent &event);

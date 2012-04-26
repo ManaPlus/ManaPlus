@@ -378,7 +378,7 @@ void Client::gameInit()
 
     initPacketLimiter();
     SDL_EnableUNICODE(1);
-    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
+    applyKeyRepeat();
 
     // disable unused SDL events
     SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
@@ -687,6 +687,8 @@ void Client::gameInit()
     config.addListener("gamma", this);
     config.addListener("particleEmitterSkip", this);
     config.addListener("vsync", this);
+    config.addListener("repeateDelay", this);
+    config.addListener("repeateInterval", this);
     setGuiAlpha(config.getFloatValue("guialpha"));
 
     optionChanged("fpslimit");
@@ -1567,6 +1569,10 @@ void Client::optionChanged(const std::string &name)
     else if (name == "vsync")
     {
         applyVSync();
+    }
+    else if (name == "repeateInterval" or name == "repeateDelay")
+    {
+        applyKeyRepeat();
     }
 }
 
@@ -2530,4 +2536,10 @@ void Client::applyVSync()
     int val = config.getIntValue("vsync");
     if (val > 0 && val < 2)
         SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, val);
+}
+
+void Client::applyKeyRepeat()
+{
+    SDL_EnableKeyRepeat(config.getIntValue("repeateDelay"),
+        config.getIntValue("repeateInterval"));
 }
