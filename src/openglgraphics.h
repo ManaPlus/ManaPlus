@@ -150,6 +150,8 @@ class OpenGLGraphics : public Graphics
 
         int getMemoryUsage();
 
+        void updateTextureFormat();
+
         static void bindTexture(GLenum target, GLuint texture);
 
         static GLuint mLastImage;

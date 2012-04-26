@@ -79,6 +79,7 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Enable reorder sprites."), "",
         "enableReorderSprites", this, "enableReorderSpritesEvent");
 
+
     new SetupItemLabel(_("Small memory (enable for lower memory usage)"),
          "", this);
 
@@ -87,6 +88,14 @@ Setup_Perfomance::Setup_Perfomance()
 
     new SetupItemCheckBox(_("Disable beings caching (Software)"), "",
         "disableBeingCaching", this, "disableBeingCachingEvent");
+
+
+    new SetupItemLabel(_("Different options (enable or disable can improve perfomance)"),
+         "", this);
+
+    new SetupItemCheckBox(_("Enable texture compression (fast OpenGL)"), "",
+        "compresstextures", this, "compresstexturesEvent");
+
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }

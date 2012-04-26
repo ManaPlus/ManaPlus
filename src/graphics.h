@@ -257,6 +257,9 @@ class Graphics : public gcn::SDLGraphics
         virtual int getMemoryUsage()
         { return 0; }
 
+        virtual void updateTextureFormat()
+        { }
+
         virtual bool drawNet(int x1, int y1, int x2, int y2,
                              int width, int height);
 

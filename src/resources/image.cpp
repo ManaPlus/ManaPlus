@@ -44,6 +44,7 @@
 #ifdef USE_OPENGL
 int Image::mUseOpenGL = 0;
 int Image::mTextureType = 0;
+int Image::mInternalTextureType = 4;
 int Image::mTextureSize = 0;
 bool Image::mBlur = true;
 #endif
@@ -202,7 +203,8 @@ Image *Image::createTextSurface(SDL_Surface *tmpImage, float alpha)
     if (mUseOpenGL)
     {
         img = _GLload(tmpImage);
-        img->setAlpha(alpha);
+        if (img)
+            img->setAlpha(alpha);
         return img;
     }
 #endif
@@ -778,8 +780,19 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
         glTexParameteri(mTextureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     }
 
-    glTexImage2D(mTextureType, 0, 4, tmpImage->w, tmpImage->h,
+    glTexImage2D(mTextureType, 0, mInternalTextureType,
+        tmpImage->w, tmpImage->h,
         0, GL_RGBA, GL_UNSIGNED_BYTE, tmpImage->pixels);
+
+/*
+    GLint compressed;
+    glGetTexLevelParameteriv(mTextureType, 0,
+        GL_TEXTURE_COMPRESSED_ARB, &compressed);
+    if (compressed)
+        logger->log("image compressed");
+    else
+        logger->log("image not compressed");
+*/
 
 #ifdef DEBUG_OPENGL_LEAKS
     textures_count ++;

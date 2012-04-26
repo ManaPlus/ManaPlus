@@ -215,10 +215,19 @@ class Image : public Resource
         static int getTextureType()
         { return mTextureType; }
 
+        static int getInternalTextureType()
+        { return mInternalTextureType; }
+
+        static void setInternalTextureType(int n)
+        { mInternalTextureType = n; }
+
         static void setBlur(bool n)
         { mBlur = n; }
 
         static int mTextureType;
+
+        static int mInternalTextureType;
+
 #endif
 
         bool isHasAlphaChannel() const

@@ -251,6 +251,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "audioChannels", 2);
     AddDEF(configData, "repeateDelay", SDL_DEFAULT_REPEAT_DELAY);
     AddDEF(configData, "repeateInterval", SDL_DEFAULT_REPEAT_INTERVAL);
+    AddDEF(configData, "compresstextures", false);
     return configData;
 }
 

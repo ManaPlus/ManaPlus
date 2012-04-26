@@ -150,11 +150,12 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
 
     splitToStringSet(mExtensions, glExtensions, ' ');
 
+    updateTextureFormat();
     updateMemoryInfo();
 
     GLint texSize;
     bool rectTex = supportExtension("GL_ARB_texture_rectangle");
-    if (rectTex)
+    if (rectTex && Image::getInternalTextureType() == 4)
     {
         logger->log1("using GL_ARB_texture_rectangle");
         Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
@@ -204,8 +205,8 @@ static inline void drawQuad(Image *image,
             dstX, dstY + height
         };
 
-        glVertexPointer(2, GL_FLOAT, 0, &vert);
-        glTexCoordPointer(2, GL_INT, 0, &tex);
+        glVertexPointer(2, GL_INT, 0, &vert);
+        glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
         glDrawArrays(GL_QUADS, 0, 4);
     }
@@ -266,8 +267,8 @@ static inline void drawRescaledQuad(Image *image,
             dstX, dstY + desiredHeight
         };
 
-        glVertexPointer(2, GL_FLOAT, 0, &vert);
-        glTexCoordPointer(2, GL_INT, 0, &tex);
+        glVertexPointer(2, GL_INT, 0, &vert);
+        glTexCoordPointer(2, GL_FLOAT, 0, &tex);
 
         glDrawArrays(GL_QUADS, 0, 4);
     }
@@ -1510,6 +1511,52 @@ int OpenGLGraphics::getMemoryUsage()
         return mStartFreeMem - val;
     }
     return 0;
+}
+
+void OpenGLGraphics::updateTextureFormat()
+{
+    if (!config.getBoolValue("compresstextures"))
+        return;
+
+    if (supportExtension("GL_ARB_texture_compression"))
+    {
+        if (supportExtension("GL_EXT_texture_compression_s3tc")
+            || supportExtension("3DFX_texture_compression_FXT1"))
+        {
+            GLint num;
+            GLint *formats = nullptr;
+            glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
+            logger->log("support %d compressed formats", num);
+            formats = new GLint[num > 10 ? num : 10];
+            glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
+            for (int f = 0; f < num; f ++)
+            {
+                if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
+                {
+                    delete []formats;
+                    Image::setInternalTextureType(
+                        GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
+                    logger->log("using s3tc texture compression");
+                    return;
+                }
+                else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX)
+                {
+                    delete []formats;
+                    Image::setInternalTextureType(
+                        GL_COMPRESSED_RGBA_FXT1_3DFX);
+                    logger->log("using fxt1 texture compression");
+                    return;
+                }
+            }
+            Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
+            logger->log("using texture compression");
+        }
+        else
+        {
+            Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
+            logger->log("using texture compression");
+        }
+    }
 }
 
 #endif // USE_OPENGL
