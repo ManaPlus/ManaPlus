@@ -151,6 +151,8 @@ class OpenGLGraphics : public Graphics
     protected:
         void setTexturingAndBlending(bool enable);
 
+        void logString(char *format, GLenum num);
+
     private:
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;

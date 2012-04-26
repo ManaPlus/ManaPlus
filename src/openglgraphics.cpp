@@ -118,6 +118,13 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
     }
 #endif
 
+    logString("gl vendor: %s", GL_VENDOR);
+    logString("gl renderer: %s", GL_RENDERER);
+    logString("gl version: %s", GL_VERSION);
+
+//    logger->log("gl extensions: %s", reinterpret_cast<const char*>(
+//        glGetString(GL_EXTENSIONS)));
+
     // Setup OpenGL
     glViewport(0, 0, w, h);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
@@ -1445,4 +1452,12 @@ void OpenGLGraphics::dumpSettings()
     }
 }
 
+void OpenGLGraphics::logString(char *format, GLenum num)
+{
+    const char *str = reinterpret_cast<const char*>(glGetString(num));
+    if (!str)
+        logger->log(format, "?");
+    else
+        logger->log(format, str);
+}
 #endif // USE_OPENGL
