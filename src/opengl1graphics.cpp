@@ -65,6 +65,7 @@ void OpenGL1Graphics::setSync(bool sync)
 bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,
                                    bool hwaccel, bool resize, bool noFrame)
 {
+    logger->log1("graphics backend: safe OpenGL");
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
 
@@ -118,10 +119,15 @@ bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,
 
     char const *glExtensions = reinterpret_cast<char const *>(
         glGetString(GL_EXTENSIONS));
+
+    logger->log1("opengl extensions: ");
+    logger->log1(glExtensions);
+
     GLint texSize;
     bool rectTex = strstr(glExtensions, "GL_ARB_texture_rectangle");
     if (rectTex)
     {
+        logger->log1("using GL_ARB_texture_rectangle");
         Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
         glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
     }

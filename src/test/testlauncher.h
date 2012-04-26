@@ -45,6 +45,8 @@ class TestLauncher
 
         int testFps();
 
+        int testInternal();
+
     private:
         std::string mTest;
 

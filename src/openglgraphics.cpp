@@ -46,13 +46,21 @@
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
 #endif
 
+#ifndef GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
+//#define GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX 0x9047
+//#define GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX 0x9048
+#define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX 0x9049
+//#define GPU_MEMORY_INFO_EVICTION_COUNT_NVX 0x904A
+//#define GPU_MEMORY_INFO_EVICTED_MEMORY_NVX 0x904B
+#endif
+
 const unsigned int vertexBufSize = 500;
 
 GLuint OpenGLGraphics::mLastImage = 0;
 
 OpenGLGraphics::OpenGLGraphics():
     mAlpha(false), mTexture(false), mColorAlpha(false), mSync(false),
-    mFboId(0), mTextureId(0), mRboId(0)
+    mFboId(0), mTextureId(0), mRboId(0), mStartFreeMem(0)
 {
     mOpenGL = 1;
     mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
@@ -75,6 +83,7 @@ void OpenGLGraphics::setSync(bool sync)
 bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
                                   bool hwaccel, bool resize, bool noFrame)
 {
+    logger->log1("graphics backend: fast OpenGL");
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
 
@@ -135,10 +144,19 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
 
     char const *glExtensions = reinterpret_cast<char const *>(
         glGetString(GL_EXTENSIONS));
+
+    logger->log1("opengl extensions: ");
+    logger->log1(glExtensions);
+
+    splitToStringSet(mExtensions, glExtensions, ' ');
+
+    updateMemoryInfo();
+
     GLint texSize;
-    bool rectTex = strstr(glExtensions, "GL_ARB_texture_rectangle");
+    bool rectTex = supportExtension("GL_ARB_texture_rectangle");
     if (rectTex)
     {
+        logger->log1("using GL_ARB_texture_rectangle");
         Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
         glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
     }
@@ -1452,7 +1470,7 @@ void OpenGLGraphics::dumpSettings()
     }
 }
 
-void OpenGLGraphics::logString(char *format, GLenum num)
+void OpenGLGraphics::logString(const char *format, GLenum num)
 {
     const char *str = reinterpret_cast<const char*>(glGetString(num));
     if (!str)
@@ -1460,4 +1478,38 @@ void OpenGLGraphics::logString(char *format, GLenum num)
     else
         logger->log(format, str);
 }
+
+bool OpenGLGraphics::supportExtension(std::string name)
+{
+    return mExtensions.find(name) != mExtensions.end();
+}
+
+void OpenGLGraphics::updateMemoryInfo()
+{
+    if (mStartFreeMem)
+        return;
+
+    if (supportExtension("GL_NVX_gpu_memory_info"))
+    {
+        glGetIntegerv(GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX,
+            &mStartFreeMem);
+        logger->log("free video memory: %d", mStartFreeMem);
+    }
+}
+
+int OpenGLGraphics::getMemoryUsage()
+{
+    if (!mStartFreeMem)
+        return 0;
+
+    if (supportExtension("GL_NVX_gpu_memory_info"))
+    {
+        GLint val;
+        glGetIntegerv(GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX,
+            &val);
+        return mStartFreeMem - val;
+    }
+    return 0;
+}
+
 #endif // USE_OPENGL

@@ -182,6 +182,9 @@ std::list<std::string> splitToStringList(const std::string &text,
 void splitToStringVector(StringVect &tokens,
                          const std::string &text, char separator);
 
+void splitToStringSet(std::set<std::string> &tokens,
+                      const std::string &text, char separator);
+
 std::string combineDye(std::string file, std::string dye);
 
 std::string combineDye2(std::string file, std::string dye);

@@ -70,6 +70,7 @@ Graphics::~Graphics()
 bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
                             bool hwaccel, bool resize, bool noFrame)
 {
+    logger->log1("graphics backend: software");
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
 

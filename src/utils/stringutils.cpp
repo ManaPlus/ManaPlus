@@ -460,6 +460,19 @@ void splitToStringVector(StringVect &tokens, const std::string &text,
     }
 }
 
+void splitToStringSet(std::set<std::string> &tokens, const std::string &text,
+                      char separator)
+{
+    std::stringstream ss(text);
+    std::string item;
+    while (std::getline(ss, item, separator))
+    {
+        item = trim(item);
+        if (!item.empty())
+            tokens.insert(item);
+    }
+}
+
 std::string combineDye(std::string file, std::string dye)
 {
     if (dye.empty())

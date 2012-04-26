@@ -34,6 +34,8 @@
 #include <SDL_opengl.h>
 //#include <GL/glext.h>
 
+#include <set>
+
 class OpenGLGraphics : public Graphics
 {
     public:
@@ -144,6 +146,10 @@ class OpenGLGraphics : public Graphics
 
         bool drawNet(int x1, int y1, int x2, int y2, int width, int height);
 
+        bool supportExtension(std::string name);
+
+        int getMemoryUsage();
+
         static void bindTexture(GLenum target, GLuint texture);
 
         static GLuint mLastImage;
@@ -151,7 +157,9 @@ class OpenGLGraphics : public Graphics
     protected:
         void setTexturingAndBlending(bool enable);
 
-        void logString(char *format, GLenum num);
+        void logString(const char *format, GLenum num);
+
+        void updateMemoryInfo();
 
     private:
         GLfloat *mFloatTexArray;
@@ -163,6 +171,8 @@ class OpenGLGraphics : public Graphics
         GLuint mFboId;
         GLuint mTextureId;
         GLuint mRboId;
+        std::set<std::string> mExtensions;
+        GLint mStartFreeMem;
 };
 #endif
 

@@ -69,6 +69,8 @@ int TestLauncher::exec()
         return testRescale();
     else if (mTest == "8" || mTest == "9" || mTest == "10")
         return testFps();
+    else if (mTest == "100")
+        return testInternal();
 
     return -1;
 }
@@ -150,6 +152,54 @@ int TestLauncher::testFps()
     int tFps = calcFps(&start, &end, cnt);
     file << mTest << std::endl;
     file << tFps << std::endl;
+
+    sleep(1);
+    return 0;
+}
+
+int TestLauncher::testInternal()
+{
+    timeval start;
+    timeval end;
+
+    Wallpaper::loadWallpapers();
+    Wallpaper::getWallpaper(800, 600);
+    Image *img[4];
+
+    img[0] = Theme::getImageFromTheme("graphics/sprites/manaplus_emotions.png");
+    img[1] = Theme::getImageFromTheme("graphics/sprites/manaplus_emotions.png");
+    img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_left.gif");
+    img[3] = Theme::getImageFromTheme("graphics/sprites/arrow_right.gif");
+    int idx = 0;
+    int mem =  mainGraphics->getMemoryUsage();
+
+//    int cnt = 5;
+    int cnt = 5000;
+
+    gettimeofday(&start, nullptr);
+    for (int k = 0; k < cnt; k ++)
+    {
+        for (int x = 0; x < 800; x += 20)
+        {
+            for (int y = 0; y < 600; y += 25)
+            {
+                mainGraphics->drawImage(img[idx], x, y);
+                mainGraphics->drawImage(img[idx], x + 1, y);
+                mainGraphics->drawImage(img[idx], x, y + 5);
+
+                idx ++;
+                if (idx > 3)
+                    idx = 0;
+            }
+        }
+        mainGraphics->updateScreen();
+    }
+
+    gettimeofday(&end, nullptr);
+    int tFps = calcFps(&start, &end, cnt);
+    file << mTest << std::endl;
+    file << tFps << std::endl;
+    file << mem << std::endl;
 
     sleep(1);
     return 0;

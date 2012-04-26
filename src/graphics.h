@@ -254,6 +254,9 @@ class Graphics : public gcn::SDLGraphics
         virtual void prepareScreenshot()
         { }
 
+        virtual int getMemoryUsage()
+        { return 0; }
+
         virtual bool drawNet(int x1, int y1, int x2, int y2,
                              int width, int height);
 
