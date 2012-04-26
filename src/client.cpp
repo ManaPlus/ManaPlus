@@ -548,6 +548,8 @@ void Client::gameInit()
     const bool enableResize = config.getBoolValue("enableresize");
     const bool noFrame = config.getBoolValue("noframe");
 
+    applyVSync();
+
     // Try to set the desired video mode
     if (!mainGraphics->setVideoMode(width, height, bpp,
         fullscreen, hwaccel, enableResize, noFrame))
@@ -579,7 +581,6 @@ void Client::gameInit()
 
     applyGrabMode();
     applyGamma();
-    applyVSync();
 
     // Initialize for drawing
     mainGraphics->_beginDraw();
