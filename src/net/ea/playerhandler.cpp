@@ -216,8 +216,8 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
     mapPath = mapPath.substr(0, mapPath.rfind("."));
     game->changeMap(mapPath);
 
-    float scrollOffsetX = 0.0f;
-    float scrollOffsetY = 0.0f;
+    int scrollOffsetX = 0;
+    int scrollOffsetY = 0;
 
     if (player_node)
     {
@@ -239,12 +239,10 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
                 || (abs(y - player_node->getTileY())
                 > MAP_TELEPORT_SCROLL_DISTANCE))
             {
-                scrollOffsetX = static_cast<float>((x
-                    - player_node->getTileX())
-                    * map->getTileWidth());
-                scrollOffsetY = static_cast<float>((y
-                    - player_node->getTileY())
-                    * map->getTileHeight());
+                scrollOffsetX = (x - player_node->getTileX())
+                    * map->getTileWidth();
+                scrollOffsetY = (y - player_node->getTileY())
+                    * map->getTileHeight();
             }
         }
 
@@ -253,9 +251,7 @@ void PlayerHandler::processPlayerWarp(Net::MessageIn &msg)
         player_node->navigateClean();
     }
 
-    logger->log("Adjust scrolling by %d:%d",
-        static_cast<int>(scrollOffsetX),
-        static_cast<int>(scrollOffsetY));
+    logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);
 
     if (viewport)
     {

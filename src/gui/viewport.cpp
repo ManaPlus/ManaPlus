@@ -61,8 +61,8 @@ Viewport::Viewport():
     mMap(nullptr),
     mMouseX(0),
     mMouseY(0),
-    mPixelViewX(0.0f),
-    mPixelViewY(0.0f),
+    mPixelViewX(0),
+    mPixelViewY(0),
     mShowDebugPath(false),
     mCameraMode(0),
     mPlayerFollowMouse(false),
@@ -156,28 +156,28 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         // Apply lazy scrolling
         while (lastTick < tick_time && cnt < 32)
         {
-            if (player_x > static_cast<int>(mPixelViewX) + mScrollRadius)
+            if (player_x > mPixelViewX + mScrollRadius)
             {
                 mPixelViewX += static_cast<float>(player_x
-                    - static_cast<int>(mPixelViewX) - mScrollRadius) /
+                    - mPixelViewX - mScrollRadius) /
                     static_cast<float>(mScrollLaziness);
             }
-            if (player_x < static_cast<int>(mPixelViewX) - mScrollRadius)
+            if (player_x < mPixelViewX - mScrollRadius)
             {
                 mPixelViewX += static_cast<float>(player_x
-                    - static_cast<int>(mPixelViewX) + mScrollRadius) /
+                    - mPixelViewX + mScrollRadius) /
                     static_cast<float>(mScrollLaziness);
             }
-            if (player_y > static_cast<int>(mPixelViewY) + mScrollRadius)
+            if (player_y > mPixelViewY + mScrollRadius)
             {
                 mPixelViewY += static_cast<float>(player_y
-                - static_cast<int>(mPixelViewY) - mScrollRadius) /
+                - mPixelViewY - mScrollRadius) /
                 static_cast<float>(mScrollLaziness);
             }
-            if (player_y < static_cast<int>(mPixelViewY) - mScrollRadius)
+            if (player_y < mPixelViewY - mScrollRadius)
             {
                 mPixelViewY += static_cast<float>(player_y
-                - static_cast<int>(mPixelViewY) + mScrollRadius) /
+                - mPixelViewY + mScrollRadius) /
                 static_cast<float>(mScrollLaziness);
             }
             lastTick ++;
@@ -185,33 +185,32 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         }
 
         // Auto center when player is off screen
-        if (cnt > 30 || player_x - static_cast<int>(mPixelViewX)
-            > graphics->mWidth / 2 || static_cast<int>(mPixelViewX)
-            - player_x > graphics->mWidth / 2 ||  static_cast<int>(mPixelViewY)
+        if (cnt > 30 || player_x - mPixelViewX
+            > graphics->mWidth / 2 || mPixelViewX
+            - player_x > graphics->mWidth / 2 || mPixelViewY
             - player_y > graphics->getHeight() / 2 ||  player_y
-            - static_cast<int>(mPixelViewY) > graphics->getHeight() / 2)
+            - mPixelViewY > graphics->getHeight() / 2)
         {
             if (player_x <= 0 || player_y <= 0)
             {
 //                if (debugChatTab)
 //                    debugChatTab->chatLog("incorrect player position!");
                 logger->log("incorrect player position: %d, %d, %d, %d",
-                    player_x, player_y, static_cast<int>(mPixelViewX),
-                    static_cast<int>(mPixelViewY));
+                    player_x, player_y, mPixelViewX,mPixelViewY);
                 if (player_node)
                 {
                     logger->log("tile position: %d, %d",
                         player_node->getTileX(), player_node->getTileY());
                 }
             }
-            mPixelViewX = static_cast<float>(player_x);
-            mPixelViewY = static_cast<float>(player_y);
+            mPixelViewX = player_x;
+            mPixelViewY = player_y;
         }
     }
     else
     {
-        mPixelViewX = static_cast<float>(player_x);
-        mPixelViewY = static_cast<float>(player_y);
+        mPixelViewX = player_x;
+        mPixelViewY = player_y;
     }
 
     // Don't move camera so that the end of the map is on screen
@@ -226,20 +225,17 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         if (mPixelViewY < 0)
             mPixelViewY = 0;
         if (mPixelViewX > viewXmax)
-            mPixelViewX = static_cast<float>(viewXmax);
+            mPixelViewX = viewXmax;
         if (mPixelViewY > viewYmax)
-            mPixelViewY = static_cast<float>(viewYmax);
+            mPixelViewY = viewYmax;
 
         // Draw tiles and sprites
-        mMap->draw(graphics, static_cast<int>(mPixelViewX),
-                   static_cast<int>(mPixelViewY));
+        mMap->draw(graphics, mPixelViewX, mPixelViewY);
 
         if (mShowDebugPath)
         {
-            mMap->drawCollision(graphics,
-                                static_cast<int>(mPixelViewX),
-                                static_cast<int>(mPixelViewY),
-                                mShowDebugPath);
+            mMap->drawCollision(graphics, mPixelViewX,
+                mPixelViewY, mShowDebugPath);
             if (mShowDebugPath == Map::MAP_DEBUG)
                 _drawDebugPath(graphics);
         }
@@ -254,8 +250,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
     // Draw text
     if (textManager)
     {
-        textManager->draw(graphics, static_cast<int>(mPixelViewX),
-            static_cast<int>(mPixelViewY));
+        textManager->draw(graphics, mPixelViewX, mPixelViewY);
     }
 
     // Draw player names, speech, and emotion sprite as needed
@@ -267,10 +262,8 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
             continue;
         Being *b = static_cast<Being*>(*it);
 
-        b->drawSpeech(static_cast<int>(mPixelViewX),
-                      static_cast<int>(mPixelViewY));
-        b->drawEmotion(graphics, static_cast<int>(mPixelViewX),
-                       static_cast<int>(mPixelViewY));
+        b->drawSpeech(mPixelViewX, mPixelViewY);
+        b->drawEmotion(graphics, mPixelViewX, mPixelViewY);
     }
 
     if (miniStatusWindow)
@@ -322,8 +315,8 @@ void Viewport::_drawDebugPath(Graphics *graphics)
 
     static Path debugPath;
     static Vector lastMouseDestination = Vector(0.0f, 0.0f);
-    const int mousePosX = mMouseX + static_cast<int>(mPixelViewX);
-    const int mousePosY = mMouseY + static_cast<int>(mPixelViewY);
+    const int mousePosX = mMouseX + mPixelViewX;
+    const int mousePosY = mMouseY + mPixelViewY;
     Vector mouseDestination(mousePosX, mousePosY);
 
     if (mouseDestination.x != lastMouseDestination.x
@@ -371,8 +364,8 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
         for (Path::const_iterator i = path.begin(), i_end = path.end();
              i != i_end; ++i)
         {
-            int squareX = i->x * 32 - static_cast<int>(mPixelViewX) + 12;
-            int squareY = i->y * 32 - static_cast<int>(mPixelViewY) + 12;
+            int squareX = i->x * 32 - mPixelViewX + 12;
+            int squareY = i->y * 32 - mPixelViewY + 12;
 
             graphics->fillRectangle(gcn::Rectangle(squareX, squareY, 8, 8));
             if (mMap)
@@ -389,8 +382,8 @@ void Viewport::_drawPath(Graphics *graphics, const Path &path,
         for (Path::const_iterator i = path.begin(), i_end = path.end();
              i != i_end; ++i)
         {
-            int squareX = i->x - static_cast<int>(mPixelViewX);
-            int squareY = i->y - static_cast<int>(mPixelViewY);
+            int squareX = i->x - mPixelViewX;
+            int squareY = i->y - mPixelViewY;
 
             graphics->fillRectangle(gcn::Rectangle(squareX - 4, squareY - 4,
                                                    8, 8));
@@ -419,8 +412,8 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
     if (Being::isTalking())
         return;
 
-    const int pixelX = event.getX() + static_cast<int>(mPixelViewX);
-    const int pixelY = event.getY() + static_cast<int>(mPixelViewY);
+    const int pixelX = event.getX() + mPixelViewX;
+    const int pixelY = event.getY() + mPixelViewY;
 
     // Right click might open a popup
     if (event.getButton() == gcn::MouseEvent::RIGHT)
@@ -432,8 +425,8 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
             if (actorSpriteManager)
             {
                 std::vector<ActorSprite*> beings;
-                const int x = getMouseX() + static_cast<int>(mPixelViewX);
-                const int y = getMouseY() + static_cast<int>(mPixelViewY);
+                const int x = getMouseX() + mPixelViewX;
+                const int y = getMouseY() + mPixelViewY;
                 actorSpriteManager->findBeingsByPixel(beings, x, y, true);
                 if (beings.size() > 1)
                 {
@@ -577,10 +570,8 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
             {
                 mLocalWalkTime = tick_time;
                 player_node->unSetPickUpTarget();
-                player_node->setDestination(event.getX()
-                    + static_cast<int>(mPixelViewX),
-                    event.getY()
-                    + static_cast<int>(mPixelViewY));
+                player_node->setDestination(event.getX() + mPixelViewX,
+                    event.getY() + mPixelViewY);
                 player_node->pathSetByMouse();
             }
         }
@@ -590,12 +581,10 @@ void Viewport::mouseDragged(gcn::MouseEvent &event)
             if (mLocalWalkTime != player_node->getActionTime())
             {
                 mLocalWalkTime = cur_time;
-                int destX = static_cast<int>((static_cast<float>(event.getX())
-                    + mPixelViewX)
-                    / static_cast<float>(mMap->getTileWidth()));
-                int destY = static_cast<int>((static_cast<float>(event.getY())
-                    + mPixelViewY)
-                    / static_cast<float>(mMap->getTileHeight()));
+                int destX = (event.getX() + mPixelViewX)
+                    / static_cast<float>(mMap->getTileWidth());
+                int destY = (event.getY() + mPixelViewY)
+                    / static_cast<float>(mMap->getTileHeight());
                 player_node->unSetPickUpTarget();
                 if (!player_node->navigateTo(destX, destY))
                 {
@@ -751,8 +740,8 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
     if (!mMap || !player_node || !actorSpriteManager)
         return;
 
-    const int x = getMouseX() + static_cast<int>(mPixelViewX);
-    const int y = getMouseY() + static_cast<int>(mPixelViewY);
+    const int x = getMouseX() + mPixelViewX;
+    const int y = getMouseY() + mPixelViewY;
 
     mHoverBeing = actorSpriteManager->findBeingByPixel(x, y, true);
     if (mHoverBeing && (mHoverBeing->getType() == Being::PLAYER

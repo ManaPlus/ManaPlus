@@ -190,13 +190,13 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
          * Returns camera x offset in pixels.
          */
         int getCameraX() const
-        { return static_cast<int>(mPixelViewX); }
+        { return mPixelViewX; }
 
         /**
          * Returns camera y offset in pixels.
          */
         int getCameraY() const
-        { return static_cast<int>(mPixelViewY); }
+        { return mPixelViewY; }
 
         /**
          * Returns mouse x in pixels.
@@ -213,7 +213,7 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         /**
          * Changes viewpoint by relative pixel coordinates.
          */
-        void scrollBy(float x, float y)
+        void scrollBy(int x, int y)
         { mPixelViewX += x; mPixelViewY += y; }
 
         /**
@@ -305,8 +305,8 @@ class Viewport : public WindowContainer, public gcn::MouseListener,
         int mScrollCenterOffsetY;
         int mMouseX;                /**< Current mouse position in pixels. */
         int mMouseY;                /**< Current mouse position in pixels. */
-        float mPixelViewX;          /**< Current viewpoint in pixels. */
-        float mPixelViewY;          /**< Current viewpoint in pixels. */
+        int mPixelViewX;            /**< Current viewpoint in pixels. */
+        int mPixelViewY;            /**< Current viewpoint in pixels. */
         int mShowDebugPath;         /**< Show a path from player to pointer. */
         int mCameraMode;            /**< Camera mode. */
 

@@ -306,8 +306,8 @@ void PlayerHandler::handleMapChangeMessage(Net::MessageIn &msg)
     game->changeMap(mapName);
 
     const Vector &playerPos = player_node->getPosition();
-    float scrollOffsetX = 0.0f;
-    float scrollOffsetY = 0.0f;
+    int scrollOffsetX = 0;
+    int scrollOffsetY = 0;
 
     /* Scroll if neccessary */
     if (!sameMap
@@ -322,8 +322,7 @@ void PlayerHandler::handleMapChangeMessage(Net::MessageIn &msg)
     player_node->setPosition(x, y);
     player_node->setDestination(x, y);
 
-    logger->log("Adjust scrolling by %d,%d", (int) scrollOffsetX,
-                                             (int) scrollOffsetY);
+    logger->log("Adjust scrolling by %d,%d", scrollOffsetX, scrollOffsetY);
     viewport->scrollBy(scrollOffsetX, scrollOffsetY);
 }
 
