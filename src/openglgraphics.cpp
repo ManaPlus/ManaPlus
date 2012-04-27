@@ -160,6 +160,7 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
     {
         logger->log1("using GL_ARB_texture_rectangle");
         Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
+        glEnable(GL_TEXTURE_RECTANGLE_ARB);
         glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
         Image::mTextureSize = texSize;
         logger->log("OpenGL texture size: %d pixels (rectangle textures)",
