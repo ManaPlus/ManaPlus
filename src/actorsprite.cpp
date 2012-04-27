@@ -292,7 +292,7 @@ void ActorSprite::updateStatusEffect(int index, bool newStatus)
 
 void ActorSprite::handleStatusEffect(StatusEffect *effect, int effectId)
 {
-    if (reportTrue(!effect))
+    if (!effect)
         return;
 
     // TODO: Find out how this is meant to be used

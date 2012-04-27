@@ -35,6 +35,7 @@
 
 #include "gui/widgets/chattab.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -623,7 +624,7 @@ Being *ActorSpriteManager::findNearestByName(const std::string &name,
 
     for_actors
     {
-        if (!*it)
+        if (reportTrue(!*it))
             continue;
 
         if ((*it)->getType() == ActorSprite::FLOOR_ITEM
