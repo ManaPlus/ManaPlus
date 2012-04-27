@@ -125,20 +125,22 @@ bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,
 
     GLint texSize;
     bool rectTex = strstr(glExtensions, "GL_ARB_texture_rectangle");
-    if (rectTex)
+    if (rectTex && config.getBoolValue("rectangulartextures"))
     {
         logger->log1("using GL_ARB_texture_rectangle");
         Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
         glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
+        Image::mTextureSize = texSize;
+        logger->log("OpenGL texture size: %d pixels (rectangle textures)",
+            Image::mTextureSize);
     }
     else
     {
         Image::mTextureType = GL_TEXTURE_2D;
         glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
+        Image::mTextureSize = texSize;
+        logger->log("OpenGL texture size: %d pixels", Image::mTextureSize);
     }
-    Image::mTextureSize = texSize;
-    logger->log("OpenGL texture size: %d pixels%s", Image::mTextureSize,
-                rectTex ? " (rectangle textures)" : "");
 
     return true;
 }

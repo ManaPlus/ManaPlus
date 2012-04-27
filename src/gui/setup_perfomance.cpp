@@ -96,6 +96,9 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Enable texture compression (fast OpenGL)"), "",
         "compresstextures", this, "compresstexturesEvent");
 
+    new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"), "",
+        "rectangulartextures", this, "rectangulartexturesEvent");
+
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
