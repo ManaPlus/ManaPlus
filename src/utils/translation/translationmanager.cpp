@@ -68,7 +68,7 @@ PoDict *TranslationManager::loadLang(LangVect lang,
         if (*it == "C")
             continue;
 
-        logger->log("check file: " + subName + *it);
+//        logger->log("check file: " + subName + *it);
         if (parser.checkLang(subName + *it))
         {
             name = *it;

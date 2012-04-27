@@ -221,7 +221,7 @@ bool PoParser::checkLang(std::string lang) const
 std::string PoParser::getFileName(std::string lang) const
 {
     // get po file name from lang name
-    logger->log("getFileName: translations/%s.po", lang.c_str());
+//    logger->log("getFileName: translations/%s.po", lang.c_str());
     return strprintf("translations/%s.po", lang.c_str());
 }
 
