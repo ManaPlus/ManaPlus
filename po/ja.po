@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-04-25 03:06+0300\n"
-"PO-Revision-Date: 2012-04-25 00:08+0000\n"
+"POT-Creation-Date: 2012-04-28 15:55+0300\n"
+"PO-Revision-Date: 2012-04-27 18:47+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/"
 "language/ja/)\n"
@@ -31,7 +31,7 @@ msgstr "トレードリクエストを無効にしています"
 msgid "Accepting incoming trade requests"
 msgstr "トレードリクエストを有効にしました"
 
-#: src/actorspritemanager.cpp:1163
+#: src/actorspritemanager.cpp:1164
 msgid "Visible on map"
 msgstr "マップに表示させる"
 
@@ -57,47 +57,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:1008 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
+#: src/client.cpp:1012 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
 msgid "Setup"
 msgstr "設定"
 
-#: src/client.cpp:1015 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:1019 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "パフォーマンス"
 
-#: src/client.cpp:1020 src/gui/setup_video.cpp:237
+#: src/client.cpp:1024 src/gui/setup_video.cpp:237
 msgid "Video"
 msgstr "ビデオ"
 
-#: src/client.cpp:1025
+#: src/client.cpp:1029
 msgid "Themes"
 msgstr "テーマ"
 
-#: src/client.cpp:1111
+#: src/client.cpp:1115
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
-#: src/client.cpp:1149
+#: src/client.cpp:1153
 msgid "Logging in"
 msgstr "ログインしています"
 
-#: src/client.cpp:1183
+#: src/client.cpp:1187
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
-#: src/client.cpp:1287
+#: src/client.cpp:1291
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
-#: src/client.cpp:1322
+#: src/client.cpp:1326
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
-#: src/client.cpp:1332
+#: src/client.cpp:1336
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
-#: src/client.cpp:1375 src/client.cpp:1383 src/client.cpp:1518
+#: src/client.cpp:1379 src/client.cpp:1387 src/client.cpp:1522
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
 #: src/gui/editserverdialog.cpp:176 src/gui/register.cpp:239
@@ -107,50 +107,50 @@ msgstr "ゲームサーバーを変更しています"
 msgid "Error"
 msgstr "エラー"
 
-#: src/client.cpp:1393
+#: src/client.cpp:1397
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
-#: src/client.cpp:1419
+#: src/client.cpp:1423
 msgid "Password Change"
 msgstr "パスワード変更"
 
-#: src/client.cpp:1420
+#: src/client.cpp:1424
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました"
 
-#: src/client.cpp:1439
+#: src/client.cpp:1443
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
-#: src/client.cpp:1440
+#: src/client.cpp:1444
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました"
 
-#: src/client.cpp:1460
+#: src/client.cpp:1464
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
-#: src/client.cpp:1461
+#: src/client.cpp:1465
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう"
 
-#: src/client.cpp:1680 src/client.cpp:1713 src/client.cpp:1728
-#: src/client.cpp:2164 src/client.cpp:2171
+#: src/client.cpp:1688 src/client.cpp:1721 src/client.cpp:1736
+#: src/client.cpp:2172 src/client.cpp:2179
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません"
 
-#: src/client.cpp:1871
+#: src/client.cpp:1879
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "無効なアップデートホスト:%s"
 
-#: src/client.cpp:1905 src/client.cpp:1911
+#: src/client.cpp:1913 src/client.cpp:1919
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラー"
 
-#: src/client.cpp:1932
+#: src/client.cpp:1940
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません"
@@ -610,7 +610,7 @@ msgstr "女性"
 #: src/gui/charcreatedialog.cpp:129 src/gui/register.cpp:103
 #: src/gui/setupactiondata.h:1475 src/gui/setupactiondata.h:1548
 #: src/gui/setup_audio.cpp:120 src/gui/setup_chat.cpp:128
-#: src/gui/setup_other.cpp:193 src/gui/setup_visual.cpp:96
+#: src/gui/setup_other.cpp:203 src/gui/setup_visual.cpp:96
 msgid "Other"
 msgstr "その他"
 
@@ -766,7 +766,7 @@ msgstr "チャット"
 msgid "Present: %s; %d players are present."
 msgstr "現在: %s; %d プレイヤーがいます"
 
-#: src/gui/chatwindow.cpp:1089
+#: src/gui/chatwindow.cpp:1090
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "%sにささやき中:%s"
@@ -802,28 +802,28 @@ msgstr "ターゲット"
 msgid "Net"
 msgstr "ネット"
 
-#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:222
-#: src/gui/debugwindow.cpp:251
+#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:224
+#: src/gui/debugwindow.cpp:253
 msgid "Music:"
 msgstr "音楽:"
 
-#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:226
-#: src/gui/debugwindow.cpp:253
+#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:228
+#: src/gui/debugwindow.cpp:255
 msgid "Map:"
 msgstr "マップ:"
 
-#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:224
-#: src/gui/debugwindow.cpp:252
+#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:226
+#: src/gui/debugwindow.cpp:254
 msgid "Minimap:"
 msgstr "ミニマップ:"
 
-#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:220
-#: src/gui/debugwindow.cpp:249
+#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:222
+#: src/gui/debugwindow.cpp:251
 msgid "Cursor:"
 msgstr "カーソル:"
 
-#: src/gui/debugwindow.cpp:151 src/gui/debugwindow.cpp:203
-#: src/gui/debugwindow.cpp:208
+#: src/gui/debugwindow.cpp:151 src/gui/debugwindow.cpp:205
+#: src/gui/debugwindow.cpp:210
 msgid "Player Position:"
 msgstr "プレイヤーの位置:"
 
@@ -831,8 +831,8 @@ msgstr "プレイヤーの位置:"
 msgid "Particle count:"
 msgstr "パーティクル数:"
 
-#: src/gui/debugwindow.cpp:156 src/gui/debugwindow.cpp:237
-#: src/gui/debugwindow.cpp:256
+#: src/gui/debugwindow.cpp:156 src/gui/debugwindow.cpp:239
+#: src/gui/debugwindow.cpp:258
 msgid "Map actors count:"
 msgstr "マップアクターの数:"
 
@@ -856,85 +856,90 @@ msgstr "%d FPS (古い OpenGL)"
 msgid "%d FPS"
 msgstr "%d FPS"
 
-#: src/gui/debugwindow.cpp:190 src/gui/debugwindow.cpp:242
+#: src/gui/debugwindow.cpp:179 src/gui/debugwindow.cpp:265
+#, c-format
+msgid "%d LPS"
+msgstr ""
+
+#: src/gui/debugwindow.cpp:192 src/gui/debugwindow.cpp:244
 msgid "Textures count:"
 msgstr "テクスチャー数:"
 
-#: src/gui/debugwindow.cpp:233
+#: src/gui/debugwindow.cpp:235
 #, c-format
 msgid "Particle count: %d"
 msgstr "パーティクル数:%d"
 
-#: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:303
-#: src/gui/debugwindow.cpp:350
+#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:306
+#: src/gui/debugwindow.cpp:353
 msgid "Target:"
 msgstr "ターゲット:"
 
-#: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:308
-#: src/gui/debugwindow.cpp:351
+#: src/gui/debugwindow.cpp:274 src/gui/debugwindow.cpp:311
+#: src/gui/debugwindow.cpp:354
 msgid "Target Id:"
 msgstr "ターゲットID:"
 
-#: src/gui/debugwindow.cpp:272
+#: src/gui/debugwindow.cpp:275
 msgid "Target level:"
 msgstr "ターゲットレベル:"
 
-#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:321
+#: src/gui/debugwindow.cpp:276 src/gui/debugwindow.cpp:324
 msgid "Target race:"
 msgstr "ターゲット種別:"
 
-#: src/gui/debugwindow.cpp:274
+#: src/gui/debugwindow.cpp:277
 msgid "Target party:"
 msgstr "ターゲットパーティ:"
 
-#: src/gui/debugwindow.cpp:275
+#: src/gui/debugwindow.cpp:278
 msgid "Target guild:"
 msgstr "ターゲットギルド:"
 
-#: src/gui/debugwindow.cpp:276 src/gui/debugwindow.cpp:340
-#: src/gui/debugwindow.cpp:345 src/gui/debugwindow.cpp:355
+#: src/gui/debugwindow.cpp:279 src/gui/debugwindow.cpp:343
+#: src/gui/debugwindow.cpp:348 src/gui/debugwindow.cpp:358
 msgid "Attack delay:"
 msgstr "攻撃遅延"
 
-#: src/gui/debugwindow.cpp:277 src/gui/debugwindow.cpp:330
-#: src/gui/debugwindow.cpp:356
+#: src/gui/debugwindow.cpp:280 src/gui/debugwindow.cpp:333
+#: src/gui/debugwindow.cpp:359
 msgid "Minimal hit:"
 msgstr "最低ヒット:"
 
-#: src/gui/debugwindow.cpp:278 src/gui/debugwindow.cpp:332
-#: src/gui/debugwindow.cpp:357
+#: src/gui/debugwindow.cpp:281 src/gui/debugwindow.cpp:335
+#: src/gui/debugwindow.cpp:360
 msgid "Maximum hit:"
 msgstr "最高ヒット:"
 
-#: src/gui/debugwindow.cpp:279 src/gui/debugwindow.cpp:334
-#: src/gui/debugwindow.cpp:358
+#: src/gui/debugwindow.cpp:282 src/gui/debugwindow.cpp:337
+#: src/gui/debugwindow.cpp:361
 msgid "Critical hit:"
 msgstr "クリティカルヒット:"
 
-#: src/gui/debugwindow.cpp:312 src/gui/debugwindow.cpp:317
-#: src/gui/debugwindow.cpp:352
+#: src/gui/debugwindow.cpp:315 src/gui/debugwindow.cpp:320
+#: src/gui/debugwindow.cpp:355
 msgid "Target Level:"
 msgstr "ターゲットレベル:"
 
-#: src/gui/debugwindow.cpp:323 src/gui/debugwindow.cpp:353
+#: src/gui/debugwindow.cpp:326 src/gui/debugwindow.cpp:356
 msgid "Target Party:"
 msgstr "ターゲットパーティ:"
 
-#: src/gui/debugwindow.cpp:326 src/gui/debugwindow.cpp:354
+#: src/gui/debugwindow.cpp:329 src/gui/debugwindow.cpp:357
 msgid "Target Guild:"
 msgstr "ターゲットギルド:"
 
-#: src/gui/debugwindow.cpp:392 src/gui/debugwindow.cpp:397
+#: src/gui/debugwindow.cpp:395 src/gui/debugwindow.cpp:400
 #, c-format
 msgid "Ping: %s ms"
 msgstr "ピング: %s ms"
 
-#: src/gui/debugwindow.cpp:400
+#: src/gui/debugwindow.cpp:403
 #, c-format
 msgid "In: %d bytes/s"
 msgstr "入力: %dバイト/秒"
 
-#: src/gui/debugwindow.cpp:402
+#: src/gui/debugwindow.cpp:405
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "出力: %d バイト/秒"
@@ -2347,7 +2352,7 @@ msgstr ""
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: src/gui/setupactiondata.h:1544 src/gui/setup_other.cpp:165
+#: src/gui/setupactiondata.h:1544 src/gui/setup_other.cpp:175
 msgid "Windows"
 msgstr "ウィンドウ"
 
@@ -2646,11 +2651,11 @@ msgstr ""
 msgid "Default"
 msgstr "標準に戻す"
 
-#: src/gui/setup_input.cpp:187
+#: src/gui/setup_input.cpp:193
 msgid "Key Conflict(s) Detected."
 msgstr "ショートカットキーが重複しています"
 
-#: src/gui/setup_input.cpp:188
+#: src/gui/setup_input.cpp:194
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -2659,7 +2664,7 @@ msgstr ""
 "\"%s\"と\"%s\"キーが重複しています。 ゲームプレイに悪い影響が出るかもしれませ"
 "ん"
 
-#: src/gui/setup_input.cpp:346
+#: src/gui/setup_input.cpp:351
 msgid "unknown"
 msgstr ""
 
@@ -2843,75 +2848,87 @@ msgstr "オークションボットのサポート"
 msgid "Enable guild bot support and disable native guild support"
 msgstr "ギルドサポートを無効にしギルドボットを有効にする"
 
+#: src/gui/setup_other.cpp:166
+msgid "Keyboard"
+msgstr ""
+
 #: src/gui/setup_other.cpp:168
-msgid "Always show"
-msgstr ""
-
-#: src/gui/setup_other.cpp:169
-msgid "Auto hide in small resolution"
-msgstr ""
-
-#: src/gui/setup_other.cpp:170
-msgid "Always auto hide"
+msgid "Repeat delay"
 msgstr ""
 
 #: src/gui/setup_other.cpp:171
-msgid "Shortcut buttons"
-msgstr ""
-
-#: src/gui/setup_other.cpp:175
-msgid "Proxy server"
+msgid "Repeat interval"
 msgstr ""
 
 #: src/gui/setup_other.cpp:178
-msgid "System proxy"
+msgid "Always show"
 msgstr ""
 
 #: src/gui/setup_other.cpp:179
-msgid "Direct connection"
+msgid "Auto hide in small resolution"
+msgstr ""
+
+#: src/gui/setup_other.cpp:180
+msgid "Always auto hide"
+msgstr ""
+
+#: src/gui/setup_other.cpp:181
+msgid "Shortcut buttons"
 msgstr ""
 
 #: src/gui/setup_other.cpp:185
-msgid "SOCKS5 hostname"
+msgid "Proxy server"
 msgstr ""
 
-#: src/gui/setup_other.cpp:186
-msgid "Proxy type"
+#: src/gui/setup_other.cpp:188
+msgid "System proxy"
 msgstr ""
 
 #: src/gui/setup_other.cpp:189
-msgid "Proxy address:port"
+msgid "Direct connection"
 msgstr ""
 
 #: src/gui/setup_other.cpp:195
+msgid "SOCKS5 hostname"
+msgstr ""
+
+#: src/gui/setup_other.cpp:196
+msgid "Proxy type"
+msgstr ""
+
+#: src/gui/setup_other.cpp:199
+msgid "Proxy address:port"
+msgstr ""
+
+#: src/gui/setup_other.cpp:205
 msgid "Enable server side attack"
 msgstr "サーバーサイドアタックを有効にする"
 
-#: src/gui/setup_other.cpp:198
+#: src/gui/setup_other.cpp:208
 msgid "Enable bot checker"
 msgstr "ボットチェッカーを有効にする"
 
-#: src/gui/setup_other.cpp:201
+#: src/gui/setup_other.cpp:211
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "不安定なサーバー保護を有効にする(無効にしない)"
 
-#: src/gui/setup_other.cpp:205
+#: src/gui/setup_other.cpp:215
 msgid "Enable debug log"
 msgstr "デバッグログを有効にする"
 
-#: src/gui/setup_other.cpp:208
+#: src/gui/setup_other.cpp:218
 msgid "Low traffic mode"
 msgstr "低トラフィックモード"
 
-#: src/gui/setup_other.cpp:211
+#: src/gui/setup_other.cpp:221
 msgid "Hide shield sprite"
 msgstr "シールドスプライトを隠す"
 
-#: src/gui/setup_other.cpp:215
+#: src/gui/setup_other.cpp:225
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "スクリーンショットにFBOを使う (OpenGLのみ)"
 
-#: src/gui/setup_other.cpp:219
+#: src/gui/setup_other.cpp:229
 msgid "Show background"
 msgstr "背景を表示する"
 
@@ -2954,17 +2971,29 @@ msgstr "透過を表示する"
 msgid "Enable reorder sprites."
 msgstr "スプライトリオーダーを有効にする."
 
-#: src/gui/setup_perfomance.cpp:82
+#: src/gui/setup_perfomance.cpp:83
 msgid "Small memory (enable for lower memory usage)"
 msgstr "メモリ優先 (メモリ使用を少なくするには有効にして下さい)"
 
-#: src/gui/setup_perfomance.cpp:85
+#: src/gui/setup_perfomance.cpp:86
 msgid "Disable advanced beings caching (Software)"
 msgstr "アドバンスキャッシュを無効にする (ソフトウェア)"
 
-#: src/gui/setup_perfomance.cpp:88
+#: src/gui/setup_perfomance.cpp:89
 msgid "Disable beings caching (Software)"
 msgstr "キャッシュを無効にする (ソフトウェア)"
+
+#: src/gui/setup_perfomance.cpp:93
+msgid "Different options (enable or disable can improve perfomance)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:96
+msgid "Enable texture compression (fast OpenGL)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:99
+msgid "Enable rectangular texture extension (OpenGL)"
+msgstr ""
 
 #: src/gui/setup_players.cpp:53
 msgid "Show gender"
@@ -5377,35 +5406,35 @@ msgstr "存在しないプレイヤーです"
 msgid "You're pining for the fjords."
 msgstr "お前の魂は北極まで飛ばれた"
 
-#: src/net/ea/playerhandler.cpp:342 src/net/ea/playerhandler.cpp:352
-#: src/net/ea/playerhandler.cpp:434
+#: src/net/ea/playerhandler.cpp:338 src/net/ea/playerhandler.cpp:348
+#: src/net/ea/playerhandler.cpp:430
 msgid "Message"
 msgstr "メッセージ"
 
-#: src/net/ea/playerhandler.cpp:343
+#: src/net/ea/playerhandler.cpp:339
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "インベントリーが体重の半分以上の為、体力は回復できません"
 
-#: src/net/ea/playerhandler.cpp:353
+#: src/net/ea/playerhandler.cpp:349
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr "インベントリーが体重の半分以下になった為、体力は回復します"
 
-#: src/net/ea/playerhandler.cpp:459
+#: src/net/ea/playerhandler.cpp:455
 #, c-format
 msgid "You picked up %s."
 msgstr "%sを手に入れました"
 
-#: src/net/ea/playerhandler.cpp:465
+#: src/net/ea/playerhandler.cpp:461
 #, c-format
 msgid "You spent %s."
 msgstr "%sを使いました"
 
-#: src/net/ea/playerhandler.cpp:511
+#: src/net/ea/playerhandler.cpp:507
 msgid "Cannot raise skill!"
 msgstr "スキルはこれ以上あがりません"
 
-#: src/net/ea/playerhandler.cpp:629
+#: src/net/ea/playerhandler.cpp:625
 msgid "Equip arrows first."
 msgstr "矢を装着して下さい"
 

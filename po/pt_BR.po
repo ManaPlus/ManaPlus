@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-04-25 03:06+0300\n"
-"PO-Revision-Date: 2012-04-25 00:08+0000\n"
+"POT-Creation-Date: 2012-04-28 15:55+0300\n"
+"PO-Revision-Date: 2012-04-27 18:47+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.net/projects/p/"
 "manaplus/language/pt_BR/)\n"
@@ -31,7 +31,7 @@ msgstr "Ignorando propostas de negócios"
 msgid "Accepting incoming trade requests"
 msgstr "Aceitando propostas de negócios"
 
-#: src/actorspritemanager.cpp:1163
+#: src/actorspritemanager.cpp:1164
 msgid "Visible on map"
 msgstr "Mapa visivel "
 
@@ -57,47 +57,47 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:1008 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
+#: src/client.cpp:1012 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:105
 msgid "Setup"
 msgstr "Configurar"
 
-#: src/client.cpp:1015 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:1019 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:1020 src/gui/setup_video.cpp:237
+#: src/client.cpp:1024 src/gui/setup_video.cpp:237
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/client.cpp:1025
+#: src/client.cpp:1029
 msgid "Themes"
 msgstr "Temas"
 
-#: src/client.cpp:1111
+#: src/client.cpp:1115
 msgid "Connecting to server"
 msgstr "Saindo"
 
-#: src/client.cpp:1149
+#: src/client.cpp:1153
 msgid "Logging in"
 msgstr "Conectando ao servidor"
 
-#: src/client.cpp:1183
+#: src/client.cpp:1187
 msgid "Entering game world"
 msgstr "Habilitar rolagem suave"
 
-#: src/client.cpp:1287
+#: src/client.cpp:1291
 msgid "Requesting characters"
 msgstr "Rolagem suave"
 
-#: src/client.cpp:1322
+#: src/client.cpp:1326
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
-#: src/client.cpp:1332
+#: src/client.cpp:1336
 msgid "Changing game servers"
 msgstr "Mudando servidores do jogo"
 
-#: src/client.cpp:1375 src/client.cpp:1383 src/client.cpp:1518
+#: src/client.cpp:1379 src/client.cpp:1387 src/client.cpp:1522
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
 #: src/gui/editserverdialog.cpp:176 src/gui/register.cpp:239
@@ -107,50 +107,50 @@ msgstr "Mudando servidores do jogo"
 msgid "Error"
 msgstr "Erro"
 
-#: src/client.cpp:1393
+#: src/client.cpp:1397
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
-#: src/client.cpp:1419
+#: src/client.cpp:1423
 msgid "Password Change"
 msgstr "Mudar senha"
 
-#: src/client.cpp:1420
+#: src/client.cpp:1424
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
-#: src/client.cpp:1439
+#: src/client.cpp:1443
 msgid "Email Change"
 msgstr "Mudar email"
 
-#: src/client.cpp:1440
+#: src/client.cpp:1444
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
-#: src/client.cpp:1460
+#: src/client.cpp:1464
 msgid "Unregister Successful"
 msgstr "Registro cancelado com sucesso"
 
-#: src/client.cpp:1461
+#: src/client.cpp:1465
 msgid "Farewell, come back any time..."
 msgstr "Tchau, volte sempre..."
 
-#: src/client.cpp:1680 src/client.cpp:1713 src/client.cpp:1728
-#: src/client.cpp:2164 src/client.cpp:2171
+#: src/client.cpp:1688 src/client.cpp:1721 src/client.cpp:1736
+#: src/client.cpp:2172 src/client.cpp:2179
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s não existe e não pode ser criado! Saindo."
 
-#: src/client.cpp:1871
+#: src/client.cpp:1879
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Host de atualização inválido: %s"
 
-#: src/client.cpp:1905 src/client.cpp:1911
+#: src/client.cpp:1913 src/client.cpp:1919
 msgid "Error creating updates directory!"
 msgstr "Erro ao criar pasta de atualizações!"
 
-#: src/client.cpp:1932
+#: src/client.cpp:1940
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "Erro: %s não existe e não pode se criado! Saindo."
@@ -615,7 +615,7 @@ msgstr "Mulher"
 #: src/gui/charcreatedialog.cpp:129 src/gui/register.cpp:103
 #: src/gui/setupactiondata.h:1475 src/gui/setupactiondata.h:1548
 #: src/gui/setup_audio.cpp:120 src/gui/setup_chat.cpp:128
-#: src/gui/setup_other.cpp:193 src/gui/setup_visual.cpp:96
+#: src/gui/setup_other.cpp:203 src/gui/setup_visual.cpp:96
 msgid "Other"
 msgstr "Outro"
 
@@ -771,7 +771,7 @@ msgstr "Chat"
 msgid "Present: %s; %d players are present."
 msgstr "Presentes: %s; %d jogadores estão presentes."
 
-#: src/gui/chatwindow.cpp:1089
+#: src/gui/chatwindow.cpp:1090
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Enviando MP para %s: %s"
@@ -807,28 +807,28 @@ msgstr "Alvo"
 msgid "Net"
 msgstr "Rede"
 
-#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:222
-#: src/gui/debugwindow.cpp:251
+#: src/gui/debugwindow.cpp:147 src/gui/debugwindow.cpp:224
+#: src/gui/debugwindow.cpp:253
 msgid "Music:"
 msgstr "Música:"
 
-#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:226
-#: src/gui/debugwindow.cpp:253
+#: src/gui/debugwindow.cpp:148 src/gui/debugwindow.cpp:228
+#: src/gui/debugwindow.cpp:255
 msgid "Map:"
 msgstr "Mapa:"
 
-#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:224
-#: src/gui/debugwindow.cpp:252
+#: src/gui/debugwindow.cpp:149 src/gui/debugwindow.cpp:226
+#: src/gui/debugwindow.cpp:254
 msgid "Minimap:"
 msgstr "Minimapa:"
 
-#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:220
-#: src/gui/debugwindow.cpp:249
+#: src/gui/debugwindow.cpp:150 src/gui/debugwindow.cpp:222
+#: src/gui/debugwindow.cpp:251
 msgid "Cursor:"
 msgstr "Cursor:"
 
-#: src/gui/debugwindow.cpp:151 src/gui/debugwindow.cpp:203
-#: src/gui/debugwindow.cpp:208
+#: src/gui/debugwindow.cpp:151 src/gui/debugwindow.cpp:205
+#: src/gui/debugwindow.cpp:210
 msgid "Player Position:"
 msgstr "Sua posição:"
 
@@ -836,8 +836,8 @@ msgstr "Sua posição:"
 msgid "Particle count:"
 msgstr "Contador de particulas:"
 
-#: src/gui/debugwindow.cpp:156 src/gui/debugwindow.cpp:237
-#: src/gui/debugwindow.cpp:256
+#: src/gui/debugwindow.cpp:156 src/gui/debugwindow.cpp:239
+#: src/gui/debugwindow.cpp:258
 msgid "Map actors count:"
 msgstr "Jogadores no mapa:"
 
@@ -861,85 +861,90 @@ msgstr "%d FPS (velho OpenGL)"
 msgid "%d FPS"
 msgstr "%d FPS"
 
-#: src/gui/debugwindow.cpp:190 src/gui/debugwindow.cpp:242
+#: src/gui/debugwindow.cpp:179 src/gui/debugwindow.cpp:265
+#, c-format
+msgid "%d LPS"
+msgstr ""
+
+#: src/gui/debugwindow.cpp:192 src/gui/debugwindow.cpp:244
 msgid "Textures count:"
 msgstr "Contador de texturas:"
 
-#: src/gui/debugwindow.cpp:233
+#: src/gui/debugwindow.cpp:235
 #, c-format
 msgid "Particle count: %d"
 msgstr "Contagem de partículas: %d"
 
-#: src/gui/debugwindow.cpp:270 src/gui/debugwindow.cpp:303
-#: src/gui/debugwindow.cpp:350
+#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:306
+#: src/gui/debugwindow.cpp:353
 msgid "Target:"
 msgstr "Alvo:"
 
-#: src/gui/debugwindow.cpp:271 src/gui/debugwindow.cpp:308
-#: src/gui/debugwindow.cpp:351
+#: src/gui/debugwindow.cpp:274 src/gui/debugwindow.cpp:311
+#: src/gui/debugwindow.cpp:354
 msgid "Target Id:"
 msgstr "ID do alvo:"
 
-#: src/gui/debugwindow.cpp:272
+#: src/gui/debugwindow.cpp:275
 msgid "Target level:"
 msgstr "Level do alvo:"
 
-#: src/gui/debugwindow.cpp:273 src/gui/debugwindow.cpp:321
+#: src/gui/debugwindow.cpp:276 src/gui/debugwindow.cpp:324
 msgid "Target race:"
 msgstr "Raça do alvo:"
 
-#: src/gui/debugwindow.cpp:274
+#: src/gui/debugwindow.cpp:277
 msgid "Target party:"
 msgstr "Grupo do alvo:"
 
-#: src/gui/debugwindow.cpp:275
+#: src/gui/debugwindow.cpp:278
 msgid "Target guild:"
 msgstr "Guilda do alvo:"
 
-#: src/gui/debugwindow.cpp:276 src/gui/debugwindow.cpp:340
-#: src/gui/debugwindow.cpp:345 src/gui/debugwindow.cpp:355
+#: src/gui/debugwindow.cpp:279 src/gui/debugwindow.cpp:343
+#: src/gui/debugwindow.cpp:348 src/gui/debugwindow.cpp:358
 msgid "Attack delay:"
 msgstr "Atarso de ataque:"
 
-#: src/gui/debugwindow.cpp:277 src/gui/debugwindow.cpp:330
-#: src/gui/debugwindow.cpp:356
+#: src/gui/debugwindow.cpp:280 src/gui/debugwindow.cpp:333
+#: src/gui/debugwindow.cpp:359
 msgid "Minimal hit:"
 msgstr "Hit minimo:"
 
-#: src/gui/debugwindow.cpp:278 src/gui/debugwindow.cpp:332
-#: src/gui/debugwindow.cpp:357
+#: src/gui/debugwindow.cpp:281 src/gui/debugwindow.cpp:335
+#: src/gui/debugwindow.cpp:360
 msgid "Maximum hit:"
 msgstr "Hit máximo:"
 
-#: src/gui/debugwindow.cpp:279 src/gui/debugwindow.cpp:334
-#: src/gui/debugwindow.cpp:358
+#: src/gui/debugwindow.cpp:282 src/gui/debugwindow.cpp:337
+#: src/gui/debugwindow.cpp:361
 msgid "Critical hit:"
 msgstr "Hit crítico:"
 
-#: src/gui/debugwindow.cpp:312 src/gui/debugwindow.cpp:317
-#: src/gui/debugwindow.cpp:352
+#: src/gui/debugwindow.cpp:315 src/gui/debugwindow.cpp:320
+#: src/gui/debugwindow.cpp:355
 msgid "Target Level:"
 msgstr "Nível do alvo:"
 
-#: src/gui/debugwindow.cpp:323 src/gui/debugwindow.cpp:353
+#: src/gui/debugwindow.cpp:326 src/gui/debugwindow.cpp:356
 msgid "Target Party:"
 msgstr "Grupo do alvo:"
 
-#: src/gui/debugwindow.cpp:326 src/gui/debugwindow.cpp:354
+#: src/gui/debugwindow.cpp:329 src/gui/debugwindow.cpp:357
 msgid "Target Guild:"
 msgstr "Guilda do alvo:"
 
-#: src/gui/debugwindow.cpp:392 src/gui/debugwindow.cpp:397
+#: src/gui/debugwindow.cpp:395 src/gui/debugwindow.cpp:400
 #, c-format
 msgid "Ping: %s ms"
 msgstr "Ping: %s ms"
 
-#: src/gui/debugwindow.cpp:400
+#: src/gui/debugwindow.cpp:403
 #, c-format
 msgid "In: %d bytes/s"
 msgstr "Entrada: %d bytes/s"
 
-#: src/gui/debugwindow.cpp:402
+#: src/gui/debugwindow.cpp:405
 #, c-format
 msgid "Out: %d bytes/s"
 msgstr "Saída: %d bytes/s"
@@ -2354,7 +2359,7 @@ msgstr ""
 msgid "Shortcuts"
 msgstr "Atalhos"
 
-#: src/gui/setupactiondata.h:1544 src/gui/setup_other.cpp:165
+#: src/gui/setupactiondata.h:1544 src/gui/setup_other.cpp:175
 msgid "Windows"
 msgstr "Janelas"
 
@@ -2653,11 +2658,11 @@ msgstr ""
 msgid "Default"
 msgstr "Padrão"
 
-#: src/gui/setup_input.cpp:187
+#: src/gui/setup_input.cpp:193
 msgid "Key Conflict(s) Detected."
 msgstr "Conflitos de teclas detectado."
 
-#: src/gui/setup_input.cpp:188
+#: src/gui/setup_input.cpp:194
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -2666,7 +2671,7 @@ msgstr ""
 "Conflito com as teclas \"%s\" e \"%s\" . Resolva o conflito para não "
 "comprometer a jogabilidade."
 
-#: src/gui/setup_input.cpp:346
+#: src/gui/setup_input.cpp:351
 msgid "unknown"
 msgstr ""
 
@@ -2850,75 +2855,87 @@ msgstr "Habilitar suporte ao AuctionBot "
 msgid "Enable guild bot support and disable native guild support"
 msgstr "Ativar o suporte a bot guilda e desabilitar o suporte nativo guilda"
 
+#: src/gui/setup_other.cpp:166
+msgid "Keyboard"
+msgstr ""
+
 #: src/gui/setup_other.cpp:168
+msgid "Repeat delay"
+msgstr ""
+
+#: src/gui/setup_other.cpp:171
+msgid "Repeat interval"
+msgstr ""
+
+#: src/gui/setup_other.cpp:178
 msgid "Always show"
 msgstr "Sempre mostrar"
 
-#: src/gui/setup_other.cpp:169
+#: src/gui/setup_other.cpp:179
 msgid "Auto hide in small resolution"
 msgstr "Auto ocultar em baixa resolução"
 
-#: src/gui/setup_other.cpp:170
+#: src/gui/setup_other.cpp:180
 msgid "Always auto hide"
 msgstr "Sempre ocultar"
 
-#: src/gui/setup_other.cpp:171
+#: src/gui/setup_other.cpp:181
 msgid "Shortcut buttons"
 msgstr "botões de atalho"
 
-#: src/gui/setup_other.cpp:175
+#: src/gui/setup_other.cpp:185
 msgid "Proxy server"
 msgstr "Servidor proxy"
 
-#: src/gui/setup_other.cpp:178
+#: src/gui/setup_other.cpp:188
 msgid "System proxy"
 msgstr "Sistema proxy"
 
-#: src/gui/setup_other.cpp:179
+#: src/gui/setup_other.cpp:189
 msgid "Direct connection"
 msgstr "Conexão direta"
 
-#: src/gui/setup_other.cpp:185
+#: src/gui/setup_other.cpp:195
 msgid "SOCKS5 hostname"
 msgstr "SOCK5 hostname"
 
-#: src/gui/setup_other.cpp:186
+#: src/gui/setup_other.cpp:196
 msgid "Proxy type"
 msgstr "Tipo de Proxy"
 
-#: src/gui/setup_other.cpp:189
+#: src/gui/setup_other.cpp:199
 msgid "Proxy address:port"
 msgstr "Proxy endereço:porta"
 
-#: src/gui/setup_other.cpp:195
+#: src/gui/setup_other.cpp:205
 msgid "Enable server side attack"
 msgstr "Habilitar ataque do lado do servidor"
 
-#: src/gui/setup_other.cpp:198
+#: src/gui/setup_other.cpp:208
 msgid "Enable bot checker"
 msgstr "Habilitar Analisador de bot"
 
-#: src/gui/setup_other.cpp:201
+#: src/gui/setup_other.cpp:211
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Habilitar proteção para servidores com bugs (não desabilitar)"
 
-#: src/gui/setup_other.cpp:205
+#: src/gui/setup_other.cpp:215
 msgid "Enable debug log"
 msgstr "Habilitar Depurador"
 
-#: src/gui/setup_other.cpp:208
+#: src/gui/setup_other.cpp:218
 msgid "Low traffic mode"
 msgstr "Modo de baixo tráfego"
 
-#: src/gui/setup_other.cpp:211
+#: src/gui/setup_other.cpp:221
 msgid "Hide shield sprite"
 msgstr "Ocultar sprite de escudo"
 
-#: src/gui/setup_other.cpp:215
+#: src/gui/setup_other.cpp:225
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Utilizar FBO para capturas de tela (apenas para opengl)"
 
-#: src/gui/setup_other.cpp:219
+#: src/gui/setup_other.cpp:229
 msgid "Show background"
 msgstr "Mostrar imagem de fundo"
 
@@ -2959,17 +2976,29 @@ msgstr "Mostrar transparencia"
 msgid "Enable reorder sprites."
 msgstr "Habilitar reordenar sprites."
 
-#: src/gui/setup_perfomance.cpp:82
+#: src/gui/setup_perfomance.cpp:83
 msgid "Small memory (enable for lower memory usage)"
 msgstr "Menos memória (habilite para usar menos memória)"
 
-#: src/gui/setup_perfomance.cpp:85
+#: src/gui/setup_perfomance.cpp:86
 msgid "Disable advanced beings caching (Software)"
 msgstr "Desabilitar cache avançado (Software)"
 
-#: src/gui/setup_perfomance.cpp:88
+#: src/gui/setup_perfomance.cpp:89
 msgid "Disable beings caching (Software)"
 msgstr "Desabilitar cache (Software)"
+
+#: src/gui/setup_perfomance.cpp:93
+msgid "Different options (enable or disable can improve perfomance)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:96
+msgid "Enable texture compression (fast OpenGL)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:99
+msgid "Enable rectangular texture extension (OpenGL)"
+msgstr ""
 
 #: src/gui/setup_players.cpp:53
 msgid "Show gender"
@@ -5392,39 +5421,39 @@ msgstr "Você é um ex-jogador(a)"
 msgid "You're pining for the fjords."
 msgstr "Você foi desta para melhor."
 
-#: src/net/ea/playerhandler.cpp:342 src/net/ea/playerhandler.cpp:352
-#: src/net/ea/playerhandler.cpp:434
+#: src/net/ea/playerhandler.cpp:338 src/net/ea/playerhandler.cpp:348
+#: src/net/ea/playerhandler.cpp:430
 msgid "Message"
 msgstr "Mensagem"
 
-#: src/net/ea/playerhandler.cpp:343
+#: src/net/ea/playerhandler.cpp:339
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 "Você está carregando mais que a metade de seu peso. Você não poderá mais "
 "recuperar HP."
 
-#: src/net/ea/playerhandler.cpp:353
+#: src/net/ea/playerhandler.cpp:349
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Você está carregando menos ou metade de seu peso. Você pode recuperar-se "
 "novamente."
 
-#: src/net/ea/playerhandler.cpp:459
+#: src/net/ea/playerhandler.cpp:455
 #, c-format
 msgid "You picked up %s."
 msgstr "Você pegou %s."
 
-#: src/net/ea/playerhandler.cpp:465
+#: src/net/ea/playerhandler.cpp:461
 #, c-format
 msgid "You spent %s."
 msgstr "Você gastou %s"
 
-#: src/net/ea/playerhandler.cpp:511
+#: src/net/ea/playerhandler.cpp:507
 msgid "Cannot raise skill!"
 msgstr "Impossível aumentar o atributo!"
 
-#: src/net/ea/playerhandler.cpp:629
+#: src/net/ea/playerhandler.cpp:625
 msgid "Equip arrows first."
 msgstr "Equipe as flechas primeiro."
 
