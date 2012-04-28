@@ -1,3 +1,26 @@
+2012-04-29 New release 1.2.4.29
+fix: bluring setting apply.
+fix: split long lines in kill stats window.
+fix: actions translation.
+fix: vsync setting.
+fix: improved in game visible position calculation.
+add: keyboard repeat setting.
+add: split input settings to tabs.
+add: separate configurable shorcuts for emotes, shorcuts, move to target.
+add: deharcode gui input keys.
+add: improve keyboard handling in some dialogs.
+add: autoclean configuration file from old keys.
+add: option to center window on screen (windows, osx).
+add: audio frequency and channels options to audio tab.
+add: particle physics setting. (normal by default).
+add: for OpenGL add option to enable/disable texture compression.
+add: for OpenGL add option to enable/disable rectangular textures support.
+add: in debug window add LPS counter near FPS.
+add: write to log OpenGL info.
+add: support for server independent updates.
+add: improve perfomance.
+add: update mplus font.
+
 2012-04-15 New release 1.2.4.15
 fix: cancel update fix.
 fix: multiple conflicts between windows and game keys.
