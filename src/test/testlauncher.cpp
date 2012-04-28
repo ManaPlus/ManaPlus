@@ -166,8 +166,10 @@ int TestLauncher::testInternal()
     Wallpaper::getWallpaper(800, 600);
     Image *img[4];
 
-    img[0] = Theme::getImageFromTheme("graphics/sprites/manaplus_emotions.png");
-    img[1] = Theme::getImageFromTheme("graphics/sprites/manaplus_emotions.png");
+    img[0] = Theme::getImageFromTheme(
+        "graphics/sprites/manaplus_emotions.png");
+    img[1] = Theme::getImageFromTheme(
+        "graphics/sprites/manaplus_emotions.png");
     img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_left.gif");
     img[3] = Theme::getImageFromTheme("graphics/sprites/arrow_right.gif");
     int idx = 0;

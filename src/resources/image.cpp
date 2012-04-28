@@ -940,10 +940,20 @@ SubImage::SubImage(Image *parent, GLuint image,
     mBounds.y = static_cast<short>(y);
     mBounds.w = static_cast<Uint16>(width);
     mBounds.h = static_cast<Uint16>(height);
-    mInternalBounds.x = mParent->mBounds.x;
-    mInternalBounds.y = mParent->mBounds.y;
-    mInternalBounds.w = mParent->mBounds.w;
-    mInternalBounds.h = mParent->mBounds.h;
+    if (mParent)
+    {
+        mInternalBounds.x = mParent->mBounds.x;
+        mInternalBounds.y = mParent->mBounds.y;
+        mInternalBounds.w = mParent->mBounds.w;
+        mInternalBounds.h = mParent->mBounds.h;
+    }
+    else
+    {
+        mInternalBounds.x = 0;
+        mInternalBounds.y = 0;
+        mInternalBounds.w = 1;
+        mInternalBounds.h = 1;
+    }
     mIsAlphaVisible = mHasAlphaChannel;
 }
 #endif

@@ -50,6 +50,8 @@
 #include "guichan/event.hpp"
 #include "guichan/platform.hpp"
 
+#include "localconsts.h"
+
 namespace gcn
 {
     /**

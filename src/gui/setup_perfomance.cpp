@@ -90,15 +90,14 @@ Setup_Perfomance::Setup_Perfomance()
         "disableBeingCaching", this, "disableBeingCachingEvent");
 
 
-    new SetupItemLabel(_("Different options (enable or disable can improve perfomance)"),
-         "", this);
+    new SetupItemLabel(_("Different options (enable or disable can "
+        "improve perfomance)"), "", this);
 
     new SetupItemCheckBox(_("Enable texture compression (fast OpenGL)"), "",
         "compresstextures", this, "compresstexturesEvent");
 
-    new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"), "",
-        "rectangulartextures", this, "rectangulartexturesEvent");
-
+    new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"),
+        "", "rectangulartextures", this, "rectangulartexturesEvent");
 
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }

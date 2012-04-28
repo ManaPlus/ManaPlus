@@ -182,8 +182,8 @@ void Setup::setInGame(bool inGame)
 
 void Setup::externalUpdate()
 {
-    for (std::list<SetupTab*>::const_iterator it = mTabs.begin(), it_end = mTabs.end();
-         it != it_end; ++ it)
+    for (std::list<SetupTab*>::const_iterator it = mTabs.begin(),
+         it_end = mTabs.end(); it != it_end; ++ it)
     {
         if (*it)
             (*it)->externalUpdated();

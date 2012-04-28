@@ -968,7 +968,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     for (x = x1; x < x2; x++)
                     {
                         Uint32 *p = p0 + x;
-                        Uint32 dst = *reinterpret_cast<Uint32*>(p);
+                        const Uint32 dst = *p;
                         *p = cB[dst & 0xff] | cG[(dst & 0xff00) >> 8]
                             | cR[(dst & 0xff0000) >> 16];
                     }

@@ -108,8 +108,8 @@ bool TileAnimation::update(int ticks)
     Image *img = mAnimation->getCurrentImage();
     if (img != mLastImage)
     {
-        for (TilePairVectorCIter i = mAffected.begin(), i_end = mAffected.end();
-             i != i_end; ++i)
+        for (TilePairVectorCIter i = mAffected.begin(),
+             i_end = mAffected.end(); i != i_end; ++i)
         {
             if (i->first)
                 i->first->setTile(i->second, img);

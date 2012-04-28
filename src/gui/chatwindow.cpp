@@ -858,8 +858,9 @@ void ChatWindow::keyPressed(gcn::KeyEvent &event)
             }
 
             unsigned int f = 0;
-            for (std::list<std::string>::const_iterator it = tab->getRows().begin(),
-                 it_end = tab->getRows().end(); it != it_end; ++it, f++)
+            for (std::list<std::string>::const_iterator
+                 it = tab->getRows().begin(), it_end = tab->getRows().end();
+                 it != it_end; ++it, f++)
             {
                 if (f == mChatHistoryIndex)
                     mChatInput->setText(*it);
