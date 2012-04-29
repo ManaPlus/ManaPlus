@@ -22,6 +22,10 @@
 
 #include "graphics.h"
 
+#include "main.h"
+
+#include "configuration.h"
+#include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 #include "logger.h"
 
@@ -36,11 +40,21 @@
 
 #include "debug.h"
 
+#ifdef USE_OPENGL
+#ifndef GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
+//#define GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX 0x9047
+//#define GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX 0x9048
+#define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX 0x9049
+//#define GPU_MEMORY_INFO_EVICTION_COUNT_NVX 0x904A
+//#define GPU_MEMORY_INFO_EVICTED_MEMORY_NVX 0x904B
+#endif
+#endif
+
 static unsigned int *cR = nullptr;
 static unsigned int *cG = nullptr;
 static unsigned int *cB = nullptr;
 
-Graphics::Graphics():
+Graphics::Graphics() :
     mWidth(0),
     mHeight(0),
     mBpp(0),
@@ -54,7 +68,9 @@ Graphics::Graphics():
     mEnableResize(false),
     mNoFrame(false),
     mOldPixel(0),
-    mOldAlpha(0)
+    mOldAlpha(0),
+    mName("Software"),
+    mStartFreeMem(0)
 {
     mRect.x = 0;
     mRect.y = 0;
@@ -67,14 +83,12 @@ Graphics::~Graphics()
     _endDraw();
 }
 
-bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
+void Graphics::setMainFlags(int w, int h, int bpp, bool fs,
                             bool hwaccel, bool resize, bool noFrame)
 {
-    logger->log1("graphics backend: software");
+    logger->log("graphics backend: %s", getName().c_str());
     logger->log("Setting video mode %dx%d %s",
             w, h, fs ? "fullscreen" : "windowed");
-
-    int displayFlags = SDL_ANYFORMAT;
 
     mWidth = w;
     mHeight = h;
@@ -83,23 +97,160 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
     mHWAccel = hwaccel;
     mEnableResize = resize;
     mNoFrame = noFrame;
+}
 
-    if (fs)
+int Graphics::getOpenGLFlags()
+{
+#ifdef USE_OPENGL
+    int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
+
+    if (mFullscreen)
+    {
         displayFlags |= SDL_FULLSCREEN;
-    else if (resize)
+    }
+    else
+    {
+        // Resizing currently not supported on Windows, where it would require
+        // reuploading all textures.
+#if !defined(_WIN32)
+        if (mEnableResize)
+            displayFlags |= SDL_RESIZABLE;
+#endif
+    }
+
+    if (mNoFrame)
+        displayFlags |= SDL_NOFRAME;
+
+    return displayFlags;
+#else
+    return 0;
+#endif
+}
+
+bool Graphics::setOpenGLMode()
+{
+#ifdef USE_OPENGL
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    if (!(mTarget = SDL_SetVideoMode(mWidth, mHeight, mBpp, getOpenGLFlags())))
+        return false;
+
+#ifdef __APPLE__
+    if (mSync)
+    {
+        const GLint VBL = 1;
+        CGLSetParameter(CGLGetCurrentContext(), kCGLCPSwapInterval, &VBL);
+    }
+#endif
+
+    graphicsManager.logString("gl vendor: %s", GL_VENDOR);
+    graphicsManager.logString("gl renderer: %s", GL_RENDERER);
+    graphicsManager.logString("gl version: %s", GL_VERSION);
+
+    // Setup OpenGL
+    glViewport(0, 0, mWidth, mHeight);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+    int gotDoubleBuffer;
+    SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
+    logger->log("Using OpenGL %s double buffering.",
+                (gotDoubleBuffer ? "with" : "without"));
+
+    char const *glExtensions = reinterpret_cast<char const *>(
+        glGetString(GL_EXTENSIONS));
+
+    logger->log1("opengl extensions: ");
+    logger->log1(glExtensions);
+
+    graphicsManager.updateExtensions(glExtensions);
+
+    graphicsManager.updateTextureFormat();
+    updateMemoryInfo();
+
+    GLint texSize;
+    bool rectTex = graphicsManager.supportExtension(
+        "GL_ARB_texture_rectangle");
+    if (rectTex && Image::getInternalTextureType() == 4
+        && config.getBoolValue("rectangulartextures"))
+    {
+        logger->log1("using GL_ARB_texture_rectangle");
+        Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
+        glEnable(GL_TEXTURE_RECTANGLE_ARB);
+        glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
+        Image::mTextureSize = texSize;
+        logger->log("OpenGL texture size: %d pixels (rectangle textures)",
+            Image::mTextureSize);
+    }
+    else
+    {
+        Image::mTextureType = GL_TEXTURE_2D;
+        glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
+        Image::mTextureSize = texSize;
+        logger->log("OpenGL texture size: %d pixels", Image::mTextureSize);
+    }
+    return videoInfo();
+#else
+    return false;
+#endif
+}
+
+int Graphics::getSoftwareFlags()
+{
+    int displayFlags = SDL_ANYFORMAT;
+
+    if (mFullscreen)
+        displayFlags |= SDL_FULLSCREEN;
+    else if (mEnableResize)
         displayFlags |= SDL_RESIZABLE;
 
-    if (hwaccel)
+    if (mHWAccel)
         displayFlags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
     else
         displayFlags |= SDL_SWSURFACE;
 
-    if (noFrame)
+    if (mNoFrame)
         displayFlags |= SDL_NOFRAME;
 
-    setTarget(SDL_SetVideoMode(w, h, bpp, displayFlags));
+    return displayFlags;
+}
 
-    if (!mTarget)
+
+void Graphics::updateMemoryInfo()
+{
+#ifdef USE_OPENGL
+    if (mStartFreeMem)
+        return;
+
+    if (graphicsManager.supportExtension("GL_NVX_gpu_memory_info"))
+    {
+        glGetIntegerv(GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX,
+            &mStartFreeMem);
+        logger->log("free video memory: %d", mStartFreeMem);
+    }
+#endif
+}
+
+int Graphics::getMemoryUsage()
+{
+#ifdef USE_OPENGL
+    if (!mStartFreeMem)
+        return 0;
+
+    if (graphicsManager.supportExtension("GL_NVX_gpu_memory_info"))
+    {
+        GLint val;
+        glGetIntegerv(GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX,
+            &val);
+        return mStartFreeMem - val;
+    }
+#endif
+    return 0;
+}
+
+bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
+                            bool hwaccel, bool resize, bool noFrame)
+{
+    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
+
+    if (!(mTarget = SDL_SetVideoMode(w, h, bpp, getSoftwareFlags())))
         return false;
 
     mRect.w = mTarget->w;
@@ -112,6 +263,7 @@ bool Graphics::videoInfo()
 {
     char videoDriverName[65];
 
+    logger->log("SDL video info");
     if (SDL_VideoDriverName(videoDriverName, 64))
         logger->log("Using video driver: %s", videoDriverName);
     else

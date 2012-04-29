@@ -51,6 +51,7 @@ OpenGL1Graphics::OpenGL1Graphics():
     mFboId(0), mTextureId(0), mRboId(0)
 {
     mOpenGL = 2;
+    mName = "safe OpenGL";
 }
 
 OpenGL1Graphics::~OpenGL1Graphics()
@@ -65,85 +66,9 @@ void OpenGL1Graphics::setSync(bool sync)
 bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,
                                    bool hwaccel, bool resize, bool noFrame)
 {
-    logger->log1("graphics backend: safe OpenGL");
-    logger->log("Setting video mode %dx%d %s",
-            w, h, fs ? "fullscreen" : "windowed");
+    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
-    int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
-
-    mWidth = w;
-    mHeight = h;
-    mBpp = bpp;
-    mFullscreen = fs;
-    mHWAccel = hwaccel;
-    mEnableResize = resize;
-    mNoFrame = noFrame;
-
-    if (fs)
-    {
-        displayFlags |= SDL_FULLSCREEN;
-    }
-    else
-    {
-        // Resizing currently not supported on Windows, where it would require
-        // reuploading all textures.
-#if !defined(_WIN32)
-        if (resize)
-            displayFlags |= SDL_RESIZABLE;
-#endif
-    }
-
-    if (noFrame)
-        displayFlags |= SDL_NOFRAME;
-
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-    if (!(mTarget = SDL_SetVideoMode(w, h, bpp, displayFlags)))
-        return false;
-
-#ifdef __APPLE__
-    if (mSync)
-    {
-        const GLint VBL = 1;
-        CGLSetParameter(CGLGetCurrentContext(), kCGLCPSwapInterval, &VBL);
-    }
-#endif
-
-    // Setup OpenGL
-    glViewport(0, 0, w, h);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-    int gotDoubleBuffer;
-    SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
-    logger->log("Using OpenGL %s double buffering.",
-            (gotDoubleBuffer ? "with" : "without"));
-
-    char const *glExtensions = reinterpret_cast<char const *>(
-        glGetString(GL_EXTENSIONS));
-
-    logger->log1("opengl extensions: ");
-    logger->log1(glExtensions);
-
-    GLint texSize;
-    bool rectTex = strstr(glExtensions, "GL_ARB_texture_rectangle");
-    if (rectTex && config.getBoolValue("rectangulartextures"))
-    {
-        logger->log1("using GL_ARB_texture_rectangle");
-        Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
-        glEnable(GL_TEXTURE_RECTANGLE_ARB);
-        glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
-        Image::mTextureSize = texSize;
-        logger->log("OpenGL texture size: %d pixels (rectangle textures)",
-            Image::mTextureSize);
-    }
-    else
-    {
-        Image::mTextureType = GL_TEXTURE_2D;
-        glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
-        Image::mTextureSize = texSize;
-        logger->log("OpenGL texture size: %d pixels", Image::mTextureSize);
-    }
-
-    return true;
+    return setOpenGLMode();
 }
 
 static inline void drawQuad(Image *image,

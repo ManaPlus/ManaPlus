@@ -146,8 +146,6 @@ class OpenGLGraphics : public Graphics
 
         bool drawNet(int x1, int y1, int x2, int y2, int width, int height);
 
-        bool supportExtension(std::string name);
-
         int getMemoryUsage();
 
         void updateTextureFormat();
@@ -173,8 +171,6 @@ class OpenGLGraphics : public Graphics
         GLuint mFboId;
         GLuint mTextureId;
         GLuint mRboId;
-        std::set<std::string> mExtensions;
-        GLint mStartFreeMem;
 };
 #endif
 

@@ -46,23 +46,16 @@
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
 #endif
 
-#ifndef GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
-//#define GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX 0x9047
-//#define GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX 0x9048
-#define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX 0x9049
-//#define GPU_MEMORY_INFO_EVICTION_COUNT_NVX 0x904A
-//#define GPU_MEMORY_INFO_EVICTED_MEMORY_NVX 0x904B
-#endif
-
 const unsigned int vertexBufSize = 500;
 
 GLuint OpenGLGraphics::mLastImage = 0;
 
 OpenGLGraphics::OpenGLGraphics():
     mAlpha(false), mTexture(false), mColorAlpha(false), mSync(false),
-    mFboId(0), mTextureId(0), mRboId(0), mStartFreeMem(0)
+    mFboId(0), mTextureId(0), mRboId(0)
 {
     mOpenGL = 1;
+    mName = "fast OpenGL";
     mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
     mIntTexArray = new GLint[vertexBufSize * 4 + 30];
     mIntVertArray = new GLint[vertexBufSize * 4 + 30];
@@ -83,98 +76,9 @@ void OpenGLGraphics::setSync(bool sync)
 bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
                                   bool hwaccel, bool resize, bool noFrame)
 {
-    logger->log1("graphics backend: fast OpenGL");
-    logger->log("Setting video mode %dx%d %s",
-            w, h, fs ? "fullscreen" : "windowed");
+    setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
-    int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
-
-    mWidth = w;
-    mHeight = h;
-    mBpp = bpp;
-    mFullscreen = fs;
-    mHWAccel = hwaccel;
-    mEnableResize = resize;
-    mNoFrame = noFrame;
-
-    if (fs)
-    {
-        displayFlags |= SDL_FULLSCREEN;
-    }
-    else
-    {
-        // Resizing currently not supported on Windows, where it would require
-        // reuploading all textures.
-#if !defined(_WIN32)
-        if (resize)
-            displayFlags |= SDL_RESIZABLE;
-#endif
-    }
-
-    if (noFrame)
-        displayFlags |= SDL_NOFRAME;
-
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-    if (!(mTarget = SDL_SetVideoMode(w, h, bpp, displayFlags)))
-        return false;
-
-#ifdef __APPLE__
-    if (mSync)
-    {
-        const GLint VBL = 1;
-        CGLSetParameter(CGLGetCurrentContext(), kCGLCPSwapInterval, &VBL);
-    }
-#endif
-
-    logString("gl vendor: %s", GL_VENDOR);
-    logString("gl renderer: %s", GL_RENDERER);
-    logString("gl version: %s", GL_VERSION);
-
-//    logger->log("gl extensions: %s", reinterpret_cast<const char*>(
-//        glGetString(GL_EXTENSIONS)));
-
-    // Setup OpenGL
-    glViewport(0, 0, w, h);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-    int gotDoubleBuffer;
-    SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
-    logger->log("Using OpenGL %s double buffering.",
-                (gotDoubleBuffer ? "with" : "without"));
-
-    char const *glExtensions = reinterpret_cast<char const *>(
-        glGetString(GL_EXTENSIONS));
-
-    logger->log1("opengl extensions: ");
-    logger->log1(glExtensions);
-
-    splitToStringSet(mExtensions, glExtensions, ' ');
-
-    updateTextureFormat();
-    updateMemoryInfo();
-
-    GLint texSize;
-    bool rectTex = supportExtension("GL_ARB_texture_rectangle");
-    if (rectTex && Image::getInternalTextureType() == 4
-        && config.getBoolValue("rectangulartextures"))
-    {
-        logger->log1("using GL_ARB_texture_rectangle");
-        Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
-        glEnable(GL_TEXTURE_RECTANGLE_ARB);
-        glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
-        Image::mTextureSize = texSize;
-        logger->log("OpenGL texture size: %d pixels (rectangle textures)",
-            Image::mTextureSize);
-    }
-    else
-    {
-        Image::mTextureType = GL_TEXTURE_2D;
-        glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
-        Image::mTextureSize = texSize;
-        logger->log("OpenGL texture size: %d pixels", Image::mTextureSize);
-    }
-
-    return true;
+    return setOpenGLMode();
 }
 
 static inline void drawQuad(Image *image,
@@ -1471,94 +1375,6 @@ void OpenGLGraphics::dumpSettings()
         {
             logger->log("\n%d = %d, %d, %d, %d", f,
                 test[0], test[1], test[2], test[3]);
-        }
-    }
-}
-
-void OpenGLGraphics::logString(const char *format, GLenum num)
-{
-    const char *str = reinterpret_cast<const char*>(glGetString(num));
-    if (!str)
-        logger->log(format, "?");
-    else
-        logger->log(format, str);
-}
-
-bool OpenGLGraphics::supportExtension(std::string name)
-{
-    return mExtensions.find(name) != mExtensions.end();
-}
-
-void OpenGLGraphics::updateMemoryInfo()
-{
-    if (mStartFreeMem)
-        return;
-
-    if (supportExtension("GL_NVX_gpu_memory_info"))
-    {
-        glGetIntegerv(GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX,
-            &mStartFreeMem);
-        logger->log("free video memory: %d", mStartFreeMem);
-    }
-}
-
-int OpenGLGraphics::getMemoryUsage()
-{
-    if (!mStartFreeMem)
-        return 0;
-
-    if (supportExtension("GL_NVX_gpu_memory_info"))
-    {
-        GLint val;
-        glGetIntegerv(GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX,
-            &val);
-        return mStartFreeMem - val;
-    }
-    return 0;
-}
-
-void OpenGLGraphics::updateTextureFormat()
-{
-    if (!config.getBoolValue("compresstextures"))
-        return;
-
-    if (supportExtension("GL_ARB_texture_compression"))
-    {
-        if (supportExtension("GL_EXT_texture_compression_s3tc")
-            || supportExtension("3DFX_texture_compression_FXT1"))
-        {
-            GLint num;
-            GLint *formats = nullptr;
-            glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
-            logger->log("support %d compressed formats", num);
-            formats = new GLint[num > 10 ? num : 10];
-            glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
-            for (int f = 0; f < num; f ++)
-            {
-                if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
-                {
-                    delete []formats;
-                    Image::setInternalTextureType(
-                        GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
-                    logger->log("using s3tc texture compression");
-                    return;
-                }
-                else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX)
-                {
-                    delete []formats;
-                    Image::setInternalTextureType(
-                        GL_COMPRESSED_RGBA_FXT1_3DFX);
-                    logger->log("using fxt1 texture compression");
-                    return;
-                }
-            }
-            Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
-            logger->log("using texture compression");
-        }
-        else
-        {
-            Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
-            logger->log("using texture compression");
         }
     }
 }

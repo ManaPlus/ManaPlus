@@ -32,6 +32,7 @@
 #include "game.h"
 #include "guild.h"
 #include "guildmanager.h"
+#include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 #include "itemshortcut.h"
 #include "joystick.h"
@@ -509,34 +510,7 @@ void Client::gameInit()
     }
 #endif
 
-#ifdef USE_OPENGL
-    int useOpenGL = 0;
-    if (!mOptions.noOpenGL)
-        useOpenGL = config.getIntValue("opengl");
-
-    // Setup image loading for the right image format
-    Image::setLoadAsOpenGL(useOpenGL);
-    GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
-
-    // Create the graphics context
-    switch (useOpenGL)
-    {
-        case 0:
-            mainGraphics = new Graphics;
-            break;
-        case 1:
-        default:
-            mainGraphics = new OpenGLGraphics;
-            break;
-        case 2:
-            mainGraphics = new OpenGL1Graphics;
-            break;
-    };
-
-#else
-    // Create the graphics context
-    mainGraphics = new Graphics;
-#endif
+    graphicsManager.initGraphics(mOptions.noOpenGL);
 
     runCounters = config.getBoolValue("packetcounters");
 

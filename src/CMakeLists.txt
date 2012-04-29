@@ -530,6 +530,8 @@ SET(SRCS
     game.h
     graphics.cpp
     graphics.h
+    graphicsmanager.cpp
+    graphicsmanager.h
     graphicsvertexes.cpp
     graphicsvertexes.h
     guichanfwd.h

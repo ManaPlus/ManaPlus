@@ -254,11 +254,7 @@ class Graphics : public gcn::SDLGraphics
         virtual void prepareScreenshot()
         { }
 
-        virtual int getMemoryUsage()
-        { return 0; }
-
-        virtual void updateTextureFormat()
-        { }
+        int getMemoryUsage();
 
         virtual bool drawNet(int x1, int y1, int x2, int y2,
                              int width, int height);
@@ -299,12 +295,26 @@ class Graphics : public gcn::SDLGraphics
         void setNoFrame(bool n)
         { mNoFrame = n; }
 
-        bool videoInfo();
+        const std::string &getName()
+        { return mName; }
 
         int mWidth;
         int mHeight;
 
     protected:
+        void setMainFlags(int w, int h, int bpp, bool fs,
+                          bool hwaccel, bool resize, bool noFrame);
+
+        int getOpenGLFlags();
+
+        int getSoftwareFlags();
+
+        bool setOpenGLMode();
+
+        void updateMemoryInfo();
+
+        bool videoInfo();
+
         int SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
                               SDL_Surface *dst, SDL_Rect *dstrect);
 
@@ -321,6 +331,8 @@ class Graphics : public gcn::SDLGraphics
         bool mNoFrame;
         Uint32 mOldPixel;
         int mOldAlpha;
+        std::string mName;
+        int mStartFreeMem;
 };
 
 extern Graphics *mainGraphics;

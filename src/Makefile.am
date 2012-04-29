@@ -548,6 +548,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      game.h \
 	      graphics.cpp \
 	      graphics.h \
+	      graphicsmanager.cpp \
+	      graphicsmanager.h \
 	      graphicsvertexes.cpp \
 	      graphicsvertexes.h \
 	      guichanfwd.h \
