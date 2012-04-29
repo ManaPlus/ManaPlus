@@ -4,7 +4,7 @@ dir=`pwd`
 
 cd ..
 export PATH=/usr/i586-mingw32msvc/bin:$PATH
-export CXXFLAGS="-Wall -g0 -O3"
+export CXXFLAGS="-Wall -g1 -O3"
 cmake -DCMAKE_TOOLCHAIN_FILE=./build/toolchain.nightly .
 result=$?
 if [ "$result" != 0 ]; then
