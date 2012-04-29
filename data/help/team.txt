@@ -20,6 +20,7 @@
 ##9Candy                                                      (jp)
 ##9Derpella                                                   (pl)
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>        (nl_BE)
+##9Marco (LinuxCobra/Cobraxas)                                (de)
 ##9Mihail Barer (Necromonger) <>                              (ru, jp)
 ##9Nina O'Reilly (Reid) <reidyaro gmail com>                  (fr)
 ##9Petr Varkoček (pitriss) <>                                 (cs)
