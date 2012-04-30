@@ -142,3 +142,43 @@ void GraphicsManager::logString(const char *format, int num)
         logger->log(format, str);
 #endif
 }
+
+void GraphicsManager::setVideoMode()
+{
+    const int width = config.getIntValue("screenwidth");
+    const int height = config.getIntValue("screenheight");
+    const int bpp = 0;
+    const bool fullscreen = config.getBoolValue("screen");
+    const bool hwaccel = config.getBoolValue("hwaccel");
+    const bool enableResize = config.getBoolValue("enableresize");
+    const bool noFrame = config.getBoolValue("noframe");
+
+    // Try to set the desired video mode
+    if (!mainGraphics->setVideoMode(width, height, bpp,
+        fullscreen, hwaccel, enableResize, noFrame))
+    {
+        logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
+            width, height, bpp, SDL_GetError()));
+
+        const int oldWidth = config.getValueInt("oldscreenwidth", -1);
+        const int oldHeight = config.getValueInt("oldscreenheight", -1);
+        const int oldFullscreen = config.getValueInt("oldscreen", -1);
+        if (oldWidth != -1 && oldHeight != -1 && oldFullscreen != -1)
+        {
+            config.deleteKey("oldscreenwidth");
+            config.deleteKey("oldscreenheight");
+            config.deleteKey("oldscreen");
+
+            config.setValueInt("screenwidth", oldWidth);
+            config.setValueInt("screenheight", oldHeight);
+            config.setValue("screen", oldFullscreen == 1);
+            if (!mainGraphics->setVideoMode(oldWidth, oldHeight, bpp,
+                oldFullscreen, hwaccel, enableResize, noFrame))
+            {
+                logger->safeError(strprintf("Couldn't restore %dx%dx%d "
+                    "video mode: %s", oldWidth, oldHeight, bpp,
+                    SDL_GetError()));
+            }
+        }
+    }
+}

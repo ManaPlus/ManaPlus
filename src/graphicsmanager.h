@@ -43,6 +43,8 @@ class GraphicsManager
 
         void logString(const char *format, int num);
 
+        void setVideoMode();
+
     private:
         std::set<std::string> mExtensions;
 };
