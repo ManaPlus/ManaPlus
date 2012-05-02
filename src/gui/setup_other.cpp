@@ -226,6 +226,9 @@ Setup_Other::Setup_Other()
         "", "usefbo", this, "usefboEvent");
 #endif
 
+    new SetupItemIntTextField(_("Network delay between sub servers"),
+        "", "networksleep", this, "networksleepEvent", 0, 10000);
+
     new SetupItemCheckBox(_("Show background"), "", "showBackground",
         this, "showBackgroundEvent");
 

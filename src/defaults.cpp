@@ -253,6 +253,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "repeateInterval", SDL_DEFAULT_REPEAT_INTERVAL);
     AddDEF(configData, "compresstextures", false);
     AddDEF(configData, "rectangulartextures", true);
+    AddDEF(configData, "networksleep", 0);
     return configData;
 }
 

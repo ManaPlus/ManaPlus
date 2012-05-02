@@ -22,6 +22,7 @@
 
 #include "net/tmwa/network.h"
 
+#include "configuration.h"
 #include "logger.h"
 
 #include "net/messagehandler.h"
@@ -191,6 +192,9 @@ void Network::disconnect()
         // need call SDLNet_TCP_DelSocket?
         SDLNet_TCP_Close(mSocket);
         mSocket = nullptr;
+        int sleep = config.getIntValue("networksleep");
+        if (sleep > 0)
+            SDL_Delay(sleep);
     }
 }
 
