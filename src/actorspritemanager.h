@@ -226,17 +226,17 @@ class ActorSpriteManager: public ConfigListener
 
         void removeAttackMob(const std::string &name);
 
+        void removePickupItem(const std::string &name);
+
         void addPriorityAttackMob(std::string name);
 
         void addAttackMob(std::string name);
 
         void addIgnoreAttackMob(std::string name);
 
-        std::list<std::string> getPriorityAttackMobs() const
-        { return mPriorityAttackMobs; }
+        void addPickupItem(std::string name);
 
-        std::list<std::string> getAttackMobs() const
-        { return mAttackMobs; }
+        void addIgnorePickupItem(std::string name);
 
         void setPriorityAttackMobs(std::list<std::string> mobs)
         { mPriorityAttackMobs = mobs; }
@@ -250,36 +250,23 @@ class ActorSpriteManager: public ConfigListener
         int getAttackMobsSize() const
         { return static_cast<int>(mAttackMobs.size()); }
 
-        std::list<std::string> getIgnoreAttackMobs() const
-        { return mIgnoreAttackMobs; }
+        int getPickupItemsSize() const
+        { return static_cast<int>(mPickupItems.size()); }
 
-        std::set<std::string> getAttackMobsSet() const
-        { return mAttackMobsSet; }
+#define defList(list1, mob) \
+        bool isIn##list1##List(const std::string &name) const\
+        { return m##list1##mob##Set.find(name) != m##list1##mob##Set.end(); }\
+        void rebuild##list1##mob();\
+        std::set<std::string> get##list1##mob##Set() const\
+        { return m##list1##mob##Set; }\
+        std::list<std::string> get##list1##mob() const\
+        { return m##list1##mob; }
 
-        std::set<std::string> getPriorityAttackMobsSet() const
-        { return mPriorityAttackMobsSet; }
-
-        std::set<std::string> getIgnoreAttackMobsSet() const
-        { return mIgnoreAttackMobsSet; }
-
-        void rebuildPriorityAttackMobs();
-
-        void rebuildAttackMobs();
-
-        bool isInAttackList(const std::string &name) const
-        { return mAttackMobsSet.find(name) != mAttackMobsSet.end(); }
-
-        bool isInPriorityAttackList(const std::string &name)
-        {
-            return mPriorityAttackMobsSet.find(name)
-                != mPriorityAttackMobsSet.end();
-        }
-
-        bool isInIgnoreAttackList(const std::string &name)
-        {
-            return mIgnoreAttackMobsSet.find(name)
-                != mIgnoreAttackMobsSet.end();
-        }
+        defList(Attack, Mobs)
+        defList(PriorityAttack, Mobs)
+        defList(IgnoreAttack, Mobs)
+        defList(Pickup, Items)
+        defList(IgnorePickup, Items)
 
         std::map<std::string, int> getAttackMobsMap() const
         { return mAttackMobsMap; }
@@ -291,7 +278,11 @@ class ActorSpriteManager: public ConfigListener
 
         int getPriorityAttackMobIndex(std::string name);
 
+        int getPickupItemIndex(std::string name);
+
         int getIndexByName(std::string name, std::map<std::string, int> &map);
+
+        bool checkForPickup(FloorItem *item);
 
     protected:
         bool validateBeing(Being *aroundBeing, Being* being,
@@ -317,14 +308,21 @@ class ActorSpriteManager: public ConfigListener
         bool mCycleMonsters;
         bool mExtMouseTargeting;
 
-        std::list<std::string> mPriorityAttackMobs;
-        std::list<std::string> mAttackMobs;
-        std::list<std::string> mIgnoreAttackMobs;
-        std::set<std::string> mPriorityAttackMobsSet;
-        std::set<std::string> mAttackMobsSet;
-        std::set<std::string> mIgnoreAttackMobsSet;
-        std::map<std::string, int> mPriorityAttackMobsMap;
-        std::map<std::string, int> mAttackMobsMap;
+#define defVarsP(mob) \
+        std::list<std::string> mPriority##mob;\
+        std::set<std::string> mPriority##mob##Set;\
+        std::map<std::string, int> mPriority##mob##Map;
+
+#define defVars(mob) \
+        std::list<std::string> m##mob;\
+        std::set<std::string> m##mob##Set;\
+        std::map<std::string, int> m##mob##Map;\
+        std::list<std::string> mIgnore##mob;\
+        std::set<std::string> mIgnore##mob##Set;
+
+        defVarsP(AttackMobs)
+        defVars(AttackMobs)
+        defVars(PickupItems)
 };
 
 extern ActorSpriteManager *actorSpriteManager;

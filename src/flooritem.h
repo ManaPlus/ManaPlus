@@ -87,6 +87,9 @@ class FloorItem : public ActorSprite
         void setShowMsg(bool n)
         { mShowMsg = n; }
 
+        void disableHightlight()
+        { mHighlight = false; }
+
     private:
         int mItemId;
         int mX, mY;

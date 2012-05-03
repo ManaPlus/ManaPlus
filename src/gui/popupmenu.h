@@ -137,8 +137,9 @@ class PopupMenu : public Popup, public LinkHandler
 
         void showSpellPopup(int x, int y, TextCommand *cmd);
 
-        void showAttackMonsterPopup(int x, int y, std::string name,
-                                    int type);
+        void showAttackMonsterPopup(int x, int y, std::string name, int type);
+
+        void showPickupItemPopup(int x, int y, std::string name);
 
         void showUndressPopup(int x, int y, Being *being, Item *item);
 

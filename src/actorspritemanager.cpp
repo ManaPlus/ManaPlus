@@ -40,6 +40,8 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#include "resources/iteminfo.h"
+
 #include "net/net.h"
 #include "net/playerhandler.h"
 
@@ -221,6 +223,8 @@ void ActorSpriteManager::setPlayer(LocalPlayer *player)
     mActors.insert(player);
     if (socialWindow)
         socialWindow->updateAttackFilter();
+    if (socialWindow)
+        socialWindow->updatePickupFilter();
 }
 
 Being *ActorSpriteManager::createBeing(int id, ActorSprite::Type type,
@@ -239,6 +243,8 @@ FloorItem *ActorSpriteManager::createItem(int id, int itemId, int x, int y,
     FloorItem *floorItem = new FloorItem(id, itemId, x, y,
         mMap, amount, color, subX, subY);
 
+    if (!checkForPickup(floorItem))
+        floorItem->disableHightlight();
     mActors.insert(floorItem);
     return floorItem;
 }
@@ -500,6 +506,7 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
         return false;
 
     bool finded(false);
+    bool allowAll = mPickupItemsSet.find("") != mPickupItemsSet.end();
     if (!serverBuggy)
     {
         for_actors
@@ -511,8 +518,30 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
                 && ((*it)->getTileX() >= x1 && (*it)->getTileX() <= x2)
                 && ((*it)->getTileY() >= y1 && (*it)->getTileY() <= y2))
             {
-                if (player_node->pickUp(static_cast<FloorItem*>(*it)))
-                    finded = true;
+                FloorItem *item = static_cast<FloorItem*>(*it);
+                const ItemInfo &info = item->getInfo();
+                std::string name;
+                if (serverVersion > 0)
+                    name = info.getName(item->getColor());
+                else
+                    name = info.getName();
+                if (allowAll)
+                {
+                    if (mIgnorePickupItemsSet.find(name)
+                        == mIgnorePickupItemsSet.end())
+                    {
+                        if (player_node->pickUp(item))
+                            finded = true;
+                    }
+                }
+                else
+                {
+                    if (mPickupItemsSet.find(name) != mPickupItemsSet.end())
+                    {
+                        if (player_node->pickUp(item))
+                            finded = true;
+                    }
+                }
             }
         }
     }
@@ -532,13 +561,41 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
                 FloorItem *tempItem = static_cast<FloorItem*>(*it);
                 if (tempItem->getPickupCount() < cnt)
                 {
-                    item = tempItem;
-                    cnt = item->getPickupCount();
-                    if (cnt == 0)
+                    const ItemInfo &info = tempItem->getInfo();
+                    std::string name;
+                    if (serverVersion > 0)
+                        name = info.getName(tempItem->getColor());
+                    else
+                        name = info.getName();
+                    if (allowAll)
                     {
-                        item->incrementPickup();
-                        player_node->pickUp(item);
-                        return true;
+                        if (mIgnorePickupItemsSet.find(name)
+                            == mIgnorePickupItemsSet.end())
+                        {
+                            item = tempItem;
+                            cnt = item->getPickupCount();
+                            if (cnt == 0)
+                            {
+                                item->incrementPickup();
+                                player_node->pickUp(item);
+                                return true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (mPickupItemsSet.find(name)
+                            != mPickupItemsSet.end())
+                        {
+                            item = tempItem;
+                            cnt = item->getPickupCount();
+                            if (cnt == 0)
+                            {
+                                item->incrementPickup();
+                                player_node->pickUp(item);
+                                return true;
+                            }
+                        }
                     }
                 }
             }
@@ -557,6 +614,7 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
     maxdist = maxdist * maxdist;
     FloorItem *closestItem = nullptr;
     int dist = 0;
+    bool allowAll = mPickupItemsSet.find("") != mPickupItemsSet.end();
 
     for_actors
     {
@@ -574,8 +632,29 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
                 || player_node->isReachable(item->getTileX(),
                 item->getTileY())))
             {
-                dist = d;
-                closestItem = item;
+                const ItemInfo &info = item->getInfo();
+                std::string name;
+                if (serverVersion > 0)
+                    name = info.getName(item->getColor());
+                else
+                    name = info.getName();
+                if (allowAll)
+                {
+                    if (mIgnorePickupItemsSet.find(name)
+                        == mIgnorePickupItemsSet.end())
+                    {
+                        dist = d;
+                        closestItem = item;
+                    }
+                }
+                else
+                {
+                    if (mPickupItemsSet.find(name) != mPickupItemsSet.end())
+                    {
+                        dist = d;
+                        closestItem = item;
+                    }
+                }
             }
         }
     }
@@ -1378,6 +1457,15 @@ void ActorSpriteManager::removeAttackMob(const std::string &name)
     rebuildPriorityAttackMobs();
 }
 
+void ActorSpriteManager::removePickupItem(const std::string &name)
+{
+    mPickupItems.remove(name);
+    mPickupItemsSet.erase(name);
+    mIgnorePickupItems.remove(name);
+    mIgnorePickupItemsSet.erase(name);
+    rebuildPickupItems();
+}
+
 #define addMobToList(name, mob) \
 {\
     int size = get##mob##sSize();\
@@ -1435,6 +1523,19 @@ void ActorSpriteManager::addIgnoreAttackMob(std::string name)
     rebuildPriorityAttackMobs();
 }
 
+void ActorSpriteManager::addPickupItem(std::string name)
+{
+    addMobToList(name, PickupItem);
+    rebuildPickupItems();
+}
+
+void ActorSpriteManager::addIgnorePickupItem(std::string name)
+{
+    mIgnorePickupItems.push_back(name);
+    mIgnorePickupItemsSet.insert(name);
+    rebuildPickupItems();
+}
+
 void ActorSpriteManager::rebuildPriorityAttackMobs()
 {
     rebuildMobsList(PriorityAttackMob);
@@ -1443,6 +1544,11 @@ void ActorSpriteManager::rebuildPriorityAttackMobs()
 void ActorSpriteManager::rebuildAttackMobs()
 {
     rebuildMobsList(AttackMob);
+}
+
+void ActorSpriteManager::rebuildPickupItems()
+{
+    rebuildMobsList(PickupItem);
 }
 
 int ActorSpriteManager::getIndexByName(std::string name,
@@ -1464,6 +1570,11 @@ int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
 int ActorSpriteManager::getAttackMobIndex(std::string name)
 {
     return getIndexByName(name, mAttackMobsMap);
+}
+
+int ActorSpriteManager::getPickupItemIndex(std::string name)
+{
+    return getIndexByName(name, mPickupItemsMap);
 }
 
 #define loadList(key, mob) \
@@ -1491,15 +1602,24 @@ void ActorSpriteManager::loadAttackList()
     loadList("attackPriorityMobs", PriorityAttackMob);
     loadList("attackMobs", AttackMob);
     loadList("ignoreAttackMobs", IgnoreAttackMob);
-
     if (!empty)
     {
         mAttackMobs.push_back("");
         mAttackMobsSet.insert("");
+        empty = false;
+    }
+
+    loadList("pickupItems", PickupItem);
+    loadList("ignorePickupItems", IgnorePickupItem);
+    if (!empty)
+    {
+        mPickupItems.push_back("");
+        mPickupItemsSet.insert("");
     }
 
     rebuildAttackMobs();
     rebuildPriorityAttackMobs();
+    rebuildPickupItems();
 }
 
 void ActorSpriteManager::storeAttackList()
@@ -1507,4 +1627,28 @@ void ActorSpriteManager::storeAttackList()
     serverConfig.setValue("attackPriorityMobs", packList(mPriorityAttackMobs));
     serverConfig.setValue("attackMobs", packList(mAttackMobs));
     serverConfig.setValue("ignoreAttackMobs", packList(mIgnoreAttackMobs));
+
+    serverConfig.setValue("pickupItems", packList(mPickupItems));
+    serverConfig.setValue("ignorePickupItems", packList(mIgnorePickupItems));
+}
+
+bool ActorSpriteManager::checkForPickup(FloorItem *item)
+{
+    const ItemInfo &info = item->getInfo();
+    std::string name;
+    if (serverVersion > 0)
+        name = info.getName(item->getColor());
+    else
+        name = info.getName();
+
+    if (mPickupItemsSet.find("") != mPickupItemsSet.end())
+    {
+        if (mIgnorePickupItemsSet.find(name) == mIgnorePickupItemsSet.end())
+            return true;
+    }
+    else if (mPickupItemsSet.find(name) != mPickupItemsSet.end())
+    {
+        return true;
+    }
+    return false;
 }

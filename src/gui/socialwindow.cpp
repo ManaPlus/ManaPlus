@@ -864,6 +864,58 @@ protected:
 };
 
 
+#define addAvatars(mob, str, type) \
+{\
+    ava = new Avatar(str);\
+    ava->setOnline(false);\
+    ava->setLevel(-1);\
+    ava->setType(MapItem::SEPARATOR);\
+    ava->setX(0);\
+    ava->setY(0);\
+    avatars->push_back(ava);\
+    mobs = actorSpriteManager->get##mob##s();\
+    i = mobs.begin();\
+    i_end = mobs.end();\
+    while (i != i_end)\
+    {\
+        std::string name;\
+        int level = -1;\
+        if (*i == "")\
+        {\
+            name = _("(default)");\
+            level = 0;\
+        }\
+        else\
+        {\
+            name = *i;\
+        }\
+        ava = new Avatar(name);\
+        ava->setOnline(true);\
+        ava->setLevel(level);\
+        ava->setType(MapItem::type);\
+        ava->setX(0);\
+        ava->setY(0);\
+        avatars->push_back(ava);\
+        ++ i;\
+    }\
+}
+
+#define updateAtkListStart() \
+    if (!socialWindow || !player_node || !actorSpriteManager)\
+        return;\
+    std::vector<Avatar*> *avatars = mBeings->getMembers();\
+    std::vector<Avatar*>::iterator ia = avatars->begin();\
+    while (ia != avatars->end())\
+    {\
+        delete *ia;\
+        ++ ia;\
+    }\
+    avatars->clear();\
+    Avatar *ava;\
+    std::list<std::string> mobs;\
+    std::list<std::string>::const_iterator i;\
+    std::list<std::string>::const_iterator i_end;
+
 class SocialAttackTab : public SocialTab
 {
 public:
@@ -900,130 +952,10 @@ public:
 
     void updateList()
     {
-        if (!socialWindow || !player_node || !actorSpriteManager)
-            return;
-
-        std::vector<Avatar*> *avatars = mBeings->getMembers();
-
-        std::list<std::string> mobs
-            = actorSpriteManager->getPriorityAttackMobs();
-
-        std::vector<Avatar*>::iterator ia = avatars->begin();
-
-        while (ia != avatars->end())
-        {
-            delete *ia;
-            ++ ia;
-        }
-
-        avatars->clear();
-        Avatar *ava = new Avatar(_("Priority mobs"));
-        ava->setOnline(false);
-        ava->setLevel(-1);
-        ava->setType(MapItem::SEPARATOR);
-        ava->setX(0);
-        ava->setY(0);
-        avatars->push_back(ava);
-
-        std::list<std::string>::const_iterator i = mobs.begin();
-        std::list<std::string>::const_iterator i_end = mobs.end();
-
-        while (i != i_end)
-        {
-            std::string name;
-            int level = -1;
-            if (*i == "")
-            {
-                name = _("(default)");
-                level = 0;
-            }
-            else
-            {
-                name = *i;
-            }
-            ava = new Avatar(name);
-            ava->setOnline(true);
-            ava->setLevel(level);
-            ava->setType(MapItem::PRIORITY);
-            ava->setX(0);
-            ava->setY(0);
-            avatars->push_back(ava);
-
-            ++ i;
-        }
-
-        ava = new Avatar(_("Attack mobs"));
-        ava->setOnline(false);
-        ava->setLevel(-1);
-        ava->setType(MapItem::SEPARATOR);
-        ava->setX(0);
-        ava->setY(0);
-        avatars->push_back(ava);
-
-        mobs = actorSpriteManager->getAttackMobs();
-        i = mobs.begin();
-        i_end = mobs.end();
-
-        while (i != i_end)
-        {
-            std::string name;
-            int level = -1;
-            if (*i == "")
-            {
-                name = _("(default)");
-                level = 0;
-            }
-            else
-            {
-                name = *i;
-            }
-            ava = new Avatar(name);
-            ava->setOnline(true);
-            ava->setLevel(level);
-            ava->setType(MapItem::ATTACK);
-            ava->setX(0);
-            ava->setY(0);
-            avatars->push_back(ava);
-
-            ++ i;
-        }
-
-        ava = new Avatar(_("Ignore mobs"));
-        ava->setOnline(false);
-        ava->setLevel(-1);
-        ava->setType(MapItem::SEPARATOR);
-        ava->setX(0);
-        ava->setY(0);
-        avatars->push_back(ava);
-
-        mobs = actorSpriteManager->getIgnoreAttackMobs();
-        i = mobs.begin();
-        i_end = mobs.end();
-
-        while (i != i_end)
-        {
-            std::string name;
-            int level = -1;
-            if (*i == "")
-            {
-                name = _("(default)");
-                level = 0;
-            }
-            else
-            {
-                name = *i;
-            }
-            ava = new Avatar(name);
-            ava->setOnline(false);
-            ava->setLevel(level);
-            ava->setType(MapItem::IGNORE_);
-            ava->setX(0);
-            ava->setY(0);
-            avatars->push_back(ava);
-
-            ++ i;
-        }
-
+        updateAtkListStart();
+        addAvatars(PriorityAttackMob, _("Priority mobs"), PRIORITY);
+        addAvatars(AttackMob, _("Attack mobs"), ATTACK);
+        addAvatars(IgnoreAttackMob, _("Ignore mobs"), IGNORE_);
     }
 
     void updateAvatar(std::string name A_UNUSED)
@@ -1036,7 +968,59 @@ public:
 
 private:
     BeingsListModal *mBeings;
+};
 
+class SocialPickupTab : public SocialTab
+{
+public:
+    SocialPickupTab()
+    {
+        mBeings = new BeingsListModal();
+
+        mList = new AvatarListBox(mBeings);
+        mScroll = new ScrollArea(mList);
+
+        mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
+        mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
+
+        setCaption(_("Pik"));
+    }
+
+    ~SocialPickupTab()
+    {
+        delete mList;
+        mList = nullptr;
+        delete mScroll;
+        mScroll = nullptr;
+        delete mBeings;
+        mBeings = nullptr;
+    }
+
+    void invite()
+    {
+    }
+
+    void leave()
+    {
+    }
+
+    void updateList()
+    {
+        updateAtkListStart();
+        addAvatars(PickupItem, _("Pickup items"), PICKUP);
+        addAvatars(IgnorePickupItem, _("Ignore items"), NOPICKUP);
+    }
+
+    void updateAvatar(std::string name A_UNUSED)
+    {
+    }
+
+    void resetDamage(std::string name A_UNUSED)
+    {
+    }
+
+private:
+    BeingsListModal *mBeings;
 };
 
 
@@ -1250,6 +1234,16 @@ SocialWindow::SocialWindow() :
         mAttackFilter = nullptr;
     }
 
+    if (config.getBoolValue("enablePickupFilter"))
+    {
+        mPickupFilter = new SocialPickupTab();
+        mTabs->addTab(mPickupFilter, mPickupFilter->mScroll);
+    }
+    else
+    {
+        mPickupFilter = nullptr;
+    }
+
     if (player_node && player_node->getParty())
         addTab(player_node->getParty());
 
@@ -1287,6 +1281,8 @@ SocialWindow::~SocialWindow()
     mNavigation = nullptr;
     delete mAttackFilter;
     mAttackFilter = nullptr;
+    delete mPickupFilter;
+    mPickupFilter = nullptr;
     delete mFriends;
     mFriends = nullptr;
 }
@@ -1716,6 +1712,12 @@ void SocialWindow::updateAttackFilter()
 {
     if (mAttackFilter)
         mAttackFilter->updateList();
+}
+
+void SocialWindow::updatePickupFilter()
+{
+    if (mPickupFilter)
+        mPickupFilter->updateList();
 }
 
 void SocialWindow::widgetResized(const gcn::Event &event)

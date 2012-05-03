@@ -704,6 +704,11 @@ void Viewport::showAttackMonsterPopup(std::string name, int type)
         name, type);
 }
 
+void Viewport::showPickupItemPopup(std::string name)
+{
+    mPopupMenu->showPickupItemPopup(getMouseX(), getMouseY(), name);
+}
+
 void Viewport::showUndressPopup(int x, int y, Being *being, Item *item)
 {
     mPopupMenu->showUndressPopup(x, y, being, item);

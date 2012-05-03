@@ -231,7 +231,9 @@ class MapItem
             ATTACK = 10,
             PRIORITY = 11,
             IGNORE_ = 12,
-            SEPARATOR = 13
+            PICKUP = 13,
+            NOPICKUP = 14,
+            SEPARATOR = 15
         };
 
         MapItem();

@@ -134,6 +134,9 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Enable attack filter"), "",
         "enableAttackFilter", this, "enableAttackFilterEvent");
 
+    new SetupItemCheckBox(_("Enable pickup filter"), "",
+        "enablePickupFilter", this, "enablePickupFilterEvent");
+
     new SetupItemCheckBox(_("Enable advert protocol"), "",
         "enableAdvert", this, "enableAdvertEvent");
 

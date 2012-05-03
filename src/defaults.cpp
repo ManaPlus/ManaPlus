@@ -199,6 +199,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "showExtMinimaps", false);
     AddDEF(configData, "hideChatInput", true);
     AddDEF(configData, "enableAttackFilter", true);
+    AddDEF(configData, "enablePickupFilter", true);
     AddDEF(configData, "securetrades", true);
     AddDEF(configData, "unsecureChars", "IO0@#$");
     AddDEF(configData, "currentTip", 0);

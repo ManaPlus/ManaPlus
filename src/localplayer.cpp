@@ -937,8 +937,11 @@ bool LocalPlayer::pickUp(FloorItem *item)
 
     if (dx * dx + dy * dy < dist)
     {
-        Net::getPlayerHandler()->pickUp(item);
-        mPickUpTarget = nullptr;
+        if (actorSpriteManager->checkForPickup(item))
+        {
+            Net::getPlayerHandler()->pickUp(item);
+            mPickUpTarget = nullptr;
+        }
     }
     else if (mPickUpType >= 4 && mPickUpType <= 6)
     {

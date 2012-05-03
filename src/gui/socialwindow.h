@@ -117,6 +117,8 @@ public:
 
     void updateAttackFilter();
 
+    void updatePickupFilter();
+
     void widgetResized(const gcn::Event &event);
 
 protected:
@@ -139,6 +141,7 @@ protected:
     PartyMap mParties;
 
     SocialTab *mAttackFilter;
+    SocialTab *mPickupFilter;
     SocialTab *mPlayers;
     SocialTab *mNavigation;
     SocialTab *mFriends;

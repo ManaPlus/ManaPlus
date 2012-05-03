@@ -534,6 +534,7 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     mFloorItemId = floorItem->getId();
     mX = x;
     mY = y;
+    mType = Being::FLOOR_ITEM;
     const ItemInfo &info = floorItem->getInfo();
     mBrowserBox->clearRows();
     std::string name;
@@ -543,9 +544,35 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
         name = info.getName(floorItem->getColor());
     else
         name = info.getName();
+    mNick = name;
 
     mBrowserBox->addRow(name);
-    mBrowserBox->addRow("pickup", _("Pick up"));
+
+    if (config.getBoolValue("enablePickupFilter"))
+    {
+        if (actorSpriteManager->isInPickupList(name)
+             && !actorSpriteManager->isInIgnorePickupList(""))
+        {
+            mBrowserBox->addRow("pickup", _("Pick up"));
+            mBrowserBox->addRow("##3---");
+        }
+        if (actorSpriteManager->isInPickupList(name)
+            || actorSpriteManager->isInIgnorePickupList(name))
+        {
+            mBrowserBox->addRow("remove pickup",
+                _("Remove from pickup list"));
+        }
+        else
+        {
+            mBrowserBox->addRow("add pickup", _("Add to pickup list"));
+            mBrowserBox->addRow("add pickup ignore",
+                _("Add to ignore list"));
+        }
+    }
+    else
+    {
+        mBrowserBox->addRow("pickup", _("Pick up"));
+    }
     mBrowserBox->addRow("chat", _("Add to chat"));
 
     mBrowserBox->addRow("##3---");
@@ -1390,18 +1417,6 @@ void PopupMenu::handleLink(const std::string &link,
             spellManager->save();
         }
     }
-    else if (link == "load old item shortcuts")
-    {
-        if (itemShortcutWindow)
-        {
-            int num = itemShortcutWindow->getTabIndex();
-            if (num >= 0 && num < SHORTCUT_TABS && itemShortcut[num])
-            {
-                itemShortcut[num]->load(true);
-                itemShortcut[num]->save();
-            }
-        }
-    }
     else if (link == "clear drops")
     {
         if (dropShortcut)
@@ -1526,6 +1541,33 @@ void PopupMenu::handleLink(const std::string &link,
             actorSpriteManager->addIgnoreAttackMob(being->getName());
             if (socialWindow)
                 socialWindow->updateAttackFilter();
+        }
+    }
+    else if (link == "remove pickup" && !mNick.empty())
+    {
+        if (actorSpriteManager)
+        {
+            actorSpriteManager->removePickupItem(mNick);
+            if (socialWindow)
+                socialWindow->updatePickupFilter();
+        }
+    }
+    else if (link == "add pickup" && !mNick.empty())
+    {
+        if (actorSpriteManager)
+        {
+            actorSpriteManager->addPickupItem(mNick);
+            if (socialWindow)
+                socialWindow->updatePickupFilter();
+        }
+    }
+    else if (link == "add pickup ignore" && !mNick.empty())
+    {
+        if (actorSpriteManager)
+        {
+            actorSpriteManager->addIgnorePickupItem(mNick);
+            if (socialWindow)
+                socialWindow->updatePickupFilter();
         }
     }
     else if (link == "attack moveup")
@@ -1681,6 +1723,31 @@ void PopupMenu::handleLink(const std::string &link,
                 socialWindow->updateAttackFilter();
         }
     }
+    else if (link == "pickup remove")
+    {
+        if (actorSpriteManager)
+        {
+            if (mNick.empty())
+            {
+                if (actorSpriteManager->isInPickupList(mNick))
+                {
+                    actorSpriteManager->removePickupItem(mNick);
+                    actorSpriteManager->addIgnorePickupItem(mNick);
+                }
+                else
+                {
+                    actorSpriteManager->removePickupItem(mNick);
+                    actorSpriteManager->addPickupItem(mNick);
+                }
+            }
+            else
+            {
+                actorSpriteManager->removePickupItem(mNick);
+            }
+            if (socialWindow)
+                socialWindow->updatePickupFilter();
+        }
+    }
     else if (link == "reset yellow")
     {
         if (player_node)
@@ -1814,6 +1881,7 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
     mWindow = parent;
     mX = x;
     mY = y;
+    mNick = "";
     mBrowserBox->clearRows();
 
     int cnt = item->getQuantity();
@@ -1884,6 +1952,28 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
             mBrowserBox->addRow("retrieve all", _("Retrieve all"));
         }
     }
+    if (config.getBoolValue("enablePickupFilter"))
+    {
+        const ItemInfo &info = item->getInfo();
+        std::string name;
+
+        if (serverVersion > 0)
+            name = info.getName(item->getColor());
+        else
+            name = info.getName();
+        mNick = name;
+        mBrowserBox->addRow("##3---");
+        if (actorSpriteManager->isInPickupList(name)
+            || actorSpriteManager->isInIgnorePickupList(name))
+        {
+            mBrowserBox->addRow("remove pickup", _("Remove from pickup list"));
+        }
+        else
+        {
+            mBrowserBox->addRow("add pickup", _("Add to pickup list"));
+            mBrowserBox->addRow("add pickup ignore", _("Add to ignore list"));
+        }
+    }
     mBrowserBox->addRow("chat", _("Add to chat"));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1913,9 +2003,6 @@ void PopupMenu::showItemPopup(int x, int y, int itemId, unsigned char color)
 
         mBrowserBox->addRow("use", _("Use"));
         mBrowserBox->addRow("##3---");
-        mBrowserBox->addRow("load old item shortcuts",
-            _("Load old item shortcuts"));
-        mBrowserBox->addRow("##3---");
         mBrowserBox->addRow("cancel", _("Cancel"));
 
         showPopup(x, y);
@@ -1937,6 +2024,7 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
         mItemId = 0;
         mItemColor = 1;
     }
+    mNick = "";
     mBrowserBox->clearRows();
 
     if (item)
@@ -1969,10 +2057,33 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
         if (InventoryWindow::isStorageActive())
             mBrowserBox->addRow("store", _("Store"));
         mBrowserBox->addRow("chat", _("Add to chat"));
-        mBrowserBox->addRow("##3---");
+
+        if (config.getBoolValue("enablePickupFilter"))
+        {
+            const ItemInfo &info = item->getInfo();
+            std::string name;
+
+            if (serverVersion > 0)
+                name = info.getName(item->getColor());
+            else
+                name = info.getName();
+            mNick = name;
+
+            mBrowserBox->addRow("##3---");
+            if (actorSpriteManager->isInPickupList(name)
+                || actorSpriteManager->isInIgnorePickupList(name))
+            {
+                mBrowserBox->addRow("remove pickup",
+                    _("Remove from pickup list"));
+            }
+            else
+            {
+                mBrowserBox->addRow("add pickup", _("Add to pickup list"));
+                mBrowserBox->addRow("add pickup ignore",
+                    _("Add to ignore list"));
+            }
+        }
     }
-    mBrowserBox->addRow("load old item shortcuts",
-        _("Load old item shortcuts"));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
 
@@ -1984,6 +2095,7 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
     mItem = item;
     mX = x;
     mY = y;
+    mNick = "";
     mBrowserBox->clearRows();
 
     if (item)
@@ -2016,8 +2128,33 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
         if (InventoryWindow::isStorageActive())
             mBrowserBox->addRow("store", _("Store"));
         mBrowserBox->addRow("chat", _("Add to chat"));
-        mBrowserBox->addRow("##3---");
+        if (config.getBoolValue("enablePickupFilter"))
+        {
+            const ItemInfo &info = item->getInfo();
+            std::string name;
+
+            if (serverVersion > 0)
+                name = info.getName(item->getColor());
+            else
+                name = info.getName();
+            mNick = name;
+
+            mBrowserBox->addRow("##3---");
+            if (actorSpriteManager->isInPickupList(name)
+                || actorSpriteManager->isInIgnorePickupList(name))
+            {
+                mBrowserBox->addRow("remove pickup",
+                    _("Remove from pickup list"));
+            }
+            else
+            {
+                mBrowserBox->addRow("add pickup", _("Add to pickup list"));
+                mBrowserBox->addRow("add pickup ignore",
+                    _("Add to ignore list"));
+            }
+        }
     }
+    mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("clear drops", _("Clear drop window"));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2130,7 +2267,6 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
                 mBrowserBox->addRow("attack moveup", _("Move up"));
             if (idx + 1 < size)
                 mBrowserBox->addRow("attack movedown", _("Move down"));
-            mBrowserBox->addRow("attack remove", _("Remove"));
             break;
         }
         case MapItem::PRIORITY:
@@ -2141,16 +2277,39 @@ void PopupMenu::showAttackMonsterPopup(int x, int y, std::string name,
                 mBrowserBox->addRow("priority moveup", _("Move up"));
             if (idx + 1 < size)
                 mBrowserBox->addRow("priority movedown", _("Move down"));
-            mBrowserBox->addRow("attack remove", _("Remove"));
             break;
         }
         case MapItem::IGNORE_:
-            mBrowserBox->addRow("attack remove", _("Remove"));
             break;
         default:
             break;
     }
 
+    mBrowserBox->addRow("attack remove", _("Remove"));
+    mBrowserBox->addRow("##3---");
+    mBrowserBox->addRow("cancel", _("Cancel"));
+
+    showPopup(x, y);
+}
+
+void PopupMenu::showPickupItemPopup(int x, int y, std::string name)
+{
+    if (!player_node || !actorSpriteManager)
+        return;
+
+    mNick = name;
+    mType = Being::FLOOR_ITEM;
+    mX = x;
+    mY = y;
+
+    mBrowserBox->clearRows();
+
+    if (name.empty())
+        mBrowserBox->addRow(_("(default)"));
+    else
+        mBrowserBox->addRow(name);
+
+    mBrowserBox->addRow("pickup remove", _("Remove"));
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
 

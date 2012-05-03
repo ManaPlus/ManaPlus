@@ -369,6 +369,18 @@ void AvatarListBox::mousePressed(gcn::MouseEvent &event)
                     model->getAvatarAt(selected)->getType());
                 break;
             }
+            case MapItem::PICKUP:
+            case MapItem::NOPICKUP:
+            {
+                std::string name;
+                if (model->getAvatarAt(selected)->getLevel() == 0)
+                    name = "";
+                else
+                    name = model->getAvatarAt(selected)->getName();
+
+                viewport->showPickupItemPopup(name);
+                break;
+            }
             default:
             {
                 Map *map = viewport->getMap();
