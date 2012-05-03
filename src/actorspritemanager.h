@@ -291,6 +291,8 @@ class ActorSpriteManager: public ConfigListener
 
         int getPriorityAttackMobIndex(std::string name);
 
+        int getIndexByName(std::string name, std::map<std::string, int> &map);
+
     protected:
         bool validateBeing(Being *aroundBeing, Being* being,
                            Being::Type type, Being* excluded = nullptr,

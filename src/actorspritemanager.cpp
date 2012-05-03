@@ -1378,55 +1378,53 @@ void ActorSpriteManager::removeAttackMob(const std::string &name)
     rebuildPriorityAttackMobs();
 }
 
+#define addMobToList(name, mob) \
+{\
+    int size = get##mob##sSize();\
+    if (size > 0)\
+    {\
+        int idx = get##mob##Index("");\
+        if (idx + 1 == size)\
+        {\
+            std::list<std::string>::iterator itr = m##mob##s.end();\
+            -- itr;\
+            m##mob##s.insert(itr, name);\
+        }\
+        else\
+        {\
+            m##mob##s.push_back(name);\
+        }\
+    }\
+    else\
+    {\
+        m##mob##s.push_back(name);\
+    }\
+    m##mob##sSet.insert(name);\
+    rebuild##mob##s();\
+}
+
+#define rebuildMobsList(mob) \
+{\
+    m##mob##sMap.clear();\
+    std::list<std::string>::const_iterator i = m##mob##s.begin();\
+    int cnt = 0;\
+    while (i != m##mob##s.end())\
+    {\
+        m##mob##sMap[*i] = cnt;\
+        ++ i;\
+        ++ cnt;\
+    }\
+}
+
 void ActorSpriteManager::addAttackMob(std::string name)
 {
-    int size = getAttackMobsSize();
-    if (size > 0)
-    {
-        int idx = getAttackMobIndex("");
-        if (idx + 1 == size)
-        {
-            std::list<std::string>::iterator itr = mAttackMobs.end();
-            -- itr;
-            mAttackMobs.insert(itr, name);
-        }
-        else
-        {
-            mAttackMobs.push_back(name);
-        }
-    }
-    else
-    {
-        mAttackMobs.push_back(name);
-    }
-    mAttackMobsSet.insert(name);
-    rebuildAttackMobs();
+    addMobToList(name, AttackMob);
     rebuildPriorityAttackMobs();
 }
 
 void ActorSpriteManager::addPriorityAttackMob(std::string name)
 {
-    int size = getPriorityAttackMobsSize();
-    if (size > 0)
-    {
-        int idx = getPriorityAttackMobIndex("");
-        if (idx + 1 == size)
-        {
-            std::list<std::string>::iterator itr = mPriorityAttackMobs.end();
-            -- itr;
-            mPriorityAttackMobs.insert(itr, name);
-        }
-        else
-        {
-            mPriorityAttackMobs.push_back(name);
-        }
-    }
-    else
-    {
-        mPriorityAttackMobs.push_back(name);
-    }
-    mPriorityAttackMobsSet.insert(name);
-    rebuildPriorityAttackMobs();
+    addMobToList(name, PriorityAttackMob);
 }
 
 void ActorSpriteManager::addIgnoreAttackMob(std::string name)
@@ -1439,88 +1437,60 @@ void ActorSpriteManager::addIgnoreAttackMob(std::string name)
 
 void ActorSpriteManager::rebuildPriorityAttackMobs()
 {
-    mPriorityAttackMobsMap.clear();
-    std::list<std::string>::const_iterator i = mPriorityAttackMobs.begin();
-    int cnt = 0;
-    while (i != mPriorityAttackMobs.end())
-    {
-        mPriorityAttackMobsMap[*i] = cnt;
-        ++ i;
-        ++ cnt;
-    }
+    rebuildMobsList(PriorityAttackMob);
 }
 
 void ActorSpriteManager::rebuildAttackMobs()
 {
-    mAttackMobsMap.clear();
-    std::list<std::string>::const_iterator i = mAttackMobs.begin();
-    int cnt = 0;
-    while (i != mAttackMobs.end())
-    {
-        mAttackMobsMap[*i] = cnt;
-        ++ i;
-        ++ cnt;
-    }
+    rebuildMobsList(AttackMob);
+}
+
+int ActorSpriteManager::getIndexByName(std::string name,
+                                       std::map<std::string, int> &map)
+{
+    std::map<std::string, int>::const_iterator
+        i = map.find(name);
+    if (i == map.end())
+        return -1;
+
+    return (*i).second;
 }
 
 int ActorSpriteManager::getPriorityAttackMobIndex(std::string name)
 {
-    std::map<std::string, int>::const_iterator
-        i = mPriorityAttackMobsMap.find(name);
-    if (i == mPriorityAttackMobsMap.end())
-        return -1;
-
-    return (*i).second;
+    return getIndexByName(name, mPriorityAttackMobsMap);
 }
 
 int ActorSpriteManager::getAttackMobIndex(std::string name)
 {
-    std::map<std::string, int>::const_iterator i = mAttackMobsMap.find(name);
-    if (i == mAttackMobsMap.end())
-        return -1;
+    return getIndexByName(name, mAttackMobsMap);
+}
 
-    return (*i).second;
+#define loadList(key, mob) \
+{\
+    list = unpackList(serverConfig.getValue(key, ""));\
+    i = list.begin();\
+    i_end = list.end();\
+    while (i != i_end)\
+    {\
+        if (*i == "")\
+            empty = true;\
+        m##mob##s.push_back(*i);\
+        m##mob##sSet.insert(*i);\
+        ++ i;\
+    }\
 }
 
 void ActorSpriteManager::loadAttackList()
 {
     bool empty = false;
-    std::list<std::string> list = unpackList(
-        serverConfig.getValue("attackPriorityMobs", ""));
-    std::list<std::string>::const_iterator i = list.begin();
-    std::list<std::string>::const_iterator i_end = list.end();
-    while (i != i_end)
-    {
-        if (*i == "")
-            empty = true;
-        mPriorityAttackMobs.push_back(*i);
-        mPriorityAttackMobsSet.insert(*i);
-        ++ i;
-    }
+    std::list<std::string> list;
+    std::list<std::string>::const_iterator i;
+    std::list<std::string>::const_iterator i_end;
 
-    list = unpackList(serverConfig.getValue("attackMobs", ""));
-    i = list.begin();
-    i_end = list.end();
-    while (i != i_end)
-    {
-        if (*i == "")
-            empty = true;
-        mAttackMobs.push_back(*i);
-        mAttackMobsSet.insert(*i);
-        ++ i;
-    }
-
-    list = unpackList(serverConfig.getValue("ignoreAttackMobs", ""));
-    i = list.begin();
-    i_end = list.end();
-    while (i != i_end)
-    {
-        if (*i == "")
-            empty = true;
-        mIgnoreAttackMobs.push_back(*i);
-        mIgnoreAttackMobsSet.insert(*i);
-        ++ i;
-    }
+    loadList("attackPriorityMobs", PriorityAttackMob);
+    loadList("attackMobs", AttackMob);
+    loadList("ignoreAttackMobs", IgnoreAttackMob);
 
     if (!empty)
     {
