@@ -1606,8 +1606,8 @@ void ActorSpriteManager::loadAttackList()
     {
         mAttackMobs.push_back("");
         mAttackMobsSet.insert("");
-        empty = false;
     }
+    empty = false;
 
     loadList("pickupItems", PickupItem);
     loadList("ignorePickupItems", IgnorePickupItem);
