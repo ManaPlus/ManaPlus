@@ -81,7 +81,7 @@ bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
     return setOpenGLMode();
 }
 
-static inline void drawQuad(Image *image,
+static inline void drawQuad(const Image *image,
                             int srcX, int srcY, int dstX, int dstY,
                             int width, int height)
 {
@@ -205,7 +205,7 @@ static inline void drawRescaledQuad(Image *image,
 }
 
 
-bool OpenGLGraphics::drawImage(Image *image, int srcX, int srcY,
+bool OpenGLGraphics::drawImage(const Image *image, int srcX, int srcY,
                                int dstX, int dstY,
                                int width, int height, bool useColor)
 {
@@ -308,7 +308,8 @@ bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return true;
 }
 
-void OpenGLGraphics::drawImagePattern(Image *image, int x, int y, int w, int h)
+void OpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
+                                      int w, int h)
 {
     if (!image)
         return;
@@ -592,7 +593,8 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
                static_cast<GLubyte>(mColor.a));
 }
 
-void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert, Image *image)
+void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
+                                       const Image *image)
 {
     if (!image)
         return;

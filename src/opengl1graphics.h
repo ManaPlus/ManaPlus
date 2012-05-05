@@ -53,7 +53,7 @@ class OpenGL1Graphics : public Graphics
         bool setVideoMode(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);
 
-        bool drawImage(Image *image,
+        bool drawImage(const Image *image,
                        int srcX, int srcY,
                        int dstX, int dstY,
                        int width, int height,
@@ -77,7 +77,7 @@ class OpenGL1Graphics : public Graphics
                                int desiredWidth, int desiredHeight,
                                bool useColor, bool smooth);
 
-        void drawImagePattern(Image *image,
+        void drawImagePattern(const Image *image,
                               int x, int y,
                               int w, int h);
 

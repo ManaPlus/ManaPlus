@@ -351,7 +351,7 @@ int Graphics::getHeight() const
     return mHeight;
 }
 
-bool Graphics::drawImage(Image *image, int x, int y)
+bool Graphics::drawImage(const Image *image, int x, int y)
 {
     if (image)
     {
@@ -408,7 +408,7 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return returnValue;
 }
 
-bool Graphics::drawImage(Image *image, int srcX, int srcY, int dstX, int dstY,
+bool Graphics::drawImage(const Image *image, int srcX, int srcY, int dstX, int dstY,
                          int width, int height, bool)
 {
     // Check that preconditions for blitting are met.
@@ -442,7 +442,7 @@ bool Graphics::drawImage(Image *image, int srcX, int srcY, int dstX, int dstY,
     }
 }
 
-void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)
+void Graphics::drawImagePattern(const Image *image, int x, int y, int w, int h)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image)
@@ -639,7 +639,7 @@ void Graphics::drawImageRect2(GraphicsVertexes* vert, const ImageRect &imgRect)
     }
 }
 
-void Graphics::drawImagePattern2(GraphicsVertexes *vert, Image *img)
+void Graphics::drawImagePattern2(GraphicsVertexes *vert, const Image *img)
 {
     // here not checking input parameters
 

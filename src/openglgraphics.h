@@ -55,7 +55,7 @@ class OpenGLGraphics : public Graphics
         bool setVideoMode(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);
 
-        bool drawImage(Image *image,
+        bool drawImage(const Image *image,
                        int srcX, int srcY,
                        int dstX, int dstY,
                        int width, int height,
@@ -79,7 +79,7 @@ class OpenGLGraphics : public Graphics
                                int desiredWidth, int desiredHeight,
                                bool useColor, bool smooth);
 
-        void drawImagePattern(Image *image,
+        void drawImagePattern(const Image *image,
                               int x, int y,
                               int w, int h);
 
@@ -97,7 +97,7 @@ class OpenGLGraphics : public Graphics
 
         void drawTile(ImageVertexes *vert);
 
-        void drawImagePattern2(GraphicsVertexes *vert, Image *image);
+        void drawImagePattern2(GraphicsVertexes *vert, const Image *image);
 
         void updateScreen();
 

@@ -115,7 +115,7 @@ class Graphics : public gcn::SDLGraphics
          * @return <code>true</code> if the image was blitted properly
          *         <code>false</code> otherwise.
          */
-        bool drawImage(Image *image, int x, int y);
+        bool drawImage(const Image *image, int x, int y);
 
         /**
          * Draws a resclaled version of the image
@@ -147,13 +147,13 @@ class Graphics : public gcn::SDLGraphics
          * @return <code>true</code> if the image was blitted properly
          *         <code>false</code> otherwise.
          */
-        virtual bool drawImage(Image *image,
+        virtual bool drawImage(const Image *image,
                                int srcX, int srcY,
                                int dstX, int dstY,
                                int width, int height,
-                               bool useColor = false);
+                               bool useColor);
 
-        virtual void drawImagePattern(Image *image,
+        virtual void drawImagePattern(const Image *image,
                                       int x, int y,
                                       int w, int h);
 
@@ -202,7 +202,8 @@ class Graphics : public gcn::SDLGraphics
         virtual void drawImageRect2(GraphicsVertexes* vert,
                                     const ImageRect &imgRect);
 
-        virtual void drawImagePattern2(GraphicsVertexes *vert, Image *img);
+        virtual void drawImagePattern2(GraphicsVertexes *vert,
+                                       const Image *img);
 
         bool calcWindow(GraphicsVertexes* vert,
                         int x, int y, int w, int h,
