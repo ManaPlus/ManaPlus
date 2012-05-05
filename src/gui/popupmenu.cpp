@@ -144,83 +144,12 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 mBrowserBox->addRow("heal", _("Heal"));
                 mBrowserBox->addRow("##3---");
 
-                switch (player_relations.getRelation(name))
-                {
-                    case PlayerRelation::NEUTRAL:
-                        mBrowserBox->addRow("friend", _("Be friend"));
-                        mBrowserBox->addRow("disregard", _("Disregard"));
-                        mBrowserBox->addRow("ignore", _("Ignore"));
-                        mBrowserBox->addRow("blacklist", _("Black list"));
-                        mBrowserBox->addRow("enemy", _("Set as enemy"));
-                        mBrowserBox->addRow("erase", _("Erase"));
-                        break;
-
-                    case PlayerRelation::FRIEND:
-                        mBrowserBox->addRow("disregard", _("Disregard"));
-                        mBrowserBox->addRow("ignore", _("Ignore"));
-                        mBrowserBox->addRow("blacklist", _("Black list"));
-                        mBrowserBox->addRow("enemy", _("Set as enemy"));
-                        mBrowserBox->addRow("erase", _("Erase"));
-                        break;
-
-                    case PlayerRelation::BLACKLISTED:
-                        mBrowserBox->addRow("unignore", _("Unignore"));
-                        mBrowserBox->addRow("disregard", _("Disregard"));
-                        mBrowserBox->addRow("ignore", _("Ignore"));
-                        mBrowserBox->addRow("enemy", _("Set as enemy"));
-                        mBrowserBox->addRow("erase", _("Erase"));
-                        break;
-
-                    case PlayerRelation::ENEMY2:
-                        mBrowserBox->addRow("unignore", _("Unignore"));
-                        mBrowserBox->addRow("disregard", _("Disregard"));
-                        mBrowserBox->addRow("ignore", _("Ignore"));
-                        mBrowserBox->addRow("blacklist", _("Black list"));
-                        mBrowserBox->addRow("erase", _("Erase"));
-                        break;
-
-                    case PlayerRelation::DISREGARDED:
-                        mBrowserBox->addRow("unignore", _("Unignore"));
-                        mBrowserBox->addRow("ignore", _("Completely ignore"));
-                        mBrowserBox->addRow("erase", _("Erase"));
-                        break;
-
-                    case PlayerRelation::IGNORED:
-                        mBrowserBox->addRow("unignore", _("Unignore"));
-                        mBrowserBox->addRow("erase", _("Erase"));
-                        break;
-
-                    case PlayerRelation::ERASED:
-                        mBrowserBox->addRow("unignore", _("Unignore"));
-                        mBrowserBox->addRow("disregard", _("Disregard"));
-                        mBrowserBox->addRow("ignore", _("Completely ignore"));
-                        break;
-
-                    default:
-                        break;
-                }
+                addPlayerRelation(name);
 
                 mBrowserBox->addRow("##3---");
-                mBrowserBox->addRow("follow", _("Follow"));
-                mBrowserBox->addRow("imitation", _("Imitation"));
+                addFollow();
 
-                if (player_node->isInParty())
-                {
-                    if (player_node->getParty())
-                    {
-                        if (player_node->getParty()->getName()
-                            != being->getPartyName())
-                        {
-                            mBrowserBox->addRow("party", _("Invite to party"));
-                        }
-                        else
-                        {
-                            mBrowserBox->addRow("kick party",
-                                _("Kick from party"));
-                        }
-                        mBrowserBox->addRow("##3---");
-                    }
-                }
+                addParty(being->getPartyName());
 
                 Guild *guild1 = being->getGuild();
                 Guild *guild2 = player_node->getGuild();
@@ -268,27 +197,8 @@ void PopupMenu::showPopup(int x, int y, Being *being)
                 }
                 mBrowserBox->addRow("nuke", _("Nuke"));
                 mBrowserBox->addRow("move", _("Move"));
-                mBrowserBox->addRow("items", _("Show Items"));
-                mBrowserBox->addRow("undress", _("Undress"));
-                mBrowserBox->addRow("addcomment", _("Add comment"));
-
-                if (player_relations.getDefault() & PlayerRelation::TRADE)
-                {
-                    mBrowserBox->addRow("##3---");
-                    if (being->isAdvanced())
-                    {
-                        if (being->isShopEnabled())
-                        {
-                            mBrowserBox->addRow("buy", _("Buy"));
-                            mBrowserBox->addRow("sell", _("Sell"));
-                        }
-                    }
-                    else
-                    {
-                        mBrowserBox->addRow("buy", _("Buy (?)"));
-                        mBrowserBox->addRow("sell", _("Sell (?)"));
-                    }
-                }
+                addPlayerMisc();
+                addBuySell(being);
             }
             break;
 
@@ -407,65 +317,10 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
     mBrowserBox->addRow("whisper", _("Whisper"));
     mBrowserBox->addRow("##3---");
 
-    switch (player_relations.getRelation(name))
-    {
-        case PlayerRelation::NEUTRAL:
-            mBrowserBox->addRow("friend", _("Be friend"));
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            mBrowserBox->addRow("ignore", _("Ignore"));
-            mBrowserBox->addRow("blacklist", _("Black list"));
-            mBrowserBox->addRow("enemy", _("Set as enemy"));
-            mBrowserBox->addRow("erase", _("Erase"));
-            break;
-
-        case PlayerRelation::FRIEND:
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            mBrowserBox->addRow("ignore", _("Ignore"));
-            mBrowserBox->addRow("blacklist", _("Black list"));
-            mBrowserBox->addRow("enemy", _("Set as enemy"));
-            mBrowserBox->addRow("erase", _("Erase"));
-            break;
-
-        case PlayerRelation::BLACKLISTED:
-            mBrowserBox->addRow("unignore", _("Unignore"));
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            mBrowserBox->addRow("ignore", _("Ignore"));
-            mBrowserBox->addRow("enemy", _("Set as enemy"));
-            mBrowserBox->addRow("erase", _("Erase"));
-            break;
-
-        case PlayerRelation::DISREGARDED:
-            mBrowserBox->addRow("unignore", _("Unignore"));
-            mBrowserBox->addRow("ignore", _("Completely ignore"));
-            mBrowserBox->addRow("erase", _("Erase"));
-            break;
-
-        case PlayerRelation::IGNORED:
-            mBrowserBox->addRow("unignore", _("Unignore"));
-            mBrowserBox->addRow("erase", _("Erase"));
-            break;
-
-        case PlayerRelation::ENEMY2:
-            mBrowserBox->addRow("unignore", _("Unignore"));
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            mBrowserBox->addRow("ignore", _("Ignore"));
-            mBrowserBox->addRow("blacklist", _("Black list"));
-            mBrowserBox->addRow("erase", _("Erase"));
-            break;
-
-        case PlayerRelation::ERASED:
-            mBrowserBox->addRow("unignore", _("Unignore"));
-            mBrowserBox->addRow("disregard", _("Disregard"));
-            mBrowserBox->addRow("ignore", _("Completely ignore"));
-            break;
-
-        default:
-            break;
-    }
+    addPlayerRelation(name);
 
     mBrowserBox->addRow("##3---");
-    mBrowserBox->addRow("follow", _("Follow"));
-    mBrowserBox->addRow("imitation", _("Imitation"));
+    addFollow();
     mBrowserBox->addRow("addcomment", _("Add comment"));
 
     if (player_node->isInParty())
@@ -511,15 +366,8 @@ void PopupMenu::showPlayerPopup(int x, int y, std::string nick)
         }
     }
 
-    mBrowserBox->addRow("##3---");
-    if (player_relations.getDefault() & PlayerRelation::TRADE)
-    {
-        mBrowserBox->addRow("buy", _("Buy (?)"));
-        mBrowserBox->addRow("sell", _("Sell (?)"));
-    }
-
+    addBuySellDefault();
     mBrowserBox->addRow("name", _("Add name to chat"));
-
     mBrowserBox->addRow("##3---");
     mBrowserBox->addRow("cancel", _("Cancel"));
 
@@ -551,23 +399,13 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     if (config.getBoolValue("enablePickupFilter"))
     {
         if (actorSpriteManager->isInPickupList(name)
-             && !actorSpriteManager->isInIgnorePickupList(""))
+            || (actorSpriteManager->isInPickupList("")
+            && !actorSpriteManager->isInIgnorePickupList(name)))
         {
             mBrowserBox->addRow("pickup", _("Pick up"));
             mBrowserBox->addRow("##3---");
         }
-        if (actorSpriteManager->isInPickupList(name)
-            || actorSpriteManager->isInIgnorePickupList(name))
-        {
-            mBrowserBox->addRow("remove pickup",
-                _("Remove from pickup list"));
-        }
-        else
-        {
-            mBrowserBox->addRow("add pickup", _("Add to pickup list"));
-            mBrowserBox->addRow("add pickup ignore",
-                _("Add to ignore list"));
-        }
+        addPickupFilter(name);
     }
     else
     {
@@ -654,7 +492,6 @@ void PopupMenu::showSpellPopup(int x, int y, TextCommand *cmd)
     mY = y;
 
     mBrowserBox->addRow(_("Spells"));
-    mBrowserBox->addRow("load old spells", _("Load old spells"));
     mBrowserBox->addRow("edit spell", _("Edit spell"));
 
     mBrowserBox->addRow("##3---");
@@ -724,88 +561,13 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             mBrowserBox->addRow("heal", _("Heal"));
             mBrowserBox->addRow("##3---");
 
-            switch (player_relations.getRelation(name))
-            {
-                case PlayerRelation::NEUTRAL:
-                    mBrowserBox->addRow("friend", _("Be friend"));
-                    mBrowserBox->addRow("disregard", _("Disregard"));
-                    mBrowserBox->addRow("ignore", _("Ignore"));
-                    mBrowserBox->addRow("blacklist", _("Black list"));
-                    mBrowserBox->addRow("enemy", _("Set as enemy"));
-                    mBrowserBox->addRow("erase", _("Erase"));
-                    break;
-
-                case PlayerRelation::FRIEND:
-                    mBrowserBox->addRow("disregard", _("Disregard"));
-                    mBrowserBox->addRow("ignore", _("Ignore"));
-                    mBrowserBox->addRow("blacklist", _("Black list"));
-                    mBrowserBox->addRow("enemy", _("Set as enemy"));
-                    mBrowserBox->addRow("erase", _("Erase"));
-                    break;
-
-                case PlayerRelation::BLACKLISTED:
-                    mBrowserBox->addRow("unignore", _("Unignore"));
-                    mBrowserBox->addRow("disregard", _("Disregard"));
-                    mBrowserBox->addRow("ignore", _("Ignore"));
-                    mBrowserBox->addRow("enemy", _("Set as enemy"));
-                    mBrowserBox->addRow("erase", _("Erase"));
-                    break;
-
-                case PlayerRelation::DISREGARDED:
-                    mBrowserBox->addRow("unignore", _("Unignore"));
-                    mBrowserBox->addRow("ignore", _("Completely ignore"));
-                    mBrowserBox->addRow("erase", _("Erase"));
-                    break;
-
-                case PlayerRelation::ENEMY2:
-                    mBrowserBox->addRow("unignore", _("Unignore"));
-                    mBrowserBox->addRow("disregard", _("Disregard"));
-                    mBrowserBox->addRow("ignore", _("Ignore"));
-                    mBrowserBox->addRow("blacklist", _("Black list"));
-                    mBrowserBox->addRow("erase", _("Erase"));
-                    break;
-
-                case PlayerRelation::IGNORED:
-                    mBrowserBox->addRow("unignore", _("Unignore"));
-                    mBrowserBox->addRow("erase", _("Erase"));
-                    break;
-
-                case PlayerRelation::ERASED:
-                    mBrowserBox->addRow("unignore", _("Unignore"));
-                    mBrowserBox->addRow("disregard", _("Disregard"));
-                    mBrowserBox->addRow("ignore", _("Completely ignore"));
-                    break;
-
-                default:
-                    break;
-            }
+            addPlayerRelation(name);
 
             mBrowserBox->addRow("##3---");
-            mBrowserBox->addRow("follow", _("Follow"));
-            mBrowserBox->addRow("imitation", _("Imitation"));
+            addFollow();
             mBrowserBox->addRow("move", _("Move"));
-            mBrowserBox->addRow("items", _("Show Items"));
-            mBrowserBox->addRow("undress", _("Undress"));
-            mBrowserBox->addRow("addcomment", _("Add comment"));
-
-            if (player_relations.getDefault() & PlayerRelation::TRADE)
-            {
-                mBrowserBox->addRow("##3---");
-                if (being->isAdvanced())
-                {
-                    if (being->isShopEnabled())
-                    {
-                        mBrowserBox->addRow("buy", _("Buy"));
-                        mBrowserBox->addRow("sell", _("Sell"));
-                    }
-                }
-                else
-                {
-                    mBrowserBox->addRow("buy", _("Buy (?)"));
-                    mBrowserBox->addRow("sell", _("Sell (?)"));
-                }
-            }
-
+            addPlayerMisc();
+            addBuySell(being);
             mBrowserBox->addRow("##3---");
 
             if (player_node->isInParty())
@@ -860,8 +622,7 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
             mNick = name;
             mType = Being::PLAYER;
 
-            mBrowserBox->addRow("follow", _("Follow"));
-            mBrowserBox->addRow("imitation", _("Imitation"));
+            addFollow();
 
             if (player_node->isInParty())
             {
@@ -873,16 +634,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
                         mBrowserBox->addRow("move", _("Move"));
                 }
             }
-            mBrowserBox->addRow("items", _("Show Items"));
-            mBrowserBox->addRow("undress", _("Undress"));
-            mBrowserBox->addRow("addcomment", _("Add comment"));
-
-            if (player_relations.getDefault() & PlayerRelation::TRADE)
-            {
-                mBrowserBox->addRow("##3---");
-                mBrowserBox->addRow("buy", _("Buy (?)"));
-                mBrowserBox->addRow("sell", _("Sell (?)"));
-            }
+            addPlayerMisc();
+            addBuySellDefault();
             mBrowserBox->addRow("##3---");
         }
     }
@@ -1408,14 +1161,6 @@ void PopupMenu::handleLink(const std::string &link,
         mDialog->setText(mMapItem->getComment());
         mDialog->setActionEventId("ok");
         mDialog->addActionListener(&mRenameListener);
-    }
-    else if (link == "load old spells")
-    {
-        if (spellManager)
-        {
-            spellManager->load(true);
-            spellManager->save();
-        }
     }
     else if (link == "clear drops")
     {
@@ -1963,16 +1708,7 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
             name = info.getName();
         mNick = name;
         mBrowserBox->addRow("##3---");
-        if (actorSpriteManager->isInPickupList(name)
-            || actorSpriteManager->isInIgnorePickupList(name))
-        {
-            mBrowserBox->addRow("remove pickup", _("Remove from pickup list"));
-        }
-        else
-        {
-            mBrowserBox->addRow("add pickup", _("Add to pickup list"));
-            mBrowserBox->addRow("add pickup ignore", _("Add to ignore list"));
-        }
+        addPickupFilter(name);
     }
     mBrowserBox->addRow("chat", _("Add to chat"));
     mBrowserBox->addRow("##3---");
@@ -2070,18 +1806,7 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
             mNick = name;
 
             mBrowserBox->addRow("##3---");
-            if (actorSpriteManager->isInPickupList(name)
-                || actorSpriteManager->isInIgnorePickupList(name))
-            {
-                mBrowserBox->addRow("remove pickup",
-                    _("Remove from pickup list"));
-            }
-            else
-            {
-                mBrowserBox->addRow("add pickup", _("Add to pickup list"));
-                mBrowserBox->addRow("add pickup ignore",
-                    _("Add to ignore list"));
-            }
+            addPickupFilter(name);
         }
     }
     mBrowserBox->addRow("##3---");
@@ -2140,18 +1865,7 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
             mNick = name;
 
             mBrowserBox->addRow("##3---");
-            if (actorSpriteManager->isInPickupList(name)
-                || actorSpriteManager->isInIgnorePickupList(name))
-            {
-                mBrowserBox->addRow("remove pickup",
-                    _("Remove from pickup list"));
-            }
-            else
-            {
-                mBrowserBox->addRow("add pickup", _("Add to pickup list"));
-                mBrowserBox->addRow("add pickup ignore",
-                    _("Add to ignore list"));
-            }
+            addPickupFilter(name);
         }
     }
     mBrowserBox->addRow("##3---");
@@ -2349,6 +2063,140 @@ void PopupMenu::showPopup(int x, int y)
     setPosition(x, y);
     setVisible(true);
     requestMoveToTop();
+}
+
+void PopupMenu::addPlayerRelation(std::string name)
+{
+    switch (player_relations.getRelation(name))
+    {
+        case PlayerRelation::NEUTRAL:
+            mBrowserBox->addRow("friend", _("Be friend"));
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::FRIEND:
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::BLACKLISTED:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("enemy", _("Set as enemy"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::DISREGARDED:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("ignore", _("Completely ignore"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::IGNORED:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::ENEMY2:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Ignore"));
+            mBrowserBox->addRow("blacklist", _("Black list"));
+            mBrowserBox->addRow("erase", _("Erase"));
+            break;
+
+        case PlayerRelation::ERASED:
+            mBrowserBox->addRow("unignore", _("Unignore"));
+            mBrowserBox->addRow("disregard", _("Disregard"));
+            mBrowserBox->addRow("ignore", _("Completely ignore"));
+            break;
+
+        default:
+            break;
+    }
+}
+
+void PopupMenu::addFollow()
+{
+    mBrowserBox->addRow("follow", _("Follow"));
+    mBrowserBox->addRow("imitation", _("Imitation"));
+}
+
+void PopupMenu::addBuySell(const Being *being)
+{
+    if (player_relations.getDefault() & PlayerRelation::TRADE)
+    {
+        mBrowserBox->addRow("##3---");
+        if (being->isAdvanced())
+        {
+            if (being->isShopEnabled())
+            {
+                mBrowserBox->addRow("buy", _("Buy"));
+                mBrowserBox->addRow("sell", _("Sell"));
+            }
+        }
+        else
+        {
+            mBrowserBox->addRow("buy", _("Buy (?)"));
+            mBrowserBox->addRow("sell", _("Sell (?)"));
+        }
+    }
+}
+
+void PopupMenu::addBuySellDefault()
+{
+    if (player_relations.getDefault() & PlayerRelation::TRADE)
+    {
+        mBrowserBox->addRow("##3---");
+        mBrowserBox->addRow("buy", _("Buy (?)"));
+        mBrowserBox->addRow("sell", _("Sell (?)"));
+    }
+}
+
+void PopupMenu::addParty(const std::string partyName)
+{
+    if (player_node->isInParty())
+    {
+        if (player_node->getParty())
+        {
+            if (player_node->getParty()->getName() != partyName)
+                mBrowserBox->addRow("party", _("Invite to party"));
+            else
+                mBrowserBox->addRow("kick party", _("Kick from party"));
+            mBrowserBox->addRow("##3---");
+        }
+    }
+}
+
+void PopupMenu::addPlayerMisc()
+{
+    mBrowserBox->addRow("items", _("Show Items"));
+    mBrowserBox->addRow("undress", _("Undress"));
+    mBrowserBox->addRow("addcomment", _("Add comment"));
+}
+
+void PopupMenu::addPickupFilter(const std::string name)
+{
+    if (actorSpriteManager->isInPickupList(name)
+        || actorSpriteManager->isInIgnorePickupList(name))
+    {
+        mBrowserBox->addRow("remove pickup",
+            _("Remove from pickup list"));
+    }
+    else
+    {
+        mBrowserBox->addRow("add pickup", _("Add to pickup list"));
+        mBrowserBox->addRow("add pickup ignore",
+            _("Add to ignore list"));
+    }
 }
 
 RenameListener::RenameListener() :

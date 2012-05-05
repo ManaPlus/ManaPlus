@@ -160,6 +160,20 @@ class PopupMenu : public Popup, public LinkHandler
                         gcn::MouseEvent *event A_UNUSED);
 
     private:
+        void addPlayerRelation(std::string name);
+
+        void addFollow();
+
+        void addBuySell(const Being *being);
+
+        void addParty(const std::string partyName);
+
+        void addBuySellDefault();
+
+        void addPlayerMisc();
+
+        void addPickupFilter(const std::string name);
+
         BrowserBox* mBrowserBox;
 
         int mBeingId;
