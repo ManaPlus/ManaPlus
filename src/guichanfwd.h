@@ -53,7 +53,6 @@ namespace gcn
     class ImageButton;
     class InputEvent;
     class ImageFont;
-    class ImageLoader;
     class Input;
     class Key;
     class KeyEvent;

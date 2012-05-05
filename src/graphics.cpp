@@ -30,8 +30,6 @@
 #include "logger.h"
 
 #include "resources/image.h"
-#include "resources/imageloader.h"
-
 #include "utils/stringutils.h"
 
 #include <guichan/sdl/sdlpixel.hpp>
@@ -358,7 +356,7 @@ bool Graphics::drawImage(Image *image, int x, int y)
     if (image)
     {
         return drawImage(image, 0, 0, x, y,
-            image->mBounds.w, image->mBounds.h);
+            image->mBounds.w, image->mBounds.h, false);
     }
     else
     {
@@ -442,17 +440,6 @@ bool Graphics::drawImage(Image *image, int srcX, int srcY, int dstX, int dstY,
         return !(SDL_gfxBlitRGBA(image->mSDLSurface, &srcRect,
                                  mTarget, &dstRect) < 0);
     }
-}
-
-void Graphics::drawImage(gcn::Image const *image, int srcX, int srcY,
-                         int dstX, int dstY, int width, int height)
-{
-    ProxyImage const *srcImage =
-        dynamic_cast< ProxyImage const * >(image);
-    if (!srcImage)
-        return;
-    drawImage(srcImage->getImage(), srcX, srcY, dstX, dstY,
-              width, height, true);
 }
 
 void Graphics::drawImagePattern(Image *image, int x, int y, int w, int h)

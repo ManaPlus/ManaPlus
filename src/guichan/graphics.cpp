@@ -142,10 +142,9 @@ namespace gcn
         return mClipStack.top();
     }
 
-    void Graphics::drawImage(const Image* image, int dstX, int dstY)
+    void Graphics::drawImage(const Image* image A_UNUSED,
+                             int dstX A_UNUSED, int dstY A_UNUSED)
     {
-        drawImage(image, 0, 0, dstX, dstY,
-            image->getWidth(), image->getHeight());
     }
 
     void Graphics::setFont(Font* font)

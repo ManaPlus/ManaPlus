@@ -411,8 +411,6 @@ SET(SRCS
     resources/emotedb.h
     resources/image.cpp
     resources/image.h
-    resources/imageloader.cpp
-    resources/imageloader.h
     resources/imageset.h
     resources/imageset.cpp
     resources/imagewriter.cpp

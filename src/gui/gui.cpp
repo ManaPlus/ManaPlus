@@ -42,7 +42,6 @@
 
 #include "resources/image.h"
 #include "resources/imageset.h"
-#include "resources/imageloader.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/langs.h"
@@ -88,10 +87,6 @@ Gui::Gui(Graphics *graphics):
     logger->log1("Initializing GUI...");
     // Set graphics
     setGraphics(graphics);
-
-    // Set image loader
-    static ImageLoader imageLoader;
-    gcn::Image::setImageLoader(&imageLoader);
 
     // Set input
     guiInput = new SDLInput;

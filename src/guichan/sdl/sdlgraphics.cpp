@@ -129,92 +129,18 @@ namespace gcn
         return mTarget;
     }
 
-    void SDLGraphics::drawImage(const Image* image,
-                                int srcX,
-                                int srcY,
-                                int dstX,
-                                int dstY,
-                                int width,
-                                int height)
+    void SDLGraphics::drawImage(const Image* image A_UNUSED,
+                                int srcX A_UNUSED,
+                                int srcY A_UNUSED,
+                                int dstX A_UNUSED,
+                                int dstY A_UNUSED,
+                                int width A_UNUSED,
+                                int height A_UNUSED)
     {
-        if (mClipStack.empty())
-        {
-            throw GCN_EXCEPTION("Clip stack is empty, perhaps you called a "
-                "draw funtion outside of _beginDraw() and _endDraw()?");
-        }
-
-        const ClipRectangle& top = mClipStack.top();
-
-        SDL_Rect src;
-        SDL_Rect dst;
-        src.x = srcX;
-        src.y = srcY;
-        src.w = width;
-        src.h = height;
-        dst.x = dstX + top.xOffset;
-        dst.y = dstY + top.yOffset;
-
-        const SDLImage* srcImage = dynamic_cast<const SDLImage*>(image);
-
-        if (!srcImage)
-        {
-            throw GCN_EXCEPTION("Trying to draw an image of unknown format,"
-                " must be an SDLImage.");
-        }
-
-        SDL_BlitSurface(srcImage->getSurface(), &src, mTarget, &dst);
     }
 
-    void SDLGraphics::fillRectangle(const Rectangle& rectangle)
+    void SDLGraphics::fillRectangle(const Rectangle& rectangle A_UNUSED)
     {
-        if (mClipStack.empty())
-        {
-            throw GCN_EXCEPTION("Clip stack is empty, perhaps you called a "
-                "draw funtion outside of _beginDraw() and _endDraw()?");
-        }
-
-        const ClipRectangle& top = mClipStack.top();
-
-        Rectangle area = rectangle;
-        area.x += top.xOffset;
-        area.y += top.yOffset;
-
-        if (!area.isIntersecting(top))
-            return;
-
-        if (mAlpha)
-        {
-            int x1 = area.x > top.x ? area.x : top.x;
-            int y1 = area.y > top.y ? area.y : top.y;
-            int x2 = area.x + area.width < top.x + top.width ?
-                area.x + area.width : top.x + top.width;
-            int y2 = area.y + area.height < top.y + top.height ?
-                area.y + area.height : top.y + top.height;
-            int x, y;
-
-            SDL_LockSurface(mTarget);
-            for (y = y1; y < y2; y++)
-            {
-                for (x = x1; x < x2; x++)
-                    SDLputPixelAlpha(mTarget, x, y, mColor);
-            }
-            SDL_UnlockSurface(mTarget);
-        }
-        else
-        {
-            SDL_Rect rect;
-            rect.x = area.x;
-            rect.y = area.y;
-            rect.w = area.width;
-            rect.h = area.height;
-
-            Uint32 color = SDL_MapRGBA(mTarget->format,
-                                       mColor.r,
-                                       mColor.g,
-                                       mColor.b,
-                                       mColor.a);
-            SDL_FillRect(mTarget, &rect, color);
-        }
     }
 
     void SDLGraphics::drawPoint(int x, int y)
