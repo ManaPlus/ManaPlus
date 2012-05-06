@@ -1018,7 +1018,7 @@ int Client::gameExec()
                 case STATE_CHOOSE_SERVER:
                     logger->log1("State: CHOOSE SERVER");
 
-                    loginData.clear();
+                    loginData.clearUpdateHost();
                     serverVersion = 0;
 
                     // Allow changing this using a server choice dialog

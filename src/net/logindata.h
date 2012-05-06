@@ -86,6 +86,13 @@ class LoginData
             lastLogin.clear();
             resetCharacterSlots();
         }
+
+        void clearUpdateHost()
+        {
+            updateHost.clear();
+            updateHosts.clear();
+        }
+
         /**
          * Initialize character slots to 3 for TmwAthena compatibility
          */
