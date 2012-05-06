@@ -851,20 +851,6 @@ void PopupMenu::handleLink(const std::string &link,
     else if (link == "look")
     {
     }
-    else if (link == "use" && mItem)
-    {
-        if (mItem->isEquipment())
-        {
-            if (mItem->isEquipped())
-                Net::getInventoryHandler()->unequipItem(mItem);
-            else
-                Net::getInventoryHandler()->equipItem(mItem);
-        }
-        else
-        {
-            Net::getInventoryHandler()->useItem(mItem);
-        }
-    }
     else if (link == "use" && mItemId)
     {
         if (mItemId < SPELL_MIN_ID)
@@ -1623,6 +1609,8 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
         return;
 
     mItem = item;
+    mItemId = item->getId();
+    mItemColor = item->getColor();
     mWindow = parent;
     mX = x;
     mY = y;
@@ -1818,6 +1806,8 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
 void PopupMenu::showDropPopup(int x, int y, Item *item)
 {
     mItem = item;
+    mItemId = item->getId();
+    mItemColor = item->getColor();
     mX = x;
     mY = y;
     mNick = "";
