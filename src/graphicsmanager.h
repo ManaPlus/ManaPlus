@@ -37,7 +37,7 @@ class GraphicsManager
 
         void updateExtensions(const char *extensions);
 
-        bool supportExtension(const std::string ext);
+        bool supportExtension(const std::string &ext);
 
         void updateTextureFormat();
 

@@ -665,7 +665,6 @@ SET(SRCS_GUICHAN
     guichan/include/guichan/widgets/container.hpp
     guichan/include/guichan/widgets/dropdown.hpp
     guichan/include/guichan/widgets/icon.hpp
-    guichan/include/guichan/widgets/imagebutton.hpp
     guichan/include/guichan/widgets/label.hpp
     guichan/include/guichan/widgets/listbox.hpp
     guichan/include/guichan/widgets/radiobutton.hpp
@@ -704,7 +703,6 @@ SET(SRCS_GUICHAN
     guichan/widgets/container.cpp
     guichan/widgets/dropdown.cpp
     guichan/widgets/icon.cpp
-    guichan/widgets/imagebutton.cpp
     guichan/widgets/label.cpp
     guichan/widgets/listbox.cpp
     guichan/widgets/radiobutton.cpp

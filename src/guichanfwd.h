@@ -50,7 +50,6 @@ namespace gcn
     class HGEInput;
     class Icon;
     class Image;
-    class ImageButton;
     class InputEvent;
     class ImageFont;
     class Input;

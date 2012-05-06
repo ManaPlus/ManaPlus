@@ -211,24 +211,19 @@ void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
     if (*redraw || graphics->getRedraw())
     {
         *redraw = false;
-        static_cast<Graphics*>(graphics)->calcWindow(vert,
-            area.x, area.y, area.width, area.height, mBorder);
+        graphics->calcWindow(vert, area.x, area.y,
+            area.width, area.height, mBorder);
     }
 
-    static_cast<Graphics*>(graphics)->drawImageRect2(vert, mBorder);
-
-//    graphics->drawImageRect(area.x, area.y, area.width, area.height, mBorder);
-//    graphics->drawImageRect(area, mBorder);
+    graphics->drawImageRect2(vert, mBorder);
 
     // The bar
     if (progress > 0)
     {
         graphics->setColor(color);
-        graphics->fillRectangle(gcn::Rectangle(static_cast<int>(area.x + 4),
-            static_cast<int>(area.y + 4),
-            static_cast<int>(static_cast<float>(progress)
-            * static_cast<float>(area.width - 8)),
-            static_cast<int>(area.height - 8)));
+        graphics->fillRectangle(gcn::Rectangle(area.x + 4, area.y + 4,
+            static_cast<int>(progress * static_cast<float>(area.width - 8)),
+            area.height - 8));
     }
 
     // The label
@@ -260,11 +255,9 @@ void ProgressBar::render(Graphics *graphics, const gcn::Rectangle &area,
     if (progress > 0)
     {
         graphics->setColor(color);
-        graphics->fillRectangle(gcn::Rectangle(static_cast<int>(area.x + 4),
-            static_cast<int>(area.y + 4),
-            static_cast<int>(static_cast<float>(progress)
-            * static_cast<float>(area.width - 8)),
-            static_cast<int>(area.height - 8)));
+        graphics->fillRectangle(gcn::Rectangle(area.x + 4, area.y + 4,
+            static_cast<int>(progress * static_cast<float>(area.width - 8)),
+            area.height - 8));
     }
 
     // The label

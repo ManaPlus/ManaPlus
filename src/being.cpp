@@ -1191,7 +1191,7 @@ void Being::nextTile()
 
     Uint8 dir = calcDirection(pos.x, pos.y);
     if (dir)
-        setDirection(static_cast<Uint8>(dir));
+        setDirection(dir);
 
     if (!mMap || !mMap->getWalk(pos.x, pos.y, getWalkMask()))
     {
@@ -1325,7 +1325,7 @@ void Being::logic()
             {
                 if (getWalkSpeed().x && static_cast<int> ((static_cast<float>(
                     get_elapsed_time(mActionTime)) * static_cast<float>(
-                    frameCount)) / static_cast<float>(getWalkSpeed().x))
+                    frameCount)) / getWalkSpeed().x)
                     >= frameCount)
                 {
                     nextTile();
@@ -1412,8 +1412,7 @@ void Being::logic()
     if (!isAlive() && getWalkSpeed().x
         && Net::getGameHandler()->removeDeadBeings()
         && static_cast<int> ((static_cast<float>(get_elapsed_time(mActionTime))
-        / static_cast<float>(getWalkSpeed().x)))
-        >= static_cast<int>(frameCount))
+        / static_cast<float>(getWalkSpeed().x))) >= frameCount)
     {
         if (mType != PLAYER && actorSpriteManager)
             actorSpriteManager->destroy(this);

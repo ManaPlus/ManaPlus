@@ -166,7 +166,7 @@ class PopupMenu : public Popup, public LinkHandler
 
         void addBuySell(const Being *being);
 
-        void addParty(const std::string partyName);
+        void addParty(const std::string &partyName);
 
         void addBuySellDefault();
 

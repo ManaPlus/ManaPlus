@@ -79,7 +79,7 @@ void GraphicsManager::updateExtensions(const char *extensions)
     splitToStringSet(mExtensions, extensions, ' ');
 }
 
-bool GraphicsManager::supportExtension(const std::string ext)
+bool GraphicsManager::supportExtension(const std::string &ext)
 {
     return mExtensions.find(ext) != mExtensions.end();
 }

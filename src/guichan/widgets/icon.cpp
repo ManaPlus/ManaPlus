@@ -106,13 +106,7 @@ namespace gcn
         return mImage;
     }
 
-    void Icon::draw(Graphics* graphics)
+    void Icon::draw(Graphics* graphics A_UNUSED)
     {
-        if (mImage)
-        {
-            const int x = (getWidth() - mImage->getWidth()) / 2;
-            const int y = (getHeight() - mImage->getHeight()) / 2;
-            graphics->drawImage(mImage, x, y);
-        }
     }
 }

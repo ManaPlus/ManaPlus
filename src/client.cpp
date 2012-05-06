@@ -38,10 +38,6 @@
 #include "joystick.h"
 #include "inputmanager.h"
 #include "keyboardconfig.h"
-#ifdef USE_OPENGL
-#include "openglgraphics.h"
-#include "opengl1graphics.h"
-#endif
 #include "party.h"
 #include "playerrelations.h"
 #include "sound.h"

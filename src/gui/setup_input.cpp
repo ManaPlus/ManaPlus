@@ -279,7 +279,7 @@ void Setup_Input::action(const gcn::ActionEvent &event)
             refreshKeys();
         }
     }
-    else if (!id.find("tabs_"))
+    else if (strStartWith(id, "tabs_"))
     {
         int k = 0;
         std::string str = "tabs_";

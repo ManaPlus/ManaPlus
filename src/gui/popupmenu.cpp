@@ -1806,8 +1806,6 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
 void PopupMenu::showDropPopup(int x, int y, Item *item)
 {
     mItem = item;
-    mItemId = item->getId();
-    mItemColor = item->getColor();
     mX = x;
     mY = y;
     mNick = "";
@@ -1815,6 +1813,9 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
 
     if (item)
     {
+        mItemId = item->getId();
+        mItemColor = item->getColor();
+
         if (item->isEquipment())
         {
             if (item->isEquipped())
@@ -2151,7 +2152,7 @@ void PopupMenu::addBuySellDefault()
     }
 }
 
-void PopupMenu::addParty(const std::string partyName)
+void PopupMenu::addParty(const std::string &partyName)
 {
     if (player_node->isInParty())
     {

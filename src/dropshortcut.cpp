@@ -63,9 +63,8 @@ void DropShortcut::load(bool oldConfig)
 
     for (int i = 0; i < DROP_SHORTCUT_ITEMS; i++)
     {
-        int itemId = static_cast<int>(cfg->getValue("drop" + toString(i), -1));
-        int itemColor = static_cast<int>(
-            cfg->getValue("dropColor" + toString(i), -1));
+        int itemId = cfg->getValue("drop" + toString(i), -1);
+        int itemColor = cfg->getValue("dropColor" + toString(i), -1);
 
         if (itemId != -1)
         {

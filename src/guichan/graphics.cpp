@@ -145,7 +145,6 @@ namespace gcn
     void Graphics::drawImage(const Image* image A_UNUSED,
                              int dstX A_UNUSED, int dstY A_UNUSED)
     {
-        throw GCN_EXCEPTION("Not implimented.");
     }
 
     void Graphics::setFont(Font* font)

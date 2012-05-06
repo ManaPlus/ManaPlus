@@ -408,8 +408,8 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return returnValue;
 }
 
-bool Graphics::drawImage(const Image *image, int srcX, int srcY, int dstX, int dstY,
-                         int width, int height, bool)
+bool Graphics::drawImage(const Image *image, int srcX, int srcY,
+                         int dstX, int dstY, int width, int height, bool)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
