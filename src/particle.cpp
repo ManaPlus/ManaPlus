@@ -140,9 +140,9 @@ bool Particle::update()
                     if (!dist.x)
                         break;
 
-                    invHypotenuse = 2.0f / static_cast<float>(fabs(dist.x))
+                    invHypotenuse = 2.0f / (static_cast<float>(fabs(dist.x))
                                     + static_cast<float>(fabs(dist.y))
-                                    + static_cast<float>(fabs(dist.z));
+                                    + static_cast<float>(fabs(dist.z)));
                     break;
                 default:
                     invHypotenuse = 1.0f / static_cast<float>(sqrt(
