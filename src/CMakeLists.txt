@@ -339,8 +339,6 @@ SET(SRCS
     gui/socialwindow.h
     gui/speechbubble.cpp
     gui/speechbubble.h
-    gui/specialswindow.cpp
-    gui/specialswindow.h
     gui/statuswindow.cpp
     gui/statuswindow.h
     gui/textdialog.cpp
@@ -435,8 +433,6 @@ SET(SRCS
     resources/resourcemanager.h
     resources/soundeffect.h
     resources/soundeffect.cpp
-    resources/specialdb.cpp
-    resources/specialdb.h
     resources/spritedef.h
     resources/spritedef.cpp
     resources/wallpaper.cpp
@@ -827,6 +823,8 @@ SET(SRCS_MANASERV
     enet/utility.h
     enet/win32.c
     enet/win32.h
+    gui/specialswindow.cpp
+    gui/specialswindow.h
     utils/sha256.cpp
     utils/sha256.h
     net/manaserv/attributes.cpp
@@ -879,6 +877,8 @@ SET(SRCS_MANASERV
     net/manaserv/specialhandler.h
     net/manaserv/tradehandler.cpp
     net/manaserv/tradehandler.h
+    resources/specialdb.cpp
+    resources/specialdb.h
     )
 
 IF (WIN32)

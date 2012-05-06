@@ -92,7 +92,9 @@
 #include "resources/itemdb.h"
 #include "resources/mapdb.h"
 #include "resources/monsterdb.h"
+#ifdef MANASERV_SUPPORT
 #include "resources/specialdb.h"
+#endif
 #include "resources/npcdb.h"
 #include "resources/resourcemanager.h"
 
@@ -1209,7 +1211,9 @@ int Client::gameExec()
                     ItemDB::load();
                     Being::load(); // Hairstyles
                     MonsterDB::load();
+#ifdef MANASERV_SUPPORT
                     SpecialDB::load();
+#endif
                     NPCDB::load();
                     EmoteDB::load();
                     StatusEffect::load();

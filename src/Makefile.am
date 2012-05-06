@@ -353,8 +353,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/socialwindow.h \
 	      gui/speechbubble.cpp \
 	      gui/speechbubble.h \
-	      gui/specialswindow.cpp \
-	      gui/specialswindow.h \
 	      gui/statuswindow.cpp \
 	      gui/statuswindow.h \
 	      gui/textdialog.cpp \
@@ -451,8 +449,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/resourcemanager.h \
 	      resources/soundeffect.h \
 	      resources/soundeffect.cpp \
-	      resources/specialdb.cpp \
-	      resources/specialdb.h \
 	      resources/spritedef.h \
 	      resources/spritedef.cpp \
 	      resources/wallpaper.cpp \
@@ -664,6 +660,8 @@ manaplus_SOURCES += enet/callbacks.c \
 	      enet/unix.h \
 	      enet/utility.h \
 	      enet/win32.h \
+	      gui/specialswindow.cpp \
+	      gui/specialswindow.h \
 	      utils/sha256.cpp \
 	      utils/sha256.h \
 	      net/manaserv/attributes.cpp \
@@ -715,7 +713,9 @@ manaplus_SOURCES += enet/callbacks.c \
 	      net/manaserv/specialhandler.cpp \
 	      net/manaserv/specialhandler.h \
 	      net/manaserv/tradehandler.cpp \
-	      net/manaserv/tradehandler.h
+	      net/manaserv/tradehandler.h \
+	      resources/specialdb.cpp \
+	      resources/specialdb.h
 endif
 
 manaplus_SOURCES += \

@@ -35,6 +35,7 @@
 #include "localplayer.h"
 #include "logger.h"
 #include "particle.h"
+#include "playerinfo.h"
 #include "sound.h"
 #include "spellshortcut.h"
 
@@ -54,7 +55,9 @@
 #include "gui/shopwindow.h"
 #include "gui/shortcutwindow.h"
 #include "gui/socialwindow.h"
+#ifdef MANASERV_SUPPORT
 #include "gui/specialswindow.h"
+#endif
 #include "gui/skilldialog.h"
 #include "gui/statuswindow.h"
 #include "gui/textdialog.h"
@@ -123,7 +126,9 @@ DebugWindow *debugWindow = nullptr;
 ShortcutWindow *itemShortcutWindow = nullptr;
 ShortcutWindow *emoteShortcutWindow = nullptr;
 OutfitWindow *outfitWindow = nullptr;
+#ifdef MANASERV_SUPPORT
 SpecialsWindow *specialsWindow = nullptr;
+#endif
 ShortcutWindow *dropShortcutWindow = nullptr;
 ShortcutWindow *spellShortcutWindow = nullptr;
 WhoIsOnline *whoIsOnline = nullptr;
@@ -226,7 +231,9 @@ static void createGuiWindows()
     emoteShortcutWindow = new ShortcutWindow("EmoteShortcut",
         new EmoteShortcutContainer, "emotes.xml");
     outfitWindow = new OutfitWindow();
+#ifdef MANASERV_SUPPORT
     specialsWindow = new SpecialsWindow();
+#endif
     dropShortcutWindow = new ShortcutWindow("DropShortcut",
         new DropShortcutContainer, "drops.xml");
 
@@ -328,7 +335,9 @@ static void destroyGuiWindows()
     del_0(itemShortcutWindow)
     del_0(emoteShortcutWindow)
     del_0(outfitWindow)
+#ifdef MANASERV_SUPPORT
     del_0(specialsWindow)
+#endif
     del_0(socialWindow)
     del_0(dropShortcutWindow);
     del_0(spellShortcutWindow);

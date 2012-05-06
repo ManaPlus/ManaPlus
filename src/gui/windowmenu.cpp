@@ -30,7 +30,9 @@
 #include "gui/didyouknowwindow.h"
 #include "gui/emotepopup.h"
 #include "gui/skilldialog.h"
+#ifdef MANASERV_SUPPORT
 #include "gui/specialswindow.h"
+#endif
 #include "gui/textpopup.h"
 #include "gui/viewport.h"
 
@@ -189,10 +191,12 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     {
         window = skillDialog;
     }
+#ifdef MANASERV_SUPPORT
     else if (event.getId() == "SPE")
     {
         window = specialsWindow;
     }
+#endif
     else if (event.getId() == "SH")
     {
         window = itemShortcutWindow;
