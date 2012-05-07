@@ -31,6 +31,8 @@
 
 #include "debug.h"
 
+extern int serverVersion;
+
 Item::Item(int id, int quantity, int refine, unsigned char color,
            bool equipment, bool equipped):
     mImage(nullptr),
@@ -112,4 +114,13 @@ Image *Item::getImage(int id, unsigned char color)
     if (!image)
         image = Theme::getImageFromTheme("unknown-item.png");
     return image;
+}
+
+std::string Item::getName()
+{
+    const ItemInfo &info = ItemDB::get(mId);
+    if (serverVersion > 0)
+        return info.getName(mColor);
+    else
+        return info.getName();
 }

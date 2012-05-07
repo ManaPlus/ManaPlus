@@ -282,15 +282,8 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
         else if (actor->getType() == ActorSprite::FLOOR_ITEM)
         {
             FloorItem *floorItem = static_cast<FloorItem*>(actor);
-            const ItemInfo &info = floorItem->getInfo();
-            std::string name;
-
-            if (serverVersion > 0)
-                name = info.getName(floorItem->getColor());
-            else
-                name = info.getName();
             mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
-                actor->getId(), name.c_str()));
+                actor->getId(), floorItem->getName().c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
@@ -383,15 +376,8 @@ void PopupMenu::showPopup(int x, int y, FloorItem *floorItem)
     mX = x;
     mY = y;
     mType = Being::FLOOR_ITEM;
-    const ItemInfo &info = floorItem->getInfo();
     mBrowserBox->clearRows();
-    std::string name;
-
-    // Floor item can be picked up (single option, candidate for removal)
-    if (serverVersion > 0)
-        name = info.getName(floorItem->getColor());
-    else
-        name = info.getName();
+    std::string name = floorItem->getName();
     mNick = name;
 
     mBrowserBox->addRow(name);
@@ -1687,16 +1673,9 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
     }
     if (config.getBoolValue("enablePickupFilter"))
     {
-        const ItemInfo &info = item->getInfo();
-        std::string name;
-
-        if (serverVersion > 0)
-            name = info.getName(item->getColor());
-        else
-            name = info.getName();
-        mNick = name;
+        mNick = item->getName();
         mBrowserBox->addRow("##3---");
-        addPickupFilter(name);
+        addPickupFilter(mNick);
     }
     mBrowserBox->addRow("chat", _("Add to chat"));
     mBrowserBox->addRow("##3---");
@@ -1784,17 +1763,10 @@ void PopupMenu::showItemPopup(int x, int y, Item *item)
 
         if (config.getBoolValue("enablePickupFilter"))
         {
-            const ItemInfo &info = item->getInfo();
-            std::string name;
-
-            if (serverVersion > 0)
-                name = info.getName(item->getColor());
-            else
-                name = info.getName();
-            mNick = name;
+            mNick = item->getName();
 
             mBrowserBox->addRow("##3---");
-            addPickupFilter(name);
+            addPickupFilter(mNick);
         }
     }
     mBrowserBox->addRow("##3---");
@@ -1846,17 +1818,9 @@ void PopupMenu::showDropPopup(int x, int y, Item *item)
         mBrowserBox->addRow("chat", _("Add to chat"));
         if (config.getBoolValue("enablePickupFilter"))
         {
-            const ItemInfo &info = item->getInfo();
-            std::string name;
-
-            if (serverVersion > 0)
-                name = info.getName(item->getColor());
-            else
-                name = info.getName();
-            mNick = name;
-
+            mNick = item->getName();
             mBrowserBox->addRow("##3---");
-            addPickupFilter(name);
+            addPickupFilter(mNick);
         }
     }
     mBrowserBox->addRow("##3---");

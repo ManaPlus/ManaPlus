@@ -519,15 +519,9 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
                 && ((*it)->getTileY() >= y1 && (*it)->getTileY() <= y2))
             {
                 FloorItem *item = static_cast<FloorItem*>(*it);
-                const ItemInfo &info = item->getInfo();
-                std::string name;
-                if (serverVersion > 0)
-                    name = info.getName(item->getColor());
-                else
-                    name = info.getName();
                 if (allowAll)
                 {
-                    if (mIgnorePickupItemsSet.find(name)
+                    if (mIgnorePickupItemsSet.find(item->getName())
                         == mIgnorePickupItemsSet.end())
                     {
                         if (player_node->pickUp(item))
@@ -536,7 +530,8 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
                 }
                 else
                 {
-                    if (mPickupItemsSet.find(name) != mPickupItemsSet.end())
+                    if (mPickupItemsSet.find(item->getName())
+                        != mPickupItemsSet.end())
                     {
                         if (player_node->pickUp(item))
                             finded = true;
@@ -561,15 +556,9 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
                 FloorItem *tempItem = static_cast<FloorItem*>(*it);
                 if (tempItem->getPickupCount() < cnt)
                 {
-                    const ItemInfo &info = tempItem->getInfo();
-                    std::string name;
-                    if (serverVersion > 0)
-                        name = info.getName(tempItem->getColor());
-                    else
-                        name = info.getName();
                     if (allowAll)
                     {
-                        if (mIgnorePickupItemsSet.find(name)
+                        if (mIgnorePickupItemsSet.find(tempItem->getName())
                             == mIgnorePickupItemsSet.end())
                         {
                             item = tempItem;
@@ -584,7 +573,7 @@ bool ActorSpriteManager::pickUpAll(int x1, int y1, int x2, int y2,
                     }
                     else
                     {
-                        if (mPickupItemsSet.find(name)
+                        if (mPickupItemsSet.find(tempItem->getName())
                             != mPickupItemsSet.end())
                         {
                             item = tempItem;
@@ -633,14 +622,9 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
                 item->getTileY())))
             {
                 const ItemInfo &info = item->getInfo();
-                std::string name;
-                if (serverVersion > 0)
-                    name = info.getName(item->getColor());
-                else
-                    name = info.getName();
                 if (allowAll)
                 {
-                    if (mIgnorePickupItemsSet.find(name)
+                    if (mIgnorePickupItemsSet.find(item->getName())
                         == mIgnorePickupItemsSet.end())
                     {
                         dist = d;
@@ -649,7 +633,8 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
                 }
                 else
                 {
-                    if (mPickupItemsSet.find(name) != mPickupItemsSet.end())
+                    if (mPickupItemsSet.find(item->getName())
+                        != mPickupItemsSet.end())
                     {
                         dist = d;
                         closestItem = item;
@@ -1634,19 +1619,12 @@ void ActorSpriteManager::storeAttackList()
 
 bool ActorSpriteManager::checkForPickup(FloorItem *item)
 {
-    const ItemInfo &info = item->getInfo();
-    std::string name;
-    if (serverVersion > 0)
-        name = info.getName(item->getColor());
-    else
-        name = info.getName();
-
     if (mPickupItemsSet.find("") != mPickupItemsSet.end())
     {
-        if (mIgnorePickupItemsSet.find(name) == mIgnorePickupItemsSet.end())
+        if (mIgnorePickupItemsSet.find(item->getName()) == mIgnorePickupItemsSet.end())
             return true;
     }
-    else if (mPickupItemsSet.find(name) != mPickupItemsSet.end())
+    else if (mPickupItemsSet.find(item->getName()) != mPickupItemsSet.end())
     {
         return true;
     }

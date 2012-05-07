@@ -66,6 +66,8 @@ class FloorItem : public ActorSprite
          */
         const ItemInfo &getInfo() const;
 
+        std::string getName();
+
         virtual int getTileX() const
         { return mX; }
 

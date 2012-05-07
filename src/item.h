@@ -154,6 +154,8 @@ class Item
         const ItemInfo &getInfo() const
         { return ItemDB::get(mId); }
 
+        std::string getName();
+
         static Image *getImage(int id, unsigned char color);
 
         bool isHaveTag(int tagId);

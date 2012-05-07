@@ -75,6 +75,15 @@ const ItemInfo &FloorItem::getInfo() const
     return ItemDB::get(mItemId);
 }
 
+std::string FloorItem::getName()
+{
+    const ItemInfo &info = ItemDB::get(mItemId);
+    if (serverVersion > 0)
+        return info.getName(mColor);
+    else
+        return info.getName();
+}
+
 bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
 {
     if (!mMap)
