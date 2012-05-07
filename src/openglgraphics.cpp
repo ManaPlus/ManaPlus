@@ -1160,19 +1160,20 @@ void OpenGLGraphics::drawPoint(int x, int y)
 
 void OpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
+    unsigned int vp = 4;
+    const unsigned int vLimit = vertexBufSize * 4;
+
     setTexturingAndBlending(false);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-    float x3 = static_cast<float>(x2) + 0.5f;
-    float y3 = static_cast<float>(y2) + 0.5f;
+    mFloatTexArray[0] = static_cast<float>(x1);
+    mFloatTexArray[1] = static_cast<float>(y1);
+    mFloatTexArray[2] = static_cast<float>(x2);
+    mFloatTexArray[3] = static_cast<float>(y2);
 
-    glBegin(GL_LINES);
-    glVertex2f(static_cast<float>(x1) + 0.5f, static_cast<float>(y1) + 0.5f);
-    glVertex2f(x3, y3);
-    glEnd();
+    drawLineArrayf(vp);
 
-    glBegin(GL_POINTS);
-    glVertex2f(x3, y3);
-    glEnd();
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
 void OpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
