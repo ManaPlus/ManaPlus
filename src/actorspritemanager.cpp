@@ -621,7 +621,6 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
                 || player_node->isReachable(item->getTileX(),
                 item->getTileY())))
             {
-                const ItemInfo &info = item->getInfo();
                 if (allowAll)
                 {
                     if (mIgnorePickupItemsSet.find(item->getName())
