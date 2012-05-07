@@ -44,7 +44,7 @@ class Skin
     public:
         Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
              const std::string &filePath, const std::string &name = "",
-             int padding = 3);
+             int padding = 3, int titlePadding = 4);
 
         ~Skin();
 
@@ -98,6 +98,9 @@ class Skin
         int getPadding() const
         { return mPadding; }
 
+        int getTitlePadding() const
+        { return mTitlePadding; }
+
         int instances;
 
     private:
@@ -108,6 +111,7 @@ class Skin
         Image *mStickyImageUp;     /**< Sticky Button Image */
         Image *mStickyImageDown;   /**< Sticky Button Image */
         int mPadding;
+        int mTitlePadding;
 };
 
 class Theme : public Palette, public ConfigListener

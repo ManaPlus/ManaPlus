@@ -65,7 +65,7 @@ static void initDefaultThemePath()
 
 Skin::Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
            const std::string &filePath,
-           const std::string &name, int padding):
+           const std::string &name, int padding, int titlePadding):
     instances(0),
     mFilePath(filePath),
     mName(name),
@@ -73,8 +73,10 @@ Skin::Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
     mCloseImage(close),
     mStickyImageUp(stickyUp),
     mStickyImageDown(stickyDown),
-    mPadding(padding)
-{}
+    mPadding(padding),
+    mTitlePadding(titlePadding)
+{
+}
 
 Skin::~Skin()
 {
@@ -337,6 +339,7 @@ Skin *Theme::readSkin(const std::string &filename)
     ImageRect border;
     memset(&border, 0, sizeof(ImageRect));
     int padding = 3;
+    int titlePadding = 4;
 
     // iterate <widget>'s
     for_each_xml_child_node(widgetNode, rootNode)
@@ -485,6 +488,8 @@ Skin *Theme::readSkin(const std::string &filename)
                         partNode, "name", "");
                     if (name == "padding")
                         padding = XML::getProperty(partNode, "value", 3);
+                    else if (name == "titlePadding")
+                        titlePadding = XML::getProperty(partNode, "value", 4);
                 }
             }
         }
@@ -514,7 +519,7 @@ Skin *Theme::readSkin(const std::string &filename)
     }
 
     Skin *skin = new Skin(border, closeImage, stickyImageUp, stickyImageDown,
-                          filename, "", padding);
+                          filename, "", padding, titlePadding);
     skin->updateAlpha(mMinimumOpacity);
     return skin;
 }

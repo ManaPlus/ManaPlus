@@ -26,6 +26,7 @@
 #include "logger.h"
 
 #include "gui/setup.h"
+#include "gui/theme.h"
 
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
@@ -59,7 +60,15 @@ ShortcutWindow::ShortcutWindow(const std::string &title,
 {
     setWindowName(title);
     // no title presented, title bar is padding so window can be moved.
-    gcn::Window::setTitleBarHeight(gcn::Window::getPadding() + 1);
+    if (mSkin)
+    {
+        gcn::Window::setTitleBarHeight(gcn::Window::getPadding()
+            + mSkin->getTitlePadding());
+    }
+    else
+    {
+        gcn::Window::setTitleBarHeight(gcn::Window::getPadding());
+    }
     setShowTitle(false);
     setResizable(true);
     setDefaultVisible(false);
