@@ -1166,10 +1166,10 @@ void OpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-    mFloatTexArray[0] = static_cast<float>(x1);
-    mFloatTexArray[1] = static_cast<float>(y1);
-    mFloatTexArray[2] = static_cast<float>(x2);
-    mFloatTexArray[3] = static_cast<float>(y2);
+    mFloatTexArray[0] = static_cast<float>(x1) + 0.5f;
+    mFloatTexArray[1] = static_cast<float>(y1) + 0.5f;
+    mFloatTexArray[2] = static_cast<float>(x2) + 0.5f;
+    mFloatTexArray[3] = static_cast<float>(y2) + 0.5f;
 
     drawLineArrayf(vp);
 
