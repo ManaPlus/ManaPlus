@@ -34,6 +34,9 @@ typedef KeyToActionMap::iterator KeyToActionMapIter;
 typedef std::map<int, int> KeyToIdMap;
 typedef KeyToIdMap::iterator KeyToIdMapIter;
 
+typedef std::map<int, int> KeyTimeMap;
+typedef KeyTimeMap::iterator KeyTimeMapIter;
+
 struct InputEvent
 {
     InputEvent(int action0, int mask0);

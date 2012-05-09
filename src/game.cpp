@@ -902,6 +902,7 @@ void Game::handleInput()
     }
 
     handleMove();
+    inputManager.handleRepeat();
 }
 
 /**

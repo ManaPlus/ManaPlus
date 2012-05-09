@@ -135,11 +135,14 @@ class InputManager
         { return mNewKeyIndex; }
 
         void updateKeyActionMap(KeyToActionMap &actionMap,
-                                KeyToIdMap &idMap, int type);
+                                KeyToIdMap &idMap, KeyTimeMap &keyTimeMap,
+                                int type);
 
         bool invokeKey(const KeyData *key, int keyNum);
 
         bool handleAssignKey(const SDL_Event &event, int type);
+
+        void handleRepeat();
 
         bool triggerAction(const KeysVector *ptrs);
 

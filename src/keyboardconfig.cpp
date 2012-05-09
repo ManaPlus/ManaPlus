@@ -35,6 +35,8 @@
 
 #include "debug.h"
 
+extern volatile int tick_time;
+
 KeyboardConfig::KeyboardConfig() :
     mEnabled(true),
     mActiveKeys(nullptr),
@@ -108,6 +110,14 @@ KeysVector *KeyboardConfig::getActionVector(const SDL_Event &event)
     return nullptr;
 }
 
+KeysVector *KeyboardConfig::getActionVectorByKey(int i)
+{
+//    logger->log("key triggerAction: %d", i);
+    if (i != 0 && i < SDLK_LAST && mKeyToAction.find(i) != mKeyToAction.end())
+        return &mKeyToAction[i];
+    return nullptr;
+}
+
 int KeyboardConfig::getActionId(const SDL_Event &event)
 {
     const int i = getKeyValueFromEvent(event);
@@ -145,7 +155,8 @@ bool KeyboardConfig::isActionActive(int index) const
 
 void KeyboardConfig::update()
 {
-    inputManager.updateKeyActionMap(mKeyToAction, mKeyToId, INPUT_KEYBOARD);
+    inputManager.updateKeyActionMap(mKeyToAction, mKeyToId,
+        mKeyTimeMap, INPUT_KEYBOARD);
 }
 
 void KeyboardConfig::handleActicateKey(const SDL_Event &event)
@@ -153,6 +164,7 @@ void KeyboardConfig::handleActicateKey(const SDL_Event &event)
     const int key = getKeyValueFromEvent(event);
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 1;
+    resetRepeat(key);
 }
 
 void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
@@ -160,4 +172,38 @@ void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
     const int key = getKeyValueFromEvent(event);
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 0;
+    resetRepeat(key);
+}
+
+void KeyboardConfig::handleRepeat(int time)
+{
+    for (KeyTimeMapIter it = mKeyTimeMap.begin(), it_end = mKeyTimeMap.end();
+         it != it_end; ++ it)
+    {
+        bool repeat(false);
+        const int key = (*it).first;
+        int &keyTime = (*it).second;
+        if (key >= 0)
+        {
+            if (mActiveKeys[key])
+                repeat = true;
+        }
+        else if (key < -1 && key > -500)
+        {
+            if (mActiveKeys2[-key])
+                repeat = true;
+        }
+        if (repeat && abs(keyTime - time) > 10)
+        {
+            keyTime = time;
+            inputManager.triggerAction(getActionVectorByKey(key));
+        }
+    }
+}
+
+void KeyboardConfig::resetRepeat(int key)
+{
+    KeyTimeMapIter it = mKeyTimeMap.find(key);
+    if (it != mKeyTimeMap.end())
+        (*it).second = tick_time;
 }

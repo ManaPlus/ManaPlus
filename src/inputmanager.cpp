@@ -526,6 +526,14 @@ bool InputManager::handleEvent(const SDL_Event &event)
     return false;
 }
 
+void InputManager::handleRepeat()
+{
+    const int time = tick_time;
+    keyboard.handleRepeat(time);
+    if (joystick)
+        joystick->handleRepeat(time);
+}
+
 void InputManager::updateConditionMask()
 {
     mMask = 1;
@@ -590,9 +598,12 @@ bool InputManager::invokeKey(const KeyData *key, int keyNum)
 }
 
 void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
-                                      KeyToIdMap &idMap, int type)
+                                      KeyToIdMap &idMap,
+                                      KeyTimeMap &keyTimeMap,
+                                      int type)
 {
     actionMap.clear();
+    keyTimeMap.clear();
 
     for (size_t i = 0; i < Input::KEY_TOTAL; i ++)
     {
@@ -613,6 +624,15 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
                 const KeyItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
                     idMap[ki.value] = i;
+            }
+        }
+        if (keyData[i].configField && (keyData[i].grp & Input::GRP_REPEAT))
+        {
+            for (size_t i2 = 0; i2 < KeyFunctionSize; i2 ++)
+            {
+                const KeyItem &ki = key.values[i2];
+                if (ki.type == type && ki.value != -1)
+                    keyTimeMap[ki.value] = 0;
             }
         }
     }

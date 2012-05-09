@@ -53,7 +53,8 @@ namespace Input
         GRP_OUTFIT = 8,            // outfit key
         GRP_GUI = 16,              // gui key
         GRP_MOVETOPOINT = 32,      // move to point key
-        GRP_GUICHAN = 64           // for guichan based controls
+        GRP_GUICHAN = 64,          // for guichan based controls
+        GRP_REPEAT = 128           // repeat emulation keys
     };
 
     /**

@@ -75,6 +75,8 @@ class KeyboardConfig
 
         KeysVector *getActionVector(const SDL_Event &event);
 
+        KeysVector *getActionVectorByKey(int i);
+
         std::string getKeyName(int key);
 
         bool isActionActive(int index) const;
@@ -87,6 +89,10 @@ class KeyboardConfig
 
         int getActionId(const SDL_Event &event);
 
+        void handleRepeat(int time);
+
+        void resetRepeat(int key);
+
     private:
         bool mEnabled;                 /**< Flag to respond to key input */
 
@@ -97,6 +103,8 @@ class KeyboardConfig
         KeyToActionMap mKeyToAction;
 
         KeyToIdMap mKeyToId;
+
+        KeyTimeMap mKeyTimeMap;
 };
 
 extern KeyboardConfig keyboard;

@@ -260,13 +260,24 @@ void Joystick::getNames(std::vector <std::string> &names)
 
 void Joystick::update()
 {
-    inputManager.updateKeyActionMap(mKeyToAction, mKeyToId, INPUT_JOYSTICK);
+    inputManager.updateKeyActionMap(mKeyToAction, mKeyToId,
+        mKeyTimeMap, INPUT_JOYSTICK);
 }
 
 KeysVector *Joystick::getActionVector(const SDL_Event &event)
 {
     const int i = getButtonFromEvent(event);
 
+    if (i < 0 || i >= mButtonsNumber)
+        return nullptr;
+//    logger->log("button triggerAction: %d", i);
+    if (mKeyToAction.find(i) != mKeyToAction.end())
+        return &mKeyToAction[i];
+    return nullptr;
+}
+
+KeysVector *Joystick::getActionVectorByKey(int i)
+{
     if (i < 0 || i >= mButtonsNumber)
         return nullptr;
 //    logger->log("button triggerAction: %d", i);
@@ -308,4 +319,32 @@ bool Joystick::validate() const
         return false;
 
     return (mUseInactive || Client::getInputFocused());
+}
+
+void Joystick::handleRepeat(int time)
+{
+    for (KeyTimeMapIter it = mKeyTimeMap.begin(), it_end = mKeyTimeMap.end();
+         it != it_end; ++ it)
+    {
+        bool repeat(false);
+        const int key = (*it).first;
+        int &keyTime = (*it).second;
+        if (key >= 0 && key < mButtonsNumber)
+        {
+            if (mActiveButtons[key])
+                repeat = true;
+        }
+        if (repeat && abs(keyTime - time) > 10)
+        {
+            keyTime = time;
+            inputManager.triggerAction(getActionVectorByKey(key));
+        }
+    }
+}
+
+void Joystick::resetRepeat(int key)
+{
+    KeyTimeMapIter it = mKeyTimeMap.find(key);
+    if (it != mKeyTimeMap.end())
+        (*it).second = tick_time;
 }

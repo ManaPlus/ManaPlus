@@ -121,11 +121,17 @@ class Joystick
 
         KeysVector *getActionVector(const SDL_Event &event);
 
+        KeysVector *getActionVectorByKey(int i);
+
         int getButtonFromEvent(const SDL_Event &event) const;
 
         bool isActionActive(int index) const;
 
         bool validate() const;
+
+        void handleRepeat(int time);
+
+        void resetRepeat(int key);
 
     protected:
         unsigned char mDirection;
@@ -148,6 +154,8 @@ class Joystick
         KeyToActionMap mKeyToAction;
 
         KeyToIdMap mKeyToId;
+
+        KeyTimeMap mKeyTimeMap;
 
         /**
          * Is joystick support enabled.
