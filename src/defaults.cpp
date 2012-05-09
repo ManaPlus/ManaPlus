@@ -186,6 +186,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "autofixPos", true);
     AddDEF(configData, "alphaCache", true);
     AddDEF(configData, "attackMoving", true);
+    AddDEF(configData, "attackNext", false);
     AddDEF(configData, "quickStats", true);
     AddDEF(configData, "warpParticle", false);
     AddDEF(configData, "autoShop", false);

@@ -397,7 +397,7 @@ void BeingHandler::processBeingRemove(Net::MessageIn &msg)
 
     // If this is player's current target, clear it.
     if (dstBeing == player_node->getTarget())
-        player_node->stopAttack();
+        player_node->stopAttack(true);
 
     if (msg.readInt8() == 1)
     {

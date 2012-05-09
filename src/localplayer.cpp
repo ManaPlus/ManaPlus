@@ -173,6 +173,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mDrawPath = config.getBoolValue("drawPath");
     mServerAttack = config.getBoolValue("serverAttack");
     mAttackMoving = config.getBoolValue("attackMoving");
+    mAttackNext = config.getBoolValue("attackNext");
     mShowJobExp = config.getBoolValue("showJobExp");
     mEnableAdvert = config.getBoolValue("enableAdvert");
     mTradebot = config.getBoolValue("tradebot");
@@ -194,6 +195,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     config.addListener("drawPath", this);
     config.addListener("serverAttack", this);
     config.addListener("attackMoving", this);
+    config.addListener("attackNext", this);
     config.addListener("showJobExp", this);
     config.addListener("enableAdvert", this);
     config.addListener("tradebot", this);
@@ -339,7 +341,7 @@ void LocalPlayer::logic()
             if (!mTarget->isAlive() && (!mTargetDeadPlayers
                 || mTarget->getType() != Being::PLAYER))
             {
-                stopAttack();
+                stopAttack(true);
             }
 
             if (mKeepAttacking && mTarget)
@@ -995,14 +997,9 @@ void LocalPlayer::setTarget(Being *target)
         return;
 
     if (target || mAction == ATTACK)
-    {
         mTargetTime = tick_time;
-    }
     else
-    {
-        mKeepAttacking = false;
         mTargetTime = -1;
-    }
 
     Being *oldTarget = nullptr;
     if (mTarget)
@@ -1389,7 +1386,7 @@ void LocalPlayer::attack(Being *target, bool keep, bool dontChangeEquipment)
         stopAttack();
 }
 
-void LocalPlayer::stopAttack()
+void LocalPlayer::stopAttack(bool keepAttack)
 {
     if (!Client::limitPackets(PACKET_STOPATTACK))
         return;
@@ -1398,6 +1395,8 @@ void LocalPlayer::stopAttack()
         Net::getPlayerHandler()->stopAttack();
 
     untarget();
+    if (!keepAttack || !mAttackNext)
+        mKeepAttacking = false;
 }
 
 void LocalPlayer::untarget()
@@ -1408,7 +1407,6 @@ void LocalPlayer::untarget()
     if (mTarget)
         setTarget(nullptr);
 
-    mKeepAttacking = false;
     mLastTarget = -1;
 }
 
@@ -1648,6 +1646,8 @@ void LocalPlayer::optionChanged(const std::string &value)
         mServerAttack = config.getBoolValue("serverAttack");
     else if (value == "attackMoving")
         mAttackMoving = config.getBoolValue("attackMoving");
+    else if (value == "attackNext")
+        mAttackNext = config.getBoolValue("attackNext");
     else if (value == "showJobExp")
         mShowJobExp = config.getBoolValue("showJobExp");
     else if (value == "enableAdvert")

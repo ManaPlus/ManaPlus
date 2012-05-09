@@ -142,7 +142,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         int getGMLevel() const
         { return mGMLevel; }
 
-        void stopAttack();
+        void stopAttack(bool keepAttack = false);
 
         void untarget();
 
@@ -624,6 +624,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
         bool mSyncPlayerMove;
         bool mDrawPath;
         bool mAttackMoving;
+        bool mAttackNext;
         bool mShowJobExp;
         int mActivityTime;
         int mNavigateX;

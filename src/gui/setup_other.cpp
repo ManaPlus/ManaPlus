@@ -101,6 +101,9 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Attack while moving"), "",
         "attackMoving", this, "attackMovingEvent");
 
+    new SetupItemCheckBox(_("Attack next target"), "",
+        "attackNext", this, "attackNextEvent");
+
     new SetupItemCheckBox(_("Sync player move"), "", "syncPlayerMove",
         this, "syncPlayerMoveEvent");
 
