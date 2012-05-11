@@ -27,6 +27,8 @@
 
 #include "resources/image.h"
 
+#include "utils/paths.h"
+#include "utils/process.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -39,6 +41,94 @@ GraphicsManager::GraphicsManager()
 
 GraphicsManager::~GraphicsManager()
 {
+}
+
+bool GraphicsManager::detectGraphics()
+{
+#ifdef USE_OPENGL
+    logger->log("start detecting best mode...");
+    logger->log("enable opengl mode");
+    SDL_SetVideoMode(100, 100, 0, SDL_ANYFORMAT | SDL_OPENGL);
+
+    std::string vendor = getGLString(GL_VENDOR);
+    std::string renderer = getGLString(GL_RENDERER);
+    std::string version = getGLString(GL_VERSION);
+    logger->log("gl vendor: %s", vendor.c_str());
+    logger->log("gl renderer: %s", renderer.c_str());
+    logger->log("gl version: %s", version.c_str());
+    sscanf(version.c_str(), "%d.%d", &mMajor, &mMinor);
+
+    char const *glExtensions = reinterpret_cast<char const *>(
+        glGetString(GL_EXTENSIONS));
+    updateExtensions(glExtensions);
+
+    bool mode = 1;
+
+    // detecting features by known renderers or vendors
+    if (findI(renderer, "gdi generic") != std::string::npos)
+    {
+        // windows gdi OpenGL emulation
+        logger->log("detected gdi drawing");
+        logger->log("disable OpenGL");
+        mode = 0;
+    }
+    else if (findI(renderer, "Software Rasterizer") != std::string::npos)
+    {
+        // software OpenGL emulation
+        logger->log("detected software drawing");
+        logger->log("disable OpenGL");
+        mode = 0;
+    }
+    else if (findI(renderer, "Indirect") != std::string::npos)
+    {
+        // indirect OpenGL drawing
+        logger->log("detected indirect drawing");
+        logger->log("disable OpenGL");
+        mode = 0;
+    }
+    else if (findI(vendor, "VMWARE") != std::string::npos)
+    {
+        // vmware emulation
+        logger->log("detected VMWARE driver");
+        logger->log("disable OpenGL");
+        mode = 0;
+    }
+    else if (findI(renderer, "LLVM") != std::string::npos)
+    {
+        // llvm opengl emulation
+        logger->log("detected llvm driver");
+        logger->log("disable OpenGL");
+        mode = 0;
+    }
+    else if (findI(vendor, "NVIDIA") != std::string::npos)
+    {
+        // hope it can work well
+        logger->log("detected NVIDIA driver");
+        mode = 1;
+    }
+
+    // detecting feature based on OpenGL version
+    if (!checkGLVersion(1, 1))
+    {
+        // very old OpenGL version
+        logger->log("OpenGL version too old");
+        mode = 0;
+    }
+
+    if (mode > 0 && findI(version, "Mesa") != std::string::npos)
+    {
+        // Mesa detected
+        config.setValue("compresstextures", true);
+    }
+
+    config.setValue("opengl", mode);
+    config.setValue("videoconfigured", true);
+
+    logger->log("detection complete");
+    return true;
+#else
+    return false;
+#endif
 }
 
 void GraphicsManager::initGraphics(bool noOpenGL)
@@ -158,6 +248,19 @@ void GraphicsManager::logString(const char *format, int num)
 #endif
 }
 
+std::string GraphicsManager::getGLString(int num) const
+{
+#ifdef USE_OPENGL
+    const char *str = reinterpret_cast<const char*>(glGetString(num));
+    if (str)
+        return str;
+    else
+        return "";
+#else
+    return "";
+#endif
+}
+
 void GraphicsManager::setVideoMode()
 {
     const int width = config.getIntValue("screenwidth");
@@ -196,4 +299,10 @@ void GraphicsManager::setVideoMode()
             }
         }
     }
+}
+
+
+bool GraphicsManager::checkGLVersion(int major, int minor) const
+{
+    return mMajor > major || (mMajor == major && mMinor >= minor);
 }

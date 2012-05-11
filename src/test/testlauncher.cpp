@@ -23,6 +23,7 @@
 #include "client.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "graphicsmanager.h"
 #include "localconsts.h"
 #include "logger.h"
 #include "sound.h"
@@ -69,6 +70,8 @@ int TestLauncher::exec()
         return testRescale();
     else if (mTest == "8" || mTest == "9" || mTest == "10")
         return testFps();
+    else if (mTest == "99")
+        return testVideoDetection();
     else if (mTest == "100")
         return testInternal();
 
@@ -205,6 +208,13 @@ int TestLauncher::testInternal()
 
     sleep(1);
     return 0;
+}
+
+int TestLauncher::testVideoDetection()
+{
+    graphicsManager.detectGraphics();
+    file << mTest << std::endl;
+    file << config.getIntValue("opengl") << std::endl;
 }
 
 int TestLauncher::calcFps(timeval *start, timeval *end, int calls)

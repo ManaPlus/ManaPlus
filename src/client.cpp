@@ -280,7 +280,7 @@ Client::Client(const Options &options):
 
 void Client::testsInit()
 {
-    if (!mOptions.test.empty())
+    if (!mOptions.test.empty() && mOptions.test != "99")
     {
         gameInit();
     }
@@ -2004,48 +2004,59 @@ void Client::storeSafeParameters()
     if (isSafeMode)
         logger->log1("Run in safe mode");
 
-    tmpHwaccel = config.getBoolValue("hwaccel");
-
 #if defined USE_OPENGL
     tmpOpengl = config.getIntValue("opengl");
 #else
     tmpOpengl = 0;
 #endif
-    tmpFpslimit = config.getIntValue("fpslimit");
-    tmpAltFpslimit = config.getIntValue("altfpslimit");
-    tmpSound = config.getBoolValue("sound");
 
     width = config.getIntValue("screenwidth");
     height = config.getIntValue("screenheight");
 
-    font = config.getStringValue("font");
-    bFont = config.getStringValue("boldFont");
-    particleFont = config.getStringValue("particleFont");
-    helpFont = config.getStringValue("helpFont");
-    secureFont = config.getStringValue("secureFont");
-    japanFont = config.getStringValue("japanFont");
+    if (!mOptions.safeMode && !tmpOpengl)
+    {
+        tmpHwaccel = config.getBoolValue("hwaccel");
 
-    showBackground = config.getBoolValue("showBackground");
-    enableMumble = config.getBoolValue("enableMumble");
-    enableMapReduce = config.getBoolValue("enableMapReduce");
+        tmpFpslimit = config.getIntValue("fpslimit");
+        tmpAltFpslimit = config.getIntValue("altfpslimit");
+        tmpSound = config.getBoolValue("sound");
 
-    config.setValue("hwaccel", false);
-    config.setValue("opengl", 0);
-    config.setValue("fpslimit", 0);
-    config.setValue("altfpslimit", 0);
-    config.setValue("sound", false);
-    config.setValue("safemode", true);
-    config.setValue("screenwidth", 640);
-    config.setValue("screenheight", 480);
-    config.setValue("font", "fonts/dejavusans.ttf");
-    config.setValue("boldFont", "fonts/dejavusans-bold.ttf");
-    config.setValue("particleFont", "fonts/dejavusans.ttf");
-    config.setValue("helpFont", "fonts/dejavusansmono.ttf");
-    config.setValue("secureFont", "fonts/dejavusansmono.ttf");
-    config.setValue("japanFont", "fonts/mplus-1p-regular.ttf");
-    config.setValue("showBackground", false);
-    config.setValue("enableMumble", false);
-    config.setValue("enableMapReduce", false);
+        font = config.getStringValue("font");
+        bFont = config.getStringValue("boldFont");
+        particleFont = config.getStringValue("particleFont");
+        helpFont = config.getStringValue("helpFont");
+        secureFont = config.getStringValue("secureFont");
+        japanFont = config.getStringValue("japanFont");
+
+        showBackground = config.getBoolValue("showBackground");
+        enableMumble = config.getBoolValue("enableMumble");
+        enableMapReduce = config.getBoolValue("enableMapReduce");
+
+        // if video mode configured reset most settings to safe
+        config.setValue("hwaccel", false);
+        config.setValue("opengl", 0);
+        config.setValue("altfpslimit", 3);
+        config.setValue("sound", false);
+        config.setValue("safemode", true);
+        config.setValue("screenwidth", 640);
+        config.setValue("screenheight", 480);
+        config.setValue("font", "fonts/dejavusans.ttf");
+        config.setValue("boldFont", "fonts/dejavusans-bold.ttf");
+        config.setValue("particleFont", "fonts/dejavusans.ttf");
+        config.setValue("helpFont", "fonts/dejavusansmono.ttf");
+        config.setValue("secureFont", "fonts/dejavusansmono.ttf");
+        config.setValue("japanFont", "fonts/mplus-1p-regular.ttf");
+        config.setValue("showBackground", false);
+        config.setValue("enableMumble", false);
+        config.setValue("enableMapReduce", false);
+    }
+    else
+    {
+        // if video mode not configured reset only video mode to safe
+        config.setValue("opengl", 0);
+        config.setValue("screenwidth", 640);
+        config.setValue("screenheight", 480);
+    }
 
     config.write();
 
@@ -2055,23 +2066,32 @@ void Client::storeSafeParameters()
         return;
     }
 
-    config.setValue("hwaccel", tmpHwaccel);
-    config.setValue("opengl", tmpOpengl);
-    config.setValue("fpslimit", tmpFpslimit);
-    config.setValue("altfpslimit", tmpAltFpslimit);
-    config.setValue("sound", tmpSound);
-    config.setValue("safemode", false);
-    config.setValue("screenwidth", width);
-    config.setValue("screenheight", height);
-    config.setValue("font", font);
-    config.setValue("boldFont", bFont);
-    config.setValue("particleFont", particleFont);
-    config.setValue("helpFont", helpFont);
-    config.setValue("secureFont", secureFont);
-    config.setValue("japanFont", japanFont);
-    config.setValue("showBackground", showBackground);
-    config.setValue("enableMumble", enableMumble);
-    config.setValue("enableMapReduce", enableMapReduce);
+    if (!tmpOpengl)
+    {
+        config.setValue("hwaccel", tmpHwaccel);
+        config.setValue("opengl", tmpOpengl);
+        config.setValue("fpslimit", tmpFpslimit);
+        config.setValue("altfpslimit", tmpAltFpslimit);
+        config.setValue("sound", tmpSound);
+        config.setValue("safemode", false);
+        config.setValue("screenwidth", width);
+        config.setValue("screenheight", height);
+        config.setValue("font", font);
+        config.setValue("boldFont", bFont);
+        config.setValue("particleFont", particleFont);
+        config.setValue("helpFont", helpFont);
+        config.setValue("secureFont", secureFont);
+        config.setValue("japanFont", japanFont);
+        config.setValue("showBackground", showBackground);
+        config.setValue("enableMumble", enableMumble);
+        config.setValue("enableMapReduce", enableMapReduce);
+    }
+    else
+    {
+        config.setValue("opengl", tmpOpengl);
+        config.setValue("screenwidth", width);
+        config.setValue("screenheight", height);
+    }
 }
 
 void Client::initTradeFilter()

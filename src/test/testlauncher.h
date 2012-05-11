@@ -47,6 +47,8 @@ class TestLauncher
 
         int testInternal();
 
+        int testVideoDetection();
+
     private:
         std::string mTest;
 

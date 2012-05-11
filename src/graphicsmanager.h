@@ -35,6 +35,8 @@ class GraphicsManager
 
         void initGraphics(bool noOpenGL);
 
+        bool detectGraphics();
+
         void updateExtensions(const char *extensions);
 
         bool supportExtension(const std::string &ext);
@@ -43,10 +45,18 @@ class GraphicsManager
 
         void logString(const char *format, int num);
 
+        std::string getGLString(int num) const;
+
         void setVideoMode();
+
+        bool checkGLVersion(int major, int minor) const;
 
     private:
         std::set<std::string> mExtensions;
+
+        int mMinor;
+
+        int mMajor;
 };
 
 extern GraphicsManager graphicsManager;
