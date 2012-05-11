@@ -22,6 +22,7 @@
 #include "resources/emotedb.h"
 
 #include "animatedsprite.h"
+#include "client.h"
 #include "logger.h"
 
 #include "utils/xml.h"
@@ -32,6 +33,7 @@
 namespace
 {
     EmoteInfos mEmoteInfos;
+    EmoteToEmote mEmotesAlt;
     EmoteInfo mUnknown;
     bool mLoaded = false;
     int mLastEmote = 0;
@@ -69,7 +71,7 @@ void EmoteDB::load()
 
         int id = XML::getProperty(emoteNode, "id", -1);
         // skip hight images
-        if (id > 19)
+        if (id > 19 || (Client::isTmw() && id > 13))
             continue;
 
         if (id == -1)
@@ -133,6 +135,7 @@ void EmoteDB::load()
                          "manaplus_emotes.xml!");
             continue;
         }
+        int altId = XML::getProperty(emoteNode, "altid", -1);
 
         EmoteInfo *currentInfo = new EmoteInfo;
 
@@ -161,6 +164,9 @@ void EmoteDB::load()
             }
         }
         mEmoteInfos[id] = currentInfo;
+        if (altId != -1)
+            mEmotesAlt[altId] = id;
+
         if (id > mLastEmote)
             mLastEmote = id;
     }
@@ -221,6 +227,14 @@ const AnimatedSprite *EmoteDB::getAnimation(int id, bool allowNull)
         return nullptr;
 
     return info->sprites.front()->sprite;
+}
+
+const AnimatedSprite *EmoteDB::getAnimation2(int id, bool allowNull)
+{
+    EmoteToEmote::const_iterator it = mEmotesAlt.find(id);
+    if (it != mEmotesAlt.end())
+        id = (*it).second;
+    return getAnimation(id, allowNull);
 }
 
 const EmoteSprite *EmoteDB::getSprite(int id, bool allowNull)

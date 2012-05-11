@@ -42,6 +42,7 @@ struct EmoteInfo
 };
 
 typedef std::map<int, EmoteInfo*> EmoteInfos;
+typedef std::map<int, int> EmoteToEmote;
 
 /**
  * Emote information database.
@@ -55,6 +56,8 @@ namespace EmoteDB
     const EmoteInfo *get(int id, bool allowNull = false);
 
     const AnimatedSprite *getAnimation(int id, bool allowNull = false);
+
+    const AnimatedSprite *getAnimation2(int id, bool allowNull = false);
 
     const EmoteSprite *getSprite(int id, bool allowNull = false);
 
