@@ -596,8 +596,8 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
+        // TRANSLATORS: Navigation tab name in social window. Should be small
         setCaption(_("Nav"));
-
     }
 
     ~SocialNavigationTab()
@@ -929,6 +929,7 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
+        // TRANSLATORS: Attack filter tab name in social window. Should be small
         setCaption(_("Atk"));
     }
 
@@ -983,6 +984,7 @@ public:
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
+        // TRANSLATORS: Pickup filter tab name in social window. Should be small
         setCaption(_("Pik"));
     }
 
