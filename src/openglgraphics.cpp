@@ -1160,9 +1160,6 @@ void OpenGLGraphics::drawPoint(int x, int y)
 
 void OpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
-    unsigned int vp = 4;
-    const unsigned int vLimit = vertexBufSize * 4;
-
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
@@ -1171,7 +1168,7 @@ void OpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     mFloatTexArray[2] = static_cast<float>(x2) + 0.5f;
     mFloatTexArray[3] = static_cast<float>(y2) + 0.5f;
 
-    drawLineArrayf(vp);
+    drawLineArrayf(4);
 
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }

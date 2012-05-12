@@ -40,8 +40,6 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
-#include "resources/iteminfo.h"
-
 #include "net/net.h"
 #include "net/playerhandler.h"
 
@@ -1620,8 +1618,11 @@ bool ActorSpriteManager::checkForPickup(FloorItem *item)
 {
     if (mPickupItemsSet.find("") != mPickupItemsSet.end())
     {
-        if (mIgnorePickupItemsSet.find(item->getName()) == mIgnorePickupItemsSet.end())
+        if (mIgnorePickupItemsSet.find(item->getName())
+            == mIgnorePickupItemsSet.end())
+        {
             return true;
+        }
     }
     else if (mPickupItemsSet.find(item->getName()) != mPickupItemsSet.end())
     {
