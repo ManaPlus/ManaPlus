@@ -1,3 +1,14 @@
+2012-05-12 New release 1.2.5.12
+fix: keys for Next chat line/previous chat line.
+fix: autologin from command line.
+fix: move shortcuts windows.
+add: timeout option between connections to servers.
+add: pickup filter.
+add: replace obsolete opengl code.
+add: custom autorepeat for some actions.
+add; option for auto attack next target if attack was not cancelled.
+Disabled by default.
+
 2012-04-29 New release 1.2.4.29
 fix: bluring setting apply.
 fix: split long lines in kill stats window.
