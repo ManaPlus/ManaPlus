@@ -139,7 +139,7 @@ static KeyData const keyData[Input::KEY_TOTAL] = {
         Input::GRP_DEFAULT | Input::GRP_REPEAT,
         &ActionManager::targetMonster,
         Input::KEY_NO_VALUE, 50,
-        COND_GAME | COND_NOTARGET},
+        COND_GAME | COND_NOTARGET | COND_VALIDSPEED},
     {"keyTargetNPC",
         INPUT_KEYBOARD, SDLK_n,
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
