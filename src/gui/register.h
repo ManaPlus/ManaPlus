@@ -33,6 +33,13 @@
 class LoginData;
 class OkDialog;
 
+namespace gcn
+{
+    class Button;
+    class RadioButton;
+    class TextField;
+}
+
 /**
  * Listener used while dealing with wrong data. It is used to direct the focus
  * to the field which contained wrong data when the Ok button was pressed on

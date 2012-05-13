@@ -24,7 +24,6 @@
 #define CHAR_CREATE_DIALOG_H
 
 #include "being.h"
-#include "guichanfwd.h"
 
 #include "gui/charselectdialog.h"
 
@@ -36,6 +35,13 @@
 class LocalPlayer;
 class PlayerBox;
 class TextField;
+
+namespace gcn
+{
+    class Label;
+    class RadioButton;
+    class Slider;
+}
 
 /**
  * Character creation dialog.

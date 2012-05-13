@@ -23,8 +23,6 @@
 
 #include "gui/widgets/tabbedarea.h"
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setuptabscroll.h"
 #include "gui/widgets/window.h"
 
@@ -44,6 +42,11 @@ class Label;
 class Slider;
 class SliderList;
 class TextField;
+
+namespace gcn
+{
+    class ListModel;
+}
 
 class SetupItem : public gcn::ActionListener
 {

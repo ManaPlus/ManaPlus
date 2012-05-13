@@ -22,8 +22,6 @@
 #ifndef GUI_SETUP_VISUAL_H
 #define GUI_SETUP_VISUAL_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/setuptabscroll.h"
 

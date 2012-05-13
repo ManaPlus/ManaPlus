@@ -23,8 +23,6 @@
 #ifndef GUI_SETUP_CHAT_H
 #define GUI_SETUP_CHAT_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setuptabscroll.h"
 
 #include <guichan/actionlistener.hpp>

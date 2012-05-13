@@ -528,7 +528,6 @@ SET(SRCS
     graphicsmanager.h
     graphicsvertexes.cpp
     graphicsvertexes.h
-    guichanfwd.h
     guild.cpp
     guild.h
     guildmanager.cpp

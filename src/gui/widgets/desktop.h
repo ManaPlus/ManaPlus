@@ -22,13 +22,16 @@
 #ifndef DESKTOP_H
 #define DESKTOP_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/container.h"
 
 #include <guichan/widgetlistener.hpp>
 
 class Image;
+
+namespace gcn
+{
+    class Label;
+}
 
 /**
  * Desktop widget, for drawing a background image and color.

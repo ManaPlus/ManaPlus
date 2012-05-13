@@ -23,8 +23,6 @@
 #ifndef TRADEWINDOW_H
 #define TRADEWINDOW_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -36,6 +34,13 @@ class Inventory;
 class Item;
 class ItemContainer;
 class ScrollArea;
+
+namespace gcn
+{
+    class Button;
+    class Label;
+    class TextField;
+}
 
 /**
  * Trade dialog.

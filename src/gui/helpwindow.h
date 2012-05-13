@@ -33,6 +33,11 @@
 class BrowserBox;
 class LinkHandler;
 
+namespace gcn
+{
+    class ScrollArea;
+}
+
 /**
  * The help dialog.
  */

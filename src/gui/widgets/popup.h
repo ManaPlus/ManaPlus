@@ -25,8 +25,6 @@
 #define POPUP_H
 
 #include "configuration.h"
-#include "guichanfwd.h"
-
 #include "gui/widgets/container.h"
 
 #include <guichan/mouselistener.hpp>

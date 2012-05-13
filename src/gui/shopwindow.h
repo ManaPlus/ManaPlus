@@ -23,8 +23,6 @@
 #ifndef SHOP_H
 #define SHOP_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -36,6 +34,14 @@ class ListBox;
 class ShopItem;
 class ShopItems;
 class ShopListBox;
+
+namespace gcn
+{
+    class Button;
+    class CheckBox;
+    class Label;
+    class ScrollArea;
+}
 
 /**
  * The buy dialog.

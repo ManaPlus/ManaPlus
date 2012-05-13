@@ -33,6 +33,14 @@
 class Icon;
 class TextBox;
 
+namespace gcn
+{
+    class Button;
+    class CheckBox;
+    class Label;
+    class ScrollArea;
+}
+
 /**
  * A popup that displays information about an item.
  */

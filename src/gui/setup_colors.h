@@ -22,8 +22,6 @@
 #ifndef SETUP_COLORS_H
 #define SETUP_COLORS_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/actionlistener.hpp>
@@ -34,6 +32,14 @@
 class BrowserBox;
 class TextField;
 class TextPreview;
+
+namespace gcn
+{
+    class Label;
+    class ListBox;
+    class ScrollArea;
+    class Slider;
+}
 
 class Setup_Colors : public SetupTab,
                      public gcn::SelectionListener

@@ -23,8 +23,6 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "guichanfwd.h"
-
 #include <guichan/gui.hpp>
 
 class Graphics;

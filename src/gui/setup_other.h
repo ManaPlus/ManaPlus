@@ -23,8 +23,6 @@
 #ifndef GUI_Setup_Other_H
 #define GUI_Setup_Other_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setupitem.h"
 #include "gui/widgets/setuptabscroll.h"
 

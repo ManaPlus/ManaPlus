@@ -24,7 +24,6 @@
 #define GUI_SETUP_VIDEO_H
 
 #include "being.h"
-#include "guichanfwd.h"
 
 #include "gui/widgets/setuptab.h"
 
@@ -34,6 +33,15 @@
 class ModeListModel;
 class OpenGLListModel;
 class TextDialog;
+
+namespace gcn
+{
+    class CheckBox;
+    class DropDown;
+    class Label;
+    class ListBox;
+    class Slider;
+}
 
 class Setup_Video : public SetupTab, public gcn::KeyListener
 {

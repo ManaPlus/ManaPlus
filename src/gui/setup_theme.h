@@ -23,8 +23,6 @@
 #ifndef GUI_Setup_Theme_H
 #define GUI_Setup_Theme_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/actionlistener.hpp>
@@ -35,6 +33,12 @@ class FontsModel;
 class FontSizeChoiceListModel;
 class LangListModel;
 class ThemesModel;
+
+namespace gcn
+{
+    class DropDown;
+    class Label;
+}
 
 class Setup_Theme : public SetupTab
 {

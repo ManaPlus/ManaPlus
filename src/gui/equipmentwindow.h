@@ -24,7 +24,6 @@
 #define EQUIPMENTWINDOW_H
 
 #include "equipment.h"
-#include "guichanfwd.h"
 #include "localconsts.h"
 
 #include "gui/widgets/window.h"
@@ -44,6 +43,11 @@ class ImageSet;
 class Item;
 class ItemPopup;
 class PlayerBox;
+
+namespace gcn
+{
+    class Button;
+}
 
 struct EquipmentBox
 {

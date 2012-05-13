@@ -35,6 +35,12 @@ class ItemsModal;
 class ItemPopup;
 class Label;
 
+namespace gcn
+{
+    class DropDown;
+    class Slider;
+}
+
 /**
  * Window used for selecting the amount of items to drop, trade or split.
  *

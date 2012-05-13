@@ -24,7 +24,6 @@
 #define CHAR_SELECT_H
 
 #include "being.h"
-#include "guichanfwd.h"
 #include "main.h"
 
 #include "gui/widgets/window.h"
@@ -39,6 +38,12 @@ class LocalPlayer;
 class LoginData;
 class PlayerBox;
 class TextDialog;
+
+namespace gcn
+{
+    class Button;
+    class Label;
+}
 
 namespace Net
 {

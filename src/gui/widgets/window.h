@@ -24,7 +24,6 @@
 #define WINDOW_H
 
 #include "graphics.h"
-#include "guichanfwd.h"
 #include "localconsts.h"
 
 #include <guichan/widgetlistener.hpp>

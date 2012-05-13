@@ -32,6 +32,11 @@
 class Label;
 class Button;
 
+namespace gcn
+{
+    class Label;
+}
+
 class KillStats : public Window, gcn::ActionListener, public Listener
 {
     public:

@@ -44,6 +44,12 @@ class ProgressBar;
 class SortListModel;
 class TextField;
 
+namespace gcn
+{
+    class Button;
+    class Label;
+}
+
 /**
  * Inventory dialog.
  *

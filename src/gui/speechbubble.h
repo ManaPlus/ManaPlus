@@ -30,6 +30,11 @@
 
 class TextBox;
 
+namespace gcn
+{
+    class Label;
+}
+
 class SpeechBubble : public Popup
 {
     public:

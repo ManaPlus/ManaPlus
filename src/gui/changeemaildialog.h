@@ -23,8 +23,6 @@
 #ifndef GUI_CHANGEEMAIL_H
 #define GUI_CHANGEEMAIL_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
@@ -32,6 +30,12 @@
 class LoginData;
 class OkDialog;
 class WrongDataNoticeListener;
+
+namespace gcn
+{
+    class Button;
+    class TextField;
+}
 
 /**
  * The Change email dialog.

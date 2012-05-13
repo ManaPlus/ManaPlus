@@ -24,7 +24,6 @@
 #define PARTICLE_H
 
 #include "actor.h"
-#include "guichanfwd.h"
 #include "localconsts.h"
 #include "vector.h"
 
@@ -35,6 +34,12 @@ class Map;
 class Particle;
 class ParticleEmitter;
 class SDLFont;
+
+namespace gcn
+{
+    class Color;
+    class Font;
+}
 
 typedef std::list<Particle *> Particles;
 typedef Particles::iterator ParticleIterator;

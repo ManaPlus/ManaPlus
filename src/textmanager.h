@@ -24,9 +24,12 @@
 
 #include <list>
 
-#include "guichanfwd.h"
-
 class Text;
+
+namespace gcn
+{
+    class Graphics;
+}
 
 class TextManager
 {

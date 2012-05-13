@@ -42,6 +42,11 @@ class TextBox;
 class TextField;
 class Button;
 
+namespace gcn
+{
+    class ScrollArea;
+}
+
 /**
  * The npc dialog.
  *

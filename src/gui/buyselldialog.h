@@ -27,6 +27,11 @@
 
 #include <guichan/actionlistener.hpp>
 
+namespace gcn
+{
+    class Button;
+}
+
 /**
  * A dialog to choose between buying or selling at a shop.
  *

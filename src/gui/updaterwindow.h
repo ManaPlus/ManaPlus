@@ -41,6 +41,11 @@ class ProgressBar;
 class ResourceManager;
 class ScrollArea;
 
+namespace gcn
+{
+    class Label;
+}
+
 struct updateFile
 {
     public:

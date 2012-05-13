@@ -23,14 +23,19 @@
 #ifndef GUI_SETUP_JOYSTICK_H
 #define GUI_SETUP_JOYSTICK_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/setuptab.h"
 
 #include <guichan/actionlistener.hpp>
 
 class DropDown;
 class NamesModel;
+
+namespace gcn
+{
+    class Button;
+    class CheckBox;
+    class Label;
+}
 
 class Setup_Joystick : public SetupTab
 {

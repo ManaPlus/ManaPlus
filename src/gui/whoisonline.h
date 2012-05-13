@@ -41,6 +41,11 @@ class ScrollArea;
 
 struct SDL_Thread;
 
+namespace gcn
+{
+    class Button;
+}
+
 class OnlinePlayer
 {
     public:

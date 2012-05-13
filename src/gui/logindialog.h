@@ -37,6 +37,14 @@ class LoginData;
 class UpdateListModel;
 class UpdateTypeModel;
 
+namespace gcn
+{
+    class Button;
+    class CheckBox;
+    class Label;
+    class TextField;
+}
+
 /**
  * The login dialog.
  *

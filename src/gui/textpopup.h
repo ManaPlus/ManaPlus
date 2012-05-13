@@ -30,6 +30,11 @@
 
 class TextBox;
 
+namespace gcn
+{
+    class Label;
+}
+
 /**
  * A popup that displays information about an item.
  */

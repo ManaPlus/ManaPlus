@@ -42,6 +42,11 @@ class ScrollArea;
 class UsersTableModel;
 class StaticTableModel;
 
+namespace gcn
+{
+    class Button;
+}
+
 class BotCheckerWindow : public Window, public gcn::ActionListener,
                          public ConfigListener
 {

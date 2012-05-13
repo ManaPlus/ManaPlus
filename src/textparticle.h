@@ -23,7 +23,6 @@
 #ifndef TEXTPARTICLE_H
 #define TEXTPARTICLE_H
 
-#include "guichanfwd.h"
 #include "particle.h"
 
 class TextParticle : public Particle

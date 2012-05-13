@@ -25,8 +25,6 @@
 
 #include "gui/widgets/tabbedarea.h"
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>

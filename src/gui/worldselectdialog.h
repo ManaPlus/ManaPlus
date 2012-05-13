@@ -36,6 +36,12 @@
 class LoginData;
 class WorldListModel;
 
+namespace gcn
+{
+    class Button;
+    class ListBox;
+}
+
 /**
  * The server select dialog.
  *

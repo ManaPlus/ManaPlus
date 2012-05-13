@@ -34,6 +34,14 @@ class Item;
 class ShopItems;
 class ShopListBox;
 
+namespace gcn
+{
+    class Button;
+    class Label;
+    class ScrollArea;
+    class Slider;
+}
+
 /**
  * The sell dialog.
  *

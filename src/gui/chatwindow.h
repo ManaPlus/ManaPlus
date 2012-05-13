@@ -51,6 +51,11 @@ class ItemLinkHandler;
 class Tab;
 class WhisperTab;
 
+namespace gcn
+{
+    class DropDown;
+}
+
 #define DEFAULT_CHAT_WINDOW_SCROLL 7 // 1 means `1/8th of the window size'.
 
 enum Own

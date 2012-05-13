@@ -23,7 +23,6 @@
 #ifndef STATUS_H
 #define STATUS_H
 
-#include "guichanfwd.h"
 #include "listener.h"
 
 #include "gui/widgets/window.h"
@@ -36,6 +35,12 @@ class AttrDisplay;
 class ProgressBar;
 class ScrollArea;
 class VertContainer;
+
+namespace gcn
+{
+    class Button;
+    class Label;
+}
 
 /**
  * The player status dialog.

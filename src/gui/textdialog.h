@@ -30,6 +30,11 @@
 class PasswordField;
 class TextField;
 
+namespace gcn
+{
+    class Button;
+}
+
 /**
 * An option dialog.
  *

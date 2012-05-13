@@ -23,7 +23,6 @@
 #ifndef GUI_SETUP_RELATIONS_H
 #define GUI_SETUP_RELATIONS_H
 
-#include "guichanfwd.h"
 #include "playerrelations.h"
 
 #include "gui/widgets/setuptab.h"
@@ -35,8 +34,17 @@ class GuiTable;
 class PlayerTableModel;
 class StaticTableModel;
 
+namespace gcn
+{
+    class Button;
+    class CheckBox;
+    class DropDown;
+    class ListModel;
+    class ScrollArea;
+}
+
 class Setup_Relations : public SetupTab,
-                      public PlayerRelationsListener
+                        public PlayerRelationsListener
 {
 public:
     Setup_Relations();

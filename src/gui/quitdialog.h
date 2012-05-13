@@ -23,14 +23,18 @@
 #ifndef QUITDIALOG_H
 #define QUITDIALOG_H
 
-#include "guichanfwd.h"
-
 #include "gui/widgets/window.h"
 
 #include <guichan/actionlistener.hpp>
 #include <guichan/keylistener.hpp>
 
 #include <vector>
+
+namespace gcn
+{
+    class Button;
+    class RadioButton;
+}
 
 /**
  * The quit dialog.
