@@ -449,26 +449,25 @@ void Gui::updateFonts()
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
-    static_cast<SDLFont*>(mGuiFont)->loadFont(fontFile, fontSize);
+    mGuiFont->loadFont(fontFile, fontSize);
 
     fontFile = config.getValue("particleFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("particleFont");
 
-    static_cast<SDLFont*>(mInfoParticleFont)->loadFont(
-        fontFile, fontSize, TTF_STYLE_BOLD);
+    mInfoParticleFont->loadFont(fontFile, fontSize, TTF_STYLE_BOLD);
 
     fontFile = config.getValue("boldFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("boldFont");
 
-    static_cast<SDLFont*>(boldFont)->loadFont(fontFile, fontSize);
+    boldFont->loadFont(fontFile, fontSize);
 
     fontFile = config.getValue("secureFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("secureFont");
 
-    static_cast<SDLFont*>(mSecureFont)->loadFont(fontFile, fontSize);
+    mSecureFont->loadFont(fontFile, fontSize);
 }
 
 void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,

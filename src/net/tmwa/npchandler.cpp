@@ -143,7 +143,7 @@ void NpcHandler::listInput(int npcId, unsigned char value)
 {
     MessageOut outMsg(CMSG_NPC_LIST_CHOICE);
     outMsg.writeInt32(npcId);
-    outMsg.writeInt8(static_cast<unsigned char>(value));
+    outMsg.writeInt8(value);
 }
 
 void NpcHandler::integerInput(int npcId, int value)

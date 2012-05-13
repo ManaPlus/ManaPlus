@@ -186,7 +186,7 @@ void SDLFont::clear()
     for (unsigned short f = 0; f < static_cast<unsigned short>(
         CACHES_NUMBER); f ++)
     {
-        mCache[static_cast<unsigned short>(f)].clear();
+        mCache[f].clear();
     }
 }
 
