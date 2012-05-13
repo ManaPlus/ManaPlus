@@ -599,7 +599,10 @@ void WhoIsOnline::logic()
 {
     // Update Scroll logic
     mScrollArea->logic();
+}
 
+void WhoIsOnline::slowLogic()
+{
     if (!mAllowUpdate)
         return;
 

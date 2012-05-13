@@ -29,6 +29,7 @@
 #include "units.h"
 
 #include "gui/gui.h"
+#include "gui/sdlfont.h"
 #include "gui/theme.h"
 
 #include "gui/widgets/icon.h"

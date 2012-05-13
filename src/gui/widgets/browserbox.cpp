@@ -31,6 +31,7 @@
 
 #include "gui/gui.h"
 #include "gui/palette.h"
+#include "gui/sdlfont.h"
 #include "gui/theme.h"
 
 #include "gui/widgets/linkhandler.h"

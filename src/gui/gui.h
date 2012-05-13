@@ -30,6 +30,7 @@
 class Graphics;
 class GuiConfigListener;
 class ImageSet;
+class SDLFont;
 class SDLInput;
 
 /**
@@ -64,6 +65,8 @@ class Gui : public gcn::Gui
          */
         void logic();
 
+        void slowLogic();
+
         /**
          * Draws the whole Gui by calling draw functions down in the
          * Gui hierarchy. It also draws the mouse pointer.
@@ -81,26 +84,26 @@ class Gui : public gcn::Gui
         /**
          * Return game font.
          */
-        gcn::Font *getFont() const
+        SDLFont *getFont() const
         { return mGuiFont; }
 
         /**
          * Return help font.
          */
-        gcn::Font *getHelpFont() const
+        SDLFont *getHelpFont() const
         { return mHelpFont; }
 
         /**
          * Return secure font.
          */
-        gcn::Font *getSecureFont() const
+        SDLFont *getSecureFont() const
         { return mSecureFont; }
 
         /**
          * Return the Font used for "Info Particles", i.e. ones showing, what
          * you picked up, etc.
          */
-        gcn::Font *getInfoParticleFont() const
+        SDLFont *getInfoParticleFont() const
         { return mInfoParticleFont; }
 
         /**
@@ -147,10 +150,10 @@ class Gui : public gcn::Gui
 
     private:
         GuiConfigListener *mConfigListener;
-        gcn::Font *mGuiFont;                  /**< The global GUI font */
-        gcn::Font *mInfoParticleFont;         /**< Font for Info Particles*/
-        gcn::Font *mHelpFont;                 /**< Font for Help Window*/
-        gcn::Font *mSecureFont;               /**< Font for secure labels*/
+        SDLFont *mGuiFont;                  /**< The global GUI font */
+        SDLFont *mInfoParticleFont;         /**< Font for Info Particles*/
+        SDLFont *mHelpFont;                 /**< Font for Help Window*/
+        SDLFont *mSecureFont;               /**< Font for secure labels*/
         bool mCustomCursor;                   /**< Show custom cursor */
         ImageSet *mMouseCursors;              /**< Mouse cursor images */
         float mMouseCursorAlpha;
@@ -164,6 +167,6 @@ extern SDLInput *guiInput;                    /**< GUI input */
 /**
  * Bolded text font
  */
-extern gcn::Font *boldFont;
+extern SDLFont *boldFont;
 
 #endif // GUI_H

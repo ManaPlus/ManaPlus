@@ -33,6 +33,7 @@
 #include "gui/gui.h"
 #include "gui/inventorywindow.h"
 #include "gui/itemamountwindow.h"
+#include "gui/sdlfont.h"
 #include "gui/setup.h"
 #include "gui/theme.h"
 

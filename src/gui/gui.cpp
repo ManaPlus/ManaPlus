@@ -56,7 +56,7 @@ Gui *gui = nullptr;
 SDLInput *guiInput = nullptr;
 
 // Bolded font
-gcn::Font *boldFont = nullptr;
+SDLFont *boldFont = nullptr;
 
 class GuiConfigListener : public ConfigListener
 {
@@ -244,6 +244,22 @@ void Gui::logic()
     ResourceManager *resman = ResourceManager::getInstance();
     resman->clearScheduled();
 
+    if (!mTop)
+        return;
+
+    handleModalFocus();
+    handleModalMouseInputFocus();
+
+    if (mInput)
+        handleMouseInput();
+
+    mTop->logic();
+}
+
+void Gui::slowLogic()
+{
+    Palette::advanceGradients();
+
     // Fade out mouse cursor after extended inactivity
     if (mMouseInactivityTimer < 100 * 15)
     {
@@ -254,22 +270,16 @@ void Gui::logic()
     {
         mMouseCursorAlpha = std::max(0.0f, mMouseCursorAlpha - 0.005f);
     }
-
-    Palette::advanceGradients();
-
-    if (!mTop)
-        return;
-
-    handleModalFocus();
-    handleModalMouseInputFocus();
-
-    if (mInput)
-    {
-//        mInput->_pollInput();
-        handleMouseInput();
-    }
-
-    mTop->logic();
+    if (mGuiFont)
+        mGuiFont->slowLogic();
+    if (mInfoParticleFont)
+        mInfoParticleFont->slowLogic();
+    if (mHelpFont)
+        mHelpFont->slowLogic();
+    if (mSecureFont)
+        mSecureFont->slowLogic();
+    if (boldFont)
+        boldFont->slowLogic();
 }
 
 bool Gui::handleInput()

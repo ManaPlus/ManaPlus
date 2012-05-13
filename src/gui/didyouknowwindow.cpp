@@ -26,6 +26,7 @@
 #include "logger.h"
 
 #include "gui/gui.h"
+#include "gui/sdlfont.h"
 #include "gui/setup.h"
 
 #include "gui/widgets/button.h"

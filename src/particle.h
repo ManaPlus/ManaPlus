@@ -34,6 +34,7 @@
 class Map;
 class Particle;
 class ParticleEmitter;
+class SDLFont;
 
 typedef std::list<Particle *> Particles;
 typedef Particles::iterator ParticleIterator;

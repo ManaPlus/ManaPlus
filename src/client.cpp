@@ -867,6 +867,10 @@ int Client::gameExec()
             k ++;
         }
         logic_count += k;
+        if (gui)
+            gui->slowLogic();
+        if (mGame)
+            mGame->slowLogic();
 
         // This is done because at some point tick_time will wrap.
         lastTickTime = tick_time;

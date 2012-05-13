@@ -347,7 +347,7 @@ void KillStats::update()
 }
 void KillStats::draw(gcn::Graphics *g)
 {
-    update();
+//    update();
 
     Window::draw(g);
 }

@@ -121,6 +121,8 @@ public:
 
     void logic();
 
+    void slowLogic();
+
     void action(const gcn::ActionEvent &event);
 
     void widgetResized(const gcn::Event &event);

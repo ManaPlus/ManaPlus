@@ -543,10 +543,28 @@ void Game::logic()
         actorSpriteManager->logic();
     if (particleEngine)
         particleEngine->update();
+
+    cur_time = static_cast<int>(time(nullptr));
+}
+
+void Game::slowLogic()
+{
+    if (player_node)
+        player_node->slowLogic();
+    if (botCheckerWindow)
+        botCheckerWindow->slowLogic();
+    if (debugWindow)
+        debugWindow->slowLogic();
+    if (killStats)
+        killStats->update();
+    if (socialWindow)
+        socialWindow->slowLogic();
+    if (whoIsOnline)
+        whoIsOnline->slowLogic();
+
     if (mCurrentMap)
         mCurrentMap->update();
 
-    cur_time = static_cast<int>(time(nullptr));
     Being::reReadConfig();
     if (killStats)
         killStats->recalcStats();
@@ -597,6 +615,7 @@ void Game::logic()
             disconnectedDialog = nullptr;
         }
     }
+
 }
 
 void Game::adjustPerfomance()

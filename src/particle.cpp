@@ -36,6 +36,8 @@
 
 #include "resources/resourcemanager.h"
 
+#include "gui/sdlfont.h"
+
 #include "utils/dtor.h"
 #include "utils/mathutils.h"
 #include "utils/xml.h"

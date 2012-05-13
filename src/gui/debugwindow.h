@@ -125,7 +125,7 @@ class DebugWindow : public Window
         /**
          * Logic (updates components' size and infos)
          */
-        void logic();
+        void slowLogic();
 
         void draw(gcn::Graphics *g);
 

@@ -76,6 +76,8 @@ class Game
          */
         void logic();
 
+        void slowLogic();
+
         void handleInput();
 
         void handleMove();

@@ -255,16 +255,6 @@ void SDLFont::drawString(gcn::Graphics *graphics,
 
         if (data.img)
             g->drawImage(data.img, x, y);
-
-        if (!mCleanTime)
-        {
-            mCleanTime = cur_time + CLEAN_TIME;
-        }
-        else if (mCleanTime < cur_time)
-        {
-            doClean();
-            mCleanTime = cur_time + CLEAN_TIME;
-        }
     }
     else if (cache->front().img)
     {
@@ -273,6 +263,19 @@ void SDLFont::drawString(gcn::Graphics *graphics,
         g->drawImage(image, x, y);
     }
 
+}
+
+void SDLFont::slowLogic()
+{
+    if (!mCleanTime)
+    {
+        mCleanTime = cur_time + CLEAN_TIME;
+    }
+    else if (mCleanTime < cur_time)
+    {
+        doClean();
+        mCleanTime = cur_time + CLEAN_TIME;
+    }
 }
 
 void SDLFont::createSDLTextChunk(SDLTextChunk *chunk)

@@ -39,6 +39,7 @@
 
 #include "gui/gui.h"
 #include "gui/setup.h"
+#include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 #include "gui/viewport.h"

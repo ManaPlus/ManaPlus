@@ -82,6 +82,8 @@ class SDLFont : public gcn::Font
 
         void doClean();
 
+        void slowLogic();
+
         int getCreateCounter() const
         { return mCreateCounter; }
 

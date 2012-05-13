@@ -85,7 +85,7 @@ public:
 
     void resetDamage(std::string name);
 
-    void logic();
+    void slowLogic();
 
     void updatePortals();
 

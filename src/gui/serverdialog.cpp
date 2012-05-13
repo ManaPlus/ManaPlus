@@ -34,6 +34,7 @@
 #include "gui/gui.h"
 #include "gui/logindialog.h"
 #include "gui/okdialog.h"
+#include "gui/sdlfont.h"
 #include "gui/sdlinput.h"
 #include "gui/theme.h"
 

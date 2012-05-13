@@ -62,7 +62,7 @@ class BotCheckerWindow : public Window, public gcn::ActionListener,
 
         void update();
 
-        void logic();
+        void slowLogic();
 
         void updateList();
 

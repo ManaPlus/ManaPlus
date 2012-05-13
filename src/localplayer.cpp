@@ -49,6 +49,7 @@
 #include "gui/okdialog.h"
 #include "gui/outfitwindow.h"
 #include "gui/shopwindow.h"
+#include "gui/sdlfont.h"
 #include "gui/skilldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/theme.h"
@@ -258,13 +259,6 @@ void LocalPlayer::logic()
         }
     }
 
-    if (weightNotice && weightNoticeTime < cur_time)
-    {
-        weightNotice->scheduleDelete();
-        weightNotice = nullptr;
-        weightNoticeTime = 0;
-    }
-
     // Show XP messages
     if (!mMessages.empty())
     {
@@ -349,6 +343,18 @@ void LocalPlayer::logic()
         }
     }
 
+    Being::logic();
+}
+
+void LocalPlayer::slowLogic()
+{
+    if (weightNotice && weightNoticeTime < cur_time)
+    {
+        weightNotice->scheduleDelete();
+        weightNotice = nullptr;
+        weightNoticeTime = 0;
+    }
+
     if (serverVersion < 4 && mEnableAdvert && !mBlockAdvert
         && mAdvertTime < cur_time)
     {
@@ -367,7 +373,6 @@ void LocalPlayer::logic()
         else
             mAdvertTime = cur_time + 30;
     }
-    Being::logic();
 }
 
 void LocalPlayer::setAction(Action action, int attackType)

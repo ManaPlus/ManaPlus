@@ -24,6 +24,7 @@
 #include "logger.h"
 
 #include "gui/gui.h"
+#include "gui/sdlfont.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -203,7 +204,7 @@ int SliderList::getMaxLabelWidth()
         return 1;
 
     int maxWidth = 0;
-    gcn::Font *font = gui->getFont();
+    SDLFont *font = gui->getFont();
 
     for (int f = 0; f < mListModel->getNumberOfElements(); f ++)
     {

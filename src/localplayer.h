@@ -84,6 +84,8 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         virtual void logic();
 
+        void slowLogic();
+
         virtual void setAction(Action action, int attackType = 0);
 
         /**

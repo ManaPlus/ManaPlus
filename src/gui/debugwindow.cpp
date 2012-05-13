@@ -92,7 +92,7 @@ DebugWindow::~DebugWindow()
     mNetWidget = nullptr;
 }
 
-void DebugWindow::logic()
+void DebugWindow::slowLogic()
 {
     if (!isVisible() || !mTabs)
         return;

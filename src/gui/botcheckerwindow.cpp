@@ -343,7 +343,7 @@ BotCheckerWindow::~BotCheckerWindow()
     config.removeListener("enableBotCheker", this);
 }
 
-void BotCheckerWindow::logic()
+void BotCheckerWindow::slowLogic()
 {
     if (mEnabled && mTableModel)
     {
@@ -361,8 +361,6 @@ void BotCheckerWindow::logic()
             mLastUpdateTime = nowTime;
         }
     }
-
-    Window::logic();
 }
 
 void BotCheckerWindow::action(const gcn::ActionEvent &event)
