@@ -102,8 +102,9 @@ bool TranslationManager::translateFile(const std::string &fileName,
     }
     std::string str = std::string(fileContents, contentsLength);
 
-    size_t oldPos1 = 0;
+    size_t oldPos1 = std::string::npos;
     size_t pos1;
+
     while ((pos1 = str.find("<<")) != std::string::npos)
     {
         if (pos1 == oldPos1)
