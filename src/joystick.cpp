@@ -196,6 +196,8 @@ void Joystick::logic()
         {
             const bool state = (SDL_JoystickGetButton(mJoystick, i) == 1);
             mActiveButtons[i] = state;
+            if (!state)
+                resetRepeat(i);
 #ifdef DEBUG_JOYSTICK
             if (mActiveButtons[i])
                 logger->log("button: %d", i);
