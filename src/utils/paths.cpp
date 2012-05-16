@@ -75,3 +75,53 @@ std::string &fixDirSeparators(std::string &str)
 
     return replaceAll(str, "/", "\\");
 }
+
+std::string removeLast(std::string str)
+{
+    size_t pos2 = str.rfind("/");
+    size_t pos3 = str.rfind("\\");
+    if (pos3 != std::string::npos)
+    {
+        if (pos2 == std::string::npos || pos3 > pos2)
+            pos2 = pos3;
+    }
+    if (pos2 == std::string::npos)
+        pos2 = -1;
+    if (pos2 >= 0)
+        return str.substr(0, pos2);
+    else
+        return str;
+}
+
+#ifdef WIN32
+std::string getSelfName()
+{
+    // GetModuleFileName(nullptr)
+    return "";
+}
+
+#elif defined(__APPLE__)
+std::string getSelfName()
+{
+    return "";
+}
+
+#elif defined __linux__ || defined __linux
+#include <unistd.h>
+
+std::string getSelfName()
+{
+    char buf[257];
+    int sz = readlink("/proc/self/exe", buf, 256);
+    if (sz > 0 && sz < 256)
+    {
+        buf[sz] = 0;
+        return buf;
+    }
+    else
+    {
+        return "";
+    }
+}
+
+#endif

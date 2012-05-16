@@ -1,5 +1,0 @@
-#!/bin/sh
-
-cd $(dirname $(whereis -b manaplus|cut -d " " -f 2))
-
-manaplus --tests

@@ -31,4 +31,6 @@ bool checkPath(std::string path);
 
 std::string &fixDirSeparators(std::string &str);
 
+std::string getSelfName();
+
 #endif // UTILS_PATHS_H

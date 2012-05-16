@@ -29,6 +29,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 #include "utils/stringutils.h"
+#include "utils/paths.h"
 #include "utils/process.h"
 
 #include <iostream>
@@ -43,7 +44,7 @@ TestMain::TestMain()
 #ifdef WIN32
     fileName = "manaplus.exe";
 #else
-    fileName = selfName;
+    fileName = getSelfName();
 #endif
 
     log = new Logger;

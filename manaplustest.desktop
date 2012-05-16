@@ -3,7 +3,7 @@
 Version=1.0
 Name=ManaPlus (Tests)
 Comment=Run tests for ManaPlus
-Exec=manaplustest
+Exec=manaplus --tests
 StartupNotify=false
 Terminal=false
 Type=Application
