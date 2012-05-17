@@ -23,7 +23,6 @@
 #include "utils/gettext.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "localconsts.h"
 
 #include "utils/gettext.h"
@@ -41,11 +40,7 @@ extern char *selfName;
 
 TestMain::TestMain()
 {
-#ifdef WIN32
-    fileName = "manaplus.exe";
-#else
     fileName = getSelfName();
-#endif
 
     log = new Logger;
 //    log->setLogFile(Client::getLocalDataDirectory()
@@ -56,25 +51,25 @@ TestMain::TestMain()
 
 void TestMain::initConfig()
 {
-    config.init(Client::getConfigDirectory() + "/test.xml");
-//    config.setDefaultValues(getConfigDefaults());
+    mConfig.init(Client::getConfigDirectory() + "/test.xml");
+//    mConfig.setDefaultValues(getConfigDefaults());
 
-    config.setValue("hwaccel", false);
-    config.setValue("screen", false);
-    config.setValue("sound", false);
-    config.setValue("guialpha", 0.8f);
-//    config.setValue("remember", true);
-    config.setValue("sfxVolume", 50);
-    config.setValue("musicVolume", 60);
-    config.setValue("fpslimit", 0);
-    config.setValue("customcursor", true);
-    config.setValue("useScreenshotDirectorySuffix", true);
-    config.setValue("ChatLogLength", 128);
-    config.setValue("screenwidth", 800);
-    config.setValue("screenheight", 600);
+    mConfig.setValue("hwaccel", false);
+    mConfig.setValue("screen", false);
+    mConfig.setValue("sound", false);
+    mConfig.setValue("guialpha", 0.8f);
+//    mConfig.setValue("remember", true);
+    mConfig.setValue("sfxVolume", 50);
+    mConfig.setValue("musicVolume", 60);
+    mConfig.setValue("fpslimit", 0);
+    mConfig.setValue("customcursor", true);
+    mConfig.setValue("useScreenshotDirectorySuffix", true);
+    mConfig.setValue("ChatLogLength", 128);
+    mConfig.setValue("screenwidth", 800);
+    mConfig.setValue("screenheight", 600);
 }
 
-int TestMain::exec()
+int TestMain::exec(bool testAudio)
 {
     initConfig();
     int softwareTest = invokeSoftwareRenderTest("1");
@@ -97,11 +92,14 @@ int TestMain::exec()
 
     videoDetectTest = invokeTest("99");
     if (!videoDetectTest)
-        detectMode = readValue(99);
+        detectMode = readValue2(99);
 
     fastOpenGLTest = invokeFastOpenGLRenderTest("2");
     safeOpenGLTest = invokeSafeOpenGLRenderTest("3");
-    soundTest = invokeTest4();
+    if (testAudio)
+        soundTest = invokeTest4();
+    else
+        soundTest = true;
 
     info += strprintf("%d.%d,%d,%d.", soundTest, softwareTest,
         fastOpenGLTest, safeOpenGLTest);
@@ -112,7 +110,7 @@ int TestMain::exec()
         info += strprintf ("%d", softFpsTest);
         if (!softFpsTest)
         {
-            softFps = readValue(8);
+            softFps = readValue2(8);
             info += strprintf (",%d", softFps);
             if (!softFps)
             {
@@ -137,7 +135,7 @@ int TestMain::exec()
         info += strprintf ("%d", fastOpenGLFpsTest);
         if (!fastOpenGLFpsTest)
         {
-            fastOpenGLFps = readValue(9);
+            fastOpenGLFps = readValue2(9);
             info += strprintf (",%d", fastOpenGLFps);
             if (!fastOpenGLFps)
             {
@@ -162,7 +160,7 @@ int TestMain::exec()
         info += strprintf ("%d", safeOpenGLFpsTest);
         if (!safeOpenGLFpsTest)
         {
-            safeOpenGLFps = readValue(10);
+            safeOpenGLFps = readValue2(10);
             info += strprintf (",%d", safeOpenGLFps);
             if (!safeOpenGLFps)
             {
@@ -205,30 +203,38 @@ int TestMain::exec()
 void TestMain::writeConfig(int openGLMode, int rescale,
                            int sound, std::string info)
 {
-    config.init(Client::getConfigDirectory() + "/config.xml");
+    mConfig.init(Client::getConfigDirectory() + "/config.xml");
 
     // searched values
-    config.setValue("opengl", openGLMode);
-    config.setValue("showBackground", !rescale);
-    config.setValue("sound", !sound);
+    mConfig.setValue("opengl", openGLMode);
+    mConfig.setValue("showBackground", !rescale);
+    mConfig.setValue("sound", !sound);
 
     // better perfomance
-    config.setValue("hwaccel", true);
-    config.setValue("fpslimit", 60);
-    config.setValue("altfpslimit", 2);
-    config.setValue("safemode", false);
-    config.setValue("enableMapReduce", true);
+    mConfig.setValue("hwaccel", true);
+    mConfig.setValue("fpslimit", 60);
+    mConfig.setValue("altfpslimit", 2);
+    mConfig.setValue("safemode", false);
+    mConfig.setValue("enableMapReduce", true);
 
     // stats
-    config.setValue("testInfo", info);
+    mConfig.setValue("testInfo", info);
 
-    config.write();
+    mConfig.write();
+}
+
+int TestMain::readValue2(int ver)
+{
+    int def = readValue(ver, 0);
+    log->log("value for %d = %d", ver, def);
+    return 0;
 }
 
 int TestMain::readValue(int ver, int def)
 {
     std::string tmp;
     int var;
+    std::ifstream file;
     file.open((Client::getLocalDataDirectory()
         + std::string("/test.log")).c_str(), std::ios::in);
     if (!getline(file, tmp))
@@ -244,22 +250,21 @@ int TestMain::readValue(int ver, int def)
     }
     def = atoi(tmp.c_str());
     file.close();
-    log->log("value for %d = %d", ver, def);
     return def;
 }
 
 int TestMain::invokeTest(std::string test)
 {
-    config.setValue("opengl", 0);
+    mConfig.setValue("opengl", 0);
 
-    config.write();
+    mConfig.write();
     int ret = execFile(fileName, fileName, "-t", test);
     return ret;
 }
 
 int TestMain::invokeTest4()
 {
-    config.setValue("sound", true);
+    mConfig.setValue("sound", true);
     int ret = invokeTest("4");
 
     log->log("4: %d", ret);
@@ -268,8 +273,8 @@ int TestMain::invokeTest4()
 
 int TestMain::invokeSoftwareRenderTest(std::string test)
 {
-    config.setValue("opengl", 0);
-    config.write();
+    mConfig.setValue("opengl", 0);
+    mConfig.write();
     int ret = execFile(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
@@ -278,8 +283,8 @@ int TestMain::invokeSoftwareRenderTest(std::string test)
 int TestMain::invokeFastOpenGLRenderTest(std::string test)
 {
 #if defined USE_OPENGL
-    config.setValue("opengl", 1);
-    config.write();
+    mConfig.setValue("opengl", 1);
+    mConfig.write();
     int ret = execFile(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
@@ -291,8 +296,8 @@ int TestMain::invokeFastOpenGLRenderTest(std::string test)
 int TestMain::invokeSafeOpenGLRenderTest(std::string test)
 {
 #if defined USE_OPENGL
-    config.setValue("opengl", 2);
-    config.write();
+    mConfig.setValue("opengl", 2);
+    mConfig.write();
     int ret = execFile(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;

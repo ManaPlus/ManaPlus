@@ -25,6 +25,11 @@
 #include "configuration.h"
 #include "game.h"
 #include "graphics.h"
+
+#ifdef WIN32
+#include "graphicsmanager.h"
+#endif
+
 #include "localplayer.h"
 #include "logger.h"
 #include "main.h"
@@ -33,6 +38,7 @@
 #include "gui/okdialog.h"
 #include "gui/textdialog.h"
 
+#include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
@@ -50,6 +56,8 @@
 
 #include <guichan/key.hpp>
 #include <guichan/listmodel.hpp>
+
+#include <guichan/widgets/button.hpp>
 
 #include <SDL.h>
 
@@ -232,6 +240,11 @@ Setup_Video::Setup_Video():
     mFpsLabel(new Label),
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(_("Alt FPS limit: "))),
+#ifdef WIN32
+    mDetectButton(new Button(_("Dettect best mode"), "detect", this)),
+#else
+    mDetectButton(nullptr),
+#endif
     mDialog(nullptr)
 {
     setName(_("Video"));
@@ -298,14 +311,6 @@ Setup_Video::Setup_Video():
     place(1, 2, mEnableResizeCheckBox, 2);
     place(1, 3, mNoFrameCheckBox, 2);
 
-
-//    place(1, 5, mPickupNotifyLabel, 4);
-//    place(1, 6, mPickupChatCheckBox, 1);
-//    place(2, 6, mPickupParticleCheckBox, 2);
-
-//    place(0, 7, mAlphaSlider);
-//    place(1, 7, alphaLabel, 3);
-
     place(0, 6, mFpsSlider);
     place(1, 6, mFpsCheckBox).setPadding(3);
     place(2, 6, mFpsLabel).setPadding(1);
@@ -313,19 +318,9 @@ Setup_Video::Setup_Video():
     place(0, 7, mAltFpsSlider);
     place(1, 7, mAltFpsLabel).setPadding(3);
 
-//    place(0, 11, mSpeechSlider);
-//    place(1, 11, speechLabel);
-//    place(2, 11, mSpeechLabel, 3).setPadding(2);
-
-//    place(0, 12, mOverlayDetailSlider);
-//    place(1, 12, overlayDetailLabel);
-//    place(2, 12, mOverlayDetailField, 3).setPadding(2);
-
-//    place(0, 13, mParticleEffectsCheckBox, 5);
-
-//    place(0, 14, mParticleDetailSlider);
-//    place(1, 14, particleDetailLabel);
-//    place(2, 14, mParticleDetailField, 3).setPadding(2);
+#ifdef WIN32
+    place(0, 8, mDetectButton);
+#endif
 
     int width = 600;
 
@@ -560,6 +555,14 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
+#ifdef WIN32
+    else if (id == "detect")
+    {
+        int val = graphicsManager.startDetection();
+        if (val >= 0 && val <= 2)
+            mOpenGLDropDown->setSelected(val);
+    }
+#endif
 }
 
 void Setup_Video::externalUpdated()

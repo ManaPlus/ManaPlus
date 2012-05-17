@@ -20,6 +20,7 @@
 
 #include "graphicsmanager.h"
 
+#include "client.h"
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
@@ -31,6 +32,8 @@
 #include "utils/process.h"
 #include "utils/stringutils.h"
 
+#include "test/testmain.h"
+
 #include "debug.h"
 
 GraphicsManager graphicsManager;
@@ -41,6 +44,14 @@ GraphicsManager::GraphicsManager()
 
 GraphicsManager::~GraphicsManager()
 {
+}
+
+bool GraphicsManager::startDetection()
+{
+    std::string fileName = getSelfName();
+    TestMain *test = new TestMain();
+    test->exec(false);
+    return test->getConfig().getValueInt("opengl", -1);
 }
 
 bool GraphicsManager::detectGraphics()

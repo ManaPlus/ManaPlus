@@ -21,6 +21,7 @@
 #ifndef TEST_TESTMAIN_H
 #define TEST_TESTMAIN_H
 
+#include "configuration.h"
 #include "logger.h"
 
 #include <string>
@@ -30,12 +31,15 @@ class TestMain
     public:
         TestMain();
 
-        int exec();
+        int exec(bool testAudio = true);
+
+        static int readValue(int ver, int def);
+
+        Configuration &getConfig()
+        { return mConfig; }
 
     private:
         void initConfig();
-
-        int readValue(int ver, int def = 0);
 
         int invokeTest(std::string test);
 
@@ -56,9 +60,11 @@ class TestMain
         void writeConfig(int openGLMode, int rescale,
                          int sound, std::string info);
 
+        int readValue2(int ver);
+
         Logger *log;
 
-        std::ifstream file;
+        Configuration mConfig;
 };
 
 #endif // TEST_TESTMAIN_H

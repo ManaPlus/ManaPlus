@@ -36,6 +36,7 @@ class TextDialog;
 
 namespace gcn
 {
+    class Button;
     class CheckBox;
     class DropDown;
     class Label;
@@ -86,6 +87,7 @@ class Setup_Video : public SetupTab, public gcn::KeyListener
         gcn::Slider *mAltFpsSlider;
         gcn::Label *mAltFpsLabel;
 
+        gcn::Button *mDetectButton;
         TextDialog *mDialog;
 };
 

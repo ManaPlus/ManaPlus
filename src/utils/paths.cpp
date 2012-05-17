@@ -96,14 +96,13 @@ std::string removeLast(std::string str)
 #ifdef WIN32
 std::string getSelfName()
 {
-    // GetModuleFileName(nullptr)
-    return "";
+    return "manaplus.exe";
 }
 
 #elif defined(__APPLE__)
 std::string getSelfName()
 {
-    return "";
+    return "manaplus.exe";
 }
 
 #elif defined __linux__ || defined __linux
@@ -122,6 +121,12 @@ std::string getSelfName()
     {
         return "";
     }
+}
+
+#else
+std::string getSelfName()
+{
+    return "";
 }
 
 #endif

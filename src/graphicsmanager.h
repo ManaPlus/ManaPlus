@@ -35,6 +35,8 @@ class GraphicsManager
 
         void initGraphics(bool noOpenGL);
 
+        bool startDetection();
+
         bool detectGraphics();
 
         void updateExtensions(const char *extensions);

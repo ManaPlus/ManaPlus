@@ -215,6 +215,7 @@ int TestLauncher::testVideoDetection()
     graphicsManager.detectGraphics();
     file << mTest << std::endl;
     file << config.getIntValue("opengl") << std::endl;
+    return 0;
 }
 
 int TestLauncher::calcFps(timeval *start, timeval *end, int calls)
