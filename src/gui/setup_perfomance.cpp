@@ -99,6 +99,9 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"),
         "", "rectangulartextures", this, "rectangulartexturesEvent");
 
+    new SetupItemCheckBox(_("Use new texture internal format (OpenGL)"),
+        "", "newtextures", this, "newtexturesEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

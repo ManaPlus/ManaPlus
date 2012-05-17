@@ -87,47 +87,62 @@ bool GraphicsManager::supportExtension(const std::string &ext)
 void GraphicsManager::updateTextureFormat()
 {
 #ifdef USE_OPENGL
-    if (!config.getBoolValue("compresstextures"))
-        return;
-
-    if (supportExtension("GL_ARB_texture_compression"))
+    if (config.getBoolValue("compresstextures"))
     {
-        if (supportExtension("GL_EXT_texture_compression_s3tc")
-            || supportExtension("3DFX_texture_compression_FXT1"))
+        // using extensions if can
+        if (supportExtension("GL_ARB_texture_compression"))
         {
-            GLint num;
-            GLint *formats = nullptr;
-            glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
-            logger->log("support %d compressed formats", num);
-            formats = new GLint[num > 10 ? num : 10];
-            glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
-            for (int f = 0; f < num; f ++)
+            if (supportExtension("GL_EXT_texture_compression_s3tc")
+                || supportExtension("3DFX_texture_compression_FXT1"))
             {
-                if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
+                GLint num;
+                GLint *formats = nullptr;
+                glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &num);
+                logger->log("support %d compressed formats", num);
+                formats = new GLint[num > 10 ? num : 10];
+                glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats);
+                for (int f = 0; f < num; f ++)
                 {
-                    delete []formats;
-                    Image::setInternalTextureType(
-                        GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
-                    logger->log("using s3tc texture compression");
-                    return;
+                    if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
+                    {
+                        delete []formats;
+                        Image::setInternalTextureType(
+                            GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
+                        logger->log1("using s3tc texture compression");
+                        return;
+                    }
+                    else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX)
+                    {
+                        delete []formats;
+                        Image::setInternalTextureType(
+                            GL_COMPRESSED_RGBA_FXT1_3DFX);
+                        logger->log1("using fxt1 texture compression");
+                        return;
+                    }
                 }
-                else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX)
-                {
-                    delete []formats;
-                    Image::setInternalTextureType(
-                        GL_COMPRESSED_RGBA_FXT1_3DFX);
-                    logger->log("using fxt1 texture compression");
-                    return;
-                }
+                Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
+                logger->log1("using texture compression");
+                return;
             }
-            Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
-            logger->log("using texture compression");
+            else
+            {
+                Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
+                logger->log1("using texture compression");
+                return;
+            }
         }
-        else
-        {
-            Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
-            logger->log("using texture compression");
-        }
+    }
+
+    // using default formats
+    if (config.getBoolValue("newtextures"))
+    {
+        Image::setInternalTextureType(GL_RGBA);
+        logger->log1("using RGBA texture format");
+    }
+    else
+    {
+        Image::setInternalTextureType(4);
+        logger->log1("using 4 texture format");
     }
 #endif
 }

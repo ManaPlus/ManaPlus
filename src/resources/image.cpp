@@ -44,7 +44,7 @@
 #ifdef USE_OPENGL
 int Image::mUseOpenGL = 0;
 int Image::mTextureType = 0;
-int Image::mInternalTextureType = 4;
+int Image::mInternalTextureType = GL_RGBA8;
 int Image::mTextureSize = 0;
 bool Image::mBlur = true;
 #endif
