@@ -2012,26 +2012,25 @@ void Client::storeSafeParameters()
 
     width = config.getIntValue("screenwidth");
     height = config.getIntValue("screenheight");
+    tmpHwaccel = config.getBoolValue("hwaccel");
+
+    tmpFpslimit = config.getIntValue("fpslimit");
+    tmpAltFpslimit = config.getIntValue("altfpslimit");
+    tmpSound = config.getBoolValue("sound");
+
+    font = config.getStringValue("font");
+    bFont = config.getStringValue("boldFont");
+    particleFont = config.getStringValue("particleFont");
+    helpFont = config.getStringValue("helpFont");
+    secureFont = config.getStringValue("secureFont");
+    japanFont = config.getStringValue("japanFont");
+
+    showBackground = config.getBoolValue("showBackground");
+    enableMumble = config.getBoolValue("enableMumble");
+    enableMapReduce = config.getBoolValue("enableMapReduce");
 
     if (!mOptions.safeMode && !tmpOpengl)
     {
-        tmpHwaccel = config.getBoolValue("hwaccel");
-
-        tmpFpslimit = config.getIntValue("fpslimit");
-        tmpAltFpslimit = config.getIntValue("altfpslimit");
-        tmpSound = config.getBoolValue("sound");
-
-        font = config.getStringValue("font");
-        bFont = config.getStringValue("boldFont");
-        particleFont = config.getStringValue("particleFont");
-        helpFont = config.getStringValue("helpFont");
-        secureFont = config.getStringValue("secureFont");
-        japanFont = config.getStringValue("japanFont");
-
-        showBackground = config.getBoolValue("showBackground");
-        enableMumble = config.getBoolValue("enableMumble");
-        enableMapReduce = config.getBoolValue("enableMapReduce");
-
         // if video mode configured reset most settings to safe
         config.setValue("hwaccel", false);
         config.setValue("opengl", 0);

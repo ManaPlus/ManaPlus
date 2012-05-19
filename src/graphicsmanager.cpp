@@ -20,7 +20,6 @@
 
 #include "graphicsmanager.h"
 
-#include "client.h"
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
@@ -29,7 +28,6 @@
 #include "resources/image.h"
 
 #include "utils/paths.h"
-#include "utils/process.h"
 #include "utils/stringutils.h"
 
 #include "test/testmain.h"
@@ -38,7 +36,9 @@
 
 GraphicsManager graphicsManager;
 
-GraphicsManager::GraphicsManager()
+GraphicsManager::GraphicsManager() :
+    mMinor(0),
+    mMajor(0)
 {
 }
 
@@ -48,7 +48,6 @@ GraphicsManager::~GraphicsManager()
 
 bool GraphicsManager::startDetection()
 {
-    std::string fileName = getSelfName();
     TestMain *test = new TestMain();
     test->exec(false);
     return test->getConfig().getValueInt("opengl", -1);
@@ -67,13 +66,13 @@ bool GraphicsManager::detectGraphics()
     logger->log("gl vendor: %s", vendor.c_str());
     logger->log("gl renderer: %s", renderer.c_str());
     logger->log("gl version: %s", version.c_str());
-    sscanf(version.c_str(), "%d.%d", &mMajor, &mMinor);
+    sscanf(version.c_str(), "%5d.%5d", &mMajor, &mMinor);
 
     char const *glExtensions = reinterpret_cast<char const *>(
         glGetString(GL_EXTENSIONS));
     updateExtensions(glExtensions);
 
-    bool mode = 1;
+    int mode = 1;
 
     // detecting features by known renderers or vendors
     if (findI(renderer, "gdi generic") != std::string::npos)

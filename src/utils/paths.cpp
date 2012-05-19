@@ -85,9 +85,7 @@ std::string removeLast(std::string str)
         if (pos2 == std::string::npos || pos3 > pos2)
             pos2 = pos3;
     }
-    if (pos2 == std::string::npos)
-        pos2 = -1;
-    if (pos2 >= 0)
+    if (pos2 != std::string::npos)
         return str.substr(0, pos2);
     else
         return str;
