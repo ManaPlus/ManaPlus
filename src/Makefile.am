@@ -304,8 +304,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/popupmenu.h \
 	      gui/quitdialog.cpp \
 	      gui/quitdialog.h \
-	      gui/register.cpp \
-	      gui/register.h \
+	      gui/registerdialog.cpp \
+	      gui/registerdialog.h \
 	      gui/sdlinput.cpp \
 	      gui/sdlinput.h \
 	      gui/selldialog.cpp \

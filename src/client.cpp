@@ -54,7 +54,7 @@
 #include "gui/logindialog.h"
 #include "gui/okdialog.h"
 #include "gui/quitdialog.h"
-#include "gui/register.h"
+#include "gui/registerdialog.h"
 #include "gui/npcdialog.h"
 #include "gui/selldialog.h"
 #include "gui/sdlinput.h"

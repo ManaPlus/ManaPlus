@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/register.h"
+#include "gui/registerdialog.h"
 
 #include "client.h"
 #include "configuration.h"

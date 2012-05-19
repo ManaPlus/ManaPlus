@@ -25,7 +25,7 @@
 #include "client.h"
 #include "logger.h"
 
-#include "gui/register.h"
+#include "gui/registerdialog.h"
 #include "gui/okdialog.h"
 
 #include "gui/widgets/button.h"

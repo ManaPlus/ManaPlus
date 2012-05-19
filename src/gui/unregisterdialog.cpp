@@ -26,7 +26,7 @@
 #include "logger.h"
 
 #include "gui/okdialog.h"
-#include "gui/register.h"
+#include "gui/registerdialog.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/checkbox.h"

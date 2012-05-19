@@ -27,7 +27,7 @@
 #include "gui/changeemaildialog.h"
 #include "gui/charselectdialog.h"
 #include "gui/inventorywindow.h"
-#include "gui/register.h"
+#include "gui/registerdialog.h"
 #include "gui/skilldialog.h"
 #include "gui/specialswindow.h"
 
