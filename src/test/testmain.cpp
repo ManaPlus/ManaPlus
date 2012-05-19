@@ -205,6 +205,8 @@ void TestMain::writeConfig(int openGLMode, int rescale,
 {
     mConfig.init(Client::getConfigDirectory() + "/config.xml");
 
+    log->log("set mode to %d", openGLMode);
+
     // searched values
     mConfig.setValue("opengl", openGLMode);
     mConfig.setValue("showBackground", !rescale);
@@ -227,7 +229,7 @@ int TestMain::readValue2(int ver)
 {
     int def = readValue(ver, 0);
     log->log("value for %d = %d", ver, def);
-    return 0;
+    return def;
 }
 
 int TestMain::readValue(int ver, int def)

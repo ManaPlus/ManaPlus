@@ -46,7 +46,7 @@ GraphicsManager::~GraphicsManager()
 {
 }
 
-bool GraphicsManager::startDetection()
+int GraphicsManager::startDetection()
 {
 #ifdef USE_OPENGL
     TestMain *test = new TestMain();

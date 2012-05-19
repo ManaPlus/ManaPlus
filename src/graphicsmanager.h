@@ -35,7 +35,7 @@ class GraphicsManager
 
         void initGraphics(bool noOpenGL);
 
-        bool startDetection();
+        int startDetection();
 
         bool detectGraphics();
 
