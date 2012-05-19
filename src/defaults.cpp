@@ -257,6 +257,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "rectangulartextures", true);
     AddDEF(configData, "networksleep", 0);
     AddDEF(configData, "newtextures", true);
+    AddDEF(configData, "videodetected", false);
     return configData;
 }
 

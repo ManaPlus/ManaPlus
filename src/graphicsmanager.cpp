@@ -48,9 +48,13 @@ GraphicsManager::~GraphicsManager()
 
 bool GraphicsManager::startDetection()
 {
+#ifdef USE_OPENGL
     TestMain *test = new TestMain();
     test->exec(false);
     return test->getConfig().getValueInt("opengl", -1);
+#else
+    return 0;
+#endif
 }
 
 bool GraphicsManager::detectGraphics()

@@ -508,6 +508,15 @@ void Client::gameInit()
     }
 #endif
 
+#ifdef WIN32
+    if (mOptions.test.empty() && !config.getBoolValue("videodetected"))
+    {
+        int val = graphicsManager.startDetection();
+        if (val >= 0 && val <= 2)
+            config.setValue("opengl", val);
+        config.setValue("videodetected", true);
+    }
+#endif
     graphicsManager.initGraphics(mOptions.noOpenGL);
 
     runCounters = config.getBoolValue("packetcounters");
