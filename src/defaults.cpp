@@ -183,7 +183,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "debugLog", false);
     AddDEF(configData, "drawHotKeys", true);
     AddDEF(configData, "serverAttack", true);
-    AddDEF(configData, "autofixPos", true);
+    AddDEF(configData, "autofixPos", false);
     AddDEF(configData, "alphaCache", true);
     AddDEF(configData, "attackMoving", true);
     AddDEF(configData, "attackNext", false);
