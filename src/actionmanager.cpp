@@ -715,8 +715,12 @@ impHandler0(skillDialogShow)
 
 impHandler0(minimapWindowShow)
 {
-    showHideWindow(minimap);
-    return true;
+    if (minimap)
+    {
+        minimap->toggle();
+        return true;
+    }
+    return false;
 }
 
 impHandler0(chatWindowShow)
