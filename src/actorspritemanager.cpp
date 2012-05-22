@@ -27,6 +27,7 @@
 #include "logger.h"
 #include "main.h"
 #include "playerinfo.h"
+#include "playerrelations.h"
 
 #include "gui/chatwindow.h"
 #include "gui/equipmentwindow.h"
@@ -1099,6 +1100,7 @@ void ActorSpriteManager::heal(Being* target)
         return;
     }
 
+    // self
     if (target && player_node->getName() == target->getName())
     {
         if (PlayerInfo::getAttribute(MP) >= 6
@@ -1110,6 +1112,7 @@ void ActorSpriteManager::heal(Being* target)
             chatWindow->localChatInput(mSpellHeal1);
         }
     }
+    // magic levels < 2
     else if (PlayerInfo::getStatEffective(340) < 2
              || PlayerInfo::getStatEffective(341) < 2)
     {
@@ -1131,15 +1134,31 @@ void ActorSpriteManager::heal(Being* target)
             }
         }
     }
+    // magic level >= 2 and not self
     else
     {
+        // mp > 10 and target not monster
         if (PlayerInfo::getAttribute(MP) >= 10 && target
             && target->getType() != Being::MONSTER)
         {
-            if (!Client::limitPackets(PACKET_CHAT))
-                return;
-            chatWindow->localChatInput(mSpellHeal2 + " " + target->getName());
+            // target not enemy
+            if (player_relations.getRelation(target->getName()) !=
+                PlayerRelation::ENEMY2)
+            {
+                if (!Client::limitPackets(PACKET_CHAT))
+                    return;
+                chatWindow->localChatInput(mSpellHeal2 + " "
+                    + target->getName());
+            }
+            // target enemy
+            else
+            {
+                if (!Client::limitPackets(PACKET_CHAT))
+                    return;
+                chatWindow->localChatInput(mSpellHeal1);
+            }
         }
+        // heal self if selected monster or selection empty
         else if ((!target || target->getType() == Being::MONSTER)
                  && PlayerInfo::getAttribute(MP) >= 6
                  && PlayerInfo::getAttribute(HP)
