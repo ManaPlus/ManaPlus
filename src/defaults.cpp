@@ -258,6 +258,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "networksleep", 0);
     AddDEF(configData, "newtextures", true);
     AddDEF(configData, "videodetected", false);
+    AddDEF(configData, "hideErased", false);
     return configData;
 }
 

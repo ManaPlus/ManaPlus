@@ -203,6 +203,7 @@ bool Being::mShowGender = false;
 bool Being::mShowLevel = false;
 bool Being::mShowPlayersStatus = false;
 bool Being::mEnableReorderSprites = true;
+bool Being::mHideErased = false;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 
@@ -279,7 +280,7 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
 
     config.addListener("visiblenames", this);
 
-    mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
+    reReadConfig();
 
     if (mType == NPC)
         setShowName(true);
@@ -1602,8 +1603,18 @@ std::string Being::getGenderSign() const
 
 void Being::showName()
 {
+    if (mName.empty())
+        return;
+
     delete mDispName;
     mDispName = nullptr;
+
+    if (mHideErased && player_relations.getRelation(mName) ==
+        PlayerRelation::ERASED)
+    {
+        return;
+    }
+
     std::string mDisplayName(mName);
 
     if (mType != MONSTER && (mShowGender || mShowLevel))
@@ -1631,9 +1642,6 @@ void Being::showName()
     {
         font = gui->getSecureFont();
     }
-
-    if (mDisplayName.empty())
-        return;
 
     mDispName = new FlashText(mDisplayName, getPixelX(), getPixelY(),
                               gcn::Graphics::CENTER, mNameColor, font);
@@ -1837,6 +1845,7 @@ void Being::reReadConfig()
         mShowLevel = config.getBoolValue("showlevel");
         mShowPlayersStatus = config.getBoolValue("showPlayersStatus");
         mEnableReorderSprites = config.getBoolValue("enableReorderSprites");
+        mHideErased = config.getBoolValue("hideErased");
 
         mUpdateConfigTime = cur_time;
     }

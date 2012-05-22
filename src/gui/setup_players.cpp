@@ -86,6 +86,9 @@ Setup_Players::Setup_Players()
     new SetupItemCheckBox(_("Group friends in who is online window"), "",
         "groupFriends", this, "groupFriendsEvent");
 
+    new SetupItemCheckBox(_("Hide erased players nicks"), "",
+        "hideErased", this, "hideErasedEvent");
+
     setDimension(gcn::Rectangle(0, 0, 550, 350));
 }
 

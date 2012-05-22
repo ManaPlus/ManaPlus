@@ -730,8 +730,7 @@ void PopupMenu::handleLink(const std::string &link,
     }
     else if (link == "unignore" && !mNick.empty())
     {
-        player_relations.setRelation(mNick,
-                                     PlayerRelation::NEUTRAL);
+        player_relations.setRelation(mNick, PlayerRelation::NEUTRAL);
     }
     else if (link == "ignore" && being &&
              being->getType() == ActorSprite::PLAYER)
@@ -768,6 +767,7 @@ void PopupMenu::handleLink(const std::string &link,
              being->getType() == ActorSprite::PLAYER)
     {
         player_relations.setRelation(being->getName(), PlayerRelation::ERASED);
+        being->updateName();
     }
     else if (link == "erase" && !mNick.empty())
     {
