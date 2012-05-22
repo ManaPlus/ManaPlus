@@ -94,6 +94,15 @@ class Graphics : public gcn::SDLGraphics
         virtual ~Graphics();
 
         /**
+         * Sets whether vertical refresh syncing is enabled. Takes effect after
+         * the next call to setVideoMode(). Only implemented on MacOS for now.
+         */
+        void setSync(bool sync);
+
+        bool getSync() const
+        { return mSync; }
+
+        /**
          * Try to create a window with the given settings.
          */
         virtual bool setVideoMode(int w, int h, int bpp, bool fs,
@@ -328,6 +337,7 @@ class Graphics : public gcn::SDLGraphics
         int mOldAlpha;
         std::string mName;
         int mStartFreeMem;
+        bool mSync;
 };
 
 extern Graphics *mainGraphics;

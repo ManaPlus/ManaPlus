@@ -31,10 +31,6 @@
 
 #include "resources/image.h"
 
-#ifdef __APPLE__
-#include <OpenGL/OpenGL.h>
-#endif
-
 #include <SDL.h>
 
 #include "debug.h"
@@ -47,7 +43,7 @@
 GLuint OpenGL1Graphics::mLastImage = 0;
 
 OpenGL1Graphics::OpenGL1Graphics():
-    mAlpha(false), mTexture(false), mColorAlpha(false), mSync(false),
+    mAlpha(false), mTexture(false), mColorAlpha(false),
     mFboId(0), mTextureId(0), mRboId(0)
 {
     mOpenGL = 2;
@@ -56,11 +52,6 @@ OpenGL1Graphics::OpenGL1Graphics():
 
 OpenGL1Graphics::~OpenGL1Graphics()
 {
-}
-
-void OpenGL1Graphics::setSync(bool sync)
-{
-    mSync = sync;
 }
 
 bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,

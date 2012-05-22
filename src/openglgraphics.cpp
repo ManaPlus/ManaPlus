@@ -33,10 +33,6 @@
 
 #include "utils/stringutils.h"
 
-#ifdef __APPLE__
-#include <OpenGL/OpenGL.h>
-#endif
-
 #include <SDL.h>
 
 #include "debug.h"
@@ -51,7 +47,7 @@ const unsigned int vertexBufSize = 500;
 GLuint OpenGLGraphics::mLastImage = 0;
 
 OpenGLGraphics::OpenGLGraphics():
-    mAlpha(false), mTexture(false), mColorAlpha(false), mSync(false),
+    mAlpha(false), mTexture(false), mColorAlpha(false),
     mFboId(0), mTextureId(0), mRboId(0)
 {
     mOpenGL = 1;
@@ -66,11 +62,6 @@ OpenGLGraphics::~OpenGLGraphics()
     delete [] mFloatTexArray;
     delete [] mIntTexArray;
     delete [] mIntVertArray;
-}
-
-void OpenGLGraphics::setSync(bool sync)
-{
-    mSync = sync;
 }
 
 bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,

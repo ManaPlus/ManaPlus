@@ -34,6 +34,12 @@
 
 #include <guichan/sdl/sdlpixel.hpp>
 
+#ifdef USE_OPENGL
+#ifdef __APPLE__
+#include <OpenGL/OpenGL.h>
+#endif
+#endif
+
 #include <SDL_gfxBlitFunc.h>
 
 #include "debug.h"
@@ -68,7 +74,8 @@ Graphics::Graphics() :
     mOldPixel(0),
     mOldAlpha(0),
     mName("Software"),
-    mStartFreeMem(0)
+    mStartFreeMem(0),
+    mSync(false)
 {
     mRect.x = 0;
     mRect.y = 0;
@@ -79,6 +86,11 @@ Graphics::Graphics() :
 Graphics::~Graphics()
 {
     _endDraw();
+}
+
+void Graphics::setSync(bool sync)
+{
+    mSync = sync;
 }
 
 void Graphics::setMainFlags(int w, int h, int bpp, bool fs,
