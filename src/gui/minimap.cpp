@@ -149,8 +149,8 @@ void Minimap::setMap(Map *map)
         }
         else
         {
-            std::string tempname =
-                "graphics/minimaps/" + map->getFilename() + ".png";
+            std::string tempname = paths.getStringValue("minimaps")
+                + "graphics/minimaps/" + map->getFilename() + ".png";
             ResourceManager *resman = ResourceManager::getInstance();
 
             minimapName = map->getProperty("minimap");

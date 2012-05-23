@@ -22,6 +22,8 @@
 
 #include "textcommand.h"
 
+#include "configuration.h"
+
 #include "gui/theme.h"
 
 #include "resources/image.h"
@@ -111,7 +113,8 @@ void TextCommand::loadImage()
 
     ResourceManager *resman = ResourceManager::getInstance();
     SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
-    mImage = resman->getImage("graphics/items/" + display.image);
+    mImage = resman->getImage(paths.getStringValue("itemIcons")
+        + display.image);
 
     if (!mImage)
         mImage = Theme::getImageFromTheme("unknown-item.png");

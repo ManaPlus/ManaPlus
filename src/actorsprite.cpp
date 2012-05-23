@@ -23,6 +23,7 @@
 #include "actorspritelistener.h"
 
 #include "client.h"
+#include "configuration.h"
 #include "effectmanager.h"
 #include "imagesprite.h"
 #include "localplayer.h"
@@ -328,7 +329,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         if (!*it)
             continue;
-        std::string file = "graphics/sprites/"
+        std::string file = paths.getStringValue("sprites")
             + combineDye2((*it)->sprite, color);
 
         int variant = (*it)->variant;
@@ -340,7 +341,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         if (display.image.empty())
         {
-            addSprite(AnimatedSprite::load("graphics/sprites/error.xml"));
+            addSprite(AnimatedSprite::load(paths.getStringValue("sprites")
+                + paths.getStringValue("spriteErrorFile")));
         }
         else
         {
@@ -350,10 +352,12 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
             {
                 case 0:
                 default:
-                    imagePath = "graphics/items/" + display.image;
+                    imagePath = paths.getStringValue("itemIcons")
+                        + display.image;
                     break;
                 case 1:
-                    imagePath = "graphics/items/" + display.floor;
+                    imagePath = paths.getStringValue("itemIcons")
+                        + display.floor;
                     break;
             }
             imagePath = combineDye2(imagePath, color);

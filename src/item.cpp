@@ -106,7 +106,7 @@ Image *Item::getImage(int id, unsigned char color)
     ResourceManager *resman = ResourceManager::getInstance();
     const ItemInfo &info = ItemDB::get(id);
     SpriteDisplay display = info.getDisplay();
-    std::string imagePath = "graphics/items/" + display.image;
+    std::string imagePath = paths.getStringValue("itemIcons") + display.image;
     Image *image;
     image = resman->getImage(combineDye2(imagePath,
         info.getDyeColorsString(color)));
