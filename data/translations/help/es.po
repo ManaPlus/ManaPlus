@@ -1,11 +1,12 @@
 # en#
 # Translators:
+# Maria   <mtorres2022@gmail.com>, 2012.
 # Nelson Martell <nelson6e65-manaplus@yahoo.es>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-04-28 13:10+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2012-05-14 17:21+0000\n"
+"Last-Translator: Maria <mtorres2022@gmail.com>\n"
 "Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/manaplus/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -167,7 +168,7 @@ msgid "Debug"
 msgstr "Depurador"
 
 msgid "##2LeftWinKey##P               \"Ignore input 1\""
-msgstr ""
+msgstr "##2LeftWinKey##P               \"Ignore input 1\""
 
 msgid "/addattack NAME - add monster to attack list."
 msgstr "/addattack NOMBRE - agregar monstruo a la lista de ataque."
@@ -196,7 +197,7 @@ msgid "##2LeftAlt + 8##P              \"Emote Shortcut 8\""
 msgstr "##2AltIzq + 8##P               \"Atajo de Emoticón 8\""
 
 msgid "##2RightWinKey##P              \"Ignore input 2\""
-msgstr ""
+msgstr "##2RightWinKey##P              \"Ignore input 2\""
 
 msgid "##2DOWN##P                     \"Move Down\""
 msgstr "##2Abajo##P                    \"Moverse hacia abajo\""
@@ -264,7 +265,7 @@ msgid "Other skills:"
 msgstr "Otras habilidades:"
 
 msgid "##2MenuKey##P                  \"Item Shortcuts Key\""
-msgstr ""
+msgstr "##2MenuKey##P                  \"Tecla de Atajos\""
 
 msgid "##28##P                        \"Item Shortcut 8\""
 msgstr "##28##P                        \"Atajo de Artículo 8\""
@@ -299,7 +300,7 @@ msgid ""
 " Others are making worlds using Mana software. The Mana World project\n"
 " is the originator of the Mana project. Mana was split off to further\n"
 " facilitate development of other worlds."
-msgstr ""
+msgstr "El proyecto incluye el desarrollo de un cliente y un server. Otros estan creando mundos usando el Mana software. El proyecto ManaWorld es el iniciador del proyecto Mana. Mana fue dividido para facilitar el desarrollo de otros mundos."
 
 msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr "/dumpg - vaciar configuraciones gráficas y algunas otras al chat."
@@ -355,7 +356,7 @@ msgstr "ÍNDICE"
 msgid ""
 "You can disable yellow bar,\n"
 "by pressing key 8 on numeric keyboard."
-msgstr ""
+msgstr "Puedes desahibilitar la barra amarilla, presionando la tecla 8 del teclado numerico."
 
 msgid "/ignoreall - add all whispers to ignore list."
 msgstr "/ignoreall - agregar todos los susurros a la lista de ignorados."
@@ -456,7 +457,7 @@ msgstr ""
 msgid ""
 "You can buy or sell items from players shops.\n"
 "Right click on player and select \"Buy\" or \"Sell\""
-msgstr ""
+msgstr "Puedes comprar o vender items de los shops de los players. Right click en el player y selecciona \"Buy\" o \"Sell\" "
 
 msgid "/erase NICK - add nick to erased list."
 msgstr "/erase NICK - agregar nick a la lista de borrados."
@@ -470,7 +471,7 @@ msgstr "COMUNICACIÓN:"
 msgid ""
 "##2ManaPlus##P is extended client based on code from ##2Mana##P client.\n"
 " Added many features, improved perfomance, stability, security and more."
-msgstr ""
+msgstr "##2ManaPlus##P es un cliente extendido basado en codigo del cliente ##2Mana##P . Con muchas caracteristicas agregadas, rendimiendo mejorado, estabilidad, seguridad y mas."
 
 msgid "##2SpaceBar##P                 \"Select OK\""
 msgstr "##2Barra Espaciadora##P                 \"Seleccionar OK\""
@@ -482,7 +483,7 @@ msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - agregar nick a la lista de amigos."
 
 msgid "##2i##P                        \"Switch Quick Drop Counter\""
-msgstr ""
+msgstr "##2i##P                        \"Cambiar contador de lanzadas\""
 
 msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
 msgstr "##2AltIzq + 2##P               \"Atajo de Emoticón 2\""

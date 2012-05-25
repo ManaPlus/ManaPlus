@@ -241,7 +241,7 @@ Setup_Video::Setup_Video():
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(_("Alt FPS limit: "))),
 #ifdef WIN32
-    mDetectButton(new Button(_("Dettect best mode"), "detect", this)),
+    mDetectButton(new Button(_("Detect best mode"), "detect", this)),
 #else
     mDetectButton(nullptr),
 #endif

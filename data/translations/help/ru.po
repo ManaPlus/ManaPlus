@@ -1,12 +1,13 @@
 # en#
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2012.
+#   <BoBaH4spam@ukr.net>, 2012.
 # Dan Sagunov <danilka.pro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-04-28 13:10+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"PO-Revision-Date: 2012-05-23 22:33+0000\n"
+"Last-Translator: BoBaH <BoBaH4spam@ukr.net>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,43 +16,43 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 msgid "##2End##P                      \"Change Attack Type\""
-msgstr ""
+msgstr "##2End##P                      \"Сменить тип атаки\""
 
 msgid "/serverunignoreall - unignore all whispers on server side."
-msgstr ""
+msgstr "/serverunignoreall - отключить игнорирование всех\nприватных сообщений на сервере."
 
 msgid "To read about whispering and other chat commands, look here:"
-msgstr ""
+msgstr "Чтобы узнать о привате (шепоте, whisper) и других\nкомандах чата, загляните сюда:"
 
 msgid "##2UP##P                       \"Move Up\""
-msgstr ""
+msgstr "##2UP##P                       \"Двигаться вверх\""
 
 msgid "##21##P                        \"Item Shortcut 1\""
-msgstr ""
+msgstr "##21##P                        \"Ярлык предметов 1\""
 
 msgid "Translators"
 msgstr "Переводчики"
 
 msgid "##2Esc##P                      \"Quit\""
-msgstr ""
+msgstr "##2Esc##P                      \"Выход\""
 
 msgid ""
 "Most commands working in whispers.\n"
 "For example command /imitation in whisper with nick1,\n"
 " similar to command /imitation nick1."
-msgstr ""
+msgstr " Большинство команд работает в привате.\nНапример, команда /imitation в привате с ИГРОК1,\nравнозначна команде /imitation ИГРОК1 в общем чате"
 
 msgid "##2KeyPad[3]##P                \"On / Off audio\""
-msgstr ""
+msgstr "##2KeyPad[3]##P                \"Вкл / Выкл звук\""
 
 msgid "##2F2##P                       \"Status Window\""
-msgstr ""
+msgstr "##2F2##P                       \"Окно Состояние\""
 
 msgid "/cacheinfo - show text cache info."
-msgstr ""
+msgstr "/cacheinfo - показать содержимое текстового буфера."
 
 msgid "##2LeftAlt + Minus(-)##P       \"Emote Shortcut 11\""
-msgstr ""
+msgstr "##2LeftAlt + Minus(-)##P       \"Ярлык Эмоций 11\""
 
 msgid "KEYBOARD:"
 msgstr "КЛАВИАТУРА:"
@@ -60,12 +61,12 @@ msgid ""
 " If you're having troubles, please first of all read the FAQ. If you\n"
 " can't find a solution to your problem, feel free to check our\n"
 " Bugs/Support section of the forum:"
-msgstr ""
+msgstr " По любым вопросам об игре в первую очередь обратитесь к FAQ.\nЕсли не удается найти решение вопроса, то пожалуйста, обращайтесь\nв раздел Ошибок/Тех.поддержки (Bugs/Support) нашего форума:"
 
 msgid ""
 "##2     http://forums.themanaworld.org/viewforum.php?f=3\n"
 " or visit IRC channel:"
-msgstr ""
+msgstr "##2     http://forums.themanaworld.org/viewforum.php?f=3\n или посетите IRC канал:"
 
 msgid "ManaPlus Contributors"
 msgstr "Разработчики ManaPlus"
@@ -80,25 +81,25 @@ msgid "/addpriorityattack NAME - add monster to priority attack list."
 msgstr ""
 
 msgid "##2Enter##P                    \"Toggle Chat\""
-msgstr ""
+msgstr "##2Enter##P                    \"Включить чат\""
 
 msgid "Back to Index"
 msgstr "Назад к содержанию"
 
 msgid "##2LeftControl##P              \"Attack\""
-msgstr ""
+msgstr "##2LeftControl##P              \"Атаковать\""
 
 msgid "/priceload - load shop price from disc."
 msgstr ""
 
 msgid "##2s##P                        \"Sit\""
-msgstr ""
+msgstr "##2s##P                        \"Сидеть\""
 
 msgid "##2e##P                        \"Kills Stats Window\""
-msgstr ""
+msgstr "##2e##P                        \"Окно статистики атак\""
 
 msgid "##2KeyPad[8]##P                \"Disable / Enable Game modifier keys\""
-msgstr ""
+msgstr "##2KeyPad[8]##P                \"Выключить / Включить игровые модификаторы\""
 
 msgid ""
 " - ##2allow whispers##P: Do you wish to allow arbitrary players to send\n"
@@ -112,10 +113,10 @@ msgid "Support"
 msgstr "Поддержка"
 
 msgid "##2z##P                        \"Pickup\""
-msgstr ""
+msgstr "##2z##P                        \"Поднять\""
 
 msgid "##2m##P                        \"Use #itenplz spell\""
-msgstr ""
+msgstr "##2m##P                        \"Использовать заклинание #itenplz\""
 
 msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
@@ -124,51 +125,51 @@ msgid ""
 msgstr ""
 
 msgid "##2a##P                        \"Target Closest\""
-msgstr ""
+msgstr "##2a##P                        \"Выбор цели для атаки\""
 
 msgid "##2Party level2:##P enables a char to create a party."
 msgstr ""
 
 msgid "##2y##P                        \"Quick Drop N Items from 0 slot\""
-msgstr ""
+msgstr "##2y##P                        \"Быстро выбросить N вещей из слота 0\""
 
 msgid "##2Backspace##P                \"Item Shortcut 13\""
-msgstr ""
+msgstr "##2Backspace##P                \"Ярлык предметов 13\""
 
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
 " gives you 1 point to spend on basic skills."
-msgstr ""
+msgstr " Можно совершенствовать свои навыки, увеличивая уровень Работы.\n Каждый Рабочий уровень дает +1 пункт, который можно потратить\n на развитие базовых умений."
 
 msgid "##25##P                        \"Item Shortcut 5\""
-msgstr ""
+msgstr "##25##P                        \"Ярлык предметов 5\""
 
 msgid "/me text - send text to chat as /me command in irc."
 msgstr ""
 
 msgid "##2q##P                        \"Target Player\""
-msgstr ""
+msgstr "##2q##P                        \"Выбор цели - игроки\""
 
 msgid "Mana Contributors"
-msgstr ""
+msgstr "В разработке Mana принимали участие"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr ""
 
 msgid "##2Slash(\\)##P                 \"Crazy moves\""
-msgstr ""
+msgstr "##2Slash(\\)##P                 \"Сумасшедшее движение\""
 
 msgid "/all - show visible beings list in debug tab."
 msgstr ""
 
 msgid "For other server look servers pages for support."
-msgstr ""
+msgstr "Для получения информации об игре на других серверах посетите страницу соответствующего сервера."
 
 msgid "Debug"
 msgstr "Отладка"
 
 msgid "##2LeftWinKey##P               \"Ignore input 1\""
-msgstr ""
+msgstr "##2LeftWinKey##P               \"Игнорировать ввод 1\""
 
 msgid "/addattack NAME - add monster to attack list."
 msgstr ""
@@ -182,7 +183,7 @@ msgid ""
 "You can walk to warps automatically.\n"
 "Open Social Window (f11) and selecy Nav tab,\n"
 "then click on warp what you want."
-msgstr ""
+msgstr "Вы можете двигаться к Вратам автоматически.\nОткройте окно Общество (F11) и выберите Навигационную панель,\nзатем клик на требуемые Врата."
 
 msgid "##2LeftAlt + 7##P              \"Emote Shortcut 7\""
 msgstr ""
@@ -200,7 +201,7 @@ msgid "##2RightWinKey##P              \"Ignore input 2\""
 msgstr ""
 
 msgid "##2DOWN##P                     \"Move Down\""
-msgstr ""
+msgstr "##2DOWN##P                     \"Двигаться вниз\""
 
 msgid "Visit IRC channel:"
 msgstr "Посетить IRC канал"
@@ -215,7 +216,7 @@ msgid "/heal NICK - heal nick."
 msgstr ""
 
 msgid "Contributors to client development"
-msgstr ""
+msgstr "В разработке клиентской части принимали участие"
 
 msgid "/removeattack NAME - remove monster from attack list."
 msgstr ""
@@ -253,16 +254,16 @@ msgid "SUPPORT"
 msgstr "ПОДДЕРЖКА"
 
 msgid "##2LEFT##P                     \"Move Left\""
-msgstr ""
+msgstr "##2LEFT##P                     \"Двигаться влево\""
 
 msgid "##2LeftAlt + 9##P              \"Emote Shortcut 9\""
 msgstr ""
 
 msgid "About"
-msgstr ""
+msgstr "Об игре"
 
 msgid "Other skills:"
-msgstr "Другие навыки:"
+msgstr "Другие умения:"
 
 msgid "##2MenuKey##P                  \"Item Shortcuts Key\""
 msgstr ""
@@ -273,7 +274,7 @@ msgstr ""
 msgid ""
 "You can use mumble voice chat for talking with other players.\n"
 "Start mumble before client start and enable mumble in settings."
-msgstr ""
+msgstr "Вы можете использовать голосовой чат Mumble для связи с другими игроками.\nЗапустите Mumble перед запуском клиента и включите Mumble в настройках игры."
 
 msgid "##2RightAlt##P                 \"Copy Outfit\""
 msgstr ""
@@ -284,7 +285,7 @@ msgstr ""
 msgid ""
 "You can restore yellow bar settings,\n"
 "by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr ""
+msgstr "Вы можете сбросить настройки Желтой панели, нажав на ней правой кнопкой мыши \nи выбрав в контекстном меню \"Сбросить настройки\"."
 
 msgid "/who - print online players number to chat."
 msgstr ""
@@ -300,7 +301,7 @@ msgid ""
 " Others are making worlds using Mana software. The Mana World project\n"
 " is the originator of the Mana project. Mana was split off to further\n"
 " facilitate development of other worlds."
-msgstr ""
+msgstr " Этот проект включает в себя разработку как клиентской, так и\nсерверной части. Другие люди также создают миры, используя\nпрограммное обеспечение Mana.\nПроект The Mana World является исходным для проекта Mana.\nПроект Mana отделился для дальнейшего продвижения разработки\nновых миров."
 
 msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr ""
@@ -327,7 +328,7 @@ msgstr ""
 
 msgid ""
 "You can hide/show bars and buttons by right click and select menu item."
-msgstr ""
+msgstr "Панели и кнопки можно показать или скрыть, нажав на них правой кнопкой мыши и выбрав нужный пункт."
 
 msgid "Windows"
 msgstr "Окна"
@@ -342,7 +343,7 @@ msgid "##2F3##P                       \"Inventory Window\""
 msgstr ""
 
 msgid "ABOUT MANAPLUS"
-msgstr "О MANAPLUS"
+msgstr "Об игре MANAPLUS"
 
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr ""
@@ -356,13 +357,13 @@ msgstr "СОДЕРЖАНИЕ"
 msgid ""
 "You can disable yellow bar,\n"
 "by pressing key 8 on numeric keyboard."
-msgstr ""
+msgstr "Желтую панель можно выключить, нажав 8 на цифровой клавиатуре."
 
 msgid "/ignoreall - add all whispers to ignore list."
 msgstr ""
 
 msgid "Other contributors"
-msgstr ""
+msgstr "Другие участники"
 
 msgid "/ignore NICK - add nick to ignore list."
 msgstr ""
@@ -385,7 +386,7 @@ msgid "/move X Y - move to X,Y position in short distance."
 msgstr ""
 
 msgid "Magic skills:"
-msgstr ""
+msgstr "Магические умения:"
 
 msgid "/addignoreattack NAME - add monster to ignore attack list."
 msgstr ""
@@ -439,7 +440,7 @@ msgid "THE PLAYER LIST"
 msgstr "СПИСОК ИГРОКОВ"
 
 msgid "Basic skills:"
-msgstr "Основные навыки:"
+msgstr "Основные умения:"
 
 msgid "##POther skills can be obtain by doing quests and missions in game."
 msgstr ""
@@ -452,7 +453,7 @@ msgid ""
 " source MMORPG Client. Mana uses 2D graphics and aims to create a large\n"
 " and diverse interactive world. It is licensed under the GPL, making\n"
 " sure this game can't ever run away from you."
-msgstr ""
+msgstr "##2ManaPlus##P - это серьезная работа по созданию инновационного\nсвободного MMORPG-клиента с открытым исходным кодом.\nИгра использует 2D графику и нацелена на создание огромных\nи разнообразных интерактивных миров. Лицензия GPL позволяет\nбыть уверенным в том, что игра никогда не отвернется от Вас."
 
 msgid ""
 "You can buy or sell items from players shops.\n"
@@ -471,7 +472,7 @@ msgstr ""
 msgid ""
 "##2ManaPlus##P is extended client based on code from ##2Mana##P client.\n"
 " Added many features, improved perfomance, stability, security and more."
-msgstr "##2ManaPlus##P - расширенный клиент для которого за основу взят ##2Mana##P клиент.\n Добавлено множество возможностей, улучшина производительность,\nстабильность, безопасность и многое другое."
+msgstr "##2ManaPlus##P - расширенный клиент на основе клиента ##2Mana##P.\nДобавлено множество возможностей, улучшена производительность,\nстабильность, безопасность и многое другое."
 
 msgid "##2SpaceBar##P                 \"Select OK\""
 msgstr ""
@@ -495,7 +496,7 @@ msgid "##2LeftAlt + 1##P              \"Emote Shortcut 1\""
 msgstr ""
 
 msgid "##2F11##P                      \"Social Window\""
-msgstr ""
+msgstr "##2F11##P                      \"Окно Общество\""
 
 msgid ""
 " - ##2neutral##P:  As far as the game is concerned, this is the same as not\n"
@@ -504,7 +505,7 @@ msgid ""
 msgstr ""
 
 msgid "Skills"
-msgstr "Навыки"
+msgstr "Умения"
 
 msgid "##2Party Level1:##P enables a char to join a party."
 msgstr ""
@@ -512,7 +513,7 @@ msgstr ""
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
 " several configuration options:"
-msgstr ""
+msgstr " Здесь можно найти список всех знакомых игроков, а также\nмножество настроек:"
 
 msgid ""
 "/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
@@ -539,7 +540,7 @@ msgid ""
 msgstr ""
 
 msgid "Contributors to client/server development"
-msgstr ""
+msgstr "В разработке клиентской и серверной части принимали участие"
 
 msgid "##2KeyPad[1]##P                \"Change Follow mode\""
 msgstr ""
@@ -560,7 +561,7 @@ msgid "##2Esc##P                      \"Deactivate Chat Input\""
 msgstr ""
 
 msgid "Player relations"
-msgstr "Отнашения между игроками"
+msgstr "Отношения между игроками"
 
 msgid ""
 "You can copy value from any bar,\n"
@@ -574,22 +575,22 @@ msgid "COMMANDS"
 msgstr "КОМАНДЫ"
 
 msgid "##2RIGHT##P                    \"Move Right\""
-msgstr ""
+msgstr "##2RIGHT##P                    \"Двигаться вправо\""
 
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr ""
 
 msgid "##2t##P                        \"Talk\""
-msgstr ""
+msgstr "##2t##P                        \"Говорить\""
 
 msgid "##2n##P                        \"Target NPC\""
-msgstr ""
+msgstr "##2n##P                        \"Выбор цели - NPC\""
 
 msgid "##2LeftAlt + 3##P              \"Emote Shortcut 3\""
 msgstr ""
 
 msgid "Manaplus Developers"
-msgstr ""
+msgstr "Разработчики Manaplus"
 
 msgid "##2Backslash(/)##P             \"Change Crazy Move mode\""
 msgstr ""
@@ -692,7 +693,7 @@ msgid ""
 " Left click to execute default action: walk, pick up an item, attack a monster\n"
 " and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
 " context menu. Holding [Left Shift] prevents from walking when attacking."
-msgstr ""
+msgstr " Левый клик - действие по умолчанию: идти, поднять предмет,\nатаковать монстра и говорить с NPC (клик у ног).\nПравый клик вызывает контекстное меню.\n[Left Shift] предотвращает движение во время атаки."
 
 msgid ""
 "You can see other player equiped items,\n"
@@ -703,7 +704,7 @@ msgid "##2d##P                        \"Move to Home location\""
 msgstr ""
 
 msgid "Whispers"
-msgstr "Приваты"
+msgstr "Приват (шепот, whisper)"
 
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
 msgstr ""
@@ -752,7 +753,7 @@ msgid "##2p##P                        \"Screenshot\""
 msgstr ""
 
 msgid "##2x##P                        \"Target & Attack\""
-msgstr ""
+msgstr "##2x##P                        \"Выбрать цель и атаковать\""
 
 msgid "##2b##P                        \"Use magic attack\""
 msgstr ""
@@ -773,7 +774,7 @@ msgid "/serverignoreall - ignore all whispers on server side."
 msgstr ""
 
 msgid "##2v##P                        \"Move to Target\""
-msgstr ""
+msgstr "##2v##P                        \"Двигаться к цели\""
 
 msgid "##2KeyPad[7]##P                \"Previous Chat Tab\""
 msgstr ""
@@ -812,7 +813,7 @@ msgid "/navigate x y - move to position x,y in current map in any distance."
 msgstr ""
 
 msgid "SKILLS"
-msgstr "НАВЫКИ"
+msgstr "УМЕНИЯ"
 
 msgid "Art or images contributors"
 msgstr ""
