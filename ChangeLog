@@ -1,3 +1,14 @@
+2012-05-27 New release 1.2.5.27
+fix: tips translations.
+fix: joystick repeat key presses.
+fix: minimap show/hide on windows.
+fix: dehardcode some old paths.
+add: button detect best video mode (windows only).
+add: autodetect best video mode at first start.
+add: disable by default autofix position.
+add: prevent from healing enemies.
+add: option to hide nick for erased players.
+
 2012-05-12 New release 1.2.5.12
 fix: keys for Next chat line/previous chat line.
 fix: autologin from command line.
