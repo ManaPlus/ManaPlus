@@ -607,7 +607,8 @@ void PopupMenu::showChatPopup(int x, int y, ChatTab *tab)
         {
             mNick = name;
             mType = Being::PLAYER;
-
+            addPlayerRelation(name);
+            mBrowserBox->addRow("##3---");
             addFollow();
 
             if (player_node->isInParty())
