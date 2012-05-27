@@ -84,6 +84,10 @@ bool AnimatedSprite::reset()
     mFrameTime = 0;
     mLastTime = 0;
 
+    if (mAnimation)
+        mFrame = mAnimation->getFrame(0);
+    else
+        mFrame = nullptr;
     return ret;
 }
 
@@ -102,8 +106,6 @@ bool AnimatedSprite::play(std::string spriteAction)
     if (animation && animation != mAnimation && animation->getLength() > 0)
     {
         mAnimation = animation;
-        mFrame = mAnimation->getFrame(0);
-
         reset();
 
         return true;
@@ -252,7 +254,6 @@ bool AnimatedSprite::setSpriteDirection(SpriteDirection direction)
         if (animation && animation != mAnimation && animation->getLength() > 0)
         {
             mAnimation = animation;
-            mFrame = mAnimation->getFrame(0);
             reset();
         }
 
