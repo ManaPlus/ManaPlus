@@ -207,7 +207,8 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                 mText.insert(mCaretPosition, std::string(buf));
                 mCaretPosition += 1;
                 keyEvent.consume();
-                logger->log("TextField::keyPressed1");
+                if (mSendAlwaysEvents)
+                    distributeActionEvent();
                 return;
             }
         }
@@ -237,6 +238,8 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             mText.insert(mCaretPosition, std::string(buf, buf + len));
             mCaretPosition += len;
             keyEvent.consume();
+            if (mSendAlwaysEvents)
+                distributeActionEvent();
             return;
         }
     }
