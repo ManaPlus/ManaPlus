@@ -315,7 +315,10 @@ void LoginDialog::action(const gcn::ActionEvent &event)
 void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
     if (keyEvent.isConsumed())
+    {
+        mLoginButton->setEnabled(canSubmit());
         return;
+    }
 
     int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     if (actionId == Input::KEY_GUI_CANCEL)
