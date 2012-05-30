@@ -206,6 +206,9 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
                 buf[1] = 0;
                 mText.insert(mCaretPosition, std::string(buf));
                 mCaretPosition += 1;
+                keyEvent.consume();
+                logger->log("TextField::keyPressed1");
+                return;
             }
         }
         else if (!mMaximum || mText.size() < mMaximum)
@@ -233,6 +236,8 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
             mText.insert(mCaretPosition, std::string(buf, buf + len));
             mCaretPosition += len;
+            keyEvent.consume();
+            return;
         }
     }
 
@@ -362,6 +367,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
     {
         case Input::KEY_GUI_LEFT:
         {
+            consumed = true;
             while (mCaretPosition > 0)
             {
                 --mCaretPosition;
@@ -373,6 +379,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_RIGHT:
         {
+            consumed = true;
             unsigned sz = static_cast<unsigned>(mText.size());
             while (mCaretPosition < sz)
             {
@@ -388,6 +395,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_DELETE:
         {
+            consumed = true;
             unsigned sz = static_cast<unsigned>(mText.size());
             while (mCaretPosition < sz)
             {
@@ -403,6 +411,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
         }
 
         case Input::KEY_GUI_BACKSPACE:
+            consumed = true;
             deleteCharLeft(mText, &mCaretPosition);
             break;
 
@@ -414,15 +423,18 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
 
         case Input::KEY_GUI_HOME:
             mCaretPosition = 0;
+            consumed = true;
             break;
 
         case Input::KEY_GUI_END:
             mCaretPosition = static_cast<unsigned>(mText.size());
+            consumed = true;
             break;
 
         case Input::KEY_GUI_TAB:
             if (mLoseFocusOnTab)
                 return;
+            consumed = true;
             break;
 
         default:
@@ -432,7 +444,8 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
     if (mSendAlwaysEvents)
         distributeActionEvent();
 
-    keyEvent.consume();
+    if (consumed)
+        keyEvent.consume();
     fixScroll();
 }
 

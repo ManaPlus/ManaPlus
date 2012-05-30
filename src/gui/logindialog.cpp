@@ -314,8 +314,10 @@ void LoginDialog::action(const gcn::ActionEvent &event)
 
 void LoginDialog::keyPressed(gcn::KeyEvent &keyEvent)
 {
-    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
+    if (keyEvent.isConsumed())
+        return;
 
+    int actionId = static_cast<KeyEvent*>(&keyEvent)->getActionId();
     if (actionId == Input::KEY_GUI_CANCEL)
     {
         action(gcn::ActionEvent(nullptr, mServerButton->getActionEventId()));
