@@ -26,6 +26,7 @@ cd ..
 #need fix: -Wfloat-equal
 #need fix: -Wunsafe-loop-optimizations
 #need fix: -Wpadded
+#need fix: -Wsign-conversion
 #prof -pg
 
 dir=`pwd`
