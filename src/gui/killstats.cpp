@@ -144,15 +144,7 @@ void KillStats::action(const gcn::ActionEvent &event)
         mLine6->setCaption(strprintf(
             _("No. of avg mob to next level: %s"), "?"));
 
-        m1minExpTime = 0;
-        m1minExpNum = 0;
-        m1minSpeed = 0;
-        m5minExpTime = 0;
-        m5minExpNum = 0;
-        m5minSpeed = 0;
-        m15minExpTime = 0;
-        m15minExpNum = 0;
-        m15minSpeed = 0;
+        resetTimes();
     }
     else if (event.getId() == "timer")
     {
@@ -162,16 +154,21 @@ void KillStats::action(const gcn::ActionEvent &event)
         mLine7->setCaption(strprintf(
             _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
 
-        m1minExpTime = 0;
-        m1minExpNum = 0;
-        m1minSpeed = 0;
-        m5minExpTime = 0;
-        m5minExpNum = 0;
-        m5minSpeed = 0;
-        m15minExpTime = 0;
-        m15minExpNum = 0;
-        m15minSpeed = 0;
+        resetTimes();
     }
+}
+
+void KillStats::resetTimes()
+{
+    m1minExpTime = 0;
+    m1minExpNum = 0;
+    m1minSpeed = 0;
+    m5minExpTime = 0;
+    m5minExpNum = 0;
+    m5minSpeed = 0;
+    m15minExpTime = 0;
+    m15minExpNum = 0;
+    m15minSpeed = 0;
 }
 
 void KillStats::gainXp(int xp)
@@ -450,6 +447,24 @@ void KillStats::processEvent(Channels channel A_UNUSED,
         {
             gainXp(event.getInt("newValue") - event.getInt("oldValue"));
 //            update();
+        }
+        else if (id == LEVEL)
+        {
+            mKillCounter = 0;
+            mKillTCounter = 0;
+            mExpCounter = 0;
+            mExpTCounter = 0;
+            mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
+                PlayerInfo::getAttribute(EXP_NEEDED) / 100, "?"));
+            mLine4->setCaption(strprintf(_(
+                "Kills: %s, total exp: %s"), "?", "?"));
+            mLine5->setCaption(strprintf(_("Avg Exp: %s"), "?"));
+            mLine6->setCaption(strprintf(
+                _("No. of avg mob to next level: %s"), "?"));
+            mLine7->setCaption(strprintf(
+                _("Kills/Min: %s, Exp/Min: %s"), "?", "?"));
+
+            resetTimes();
         }
     }
 }

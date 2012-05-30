@@ -85,6 +85,8 @@ class KillStats : public Window, gcn::ActionListener, public Listener
         void processEvent(Channels channel A_UNUSED,
                           const DepricatedEvent &event);
 
+        void resetTimes();
+
     private:
         void validateJacko();
 
