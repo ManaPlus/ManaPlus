@@ -68,8 +68,6 @@ namespace ColorDB
      */
     void unload();
 
-    std::string &getHairColor(int id);
-
     std::string &getHairColorName(int id);
 
     int getHairSize();

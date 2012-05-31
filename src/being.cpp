@@ -2656,6 +2656,14 @@ Gender Being::intToGender(int sex)
     }
 }
 
+int Being::getSpriteID(int slot)
+{
+    if (slot < 0 || (unsigned)slot >= mSpriteIDs.size())
+        return -1;
+
+    return mSpriteIDs[slot];
+}
+
 BeingEquipBackend::BeingEquipBackend(Being *being):
     mBeing(being)
 {

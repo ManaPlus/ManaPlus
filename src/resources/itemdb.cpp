@@ -213,9 +213,20 @@ void ItemDB::load()
 //        std::string removeSprite = XML::getProperty(node, "removeSprite", "");
         std::string colors;
         if (serverVersion >= 1)
+        {
             colors = XML::getProperty(node, "colors", "");
+
+            // check for empty hair palete
+            if (colors.empty() && id <= -1 && id > -100)
+                colors = "hair";
+        }
         else
-            colors = "";
+        {
+            if (id <= -1 && id > -100)
+                colors = "hair";
+            else
+                colors = "";
+        }
 
         std::string tags[3];
         tags[0] = XML::getProperty(node, "tag",

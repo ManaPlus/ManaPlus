@@ -780,6 +780,8 @@ class Being : public ActorSprite, public ConfigListener
         std::string getRaceName()
         { return mRaceName; }
 
+        int getSpriteID(int slot);
+
         static int genderToInt(Gender sex);
 
         static Gender intToGender(int sex);

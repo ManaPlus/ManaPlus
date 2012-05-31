@@ -155,31 +155,6 @@ void ColorDB::unload()
     mLoaded = false;
 }
 
-std::string &ColorDB::getHairColor(int id)
-{
-    if (!mLoaded)
-        load();
-
-    ColorListsIterator it = mColorLists.find("hair");
-    if (it == mColorLists.end())
-    {
-        logger->log1("ColorDB: Error, hair colors list empty");
-        return mFail;
-    }
-
-    ColorIterator i = (*it).second.find(id);
-
-    if (i == (*it).second.end())
-    {
-        logger->log("ColorDB: Error, unknown dye ID# %d", id);
-        return mFail;
-    }
-    else
-    {
-        return i->second.color;
-    }
-}
-
 std::string &ColorDB::getHairColorName(int id)
 {
     if (!mLoaded)

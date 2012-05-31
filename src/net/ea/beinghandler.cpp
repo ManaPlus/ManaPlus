@@ -50,6 +50,8 @@
 #include "net/net.h"
 
 #include "resources/colordb.h"
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include <iostream>
 
@@ -264,7 +266,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         dstBeing->setGender(Being::intToGender(gender));
         // Set these after the gender, as the sprites may be gender-specific
         setSprite(dstBeing, EA_SPRITE_HAIR, hairStyle * -1,
-            ColorDB::getHairColor(hairColor));
+            ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         setSprite(dstBeing, EA_SPRITE_BOTTOMCLOTHES, headBottom);
         setSprite(dstBeing, EA_SPRITE_TOPCLOTHES, headMid);
         setSprite(dstBeing, EA_SPRITE_HAT, headTop);

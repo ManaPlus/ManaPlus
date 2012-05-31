@@ -49,6 +49,8 @@
 #include "net/tmwa/protocol.h"
 
 #include "resources/colordb.h"
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include <iostream>
 
@@ -325,8 +327,8 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
             player_node->imitateOutfit(dstBeing, SPRITE_TOPCLOTHES);
             break;
         case 6:     // eAthena LOOK_HAIR_COLOR
-            dstBeing->setSpriteColor(SPRITE_HAIR,
-                ColorDB::getHairColor(id));
+            dstBeing->setSpriteColor(SPRITE_HAIR, ItemDB::get(
+                dstBeing->getSpriteID(SPRITE_HAIR)).getDyeColorsString(id));
             break;
         case 7:     // Clothes color
             // ignoring it
@@ -540,7 +542,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     //dstBeing->setSprite(SPRITE_MISC1, misc1);
     //dstBeing->setSprite(SPRITE_MISC2, misc2);
     dstBeing->setSprite(SPRITE_HAIR, hairStyle * -1,
-                        ColorDB::getHairColor(hairColor));
+        ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
 
     player_node->imitateOutfit(dstBeing);
 

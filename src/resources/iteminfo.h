@@ -244,7 +244,7 @@ class ItemInfo
 
         SpriteToItemMap *getSpriteToItemReplaceMap(int directions) const;
 
-        std::string getDyeString(int color) const;
+//        std::string getDyeString(int color) const;
 
         std::string getDyeColorsString(int color) const;
 

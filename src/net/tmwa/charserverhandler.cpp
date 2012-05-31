@@ -38,6 +38,8 @@
 #include "net/tmwa/protocol.h"
 
 #include "resources/colordb.h"
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include "utils/dtor.h"
 
@@ -214,7 +216,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     int topClothes = msg.readInt16();
 
     tempPlayer->setSprite(SPRITE_HAIR, hairStyle * -1,
-        ColorDB::getHairColor(msg.readInt16()));
+        ItemDB::get(-hairStyle).getDyeColorsString(msg.readInt16()));
 
     int misc2 = msg.readInt16();
     tempPlayer->setName(msg.readString(24));
