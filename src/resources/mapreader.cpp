@@ -431,6 +431,9 @@ inline static void setTile(Map *map, MapLayer *layer, int x, int y, int gid)
                     case Map::COLLISION_WATER:
                         map->blockTile(x, y, Map::BLOCKTYPE_WATER);
                         break;
+                    case Map::COLLISION_GROUNDTOP:
+                        map->blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
+                        break;
                     default:
                         break;
                 }

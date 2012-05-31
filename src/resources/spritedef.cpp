@@ -143,6 +143,7 @@ void SpriteDef::substituteActions()
     substituteAction(SpriteAction::CAST_MAGIC, SpriteAction::ATTACK);
     substituteAction(SpriteAction::USE_ITEM, SpriteAction::CAST_MAGIC);
     substituteAction(SpriteAction::SIT, SpriteAction::STAND);
+    substituteAction(SpriteAction::SITTOP, SpriteAction::SIT);
     substituteAction(SpriteAction::SLEEP, SpriteAction::SIT);
     substituteAction(SpriteAction::HURT, SpriteAction::STAND);
     substituteAction(SpriteAction::DEAD, SpriteAction::HURT);

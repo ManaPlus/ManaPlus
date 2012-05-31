@@ -69,6 +69,7 @@ const std::string ColorTypeNames[] =
     "ColorCollisionHighlight",
     "ColorCollisionAirHighlight",
     "ColorCollisionWaterHighlight",
+    "ColorCollisionGroundtopHighlight",
     "ColorWalkableTileHighlight",
     "ColorAttackRange",
     "ColorAttackRangeBorder",
@@ -153,6 +154,8 @@ UserPalette::UserPalette():
              _("Air collision Highlight"), 64);
     addColor(WATER_COLLISION_HIGHLIGHT, 0x2050e0, STATIC,
              _("Water collision Highlight"), 64);
+    addColor(GROUNDTOP_COLLISION_HIGHLIGHT, 0xffff00, STATIC,
+             _("Special ground collision Highlight"), 20);
     addColor(WALKABLE_HIGHLIGHT, 0x00D000, STATIC,
              _("Walkable Highlight"), 255);
     addColor(ATTACK_RANGE, 0xffffff, STATIC,

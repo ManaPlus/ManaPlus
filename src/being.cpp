@@ -1004,6 +1004,20 @@ void Being::fireMissile(Being *victim, const std::string &particle)
 
 }
 
+std::string Being::getSitAction() const
+{
+    if (serverVersion < 0)
+    {
+        return SpriteAction::SIT;
+    }
+    else
+    {
+        if (mMap && !mMap->getWalk(mX, mY, Map::BLOCKMASK_GROUNDTOP))
+            return SpriteAction::SITTOP;
+        return SpriteAction::SIT;
+    }
+}
+
 void Being::setAction(Action action, int attackType A_UNUSED)
 {
     std::string currentAction = SpriteAction::INVALID;
@@ -1019,9 +1033,16 @@ void Being::setAction(Action action, int attackType A_UNUSED)
             // while using only the ACTION_MOVE.
             break;
         case SIT:
-            currentAction = SpriteAction::SIT;
+            currentAction = getSitAction();
             if (mInfo)
-                sound.playSfx(mInfo->getSound(SOUND_EVENT_SIT), mX, mY);
+            {
+                SoundEvent event;
+                if (currentAction == SpriteAction::SITTOP)
+                    event = SOUND_EVENT_SITTOP;
+                else
+                    event = SOUND_EVENT_SIT;
+                sound.playSfx(mInfo->getSound(event), mX, mY);
+            }
             break;
         case ATTACK:
             if (mEquippedWeapon)

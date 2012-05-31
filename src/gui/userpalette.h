@@ -68,6 +68,7 @@ class UserPalette : public Palette, public gcn::ListModel
             COLLISION_HIGHLIGHT,
             AIR_COLLISION_HIGHLIGHT,
             WATER_COLLISION_HIGHLIGHT,
+            GROUNDTOP_COLLISION_HIGHLIGHT,
             WALKABLE_HIGHLIGHT,
             ATTACK_RANGE,
             ATTACK_RANGE_BORDER,

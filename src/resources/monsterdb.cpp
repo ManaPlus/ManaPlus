@@ -160,6 +160,10 @@ void MonsterDB::load()
                 {
                     currentInfo->addSound(SOUND_EVENT_SIT, filename);
                 }
+                else if (event == "sittop")
+                {
+                    currentInfo->addSound(SOUND_EVENT_SITTOP, filename);
+                }
                 else if (event == "spawn")
                 {
                     currentInfo->addSound(SOUND_EVENT_SPAWN, filename);

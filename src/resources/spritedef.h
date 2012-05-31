@@ -78,6 +78,7 @@ namespace SpriteAction
     static const std::string DEFAULT = "stand";
     static const std::string STAND = "stand";
     static const std::string SIT = "sit";
+    static const std::string SITTOP = "sittop";
     static const std::string SLEEP = "sleep";
     static const std::string DEAD = "dead";
     static const std::string MOVE = "walk";

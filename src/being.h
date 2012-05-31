@@ -613,6 +613,11 @@ class Being : public ActorSprite, public ConfigListener
         { return mGender; }
 
         /**
+         * Return sprite sit action for current environment.
+         */
+        std::string getSitAction() const;
+
+        /**
          * Whether or not this player is a GM.
          */
         bool isGM() const

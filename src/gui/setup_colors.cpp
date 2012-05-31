@@ -262,6 +262,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
     {
         case UserPalette::AIR_COLLISION_HIGHLIGHT:
         case UserPalette::WATER_COLLISION_HIGHLIGHT:
+        case UserPalette::GROUNDTOP_COLLISION_HIGHLIGHT:
         case UserPalette::COLLISION_HIGHLIGHT:
         case UserPalette::PORTAL_HIGHLIGHT:
         case UserPalette::HOME_PLACE:
@@ -305,6 +306,7 @@ void Setup_Colors::valueChanged(const gcn::SelectionEvent &event A_UNUSED)
         case UserPalette::HOME_PLACE_BORDER:
         case UserPalette::AIR_COLLISION_HIGHLIGHT:
         case UserPalette::WATER_COLLISION_HIGHLIGHT:
+        case UserPalette::GROUNDTOP_COLLISION_HIGHLIGHT:
         case UserPalette::COLLISION_HIGHLIGHT:
         case UserPalette::WALKABLE_HIGHLIGHT:
         case UserPalette::ROAD_POINT:

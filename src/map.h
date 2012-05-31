@@ -114,16 +114,18 @@ class Map : public Properties, public ConfigListener
             BLOCKTYPE_AIR,
             BLOCKTYPE_WATER,
             BLOCKTYPE_GROUND,
+            BLOCKTYPE_GROUNDTOP,
             NB_BLOCKTYPES
         };
 
         enum CollisionTypes
         {
-            COLLISION_EMPTY = 0,
-            COLLISION_WALL = 1,
-            COLLISION_AIR = 2,
-            COLLISION_WATER = 3,
-            COLLISION_MAX = 4
+            COLLISION_EMPTY = 0,        // no collision
+            COLLISION_WALL = 1,         // full collison
+            COLLISION_AIR = 2,          // air units can walk
+            COLLISION_WATER = 3,        // water units can walk
+            COLLISION_GROUNDTOP = 4,    // no collision (chair, bed, etc)
+            COLLISION_MAX = 5           // count index
         };
 
         enum BlockMask
@@ -133,7 +135,8 @@ class Map : public Properties, public ConfigListener
             BLOCKMASK_MONSTER   = 0x02, // 0000 0010
             BLOCKMASK_AIR       = 0x04, // 0000 0100
             BLOCKMASK_WATER     = 0x08, // 0000 1000
-            BLOCKMASK_GROUND    = 0x16  // 0001 0000
+            BLOCKMASK_GROUND    = 0x16, // 0001 0000
+            BLOCKMASK_GROUNDTOP = 0x32  // 0010 0000
         };
 
         enum DebugType

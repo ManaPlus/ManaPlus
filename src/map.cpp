@@ -465,6 +465,29 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     drawAmbientLayers(graphics, FOREGROUND_LAYERS, mOverlayDetail);
 }
 
+#define fillCollision(collision, color) \
+    if (x < endX && mMetaTiles[tilePtr].blockmask & collision)\
+    {\
+        width = 32;\
+        for (int x2 = tilePtr + 1; x < endX; x2 ++)\
+        {\
+            if (!(mMetaTiles[x2].blockmask & collision))\
+                break;\
+            width += 32;\
+            x ++;\
+            tilePtr ++;\
+        }\
+        if (width && userPalette)\
+        {\
+            graphics->setColor(userPalette->getColorWithAlpha(\
+                UserPalette::color));\
+            graphics->fillRectangle(gcn::Rectangle(\
+                x0 * mTileWidth - scrollX,\
+                y * mTileHeight - scrollY,\
+                width, 32));\
+        }\
+    }\
+
 void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
                         int debugFlags)
 {
@@ -500,85 +523,10 @@ void Map::drawCollision(Graphics *graphics, int scrollX, int scrollY,
             int width = 0;
             int x0 = x;
 
-            if (mMetaTiles[tilePtr].blockmask & BLOCKMASK_WALL)
-            {
-                width = 32;
-                for (int x2 = tilePtr + 1; x < endX; x2 ++)
-                {
-                    if (!(mMetaTiles[x2].blockmask
-                        & BLOCKMASK_WALL))
-                    {
-                        break;
-                    }
-                    width += 32;
-                    x ++;
-                    tilePtr ++;
-                }
-                if (width && userPalette)
-                {
-                    graphics->setColor(userPalette->getColorWithAlpha(
-                        UserPalette::COLLISION_HIGHLIGHT));
-
-                    graphics->fillRectangle(gcn::Rectangle(
-                        x0 * mTileWidth - scrollX,
-                        y * mTileHeight - scrollY,
-                        width, 32));
-                }
-            }
-
-            if (x < endX && mMetaTiles[tilePtr].blockmask
-                & BLOCKMASK_AIR)
-            {
-                width = 32;
-                for (int x2 = tilePtr + 1; x < endX; x2 ++)
-                {
-                    if (!(mMetaTiles[x2].blockmask
-                        & BLOCKMASK_AIR))
-                    {
-                        break;
-                    }
-                    width += 32;
-                    x ++;
-                    tilePtr ++;
-                }
-                if (width && userPalette)
-                {
-                    graphics->setColor(userPalette->getColorWithAlpha(
-                        UserPalette::AIR_COLLISION_HIGHLIGHT));
-
-                    graphics->fillRectangle(gcn::Rectangle(
-                        x0 * mTileWidth - scrollX,
-                        y * mTileHeight - scrollY,
-                        width, 32));
-                }
-            }
-
-            if (x < endX && mMetaTiles[tilePtr].blockmask
-                & BLOCKMASK_WATER)
-            {
-                width = 32;
-                for (int x2 = tilePtr + 1; x < endX; x2 ++)
-                {
-                    if (!(mMetaTiles[x2].blockmask
-                        & BLOCKMASK_WATER))
-                    {
-                        break;
-                    }
-                    width += 32;
-                    x ++;
-                    tilePtr ++;
-                }
-                if (width && userPalette)
-                {
-                    graphics->setColor(userPalette->getColorWithAlpha(
-                        UserPalette::WATER_COLLISION_HIGHLIGHT));
-
-                    graphics->fillRectangle(gcn::Rectangle(
-                        x0 * mTileWidth - scrollX,
-                        y * mTileHeight - scrollY,
-                        width, 32));
-                }
-            }
+            fillCollision(BLOCKMASK_WALL, COLLISION_HIGHLIGHT);
+            fillCollision(BLOCKMASK_AIR, AIR_COLLISION_HIGHLIGHT);
+            fillCollision(BLOCKMASK_WATER, WATER_COLLISION_HIGHLIGHT);
+            fillCollision(BLOCKMASK_GROUNDTOP, GROUNDTOP_COLLISION_HIGHLIGHT);
         }
     }
 }
@@ -690,6 +638,9 @@ void Map::blockTile(int x, int y, BlockType type)
                 break;
             case BLOCKTYPE_GROUND:
                 mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUND;
+                break;
+            case BLOCKTYPE_GROUNDTOP:
+                mMetaTiles[tileNum].blockmask |= BLOCKMASK_GROUNDTOP;
                 break;
             default:
             case BLOCKTYPE_NONE:
