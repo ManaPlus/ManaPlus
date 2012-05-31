@@ -1,12 +1,13 @@
 # en#
 # Translators:
+#   <aligetmw@hotmail.fr>, 2012.
 #   <andycootlapin@hotmail.fr>, 2012.
 # Bernard  <nard@bh28.net>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-05-09 09:05+0000\n"
-"Last-Translator: Choupom <andycootlapin@hotmail.fr>\n"
+"PO-Revision-Date: 2012-05-28 13:37+0000\n"
+"Last-Translator: Alige <aligetmw@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,13 +46,13 @@ msgid "##2KeyPad[3]##P                \"On / Off audio\""
 msgstr "##2KeyPad[3]##P                \"Audio On / Off\""
 
 msgid "##2F2##P                       \"Status Window\""
-msgstr "##2F2##P                       \"Fenêtre d'état\""
+msgstr "##2F2##P                       \"Fenêtre d'Etat\""
 
 msgid "/cacheinfo - show text cache info."
-msgstr "/cacheinfo - afficher l'info. du  cache texte."
+msgstr "/cacheinfo - afficher l'info. du cache texte."
 
 msgid "##2LeftAlt + Minus(-)##P       \"Emote Shortcut 11\""
-msgstr "##2Alt-Gauche + Moins(-)##P       \"Raccourci Émoticône 11\""
+msgstr "##2Alt-Gauche + Moins(-)##P       \"Raccourci Emoticône 11\""
 
 msgid "KEYBOARD:"
 msgstr "CLAVIER :"
@@ -65,7 +66,7 @@ msgstr "Si vous rencontrez des problèmes, veuillez d'abord lire le FAQ.\nSi vou
 msgid ""
 "##2     http://forums.themanaworld.org/viewforum.php?f=3\n"
 " or visit IRC channel:"
-msgstr "##2     http://forums.themanaworld.org/viewforum.php?f=3\n ou visite notre canal IRC :"
+msgstr "##2     http://forums.themanaworld.org/viewforum.php?f=3\n ou visitez notre canal IRC :"
 
 msgid "ManaPlus Contributors"
 msgstr "Contributeurs à ManaPlus"
@@ -95,15 +96,15 @@ msgid "##2s##P                        \"Sit\""
 msgstr "##2s##P                        \"S'asseoir\""
 
 msgid "##2e##P                        \"Kills Stats Window\""
-msgstr "##2e##P                        \"Fenêtre  Stats de chasse\""
+msgstr "##2e##P                        \"Fenêtre Statistiques de Chasse\""
 
 msgid "##2KeyPad[8]##P                \"Disable / Enable Game modifier keys\""
-msgstr "##2KeyPad[8]##P                \"désactiver / activer  les touches de modicateurs d'options de jeu\""
+msgstr "##2KeyPad[8]##P                \"Désactiver / Activer les touches de modificateurs d'options de jeu\""
 
 msgid ""
 " - ##2allow whispers##P: Do you wish to allow arbitrary players to send\n"
 "   private messages to you in-game?"
-msgstr " - ##2allow whispers##P: Souhaitez vous permettre à n'importe-quel \njoueur de vous envoyer des messages privés en jeu ? "
+msgstr " - ##2allow whispers##P : Souhaitez-vous permettre à n'importe-quel \njoueur de vous envoyer des messages privés en jeu ?"
 
 msgid "##PMagic skills can be obtain by doing quests and missions in game."
 msgstr "##PDes compétences magiques peuvent être obtenues en faisant des quêtes et des missions dans le jeu."
@@ -121,13 +122,13 @@ msgid ""
 "Communication is often essential to success in this game. You can communicate\n"
 " in several ways:  By chatting and showing emotions (see above), by trading\n"
 " (with the right-click context menu), and by whispering."
-msgstr "Communiquer est souvent essential pur réussir dans le jeu. vous pouvez  communiquer\n de plusieurs manières: En discutant (chat) en montrant vos emotions (voir plus haut), en échangeant.\n (avec le menu contextuel clic-droitnu), et en chuchotant."
+msgstr "Communiquer est souvent essentiel pour réussir dans le jeu. Vous pouvez  communiquer\n de plusieurs manières : En discutant (dialogue) en montrant vos émoticônes (voir plus haut), en échangeant\n (avec le menu contextuel clic-droit) et en chuchotant."
 
 msgid "##2a##P                        \"Target Closest\""
 msgstr "##2a##P                        \"Viser le monstre le plus proche\""
 
 msgid "##2Party level2:##P enables a char to create a party."
-msgstr "##2Groupe level2:##P permet à un perso de créer un groupe."
+msgstr "##2Groupe level2 :##P permet à un perso de créer un groupe."
 
 msgid "##2y##P                        \"Quick Drop N Items from 0 slot\""
 msgstr "##2y##P                        \"Jeter rapidement N objets depuis l'emplacement 0\""
@@ -138,7 +139,7 @@ msgstr "##2Retour arrière##P                \"Raccourci Objet 13\""
 msgid ""
 " You can improve your skills by increasing job level. Each job level\n"
 " gives you 1 point to spend on basic skills."
-msgstr " Vous pouvez améliorer vos compétences en augmentant votre  niveau job (travail). Chaque niveau job\n vous donne un point a ajouter à vos compétences de base."
+msgstr " Vous pouvez améliorer vos compétences en augmentant votre niveau job (travail). Chaque niveau job\n vous donne 1 point à ajouter à vos compétences de base."
 
 msgid "##25##P                        \"Item Shortcut 5\""
 msgstr "##25##P                        \"Raccourci Objet 5\""
@@ -150,7 +151,7 @@ msgid "##2q##P                        \"Target Player\""
 msgstr "##2q##P                        \"Viser le Joueur\""
 
 msgid "Mana Contributors"
-msgstr "Contributeurs à Mana"
+msgstr "Contributeurs de Mana"
 
 msgid "/query NICK, /q NICK - open new whisper tab for nick."
 msgstr "/query PSEUDO, /q PSEUDO - ouvre un nouvel onglet de discussion avec le joueur."
@@ -159,13 +160,13 @@ msgid "##2Slash(\\)##P                 \"Crazy moves\""
 msgstr "##2Antislash(\\)##P                 \"Mouvements de fous\""
 
 msgid "/all - show visible beings list in debug tab."
-msgstr "/all - afficher la liste des êtres visibles dans l'onglet de déboguage."
+msgstr "/all - afficher la liste des êtres visibles dans l'onglet de débogage."
 
 msgid "For other server look servers pages for support."
-msgstr "Pour d'autres serveurs, reportez vous à leurs pages de support."
+msgstr "Pour d'autres serveurs, reportez-vous à leurs pages d'aide."
 
 msgid "Debug"
-msgstr "Déboguage"
+msgstr "Débogage"
 
 msgid "##2LeftWinKey##P               \"Ignore input 1\""
 msgstr "##2Windows-Gauche##P               \"Ignorer l'entrée 1\""
@@ -176,16 +177,16 @@ msgstr "/addattack NOM - ajoute le monstre NOM à la liste d'attaque."
 msgid ""
 " - ##2friend##P:  You consider this player a friend.  The player may chat,\n"
 "   message your in private, or trade with you at any point."
-msgstr " - ##2ami##P:  Tu considères ce joueur comme ton ami.  Ce joueur peut te parler en privé ou marchander avec toi à n'importe quel moment."
+msgstr " - ##2ami##P :  Tu considères ce joueur comme ton ami. Ce joueur peut te parler en privé ou marchander avec toi à n'importe quel moment."
 
 msgid ""
 "You can walk to warps automatically.\n"
 "Open Social Window (f11) and selecy Nav tab,\n"
 "then click on warp what you want."
-msgstr "Vous pouvez marcher jusqu'aux points de transport (warp points) automatiquement.\nOuvrez fa fenêtre Social (F11) et sélectionnez l'onglet Nav, puis cliquez sur le nom du point où vous voulez aller."
+msgstr "Vous pouvez marcher jusqu'aux points de transport automatiquement.\nOuvrez fa fenêtre Social (F11) et sélectionnez l'onglet Nav,\npuis cliquez sur le nom du point où vous voulez aller."
 
 msgid "##2LeftAlt + 7##P              \"Emote Shortcut 7\""
-msgstr "##2Alt-Gauche + 7##P              \"Raccourci Émoticône 7\""
+msgstr "##2Alt-Gauche + 7##P              \"Raccourci Emoticône 7\""
 
 msgid "##2LeftShift##P                \"Stop Attack\""
 msgstr "##2Shift-Gauche##P                \"Arrêter d'attaquer\""
@@ -194,7 +195,7 @@ msgid "/setdrop N - set drop counter to requested value."
 msgstr "/setdrop N - choisit le nombre d'objets à jeter par la touche de jet rapide."
 
 msgid "##2LeftAlt + 8##P              \"Emote Shortcut 8\""
-msgstr "##2Alt-Gauche + 8##P              \"Raccourci Émoticône 8\""
+msgstr "##2Alt-Gauche + 8##P              \"Raccourci Emoticône 8\""
 
 msgid "##2RightWinKey##P              \"Ignore input 2\""
 msgstr "##2Windows-Droite##P              \"Ignorer l'entrée 2\""
@@ -206,7 +207,7 @@ msgid "Visit IRC channel:"
 msgstr "Visite notre canal IRC :"
 
 msgid "##2LeftAlt + Equals(=)##P      \"Emote Shortcut 12\""
-msgstr "##2Alt-Gauche + Égal(=)##P              \"Raccourci Émoticône 12\""
+msgstr "##2Alt-Gauche + Égal(=)##P              \"Raccourci Emoticône 12\""
 
 msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty NOM - Crée un groupe appelé NOM."
@@ -226,7 +227,7 @@ msgstr "/where - affiche la position actuelle du joueur dans le chat."
 msgid ""
 " - ##2ignored##P:  You wish to completely ignore this player.  You will not\n"
 "   even see floating text for him or her anymore, nor emotions."
-msgstr " - ##2ignored##P:  Vous voulez ignorer completement ce joueur.  Vous ne verrez\n   même plus aucun texte flottant ni ses émotions."
+msgstr " - ##2ignored##P :  Vous voulez ignorer complètement ce joueur. Vous ne verrez\n   même plus aucun texte flottant ni ses émoticônes."
 
 msgid "##2RightShift + key##P         \"Move to navigation point\""
 msgstr "##2Shift-Droite + key##P         \"Aller au point de navigation\""
@@ -241,13 +242,13 @@ msgid "/unignore NICK - Remove nick from ignore list."
 msgstr "/unignore NOM - Enlever NOM de la liste des ignorés."
 
 msgid "##2LeftAlt + 6##P              \"Emote Shortcut 6\""
-msgstr "##2Alt-Gauche + 6##P              \"Raccourci Émoticône 6\""
+msgstr "##2Alt-Gauche + 6##P              \"Raccourci Emoticône 6\""
 
 msgid "IGNORING COMMUNICATION"
 msgstr "IGNORE LES COMMUNICATIONS"
 
 msgid "WINDOWS"
-msgstr "FENÊTRES"
+msgstr "FENETRES"
 
 msgid "SUPPORT"
 msgstr "SUPPORT"
@@ -256,10 +257,10 @@ msgid "##2LEFT##P                     \"Move Left\""
 msgstr "##2GAUCHE##P                     \"Aller à gauche\""
 
 msgid "##2LeftAlt + 9##P              \"Emote Shortcut 9\""
-msgstr "##2Alt-Gauche + 9##P              \"Raccourci Émoticône 9\""
+msgstr "##2Alt-Gauche + 9##P              \"Raccourci Emoticône 9\""
 
 msgid "About"
-msgstr "À propos"
+msgstr "A propos"
 
 msgid "Other skills:"
 msgstr "Autres compétences :"
@@ -284,7 +285,7 @@ msgstr "##20##P                        \"Raccourci Objet 10\""
 msgid ""
 "You can restore yellow bar settings,\n"
 "by right click on it and select in context menu \"Reset yellow bar\"."
-msgstr "Tu peux réinitialiser la barre jaune,\nen faisant un clique-droit dessus et en sélectionnant \"Remise aux valeurs par défaut de la barre jaune\"."
+msgstr "Tu peux réinitialiser la barre jaune,\nen faisant un clic-droit dessus et en sélectionnant \"Remise aux valeurs par défaut de la barre jaune\"."
 
 msgid "/who - print online players number to chat."
 msgstr "/who - affiche le nombre de joueurs en ligne dans le chat."
@@ -293,17 +294,17 @@ msgid "##2r##P                        \"Enable/Disable Trading\""
 msgstr "##2r##P                        \"Activer/Désactiver les échanges\""
 
 msgid "/uptime - show client uptime."
-msgstr "/uptime - affiche le temps  client."
+msgstr "/uptime - affiche le temps client."
 
 msgid ""
 "The project includes the development of both a client and a server.\n"
 " Others are making worlds using Mana software. The Mana World project\n"
 " is the originator of the Mana project. Mana was split off to further\n"
 " facilitate development of other worlds."
-msgstr "Ce projet comprend le développement d'un serveur et d'un client.\nD'autres équipes c'ent des mondes en utilisant les logiciels Mana. Le projet \"The Mana World\" est l'initiateur du projet \"Mana\". Mana  à été divisé pour faciliter le développement de nouveaux mondes"
+msgstr "Ce projet comprend le développement d'un serveur et d'un client.\n D'autres équipes créés des mondes en utilisant les logiciels Mana. Le projet \"The Mana World\"\n est l'initiateur du projet \"Mana\". Mana à été divisé pour\n faciliter le développement de nouveaux mondes."
 
 msgid "/dumpg - dump graphics and some other settings to chat."
-msgstr "/dumpg - Ecrit les préférences graphiques and quelques autres dans la ligne de chat."
+msgstr "/dumpg - Ecrit les préférences graphiques et quelques autres dans la ligne de chat."
 
 msgid "/trade NICK - start trade with nick."
 msgstr "/trade PSEUDO - commencer un échange avec le joueur."
@@ -333,7 +334,7 @@ msgid "Windows"
 msgstr "Fenêtres"
 
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
-msgstr "##2Alt-Gauche + 4##P              \"Raccourci Émoticône 4\""
+msgstr "##2Alt-Gauche + 4##P              \"Raccourci Emoticône 4\""
 
 msgid "Website: http://manaplus.evolonline.org/"
 msgstr "Site web : http://manaplus.evolonline.org/"
@@ -418,7 +419,7 @@ msgid "##2Tab##P                      \"Chat Auto Complete\""
 msgstr "##2Tab##P                      \"Auto-complétion du chat\""
 
 msgid "##2LeftAlt + 5##P              \"Emote Shortcut 5\""
-msgstr "##2Alt-Gauche + 5##P              \"Raccourci Émoticône 5\""
+msgstr "##2Alt-Gauche + 5##P              \"Raccourci Emoticône 5\""
 
 msgid ""
 " - ##2save player list##P: Should your acquaintance list be saved when you\n"
@@ -452,7 +453,7 @@ msgid ""
 " source MMORPG Client. Mana uses 2D graphics and aims to create a large\n"
 " and diverse interactive world. It is licensed under the GPL, making\n"
 " sure this game can't ever run away from you."
-msgstr "##2ManaPlus##P esst le résultat d'un effort important pour créer un client MMORPG innovant, libre et \n open source. Mana utilise des  graphics 2D and a pour but de  créer un monde\n vaste, varié et interactif. It is licensié sous GPL, ce qui vous rend\n surque ce jeu ne s'éloignera pas de vous."
+msgstr "##2ManaPlus##P est le résultat d'un effort important pour créer un client MMORPG innovant, libre et \n open source. Mana utilise des  graphics 2D and a pour but de  créer un monde\n vaste, varié et interactif. It is licensié sous GPL, ce qui vous rend\n surque ce jeu ne s'éloignera pas de vous."
 
 msgid ""
 "You can buy or sell items from players shops.\n"
@@ -471,7 +472,7 @@ msgstr "COMMUNICATION :"
 msgid ""
 "##2ManaPlus##P is extended client based on code from ##2Mana##P client.\n"
 " Added many features, improved perfomance, stability, security and more."
-msgstr "##2ManaPlus##P is un client étendu basé sur le  code du client  ##2Mana##P .\n De nombreuses  fonctionalités  ont été ajoutées, les perfomance, la stabilité, la securité ont été accrue set bien plus."
+msgstr "##2ManaPlus##P est un client étendu basé sur le code du client  ##2Mana##P.\n De nombreuses fonctions ont été ajoutées, les performances, la stabilité et la sécurité ont été augmentées et bien plus encore."
 
 msgid "##2SpaceBar##P                 \"Select OK\""
 msgstr "##2Espace##P                 \"Sélectionner OK\""
@@ -486,13 +487,13 @@ msgid "##2i##P                        \"Switch Quick Drop Counter\""
 msgstr "##2i##P                        \"Changer de compteur de jet rapide d'objets\""
 
 msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
-msgstr "##2Alt-Gauche + 2##P              \"Raccourci Émoticône 2\""
+msgstr "##2Alt-Gauche + 2##P              \"Raccourci Emoticône 2\""
 
 msgid "##2F7##P                       \"Chat Window\""
 msgstr "##2F7##P                       \"Chat\""
 
 msgid "##2LeftAlt + 1##P              \"Emote Shortcut 1\""
-msgstr "##2Alt-Gauche + 1##P              \"Raccourci Émoticône 1\""
+msgstr "##2Alt-Gauche + 1##P              \"Raccourci Emoticône 1\""
 
 msgid "##2F11##P                      \"Social Window\""
 msgstr "##2F11##P                      \"Groupes et Guildes\""
@@ -507,7 +508,7 @@ msgid "Skills"
 msgstr "Compétences"
 
 msgid "##2Party Level1:##P enables a char to join a party."
-msgstr "##2Groupe Level1:##P permet à un perso de rejoindre un groupe."
+msgstr "##2Groupe Niveau 1 :##P Permet à un perso de rejoindre un groupe."
 
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
@@ -520,7 +521,7 @@ msgid ""
 msgstr "/msg PSEUDO texte, /whisper PSEUDO texte, /w PSEUDO texte - envoie un message privé au joueur."
 
 msgid "##2F1##P                       \"Help Window\""
-msgstr "##2F1##P                       \"Fenêtre d'aide\""
+msgstr "##2F1##P                       \"Fenêtre d'Aide\""
 
 msgid "##2g##P                        \"Change Attack Weapon Type\""
 msgstr "##2g##P                        \"Changer de type d'arme d'attaque\""
@@ -586,7 +587,7 @@ msgid "##2n##P                        \"Target NPC\""
 msgstr "##2n##P                        \"Sélectionner le PNJ\""
 
 msgid "##2LeftAlt + 3##P              \"Emote Shortcut 3\""
-msgstr "##2Alt-Gauche + 3##P              \"Raccourci Émoticône 3\""
+msgstr "##2Alt-Gauche + 3##P              \"Raccourci Emoticône 3\""
 
 msgid "Manaplus Developers"
 msgstr "Développeurs de Manaplus"
@@ -686,7 +687,7 @@ msgid "Whispers commands"
 msgstr "Commandes de chuchotement"
 
 msgid "##2LeftAlt + Insert##P         \"Emote Shortcut 14\""
-msgstr "##2Alt-Gauche + Inser##P              \"Raccourci Émoticône 14\""
+msgstr "##2Alt-Gauche + Inser##P              \"Raccourci Emoticône 14\""
 
 msgid ""
 " Left click to execute default action: walk, pick up an item, attack a monster\n"
@@ -706,7 +707,7 @@ msgid "Whispers"
 msgstr "Chuchotement-message personnel"
 
 msgid "##2LeftAlt + 0##P              \"Emote Shortcut 10\""
-msgstr "##2Alt-Gauche + 0##P              \"Raccourci Émoticône 10\""
+msgstr "##2Alt-Gauche + 0##P              \"Raccourci Emoticône 10\""
 
 msgid "/help - show small help about chat commands. "
 msgstr "/help - affiche une courte aide à propos des commandes dans le chat."
@@ -717,7 +718,7 @@ msgid ""
 msgstr "Vous pouvez choisir n'importe quelle résolution pour le client dans l'onglet \"video\" de la configuration,\nchoisir  \"personnalisé\" et entrez par example: 900x500 puis pressez ok."
 
 msgid "/attack - attack target."
-msgstr "/attack - attaque la cible."
+msgstr "/attack - attaquer la cible."
 
 msgid "##2f##P                        \"Change Map View Mode\""
 msgstr "##2f##P                        \"Changer le mode de vision de carte\""
@@ -746,7 +747,7 @@ msgid "##2Trade:##P enables the ability to trade with others."
 msgstr "##2Echanger:##P active la possibilité d'échanger avec les autres."
 
 msgid "##2LeftAlt + Backspace##P      \"Emote Shortcut 13\""
-msgstr "##2Alt-Gauche + Retour Arrière##P              \"Raccourci Émoticône 13\""
+msgstr "##2Alt-Gauche + Retour Arrière##P              \"Raccourci Emoticône 13\""
 
 msgid "##2p##P                        \"Screenshot\""
 msgstr "##2p##P                        \"Capture d'écran\""
