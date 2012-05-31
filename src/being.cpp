@@ -740,8 +740,12 @@ void Being::handleAttack(Being *victim, int damage,
         if (dir)
             setDirection(dir);
     }
-    if (damage && victim->mType == PLAYER && victim->mAction == SIT)
-        victim->setAction(STAND);
+    if (damage)
+    {
+        victim->setAction(HURT);
+        if (this == player_node && mAction == HURT)
+            setAction(ATTACK);
+    }
 
     sound.playSfx(mInfo->getSound((damage > 0) ?
                   SOUND_EVENT_HIT : SOUND_EVENT_MISS), mX, mY);
@@ -1068,10 +1072,7 @@ void Being::setAction(Action action, int attackType A_UNUSED)
         case HURT:
             if (mInfo)
                 sound.playSfx(mInfo->getSound(SOUND_EVENT_HURT), mX, mY);
-            //currentAction = SpriteAction::HURT;// Buggy: makes the player stop
-                                            // attacking and unable to attack
-                                            // again until he moves.
-                                            // TODO: fix this!
+            currentAction = SpriteAction::HURT;
             break;
         case DEAD:
             currentAction = SpriteAction::DEAD;
