@@ -344,9 +344,10 @@ namespace gcn
 
             // Check if the widget is present in the "widget with mouse" queue.
             bool widgetIsPresentInQueue = false;
-            std::deque<Widget*>::const_iterator iter;
-            for (iter = mWidgetWithMouseQueue.begin();
-                 iter != mWidgetWithMouseQueue.end();
+            for (std::deque<Widget*>::const_iterator
+                 iter = mWidgetWithMouseQueue.begin(),
+                 iter_end = mWidgetWithMouseQueue.end();
+                 iter != iter_end;
                  ++ iter)
             {
                 if (*iter == widget)
@@ -857,9 +858,10 @@ namespace gcn
 
             // Check if the widget is present in the "widget with mouse" queue.
             bool widgetIsPresentInQueue = false;
-            std::deque<Widget*>::const_iterator iter;
-            for (iter = mWidgetWithMouseQueue.begin();
-                 iter != mWidgetWithMouseQueue.end();
+            for (std::deque<Widget*>::const_iterator
+                 iter = mWidgetWithMouseQueue.begin(),
+                 iter_end = mWidgetWithMouseQueue.end();
+                 iter != iter_end;
                  ++ iter)
             {
                 if (*iter == widget)
