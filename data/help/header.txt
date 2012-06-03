@@ -4,6 +4,6 @@
  
                        <<##2Version:##6%VER%>>
  
-##2                    <<Website: http://manaplus.evolonline.org/>>
+##2    <<Website: http://manaplus.evolonline.org/>>
  
  

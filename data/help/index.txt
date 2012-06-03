@@ -1,18 +1,19 @@
 ##3                             === <<INDEX>> ===
-
+ 
  ##1-> @@about|<<About>>@@
  -> @@team|<<Manaplus Developers>>@@
-
+ 
  -> @@commands|<<Commands>>@@
  -> @@chatcommands|<<Chat commands>>@@
  -> @@windows|<<Windows>>@@
  -> @@skills|<<Skills>>@@
-
+ 
+ -> @@news|<<Server news>>@@
  -> @@support|<<Support>>@@
-
-
+.
+.
 ##3                           === <<Powered By>> ===
-
+.
 <<##2               SDL, SDL_image, SDL_mixer (Media framework)
 ##2                     SDL_net (Networking framework)
 ##2                        Guichan (GUI framework)

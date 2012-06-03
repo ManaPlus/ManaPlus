@@ -44,6 +44,7 @@
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
+#include "utils/mkdir.h"
 #include "utils/paths.h"
 #include "utils/stringutils.h"
 #include "utils/xml.h"
@@ -296,11 +297,15 @@ void UpdaterWindow::loadNews()
         mMemoryBuffer, mDownloadedBytes + 1));
 
     mMemoryBuffer[mDownloadedBytes] = '\0';
-
     mBrowserBox->clearRows();
-
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
+
+    std::string newsName = mUpdatesDir + "/local/help/news.txt";
+    mkdir_r((mUpdatesDir + "/local/help/").c_str());
+    std::ofstream file;
+    file.open(newsName.c_str(), std::ios::out);
+
     bool firstLine(true);
     while (line)
     {
@@ -315,15 +320,20 @@ void UpdaterWindow::loadNews()
                 continue;
             }
 
+            if (file.is_open())
+                file << str << std::endl;
             mBrowserBox->addRow(str);
         }
         else
         {
+            if (file.is_open())
+                file << line << std::endl;
             mBrowserBox->addRow(line);
         }
         line = strtok(nullptr, "\n");
     }
 
+    file.close();
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
     mMemoryBuffer = nullptr;
