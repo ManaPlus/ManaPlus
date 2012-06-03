@@ -70,7 +70,7 @@ WindowMenu::WindowMenu():
     setFocusable(false);
 
     addButton(N_("BC"), _("Bot checker"), x, h,
-              Input::KEY_WINDOW_BOT_CHECKER);
+              Input::KEY_WINDOW_BOT_CHECKER, false);
     addButton(N_("ONL"), _("Who is online"), x, h,
               Input::KEY_NO_VALUE);
     addButton(N_("KS"), _("Kill stats"), x, h,
@@ -257,7 +257,7 @@ void WindowMenu::valueChanged(const gcn::SelectionEvent &event)
 }
 
 void WindowMenu::addButton(const char* text, std::string description,
-                           int &x, int &h, int key)
+                           int &x, int &h, int key, bool visible)
 {
     Button *btn = new Button(gettext(text), text, this);
     btn->setPosition(x, 0);
@@ -265,6 +265,8 @@ void WindowMenu::addButton(const char* text, std::string description,
     btn->setTag(key);
     add(btn);
     btn->setFocusable(false);
+    if (!visible)
+        btn->setVisible(false);
     mButtons.push_back(btn);
     x += btn->getWidth() + 3;
     h = btn->getHeight();

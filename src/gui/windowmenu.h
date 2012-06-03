@@ -84,7 +84,7 @@ class WindowMenu : public Container,
 
     private:
         inline void addButton(const char* text, std::string description,
-                              int &x, int &h, int key);
+                              int &x, int &h, int key, bool visible = true);
 
         void updateButtons();
 
