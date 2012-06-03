@@ -132,7 +132,6 @@ void DidYouKnowWindow::loadData(int num)
 void DidYouKnowWindow::loadFile(int num)
 {
     const std::string file = strprintf("tips/%d", num);
-    const StringVect langs = getLang();
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");

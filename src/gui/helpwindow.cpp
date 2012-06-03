@@ -101,6 +101,7 @@ void HelpWindow::loadHelp(const std::string &helpFile)
 
     loadFile("header");
     loadFile(helpFile);
+    loadFile("footer");
 
     mScrollArea->setVerticalScrollAmount(0);
     setVisible(true);
@@ -108,7 +109,6 @@ void HelpWindow::loadHelp(const std::string &helpFile)
 
 void HelpWindow::loadFile(const std::string &file)
 {
-    const StringVect langs = getLang();
     std::string helpPath = branding.getStringValue("helpPath");
     if (helpPath.empty())
         helpPath = paths.getStringValue("help");

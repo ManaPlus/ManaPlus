@@ -2,6 +2,7 @@ SET(FILES
     about.txt
     commands.txt
     chatcommands.txt
+    footer.txt
     header.txt
     index.txt
     skills.txt

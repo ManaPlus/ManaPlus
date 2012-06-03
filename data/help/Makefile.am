@@ -6,6 +6,7 @@ help_DATA =				\
 	about.txt			\
 	chatcommands.txt	\
 	commands.txt		\
+	footer.txt			\
 	header.txt			\
 	index.txt			\
 	skills.txt			\
