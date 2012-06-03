@@ -164,19 +164,34 @@ Resource *Image::load(SDL_RWops *rw, Dye const &dye)
     SDL_FreeSurface(tmpImage);
 
     Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
-    for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
-    {
-        const Uint32 p = *pixels;
+    DyePalette *pal = dye.getSPalete();
 
-        int alpha = p & 255;
-        if (!alpha)
-            continue;
-        int v[3];
-        v[0] = (p >> 24) & 255;
-        v[1] = (p >> 16) & 255;
-        v[2] = (p >> 8 ) & 255;
-        dye.update(v);
-        *pixels = (v[0] << 24) | (v[1] << 16) | (v[2] << 8) | alpha;
+    if (pal)
+    {
+        for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
+        {
+            Uint8 *p = (Uint8 *)pixels;
+            const int alpha = *p & 255;
+            if (!alpha)
+                continue;
+            pal->replaceColor(p + 1);
+        }
+    }
+    else
+    {
+        for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
+        {
+            const Uint32 p = *pixels;
+            const int alpha = p & 255;
+            if (!alpha)
+                continue;
+            int v[3];
+            v[0] = (p >> 24) & 255;
+            v[1] = (p >> 16) & 255;
+            v[2] = (p >> 8 ) & 255;
+            dye.update(v);
+            *pixels = (v[0] << 24) | (v[1] << 16) | (v[2] << 8) | alpha;
+        }
     }
 
     Image *image = load(surf);

@@ -26,6 +26,8 @@
 #include <string>
 #include <vector>
 
+#include <SDL_stdinc.h>
+
 const int dyePalateSize = 8;
 
 /**
@@ -59,7 +61,7 @@ class DyePalette
          */
         void getColor(double intensity, int color[3]) const;
 
-        void replaceColor(int color[3]) const;
+        void replaceColor(Uint8 *color) const;
 
     private:
         struct Color
@@ -98,6 +100,18 @@ class Dye
          */
         static void instantiate(std::string &target,
                                 const std::string &palettes);
+
+        /**
+         * Check if dye is special dye (S)
+         */
+        bool isSpecialDye() const
+        { return mDyePalettes[dyePalateSize - 1]; }
+
+        /**
+         * Return special dye palete (S)
+         */
+        DyePalette *getSPalete() const
+        { return mDyePalettes[dyePalateSize - 1]; }
 
     private:
 

@@ -205,7 +205,7 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
-void DyePalette::replaceColor(int color[3]) const
+void DyePalette::replaceColor(Uint8 *color) const
 {
     std::vector<Color>::const_iterator it = mColors.begin();
     std::vector<Color>::const_iterator it_end = mColors.end();
@@ -219,9 +219,9 @@ void DyePalette::replaceColor(int color[3]) const
         if (color[0] == col.value[0] && color[1] == col.value[1]
             && color[2] == col.value[2])
         {
-            color[0] = col2.value[0];
+            color[2] = col2.value[0];
             color[1] = col2.value[1];
-            color[2] = col2.value[2];
+            color[0] = col2.value[2];
             return;
         }
         ++ it;
@@ -285,12 +285,6 @@ Dye::~Dye()
 
 void Dye::update(int color[3]) const
 {
-    if (mDyePalettes[dyePalateSize - 1])
-    {
-        mDyePalettes[dyePalateSize - 1]->replaceColor(color);
-        return;
-    }
-
     int cmax = std::max(color[0], std::max(color[1], color[2]));
     if (cmax == 0)
         return;
