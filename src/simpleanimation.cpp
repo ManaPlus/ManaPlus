@@ -39,7 +39,7 @@ SimpleAnimation::SimpleAnimation(Animation *animation):
     mAnimation(animation),
     mAnimationTime(0),
     mAnimationPhase(0),
-    mCurrentFrame(mAnimation->getFrame(0)),
+    mCurrentFrame(&mAnimation->mFrames[0]),
     mInitialized(true)
 {
 }
@@ -53,7 +53,7 @@ SimpleAnimation::SimpleAnimation(XmlNodePtr animationNode,
 {
     initializeAnimation(animationNode, dyePalettes);
     if (mAnimation)
-        mCurrentFrame = mAnimation->getFrame(0);
+        mCurrentFrame = &mAnimation->mFrames[0];
     else
         mCurrentFrame = nullptr;
 }
@@ -90,7 +90,7 @@ void SimpleAnimation::setFrame(int frame)
     if (static_cast<unsigned>(frame) >= mAnimation->getLength())
         frame = mAnimation->getLength() - 1;
     mAnimationPhase = frame;
-    mCurrentFrame = mAnimation->getFrame(mAnimationPhase);
+    mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
 }
 
 bool SimpleAnimation::update(int timePassed)
@@ -116,7 +116,7 @@ bool SimpleAnimation::update(int timePassed)
                 mAnimationPhase = 0;
             }
 
-            mCurrentFrame = mAnimation->getFrame(mAnimationPhase);
+            mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
         }
     }
     return updated;

@@ -777,7 +777,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 if (ani->getLength() > 0)
                 {
                     map->addAnimation(tileGID, new TileAnimation(ani));
-                    logger->log("Animation length: %d", ani->getLength());
+//                    logger->log("Animation length: %d", ani->getLength());
                 }
                 else
                 {

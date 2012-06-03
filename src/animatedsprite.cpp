@@ -85,7 +85,7 @@ bool AnimatedSprite::reset()
     mLastTime = 0;
 
     if (mAnimation)
-        mFrame = mAnimation->getFrame(0);
+        mFrame = &mAnimation->mFrames[0];
     else
         mFrame = nullptr;
     return ret;
@@ -142,7 +142,8 @@ bool AnimatedSprite::update(int time)
 
 bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
 {
-    if (!mFrame || !mAnimation || Animation::isTerminator(*mFrame))
+    // move code from Animation::isTerminator(*mFrame)
+    if (!mFrame || !mAnimation || (!mFrame->image && mFrame->type == Frame::ANIMATION))
         return false;
 
     mFrameTime += time;
@@ -158,7 +159,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
         if (mFrameIndex >= mAnimation->getLength())
             mFrameIndex = 0;
 
-        mFrame = mAnimation->getFrame(mFrameIndex);
+        mFrame = &mAnimation->mFrames[mFrameIndex];
         if (!mFrame || (mFrame->type == Frame::LABEL
             && !mFrame->nextAction.empty()))
         {
@@ -170,7 +171,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
             {
                 for (unsigned i = 0; i < mAnimation->getLength(); i ++)
                 {
-                    Frame *frame = mAnimation->getFrame(i);
+                    Frame *frame = &mAnimation->mFrames[i];
                     if (frame->type == Frame::LABEL
                         && mFrame->nextAction == frame->nextAction)
                     {
@@ -179,7 +180,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
                         if (mFrameIndex >= mAnimation->getLength())
                             mFrameIndex = 0;
 
-                        mFrame = mAnimation->getFrame(mFrameIndex);
+                        mFrame = &mAnimation->mFrames[mFrameIndex];
 
                         fail = true;
                         break;
@@ -195,7 +196,8 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
                 return true;
             }
         }
-        else if (Animation::isTerminator(*mFrame))
+        // copy code from Animation::isTerminator(*mFrame)
+        else if (!mFrame->image && mFrame->type == Frame::ANIMATION)
         {
             if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
             {

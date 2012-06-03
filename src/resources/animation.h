@@ -58,6 +58,10 @@ struct Frame
  */
 class Animation
 {
+    friend class AnimatedSprite;
+    friend class ParticleEmitter;
+    friend class SimpleAnimation;
+
     public:
         Animation();
 
@@ -74,28 +78,10 @@ class Animation
         void addTerminator(int rand);
 
         /**
-         * Returns the frame at the specified index.
-         */
-        Frame *getFrame(int index)
-        { return &(mFrames[index]); }
-
-        /**
          * Returns the length of this animation in frames.
          */
-        unsigned int getLength() const
-        { return static_cast<unsigned>(mFrames.size()); }
-
-        /**
-         * Check for empty animation.
-         */
-        bool empty() const
-        { return mFrames.empty(); }
-
-        /**
-         * Returns the duration of this animation.
-         */
-        int getDuration() const
-        { return mDuration; }
+        size_t getLength() const
+        { return mFrames.size(); }
 
         void addJump(std::string name, int rand);
 
@@ -113,6 +99,7 @@ class Animation
         static bool isTerminator(const Frame &phase);
 
     protected:
+
         typedef std::vector<Frame> Frames;
         typedef Frames::iterator FramesIter;
         typedef Frames::reverse_iterator FramesRevIter;

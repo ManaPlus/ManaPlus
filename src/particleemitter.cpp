@@ -527,12 +527,12 @@ std::list<Particle *> ParticleEmitter::createParticles(int tick)
 
             newParticle = new ImageParticle(mMap, mParticleImage);
         }
-        else if (!mParticleRotation.empty())
+        else if (!mParticleRotation.mFrames.empty())
         {
             Animation *newAnimation = new Animation(mParticleRotation);
             newParticle = new RotationalParticle(mMap, newAnimation);
         }
-        else if (!mParticleAnimation.empty())
+        else if (!mParticleAnimation.mFrames.empty())
         {
             Animation *newAnimation = new Animation(mParticleAnimation);
             newParticle = new AnimationParticle(mMap, newAnimation);
