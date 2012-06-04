@@ -128,7 +128,8 @@ int TestLauncher::testFps()
     Image *img[5];
 
     img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_up.gif");
-    img[1] = Theme::getImageFromTheme("graphics/gui/target-cursor-normal-l.png");
+    img[1] = Theme::getImageFromTheme(
+        "graphics/gui/target-cursor-normal-l.png");
     img[2] = Theme::getImageFromTheme("themes/wood/window.png");
     img[3] = Theme::getImageFromTheme("themes/pink/window.png");
     img[4] = Theme::getImageFromTheme("graphics/images/login_wallpaper.png");

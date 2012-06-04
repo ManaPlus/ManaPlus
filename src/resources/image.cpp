@@ -168,7 +168,8 @@ Resource *Image::load(SDL_RWops *rw, Dye const &dye)
 
     if (pal)
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
+        for (Uint32 *p_end = pixels + surf->w * surf->h;
+             pixels != p_end; ++pixels)
         {
             Uint8 *p = (Uint8 *)pixels;
             const int alpha = *p & 255;
@@ -179,7 +180,8 @@ Resource *Image::load(SDL_RWops *rw, Dye const &dye)
     }
     else
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h; pixels != p_end; ++pixels)
+        for (Uint32 *p_end = pixels + surf->w * surf->h;
+             pixels != p_end; ++pixels)
         {
             const Uint32 p = *pixels;
             const int alpha = p & 255;

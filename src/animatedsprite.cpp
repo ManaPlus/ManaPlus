@@ -143,8 +143,11 @@ bool AnimatedSprite::update(int time)
 bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
 {
     // move code from Animation::isTerminator(*mFrame)
-    if (!mFrame || !mAnimation || (!mFrame->image && mFrame->type == Frame::ANIMATION))
+    if (!mFrame || !mAnimation || (!mFrame->image
+        && mFrame->type == Frame::ANIMATION))
+    {
         return false;
+    }
 
     mFrameTime += time;
 
