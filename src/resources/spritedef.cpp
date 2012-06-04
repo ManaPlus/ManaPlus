@@ -112,8 +112,10 @@ void SpriteDef::fixDeadAction()
         ActionMap *d = (*it).second;
         if (!d)
             continue;
-        ActionMap::iterator i = d->find("dead");
-        if (i != d->end() && i->second)
+        ActionMap::iterator i = d->find(SpriteAction::DEAD);
+        ActionMap::iterator i2 = d->find(SpriteAction::STAND);
+        // search dead action and check what it not same with stand action
+        if (i != d->end() && i->second && i->second != i2->second)
             (i->second)->setLastFrameDelay(0);
     }
 }
