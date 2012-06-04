@@ -761,17 +761,27 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
     amask = 0xff000000;
 #endif
 
-    SDL_Surface *oldImage = tmpImage;
-    tmpImage = SDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
-                                    32, rmask, gmask, bmask, amask);
-
-    if (!tmpImage)
+    SDL_Surface *oldImage = nullptr;
+    if (tmpImage->format->BitsPerPixel != 32
+        || realWidth != width || realHeight != height)
     {
-        logger->log("Error, image convert failed: out of memory");
-        return nullptr;
-    }
+        oldImage = tmpImage;
+        tmpImage = SDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
+            32, rmask, gmask, bmask, amask);
 
-    SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
+        if (!tmpImage)
+        {
+            logger->log("Error, image convert failed: out of memory");
+            return nullptr;
+        }
+        SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
+    }
+    else
+    {
+        static int cnt = 0;
+        cnt ++;
+        logger->log("fast load: %d", cnt);
+    }
 
     GLuint texture;
     glGenTextures(1, &texture);
@@ -816,7 +826,8 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
     if (SDL_MUSTLOCK(tmpImage))
         SDL_UnlockSurface(tmpImage);
 
-    SDL_FreeSurface(tmpImage);
+    if (oldImage)
+        SDL_FreeSurface(tmpImage);
 
     GLenum error = glGetError();
     if (error)
