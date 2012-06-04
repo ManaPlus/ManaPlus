@@ -762,8 +762,8 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
 #endif
 
     SDL_Surface *oldImage = nullptr;
-    if (tmpImage->format->BitsPerPixel != 32
-        || realWidth != width || realHeight != height)
+    if (tmpImage->format->BitsPerPixel != 32 || realWidth != width
+        || realHeight != height || rmask != tmpImage->format->Rmask)
     {
         oldImage = tmpImage;
         tmpImage = SDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
@@ -775,12 +775,6 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
             return nullptr;
         }
         SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
-    }
-    else
-    {
-        static int cnt = 0;
-        cnt ++;
-        logger->log("fast load: %d", cnt);
     }
 
     GLuint texture;
