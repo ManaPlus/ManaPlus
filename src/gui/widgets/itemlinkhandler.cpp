@@ -34,9 +34,9 @@
 
 #include "debug.h"
 
-ItemLinkHandler::ItemLinkHandler()
+ItemLinkHandler::ItemLinkHandler() :
+    mItemPopup(new ItemPopup)
 {
-    mItemPopup = new ItemPopup;
 }
 
 ItemLinkHandler::~ItemLinkHandler()

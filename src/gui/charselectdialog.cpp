@@ -550,15 +550,13 @@ bool CharSelectDialog::selectByName(const std::string &name,
 
 CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
     mCharacter(nullptr),
-    mPlayerBox(new PlayerBox)
+    mPlayerBox(new PlayerBox),
+    mName(new Label("wwwwwwwwwwwwwwwwwwwwwwww")),
+    mLevel(new Label("(888)")),
+    mMoney(new Label("wwwwwwwww")),
+    mButton(new Button("wwwwwwwww", "go", charSelectDialog)),
+    mDelete(new Button(_("Delete"), "delete", charSelectDialog))
 {
-    mButton = new Button("wwwwwwwww", "go", charSelectDialog);
-    mName = new Label("wwwwwwwwwwwwwwwwwwwwwwww");
-    mLevel = new Label("(888)");
-    mMoney = new Label("wwwwwwwww");
-
-    mDelete = new Button(_("Delete"), "delete", charSelectDialog);
-
     LayoutHelper h(this);
     ContainerPlacer placer = h.getPlacer(0, 0);
 
@@ -570,7 +568,6 @@ CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
     placer(0, 9, mDelete, 3);
 
     update();
-
 
     // Setting the width so that the largest label fits.
     mName->adjustSize();

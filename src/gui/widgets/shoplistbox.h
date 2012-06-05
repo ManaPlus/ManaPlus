@@ -94,13 +94,13 @@ class ShopListBox : public ListBox
 
         unsigned int mRowHeight; /**< Row Height */
 
-        static float mAlpha;
-
         bool mPriceCheck;
 
         gcn::Color mHighlightColor;
         gcn::Color mBackgroundColor;
         gcn::Color mWarningColor;
+
+        static float mAlpha;
 };
 
 #endif // SHOPLISTBOX_H

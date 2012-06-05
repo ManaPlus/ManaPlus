@@ -47,14 +47,18 @@ const unsigned int vertexBufSize = 500;
 GLuint OpenGLGraphics::mLastImage = 0;
 
 OpenGLGraphics::OpenGLGraphics():
-    mAlpha(false), mTexture(false), mColorAlpha(false),
-    mFboId(0), mTextureId(0), mRboId(0)
+    mFloatTexArray(new GLfloat[vertexBufSize * 4 + 30]),
+    mIntTexArray(new GLint[vertexBufSize * 4 + 30]),
+    mIntVertArray(new GLint[vertexBufSize * 4 + 30]),
+    mAlpha(false),
+    mTexture(false),
+    mColorAlpha(false),
+    mFboId(0),
+    mTextureId(0),
+    mRboId(0)
 {
     mOpenGL = 1;
     mName = "fast OpenGL";
-    mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
-    mIntTexArray = new GLint[vertexBufSize * 4 + 30];
-    mIntVertArray = new GLint[vertexBufSize * 4 + 30];
 }
 
 OpenGLGraphics::~OpenGLGraphics()

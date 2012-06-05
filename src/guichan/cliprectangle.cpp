@@ -52,25 +52,25 @@
 
 namespace gcn
 {
-    ClipRectangle::ClipRectangle()
+    ClipRectangle::ClipRectangle() :
+        xOffset(0),
+        yOffset(0)
     {
         x = 0;
         y = 0;
         width = 0;
         height = 0;
-        xOffset = 0;
-        yOffset = 0;
     }
 
     ClipRectangle::ClipRectangle(int x0, int y0, int width0, int height0,
-                                 int xOffset0, int yOffset0)
+                                 int xOffset0, int yOffset0) :
+        xOffset(xOffset0),
+        yOffset(yOffset0)
     {
         x = x0;
         y = y0;
         width = width0;
         height = height0;
-        xOffset = xOffset0;
-        yOffset = yOffset0;
     }
 
     const ClipRectangle& ClipRectangle::operator=(const Rectangle& other)

@@ -47,29 +47,33 @@ float ShopListBox::mAlpha = 1.0;
 ShopListBox::ShopListBox(gcn::ListModel *listModel):
     ListBox(listModel),
     mPlayerMoney(0),
-    mShopItems(nullptr)
+    mShopItems(nullptr),
+    mItemPopup(new ItemPopup),
+    mRowHeight(getFont()->getHeight()),
+    mPriceCheck(true),
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
+    mWarningColor(Theme::getThemeColor(Theme::SHOP_WARNING))
 {
-    mRowHeight = getFont()->getHeight();
-    init();
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 ShopListBox::ShopListBox(gcn::ListModel *listModel, ShopItems *shopListModel):
     ListBox(listModel),
     mPlayerMoney(0),
-    mShopItems(shopListModel)
+    mShopItems(shopListModel),
+    mItemPopup(new ItemPopup),
+    mRowHeight(std::max(getFont()->getHeight(), ITEM_ICON_SIZE)),
+    mPriceCheck(true),
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
+    mWarningColor(Theme::getThemeColor(Theme::SHOP_WARNING))
 {
-    mRowHeight = std::max(getFont()->getHeight(), ITEM_ICON_SIZE);
-    init();
+    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 void ShopListBox::init()
 {
-    mPriceCheck = true;
-    mItemPopup = new ItemPopup;
-    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
-    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
-    mWarningColor = Theme::getThemeColor(Theme::SHOP_WARNING);
-    setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 
 void ShopListBox::setPlayersMoney(int money)

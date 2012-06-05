@@ -67,6 +67,7 @@ namespace gcn
         mTop(nullptr),
         mGraphics(nullptr),
         mInput(nullptr),
+        mFocusHandler(new FocusHandler()),
         mTabbing(true),
         mShiftPressed(false),
         mMetaPressed(false),
@@ -79,7 +80,6 @@ namespace gcn
         mClickCount(1),
         mLastMouseDragButton(0)
     {
-        mFocusHandler = new FocusHandler();
     }
 
     Gui::~Gui()

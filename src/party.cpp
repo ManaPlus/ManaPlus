@@ -60,9 +60,9 @@ PartyMember::PartyMember(Party *party, int id, const std::string &name):
 Party::PartyMap Party::parties;
 
 Party::Party(short id):
+    mId(id),
     mCanInviteUsers(false)
 {
-    mId = id;
     parties[id] = this;
 }
 

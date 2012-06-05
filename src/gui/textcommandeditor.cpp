@@ -164,13 +164,41 @@ public:
 };
 
 
-TextCommandEditor::TextCommandEditor(TextCommand *command):
-    Window(_("Command Editor"), false, nullptr, "commandeditor.xml")
+TextCommandEditor::TextCommandEditor(TextCommand *command) :
+    Window(_("Command Editor"), false, nullptr, "commandeditor.xml"),
+    mIsMagicCommand(command->getCommandType() == TEXT_COMMAND_MAGIC),
+    mCommand(command),
+    mIsMagic(new RadioButton(_("magic"), "magic", mIsMagicCommand)),
+    mIsOther(new RadioButton(_("other"), "magic", !mIsMagicCommand)),
+    mSymbolLabel(new Label(_("Symbol:"))),
+    mSymbolTextField(new TextField()),
+    mCommandLabel(new Label(_("Command:"))),
+    mCommandTextField(new TextField()),
+    mCommentLabel(new Label(_("Comment:"))),
+    mCommentTextField(new TextField),
+    mTargetTypeModel(new TargetTypeModel),
+    mTypeLabel(new Label(_("Target Type:"))),
+    mTypeDropDown(new DropDown(mTargetTypeModel)),
+    mIconsModal(new IconsModal),
+    mIconLabel(new Label(_("Icon:"))),
+    mIconDropDown(new DropDown(mIconsModal)),
+    mManaLabel(new Label(_("Mana:"))),
+    mManaField(new IntTextField(0)),
+    mMagicLvlLabel(new Label(_("Magic level:"))),
+    mMagicLvlField(new IntTextField(0)),
+    mMagicSchoolModel(new MagicSchoolModel),
+    mSchoolLabel(new Label(_("Magic School:"))),
+    mSchoolDropDown(new DropDown(mMagicSchoolModel)),
+    mSchoolLvlLabel(new Label(_("School level:"))),
+    mSchoolLvlField(new IntTextField(0)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
+    mSaveButton(new Button(_("Save"), "save", this)),
+    mDeleteButton(new Button(_("Delete"), "delete", this)),
+    mEnabledKeyboard(keyboard.isEnabled())
 {
     int w = 350;
     int h = 370;
 
-    mEnabledKeyboard = keyboard.isEnabled();
     keyboard.setEnabled(false);
 
     setWindowName("TextCommandEditor");
@@ -178,70 +206,35 @@ TextCommandEditor::TextCommandEditor(TextCommand *command):
     setDefaultSize(w, h, ImageRect::CENTER);
 
     mAdvanced = false;
-    mCommand = command;
 
-    mIsMagicCommand = (command->getCommandType() == TEXT_COMMAND_MAGIC);
-
-    mIsMagic = new RadioButton(_("magic"), "magic", mIsMagicCommand);
     mIsMagic->setActionEventId("magic");
     mIsMagic->addActionListener(this);
 
-    mIsOther = new RadioButton(_("other"), "magic", !mIsMagicCommand);
     mIsOther->setActionEventId("other");
     mIsOther->addActionListener(this);
 
-
-    mSymbolLabel = new Label(_("Symbol:"));
-    mSymbolTextField = new TextField();
-
-    mCommandLabel = new Label(_("Command:"));
-    mCommandTextField = new TextField();
-
-    mCommentLabel = new Label(_("Comment:"));
-    mCommentTextField = new TextField();
-
-    mManaLabel = new Label(_("Mana:"));
-    mManaField = new IntTextField(0);
     mManaField->setRange(0, 500);
     mManaField->setWidth(20);
 
-    mTargetTypeModel = new TargetTypeModel;
-    mTypeLabel = new Label(_("Target Type:"));
-    mTypeDropDown = new DropDown(mTargetTypeModel);
     mTypeDropDown->setActionEventId("type");
     mTypeDropDown->addActionListener(this);
 
-    mIconsModal = new IconsModal;
-    mIconLabel = new Label(_("Icon:"));
-    mIconDropDown = new DropDown(mIconsModal);
     mIconDropDown->setActionEventId("icon");
     mIconDropDown->addActionListener(this);
     mIconDropDown->setSelectedString(mCommand->getIcon());
 
-    mMagicLvlLabel = new Label(_("Magic level:"));
-    mMagicLvlField = new IntTextField(0);
     mMagicLvlField->setRange(0, 5);
     mMagicLvlField->setWidth(20);
 
-    mMagicSchoolModel = new MagicSchoolModel;
-    mSchoolLabel = new Label(_("Magic School:"));
-    mSchoolDropDown = new DropDown(mMagicSchoolModel);
     mSchoolDropDown->setActionEventId("school");
     mSchoolDropDown->addActionListener(this);
     mSchoolDropDown->setSelected(0);
 
-    mSchoolLvlLabel = new Label(_("School level:"));
-    mSchoolLvlField = new IntTextField(0);
     mSchoolLvlField->setRange(0, 5);
     mSchoolLvlField->setWidth(20);
 
-    mSaveButton = new Button(_("Save"), "save", this);
     mSaveButton->adjustSize();
-
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
     mCancelButton->adjustSize();
-
-    mDeleteButton = new Button(_("Delete"), "delete", this);
     mDeleteButton->adjustSize();
 
     if (command->getCommandType() == TEXT_COMMAND_MAGIC)

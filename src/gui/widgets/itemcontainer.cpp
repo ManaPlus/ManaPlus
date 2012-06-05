@@ -61,10 +61,9 @@ static const int BOX_HEIGHT = 43;
 class ItemIdPair
 {
     public:
-        ItemIdPair(int id, Item* item)
+        ItemIdPair(int id, Item* item) :
+            mId(id), mItem(item)
         {
-            mId = id;
-            mItem = item;
         }
 
         int mId;
@@ -166,17 +165,16 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mDescItems(false),
     mTag(0),
     mSortType(0),
-    mShowMatrix(nullptr)
+    mItemPopup(new ItemPopup),
+    mShowMatrix(nullptr),
+    mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
+    mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
-    mItemPopup = new ItemPopup;
     setFocusable(true);
 
     mSelImg = Theme::getImageFromTheme("selection.png");
     if (!mSelImg)
         logger->log1("Error: Unable to load selection.png");
-
-    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
-    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
 
     addKeyListener(this);
     addMouseListener(this);

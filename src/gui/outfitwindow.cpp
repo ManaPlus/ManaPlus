@@ -539,10 +539,10 @@ void OutfitWindow::showCurrentOutfit()
 
 void OutfitWindow::wearNextOutfit(bool all)
 {
-    bool fromStart = false;
     next();
     if (!all && mCurrentOutfit < OUTFITS_COUNT)
     {
+        bool fromStart = false;
         while (!mItemsUnequip[mCurrentOutfit])
         {
             next();
@@ -560,10 +560,10 @@ void OutfitWindow::wearNextOutfit(bool all)
 
 void OutfitWindow::wearPreviousOutfit(bool all)
 {
-    bool fromStart = false;
     previous();
     if (!all && mCurrentOutfit < OUTFITS_COUNT)
     {
+        bool fromStart = false;
         while (!mItemsUnequip[mCurrentOutfit])
         {
             previous();

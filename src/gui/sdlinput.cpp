@@ -64,10 +64,10 @@
 
 #include <guichan/exception.hpp>
 
-SDLInput::SDLInput()
+SDLInput::SDLInput() :
+    mMouseDown(false),
+    mMouseInWindow(true)
 {
-    mMouseInWindow = true;
-    mMouseDown = false;
 }
 
 bool SDLInput::isKeyQueueEmpty()

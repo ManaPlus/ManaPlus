@@ -39,11 +39,14 @@ class Resource
         /**
          * Constructor
          */
-        Resource(): mRefCount(0)
-        {
+        Resource() :
 #ifdef DEBUG_DUMP_LEAKS
-            mDumped = false;
+            mRefCount(0),
+            mDumped(false)
+#else
+            mRefCount(0)
 #endif
+        {
         }
 
         /**

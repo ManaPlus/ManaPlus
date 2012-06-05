@@ -51,24 +51,24 @@ public:
 
     bool save;
 
-    ServerInfo()
+    ServerInfo() :
+        type(TMWATHENA),
+        port(6901),
+        save(false)
     {
-        type = TMWATHENA;
-        port = 6901;
-        save = false;
         version.first = 0;
     }
 
-    ServerInfo(const ServerInfo &info)
+    ServerInfo(const ServerInfo &info) :
+        type(info.type),
+        name(info.name),
+        hostname(info.hostname),
+        port(info.port),
+        description(info.description),
+        save(info.save)
     {
-        type = info.type;
-        name = info.name;
-        hostname = info.hostname;
-        port = info.port;
-        description = info.description;
         version.first = info.version.first;
         version.second = info.version.second;
-        save = info.save;
     }
 
     bool isValid() const

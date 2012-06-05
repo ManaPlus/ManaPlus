@@ -41,27 +41,27 @@
 #include "debug.h"
 
 BeingPopup::BeingPopup() :
-    Popup("BeingPopup", "beingpopup.xml")
+    Popup("BeingPopup", "beingpopup.xml"),
+    mBeingName(new Label("A")),
+    mBeingParty(new Label("A")),
+    mBeingGuild(new Label("A")),
+    mBeingRank(new Label("A")),
+    mBeingComment(new Label("A"))
 {
     // Being Name
-    mBeingName = new Label("A");
     mBeingName->setFont(boldFont);
     mBeingName->setPosition(getPadding(), getPadding());
 
     const int fontHeight = mBeingName->getHeight() + getPadding();
 
     // Being's party
-    mBeingParty = new Label("A");
     mBeingParty->setPosition(getPadding(), fontHeight);
 
     // Being's party
-    mBeingGuild = new Label("A");
     mBeingGuild->setPosition(getPadding(), 2 * fontHeight);
 
-    mBeingRank = new Label("A");
     mBeingRank->setPosition(getPadding(), 3 * fontHeight);
 
-    mBeingComment = new Label("A");
     mBeingComment->setPosition(getPadding(), 4 * fontHeight);
 
     add(mBeingName);

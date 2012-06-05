@@ -1027,10 +1027,10 @@ void Game::updateHistory(SDL_Event &event)
     if (!player_node || !player_node->getAttackType())
         return;
 
-    bool old = false;
-
     if (event.key.keysym.sym != -1)
     {
+        bool old = false;
+
         int key = keyboard.getKeyIndex(event);
         int time = cur_time;
         int idx = -1;

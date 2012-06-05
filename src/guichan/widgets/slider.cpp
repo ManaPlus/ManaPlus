@@ -56,13 +56,11 @@
 
 namespace gcn
 {
-    Slider::Slider(double scaleEnd)
+    Slider::Slider(double scaleEnd) :
+        mDragged(false),
+        mScaleStart(0),
+        mScaleEnd(scaleEnd)
     {
-        mDragged = false;
-
-        mScaleStart = 0;
-        mScaleEnd = scaleEnd;
-
         setFocusable(true);
         setFrameSize(1);
         setOrientation(HORIZONTAL);
@@ -74,13 +72,11 @@ namespace gcn
         addKeyListener(this);
     }
 
-    Slider::Slider(double scaleStart, double scaleEnd)
+    Slider::Slider(double scaleStart, double scaleEnd) :
+        mDragged(false),
+        mScaleStart(scaleStart),
+        mScaleEnd(scaleEnd)
     {
-        mDragged = false;
-
-        mScaleStart = scaleStart;
-        mScaleEnd = scaleEnd;
-
         setFocusable(true);
         setFrameSize(1);
         setOrientation(HORIZONTAL);

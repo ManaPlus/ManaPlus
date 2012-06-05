@@ -58,15 +58,13 @@
 
 namespace gcn
 {
-    TextBox::TextBox()
+    TextBox::TextBox() :
+        mCaretColumn(0),
+        mCaretRow(0),
+        mEditable(true),
+        mOpaque(true)
     {
-        mCaretColumn = 0;
-        mCaretRow = 0;
-        mEditable = true;
-        mOpaque = true;
-
         setText("");
-
         setFocusable(true);
 
         addMouseListener(this);
@@ -74,15 +72,13 @@ namespace gcn
         adjustSize();
     }
 
-    TextBox::TextBox(const std::string& text)
+    TextBox::TextBox(const std::string& text) :
+        mCaretColumn(0),
+        mCaretRow(0),
+        mEditable(true),
+        mOpaque(true)
     {
-        mCaretColumn = 0;
-        mCaretRow = 0;
-        mEditable = true;
-        mOpaque = true;
-
         setText(text);
-
         setFocusable(true);
 
         addMouseListener(this);

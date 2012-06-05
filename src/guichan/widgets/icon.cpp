@@ -64,11 +64,9 @@ namespace gcn
     }
 
     Icon::Icon(const std::string& filename) :
-        mImage(nullptr),
-        mInternalImage(false)
+        mImage(Image::load(filename)),
+        mInternalImage(true)
     {
-        mImage = Image::load(filename);
-        mInternalImage = true;
         setSize(mImage->getWidth(),
                 mImage->getHeight());
     }

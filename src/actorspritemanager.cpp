@@ -181,17 +181,16 @@ class SortBeingFunctor
 } beingSorter;
 
 ActorSpriteManager::ActorSpriteManager() :
-    mMap(nullptr)
+    mMap(nullptr),
+    mSpellHeal1(serverConfig.getValue("spellHeal1", "#lum")),
+    mSpellHeal2(serverConfig.getValue("spellHeal2", "#inma")),
+    mSpellItenplz(serverConfig.getValue("spellItenplz", "#itenplz")),
+    mTargetDeadPlayers(config.getBoolValue("targetDeadPlayers")),
+    mTargetOnlyReachable(config.getBoolValue("targetOnlyReachable")),
+    mCyclePlayers(config.getBoolValue("cyclePlayers")),
+    mCycleMonsters(config.getBoolValue("cycleMonsters")),
+    mExtMouseTargeting(config.getBoolValue("extMouseTargeting"))
 {
-    mSpellHeal1 = serverConfig.getValue("spellHeal1", "#lum");
-    mSpellHeal2 = serverConfig.getValue("spellHeal2", "#inma");
-    mSpellItenplz = serverConfig.getValue("spellItenplz", "#itenplz");
-    mTargetDeadPlayers = config.getBoolValue("targetDeadPlayers");
-    mTargetOnlyReachable = config.getBoolValue("targetOnlyReachable");
-    mCyclePlayers = config.getBoolValue("cyclePlayers");
-    mCycleMonsters = config.getBoolValue("cycleMonsters");
-    mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
-
     config.addListener("targetDeadPlayers", this);
     config.addListener("targetOnlyReachable", this);
     config.addListener("cyclePlayers", this);

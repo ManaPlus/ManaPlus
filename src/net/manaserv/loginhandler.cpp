@@ -44,7 +44,10 @@ namespace ManaServ
 extern Connection *accountServerConnection;
 extern std::string netToken;
 
-LoginHandler::LoginHandler()
+LoginHandler::LoginHandler() :
+    mLoginData(0),
+    mMinUserNameLength(4),
+    mMaxUserNameLength(10)
 {
     static const Uint16 _messages[] =
     {
@@ -60,9 +63,6 @@ LoginHandler::LoginHandler()
     };
     handledMessages = _messages;
     loginHandler = this;
-    mMinUserNameLength = 4;
-    mMaxUserNameLength = 10;
-    mLoginData = 0;
 }
 
 void LoginHandler::handleMessage(Net::MessageIn &msg)

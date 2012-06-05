@@ -420,10 +420,9 @@ public:
 class SocialPlayersTab : public SocialTab
 {
 public:
-    SocialPlayersTab(std::string name)
+    SocialPlayersTab(std::string name) :
+        mBeings(new BeingsListModal())
     {
-        mBeings = new BeingsListModal();
-
         mList = new AvatarListBox(mBeings);
         mScroll = new ScrollArea(mList);
 
@@ -586,10 +585,9 @@ private:
 class SocialNavigationTab : public SocialTab
 {
 public:
-    SocialNavigationTab()
+    SocialNavigationTab() :
+        mBeings(new BeingsListModal())
     {
-        mBeings = new BeingsListModal();
-
         mList = new AvatarListBox(mBeings);
         mScroll = new ScrollArea(mList);
 
@@ -919,10 +917,9 @@ protected:
 class SocialAttackTab : public SocialTab
 {
 public:
-    SocialAttackTab()
+    SocialAttackTab() :
+        mBeings(new BeingsListModal())
     {
-        mBeings = new BeingsListModal();
-
         mList = new AvatarListBox(mBeings);
         mScroll = new ScrollArea(mList);
 
@@ -974,10 +971,9 @@ private:
 class SocialPickupTab : public SocialTab
 {
 public:
-    SocialPickupTab()
+    SocialPickupTab() :
+        mBeings(new BeingsListModal())
     {
-        mBeings = new BeingsListModal();
-
         mList = new AvatarListBox(mBeings);
         mScroll = new ScrollArea(mList);
 
@@ -1029,10 +1025,9 @@ private:
 class SocialFriendsTab : public SocialTab
 {
 public:
-    SocialFriendsTab(std::string name)
+    SocialFriendsTab(std::string name) :
+        mBeings(new BeingsListModal())
     {
-        mBeings = new BeingsListModal();
-
         mList = new AvatarListBox(mBeings);
         mScroll = new ScrollArea(mList);
 

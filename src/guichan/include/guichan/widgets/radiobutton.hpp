@@ -127,7 +127,7 @@ namespace gcn
          * @param caption The caption of the radio button.
          * @see getCaption, adjustSize
          */
-        void setCaption(const std::string caption);
+        void setCaption(const std::string &caption);
 
         /**
          * Sets the group the radio button should belong to. Note that

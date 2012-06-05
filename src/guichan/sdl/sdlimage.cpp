@@ -55,10 +55,10 @@
 
 namespace gcn
 {
-    SDLImage::SDLImage(SDL_Surface* surface, bool autoFree)
+    SDLImage::SDLImage(SDL_Surface* surface, bool autoFree) :
+        mSurface(surface),
+        mAutoFree(autoFree)
     {
-        mAutoFree = autoFree;
-        mSurface = surface;
     }
 
     SDLImage::~SDLImage()

@@ -145,13 +145,13 @@ void ServersListModel::setVersionString(int index, const std::string &version)
 class ServersListBox : public ListBox
 {
 public:
-    ServersListBox(ServersListModel *model):
-            ListBox(model)
+    ServersListBox(ServersListModel *model) :
+        ListBox(model),
+        mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+        mTextColor(Theme::getThemeColor(Theme::TEXT)),
+        mNotSupportedColor(Theme::getThemeColor(
+            Theme::SERVER_VERSION_NOT_SUPPORTED))
     {
-        mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
-        mTextColor = Theme::getThemeColor(Theme::TEXT);
-        mNotSupportedColor = Theme::getThemeColor(
-            Theme::SERVER_VERSION_NOT_SUPPORTED);
     }
 
     void draw(gcn::Graphics *graphics)

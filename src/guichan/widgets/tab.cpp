@@ -59,10 +59,10 @@
 namespace gcn
 {
     Tab::Tab() :
+        mLabel(new Label()),
         mHasMouse(false),
         mTabbedArea(nullptr)
     {
-        mLabel = new Label();
         mLabel->setPosition(4, 4);
         add(mLabel);
 

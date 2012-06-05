@@ -37,16 +37,16 @@
 float TextPreview::mAlpha = 1.0;
 
 TextPreview::TextPreview(const std::string &text):
+    mFont(gui->getFont()),
     mText(text),
+    mTextColor(&Theme::getThemeColor(Theme::TEXT)),
+    mBGColor(&Theme::getThemeColor(Theme::BACKGROUND)),
+    mTextBGColor(nullptr),
+    mTextAlpha(false),
+    mOpaque(false),
     mShadow(false),
     mOutline(false)
 {
-    mTextAlpha = false;
-    mFont = gui->getFont();
-    mTextColor = &Theme::getThemeColor(Theme::TEXT);
-    mTextBGColor = nullptr;
-    mBGColor = &Theme::getThemeColor(Theme::BACKGROUND);
-    mOpaque = false;
 }
 
 void TextPreview::draw(gcn::Graphics* graphics)

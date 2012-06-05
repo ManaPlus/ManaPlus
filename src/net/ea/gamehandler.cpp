@@ -39,10 +39,9 @@
 namespace Ea
 {
 
-GameHandler::GameHandler()
+GameHandler::GameHandler() :
+    mCharID(0)
 {
-    mCharID = 0;
-
     listen(CHANNEL_GAME);
 }
 

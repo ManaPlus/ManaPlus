@@ -44,10 +44,9 @@ struct SpriteReference
         sprite(""), variant(0)
     {}
 
-    SpriteReference(std::string sprite0, int variant0)
+    SpriteReference(std::string sprite0, int variant0) :
+        sprite(sprite0), variant(variant0)
     {
-        sprite = sprite0;
-        variant = variant0;
     }
 
     std::string sprite;

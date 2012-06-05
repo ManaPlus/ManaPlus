@@ -76,11 +76,11 @@ const Equipment::Slot EQUIP_CONVERT[] =
 namespace Ea
 {
 
-InventoryHandler::InventoryHandler()
+InventoryHandler::InventoryHandler() :
+    mStorage(nullptr),
+    mStorageWindow(nullptr),
+    mDebugInventory(true)
 {
-    mStorage = nullptr;
-    mStorageWindow = nullptr;
-    mDebugInventory = true;
 }
 
 InventoryHandler::~InventoryHandler()

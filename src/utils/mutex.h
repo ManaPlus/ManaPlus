@@ -61,9 +61,9 @@ private:
 };
 
 
-inline Mutex::Mutex()
+inline Mutex::Mutex() :
+    mMutex(SDL_CreateMutex())
 {
-    mMutex = SDL_CreateMutex();
 }
 
 inline Mutex::~Mutex()

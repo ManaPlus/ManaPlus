@@ -172,7 +172,7 @@ class PopupMenu : public Popup, public LinkHandler
 
         void addPlayerMisc();
 
-        void addPickupFilter(const std::string name);
+        void addPickupFilter(const std::string &name);
 
         BrowserBox* mBrowserBox;
 

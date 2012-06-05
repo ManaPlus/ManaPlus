@@ -47,15 +47,14 @@
 
 QuitDialog::QuitDialog(QuitDialog** pointerToMe):
     Window(_("Quit"), true, nullptr, "quit.xml"),
+    mLogoutQuit(new RadioButton(_("Quit"), "quitdialog")),
+    mForceQuit(new RadioButton(_("Quit"), "quitdialog")),
+    mSwitchAccountServer(new RadioButton(_("Switch server"), "quitdialog")),
+    mSwitchCharacter(new RadioButton(_("Switch character"), "quitdialog")),
+    mOkButton(new Button(_("OK"), "ok", this)),
+    mCancelButton(new Button(_("Cancel"), "cancel", this)),
     mMyPointer(pointerToMe)
 {
-    mForceQuit = new RadioButton(_("Quit"), "quitdialog");
-    mLogoutQuit = new RadioButton(_("Quit"), "quitdialog");
-    mSwitchAccountServer = new RadioButton(_("Switch server"), "quitdialog");
-    mSwitchCharacter = new RadioButton(_("Switch character"), "quitdialog");
-    mOkButton = new Button(_("OK"), "ok", this);
-    mCancelButton = new Button(_("Cancel"), "cancel", this);
-
     addKeyListener(this);
 
     ContainerPlacer placer = getPlacer(0, 0);

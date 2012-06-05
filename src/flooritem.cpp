@@ -89,9 +89,6 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
     if (!mMap)
         return false;
 
-    const int dx = 32;
-    const int dy = 32;
-
     const int x = mX * mMap->getTileWidth() + offsetX;
     const int y = mY * mMap->getTileHeight() + offsetY;
     gcn::Font *font = nullptr;
@@ -102,6 +99,9 @@ bool FloorItem::draw(Graphics *graphics, int offsetX, int offsetY) const
         font = gui->getFont();
         if (mDropTime < curTime)
         {
+            const int dx = 32;
+            const int dy = 32;
+
             if (curTime > mDropTime + 28 && curTime < mDropTime + 50)
             {
                 graphics->setColor(gcn::Color(80, 200, 20, 200));

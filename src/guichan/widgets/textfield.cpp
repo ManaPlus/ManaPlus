@@ -57,23 +57,21 @@
 
 namespace gcn
 {
-    TextField::TextField()
+    TextField::TextField() :
+        mCaretPosition(0),
+        mXScroll(0)
     {
-        mCaretPosition = 0;
-        mXScroll = 0;
-
         setFocusable(true);
 
         addMouseListener(this);
         addKeyListener(this);
     }
 
-    TextField::TextField(const std::string& text)
+    TextField::TextField(const std::string& text) :
+        mText(text),
+        mCaretPosition(0),
+        mXScroll(0)
     {
-        mCaretPosition = 0;
-        mXScroll = 0;
-
-        mText = text;
         adjustSize();
 
         setFocusable(true);

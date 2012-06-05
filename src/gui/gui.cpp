@@ -323,10 +323,10 @@ bool Gui::handleKeyInput2()
             continue;
         }
 
-        bool keyEventConsumed = false;
-
         if (mFocusHandler)
         {
+            bool keyEventConsumed = false;
+
             // Send key inputs to the focused widgets
             if (mFocusHandler->getFocused())
             {

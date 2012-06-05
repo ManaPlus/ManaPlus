@@ -121,8 +121,8 @@ class DepricatedEvent
         // String passed can be retivered with getName()
         // and is to used to identify what type of event
         // this is.
-        DepricatedEvent(DepricatedEvents name)
-        { mDepricatedEventName = name; }
+        DepricatedEvent(DepricatedEvents name) : mDepricatedEventName(name)
+        { }
 
         ~DepricatedEvent();
 

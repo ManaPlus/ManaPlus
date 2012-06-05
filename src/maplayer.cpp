@@ -43,12 +43,10 @@ MapLayer::MapLayer(int x, int y, int width, int height, bool fringeLayer):
     mX(x), mY(y),
     mWidth(width), mHeight(height),
     mIsFringeLayer(fringeLayer),
-    mHighlightAttackRange(config.getBoolValue("highlightAttackRange"))
+    mHighlightAttackRange(config.getBoolValue("highlightAttackRange")),
+    mTiles(new Image*[mWidth * mHeight])
 {
-    const int size = mWidth * mHeight;
-    mTiles = new Image*[size];
-
-    std::fill_n(mTiles, size, static_cast<Image*>(nullptr));
+    std::fill_n(mTiles, mWidth * mHeight, static_cast<Image*>(nullptr));
 
     config.addListener("highlightAttackRange", this);
 }
@@ -520,12 +518,12 @@ int MapLayer::getTileDrawWidth(Image *img, int endX, int &width) const
 }
 
 SpecialLayer::SpecialLayer(int width, int height, bool drawSprites):
-    mWidth(width), mHeight(height)
+    mWidth(width), mHeight(height),
+    mDrawSprites(drawSprites)
 {
     const int size = mWidth * mHeight;
     mTiles = new MapItem*[size];
     std::fill_n(mTiles, size, static_cast<MapItem*>(nullptr));
-    mDrawSprites = drawSprites;
 }
 
 SpecialLayer::~SpecialLayer()

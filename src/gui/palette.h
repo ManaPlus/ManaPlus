@@ -152,19 +152,19 @@ class Palette
 
         struct ColorElem
         {
-            ColorElem()
+            ColorElem() :
+                type(0),
+                color(0),
+                testColor(0),
+                committedColor(0),
+                text(),
+                ch(0),
+                grad(STATIC),
+                committedGrad(STATIC),
+                gradientIndex(0),
+                delay(0),
+                committedDelay(0)
             {
-                type = 0;
-                color = 0;
-                testColor = 0;
-                committedColor = 0;
-                text = "";
-                ch = 0;
-                grad = STATIC;
-                committedGrad = STATIC;
-                gradientIndex = 0;
-                delay = 0;
-                committedDelay = 0;
             }
 
             int type;

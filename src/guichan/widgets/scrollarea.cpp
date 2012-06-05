@@ -55,84 +55,81 @@
 
 namespace gcn
 {
-    ScrollArea::ScrollArea()
+    ScrollArea::ScrollArea() :
+        mVScroll(0),
+        mHScroll(0),
+        mScrollbarWidth(12),
+        mHPolicy(SHOW_AUTO),
+        mVPolicy(SHOW_AUTO),
+        mVBarVisible(false),
+        mHBarVisible(false),
+        mUpButtonPressed(false),
+        mDownButtonPressed(false),
+        mLeftButtonPressed(false),
+        mRightButtonPressed(false),
+        mUpButtonScrollAmount(10),
+        mDownButtonScrollAmount(10),
+        mLeftButtonScrollAmount(10),
+        mRightButtonScrollAmount(10),
+        mIsVerticalMarkerDragged(false),
+        mIsHorizontalMarkerDragged(false),
+        mHorizontalMarkerDragOffset(0),
+        mVerticalMarkerDragOffset(0),
+        mOpaque(true)
     {
-        mVScroll = 0;
-        mHScroll = 0;
-        mHPolicy = SHOW_AUTO;
-        mVPolicy = SHOW_AUTO;
-        mVBarVisible = false;
-        mHBarVisible = false;
-        mScrollbarWidth = 12;
-        mUpButtonPressed = false;
-        mDownButtonPressed = false;
-        mLeftButtonPressed = false;
-        mRightButtonPressed = false;
-        mUpButtonScrollAmount = 10;
-        mDownButtonScrollAmount = 10;
-        mLeftButtonScrollAmount = 10;
-        mRightButtonScrollAmount = 10;
-        mIsVerticalMarkerDragged = false;
-        mIsHorizontalMarkerDragged = false;
-        mHorizontalMarkerDragOffset = 0;
-        mVerticalMarkerDragOffset = 0;
-        mOpaque = true;
-
         addMouseListener(this);
     }
 
-    ScrollArea::ScrollArea(Widget *content)
+    ScrollArea::ScrollArea(Widget *content) :
+        mVScroll(0),
+        mHScroll(0),
+        mScrollbarWidth(12),
+        mHPolicy(SHOW_AUTO),
+        mVPolicy(SHOW_AUTO),
+        mVBarVisible(false),
+        mHBarVisible(false),
+        mUpButtonPressed(false),
+        mDownButtonPressed(false),
+        mLeftButtonPressed(false),
+        mRightButtonPressed(false),
+        mUpButtonScrollAmount(10),
+        mDownButtonScrollAmount(10),
+        mLeftButtonScrollAmount(10),
+        mRightButtonScrollAmount(10),
+        mIsVerticalMarkerDragged(false),
+        mIsHorizontalMarkerDragged(false),
+        mHorizontalMarkerDragOffset(0),
+        mVerticalMarkerDragOffset(0),
+        mOpaque(true)
     {
-        mVScroll = 0;
-        mHScroll = 0;
-        mHPolicy = SHOW_AUTO;
-        mVPolicy = SHOW_AUTO;
-        mVBarVisible = false;
-        mHBarVisible = false;
-        mScrollbarWidth = 12;
-        mUpButtonPressed = false;
-        mDownButtonPressed = false;
-        mLeftButtonPressed = false;
-        mRightButtonPressed = false;
-        mUpButtonScrollAmount = 10;
-        mDownButtonScrollAmount = 10;
-        mLeftButtonScrollAmount = 10;
-        mRightButtonScrollAmount = 10;
-        mIsVerticalMarkerDragged = false;
-        mIsHorizontalMarkerDragged = false;
-        mHorizontalMarkerDragOffset = 0;
-        mVerticalMarkerDragOffset = 0;
-        mOpaque = true;
-
         setContent(content);
         addMouseListener(this);
     }
 
     ScrollArea::ScrollArea(Widget *content,
                            ScrollPolicy hPolicy,
-                           ScrollPolicy vPolicy)
+                           ScrollPolicy vPolicy) :
+        mVScroll(0),
+        mHScroll(0),
+        mScrollbarWidth(12),
+        mHPolicy(hPolicy),
+        mVPolicy(vPolicy),
+        mVBarVisible(false),
+        mHBarVisible(false),
+        mUpButtonPressed(false),
+        mDownButtonPressed(false),
+        mLeftButtonPressed(false),
+        mRightButtonPressed(false),
+        mUpButtonScrollAmount(10),
+        mDownButtonScrollAmount(10),
+        mLeftButtonScrollAmount(10),
+        mRightButtonScrollAmount(10),
+        mIsVerticalMarkerDragged(false),
+        mIsHorizontalMarkerDragged(false),
+        mHorizontalMarkerDragOffset(0),
+        mVerticalMarkerDragOffset(0),
+        mOpaque(true)
     {
-        mVScroll = 0;
-        mHScroll = 0;
-        mHPolicy = hPolicy;
-        mVPolicy = vPolicy;
-        mScrollbarWidth = 12;
-        mVBarVisible = false;
-        mHBarVisible = false;
-        mUpButtonPressed = false;
-        mDownButtonPressed = false;
-        mLeftButtonPressed = false;
-        mRightButtonPressed = false;
-        mUpButtonScrollAmount = 10;
-        mDownButtonScrollAmount = 10;
-        mLeftButtonScrollAmount = 10;
-        mRightButtonScrollAmount = 10;
-        mIsVerticalMarkerDragged = false;
-        mIsHorizontalMarkerDragged = false;
-        mHorizontalMarkerDragOffset = 0;
-        mVerticalMarkerDragOffset = 0;
-        mOpaque = true;
-
         setContent(content);
         addMouseListener(this);
     }

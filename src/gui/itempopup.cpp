@@ -51,33 +51,31 @@
 
 ItemPopup::ItemPopup():
     Popup("ItemPopup", "itempopup.xml"),
-    mIcon(nullptr),
+    mItemName(new Label),
+    mItemDesc(new TextBox),
+    mItemEffect(new TextBox),
+    mItemWeight(new TextBox),
+    mIcon(new Icon(nullptr)),
     mLastName(""),
     mLastColor(1)
 {
     // Item Name
-    mItemName = new Label;
     mItemName->setFont(boldFont);
     mItemName->setPosition(getPadding(), getPadding());
 
     const int fontHeight = getFont()->getHeight();
 
     // Item Description
-    mItemDesc = new TextBox;
     mItemDesc->setEditable(false);
     mItemDesc->setPosition(getPadding(), fontHeight);
 
     // Item Effect
-    mItemEffect = new TextBox;
     mItemEffect->setEditable(false);
     mItemEffect->setPosition(getPadding(), 2 * fontHeight + 2 * getPadding());
 
     // Item Weight
-    mItemWeight = new TextBox;
     mItemWeight->setEditable(false);
     mItemWeight->setPosition(getPadding(), 3 * fontHeight + 4 * getPadding());
-
-    mIcon = new Icon(nullptr);
 
     add(mItemName);
     add(mItemDesc);

@@ -77,13 +77,13 @@ class WorldListModel : public gcn::ListModel
 };
 
 WorldSelectDialog::WorldSelectDialog(Worlds worlds):
-    Window(_("Select World"), false, nullptr, "world.xml")
+    Window(_("Select World"), false, nullptr, "world.xml"),
+    mWorldListModel(new WorldListModel(worlds)),
+    mWorldList(new ListBox(mWorldListModel)),
+    mChangeLoginButton(new Button(_("Change Login"), "login", this)),
+    mChooseWorld(new Button(_("Choose World"), "world", this))
 {
-    mWorldListModel = new WorldListModel(worlds);
-    mWorldList = new ListBox(mWorldListModel);
     ScrollArea *worldsScroll = new ScrollArea(mWorldList);
-    mChangeLoginButton = new Button(_("Change Login"), "login", this);
-    mChooseWorld = new Button(_("Choose World"), "world", this);
 
     worldsScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 

@@ -84,9 +84,9 @@ class ActorFunctuator
 } actorCompare;
 
 TileAnimation::TileAnimation(Animation *ani):
+    mAnimation(new SimpleAnimation(ani)),
     mLastImage(nullptr)
 {
-    mAnimation = new SimpleAnimation(ani);
 }
 
 TileAnimation::~TileAnimation()
@@ -123,6 +123,7 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mWidth(width), mHeight(height),
     mTileWidth(tileWidth), mTileHeight(tileHeight),
     mMaxTileHeight(height),
+    mMetaTiles(new MetaTile[mWidth * mHeight]),
     mHasWarps(false),
     mDebugFlags(MAP_NORMAL),
     mOnClosedList(1), mOnOpenList(2),
@@ -135,6 +136,10 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mIndexedTilesetsSize(0),
     mActorFixX(0),
     mActorFixY(0),
+    mVersion(0),
+    mSpecialLayer(new SpecialLayer(width, height)),
+    mTempLayer(new SpecialLayer(width, height, true)),
+    mObjects(new ObjectsLayer(width, height)),
     mFringeLayer(nullptr),
     mLastX(-1),
     mLastY(-1),
@@ -148,17 +153,11 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mBeingOpacity(false)
 {
     const int size = mWidth * mHeight;
-
-    mDebugFlags = 0;
-    mMetaTiles = new MetaTile[size];
     for (int i = 0; i < NB_BLOCKTYPES; i++)
     {
         mOccupation[i] = new unsigned[size];
         memset(mOccupation[i], 0, size * sizeof(unsigned));
     }
-    mSpecialLayer = new SpecialLayer(width, height);
-    mTempLayer = new SpecialLayer(width, height, true);
-    mObjects = new ObjectsLayer(width, height);
 
     config.addListener("OverlayDetail", this);
     config.addListener("guialpha", this);
@@ -351,7 +350,6 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
             graphics->mWidth, graphics->mHeight));
     }
 
-    bool overFringe = false;
     int updateFlag = 0;
 
     if (mOpenGL == 1)
@@ -389,6 +387,8 @@ void Map::draw(Graphics *graphics, int scrollX, int scrollY)
     }
     else
     {
+        bool overFringe = false;
+
         for (LayersCIter layeri = mLayers.begin(), layeri_end = mLayers.end();
              layeri != layeri_end && !overFringe; ++ layeri)
         {

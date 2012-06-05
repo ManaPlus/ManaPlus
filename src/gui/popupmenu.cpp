@@ -86,6 +86,7 @@ std::string tradePartnerName("");
 
 PopupMenu::PopupMenu():
     Popup("PopupMenu", "popupmenu.xml"),
+    mBrowserBox(new BrowserBox),
     mBeingId(0),
     mFloorItemId(0),
     mItem(nullptr),
@@ -101,7 +102,6 @@ PopupMenu::PopupMenu():
     mX(0),
     mY(0)
 {
-    mBrowserBox = new BrowserBox;
     mBrowserBox->setPosition(4, 4);
     mBrowserBox->setHighlightMode(BrowserBox::BACKGROUND);
     mBrowserBox->setOpaque(false);
@@ -2139,7 +2139,7 @@ void PopupMenu::addPlayerMisc()
     mBrowserBox->addRow("addcomment", _("Add comment"));
 }
 
-void PopupMenu::addPickupFilter(const std::string name)
+void PopupMenu::addPickupFilter(const std::string &name)
 {
     if (actorSpriteManager->isInPickupList(name)
         || actorSpriteManager->isInIgnorePickupList(name))

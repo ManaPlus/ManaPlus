@@ -37,9 +37,9 @@
 
 SpellShortcut *spellShortcut;
 
-SpellShortcut::SpellShortcut()
+SpellShortcut::SpellShortcut() :
+    mItemSelected(-1)
 {
-    mItemSelected = -1;
     load();
 }
 

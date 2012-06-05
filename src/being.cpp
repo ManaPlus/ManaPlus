@@ -249,6 +249,8 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mMaxHit(0),
     mCriticalHit(0),
     mPvpRank(0),
+    mSpriteRemap(new int[20]),
+    mSpriteHide(new int[20]),
     mComment(""),
     mGotComment(false),
     mAdvanced(false),
@@ -257,8 +259,6 @@ Being::Being(int id, Type type, Uint16 subtype, Map *map):
     mInactive(false),
     mNumber(100)
 {
-    mSpriteRemap = new int[20];
-    mSpriteHide = new int[20];
 
     for (int f = 0; f < 20; f ++)
     {

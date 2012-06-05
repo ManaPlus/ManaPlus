@@ -52,12 +52,12 @@ CompoundSprite::CompoundSprite() :
     mAlphaImage(nullptr),
     mOffsetX(0),
     mOffsetY(0),
-    mNeedsRedraw(false)
+    mNeedsRedraw(false),
+    mEnableAlphaFix(config.getBoolValue("enableAlphaFix")),
+    mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),
+    mDisableBeingCaching(config.getBoolValue("disableBeingCaching"))
 {
     mAlpha = 1.0f;
-    mEnableAlphaFix = config.getBoolValue("enableAlphaFix");
-    mDisableAdvBeingCaching = config.getBoolValue("disableAdvBeingCaching");
-    mDisableBeingCaching = config.getBoolValue("disableBeingCaching");
 }
 
 CompoundSprite::~CompoundSprite()

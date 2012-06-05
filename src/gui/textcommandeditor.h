@@ -72,6 +72,7 @@ class TextCommandEditor : public Window, public gcn::ActionListener
 
         void deleteCommand();
 
+        bool mIsMagicCommand;
         TextCommand *mCommand;
         bool mAdvanced;
 
@@ -85,29 +86,27 @@ class TextCommandEditor : public Window, public gcn::ActionListener
         Label *mCommentLabel;
         TextField *mCommentTextField;
 
+        TargetTypeModel *mTargetTypeModel;
         Label *mTypeLabel;
         DropDown *mTypeDropDown;
+        IconsModal *mIconsModal;
         Label *mIconLabel;
         DropDown *mIconDropDown;
         Label *mManaLabel;
         IntTextField *mManaField;
         Label *mMagicLvlLabel;
         IntTextField *mMagicLvlField;
+        MagicSchoolModel *mMagicSchoolModel;
         Label *mSchoolLabel;
         DropDown *mSchoolDropDown;
         Label *mSchoolLvlLabel;
         IntTextField *mSchoolLvlField;
-        IconsModal *mIconsModal;
-        TargetTypeModel *mTargetTypeModel;
-        MagicSchoolModel *mMagicSchoolModel;
 
-        //Button *mAdvancedButton;
         Button *mCancelButton;
         Button *mSaveButton;
         Button *mDeleteButton;
 
         bool mEnabledKeyboard;
-        bool mIsMagicCommand;
 };
 
 #endif

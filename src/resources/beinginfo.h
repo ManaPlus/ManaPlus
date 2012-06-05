@@ -37,11 +37,11 @@ struct Attack
     std::string missileParticle;
 
     Attack(std::string action0, std::string particleEffect0,
-           std::string missileParticle0)
+           std::string missileParticle0) :
+        action(action0),
+        particleEffect(particleEffect0),
+        missileParticle(missileParticle0)
     {
-        action = action0;
-        particleEffect = particleEffect0;
-        missileParticle = missileParticle0;
     }
 };
 

@@ -54,10 +54,9 @@ class MapRowVertexes
 class MapObject
 {
     public:
-        MapObject(int type0, std::string data0)
+        MapObject(int type0, std::string data0) :
+            type(type0), data(data0)
         {
-            type = type0;
-            data = data0;
         }
 
         int type;

@@ -121,11 +121,11 @@ class TextPreview : public gcn::Widget
         const gcn::Color *mTextColor;
         const gcn::Color *mBGColor;
         const gcn::Color *mTextBGColor;
-        static float mAlpha;
         bool mTextAlpha;
         bool mOpaque;
         bool mShadow;
         bool mOutline;
+        static float mAlpha;
 };
 
 #endif
