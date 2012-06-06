@@ -764,8 +764,11 @@ Image *Image::_GLload(SDL_Surface *tmpImage)
 #endif
 
     SDL_Surface *oldImage = nullptr;
-    if (tmpImage->format->BitsPerPixel != 32 || realWidth != width
-        || realHeight != height || rmask != tmpImage->format->Rmask)
+    if (tmpImage->format->BitsPerPixel != 32
+        || realWidth != width || realHeight != height
+        || rmask != tmpImage->format->Rmask
+        || gmask != tmpImage->format->Gmask
+        || amask != tmpImage->format->Amask)
     {
         oldImage = tmpImage;
         tmpImage = SDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
@@ -899,6 +902,22 @@ void Image::SDLTerminateAlphaCache()
 {
     SDLCleanCache();
     mUseAlphaCache = false;
+}
+
+void Image::dumpSurfaceFormat(SDL_Surface *image)
+{
+    if (image->format)
+    {
+        const SDL_PixelFormat *format = image->format;
+        logger->log("Bytes per pixel: %d", format->BytesPerPixel);
+        logger->log("Alpha: %d", format->alpha);
+        logger->log("Loss: %02x, %02x, %02x, %02x", (int)format->Rloss,
+            (int)format->Gloss, (int)format->Bloss, (int)format->Aloss);
+        logger->log("Shift: %02x, %02x, %02x, %02x", (int)format->Rshift,
+            (int)format->Gshift, (int)format->Bshift, (int)format->Ashift);
+        logger->log("Mask: %08x, %08x, %08x, %08x", format->Rmask,
+            format->Gmask, format->Bmask, format->Amask);
+    }
 }
 
 //============================================================================

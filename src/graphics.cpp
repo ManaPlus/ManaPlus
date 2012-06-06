@@ -282,11 +282,7 @@ bool Graphics::videoInfo()
     mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
-    if (mTarget->format)
-    {
-        logger->log("Bits per pixel: %d", mTarget->format->BytesPerPixel);
-//        bpp = mTarget->format->BytesPerPixel;
-    }
+    Image::dumpSurfaceFormat(mTarget);
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
     if (!vi)

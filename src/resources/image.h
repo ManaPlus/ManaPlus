@@ -228,6 +228,8 @@ class Image : public Resource
 
         static int mInternalTextureType;
 
+        static void dumpSurfaceFormat(SDL_Surface *image);
+
 #endif
 
         bool isHasAlphaChannel() const
