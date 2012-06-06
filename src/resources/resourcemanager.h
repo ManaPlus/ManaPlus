@@ -214,17 +214,18 @@ class ResourceManager
          * @return An allocated byte array containing the data that was loaded,
          *         or <code>NULL</code> on fail.
          */
-        void *loadFile(const std::string &fileName, int &fileSize);
+        static void *loadFile(const std::string &fileName, int &fileSize);
 
         /**
          * Retrieves the contents of a text file (PhysFS).
          */
-        bool loadTextFile(const std::string &fileName, StringVect &lines);
+        static bool loadTextFile(const std::string &fileName,
+                                 StringVect &lines);
 
         /**
          * Retrieves the contents of a text file.
          */
-        StringVect loadTextFileLocal(const std::string &fileName);
+        static StringVect loadTextFileLocal(const std::string &fileName);
 
         void saveTextFile(std::string path, std::string name,
                           std::string text);

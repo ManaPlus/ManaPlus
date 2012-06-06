@@ -18,9 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef _MSC_VER
+#  include "msvc/config.h"
+#elif defined(HAVE_CONFIG_H)
+#  include "config.h"
+#endif
+
 #include "utils/paths.h"
 
 #include "utils/stringutils.h"
+
+#include "resources/resourcemanager.h"
 
 #include <string.h>
 #include <cstdarg>
@@ -128,3 +136,42 @@ std::string getSelfName()
 }
 
 #endif
+
+std::string getDesktopDir()
+{
+#ifdef WIN32
+    std::string dir = getSpecialFolderLocation(CSIDL_MYPICTURES);
+    if (dir.empty())
+        dir = getSpecialFolderLocation(CSIDL_DESKTOP);
+    return dir;
+#elif USE_X11
+    char *xdg = getenv("XDG_CONFIG_HOME");
+    std::string file;
+    if (!xdg)
+        file = std::string(PHYSFS_getUserDir()) + "/.config/user-dirs.dirs";
+    else
+        file = std::string(xdg) + "/user-dirs.dirs";
+
+    StringVect arr = ResourceManager::loadTextFileLocal(file);
+    for(StringVectCIter it = arr.begin(), it_end = arr.end();
+        it != it_end; ++ it)
+    {
+        std::string str = *it;
+        if (findCutFirst(str, "XDG_DESKTOP_DIR=\""))
+        {
+            str = str.substr(0, str.size() - 1);
+            // use hack to replace $HOME var.
+            // if in string other vars, fallback to default path
+            replaceAll(str, "$HOME/", PHYSFS_getUserDir());
+            str = getRealPath(str);
+            if (str.empty())
+                str = std::string(PHYSFS_getUserDir()) + "Desktop";
+            return str;
+        }
+    }
+
+    return std::string(PHYSFS_getUserDir()) + "Desktop";
+#else
+    return std::string(PHYSFS_getUserDir()) + "Desktop";
+#endif
+}

@@ -1898,19 +1898,9 @@ void Client::initScreenshotDir()
         std::string configScreenshotDir =
             config.getStringValue("screenshotDirectory");
         if (!configScreenshotDir.empty())
-        {
             mScreenshotDir = configScreenshotDir;
-        }
         else
-        {
-#ifdef WIN32
-            mScreenshotDir = getSpecialFolderLocation(CSIDL_MYPICTURES);
-            if (mScreenshotDir.empty())
-                mScreenshotDir = getSpecialFolderLocation(CSIDL_DESKTOP);
-#else
-            mScreenshotDir = std::string(PHYSFS_getUserDir()) + "Desktop";
-#endif
-        }
+            mScreenshotDir = getDesktopDir();
         //config.setValue("screenshotDirectory", mScreenshotDir);
         logger->log("screenshotDirectory: " + mScreenshotDir);
 

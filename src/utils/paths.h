@@ -35,4 +35,6 @@ std::string removeLast(std::string str);
 
 std::string getSelfName();
 
+std::string getDesktopDir();
+
 #endif // UTILS_PATHS_H
