@@ -149,50 +149,92 @@ Resource *Image::load(SDL_RWops *rw, Dye const &dye)
         return nullptr;
     }
 
+    SDL_Surface *surf = nullptr;
     SDL_PixelFormat rgba;
     rgba.palette = nullptr;
     rgba.BitsPerPixel = 32;
     rgba.BytesPerPixel = 4;
-    rgba.Rmask = 0xFF000000; rgba.Rloss = 0; rgba.Rshift = 24;
-    rgba.Gmask = 0x00FF0000; rgba.Gloss = 0; rgba.Gshift = 16;
-    rgba.Bmask = 0x0000FF00; rgba.Bloss = 0; rgba.Bshift = 8;
-    rgba.Amask = 0x000000FF; rgba.Aloss = 0; rgba.Ashift = 0;
     rgba.colorkey = 0;
     rgba.alpha = 255;
-
-    SDL_Surface *surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
-    SDL_FreeSurface(tmpImage);
-
-    Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
-    DyePalette *pal = dye.getSPalete();
-
-    if (pal)
+    if (mUseOpenGL)
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h;
-             pixels != p_end; ++pixels)
+        surf = convertTo32Bit(tmpImage);
+        SDL_FreeSurface(tmpImage);
+
+        Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
+        DyePalette *pal = dye.getSPalete();
+
+        if (pal)
         {
-            Uint8 *p = (Uint8 *)pixels;
-            const int alpha = *p & 255;
-            if (!alpha)
-                continue;
-            pal->replaceColor(p + 1);
+            for (Uint32 *p_end = pixels + surf->w * surf->h;
+                pixels != p_end; ++pixels)
+            {
+                Uint8 *p = (Uint8 *)pixels;
+                const int alpha = *p & 255;
+                if (!alpha)
+                    continue;
+                pal->replaceOGLColor(p);
+            }
+        }
+        else
+        {
+            for (Uint32 *p_end = pixels + surf->w * surf->h;
+                pixels != p_end; ++pixels)
+            {
+                const Uint32 p = *pixels;
+                const int alpha = (p >> 24) & 255;
+                if (!alpha)
+                    continue;
+                int v[3];
+                v[0] = (p) & 255;
+                v[1] = (p >> 8) & 255;
+                v[2] = (p >> 16 ) & 255;
+                dye.update(v);
+                *pixels = (v[0]) | (v[1] << 8) | (v[2] << 16) | (alpha << 24);
+            }
         }
     }
     else
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h;
-             pixels != p_end; ++pixels)
+        rgba.Rmask = 0xFF000000; rgba.Rloss = 0; rgba.Rshift = 24;
+        rgba.Gmask = 0x00FF0000; rgba.Gloss = 0; rgba.Gshift = 16;
+        rgba.Bmask = 0x0000FF00; rgba.Bloss = 0; rgba.Bshift = 8;
+        rgba.Amask = 0x000000FF; rgba.Aloss = 0; rgba.Ashift = 0;
+
+        surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
+        SDL_FreeSurface(tmpImage);
+
+        Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
+        DyePalette *pal = dye.getSPalete();
+
+        if (pal)
         {
-            const Uint32 p = *pixels;
-            const int alpha = p & 255;
-            if (!alpha)
-                continue;
-            int v[3];
-            v[0] = (p >> 24) & 255;
-            v[1] = (p >> 16) & 255;
-            v[2] = (p >> 8 ) & 255;
-            dye.update(v);
-            *pixels = (v[0] << 24) | (v[1] << 16) | (v[2] << 8) | alpha;
+            for (Uint32 *p_end = pixels + surf->w * surf->h;
+                pixels != p_end; ++pixels)
+            {
+                Uint8 *p = (Uint8 *)pixels;
+                const int alpha = *p & 255;
+                if (!alpha)
+                    continue;
+                pal->replaceColor(p + 1);
+            }
+        }
+        else
+        {
+            for (Uint32 *p_end = pixels + surf->w * surf->h;
+                pixels != p_end; ++pixels)
+            {
+                const Uint32 p = *pixels;
+                const int alpha = p & 255;
+                if (!alpha)
+                    continue;
+                int v[3];
+                v[0] = (p >> 24) & 255;
+                v[1] = (p >> 16) & 255;
+                v[2] = (p >> 8 ) & 255;
+                dye.update(v);
+                *pixels = (v[0] << 24) | (v[1] << 16) | (v[2] << 8) | alpha;
+            }
         }
     }
 
@@ -908,7 +950,7 @@ void Image::dumpSurfaceFormat(SDL_Surface *image)
 {
     if (image->format)
     {
-        const SDL_PixelFormat *format = image->format;
+        const SDL_PixelFormat * const format = image->format;
         logger->log("Bytes per pixel: %d", format->BytesPerPixel);
         logger->log("Alpha: %d", format->alpha);
         logger->log("Loss: %02x, %02x, %02x, %02x", (int)format->Rloss,
