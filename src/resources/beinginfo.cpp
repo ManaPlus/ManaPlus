@@ -32,15 +32,18 @@
 BeingInfo *BeingInfo::unknown = nullptr;
 Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK, "", "");
 
-BeingInfo::BeingInfo():
-        mName(_("unnamed")),
-        mTargetCursorSize(ActorSprite::TC_MEDIUM),
-        mWalkMask(Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER
-            | Map::BLOCKMASK_MONSTER | Map::BLOCKMASK_AIR
-            | Map::BLOCKMASK_WATER),
-        mBlockType(Map::BLOCKTYPE_CHARACTER),
-        mTargetOffsetX(0), mTargetOffsetY(0),
-        mMaxHP(0), mStaticMaxHP(false)
+BeingInfo::BeingInfo() :
+    mName(_("unnamed")),
+    mTargetCursorSize(ActorSprite::TC_MEDIUM),
+    mWalkMask(Map::BLOCKMASK_WALL | Map::BLOCKMASK_CHARACTER
+              | Map::BLOCKMASK_MONSTER | Map::BLOCKMASK_AIR
+              | Map::BLOCKMASK_WATER),
+    mBlockType(Map::BLOCKTYPE_CHARACTER),
+    mTargetOffsetX(0),
+    mTargetOffsetY(0),
+    mMaxHP(0),
+    mStaticMaxHP(false),
+    mTargetSelection(true)
 {
     SpriteDisplay display;
     display.sprites.push_back(SpriteReference::Empty);

@@ -38,6 +38,8 @@ namespace
     bool mLoaded = false;
 }
 
+extern int serverVersion;
+
 void NPCDB::load()
 {
     if (mLoaded)
@@ -69,6 +71,12 @@ void NPCDB::load()
         }
 
         BeingInfo *currentInfo = new BeingInfo;
+
+        if (serverVersion > 0)
+        {
+            currentInfo->setTargetSelection(XML::getProperty(
+                npcNode, "targetSelection", true));
+        }
 
         currentInfo->setTargetCursorSize(XML::getProperty(npcNode,
                                          "targetCursor", "medium"));

@@ -146,6 +146,12 @@ class BeingInfo
         void setStaticMaxHP(bool n)
         { mStaticMaxHP = n; }
 
+        void setTargetSelection(bool n)
+        { mTargetSelection = n; }
+
+        bool isTargetSelection() const
+        { return mTargetSelection; }
+
         static void clear();
 
     private:
@@ -160,6 +166,7 @@ class BeingInfo
         int mTargetOffsetY;
         int mMaxHP;
         bool mStaticMaxHP;
+        bool mTargetSelection;
 };
 
 typedef std::map<int, BeingInfo*> BeingInfos;

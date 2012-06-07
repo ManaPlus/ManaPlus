@@ -44,6 +44,8 @@
 #include "net/net.h"
 #include "net/playerhandler.h"
 
+#include "resources/beinginfo.h"
+
 #include <algorithm>
 #include <list>
 
@@ -348,6 +350,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
 
             Being *being = static_cast<Being*>(*it);
 
+            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+                continue;
+
             if ((being->isAlive()
                 || (targetDead && being->getType() == Being::PLAYER))
                 && (allPlayers ||  being != player_node))
@@ -392,6 +397,9 @@ Being *ActorSpriteManager::findBeingByPixel(int x, int y,
 
             Being *being = static_cast<Being*>(*it);
 
+            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+                continue;
+
             if ((being->getPixelX() - 16 <= x) &&
                 (being->getPixelX() + 16 > x) &&
                 (being->getPixelY() - 32 <= y) &&
@@ -422,6 +430,10 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             continue;
 
         Being *being = dynamic_cast<Being*>(*it);
+
+        if (being->getInfo() && !being->getInfo()->isTargetSelection())
+            continue;
+
         ActorSprite *actor = *it;
 
         if ((being && (being->isAlive()
@@ -905,6 +917,10 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                     continue;
                 }
             }
+
+            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+                continue;
+
             if (validateBeing(aroundBeing, being, type, nullptr, maxDist))
             {
                 if (being != excluded)
@@ -996,6 +1012,9 @@ Being *ActorSpriteManager::findNearestLivingBeing(Being *aroundBeing,
                     continue;
                 }
             }
+
+            if (being->getInfo() && !being->getInfo()->isTargetSelection())
+                continue;
 
 //            Being *being = (*i);
 
