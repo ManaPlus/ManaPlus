@@ -1,3 +1,20 @@
+2012-06-10 New release 1.2.6.10
+fix: incorrect animation (hair bug).
+fix: keys conflict in login dialog.
+fix: kill stats on levelup.
+fix: stay animation in beings without dead animation.
+add: player relations to whisper chat context menu.
+add: per hair style own palete (evol).
+add: sittop animation (evol).
+add: ground top collision flag (evol).
+add: hide botchecker button by default.
+add: improve image loading in OpenGL renderers.
+add: improve dye speed.
+add: footer to help window.
+add: per server news in help window.
+add: use actual desktop dir for screenshots in linux.
+add: to npc option to disallow select npc.
+
 2012-05-27 New release 1.2.5.27
 fix: tips translations.
 fix: joystick repeat key presses.
