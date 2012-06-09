@@ -37,6 +37,7 @@
 #include "utils/stringutils.h"
 
 #include "resources/imagehelper.h"
+#include "resources/subimage.h"
 
 #include <SDL_image.h>
 #include <SDL_rotozoom.h>
@@ -334,107 +335,4 @@ void Image::SDLTerminateAlphaCache()
 {
     SDLCleanCache();
     mUseAlphaCache = false;
-}
-
-//============================================================================
-// SubImage Class
-//============================================================================
-
-SubImage::SubImage(Image *parent, SDL_Surface *image,
-                   int x, int y, int width, int height):
-    Image(image),
-    mParent(parent)
-{
-    if (mParent)
-    {
-        mParent->incRef();
-        mParent->SDLTerminateAlphaCache();
-        mHasAlphaChannel = mParent->hasAlphaChannel();
-        mIsAlphaVisible = mHasAlphaChannel;
-        mAlphaChannel = mParent->SDLgetAlphaChannel();
-    }
-    else
-    {
-        mHasAlphaChannel = false;
-        mIsAlphaVisible = false;
-        mAlphaChannel = nullptr;
-    }
-
-    // Set up the rectangle.
-    mBounds.x = static_cast<short>(x);
-    mBounds.y = static_cast<short>(y);
-    mBounds.w = static_cast<Uint16>(width);
-    mBounds.h = static_cast<Uint16>(height);
-    if (mParent)
-    {
-        mInternalBounds.x = mParent->mBounds.x;
-        mInternalBounds.y = mParent->mBounds.y;
-        mInternalBounds.w = mParent->mBounds.w;
-        mInternalBounds.h = mParent->mBounds.h;
-    }
-    else
-    {
-        mInternalBounds.x = 0;
-        mInternalBounds.y = 0;
-        mInternalBounds.w = 1;
-        mInternalBounds.h = 1;
-    }
-    mUseAlphaCache = false;
-}
-
-#ifdef USE_OPENGL
-SubImage::SubImage(Image *parent, GLuint image,
-                   int x, int y, int width, int height,
-                   int texWidth, int texHeight):
-    Image(image, width, height, texWidth, texHeight),
-    mParent(parent)
-{
-    if (mParent)
-        mParent->incRef();
-
-    // Set up the rectangle.
-    mBounds.x = static_cast<short>(x);
-    mBounds.y = static_cast<short>(y);
-    mBounds.w = static_cast<Uint16>(width);
-    mBounds.h = static_cast<Uint16>(height);
-    if (mParent)
-    {
-        mInternalBounds.x = mParent->mBounds.x;
-        mInternalBounds.y = mParent->mBounds.y;
-        mInternalBounds.w = mParent->mBounds.w;
-        mInternalBounds.h = mParent->mBounds.h;
-    }
-    else
-    {
-        mInternalBounds.x = 0;
-        mInternalBounds.y = 0;
-        mInternalBounds.w = 1;
-        mInternalBounds.h = 1;
-    }
-    mIsAlphaVisible = mHasAlphaChannel;
-}
-#endif
-
-SubImage::~SubImage()
-{
-    // Avoid destruction of the image
-    mSDLSurface = nullptr;
-    // Avoid possible destruction of its alpha channel
-    mAlphaChannel = nullptr;
-#ifdef USE_OPENGL
-    mGLImage = 0;
-#endif
-    if (mParent)
-    {
-        mParent->decRef();
-        mParent = nullptr;
-    }
-}
-
-Image *SubImage::getSubImage(int x, int y, int w, int h)
-{
-    if (mParent)
-        return mParent->getSubImage(mBounds.x + x, mBounds.y + y, w, h);
-    else
-        return nullptr;
 }

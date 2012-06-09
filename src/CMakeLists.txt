@@ -437,6 +437,8 @@ SET(SRCS
     resources/soundeffect.cpp
     resources/spritedef.h
     resources/spritedef.cpp
+    resources/subimage.cpp
+    resources/subimage.h
     resources/wallpaper.cpp
     resources/wallpaper.h
     utils/translation/podict.cpp

@@ -35,6 +35,7 @@
 #include "resources/ambientlayer.h"
 #include "resources/image.h"
 #include "resources/resourcemanager.h"
+#include "resources/subimage.h"
 
 #include "gui/widgets/chattab.h"
 

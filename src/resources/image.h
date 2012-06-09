@@ -211,39 +211,4 @@ class Image : public Resource
 #endif
 };
 
-/**
- * A clipped version of a larger image.
- */
-class SubImage : public Image
-{
-    public:
-        /**
-         * Constructor.
-         */
-        SubImage(Image *parent, SDL_Surface *image,
-                 int x, int y, int width, int height);
-#ifdef USE_OPENGL
-        SubImage(Image *parent, GLuint image, int x, int y,
-                 int width, int height, int texWidth, int textHeight);
-#endif
-
-        /**
-         * Destructor.
-         */
-        ~SubImage();
-
-        /**
-         * Creates a new image with the desired clipping rectangle.
-         *
-         * @return <code>NULL</code> if creation failed and a valid
-         *         image otherwise.
-         */
-        Image *getSubImage(int x, int y, int width, int height);
-
-        SDL_Rect mInternalBounds;
-
-    private:
-        Image *mParent;
-};
-
 #endif

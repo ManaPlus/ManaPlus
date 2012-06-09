@@ -447,10 +447,12 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
 	      resources/resourcemanager.h \
-	      resources/soundeffect.h \
 	      resources/soundeffect.cpp \
-	      resources/spritedef.h \
+	      resources/soundeffect.h \
 	      resources/spritedef.cpp \
+	      resources/spritedef.h \
+	      resources/subimage.cpp \
+	      resources/subimage.h \
 	      resources/wallpaper.cpp \
 	      resources/wallpaper.h \
 	      utils/translation/podict.cpp \
