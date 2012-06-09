@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-06-01 00:51+0300\n"
+"POT-Creation-Date: 2012-06-09 14:52+0300\n"
 "PO-Revision-Date: 2012-05-31 22:03+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.net/projects/p/manaplus/"
@@ -29,7 +29,7 @@ msgstr "Abaikan permohonan transaksi"
 msgid "Accepting incoming trade requests"
 msgstr "Terima permohonan transaksi"
 
-#: src/actorspritemanager.cpp:1244
+#: src/actorspritemanager.cpp:1262
 msgid "Visible on map"
 msgstr "Terlihat di peta"
 
@@ -46,12 +46,12 @@ msgid "miss"
 msgstr "Luput"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1615 src/gui/whoisonline.cpp:768
+#: src/being.cpp:1614 src/gui/whoisonline.cpp:768
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1620 src/gui/whoisonline.cpp:773
+#: src/being.cpp:1619 src/gui/whoisonline.cpp:773
 msgid "I"
 msgstr "l"
 
@@ -134,7 +134,7 @@ msgid "Farewell, come back any time..."
 msgstr "Selamat tinggal, datang kembali setiap saat"
 
 #: src/client.cpp:1640 src/client.cpp:1673 src/client.cpp:1688
-#: src/client.cpp:2143 src/client.cpp:2150
+#: src/client.cpp:2133 src/client.cpp:2140
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s tidak ada dan tidak dapat dibuat!keluar."
@@ -448,7 +448,7 @@ msgid "-"
 msgstr "-"
 
 #: src/gui/buydialog.cpp:112 src/gui/quitdialog.cpp:49
-#: src/gui/quitdialog.cpp:52 src/gui/quitdialog.cpp:53
+#: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
 #: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:264
 #: src/gui/setupactiondata.h:158
 msgid "Quit"
@@ -484,11 +484,11 @@ msgstr "Jual"
 #: src/gui/popupmenu.cpp:1774 src/gui/popupmenu.cpp:1830
 #: src/gui/popupmenu.cpp:1867 src/gui/popupmenu.cpp:1908
 #: src/gui/popupmenu.cpp:1960 src/gui/popupmenu.cpp:1984
-#: src/gui/popupmenu.cpp:2006 src/gui/quitdialog.cpp:57
+#: src/gui/popupmenu.cpp:2006 src/gui/quitdialog.cpp:55
 #: src/gui/registerdialog.cpp:83 src/gui/setupactiondata.h:1490
-#: src/gui/setup.cpp:73 src/gui/socialwindow.cpp:1140
-#: src/gui/textcommandeditor.cpp:241 src/gui/textdialog.cpp:51
-#: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:171
+#: src/gui/setup.cpp:73 src/gui/socialwindow.cpp:1135
+#: src/gui/textcommandeditor.cpp:194 src/gui/textdialog.cpp:51
+#: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:172
 msgid "Cancel"
 msgstr "Batal"
 
@@ -591,8 +591,8 @@ msgstr ""
 msgid "Race:"
 msgstr "Ras:"
 
-#: src/gui/charcreatedialog.cpp:125 src/gui/charselectdialog.cpp:630
-#: src/gui/socialwindow.cpp:1202
+#: src/gui/charcreatedialog.cpp:125 src/gui/charselectdialog.cpp:627
+#: src/gui/socialwindow.cpp:1197
 msgid "Create"
 msgstr "Buat"
 
@@ -666,23 +666,23 @@ msgstr "Masukan Sandi untuk menghapus karakter"
 msgid "Enter password:"
 msgstr "Masukkan sandi"
 
-#: src/gui/charselectdialog.cpp:560 src/gui/serverdialog.cpp:269
+#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:269
 #: src/gui/setupactiondata.h:1495 src/gui/setup_relations.cpp:245
 #: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
-#: src/gui/textcommandeditor.cpp:244
+#: src/gui/textcommandeditor.cpp:196
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/gui/charselectdialog.cpp:618
+#: src/gui/charselectdialog.cpp:615
 msgid "Choose"
 msgstr "Pilih"
 
-#: src/gui/charselectdialog.cpp:621
+#: src/gui/charselectdialog.cpp:618
 #, c-format
 msgid "Level %d"
 msgstr "Level %d"
 
-#: src/gui/charselectdialog.cpp:632 src/gui/charselectdialog.cpp:633
+#: src/gui/charselectdialog.cpp:629 src/gui/charselectdialog.cpp:630
 msgid "(empty)"
 msgstr "(kosong)"
 
@@ -961,7 +961,7 @@ msgstr "Buka jendela otomatis"
 
 #: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:80
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:48
-#: src/gui/quitdialog.cpp:56 src/gui/textdialog.cpp:50
+#: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "OK"
 
@@ -1121,11 +1121,11 @@ msgstr "Tambahkan ke daftar jual"
 msgid "Unknown."
 msgstr "Tidak diketahui"
 
-#: src/gui/itempopup.cpp:178 src/gui/itempopup.cpp:184
+#: src/gui/itempopup.cpp:176 src/gui/itempopup.cpp:182
 msgid ", "
 msgstr ","
 
-#: src/gui/itempopup.cpp:194
+#: src/gui/itempopup.cpp:192
 #, c-format
 msgid "Weight: %s"
 msgstr "Berat: %s"
@@ -1353,7 +1353,7 @@ msgid "Outfit: %d"
 msgstr "Setelan: %d"
 
 #: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
-#: src/gui/windowmenu.cpp:319
+#: src/gui/windowmenu.cpp:321
 #, c-format
 msgid "Key: %s"
 msgstr "Kunci: %s"
@@ -1506,7 +1506,7 @@ msgstr ""
 msgid "Disable away"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:522 src/gui/socialwindow.cpp:1204
+#: src/gui/popupmenu.cpp:522 src/gui/socialwindow.cpp:1199
 msgid "Leave"
 msgstr ""
 
@@ -1609,7 +1609,7 @@ msgstr "Pindahkan ke chat"
 
 #: src/gui/popupmenu.cpp:1927 src/gui/popupmenu.cpp:1978
 #: src/gui/setup_theme.cpp:62 src/gui/setup_theme.cpp:119
-#: src/gui/socialwindow.cpp:885
+#: src/gui/socialwindow.cpp:883
 msgid "(default)"
 msgstr "(kembalikan)"
 
@@ -1690,11 +1690,11 @@ msgstr ""
 msgid "Add to pickup list"
 msgstr ""
 
-#: src/gui/quitdialog.cpp:54
+#: src/gui/quitdialog.cpp:52
 msgid "Switch server"
 msgstr "Ganti Server"
 
-#: src/gui/quitdialog.cpp:55
+#: src/gui/quitdialog.cpp:53
 msgid "Switch character"
 msgstr "Ganti Karakter"
 
@@ -3550,153 +3550,153 @@ msgid "Are you sure you want to leave party %s?"
 msgstr ""
 
 #. TRANSLATORS: Navigation tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:600
+#: src/gui/socialwindow.cpp:598
 msgid "Nav"
 msgstr ""
 
 #. TRANSLATORS: Attack filter tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:933
+#: src/gui/socialwindow.cpp:930
 msgid "Atk"
 msgstr "Sedang meninggalkan keyboard"
 
-#: src/gui/socialwindow.cpp:957
+#: src/gui/socialwindow.cpp:954
 msgid "Priority mobs"
 msgstr "mob prioritas"
 
-#: src/gui/socialwindow.cpp:958
+#: src/gui/socialwindow.cpp:955
 msgid "Attack mobs"
 msgstr "serang mob"
 
-#: src/gui/socialwindow.cpp:959
+#: src/gui/socialwindow.cpp:956
 msgid "Ignore mobs"
 msgstr "Abaikan mobs"
 
 #. TRANSLATORS: Pickup filter tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:988
+#: src/gui/socialwindow.cpp:984
 msgid "Pik"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1012
+#: src/gui/socialwindow.cpp:1008
 msgid "Pickup items"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1013
+#: src/gui/socialwindow.cpp:1009
 msgid "Ignore items"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1137
+#: src/gui/socialwindow.cpp:1132
 msgid "Create Guild"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1138 src/gui/socialwindow.cpp:1585
+#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1580
 msgid "Create Party"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1180 src/gui/windowmenu.cpp:100
+#: src/gui/socialwindow.cpp:1175 src/gui/windowmenu.cpp:100
 msgid "Social"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1203
+#: src/gui/socialwindow.cpp:1198
 msgid "Invite"
 msgstr ""
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/socialwindow.cpp:1219
+#: src/gui/socialwindow.cpp:1214
 msgid "P"
 msgstr ""
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1223
+#: src/gui/socialwindow.cpp:1218
 msgid "F"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1368
+#: src/gui/socialwindow.cpp:1363
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1378
+#: src/gui/socialwindow.cpp:1373
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1395
+#: src/gui/socialwindow.cpp:1390
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1408
+#: src/gui/socialwindow.cpp:1403
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1455
+#: src/gui/socialwindow.cpp:1450
 #, c-format
 msgid "Creating guild called %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1478
+#: src/gui/socialwindow.cpp:1473
 #, c-format
 msgid "Creating party called %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1492
+#: src/gui/socialwindow.cpp:1487
 msgid "Guild Name"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1493
+#: src/gui/socialwindow.cpp:1488
 msgid "Choose your guild's name."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1507
+#: src/gui/socialwindow.cpp:1502
 msgid "Received guild request, but one already exists."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1513
+#: src/gui/socialwindow.cpp:1508
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1519
+#: src/gui/socialwindow.cpp:1514
 msgid "Accept Guild Invite"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1534
+#: src/gui/socialwindow.cpp:1529
 msgid "Received party request, but one already exists."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1545
+#: src/gui/socialwindow.cpp:1540
 msgid "You have been invited you to join a party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1549
+#: src/gui/socialwindow.cpp:1544
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1557
+#: src/gui/socialwindow.cpp:1552
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1562
+#: src/gui/socialwindow.cpp:1557
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1571
+#: src/gui/socialwindow.cpp:1566
 msgid "Accept Party Invite"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1586
+#: src/gui/socialwindow.cpp:1581
 msgid "Cannot create party. You are already in a party"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1591
+#: src/gui/socialwindow.cpp:1586
 msgid "Party Name"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1592
+#: src/gui/socialwindow.cpp:1587
 msgid "Choose your party's name."
 msgstr ""
 
@@ -3792,51 +3792,51 @@ msgstr "Sihir Astral"
 msgid "Command Editor"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:185
+#: src/gui/textcommandeditor.cpp:171
 msgid "magic"
 msgstr "sihir"
 
-#: src/gui/textcommandeditor.cpp:189
+#: src/gui/textcommandeditor.cpp:172
 msgid "other"
 msgstr "lainnya"
 
-#: src/gui/textcommandeditor.cpp:194
+#: src/gui/textcommandeditor.cpp:173
 msgid "Symbol:"
 msgstr "Simbol:"
 
-#: src/gui/textcommandeditor.cpp:197
+#: src/gui/textcommandeditor.cpp:175
 msgid "Command:"
 msgstr "Perintah:"
 
-#: src/gui/textcommandeditor.cpp:200
+#: src/gui/textcommandeditor.cpp:177
 msgid "Comment:"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:203
-msgid "Mana:"
-msgstr "Mana:"
-
-#: src/gui/textcommandeditor.cpp:209
+#: src/gui/textcommandeditor.cpp:180
 msgid "Target Type:"
 msgstr "Tipe target:"
 
-#: src/gui/textcommandeditor.cpp:215
+#: src/gui/textcommandeditor.cpp:183
 msgid "Icon:"
 msgstr "Ikon:"
 
-#: src/gui/textcommandeditor.cpp:221
+#: src/gui/textcommandeditor.cpp:185
+msgid "Mana:"
+msgstr "Mana:"
+
+#: src/gui/textcommandeditor.cpp:187
 msgid "Magic level:"
 msgstr "Level sihir:"
 
-#: src/gui/textcommandeditor.cpp:227
+#: src/gui/textcommandeditor.cpp:190
 msgid "Magic School:"
 msgstr "Sekolah sihir:"
 
-#: src/gui/textcommandeditor.cpp:233
+#: src/gui/textcommandeditor.cpp:192
 msgid "School level:"
 msgstr "Level sekolah:"
 
-#: src/gui/textcommandeditor.cpp:238
+#: src/gui/textcommandeditor.cpp:195
 msgid "Save"
 msgstr "Simpan"
 
@@ -3886,33 +3886,33 @@ msgstr ""
 msgid "Name: %s"
 msgstr "Nama: %s"
 
-#: src/gui/updaterwindow.cpp:142
+#: src/gui/updaterwindow.cpp:143
 msgid "Updating..."
 msgstr "Mengupdate..."
 
-#: src/gui/updaterwindow.cpp:169
+#: src/gui/updaterwindow.cpp:170
 msgid "Connecting..."
 msgstr "Menyambung..."
 
-#: src/gui/updaterwindow.cpp:172
+#: src/gui/updaterwindow.cpp:173
 msgid "Play"
 msgstr "Main"
 
-#: src/gui/updaterwindow.cpp:623
+#: src/gui/updaterwindow.cpp:633
 msgid "##1  The update process is incomplete."
 msgstr ""
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:625
+#: src/gui/updaterwindow.cpp:635
 msgid "##1  It is strongly recommended that"
 msgstr ""
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:627
+#: src/gui/updaterwindow.cpp:637
 msgid "##1  you try again later."
 msgstr ""
 
-#: src/gui/updaterwindow.cpp:803
+#: src/gui/updaterwindow.cpp:813
 msgid "Completed"
 msgstr ""
 
@@ -4339,11 +4339,11 @@ msgstr ""
 msgid "Select World"
 msgstr ""
 
-#: src/gui/worldselectdialog.cpp:85
+#: src/gui/worldselectdialog.cpp:83
 msgid "Change Login"
 msgstr ""
 
-#: src/gui/worldselectdialog.cpp:86
+#: src/gui/worldselectdialog.cpp:84
 msgid "Choose World"
 msgstr ""
 
@@ -4940,16 +4940,16 @@ msgstr ""
 msgid "All whispers unignore failed."
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:92
+#: src/net/ea/gamehandler.cpp:91
 #, c-format
 msgid "Online users: %d"
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:104
+#: src/net/ea/gamehandler.cpp:103
 msgid "Game"
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:104
+#: src/net/ea/gamehandler.cpp:103
 msgid "Request to quit denied!"
 msgstr ""
 

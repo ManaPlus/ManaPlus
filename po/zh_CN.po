@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-06-01 00:51+0300\n"
+"POT-Creation-Date: 2012-06-09 14:52+0300\n"
 "PO-Revision-Date: 2012-05-31 22:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.net/projects/p/manaplus/"
@@ -29,7 +29,7 @@ msgstr "忽略新进的交易请求"
 msgid "Accepting incoming trade requests"
 msgstr "接受传入的交易请求"
 
-#: src/actorspritemanager.cpp:1244
+#: src/actorspritemanager.cpp:1262
 msgid "Visible on map"
 msgstr "在地图上可见"
 
@@ -46,12 +46,12 @@ msgid "miss"
 msgstr "无法出售无法出售的物品。"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1615 src/gui/whoisonline.cpp:768
+#: src/being.cpp:1614 src/gui/whoisonline.cpp:768
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1620 src/gui/whoisonline.cpp:773
+#: src/being.cpp:1619 src/gui/whoisonline.cpp:773
 msgid "I"
 msgstr "I"
 
@@ -134,7 +134,7 @@ msgid "Farewell, come back any time..."
 msgstr "再见，随时欢迎回来... ..."
 
 #: src/client.cpp:1640 src/client.cpp:1673 src/client.cpp:1688
-#: src/client.cpp:2143 src/client.cpp:2150
+#: src/client.cpp:2133 src/client.cpp:2140
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，并且无法创建！退出。"
@@ -445,7 +445,7 @@ msgid "-"
 msgstr "-"
 
 #: src/gui/buydialog.cpp:112 src/gui/quitdialog.cpp:49
-#: src/gui/quitdialog.cpp:52 src/gui/quitdialog.cpp:53
+#: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
 #: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:264
 #: src/gui/setupactiondata.h:158
 msgid "Quit"
@@ -481,11 +481,11 @@ msgstr "出售"
 #: src/gui/popupmenu.cpp:1774 src/gui/popupmenu.cpp:1830
 #: src/gui/popupmenu.cpp:1867 src/gui/popupmenu.cpp:1908
 #: src/gui/popupmenu.cpp:1960 src/gui/popupmenu.cpp:1984
-#: src/gui/popupmenu.cpp:2006 src/gui/quitdialog.cpp:57
+#: src/gui/popupmenu.cpp:2006 src/gui/quitdialog.cpp:55
 #: src/gui/registerdialog.cpp:83 src/gui/setupactiondata.h:1490
-#: src/gui/setup.cpp:73 src/gui/socialwindow.cpp:1140
-#: src/gui/textcommandeditor.cpp:241 src/gui/textdialog.cpp:51
-#: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:171
+#: src/gui/setup.cpp:73 src/gui/socialwindow.cpp:1135
+#: src/gui/textcommandeditor.cpp:194 src/gui/textdialog.cpp:51
+#: src/gui/unregisterdialog.cpp:59 src/gui/updaterwindow.cpp:172
 msgid "Cancel"
 msgstr "取消"
 
@@ -588,8 +588,8 @@ msgstr ""
 msgid "Race:"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:125 src/gui/charselectdialog.cpp:630
-#: src/gui/socialwindow.cpp:1202
+#: src/gui/charcreatedialog.cpp:125 src/gui/charselectdialog.cpp:627
+#: src/gui/socialwindow.cpp:1197
 msgid "Create"
 msgstr "建立"
 
@@ -663,23 +663,23 @@ msgstr "删除字符输入的密码"
 msgid "Enter password:"
 msgstr "输入密码："
 
-#: src/gui/charselectdialog.cpp:560 src/gui/serverdialog.cpp:269
+#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:269
 #: src/gui/setupactiondata.h:1495 src/gui/setup_relations.cpp:245
 #: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
-#: src/gui/textcommandeditor.cpp:244
+#: src/gui/textcommandeditor.cpp:196
 msgid "Delete"
 msgstr "删除"
 
-#: src/gui/charselectdialog.cpp:618
+#: src/gui/charselectdialog.cpp:615
 msgid "Choose"
 msgstr "选择"
 
-#: src/gui/charselectdialog.cpp:621
+#: src/gui/charselectdialog.cpp:618
 #, c-format
 msgid "Level %d"
 msgstr "等级 %d"
 
-#: src/gui/charselectdialog.cpp:632 src/gui/charselectdialog.cpp:633
+#: src/gui/charselectdialog.cpp:629 src/gui/charselectdialog.cpp:630
 msgid "(empty)"
 msgstr "()"
 
@@ -958,7 +958,7 @@ msgstr "自动打开这个窗口"
 
 #: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:80
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:48
-#: src/gui/quitdialog.cpp:56 src/gui/textdialog.cpp:50
+#: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "确定"
 
@@ -1118,11 +1118,11 @@ msgstr "添加到出售商店。"
 msgid "Unknown."
 msgstr "未知。"
 
-#: src/gui/itempopup.cpp:178 src/gui/itempopup.cpp:184
+#: src/gui/itempopup.cpp:176 src/gui/itempopup.cpp:182
 msgid ", "
 msgstr ","
 
-#: src/gui/itempopup.cpp:194
+#: src/gui/itempopup.cpp:192
 #, c-format
 msgid "Weight: %s"
 msgstr "重量：%s"
@@ -1350,7 +1350,7 @@ msgid "Outfit: %d"
 msgstr "套装： %d"
 
 #: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
-#: src/gui/windowmenu.cpp:319
+#: src/gui/windowmenu.cpp:321
 #, c-format
 msgid "Key: %s"
 msgstr "按键：%s"
@@ -1503,7 +1503,7 @@ msgstr "启用远"
 msgid "Disable away"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:522 src/gui/socialwindow.cpp:1204
+#: src/gui/popupmenu.cpp:522 src/gui/socialwindow.cpp:1199
 msgid "Leave"
 msgstr "留下"
 
@@ -1606,7 +1606,7 @@ msgstr ""
 
 #: src/gui/popupmenu.cpp:1927 src/gui/popupmenu.cpp:1978
 #: src/gui/setup_theme.cpp:62 src/gui/setup_theme.cpp:119
-#: src/gui/socialwindow.cpp:885
+#: src/gui/socialwindow.cpp:883
 msgid "(default)"
 msgstr "(默认)"
 
@@ -1687,11 +1687,11 @@ msgstr ""
 msgid "Add to pickup list"
 msgstr ""
 
-#: src/gui/quitdialog.cpp:54
+#: src/gui/quitdialog.cpp:52
 msgid "Switch server"
 msgstr "交换服务器"
 
-#: src/gui/quitdialog.cpp:55
+#: src/gui/quitdialog.cpp:53
 msgid "Switch character"
 msgstr "交换角色"
 
@@ -3547,153 +3547,153 @@ msgid "Are you sure you want to leave party %s?"
 msgstr ""
 
 #. TRANSLATORS: Navigation tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:600
+#: src/gui/socialwindow.cpp:598
 msgid "Nav"
 msgstr ""
 
 #. TRANSLATORS: Attack filter tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:933
+#: src/gui/socialwindow.cpp:930
 msgid "Atk"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:957
+#: src/gui/socialwindow.cpp:954
 msgid "Priority mobs"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:958
+#: src/gui/socialwindow.cpp:955
 msgid "Attack mobs"
 msgstr "攻击暴徒"
 
-#: src/gui/socialwindow.cpp:959
+#: src/gui/socialwindow.cpp:956
 msgid "Ignore mobs"
 msgstr ""
 
 #. TRANSLATORS: Pickup filter tab name in social window. Should be small
-#: src/gui/socialwindow.cpp:988
+#: src/gui/socialwindow.cpp:984
 msgid "Pik"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1012
+#: src/gui/socialwindow.cpp:1008
 msgid "Pickup items"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1013
+#: src/gui/socialwindow.cpp:1009
 msgid "Ignore items"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1137
+#: src/gui/socialwindow.cpp:1132
 msgid "Create Guild"
 msgstr "创建帮会"
 
-#: src/gui/socialwindow.cpp:1138 src/gui/socialwindow.cpp:1585
+#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1580
 msgid "Create Party"
 msgstr "建立"
 
-#: src/gui/socialwindow.cpp:1180 src/gui/windowmenu.cpp:100
+#: src/gui/socialwindow.cpp:1175 src/gui/windowmenu.cpp:100
 msgid "Social"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1203
+#: src/gui/socialwindow.cpp:1198
 msgid "Invite"
 msgstr "邀请"
 
 #. TRANSLATORS: here P is title for visible players tab in social window
-#: src/gui/socialwindow.cpp:1219
+#: src/gui/socialwindow.cpp:1214
 msgid "P"
 msgstr ""
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1223
+#: src/gui/socialwindow.cpp:1218
 msgid "F"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1368
+#: src/gui/socialwindow.cpp:1363
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "接受%s团队的邀请."
 
-#: src/gui/socialwindow.cpp:1378
+#: src/gui/socialwindow.cpp:1373
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "拒绝%s的团队邀请."
 
-#: src/gui/socialwindow.cpp:1395
+#: src/gui/socialwindow.cpp:1390
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "已接受公会邀请来自%s."
 
-#: src/gui/socialwindow.cpp:1408
+#: src/gui/socialwindow.cpp:1403
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "拒绝%s的公会邀请."
 
-#: src/gui/socialwindow.cpp:1455
+#: src/gui/socialwindow.cpp:1450
 #, c-format
 msgid "Creating guild called %s."
 msgstr "创建公会的名为%s"
 
-#: src/gui/socialwindow.cpp:1478
+#: src/gui/socialwindow.cpp:1473
 #, c-format
 msgid "Creating party called %s."
 msgstr "创建团队名字为%s的"
 
-#: src/gui/socialwindow.cpp:1492
+#: src/gui/socialwindow.cpp:1487
 msgid "Guild Name"
 msgstr "公会名称"
 
-#: src/gui/socialwindow.cpp:1493
+#: src/gui/socialwindow.cpp:1488
 msgid "Choose your guild's name."
 msgstr "选择你的公会的名字."
 
-#: src/gui/socialwindow.cpp:1507
+#: src/gui/socialwindow.cpp:1502
 msgid "Received guild request, but one already exists."
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1513
+#: src/gui/socialwindow.cpp:1508
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s邀请你加入公会%s"
 
-#: src/gui/socialwindow.cpp:1519
+#: src/gui/socialwindow.cpp:1514
 msgid "Accept Guild Invite"
 msgstr "接受邀请"
 
-#: src/gui/socialwindow.cpp:1534
+#: src/gui/socialwindow.cpp:1529
 msgid "Received party request, but one already exists."
 msgstr "接受到一个已经存在的帮会邀请。"
 
-#: src/gui/socialwindow.cpp:1545
+#: src/gui/socialwindow.cpp:1540
 msgid "You have been invited you to join a party."
 msgstr "您已被邀请您加入党。"
 
-#: src/gui/socialwindow.cpp:1549
+#: src/gui/socialwindow.cpp:1544
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "您已被邀请加入%s的团队。"
 
-#: src/gui/socialwindow.cpp:1557
+#: src/gui/socialwindow.cpp:1552
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s已经邀请你加入他们的帮会。"
 
-#: src/gui/socialwindow.cpp:1562
+#: src/gui/socialwindow.cpp:1557
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s已经邀请你加入帮会%s。"
 
-#: src/gui/socialwindow.cpp:1571
+#: src/gui/socialwindow.cpp:1566
 msgid "Accept Party Invite"
 msgstr "接受帮会邀请"
 
-#: src/gui/socialwindow.cpp:1586
+#: src/gui/socialwindow.cpp:1581
 msgid "Cannot create party. You are already in a party"
 msgstr "无法建立团队.您已经在一个队伍中了"
 
-#: src/gui/socialwindow.cpp:1591
+#: src/gui/socialwindow.cpp:1586
 msgid "Party Name"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1592
+#: src/gui/socialwindow.cpp:1587
 msgid "Choose your party's name."
 msgstr "选择n的名称。"
 
@@ -3789,51 +3789,51 @@ msgstr "星芒魔术"
 msgid "Command Editor"
 msgstr "命令编辑器"
 
-#: src/gui/textcommandeditor.cpp:185
+#: src/gui/textcommandeditor.cpp:171
 msgid "magic"
 msgstr "魔术"
 
-#: src/gui/textcommandeditor.cpp:189
+#: src/gui/textcommandeditor.cpp:172
 msgid "other"
 msgstr "其他"
 
-#: src/gui/textcommandeditor.cpp:194
+#: src/gui/textcommandeditor.cpp:173
 msgid "Symbol:"
 msgstr "符号："
 
-#: src/gui/textcommandeditor.cpp:197
+#: src/gui/textcommandeditor.cpp:175
 msgid "Command:"
 msgstr "命令："
 
-#: src/gui/textcommandeditor.cpp:200
+#: src/gui/textcommandeditor.cpp:177
 msgid "Comment:"
 msgstr ""
 
-#: src/gui/textcommandeditor.cpp:203
-msgid "Mana:"
-msgstr "法力："
-
-#: src/gui/textcommandeditor.cpp:209
+#: src/gui/textcommandeditor.cpp:180
 msgid "Target Type:"
 msgstr "目标类型："
 
-#: src/gui/textcommandeditor.cpp:215
+#: src/gui/textcommandeditor.cpp:183
 msgid "Icon:"
 msgstr "图示："
 
-#: src/gui/textcommandeditor.cpp:221
+#: src/gui/textcommandeditor.cpp:185
+msgid "Mana:"
+msgstr "法力："
+
+#: src/gui/textcommandeditor.cpp:187
 msgid "Magic level:"
 msgstr "魔法等级："
 
-#: src/gui/textcommandeditor.cpp:227
+#: src/gui/textcommandeditor.cpp:190
 msgid "Magic School:"
 msgstr "魔法学院："
 
-#: src/gui/textcommandeditor.cpp:233
+#: src/gui/textcommandeditor.cpp:192
 msgid "School level:"
 msgstr "学校层次："
 
-#: src/gui/textcommandeditor.cpp:238
+#: src/gui/textcommandeditor.cpp:195
 msgid "Save"
 msgstr "保存"
 
@@ -3883,33 +3883,33 @@ msgstr "添加物品失败。你不能覆盖窗口中的该类物品。"
 msgid "Name: %s"
 msgstr "姓名：%s"
 
-#: src/gui/updaterwindow.cpp:142
+#: src/gui/updaterwindow.cpp:143
 msgid "Updating..."
 msgstr "更新..."
 
-#: src/gui/updaterwindow.cpp:169
+#: src/gui/updaterwindow.cpp:170
 msgid "Connecting..."
 msgstr "连接中..."
 
-#: src/gui/updaterwindow.cpp:172
+#: src/gui/updaterwindow.cpp:173
 msgid "Play"
 msgstr "开始"
 
-#: src/gui/updaterwindow.cpp:623
+#: src/gui/updaterwindow.cpp:633
 msgid "##1  The update process is incomplete."
 msgstr "##1 更新过程不完整。"
 
 #. TRANSLATORS: Continues "you try again later.".
-#: src/gui/updaterwindow.cpp:625
+#: src/gui/updaterwindow.cpp:635
 msgid "##1  It is strongly recommended that"
 msgstr "##1 强烈建议"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/updaterwindow.cpp:627
+#: src/gui/updaterwindow.cpp:637
 msgid "##1  you try again later."
 msgstr ""
 
-#: src/gui/updaterwindow.cpp:803
+#: src/gui/updaterwindow.cpp:813
 msgid "Completed"
 msgstr "已完成"
 
@@ -4336,11 +4336,11 @@ msgstr "SET"
 msgid "Select World"
 msgstr "选择世界"
 
-#: src/gui/worldselectdialog.cpp:85
+#: src/gui/worldselectdialog.cpp:83
 msgid "Change Login"
 msgstr ""
 
-#: src/gui/worldselectdialog.cpp:86
+#: src/gui/worldselectdialog.cpp:84
 msgid "Choose World"
 msgstr ""
 
@@ -4937,16 +4937,16 @@ msgstr ""
 msgid "All whispers unignore failed."
 msgstr ""
 
-#: src/net/ea/gamehandler.cpp:92
+#: src/net/ea/gamehandler.cpp:91
 #, c-format
 msgid "Online users: %d"
 msgstr "在线用户数：%d"
 
-#: src/net/ea/gamehandler.cpp:104
+#: src/net/ea/gamehandler.cpp:103
 msgid "Game"
 msgstr "游戏"
 
-#: src/net/ea/gamehandler.cpp:104
+#: src/net/ea/gamehandler.cpp:103
 msgid "Request to quit denied!"
 msgstr ""
 
