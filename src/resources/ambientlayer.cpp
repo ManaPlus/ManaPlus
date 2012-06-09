@@ -24,6 +24,7 @@
 #include "graphics.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
 #include "debug.h"
@@ -38,7 +39,7 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
     if (!mImage)
         return;
 
-    if (keepRatio && !mImage->useOpenGL()
+    if (keepRatio && !ImageHelper::useOpenGL()
         /*&& defaultScreenWidth != 0
         && defaultScreenHeight != 0*/
         && mainGraphics->mWidth != defaultScreenWidth
@@ -105,7 +106,7 @@ void AmbientLayer::draw(Graphics *graphics, int x, int y)
     if (!mImage)
         return;
 
-    if (!mImage->useOpenGL() || !mKeepRatio)
+    if (!ImageHelper::useOpenGL() || !mKeepRatio)
     {
         graphics->drawImagePattern(mImage, static_cast<int>(-mPosX),
                 static_cast<int>(-mPosY), x + static_cast<int>(mPosX),

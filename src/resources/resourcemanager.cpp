@@ -29,6 +29,7 @@
 
 #include "resources/dye.h"
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "resources/imageset.h"
 #include "resources/music.h"
 #include "resources/soundeffect.h"
@@ -456,8 +457,8 @@ struct DyedImageLoader
             delete d;
             return nullptr;
         }
-        Resource *res = d ? Image::load(rw, *d)
-                          : Image::load(rw);
+        Resource *res = d ? ImageHelper::load(rw, *d)
+                          : ImageHelper::load(rw);
         delete d;
         return res;
     }

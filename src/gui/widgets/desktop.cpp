@@ -32,6 +32,7 @@
 #include "gui/widgets/label.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 #include "resources/wallpaper.h"
 
@@ -99,7 +100,7 @@ void Desktop::draw(gcn::Graphics *graphics)
 
     if (mWallpaper)
     {
-        if (!mWallpaper->useOpenGL())
+        if (!ImageHelper::useOpenGL())
         {
             g->drawImage(mWallpaper,
                 (getWidth() - mWallpaper->getWidth()) / 2,
@@ -135,7 +136,7 @@ void Desktop::setBestFittingWallpaper()
         if (mWallpaper)
             mWallpaper->decRef();
 
-        if (!nWallPaper->useOpenGL()
+        if (!ImageHelper::useOpenGL()
             && (nWallPaper->getWidth() != getWidth()
             || nWallPaper->getHeight() != getHeight()))
         {

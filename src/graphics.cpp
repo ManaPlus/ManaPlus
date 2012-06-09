@@ -30,6 +30,7 @@
 #include "logger.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "utils/stringutils.h"
 
 #include <guichan/sdl/sdlpixel.hpp>
@@ -178,23 +179,24 @@ bool Graphics::setOpenGLMode()
     GLint texSize;
     bool rectTex = graphicsManager.supportExtension(
         "GL_ARB_texture_rectangle");
-    if (rectTex && Image::getInternalTextureType() == 4
+    if (rectTex && ImageHelper::getInternalTextureType() == 4
         && config.getBoolValue("rectangulartextures"))
     {
         logger->log1("using GL_ARB_texture_rectangle");
-        Image::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
+        ImageHelper::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
         glEnable(GL_TEXTURE_RECTANGLE_ARB);
         glGetIntegerv(GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB, &texSize);
-        Image::mTextureSize = texSize;
+        ImageHelper::mTextureSize = texSize;
         logger->log("OpenGL texture size: %d pixels (rectangle textures)",
-            Image::mTextureSize);
+            ImageHelper::mTextureSize);
     }
     else
     {
-        Image::mTextureType = GL_TEXTURE_2D;
+        ImageHelper::mTextureType = GL_TEXTURE_2D;
         glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
-        Image::mTextureSize = texSize;
-        logger->log("OpenGL texture size: %d pixels", Image::mTextureSize);
+        ImageHelper::mTextureSize = texSize;
+        logger->log("OpenGL texture size: %d pixels",
+            ImageHelper::mTextureSize);
     }
     return videoInfo();
 #else
@@ -282,7 +284,7 @@ bool Graphics::videoInfo()
     mDoubleBuffer = ((mTarget->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF);
     logger->log("Double buffer mode: %s", mDoubleBuffer ? "yes" : "no");
 
-    Image::dumpSurfaceFormat(mTarget);
+    ImageHelper::dumpSurfaceFormat(mTarget);
 
     const SDL_VideoInfo *vi = SDL_GetVideoInfo();
     if (!vi)

@@ -36,6 +36,7 @@
 #include "gui/viewport.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/gettext.h"
@@ -142,7 +143,7 @@ void Minimap::setMap(Map *map)
 
             SDL_UnlockSurface(surface);
 
-            mMapImage = Image::load(surface);
+            mMapImage = ImageHelper::load(surface);
             mMapImage->setAlpha(Client::getGuiAlpha());
             mCustomMapImage = true;
             SDL_FreeSurface(surface);

@@ -25,7 +25,7 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 
-#include "resources/image.h"
+#include "resources/imagehelper.h"
 
 #include "utils/paths.h"
 #include "utils/stringutils.h"
@@ -153,7 +153,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
         useOpenGL = config.getIntValue("opengl");
 
     // Setup image loading for the right image format
-    Image::setLoadAsOpenGL(useOpenGL);
+    ImageHelper::setLoadAsOpenGL(useOpenGL);
     GraphicsVertexes::setLoadAsOpenGL(useOpenGL);
 
     // Create the graphics context
@@ -210,7 +210,7 @@ void GraphicsManager::updateTextureFormat()
                     if (formats[f] == GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
                     {
                         delete []formats;
-                        Image::setInternalTextureType(
+                        ImageHelper::setInternalTextureType(
                             GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
                         logger->log1("using s3tc texture compression");
                         return;
@@ -218,19 +218,19 @@ void GraphicsManager::updateTextureFormat()
                     else if (formats[f] == GL_COMPRESSED_RGBA_FXT1_3DFX)
                     {
                         delete []formats;
-                        Image::setInternalTextureType(
+                        ImageHelper::setInternalTextureType(
                             GL_COMPRESSED_RGBA_FXT1_3DFX);
                         logger->log1("using fxt1 texture compression");
                         return;
                     }
                 }
-                Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
+                ImageHelper::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
                 logger->log1("using texture compression");
                 return;
             }
             else
             {
-                Image::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
+                ImageHelper::setInternalTextureType(GL_COMPRESSED_RGBA_ARB);
                 logger->log1("using texture compression");
                 return;
             }
@@ -240,12 +240,12 @@ void GraphicsManager::updateTextureFormat()
     // using default formats
     if (config.getBoolValue("newtextures"))
     {
-        Image::setInternalTextureType(GL_RGBA);
+        ImageHelper::setInternalTextureType(GL_RGBA);
         logger->log1("using RGBA texture format");
     }
     else
     {
-        Image::setInternalTextureType(4);
+        ImageHelper::setInternalTextureType(4);
         logger->log1("using 4 texture format");
     }
 #endif

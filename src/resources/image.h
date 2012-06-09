@@ -55,6 +55,7 @@ class Image : public Resource
 {
     friend class CompoundSprite;
     friend class Graphics;
+    friend class ImageHelper;
 #ifdef USE_OPENGL
     friend class OpenGLGraphics;
     friend class OpenGL1Graphics;
@@ -65,36 +66,6 @@ class Image : public Resource
          * Destructor.
          */
         virtual ~Image();
-
-        /**
-         * Loads an image from an SDL_RWops structure.
-         *
-         * @param rw         The SDL_RWops to load the image from.
-         *
-         * @return <code>NULL</code> if an error occurred, a valid pointer
-         *         otherwise.
-         */
-        static Resource *load(SDL_RWops *rw);
-
-        /**
-         * Loads an image from an SDL_RWops structure and recolors it.
-         *
-         * @param rw         The SDL_RWops to load the image from.
-         * @param dye        The dye used to recolor the image.
-         *
-         * @return <code>NULL</code> if an error occurred, a valid pointer
-         *         otherwise.
-         */
-        static Resource *load(SDL_RWops *rw, Dye const &dye);
-
-        /**
-         * Loads an image from an SDL surface.
-         */
-        static Image *load(SDL_Surface *);
-
-        static SDL_Surface* convertTo32Bit(SDL_Surface* tmpImage);
-
-        static Image *createTextSurface(SDL_Surface *tmpImage, float alpha);
 
         /**
          * Frees the resources created by SDL.
@@ -118,12 +89,6 @@ class Image : public Resource
          */
         inline int getHeight() const     // was virtual
         { return mBounds.h; }
-
-        /**
-         * Tells if the image was loaded using OpenGL or SDL
-         * @return true if OpenGL, false if SDL.
-         */
-        int useOpenGL() const;
 
         /**
          * Tells if the image has got an alpha channel
@@ -164,72 +129,23 @@ class Image : public Resource
         Image* SDLgetScaledImage(int width, int height);
 
         /**
-         * Merges two image SDL_Surfaces together. This is for SDL use only, as
-         * reducing the number of surfaces that SDL has to render can cut down
-         * on the number of blit operations necessary, which in turn can help
-         * improve overall framerates. Don't use unless you are using it to
-         * reduce the number of overall layers that need to be drawn through SDL.
-         */
-        Image *SDLmerge(Image *image, int x, int y);
-
-        /**
          * Get the alpha Channel of a SDL surface.
          */
         Uint8 *SDLgetAlphaChannel() const
         { return mAlphaChannel; }
 
-        SDL_Surface* SDLDuplicateSurface(SDL_Surface* tmpImage);
-
         void SDLCleanCache();
 
         void SDLTerminateAlphaCache();
 
-        static void SDLSetEnableAlphaCache(bool n)
-        { mEnableAlphaCache = n; }
-
-        static bool SDLGetEnableAlphaCache()
-        { return mEnableAlphaCache; }
-
-        static void setEnableAlpha(bool n)
-        { mEnableAlpha = n; }
-
 #ifdef USE_OPENGL
-
         // OpenGL only public functions
-
-        /**
-         * Sets the target image format. Use <code>false</code> for SDL and
-         * <code>true</code> for OpenGL.
-         */
-        static void setLoadAsOpenGL(int useOpenGL);
-
-        static int getLoadAsOpenGL()
-        { return mUseOpenGL; }
 
         int getTextureWidth() const
         { return mTexWidth; }
 
         int getTextureHeight() const
         { return mTexHeight; }
-
-        static int getTextureType()
-        { return mTextureType; }
-
-        static int getInternalTextureType()
-        { return mInternalTextureType; }
-
-        static void setInternalTextureType(int n)
-        { mInternalTextureType = n; }
-
-        static void setBlur(bool n)
-        { mBlur = n; }
-
-        static int mTextureType;
-
-        static int mInternalTextureType;
-
-        static void dumpSurfaceFormat(SDL_Surface *image);
-
 #endif
 
         bool isHasAlphaChannel() const
@@ -267,9 +183,6 @@ class Image : public Resource
         Image(SDL_Surface *image, bool hasAlphaChannel = false,
               Uint8 *alphaChannel = nullptr);
 
-        /** SDL_Surface to SDL_Surface Image loader */
-        static Image *_SDLload(SDL_Surface *tmpImage);
-
         SDL_Surface *getByAlpha(float alpha);
 
         SDL_Surface *mSDLSurface;
@@ -283,9 +196,6 @@ class Image : public Resource
         bool mIsAlphaVisible;
         bool mIsAlphaCalculated;
 
-        static bool mEnableAlphaCache;
-        static bool mEnableAlpha;
-
         // -----------------------
         // OpenGL protected members
         // -----------------------
@@ -296,19 +206,8 @@ class Image : public Resource
         Image(GLuint glimage, int width, int height,
               int texWidth, int texHeight);
 
-        /**
-         * Returns the first power of two equal or bigger than the input.
-         */
-        static int powerOfTwo(int input);
-
-        static Image *_GLload(SDL_Surface *tmpImage);
-
         GLuint mGLImage;
         int mTexWidth, mTexHeight;
-
-        static int mUseOpenGL;
-        static int mTextureSize;
-        static bool mBlur;
 #endif
 };
 

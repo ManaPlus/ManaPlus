@@ -41,7 +41,7 @@
 #include "gui/widgets/tab.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "resources/image.h"
+#include "resources/imagehelper.h"
 
 #include "net/packetcounters.h"
 
@@ -158,7 +158,7 @@ MapDebugTab::MapDebugTab() :
     mUpdateTime = 0;
 
 #ifdef USE_OPENGL
-    switch (Image::getLoadAsOpenGL())
+    switch (ImageHelper::getLoadAsOpenGL())
     {
         case 0:
             mFPSText = _("%d FPS (Software)");

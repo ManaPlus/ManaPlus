@@ -33,6 +33,7 @@
 #include "map.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 
 #include "utils/dtor.h"
 
@@ -395,12 +396,12 @@ void CompoundSprite::redraw() const
     delete mImage;
     delete mAlphaImage;
 
-    mImage = Image::load(surface);
+    mImage = ImageHelper::load(surface);
     SDL_FreeSurface(surface);
 
-    if (Image::mEnableAlpha)
+    if (ImageHelper::mEnableAlpha)
     {
-        mAlphaImage = Image::load(surfaceA);
+        mAlphaImage = ImageHelper::load(surfaceA);
         SDL_FreeSurface(surfaceA);
     }
     else
@@ -414,7 +415,7 @@ void CompoundSprite::setAlpha(float alpha)
     if (alpha != mAlpha)
     {
 #ifdef USE_OPENGL
-        if (mEnableAlphaFix && Image::mUseOpenGL == 0 && size() > 3)
+        if (mEnableAlphaFix && ImageHelper::mUseOpenGL == 0 && size() > 3)
 #else
         if (mEnableAlphaFix && size() > 3)
 #endif
@@ -433,7 +434,7 @@ void CompoundSprite::setAlpha(float alpha)
 void CompoundSprite::updateImages() const
 {
 #ifdef USE_OPENGL
-    if (Image::mUseOpenGL)
+    if (ImageHelper::mUseOpenGL)
         return;
 #endif
 

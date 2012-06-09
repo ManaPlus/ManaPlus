@@ -30,6 +30,7 @@
 #include "logger.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 
 #include "utils/stringutils.h"
 
@@ -80,7 +81,7 @@ static inline void drawQuad(const Image *image,
                             int srcX, int srcY, int dstX, int dstY,
                             int width, int height)
 {
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         const float texX1 = static_cast<float>(srcX) /
@@ -142,7 +143,7 @@ static inline void drawRescaledQuad(Image *image,
                                     int width, int height,
                                     int desiredWidth, int desiredHeight)
 {
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         const float texX1 = static_cast<float>(srcX) /
@@ -213,7 +214,7 @@ bool OpenGLGraphics::drawImage(const Image *image, int srcX, int srcY,
     if (!useColor)
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(Image::mTextureType, image->mGLImage);
+    bindTexture(ImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -270,7 +271,7 @@ bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
     if (!useColor)
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(Image::mTextureType, image->mGLImage);
+    bindTexture(ImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -323,14 +324,14 @@ void OpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(Image::mTextureType, image->mGLImage);
+    bindTexture(ImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
     unsigned int vp = 0;
     const unsigned int vLimit = vertexBufSize * 4;
     // Draw a set of textured rectangles
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
@@ -457,7 +458,7 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(Image::mTextureType, image->mGLImage);
+    bindTexture(ImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -465,7 +466,7 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
     const unsigned int vLimit = vertexBufSize * 4;
 
     // Draw a set of textured rectangles
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         const float tw = static_cast<float>(image->getTextureWidth());
         const float th = static_cast<float>(image->getTextureHeight());
@@ -597,7 +598,7 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
     OpenGLGraphicsVertexes *ogl = vert->getOGL();
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
-    bindTexture(Image::mTextureType, image->mGLImage);
+    bindTexture(ImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
     std::vector<GLint*> *intVertPool = ogl->getIntVertPool();
@@ -608,7 +609,7 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
     std::vector<int>::const_iterator ivp_end = vp->end();
 
     // Draw a set of textured rectangles
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         std::vector<GLfloat*> *floatTexPool = ogl->getFloatTexPool();
         std::vector<GLfloat*>::const_iterator ft;
@@ -677,7 +678,7 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
     ogl->init();
 
     // Draw a set of textured rectangles
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
@@ -810,7 +811,7 @@ void OpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
     unsigned int vp = ogl->ptr;
 
     // Draw a set of textured rectangles
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         float texX1 = static_cast<float>(srcX) / tw;
         float texY1 = static_cast<float>(srcY) / th;
@@ -911,10 +912,10 @@ void OpenGLGraphics::drawTile(ImageVertexes *vert)
     OpenGLGraphicsVertexes *ogl = vert->ogl;
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
-    bindTexture(Image::mTextureType, image->mGLImage);
+    bindTexture(ImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
-    if (image->mTextureType == GL_TEXTURE_2D)
+    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
         drawQuadArrayfi(ogl->mIntVertArray, ogl->mFloatTexArray, ogl->ptr);
     else
         drawQuadArrayii(ogl->mIntVertArray, ogl->mIntTexArray, ogl->ptr);
@@ -1188,7 +1189,7 @@ void OpenGLGraphics::setTexturingAndBlending(bool enable)
     {
         if (!mTexture)
         {
-            glEnable(Image::mTextureType);
+            glEnable(ImageHelper::mTextureType);
             mTexture = true;
         }
 
@@ -1214,7 +1215,7 @@ void OpenGLGraphics::setTexturingAndBlending(bool enable)
 
         if (mTexture)
         {
-            glDisable(Image::mTextureType);
+            glDisable(ImageHelper::mTextureType);
             mTexture = false;
         }
     }

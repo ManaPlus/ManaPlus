@@ -85,6 +85,7 @@
 #include "resources/colordb.h"
 #include "resources/emotedb.h"
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "resources/itemdb.h"
 #include "resources/mapdb.h"
 #include "resources/monsterdb.h"
@@ -397,14 +398,14 @@ void Client::gameInit()
     }
 
 #if defined USE_OPENGL
-    Image::setBlur(config.getBoolValue("blur"));
-    Image::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
+    ImageHelper::setBlur(config.getBoolValue("blur"));
+    ImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
         && !config.getIntValue("opengl"));
-    Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
         || config.getIntValue("opengl"));
 #else
-    Image::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
-    Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+    ImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
 #endif
 
     resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
@@ -1504,7 +1505,7 @@ void Client::optionChanged(const std::string &name)
     else if (name == "guialpha")
     {
         setGuiAlpha(config.getFloatValue("guialpha"));
-        Image::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+        ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
     }
     else if (name == "gamma")
     {

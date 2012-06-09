@@ -30,6 +30,7 @@
 #include "utils/paths.h"
 
 #include "resources/image.h"
+#include "resources/imagehelper.h"
 #include "resources/resourcemanager.h"
 
 #include "utils/stringutils.h"
@@ -84,9 +85,7 @@ class SDLTextChunk
                 return;
             }
 
-            img = Image::createTextSurface(surface, alpha);
-//            img = Image::load(surface);
-
+            img = ImageHelper::createTextSurface(surface, alpha);
             SDL_FreeSurface(surface);
         }
 
