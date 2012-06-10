@@ -86,6 +86,8 @@
 #include "resources/emotedb.h"
 #include "resources/image.h"
 #include "resources/imagehelper.h"
+#include "resources/openglimagehelper.h"
+#include "resources/sdlimagehelper.h"
 #include "resources/itemdb.h"
 #include "resources/mapdb.h"
 #include "resources/monsterdb.h"
@@ -397,16 +399,6 @@ void Client::gameInit()
                                 "Exiting.", mLocalDataDir.c_str()));
     }
 
-#if defined USE_OPENGL
-    ImageHelper::setBlur(config.getBoolValue("blur"));
-    ImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
-        && !config.getIntValue("opengl"));
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
-        || config.getIntValue("opengl"));
-#else
-    ImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
-    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
-#endif
 
     resman->addToSearchPath(PKG_DATADIR "data/perserver/default", false);
 
@@ -518,6 +510,18 @@ void Client::gameInit()
         config.setValue("videodetected", true);
     }
 #endif
+
+#if defined USE_OPENGL
+    OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
+    SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
+        && !config.getIntValue("opengl"));
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f
+        || config.getIntValue("opengl"));
+#else
+    SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache"));
+    ImageHelper::setEnableAlpha(config.getFloatValue("guialpha") != 1.0f);
+#endif
+
     graphicsManager.initGraphics(mOptions.noOpenGL);
 
     runCounters = config.getBoolValue("packetcounters");
@@ -715,6 +719,9 @@ void Client::gameClear()
 
     delete mainGraphics;
     mainGraphics = nullptr;
+
+    delete imageHelper;
+    imageHelper = nullptr;
 
     if (logger)
         logger->log1("Quitting4");

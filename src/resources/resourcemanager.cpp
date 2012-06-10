@@ -457,8 +457,8 @@ struct DyedImageLoader
             delete d;
             return nullptr;
         }
-        Resource *res = d ? ImageHelper::load(rw, *d)
-                          : ImageHelper::load(rw);
+        Resource *res = d ? imageHelper->load(rw, *d)
+                          : imageHelper->load(rw);
         delete d;
         return res;
     }

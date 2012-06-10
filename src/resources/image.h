@@ -56,6 +56,8 @@ class Image : public Resource
     friend class CompoundSprite;
     friend class Graphics;
     friend class ImageHelper;
+    friend class OpenGLImageHelper;
+    friend class SDLImageHelper;
 #ifdef USE_OPENGL
     friend class OpenGLGraphics;
     friend class OpenGL1Graphics;

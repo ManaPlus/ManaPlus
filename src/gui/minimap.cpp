@@ -143,7 +143,7 @@ void Minimap::setMap(Map *map)
 
             SDL_UnlockSurface(surface);
 
-            mMapImage = ImageHelper::load(surface);
+            mMapImage = imageHelper->load(surface);
             mMapImage->setAlpha(Client::getGuiAlpha());
             mCustomMapImage = true;
             SDL_FreeSurface(surface);

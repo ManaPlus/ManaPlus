@@ -20,38 +20,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IMAGEHELPER_H
-#define IMAGEHELPER_H
+#ifndef SDLIMAGEHELPER_H
+#define SDLIMAGEHELPER_H
 
 #include "localconsts.h"
 
-#include "resources/resource.h"
+#include "resources/imagehelper.h"
 
 #include <SDL.h>
 
 class Dye;
 class Image;
 
-struct Position;
-
 /**
  * Defines a class for loading and storing images.
  */
-class ImageHelper
+class SDLImageHelper : public ImageHelper
 {
-    public:
-        virtual ~ImageHelper()
-        { }
+    friend class Image;
 
-        /**
-         * Loads an image from an SDL_RWops structure.
-         *
-         * @param rw         The SDL_RWops to load the image from.
-         *
-         * @return <code>NULL</code> if an error occurred, a valid pointer
-         *         otherwise.
-         */
-        Resource *load(SDL_RWops *rw);
+    public:
+        virtual ~SDLImageHelper()
+        { }
 
         /**
          * Loads an image from an SDL_RWops structure and recolors it.
@@ -62,28 +52,34 @@ class ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        virtual Resource *load(SDL_RWops *rw, Dye const &dye) = 0;
+        Resource *load(SDL_RWops *rw, Dye const &dye);
 
         /**
          * Loads an image from an SDL surface.
          */
-        virtual Image *load(SDL_Surface *) = 0;
+        Image *load(SDL_Surface *);
 
-        virtual Image *createTextSurface(SDL_Surface *tmpImage,
-                                         float alpha) = 0;
+        Image *createTextSurface(SDL_Surface *tmpImage, float alpha);
 
-        virtual int useOpenGL() = 0;
+        static void SDLSetEnableAlphaCache(bool n)
+        { mEnableAlphaCache = n; }
 
-        SDL_Surface *convertTo32Bit(SDL_Surface* tmpImage);
+        static bool SDLGetEnableAlphaCache()
+        { return mEnableAlphaCache; }
 
-        void dumpSurfaceFormat(SDL_Surface *image);
+         /**
+         * Tells if the image was loaded using OpenGL or SDL
+         * @return true if OpenGL, false if SDL.
+         */
+        int useOpenGL();
 
-        static void setEnableAlpha(bool n)
-        { mEnableAlpha = n; }
+        static SDL_Surface* SDLDuplicateSurface(SDL_Surface* tmpImage);
 
     protected:
-        static bool mEnableAlpha;
+        /** SDL_Surface to SDL_Surface Image loader */
+        Image *_SDLload(SDL_Surface *tmpImage);
+
+        static bool mEnableAlphaCache;
 };
 
-extern ImageHelper *imageHelper;
 #endif

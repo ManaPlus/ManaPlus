@@ -31,6 +31,7 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
+#include "resources/openglimagehelper.h"
 
 #include <SDL.h>
 
@@ -67,7 +68,7 @@ static inline void drawQuad(const Image *image,
                             int srcX, int srcY, int dstX, int dstY,
                             int width, int height)
 {
-    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         float texX1 = static_cast<float>(srcX)
@@ -105,7 +106,7 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
                                     int dstX, int dstY, int width, int height,
                                     int desiredWidth, int desiredHeight)
 {
-    if (ImageHelper::mTextureType == GL_TEXTURE_2D)
+    if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         // Find OpenGL normalized texture coordinates.
         float texX1 = static_cast<float>(srcX)
@@ -153,7 +154,7 @@ bool OpenGL1Graphics::drawImage(const Image *image, int srcX, int srcY,
     if (!useColor)
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(ImageHelper::mTextureType, image->mGLImage);
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -213,7 +214,7 @@ bool OpenGL1Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     if (!useColor)
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(ImageHelper::mTextureType, image->mGLImage);
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -267,7 +268,7 @@ void OpenGL1Graphics::drawImagePattern(const Image *image, int x, int y,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(ImageHelper::mTextureType, image->mGLImage);
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -313,7 +314,7 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
-    bindTexture(ImageHelper::mTextureType, image->mGLImage);
+    bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
 
@@ -629,7 +630,7 @@ void OpenGL1Graphics::setTexturingAndBlending(bool enable)
     {
         if (!mTexture)
         {
-            glEnable(ImageHelper::mTextureType);
+            glEnable(OpenGLImageHelper::mTextureType);
             mTexture = true;
         }
 
@@ -655,7 +656,7 @@ void OpenGL1Graphics::setTexturingAndBlending(bool enable)
 
         if (mTexture)
         {
-            glDisable(ImageHelper::mTextureType);
+            glDisable(OpenGLImageHelper::mTextureType);
             mTexture = false;
         }
     }

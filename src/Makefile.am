@@ -443,10 +443,14 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      resources/music.h \
 	      resources/npcdb.cpp \
 	      resources/npcdb.h \
+	      resources/openglimagehelper.cpp \
+	      resources/openglimagehelper.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcemanager.cpp \
 	      resources/resourcemanager.h \
+	      resources/sdlimagehelper.cpp \
+	      resources/sdlimagehelper.h \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/spritedef.cpp \

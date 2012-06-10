@@ -100,7 +100,7 @@ void Desktop::draw(gcn::Graphics *graphics)
 
     if (mWallpaper)
     {
-        if (!ImageHelper::useOpenGL())
+        if (!imageHelper->useOpenGL())
         {
             g->drawImage(mWallpaper,
                 (getWidth() - mWallpaper->getWidth()) / 2,
@@ -136,7 +136,7 @@ void Desktop::setBestFittingWallpaper()
         if (mWallpaper)
             mWallpaper->decRef();
 
-        if (!ImageHelper::useOpenGL()
+        if (!imageHelper->useOpenGL()
             && (nWallPaper->getWidth() != getWidth()
             || nWallPaper->getHeight() != getHeight()))
         {

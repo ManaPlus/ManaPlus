@@ -158,7 +158,7 @@ MapDebugTab::MapDebugTab() :
     mUpdateTime = 0;
 
 #ifdef USE_OPENGL
-    switch (ImageHelper::getLoadAsOpenGL())
+    switch (imageHelper->useOpenGL())
     {
         case 0:
             mFPSText = _("%d FPS (Software)");

@@ -39,7 +39,7 @@ AmbientLayer::AmbientLayer(Image *img, float parallax,
     if (!mImage)
         return;
 
-    if (keepRatio && !ImageHelper::useOpenGL()
+    if (keepRatio && !imageHelper->useOpenGL()
         /*&& defaultScreenWidth != 0
         && defaultScreenHeight != 0*/
         && mainGraphics->mWidth != defaultScreenWidth
@@ -106,7 +106,7 @@ void AmbientLayer::draw(Graphics *graphics, int x, int y)
     if (!mImage)
         return;
 
-    if (!ImageHelper::useOpenGL() || !mKeepRatio)
+    if (!imageHelper->useOpenGL() || !mKeepRatio)
     {
         graphics->drawImagePattern(mImage, static_cast<int>(-mPosX),
                 static_cast<int>(-mPosY), x + static_cast<int>(mPosX),

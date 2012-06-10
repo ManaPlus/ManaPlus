@@ -85,7 +85,7 @@ class SDLTextChunk
                 return;
             }
 
-            img = ImageHelper::createTextSurface(surface, alpha);
+            img = imageHelper->createTextSurface(surface, alpha);
             SDL_FreeSurface(surface);
         }
 

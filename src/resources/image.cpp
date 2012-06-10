@@ -37,6 +37,8 @@
 #include "utils/stringutils.h"
 
 #include "resources/imagehelper.h"
+#include "resources/openglimagehelper.h"
+#include "resources/sdlimagehelper.h"
 #include "resources/subimage.h"
 
 #include <SDL_image.h>
@@ -56,7 +58,7 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel0, Uint8 *alphaChannel):
     mGLImage = 0;
 #endif
 
-    mUseAlphaCache = ImageHelper::mEnableAlphaCache;
+    mUseAlphaCache = SDLImageHelper::mEnableAlphaCache;
 
     mBounds.x = 0;
     mBounds.y = 0;
@@ -165,7 +167,7 @@ bool Image::hasAlphaChannel()
         return mHasAlphaChannel;
 
 #ifdef USE_OPENGL
-    if (ImageHelper::mUseOpenGL)
+    if (OpenGLImageHelper::mUseOpenGL)
         return true;
 #endif
 
@@ -232,7 +234,7 @@ void Image::setAlpha(float alpha)
             }
             else
             {
-                mSDLSurface = ImageHelper::SDLDuplicateSurface(mSDLSurface);
+                mSDLSurface = SDLImageHelper::SDLDuplicateSurface(mSDLSurface);
             }
     //        logger->log("miss");
         }
@@ -310,7 +312,7 @@ Image* Image::SDLgetScaledImage(int width, int height)
         // and about freeing the given SDL_surface*.
         if (scaledSurface)
         {
-            scaledImage = ImageHelper::load(scaledSurface);
+            scaledImage = imageHelper->load(scaledSurface);
             SDL_FreeSurface(scaledSurface);
         }
     }
@@ -321,7 +323,7 @@ Image *Image::getSubImage(int x, int y, int width, int height)
 {
     // Create a new clipped sub-image
 #ifdef USE_OPENGL
-    if (ImageHelper::mUseOpenGL)
+    if (OpenGLImageHelper::mUseOpenGL)
     {
         return new SubImage(this, mGLImage, x, y, width, height,
                             mTexWidth, mTexHeight);
