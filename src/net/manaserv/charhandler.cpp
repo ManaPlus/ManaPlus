@@ -41,6 +41,8 @@
 #include "net/manaserv/attributes.h"
 
 #include "resources/colordb.h"
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include "utils/dtor.h"
 #include "utils/gettext.h"
@@ -376,8 +378,10 @@ void CharHandler::updateCharacters()
         LocalPlayer *player = character->dummy = new LocalPlayer;
         player->setName(info.name);
         player->setGender(info.gender);
+
+        const ItemInfo &item = ItemDB::get(-info.hairStyle);
         player->setSprite(SPRITE_HAIR, info.hairStyle * -1,
-                          ColorDB::getHairColor(info.hairColor));
+            item.getDyeColorsString(info.hairColor));
         character->data.mAttributes[LEVEL] = info.level;
         character->data.mAttributes[CHAR_POINTS] = info.characterPoints;
         character->data.mAttributes[CORR_POINTS] = info.correctionPoints;

@@ -39,6 +39,8 @@
 #include "net/manaserv/protocol.h"
 
 #include "resources/colordb.h"
+#include "resources/itemdb.h"
+#include "resources/iteminfo.h"
 
 #include "utils/gettext.h"
 
@@ -185,7 +187,8 @@ void BeingHandler::handleBeingEnterMessage(Net::MessageIn &msg)
                 being->setName(name);
             }
             int hs = msg.readInt8(), hc = msg.readInt8();
-            being->setSprite(SPRITE_HAIR, hs * -1, ColorDB::getHairColor(hc));
+            const ItemInfo &item = ItemDB::get(-hs);
+            being->setSprite(SPRITE_HAIR, hs * -1, item.getDyeColorsString(hc));
             being->setGender(msg.readInt8() == GENDER_MALE ?
                              GENDER_MALE : GENDER_FEMALE);
             handleLooks(being, msg);
@@ -351,8 +354,9 @@ void BeingHandler::handleBeingLooksChangeMessage(Net::MessageIn &msg)
     {
         int style = msg.readInt16();
         int color = msg.readInt16();
+        const ItemInfo &item = ItemDB::get(-style);
         being->setSprite(SPRITE_HAIR, style * -1,
-            ColorDB::getHairColor(color));
+            item.getDyeColorsString(color));
     }
 }
 
