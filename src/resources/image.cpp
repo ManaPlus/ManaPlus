@@ -241,7 +241,7 @@ void Image::setAlpha(float alpha)
 
         mAlpha = alpha;
 
-        if (!hasAlphaChannel())
+        if (!mHasAlphaChannel)
         {
             // Set the alpha value this image is drawn at
             SDL_SetAlpha(mSDLSurface, SDL_SRCALPHA,

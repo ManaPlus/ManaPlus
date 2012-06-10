@@ -73,7 +73,7 @@ Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
         for (Uint32 *p_end = pixels + surf->w * surf->h;
              pixels != p_end; ++pixels)
         {
-            Uint8 *p = (Uint8 *)pixels;
+            Uint8 *p = reinterpret_cast<Uint8 *>(pixels);
             const int alpha = *p & 255;
             if (!alpha)
                 continue;

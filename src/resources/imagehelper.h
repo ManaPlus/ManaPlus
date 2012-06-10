@@ -39,6 +39,9 @@ struct Position;
  */
 class ImageHelper
 {
+    friend class CompoundSprite;
+    friend class Image;
+
     public:
         virtual ~ImageHelper()
         { }

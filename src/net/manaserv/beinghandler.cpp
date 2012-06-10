@@ -188,9 +188,10 @@ void BeingHandler::handleBeingEnterMessage(Net::MessageIn &msg)
             }
             int hs = msg.readInt8(), hc = msg.readInt8();
             const ItemInfo &item = ItemDB::get(-hs);
-            being->setSprite(SPRITE_HAIR, hs * -1, item.getDyeColorsString(hc));
+            being->setSprite(SPRITE_HAIR, hs * -1,
+                item.getDyeColorsString(hc));
             being->setGender(msg.readInt8() == GENDER_MALE ?
-                             GENDER_MALE : GENDER_FEMALE);
+                 GENDER_MALE : GENDER_FEMALE);
             handleLooks(being, msg);
         } break;
 
