@@ -431,8 +431,11 @@ void ActorSpriteManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
         Being *being = dynamic_cast<Being*>(*it);
 
-        if (being->getInfo() && !being->getInfo()->isTargetSelection())
+        if (being && being->getInfo()
+            && !being->getInfo()->isTargetSelection())
+        {
             continue;
+        }
 
         ActorSprite *actor = *it;
 
