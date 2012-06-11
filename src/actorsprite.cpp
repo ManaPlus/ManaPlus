@@ -322,9 +322,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
 {
     clear();
 
-    SpriteRefs it, it_end;
-
-    for (it = display.sprites.begin(), it_end = display.sprites.end();
+    for (SpriteRefs it = display.sprites.begin(),
+         it_end = display.sprites.end();
          it != it_end; ++it)
     {
         if (!*it)
