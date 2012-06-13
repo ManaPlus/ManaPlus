@@ -31,6 +31,14 @@
 
 #define KeyFunctionSize 3
 
+// hack to avoid conflicts with windows headers.
+#ifdef INPUT_KEYBOARD
+#undef INPUT_KEYBOARD
+#endif
+#ifdef INPUT_MOUSE
+#undef INPUT_MOUSE
+#endif
+
 struct KeyData;
 
 class Setup_Input;

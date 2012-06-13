@@ -3,7 +3,7 @@ SET(CMAKE_SYSTEM_NAME Windows)
 
 # toolchain prefix, can be overridden by -DTOOLCHAIN=...
 # IF (NOT TOOLCHAIN)
-SET(TOOLCHAIN "i586-mingw32msvc-")
+SET(TOOLCHAIN "i686-w64-mingw32-")
 # ENDIF()
 
 # which compilers to use for C and C++
@@ -24,7 +24,7 @@ SET(SDL_INCLUDE_DIR ../mana_win/libs/include/SDL)
 SET(ENABLE_MANASERV OFF)
 
 # here is the target environment located
-SET(CMAKE_FIND_ROOT_PATH  /usr/i586-mingw32msvc /../mana_win/libs )
+SET(CMAKE_FIND_ROOT_PATH  /usr/i686-w64-mingw32 /../mana_win/libs )
 
 # adjust the default behaviour of the FIND_XXX() commands:
 # search headers and libraries in the target environment, search

@@ -252,6 +252,7 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\SDL_ttf.dll"
   File "${DLLDIR}\exchndl.dll"
   File "${DLLDIR}\libcurl-4.dll"
+  File "${DLLDIR}\libgcc_s_sjlj-1.dll"
   File "${DLLDIR}\libiconv-2.dll"
   File "${DLLDIR}\libintl-8.dll"
   File "${DLLDIR}\libjpeg-8.dll"
