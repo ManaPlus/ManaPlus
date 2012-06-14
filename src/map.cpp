@@ -583,10 +583,7 @@ void Map::drawAmbientLayers(Graphics *graphics, LayerType type,
             layers = &mBackgrounds;
             break;
         default:
-            // New type of ambient layers added here without adding it
-            // to Map::drawAmbientLayers.
-            assert(false);
-            break;
+            return;
     }
 
     // Draw overlays

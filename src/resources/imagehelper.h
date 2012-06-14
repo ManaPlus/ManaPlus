@@ -56,30 +56,29 @@ class ImageHelper
          */
         Resource *load(SDL_RWops *rw);
 
-        /**
-         * Loads an image from an SDL_RWops structure and recolors it.
-         *
-         * @param rw         The SDL_RWops to load the image from.
-         * @param dye        The dye used to recolor the image.
-         *
-         * @return <code>NULL</code> if an error occurred, a valid pointer
-         *         otherwise.
-         */
-        virtual Resource *load(SDL_RWops *rw, Dye const &dye)
-        { }
+#ifdef __GNUC__
+        virtual Resource *load(SDL_RWops *rw, Dye const &dye) = 0;
 
-        /**
-         * Loads an image from an SDL surface.
-         */
+        virtual Image *load(SDL_Surface *) = 0;
+
+        virtual Image *createTextSurface(SDL_Surface *tmpImage,
+                                         float alpha) = 0;
+
+        virtual int useOpenGL() = 0;
+#else
+        virtual Resource *load(SDL_RWops *rw, Dye const &dye)
+        { return nullptr; }
+
         virtual Image *load(SDL_Surface *)
-        { }
+        { return nullptr; }
 
         virtual Image *createTextSurface(SDL_Surface *tmpImage,
                                          float alpha)
-        { }
+        { return nullptr; }
 
         virtual int useOpenGL()
-        { }
+        { return 0; }
+#endif
 
         SDL_Surface *convertTo32Bit(SDL_Surface* tmpImage);
 
