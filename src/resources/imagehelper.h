@@ -65,17 +65,21 @@ class ImageHelper
          * @return <code>NULL</code> if an error occurred, a valid pointer
          *         otherwise.
          */
-        virtual Resource *load(SDL_RWops *rw, Dye const &dye) = 0;
+        virtual Resource *load(SDL_RWops *rw, Dye const &dye)
+        { }
 
         /**
          * Loads an image from an SDL surface.
          */
-        virtual Image *load(SDL_Surface *) = 0;
+        virtual Image *load(SDL_Surface *)
+        { }
 
         virtual Image *createTextSurface(SDL_Surface *tmpImage,
-                                         float alpha) = 0;
+                                         float alpha)
+        { }
 
-        virtual int useOpenGL() = 0;
+        virtual int useOpenGL()
+        { }
 
         SDL_Surface *convertTo32Bit(SDL_Surface* tmpImage);
 
