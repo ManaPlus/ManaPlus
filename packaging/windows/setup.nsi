@@ -250,11 +250,14 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\exchndl.dll"
   File "${DLLDIR}\libcurl-4.dll"
   File "${DLLDIR}\libgcc_s_sjlj-1.dll"
+  File "${DLLDIR}\libfreetype-6.dll"
   File "${DLLDIR}\libiconv-2.dll"
   File "${DLLDIR}\libintl-8.dll"
   File "${DLLDIR}\libjpeg-8.dll"
   File "${DLLDIR}\libogg-0.dll"
   File "${DLLDIR}\libpng15-15.dll"
+  File "${DLLDIR}\libSDL_gfx-13.dll"
+  File "${DLLDIR}\libstdc++-6.dll"
   File "${DLLDIR}\libvorbis-0.dll"
   File "${DLLDIR}\libvorbisfile-3.dll"
   File "${DLLDIR}\libxml2-2.dll"
@@ -343,9 +346,19 @@ SectionEnd
 Section /o "Debugger" SecDebug
   SetOutPath "$INSTDIR"
   File "${DLLDIR}\gdb.exe"
+  File "${EXEDIR}\manaplusd.exe"
   ${If} ${SectionIsSelected} ${SecShortcuts}
-    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe"
-    CreateShortCut "$DESKTOP\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplus.exe"' "$INSTDIR\manaplus.exe"
+    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplusd.exe"' "$INSTDIR\manaplusd.exe"
+    CreateShortCut "$DESKTOP\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplusd.exe"' "$INSTDIR\manaplusd.exe"
+  ${EndIf}
+SectionEnd
+
+Section /o "Profiler" SecProfiler
+  SetOutPath "$INSTDIR"
+  File "${EXEDIR}\manaplusp.exe"
+  ${If} ${SectionIsSelected} ${SecShortcuts}
+    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (profiler).lnk" "$INSTDIR\manaplusp.exe"
+    CreateShortCut "$DESKTOP\ManaPlus (profiler).lnk" "$INSTDIR\manaplusp.exe"
   ${EndIf}
 SectionEnd
 
@@ -389,7 +402,8 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvol} "Create shortcuts for Evol Online."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvolMusic} "Background evol music. (If selected the evol music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to find stability problems."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to detect stability issues."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecProfiler} "Install profiler build to detect perfomance issues."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
@@ -425,9 +439,11 @@ Section Uninstall
   Delete "$SMPROGRAMS\Mana\Uninstall.lnk"
   Delete "$DESKTOP\ManaPlus.lnk"
   Delete "$DESKTOP\ManaPlus (debug).lnk"
+  Delete "$DESKTOP\ManaPlus (profiler).lnk"
   Delete "$DESKTOP\ManaPlus (tests).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus.lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (debug).lnk"
+  Delete "$SMPROGRAMS\Mana\ManaPlus (profiler).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (no opengl).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (safemode).lnk"
   Delete "$SMPROGRAMS\Mana\ManaPlus (tests).lnk"

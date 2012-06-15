@@ -16,15 +16,15 @@ SET(CMAKE_BUILD_TYPE None)
 SET(CMAKE_C_FLAGS -O3 -Wall)
 SET(CMAKE_CXX_FLAGS -O3 -Wall)
 
-SET(SDLIMAGE_INCLUDE_DIR ../mana_win/libs/include/SDL)
-SET(SDLMIXER_INCLUDE_DIR ../mana_win/libs/include/SDL)
-SET(SDLNET_INCLUDE_DIR ../mana_win/libs/include/SDL)
-SET(SDLTTF_INCLUDE_DIR ../mana_win/libs/include/SDL)
-SET(SDL_INCLUDE_DIR ../mana_win/libs/include/SDL)
+SET(SDLIMAGE_INCLUDE_DIR ../libs/include/SDL)
+SET(SDLMIXER_INCLUDE_DIR ../libs/include/SDL)
+SET(SDLNET_INCLUDE_DIR ../libs/include/SDL)
+SET(SDLTTF_INCLUDE_DIR ../libs/include/SDL)
+SET(SDL_INCLUDE_DIR ../libs/include/SDL)
 SET(ENABLE_MANASERV OFF)
 
 # here is the target environment located
-SET(CMAKE_FIND_ROOT_PATH  /usr/i686-w64-mingw32 /../mana_win/libs )
+SET(CMAKE_FIND_ROOT_PATH  /home/mingw/cross/i686-w64-mingw32 /../libs/lib )
 
 # adjust the default behaviour of the FIND_XXX() commands:
 # search headers and libraries in the target environment, search

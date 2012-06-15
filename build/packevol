@@ -6,7 +6,7 @@ dir=`pwd`
 
 cd packaging/windows
 ./make-translations.sh
-makensis -DDLLDIR=$dir/../mana_win/libs/dll/ \
+makensis -DDLLDIR=$dir/../libs/dll/ \
     -DPRODUCT_VERSION="1.2.6.10" \
     -DEXESUFFIX=/src \
     -DUPX=true \

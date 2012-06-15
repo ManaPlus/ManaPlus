@@ -9,7 +9,9 @@ export CXX=g++-4.7
 
 export LANG=C
 
-export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls \
+export CXXFLAGS="-ggdb3 -O3 -pipe -flto -fwhole-program -ffast-math \
+-funswitch-loops \
+-Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
 -Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
 -fstrict-aliasing -Wunreachable-code -Wabi -Wdisabled-optimization \
@@ -18,7 +20,7 @@ export CXXFLAGS="-Wvariadic-macros -Wvla -Wredundant-decls \
 -Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
 -Wctor-dtor-privacy -Wstrict-null-sentinel -Wlogical-op \
 -Wcast-align -Wpointer-arith -Wundef \
--Wmissing-include-dirs -Winit-self -pedantic -Wall -ggdb3 -O2 -pipe \
+-Wmissing-include-dirs -Winit-self -pedantic -Wall \
 -Wpacked -Wextra -Wstrict-overflow=1 -Wunknown-pragmas -Wwrite-strings \
 -Wstack-protector -Wshadow -Wunused-macros -Wsynth \
 -Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated -Wextra \
