@@ -30,6 +30,7 @@
 #include "logger.h"
 
 #include "gui/chatwindow.h"
+#include "gui/gui.h"
 #include "gui/itempopup.h"
 #include "gui/outfitwindow.h"
 #include "gui/palette.h"
@@ -167,6 +168,7 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mSortType(0),
     mItemPopup(new ItemPopup),
     mShowMatrix(nullptr),
+    mClicks(1),
     mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
     mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
@@ -347,6 +349,8 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         return;
 
     const int button = event.getButton();
+    mClicks = event.getClickCount();
+
     if (button == gcn::MouseEvent::LEFT || button == gcn::MouseEvent::RIGHT)
     {
         const int index = getSlotIndex(event.getX(), event.getY());
@@ -359,7 +363,7 @@ void ItemContainer::mousePressed(gcn::MouseEvent &event)
         if (item && mDescItems && chatWindow)
             chatWindow->addItemText(item->getInfo().getName());
 
-        if (mSelectedIndex == index)
+        if (mSelectedIndex == index && mClicks != 2)
         {
             mSelectionStatus = SEL_DESELECTING;
         }
@@ -400,6 +404,9 @@ void ItemContainer::mouseDragged(gcn::MouseEvent &event)
 
 void ItemContainer::mouseReleased(gcn::MouseEvent &event)
 {
+    if (mClicks == 2)
+        return;
+
     switch (mSelectionStatus)
     {
         case SEL_SELECTING:

@@ -121,6 +121,8 @@ class Gui : public gcn::Gui
 
         bool handleKeyInput2();
 
+        void resetClickCount();
+
         /**
          * Cursors are in graphic order from left to right.
          * CURSOR_POINTER should be left untouched.

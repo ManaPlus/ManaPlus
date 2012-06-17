@@ -581,3 +581,9 @@ void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,
         }
     }
 }
+
+void Gui::resetClickCount()
+{
+    mClickCount = 1;
+    mLastMousePressTimeStamp = 0;
+}

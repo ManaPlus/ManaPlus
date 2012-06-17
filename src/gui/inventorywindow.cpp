@@ -31,6 +31,7 @@
 #include "playerinfo.h"
 #include "units.h"
 
+#include "gui/gui.h"
 #include "gui/itemamountwindow.h"
 #include "gui/setup.h"
 #include "gui/sdlinput.h"
@@ -322,7 +323,9 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
                 Net::getInventoryHandler()->equipItem(item);
         }
         else
+        {
             Net::getInventoryHandler()->useItem(item);
+        }
     }
     if (event.getId() == "equip")
     {
@@ -334,7 +337,9 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
                 Net::getInventoryHandler()->equipItem(item);
         }
         else
+        {
             Net::getInventoryHandler()->useItem(item);
+        }
     }
     else if (event.getId() == "drop")
     {
@@ -390,6 +395,11 @@ void InventoryWindow::widgetHidden(const gcn::Event &event)
 void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
 {
     Window::mouseClicked(event);
+
+    const int clicks = event.getClickCount();
+
+    if (clicks == 2 && gui)
+        gui->resetClickCount();
 
     const bool mod = (isStorageActive() && inputManager.isActionActive(
         Input::KEY_MOD));
@@ -467,6 +477,44 @@ void InventoryWindow::mouseClicked(gcn::MouseEvent &event)
             {
                 if (tradeWindow)
                     tradeWindow->tradeItem(item, item->getQuantity(), true);
+            }
+        }
+        else if (clicks == 2)
+        {
+            if (mInventory->isMainInventory())
+            {
+                if (isStorageActive())
+                {
+                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreAdd,
+                        inventoryWindow, item);
+                }
+                else if (tradeWindow && tradeWindow->isVisible())
+                {
+                    ItemAmountWindow::showWindow(ItemAmountWindow::TradeAdd,
+                        tradeWindow, item);
+                }
+                else
+                {
+                    if (item->isEquipment())
+                    {
+                        if (item->isEquipped())
+                            Net::getInventoryHandler()->unequipItem(item);
+                        else
+                            Net::getInventoryHandler()->equipItem(item);
+                    }
+                    else
+                    {
+                        Net::getInventoryHandler()->useItem(item);
+                    }
+                }
+            }
+            else
+            {
+                if (isStorageActive())
+                {
+                    ItemAmountWindow::showWindow(ItemAmountWindow::StoreRemove,
+                        inventoryWindow, item);
+                }
             }
         }
     }

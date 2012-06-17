@@ -126,6 +126,9 @@ class ItemContainer : public gcn::Widget,
 
         void updateMatrix();
 
+        bool getClickCount()
+        { return mClicks; }
+
     private:
         enum Direction
         {
@@ -197,6 +200,7 @@ class ItemContainer : public gcn::Widget,
 
         ItemPopup *mItemPopup;
         int *mShowMatrix;
+        int mClicks;
 
         typedef std::list<gcn::SelectionListener*> SelectionListenerList;
         typedef SelectionListenerList::iterator SelectionListenerIterator;
