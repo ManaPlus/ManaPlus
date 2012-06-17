@@ -146,7 +146,7 @@ void ListBox::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
 void ListBox::mousePressed(gcn::MouseEvent &event)
 {
     if (mDistributeMousePressed)
-        distributeActionEvent();
+        gcn::ListBox::mousePressed(event);
     else
         mouseDragged(event);
 }
