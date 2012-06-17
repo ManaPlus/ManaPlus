@@ -271,7 +271,8 @@ void Image::setAlpha(float alpha)
                     uint8_t a = static_cast<uint8_t>(
                         static_cast<float>(sourceAlpha) * mAlpha);
 
-                    uint32_t c = (static_cast<uint32_t*>(mSDLSurface->pixels))[i];
+                    uint32_t c = (static_cast<uint32_t*>(
+                        mSDLSurface->pixels))[i];
                     c &= ~fmt->Amask;
                     c |= ((a >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
                     (static_cast<uint32_t*>(mSDLSurface->pixels))[i] = c;

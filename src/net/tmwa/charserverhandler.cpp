@@ -203,7 +203,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt16();                       // speed
     tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
     int hairStyle = msg.readInt16();
-    uint16_t weapon = msg.readInt16();    // server not used it. may be need use?
+    uint16_t weapon = msg.readInt16();  // server not used it. may be need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
     data.mAttributes[LEVEL] = msg.readInt16();

@@ -1113,8 +1113,9 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    uint32_t *p0 = reinterpret_cast<uint32_t*>(static_cast<uint8_t*>(
-                        mTarget->pixels) + y * mTarget->pitch);
+                    uint32_t *p0 = reinterpret_cast<uint32_t*>(
+                        static_cast<uint8_t*>(mTarget->pixels)
+                        + y * mTarget->pitch);
                     for (x = x1; x < x2; x++)
                     {
                         uint32_t *p = p0 + x;

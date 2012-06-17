@@ -72,7 +72,8 @@ class MessageIn
          * Reads a special 3 byte block used by eAthena, containing x and y
          * coordinates and direction.
          */
-        virtual void readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction);
+        virtual void readCoordinates(uint16_t &x, uint16_t &y,
+                                     uint8_t &direction);
 
         /**
          * Reads a special 5 byte block used by eAthena, containing a source
