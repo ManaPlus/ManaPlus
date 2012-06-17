@@ -96,6 +96,7 @@ NpcDialog::NpcDialog(int npcId) :
     mItemList->setWrappingEnabled(true);
     mItemList->setActionEventId("ok");
     mItemList->addActionListener(this);
+    mItemList->setDistributeMousePressed(false);
 
     setContentSize(260, 175);
 

@@ -64,12 +64,18 @@ class ListBox : public gcn::ListBox
 
         void mouseWheelMovedDown(gcn::MouseEvent& mouseEvent);
 
+        void mousePressed(gcn::MouseEvent &event);
+
         void mouseDragged(gcn::MouseEvent &event);
 
         void refocus();
 
+        void setDistributeMousePressed(bool b)
+        { mDistributeMousePressed = b; }
+
     protected:
         gcn::Color mHighlightColor;
+        bool mDistributeMousePressed;
         static float mAlpha;
 };
 

@@ -42,7 +42,8 @@
 float ListBox::mAlpha = 1.0;
 
 ListBox::ListBox(gcn::ListModel *listModel):
-    gcn::ListBox(listModel)
+    gcn::ListBox(listModel),
+    mDistributeMousePressed(true)
 {
     mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
@@ -140,6 +141,14 @@ void ListBox::mouseWheelMovedUp(gcn::MouseEvent &mouseEvent A_UNUSED)
 
 void ListBox::mouseWheelMovedDown(gcn::MouseEvent &mouseEvent A_UNUSED)
 {
+}
+
+void ListBox::mousePressed(gcn::MouseEvent &event)
+{
+    if (mDistributeMousePressed)
+        distributeActionEvent();
+    else
+        mouseDragged(event);
 }
 
 void ListBox::mouseDragged(gcn::MouseEvent &event)
