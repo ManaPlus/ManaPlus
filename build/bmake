@@ -9,7 +9,7 @@ export CXX=g++-4.7
 
 export LANG=C
 
-export CXXFLAGS="-ggdb3 -O3 -pipe -flto -fwhole-program -ffast-math \
+export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
 -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \
 -Wpacked-bitfield-compat -Wtrampolines \
