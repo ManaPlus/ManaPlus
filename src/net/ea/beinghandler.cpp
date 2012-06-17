@@ -117,11 +117,11 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     int id;
     short job, speed, gender;
-    Uint16 headTop, headMid, headBottom;
-    Uint16 shoes, gloves;
-    Uint16 weapon, shield;
-    Uint16 stunMode;
-    Uint32 statusEffects;
+    uint16_t headTop, headMid, headBottom;
+    uint16_t shoes, gloves;
+    uint16_t weapon, shield;
+    uint16_t stunMode;
+    uint32_t statusEffects;
     Being *dstBeing;
     int hairStyle, hairColor;
     int spawnId;
@@ -136,7 +136,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     speed = msg.readInt16();
     stunMode = msg.readInt16();  // opt1
     statusEffects = msg.readInt16();  // opt2
-    statusEffects |= (static_cast<Uint32>(msg.readInt16())) << 16;  // option
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;  // option
     job = msg.readInt16();  // class
 
     dstBeing = actorSpriteManager->findBeing(id);
@@ -297,7 +297,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     if (!visible)
     {
-        Uint16 srcX, srcY, dstX, dstY;
+        uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
         dstBeing->setAction(Being::STAND);
         dstBeing->setTileCoords(srcX, srcY);
@@ -305,8 +305,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     }
     else
     {
-        Uint8 dir;
-        Uint16 x, y;
+        uint8_t dir;
+        uint16_t x, y;
         msg.readCoordinates(x, y, dir);
         dstBeing->setTileCoords(x, y);
 
@@ -333,7 +333,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     msg.readInt16();
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<Uint16>(
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
 
@@ -360,7 +360,7 @@ void BeingHandler::processBeingMove2(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    Uint16 srcX, srcY, dstX, dstY;
+    uint16_t srcX, srcY, dstX, dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
     msg.readInt32();  // Server tick
 
@@ -565,7 +565,7 @@ void BeingHandler::processBeingSelfEffect(Net::MessageIn &msg)
 
     int id;
 
-    id = static_cast<Uint32>(msg.readInt32());
+    id = static_cast<uint32_t>(msg.readInt32());
     Being* being = actorSpriteManager->findBeing(id);
     if (!being)
         return;
@@ -719,7 +719,7 @@ void BeingHandler::processPlayerStop(Net::MessageIn &msg)
         Being *dstBeing = actorSpriteManager->findBeing(id);
         if (dstBeing)
         {
-            Uint16 x, y;
+            uint16_t x, y;
             x = msg.readInt16();
             y = msg.readInt16();
             dstBeing->setTileCoords(x, y);
@@ -753,13 +753,13 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
     if (!dstBeing)
         return;
 
-    Uint16 stunMode = msg.readInt16();
-    Uint32 statusEffects = msg.readInt16();
-    statusEffects |= (static_cast<Uint32>(msg.readInt16())) << 16;
+    uint16_t stunMode = msg.readInt16();
+    uint32_t statusEffects = msg.readInt16();
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16())) << 16;
     msg.readInt8(); // Unused?
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<Uint16>(
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
 }
@@ -770,7 +770,7 @@ void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)
         return;
 
     // Status change
-    Uint16 status = msg.readInt16();
+    uint16_t status = msg.readInt16();
     int id = msg.readInt32();
     int flag = msg.readInt8(); // 0: stop, 1: start
 

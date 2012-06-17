@@ -61,9 +61,9 @@ class DyePalette
          */
         void getColor(double intensity, int color[3]) const;
 
-        void replaceColor(Uint8 *color) const;
+        void replaceColor(uint8_t *color) const;
 
-        void replaceOGLColor(Uint8 *color) const;
+        void replaceOGLColor(uint8_t *color) const;
 
     private:
         struct Color

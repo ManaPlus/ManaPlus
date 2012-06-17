@@ -58,7 +58,7 @@ namespace TmwAthena
 
 BuySellHandler::BuySellHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_NPC_BUY_SELL_CHOICE,
         SMSG_NPC_BUY,

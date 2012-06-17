@@ -49,7 +49,7 @@ void KeyboardConfig::init()
     mEnabled = true;
     if (mActiveKeys2)
         delete mActiveKeys2;
-    mActiveKeys2 = new Uint8[500];
+    mActiveKeys2 = new uint8_t[500];
 }
 
 int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const

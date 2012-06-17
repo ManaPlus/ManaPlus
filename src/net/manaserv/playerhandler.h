@@ -48,7 +48,7 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
 
         void attack(int id, bool keep = false);
         void stopAttack();
-        void emote(Uint8 emoteId);
+        void emote(uint8_t emoteId);
 
         void increaseAttribute(int attr);
         void decreaseAttribute(int attr);
@@ -74,7 +74,7 @@ class PlayerHandler : public MessageHandler, public Net::PlayerHandler
 
         Vector getDefaultWalkSpeed() const;
 
-        void updateStatus(Uint8 status);
+        void updateStatus(uint8_t status);
 
     private:
         void handleMapChangeMessage(Net::MessageIn &msg);

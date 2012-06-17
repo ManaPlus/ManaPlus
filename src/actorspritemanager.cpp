@@ -76,7 +76,7 @@ class FindBeingFunctor
                 || b->getType() == type));
         }
 
-        Uint16 x, y;
+        uint16_t x, y;
         ActorSprite::Type type;
 } beingFinder;
 
@@ -228,7 +228,7 @@ void ActorSpriteManager::setPlayer(LocalPlayer *player)
 }
 
 Being *ActorSpriteManager::createBeing(int id, ActorSprite::Type type,
-                                       Uint16 subtype)
+                                       uint16_t subtype)
 {
     Being *being = new Being(id, type, subtype, mMap);
 
@@ -301,8 +301,8 @@ Being *ActorSpriteManager::findBeing(int id) const
 Being *ActorSpriteManager::findBeing(int x, int y,
                                      ActorSprite::Type type) const
 {
-    beingFinder.x = static_cast<Uint16>(x);
-    beingFinder.y = static_cast<Uint16>(y);
+    beingFinder.x = static_cast<uint16_t>(x);
+    beingFinder.y = static_cast<uint16_t>(y);
     beingFinder.type = type;
 
     ActorSpritesConstIterator it = find_if(mActors.begin(), mActors.end(),
@@ -1217,7 +1217,7 @@ bool ActorSpriteManager::hasActorSprite(ActorSprite *actor) const
     return false;
 }
 
-void ActorSpriteManager::addBlock(Uint32 id)
+void ActorSpriteManager::addBlock(uint32_t id)
 {
     bool alreadyBlocked(false);
     for (int i = 0; i < static_cast<int>(blockedBeings.size()); ++i)
@@ -1232,10 +1232,10 @@ void ActorSpriteManager::addBlock(Uint32 id)
         blockedBeings.push_back(id);
 }
 
-void ActorSpriteManager::deleteBlock(Uint32 id)
+void ActorSpriteManager::deleteBlock(uint32_t id)
 {
-    std::vector<Uint32>::iterator iter = blockedBeings.begin();
-    std::vector<Uint32>::iterator iter_end = blockedBeings.end();
+    std::vector<uint32_t>::iterator iter = blockedBeings.begin();
+    std::vector<uint32_t>::iterator iter_end = blockedBeings.end();
     while (iter != iter_end)
     {
         if (*iter == id)
@@ -1246,7 +1246,7 @@ void ActorSpriteManager::deleteBlock(Uint32 id)
     }
 }
 
-bool ActorSpriteManager::isBlocked(Uint32 id)
+bool ActorSpriteManager::isBlocked(uint32_t id)
 {
     bool blocked(false);
     for (int i = 0; i < static_cast<int>(blockedBeings.size()); ++i)

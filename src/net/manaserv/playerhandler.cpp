@@ -73,7 +73,7 @@ extern Connection *gameServerConnection;
 
 PlayerHandler::PlayerHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_PLAYER_MAP_CHANGE,
         GPMSG_PLAYER_SERVER_CHANGE,
@@ -271,7 +271,7 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
         /*
         case SMSG_PLAYER_ARROW_MESSAGE:
             {
-                Sint16 type = msg.readInt16();
+                int16_t type = msg.readInt16();
 
                 switch (type)
                 {
@@ -338,7 +338,7 @@ void PlayerHandler::stopAttack()
 
 }
 
-void PlayerHandler::emote(Uint8 emoteId A_UNUSED)
+void PlayerHandler::emote(uint8_t emoteId A_UNUSED)
 {
     // TODO
 }
@@ -446,7 +446,7 @@ void PlayerHandler::requestOnlineList()
 
 }
 
-void PlayerHandler::updateStatus(Uint8 status)
+void PlayerHandler::updateStatus(uint8_t status)
 {
 
 }

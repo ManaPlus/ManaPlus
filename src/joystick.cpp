@@ -180,7 +180,7 @@ void Joystick::logic()
         if (!mDirection && mHaveHats)
         {
             // reading only hat 0
-            Uint8 hat = SDL_JoystickGetHat(mJoystick, 0);
+            uint8_t hat = SDL_JoystickGetHat(mJoystick, 0);
             if (hat & SDL_HAT_RIGHT)
                 mDirection |= RIGHT;
             else if (hat & SDL_HAT_LEFT)

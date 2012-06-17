@@ -1442,7 +1442,7 @@ void Map::reduce()
                     }
                     else if (img->hasAlphaChannel())
                     {
-                        Uint8 *arr = img->SDLgetAlphaChannel();
+                        uint8_t *arr = img->SDLgetAlphaChannel();
                         if (!arr)
                             continue;
 
@@ -1461,7 +1461,7 @@ void Map::reduce()
                             for (int d = img->mBounds.y;
                                  d < img->mBounds.y + img->mBounds.h; d ++)
                             {
-                                Uint8 chan = arr[f + d * width];
+                                uint8_t chan = arr[f + d * width];
                                 if (chan != 255)
                                 {
                                     bad = true;

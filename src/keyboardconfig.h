@@ -96,9 +96,9 @@ class KeyboardConfig
     private:
         bool mEnabled;                 /**< Flag to respond to key input */
 
-        Uint8 *mActiveKeys;            /**< Stores a list of all the keys */
+        uint8_t *mActiveKeys;            /**< Stores a list of all the keys */
 
-        Uint8 *mActiveKeys2;           /**< Stores a list of all the keys */
+        uint8_t *mActiveKeys2;           /**< Stores a list of all the keys */
 
         KeyToActionMap mKeyToAction;
 

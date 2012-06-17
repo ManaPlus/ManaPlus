@@ -64,7 +64,7 @@ namespace TmwAthena
 BeingHandler::BeingHandler(bool enableSync):
     Ea::BeingHandler(enableSync)
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_BEING_VISIBLE,
         SMSG_BEING_MOVE,
@@ -300,7 +300,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
     switch (type)
     {
         case 0:     // change race
-            dstBeing->setSubtype(static_cast<Uint16>(id));
+            dstBeing->setSubtype(static_cast<uint16_t>(id));
             break;
         case 1:     // eAthena LOOK_HAIR
             dstBeing->setSpriteID(SPRITE_HAIR, id *-1);
@@ -435,9 +435,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     if (!actorSpriteManager || !player_node)
         return;
 
-    Uint16 headTop, headMid, headBottom;
-    Uint16 weapon, shield;
-    Uint16 gmstatus;
+    uint16_t headTop, headMid, headBottom;
+    uint16_t weapon, shield;
+    uint16_t gmstatus;
     int level;
     int guild;
     Being *dstBeing;
@@ -448,9 +448,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     // An update about a player, potentially including movement.
     int id = msg.readInt32();
     short speed = msg.readInt16();
-    Uint16 stunMode = msg.readInt16(); // opt1; Aethyra use this as cape
-    Uint32 statusEffects = msg.readInt16(); // opt2; Aethyra use this as misc1
-    statusEffects |= (static_cast<Uint32>(msg.readInt16()))
+    uint16_t stunMode = msg.readInt16(); // opt1; Aethyra use this as cape
+    uint32_t statusEffects = msg.readInt16(); // opt2; Aethyra use this as misc1
+    statusEffects |= (static_cast<uint32_t>(msg.readInt16()))
         << 16; // status.options; Aethyra uses this as misc2
     short job = msg.readInt16();
 
@@ -467,7 +467,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
             return;
     }
 
-    Uint8 dir = dstBeing->getDirectionDelayed();
+    uint8_t dir = dstBeing->getDirectionDelayed();
     if (dir)
     {
         if (dir != dstBeing->getDirection())
@@ -548,7 +548,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
 
     if (msgType == 3)
     {
-        Uint16 srcX, srcY, dstX, dstY;
+        uint16_t srcX, srcY, dstX, dstY;
         msg.readCoordinatePair(srcX, srcY, dstX, dstY);
 
         player_node->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
@@ -564,7 +564,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
             int d = dstBeing->calcDirection(dstX, dstY);
 
             if (d && dstBeing->getDirection() != d)
-                dstBeing->setDirectionDelayed(static_cast<Uint8>(d));
+                dstBeing->setDirectionDelayed(static_cast<uint8_t>(d));
         }
 
         if (player_node->getCurrentAction() != Being::STAND)
@@ -577,8 +577,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     }
     else
     {
-//        Uint8 dir;
-        Uint16 x, y;
+//        uint8_t dir;
+        uint16_t x, y;
         msg.readCoordinates(x, y, dir);
         dstBeing->setTileCoords(x, y);
         dstBeing->setDirection(dir);
@@ -644,7 +644,7 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     }
 
     dstBeing->setStunMode(stunMode);
-    dstBeing->setStatusEffectBlock(0, static_cast<Uint16>(
+    dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
     dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
 

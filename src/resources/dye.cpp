@@ -205,7 +205,7 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
-void DyePalette::replaceColor(Uint8 *color) const
+void DyePalette::replaceColor(uint8_t *color) const
 {
     std::vector<Color>::const_iterator it = mColors.begin();
     std::vector<Color>::const_iterator it_end = mColors.end();
@@ -228,7 +228,7 @@ void DyePalette::replaceColor(Uint8 *color) const
     }
 }
 
-void DyePalette::replaceOGLColor(Uint8 *color) const
+void DyePalette::replaceOGLColor(uint8_t *color) const
 {
     std::vector<Color>::const_iterator it = mColors.begin();
     std::vector<Color>::const_iterator it_end = mColors.end();

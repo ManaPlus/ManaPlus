@@ -333,7 +333,7 @@ class Graphics : public gcn::SDLGraphics
         int mOpenGL;
         bool mEnableResize;
         bool mNoFrame;
-        Uint32 mOldPixel;
+        uint32_t mOldPixel;
         int mOldAlpha;
         std::string mName;
         int mStartFreeMem;

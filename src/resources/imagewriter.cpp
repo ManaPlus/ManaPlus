@@ -103,7 +103,7 @@ bool ImageWriter::writePNG(SDL_Surface *surface, const std::string &filename)
 
     for (int i = 0; i < surface->h; i++)
     {
-        row_pointers[i] = static_cast<png_bytep>(static_cast<Uint8 *>(
+        row_pointers[i] = static_cast<png_bytep>(static_cast<uint8_t *>(
             surface->pixels)) + i * surface->pitch;
     }
 

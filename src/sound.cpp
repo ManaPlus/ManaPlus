@@ -152,7 +152,7 @@ void Sound::info()
     char driver[40] = "Unknown";
     const char *format = "Unknown";
     int rate = 0;
-    Uint16 audioFormat = 0;
+    uint16_t audioFormat = 0;
     int channels = 0;
 
     MIX_VERSION(&compiledVersion);

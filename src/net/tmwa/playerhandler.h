@@ -42,7 +42,7 @@ class PlayerHandler : public MessageHandler, public Ea::PlayerHandler
 
         void attack(int id, bool keep = false);
         void stopAttack();
-        void emote(Uint8 emoteId);
+        void emote(uint8_t emoteId);
 
         void increaseAttribute(int attr);
         void increaseSkill(unsigned short skillId);
@@ -53,7 +53,7 @@ class PlayerHandler : public MessageHandler, public Ea::PlayerHandler
         void changeAction(Being::Action action);
         void processOnlineList(Net::MessageIn &msg);
         void requestOnlineList();
-        void updateStatus(Uint8 status);
+        void updateStatus(uint8_t status);
 
         void respawn();
 };

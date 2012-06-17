@@ -46,9 +46,9 @@ class MessageOut : public Net::MessageOut
          */
         MessageOut(short id);
 
-        void writeInt16(Sint16 value);        /**< Writes a short. */
+        void writeInt16(int16_t value);        /**< Writes a short. */
 
-        void writeInt32(Sint32 value);        /**< Writes a long. */
+        void writeInt32(int32_t value);        /**< Writes a long. */
 
         /**
          * Encodes coordinates and direction in 3 bytes.

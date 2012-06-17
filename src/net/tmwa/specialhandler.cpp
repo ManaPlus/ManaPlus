@@ -37,7 +37,7 @@ namespace TmwAthena
 
 SpecialHandler::SpecialHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_PLAYER_SKILLS,
         SMSG_SKILL_FAILED,
@@ -72,24 +72,24 @@ void SpecialHandler::handleMessage(Net::MessageIn &msg)
 void SpecialHandler::useBeing(int id, int level, int beingId)
 {
     MessageOut outMsg(CMSG_SKILL_USE_BEING);
-    outMsg.writeInt16(static_cast<Sint16>(id));
-    outMsg.writeInt16(static_cast<Sint16>(level));
+    outMsg.writeInt16(static_cast<int16_t>(id));
+    outMsg.writeInt16(static_cast<int16_t>(level));
     outMsg.writeInt32(beingId);
 }
 
 void SpecialHandler::usePos(int id, int level, int x, int y)
 {
     MessageOut outMsg(CMSG_SKILL_USE_POSITION);
-    outMsg.writeInt16(static_cast<Sint16>(level));
-    outMsg.writeInt16(static_cast<Sint16>(id));
-    outMsg.writeInt16(static_cast<Sint16>(x));
-    outMsg.writeInt16(static_cast<Sint16>(y));
+    outMsg.writeInt16(static_cast<int16_t>(level));
+    outMsg.writeInt16(static_cast<int16_t>(id));
+    outMsg.writeInt16(static_cast<int16_t>(x));
+    outMsg.writeInt16(static_cast<int16_t>(y));
 }
 
 void SpecialHandler::useMap(int id, const std::string &map)
 {
     MessageOut outMsg(CMSG_SKILL_USE_MAP);
-    outMsg.writeInt16(static_cast<Sint16>(id));
+    outMsg.writeInt16(static_cast<int16_t>(id));
     outMsg.writeString(map, 16);
 }
 

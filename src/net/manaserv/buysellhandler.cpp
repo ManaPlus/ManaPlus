@@ -45,7 +45,7 @@ namespace ManaServ
 
 BuySellHandler::BuySellHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_NPC_BUY,
         GPMSG_NPC_SELL,

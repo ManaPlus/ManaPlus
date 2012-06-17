@@ -140,7 +140,7 @@ namespace gcn
 
         for (i = 0; i < mSurface->w * mSurface->h; ++i)
         {
-            Uint8 r, g, b, a;
+            uint8_t r, g, b, a;
 
             SDL_GetRGBA((static_cast<unsigned int*>(mSurface->pixels)[i]),
                 mSurface->format, &r, &g, &b, &a);

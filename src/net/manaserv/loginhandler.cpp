@@ -49,7 +49,7 @@ LoginHandler::LoginHandler() :
     mMinUserNameLength(4),
     mMaxUserNameLength(10)
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         APMSG_LOGIN_RESPONSE,
         APMSG_REGISTER_RESPONSE,

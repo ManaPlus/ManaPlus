@@ -57,8 +57,8 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
     // Set up the rectangle.
     mBounds.x = static_cast<short>(x);
     mBounds.y = static_cast<short>(y);
-    mBounds.w = static_cast<Uint16>(width);
-    mBounds.h = static_cast<Uint16>(height);
+    mBounds.w = static_cast<uint16_t>(width);
+    mBounds.h = static_cast<uint16_t>(height);
     if (mParent)
     {
         mInternalBounds.x = mParent->mBounds.x;
@@ -89,8 +89,8 @@ SubImage::SubImage(Image *parent, GLuint image,
     // Set up the rectangle.
     mBounds.x = static_cast<short>(x);
     mBounds.y = static_cast<short>(y);
-    mBounds.w = static_cast<Uint16>(width);
-    mBounds.h = static_cast<Uint16>(height);
+    mBounds.w = static_cast<uint16_t>(width);
+    mBounds.h = static_cast<uint16_t>(height);
     if (mParent)
     {
         mInternalBounds.x = mParent->mBounds.x;

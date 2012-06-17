@@ -50,7 +50,7 @@ extern Connection *chatServerConnection;
 PartyHandler::PartyHandler():
         mParty(Party::getParty(PARTY_ID))
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         CPMSG_PARTY_INVITE_RESPONSE,
         CPMSG_PARTY_INVITED,

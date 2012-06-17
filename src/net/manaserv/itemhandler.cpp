@@ -36,7 +36,7 @@ namespace ManaServ
 
 ItemHandler::ItemHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_ITEMS,
         GPMSG_ITEM_APPEAR,

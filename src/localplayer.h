@@ -193,7 +193,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         bool toggleSit();
         bool updateSit();
-        bool emote(Uint8 emotion);
+        bool emote(uint8_t emotion);
 
         /**
          * Shows item pickup notifications.

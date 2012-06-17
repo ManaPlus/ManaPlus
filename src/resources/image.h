@@ -133,7 +133,7 @@ class Image : public Resource
         /**
          * Get the alpha Channel of a SDL surface.
          */
-        Uint8 *SDLgetAlphaChannel() const
+        uint8_t *SDLgetAlphaChannel() const
         { return mAlphaChannel; }
 
         void SDLCleanCache();
@@ -183,14 +183,14 @@ class Image : public Resource
 
         /** SDL Constructor */
         Image(SDL_Surface *image, bool hasAlphaChannel = false,
-              Uint8 *alphaChannel = nullptr);
+              uint8_t *alphaChannel = nullptr);
 
         SDL_Surface *getByAlpha(float alpha);
 
         SDL_Surface *mSDLSurface;
 
         /** Alpha Channel pointer used for 32bit based SDL surfaces */
-        Uint8 *mAlphaChannel;
+        uint8_t *mAlphaChannel;
 
         std::map<float, SDL_Surface*> mAlphaCache;
 

@@ -57,7 +57,7 @@ extern ServerInfo chatServer;
 
 ChatHandler::ChatHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_SAY,
         CPMSG_ENTER_CHANNEL_RESPONSE,

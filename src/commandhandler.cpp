@@ -747,7 +747,7 @@ void CommandHandler::handleEmote(const std::string &args,
                                  ChatTab *tab A_UNUSED)
 {
     if (player_node)
-        player_node->emote(static_cast<Uint8>(atoi(args.c_str())));
+        player_node->emote(static_cast<uint8_t>(atoi(args.c_str())));
 }
 
 void CommandHandler::handleAway(const std::string &args, ChatTab *tab A_UNUSED)

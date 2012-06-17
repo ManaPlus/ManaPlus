@@ -45,7 +45,7 @@ MessageOut::MessageOut(short id A_UNUSED):
     DEBUGLOG("MessageOut");
 }
 
-void MessageOut::writeInt8(Sint8 value)
+void MessageOut::writeInt8(int8_t value)
 {
     DEBUGLOG("writeInt8: " + toString(static_cast<int>(value)));
     expand(1);

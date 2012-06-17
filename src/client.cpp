@@ -156,8 +156,8 @@ Graphics *mainGraphics = nullptr;
 
 Sound sound;
 
-Uint32 nextTick(Uint32 interval, void *param A_UNUSED);
-Uint32 nextSecond(Uint32 interval, void *param A_UNUSED);
+uint32_t nextTick(uint32_t interval, void *param A_UNUSED);
+uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
 
 void ErrorListener::action(const gcn::ActionEvent &)
 {
@@ -186,7 +186,7 @@ extern "C" char const *_nl_locale_name_default(void);
  * Called every 10 milliseconds by SDL_AddTimer()
  * @see MILLISECONDS_IN_A_TICK value
  */
-Uint32 nextTick(Uint32 interval, void *param A_UNUSED)
+uint32_t nextTick(uint32_t interval, void *param A_UNUSED)
 {
     tick_time++;
     if (tick_time == MAX_TICK_VALUE)
@@ -198,7 +198,7 @@ Uint32 nextTick(Uint32 interval, void *param A_UNUSED)
  * Updates fps.
  * Called every seconds by SDL_AddTimer()
  */
-Uint32 nextSecond(Uint32 interval, void *param A_UNUSED)
+uint32_t nextSecond(uint32_t interval, void *param A_UNUSED)
 {
     fps = frame_count;
     lps = logic_count;

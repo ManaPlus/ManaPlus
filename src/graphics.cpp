@@ -408,8 +408,8 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     dstRect.y = static_cast<short>(dstY);
     srcRect.x = static_cast<short>(srcX);
     srcRect.y = static_cast<short>(srcY);
-    srcRect.w = static_cast<Uint16>(width);
-    srcRect.h = static_cast<Uint16>(height);
+    srcRect.w = static_cast<uint16_t>(width);
+    srcRect.h = static_cast<uint16_t>(height);
 
     returnValue = !(SDL_BlitSurface(tmpImage->mSDLSurface,
         &srcRect, mTarget, &dstRect) < 0);
@@ -438,8 +438,8 @@ bool Graphics::drawImage(const Image *image, int srcX, int srcY,
     dstRect.y = static_cast<short>(dstY);
     srcRect.x = static_cast<short>(srcX);
     srcRect.y = static_cast<short>(srcY);
-    srcRect.w = static_cast<Uint16>(width);
-    srcRect.h = static_cast<Uint16>(height);
+    srcRect.w = static_cast<uint16_t>(width);
+    srcRect.h = static_cast<uint16_t>(height);
 
     if (mBlitMode == BLIT_NORMAL)
     {
@@ -485,8 +485,8 @@ void Graphics::drawImagePattern(const Image *image, int x, int y, int w, int h)
             dstRect.y = static_cast<short>(dstY);
             srcRect.x = static_cast<short>(srcX);
             srcRect.y = static_cast<short>(srcY);
-            srcRect.w = static_cast<Uint16>(dw);
-            srcRect.h = static_cast<Uint16>(dh);
+            srcRect.w = static_cast<uint16_t>(dw);
+            srcRect.h = static_cast<uint16_t>(dh);
 
             SDL_BlitSurface(image->mSDLSurface, &srcRect, mTarget, &dstRect);
         }
@@ -534,8 +534,8 @@ void Graphics::drawRescaledImagePattern(Image *image, int x, int y,
             dstRect.y = static_cast<short>(dstY);
             srcRect.x = static_cast<short>(srcX);
             srcRect.y = static_cast<short>(srcY);
-            srcRect.w = static_cast<Uint16>(dw);
-            srcRect.h = static_cast<Uint16>(dh);
+            srcRect.w = static_cast<uint16_t>(dw);
+            srcRect.h = static_cast<uint16_t>(dh);
 
             SDL_BlitSurface(tmpImage->mSDLSurface, &srcRect,
                             mTarget, &dstRect);
@@ -760,8 +760,8 @@ void Graphics::calcImagePattern(GraphicsVertexes* vert,
             dstRect.y = static_cast<short>(dstY);
             srcRect.x = static_cast<short>(srcX);
             srcRect.y = static_cast<short>(srcY);
-            srcRect.w = static_cast<Uint16>(dw);
-            srcRect.h = static_cast<Uint16>(dh);
+            srcRect.w = static_cast<uint16_t>(dw);
+            srcRect.h = static_cast<uint16_t>(dh);
 
             if (SDL_FakeUpperBlit(image->mSDLSurface, &srcRect,
                 mTarget, &dstRect) == 1)
@@ -790,8 +790,8 @@ void Graphics::calcTile(ImageVertexes *vert, int x, int y)
     rect->dst.y = static_cast<short>(y);
     rect->src.x = static_cast<short>(image->mBounds.x);
     rect->src.y = static_cast<short>(image->mBounds.y);
-    rect->src.w = static_cast<Uint16>(image->mBounds.w);
-    rect->src.h = static_cast<Uint16>(image->mBounds.h);
+    rect->src.w = static_cast<uint16_t>(image->mBounds.w);
+    rect->src.h = static_cast<uint16_t>(image->mBounds.h);
     if (SDL_FakeUpperBlit(image->mSDLSurface, &rect->src,
         mTarget, &rect->dst) == 1)
     {
@@ -1000,7 +1000,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         SDL_LockSurface(mTarget);
 
         const int bpp = mTarget->format->BytesPerPixel;
-        Uint32 pixel = SDL_MapRGB(mTarget->format,
+        uint32_t pixel = SDL_MapRGB(mTarget->format,
             mColor.r, mColor.g, mColor.b);
 
         switch (bpp)
@@ -1008,7 +1008,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 1:
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p = static_cast<Uint8 *>(mTarget->pixels)
+                    uint8_t *p = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                         *(p + x) = pixel;
@@ -1017,13 +1017,13 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
             case 2:
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
+                    uint8_t *p0 = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = p0 + x * 2;
-                        *reinterpret_cast<Uint16 *>(p) = gcn::SDLAlpha16(
-                            pixel, *reinterpret_cast<Uint32 *>(p),
+                        uint8_t *p = p0 + x * 2;
+                        *reinterpret_cast<uint16_t *>(p) = gcn::SDLAlpha16(
+                            pixel, *reinterpret_cast<uint32_t *>(p),
                             mColor.a, mTarget->format);
                     }
                 }
@@ -1037,11 +1037,11 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
+                    uint8_t *p0 = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = p0 + x * 3;
+                        uint8_t *p = p0 + x * 3;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                         p[2] = (p[2] * ca + cb) >> 8;
                         p[1] = (p[1] * ca + cg) >> 8;
@@ -1065,18 +1065,18 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    Uint8 *p0 = static_cast<Uint8 *>(mTarget->pixels)
+                    uint8_t *p0 = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
                     {
-                        Uint8 *p = p0 + x * 4;
-                        Uint32 dst = *reinterpret_cast<Uint32 *>(p);
+                        uint8_t *p = p0 + x * 4;
+                        uint32_t dst = *reinterpret_cast<uint32_t *>(p);
                         const unsigned int b = (pb + (dst & 0xff) * a1) >> 8;
                         const unsigned int g = (pg + (dst & 0xff00) * a1) >> 8;
                         const unsigned int r = (pr
                             + (dst & 0xff0000) * a1) >> 8;
 
-                        *reinterpret_cast<Uint32 *>(p) = ((b & 0xff)
+                        *reinterpret_cast<uint32_t *>(p) = ((b & 0xff)
                             | (g & 0xff00) | (r & 0xff0000));
                     }
                 }
@@ -1113,12 +1113,12 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
                 for (y = y1; y < y2; y++)
                 {
-                    Uint32 *p0 = reinterpret_cast<Uint32*>(static_cast<Uint8*>(
+                    uint32_t *p0 = reinterpret_cast<uint32_t*>(static_cast<uint8_t*>(
                         mTarget->pixels) + y * mTarget->pitch);
                     for (x = x1; x < x2; x++)
                     {
-                        Uint32 *p = p0 + x;
-                        const Uint32 dst = *p;
+                        uint32_t *p = p0 + x;
+                        const uint32_t dst = *p;
                         *p = cB[dst & 0xff] | cG[(dst & 0xff00) >> 8]
                             | cR[(dst & 0xff0000) >> 16];
                     }
@@ -1140,7 +1140,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
         rect.w = area.width;
         rect.h = area.height;
 
-        Uint32 color = SDL_MapRGBA(mTarget->format,
+        uint32_t color = SDL_MapRGBA(mTarget->format,
             mColor.r, mColor.g, mColor.b, mColor.a);
         SDL_FillRect(mTarget, &rect, color);
     }

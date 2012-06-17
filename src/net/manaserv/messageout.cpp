@@ -47,7 +47,7 @@ void MessageOut::expand(size_t bytes)
     mDataSize = mPos + bytes;
 }
 
-void MessageOut::writeInt16(Sint16 value)
+void MessageOut::writeInt16(int16_t value)
 {
     expand(2);
     uint16_t t = ENET_HOST_TO_NET_16(value);
@@ -55,7 +55,7 @@ void MessageOut::writeInt16(Sint16 value)
     mPos += 2;
 }
 
-void MessageOut::writeInt32(Sint32 value)
+void MessageOut::writeInt32(int32_t value)
 {
     expand(4);
     uint32_t t = ENET_HOST_TO_NET_32(value);

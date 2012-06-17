@@ -74,7 +74,7 @@ void GameHandler::setMap(const std::string map)
 void GameHandler::processMapLogin(Net::MessageIn &msg)
 {
     unsigned char direction;
-    Uint16 x, y;
+    uint16_t x, y;
     msg.readInt32();   // server tick
     msg.readCoordinates(x, y, direction);
     msg.skip(2);      // 0x0505

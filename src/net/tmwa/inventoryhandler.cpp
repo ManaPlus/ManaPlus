@@ -39,7 +39,7 @@ namespace TmwAthena
 
 InventoryHandler::InventoryHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_PLAYER_INVENTORY,
         SMSG_PLAYER_INVENTORY_ADD,
@@ -143,7 +143,7 @@ void InventoryHandler::equipItem(const Item *item)
         return;
 
     MessageOut outMsg(CMSG_PLAYER_EQUIP);
-    outMsg.writeInt16(static_cast<Sint16>(
+    outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt16(0);
 }
@@ -154,7 +154,7 @@ void InventoryHandler::unequipItem(const Item *item)
         return;
 
     MessageOut outMsg(CMSG_PLAYER_UNEQUIP);
-    outMsg.writeInt16(static_cast<Sint16>(
+    outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
 }
 
@@ -164,7 +164,7 @@ void InventoryHandler::useItem(const Item *item)
         return;
 
     MessageOut outMsg(CMSG_PLAYER_INVENTORY_USE);
-    outMsg.writeInt16(static_cast<Sint16>(
+    outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt32(item->getId()); // unused
 }
@@ -176,9 +176,9 @@ void InventoryHandler::dropItem(const Item *item, int amount)
 
     // TODO: Fix wrong coordinates of drops, serverside? (what's wrong here?)
     MessageOut outMsg(CMSG_PLAYER_INVENTORY_DROP);
-    outMsg.writeInt16(static_cast<Sint16>(
+    outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
-    outMsg.writeInt16(static_cast<Sint16>(amount));
+    outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
 void InventoryHandler::closeStorage(int type A_UNUSED)
@@ -192,14 +192,14 @@ void InventoryHandler::moveItem2(int source, int slot, int amount,
     if (source == Inventory::INVENTORY && destination == Inventory::STORAGE)
     {
         MessageOut outMsg(CMSG_MOVE_TO_STORAGE);
-        outMsg.writeInt16(static_cast<Sint16>(slot + INVENTORY_OFFSET));
+        outMsg.writeInt16(static_cast<int16_t>(slot + INVENTORY_OFFSET));
         outMsg.writeInt32(amount);
     }
     else if (source == Inventory::STORAGE
              && destination == Inventory::INVENTORY)
     {
         MessageOut outMsg(CSMG_MOVE_FROM_STORAGE);
-        outMsg.writeInt16(static_cast<Sint16>(slot + STORAGE_OFFSET));
+        outMsg.writeInt16(static_cast<int16_t>(slot + STORAGE_OFFSET));
         outMsg.writeInt32(amount);
     }
 }

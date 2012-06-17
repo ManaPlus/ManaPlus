@@ -46,7 +46,7 @@ extern ServerInfo mapServer;
 
 GameHandler::GameHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_MAP_LOGIN_SUCCESS,
         SMSG_SERVER_PING,

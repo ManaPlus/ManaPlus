@@ -61,15 +61,15 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
     SDL_Surface *surf = convertTo32Bit(tmpImage);
     SDL_FreeSurface(tmpImage);
 
-    Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
+    uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
     DyePalette *pal = dye.getSPalete();
 
     if (pal)
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h;
+        for (uint32_t *p_end = pixels + surf->w * surf->h;
             pixels != p_end; ++pixels)
         {
-            Uint8 *p = reinterpret_cast<Uint8 *>(pixels);
+            uint8_t *p = reinterpret_cast<uint8_t *>(pixels);
             const int alpha = *p & 255;
             if (!alpha)
                 continue;
@@ -78,10 +78,10 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
     }
     else
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h;
+        for (uint32_t *p_end = pixels + surf->w * surf->h;
              pixels != p_end; ++pixels)
         {
-            const Uint32 p = *pixels;
+            const uint32_t p = *pixels;
             const int alpha = (p >> 24) & 255;
             if (!alpha)
                 continue;
@@ -154,7 +154,7 @@ Image *OpenGLImageHelper::_GLload(SDL_Surface *tmpImage)
     SDL_SetAlpha(tmpImage, 0, SDL_ALPHA_OPAQUE);
 
     // Determine 32-bit masks based on byte order
-    Uint32 rmask, gmask, bmask, amask;
+    uint32_t rmask, gmask, bmask, amask;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     rmask = 0xff000000;
     gmask = 0x00ff0000;

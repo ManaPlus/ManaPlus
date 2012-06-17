@@ -46,7 +46,7 @@
 
 #include "debug.h"
 
-Image::Image(SDL_Surface *image, bool hasAlphaChannel0, Uint8 *alphaChannel):
+Image::Image(SDL_Surface *image, bool hasAlphaChannel0, uint8_t *alphaChannel):
     mAlpha(1.0f),
     mHasAlphaChannel(hasAlphaChannel0),
     mSDLSurface(image),
@@ -67,8 +67,8 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel0, Uint8 *alphaChannel):
 
     if (mSDLSurface)
     {
-        mBounds.w = static_cast<Uint16>(mSDLSurface->w);
-        mBounds.h = static_cast<Uint16>(mSDLSurface->h);
+        mBounds.w = static_cast<uint16_t>(mSDLSurface->w);
+        mBounds.h = static_cast<uint16_t>(mSDLSurface->h);
 
         mLoaded = true;
     }
@@ -97,8 +97,8 @@ Image::Image(GLuint glimage, int width, int height,
 {
     mBounds.x = 0;
     mBounds.y = 0;
-    mBounds.w = static_cast<Uint16>(width);
-    mBounds.h = static_cast<Uint16>(height);
+    mBounds.w = static_cast<uint16_t>(width);
+    mBounds.h = static_cast<uint16_t>(height);
 
     if (mGLImage)
     {
@@ -265,16 +265,16 @@ void Image::setAlpha(float alpha)
             for (int i = i1; i <= i2; i++)
             {
                 // Only change the pixel if it was visible at load time...
-                Uint8 sourceAlpha = mAlphaChannel[i];
+                uint8_t sourceAlpha = mAlphaChannel[i];
                 if (sourceAlpha > 0)
                 {
-                    Uint8 a = static_cast<Uint8>(
+                    uint8_t a = static_cast<uint8_t>(
                         static_cast<float>(sourceAlpha) * mAlpha);
 
-                    Uint32 c = (static_cast<Uint32*>(mSDLSurface->pixels))[i];
+                    uint32_t c = (static_cast<uint32_t*>(mSDLSurface->pixels))[i];
                     c &= ~fmt->Amask;
                     c |= ((a >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
-                    (static_cast<Uint32*>(mSDLSurface->pixels))[i] = c;
+                    (static_cast<uint32_t*>(mSDLSurface->pixels))[i] = c;
                 }
             }
 

@@ -41,7 +41,7 @@ namespace TmwAthena
 
 TradeHandler::TradeHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_TRADE_REQUEST,
         SMSG_TRADE_RESPONSE,
@@ -118,7 +118,7 @@ void TradeHandler::addItem(Item *item, int amount)
         return;
 
     MessageOut outMsg(CMSG_TRADE_ITEM_ADD_REQUEST);
-    outMsg.writeInt16(static_cast<Sint16>(
+    outMsg.writeInt16(static_cast<int16_t>(
         item->getInvIndex() + INVENTORY_OFFSET));
     outMsg.writeInt32(amount);
 }

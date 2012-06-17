@@ -62,7 +62,7 @@ extern ServerInfo chatServer;
 
 CharHandler::CharHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         APMSG_CHAR_CREATE_RESPONSE,
         APMSG_CHAR_DELETE_RESPONSE,

@@ -49,7 +49,7 @@ extern Connection *gameServerConnection;
 
 InventoryHandler::InventoryHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_INVENTORY_FULL,
         GPMSG_INVENTORY,

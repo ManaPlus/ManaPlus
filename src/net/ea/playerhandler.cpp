@@ -182,7 +182,7 @@ void PlayerHandler::processWalkResponse(Net::MessageIn &msg)
       * and that the server will send a correction notice
       * otherwise.
       */
-    Uint16 srcX, srcY, dstX, dstY;
+    uint16_t srcX, srcY, dstX, dstY;
     msg.readInt32();    //tick
     msg.readCoordinatePair(srcX, srcY, dstX, dstY);
     if (player_node)

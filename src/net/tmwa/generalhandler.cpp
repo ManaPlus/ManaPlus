@@ -96,7 +96,7 @@ GeneralHandler::GeneralHandler():
     mSpecialHandler(new SpecialHandler),
     mTradeHandler(new TradeHandler)
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_CONNECTION_PROBLEM,
         0

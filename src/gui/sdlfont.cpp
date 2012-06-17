@@ -69,9 +69,9 @@ class SDLTextChunk
         void generate(TTF_Font *font, float alpha)
         {
             SDL_Color sdlCol;
-            sdlCol.b = static_cast<Uint8>(color.b);
-            sdlCol.r = static_cast<Uint8>(color.r);
-            sdlCol.g = static_cast<Uint8>(color.g);
+            sdlCol.b = static_cast<uint8_t>(color.b);
+            sdlCol.r = static_cast<uint8_t>(color.r);
+            sdlCol.g = static_cast<uint8_t>(color.g);
 
             getSafeUtf8String(text, strBuf);
 

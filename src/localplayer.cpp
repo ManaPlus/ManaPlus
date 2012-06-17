@@ -358,7 +358,7 @@ void LocalPlayer::slowLogic()
     if (serverVersion < 4 && mEnableAdvert && !mBlockAdvert
         && mAdvertTime < cur_time)
     {
-        Uint8 smile = FLAG_SPECIAL;
+        uint8_t smile = FLAG_SPECIAL;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             smile += FLAG_SHOP;
 
@@ -1049,7 +1049,7 @@ void LocalPlayer::setDestination(int x, int y)
         }
         else if (mInvertDirection == 1)
         {
-            Uint8 newDir = 0;
+            uint8_t newDir = 0;
             if (mDirection & UP)
                 newDir |= DOWN;
             if (mDirection & LEFT)
@@ -1270,7 +1270,7 @@ bool LocalPlayer::updateSit()
     return true;
 }
 
-bool LocalPlayer::emote(Uint8 emotion)
+bool LocalPlayer::emote(uint8_t emotion)
 {
     if (!Client::limitPackets(PACKET_EMOTE))
         return false;
@@ -2850,7 +2850,7 @@ void LocalPlayer::crazyMoveA()
                 case 'L':
 //                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
-                        Uint8 dir = 0;
+                        uint8_t dir = 0;
                         switch (mDirection)
                         {
                             case UP    : dir = Being::LEFT; break;
@@ -2866,7 +2866,7 @@ void LocalPlayer::crazyMoveA()
                 case 'R':
 //                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
-                        Uint8 dir = 0;
+                        uint8_t dir = 0;
                         switch (mDirection)
                         {
                             case UP    : dir = Being::RIGHT; break;
@@ -2882,7 +2882,7 @@ void LocalPlayer::crazyMoveA()
                 case 'b':
 //                    if (Client::limitPackets(PACKET_DIRECTION))
                     {
-                        Uint8 dir = 0;
+                        uint8_t dir = 0;
                         switch (mDirection)
                         {
                             case UP    : dir = Being::DOWN; break;
@@ -3847,7 +3847,7 @@ void LocalPlayer::imitateDirection(Being *being, unsigned char dir)
 
         if (mFollowMode == 2)
         {
-            Uint8 dir2 = 0;
+            uint8_t dir2 = 0;
             if (dir & Being::LEFT)
                 dir2 |= Being::RIGHT;
             else if (dir & Being::RIGHT)
@@ -4244,7 +4244,7 @@ void LocalPlayer::updateStatus()
 {
     if (serverVersion >= 4 && mEnableAdvert)
     {
-        Uint8 status = 0;
+        uint8_t status = 0;
         if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
             status += FLAG_SHOP;
 

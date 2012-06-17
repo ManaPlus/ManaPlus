@@ -165,7 +165,7 @@ class Being : public ActorSprite, public ConfigListener
          * @param subtype partly determines the type of the being
          * @param map     the map the being is on
          */
-        Being(int id, Type type, Uint16 subtype, Map *map);
+        Being(int id, Type type, uint16_t subtype, Map *map);
 
         virtual ~Being();
 
@@ -406,13 +406,13 @@ class Being : public ActorSprite, public ConfigListener
          */
         void drawEmotion(Graphics *graphics, int offsetX, int offsetY);
 
-        Uint16 getSubType() const
+        uint16_t getSubType() const
         { return mSubType; }
 
          /**
           * Set Being's subtype (mostly for view for monsters and NPCs)
           */
-        void setSubtype(Uint16 subtype);
+        void setSubtype(uint16_t subtype);
 
         const BeingInfo *getInfo() const
         { return mInfo; }
@@ -483,18 +483,18 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the current direction.
          */
-        Uint8 getDirection() const
+        uint8_t getDirection() const
         { return mDirection; }
 
         /**
          * Sets the current direction.
          */
-        virtual void setDirection(Uint8 direction);
+        virtual void setDirection(uint8_t direction);
 
-        virtual void setDirectionDelayed(Uint8 direction)
+        virtual void setDirectionDelayed(uint8_t direction)
         { mDirectionDelayed = direction; }
 
-        Uint8 getDirectionDelayed() const
+        uint8_t getDirectionDelayed() const
         { return mDirectionDelayed; }
 
         /**
@@ -550,9 +550,9 @@ class Being : public ActorSprite, public ConfigListener
          * Set the Emoticon type and time displayed above
          * the being.
          */
-        void setEmote(Uint8 emotion, int emote_time);
+        void setEmote(uint8_t emotion, int emote_time);
 
-        void setState(Uint8 state);
+        void setState(uint8_t state);
 
         /**
          * Get the current Emoticon type displayed above
@@ -694,9 +694,9 @@ class Being : public ActorSprite, public ConfigListener
         int getHP() const
         { return mHP; }
 
-        Uint8 calcDirection(int dstX, int dstY) const;
+        uint8_t calcDirection(int dstX, int dstY) const;
 
-        Uint8 calcDirection() const;
+        uint8_t calcDirection() const;
 
         void setAttackDelay(int n)
         { mAttackDelay = n; }
@@ -819,12 +819,12 @@ class Being : public ActorSprite, public ConfigListener
         int mAttackSpeed;     /**< Attack speed */
 
         Action mAction;       /**< Action the being is performing */
-        Uint16 mSubType;      /**< Subtype (graphical view, basically) */
+        uint16_t mSubType;      /**< Subtype (graphical view, basically) */
 
-        Uint8 mDirection;               /**< Facing direction */
-        Uint8 mDirectionDelayed;        /**< Facing direction */
+        uint8_t mDirection;               /**< Facing direction */
+        uint8_t mDirectionDelayed;        /**< Facing direction */
 
-        Uint8 mSpriteDirection;         /**< Facing direction */
+        uint8_t mSpriteDirection;         /**< Facing direction */
         std::string mName;              /**< Name of character */
         std::string mRaceName;
         std::string mPartyName;

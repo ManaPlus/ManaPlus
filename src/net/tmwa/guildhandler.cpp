@@ -38,7 +38,7 @@ namespace TmwAthena
 
 GuildHandler::GuildHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_GUILD_CREATE_RESPONSE,
         SMSG_GUILD_POSITION_INFO,
@@ -264,7 +264,7 @@ void GuildHandler::chat(int guildId A_UNUSED, const std::string &text)
 
     std::string str = player_node->getName() + " : " + text;
     MessageOut msg(CMSG_GUILD_MESSAGE);
-    msg.writeInt16(static_cast<Uint16>(str.size() + 4));
+    msg.writeInt16(static_cast<uint16_t>(str.size() + 4));
     msg.writeString(str, static_cast<int>(str.length()));
 }
 

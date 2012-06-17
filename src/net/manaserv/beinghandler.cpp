@@ -51,7 +51,7 @@ namespace ManaServ
 
 BeingHandler::BeingHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_BEING_ATTACK,
         GPMSG_BEING_ENTER,

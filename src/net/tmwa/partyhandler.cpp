@@ -43,7 +43,7 @@ namespace TmwAthena
 PartyHandler::PartyHandler() :
     Ea::PartyHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_PARTY_CREATE,
         SMSG_PARTY_INFO,
@@ -183,7 +183,7 @@ void PartyHandler::kick(const std::string &name)
 void PartyHandler::chat(const std::string &text)
 {
     MessageOut outMsg(CMSG_PARTY_MESSAGE);
-    outMsg.writeInt16(static_cast<Sint16>(text.length() + 4));
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 

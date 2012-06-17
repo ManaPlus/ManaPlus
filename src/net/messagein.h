@@ -58,7 +58,7 @@ class MessageIn
 
         virtual unsigned char readInt8();             /**< Reads a byte. */
 
-        virtual Sint16 readInt16() = 0;        /**< Reads a short. */
+        virtual int16_t readInt16() = 0;        /**< Reads a short. */
 
         virtual int readInt32() = 0;        /**< Reads a long. */
 
@@ -66,20 +66,20 @@ class MessageIn
          * Reads a 3-byte block containing tile-based coordinates. Used by
          * manaserv.
          */
-        virtual void readCoordinates(Uint16 &x, Uint16 &y);
+        virtual void readCoordinates(uint16_t &x, uint16_t &y);
 
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y
          * coordinates and direction.
          */
-        virtual void readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction);
+        virtual void readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction);
 
         /**
          * Reads a special 5 byte block used by eAthena, containing a source
          * and destination coordinate pair.
          */
-        virtual void readCoordinatePair(Uint16 &srcX, Uint16 &srcY,
-                                        Uint16 &dstX, Uint16 &dstY);
+        virtual void readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
+                                        uint16_t &dstX, uint16_t &dstY);
 
         /**
          * Skips a given number of bytes.

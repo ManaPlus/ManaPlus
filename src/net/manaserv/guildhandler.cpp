@@ -55,7 +55,7 @@ extern Connection *chatServerConnection;
 
 GuildHandler::GuildHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         CPMSG_GUILD_CREATE_RESPONSE,
         CPMSG_GUILD_INVITE_RESPONSE,

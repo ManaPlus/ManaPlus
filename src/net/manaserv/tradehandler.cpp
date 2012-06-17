@@ -83,7 +83,7 @@ namespace
 TradeHandler::TradeHandler():
     mAcceptTradeRequests(true)
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_TRADE_REQUEST,
         GPMSG_TRADE_CANCEL,

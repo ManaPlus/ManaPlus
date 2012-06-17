@@ -50,7 +50,7 @@ namespace TmwAthena
 
 AdminHandler::AdminHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_ADMIN_KICK_ACK,
         0
@@ -78,14 +78,14 @@ void AdminHandler::handleMessage(Net::MessageIn &msg)
 void AdminHandler::announce(const std::string &text)
 {
     MessageOut outMsg(CMSG_ADMIN_ANNOUNCE);
-    outMsg.writeInt16(static_cast<Sint16>(text.length() + 4));
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 
 void AdminHandler::localAnnounce(const std::string &text)
 {
     MessageOut outMsg(CMSG_ADMIN_LOCAL_ANNOUNCE);
-    outMsg.writeInt16(static_cast<Sint16>(text.length() + 4));
+    outMsg.writeInt16(static_cast<int16_t>(text.length() + 4));
     outMsg.writeString(text, static_cast<int>(text.length()));
 }
 

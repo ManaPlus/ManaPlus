@@ -220,6 +220,7 @@ void NpcDialog::showCloseButton()
 
 void NpcDialog::action(const gcn::ActionEvent &event)
 {
+    logger->log(event.getId());
     if (event.getId() == "ok")
     {
         if (mActionState == NPC_ACTION_NEXT)

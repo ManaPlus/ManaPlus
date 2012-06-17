@@ -45,7 +45,7 @@ extern ServerInfo chatServer;
 
 GameHandler::GameHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         GPMSG_DISCONNECT_RESPONSE,
         0

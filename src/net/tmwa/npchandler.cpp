@@ -47,7 +47,7 @@ namespace TmwAthena
 NpcHandler::NpcHandler() :
     mRequestLang(false)
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_NPC_CHOICE,
         SMSG_NPC_MESSAGE,
@@ -156,7 +156,7 @@ void NpcHandler::integerInput(int npcId, int value)
 void NpcHandler::stringInput(int npcId, const std::string &value)
 {
     MessageOut outMsg(CMSG_NPC_STR_RESPONSE);
-    outMsg.writeInt16(static_cast<Sint16>(value.length() + 9));
+    outMsg.writeInt16(static_cast<int16_t>(value.length() + 9));
     outMsg.writeInt32(npcId);
     outMsg.writeString(value, static_cast<int>(value.length()));
     outMsg.writeInt8(0); // Prevent problems with string reading
@@ -183,16 +183,16 @@ void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
     if (serverVersion > 0)
     {
         outMsg.writeInt16(10); // One item (length of packet)
-        outMsg.writeInt16(static_cast<Sint16>(amount));
-        outMsg.writeInt16(static_cast<Sint16>(itemId));
+        outMsg.writeInt16(static_cast<int16_t>(amount));
+        outMsg.writeInt16(static_cast<int16_t>(itemId));
         outMsg.writeInt8(color);
         outMsg.writeInt8(0);
     }
     else
     {
         outMsg.writeInt16(8); // One item (length of packet)
-        outMsg.writeInt16(static_cast<Sint16>(amount));
-        outMsg.writeInt16(static_cast<Sint16>(itemId));
+        outMsg.writeInt16(static_cast<int16_t>(amount));
+        outMsg.writeInt16(static_cast<int16_t>(itemId));
     }
 }
 
@@ -200,8 +200,8 @@ void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)
 {
     MessageOut outMsg(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(8); // One item (length of packet)
-    outMsg.writeInt16(static_cast<Sint16>(itemId + INVENTORY_OFFSET));
-    outMsg.writeInt16(static_cast<Sint16>(amount));
+    outMsg.writeInt16(static_cast<int16_t>(itemId + INVENTORY_OFFSET));
+    outMsg.writeInt16(static_cast<int16_t>(amount));
 }
 
 int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)

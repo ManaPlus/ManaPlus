@@ -45,7 +45,7 @@ extern ServerInfo charServer;
 
 LoginHandler::LoginHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_UPDATE_HOST,
         SMSG_UPDATE_HOST2,

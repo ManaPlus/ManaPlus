@@ -368,7 +368,7 @@ void Gui::draw()
     getTop()->draw(mGraphics);
 
     int mouseX, mouseY;
-    Uint8 button = SDL_GetMouseState(&mouseX, &mouseY);
+    uint8_t button = SDL_GetMouseState(&mouseX, &mouseY);
 
     if ((SDL_GetAppState() & SDL_APPMOUSEFOCUS || button & SDL_BUTTON(1))
         && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0f)

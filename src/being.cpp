@@ -209,7 +209,7 @@ std::list<BeingCacheEntry*> beingInfoCache;
 
 
 // TODO: mWalkTime used by eAthena only
-Being::Being(int id, Type type, Uint16 subtype, Map *map):
+Being::Being(int id, Type type, uint16_t subtype, Map *map):
     ActorSprite(id),
     mInfo(BeingInfo::unknown),
     mActionTime(0),
@@ -309,7 +309,7 @@ Being::~Being()
     mText = nullptr;
 }
 
-void Being::setSubtype(Uint16 subtype)
+void Being::setSubtype(uint16_t subtype)
 {
     if (!mInfo)
         return;
@@ -736,7 +736,7 @@ void Being::handleAttack(Being *victim, int damage,
 
     if (this != player_node)
     {
-        Uint8 dir = calcDirection(victim->getTileX(), victim->getTileY());
+        uint8_t dir = calcDirection(victim->getTileX(), victim->getTileY());
         if (dir)
             setDirection(dir);
     }
@@ -769,7 +769,7 @@ void Being::handleSkill(Being *victim, int damage, int skillId)
 
     if (this != player_node)
     {
-        Uint8 dir = calcDirection(victim->getTileX(), victim->getTileY());
+        uint8_t dir = calcDirection(victim->getTileX(), victim->getTileY());
         if (dir)
             setDirection(dir);
     }
@@ -1125,7 +1125,7 @@ void Being::setAction(Action action, int attackType A_UNUSED)
         mActionTime = tick_time;
 }
 
-void Being::setDirection(Uint8 direction)
+void Being::setDirection(uint8_t direction)
 {
     if (mDirection == direction)
         return;
@@ -1172,9 +1172,9 @@ void Being::setDirection(Uint8 direction)
     recalcSpritesOrder();
 }
 
-Uint8 Being::calcDirection() const
+uint8_t Being::calcDirection() const
 {
-    Uint8 dir = 0;
+    uint8_t dir = 0;
     if (mDest.x > mX)
         dir |= RIGHT;
     else if (mDest.x < mX)
@@ -1186,9 +1186,9 @@ Uint8 Being::calcDirection() const
     return dir;
 }
 
-Uint8 Being::calcDirection(int dstX, int dstY) const
+uint8_t Being::calcDirection(int dstX, int dstY) const
 {
-    Uint8 dir = 0;
+    uint8_t dir = 0;
     if (dstX > mX)
         dir |= RIGHT;
     else if (dstX < mX)
@@ -1211,7 +1211,7 @@ void Being::nextTile()
     Position pos = mPath.front();
     mPath.pop_front();
 
-    Uint8 dir = calcDirection(pos.x, pos.y);
+    uint8_t dir = calcDirection(pos.x, pos.y);
     if (dir)
         setDirection(dir);
 
@@ -1315,7 +1315,7 @@ void Being::logic()
                 else
                      direction |= (dir.y > 0) ? DOWN : UP;
 
-                setDirection(static_cast<Uint8>(direction));
+                setDirection(static_cast<uint8_t>(direction));
             }
         }
         else if (!mPath.empty())
@@ -2599,7 +2599,7 @@ void Being::saveComment(const std::string &name,
     resman->saveTextFile(dir, "comment.txt", name + "\n" + comment);
 }
 
-void Being::setState(Uint8 state)
+void Being::setState(uint8_t state)
 {
     bool shop = (state & FLAG_SHOP);
     bool away = (state & FLAG_AWAY);
@@ -2618,7 +2618,7 @@ void Being::setState(Uint8 state)
     }
 }
 
-void Being::setEmote(Uint8 emotion, int emote_time)
+void Being::setEmote(uint8_t emotion, int emote_time)
 {
     if ((emotion & FLAG_SPECIAL) == FLAG_SPECIAL)
     {

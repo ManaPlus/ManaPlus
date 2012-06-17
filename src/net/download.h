@@ -66,7 +66,7 @@ class Download
          */
         void noCache();
 
-        void setFile(const std::string &filename, Sint64 adler32 = -1);
+        void setFile(const std::string &filename, int64_t adler32 = -1);
 
         void setWriteFunction(WriteFunction write);
 

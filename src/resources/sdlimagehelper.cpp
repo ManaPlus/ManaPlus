@@ -65,15 +65,15 @@ Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
     surf = SDL_ConvertSurface(tmpImage, &rgba, SDL_SWSURFACE);
     SDL_FreeSurface(tmpImage);
 
-    Uint32 *pixels = static_cast<Uint32 *>(surf->pixels);
+    uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
     DyePalette *pal = dye.getSPalete();
 
     if (pal)
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h;
+        for (uint32_t *p_end = pixels + surf->w * surf->h;
              pixels != p_end; ++pixels)
         {
-            Uint8 *p = reinterpret_cast<Uint8 *>(pixels);
+            uint8_t *p = reinterpret_cast<uint8_t *>(pixels);
             const int alpha = *p & 255;
             if (!alpha)
                 continue;
@@ -82,10 +82,10 @@ Resource *SDLImageHelper::load(SDL_RWops *rw, Dye const &dye)
     }
     else
     {
-        for (Uint32 *p_end = pixels + surf->w * surf->h;
+        for (uint32_t *p_end = pixels + surf->w * surf->h;
              pixels != p_end; ++pixels)
         {
-            const Uint32 p = *pixels;
+            const uint32_t p = *pixels;
             const int alpha = p & 255;
             if (!alpha)
                 continue;
@@ -121,23 +121,23 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
     const int sz = tmpImage->w * tmpImage->h;
 
     // The alpha channel to be filled with alpha values
-    Uint8 *alphaChannel = new Uint8[sz];
+    uint8_t *alphaChannel = new uint8_t[sz];
 
     const SDL_PixelFormat * const fmt = tmpImage->format;
     if (fmt->Amask)
     {
         for (int i = 0; i < sz; ++ i)
         {
-            Uint32 c = (static_cast<Uint32*>(tmpImage->pixels))[i];
+            uint32_t c = (static_cast<uint32_t*>(tmpImage->pixels))[i];
 
             unsigned v = (c & fmt->Amask) >> fmt->Ashift;
-            Uint8 a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
+            uint8_t a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
 
-            Uint8 a2 = static_cast<Uint8>(static_cast<float>(a) * alpha);
+            uint8_t a2 = static_cast<uint8_t>(static_cast<float>(a) * alpha);
 
             c &= ~fmt->Amask;
             c |= ((a2 >> fmt->Aloss) << fmt->Ashift & fmt->Amask);
-            (static_cast<Uint32*>(tmpImage->pixels))[i] = c;
+            (static_cast<uint32_t*>(tmpImage->pixels))[i] = c;
 
             if (a != 255)
                 hasAlpha = true;
@@ -206,7 +206,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
     const int sz = tmpImage->w * tmpImage->h;
 
     // The alpha channel to be filled with alpha values
-    Uint8 *alphaChannel = new Uint8[sz];
+    uint8_t *alphaChannel = new uint8_t[sz];
 
     // Figure out whether the image uses its alpha layer
     if (!tmpImage->format->palette)
@@ -216,9 +216,9 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
         {
             for (int i = 0; i < sz; ++ i)
             {
-                unsigned v = ((static_cast<Uint32*>(tmpImage->pixels))[i]
+                unsigned v = ((static_cast<uint32_t*>(tmpImage->pixels))[i]
                     & fmt->Amask) >> fmt->Ashift;
-                Uint8 a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
+                uint8_t a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
 
                 if (a != 255)
                     hasAlpha = true;

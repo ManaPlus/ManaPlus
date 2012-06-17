@@ -139,7 +139,7 @@ public:
      * Sets the actor's stun mode. If zero, the being is `normal', otherwise it
      * is `stunned' in some fashion.
      */
-    void setStunMode(Uint16 stunMode)
+    void setStunMode(uint16_t stunMode)
     {
         if (mStunMode != stunMode)
             updateStunMode(mStunMode, stunMode);
@@ -154,7 +154,7 @@ public:
      *
      * These are NOT the same as the status effect indices.
      */
-    void setStatusEffectBlock(int offset, Uint16 flags);
+    void setStatusEffectBlock(int offset, uint16_t flags);
 
     virtual void setAlpha(float alpha)
     { CompoundSprite::setAlpha(alpha); }
@@ -217,7 +217,7 @@ protected:
                             std::string color = "");
 
     int mId;
-    Uint16 mStunMode;               /**< Stun mode; zero if not stunned */
+    uint16_t mStunMode;               /**< Stun mode; zero if not stunned */
     std::set<int> mStatusEffects;   /**< set of active status effects */
 
     ParticleList mStunParticleEffects;

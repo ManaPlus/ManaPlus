@@ -44,7 +44,7 @@ namespace TmwAthena
          */
         MessageIn(const char *data, unsigned int length);
 
-        Sint16 readInt16();            /**< Reads a short. */
+        int16_t readInt16();            /**< Reads a short. */
         int readInt32();            /**< Reads a long. */
 };
 

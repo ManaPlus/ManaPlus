@@ -39,7 +39,7 @@ class PlayerHandler
 
         virtual void stopAttack() = 0;
 
-        virtual void emote(Uint8 emoteId) = 0;
+        virtual void emote(uint8_t emoteId) = 0;
 
         virtual void increaseAttribute(int attr) = 0;
 
@@ -73,7 +73,7 @@ class PlayerHandler
 
         virtual void requestOnlineList() = 0;
 
-        virtual void updateStatus(Uint8 status) = 0;
+        virtual void updateStatus(uint8_t status) = 0;
 };
 
 } // namespace Net

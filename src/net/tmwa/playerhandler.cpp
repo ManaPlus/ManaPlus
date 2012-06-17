@@ -43,7 +43,7 @@ namespace TmwAthena
 
 PlayerHandler::PlayerHandler()
 {
-    static const Uint16 _messages[] =
+    static const uint16_t _messages[] =
     {
         SMSG_WALK_RESPONSE,
         SMSG_PLAYER_WARP,
@@ -125,7 +125,7 @@ void PlayerHandler::stopAttack()
     MessageOut outMsg(CMSG_PLAYER_STOP_ATTACK);
 }
 
-void PlayerHandler::emote(Uint8 emoteId)
+void PlayerHandler::emote(uint8_t emoteId)
 {
     MessageOut outMsg(CMSG_PLAYER_EMOTE);
     outMsg.writeInt8(emoteId);
@@ -136,7 +136,7 @@ void PlayerHandler::increaseAttribute(int attr)
     if (attr >= STR && attr <= LUK)
     {
         MessageOut outMsg(CMSG_STAT_UPDATE_REQUEST);
-        outMsg.writeInt16(static_cast<Sint16>(attr));
+        outMsg.writeInt16(static_cast<int16_t>(attr));
         outMsg.writeInt8(1);
     }
 }
@@ -277,7 +277,7 @@ void PlayerHandler::processOnlineList(Net::MessageIn &msg)
     delete [] start;
 }
 
-void PlayerHandler::updateStatus(Uint8 status)
+void PlayerHandler::updateStatus(uint8_t status)
 {
     MessageOut outMsg(CMSG_SET_STATUS);
     outMsg.writeInt8(status);

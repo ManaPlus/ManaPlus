@@ -516,7 +516,7 @@ public:
 class PIS_emote : public PlayerIgnoreStrategy
 {
 public:
-    PIS_emote(Uint8 emote_nr, const std::string &description,
+    PIS_emote(uint8_t emote_nr, const std::string &description,
               const std::string &shortname) :
         mEmotion(emote_nr)
     {
@@ -531,7 +531,7 @@ public:
 
         being->setEmote(mEmotion, IGNORE_EMOTE_TIME);
     }
-    Uint8 mEmotion;
+    uint8_t mEmotion;
 };
 
 std::vector<PlayerIgnoreStrategy *> *

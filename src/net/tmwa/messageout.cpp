@@ -56,29 +56,29 @@ void MessageOut::expand(size_t bytes)
     PacketCounters::incOutBytes(static_cast<int>(bytes));
 }
 
-void MessageOut::writeInt16(Sint16 value)
+void MessageOut::writeInt16(int16_t value)
 {
     DEBUGLOG("writeInt16: " + toString(static_cast<int>(value)));
     expand(2);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    Sint16 swap = SDL_Swap16(value);
-    memcpy(mData + mPos, &swap, sizeof(Sint16));
+    int16_t swap = SDL_Swap16(value);
+    memcpy(mData + mPos, &swap, sizeof(int16_t));
 #else
-    memcpy(mData + mPos, &value, sizeof(Sint16));
+    memcpy(mData + mPos, &value, sizeof(int16_t));
 #endif
     mPos += 2;
     PacketCounters::incOutBytes(2);
 }
 
-void MessageOut::writeInt32(Sint32 value)
+void MessageOut::writeInt32(int32_t value)
 {
     DEBUGLOG("writeInt32: " + toString(value));
     expand(4);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    Sint32 swap = SDL_Swap32(value);
-    memcpy(mData + mPos, &swap, sizeof(Sint32));
+    int32_t swap = SDL_Swap32(value);
+    memcpy(mData + mPos, &swap, sizeof(int32_t));
 #else
-    memcpy(mData + mPos, &value, sizeof(Sint32));
+    memcpy(mData + mPos, &value, sizeof(int32_t));
 #endif
     mPos += 4;
     PacketCounters::incOutBytes(4);

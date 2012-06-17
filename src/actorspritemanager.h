@@ -57,7 +57,7 @@ class ActorSpriteManager: public ConfigListener
         /**
          * Create a Being and add it to the list of ActorSprites.
          */
-        Being *createBeing(int id, ActorSprite::Type type, Uint16 subtype);
+        Being *createBeing(int id, ActorSprite::Type type, uint16_t subtype);
 
         /**
          * Create a FloorItem and add it to the list of ActorSprites.
@@ -189,13 +189,13 @@ class ActorSpriteManager: public ConfigListener
          */
         void clear();
 
-        std::vector<Uint32> blockedBeings;
+        std::vector<uint32_t> blockedBeings;
 
-        void addBlock(Uint32 id);
+        void addBlock(uint32_t id);
 
-        void deleteBlock(Uint32 id);
+        void deleteBlock(uint32_t id);
 
-        bool isBlocked(Uint32 id);
+        bool isBlocked(uint32_t id);
 
         void printAllToChat() const;
 

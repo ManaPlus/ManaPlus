@@ -60,7 +60,7 @@ unsigned char MessageIn::readInt8()
     return value;
 }
 
-void MessageIn::readCoordinates(Uint16 &x, Uint16 &y)
+void MessageIn::readCoordinates(uint16_t &x, uint16_t &y)
 {
     if (mPos + 3 <= mLength)
     {
@@ -75,13 +75,13 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y)
              + toString(static_cast<int>(y)));
 }
 
-void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
+void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
 {
-    Uint8 serverDir = 0;
+    uint8_t serverDir = 0;
     if (mPos + 3 <= mLength)
     {
         const char *data = mData + mPos;
-        Sint16 temp;
+        int16_t temp;
 
         temp = MAKEWORD(data[1] & 0x00c0, data[0] & 0x00ff);
         x = static_cast<unsigned short>(temp >> 6);
@@ -139,13 +139,13 @@ void MessageIn::readCoordinates(Uint16 &x, Uint16 &y, Uint8 &direction)
         static_cast<int>(serverDir)));
 }
 
-void MessageIn::readCoordinatePair(Uint16 &srcX, Uint16 &srcY,
-                                   Uint16 &dstX, Uint16 &dstY)
+void MessageIn::readCoordinatePair(uint16_t &srcX, uint16_t &srcY,
+                                   uint16_t &dstX, uint16_t &dstY)
 {
     if (mPos + 5 <= mLength)
     {
         const char *data = mData + mPos;
-        Sint16 temp;
+        int16_t temp;
 
         temp = MAKEWORD(data[3], data[2] & 0x000f);
         dstX = static_cast<unsigned short>(temp >> 2);
