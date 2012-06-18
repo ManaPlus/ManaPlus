@@ -543,6 +543,8 @@ void Game::logic()
         actorSpriteManager->logic();
     if (particleEngine)
         particleEngine->update();
+    if (mCurrentMap)
+        mCurrentMap->update();
 
     cur_time = static_cast<int>(time(nullptr));
 }
@@ -561,9 +563,6 @@ void Game::slowLogic()
         socialWindow->slowLogic();
     if (whoIsOnline)
         whoIsOnline->slowLogic();
-
-    if (mCurrentMap)
-        mCurrentMap->update();
 
     Being::reReadConfig();
     if (killStats)
