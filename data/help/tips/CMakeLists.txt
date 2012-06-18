@@ -15,6 +15,7 @@ SET(FILES
     12.txt
     13.txt
     14.txt
+    15.txt
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/help/tips)

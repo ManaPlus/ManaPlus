@@ -80,6 +80,7 @@ HelpWindow::HelpWindow():
     layout.setRowHeight(0, Layout::AUTO_SET);
 
     loadWindowState();
+    loadTags();
 }
 
 void HelpWindow::action(const gcn::ActionEvent &event)
@@ -119,4 +120,57 @@ void HelpWindow::loadFile(const std::string &file)
 
     for (unsigned int i = 0; i < lines.size(); ++i)
         mBrowserBox->addRow(lines[i]);
+}
+
+void HelpWindow::loadTags()
+{
+    std::string helpPath = branding.getStringValue("helpPath");
+    if (helpPath.empty())
+        helpPath = paths.getStringValue("help");
+    StringVect lines;
+    ResourceManager::loadTextFile(helpPath + "tags.idx", lines);
+    for (StringVectCIter it = lines.begin(), it_end = lines.end();
+         it != it_end; ++ it)
+    {
+        const std::string &str = *it;
+        size_t idx = str.find('|');
+        if (idx != std::string::npos)
+            mTagFileMap[str.substr(idx + 1)].insert(str.substr(0, idx));
+    }
+}
+
+void HelpWindow::search(const std::string &text0)
+{
+    std::string text = text0;
+    toLower(text);
+    if (mTagFileMap.find(text) == mTagFileMap.end())
+    {
+        loadHelp("searchnotfound");
+    }
+    else
+    {
+        const HelpNames &names = mTagFileMap[text];
+        if (names.size() == 1)
+        {
+            loadHelp(*names.begin());
+        }
+        else
+        {
+            if (!translator)
+                return;
+            mBrowserBox->clearRows();
+            loadFile("header");
+            loadFile("searchmany");
+            for (HelpNamesCIter it = names.begin(), it_end = names.end();
+                 it != it_end; ++ it)
+            {
+                const char *str = (*it).c_str();
+                mBrowserBox->addRow(strprintf(" -> @@%s|%s@@", str,
+                    translator->getChar(str)));
+            }
+            loadFile("footer");
+            mScrollArea->setVerticalScrollAmount(0);
+            setVisible(true);
+        }
+    }
 }

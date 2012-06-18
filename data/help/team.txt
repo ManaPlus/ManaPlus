@@ -13,7 +13,7 @@
 ##9Mihail Barer (Necromonger) <>
  
 ##3== <<Translators>> ==
-##9alastrim                                                   (jp)
+##9alastrim                                                   (pt)
 ##9Aline Ferraz de Souza (Freya) <freya.df gmail com>         (pt, pt_BR)
 ##9Andrei Karas (4144) <akaras inbox ru>                      (ru)
 ##9Bernard Hugonnet (Nard) <>                                 (fr)

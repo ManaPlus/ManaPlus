@@ -177,6 +177,8 @@ class ChatTab : public Tab
 
         virtual void handleCommand(const std::string &msg);
 
+        virtual void handleHelp(const std::string &msg);
+
         virtual void getAutoCompleteList(StringVect&) const
         {}
 

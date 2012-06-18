@@ -30,6 +30,8 @@
 #include "logger.h"
 #include "sound.h"
 
+#include "gui/helpwindow.h"
+
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/itemlinkhandler.h"
@@ -379,11 +381,18 @@ void ChatTab::chatInput(const std::string &message)
     if (commandHandler)
         commandHandler->replaceVars(msg);
 
-    // Prepare ordinary message
-    if (msg[0] != '/')
-        handleInput(msg);
-    else
-        handleCommand(std::string(msg, 1));
+    switch (msg[0])
+    {
+        case '/':
+            handleCommand(std::string(msg, 1));
+            break;
+        case '?':
+            handleHelp(std::string(msg, 1));
+            break;
+        default:
+            handleInput(msg);
+            break;
+    }
 }
 
 void ChatTab::scroll(int amount)
@@ -412,6 +421,12 @@ void ChatTab::handleCommand(const std::string &msg)
 {
     if (commandHandler)
         commandHandler->handleCommands(msg, this);
+}
+
+void ChatTab::handleHelp(const std::string &msg)
+{
+    if (commandHandler)
+        helpWindow->search(msg);
 }
 
 bool ChatTab::handleCommands(const std::string &type, const std::string &args)

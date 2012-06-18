@@ -30,6 +30,9 @@
 
 #include "localconsts.h"
 
+#include <map>
+#include <set>
+
 class BrowserBox;
 class LinkHandler;
 
@@ -37,6 +40,10 @@ namespace gcn
 {
     class ScrollArea;
 }
+
+typedef std::set<std::string> HelpNames;
+typedef HelpNames::const_iterator HelpNamesCIter;
+typedef std::map<std::string, HelpNames> HelpTagsMap;
 
 /**
  * The help dialog.
@@ -66,11 +73,19 @@ class HelpWindow : public Window, public LinkHandler,
          */
         void loadHelp(const std::string &helpFile);
 
+        /**
+         * Seach for given text in tags.
+         */
+        void search(const std::string &text);
+
     private:
+        void loadTags();
+
         void loadFile(const std::string &file);
 
         BrowserBox *mBrowserBox;
         gcn::ScrollArea *mScrollArea;
+        HelpTagsMap mTagFileMap;
 };
 
 extern HelpWindow *helpWindow;

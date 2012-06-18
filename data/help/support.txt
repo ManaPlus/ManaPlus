@@ -12,6 +12,11 @@
  <<Visit IRC channel:>>
 ##2     #evolonline ##P@##2 irc.freenode.net
  
+<< For ManaPlus Online support:
+ 
+ <<Visit IRC channel:>>
+##2     #manaplus #evolonline ##P@##2 irc.freenode.net
+ 
  
 << For TMW support:
  
@@ -23,4 +28,3 @@
  developers and how to contact them.>>
  
  <<For other server look servers pages for support.>>
-
