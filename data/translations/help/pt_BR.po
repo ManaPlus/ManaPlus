@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-04-28 13:10+0000\n"
+"PO-Revision-Date: 2012-06-18 22:42+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.net/projects/p/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -89,6 +89,9 @@ msgstr "##2Control Esquerdo##P              \"Atacar\""
 
 msgid "/priceload - load shop price from disc."
 msgstr "/priceload - Carrega preços de shop do disco."
+
+msgid "Search string not found."
+msgstr ""
 
 msgid "##2s##P                        \"Sit\""
 msgstr "##2s##P                        \"Senta\""
@@ -198,8 +201,8 @@ msgstr "##2LeftAlt + 8##P              \"Atalho de smiley 8\""
 msgid "##2RightWinKey##P              \"Ignore input 2\""
 msgstr "##2RightWinKey##P              \"Ignorar entrada 2\""
 
-msgid "##2DOWN##P                     \"Move Down\""
-msgstr "##2DOWN##P                     \"Move para baixo\""
+msgid "/outfit N - wear outfit number N."
+msgstr ""
 
 msgid "Visit IRC channel:"
 msgstr "Visite o canal IRC:"
@@ -209,6 +212,9 @@ msgstr "##2LeftAlt + Equals(=)##P      \"Atalho de smiley 12\""
 
 msgid "/createparty NAME - create party with selected name."
 msgstr "/createparty NAME - cria um grupo com o nome selecionado."
+
+msgid "##2t##P                        \"Talk\""
+msgstr ""
 
 msgid "/heal NICK - heal nick."
 msgstr "/heal NICK - curar o NICK."
@@ -229,6 +235,11 @@ msgstr " - ##2ignored##P:  Você pode ignorar totalmente um jogador.  Você não
 
 msgid "##2RightShift + key##P         \"Move to navigation point\""
 msgstr "##2Shift direito + tecla##P         \"Move para o ponto de navegação\""
+
+msgid ""
+"You can do basic searching in help by using command\n"
+"##2?text"
+msgstr ""
 
 msgid "##24##P                        \"Item Shortcut 4\""
 msgstr "##24##P                        \"Atalho de item 4\""
@@ -259,6 +270,9 @@ msgstr "##2Alt esquerdo + 9##P              \"Atalho de smiley 9\""
 
 msgid "About"
 msgstr "Sobre"
+
+msgid "Look this page for help and downloads:"
+msgstr ""
 
 msgid "Other skills:"
 msgstr "Outras habilidades:"
@@ -294,13 +308,6 @@ msgstr "##2r##P                        \"Havbilitar/desabilitar trocas\""
 msgid "/uptime - show client uptime."
 msgstr "/uptime - mostra o tempo do cliente ativo."
 
-msgid ""
-"The project includes the development of both a client and a server.\n"
-" Others are making worlds using Mana software. The Mana World project\n"
-" is the originator of the Mana project. Mana was split off to further\n"
-" facilitate development of other worlds."
-msgstr "O projeto inclui o desenvolvimento dos dois o cliente e o servidor.\nOutros estão criando mundos utilizando o software Mana. O projeto The Mana World é origem do projeto Mana. Mana foi separada para facilitar ainda mais o desenvolvimento de outros mundos."
-
 msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr "/dumpg - despejar gráficos e algumas outras configurações para chat."
 
@@ -331,6 +338,9 @@ msgstr "Você pode mostrar/esconder barras e botões com o clique direito no men
 msgid "Windows"
 msgstr "Janelas"
 
+msgid "Server news"
+msgstr ""
+
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
 msgstr "##2Alt Esquerdo + 4##P              \"Atalho de smiley 4\""
 
@@ -345,6 +355,9 @@ msgstr "SOBRE O MANAPLUS"
 
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr "##2KeyPad0##P                  \"Muda o tipo de movimentos\""
+
+msgid "Search results"
+msgstr ""
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr "/pseudoaway, /pseudoaway MSG - habilita/desabilita o falso modo ausente."
@@ -447,13 +460,6 @@ msgid "##2RightControl##P             \"Wear Outfit\""
 msgstr "##2RightControl##P             \"Vestir Roupas\""
 
 msgid ""
-"##2ManaPlus##P is a serious effort to create an innovative free and open\n"
-" source MMORPG Client. Mana uses 2D graphics and aims to create a large\n"
-" and diverse interactive world. It is licensed under the GPL, making\n"
-" sure this game can't ever run away from you."
-msgstr ""
-
-msgid ""
 "You can buy or sell items from players shops.\n"
 "Right click on player and select \"Buy\" or \"Sell\""
 msgstr "Você pode comprar ou vender itens em lojas de jogadores. Botão direito do mouse no player e selecione \"Comprar\" ou \"Vender\""
@@ -467,11 +473,6 @@ msgstr "/pricesave - Salva os preços de shop no disco."
 msgid "COMMUNICATION:"
 msgstr "COMUNICAÇÃO:"
 
-msgid ""
-"##2ManaPlus##P is extended client based on code from ##2Mana##P client.\n"
-" Added many features, improved perfomance, stability, security and more."
-msgstr "##2Manaplus##P é uma extensão baseada no código do cliente ##2Mana##P.\nAdicionado muitos recursos, melhorado a performance, estabilidade, segurança e muito mais."
-
 msgid "##2SpaceBar##P                 \"Select OK\""
 msgstr "##2Barra de espaçor##P                 \"Seleciona OK\""
 
@@ -482,6 +483,18 @@ msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr "/friend NICK, /befriend NICK - adiciona o NICK a lista de amigos."
 
 msgid "##2i##P                        \"Switch Quick Drop Counter\""
+msgstr ""
+
+msgid ""
+"##2ManaPlus##P is extended client based on old code from ##2Mana##P client.\n"
+" Added many features, improved perfomance, stability, security and more."
+msgstr ""
+
+msgid ""
+"##2ManaPlus##P is a serious effort to create an innovative free and open\n"
+" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
+" sure this game can't ever run away from you."
 msgstr ""
 
 msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
@@ -511,6 +524,9 @@ msgstr ""
 msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
 " several configuration options:"
+msgstr ""
+
+msgid "Search error"
 msgstr ""
 
 msgid ""
@@ -578,8 +594,8 @@ msgstr ""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr ""
 
-msgid "##2t##P                        \"Talk\""
-msgstr ""
+msgid "##2DOWN##P                     \"Move Down\""
+msgstr "##2DOWN##P                     \"Move para baixo\""
 
 msgid "##2n##P                        \"Target NPC\""
 msgstr ""
@@ -612,9 +628,6 @@ msgid "Powered By"
 msgstr ""
 
 msgid "/disconnect - quick disconnect from server."
-msgstr ""
-
-msgid "/outfit N - wear outfit number N."
 msgstr ""
 
 msgid "/disregard NICK - add nick to disregarded list."

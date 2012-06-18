@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2012-05-23 22:33+0000\n"
-"Last-Translator: BoBaH <BoBaH4spam@ukr.net>\n"
+"PO-Revision-Date: 2012-06-18 22:47+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Russian (http://www.transifex.net/projects/p/manaplus/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -91,6 +91,9 @@ msgstr "##2LeftControl##P              \"Атаковать\""
 
 msgid "/priceload - load shop price from disc."
 msgstr ""
+
+msgid "Search string not found."
+msgstr "Искомоя строка не найдена"
 
 msgid "##2s##P                        \"Sit\""
 msgstr "##2s##P                        \"Сидеть\""
@@ -200,8 +203,8 @@ msgstr ""
 msgid "##2RightWinKey##P              \"Ignore input 2\""
 msgstr ""
 
-msgid "##2DOWN##P                     \"Move Down\""
-msgstr "##2DOWN##P                     \"Двигаться вниз\""
+msgid "/outfit N - wear outfit number N."
+msgstr ""
 
 msgid "Visit IRC channel:"
 msgstr "Посетить IRC канал"
@@ -211,6 +214,9 @@ msgstr ""
 
 msgid "/createparty NAME - create party with selected name."
 msgstr ""
+
+msgid "##2t##P                        \"Talk\""
+msgstr "##2t##P                        \"Говорить\""
 
 msgid "/heal NICK - heal nick."
 msgstr ""
@@ -230,6 +236,11 @@ msgid ""
 msgstr ""
 
 msgid "##2RightShift + key##P         \"Move to navigation point\""
+msgstr ""
+
+msgid ""
+"You can do basic searching in help by using command\n"
+"##2?text"
 msgstr ""
 
 msgid "##24##P                        \"Item Shortcut 4\""
@@ -261,6 +272,9 @@ msgstr ""
 
 msgid "About"
 msgstr "Об игре"
+
+msgid "Look this page for help and downloads:"
+msgstr "Посетите эту страницу для ознакомления\nи скачивания новыой версии:"
 
 msgid "Other skills:"
 msgstr "Другие умения:"
@@ -296,13 +310,6 @@ msgstr ""
 msgid "/uptime - show client uptime."
 msgstr ""
 
-msgid ""
-"The project includes the development of both a client and a server.\n"
-" Others are making worlds using Mana software. The Mana World project\n"
-" is the originator of the Mana project. Mana was split off to further\n"
-" facilitate development of other worlds."
-msgstr " Этот проект включает в себя разработку как клиентской, так и\nсерверной части. Другие люди также создают миры, используя\nпрограммное обеспечение Mana.\nПроект The Mana World является исходным для проекта Mana.\nПроект Mana отделился для дальнейшего продвижения разработки\nновых миров."
-
 msgid "/dumpg - dump graphics and some other settings to chat."
 msgstr ""
 
@@ -333,6 +340,9 @@ msgstr "Панели и кнопки можно показать или скры
 msgid "Windows"
 msgstr "Окна"
 
+msgid "Server news"
+msgstr "Новости сервера"
+
 msgid "##2LeftAlt + 4##P              \"Emote Shortcut 4\""
 msgstr ""
 
@@ -347,6 +357,9 @@ msgstr "Об игре MANAPLUS"
 
 msgid "##2KeyPad0##P                  \"Change move type\""
 msgstr ""
+
+msgid "Search results"
+msgstr "Результат поиска"
 
 msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
 msgstr ""
@@ -380,7 +393,7 @@ msgstr ""
 msgid ""
 "You can set away mode,\n"
 "by type in chat command /away"
-msgstr ""
+msgstr "Вы можете установить рехим отошел,\nнабрав в чате команду /away"
 
 msgid "/move X Y - move to X,Y position in short distance."
 msgstr ""
@@ -449,16 +462,9 @@ msgid "##2RightControl##P             \"Wear Outfit\""
 msgstr ""
 
 msgid ""
-"##2ManaPlus##P is a serious effort to create an innovative free and open\n"
-" source MMORPG Client. Mana uses 2D graphics and aims to create a large\n"
-" and diverse interactive world. It is licensed under the GPL, making\n"
-" sure this game can't ever run away from you."
-msgstr "##2ManaPlus##P - это серьезная работа по созданию инновационного\nсвободного MMORPG-клиента с открытым исходным кодом.\nИгра использует 2D графику и нацелена на создание огромных\nи разнообразных интерактивных миров. Лицензия GPL позволяет\nбыть уверенным в том, что игра никогда не отвернется от Вас."
-
-msgid ""
 "You can buy or sell items from players shops.\n"
 "Right click on player and select \"Buy\" or \"Sell\""
-msgstr ""
+msgstr "Вы можете покупать и продавать предметы\nв пользовательский маназинах.\nНажмите правой кнопкой на пользователе\nи выберите \"Купить\" или \"Продать\""
 
 msgid "/erase NICK - add nick to erased list."
 msgstr ""
@@ -467,12 +473,7 @@ msgid "/pricesave - save shop price to disc."
 msgstr ""
 
 msgid "COMMUNICATION:"
-msgstr ""
-
-msgid ""
-"##2ManaPlus##P is extended client based on code from ##2Mana##P client.\n"
-" Added many features, improved perfomance, stability, security and more."
-msgstr "##2ManaPlus##P - расширенный клиент на основе клиента ##2Mana##P.\nДобавлено множество возможностей, улучшена производительность,\nстабильность, безопасность и многое другое."
+msgstr "ОБЩЕНИЕ"
 
 msgid "##2SpaceBar##P                 \"Select OK\""
 msgstr ""
@@ -484,6 +485,18 @@ msgid "/friend NICK, /befriend NICK - add nick to friends list."
 msgstr ""
 
 msgid "##2i##P                        \"Switch Quick Drop Counter\""
+msgstr ""
+
+msgid ""
+"##2ManaPlus##P is extended client based on old code from ##2Mana##P client.\n"
+" Added many features, improved perfomance, stability, security and more."
+msgstr ""
+
+msgid ""
+"##2ManaPlus##P is a serious effort to create an innovative free and open\n"
+" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
+" sure this game can't ever run away from you."
 msgstr ""
 
 msgid "##2LeftAlt + 2##P              \"Emote Shortcut 2\""
@@ -514,6 +527,9 @@ msgid ""
 " There you will find a list of all players you are acquainted with, as well as\n"
 " several configuration options:"
 msgstr " Здесь можно найти список всех знакомых игроков, а также\nмножество настроек:"
+
+msgid "Search error"
+msgstr "Ошиька поиска"
 
 msgid ""
 "/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
@@ -546,7 +562,7 @@ msgid "##2KeyPad[1]##P                \"Change Follow mode\""
 msgstr ""
 
 msgid "SHORTCUTS:"
-msgstr ""
+msgstr "БЫСТРЫЕ КЛАВИШИ"
 
 msgid "/target NICK - select nick as target. Can be monster or player nick."
 msgstr ""
@@ -580,8 +596,8 @@ msgstr "##2RIGHT##P                    \"Двигаться вправо\""
 msgid "##2RightBracket(])##P          \"Copy Equiped to Outfit\""
 msgstr ""
 
-msgid "##2t##P                        \"Talk\""
-msgstr "##2t##P                        \"Говорить\""
+msgid "##2DOWN##P                     \"Move Down\""
+msgstr "##2DOWN##P                     \"Двигаться вниз\""
 
 msgid "##2n##P                        \"Target NPC\""
 msgstr "##2n##P                        \"Выбор цели - NPC\""
@@ -614,9 +630,6 @@ msgid "Powered By"
 msgstr "Сделано при помощи"
 
 msgid "/disconnect - quick disconnect from server."
-msgstr ""
-
-msgid "/outfit N - wear outfit number N."
 msgstr ""
 
 msgid "/disregard NICK - add nick to disregarded list."
@@ -816,7 +829,7 @@ msgid "SKILLS"
 msgstr "УМЕНИЯ"
 
 msgid "Art or images contributors"
-msgstr ""
+msgstr "Художники"
 
 msgid "##27##P                        \"Item Shortcut 7\""
 msgstr ""
