@@ -298,6 +298,8 @@ class CommandHandler
 
         void handleSetDrop(const std::string &args, ChatTab *tab);
 
+        void handleError(const std::string &args, ChatTab *tab);
+
         void handleDump(const std::string &args, ChatTab *tab);
 
         void handleDumpGraphics(const std::string &args, ChatTab *tab);

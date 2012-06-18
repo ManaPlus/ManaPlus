@@ -207,6 +207,8 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleServerUnIgnoreAll(args, tab);
     else if (type == "setdrop")
         handleSetDrop(args, tab);
+    else if (type == "error")
+        handleError(args, tab);
     else if (type == "dumpg")
         handleDumpGraphics(args, tab);
     else if (type == "dumpt")
@@ -1200,6 +1202,13 @@ void CommandHandler::handleSetDrop(const std::string &args,
 {
     if (player_node)
         player_node->setQuickDropCounter(atoi(args.c_str()));
+}
+
+void CommandHandler::handleError(const std::string &args A_UNUSED,
+                                 ChatTab *tab A_UNUSED)
+{
+    int *ptr = nullptr;
+    logger->log("test %d", *ptr);
 }
 
 #ifdef DEBUG_DUMP_LEAKS
