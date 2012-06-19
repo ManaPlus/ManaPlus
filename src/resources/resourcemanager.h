@@ -28,9 +28,11 @@
 #include "utils/stringvector.h"
 
 #include <ctime>
+#include <list>
 #include <map>
 #include <set>
 
+class AnimationDelayLoad;
 class Image;
 class ImageSet;
 class Music;
@@ -40,6 +42,9 @@ class SpriteDef;
 
 struct SDL_Surface;
 struct SDL_RWops;
+
+typedef std::list<AnimationDelayLoad*> DelayedAnim;
+typedef DelayedAnim::iterator DelayedAnimIter;
 
 /**
  * A class for loading and managing resources.
@@ -138,6 +143,10 @@ class ResourceManager
          *         not be generated.
          */
         Resource *get(const std::string &idPath, generator fun, void *data);
+
+        Resource *getFromCache(const std::string &idPath);
+
+        Resource *getFromCache(const std::string &filename, int variant);
 
         /**
          * Loads a resource from a file and adds it to the resource map.
@@ -269,12 +278,18 @@ class ResourceManager
 
         void cleanOrphans(bool always = false);
 
+        static void addDelayedAnimation(AnimationDelayLoad *animation)
+        { mDelayedAnimations.push_back(animation); }
+
+        static void delayedLoad();
+
+        static void removeDelayLoad(AnimationDelayLoad *delayedLoad);
+
     private:
         /**
          * Deletes the resource after logging a cleanup message.
          */
         static void cleanUp(Resource *resource);
-
 
         static ResourceManager *instance;
         std::set<SDL_Surface*> deletedSurfaces;
@@ -284,6 +299,7 @@ class ResourceManager
         std::string mSelectedSkin;
         std::string mSkinName;
         bool mDestruction;
+        static DelayedAnim mDelayedAnimations;
 };
 
 #endif

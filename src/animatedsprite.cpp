@@ -22,6 +22,7 @@
 
 #include "animatedsprite.h"
 
+#include "animationdelayload.h"
 #include "graphics.h"
 #include "logger.h"
 
@@ -34,6 +35,8 @@
 
 #include "debug.h"
 
+bool AnimatedSprite::mEnableCache = false;
+
 AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
     mDirection(DIRECTION_DOWN),
     mLastTime(0),
@@ -44,7 +47,8 @@ AnimatedSprite::AnimatedSprite(SpriteDef *sprite):
     mAnimation(nullptr),
     mFrame(nullptr),
     mNumber(100),
-    mNumber1(100)
+    mNumber1(100),
+    mDelayLoad(nullptr)
 {
     mAlpha = 1.0f;
 
@@ -67,12 +71,33 @@ AnimatedSprite *AnimatedSprite::load(const std::string &filename, int variant)
     return as;
 }
 
+AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
+                                            int variant)
+{
+    if (!mEnableCache)
+        return load(filename, variant);
+    ResourceManager *resman = ResourceManager::getInstance();
+    if (resman->getFromCache(filename, variant))
+        return load(filename, variant);
+
+    AnimatedSprite *as = new AnimatedSprite(nullptr);
+    as->setDelayLoad(filename, variant);
+    return as;
+}
+
 AnimatedSprite::~AnimatedSprite()
 {
     if (mSprite)
     {
         mSprite->decRef();
         mSprite = nullptr;
+    }
+    if (mDelayLoad)
+    {
+        mDelayLoad->clearSprite();
+        ResourceManager::removeDelayLoad(mDelayLoad);
+        delete mDelayLoad;
+        mDelayLoad = nullptr;
     }
 }
 
@@ -94,7 +119,12 @@ bool AnimatedSprite::reset()
 bool AnimatedSprite::play(std::string spriteAction)
 {
     if (!mSprite)
-        return false;
+    {
+        if (!mDelayLoad)
+            return false;
+        mDelayLoad->setAction(spriteAction);
+        return true;
+    }
 
     Action *action = mSprite->getAction(spriteAction, mNumber);
     if (!action)
@@ -342,4 +372,22 @@ bool AnimatedSprite::updateNumber(unsigned num)
         return true;
     }
     return false;
+}
+
+void AnimatedSprite::setDelayLoad(const std::string &filename,
+                                  int variant)
+{
+    if (mDelayLoad)
+    {
+        mDelayLoad->clearSprite();
+        ResourceManager::removeDelayLoad(mDelayLoad);
+        delete mDelayLoad;
+    }
+    mDelayLoad = new AnimationDelayLoad(filename, variant, this);
+    ResourceManager::addDelayedAnimation(mDelayLoad); 
+}
+
+void AnimatedSprite::clearDelayLoad()
+{
+    mDelayLoad = nullptr;
 }

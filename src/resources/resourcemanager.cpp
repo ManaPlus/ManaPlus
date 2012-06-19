@@ -22,6 +22,7 @@
 
 #include "resources/resourcemanager.h"
 
+#include "animationdelayload.h"
 #include "client.h"
 #include "configuration.h"
 #include "logger.h"
@@ -52,6 +53,7 @@
 #include "debug.h"
 
 ResourceManager *ResourceManager::instance = nullptr;
+DelayedAnim ResourceManager::mDelayedAnimations;
 
 ResourceManager::ResourceManager() :
     mOldestOrphan(0),
@@ -354,8 +356,15 @@ bool ResourceManager::addResource(const std::string &idPath,
     return false;
 }
 
-Resource *ResourceManager::get(const std::string &idPath, generator fun,
-                               void *data)
+Resource *ResourceManager::getFromCache(const std::string &filename,
+                                        int variant)
+{
+    std::stringstream ss;
+    ss << filename << "[" << variant << "]";
+    return getFromCache(ss.str());
+}
+
+Resource *ResourceManager::getFromCache(const std::string &idPath)
 {
     // Check if the id exists, and return the value if it does.
     ResourceIterator resIter = mResources.find(idPath);
@@ -376,8 +385,17 @@ Resource *ResourceManager::get(const std::string &idPath, generator fun,
             res->incRef();
         return res;
     }
+    return nullptr;
+}
 
-    Resource *resource = fun(data);
+Resource *ResourceManager::get(const std::string &idPath, generator fun,
+                               void *data)
+{
+    Resource *resource = getFromCache(idPath);
+    if (resource)
+        return resource;
+
+    resource = fun(data);
 
     if (resource)
     {
@@ -744,4 +762,49 @@ Image *ResourceManager::getRescaled(Image *image, int width, int height)
     RescaledLoader rl = { this, image, width, height };
     Image *img = static_cast<Image*>(get(idPath, RescaledLoader::load, &rl));
     return img;
+}
+
+void ResourceManager::delayedLoad()
+{
+    static int loadTime = 0;
+    if (loadTime < cur_time)
+    {
+//        loadTime = tick_time + 10;
+        loadTime = tick_time;
+
+        int k = 0;
+        DelayedAnimIter it = mDelayedAnimations.begin();
+        DelayedAnimIter it_end = mDelayedAnimations.end();
+        while (it != it_end && k < 1)
+        {
+            (*it)->load();
+            AnimationDelayLoad *tmp = *it;
+            it = mDelayedAnimations.erase(it);
+            delete tmp;
+            k ++;
+        }
+        const int time2 = tick_time;
+//        if (time2 != loadTime)
+//        {
+//            logger->log("diff %d", time2 - loadTime);
+//        }
+        if (time2 > loadTime)
+            loadTime = time2 + (time2 - loadTime) * 2 + 10;
+//            loadTime += 10 - time2;
+        else
+            loadTime = time2 + 3;
+    }
+}
+
+void ResourceManager::removeDelayLoad(AnimationDelayLoad *delayedLoad)
+{
+    for(DelayedAnimIter it = mDelayedAnimations.begin(),
+        it_end = mDelayedAnimations.end(); it != it_end; ++ it)
+    {
+        if (*it == delayedLoad)
+        {
+            mDelayedAnimations.erase(it);
+            return;
+        }
+    }
 }

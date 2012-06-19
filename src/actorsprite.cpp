@@ -332,7 +332,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
             + combineDye2((*it)->sprite, color);
 
         int variant = (*it)->variant;
-        addSprite(AnimatedSprite::load(file, variant));
+        addSprite(AnimatedSprite::delayedLoad(file, variant));
     }
 
     // Ensure that something is shown, if desired
@@ -340,7 +340,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         if (display.image.empty())
         {
-            addSprite(AnimatedSprite::load(paths.getStringValue("sprites")
+            addSprite(AnimatedSprite::delayedLoad(
+                paths.getStringValue("sprites")
                 + paths.getStringValue("spriteErrorFile")));
         }
         else

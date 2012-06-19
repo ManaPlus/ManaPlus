@@ -1786,7 +1786,7 @@ void Being::setSprite(unsigned int slot, int id, std::string color,
                 color = info.getDyeColorsString(colorId);
             filename = combineDye(filename, color);
 
-            equipmentSprite = AnimatedSprite::load(
+            equipmentSprite = AnimatedSprite::delayedLoad(
                 paths.getStringValue("sprites") + filename);
         }
 

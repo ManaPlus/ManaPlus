@@ -23,6 +23,7 @@
 #include "game.h"
 
 #include "auctionmanager.h"
+#include "animatedsprite.h"
 #include "channelmanager.h"
 #include "commandhandler.h"
 #include "effectmanager.h"
@@ -386,6 +387,8 @@ Game::Game():
     top->add(viewport);
     viewport->requestMoveToBottom();
 
+    AnimatedSprite::setEnableCache(mainGraphics->getOpenGL());
+
     createGuiWindows();
 
     windowMenu = new WindowMenu;
@@ -569,6 +572,8 @@ void Game::slowLogic()
         killStats->recalcStats();
     if (shopWindow)
         shopWindow->updateTimes();
+    if (mainGraphics->getOpenGL())
+        ResourceManager::delayedLoad();
     PacketCounters::update();
 
     // Handle network stuff

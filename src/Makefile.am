@@ -507,6 +507,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      actorspritemanager.h \
 	      animatedsprite.cpp \
 	      animatedsprite.h \
+	      animationdelayload.cpp \
+	      animationdelayload.h \
 	      animationparticle.cpp \
 	      animationparticle.h \
 	      auctionmanager.cpp \

@@ -29,6 +29,7 @@
 #include <string>
 
 class Animation;
+class AnimationDelayLoad;
 struct Frame;
 
 /**
@@ -52,6 +53,9 @@ class AnimatedSprite : public Sprite
          */
         static AnimatedSprite *load(const std::string &filename,
                                     int variant = 0);
+
+        static AnimatedSprite *delayedLoad(const std::string &filename,
+                                           int variant = 0);
 
         virtual ~AnimatedSprite();
 
@@ -86,8 +90,18 @@ class AnimatedSprite : public Sprite
 
         bool updateNumber(unsigned num);
 
+        void clearDelayLoad();
+
+        void setSprite(SpriteDef *sprite)
+        { mSprite = sprite; }
+
+        static void setEnableCache(bool b)
+        { mEnableCache = b; }
+
     private:
         bool updateCurrentAnimation(unsigned int dt);
+
+        void setDelayLoad(const std::string &filename, int variant);
 
         SpriteDirection mDirection;    /**< The sprite direction. */
         int mLastTime;                 /**< The last time update was called. */
@@ -101,6 +115,8 @@ class AnimatedSprite : public Sprite
         Frame *mFrame;                 /**< The currently active frame. */
         unsigned mNumber;
         unsigned mNumber1;
+        AnimationDelayLoad *mDelayLoad;
+        static bool mEnableCache;
 };
 
 #endif

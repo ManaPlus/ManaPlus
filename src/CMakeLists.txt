@@ -491,6 +491,8 @@ SET(SRCS
     actorspritemanager.h
     animatedsprite.cpp
     animatedsprite.h
+    animationdelayload.cpp
+    animationdelayload.h
     animationparticle.cpp
     animationparticle.h
     auctionmanager.cpp
