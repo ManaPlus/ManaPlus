@@ -145,7 +145,7 @@ std::string getDesktopDir()
     if (dir.empty())
         dir = getSpecialFolderLocation(CSIDL_DESKTOP);
     return dir;
-#elif USE_X11
+#elif defined USE_X11
     char *xdg = getenv("XDG_CONFIG_HOME");
     std::string file;
     if (!xdg)

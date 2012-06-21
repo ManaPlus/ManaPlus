@@ -1872,7 +1872,7 @@ void Client::initUpdatesDir()
                 loc = newDir.find("/", loc);
             }
 
-            if (!CreateDirectory(newDir.c_str(), 0) &&
+            if (!CreateDirectory(newDir.c_str(), nullptr) &&
                 GetLastError() != ERROR_ALREADY_EXISTS)
             {
                 logger->log("Error: %s can't be made, but doesn't exist!",

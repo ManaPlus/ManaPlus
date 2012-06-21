@@ -90,7 +90,7 @@ int mkdir_r(const char *pathname)
                     return -1;
             }
 
-            if (!CreateDirectory(tmp2, 0))
+            if (!CreateDirectory(tmp2, nullptr))
             {
                 // hack, hack. just assume that x: might be a drive
                 // letter, and try again

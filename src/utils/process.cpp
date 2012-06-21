@@ -37,7 +37,7 @@ const int timeOut = 10;
 
 #include <windows.h>
 
-int execFile(std::string pathName, std::string name,
+int execFile(std::string pathName, std::string name A_UNUSED,
              std::string arg1, std::string arg2, int waitTime)
 {
     if (!waitTime)
@@ -53,8 +53,8 @@ int execFile(std::string pathName, std::string name,
     if (!arg2.empty())
         args += " " + arg2;
 
-    if (CreateProcess(pathName.c_str(), (char*)args.c_str(), 0, 0, false,
-        CREATE_DEFAULT_ERROR_MODE, 0, 0, &siStartupInfo,
+    if (CreateProcess(pathName.c_str(), (char*)args.c_str(), nullptr, nullptr,
+        false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr, &siStartupInfo,
         &piProcessInfo) != false)
     {
         if (!WaitForSingleObject(piProcessInfo.hProcess, timeOut * 1000))

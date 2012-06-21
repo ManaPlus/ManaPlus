@@ -106,7 +106,7 @@ bool sendBuffer(std::string& text)
 
     MultiByteToWideChar(CP_UTF8, 0, text.c_str(), -1, out, wCharsLen);
 
-    if (!OpenClipboard(0))
+    if (!OpenClipboard(nullptr))
     {
         GlobalUnlock(h);
         GlobalFree(h);
@@ -284,7 +284,7 @@ bool sendBuffer(std::string& text)
     return false;
 }
 
-#elif USE_X11
+#elif defined USE_X11
 
 #include <unistd.h>
 

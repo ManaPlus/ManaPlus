@@ -18,7 +18,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GXX_EXPERIMENTAL_CXX0X__
+#if !defined(__GXX_EXPERIMENTAL_CXX0X__)
 #undef nullptr
 #define nullptr 0
 #else

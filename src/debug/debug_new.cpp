@@ -163,9 +163,9 @@
  *
  * Value of the padding bytes at the end of a memory block.
  */
-#ifndef M_DEBUG_NEW_TAILCHECK_CHAR
-#define M_DEBUG_NEW_TAILCHECK_CHAR 0xCC
-#endif
+//#ifndef M_DEBUG_NEW_TAILCHECK_CHAR
+//#define M_DEBUG_NEW_TAILCHECK_CHAR 0xCC
+//#endif
 
 /**
  * @def M_DEBUG_NEW_USE_ADDR2LINE

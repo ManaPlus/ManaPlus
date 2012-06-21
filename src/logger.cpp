@@ -33,7 +33,7 @@
 #include <windows.h>
 #elif defined __APPLE__
 #include <Carbon/Carbon.h>
-#elif __linux__ || __linux
+#elif defined(__linux__) || defined(__linux)
 #include <stdlib.h>
 #endif
 
@@ -205,7 +205,7 @@ void Logger::safeError(const std::string &error_text)
 //    StandardAlert(kAlertStopAlert,
 //                  (const unsigned char*)"\pError",
 //                  (ConstStr255Param) msg, nullptr, nullptr);
-#elif defined __linux__ || __linux
+#elif defined(__linux__) || defined(__linux)
     std::cerr << "Error: " << error_text << std::endl;
     std::string msg = "xmessage \"" + error_text + "\"";
     if (system(msg.c_str()) == -1)
@@ -232,7 +232,7 @@ void Logger::error(const std::string &error_text)
 //    StandardAlert(kAlertStopAlert,
 //                  (const unsigned char*)"\pError",
 //                  (ConstStr255Param) msg, nullptr, nullptr);
-#elif defined __linux__ || __linux
+#elif defined(__linux__) || defined(_linux)
     std::cerr << "Error: " << error_text << std::endl;
     std::string msg = "xmessage \"Error happend. "
         "Please see log file for more information.\"";
