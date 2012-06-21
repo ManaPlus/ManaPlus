@@ -30,6 +30,7 @@
 #include "opengl1graphics.h"
 #endif
 
+#include "client.h"
 #include "map.h"
 
 #include "resources/image.h"
@@ -57,7 +58,8 @@ CompoundSprite::CompoundSprite() :
     mNeedsRedraw(false),
     mEnableAlphaFix(config.getBoolValue("enableAlphaFix")),
     mDisableAdvBeingCaching(config.getBoolValue("disableAdvBeingCaching")),
-    mDisableBeingCaching(config.getBoolValue("disableBeingCaching"))
+    mDisableBeingCaching(config.getBoolValue("disableBeingCaching")),
+    mNextRedrawTime(0)
 {
     mAlpha = 1.0f;
 }
@@ -440,6 +442,10 @@ void CompoundSprite::updateImages() const
         return;
 #endif
 
+    if (get_elapsed_time1(mNextRedrawTime) < 10)
+        return;
+
+    mNextRedrawTime = tick_time;
     mNeedsRedraw = false;
 
     if (!mDisableBeingCaching)

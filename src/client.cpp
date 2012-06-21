@@ -225,6 +225,13 @@ int get_elapsed_time(int startTime)
     }
 }
 
+int get_elapsed_time1(int startTime)
+{
+    if (startTime <= tick_time)
+        return tick_time - startTime;
+    else
+        return tick_time + (MAX_TICK_VALUE - startTime);
+}
 
 // This anonymous namespace hides whatever is inside from other modules.
 namespace

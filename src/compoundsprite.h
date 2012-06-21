@@ -145,6 +145,7 @@ private:
     bool mDisableAdvBeingCaching;
     bool mDisableBeingCaching;
     std::vector<Sprite*> mSprites;
+    mutable int mNextRedrawTime;
 };
 
 #endif // COMPOUNDSPRITE_H

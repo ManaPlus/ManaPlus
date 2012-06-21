@@ -76,6 +76,8 @@ extern LoginData loginData;
  */
 int get_elapsed_time(int startTime);
 
+int get_elapsed_time1(int startTime);
+
 /**
  * All client states.
  */
