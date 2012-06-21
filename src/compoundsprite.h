@@ -121,6 +121,9 @@ public:
 
     bool updateNumber(unsigned num);
 
+    static void setEnableDelay(bool b)
+    { mEnableDelay = b; }
+
 private:
     void redraw() const;
 
@@ -146,6 +149,7 @@ private:
     bool mDisableBeingCaching;
     std::vector<Sprite*> mSprites;
     mutable int mNextRedrawTime;
+    static bool mEnableDelay;
 };
 
 #endif // COMPOUNDSPRITE_H

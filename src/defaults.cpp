@@ -260,6 +260,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "videodetected", false);
     AddDEF(configData, "hideErased", false);
     AddDEF(configData, "enableDelayedAnimations", true);
+    AddDEF(configData, "enableCompoundSpriteDelay", true);
     return configData;
 }
 

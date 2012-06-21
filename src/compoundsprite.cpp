@@ -48,6 +48,7 @@
 
 static const unsigned cache_max_size = 10;
 static const unsigned cache_clean_part = 3;
+bool CompoundSprite::mEnableDelay = true;
 
 CompoundSprite::CompoundSprite() :
     mCacheItem(nullptr),
@@ -442,10 +443,12 @@ void CompoundSprite::updateImages() const
         return;
 #endif
 
-    if (get_elapsed_time1(mNextRedrawTime) < 10)
-        return;
-
-    mNextRedrawTime = tick_time;
+    if (mEnableDelay)
+    {
+        if (get_elapsed_time1(mNextRedrawTime) < 10)
+            return;
+        mNextRedrawTime = tick_time;
+    }
     mNeedsRedraw = false;
 
     if (!mDisableBeingCaching)

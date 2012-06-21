@@ -390,6 +390,9 @@ Game::Game():
     AnimatedSprite::setEnableCache(mainGraphics->getOpenGL()
         && config.getBoolValue("enableDelayedAnimations"));
 
+    CompoundSprite::setEnableDelay(
+        config.getBoolValue("enableCompoundSpriteDelay"));
+
     createGuiWindows();
 
     windowMenu = new WindowMenu;
