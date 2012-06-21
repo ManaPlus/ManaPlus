@@ -139,3 +139,6 @@ gmon.out
 
 # backup files created by vi
 *~
+
+#temp file
+.lineno
