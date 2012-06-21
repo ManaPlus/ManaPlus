@@ -387,7 +387,8 @@ Game::Game():
     top->add(viewport);
     viewport->requestMoveToBottom();
 
-    AnimatedSprite::setEnableCache(mainGraphics->getOpenGL());
+    AnimatedSprite::setEnableCache(mainGraphics->getOpenGL()
+        && config.getBoolValue("enableDelayedAnimations"));
 
     createGuiWindows();
 

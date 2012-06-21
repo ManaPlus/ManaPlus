@@ -259,6 +259,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "newtextures", true);
     AddDEF(configData, "videodetected", false);
     AddDEF(configData, "hideErased", false);
+    AddDEF(configData, "enableDelayedAnimations", true);
     return configData;
 }
 

@@ -66,6 +66,9 @@ Setup_Perfomance::Setup_Perfomance()
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
         "enableMapReduce", this, "enableMapReduceEvent");
 
+    new SetupItemCheckBox(_("Enable delayed images load  (OpenGL)"), "",
+        "enableDelayedAnimations", this, "enableDelayedAnimationsEvent");
+
     new SetupItemLabel(_("Better quality (disable for better perfomance)"),
         "", this);
 
