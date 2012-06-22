@@ -189,10 +189,9 @@ namespace gcn
 
     void Window::resizeToContent()
     {
-        WidgetListConstIterator it;
-
         int w = 0, h = 0;
-        for (it = mWidgets.begin(); it != mWidgets.end(); ++ it)
+        for (WidgetListConstIterator it = mWidgets.begin();
+             it != mWidgets.end(); ++ it)
         {
             if ((*it)->getX() + (*it)->getWidth() > w)
                 w = (*it)->getX() + (*it)->getWidth();

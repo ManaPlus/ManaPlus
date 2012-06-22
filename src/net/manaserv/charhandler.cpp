@@ -323,9 +323,11 @@ void CharHandler::newCharacter(const std::string &name,
     msg.writeInt8(gender);
     msg.writeInt8(slot);
 
-    std::vector<int>::const_iterator it, it_end;
-    for (it = stats.begin(), it_end = stats.end(); it != it_end; ++it)
+    for (std::vector<int>::const_iterator it = stats.begin(),
+         it_end = stats.end(); it != it_end; ++it)
+    {
         msg.writeInt16((*it));
+    }
 
     accountServerConnection->send(msg);
 }

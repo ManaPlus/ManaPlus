@@ -92,8 +92,8 @@ namespace Attributes
     {
         // Fill up the modifiable attribute label list.
         attributeLabels.clear();
-        AttributeMap::const_iterator it, it_end;
-        for (it = attributes.begin(), it_end = attributes.end();
+        for (AttributeMap::const_iterator it = attributes.begin(),
+             it_end = attributes.end();
              it != it_end; ++it)
         {
             if (it->second.modifiable && (it->second.scope == "character"
@@ -383,10 +383,11 @@ namespace Attributes
     {
         std::vector<ItemDB::Stat> dbStats;
 
-        TagMap::const_iterator it, it_end;
-        for (it = tags.begin(), it_end = tags.end(); it != it_end; ++it)
+        for (TagMap::const_iterator it = tags.begin(), it_end = tags.end();
+             it != it_end; ++it)
+        {
             dbStats.push_back(ItemDB::Stat(it->first, it->second));
-
+        }
         ItemDB::setStatsList(dbStats);
     }
 
@@ -395,8 +396,8 @@ namespace Attributes
         if (!statusWindow)
             return;
 
-        AttributeMap::const_iterator it, it_end;
-        for (it = attributes.begin(), it_end = attributes.end();
+        for (AttributeMap::const_iterator it = attributes.begin(),
+             it_end = attributes.end();
              it != it_end; ++it)
         {
             if (it->second.playerInfoId == -1

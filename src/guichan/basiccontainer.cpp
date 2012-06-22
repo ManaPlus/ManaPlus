@@ -66,8 +66,8 @@ namespace gcn
 
     void BasicContainer::moveToTop(Widget* widget)
     {
-        WidgetListIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             if (*iter == widget)
             {
@@ -179,8 +179,8 @@ namespace gcn
         x -= r.x;
         y -= r.y;
 
-        WidgetListCReverseIterator it;
-        for (it = mWidgets.rbegin(); it != mWidgets.rend(); ++ it)
+        for (WidgetListCReverseIterator it = mWidgets.rbegin();
+             it != mWidgets.rend(); ++ it)
         {
             if ((*it)->isVisible() && (*it)->getDimension()
                 .isPointInRect(x, y))
@@ -204,8 +204,8 @@ namespace gcn
         if (mInternalFocusHandler)
             return;
 
-        WidgetListConstIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListConstIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             (*iter)->_setFocusHandler(focusHandler);
         }
@@ -226,8 +226,8 @@ namespace gcn
 
     void BasicContainer::remove(Widget* widget)
     {
-        WidgetListIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             if (*iter == widget)
             {
@@ -244,9 +244,8 @@ namespace gcn
 
     void BasicContainer::clear()
     {
-        WidgetListConstIterator iter;
-
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListConstIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             (*iter)->_setFocusHandler(nullptr);
             (*iter)->_setParent(nullptr);
@@ -260,8 +259,8 @@ namespace gcn
     {
         graphics->pushClipArea(getChildrenArea());
 
-        WidgetListConstIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListConstIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             if ((*iter)->isVisible())
             {
@@ -290,9 +289,11 @@ namespace gcn
 
     void BasicContainer::logicChildren()
     {
-        WidgetListConstIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListConstIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
+        {
             (*iter)->logic();
+        }
     }
 
     void BasicContainer::showWidgetPart(Widget* widget, Rectangle area)
@@ -325,8 +326,8 @@ namespace gcn
     {
         Widget::setInternalFocusHandler(focusHandler);
 
-        WidgetListConstIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListConstIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             if (!mInternalFocusHandler)
                 (*iter)->_setFocusHandler(_getFocusHandler());
@@ -337,8 +338,8 @@ namespace gcn
 
     Widget* BasicContainer::findWidgetById(const std::string& id)
     {
-        WidgetListConstIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++ iter)
+        for (WidgetListConstIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++ iter)
         {
             if ((*iter)->getId() == id)
                 return (*iter);

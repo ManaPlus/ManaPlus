@@ -607,8 +607,9 @@ void ChatWindow::removeAllWhispers()
 
 void ChatWindow::ignoreAllWhispers()
 {
-    TabMap::iterator iter;
-    for (iter = mWhispers.begin(); iter != mWhispers.end(); ++iter)
+    for (TabMap::iterator iter = mWhispers.begin();
+         iter != mWhispers.end();
+         ++ iter)
     {
         WhisperTab *tab = dynamic_cast<WhisperTab*>(iter->second);
         if (tab && player_relations.getRelation(tab->getNick())

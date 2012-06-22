@@ -316,9 +316,8 @@ Item *ItemContainer::getSelectedItem() const
 
 void ItemContainer::distributeValueChangedEvent()
 {
-    SelectionListenerIterator i, i_end;
-
-    for (i = mSelectionListeners.begin(), i_end = mSelectionListeners.end();
+    for (SelectionListenerIterator i = mSelectionListeners.begin(),
+         i_end = mSelectionListeners.end();
          i != i_end; ++i)
     {
         if (*i)

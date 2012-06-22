@@ -536,10 +536,9 @@ namespace gcn
 
         graphics->setColor(getForegroundColor());
 
-        int i;
-        int w = dim.height / 2;
-        int h = w / 2 + 2;
-        for (i = 0; i < w / 2; ++i)
+        const int w = dim.height / 2;
+        const int h = w / 2 + 2;
+        for (int i = 0; i < w / 2; ++i)
         {
             graphics->drawLine(w - i + offset, i + h + offset,
                 w + i + offset, i + h + offset);
@@ -595,10 +594,9 @@ namespace gcn
 
         graphics->setColor(getForegroundColor());
 
-        int i;
-        int w = dim.height / 2;
-        int h = w + 1;
-        for (i = 0; i < w / 2; ++i)
+        const int w = dim.height / 2;
+        const int h = w + 1;
+        for (int i = 0; i < w / 2; ++i)
         {
             graphics->drawLine(w - i + offset, -i + h + offset,
                 w + i + offset, -i + h + offset);
@@ -654,10 +652,9 @@ namespace gcn
 
         graphics->setColor(getForegroundColor());
 
-        int i;
-        int w = dim.width / 2;
-        int h = w - 2;
-        for (i = 0; i < w / 2; ++i)
+        const int w = dim.width / 2;
+        const int h = w - 2;
+        for (int i = 0; i < w / 2; ++i)
         {
             graphics->drawLine(i + h + offset, w - i + offset,
                 i + h + offset, w + i + offset);
@@ -713,10 +710,9 @@ namespace gcn
 
         graphics->setColor(getForegroundColor());
 
-        int i;
-        int w = dim.width / 2;
-        int h = w + 1;
-        for (i = 0; i < w / 2; ++i)
+        const int w = dim.width / 2;
+        const int h = w + 1;
+        for (int i = 0; i < w / 2; ++i)
         {
             graphics->drawLine(-i + h + offset, w - i + offset,
                 -i + h + offset, w + i + offset);

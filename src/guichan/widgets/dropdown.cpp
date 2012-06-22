@@ -411,9 +411,7 @@ namespace gcn
 
     void DropDown::distributeValueChangedEvent()
     {
-        SelectionListenerIterator iter;
-
-        for (iter = mSelectionListeners.begin();
+        for (SelectionListenerIterator iter = mSelectionListeners.begin();
              iter != mSelectionListeners.end(); 
              ++iter)
         {

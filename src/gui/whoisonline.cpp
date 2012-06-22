@@ -232,9 +232,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
 //        addedFromSection = false;
     }
     for (int i = 0; i < static_cast<int>(disregard.size()); i++)
-    {
         mBrowserBox->addRow(disregard.at(i)->getText());
-    }
 
     if (mScrollArea->getVerticalMaxScroll() <
         mScrollArea->getVerticalScrollAmount())

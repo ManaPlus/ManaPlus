@@ -114,8 +114,6 @@ namespace gcn
 
     void TextBox::draw(Graphics* graphics)
     {
-        unsigned int i;
-
         if (mOpaque)
         {
             graphics->setColor(getBackgroundColor());
@@ -132,7 +130,7 @@ namespace gcn
         graphics->setColor(getForegroundColor());
         graphics->setFont(getFont());
 
-        for (i = 0; i < mTextRows.size(); i++)
+        for (size_t i = 0; i < mTextRows.size(); i++)
         {
             // Move the text one pixel so we can have a caret before a letter.
             graphics->drawText(mTextRows[i], 1, i * getFont()->getHeight());
@@ -170,9 +168,8 @@ namespace gcn
 
     void TextBox::adjustSize()
     {
-        unsigned int i;
         int width = 0;
-        for (i = 0; i < mTextRows.size(); ++i)
+        for (size_t i = 0; i < mTextRows.size(); ++i)
         {
             int w = getFont()->getWidth(mTextRows[i]);
             if (width < w)

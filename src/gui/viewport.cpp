@@ -337,9 +337,9 @@ void Viewport::_drawDebugPath(Graphics *graphics)
     // We draw the path proposed by mouse
 
     // Draw the path debug information for every beings.
-    ActorSpritesConstIterator it, it_end;
     const ActorSprites &actors = actorSpriteManager->getAll();
-    for (it = actors.begin(), it_end = actors.end() ; it != it_end; ++ it)
+    for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
+         it != it_end; ++ it)
     {
         Being *being = dynamic_cast<Being*>(*it);
         if (being && being != player_node)

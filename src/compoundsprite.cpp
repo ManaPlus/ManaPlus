@@ -548,8 +548,8 @@ void CompoundSprite::initCurrentCacheItem() const
     mCacheItem->alphaImage = mAlphaImage;
 //    mCacheItem->alpha = mAlpha;
 
-    SpriteConstIterator it, it_end;
-    for (it = mSprites.begin(), it_end = mSprites.end(); it != it_end; ++ it)
+    for (SpriteConstIterator it = mSprites.begin(), it_end = mSprites.end();
+         it != it_end; ++ it)
     {
         if (*it)
             mCacheItem->data.push_back((*it)->getHash());

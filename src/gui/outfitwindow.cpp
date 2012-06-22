@@ -296,9 +296,7 @@ void OutfitWindow::copyOutfit(int src, int dst)
     }
 
     for (int i = 0; i < OUTFIT_ITEM_COUNT; i++)
-    {
         mItems[dst][i] = mItems[src][i];
-    }
 }
 
 void OutfitWindow::draw(gcn::Graphics *graphics)

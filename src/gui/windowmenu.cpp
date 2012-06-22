@@ -393,9 +393,9 @@ void WindowMenu::loadButtons()
 
 void WindowMenu::saveButtons()
 {
-    std::vector <gcn::Button*>::iterator it, it_end;
     int i = 0;
-    for (it = mButtons.begin(), it_end = mButtons.end();
+    for (std::vector <gcn::Button*>::iterator it = mButtons.begin(),
+         it_end = mButtons.end();
          it != it_end; ++it)
     {
         Button *btn = dynamic_cast<Button*>(*it);

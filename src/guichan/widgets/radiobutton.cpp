@@ -103,10 +103,8 @@ namespace gcn
     {
         if (selected && mGroup != "")
         {
-            GroupIterator iter, iterEnd;
-            iterEnd = mGroupMap.upper_bound(mGroup);
-
-            for (iter = mGroupMap.lower_bound(mGroup);
+            for (GroupIterator iter = mGroupMap.lower_bound(mGroup),
+                 iterEnd = mGroupMap.upper_bound(mGroup);
                  iter != iterEnd;
                  ++ iter)
             {
@@ -150,10 +148,8 @@ namespace gcn
     {
         if (mGroup != "")
         {
-            GroupIterator iter, iterEnd;
-            iterEnd = mGroupMap.upper_bound(mGroup);
-
-            for (iter = mGroupMap.lower_bound(mGroup);
+            for (GroupIterator iter = mGroupMap.lower_bound(mGroup),
+                 iterEnd = mGroupMap.upper_bound(mGroup);
                  iter != iterEnd;
                  ++ iter)
             {

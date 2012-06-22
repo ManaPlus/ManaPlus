@@ -191,10 +191,11 @@ void StatusEffect::load()
 
 void unloadMap(std::map<int, StatusEffect *> &map)
 {
-    std::map<int, StatusEffect *>::iterator it;
-
-    for (it = map.begin(); it != map.end(); ++it)
+    for (std::map<int, StatusEffect *>::iterator it = map.begin();
+         it != map.end(); ++it)
+    {
         delete (*it).second;
+    }
 
     map.clear();
 }

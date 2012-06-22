@@ -160,8 +160,7 @@ namespace gcn
 
     int TabbedArea::getSelectedTabIndex() const
     {
-        unsigned int i;
-        for (i = 0; i < mTabs.size(); i++)
+        for (unsigned int i = 0; i < mTabs.size(); i++)
         {
             if (mTabs[i].first == mSelectedTab)
                 return i;

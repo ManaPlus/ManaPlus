@@ -51,8 +51,8 @@
 
 #include "debug.h"
 
-#define for_actors ActorSpritesConstIterator it, it_end; \
-for (it = mActors.begin(), it_end = mActors.end() ; it != it_end; ++it)
+#define for_actors for (ActorSpritesConstIterator it = mActors.begin(), \
+    it_end = mActors.end() ; it != it_end; ++it)
 
 class FindBeingFunctor
 {
@@ -749,7 +749,8 @@ void ActorSpriteManager::logic()
     if (mDeleteActors.empty())
         return;
 
-    for (it = mDeleteActors.begin(), it_end = mDeleteActors.end();
+    for (ActorSpritesConstIterator it = mDeleteActors.begin(),
+         it_end = mDeleteActors.end();
          it != it_end; ++it)
     {
         if (!*it)
@@ -773,7 +774,8 @@ void ActorSpriteManager::logic()
             viewport->clearHover(*it);
     }
 
-    for (it = mDeleteActors.begin(), it_end = mDeleteActors.end();
+    for (ActorSpritesConstIterator it = mDeleteActors.begin(),
+         it_end = mDeleteActors.end();
          it != it_end; ++it)
     {
         mActors.erase(*it);

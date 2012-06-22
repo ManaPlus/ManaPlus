@@ -263,8 +263,8 @@ namespace gcn
         while (!widgetWithMouseQueueCheckDone)
         {
             unsigned int iterations = 0;
-            std::deque<Widget*>::iterator iter;
-            for (iter = mWidgetWithMouseQueue.begin();
+            for (std::deque<Widget*>::iterator
+                 iter = mWidgetWithMouseQueue.begin();
                  iter != mWidgetWithMouseQueue.end();
                  ++ iter)
             {
@@ -755,9 +755,8 @@ namespace gcn
 
     void Gui::distributeKeyEventToGlobalKeyListeners(KeyEvent& keyEvent)
     {
-        KeyListenerListIterator it;
-
-        for (it = mKeyListeners.begin(); it != mKeyListeners.end(); ++ it)
+        for (KeyListenerListIterator it = mKeyListeners.begin();
+             it != mKeyListeners.end(); ++ it)
         {
             switch (keyEvent.getType())
             {

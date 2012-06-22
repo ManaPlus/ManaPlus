@@ -73,9 +73,8 @@ namespace gcn
         if (!widget || widget == mFocusedWidget)
             return;
 
-        unsigned int i = 0;
         int toBeFocusedIndex = -1;
-        for (i = 0; i < mWidgets.size(); ++i)
+        for (unsigned int i = 0; i < mWidgets.size(); ++i)
         {
             if (mWidgets[i] == widget)
             {
@@ -272,9 +271,8 @@ namespace gcn
         if (isFocused(widget))
             mFocusedWidget = nullptr;
 
-        WidgetIterator iter;
-
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
+        for (WidgetIterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++iter)
         {
             if ((*iter) == widget)
             {

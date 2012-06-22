@@ -662,8 +662,8 @@ bool Map::getWalk(int x, int y, unsigned char walkmask) const
 bool Map::occupied(int x, int y) const
 {
     const ActorSprites &actors = actorSpriteManager->getAll();
-    ActorSpritesConstIterator it, it_end;
-    for (it = actors.begin(), it_end = actors.end(); it != it_end; ++it)
+    for (ActorSpritesConstIterator it = actors.begin(), it_end = actors.end();
+         it != it_end; ++it)
     {
         const ActorSprite *actor = *it;
 
@@ -1259,11 +1259,8 @@ void Map::updatePortalTile(const std::string &name, int type,
 
 MapItem *Map::findPortalXY(int x, int y)
 {
-    std::vector<MapItem*>::const_iterator it;
-    std::vector<MapItem*>::const_iterator it_end;
-
-    for (it = mMapPortals.begin(), it_end = mMapPortals.end();
-         it != it_end; ++it)
+    for (std::vector<MapItem*>::const_iterator it = mMapPortals.begin(),
+         it_end = mMapPortals.end(); it != it_end; ++it)
     {
         if (!*it)
             continue;

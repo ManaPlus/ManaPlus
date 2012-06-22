@@ -94,9 +94,7 @@ namespace gcn
 
     Widget::~Widget()
     {
-        DeathListenerIterator iter;
-
-        for (iter = mDeathListeners.begin();
+        for (DeathListenerIterator iter = mDeathListeners.begin();
              iter != mDeathListeners.end();
              ++iter)
         {
@@ -122,8 +120,7 @@ namespace gcn
         shadowColor = faceColor - 0x303030;
         shadowColor.a = alpha;
 
-        unsigned int i;
-        for (i = 0; i < getFrameSize(); ++i)
+        for (unsigned int i = 0; i < getFrameSize(); ++i)
         {
             graphics->setColor(shadowColor);
             graphics->drawLine(i, i, width - i, i);
@@ -471,8 +468,8 @@ namespace gcn
     {
         mGlobalFont = font;
 
-        std::list<Widget*>::const_iterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); ++iter)
+        for (std::list<Widget*>::const_iterator iter = mWidgets.begin();
+             iter != mWidgets.end(); ++iter)
         {
             if (!(*iter)->mCurrentFont)
                 (*iter)->fontChanged();
@@ -649,9 +646,7 @@ namespace gcn
 
     void Widget::distributeResizedEvent()
     {
-        WidgetListenerIterator iter;
-
-        for (iter = mWidgetListeners.begin();
+        for (WidgetListenerIterator iter = mWidgetListeners.begin();
              iter != mWidgetListeners.end();
              ++ iter)
         {
@@ -662,9 +657,7 @@ namespace gcn
 
     void Widget::distributeMovedEvent()
     {
-        WidgetListenerIterator iter;
-
-        for (iter = mWidgetListeners.begin();
+        for (WidgetListenerIterator iter = mWidgetListeners.begin();
              iter != mWidgetListeners.end();
              ++ iter)
         {
@@ -675,9 +668,7 @@ namespace gcn
 
     void Widget::distributeHiddenEvent()
     {
-        WidgetListenerIterator iter;
-
-        for (iter = mWidgetListeners.begin();
+        for (WidgetListenerIterator iter = mWidgetListeners.begin();
              iter != mWidgetListeners.end();
              ++ iter)
         {
@@ -688,8 +679,7 @@ namespace gcn
 
     void Widget::distributeActionEvent()
     {
-        ActionListenerIterator iter;
-        for (iter = mActionListeners.begin();
+        for (ActionListenerIterator iter = mActionListeners.begin();
              iter != mActionListeners.end();
              ++iter)
         {
@@ -700,9 +690,7 @@ namespace gcn
 
     void Widget::distributeShownEvent()
     {
-        WidgetListenerIterator iter;
-
-        for (iter = mWidgetListeners.begin();
+        for (WidgetListenerIterator iter = mWidgetListeners.begin();
              iter != mWidgetListeners.end();
              ++iter)
         {
