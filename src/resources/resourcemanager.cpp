@@ -798,7 +798,7 @@ void ResourceManager::delayedLoad()
 
 void ResourceManager::removeDelayLoad(AnimationDelayLoad *delayedLoad)
 {
-    for(DelayedAnimIter it = mDelayedAnimations.begin(),
+    for (DelayedAnimIter it = mDelayedAnimations.begin(),
         it_end = mDelayedAnimations.end(); it != it_end; ++ it)
     {
         if (*it == delayedLoad)

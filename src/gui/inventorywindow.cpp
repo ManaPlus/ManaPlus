@@ -33,6 +33,7 @@
 
 #include "gui/gui.h"
 #include "gui/itemamountwindow.h"
+#include "gui/outfitwindow.h"
 #include "gui/setup.h"
 #include "gui/sdlinput.h"
 #include "gui/shopwindow.h"
@@ -258,7 +259,6 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
 {
     if (event.getId() == "outfit")
     {
-        extern Window *outfitWindow;
         if (outfitWindow)
         {
             outfitWindow->setVisible(!outfitWindow->isVisible());
