@@ -769,7 +769,6 @@ void ResourceManager::delayedLoad()
     static int loadTime = 0;
     if (loadTime < cur_time)
     {
-//        loadTime = tick_time + 10;
         loadTime = tick_time;
 
         int k = 0;
@@ -784,13 +783,8 @@ void ResourceManager::delayedLoad()
             k ++;
         }
         const int time2 = tick_time;
-//        if (time2 != loadTime)
-//        {
-//            logger->log("diff %d", time2 - loadTime);
-//        }
         if (time2 > loadTime)
             loadTime = time2 + (time2 - loadTime) * 2 + 10;
-//            loadTime += 10 - time2;
         else
             loadTime = time2 + 3;
     }
