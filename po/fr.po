@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-06-19 01:38+0300\n"
-"PO-Revision-Date: 2012-06-05 12:08+0000\n"
-"Last-Translator: Bernard <nard@bh28.net>\n"
+"POT-Creation-Date: 2012-06-23 16:53+0300\n"
+"PO-Revision-Date: 2012-06-21 20:34+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: French (http://www.transifex.net/projects/p/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -34,7 +34,7 @@ msgstr "Ignorer les requêtes d'échanges entrantes"
 msgid "Accepting incoming trade requests"
 msgstr "Accepter les requêtes d'échanges entrantes"
 
-#: src/actorspritemanager.cpp:1265
+#: src/actorspritemanager.cpp:1267
 msgid "Visible on map"
 msgstr "Visible sur la carte"
 
@@ -51,56 +51,56 @@ msgid "miss"
 msgstr "raté"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1614 src/gui/whoisonline.cpp:768
+#: src/being.cpp:1614 src/gui/whoisonline.cpp:766
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1619 src/gui/whoisonline.cpp:773
+#: src/being.cpp:1619 src/gui/whoisonline.cpp:771
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:970 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
+#: src/client.cpp:977 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
 msgid "Setup"
 msgstr "Configuration"
 
-#: src/client.cpp:977 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:984 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "Performance"
 
-#: src/client.cpp:982 src/gui/setup_video.cpp:250
+#: src/client.cpp:989 src/gui/setup_video.cpp:250
 msgid "Video"
 msgstr "Vidéo"
 
-#: src/client.cpp:987
+#: src/client.cpp:994
 msgid "Themes"
 msgstr "Thèmes"
 
-#: src/client.cpp:1073
+#: src/client.cpp:1080
 msgid "Connecting to server"
 msgstr "Connexion au serveur"
 
-#: src/client.cpp:1111
+#: src/client.cpp:1118
 msgid "Logging in"
 msgstr "Connexion"
 
-#: src/client.cpp:1145
+#: src/client.cpp:1152
 msgid "Entering game world"
 msgstr "Vous entrez dans un nouveau monde"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1258
 msgid "Requesting characters"
 msgstr "Téléchargement des personnages"
 
-#: src/client.cpp:1286
+#: src/client.cpp:1293
 msgid "Connecting to the game server"
 msgstr "Connexion au serveur de jeu"
 
-#: src/client.cpp:1296
+#: src/client.cpp:1303
 msgid "Changing game servers"
 msgstr "Changement de serveur de jeu"
 
-#: src/client.cpp:1339 src/client.cpp:1347 src/client.cpp:1482
+#: src/client.cpp:1346 src/client.cpp:1354 src/client.cpp:1489
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
 #: src/gui/editserverdialog.cpp:176 src/gui/registerdialog.cpp:239
@@ -110,50 +110,50 @@ msgstr "Changement de serveur de jeu"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/client.cpp:1357
+#: src/client.cpp:1364
 msgid "Requesting registration details"
 msgstr "Demande des paramètres d'inscription"
 
-#: src/client.cpp:1383
+#: src/client.cpp:1390
 msgid "Password Change"
 msgstr "Changement de mot de passe"
 
-#: src/client.cpp:1384
+#: src/client.cpp:1391
 msgid "Password changed successfully!"
 msgstr "Le mot de passe a été changé avec succès !"
 
-#: src/client.cpp:1403
+#: src/client.cpp:1410
 msgid "Email Change"
 msgstr "Changer d'e-mail"
 
-#: src/client.cpp:1404
+#: src/client.cpp:1411
 msgid "Email changed successfully!"
 msgstr "L'adresse e-mail a été changée avec succès !"
 
-#: src/client.cpp:1424
+#: src/client.cpp:1431
 msgid "Unregister Successful"
 msgstr "Désinscription réussie"
 
-#: src/client.cpp:1425
+#: src/client.cpp:1432
 msgid "Farewell, come back any time..."
 msgstr "A bientôt, revenez quand vous voudrez..."
 
-#: src/client.cpp:1648 src/client.cpp:1681 src/client.cpp:1696
-#: src/client.cpp:2141 src/client.cpp:2148
+#: src/client.cpp:1655 src/client.cpp:1688 src/client.cpp:1703
+#: src/client.cpp:2148 src/client.cpp:2155
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s n'existe pas et ne peut pas être créé ! Fermeture du programme."
 
-#: src/client.cpp:1839
+#: src/client.cpp:1846
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "Site de mise à jour invalide : %s"
 
-#: src/client.cpp:1873 src/client.cpp:1879
+#: src/client.cpp:1880 src/client.cpp:1886
 msgid "Error creating updates directory!"
 msgstr "Impossible de créer le dossier de mise à jour !"
 
-#: src/client.cpp:1900
+#: src/client.cpp:1907
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr ""
@@ -340,36 +340,36 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "Les options de /%s sont \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 
-#: src/game.cpp:253 src/gui/widgets/chattab.cpp:447
+#: src/game.cpp:254 src/gui/widgets/chattab.cpp:447
 msgid "General"
 msgstr "Général"
 
-#: src/game.cpp:257 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:449
+#: src/game.cpp:258 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:449
 msgid "Debug"
 msgstr "Débogage"
 
-#: src/game.cpp:517
+#: src/game.cpp:524
 msgid "Screenshot saved as "
 msgstr "Capture d'écran sauvegardée sous"
 
-#: src/game.cpp:525
+#: src/game.cpp:532
 msgid "Saving screenshot failed!"
 msgstr "La sauvegarde de la capture d'écran a échoué !"
 
-#: src/game.cpp:584
+#: src/game.cpp:593
 msgid "The connection to the server was lost."
 msgstr ""
 "La connexion au serveur a été coupée, le programme va maintenant se fermer."
 
-#: src/game.cpp:585
+#: src/game.cpp:594
 msgid "Network Error"
 msgstr "Erreur Réseau"
 
-#: src/game.cpp:971
+#: src/game.cpp:980
 msgid "Could Not Load Map"
 msgstr "La carte n'a pu être chargée"
 
-#: src/game.cpp:972
+#: src/game.cpp:981
 #, c-format
 msgid "Error while loading %s"
 msgstr "Erreur durant le chargement %s"
@@ -474,7 +474,7 @@ msgid "Max"
 msgstr "Max."
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:178 src/gui/setup_other.cpp:147
+#: src/gui/inventorywindow.cpp:179 src/gui/setup_other.cpp:147
 msgid "Shop"
 msgstr "Boutique"
 
@@ -699,7 +699,7 @@ msgstr "Niveau %d"
 msgid "(empty)"
 msgstr "(vide)"
 
-#: src/gui/chatwindow.cpp:121 src/gui/inventorywindow.cpp:73
+#: src/gui/chatwindow.cpp:121 src/gui/inventorywindow.cpp:74
 #: src/gui/setup_visual.cpp:102
 msgid "default"
 msgstr "défaut"
@@ -756,7 +756,7 @@ msgstr "arc en ciel 2"
 msgid "rainbow 3"
 msgstr "arc en ciel 3"
 
-#: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:93
+#: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:94
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:81
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:224
 #: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
@@ -771,12 +771,12 @@ msgstr "???"
 msgid "Chat"
 msgstr "Conversation"
 
-#: src/gui/chatwindow.cpp:677
+#: src/gui/chatwindow.cpp:678
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr "Présents : %s ; %d joueurs sont présents."
 
-#: src/gui/chatwindow.cpp:1091
+#: src/gui/chatwindow.cpp:1092
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Message envoyé à %s : %s"
@@ -955,7 +955,7 @@ msgid "Did You Know?"
 msgstr "Le saviez-vous ?"
 
 #: src/gui/didyouknowwindow.cpp:68 src/gui/helpwindow.cpp:64
-#: src/gui/inventorywindow.cpp:206 src/gui/npcdialog.cpp:54
+#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:54
 #: src/gui/popupmenu.cpp:501 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "Fermer"
@@ -1006,7 +1006,7 @@ msgstr "Entrez au moins l'adresse et le port du serveur."
 msgid "Equipment"
 msgstr "Équipement"
 
-#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:163
+#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:164
 #: src/gui/inventorywindow.cpp:580 src/gui/popupmenu.cpp:1639
 #: src/gui/popupmenu.cpp:1739 src/gui/popupmenu.cpp:1795
 msgid "Unequip"
@@ -1016,79 +1016,79 @@ msgstr "Retirer"
 msgid "Help"
 msgstr "Aide"
 
-#: src/gui/inventorywindow.cpp:74
+#: src/gui/inventorywindow.cpp:75
 msgid "by name"
 msgstr "par nom"
 
-#: src/gui/inventorywindow.cpp:75
+#: src/gui/inventorywindow.cpp:76
 msgid "by id"
 msgstr "par numéro d'identification"
 
-#: src/gui/inventorywindow.cpp:76
+#: src/gui/inventorywindow.cpp:77
 msgid "by weight"
 msgstr "par poids"
 
-#: src/gui/inventorywindow.cpp:77
+#: src/gui/inventorywindow.cpp:78
 msgid "by amount"
 msgstr "par nombre"
 
-#: src/gui/inventorywindow.cpp:78
+#: src/gui/inventorywindow.cpp:79
 msgid "by type"
 msgstr "par type"
 
-#: src/gui/inventorywindow.cpp:115 src/gui/windowmenu.cpp:83
+#: src/gui/inventorywindow.cpp:116 src/gui/windowmenu.cpp:83
 #: src/inventory.cpp:251
 msgid "Inventory"
 msgstr "Inventaire"
 
-#: src/gui/inventorywindow.cpp:140
+#: src/gui/inventorywindow.cpp:141
 msgid "Slots:"
 msgstr "Emplacements :"
 
-#: src/gui/inventorywindow.cpp:152
+#: src/gui/inventorywindow.cpp:153
 msgid "Filter:"
 msgstr "Filtre :"
 
-#: src/gui/inventorywindow.cpp:161 src/gui/inventorywindow.cpp:582
+#: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:582
 #: src/gui/popupmenu.cpp:1641 src/gui/popupmenu.cpp:1741
 #: src/gui/popupmenu.cpp:1797
 msgid "Equip"
 msgstr "Équiper"
 
-#: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:586
+#: src/gui/inventorywindow.cpp:163 src/gui/inventorywindow.cpp:586
 #: src/gui/popupmenu.cpp:1645 src/gui/popupmenu.cpp:1708
 #: src/gui/popupmenu.cpp:1745 src/gui/popupmenu.cpp:1801
 #: src/gui/skilldialog.cpp:242
 msgid "Use"
 msgstr "Utiliser"
 
-#: src/gui/inventorywindow.cpp:175 src/gui/inventorywindow.cpp:682
+#: src/gui/inventorywindow.cpp:176 src/gui/inventorywindow.cpp:682
 #: src/gui/popupmenu.cpp:1650 src/gui/popupmenu.cpp:1750
 #: src/gui/popupmenu.cpp:1806
 msgid "Drop..."
 msgstr "Jeter..."
 
-#: src/gui/inventorywindow.cpp:176 src/gui/popupmenu.cpp:1659
+#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1659
 #: src/gui/popupmenu.cpp:1759 src/gui/popupmenu.cpp:1815
 msgid "Split"
 msgstr "Partager"
 
-#: src/gui/inventorywindow.cpp:177 src/gui/outfitwindow.cpp:64
+#: src/gui/inventorywindow.cpp:178 src/gui/outfitwindow.cpp:64
 #: src/gui/popupmenu.cpp:460 src/gui/setupactiondata.h:1546
 msgid "Outfits"
 msgstr "Costumes"
 
-#: src/gui/inventorywindow.cpp:180
+#: src/gui/inventorywindow.cpp:181
 msgid "Weight:"
 msgstr "Poids :"
 
-#: src/gui/inventorywindow.cpp:204 src/gui/inventorywindow.cpp:673
+#: src/gui/inventorywindow.cpp:205 src/gui/inventorywindow.cpp:673
 #: src/gui/popupmenu.cpp:1625 src/gui/popupmenu.cpp:1762
 #: src/gui/popupmenu.cpp:1818 src/gui/setup.cpp:74
 msgid "Store"
 msgstr "Entreposer"
 
-#: src/gui/inventorywindow.cpp:205 src/gui/popupmenu.cpp:1666
+#: src/gui/inventorywindow.cpp:206 src/gui/popupmenu.cpp:1666
 msgid "Retrieve"
 msgstr "Récupérer"
 
@@ -1362,12 +1362,12 @@ msgstr "Envoyer"
 msgid "Failed to send as sender or letter invalid."
 msgstr "Échec de l'envoi comme émetteur ou caractère invalide."
 
-#: src/gui/outfitwindow.cpp:90 src/gui/outfitwindow.cpp:533
+#: src/gui/outfitwindow.cpp:90 src/gui/outfitwindow.cpp:531
 #, c-format
 msgid "Outfit: %d"
 msgstr "Tenue : %d"
 
-#: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
+#: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:533
 #: src/gui/windowmenu.cpp:321
 #, c-format
 msgid "Key: %s"
@@ -2946,47 +2946,55 @@ msgid "Enable map reduce (Software)"
 msgstr "Autoriser la réduction des cartes (Logiciel)"
 
 #: src/gui/setup_perfomance.cpp:69
+msgid "Enable compound sprite delay (Software)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:72
+msgid "Enable delayed images load  (OpenGL)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:75
 msgid "Better quality (disable for better perfomance)"
 msgstr "Meilleure qualité (désactiver pour une meilleure performance)"
 
-#: src/gui/setup_perfomance.cpp:72
+#: src/gui/setup_perfomance.cpp:78
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 "Autoriser les correction des champs alpha ( Programme, cela peut être lent)"
 
-#: src/gui/setup_perfomance.cpp:76
+#: src/gui/setup_perfomance.cpp:82
 msgid "Show beings transparency"
 msgstr "Montrer les créatures en transparence"
 
-#: src/gui/setup_perfomance.cpp:79
+#: src/gui/setup_perfomance.cpp:85
 msgid "Enable reorder sprites."
 msgstr "Autoriser la réorganisation des cartes éléments de dessin"
 
-#: src/gui/setup_perfomance.cpp:83
+#: src/gui/setup_perfomance.cpp:89
 msgid "Small memory (enable for lower memory usage)"
 msgstr "Petite mémoire (autoriser pour une utilisation moindre de la mémoire)"
 
-#: src/gui/setup_perfomance.cpp:86
+#: src/gui/setup_perfomance.cpp:92
 msgid "Disable advanced beings caching (Software)"
 msgstr "Désactiver la mise en cache des créatures avancées (logiciel)"
 
-#: src/gui/setup_perfomance.cpp:89
+#: src/gui/setup_perfomance.cpp:95
 msgid "Disable beings caching (Software)"
 msgstr "Désactiver la mise en cache des créatures"
 
-#: src/gui/setup_perfomance.cpp:93
+#: src/gui/setup_perfomance.cpp:99
 msgid "Different options (enable or disable can improve perfomance)"
 msgstr "Options différentes (le choix peut affecter la performance)"
 
-#: src/gui/setup_perfomance.cpp:96
+#: src/gui/setup_perfomance.cpp:102
 msgid "Enable texture compression (fast OpenGL)"
 msgstr "Activer la compression de texture (fast OpenGL)"
 
-#: src/gui/setup_perfomance.cpp:99
+#: src/gui/setup_perfomance.cpp:105
 msgid "Enable rectangular texture extension (OpenGL)"
 msgstr "Activer l'extension de texture rectangulaire (OpenGL)"
 
-#: src/gui/setup_perfomance.cpp:102
+#: src/gui/setup_perfomance.cpp:108
 msgid "Use new texture internal format (OpenGL)"
 msgstr "Utiliser le nouveau format interne de texture  (OpenGL)"
 
@@ -4102,7 +4110,7 @@ msgstr "Limites de votre position"
 msgid "Road Point"
 msgstr "Étape"
 
-#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:620
+#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:618
 msgid "Who Is Online - Updating"
 msgstr "Qui est en ligne - Mise à jour"
 
@@ -4114,11 +4122,11 @@ msgstr "Mise à jour"
 msgid "Who Is Online - "
 msgstr "Qui est en ligne - "
 
-#: src/gui/whoisonline.cpp:634
+#: src/gui/whoisonline.cpp:632
 msgid "Who Is Online - error"
 msgstr "Qui est en ligne - Erreur"
 
-#: src/gui/whoisonline.cpp:674
+#: src/gui/whoisonline.cpp:672
 msgid "Who Is Online - Update"
 msgstr "Qui est en ligne - Mise à jour"
 

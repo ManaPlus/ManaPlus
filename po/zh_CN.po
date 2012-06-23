@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-06-19 01:38+0300\n"
-"PO-Revision-Date: 2012-05-31 22:05+0000\n"
+"POT-Creation-Date: 2012-06-23 16:53+0300\n"
+"PO-Revision-Date: 2012-06-21 20:34+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.net/projects/p/manaplus/"
 "language/zh_CN/)\n"
@@ -29,7 +29,7 @@ msgstr "忽略新进的交易请求"
 msgid "Accepting incoming trade requests"
 msgstr "接受传入的交易请求"
 
-#: src/actorspritemanager.cpp:1265
+#: src/actorspritemanager.cpp:1267
 msgid "Visible on map"
 msgstr "在地图上可见"
 
@@ -46,56 +46,56 @@ msgid "miss"
 msgstr "无法出售无法出售的物品。"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being.cpp:1614 src/gui/whoisonline.cpp:768
+#: src/being.cpp:1614 src/gui/whoisonline.cpp:766
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being.cpp:1619 src/gui/whoisonline.cpp:773
+#: src/being.cpp:1619 src/gui/whoisonline.cpp:771
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:970 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
+#: src/client.cpp:977 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
 msgid "Setup"
 msgstr "魔法攻击"
 
-#: src/client.cpp:977 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:984 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "性能"
 
-#: src/client.cpp:982 src/gui/setup_video.cpp:250
+#: src/client.cpp:989 src/gui/setup_video.cpp:250
 msgid "Video"
 msgstr "视频"
 
-#: src/client.cpp:987
+#: src/client.cpp:994
 msgid "Themes"
 msgstr "主题"
 
-#: src/client.cpp:1073
+#: src/client.cpp:1080
 msgid "Connecting to server"
 msgstr "魔法防御"
 
-#: src/client.cpp:1111
+#: src/client.cpp:1118
 msgid "Logging in"
 msgstr "尝试捡起不存在的物品。"
 
-#: src/client.cpp:1145
+#: src/client.cpp:1152
 msgid "Entering game world"
 msgstr "捡起物品发生不存在的物品。"
 
-#: src/client.cpp:1251
+#: src/client.cpp:1258
 msgid "Requesting characters"
 msgstr "请求角色"
 
-#: src/client.cpp:1286
+#: src/client.cpp:1293
 msgid "Connecting to the game server"
 msgstr "连接到游戏服务器"
 
-#: src/client.cpp:1296
+#: src/client.cpp:1303
 msgid "Changing game servers"
 msgstr "更改游戏服务器"
 
-#: src/client.cpp:1339 src/client.cpp:1347 src/client.cpp:1482
+#: src/client.cpp:1346 src/client.cpp:1354 src/client.cpp:1489
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
 #: src/gui/editserverdialog.cpp:176 src/gui/registerdialog.cpp:239
@@ -105,50 +105,50 @@ msgstr "更改游戏服务器"
 msgid "Error"
 msgstr "错误"
 
-#: src/client.cpp:1357
+#: src/client.cpp:1364
 msgid "Requesting registration details"
 msgstr "请求注册的详细信息"
 
-#: src/client.cpp:1383
+#: src/client.cpp:1390
 msgid "Password Change"
 msgstr "密码更改"
 
-#: src/client.cpp:1384
+#: src/client.cpp:1391
 msgid "Password changed successfully!"
 msgstr "更改密码成功！"
 
-#: src/client.cpp:1403
+#: src/client.cpp:1410
 msgid "Email Change"
 msgstr "更改电子邮件"
 
-#: src/client.cpp:1404
+#: src/client.cpp:1411
 msgid "Email changed successfully!"
 msgstr "更改电子邮件成功！"
 
-#: src/client.cpp:1424
+#: src/client.cpp:1431
 msgid "Unregister Successful"
 msgstr "注销成功"
 
-#: src/client.cpp:1425
+#: src/client.cpp:1432
 msgid "Farewell, come back any time..."
 msgstr "再见，随时欢迎回来... ..."
 
-#: src/client.cpp:1648 src/client.cpp:1681 src/client.cpp:1696
-#: src/client.cpp:2141 src/client.cpp:2148
+#: src/client.cpp:1655 src/client.cpp:1688 src/client.cpp:1703
+#: src/client.cpp:2148 src/client.cpp:2155
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，并且无法创建！退出。"
 
-#: src/client.cpp:1839
+#: src/client.cpp:1846
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "无效的更新主机: %s"
 
-#: src/client.cpp:1873 src/client.cpp:1879
+#: src/client.cpp:1880 src/client.cpp:1886
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:1900
+#: src/client.cpp:1907
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在并且无法创建！退出。"
@@ -325,35 +325,35 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "/%s的选项是\"yes\"，\"no\"，\"true\"，\"false\"，\"1\"，\"0\"。"
 
-#: src/game.cpp:253 src/gui/widgets/chattab.cpp:447
+#: src/game.cpp:254 src/gui/widgets/chattab.cpp:447
 msgid "General"
 msgstr "常规"
 
-#: src/game.cpp:257 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:449
+#: src/game.cpp:258 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:449
 msgid "Debug"
 msgstr "调试 "
 
-#: src/game.cpp:517
+#: src/game.cpp:524
 msgid "Screenshot saved as "
 msgstr "截图保存为"
 
-#: src/game.cpp:525
+#: src/game.cpp:532
 msgid "Saving screenshot failed!"
 msgstr "保存屏幕快照失败！"
 
-#: src/game.cpp:584
+#: src/game.cpp:593
 msgid "The connection to the server was lost."
 msgstr "服务器的连接丢失。"
 
-#: src/game.cpp:585
+#: src/game.cpp:594
 msgid "Network Error"
 msgstr "网络错误"
 
-#: src/game.cpp:971
+#: src/game.cpp:980
 msgid "Could Not Load Map"
 msgstr "不能加载地图"
 
-#: src/game.cpp:972
+#: src/game.cpp:981
 #, c-format
 msgid "Error while loading %s"
 msgstr "加载%s时出现错误"
@@ -458,7 +458,7 @@ msgid "Max"
 msgstr "最大"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:178 src/gui/setup_other.cpp:147
+#: src/gui/inventorywindow.cpp:179 src/gui/setup_other.cpp:147
 msgid "Shop"
 msgstr "商店"
 
@@ -683,7 +683,7 @@ msgstr "等级 %d"
 msgid "(empty)"
 msgstr "()"
 
-#: src/gui/chatwindow.cpp:121 src/gui/inventorywindow.cpp:73
+#: src/gui/chatwindow.cpp:121 src/gui/inventorywindow.cpp:74
 #: src/gui/setup_visual.cpp:102
 msgid "default"
 msgstr "默认"
@@ -740,7 +740,7 @@ msgstr "彩虹2"
 msgid "rainbow 3"
 msgstr "彩虹3"
 
-#: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:93
+#: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:94
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:81
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:224
 #: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
@@ -755,12 +755,12 @@ msgstr "？？？"
 msgid "Chat"
 msgstr "聊天"
 
-#: src/gui/chatwindow.cpp:677
+#: src/gui/chatwindow.cpp:678
 #, c-format
 msgid "Present: %s; %d players are present."
 msgstr ""
 
-#: src/gui/chatwindow.cpp:1091
+#: src/gui/chatwindow.cpp:1092
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "对%s密语到：%s"
@@ -939,7 +939,7 @@ msgid "Did You Know?"
 msgstr "你知道吗？"
 
 #: src/gui/didyouknowwindow.cpp:68 src/gui/helpwindow.cpp:64
-#: src/gui/inventorywindow.cpp:206 src/gui/npcdialog.cpp:54
+#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:54
 #: src/gui/popupmenu.cpp:501 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "关闭"
@@ -990,7 +990,7 @@ msgstr ""
 msgid "Equipment"
 msgstr "装备"
 
-#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:163
+#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:164
 #: src/gui/inventorywindow.cpp:580 src/gui/popupmenu.cpp:1639
 #: src/gui/popupmenu.cpp:1739 src/gui/popupmenu.cpp:1795
 msgid "Unequip"
@@ -1000,79 +1000,79 @@ msgstr "卸下装备"
 msgid "Help"
 msgstr "帮助"
 
-#: src/gui/inventorywindow.cpp:74
+#: src/gui/inventorywindow.cpp:75
 msgid "by name"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:75
+#: src/gui/inventorywindow.cpp:76
 msgid "by id"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:76
+#: src/gui/inventorywindow.cpp:77
 msgid "by weight"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:77
+#: src/gui/inventorywindow.cpp:78
 msgid "by amount"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:78
+#: src/gui/inventorywindow.cpp:79
 msgid "by type"
 msgstr ""
 
-#: src/gui/inventorywindow.cpp:115 src/gui/windowmenu.cpp:83
+#: src/gui/inventorywindow.cpp:116 src/gui/windowmenu.cpp:83
 #: src/inventory.cpp:251
 msgid "Inventory"
 msgstr "物品栏"
 
-#: src/gui/inventorywindow.cpp:140
+#: src/gui/inventorywindow.cpp:141
 msgid "Slots:"
 msgstr "槽："
 
-#: src/gui/inventorywindow.cpp:152
+#: src/gui/inventorywindow.cpp:153
 msgid "Filter:"
 msgstr "过滤器："
 
-#: src/gui/inventorywindow.cpp:161 src/gui/inventorywindow.cpp:582
+#: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:582
 #: src/gui/popupmenu.cpp:1641 src/gui/popupmenu.cpp:1741
 #: src/gui/popupmenu.cpp:1797
 msgid "Equip"
 msgstr "装备"
 
-#: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:586
+#: src/gui/inventorywindow.cpp:163 src/gui/inventorywindow.cpp:586
 #: src/gui/popupmenu.cpp:1645 src/gui/popupmenu.cpp:1708
 #: src/gui/popupmenu.cpp:1745 src/gui/popupmenu.cpp:1801
 #: src/gui/skilldialog.cpp:242
 msgid "Use"
 msgstr "使用"
 
-#: src/gui/inventorywindow.cpp:175 src/gui/inventorywindow.cpp:682
+#: src/gui/inventorywindow.cpp:176 src/gui/inventorywindow.cpp:682
 #: src/gui/popupmenu.cpp:1650 src/gui/popupmenu.cpp:1750
 #: src/gui/popupmenu.cpp:1806
 msgid "Drop..."
 msgstr "掉落... ..."
 
-#: src/gui/inventorywindow.cpp:176 src/gui/popupmenu.cpp:1659
+#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1659
 #: src/gui/popupmenu.cpp:1759 src/gui/popupmenu.cpp:1815
 msgid "Split"
 msgstr "分离"
 
-#: src/gui/inventorywindow.cpp:177 src/gui/outfitwindow.cpp:64
+#: src/gui/inventorywindow.cpp:178 src/gui/outfitwindow.cpp:64
 #: src/gui/popupmenu.cpp:460 src/gui/setupactiondata.h:1546
 msgid "Outfits"
 msgstr "套装"
 
-#: src/gui/inventorywindow.cpp:180
+#: src/gui/inventorywindow.cpp:181
 msgid "Weight:"
 msgstr "重量："
 
-#: src/gui/inventorywindow.cpp:204 src/gui/inventorywindow.cpp:673
+#: src/gui/inventorywindow.cpp:205 src/gui/inventorywindow.cpp:673
 #: src/gui/popupmenu.cpp:1625 src/gui/popupmenu.cpp:1762
 #: src/gui/popupmenu.cpp:1818 src/gui/setup.cpp:74
 msgid "Store"
 msgstr "存储"
 
-#: src/gui/inventorywindow.cpp:205 src/gui/popupmenu.cpp:1666
+#: src/gui/inventorywindow.cpp:206 src/gui/popupmenu.cpp:1666
 msgid "Retrieve"
 msgstr "取回"
 
@@ -1344,12 +1344,12 @@ msgstr "发送"
 msgid "Failed to send as sender or letter invalid."
 msgstr "发送信件失败或者信件无效。"
 
-#: src/gui/outfitwindow.cpp:90 src/gui/outfitwindow.cpp:533
+#: src/gui/outfitwindow.cpp:90 src/gui/outfitwindow.cpp:531
 #, c-format
 msgid "Outfit: %d"
 msgstr "套装： %d"
 
-#: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:535
+#: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:533
 #: src/gui/windowmenu.cpp:321
 #, c-format
 msgid "Key: %s"
@@ -2924,46 +2924,54 @@ msgid "Enable map reduce (Software)"
 msgstr ""
 
 #: src/gui/setup_perfomance.cpp:69
-msgid "Better quality (disable for better perfomance)"
+msgid "Enable compound sprite delay (Software)"
 msgstr ""
 
 #: src/gui/setup_perfomance.cpp:72
+msgid "Enable delayed images load  (OpenGL)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:75
+msgid "Better quality (disable for better perfomance)"
+msgstr ""
+
+#: src/gui/setup_perfomance.cpp:78
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:76
+#: src/gui/setup_perfomance.cpp:82
 msgid "Show beings transparency"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:79
+#: src/gui/setup_perfomance.cpp:85
 msgid "Enable reorder sprites."
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:83
+#: src/gui/setup_perfomance.cpp:89
 msgid "Small memory (enable for lower memory usage)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:86
+#: src/gui/setup_perfomance.cpp:92
 msgid "Disable advanced beings caching (Software)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:89
+#: src/gui/setup_perfomance.cpp:95
 msgid "Disable beings caching (Software)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:93
+#: src/gui/setup_perfomance.cpp:99
 msgid "Different options (enable or disable can improve perfomance)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:96
+#: src/gui/setup_perfomance.cpp:102
 msgid "Enable texture compression (fast OpenGL)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:99
+#: src/gui/setup_perfomance.cpp:105
 msgid "Enable rectangular texture extension (OpenGL)"
 msgstr ""
 
-#: src/gui/setup_perfomance.cpp:102
+#: src/gui/setup_perfomance.cpp:108
 msgid "Use new texture internal format (OpenGL)"
 msgstr ""
 
@@ -4065,7 +4073,7 @@ msgstr "家居广场边界"
 msgid "Road Point"
 msgstr "路点"
 
-#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:620
+#: src/gui/whoisonline.cpp:80 src/gui/whoisonline.cpp:618
 msgid "Who Is Online - Updating"
 msgstr "谁在线 - 更新"
 
@@ -4077,11 +4085,11 @@ msgstr "更新"
 msgid "Who Is Online - "
 msgstr "谁在线 -"
 
-#: src/gui/whoisonline.cpp:634
+#: src/gui/whoisonline.cpp:632
 msgid "Who Is Online - error"
 msgstr "谁在线 - 错误"
 
-#: src/gui/whoisonline.cpp:674
+#: src/gui/whoisonline.cpp:672
 msgid "Who Is Online - Update"
 msgstr "谁在线 - 更新"
 
