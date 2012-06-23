@@ -1,3 +1,16 @@
+2012-06-24 New release 1.2.6.24
+fix: scrolling big text in texfields.
+fix: npc selection by mouse.
+fix: animated tiles animation speed.
+add: profiler to manaplus for windows.
+add: improved perfomance in manaplus for windows.
+add: double click support to storage and inventory.
+add: help seach commands (command ?text).
+Example: ?download
+add: help pages updated.
+add: delayed image load for OpenGL modes.
+add: delay to update image in software mode.
+
 2012-06-10 New release 1.2.6.10
 fix: incorrect animation (hair bug).
 fix: keys conflict in login dialog.
