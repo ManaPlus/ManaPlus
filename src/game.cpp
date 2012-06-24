@@ -976,10 +976,12 @@ void Game::changeMap(const std::string &mapPath)
 
     if (!newMap)
     {
+/*
         logger->log("Error while loading %s", fullMap.c_str());
         new OkDialog(_("Could Not Load Map"), strprintf(
             _("Error while loading %s"), fullMap.c_str()),
             DIALOG_ERROR, false);
+*/
     }
 
     if (mCurrentMap)

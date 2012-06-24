@@ -192,10 +192,7 @@ Map *MapReader::readMap(const std::string &filename,
     Map *map = nullptr;
 
     if (!buffer)
-    {
-        logger->log("Map file not found (%s)", realFilename.c_str());
-        return nullptr;
-    }
+        return createEmptyMap(filename, realFilename);
 
     unsigned char *inflated;
     unsigned int inflatedSize;
@@ -791,4 +788,17 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
     delete doc;
 
     return set;
+}
+
+Map *MapReader::createEmptyMap(const std::string &filename,
+                               const std::string &realFilename)
+{
+    logger->log("Creating empty map");
+    Map *map = new Map(300, 300, 32, 32);
+    MapLayer *layer = new MapLayer(0, 0, 300, 300, false);
+    map->addLayer(layer);
+    layer = new MapLayer(0, 0, 300, 300, true);
+    map->addLayer(layer);
+
+    return map;
 }

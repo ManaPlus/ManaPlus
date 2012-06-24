@@ -49,6 +49,9 @@ class MapReader
          */
         static Map *readMap(XmlNodePtr node, const std::string &path);
 
+        static Map *createEmptyMap(const std::string &filename,
+                                   const std::string &realFilename);
+
     private:
         /**
          * Reads the properties element.
