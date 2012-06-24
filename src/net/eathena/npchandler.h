@@ -66,12 +66,9 @@ class NpcHandler : public MessageHandler, public Ea::NpcHandler
 
         int getNpc(Net::MessageIn &msg, bool haveLength);
 
-        void processNpcCommand(Net::MessageIn &msg, int npcId);
+        void processNpcCutin(Net::MessageIn &msg, int npcId);
 
-        void processLangReuqest(Net::MessageIn &msg, int npcId);
-
-    private:
-        bool mRequestLang;
+        void processNpcViewPoint(Net::MessageIn &msg, int npcId);
 };
 
 } // namespace EAthena

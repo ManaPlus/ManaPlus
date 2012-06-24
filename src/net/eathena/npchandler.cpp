@@ -44,8 +44,7 @@ extern Net::NpcHandler *npcHandler;
 namespace EAthena
 {
 
-NpcHandler::NpcHandler() :
-    mRequestLang(false)
+NpcHandler::NpcHandler()
 {
     static const uint16_t _messages[] =
     {
@@ -56,6 +55,8 @@ NpcHandler::NpcHandler() :
         SMSG_NPC_INT_INPUT,
         SMSG_NPC_STR_INPUT,
         SMSG_NPC_COMMAND,
+        SMSG_NPC_CUTIN,
+        SMSG_NPC_VIEWPOINT,
         0
     };
     handledMessages = _messages;
@@ -64,43 +65,47 @@ NpcHandler::NpcHandler() :
 
 void NpcHandler::handleMessage(Net::MessageIn &msg)
 {
-    int npcId = getNpc(msg, msg.getId() == SMSG_NPC_CHOICE
-        || msg.getId() == SMSG_NPC_MESSAGE);
-
-    if (msg.getId() != SMSG_NPC_STR_INPUT)
-        mRequestLang = false;
+    int npcId = 0;
 
     switch (msg.getId())
     {
         case SMSG_NPC_CHOICE:
+            npcId = getNpc(msg, true);
             processNpcChoice(msg);
             break;
 
         case SMSG_NPC_MESSAGE:
+            npcId = getNpc(msg, true);
             processNpcMessage(msg);
             break;
 
         case SMSG_NPC_CLOSE:
+            npcId = getNpc(msg, false);
             processNpcClose(msg);
             break;
 
         case SMSG_NPC_NEXT:
+            npcId = getNpc(msg, false);
             processNpcNext(msg);
             break;
 
         case SMSG_NPC_INT_INPUT:
+            npcId = getNpc(msg, false);
             processNpcIntInput(msg);
             break;
 
         case SMSG_NPC_STR_INPUT:
-            if (mRequestLang)
-                processLangReuqest(msg, npcId);
-            else
-                processNpcStrInput(msg);
+            npcId = getNpc(msg, false);
+            processNpcStrInput(msg);
             break;
 
-        case SMSG_NPC_COMMAND:
-            processNpcCommand(msg, npcId);
+        case SMSG_NPC_CUTIN:
+            processNpcCutin(msg, npcId);
+            break;
+
+        case SMSG_NPC_VIEWPOINT:
+            npcId = getNpc(msg, true);
+            processNpcViewPoint(msg, npcId);
             break;
 
         default:
@@ -249,61 +254,20 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     return npcId;
 }
 
-void NpcHandler::processNpcCommand(Net::MessageIn &msg, int npcId)
+void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED, int npcId A_UNUSED)
 {
-    const int cmd = msg.readInt16();
-    switch (cmd)
-    {
-        case 0:
-            mRequestLang = true;
-            break;
-
-        case 1:
-            if (viewport)
-                viewport->moveCameraToActor(npcId);
-            break;
-
-        case 2:
-            if (viewport)
-            {
-                const int id = msg.readInt32();
-                const int x = msg.readInt16();
-                const int y = msg.readInt16();
-                if (!id)
-                    viewport->moveCameraToPosition(x, y);
-                else
-                    viewport->moveCameraToActor(id, x, y);
-            }
-            break;
-
-        case 3:
-            if (viewport)
-                viewport->returnCamera();
-            break;
-
-        case 4:
-            if (viewport)
-            {
-                msg.readInt32(); // id
-                const int x = msg.readInt16();
-                const int y = msg.readInt16();
-                viewport->moveCameraRelative(x, y);
-            }
-            break;
-        case 5:
-            closeDialog(npcId);
-            break;
-
-        default:
-            logger->log("unknown npc command: %d", cmd);
-            break;
-    }
+    msg.readString(64); // image name
+    msg.readInt8();     // type
 }
 
-void NpcHandler::processLangReuqest(Net::MessageIn &msg A_UNUSED, int npcId)
+void NpcHandler::processNpcViewPoint(Net::MessageIn &msg A_UNUSED,
+                                     int npcId A_UNUSED)
 {
-    mRequestLang = false;
-    stringInput(npcId, getLangSimple());
+    msg.readInt32();    // type
+    msg.readInt32();    // x
+    msg.readInt32();    // y
+    msg.readInt8();     // byte
+    msg.readInt32();    // color
 }
 
 } // namespace EAthena

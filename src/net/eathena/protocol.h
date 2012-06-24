@@ -344,4 +344,7 @@ enum
 #define SMSG_MAP_CHAR_ID             0x0283
 #define SMSG_PLAYER_SHORTCUTS        0x02b9
 #define SMSG_PLAYER_SHOW_EQUIP       0x02da
+#define SMSG_NPC_CUTIN               0x01b3
+#define SMSG_NPC_VIEWPOINT           0x0144
+
 #endif
