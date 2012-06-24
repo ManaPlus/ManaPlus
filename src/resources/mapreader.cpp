@@ -795,6 +795,9 @@ Map *MapReader::createEmptyMap(const std::string &filename,
 {
     logger->log("Creating empty map");
     Map *map = new Map(300, 300, 32, 32);
+    map->setProperty("_filename", realFilename);
+    map->setProperty("_realfilename", filename);
+    map->setCustom(true);
     MapLayer *layer = new MapLayer(0, 0, 300, 300, false);
     map->addLayer(layer);
     layer = new MapLayer(0, 0, 300, 300, true);

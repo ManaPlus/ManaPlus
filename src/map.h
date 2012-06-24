@@ -219,6 +219,8 @@ class Map : public Properties, public ConfigListener
                      unsigned char walkmask = BLOCKMASK_WALL | BLOCKMASK_AIR
                      | BLOCKMASK_WATER) const;
 
+        void setWalk(int x, int y, bool walkable);
+
         /**
          * Tells whether a tile is occupied by a being.
          */
@@ -376,6 +378,12 @@ class Map : public Properties, public ConfigListener
         bool empty() const
         { return mLayers.empty(); }
 
+        void setCustom(bool b)
+        { mCustom = b; }
+
+        bool isCustom()
+        { return mCustom; }
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -483,6 +491,7 @@ class Map : public Properties, public ConfigListener
         int mDrawScrollY;
         bool mRedrawMap;
         bool mBeingOpacity;
+        bool mCustom;
 };
 
 #endif

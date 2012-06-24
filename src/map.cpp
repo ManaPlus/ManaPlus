@@ -151,7 +151,8 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mDrawScrollX(-1),
     mDrawScrollY(-1),
     mRedrawMap(true),
-    mBeingOpacity(false)
+    mBeingOpacity(false),
+    mCustom(false)
 {
     const int size = mWidth * mHeight;
     for (int i = 0; i < NB_BLOCKTYPES; i++)
@@ -657,6 +658,11 @@ bool Map::getWalk(int x, int y, unsigned char walkmask) const
 
     // Check if the tile is walkable
     return !(mMetaTiles[x + y * mWidth].blockmask & walkmask);
+}
+
+void Map::setWalk(int x, int y, bool walkable)
+{
+    blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
 }
 
 bool Map::occupied(int x, int y) const
