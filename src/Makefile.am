@@ -649,25 +649,7 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 
 if ENABLE_MANASERV
 manaplus_CXXFLAGS += -DMANASERV_SUPPORT
-manaplus_SOURCES += enet/callbacks.c \
-	      enet/compress.c \
-	      enet/host.c \
-	      enet/list.c \
-	      enet/packet.c \
-	      enet/peer.c \
-	      enet/protocol.c \
-	      enet/unix.c \
-	      enet/win32.c \
-	      enet/callbacks.h \
-	      enet/enet.h \
-	      enet/list.h \
-	      enet/protocol.h \
-	      enet/time.h \
-	      enet/types.h \
-	      enet/unix.h \
-	      enet/utility.h \
-	      enet/win32.h \
-	      gui/specialswindow.cpp \
+manaplus_SOURCES += gui/specialswindow.cpp \
 	      gui/specialswindow.h \
 	      utils/sha256.cpp \
 	      utils/sha256.h \

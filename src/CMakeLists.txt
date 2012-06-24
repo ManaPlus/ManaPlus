@@ -811,24 +811,6 @@ SET(SRCS_TMWA
     )
 
 SET(SRCS_MANASERV
-    enet/callbacks.c
-    enet/callbacks.h
-    enet/compress.c
-    enet/enet.h
-    enet/host.c
-    enet/list.c
-    enet/list.h
-    enet/packet.c
-    enet/peer.c
-    enet/protocol.c
-    enet/protocol.h
-    enet/time.h
-    enet/types.h
-    enet/unix.c
-    enet/unix.h
-    enet/utility.h
-    enet/win32.c
-    enet/win32.h
     gui/specialswindow.cpp
     gui/specialswindow.h
     utils/sha256.cpp
