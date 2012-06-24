@@ -56,6 +56,9 @@ class GameHandler : public MessageHandler, public Ea::GameHandler
         void disconnect2();
 
         void mapLoadedEvent();
+
+        bool mustPing() const
+        { return false; }
 };
 
 } // namespace TmwAthena

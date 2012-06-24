@@ -56,6 +56,8 @@ class GameHandler
          * Tells whether the protocol is using the MP status bar
          */
         virtual bool canUseMagicBar() const = 0;
+
+        virtual bool mustPing() const = 0;
 };
 
 } // namespace Net

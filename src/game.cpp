@@ -367,7 +367,8 @@ Game::Game():
     mLastAction(0),
     mNextAdjustTime(cur_time + adjustDelay),
     mAdjustLevel(0),
-    mLowerCounter(0)
+    mLowerCounter(0),
+    mPing(0)
 {
     spellManager = new SpellManager;
     spellShortcut = new SpellShortcut;
@@ -615,6 +616,13 @@ void Game::slowLogic()
     }
     else
     {
+        if (Net::getGameHandler()->mustPing()
+            && get_elapsed_time1(mPing) > 3000)
+        {
+            mPing = tick_time;
+            Net::getGameHandler()->ping(tick_time);
+        }
+
         if (mAdjustPerfomance)
             adjustPerfomance();
         if (disconnectedDialog)
@@ -623,7 +631,6 @@ void Game::slowLogic()
             disconnectedDialog = nullptr;
         }
     }
-
 }
 
 void Game::adjustPerfomance()

@@ -65,6 +65,9 @@ class GameHandler : public MessageHandler, public Net::GameHandler
         { return false; }
 
         void disconnect2();
+
+        bool mustPing() const
+        { return false; }
 };
 
 } // namespace ManaServ

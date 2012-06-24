@@ -58,6 +58,9 @@ class GameHandler : public MessageHandler, public Ea::GameHandler
         void mapLoadedEvent();
 
         void processMapCharId(Net::MessageIn &msg);
+
+        bool mustPing() const
+        { return true; }
 };
 
 } // namespace EAthena
