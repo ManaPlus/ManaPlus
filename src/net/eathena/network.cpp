@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "net/tmwa/network.h"
+#include "net/eathena/network.h"
 
 #include "configuration.h"
 #include "logger.h"
@@ -28,7 +28,7 @@
 #include "net/messagehandler.h"
 #include "net/messagein.h"
 
-#include "net/tmwa/protocol.h"
+#include "net/eathena/protocol.h"
 
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
@@ -38,8 +38,9 @@
 
 #include "debug.h"
 
-namespace TmwAthena
+namespace EAthena
 {
+
 /** Warning: buffers and other variables are shared,
     so there can be only one connection active at a time */
 
@@ -53,7 +54,7 @@ short packet_lengths[] =
   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
   0,  50,   3,  -1,  55,  17,   3,  37,  46,  -1,  23,  -1,   3, 108,   3,   2,
-  3,  28,  19,  11,   3,  -1,   9,   5,  54,  53,  58,  60,  41,   2,   6,   6,
+  3,  28,  19,  11,   3,  -1,   9,   5,  55,  53,  58,  60,  44,   2,   6,   6,
 // #0x0080
   7,   3,   2,   2,   2,   5,  16,  12,  10,   7,  29,  23,  -1,  -1,  -1,   0,
   7,  22,  28,   2,   6,  30,  -1,  -1,   3,  -1,  -1,   5,   9,  17,  17,   6,
@@ -88,6 +89,27 @@ short packet_lengths[] =
  26,   0,   0,   0,  18,   0,   0,   0,   0,   0,   0,  19,  10,   0,   0,   0,
   2,  -1,  16,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
  -1, 122,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+// #0x0240
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+// #0x0280
+  0,   0,   0,   6,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0, 191,   0,   0,   0,   0,   0,   0,
+// #0x02C0
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   3,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+// #0x0300
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
+  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
 };
 
 const unsigned int BUFFER_SIZE = 655360;
@@ -345,8 +367,8 @@ MessageIn Network::getNextMessage()
         len = readWord(2);
 
 #ifdef ENABLEDEBUGLOG
-//    logger->dlog(strprintf("Received packet 0x%x of length %d\n",
-//        msgId, len));
+    logger->dlog(strprintf("Received packet 0x%x of length %d\n",
+        msgId, len));
 #endif
 
     MessageIn msg(mInBuffer, len);
@@ -495,4 +517,4 @@ uint16_t Network::readWord(int pos)
 #endif
 }
 
-} // namespace TmwAthena
+} // namespace EAthena

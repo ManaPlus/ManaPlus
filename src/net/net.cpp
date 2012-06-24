@@ -42,6 +42,10 @@
 
 #include "net/tmwa/generalhandler.h"
 
+#ifdef EATHENA_SUPPORT
+#include "net/eathena/generalhandler.h"
+#endif
+
 #ifdef MANASERV_SUPPORT
 #include "net/manaserv/generalhandler.h"
 #endif
@@ -165,11 +169,20 @@ void connectToServer(const ServerInfo &server)
             case ServerInfo::EVOL:
                 new TmwAthena::GeneralHandler;
                 break;
+            case ServerInfo::EATHENA:
+#ifdef EATHENA_SUPPORT
+                new EAthena::GeneralHandler;
+#else
+                new TmwAthena::GeneralHandler;
+#endif
+                break;
             case ServerInfo::MANASERV:
 #ifdef MANASERV_SUPPORT
                 new ManaServ::GeneralHandler;
-                break;
+#else
+                new TmwAthena::GeneralHandler;
 #endif
+                break;
             case ServerInfo::TMWATHENA:
             case ServerInfo::UNKNOWN:
             default:

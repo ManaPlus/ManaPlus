@@ -790,6 +790,55 @@ manaplus_SOURCES += \
 	      net/tmwa/tradehandler.cpp \
 	      net/tmwa/tradehandler.h
 
+if ENABLE_EATHENA
+manaplus_CXXFLAGS += -DEATHENA_SUPPORT
+manaplus_SOURCES += net/eathena/gui/guildtab.cpp \
+	      net/eathena/gui/guildtab.h \
+	      net/eathena/gui/partytab.cpp \
+	      net/eathena/gui/partytab.h \
+	      net/eathena/adminhandler.cpp \
+	      net/eathena/adminhandler.h \
+	      net/eathena/beinghandler.cpp \
+	      net/eathena/beinghandler.h \
+	      net/eathena/buysellhandler.cpp \
+	      net/eathena/buysellhandler.h \
+	      net/eathena/charserverhandler.cpp \
+	      net/eathena/charserverhandler.h \
+	      net/eathena/chathandler.cpp \
+	      net/eathena/chathandler.h \
+	      net/eathena/gamehandler.cpp \
+	      net/eathena/gamehandler.h \
+	      net/eathena/generalhandler.cpp \
+	      net/eathena/generalhandler.h \
+	      net/eathena/guildhandler.cpp \
+	      net/eathena/guildhandler.h \
+	      net/eathena/inventoryhandler.cpp \
+	      net/eathena/inventoryhandler.h \
+	      net/eathena/itemhandler.cpp \
+	      net/eathena/itemhandler.h \
+	      net/eathena/loginhandler.cpp \
+	      net/eathena/loginhandler.h \
+	      net/eathena/messagehandler.cpp \
+	      net/eathena/messagehandler.h \
+	      net/eathena/messagein.cpp \
+	      net/eathena/messagein.h \
+	      net/eathena/messageout.cpp \
+	      net/eathena/messageout.h \
+	      net/eathena/network.cpp \
+	      net/eathena/network.h \
+	      net/eathena/npchandler.cpp \
+	      net/eathena/npchandler.h \
+	      net/eathena/partyhandler.cpp \
+	      net/eathena/partyhandler.h \
+	      net/eathena/playerhandler.cpp \
+	      net/eathena/playerhandler.h \
+	      net/eathena/protocol.h \
+	      net/eathena/specialhandler.cpp \
+	      net/eathena/specialhandler.h \
+	      net/eathena/tradehandler.cpp \
+	      net/eathena/tradehandler.h
+endif
+
 manaplus_SOURCES += \
 	      mumblemanager.cpp \
 	      mumblemanager.h

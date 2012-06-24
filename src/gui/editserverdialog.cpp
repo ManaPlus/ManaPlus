@@ -43,9 +43,18 @@ std::string TypeListModel::getElementAt(int elementIndex)
         return "TmwAthena";
     else if (elementIndex == 1)
         return "Evol";
+#ifdef EATHENA_SUPPORT
+    else if (elementIndex == 2)
+        return "eAthena";
+#ifdef MANASERV_SUPPORT
+    else if (elementIndex == 3)
+        return "ManaServ";
+#endif
+#else
 #ifdef MANASERV_SUPPORT
     else if (elementIndex == 2)
         return "ManaServ";
+#endif
 #endif
     else
         return "Unknown";
@@ -129,10 +138,21 @@ EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
 
     switch (mServer.type)
     {
+#ifdef EATHENA_SUPPORT
+        case ServerInfo::EATHENA:
+            mTypeField->setSelected(2);
+            break;
+        case ServerInfo::MANASERV:
+#ifdef MANASERV_SUPPORT
+            mTypeField->setSelected(3);
+            break;
+#endif
+#else
         case ServerInfo::MANASERV:
 #ifdef MANASERV_SUPPORT
             mTypeField->setSelected(2);
             break;
+#endif
 #endif
         default:
         case ServerInfo::UNKNOWN:
@@ -199,10 +219,21 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
                     case 1:
                         mServer.type = ServerInfo::EVOL;
                         break;
+#ifdef EATHENA_SUPPORT
+                    case 2:
+                        mServer.type = ServerInfo::EATHENA;
+                        break;
+#ifdef MANASERV_SUPPORT
+                    case 3:
+                        mServer.type = ServerInfo::MANASERV;
+                        break;
+#endif
+#else
 #ifdef MANASERV_SUPPORT
                     case 2:
                         mServer.type = ServerInfo::MANASERV;
                         break;
+#endif
 #endif
                     default:
                         mServer.type = ServerInfo::UNKNOWN;

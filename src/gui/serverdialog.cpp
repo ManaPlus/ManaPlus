@@ -71,11 +71,18 @@ static std::string serverTypeToString(ServerInfo::Type type)
             return "TmwAthena";
         case ServerInfo::EVOL:
             return "Evol";
+#ifdef EATHENA_SUPPORT
+        case ServerInfo::EATHENA:
+            return "eAthena";
+#endif
 #ifdef MANASERV_SUPPORT
         case ServerInfo::MANASERV:
             return "ManaServ";
 #else
         case ServerInfo::MANASERV:
+#endif
+#ifndef EATHENA_SUPPORT
+        case ServerInfo::EATHENA:
 #endif
         default:
         case ServerInfo::UNKNOWN:
@@ -88,6 +95,12 @@ static unsigned short defaultPortForServerType(ServerInfo::Type type)
     switch (type)
     {
         default:
+        case ServerInfo::EATHENA:
+#ifdef EATHENA_SUPPORT
+            return 6900;
+#else
+            return 6901;
+#endif
         case ServerInfo::UNKNOWN:
         case ServerInfo::TMWATHENA:
         case ServerInfo::EVOL:

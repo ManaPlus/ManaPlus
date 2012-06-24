@@ -51,10 +51,18 @@ class TypeListModel : public gcn::ListModel
          * Used to get number of line in the list
          */
         int getNumberOfElements()
+#ifdef EATHENA_SUPPORT
+#ifdef MANASERV_SUPPORT
+        { return 4; }
+#else
+        { return 3; }
+#endif
+#else
 #ifdef MANASERV_SUPPORT
         { return 3; }
 #else
         { return 2; }
+#endif
 #endif
 
         /**

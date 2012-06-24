@@ -178,7 +178,7 @@ fi
 
 # Enable manaserv
 AC_ARG_ENABLE(manaserv,
-[  --enable-manaserv    Turn on manaserv],
+[  --enable-manaserv    Turn on manaserv support],
 [case "${enableval}" in
   yes) with_manaserv=true ;;
   no)  with_manaserv=false ;;
@@ -186,6 +186,17 @@ AC_ARG_ENABLE(manaserv,
 esac],[with_manaserv=false])
 
 AM_CONDITIONAL(ENABLE_MANASERV, test x$with_manaserv = xtrue)
+
+# Enable eAthena
+AC_ARG_ENABLE(eathena,
+[  --enable-eathena    Turn on eAthena support],
+[case "${enableval}" in
+  yes) with_eathena=true ;;
+  no)  with_eathena=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-eathena) ;;
+esac],[with_eathena=false])
+
+AM_CONDITIONAL(ENABLE_EATHENA, test x$with_eathena = xtrue)
 
 # Enable portable
 AC_ARG_ENABLE(portable,
