@@ -387,7 +387,10 @@ void ChatTab::chatInput(const std::string &message)
             handleCommand(std::string(msg, 1));
             break;
         case '?':
-            handleHelp(std::string(msg, 1));
+            if (msg.size() > 1)
+                handleHelp(std::string(msg, 1));
+            else
+                handleInput(msg);
             break;
         default:
             handleInput(msg);
