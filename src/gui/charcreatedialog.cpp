@@ -501,7 +501,10 @@ void CharCreateDialog::updateHair()
     mHairStyleNameLabel->setCaption(item.getName());
     mHairStyleNameLabel->adjustSize();
 
-    mHairColor %= ColorDB::getHairSize();
+    if (ColorDB::getHairSize())
+        mHairColor %= ColorDB::getHairSize();
+    else
+        mHairColor = 0;
     if (mHairColor < 0)
         mHairColor += ColorDB::getHairSize();
     if (mHairColor < static_cast<signed>(minHairColor)
