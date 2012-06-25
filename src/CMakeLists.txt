@@ -26,6 +26,10 @@ IF (ENABLE_MANASERV)
     SET(FLAGS "${FLAGS} -DMANASERV_SUPPORT=1")
 ENDIF()
 
+IF (ENABLE_EATHENA)
+    SET(FLAGS "${FLAGS} -DEATHENA_SUPPORT=1")
+ENDIF()
+
 IF (CMAKE_BUILD_TYPE)
     STRING(TOLOWER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_TOLOWER)
     IF(CMAKE_BUILD_TYPE_TOLOWER MATCHES debug OR
@@ -810,6 +814,54 @@ SET(SRCS_TMWA
     net/tmwa/tradehandler.h
     )
 
+SET(SRCS_EATHENA
+    net/eathena/gui/guildtab.cpp
+    net/eathena/gui/guildtab.h
+    net/eathena/gui/partytab.cpp
+    net/eathena/gui/partytab.h
+    net/eathena/adminhandler.cpp
+    net/eathena/adminhandler.h
+    net/eathena/beinghandler.cpp
+    net/eathena/beinghandler.h
+    net/eathena/buysellhandler.cpp
+    net/eathena/buysellhandler.h
+    net/eathena/charserverhandler.cpp
+    net/eathena/charserverhandler.h
+    net/eathena/chathandler.cpp
+    net/eathena/chathandler.h
+    net/eathena/gamehandler.cpp
+    net/eathena/gamehandler.h
+    net/eathena/generalhandler.cpp
+    net/eathena/generalhandler.h
+    net/eathena/guildhandler.cpp
+    net/eathena/guildhandler.h
+    net/eathena/inventoryhandler.cpp
+    net/eathena/inventoryhandler.h
+    net/eathena/itemhandler.cpp
+    net/eathena/itemhandler.h
+    net/eathena/loginhandler.cpp
+    net/eathena/loginhandler.h
+    net/eathena/messagehandler.cpp
+    net/eathena/messagehandler.h
+    net/eathena/messagein.cpp
+    net/eathena/messagein.h
+    net/eathena/messageout.cpp
+    net/eathena/messageout.h
+    net/eathena/network.cpp
+    net/eathena/network.h
+    net/eathena/npchandler.cpp
+    net/eathena/npchandler.h
+    net/eathena/partyhandler.cpp
+    net/eathena/partyhandler.h
+    net/eathena/playerhandler.cpp
+    net/eathena/playerhandler.h
+    net/eathena/protocol.h
+    net/eathena/specialhandler.cpp
+    net/eathena/specialhandler.h
+    net/eathena/tradehandler.cpp
+    net/eathena/tradehandler.h
+    )
+
 SET(SRCS_MANASERV
     gui/specialswindow.cpp
     gui/specialswindow.h
@@ -881,9 +933,17 @@ ENDIF ()
 SET (PROGRAMS manaplus)
 
 IF (ENABLE_MANASERV)
-    ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA} ${SRCS_EVOL})
+    IF (ENABLE_EATHENA)
+        ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_MANASERV} ${SRCS_EATHENA} ${SRCS_TMWA} ${SRCS_EVOL})
+    ELSE(ENABLE_EATHENA)
+        ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_MANASERV} ${SRCS_TMWA} ${SRCS_EVOL})
+    ENDIF(ENABLE_EATHENA)
 ELSE(ENABLE_MANASERV)
-    ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_TMWA} ${SRCS_EVOL})
+    IF (ENABLE_EATHENA)
+        ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_EATHENA} ${SRCS_TMWA} ${SRCS_EVOL})
+    ELSE(ENABLE_EATHENA)
+        ADD_EXECUTABLE(manaplus WIN32 ${SRCS_GUICHAN} ${SRCS} ${SRCS_TMWA} ${SRCS_EVOL})
+    ENDIF(ENABLE_EATHENA)
 ENDIF(ENABLE_MANASERV)
 
 TARGET_LINK_LIBRARIES(manaplus
