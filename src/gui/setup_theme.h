@@ -89,9 +89,14 @@ class Setup_Theme : public SetupTab
         std::string mJapanFont;
 
         FontSizeChoiceListModel *mFontSizeListModel;
-        gcn::Label *fontSizeLabel;
+        gcn::Label *mFontSizeLabel;
         int mFontSize;
         gcn::DropDown *mFontSizeDropDown;
+
+        FontSizeChoiceListModel *mNpcFontSizeListModel;
+        gcn::Label *mNpcFontSizeLabel;
+        int mNpcFontSize;
+        gcn::DropDown *mNpcFontSizeDropDown;
 
         EditDialog *mEditDialog;
 };

@@ -201,6 +201,22 @@ Gui::Gui(Graphics *graphics):
                       std::string("': ") + e.getMessage());
     }
 
+    // Set npc font
+    fontFile = config.getValue("npcFont", "");
+    const int npcFontSize = config.getIntValue("npcfontSize");
+    if (fontFile.empty())
+        fontFile = branding.getStringValue("npcFont");
+
+    try
+    {
+        mNpcFont = new SDLFont(fontFile, npcFontSize);
+    }
+    catch (const gcn::Exception &e)
+    {
+        logger->error(std::string("Unable to load '") + fontFile +
+                      std::string("': ") + e.getMessage());
+    }
+
     gcn::Widget::setGlobalFont(mGuiFont);
 
     // Initialize mouse cursor and listen for changes to the option
@@ -463,11 +479,13 @@ void Gui::updateFonts()
 
     boldFont->loadFont(fontFile, fontSize);
 
-    fontFile = config.getValue("secureFont", "");
-    if (fontFile.empty())
-        fontFile = branding.getStringValue("secureFont");
+    const int npcFontSize = config.getIntValue("npcfontSize");
 
-    mSecureFont->loadFont(fontFile, fontSize);
+    fontFile = config.getValue("npcFont", "");
+    if (fontFile.empty())
+        fontFile = branding.getStringValue("npcFont");
+
+    mNpcFont->loadFont(fontFile, npcFontSize);
 }
 
 void Gui::distributeMouseEvent(gcn::Widget* source, int type, int button,

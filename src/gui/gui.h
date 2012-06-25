@@ -98,6 +98,12 @@ class Gui : public gcn::Gui
         { return mSecureFont; }
 
         /**
+         * Return npc font.
+         */
+        SDLFont *getNpcFont() const
+        { return mNpcFont; }
+
+        /**
          * Return the Font used for "Info Particles", i.e. ones showing, what
          * you picked up, etc.
          */
@@ -151,18 +157,19 @@ class Gui : public gcn::Gui
     private:
         GuiConfigListener *mConfigListener;
         SDLFont *mGuiFont;                  /**< The global GUI font */
-        SDLFont *mInfoParticleFont;         /**< Font for Info Particles*/
-        SDLFont *mHelpFont;                 /**< Font for Help Window*/
-        SDLFont *mSecureFont;               /**< Font for secure labels*/
-        bool mCustomCursor;                   /**< Show custom cursor */
-        ImageSet *mMouseCursors;              /**< Mouse cursor images */
+        SDLFont *mInfoParticleFont;         /**< Font for Info Particles */
+        SDLFont *mHelpFont;                 /**< Font for Help Window */
+        SDLFont *mSecureFont;               /**< Font for secure labels */
+        SDLFont *mNpcFont;                  /**< Font for npc text */
+        bool mCustomCursor;                 /**< Show custom cursor */
+        ImageSet *mMouseCursors;            /**< Mouse cursor images */
         float mMouseCursorAlpha;
         int mMouseInactivityTimer;
         int mCursorType;
 };
 
-extern Gui *gui;                              /**< The GUI system */
-extern SDLInput *guiInput;                    /**< GUI input */
+extern Gui *gui;                            /**< The GUI system */
+extern SDLInput *guiInput;                  /**< GUI input */
 
 /**
  * Bolded text font

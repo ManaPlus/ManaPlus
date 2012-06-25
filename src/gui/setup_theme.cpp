@@ -160,7 +160,8 @@ Setup_Theme::Setup_Theme():
     mHelpFont(config.getStringValue("helpFont")),
     mSecureFont(config.getStringValue("secureFont")),
     mJapanFont(config.getStringValue("japanFont")),
-    mFontSize(config.getIntValue("fontSize"))
+    mFontSize(config.getIntValue("fontSize")),
+    mNpcFontSize(config.getIntValue("npcfontSize"))
 {
     setName(_("Theme"));
 
@@ -208,11 +209,17 @@ Setup_Theme::Setup_Theme():
     mJapanFontDropDown->setActionEventId(ACTION_JAPAN_FONT);
     mJapanFontDropDown->addActionListener(this);
 
-    fontSizeLabel = new Label(_("Font size"));
+    mFontSizeLabel = new Label(_("Font size"));
     mFontSizeListModel = new FontSizeChoiceListModel;
     mFontSizeDropDown = new DropDown(mFontSizeListModel);
     mFontSizeDropDown->setSelected(mFontSize - 10);
     mFontSizeDropDown->adjustHeight();
+
+    mNpcFontSizeLabel = new Label(_("Npc font size"));
+    mNpcFontSizeListModel = new FontSizeChoiceListModel;
+    mNpcFontSizeDropDown = new DropDown(mNpcFontSizeListModel);
+    mNpcFontSizeDropDown->setSelected(mNpcFontSize - 10);
+    mNpcFontSizeDropDown->adjustHeight();
 
     std::string skin = Theme::getThemeName();
     if (!skin.empty())
@@ -250,23 +257,25 @@ Setup_Theme::Setup_Theme():
 
     place(0, 0, mThemeLabel, 5);
     place(0, 1, mLangLabel, 5);
-    place(0, 2, fontSizeLabel, 5);
-    place(0, 3, mFontLabel, 5);
-    place(0, 4, mBoldFontLabel, 5);
-    place(0, 5, mParticleFontLabel, 5);
-    place(0, 6, mHelpFontLabel, 5);
-    place(0, 7, mSecureFontLabel, 5);
-    place(0, 8, mJapanFontLabel, 5);
+    place(0, 2, mFontSizeLabel, 5);
+    place(0, 3, mNpcFontSizeLabel, 5);
+    place(0, 4, mFontLabel, 5);
+    place(0, 5, mBoldFontLabel, 5);
+    place(0, 6, mParticleFontLabel, 5);
+    place(0, 7, mHelpFontLabel, 5);
+    place(0, 8, mSecureFontLabel, 5);
+    place(0, 9, mJapanFontLabel, 5);
 
     place(6, 0, mThemeDropDown, 10);
     place(6, 1, mLangDropDown, 10);
     place(6, 2, mFontSizeDropDown, 10);
-    place(6, 3, mFontDropDown, 10);
-    place(6, 4, mBoldFontDropDown, 10);
-    place(6, 5, mParticleFontDropDown, 10);
-    place(6, 6, mHelpFontDropDown, 10);
-    place(6, 7, mSecureFontDropDown, 10);
-    place(6, 8, mJapanFontDropDown, 10);
+    place(6, 3, mNpcFontSizeDropDown, 10);
+    place(6, 4, mFontDropDown, 10);
+    place(6, 5, mBoldFontDropDown, 10);
+    place(6, 6, mParticleFontDropDown, 10);
+    place(6, 7, mHelpFontDropDown, 10);
+    place(6, 8, mSecureFontDropDown, 10);
+    place(6, 9, mJapanFontDropDown, 10);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -284,6 +293,9 @@ Setup_Theme::~Setup_Theme()
 
     delete mFontSizeListModel;
     mFontSizeListModel = nullptr;
+
+    delete mNpcFontSizeListModel;
+    mNpcFontSizeListModel = nullptr;
 
     delete mLangListModel;
     mLangListModel = nullptr;
@@ -363,7 +375,9 @@ void Setup_Theme::apply()
         || config.getValue("secureFont", "dejavusansmono.ttf") != mSecureFont
         || config.getValue("japanFont", "mplus-1p-regular.ttf") != mJapanFont
         || config.getIntValue("fontSize")
-        != static_cast<int>(mFontSizeDropDown->getSelected()) + 10)
+        != static_cast<int>(mFontSizeDropDown->getSelected()) + 10
+        || config.getIntValue("npcfontSize")
+        != static_cast<int>(mNpcFontSizeDropDown->getSelected()) + 10)
     {
         config.setValue("font", "fonts/" + getFileName(mFont));
         config.setValue("boldFont", "fonts/" + getFileName(mBoldFont));
@@ -372,6 +386,7 @@ void Setup_Theme::apply()
         config.setValue("secureFont", "fonts/" + getFileName(mSecureFont));
         config.setValue("japanFont", "fonts/" + getFileName(mJapanFont));
         config.setValue("fontSize", mFontSizeDropDown->getSelected() + 10);
+        config.setValue("npcfontSize", mNpcFontSizeDropDown->getSelected() + 10);
         gui->updateFonts();
     }
 }

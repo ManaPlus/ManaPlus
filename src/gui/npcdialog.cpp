@@ -25,6 +25,8 @@
 #include "configuration.h"
 #include "client.h"
 
+#include "gui/gui.h"
+#include "gui/sdlfont.h"
 #include "gui/setup.h"
 #include "gui/viewport.h"
 
@@ -86,6 +88,7 @@ NpcDialog::NpcDialog(int npcId) :
     mTextBox->setOpaque(false);
     mTextBox->setMaxRow(config.getIntValue("ChatLogLength"));
     mTextBox->setLinkHandler(mItemLinkHandler);
+    mTextBox->setFont(gui->getNpcFont());
 
     mScrollArea = new ScrollArea(mTextBox);
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
@@ -97,6 +100,7 @@ NpcDialog::NpcDialog(int npcId) :
     mItemList->setActionEventId("ok");
     mItemList->addActionListener(this);
     mItemList->setDistributeMousePressed(false);
+    mItemList->setFont(gui->getNpcFont());
 
     setContentSize(260, 175);
 

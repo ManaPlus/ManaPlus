@@ -261,6 +261,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "hideErased", false);
     AddDEF(configData, "enableDelayedAnimations", true);
     AddDEF(configData, "enableCompoundSpriteDelay", true);
+    AddDEF(configData, "npcfontSize", 13);
     return configData;
 }
 
