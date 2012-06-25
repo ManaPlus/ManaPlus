@@ -77,8 +77,8 @@ NpcDialog::NpcDialog(int npcId) :
     setFocusable(true);
     setStickyButtonLock(true);
 
-    setMinWidth(200);
-    setMinHeight(150);
+    setMinWidth(620);
+    setMinHeight(450);
 
     setDefaultSize(400, 400, ImageRect::CENTER);
 
