@@ -360,6 +360,10 @@ void *AnimatedSprite::getHash()
 
 bool AnimatedSprite::updateNumber(unsigned num)
 {
+    // TODO need store num in delayed object if it exist for future usage
+    if (!mSprite)
+        return false;
+
     if (mNumber1 != num)
     {
         mNumber1 = num;
