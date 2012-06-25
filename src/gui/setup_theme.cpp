@@ -77,14 +77,21 @@ public:
     { }
 };
 
-const char *SIZE_NAME[6] =
+const int maxFontSizes = 11;
+
+const char *SIZE_NAME[maxFontSizes] =
 {
+    N_("Very small (9)"),
     N_("Tiny (10)"),
     N_("Small (11)"),
     N_("Medium (12)"),
-    N_("Large (13)"),
-    N_("Big (14)"),
-    N_("Huge (15)"),
+    N_("Normal (13)"),
+    N_("Large (14)"),
+    N_("Very large (15)"),
+    N_("Big (16)"),
+    N_("Very big (17)"),
+    N_("Huge (18)"),
+    N_("Very huge (19)"),
 };
 
 class FontSizeChoiceListModel : public gcn::ListModel
@@ -94,7 +101,7 @@ public:
     { }
 
     virtual int getNumberOfElements()
-    { return 6; }
+    { return maxFontSizes; }
 
     virtual std::string getElementAt(int i)
     {
@@ -212,13 +219,13 @@ Setup_Theme::Setup_Theme():
     mFontSizeLabel = new Label(_("Font size"));
     mFontSizeListModel = new FontSizeChoiceListModel;
     mFontSizeDropDown = new DropDown(mFontSizeListModel);
-    mFontSizeDropDown->setSelected(mFontSize - 10);
+    mFontSizeDropDown->setSelected(mFontSize - 9);
     mFontSizeDropDown->adjustHeight();
 
     mNpcFontSizeLabel = new Label(_("Npc font size"));
     mNpcFontSizeListModel = new FontSizeChoiceListModel;
     mNpcFontSizeDropDown = new DropDown(mNpcFontSizeListModel);
-    mNpcFontSizeDropDown->setSelected(mNpcFontSize - 10);
+    mNpcFontSizeDropDown->setSelected(mNpcFontSize - 9);
     mNpcFontSizeDropDown->adjustHeight();
 
     std::string skin = Theme::getThemeName();
@@ -375,9 +382,9 @@ void Setup_Theme::apply()
         || config.getValue("secureFont", "dejavusansmono.ttf") != mSecureFont
         || config.getValue("japanFont", "mplus-1p-regular.ttf") != mJapanFont
         || config.getIntValue("fontSize")
-        != static_cast<int>(mFontSizeDropDown->getSelected()) + 10
+        != static_cast<int>(mFontSizeDropDown->getSelected()) + 9
         || config.getIntValue("npcfontSize")
-        != static_cast<int>(mNpcFontSizeDropDown->getSelected()) + 10)
+        != static_cast<int>(mNpcFontSizeDropDown->getSelected()) + 9)
     {
         config.setValue("font", "fonts/" + getFileName(mFont));
         config.setValue("boldFont", "fonts/" + getFileName(mBoldFont));
@@ -385,8 +392,8 @@ void Setup_Theme::apply()
         config.setValue("helpFont", "fonts/" + getFileName(mHelpFont));
         config.setValue("secureFont", "fonts/" + getFileName(mSecureFont));
         config.setValue("japanFont", "fonts/" + getFileName(mJapanFont));
-        config.setValue("fontSize", mFontSizeDropDown->getSelected() + 10);
-        config.setValue("npcfontSize", mNpcFontSizeDropDown->getSelected() + 10);
+        config.setValue("fontSize", mFontSizeDropDown->getSelected() + 9);
+        config.setValue("npcfontSize", mNpcFontSizeDropDown->getSelected() + 9);
         gui->updateFonts();
     }
 }
