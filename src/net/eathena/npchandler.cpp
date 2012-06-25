@@ -54,7 +54,6 @@ NpcHandler::NpcHandler()
         SMSG_NPC_CLOSE,
         SMSG_NPC_INT_INPUT,
         SMSG_NPC_STR_INPUT,
-        SMSG_NPC_COMMAND,
         SMSG_NPC_CUTIN,
         SMSG_NPC_VIEWPOINT,
         0
@@ -185,20 +184,9 @@ void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
                          unsigned char color, int amount)
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
-    if (serverVersion > 0)
-    {
-        outMsg.writeInt16(10); // One item (length of packet)
-        outMsg.writeInt16(static_cast<int16_t>(amount));
-        outMsg.writeInt16(static_cast<int16_t>(itemId));
-        outMsg.writeInt8(color);
-        outMsg.writeInt8(0);
-    }
-    else
-    {
-        outMsg.writeInt16(8); // One item (length of packet)
-        outMsg.writeInt16(static_cast<int16_t>(amount));
-        outMsg.writeInt16(static_cast<int16_t>(itemId));
-    }
+    outMsg.writeInt16(8); // One item (length of packet)
+    outMsg.writeInt16(static_cast<int16_t>(amount));
+    outMsg.writeInt16(static_cast<int16_t>(itemId));
 }
 
 void NpcHandler::sellItem(int beingId A_UNUSED, int itemId, int amount)

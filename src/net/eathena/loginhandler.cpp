@@ -159,31 +159,15 @@ void LoginHandler::requestUpdateHosts()
 
 void LoginHandler::processServerVersion(Net::MessageIn &msg)
 {
-    char b1 = msg.readInt8(); // -1
-    char b2 = msg.readInt8(); // E
-    char b3 = msg.readInt8(); // V
-    char b4 = msg.readInt8(); // L
-    if (b1 == -1 && b2 == 'E' && b3 == 'V' && b4 == 'L')
-    {
-        unsigned int options = msg.readInt8();
-        mRegistrationEnabled = options;
-        msg.skip(2);    // 0 unused
-        serverVersion = msg.readInt8();
-        if (serverVersion >= 5)
-            requestUpdateHosts();
-    }
-    else
-    {
-        unsigned int options = msg.readInt32();
-        mRegistrationEnabled = options;
-        serverVersion = 0;
-    }
-    logger->log("Server version: %d", serverVersion);
-    if (serverVersion < 5)
-    {
-        if (Client::getState() != STATE_LOGIN)
-            Client::setState(STATE_LOGIN);
-    }
+    msg.readInt8();
+    msg.readInt8();
+    msg.readInt8();
+    msg.readInt8();
+    msg.readInt32();
+    mRegistrationEnabled = true;
+    serverVersion = 0;
+    if (Client::getState() != STATE_LOGIN)
+        Client::setState(STATE_LOGIN);
 
     // Leave this last
     mVersionResponse = true;

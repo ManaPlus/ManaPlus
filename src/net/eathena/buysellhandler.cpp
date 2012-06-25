@@ -106,8 +106,6 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16();  // length
     int sz = 11;
-    if (serverVersion > 0)
-        sz += 1;
     int n_items = (msg.getLength() - 4) / sz;
     mBuyDialog = new BuyDialog(mNpcId);
     mBuyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
@@ -119,8 +117,6 @@ void BuySellHandler::processNpcBuy(Net::MessageIn &msg)
         msg.readInt8();  // type
         int itemId = msg.readInt16();
         unsigned char color = 1;
-        if (serverVersion > 0)
-            color = msg.readInt8();
         mBuyDialog->addItem(itemId, color, 0, value);
     }
 }

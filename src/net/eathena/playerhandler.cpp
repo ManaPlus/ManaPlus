@@ -54,7 +54,6 @@ PlayerHandler::PlayerHandler()
         SMSG_PLAYER_STAT_UPDATE_5,
         SMSG_PLAYER_STAT_UPDATE_6,
         SMSG_PLAYER_ARROW_MESSAGE,
-        SMSG_ONLINE_LIST,
         SMSG_PLAYER_SHORTCUTS,
         SMSG_PLAYER_SHOW_EQUIP,
         0
@@ -102,10 +101,6 @@ void PlayerHandler::handleMessage(Net::MessageIn &msg)
 
         case SMSG_PLAYER_ARROW_MESSAGE:
             processPlayerArrowMessage(msg);
-            break;
-
-        case SMSG_ONLINE_LIST:
-            processOnlineList(msg);
             break;
 
         case SMSG_PLAYER_SHORTCUTS:
@@ -222,70 +217,6 @@ void PlayerHandler::respawn()
 
 void PlayerHandler::requestOnlineList()
 {
-    MessageOut outMsg(CMSG_ONLINE_LIST);
-}
-
-void PlayerHandler::processOnlineList(Net::MessageIn &msg)
-{
-    if (!whoIsOnline)
-        return;
-
-    int size = msg.readInt16() - 4;
-    std::vector<OnlinePlayer*> arr;
-
-    if (!size)
-    {
-        if (whoIsOnline)
-            whoIsOnline->loadList(arr);
-        return;
-    }
-
-    char *start = reinterpret_cast<char*>(msg.readBytes(size));
-    if (!start)
-        return;
-
-    char *buf = start;
-
-    int addVal = 1;
-    if (serverVersion >= 4)
-        addVal = 3;
-
-    while (buf - start + 1 < size && *(buf + addVal))
-    {
-        unsigned char status = 255;
-        unsigned char ver = 0;
-        unsigned char level = 0;
-        if (serverVersion >= 4)
-        {
-            status = *buf;
-            buf ++;
-            level = *buf;
-            buf ++;
-            ver = *buf;
-        }
-        buf ++;
-
-        int gender = GENDER_UNSPECIFIED;
-        if (serverVersion >= 4)
-        {
-            if (config.getBoolValue("showgender"))
-            {
-                if (status & Being::FLAG_GENDER_MALE)
-                    gender = GENDER_MALE;
-                else if (status & Being::FLAG_GENDER_OTHER)
-                    gender = GENDER_OTHER;
-                else
-                    gender = GENDER_FEMALE;
-            }
-        }
-        arr.push_back(new OnlinePlayer(static_cast<char*>(buf),
-            status, level, gender, ver));
-        buf += strlen(buf) + 1;
-    }
-
-    if (whoIsOnline)
-        whoIsOnline->loadList(arr);
-    delete [] start;
 }
 
 void PlayerHandler::updateStatus(uint8_t status)

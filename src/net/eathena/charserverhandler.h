@@ -65,7 +65,7 @@ class CharServerHandler : public MessageHandler, public Ea::CharServerHandler
 
     protected:
         void readPlayerData(Net::MessageIn &msg, Net::Character *character,
-                            bool withColors);
+                            bool);
 };
 
 } // namespace EAthena

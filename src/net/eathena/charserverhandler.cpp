@@ -164,8 +164,7 @@ void CharServerHandler::handleMessage(Net::MessageIn &msg)
 }
 
 void CharServerHandler::readPlayerData(Net::MessageIn &msg,
-                                       Net::Character *character,
-                                       bool withColors)
+                                       Net::Character *character, bool)
 {
     if (!character)
         return;
@@ -226,44 +225,19 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     for (int i = 0; i < 6; i++)
         character->data.mStats[i + STR].base = msg.readInt8();
 
-    if (withColors)
-    {
-        tempPlayer->setSprite(SPRITE_SHOE, shoes, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_GLOVES, gloves, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_CAPE, cape, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_MISC1, misc1, "", msg.readInt8());
-        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes,
-            "", msg.readInt8());
-        //to avoid show error (error.xml) need remove this sprite
-        if (!config.getBoolValue("hideShield"))
-            tempPlayer->setSprite(SPRITE_SHIELD, shield, "", msg.readInt8());
-        else
-            msg.readInt8();
+    tempPlayer->setSprite(SPRITE_SHOE, shoes);
+    tempPlayer->setSprite(SPRITE_GLOVES, gloves);
+    tempPlayer->setSprite(SPRITE_CAPE, cape);
+    tempPlayer->setSprite(SPRITE_MISC1, misc1);
+    tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
+    //to avoid show error (error.xml) need remove this sprite
+    if (!config.getBoolValue("hideShield"))
+        tempPlayer->setSprite(SPRITE_SHIELD, shield);
 
-        tempPlayer->setSprite(SPRITE_HAT, hat, "",
-            msg.readInt8()); // head option top
-        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes, "",
-            msg.readInt8());
-        tempPlayer->setSprite(SPRITE_MISC2, misc2, "", msg.readInt8());
-        msg.skip(5);
-        character->slot = msg.readInt8(); // character slot
-    }
-    else
-    {
-        tempPlayer->setSprite(SPRITE_SHOE, shoes);
-        tempPlayer->setSprite(SPRITE_GLOVES, gloves);
-        tempPlayer->setSprite(SPRITE_CAPE, cape);
-        tempPlayer->setSprite(SPRITE_MISC1, misc1);
-        tempPlayer->setSprite(SPRITE_BOTTOMCLOTHES, bottomClothes);
-        //to avoid show error (error.xml) need remove this sprite
-        if (!config.getBoolValue("hideShield"))
-            tempPlayer->setSprite(SPRITE_SHIELD, shield);
-
-        tempPlayer->setSprite(SPRITE_HAT, hat); // head option top
-        tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
-        tempPlayer->setSprite(SPRITE_MISC2, misc2);
-        character->slot = msg.readInt8(); // character slot
-    }
+    tempPlayer->setSprite(SPRITE_HAT, hat); // head option top
+    tempPlayer->setSprite(SPRITE_TOPCLOTHES, topClothes);
+    tempPlayer->setSprite(SPRITE_MISC2, misc2);
+    character->slot = msg.readInt8(); // character slot
 
     msg.readInt8();                        // unknown
 }
@@ -282,7 +256,8 @@ void CharServerHandler::chooseCharacter(Net::Character *character)
 
 void CharServerHandler::newCharacter(const std::string &name, int slot,
                                      bool gender A_UNUSED, int hairstyle,
-                                     int hairColor, unsigned char race,
+                                     int hairColor,
+                                     unsigned char race A_UNUSED,
                                      const std::vector<int> &stats)
 {
     MessageOut outMsg(CMSG_CHAR_CREATE);
@@ -293,8 +268,6 @@ void CharServerHandler::newCharacter(const std::string &name, int slot,
     outMsg.writeInt8(static_cast<unsigned char>(slot));
     outMsg.writeInt16(static_cast<short>(hairColor));
     outMsg.writeInt16(static_cast<short>(hairstyle));
-    if (serverVersion >= 2)
-        outMsg.writeInt8(race);
 }
 
 void CharServerHandler::deleteCharacter(Net::Character *character)
@@ -330,12 +303,7 @@ void CharServerHandler::connect()
     outMsg.writeInt32(token.account_ID);
     outMsg.writeInt32(token.session_ID1);
     outMsg.writeInt32(token.session_ID2);
-    // [Fate] The next word is unused by the old char server, so we squeeze in
-    //        mana client version information
-    if (serverVersion > 0)
-        outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
-    else
-        outMsg.writeInt16(CLIENT_TMW_PROTOCOL_VERSION);
+    outMsg.writeInt16(CLIENT_PROTOCOL_VERSION);
     outMsg.writeInt8(Being::genderToInt(token.sex));
 
     // We get 4 useless bytes before the real answer comes in (what are these?)
@@ -349,23 +317,18 @@ void CharServerHandler::processCharLogin(Net::MessageIn &msg)
     if (slots > 0 && slots < 30)
         loginData.characterSlots = static_cast<short unsigned int>(slots);
 
-    bool version = msg.readInt8() == 1 && serverVersion > 0;
-    msg.skip(17); // 0 Unused
+    msg.skip(18); // 0 Unused
 
     delete_all(mCharacters);
     mCharacters.clear();
 
     // Derive number of characters from message length
-    int count = (msg.getLength() - 24);
-    if (version)
-        count /= 120;
-    else
-        count /= 106;
+    int count = (msg.getLength() - 24) / 106;
 
     for (int i = 0; i < count; ++i)
     {
         Net::Character *character = new Net::Character;
-        readPlayerData(msg, character, version);
+        readPlayerData(msg, character, false);
         mCharacters.push_back(character);
         if (character && character->dummy)
         {

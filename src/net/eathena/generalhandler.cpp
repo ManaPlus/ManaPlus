@@ -304,4 +304,8 @@ void GeneralHandler::processEvent(Channels channel,
     }
 }
 
+void GeneralHandler::requestOnlineList()
+{
+}
+
 } // namespace EAthena

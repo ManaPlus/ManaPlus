@@ -57,6 +57,8 @@ class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
 
         void reloadPartially();
 
+        void requestOnlineList();
+
     protected:
         MessageHandlerPtr mAdminHandler;
         MessageHandlerPtr mBeingHandler;

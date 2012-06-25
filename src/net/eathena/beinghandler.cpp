@@ -284,7 +284,7 @@ void BeingHandler::processBeingChangeLook(Net::MessageIn &msg, bool look2)
     else
     {        // SMSG_BEING_CHANGE_LOOKS2
         id = msg.readInt16();
-        if (type == 2 || serverVersion > 0)
+        if (type == 2)
             id2 = msg.readInt16();
         else
             id2 = 1;
@@ -525,19 +525,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     if (!config.getBoolValue("hideShield"))
         dstBeing->setSprite(SPRITE_SHIELD, shield);
     //dstBeing->setSprite(SPRITE_SHOE, shoes);
-    if (serverVersion > 0)
-    {
-        dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom,
-            "", colors[0]);
-        dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid, "", colors[2]);
-        dstBeing->setSprite(SPRITE_HAT, headTop, "", colors[1]);
-    }
-    else
-    {
-        dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
-        dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
-        dstBeing->setSprite(SPRITE_HAT, headTop);
-    }
+    dstBeing->setSprite(SPRITE_BOTTOMCLOTHES, headBottom);
+    dstBeing->setSprite(SPRITE_TOPCLOTHES, headMid);
+    dstBeing->setSprite(SPRITE_HAT, headTop);
     //dstBeing->setSprite(SPRITE_GLOVES, gloves);
     //dstBeing->setSprite(SPRITE_CAPE, cape);
     //dstBeing->setSprite(SPRITE_MISC1, misc1);
@@ -758,23 +748,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     if (dstBeing->getType() == ActorSprite::MONSTER)
     {
-        if (serverVersion > 0)
-        {
-            int hp = msg.readInt32();
-            int maxHP = msg.readInt32();
-            if (hp && maxHP)
-            {
-                dstBeing->setMaxHP(maxHP);
-                int oldHP = dstBeing->getHP();
-                if (!oldHP || oldHP > hp)
-                    dstBeing->setHP(hp);
-            }
-        }
-        else
-        {
-            msg.readInt32();
-            msg.readInt32();
-        }
+        msg.readInt32();
+        msg.readInt32();
         gloves = 0;
     }
     else
@@ -793,15 +768,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
 
     msg.readInt16();  // manner
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
-    if (serverVersion > 0 && dstBeing->getType() == ActorSprite::MONSTER)
-    {
-        int attackRange = msg.readInt8();   // karma
-        dstBeing->setAttackRange(attackRange);
-    }
-    else
-    {
-        msg.readInt8();   // karma
-    }
+    msg.readInt8();   // karma
     gender = msg.readInt8();
 
     // reserving bits for future usage
