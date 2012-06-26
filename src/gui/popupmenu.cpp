@@ -981,6 +981,12 @@ void PopupMenu::handleLink(const std::string &link,
             mItem->getInvIndex(), mItem->getQuantity() / 2,
             Inventory::STORAGE);
     }
+    else if (link == "store all-1" && mItem)
+    {
+        Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
+            mItem->getInvIndex(), mItem->getQuantity() - 1,
+            Inventory::STORAGE);
+    }
     else if (link == "store all" && mItem)
     {
         Net::getInventoryHandler()->moveItem2(Inventory::INVENTORY,
@@ -1007,6 +1013,11 @@ void PopupMenu::handleLink(const std::string &link,
         if (tradeWindow)
             tradeWindow->tradeItem(mItem, mItem->getQuantity() / 2, true);
     }
+    else if (link == "addtrade all-1" && mItem)
+    {
+        if (tradeWindow)
+            tradeWindow->tradeItem(mItem, mItem->getQuantity() - 1, true);
+    }
     else if (link == "addtrade all" && mItem)
     {
         if (tradeWindow)
@@ -1030,6 +1041,12 @@ void PopupMenu::handleLink(const std::string &link,
     {
         Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
             mItem->getInvIndex(), mItem->getQuantity() / 2,
+            Inventory::INVENTORY);
+    }
+    else if (link == "retrieve all-1" && mItem)
+    {
+        Net::getInventoryHandler()->moveItem2(Inventory::STORAGE,
+            mItem->getInvIndex(), mItem->getQuantity() - 1,
             Inventory::INVENTORY);
     }
     else if (link == "retrieve all" && mItem)
@@ -1616,6 +1633,7 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
                 if (cnt > 10)
                     mBrowserBox->addRow("addtrade 10", _("Add to trade 10"));
                 mBrowserBox->addRow("addtrade half", _("Add to trade half"));
+                mBrowserBox->addRow("addtrade all-1", _("Add to trade all-1"));
                 mBrowserBox->addRow("addtrade all", _("Add to trade all"));
             }
             mBrowserBox->addRow("##3---");
@@ -1628,6 +1646,7 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
                 if (cnt > 10)
                     mBrowserBox->addRow("store 10", _("Store 10"));
                 mBrowserBox->addRow("store half", _("Store half"));
+                mBrowserBox->addRow("store all-1", _("Store all-1"));
                 mBrowserBox->addRow("store all", _("Store all"));
             }
             mBrowserBox->addRow("##3---");
@@ -1669,6 +1688,7 @@ void PopupMenu::showPopup(Window *parent, int x, int y, Item *item,
             if (cnt > 10)
                 mBrowserBox->addRow("retrieve 10", _("Retrieve 10"));
             mBrowserBox->addRow("retrieve half", _("Retrieve half"));
+            mBrowserBox->addRow("retrieve all-1", _("Retrieve all-1"));
             mBrowserBox->addRow("retrieve all", _("Retrieve all"));
         }
     }
