@@ -660,7 +660,7 @@ bool Map::getWalk(int x, int y, unsigned char walkmask) const
     return !(mMetaTiles[x + y * mWidth].blockmask & walkmask);
 }
 
-void Map::setWalk(int x, int y, bool walkable)
+void Map::setWalk(int x, int y, bool walkable A_UNUSED)
 {
     blockTile(x, y, Map::BLOCKTYPE_GROUNDTOP);
 }

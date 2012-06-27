@@ -442,8 +442,6 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     int guild;
     Being *dstBeing;
     int hairStyle, hairColor;
-    unsigned char colors[9];
-
 
     // An update about a player, potentially including movement.
     int id = msg.readInt32();
@@ -495,10 +493,9 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     headMid = msg.readInt16();
     hairColor = msg.readInt16();
 
-    colors[0] = msg.readInt8();
-    colors[1] = msg.readInt8();
-    colors[2] = msg.readInt8();
-
+    msg.readInt8();
+    msg.readInt8();
+    msg.readInt8();
     msg.readInt8();     //unused
 //            shoes = msg.readInt16();
 //            gloves = msg.readInt16();       //sd->head_dir

@@ -181,7 +181,7 @@ void NpcHandler::sell(int beingId)
 }
 
 void NpcHandler::buyItem(int beingId A_UNUSED, int itemId,
-                         unsigned char color, int amount)
+                         unsigned char color A_UNUSED, int amount)
 {
     MessageOut outMsg(CMSG_NPC_BUY_REQUEST);
     outMsg.writeInt16(8); // One item (length of packet)
