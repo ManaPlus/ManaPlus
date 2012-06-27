@@ -46,6 +46,9 @@ SubImage::SubImage(Image *parent, SDL_Surface *image,
         mHasAlphaChannel = mParent->hasAlphaChannel();
         mIsAlphaVisible = mHasAlphaChannel;
         mAlphaChannel = mParent->SDLgetAlphaChannel();
+#ifdef DEBUG_BIND_TEXTURE
+        mIdPath = parent->getIdPath();
+#endif
     }
     else
     {
@@ -97,6 +100,9 @@ SubImage::SubImage(Image *parent, GLuint image,
         mInternalBounds.y = mParent->mBounds.y;
         mInternalBounds.w = mParent->mBounds.w;
         mInternalBounds.h = mParent->mBounds.h;
+#ifdef DEBUG_BIND_TEXTURE
+        mIdPath = parent->getIdPath();
+#endif
     }
     else
     {

@@ -214,6 +214,9 @@ bool OpenGLGraphics::drawImage(const Image *image, int srcX, int srcY,
     if (!useColor)
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
+#ifdef DEBUG_BIND_TEXTURE
+    logger->log("bind: " + image->getIdPath());
+#endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -271,6 +274,9 @@ bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
     if (!useColor)
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
+#ifdef DEBUG_BIND_TEXTURE
+    logger->log("bind: " + image->getIdPath());
+#endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -324,6 +330,9 @@ void OpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
+#ifdef DEBUG_BIND_TEXTURE
+    logger->log("bind: " + image->getIdPath());
+#endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -458,6 +467,9 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
+#ifdef DEBUG_BIND_TEXTURE
+    logger->log("bind: " + image->getIdPath());
+#endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
     setTexturingAndBlending(true);
@@ -598,6 +610,9 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
     OpenGLGraphicsVertexes *ogl = vert->getOGL();
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+#ifdef DEBUG_BIND_TEXTURE
+    logger->log("bind: " + image->getIdPath());
+#endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 
@@ -912,6 +927,9 @@ void OpenGLGraphics::drawTile(ImageVertexes *vert)
     OpenGLGraphicsVertexes *ogl = vert->ogl;
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
+#ifdef DEBUG_BIND_TEXTURE
+    logger->log("bind: " + image->getIdPath());
+#endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
 

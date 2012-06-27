@@ -33,3 +33,4 @@
 #endif
 
 //#define DEBUG_CONFIG 1
+//#define DEBUG_BIND_TEXTURE 1

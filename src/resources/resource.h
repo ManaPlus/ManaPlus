@@ -89,8 +89,9 @@ class Resource
          */
         virtual ~Resource();
 
-    private:
         std::string mIdPath; /**< Path identifying this resource. */
+
+    private:
         time_t mTimeStamp;   /**< Time at which the resource was orphaned. */
         unsigned mRefCount;  /**< Reference count. */
         std::string mName;
