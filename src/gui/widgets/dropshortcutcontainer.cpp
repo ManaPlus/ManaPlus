@@ -103,20 +103,26 @@ void DropShortcutContainer::draw(gcn::Graphics *graphics)
 
     graphics->setFont(getFont());
 
+    if (mBackgroundImg)
+    {
+        for (unsigned i = 0; i < mMaxItems; i++)
+        {
+            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                (i / mGridWidth) * mBoxHeight);
+        }
+    }
+
+    Inventory *inv = PlayerInfo::getInventory();
+    if (!inv)
+        return;
+
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
 
-        if (mBackgroundImg)
-            g->drawImage(mBackgroundImg, itemX, itemY);
-
         if (dropShortcut->getItem(i) < 0)
             continue;
-
-        Inventory *inv = PlayerInfo::getInventory();
-        if (!inv)
-            return;
 
         Item *item = inv->findItem(dropShortcut->getItem(i),
             dropShortcut->getItemColor(i));

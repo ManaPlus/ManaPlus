@@ -113,13 +113,23 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
 
     graphics->setFont(getFont());
 
+    if (mBackgroundImg)
+    {
+        for (unsigned i = 0; i < mMaxItems; i++)
+        {
+            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                (i / mGridWidth) * mBoxHeight);
+        }
+    }
+
+    Inventory *inv = PlayerInfo::getInventory();
+    if (!inv)
+        return;
+
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
-
-        if (mBackgroundImg)
-            g->drawImage(mBackgroundImg, itemX, itemY);
 
         // Draw item keyboard shortcut.
         std::string key = inputManager.getKeyValueString(
@@ -137,11 +147,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         // this is item
         if (itemId < SPELL_MIN_ID)
         {
-            if (!PlayerInfo::getInventory())
-                continue;
-
-            Item *item = PlayerInfo::getInventory()->findItem(
-                itemId, itemColor);
+            Item *item = inv->findItem(itemId, itemColor);
 
             if (item)
             {

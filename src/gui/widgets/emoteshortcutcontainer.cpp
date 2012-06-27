@@ -109,13 +109,19 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
 
     graphics->setFont(getFont());
 
+    if (mBackgroundImg)
+    {
+        for (unsigned i = 0; i < mMaxItems; i++)
+        {
+            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                (i / mGridWidth) * mBoxHeight);
+        }
+    }
+
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int emoteX = (i % mGridWidth) * mBoxWidth;
         const int emoteY = (i / mGridWidth) * mBoxHeight;
-
-        if (mBackgroundImg)
-            g->drawImage(mBackgroundImg, emoteX, emoteY);
 
         // Draw emote keyboard shortcut.
         std::string key = inputManager.getKeyValueString(
@@ -123,9 +129,14 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
 
         graphics->setColor(getForegroundColor());
         g->drawText(key, emoteX + 2, emoteY + 2, gcn::Graphics::LEFT);
-
+    }
+    for (unsigned i = 0; i < mMaxItems; i++)
+    {
         if (i < mEmoteImg.size() && mEmoteImg[i] && mEmoteImg[i]->sprite)
-            mEmoteImg[i]->sprite->draw(g, emoteX + 2, emoteY + 10);
+        {
+            mEmoteImg[i]->sprite->draw(g, (i % mGridWidth) * mBoxWidth + 2,
+                (i / mGridWidth) * mBoxHeight + 10);
+        }
     }
 
     if (mEmoteMoved && mEmoteMoved < static_cast<unsigned>(

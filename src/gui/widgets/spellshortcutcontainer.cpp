@@ -111,20 +111,26 @@ void SpellShortcutContainer::draw(gcn::Graphics *graphics)
     int selectedId = spellShortcut->getSelectedItem();
     g->setColor(getForegroundColor());
 
+    if (mBackgroundImg)
+    {
+        for (unsigned i = 0; i < mMaxItems; i++)
+        {
+            g->drawImage(mBackgroundImg, (i % mGridWidth) * mBoxWidth,
+                (i / mGridWidth) * mBoxHeight);
+        }
+    }
+
     for (unsigned i = 0; i < mMaxItems; i++)
     {
         const int itemX = (i % mGridWidth) * mBoxWidth;
         const int itemY = (i / mGridWidth) * mBoxHeight;
 
-        g->drawImage(mBackgroundImg, itemX, itemY);
-
         int itemId = spellShortcut->getItem(
             (mNumber * SPELL_SHORTCUT_ITEMS) + i);
         if (selectedId >= 0 && itemId == selectedId)
         {
-            g->drawRectangle(gcn::Rectangle(
-                                            itemX + 1, itemY + 1,
-                                            mBoxWidth - 1, mBoxHeight - 1));
+            g->drawRectangle(gcn::Rectangle(itemX + 1, itemY + 1,
+                mBoxWidth - 1, mBoxHeight - 1));
         }
 
         if (!spellManager)
