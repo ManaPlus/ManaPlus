@@ -309,7 +309,6 @@ bool Graphics::videoInfo()
             ((vi->blit_sw_A) ? "yes" : "no"));
     logger->log("Accelerated color fills: %s",
             ((vi->blit_fill) ? "yes" : "no"));
-    logger->log("Available video memory: %d", vi->video_mem);
 
     return true;
 }
