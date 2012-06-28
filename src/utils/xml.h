@@ -86,6 +86,12 @@ namespace XML
     int getProperty(XmlNodePtr node, const char *name, int def);
 
     /**
+     * Gets an integer property from an XmlNodePtr.
+     */
+    int getIntProperty(XmlNodePtr node, const char* name, int def,
+                       int min, int max);
+
+    /**
      * Gets a string property from an XmlNodePtr.
      */
     std::string getProperty(XmlNodePtr node, const char *name,

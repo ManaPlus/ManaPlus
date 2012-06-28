@@ -166,10 +166,10 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
     for (XmlNodePtr frameNode = animationNode->xmlChildrenNode;
          frameNode; frameNode = frameNode->next)
     {
-        int delay = XML::getProperty(frameNode, "delay", 0);
+        int delay = XML::getIntProperty(frameNode, "delay", 0, 0, 100000);
         int offsetX = XML::getProperty(frameNode, "offsetX", 0);
         int offsetY = XML::getProperty(frameNode, "offsetY", 0);
-        int rand = XML::getProperty(frameNode, "rand", 100);
+        int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
         offsetY -= imageset->getHeight() - 32;
         offsetX -= imageset->getWidth() / 2 - 16;
 

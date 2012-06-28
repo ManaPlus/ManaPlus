@@ -122,6 +122,23 @@ namespace XML
         return ret;
     }
 
+    int getIntProperty(XmlNodePtr node, const char* name, int def, int min, int max)
+    {
+        int &ret = def;
+
+        xmlChar *prop = xmlGetProp(node, BAD_CAST name);
+        if (prop)
+        {
+            ret = atoi(reinterpret_cast<char*>(prop));
+            xmlFree(prop);
+        }
+        if (ret < min)
+            ret = min;
+        else if (ret > max)
+            ret = max;
+        return ret;
+    }
+
     double getFloatProperty(XmlNodePtr node, const char* name, double def)
     {
         double &ret = def;

@@ -270,12 +270,13 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
     // Get animation frames
     for_each_xml_child_node(frameNode, animationNode)
     {
-        const int delay = XML::getProperty(frameNode, "delay", 0);
+        const int delay = XML::getIntProperty(
+            frameNode, "delay", 0, 0, 100000);
         int offsetX = XML::getProperty(frameNode, "offsetX", 0) +
             imageSet->getOffsetX();
         int offsetY = XML::getProperty(frameNode, "offsetY", 0) +
             imageSet->getOffsetY();
-        int rand = XML::getProperty(frameNode, "rand", 100);
+        int rand = XML::getIntProperty(frameNode, "rand", 100, 0, 100);
 
         offsetY -= imageSet->getHeight() - 32;
         offsetX -= imageSet->getWidth() / 2 - 16;
@@ -305,7 +306,7 @@ void SpriteDef::loadAnimation(XmlNodePtr animationNode,
             const int start = XML::getProperty(frameNode, "start", -1);
             const int end = XML::getProperty(frameNode, "end", -1);
             const std::string value = XML::getProperty(frameNode, "value", "");
-            int repeat = XML::getProperty(frameNode, "repeat", 1);
+            int repeat = XML::getIntProperty(frameNode, "repeat", 1, 0, 100);
 
             if (repeat < 1)
             {
