@@ -247,6 +247,8 @@ Gui::~Gui()
     mSecureFont = nullptr;
     delete mInfoParticleFont;
     mInfoParticleFont = nullptr;
+    delete mNpcFont;
+    mNpcFont = nullptr;
     delete getTop();
 
     delete guiInput;
