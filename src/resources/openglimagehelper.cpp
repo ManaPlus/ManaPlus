@@ -275,4 +275,5 @@ int OpenGLImageHelper::useOpenGL()
 {
     return mUseOpenGL;
 }
+
 #endif

@@ -25,6 +25,7 @@
 
 #ifdef USE_OPENGL
 
+#include "localconsts.h"
 #include "main.h"
 #include "graphics.h"
 
@@ -152,6 +153,8 @@ class OpenGLGraphics : public Graphics
 
         void updateMemoryInfo();
 
+        void debugBindTexture(const Image *image);
+
     private:
         GLfloat *mFloatTexArray;
         GLint *mIntTexArray;
@@ -161,6 +164,9 @@ class OpenGLGraphics : public Graphics
         GLuint mFboId;
         GLuint mTextureId;
         GLuint mRboId;
+#ifdef DEBUG_BIND_TEXTURE
+        std::string mOldTexture;
+#endif
 };
 #endif
 

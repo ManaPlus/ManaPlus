@@ -215,7 +215,7 @@ bool OpenGLGraphics::drawImage(const Image *image, int srcX, int srcY,
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
-    logger->log("bind: " + image->getIdPath());
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -275,7 +275,7 @@ bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
         glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
-    logger->log("bind: " + image->getIdPath());
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -331,7 +331,7 @@ void OpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
-    logger->log("bind: " + image->getIdPath());
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -468,7 +468,7 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
-    logger->log("bind: " + image->getIdPath());
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
 
@@ -611,7 +611,7 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
-    logger->log("bind: " + image->getIdPath());
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
@@ -928,7 +928,7 @@ void OpenGLGraphics::drawTile(ImageVertexes *vert)
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
-    logger->log("bind: " + image->getIdPath());
+    debugBindTexture(image);
 #endif
     bindTexture(OpenGLImageHelper::mTextureType, image->mGLImage);
     setTexturingAndBlending(true);
@@ -1393,5 +1393,25 @@ void OpenGLGraphics::dumpSettings()
         }
     }
 }
+
+#ifdef DEBUG_BIND_TEXTURE
+void OpenGLGraphics::debugBindTexture(const Image *image)
+{
+    const std::string texture = image->getIdPath();
+    if (mOldTexture != texture)
+    {
+        if (!mOldTexture.empty() && !texture.empty())
+        {
+            logger->log("bind: %s to %s", mOldTexture.c_str(),
+                texture.c_str());
+        }
+        mOldTexture = texture;
+    }
+}
+#else
+void OpenGLGraphics::debugBindTexture(Image *image A_UNUSED)
+{
+}
+#endif
 
 #endif // USE_OPENGL
