@@ -1409,7 +1409,7 @@ void OpenGLGraphics::debugBindTexture(const Image *image)
     }
 }
 #else
-void OpenGLGraphics::debugBindTexture(Image *image A_UNUSED)
+void OpenGLGraphics::debugBindTexture(const Image *image A_UNUSED)
 {
 }
 #endif
