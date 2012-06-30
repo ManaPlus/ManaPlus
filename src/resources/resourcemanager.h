@@ -276,7 +276,7 @@ class ResourceManager
         { return &mOrphanedResources; }
 #endif
 
-        void cleanOrphans(bool always = false);
+        bool cleanOrphans(bool always = false);
 
         static void addDelayedAnimation(AnimationDelayLoad *animation)
         { mDelayedAnimations.push_back(animation); }

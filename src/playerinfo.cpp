@@ -357,6 +357,7 @@ void init()
 
 void deinit()
 {
+    clearInventory();
     delete mListener;
     mListener = nullptr;
 }

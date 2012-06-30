@@ -177,9 +177,12 @@ void ResourceManager::cleanUp(Resource *res)
     }
 
     delete res;
+#ifdef DEBUG_LEAKS
+    cleanOrpahns(true);
+#endif
 }
 
-void ResourceManager::cleanOrphans(bool always)
+bool ResourceManager::cleanOrphans(bool always)
 {
     timeval tv;
     gettimeofday(&tv, nullptr);
@@ -187,8 +190,10 @@ void ResourceManager::cleanOrphans(bool always)
     time_t oldest = tv.tv_sec, threshold = oldest - 30;
 
     if (mOrphanedResources.empty() || (!always && mOldestOrphan >= threshold))
-        return;
+        return false;
 
+    bool status(false);
+    status = false;
     ResourceIterator iter = mOrphanedResources.begin();
     while (iter != mOrphanedResources.end())
     {
@@ -199,10 +204,11 @@ void ResourceManager::cleanOrphans(bool always)
             continue;
         }
         time_t t = res->mTimeStamp;
-        if (t >= threshold)
+        if (!always && t >= threshold)
         {
-            if (t < oldest) oldest = t;
-            ++iter;
+            if (t < oldest)
+                oldest = t;
+            ++ iter;
         }
         else
         {
@@ -212,10 +218,12 @@ void ResourceManager::cleanOrphans(bool always)
             mOrphanedResources.erase(toErase);
             delete res; // delete only after removal from list,
                         // to avoid issues in recursion
+            status = true;
         }
     }
 
     mOldestOrphan = oldest;
+    return status;
 }
 
 bool ResourceManager::setWriteDir(const std::string &path)
@@ -602,6 +610,28 @@ ResourceManager *ResourceManager::getInstance()
 
 void ResourceManager::deleteInstance()
 {
+#ifdef DUMP_LEAKED_RESOURCES
+    if (instance)
+    {
+        logger->log("clean orphans start");
+        while(instance->cleanOrphans(true));
+        logger->log("clean orphans end");
+        ResourceIterator iter = instance->mResources.begin();
+
+        while (iter != instance->mResources.end())
+        {
+            if (iter->second)
+            {
+                if (iter->second->getRefCount())
+                {
+                    logger->log("ResourceLeak: " + iter->second->getIdPath()
+                        + " (" + toString(iter->second->getRefCount()) + ")");
+                }
+            }
+            ++iter;
+        }
+    }
+#endif
     delete instance;
     instance = nullptr;
 }

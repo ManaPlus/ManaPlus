@@ -61,7 +61,7 @@
 #include "openglgraphics.h"
 #endif
 
-#ifdef DEBUG_DUMP_LEAKS
+#ifdef DEBUG_DUMP_LEAKS1
 #include "resources/image.h"
 #include "resources/resource.h"
 #include "resources/resourcemanager.h"
@@ -1212,7 +1212,7 @@ void CommandHandler::handleError(const std::string &args A_UNUSED,
     logger->log("test %d", *ptr);
 }
 
-#ifdef DEBUG_DUMP_LEAKS
+#ifdef DEBUG_DUMP_LEAKS1
 void showRes(std::string str, ResourceManager::Resources *res);
 
 void showRes(std::string str, ResourceManager::Resources *res)

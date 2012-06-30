@@ -11,7 +11,7 @@ manaplus_CXXFLAGS += -DENABLE_PORTABLE
 endif
 
 if ENABLE_MEM_DEBUG
-manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG
+manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 
 manaplus_SOURCES = debug/debug_new.cpp \
 	      debug/debug_new.h \
