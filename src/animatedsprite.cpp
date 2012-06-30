@@ -77,8 +77,12 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &filename,
     if (!mEnableCache)
         return load(filename, variant);
     ResourceManager *resman = ResourceManager::getInstance();
-    if (resman->getFromCache(filename, variant))
+    Resource *res = resman->getFromCache(filename, variant);
+    if (res)
+    {
+        res->decRef();
         return load(filename, variant);
+    }
 
     AnimatedSprite *as = new AnimatedSprite(nullptr);
     as->setDelayLoad(filename, variant);
