@@ -150,7 +150,6 @@ Theme::Theme():
     initDefaultThemePath();
 
     config.addListener("guialpha", this);
-    loadColors();
 
     mColors[HIGHLIGHT].ch = 'H';
     mColors[CHAT].ch = 'C';
