@@ -269,10 +269,10 @@ class ResourceManager
         typedef Resources::iterator ResourceIterator;
 
 #ifdef DEBUG_DUMP_LEAKS
-        Resources* getResources() const
+        Resources* getResources()
         { return &mResources; }
 
-        Resources* getOrphanedResources() const
+        Resources* getOrphanedResources()
         { return &mOrphanedResources; }
 #endif
 

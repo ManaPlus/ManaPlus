@@ -780,6 +780,11 @@ void Client::gameClear()
     if (logger)
         logger->log1("Quitting11");
 
+#ifdef DEBUG_OPENGL_LEAKS
+    if (logger)
+        logger->log("textures left: %d", textures_count);
+#endif
+
     delete chatLogger;
     chatLogger = nullptr;
 

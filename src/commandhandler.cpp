@@ -65,6 +65,7 @@
 #include "resources/image.h"
 #include "resources/resource.h"
 #include "resources/resourcemanager.h"
+#include "resources/subimage.h"
 #endif
 
 #include "utils/gettext.h"
