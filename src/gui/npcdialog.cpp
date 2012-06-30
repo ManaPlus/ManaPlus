@@ -22,6 +22,7 @@
 
 #include "gui/npcdialog.h"
 
+#include "being.h"
 #include "configuration.h"
 #include "client.h"
 
@@ -37,6 +38,7 @@
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/listbox.h"
+#include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textbox.h"
 #include "gui/widgets/textfield.h"
@@ -68,7 +70,10 @@ NpcDialog::NpcDialog(int npcId) :
     mLastNextTime(0),
     mCameraMode(-1),
     mCameraX(0),
-    mCameraY(0)
+    mCameraY(0),
+    mPlayerBox(new PlayerBox),
+    mAvatarBeing(nullptr),
+    mShowAvatar(false)
 {
     // Basic Window Setup
     setWindowName("NpcText");
@@ -81,6 +86,9 @@ NpcDialog::NpcDialog(int npcId) :
     setMinHeight(450);
 
     setDefaultSize(400, 400, ImageRect::CENTER);
+
+    mPlayerBox->setWidth(70);
+    mPlayerBox->setHeight(100);
 
     mItemLinkHandler = new ItemLinkHandler;
     // Setup output text box
@@ -154,6 +162,12 @@ NpcDialog::~NpcDialog()
     config.removeListener("logNpcInGui", this);
 
     clearLayout();
+
+    if (mPlayerBox)
+    {
+        delete mPlayerBox->getBeing();
+        delete mPlayerBox;
+    }
 
     delete mTextBox;
     mTextBox = nullptr;
@@ -469,6 +483,88 @@ void NpcDialog::closeAll()
     }
 }
 
+void NpcDialog::placeNormalControls()
+{
+    if (mShowAvatar)
+    {
+        place(0, 0, mPlayerBox);
+        place(1, 0, mScrollArea, 5, 3);
+        place(4, 3, mClearButton);
+        place(5, 3, mButton);
+    }
+    else
+    {
+        place(0, 0, mScrollArea, 5, 3);
+        place(3, 3, mClearButton);
+        place(4, 3, mButton);
+    }
+}
+
+void NpcDialog::placeMenuControls()
+{
+    if (mShowAvatar)
+    {
+        place(0, 0, mPlayerBox);
+        place(1, 0, mScrollArea, 6, 3);
+        place(0, 3, mListScrollArea, 7, 3);
+        place(3, 6, mClearButton, 2);
+        place(5, 6, mButton, 2);
+    }
+    else
+    {
+        place(0, 0, mScrollArea, 6, 3);
+        place(0, 3, mListScrollArea, 6, 3);
+        place(2, 6, mClearButton, 2);
+        place(4, 6, mButton, 2);
+    }
+}
+
+void NpcDialog::placeTextInputControls()
+{
+    if (mShowAvatar)
+    {
+        place(0, 0, mPlayerBox);
+        place(1, 0, mScrollArea, 6, 3);
+        place(0, 3, mTextField, 6);
+        place(0, 4, mResetButton, 2);
+        place(4, 4, mClearButton, 2);
+        place(5, 4, mButton, 2);
+    }
+    else
+    {
+        place(0, 0, mScrollArea, 6, 3);
+        place(0, 3, mTextField, 6);
+        place(0, 4, mResetButton, 2);
+        place(2, 4, mClearButton, 2);
+        place(4, 4, mButton, 2);
+    }
+}
+
+void NpcDialog::placeIntInputControls()
+{
+    if (mShowAvatar)
+    {
+        place(0, 0, mPlayerBox);
+        place(1, 0, mScrollArea, 6, 3);
+        place(1, 3, mMinusButton, 1);
+        place(2, 3, mIntField, 4);
+        place(6, 3, mPlusButton, 1);
+        place(0, 4, mResetButton, 2);
+        place(3, 4, mClearButton, 2);
+        place(5, 4, mButton, 2);
+    }
+    else
+    {
+        place(0, 0, mScrollArea, 6, 3);
+        place(0, 3, mMinusButton, 1);
+        place(1, 3, mIntField, 4);
+        place(5, 3, mPlusButton, 1);
+        place(0, 4, mResetButton, 2);
+        place(2, 4, mClearButton, 2);
+        place(4, 4, mButton, 2);
+    }
+}
+
 void NpcDialog::buildLayout()
 {
     clearLayout();
@@ -481,47 +577,28 @@ void NpcDialog::buildLayout()
             mButton->setCaption(CAPTION_NEXT);
         else if (mActionState == NPC_ACTION_CLOSE)
             mButton->setCaption(CAPTION_CLOSE);
-        place(0, 0, mScrollArea, 5, 3);
-        place(3, 3, mClearButton);
-        place(4, 3, mButton);
+        placeNormalControls();
     }
     else if (mInputState != NPC_INPUT_NONE)
     {
-//        if (!mLogInteraction)
-//            setText(mNewText);
-
         mButton->setCaption(CAPTION_SUBMIT);
         if (mInputState == NPC_INPUT_LIST)
         {
-            place(0, 0, mScrollArea, 6, 3);
-            place(0, 3, mListScrollArea, 6, 3);
-            place(2, 6, mClearButton, 2);
-            place(4, 6, mButton, 2);
-
+            placeMenuControls();
             mItemList->setSelected(-1);
         }
         else if (mInputState == NPC_INPUT_STRING)
         {
-            place(0, 0, mScrollArea, 6, 3);
-            place(0, 3, mTextField, 6);
-            place(0, 4, mResetButton, 2);
-            place(2, 4, mClearButton, 2);
-            place(4, 4, mButton, 2);
+            placeTextInputControls();
         }
         else if (mInputState == NPC_INPUT_INTEGER)
         {
-            place(0, 0, mScrollArea, 6, 3);
-            place(0, 3, mMinusButton, 1);
-            place(1, 3, mIntField, 4);
-            place(5, 3, mPlusButton, 1);
-            place(0, 4, mResetButton, 2);
-            place(2, 4, mClearButton, 2);
-            place(4, 4, mButton, 2);
+            placeIntInputControls();
         }
     }
 
     Layout &layout = getLayout();
-    layout.setRowHeight(0, Layout::AUTO_SET);
+    layout.setRowHeight(1, Layout::AUTO_SET);
 
     redraw();
 
@@ -556,4 +633,75 @@ void NpcDialog::restoreCamera()
         viewport->setCameraRelativeY(mCameraY);
     }
     mCameraMode = -1;
+}
+
+void NpcDialog::showAvatar(int avatarId)
+{
+    bool needShow = (avatarId != 0);
+    if (needShow)
+    {
+        delete mAvatarBeing;
+        mAvatarBeing = new Being(0, ActorSprite::NPC, avatarId, nullptr);
+        mPlayerBox->setPlayer(mAvatarBeing);
+        if (mAvatarBeing && !mAvatarBeing->empty())
+        {
+            mAvatarBeing->logic();
+            Sprite *sprite = mAvatarBeing->getSprite(0);
+            if (sprite)
+            {
+                int width = sprite->getWidth() + 2 * getPadding();
+                mPlayerBox->setWidth(width);
+                int height = sprite->getHeight() + 2 * getPadding();
+                mPlayerBox->setHeight(height);
+            }
+        }
+    }
+    else
+    {
+        delete mAvatarBeing;
+        mAvatarBeing = nullptr;
+        mPlayerBox->setPlayer(nullptr);
+    }
+    if (needShow != mShowAvatar)
+    {
+        mShowAvatar = needShow;
+        buildLayout();
+    }
+    else
+    {
+        mShowAvatar = needShow;
+    }
+}
+
+void NpcDialog::setAvatarDirection(uint8_t direction)
+{
+    Being *being = mPlayerBox->getBeing();
+    if (being)
+        being->setDirection(direction);
+}
+
+void NpcDialog::setAvatarAction(int actionId)
+{
+    Being *being = mPlayerBox->getBeing();
+    if (being)
+        being->setAction((Being::Action)actionId);
+}
+
+void NpcDialog::logic()
+{
+    Window::logic();
+    if (mShowAvatar && mAvatarBeing)
+    {
+        mAvatarBeing->logic();
+        if (mPlayerBox->getWidth() < (signed)(3 * getPadding()))
+        {
+            Sprite *sprite = mAvatarBeing->getSprite(0);
+            if (sprite)
+            {
+                mPlayerBox->setWidth(sprite->getWidth() + 2 * getPadding());
+                mPlayerBox->setHeight(sprite->getHeight() + 2 * getPadding());
+                buildLayout();
+            }
+        }
+    }
 }

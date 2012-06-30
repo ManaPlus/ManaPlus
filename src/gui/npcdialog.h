@@ -34,10 +34,12 @@
 
 #include <list>
 
+class Being;
 class BrowserBox;
 class ItemLinkHandler;
 class IntTextField;
 class ListBox;
+class PlayerBox;
 class TextBox;
 class TextField;
 class Button;
@@ -184,11 +186,27 @@ class NpcDialog : public Window, public gcn::ActionListener,
 
         void refocus();
 
+        void showAvatar(int avatarId);
+
+        void setAvatarDirection(uint8_t direction);
+
+        void setAvatarAction(int actionId);
+
+        void logic();
+
     private:
         typedef std::list<NpcDialog*> DialogList;
         static DialogList instances;
 
         void buildLayout();
+
+        void placeNormalControls();
+
+        void placeMenuControls();
+
+        void placeTextInputControls();
+
+        void placeIntInputControls();
 
         int mNpcId;
         bool mLogInteraction;
@@ -245,6 +263,9 @@ class NpcDialog : public Window, public gcn::ActionListener,
         int mCameraMode;
         int mCameraX;
         int mCameraY;
+        PlayerBox *mPlayerBox;
+        Being *mAvatarBeing;
+        bool mShowAvatar;
 };
 
 #endif // NPCDIALOG_H

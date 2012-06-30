@@ -101,6 +101,8 @@ class MessageIn
         virtual ~MessageIn()
         { }
 
+        static uint8_t fromServerDirection(uint8_t serverDir);
+
     protected:
         /**
          * Constructor.

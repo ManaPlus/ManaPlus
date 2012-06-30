@@ -290,10 +290,25 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg, int npcId)
                 viewport->moveCameraRelative(x, y);
             }
             break;
-        case 5:
+        case 5: // close dialog
             closeDialog(npcId);
             break;
-
+        case 6: // show avatar
+            if (mDialog)
+                mDialog->showAvatar(msg.readInt32());   // avatar id
+            break;
+        case 7: // set avatar direction
+            if (mDialog)
+            {
+                mDialog->setAvatarDirection(
+                    Net::MessageIn::fromServerDirection(
+                    msg.readInt32()));   // direction
+            }
+            break;
+        case 8: // set avatar action
+            if (mDialog)
+                mDialog->setAvatarAction(msg.readInt32());   // direction
+            break;
         default:
             logger->log("unknown npc command: %d", cmd);
             break;

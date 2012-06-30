@@ -40,7 +40,7 @@ int PlayerBox::instances = 0;
 float PlayerBox::mAlpha = 1.0;
 ImageRect PlayerBox::background;
 
-PlayerBox::PlayerBox(const Being *being):
+PlayerBox::PlayerBox(Being *being):
     mBeing(being)
 {
     setFrameSize(2);

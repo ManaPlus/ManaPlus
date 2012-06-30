@@ -75,6 +75,39 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y)
              + toString(static_cast<int>(y)));
 }
 
+uint8_t MessageIn::fromServerDirection(uint8_t serverDir)
+{
+    // Translate from eAthena format
+    switch (serverDir)
+    {
+        case 0:
+            return 1;
+        case 1:
+            return 3;
+        case 2:
+            return 2;
+        case 3:
+            return 6;
+        case 4:
+            return 4;
+        case 5:
+            return 12;
+        case 6:
+            return 8;
+        case 7:
+            return 9;
+        case 8:
+#ifdef MANASERV_SUPPORT
+            if (Net::getNetworkType() != ServerInfo::MANASERV)
+#endif
+                return 8;
+        default:
+            logger->log("incorrect direction: %d",
+                static_cast<int>(serverDir));
+            return 0;
+    }
+}
+
 void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
 {
     uint8_t serverDir = 0;
@@ -89,48 +122,7 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
         y = static_cast<unsigned short>(temp >> 4);
 
         serverDir = data[2] & 0x000f;
-
-        // Translate from eAthena format
-        switch (serverDir)
-        {
-            case 0:
-                direction = 1;
-                break;
-            case 1:
-                direction = 3;
-                break;
-            case 2:
-                direction = 2;
-                break;
-            case 3:
-                direction = 6;
-                break;
-            case 4:
-                direction = 4;
-                break;
-            case 5:
-                direction = 12;
-                break;
-            case 6:
-                direction = 8;
-                break;
-            case 7:
-                direction = 9;
-                break;
-            case 8:
-#ifdef MANASERV_SUPPORT
-                if (Net::getNetworkType() != ServerInfo::MANASERV)
-#endif
-                {
-                    direction = 8;
-                    break;
-                }
-            default:
-                logger->log("incorrect direction: %d",
-                    static_cast<int>(direction));
-                // OOPSIE! Impossible or unknown
-                direction = 0;
-        }
+        direction = fromServerDirection(serverDir);
     }
     mPos += 3;
     PacketCounters::incInBytes(3);

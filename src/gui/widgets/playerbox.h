@@ -42,7 +42,7 @@ class PlayerBox : public gcn::ScrollArea
          * Constructor. Takes the initial player character that this box should
          * display, which defaults to <code>NULL</code>.
          */
-        PlayerBox(const Being *being = nullptr);
+        PlayerBox(Being *being = nullptr);
 
         /**
          * Destructor.
@@ -54,7 +54,7 @@ class PlayerBox : public gcn::ScrollArea
          * player to <code>NULL</code> causes the box not to draw any
          * character.
          */
-        void setPlayer(const Being *being)
+        void setPlayer(Being *being)
         { mBeing = being; }
 
         /**
@@ -67,8 +67,11 @@ class PlayerBox : public gcn::ScrollArea
          */
         void drawFrame(gcn::Graphics *graphics);
 
+        Being *getBeing()
+        { return mBeing; }
+
     private:
-        const Being *mBeing; /**< The character used for display */
+        Being *mBeing; /**< The character used for display */
 
         static float mAlpha;
         static int instances;
