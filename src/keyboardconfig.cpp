@@ -52,6 +52,12 @@ void KeyboardConfig::init()
     mActiveKeys2 = new uint8_t[500];
 }
 
+void KeyboardConfig::deinit()
+{
+    delete [] mActiveKeys2;
+    mActiveKeys2 = nullptr;
+}
+
 int KeyboardConfig::getKeyValueFromEvent(const SDL_Event &event) const
 {
     if (event.key.keysym.sym)

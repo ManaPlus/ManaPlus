@@ -45,6 +45,8 @@ class KeyboardConfig
          */
         void init();
 
+        void deinit();
+
         /**
          * Get the enable flag, which will stop the user from doing actions.
          */

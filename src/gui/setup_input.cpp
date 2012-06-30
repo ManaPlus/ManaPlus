@@ -178,6 +178,8 @@ Setup_Input::~Setup_Input()
     mUnassignKeyButton = nullptr;
     delete mResetKeysButton;
     mResetKeysButton = nullptr;
+    delete [] mActionDataSize;
+    mActionDataSize = nullptr;
 }
 
 void Setup_Input::apply()

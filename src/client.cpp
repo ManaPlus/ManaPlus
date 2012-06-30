@@ -764,6 +764,8 @@ void Client::gameClear()
     delete joystick;
     joystick = nullptr;
 
+    keyboard.deinit();
+
     if (logger)
         logger->log1("Quitting10");
 
