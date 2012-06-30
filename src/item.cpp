@@ -54,6 +54,11 @@ Item::~Item()
         mImage->decRef();
         mImage = nullptr;
     }
+    if (mDrawImage)
+    {
+        mDrawImage->decRef();
+        mDrawImage = nullptr;
+    }
 }
 
 void Item::setId(int id, unsigned char color)
