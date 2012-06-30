@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-06-23 16:53+0300\n"
+"POT-Creation-Date: 2012-07-01 02:32+0300\n"
 "PO-Revision-Date: 2012-06-21 20:34+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (China) (http://www.transifex.net/projects/p/manaplus/"
@@ -55,268 +55,267 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:977 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
+#: src/client.cpp:984 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
 msgid "Setup"
 msgstr "魔法攻击"
 
-#: src/client.cpp:984 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:991 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "性能"
 
-#: src/client.cpp:989 src/gui/setup_video.cpp:250
+#: src/client.cpp:996 src/gui/setup_video.cpp:250
 msgid "Video"
 msgstr "视频"
 
-#: src/client.cpp:994
+#: src/client.cpp:1001
 msgid "Themes"
 msgstr "主题"
 
-#: src/client.cpp:1080
+#: src/client.cpp:1087
 msgid "Connecting to server"
 msgstr "魔法防御"
 
-#: src/client.cpp:1118
+#: src/client.cpp:1125
 msgid "Logging in"
 msgstr "尝试捡起不存在的物品。"
 
-#: src/client.cpp:1152
+#: src/client.cpp:1159
 msgid "Entering game world"
 msgstr "捡起物品发生不存在的物品。"
 
-#: src/client.cpp:1258
+#: src/client.cpp:1265
 msgid "Requesting characters"
 msgstr "请求角色"
 
-#: src/client.cpp:1293
+#: src/client.cpp:1300
 msgid "Connecting to the game server"
 msgstr "连接到游戏服务器"
 
-#: src/client.cpp:1303
+#: src/client.cpp:1310
 msgid "Changing game servers"
 msgstr "更改游戏服务器"
 
-#: src/client.cpp:1346 src/client.cpp:1354 src/client.cpp:1489
+#: src/client.cpp:1353 src/client.cpp:1361 src/client.cpp:1496
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
-#: src/gui/editserverdialog.cpp:176 src/gui/registerdialog.cpp:239
+#: src/gui/editserverdialog.cpp:196 src/gui/registerdialog.cpp:239
 #: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:170
-#: src/net/ea/charserverhandler.cpp:188 src/net/manaserv/charhandler.cpp:186
-#: src/net/manaserv/charhandler.cpp:229
+#: src/net/ea/charserverhandler.cpp:188
 msgid "Error"
 msgstr "错误"
 
-#: src/client.cpp:1364
+#: src/client.cpp:1371
 msgid "Requesting registration details"
 msgstr "请求注册的详细信息"
 
-#: src/client.cpp:1390
+#: src/client.cpp:1397
 msgid "Password Change"
 msgstr "密码更改"
 
-#: src/client.cpp:1391
+#: src/client.cpp:1398
 msgid "Password changed successfully!"
 msgstr "更改密码成功！"
 
-#: src/client.cpp:1410
+#: src/client.cpp:1417
 msgid "Email Change"
 msgstr "更改电子邮件"
 
-#: src/client.cpp:1411
+#: src/client.cpp:1418
 msgid "Email changed successfully!"
 msgstr "更改电子邮件成功！"
 
-#: src/client.cpp:1431
+#: src/client.cpp:1438
 msgid "Unregister Successful"
 msgstr "注销成功"
 
-#: src/client.cpp:1432
+#: src/client.cpp:1439
 msgid "Farewell, come back any time..."
 msgstr "再见，随时欢迎回来... ..."
 
-#: src/client.cpp:1655 src/client.cpp:1688 src/client.cpp:1703
-#: src/client.cpp:2148 src/client.cpp:2155
+#: src/client.cpp:1662 src/client.cpp:1695 src/client.cpp:1710
+#: src/client.cpp:2155 src/client.cpp:2162
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%s 不存在，并且无法创建！退出。"
 
-#: src/client.cpp:1846
+#: src/client.cpp:1853
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "无效的更新主机: %s"
 
-#: src/client.cpp:1880 src/client.cpp:1886
+#: src/client.cpp:1887 src/client.cpp:1893
 msgid "Error creating updates directory!"
 msgstr "创建更新目录错误！"
 
-#: src/client.cpp:1907
+#: src/client.cpp:1914
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "错误：%s 不存在并且无法创建！退出。"
 
-#: src/commandhandler.cpp:223
+#: src/commandhandler.cpp:224
 msgid "Unknown command."
 msgstr "未知命令。"
 
-#: src/commandhandler.cpp:343
+#: src/commandhandler.cpp:344
 msgid "Cannot send empty whispers!"
 msgstr "无法发送空白密语！"
 
-#: src/commandhandler.cpp:357
+#: src/commandhandler.cpp:358
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
 "you."
 msgstr "无法同 \"%s\" 建立一个私人谈话标签页！或者已经存在，或者那就是自己。"
 
-#: src/commandhandler.cpp:377
+#: src/commandhandler.cpp:378
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "请求加入频道%s。"
 
-#: src/commandhandler.cpp:393 src/net/ea/gui/partytab.cpp:126
+#: src/commandhandler.cpp:394 src/net/ea/gui/partytab.cpp:126
 msgid "Party name is missing."
 msgstr "帮会名称缺失。"
 
-#: src/commandhandler.cpp:404
+#: src/commandhandler.cpp:405
 msgid "Guild name is missing."
 msgstr "公会名称是缺少的。"
 
-#: src/commandhandler.cpp:417 src/commandhandler.cpp:534
-#: src/commandhandler.cpp:575 src/commandhandler.cpp:615
+#: src/commandhandler.cpp:418 src/commandhandler.cpp:535
+#: src/commandhandler.cpp:576 src/commandhandler.cpp:616
 msgid "Please specify a name."
 msgstr "请指定一个名称。"
 
-#: src/commandhandler.cpp:468
+#: src/commandhandler.cpp:469
 msgid "Return toggles chat."
 msgstr ""
 
-#: src/commandhandler.cpp:468
+#: src/commandhandler.cpp:469
 msgid "Message closes chat."
 msgstr "讯息关闭聊天。"
 
-#: src/commandhandler.cpp:479
+#: src/commandhandler.cpp:480
 msgid "Return now toggles chat."
 msgstr "<回车>键现在切换聊天。"
 
-#: src/commandhandler.cpp:485
+#: src/commandhandler.cpp:486
 msgid "Message now closes chat."
 msgstr "讯息现在关闭聊天。"
 
-#: src/commandhandler.cpp:513
+#: src/commandhandler.cpp:514
 msgid "friend"
 msgstr "朋友"
 
-#: src/commandhandler.cpp:518
+#: src/commandhandler.cpp:519
 msgid "disregarded"
 msgstr "无视"
 
-#: src/commandhandler.cpp:523
+#: src/commandhandler.cpp:524
 msgid "neutral"
 msgstr "中性"
 
-#: src/commandhandler.cpp:542
+#: src/commandhandler.cpp:543
 #, c-format
 msgid "Player already %s!"
 msgstr "玩家已经%s!"
 
-#: src/commandhandler.cpp:556
+#: src/commandhandler.cpp:557
 #, c-format
 msgid "Player successfully %s!"
 msgstr "玩家成功%s!"
 
-#: src/commandhandler.cpp:564
+#: src/commandhandler.cpp:565
 #, c-format
 msgid "Player could not be %s!"
 msgstr "玩家不能为 %s"
 
-#: src/commandhandler.cpp:587
+#: src/commandhandler.cpp:588
 msgid "Player wasn't ignored!"
 msgstr "是不能忽视的！"
 
-#: src/commandhandler.cpp:594
+#: src/commandhandler.cpp:595
 msgid "Player no longer ignored!"
 msgstr "玩家不再被忽略！"
 
-#: src/commandhandler.cpp:596
+#: src/commandhandler.cpp:597
 msgid "Player could not be unignored!"
 msgstr "玩家不能被忽略!"
 
-#: src/commandhandler.cpp:602
+#: src/commandhandler.cpp:603
 msgid "blacklisted"
 msgstr ""
 
-#: src/commandhandler.cpp:607
+#: src/commandhandler.cpp:608
 msgid "enemy"
 msgstr ""
 
-#: src/commandhandler.cpp:622
+#: src/commandhandler.cpp:623
 msgid "Player already erased!"
 msgstr "玩家已经被删除!"
 
-#: src/commandhandler.cpp:633
+#: src/commandhandler.cpp:634
 msgid "Player successfully erased!"
 msgstr "玩家成功删除！"
 
-#: src/commandhandler.cpp:635
+#: src/commandhandler.cpp:636
 msgid "Player could not be erased!"
 msgstr "玩家无法删除！"
 
-#: src/commandhandler.cpp:948 src/commandhandler.cpp:994
+#: src/commandhandler.cpp:949 src/commandhandler.cpp:995
 #, c-format
 msgid "Client uptime: %s"
 msgstr ""
 
-#: src/commandhandler.cpp:958
+#: src/commandhandler.cpp:959
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:967
+#: src/commandhandler.cpp:968
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:975
+#: src/commandhandler.cpp:976
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:983
+#: src/commandhandler.cpp:984
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:991
+#: src/commandhandler.cpp:992
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
 
-#: src/commandhandler.cpp:1070
+#: src/commandhandler.cpp:1071
 msgid "font cache size"
 msgstr "字体缓存大小"
 
-#: src/commandhandler.cpp:1082
+#: src/commandhandler.cpp:1083
 msgid "Cache size:"
 msgstr ""
 
-#: src/commandhandler.cpp:1086
+#: src/commandhandler.cpp:1087
 msgid "Created:"
 msgstr "创建于："
 
-#: src/commandhandler.cpp:1088
+#: src/commandhandler.cpp:1089
 msgid "Deleted:"
 msgstr "删除："
 
-#: src/commandhandler.cpp:1261 src/commandhandler.cpp:1268
+#: src/commandhandler.cpp:1262 src/commandhandler.cpp:1269
 msgid "Resource images:"
 msgstr ""
 
-#: src/commandhandler.cpp:1263 src/commandhandler.cpp:1270
+#: src/commandhandler.cpp:1264 src/commandhandler.cpp:1271
 msgid "Resource orphaned images:"
 msgstr ""
 
@@ -325,38 +324,29 @@ msgstr ""
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr "/%s的选项是\"yes\"，\"no\"，\"true\"，\"false\"，\"1\"，\"0\"。"
 
-#: src/game.cpp:254 src/gui/widgets/chattab.cpp:447
+#: src/game.cpp:254 src/gui/widgets/chattab.cpp:450
 msgid "General"
 msgstr "常规"
 
-#: src/game.cpp:258 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:449
+#: src/game.cpp:258 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:452
 msgid "Debug"
 msgstr "调试 "
 
-#: src/game.cpp:524
+#: src/game.cpp:525
 msgid "Screenshot saved as "
 msgstr "截图保存为"
 
-#: src/game.cpp:532
+#: src/game.cpp:533
 msgid "Saving screenshot failed!"
 msgstr "保存屏幕快照失败！"
 
-#: src/game.cpp:593
+#: src/game.cpp:594
 msgid "The connection to the server was lost."
 msgstr "服务器的连接丢失。"
 
-#: src/game.cpp:594
+#: src/game.cpp:595
 msgid "Network Error"
 msgstr "网络错误"
-
-#: src/game.cpp:980
-msgid "Could Not Load Map"
-msgstr "不能加载地图"
-
-#: src/game.cpp:981
-#, c-format
-msgid "Error while loading %s"
-msgstr "加载%s时出现错误"
 
 #: src/gui/beingpopup.cpp:125
 #, c-format
@@ -388,7 +378,8 @@ msgstr "姓名"
 
 #: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:139
 #: src/gui/popupmenu.cpp:219 src/gui/popupmenu.cpp:543
-#: src/gui/setupactiondata.h:53 src/net/tmwa/generalhandler.cpp:271
+#: src/gui/setupactiondata.h:53 src/net/eathena/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:271
 msgid "Attack"
 msgstr "攻击"
 
@@ -408,13 +399,13 @@ msgstr "移动"
 msgid "Result"
 msgstr "结果"
 
-#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:133
+#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:137
 msgid "Reset"
 msgstr "重置"
 
 #: src/gui/buydialog.cpp:58 src/gui/buydialog.cpp:65 src/gui/buydialog.cpp:111
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:209
-#: src/gui/popupmenu.cpp:2098
+#: src/gui/popupmenu.cpp:2118
 msgid "Buy"
 msgstr "购买"
 
@@ -431,7 +422,7 @@ msgstr ""
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:107 src/gui/itemamountwindow.cpp:205
-#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:122
+#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:126
 #: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:777
 msgid "+"
 msgstr "+"
@@ -439,14 +430,14 @@ msgstr "+"
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:110 src/gui/itemamountwindow.cpp:204
-#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:123
+#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:127
 #: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:789
 msgid "-"
 msgstr "-"
 
 #: src/gui/buydialog.cpp:112 src/gui/quitdialog.cpp:49
 #: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
-#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:264
+#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:277
 #: src/gui/setupactiondata.h:158
 msgid "Quit"
 msgstr "退出"
@@ -463,25 +454,25 @@ msgid "Shop"
 msgstr "商店"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:210
-#: src/gui/popupmenu.cpp:2099 src/gui/selldialog.cpp:53
+#: src/gui/popupmenu.cpp:2119 src/gui/selldialog.cpp:53
 #: src/gui/selldialog.cpp:60 src/gui/selldialog.cpp:93
 msgid "Sell"
 msgstr "出售"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
 #: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:126
-#: src/gui/connectiondialog.cpp:47 src/gui/editserverdialog.cpp:81
+#: src/gui/connectiondialog.cpp:47 src/gui/editserverdialog.cpp:90
 #: src/gui/itemamountwindow.cpp:207 src/gui/npcpostdialog.cpp:58
 #: src/gui/popupmenu.cpp:260 src/gui/popupmenu.cpp:290
 #: src/gui/popupmenu.cpp:365 src/gui/popupmenu.cpp:403
 #: src/gui/popupmenu.cpp:429 src/gui/popupmenu.cpp:448
 #: src/gui/popupmenu.cpp:464 src/gui/popupmenu.cpp:484
 #: src/gui/popupmenu.cpp:629 src/gui/popupmenu.cpp:654
-#: src/gui/popupmenu.cpp:1683 src/gui/popupmenu.cpp:1710
-#: src/gui/popupmenu.cpp:1774 src/gui/popupmenu.cpp:1830
-#: src/gui/popupmenu.cpp:1867 src/gui/popupmenu.cpp:1908
-#: src/gui/popupmenu.cpp:1960 src/gui/popupmenu.cpp:1984
-#: src/gui/popupmenu.cpp:2006 src/gui/quitdialog.cpp:55
+#: src/gui/popupmenu.cpp:1703 src/gui/popupmenu.cpp:1730
+#: src/gui/popupmenu.cpp:1794 src/gui/popupmenu.cpp:1850
+#: src/gui/popupmenu.cpp:1887 src/gui/popupmenu.cpp:1928
+#: src/gui/popupmenu.cpp:1980 src/gui/popupmenu.cpp:2004
+#: src/gui/popupmenu.cpp:2026 src/gui/quitdialog.cpp:55
 #: src/gui/registerdialog.cpp:83 src/gui/setupactiondata.h:1490
 #: src/gui/setup.cpp:73 src/gui/socialwindow.cpp:1135
 #: src/gui/textcommandeditor.cpp:194 src/gui/textdialog.cpp:51
@@ -552,7 +543,7 @@ msgstr "新的密码输入不匹配。"
 msgid "New Character"
 msgstr ""
 
-#: src/gui/charcreatedialog.cpp:101 src/gui/editserverdialog.cpp:63
+#: src/gui/charcreatedialog.cpp:101 src/gui/editserverdialog.cpp:72
 #: src/gui/logindialog.cpp:127 src/gui/registerdialog.cpp:76
 msgid "Name:"
 msgstr "姓名"
@@ -663,7 +654,7 @@ msgstr "删除字符输入的密码"
 msgid "Enter password:"
 msgstr "输入密码："
 
-#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:269
+#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:282
 #: src/gui/setupactiondata.h:1495 src/gui/setup_relations.cpp:245
 #: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
 #: src/gui/textcommandeditor.cpp:196
@@ -743,7 +734,7 @@ msgstr "彩虹3"
 #: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:94
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:81
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:224
-#: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
 #: src/gui/setup_video.cpp:217 src/gui/textcommandeditor.cpp:100
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:160
 #: src/gui/widgets/namesmodel.cpp:48
@@ -773,9 +764,9 @@ msgstr "是"
 msgid "No"
 msgstr "否"
 
-#: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:2031
-#: src/gui/popupmenu.cpp:2039 src/gui/popupmenu.cpp:2048
-#: src/gui/popupmenu.cpp:2067
+#: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:2051
+#: src/gui/popupmenu.cpp:2059 src/gui/popupmenu.cpp:2068
+#: src/gui/popupmenu.cpp:2087
 msgid "Ignore"
 msgstr "忽略"
 
@@ -939,7 +930,7 @@ msgid "Did You Know?"
 msgstr "你知道吗？"
 
 #: src/gui/didyouknowwindow.cpp:68 src/gui/helpwindow.cpp:64
-#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:54
+#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:56
 #: src/gui/popupmenu.cpp:501 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "关闭"
@@ -956,33 +947,33 @@ msgstr "下一页>"
 msgid "Auto open this window"
 msgstr "自动打开这个窗口"
 
-#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:80
+#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:89
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:48
 #: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "确定"
 
-#: src/gui/editserverdialog.cpp:56
+#: src/gui/editserverdialog.cpp:65
 msgid "Edit Server"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:64
+#: src/gui/editserverdialog.cpp:73
 msgid "Address:"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:65
+#: src/gui/editserverdialog.cpp:74
 msgid "Port:"
 msgstr "端口："
 
-#: src/gui/editserverdialog.cpp:66
+#: src/gui/editserverdialog.cpp:75
 msgid "Server type:"
 msgstr "服务器类型："
 
-#: src/gui/editserverdialog.cpp:67
+#: src/gui/editserverdialog.cpp:76
 msgid "Description:"
 msgstr ""
 
-#: src/gui/editserverdialog.cpp:177
+#: src/gui/editserverdialog.cpp:197
 msgid "Please at least type both the address and the port of the server."
 msgstr ""
 
@@ -991,8 +982,8 @@ msgid "Equipment"
 msgstr "装备"
 
 #: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:164
-#: src/gui/inventorywindow.cpp:580 src/gui/popupmenu.cpp:1639
-#: src/gui/popupmenu.cpp:1739 src/gui/popupmenu.cpp:1795
+#: src/gui/inventorywindow.cpp:580 src/gui/popupmenu.cpp:1658
+#: src/gui/popupmenu.cpp:1759 src/gui/popupmenu.cpp:1815
 msgid "Unequip"
 msgstr "卸下装备"
 
@@ -1034,26 +1025,26 @@ msgid "Filter:"
 msgstr "过滤器："
 
 #: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:582
-#: src/gui/popupmenu.cpp:1641 src/gui/popupmenu.cpp:1741
-#: src/gui/popupmenu.cpp:1797
+#: src/gui/popupmenu.cpp:1660 src/gui/popupmenu.cpp:1761
+#: src/gui/popupmenu.cpp:1817
 msgid "Equip"
 msgstr "装备"
 
 #: src/gui/inventorywindow.cpp:163 src/gui/inventorywindow.cpp:586
-#: src/gui/popupmenu.cpp:1645 src/gui/popupmenu.cpp:1708
-#: src/gui/popupmenu.cpp:1745 src/gui/popupmenu.cpp:1801
+#: src/gui/popupmenu.cpp:1664 src/gui/popupmenu.cpp:1728
+#: src/gui/popupmenu.cpp:1765 src/gui/popupmenu.cpp:1821
 #: src/gui/skilldialog.cpp:242
 msgid "Use"
 msgstr "使用"
 
 #: src/gui/inventorywindow.cpp:176 src/gui/inventorywindow.cpp:682
-#: src/gui/popupmenu.cpp:1650 src/gui/popupmenu.cpp:1750
-#: src/gui/popupmenu.cpp:1806
+#: src/gui/popupmenu.cpp:1669 src/gui/popupmenu.cpp:1770
+#: src/gui/popupmenu.cpp:1826
 msgid "Drop..."
 msgstr "掉落... ..."
 
-#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1659
-#: src/gui/popupmenu.cpp:1759 src/gui/popupmenu.cpp:1815
+#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1678
+#: src/gui/popupmenu.cpp:1779 src/gui/popupmenu.cpp:1835
 msgid "Split"
 msgstr "分离"
 
@@ -1067,17 +1058,17 @@ msgid "Weight:"
 msgstr "重量："
 
 #: src/gui/inventorywindow.cpp:205 src/gui/inventorywindow.cpp:673
-#: src/gui/popupmenu.cpp:1625 src/gui/popupmenu.cpp:1762
-#: src/gui/popupmenu.cpp:1818 src/gui/setup.cpp:74
+#: src/gui/popupmenu.cpp:1643 src/gui/popupmenu.cpp:1782
+#: src/gui/popupmenu.cpp:1838 src/gui/setup.cpp:74
 msgid "Store"
 msgstr "存储"
 
-#: src/gui/inventorywindow.cpp:206 src/gui/popupmenu.cpp:1666
+#: src/gui/inventorywindow.cpp:206 src/gui/popupmenu.cpp:1685
 msgid "Retrieve"
 msgstr "取回"
 
-#: src/gui/inventorywindow.cpp:684 src/gui/popupmenu.cpp:1655
-#: src/gui/popupmenu.cpp:1755 src/gui/popupmenu.cpp:1811
+#: src/gui/inventorywindow.cpp:684 src/gui/popupmenu.cpp:1674
+#: src/gui/popupmenu.cpp:1775 src/gui/popupmenu.cpp:1831
 #: src/gui/windowmenu.cpp:104
 msgid "Drop"
 msgstr "丢弃"
@@ -1311,24 +1302,24 @@ msgstr "状态栏"
 msgid "Need"
 msgstr "需要"
 
-#: src/gui/npcdialog.cpp:52
+#: src/gui/npcdialog.cpp:54
 msgid "Stop waiting"
 msgstr ""
 
-#: src/gui/npcdialog.cpp:53
+#: src/gui/npcdialog.cpp:55
 msgid "Next"
 msgstr "下一个"
 
-#: src/gui/npcdialog.cpp:55
+#: src/gui/npcdialog.cpp:57
 msgid "Submit"
 msgstr "提交"
 
-#: src/gui/npcdialog.cpp:60 src/gui/npcpostdialog.cpp:42
+#: src/gui/npcdialog.cpp:62 src/gui/npcpostdialog.cpp:42
 #: src/gui/setup_other.cpp:156
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:116 src/gui/popupmenu.cpp:503
+#: src/gui/npcdialog.cpp:120 src/gui/popupmenu.cpp:503
 msgid "Clear"
 msgstr "清除"
 
@@ -1400,7 +1391,7 @@ msgid "Nuke"
 msgstr ""
 
 #: src/gui/popupmenu.cpp:213 src/gui/popupmenu.cpp:317
-#: src/gui/popupmenu.cpp:2139
+#: src/gui/popupmenu.cpp:2159
 msgid "Add comment"
 msgstr "发表评论"
 
@@ -1420,7 +1411,7 @@ msgstr "优先攻击列表"
 msgid "Add to attack list"
 msgstr "加入攻击清单"
 
-#: src/gui/popupmenu.cpp:244 src/gui/popupmenu.cpp:2154
+#: src/gui/popupmenu.cpp:244 src/gui/popupmenu.cpp:2174
 msgid "Add to ignore list"
 msgstr ""
 
@@ -1433,7 +1424,7 @@ msgid "Players"
 msgstr "玩家"
 
 #: src/gui/popupmenu.cpp:327 src/gui/popupmenu.cpp:570
-#: src/gui/popupmenu.cpp:2129
+#: src/gui/popupmenu.cpp:2149
 msgid "Kick from party"
 msgstr "踢从党"
 
@@ -1441,8 +1432,8 @@ msgstr "踢从党"
 msgid "Pick up"
 msgstr "拾取"
 
-#: src/gui/popupmenu.cpp:400 src/gui/popupmenu.cpp:1681
-#: src/gui/popupmenu.cpp:1763 src/gui/popupmenu.cpp:1819
+#: src/gui/popupmenu.cpp:400 src/gui/popupmenu.cpp:1701
+#: src/gui/popupmenu.cpp:1783 src/gui/popupmenu.cpp:1839
 msgid "Add to chat"
 msgstr "加入聊天"
 
@@ -1454,8 +1445,8 @@ msgstr "地图项"
 msgid "Rename"
 msgstr "重命名"
 
-#: src/gui/popupmenu.cpp:421 src/gui/popupmenu.cpp:1958
-#: src/gui/popupmenu.cpp:1982
+#: src/gui/popupmenu.cpp:421 src/gui/popupmenu.cpp:1978
+#: src/gui/popupmenu.cpp:2002
 msgid "Remove"
 msgstr ""
 
@@ -1511,7 +1502,7 @@ msgstr "留下"
 msgid "Copy to clipboard"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:565 src/gui/popupmenu.cpp:2127
+#: src/gui/popupmenu.cpp:565 src/gui/popupmenu.cpp:2147
 msgid "Invite to party"
 msgstr ""
 
@@ -1520,170 +1511,185 @@ msgid "Change guild position"
 msgstr "更改公会的立场"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1130
+#: src/gui/popupmenu.cpp:1147
 msgid "Rename map sign          "
 msgstr "重命名的地图标志"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1132
+#: src/gui/popupmenu.cpp:1149
 msgid "Name:                    "
 msgstr "名称："
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1154
+#: src/gui/popupmenu.cpp:1171
 msgid "Player comment            "
 msgstr "玩家评论"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1156
+#: src/gui/popupmenu.cpp:1173
 msgid "Comment:                      "
 msgstr "评论："
 
-#: src/gui/popupmenu.cpp:1613
+#: src/gui/popupmenu.cpp:1630
 msgid "Add to trade"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1617
+#: src/gui/popupmenu.cpp:1634
 msgid "Add to trade 10"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1618
+#: src/gui/popupmenu.cpp:1635
 msgid "Add to trade half"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1619
+#: src/gui/popupmenu.cpp:1636
+#, fuzzy
+msgid "Add to trade all-1"
+msgstr "加入攻击清单"
+
+#: src/gui/popupmenu.cpp:1637
 msgid "Add to trade all"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1629
+#: src/gui/popupmenu.cpp:1647
 msgid "Store 10"
 msgstr "商店10"
 
-#: src/gui/popupmenu.cpp:1630
+#: src/gui/popupmenu.cpp:1648
 msgid "Store half"
 msgstr "商店的一半"
 
-#: src/gui/popupmenu.cpp:1631
+#: src/gui/popupmenu.cpp:1649
+#, fuzzy
+msgid "Store all-1"
+msgstr "商店所有"
+
+#: src/gui/popupmenu.cpp:1650
 msgid "Store all"
 msgstr "商店所有"
 
-#: src/gui/popupmenu.cpp:1651 src/gui/popupmenu.cpp:1751
-#: src/gui/popupmenu.cpp:1807
+#: src/gui/popupmenu.cpp:1670 src/gui/popupmenu.cpp:1771
+#: src/gui/popupmenu.cpp:1827
 msgid "Drop all"
 msgstr "所有"
 
-#: src/gui/popupmenu.cpp:1670
+#: src/gui/popupmenu.cpp:1689
 msgid "Retrieve 10"
 msgstr "拿出10"
 
-#: src/gui/popupmenu.cpp:1671
+#: src/gui/popupmenu.cpp:1690
 msgid "Retrieve half"
 msgstr "拿出一半"
 
-#: src/gui/popupmenu.cpp:1672
+#: src/gui/popupmenu.cpp:1691
+#, fuzzy
+msgid "Retrieve all-1"
+msgstr "检索所有"
+
+#: src/gui/popupmenu.cpp:1692
 msgid "Retrieve all"
 msgstr "检索所有"
 
-#: src/gui/popupmenu.cpp:1828
+#: src/gui/popupmenu.cpp:1848
 msgid "Clear drop window"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1856 src/gui/popupmenu.cpp:1893
+#: src/gui/popupmenu.cpp:1876 src/gui/popupmenu.cpp:1913
 msgid "Hide"
 msgstr "隐藏"
 
-#: src/gui/popupmenu.cpp:1862 src/gui/popupmenu.cpp:1899
+#: src/gui/popupmenu.cpp:1882 src/gui/popupmenu.cpp:1919
 msgid "Show"
 msgstr "显示"
 
-#: src/gui/popupmenu.cpp:1905
+#: src/gui/popupmenu.cpp:1925
 msgid "Reset yellow bar"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1907 src/gui/statuswindow.cpp:248
+#: src/gui/popupmenu.cpp:1927 src/gui/statuswindow.cpp:248
 msgid "Copy to chat"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1927 src/gui/popupmenu.cpp:1978
-#: src/gui/setup_theme.cpp:62 src/gui/setup_theme.cpp:119
+#: src/gui/popupmenu.cpp:1947 src/gui/popupmenu.cpp:1998
+#: src/gui/setup_theme.cpp:62 src/gui/setup_theme.cpp:126
 #: src/gui/socialwindow.cpp:883
 msgid "(default)"
 msgstr "(默认)"
 
-#: src/gui/popupmenu.cpp:1937 src/gui/popupmenu.cpp:1947
+#: src/gui/popupmenu.cpp:1957 src/gui/popupmenu.cpp:1967
 msgid "Move up"
 msgstr "x"
 
-#: src/gui/popupmenu.cpp:1939 src/gui/popupmenu.cpp:1949
+#: src/gui/popupmenu.cpp:1959 src/gui/popupmenu.cpp:1969
 msgid "Move down"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2003 src/gui/popupmenu.cpp:2138
+#: src/gui/popupmenu.cpp:2023 src/gui/popupmenu.cpp:2158
 msgid "Undress"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2029
+#: src/gui/popupmenu.cpp:2049
 msgid "Be friend"
 msgstr "是朋友"
 
-#: src/gui/popupmenu.cpp:2030 src/gui/popupmenu.cpp:2038
-#: src/gui/popupmenu.cpp:2047 src/gui/popupmenu.cpp:2066
-#: src/gui/popupmenu.cpp:2074
+#: src/gui/popupmenu.cpp:2050 src/gui/popupmenu.cpp:2058
+#: src/gui/popupmenu.cpp:2067 src/gui/popupmenu.cpp:2086
+#: src/gui/popupmenu.cpp:2094
 msgid "Disregard"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2032 src/gui/popupmenu.cpp:2040
-#: src/gui/popupmenu.cpp:2068
+#: src/gui/popupmenu.cpp:2052 src/gui/popupmenu.cpp:2060
+#: src/gui/popupmenu.cpp:2088
 msgid "Black list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2033 src/gui/popupmenu.cpp:2041
-#: src/gui/popupmenu.cpp:2049
+#: src/gui/popupmenu.cpp:2053 src/gui/popupmenu.cpp:2061
+#: src/gui/popupmenu.cpp:2069
 msgid "Set as enemy"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2034 src/gui/popupmenu.cpp:2042
-#: src/gui/popupmenu.cpp:2050 src/gui/popupmenu.cpp:2056
-#: src/gui/popupmenu.cpp:2061 src/gui/popupmenu.cpp:2069
+#: src/gui/popupmenu.cpp:2054 src/gui/popupmenu.cpp:2062
+#: src/gui/popupmenu.cpp:2070 src/gui/popupmenu.cpp:2076
+#: src/gui/popupmenu.cpp:2081 src/gui/popupmenu.cpp:2089
 msgid "Erase"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2046 src/gui/popupmenu.cpp:2054
-#: src/gui/popupmenu.cpp:2060 src/gui/popupmenu.cpp:2065
-#: src/gui/popupmenu.cpp:2073
+#: src/gui/popupmenu.cpp:2066 src/gui/popupmenu.cpp:2074
+#: src/gui/popupmenu.cpp:2080 src/gui/popupmenu.cpp:2085
+#: src/gui/popupmenu.cpp:2093
 msgid "Unignore"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2055 src/gui/popupmenu.cpp:2075
+#: src/gui/popupmenu.cpp:2075 src/gui/popupmenu.cpp:2095
 #: src/playerrelations.cpp:468
 msgid "Completely ignore"
 msgstr "完全忽略"
 
-#: src/gui/popupmenu.cpp:2085
+#: src/gui/popupmenu.cpp:2105
 msgid "Follow"
 msgstr "按照"
 
-#: src/gui/popupmenu.cpp:2086
+#: src/gui/popupmenu.cpp:2106
 msgid "Imitation"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2104 src/gui/popupmenu.cpp:2115
+#: src/gui/popupmenu.cpp:2124 src/gui/popupmenu.cpp:2135
 msgid "Buy (?)"
 msgstr "购买(?)"
 
-#: src/gui/popupmenu.cpp:2105 src/gui/popupmenu.cpp:2116
+#: src/gui/popupmenu.cpp:2125 src/gui/popupmenu.cpp:2136
 msgid "Sell (?)"
 msgstr "出售(?)"
 
-#: src/gui/popupmenu.cpp:2137
+#: src/gui/popupmenu.cpp:2157
 msgid "Show Items"
 msgstr "显示项目"
 
-#: src/gui/popupmenu.cpp:2148
+#: src/gui/popupmenu.cpp:2168
 msgid "Remove from pickup list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2152
+#: src/gui/popupmenu.cpp:2172
 msgid "Add to pickup list"
 msgstr ""
 
@@ -1727,58 +1733,58 @@ msgstr "密码不能少于%d个字符。"
 msgid "Passwords do not match."
 msgstr "密码不一致."
 
-#: src/gui/serverdialog.cpp:231
+#: src/gui/serverdialog.cpp:244
 msgid "Choose Your Server"
 msgstr "选择您的服务器"
 
-#: src/gui/serverdialog.cpp:242
+#: src/gui/serverdialog.cpp:255
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "选择你的服务器***安全模式***"
 
-#: src/gui/serverdialog.cpp:246
+#: src/gui/serverdialog.cpp:259
 msgid "Use same ip for game sub servers"
 msgstr "游戏分服务器使用相同的IP"
 
-#: src/gui/serverdialog.cpp:265
+#: src/gui/serverdialog.cpp:278
 msgid "Load"
 msgstr "负载"
 
-#: src/gui/serverdialog.cpp:266
+#: src/gui/serverdialog.cpp:279
 msgid "Connect"
 msgstr "连接"
 
-#: src/gui/serverdialog.cpp:267 src/gui/shopwindow.cpp:122
+#: src/gui/serverdialog.cpp:280 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/tradewindow.cpp:90
 msgid "Add"
 msgstr "添加"
 
-#: src/gui/serverdialog.cpp:268 src/gui/widgets/setupitem.cpp:286
+#: src/gui/serverdialog.cpp:281 src/gui/widgets/setupitem.cpp:286
 #: src/gui/widgets/setupitem.cpp:410
 msgid "Edit"
 msgstr "编辑"
 
-#: src/gui/serverdialog.cpp:485
+#: src/gui/serverdialog.cpp:498
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "下载服务器列表...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:490
+#: src/gui/serverdialog.cpp:503
 msgid "Waiting for server..."
 msgstr "等待服务器..."
 
-#: src/gui/serverdialog.cpp:494
+#: src/gui/serverdialog.cpp:507
 msgid "Preparing download"
 msgstr "准备下载"
 
-#: src/gui/serverdialog.cpp:498
+#: src/gui/serverdialog.cpp:511
 msgid "Error retreiving server list!"
 msgstr "恢复服务器列表错误！"
 
-#: src/gui/serverdialog.cpp:586
+#: src/gui/serverdialog.cpp:599
 msgid "requires a newer version"
 msgstr "需要较新版本"
 
-#: src/gui/serverdialog.cpp:588
+#: src/gui/serverdialog.cpp:601
 #, c-format
 msgid "requires v%s"
 msgstr "需要 v%s"
@@ -2612,18 +2618,18 @@ msgstr ""
 msgid "Default"
 msgstr "预设"
 
-#: src/gui/setup_input.cpp:193
+#: src/gui/setup_input.cpp:195
 msgid "Key Conflict(s) Detected."
 msgstr "检测到按键冲突。"
 
-#: src/gui/setup_input.cpp:194
+#: src/gui/setup_input.cpp:196
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
 "strange behaviour."
 msgstr ""
 
-#: src/gui/setup_input.cpp:351
+#: src/gui/setup_input.cpp:353
 msgid "unknown"
 msgstr ""
 
@@ -3075,131 +3081,162 @@ msgstr "关系"
 msgid "When ignoring:"
 msgstr "当忽略时："
 
-#: src/gui/setup_theme.cpp:82
+#: src/gui/setup_theme.cpp:84
+msgid "Very small (9)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:85
 msgid "Tiny (10)"
 msgstr "小（10）"
 
-#: src/gui/setup_theme.cpp:83
+#: src/gui/setup_theme.cpp:86
 msgid "Small (11)"
 msgstr "小 (11)"
 
-#: src/gui/setup_theme.cpp:84
+#: src/gui/setup_theme.cpp:87
 msgid "Medium (12)"
 msgstr "中 (12)"
 
-#: src/gui/setup_theme.cpp:85
-msgid "Large (13)"
+#: src/gui/setup_theme.cpp:88
+#, fuzzy
+msgid "Normal (13)"
+msgstr "正常"
+
+#: src/gui/setup_theme.cpp:89
+#, fuzzy
+msgid "Large (14)"
 msgstr "大 (13)"
 
-#: src/gui/setup_theme.cpp:86
-msgid "Big (14)"
+#: src/gui/setup_theme.cpp:90
+#, fuzzy
+msgid "Very large (15)"
+msgstr "大 (13)"
+
+#: src/gui/setup_theme.cpp:91
+#, fuzzy
+msgid "Big (16)"
 msgstr "大(14)"
 
-#: src/gui/setup_theme.cpp:87
-msgid "Huge (15)"
+#: src/gui/setup_theme.cpp:92
+msgid "Very big (17)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:93
+#, fuzzy
+msgid "Huge (18)"
 msgstr "巨大的 (15)"
 
-#: src/gui/setup_theme.cpp:120
+#: src/gui/setup_theme.cpp:94
+#, fuzzy
+msgid "Very huge (19)"
+msgstr "巨大的 (15)"
+
+#: src/gui/setup_theme.cpp:127
 msgid "Chinese (China)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:121
+#: src/gui/setup_theme.cpp:128
 msgid "Czech"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:122
+#: src/gui/setup_theme.cpp:129
 msgid "English"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:123
+#: src/gui/setup_theme.cpp:130
 msgid "Finnish"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:124
+#: src/gui/setup_theme.cpp:131
 msgid "French"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:125
+#: src/gui/setup_theme.cpp:132
 msgid "German"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:126
+#: src/gui/setup_theme.cpp:133
 msgid "Indonesian"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:127
+#: src/gui/setup_theme.cpp:134
 msgid "Polish"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:128
+#: src/gui/setup_theme.cpp:135
 msgid "Japanese"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:129
+#: src/gui/setup_theme.cpp:136
 msgid "Dutch (Belgium/Flemish)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:130
+#: src/gui/setup_theme.cpp:137
 msgid "Portuguese"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:131
+#: src/gui/setup_theme.cpp:138
 msgid "Portuguese (Brazilian)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:132
+#: src/gui/setup_theme.cpp:139
 msgid "Russian"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:133
+#: src/gui/setup_theme.cpp:140
 msgid "Spanish (Castilian)"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:165
+#: src/gui/setup_theme.cpp:173
 msgid "Theme"
 msgstr "主题"
 
-#: src/gui/setup_theme.cpp:167
+#: src/gui/setup_theme.cpp:175
 msgid "Gui theme"
 msgstr "桂主题"
 
-#: src/gui/setup_theme.cpp:168
+#: src/gui/setup_theme.cpp:176
 msgid "Language"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:169
+#: src/gui/setup_theme.cpp:177
 msgid "Main Font"
 msgstr "主要字体"
 
-#: src/gui/setup_theme.cpp:170
+#: src/gui/setup_theme.cpp:178
 msgid "Bold font"
 msgstr "加粗字体"
 
-#: src/gui/setup_theme.cpp:171
+#: src/gui/setup_theme.cpp:179
 msgid "Particle font"
 msgstr "粒子字体"
 
-#: src/gui/setup_theme.cpp:172
+#: src/gui/setup_theme.cpp:180
 msgid "Help font"
 msgstr "帮助字体"
 
-#: src/gui/setup_theme.cpp:173
+#: src/gui/setup_theme.cpp:181
 msgid "Secure font"
 msgstr "安全字体"
 
-#: src/gui/setup_theme.cpp:174
+#: src/gui/setup_theme.cpp:182
 msgid "Japanese font"
 msgstr "日文字体"
 
-#: src/gui/setup_theme.cpp:211
+#: src/gui/setup_theme.cpp:219
 msgid "Font size"
 msgstr "字体大小"
 
-#: src/gui/setup_theme.cpp:352
+#: src/gui/setup_theme.cpp:225
+#, fuzzy
+msgid "Npc font size"
+msgstr "字体大小"
+
+#: src/gui/setup_theme.cpp:371
 msgid "Theme Changed"
 msgstr "主题更改"
 
-#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:496
+#: src/gui/setup_theme.cpp:371 src/gui/setup_video.cpp:496
 #: src/gui/setup_video.cpp:503
 msgid "Restart your client for the change to take effect."
 msgstr "重启您的游戏客户端以使变更生效。"
@@ -3434,7 +3471,6 @@ msgid "Auction"
 msgstr "拍卖"
 
 #: src/gui/shopwindow.cpp:761 src/net/ea/tradehandler.cpp:104
-#: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
 msgstr "请求交易"
 
@@ -4352,7 +4388,7 @@ msgstr ""
 msgid "Choose World"
 msgstr ""
 
-#: src/inputmanager.cpp:307 src/inputmanager.cpp:345 src/keyboardconfig.cpp:82
+#: src/inputmanager.cpp:307 src/inputmanager.cpp:345 src/keyboardconfig.cpp:88
 #, c-format
 msgid "key_%d"
 msgstr ""
@@ -4374,7 +4410,7 @@ msgid "JB%d"
 msgstr ""
 
 #. TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
-#: src/inputmanager.cpp:363 src/keyboardconfig.cpp:94
+#: src/inputmanager.cpp:363 src/keyboardconfig.cpp:100
 msgid "u key"
 msgstr ""
 
@@ -4720,7 +4756,7 @@ msgstr ""
 msgid "Imitation canceled"
 msgstr ""
 
-#: src/localplayer.cpp:4158
+#: src/localplayer.cpp:4160
 msgid "You see "
 msgstr "你看"
 
@@ -4892,7 +4928,7 @@ msgstr ""
 msgid "Incorrect race."
 msgstr ""
 
-#: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:212
+#: src/net/ea/charserverhandler.cpp:182
 msgid "Info"
 msgstr "信息"
 
@@ -4958,7 +4994,7 @@ msgstr "游戏"
 msgid "Request to quit denied!"
 msgstr ""
 
-#: src/net/ea/guildhandler.cpp:83 src/net/manaserv/guildhandler.cpp:85
+#: src/net/ea/guildhandler.cpp:83
 msgid "Guild created."
 msgstr "帮会已创建"
 
@@ -5173,7 +5209,7 @@ msgstr "无法装备。"
 msgid "Account was not found. Please re-login."
 msgstr "帐号不存在。请重新登录。"
 
-#: src/net/ea/loginhandler.cpp:149 src/net/manaserv/loginhandler.cpp:128
+#: src/net/ea/loginhandler.cpp:149
 msgid "Old password incorrect."
 msgstr "旧密码不正确。"
 
@@ -5182,9 +5218,6 @@ msgid "New password too short."
 msgstr "新密码太短。"
 
 #: src/net/ea/loginhandler.cpp:155 src/net/ea/loginhandler.cpp:267
-#: src/net/manaserv/charhandler.cpp:183 src/net/manaserv/loginhandler.cpp:103
-#: src/net/manaserv/loginhandler.cpp:135 src/net/manaserv/loginhandler.cpp:171
-#: src/net/manaserv/loginhandler.cpp:292 src/net/manaserv/loginhandler.cpp:329
 msgid "Unknown error."
 msgstr "未知的错误。"
 
@@ -5286,23 +5319,23 @@ msgstr "%s已经离开你的帮会。"
 msgid "An unknown member tried to say: %s"
 msgstr "一未知成员尝试说：%s"
 
-#: src/net/ea/playerhandler.cpp:98 src/net/manaserv/beinghandler.cpp:319
+#: src/net/ea/playerhandler.cpp:98
 msgid "You are dead."
 msgstr "你已玩完了。"
 
-#: src/net/ea/playerhandler.cpp:99 src/net/manaserv/beinghandler.cpp:320
+#: src/net/ea/playerhandler.cpp:99
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "很遗憾的告诉您，您的角色在战斗中死亡了"
 
-#: src/net/ea/playerhandler.cpp:101 src/net/manaserv/beinghandler.cpp:322
+#: src/net/ea/playerhandler.cpp:101
 msgid "You are not that alive anymore."
 msgstr "你再也不是那样的生机勃勃了。"
 
-#: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:323
+#: src/net/ea/playerhandler.cpp:102
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:103 src/net/manaserv/beinghandler.cpp:324
+#: src/net/ea/playerhandler.cpp:103
 msgid "Game Over!"
 msgstr "游戏结束！"
 
@@ -5310,39 +5343,39 @@ msgstr "游戏结束！"
 msgid "Insert coin to continue."
 msgstr "投入游戏币继续。"
 
-#: src/net/ea/playerhandler.cpp:105 src/net/manaserv/beinghandler.cpp:325
+#: src/net/ea/playerhandler.cpp:105
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr "不，孩子。你的角色没有真正死亡。他……呃……不过是去了一个更好的地方而已。"
 
-#: src/net/ea/playerhandler.cpp:107 src/net/manaserv/beinghandler.cpp:327
+#: src/net/ea/playerhandler.cpp:107
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:109 src/net/manaserv/beinghandler.cpp:329
+#: src/net/ea/playerhandler.cpp:109
 msgid "I guess this did not run too well."
 msgstr "我猜这进行得并不顺利。"
 
-#: src/net/ea/playerhandler.cpp:111 src/net/manaserv/beinghandler.cpp:330
+#: src/net/ea/playerhandler.cpp:111
 msgid "Do you want your possessions identified?"
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:113 src/net/manaserv/beinghandler.cpp:331
+#: src/net/ea/playerhandler.cpp:113
 msgid "Sadly, no trace of you was ever found..."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:115 src/net/manaserv/beinghandler.cpp:333
+#: src/net/ea/playerhandler.cpp:115
 msgid "Annihilated."
 msgstr "被消灭了。"
 
-#: src/net/ea/playerhandler.cpp:117 src/net/manaserv/beinghandler.cpp:334
+#: src/net/ea/playerhandler.cpp:117
 msgid "Looks like you got your head handed to you."
 msgstr ""
 
-#: src/net/ea/playerhandler.cpp:119 src/net/manaserv/beinghandler.cpp:336
+#: src/net/ea/playerhandler.cpp:119
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr ""
@@ -5515,7 +5548,177 @@ msgstr "无法偷取任何物品..."
 msgid "Poison had no effect..."
 msgstr "毒药无效..."
 
-#: src/net/ea/tradehandler.cpp:105 src/net/manaserv/tradehandler.cpp:128
+#: src/net/eathena/adminhandler.cpp:70 src/net/tmwa/adminhandler.cpp:70
+msgid "Kick failed!"
+msgstr "踢出失败！"
+
+#: src/net/eathena/adminhandler.cpp:72 src/net/tmwa/adminhandler.cpp:72
+msgid "Kick succeeded!"
+msgstr "成功踢出！"
+
+#: src/net/eathena/buysellhandler.cpp:129 src/net/tmwa/buysellhandler.cpp:133
+msgid "Thanks for selling."
+msgstr "感谢您的出售。"
+
+#: src/net/eathena/buysellhandler.cpp:133 src/net/tmwa/buysellhandler.cpp:137
+msgid "Unable to sell."
+msgstr "无法出售."
+
+#: src/net/eathena/buysellhandler.cpp:136 src/net/tmwa/buysellhandler.cpp:140
+msgid "Unable to sell while trading."
+msgstr "不能出售，交易。"
+
+#: src/net/eathena/buysellhandler.cpp:139 src/net/tmwa/buysellhandler.cpp:143
+msgid "Unable to sell unsellable item."
+msgstr ""
+
+#: src/net/eathena/generalhandler.cpp:108 src/net/tmwa/generalhandler.cpp:108
+#, c-format
+msgid "Strength %+d"
+msgstr "力量 %+d"
+
+#: src/net/eathena/generalhandler.cpp:109 src/net/tmwa/generalhandler.cpp:109
+#, c-format
+msgid "Agility %+d"
+msgstr "敏捷 %+d"
+
+#: src/net/eathena/generalhandler.cpp:110 src/net/tmwa/generalhandler.cpp:110
+#, c-format
+msgid "Vitality %+d"
+msgstr "生命 %+d"
+
+#: src/net/eathena/generalhandler.cpp:111 src/net/tmwa/generalhandler.cpp:111
+#, c-format
+msgid "Intelligence %+d"
+msgstr "智慧 %+d"
+
+#: src/net/eathena/generalhandler.cpp:112 src/net/tmwa/generalhandler.cpp:112
+#, c-format
+msgid "Dexterity %+d"
+msgstr "敏捷 %+d"
+
+#: src/net/eathena/generalhandler.cpp:113 src/net/tmwa/generalhandler.cpp:113
+#, c-format
+msgid "Luck %+d"
+msgstr "幸运 %+d"
+
+#: src/net/eathena/generalhandler.cpp:139 src/net/tmwa/generalhandler.cpp:139
+msgid "Authentication failed."
+msgstr "身份验证失败。"
+
+#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:142
+msgid "No servers available."
+msgstr "没有可用的服务器。"
+
+#: src/net/eathena/generalhandler.cpp:147 src/net/tmwa/generalhandler.cpp:147
+msgid "Someone else is trying to use this account."
+msgstr "别人尝试使用该帐户。"
+
+#: src/net/eathena/generalhandler.cpp:152 src/net/tmwa/generalhandler.cpp:152
+msgid "This account is already logged in."
+msgstr "此帐户已登录。"
+
+#: src/net/eathena/generalhandler.cpp:156 src/net/tmwa/generalhandler.cpp:156
+msgid "Speed hack detected."
+msgstr "检测速度劈。"
+
+#: src/net/eathena/generalhandler.cpp:159 src/net/tmwa/generalhandler.cpp:159
+msgid "Duplicated login."
+msgstr "重复登录。"
+
+#: src/net/eathena/generalhandler.cpp:162 src/net/tmwa/generalhandler.cpp:162
+msgid "Unknown connection error."
+msgstr "未知的连接错误。"
+
+#: src/net/eathena/generalhandler.cpp:234 src/net/tmwa/generalhandler.cpp:234
+msgid "Got disconnected from server!"
+msgstr "和服务器失去连接"
+
+#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:264
+msgid "Strength"
+msgstr "力量"
+
+#: src/net/eathena/generalhandler.cpp:265 src/net/tmwa/generalhandler.cpp:265
+msgid "Agility"
+msgstr "敏捷"
+
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:266
+msgid "Vitality"
+msgstr "生命"
+
+#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:267
+msgid "Intelligence"
+msgstr "智慧"
+
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:268
+msgid "Dexterity"
+msgstr "敏捷"
+
+#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:269
+msgid "Luck"
+msgstr "幸运"
+
+#: src/net/eathena/generalhandler.cpp:272 src/net/tmwa/generalhandler.cpp:272
+msgid "Defense"
+msgstr "防御"
+
+#: src/net/eathena/generalhandler.cpp:273 src/net/tmwa/generalhandler.cpp:273
+msgid "M.Attack"
+msgstr ""
+
+#: src/net/eathena/generalhandler.cpp:274 src/net/tmwa/generalhandler.cpp:274
+msgid "M.Defense"
+msgstr ""
+
+#: src/net/eathena/generalhandler.cpp:276 src/net/tmwa/generalhandler.cpp:276
+#, no-c-format
+msgid "% Accuracy"
+msgstr "％精度"
+
+#: src/net/eathena/generalhandler.cpp:278 src/net/tmwa/generalhandler.cpp:278
+#, no-c-format
+msgid "% Evade"
+msgstr "％闪避"
+
+#: src/net/eathena/generalhandler.cpp:280 src/net/tmwa/generalhandler.cpp:280
+#, no-c-format
+msgid "% Critical"
+msgstr "％"
+
+#: src/net/eathena/generalhandler.cpp:281 src/net/tmwa/generalhandler.cpp:281
+msgid "Attack Delay"
+msgstr "攻击延迟"
+
+#: src/net/eathena/generalhandler.cpp:283 src/net/tmwa/generalhandler.cpp:283
+msgid "Walk Delay"
+msgstr "步行延迟"
+
+#: src/net/eathena/generalhandler.cpp:285 src/net/tmwa/generalhandler.cpp:285
+msgid "Attack Range"
+msgstr "攻击范围"
+
+#: src/net/eathena/generalhandler.cpp:287 src/net/tmwa/generalhandler.cpp:287
+msgid "Damage per sec."
+msgstr "每秒伤害"
+
+#: src/net/eathena/network.cpp:175 src/net/tmwa/network.cpp:153
+msgid "Empty address given to Network::connect()!"
+msgstr "空的地址给网络：连接（）！"
+
+#: src/net/eathena/network.cpp:387 src/net/tmwa/network.cpp:365
+msgid "Unable to resolve host \""
+msgstr "无法解析主机“"
+
+#: src/net/eathena/network.cpp:457 src/net/tmwa/network.cpp:435
+msgid "Connection to server terminated. "
+msgstr "连接到服务器终止。"
+
+#: src/net/eathena/partyhandler.cpp:172 src/net/tmwa/partyhandler.cpp:172
+#, c-format
+msgid "%s is not in your party!"
+msgstr "%s不在你的帮会中！"
+
+#: src/net/ea/tradehandler.cpp:105
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%s想和您进行交易，是否接受？"
@@ -5562,445 +5765,13 @@ msgstr "添加物品失败。您不能交易这项物品."
 msgid "Failed adding item for unknown reason."
 msgstr "添加项目失败，原因未知。"
 
-#: src/net/ea/tradehandler.cpp:270 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:270
 msgid "Trade canceled."
 msgstr "交易取消。"
 
-#: src/net/ea/tradehandler.cpp:281 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:281
 msgid "Trade completed."
 msgstr "交易完成。"
-
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:264
-msgid "Strength"
-msgstr "力量"
-
-#: src/net/manaserv/attributes.cpp:167
-#, c-format
-msgid "Strength %+.1f"
-msgstr "力量%+.1f"
-
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:265
-msgid "Agility"
-msgstr "敏捷"
-
-#: src/net/manaserv/attributes.cpp:180
-#, c-format
-msgid "Agility %+.1f"
-msgstr "敏捷 %+.1f"
-
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:268
-msgid "Dexterity"
-msgstr "敏捷"
-
-#: src/net/manaserv/attributes.cpp:193
-#, c-format
-msgid "Dexterity %+.1f"
-msgstr "灵巧%+.1f"
-
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:266
-msgid "Vitality"
-msgstr "生命"
-
-#: src/net/manaserv/attributes.cpp:206
-#, c-format
-msgid "Vitality %+.1f"
-msgstr "活力%+.1f"
-
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:267
-msgid "Intelligence"
-msgstr "智慧"
-
-#: src/net/manaserv/attributes.cpp:219
-#, c-format
-msgid "Intelligence %+.1f"
-msgstr "智慧%+.1f"
-
-#: src/net/manaserv/attributes.cpp:225
-msgid "Willpower"
-msgstr "意志"
-
-#: src/net/manaserv/attributes.cpp:232
-#, c-format
-msgid "Willpower %+.1f"
-msgstr "意志力%+.1f"
-
-#: src/net/manaserv/beinghandler.cpp:341
-msgid "Press OK to respawn."
-msgstr "按确定以重生。"
-
-#: src/net/manaserv/beinghandler.cpp:342
-msgid "You Died"
-msgstr "你死了"
-
-#: src/net/manaserv/charhandler.cpp:147 src/net/manaserv/charhandler.cpp:221
-msgid "Not logged in."
-msgstr "未登录。"
-
-#: src/net/manaserv/charhandler.cpp:150
-msgid "No empty slot."
-msgstr "无空槽。"
-
-#: src/net/manaserv/charhandler.cpp:153
-msgid "Invalid name."
-msgstr "名称无效。"
-
-#: src/net/manaserv/charhandler.cpp:156
-msgid "Character's name already exists."
-msgstr "人物的名字已经存在。"
-
-#: src/net/manaserv/charhandler.cpp:159
-msgid "Invalid hairstyle."
-msgstr "无效的发型。"
-
-#: src/net/manaserv/charhandler.cpp:162
-msgid "Invalid hair color."
-msgstr "头发的颜色无效。"
-
-#: src/net/manaserv/charhandler.cpp:165
-msgid "Invalid gender."
-msgstr "无效的性别。"
-
-#: src/net/manaserv/charhandler.cpp:168
-msgid "Character's stats are too high."
-msgstr "字符的统计太高。"
-
-#: src/net/manaserv/charhandler.cpp:171
-msgid "Character's stats are too low."
-msgstr "字符的统计过低。"
-
-#: src/net/manaserv/charhandler.cpp:174
-#, c-format
-msgid "At least one stat is out of the permitted range: (%u - %u)."
-msgstr ""
-
-#: src/net/manaserv/charhandler.cpp:180
-msgid "Invalid slot number."
-msgstr ""
-
-#: src/net/manaserv/charhandler.cpp:212
-msgid "Player deleted."
-msgstr "删除。"
-
-#: src/net/manaserv/charhandler.cpp:224
-msgid "Selection out of range."
-msgstr "范围。"
-
-#: src/net/manaserv/charhandler.cpp:227
-#, c-format
-msgid "Unknown error (%d)."
-msgstr "未知错误(%d)"
-
-#: src/net/manaserv/charhandler.cpp:263
-msgid "No gameservers are available."
-msgstr "无 游戏服务器 可用。"
-
-#: src/net/manaserv/chathandler.cpp:186 src/net/manaserv/chathandler.cpp:309
-#: src/net/manaserv/guildhandler.cpp:265
-#, c-format
-msgid "Topic: %s"
-msgstr "主题：%s"
-
-#: src/net/manaserv/chathandler.cpp:191 src/net/manaserv/chathandler.cpp:269
-msgid "Players in this channel:"
-msgstr "玩家在此通道："
-
-#: src/net/manaserv/chathandler.cpp:208
-msgid "Error joining channel."
-msgstr "加入通道时发生错误。"
-
-#: src/net/manaserv/chathandler.cpp:214
-msgid "Listing channels."
-msgstr "上市渠道。"
-
-#: src/net/manaserv/chathandler.cpp:226
-msgid "End of channel list."
-msgstr ""
-
-#: src/net/manaserv/chathandler.cpp:299
-#, c-format
-msgid "%s entered the channel."
-msgstr ""
-
-#: src/net/manaserv/chathandler.cpp:304
-#, c-format
-msgid "%s left the channel."
-msgstr ""
-
-#: src/net/manaserv/chathandler.cpp:320
-#, c-format
-msgid "%s has set mode %s on user %s."
-msgstr ""
-
-#: src/net/manaserv/chathandler.cpp:331
-#, c-format
-msgid "%s has kicked %s."
-msgstr "%s已被%s踢出"
-
-#: src/net/manaserv/chathandler.cpp:337
-msgid "Unknown channel event."
-msgstr ""
-
-#: src/net/manaserv/guildhandler.cpp:90
-msgid "Error creating guild."
-msgstr "创建公会时发生错误。"
-
-#: src/net/manaserv/guildhandler.cpp:100
-msgid "Invite sent."
-msgstr "邀请已发送。"
-
-#: src/net/manaserv/guildhandler.cpp:207
-msgid "Member was promoted successfully."
-msgstr "会员晋升成功。"
-
-#: src/net/manaserv/guildhandler.cpp:212
-msgid "Failed to promote member."
-msgstr "晋升会员失败。"
-
-#: src/net/manaserv/loginhandler.cpp:94
-msgid "Wrong magic_token."
-msgstr "错误magic_token。"
-
-#: src/net/manaserv/loginhandler.cpp:97 src/net/manaserv/loginhandler.cpp:282
-msgid "Already logged in."
-msgstr "已登录。"
-
-#: src/net/manaserv/loginhandler.cpp:100
-msgid "Account banned."
-msgstr "帐户被禁止。"
-
-#: src/net/manaserv/loginhandler.cpp:125
-msgid "New password incorrect."
-msgstr "新密码不正确。"
-
-#: src/net/manaserv/loginhandler.cpp:132 src/net/manaserv/loginhandler.cpp:164
-msgid "Account not connected. Please login first."
-msgstr "账户未连接。请先登录。"
-
-#: src/net/manaserv/loginhandler.cpp:157
-msgid "New email address incorrect."
-msgstr "新的电子邮件地址不正确。"
-
-#: src/net/manaserv/loginhandler.cpp:160
-msgid "Old email address incorrect."
-msgstr "旧的电子邮件地址不正确。"
-
-#: src/net/manaserv/loginhandler.cpp:168
-msgid "The new email address already exists."
-msgstr "新的电子邮件地址已存在。"
-
-#: src/net/manaserv/loginhandler.cpp:250
-msgid ""
-"Client registration is not allowed. Please contact server administration."
-msgstr "客户端注册是不允许的。请联系服务器管理。"
-
-#: src/net/manaserv/loginhandler.cpp:276 src/net/manaserv/loginhandler.cpp:313
-msgid "Client version is too old."
-msgstr "客户端版本太旧。"
-
-#: src/net/manaserv/loginhandler.cpp:279
-msgid "Wrong username or password."
-msgstr "用户名或密码错误。"
-
-#: src/net/manaserv/loginhandler.cpp:285
-msgid "Account banned"
-msgstr "帐户被禁止"
-
-#: src/net/manaserv/loginhandler.cpp:288
-msgid "Login attempt too soon after previous attempt."
-msgstr "登录尝试后，以前的尝试还为时过早。"
-
-#: src/net/manaserv/loginhandler.cpp:316
-msgid "Wrong username, password or email address."
-msgstr "错误的用户名，密码或电子邮件地址。"
-
-#: src/net/manaserv/loginhandler.cpp:319
-msgid "Username already exists."
-msgstr "用户名已存在。"
-
-#: src/net/manaserv/loginhandler.cpp:322
-msgid "Email address already exists."
-msgstr "电子邮件地址已存在。"
-
-#: src/net/manaserv/loginhandler.cpp:325
-msgid "You took too long with the captcha or your response was incorrect."
-msgstr "你的时间太长与CAPTCHA或你的反应是不正确的。"
-
-#: src/net/manaserv/partyhandler.cpp:90
-msgid "Joined party."
-msgstr "加入了帮会。"
-
-#: src/net/manaserv/partyhandler.cpp:108
-#, c-format
-msgid "%s joined the party."
-msgstr "%s加入了帮会。"
-
-#: src/net/manaserv/partyhandler.cpp:126
-#, c-format
-msgid "%s rejected your invite."
-msgstr "%s的拒绝你的邀请。"
-
-#: src/net/manaserv/tradehandler.cpp:107
-msgid "Accepting incoming trade requests."
-msgstr "正在接受交易请求"
-
-#: src/net/manaserv/tradehandler.cpp:109
-msgid "Ignoring incoming trade requests."
-msgstr "忽略交易请求"
-
-#: src/net/manaserv/tradehandler.cpp:146
-#, c-format
-msgid "Trading with %s"
-msgstr "与%s交易中"
-
-#: src/net/tmwa/adminhandler.cpp:70
-msgid "Kick failed!"
-msgstr "踢出失败！"
-
-#: src/net/tmwa/adminhandler.cpp:72
-msgid "Kick succeeded!"
-msgstr "成功踢出！"
-
-#: src/net/tmwa/buysellhandler.cpp:133
-msgid "Thanks for selling."
-msgstr "感谢您的出售。"
-
-#: src/net/tmwa/buysellhandler.cpp:137
-msgid "Unable to sell."
-msgstr "无法出售."
-
-#: src/net/tmwa/buysellhandler.cpp:140
-msgid "Unable to sell while trading."
-msgstr "不能出售，交易。"
-
-#: src/net/tmwa/buysellhandler.cpp:143
-msgid "Unable to sell unsellable item."
-msgstr ""
-
-#: src/net/tmwa/generalhandler.cpp:108
-#, c-format
-msgid "Strength %+d"
-msgstr "力量 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:109
-#, c-format
-msgid "Agility %+d"
-msgstr "敏捷 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:110
-#, c-format
-msgid "Vitality %+d"
-msgstr "生命 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:111
-#, c-format
-msgid "Intelligence %+d"
-msgstr "智慧 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:112
-#, c-format
-msgid "Dexterity %+d"
-msgstr "敏捷 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:113
-#, c-format
-msgid "Luck %+d"
-msgstr "幸运 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:139
-msgid "Authentication failed."
-msgstr "身份验证失败。"
-
-#: src/net/tmwa/generalhandler.cpp:142
-msgid "No servers available."
-msgstr "没有可用的服务器。"
-
-#: src/net/tmwa/generalhandler.cpp:147
-msgid "Someone else is trying to use this account."
-msgstr "别人尝试使用该帐户。"
-
-#: src/net/tmwa/generalhandler.cpp:152
-msgid "This account is already logged in."
-msgstr "此帐户已登录。"
-
-#: src/net/tmwa/generalhandler.cpp:156
-msgid "Speed hack detected."
-msgstr "检测速度劈。"
-
-#: src/net/tmwa/generalhandler.cpp:159
-msgid "Duplicated login."
-msgstr "重复登录。"
-
-#: src/net/tmwa/generalhandler.cpp:162
-msgid "Unknown connection error."
-msgstr "未知的连接错误。"
-
-#: src/net/tmwa/generalhandler.cpp:234
-msgid "Got disconnected from server!"
-msgstr "和服务器失去连接"
-
-#: src/net/tmwa/generalhandler.cpp:269
-msgid "Luck"
-msgstr "幸运"
-
-#: src/net/tmwa/generalhandler.cpp:272
-msgid "Defense"
-msgstr "防御"
-
-#: src/net/tmwa/generalhandler.cpp:273
-msgid "M.Attack"
-msgstr ""
-
-#: src/net/tmwa/generalhandler.cpp:274
-msgid "M.Defense"
-msgstr ""
-
-#: src/net/tmwa/generalhandler.cpp:276
-#, no-c-format
-msgid "% Accuracy"
-msgstr "％精度"
-
-#: src/net/tmwa/generalhandler.cpp:278
-#, no-c-format
-msgid "% Evade"
-msgstr "％闪避"
-
-#: src/net/tmwa/generalhandler.cpp:280
-#, no-c-format
-msgid "% Critical"
-msgstr "％"
-
-#: src/net/tmwa/generalhandler.cpp:281
-msgid "Attack Delay"
-msgstr "攻击延迟"
-
-#: src/net/tmwa/generalhandler.cpp:283
-msgid "Walk Delay"
-msgstr "步行延迟"
-
-#: src/net/tmwa/generalhandler.cpp:285
-msgid "Attack Range"
-msgstr "攻击范围"
-
-#: src/net/tmwa/generalhandler.cpp:287
-msgid "Damage per sec."
-msgstr "每秒伤害"
-
-#: src/net/tmwa/network.cpp:154
-msgid "Empty address given to Network::connect()!"
-msgstr "空的地址给网络：连接（）！"
-
-#: src/net/tmwa/network.cpp:365
-msgid "Unable to resolve host \""
-msgstr "无法解析主机“"
-
-#: src/net/tmwa/network.cpp:435
-msgid "Connection to server terminated. "
-msgstr "连接到服务器终止。"
-
-#: src/net/tmwa/partyhandler.cpp:172
-#, c-format
-msgid "%s is not in your party!"
-msgstr "%s不在你的帮会中！"
 
 #: src/playerrelations.cpp:482
 msgid "Print '...'"
@@ -6046,3 +5817,172 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:167
 msgid "Unknown item"
 msgstr "未知物品"
+
+#~ msgid "Could Not Load Map"
+#~ msgstr "不能加载地图"
+
+#~ msgid "Error while loading %s"
+#~ msgstr "加载%s时出现错误"
+
+#~ msgid "Strength %+.1f"
+#~ msgstr "力量%+.1f"
+
+#~ msgid "Agility %+.1f"
+#~ msgstr "敏捷 %+.1f"
+
+#~ msgid "Dexterity %+.1f"
+#~ msgstr "灵巧%+.1f"
+
+#~ msgid "Vitality %+.1f"
+#~ msgstr "活力%+.1f"
+
+#~ msgid "Intelligence %+.1f"
+#~ msgstr "智慧%+.1f"
+
+#~ msgid "Willpower"
+#~ msgstr "意志"
+
+#~ msgid "Willpower %+.1f"
+#~ msgstr "意志力%+.1f"
+
+#~ msgid "Press OK to respawn."
+#~ msgstr "按确定以重生。"
+
+#~ msgid "You Died"
+#~ msgstr "你死了"
+
+#~ msgid "Not logged in."
+#~ msgstr "未登录。"
+
+#~ msgid "No empty slot."
+#~ msgstr "无空槽。"
+
+#~ msgid "Invalid name."
+#~ msgstr "名称无效。"
+
+#~ msgid "Character's name already exists."
+#~ msgstr "人物的名字已经存在。"
+
+#~ msgid "Invalid hairstyle."
+#~ msgstr "无效的发型。"
+
+#~ msgid "Invalid hair color."
+#~ msgstr "头发的颜色无效。"
+
+#~ msgid "Invalid gender."
+#~ msgstr "无效的性别。"
+
+#~ msgid "Character's stats are too high."
+#~ msgstr "字符的统计太高。"
+
+#~ msgid "Character's stats are too low."
+#~ msgstr "字符的统计过低。"
+
+#~ msgid "Player deleted."
+#~ msgstr "删除。"
+
+#~ msgid "Selection out of range."
+#~ msgstr "范围。"
+
+#~ msgid "Unknown error (%d)."
+#~ msgstr "未知错误(%d)"
+
+#~ msgid "No gameservers are available."
+#~ msgstr "无 游戏服务器 可用。"
+
+#~ msgid "Topic: %s"
+#~ msgstr "主题：%s"
+
+#~ msgid "Players in this channel:"
+#~ msgstr "玩家在此通道："
+
+#~ msgid "Error joining channel."
+#~ msgstr "加入通道时发生错误。"
+
+#~ msgid "Listing channels."
+#~ msgstr "上市渠道。"
+
+#~ msgid "%s has kicked %s."
+#~ msgstr "%s已被%s踢出"
+
+#~ msgid "Error creating guild."
+#~ msgstr "创建公会时发生错误。"
+
+#~ msgid "Invite sent."
+#~ msgstr "邀请已发送。"
+
+#~ msgid "Member was promoted successfully."
+#~ msgstr "会员晋升成功。"
+
+#~ msgid "Failed to promote member."
+#~ msgstr "晋升会员失败。"
+
+#~ msgid "Wrong magic_token."
+#~ msgstr "错误magic_token。"
+
+#~ msgid "Already logged in."
+#~ msgstr "已登录。"
+
+#~ msgid "Account banned."
+#~ msgstr "帐户被禁止。"
+
+#~ msgid "New password incorrect."
+#~ msgstr "新密码不正确。"
+
+#~ msgid "Account not connected. Please login first."
+#~ msgstr "账户未连接。请先登录。"
+
+#~ msgid "New email address incorrect."
+#~ msgstr "新的电子邮件地址不正确。"
+
+#~ msgid "Old email address incorrect."
+#~ msgstr "旧的电子邮件地址不正确。"
+
+#~ msgid "The new email address already exists."
+#~ msgstr "新的电子邮件地址已存在。"
+
+#~ msgid ""
+#~ "Client registration is not allowed. Please contact server administration."
+#~ msgstr "客户端注册是不允许的。请联系服务器管理。"
+
+#~ msgid "Client version is too old."
+#~ msgstr "客户端版本太旧。"
+
+#~ msgid "Wrong username or password."
+#~ msgstr "用户名或密码错误。"
+
+#~ msgid "Account banned"
+#~ msgstr "帐户被禁止"
+
+#~ msgid "Login attempt too soon after previous attempt."
+#~ msgstr "登录尝试后，以前的尝试还为时过早。"
+
+#~ msgid "Wrong username, password or email address."
+#~ msgstr "错误的用户名，密码或电子邮件地址。"
+
+#~ msgid "Username already exists."
+#~ msgstr "用户名已存在。"
+
+#~ msgid "Email address already exists."
+#~ msgstr "电子邮件地址已存在。"
+
+#~ msgid "You took too long with the captcha or your response was incorrect."
+#~ msgstr "你的时间太长与CAPTCHA或你的反应是不正确的。"
+
+#~ msgid "Joined party."
+#~ msgstr "加入了帮会。"
+
+#~ msgid "%s joined the party."
+#~ msgstr "%s加入了帮会。"
+
+#~ msgid "%s rejected your invite."
+#~ msgstr "%s的拒绝你的邀请。"
+
+#~ msgid "Accepting incoming trade requests."
+#~ msgstr "正在接受交易请求"
+
+#~ msgid "Ignoring incoming trade requests."
+#~ msgstr "忽略交易请求"
+
+#~ msgid "Trading with %s"
+#~ msgstr "与%s交易中"

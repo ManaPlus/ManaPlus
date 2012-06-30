@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-06-23 16:53+0300\n"
+"POT-Creation-Date: 2012-07-01 02:32+0300\n"
 "PO-Revision-Date: 2012-06-21 20:34+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.net/projects/p/manaplus/"
@@ -57,113 +57,112 @@ msgstr "A"
 msgid "I"
 msgstr "I"
 
-#: src/client.cpp:977 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
+#: src/client.cpp:984 src/gui/setup.cpp:55 src/gui/windowmenu.cpp:107
 msgid "Setup"
 msgstr "設定"
 
-#: src/client.cpp:984 src/gui/setup_perfomance.cpp:47
+#: src/client.cpp:991 src/gui/setup_perfomance.cpp:47
 msgid "Perfomance"
 msgstr "パフォーマンス"
 
-#: src/client.cpp:989 src/gui/setup_video.cpp:250
+#: src/client.cpp:996 src/gui/setup_video.cpp:250
 msgid "Video"
 msgstr "ビデオ"
 
-#: src/client.cpp:994
+#: src/client.cpp:1001
 msgid "Themes"
 msgstr "テーマ"
 
-#: src/client.cpp:1080
+#: src/client.cpp:1087
 msgid "Connecting to server"
 msgstr "サーバーに接続しています"
 
-#: src/client.cpp:1118
+#: src/client.cpp:1125
 msgid "Logging in"
 msgstr "ログインしています"
 
-#: src/client.cpp:1152
+#: src/client.cpp:1159
 msgid "Entering game world"
 msgstr "ゲームの世界に移動しています"
 
-#: src/client.cpp:1258
+#: src/client.cpp:1265
 msgid "Requesting characters"
 msgstr "キャラクターを呼び出しています"
 
-#: src/client.cpp:1293
+#: src/client.cpp:1300
 msgid "Connecting to the game server"
 msgstr "ゲームサーバーに接続しています"
 
-#: src/client.cpp:1303
+#: src/client.cpp:1310
 msgid "Changing game servers"
 msgstr "ゲームサーバーを変更しています"
 
-#: src/client.cpp:1346 src/client.cpp:1354 src/client.cpp:1489
+#: src/client.cpp:1353 src/client.cpp:1361 src/client.cpp:1496
 #: src/gui/changeemaildialog.cpp:157 src/gui/changepassworddialog.cpp:147
 #: src/gui/charcreatedialog.cpp:281 src/gui/charselectdialog.cpp:271
-#: src/gui/editserverdialog.cpp:176 src/gui/registerdialog.cpp:239
+#: src/gui/editserverdialog.cpp:196 src/gui/registerdialog.cpp:239
 #: src/gui/unregisterdialog.cpp:137 src/net/ea/charserverhandler.cpp:170
-#: src/net/ea/charserverhandler.cpp:188 src/net/manaserv/charhandler.cpp:186
-#: src/net/manaserv/charhandler.cpp:229
+#: src/net/ea/charserverhandler.cpp:188
 msgid "Error"
 msgstr "エラー"
 
-#: src/client.cpp:1364
+#: src/client.cpp:1371
 msgid "Requesting registration details"
 msgstr "登録内容を呼び出しています"
 
-#: src/client.cpp:1390
+#: src/client.cpp:1397
 msgid "Password Change"
 msgstr "パスワード変更"
 
-#: src/client.cpp:1391
+#: src/client.cpp:1398
 msgid "Password changed successfully!"
 msgstr "パスワードを変更しました"
 
-#: src/client.cpp:1410
+#: src/client.cpp:1417
 msgid "Email Change"
 msgstr "メールアドレス変更"
 
-#: src/client.cpp:1411
+#: src/client.cpp:1418
 msgid "Email changed successfully!"
 msgstr "メールアドレスを変更しました"
 
-#: src/client.cpp:1431
+#: src/client.cpp:1438
 msgid "Unregister Successful"
 msgstr "登録を解除しました"
 
-#: src/client.cpp:1432
+#: src/client.cpp:1439
 msgid "Farewell, come back any time..."
 msgstr "さようなら　また会いましょう"
 
-#: src/client.cpp:1655 src/client.cpp:1688 src/client.cpp:1703
-#: src/client.cpp:2148 src/client.cpp:2155
+#: src/client.cpp:1662 src/client.cpp:1695 src/client.cpp:1710
+#: src/client.cpp:2155 src/client.cpp:2162
 #, c-format
 msgid "%s doesn't exist and can't be created! Exiting."
 msgstr "%sは存在しない為、作成できません"
 
-#: src/client.cpp:1846
+#: src/client.cpp:1853
 #, c-format
 msgid "Invalid update host: %s"
 msgstr "無効なアップデートホスト:%s"
 
-#: src/client.cpp:1880 src/client.cpp:1886
+#: src/client.cpp:1887 src/client.cpp:1893
 msgid "Error creating updates directory!"
 msgstr "更新フォルダの作成エラー"
 
-#: src/client.cpp:1907
+#: src/client.cpp:1914
 #, c-format
 msgid "Error: %s doesn't exist and can't be created! Exiting."
 msgstr "エラー: %s は存在しない為、作成できません"
 
-#: src/commandhandler.cpp:223
+#: src/commandhandler.cpp:224
 msgid "Unknown command."
 msgstr "不明なコマンドです"
 
-#: src/commandhandler.cpp:343
+#: src/commandhandler.cpp:344
 msgid "Cannot send empty whispers!"
 msgstr "空のささやきを送信することはできません"
 
-#: src/commandhandler.cpp:357
+#: src/commandhandler.cpp:358
 #, c-format
 msgid ""
 "Cannot create a whisper tab for nick \"%s\"! It either already exists, or is "
@@ -172,155 +171,155 @@ msgstr ""
 "%sへのささやきタブの作成に失敗しました。そのタブは既に開いている、もしくは自"
 "分宛てです"
 
-#: src/commandhandler.cpp:377
+#: src/commandhandler.cpp:378
 #, c-format
 msgid "Requesting to join channel %s."
 msgstr "%sチャンネルへの参加をリクエスト中"
 
-#: src/commandhandler.cpp:393 src/net/ea/gui/partytab.cpp:126
+#: src/commandhandler.cpp:394 src/net/ea/gui/partytab.cpp:126
 msgid "Party name is missing."
 msgstr "パーティ名がありません"
 
-#: src/commandhandler.cpp:404
+#: src/commandhandler.cpp:405
 msgid "Guild name is missing."
 msgstr "ギルド名がありません"
 
-#: src/commandhandler.cpp:417 src/commandhandler.cpp:534
-#: src/commandhandler.cpp:575 src/commandhandler.cpp:615
+#: src/commandhandler.cpp:418 src/commandhandler.cpp:535
+#: src/commandhandler.cpp:576 src/commandhandler.cpp:616
 msgid "Please specify a name."
 msgstr "名前を入力してください"
 
-#: src/commandhandler.cpp:468
+#: src/commandhandler.cpp:469
 msgid "Return toggles chat."
 msgstr "改行キーでチャット入力ができます"
 
-#: src/commandhandler.cpp:468
+#: src/commandhandler.cpp:469
 msgid "Message closes chat."
 msgstr "チャットを閉じます"
 
-#: src/commandhandler.cpp:479
+#: src/commandhandler.cpp:480
 msgid "Return now toggles chat."
 msgstr "改行キーでチャット入力ができます"
 
-#: src/commandhandler.cpp:485
+#: src/commandhandler.cpp:486
 msgid "Message now closes chat."
 msgstr "チャットを閉じます"
 
-#: src/commandhandler.cpp:513
+#: src/commandhandler.cpp:514
 msgid "friend"
 msgstr "友達"
 
-#: src/commandhandler.cpp:518
+#: src/commandhandler.cpp:519
 msgid "disregarded"
 msgstr "無視"
 
-#: src/commandhandler.cpp:523
+#: src/commandhandler.cpp:524
 msgid "neutral"
 msgstr "中性"
 
-#: src/commandhandler.cpp:542
+#: src/commandhandler.cpp:543
 #, c-format
 msgid "Player already %s!"
 msgstr "プレイヤーは既に%s"
 
-#: src/commandhandler.cpp:556
+#: src/commandhandler.cpp:557
 #, c-format
 msgid "Player successfully %s!"
 msgstr "プレイヤーの%sに成功しました"
 
-#: src/commandhandler.cpp:564
+#: src/commandhandler.cpp:565
 #, c-format
 msgid "Player could not be %s!"
 msgstr "プレイヤーを%sできなかった"
 
-#: src/commandhandler.cpp:587
+#: src/commandhandler.cpp:588
 msgid "Player wasn't ignored!"
 msgstr "プレイヤーを完全無視できませんでした"
 
-#: src/commandhandler.cpp:594
+#: src/commandhandler.cpp:595
 msgid "Player no longer ignored!"
 msgstr "プレイヤーを完全無視解除しました"
 
-#: src/commandhandler.cpp:596
+#: src/commandhandler.cpp:597
 msgid "Player could not be unignored!"
 msgstr "プレイヤーを完全無視解除できませんでした"
 
-#: src/commandhandler.cpp:602
+#: src/commandhandler.cpp:603
 msgid "blacklisted"
 msgstr "ブラックリスト化されています"
 
-#: src/commandhandler.cpp:607
+#: src/commandhandler.cpp:608
 msgid "enemy"
 msgstr "敵"
 
-#: src/commandhandler.cpp:622
+#: src/commandhandler.cpp:623
 msgid "Player already erased!"
 msgstr "プレイヤーは削除されています"
 
-#: src/commandhandler.cpp:633
+#: src/commandhandler.cpp:634
 msgid "Player successfully erased!"
 msgstr "プレイヤーを削除しました"
 
-#: src/commandhandler.cpp:635
+#: src/commandhandler.cpp:636
 msgid "Player could not be erased!"
 msgstr "プレイヤーを削除できませんでした"
 
-#: src/commandhandler.cpp:948 src/commandhandler.cpp:994
+#: src/commandhandler.cpp:949 src/commandhandler.cpp:995
 #, c-format
 msgid "Client uptime: %s"
 msgstr "クライアントの稼働時間: %s"
 
-#: src/commandhandler.cpp:958
+#: src/commandhandler.cpp:959
 #, c-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d週"
 
-#: src/commandhandler.cpp:967
+#: src/commandhandler.cpp:968
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d日"
 
-#: src/commandhandler.cpp:975
+#: src/commandhandler.cpp:976
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d時"
 
-#: src/commandhandler.cpp:983
+#: src/commandhandler.cpp:984
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d分"
 
-#: src/commandhandler.cpp:991
+#: src/commandhandler.cpp:992
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d秒"
 
-#: src/commandhandler.cpp:1070
+#: src/commandhandler.cpp:1071
 msgid "font cache size"
 msgstr "フォントキャッシュサイズ"
 
-#: src/commandhandler.cpp:1082
+#: src/commandhandler.cpp:1083
 msgid "Cache size:"
 msgstr "キャッシュサイズ:"
 
-#: src/commandhandler.cpp:1086
+#: src/commandhandler.cpp:1087
 msgid "Created:"
 msgstr "作成:"
 
-#: src/commandhandler.cpp:1088
+#: src/commandhandler.cpp:1089
 msgid "Deleted:"
 msgstr "削除:"
 
-#: src/commandhandler.cpp:1261 src/commandhandler.cpp:1268
+#: src/commandhandler.cpp:1262 src/commandhandler.cpp:1269
 msgid "Resource images:"
 msgstr "リソースイメージ:"
 
-#: src/commandhandler.cpp:1263 src/commandhandler.cpp:1270
+#: src/commandhandler.cpp:1264 src/commandhandler.cpp:1271
 msgid "Resource orphaned images:"
 msgstr "リソース孤児イメージ:"
 
@@ -330,38 +329,29 @@ msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
 msgstr ""
 "/%sへの可能なオプションは：\"yes\", \"no\", \"true\", \"false\", \"1\", \"0\""
 
-#: src/game.cpp:254 src/gui/widgets/chattab.cpp:447
+#: src/game.cpp:254 src/gui/widgets/chattab.cpp:450
 msgid "General"
 msgstr "一般"
 
-#: src/game.cpp:258 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:449
+#: src/game.cpp:258 src/gui/debugwindow.cpp:54 src/gui/widgets/chattab.cpp:452
 msgid "Debug"
 msgstr "デバッグ"
 
-#: src/game.cpp:524
+#: src/game.cpp:525
 msgid "Screenshot saved as "
 msgstr " としてスクリーンショットを保存しました"
 
-#: src/game.cpp:532
+#: src/game.cpp:533
 msgid "Saving screenshot failed!"
 msgstr "スクリーンショットを保存できませんでした"
 
-#: src/game.cpp:593
+#: src/game.cpp:594
 msgid "The connection to the server was lost."
 msgstr "サーバーへの接続が切断されました"
 
-#: src/game.cpp:594
+#: src/game.cpp:595
 msgid "Network Error"
 msgstr "ネットワークエラー"
-
-#: src/game.cpp:980
-msgid "Could Not Load Map"
-msgstr "マップの読み込みに失敗しました"
-
-#: src/game.cpp:981
-#, c-format
-msgid "Error while loading %s"
-msgstr "%sの読み込み中にエラーが起きました"
 
 #: src/gui/beingpopup.cpp:125
 #, c-format
@@ -393,7 +383,8 @@ msgstr "名前"
 
 #: src/gui/botcheckerwindow.cpp:298 src/gui/popupmenu.cpp:139
 #: src/gui/popupmenu.cpp:219 src/gui/popupmenu.cpp:543
-#: src/gui/setupactiondata.h:53 src/net/tmwa/generalhandler.cpp:271
+#: src/gui/setupactiondata.h:53 src/net/eathena/generalhandler.cpp:271
+#: src/net/tmwa/generalhandler.cpp:271
 msgid "Attack"
 msgstr "攻撃"
 
@@ -413,13 +404,13 @@ msgstr "動く"
 msgid "Result"
 msgstr "結果"
 
-#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:133
+#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:137
 msgid "Reset"
 msgstr "リセット"
 
 #: src/gui/buydialog.cpp:58 src/gui/buydialog.cpp:65 src/gui/buydialog.cpp:111
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:209
-#: src/gui/popupmenu.cpp:2098
+#: src/gui/popupmenu.cpp:2118
 msgid "Buy"
 msgstr "買う"
 
@@ -436,7 +427,7 @@ msgstr "量:"
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:107 src/gui/itemamountwindow.cpp:205
-#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:122
+#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:126
 #: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:777
 msgid "+"
 msgstr "+"
@@ -444,14 +435,14 @@ msgstr "+"
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:110 src/gui/itemamountwindow.cpp:204
-#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:123
+#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:127
 #: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:789
 msgid "-"
 msgstr "-"
 
 #: src/gui/buydialog.cpp:112 src/gui/quitdialog.cpp:49
 #: src/gui/quitdialog.cpp:50 src/gui/quitdialog.cpp:51
-#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:264
+#: src/gui/selldialog.cpp:94 src/gui/serverdialog.cpp:277
 #: src/gui/setupactiondata.h:158
 msgid "Quit"
 msgstr "終了"
@@ -468,25 +459,25 @@ msgid "Shop"
 msgstr "店"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/popupmenu.cpp:210
-#: src/gui/popupmenu.cpp:2099 src/gui/selldialog.cpp:53
+#: src/gui/popupmenu.cpp:2119 src/gui/selldialog.cpp:53
 #: src/gui/selldialog.cpp:60 src/gui/selldialog.cpp:93
 msgid "Sell"
 msgstr "売る"
 
 #: src/gui/buyselldialog.cpp:65 src/gui/changeemaildialog.cpp:59
 #: src/gui/changepassworddialog.cpp:61 src/gui/charcreatedialog.cpp:126
-#: src/gui/connectiondialog.cpp:47 src/gui/editserverdialog.cpp:81
+#: src/gui/connectiondialog.cpp:47 src/gui/editserverdialog.cpp:90
 #: src/gui/itemamountwindow.cpp:207 src/gui/npcpostdialog.cpp:58
 #: src/gui/popupmenu.cpp:260 src/gui/popupmenu.cpp:290
 #: src/gui/popupmenu.cpp:365 src/gui/popupmenu.cpp:403
 #: src/gui/popupmenu.cpp:429 src/gui/popupmenu.cpp:448
 #: src/gui/popupmenu.cpp:464 src/gui/popupmenu.cpp:484
 #: src/gui/popupmenu.cpp:629 src/gui/popupmenu.cpp:654
-#: src/gui/popupmenu.cpp:1683 src/gui/popupmenu.cpp:1710
-#: src/gui/popupmenu.cpp:1774 src/gui/popupmenu.cpp:1830
-#: src/gui/popupmenu.cpp:1867 src/gui/popupmenu.cpp:1908
-#: src/gui/popupmenu.cpp:1960 src/gui/popupmenu.cpp:1984
-#: src/gui/popupmenu.cpp:2006 src/gui/quitdialog.cpp:55
+#: src/gui/popupmenu.cpp:1703 src/gui/popupmenu.cpp:1730
+#: src/gui/popupmenu.cpp:1794 src/gui/popupmenu.cpp:1850
+#: src/gui/popupmenu.cpp:1887 src/gui/popupmenu.cpp:1928
+#: src/gui/popupmenu.cpp:1980 src/gui/popupmenu.cpp:2004
+#: src/gui/popupmenu.cpp:2026 src/gui/quitdialog.cpp:55
 #: src/gui/registerdialog.cpp:83 src/gui/setupactiondata.h:1490
 #: src/gui/setup.cpp:73 src/gui/socialwindow.cpp:1135
 #: src/gui/textcommandeditor.cpp:194 src/gui/textdialog.cpp:51
@@ -557,7 +548,7 @@ msgstr "新しいパスワードが一致しません"
 msgid "New Character"
 msgstr "新しいキャラクター"
 
-#: src/gui/charcreatedialog.cpp:101 src/gui/editserverdialog.cpp:63
+#: src/gui/charcreatedialog.cpp:101 src/gui/editserverdialog.cpp:72
 #: src/gui/logindialog.cpp:127 src/gui/registerdialog.cpp:76
 msgid "Name:"
 msgstr "名前:"
@@ -668,7 +659,7 @@ msgstr "キャラクターを削除するにはパスワードを入力して下
 msgid "Enter password:"
 msgstr "パスワードを入力して下さい:"
 
-#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:269
+#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:282
 #: src/gui/setupactiondata.h:1495 src/gui/setup_relations.cpp:245
 #: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
 #: src/gui/textcommandeditor.cpp:196
@@ -748,7 +739,7 @@ msgstr "カラフル 3"
 #: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:94
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:81
 #: src/gui/logindialog.cpp:109 src/gui/setup_relations.cpp:224
-#: src/gui/setup_theme.cpp:102 src/gui/setup_theme.cpp:148
+#: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
 #: src/gui/setup_video.cpp:217 src/gui/textcommandeditor.cpp:100
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:160
 #: src/gui/widgets/namesmodel.cpp:48
@@ -778,9 +769,9 @@ msgstr "はい"
 msgid "No"
 msgstr "いいえ"
 
-#: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:2031
-#: src/gui/popupmenu.cpp:2039 src/gui/popupmenu.cpp:2048
-#: src/gui/popupmenu.cpp:2067
+#: src/gui/confirmdialog.cpp:52 src/gui/popupmenu.cpp:2051
+#: src/gui/popupmenu.cpp:2059 src/gui/popupmenu.cpp:2068
+#: src/gui/popupmenu.cpp:2087
 msgid "Ignore"
 msgstr "無視"
 
@@ -944,7 +935,7 @@ msgid "Did You Know?"
 msgstr "豆知識"
 
 #: src/gui/didyouknowwindow.cpp:68 src/gui/helpwindow.cpp:64
-#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:54
+#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:56
 #: src/gui/popupmenu.cpp:501 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "閉じる"
@@ -961,33 +952,33 @@ msgstr "次へ >"
 msgid "Auto open this window"
 msgstr "この窓を自動で開ける"
 
-#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:80
+#: src/gui/editdialog.cpp:46 src/gui/editserverdialog.cpp:89
 #: src/gui/itemamountwindow.cpp:206 src/gui/okdialog.cpp:48
 #: src/gui/quitdialog.cpp:54 src/gui/textdialog.cpp:50
 msgid "OK"
 msgstr "OK"
 
-#: src/gui/editserverdialog.cpp:56
+#: src/gui/editserverdialog.cpp:65
 msgid "Edit Server"
 msgstr "サーバー編集"
 
-#: src/gui/editserverdialog.cpp:64
+#: src/gui/editserverdialog.cpp:73
 msgid "Address:"
 msgstr "アドレス:"
 
-#: src/gui/editserverdialog.cpp:65
+#: src/gui/editserverdialog.cpp:74
 msgid "Port:"
 msgstr "ポート:"
 
-#: src/gui/editserverdialog.cpp:66
+#: src/gui/editserverdialog.cpp:75
 msgid "Server type:"
 msgstr "サーバータイプ:"
 
-#: src/gui/editserverdialog.cpp:67
+#: src/gui/editserverdialog.cpp:76
 msgid "Description:"
 msgstr "詳細:"
 
-#: src/gui/editserverdialog.cpp:177
+#: src/gui/editserverdialog.cpp:197
 msgid "Please at least type both the address and the port of the server."
 msgstr "サーバーアドレスとポートを入力して下さい"
 
@@ -996,8 +987,8 @@ msgid "Equipment"
 msgstr "装着品"
 
 #: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:164
-#: src/gui/inventorywindow.cpp:580 src/gui/popupmenu.cpp:1639
-#: src/gui/popupmenu.cpp:1739 src/gui/popupmenu.cpp:1795
+#: src/gui/inventorywindow.cpp:580 src/gui/popupmenu.cpp:1658
+#: src/gui/popupmenu.cpp:1759 src/gui/popupmenu.cpp:1815
 msgid "Unequip"
 msgstr "取外す"
 
@@ -1039,26 +1030,26 @@ msgid "Filter:"
 msgstr "フィルタ:"
 
 #: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:582
-#: src/gui/popupmenu.cpp:1641 src/gui/popupmenu.cpp:1741
-#: src/gui/popupmenu.cpp:1797
+#: src/gui/popupmenu.cpp:1660 src/gui/popupmenu.cpp:1761
+#: src/gui/popupmenu.cpp:1817
 msgid "Equip"
 msgstr "装着"
 
 #: src/gui/inventorywindow.cpp:163 src/gui/inventorywindow.cpp:586
-#: src/gui/popupmenu.cpp:1645 src/gui/popupmenu.cpp:1708
-#: src/gui/popupmenu.cpp:1745 src/gui/popupmenu.cpp:1801
+#: src/gui/popupmenu.cpp:1664 src/gui/popupmenu.cpp:1728
+#: src/gui/popupmenu.cpp:1765 src/gui/popupmenu.cpp:1821
 #: src/gui/skilldialog.cpp:242
 msgid "Use"
 msgstr "使用"
 
 #: src/gui/inventorywindow.cpp:176 src/gui/inventorywindow.cpp:682
-#: src/gui/popupmenu.cpp:1650 src/gui/popupmenu.cpp:1750
-#: src/gui/popupmenu.cpp:1806
+#: src/gui/popupmenu.cpp:1669 src/gui/popupmenu.cpp:1770
+#: src/gui/popupmenu.cpp:1826
 msgid "Drop..."
 msgstr "落とす..."
 
-#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1659
-#: src/gui/popupmenu.cpp:1759 src/gui/popupmenu.cpp:1815
+#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1678
+#: src/gui/popupmenu.cpp:1779 src/gui/popupmenu.cpp:1835
 msgid "Split"
 msgstr "分割"
 
@@ -1072,17 +1063,17 @@ msgid "Weight:"
 msgstr "重量:"
 
 #: src/gui/inventorywindow.cpp:205 src/gui/inventorywindow.cpp:673
-#: src/gui/popupmenu.cpp:1625 src/gui/popupmenu.cpp:1762
-#: src/gui/popupmenu.cpp:1818 src/gui/setup.cpp:74
+#: src/gui/popupmenu.cpp:1643 src/gui/popupmenu.cpp:1782
+#: src/gui/popupmenu.cpp:1838 src/gui/setup.cpp:74
 msgid "Store"
 msgstr "保管"
 
-#: src/gui/inventorywindow.cpp:206 src/gui/popupmenu.cpp:1666
+#: src/gui/inventorywindow.cpp:206 src/gui/popupmenu.cpp:1685
 msgid "Retrieve"
 msgstr "取出す"
 
-#: src/gui/inventorywindow.cpp:684 src/gui/popupmenu.cpp:1655
-#: src/gui/popupmenu.cpp:1755 src/gui/popupmenu.cpp:1811
+#: src/gui/inventorywindow.cpp:684 src/gui/popupmenu.cpp:1674
+#: src/gui/popupmenu.cpp:1775 src/gui/popupmenu.cpp:1831
 #: src/gui/windowmenu.cpp:104
 msgid "Drop"
 msgstr "落とす"
@@ -1316,24 +1307,24 @@ msgstr "情勢"
 msgid "Need"
 msgstr "必要"
 
-#: src/gui/npcdialog.cpp:52
+#: src/gui/npcdialog.cpp:54
 msgid "Stop waiting"
 msgstr "キャンセル"
 
-#: src/gui/npcdialog.cpp:53
+#: src/gui/npcdialog.cpp:55
 msgid "Next"
 msgstr "次"
 
-#: src/gui/npcdialog.cpp:55
+#: src/gui/npcdialog.cpp:57
 msgid "Submit"
 msgstr "決定"
 
-#: src/gui/npcdialog.cpp:60 src/gui/npcpostdialog.cpp:42
+#: src/gui/npcdialog.cpp:62 src/gui/npcpostdialog.cpp:42
 #: src/gui/setup_other.cpp:156
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:116 src/gui/popupmenu.cpp:503
+#: src/gui/npcdialog.cpp:120 src/gui/popupmenu.cpp:503
 msgid "Clear"
 msgstr "クリア"
 
@@ -1405,7 +1396,7 @@ msgid "Nuke"
 msgstr "消す"
 
 #: src/gui/popupmenu.cpp:213 src/gui/popupmenu.cpp:317
-#: src/gui/popupmenu.cpp:2139
+#: src/gui/popupmenu.cpp:2159
 msgid "Add comment"
 msgstr "コメントをする"
 
@@ -1425,7 +1416,7 @@ msgstr "攻撃優先リストへ追加する"
 msgid "Add to attack list"
 msgstr "攻撃リストへ追加する"
 
-#: src/gui/popupmenu.cpp:244 src/gui/popupmenu.cpp:2154
+#: src/gui/popupmenu.cpp:244 src/gui/popupmenu.cpp:2174
 msgid "Add to ignore list"
 msgstr "攻撃無視リストへ追加する"
 
@@ -1438,7 +1429,7 @@ msgid "Players"
 msgstr "プレイヤー"
 
 #: src/gui/popupmenu.cpp:327 src/gui/popupmenu.cpp:570
-#: src/gui/popupmenu.cpp:2129
+#: src/gui/popupmenu.cpp:2149
 msgid "Kick from party"
 msgstr "パーティから一時的に追い出す"
 
@@ -1446,8 +1437,8 @@ msgstr "パーティから一時的に追い出す"
 msgid "Pick up"
 msgstr "拾う"
 
-#: src/gui/popupmenu.cpp:400 src/gui/popupmenu.cpp:1681
-#: src/gui/popupmenu.cpp:1763 src/gui/popupmenu.cpp:1819
+#: src/gui/popupmenu.cpp:400 src/gui/popupmenu.cpp:1701
+#: src/gui/popupmenu.cpp:1783 src/gui/popupmenu.cpp:1839
 msgid "Add to chat"
 msgstr "チャットに追加"
 
@@ -1459,8 +1450,8 @@ msgstr "マップアイテム"
 msgid "Rename"
 msgstr "名前を変更する"
 
-#: src/gui/popupmenu.cpp:421 src/gui/popupmenu.cpp:1958
-#: src/gui/popupmenu.cpp:1982
+#: src/gui/popupmenu.cpp:421 src/gui/popupmenu.cpp:1978
+#: src/gui/popupmenu.cpp:2002
 msgid "Remove"
 msgstr "削除"
 
@@ -1516,7 +1507,7 @@ msgstr "退会"
 msgid "Copy to clipboard"
 msgstr "クリップボードにコピー"
 
-#: src/gui/popupmenu.cpp:565 src/gui/popupmenu.cpp:2127
+#: src/gui/popupmenu.cpp:565 src/gui/popupmenu.cpp:2147
 msgid "Invite to party"
 msgstr "パーティへ招待"
 
@@ -1525,170 +1516,185 @@ msgid "Change guild position"
 msgstr "ギルドポジションを変更"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1130
+#: src/gui/popupmenu.cpp:1147
 msgid "Rename map sign          "
 msgstr "          マップサインの名前を変更"
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1132
+#: src/gui/popupmenu.cpp:1149
 msgid "Name:                    "
 msgstr "名前:                    "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1154
+#: src/gui/popupmenu.cpp:1171
 msgid "Player comment            "
 msgstr "プレイヤーコメント            "
 
 #. TRANSLATORS: number of chars in string should be near original
-#: src/gui/popupmenu.cpp:1156
+#: src/gui/popupmenu.cpp:1173
 msgid "Comment:                      "
 msgstr "コメント:                      "
 
-#: src/gui/popupmenu.cpp:1613
+#: src/gui/popupmenu.cpp:1630
 msgid "Add to trade"
 msgstr "トレードウィンドウに追加"
 
-#: src/gui/popupmenu.cpp:1617
+#: src/gui/popupmenu.cpp:1634
 msgid "Add to trade 10"
 msgstr "トレードウィンドウに10追加する"
 
-#: src/gui/popupmenu.cpp:1618
+#: src/gui/popupmenu.cpp:1635
 msgid "Add to trade half"
 msgstr "トレードウィンドウに半分追加する"
 
-#: src/gui/popupmenu.cpp:1619
+#: src/gui/popupmenu.cpp:1636
+#, fuzzy
+msgid "Add to trade all-1"
+msgstr "トレードウィンドウに全て追加する"
+
+#: src/gui/popupmenu.cpp:1637
 msgid "Add to trade all"
 msgstr "トレードウィンドウに全て追加する"
 
-#: src/gui/popupmenu.cpp:1629
+#: src/gui/popupmenu.cpp:1647
 msgid "Store 10"
 msgstr "10 保存"
 
-#: src/gui/popupmenu.cpp:1630
+#: src/gui/popupmenu.cpp:1648
 msgid "Store half"
 msgstr "半分保存"
 
-#: src/gui/popupmenu.cpp:1631
+#: src/gui/popupmenu.cpp:1649
+#, fuzzy
+msgid "Store all-1"
+msgstr "全部保存"
+
+#: src/gui/popupmenu.cpp:1650
 msgid "Store all"
 msgstr "全部保存"
 
-#: src/gui/popupmenu.cpp:1651 src/gui/popupmenu.cpp:1751
-#: src/gui/popupmenu.cpp:1807
+#: src/gui/popupmenu.cpp:1670 src/gui/popupmenu.cpp:1771
+#: src/gui/popupmenu.cpp:1827
 msgid "Drop all"
 msgstr "全て落とす"
 
-#: src/gui/popupmenu.cpp:1670
+#: src/gui/popupmenu.cpp:1689
 msgid "Retrieve 10"
 msgstr "10 取出す"
 
-#: src/gui/popupmenu.cpp:1671
+#: src/gui/popupmenu.cpp:1690
 msgid "Retrieve half"
 msgstr "半分取出す"
 
-#: src/gui/popupmenu.cpp:1672
+#: src/gui/popupmenu.cpp:1691
+#, fuzzy
+msgid "Retrieve all-1"
+msgstr "全部取出す"
+
+#: src/gui/popupmenu.cpp:1692
 msgid "Retrieve all"
 msgstr "全部取出す"
 
-#: src/gui/popupmenu.cpp:1828
+#: src/gui/popupmenu.cpp:1848
 msgid "Clear drop window"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:1856 src/gui/popupmenu.cpp:1893
+#: src/gui/popupmenu.cpp:1876 src/gui/popupmenu.cpp:1913
 msgid "Hide"
 msgstr " 非表示"
 
-#: src/gui/popupmenu.cpp:1862 src/gui/popupmenu.cpp:1899
+#: src/gui/popupmenu.cpp:1882 src/gui/popupmenu.cpp:1919
 msgid "Show"
 msgstr "表示"
 
-#: src/gui/popupmenu.cpp:1905
+#: src/gui/popupmenu.cpp:1925
 msgid "Reset yellow bar"
 msgstr "黄色バーをリセットする"
 
-#: src/gui/popupmenu.cpp:1907 src/gui/statuswindow.cpp:248
+#: src/gui/popupmenu.cpp:1927 src/gui/statuswindow.cpp:248
 msgid "Copy to chat"
 msgstr "チャットへコピーする"
 
-#: src/gui/popupmenu.cpp:1927 src/gui/popupmenu.cpp:1978
-#: src/gui/setup_theme.cpp:62 src/gui/setup_theme.cpp:119
+#: src/gui/popupmenu.cpp:1947 src/gui/popupmenu.cpp:1998
+#: src/gui/setup_theme.cpp:62 src/gui/setup_theme.cpp:126
 #: src/gui/socialwindow.cpp:883
 msgid "(default)"
 msgstr "(デフォルト)"
 
-#: src/gui/popupmenu.cpp:1937 src/gui/popupmenu.cpp:1947
+#: src/gui/popupmenu.cpp:1957 src/gui/popupmenu.cpp:1967
 msgid "Move up"
 msgstr "上へ移動"
 
-#: src/gui/popupmenu.cpp:1939 src/gui/popupmenu.cpp:1949
+#: src/gui/popupmenu.cpp:1959 src/gui/popupmenu.cpp:1969
 msgid "Move down"
 msgstr "下へ移動"
 
-#: src/gui/popupmenu.cpp:2003 src/gui/popupmenu.cpp:2138
+#: src/gui/popupmenu.cpp:2023 src/gui/popupmenu.cpp:2158
 msgid "Undress"
 msgstr "脱ぐ"
 
-#: src/gui/popupmenu.cpp:2029
+#: src/gui/popupmenu.cpp:2049
 msgid "Be friend"
 msgstr "友達になる"
 
-#: src/gui/popupmenu.cpp:2030 src/gui/popupmenu.cpp:2038
-#: src/gui/popupmenu.cpp:2047 src/gui/popupmenu.cpp:2066
-#: src/gui/popupmenu.cpp:2074
+#: src/gui/popupmenu.cpp:2050 src/gui/popupmenu.cpp:2058
+#: src/gui/popupmenu.cpp:2067 src/gui/popupmenu.cpp:2086
+#: src/gui/popupmenu.cpp:2094
 msgid "Disregard"
 msgstr "無視する"
 
-#: src/gui/popupmenu.cpp:2032 src/gui/popupmenu.cpp:2040
-#: src/gui/popupmenu.cpp:2068
+#: src/gui/popupmenu.cpp:2052 src/gui/popupmenu.cpp:2060
+#: src/gui/popupmenu.cpp:2088
 msgid "Black list"
 msgstr "ブラックリスト"
 
-#: src/gui/popupmenu.cpp:2033 src/gui/popupmenu.cpp:2041
-#: src/gui/popupmenu.cpp:2049
+#: src/gui/popupmenu.cpp:2053 src/gui/popupmenu.cpp:2061
+#: src/gui/popupmenu.cpp:2069
 msgid "Set as enemy"
 msgstr "敵に設定する"
 
-#: src/gui/popupmenu.cpp:2034 src/gui/popupmenu.cpp:2042
-#: src/gui/popupmenu.cpp:2050 src/gui/popupmenu.cpp:2056
-#: src/gui/popupmenu.cpp:2061 src/gui/popupmenu.cpp:2069
+#: src/gui/popupmenu.cpp:2054 src/gui/popupmenu.cpp:2062
+#: src/gui/popupmenu.cpp:2070 src/gui/popupmenu.cpp:2076
+#: src/gui/popupmenu.cpp:2081 src/gui/popupmenu.cpp:2089
 msgid "Erase"
 msgstr "消す"
 
-#: src/gui/popupmenu.cpp:2046 src/gui/popupmenu.cpp:2054
-#: src/gui/popupmenu.cpp:2060 src/gui/popupmenu.cpp:2065
-#: src/gui/popupmenu.cpp:2073
+#: src/gui/popupmenu.cpp:2066 src/gui/popupmenu.cpp:2074
+#: src/gui/popupmenu.cpp:2080 src/gui/popupmenu.cpp:2085
+#: src/gui/popupmenu.cpp:2093
 msgid "Unignore"
 msgstr "完全無視解除"
 
-#: src/gui/popupmenu.cpp:2055 src/gui/popupmenu.cpp:2075
+#: src/gui/popupmenu.cpp:2075 src/gui/popupmenu.cpp:2095
 #: src/playerrelations.cpp:468
 msgid "Completely ignore"
 msgstr "完全無視"
 
-#: src/gui/popupmenu.cpp:2085
+#: src/gui/popupmenu.cpp:2105
 msgid "Follow"
 msgstr "フォロー"
 
-#: src/gui/popupmenu.cpp:2086
+#: src/gui/popupmenu.cpp:2106
 msgid "Imitation"
 msgstr "真似"
 
-#: src/gui/popupmenu.cpp:2104 src/gui/popupmenu.cpp:2115
+#: src/gui/popupmenu.cpp:2124 src/gui/popupmenu.cpp:2135
 msgid "Buy (?)"
 msgstr "買う (?)"
 
-#: src/gui/popupmenu.cpp:2105 src/gui/popupmenu.cpp:2116
+#: src/gui/popupmenu.cpp:2125 src/gui/popupmenu.cpp:2136
 msgid "Sell (?)"
 msgstr "売る (?)"
 
-#: src/gui/popupmenu.cpp:2137
+#: src/gui/popupmenu.cpp:2157
 msgid "Show Items"
 msgstr "アイテムを表示する"
 
-#: src/gui/popupmenu.cpp:2148
+#: src/gui/popupmenu.cpp:2168
 msgid "Remove from pickup list"
 msgstr ""
 
-#: src/gui/popupmenu.cpp:2152
+#: src/gui/popupmenu.cpp:2172
 msgid "Add to pickup list"
 msgstr ""
 
@@ -1732,58 +1738,58 @@ msgstr "パスワードは%d文字以下でなくてはいけません"
 msgid "Passwords do not match."
 msgstr "パスワードが一致しません"
 
-#: src/gui/serverdialog.cpp:231
+#: src/gui/serverdialog.cpp:244
 msgid "Choose Your Server"
 msgstr "サーバーを選択してください"
 
-#: src/gui/serverdialog.cpp:242
+#: src/gui/serverdialog.cpp:255
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "サーバーを選んで下さい  *** セーフモード ***"
 
-#: src/gui/serverdialog.cpp:246
+#: src/gui/serverdialog.cpp:259
 msgid "Use same ip for game sub servers"
 msgstr "同じIPをゲームサブサーバーでも使用する"
 
-#: src/gui/serverdialog.cpp:265
+#: src/gui/serverdialog.cpp:278
 msgid "Load"
 msgstr "読込み"
 
-#: src/gui/serverdialog.cpp:266
+#: src/gui/serverdialog.cpp:279
 msgid "Connect"
 msgstr "接続"
 
-#: src/gui/serverdialog.cpp:267 src/gui/shopwindow.cpp:122
+#: src/gui/serverdialog.cpp:280 src/gui/shopwindow.cpp:122
 #: src/gui/shopwindow.cpp:125 src/gui/tradewindow.cpp:90
 msgid "Add"
 msgstr "追加"
 
-#: src/gui/serverdialog.cpp:268 src/gui/widgets/setupitem.cpp:286
+#: src/gui/serverdialog.cpp:281 src/gui/widgets/setupitem.cpp:286
 #: src/gui/widgets/setupitem.cpp:410
 msgid "Edit"
 msgstr "編集"
 
-#: src/gui/serverdialog.cpp:485
+#: src/gui/serverdialog.cpp:498
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "サーバーリストをダウンロード中...%2.2f%%"
 
-#: src/gui/serverdialog.cpp:490
+#: src/gui/serverdialog.cpp:503
 msgid "Waiting for server..."
 msgstr "サーバーからの応答を待っています"
 
-#: src/gui/serverdialog.cpp:494
+#: src/gui/serverdialog.cpp:507
 msgid "Preparing download"
 msgstr "ダウンロード準備中..."
 
-#: src/gui/serverdialog.cpp:498
+#: src/gui/serverdialog.cpp:511
 msgid "Error retreiving server list!"
 msgstr "サーバーリストの読み込みに失敗"
 
-#: src/gui/serverdialog.cpp:586
+#: src/gui/serverdialog.cpp:599
 msgid "requires a newer version"
 msgstr "アップデートが必要です"
 
-#: src/gui/serverdialog.cpp:588
+#: src/gui/serverdialog.cpp:601
 #, c-format
 msgid "requires v%s"
 msgstr "v%sが必要"
@@ -2617,11 +2623,11 @@ msgstr ""
 msgid "Default"
 msgstr "標準に戻す"
 
-#: src/gui/setup_input.cpp:193
+#: src/gui/setup_input.cpp:195
 msgid "Key Conflict(s) Detected."
 msgstr "ショートカットキーが重複しています"
 
-#: src/gui/setup_input.cpp:194
+#: src/gui/setup_input.cpp:196
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -2630,7 +2636,7 @@ msgstr ""
 "\"%s\"と\"%s\"キーが重複しています。 ゲームプレイに悪い影響が出るかもしれませ"
 "ん"
 
-#: src/gui/setup_input.cpp:351
+#: src/gui/setup_input.cpp:353
 msgid "unknown"
 msgstr ""
 
@@ -3085,131 +3091,162 @@ msgstr "関係"
 msgid "When ignoring:"
 msgstr "完全無視の際には:"
 
-#: src/gui/setup_theme.cpp:82
+#: src/gui/setup_theme.cpp:84
+msgid "Very small (9)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:85
 msgid "Tiny (10)"
 msgstr "小さい (10)"
 
-#: src/gui/setup_theme.cpp:83
+#: src/gui/setup_theme.cpp:86
 msgid "Small (11)"
 msgstr "小 (11)"
 
-#: src/gui/setup_theme.cpp:84
+#: src/gui/setup_theme.cpp:87
 msgid "Medium (12)"
 msgstr "中 (12)"
 
-#: src/gui/setup_theme.cpp:85
-msgid "Large (13)"
+#: src/gui/setup_theme.cpp:88
+#, fuzzy
+msgid "Normal (13)"
+msgstr "普通"
+
+#: src/gui/setup_theme.cpp:89
+#, fuzzy
+msgid "Large (14)"
 msgstr "大1 (13)"
 
-#: src/gui/setup_theme.cpp:86
-msgid "Big (14)"
+#: src/gui/setup_theme.cpp:90
+#, fuzzy
+msgid "Very large (15)"
+msgstr "大1 (13)"
+
+#: src/gui/setup_theme.cpp:91
+#, fuzzy
+msgid "Big (16)"
 msgstr "大2 (14)"
 
-#: src/gui/setup_theme.cpp:87
-msgid "Huge (15)"
+#: src/gui/setup_theme.cpp:92
+msgid "Very big (17)"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:93
+#, fuzzy
+msgid "Huge (18)"
 msgstr "最大 (15)"
 
-#: src/gui/setup_theme.cpp:120
+#: src/gui/setup_theme.cpp:94
+#, fuzzy
+msgid "Very huge (19)"
+msgstr "最大 (15)"
+
+#: src/gui/setup_theme.cpp:127
 msgid "Chinese (China)"
 msgstr "中国語 (中国)"
 
-#: src/gui/setup_theme.cpp:121
+#: src/gui/setup_theme.cpp:128
 msgid "Czech"
 msgstr "チェコ語"
 
-#: src/gui/setup_theme.cpp:122
+#: src/gui/setup_theme.cpp:129
 msgid "English"
 msgstr "英語"
 
-#: src/gui/setup_theme.cpp:123
+#: src/gui/setup_theme.cpp:130
 msgid "Finnish"
 msgstr "フィンランド語"
 
-#: src/gui/setup_theme.cpp:124
+#: src/gui/setup_theme.cpp:131
 msgid "French"
 msgstr "フランス語"
 
-#: src/gui/setup_theme.cpp:125
+#: src/gui/setup_theme.cpp:132
 msgid "German"
 msgstr "ドイツ語"
 
-#: src/gui/setup_theme.cpp:126
+#: src/gui/setup_theme.cpp:133
 msgid "Indonesian"
 msgstr "インドネシア語"
 
-#: src/gui/setup_theme.cpp:127
+#: src/gui/setup_theme.cpp:134
 msgid "Polish"
 msgstr "ポーランド語"
 
-#: src/gui/setup_theme.cpp:128
+#: src/gui/setup_theme.cpp:135
 msgid "Japanese"
 msgstr "日本語"
 
-#: src/gui/setup_theme.cpp:129
+#: src/gui/setup_theme.cpp:136
 msgid "Dutch (Belgium/Flemish)"
 msgstr "ドイツ語 (ベルギー/フランドル)"
 
-#: src/gui/setup_theme.cpp:130
+#: src/gui/setup_theme.cpp:137
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: src/gui/setup_theme.cpp:131
+#: src/gui/setup_theme.cpp:138
 msgid "Portuguese (Brazilian)"
 msgstr "ポルトガル語 (ブラジル)"
 
-#: src/gui/setup_theme.cpp:132
+#: src/gui/setup_theme.cpp:139
 msgid "Russian"
 msgstr "ロシア語"
 
-#: src/gui/setup_theme.cpp:133
+#: src/gui/setup_theme.cpp:140
 msgid "Spanish (Castilian)"
 msgstr "スペイン語 (カスティリヤ)"
 
-#: src/gui/setup_theme.cpp:165
+#: src/gui/setup_theme.cpp:173
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/gui/setup_theme.cpp:167
+#: src/gui/setup_theme.cpp:175
 msgid "Gui theme"
 msgstr "GUIテーマ"
 
-#: src/gui/setup_theme.cpp:168
+#: src/gui/setup_theme.cpp:176
 msgid "Language"
 msgstr "言語"
 
-#: src/gui/setup_theme.cpp:169
+#: src/gui/setup_theme.cpp:177
 msgid "Main Font"
 msgstr "メインフォント"
 
-#: src/gui/setup_theme.cpp:170
+#: src/gui/setup_theme.cpp:178
 msgid "Bold font"
 msgstr "太字フォント"
 
-#: src/gui/setup_theme.cpp:171
+#: src/gui/setup_theme.cpp:179
 msgid "Particle font"
 msgstr "パーティクルフォント"
 
-#: src/gui/setup_theme.cpp:172
+#: src/gui/setup_theme.cpp:180
 msgid "Help font"
 msgstr "ヘルプフォント"
 
-#: src/gui/setup_theme.cpp:173
+#: src/gui/setup_theme.cpp:181
 msgid "Secure font"
 msgstr "安全なフォント"
 
-#: src/gui/setup_theme.cpp:174
+#: src/gui/setup_theme.cpp:182
 msgid "Japanese font"
 msgstr "日本語フォント"
 
-#: src/gui/setup_theme.cpp:211
+#: src/gui/setup_theme.cpp:219
 msgid "Font size"
 msgstr "フォントサイズ"
 
-#: src/gui/setup_theme.cpp:352
+#: src/gui/setup_theme.cpp:225
+#, fuzzy
+msgid "Npc font size"
+msgstr "フォントサイズ"
+
+#: src/gui/setup_theme.cpp:371
 msgid "Theme Changed"
 msgstr "テーマを変更しました"
 
-#: src/gui/setup_theme.cpp:352 src/gui/setup_video.cpp:496
+#: src/gui/setup_theme.cpp:371 src/gui/setup_video.cpp:496
 #: src/gui/setup_video.cpp:503
 msgid "Restart your client for the change to take effect."
 msgstr "設定変更の為アプリケーションを再起動してください"
@@ -3444,7 +3481,6 @@ msgid "Auction"
 msgstr "オークション"
 
 #: src/gui/shopwindow.cpp:761 src/net/ea/tradehandler.cpp:104
-#: src/net/manaserv/tradehandler.cpp:127
 msgid "Request for Trade"
 msgstr "トレードをリクエスト"
 
@@ -4368,7 +4404,7 @@ msgstr "ログインの変更"
 msgid "Choose World"
 msgstr "世界の選択"
 
-#: src/inputmanager.cpp:307 src/inputmanager.cpp:345 src/keyboardconfig.cpp:82
+#: src/inputmanager.cpp:307 src/inputmanager.cpp:345 src/keyboardconfig.cpp:88
 #, c-format
 msgid "key_%d"
 msgstr "キー_%d"
@@ -4390,7 +4426,7 @@ msgid "JB%d"
 msgstr ""
 
 #. TRANSLATORS: Unknown key short string. This string must be maximum 5 chars
-#: src/inputmanager.cpp:363 src/keyboardconfig.cpp:94
+#: src/inputmanager.cpp:363 src/keyboardconfig.cpp:100
 msgid "u key"
 msgstr "u キー"
 
@@ -4736,7 +4772,7 @@ msgstr "真似: "
 msgid "Imitation canceled"
 msgstr "真似をやめる"
 
-#: src/localplayer.cpp:4158
+#: src/localplayer.cpp:4160
 msgid "You see "
 msgstr " が見える"
 
@@ -4913,7 +4949,7 @@ msgstr "間違ったスロット"
 msgid "Incorrect race."
 msgstr "種別が間違っています"
 
-#: src/net/ea/charserverhandler.cpp:182 src/net/manaserv/charhandler.cpp:212
+#: src/net/ea/charserverhandler.cpp:182
 msgid "Info"
 msgstr "情報"
 
@@ -4979,7 +5015,7 @@ msgstr "ゲーム"
 msgid "Request to quit denied!"
 msgstr "今キャンセルできません"
 
-#: src/net/ea/guildhandler.cpp:83 src/net/manaserv/guildhandler.cpp:85
+#: src/net/ea/guildhandler.cpp:83
 msgid "Guild created."
 msgstr "ギルド作成成功"
 
@@ -5194,7 +5230,7 @@ msgstr "装着不可能"
 msgid "Account was not found. Please re-login."
 msgstr "アカウントが見つかりませんでした。再度ログインして下さい"
 
-#: src/net/ea/loginhandler.cpp:149 src/net/manaserv/loginhandler.cpp:128
+#: src/net/ea/loginhandler.cpp:149
 msgid "Old password incorrect."
 msgstr "変更前のパスワードが間違っています"
 
@@ -5203,9 +5239,6 @@ msgid "New password too short."
 msgstr "新しいパスワードは文字数が足りません"
 
 #: src/net/ea/loginhandler.cpp:155 src/net/ea/loginhandler.cpp:267
-#: src/net/manaserv/charhandler.cpp:183 src/net/manaserv/loginhandler.cpp:103
-#: src/net/manaserv/loginhandler.cpp:135 src/net/manaserv/loginhandler.cpp:171
-#: src/net/manaserv/loginhandler.cpp:292 src/net/manaserv/loginhandler.cpp:329
 msgid "Unknown error."
 msgstr "不明なエラー"
 
@@ -5307,23 +5340,23 @@ msgstr "%sがパーティから退会しました"
 msgid "An unknown member tried to say: %s"
 msgstr "不明なメンバーからの応答: %s"
 
-#: src/net/ea/playerhandler.cpp:98 src/net/manaserv/beinghandler.cpp:319
+#: src/net/ea/playerhandler.cpp:98
 msgid "You are dead."
 msgstr "あなたは死にました"
 
-#: src/net/ea/playerhandler.cpp:99 src/net/manaserv/beinghandler.cpp:320
+#: src/net/ea/playerhandler.cpp:99
 msgid "We regret to inform you that your character was killed in battle."
 msgstr "残念なお知らせですが、あなた様のキャラは戦闘中にお亡くなりになりました"
 
-#: src/net/ea/playerhandler.cpp:101 src/net/manaserv/beinghandler.cpp:322
+#: src/net/ea/playerhandler.cpp:101
 msgid "You are not that alive anymore."
 msgstr "既に死んでいる模様です"
 
-#: src/net/ea/playerhandler.cpp:102 src/net/manaserv/beinghandler.cpp:323
+#: src/net/ea/playerhandler.cpp:102
 msgid "The cold hands of the grim reaper are grabbing for your soul."
 msgstr "死神の冷たい手に魂が取られてしまった"
 
-#: src/net/ea/playerhandler.cpp:103 src/net/manaserv/beinghandler.cpp:324
+#: src/net/ea/playerhandler.cpp:103
 msgid "Game Over!"
 msgstr "ゲームオーバー"
 
@@ -5331,40 +5364,40 @@ msgstr "ゲームオーバー"
 msgid "Insert coin to continue."
 msgstr "ゲームを続けるためにはコインを入れてください"
 
-#: src/net/ea/playerhandler.cpp:105 src/net/manaserv/beinghandler.cpp:325
+#: src/net/ea/playerhandler.cpp:105
 msgid ""
 "No, kids. Your character did not really die. It... err... went to a better "
 "place."
 msgstr ""
 "あなたのキャラは本当は死んではいません。もっと素敵なところに向かっただけ"
 
-#: src/net/ea/playerhandler.cpp:107 src/net/manaserv/beinghandler.cpp:327
+#: src/net/ea/playerhandler.cpp:107
 msgid ""
 "Your plan of breaking your enemies weapon by bashing it with your throat "
 "failed."
 msgstr "敵の武器を潰す予定だったが…失敗した"
 
-#: src/net/ea/playerhandler.cpp:109 src/net/manaserv/beinghandler.cpp:329
+#: src/net/ea/playerhandler.cpp:109
 msgid "I guess this did not run too well."
 msgstr "あんまり上手くいかなかったぜー"
 
-#: src/net/ea/playerhandler.cpp:111 src/net/manaserv/beinghandler.cpp:330
+#: src/net/ea/playerhandler.cpp:111
 msgid "Do you want your possessions identified?"
 msgstr "遺体の持ち物を確定して欲しい？"
 
-#: src/net/ea/playerhandler.cpp:113 src/net/manaserv/beinghandler.cpp:331
+#: src/net/ea/playerhandler.cpp:113
 msgid "Sadly, no trace of you was ever found..."
 msgstr "悲しいですがあなたの跡形さえも残っていません"
 
-#: src/net/ea/playerhandler.cpp:115 src/net/manaserv/beinghandler.cpp:333
+#: src/net/ea/playerhandler.cpp:115
 msgid "Annihilated."
 msgstr "全滅しちゃった"
 
-#: src/net/ea/playerhandler.cpp:117 src/net/manaserv/beinghandler.cpp:334
+#: src/net/ea/playerhandler.cpp:117
 msgid "Looks like you got your head handed to you."
 msgstr "敵から「忘れ物」って自分の頭を渡されました"
 
-#: src/net/ea/playerhandler.cpp:119 src/net/manaserv/beinghandler.cpp:336
+#: src/net/ea/playerhandler.cpp:119
 msgid ""
 "You screwed up again, dump your body down the tubes and get you another one."
 msgstr "またやっちゃったね。死体をドブに捨てたら新しいのもらえるかも"
@@ -5535,7 +5568,177 @@ msgstr "何も盗めませんでした"
 msgid "Poison had no effect..."
 msgstr "毒の影響はなかった"
 
-#: src/net/ea/tradehandler.cpp:105 src/net/manaserv/tradehandler.cpp:128
+#: src/net/eathena/adminhandler.cpp:70 src/net/tmwa/adminhandler.cpp:70
+msgid "Kick failed!"
+msgstr "追い出し失敗"
+
+#: src/net/eathena/adminhandler.cpp:72 src/net/tmwa/adminhandler.cpp:72
+msgid "Kick succeeded!"
+msgstr "追い出し成功"
+
+#: src/net/eathena/buysellhandler.cpp:129 src/net/tmwa/buysellhandler.cpp:133
+msgid "Thanks for selling."
+msgstr "ありがとうございました"
+
+#: src/net/eathena/buysellhandler.cpp:133 src/net/tmwa/buysellhandler.cpp:137
+msgid "Unable to sell."
+msgstr "販売できません"
+
+#: src/net/eathena/buysellhandler.cpp:136 src/net/tmwa/buysellhandler.cpp:140
+msgid "Unable to sell while trading."
+msgstr "トレード中は売買できません"
+
+#: src/net/eathena/buysellhandler.cpp:139 src/net/tmwa/buysellhandler.cpp:143
+msgid "Unable to sell unsellable item."
+msgstr "トレード中は売買できません"
+
+#: src/net/eathena/generalhandler.cpp:108 src/net/tmwa/generalhandler.cpp:108
+#, c-format
+msgid "Strength %+d"
+msgstr "攻撃力 %+d"
+
+#: src/net/eathena/generalhandler.cpp:109 src/net/tmwa/generalhandler.cpp:109
+#, c-format
+msgid "Agility %+d"
+msgstr "機敏さ %+d"
+
+#: src/net/eathena/generalhandler.cpp:110 src/net/tmwa/generalhandler.cpp:110
+#, c-format
+msgid "Vitality %+d"
+msgstr "防御力 %+d"
+
+#: src/net/eathena/generalhandler.cpp:111 src/net/tmwa/generalhandler.cpp:111
+#, c-format
+msgid "Intelligence %+d"
+msgstr "魔力 %+d"
+
+#: src/net/eathena/generalhandler.cpp:112 src/net/tmwa/generalhandler.cpp:112
+#, c-format
+msgid "Dexterity %+d"
+msgstr "命中率 %+d"
+
+#: src/net/eathena/generalhandler.cpp:113 src/net/tmwa/generalhandler.cpp:113
+#, c-format
+msgid "Luck %+d"
+msgstr "幸運 %+d"
+
+#: src/net/eathena/generalhandler.cpp:139 src/net/tmwa/generalhandler.cpp:139
+msgid "Authentication failed."
+msgstr "認証に失敗しました"
+
+#: src/net/eathena/generalhandler.cpp:142 src/net/tmwa/generalhandler.cpp:142
+msgid "No servers available."
+msgstr "利用できるサーバーがありません"
+
+#: src/net/eathena/generalhandler.cpp:147 src/net/tmwa/generalhandler.cpp:147
+msgid "Someone else is trying to use this account."
+msgstr "他からのログインがありました"
+
+#: src/net/eathena/generalhandler.cpp:152 src/net/tmwa/generalhandler.cpp:152
+msgid "This account is already logged in."
+msgstr "このアカウントは既にログイン中です"
+
+#: src/net/eathena/generalhandler.cpp:156 src/net/tmwa/generalhandler.cpp:156
+msgid "Speed hack detected."
+msgstr "スピードハックが探知されました"
+
+#: src/net/eathena/generalhandler.cpp:159 src/net/tmwa/generalhandler.cpp:159
+msgid "Duplicated login."
+msgstr "重複ログイン"
+
+#: src/net/eathena/generalhandler.cpp:162 src/net/tmwa/generalhandler.cpp:162
+msgid "Unknown connection error."
+msgstr "不明な接続エラーです"
+
+#: src/net/eathena/generalhandler.cpp:234 src/net/tmwa/generalhandler.cpp:234
+msgid "Got disconnected from server!"
+msgstr "サーバーから切断されました"
+
+#: src/net/eathena/generalhandler.cpp:264 src/net/tmwa/generalhandler.cpp:264
+msgid "Strength"
+msgstr "攻撃力"
+
+#: src/net/eathena/generalhandler.cpp:265 src/net/tmwa/generalhandler.cpp:265
+msgid "Agility"
+msgstr "機敏さ"
+
+#: src/net/eathena/generalhandler.cpp:266 src/net/tmwa/generalhandler.cpp:266
+msgid "Vitality"
+msgstr "防御力"
+
+#: src/net/eathena/generalhandler.cpp:267 src/net/tmwa/generalhandler.cpp:267
+msgid "Intelligence"
+msgstr "魔力"
+
+#: src/net/eathena/generalhandler.cpp:268 src/net/tmwa/generalhandler.cpp:268
+msgid "Dexterity"
+msgstr "命中率"
+
+#: src/net/eathena/generalhandler.cpp:269 src/net/tmwa/generalhandler.cpp:269
+msgid "Luck"
+msgstr "幸運"
+
+#: src/net/eathena/generalhandler.cpp:272 src/net/tmwa/generalhandler.cpp:272
+msgid "Defense"
+msgstr "Defense"
+
+#: src/net/eathena/generalhandler.cpp:273 src/net/tmwa/generalhandler.cpp:273
+msgid "M.Attack"
+msgstr "M.Attack"
+
+#: src/net/eathena/generalhandler.cpp:274 src/net/tmwa/generalhandler.cpp:274
+msgid "M.Defense"
+msgstr "M.Defense"
+
+#: src/net/eathena/generalhandler.cpp:276 src/net/tmwa/generalhandler.cpp:276
+#, no-c-format
+msgid "% Accuracy"
+msgstr "% Accuracy"
+
+#: src/net/eathena/generalhandler.cpp:278 src/net/tmwa/generalhandler.cpp:278
+#, no-c-format
+msgid "% Evade"
+msgstr "% Evade"
+
+#: src/net/eathena/generalhandler.cpp:280 src/net/tmwa/generalhandler.cpp:280
+#, no-c-format
+msgid "% Critical"
+msgstr "% Critical"
+
+#: src/net/eathena/generalhandler.cpp:281 src/net/tmwa/generalhandler.cpp:281
+msgid "Attack Delay"
+msgstr "攻撃遅延"
+
+#: src/net/eathena/generalhandler.cpp:283 src/net/tmwa/generalhandler.cpp:283
+msgid "Walk Delay"
+msgstr " 徒歩遅延"
+
+#: src/net/eathena/generalhandler.cpp:285 src/net/tmwa/generalhandler.cpp:285
+msgid "Attack Range"
+msgstr "攻撃距離"
+
+#: src/net/eathena/generalhandler.cpp:287 src/net/tmwa/generalhandler.cpp:287
+msgid "Damage per sec."
+msgstr "ダメージ/秒"
+
+#: src/net/eathena/network.cpp:175 src/net/tmwa/network.cpp:153
+msgid "Empty address given to Network::connect()!"
+msgstr "ネットワークに空のアドレスが送信されました::connect()!"
+
+#: src/net/eathena/network.cpp:387 src/net/tmwa/network.cpp:365
+msgid "Unable to resolve host \""
+msgstr "ホスト名を解決できません"
+
+#: src/net/eathena/network.cpp:457 src/net/tmwa/network.cpp:435
+msgid "Connection to server terminated. "
+msgstr "サーバーへの接続が切断されました "
+
+#: src/net/eathena/partyhandler.cpp:172 src/net/tmwa/partyhandler.cpp:172
+#, c-format
+msgid "%s is not in your party!"
+msgstr "%sはパーティのメンバーではありません"
+
+#: src/net/ea/tradehandler.cpp:105
 #, c-format
 msgid "%s wants to trade with you, do you accept?"
 msgstr "%sはあなたにトレードを申請しています"
@@ -5582,445 +5785,13 @@ msgstr "アイテム追加失敗。このアイテムはトレードできませ
 msgid "Failed adding item for unknown reason."
 msgstr "不明な理由でアイテム追加失敗"
 
-#: src/net/ea/tradehandler.cpp:270 src/net/manaserv/tradehandler.cpp:160
+#: src/net/ea/tradehandler.cpp:270
 msgid "Trade canceled."
 msgstr "トレード中止"
 
-#: src/net/ea/tradehandler.cpp:281 src/net/manaserv/tradehandler.cpp:167
+#: src/net/ea/tradehandler.cpp:281
 msgid "Trade completed."
 msgstr "トレード完了"
-
-#: src/net/manaserv/attributes.cpp:160 src/net/tmwa/generalhandler.cpp:264
-msgid "Strength"
-msgstr "攻撃力"
-
-#: src/net/manaserv/attributes.cpp:167
-#, c-format
-msgid "Strength %+.1f"
-msgstr "攻撃力 %+.1f"
-
-#: src/net/manaserv/attributes.cpp:173 src/net/tmwa/generalhandler.cpp:265
-msgid "Agility"
-msgstr "機敏さ"
-
-#: src/net/manaserv/attributes.cpp:180
-#, c-format
-msgid "Agility %+.1f"
-msgstr "機敏さ %+.1f"
-
-#: src/net/manaserv/attributes.cpp:186 src/net/tmwa/generalhandler.cpp:268
-msgid "Dexterity"
-msgstr "命中率"
-
-#: src/net/manaserv/attributes.cpp:193
-#, c-format
-msgid "Dexterity %+.1f"
-msgstr "命中率 %+.1f"
-
-#: src/net/manaserv/attributes.cpp:199 src/net/tmwa/generalhandler.cpp:266
-msgid "Vitality"
-msgstr "防御力"
-
-#: src/net/manaserv/attributes.cpp:206
-#, c-format
-msgid "Vitality %+.1f"
-msgstr "防御力 %+.1f"
-
-#: src/net/manaserv/attributes.cpp:212 src/net/tmwa/generalhandler.cpp:267
-msgid "Intelligence"
-msgstr "魔力"
-
-#: src/net/manaserv/attributes.cpp:219
-#, c-format
-msgid "Intelligence %+.1f"
-msgstr "魔力 %+.1f"
-
-#: src/net/manaserv/attributes.cpp:225
-msgid "Willpower"
-msgstr "Willpower"
-
-#: src/net/manaserv/attributes.cpp:232
-#, c-format
-msgid "Willpower %+.1f"
-msgstr "Willpower %+.1f"
-
-#: src/net/manaserv/beinghandler.cpp:341
-msgid "Press OK to respawn."
-msgstr "蘇るにはOKを押して下さい"
-
-#: src/net/manaserv/beinghandler.cpp:342
-msgid "You Died"
-msgstr "死んでしまった"
-
-#: src/net/manaserv/charhandler.cpp:147 src/net/manaserv/charhandler.cpp:221
-msgid "Not logged in."
-msgstr "再度ログインして下さい"
-
-#: src/net/manaserv/charhandler.cpp:150
-msgid "No empty slot."
-msgstr "空スロットがありません"
-
-#: src/net/manaserv/charhandler.cpp:153
-msgid "Invalid name."
-msgstr "無効な名前"
-
-#: src/net/manaserv/charhandler.cpp:156
-msgid "Character's name already exists."
-msgstr "既に使用されているキャラクター名です"
-
-#: src/net/manaserv/charhandler.cpp:159
-msgid "Invalid hairstyle."
-msgstr "髪型がダサいので失格"
-
-#: src/net/manaserv/charhandler.cpp:162
-msgid "Invalid hair color."
-msgstr "無効の髪色"
-
-#: src/net/manaserv/charhandler.cpp:165
-msgid "Invalid gender."
-msgstr "キャラの性別間違ってるんじゃない？"
-
-#: src/net/manaserv/charhandler.cpp:168
-msgid "Character's stats are too high."
-msgstr "キャラクターのステータスが高すぎます"
-
-#: src/net/manaserv/charhandler.cpp:171
-msgid "Character's stats are too low."
-msgstr "キャラクターのステータスが低すぎます"
-
-#: src/net/manaserv/charhandler.cpp:174
-#, c-format
-msgid "At least one stat is out of the permitted range: (%u - %u)."
-msgstr "1つまたは複数のスタッツが最大を超えています: (%u - %u)."
-
-#: src/net/manaserv/charhandler.cpp:180
-msgid "Invalid slot number."
-msgstr "スロットナンバーが無効です"
-
-#: src/net/manaserv/charhandler.cpp:212
-msgid "Player deleted."
-msgstr "プレイヤーは削除されました"
-
-#: src/net/manaserv/charhandler.cpp:224
-msgid "Selection out of range."
-msgstr "ターゲットが遠すぎます"
-
-#: src/net/manaserv/charhandler.cpp:227
-#, c-format
-msgid "Unknown error (%d)."
-msgstr "不明エラー (%d)"
-
-#: src/net/manaserv/charhandler.cpp:263
-msgid "No gameservers are available."
-msgstr "利用できるゲームサーバーがありません"
-
-#: src/net/manaserv/chathandler.cpp:186 src/net/manaserv/chathandler.cpp:309
-#: src/net/manaserv/guildhandler.cpp:265
-#, c-format
-msgid "Topic: %s"
-msgstr "トピック: %s"
-
-#: src/net/manaserv/chathandler.cpp:191 src/net/manaserv/chathandler.cpp:269
-msgid "Players in this channel:"
-msgstr "このチャンネルにいるプレイヤー:"
-
-#: src/net/manaserv/chathandler.cpp:208
-msgid "Error joining channel."
-msgstr "チャンネルに参加できませんでした"
-
-#: src/net/manaserv/chathandler.cpp:214
-msgid "Listing channels."
-msgstr "チャンネルを表示しています"
-
-#: src/net/manaserv/chathandler.cpp:226
-msgid "End of channel list."
-msgstr "全てのチャンネルリスト"
-
-#: src/net/manaserv/chathandler.cpp:299
-#, c-format
-msgid "%s entered the channel."
-msgstr "%sがチャンネルに参加しました"
-
-#: src/net/manaserv/chathandler.cpp:304
-#, c-format
-msgid "%s left the channel."
-msgstr "%sがチャンネルから外出しました"
-
-#: src/net/manaserv/chathandler.cpp:320
-#, c-format
-msgid "%s has set mode %s on user %s."
-msgstr "%sが%sに%sしました"
-
-#: src/net/manaserv/chathandler.cpp:331
-#, c-format
-msgid "%s has kicked %s."
-msgstr "%sは%sを追い出しました"
-
-#: src/net/manaserv/chathandler.cpp:337
-msgid "Unknown channel event."
-msgstr "不明なチャンネルイベント"
-
-#: src/net/manaserv/guildhandler.cpp:90
-msgid "Error creating guild."
-msgstr "ギルド作成エラー"
-
-#: src/net/manaserv/guildhandler.cpp:100
-msgid "Invite sent."
-msgstr "招待送信成功"
-
-#: src/net/manaserv/guildhandler.cpp:207
-msgid "Member was promoted successfully."
-msgstr "本メンバーが無事に昇進されました"
-
-#: src/net/manaserv/guildhandler.cpp:212
-msgid "Failed to promote member."
-msgstr "メンバー昇進失敗"
-
-#: src/net/manaserv/loginhandler.cpp:94
-msgid "Wrong magic_token."
-msgstr "間違ったマジックトークンです"
-
-#: src/net/manaserv/loginhandler.cpp:97 src/net/manaserv/loginhandler.cpp:282
-msgid "Already logged in."
-msgstr "既にログインしています"
-
-#: src/net/manaserv/loginhandler.cpp:100
-msgid "Account banned."
-msgstr "アカウント停止されました"
-
-#: src/net/manaserv/loginhandler.cpp:125
-msgid "New password incorrect."
-msgstr "新しいパスワードが間違っています"
-
-#: src/net/manaserv/loginhandler.cpp:132 src/net/manaserv/loginhandler.cpp:164
-msgid "Account not connected. Please login first."
-msgstr "アカウントが接続されていません。最初にログインしてください"
-
-#: src/net/manaserv/loginhandler.cpp:157
-msgid "New email address incorrect."
-msgstr "新しいメールアドレスが間違っています"
-
-#: src/net/manaserv/loginhandler.cpp:160
-msgid "Old email address incorrect."
-msgstr "変更前のメールアドレスが間違っています"
-
-#: src/net/manaserv/loginhandler.cpp:168
-msgid "The new email address already exists."
-msgstr "新しいメールアドレスは既に使用されています"
-
-#: src/net/manaserv/loginhandler.cpp:250
-msgid ""
-"Client registration is not allowed. Please contact server administration."
-msgstr "クライアントからの登録はできません。サーバー管理者に連絡をして下さい"
-
-#: src/net/manaserv/loginhandler.cpp:276 src/net/manaserv/loginhandler.cpp:313
-msgid "Client version is too old."
-msgstr "アップデートが必要です"
-
-#: src/net/manaserv/loginhandler.cpp:279
-msgid "Wrong username or password."
-msgstr "ユーザーネームまたはパスワードが間違っています"
-
-#: src/net/manaserv/loginhandler.cpp:285
-msgid "Account banned"
-msgstr "アカウントは追放されています"
-
-#: src/net/manaserv/loginhandler.cpp:288
-msgid "Login attempt too soon after previous attempt."
-msgstr "時間が経ってから再度ログインして下さい"
-
-#: src/net/manaserv/loginhandler.cpp:316
-msgid "Wrong username, password or email address."
-msgstr "ユーザ名、パスワード、またはメールアドレスが間違っています"
-
-#: src/net/manaserv/loginhandler.cpp:319
-msgid "Username already exists."
-msgstr "既に使用されているユーザー名です"
-
-#: src/net/manaserv/loginhandler.cpp:322
-msgid "Email address already exists."
-msgstr "既に使用されているメールアドレスです"
-
-#: src/net/manaserv/loginhandler.cpp:325
-msgid "You took too long with the captcha or your response was incorrect."
-msgstr "キャプチャ画像の時間切れまたは答えが間違っています"
-
-#: src/net/manaserv/partyhandler.cpp:90
-msgid "Joined party."
-msgstr "パーティに参加しました"
-
-#: src/net/manaserv/partyhandler.cpp:108
-#, c-format
-msgid "%s joined the party."
-msgstr "%sがパーティに参加しました"
-
-#: src/net/manaserv/partyhandler.cpp:126
-#, c-format
-msgid "%s rejected your invite."
-msgstr "%sは招待を断りました"
-
-#: src/net/manaserv/tradehandler.cpp:107
-msgid "Accepting incoming trade requests."
-msgstr "トレードリクエストを受付中"
-
-#: src/net/manaserv/tradehandler.cpp:109
-msgid "Ignoring incoming trade requests."
-msgstr "トレードリクエストを無視中"
-
-#: src/net/manaserv/tradehandler.cpp:146
-#, c-format
-msgid "Trading with %s"
-msgstr "%sとトレードします"
-
-#: src/net/tmwa/adminhandler.cpp:70
-msgid "Kick failed!"
-msgstr "追い出し失敗"
-
-#: src/net/tmwa/adminhandler.cpp:72
-msgid "Kick succeeded!"
-msgstr "追い出し成功"
-
-#: src/net/tmwa/buysellhandler.cpp:133
-msgid "Thanks for selling."
-msgstr "ありがとうございました"
-
-#: src/net/tmwa/buysellhandler.cpp:137
-msgid "Unable to sell."
-msgstr "販売できません"
-
-#: src/net/tmwa/buysellhandler.cpp:140
-msgid "Unable to sell while trading."
-msgstr "トレード中は売買できません"
-
-#: src/net/tmwa/buysellhandler.cpp:143
-msgid "Unable to sell unsellable item."
-msgstr "トレード中は売買できません"
-
-#: src/net/tmwa/generalhandler.cpp:108
-#, c-format
-msgid "Strength %+d"
-msgstr "攻撃力 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:109
-#, c-format
-msgid "Agility %+d"
-msgstr "機敏さ %+d"
-
-#: src/net/tmwa/generalhandler.cpp:110
-#, c-format
-msgid "Vitality %+d"
-msgstr "防御力 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:111
-#, c-format
-msgid "Intelligence %+d"
-msgstr "魔力 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:112
-#, c-format
-msgid "Dexterity %+d"
-msgstr "命中率 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:113
-#, c-format
-msgid "Luck %+d"
-msgstr "幸運 %+d"
-
-#: src/net/tmwa/generalhandler.cpp:139
-msgid "Authentication failed."
-msgstr "認証に失敗しました"
-
-#: src/net/tmwa/generalhandler.cpp:142
-msgid "No servers available."
-msgstr "利用できるサーバーがありません"
-
-#: src/net/tmwa/generalhandler.cpp:147
-msgid "Someone else is trying to use this account."
-msgstr "他からのログインがありました"
-
-#: src/net/tmwa/generalhandler.cpp:152
-msgid "This account is already logged in."
-msgstr "このアカウントは既にログイン中です"
-
-#: src/net/tmwa/generalhandler.cpp:156
-msgid "Speed hack detected."
-msgstr "スピードハックが探知されました"
-
-#: src/net/tmwa/generalhandler.cpp:159
-msgid "Duplicated login."
-msgstr "重複ログイン"
-
-#: src/net/tmwa/generalhandler.cpp:162
-msgid "Unknown connection error."
-msgstr "不明な接続エラーです"
-
-#: src/net/tmwa/generalhandler.cpp:234
-msgid "Got disconnected from server!"
-msgstr "サーバーから切断されました"
-
-#: src/net/tmwa/generalhandler.cpp:269
-msgid "Luck"
-msgstr "幸運"
-
-#: src/net/tmwa/generalhandler.cpp:272
-msgid "Defense"
-msgstr "Defense"
-
-#: src/net/tmwa/generalhandler.cpp:273
-msgid "M.Attack"
-msgstr "M.Attack"
-
-#: src/net/tmwa/generalhandler.cpp:274
-msgid "M.Defense"
-msgstr "M.Defense"
-
-#: src/net/tmwa/generalhandler.cpp:276
-#, no-c-format
-msgid "% Accuracy"
-msgstr "% Accuracy"
-
-#: src/net/tmwa/generalhandler.cpp:278
-#, no-c-format
-msgid "% Evade"
-msgstr "% Evade"
-
-#: src/net/tmwa/generalhandler.cpp:280
-#, no-c-format
-msgid "% Critical"
-msgstr "% Critical"
-
-#: src/net/tmwa/generalhandler.cpp:281
-msgid "Attack Delay"
-msgstr "攻撃遅延"
-
-#: src/net/tmwa/generalhandler.cpp:283
-msgid "Walk Delay"
-msgstr " 徒歩遅延"
-
-#: src/net/tmwa/generalhandler.cpp:285
-msgid "Attack Range"
-msgstr "攻撃距離"
-
-#: src/net/tmwa/generalhandler.cpp:287
-msgid "Damage per sec."
-msgstr "ダメージ/秒"
-
-#: src/net/tmwa/network.cpp:154
-msgid "Empty address given to Network::connect()!"
-msgstr "ネットワークに空のアドレスが送信されました::connect()!"
-
-#: src/net/tmwa/network.cpp:365
-msgid "Unable to resolve host \""
-msgstr "ホスト名を解決できません"
-
-#: src/net/tmwa/network.cpp:435
-msgid "Connection to server terminated. "
-msgstr "サーバーへの接続が切断されました "
-
-#: src/net/tmwa/partyhandler.cpp:172
-#, c-format
-msgid "%s is not in your party!"
-msgstr "%sはパーティのメンバーではありません"
 
 #: src/playerrelations.cpp:482
 msgid "Print '...'"
@@ -6066,3 +5837,194 @@ msgstr "MP %+d"
 #: src/resources/itemdb.cpp:167
 msgid "Unknown item"
 msgstr "不明なアイテム"
+
+#~ msgid "Could Not Load Map"
+#~ msgstr "マップの読み込みに失敗しました"
+
+#~ msgid "Error while loading %s"
+#~ msgstr "%sの読み込み中にエラーが起きました"
+
+#~ msgid "Strength %+.1f"
+#~ msgstr "攻撃力 %+.1f"
+
+#~ msgid "Agility %+.1f"
+#~ msgstr "機敏さ %+.1f"
+
+#~ msgid "Dexterity %+.1f"
+#~ msgstr "命中率 %+.1f"
+
+#~ msgid "Vitality %+.1f"
+#~ msgstr "防御力 %+.1f"
+
+#~ msgid "Intelligence %+.1f"
+#~ msgstr "魔力 %+.1f"
+
+#~ msgid "Willpower"
+#~ msgstr "Willpower"
+
+#~ msgid "Willpower %+.1f"
+#~ msgstr "Willpower %+.1f"
+
+#~ msgid "Press OK to respawn."
+#~ msgstr "蘇るにはOKを押して下さい"
+
+#~ msgid "You Died"
+#~ msgstr "死んでしまった"
+
+#~ msgid "Not logged in."
+#~ msgstr "再度ログインして下さい"
+
+#~ msgid "No empty slot."
+#~ msgstr "空スロットがありません"
+
+#~ msgid "Invalid name."
+#~ msgstr "無効な名前"
+
+#~ msgid "Character's name already exists."
+#~ msgstr "既に使用されているキャラクター名です"
+
+#~ msgid "Invalid hairstyle."
+#~ msgstr "髪型がダサいので失格"
+
+#~ msgid "Invalid hair color."
+#~ msgstr "無効の髪色"
+
+#~ msgid "Invalid gender."
+#~ msgstr "キャラの性別間違ってるんじゃない？"
+
+#~ msgid "Character's stats are too high."
+#~ msgstr "キャラクターのステータスが高すぎます"
+
+#~ msgid "Character's stats are too low."
+#~ msgstr "キャラクターのステータスが低すぎます"
+
+#~ msgid "At least one stat is out of the permitted range: (%u - %u)."
+#~ msgstr "1つまたは複数のスタッツが最大を超えています: (%u - %u)."
+
+#~ msgid "Invalid slot number."
+#~ msgstr "スロットナンバーが無効です"
+
+#~ msgid "Player deleted."
+#~ msgstr "プレイヤーは削除されました"
+
+#~ msgid "Selection out of range."
+#~ msgstr "ターゲットが遠すぎます"
+
+#~ msgid "Unknown error (%d)."
+#~ msgstr "不明エラー (%d)"
+
+#~ msgid "No gameservers are available."
+#~ msgstr "利用できるゲームサーバーがありません"
+
+#~ msgid "Topic: %s"
+#~ msgstr "トピック: %s"
+
+#~ msgid "Players in this channel:"
+#~ msgstr "このチャンネルにいるプレイヤー:"
+
+#~ msgid "Error joining channel."
+#~ msgstr "チャンネルに参加できませんでした"
+
+#~ msgid "Listing channels."
+#~ msgstr "チャンネルを表示しています"
+
+#~ msgid "End of channel list."
+#~ msgstr "全てのチャンネルリスト"
+
+#~ msgid "%s entered the channel."
+#~ msgstr "%sがチャンネルに参加しました"
+
+#~ msgid "%s left the channel."
+#~ msgstr "%sがチャンネルから外出しました"
+
+#~ msgid "%s has set mode %s on user %s."
+#~ msgstr "%sが%sに%sしました"
+
+#~ msgid "%s has kicked %s."
+#~ msgstr "%sは%sを追い出しました"
+
+#~ msgid "Unknown channel event."
+#~ msgstr "不明なチャンネルイベント"
+
+#~ msgid "Error creating guild."
+#~ msgstr "ギルド作成エラー"
+
+#~ msgid "Invite sent."
+#~ msgstr "招待送信成功"
+
+#~ msgid "Member was promoted successfully."
+#~ msgstr "本メンバーが無事に昇進されました"
+
+#~ msgid "Failed to promote member."
+#~ msgstr "メンバー昇進失敗"
+
+#~ msgid "Wrong magic_token."
+#~ msgstr "間違ったマジックトークンです"
+
+#~ msgid "Already logged in."
+#~ msgstr "既にログインしています"
+
+#~ msgid "Account banned."
+#~ msgstr "アカウント停止されました"
+
+#~ msgid "New password incorrect."
+#~ msgstr "新しいパスワードが間違っています"
+
+#~ msgid "Account not connected. Please login first."
+#~ msgstr "アカウントが接続されていません。最初にログインしてください"
+
+#~ msgid "New email address incorrect."
+#~ msgstr "新しいメールアドレスが間違っています"
+
+#~ msgid "Old email address incorrect."
+#~ msgstr "変更前のメールアドレスが間違っています"
+
+#~ msgid "The new email address already exists."
+#~ msgstr "新しいメールアドレスは既に使用されています"
+
+#~ msgid ""
+#~ "Client registration is not allowed. Please contact server administration."
+#~ msgstr ""
+#~ "クライアントからの登録はできません。サーバー管理者に連絡をして下さい"
+
+#~ msgid "Client version is too old."
+#~ msgstr "アップデートが必要です"
+
+#~ msgid "Wrong username or password."
+#~ msgstr "ユーザーネームまたはパスワードが間違っています"
+
+#~ msgid "Account banned"
+#~ msgstr "アカウントは追放されています"
+
+#~ msgid "Login attempt too soon after previous attempt."
+#~ msgstr "時間が経ってから再度ログインして下さい"
+
+#~ msgid "Wrong username, password or email address."
+#~ msgstr "ユーザ名、パスワード、またはメールアドレスが間違っています"
+
+#~ msgid "Username already exists."
+#~ msgstr "既に使用されているユーザー名です"
+
+#~ msgid "Email address already exists."
+#~ msgstr "既に使用されているメールアドレスです"
+
+#~ msgid "You took too long with the captcha or your response was incorrect."
+#~ msgstr "キャプチャ画像の時間切れまたは答えが間違っています"
+
+#~ msgid "Joined party."
+#~ msgstr "パーティに参加しました"
+
+#~ msgid "%s joined the party."
+#~ msgstr "%sがパーティに参加しました"
+
+#~ msgid "%s rejected your invite."
+#~ msgstr "%sは招待を断りました"
+
+#~ msgid "Accepting incoming trade requests."
+#~ msgstr "トレードリクエストを受付中"
+
+#~ msgid "Ignoring incoming trade requests."
+#~ msgstr "トレードリクエストを無視中"
+
+#~ msgid "Trading with %s"
+#~ msgstr "%sとトレードします"
