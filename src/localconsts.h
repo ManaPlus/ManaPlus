@@ -34,3 +34,4 @@
 
 //#define DEBUG_CONFIG 1
 //#define DEBUG_BIND_TEXTURE 1
+//#define DISABLE_RESOURCE_CACHING 1

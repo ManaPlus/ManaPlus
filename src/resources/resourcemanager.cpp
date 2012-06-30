@@ -391,6 +391,7 @@ Resource *ResourceManager::getFromCache(const std::string &idPath)
 Resource *ResourceManager::get(const std::string &idPath, generator fun,
                                void *data)
 {
+#ifndef DISABLE_RESOURCE_CACHING
     Resource *resource = getFromCache(idPath);
     if (resource)
         return resource;
@@ -408,6 +409,14 @@ Resource *ResourceManager::get(const std::string &idPath, generator fun,
     {
         logger->log("Error loaging image: " + idPath);
     }
+#else
+    Resource *resource = fun(data);
+
+    if (!resource)
+    {
+        logger->log("Error loaging image: " + idPath);
+    }
+#endif
 
     // Returns nullptr if the object could not be created.
     return resource;
@@ -559,6 +568,7 @@ SpriteDef *ResourceManager::getSprite(const std::string &path, int variant)
 
 void ResourceManager::release(Resource *res)
 {
+#ifndef DISABLE_RESOURCE_CACHING
     if (!res || mDestruction)
         return;
 
@@ -577,6 +587,9 @@ void ResourceManager::release(Resource *res)
 
     mOrphanedResources.insert(*resIter);
     mResources.erase(resIter);
+#else
+    delete res;
+#endif
 }
 
 ResourceManager *ResourceManager::getInstance()
