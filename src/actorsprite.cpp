@@ -368,6 +368,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                 img = Theme::getImageFromTheme("unknown-item.png");
 
             addSprite(new ImageSprite(img));
+            if (img)
+                img->decRef();
         }
     }
 
