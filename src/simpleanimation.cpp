@@ -227,5 +227,6 @@ void SimpleAnimation::initializeAnimation(XmlNodePtr animationNode,
         }
     }
 
+    imageset->decRef();
     mInitialized = true;
 }
