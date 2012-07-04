@@ -60,8 +60,8 @@ void ItemHandler::processItemDropped(Net::MessageIn &msg)
     unsigned char identify = msg.readInt8();  // identify flag
     int x = msg.readInt16();
     int y = msg.readInt16();
-    int subX = msg.readInt8() + 16 - 8;
-    int subY = msg.readInt8() + 32 - 8;
+    int subX = msg.readInt8();
+    int subY = msg.readInt8();
     int amount = msg.readInt16();
 
     if (actorSpriteManager)
