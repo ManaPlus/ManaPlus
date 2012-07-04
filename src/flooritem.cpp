@@ -53,10 +53,20 @@ FloorItem::FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
     mHighlight(config.getBoolValue("floorItemsHighlight"))
 {
     setMap(map);
+    const ItemInfo &info = ItemDB::get(itemId);
     if (map)
     {
-        mPos.x = static_cast<float>(x * map->getTileWidth() + subX);
-        mPos.y = static_cast<float>(y * map->getTileHeight() + subY);
+        int max = info.getMaxFloorOffset();
+        if (subX > max)
+            subX = max;
+        else if (subX < -max)
+            subX = -max;
+        if (subY > max)
+            subY = max;
+        else if (subY < -max)
+            subY = -max;
+        mPos.x = static_cast<float>(x * map->getTileWidth() + subX + 16 - 8);
+        mPos.y = static_cast<float>(y * map->getTileHeight() + subY + 32 - 8);
     }
     else
     {
@@ -64,7 +74,6 @@ FloorItem::FloorItem(int id, int itemId, int x, int y, Map *map, int amount,
         mPos.y = 0;
     }
 
-    const ItemInfo &info = ItemDB::get(itemId);
     setupSpriteDisplay(info.getDisplay(), true, 1,
         info.getDyeColorsString(mColor));
     mYDiff = 31;

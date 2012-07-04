@@ -233,6 +233,12 @@ class ItemInfo
         bool isRemoveSprites() const
         { return mIsRemoveSprites; }
 
+        void setMaxFloorOffset(int i)
+        { maxFloorOffset = i; }
+
+        int getMaxFloorOffset() const
+        { return maxFloorOffset; }
+
         bool isRemoveItemId(int id) const;
 
         /** Effects to be shown when weapon attacks - see also effects.xml */
@@ -297,6 +303,7 @@ class ItemInfo
         std::string mColorList;
         int mHitEffectId;
         int mCriticalHitEffectId;
+        int maxFloorOffset;
 };
 
 #endif

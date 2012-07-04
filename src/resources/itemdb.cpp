@@ -210,7 +210,8 @@ void ItemDB::load()
         std::string attackAction = XML::getProperty(node, "attack-action", "");
         std::string drawBefore = XML::getProperty(node, "drawBefore", "");
         std::string drawAfter = XML::getProperty(node, "drawAfter", "");
-//        std::string removeSprite = XML::getProperty(node, "removeSprite", "");
+        int maxFloorOffset = XML::getIntProperty(
+            node, "maxFloorOffset", 32, 0, 32);
         std::string colors;
         if (serverVersion >= 1)
         {
@@ -307,6 +308,7 @@ void ItemDB::load()
         itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(-1, drawPriority);
         itemInfo->setColorsList(colors);
+        itemInfo->setMaxFloorOffset(maxFloorOffset);
 
         std::string effect;
         for (size_t i = 0; i < sizeof(fields) / sizeof(fields[0]); ++ i)
