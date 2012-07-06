@@ -339,7 +339,10 @@ void OutfitWindow::draw(gcn::Graphics *graphics)
             Image *image = Item::getImage(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
             if (image)
+            {
                 g->drawImage(image, itemX, itemY);
+                image->decRef();
+            }
         }
     }
     if (mItemMoved)
