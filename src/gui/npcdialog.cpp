@@ -82,10 +82,10 @@ NpcDialog::NpcDialog(int npcId) :
     setFocusable(true);
     setStickyButtonLock(true);
 
-    setMinWidth(620);
-    setMinHeight(450);
+    setMinWidth(200);
+    setMinHeight(150);
 
-    setDefaultSize(400, 400, ImageRect::CENTER);
+    setDefaultSize(300, 578, ImageRect::LOWER_LEFT);
 
     mPlayerBox->setWidth(70);
     mPlayerBox->setHeight(100);
