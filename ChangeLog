@@ -1,3 +1,15 @@
+2012-07-08 New release 1.2.7.8
+fix: allow enter in qestion mark.
+fix: crashes with corrupted data.
+fix: sime memory leaks.
+add: basic support for eathena stable.
+add: maps without client data (without tmx).
+add: special npc font. (by default 13px size)
+add: increase npc window default size.
+add: popup menu option all except 1.
+add: npc avatars (for evol only).
+add: floor item attribute for max pixel offset.
+
 2012-06-24 New release 1.2.6.24
 fix: scrolling big text in texfields.
 fix: npc selection by mouse.
