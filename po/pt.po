@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-07-01 02:32+0300\n"
+"POT-Creation-Date: 2012-07-07 01:18+0300\n"
 "PO-Revision-Date: 2012-06-24 21:34+0000\n"
 "Last-Translator: freya <freya.df@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/manaplus/"
@@ -407,7 +407,7 @@ msgstr "Mover"
 msgid "Result"
 msgstr "Resultado"
 
-#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:137
+#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:145
 msgid "Reset"
 msgstr "Resetar"
 
@@ -430,7 +430,7 @@ msgstr "Quantidade:"
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:107 src/gui/itemamountwindow.cpp:205
-#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:126
+#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:134
 #: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:777
 msgid "+"
 msgstr "+"
@@ -438,7 +438,7 @@ msgstr "+"
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:110 src/gui/itemamountwindow.cpp:204
-#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:127
+#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:135
 #: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:789
 msgid "-"
 msgstr "-"
@@ -938,7 +938,7 @@ msgid "Did You Know?"
 msgstr "Você sabia?"
 
 #: src/gui/didyouknowwindow.cpp:68 src/gui/helpwindow.cpp:64
-#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:56
+#: src/gui/inventorywindow.cpp:207 src/gui/npcdialog.cpp:58
 #: src/gui/popupmenu.cpp:501 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "Fechar"
@@ -1312,24 +1312,24 @@ msgstr "Barra de Status"
 msgid "Need"
 msgstr "Precisa"
 
-#: src/gui/npcdialog.cpp:54
+#: src/gui/npcdialog.cpp:56
 msgid "Stop waiting"
 msgstr "Aguarde..."
 
-#: src/gui/npcdialog.cpp:55
+#: src/gui/npcdialog.cpp:57
 msgid "Next"
 msgstr "Próximo"
 
-#: src/gui/npcdialog.cpp:57
+#: src/gui/npcdialog.cpp:59
 msgid "Submit"
 msgstr "Enviar"
 
-#: src/gui/npcdialog.cpp:62 src/gui/npcpostdialog.cpp:42
+#: src/gui/npcdialog.cpp:64 src/gui/npcpostdialog.cpp:42
 #: src/gui/setup_other.cpp:156
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:120 src/gui/popupmenu.cpp:503
+#: src/gui/npcdialog.cpp:128 src/gui/popupmenu.cpp:503
 msgid "Clear"
 msgstr "Limpar"
 
@@ -1345,12 +1345,12 @@ msgstr "Enviar"
 msgid "Failed to send as sender or letter invalid."
 msgstr "Falha ao enviar como remetente ou a carta é inválida."
 
-#: src/gui/outfitwindow.cpp:90 src/gui/outfitwindow.cpp:531
+#: src/gui/outfitwindow.cpp:90 src/gui/outfitwindow.cpp:534
 #, c-format
 msgid "Outfit: %d"
 msgstr "Roupas: %d"
 
-#: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:533
+#: src/gui/outfitwindow.cpp:92 src/gui/outfitwindow.cpp:536
 #: src/gui/windowmenu.cpp:321
 #, c-format
 msgid "Key: %s"
@@ -5826,7 +5826,7 @@ msgstr "Bolha '...' flutuante"
 msgid "Floating bubble"
 msgstr "Bolha Flutuante"
 
-#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:256
+#: src/resources/beinginfo.cpp:36 src/resources/itemdb.cpp:257
 #: src/resources/monsterdb.cpp:84
 msgid "unnamed"
 msgstr "sem nome"
