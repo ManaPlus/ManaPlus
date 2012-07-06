@@ -242,7 +242,8 @@ int NpcHandler::getNpc(Net::MessageIn &msg, bool haveLength)
     return npcId;
 }
 
-void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED, int npcId A_UNUSED)
+void NpcHandler::processNpcCutin(Net::MessageIn &msg A_UNUSED,
+                                 int npcId A_UNUSED)
 {
     msg.readString(64); // image name
     msg.readInt8();     // type

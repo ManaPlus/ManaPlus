@@ -37,7 +37,7 @@ public:
         MANASERV,
         TMWATHENA,
         EVOL,
-        EATHENA,
+        EATHENA
     };
 
     typedef std::pair<int, std::string> VersionString;

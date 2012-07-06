@@ -122,7 +122,8 @@ namespace XML
         return ret;
     }
 
-    int getIntProperty(XmlNodePtr node, const char* name, int def, int min, int max)
+    int getIntProperty(XmlNodePtr node, const char* name, int def,
+                       int min, int max)
     {
         int &ret = def;
 
