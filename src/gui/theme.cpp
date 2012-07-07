@@ -307,6 +307,16 @@ void Theme::optionChanged(const std::string &)
     updateAlpha();
 }
 
+#define loadSkinSubImage(object, name) \
+    if (partType == name) \
+    { \
+        if (dBorders) \
+            object = dBorders->getSubImage(xPos, yPos, width, height); \
+        else \
+            object = nullptr; \
+    }
+
+
 Skin *Theme::readSkin(const std::string &filename)
 {
     if (filename.empty())
@@ -362,124 +372,23 @@ Skin *Theme::readSkin(const std::string &filename)
                     const int width = XML::getProperty(partNode, "width", 1);
                     const int height = XML::getProperty(partNode, "height", 1);
 
-                    if (partType == "top-left-corner")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[0] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[0] = nullptr;
-                        }
-                    }
-                    else if (partType == "top-edge")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[1] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[1] = nullptr;
-                        }
-                    }
-                    else if (partType == "top-right-corner")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[2] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[2] = nullptr;
-                        }
-                    }
-
-                    // MIDDLE ROW
-                    else if (partType == "left-edge")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[3] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[3] = nullptr;
-                        }
-                    }
-                    else if (partType == "bg-quad")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[4] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[4] = nullptr;
-                        }
-                    }
-                    else if (partType == "right-edge")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[5] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[5] = nullptr;
-                        }
-                    }
-
-                    // BOTTOM ROW
-                    else if (partType == "bottom-left-corner")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[6] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[6] = nullptr;
-                        }
-                    }
-                    else if (partType == "bottom-edge")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[7] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[7] = nullptr;
-                        }
-                    }
-                    else if (partType == "bottom-right-corner")
-                    {
-                        if (dBorders)
-                        {
-                            border.grid[8] = dBorders->getSubImage(
-                                xPos, yPos, width, height);
-                        }
-                        else
-                        {
-                            border.grid[8] = nullptr;
-                        }
-                    }
-
+                        loadSkinSubImage(border.grid[0], "top-left-corner")
                     else
-                    {
-                        logger->log("Theme::readSkin(): Unknown part type "
-                            "'%s'", partType.c_str());
-                    }
+                        loadSkinSubImage(border.grid[1], "top-edge")
+                    else
+                        loadSkinSubImage(border.grid[2], "top-right-corner")
+                    else
+                        loadSkinSubImage(border.grid[3], "left-edge")
+                    else
+                        loadSkinSubImage(border.grid[4], "bg-quad")
+                    else
+                        loadSkinSubImage(border.grid[5], "right-edge")
+                    else
+                        loadSkinSubImage(border.grid[6], "bottom-left-corner")
+                    else
+                        loadSkinSubImage(border.grid[7], "bottom-edge")
+                    else
+                        loadSkinSubImage(border.grid[8], "bottom-right-corner")
                 }
                 else if (xmlNameEqual(partNode, "option"))
                 {
