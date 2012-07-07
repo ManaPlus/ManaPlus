@@ -82,6 +82,14 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
 
     mPlayer = new Being(0, ActorSprite::PLAYER, mRace, nullptr);
     mPlayer->setGender(GENDER_MALE);
+    const std::vector<int> &items = CharDB::getDefaultItems();
+    int i = 1;
+    for (std::vector<int>::const_iterator it = items.begin(),
+         it_end = items.end();
+         it != it_end; ++ it, i ++)
+    {
+        mPlayer->setSprite(i, *it);
+    }
 
     maxHairColor = CharDB::getMaxHairColor();
     minHairColor = CharDB::getMinHairColor();

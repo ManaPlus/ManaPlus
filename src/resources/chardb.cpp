@@ -36,6 +36,7 @@ namespace
     unsigned mMinStat = 0;
     unsigned mMaxStat = 0;
     unsigned mSumStat = 0;
+    std::vector<int> mDefaultItems;
 }
 
 void CharDB::load()
@@ -68,6 +69,12 @@ void CharDB::load()
         {
             loadMinMax(node, &mMinStat, &mMaxStat);
             mSumStat = XML::getProperty(node, "sum", 0);
+        }
+        else if (xmlNameEqual(node, "item"))
+        {
+            int id = XML::getProperty(node, "id", 0);
+            if (id > 0)
+                mDefaultItems.push_back(id);
         }
     }
 
@@ -122,4 +129,9 @@ unsigned CharDB::getMaxStat()
 unsigned CharDB::getSumStat()
 {
     return mSumStat;
+}
+
+const std::vector<int> &CharDB::getDefaultItems()
+{
+    return mDefaultItems;
 }

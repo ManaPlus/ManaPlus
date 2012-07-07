@@ -27,6 +27,8 @@
 
 #include "utils/xml.h"
 
+#include <vector>
+
 /**
  * Char information database.
  */
@@ -57,6 +59,8 @@ namespace CharDB
     unsigned getMaxStat();
 
     unsigned getSumStat();
+
+    const std::vector<int> &getDefaultItems();
 }
 
 #endif
