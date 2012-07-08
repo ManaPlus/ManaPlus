@@ -67,35 +67,8 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
 
     if (instances == 0)
     {
-        // Load the skin
-        Image *textbox = Theme::getImageFromTheme("deepbox.png");
-        int gridx[4] = {0, 3, 28, 31};
-        int gridy[4] = {0, 3, 28, 31};
-        int a = 0, x, y;
-
-        for (y = 0; y < 3; y++)
-        {
-            for (x = 0; x < 3; x++)
-            {
-                if (textbox)
-                {
-                    skin.grid[a] = textbox->getSubImage(
-                        gridx[x], gridy[y],
-                        gridx[x + 1] - gridx[x] + 1,
-                        gridy[y + 1] - gridy[y] + 1);
-                    if (skin.grid[a])
-                        skin.grid[a]->setAlpha(Client::getGuiAlpha());
-                }
-                else
-                {
-                    skin.grid[a] = nullptr;
-                }
-                a++;
-            }
-        }
-
-        if (textbox)
-            textbox->decRef();
+        if (Theme::instance())
+            Theme::instance()->loadRect(skin, "textfield_background.xml");
     }
 
     instances++;
@@ -110,9 +83,6 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
 TextField::~TextField()
 {
     instances--;
-
-    if (instances == 0)
-        for_each(skin.grid, skin.grid + 9, dtor<Image*>());
 }
 
 void TextField::updateAlpha()
