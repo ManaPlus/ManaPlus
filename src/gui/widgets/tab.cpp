@@ -53,24 +53,18 @@ enum
     TAB_COUNT         // 4 - Must be last.
 };
 
-struct TabData
+static std::string const data[TAB_COUNT] =
 {
-    char const *file;
-    int gridX;
-    int gridY;
-};
-
-static TabData const data[TAB_COUNT] =
-{
-    { "tab.png", 0, 0 },
-    { "tab_hilight.png", 9, 4 },
-    { "tabselected.png", 16, 19 },
-    { "tab.png", 25, 23 }
+    "tab.xml",
+    "tab_highlighted.xml",
+    "tab_selected.xml",
+    "tab_unused.xml"
 };
 
 ImageRect Tab::tabImg[TAB_COUNT];
 
-Tab::Tab() : gcn::Tab(),
+Tab::Tab() :
+    gcn::Tab(),
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
@@ -84,12 +78,6 @@ Tab::Tab() : gcn::Tab(),
 Tab::~Tab()
 {
     mInstances--;
-
-    if (mInstances == 0)
-    {
-        for (int mode = 0; mode < TAB_COUNT; mode++)
-            for_each(tabImg[mode].grid, tabImg[mode].grid + 9, dtor<Image*>());
-    }
     delete mVertexes;
     mVertexes = nullptr;
 }
@@ -105,32 +93,12 @@ void Tab::init()
     if (mInstances == 0)
     {
         // Load the skin
-        Image *tab[TAB_COUNT];
-
-        int a, x, y, mode;
-
-        for (mode = 0; mode < TAB_COUNT; mode++)
+        if (Theme::instance())
         {
-            tab[mode] = Theme::getImageFromTheme(data[mode].file);
-            if (!tab[mode])
-                continue;
-
-            a = 0;
-            for (y = 0; y < 3; y++)
-            {
-                for (x = 0; x < 3; x++)
-                {
-                    tabImg[mode].grid[a] = tab[mode]->getSubImage(
-                            data[x].gridX, data[y].gridY,
-                            data[x + 1].gridX - data[x].gridX + 1,
-                            data[y + 1].gridY - data[y].gridY + 1);
-                    if (tabImg[mode].grid[a])
-                        tabImg[mode].grid[a]->setAlpha(mAlpha);
-                    a++;
-                }
-            }
-            tab[mode]->decRef();
+            for (int mode = 0; mode < TAB_COUNT; mode ++)
+                Theme::instance()->loadRect(tabImg[mode], data[mode]);
         }
+        updateAlpha();
     }
     mInstances++;
 }

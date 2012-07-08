@@ -34,9 +34,10 @@ SET (FILES
     slider_hilight.png
     speechbubble.xml
     sticky_button.png
-    tab.png
-    tab_hilight.png
-    tabselected.png
+    tab.xml
+    tab_highlighted.xml
+    tab_selected.xml
+    tab_unused.xml
     target-cursor-in-range-l.png
     target-cursor-in-range-m.png
     target-cursor-in-range-s.png
