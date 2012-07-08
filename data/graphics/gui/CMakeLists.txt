@@ -10,7 +10,6 @@ SET (FILES
     circle-green.png
     close_button.png
     colors.xml
-    deepbox.png
     dropdown.xml
     dropdown_background.xml
     dropdown_pressed.xml
