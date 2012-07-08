@@ -12,12 +12,6 @@ gui_DATA =				\
 	colors.xml			\
 	deepbox.png			\
 	equipmentbox.png	\
-	hscroll_left_default.png	\
-	hscroll_left_highlight.png	\
-	hscroll_left_pressed.png	\
-	hscroll_right_default.png	\
-	hscroll_right_highlight.png	\
-	hscroll_right_pressed.png	\
 	item_shortcut_bgr.png		\
 	mouse.png			\
 	progress-indicator.png		\
@@ -26,6 +20,11 @@ gui_DATA =				\
 	radioout.png			\
 	radioout_highlight.png		\
 	resize.png			\
+	scroll.xml			\
+	scroll_background.xml	\
+	scroll_highlighted.xml	\
+	scrollbuttons.xml			\
+	scrollbuttons_pressed.xml\
 	selection.png			\
 	slider.png			\
 	slider_hilight.png		\
@@ -41,14 +40,6 @@ gui_DATA =				\
 	target-cursor-normal-m.png		\
 	target-cursor-normal-s.png		\
 	unknown-item.png		\
-	vscroll_down_default.png	\
-	vscroll_down_highlight.png	\
-	vscroll_down_pressed.png	\
-	vscroll_grey.png		\
-	vscroll_highlight.png		\
-	vscroll_up_default.png		\
-	vscroll_up_highlight.png	\
-	vscroll_up_pressed.png		\
 	window.png			\
 	window.xml
 

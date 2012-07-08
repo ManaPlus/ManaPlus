@@ -269,6 +269,9 @@ class Theme : public Palette, public ConfigListener
 
         void optionChanged(const std::string &);
 
+        void loadRect(ImageRect &image, std::string name,
+                      int start = 0, int end = 8);
+
     private:
         Theme();
         ~Theme();

@@ -43,6 +43,12 @@ ImageRect ScrollArea::vMarker;
 ImageRect ScrollArea::vMarkerHi;
 Image *ScrollArea::buttons[4][2];
 
+static std::string const buttonFiles[2] =
+{
+    "scrollbuttons.xml",
+    "scrollbuttons_pressed.xml"
+};
+
 ScrollArea::ScrollArea():
     gcn::ScrollArea(),
     mX(0),
@@ -87,29 +93,6 @@ ScrollArea::~ScrollArea()
 
     instances--;
 
-    if (instances == 0)
-    {
-        for_each(background.grid, background.grid + 9, dtor<Image*>());
-        for_each(vMarker.grid, vMarker.grid + 9, dtor<Image*>());
-        for_each(vMarkerHi.grid, vMarkerHi.grid + 9, dtor<Image*>());
-
-        if (buttons[UP][0])
-            buttons[UP][0]->decRef();
-        if (buttons[UP][1])
-            buttons[UP][1]->decRef();
-        if (buttons[DOWN][0])
-            buttons[DOWN][0]->decRef();
-        if (buttons[DOWN][1])
-            buttons[DOWN][1]->decRef();
-        if (buttons[LEFT][0])
-            buttons[LEFT][0]->decRef();
-        if (buttons[LEFT][1])
-            buttons[LEFT][1]->decRef();
-        if (buttons[RIGHT][0])
-            buttons[RIGHT][0]->decRef();
-        if (buttons[RIGHT][1])
-            buttons[RIGHT][1]->decRef();
-    }
     delete mVertexes;
     mVertexes = nullptr;
 }
@@ -126,99 +109,39 @@ void ScrollArea::init()
 
     if (instances == 0)
     {
-        // Load the background skin
-        Image *textbox = Theme::getImageFromTheme("deepbox.png");
-        const int bggridx[4] = {0, 3, 28, 31};
-        const int bggridy[4] = {0, 3, 28, 31};
-        int a = 0, x, y;
-
-        for (y = 0; y < 3; y++)
+        for (int f = 0; f < 9; f ++)
         {
-            for (x = 0; x < 3; x++)
-            {
-                if (textbox)
-                {
-                    background.grid[a] = textbox->getSubImage(
-                        bggridx[x], bggridy[y],
-                        bggridx[x + 1] - bggridx[x] + 1,
-                        bggridy[y + 1] - bggridy[y] + 1);
-                    background.grid[a]->setAlpha(
-                        Client::getGuiAlpha());
-                }
-                else
-                {
-                    background.grid[a] = nullptr;
-                }
-                a++;
-            }
+            background.grid[f] = nullptr;
+            vMarker.grid[f] = nullptr;
+            vMarkerHi.grid[f] = nullptr;
         }
 
-        if (textbox)
-            textbox->decRef();
-
-        // Load vertical scrollbar skin
-        Image *vscroll = Theme::getImageFromTheme("vscroll_grey.png");
-        Image *vscrollHi = Theme::getImageFromTheme("vscroll_highlight.png");
-
-        int vsgridx[4] = {0, 4, 7, 11};
-        int vsgridy[4] = {0, 4, 15, 19};
-        a = 0;
-
-        for (y = 0; y < 3; y++)
+        if (Theme::instance())
         {
-            for (x = 0; x < 3; x++)
-            {
-                if (vscroll)
-                {
-                    vMarker.grid[a] = vscroll->getSubImage(
-                        vsgridx[x], vsgridy[y],
-                        vsgridx[x + 1] - vsgridx[x],
-                        vsgridy[y + 1] - vsgridy[y]);
-                    vMarker.grid[a]->setAlpha(
-                        Client::getGuiAlpha());
-                }
-                else
-                {
-                    vMarker.grid[a] = nullptr;
-                }
-                if (vscrollHi)
-                {
-                    vMarkerHi.grid[a] = vscrollHi->getSubImage(
-                        vsgridx[x], vsgridy[y],
-                        vsgridx[x + 1] - vsgridx[x],
-                        vsgridy[y + 1] - vsgridy[y]);
-                    vMarkerHi.grid[a]->setAlpha(
-                        Client::getGuiAlpha());
-                }
-                else
-                {
-                    vMarkerHi.grid[a] = nullptr;
-                }
-                a++;
-            }
+            Theme::instance()->loadRect(background, "scroll_background.xml");
+            Theme::instance()->loadRect(vMarker, "scroll.xml");
+            Theme::instance()->loadRect(vMarkerHi, "scroll_highlighted.xml");
         }
 
-        if (vscroll)
-            vscroll->decRef();
-        if (vscrollHi)
-            vscrollHi->decRef();
-
-        buttons[UP][0] =
-            Theme::getImageFromTheme("vscroll_up_default.png");
-        buttons[DOWN][0] =
-            Theme::getImageFromTheme("vscroll_down_default.png");
-        buttons[LEFT][0] =
-            Theme::getImageFromTheme("hscroll_left_default.png");
-        buttons[RIGHT][0] =
-            Theme::getImageFromTheme("hscroll_right_default.png");
-        buttons[UP][1] =
-            Theme::getImageFromTheme("vscroll_up_pressed.png");
-        buttons[DOWN][1] =
-            Theme::getImageFromTheme("vscroll_down_pressed.png");
-        buttons[LEFT][1] =
-            Theme::getImageFromTheme("hscroll_left_pressed.png");
-        buttons[RIGHT][1] =
-            Theme::getImageFromTheme("hscroll_right_pressed.png");
+        for (int i = 0; i < 2; i ++)
+        {
+            Skin *skin = Theme::instance()->load(buttonFiles[i]);
+            if (skin)
+            {
+                const ImageRect &rect = skin->getBorder();
+                for (int f = UP; f < BUTTONS_DIR; f ++)
+                {
+                    rect.grid[f]->incRef();
+                    buttons[f][i] = rect.grid[f];
+                }
+            }
+            else
+            {
+                for (int f = UP; f < BUTTONS_DIR; f ++)
+                    buttons[f][i] = nullptr;
+            }
+            Theme::instance()->unload(skin);
+        }
     }
 
     instances++;

@@ -121,7 +121,8 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
             UP = 0,
             DOWN,
             LEFT,
-            RIGHT
+            RIGHT,
+            BUTTONS_DIR
         };
 
         /**

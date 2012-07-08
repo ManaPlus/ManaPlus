@@ -410,6 +410,14 @@ Skin *Theme::readSkin(const std::string &filename)
                         loadSkinImage(7, "bottom-edge")
                     else
                         loadSkinImage(8, "bottom-right-corner")
+                    else
+                        loadSkinImage(0, "up")
+                    else
+                        loadSkinImage(1, "down")
+                    else
+                        loadSkinImage(2, "left")
+                    else
+                        loadSkinImage(3, "right")
                 }
                 else if (xmlNameEqual(partNode, "option"))
                 {
@@ -816,5 +824,23 @@ void Theme::loadColors(std::string file)
             mProgressColors[type] = new DyePalette(XML::getProperty(node,
                                                    "color", ""));
         }
+    }
+}
+
+void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
+{
+    Skin *skin = load(name);
+    if (skin)
+    {
+        const ImageRect &rect = skin->getBorder();
+        for (int f = start; f <= end; f ++)
+        {
+            if (rect.grid[f])
+            {
+                rect.grid[f]->incRef();
+                image.grid[f] = rect.grid[f];
+            }
+        }
+        unload(skin);
     }
 }

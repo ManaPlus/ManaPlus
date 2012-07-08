@@ -173,30 +173,10 @@ void Button::init()
 
     if (mInstances == 0)
     {
-        // Load the skin
-        Image *btn[BUTTON_COUNT];
-
         if (Theme::instance())
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
-            {
-                Skin *skin = Theme::instance()->load(data[mode]);
-                if (skin)
-                {
-                    const ImageRect &rect = skin->getBorder();
-
-                    for (int f = 0; f < 9; f ++)
-                    {
-                        if (rect.grid[f])
-                        {
-                            rect.grid[f]->incRef();
-                            button[mode].grid[f] = rect.grid[f];
-                        }
-                    }
-
-                    Theme::instance()->unload(skin);
-                }
-            }
+                Theme::instance()->loadRect(button[mode], data[mode]);
         }
 
         updateAlpha();
