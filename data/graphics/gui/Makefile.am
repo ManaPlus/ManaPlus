@@ -4,6 +4,9 @@ guidir = $(pkgdatadir)/data/graphics/gui
 gui_DATA =				\
 	bubble.png			\
 	button.xml			\
+	button_disabled.xml		\
+	button_highlighted.xml	\
+	button_pressed.xml		\
 	buttonplay.png			\
 	checkbox.png			\
 	circle-gray.png			\
@@ -14,6 +17,7 @@ gui_DATA =				\
 	equipmentbox.png	\
 	item_shortcut_bgr.png		\
 	mouse.png			\
+	playerbox_background.xml	\
 	progress-indicator.png		\
 	radioin.png			\
 	radioin_highlight.png		\

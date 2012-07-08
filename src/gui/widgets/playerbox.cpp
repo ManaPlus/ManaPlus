@@ -47,35 +47,11 @@ PlayerBox::PlayerBox(Being *being):
 
     if (instances == 0)
     {
-        // Load the background skin
-        Image *textbox = Theme::getImageFromTheme("deepbox.png");
-        int bggridx[4] = {0, 3, 28, 31};
-        int bggridy[4] = {0, 3, 28, 31};
-        int a = 0, x, y;
-
-        for (y = 0; y < 3; y++)
+        if (Theme::instance())
         {
-            for (x = 0; x < 3; x++)
-            {
-                if (textbox)
-                {
-                    background.grid[a] = textbox->getSubImage(
-                        bggridx[x], bggridy[y],
-                        bggridx[x + 1] - bggridx[x] + 1,
-                        bggridy[y + 1] - bggridy[y] + 1);
-                    if (background.grid[a])
-                        background.grid[a]->setAlpha(Client::getGuiAlpha());
-                }
-                else
-                {
-                    background.grid[a] = nullptr;
-                }
-                a++;
-            }
+            Theme::instance()->loadRect(background,
+                "playerbox_background.xml");
         }
-
-        if (textbox)
-            textbox->decRef();
     }
 
     instances++;
@@ -86,9 +62,6 @@ PlayerBox::~PlayerBox()
     instances--;
 
     mBeing = nullptr;
-
-    if (instances == 0)
-        for_each(background.grid, background.grid + 9, dtor<Image*>());
 }
 
 void PlayerBox::draw(gcn::Graphics *graphics)

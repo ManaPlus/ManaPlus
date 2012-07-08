@@ -1,6 +1,9 @@
 SET (FILES
     bubble.png
     button.xml
+    button_disabled.xml
+    button_highlighted.xml
+    button_pressed.xml
     buttonplay.png
     checkbox.png
     circle-gray.png
@@ -11,6 +14,7 @@ SET (FILES
     equipmentbox.png
     item_shortcut_bgr.png
     mouse.png
+    playerbox_background.xml
     progress-indicator.png
     radioin.png
     radioin_highlight.png
