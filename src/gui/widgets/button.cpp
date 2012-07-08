@@ -55,19 +55,12 @@ enum
     BUTTON_COUNT         // 4 - Must be last.
 };
 
-struct ButtonData
+static std::string const data[BUTTON_COUNT] =
 {
-    char const *file;
-    int gridX;
-    int gridY;
-};
-
-static ButtonData const data[BUTTON_COUNT] =
-{
-    { "button.png", 0, 0 },
-    { "buttonhi.png", 9, 4 },
-    { "buttonpress.png", 16, 19 },
-    { "button_disabled.png", 25, 23 }
+    "button.xml",
+    "button_highlighted.xml",
+    "button_pressed.xml",
+    "button_disabled.xml"
 };
 
 ImageRect Button::button[BUTTON_COUNT];
@@ -183,29 +176,29 @@ void Button::init()
         // Load the skin
         Image *btn[BUTTON_COUNT];
 
-        int a, x, y, mode;
-
-        for (mode = 0; mode < BUTTON_COUNT; mode++)
+        if (Theme::instance())
         {
-            btn[mode] = Theme::getImageFromTheme(data[mode].file);
-            if (!btn[mode])
-                continue;
-
-            a = 0;
-            for (y = 0; y < 3; y++)
+            for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             {
-                for (x = 0; x < 3; x++)
+                Skin *skin = Theme::instance()->load(data[mode]);
+                if (skin)
                 {
-                    button[mode].grid[a] = btn[mode]->getSubImage(
-                            data[x].gridX, data[y].gridY,
-                            data[x + 1].gridX - data[x].gridX + 1,
-                            data[y + 1].gridY - data[y].gridY + 1);
-                    a++;
+                    const ImageRect &rect = skin->getBorder();
+
+                    for (int f = 0; f < 9; f ++)
+                    {
+                        if (rect.grid[f])
+                        {
+                            rect.grid[f]->incRef();
+                            button[mode].grid[f] = rect.grid[f];
+                        }
+                    }
+
+                    Theme::instance()->unload(skin);
                 }
             }
-            if (btn[mode])
-                btn[mode]->decRef();
         }
+
         updateAlpha();
     }
     mEnabledColor = Theme::getThemeColor(Theme::BUTTON);
@@ -220,17 +213,6 @@ Button::~Button()
 
     delete mVertexes;
     mVertexes = nullptr;
-    if (mInstances == 0)
-    {
-        for (int mode = 0; mode < BUTTON_COUNT; mode++)
-        {
-            if (button[mode].grid)
-            {
-                for_each(button[mode].grid,
-                         button[mode].grid + 9, dtor<Image*>());
-            }
-        }
-    }
     if (mImageSet)
     {
         mImageSet->decRef();

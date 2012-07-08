@@ -307,15 +307,33 @@ void Theme::optionChanged(const std::string &)
     updateAlpha();
 }
 
-#define loadSkinSubImage(object, name) \
+#define loadSkinImage(obj, name) \
     if (partType == name) \
     { \
         if (dBorders) \
-            object = dBorders->getSubImage(xPos, yPos, width, height); \
+        { \
+            border.grid[obj] = dBorders->getSubImage( \
+                xPos, yPos, width, height); \
+        } \
         else \
-            object = nullptr; \
+        { \
+            border.grid[obj] = nullptr; \
+        } \
     }
 
+#define loadSkinImage2(obj, name1, name2) \
+    if (partType == name1 || partType == name2) \
+    { \
+        if (dBorders) \
+        { \
+            border.grid[obj] = dBorders->getSubImage( \
+                xPos, yPos, width, height); \
+        } \
+        else \
+        { \
+            border.grid[obj] = nullptr; \
+        } \
+    }
 
 Skin *Theme::readSkin(const std::string &filename)
 {
@@ -360,35 +378,38 @@ Skin *Theme::readSkin(const std::string &filename)
                 XML::getProperty(widgetNode, "type", "unknown");
         if (widgetType == "Window")
         {
+            const int globalXPos = XML::getProperty(widgetNode, "xpos", 0);
+            const int globalYPos = XML::getProperty(widgetNode, "ypos", 0);
             for_each_xml_child_node(partNode, widgetNode)
             {
                 if (xmlNameEqual(partNode, "part"))
                 {
                     const std::string partType =
                             XML::getProperty(partNode, "type", "unknown");
-                    // TOP ROW
-                    const int xPos = XML::getProperty(partNode, "xpos", 0);
-                    const int yPos = XML::getProperty(partNode, "ypos", 0);
+                    const int xPos = XML::getProperty(
+                        partNode, "xpos", 0) + globalXPos;
+                    const int yPos = XML::getProperty(
+                        partNode, "ypos", 0) + globalYPos;
                     const int width = XML::getProperty(partNode, "width", 1);
                     const int height = XML::getProperty(partNode, "height", 1);
 
-                        loadSkinSubImage(border.grid[0], "top-left-corner")
+                        loadSkinImage2(0, "top-left-corner", "standart")
                     else
-                        loadSkinSubImage(border.grid[1], "top-edge")
+                        loadSkinImage2(1, "top-edge", "highlighted")
                     else
-                        loadSkinSubImage(border.grid[2], "top-right-corner")
+                        loadSkinImage2(2, "top-right-corner", "pressed")
                     else
-                        loadSkinSubImage(border.grid[3], "left-edge")
+                        loadSkinImage2(3, "left-edge", "disabled")
                     else
-                        loadSkinSubImage(border.grid[4], "bg-quad")
+                        loadSkinImage(4, "bg-quad")
                     else
-                        loadSkinSubImage(border.grid[5], "right-edge")
+                        loadSkinImage(5, "right-edge")
                     else
-                        loadSkinSubImage(border.grid[6], "bottom-left-corner")
+                        loadSkinImage(6, "bottom-left-corner")
                     else
-                        loadSkinSubImage(border.grid[7], "bottom-edge")
+                        loadSkinImage(7, "bottom-edge")
                     else
-                        loadSkinSubImage(border.grid[8], "bottom-right-corner")
+                        loadSkinImage(8, "bottom-right-corner")
                 }
                 else if (xmlNameEqual(partNode, "option"))
                 {

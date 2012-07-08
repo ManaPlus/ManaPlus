@@ -1,10 +1,7 @@
 SET (FILES
     bubble.png
-    button.png
-    button_disabled.png
-    buttonhi.png
+    button.xml
     buttonplay.png
-    buttonpress.png
     checkbox.png
     circle-gray.png
     circle-green.png

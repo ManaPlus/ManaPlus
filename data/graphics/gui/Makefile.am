@@ -3,11 +3,8 @@ guidir = $(pkgdatadir)/data/graphics/gui
 
 gui_DATA =				\
 	bubble.png			\
-	button.png			\
-	button_disabled.png		\
-	buttonhi.png			\
+	button.xml			\
 	buttonplay.png			\
-	buttonpress.png			\
 	checkbox.png			\
 	circle-gray.png			\
 	circle-green.png		\
