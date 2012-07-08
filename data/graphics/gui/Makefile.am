@@ -14,6 +14,9 @@ gui_DATA =				\
 	close_button.png		\
 	colors.xml			\
 	deepbox.png			\
+	dropdown.xml		\
+	dropdown_background.xml		\
+	dropdown_pressed.xml		\
 	equipmentbox.png	\
 	item_shortcut_bgr.png		\
 	mouse.png			\

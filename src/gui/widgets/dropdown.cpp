@@ -48,6 +48,12 @@ Image *DropDown::buttons[2][2];
 ImageRect DropDown::skin;
 float DropDown::mAlpha = 1.0;
 
+static std::string const dropdownFiles[2] =
+{
+    "dropdown.xml",
+    "dropdown_pressed.xml"
+};
+
 DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
                    std::string eventId):
     gcn::DropDown::DropDown(listModel,
@@ -60,47 +66,37 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
     if (instances == 0)
     {
         // Load the background skin
-
-        // Get the button skin
-        buttons[1][0] = Theme::getImageFromTheme("vscroll_up_default.png");
-        buttons[0][0] = Theme::getImageFromTheme("vscroll_down_default.png");
-        buttons[1][1] = Theme::getImageFromTheme("vscroll_up_pressed.png");
-        buttons[0][1] = Theme::getImageFromTheme("vscroll_down_pressed.png");
-
-        if (buttons[0][0])
-            buttons[0][0]->setAlpha(mAlpha);
-        if (buttons[0][1])
-            buttons[0][1]->setAlpha(mAlpha);
-        if (buttons[1][0])
-            buttons[1][0]->setAlpha(mAlpha);
-        if (buttons[1][1])
-            buttons[1][1]->setAlpha(mAlpha);
-
-        // get the border skin
-        Image *boxBorder = Theme::getImageFromTheme("deepbox.png");
-        if (boxBorder)
+        for (int i = 0; i < 2; i ++)
         {
-            int gridx[4] = {0, 3, 28, 31};
-            int gridy[4] = {0, 3, 28, 31};
-            int a = 0, x, y;
-
-            for (y = 0; y < 3; y++)
+            Skin *skin = Theme::instance()->load(dropdownFiles[i]);
+            if (skin)
             {
-                for (x = 0; x < 3; x++)
+                const ImageRect &rect = skin->getBorder();
+                for (int f = 0; f < 2; f ++)
                 {
-                    skin.grid[a] = boxBorder->getSubImage(gridx[x], gridy[y],
-                                                          gridx[x + 1] -
-                                                          gridx[x] + 1,
-                                                          gridy[y + 1] -
-                                                          gridy[y] + 1);
-                    if (skin.grid[a])
-                        skin.grid[a]->setAlpha(mAlpha);
-                    a++;
+                    if (rect.grid[f])
+                    {
+                        rect.grid[f]->incRef();
+                        buttons[f][i] = rect.grid[f];
+                        buttons[f][i]->setAlpha(mAlpha);
+                    }
+                    else
+                    {
+                        buttons[f][i] = nullptr;
+                    }
                 }
             }
-
-            boxBorder->decRef();
+            else
+            {
+                for (int f = 0; f < 2; f ++)
+                    buttons[f][i] = nullptr;
+            }
+            Theme::instance()->unload(skin);
         }
+
+        // get the border skin
+        if (Theme::instance())
+            Theme::instance()->loadRect(skin, "dropdown_background.xml");
     }
 
     instances++;
@@ -119,21 +115,6 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
 DropDown::~DropDown()
 {
     instances--;
-    // Free images memory
-    if (instances == 0)
-    {
-        if (buttons[0][0])
-            buttons[0][0]->decRef();
-        if (buttons[0][1])
-            buttons[0][1]->decRef();
-        if (buttons[1][0])
-            buttons[1][0]->decRef();
-        if (buttons[1][1])
-            buttons[1][1]->decRef();
-
-        for_each(skin.grid, skin.grid + 9, dtor<Image*>());
-    }
-
     delete mScrollArea;
     mScrollArea = nullptr;
 }
