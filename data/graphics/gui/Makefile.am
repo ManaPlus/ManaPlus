@@ -21,6 +21,7 @@ gui_DATA =				\
 	mouse.png			\
 	playerbox_background.xml	\
 	progress-indicator.png		\
+	progressbar.xml			\
 	radioin.png			\
 	radioin_highlight.png		\
 	radioout.png			\

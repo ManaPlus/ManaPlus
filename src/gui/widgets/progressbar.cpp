@@ -71,32 +71,11 @@ ProgressBar::ProgressBar(float progress,
 
     if (mInstances == 0)
     {
-        Image *dBorders = Theme::getImageFromTheme("progress.png");
-        if (!dBorders)
-            dBorders = Theme::getImageFromTheme("vscroll_grey.png");
-        if (dBorders)
-        {
-            mBorder.grid[0] = dBorders->getSubImage(0, 0, 4, 4);
-            mBorder.grid[1] = dBorders->getSubImage(4, 0, 3, 4);
-            mBorder.grid[2] = dBorders->getSubImage(7, 0, 4, 4);
-            mBorder.grid[3] = dBorders->getSubImage(0, 4, 4, 10);
-            mBorder.grid[4] = dBorders->getSubImage(4, 4, 3, 10);
-            mBorder.grid[5] = dBorders->getSubImage(7, 4, 4, 10);
-            mBorder.grid[6] = dBorders->getSubImage(0, 15, 4, 4);
-            mBorder.grid[7] = dBorders->getSubImage(4, 15, 3, 4);
-            mBorder.grid[8] = dBorders->getSubImage(7, 15, 4, 4);
+        for (int f = 0; f < 9; f ++)
+            mBorder.grid[f] = nullptr;
 
-            for (int i = 0; i < 9; i++)
-                mBorder.grid[i]->setAlpha(mAlpha);
-
-            dBorders->decRef();
-        }
-        else
-        {
-            for (int f = 0; f < 9; f ++)
-                mBorder.grid[f] = nullptr;
-        }
-
+        if (Theme::instance())
+            Theme::instance()->loadRect(mBorder, "progressbar.xml");
     }
 
     mInstances++;
@@ -106,8 +85,6 @@ ProgressBar::~ProgressBar()
 {
     mInstances--;
 
-    if (mInstances == 0)
-        for_each(mBorder.grid, mBorder.grid + 9, dtor<Image*>());
     delete mVertexes;
     mVertexes = nullptr;
 }
