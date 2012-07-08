@@ -442,7 +442,7 @@ bool Theme::tryThemePath(std::string themeName)
             mThemePath = path;
             mThemeName = themeName;
             if (instance())
-                instance()->loadColors(mThemePath);
+                instance()->loadColors("");
             return true;
         }
     }
