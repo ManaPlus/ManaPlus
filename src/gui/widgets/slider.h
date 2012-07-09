@@ -26,6 +26,7 @@
 #include <guichan/widgets/slider.hpp>
 
 class Image;
+class ImageRect;
 
 /**
  * Slider widget. Same as the Guichan slider but with custom look.
@@ -77,16 +78,30 @@ class Slider : public gcn::Slider
 
         void keyPressed(gcn::KeyEvent& keyEvent);
 
+        enum SLIDER_ENUM
+        {
+            HSTART,
+            HMID,
+            HEND,
+            HGRIP,
+            VSTART,
+            VMID,
+            VEND,
+            VGRIP,
+            SLIDER_MAX
+        };
+
     private:
         /**
          * Used to initialize instances.
          */
         void init();
 
-        static Image *hStart, *hMid, *hEnd, *hGrip;
-        static Image *vStart, *vMid, *vEnd, *vGrip;
-        static Image *hStartHi, *hMidHi, *hEndHi, *hGripHi;
-        static Image *vStartHi, *vMidHi, *vEndHi, *vGripHi;
+        static ImageRect buttons[2];
+        //*hStart, *hMid, *hEnd, *hGrip;
+//        static Image *vStart, *vMid, *vEnd, *vGrip;
+//        static Image *hStartHi, *hMidHi, *hEndHi, *hGripHi;
+//        static Image *vStartHi, *vMidHi, *vEndHi, *vGripHi;
         bool mHasMouse;
         static float mAlpha;
         static int mInstances;

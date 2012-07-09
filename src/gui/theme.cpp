@@ -411,13 +411,21 @@ Skin *Theme::readSkin(const std::string &filename)
                     else
                         loadSkinImage(8, "bottom-right-corner")
                     else
-                        loadSkinImage(0, "up")
+                        loadSkinImage2(0, "up", "hstart")
                     else
-                        loadSkinImage(1, "down")
+                        loadSkinImage2(1, "down", "hmiddle")
                     else
-                        loadSkinImage(2, "left")
+                        loadSkinImage2(2, "left", "hend")
                     else
-                        loadSkinImage(3, "right")
+                        loadSkinImage2(3, "right", "hgrip")
+                    else
+                        loadSkinImage(4, "vstart")
+                    else
+                        loadSkinImage(5, "vmiddle")
+                    else
+                        loadSkinImage(6, "vend")
+                    else
+                        loadSkinImage(7, "vgrip")
                 }
                 else if (xmlNameEqual(partNode, "option"))
                 {

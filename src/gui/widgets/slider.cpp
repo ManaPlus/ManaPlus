@@ -34,12 +34,15 @@
 
 #include "debug.h"
 
-Image *Slider::hStart, *Slider::hMid, *Slider::hEnd, *Slider::hGrip;
-Image *Slider::vStart, *Slider::vMid, *Slider::vEnd, *Slider::vGrip;
-Image *Slider::hStartHi, *Slider::hMidHi, *Slider::hEndHi, *Slider::hGripHi;
-Image *Slider::vStartHi, *Slider::vMidHi, *Slider::vEndHi, *Slider::vGripHi;
+ImageRect Slider::buttons[2];
 float Slider::mAlpha = 1.0;
 int Slider::mInstances = 0;
+
+static std::string const data[2] =
+{
+    "slider.xml",
+    "slider_highlighted.xml"
+};
 
 Slider::Slider(double scaleEnd):
     gcn::Slider(scaleEnd),
@@ -58,26 +61,6 @@ Slider::Slider(double scaleStart, double scaleEnd):
 Slider::~Slider()
 {
     mInstances--;
-
-    if (mInstances == 0)
-    {
-        delete hStart;
-        delete hMid;
-        delete hEnd;
-        delete hGrip;
-        delete vStart;
-        delete vMid;
-        delete vEnd;
-        delete vGrip;
-        delete hStartHi;
-        delete hMidHi;
-        delete hEndHi;
-        delete hGripHi;
-        delete vStartHi;
-        delete vMidHi;
-        delete vEndHi;
-        delete vGripHi;
-    }
 }
 
 void Slider::init()
@@ -87,100 +70,18 @@ void Slider::init()
     // Load resources
     if (mInstances == 0)
     {
-        int x, y, w, h, o1, o2;
-
-        Image *slider = Theme::getImageFromTheme("slider.png");
-        Image *sliderHi = Theme::getImageFromTheme("slider_hilight.png");
-
-        x = 0; y = 0;
-        w = 15; h = 6;
-        o1 = 4; o2 = 11;
-        if (slider)
+        if (Theme::instance())
         {
-            hStart = slider->getSubImage(x, y, o1 - x, h);
-            hMid = slider->getSubImage(o1, y, o2 - o1, h);
-            hEnd = slider->getSubImage(o2, y, w - o2 + x, h);
+            for (int mode = 0; mode < 2; mode ++)
+                Theme::instance()->loadRect(buttons[mode], data[mode], 0, 8);
         }
-        else
-        {
-            hStart = nullptr;
-            hMid = nullptr;
-            hEnd = nullptr;
-        }
-        if (sliderHi)
-        {
-            hStartHi = sliderHi->getSubImage(x, y, o1 - x, h);
-            hMidHi = sliderHi->getSubImage(o1, y, o2 - o1, h);
-            hEndHi = sliderHi->getSubImage(o2, y, w - o2 + x, h);
-        }
-        else
-        {
-            hStartHi = nullptr;
-            hMidHi = nullptr;
-            hEndHi = nullptr;
-        }
-
-        x = 6; y = 8;
-        w = 9; h = 10;
-        if (slider)
-            hGrip = slider->getSubImage(x, y, w, h);
-        else
-            hGrip = nullptr;
-        if (sliderHi)
-            hGripHi = sliderHi->getSubImage(x, y, w, h);
-        else
-            hGripHi = nullptr;
-
-        x = 0; y = 6;
-        w = 6; h = 21;
-        o1 = 10; o2 = 18;
-        if (slider)
-        {
-            vStart = slider->getSubImage(x, y, w, o1 - y);
-            vMid = slider->getSubImage(x, o1, w, o2 - o1);
-            vEnd = slider->getSubImage(x, o2, w, h - o2 + y);
-        }
-        else
-        {
-            vStart = nullptr;
-            vMid = nullptr;
-            vEnd = nullptr;
-        }
-        if (sliderHi)
-        {
-            vStartHi = sliderHi->getSubImage(x, y, w, o1 - y);
-            vMidHi = sliderHi->getSubImage(x, o1, w, o2 - o1);
-            vEndHi = sliderHi->getSubImage(x, o2, w, h - o2 + y);
-        }
-        else
-        {
-            vStartHi = nullptr;
-            vMidHi = nullptr;
-            vEndHi = nullptr;
-        }
-
-        x = 6; y = 8;
-        w = 9; h = 10;
-        if (slider)
-            vGrip = slider->getSubImage(x, y, w, h);
-        else
-            vGrip = nullptr;
-
-        if (sliderHi)
-            vGripHi = sliderHi->getSubImage(x, y, w, h);
-        else
-            vGripHi = nullptr;
-
-        if (slider)
-            slider->decRef();
-        if (sliderHi)
-            sliderHi->decRef();
+        updateAlpha();
     }
 
     mInstances++;
 
-    if (hGrip)
-        setMarkerLength(hGrip->getWidth());
+    if (buttons[0].grid[HGRIP])
+        setMarkerLength(buttons[0].grid[HGRIP]->getWidth());
 }
 
 void Slider::updateAlpha()
@@ -191,90 +92,77 @@ void Slider::updateAlpha()
     if (alpha != mAlpha)
     {
         mAlpha = alpha;
-        if (hStart)
-            hStart->setAlpha(mAlpha);
-        if (hMid)
-            hMid->setAlpha(mAlpha);
-        if (hEnd)
-            hEnd->setAlpha(mAlpha);
-        if (hGrip)
-            hGrip->setAlpha(mAlpha);
-        if (hStartHi)
-            hStartHi->setAlpha(mAlpha);
-        if (hMidHi)
-            hMidHi->setAlpha(mAlpha);
-        if (hEndHi)
-            hEndHi->setAlpha(mAlpha);
-        if (hGripHi)
-            hGripHi->setAlpha(mAlpha);
-
-        if (vStart)
-            vStart->setAlpha(mAlpha);
-        if (vMid)
-            vMid->setAlpha(mAlpha);
-        if (vEnd)
-            vEnd->setAlpha(mAlpha);
-        if (vGrip)
-            vGrip->setAlpha(mAlpha);
-        if (vStartHi)
-            vStartHi->setAlpha(mAlpha);
-        if (vMidHi)
-            vMidHi->setAlpha(mAlpha);
-        if (vEndHi)
-            vEndHi->setAlpha(mAlpha);
-        if (vGripHi)
-            vGripHi->setAlpha(mAlpha);
+        for (int f = 0; f < 2; f ++)
+        {
+            for (int d = 0; d < SLIDER_MAX; d ++)
+            {
+                if (buttons[f].grid[d])
+                    buttons[f].grid[d]->setAlpha(mAlpha);
+            }
+        }
     }
-
 }
 
 void Slider::draw(gcn::Graphics *graphics)
 {
-    if (!hStart || !hStartHi || !hEnd)
+    if (!buttons[0].grid[HSTART] || !buttons[1].grid[HSTART]
+        || !buttons[0].grid[HEND])
+    {
         return;
+    }
 
     int w = getWidth();
     int h = getHeight();
     int x = 0;
-    int y = mHasMouse ? (h - hStartHi->getHeight()) / 2 :
-            (h - hStart->getHeight()) / 2;
+    int y = mHasMouse ? (h - buttons[1].grid[HSTART]->getHeight()) / 2 :
+        (h - buttons[0].grid[HSTART]->getHeight()) / 2;
 
     updateAlpha();
 
     if (!mHasMouse)
     {
-        static_cast<Graphics*>(graphics)->drawImage(hStart, x, y);
+        static_cast<Graphics*>(graphics)->drawImage(
+            buttons[0].grid[HSTART], x, y);
 
-        w -= hStart->getWidth() + hEnd->getWidth();
-        x += hStart->getWidth();
+        const int width = buttons[0].grid[HSTART]->getWidth();
+        w -= width + buttons[0].grid[HEND]->getWidth();
+        x += width;
 
-        if (hMid)
+        if (buttons[0].grid[HMID])
         {
+            const Image *hMid = buttons[0].grid[HMID];
             static_cast<Graphics*>(graphics)->
                 drawImagePattern(hMid, x, y, w, hMid->getHeight());
         }
 
         x += w;
-        static_cast<Graphics*>(graphics)->drawImage(hEnd, x, y);
+        static_cast<Graphics*>(graphics)->drawImage(buttons[0].grid[HEND], x, y);
     }
     else
     {
-        static_cast<Graphics*>(graphics)->drawImage(hStartHi, x, y);
+        static_cast<Graphics*>(graphics)->drawImage(
+            buttons[1].grid[HSTART], x, y);
 
-        w -= hStartHi->getWidth();
-        if (hEndHi)
-            w -= hEndHi->getWidth();
-        x += hStartHi->getWidth();
+        const int width = buttons[1].grid[HSTART]->getWidth();
+        w -= width;
+        if (buttons[1].grid[HEND])
+            w -= buttons[1].grid[HEND]->getWidth();
+        x += width;
 
-        if (hMidHi)
+        if (buttons[1].grid[HMID])
         {
-            static_cast<Graphics*>(graphics)->
-                drawImagePattern(hMidHi, x, y, w, hMidHi->getHeight());
+            const Image *hMid = buttons[1].grid[HMID];
+            static_cast<Graphics*>(graphics)->drawImagePattern(
+                hMid, x, y, w,
+                hMid->getHeight());
         }
 
         x += w;
-        if (hEndHi)
-            static_cast<Graphics*>(graphics)->drawImage(hEndHi, x, y);
+        if (buttons[1].grid[HEND])
+        {
+            static_cast<Graphics*>(graphics)->drawImage(
+                buttons[1].grid[HEND], x, y);
+        }
     }
 
     drawMarker(graphics);
@@ -282,12 +170,13 @@ void Slider::draw(gcn::Graphics *graphics)
 
 void Slider::drawMarker(gcn::Graphics *graphics)
 {
-    if (!(mHasMouse?hGripHi:hGrip))
+    const Image *img = (mHasMouse ? buttons[1].grid[HGRIP]
+        : buttons[0].grid[HGRIP]);
+    if (!img)
         return;
 
-    static_cast<Graphics*>(graphics)->
-       drawImage(mHasMouse?hGripHi:hGrip, getMarkerPosition(),
-       (getHeight() - (mHasMouse?hGripHi:hGrip)->getHeight()) / 2);
+    static_cast<Graphics*>(graphics)->drawImage(img, getMarkerPosition(),
+       (getHeight() - img->getHeight()) / 2);
 }
 
 void Slider::mouseEntered(gcn::MouseEvent& event A_UNUSED)

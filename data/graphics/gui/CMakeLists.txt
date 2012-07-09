@@ -30,8 +30,8 @@ SET (FILES
     scrollbuttons.xml
     scrollbuttons_pressed.xml
     selection.png
-    slider.png
-    slider_hilight.png
+    slider.xml
+    slider_highlighted.xml
     speechbubble.xml
     sticky_button.png
     tab.xml
