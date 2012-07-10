@@ -8,7 +8,6 @@ SET (FILES
     checkbox.png
     circle-gray.png
     circle-green.png
-    close_button.png
     colors.xml
     dropdown.xml
     dropdown_background.xml
@@ -33,7 +32,6 @@ SET (FILES
     slider.xml
     slider_highlighted.xml
     speechbubble.xml
-    sticky_button.png
     tab.xml
     tab_highlighted.xml
     tab_selected.xml

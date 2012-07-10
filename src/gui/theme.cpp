@@ -87,13 +87,12 @@ Skin::~Skin()
         mBorder.grid[i] = nullptr;
     }
 
-    if (mCloseImage)
-    {
-        mCloseImage->decRef();
-        mCloseImage = nullptr;
-    }
+    delete mCloseImage;
+    mCloseImage = nullptr;
+
     delete mStickyImageUp;
     mStickyImageUp = nullptr;
+
     delete mStickyImageDown;
     mStickyImageDown = nullptr;
 }
@@ -307,33 +306,74 @@ void Theme::optionChanged(const std::string &)
     updateAlpha();
 }
 
-#define loadSkinImage(obj, name) \
-    if (partType == name) \
-    { \
-        if (dBorders) \
-        { \
-            border.grid[obj] = dBorders->getSubImage( \
-                xPos, yPos, width, height); \
-        } \
-        else \
-        { \
-            border.grid[obj] = nullptr; \
-        } \
-    }
+struct SkinParameter
+{
+    int index;
+    std::string name;
+};
 
-#define loadSkinImage2(obj, name1, name2) \
-    if (partType == name1 || partType == name2) \
-    { \
-        if (dBorders) \
-        { \
-            border.grid[obj] = dBorders->getSubImage( \
-                xPos, yPos, width, height); \
-        } \
-        else \
-        { \
-            border.grid[obj] = nullptr; \
-        } \
+static SkinParameter skinParam[] =
+{
+    {0, "top-left-corner"},
+    {0, "standart"},
+    {0, "up"},
+    {0, "hstart"},
+    {1, "top-edge"},
+    {1, "highlighted"},
+    {1, "down"},
+    {1, "hmiddle"},
+    {2, "top-right-corner"},
+    {2, "pressed"},
+    {2, "left"},
+    {2, "hend"},
+    {3, "left-edge"},
+    {3, "disabled"},
+    {3, "right"},
+    {3, "hgrip"},
+    {4, "bg-quad"},
+    {4, "vstart"},
+    {5, "right-edge"},
+    {5, "vmiddle"},
+    {6, "bottom-left-corner"},
+    {6, "vend"},
+    {7, "bottom-edge"},
+    {7, "vgrip"},
+    {8, "bottom-right-corner"},
+};
+
+static SkinParameter imageParam[] =
+{
+    {0, "closeImage"},
+    {1, "stickyImageUp"},
+    {2, "stickyImageDown"},
+};
+
+struct SkinHelper
+{
+    std::string partType;
+    int xPos;
+    int yPos;
+    int width;
+    int height;
+    ImageRect *rect;
+    XmlNodePtr *node;
+    Image *image;
+
+    bool loadList(SkinParameter *params, size_t size)
+    {
+        for (unsigned f = 0; f < size; f ++)
+        {
+            logger->log("%s vs %s", partType.c_str(), params[f].name.c_str());
+            if (partType == params[f].name)
+            {
+                rect->grid[params[f].index] = image->getSubImage(
+                    xPos, yPos, width, height);
+                return true;
+            }
+        }
+        return false;
     }
+};
 
 Skin *Theme::readSkin(const std::string &filename)
 {
@@ -364,7 +404,9 @@ Skin *Theme::readSkin(const std::string &filename)
 
     Image *dBorders = Theme::getImageFromTheme(skinSetImage);
     ImageRect border;
+    ImageRect images;
     memset(&border, 0, sizeof(ImageRect));
+    memset(&images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
 
@@ -378,54 +420,31 @@ Skin *Theme::readSkin(const std::string &filename)
                 XML::getProperty(widgetNode, "type", "unknown");
         if (widgetType == "Window")
         {
+            SkinHelper helper;
             const int globalXPos = XML::getProperty(widgetNode, "xpos", 0);
             const int globalYPos = XML::getProperty(widgetNode, "ypos", 0);
             for_each_xml_child_node(partNode, widgetNode)
             {
                 if (xmlNameEqual(partNode, "part"))
                 {
-                    const std::string partType =
-                            XML::getProperty(partNode, "type", "unknown");
-                    const int xPos = XML::getProperty(
+                    helper.partType = XML::getProperty(
+                        partNode, "type", "unknown");
+                    helper.xPos = XML::getProperty(
                         partNode, "xpos", 0) + globalXPos;
-                    const int yPos = XML::getProperty(
+                    helper.yPos = XML::getProperty(
                         partNode, "ypos", 0) + globalYPos;
-                    const int width = XML::getProperty(partNode, "width", 1);
-                    const int height = XML::getProperty(partNode, "height", 1);
+                    helper.width = XML::getProperty(partNode, "width", 1);
+                    helper.height = XML::getProperty(partNode, "height", 1);
+                    helper.image = dBorders;
 
-                        loadSkinImage2(0, "top-left-corner", "standart")
-                    else
-                        loadSkinImage2(1, "top-edge", "highlighted")
-                    else
-                        loadSkinImage2(2, "top-right-corner", "pressed")
-                    else
-                        loadSkinImage2(3, "left-edge", "disabled")
-                    else
-                        loadSkinImage(4, "bg-quad")
-                    else
-                        loadSkinImage(5, "right-edge")
-                    else
-                        loadSkinImage(6, "bottom-left-corner")
-                    else
-                        loadSkinImage(7, "bottom-edge")
-                    else
-                        loadSkinImage(8, "bottom-right-corner")
-                    else
-                        loadSkinImage2(0, "up", "hstart")
-                    else
-                        loadSkinImage2(1, "down", "hmiddle")
-                    else
-                        loadSkinImage2(2, "left", "hend")
-                    else
-                        loadSkinImage2(3, "right", "hgrip")
-                    else
-                        loadSkinImage(4, "vstart")
-                    else
-                        loadSkinImage(5, "vmiddle")
-                    else
-                        loadSkinImage(6, "vend")
-                    else
-                        loadSkinImage(7, "vgrip")
+                    helper.rect = &border;
+                    if (!helper.loadList(skinParam,
+                        sizeof(skinParam) / sizeof(SkinParameter)))
+                    {
+                        helper.rect = &images;
+                        helper.loadList(imageParam,
+                            sizeof(imageParam) / sizeof(SkinParameter));
+                    }
                 }
                 else if (xmlNameEqual(partNode, "option"))
                 {
@@ -452,6 +471,7 @@ Skin *Theme::readSkin(const std::string &filename)
 
     // Hard-coded for now until we update the above code
     // to look for window buttons
+/*
     Image *closeImage = Theme::getImageFromTheme("close_button.png");
     Image *sticky = Theme::getImageFromTheme("sticky_button.png");
     Image *stickyImageUp = nullptr;
@@ -462,9 +482,10 @@ Skin *Theme::readSkin(const std::string &filename)
         stickyImageDown = sticky->getSubImage(15, 0, 15, 15);
         sticky->decRef();
     }
+*/
 
-    Skin *skin = new Skin(border, closeImage, stickyImageUp, stickyImageDown,
-                          filename, "", padding, titlePadding);
+    Skin *skin = new Skin(border, images.grid[0], images.grid[1],
+        images.grid[2], filename, "", padding, titlePadding);
     skin->updateAlpha(mMinimumOpacity);
     return skin;
 }
@@ -851,4 +872,22 @@ void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
         }
         unload(skin);
     }
+}
+
+Image *Theme::getImageFromThemeXml(const std::string &name)
+{
+    Theme *theme = Theme::instance();
+    Skin *skin = theme->load(name);
+    if (skin)
+    {
+        const ImageRect &rect = skin->getBorder();
+        if (rect.grid[0])
+        {
+            rect.grid[0]->incRef();
+            theme->unload(skin);
+            return rect.grid[0];
+        }
+        theme->unload(skin);
+    }
+    return nullptr;
 }
