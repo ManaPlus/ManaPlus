@@ -552,6 +552,41 @@ ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
     return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &rl));
 }
 
+struct SubImageLoader
+{
+    ResourceManager *manager;
+    Image *parent;
+    int x, y;
+    int width, height;
+    static Resource *load(void *v)
+    {
+        if (!v)
+            return nullptr;
+
+        SubImageLoader *rl = static_cast< SubImageLoader * >(v);
+        if (!rl->manager || !rl->parent)
+            return nullptr;
+
+        Image *res = rl->parent->getSubImage(rl->x, rl->y,
+            rl->width, rl->height);
+        return res;
+    }
+};
+
+SubImage *ResourceManager::getSubImage(Image *parent, int x, int y,
+                                       int width, int height)
+{
+    if (!parent)
+        return nullptr;
+
+    SubImageLoader rl = { this, parent, x, y, width, height};
+
+    std::stringstream ss;
+    ss << parent->getIdPath() << ",[" << x << "," << y << ","
+        << width << "x" << height << "]";
+    return reinterpret_cast<SubImage*>(get(ss.str(), SubImageLoader::load, &rl));
+}
+
 struct SpriteDefLoader
 {
     std::string path;
