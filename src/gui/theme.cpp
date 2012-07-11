@@ -363,7 +363,6 @@ struct SkinHelper
     {
         for (unsigned f = 0; f < size; f ++)
         {
-            logger->log("%s vs %s", partType.c_str(), params[f].name.c_str());
             if (partType == params[f].name)
             {
                 rect->grid[params[f].index] = image->getSubImage(

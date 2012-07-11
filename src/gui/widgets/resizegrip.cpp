@@ -43,7 +43,7 @@ ResizeGrip::ResizeGrip(const std::string &image)
     if (mInstances == 0)
     {
         // Load the grip image
-        gripImage = Theme::getImageFromTheme(image);
+        gripImage = Theme::getImageFromThemeXml(image);
         if (gripImage)
             gripImage->setAlpha(mAlpha);
     }
@@ -65,12 +65,6 @@ ResizeGrip::ResizeGrip(const std::string &image)
 ResizeGrip::~ResizeGrip()
 {
     mInstances--;
-
-    if (mInstances == 0 && gripImage)
-    {
-        gripImage->decRef();
-        gripImage = nullptr;
-    }
 }
 
 void ResizeGrip::draw(gcn::Graphics *graphics)

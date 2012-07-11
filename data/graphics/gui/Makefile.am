@@ -25,7 +25,7 @@ gui_DATA =				\
 	radioin_highlight.png		\
 	radioout.png			\
 	radioout_highlight.png		\
-	resize.png			\
+	resize.xml			\
 	scroll.xml			\
 	scroll_background.xml	\
 	scroll_highlighted.xml	\
