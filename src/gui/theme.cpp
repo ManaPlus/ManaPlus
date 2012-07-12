@@ -392,10 +392,7 @@ Skin *Theme::readSkin(const std::string &filename)
     if (filename.empty())
         return nullptr;
 
-//    std::string filename = filename0;
-//    ResourceManager *resman = ResourceManager::getInstance();
-    logger->log("Loading skin '%s'.", filename.c_str());
-//    filename = resman->mapPathToSkin(filename0);
+//    logger->log("Loading skin '%s'.", filename.c_str());
 
     XML::Document doc(resolveThemePath(filename));
     XmlNodePtr rootNode = doc.rootNode();
@@ -410,9 +407,6 @@ Skin *Theme::readSkin(const std::string &filename)
         logger->log1("Theme::readSkin(): Skinset does not define an image!");
         return nullptr;
     }
-
-    logger->log("Theme::load(): <skinset> defines '%s' as a skin image.",
-                skinSetImage.c_str());
 
     Image *dBorders = Theme::getImageFromTheme(skinSetImage);
     ImageRect border;
@@ -479,23 +473,6 @@ Skin *Theme::readSkin(const std::string &filename)
 
     if (dBorders)
         dBorders->decRef();
-
-    logger->log1("Finished loading skin.");
-
-    // Hard-coded for now until we update the above code
-    // to look for window buttons
-/*
-    Image *closeImage = Theme::getImageFromTheme("close_button.png");
-    Image *sticky = Theme::getImageFromTheme("sticky_button.png");
-    Image *stickyImageUp = nullptr;
-    Image *stickyImageDown = nullptr;
-    if (sticky)
-    {
-        stickyImageUp = sticky->getSubImage(0, 0, 15, 15);
-        stickyImageDown = sticky->getSubImage(15, 0, 15, 15);
-        sticky->decRef();
-    }
-*/
 
     Skin *skin = new Skin(border, images.grid[0], images.grid[1],
         images.grid[2], filename, "", padding, titlePadding);
