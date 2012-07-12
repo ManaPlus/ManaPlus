@@ -63,7 +63,8 @@ SpellShortcutContainer::SpellShortcutContainer(unsigned number):
 
     mSpellPopup = new SpellPopup;
 
-    mBackgroundImg = Theme::getImageFromTheme("item_shortcut_bgr.png");
+    mBackgroundImg = Theme::getImageFromThemeXml(
+        "item_shortcut_background.xml");
     if (spellShortcut)
         mMaxItems = spellShortcut->getSpellsCount();
     else

@@ -13,7 +13,7 @@ SET (FILES
     dropdown_background.xml
     dropdown_pressed.xml
     equipmentbox.png
-    item_shortcut_bgr.png
+    item_shortcut_background.xml
     mouse.png
     playerbox_background.xml
     progress-indicator.png

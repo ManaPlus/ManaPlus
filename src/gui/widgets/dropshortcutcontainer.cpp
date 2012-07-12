@@ -55,7 +55,8 @@ DropShortcutContainer::DropShortcutContainer():
 
     mItemPopup = new ItemPopup;
 
-    mBackgroundImg = Theme::getImageFromTheme("item_shortcut_bgr.png");
+    mBackgroundImg = Theme::getImageFromThemeXml(
+        "item_shortcut_background.xml");
     if (dropShortcut)
         mMaxItems = dropShortcut->getItemCount();
     else

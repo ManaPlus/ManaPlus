@@ -56,7 +56,8 @@ EmoteShortcutContainer::EmoteShortcutContainer():
     addMouseListener(this);
     addWidgetListener(this);
 
-    mBackgroundImg = Theme::getImageFromTheme("item_shortcut_bgr.png");
+    mBackgroundImg = Theme::getImageFromThemeXml(
+        "item_shortcut_background.xml");
 
     if (mBackgroundImg)
         mBackgroundImg->setAlpha(Client::getGuiAlpha());
