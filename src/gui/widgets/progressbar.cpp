@@ -84,7 +84,10 @@ ProgressBar::ProgressBar(float progress,
 ProgressBar::~ProgressBar()
 {
     mInstances--;
-
+    if (mInstances == 0 && Theme::instance())
+    {
+        Theme::instance()->unloadRect(mBorder);
+    }
     delete mVertexes;
     mVertexes = nullptr;
 }

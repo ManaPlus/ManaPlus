@@ -115,6 +115,19 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
 DropDown::~DropDown()
 {
     instances--;
+    if (instances == 0)
+    {
+        for (int f = 0; f < 2; f ++)
+        {
+            for (int i = 0; i < 2; i ++)
+            {
+                if (buttons[f][i])
+                    buttons[f][i]->decRef();
+            }
+        }
+        if (Theme::instance())
+            Theme::instance()->unloadRect(skin);
+    }
     delete mScrollArea;
     mScrollArea = nullptr;
 }

@@ -92,6 +92,21 @@ ScrollArea::~ScrollArea()
     delete getContent();
 
     instances--;
+    if (instances == 0 && Theme::instance())
+    {
+        Theme *theme = Theme::instance();
+        theme->unloadRect(background);
+        theme->unloadRect(vMarker);
+        theme->unloadRect(vMarkerHi);
+        for (int i = 0; i < 2; i ++)
+        {
+            for (int f = UP; f < BUTTONS_DIR; f ++)
+            {
+                if (buttons[f][i])
+                    buttons[f][i]->decRef();
+            }
+        }
+    }
 
     delete mVertexes;
     mVertexes = nullptr;

@@ -66,7 +66,7 @@ static void initDefaultThemePath()
 Skin::Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
            const std::string &filePath,
            const std::string &name, int padding, int titlePadding):
-    instances(0),
+    instances(1),
     mFilePath(filePath),
     mName(name),
     mBorder(skin),
@@ -83,18 +83,30 @@ Skin::~Skin()
     // Clean up static resources
     for (int i = 0; i < 9; i++)
     {
-        delete mBorder.grid[i];
-        mBorder.grid[i] = nullptr;
+        if (mBorder.grid[i])
+        {
+            mBorder.grid[i]->decRef();
+            mBorder.grid[i] = nullptr;
+        }
     }
 
-    delete mCloseImage;
-    mCloseImage = nullptr;
+    if (mCloseImage)
+    {
+        mCloseImage->decRef();
+        mCloseImage = nullptr;
+    }
 
-    delete mStickyImageUp;
-    mStickyImageUp = nullptr;
+    if (mStickyImageUp)
+    {
+        mStickyImageUp->decRef();
+        mStickyImageUp = nullptr;
+    }
 
-    delete mStickyImageDown;
-    mStickyImageDown = nullptr;
+    if (mStickyImageDown)
+    {
+        mStickyImageDown->decRef();
+        mStickyImageDown = nullptr;
+    }
 }
 
 void Skin::updateAlpha(float minimumOpacityAllowed)
@@ -261,7 +273,6 @@ void Theme::unload(Skin *skin)
     if (!skin)
         return;
     skin->instances --;
-/*
     // unload theme if no instances
     if (!skin->instances)
     {
@@ -278,7 +289,6 @@ void Theme::unload(Skin *skin)
         }
         delete skin;
     }
-*/
 }
 
 void Theme::setMinimumOpacity(float minimumOpacity)
@@ -358,6 +368,7 @@ struct SkinHelper
     ImageRect *rect;
     XmlNodePtr *node;
     Image *image;
+    ResourceManager *resman;
 
     bool loadList(SkinParameter *params, size_t size)
     {
@@ -365,8 +376,10 @@ struct SkinHelper
         {
             if (partType == params[f].name)
             {
-                rect->grid[params[f].index] = image->getSubImage(
-                    xPos, yPos, width, height);
+//                rect->grid[params[f].index] = image->getSubImage(
+//                    xPos, yPos, width, height);
+                rect->grid[params[f].index] = resman->getSubImage(
+                    image, xPos, yPos, width, height);
                 return true;
             }
         }
@@ -420,6 +433,7 @@ Skin *Theme::readSkin(const std::string &filename)
         if (widgetType == "Window")
         {
             SkinHelper helper;
+            helper.resman = ResourceManager::getInstance();
             const int globalXPos = XML::getProperty(widgetNode, "xpos", 0);
             const int globalYPos = XML::getProperty(widgetNode, "ypos", 0);
             for_each_xml_child_node(partNode, widgetNode)
@@ -865,11 +879,20 @@ void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
         {
             if (rect.grid[f])
             {
-                rect.grid[f]->incRef();
                 image.grid[f] = rect.grid[f];
+                image.grid[f]->incRef();
             }
         }
         unload(skin);
+    }
+}
+
+void Theme::unloadRect(ImageRect &rect, int start, int end)
+{
+    for (int f = start; f <= end; f ++)
+    {
+        if (rect.grid[f])
+            rect.grid[f]->decRef();
     }
 }
 
@@ -882,9 +905,10 @@ Image *Theme::getImageFromThemeXml(const std::string &name)
         const ImageRect &rect = skin->getBorder();
         if (rect.grid[0])
         {
-            rect.grid[0]->incRef();
+            Image *image = rect.grid[0];
+            image->incRef();
             theme->unload(skin);
-            return rect.grid[0];
+            return image;
         }
         theme->unload(skin);
     }

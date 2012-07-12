@@ -38,7 +38,6 @@ class ImageSet;
 class Music;
 class Resource;
 class SoundEffect;
-class SubImage;
 class SpriteDef;
 
 struct SDL_Surface;
@@ -203,7 +202,7 @@ class ResourceManager
          */
         ImageSet *getImageSet(const std::string &imagePath, int w, int h);
 
-        SubImage *getSubImage(Image *parent, int x, int y, int width, int height);
+        Image *getSubImage(Image *parent, int x, int y, int width, int height);
 
         /**
          * Creates a sprite definition based on a given path and the supplied

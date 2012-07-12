@@ -83,6 +83,8 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
 TextField::~TextField()
 {
     instances--;
+    if (instances == 0 && Theme::instance())
+        Theme::instance()->unloadRect(skin);
 }
 
 void TextField::updateAlpha()

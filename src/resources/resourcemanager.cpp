@@ -573,7 +573,7 @@ struct SubImageLoader
     }
 };
 
-SubImage *ResourceManager::getSubImage(Image *parent, int x, int y,
+Image *ResourceManager::getSubImage(Image *parent, int x, int y,
                                        int width, int height)
 {
     if (!parent)
@@ -584,7 +584,7 @@ SubImage *ResourceManager::getSubImage(Image *parent, int x, int y,
     std::stringstream ss;
     ss << parent->getIdPath() << ",[" << x << "," << y << ","
         << width << "x" << height << "]";
-    return reinterpret_cast<SubImage*>(get(ss.str(), SubImageLoader::load, &rl));
+    return static_cast<Image*>(get(ss.str(), SubImageLoader::load, &rl));
 }
 
 struct SpriteDefLoader

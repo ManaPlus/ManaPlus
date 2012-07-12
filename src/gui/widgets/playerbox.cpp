@@ -60,6 +60,8 @@ PlayerBox::PlayerBox(Being *being):
 PlayerBox::~PlayerBox()
 {
     instances--;
+    if (instances == 0 && Theme::instance())
+        Theme::instance()->unloadRect(background);
 
     mBeing = nullptr;
 }

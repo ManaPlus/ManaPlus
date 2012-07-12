@@ -339,6 +339,11 @@ void Window::setResizable(bool r)
 
     if (r)
     {
+        if (mGrip)
+        {
+            remove(mGrip);
+            delete mGrip;
+        }
         mGrip = new ResizeGrip;
         mGrip->setX(getWidth() - mGrip->getWidth() - getChildrenArea().x);
         mGrip->setY(getHeight() - mGrip->getHeight() - getChildrenArea().y);
