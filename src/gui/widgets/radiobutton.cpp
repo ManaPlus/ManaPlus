@@ -51,20 +51,25 @@ RadioButton::RadioButton(const std::string &caption, const std::string &group,
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
     if (instances == 0)
     {
-        radioNormal = Theme::getImageFromTheme("radioout.png");
-        radioChecked = Theme::getImageFromTheme("radioin.png");
-        radioDisabled = Theme::getImageFromTheme("radioout.png");
-        radioDisabledChecked = Theme::getImageFromTheme("radioin.png");
-        radioNormalHi = Theme::getImageFromTheme("radioout_highlight.png");
-        radioCheckedHi = Theme::getImageFromTheme("radioin_highlight.png");
+        if (Theme::instance())
+        {
+            ImageRect rect;
+            Theme::instance()->loadRect(rect, "radio.xml", 0, 3);
+            radioChecked = rect.grid[0];
+            radioDisabledChecked = rect.grid[0];
+            radioCheckedHi = rect.grid[1];
+            radioNormal = rect.grid[2];
+            radioDisabled = rect.grid[2];
+            radioNormalHi = rect.grid[3];
+        }
         if (radioNormal)
             radioNormal->setAlpha(mAlpha);
         if (radioChecked)
             radioChecked->setAlpha(mAlpha);
-        if (radioDisabled)
-            radioDisabled->setAlpha(mAlpha);
-        if (radioDisabledChecked)
-            radioDisabledChecked->setAlpha(mAlpha);
+//        if (radioDisabled)
+//            radioDisabled->setAlpha(mAlpha);
+//        if (radioDisabledChecked)
+//            radioDisabledChecked->setAlpha(mAlpha);
         if (radioNormalHi)
             radioNormalHi->setAlpha(mAlpha);
         if (radioCheckedHi)
@@ -84,10 +89,10 @@ RadioButton::~RadioButton()
             radioNormal->decRef();
         if (radioChecked)
             radioChecked->decRef();
-        if (radioDisabled)
-            radioDisabled->decRef();
-        if (radioDisabledChecked)
-            radioDisabledChecked->decRef();
+//        if (radioDisabled)
+//            radioDisabled->decRef();
+//        if (radioDisabledChecked)
+//            radioDisabledChecked->decRef();
         if (radioNormalHi)
             radioNormalHi->decRef();
         if (radioCheckedHi)
@@ -104,10 +109,10 @@ void RadioButton::drawBox(gcn::Graphics* graphics)
             radioNormal->setAlpha(mAlpha);
         if (radioChecked)
             radioChecked->setAlpha(mAlpha);
-        if (radioDisabled)
-            radioDisabled->setAlpha(mAlpha);
-        if (radioDisabledChecked)
-            radioDisabledChecked->setAlpha(mAlpha);
+//        if (radioDisabled)
+//            radioDisabled->setAlpha(mAlpha);
+//        if (radioDisabledChecked)
+//            radioDisabledChecked->setAlpha(mAlpha);
         if (radioNormalHi)
             radioNormalHi->setAlpha(mAlpha);
         if (radioCheckedHi)

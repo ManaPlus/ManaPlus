@@ -20,10 +20,7 @@ SET (FILES
     playerbox_background.xml
     progress-indicator.png
     progressbar.xml
-    radioin.png
-    radioin_highlight.png
-    radioout.png
-    radioout_highlight.png
+    radio.xml
     resize.xml
     scroll.xml
     scroll_background.xml
