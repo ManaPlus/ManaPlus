@@ -9,8 +9,8 @@ gui_DATA =				\
 	button_pressed.xml		\
 	buttonplay.png			\
 	checkbox.png			\
-	circle-gray.png			\
-	circle-green.png		\
+	circle-off.xml			\
+	circle-on.xml		\
 	colors.xml			\
 	dropdown.xml		\
 	dropdown_background.xml		\

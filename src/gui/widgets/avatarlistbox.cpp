@@ -57,8 +57,8 @@ AvatarListBox::AvatarListBox(AvatarListModel *model):
 
     if (instances == 1)
     {
-        onlineIcon = Theme::getImageFromTheme("circle-green.png");
-        offlineIcon = Theme::getImageFromTheme("circle-gray.png");
+        onlineIcon = Theme::getImageFromThemeXml("circle-on.xml");
+        offlineIcon = Theme::getImageFromThemeXml("circle-off.xml");
     }
 
     setWidth(200);
