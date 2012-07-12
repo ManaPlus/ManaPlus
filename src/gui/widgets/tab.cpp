@@ -82,7 +82,7 @@ Tab::~Tab()
     {
         Theme *theme = Theme::instance();
         for (int mode = 0; mode < TAB_COUNT; mode ++)
-            Theme::instance()->unloadRect(tabImg[mode]);
+            theme->unloadRect(tabImg[mode]);
     }
     delete mVertexes;
     mVertexes = nullptr;
