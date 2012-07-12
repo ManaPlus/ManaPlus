@@ -174,7 +174,7 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
 {
     setFocusable(true);
 
-    mSelImg = Theme::getImageFromTheme("selection.png");
+    mSelImg = Theme::getImageFromThemeXml("item_selection.xml");
     if (!mSelImg)
         logger->log1("Error: Unable to load selection.png");
 

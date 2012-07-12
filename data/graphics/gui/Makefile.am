@@ -15,7 +15,9 @@ gui_DATA =				\
 	dropdown.xml		\
 	dropdown_background.xml		\
 	dropdown_pressed.xml		\
+	emote_selection.xml	\
 	equipmentbox.png	\
+	item_selection.xml	\
 	item_shortcut_background.xml	\
 	mouse.png			\
 	playerbox_background.xml	\
@@ -31,7 +33,6 @@ gui_DATA =				\
 	scroll_highlighted.xml	\
 	scrollbuttons.xml			\
 	scrollbuttons_pressed.xml\
-	selection.png			\
 	slider.xml			\
 	slider_highlighted.xml		\
 	speechbubble.xml		\

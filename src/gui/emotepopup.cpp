@@ -63,7 +63,7 @@ EmotePopup::EmotePopup() :
             mEmotes.push_back(sprite);
     }
 
-    mSelectionImage = Theme::getImageFromTheme("selection.png");
+    mSelectionImage = Theme::getImageFromThemeXml("emote_selection.xml");
     if (!mSelectionImage)
         logger->log1("Error: Unable to load selection.png");
 
