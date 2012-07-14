@@ -202,6 +202,8 @@ class ResourceManager
          */
         ImageSet *getImageSet(const std::string &imagePath, int w, int h);
 
+        ImageSet *getSubImageSet(Image *parent, int width, int height);
+
         Image *getSubImage(Image *parent, int x, int y, int width, int height);
 
         /**

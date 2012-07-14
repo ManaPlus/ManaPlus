@@ -148,6 +148,8 @@ class Theme : public Palette, public ConfigListener
         static ImageSet *getImageSetFromTheme(const std::string &path,
                                               int w, int h);
 
+        ImageSet *getImageSetFromThemeXml(const std::string &name,
+                                          int w, int h);
         enum ThemePalette
         {
             TEXT = 0,

@@ -552,6 +552,39 @@ ImageSet *ResourceManager::getImageSet(const std::string &imagePath,
     return static_cast<ImageSet*>(get(ss.str(), ImageSetLoader::load, &rl));
 }
 
+
+struct SubImageSetLoader
+{
+    ResourceManager *manager;
+    Image *parent;
+    int width, height;
+    static Resource *load(void *v)
+    {
+        if (!v)
+            return nullptr;
+
+        SubImageSetLoader *rl = static_cast< SubImageSetLoader * >(v);
+        if (!rl->manager)
+            return nullptr;
+
+        if (!rl->parent)
+            return nullptr;
+        ImageSet *res = new ImageSet(rl->parent, rl->width, rl->height);
+        return res;
+    }
+};
+
+ImageSet *ResourceManager::getSubImageSet(Image *parent, int width, int height)
+{
+    if (!parent)
+        return nullptr;
+
+    SubImageSetLoader rl = { this, parent, width, height };
+    std::stringstream ss;
+    ss << parent->getIdPath() << ", set[" << width << "x" << height << "]";
+    return static_cast<ImageSet*>(get(ss.str(), SubImageSetLoader::load, &rl));
+}
+
 struct SubImageLoader
 {
     ResourceManager *manager;
@@ -574,7 +607,7 @@ struct SubImageLoader
 };
 
 Image *ResourceManager::getSubImage(Image *parent, int x, int y,
-                                       int width, int height)
+                                    int width, int height)
 {
     if (!parent)
         return nullptr;

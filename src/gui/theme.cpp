@@ -895,3 +895,27 @@ Image *Theme::getImageFromThemeXml(const std::string &name)
     }
     return nullptr;
 }
+
+ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
+                                         int w, int h)
+{
+    Theme *theme = Theme::instance();
+    Skin *skin = theme->load(name);
+    if (skin)
+    {
+        const ImageRect &rect = skin->getBorder();
+        if (rect.grid[0])
+        {
+            Image *image = rect.grid[0];
+
+            ResourceManager *resman = ResourceManager::getInstance();
+            ImageSet *imageSet = resman->getSubImageSet(image, w, h);
+
+//            image->incRef();
+            theme->unload(skin);
+            return imageSet;
+        }
+        theme->unload(skin);
+    }
+    return nullptr;
+}
