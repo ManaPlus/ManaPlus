@@ -71,7 +71,6 @@ DefaultsData* getConfigDefaults()
     DefaultsData* configData = new DefaultsData;
     // Init main config defaults
     AddDEF(configData, "OverlayDetail", 2);
-    AddDEF(configData, "speechBubblecolor", "000000");
     AddDEF(configData, "speechBubbleAlpha", 1.0f);
     AddDEF(configData, "MostUsedServerName0", "server.themanaworld.org");
     AddDEF(configData, "visiblenames", true);

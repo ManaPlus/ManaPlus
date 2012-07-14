@@ -1,5 +1,6 @@
 SET (FILES
     bubble.png
+    bubble.xml
     button.xml
     button_disabled.xml
     button_highlighted.xml

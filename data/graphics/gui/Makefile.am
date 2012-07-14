@@ -3,6 +3,7 @@ guidir = $(pkgdatadir)/data/graphics/gui
 
 gui_DATA =				\
 	bubble.png			\
+	bubble.xml			\
 	button.xml			\
 	button_disabled.xml		\
 	button_highlighted.xml	\

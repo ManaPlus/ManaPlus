@@ -41,7 +41,6 @@
 
 int Text::mInstances = 0;
 ImageRect Text::mBubble;
-Image *Text::mBubbleArrow;
 
 Text::Text(const std::string &text, int x, int y,
            gcn::Graphics::Alignment alignment,
@@ -59,37 +58,22 @@ Text::Text(const std::string &text, int x, int y,
     if (!textManager)
     {
         textManager = new TextManager;
-        Image *sbImage = Theme::getImageFromTheme("bubble.png|W:#"
-            + config.getStringValue("speechBubblecolor"));
-        if (sbImage)
+        if (Theme::instance())
         {
-            mBubble.grid[0] = sbImage->getSubImage(0, 0, 5, 5);
-            mBubble.grid[1] = sbImage->getSubImage(5, 0, 5, 5);
-            mBubble.grid[2] = sbImage->getSubImage(10, 0, 5, 5);
-            mBubble.grid[3] = sbImage->getSubImage(0, 5, 5, 5);
-            mBubble.grid[4] = sbImage->getSubImage(5, 5, 5, 5);
-            mBubble.grid[5] = sbImage->getSubImage(10, 5, 5, 5);
-            mBubble.grid[6] = sbImage->getSubImage(0, 10, 5, 5);
-            mBubble.grid[7] = sbImage->getSubImage(5, 10, 5, 5);
-            mBubble.grid[8] = sbImage->getSubImage(10, 10, 5, 5);
-            mBubbleArrow = sbImage->getSubImage(0, 15, 15, 10);
+            Theme::instance()->loadRect(mBubble, "bubble.xml");
         }
         else
         {
             for (int f = 0; f < 9; f ++)
                 mBubble.grid[f] = nullptr;
-            mBubbleArrow = nullptr;
         }
+
         const float bubbleAlpha = config.getFloatValue("speechBubbleAlpha");
         for (int i = 0; i < 9; i++)
         {
             if (mBubble.grid[i])
                 mBubble.grid[i]->setAlpha(bubbleAlpha);
         }
-        if (mBubbleArrow)
-            mBubbleArrow->setAlpha(bubbleAlpha);
-        if (sbImage)
-            sbImage->decRef();
     }
     ++mInstances;
     mHeight = mFont->getHeight();
@@ -123,26 +107,14 @@ Text::~Text()
     {
         delete textManager;
         textManager = nullptr;
-        delete mBubble.grid[0];
-        mBubble.grid[0] = nullptr;
-        delete mBubble.grid[1];
-        mBubble.grid[1] = nullptr;
-        delete mBubble.grid[2];
-        mBubble.grid[2] = nullptr;
-        delete mBubble.grid[3];
-        mBubble.grid[3] = nullptr;
-        delete mBubble.grid[4];
-        mBubble.grid[4] = nullptr;
-        delete mBubble.grid[5];
-        mBubble.grid[5] = nullptr;
-        delete mBubble.grid[6];
-        mBubble.grid[6] = nullptr;
-        delete mBubble.grid[7];
-        mBubble.grid[7] = nullptr;
-        delete mBubble.grid[8];
-        mBubble.grid[8] = nullptr;
-        delete mBubbleArrow;
-        mBubbleArrow = nullptr;
+        for (int f = 0; f < 9; f ++)
+        {
+            if (mBubble.grid[f])
+            {
+                mBubble.grid[f]->decRef();
+                mBubble.grid[f] = nullptr;
+            }
+        }
     }
 }
 
@@ -164,14 +136,6 @@ void Text::draw(gcn::Graphics *graphics, int xOff, int yOff)
         static_cast<Graphics*>(graphics)->drawImageRect(
                 mX - xOff - 5, mY - yOff - 5, mWidth + 10, mHeight + 10,
                 mBubble);
-        /*
-        if (mWidth >= 15)
-        {
-            static_cast<Graphics*>(graphics)->drawImage(
-                    mBubbleArrow, mX - xOff - 7 + mWidth / 2,
-                    mY - yOff + mHeight + 4);
-        }
-        */
     }
 
     TextRenderer::renderText(graphics, mText,

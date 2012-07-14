@@ -81,7 +81,6 @@ class Text
 
     protected:
         static ImageRect mBubble;   /**< Speech bubble graphic */
-        static Image *mBubbleArrow; /**< Speech bubble arrow graphic */
 };
 
 class FlashText : public Text
