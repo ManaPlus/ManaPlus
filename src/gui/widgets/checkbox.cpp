@@ -53,22 +53,29 @@ CheckBox::CheckBox(const std::string &caption, bool selected,
 {
     if (instances == 0)
     {
-        Image *checkBox = Theme::getImageFromTheme("checkbox.png");
-        if (checkBox)
+        if (Theme::instance())
         {
-            checkBoxNormal = checkBox->getSubImage(0, 0, 9, 10);
-            checkBoxChecked = checkBox->getSubImage(9, 0, 9, 10);
-            checkBoxDisabled = checkBox->getSubImage(18, 0, 9, 10);
-            checkBoxDisabledChecked = checkBox->getSubImage(27, 0, 9, 10);
-            checkBoxNormalHi = checkBox->getSubImage(36, 0, 9, 10);
-            checkBoxCheckedHi = checkBox->getSubImage(45, 0, 9, 10);
-            checkBoxNormal->setAlpha(mAlpha);
-            checkBoxChecked->setAlpha(mAlpha);
-            checkBoxDisabled->setAlpha(mAlpha);
-            checkBoxDisabledChecked->setAlpha(mAlpha);
-            checkBoxNormalHi->setAlpha(mAlpha);
-            checkBoxCheckedHi->setAlpha(mAlpha);
-            checkBox->decRef();
+            ImageRect rect;
+            Theme::instance()->loadRect(rect, "checkbox.xml", 0, 5);
+            checkBoxNormal = rect.grid[0];
+            checkBoxChecked = rect.grid[1];
+            checkBoxDisabled = rect.grid[2];
+            checkBoxDisabledChecked = rect.grid[3];
+            checkBoxNormalHi = rect.grid[4];
+            checkBoxCheckedHi = rect.grid[5];
+
+            if (checkBoxNormal)
+                checkBoxNormal->setAlpha(mAlpha);
+            if (checkBoxChecked)
+                checkBoxChecked->setAlpha(mAlpha);
+            if (checkBoxDisabled)
+                checkBoxDisabled->setAlpha(mAlpha);
+            if (checkBoxDisabledChecked)
+                checkBoxDisabledChecked->setAlpha(mAlpha);
+            if (checkBoxNormalHi)
+                checkBoxNormalHi->setAlpha(mAlpha);
+            if (checkBoxCheckedHi)
+                checkBoxCheckedHi->setAlpha(mAlpha);
         }
         else
         {
@@ -98,18 +105,36 @@ CheckBox::~CheckBox()
 
     if (instances == 0)
     {
-        delete checkBoxNormal;
-        checkBoxNormal = nullptr;
-        delete checkBoxChecked;
-        checkBoxChecked = nullptr;
-        delete checkBoxDisabled;
-        checkBoxDisabled = nullptr;
-        delete checkBoxDisabledChecked;
-        checkBoxDisabledChecked = nullptr;
-        delete checkBoxNormalHi;
-        checkBoxNormalHi = nullptr;
-        delete checkBoxCheckedHi;
-        checkBoxCheckedHi = nullptr;
+        if (checkBoxNormal)
+        {
+            checkBoxNormal->decRef();
+            checkBoxNormal = nullptr;
+        }
+        if (checkBoxChecked)
+        {
+            checkBoxChecked->decRef();
+            checkBoxChecked = nullptr;
+        }
+        if (checkBoxDisabled)
+        {
+            checkBoxDisabled->decRef();
+            checkBoxDisabled = nullptr;
+        }
+        if (checkBoxDisabledChecked)
+        {
+            checkBoxDisabledChecked->decRef();
+            checkBoxDisabledChecked = nullptr;
+        }
+        if (checkBoxNormalHi)
+        {
+            checkBoxNormalHi->decRef();
+            checkBoxNormalHi = nullptr;
+        }
+        if (checkBoxCheckedHi)
+        {
+            checkBoxCheckedHi->decRef();
+            checkBoxCheckedHi = nullptr;
+        }
     }
 }
 

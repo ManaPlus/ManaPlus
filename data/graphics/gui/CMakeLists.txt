@@ -5,7 +5,7 @@ SET (FILES
     button_highlighted.xml
     button_pressed.xml
     buttonplay.png
-    checkbox.png
+    checkbox.xml
     circle-off.xml
     circle-on.xml
     colors.xml
