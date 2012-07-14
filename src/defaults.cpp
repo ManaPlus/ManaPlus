@@ -135,7 +135,7 @@ DefaultsData* getConfigDefaults()
     AddDEF(configData, "whispertab", true);
     AddDEF(configData, "customcursor", true);
     AddDEF(configData, "showownname", true);
-    AddDEF(configData, "showpickupparticle", false);
+    AddDEF(configData, "showpickupparticle", true);
     AddDEF(configData, "showpickupchat", true);
     AddDEF(configData, "fontSize", 11);
     AddDEF(configData, "ReturnToggles", false);
