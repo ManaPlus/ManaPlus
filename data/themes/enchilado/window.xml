@@ -1,6 +1,5 @@
 <skinset name="Default" image="window.png">
-	<widget type="Window">
-		<!-- <option name="padding" value="5" /> --> 
+	<widget type="Window" xpos="190" ypos="30">
 		<!-- Top Row -->
 		<part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
 		<part type="top-edge" xpos="11" ypos="0" width="127" height="10" />
