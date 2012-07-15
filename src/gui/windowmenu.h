@@ -36,7 +36,6 @@
 #include <map>
 #include <vector>
 
-class EmotePopup;
 class TextPopup;
 
 /**
@@ -58,7 +57,7 @@ class WindowMenu : public Container,
 
         void action(const gcn::ActionEvent &event);
 
-        void valueChanged(const gcn::SelectionEvent &event);
+//        void valueChanged(const gcn::SelectionEvent &event);
 
         void mousePressed(gcn::MouseEvent &event);
 
@@ -88,7 +87,6 @@ class WindowMenu : public Container,
 
         void updateButtons();
 
-        EmotePopup *mEmotePopup;
         TextPopup *mTextPopup;
         std::vector <gcn::Button*> mButtons;
         std::map <std::string, gcn::Button*> mButtonNames;

@@ -28,7 +28,6 @@
 #include "keyboardconfig.h"
 
 #include "gui/didyouknowwindow.h"
-#include "gui/emotepopup.h"
 #include "gui/skilldialog.h"
 #ifdef MANASERV_SUPPORT
 #include "gui/specialswindow.h"
@@ -48,6 +47,7 @@
 
 #include "debug.h"
 
+extern Window *emoteShortcutWindow;
 extern Window *equipmentWindow;
 extern Window *inventoryWindow;
 extern Window *itemShortcutWindow;
@@ -60,8 +60,7 @@ extern Window *spellShortcutWindow;
 extern Window *botCheckerWindow;
 extern Window *socialWindow;
 
-WindowMenu::WindowMenu():
-    mEmotePopup(nullptr),
+WindowMenu::WindowMenu() :
     mHaveMouse(false),
     mAutoHide(1)
 {
@@ -148,32 +147,7 @@ void WindowMenu::action(const gcn::ActionEvent &event)
 
     if (event.getId() == ":-)")
     {
-        if (!mEmotePopup)
-        {
-            const gcn::Widget *s = event.getSource();
-            if (s)
-            {
-                const gcn::Rectangle &r = s->getDimension();
-                const int parentX = s->getParent()->getX();
-
-                mEmotePopup = new EmotePopup;
-                const int offset = (r.width - mEmotePopup->getWidth()) / 2;
-                mEmotePopup->setPosition(parentX + r.x + offset,
-                                     r.y + r.height + 5);
-
-                mEmotePopup->addSelectionListener(this);
-            }
-            else
-            {
-                mEmotePopup = nullptr;
-            }
-        }
-        else
-        {
-            if (windowContainer)
-                windowContainer->scheduleDelete(mEmotePopup);
-            mEmotePopup = nullptr;
-        }
+        window = emoteShortcutWindow;
     }
     else if (event.getId() == "STA")
     {
@@ -242,19 +216,9 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     }
 }
 
-void WindowMenu::valueChanged(const gcn::SelectionEvent &event)
-{
-    if (event.getSource() == mEmotePopup)
-    {
-        int emote = mEmotePopup->getSelectedEmote();
-        if (emote && emoteShortcut)
-            emoteShortcut->useEmote(emote);
-
-        if (windowContainer)
-            windowContainer->scheduleDelete(mEmotePopup);
-        mEmotePopup = nullptr;
-    }
-}
+//void WindowMenu::valueChanged(const gcn::SelectionEvent &event)
+//{
+//}
 
 void WindowMenu::addButton(const char* text, std::string description,
                            int &x, int &h, int key, bool visible)

@@ -256,8 +256,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      gui/didyouknowwindow.h \
 	      gui/editserverdialog.cpp \
 	      gui/editserverdialog.h \
-	      gui/emotepopup.cpp \
-	      gui/emotepopup.h \
 	      gui/equipmentwindow.cpp \
 	      gui/equipmentwindow.h \
 	      gui/focushandler.cpp \
