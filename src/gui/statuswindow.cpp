@@ -150,20 +150,20 @@ StatusWindow::StatusWindow():
     mLvlLabel = new Label(strprintf(_("Level: %d"), 0));
     mMoneyLabel = new Label(strprintf(_("Money: %s"), ""));
 
-    int max = PlayerInfo::getAttribute(MAX_HP);
+    int max = PlayerInfo::getAttribute(PlayerInfo::MAX_HP);
     if (!max)
         max = 1;
 
     mHpLabel = new Label(_("HP:"));
     mHpBar = new ProgressBar(max ?
-            static_cast<float>(PlayerInfo::getAttribute(HP))
+            static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 15, Theme::PROG_HP);
 
-    max = PlayerInfo::getAttribute(EXP_NEEDED);
+    max = PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED);
     mXpLabel = new Label(_("Exp:"));
     mXpBar = new ProgressBar(max ?
-            static_cast<float>(PlayerInfo::getAttribute(EXP))
+            static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::EXP))
             / static_cast<float>(max):
             static_cast<float>(0), 80, 15, Theme::PROG_EXP);
 
@@ -174,13 +174,13 @@ StatusWindow::StatusWindow():
 
     if (magicBar)
     {
-        max = PlayerInfo::getAttribute(MAX_MP);
+        max = PlayerInfo::getAttribute(PlayerInfo::MAX_MP);
         mMpLabel = new Label(_("MP:"));
-        mMpBar = new ProgressBar(max ?
-                static_cast<float>(PlayerInfo::getAttribute(MAX_MP))
-                / static_cast<float>(max) : static_cast<float>(0),
-                80, 15, Net::getPlayerHandler()->canUseMagic() ?
-                Theme::PROG_MP : Theme::PROG_NO_MP);
+        mMpBar = new ProgressBar(max ? static_cast<float>(
+            PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
+            / static_cast<float>(max) : static_cast<float>(0),
+            80, 15, Net::getPlayerHandler()->canUseMagic() ?
+            Theme::PROG_MP : Theme::PROG_NO_MP);
     }
     else
     {
@@ -263,22 +263,23 @@ StatusWindow::StatusWindow():
         updateMPBar(mMpBar, true);
     updateXPBar(mXpBar, false);
 
-    mMoneyLabel->setCaption(strprintf(_("Money: %s"),
-        Units::formatCurrency(PlayerInfo::getAttribute(MONEY)).c_str()));
+    mMoneyLabel->setCaption(strprintf(_("Money: %s"), Units::formatCurrency(
+        PlayerInfo::getAttribute(PlayerInfo::MONEY)).c_str()));
     mMoneyLabel->adjustSize();
     mCharacterPointsLabel->setCaption(strprintf(_("Character points: %d"),
-                                      PlayerInfo::getAttribute(CHAR_POINTS)));
+        PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS)));
     mCharacterPointsLabel->adjustSize();
 
     if (player_node && player_node->isGM())
     {
         mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
-            PlayerInfo::getAttribute(LEVEL), player_node->getGMLevel()));
+            PlayerInfo::getAttribute(PlayerInfo::LEVEL),
+            player_node->getGMLevel()));
     }
     else
     {
         mLvlLabel->setCaption(strprintf(_("Level: %d"),
-            PlayerInfo::getAttribute(LEVEL)));
+            PlayerInfo::getAttribute(PlayerInfo::LEVEL)));
     }
     mLvlLabel->adjustSize();
 }
@@ -294,25 +295,28 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
     {
         switch (event.getInt("id"))
         {
-            case HP: case MAX_HP:
+            case PlayerInfo::HP:
+            case PlayerInfo::MAX_HP:
                 updateHPBar(mHpBar, true);
                 break;
 
-            case MP: case MAX_MP:
+            case PlayerInfo::MP:
+            case PlayerInfo::MAX_MP:
                 updateMPBar(mMpBar, true);
                 break;
 
-            case EXP: case EXP_NEEDED:
+            case PlayerInfo::EXP:
+            case PlayerInfo::EXP_NEEDED:
                 updateXPBar(mXpBar, false);
                 break;
 
-            case MONEY:
+            case PlayerInfo::MONEY:
                 mMoneyLabel->setCaption(strprintf(_("Money: %s"),
                     Units::formatCurrency(event.getInt("newValue")).c_str()));
                 mMoneyLabel->adjustSize();
                 break;
 
-            case CHAR_POINTS:
+            case PlayerInfo::CHAR_POINTS:
                 mCharacterPointsLabel->setCaption(strprintf(
                     _("Character points: %d"), event.getInt("newValue")));
 
@@ -326,7 +330,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                 }
             break;
 
-            case CORR_POINTS:
+            case PlayerInfo::CORR_POINTS:
                 mCorrectionPointsLabel->setCaption(strprintf(
                     _("Correction points: %d"), event.getInt("newValue")));
                 mCorrectionPointsLabel->adjustSize();
@@ -339,7 +343,7 @@ void StatusWindow::processEvent(Channels channel A_UNUSED,
                 }
             break;
 
-            case LEVEL:
+            case PlayerInfo::LEVEL:
                 mLvlLabel->setCaption(strprintf(_("Level: %d"),
                                       event.getInt("newValue")));
                 mLvlLabel->adjustSize();
@@ -458,17 +462,21 @@ void StatusWindow::updateHPBar(ProgressBar *bar, bool showMax)
         return;
 
     if (showMax)
-        bar->setText(toString(PlayerInfo::getAttribute(HP)) +
-                    "/" + toString(PlayerInfo::getAttribute(MAX_HP)));
+    {
+        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::HP)) +
+            "/" + toString(PlayerInfo::getAttribute(PlayerInfo::MAX_HP)));
+    }
     else
-        bar->setText(toString(PlayerInfo::getAttribute(HP)));
+    {
+        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::HP)));
+    }
 
     float prog = 1.0;
 
-    if (PlayerInfo::getAttribute(MAX_HP) > 0)
+    if (PlayerInfo::getAttribute(PlayerInfo::MAX_HP) > 0)
     {
-        prog = static_cast<float>(PlayerInfo::getAttribute(HP))
-            / static_cast<float>(PlayerInfo::getAttribute(MAX_HP));
+        prog = static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::HP))
+            / static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::MAX_HP));
     }
     bar->setProgress(prog);
 }
@@ -480,26 +488,28 @@ void StatusWindow::updateMPBar(ProgressBar *bar, bool showMax)
 
     if (showMax)
     {
-        bar->setText(toString(PlayerInfo::getAttribute(MP)) +
-                    "/" + toString(PlayerInfo::getAttribute(MAX_MP)));
+        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::MP)) +
+            "/" + toString(PlayerInfo::getAttribute(PlayerInfo::MAX_MP)));
     }
     else
     {
-        bar->setText(toString(PlayerInfo::getAttribute(MP)));
+        bar->setText(toString(PlayerInfo::getAttribute(PlayerInfo::MP)));
     }
 
     float prog = 1.0f;
 
-    if (PlayerInfo::getAttribute(MAX_MP) > 0)
+    if (PlayerInfo::getAttribute(PlayerInfo::MAX_MP) > 0)
     {
-        if (PlayerInfo::getAttribute(MAX_MP))
+        if (PlayerInfo::getAttribute(PlayerInfo::MAX_MP))
         {
-            prog = static_cast<float>(PlayerInfo::getAttribute(MP))
-                    / static_cast<float>(PlayerInfo::getAttribute(MAX_MP));
+            prog = static_cast<float>(PlayerInfo::getAttribute(PlayerInfo::MP))
+                / static_cast<float>(PlayerInfo::getAttribute(
+                PlayerInfo::MAX_MP));
         }
         else
         {
-            prog = static_cast<float>(PlayerInfo::getAttribute(MP));
+            prog = static_cast<float>(PlayerInfo::getAttribute(
+                PlayerInfo::MP));
         }
     }
 
@@ -547,8 +557,8 @@ void StatusWindow::updateXPBar(ProgressBar *bar, bool percent)
     if (!bar)
         return;
 
-    updateProgressBar(bar, PlayerInfo::getAttribute(EXP),
-                      PlayerInfo::getAttribute(EXP_NEEDED), percent);
+    updateProgressBar(bar, PlayerInfo::getAttribute(PlayerInfo::EXP),
+        PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED), percent);
 }
 
 void StatusWindow::updateJobBar(ProgressBar *bar, bool percent)
@@ -572,21 +582,21 @@ void StatusWindow::updateWeightBar(ProgressBar *bar)
     if (!bar)
         return;
 
-    if (PlayerInfo::getAttribute(MAX_WEIGHT) == 0)
+    if (PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT) == 0)
     {
         bar->setText(_("Max"));
         bar->setProgress(1.0);
     }
     else
     {
-        float progress = static_cast<float>(
-            PlayerInfo::getAttribute(TOTAL_WEIGHT))
-            / static_cast<float>(PlayerInfo::getAttribute(MAX_WEIGHT));
+        float progress = static_cast<float>(PlayerInfo::getAttribute(
+            PlayerInfo::TOTAL_WEIGHT)) / static_cast<float>(
+            PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT));
 
         bar->setText(strprintf("%s/%s", Units::formatWeight(
-            PlayerInfo::getAttribute(TOTAL_WEIGHT)).c_str(),
+            PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT)).c_str(),
             Units::formatWeight(PlayerInfo::getAttribute(
-            MAX_WEIGHT)).c_str()));
+            PlayerInfo::MAX_WEIGHT)).c_str()));
 
         bar->setProgress(progress);
     }
@@ -597,7 +607,7 @@ void StatusWindow::updateMoneyBar(ProgressBar *bar)
     if (!bar)
         return;
 
-    int money = PlayerInfo::getAttribute(MONEY);
+    int money = PlayerInfo::getAttribute(PlayerInfo::MONEY);
     bar->setText(Units::formatCurrency(money).c_str());
     if (money > 0)
     {
@@ -807,10 +817,10 @@ std::string ChangeDisplay::update()
         mPoints->setCaption(_("Max"));
 
     if (mDec)
-        mDec->setEnabled(PlayerInfo::getAttribute(CORR_POINTS));
+        mDec->setEnabled(PlayerInfo::getAttribute(PlayerInfo::CORR_POINTS));
 
-    mInc->setEnabled(PlayerInfo::getAttribute(CHAR_POINTS) >= mNeeded &&
-                     mNeeded > 0);
+    mInc->setEnabled(PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS)
+        >= mNeeded && mNeeded > 0);
 
     return AttrDisplay::update();
 }
@@ -827,11 +837,13 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
     if (Net::getPlayerHandler()->canCorrectAttributes() &&
         event.getSource() == mDec)
     {
-        int newcorpoints = PlayerInfo::getAttribute(CORR_POINTS) - 1;
-        PlayerInfo::setAttribute(CORR_POINTS, newcorpoints);
+        int newcorpoints = PlayerInfo::getAttribute(
+            PlayerInfo::CORR_POINTS) - 1;
+        PlayerInfo::setAttribute(PlayerInfo::CORR_POINTS, newcorpoints);
 
-        int newpoints = PlayerInfo::getAttribute(CHAR_POINTS) + 1;
-        PlayerInfo::setAttribute(CHAR_POINTS, newpoints);
+        int newpoints = PlayerInfo::getAttribute(
+            PlayerInfo::CHAR_POINTS) + 1;
+        PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
 
         int newbase = PlayerInfo::getStatBase(mId) - 1;
         PlayerInfo::setStatBase(mId, newbase);
@@ -848,8 +860,9 @@ void ChangeDisplay::action(const gcn::ActionEvent &event)
                 cnt = 10;
         }
 
-        int newpoints = PlayerInfo::getAttribute(CHAR_POINTS) - cnt;
-        PlayerInfo::setAttribute(CHAR_POINTS, newpoints);
+        int newpoints = PlayerInfo::getAttribute(
+            PlayerInfo::CHAR_POINTS) - cnt;
+        PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, newpoints);
 
         int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);

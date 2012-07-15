@@ -143,7 +143,7 @@ void PlayerHandler::increaseAttribute(int attr)
 
 void PlayerHandler::increaseSkill(unsigned short skillId)
 {
-    if (PlayerInfo::getAttribute(SKILL_POINTS) <= 0)
+    if (PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS) <= 0)
         return;
 
     MessageOut outMsg(CMSG_SKILL_LEVELUP_REQUEST);

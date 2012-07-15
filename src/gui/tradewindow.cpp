@@ -369,7 +369,7 @@ void TradeWindow::action(const gcn::ActionEvent &event)
             return;
 
         int v = atoi(mMoneyField->getText().c_str());
-        int curMoney = PlayerInfo::getAttribute(MONEY);
+        int curMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
         if (v > curMoney)
         {
             if (localChatTab)

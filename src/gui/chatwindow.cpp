@@ -932,7 +932,7 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
         {
             switch (event.getInt("id"))
             {
-                case EXP:
+                case PlayerInfo::EXP:
                 {
                     if (event.getInt("oldValue") > event.getInt("newValue"))
                         break;
@@ -944,7 +944,7 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
                         battleChatLog("+" + toString(change) + " xp");
                     break;
                 }
-                case LEVEL:
+                case PlayerInfo::LEVEL:
                     battleChatLog("Level: " + toString(
                         event.getInt("newValue")));
                     break;

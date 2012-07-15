@@ -620,7 +620,7 @@ void InventoryWindow::processEvent(Channels channel A_UNUSED,
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
-        if (id == TOTAL_WEIGHT || id == MAX_WEIGHT)
+        if (id == PlayerInfo::TOTAL_WEIGHT || id == PlayerInfo::MAX_WEIGHT)
             updateWeight();
     }
 }
@@ -630,8 +630,8 @@ void InventoryWindow::updateWeight()
     if (!isMainInventory())
         return;
 
-    int total = PlayerInfo::getAttribute(TOTAL_WEIGHT);
-    int max = PlayerInfo::getAttribute(MAX_WEIGHT);
+    int total = PlayerInfo::getAttribute(PlayerInfo::TOTAL_WEIGHT);
+    int max = PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT);
 
     if (max <= 0)
         return;

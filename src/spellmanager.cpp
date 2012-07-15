@@ -141,7 +141,7 @@ void SpellManager::invoke(int spellId)
         && PlayerInfo::getStatEffective(SKILL_MAGIC) >= spell->getBaseLvl()
         && PlayerInfo::getStatEffective(
         spell->getSchool()) >= spell->getSchoolLvl()
-        && PlayerInfo::getAttribute(MP) >= spell->getMana()))
+        && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
     {
         Being* target = player_node->getTarget();
         if (spell->getTargetType() == NOTARGET)

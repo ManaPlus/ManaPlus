@@ -60,8 +60,8 @@ KillStats::KillStats():
     setDefaultSize(250, 250, 350, 300);
 
     listen(CHANNEL_ATTRIBUTES);
-    int xp(PlayerInfo::getAttribute(EXP));
-    int xpNextLevel(PlayerInfo::getAttribute(EXP_NEEDED));
+    int xp(PlayerInfo::getAttribute(PlayerInfo::EXP));
+    int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
 
     mResetButton = new Button(_("Reset stats"), "reset", this);
     mTimerButton = new Button(_("Reset timer"), "timer", this);
@@ -138,7 +138,7 @@ void KillStats::action(const gcn::ActionEvent &event)
         mKillCounter = 0;
         mExpCounter = 0;
         mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-            PlayerInfo::getAttribute(EXP_NEEDED) / 100, "?"));
+            PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED) / 100, "?"));
         mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
         mLine5->setCaption(strprintf(_("Avg Exp: %s"), "?"));
         mLine6->setCaption(strprintf(
@@ -173,7 +173,7 @@ void KillStats::resetTimes()
 
 void KillStats::gainXp(int xp)
 {
-    if (xp == PlayerInfo::getAttribute(EXP_NEEDED))
+    if (xp == PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED))
         xp = 0;
     else if (!xp)
         return;
@@ -187,7 +187,7 @@ void KillStats::gainXp(int xp)
         mKillCounter = 1;
 
     float AvgExp = static_cast<float>(mExpCounter / mKillCounter);
-    int xpNextLevel(PlayerInfo::getAttribute(EXP_NEEDED));
+    int xpNextLevel(PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED));
 
     if (mKillTimer == 0)
         mKillTimer = cur_time;
@@ -202,12 +202,12 @@ void KillStats::gainXp(int xp)
 
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
         player_node->getLevel(), static_cast<double>(
-        PlayerInfo::getAttribute(EXP)) / static_cast<double>(
+        PlayerInfo::getAttribute(PlayerInfo::EXP)) / static_cast<double>(
         xpNextLevel) * 100.0));
 
     mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"),
-        PlayerInfo::getAttribute(EXP), xpNextLevel,
-        xpNextLevel - PlayerInfo::getAttribute(EXP)));
+        PlayerInfo::getAttribute(PlayerInfo::EXP), xpNextLevel,
+        xpNextLevel - PlayerInfo::getAttribute(PlayerInfo::EXP)));
 
     if (AvgExp >= 0.001f && AvgExp <= 0.001f)
     {
@@ -231,7 +231,7 @@ void KillStats::gainXp(int xp)
 
         mLine6->setCaption(strprintf(_("No. of avg mob to next level: %s"),
             toString(static_cast<float>(xpNextLevel
-            - PlayerInfo::getAttribute(EXP)) / AvgExp).c_str()));
+            - PlayerInfo::getAttribute(PlayerInfo::EXP)) / AvgExp).c_str()));
     }
     mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"),
         toString(mKillCounter).c_str(), toString(mExpCounter).c_str()));
@@ -253,7 +253,7 @@ void KillStats::recalcStats()
     // Need Update Exp Counter
     if (curTime - m1minExpTime > 60)
     {
-        int newExp = PlayerInfo::getAttribute(EXP);
+        int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
         if (m1minExpTime != 0)
             m1minSpeed = newExp - m1minExpNum;
         else
@@ -264,7 +264,7 @@ void KillStats::recalcStats()
 
     if (curTime - m5minExpTime > 60*5)
     {
-        int newExp = PlayerInfo::getAttribute(EXP);
+        int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
         if (m5minExpTime != 0)
             m5minSpeed = newExp - m5minExpNum;
         else
@@ -275,7 +275,7 @@ void KillStats::recalcStats()
 
     if (curTime - m15minExpTime > 60*15)
     {
-        int newExp = PlayerInfo::getAttribute(EXP);
+        int newExp = PlayerInfo::getAttribute(PlayerInfo::EXP);
         if (m15minExpTime != 0)
             m15minSpeed = newExp - m15minExpNum;
         else
@@ -294,8 +294,9 @@ void KillStats::update()
     if (m1minSpeed != 0)
     {
         mExpTime1Label->setCaption(strprintf(_("  Time for next level: %s"),
-            toString(static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
-            - PlayerInfo::getAttribute(EXP)) / m1minSpeed)).c_str()));
+            toString(static_cast<float>((PlayerInfo::getAttribute(
+            PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
+            PlayerInfo::EXP)) / m1minSpeed)).c_str()));
     }
     else
     {
@@ -311,8 +312,9 @@ void KillStats::update()
     if (m5minSpeed != 0)
     {
         mExpTime5Label->setCaption(strprintf(_("  Time for next level: %s"),
-            toString(static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
-            - PlayerInfo::getAttribute(EXP)) / m5minSpeed * 5)).c_str()));
+            toString(static_cast<float>((PlayerInfo::getAttribute(
+            PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
+            PlayerInfo::EXP)) / m5minSpeed * 5)).c_str()));
     }
     else
     {
@@ -330,8 +332,9 @@ void KillStats::update()
     if (m15minSpeed != 0)
     {
         mExpTime15Label->setCaption(strprintf(_("  Time for next level: %s"),
-            toString(static_cast<float>((PlayerInfo::getAttribute(EXP_NEEDED)
-            - PlayerInfo::getAttribute(EXP)) / m15minSpeed * 15)).c_str()));
+            toString(static_cast<float>((PlayerInfo::getAttribute(
+            PlayerInfo::EXP_NEEDED) - PlayerInfo::getAttribute(
+            PlayerInfo::EXP)) / m15minSpeed * 15)).c_str()));
     }
     else
     {
@@ -443,19 +446,19 @@ void KillStats::processEvent(Channels channel A_UNUSED,
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
-        if (id == EXP || id == EXP_NEEDED)
+        if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
         {
             gainXp(event.getInt("newValue") - event.getInt("oldValue"));
 //            update();
         }
-        else if (id == LEVEL)
+        else if (id == PlayerInfo::LEVEL)
         {
             mKillCounter = 0;
             mKillTCounter = 0;
             mExpCounter = 0;
             mExpTCounter = 0;
             mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-                PlayerInfo::getAttribute(EXP_NEEDED) / 100, "?"));
+                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED) / 100, "?"));
             mLine4->setCaption(strprintf(_(
                 "Kills: %s, total exp: %s"), "?", "?"));
             mLine5->setCaption(strprintf(_("Avg Exp: %s"), "?"));

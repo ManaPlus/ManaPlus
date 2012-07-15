@@ -590,8 +590,8 @@ void InventoryHandler::processPlayerAttackRange(Net::MessageIn &msg)
     int range = msg.readInt16();
     if (player_node)
         player_node->setAttackRange(range);
-    PlayerInfo::setStatBase(ATTACK_RANGE, range);
-    PlayerInfo::setStatMod(ATTACK_RANGE, 0);
+    PlayerInfo::setStatBase(PlayerInfo::ATTACK_RANGE, range);
+    PlayerInfo::setStatMod(PlayerInfo::ATTACK_RANGE, 0);
 }
 
 void InventoryHandler::processPlayerArrowEquip(Net::MessageIn &msg)

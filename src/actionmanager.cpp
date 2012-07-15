@@ -385,7 +385,7 @@ impHandler0(itenplz)
     if (actorSpriteManager)
     {
         if (Net::getPlayerHandler()->canUseMagic()
-            && PlayerInfo::getAttribute(MP) >= 3)
+            && PlayerInfo::getAttribute(PlayerInfo::MP) >= 3)
         {
             actorSpriteManager->itenplz();
         }

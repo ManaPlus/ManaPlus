@@ -2120,8 +2120,8 @@ bool Being::drawSpriteAt(Graphics *graphics, int x, int y) const
     }
     if (mShowOwnHP && player_node == this && mAction != DEAD)
     {
-        drawHpBar(graphics, PlayerInfo::getAttribute(MAX_HP),
-                  PlayerInfo::getAttribute(HP), 0,
+        drawHpBar(graphics, PlayerInfo::getAttribute(PlayerInfo::MAX_HP),
+                  PlayerInfo::getAttribute(PlayerInfo::HP), 0,
                   UserPalette::PLAYER_HP, UserPalette::PLAYER_HP2,
                   x - 50 + 16, y + 32 - 6, 2 * 50, 4);
     }

@@ -80,7 +80,7 @@ class Slider : public gcn::Slider
 
         enum SLIDER_ENUM
         {
-            HSTART,
+            HSTART = 0,
             HMID,
             HEND,
             HGRIP,

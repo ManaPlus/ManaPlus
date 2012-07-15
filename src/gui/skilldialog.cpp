@@ -335,7 +335,7 @@ std::string SkillDialog::update(int id)
 void SkillDialog::update()
 {
     mPointsLabel->setCaption(strprintf(_("Skill points available: %d"),
-                             PlayerInfo::getAttribute(SKILL_POINTS)));
+        PlayerInfo::getAttribute(PlayerInfo::SKILL_POINTS)));
     mPointsLabel->adjustSize();
 
     for (SkillMap::const_iterator it = mSkills.begin(), it_end = mSkills.end();

@@ -142,7 +142,8 @@ void Slider::draw(gcn::Graphics *graphics)
         }
 
         x += w;
-        static_cast<Graphics*>(graphics)->drawImage(buttons[0].grid[HEND], x, y);
+        static_cast<Graphics*>(graphics)->drawImage(
+            buttons[0].grid[HEND], x, y);
     }
     else
     {

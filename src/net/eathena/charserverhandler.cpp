@@ -176,8 +176,8 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[EXP] = msg.readInt32();
-    data.mAttributes[MONEY] = msg.readInt32();
+    data.mAttributes[PlayerInfo::EXP] = msg.readInt32();
+    data.mAttributes[PlayerInfo::MONEY] = msg.readInt32();
     data.mStats[JOB].exp = msg.readInt32();
 
     int temp = msg.readInt32();
@@ -194,10 +194,10 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     msg.readInt32();                       // manner
     msg.readInt16();                       // character points left
 
-    data.mAttributes[HP] = msg.readInt16();
-    data.mAttributes[MAX_HP] = msg.readInt16();
-    data.mAttributes[MP] = msg.readInt16();
-    data.mAttributes[MAX_MP] = msg.readInt16();
+    data.mAttributes[PlayerInfo::HP] = msg.readInt16();
+    data.mAttributes[PlayerInfo::MAX_HP] = msg.readInt16();
+    data.mAttributes[PlayerInfo::MP] = msg.readInt16();
+    data.mAttributes[PlayerInfo::MAX_MP] = msg.readInt16();
 
     msg.readInt16();                       // speed
     tempPlayer->setSubtype(msg.readInt16()); // class (used for race)
@@ -205,7 +205,7 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     uint16_t weapon = msg.readInt16();  // server not used it. may be need use?
     tempPlayer->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
 
-    data.mAttributes[LEVEL] = msg.readInt16();
+    data.mAttributes[PlayerInfo::LEVEL] = msg.readInt16();
 
     msg.readInt16();                       // skill point
     int bottomClothes = msg.readInt16();

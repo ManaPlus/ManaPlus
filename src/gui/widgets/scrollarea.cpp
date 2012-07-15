@@ -347,6 +347,7 @@ void ScrollArea::drawButton(gcn::Graphics *graphics, BUTTON_DIR dir)
             state = mRightButtonPressed ? 1 : 0;
             dim = getRightButtonDimension();
             break;
+        case BUTTONS_DIR:
         default:
             logger->log("ScrollArea::drawButton unknown dir: "
                         + toString(static_cast<unsigned>(dir)));

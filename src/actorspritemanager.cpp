@@ -1126,9 +1126,9 @@ void ActorSpriteManager::heal(Being* target)
     // self
     if (target && player_node->getName() == target->getName())
     {
-        if (PlayerInfo::getAttribute(MP) >= 6
-            && PlayerInfo::getAttribute(HP)
-            != PlayerInfo::getAttribute(MAX_HP))
+        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 6
+            && PlayerInfo::getAttribute(PlayerInfo::HP)
+            != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
         {
             if (!Client::limitPackets(PACKET_CHAT))
                 return;
@@ -1139,7 +1139,7 @@ void ActorSpriteManager::heal(Being* target)
     else if (PlayerInfo::getStatEffective(340) < 2
              || PlayerInfo::getStatEffective(341) < 2)
     {
-        if (PlayerInfo::getAttribute(MP) >= 6)
+        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 6)
         {
             if (target && target->getType() != Being::MONSTER)
             {
@@ -1148,8 +1148,8 @@ void ActorSpriteManager::heal(Being* target)
                 chatWindow->localChatInput(mSpellHeal1 + " "
                                            + target->getName());
             }
-            else if (PlayerInfo::getAttribute(HP)
-                     != PlayerInfo::getAttribute(MAX_HP))
+            else if (PlayerInfo::getAttribute(PlayerInfo::HP)
+                     != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
             {
                 if (!Client::limitPackets(PACKET_CHAT))
                     return;
@@ -1161,7 +1161,7 @@ void ActorSpriteManager::heal(Being* target)
     else
     {
         // mp > 10 and target not monster
-        if (PlayerInfo::getAttribute(MP) >= 10 && target
+        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= 10 && target
             && target->getType() != Being::MONSTER)
         {
             // target not enemy
@@ -1183,9 +1183,9 @@ void ActorSpriteManager::heal(Being* target)
         }
         // heal self if selected monster or selection empty
         else if ((!target || target->getType() == Being::MONSTER)
-                 && PlayerInfo::getAttribute(MP) >= 6
-                 && PlayerInfo::getAttribute(HP)
-                 != PlayerInfo::getAttribute(MAX_HP))
+                 && PlayerInfo::getAttribute(PlayerInfo::MP) >= 6
+                 && PlayerInfo::getAttribute(PlayerInfo::HP)
+                 != PlayerInfo::getAttribute(PlayerInfo::MAX_HP))
         {
             if (!Client::limitPackets(PACKET_CHAT))
                 return;

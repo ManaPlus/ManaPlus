@@ -227,16 +227,27 @@ void MiniStatusWindow::processEvent(Channels channel A_UNUSED,
     if (event.getName() == EVENT_UPDATEATTRIBUTE)
     {
         int id = event.getInt("id");
-        if (id == HP || id == MAX_HP)
+        if (id == PlayerInfo::HP || id == PlayerInfo::MAX_HP)
+        {
             StatusWindow::updateHPBar(mHpBar);
-        else if (id == MP || id == MAX_MP)
+        }
+        else if (id == PlayerInfo::MP || id == PlayerInfo::MAX_MP)
+        {
             StatusWindow::updateMPBar(mMpBar);
-        else if (id == EXP || id == EXP_NEEDED)
+        }
+        else if (id == PlayerInfo::EXP || id == PlayerInfo::EXP_NEEDED)
+        {
             StatusWindow::updateXPBar(mXpBar);
-        else if (id == TOTAL_WEIGHT || id == MAX_WEIGHT)
+        }
+        else if (id == PlayerInfo::TOTAL_WEIGHT
+                 || id == PlayerInfo::MAX_WEIGHT)
+        {
             StatusWindow::updateWeightBar(mWeightBar);
-        else if (id == MONEY)
+        }
+        else if (id == PlayerInfo::MONEY)
+        {
             StatusWindow::updateMoneyBar(mMoneyBar);
+        }
     }
     else if (event.getName() == EVENT_UPDATESTAT)
     {
@@ -282,40 +293,38 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mXpBar)
     {
-        if (PlayerInfo::getAttribute(EXP)
-            > PlayerInfo::getAttribute(EXP_NEEDED))
+        if (PlayerInfo::getAttribute(PlayerInfo::EXP)
+            > PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED))
         {
             mTextPopup->show(x + getX(), y + getY(),
-                             event.getSource()->getId(),
-                             strprintf("%u/%u", PlayerInfo::getAttribute(EXP),
-                                       PlayerInfo::getAttribute(EXP_NEEDED)));
+                event.getSource()->getId(), strprintf("%u/%u",
+                PlayerInfo::getAttribute(PlayerInfo::EXP),
+                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)));
         }
         else
         {
             mTextPopup->show(x + getX(), y + getY(),
-                             event.getSource()->getId(),
-                             strprintf("%u/%u", PlayerInfo::getAttribute(EXP),
-                                       PlayerInfo::getAttribute(EXP_NEEDED)),
-                             strprintf("%s: %u", _("Need"),
-                                       PlayerInfo::getAttribute(EXP_NEEDED)
-                                       - PlayerInfo::getAttribute(EXP)));
+                event.getSource()->getId(), strprintf("%u/%u",
+                PlayerInfo::getAttribute(PlayerInfo::EXP),
+                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)),
+                strprintf("%s: %u", _("Need"),
+                PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)
+                - PlayerInfo::getAttribute(PlayerInfo::EXP)));
         }
         mStatusPopup->hide();
     }
     else if (event.getSource() == mHpBar)
     {
-        mTextPopup->show(x + getX(), y + getY(),
-                         event.getSource()->getId(),
-                         strprintf("%u/%u", PlayerInfo::getAttribute(HP),
-                                   PlayerInfo::getAttribute(MAX_HP)));
+        mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
+            strprintf("%u/%u", PlayerInfo::getAttribute(PlayerInfo::HP),
+            PlayerInfo::getAttribute(PlayerInfo::MAX_HP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mMpBar)
     {
-        mTextPopup->show(x + getX(), y + getY(),
-                         event.getSource()->getId(),
-                         strprintf("%u/%u", PlayerInfo::getAttribute(MP),
-                                   PlayerInfo::getAttribute(MAX_MP)));
+        mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
+            strprintf("%u/%u", PlayerInfo::getAttribute(PlayerInfo::MP),
+            PlayerInfo::getAttribute(PlayerInfo::MAX_MP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mJobBar)
@@ -326,28 +335,24 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         if (exp.first > exp.second)
         {
             mTextPopup->show(x + getX(), y + getY(),
-                             event.getSource()->getId(),
-                             strprintf("%u/%u", exp.first,
-                                       exp.second));
+                event.getSource()->getId(),
+                strprintf("%u/%u", exp.first, exp.second));
         }
         else
         {
             mTextPopup->show(x + getX(), y + getY(),
-                             event.getSource()->getId(),
-                             strprintf("%u/%u", exp.first,
-                                       exp.second),
-                             strprintf("%s: %u", _("Need"),
-                                       exp.second
-                                       - exp.first));
+                event.getSource()->getId(),
+                strprintf("%u/%u", exp.first, exp.second),
+                strprintf("%s: %u", _("Need"), exp.second - exp.first));
         }
         mStatusPopup->hide();
     }
     else if (event.getSource() == mWeightBar)
     {
-        mTextPopup->show(x + getX(), y + getY(),
-            event.getSource()->getId(),
-            strprintf("%u/%u", PlayerInfo::getAttribute(TOTAL_WEIGHT),
-            PlayerInfo::getAttribute(MAX_WEIGHT)));
+        mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
+            strprintf("%u/%u", PlayerInfo::getAttribute(
+            PlayerInfo::TOTAL_WEIGHT),
+            PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mInvSlotsBar)
@@ -368,7 +373,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     {
         mTextPopup->show(x + getX(), y + getY(),
             event.getSource()->getId(),
-            toString(PlayerInfo::getAttribute(MONEY)));
+            toString(PlayerInfo::getAttribute(PlayerInfo::MONEY)));
     }
     else
     {

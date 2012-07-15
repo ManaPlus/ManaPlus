@@ -184,8 +184,9 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mWaitPing = false;
     mPingTime = 0;
 
-    PlayerInfo::setStatBase(WALK_SPEED, static_cast<int>(getWalkSpeed().x));
-    PlayerInfo::setStatMod(WALK_SPEED, 0);
+    PlayerInfo::setStatBase(PlayerInfo::WALK_SPEED,
+        static_cast<int>(getWalkSpeed().x));
+    PlayerInfo::setStatMod(PlayerInfo::WALK_SPEED, 0);
 
     loadHomes();
 
@@ -1672,19 +1673,19 @@ void LocalPlayer::processEvent(Channels channel,
         {
             switch (event.getInt("id"))
             {
-                case EXP:
+                case PlayerInfo::EXP:
                 {
                     if (event.getInt("oldValue") > event.getInt("newValue"))
                         break;
 
                     int change = event.getInt("newValue")
-                                 - event.getInt("oldValue");
+                        - event.getInt("oldValue");
 
                     if (change != 0)
                         addMessageToQueue(strprintf("%d %s", change, _("xp")));
                     break;
                 }
-                case LEVEL:
+                case PlayerInfo::LEVEL:
                     mLevel = event.getInt("newValue");
                     break;
                 default:
@@ -3257,7 +3258,7 @@ void LocalPlayer::tryMagic(std::string spell, int baseMagic,
     if (PlayerInfo::getStatEffective(340) >= baseMagic
         && PlayerInfo::getStatEffective(342) >= schoolMagic)
     {
-        if (PlayerInfo::getAttribute(MP) >= mana)
+        if (PlayerInfo::getAttribute(PlayerInfo::MP) >= mana)
         {
             if (!Client::limitPackets(PACKET_CHAT))
                 return;
@@ -4098,7 +4099,7 @@ int LocalPlayer::getTargetTime()
 
 int LocalPlayer::getLevel() const
 {
-    return PlayerInfo::getAttribute(LEVEL);
+    return PlayerInfo::getAttribute(PlayerInfo::LEVEL);
 }
 
 void LocalPlayer::updateNavigateList()

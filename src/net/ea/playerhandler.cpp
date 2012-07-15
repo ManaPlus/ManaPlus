@@ -274,12 +274,12 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
         case 0x0000:
             player_node->setWalkSpeed(Vector(static_cast<float>(
                 value), static_cast<float>(value), 0));
-            PlayerInfo::setStatBase(WALK_SPEED, value);
-            PlayerInfo::setStatMod(WALK_SPEED, 0);
+            PlayerInfo::setStatBase(PlayerInfo::WALK_SPEED, value);
+            PlayerInfo::setStatMod(PlayerInfo::WALK_SPEED, 0);
         break;
         case 0x0004: break; // manner
         case 0x0005:
-            PlayerInfo::setAttribute(HP, value);
+            PlayerInfo::setAttribute(PlayerInfo::HP, value);
             if (player_node->isInParty() && Party::getParty(1))
             {
                 PartyMember *m = Party::getParty(1)
@@ -287,12 +287,12 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                 if (m)
                 {
                     m->setHp(value);
-                    m->setMaxHp(PlayerInfo::getAttribute(MAX_HP));
+                    m->setMaxHp(PlayerInfo::getAttribute(PlayerInfo::MAX_HP));
                 }
             }
             break;
         case 0x0006:
-            PlayerInfo::setAttribute(MAX_HP, value);
+            PlayerInfo::setAttribute(PlayerInfo::MAX_HP, value);
 
             if (player_node->isInParty() && Party::getParty(1))
             {
@@ -300,22 +300,22 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                     player_node->getId());
                 if (m)
                 {
-                    m->setHp(PlayerInfo::getAttribute(HP));
+                    m->setHp(PlayerInfo::getAttribute(PlayerInfo::HP));
                     m->setMaxHp(value);
                 }
             }
             break;
         case 0x0007:
-            PlayerInfo::setAttribute(MP, value);
+            PlayerInfo::setAttribute(PlayerInfo::MP, value);
             break;
         case 0x0008:
-            PlayerInfo::setAttribute(MAX_MP, value);
+            PlayerInfo::setAttribute(PlayerInfo::MAX_MP, value);
             break;
         case 0x0009:
-            PlayerInfo::setAttribute(CHAR_POINTS, value);
+            PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, value);
             break;
         case 0x000b:
-            PlayerInfo::setAttribute(LEVEL, value);
+            PlayerInfo::setAttribute(PlayerInfo::LEVEL, value);
             if (player_node)
             {
                 player_node->setLevel(value);
@@ -323,15 +323,17 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             }
             break;
         case 0x000c:
-            PlayerInfo::setAttribute(SKILL_POINTS, value);
+            PlayerInfo::setAttribute(PlayerInfo::SKILL_POINTS, value);
             if (skillDialog)
                 skillDialog->update();
             break;
         case 0x0018:
             if (!weightNotice)
             {
-                const int max = PlayerInfo::getAttribute(MAX_WEIGHT) / 2;
-                const int total = PlayerInfo::getAttribute(TOTAL_WEIGHT);
+                const int max = PlayerInfo::getAttribute(
+                    PlayerInfo::MAX_WEIGHT) / 2;
+                const int total = PlayerInfo::getAttribute(
+                    PlayerInfo::TOTAL_WEIGHT);
                 if (value >= max && total < max)
                 {
                     weightNoticeTime = cur_time + 5;
@@ -353,10 +355,10 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
                         &weightListener);
                 }
             }
-            PlayerInfo::setAttribute(TOTAL_WEIGHT, value);
+            PlayerInfo::setAttribute(PlayerInfo::TOTAL_WEIGHT, value);
             break;
         case 0x0019:
-            PlayerInfo::setAttribute(MAX_WEIGHT, value);
+            PlayerInfo::setAttribute(PlayerInfo::MAX_WEIGHT, value);
             break;
 
         case 0x0029:
@@ -406,8 +408,8 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
 
         case 0x0035:
             player_node->setAttackSpeed(value);
-            PlayerInfo::setStatBase(ATTACK_DELAY, value);
-            PlayerInfo::setStatMod(ATTACK_DELAY, 0);
+            PlayerInfo::setStatBase(PlayerInfo::ATTACK_DELAY, value);
+            PlayerInfo::setStatMod(PlayerInfo::ATTACK_DELAY, 0);
             PlayerInfo::updateAttrs();
             break;
 
@@ -425,7 +427,7 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;
     }
 
-    if (PlayerInfo::getAttribute(HP) == 0 && !deathNotice)
+    if (PlayerInfo::getAttribute(PlayerInfo::HP) == 0 && !deathNotice)
     {
         deathNotice = new OkDialog(_("Message"),
             randomDeathMessage(), DIALOG_OK, false);
@@ -440,7 +442,7 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
     switch (type)
     {
         case 0x0001:
-            PlayerInfo::setAttribute(EXP, msg.readInt32());
+            PlayerInfo::setAttribute(PlayerInfo::EXP, msg.readInt32());
             break;
         case 0x0002:
             PlayerInfo::setStatExperience(EA_JOB, msg.readInt32(),
@@ -448,26 +450,24 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             break;
         case 0x0014:
         {
-                int oldMoney = PlayerInfo::getAttribute(MONEY);
-                int newMoney = msg.readInt32();
-                if (newMoney > oldMoney)
-                {
-                    SERVER_NOTICE(strprintf(_("You picked up %s."),
-                                  Units::formatCurrency(newMoney -
-                                  oldMoney).c_str()))
-                }
-                else if (newMoney < oldMoney)
-                {
-                    SERVER_NOTICE(strprintf(_("You spent %s."),
-                                  Units::formatCurrency(oldMoney -
-                                  newMoney).c_str()))
-                }
+            int oldMoney = PlayerInfo::getAttribute(PlayerInfo::MONEY);
+            int newMoney = msg.readInt32();
+            if (newMoney > oldMoney)
+            {
+                SERVER_NOTICE(strprintf(_("You picked up %s."),
+                    Units::formatCurrency(newMoney - oldMoney).c_str()))
+            }
+            else if (newMoney < oldMoney)
+            {
+                SERVER_NOTICE(strprintf(_("You spent %s."),
+                    Units::formatCurrency(oldMoney - newMoney).c_str()))
+            }
 
-                PlayerInfo::setAttribute(MONEY, newMoney);
+            PlayerInfo::setAttribute(PlayerInfo::MONEY, newMoney);
             break;
         }
         case 0x0016:
-            PlayerInfo::setAttribute(EXP_NEEDED, msg.readInt32());
+            PlayerInfo::setAttribute(PlayerInfo::EXP_NEEDED, msg.readInt32());
             break;
         case 0x0017:
             PlayerInfo::setStatExperience(EA_JOB,
@@ -488,7 +488,7 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
 
     PlayerInfo::setStatBase(type, base, false);
     PlayerInfo::setStatMod(type, bonus);
-    if (type == EA_ATK || type == ATTACK_DELAY)
+    if (type == EA_ATK || type == PlayerInfo::ATTACK_DELAY)
         PlayerInfo::updateAttrs();
 }
 
@@ -501,9 +501,9 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
     if (ok != 1)
     {
         int oldValue = PlayerInfo::getStatBase(type);
-        int points = PlayerInfo::getAttribute(CHAR_POINTS);
+        int points = PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS);
         points += oldValue - value;
-        PlayerInfo::setAttribute(CHAR_POINTS, points);
+        PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, points);
         SERVER_NOTICE(_("Cannot raise skill!"))
     }
 
@@ -512,7 +512,7 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
 {
-    PlayerInfo::setAttribute(CHAR_POINTS, msg.readInt16());
+    PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, msg.readInt16());
 
     int val = msg.readInt8();
     PlayerInfo::setStatBase(EA_STR, val);

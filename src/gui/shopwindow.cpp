@@ -577,8 +577,12 @@ void ShopWindow::giveList(const std::string &nick, int mode)
         else
         {
             int amount = item->getQuantity();
-            if (item->getPrice() * amount > PlayerInfo::getAttribute(MONEY))
-                amount = PlayerInfo::getAttribute(MONEY) / item->getPrice();
+            if (item->getPrice() * amount > PlayerInfo::getAttribute(
+                PlayerInfo::MONEY))
+            {
+                amount = PlayerInfo::getAttribute(PlayerInfo::MONEY)
+                    / item->getPrice();
+            }
 
             if (amount > 0)
             {
@@ -637,9 +641,9 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         return;
 
     if (buyDialog)
-        buyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
+        buyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
     if (sellDialog)
-        sellDialog->setMoney(PlayerInfo::getAttribute(MONEY));
+        sellDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
 
     for (unsigned f = 0; f < data.length(); f += 9)
     {

@@ -616,9 +616,9 @@ void CharacterDisplay::update()
         mButton->setActionEventId("use");
         mName->setCaption(strprintf("%s", character->getName().c_str()));
         mLevel->setCaption(strprintf(_("Level %d"),
-                           mCharacter->data.mAttributes[LEVEL]));
+            mCharacter->data.mAttributes[PlayerInfo::LEVEL]));
         mMoney->setCaption(Units::formatCurrency(
-                           mCharacter->data.mAttributes[MONEY]));
+            mCharacter->data.mAttributes[PlayerInfo::MONEY]));
 
         mDelete->setVisible(true);
     }

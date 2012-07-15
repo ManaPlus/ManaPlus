@@ -278,14 +278,14 @@ void GeneralHandler::processEvent(Channels channel,
             statusWindow->addAttribute(FLEE, _("% Evade"), false, "");
             // xgettext:no-c-format
             statusWindow->addAttribute(CRIT, _("% Critical"), false, "");
-            statusWindow->addAttribute(ATTACK_DELAY, _("Attack Delay"),
-                                       false, "");
-            statusWindow->addAttribute(WALK_SPEED, _("Walk Delay"),
-                                       false, "");
-            statusWindow->addAttribute(ATTACK_RANGE, _("Attack Range"),
-                                       false, "");
-            statusWindow->addAttribute(ATTACK_SPEED, _("Damage per sec."),
-                                       false, "");
+            statusWindow->addAttribute(PlayerInfo::ATTACK_DELAY,
+                _("Attack Delay"), false, "");
+            statusWindow->addAttribute(PlayerInfo::WALK_SPEED,
+                _("Walk Delay"), false, "");
+            statusWindow->addAttribute(PlayerInfo::ATTACK_RANGE,
+                _("Attack Range"), false, "");
+            statusWindow->addAttribute(PlayerInfo::ATTACK_SPEED,
+                _("Damage per sec."), false, "");
         }
         else if (event.getName() == EVENT_GUIWINDOWSUNLOADING)
         {

@@ -144,7 +144,7 @@ void BuySellHandler::processNpcSell(Net::MessageIn &msg, int offset)
     if (n_items > 0)
     {
         SellDialog *dialog = new SellDialog(mNpcId);
-        dialog->setMoney(PlayerInfo::getAttribute(MONEY));
+        dialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
 
         for (int k = 0; k < n_items; k++)
         {
@@ -175,7 +175,7 @@ void BuySellHandler::processNpcBuyResponse(Net::MessageIn &msg)
         // Reset player money since buy dialog already assumed purchase
         // would go fine
         if (mBuyDialog)
-            mBuyDialog->setMoney(PlayerInfo::getAttribute(MONEY));
+            mBuyDialog->setMoney(PlayerInfo::getAttribute(PlayerInfo::MONEY));
         SERVER_NOTICE(_("Unable to buy."))
     }
 }
