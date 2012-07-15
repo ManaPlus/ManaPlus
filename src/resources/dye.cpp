@@ -31,7 +31,7 @@
 
 DyePalette::DyePalette(const std::string &description)
 {
-    int size = static_cast<int>(description.length());
+    const int size = static_cast<int>(description.length());
     if (size == 0)
         return;
     if (description[0] != '#')
@@ -46,42 +46,17 @@ DyePalette::DyePalette(const std::string &description)
         if (pos + 6 > size)
             break;
 
-        int v = 0;
-        for (int i = 0; i < 6; ++i)
+        Color color =
         {
-            char c = description[pos + i];
-            int n;
-
-            if ('0' <= c && c <= '9')
-            {
-                n = c - '0';
-            }
-            else if ('A' <= c && c <= 'F')
-            {
-                n = c - 'A' + 10;
-            }
-            else if ('a' <= c && c <= 'f')
-            {
-                n = c - 'a' + 10;
-            }
-            else
-            {
-                logger->log("Error, invalid embedded palette: %s",
-                            description.c_str());
-                return;
-            }
-
-            v = (v << 4) | n;
-        }
-        Color c =
-        {
-            {
-                static_cast<unsigned char>(v >> 16),
-                static_cast<unsigned char>(v >> 8),
-                static_cast<unsigned char>(v)
-            }
+            {0, 0, 0}
         };
-        mColors.push_back(c);
+
+        for (int i = 0, colorIdx = 0; i < 6; i +=2, colorIdx ++)
+        {
+            color.value[colorIdx] = (hexDecode(description[pos + i]) << 4)
+                + hexDecode(description[pos + i + 1]);
+        }
+        mColors.push_back(color);
         pos += 6;
 
         if (pos == size)
@@ -93,6 +68,18 @@ DyePalette::DyePalette(const std::string &description)
     }
 
     logger->log("Error, invalid embedded palette: %s", description.c_str());
+}
+
+int DyePalette::hexDecode(char c)
+{
+    if ('0' <= c && c <= '9')
+        return c - '0';
+    else if ('A' <= c && c <= 'F')
+        return c - 'A' + 10;
+    else if ('a' <= c && c <= 'f')
+        return c - 'a' + 10;
+    else
+        return 0;
 }
 
 /*

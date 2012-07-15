@@ -65,6 +65,8 @@ class DyePalette
 
         void replaceOGLColor(uint8_t *color) const;
 
+        int hexDecode(char c);
+
     private:
         struct Color
         { unsigned char value[3]; };
