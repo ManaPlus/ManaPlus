@@ -130,7 +130,9 @@ void Sound::init()
     {
         logger->log("Sound::init Could not initialize audio: %s",
                     Mix_GetError());
-        return;
+        if (Mix_OpenAudio(22010, MIX_DEFAULT_FORMAT, 2, audioBuffer) < 0)
+            return;
+        logger->log("Fallback to stereo audio");
     }
 
     Mix_AllocateChannels(16);
