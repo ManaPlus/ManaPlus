@@ -166,6 +166,7 @@ class OpenGLGraphics : public Graphics
         GLuint mRboId;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
+        unsigned mOldTextureId;
 #endif
 };
 #endif

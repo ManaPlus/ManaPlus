@@ -56,7 +56,12 @@ OpenGLGraphics::OpenGLGraphics():
     mColorAlpha(false),
     mFboId(0),
     mTextureId(0),
+#ifdef DEBUG_BIND_TEXTURE
+    mRboId(0),
+    mOldTextureId(0)
+#else
     mRboId(0)
+#endif
 {
     mOpenGL = 1;
     mName = "fast OpenGL";
@@ -1400,11 +1405,13 @@ void OpenGLGraphics::debugBindTexture(const Image *image)
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
     {
-        if (!mOldTexture.empty() && !texture.empty())
+        if (!mOldTexture.empty() && !texture.empty()
+            && mOldTextureId != image->mGLImage)
         {
-            logger->log("bind: %s to %s", mOldTexture.c_str(),
-                texture.c_str());
+            logger->log("bind: %s (%d) to %s (%d)", mOldTexture.c_str(),
+                mOldTextureId, texture.c_str(), image->mGLImage);
         }
+        mOldTextureId = image->mGLImage;
         mOldTexture = texture;
     }
 }
