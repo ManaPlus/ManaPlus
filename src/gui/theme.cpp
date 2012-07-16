@@ -851,7 +851,7 @@ void Theme::loadColors(std::string file)
                 continue;
 
             mProgressColors[type] = new DyePalette(XML::getProperty(node,
-                                                   "color", ""));
+                                                   "color", ""), 6);
         }
     }
 }

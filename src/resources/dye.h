@@ -28,7 +28,9 @@
 
 #include <SDL_stdinc.h>
 
-const int dyePalateSize = 8;
+const int dyePalateSize = 9;
+const int sPaleteIndex = 7;
+const int aPaleteIndex = 8;
 
 /**
  * Class for performing a linear interpolation between colors.
@@ -42,13 +44,7 @@ class DyePalette
          * The string is either a file name or a sequence of hexadecimal RGB
          * values separated by ',' and starting with '#'.
          */
-        DyePalette(const std::string &pallete);
-
-/*
-        void addFirstColor(const int color[3]);
-
-        void addLastColor(const int color[3]);
-*/
+        DyePalette(const std::string &pallete, int8_t blockSize);
 
         /**
          * Gets a pixel color depending on its intensity. First color is
@@ -61,15 +57,31 @@ class DyePalette
          */
         void getColor(double intensity, int color[3]) const;
 
-        void replaceColor(uint8_t *color) const;
+        /**
+         * replace colors for SDL for S dye.
+         */
+        void replaceSColor(uint8_t *color) const;
 
-        void replaceOGLColor(uint8_t *color) const;
+        /**
+         * replace colors for SDL for S dye.
+         */
+        void replaceAColor(uint8_t *color) const;
+
+        /**
+         * replace colors for OpenGL for S dye.
+         */
+        void replaceSOGLColor(uint8_t *color) const;
+
+        /**
+         * replace colors for OpenGL for A dye.
+         */
+        void replaceAOGLColor(uint8_t *color) const;
 
         int hexDecode(char c);
 
     private:
         struct Color
-        { unsigned char value[3]; };
+        { unsigned char value[4]; };
 
         std::vector<Color> mColors;
 };
@@ -106,16 +118,21 @@ class Dye
                                 const std::string &palettes);
 
         /**
-         * Check if dye is special dye (S)
-         */
-        bool isSpecialDye() const
-        { return mDyePalettes[dyePalateSize - 1]; }
-
-        /**
          * Return special dye palete (S)
          */
         DyePalette *getSPalete() const
-        { return mDyePalettes[dyePalateSize - 1]; }
+        { return mDyePalettes[sPaleteIndex]; }
+
+        /**
+         * Return special dye palete (A)
+         */
+        DyePalette *getAPalete() const
+        { return mDyePalettes[aPaleteIndex]; }
+
+        /**
+         * Return dye type for S - 1, for A - 2, 0 for other
+         */
+        int getType() const;
 
     private:
 

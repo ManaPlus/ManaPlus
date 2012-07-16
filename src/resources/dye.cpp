@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-DyePalette::DyePalette(const std::string &description)
+DyePalette::DyePalette(const std::string &description, int8_t blockSize)
 {
     const int size = static_cast<int>(description.length());
     if (size == 0)
@@ -43,21 +43,22 @@ DyePalette::DyePalette(const std::string &description)
     int pos = 1;
     for ( ; ; )
     {
-        if (pos + 6 > size)
+        if (pos + blockSize > size)
             break;
 
         Color color =
         {
-            {0, 0, 0}
+            {0, 0, 0, 0}
         };
 
-        for (int i = 0, colorIdx = 0; i < 6; i +=2, colorIdx ++)
+        for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < dyePalateSize;
+             i +=2, colorIdx ++)
         {
             color.value[colorIdx] = (hexDecode(description[pos + i]) << 4)
                 + hexDecode(description[pos + i + 1]);
         }
         mColors.push_back(color);
-        pos += 6;
+        pos += blockSize;
 
         if (pos == size)
             return;
@@ -81,20 +82,6 @@ int DyePalette::hexDecode(char c)
     else
         return 0;
 }
-
-/*
-void DyePalette::addFirstColor(const int color[3])
-{
-    Color c = { {color[0], color[1], color[2]} };
-    mColors.insert(mColors.begin(), c);
-}
-
-void DyePalette::addLastColor(const int color[3])
-{
-    Color c = { {color[0], color[1], color[2]} };
-    mColors.push_back(c);
-}
-*/
 
 void DyePalette::getColor(int intensity, int color[3]) const
 {
@@ -192,7 +179,7 @@ void DyePalette::getColor(double intensity, int color[3]) const
     color[2] = static_cast<int>(rest * b1 + intensity * b2);
 }
 
-void DyePalette::replaceColor(uint8_t *color) const
+void DyePalette::replaceSColor(uint8_t *color) const
 {
     std::vector<Color>::const_iterator it = mColors.begin();
     std::vector<Color>::const_iterator it_end = mColors.end();
@@ -215,7 +202,31 @@ void DyePalette::replaceColor(uint8_t *color) const
     }
 }
 
-void DyePalette::replaceOGLColor(uint8_t *color) const
+void DyePalette::replaceAColor(uint8_t *color) const
+{
+    std::vector<Color>::const_iterator it = mColors.begin();
+    std::vector<Color>::const_iterator it_end = mColors.end();
+    while (it != it_end)
+    {
+        const Color &col = *it;
+        ++ it;
+        if (it == it_end)
+            return;
+        const Color &col2 = *it;
+        if (color[1] == col.value[0] && color[2] == col.value[1]
+            && color[3] == col.value[2] && color[0] == col.value[3])
+        {
+            color[3] = col2.value[0];
+            color[2] = col2.value[1];
+            color[1] = col2.value[2];
+            color[0] = col2.value[3];
+            return;
+        }
+        ++ it;
+    }
+}
+
+void DyePalette::replaceSOGLColor(uint8_t *color) const
 {
     std::vector<Color>::const_iterator it = mColors.begin();
     std::vector<Color>::const_iterator it_end = mColors.end();
@@ -232,6 +243,30 @@ void DyePalette::replaceOGLColor(uint8_t *color) const
             color[0] = col2.value[0];
             color[1] = col2.value[1];
             color[2] = col2.value[2];
+            return;
+        }
+        ++ it;
+    }
+}
+
+void DyePalette::replaceAOGLColor(uint8_t *color) const
+{
+    std::vector<Color>::const_iterator it = mColors.begin();
+    std::vector<Color>::const_iterator it_end = mColors.end();
+    while (it != it_end)
+    {
+        const Color &col = *it;
+        ++ it;
+        if (it == it_end)
+            return;
+        const Color &col2 = *it;
+        if (color[2] == col.value[0] && color[1] == col.value[1]
+            && color[0] == col.value[2] && color[3] == col.value[3])
+        {
+            color[0] = col2.value[0];
+            color[1] = col2.value[1];
+            color[2] = col2.value[2];
+            color[3] = col2.value[3];
             return;
         }
         ++ it;
@@ -273,12 +308,13 @@ Dye::Dye(const std::string &description)
             case 'C': i = 5; break;
             case 'W': i = 6; break;
             case 'S': i = 7; break;
+            case 'A': i = 8; break;
             default:
                 logger->log("Error, invalid dye: %s", description.c_str());
                 return;
         }
         mDyePalettes[i] = new DyePalette(description.substr(
-            pos + 2, next_pos - pos - 2));
+            pos + 2, next_pos - pos - 2), i != 8 ? 6 : 8);
         ++next_pos;
     }
     while (next_pos < length);
@@ -364,4 +400,13 @@ void Dye::instantiate(std::string &target, const std::string &palettes)
     while (next_pos < last_pos);
 
     target = s.str();
+}
+
+int Dye::getType() const
+{
+    if (mDyePalettes[sPaleteIndex])
+        return 1;
+    if (mDyePalettes[aPaleteIndex])
+        return 2;
+    return 0;
 }

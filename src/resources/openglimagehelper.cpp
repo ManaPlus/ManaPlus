@@ -62,35 +62,59 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
     SDL_FreeSurface(tmpImage);
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
-    DyePalette *pal = dye.getSPalete();
+    int type = dye.getType();
 
-    if (pal)
+    switch (type)
     {
-        for (uint32_t *p_end = pixels + surf->w * surf->h;
-            pixels != p_end; ++pixels)
+        case 1:
         {
-            uint8_t *p = reinterpret_cast<uint8_t *>(pixels);
-            const int alpha = *p & 255;
-            if (!alpha)
-                continue;
-            pal->replaceOGLColor(p);
+            DyePalette *pal = dye.getSPalete();
+
+            if (pal)
+            {
+                for (uint32_t *p_end = pixels + surf->w * surf->h;
+                    pixels != p_end; ++pixels)
+                {
+                    uint8_t *p = reinterpret_cast<uint8_t *>(pixels);
+                    const int alpha = *p & 255;
+                    if (!alpha)
+                        continue;
+                    pal->replaceSOGLColor(p);
+                }
+            }
+            break;
         }
-    }
-    else
-    {
-        for (uint32_t *p_end = pixels + surf->w * surf->h;
-             pixels != p_end; ++pixels)
+        case 2:
         {
-            const uint32_t p = *pixels;
-            const int alpha = (p >> 24) & 255;
-            if (!alpha)
-                continue;
-            int v[3];
-            v[0] = (p) & 255;
-            v[1] = (p >> 8) & 255;
-            v[2] = (p >> 16 ) & 255;
-            dye.update(v);
-            *pixels = (v[0]) | (v[1] << 8) | (v[2] << 16) | (alpha << 24);
+            DyePalette *pal = dye.getAPalete();
+            if (pal)
+            {
+                for (uint32_t *p_end = pixels + surf->w * surf->h;
+                    pixels != p_end; ++pixels)
+                {
+                    pal->replaceAOGLColor(reinterpret_cast<uint8_t *>(pixels));
+                }
+            }
+            break;
+        }
+        case 0:
+        default:
+        {
+            for (uint32_t *p_end = pixels + surf->w * surf->h;
+                 pixels != p_end; ++pixels)
+            {
+                const uint32_t p = *pixels;
+                const int alpha = (p >> 24) & 255;
+                if (!alpha)
+                    continue;
+                int v[3];
+                v[0] = (p) & 255;
+                v[1] = (p >> 8) & 255;
+                v[2] = (p >> 16 ) & 255;
+                dye.update(v);
+                *pixels = (v[0]) | (v[1] << 8) | (v[2] << 16) | (alpha << 24);
+            }
+            break;
         }
     }
 
