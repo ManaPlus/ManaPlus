@@ -140,9 +140,9 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
 }
 
 
-bool OpenGL1Graphics::drawImage(const Image *image, int srcX, int srcY,
-                                int dstX, int dstY,
-                                int width, int height, bool useColor)
+bool OpenGL1Graphics::drawImage2(const Image *image, int srcX, int srcY,
+                                 int dstX, int dstY,
+                                 int width, int height, bool useColor)
 {
     if (!image)
         return false;
@@ -198,8 +198,8 @@ bool OpenGL1Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     // Just draw the image normally when no resizing is necessary,
     if (width == desiredWidth && height == desiredHeight)
     {
-        return drawImage(image, srcX, srcY, dstX, dstY,
-                         width, height, useColor);
+        return drawImage2(image, srcX, srcY, dstX, dstY,
+                          width, height, useColor);
     }
 
     // When the desired image is smaller than the current one,

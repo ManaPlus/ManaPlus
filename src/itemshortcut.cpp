@@ -75,7 +75,7 @@ void ItemShortcut::load(bool oldConfig)
     for (int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         int itemId = cfg->getValue(name + toString(i), -1);
-        int itemColor = cfg->getValue(color + toString(i), 1);
+        unsigned char itemColor = cfg->getValue(color + toString(i), 1);
 
         mItems[i] = itemId;
         mItemColors[i] = itemColor;
@@ -122,7 +122,7 @@ void ItemShortcut::useItem(int index)
         return;
 
     int itemId = mItems[index];
-    int itemColor = mItemColors[index];
+    unsigned char itemColor = mItemColors[index];
     if (itemId >= 0)
     {
         if (itemId < SPELL_MIN_ID)

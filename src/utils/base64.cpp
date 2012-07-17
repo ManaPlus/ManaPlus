@@ -128,18 +128,18 @@ unsigned char *php3_base64_decode(const unsigned char *string,
         switch (i % 4)
         {
             case 0:
-                result[j] = ch << 2;
+                result[j] = static_cast<unsigned char>(ch << 2);
                 break;
             case 1:
-                result[j++] |= ch >> 4;
-                result[j] = (ch & 0x0f) << 4;
+                result[j++] |= static_cast<unsigned char>(ch >> 4);
+                result[j] = static_cast<unsigned char>((ch & 0x0f) << 4);
                 break;
             case 2:
-                result[j++] |= ch >>2;
-                result[j] = (ch & 0x03) << 6;
+                result[j++] |= static_cast<unsigned char>(ch >>2);
+                result[j] = static_cast<unsigned char>((ch & 0x03) << 6);
                 break;
             case 3:
-                result[j++] |= ch;
+                result[j++] |= static_cast<unsigned char>(ch);
                 break;
             default:
                 break;

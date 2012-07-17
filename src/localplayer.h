@@ -309,7 +309,7 @@ class LocalPlayer : public Being, public ActorSpriteListener,
 
         void move(int dX, int dY);
 
-        void moveToTarget(unsigned int dist = -1);
+        void moveToTarget(int dist = -1);
 
         void moveToHome();
 

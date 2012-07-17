@@ -787,9 +787,9 @@ class Being : public ActorSprite, public ConfigListener
 
         int getSpriteID(int slot);
 
-        static int genderToInt(Gender sex);
+        static uint8_t genderToInt(Gender sex);
 
-        static Gender intToGender(int sex);
+        static Gender intToGender(uint8_t sex);
 
     protected:
         /**

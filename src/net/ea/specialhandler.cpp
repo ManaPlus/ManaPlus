@@ -94,7 +94,8 @@ void SpecialHandler::processPlayerSkills(Net::MessageIn &msg)
         msg.skip(24); // 0 unused
         int up = msg.readInt8();
 
-        PlayerInfo::setStatBase(skillId, level);
+        PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+            skillId), level);
         if (skillDialog)
         {
             if (!skillDialog->updateSkill(skillId, range, up))
@@ -111,7 +112,8 @@ void SpecialHandler::processPlayerSkillUp(Net::MessageIn &msg)
     int range = msg.readInt16();
     int up = msg.readInt8();
 
-    PlayerInfo::setStatBase(skillId, level);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+        skillId), level);
     if (skillDialog)
     {
         if (!skillDialog->updateSkill(skillId, range, up))

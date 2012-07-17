@@ -87,7 +87,7 @@ void triggerStat(int id, const std::string &changed, int old1, int old2)
 
 // --- Attributes -------------------------------------------------------------
 
-int getAttribute(int id)
+int getAttribute(Attribute id)
 {
     IntMap::const_iterator it = mData.mAttributes.find(id);
     if (it != mData.mAttributes.end())
@@ -96,7 +96,7 @@ int getAttribute(int id)
         return 0;
 }
 
-void setAttribute(int id, int value, bool notify)
+void setAttribute(Attribute id, int value, bool notify)
 {
     int old = mData.mAttributes[id];
     mData.mAttributes[id] = value;
@@ -106,7 +106,7 @@ void setAttribute(int id, int value, bool notify)
 
 // --- Stats ------------------------------------------------------------------
 
-int getStatBase(int id)
+int getStatBase(Attribute id)
 {
     StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
@@ -115,7 +115,7 @@ int getStatBase(int id)
         return 0;
 }
 
-void setStatBase(int id, int value, bool notify)
+void setStatBase(Attribute id, int value, bool notify)
 {
     int old = mData.mStats[id].base;
     mData.mStats[id].base = value;
@@ -123,7 +123,7 @@ void setStatBase(int id, int value, bool notify)
         triggerStat(id, "base", old);
 }
 
-int getStatMod(int id)
+int getStatMod(Attribute id)
 {
     StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
@@ -132,7 +132,7 @@ int getStatMod(int id)
         return 0;
 }
 
-void setStatMod(int id, int value, bool notify)
+void setStatMod(Attribute id, int value, bool notify)
 {
     int old = mData.mStats[id].mod;
     mData.mStats[id].mod = value;
@@ -140,7 +140,7 @@ void setStatMod(int id, int value, bool notify)
         triggerStat(id, "mod", old);
 }
 
-int getStatEffective(int id)
+int getStatEffective(Attribute id)
 {
     StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
@@ -149,7 +149,7 @@ int getStatEffective(int id)
         return 0;
 }
 
-std::pair<int, int> getStatExperience(int id)
+std::pair<int, int> getStatExperience(Attribute id)
 {
     StatMap::const_iterator it = mData.mStats.find(id);
     int a, b;
@@ -166,7 +166,7 @@ std::pair<int, int> getStatExperience(int id)
     return std::pair<int, int>(a, b);
 }
 
-void setStatExperience(int id, int have, int need, bool notify)
+void setStatExperience(Attribute id, int have, int need, bool notify)
 {
     Stat &stat = mData.mStats[id];
 
@@ -294,15 +294,21 @@ void updateAttrs()
     int attr = Net::getPlayerHandler()->getAttackLocation();
     if (attr != -1 && getStatBase(ATTACK_DELAY))
     {
-        setStatBase(ATTACK_SPEED, getStatBase(attr) * 1000 / getStatBase(
-            ATTACK_DELAY), false);
-        setStatMod(ATTACK_SPEED, getStatMod(attr) * 1000 / getStatBase(
-            ATTACK_DELAY), true);
+        setStatBase(static_cast<PlayerInfo::Attribute>(ATTACK_SPEED),
+            getStatBase(static_cast<PlayerInfo::Attribute>(attr))
+            * 1000 / getStatBase(
+            static_cast<PlayerInfo::Attribute>(ATTACK_DELAY)), false);
+        setStatMod(static_cast<PlayerInfo::Attribute>(ATTACK_SPEED),
+            getStatMod(static_cast<PlayerInfo::Attribute>(attr))
+            * 1000 / getStatBase(
+            static_cast<PlayerInfo::Attribute>(ATTACK_DELAY)), true);
     }
     else
     {
-        setStatBase(ATTACK_SPEED, 0, false);
-        setStatMod(ATTACK_SPEED, 0, true);
+        setStatBase(static_cast<PlayerInfo::Attribute>(
+            ATTACK_SPEED), 0, false);
+        setStatMod(static_cast<PlayerInfo::Attribute>(
+            ATTACK_SPEED), 0, true);
     }
 }
 

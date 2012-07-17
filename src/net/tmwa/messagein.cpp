@@ -77,7 +77,7 @@ int MessageIn::readInt32()
     }
     mPos += 4;
     PacketCounters::incInBytes(4);
-    DEBUGLOG(strprintf("readInt32: %u", value));
+    DEBUGLOG(strprintf("readInt32: %u", static_cast<unsigned>(value)));
     return value;
 }
 

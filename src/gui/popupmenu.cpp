@@ -276,14 +276,15 @@ void PopupMenu::showPopup(int x, int y, std::vector<ActorSprite*> &beings)
         if (being && !being->getName().empty())
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
-                being->getId(), (being->getName()
+                static_cast<unsigned>(being->getId()), (being->getName()
                 + being->getGenderSignWithSpace()).c_str()));
         }
         else if (actor->getType() == ActorSprite::FLOOR_ITEM)
         {
             FloorItem *floorItem = static_cast<FloorItem*>(actor);
             mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
-                actor->getId(), floorItem->getName().c_str()));
+                static_cast<unsigned>(actor->getId()),
+                floorItem->getName().c_str()));
         }
     }
     mBrowserBox->addRow("##3---");
@@ -648,7 +649,7 @@ void PopupMenu::showChangePos(int x, int y)
         for (PositionsMap::const_iterator itr = map.begin(),
              itr_end = map.end(); itr != itr_end; ++itr)
         {
-            mBrowserBox->addRow(strprintf("@@guild-pos-%d|%s@@",
+            mBrowserBox->addRow(strprintf("@@guild-pos-%u|%s@@",
                 itr->first, itr->second.c_str()));
         }
         mBrowserBox->addRow("cancel", _("Cancel"));

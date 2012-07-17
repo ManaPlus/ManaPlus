@@ -195,7 +195,7 @@ void LoginHandler::processLoginData(Net::MessageIn &msg)
 
 //    msg.skip(30);                           // unknown
     // reserve bits for future usage
-    mToken.sex = Being::intToGender(msg.readInt8() & 3);
+    mToken.sex = Being::intToGender(static_cast<uint8_t>(msg.readInt8() & 3));
 
     for (int i = 0; i < worldCount; i++)
     {

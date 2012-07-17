@@ -97,10 +97,10 @@ namespace gcn
         bool result = Graphics::pushClipArea(area);
 
         const ClipRectangle& carea = mClipStack.top();
-        rect.x = carea.x;
-        rect.y = carea.y;
-        rect.w = carea.width;
-        rect.h = carea.height;
+        rect.x = static_cast<int16_t>(carea.x);
+        rect.y = static_cast<int16_t>(carea.y);
+        rect.w = static_cast<int16_t>(carea.width);
+        rect.h = static_cast<int16_t>(carea.height);
 
         SDL_SetClipRect(mTarget, &rect);
 
@@ -116,10 +116,10 @@ namespace gcn
 
         const ClipRectangle& carea = mClipStack.top();
         SDL_Rect rect;
-        rect.x = carea.x;
-        rect.y = carea.y;
-        rect.w = carea.width;
-        rect.h = carea.height;
+        rect.x = static_cast<int16_t>(carea.x);
+        rect.y = static_cast<int16_t>(carea.y);
+        rect.w = static_cast<int16_t>(carea.width);
+        rect.h = static_cast<int16_t>(carea.height);
 
         SDL_SetClipRect(mTarget, &rect);
     }
@@ -213,21 +213,21 @@ namespace gcn
             + y * mTarget->pitch + x1 * bpp;
 
         uint32_t pixel = SDL_MapRGB(mTarget->format,
-                                  mColor.r,
-                                  mColor.g,
-                                  mColor.b);
+                                    static_cast<uint8_t>(mColor.r),
+                                    static_cast<uint8_t>(mColor.g),
+                                    static_cast<uint8_t>(mColor.b));
         switch (bpp)
         {
             case 1:
                 for (; x1 <= x2; ++x1)
-                    *(p++) = pixel;
+                    *(p++) = static_cast<uint8_t>(pixel);
                 break;
 
             case 2:
             {
                 uint16_t* q = reinterpret_cast<uint16_t*>(p);
                 for (; x1 <= x2; ++x1)
-                    *(q++) = pixel;
+                    *(q++) = static_cast<uint8_t>(pixel);
                 break;
             }
 
@@ -236,9 +236,9 @@ namespace gcn
                 {
                     for (; x1 <= x2; ++x1)
                     {
-                        p[0] = (pixel >> 16) & 0xff;
-                        p[1] = (pixel >> 8) & 0xff;
-                        p[2] = pixel & 0xff;
+                        p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                        p[2] = static_cast<uint8_t>(pixel & 0xff);
                         p += 3;
                     }
                 }
@@ -246,9 +246,9 @@ namespace gcn
                 {
                     for (; x1 <= x2; ++x1)
                     {
-                        p[0] = pixel & 0xff;
-                        p[1] = (pixel >> 8) & 0xff;
-                        p[2] = (pixel >> 16) & 0xff;
+                        p[0] = static_cast<uint8_t>(pixel & 0xff);
+                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                        p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
                         p += 3;
                     }
                 }
@@ -261,12 +261,13 @@ namespace gcn
                 {
                     if (mAlpha)
                     {
-                        *q = SDLAlpha32(pixel, *q, mColor.a);
+                        *q = SDLAlpha32(pixel, *q,
+                            static_cast<unsigned char>(mColor.a));
                         q++;
                     }
                     else
                     {
-                        *(q++) = pixel;
+                        *(q++) = static_cast<uint8_t>(pixel);
                     }
                 }
                 break;
@@ -325,15 +326,17 @@ namespace gcn
         uint8_t *p = static_cast<uint8_t*>(mTarget->pixels)
             + y1 * mTarget->pitch + x * bpp;
 
-        uint32_t pixel = SDL_MapRGB(mTarget->format, mColor.r,
-            mColor.g, mColor.b);
+        uint32_t pixel = SDL_MapRGB(mTarget->format,
+            static_cast<uint8_t>(mColor.r),
+            static_cast<uint8_t>(mColor.g),
+            static_cast<uint8_t>(mColor.b));
 
         switch (bpp)
         {
             case 1:
                 for (; y1 <= y2; ++y1)
                 {
-                    *p = pixel;
+                    *p = static_cast<uint8_t>(pixel);
                     p += mTarget->pitch;
                 }
                 break;
@@ -341,7 +344,8 @@ namespace gcn
             case 2:
                 for (; y1 <= y2; ++ y1)
                 {
-                    *reinterpret_cast<uint16_t*>(p) = pixel;
+                    *reinterpret_cast<uint16_t*>(p)
+                        = static_cast<uint16_t>(pixel);
                     p += mTarget->pitch;
                 }
                 break;
@@ -351,9 +355,9 @@ namespace gcn
                 {
                     for (; y1 <= y2; ++y1)
                     {
-                        p[0] = (pixel >> 16) & 0xff;
-                        p[1] = (pixel >> 8) & 0xff;
-                        p[2] = pixel & 0xff;
+                        p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                        p[2] = static_cast<uint8_t>(pixel & 0xff);
                         p += mTarget->pitch;
                     }
                 }
@@ -361,9 +365,9 @@ namespace gcn
                 {
                     for (; y1 <= y2; ++y1)
                     {
-                        p[0] = pixel & 0xff;
-                        p[1] = (pixel >> 8) & 0xff;
-                        p[2] = (pixel >> 16) & 0xff;
+                        p[0] = static_cast<uint8_t>(pixel & 0xff);
+                        p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                        p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
                         p += mTarget->pitch;
                     }
                 }
@@ -375,7 +379,8 @@ namespace gcn
                     if (mAlpha)
                     {
                         *reinterpret_cast<uint32_t*>(p) = SDLAlpha32(pixel,
-                            *reinterpret_cast<uint32_t*>(p), mColor.a);
+                            *reinterpret_cast<uint32_t*>(p),
+                            static_cast<unsigned char>(mColor.a));
                     }
                     else
                     {

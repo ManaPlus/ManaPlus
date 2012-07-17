@@ -518,7 +518,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     dstBeing->setStatusEffectBlock(32, msg.readInt16());  // opt3
     msg.readInt8();   // karma
     // reserving bit for future usage
-    dstBeing->setGender(Being::intToGender(msg.readInt8() & 3));
+    dstBeing->setGender(Being::intToGender(
+        static_cast<uint8_t>(msg.readInt8() & 3)));
 
     // Set these after the gender, as the sprites may be gender-specific
     dstBeing->setSprite(SPRITE_WEAPON, weapon, "", 1, true);
@@ -647,7 +648,8 @@ void BeingHandler::processPlayerMoveUpdate(Net::MessageIn &msg, int msgType)
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffff));
 
     if (msgType == 3 && dstBeing->getType() == Being::PLAYER)
         dstBeing->setMoveTime();

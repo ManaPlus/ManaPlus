@@ -142,10 +142,10 @@ void OutfitWindow::load(bool oldConfig)
         std::string buf;
         std::stringstream ss(outfit);
 
-        std::vector<int> tokens;
+        std::vector<unsigned char> tokens;
 
         while (ss >> buf)
-            tokens.push_back(atoi(buf.c_str()));
+            tokens.push_back(static_cast<unsigned char>(atoi(buf.c_str())));
 
         for (int i = 0; i < static_cast<int>(tokens.size())
                 && i < OUTFIT_ITEM_COUNT; i++)
@@ -160,7 +160,7 @@ void OutfitWindow::load(bool oldConfig)
         tokens.clear();
 
         while (ss2 >> buf)
-            tokens.push_back(atoi(buf.c_str()));
+            tokens.push_back(static_cast<unsigned char>(atoi(buf.c_str())));
 
         for (int i = 0; i < static_cast<int>(tokens.size())
                 && i < OUTFIT_ITEM_COUNT; i++)
@@ -373,7 +373,7 @@ void OutfitWindow::mouseDragged(gcn::MouseEvent &event)
                 return;
             }
             const int itemId = mItems[mCurrentOutfit][index];
-            const int itemColor = mItemColors[mCurrentOutfit][index];
+            const unsigned char itemColor = mItemColors[mCurrentOutfit][index];
             if (itemId < 0)
             {
                 Window::mouseDragged(event);

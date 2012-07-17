@@ -47,11 +47,6 @@ class OpenGLGraphics : public Graphics
         bool setVideoMode(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);
 
-        bool drawImage(const Image *image,
-                       int srcX, int srcY,
-                       int dstX, int dstY,
-                       int width, int height,
-                       bool useColor);
 
         /**
          * Draws a resclaled version of the image
@@ -147,6 +142,12 @@ class OpenGLGraphics : public Graphics
         static GLuint mLastImage;
 
     protected:
+        bool drawImage2(const Image *image,
+                        int srcX, int srcY,
+                        int dstX, int dstY,
+                        int width, int height,
+                        bool useColor);
+
         void setTexturingAndBlending(bool enable);
 
         void logString(const char *format, GLenum num);

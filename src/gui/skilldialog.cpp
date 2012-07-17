@@ -561,10 +561,13 @@ void SkillInfo::setIcon(const std::string &iconPath)
 
 void SkillInfo::update()
 {
-    int baseLevel = PlayerInfo::getStatBase(id);
-    int effLevel = PlayerInfo::getStatEffective(id);
+    int baseLevel = PlayerInfo::getStatBase(
+        static_cast<PlayerInfo::Attribute>(id));
+    int effLevel = PlayerInfo::getStatEffective(
+        static_cast<PlayerInfo::Attribute>(id));
 
-    std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
+    std::pair<int, int> exp = PlayerInfo::getStatExperience(
+        static_cast<PlayerInfo::Attribute>(id));
 
     if (!modifiable && baseLevel == 0 && effLevel == 0 && exp.second == 0)
     {

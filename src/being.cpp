@@ -434,7 +434,7 @@ void Being::setDestination(int dstX, int dstY)
     Path thisPath = mMap->findPixelPath(static_cast<int>(mPos.x),
         static_cast<int>(mPos.y), dest.x, dest.y,
         static_cast<int>(getCollisionRadius()),
-        static_cast<int>(getWalkMask()));
+        static_cast<unsigned char>(getWalkMask()));
 
     if (thisPath.empty())
     {
@@ -1166,7 +1166,7 @@ void Being::setDirection(uint8_t direction)
     {
         dir = DIRECTION_LEFT;
     }
-    mSpriteDirection = dir;
+    mSpriteDirection = static_cast<uint8_t>(dir);
 
     CompoundSprite::setSpriteDirection(dir);
     recalcSpritesOrder();
@@ -2648,7 +2648,7 @@ void Being::updatePercentHP()
     }
 }
 
-int Being::genderToInt(Gender sex)
+uint8_t Being::genderToInt(Gender sex)
 {
     switch (sex)
     {
@@ -2663,7 +2663,7 @@ int Being::genderToInt(Gender sex)
     }
 }
 
-Gender Being::intToGender(int sex)
+Gender Being::intToGender(uint8_t sex)
 {
     switch (sex)
     {

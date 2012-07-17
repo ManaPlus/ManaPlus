@@ -103,55 +103,56 @@ namespace PlayerInfo
     /**
      * Returns the value of the given attribute.
      */
-    int getAttribute(int id);
+    int getAttribute(Attribute id);
 
     /**
      * Changes the value of the given attribute.
      */
-    void setAttribute(int id, int value, bool notify = true);
+    void setAttribute(Attribute id, int value, bool notify = true);
 
 // --- Stats ------------------------------------------------------------------
 
     /**
      * Returns the base value of the given stat.
      */
-    int getStatBase(int id);
+    int getStatBase(Attribute id);
 
     /**
      * Changes the base value of the given stat.
      */
-    void setStatBase(int id, int value, bool notify = true);
+    void setStatBase(Attribute id, int value, bool notify = true);
 
     /**
      * Returns the modifier for the given stat.
      */
-    int getStatMod(int id);
+    int getStatMod(Attribute id);
 
     /**
      * Changes the modifier for the given stat.
      */
-    void setStatMod(int id, int value, bool notify = true);
+    void setStatMod(Attribute id, int value, bool notify = true);
 
     /**
      * Returns the current effective value of the given stat. Effective is base
      * + mod
      */
-    int getStatEffective(int id);
+    int getStatEffective(Attribute id);
 
     /**
      * Changes the level of the given stat.
      */
-    void setStatLevel(int id, int value, bool notify = true);
+    void setStatLevel(Attribute id, int value, bool notify = true);
 
     /**
      * Returns the experience of the given stat.
      */
-    std::pair<int, int> getStatExperience(int id);
+    std::pair<int, int> getStatExperience(Attribute id);
 
     /**
      * Changes the experience of the given stat.
      */
-    void setStatExperience(int id, int have, int need, bool notify = true);
+    void setStatExperience(Attribute id, int have,
+                           int need, bool notify = true);
 
 // --- Inventory / Equipment --------------------------------------------------
 

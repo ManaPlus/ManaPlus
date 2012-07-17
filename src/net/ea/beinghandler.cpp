@@ -116,7 +116,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         return;
 
     int id;
-    short job, speed, gender;
+    short job, speed;
+    uint8_t gender;
     uint16_t headTop, headMid, headBottom;
     uint16_t shoes, gloves;
     uint16_t weapon, shield;
@@ -335,8 +336,8 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
-
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffff));
 }
 
 void BeingHandler::processBeingMove2(Net::MessageIn &msg)
@@ -761,7 +762,8 @@ void BeingHandler::processPlaterStatusChange(Net::MessageIn &msg)
     dstBeing->setStunMode(stunMode);
     dstBeing->setStatusEffectBlock(0, static_cast<uint16_t>(
         (statusEffects >> 16) & 0xffff));
-    dstBeing->setStatusEffectBlock(16, statusEffects & 0xffff);
+    dstBeing->setStatusEffectBlock(16, static_cast<uint16_t>(
+        statusEffects & 0xffff));
 }
 
 void BeingHandler::processBeingStatusChange(Net::MessageIn &msg)

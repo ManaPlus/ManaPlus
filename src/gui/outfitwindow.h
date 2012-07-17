@@ -129,7 +129,7 @@ class OutfitWindow : public Window, gcn::ActionListener
         unsigned char mItemColors[OUTFITS_COUNT + 1][OUTFIT_ITEM_COUNT];
         bool mItemsUnequip[OUTFITS_COUNT];
         int mItemSelected;
-        int mItemColorSelected;
+        unsigned char mItemColorSelected;
 
         int mCurrentOutfit;
         int mAwayOutfit;

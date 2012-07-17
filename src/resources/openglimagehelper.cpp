@@ -125,7 +125,7 @@ Resource *OpenGLImageHelper::load(SDL_RWops *rw, Dye const &dye)
 
 Image *OpenGLImageHelper::load(SDL_Surface *tmpImage)
 {
-    return _GLload(tmpImage);
+    return glLoad(tmpImage);
 }
 
 Image *OpenGLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
@@ -133,7 +133,7 @@ Image *OpenGLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
     if (!tmpImage)
         return nullptr;
 
-    Image *img = _GLload(tmpImage);
+    Image *img = glLoad(tmpImage);
     if (img)
         img->setAlpha(alpha);
     return img;
@@ -155,7 +155,7 @@ int OpenGLImageHelper::powerOfTwo(int input)
     return value >= mTextureSize ? mTextureSize : value;
 }
 
-Image *OpenGLImageHelper::_GLload(SDL_Surface *tmpImage)
+Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
 {
     if (!tmpImage)
         return nullptr;

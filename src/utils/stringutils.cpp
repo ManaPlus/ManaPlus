@@ -267,7 +267,7 @@ std::string extractNameFromSprite(std::string str)
                 pos2 = pos3;
         }
         if (pos2 == std::string::npos)
-            pos2 = -1;
+            pos2 = static_cast<size_t>(-1);
 
         int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
         if (size > 0)
@@ -290,7 +290,7 @@ std::string removeSpriteIndex(std::string str)
                 pos2 = pos3;
         }
         if (pos2 == std::string::npos)
-            pos2 = -1;
+            pos2 = static_cast<size_t>(-1);
 
         int size = static_cast<int>(pos1) - static_cast<int>(pos2) - 1;
         if (size > 0)

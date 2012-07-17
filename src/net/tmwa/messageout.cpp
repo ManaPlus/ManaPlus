@@ -91,7 +91,9 @@ static_cast<unsigned short>(w)) >> 8))
 void MessageOut::writeCoordinates(unsigned short x, unsigned short y,
                                   unsigned char direction)
 {
-    DEBUGLOG(strprintf("writeCoordinates: %u,%u %u", x, y, direction));
+    DEBUGLOG(strprintf("writeCoordinates: %u,%u %u",
+        static_cast<unsigned>(x), static_cast<unsigned>(y),
+        static_cast<unsigned>(direction)));
     char *data = mData + mPos;
     mNetwork->mOutSize += 3;
     mPos += 3;

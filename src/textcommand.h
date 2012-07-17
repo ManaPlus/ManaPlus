@@ -109,10 +109,10 @@ class TextCommand
         MagicSchool getSchool() const
         { return mSchool; }
 
-        int getBaseLvl() const
+        unsigned getBaseLvl() const
         { return mBaseLvl; }
 
-        int getSchoolLvl() const
+        unsigned getSchoolLvl() const
         { return mSchoolLvl; }
 
         TextCommandType getCommandType() const
@@ -169,8 +169,8 @@ class TextCommand
         unsigned int mId;
         int mMana;
         MagicSchool mSchool;
-        int mBaseLvl;
-        int mSchoolLvl;
+        unsigned mBaseLvl;
+        unsigned mSchoolLvl;
         TextCommandType mCommandType;
         Image *mImage;
 };

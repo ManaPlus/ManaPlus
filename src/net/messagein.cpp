@@ -50,7 +50,7 @@ MessageIn::MessageIn(const char *data, unsigned int length):
 
 unsigned char MessageIn::readInt8()
 {
-    unsigned char value = -1;
+    unsigned char value = static_cast<unsigned char>(-1);
     if (mPos < mLength)
         value = static_cast<unsigned char>(mData[mPos]);
 
@@ -121,7 +121,7 @@ void MessageIn::readCoordinates(uint16_t &x, uint16_t &y, uint8_t &direction)
         temp = MAKEWORD(data[2] & 0x00f0, data[1] & 0x003f);
         y = static_cast<unsigned short>(temp >> 4);
 
-        serverDir = data[2] & 0x000f;
+        serverDir = static_cast<uint8_t>(data[2] & 0x000f);
         direction = fromServerDirection(serverDir);
     }
     mPos += 3;

@@ -61,7 +61,7 @@ class DropShortcut
         int getItem(int index) const
         { return mItems[index]; }
 
-        int getItemColor(int index) const
+        unsigned char getItemColor(int index) const
         { return mItemColors[index]; }
 
         /**
@@ -151,9 +151,9 @@ class DropShortcut
         bool dropItem(int cnt = 1);
 
         int mItems[DROP_SHORTCUT_ITEMS];
-        int mItemColors[DROP_SHORTCUT_ITEMS];
+        unsigned char mItemColors[DROP_SHORTCUT_ITEMS];
         int mItemSelected;
-        int mItemColorSelected;
+        unsigned char mItemColorSelected;
 
         int mLastDropIndex;
 };

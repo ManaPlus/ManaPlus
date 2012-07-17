@@ -185,7 +185,7 @@ void DropShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 return;
 
             const int itemId = dropShortcut->getItem(index);
-            const int itemColor = dropShortcut->getItemColor(index);
+            const unsigned char itemColor = dropShortcut->getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -288,7 +288,7 @@ void DropShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         return;
 
     const int itemId = dropShortcut->getItem(index);
-    const int itemColor = dropShortcut->getItemColor(index);
+    const unsigned char itemColor = dropShortcut->getItemColor(index);
 
     if (itemId < 0)
         return;

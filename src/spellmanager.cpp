@@ -138,9 +138,11 @@ void SpellManager::invoke(int spellId)
 
     if (spell->getCommandType() == TEXT_COMMAND_TEXT
         || (Net::getPlayerHandler()->canUseMagic()
-        && PlayerInfo::getStatEffective(SKILL_MAGIC) >= spell->getBaseLvl()
+        && PlayerInfo::getStatEffective(static_cast<PlayerInfo::Attribute>(
+        SKILL_MAGIC)) >= static_cast<signed>(spell->getBaseLvl())
         && PlayerInfo::getStatEffective(
-        spell->getSchool()) >= spell->getSchoolLvl()
+        static_cast<PlayerInfo::Attribute>(spell->getSchool()))
+        >= static_cast<signed>(spell->getSchoolLvl())
         && PlayerInfo::getAttribute(PlayerInfo::MP) >= spell->getMana()))
     {
         Being* target = player_node->getTarget();
@@ -336,10 +338,12 @@ void SpellManager::save()
             if (spell->getCommand() != "" && spell->getSymbol() != "")
             {
                 serverConfig.setValue("commandShortcutFlags" + toString(i),
-                    strprintf("%u %u %u %u %u %u", spell->getCommandType(),
-                    spell->getTargetType(), spell->getBaseLvl(),
-                    spell->getSchool(), spell->getSchoolLvl(),
-                    spell->getMana()));
+                    strprintf("%u %u %u %u %u %u", static_cast<unsigned>(
+                    spell->getCommandType()), static_cast<unsigned>(
+                    spell->getTargetType()), spell->getBaseLvl(),
+                    static_cast<unsigned>(spell->getSchool()),
+                    spell->getSchoolLvl(), static_cast<unsigned>(
+                    spell->getMana())));
             }
             else
             {

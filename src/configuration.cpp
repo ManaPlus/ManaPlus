@@ -507,8 +507,9 @@ float Configuration::getFloatValue(const std::string &key) const
                 else if (itdef->second->getType()
                          == VariableData::DATA_STRING)
                 {
-                    defaultValue = atof((static_cast<StringData*>(
-                        itdef->second))->getData().c_str());
+                    defaultValue = static_cast<float>(atof((
+                        static_cast<StringData*>(
+                        itdef->second))->getData().c_str()));
                 }
                 else if (itdef->second->getType()
                          == VariableData::DATA_BOOL)
@@ -526,8 +527,8 @@ float Configuration::getFloatValue(const std::string &key) const
                 else if (itdef->second->getType()
                          == VariableData::DATA_INT)
                 {
-                    defaultValue = (static_cast<IntData*>(
-                        itdef->second))->getData();
+                    defaultValue = static_cast<float>((static_cast<IntData*>(
+                        itdef->second))->getData());
                 }
             }
             else

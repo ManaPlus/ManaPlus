@@ -149,7 +149,7 @@ void BeingPopup::show(int x, int y, Being *b)
 
     if (b->getPvpRank() > 0)
     {
-        label3->setCaption(strprintf(_("Pvp rank: %d"), b->getPvpRank()));
+        label3->setCaption(strprintf(_("Pvp rank: %u"), b->getPvpRank()));
         label3->adjustSize();
     }
     else

@@ -154,7 +154,8 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *tmpImage, float alpha)
             uint32_t c = (static_cast<uint32_t*>(tmpImage->pixels))[i];
 
             unsigned v = (c & fmt->Amask) >> fmt->Ashift;
-            uint8_t a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
+            uint8_t a = static_cast<uint8_t>((v << fmt->Aloss)
+                + (v >> (8 - (fmt->Aloss << 1))));
 
             uint8_t a2 = static_cast<uint8_t>(static_cast<float>(a) * alpha);
 
@@ -241,7 +242,8 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
             {
                 unsigned v = ((static_cast<uint32_t*>(tmpImage->pixels))[i]
                     & fmt->Amask) >> fmt->Ashift;
-                uint8_t a = (v << fmt->Aloss) + (v >> (8 - (fmt->Aloss << 1)));
+                uint8_t a = static_cast<uint8_t>((v << fmt->Aloss)
+                    + (v >> (8 - (fmt->Aloss << 1))));
 
                 if (a != 255)
                     hasAlpha = true;

@@ -961,7 +961,8 @@ void ChatWindow::processEvent(Channels channel, const DepricatedEvent &event)
             if (id == Net::getPlayerHandler()->getJobLocation())
             {
                 std::pair<int, int> exp
-                    = PlayerInfo::getStatExperience(id);
+                    = PlayerInfo::getStatExperience(
+                    static_cast<PlayerInfo::Attribute>(id));
                 if (event.getInt("oldValue1") > exp.first
                     || !event.getInt("oldValue2"))
                 {

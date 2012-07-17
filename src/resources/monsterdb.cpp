@@ -106,7 +106,8 @@ void MonsterDB::load()
         else if (walkStr == "walkswim" || walkStr == "swimwalk")
             block = Map::BLOCKMASK_AIR;
 
-        currentInfo->setWalkMask(Map::BLOCKMASK_WALL | block);
+        currentInfo->setWalkMask(static_cast<unsigned char>(
+            Map::BLOCKMASK_WALL | block));
 
         if (currentInfo->getMaxHP())
             currentInfo->setStaticMaxHP(true);

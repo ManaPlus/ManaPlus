@@ -130,14 +130,14 @@ void ChangeEmailDialog::action(const gcn::ActionEvent &event)
         {
             // First email address too short
             errorMsg << strprintf(_("The new email address needs to be at "
-                "least %d characters long."), min);
+                "least %u characters long."), min);
             error = 1;
         }
         else if (newFirstEmail.length() > max - 1 )
         {
             // First email address too long
             errorMsg << strprintf(_("The new email address needs to be "
-                "less than %d characters long."), max);
+                "less than %u characters long."), max);
             error = 1;
         }
         else if (newFirstEmail != newSecondEmail)

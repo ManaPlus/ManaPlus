@@ -615,9 +615,10 @@ void UpdaterWindow::logic()
         mProgressBar->setProgress(mDownloadProgress);
         if (mUpdateFiles.size() && mUpdateIndex <= mUpdateFiles.size())
         {
-            mProgressBar->setText(strprintf("%d/%d", mUpdateIndex
-                + mUpdateIndexOffset + 1, static_cast<int>(mUpdateFiles.size())
-                + static_cast<int>(mTempUpdateFiles.size()) + 1));
+            mProgressBar->setText(strprintf("%u/%u", mUpdateIndex
+                + mUpdateIndexOffset + 1, static_cast<unsigned>(
+                mUpdateFiles.size()) + static_cast<int>(
+                mTempUpdateFiles.size()) + 1));
         }
         else
         {

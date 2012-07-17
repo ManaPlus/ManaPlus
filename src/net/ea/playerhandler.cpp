@@ -362,48 +362,60 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;
 
         case 0x0029:
-            PlayerInfo::setStatBase(EA_ATK, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_ATK), value);
             PlayerInfo::updateAttrs();
             break;
         case 0x002a:
-            PlayerInfo::setStatMod(EA_ATK, value);
+            PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(
+                EA_ATK), value);
             PlayerInfo::updateAttrs();
             break;
 
         case 0x002b:
-            PlayerInfo::setStatBase(EA_MATK, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_MATK), value);
             break;
         case 0x002c:
-            PlayerInfo::setStatMod(EA_MATK, value);
+            PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(
+                EA_MATK), value);
             break;
 
         case 0x002d:
-            PlayerInfo::setStatBase(EA_DEF, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_DEF), value);
             break;
         case 0x002e:
-            PlayerInfo::setStatMod(EA_DEF, value);
+            PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(
+                EA_DEF), value);
             break;
 
         case 0x002f:
-            PlayerInfo::setStatBase(EA_MDEF, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_MDEF), value);
             break;
         case 0x0030:
-            PlayerInfo::setStatMod(EA_MDEF, value);
+            PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(
+                EA_MDEF), value);
             break;
 
         case 0x0031:
-            PlayerInfo::setStatBase(EA_HIT, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_HIT), value);
             break;
 
         case 0x0032:
-            PlayerInfo::setStatBase(EA_FLEE, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_FLEE), value);
             break;
         case 0x0033:
-            PlayerInfo::setStatMod(EA_FLEE, value);
+            PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(
+                EA_FLEE), value);
             break;
 
         case 0x0034:
-            PlayerInfo::setStatBase(EA_CRIT, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_CRIT), value);
             break;
 
         case 0x0035:
@@ -414,7 +426,8 @@ void PlayerHandler::processPlayerStatUpdate1(Net::MessageIn &msg)
             break;
 
         case 0x0037:
-            PlayerInfo::setStatBase(EA_JOB, value);
+            PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+                EA_JOB), value);
             break;
 
         case 500:
@@ -445,8 +458,10 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             PlayerInfo::setAttribute(PlayerInfo::EXP, msg.readInt32());
             break;
         case 0x0002:
-            PlayerInfo::setStatExperience(EA_JOB, msg.readInt32(),
-            PlayerInfo::getStatExperience(EA_JOB).second);
+            PlayerInfo::setStatExperience(static_cast<PlayerInfo::Attribute>(
+                EA_JOB), msg.readInt32(),
+            PlayerInfo::getStatExperience(static_cast<PlayerInfo::Attribute>(
+                EA_JOB)).second);
             break;
         case 0x0014:
         {
@@ -470,8 +485,9 @@ void PlayerHandler::processPlayerStatUpdate2(Net::MessageIn &msg)
             PlayerInfo::setAttribute(PlayerInfo::EXP_NEEDED, msg.readInt32());
             break;
         case 0x0017:
-            PlayerInfo::setStatExperience(EA_JOB,
-                PlayerInfo::getStatExperience(EA_JOB).first,
+            PlayerInfo::setStatExperience(static_cast<PlayerInfo::Attribute>(
+                EA_JOB), PlayerInfo::getStatExperience(
+                static_cast<PlayerInfo::Attribute>(EA_JOB)).first,
                 msg.readInt32());
             break;
         default:
@@ -486,8 +502,10 @@ void PlayerHandler::processPlayerStatUpdate3(Net::MessageIn &msg)
     int base = msg.readInt32();
     int bonus = msg.readInt32();
 
-    PlayerInfo::setStatBase(type, base, false);
-    PlayerInfo::setStatMod(type, bonus);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(
+        type), base, false);
+    PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(
+        type), bonus);
     if (type == EA_ATK || type == PlayerInfo::ATTACK_DELAY)
         PlayerInfo::updateAttrs();
 }
@@ -500,14 +518,15 @@ void PlayerHandler::processPlayerStatUpdate4(Net::MessageIn &msg)
 
     if (ok != 1)
     {
-        int oldValue = PlayerInfo::getStatBase(type);
+        int oldValue = PlayerInfo::getStatBase(
+            static_cast<PlayerInfo::Attribute>(type));
         int points = PlayerInfo::getAttribute(PlayerInfo::CHAR_POINTS);
         points += oldValue - value;
         PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, points);
         SERVER_NOTICE(_("Cannot raise skill!"))
     }
 
-    PlayerInfo::setStatBase(type, value);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(type), value);
 }
 
 void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
@@ -515,69 +534,80 @@ void PlayerHandler::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setAttribute(PlayerInfo::CHAR_POINTS, msg.readInt16());
 
     int val = msg.readInt8();
-    PlayerInfo::setStatBase(EA_STR, val);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_STR), val);
     if (statusWindow)
         statusWindow->setPointsNeeded(EA_STR, msg.readInt8());
     else
         msg.readInt8();
 
     val = msg.readInt8();
-    PlayerInfo::setStatBase(EA_AGI, val);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_AGI), val);
     if (statusWindow)
         statusWindow->setPointsNeeded(EA_AGI, msg.readInt8());
     else
         msg.readInt8();
 
     val = msg.readInt8();
-    PlayerInfo::setStatBase(EA_VIT, val);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_VIT), val);
     if (statusWindow)
         statusWindow->setPointsNeeded(EA_VIT, msg.readInt8());
     else
         msg.readInt8();
 
     val = msg.readInt8();
-    PlayerInfo::setStatBase(EA_INT, val);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_INT), val);
     if (statusWindow)
         statusWindow->setPointsNeeded(EA_INT, msg.readInt8());
     else
         msg.readInt8();
 
     val = msg.readInt8();
-    PlayerInfo::setStatBase(EA_DEX, val);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_DEX), val);
     if (statusWindow)
         statusWindow->setPointsNeeded(EA_DEX, msg.readInt8());
     else
         msg.readInt8();
 
     val = msg.readInt8();
-    PlayerInfo::setStatBase(EA_LUK, val);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_LUK), val);
     if (statusWindow)
         statusWindow->setPointsNeeded(EA_LUK, msg.readInt8());
     else
         msg.readInt8();
 
-    PlayerInfo::setStatBase(EA_ATK, msg.readInt16(), false);
-    PlayerInfo::setStatMod(EA_ATK, msg.readInt16());
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_ATK),
+        msg.readInt16(), false);
+    PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(EA_ATK),
+        msg.readInt16());
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16();
-    PlayerInfo::setStatBase(EA_MATK, val, false);
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_MATK),
+        val, false);
 
     val = msg.readInt16();
-    PlayerInfo::setStatMod(EA_MATK, val);
+    PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(EA_MATK), val);
 
-    PlayerInfo::setStatBase(EA_DEF, msg.readInt16(), false);
-    PlayerInfo::setStatMod(EA_DEF, msg.readInt16());
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_DEF),
+        msg.readInt16(), false);
+    PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(EA_DEF),
+        msg.readInt16());
 
-    PlayerInfo::setStatBase(EA_MDEF, msg.readInt16(), false);
-    PlayerInfo::setStatMod(EA_MDEF, msg.readInt16());
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_MDEF),
+        msg.readInt16(), false);
+    PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(EA_MDEF),
+        msg.readInt16());
 
-    PlayerInfo::setStatBase(EA_HIT, msg.readInt16());
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_HIT),
+        msg.readInt16());
 
-    PlayerInfo::setStatBase(EA_FLEE, msg.readInt16(), false);
-    PlayerInfo::setStatMod(EA_FLEE, msg.readInt16());
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_FLEE),
+        msg.readInt16(), false);
+    PlayerInfo::setStatMod(static_cast<PlayerInfo::Attribute>(EA_FLEE),
+        msg.readInt16());
 
-    PlayerInfo::setStatBase(EA_CRIT, msg.readInt16());
+    PlayerInfo::setStatBase(static_cast<PlayerInfo::Attribute>(EA_CRIT),
+        msg.readInt16());
 
     msg.readInt16();  // manner
 }
@@ -635,17 +665,18 @@ void PlayerHandler::processPlayerArrowMessage(Net::MessageIn &msg)
 
 bool PlayerHandler::canUseMagic() const
 {
-    return PlayerInfo::getStatEffective(EA_MATK) > 0;
+    return PlayerInfo::getStatEffective(static_cast<PlayerInfo::Attribute>(
+        EA_MATK)) > 0;
 }
 
-int PlayerHandler::getJobLocation() const
+PlayerInfo::Attribute PlayerHandler::getJobLocation() const
 {
-    return EA_JOB;
+    return static_cast<PlayerInfo::Attribute>(EA_JOB);
 }
 
-int PlayerHandler::getAttackLocation() const
+PlayerInfo::Attribute PlayerHandler::getAttackLocation() const
 {
-    return EA_ATK;
+    return static_cast<PlayerInfo::Attribute>(EA_ATK);
 }
 
 } // namespace Ea

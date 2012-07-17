@@ -54,8 +54,9 @@ DyePalette::DyePalette(const std::string &description, int8_t blockSize)
         for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < dyePalateSize;
              i +=2, colorIdx ++)
         {
-            color.value[colorIdx] = (hexDecode(description[pos + i]) << 4)
-                + hexDecode(description[pos + i + 1]);
+            color.value[colorIdx] = static_cast<unsigned char>((
+                hexDecode(description[pos + i]) << 4)
+                + hexDecode(description[pos + i + 1]));
         }
         mColors.push_back(color);
         pos += blockSize;

@@ -118,7 +118,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         if (password.length() < min)
         {
             // Pass too short
-            errorMsg << strprintf(_("The password needs to be at least %d "
+            errorMsg << strprintf(_("The password needs to be at least %u "
                 "characters long."), min);
             error = true;
         }
@@ -126,7 +126,7 @@ void UnRegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Pass too long
             errorMsg << strprintf(_("The password needs to be less than "
-                "%d characters long."), max);
+                "%u characters long."), max);
             error = true;
         }
 

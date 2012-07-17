@@ -297,17 +297,17 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
             > PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED))
         {
             mTextPopup->show(x + getX(), y + getY(),
-                event.getSource()->getId(), strprintf("%u/%u",
+                event.getSource()->getId(), strprintf("%d/%d",
                 PlayerInfo::getAttribute(PlayerInfo::EXP),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)));
         }
         else
         {
             mTextPopup->show(x + getX(), y + getY(),
-                event.getSource()->getId(), strprintf("%u/%u",
+                event.getSource()->getId(), strprintf("%d/%d",
                 PlayerInfo::getAttribute(PlayerInfo::EXP),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)),
-                strprintf("%s: %u", _("Need"),
+                strprintf("%s: %d", _("Need"),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)
                 - PlayerInfo::getAttribute(PlayerInfo::EXP)));
         }
@@ -316,14 +316,14 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     else if (event.getSource() == mHpBar)
     {
         mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
-            strprintf("%u/%u", PlayerInfo::getAttribute(PlayerInfo::HP),
+            strprintf("%d/%d", PlayerInfo::getAttribute(PlayerInfo::HP),
             PlayerInfo::getAttribute(PlayerInfo::MAX_HP)));
         mStatusPopup->hide();
     }
     else if (event.getSource() == mMpBar)
     {
         mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
-            strprintf("%u/%u", PlayerInfo::getAttribute(PlayerInfo::MP),
+            strprintf("%d/%d", PlayerInfo::getAttribute(PlayerInfo::MP),
             PlayerInfo::getAttribute(PlayerInfo::MAX_MP)));
         mStatusPopup->hide();
     }
@@ -336,21 +336,21 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
         {
             mTextPopup->show(x + getX(), y + getY(),
                 event.getSource()->getId(),
-                strprintf("%u/%u", exp.first, exp.second));
+                strprintf("%d/%d", exp.first, exp.second));
         }
         else
         {
             mTextPopup->show(x + getX(), y + getY(),
                 event.getSource()->getId(),
-                strprintf("%u/%u", exp.first, exp.second),
-                strprintf("%s: %u", _("Need"), exp.second - exp.first));
+                strprintf("%d/%d", exp.first, exp.second),
+                strprintf("%s: %d", _("Need"), exp.second - exp.first));
         }
         mStatusPopup->hide();
     }
     else if (event.getSource() == mWeightBar)
     {
         mTextPopup->show(x + getX(), y + getY(), event.getSource()->getId(),
-            strprintf("%u/%u", PlayerInfo::getAttribute(
+            strprintf("%d/%d", PlayerInfo::getAttribute(
             PlayerInfo::TOTAL_WEIGHT),
             PlayerInfo::getAttribute(PlayerInfo::MAX_WEIGHT)));
         mStatusPopup->hide();
@@ -365,7 +365,7 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
 
             mTextPopup->show(x + getX(), y + getY(),
                 event.getSource()->getId(),
-                strprintf("%u/%u", usedSlots, maxSlots));
+                strprintf("%d/%d", usedSlots, maxSlots));
         }
         mStatusPopup->hide();
     }

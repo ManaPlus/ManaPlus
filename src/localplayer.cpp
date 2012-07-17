@@ -1700,8 +1700,8 @@ void LocalPlayer::processEvent(Channels channel,
             int id = event.getInt("id");
             if (id == Net::getPlayerHandler()->getJobLocation())
             {
-                std::pair<int, int> exp
-                    = PlayerInfo::getStatExperience(id);
+                std::pair<int, int> exp = PlayerInfo::getStatExperience(
+                    static_cast<PlayerInfo::Attribute>(id));
                 if (event.getInt("oldValue1") > exp.first
                     || !event.getInt("oldValue2"))
                 {
@@ -1755,7 +1755,7 @@ void LocalPlayer::move(int dX, int dY)
     moveTo(mX + dX, mY + dY);
 }
 
-void LocalPlayer::moveToTarget(unsigned int dist)
+void LocalPlayer::moveToTarget(int dist)
 {
     bool gotPos(false);
     Path debugPath;
@@ -1764,7 +1764,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
     const Vector &playerPos = getPosition();
     unsigned int limit(0);
 
-    if (static_cast<int>(dist) == -1)
+    if (dist == -1)
     {
         dist = mMoveToTargetType;
         if (mMoveToTargetType == 0)
@@ -1810,7 +1810,7 @@ void LocalPlayer::moveToTarget(unsigned int dist)
                 mTarget->getTileX(), mTarget->getTileY(), getWalkMask(), 0);
         }
 
-        if (debugPath.size() < dist)
+        if (debugPath.size() < static_cast<unsigned>(dist))
             return;
         limit = static_cast<int>(debugPath.size()) - dist;
         gotPos = true;
@@ -1936,7 +1936,7 @@ std::string LocalPlayer::getCrazyMoveTypeString()
 {
     if (mCrazyMoveType < crazyMoveTypeSize - 1)
     {
-        return strprintf(_("(%d) crazy move number %d"),
+        return strprintf(_("(%u) crazy move number %u"),
             mCrazyMoveType, mCrazyMoveType);
     }
     else if (mCrazyMoveType == crazyMoveTypeSize - 1)
@@ -2057,12 +2057,12 @@ std::string LocalPlayer::getQuickDropCounterString()
 {
     if (mQuickDropCounter > 9)
     {
-        return strprintf("(%c) drop counter %d",
-            'a' + mQuickDropCounter - 10, mQuickDropCounter);
+        return strprintf("(%c) drop counter %u", static_cast<char>(
+            'a' + mQuickDropCounter - 10), mQuickDropCounter);
     }
     else
     {
-        return strprintf("(%d) drop counter %d",
+        return strprintf("(%u) drop counter %u",
             mQuickDropCounter, mQuickDropCounter);
     }
 }
@@ -3255,8 +3255,10 @@ void LocalPlayer::tryMagic(std::string spell, int baseMagic,
     if (!chatWindow)
         return;
 
-    if (PlayerInfo::getStatEffective(340) >= baseMagic
-        && PlayerInfo::getStatEffective(342) >= schoolMagic)
+    if (PlayerInfo::getStatEffective(static_cast<PlayerInfo::Attribute>(
+        340)) >= baseMagic
+        && PlayerInfo::getStatEffective(static_cast<PlayerInfo::Attribute>(
+        342)) >= schoolMagic)
     {
         if (PlayerInfo::getAttribute(PlayerInfo::MP) >= mana)
         {

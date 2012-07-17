@@ -848,7 +848,7 @@ void SetupItemSlider2::action(const gcn::ActionEvent &event A_UNUSED)
 
 void SetupItemSlider2::updateLabel()
 {
-    int val = mSlider->getValue() - mMin;
+    int val = static_cast<int>(mSlider->getValue()) - mMin;
     if (val < 0)
         val = 0;
     else if (val >= static_cast<signed>(mValues->size()))

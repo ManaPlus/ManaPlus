@@ -184,7 +184,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Name too short
             errorMsg = strprintf
-                (_("The username needs to be at least %d characters long."),
+                (_("The username needs to be at least %u characters long."),
                  minUser);
             error = 1;
         }
@@ -192,7 +192,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Name too long
             errorMsg = strprintf
-                (_("The username needs to be less than %d characters long."),
+                (_("The username needs to be less than %u characters long."),
                  maxUser);
             error = 1;
         }
@@ -200,7 +200,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Pass too short
             errorMsg = strprintf
-                (_("The password needs to be at least %d characters long."),
+                (_("The password needs to be at least %u characters long."),
                  minPass);
             error = 2;
         }
@@ -208,7 +208,7 @@ void RegisterDialog::action(const gcn::ActionEvent &event)
         {
             // Pass too long
             errorMsg = strprintf
-                (_("The password needs to be less than %d characters long."),
+                (_("The password needs to be less than %u characters long."),
                  maxPass);
             error = 2;
         }

@@ -1,4 +1,4 @@
-/*      _______   __   __   __   ______   __   __   _______   __   __
+/*      _______   __   __  __   ______   __   __   _______   __   __
  *     / _____/\ / /\ / /\ / /\ / ____/\ / /\ / /\ / ___  /\ /  |\/ /\
  *    / /\____\// / // / // / // /\___\// /_// / // /\_/ / // , |/ / /
  *   / / /__   / / // / // / // / /    / ___  / // ___  / // /| ' / /
@@ -68,7 +68,7 @@ namespace gcn
 
         SDL_LockSurface(surface);
 
-        Uint8 *p = static_cast<Uint8*>(surface->pixels)
+        Uint8 *p = static_cast<uint8_t*>(surface->pixels)
             + y * surface->pitch + x * bpp;
 
         unsigned int color = 0;
@@ -124,33 +124,35 @@ namespace gcn
 
         SDL_LockSurface(surface);
 
-        Uint8 *p = static_cast<Uint8*>(surface->pixels)
+        Uint8 *p = static_cast<uint8_t*>(surface->pixels)
             + y * surface->pitch + x * bpp;
 
-        Uint32 pixel = SDL_MapRGB(surface->format, color.r, color.g, color.b);
+        Uint32 pixel = SDL_MapRGB(surface->format,
+            static_cast<uint8_t>(color.r), static_cast<uint8_t>(color.g),
+            static_cast<uint8_t>(color.b));
 
         switch (bpp)
         {
             case 1:
-                *p = pixel;
+                *p = static_cast<uint8_t>(pixel);
                 break;
 
             case 2:
-                *reinterpret_cast<Uint16*>(p) = pixel;
+                *reinterpret_cast<uint16_t*>(p) = static_cast<uint16_t>(pixel);
                 break;
 
             case 3:
                 if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
                 {
-                    p[0] = (pixel >> 16) & 0xff;
-                    p[1] = (pixel >> 8) & 0xff;
-                    p[2] = pixel & 0xff;
+                    p[0] = static_cast<uint8_t>((pixel >> 16) & 0xff);
+                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                    p[2] = static_cast<uint8_t>((pixel) & 0xff);
                 }
                 else
                 {
-                    p[0] = pixel & 0xff;
-                    p[1] = (pixel >> 8) & 0xff;
-                    p[2] = (pixel >> 16) & 0xff;
+                    p[0] = static_cast<uint8_t>((pixel) & 0xff);
+                    p[1] = static_cast<uint8_t>((pixel >> 8) & 0xff);
+                    p[2] = static_cast<uint8_t>((pixel >> 16) & 0xff);
                 }
                 break;
 
@@ -232,54 +234,50 @@ namespace gcn
 
         SDL_LockSurface(surface);
 
-        Uint8 *p = static_cast<Uint8*>(surface->pixels)
+        Uint8 *p = static_cast<uint8_t*>(surface->pixels)
             + y * surface->pitch + x * bpp;
 
-        Uint32 pixel = SDL_MapRGB(surface->format, color.r, color.g, color.b);
+        Uint32 pixel = SDL_MapRGB(surface->format, static_cast<uint8_t>(color.r),
+            static_cast<uint8_t>(color.g), static_cast<uint8_t>(color.b));
 
         switch (bpp)
         {
             case 1:
-                *p = pixel;
+                *p = static_cast<uint8_t>(pixel);
                 break;
 
             case 2:
-                *reinterpret_cast<Uint16*>(p) = SDLAlpha16(pixel,
-                    *reinterpret_cast<Uint32*>(p), color.a, surface->format);
+                *reinterpret_cast<Uint16*>(p) = SDLAlpha16(
+                    static_cast<unsigned short>(pixel),
+                    *reinterpret_cast<unsigned short*>(p),
+                    static_cast<unsigned char>(color.a), surface->format);
                 break;
 
             case 3:
                 if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
                 {
-                    unsigned int r = (p[0] * (255 - color.a)
-                        + color.r * color.a) >> 8;
-                    unsigned int g = (p[1] * (255 - color.a)
-                        + color.g * color.a) >> 8;
-                    unsigned int b = (p[2] * (255 - color.a)
-                        + color.b * color.a) >> 8;
-
-                    p[2] = b;
-                    p[1] = g;
-                    p[0] = r;
+                    p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
+                        + color.b * color.a) >> 8);
+                    p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
+                        + color.g * color.a) >> 8);
+                    p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
+                        + color.r * color.a) >> 8);
                 }
                 else
                 {
-                    unsigned int r = (p[2] * (255 - color.a)
-                        + color.r * color.a) >> 8;
-                    unsigned int g = (p[1] * (255 - color.a)
-                        + color.g * color.a) >> 8;
-                    unsigned int b = (p[0] * (255 - color.a)
-                        + color.b * color.a) >> 8;
-
-                    p[0] = b;
-                    p[1] = g;
-                    p[2] = r;
+                    p[0] = static_cast<uint8_t>((p[0] * (255 - color.a)
+                        + color.b * color.a) >> 8);
+                    p[1] = static_cast<uint8_t>((p[1] * (255 - color.a)
+                        + color.g * color.a) >> 8);
+                    p[2] = static_cast<uint8_t>((p[2] * (255 - color.a)
+                        + color.r * color.a) >> 8);
                 }
                 break;
 
             case 4:
                 *reinterpret_cast<Uint32*>(p) = SDLAlpha32(pixel,
-                    *reinterpret_cast<Uint32*>(p), color.a);
+                    *reinterpret_cast<Uint32*>(p),
+                    static_cast<unsigned char>(color.a));
                 break;
             default:
                 break;

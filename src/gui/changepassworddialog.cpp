@@ -118,14 +118,14 @@ void ChangePasswordDialog::action(const gcn::ActionEvent &event)
         {
             // First password too short
             errorMsg << strprintf(_("The new password needs to be at least"
-                " %d characters long."), min);
+                " %u characters long."), min);
             error = 2;
         }
         else if (newFirstPass.length() > max - 1 )
         {
             // First password too long
             errorMsg << strprintf(_("The new password needs to be less "
-                "than %d characters long."), max);
+                "than %u characters long."), max);
             error = 2;
         }
         else if (newFirstPass != newSecondPass)

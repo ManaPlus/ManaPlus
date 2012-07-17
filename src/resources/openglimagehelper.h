@@ -112,7 +112,7 @@ class OpenGLImageHelper : public ImageHelper
          */
         int powerOfTwo(int input);
 
-        Image *_GLload(SDL_Surface *tmpImage);
+        Image *glLoad(SDL_Surface *tmpImage);
 
         static int mUseOpenGL;
         static int mTextureSize;

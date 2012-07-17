@@ -150,17 +150,6 @@ class Graphics : public gcn::SDLGraphics
                                        int desiredWidth, int desiredHeight,
                                        bool useColor = false);
 
-        /**
-         * Blits an image onto the screen.
-         *
-         * @return <code>true</code> if the image was blitted properly
-         *         <code>false</code> otherwise.
-         */
-        virtual bool drawImage(const Image *image,
-                               int srcX, int srcY,
-                               int dstX, int dstY,
-                               int width, int height,
-                               bool useColor);
 
         virtual void drawImagePattern(const Image *image,
                                       int x, int y,
@@ -306,6 +295,19 @@ class Graphics : public gcn::SDLGraphics
         int mHeight;
 
     protected:
+        /**
+         * Blits an image onto the screen.
+         *
+         * @return <code>true</code> if the image was blitted properly
+         *         <code>false</code> otherwise.
+         */
+        virtual bool drawImage2(const Image *image,
+                                int srcX, int srcY,
+                                int dstX, int dstY,
+                                int width, int height,
+                                bool useColor);
+
+
         void setMainFlags(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);
 

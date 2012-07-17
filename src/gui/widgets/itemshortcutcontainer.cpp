@@ -140,7 +140,7 @@ void ItemShortcutContainer::draw(gcn::Graphics *graphics)
         g->drawText(key, itemX + 2, itemY + 2, gcn::Graphics::LEFT);
 
         const int itemId = itemShortcut[mNumber]->getItem(i);
-        const int itemColor = itemShortcut[mNumber]->getItemColor(i);
+        const unsigned char itemColor = itemShortcut[mNumber]->getItemColor(i);
 
         if (itemId < 0)
             continue;
@@ -245,7 +245,8 @@ void ItemShortcutContainer::mouseDragged(gcn::MouseEvent &event)
                 return;
 
             const int itemId = itemShortcut[mNumber]->getItem(index);
-            const int itemColor = itemShortcut[mNumber]->getItemColor(index);
+            const unsigned char itemColor = itemShortcut[mNumber]->
+                getItemColor(index);
 
             if (itemId < 0)
                 return;
@@ -365,7 +366,7 @@ void ItemShortcutContainer::mouseMoved(gcn::MouseEvent &event)
         return;
 
     const int itemId = itemShortcut[mNumber]->getItem(index);
-    const int itemColor = itemShortcut[mNumber]->getItemColor(index);
+    const unsigned char itemColor = itemShortcut[mNumber]->getItemColor(index);
 
     if (itemId < 0)
         return;

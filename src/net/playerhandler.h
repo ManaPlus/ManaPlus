@@ -25,6 +25,7 @@
 
 #include "being.h"
 #include "flooritem.h"
+#include "playerinfo.h"
 
 namespace Net
 {
@@ -65,9 +66,9 @@ class PlayerHandler
 
         virtual bool canCorrectAttributes() const = 0;
 
-        virtual int getJobLocation() const = 0;
+        virtual PlayerInfo::Attribute getJobLocation() const = 0;
 
-        virtual int getAttackLocation() const = 0;
+        virtual PlayerInfo::Attribute getAttackLocation() const = 0;
 
         virtual Vector getDefaultWalkSpeed() const = 0;
 

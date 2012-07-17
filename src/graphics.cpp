@@ -266,8 +266,8 @@ bool Graphics::setVideoMode(int w, int h, int bpp, bool fs,
     if (!(mTarget = SDL_SetVideoMode(w, h, bpp, getSoftwareFlags())))
         return false;
 
-    mRect.w = mTarget->w;
-    mRect.h = mTarget->h;
+    mRect.w = static_cast<uint16_t>(mTarget->w);
+    mRect.h = static_cast<uint16_t>(mTarget->h);
 
     return videoInfo();
 }
@@ -365,7 +365,7 @@ bool Graphics::drawImage(const Image *image, int x, int y)
 {
     if (image)
     {
-        return drawImage(image, 0, 0, x, y,
+        return drawImage2(image, 0, 0, x, y,
             image->mBounds.w, image->mBounds.h, false);
     }
     else
@@ -418,8 +418,8 @@ bool Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return returnValue;
 }
 
-bool Graphics::drawImage(const Image *image, int srcX, int srcY,
-                         int dstX, int dstY, int width, int height, bool)
+bool Graphics::drawImage2(const Image *image, int srcX, int srcY,
+                          int dstX, int dstY, int width, int height, bool)
 {
     // Check that preconditions for blitting are met.
     if (!mTarget || !image || !image->mSDLSurface)
@@ -903,7 +903,7 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
         if (srcx < 0)
         {
             w += srcx;
-            dstrect->x -= srcx;
+            dstrect->x -= static_cast<int16_t>(srcx);
             srcx = 0;
         }
         maxw = src->w - srcx;
@@ -915,7 +915,7 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
         if (srcy < 0)
         {
             h += srcy;
-            dstrect->y -= srcy;
+            dstrect->y -= static_cast<int16_t>(srcy);
             srcy = 0;
         }
         maxh = src->h - srcy;
@@ -939,7 +939,7 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
         if (dx > 0)
         {
             w -= dx;
-            dstrect->x += dx;
+            dstrect->x += static_cast<int16_t>(dx);
             srcx += dx;
         }
         dx = dstrect->x + w - clip->x - clip->w;
@@ -950,7 +950,7 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
         if (dy > 0)
         {
             h -= dy;
-            dstrect->y += dy;
+            dstrect->y += static_cast<int16_t>(dy);
             srcy += dy;
         }
         dy = dstrect->y + h - clip->y - clip->h;
@@ -960,10 +960,12 @@ int Graphics::SDL_FakeUpperBlit(SDL_Surface *src, SDL_Rect *srcrect,
 
     if (w > 0 && h > 0)
     {
-        srcrect->x = srcx;
-        srcrect->y = srcy;
-        srcrect->w = dstrect->w = w;
-        srcrect->h = dstrect->h = h;
+        srcrect->x = static_cast<int16_t>(srcx);
+        srcrect->y = static_cast<int16_t>(srcy);
+        srcrect->w = static_cast<int16_t>(w);
+        dstrect->w = static_cast<int16_t>(w);
+        srcrect->h = static_cast<int16_t>(h);
+        dstrect->h = static_cast<int16_t>(h);
 
         return 1;
 //        return SDL_LowerBlit(src, &sr, dst, dstrect);
@@ -1000,7 +1002,8 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
 
         const int bpp = mTarget->format->BytesPerPixel;
         uint32_t pixel = SDL_MapRGB(mTarget->format,
-            mColor.r, mColor.g, mColor.b);
+            static_cast<uint8_t>(mColor.r), static_cast<uint8_t>(mColor.g),
+            static_cast<uint8_t>(mColor.b));
 
         switch (bpp)
         {
@@ -1010,7 +1013,7 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     uint8_t *p = static_cast<uint8_t *>(mTarget->pixels)
                         + y * mTarget->pitch;
                     for (x = x1; x < x2; x++)
-                        *(p + x) = pixel;
+                        *(p + x) = static_cast<uint8_t>(pixel);
                 }
                 break;
             case 2:
@@ -1022,8 +1025,9 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     {
                         uint8_t *p = p0 + x * 2;
                         *reinterpret_cast<uint16_t *>(p) = gcn::SDLAlpha16(
-                            pixel, *reinterpret_cast<uint32_t *>(p),
-                            mColor.a, mTarget->format);
+                            static_cast<uint16_t>(pixel),
+                            *reinterpret_cast<uint16_t *>(p),
+                            static_cast<uint8_t>(mColor.a), mTarget->format);
                     }
                 }
                 break;
@@ -1042,13 +1046,13 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
                     {
                         uint8_t *p = p0 + x * 3;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                        p[2] = (p[2] * ca + cb) >> 8;
-                        p[1] = (p[1] * ca + cg) >> 8;
-                        p[0] = (p[0] * ca + cr) >> 8;
+                        p[2] = static_cast<uint8_t>((p[2] * ca + cb) >> 8);
+                        p[1] = static_cast<uint8_t>((p[1] * ca + cg) >> 8);
+                        p[0] = static_cast<uint8_t>((p[0] * ca + cr) >> 8);
 #else
-                        p[0] = (p[0] * ca + cb) >> 8;
-                        p[1] = (p[1] * ca + cg) >> 8;
-                        p[2] = (p[2] * ca + cr) >> 8;
+                        p[0] = static_cast<uint8_t>((p[0] * ca + cb) >> 8);
+                        p[1] = static_cast<uint8_t>((p[1] * ca + cg) >> 8);
+                        p[2] = static_cast<uint8_t>((p[2] * ca + cr) >> 8);
 #endif
                     }
                 }
@@ -1135,13 +1139,16 @@ void Graphics::fillRectangle(const gcn::Rectangle& rectangle)
     else
     {
         SDL_Rect rect;
-        rect.x = area.x;
-        rect.y = area.y;
-        rect.w = area.width;
-        rect.h = area.height;
+        rect.x = static_cast<int16_t>(area.x);
+        rect.y = static_cast<int16_t>(area.y);
+        rect.w = static_cast<uint16_t>(area.width);
+        rect.h = static_cast<uint16_t>(area.height);
 
         uint32_t color = SDL_MapRGBA(mTarget->format,
-            mColor.r, mColor.g, mColor.b, mColor.a);
+            static_cast<int8_t>(mColor.r),
+            static_cast<int8_t>(mColor.g),
+            static_cast<int8_t>(mColor.b),
+            static_cast<int8_t>(mColor.a));
         SDL_FillRect(mTarget, &rect, color);
     }
 }

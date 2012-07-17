@@ -174,7 +174,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             if ((val >= '0' && val <= '9') || (val == '-' && !mCaretPosition))
             {
                 char buf[2];
-                buf[0] = val;
+                buf[0] = static_cast<char>(val);
                 buf[1] = 0;
                 mText.insert(mCaretPosition, std::string(buf));
                 mCaretPosition += 1;

@@ -63,7 +63,7 @@ const static Being::Action actions[] =
     Being::STAND, Being::SIT, Being::MOVE, Being::ATTACK, Being::DEAD
 };
 
-const static int directions[] =
+const static uint8_t directions[] =
 {
     Being::DOWN, Being::RIGHT, Being::UP, Being::LEFT
 };
@@ -282,7 +282,8 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
 #endif
 
             Net::getCharHandler()->newCharacter(getName(), characterSlot,
-                mFemale->isSelected(), mHairStyle, mHairColor, mRace, atts);
+                mFemale->isSelected(), mHairStyle, mHairColor,
+                static_cast<uint16_t>(mRace), atts);
         }
         else
         {
@@ -543,7 +544,7 @@ void CharCreateDialog::updateRace()
         mRace = -100 - id;
     }
 
-    mPlayer->setSubtype(mRace);
+    mPlayer->setSubtype(static_cast<uint16_t>(mRace));
     const ItemInfo &item = ItemDB::get(id);
     mRaceNameLabel->setCaption(item.getName());
     mRaceNameLabel->adjustSize();
