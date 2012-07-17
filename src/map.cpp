@@ -1377,7 +1377,7 @@ void Map::indexTilesets()
         if (s)
         {
             const int start = s->getFirstGid();
-            const int end = stati_cast<int>(start + s->size());
+            const int end = static_cast<int>(start + s->size());
             for (int f = start; f < end; f ++)
             {
                 if (f < size)

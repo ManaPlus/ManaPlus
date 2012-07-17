@@ -2525,11 +2525,11 @@ void Being::undressItemById(int id)
 {
     size_t sz = mSpriteIDs.size();
 
-    for (int f = 0; f < sz; f ++)
+    for (size_t f = 0; f < sz; f ++)
     {
         if (id == mSpriteIDs[f])
         {
-            setSprite(f, 0);
+            setSprite(static_cast<unsigned int>(f), 0);
             break;
         }
     }
@@ -2693,7 +2693,7 @@ BeingEquipBackend::BeingEquipBackend(Being *being):
     {
         size_t sz = being->mSpriteIDs.size();
 
-        for (int f = 0; f < sz; f ++)
+        for (unsigned f = 0; f < sz; f ++)
         {
             int idx = Net::getInventoryHandler()->convertFromServerSlot(f);
             int id = being->mSpriteIDs[f];

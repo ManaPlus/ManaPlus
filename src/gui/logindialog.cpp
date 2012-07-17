@@ -95,7 +95,7 @@ class UpdateListModel : public gcn::ListModel
         {
             if (!mLoginData)
                 return 0;
-            return mLoginData->updateHosts.size();
+            return static_cast<int>(mLoginData->updateHosts.size());
         }
 
         virtual std::string getElementAt(int i)
