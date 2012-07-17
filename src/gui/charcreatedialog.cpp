@@ -283,7 +283,7 @@ void CharCreateDialog::action(const gcn::ActionEvent &event)
 
             Net::getCharHandler()->newCharacter(getName(), characterSlot,
                 mFemale->isSelected(), mHairStyle, mHairColor,
-                static_cast<uint16_t>(mRace), atts);
+                static_cast<unsigned char>(mRace), atts);
         }
         else
         {

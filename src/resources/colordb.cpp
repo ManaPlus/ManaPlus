@@ -47,7 +47,7 @@ void ColorDB::load()
 
     ColorListsIterator it = mColorLists.find("hair");
     if (it != mColorLists.end())
-        mHairColorsSize = (*it).second.size();
+        mHairColorsSize = static_cast<int>((*it).second.size());
     else
         mHairColorsSize = 0;
 }

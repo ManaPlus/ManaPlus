@@ -1074,7 +1074,7 @@ void CommandHandler::handleCacheInfo(const std::string &args A_UNUSED,
     {
         if (!cache[f].empty())
         {
-            all += cache[f].size();
+            all += static_cast<int>(cache[f].size());
             str += strprintf("%d: %u, ", f,
                 static_cast<unsigned int>(cache[f].size()));
         }

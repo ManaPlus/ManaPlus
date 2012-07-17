@@ -1364,7 +1364,7 @@ void Map::indexTilesets()
         return;
     }
 
-    const int size = s->getFirstGid() + s->size();
+    const int size = static_cast<int>(s->getFirstGid()) + s->size();
     mIndexedTilesetsSize = size;
     mIndexedTilesets = new Tileset*[size];
     std::fill_n(mIndexedTilesets, size, static_cast<Tileset*>(nullptr));
@@ -1377,7 +1377,7 @@ void Map::indexTilesets()
         if (s)
         {
             const int start = s->getFirstGid();
-            const int end = start + s->size();
+            const int end = stati_cast<int>(start + s->size());
             for (int f = start; f < end; f ++)
             {
                 if (f < size)

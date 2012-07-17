@@ -313,7 +313,7 @@ void UpdaterWindow::loadNews()
         {
             firstLine = false;
             std::string str = line;
-            unsigned i = str.find("##9 Latest client version: ##6");
+            size_t i = str.find("##9 Latest client version: ##6");
             if (!i)
             {
                 line = strtok(nullptr, "\n");

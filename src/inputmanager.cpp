@@ -259,8 +259,8 @@ bool InputManager::hasConflicts(int &key1, int &key2)
                         && mKey[i].values[i2].value == mKey[j].values[j2].value
                         && mKey[i].values[i2].type == mKey[j].values[j2].type)
                     {
-                        key1 = i;
-                        key2 = j;
+                        key1 = static_cast<int>(i);
+                        key2 = static_cast<int>(j);
                         return true;
                     }
                 }
@@ -377,7 +377,7 @@ void InputManager::addActionKey(int action, int type, int val)
             || (key.values[i].type == type
             && key.values[i].value == val))
         {
-            idx = i;
+            idx = static_cast<int>(i);
             break;
         }
     }
@@ -614,7 +614,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
             {
                 const KeyItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
-                    actionMap[ki.value].push_back(i);
+                    actionMap[ki.value].push_back(static_cast<int>(i));
             }
         }
         if (keyData[i].configField && (keyData[i].grp & Input::GRP_GUICHAN))
@@ -623,7 +623,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &actionMap,
             {
                 const KeyItem &ki = key.values[i2];
                 if (ki.type == type && ki.value != -1)
-                    idMap[ki.value] = i;
+                    idMap[ki.value] = static_cast<int>(i);
             }
         }
         if (keyData[i].configField && (keyData[i].grp & Input::GRP_REPEAT))
@@ -678,7 +678,7 @@ int InputManager::getKeyIndex(int value, int grp, int type) const
                 && (grp & keyData[i].grp) != 0
                 && key.values[i2].type == type)
             {
-                return i;
+                return static_cast<int>(i);
             }
         }
     }

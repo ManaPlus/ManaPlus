@@ -48,11 +48,6 @@
 
 #include "debug.h"
 
-static const int MAX_SERVER_LIST_SIZE = 15;
-static const int LOGIN_DIALOG_WIDTH = 300;
-static const int LOGIN_DIALOG_HEIGHT = 140;
-static const int FIELD_WIDTH = LOGIN_DIALOG_WIDTH - 70;
-
 std::string LoginDialog::savedPassword("");
 std::string LoginDialog::savedPasswordKey("");
 

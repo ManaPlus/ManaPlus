@@ -310,7 +310,7 @@ unsigned int AnimatedSprite::getCurrentFrame() const
 unsigned int AnimatedSprite::getFrameCount() const
 {
     if (mAnimation)
-        return mAnimation->getLength();
+        return static_cast<unsigned int>(mAnimation->getLength());
     else
         return 0;
 }

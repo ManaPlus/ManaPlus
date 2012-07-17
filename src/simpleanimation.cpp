@@ -88,7 +88,7 @@ void SimpleAnimation::setFrame(int frame)
     if (frame < 0)
         frame = 0;
     if (static_cast<unsigned>(frame) >= mAnimation->getLength())
-        frame = mAnimation->getLength() - 1;
+        frame = static_cast<int>(mAnimation->getLength()) - 1;
     mAnimationPhase = frame;
     mCurrentFrame = &mAnimation->mFrames[mAnimationPhase];
 }
@@ -127,7 +127,7 @@ int SimpleAnimation::getLength() const
     if (!mAnimation)
         return 0;
 
-    return mAnimation->getLength();
+    return static_cast<int>(mAnimation->getLength());
 }
 
 Image *SimpleAnimation::getCurrentImage() const

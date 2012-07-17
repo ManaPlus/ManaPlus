@@ -118,7 +118,7 @@ std::string getSelfName()
 std::string getSelfName()
 {
     char buf[257];
-    int sz = readlink("/proc/self/exe", buf, 256);
+    ssize_t sz = readlink("/proc/self/exe", buf, 256);
     if (sz > 0 && sz < 256)
     {
         buf[sz] = 0;

@@ -64,7 +64,7 @@ namespace gcn
 
     int DefaultFont::getWidth(const std::string& text) const
     {
-        return 8*text.size();
+        return static_cast<int>(8 * text.size());
     }
 
     int DefaultFont::drawGlyph(Graphics* graphics,
@@ -88,7 +88,7 @@ namespace gcn
     int DefaultFont::getStringIndexAt(const std::string& text, int x) const
     {
         if (x > static_cast<int>(text.size() * 8))
-            return text.size();
+            return static_cast<int>(text.size());
 
         return x / 8;
     }

@@ -279,7 +279,7 @@ void TextField::keyPressed(gcn::KeyEvent &keyEvent)
             break;
 
         case 5: // Ctrl+e
-            mCaretPosition = mText.size();
+            mCaretPosition = static_cast<int>(mText.size());
             consumed = true;
             break;
 

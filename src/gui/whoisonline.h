@@ -170,7 +170,7 @@ private:
                       std::vector<OnlinePlayer*> &neutral,
                       std::vector<OnlinePlayer*> &disregard,
                       std::vector<OnlinePlayer*> enemy,
-                      int numOnline);
+                      size_t numOnline);
 
     enum DownloadStatus
     {

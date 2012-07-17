@@ -457,7 +457,7 @@ bool runxsel(std::string& text, const char *p1, const char *p2)
 
     // parent
     close(fd[0]);
-    const int len = strlen(text.c_str());
+    const int len = static_cast<int>(strlen(text.c_str()));
     if (write(fd[1], text.c_str(), len) != len)
     {
         close(fd[1]);

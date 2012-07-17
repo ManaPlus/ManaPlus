@@ -339,7 +339,7 @@ void SDLFont::doClean()
     for (int f = 0; f < CACHES_NUMBER; f ++)
     {
         std::list<SDLTextChunk> *cache = &mCache[f];
-        const unsigned size = cache->size();
+        const size_t size = cache->size();
 #ifdef DEBUG_FONT_COUNTERS
         logger->log("ptr: %d, size: %d", f, size);
 #endif

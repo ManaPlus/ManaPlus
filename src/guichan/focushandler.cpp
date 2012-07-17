@@ -235,7 +235,7 @@ namespace gcn
             -- i;
 
             if (focusedWidget <= 0)
-                focusedWidget = mWidgets.size() - 1;
+                focusedWidget = static_cast<int>(mWidgets.size() - 1);
 
             if (focusedWidget == focused)
                 return;
@@ -433,7 +433,7 @@ namespace gcn
             -- i;
 
             if (focusedWidget <= 0)
-                focusedWidget = mWidgets.size() - 1;
+                focusedWidget = static_cast<int>(mWidgets.size() - 1);
 
             if (focusedWidget == focused)
                 return;

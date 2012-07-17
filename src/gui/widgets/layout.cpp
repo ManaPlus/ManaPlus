@@ -349,9 +349,9 @@ void LayoutArray::reflow(int nx, int ny, int nw, int nh)
             {
                 int dx = x, dy = y, dw = 0, dh = 0;
                 align(dx, dw, 0, *cell, &widths[gridX],
-                    widths.size() - gridX);
+                    static_cast<int>(widths.size() - gridX));
                 align(dy, dh, 1, *cell, &heights[gridY],
-                    heights.size() - gridY);
+                    static_cast<int>(heights.size() - gridY));
                 cell->reflow(dx, dy, dw, dh);
             }
             x += widths[gridX] + mSpacing;

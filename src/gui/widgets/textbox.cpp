@@ -177,7 +177,8 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
                 }
                 else
                 {
-                    mCaretColumn = mTextRows[mCaretRow].size();
+                    mCaretColumn = static_cast<int>(
+                        mTextRows[mCaretRow].size());
                 }
             }
             break;
@@ -192,11 +193,12 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
 
                 if (mCaretRow >= static_cast<int>(mTextRows.size()))
                 {
-                    mCaretRow = mTextRows.size() - 1;
+                    mCaretRow = static_cast<int>(mTextRows.size()) - 1;
                     if (mCaretRow < 0)
                         mCaretRow = 0;
 
-                    mCaretColumn = mTextRows[mCaretRow].size();
+                    mCaretColumn = static_cast<int>(
+                        mTextRows[mCaretRow].size());
                 }
                 else
                 {
@@ -223,7 +225,7 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
         }
         case Input::KEY_GUI_END:
         {
-            mCaretColumn = mTextRows[mCaretRow].size();
+            mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
             break;
         }
 
@@ -250,7 +252,8 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
             }
             else if (mCaretColumn == 0 && mCaretRow != 0 && mEditable)
             {
-                mCaretColumn = mTextRows[mCaretRow - 1].size();
+                mCaretColumn = static_cast<int>(
+                    mTextRows[mCaretRow - 1].size());
                 mTextRows[mCaretRow - 1] += mTextRows[mCaretRow];
                 mTextRows.erase(mTextRows.begin() + mCaretRow);
                 --mCaretRow;
@@ -303,7 +306,7 @@ void TextBox::keyPressed(gcn::KeyEvent& keyEvent)
                 mCaretRow += rowsPerPage;
 
                 if (mCaretRow >= static_cast<int>(mTextRows.size()))
-                    mCaretRow = mTextRows.size() - 1;
+                    mCaretRow = static_cast<int>(mTextRows.size()) - 1;
             }
             break;
         }

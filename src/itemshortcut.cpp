@@ -75,7 +75,8 @@ void ItemShortcut::load(bool oldConfig)
     for (int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         int itemId = cfg->getValue(name + toString(i), -1);
-        unsigned char itemColor = cfg->getValue(color + toString(i), 1);
+        unsigned char itemColor = static_cast<unsigned char>(
+            cfg->getValue(color + toString(i), 1));
 
         mItems[i] = itemId;
         mItemColors[i] = itemColor;

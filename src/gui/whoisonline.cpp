@@ -191,7 +191,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
                                std::vector<OnlinePlayer*> &neutral,
                                std::vector<OnlinePlayer*> &disregard,
                                std::vector<OnlinePlayer*> enemy,
-                               int numOnline)
+                               size_t numOnline)
 {
     //Set window caption
     setCaption(_("Who Is Online - ") + toString(numOnline));
@@ -245,7 +245,7 @@ void WhoIsOnline::updateWindow(std::vector<OnlinePlayer*> &friends,
 void WhoIsOnline::loadList(std::vector<OnlinePlayer*> &list)
 {
     mBrowserBox->clearRows();
-    int numOnline = list.size();
+    size_t numOnline = list.size();
     std::vector<OnlinePlayer*> friends;
     std::vector<OnlinePlayer*> neutral;
     std::vector<OnlinePlayer*> disregard;

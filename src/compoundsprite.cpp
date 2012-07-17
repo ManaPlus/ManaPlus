@@ -229,7 +229,7 @@ int CompoundSprite::getNumberOfLayers() const
     if (mImage || mAlphaImage)
         return 1;
     else
-        return size();
+        return static_cast<int>(size());
 }
 
 unsigned int CompoundSprite::getCurrentFrame() const

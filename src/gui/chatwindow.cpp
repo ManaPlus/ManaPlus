@@ -1058,8 +1058,8 @@ void ChatWindow::addWhisper(const std::string &nick,
             {
                 std::string msg = mes;
                 std::string nick2;
-                int idx = mes.find(":");
-                if (idx > 0)
+                size_t idx = mes.find(":");
+                if (idx != std::string::npos && idx > 0)
                 {
                     nick2 = msg.substr(0, idx);
                     msg = msg.substr(idx + 1);

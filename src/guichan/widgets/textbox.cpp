@@ -100,9 +100,9 @@ namespace gcn
             pos = text.find("\n", lastPos);
 
             if (pos != std::string::npos)
-                length = pos - lastPos;
+                length = static_cast<int>(pos - lastPos);
             else
-                length = text.size() - lastPos;
+                length = static_cast<int>(text.size() - lastPos);
             std::string sub = text.substr(lastPos, length);
             mTextRows.push_back(sub);
             lastPos = pos + 1;
@@ -133,7 +133,8 @@ namespace gcn
         for (size_t i = 0; i < mTextRows.size(); i++)
         {
             // Move the text one pixel so we can have a caret before a letter.
-            graphics->drawText(mTextRows[i], 1, i * getFont()->getHeight());
+            graphics->drawText(mTextRows[i], 1,
+                static_cast<int>(i * getFont()->getHeight()));
         }
     }
 
@@ -150,7 +151,7 @@ namespace gcn
             mCaretRow = mouseEvent.getY() / getFont()->getHeight();
 
             if (mCaretRow >= static_cast<int>(mTextRows.size()))
-                mCaretRow = mTextRows.size() - 1;
+                mCaretRow = static_cast<int>(mTextRows.size() - 1);
 
             mCaretColumn = getFont()->getStringIndexAt(
                 mTextRows[mCaretRow], mouseEvent.getX());
@@ -177,7 +178,7 @@ namespace gcn
         }
 
         setWidth(width + 1);
-        setHeight(getFont()->getHeight() * mTextRows.size());
+        setHeight(static_cast<int>(getFont()->getHeight() * mTextRows.size()));
     }
 
     void TextBox::setCaretPosition(unsigned int position)
@@ -197,8 +198,8 @@ namespace gcn
         }
 
         // position beyond end of text
-        mCaretRow = mTextRows.size() - 1;
-        mCaretColumn = mTextRows[mCaretRow].size();
+        mCaretRow = static_cast<int>(mTextRows.size() - 1);
+        mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
     }
 
     unsigned int TextBox::getCaretPosition() const
@@ -206,7 +207,7 @@ namespace gcn
         int pos = 0, row;
 
         for (row = 0; row < mCaretRow; row++)
-            pos += mTextRows[row].size();
+            pos += static_cast<int>(mTextRows[row].size());
 
         return pos + mCaretColumn;
     }
@@ -222,7 +223,7 @@ namespace gcn
         mCaretRow = row;
 
         if (mCaretRow >= static_cast<int>(mTextRows.size()))
-            mCaretRow = mTextRows.size() - 1;
+            mCaretRow = static_cast<int>(mTextRows.size() - 1);
 
         if (mCaretRow < 0)
             mCaretRow = 0;
@@ -240,7 +241,7 @@ namespace gcn
         mCaretColumn = column;
 
         if (mCaretColumn > static_cast<int>(mTextRows[mCaretRow].size()))
-            mCaretColumn = mTextRows[mCaretRow].size();
+            mCaretColumn = static_cast<int>(mTextRows[mCaretRow].size());
 
         if (mCaretColumn < 0)
             mCaretColumn = 0;
@@ -268,7 +269,7 @@ namespace gcn
 
     unsigned int TextBox::getNumberOfRows() const
     {
-        return mTextRows.size();
+        return static_cast<int>(mTextRows.size());
     }
 
     std::string TextBox::getText() const

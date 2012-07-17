@@ -500,7 +500,7 @@ void Being::setSpeech(const std::string &text, int time)
         return;
 
     if (!time && mSpeech.size() < 200)
-        time = SPEECH_TIME - 300 + (3 * mSpeech.size());
+        time = static_cast<int>(SPEECH_TIME - 300 + (3 * mSpeech.size()));
 
     if (time < SPEECH_MIN_TIME)
         time = SPEECH_MIN_TIME;
@@ -2051,7 +2051,7 @@ void Being::drawSprites(Graphics* graphics, int posX, int posY) const
 
 void Being::drawSpritesSDL(Graphics* graphics, int posX, int posY) const
 {
-    const unsigned sz = size();
+    const size_t sz = size();
     for (unsigned f = 0; f < sz; f ++)
     {
         const int rSprite = mSpriteHide[mSpriteRemap[f]];
@@ -2523,7 +2523,7 @@ Equipment *Being::getEquipment()
 
 void Being::undressItemById(int id)
 {
-    int sz = mSpriteIDs.size();
+    size_t sz = mSpriteIDs.size();
 
     for (int f = 0; f < sz; f ++)
     {
@@ -2691,7 +2691,7 @@ BeingEquipBackend::BeingEquipBackend(Being *being):
     memset(mEquipment, 0, sizeof(mEquipment));
     if (being)
     {
-        int sz = being->mSpriteIDs.size();
+        size_t sz = being->mSpriteIDs.size();
 
         for (int f = 0; f < sz; f ++)
         {
