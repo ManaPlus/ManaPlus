@@ -129,6 +129,7 @@ NpcDialog::NpcDialog(int npcId) :
 
     // Setup button
     mButton = new Button("", "ok", this);
+    mButton2 = new Button(_("Close"), "close", this);
 
     //Setup more and less buttons (int input)
     mPlusButton = new Button(_("+"), "inc", this);
@@ -175,6 +176,8 @@ NpcDialog::~NpcDialog()
     mClearButton = nullptr;
     delete mButton;
     mButton = nullptr;
+    delete mButton2;
+    mButton2 = nullptr;
 
     // These might not actually be in the layout, so lets be safe
     delete mScrollArea;
@@ -320,6 +323,14 @@ void NpcDialog::action(const gcn::ActionEvent &event)
         mTextBox->clearRows();
 //        mTextBox->addRow(mNewText);
 //        setText(mNewText);
+    }
+    else if (event.getId() == "close")
+    {
+        if (mActionState == NPC_ACTION_INPUT)
+        {
+            Net::getNpcHandler()->listInput(mNpcId, 255);
+            closeDialog();
+        }
     }
 }
 
@@ -507,6 +518,7 @@ void NpcDialog::placeMenuControls()
         place(0, 0, mPlayerBox);
         place(1, 0, mScrollArea, 6, 3);
         place(0, 3, mListScrollArea, 7, 3);
+        place(1, 6, mButton2, 2);
         place(3, 6, mClearButton, 2);
         place(5, 6, mButton, 2);
     }
@@ -514,6 +526,7 @@ void NpcDialog::placeMenuControls()
     {
         place(0, 0, mScrollArea, 6, 3);
         place(0, 3, mListScrollArea, 6, 3);
+        place(0, 6, mButton2, 2);
         place(2, 6, mClearButton, 2);
         place(4, 6, mButton, 2);
     }

@@ -238,6 +238,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
         // Used for the button
         Button *mButton;
 
+        Button *mButton2;
+
         // Will reset the text and integer input to the provided default
         Button *mResetButton;
 
