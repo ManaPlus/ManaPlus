@@ -1791,6 +1791,14 @@ void LocalPlayer::moveToTarget(int dist)
                     dist = mAttackRange;
                     if (dist == 1 && serverVersion < 1)
                         dist = 2;
+                    break;
+                case 8:
+                    dist = mAttackRange - 1;
+                    if (dist < 1)
+                        dist = 1;
+                    if (dist == 1 && serverVersion < 1)
+                        dist = 2;
+                    break;
                 default:
                     break;
             }
@@ -1945,7 +1953,7 @@ std::string LocalPlayer::getCrazyMoveTypeString()
     }
 }
 
-static const unsigned moveToTargetTypeSize = 8;
+static const unsigned moveToTargetTypeSize = 9;
 
 void LocalPlayer::changeMoveToTargetType()
 {
@@ -1963,6 +1971,7 @@ static const char *moveToTargetTypeStrings[] =
     N_("(7) moves to target in distance 7"),
     N_("(A) moves to target in attack range"),
     N_("(a) archer attack range"),
+    N_("(B) moves to target in attack range - 1"),
     N_("(?) move to target")
 };
 
