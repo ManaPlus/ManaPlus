@@ -2310,7 +2310,13 @@ void LocalPlayer::changeEquipmentBeforeAttack(Being* target)
             item = inv->findItem(579, 0);
 
         if (!item)
+            item = inv->findItem(867, 0);
+
+        if (!item)
             item = inv->findItem(536, 0);
+
+        if (!item)
+            item = inv->findItem(758, 0);
 
         //no swords
         if (!item)
