@@ -34,12 +34,12 @@
 #include <SDL_opengl.h>
 #include <GL/glext.h>
 
-class OpenGL1Graphics : public Graphics
+class SafeOpenGLGraphics : public Graphics
 {
     public:
-        OpenGL1Graphics();
+        SafeOpenGLGraphics();
 
-        ~OpenGL1Graphics();
+        ~SafeOpenGLGraphics();
 
         bool setVideoMode(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);

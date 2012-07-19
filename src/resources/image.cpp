@@ -27,7 +27,7 @@
 
 #ifdef USE_OPENGL
 #include "openglgraphics.h"
-#include "opengl1graphics.h"
+#include "safeopenglgraphics.h"
 #endif
 
 #include "client.h"

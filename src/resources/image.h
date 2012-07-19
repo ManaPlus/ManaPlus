@@ -60,7 +60,7 @@ class Image : public Resource
     friend class SDLImageHelper;
 #ifdef USE_OPENGL
     friend class OpenGLGraphics;
-    friend class OpenGL1Graphics;
+    friend class SafeOpenGLGraphics;
 #endif
 
     public:

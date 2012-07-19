@@ -172,7 +172,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
             break;
         case 2:
             imageHelper = new OpenGLImageHelper;
-            mainGraphics = new OpenGL1Graphics;
+            mainGraphics = new SafeOpenGLGraphics;
             break;
     };
 

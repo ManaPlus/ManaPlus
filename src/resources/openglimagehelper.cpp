@@ -28,7 +28,7 @@
 #include "resources/resourcemanager.h"
 
 #include "openglgraphics.h"
-#include "opengl1graphics.h"
+#include "safeopenglgraphics.h"
 
 #include "client.h"
 #include "logger.h"
@@ -215,7 +215,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
     if (mUseOpenGL == 1)
         OpenGLGraphics::bindTexture(mTextureType, texture);
     else if (mUseOpenGL == 2)
-        OpenGL1Graphics::bindTexture(mTextureType, texture);
+        SafeOpenGLGraphics::bindTexture(mTextureType, texture);
 
     if (SDL_MUSTLOCK(tmpImage))
         SDL_LockSurface(tmpImage);

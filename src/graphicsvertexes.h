@@ -33,7 +33,7 @@
 
 #include <SDL_opengl.h>
 
-#include "opengl1graphics.h"
+#include "safeopenglgraphics.h"
 #include "openglgraphics.h"
 #endif
 
@@ -61,7 +61,7 @@ class SDLGraphicsVertexes
 };
 
 #ifdef USE_OPENGL
-class OpenGL1GraphicsVertexes
+class SafeOpenGLGraphicsVertexes
 {
 };
 
@@ -147,7 +147,7 @@ class GraphicsVertexes
         SDLGraphicsVertexes sdl[5];
 
 #ifdef USE_OPENGL
-//        OpenGL1GraphicsVertexes ogl1[5];
+//        SafeOpenGLGraphicsVertexes ogl1[5];
 
         OpenGLGraphicsVertexes ogl[5];
 #endif

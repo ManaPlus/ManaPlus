@@ -23,7 +23,7 @@
 #include "main.h"
 
 #ifdef USE_OPENGL
-#include "opengl1graphics.h"
+#include "safeopenglgraphics.h"
 
 #include "configuration.h"
 #include "graphicsvertexes.h"
@@ -41,9 +41,9 @@
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB 0x84F8
 #endif
 
-GLuint OpenGL1Graphics::mLastImage = 0;
+GLuint SafeOpenGLGraphics::mLastImage = 0;
 
-OpenGL1Graphics::OpenGL1Graphics():
+SafeOpenGLGraphics::SafeOpenGLGraphics():
     mAlpha(false), mTexture(false), mColorAlpha(false),
     mFboId(0), mTextureId(0), mRboId(0)
 {
@@ -51,11 +51,11 @@ OpenGL1Graphics::OpenGL1Graphics():
     mName = "safe OpenGL";
 }
 
-OpenGL1Graphics::~OpenGL1Graphics()
+SafeOpenGLGraphics::~SafeOpenGLGraphics()
 {
 }
 
-bool OpenGL1Graphics::setVideoMode(int w, int h, int bpp, bool fs,
+bool SafeOpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
                                    bool hwaccel, bool resize, bool noFrame)
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
@@ -140,7 +140,7 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
 }
 
 
-bool OpenGL1Graphics::drawImage2(const Image *image, int srcX, int srcY,
+bool SafeOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
                                  int dstX, int dstY,
                                  int width, int height, bool useColor)
 {
@@ -173,7 +173,7 @@ bool OpenGL1Graphics::drawImage2(const Image *image, int srcX, int srcY,
     return true;
 }
 
-bool OpenGL1Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
+bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
                                         int dstX, int dstY,
                                         int width, int height,
                                         int desiredWidth, int desiredHeight,
@@ -186,7 +186,7 @@ bool OpenGL1Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
                              useColor, true);
 }
 
-bool OpenGL1Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
+bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
                                         int dstX, int dstY,
                                         int width, int height,
                                         int desiredWidth, int desiredHeight,
@@ -251,7 +251,7 @@ bool OpenGL1Graphics::drawRescaledImage(Image *image, int srcX, int srcY,
 
 /* Optimising the functions that Graphics::drawImagePattern would call,
  * so that glBegin...glEnd are outside the main loop. */
-void OpenGL1Graphics::drawImagePattern(const Image *image, int x, int y,
+void SafeOpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
                                        int w, int h)
 {
     if (!image)
@@ -295,7 +295,7 @@ void OpenGL1Graphics::drawImagePattern(const Image *image, int x, int y,
                static_cast<GLubyte>(mColor.a));
 }
 
-void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
+void SafeOpenGLGraphics::drawRescaledImagePattern(Image *image, int x, int y,
                                                int w, int h,
                                                int scaledWidth,
                                                int scaledHeight)
@@ -346,7 +346,7 @@ void OpenGL1Graphics::drawRescaledImagePattern(Image *image, int x, int y,
         static_cast<GLubyte>(mColor.b), static_cast<GLubyte>(mColor.a));
 }
 
-bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
+bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes* vert,
                                     int x, int y, int w, int h,
                                     Image *topLeft A_UNUSED,
                                     Image *topRight A_UNUSED,
@@ -364,18 +364,18 @@ bool OpenGL1Graphics::calcImageRect(GraphicsVertexes* vert,
     return true;
 }
 
-void OpenGL1Graphics::calcTile(ImageVertexes *vert A_UNUSED,
+void SafeOpenGLGraphics::calcTile(ImageVertexes *vert A_UNUSED,
                                int x A_UNUSED, int y A_UNUSED)
 {
 
 }
 
-void OpenGL1Graphics::drawTile(ImageVertexes *vert A_UNUSED)
+void SafeOpenGLGraphics::drawTile(ImageVertexes *vert A_UNUSED)
 {
 
 }
 
-void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert,
+void SafeOpenGLGraphics::drawImageRect2(GraphicsVertexes* vert,
                                      const ImageRect &imgRect)
 {
     if (!vert)
@@ -387,14 +387,14 @@ void OpenGL1Graphics::drawImageRect2(GraphicsVertexes* vert,
             imgRect.grid[4]);
 }
 
-void OpenGL1Graphics::updateScreen()
+void SafeOpenGLGraphics::updateScreen()
 {
     glFlush();
     glFinish();
     SDL_GL_SwapBuffers();
 }
 
-void OpenGL1Graphics::_beginDraw()
+void SafeOpenGLGraphics::_beginDraw()
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -415,12 +415,12 @@ void OpenGL1Graphics::_beginDraw()
     pushClipArea(gcn::Rectangle(0, 0, mTarget->w, mTarget->h));
 }
 
-void OpenGL1Graphics::_endDraw()
+void SafeOpenGLGraphics::_endDraw()
 {
     popClipArea();
 }
 
-void OpenGL1Graphics::prepareScreenshot()
+void SafeOpenGLGraphics::prepareScreenshot()
 {
 #if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
@@ -464,7 +464,7 @@ void OpenGL1Graphics::prepareScreenshot()
 #endif
 }
 
-SDL_Surface* OpenGL1Graphics::getScreenshot()
+SDL_Surface* SafeOpenGLGraphics::getScreenshot()
 {
     const int h = mTarget->h;
     const int w = mTarget->w - (mTarget->w % 4);
@@ -535,7 +535,7 @@ SDL_Surface* OpenGL1Graphics::getScreenshot()
     return screenshot;
 }
 
-bool OpenGL1Graphics::pushClipArea(gcn::Rectangle area)
+bool SafeOpenGLGraphics::pushClipArea(gcn::Rectangle area)
 {
     int transX = 0;
     int transY = 0;
@@ -562,7 +562,7 @@ bool OpenGL1Graphics::pushClipArea(gcn::Rectangle area)
     return result;
 }
 
-void OpenGL1Graphics::popClipArea()
+void SafeOpenGLGraphics::popClipArea()
 {
     gcn::Graphics::popClipArea();
 
@@ -575,7 +575,7 @@ void OpenGL1Graphics::popClipArea()
         clipArea.width, clipArea.height);
 }
 
-void OpenGL1Graphics::setColor(const gcn::Color& color)
+void SafeOpenGLGraphics::setColor(const gcn::Color& color)
 {
     mColor = color;
     glColor4ub(static_cast<GLubyte>(color.r),
@@ -586,7 +586,7 @@ void OpenGL1Graphics::setColor(const gcn::Color& color)
     mColorAlpha = (color.a != 255);
 }
 
-void OpenGL1Graphics::drawPoint(int x, int y)
+void SafeOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
 
@@ -595,7 +595,7 @@ void OpenGL1Graphics::drawPoint(int x, int y)
     glEnd();
 }
 
-void OpenGL1Graphics::drawLine(int x1, int y1, int x2, int y2)
+void SafeOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
 
@@ -609,21 +609,21 @@ void OpenGL1Graphics::drawLine(int x1, int y1, int x2, int y2)
     glEnd();
 }
 
-void OpenGL1Graphics::drawRectangle(const gcn::Rectangle& rect)
+void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
 {
     drawRectangle(rect, false);
 }
 
-void OpenGL1Graphics::fillRectangle(const gcn::Rectangle& rect)
+void SafeOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
 {
     drawRectangle(rect, true);
 }
 
-void OpenGL1Graphics::setTargetPlane(int width A_UNUSED, int height A_UNUSED)
+void SafeOpenGLGraphics::setTargetPlane(int width A_UNUSED, int height A_UNUSED)
 {
 }
 
-void OpenGL1Graphics::setTexturingAndBlending(bool enable)
+void SafeOpenGLGraphics::setTexturingAndBlending(bool enable)
 {
     if (enable)
     {
@@ -661,7 +661,7 @@ void OpenGL1Graphics::setTexturingAndBlending(bool enable)
     }
 }
 
-void OpenGL1Graphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
+void SafeOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
 {
     const float offset = filled ? 0 : 0.5f;
 
@@ -679,7 +679,7 @@ void OpenGL1Graphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
     glEnd();
 }
 
-void OpenGL1Graphics::bindTexture(GLenum target, GLuint texture)
+void SafeOpenGLGraphics::bindTexture(GLenum target, GLuint texture)
 {
     if (mLastImage != texture)
     {

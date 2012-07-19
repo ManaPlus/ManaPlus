@@ -599,8 +599,6 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      map.h \
 	      maplayer.cpp \
 	      maplayer.h \
-	      opengl1graphics.cpp\
-	      opengl1graphics.h \
 	      openglgraphics.cpp\
 	      openglgraphics.h \
 	      particle.cpp \
@@ -621,6 +619,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      properties.h \
 	      rotationalparticle.cpp \
 	      rotationalparticle.h \
+	      safeopenglgraphics.cpp\
+	      safeopenglgraphics.h \
 	      shopitem.cpp \
 	      shopitem.h \
 	      simpleanimation.cpp \
