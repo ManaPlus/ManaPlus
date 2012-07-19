@@ -229,6 +229,8 @@ namespace PlayerInfo
 
     void deinit();
 
+    bool isTalking();
+
     void triggerAttr(int id);
 
     void triggerAttr(int id, int old);

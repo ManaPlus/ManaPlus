@@ -2015,11 +2015,6 @@ void Being::talkTo()
     Net::getNpcHandler()->talk(mId);
 }
 
-bool Being::isTalking()
-{
-    return NpcDialog::isActive() || NpcPostDialog::isActive();
-}
-
 bool Being::draw(Graphics *graphics, int offsetX, int offsetY) const
 {
     bool res = true;

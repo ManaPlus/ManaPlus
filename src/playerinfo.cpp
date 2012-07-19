@@ -28,6 +28,10 @@
 #include "listener.h"
 #include "logger.h"
 
+#include "gui/inventorywindow.h"
+#include "gui/npcdialog.h"
+#include "gui/npcpostdialog.h"
+
 #include "resources/itemdb.h"
 #include "resources/iteminfo.h"
 
@@ -366,6 +370,12 @@ void deinit()
     clearInventory();
     delete mListener;
     mListener = nullptr;
+}
+
+bool isTalking()
+{
+    return NpcDialog::isActive() || NpcPostDialog::isActive()
+        || InventoryWindow::isStorageActive();
 }
 
 } // namespace PlayerInfo

@@ -33,6 +33,7 @@
 #include "localplayer.h"
 #include "map.h"
 #include "maplayer.h"
+#include "playerinfo.h"
 #include "textmanager.h"
 
 #include "gui/beingpopup.h"
@@ -409,7 +410,7 @@ void Viewport::mousePressed(gcn::MouseEvent &event)
 
     // Check if we are busy
     // if commented, allow context menu if npc dialog open
-    if (Being::isTalking())
+    if (PlayerInfo::isTalking())
         return;
 
     const int pixelX = event.getX() + mPixelViewX;

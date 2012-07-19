@@ -759,7 +759,7 @@ void Game::resetAdjustLevel()
 void Game::handleMove()
 {
     // Moving player around
-    if (player_node->isAlive() && !Being::isTalking()
+    if (player_node->isAlive() && !PlayerInfo::isTalking()
         && chatWindow && !chatWindow->isInputFocused()
         && !InventoryWindow::isAnyInputFocused() && !quitDialog)
     {

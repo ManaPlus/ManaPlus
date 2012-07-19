@@ -632,8 +632,6 @@ class Being : public ActorSprite, public ConfigListener
 
         void talkTo();
 
-        static bool isTalking();
-
         bool draw(Graphics *graphics, int offsetX, int offsetY) const;
 
         bool drawSpriteAt(Graphics *graphics, int x, int y) const;
