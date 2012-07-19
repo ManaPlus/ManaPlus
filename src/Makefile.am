@@ -599,8 +599,8 @@ manaplus_SOURCES += gui/widgets/avatarlistbox.cpp \
 	      map.h \
 	      maplayer.cpp \
 	      maplayer.h \
-	      openglgraphics.cpp\
-	      openglgraphics.h \
+	      normalopenglgraphics.cpp\
+	      normalopenglgraphics.h \
 	      particle.cpp \
 	      particle.h \
 	      particlecontainer.cpp \

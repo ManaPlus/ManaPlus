@@ -42,7 +42,7 @@ SDLGraphicsVertexes::~SDLGraphicsVertexes()
 }
 
 #ifdef USE_OPENGL
-OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
+NormalOpenGLGraphicsVertexes::NormalOpenGLGraphicsVertexes() :
     ptr(0),
     mFloatTexArray(nullptr),
     mIntTexArray(nullptr),
@@ -54,12 +54,12 @@ OpenGLGraphicsVertexes::OpenGLGraphicsVertexes() :
     mVp.reserve(30);
 }
 
-OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()
+NormalOpenGLGraphicsVertexes::~NormalOpenGLGraphicsVertexes()
 {
     clear();
 }
 
-void OpenGLGraphicsVertexes::clear()
+void NormalOpenGLGraphicsVertexes::clear()
 {
     for (std::vector<GLfloat*>::iterator it = mFloatTexPool.begin();
         it != mFloatTexPool.end(); ++ it)
@@ -92,38 +92,38 @@ void OpenGLGraphicsVertexes::clear()
     }
 }
 
-void OpenGLGraphicsVertexes::init()
+void NormalOpenGLGraphicsVertexes::init()
 {
     clear();
 }
 
-GLfloat *OpenGLGraphicsVertexes::switchFloatTexArray()
+GLfloat *NormalOpenGLGraphicsVertexes::switchFloatTexArray()
 {
     mFloatTexArray = new GLfloat[vertexBufSize * 4 + 30];
     mFloatTexPool.push_back(mFloatTexArray);
     return mFloatTexArray;
 }
 
-GLint *OpenGLGraphicsVertexes::switchIntVertArray()
+GLint *NormalOpenGLGraphicsVertexes::switchIntVertArray()
 {
     mIntVertArray = new GLint[vertexBufSize * 4 + 30];
     mIntVertPool.push_back(mIntVertArray);
     return mIntVertArray;
 }
 
-GLint *OpenGLGraphicsVertexes::switchIntTexArray()
+GLint *NormalOpenGLGraphicsVertexes::switchIntTexArray()
 {
     mIntTexArray = new GLint[vertexBufSize * 4 + 30];
     mIntTexPool.push_back(mIntTexArray);
     return mIntTexArray;
 }
 
-void OpenGLGraphicsVertexes::switchVp(int n)
+void NormalOpenGLGraphicsVertexes::switchVp(int n)
 {
     mVp.push_back(n);
 }
 
-int OpenGLGraphicsVertexes::continueVp()
+int NormalOpenGLGraphicsVertexes::continueVp()
 {
     if (mVp.empty())
     {
@@ -137,7 +137,7 @@ int OpenGLGraphicsVertexes::continueVp()
     }
 }
 
-GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray()
+GLfloat *NormalOpenGLGraphicsVertexes::continueFloatTexArray()
 {
     if (mFloatTexPool.empty())
     {
@@ -151,7 +151,7 @@ GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray()
     return mFloatTexArray;
 }
 
-GLint *OpenGLGraphicsVertexes::continueIntVertArray()
+GLint *NormalOpenGLGraphicsVertexes::continueIntVertArray()
 {
     if (mIntVertPool.empty())
     {
@@ -165,7 +165,7 @@ GLint *OpenGLGraphicsVertexes::continueIntVertArray()
     return mIntVertArray;
 }
 
-GLint *OpenGLGraphicsVertexes::continueIntTexArray()
+GLint *NormalOpenGLGraphicsVertexes::continueIntTexArray()
 {
     if (mIntTexPool.empty())
     {
@@ -239,7 +239,7 @@ ImageVertexes::ImageVertexes() :
 {
     sdl.reserve(30);
 #ifdef USE_OPENGL
-    ogl = new OpenGLGraphicsVertexes();
+    ogl = new NormalOpenGLGraphicsVertexes();
 #endif
 }
 

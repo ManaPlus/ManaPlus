@@ -26,7 +26,7 @@
 #include "graphics.h"
 
 #ifdef USE_OPENGL
-#include "openglgraphics.h"
+#include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 #endif
 

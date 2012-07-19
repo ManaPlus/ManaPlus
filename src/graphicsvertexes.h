@@ -34,7 +34,7 @@
 #include <SDL_opengl.h>
 
 #include "safeopenglgraphics.h"
-#include "openglgraphics.h"
+#include "normalopenglgraphics.h"
 #endif
 
 #include <string>
@@ -65,12 +65,12 @@ class SafeOpenGLGraphicsVertexes
 {
 };
 
-class OpenGLGraphicsVertexes
+class NormalOpenGLGraphicsVertexes
 {
     public:
-        OpenGLGraphicsVertexes();
+        NormalOpenGLGraphicsVertexes();
 
-        ~OpenGLGraphicsVertexes();
+        ~NormalOpenGLGraphicsVertexes();
 
         GLfloat *switchFloatTexArray();
 
@@ -131,7 +131,7 @@ class ImageVertexes
         DoubleRects sdl;
 
 #ifdef USE_OPENGL
-        OpenGLGraphicsVertexes *ogl;
+        NormalOpenGLGraphicsVertexes *ogl;
 #endif
 };
 
@@ -149,7 +149,7 @@ class GraphicsVertexes
 #ifdef USE_OPENGL
 //        SafeOpenGLGraphicsVertexes ogl1[5];
 
-        OpenGLGraphicsVertexes ogl[5];
+        NormalOpenGLGraphicsVertexes ogl[5];
 #endif
 
         void init(int x, int y, int w, int h);
@@ -167,7 +167,7 @@ class GraphicsVertexes
         { mPtr = num; }
 
 #ifdef USE_OPENGL
-        OpenGLGraphicsVertexes* getOGL()
+        NormalOpenGLGraphicsVertexes* getOGL()
         { return &ogl[mPtr]; }
 #endif
 

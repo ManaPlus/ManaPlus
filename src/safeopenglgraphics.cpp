@@ -56,7 +56,7 @@ SafeOpenGLGraphics::~SafeOpenGLGraphics()
 }
 
 bool SafeOpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
-                                   bool hwaccel, bool resize, bool noFrame)
+                                      bool hwaccel, bool resize, bool noFrame)
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
@@ -141,8 +141,8 @@ static inline void drawRescaledQuad(Image *image, int srcX, int srcY,
 
 
 bool SafeOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
-                                 int dstX, int dstY,
-                                 int width, int height, bool useColor)
+                                    int dstX, int dstY,
+                                    int width, int height, bool useColor)
 {
     if (!image)
         return false;
@@ -174,10 +174,10 @@ bool SafeOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
 }
 
 bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                        int dstX, int dstY,
-                                        int width, int height,
-                                        int desiredWidth, int desiredHeight,
-                                        bool useColor)
+                                          int dstX, int dstY,
+                                          int width, int height,
+                                          int desiredWidth, int desiredHeight,
+                                          bool useColor)
 {
     return drawRescaledImage(image, srcX, srcY,
                              dstX, dstY,
@@ -187,10 +187,10 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
 }
 
 bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                        int dstX, int dstY,
-                                        int width, int height,
-                                        int desiredWidth, int desiredHeight,
-                                        bool useColor, bool smooth)
+                                           int dstX, int dstY,
+                                           int width, int height,
+                                           int desiredWidth, int desiredHeight,
+                                           bool useColor, bool smooth)
 {
     if (!image)
         return false;
@@ -252,7 +252,7 @@ bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
 /* Optimising the functions that Graphics::drawImagePattern would call,
  * so that glBegin...glEnd are outside the main loop. */
 void SafeOpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
-                                       int w, int h)
+                                          int w, int h)
 {
     if (!image)
         return;
@@ -296,9 +296,9 @@ void SafeOpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
 }
 
 void SafeOpenGLGraphics::drawRescaledImagePattern(Image *image, int x, int y,
-                                               int w, int h,
-                                               int scaledWidth,
-                                               int scaledHeight)
+                                                  int w, int h,
+                                                  int scaledWidth,
+                                                  int scaledHeight)
 {
     if (!image)
         return;
@@ -347,15 +347,16 @@ void SafeOpenGLGraphics::drawRescaledImagePattern(Image *image, int x, int y,
 }
 
 bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes* vert,
-                                    int x, int y, int w, int h,
-                                    Image *topLeft A_UNUSED,
-                                    Image *topRight A_UNUSED,
-                                    Image *bottomLeft A_UNUSED,
-                                    Image *bottomRight A_UNUSED,
-                                    Image *top A_UNUSED, Image *right A_UNUSED,
-                                    Image *bottom A_UNUSED,
-                                    Image *left A_UNUSED,
-                                    Image *center A_UNUSED)
+                                       int x, int y, int w, int h,
+                                       Image *topLeft A_UNUSED,
+                                       Image *topRight A_UNUSED,
+                                       Image *bottomLeft A_UNUSED,
+                                       Image *bottomRight A_UNUSED,
+                                       Image *top A_UNUSED,
+                                       Image *right A_UNUSED,
+                                       Image *bottom A_UNUSED,
+                                       Image *left A_UNUSED,
+                                       Image *center A_UNUSED)
 {
     if (!vert)
         return false;
@@ -365,7 +366,7 @@ bool SafeOpenGLGraphics::calcImageRect(GraphicsVertexes* vert,
 }
 
 void SafeOpenGLGraphics::calcTile(ImageVertexes *vert A_UNUSED,
-                               int x A_UNUSED, int y A_UNUSED)
+                                  int x A_UNUSED, int y A_UNUSED)
 {
 
 }
@@ -376,7 +377,7 @@ void SafeOpenGLGraphics::drawTile(ImageVertexes *vert A_UNUSED)
 }
 
 void SafeOpenGLGraphics::drawImageRect2(GraphicsVertexes* vert,
-                                     const ImageRect &imgRect)
+                                        const ImageRect &imgRect)
 {
     if (!vert)
         return;

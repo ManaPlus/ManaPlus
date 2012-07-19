@@ -26,7 +26,7 @@
 #include "resources/resourcemanager.h"
 
 #ifdef USE_OPENGL
-#include "openglgraphics.h"
+#include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 #endif
 

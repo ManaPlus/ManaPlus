@@ -37,12 +37,12 @@
 
 #include <set>
 
-class OpenGLGraphics : public Graphics
+class NormalOpenGLGraphics : public Graphics
 {
     public:
-        OpenGLGraphics();
+        NormalOpenGLGraphics();
 
-        ~OpenGLGraphics();
+        ~NormalOpenGLGraphics();
 
         bool setVideoMode(int w, int h, int bpp, bool fs,
                           bool hwaccel, bool resize, bool noFrame);

@@ -27,7 +27,7 @@
 #include "resources/dye.h"
 #include "resources/resourcemanager.h"
 
-#include "openglgraphics.h"
+#include "normalopenglgraphics.h"
 #include "safeopenglgraphics.h"
 
 #include "client.h"
@@ -213,7 +213,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage)
     GLuint texture;
     glGenTextures(1, &texture);
     if (mUseOpenGL == 1)
-        OpenGLGraphics::bindTexture(mTextureType, texture);
+        NormalOpenGLGraphics::bindTexture(mTextureType, texture);
     else if (mUseOpenGL == 2)
         SafeOpenGLGraphics::bindTexture(mTextureType, texture);
 

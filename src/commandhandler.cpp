@@ -58,7 +58,7 @@
 #include "net/tradehandler.h"
 
 #if defined USE_OPENGL
-#include "openglgraphics.h"
+#include "normalopenglgraphics.h"
 #endif
 
 #ifdef DEBUG_DUMP_LEAKS1
@@ -1367,6 +1367,6 @@ void CommandHandler::handleDumpOGL(const std::string &args A_UNUSED,
                                    ChatTab *tab A_UNUSED)
 {
 #if defined USE_OPENGL
-    OpenGLGraphics::dumpSettings();
+    NormalOpenGLGraphics::dumpSettings();
 #endif
 }

@@ -25,7 +25,7 @@
 #ifdef USE_OPENGL
 
 #include "graphicsvertexes.h"
-#include "openglgraphics.h"
+#include "normalopenglgraphics.h"
 #include "configuration.h"
 #include "logger.h"
 
@@ -45,9 +45,9 @@
 
 const unsigned int vertexBufSize = 500;
 
-GLuint OpenGLGraphics::mLastImage = 0;
+GLuint NormalOpenGLGraphics::mLastImage = 0;
 
-OpenGLGraphics::OpenGLGraphics():
+NormalOpenGLGraphics::NormalOpenGLGraphics():
     mFloatTexArray(new GLfloat[vertexBufSize * 4 + 30]),
     mIntTexArray(new GLint[vertexBufSize * 4 + 30]),
     mIntVertArray(new GLint[vertexBufSize * 4 + 30]),
@@ -67,15 +67,16 @@ OpenGLGraphics::OpenGLGraphics():
     mName = "fast OpenGL";
 }
 
-OpenGLGraphics::~OpenGLGraphics()
+NormalOpenGLGraphics::~NormalOpenGLGraphics()
 {
     delete [] mFloatTexArray;
     delete [] mIntTexArray;
     delete [] mIntVertArray;
 }
 
-bool OpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
-                                  bool hwaccel, bool resize, bool noFrame)
+bool NormalOpenGLGraphics::setVideoMode(int w, int h, int bpp, bool fs,
+                                        bool hwaccel, bool resize,
+                                        bool noFrame)
 {
     setMainFlags(w, h, bpp, fs, hwaccel, resize, noFrame);
 
@@ -206,9 +207,9 @@ static inline void drawRescaledQuad(Image *image,
 }
 
 
-bool OpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
-                                int dstX, int dstY,
-                                int width, int height, bool useColor)
+bool NormalOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
+                                      int dstX, int dstY,
+                                      int width, int height, bool useColor)
 {
     if (!image)
         return false;
@@ -239,11 +240,12 @@ bool OpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
     return true;
 }
 
-bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                       int dstX, int dstY,
-                                       int width, int height,
-                                       int desiredWidth, int desiredHeight,
-                                       bool useColor)
+bool NormalOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
+                                             int dstX, int dstY,
+                                             int width, int height,
+                                             int desiredWidth,
+                                             int desiredHeight,
+                                             bool useColor)
 {
     return drawRescaledImage(image, srcX, srcY,
                              dstX, dstY,
@@ -252,11 +254,12 @@ bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
                              useColor, true);
 }
 
-bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                       int dstX, int dstY,
-                                       int width, int height,
-                                       int desiredWidth, int desiredHeight,
-                                       bool useColor, bool smooth)
+bool NormalOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
+                                             int dstX, int dstY,
+                                             int width, int height,
+                                             int desiredWidth,
+                                             int desiredHeight,
+                                             bool useColor, bool smooth)
 {
     if (!image)
         return false;
@@ -315,8 +318,8 @@ bool OpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
     return true;
 }
 
-void OpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
-                                      int w, int h)
+void NormalOpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
+                                            int w, int h)
 {
     if (!image)
         return;
@@ -450,11 +453,11 @@ void OpenGLGraphics::drawImagePattern(const Image *image, int x, int y,
                static_cast<GLubyte>(mColor.a));
 }
 
-void OpenGLGraphics::drawRescaledImagePattern(Image *image,
-                                              int x, int y,
-                                              int w, int h,
-                                              int scaledWidth,
-                                              int scaledHeight)
+void NormalOpenGLGraphics::drawRescaledImagePattern(Image *image,
+                                                    int x, int y,
+                                                    int w, int h,
+                                                    int scaledWidth,
+                                                    int scaledHeight)
 {
     if (!image)
         return;
@@ -606,13 +609,13 @@ void OpenGLGraphics::drawRescaledImagePattern(Image *image,
                static_cast<GLubyte>(mColor.a));
 }
 
-void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
-                                       const Image *image)
+void NormalOpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
+                                             const Image *image)
 {
     if (!image)
         return;
 
-    OpenGLGraphicsVertexes *ogl = vert->getOGL();
+    NormalOpenGLGraphicsVertexes *ogl = vert->getOGL();
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -667,8 +670,9 @@ void OpenGLGraphics::drawImagePattern2(GraphicsVertexes *vert,
 
 }
 
-void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
-                                      int x, int y, int w, int h)
+void NormalOpenGLGraphics::calcImagePattern(GraphicsVertexes* vert,
+                                            Image *image,
+                                            int x, int y, int w, int h)
 {
     if (!image)
     {
@@ -694,7 +698,7 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
     unsigned int vp = 0;
     const unsigned int vLimit = vertexBufSize * 4;
 
-    OpenGLGraphicsVertexes *ogl = vert->getOGL();
+    NormalOpenGLGraphicsVertexes *ogl = vert->getOGL();
     ogl->init();
 
     // Draw a set of textured rectangles
@@ -806,7 +810,7 @@ void OpenGLGraphics::calcImagePattern(GraphicsVertexes* vert, Image *image,
     vert->incPtr(1);
 }
 
-void OpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
+void NormalOpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
 {
     if (!vert)
         return;
@@ -826,7 +830,7 @@ void OpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
 
     const unsigned int vLimit = vertexBufSize * 4;
 
-    OpenGLGraphicsVertexes *ogl = vert->ogl;
+    NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
 
     unsigned int vp = ogl->ptr;
 
@@ -923,13 +927,13 @@ void OpenGLGraphics::calcTile(ImageVertexes *vert, int dstX, int dstY)
     ogl->ptr = vp;
 }
 
-void OpenGLGraphics::drawTile(ImageVertexes *vert)
+void NormalOpenGLGraphics::drawTile(ImageVertexes *vert)
 {
     if (!vert)
         return;
     Image *image = vert->image;
 
-    OpenGLGraphicsVertexes *ogl = vert->ogl;
+    NormalOpenGLGraphicsVertexes *ogl = vert->ogl;
 
     glColor4f(1.0f, 1.0f, 1.0f, image->mAlpha);
 #ifdef DEBUG_BIND_TEXTURE
@@ -949,7 +953,7 @@ void OpenGLGraphics::drawTile(ImageVertexes *vert)
                static_cast<GLubyte>(mColor.a));
 }
 
-void OpenGLGraphics::updateScreen()
+void NormalOpenGLGraphics::updateScreen()
 {
 //    glFlush();
 //    glFinish();
@@ -958,7 +962,7 @@ void OpenGLGraphics::updateScreen()
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
-void OpenGLGraphics::_beginDraw()
+void NormalOpenGLGraphics::_beginDraw()
 {
     glMatrixMode(GL_TEXTURE);
     glLoadIdentity();
@@ -994,12 +998,12 @@ void OpenGLGraphics::_beginDraw()
     pushClipArea(gcn::Rectangle(0, 0, mTarget->w, mTarget->h));
 }
 
-void OpenGLGraphics::_endDraw()
+void NormalOpenGLGraphics::_endDraw()
 {
     popClipArea();
 }
 
-void OpenGLGraphics::prepareScreenshot()
+void NormalOpenGLGraphics::prepareScreenshot()
 {
 #if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
@@ -1043,7 +1047,7 @@ void OpenGLGraphics::prepareScreenshot()
 #endif
 }
 
-SDL_Surface* OpenGLGraphics::getScreenshot()
+SDL_Surface* NormalOpenGLGraphics::getScreenshot()
 {
     const int h = mTarget->h;
     const int w = mTarget->w - (mTarget->w % 4);
@@ -1114,7 +1118,7 @@ SDL_Surface* OpenGLGraphics::getScreenshot()
     return screenshot;
 }
 
-bool OpenGLGraphics::pushClipArea(gcn::Rectangle area)
+bool NormalOpenGLGraphics::pushClipArea(gcn::Rectangle area)
 {
     int transX = 0;
     int transY = 0;
@@ -1144,7 +1148,7 @@ bool OpenGLGraphics::pushClipArea(gcn::Rectangle area)
     return result;
 }
 
-void OpenGLGraphics::popClipArea()
+void NormalOpenGLGraphics::popClipArea()
 {
     gcn::Graphics::popClipArea();
 
@@ -1157,7 +1161,7 @@ void OpenGLGraphics::popClipArea()
         clipArea.width, clipArea.height);
 }
 
-void OpenGLGraphics::setColor(const gcn::Color& color)
+void NormalOpenGLGraphics::setColor(const gcn::Color& color)
 {
     mColor = color;
     glColor4ub(static_cast<GLubyte>(color.r),
@@ -1168,7 +1172,7 @@ void OpenGLGraphics::setColor(const gcn::Color& color)
     mColorAlpha = (color.a != 255);
 }
 
-void OpenGLGraphics::drawPoint(int x, int y)
+void NormalOpenGLGraphics::drawPoint(int x, int y)
 {
     setTexturingAndBlending(false);
 
@@ -1177,7 +1181,7 @@ void OpenGLGraphics::drawPoint(int x, int y)
     glEnd();
 }
 
-void OpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
+void NormalOpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
 {
     setTexturingAndBlending(false);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -1192,21 +1196,22 @@ void OpenGLGraphics::drawLine(int x1, int y1, int x2, int y2)
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-void OpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
+void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect)
 {
     drawRectangle(rect, false);
 }
 
-void OpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
+void NormalOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
 {
     drawRectangle(rect, true);
 }
 
-void OpenGLGraphics::setTargetPlane(int width A_UNUSED, int height A_UNUSED)
+void NormalOpenGLGraphics::setTargetPlane(int width A_UNUSED,
+                                          int height A_UNUSED)
 {
 }
 
-void OpenGLGraphics::setTexturingAndBlending(bool enable)
+void NormalOpenGLGraphics::setTexturingAndBlending(bool enable)
 {
     if (enable)
     {
@@ -1244,7 +1249,8 @@ void OpenGLGraphics::setTexturingAndBlending(bool enable)
     }
 }
 
-void OpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
+void NormalOpenGLGraphics::drawRectangle(const gcn::Rectangle& rect,
+                                         bool filled)
 {
     const float offset = filled ? 0 : 0.5f;
     const float x = static_cast<float>(rect.x);
@@ -1269,8 +1275,8 @@ void OpenGLGraphics::drawRectangle(const gcn::Rectangle& rect, bool filled)
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-bool OpenGLGraphics::drawNet(int x1, int y1, int x2, int y2,
-                             int width, int height)
+bool NormalOpenGLGraphics::drawNet(int x1, int y1, int x2, int y2,
+                                   int width, int height)
 {
     unsigned int vp = 0;
     const unsigned int vLimit = vertexBufSize * 4;
@@ -1322,7 +1328,7 @@ bool OpenGLGraphics::drawNet(int x1, int y1, int x2, int y2,
     return true;
 }
 
-void OpenGLGraphics::bindTexture(GLenum target, GLuint texture)
+void NormalOpenGLGraphics::bindTexture(GLenum target, GLuint texture)
 {
     if (mLastImage != texture)
     {
@@ -1331,7 +1337,7 @@ void OpenGLGraphics::bindTexture(GLenum target, GLuint texture)
     }
 }
 
-inline void OpenGLGraphics::drawQuadArrayfi(int size)
+inline void NormalOpenGLGraphics::drawQuadArrayfi(int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, mFloatTexArray);
@@ -1339,8 +1345,9 @@ inline void OpenGLGraphics::drawQuadArrayfi(int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void OpenGLGraphics::drawQuadArrayfi(GLint *intVertArray,
-                                            GLfloat *floatTexArray, int size)
+inline void NormalOpenGLGraphics::drawQuadArrayfi(GLint *intVertArray,
+                                                  GLfloat *floatTexArray,
+                                                  int size)
 {
     glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_FLOAT, 0, floatTexArray);
@@ -1348,7 +1355,7 @@ inline void OpenGLGraphics::drawQuadArrayfi(GLint *intVertArray,
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void OpenGLGraphics::drawQuadArrayii(int size)
+inline void NormalOpenGLGraphics::drawQuadArrayii(int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
     glTexCoordPointer(2, GL_INT, 0, mIntTexArray);
@@ -1356,8 +1363,8 @@ inline void OpenGLGraphics::drawQuadArrayii(int size)
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void OpenGLGraphics::drawQuadArrayii(GLint *intVertArray,
-                                            GLint *intTexArray, int size)
+inline void NormalOpenGLGraphics::drawQuadArrayii(GLint *intVertArray,
+                                                  GLint *intTexArray, int size)
 {
     glVertexPointer(2, GL_INT, 0, intVertArray);
     glTexCoordPointer(2, GL_INT, 0, intTexArray);
@@ -1365,21 +1372,21 @@ inline void OpenGLGraphics::drawQuadArrayii(GLint *intVertArray,
     glDrawArrays(GL_QUADS, 0, size / 2);
 }
 
-inline void OpenGLGraphics::drawLineArrayi(int size)
+inline void NormalOpenGLGraphics::drawLineArrayi(int size)
 {
     glVertexPointer(2, GL_INT, 0, mIntVertArray);
 
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
-inline void OpenGLGraphics::drawLineArrayf(int size)
+inline void NormalOpenGLGraphics::drawLineArrayf(int size)
 {
     glVertexPointer(2, GL_FLOAT, 0, mFloatTexArray);
 
     glDrawArrays(GL_LINES, 0, size / 2);
 }
 
-void OpenGLGraphics::dumpSettings()
+void NormalOpenGLGraphics::dumpSettings()
 {
     GLint test[1000];
     logger->log("\n\n");
@@ -1400,7 +1407,7 @@ void OpenGLGraphics::dumpSettings()
 }
 
 #ifdef DEBUG_BIND_TEXTURE
-void OpenGLGraphics::debugBindTexture(const Image *image)
+void NormalOpenGLGraphics::debugBindTexture(const Image *image)
 {
     const std::string texture = image->getIdPath();
     if (mOldTexture != texture)
@@ -1416,7 +1423,7 @@ void OpenGLGraphics::debugBindTexture(const Image *image)
     }
 }
 #else
-void OpenGLGraphics::debugBindTexture(const Image *image A_UNUSED)
+void NormalOpenGLGraphics::debugBindTexture(const Image *image A_UNUSED)
 {
 }
 #endif

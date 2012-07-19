@@ -168,7 +168,7 @@ void GraphicsManager::initGraphics(bool noOpenGL)
         case 1:
         default:
             imageHelper = new OpenGLImageHelper;
-            mainGraphics = new OpenGLGraphics;
+            mainGraphics = new NormalOpenGLGraphics;
             break;
         case 2:
             imageHelper = new OpenGLImageHelper;
