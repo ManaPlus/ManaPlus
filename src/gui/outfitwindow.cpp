@@ -142,10 +142,10 @@ void OutfitWindow::load(bool oldConfig)
         std::string buf;
         std::stringstream ss(outfit);
 
-        std::vector<unsigned char> tokens;
+        std::vector<int> tokens;
 
         while (ss >> buf)
-            tokens.push_back(static_cast<unsigned char>(atoi(buf.c_str())));
+            tokens.push_back(atoi(buf.c_str()));
 
         for (int i = 0; i < static_cast<int>(tokens.size())
                 && i < OUTFIT_ITEM_COUNT; i++)
@@ -159,13 +159,14 @@ void OutfitWindow::load(bool oldConfig)
 
         tokens.clear();
 
+        std::vector<unsigned char> tokens2;
         while (ss2 >> buf)
-            tokens.push_back(static_cast<unsigned char>(atoi(buf.c_str())));
+            tokens2.push_back(static_cast<unsigned char>(atoi(buf.c_str())));
 
-        for (int i = 0; i < static_cast<int>(tokens.size())
+        for (int i = 0; i < static_cast<int>(tokens2.size())
                 && i < OUTFIT_ITEM_COUNT; i++)
         {
-            mItemColors[o][i] = tokens[i];
+            mItemColors[o][i] = tokens2[i];
         }
 
         mItemsUnequip[o] = cfg->getValueBool("OutfitUnequip" + toString(o),
