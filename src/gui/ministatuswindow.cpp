@@ -25,6 +25,7 @@
 #include "animatedsprite.h"
 #include "configuration.h"
 #include "graphics.h"
+#include "localplayer.h"
 #include "playerinfo.h"
 
 #include "gui/chatwindow.h"
@@ -293,18 +294,29 @@ void MiniStatusWindow::mouseMoved(gcn::MouseEvent &event)
     }
     else if (event.getSource() == mXpBar)
     {
+        std::string level;
+        if (player_node && player_node->isGM())
+        {
+            level = strprintf(_("Level: %d (GM %d)"),
+                PlayerInfo::getAttribute(PlayerInfo::LEVEL),
+                player_node->getGMLevel());
+        }
+        else
+        {
+            level = strprintf(_("Level: %d"),
+                PlayerInfo::getAttribute(PlayerInfo::LEVEL));
+        }
+
         if (PlayerInfo::getAttribute(PlayerInfo::EXP)
             > PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED))
         {
-            mTextPopup->show(x + getX(), y + getY(),
-                event.getSource()->getId(), strprintf("%d/%d",
+            mTextPopup->show(x + getX(), y + getY(), level, strprintf("%d/%d",
                 PlayerInfo::getAttribute(PlayerInfo::EXP),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)));
         }
         else
         {
-            mTextPopup->show(x + getX(), y + getY(),
-                event.getSource()->getId(), strprintf("%d/%d",
+            mTextPopup->show(x + getX(), y + getY(), level, strprintf("%d/%d",
                 PlayerInfo::getAttribute(PlayerInfo::EXP),
                 PlayerInfo::getAttribute(PlayerInfo::EXP_NEEDED)),
                 strprintf("%s: %d", _("Need"),
