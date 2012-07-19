@@ -2017,9 +2017,7 @@ void Being::talkTo()
 
 bool Being::isTalking()
 {
-    return NpcDialog::isActive() || BuyDialog::isActive() ||
-           SellDialog::isActive() || BuySellDialog::isActive() ||
-           NpcPostDialog::isActive();
+    return NpcDialog::isActive() || NpcPostDialog::isActive();
 }
 
 bool Being::draw(Graphics *graphics, int offsetX, int offsetY) const
