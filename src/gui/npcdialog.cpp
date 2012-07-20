@@ -697,7 +697,7 @@ void NpcDialog::setAvatarAction(int actionId)
 {
     Being *being = mPlayerBox->getBeing();
     if (being)
-        being->setAction((Being::Action)actionId);
+        being->setAction(static_cast<Being::Action>(actionId));
 }
 
 void NpcDialog::logic()
@@ -706,7 +706,7 @@ void NpcDialog::logic()
     if (mShowAvatar && mAvatarBeing)
     {
         mAvatarBeing->logic();
-        if (mPlayerBox->getWidth() < (signed)(3 * getPadding()))
+        if (mPlayerBox->getWidth() < static_cast<signed>(3 * getPadding()))
         {
             Sprite *sprite = mAvatarBeing->getSprite(0);
             if (sprite)

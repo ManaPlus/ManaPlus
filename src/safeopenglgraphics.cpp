@@ -174,10 +174,10 @@ bool SafeOpenGLGraphics::drawImage2(const Image *image, int srcX, int srcY,
 }
 
 bool SafeOpenGLGraphics::drawRescaledImage(Image *image, int srcX, int srcY,
-                                          int dstX, int dstY,
-                                          int width, int height,
-                                          int desiredWidth, int desiredHeight,
-                                          bool useColor)
+                                           int dstX, int dstY,
+                                           int width, int height,
+                                           int desiredWidth, int desiredHeight,
+                                           bool useColor)
 {
     return drawRescaledImage(image, srcX, srcY,
                              dstX, dstY,
@@ -620,7 +620,8 @@ void SafeOpenGLGraphics::fillRectangle(const gcn::Rectangle& rect)
     drawRectangle(rect, true);
 }
 
-void SafeOpenGLGraphics::setTargetPlane(int width A_UNUSED, int height A_UNUSED)
+void SafeOpenGLGraphics::setTargetPlane(int width A_UNUSED,
+                                        int height A_UNUSED)
 {
 }
 

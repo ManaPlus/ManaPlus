@@ -51,7 +51,7 @@ DyePalette::DyePalette(const std::string &description, int8_t blockSize)
             {0, 0, 0, 0}
         };
 
-        for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < dyePalateSize;
+        for (int i = 0, colorIdx = 0; i < blockSize && colorIdx < 4;
              i +=2, colorIdx ++)
         {
             color.value[colorIdx] = static_cast<unsigned char>((

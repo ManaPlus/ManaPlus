@@ -45,7 +45,7 @@
 
 int DropDown::instances = 0;
 Image *DropDown::buttons[2][2];
-ImageRect DropDown::skin;
+ImageRect DropDown::skinRect;
 float DropDown::mAlpha = 1.0;
 
 static std::string const dropdownFiles[2] =
@@ -96,7 +96,7 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
 
         // get the border skin
         if (Theme::instance())
-            Theme::instance()->loadRect(skin, "dropdown_background.xml");
+            Theme::instance()->loadRect(skinRect, "dropdown_background.xml");
     }
 
     instances++;
@@ -126,7 +126,7 @@ DropDown::~DropDown()
             }
         }
         if (Theme::instance())
-            Theme::instance()->unloadRect(skin);
+            Theme::instance()->unloadRect(skinRect);
     }
     delete mScrollArea;
     mScrollArea = nullptr;
@@ -152,8 +152,8 @@ void DropDown::updateAlpha()
 
         for (int a = 0; a < 9; a++)
         {
-            if (skin.grid[a])
-                skin.grid[a]->setAlpha(mAlpha);
+            if (skinRect.grid[a])
+                skinRect.grid[a]->setAlpha(mAlpha);
         }
     }
 }
@@ -208,7 +208,7 @@ void DropDown::drawFrame(gcn::Graphics *graphics)
     const int w = getWidth() + bs * 2;
     const int h = getHeight() + bs * 2;
 
-    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skin);
+    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, skinRect);
 }
 
 void DropDown::drawButton(gcn::Graphics *graphics)

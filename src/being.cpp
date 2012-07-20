@@ -41,13 +41,8 @@
 #include "sprite.h"
 #include "text.h"
 
-#include "gui/buydialog.h"
-#include "gui/buyselldialog.h"
 #include "gui/equipmentwindow.h"
 #include "gui/gui.h"
-#include "gui/npcdialog.h"
-#include "gui/npcpostdialog.h"
-#include "gui/selldialog.h"
 #include "gui/socialwindow.h"
 #include "gui/speechbubble.h"
 #include "gui/theme.h"
@@ -2672,7 +2667,7 @@ Gender Being::intToGender(uint8_t sex)
 
 int Being::getSpriteID(int slot)
 {
-    if (slot < 0 || (unsigned)slot >= mSpriteIDs.size())
+    if (slot < 0 || static_cast<unsigned>(slot) >= mSpriteIDs.size())
         return -1;
 
     return mSpriteIDs[slot];

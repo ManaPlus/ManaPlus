@@ -26,8 +26,7 @@
 #include "graphics.h"
 
 #ifdef USE_OPENGL
-#include "normalopenglgraphics.h"
-#include "safeopenglgraphics.h"
+#include "main.h"
 #endif
 
 #include "client.h"
@@ -35,7 +34,6 @@
 
 #include "resources/image.h"
 #include "resources/imagehelper.h"
-#include "resources/openglimagehelper.h"
 
 #include "utils/dtor.h"
 

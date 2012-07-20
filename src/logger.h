@@ -72,7 +72,7 @@ class Logger
          */
         void log(const char *log_text, ...)
 #ifdef __GNUC__
-            __attribute__((__format__(__printf__, 2, 3)))
+            __attribute__((__format__(gnu_printf, 2, 3)))
 #endif
             ;
 

@@ -97,7 +97,7 @@ class DropDown : public gcn::DropDown
         // Add own Images.
         static int instances;
         static Image *buttons[2][2];
-        static ImageRect skin;
+        static ImageRect skinRect;
         static float mAlpha;
 };
 
