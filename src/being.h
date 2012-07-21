@@ -30,6 +30,8 @@
 #include "position.h"
 #include "vector.h"
 
+#include "resources/beinginfo.h"
+
 #include <guichan/color.hpp>
 
 #include <SDL_types.h>
@@ -47,7 +49,7 @@
 class AnimatedSprite;
 class BeingCacheEntry;
 class Being;
-class BeingInfo;
+//class BeingInfo;
 class FlashText;
 class Guild;
 class Inventory;
@@ -389,7 +391,8 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Get the number of layers used to draw the being
          */
-        int getNumberOfLayers() const;
+        int getNumberOfLayers() const
+        { return CompoundSprite::getNumberOfLayers(); }
 
         /**
          * Performs being logic.
@@ -419,19 +422,39 @@ class Being : public ActorSprite, public ConfigListener
 
         TargetCursorSize getTargetCursorSize() const;
 
-        int getTargetOffsetX() const;
+        int getTargetOffsetX() const
+        {
+            if (!mInfo)
+                return 0;
+            return mInfo->getTargetOffsetX();
+        }
 
-        int getTargetOffsetY() const;
+        int getTargetOffsetY() const
+        {
+            if (!mInfo)
+                return 0;
+            return mInfo->getTargetOffsetY();
+        }
 
         /**
          * Gets the way the object is blocked by other objects.
          */
-        virtual unsigned char getWalkMask() const;
+        virtual unsigned char getWalkMask() const
+        {
+            if (!mInfo)
+                return 0;
+            return mInfo->getWalkMask();
+        }
 
         /**
          * Gets the way the monster blocks pathfinding for other objects
          */
-        Map::BlockType getBlockType() const;
+        Map::BlockType getBlockType() const
+        {
+            if (!mInfo)
+                return Map::BLOCKTYPE_NONE;
+            return mInfo->getBlockType();
+        }
 
         /**
          * Sets the walk speed.
@@ -526,7 +549,8 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the being's pixel radius used to detect collisions.
          */
-        virtual int getCollisionRadius() const;
+        virtual int getCollisionRadius() const
+        { return 16; }
 
         /**
          * Shoots a missile particle from this being, to target being
@@ -628,7 +652,8 @@ class Being : public ActorSprite, public ConfigListener
          */
         void setGM(bool gm);
 
-        bool canTalk();
+        bool canTalk()
+        { return mType == NPC; }
 
         void talkTo();
 

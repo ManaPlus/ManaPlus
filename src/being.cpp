@@ -357,38 +357,6 @@ ActorSprite::TargetCursorSize Being::getTargetCursorSize() const
     return mInfo->getTargetCursorSize();
 }
 
-int Being::getTargetOffsetX() const
-{
-    if (!mInfo)
-        return 0;
-
-    return mInfo->getTargetOffsetX();
-}
-
-int Being::getTargetOffsetY() const
-{
-    if (!mInfo)
-        return 0;
-
-    return mInfo->getTargetOffsetY();
-}
-
-unsigned char Being::getWalkMask() const
-{
-    if (!mInfo)
-        return 0;
-
-    return mInfo->getWalkMask();
-}
-
-Map::BlockType Being::getBlockType() const
-{
-    if (!mInfo)
-        return Map::BLOCKTYPE_NONE;
-
-    return mInfo->getBlockType();
-}
-
 void Being::setPosition(const Vector &pos)
 {
     Actor::setPosition(pos);
@@ -1222,12 +1190,6 @@ void Being::nextTile()
     mActionTime += static_cast<int>(mWalkSpeed.x / 10);
 }
 
-int Being::getCollisionRadius() const
-{
-    // FIXME: Get this from XML file
-    return 16;
-}
-
 void Being::logic()
 {
     // Reduce the time that speech is still displayed
@@ -1491,8 +1453,8 @@ void Being::drawSpeech(int offsetX, int offsetY)
         if (!mText && userPalette)
         {
             mText = new Text(mSpeech, getPixelX(), getPixelY() - getHeight(),
-                gcn::Graphics::CENTER, &userPalette->getColor(
-                UserPalette::PARTICLE), true);
+                gcn::Graphics::CENTER, &Theme::getThemeColor(
+                Theme::BUBBLE_TEXT), true);
         }
     }
     else if (speech == NO_SPEECH)
@@ -1817,11 +1779,6 @@ void Being::setSpriteColor(unsigned int slot, const std::string &color)
     setSprite(slot, mSpriteIDs[slot], color);
 }
 
-int Being::getNumberOfLayers() const
-{
-    return CompoundSprite::getNumberOfLayers();
-}
-
 void Being::load()
 {
     // Hairstyles are encoded as negative numbers. Count how far negative
@@ -1995,11 +1952,6 @@ void Being::setGM(bool gm)
     mIsGM = gm;
 
     updateColors();
-}
-
-bool Being::canTalk()
-{
-    return mType == NPC;
 }
 
 void Being::talkTo()
