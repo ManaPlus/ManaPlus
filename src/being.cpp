@@ -1477,7 +1477,7 @@ void Being::drawSpeech(int offsetX, int offsetY)
         delete mText;
         mText = nullptr;
 
-        mSpeechBubble->setCaption(isShowName ? mName : "", mTextColor);
+        mSpeechBubble->setCaption(isShowName ? mName : "");
 
         mSpeechBubble->setText(mSpeech, isShowName);
         mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),

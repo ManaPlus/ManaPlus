@@ -47,7 +47,9 @@
 	<color id="WARNING" color="#FC6400" />
 	<color id="PLAYER_ADVANCED" color="#FC6400" />
 	<color id="ITEM_NOT_EQUIPPED" color="#E0E0E0" />
-	
+	<color id="BUBBLE_NAME" color="#ffffff" />
+	<color id="BUBBLE_TEXT" color="#ffffff" />
+
 	<color id="RED" color="#FFA8A8" />
     <color id="GREEN" color="#59FF6C" />
     <color id="BLUE" color="#00FFFF" />

@@ -201,6 +201,8 @@ class Theme : public Palette, public ConfigListener
             WARNING,
             CHARM,
             PLAYER_ADVANCED,
+            BUBBLE_NAME,
+            BUBBLE_TEXT,
             RED,
             GREEN,
             BLUE,

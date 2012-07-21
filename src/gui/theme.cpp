@@ -689,6 +689,8 @@ static int readColorType(const std::string &type)
         "WARNING",
         "CHARM",
         "PLAYER_ADVANCED",
+        "BUBBLE_NAME",
+        "BUBBLE_TEXT",
         "RED",
         "GREEN",
         "BLUE",
