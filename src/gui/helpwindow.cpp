@@ -38,6 +38,7 @@
 
 #include "utils/gettext.h"
 #include "utils/langs.h"
+#include "utils/process.h"
 
 #include "utils/translation/podict.h"
 #include "utils/translation/translationmanager.h"
@@ -92,8 +93,15 @@ void HelpWindow::action(const gcn::ActionEvent &event)
 void HelpWindow::handleLink(const std::string &link,
                             gcn::MouseEvent *event A_UNUSED)
 {
-    std::string helpFile = link;
-    loadHelp(helpFile);
+    if (!strStartWith(link, "http://"))
+    {
+        std::string helpFile = link;
+        loadHelp(helpFile);
+    }
+    else
+    {
+        openBrowser(link);
+    }
 }
 
 void HelpWindow::loadHelp(const std::string &helpFile)

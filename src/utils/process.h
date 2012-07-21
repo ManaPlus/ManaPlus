@@ -23,7 +23,12 @@
 
 #include <string>
 
-int execFile(std::string pathName, std::string name,
-             std::string arg1, std::string arg2, int waitTime = 0);
+int execFileWait(std::string pathName, std::string name,
+                 std::string arg1, std::string arg2, int waitTime = 0);
+
+bool execFile(std::string pathName, std::string name,
+              std::string arg1, std::string arg2);
+
+bool openBrowser(std::string url);
 
 #endif // UTILS_PROCESS_H

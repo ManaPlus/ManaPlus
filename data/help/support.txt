@@ -20,7 +20,7 @@
  
 << For TMW support:
  
-<<##2     http://forums.themanaworld.org/viewforum.php?f=3
+<<##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@
  or visit IRC channel:>>
 ##2     #themanaworld ##P@##2 irc.freenode.net
  

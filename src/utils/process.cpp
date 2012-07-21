@@ -37,8 +37,8 @@ const int timeOut = 10;
 
 #include <windows.h>
 
-int execFile(std::string pathName, std::string name A_UNUSED,
-             std::string arg1, std::string arg2, int waitTime)
+int execFileWait(std::string pathName, std::string name A_UNUSED,
+                 std::string arg1, std::string arg2, int waitTime)
 {
     if (!waitTime)
         waitTime = timeOut;
@@ -74,12 +74,50 @@ int execFile(std::string pathName, std::string name A_UNUSED,
     return -1;
 }
 
+bool execFile(std::string pathName, std::string name A_UNUSED,
+              std::string arg1, std::string arg2)
+{
+    STARTUPINFO siStartupInfo;
+    PROCESS_INFORMATION piProcessInfo;
+    memset(&siStartupInfo, 0, sizeof(siStartupInfo));
+    memset(&piProcessInfo, 0, sizeof(piProcessInfo));
+    siStartupInfo.cb = sizeof(siStartupInfo); 
+    std::string args(pathName + " " + arg1);
+    if (!arg2.empty())
+        args += " " + arg2;
+
+    bool res = CreateProcess(pathName.c_str(), (char*)args.c_str(), nullptr,
+        nullptr, false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr,
+        &siStartupInfo, &piProcessInfo);
+
+    CloseHandle(piProcessInfo.hProcess);
+    CloseHandle(piProcessInfo.hThread);
+    return res;
+}
+
+bool openBrowser(std::string url)
+{
+    return (int)ShellExecute(nullptr, "open", url.c_str(), nullptr,
+        nullptr, SW_SHOWNORMAL) > 32;
+}
+
 #elif defined(__APPLE__)
 
-int execFile(std::string pathName, std::string name,
-             std::string arg1, std::string arg2, int waitTime)
+int execFileWait(std::string pathName, std::string name,
+                 std::string arg1, std::string arg2, int waitTime)
 {
     return -1;
+}
+
+bool execFile(std::string pathName, std::string name,
+              std::string arg1, std::string arg2)
+{
+    return false;
+}
+
+bool openBrowser(std::string url)
+{
+    return false;
 }
 
 #elif defined __linux__ || defined __linux
@@ -87,8 +125,8 @@ int execFile(std::string pathName, std::string name,
 #include <sys/types.h>
 #include <sys/wait.h>
 
-int execFile(std::string pathName, std::string name,
-             std::string arg1, std::string arg2, int waitTime)
+int execFileWait(std::string pathName, std::string name,
+                 std::string arg1, std::string arg2, int waitTime)
 {
     pid_t mon_pid;
     int status;
@@ -161,12 +199,55 @@ int execFile(std::string pathName, std::string name,
     return -1;
 }
 
+bool execFile(std::string pathName, std::string name,
+              std::string arg1, std::string arg2)
+{
+    int status;
+
+    pid_t pid;
+    if ((pid = fork()) == -1)
+    {   // fork error
+        return false;
+    }
+    else if (!pid)
+    {   // work child
+        if (arg2.empty())
+        {
+            execl(pathName.c_str(), name.c_str(),
+                arg1.c_str(), static_cast<char *>(nullptr));
+        }
+        else
+        {
+            execl(pathName.c_str(), name.c_str(), arg1.c_str(),
+                arg2.c_str(), static_cast<char *>(nullptr));
+        }
+        return false;
+    }
+    return true;
+}
+
+bool openBrowser(std::string url)
+{
+    return execFile("/usr/bin/xdg-open", "/usr/bin/xdg-open", url, "") == 0;
+}
+
 #else
 
-int execFile(std::string pathName, std::string name,
-             std::string arg1, std::string arg2, int waitTime)
+int execFileWait(std::string pathName, std::string name,
+                 std::string arg1, std::string arg2, int waitTime)
 {
     return -1;
+}
+
+bool execFile(std::string pathName, std::string name,
+              std::string arg1, std::string arg2)
+{
+    return false;
+}
+
+bool openBrowser(std::string url)
+{
+    return false;
 }
 
 #endif

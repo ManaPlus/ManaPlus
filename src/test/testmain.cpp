@@ -260,7 +260,7 @@ int TestMain::invokeTest(std::string test)
     mConfig.setValue("opengl", 0);
 
     mConfig.write();
-    int ret = execFile(fileName, fileName, "-t", test);
+    int ret = execFileWait(fileName, fileName, "-t", test);
     return ret;
 }
 
@@ -277,7 +277,7 @@ int TestMain::invokeSoftwareRenderTest(std::string test)
 {
     mConfig.setValue("opengl", 0);
     mConfig.write();
-    int ret = execFile(fileName, fileName, "-t", test, 30);
+    int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
 }
@@ -287,7 +287,7 @@ int TestMain::invokeFastOpenGLRenderTest(std::string test)
 #if defined USE_OPENGL
     mConfig.setValue("opengl", 1);
     mConfig.write();
-    int ret = execFile(fileName, fileName, "-t", test, 30);
+    int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
 #else
@@ -300,7 +300,7 @@ int TestMain::invokeSafeOpenGLRenderTest(std::string test)
 #if defined USE_OPENGL
     mConfig.setValue("opengl", 2);
     mConfig.write();
-    int ret = execFile(fileName, fileName, "-t", test, 30);
+    int ret = execFileWait(fileName, fileName, "-t", test, 30);
     log->log("%s: %d", test.c_str(), ret);
     return ret;
 #else

@@ -1,2 +1,2 @@
 <<About yellow bar you can read here:
-http://manaplus.evolonline.org/yellowbar>>
+@@http://manaplus.evolonline.org/yellowbar|http://manaplus.evolonline.org/yellowbar@@>>
