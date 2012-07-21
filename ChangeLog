@@ -1,3 +1,16 @@
+2012-07-22 New release 1.2.7.22
+fix: allow moving with opened buy/sell dialogs by mouse.
+fix: not allow moving with opened storage window.
+add: changed themes storing.
+add: enable by default pickup particle messages.
+add: removed emote popup window.
+add: audio fallback from unsupported modes.
+add: dye type A. Same with S but also using alpha channel.
+add: close button for npc dialog while it show menu.
+add: some new swords to auto equip list.
+add: mode "(B) attack range - 1".
+add: show level in experience bar popup.
+
 2012-07-08 New release 1.2.7.8
 fix: allow enter in qestion mark.
 fix: crashes with corrupted data.
