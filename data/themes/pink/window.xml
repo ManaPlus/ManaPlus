@@ -14,5 +14,9 @@
 		<part type="bottom-left-corner" xpos="0" ypos="60" width="10" height="10" />
 		<part type="bottom-edge" xpos="0" ypos="70" width="10" height="10" />
 		<part type="bottom-right-corner" xpos="10" ypos="0" width="132" height="134" />
+
+		<part type="closeImage" xpos="-120" ypos="0" width="15" height="15" />
+		<part type="stickyImageUp" xpos="-120" ypos="51" width="15" height="15" />
+		<part type="stickyImageDown" xpos="-105" ypos="51" width="15" height="15" />
 	</widget>
 </skinset>
