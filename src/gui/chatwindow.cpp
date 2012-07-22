@@ -329,6 +329,8 @@ void ChatWindow::fillCommands()
     mCommands.push_back("<PEOPLE>");
     mCommands.push_back("<PARTY>");
     mCommands.push_back("/setdrop ");
+    mCommands.push_back("/url ");
+    mCommands.push_back("/open ");
 }
 
 void ChatWindow::loadGMCommands()
@@ -1404,9 +1406,12 @@ void ChatWindow::resortChatLog(std::string line, Own own,
                 size_t idx3 = line.find("@@", idx2);
                 if (idx3 != std::string::npos)
                 {
-                    tradeChatTab->chatLog(line, own, ignoreRecord,
-                                          tryRemoveColors);
-                    return;
+                    if (line.find("http", idx1) != idx1 + 2)
+                    {
+                        tradeChatTab->chatLog(line, own, ignoreRecord,
+                                              tryRemoveColors);
+                        return;
+                    }
                 }
             }
         }

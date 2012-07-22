@@ -300,6 +300,10 @@ class CommandHandler
 
         void handleError(const std::string &args, ChatTab *tab);
 
+        void handleUrl(const std::string &args, ChatTab *tab);
+
+        void handleOpen(const std::string &args, ChatTab *tab);
+
         void handleDump(const std::string &args, ChatTab *tab);
 
         void handleDumpGraphics(const std::string &args, ChatTab *tab);

@@ -202,8 +202,6 @@ int execFileWait(std::string pathName, std::string name,
 bool execFile(std::string pathName, std::string name,
               std::string arg1, std::string arg2)
 {
-    int status;
-
     pid_t pid;
     if ((pid = fork()) == -1)
     {   // fork error

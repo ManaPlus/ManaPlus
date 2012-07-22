@@ -30,6 +30,8 @@
 
 #include "gui/widgets/itemlinkhandler.h"
 
+#include "utils/process.h"
+
 #include "resources/itemdb.h"
 
 #include "debug.h"
@@ -48,23 +50,30 @@ ItemLinkHandler::~ItemLinkHandler()
 void ItemLinkHandler::handleLink(const std::string &link,
                                  gcn::MouseEvent *event A_UNUSED)
 {
-    if (!mItemPopup)
-        return;
-
-    int id = 0;
-    std::stringstream stream;
-    stream << link;
-    stream >> id;
-
-    if (id > 0)
+    if (!strStartWith(link, "http://"))
     {
-        const ItemInfo &itemInfo = ItemDB::get(id);
-        //+++ need add color to links?
-        mItemPopup->setItem(itemInfo, 1, true);
+        if (!mItemPopup)
+            return;
 
-        if (mItemPopup->isVisible())
-            mItemPopup->setVisible(false);
-        else if (viewport)
-            mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        int id = 0;
+        std::stringstream stream;
+        stream << link;
+        stream >> id;
+
+        if (id > 0)
+        {
+            const ItemInfo &itemInfo = ItemDB::get(id);
+            //+++ need add color to links?
+            mItemPopup->setItem(itemInfo, 1, true);
+
+            if (mItemPopup->isVisible())
+                mItemPopup->setVisible(false);
+            else if (viewport)
+                mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+        }
+    }
+    else
+    {
+        openBrowser(link);
     }
 }

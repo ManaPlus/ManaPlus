@@ -69,6 +69,7 @@
 #endif
 
 #include "utils/gettext.h"
+#include "utils/process.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -216,6 +217,10 @@ void CommandHandler::handleCommand(const std::string &command, ChatTab *tab)
         handleDumpTests(args, tab);
     else if (type == "dumpogl")
         handleDumpOGL(args, tab);
+    else if (type == "url")
+        handleUrl(args, tab);
+    else if (type == "open")
+        handleOpen(args, tab);
     else if (tab->handleCommand(type, args))
         ;
     else if (type == "hack")
@@ -1210,6 +1215,28 @@ void CommandHandler::handleError(const std::string &args A_UNUSED,
 {
     int *ptr = nullptr;
     logger->log("test %d", *ptr);
+}
+
+void CommandHandler::handleUrl(const std::string &args,
+                               ChatTab *tab)
+{
+    if (tab)
+    {
+        std::string url = args;
+        if (!strStartWith(url, "http"))
+            url = "http://" + url;
+        std::string str = strprintf("[@@%s|%s@@]", url.c_str(), args.c_str());
+        outStringNormal(tab, str, str);
+    }
+}
+
+void CommandHandler::handleOpen(const std::string &args,
+                                ChatTab *tab A_UNUSED)
+{
+    std::string url = args;
+    if (!strStartWith(url, "http"))
+        url = "http://" + url;
+    openBrowser(url);
 }
 
 #ifdef DEBUG_DUMP_LEAKS1
