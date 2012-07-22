@@ -30,9 +30,8 @@
 #include "debug.h"
 
 Icon::Icon(const std::string &file)
-    : mImage(nullptr)
+    : mImage(ResourceManager::getInstance()->getImage(file))
 {
-    mImage = ResourceManager::getInstance()->getImage(file);
     if (mImage)
         setSize(mImage->mBounds.w, mImage->mBounds.h);
 }

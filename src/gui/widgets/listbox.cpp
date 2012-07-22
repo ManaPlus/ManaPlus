@@ -43,9 +43,9 @@ float ListBox::mAlpha = 1.0;
 
 ListBox::ListBox(gcn::ListModel *listModel):
     gcn::ListBox(listModel),
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
     mDistributeMousePressed(true)
 {
-    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 

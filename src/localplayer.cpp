@@ -92,6 +92,7 @@ extern SkillDialog *skillDialog;
 
 LocalPlayer::LocalPlayer(int id, int subtype):
     Being(id, PLAYER, subtype, nullptr),
+    mUpdateName(true),
     mTargetTime(-1),
     mLastTarget(-1),
     mTarget(nullptr),
@@ -105,6 +106,7 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mPathSetByMouse(false),
     mLocalWalkTime(-1),
     mMessageTime(0),
+    mAwayListener(new AwayListener),
     mAwayDialog(nullptr),
     mAfkTime(0),
     mAwayMode(false),
@@ -135,10 +137,6 @@ LocalPlayer::LocalPlayer(int id, int subtype):
     mLevel = 1;
 
     mAdvanced = true;
-
-    mAwayListener = new AwayListener();
-
-    mUpdateName = true;
 
     mTextColor = &Theme::getThemeColor(Theme::PLAYER);
     if (userPalette)

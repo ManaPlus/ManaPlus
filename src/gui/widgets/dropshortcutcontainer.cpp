@@ -48,12 +48,13 @@
 DropShortcutContainer::DropShortcutContainer():
     ShortcutContainer(),
     mItemClicked(false),
-    mItemMoved(nullptr)
+    mItemMoved(nullptr),
+    mItemPopup(new ItemPopup),
+    mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
+    mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
     addMouseListener(this);
     addWidgetListener(this);
-
-    mItemPopup = new ItemPopup;
 
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml");
@@ -73,8 +74,6 @@ DropShortcutContainer::DropShortcutContainer():
         mBoxHeight = 1;
         mBoxWidth = 1;
     }
-    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
-    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
 }
 
 DropShortcutContainer::~DropShortcutContainer()

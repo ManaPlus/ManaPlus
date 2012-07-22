@@ -63,14 +63,14 @@ BrowserBox::BrowserBox(unsigned int mode, bool opaque):
     mUpdateTime(-1),
     mAlwaysUpdate(true),
     mProcessVersion(false),
-    mEnableImages(false)
+    mEnableImages(false),
+    mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND)),
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT)),
+    mHyperLinkColor(Theme::getThemeColor(Theme::HYPERLINK))
 {
     setFocusable(true);
     addMouseListener(this);
 
-    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND);
-    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
-    mHyperLinkColor = Theme::getThemeColor(Theme::HYPERLINK);
     mColors[RED] = Theme::getThemeColor(Theme::RED);
     mColors[GREEN] = Theme::getThemeColor(Theme::GREEN);
     mColors[BLUE] = Theme::getThemeColor(Theme::BLUE);

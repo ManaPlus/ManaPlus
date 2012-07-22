@@ -57,11 +57,10 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
     mNumeric(false),
     mMinimum(0),
     mMaximum(0),
+    mLoseFocusOnTab(loseFocusOnTab),
     mLastEventPaste(false)
 {
     setFrameSize(2);
-
-    mLoseFocusOnTab = loseFocusOnTab;
 
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 

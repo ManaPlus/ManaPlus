@@ -42,6 +42,7 @@ static const int sliderHeight = 30;
 SliderList::SliderList(gcn::ListModel *listModel,
                        gcn::ActionListener* listener,
                        std::string eventId) :
+    mLabel(new Label),
     mListModel(listModel),
     mOldWidth(0),
     mSelectedIndex(0)
@@ -53,7 +54,6 @@ SliderList::SliderList(gcn::ListModel *listModel,
 
     mButtons[0] = new Button("<", mPrevEventId, this);
     mButtons[1] = new Button(">", mNextEventId, this);
-    mLabel = new Label("");
     add(mButtons[0]);
     add(mLabel);
     add(mButtons[1]);

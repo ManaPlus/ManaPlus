@@ -54,20 +54,20 @@
 
 ChatTab::ChatTab(const std::string &name) :
     Tab(),
+    mTextOutput(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mScrollArea(new ScrollArea(mTextOutput)),
     mAllowHightlight(true),
     mRemoveNames(false),
     mNoAway(false)
 {
     setCaption(name);
 
-    mTextOutput = new BrowserBox(BrowserBox::AUTO_WRAP);
     mTextOutput->setOpaque(false);
     mTextOutput->setMaxRow(config.getIntValue("ChatLogLength"));
     if (chatWindow)
         mTextOutput->setLinkHandler(chatWindow->mItemLinkHandler);
     mTextOutput->setAlwaysUpdate(false);
 
-    mScrollArea = new ScrollArea(mTextOutput);
     mScrollArea->setScrollPolicy(gcn::ScrollArea::SHOW_NEVER,
                                  gcn::ScrollArea::SHOW_ALWAYS);
     mScrollArea->setScrollAmount(0, 1);

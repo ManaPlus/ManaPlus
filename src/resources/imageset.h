@@ -78,8 +78,8 @@ class ImageSet : public Resource
     private:
         std::vector<Image*> mImages;
 
-        int mHeight; /**< Height of the images in the image set. */
         int mWidth;  /**< Width of the images in the image set. */
+        int mHeight; /**< Height of the images in the image set. */
         int mOffsetX;
         int mOffsetY;
 };

@@ -32,6 +32,8 @@
 
 ImageSet::ImageSet(Image *img, int width, int height,
                    int margin, int spacing) :
+    mWidth(width),
+    mHeight(height),
     mOffsetX(0),
     mOffsetY(0)
 {
@@ -47,8 +49,6 @@ ImageSet::ImageSet(Image *img, int width, int height,
             }
         }
     }
-    mWidth = width;
-    mHeight = height;
 }
 
 ImageSet::~ImageSet()

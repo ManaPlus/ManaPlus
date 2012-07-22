@@ -33,6 +33,7 @@
 #include <algorithm>
 #include <cstring>
 #include <time.h>
+#include <iostream>
 
 #include "debug.h"
 
@@ -84,7 +85,7 @@ bool wallpaperCompare(WallpaperData a, WallpaperData b)
 
     return (aa > ab || (aa == ab && a.width > b.width));
 }
-#include <iostream>
+
 void Wallpaper::loadWallpapers()
 {
     wallpaperData.clear();

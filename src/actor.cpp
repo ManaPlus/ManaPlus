@@ -31,7 +31,8 @@
 Actor::Actor():
     mMap(nullptr),
     mYDiff(0)
-{}
+{
+}
 
 Actor::~Actor()
 {

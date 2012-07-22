@@ -50,8 +50,9 @@ Image *AvatarListBox::offlineIcon = nullptr;
 
 AvatarListBox::AvatarListBox(AvatarListModel *model):
     ListBox(model),
-    mShowGender(false),
-    mShowLevel(false)
+    mShowGender(config.getBoolValue("showgender")),
+    mShowLevel(config.getBoolValue("showlevel")),
+    mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT))
 {
     instances++;
 
@@ -63,13 +64,9 @@ AvatarListBox::AvatarListBox(AvatarListModel *model):
 
     setWidth(200);
 
-    mShowGender = config.getBoolValue("showgender");
-    mShowLevel = config.getBoolValue("showlevel");
-
     config.addListener("showgender", this);
     config.addListener("showlevel", this);
 
-    mHighlightColor = Theme::getThemeColor(Theme::HIGHLIGHT);
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
 }
 

@@ -39,13 +39,13 @@
 
 DropShortcut *dropShortcut;
 
-DropShortcut::DropShortcut():
+DropShortcut::DropShortcut() :
     mItemSelected(-1),
-    mItemColorSelected(1)
+    mItemColorSelected(1),
+    mLastDropIndex(0)
 {
     clear();
     load();
-    mLastDropIndex = 0;
 }
 
 DropShortcut::~DropShortcut()

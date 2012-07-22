@@ -46,6 +46,9 @@
 #define SPEECH_MIN_TIME 200
 #define SPEECH_MAX_TIME 800
 
+static const int DEFAULT_BEING_WIDTH = 32;
+static const int DEFAULT_BEING_HEIGHT = 32;
+
 class AnimatedSprite;
 class BeingCacheEntry;
 class Being;
@@ -539,12 +542,14 @@ class Being : public ActorSprite, public ConfigListener
         /**
          * Returns the horizontal size of the current base sprite of the being.
          */
-        virtual int getWidth() const;
+        virtual int getWidth() const
+        { return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH); }
 
         /**
          * Returns the vertical size of the current base sprite of the being.
          */
-        virtual int getHeight() const;
+        virtual int getHeight() const
+        { return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT); }
 
         /**
          * Returns the being's pixel radius used to detect collisions.

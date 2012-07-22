@@ -41,13 +41,12 @@
 
 ParticleEmitter::ParticleEmitter(XmlNodePtr emitterNode, Particle *target,
                                  Map *map, int rotation,
-                                 const std::string& dyePalettes):
+                                 const std::string& dyePalettes) :
+    mParticleTarget(target),
+    mMap(map),
     mOutputPauseLeft(0),
     mParticleImage(nullptr)
 {
-    mMap = map;
-    mParticleTarget = target;
-
     // Initializing default values
     mParticlePosX.set(0.0f);
     mParticlePosY.set(0.0f);

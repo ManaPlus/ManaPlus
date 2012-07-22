@@ -51,15 +51,15 @@ Image::Image(SDL_Surface *image, bool hasAlphaChannel0, uint8_t *alphaChannel):
     mHasAlphaChannel(hasAlphaChannel0),
     mSDLSurface(image),
     mAlphaChannel(alphaChannel),
+    mUseAlphaCache(SDLImageHelper::mEnableAlphaCache),
     mIsAlphaVisible(hasAlphaChannel0),
-    mIsAlphaCalculated(false)
-{
 #ifdef USE_OPENGL
-    mGLImage = 0;
+    mIsAlphaCalculated(false),
+    mGLImage(0)
+#else
+    mIsAlphaCalculated(false)
 #endif
-
-    mUseAlphaCache = SDLImageHelper::mEnableAlphaCache;
-
+{
     mBounds.x = 0;
     mBounds.y = 0;
 

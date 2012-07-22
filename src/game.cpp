@@ -367,6 +367,7 @@ Game::Game():
     mLastAction(0),
     mNextAdjustTime(cur_time + adjustDelay),
     mAdjustLevel(0),
+    mAdjustPerfomance(config.getBoolValue("adjustPerfomance")),
     mLowerCounter(0),
     mPing(0)
 {
@@ -377,8 +378,6 @@ Game::Game():
     mInstance = this;
 
     disconnectedDialog = nullptr;
-
-    mAdjustPerfomance = config.getBoolValue("adjustPerfomance");
 
     // Create the viewport
     viewport = new Viewport;

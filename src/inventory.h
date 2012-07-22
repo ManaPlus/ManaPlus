@@ -161,8 +161,8 @@ class Inventory
         void distributeSlotsChangedEvent();
 
         int mType;
-        Item **mItems;  /**< The holder of items */
         unsigned mSize; /**< The max number of inventory items */
+        Item **mItems;  /**< The holder of items */
         int mUsed;      /**< THe number of slots in use */
 };
 

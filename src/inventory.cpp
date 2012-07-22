@@ -49,9 +49,9 @@ Inventory::Inventory(int type, int size):
     mSize(size == -1 ? static_cast<unsigned>(
           Net::getInventoryHandler()->getSize(type))
           : static_cast<unsigned>(size)),
+    mItems(new Item*[mSize]),
     mUsed(0)
 {
-    mItems = new Item*[mSize];
     std::fill_n(mItems, mSize, static_cast<Item*>(nullptr));
 }
 

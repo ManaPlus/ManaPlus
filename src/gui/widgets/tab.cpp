@@ -68,11 +68,11 @@ Tab::Tab() :
     mTabColor(&Theme::getThemeColor(Theme::TAB)),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
-    mMode(0)
+    mMode(0),
+    mFlashColor(Theme::getThemeColor(Theme::TAB_FLASH)),
+    mPlayerFlashColor(Theme::getThemeColor(Theme::TAB_PLAYER_FLASH))
 {
     init();
-    mFlashColor = Theme::getThemeColor(Theme::TAB_FLASH);
-    mPlayerFlashColor = Theme::getThemeColor(Theme::TAB_PLAYER_FLASH);
 }
 
 Tab::~Tab()

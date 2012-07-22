@@ -80,9 +80,6 @@
 
 #define CACHE_SIZE 50
 
-static const int DEFAULT_BEING_WIDTH = 32;
-static const int DEFAULT_BEING_HEIGHT = 32;
-
 class BeingCacheEntry
 {
     public:
@@ -228,6 +225,8 @@ Being::Being(int id, Type type, uint16_t subtype, Map *map):
     mIsGM(false),
     mAttackRange(1),
     mType(type),
+    mSpeechBubble(new SpeechBubble),
+    mWalkSpeed(Net::getPlayerHandler()->getDefaultWalkSpeed()),
     mX(0),
     mY(0),
     mDamageTaken(0),
@@ -263,10 +262,6 @@ Being::Being(int id, Type type, uint16_t subtype, Map *map):
 
     setMap(map);
     setSubtype(subtype);
-
-    mSpeechBubble = new SpeechBubble;
-
-    mWalkSpeed = Net::getPlayerHandler()->getDefaultWalkSpeed();
 
     if (mType == PLAYER)
         mShowName = config.getBoolValue("visiblenames");
@@ -1501,16 +1496,6 @@ int Being::getOffset(char pos, char neg) const
         offset = -32;
 
     return offset;
-}
-
-int Being::getWidth() const
-{
-    return std::max(CompoundSprite::getWidth(), DEFAULT_BEING_WIDTH);
-}
-
-int Being::getHeight() const
-{
-    return std::max(CompoundSprite::getHeight(), DEFAULT_BEING_HEIGHT);
 }
 
 void Being::updateCoords()

@@ -119,9 +119,9 @@ const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] =
     /* ENEMY2 */      EMOTE | SPEECH_FLOAT | SPEECH_LOG | WHISPER | TRADE
 };
 
-PlayerRelation::PlayerRelation(Relation relation)
+PlayerRelation::PlayerRelation(Relation relation) :
+    mRelation(relation)
 {
-    mRelation = relation;
 }
 
 PlayerRelationsManager::PlayerRelationsManager() :

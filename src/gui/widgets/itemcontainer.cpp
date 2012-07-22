@@ -157,6 +157,7 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mInventory(inventory),
     mGridColumns(1),
     mGridRows(1),
+    mSelImg(Theme::getImageFromThemeXml("item_selection.xml")),
     mSelectedIndex(-1),
     mHighlightedIndex(-1),
     mLastUsedSlot(-1),
@@ -173,11 +174,6 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
     setFocusable(true);
-
-    mSelImg = Theme::getImageFromThemeXml("item_selection.xml");
-    if (!mSelImg)
-        logger->log1("Error: Unable to load selection.png");
-
     addKeyListener(this);
     addMouseListener(this);
     addWidgetListener(this);

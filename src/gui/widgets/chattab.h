@@ -184,8 +184,8 @@ class ChatTab : public Tab
 
         void addRow(std::string &line);
 
-        ScrollArea *mScrollArea;
         BrowserBox *mTextOutput;
+        ScrollArea *mScrollArea;
         bool mAllowHightlight;
         bool mRemoveNames;
         bool mNoAway;

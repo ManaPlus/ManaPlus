@@ -41,7 +41,9 @@
 #include "debug.h"
 
 Desktop::Desktop() :
-    mWallpaper(nullptr)
+    mWallpaper(nullptr),
+    mBackgroundColor(Theme::getThemeColor(Theme::BACKGROUND, 128)),
+    mBackgroundGrayColor(Theme::getThemeColor(Theme::BACKGROUND_GRAY))
 {
     addWidgetListener(this);
 
@@ -62,9 +64,6 @@ Desktop::Desktop() :
     mVersionLabel->setBackgroundColor(
         Theme::getThemeColor(Theme::BACKGROUND, 128));
     add(mVersionLabel, 25, 2);
-
-    mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 128);
-    mBackgroundGrayColor = Theme::getThemeColor(Theme::BACKGROUND_GRAY);
 }
 
 Desktop::~Desktop()

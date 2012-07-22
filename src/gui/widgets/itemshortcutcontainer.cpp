@@ -54,13 +54,14 @@ ItemShortcutContainer::ItemShortcutContainer(unsigned number):
     ShortcutContainer(),
     mItemClicked(false),
     mItemMoved(nullptr),
-    mNumber(number)
+    mNumber(number),
+    mItemPopup(new ItemPopup),
+    mSpellPopup(new SpellPopup),
+    mEquipedColor(Theme::getThemeColor(Theme::ITEM_EQUIPPED)),
+    mUnEquipedColor(Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED))
 {
     addMouseListener(this);
     addWidgetListener(this);
-
-    mItemPopup = new ItemPopup;
-    mSpellPopup = new SpellPopup;
 
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml");
@@ -81,8 +82,6 @@ ItemShortcutContainer::ItemShortcutContainer(unsigned number):
         mBoxWidth = 1;
     }
     setForegroundColor(Theme::getThemeColor(Theme::TEXT));
-    mEquipedColor = Theme::getThemeColor(Theme::ITEM_EQUIPPED);
-    mUnEquipedColor = Theme::getThemeColor(Theme::ITEM_NOT_EQUIPPED);
 }
 
 ItemShortcutContainer::~ItemShortcutContainer()

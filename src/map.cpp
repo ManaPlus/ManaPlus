@@ -131,6 +131,11 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     mLastAScrollX(0.0f), mLastAScrollY(0.0f),
     mOverlayDetail(config.getIntValue("OverlayDetail")),
     mOpacity(config.getFloatValue("guialpha")),
+#ifdef USE_OPENGL
+    mOpenGL(config.getIntValue("opengl")),
+#else
+    mOpenGL(0),
+#endif
     mPvp(0),
     mTilesetsIndexed(false),
     mIndexedTilesets(nullptr),
@@ -165,17 +170,10 @@ Map::Map(int width, int height, int tileWidth, int tileHeight):
     config.addListener("guialpha", this);
     config.addListener("beingopacity", this);
 
-    mOpacity = config.getFloatValue("guialpha");
     if (mOpacity != 1.0f)
         mBeingOpacity = config.getBoolValue("beingopacity");
     else
         mBeingOpacity = false;
-
-#ifdef USE_OPENGL
-    mOpenGL = config.getIntValue("opengl");
-#else
-    mOpenGL = 0;
-#endif
 }
 
 Map::~Map()
