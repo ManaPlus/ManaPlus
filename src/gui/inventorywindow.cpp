@@ -31,6 +31,7 @@
 #include "playerinfo.h"
 #include "units.h"
 
+#include "gui/equipmentwindow.h"
 #include "gui/gui.h"
 #include "gui/itemamountwindow.h"
 #include "gui/outfitwindow.h"
@@ -176,6 +177,7 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         mSplitButton = new Button(_("Split"), "split", this);
         mOutfitButton = new Button(_("Outfits"), "outfit", this);
         mShopButton = new Button(_("Shop"), "shop", this);
+        mEquipmentButton = new Button(_("Equipment"), "equipment", this);
 
         mWeightLabel = new Label(_("Weight:"));
         mWeightBar = new ProgressBar(0.0f, 100, 20, Theme::PROG_WEIGHT);
@@ -193,9 +195,10 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
         place(1, 3, mDropButton);
-        place(8, 3, mSplitButton);
-        place(9, 3, mShopButton);
-        place(10, 3, mOutfitButton);
+        place(8, 2, mSplitButton);
+        place(8, 3, mShopButton);
+        place(9, 3, mOutfitButton);
+        place(10, 3, mEquipmentButton);
 
         updateWeight();
     }
@@ -272,6 +275,15 @@ void InventoryWindow::action(const gcn::ActionEvent &event)
             shopWindow->setVisible(!shopWindow->isVisible());
             if (shopWindow->isVisible())
                 shopWindow->requestMoveToTop();
+        }
+    }
+    else if (event.getId() == "equipment")
+    {
+        if (equipmentWindow)
+        {
+            equipmentWindow->setVisible(!equipmentWindow->isVisible());
+            if (equipmentWindow->isVisible())
+                equipmentWindow->requestMoveToTop();
         }
     }
     else if (event.getId() == "close")
