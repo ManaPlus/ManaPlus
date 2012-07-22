@@ -160,6 +160,11 @@ static SetupActionData setupActionData0[] =
         "",
     },
     {
+        N_("Return to safe video mode"),
+        Input::KEY_SAFE_VIDEO,
+        "",
+    },
+    {
         "",
         Input::KEY_NO_VALUE,
         ""

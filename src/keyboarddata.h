@@ -1910,6 +1910,13 @@ static KeyData const keyData[Input::KEY_TOTAL] = {
         Input::GRP_GUICHAN,
         nullptr,
         Input::KEY_NO_VALUE, 50,
+        COND_DEFAULT},
+    {"keySafeVideo",
+        INPUT_KEYBOARD, SDLK_KP_MINUS,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
+        Input::GRP_DEFAULT,
+        &ActionManager::safeVideoMode,
+        Input::KEY_NO_VALUE, 50,
         COND_DEFAULT}
 };
 

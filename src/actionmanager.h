@@ -94,6 +94,7 @@ namespace ActionManager
     decHandler(targetPlayer);
     decHandler(targetMonster);
     decHandler(targetNPC);
+    decHandler(safeVideoMode);
 
     decHandler(hideWindows);
     decHandler(helpWindowShow);

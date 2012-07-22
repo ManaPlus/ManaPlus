@@ -23,6 +23,7 @@
 #include "dropshortcut.h"
 #include "emoteshortcut.h"
 #include "game.h"
+#include "graphics.h"
 #include "inputevent.h"
 #include "itemshortcut.h"
 #include "inputmanager.h"
@@ -1027,6 +1028,14 @@ impHandler0(targetMonster)
 impHandler0(targetNPC)
 {
     return setTarget(ActorSprite::NPC);
+}
+
+impHandler0(safeVideoMode)
+{
+    if (mainGraphics)
+        mainGraphics->setFullscreen(false);
+
+    return true;
 }
 
 }
