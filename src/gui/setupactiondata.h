@@ -403,6 +403,11 @@ static SetupActionData setupActionData2[] =
         "",
     },
     {
+        N_("Quests Window"),
+        Input::KEY_WINDOW_QUESTS,
+        "",
+    },
+    {
         N_("Previous Social Tab"),
         Input::KEY_PREV_SOCIAL_TAB,
         "",

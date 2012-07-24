@@ -18,35 +18,42 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_NAMESMODEL_H
-#define GUI_WIDGETS_NAMESMODEL_H
+#ifndef GUI_WIDGETS_EXTENDEDNAMESMODEL_H
+#define GUI_WIDGETS_EXTENDEDNAMESMODEL_H
 
 #include "utils/stringvector.h"
 
-#include <guichan/listmodel.hpp>
+#include "gui/widgets/extendedlistmodel.h"
 
-class NamesModel : public gcn::ListModel
+#include "resources/image.h"
+
+class ExtendedNamesModel : public ExtendedListModel
 {
     public:
-        NamesModel();
+        ExtendedNamesModel();
 
-        virtual ~NamesModel();
+        virtual ~ExtendedNamesModel();
 
         virtual int getNumberOfElements();
 
         virtual std::string getElementAt(int i);
 
+        virtual Image *getImageAt(int i);
+
         StringVect &getNames()
         { return mNames; }
+
+        std::vector<Image*> &getImages()
+        { return mImages; }
 
         size_t size()
         { return mNames.size(); }
 
-        void clear()
-        { mNames.clear(); }
+        void clear();
 
     protected:
         StringVect mNames;
+        std::vector<Image*> mImages;
 };
 
 #endif

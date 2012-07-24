@@ -73,6 +73,7 @@ class GeneralHandler : public MessageHandler, public Net::GeneralHandler,
         MessageHandlerPtr mPlayerHandler;
         MessageHandlerPtr mSpecialHandler;
         MessageHandlerPtr mTradeHandler;
+        MessageHandlerPtr mQuestHandler;
 };
 
 } // namespace TmwAthena

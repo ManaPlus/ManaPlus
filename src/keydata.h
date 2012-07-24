@@ -134,6 +134,7 @@ namespace Input
         KEY_WINDOW_BOT_CHECKER,
         KEY_WINDOW_ONLINE,
         KEY_WINDOW_DIDYOUKNOW,
+        KEY_WINDOW_QUESTS,
         KEY_PREV_SOCIAL_TAB,
         KEY_NEXT_SOCIAL_TAB,
         KEY_EMOTE,

@@ -337,6 +337,8 @@ enum
 #define SMSG_ONLINE_LIST             0x0211
 #define SMSG_NPC_COMMAND             0x0212
 #define CMSG_SET_STATUS              0x0213
+#define CMSG_QUEST_SET_VAR           0x0214
+#define CMSG_QUEST_PLAYER_VARS       0x0215
 
 #define CMSG_SEND_CLIENT_INFO        0x7533
 #define SMSG_UPDATE_HOST2            0x7534

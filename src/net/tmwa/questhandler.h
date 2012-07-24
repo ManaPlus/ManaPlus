@@ -18,35 +18,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_NAMESMODEL_H
-#define GUI_WIDGETS_NAMESMODEL_H
+#ifndef NET_TA_QUESTHANDLER_H
+#define NET_TA_QUESTHANDLER_H
 
-#include "utils/stringvector.h"
+#include "net/net.h"
+#include "net/npchandler.h"
 
-#include <guichan/listmodel.hpp>
+#include "net/ea/npchandler.h"
 
-class NamesModel : public gcn::ListModel
+#include "net/tmwa/messagehandler.h"
+
+#include <map>
+
+namespace TmwAthena
+{
+
+class QuestHandler : public MessageHandler
 {
     public:
-        NamesModel();
+        QuestHandler();
 
-        virtual ~NamesModel();
+        void handleMessage(Net::MessageIn &msg);
 
-        virtual int getNumberOfElements();
+        void processSetQuestVar(Net::MessageIn &msg);
 
-        virtual std::string getElementAt(int i);
-
-        StringVect &getNames()
-        { return mNames; }
-
-        size_t size()
-        { return mNames.size(); }
-
-        void clear()
-        { mNames.clear(); }
-
-    protected:
-        StringVect mNames;
+        void processPlayerQuests(Net::MessageIn &msg);
 };
 
-#endif
+} // namespace TmwAthena
+
+#endif // NET_TA_QUESTHANDLER_H

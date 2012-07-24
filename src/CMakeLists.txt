@@ -130,6 +130,8 @@ SET(SRCS
     gui/widgets/extendedlistbox.cpp
     gui/widgets/extendedlistbox.h
     gui/widgets/extendedlistmodel.h
+    gui/widgets/extendednamesmodel.cpp
+    gui/widgets/extendednamesmodel.h
     gui/widgets/flowcontainer.cpp
     gui/widgets/flowcontainer.h
     gui/widgets/guildchattab.cpp
@@ -294,6 +296,8 @@ SET(SRCS
     gui/palette.h
     gui/popupmenu.cpp
     gui/popupmenu.h
+    gui/questswindow.cpp
+    gui/questswindow.h
     gui/quitdialog.cpp
     gui/quitdialog.h
     gui/registerdialog.cpp
@@ -809,6 +813,8 @@ SET(SRCS_TMWA
     net/tmwa/playerhandler.cpp
     net/tmwa/playerhandler.h
     net/tmwa/protocol.h
+    net/tmwa/questhandler.cpp
+    net/tmwa/questhandler.h
     net/tmwa/specialhandler.cpp
     net/tmwa/specialhandler.h
     net/tmwa/tradehandler.cpp

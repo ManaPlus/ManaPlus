@@ -53,6 +53,7 @@
 #include "gui/socialwindow.h"
 #include "gui/statuswindow.h"
 #include "gui/viewport.h"
+#include "gui/questswindow.h"
 #include "gui/quitdialog.h"
 #include "gui/whoisonline.h"
 
@@ -659,6 +660,8 @@ impHandler0(hideWindows)
         botCheckerWindow->setVisible(false);
     if (socialWindow)
         socialWindow->setVisible(false);
+    if (questsWindow)
+        questsWindow->setVisible(false);
     return true;
 }
 
@@ -799,6 +802,12 @@ impHandler0(whoIsOnlineWindowShow)
 impHandler0(didYouKnowWindowShow)
 {
     showHideWindow(didYouKnowWindow);
+    return true;
+}
+
+impHandler0(questsWindowShow)
+{
+    showHideWindow(questsWindow);
     return true;
 }
 

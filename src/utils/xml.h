@@ -32,6 +32,7 @@
 #define XmlNodePtr xmlNodePtr
 #define xmlNameEqual(node, str) xmlStrEqual((node)->name, BAD_CAST (str))
 #define XmlTextWriterPtr xmlTextWriterPtr
+#define xmlTypeEqual(node, typ) ((node)->type == (typ))
 
 /**
  * XML helper functions.

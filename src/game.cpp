@@ -64,6 +64,7 @@
 #include "gui/textdialog.h"
 #include "gui/tradewindow.h"
 #include "gui/viewport.h"
+#include "gui/questswindow.h"
 #include "gui/windowmenu.h"
 #include "gui/whoisonline.h"
 
@@ -137,6 +138,7 @@ DidYouKnowWindow *didYouKnowWindow = nullptr;
 KillStats *killStats = nullptr;
 BotCheckerWindow *botCheckerWindow = nullptr;
 SocialWindow *socialWindow = nullptr;
+QuestsWindow *questsWindow = nullptr;
 WindowMenu *windowMenu = nullptr;
 
 ActorSpriteManager *actorSpriteManager = nullptr;
@@ -246,10 +248,11 @@ static void createGuiWindows()
             new SpellShortcutContainer(f));
     }
 
-    botCheckerWindow = new BotCheckerWindow();
-    whoIsOnline = new WhoIsOnline();
+    botCheckerWindow = new BotCheckerWindow;
+    whoIsOnline = new WhoIsOnline;
     killStats = new KillStats;
-    socialWindow = new SocialWindow();
+    socialWindow = new SocialWindow;
+    questsWindow = new QuestsWindow;
 
     localChatTab = new ChatTab(_("General"));
     localChatTab->setAllowHighlight(false);
@@ -343,6 +346,7 @@ static void destroyGuiWindows()
     del_0(dropShortcutWindow);
     del_0(spellShortcutWindow);
     del_0(botCheckerWindow);
+    del_0(questsWindow);
     del_0(whoIsOnline);
     del_0(killStats);
     del_0(didYouKnowWindow);
