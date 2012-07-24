@@ -230,7 +230,7 @@ static void createGuiWindows()
     }
 
     emoteShortcutWindow = new ShortcutWindow("EmoteShortcut",
-        new EmoteShortcutContainer, "emotes.xml");
+        new EmoteShortcutContainer, "emotes.xml", 130, 480);
     outfitWindow = new OutfitWindow();
 #ifdef MANASERV_SUPPORT
     specialsWindow = new SpecialsWindow();
