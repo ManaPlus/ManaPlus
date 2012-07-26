@@ -37,11 +37,13 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
-#include "gui/widgets/listbox.h"
+#include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/playerbox.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textbox.h"
 #include "gui/widgets/textfield.h"
+
+#include "resources/resourcemanager.h"
 
 #include "net/net.h"
 #include "net/npchandler.h"
@@ -103,12 +105,16 @@ NpcDialog::NpcDialog(int npcId) :
     mScrollArea->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
     // Setup listbox
-    mItemList = new ListBox(this);
+    mItemList = new ExtendedListBox(this);
     mItemList->setWrappingEnabled(true);
     mItemList->setActionEventId("ok");
     mItemList->addActionListener(this);
     mItemList->setDistributeMousePressed(false);
     mItemList->setFont(gui->getNpcFont());
+    if (gui->getNpcFont()->getHeight() < 20)
+        mItemList->setRowHeight(20);
+    else
+        mItemList->setRowHeight(gui->getNpcFont()->getHeight());
 
     setContentSize(260, 175);
 
@@ -200,6 +206,15 @@ NpcDialog::~NpcDialog()
     delete mListScrollArea;
     mListScrollArea = nullptr;
 
+    for (std::vector<Image *>::iterator it = mImages.begin(),
+         it_end = mImages.end(); it != it_end; ++ it)
+    {
+        if (*it)
+            (*it)->decRef();
+    }
+
+    mImages.clear();
+
     instances.remove(this);
 }
 
@@ -242,7 +257,6 @@ void NpcDialog::showCloseButton()
 
 void NpcDialog::action(const gcn::ActionEvent &event)
 {
-    logger->log(event.getId());
     if (event.getId() == "ok")
     {
         if (mActionState == NPC_ACTION_NEXT)
@@ -355,9 +369,21 @@ std::string NpcDialog::getElementAt(int i)
     return mItems[i];
 }
 
+const Image *NpcDialog::getImageAt(int i)
+{
+    return mImages[i];
+}
+
 void NpcDialog::choiceRequest()
 {
     mItems.clear();
+    for (std::vector<Image *>::iterator it = mImages.begin(),
+         it_end = mImages.end(); it != it_end; ++ it)
+    {
+        if (*it)
+            (*it)->decRef();
+    }
+    mImages.clear();
     mActionState = NPC_ACTION_INPUT;
     mInputState = NPC_INPUT_LIST;
     buildLayout();
@@ -366,15 +392,31 @@ void NpcDialog::choiceRequest()
 void NpcDialog::addChoice(const std::string &choice)
 {
     mItems.push_back(choice);
+    mImages.push_back(nullptr);
 }
 
 void NpcDialog::parseListItems(const std::string &itemString)
 {
     std::istringstream iss(itemString);
+    ResourceManager *resman = ResourceManager::getInstance();
 
     std::string tmp;
     while (getline(iss, tmp, ':'))
-        mItems.push_back(tmp);
+    {
+        const size_t pos = tmp.find("|");
+        if (pos == std::string::npos)
+        {
+            mItems.push_back(tmp);
+            mImages.push_back(nullptr);
+        }
+        else
+        {
+            mItems.push_back(tmp.substr(pos + 1));
+            Image *img = resman->getImage(paths.getStringValue("guiIcons")
+                + tmp.substr(0, pos) + ".png");
+            mImages.push_back(img);
+        }
+    }
 
     if (!mItems.empty())
     {

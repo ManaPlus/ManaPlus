@@ -310,6 +310,7 @@ DefaultsData* getPathsDefaults()
     AddDEF(pathsData, "unknownItemFile", "unknown-item.png");
     AddDEF(pathsData, "sprites", "graphics/sprites/");
     AddDEF(pathsData, "spriteErrorFile", "error.xml");
+    AddDEF(pathsData, "guiIcons", "graphics/guiicons/");
 
     AddDEF(pathsData, "particles", "graphics/particles/");
     AddDEF(pathsData, "levelUpEffectFile", "levelup.particle.xml");

@@ -25,6 +25,7 @@
 
 #include "configlistener.h"
 
+#include "gui/widgets/extendedlistmodel.h"
 #include "gui/widgets/window.h"
 
 #include "utils/stringvector.h"
@@ -38,7 +39,7 @@ class Being;
 class BrowserBox;
 class ItemLinkHandler;
 class IntTextField;
-class ListBox;
+class ExtendedListBox;
 class PlayerBox;
 class TextBox;
 class TextField;
@@ -55,7 +56,7 @@ namespace gcn
  * \ingroup Interface
  */
 class NpcDialog : public Window, public gcn::ActionListener,
-                  public gcn::ListModel, public ConfigListener
+                  public ExtendedListModel, public ConfigListener
 {
     public:
         /**
@@ -117,6 +118,11 @@ class NpcDialog : public Window, public gcn::ActionListener,
          * Returns the name of item number i of the choices list.
          */
         std::string getElementAt(int i);
+
+        /**
+         * Returns the image of item number i of the choices list.
+         */
+        const Image *getImageAt(int i);
 
         /**
          * Makes this dialog request a choice selection from the user.
@@ -222,9 +228,10 @@ class NpcDialog : public Window, public gcn::ActionListener,
         std::string mNewText;
 
         // Used for choice input
-        ListBox *mItemList;
+        ExtendedListBox *mItemList;
         gcn::ScrollArea *mListScrollArea;
         StringVect mItems;
+        std::vector<Image *> mImages;
         ItemLinkHandler *mItemLinkHandler;
 
         // Used for string and integer input
