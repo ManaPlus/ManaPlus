@@ -5,6 +5,8 @@ fonts_DATA =				\
 	dejavusans-bold.ttf		\
 	dejavusansmono.ttf			\
 	dejavusansmono-bold.ttf		\
+	dejavuserifcondensed.ttf	\
+	dejavuserifcondensed-bold.ttf	\
 	liberationsans.ttf		\
 	liberationsans-bold.ttf	\
 	liberationsansmono.ttf		\
