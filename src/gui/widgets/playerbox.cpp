@@ -36,34 +36,43 @@
 
 #include "debug.h"
 
-int PlayerBox::instances = 0;
-float PlayerBox::mAlpha = 1.0;
-ImageRect PlayerBox::background;
-
-PlayerBox::PlayerBox(Being *being):
-    mBeing(being)
+PlayerBox::PlayerBox(Being *being, std::string skin):
+    mBeing(being),
+    mAlpha(1.0)
 {
-    setFrameSize(2);
+    init(skin);
+}
 
-    if (instances == 0)
-    {
-        if (Theme::instance())
-        {
-            Theme::instance()->loadRect(background,
-                "playerbox_background.xml");
-        }
-    }
-
-    instances++;
+PlayerBox::PlayerBox(std::string skin):
+    mBeing(nullptr),
+    mAlpha(1.0)
+{
+    init(skin);
 }
 
 PlayerBox::~PlayerBox()
 {
-    instances--;
-    if (instances == 0 && Theme::instance())
-        Theme::instance()->unloadRect(background);
+    if (Theme::instance())
+        Theme::instance()->unloadRect(mBackground);
 
     mBeing = nullptr;
+}
+
+void PlayerBox::init(std::string skin)
+{
+    setFrameSize(2);
+
+    if (Theme::instance())
+    {
+        if (skin.empty())
+            skin = "playerbox_background.xml";
+        Theme::instance()->loadRect(mBackground, skin);
+    }
+    else
+    {
+        for (int f = 0; f < 9; f ++)
+            mBackground.grid[f] = nullptr;
+    }
 }
 
 void PlayerBox::draw(gcn::Graphics *graphics)
@@ -81,8 +90,8 @@ void PlayerBox::draw(gcn::Graphics *graphics)
     {
         for (int a = 0; a < 9; a++)
         {
-            if (background.grid[a])
-                background.grid[a]->setAlpha(Client::getGuiAlpha());
+            if (mBackground.grid[a])
+                mBackground.grid[a]->setAlpha(Client::getGuiAlpha());
         }
     }
 }
@@ -94,5 +103,5 @@ void PlayerBox::drawFrame(gcn::Graphics *graphics)
     w = getWidth() + bs * 2;
     h = getHeight() + bs * 2;
 
-    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, background);
+    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, mBackground);
 }

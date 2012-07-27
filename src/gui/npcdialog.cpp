@@ -73,7 +73,7 @@ NpcDialog::NpcDialog(int npcId) :
     mCameraMode(-1),
     mCameraX(0),
     mCameraY(0),
-    mPlayerBox(new PlayerBox),
+    mPlayerBox(new PlayerBox(nullptr)),
     mAvatarBeing(nullptr),
     mShowAvatar(false)
 {

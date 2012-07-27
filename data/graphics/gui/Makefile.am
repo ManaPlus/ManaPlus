@@ -9,6 +9,7 @@ gui_DATA =				\
 	button_highlighted.xml	\
 	button_pressed.xml		\
 	buttonplay.png			\
+	charcreate_playerbox.xml	\
 	checkbox.xml			\
 	circle-off.xml			\
 	circle-on.xml		\
@@ -17,6 +18,7 @@ gui_DATA =				\
 	dropdown_background.xml		\
 	dropdown_pressed.xml		\
 	emote_selection.xml	\
+	equipment_playerbox.xml	\
 	equipmentbox.png	\
 	item_selection.xml	\
 	item_shortcut_background.xml	\

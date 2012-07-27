@@ -25,6 +25,8 @@
 
 #include <guichan/widgets/scrollarea.hpp>
 
+#include "graphics.h"
+
 #include "localconsts.h"
 
 class Being;
@@ -42,12 +44,16 @@ class PlayerBox : public gcn::ScrollArea
          * Constructor. Takes the initial player character that this box should
          * display, which defaults to <code>NULL</code>.
          */
-        PlayerBox(Being *being = nullptr);
+        PlayerBox(Being *being, std::string skin = "");
+
+        PlayerBox(std::string skin = "");
 
         /**
          * Destructor.
          */
         ~PlayerBox();
+
+        void init(std::string skin);
 
         /**
          * Sets a new player character to be displayed by this box. Setting the
@@ -73,9 +79,8 @@ class PlayerBox : public gcn::ScrollArea
     private:
         Being *mBeing; /**< The character used for display */
 
-        static float mAlpha;
-        static int instances;
-        static ImageRect background;
+        float mAlpha;
+        ImageRect mBackground;
 };
 
 #endif

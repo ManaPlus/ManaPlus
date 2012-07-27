@@ -147,7 +147,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *parent, int slot):
     mFemale->addActionListener(this);
     mOther->addActionListener(this);
 
-    mPlayerBox = new PlayerBox(mPlayer);
+    mPlayerBox = new PlayerBox(mPlayer, "charcreate_playerbox.xml");
     mPlayerBox->setWidth(74);
 
     mNameField->setActionEventId("create");

@@ -74,7 +74,7 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
         setupWindow->registerWindowForReset(this);
 
     // Control that shows the Player
-    mPlayerBox = new PlayerBox;
+    mPlayerBox = new PlayerBox("equipment_playerbox.xml");
     mPlayerBox->setDimension(gcn::Rectangle(50, 80, 74, 168));
     mPlayerBox->setPlayer(being);
 
