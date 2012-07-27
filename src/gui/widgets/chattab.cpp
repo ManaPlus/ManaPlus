@@ -55,7 +55,7 @@
 ChatTab::ChatTab(const std::string &name) :
     Tab(),
     mTextOutput(new BrowserBox(BrowserBox::AUTO_WRAP)),
-    mScrollArea(new ScrollArea(mTextOutput)),
+    mScrollArea(new ScrollArea(mTextOutput, false)),
     mAllowHightlight(true),
     mRemoveNames(false),
     mNoAway(false)
@@ -71,7 +71,6 @@ ChatTab::ChatTab(const std::string &name) :
     mScrollArea->setScrollPolicy(gcn::ScrollArea::SHOW_NEVER,
                                  gcn::ScrollArea::SHOW_ALWAYS);
     mScrollArea->setScrollAmount(0, 1);
-    mScrollArea->setOpaque(false);
 
     if (chatWindow)
         chatWindow->addTab(this);

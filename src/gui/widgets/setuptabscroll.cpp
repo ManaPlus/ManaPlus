@@ -30,10 +30,9 @@
 SetupTabScroll::SetupTabScroll() :
     SetupTab(),
     mContainer(new VertContainer(25, false, 8)),
-    mScroll(new ScrollArea(mContainer)),
+    mScroll(new ScrollArea(mContainer, false)),
     mPreferredFirstItemSize(200)
 {
-    mScroll->setOpaque(false);
     mScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
 }

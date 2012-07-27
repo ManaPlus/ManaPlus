@@ -46,14 +46,14 @@ class ScrollArea : public gcn::ScrollArea, public gcn::WidgetListener
          * Constructor that takes no content. Needed for use with the DropDown
          * class.
          */
-        ScrollArea();
+        ScrollArea(bool opaque = true);
 
         /**
          * Constructor.
          *
          * @param content the initial content to show in the scroll area
          */
-        ScrollArea(gcn::Widget *content);
+        ScrollArea(gcn::Widget *content, bool opaque = true);
 
         /**
          * Destructor. Also deletes the content.

@@ -394,8 +394,7 @@ void SkillDialog::loadSkills(const std::string &file)
             listbox = new SkillListBox(model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
-            scroll = new ScrollArea(listbox);
-            scroll->setOpaque(false);
+            scroll = new ScrollArea(listbox, false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 
@@ -458,8 +457,7 @@ void SkillDialog::loadSkills(const std::string &file)
             listbox = new SkillListBox(model);
             listbox->setActionEventId("sel");
             listbox->addActionListener(this);
-            scroll = new ScrollArea(listbox);
-            scroll->setOpaque(false);
+            scroll = new ScrollArea(listbox, false);
             scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
             scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
 

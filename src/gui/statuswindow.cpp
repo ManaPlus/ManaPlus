@@ -227,15 +227,13 @@ StatusWindow::StatusWindow():
     // ----------------------
 
     mAttrCont = new VertContainer(32);
-    mAttrScroll = new ScrollArea(mAttrCont);
-    mAttrScroll->setOpaque(false);
+    mAttrScroll = new ScrollArea(mAttrCont, false);
     mAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     place(0, 3, mAttrScroll, 5, 3);
 
     mDAttrCont = new VertContainer(32);
-    mDAttrScroll = new ScrollArea(mDAttrCont);
-    mDAttrScroll->setOpaque(false);
+    mDAttrScroll = new ScrollArea(mDAttrCont, false);
     mDAttrScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mDAttrScroll->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     place(6, 3, mDAttrScroll, 5, 3);

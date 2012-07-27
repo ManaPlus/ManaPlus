@@ -49,14 +49,14 @@ static std::string const buttonFiles[2] =
     "scrollbuttons_pressed.xml"
 };
 
-ScrollArea::ScrollArea():
+ScrollArea::ScrollArea(bool opaque):
     gcn::ScrollArea(),
     mX(0),
     mY(0),
     mClickX(0),
     mClickY(0),
     mHasMouse(false),
-    mOpaque(true),
+    mOpaque(opaque),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mXOffset(0),
@@ -68,14 +68,14 @@ ScrollArea::ScrollArea():
     init();
 }
 
-ScrollArea::ScrollArea(gcn::Widget *widget):
+ScrollArea::ScrollArea(gcn::Widget *widget, bool opaque):
     gcn::ScrollArea(widget),
     mX(0),
     mY(0),
     mClickX(0),
     mClickY(0),
     mHasMouse(false),
-    mOpaque(true),
+    mOpaque(opaque),
     mVertexes(new GraphicsVertexes()),
     mRedraw(true),
     mXOffset(0),
@@ -114,8 +114,7 @@ ScrollArea::~ScrollArea()
 
 void ScrollArea::init()
 {
-    // Draw background by default
-    setOpaque(true);
+    setOpaque(mOpaque);
 
     setUpButtonScrollAmount(2);
     setDownButtonScrollAmount(2);
