@@ -56,12 +56,18 @@ struct QuestItemText
 
 struct QuestItem
 {
+    QuestItem() :
+        var(0), completeFlag(-1)
+    {
+    }
+
     int var;
     std::string name;
     std::string group;
     std::set<int> incomplete;
     std::set<int> complete;
     std::vector<QuestItemText> texts;
+    int completeFlag;
 };
 
 class QuestsModel : public ExtendedNamesModel
@@ -76,7 +82,7 @@ class QuestsModel : public ExtendedNamesModel
 };
 
 QuestsWindow::QuestsWindow() :
-    Window(_("Quests Window"), false, nullptr, "quest.xml"),
+    Window(_("Quests"), false, nullptr, "quest.xml"),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(mQuestsModel)),
     mQuestScrollArea(new ScrollArea(mQuestsListBox)),
@@ -90,6 +96,7 @@ QuestsWindow::QuestsWindow() :
     setResizable(true);
     setCloseButton(true);
     setStickyButtonLock(true);
+    setSaveVisible(true);
 
     setDefaultSize(400, 350, ImageRect::RIGHT);
     setMinWidth(400);
@@ -114,11 +121,11 @@ QuestsWindow::QuestsWindow() :
     placer(4, 0, mTextScrollArea, 4, 3).setPadding(3);
     placer(7, 3, mCloseButton);
 
-    loadWindowState();
-    loadXml();
-
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
+
+    loadWindowState();
+    loadXml();
 }
 
 QuestsWindow::~QuestsWindow()
@@ -236,8 +243,12 @@ void QuestsWindow::updateQuest(int var, int val)
 void QuestsWindow::rebuild()
 {
     mQuestsModel->clear();
+    mQuestLinks.clear();
     StringVect &names = mQuestsModel->getNames();
     std::vector<Image*> &images = mQuestsModel->getImages();
+    std::vector<QuestItem*> complete;
+    std::vector<QuestItem*> incomplete;
+    int updatedQuest = -1;
 
     for (std::map<int, int>::const_iterator it = mVars.begin(),
          it_end = mVars.end(); it != it_end; ++ it)
@@ -251,35 +262,65 @@ void QuestsWindow::rebuild()
             if (!*it2)
                 continue;
             QuestItem *quest = *it2;
+            // complete quest
             if (quest->complete.find(val) != quest->complete.end())
-            {
-                mQuestLinks.push_back(quest);
-                names.push_back(quest->name);
-                if (mCompleteIcon)
-                {
-                    mCompleteIcon->incRef();
-                    images.push_back(mCompleteIcon);
-                }
-                else
-                {
-                    images.push_back(nullptr);
-                }
-            }
+                complete.push_back(quest);
+            // incomplete quest
             else if (quest->incomplete.find(val) != quest->incomplete.end())
-            {
-                mQuestLinks.push_back(quest);
-                names.push_back(quest->name);
-                if (mIncompleteIcon)
-                {
-                    mIncompleteIcon->incRef();
-                    images.push_back(mIncompleteIcon);
-                }
-                else
-                {
-                    images.push_back(nullptr);
-                }
-            }
+                incomplete.push_back(quest);
         }
+    }
+
+    int k = 0;
+
+    for (std::vector<QuestItem*>::const_iterator it = complete.begin(),
+        it_end = complete.end(); it != it_end; ++ it, k ++)
+    {
+        QuestItem *quest = *it;
+        if (quest->completeFlag == 0)
+            updatedQuest = k;
+        quest->completeFlag = 1;
+        mQuestLinks.push_back(quest);
+        names.push_back(quest->name);
+        if (mCompleteIcon)
+        {
+            mCompleteIcon->incRef();
+            images.push_back(mCompleteIcon);
+        }
+        else
+        {
+            images.push_back(nullptr);
+        }
+    }
+
+    for (std::vector<QuestItem*>::const_iterator it = incomplete.begin(),
+        it_end = incomplete.end(); it != it_end; ++ it, k ++)
+    {
+        QuestItem *quest = *it;
+        if (quest->completeFlag == -1)
+            updatedQuest = k;
+        quest->completeFlag = 0;
+        mQuestLinks.push_back(quest);
+        names.push_back(quest->name);
+        if (mIncompleteIcon)
+        {
+            mIncompleteIcon->incRef();
+            images.push_back(mIncompleteIcon);
+        }
+        else
+        {
+            images.push_back(nullptr);
+        }
+    }
+
+    if (updatedQuest == -1)
+        updatedQuest = mQuestLinks.size() - 1;
+    else if (updatedQuest >= static_cast<int>(mQuestLinks.size()))
+        updatedQuest = mQuestLinks.size() - 1;
+    if (updatedQuest >= 0)
+    {
+        mQuestsListBox->setSelected(updatedQuest);
+        showQuest(mQuestLinks[updatedQuest]);
     }
 }
 
