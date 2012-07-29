@@ -35,6 +35,7 @@ src/gui/npcpostdialog.cpp
 src/gui/okdialog.cpp
 src/gui/outfitwindow.cpp
 src/gui/popupmenu.cpp
+src/gui/questswindow.cpp
 src/gui/quitdialog.cpp
 src/gui/registerdialog.cpp
 src/gui/sdlinput.cpp
@@ -70,6 +71,7 @@ src/gui/whoisonline.cpp
 src/gui/widgets/battletab.cpp
 src/gui/widgets/channeltab.cpp
 src/gui/widgets/chattab.cpp
+src/gui/widgets/extendednamesmodel.cpp
 src/gui/widgets/guildchattab.cpp
 src/gui/widgets/namesmodel.cpp
 src/gui/widgets/setupitem.cpp
