@@ -65,6 +65,8 @@ void ExtendedNamesModel::clear()
     for (std::vector<Image*>::iterator it = mImages.begin(),
          it_end = mImages.end(); it != it_end; ++ it)
     {
-        (*it)->decRef();
+        if (*it)
+            (*it)->decRef();
     }
+    mImages.clear();
 }

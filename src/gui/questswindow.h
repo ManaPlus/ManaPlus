@@ -49,6 +49,8 @@ class QuestsWindow : public Window, public gcn::ActionListener
          */
         QuestsWindow();
 
+        ~QuestsWindow();
+
         /**
          * Called when receiving actions from the widgets.
          */
@@ -74,6 +76,8 @@ class QuestsWindow : public Window, public gcn::ActionListener
         std::map<int, int> mVars;
         std::map<int, std::vector<QuestItem*>> mQuests;
         std::vector<QuestItem*> mQuestLinks;
+        Image *mCompleteIcon;
+        Image *mIncompleteIcon;
 };
 
 extern QuestsWindow *questsWindow;

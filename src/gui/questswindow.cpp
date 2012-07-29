@@ -23,6 +23,8 @@
 #include "logger.h"
 
 #include "gui/gui.h"
+#include "gui/sdlfont.h"
+#include "gui/theme.h"
 
 #include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
@@ -74,7 +76,15 @@ class QuestsModel : public ExtendedNamesModel
 };
 
 QuestsWindow::QuestsWindow() :
-    Window(_("Quests Window"), false, nullptr, "quest.xml")
+    Window(_("Quests Window"), false, nullptr, "quest.xml"),
+    mQuestsModel(new QuestsModel),
+    mQuestsListBox(new ExtendedListBox(mQuestsModel)),
+    mQuestScrollArea(new ScrollArea(mQuestsListBox)),
+    mText(new BrowserBox(BrowserBox::AUTO_WRAP)),
+    mTextScrollArea(new ScrollArea(mText)),
+    mCloseButton(new Button(_("Close"), "close", this)),
+    mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml")),
+    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml"))
 {
     setWindowName("Quests");
     setResizable(true);
@@ -85,20 +95,17 @@ QuestsWindow::QuestsWindow() :
     setMinWidth(400);
     setMinHeight(350);
 
-    mQuestsModel = new QuestsModel;
-    mQuestsListBox = new ExtendedListBox(mQuestsModel);
     mQuestsListBox->setActionEventId("select");
     mQuestsListBox->addActionListener(this);
 
-    mQuestScrollArea = new ScrollArea(mQuestsListBox);
     mQuestScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    mText = new BrowserBox;
     mText->setOpaque(false);
-    mTextScrollArea = new ScrollArea(mText);
     mTextScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);
-
-    mCloseButton = new Button(_("Close"), "close", this);
+    if (gui->getNpcFont()->getHeight() < 20)
+        mQuestsListBox->setRowHeight(20);
+    else
+        mQuestsListBox->setRowHeight(gui->getNpcFont()->getHeight());
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
@@ -112,6 +119,35 @@ QuestsWindow::QuestsWindow() :
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
+}
+
+QuestsWindow::~QuestsWindow()
+{
+    delete mQuestsModel;
+    mQuestsModel = nullptr;
+
+    for (std::map<int, std::vector<QuestItem*>>::iterator it = mQuests.begin(),
+         it_end = mQuests.end(); it != it_end; ++ it)
+    {
+        std::vector<QuestItem*> &quests = (*it).second;
+        for (std::vector<QuestItem*>::iterator it2 = quests.begin(),
+             it2_end = quests.end(); it2 != it2_end; ++ it2)
+        {
+            delete *it2;
+        }
+    }
+    mQuests.clear();
+    mQuestLinks.clear();
+    if (mCompleteIcon)
+    {
+        mCompleteIcon->decRef();
+        mCompleteIcon = nullptr;
+    }
+    if (mIncompleteIcon)
+    {
+        mIncompleteIcon->decRef();
+        mIncompleteIcon = nullptr;
+    }
 }
 
 void QuestsWindow::loadXml()
@@ -201,6 +237,7 @@ void QuestsWindow::rebuild()
 {
     mQuestsModel->clear();
     StringVect &names = mQuestsModel->getNames();
+    std::vector<Image*> &images = mQuestsModel->getImages();
 
     for (std::map<int, int>::const_iterator it = mVars.begin(),
          it_end = mVars.end(); it != it_end; ++ it)
@@ -216,17 +253,34 @@ void QuestsWindow::rebuild()
             QuestItem *quest = *it2;
             if (quest->complete.find(val) != quest->complete.end())
             {
-                names.push_back(quest->name + _("[complete]"));
                 mQuestLinks.push_back(quest);
+                names.push_back(quest->name);
+                if (mCompleteIcon)
+                {
+                    mCompleteIcon->incRef();
+                    images.push_back(mCompleteIcon);
+                }
+                else
+                {
+                    images.push_back(nullptr);
+                }
             }
             else if (quest->incomplete.find(val) != quest->incomplete.end())
             {
-                names.push_back(quest->name);
                 mQuestLinks.push_back(quest);
+                names.push_back(quest->name);
+                if (mIncompleteIcon)
+                {
+                    mIncompleteIcon->incRef();
+                    images.push_back(mIncompleteIcon);
+                }
+                else
+                {
+                    images.push_back(nullptr);
+                }
             }
         }
     }
-//    mQuestsListBox->adjustSize();
 }
 
 void QuestsWindow::showQuest(QuestItem *quest)

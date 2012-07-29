@@ -11,12 +11,14 @@ SET (FILES
     circle-off.xml
     circle-on.xml
     colors.xml
+    complete_icon.xml
     dropdown.xml
     dropdown_background.xml
     dropdown_pressed.xml
     emote_selection.xml
     equipment_playerbox.xml
     equipmentbox.png
+    incomplete_icon.xml
     item_selection.xml
     item_shortcut_background.xml
     mouse.png
