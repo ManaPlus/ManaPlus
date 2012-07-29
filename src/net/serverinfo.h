@@ -28,6 +28,8 @@
 #include <string>
 #include <vector>
 
+#include "localconsts.h"
+
 class ServerInfo
 {
 public:

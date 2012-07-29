@@ -90,7 +90,7 @@
 #include "utils/gettext.h"
 #include "utils/mkdir.h"
 
-#include "utils/translation/translationmanager.h"
+//#include "utils/translation/translationmanager.h"
 
 #include <guichan/exception.hpp>
 #include <guichan/focushandler.hpp>

@@ -91,7 +91,7 @@ namespace Key
         INSERT,
         HOME,
         PAGE_UP,
-        DELETE,
+        DELETE_,
         END,
         PAGE_DOWN,
         ESCAPE,

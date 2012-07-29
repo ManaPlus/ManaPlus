@@ -23,28 +23,31 @@
 #ifndef TA_PROTOCOL_H
 #define TA_PROTOCOL_H
 
-enum
+namespace TmwAthena
 {
-    JOB = 0xa,
+    enum
+    {
+        JOB = 0xa,
 
-    STR = 0xd,
-    AGI,
-    VIT,
-    INT,
-    DEX,
-    LUK,
+        STR = 0xd,
+        AGI,
+        VIT,
+        INT,
+        DEX,
+        LUK,
 
-    ATK,
-    DEF,
-    MATK,
-    MDEF,
-    HIT,
-    FLEE,
-    CRIT
+        ATK,
+        DEF,
+        MATK,
+        MDEF,
+        HIT,
+        FLEE,
+        CRIT
 
-//    KARMA,
-//    MANNER
-};
+//        KARMA,
+//        MANNER
+    };
+}
 
 enum
 {

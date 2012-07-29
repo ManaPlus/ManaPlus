@@ -133,8 +133,8 @@ QuestsWindow::~QuestsWindow()
     delete mQuestsModel;
     mQuestsModel = nullptr;
 
-    for (std::map<int, std::vector<QuestItem*>>::iterator it = mQuests.begin(),
-         it_end = mQuests.end(); it != it_end; ++ it)
+    for (std::map<int, std::vector<QuestItem*> >::iterator it
+         = mQuests.begin(), it_end = mQuests.end(); it != it_end; ++ it)
     {
         std::vector<QuestItem*> &quests = (*it).second;
         for (std::vector<QuestItem*>::iterator it2 = quests.begin(),
@@ -195,7 +195,7 @@ void QuestsWindow::loadQuest(int var, XmlNodePtr node)
     }
     quest->incomplete = splitToIntSet(incompleteStr, ',');
     quest->complete = splitToIntSet(completeStr, ',');
-    if (quest->incomplete.size() + quest->complete.size() == 0)
+    if (quest->incomplete.empty() && quest->complete.empty())
     {
         logger->log("complete flags incorrect");
         delete quest;

@@ -74,7 +74,7 @@ class QuestsWindow : public Window, public gcn::ActionListener
         ScrollArea *mTextScrollArea;
         Button *mCloseButton;
         std::map<int, int> mVars;
-        std::map<int, std::vector<QuestItem*>> mQuests;
+        std::map<int, std::vector<QuestItem*> > mQuests;
         std::vector<QuestItem*> mQuestLinks;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;

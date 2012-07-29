@@ -284,7 +284,7 @@ int SDLInput::convertKeyCharacter(SDL_Event event)
           value = Key::ESCAPE;
           break;
       case SDLK_DELETE:
-          value = Key::DELETE;
+          value = Key::DELETE_;
           break;
       case SDLK_INSERT:
           value = Key::INSERT;

@@ -67,9 +67,14 @@ void ItemLinkHandler::handleLink(const std::string &link,
             mItemPopup->setItem(itemInfo, 1, true);
 
             if (mItemPopup->isVisible())
+            {
                 mItemPopup->setVisible(false);
+            }
             else if (viewport)
-                mItemPopup->position(viewport->getMouseX(), viewport->getMouseY());
+            {
+                mItemPopup->position(viewport->getMouseX(),
+                    viewport->getMouseY());
+            }
         }
     }
     else
