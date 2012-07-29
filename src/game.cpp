@@ -252,7 +252,8 @@ static void createGuiWindows()
     whoIsOnline = new WhoIsOnline;
     killStats = new KillStats;
     socialWindow = new SocialWindow;
-    questsWindow = new QuestsWindow;
+    if (serverVersion >= 6)
+        questsWindow = new QuestsWindow;
 
     localChatTab = new ChatTab(_("General"));
     localChatTab->setAllowHighlight(false);

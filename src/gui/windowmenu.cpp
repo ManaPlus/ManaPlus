@@ -59,6 +59,7 @@ extern Window *killStats;
 extern Window *spellShortcutWindow;
 extern Window *botCheckerWindow;
 extern Window *socialWindow;
+extern Window *questsWindow;
 
 WindowMenu::WindowMenu() :
     mHaveMouse(false),
@@ -68,10 +69,12 @@ WindowMenu::WindowMenu() :
 
     setFocusable(false);
 
-    addButton(N_("BC"), _("Bot checker"), x, h,
-              Input::KEY_WINDOW_BOT_CHECKER, false);
     addButton(N_("ONL"), _("Who is online"), x, h,
               Input::KEY_NO_VALUE);
+    addButton(N_("QE"), _("Quests"), x, h,
+              Input::KEY_WINDOW_QUESTS);
+    addButton(N_("BC"), _("Bot checker"), x, h,
+              Input::KEY_WINDOW_BOT_CHECKER, false);
     addButton(N_("KS"), _("Kill stats"), x, h,
               Input::KEY_WINDOW_KILLS);
     addButton(":-)", _("Smilies"), x, h,
@@ -206,6 +209,10 @@ void WindowMenu::action(const gcn::ActionEvent &event)
     else if (event.getId() == "YK")
     {
         window = didYouKnowWindow;
+    }
+    else if (event.getId() == "QE")
+    {
+        window = questsWindow;
     }
 
     if (window)
