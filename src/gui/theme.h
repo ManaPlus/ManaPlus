@@ -42,9 +42,10 @@ class ProgressBar;
 class Skin
 {
     public:
-        Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
-             const std::string &filePath, const std::string &name = "",
-             int padding = 3, int titlePadding = 4);
+        Skin(ImageRect skin, ImageRect images, const std::string &filePath,
+             const std::string &name = "", int padding = 3,
+             int titlePadding = 4,
+             std::map<std::string, int> *options = nullptr);
 
         ~Skin();
 
@@ -101,6 +102,14 @@ class Skin
         int getTitlePadding() const
         { return mTitlePadding; }
 
+        int getOption(std::string name)
+        {
+            if (mOptions->find(name) != mOptions->end())
+                return (*mOptions)[name];
+            else
+                return 0;
+        }
+
         int instances;
 
     private:
@@ -112,6 +121,7 @@ class Skin
         Image *mStickyImageDown;   /**< Sticky Button Image */
         int mPadding;
         int mTitlePadding;
+        std::map<std::string, int> *mOptions;
 };
 
 class Theme : public Palette, public ConfigListener
@@ -249,8 +259,11 @@ class Theme : public Palette, public ConfigListener
         /**
          * Loads a skin.
          */
-        Skin *load(const std::string &filename,
+        Skin *load(const std::string &filename, bool full = true,
                    const std::string &defaultPath = getThemePath());
+
+        Skin *loadSkinRect(ImageRect &image, std::string name,
+                           int start = 0, int end = 8);
 
         void unload(Skin *skin);
 
@@ -284,7 +297,7 @@ class Theme : public Palette, public ConfigListener
         Theme();
         ~Theme();
 
-        Skin *readSkin(const std::string &filename0);
+        Skin *readSkin(const std::string &filename0, bool full);
 
         // Map containing all window skins
         typedef std::map<std::string, Skin*> Skins;

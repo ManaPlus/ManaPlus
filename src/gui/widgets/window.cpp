@@ -1022,3 +1022,10 @@ gcn::Rectangle Window::getWindowArea()
                           getWidth() - getPadding() * 2,
                           getHeight() - getPadding() * 2);
 }
+
+int Window::getOption(std::string name)
+{
+    if (mSkin)
+        return mSkin->getOption(name);
+    return 0;
+}

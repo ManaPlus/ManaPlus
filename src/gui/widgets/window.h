@@ -399,6 +399,8 @@ class Window : public gcn::Window, gcn::WidgetListener
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
 
+        int getOption(std::string name);
+
     protected:
         bool canMove();
 

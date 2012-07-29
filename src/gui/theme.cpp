@@ -63,18 +63,19 @@ static void initDefaultThemePath()
         defaultThemePath = "themes/";
 }
 
-Skin::Skin(ImageRect skin, Image *close, Image *stickyUp, Image *stickyDown,
-           const std::string &filePath,
-           const std::string &name, int padding, int titlePadding):
+Skin::Skin(ImageRect skin, ImageRect images, const std::string &filePath,
+           const std::string &name, int padding, int titlePadding,
+           std::map<std::string, int> *options):
     instances(1),
     mFilePath(filePath),
     mName(name),
     mBorder(skin),
-    mCloseImage(close),
-    mStickyImageUp(stickyUp),
-    mStickyImageDown(stickyDown),
+    mCloseImage(images.grid[0]),
+    mStickyImageUp(images.grid[1]),
+    mStickyImageDown(images.grid[2]),
     mPadding(padding),
-    mTitlePadding(titlePadding)
+    mTitlePadding(titlePadding),
+    mOptions(options)
 {
 }
 
@@ -107,6 +108,9 @@ Skin::~Skin()
         mStickyImageDown->decRef();
         mStickyImageDown = nullptr;
     }
+
+    delete mOptions;
+    mOptions = nullptr;
 }
 
 void Skin::updateAlpha(float minimumOpacityAllowed)
@@ -226,7 +230,8 @@ gcn::Color Theme::getProgressColor(int type, float progress)
     return gcn::Color(color[0], color[1], color[2]);
 }
 
-Skin *Theme::load(const std::string &filename, const std::string &defaultPath)
+Skin *Theme::load(const std::string &filename, bool full,
+                  const std::string &defaultPath)
 {
     // Check if this skin was already loaded
 
@@ -238,10 +243,10 @@ Skin *Theme::load(const std::string &filename, const std::string &defaultPath)
         return skinIterator->second;
     }
 
-    Skin *skin = readSkin(filename);
+    Skin *skin = readSkin(filename, full);
 
-    if (!skin)
-        skin = readSkin("window.xml");
+    if (!skin && filename != "window.xml")
+        skin = readSkin("window.xml", full);
 
     if (!skin)
     {
@@ -251,7 +256,7 @@ Skin *Theme::load(const std::string &filename, const std::string &defaultPath)
             logger->log("Error loading skin '%s', falling back on default.",
                         filename.c_str());
 
-            skin = readSkin(defaultPath);
+            skin = readSkin(defaultPath, full);
         }
 
         if (!skin)
@@ -397,7 +402,7 @@ struct SkinHelper
     }
 };
 
-Skin *Theme::readSkin(const std::string &filename)
+Skin *Theme::readSkin(const std::string &filename, bool full)
 {
     if (filename.empty())
         return nullptr;
@@ -425,6 +430,7 @@ Skin *Theme::readSkin(const std::string &filename)
     memset(&images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
+    std::map<std::string, int> *mOptions = new std::map<std::string, int>();
 
     // iterate <widget>'s
     for_each_xml_child_node(widgetNode, rootNode)
@@ -463,14 +469,23 @@ Skin *Theme::readSkin(const std::string &filename)
                             sizeof(imageParam) / sizeof(SkinParameter));
                     }
                 }
-                else if (xmlNameEqual(partNode, "option"))
+                else if (full && xmlNameEqual(partNode, "option"))
                 {
                     const std::string name = XML::getProperty(
                         partNode, "name", "");
                     if (name == "padding")
+                    {
                         padding = XML::getProperty(partNode, "value", 3);
+                    }
                     else if (name == "titlePadding")
+                    {
                         titlePadding = XML::getProperty(partNode, "value", 4);
+                    }
+                    else
+                    {
+                        (*mOptions)[name] = XML::getProperty(
+                            partNode, "value", 0);
+                    }
                 }
             }
         }
@@ -484,8 +499,8 @@ Skin *Theme::readSkin(const std::string &filename)
     if (dBorders)
         dBorders->decRef();
 
-    Skin *skin = new Skin(border, images.grid[0], images.grid[1],
-        images.grid[2], filename, "", padding, titlePadding);
+    Skin *skin = new Skin(border, images, filename, "", padding, 
+        titlePadding, mOptions);
     skin->updateAlpha(mMinimumOpacity);
     return skin;
 }
@@ -860,7 +875,7 @@ void Theme::loadColors(std::string file)
 
 void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
 {
-    Skin *skin = load(name);
+    Skin *skin = load(name, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -876,6 +891,25 @@ void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
     }
 }
 
+Skin *Theme::loadSkinRect(ImageRect &image, std::string name,
+                          int start, int end)
+{
+    Skin *skin = load(name);
+    if (skin)
+    {
+        const ImageRect &rect = skin->getBorder();
+        for (int f = start; f <= end; f ++)
+        {
+            if (rect.grid[f])
+            {
+                image.grid[f] = rect.grid[f];
+                image.grid[f]->incRef();
+            }
+        }
+    }
+    return skin;
+}
+
 void Theme::unloadRect(ImageRect &rect, int start, int end)
 {
     for (int f = start; f <= end; f ++)
@@ -888,7 +922,7 @@ void Theme::unloadRect(ImageRect &rect, int start, int end)
 Image *Theme::getImageFromThemeXml(const std::string &name)
 {
     Theme *theme = Theme::instance();
-    Skin *skin = theme->load(name);
+    Skin *skin = theme->load(name, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -908,7 +942,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
                                          int w, int h)
 {
     Theme *theme = Theme::instance();
-    Skin *skin = theme->load(name);
+    Skin *skin = theme->load(name, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
