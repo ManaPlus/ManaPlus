@@ -334,9 +334,7 @@ void NpcDialog::action(const gcn::ActionEvent &event)
     }
     else if (event.getId() == "clear")
     {
-        mTextBox->clearRows();
-//        mTextBox->addRow(mNewText);
-//        setText(mNewText);
+        clearRows();
     }
     else if (event.getId() == "close")
     {
@@ -759,4 +757,9 @@ void NpcDialog::logic()
             }
         }
     }
+}
+
+void NpcDialog::clearRows()
+{
+    mTextBox->clearRows();
 }

@@ -200,6 +200,8 @@ class NpcDialog : public Window, public gcn::ActionListener,
 
         void logic();
 
+        void clearRows();
+
     private:
         typedef std::list<NpcDialog*> DialogList;
         static DialogList instances;

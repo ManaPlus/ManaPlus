@@ -309,6 +309,11 @@ void NpcHandler::processNpcCommand(Net::MessageIn &msg, int npcId)
             if (mDialog)
                 mDialog->setAvatarAction(msg.readInt32());   // direction
             break;
+        case 9: // clear npc dialog
+            if (mDialog)
+                mDialog->clearRows();
+            break;
+
         default:
             logger->log("unknown npc command: %d", cmd);
             break;
