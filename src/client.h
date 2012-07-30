@@ -137,6 +137,7 @@ enum PacketTypes
     PACKET_ATTACK = 9,
     PACKET_STOPATTACK = 10,
     PACKET_ONLINELIST = 11,
+    PACKET_WHISPER = 12,
     PACKET_SIZE
 };
 

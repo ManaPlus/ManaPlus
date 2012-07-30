@@ -2233,6 +2233,12 @@ void Client::initPacketLimiter()
     mPacketLimits[PACKET_ONLINELIST].cntLimit = 1;
     mPacketLimits[PACKET_ONLINELIST].cnt = 0;
 
+    // 300ms + 50 fix
+    mPacketLimits[PACKET_WHISPER].timeLimit = 30 + 5;
+    mPacketLimits[PACKET_WHISPER].lastTime = 0;
+    mPacketLimits[PACKET_WHISPER].cntLimit = 1;
+    mPacketLimits[PACKET_WHISPER].cnt = 0;
+
     if (!mServerConfigDir.empty())
     {
         std::string packetLimitsName =
@@ -2269,7 +2275,7 @@ void Client::initPacketLimiter()
                     mPacketLimits[f].timeLimit = atoi(line);
             }
             inPacketFile.close();
-            if (ver < 4)
+            if (ver < 5)
                 writePacketLimits(packetLimitsName);
         }
     }
