@@ -1029,3 +1029,10 @@ int Window::getOption(std::string name)
         return mSkin->getOption(name);
     return 0;
 }
+
+bool Window::getOptionBool(std::string name)
+{
+    if (mSkin)
+        return mSkin->getOption(name) != 0;
+    return 0;
+}

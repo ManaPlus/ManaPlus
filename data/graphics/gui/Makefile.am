@@ -22,12 +22,14 @@ gui_DATA =				\
 	equipment_playerbox.xml	\
 	equipmentbox.png	\
 	incomplete_icon.xml	\
+	inventory.xml	\
 	item_selection.xml	\
 	item_shortcut_background.xml	\
 	mouse.png			\
 	playerbox_background.xml	\
 	progress-indicator.png		\
 	progressbar.xml			\
+	quests.xml			\
 	radio.xml			\
 	resize.xml			\
 	scroll.xml			\

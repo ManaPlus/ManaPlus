@@ -82,12 +82,14 @@ class QuestsModel : public ExtendedNamesModel
 };
 
 QuestsWindow::QuestsWindow() :
-    Window(_("Quests"), false, nullptr, "quest.xml"),
+    Window(_("Quests"), false, nullptr, "quests.xml"),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(mQuestsModel)),
-    mQuestScrollArea(new ScrollArea(mQuestsListBox)),
+    mQuestScrollArea(new ScrollArea(mQuestsListBox,
+        getOptionBool("showlistbackground"))),
     mText(new BrowserBox(BrowserBox::AUTO_WRAP)),
-    mTextScrollArea(new ScrollArea(mText)),
+    mTextScrollArea(new ScrollArea(mText,
+        getOptionBool("showtextbackground"))),
     mCloseButton(new Button(_("Close"), "close", this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml"))

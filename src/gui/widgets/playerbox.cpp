@@ -38,14 +38,18 @@
 
 PlayerBox::PlayerBox(Being *being, std::string skin):
     mBeing(being),
-    mAlpha(1.0)
+    mAlpha(1.0),
+    mSkin(nullptr),
+    mDrawBackground(false)
 {
     init(skin);
 }
 
 PlayerBox::PlayerBox(std::string skin):
     mBeing(nullptr),
-    mAlpha(1.0)
+    mAlpha(1.0),
+    mSkin(nullptr),
+    mDrawBackground(false)
 {
     init(skin);
 }
@@ -53,7 +57,10 @@ PlayerBox::PlayerBox(std::string skin):
 PlayerBox::~PlayerBox()
 {
     if (Theme::instance())
+    {
+        Theme::instance()->unload(mSkin);
         Theme::instance()->unloadRect(mBackground);
+    }
 
     mBeing = nullptr;
 }
@@ -66,7 +73,9 @@ void PlayerBox::init(std::string skin)
     {
         if (skin.empty())
             skin = "playerbox_background.xml";
-        Theme::instance()->loadRect(mBackground, skin);
+        mSkin = Theme::instance()->loadSkinRect(mBackground, skin);
+        if (mSkin)
+            mDrawBackground = (mSkin->getOption("drawbackground") != 0);
     }
     else
     {
@@ -98,10 +107,14 @@ void PlayerBox::draw(gcn::Graphics *graphics)
 
 void PlayerBox::drawFrame(gcn::Graphics *graphics)
 {
-    int w, h, bs;
-    bs = getFrameSize();
-    w = getWidth() + bs * 2;
-    h = getHeight() + bs * 2;
+    if (mDrawBackground)
+    {
+        int w, h, bs;
+        bs = getFrameSize();
+        w = getWidth() + bs * 2;
+        h = getHeight() + bs * 2;
 
-    static_cast<Graphics*>(graphics)->drawImageRect(0, 0, w, h, mBackground);
+        static_cast<Graphics*>(graphics)->drawImageRect(
+            0, 0, w, h, mBackground);
+    }
 }

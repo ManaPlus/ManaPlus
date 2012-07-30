@@ -31,6 +31,7 @@
 
 class Being;
 class ImageRect;
+class Skin;
 
 /**
  * A box showing a player character.
@@ -81,6 +82,8 @@ class PlayerBox : public gcn::ScrollArea
 
         float mAlpha;
         ImageRect mBackground;
+        Skin *mSkin;
+        bool mDrawBackground;
 };
 
 #endif

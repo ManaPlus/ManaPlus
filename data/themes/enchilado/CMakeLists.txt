@@ -1,5 +1,7 @@
 SET (FILES
     colors.xml
+    inventory.xml
+    quests.xml
     window.png
     window.xml
     )

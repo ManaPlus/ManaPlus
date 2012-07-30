@@ -401,6 +401,8 @@ class Window : public gcn::Window, gcn::WidgetListener
 
         int getOption(std::string name);
 
+        bool getOptionBool(std::string name);
+
     protected:
         bool canMove();
 

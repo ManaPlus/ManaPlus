@@ -135,7 +135,8 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
     mItems = new ItemContainer(mInventory);
     mItems->addSelectionListener(this);
 
-    gcn::ScrollArea *invenScroll = new ScrollArea(mItems);
+    gcn::ScrollArea *invenScroll = new ScrollArea(
+        mItems, getOptionBool("showbackground"));
     invenScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mSlotsLabel = new Label(_("Slots:"));

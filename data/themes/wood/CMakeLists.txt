@@ -1,7 +1,9 @@
 SET (FILES
     colors.xml
+    inventory.xml
     item_shortcut_bgr.png
     mouse.png
+    quests.xml
     window.png
     window.xml
     )
