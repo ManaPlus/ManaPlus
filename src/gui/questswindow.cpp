@@ -31,6 +31,7 @@
 #include "gui/widgets/layouthelper.h"
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/extendednamesmodel.h"
+#include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/textfield.h"
 
@@ -87,6 +88,7 @@ QuestsWindow::QuestsWindow() :
     mQuestsListBox(new ExtendedListBox(mQuestsModel)),
     mQuestScrollArea(new ScrollArea(mQuestsListBox,
         getOptionBool("showlistbackground"))),
+    mItemLinkHandler(new ItemLinkHandler),
     mText(new BrowserBox(BrowserBox::AUTO_WRAP)),
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"))),
@@ -109,6 +111,7 @@ QuestsWindow::QuestsWindow() :
 
     mQuestScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mText->setOpaque(false);
+    mText->setLinkHandler(mItemLinkHandler);
     mTextScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);
     if (gui->getNpcFont()->getHeight() < 20)

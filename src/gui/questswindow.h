@@ -34,6 +34,7 @@
 class Button;
 class BrowserBox;
 class ExtendedListBox;
+class ItemLinkHandler;
 class ScrollArea;
 class QuestsModel;
 
@@ -70,6 +71,7 @@ class QuestsWindow : public Window, public gcn::ActionListener
         QuestsModel *mQuestsModel;
         ExtendedListBox *mQuestsListBox;
         ScrollArea *mQuestScrollArea;
+        ItemLinkHandler *mItemLinkHandler;
         BrowserBox *mText;
         ScrollArea *mTextScrollArea;
         Button *mCloseButton;
