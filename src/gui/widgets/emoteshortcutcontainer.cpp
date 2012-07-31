@@ -156,8 +156,9 @@ void EmoteShortcutContainer::draw(gcn::Graphics *graphics)
     }
 }
 
-void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event)
+void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event A_UNUSED)
 {
+/*
     if (!emoteShortcut)
         return;
 
@@ -186,6 +187,7 @@ void EmoteShortcutContainer::mouseDragged(gcn::MouseEvent &event)
             mCursorPosY = event.getY();
         }
     }
+*/
 }
 
 void EmoteShortcutContainer::mousePressed(gcn::MouseEvent &event)
