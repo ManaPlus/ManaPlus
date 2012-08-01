@@ -5,6 +5,7 @@ SET(FILES
     footer.txt
     header.txt
     index.txt
+    otherteam.txt
     searchmany.txt
     searchnotfound.txt
     skills.txt

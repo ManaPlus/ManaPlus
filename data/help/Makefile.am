@@ -9,6 +9,7 @@ help_DATA =				\
 	footer.txt			\
 	header.txt			\
 	index.txt			\
+	otherteam.txt		\
 	searchmany.txt		\
 	searchnotfound.txt	\
 	skills.txt			\
