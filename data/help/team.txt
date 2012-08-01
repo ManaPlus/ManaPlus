@@ -18,6 +18,7 @@
 ##9Andrei Karas (4144) <akaras inbox ru>                      (ru)
 ##9Bernard Hugonnet (Nard) <>                                 (fr)
 ##9Candy                                                      (jp)
+##9Danil Sagunov (Vasily_Makarov) <danilka.pro gmail com>     (ru)
 ##9Derpella                                                   (pl)
 ##9Maarten Vanraes (AL13N) <maarten.vanraes gmail com>        (nl_BE)
 ##9Marco (LinuxCobra/Cobraxas)                                (de)
