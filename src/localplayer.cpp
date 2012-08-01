@@ -4067,7 +4067,7 @@ void LocalPlayer::setRealPos(int x, int y)
         mCrossX = x;
         mCrossY = y;
     }
-    if (mMap && mMap->isCustom())
+    if (mMap->isCustom())
         mMap->setWalk(x, y, true);
 }
 void LocalPlayer::fixAttackTarget()

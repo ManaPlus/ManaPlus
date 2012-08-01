@@ -688,12 +688,13 @@ void ResourceManager::deleteInstance()
 
         while (iter != instance->mResources.end())
         {
-            if (iter->second)
+            Resource *res = iter->second;
+            if (res)
             {
-                if (iter->second->getRefCount())
+                if (res->getRefCount())
                 {
-                    logger->log("ResourceLeak: " + iter->second->getIdPath()
-                        + " (" + toString(iter->second->getRefCount()) + ")");
+                    logger->log("ResourceLeak: " + res->getIdPath()
+                        + " (" + toString(res->getRefCount()) + ")");
                 }
             }
             ++iter;

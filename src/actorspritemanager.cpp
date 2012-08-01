@@ -655,7 +655,7 @@ bool ActorSpriteManager::pickUpNearest(int x, int y, int maxdist)
             }
         }
     }
-    if (closestItem && player_node && dist <= maxdist)
+    if (closestItem && dist <= maxdist)
         return player_node->pickUp(closestItem);
 
     return false;
@@ -1430,7 +1430,7 @@ void ActorSpriteManager::updatePlayerGuild()
 void ActorSpriteManager::parseLevels(std::string levels)
 {
     levels += ", ";
-    unsigned int f = 0;
+    size_t f = 0;
     size_t pos = 0;
     const std::string brkEnd = "), ";
 

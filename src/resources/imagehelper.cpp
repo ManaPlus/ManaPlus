@@ -105,10 +105,13 @@ void ImageHelper::dumpSurfaceFormat(SDL_Surface *image)
         const SDL_PixelFormat * const format = image->format;
         logger->log("Bytes per pixel: %d", format->BytesPerPixel);
         logger->log("Alpha: %d", format->alpha);
-        logger->log("Loss: %02x, %02x, %02x, %02x", (int)format->Rloss,
-            (int)format->Gloss, (int)format->Bloss, (int)format->Aloss);
-        logger->log("Shift: %02x, %02x, %02x, %02x", (int)format->Rshift,
-            (int)format->Gshift, (int)format->Bshift, (int)format->Ashift);
+        logger->log("Loss: %02x, %02x, %02x, %02x",
+            static_cast<int>(format->Rloss), static_cast<int>(format->Gloss),
+            static_cast<int>(format->Bloss), static_cast<int>(format->Aloss));
+        logger->log("Shift: %02x, %02x, %02x, %02x",
+            static_cast<int>(format->Rshift), static_cast<int>(format->Gshift),
+            static_cast<int>(format->Bshift),
+            static_cast<int>(format->Ashift));
         logger->log("Mask: %08x, %08x, %08x, %08x", format->Rmask,
             format->Gmask, format->Bmask, format->Amask);
     }

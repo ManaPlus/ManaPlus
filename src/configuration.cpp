@@ -364,19 +364,19 @@ int Configuration::getIntValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                if (itdef->second->getType() == VariableData::DATA_INT)
+                VariableData::DataType type = static_cast<
+                    VariableData::DataType>(itdef->second->getType());
+                if (type == VariableData::DATA_INT)
                 {
                     defaultValue = (static_cast<IntData*>(
                         itdef->second))->getData();
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_STRING)
+                else if (type == VariableData::DATA_STRING)
                 {
                     defaultValue = atoi((static_cast<StringData*>(
                         itdef->second))->getData().c_str());
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_BOOL)
+                else if (type == VariableData::DATA_BOOL)
                 {
                     if ((static_cast<BoolData*>(
                         itdef->second))->getData())
@@ -388,7 +388,7 @@ int Configuration::getIntValue(const std::string &key) const
                         defaultValue = 0;
                     }
                 }
-                else if (itdef->second->getType() == VariableData::DATA_FLOAT)
+                else if (type == VariableData::DATA_FLOAT)
                 {
                     defaultValue = static_cast<int>(
                         (static_cast<FloatData*>(itdef->second))->getData());
@@ -445,14 +445,14 @@ std::string Configuration::getStringValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                if (itdef->second->getType()
-                    == VariableData::DATA_STRING)
+                VariableData::DataType type = static_cast<
+                    VariableData::DataType>(itdef->second->getType());
+                if (type == VariableData::DATA_STRING)
                 {
                     defaultValue = (static_cast<StringData*>(
                         itdef->second))->getData();
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_BOOL)
+                else if (type == VariableData::DATA_BOOL)
                 {
                     if ((static_cast<BoolData*>(
                         itdef->second))->getData())
@@ -464,8 +464,7 @@ std::string Configuration::getStringValue(const std::string &key) const
                         defaultValue = "0";
                     }
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_INT)
+                else if (type == VariableData::DATA_INT)
                 {
                     defaultValue = toString((static_cast<IntData*>(
                         itdef->second))->getData());
@@ -499,20 +498,20 @@ float Configuration::getFloatValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                if (itdef->second->getType() == VariableData::DATA_FLOAT)
+                VariableData::DataType type = static_cast<
+                    VariableData::DataType>(itdef->second->getType());
+                if (type == VariableData::DATA_FLOAT)
                 {
                     defaultValue = static_cast<float>(
                         (static_cast<FloatData*>(itdef->second))->getData());
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_STRING)
+                else if (type == VariableData::DATA_STRING)
                 {
                     defaultValue = static_cast<float>(atof((
                         static_cast<StringData*>(
                         itdef->second))->getData().c_str()));
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_BOOL)
+                else if (type == VariableData::DATA_BOOL)
                 {
                     if ((static_cast<BoolData*>(
                         itdef->second))->getData())
@@ -524,8 +523,7 @@ float Configuration::getFloatValue(const std::string &key) const
                         defaultValue = 0;
                     }
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_INT)
+                else if (type == VariableData::DATA_INT)
                 {
                     defaultValue = static_cast<float>((static_cast<IntData*>(
                         itdef->second))->getData());
@@ -558,13 +556,14 @@ bool Configuration::getBoolValue(const std::string &key) const
 
             if (itdef != mDefaultsData->end() && itdef->second)
             {
-                if (itdef->second->getType() == VariableData::DATA_BOOL)
+                VariableData::DataType type = static_cast<
+                    VariableData::DataType>(itdef->second->getType());
+                if (type == VariableData::DATA_BOOL)
                 {
                     defaultValue = (static_cast<BoolData*>(
                         itdef->second))->getData();
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_INT)
+                else if (type == VariableData::DATA_INT)
                 {
                     if ((static_cast<IntData*>(
                         itdef->second))->getData() != 0)
@@ -576,8 +575,7 @@ bool Configuration::getBoolValue(const std::string &key) const
                         defaultValue = false;
                     }
                 }
-                else if (itdef->second->getType()
-                         == VariableData::DATA_STRING)
+                else if (type == VariableData::DATA_STRING)
                 {
                     if ((static_cast<StringData*>(
                         itdef->second))->getData() != "0")
@@ -589,7 +587,7 @@ bool Configuration::getBoolValue(const std::string &key) const
                         defaultValue = false;
                     }
                 }
-                if (itdef->second->getType() == VariableData::DATA_FLOAT)
+                if (type == VariableData::DATA_FLOAT)
                 {
                     if (static_cast<int>((static_cast<FloatData*>(
                         itdef->second))->getData()) != 0)

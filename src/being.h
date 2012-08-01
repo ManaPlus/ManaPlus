@@ -527,7 +527,7 @@ class Being : public ActorSprite, public ConfigListener
          * Returns the direction the being is facing.
          */
         SpriteDirection getSpriteDirection() const
-        { return SpriteDirection(mSpriteDirection); }
+        { return static_cast<SpriteDirection>(mSpriteDirection); }
 
         void setPosition(const Vector &pos);
 

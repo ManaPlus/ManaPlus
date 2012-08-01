@@ -181,11 +181,12 @@ void EmoteDB::unload()
     {
         if (i->second)
         {
-            while (!i->second->sprites.empty())
+            std::list<EmoteSprite*> &sprites = i->second->sprites;
+            while (!sprites.empty())
             {
-                delete i->second->sprites.front()->sprite;
-                delete i->second->sprites.front();
-                i->second->sprites.pop_front();
+                delete sprites.front()->sprite;
+                delete sprites.front();
+                sprites.pop_front();
             }
             delete i->second;
         }
@@ -193,11 +194,12 @@ void EmoteDB::unload()
 
     mEmoteInfos.clear();
 
-    while (!mUnknown.sprites.empty())
+    std::list<EmoteSprite*> &sprites = mUnknown.sprites;
+    while (!sprites.empty())
     {
-        delete mUnknown.sprites.front()->sprite;
-        delete mUnknown.sprites.front();
-        mUnknown.sprites.pop_front();
+        delete sprites.front()->sprite;
+        delete sprites.front();
+        sprites.pop_front();
     }
 
     mLoaded = false;

@@ -129,7 +129,7 @@ void Download::setFile(const std::string &filename, int64_t adler32)
     }
     else
     {
-        mOptions.checkAdler =  0;
+        mOptions.checkAdler = 0;
     }
 }
 

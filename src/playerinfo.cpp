@@ -267,9 +267,10 @@ void logic()
         for (SpecialsMap::iterator it = mSpecials.begin(),
              it_end = mSpecials.end(); it != it_end; ++it)
         {
-            it->second.currentMana += it->second.recharge;
-            if (it->second.currentMana > it->second.neededMana)
-                it->second.currentMana = it->second.neededMana;
+            Special &special = it->second;
+            special.currentMana += special.recharge;
+            if (special.currentMana > special.neededMana)
+                special.currentMana = special.neededMana;
         }
     }
     mSpecialRechargeUpdateNeeded++;

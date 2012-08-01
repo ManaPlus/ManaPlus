@@ -495,7 +495,7 @@ void Client::gameInit()
         icon = LoadIcon(GetModuleHandle(nullptr), "A");
 
     if (icon)
-        SetClassLong(pInfo.window, GCL_HICON, (LONG)(icon));
+        SetClassLong(pInfo.window, GCL_HICON, reinterpret_cast<LONG>(icon));
 #else
     mIcon = IMG_Load(iconFile.c_str());
     if (mIcon)

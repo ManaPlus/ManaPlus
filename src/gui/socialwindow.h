@@ -110,7 +110,7 @@ public:
     bool getProcessedPortals() const
     { return mProcessedPortals; }
 
-    void setProcessedPortals(int n)
+    void setProcessedPortals(bool n)
     { mProcessedPortals = n; }
 
     void selectPortal(unsigned num);

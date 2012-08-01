@@ -118,7 +118,7 @@ void ShopListBox::draw(gcn::Graphics *gcnGraphics)
                 temp = mWarningColor;
                 temp.r = (temp.r + mHighlightColor.r) / 2;
                 temp.g = (temp.g + mHighlightColor.g) / 2;
-                temp.b = (temp.g + mHighlightColor.b) / 2;
+                temp.b = (temp.b + mHighlightColor.b) / 2;
                 temp.a = alpha;
                 backgroundColor = &temp;
             }

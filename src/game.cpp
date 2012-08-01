@@ -643,7 +643,7 @@ void Game::adjustPerfomance()
     {
         mNextAdjustTime = cur_time + adjustDelay;
     }
-    else if (mNextAdjustTime < (unsigned)cur_time)
+    else if (mNextAdjustTime < static_cast<unsigned>(cur_time))
     {
         mNextAdjustTime = cur_time + adjustDelay;
 

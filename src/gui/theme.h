@@ -34,6 +34,8 @@
 
 #include <map>
 
+#include "localconsts.h"
+
 class DyePalette;
 class Image;
 class ImageSet;

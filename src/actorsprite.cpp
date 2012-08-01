@@ -500,7 +500,7 @@ void ActorSprite::loadTargetCursor(const std::string &filename,
 
     Animation *anim = new Animation;
 
-    for (unsigned int i = 0; i < currentImageSet->size(); ++i)
+    for (size_t i = 0; i < currentImageSet->size(); ++i)
     {
         anim->addFrame(currentImageSet->get(i), 75,
             (16 - (currentImageSet->getWidth() / 2)),

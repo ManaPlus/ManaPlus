@@ -178,11 +178,12 @@ void CharServerHandler::readPlayerData(Net::MessageIn &msg,
     PlayerInfoBackend &data = character->data;
     data.mAttributes[PlayerInfo::EXP] = msg.readInt32();
     data.mAttributes[PlayerInfo::MONEY] = msg.readInt32();
-    data.mStats[JOB].exp = msg.readInt32();
+    Stat &jobStat = data.mStats[JOB];
+    jobStat.exp = msg.readInt32();
 
     int temp = msg.readInt32();
-    data.mStats[JOB].base = temp;
-    data.mStats[JOB].mod = temp;
+    jobStat.base = temp;
+    jobStat.mod = temp;
 
     int shoes = msg.readInt16();
     int gloves = msg.readInt16();

@@ -782,7 +782,7 @@ void BeingHandler::processBeingVisibleOrMove(Net::MessageIn &msg, bool visible)
         setSprite(dstBeing, SPRITE_HAT, headTop);
         setSprite(dstBeing, SPRITE_SHOE, shoes);
         setSprite(dstBeing, SPRITE_GLOVES, gloves);
-        setSprite(dstBeing, SPRITE_WEAPON, weapon, "", true);
+        setSprite(dstBeing, SPRITE_WEAPON, weapon, "", 1, true);
         if (!config.getBoolValue("hideShield"))
             setSprite(dstBeing, SPRITE_SHIELD, shield);
     }

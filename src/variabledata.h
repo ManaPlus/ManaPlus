@@ -27,7 +27,7 @@
 class VariableData
 {
     public:
-        enum
+        enum DataType
         {
             DATA_NONE = 0,
             DATA_INT,

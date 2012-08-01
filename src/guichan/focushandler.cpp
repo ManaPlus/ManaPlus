@@ -369,10 +369,9 @@ namespace gcn
             if (focusedWidget == focused)
                 return;
 
-            if (mWidgets.at(focusedWidget)->isFocusable() &&
-                mWidgets.at(focusedWidget)->isTabInEnabled() &&
-                (!mModalFocusedWidget ||
-                mWidgets.at(focusedWidget)->isModalFocused()))
+            const Widget *widget = mWidgets.at(focusedWidget);
+            if (widget->isFocusable() && widget->isTabInEnabled() &&
+                (!mModalFocusedWidget || widget->isModalFocused()))
             {
                 done = true;
             }
@@ -438,10 +437,9 @@ namespace gcn
             if (focusedWidget == focused)
                 return;
 
-            if (mWidgets.at(focusedWidget)->isFocusable() &&
-                mWidgets.at(focusedWidget)->isTabInEnabled() &&
-                (!mModalFocusedWidget ||
-                mWidgets.at(focusedWidget)->isModalFocused()))
+            const Widget *widget = mWidgets.at(focusedWidget);
+            if (widget->isFocusable() && widget->isTabInEnabled() &&
+                (!mModalFocusedWidget || widget->isModalFocused()))
             {
                 done = true;
             }

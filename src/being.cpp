@@ -2419,7 +2419,7 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &it, int &idx,
 //            logger->log("found at %d", idx);
             return;
         }
-        it ++;
+        ++ it;
         idx ++;
     }
 //    logger->log("not found");

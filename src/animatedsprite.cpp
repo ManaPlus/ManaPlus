@@ -206,7 +206,7 @@ bool AnimatedSprite::updateCurrentAnimation(unsigned int time)
         {
             if (mFrame->rand == 100 || rand() % 100 <= mFrame->rand)
             {
-                for (unsigned i = 0; i < mAnimation->getLength(); i ++)
+                for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
                     Frame *frame = &mAnimation->mFrames[i];
                     if (frame->type == Frame::LABEL

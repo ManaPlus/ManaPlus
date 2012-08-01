@@ -86,9 +86,10 @@ bool execFile(std::string pathName, std::string name A_UNUSED,
     if (!arg2.empty())
         args += " " + arg2;
 
-    bool res = CreateProcess(pathName.c_str(), (char*)args.c_str(), nullptr,
-        nullptr, false, CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr,
-        &siStartupInfo, &piProcessInfo);
+    bool res = CreateProcess(pathName.c_str(), const_cast<char*>(
+        args.c_str()), nullptr, nullptr, false,
+        CREATE_DEFAULT_ERROR_MODE, nullptr, nullptr, &siStartupInfo,
+        &piProcessInfo);
 
     CloseHandle(piProcessInfo.hProcess);
     CloseHandle(piProcessInfo.hThread);

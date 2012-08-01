@@ -530,16 +530,19 @@ bool CharSelectDialog::selectByName(const std::string &name,
 
     for (int i = 0; i < static_cast<int>(mCharacterEntries.size()); ++i)
     {
-        Net::Character *character = mCharacterEntries[i]->getCharacter();
-        if (mCharacterEntries[i] && character)
+        if (mCharacterEntries[i])
         {
-            if (character->dummy && character->dummy->getName() == name)
+            Net::Character *character = mCharacterEntries[i]->getCharacter();
+            if (character)
             {
-                if (mCharacterEntries[i])
-                    mCharacterEntries[i]->requestFocus();
-                if (selAction == Choose)
-                    attemptCharacterSelect(i);
-                return true;
+                if (character->dummy && character->dummy->getName() == name)
+                {
+                    if (mCharacterEntries[i])
+                        mCharacterEntries[i]->requestFocus();
+                    if (selAction == Choose)
+                        attemptCharacterSelect(i);
+                    return true;
+                }
             }
         }
     }

@@ -54,6 +54,9 @@ int mkdir_r(const char *pathname)
 
     int len = static_cast<int>(strlen(tmp));
 
+    if (len < 1)
+        return -1;
+
     // terminate the pathname with '/'
     if (tmp[len - 1] != '/')
     {

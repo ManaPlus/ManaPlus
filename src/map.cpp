@@ -914,7 +914,7 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                 // Skip if the tile is on the closed list or is not walkable
                 // unless its the destination tile
                 //+++ here need check block must depend on player abilities.
-                if (!newTile || newTile->whichList == mOnClosedList ||
+                if (newTile->whichList == mOnClosedList ||
                     ((newTile->blockmask & walkmask)
                     && !(x == destX && y == destY))
                     || (newTile->blockmask & BLOCKMASK_WALL))
@@ -931,11 +931,8 @@ Path Map::findPath(int startX, int startY, int destX, int destY,
                     MetaTile *t2 = &mMetaTiles[curr.x + dx + curWidth];
 
                     //+++ here need check block must depend on player abilities.
-                    if (!t1 || !t2 || ((t1->blockmask | t2->blockmask)
-                        & BLOCKMASK_WALL))
-                    {
+                    if (((t1->blockmask | t2->blockmask) & BLOCKMASK_WALL))
                         continue;
-                    }
                 }
 
                 // Calculate G cost for this route, ~sqrt(2) for moving diagonal

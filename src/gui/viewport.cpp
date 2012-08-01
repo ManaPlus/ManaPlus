@@ -139,7 +139,7 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
 
     // Calculate viewpoint
     int midTileX = (graphics->mWidth + mScrollCenterOffsetX) / 2;
-    int midTileY = (graphics->mHeight + mScrollCenterOffsetX) / 2;
+    int midTileY = (graphics->mHeight + mScrollCenterOffsetY) / 2;
 
     const Vector &playerPos = player_node->getPosition();
     const int player_x = static_cast<int>(playerPos.x)
@@ -219,27 +219,25 @@ void Viewport::draw(gcn::Graphics *gcnGraphics)
         mMap->getWidth() * mMap->getTileWidth() - graphics->mWidth;
     const int viewYmax =
         mMap->getHeight() * mMap->getTileHeight() - graphics->mHeight;
-    if (mMap)
+
+    if (mPixelViewX < 0)
+        mPixelViewX = 0;
+    if (mPixelViewY < 0)
+        mPixelViewY = 0;
+    if (mPixelViewX > viewXmax)
+        mPixelViewX = viewXmax;
+    if (mPixelViewY > viewYmax)
+        mPixelViewY = viewYmax;
+
+    // Draw tiles and sprites
+    mMap->draw(graphics, mPixelViewX, mPixelViewY);
+
+    if (mShowDebugPath)
     {
-        if (mPixelViewX < 0)
-            mPixelViewX = 0;
-        if (mPixelViewY < 0)
-            mPixelViewY = 0;
-        if (mPixelViewX > viewXmax)
-            mPixelViewX = viewXmax;
-        if (mPixelViewY > viewYmax)
-            mPixelViewY = viewYmax;
-
-        // Draw tiles and sprites
-        mMap->draw(graphics, mPixelViewX, mPixelViewY);
-
-        if (mShowDebugPath)
-        {
-            mMap->drawCollision(graphics, mPixelViewX,
-                mPixelViewY, mShowDebugPath);
-            if (mShowDebugPath == Map::MAP_DEBUG)
-                _drawDebugPath(graphics);
-        }
+        mMap->drawCollision(graphics, mPixelViewX,
+            mPixelViewY, mShowDebugPath);
+        if (mShowDebugPath == Map::MAP_DEBUG)
+            _drawDebugPath(graphics);
     }
 
     if (player_node->getCheckNameSetting())
@@ -780,10 +778,9 @@ void Viewport::mouseMoved(gcn::MouseEvent &event A_UNUSED)
             {
                 if (!mHoverSign->getComment().empty())
                 {
-                    if (mBeingPopup)
-                        mBeingPopup->setVisible(false);
+                    mBeingPopup->setVisible(false);
                     mTextPopup->show(getMouseX(), getMouseY(),
-                                     mHoverSign->getComment());
+                        mHoverSign->getComment());
                 }
                 else
                 {
