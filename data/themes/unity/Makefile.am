@@ -7,8 +7,10 @@ gui_DATA =				\
 	colors.xml		\
 	inventory.xml		\
 	itempopup.xml		\
+	npc.xml		\
 	popup.xml		\
 	quests.xml		\
+	social.xml		\
 	textpopup.xml			\
 	window.png			\
 	window.xml
