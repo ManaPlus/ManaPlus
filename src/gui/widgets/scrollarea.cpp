@@ -49,7 +49,7 @@ static std::string const buttonFiles[2] =
     "scrollbuttons_pressed.xml"
 };
 
-ScrollArea::ScrollArea(bool opaque):
+ScrollArea::ScrollArea(bool opaque, const std::string &skin):
     gcn::ScrollArea(),
     mX(0),
     mY(0),
@@ -65,10 +65,11 @@ ScrollArea::ScrollArea(bool opaque):
     mDrawHeight(0)
 {
     addWidgetListener(this);
-    init();
+    init(skin);
 }
 
-ScrollArea::ScrollArea(gcn::Widget *widget, bool opaque):
+ScrollArea::ScrollArea(gcn::Widget *widget, bool opaque,
+                       const std::string &skin):
     gcn::ScrollArea(widget),
     mX(0),
     mY(0),
@@ -83,7 +84,7 @@ ScrollArea::ScrollArea(gcn::Widget *widget, bool opaque):
     mDrawWidth(0),
     mDrawHeight(0)
 {
-    init();
+    init(skin);
 }
 
 ScrollArea::~ScrollArea()
@@ -92,18 +93,21 @@ ScrollArea::~ScrollArea()
     delete getContent();
 
     instances--;
-    if (instances == 0 && Theme::instance())
+    Theme *theme = Theme::instance();
+    if (theme)
     {
-        Theme *theme = Theme::instance();
         theme->unloadRect(background);
-        theme->unloadRect(vMarker);
-        theme->unloadRect(vMarkerHi);
-        for (int i = 0; i < 2; i ++)
+        if (instances == 0)
         {
-            for (int f = UP; f < BUTTONS_DIR; f ++)
+            theme->unloadRect(vMarker);
+            theme->unloadRect(vMarkerHi);
+            for (int i = 0; i < 2; i ++)
             {
-                if (buttons[f][i])
-                    buttons[f][i]->decRef();
+                for (int f = UP; f < BUTTONS_DIR; f ++)
+                {
+                    if (buttons[f][i])
+                        buttons[f][i]->decRef();
+                }
             }
         }
     }
@@ -112,7 +116,7 @@ ScrollArea::~ScrollArea()
     mVertexes = nullptr;
 }
 
-void ScrollArea::init()
+void ScrollArea::init(std::string skinName)
 {
     setOpaque(mOpaque);
 
@@ -121,6 +125,9 @@ void ScrollArea::init()
     setLeftButtonScrollAmount(2);
     setRightButtonScrollAmount(2);
 
+    if (skinName == "")
+        skinName = "scroll_background.xml";
+    Theme::instance()->loadRect(background, skinName);
     if (instances == 0)
     {
         for (int f = 0; f < 9; f ++)
@@ -132,7 +139,6 @@ void ScrollArea::init()
 
         if (Theme::instance())
         {
-            Theme::instance()->loadRect(background, "scroll_background.xml");
             Theme::instance()->loadRect(vMarker, "scroll.xml");
             Theme::instance()->loadRect(vMarkerHi, "scroll_highlighted.xml");
         }
