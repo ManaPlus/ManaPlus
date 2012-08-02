@@ -2,7 +2,8 @@
 guidir = $(pkgdatadir)/data/themes/mana
 
 gui_DATA =				\
-	colors.xml
+	colors.xml		\
+	social.xml
 
 EXTRA_DIST =				\
 	$(gui_DATA) \

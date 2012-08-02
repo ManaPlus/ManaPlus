@@ -140,7 +140,7 @@ protected:
 class SocialGuildTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab(Guild *guild):
+    SocialGuildTab(Guild *guild, bool showBackground):
             mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -148,7 +148,7 @@ public:
         setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
 
         mList = new AvatarListBox(guild);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -238,7 +238,7 @@ private:
 class SocialGuildTab2 : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialGuildTab2(Guild *guild):
+    SocialGuildTab2(Guild *guild, bool showBackground):
               mGuild(guild)
     {
         setCaption(_("Guild"));
@@ -246,7 +246,7 @@ public:
         setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
 
         mList = new AvatarListBox(guild);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -292,7 +292,7 @@ private:
 class SocialPartyTab : public SocialTab, public gcn::ActionListener
 {
 public:
-    SocialPartyTab(Party *party):
+    SocialPartyTab(Party *party, bool showBackground):
             mParty(party)
     {
         setCaption(_("Party"));
@@ -300,7 +300,7 @@ public:
         setTabColor(&Theme::getThemeColor(Theme::PARTY_SOCIAL_TAB));
 
         mList = new AvatarListBox(party);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -420,11 +420,11 @@ public:
 class SocialPlayersTab : public SocialTab
 {
 public:
-    SocialPlayersTab(std::string name) :
+    SocialPlayersTab(std::string name, bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -585,11 +585,11 @@ private:
 class SocialNavigationTab : public SocialTab
 {
 public:
-    SocialNavigationTab() :
+    SocialNavigationTab(bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -917,11 +917,11 @@ protected:
 class SocialAttackTab : public SocialTab
 {
 public:
-    SocialAttackTab() :
+    SocialAttackTab(bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -971,11 +971,11 @@ private:
 class SocialPickupTab : public SocialTab
 {
 public:
-    SocialPickupTab() :
+    SocialPickupTab(bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -1025,11 +1025,11 @@ private:
 class SocialFriendsTab : public SocialTab
 {
 public:
-    SocialFriendsTab(std::string name) :
+    SocialFriendsTab(std::string name, bool showBackground) :
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, false);
+        mScroll = new ScrollArea(mList, showBackground);
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -1211,19 +1211,19 @@ SocialWindow::SocialWindow() :
     loadWindowState();
 
     // TRANSLATORS: here P is title for visible players tab in social window
-    mPlayers = new SocialPlayersTab(_("P"));
+    mPlayers = new SocialPlayersTab(_("P"), getOptionBool("showtabbackground"));
     mTabs->addTab(mPlayers, mPlayers->mScroll);
 
     // TRANSLATORS: here F is title for friends tab in social window
-    mFriends = new SocialFriendsTab(_("F"));
+    mFriends = new SocialFriendsTab(_("F"), getOptionBool("showtabbackground"));
     mTabs->addTab(mFriends, mFriends->mScroll);
 
-    mNavigation = new SocialNavigationTab();
+    mNavigation = new SocialNavigationTab(getOptionBool("showtabbackground"));
     mTabs->addTab(mNavigation, mNavigation->mScroll);
 
     if (config.getBoolValue("enableAttackFilter"))
     {
-        mAttackFilter = new SocialAttackTab();
+        mAttackFilter = new SocialAttackTab(getOptionBool("showtabbackground"));
         mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
     }
     else
@@ -1233,7 +1233,7 @@ SocialWindow::SocialWindow() :
 
     if (config.getBoolValue("enablePickupFilter"))
     {
-        mPickupFilter = new SocialPickupTab();
+        mPickupFilter = new SocialPickupTab(getOptionBool("showtabbackground"));
         mTabs->addTab(mPickupFilter, mPickupFilter->mScroll);
     }
     else
@@ -1291,9 +1291,9 @@ bool SocialWindow::addTab(Guild *guild)
 
     SocialTab *tab = nullptr;
     if (guild->getServerGuild())
-        tab = new SocialGuildTab(guild);
+        tab = new SocialGuildTab(guild, getOptionBool("showbackground"));
     else
-        tab = new SocialGuildTab2(guild);
+        tab = new SocialGuildTab2(guild, getOptionBool("showbackground"));
 
     mGuilds[guild] = tab;
     mTabs->addTab(tab, tab->mScroll);
@@ -1323,7 +1323,8 @@ bool SocialWindow::addTab(Party *party)
     if (mParties.find(party) != mParties.end())
         return false;
 
-    SocialPartyTab *tab = new SocialPartyTab(party);
+    SocialPartyTab *tab = new SocialPartyTab(party,
+        getOptionBool("showbackground"));
     mParties[party] = tab;
 
     mTabs->addTab(tab, tab->mScroll);
