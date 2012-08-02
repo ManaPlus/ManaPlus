@@ -1,5 +1,6 @@
 SET (FILES
     colors.xml
+    npc.xml
     social.xml
     )
 
