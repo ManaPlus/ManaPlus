@@ -56,7 +56,7 @@ CheckBox::CheckBox(const std::string &caption, bool selected,
         if (Theme::instance())
         {
             ImageRect rect;
-            Theme::instance()->loadRect(rect, "checkbox.xml", 0, 5);
+            Theme::instance()->loadRect(rect, "checkbox.xml", "", 0, 5);
             checkBoxNormal = rect.grid[0];
             checkBoxChecked = rect.grid[1];
             checkBoxDisabled = rect.grid[2];

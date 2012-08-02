@@ -79,7 +79,10 @@ void Slider::init()
         if (Theme::instance())
         {
             for (int mode = 0; mode < 2; mode ++)
-                Theme::instance()->loadRect(buttons[mode], data[mode], 0, 8);
+            {
+                Theme::instance()->loadRect(buttons[mode],
+                    data[mode], "slider.xml", 0, 8);
+            }
         }
         updateAlpha();
     }

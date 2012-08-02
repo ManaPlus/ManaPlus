@@ -161,6 +161,7 @@ class Theme : public Palette, public ConfigListener
                                               int w, int h);
 
         ImageSet *getImageSetFromThemeXml(const std::string &name,
+                                          const std::string &name2,
                                           int w, int h);
         enum ThemePalette
         {
@@ -261,11 +262,12 @@ class Theme : public Palette, public ConfigListener
         /**
          * Loads a skin.
          */
-        Skin *load(const std::string &filename, bool full = true,
-                   const std::string &defaultPath = getThemePath());
+        Skin *load(const std::string &filename, const std::string &filename2,
+                   bool full = true, const std::string
+                   &defaultPath = getThemePath());
 
         Skin *loadSkinRect(ImageRect &image, std::string name,
-                           int start = 0, int end = 8);
+                           std::string name2, int start = 0, int end = 8);
 
         void unload(Skin *skin);
 
@@ -288,12 +290,13 @@ class Theme : public Palette, public ConfigListener
 
         void optionChanged(const std::string &);
 
-        void loadRect(ImageRect &image, std::string name,
+        void loadRect(ImageRect &image, std::string name, std::string name2,
                       int start = 0, int end = 8);
 
         void unloadRect(ImageRect &rect, int start = 0, int end = 8);
 
-        static Image *getImageFromThemeXml(const std::string &name);
+        static Image *getImageFromThemeXml(const std::string &name,
+                                           const std::string &name2);
 
     private:
         Theme();

@@ -176,7 +176,10 @@ void Button::init()
         if (Theme::instance())
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
-                Theme::instance()->loadRect(button[mode], data[mode]);
+            {
+                Theme::instance()->loadRect(button[mode],
+                    data[mode], "button.xml");
+            }
         }
 
         updateAlpha();

@@ -64,7 +64,7 @@ ItemShortcutContainer::ItemShortcutContainer(unsigned number):
     addWidgetListener(this);
 
     mBackgroundImg = Theme::getImageFromThemeXml(
-        "item_shortcut_background.xml");
+        "item_shortcut_background.xml", "background.xml");
     if (itemShortcut[mNumber])
         mMaxItems = itemShortcut[mNumber]->getItemCount();
     else

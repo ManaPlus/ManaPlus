@@ -67,7 +67,7 @@ TextField::TextField(const std::string &text, bool loseFocusOnTab,
     if (instances == 0)
     {
         if (Theme::instance())
-            Theme::instance()->loadRect(skin, "textfield_background.xml");
+            Theme::instance()->loadRect(skin, "textfield_background.xml", "");
     }
 
     instances++;

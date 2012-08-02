@@ -85,7 +85,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     // Loads the skin
     if (Theme::instance())
     {
-        mSkin = Theme::instance()->load(skin);
+        mSkin = Theme::instance()->load(skin, "window.xml");
         if (mSkin)
             setPadding(mSkin->getPadding());
     }

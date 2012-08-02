@@ -43,7 +43,7 @@ ResizeGrip::ResizeGrip(const std::string &image)
     if (mInstances == 0)
     {
         // Load the grip image
-        gripImage = Theme::getImageFromThemeXml(image);
+        gripImage = Theme::getImageFromThemeXml(image, "");
 
         if (gripImage)
             gripImage->setAlpha(mAlpha);

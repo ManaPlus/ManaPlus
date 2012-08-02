@@ -230,8 +230,8 @@ gcn::Color Theme::getProgressColor(int type, float progress)
     return gcn::Color(color[0], color[1], color[2]);
 }
 
-Skin *Theme::load(const std::string &filename, bool full,
-                  const std::string &defaultPath)
+Skin *Theme::load(const std::string &filename, const std::string &filename2,
+                  bool full, const std::string &defaultPath)
 {
     // Check if this skin was already loaded
 
@@ -245,7 +245,10 @@ Skin *Theme::load(const std::string &filename, bool full,
 
     Skin *skin = readSkin(filename, full);
 
-    if (!skin && filename != "window.xml")
+    if (!skin && !filename2.empty() && filename2 != filename)
+        skin = readSkin(filename2, full);
+
+    if (!skin && filename2 != "window.xml")
         skin = readSkin("window.xml", full);
 
     if (!skin)
@@ -873,9 +876,10 @@ void Theme::loadColors(std::string file)
     }
 }
 
-void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
+void Theme::loadRect(ImageRect &image, std::string name, std::string name2,
+                     int start, int end)
 {
-    Skin *skin = load(name, false);
+    Skin *skin = load(name, name2, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -892,9 +896,9 @@ void Theme::loadRect(ImageRect &image, std::string name, int start, int end)
 }
 
 Skin *Theme::loadSkinRect(ImageRect &image, std::string name,
-                          int start, int end)
+                          std::string name2, int start, int end)
 {
-    Skin *skin = load(name);
+    Skin *skin = load(name, name2);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -919,10 +923,11 @@ void Theme::unloadRect(ImageRect &rect, int start, int end)
     }
 }
 
-Image *Theme::getImageFromThemeXml(const std::string &name)
+Image *Theme::getImageFromThemeXml(const std::string &name,
+                                   const std::string &name2)
 {
     Theme *theme = Theme::instance();
-    Skin *skin = theme->load(name, false);
+    Skin *skin = theme->load(name, name2, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();
@@ -939,10 +944,11 @@ Image *Theme::getImageFromThemeXml(const std::string &name)
 }
 
 ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
+                                         const std::string &name2,
                                          int w, int h)
 {
     Theme *theme = Theme::instance();
-    Skin *skin = theme->load(name, false);
+    Skin *skin = theme->load(name, name2, false);
     if (skin)
     {
         const ImageRect &rect = skin->getBorder();

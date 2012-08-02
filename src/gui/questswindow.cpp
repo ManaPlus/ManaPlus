@@ -93,8 +93,8 @@ QuestsWindow::QuestsWindow() :
     mTextScrollArea(new ScrollArea(mText,
         getOptionBool("showtextbackground"))),
     mCloseButton(new Button(_("Close"), "close", this)),
-    mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml")),
-    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml"))
+    mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
+    mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", ""))
 {
     setWindowName("Quests");
     setResizable(true);
@@ -148,6 +148,8 @@ QuestsWindow::~QuestsWindow()
             delete *it2;
         }
     }
+    delete mItemLinkHandler;
+    mItemLinkHandler = nullptr;
     mQuests.clear();
     mQuestLinks.clear();
     if (mCompleteIcon)

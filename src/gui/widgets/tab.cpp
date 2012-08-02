@@ -102,7 +102,10 @@ void Tab::init()
         if (Theme::instance())
         {
             for (int mode = 0; mode < TAB_COUNT; mode ++)
-                Theme::instance()->loadRect(tabImg[mode], data[mode]);
+            {
+                Theme::instance()->loadRect(tabImg[mode],
+                    data[mode], "tab.xml");
+            }
         }
         updateAlpha();
     }

@@ -70,7 +70,8 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
-            Skin *skin = Theme::instance()->load(dropdownFiles[i]);
+            Skin *skin = Theme::instance()->load(
+                dropdownFiles[i], "dropdown.xml");
             if (skin)
             {
                 const ImageRect &rect = skin->getBorder();
@@ -98,7 +99,10 @@ DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
 
         // get the border skin
         if (Theme::instance())
-            Theme::instance()->loadRect(skinRect, "dropdown_background.xml");
+        {
+            Theme::instance()->loadRect(skinRect,
+                "dropdown_background.xml", "");
+        }
     }
 
     instances++;

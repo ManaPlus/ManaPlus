@@ -127,7 +127,7 @@ void ScrollArea::init(std::string skinName)
 
     if (skinName == "")
         skinName = "scroll_background.xml";
-    Theme::instance()->loadRect(background, skinName);
+    Theme::instance()->loadRect(background, skinName, "scroll_background.xml");
     if (instances == 0)
     {
         for (int f = 0; f < 9; f ++)
@@ -139,13 +139,15 @@ void ScrollArea::init(std::string skinName)
 
         if (Theme::instance())
         {
-            Theme::instance()->loadRect(vMarker, "scroll.xml");
-            Theme::instance()->loadRect(vMarkerHi, "scroll_highlighted.xml");
+            Theme::instance()->loadRect(vMarker, "scroll.xml", "");
+            Theme::instance()->loadRect(vMarkerHi, "scroll_highlighted.xml",
+                "scroll.xml");
         }
 
         for (int i = 0; i < 2; i ++)
         {
-            Skin *skin = Theme::instance()->load(buttonFiles[i]);
+            Skin *skin = Theme::instance()->load(
+                buttonFiles[i], "scrollbuttons.xml");
             if (skin)
             {
                 const ImageRect &rect = skin->getBorder();

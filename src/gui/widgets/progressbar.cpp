@@ -75,7 +75,7 @@ ProgressBar::ProgressBar(float progress,
             mBorder.grid[f] = nullptr;
 
         if (Theme::instance())
-            Theme::instance()->loadRect(mBorder, "progressbar.xml");
+            Theme::instance()->loadRect(mBorder, "progressbar.xml", "");
     }
 
     mInstances++;

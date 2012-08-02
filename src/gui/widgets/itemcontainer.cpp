@@ -157,7 +157,7 @@ ItemContainer::ItemContainer(Inventory *inventory, bool forceQuantity):
     mInventory(inventory),
     mGridColumns(1),
     mGridRows(1),
-    mSelImg(Theme::getImageFromThemeXml("item_selection.xml")),
+    mSelImg(Theme::getImageFromThemeXml("item_selection.xml", "")),
     mSelectedIndex(-1),
     mHighlightedIndex(-1),
     mLastUsedSlot(-1),

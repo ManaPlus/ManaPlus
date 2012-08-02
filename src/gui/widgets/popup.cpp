@@ -64,7 +64,7 @@ Popup::Popup(const std::string &name, std::string skin):
     // Loads the skin
     if (Theme::instance())
     {
-        mSkin = Theme::instance()->load(skin);
+        mSkin = Theme::instance()->load(skin, "popup.xml");
         if (mSkin)
             setPadding(mSkin->getPadding());
     }

@@ -54,7 +54,7 @@ RadioButton::RadioButton(const std::string &caption, const std::string &group,
         if (Theme::instance())
         {
             ImageRect rect;
-            Theme::instance()->loadRect(rect, "radio.xml", 0, 3);
+            Theme::instance()->loadRect(rect, "radio.xml", "", 0, 3);
             radioChecked = rect.grid[0];
             radioDisabledChecked = rect.grid[0];
             radioCheckedHi = rect.grid[1];

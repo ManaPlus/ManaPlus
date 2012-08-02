@@ -60,7 +60,7 @@ Text::Text(const std::string &text, int x, int y,
         textManager = new TextManager;
         if (Theme::instance())
         {
-            Theme::instance()->loadRect(mBubble, "bubble.xml");
+            Theme::instance()->loadRect(mBubble, "bubble.xml", "");
         }
         else
         {
