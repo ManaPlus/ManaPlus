@@ -4,6 +4,7 @@ guidir = $(pkgdatadir)/data/themes/mana
 gui_DATA =				\
 	colors.xml		\
 	npc.xml		\
+	quests.xml		\
 	social.xml
 
 EXTRA_DIST =				\

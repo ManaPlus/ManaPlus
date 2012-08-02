@@ -1,7 +1,7 @@
 <skinset name="Default" image="window.png">
     <widget type="Window">
-        <option name="showlistbackground" value="0" />
-        <option name="showtextbackground" value="0" />
+        <option name="showlistbackground" value="1" />
+        <option name="showtextbackground" value="1" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="4" height="4" />
