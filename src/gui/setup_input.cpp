@@ -261,6 +261,7 @@ void Setup_Input::action(const gcn::ActionEvent &event)
             inputManager.setNewKeyIndex(ik);
             refreshAssignedKey(mKeyList->getSelected());
             inputManager.unassignKey();
+            inputManager.setNewKeyIndex(Input::KEY_NO_VALUE);
         }
         mAssignKeyButton->setEnabled(true);
     }
