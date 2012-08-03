@@ -166,7 +166,7 @@ UpdaterWindow::UpdaterWindow(const std::string &updateHost,
     setMinHeight(240);
 
     mBrowserBox = new BrowserBox;
-    mScrollArea = new ScrollArea(mBrowserBox);
+    mScrollArea = new ScrollArea(mBrowserBox, true, "update_background.xml");
     mLabel = new Label(_("Connecting..."));
     mProgressBar = new ProgressBar(0.0, 310, 20);
     mCancelButton = new Button(_("Cancel"), "cancel", this);

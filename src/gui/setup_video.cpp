@@ -249,7 +249,8 @@ Setup_Video::Setup_Video():
 {
     setName(_("Video"));
 
-    ScrollArea *scrollArea = new ScrollArea(mModeList);
+    ScrollArea *scrollArea = new ScrollArea(mModeList,
+        true, "setup_video_background.xml");
     scrollArea->setWidth(150);
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 

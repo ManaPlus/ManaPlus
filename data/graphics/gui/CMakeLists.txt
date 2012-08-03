@@ -6,6 +6,7 @@ SET (FILES
     button_highlighted.xml
     button_pressed.xml
     buttonplay.png
+    buy.xml
     charcreate_playerbox.xml
     checkbox.xml
     circle-off.xml
@@ -34,6 +35,9 @@ SET (FILES
     scroll_highlighted.xml
     scrollbuttons.xml
     scrollbuttons_pressed.xml
+    sell.xml
+    server.xml
+    shop.xml
     slider.xml
     slider_highlighted.xml
     speechbubble.xml
@@ -51,6 +55,7 @@ SET (FILES
     unknown-item.png
     window.png
     window.xml
+    world.xml
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/graphics/gui)

@@ -78,7 +78,8 @@ void SellDialog::init()
     mShopItems = new ShopItems(true);
 
     mShopItemList = new ShopListBox(mShopItems, mShopItems);
-    mScrollArea = new ScrollArea(mShopItemList);
+    mScrollArea = new ScrollArea(mShopItemList, getOptionBool("showbackground"),
+        "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mSlider = new Slider(1.0);

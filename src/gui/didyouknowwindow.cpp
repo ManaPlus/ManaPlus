@@ -64,7 +64,8 @@ DidYouKnowWindow::DidYouKnowWindow():
 
     mBrowserBox = new BrowserBox;
     mBrowserBox->setOpaque(false);
-    mScrollArea = new ScrollArea(mBrowserBox);
+    mScrollArea = new ScrollArea(mBrowserBox,
+        true, "didyouknow_background.xml");
     Button *okButton = new Button(_("Close"), "close", this);
     mButtonPrev = new Button(_("< Previous"), "prev", this);
     mButtonNext = new Button(_("Next >"), "next", this);

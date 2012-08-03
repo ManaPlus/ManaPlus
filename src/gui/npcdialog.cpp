@@ -101,7 +101,7 @@ NpcDialog::NpcDialog(int npcId) :
     mTextBox->setFont(gui->getNpcFont());
 
     mScrollArea = new ScrollArea(mTextBox,
-        getOptionBool("showtextbackground"));
+        getOptionBool("showtextbackground"), "npc_textbackground.xml");
     mScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
     mScrollArea->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
 
@@ -120,7 +120,7 @@ NpcDialog::NpcDialog(int npcId) :
     setContentSize(260, 175);
 
     mListScrollArea = new ScrollArea(mItemList,
-        getOptionBool("showlistbackground"));
+        getOptionBool("showlistbackground"), "npc_listbackground.xml");
     mListScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mItemList->setVisible(true);

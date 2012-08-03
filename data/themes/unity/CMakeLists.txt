@@ -1,5 +1,6 @@
 SET (FILES
     beingpopup.xml
+    buy.xml
     char.xml
     colors.xml
     inventory.xml
@@ -7,10 +8,14 @@ SET (FILES
     npc.xml
     popup.xml
     quests.xml
+    sell.xml
+    server.xml
+    shop.xml
     social.xml
     textpopup.xml
     window.png
     window.xml
+    world.xml
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/themes/unity)

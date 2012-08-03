@@ -57,7 +57,7 @@ Setup_Colors::Setup_Colors() :
     mColorBox = new ListBox(userPalette);
     mColorBox->addSelectionListener(this);
 
-    mScroll = new ScrollArea(mColorBox);
+    mScroll = new ScrollArea(mColorBox, true, "setup_colors_background.xml");
     mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mTextPreview = new TextPreview(rawmsg);
@@ -68,7 +68,8 @@ Setup_Colors::Setup_Colors() :
     // don't do anything with links
     mPreview->setLinkHandler(nullptr);
 
-    mPreviewBox = new ScrollArea(mPreview);
+    mPreviewBox = new ScrollArea(mPreview, true,
+        "setup_colors_preview_background.xml");
     mPreviewBox->setHeight(20);
     mPreviewBox->setScrollPolicy(gcn::ScrollArea::SHOW_NEVER,
                                  gcn::ScrollArea::SHOW_NEVER);

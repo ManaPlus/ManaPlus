@@ -101,13 +101,15 @@ TradeWindow::TradeWindow():
     mMyItemContainer = new ItemContainer(mMyInventory.get());
     mMyItemContainer->addSelectionListener(this);
 
-    ScrollArea *myScroll = new ScrollArea(mMyItemContainer);
+    ScrollArea *myScroll = new ScrollArea(mMyItemContainer,
+        true, "trade_background.xml");
     myScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mPartnerItemContainer = new ItemContainer(mPartnerInventory.get());
     mPartnerItemContainer->addSelectionListener(this);
 
-    ScrollArea *partnerScroll = new ScrollArea(mPartnerItemContainer);
+    ScrollArea *partnerScroll = new ScrollArea(mPartnerItemContainer,
+        true, "trade_background.xml");
     partnerScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mMoneyLabel = new Label(strprintf(_("You get %s"), ""));

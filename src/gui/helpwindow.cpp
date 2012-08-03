@@ -61,7 +61,7 @@ HelpWindow::HelpWindow():
 
     mBrowserBox = new BrowserBox;
     mBrowserBox->setOpaque(false);
-    mScrollArea = new ScrollArea(mBrowserBox);
+    mScrollArea = new ScrollArea(mBrowserBox, true, "help_background.xml");
     Button *okButton = new Button(_("Close"), "close", this);
 
     mScrollArea->setDimension(gcn::Rectangle(5, 5, 445,

@@ -267,7 +267,8 @@ ServerDialog::ServerDialog(ServerInfo *serverInfo, const std::string &dir):
     mServersList = new ServersListBox(mServersListModel);
     mServersList->addMouseListener(this);
 
-    ScrollArea *usedScroll = new ScrollArea(mServersList);
+    ScrollArea *usedScroll = new ScrollArea(mServersList,
+        getOptionBool("showbackground"), "server_background.xml");
     usedScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     int n = 0;

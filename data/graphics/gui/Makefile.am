@@ -9,6 +9,7 @@ gui_DATA =				\
 	button_highlighted.xml	\
 	button_pressed.xml		\
 	buttonplay.png			\
+	buy.xml			\
 	charcreate_playerbox.xml	\
 	checkbox.xml			\
 	circle-off.xml			\
@@ -37,6 +38,9 @@ gui_DATA =				\
 	scroll_highlighted.xml	\
 	scrollbuttons.xml			\
 	scrollbuttons_pressed.xml\
+	sell.xml			\
+	server.xml			\
+	shop.xml			\
 	slider.xml			\
 	slider_highlighted.xml		\
 	speechbubble.xml		\
@@ -53,7 +57,8 @@ gui_DATA =				\
 	textfield_background.xml		\
 	unknown-item.png		\
 	window.png			\
-	window.xml
+	window.xml			\
+	world.xml
 
 EXTRA_DIST =				\
 	$(gui_DATA) \

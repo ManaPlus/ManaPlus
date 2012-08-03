@@ -57,8 +57,7 @@ static std::string const dropdownFiles[2] =
 DropDown::DropDown(gcn::ListModel *listModel, gcn::ActionListener* listener,
                    std::string eventId):
     gcn::DropDown::DropDown(listModel,
-                            new ScrollArea,
-                            new ListBox(listModel)),
+        new ScrollArea, new ListBox(listModel)),
     mShadowColor(Theme::getThemeColor(Theme::DROPDOWN_SHADOW)),
     mHighlightColor(Theme::getThemeColor(Theme::HIGHLIGHT))
 {

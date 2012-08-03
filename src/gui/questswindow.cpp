@@ -87,11 +87,11 @@ QuestsWindow::QuestsWindow() :
     mQuestsModel(new QuestsModel),
     mQuestsListBox(new ExtendedListBox(mQuestsModel)),
     mQuestScrollArea(new ScrollArea(mQuestsListBox,
-        getOptionBool("showlistbackground"))),
+        getOptionBool("showlistbackground"), "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
     mText(new BrowserBox(BrowserBox::AUTO_WRAP)),
     mTextScrollArea(new ScrollArea(mText,
-        getOptionBool("showtextbackground"))),
+        getOptionBool("showtextbackground"), "quests_text_background.xml")),
     mCloseButton(new Button(_("Close"), "close", this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", ""))

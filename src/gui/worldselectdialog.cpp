@@ -83,7 +83,8 @@ WorldSelectDialog::WorldSelectDialog(Worlds worlds):
     mChangeLoginButton(new Button(_("Change Login"), "login", this)),
     mChooseWorld(new Button(_("Choose World"), "world", this))
 {
-    ScrollArea *worldsScroll = new ScrollArea(mWorldList);
+    ScrollArea *worldsScroll = new ScrollArea(mWorldList,
+        getOptionBool("showbackground"), "world_background.xml");
 
     worldsScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 

@@ -307,7 +307,8 @@ BotCheckerWindow::BotCheckerWindow():
     setStickyButtonLock(true);
     setDefaultSize(w, h, ImageRect::CENTER);
 
-    playersScrollArea = new ScrollArea(mTable);
+    playersScrollArea = new ScrollArea(mTable,
+        true, "bochecker_background.xml");
 
     mIncButton = new Button(_("Reset"), "reset", this);
     playersScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);

@@ -118,7 +118,8 @@ Setup_Input::Setup_Input():
 
     mKeyList->addActionListener(this);
 
-    ScrollArea *scrollArea = new ScrollArea(mKeyList);
+    ScrollArea *scrollArea = new ScrollArea(mKeyList,
+        true, "setup_input_background.xml");
     scrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mAssignKeyButton = new Button(_("Assign"), "assign", this);

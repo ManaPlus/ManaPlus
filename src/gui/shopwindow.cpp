@@ -106,9 +106,11 @@ ShopWindow::ShopWindow():
     mBuyShopItemList->setPriceCheck(false);
     mSellShopItemList->setPriceCheck(false);
 
-    mBuyScrollArea = new ScrollArea(mBuyShopItemList);
+    mBuyScrollArea = new ScrollArea(mBuyShopItemList,
+        getOptionBool("showbuybackground"), "shop_buy_background.xml");
     mBuyScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
-    mSellScrollArea = new ScrollArea(mSellShopItemList);
+    mSellScrollArea = new ScrollArea(mSellShopItemList,
+        getOptionBool("showsellbackground"), "shop_sell_background.xml");
     mSellScrollArea->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_NEVER);
 
     mCloseButton = new Button(_("Close"), "close", this);

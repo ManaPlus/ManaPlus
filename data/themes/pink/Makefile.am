@@ -3,13 +3,18 @@ guidir = $(pkgdatadir)/data/themes/pink
 
 gui_DATA =				\
 	bubble.png			\
+	buy.xml			\
 	colors.xml		\
 	inventory.xml		\
 	progress-indicator.png		\
 	quests.xml		\
+	sell.xml		\
+	server.xml		\
+	shop.xml		\
 	unknown-item.png		\
 	window.xml		\
-	window.png
+	window.png		\
+	world.xml
 
 EXTRA_DIST =				\
 	$(gui_DATA) \

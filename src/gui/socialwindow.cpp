@@ -148,7 +148,8 @@ public:
         setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
 
         mList = new AvatarListBox(guild);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -246,7 +247,8 @@ public:
         setTabColor(&Theme::getThemeColor(Theme::GUILD_SOCIAL_TAB));
 
         mList = new AvatarListBox(guild);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -300,7 +302,8 @@ public:
         setTabColor(&Theme::getThemeColor(Theme::PARTY_SOCIAL_TAB));
 
         mList = new AvatarListBox(party);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -424,7 +427,8 @@ public:
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -589,7 +593,8 @@ public:
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -921,7 +926,8 @@ public:
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -975,7 +981,8 @@ public:
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
@@ -1029,7 +1036,8 @@ public:
         mBeings(new BeingsListModal())
     {
         mList = new AvatarListBox(mBeings);
-        mScroll = new ScrollArea(mList, showBackground);
+        mScroll = new ScrollArea(mList, showBackground,
+            "social_background.xml");
 
         mScroll->setHorizontalScrollPolicy(gcn::ScrollArea::SHOW_AUTO);
         mScroll->setVerticalScrollPolicy(gcn::ScrollArea::SHOW_ALWAYS);
