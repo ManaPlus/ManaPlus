@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-08-04 15:02+0300\n"
+"POT-Creation-Date: 2012-08-04 18:32+0300\n"
 "PO-Revision-Date: 2012-08-04 12:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/projects/p/manaplus/"
@@ -3663,7 +3663,7 @@ msgstr ""
 msgid "Create Guild"
 msgstr "Guild aanmaken"
 
-#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1581
+#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1585
 msgid "Create Party"
 msgstr "Groep aanmaken"
 
@@ -3681,97 +3681,97 @@ msgid "P"
 msgstr ""
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1218
+#: src/gui/socialwindow.cpp:1219
 msgid "F"
 msgstr ""
 
-#: src/gui/socialwindow.cpp:1364
+#: src/gui/socialwindow.cpp:1368
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Uitnodiging voor groep %s aanvaard."
 
-#: src/gui/socialwindow.cpp:1374
+#: src/gui/socialwindow.cpp:1378
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Uitnodiging voor groep %s geweigerd."
 
-#: src/gui/socialwindow.cpp:1391
+#: src/gui/socialwindow.cpp:1395
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Uitnodiging voor guild %s aanvaard."
 
-#: src/gui/socialwindow.cpp:1404
+#: src/gui/socialwindow.cpp:1408
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Uitnodiging voor guild %s geweigerd."
 
-#: src/gui/socialwindow.cpp:1451
+#: src/gui/socialwindow.cpp:1455
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Maken van guild %s."
 
-#: src/gui/socialwindow.cpp:1474
+#: src/gui/socialwindow.cpp:1478
 #, c-format
 msgid "Creating party called %s."
 msgstr "Maken van groep %s."
 
-#: src/gui/socialwindow.cpp:1488
+#: src/gui/socialwindow.cpp:1492
 msgid "Guild Name"
 msgstr "Guild Naam"
 
-#: src/gui/socialwindow.cpp:1489
+#: src/gui/socialwindow.cpp:1493
 msgid "Choose your guild's name."
 msgstr "Kies uw guild naam"
 
-#: src/gui/socialwindow.cpp:1503
+#: src/gui/socialwindow.cpp:1507
 msgid "Received guild request, but one already exists."
 msgstr "Uitnodiging tot guild ontvangen, maar er is er al één."
 
-#: src/gui/socialwindow.cpp:1509
+#: src/gui/socialwindow.cpp:1513
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s heeft je uitgenodigd om guid %s te vervoegen."
 
-#: src/gui/socialwindow.cpp:1515
+#: src/gui/socialwindow.cpp:1519
 msgid "Accept Guild Invite"
 msgstr "Guild Uitnodiging Aanvaarden"
 
-#: src/gui/socialwindow.cpp:1530
+#: src/gui/socialwindow.cpp:1534
 msgid "Received party request, but one already exists."
 msgstr "Uitnodiging tot groep ontvangen, maar er is er al één."
 
-#: src/gui/socialwindow.cpp:1541
+#: src/gui/socialwindow.cpp:1545
 msgid "You have been invited you to join a party."
 msgstr "U bent uitgenodigd om je bij een groep te voegen."
 
-#: src/gui/socialwindow.cpp:1545
+#: src/gui/socialwindow.cpp:1549
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "U bent uitgenodigd om je bij groep %s te voegen."
 
-#: src/gui/socialwindow.cpp:1553
+#: src/gui/socialwindow.cpp:1557
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s heeft je uitgenodigd om je bij hun groep te voegen."
 
-#: src/gui/socialwindow.cpp:1558
+#: src/gui/socialwindow.cpp:1562
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s heeft je uitgenodigd om je bij groep %s te voegen."
 
-#: src/gui/socialwindow.cpp:1567
+#: src/gui/socialwindow.cpp:1571
 msgid "Accept Party Invite"
 msgstr "Groepsuitnodiging aanvaarden"
 
-#: src/gui/socialwindow.cpp:1582
+#: src/gui/socialwindow.cpp:1586
 msgid "Cannot create party. You are already in a party"
 msgstr "Kan groep niet aanmaken. Je bent al in een groep."
 
-#: src/gui/socialwindow.cpp:1587
+#: src/gui/socialwindow.cpp:1591
 msgid "Party Name"
 msgstr "Groep Naam"
 
-#: src/gui/socialwindow.cpp:1588
+#: src/gui/socialwindow.cpp:1592
 msgid "Choose your party's name."
 msgstr "Kies uw groepsnaam."
 

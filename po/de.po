@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-08-04 15:02+0300\n"
+"POT-Creation-Date: 2012-08-04 18:32+0300\n"
 "PO-Revision-Date: 2012-08-04 12:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
@@ -3681,7 +3681,7 @@ msgstr "Gegenstände ignorieren"
 msgid "Create Guild"
 msgstr "Gilde erstellen"
 
-#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1581
+#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1585
 msgid "Create Party"
 msgstr "Gruppe erstellen"
 
@@ -3699,98 +3699,98 @@ msgid "P"
 msgstr "P"
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1218
+#: src/gui/socialwindow.cpp:1219
 msgid "F"
 msgstr "F"
 
-#: src/gui/socialwindow.cpp:1364
+#: src/gui/socialwindow.cpp:1368
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Gruppeneinladung von %s angenommen."
 
-#: src/gui/socialwindow.cpp:1374
+#: src/gui/socialwindow.cpp:1378
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Gruppeneinladung von %s abgelehnt."
 
-#: src/gui/socialwindow.cpp:1391
+#: src/gui/socialwindow.cpp:1395
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Gildeneinladung von %s angenommen."
 
-#: src/gui/socialwindow.cpp:1404
+#: src/gui/socialwindow.cpp:1408
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Gildeneinladung von %s abgelehnt."
 
-#: src/gui/socialwindow.cpp:1451
+#: src/gui/socialwindow.cpp:1455
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Erstelle der Gilde %s."
 
-#: src/gui/socialwindow.cpp:1474
+#: src/gui/socialwindow.cpp:1478
 #, c-format
 msgid "Creating party called %s."
 msgstr "Erstelle die Gruppe \"%s\""
 
-#: src/gui/socialwindow.cpp:1488
+#: src/gui/socialwindow.cpp:1492
 msgid "Guild Name"
 msgstr "Gildenname"
 
-#: src/gui/socialwindow.cpp:1489
+#: src/gui/socialwindow.cpp:1493
 msgid "Choose your guild's name."
 msgstr "Wähle den Namen deiner Gilde"
 
-#: src/gui/socialwindow.cpp:1503
+#: src/gui/socialwindow.cpp:1507
 msgid "Received guild request, but one already exists."
 msgstr "Anfrage für eine Gruppe erhalten, es wurde schon einmal angefragt."
 
-#: src/gui/socialwindow.cpp:1509
+#: src/gui/socialwindow.cpp:1513
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s hat dich eingeladen, seiner Gilde %s beizutreten."
 
-#: src/gui/socialwindow.cpp:1515
+#: src/gui/socialwindow.cpp:1519
 msgid "Accept Guild Invite"
 msgstr "Nehme Gildeneinladung an"
 
-#: src/gui/socialwindow.cpp:1530
+#: src/gui/socialwindow.cpp:1534
 msgid "Received party request, but one already exists."
 msgstr ""
 "Anfrage für eine Gruppe erhalten, aber du bist bereits in einer Gruppe."
 
-#: src/gui/socialwindow.cpp:1541
+#: src/gui/socialwindow.cpp:1545
 msgid "You have been invited you to join a party."
 msgstr "Du wurdest zu einer Gruppe eingeladen."
 
-#: src/gui/socialwindow.cpp:1545
+#: src/gui/socialwindow.cpp:1549
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "Du wurdest zu der Gruppe %s eingeladen."
 
-#: src/gui/socialwindow.cpp:1553
+#: src/gui/socialwindow.cpp:1557
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s hat dich in seine Gruppe eingeladen."
 
-#: src/gui/socialwindow.cpp:1558
+#: src/gui/socialwindow.cpp:1562
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s hat dich eingeladen, an der Gruppe %s teilzunehmen."
 
-#: src/gui/socialwindow.cpp:1567
+#: src/gui/socialwindow.cpp:1571
 msgid "Accept Party Invite"
 msgstr "Nehme Gruppeneinladung an"
 
-#: src/gui/socialwindow.cpp:1582
+#: src/gui/socialwindow.cpp:1586
 msgid "Cannot create party. You are already in a party"
 msgstr "Konnte keine Gruppe erstellen. Du bist schon in einer Gruppe."
 
-#: src/gui/socialwindow.cpp:1587
+#: src/gui/socialwindow.cpp:1591
 msgid "Party Name"
 msgstr "Gruppenname"
 
-#: src/gui/socialwindow.cpp:1588
+#: src/gui/socialwindow.cpp:1592
 msgid "Choose your party's name."
 msgstr "Name deiner Gruppe wählen."
 

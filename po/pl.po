@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-08-04 15:02+0300\n"
+"POT-Creation-Date: 2012-08-04 18:32+0300\n"
 "PO-Revision-Date: 2012-08-04 12:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/manaplus/language/"
@@ -3670,7 +3670,7 @@ msgstr "Ignoruj przedmioty"
 msgid "Create Guild"
 msgstr "Utwórz gildię"
 
-#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1581
+#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1585
 msgid "Create Party"
 msgstr "Utwórz grupę"
 
@@ -3688,97 +3688,97 @@ msgid "P"
 msgstr "V"
 
 #. TRANSLATORS: here F is title for friends tab in social window
-#: src/gui/socialwindow.cpp:1218
+#: src/gui/socialwindow.cpp:1219
 msgid "F"
 msgstr "F"
 
-#: src/gui/socialwindow.cpp:1364
+#: src/gui/socialwindow.cpp:1368
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Zaakceptowano zaproszenie do grupy od %s."
 
-#: src/gui/socialwindow.cpp:1374
+#: src/gui/socialwindow.cpp:1378
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Odrzucono zaproszenie do grupy od %s."
 
-#: src/gui/socialwindow.cpp:1391
+#: src/gui/socialwindow.cpp:1395
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Akceptowano zaproszenie do gildii od %s."
 
-#: src/gui/socialwindow.cpp:1404
+#: src/gui/socialwindow.cpp:1408
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Odrzucono zaproszenie do gildii od %s."
 
-#: src/gui/socialwindow.cpp:1451
+#: src/gui/socialwindow.cpp:1455
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Tworzenie gildii o nazwie %s."
 
-#: src/gui/socialwindow.cpp:1474
+#: src/gui/socialwindow.cpp:1478
 #, c-format
 msgid "Creating party called %s."
 msgstr "Tworzenie grupy o nazwie %s."
 
-#: src/gui/socialwindow.cpp:1488
+#: src/gui/socialwindow.cpp:1492
 msgid "Guild Name"
 msgstr "Nazwa gildii"
 
-#: src/gui/socialwindow.cpp:1489
+#: src/gui/socialwindow.cpp:1493
 msgid "Choose your guild's name."
 msgstr "Wybierz nazwę gildii."
 
-#: src/gui/socialwindow.cpp:1503
+#: src/gui/socialwindow.cpp:1507
 msgid "Received guild request, but one already exists."
 msgstr "Gildia o tej nazwie już istnieje."
 
-#: src/gui/socialwindow.cpp:1509
+#: src/gui/socialwindow.cpp:1513
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s zaprosił/a Cię do gildii %s."
 
-#: src/gui/socialwindow.cpp:1515
+#: src/gui/socialwindow.cpp:1519
 msgid "Accept Guild Invite"
 msgstr "Akceptuj zaproszenie do gildii"
 
-#: src/gui/socialwindow.cpp:1530
+#: src/gui/socialwindow.cpp:1534
 msgid "Received party request, but one already exists."
 msgstr "Grupa o takiej nazwie już istnieje."
 
-#: src/gui/socialwindow.cpp:1541
+#: src/gui/socialwindow.cpp:1545
 msgid "You have been invited you to join a party."
 msgstr "Zostałeś/aś zaproszony/a do grupy."
 
-#: src/gui/socialwindow.cpp:1545
+#: src/gui/socialwindow.cpp:1549
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "Zostałeś/aś zaproszony/a do grupy %s."
 
-#: src/gui/socialwindow.cpp:1553
+#: src/gui/socialwindow.cpp:1557
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s zaprosił/a Cię do grupy."
 
-#: src/gui/socialwindow.cpp:1558
+#: src/gui/socialwindow.cpp:1562
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s zaprosił/a Cię do grupy %s ."
 
-#: src/gui/socialwindow.cpp:1567
+#: src/gui/socialwindow.cpp:1571
 msgid "Accept Party Invite"
 msgstr "Zaakceptuj zaproszenie do grupy"
 
-#: src/gui/socialwindow.cpp:1582
+#: src/gui/socialwindow.cpp:1586
 msgid "Cannot create party. You are already in a party"
 msgstr "Nie można utworzyć grupy. Już należysz do grupy."
 
-#: src/gui/socialwindow.cpp:1587
+#: src/gui/socialwindow.cpp:1591
 msgid "Party Name"
 msgstr "Nazwa grupy"
 
-#: src/gui/socialwindow.cpp:1588
+#: src/gui/socialwindow.cpp:1592
 msgid "Choose your party's name."
 msgstr "Wybierz nazwę grupy."
 
