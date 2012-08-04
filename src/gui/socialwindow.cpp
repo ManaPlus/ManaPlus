@@ -1211,11 +1211,13 @@ SocialWindow::SocialWindow() :
     loadWindowState();
 
     // TRANSLATORS: here P is title for visible players tab in social window
-    mPlayers = new SocialPlayersTab(_("P"), getOptionBool("showtabbackground"));
+    mPlayers = new SocialPlayersTab(_("P"),
+        getOptionBool("showtabbackground"));
     mTabs->addTab(mPlayers, mPlayers->mScroll);
 
     // TRANSLATORS: here F is title for friends tab in social window
-    mFriends = new SocialFriendsTab(_("F"), getOptionBool("showtabbackground"));
+    mFriends = new SocialFriendsTab(_("F"),
+        getOptionBool("showtabbackground"));
     mTabs->addTab(mFriends, mFriends->mScroll);
 
     mNavigation = new SocialNavigationTab(getOptionBool("showtabbackground"));
@@ -1223,7 +1225,8 @@ SocialWindow::SocialWindow() :
 
     if (config.getBoolValue("enableAttackFilter"))
     {
-        mAttackFilter = new SocialAttackTab(getOptionBool("showtabbackground"));
+        mAttackFilter = new SocialAttackTab(
+            getOptionBool("showtabbackground"));
         mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
     }
     else
@@ -1233,7 +1236,8 @@ SocialWindow::SocialWindow() :
 
     if (config.getBoolValue("enablePickupFilter"))
     {
-        mPickupFilter = new SocialPickupTab(getOptionBool("showtabbackground"));
+        mPickupFilter = new SocialPickupTab(
+            getOptionBool("showtabbackground"));
         mTabs->addTab(mPickupFilter, mPickupFilter->mScroll);
     }
     else
