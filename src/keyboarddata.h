@@ -484,7 +484,7 @@ static KeyData const keyData[Input::KEY_TOTAL] = {
         Input::KEY_NO_VALUE, 50,
         COND_GAME | COND_NOTARGET},
     {"keyWindowBotChecker",
-        INPUT_KEYBOARD, SDLK_LEFTBRACKET,
+        INPUT_UNKNOWN, Input::KEY_NO_VALUE,
         INPUT_UNKNOWN, Input::KEY_NO_VALUE,
         Input::GRP_DEFAULT | Input::GRP_GUI,
         &ActionManager::botcheckerWindowShow,
