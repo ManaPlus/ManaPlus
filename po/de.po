@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2012-07-29 21:31+0300\n"
-"PO-Revision-Date: 2012-07-29 18:38+0000\n"
+"POT-Creation-Date: 2012-08-04 15:02+0300\n"
+"PO-Revision-Date: 2012-08-04 12:05+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/manaplus/language/"
 "de/)\n"
@@ -415,7 +415,7 @@ msgstr "Bewegen"
 msgid "Result"
 msgstr "Resultat"
 
-#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:152
+#: src/gui/botcheckerwindow.cpp:312 src/gui/npcdialog.cpp:154
 msgid "Reset"
 msgstr "Zurücksetzten"
 
@@ -438,7 +438,7 @@ msgstr "Menge:"
 #. TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:107 src/gui/itemamountwindow.cpp:205
-#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:141
+#: src/gui/itemamountwindow.cpp:233 src/gui/npcdialog.cpp:143
 #: src/gui/selldialog.cpp:91 src/gui/statuswindow.cpp:792
 msgid "+"
 msgstr "+"
@@ -446,7 +446,7 @@ msgstr "+"
 #. TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
 #. You may change this symbol if your language uses another.
 #: src/gui/buydialog.cpp:110 src/gui/itemamountwindow.cpp:204
-#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:142
+#: src/gui/itemamountwindow.cpp:232 src/gui/npcdialog.cpp:144
 #: src/gui/selldialog.cpp:92 src/gui/statuswindow.cpp:804
 msgid "-"
 msgstr "-"
@@ -465,7 +465,7 @@ msgid "Max"
 msgstr "Max"
 
 #: src/gui/buyselldialog.cpp:40 src/gui/buyselldialog.cpp:49
-#: src/gui/inventorywindow.cpp:179 src/gui/setup_other.cpp:147
+#: src/gui/inventorywindow.cpp:180 src/gui/setup_other.cpp:147
 msgid "Shop"
 msgstr "Laden"
 
@@ -595,7 +595,7 @@ msgstr "^"
 msgid "Race:"
 msgstr "Rasse:"
 
-#: src/gui/charcreatedialog.cpp:133 src/gui/charselectdialog.cpp:627
+#: src/gui/charcreatedialog.cpp:133 src/gui/charselectdialog.cpp:630
 #: src/gui/socialwindow.cpp:1197
 msgid "Create"
 msgstr "Erstellen"
@@ -670,23 +670,23 @@ msgstr "Gib dein Passwort ein, um den Charakter zu löschen"
 msgid "Enter password:"
 msgstr "Gib dein Passwort ein:"
 
-#: src/gui/charselectdialog.cpp:558 src/gui/serverdialog.cpp:282
+#: src/gui/charselectdialog.cpp:561 src/gui/serverdialog.cpp:282
 #: src/gui/setupactiondata.h:1505 src/gui/setup_relations.cpp:245
 #: src/gui/shopwindow.cpp:123 src/gui/shopwindow.cpp:126
 #: src/gui/textcommandeditor.cpp:196
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/gui/charselectdialog.cpp:615
+#: src/gui/charselectdialog.cpp:618
 msgid "Choose"
 msgstr "Wähle"
 
-#: src/gui/charselectdialog.cpp:618
+#: src/gui/charselectdialog.cpp:621
 #, c-format
 msgid "Level %d"
 msgstr "Level: %d"
 
-#: src/gui/charselectdialog.cpp:629 src/gui/charselectdialog.cpp:630
+#: src/gui/charselectdialog.cpp:632 src/gui/charselectdialog.cpp:633
 msgid "(empty)"
 msgstr "(leer)"
 
@@ -750,7 +750,7 @@ msgstr "Regenbogen 3"
 #: src/gui/chatwindow.cpp:152 src/gui/inventorywindow.cpp:94
 #: src/gui/itemamountwindow.cpp:93 src/gui/logindialog.cpp:76
 #: src/gui/logindialog.cpp:104 src/gui/setup_relations.cpp:224
-#: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:155
+#: src/gui/setup_theme.cpp:109 src/gui/setup_theme.cpp:156
 #: src/gui/setup_video.cpp:217 src/gui/textcommandeditor.cpp:100
 #: src/gui/textcommandeditor.cpp:140 src/gui/textcommandeditor.cpp:160
 #: src/gui/widgets/extendednamesmodel.cpp:49 src/gui/widgets/namesmodel.cpp:48
@@ -767,7 +767,7 @@ msgstr "Chat"
 msgid "Present: %s; %d players are present."
 msgstr "Anwesend: %s ; %d Spieler sind anwesend."
 
-#: src/gui/chatwindow.cpp:1095
+#: src/gui/chatwindow.cpp:1096
 #, c-format
 msgid "Whispering to %s: %s"
 msgstr "Flüstern zu %s: %s"
@@ -946,9 +946,9 @@ msgid "Did You Know?"
 msgstr "Wusstest du schon?"
 
 #: src/gui/didyouknowwindow.cpp:68 src/gui/helpwindow.cpp:65
-#: src/gui/inventorywindow.cpp:209 src/gui/npcdialog.cpp:60
-#: src/gui/npcdialog.cpp:138 src/gui/popupmenu.cpp:502
-#: src/gui/questswindow.cpp:91 src/gui/shopwindow.cpp:114
+#: src/gui/inventorywindow.cpp:210 src/gui/npcdialog.cpp:60
+#: src/gui/npcdialog.cpp:140 src/gui/popupmenu.cpp:502
+#: src/gui/questswindow.cpp:95 src/gui/shopwindow.cpp:114
 msgid "Close"
 msgstr "Schließen"
 
@@ -994,13 +994,13 @@ msgstr "Beschreibung:"
 msgid "Please at least type both the address and the port of the server."
 msgstr "Bitte die Adresse und den Port eines Servers eingeben."
 
-#: src/gui/equipmentwindow.cpp:65 src/gui/inventorywindow.cpp:180
+#: src/gui/equipmentwindow.cpp:65 src/gui/inventorywindow.cpp:181
 #: src/gui/windowmenu.cpp:83
 msgid "Equipment"
 msgstr "Ausrüstung"
 
-#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:164
-#: src/gui/inventorywindow.cpp:591 src/gui/popupmenu.cpp:1659
+#: src/gui/equipmentwindow.cpp:100 src/gui/inventorywindow.cpp:165
+#: src/gui/inventorywindow.cpp:592 src/gui/popupmenu.cpp:1659
 #: src/gui/popupmenu.cpp:1760 src/gui/popupmenu.cpp:1816
 msgid "Unequip"
 msgstr "Ablegen"
@@ -1034,58 +1034,58 @@ msgstr "nach Art"
 msgid "Inventory"
 msgstr "Inventar"
 
-#: src/gui/inventorywindow.cpp:141
+#: src/gui/inventorywindow.cpp:142
 msgid "Slots:"
 msgstr "Plätze:"
 
-#: src/gui/inventorywindow.cpp:153
+#: src/gui/inventorywindow.cpp:154
 msgid "Filter:"
 msgstr "Filter:"
 
-#: src/gui/inventorywindow.cpp:162 src/gui/inventorywindow.cpp:593
+#: src/gui/inventorywindow.cpp:163 src/gui/inventorywindow.cpp:594
 #: src/gui/popupmenu.cpp:1661 src/gui/popupmenu.cpp:1762
 #: src/gui/popupmenu.cpp:1818
 msgid "Equip"
 msgstr "Ausrüsten"
 
-#: src/gui/inventorywindow.cpp:163 src/gui/inventorywindow.cpp:597
+#: src/gui/inventorywindow.cpp:164 src/gui/inventorywindow.cpp:598
 #: src/gui/popupmenu.cpp:1665 src/gui/popupmenu.cpp:1729
 #: src/gui/popupmenu.cpp:1766 src/gui/popupmenu.cpp:1822
 #: src/gui/skilldialog.cpp:242
 msgid "Use"
 msgstr "Benutzen"
 
-#: src/gui/inventorywindow.cpp:176 src/gui/inventorywindow.cpp:693
+#: src/gui/inventorywindow.cpp:177 src/gui/inventorywindow.cpp:694
 #: src/gui/popupmenu.cpp:1670 src/gui/popupmenu.cpp:1771
 #: src/gui/popupmenu.cpp:1827
 msgid "Drop..."
 msgstr "Wegwerfen"
 
-#: src/gui/inventorywindow.cpp:177 src/gui/popupmenu.cpp:1679
+#: src/gui/inventorywindow.cpp:178 src/gui/popupmenu.cpp:1679
 #: src/gui/popupmenu.cpp:1780 src/gui/popupmenu.cpp:1836
 msgid "Split"
 msgstr "Aufteilen"
 
-#: src/gui/inventorywindow.cpp:178 src/gui/outfitwindow.cpp:64
+#: src/gui/inventorywindow.cpp:179 src/gui/outfitwindow.cpp:64
 #: src/gui/popupmenu.cpp:461 src/gui/setupactiondata.h:1556
 msgid "Outfits"
 msgstr "Ausrüstung"
 
-#: src/gui/inventorywindow.cpp:182
+#: src/gui/inventorywindow.cpp:183
 msgid "Weight:"
 msgstr "Gewicht:"
 
-#: src/gui/inventorywindow.cpp:207 src/gui/inventorywindow.cpp:684
+#: src/gui/inventorywindow.cpp:208 src/gui/inventorywindow.cpp:685
 #: src/gui/popupmenu.cpp:1644 src/gui/popupmenu.cpp:1783
 #: src/gui/popupmenu.cpp:1839 src/gui/setup.cpp:74
 msgid "Store"
 msgstr "Aufbewahren"
 
-#: src/gui/inventorywindow.cpp:208 src/gui/popupmenu.cpp:1686
+#: src/gui/inventorywindow.cpp:209 src/gui/popupmenu.cpp:1686
 msgid "Retrieve"
 msgstr "Abholen"
 
-#: src/gui/inventorywindow.cpp:695 src/gui/popupmenu.cpp:1675
+#: src/gui/inventorywindow.cpp:696 src/gui/popupmenu.cpp:1675
 #: src/gui/popupmenu.cpp:1776 src/gui/popupmenu.cpp:1832
 #: src/gui/windowmenu.cpp:106
 msgid "Drop"
@@ -1352,7 +1352,7 @@ msgstr "Absenden"
 msgid "NPC"
 msgstr "NPC"
 
-#: src/gui/npcdialog.cpp:134 src/gui/popupmenu.cpp:504
+#: src/gui/npcdialog.cpp:136 src/gui/popupmenu.cpp:504
 msgid "Clear"
 msgstr "Leeren"
 
@@ -1723,11 +1723,11 @@ msgstr "Von der Aufhebeliste entfernen"
 msgid "Add to pickup list"
 msgstr "Zur Aufhebeliste hinzufügen"
 
-#: src/gui/questswindow.cpp:85 src/gui/windowmenu.cpp:74
+#: src/gui/questswindow.cpp:86 src/gui/windowmenu.cpp:74
 msgid "Quests"
 msgstr ""
 
-#: src/gui/questswindow.cpp:186 src/gui/setup_input.cpp:353
+#: src/gui/questswindow.cpp:191 src/gui/setup_input.cpp:354
 msgid "unknown"
 msgstr "unbekannt"
 
@@ -3201,82 +3201,86 @@ msgid "Indonesian"
 msgstr "Indonesisch"
 
 #: src/gui/setup_theme.cpp:134
+msgid "Italian"
+msgstr ""
+
+#: src/gui/setup_theme.cpp:135
 msgid "Polish"
 msgstr "Polnisch"
 
-#: src/gui/setup_theme.cpp:135
+#: src/gui/setup_theme.cpp:136
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: src/gui/setup_theme.cpp:136
+#: src/gui/setup_theme.cpp:137
 msgid "Dutch (Belgium/Flemish)"
 msgstr "Niederländisch (Belgisch/Flämisch)"
 
-#: src/gui/setup_theme.cpp:137
+#: src/gui/setup_theme.cpp:138
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: src/gui/setup_theme.cpp:138
+#: src/gui/setup_theme.cpp:139
 msgid "Portuguese (Brazilian)"
 msgstr "Portugiesisch (Brasilien)"
 
-#: src/gui/setup_theme.cpp:139
+#: src/gui/setup_theme.cpp:140
 msgid "Russian"
 msgstr "Russisch"
 
-#: src/gui/setup_theme.cpp:140
+#: src/gui/setup_theme.cpp:141
 msgid "Spanish (Castilian)"
 msgstr "Spanisch (Kastilisch)"
 
-#: src/gui/setup_theme.cpp:173
+#: src/gui/setup_theme.cpp:174
 msgid "Theme"
 msgstr "Theme"
 
-#: src/gui/setup_theme.cpp:175
+#: src/gui/setup_theme.cpp:176
 msgid "Gui theme"
 msgstr "GUI Theme"
 
-#: src/gui/setup_theme.cpp:176
+#: src/gui/setup_theme.cpp:177
 msgid "Language"
 msgstr "Sprache"
 
-#: src/gui/setup_theme.cpp:177
+#: src/gui/setup_theme.cpp:178
 msgid "Main Font"
 msgstr "Hauptschriftart"
 
-#: src/gui/setup_theme.cpp:178
+#: src/gui/setup_theme.cpp:179
 msgid "Bold font"
 msgstr "Dicke Schrift"
 
-#: src/gui/setup_theme.cpp:179
+#: src/gui/setup_theme.cpp:180
 msgid "Particle font"
 msgstr "Schrift von Spieleraktionen"
 
-#: src/gui/setup_theme.cpp:180
+#: src/gui/setup_theme.cpp:181
 msgid "Help font"
 msgstr "Hilfe Schriftart"
 
-#: src/gui/setup_theme.cpp:181
+#: src/gui/setup_theme.cpp:182
 msgid "Secure font"
 msgstr "Sichere Schriftart"
 
-#: src/gui/setup_theme.cpp:182
+#: src/gui/setup_theme.cpp:183
 msgid "Japanese font"
 msgstr "Japanische Schrift"
 
-#: src/gui/setup_theme.cpp:219
+#: src/gui/setup_theme.cpp:220
 msgid "Font size"
 msgstr "Schriftgröße"
 
-#: src/gui/setup_theme.cpp:225
+#: src/gui/setup_theme.cpp:226
 msgid "Npc font size"
 msgstr ""
 
-#: src/gui/setup_theme.cpp:371
+#: src/gui/setup_theme.cpp:372
 msgid "Theme Changed"
 msgstr "Theme geändert"
 
-#: src/gui/setup_theme.cpp:371 src/gui/setup_video.cpp:496
+#: src/gui/setup_theme.cpp:372 src/gui/setup_video.cpp:496
 #: src/gui/setup_video.cpp:503
 msgid "Restart your client for the change to take effect."
 msgstr "Starte das Spiel neu, um die Änderungen zu übernehmen."
@@ -3677,7 +3681,7 @@ msgstr "Gegenstände ignorieren"
 msgid "Create Guild"
 msgstr "Gilde erstellen"
 
-#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1580
+#: src/gui/socialwindow.cpp:1133 src/gui/socialwindow.cpp:1581
 msgid "Create Party"
 msgstr "Gruppe erstellen"
 
@@ -3699,94 +3703,94 @@ msgstr "P"
 msgid "F"
 msgstr "F"
 
-#: src/gui/socialwindow.cpp:1363
+#: src/gui/socialwindow.cpp:1364
 #, c-format
 msgid "Accepted party invite from %s."
 msgstr "Gruppeneinladung von %s angenommen."
 
-#: src/gui/socialwindow.cpp:1373
+#: src/gui/socialwindow.cpp:1374
 #, c-format
 msgid "Rejected party invite from %s."
 msgstr "Gruppeneinladung von %s abgelehnt."
 
-#: src/gui/socialwindow.cpp:1390
+#: src/gui/socialwindow.cpp:1391
 #, c-format
 msgid "Accepted guild invite from %s."
 msgstr "Gildeneinladung von %s angenommen."
 
-#: src/gui/socialwindow.cpp:1403
+#: src/gui/socialwindow.cpp:1404
 #, c-format
 msgid "Rejected guild invite from %s."
 msgstr "Gildeneinladung von %s abgelehnt."
 
-#: src/gui/socialwindow.cpp:1450
+#: src/gui/socialwindow.cpp:1451
 #, c-format
 msgid "Creating guild called %s."
 msgstr "Erstelle der Gilde %s."
 
-#: src/gui/socialwindow.cpp:1473
+#: src/gui/socialwindow.cpp:1474
 #, c-format
 msgid "Creating party called %s."
 msgstr "Erstelle die Gruppe \"%s\""
 
-#: src/gui/socialwindow.cpp:1487
+#: src/gui/socialwindow.cpp:1488
 msgid "Guild Name"
 msgstr "Gildenname"
 
-#: src/gui/socialwindow.cpp:1488
+#: src/gui/socialwindow.cpp:1489
 msgid "Choose your guild's name."
 msgstr "Wähle den Namen deiner Gilde"
 
-#: src/gui/socialwindow.cpp:1502
+#: src/gui/socialwindow.cpp:1503
 msgid "Received guild request, but one already exists."
 msgstr "Anfrage für eine Gruppe erhalten, es wurde schon einmal angefragt."
 
-#: src/gui/socialwindow.cpp:1508
+#: src/gui/socialwindow.cpp:1509
 #, c-format
 msgid "%s has invited you to join the guild %s."
 msgstr "%s hat dich eingeladen, seiner Gilde %s beizutreten."
 
-#: src/gui/socialwindow.cpp:1514
+#: src/gui/socialwindow.cpp:1515
 msgid "Accept Guild Invite"
 msgstr "Nehme Gildeneinladung an"
 
-#: src/gui/socialwindow.cpp:1529
+#: src/gui/socialwindow.cpp:1530
 msgid "Received party request, but one already exists."
 msgstr ""
 "Anfrage für eine Gruppe erhalten, aber du bist bereits in einer Gruppe."
 
-#: src/gui/socialwindow.cpp:1540
+#: src/gui/socialwindow.cpp:1541
 msgid "You have been invited you to join a party."
 msgstr "Du wurdest zu einer Gruppe eingeladen."
 
-#: src/gui/socialwindow.cpp:1544
+#: src/gui/socialwindow.cpp:1545
 #, c-format
 msgid "You have been invited to join the %s party."
 msgstr "Du wurdest zu der Gruppe %s eingeladen."
 
-#: src/gui/socialwindow.cpp:1552
+#: src/gui/socialwindow.cpp:1553
 #, c-format
 msgid "%s has invited you to join their party."
 msgstr "%s hat dich in seine Gruppe eingeladen."
 
-#: src/gui/socialwindow.cpp:1557
+#: src/gui/socialwindow.cpp:1558
 #, c-format
 msgid "%s has invited you to join the %s party."
 msgstr "%s hat dich eingeladen, an der Gruppe %s teilzunehmen."
 
-#: src/gui/socialwindow.cpp:1566
+#: src/gui/socialwindow.cpp:1567
 msgid "Accept Party Invite"
 msgstr "Nehme Gruppeneinladung an"
 
-#: src/gui/socialwindow.cpp:1581
+#: src/gui/socialwindow.cpp:1582
 msgid "Cannot create party. You are already in a party"
 msgstr "Konnte keine Gruppe erstellen. Du bist schon in einer Gruppe."
 
-#: src/gui/socialwindow.cpp:1586
+#: src/gui/socialwindow.cpp:1587
 msgid "Party Name"
 msgstr "Gruppenname"
 
-#: src/gui/socialwindow.cpp:1587
+#: src/gui/socialwindow.cpp:1588
 msgid "Choose your party's name."
 msgstr "Name deiner Gruppe wählen."
 

@@ -119,7 +119,7 @@ struct Language
     std::string value;
 };
 
-const int langs_count = 15;
+const int langs_count = 16;
 
 const Language LANG_NAME[langs_count] =
 {
@@ -131,6 +131,7 @@ const Language LANG_NAME[langs_count] =
     {N_("French"), "fr_FR"},
     {N_("German"), "de_DE"},
     {N_("Indonesian"), "id_ID"},
+    {N_("Italian"), "it_IT"},
     {N_("Polish"), "pl_PL"},
     {N_("Japanese"), "ja_JP.utf8"},
     {N_("Dutch (Belgium/Flemish)"), "nl_BE"},
