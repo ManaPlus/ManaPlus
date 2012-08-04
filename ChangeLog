@@ -1,3 +1,21 @@
+2012-08-05 New release 1.2.8.5
+fix: colors in speech buuble.
+fix: emote shortcuts default size.
+fix: radio button images in wood theme.
+fix: guild bot message delay.
+fix: unassign key action.
+add: open urls in browser.
+add: chat command /url LINK
+put url link in chat.
+add: chat command /openurl LINK
+open url in browser.
+add: equipment button in inventory.
+add: key for disable full screen mode.
+add: support for images in npc menu.
+add: new font dejavu serif condensed.
+add: extend background theming.
+add: quests window (evol only).
+
 2012-07-22 New release 1.2.7.22
 fix: allow moving with opened buy/sell dialogs by mouse.
 fix: not allow moving with opened storage window.
