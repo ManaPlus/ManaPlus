@@ -176,7 +176,7 @@ ChatWindow::ChatWindow():
         setupWindow->registerWindowForReset(this);
 
     // no title presented, title bar is padding so window can be moved.
-    gcn::Window::setTitleBarHeight(gcn::Window::getPadding() + 4);
+    setTitleBarHeight(getPadding() + getTitlePadding());
     setShowTitle(false);
     setResizable(true);
     setDefaultVisible(true);

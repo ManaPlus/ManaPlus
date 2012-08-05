@@ -399,12 +399,14 @@ class Window : public gcn::Window, gcn::WidgetListener
         void setCaptionFont(gcn::Font *font)
         { mCaptionFont = font; }
 
-        int getOption(std::string name);
+    protected:
+        bool canMove();
+
+        int getOption(std::string name, int def = 0);
 
         bool getOptionBool(std::string name);
 
-    protected:
-        bool canMove();
+        int getTitlePadding();
 
         Skin *mSkin;                  /**< Skin in use by this window */
 

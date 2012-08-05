@@ -63,7 +63,8 @@ OkDialog::OkDialog(const std::string &title, const std::string &msg,
 
     // 8 is the padding that GUIChan adds to button widgets
     // (top and bottom combined)
-    okButton->setPosition((width - okButton->getWidth()) / 2, height + 8);
+    okButton->setPosition((width - okButton->getWidth()) / 2,
+        height + getOption("buttonPadding", 8));
 
     add(mTextBox);
     add(okButton);

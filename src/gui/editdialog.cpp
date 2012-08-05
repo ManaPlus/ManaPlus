@@ -53,7 +53,8 @@ EditDialog::EditDialog(const std::string &title, const std::string &msg,
     mTextField->setPosition(getPadding(), getPadding());
     mTextField->setWidth(width - (2 * getPadding()));
 
-    okButton->setPosition((width - okButton->getWidth()) / 2, height + 8);
+    okButton->setPosition((width - okButton->getWidth()) / 2,
+        height + getOption("buttonPadding", 8));
 
     add(mTextField);
     add(okButton);

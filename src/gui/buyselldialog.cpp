@@ -64,7 +64,8 @@ void BuySellDialog::init()
     {
         N_("Buy"), N_("Sell"), N_("Cancel"), nullptr
     };
-    int x = 10, y = 10;
+    const int buttonPadding = getOption("buttonpadding", 10);
+    int x = buttonPadding, y = buttonPadding;
 
     for (const char **curBtn = buttonNames; *curBtn; curBtn++)
     {
@@ -73,7 +74,7 @@ void BuySellDialog::init()
             mBuyButton = btn; // For focus request
         btn->setPosition(x, y);
         add(btn);
-        x += btn->getWidth() + 10;
+        x += btn->getWidth() + buttonPadding;
     }
     mBuyButton->requestFocus();
 

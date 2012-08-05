@@ -73,14 +73,14 @@ ConfirmDialog::ConfirmDialog(const std::string &title, const std::string &msg,
 
     // 8 is the padding that GUIChan adds to button widgets
     // (top and bottom combined)
-    yesButton->setPosition((width - inWidth) / 2, height + 8);
+    const int buttonPadding = getOption("buttonPadding", 8);
+    yesButton->setPosition((width - inWidth) / 2, height + buttonPadding);
     noButton->setPosition(yesButton->getX() + yesButton->getWidth()
-                          + (2 * getPadding()),
-                          height + 8);
+        + (2 * getPadding()), height + buttonPadding);
     if (ignoreButton)
     {
         ignoreButton->setPosition(noButton->getX() + noButton->getWidth()
-                                  + (2 * getPadding()), height + 8);
+            + (2 * getPadding()), height + buttonPadding);
     }
 
     add(mTextBox);

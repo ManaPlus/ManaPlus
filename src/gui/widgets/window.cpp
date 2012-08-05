@@ -1023,11 +1023,16 @@ gcn::Rectangle Window::getWindowArea()
                           getHeight() - getPadding() * 2);
 }
 
-int Window::getOption(std::string name)
+int Window::getOption(std::string name, int def)
 {
     if (mSkin)
-        return mSkin->getOption(name);
-    return 0;
+    {
+        int val = mSkin->getOption(name);
+        if (val)
+            return val;
+        return def;
+    }
+    return def;
 }
 
 bool Window::getOptionBool(std::string name)
@@ -1035,4 +1040,11 @@ bool Window::getOptionBool(std::string name)
     if (mSkin)
         return mSkin->getOption(name) != 0;
     return 0;
+}
+
+int Window::getTitlePadding()
+{
+    if (mSkin)
+        mSkin->getTitlePadding();
+    return 4;
 }

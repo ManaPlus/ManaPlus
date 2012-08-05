@@ -76,11 +76,12 @@ Setup::Setup():
         nullptr
     };
     int x = width;
+    const int buttonPadding = getOption("buttonPadding", 5);
     for (const char **curBtn = buttonNames; *curBtn; ++ curBtn)
     {
         Button *btn = new Button(gettext(*curBtn), *curBtn, this);
-        x -= btn->getWidth() + 5;
-        btn->setPosition(x, height - btn->getHeight() - 5);
+        x -= btn->getWidth() + buttonPadding;
+        btn->setPosition(x, height - btn->getHeight() - buttonPadding);
         add(btn);
 
         // Store this button, as it needs to be enabled/disabled

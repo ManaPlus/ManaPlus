@@ -99,8 +99,9 @@ EquipmentWindow::EquipmentWindow(Equipment *equipment, Being *being,
 
     mUnequip = new Button(_("Unequip"), "unequip", this);
     const gcn::Rectangle &area = getChildrenArea();
-    mUnequip->setPosition(area.width  - mUnequip->getWidth() - 5,
-                          area.height - mUnequip->getHeight() - 5);
+    const int buttonPadding = getOption("buttonPadding", 5);
+    mUnequip->setPosition(area.width  - mUnequip->getWidth() - buttonPadding,
+        area.height - mUnequip->getHeight() - buttonPadding);
     mUnequip->setEnabled(false);
 
     add(mPlayerBox);
