@@ -933,9 +933,16 @@ int Client::gameExec()
             mServerName = mCurrentServer.hostname;
             initServerConfig(mCurrentServer.hostname);
             if (mOptions.username.empty())
-                loginData.username = serverConfig.getValue("username", "");
+            {
+                if (loginData.remember)
+                    loginData.username = serverConfig.getValue("username", "");
+                else
+                    loginData.username = "";
+            }
             else
+            {
                 loginData.username = mOptions.username;
+            }
 
             loginData.remember = serverConfig.getValue("remember", 1);
 
@@ -1957,6 +1964,8 @@ void Client::accountLogin(LoginData *data)
     // than the login gui window
     if (data->remember)
         serverConfig.setValue("username", data->username);
+    else
+        serverConfig.setValue("username", "");
     serverConfig.setValue("remember", data->remember);
 }
 
