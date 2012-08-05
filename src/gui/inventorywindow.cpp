@@ -186,12 +186,12 @@ InventoryWindow::InventoryWindow(Inventory *inventory):
         place(0, 0, mWeightLabel, 1).setPadding(3);
         place(1, 0, mWeightBar, 3);
         place(4, 0, mSlotsLabel, 1).setPadding(3);
-        mSlotsBarCell = &place(5, 0, mSlotsBar, 3);
-        mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
+        mSlotsBarCell = &place(5, 0, mSlotsBar, 4);
+        mSortDropDownCell = &place(9, 0, mSortDropDown, 2);
 
         place(0, 1, mFilterLabel, 1).setPadding(3);
-        mFilterCell = &place(1, 1, mFilter, 8).setPadding(3);
-        mNameFilterCell = &place(8, 1, mNameFilter, 3);
+        mFilterCell = &place(1, 1, mFilter, 9).setPadding(3);
+        mNameFilterCell = &place(9, 1, mNameFilter, 2);
 
         place(0, 2, invenScroll, 11).setPadding(3);
         place(0, 3, mUseButton);
@@ -724,23 +724,23 @@ void InventoryWindow::widgetResized(const gcn::Event &event)
     {
         if (!mCompactMode)
         {
-            mSortDropDown->setVisible(false);
+            //mSortDropDown->setVisible(false);
             mNameFilter->setVisible(false);
-            mSortDropDownCell->setType(LayoutCell::NONE);
+            //mSortDropDownCell->setType(LayoutCell::NONE);
             mNameFilterCell->setType(LayoutCell::NONE);
-            mFilterCell->setWidth(mFilterCell->getWidth() + 3);
-            mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() + 3);
+            mFilterCell->setWidth(mFilterCell->getWidth() + 2);
+            //mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() + 3);
             mCompactMode = true;
         }
     }
     else if (mCompactMode)
     {
-        mSortDropDown->setVisible(true);
+        //mSortDropDown->setVisible(true);
         mNameFilter->setVisible(true);
-        mSortDropDownCell->setType(LayoutCell::WIDGET);
+        //mSortDropDownCell->setType(LayoutCell::WIDGET);
         mNameFilterCell->setType(LayoutCell::WIDGET);
-        mFilterCell->setWidth(mFilterCell->getWidth() - 3);
-        mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() - 3);
+        mFilterCell->setWidth(mFilterCell->getWidth() - 2);
+        //mSlotsBarCell->setWidth(mSlotsBarCell->getWidth() - 3);
         mCompactMode = false;
     }
 }
