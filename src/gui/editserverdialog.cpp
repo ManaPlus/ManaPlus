@@ -86,6 +86,7 @@ EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
     mNameField = new TextField(std::string());
     mDescriptionField = new TextField(std::string());
 
+    mConnectButton = new Button(_("Connect"), "connect", this);
     mOkButton = new Button(_("OK"), "addServer", this);
     mCancelButton = new Button(_("Cancel"), "cancel", this);
 
@@ -102,6 +103,7 @@ EditServerDialog::EditServerDialog(ServerDialog *parent, ServerInfo server,
     place(1, 3, mTypeField).setPadding(3);
     place(0, 4, descriptionLabel);
     place(1, 4, mDescriptionField, 4).setPadding(3);
+    place(0, 5, mConnectButton);
     place(4, 5, mOkButton);
     place(3, 5, mCancelButton);
 
@@ -182,12 +184,14 @@ void EditServerDialog::logic()
 
 void EditServerDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "ok")
+    const std::string &eventId = event.getId();
+
+    if (eventId == "ok")
     {
         // Give focus back to the server dialog.
         mServerAddressField->requestFocus();
     }
-    if (event.getId() == "addServer")
+    if (eventId == "addServer" || eventId == "connect")
     {
         // Check the given information
         if (mServerAddressField->getText().empty()
@@ -249,10 +253,12 @@ void EditServerDialog::action(const gcn::ActionEvent &event)
 
             //Add server
             mServerDialog->updateServer(mServer, mIndex);
+            if (eventId == "connect")
+                mServerDialog->connectToSelectedServer();
             scheduleDelete();
         }
     }
-    else if (event.getId() == "cancel")
+    else if (eventId == "cancel")
     {
         scheduleDelete();
     }

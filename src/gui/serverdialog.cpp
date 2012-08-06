@@ -339,68 +339,74 @@ ServerDialog::~ServerDialog()
     mServersListModel = nullptr;
 }
 
+void ServerDialog::connectToSelectedServer()
+{
+    if (Client::getState() == STATE_CONNECT_SERVER)
+        return;
+
+    int index = mServersList->getSelected();
+    if (index < 0)
+        return;
+
+    if (mDownload)
+        mDownload->cancel();
+
+    mQuitButton->setEnabled(false);
+    mConnectButton->setEnabled(false);
+    mLoadButton->setEnabled(false);
+
+    ServerInfo server = mServers.at(index);
+    mServerInfo->hostname = server.hostname;
+    mServerInfo->port = server.port;
+    mServerInfo->type = server.type;
+    mServerInfo->name = server.name;
+    mServerInfo->description = server.description;
+    mServerInfo->save = true;
+
+    if (chatLogger)
+        chatLogger->setServerName(mServerInfo->hostname);
+
+    saveCustomServers(*mServerInfo);
+
+    if (!LoginDialog::savedPasswordKey.empty())
+    {
+        if (mServerInfo->hostname != LoginDialog::savedPasswordKey)
+            LoginDialog::savedPassword = "";
+    }
+
+    config.setValue("usePersistentIP",
+        mPersistentIPCheckBox->isSelected());
+    Client::setState(STATE_CONNECT_SERVER);
+}
+
 void ServerDialog::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "connect")
+    const std::string &eventId = event.getId();
+    if (eventId == "connect")
     {
-        if (Client::getState() == STATE_CONNECT_SERVER)
-            return;
-
-        int index = mServersList->getSelected();
-        if (index < 0)
-            return;
-
-        if (mDownload)
-            mDownload->cancel();
-
-        mQuitButton->setEnabled(false);
-        mConnectButton->setEnabled(false);
-        mLoadButton->setEnabled(false);
-
-        ServerInfo server = mServers.at(index);
-        mServerInfo->hostname = server.hostname;
-        mServerInfo->port = server.port;
-        mServerInfo->type = server.type;
-        mServerInfo->name = server.name;
-        mServerInfo->description = server.description;
-        mServerInfo->save = true;
-
-        if (chatLogger)
-            chatLogger->setServerName(mServerInfo->hostname);
-
-        saveCustomServers(*mServerInfo);
-
-        if (!LoginDialog::savedPasswordKey.empty())
-        {
-            if (mServerInfo->hostname != LoginDialog::savedPasswordKey)
-                LoginDialog::savedPassword = "";
-        }
-
-        config.setValue("usePersistentIP",
-            mPersistentIPCheckBox->isSelected());
-        Client::setState(STATE_CONNECT_SERVER);
+        connectToSelectedServer();
     }
-    else if (event.getId() == "quit")
+    else if (eventId == "quit")
     {
         if (mDownload)
             mDownload->cancel();
         Client::setState(STATE_FORCE_QUIT);
     }
-    else if (event.getId() == "load")
+    else if (eventId == "load")
     {
         downloadServerList();
     }
-    else if (event.getId() == "addEntry")
+    else if (eventId == "addEntry")
     {
         new EditServerDialog(this, ServerInfo(), -1);
     }
-    else if (event.getId() == "editEntry")
+    else if (eventId == "editEntry")
     {
         int index = mServersList->getSelected();
         if (index >= 0)
             new EditServerDialog(this, mServers.at(index), index);
     }
-    else if (event.getId() == "remove")
+    else if (eventId == "remove")
     {
         int index = mServersList->getSelected();
         if (index >= 0)

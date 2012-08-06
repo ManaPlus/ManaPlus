@@ -125,6 +125,8 @@ class ServerDialog : public Window,
 
         void updateServer(ServerInfo server, int index);
 
+        void connectToSelectedServer();
+
     protected:
         friend class ServersListModel;
 

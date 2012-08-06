@@ -99,6 +99,7 @@ class EditServerDialog : public Window,
         TextField *mPortField;
         TextField *mNameField;
         TextField *mDescriptionField;
+        Button *mConnectButton;
         Button *mOkButton;
         Button *mCancelButton;
 
