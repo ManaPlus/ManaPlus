@@ -112,7 +112,8 @@ short packet_lengths[] =
   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
 };
 
-const unsigned int BUFFER_SIZE = 655360;
+const unsigned int BUFFER_SIZE = 1000000;
+const unsigned int BUFFER_LIMIT = 930000;
 
 int networkThread(void *data)
 {
@@ -443,6 +444,13 @@ void Network::receive()
             case 1:
                 // Receive data from the socket
                 SDL_mutexP(mMutex);
+                if (mInSize > BUFFER_LIMIT)
+                {
+                    SDL_mutexV(mMutex);
+                    SDL_Delay(100);
+                    continue;
+                }
+
                 ret = SDLNet_TCP_Recv(mSocket, mInBuffer + mInSize,
                                       BUFFER_SIZE - mInSize);
 
