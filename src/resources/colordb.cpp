@@ -187,7 +187,6 @@ int ColorDB::getHairSize()
 
 std::map <int, ColorDB::ItemColor> *ColorDB::getColorsList(std::string name)
 {
-    std::map <int, ItemColor> colors;
     ColorListsIterator it = mColorLists.find(name);
 
     if (it != mColorLists.end())

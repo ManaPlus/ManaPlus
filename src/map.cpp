@@ -1124,7 +1124,6 @@ void Map::addExtraLayer()
                 ss >> x;
                 ss >> y;
                 ss >> type1;
-                std::vector<int> tokens;
                 ss >> comment;
                 while (ss >> buf)
                     comment += " " + buf;
