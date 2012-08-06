@@ -35,7 +35,7 @@
 #endif
 
 #define OUTFITS_COUNT 100
-#define OUTFIT_ITEM_COUNT 12
+#define OUTFIT_ITEM_COUNT 16
 
 class Button;
 class CheckBox;

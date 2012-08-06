@@ -65,7 +65,7 @@ OutfitWindow::OutfitWindow():
     mBoxWidth(33),
     mBoxHeight(33),
     mGridWidth(4),
-    mGridHeight(3),
+    mGridHeight(4),
     mItemClicked(false),
     mItemMoved(nullptr),
     mItemSelected(-1),
@@ -80,7 +80,7 @@ OutfitWindow::OutfitWindow():
 
     setDefaultSize(250, 400, 150, 230);
     setMinWidth(145);
-    setMinHeight(220);
+    setMinHeight(260);
 
     mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
     mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
