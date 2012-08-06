@@ -109,6 +109,7 @@ class OutfitWindow : public Window, gcn::ActionListener
     private:
         Button *mPreviousButton;
         Button *mNextButton;
+        Button *mEquipButtom;
         Label *mCurrentLabel;
         CheckBox *mUnequipCheck;
         CheckBox *mAwayOutfitCheck;

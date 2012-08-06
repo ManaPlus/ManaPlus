@@ -78,9 +78,9 @@ OutfitWindow::OutfitWindow():
     setCloseButton(true);
     setStickyButtonLock(true);
 
-    setDefaultSize(250, 400, 150, 230);
+    setDefaultSize(250, 400, 150, 290);
     setMinWidth(145);
-    setMinHeight(260);
+    setMinHeight(283);
 
     mBorderColor = Theme::getThemeColor(Theme::BORDER, 64);
     mBackgroundColor = Theme::getThemeColor(Theme::BACKGROUND, 32);
@@ -94,6 +94,7 @@ OutfitWindow::OutfitWindow():
     mKeyLabel->setAlignment(gcn::Graphics::CENTER);
     mUnequipCheck = new CheckBox(_("Unequip first"),
         serverConfig.getValueBool("OutfitUnequip0", true));
+    mEquipButtom = new Button(_("Equip"), "equip", this);
 
     mAwayOutfitCheck = new CheckBox(_("Away outfit"),
         serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1));
@@ -104,12 +105,13 @@ OutfitWindow::OutfitWindow():
     mAwayOutfitCheck->setActionEventId("away");
     mAwayOutfitCheck->addActionListener(this);
 
-    place(0, 3, mKeyLabel, 4);
-    place(0, 4, mPreviousButton, 1);
-    place(1, 4, mCurrentLabel, 2);
-    place(3, 4, mNextButton, 1);
-    place(0, 5, mUnequipCheck, 4);
-    place(0, 6, mAwayOutfitCheck, 4);
+    place(1, 3, mEquipButtom, 2);
+    place(0, 4, mKeyLabel, 4);
+    place(0, 5, mPreviousButton, 1);
+    place(1, 5, mCurrentLabel, 2);
+    place(3, 5, mNextButton, 1);
+    place(0, 6, mUnequipCheck, 4);
+    place(0, 7, mAwayOutfitCheck, 4);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, Layout::AUTO_SET);
@@ -228,20 +230,27 @@ void OutfitWindow::save()
 
 void OutfitWindow::action(const gcn::ActionEvent &event)
 {
-    if (event.getId() == "next")
+    const std::string eventId = event.getId();
+    if (eventId == "next")
     {
         next();
     }
-    else if (event.getId() == "previous")
+    else if (eventId == "previous")
     {
         previous();
     }
-    else if (event.getId() == "unequip")
+    else if (eventId == "unequip")
     {
         if (mCurrentOutfit < OUTFITS_COUNT)
             mItemsUnequip[mCurrentOutfit] = mUnequipCheck->isSelected();
     }
-    else if (event.getId() == "away")
+    else if (eventId == "equip")
+    {
+        wearOutfit(mCurrentOutfit);
+        if (Game::instance())
+            Game::instance()->setValidSpeed();
+    }
+    else if (eventId == "away")
     {
         mAwayOutfit = mCurrentOutfit;
         if (!mAwayOutfitCheck->isSelected())
