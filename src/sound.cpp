@@ -20,12 +20,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "sound.h"
+
 #include <SDL.h>
 
 #include "configuration.h"
 #include "localplayer.h"
 #include "logger.h"
-#include "sound.h"
 
 #include "resources/music.h"
 #include "resources/resourcemanager.h"

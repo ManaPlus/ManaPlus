@@ -76,7 +76,7 @@ void QuestHandler::processSetQuestVar(Net::MessageIn &msg A_UNUSED)
     if (questsWindow)
     {
         questsWindow->updateQuest(var, val);
-        questsWindow->rebuild();
+        questsWindow->rebuild(true);
     }
 }
 
@@ -91,7 +91,7 @@ void QuestHandler::processPlayerQuests(Net::MessageIn &msg A_UNUSED)
             questsWindow->updateQuest(var, val);
     }
     if (questsWindow)
-        questsWindow->rebuild();
+        questsWindow->rebuild(false);
 }
 
 } // namespace TmwAthena

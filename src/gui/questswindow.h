@@ -59,7 +59,7 @@ class QuestsWindow : public Window, public gcn::ActionListener
 
         void updateQuest(int var, int val);
 
-        void rebuild();
+        void rebuild(bool playSound);
 
         void showQuest(QuestItem *quest);
 

@@ -20,7 +20,9 @@
 
 #include "gui/questswindow.h"
 
+#include "configuration.h"
 #include "logger.h"
+#include "sound.h"
 
 #include "gui/gui.h"
 #include "gui/sdlfont.h"
@@ -247,7 +249,7 @@ void QuestsWindow::updateQuest(int var, int val)
     mVars[var] = val;
 }
 
-void QuestsWindow::rebuild()
+void QuestsWindow::rebuild(bool playSound)
 {
     mQuestsModel->clear();
     mQuestLinks.clear();
@@ -256,6 +258,7 @@ void QuestsWindow::rebuild()
     std::vector<QuestItem*> complete;
     std::vector<QuestItem*> incomplete;
     int updatedQuest = -1;
+    int newCompleteStatus = -1;
 
     for (std::map<int, int>::const_iterator it = mVars.begin(),
          it_end = mVars.end(); it != it_end; ++ it)
@@ -285,7 +288,10 @@ void QuestsWindow::rebuild()
     {
         QuestItem *quest = *it;
         if (quest->completeFlag == 0)
+        {
             updatedQuest = k;
+            newCompleteStatus = 1;
+        }
         quest->completeFlag = 1;
         mQuestLinks.push_back(quest);
         names.push_back(quest->name);
@@ -305,7 +311,10 @@ void QuestsWindow::rebuild()
     {
         QuestItem *quest = *it;
         if (quest->completeFlag == -1)
+        {
             updatedQuest = k;
+            newCompleteStatus = 0;
+        }
         quest->completeFlag = 0;
         mQuestLinks.push_back(quest);
         names.push_back(quest->name);
@@ -328,6 +337,20 @@ void QuestsWindow::rebuild()
     {
         mQuestsListBox->setSelected(updatedQuest);
         showQuest(mQuestLinks[updatedQuest]);
+        if (playSound)
+        {
+            switch (newCompleteStatus)
+            {
+                case 0:
+                    sound.playSfx(paths.getValue("newQuestSfx", ""));
+                    break;
+                case 1:
+                    sound.playSfx(paths.getValue("completeQuestSfx", ""));
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 
