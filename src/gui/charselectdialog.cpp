@@ -585,7 +585,7 @@ CharacterDisplay::CharacterDisplay(CharSelectDialog *charSelectDialog):
             mMoney->getHeight() + mButton->getHeight() + mDelete->getHeight());
 */
 
-    setWidth(100);
+    setWidth(110);
     setHeight(200);
 }
 
