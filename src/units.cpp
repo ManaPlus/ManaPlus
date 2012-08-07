@@ -38,6 +38,7 @@ struct UnitLevel
     std::string symbol;
     int count;
     int round;
+    std::string separator;
 };
 
 struct UnitDescription
@@ -55,6 +56,8 @@ enum UnitType
 };
 
 std::string formatUnit(int value, int type);
+
+std::string splitNumber(std::string str, const std::string &separator);
 
 struct UnitDescription units[UNIT_END];
 
@@ -122,6 +125,7 @@ void Units::loadUnits()
             bu.symbol = XML::getProperty(node, "base", "¤");
             bu.count = 1;
             bu.round = XML::getProperty(node, "round", 2);
+            bu.separator = XML::getProperty(node, "separator", " ");
 
             ud.levels.push_back(bu);
 
@@ -134,6 +138,8 @@ void Units::loadUnits()
                                                  strprintf("¤%d", level));
                     ul.count = XML::getProperty(uLevel, "count", -1);
                     ul.round = XML::getProperty(uLevel, "round", bu.round);
+                    ul.separator = XML::getProperty(uLevel,
+                        "separator", bu.separator);
 
                     if (ul.count > 0)
                     {
@@ -198,8 +204,8 @@ std::string formatUnit(int value, int type)
 
             if (amount > 0)
             {
-                output = strprintf("%.*f%s", pl.round, amount,
-                                    pl.symbol.c_str());
+                output = splitNumber(strprintf("%.*f", pl.round,
+                    amount), pl.separator) + pl.symbol;
             }
 
             for (unsigned int i = 2; i < ud.levels.size(); i++)
@@ -213,8 +219,11 @@ std::string formatUnit(int value, int type)
                     levelAmount %= ul.count;
                 }
 
-                if (levelAmount > 0) output = strprintf("%d%s",
-                    levelAmount, pl.symbol.c_str()) + output;
+                if (levelAmount > 0)
+                {
+                    output = splitNumber(strprintf("%d", levelAmount),
+                        pl.separator) + pl.symbol + output;
+                }
 
                 if (!nextAmount)
                     break;
@@ -237,7 +246,8 @@ std::string formatUnit(int value, int type)
                     amount /= ul.count;
             }
 
-            return strprintf("%.*f%s", ul.round, amount, ul.symbol.c_str());
+            return splitNumber(strprintf("%.*f", ul.round, amount),
+                ul.separator) + ul.symbol;
         }
     }
 }
@@ -250,4 +260,37 @@ std::string Units::formatCurrency(int value)
 std::string Units::formatWeight(int value)
 {
     return formatUnit(value, UNIT_WEIGHT);
+}
+
+std::string splitNumber(std::string str, const std::string &separator)
+{
+    std::string lastPart;
+    size_t point = str.find(".");
+    if (point != std::string::npos)
+    {
+        lastPart = str.substr(point);
+        str = str.substr(0, point);
+    }
+    std::string result;
+
+    if (!str.empty())
+    {
+        while (str.size() >= 3)
+        {
+            if (str.size() >= 6)
+                result = separator + str.substr(str.size() - 3) + result;
+            else
+                result = str.substr(str.size() - 3) + result;
+            str = str.substr(0, str.size() - 3);
+        }
+        if (!str.empty())
+        {
+            if (!result.empty())
+                result = str + separator + result;
+            else
+                result = str;
+        }
+    }
+
+    return result + lastPart;
 }
