@@ -66,6 +66,9 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     mMaxWinWidth(mainGraphics->mWidth),
     mMaxWinHeight(mainGraphics->mHeight),
     mVertexes(new GraphicsVertexes()),
+    mCaptionOffsetX(7),
+    mCaptionOffsetY(5),
+    mCaptionAlign(gcn::Graphics::LEFT),
     mRedraw(true)
 {
     logger->log("Window::Window(\"%s\")", caption.c_str());
@@ -87,7 +90,21 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
     {
         mSkin = Theme::instance()->load(skin, "window.xml");
         if (mSkin)
+        {
             setPadding(mSkin->getPadding());
+            mCaptionOffsetX = getOption("captionoffsetx");
+            if (!mCaptionOffsetX)
+                mCaptionOffsetX = 7;
+            mCaptionOffsetY = getOption("captionoffsety");
+            if (!mCaptionOffsetY)
+                mCaptionOffsetY = 5;
+            mCaptionAlign = getOption("captionallign");
+            if (mCaptionAlign < gcn::Graphics::LEFT
+                || mCaptionAlign > gcn::Graphics::RIGHT)
+            {
+                mCaptionAlign = gcn::Graphics::LEFT;
+            }
+        }
     }
     else
     {
@@ -167,7 +184,8 @@ void Window::draw(gcn::Graphics *graphics)
     {
         g->setColor(getForegroundColor());
         g->setFont(mCaptionFont);
-        g->drawText(getCaption(), 7, 5, gcn::Graphics::LEFT);
+        g->drawText(getCaption(), mCaptionOffsetX, mCaptionOffsetY,
+            static_cast<gcn::Graphics::Alignment>(mCaptionAlign));
     }
 
     // Draw Close Button

@@ -467,6 +467,9 @@ class Window : public gcn::Window, gcn::WidgetListener
          */
         static const unsigned resizeBorderWidth = 10;
         GraphicsVertexes *mVertexes;
+        int mCaptionOffsetX;
+        int mCaptionOffsetY;
+        int mCaptionAlign;
         bool mRedraw;
         gcn::Font *mCaptionFont;
 };
