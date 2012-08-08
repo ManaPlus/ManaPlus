@@ -98,7 +98,7 @@ Window::Window(const std::string &caption, bool modal, Window *parent,
             mCaptionOffsetY = getOption("captionoffsety");
             if (!mCaptionOffsetY)
                 mCaptionOffsetY = 5;
-            mCaptionAlign = getOption("captionallign");
+            mCaptionAlign = getOption("captionalign");
             if (mCaptionAlign < gcn::Graphics::LEFT
                 || mCaptionAlign > gcn::Graphics::RIGHT)
             {
