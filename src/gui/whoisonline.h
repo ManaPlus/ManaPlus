@@ -56,7 +56,8 @@ class OnlinePlayer
             mStatus(status),
             mLevel(level),
             mVersion(version),
-            mGender(gender)
+            mGender(gender),
+            mIsGM(false)
         {
         }
 
@@ -65,6 +66,9 @@ class OnlinePlayer
 
         unsigned char getStaus() const
         { return mStatus; }
+
+        void setIsGM(bool b)
+        { mIsGM = b; }
 
         char getVersion() const
         { return mVersion; }
@@ -92,6 +96,8 @@ class OnlinePlayer
         char mVersion;
 
         unsigned char mGender;
+
+        bool mIsGM;
 };
 
 /**
