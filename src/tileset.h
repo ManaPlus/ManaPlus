@@ -47,8 +47,28 @@ class Tileset : public ImageSet
         int getFirstGid() const
         { return mFirstGid; }
 
+        /**
+         * Set tileset property.
+         */
+        void setProperties(std::map<std::string, std::string> props)
+        { mProperties = props; }
+
+        /**
+         * Returns property value.
+         */
+        std::string getProperty(std::string name)
+        {
+            std::map<std::string, std::string>::const_iterator
+                it = mProperties.find(name);
+            if (it == mProperties.end())
+                return "";
+            return mProperties[name];
+        }
+
     private:
         int mFirstGid;
+
+        std::map<std::string, std::string> mProperties;
 };
 
 #endif

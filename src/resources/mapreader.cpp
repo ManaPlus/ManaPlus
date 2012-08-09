@@ -678,6 +678,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
     XML::Document* doc = nullptr;
     Tileset *set = nullptr;
     std::string pathDir(path);
+    std::map<std::string, std::string> props;
 
     if (xmlHasProp(node, BAD_CAST "source"))
     {
@@ -723,6 +724,19 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                 }
             }
         }
+        else if (xmlNameEqual(childNode, "properties"))
+        {
+            for_each_xml_child_node(propertyNode, childNode)
+            {
+                if (!xmlNameEqual(propertyNode, "property"))
+                    continue;
+                std::string name = XML::getProperty(propertyNode, "name", "");
+                std::string value = XML::getProperty(
+                    propertyNode, "value", "");
+                if (!name.empty())
+                    props[name] = value;
+            }
+        }
         else if (xmlNameEqual(childNode, "tile"))
         {
             for_each_xml_child_node(tileNode, childNode)
@@ -741,9 +755,12 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
                     std::string name = XML::getProperty(
                         propertyNode, "name", "");
                     int value = XML::getProperty(propertyNode, "value", 0);
-                    tileProperties[name] = value;
-                    logger->log("Tile Prop of %d \"%s\" = \"%d\"",
-                                tileGID, name.c_str(), value);
+                    if (!name.empty())
+                    {
+                        tileProperties[name] = value;
+                        logger->log("Tile Prop of %d \"%s\" = \"%d\"",
+                            tileGID, name.c_str(), value);
+                    }
                 }
 
                 // create animation
@@ -787,6 +804,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node, const std::string &path,
 
     delete doc;
 
+    if (set)
+        set->setProperties(props);
     return set;
 }
 
