@@ -375,13 +375,9 @@ void WhoIsOnline::loadWebList()
                 }
                 trim(nick);
 
-                bool isGM(false);
                 pos = lineStr.find(gmText, 0);
                 if (pos != std::string::npos)
-                {
                     lineStr = lineStr.substr(pos + gmText.length());
-                    isGM = true;
-                }
 
                 trim(lineStr);
                 pos = lineStr.find("/", 0);
@@ -425,10 +421,7 @@ void WhoIsOnline::loadWebList()
                 {
                     case PlayerRelation::NEUTRAL:
                     default:
-                        if (isGM)
-                            player->setText("G");
-                        else
-                            player->setText("0");
+                        player->setText("0");
                         neutral.push_back(player);
                         break;
 
@@ -776,9 +769,8 @@ void OnlinePlayer::setText(std::string color)
             // TRANSLATORS: this inactive status writed in player nick
             mText += _("I");
         }
-
         if (mStatus & Being::FLAG_GM && color == "0")
-            color = "G";
+            color = "2";
     }
 
     if (mVersion > 0)

@@ -22,7 +22,7 @@
 	<color id="ITEM_EQUIPPED" color="#000091" />
 	<color id="ITEM_NOT_EQUIPPED" color="#000000" />
 	<color id="CHAT" color="#FF00FF" />
-	<color id="GM" color="#00ff00" />
+	<color id="GM" color="#ff0000" />
 	<color id="PLAYER" color="#009000" />
 	<color id="WHISPER" color="#0000ff" />
 	<color id="WHISPER_OFFLINE" color="#000050" />
