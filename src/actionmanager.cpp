@@ -853,7 +853,7 @@ impHandler0(changeTrade)
 
 impHandler0(screenshot)
 {
-    Game::saveScreenshot();
+    Game::createScreenshot();
     return true;
 }
 

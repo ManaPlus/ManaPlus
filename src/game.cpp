@@ -469,9 +469,8 @@ Game::~Game()
         DepricatedEvent(EVENT_DESTRUCTED));
 }
 
-bool Game::saveScreenshot()
+bool Game::createScreenshot()
 {
-    static unsigned int screenshotCount = 0;
     SDL_Surface *screenshot = nullptr;
 
     if (!config.getBoolValue("showip"))
@@ -490,6 +489,12 @@ bool Game::saveScreenshot()
     if (!screenshot)
         return false;
 
+    return saveScreenshot(screenshot);
+}
+
+bool Game::saveScreenshot(SDL_Surface *screenshot)
+{
+    static unsigned int screenshotCount = 0;
     // Search for an unused screenshot name
     std::stringstream filenameSuffix;
     std::stringstream filename;

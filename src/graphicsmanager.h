@@ -63,6 +63,8 @@ class GraphicsManager
 
         void initOpenGLFunctions();
 
+        Graphics *createGraphics();
+
     private:
         std::set<std::string> mExtensions;
 

@@ -111,7 +111,9 @@ class Game
         bool getValidSpeed()
         { return mValidSpeed; }
 
-        static bool saveScreenshot();
+        static bool createScreenshot();
+
+        static bool saveScreenshot(SDL_Surface *screenshot);
 
     private:
         void updateHistory(SDL_Event &event);

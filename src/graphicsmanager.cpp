@@ -196,6 +196,24 @@ void GraphicsManager::initGraphics(bool noOpenGL)
 #endif
 }
 
+Graphics *GraphicsManager::createGraphics()
+{
+#ifdef USE_OPENGL
+    switch (config.getIntValue("opengl"))
+    {
+        case 0:
+            return new Graphics;
+        case 1:
+        default:
+            return new NormalOpenGLGraphics;
+        case 2:
+            return new SafeOpenGLGraphics;
+    };
+#else
+    return new Graphics;
+#endif
+}
+
 void GraphicsManager::updateExtensions(const char *extensions)
 {
     mExtensions.clear();
@@ -355,14 +373,14 @@ void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
 
     // create a texture object
     glGenTextures(1, &fbo->textureId);
-    glBindTexture(GL_TEXTURE_2D, fbo->textureId);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0,
+    glBindTexture(OpenGLImageHelper::mTextureType, fbo->textureId);
+    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(OpenGLImageHelper::mTextureType, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexImage2D(OpenGLImageHelper::mTextureType, 0, GL_RGBA8, width, height, 0,
         GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-    glBindTexture(GL_TEXTURE_2D, 0);
+    glBindTexture(OpenGLImageHelper::mTextureType, 0);
 
     // create a renderbuffer object to store depth info
     mglGenRenderbuffers(1, &fbo->rboId);
@@ -377,7 +395,7 @@ void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
 
     // attach the texture to FBO color attachment point
     mglFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-        GL_TEXTURE_2D, fbo->textureId, 0);
+        OpenGLImageHelper::mTextureType, fbo->textureId, 0);
 
     // attach the renderbuffer to depth attachment point
     mglFramebufferRenderbuffer(GL_FRAMEBUFFER,
