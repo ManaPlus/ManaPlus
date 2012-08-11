@@ -420,6 +420,8 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
 #define getFunction(name) glXGetProcAddress((const GLubyte*)(name))
 #endif
 
+#define assignFunction(func, name) m##func = (func##_t)getFunction(name)
+
 void GraphicsManager::initOpenGLFunctions()
 {
     if (!checkGLVersion(1, 1))
@@ -427,27 +429,28 @@ void GraphicsManager::initOpenGLFunctions()
 
     if (supportExtension("GL_ARB_framebuffer_object"))
     {   // frame buffer supported
-        mglGenRenderbuffers = (glGenRenderbuffers_t)getFunction("glGenRenderbuffers");
-        mglBindRenderbuffer = (glBindRenderbuffer_t)getFunction("glBindRenderbuffer");
-        mglRenderbufferStorage = (glRenderbufferStorage_t)getFunction("glRenderbufferStorage");
-        mglGenFramebuffers = (glGenFramebuffers_t)getFunction("glGenFramebuffers");
-        mglBindFramebuffer = (glBindFramebuffer_t)getFunction("glBindFramebuffer");
-        mglFramebufferTexture2D = (glFramebufferTexture2D_t)getFunction("glFramebufferTexture2D");
-        mglFramebufferRenderbuffer = (glFramebufferRenderbuffer_t)getFunction("glFramebufferRenderbuffer");
-        mglDeleteFramebuffers = (glDeleteFramebuffers_t)getFunction("glDeleteFramebuffers");
-        mglDeleteRenderbuffers = (glDeleteRenderbuffers_t)getFunction("glDeleteRenderbuffers");
+        assignFunction(glGenRenderbuffers, "glGenRenderbuffers");
+        assignFunction(glBindRenderbuffer, "glBindRenderbuffer");
+        assignFunction(glRenderbufferStorage, "glRenderbufferStorage");
+        assignFunction(glGenFramebuffers, "glGenFramebuffers");
+        assignFunction(glBindFramebuffer, "glBindFramebuffer");
+        assignFunction(glFramebufferTexture2D, "glFramebufferTexture2D");
+        assignFunction(glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
+        assignFunction(glDeleteFramebuffers, "glDeleteFramebuffers");
+        assignFunction(glDeleteRenderbuffers, "glDeleteRenderbuffers");
     }
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
-        mglGenRenderbuffers = (glGenRenderbuffers_t)getFunction("glGenRenderbuffersEXT");
-        mglBindRenderbuffer = (glBindRenderbuffer_t)getFunction("glBindRenderbufferEXT");
-        mglRenderbufferStorage = (glRenderbufferStorage_t)getFunction("glRenderbufferStorageEXT");
-        mglGenFramebuffers = (glGenFramebuffers_t)getFunction("glGenFramebuffersEXT");
-        mglBindFramebuffer = (glBindFramebuffer_t)getFunction("glBindFramebufferEXT");
-        mglFramebufferTexture2D = (glFramebufferTexture2D_t)getFunction("glFramebufferTexture2DEXT");
-        mglFramebufferRenderbuffer = (glFramebufferRenderbuffer_t)getFunction("glFramebufferRenderbufferEXT");
-        mglDeleteFramebuffers = (glDeleteFramebuffers_t)getFunction("glDeleteFramebuffersEXT");
-        mglDeleteRenderbuffers = (glDeleteRenderbuffers_t)getFunction("glDeleteRenderbuffersEXT");
+        assignFunction(glGenRenderbuffers, "glGenRenderbuffersEXT");
+        assignFunction(glBindRenderbuffer, "glBindRenderbufferEXT");
+        assignFunction(glRenderbufferStorage, "glRenderbufferStorageEXT");
+        assignFunction(glGenFramebuffers, "glGenFramebuffersEXT");
+        assignFunction(glBindFramebuffer, "glBindFramebufferEXT");
+        assignFunction(glFramebufferTexture2D, "glFramebufferTexture2DEXT");
+        assignFunction(glFramebufferRenderbuffer,
+            "glFramebufferRenderbufferEXT");
+        assignFunction(glDeleteFramebuffers, "glDeleteFramebuffersEXT");
+        assignFunction(glDeleteRenderbuffers, "glDeleteRenderbuffersEXT");
     }
     else
     {   // no frame buffer support
