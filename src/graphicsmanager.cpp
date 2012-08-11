@@ -21,10 +21,16 @@
 #include "graphicsmanager.h"
 
 #define GL_GLEXT_PROTOTYPES 1
+#ifndef WIN32
 #include "GL/glx.h"
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
 #undef GL_GLEXT_PROTOTYPES
+//#else
+//#include "GL/glext.h"
+//#undef GL_GLEXT_VERSION
+//#undef WIN32_LEAN_AND_MEAN
+#endif
 
 #include "configuration.h"
 #include "graphics.h"
@@ -388,16 +394,16 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
     if (!fbo)
         return;
 
-    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+    mglBindFramebuffer(GL_FRAMEBUFFER, 0);
     if (fbo->fboId)
     {
-        glDeleteFramebuffersEXT(1, &fbo->fboId);
+        mglDeleteFramebuffers(1, &fbo->fboId);
         fbo->fboId = 0;
     }
-    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, 0);
+    mglBindRenderbuffer(GL_RENDERBUFFER, 0);
     if (fbo->rboId)
     {
-        glDeleteRenderbuffersEXT(1, &fbo->rboId);
+        mglDeleteRenderbuffers(1, &fbo->rboId);
         fbo->rboId = 0;
     }
     if (fbo->textureId)
@@ -428,6 +434,8 @@ void GraphicsManager::initOpenGLFunctions()
         mglBindFramebuffer = (glBindFramebuffer_t)getFunction("glBindFramebuffer");
         mglFramebufferTexture2D = (glFramebufferTexture2D_t)getFunction("glFramebufferTexture2D");
         mglFramebufferRenderbuffer = (glFramebufferRenderbuffer_t)getFunction("glFramebufferRenderbuffer");
+        mglDeleteFramebuffers = (glDeleteFramebuffers_t)getFunction("glDeleteFramebuffers");
+        mglDeleteRenderbuffers = (glDeleteRenderbuffers_t)getFunction("glDeleteRenderbuffers");
     }
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
@@ -438,6 +446,8 @@ void GraphicsManager::initOpenGLFunctions()
         mglBindFramebuffer = (glBindFramebuffer_t)getFunction("glBindFramebufferEXT");
         mglFramebufferTexture2D = (glFramebufferTexture2D_t)getFunction("glFramebufferTexture2DEXT");
         mglFramebufferRenderbuffer = (glFramebufferRenderbuffer_t)getFunction("glFramebufferRenderbufferEXT");
+        mglDeleteFramebuffers = (glDeleteFramebuffers_t)getFunction("glDeleteFramebuffersEXT");
+        mglDeleteRenderbuffers = (glDeleteRenderbuffers_t)getFunction("glDeleteRenderbuffersEXT");
     }
     else
     {   // no frame buffer support

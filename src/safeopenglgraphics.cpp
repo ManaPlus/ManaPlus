@@ -425,10 +425,8 @@ void SafeOpenGLGraphics::_endDraw()
 
 void SafeOpenGLGraphics::prepareScreenshot()
 {
-#if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
         graphicsManager.createFBO(mTarget->w, mTarget->h, &mFbo);
-#endif
 }
 
 SDL_Surface* SafeOpenGLGraphics::getScreenshot()
@@ -471,10 +469,8 @@ SDL_Surface* SafeOpenGLGraphics::getScreenshot()
 
     free(buf);
 
-#if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
         graphicsManager.deleteFBO(&mFbo);
-#endif
 
     glPixelStorei(GL_PACK_ALIGNMENT, pack);
 

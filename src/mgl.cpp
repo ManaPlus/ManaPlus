@@ -31,3 +31,5 @@ defName(glGenFramebuffers);
 defName(glBindFramebuffer);
 defName(glFramebufferTexture2D);
 defName(glFramebufferRenderbuffer);
+defName(glDeleteFramebuffers);
+defName(glDeleteRenderbuffers);

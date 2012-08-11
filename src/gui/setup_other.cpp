@@ -227,10 +227,8 @@ Setup_Other::Setup_Other()
     new SetupItemCheckBox(_("Hide shield sprite"), "", "hideShield",
         this, "hideShieldEvent");
 
-#if !defined(_WIN32)
     new SetupItemCheckBox(_("Use FBO for screenshots (only for opengl)"),
         "", "usefbo", this, "usefboEvent");
-#endif
 
     new SetupItemIntTextField(_("Network delay between sub servers"),
         "", "networksleep", this, "networksleepEvent", 0, 10000);

@@ -1003,10 +1003,8 @@ void NormalOpenGLGraphics::_endDraw()
 
 void NormalOpenGLGraphics::prepareScreenshot()
 {
-#if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
         graphicsManager.createFBO(mTarget->w, mTarget->h, &mFbo);
-#endif
 }
 
 SDL_Surface* NormalOpenGLGraphics::getScreenshot()
@@ -1049,10 +1047,8 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
 
     free(buf);
 
-#if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
         graphicsManager.deleteFBO(&mFbo);
-#endif
 
     glPixelStorei(GL_PACK_ALIGNMENT, pack);
 

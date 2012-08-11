@@ -26,6 +26,11 @@
 #include <SDL_opengl.h>
 #include <GL/glext.h>
 
+#define GL_DEPTH_ATTACHMENT               0x8D00
+#define GL_COLOR_ATTACHMENT0              0x8CE0
+#define GL_FRAMEBUFFER                    0x8D40
+#define GL_RENDERBUFFER                   0x8D41
+
 #define defNameE(name) extern name##_t m##name
 
 typedef void (APIENTRY *glGenRenderbuffers_t)(GLsizei, GLuint *);
@@ -40,6 +45,8 @@ typedef void (APIENTRY *glFramebufferTexture2D_t)(GLenum target,
     GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 typedef void (APIENTRY *glFramebufferRenderbuffer_t)(GLenum target,
     GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+typedef void (APIENTRY *glDeleteFramebuffers_t) (GLsizei, const GLuint *);
+typedef void (APIENTRY *glDeleteRenderbuffers_t) (GLsizei, const GLuint *);
 
 defNameE(glGenRenderbuffers);
 defNameE(glBindRenderbuffer);
@@ -48,5 +55,7 @@ defNameE(glGenFramebuffers);
 defNameE(glBindFramebuffer);
 defNameE(glFramebufferTexture2D);
 defNameE(glFramebufferRenderbuffer);
+defNameE(glDeleteFramebuffers);
+defNameE(glDeleteRenderbuffers);
 
 #endif
