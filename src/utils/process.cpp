@@ -171,6 +171,7 @@ int execFileWait(std::string pathName, std::string name,
         {   // sleep pid
             sleep (waitTime);
 //            printf ("time out\n");
+            execl("/bin/true", "/bin/true", static_cast<char *>(nullptr));
             exit(-1);
         }
 
@@ -189,6 +190,7 @@ int execFileWait(std::string pathName, std::string name,
             ret = -1;
         }
         wait(nullptr);
+        execl("/bin/true", "/bin/true", static_cast<char *>(nullptr));
         exit(ret);
     }
 

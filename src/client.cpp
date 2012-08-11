@@ -505,17 +505,18 @@ void Client::gameInit()
     }
 #endif
 
-#ifdef WIN32
-    if (mOptions.test.empty() && !config.getBoolValue("videodetected"))
+#ifdef USE_OPENGL
+    if (!mOptions.safeMode && mOptions.test.empty()
+        && !config.getBoolValue("videodetected"))
     {
+        config.setValue("videodetected", true);
         int val = graphicsManager.startDetection();
         if (val >= 0 && val <= 2)
             config.setValue("opengl", val);
-        config.setValue("videodetected", true);
     }
 #endif
 
-#if defined USE_OPENGL
+#ifdef USE_OPENGL
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
     SDLImageHelper::SDLSetEnableAlphaCache(config.getBoolValue("alphaCache")
         && !config.getIntValue("opengl"));

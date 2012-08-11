@@ -26,9 +26,7 @@
 #include "game.h"
 #include "graphics.h"
 
-#ifdef WIN32
 #include "graphicsmanager.h"
-#endif
 
 #include "localplayer.h"
 #include "logger.h"
@@ -240,11 +238,7 @@ Setup_Video::Setup_Video():
     mFpsLabel(new Label),
     mAltFpsSlider(new Slider(2, 160)),
     mAltFpsLabel(new Label(_("Alt FPS limit: "))),
-#ifdef WIN32
     mDetectButton(new Button(_("Detect best mode"), "detect", this)),
-#else
-    mDetectButton(nullptr),
-#endif
     mDialog(nullptr)
 {
     setName(_("Video"));
@@ -319,9 +313,7 @@ Setup_Video::Setup_Video():
     place(0, 7, mAltFpsSlider);
     place(1, 7, mAltFpsLabel).setPadding(3);
 
-#ifdef WIN32
     place(0, 8, mDetectButton);
-#endif
 
     int width = 600;
 
@@ -556,14 +548,12 @@ void Setup_Video::action(const gcn::ActionEvent &event)
     {
         config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
-#ifdef WIN32
     else if (id == "detect")
     {
         int val = graphicsManager.startDetection();
         if (val >= 0 && val <= 2)
             mOpenGLDropDown->setSelected(val);
     }
-#endif
 }
 
 void Setup_Video::externalUpdated()
