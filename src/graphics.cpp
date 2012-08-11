@@ -173,6 +173,7 @@ bool Graphics::setOpenGLMode()
     logger->log1(glExtensions);
 
     graphicsManager.updateExtensions(glExtensions);
+    graphicsManager.setGLVersion();
 
     graphicsManager.updateTextureFormat();
     updateMemoryInfo();

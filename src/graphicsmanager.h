@@ -51,6 +51,8 @@ class GraphicsManager
 
         std::string getGLString(int num) const;
 
+        void setGLVersion();
+
         void setVideoMode();
 
         bool checkGLVersion(int major, int minor) const;
@@ -58,6 +60,8 @@ class GraphicsManager
         void createFBO(int width, int height, FBOInfo *fbo);
 
         void deleteFBO(FBOInfo *fbo);
+
+        void initOpenGLFunctions();
 
     private:
         std::set<std::string> mExtensions;

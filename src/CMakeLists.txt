@@ -594,6 +594,8 @@ SET(SRCS
     map.h
     maplayer.cpp
     maplayer.h
+    mgl.cpp
+    mgl.h
     normalopenglgraphics.cpp
     normalopenglgraphics.h
     particle.cpp

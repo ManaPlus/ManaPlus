@@ -20,10 +20,17 @@
 
 #include "graphicsmanager.h"
 
+#define GL_GLEXT_PROTOTYPES 1
+#include "GL/glx.h"
+// hack to hide warnings
+#undef GL_GLEXT_VERSION
+#undef GL_GLEXT_PROTOTYPES
+
 #include "configuration.h"
 #include "graphics.h"
 #include "graphicsvertexes.h"
 #include "logger.h"
+#include "mgl.h"
 
 #include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
@@ -176,7 +183,6 @@ void GraphicsManager::initGraphics(bool noOpenGL)
             mainGraphics = new SafeOpenGLGraphics;
             break;
     };
-
 #else
     // Create the graphics context
     imageHelper = new SDLImageHelper;
@@ -284,6 +290,11 @@ std::string GraphicsManager::getGLString(int num) const
 #endif
 }
 
+void GraphicsManager::setGLVersion()
+{
+    sscanf(getGLString(GL_VERSION).c_str(), "%5d.%5d", &mMajor, &mMinor);
+}
+
 void GraphicsManager::setVideoMode()
 {
     const int width = config.getIntValue("screenwidth");
@@ -348,25 +359,25 @@ void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
     glBindTexture(GL_TEXTURE_2D, 0);
 
     // create a renderbuffer object to store depth info
-    glGenRenderbuffersEXT(1, &fbo->rboId);
-    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, fbo->rboId);
-    glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT,
+    mglGenRenderbuffers(1, &fbo->rboId);
+    mglBindRenderbuffer(GL_RENDERBUFFER, fbo->rboId);
+    mglRenderbufferStorage(GL_RENDERBUFFER,
         GL_DEPTH_COMPONENT, width, height);
-    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, 0);
+    mglBindRenderbuffer(GL_RENDERBUFFER, 0);
 
     // create a framebuffer object
-    glGenFramebuffersEXT(1, &fbo->fboId);
-    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->fboId);
+    mglGenFramebuffers(1, &fbo->fboId);
+    mglBindFramebuffer(GL_FRAMEBUFFER, fbo->fboId);
 
     // attach the texture to FBO color attachment point
-    glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
+    mglFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
         GL_TEXTURE_2D, fbo->textureId, 0);
 
     // attach the renderbuffer to depth attachment point
-    glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT,
-        GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, fbo->rboId);
+    mglFramebufferRenderbuffer(GL_FRAMEBUFFER,
+        GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, fbo->rboId);
 
-    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->fboId);
+    mglBindFramebuffer(GL_FRAMEBUFFER, fbo->fboId);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 #endif
 }
@@ -395,4 +406,41 @@ void GraphicsManager::deleteFBO(FBOInfo *fbo)
         fbo->textureId = 0;
     }
 #endif
+}
+
+#ifdef WIN32
+#define getFunction(name) wglGetProcAddress(name);
+#else
+#define getFunction(name) glXGetProcAddress((const GLubyte*)(name))
+#endif
+
+void GraphicsManager::initOpenGLFunctions()
+{
+    if (!checkGLVersion(1, 1))
+        return;
+
+    if (supportExtension("GL_ARB_framebuffer_object"))
+    {   // frame buffer supported
+        mglGenRenderbuffers = (glGenRenderbuffers_t)getFunction("glGenRenderbuffers");
+        mglBindRenderbuffer = (glBindRenderbuffer_t)getFunction("glBindRenderbuffer");
+        mglRenderbufferStorage = (glRenderbufferStorage_t)getFunction("glRenderbufferStorage");
+        mglGenFramebuffers = (glGenFramebuffers_t)getFunction("glGenFramebuffers");
+        mglBindFramebuffer = (glBindFramebuffer_t)getFunction("glBindFramebuffer");
+        mglFramebufferTexture2D = (glFramebufferTexture2D_t)getFunction("glFramebufferTexture2D");
+        mglFramebufferRenderbuffer = (glFramebufferRenderbuffer_t)getFunction("glFramebufferRenderbuffer");
+    }
+    else if (supportExtension("GL_EXT_framebuffer_object"))
+    {   // old frame buffer extension
+        mglGenRenderbuffers = (glGenRenderbuffers_t)getFunction("glGenRenderbuffersEXT");
+        mglBindRenderbuffer = (glBindRenderbuffer_t)getFunction("glBindRenderbufferEXT");
+        mglRenderbufferStorage = (glRenderbufferStorage_t)getFunction("glRenderbufferStorageEXT");
+        mglGenFramebuffers = (glGenFramebuffers_t)getFunction("glGenFramebuffersEXT");
+        mglBindFramebuffer = (glBindFramebuffer_t)getFunction("glBindFramebufferEXT");
+        mglFramebufferTexture2D = (glFramebufferTexture2D_t)getFunction("glFramebufferTexture2DEXT");
+        mglFramebufferRenderbuffer = (glFramebufferRenderbuffer_t)getFunction("glFramebufferRenderbufferEXT");
+    }
+    else
+    {   // no frame buffer support
+        config.setValue("usefbo", false);
+    }
 }
