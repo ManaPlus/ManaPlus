@@ -28,6 +28,8 @@
 
 #include "graphics.h"
 
+#include "resources/fboinfo.h"
+
 //#define NO_SDL_GLEXT
 #define GL_GLEXT_PROTOTYPES 1
 
@@ -132,9 +134,7 @@ class SafeOpenGLGraphics : public Graphics
     private:
         bool mAlpha, mTexture;
         bool mColorAlpha;
-        GLuint mFboId;
-        GLuint mTextureId;
-        GLuint mRboId;
+        FBOInfo mFbo;
 };
 #endif
 

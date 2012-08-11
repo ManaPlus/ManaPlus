@@ -29,11 +29,13 @@
 #include "main.h"
 #include "graphics.h"
 
+#include "resources/fboinfo.h"
+
 //#define NO_SDL_GLEXT
 #define GL_GLEXT_PROTOTYPES 1
 
 #include <SDL_opengl.h>
-//#include <GL/glext.h>
+#include <GL/glext.h>
 
 #include <set>
 
@@ -162,9 +164,7 @@ class NormalOpenGLGraphics : public Graphics
         GLint *mIntVertArray;
         bool mAlpha, mTexture;
         bool mColorAlpha;
-        GLuint mFboId;
-        GLuint mTextureId;
-        GLuint mRboId;
+        FBOInfo mFbo;
 #ifdef DEBUG_BIND_TEXTURE
         std::string mOldTexture;
         unsigned mOldTextureId;

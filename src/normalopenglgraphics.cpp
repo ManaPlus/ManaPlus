@@ -24,6 +24,7 @@
 
 #ifdef USE_OPENGL
 
+#include "graphicsmanager.h"
 #include "graphicsvertexes.h"
 #include "normalopenglgraphics.h"
 #include "configuration.h"
@@ -53,14 +54,11 @@ NormalOpenGLGraphics::NormalOpenGLGraphics():
     mIntVertArray(new GLint[vertexBufSize * 4 + 30]),
     mAlpha(false),
     mTexture(false),
-    mColorAlpha(false),
-    mFboId(0),
-    mTextureId(0),
 #ifdef DEBUG_BIND_TEXTURE
-    mRboId(0),
+    mColorAlpha(false),
     mOldTextureId(0)
 #else
-    mRboId(0)
+    mColorAlpha(false)
 #endif
 {
     mOpenGL = 1;
@@ -1007,43 +1005,7 @@ void NormalOpenGLGraphics::prepareScreenshot()
 {
 #if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
-    {
-        int h = mTarget->h;
-        int w = mTarget->w;
-
-        // create a texture object
-        glGenTextures(1, &mTextureId);
-        glBindTexture(GL_TEXTURE_2D, mTextureId);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0,
-            GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-        glBindTexture(GL_TEXTURE_2D, 0);
-
-        // create a renderbuffer object to store depth info
-        glGenRenderbuffersEXT(1, &mRboId);
-        glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, mRboId);
-        glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT,
-            GL_DEPTH_COMPONENT, w, h);
-        glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, 0);
-
-        // create a framebuffer object
-        glGenFramebuffersEXT(1, &mFboId);
-        glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, mFboId);
-
-        // attach the texture to FBO color attachment point
-        glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
-            GL_TEXTURE_2D, mTextureId, 0);
-
-        // attach the renderbuffer to depth attachment point
-        glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT,
-            GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, mRboId);
-
-        glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, mFboId);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    }
+        graphicsManager.createFBO(mTarget->w, mTarget->h, &mFbo);
 #endif
 }
 
@@ -1089,25 +1051,7 @@ SDL_Surface* NormalOpenGLGraphics::getScreenshot()
 
 #if !defined(_WIN32)
     if (config.getBoolValue("usefbo"))
-    {
-        glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-        if (mFboId)
-        {
-            glDeleteFramebuffersEXT(1, &mFboId);
-            mFboId = 0;
-        }
-        glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, 0);
-        if (mRboId)
-        {
-            glDeleteRenderbuffersEXT(1, &mRboId);
-            mRboId = 0;
-        }
-        if (mTextureId)
-        {
-            glDeleteTextures(1, &mTextureId);
-            mTextureId = 0;
-        }
-    }
+        graphicsManager.deleteFBO(&mFbo);
 #endif
 
     glPixelStorei(GL_PACK_ALIGNMENT, pack);

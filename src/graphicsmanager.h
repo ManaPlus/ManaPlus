@@ -26,6 +26,8 @@
 
 class Graphics;
 
+struct FBOInfo;
+
 class GraphicsManager
 {
     public:
@@ -52,6 +54,10 @@ class GraphicsManager
         void setVideoMode();
 
         bool checkGLVersion(int major, int minor) const;
+
+        void createFBO(int width, int height, FBOInfo *fbo);
+
+        void deleteFBO(FBOInfo *fbo);
 
     private:
         std::set<std::string> mExtensions;

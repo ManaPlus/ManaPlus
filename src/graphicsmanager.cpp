@@ -25,6 +25,7 @@
 #include "graphicsvertexes.h"
 #include "logger.h"
 
+#include "resources/fboinfo.h"
 #include "resources/imagehelper.h"
 #include "resources/openglimagehelper.h"
 #include "resources/sdlimagehelper.h"
@@ -327,4 +328,71 @@ void GraphicsManager::setVideoMode()
 bool GraphicsManager::checkGLVersion(int major, int minor) const
 {
     return mMajor > major || (mMajor == major && mMinor >= minor);
+}
+
+void GraphicsManager::createFBO(int width, int height, FBOInfo *fbo)
+{
+#ifdef USE_OPENGL
+    if (!fbo)
+        return;
+
+    // create a texture object
+    glGenTextures(1, &fbo->textureId);
+    glBindTexture(GL_TEXTURE_2D, fbo->textureId);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0,
+        GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    // create a renderbuffer object to store depth info
+    glGenRenderbuffersEXT(1, &fbo->rboId);
+    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, fbo->rboId);
+    glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT,
+        GL_DEPTH_COMPONENT, width, height);
+    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, 0);
+
+    // create a framebuffer object
+    glGenFramebuffersEXT(1, &fbo->fboId);
+    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->fboId);
+
+    // attach the texture to FBO color attachment point
+    glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
+        GL_TEXTURE_2D, fbo->textureId, 0);
+
+    // attach the renderbuffer to depth attachment point
+    glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT,
+        GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, fbo->rboId);
+
+    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->fboId);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+#endif
+}
+
+void GraphicsManager::deleteFBO(FBOInfo *fbo)
+{
+#ifdef USE_OPENGL
+    if (!fbo)
+        return;
+
+    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+    if (fbo->fboId)
+    {
+        glDeleteFramebuffersEXT(1, &fbo->fboId);
+        fbo->fboId = 0;
+    }
+    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, 0);
+    if (fbo->rboId)
+    {
+        glDeleteRenderbuffersEXT(1, &fbo->rboId);
+        fbo->rboId = 0;
+    }
+    if (fbo->textureId)
+    {
+        glDeleteTextures(1, &fbo->textureId);
+        fbo->textureId = 0;
+    }
+#endif
 }

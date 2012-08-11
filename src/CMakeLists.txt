@@ -415,6 +415,7 @@ SET(SRCS
     resources/dye.h
     resources/emotedb.cpp
     resources/emotedb.h
+    resources/fboinfo.h
     resources/image.cpp
     resources/image.h
     resources/imagehelper.cpp
