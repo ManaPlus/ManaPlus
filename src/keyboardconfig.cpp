@@ -191,12 +191,12 @@ void KeyboardConfig::handleRepeat(int time)
         int &keyTime = (*it).second;
         if (key >= 0)
         {
-            if (mActiveKeys[key])
+            if (mActiveKeys && mActiveKeys[key])
                 repeat = true;
         }
         else if (key < -1 && key > -500)
         {
-            if (mActiveKeys2[-key])
+            if (mActiveKeys2 && mActiveKeys2[-key])
                 repeat = true;
         }
         if (repeat && abs(keyTime - time) > 10)
