@@ -230,6 +230,9 @@ public:
     static const std::string &getLocalDataDirectory()
     { return instance()->mLocalDataDir; }
 
+    static const std::string &getTempDirectory()
+    { return instance()->mTempDir; }
+
     static const std::string &getScreenshotDirectory()
     { return instance()->mScreenshotDir; }
 
@@ -315,6 +318,8 @@ private:
 
     void initLocalDataDir();
 
+    void initTempDir();
+
     void initConfigDir();
 
     void initUpdatesDir();
@@ -342,6 +347,7 @@ private:
     std::string mPackageDir;
     std::string mConfigDir;
     std::string mLocalDataDir;
+    std::string mTempDir;
     std::string mUpdateHost;
     std::string mUpdatesDir;
     std::string mScreenshotDir;

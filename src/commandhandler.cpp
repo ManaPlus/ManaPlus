@@ -915,6 +915,8 @@ void CommandHandler::handleDirs(const std::string &args A_UNUSED,
         + Client::getLocalDataDirectory());
     debugChatTab->chatLog("screenshots directory: "
         + Client::getScreenshotDirectory());
+    debugChatTab->chatLog("temp directory: "
+        + Client::getTempDirectory());
 }
 
 void CommandHandler::handleInfo(const std::string &args A_UNUSED,

@@ -295,6 +295,7 @@ void Client::testsInit()
     {
         logger = new Logger;
         initLocalDataDir();
+        initTempDir();
         initConfigDir();
     }
 }
@@ -1635,6 +1636,7 @@ void Client::initRootDir()
 void Client::initHomeDir()
 {
     initLocalDataDir();
+    initTempDir();
     initConfigDir();
 }
 
@@ -1666,7 +1668,18 @@ void Client::initLocalDataDir()
     if (mkdir_r(mLocalDataDir.c_str()))
     {
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
-                                  "Exiting."), mLocalDataDir.c_str()));
+            "Exiting."), mLocalDataDir.c_str()));
+    }
+}
+
+void Client::initTempDir()
+{
+    mTempDir = mLocalDataDir + PHYSFS_getDirSeparator() + "temp";
+
+    if (mkdir_r(mTempDir.c_str()))
+    {
+        logger->error(strprintf(_("%s doesn't exist and can't be created! "
+            "Exiting."), mTempDir.c_str()));
     }
 }
 
